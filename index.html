@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="css/founders.css">
 <link rel="stylesheet" href="css/alpha-training.css">
 <link rel="stylesheet" href="css/controls.css">
+<link rel="stylesheet" href="css/hub-scroll.css">
 </head>
 <body>
 
@@ -168,13 +169,20 @@
         <button class="hub-endless-rank hidden" id="hub-endless-rank-btn" aria-label="Ranking semanal de la Horda Infinita" title="Ranking semanal"><span class="hub-endless-rank-ico">🏆</span><span class="hub-endless-rank-txt">RANKING</span></button>
         </div>
       </div>
-      <div class="hub-grid" id="hub-grid">
-        <button class="hub-tile" id="mainmenu-guardianes-btn"><span class="hub-tile-ico">🛡</span><span class="hub-tile-title">GUARDIANES</span><span class="hub-tile-sub">Equipo · talentos · skins</span><span class="ui-tag hub-tile-badge hidden" id="hub-badge-guard"></span></button>
-        <button class="hub-tile" id="mainmenu-tienda-btn"><span class="hub-tile-ico">🪙</span><span class="hub-tile-title">TIENDA</span><span class="hub-tile-sub">Ofertas del día · skins</span><span class="ui-tag new hub-tile-badge hidden" id="hub-badge-shop">NUEVO</span><span class="ui-tag sale hub-tile-offer hidden" id="hub-badge-offer">OFERTA</span></button>
-        <button class="hub-tile hub-tile-crystal" id="hub-crystal-btn"><span class="hub-tile-ico">◆</span><span class="hub-tile-title">CONVERGENCIA</span><span class="hub-tile-sub">Guerra de Cristales · 2v2</span></button>
-        <button class="hub-tile hub-tile-crystal" id="hub-coliseum-btn"><span class="hub-tile-ico">⚔</span><span class="hub-tile-title">COLISEO</span><span class="hub-tile-sub">Combate directo · 2v2</span></button>
-        <button class="hub-tile" id="mainmenu-jugar-btn"><span class="hub-tile-ico">🌐</span><span class="hub-tile-title">MULTIJUGADOR</span><span class="hub-tile-sub">Sala con código · modos</span></button>
-<details class="hub-more"><summary>Explorar · Códice y desafíos</summary><div class="hub-actions">        <button class="hub-tile" id="mainmenu-codex-btn"><span class="hub-tile-ico">📖</span><span class="hub-tile-title">CÓDICE</span><span class="hub-tile-sub">Bestiario · jefes · lore</span></button>        <button class="hub-tile hidden" id="mainmenu-quests-btn" data-quests-open><span class="hub-tile-ico">🏆</span><span class="hub-tile-title">DESAFÍOS</span><span class="hub-tile-sub">Logros · pase</span><span class="ui-tag new hub-tile-badge qs-badge hidden" id="hub-badge-quests"></span></button></div></details>
+      <div class="hub-sections" id="hub-grid">
+        <h2 class="hub-section-title">MODOS COMPETITIVOS</h2>
+        <div class="hub-row hub-row-modes">
+          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-crystal-btn"><span class="hub-tile-ico">◆</span><span class="hub-tile-body"><span class="hub-tile-title">GUERRA DE CRISTALES</span><span class="hub-tile-sub">2 contra 2 · defendé tu cristal y mirá al rival</span></span></button>
+          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-coliseum-btn"><span class="hub-tile-ico">⚔</span><span class="hub-tile-body"><span class="hub-tile-title">COLISEO</span><span class="hub-tile-sub">Torneo 2 contra 2 · sumá puntos</span></span></button>
+        </div>
+        <h2 class="hub-section-title">EXPLORAR</h2>
+        <div class="hub-row hub-row-explore">
+          <button class="hub-tile" id="mainmenu-codex-btn"><span class="hub-tile-ico">📖</span><span class="hub-tile-title">CÓDICE</span><span class="hub-tile-sub">Bestiario · jefes · lore</span></button>
+          <button class="hub-tile" id="mainmenu-guardianes-btn"><span class="hub-tile-ico">🛡</span><span class="hub-tile-title">GUARDIANES</span><span class="hub-tile-sub">Equipo · talentos · skins</span><span class="ui-tag hub-tile-badge hidden" id="hub-badge-guard"></span></button>
+          <button class="hub-tile" id="mainmenu-tienda-btn"><span class="hub-tile-ico">🪙</span><span class="hub-tile-title">TIENDA</span><span class="hub-tile-sub">Ofertas del día · skins</span><span class="ui-tag new hub-tile-badge hidden" id="hub-badge-shop">NUEVO</span><span class="ui-tag sale hub-tile-offer hidden" id="hub-badge-offer">OFERTA</span></button>
+          <button class="hub-tile" id="mainmenu-jugar-btn"><span class="hub-tile-ico">🌐</span><span class="hub-tile-title">MULTIJUGADOR</span><span class="hub-tile-sub">Sala con código · modos</span></button>
+          <button class="hub-tile hidden" id="mainmenu-quests-btn" data-quests-open><span class="hub-tile-ico">🏆</span><span class="hub-tile-title">DESAFÍOS</span><span class="hub-tile-sub">Logros · pase</span><span class="ui-tag new hub-tile-badge qs-badge hidden" id="hub-badge-quests"></span></button>
+        </div>
       </div>
     </div>
     <div class="save-line hidden" id="mainmenu-gold-line"></div>
