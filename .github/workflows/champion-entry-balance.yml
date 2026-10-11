@@ -1,10 +1,10 @@
 name: Champion entry balance
 on:
   pull_request:
-    paths: ['js/**', 'css/**', 'server/**', 'tools/ux/**', 'tools/factory/**', 'tools/ascension/**', 'tools/founders/**', 'docs/founders/**', 'tools/alpha/**', 'tools/collection/**', 'tools/quality/**', 'docs/production/**', 'docs/ART_BIBLE.md', 'AGENTS.md', 'index.html', 'crystal-wars.html', 'tools/crystal-wars/**', 'tests/competitive-*.test.js', 'docs/modes/**', 'docs/balance/**', 'tools/balance/**', 'tools/audio/**', 'tools/bible/**', 'tools/bosses/**', 'docs/bible/**', 'tools/art/painter/**', 'BALANCE_CAMPEONES.md', '.github/workflows/champion-entry-balance.yml']
+    paths: ['js/**', 'css/**', 'server/**', 'tools/ux/**', 'tools/factory/**', 'tools/ascension/**', 'tools/founders/**', 'docs/founders/**', 'tools/alpha/**', 'tools/collection/**', 'tools/quality/**', 'docs/production/**', 'docs/ART_BIBLE.md', 'AGENTS.md', 'index.html', 'crystal-wars.html', 'tools/crystal-wars/**', 'tools/lanes/**', 'tools/net-test/**', 'tests/competitive-*.test.js', 'docs/modes/**', 'docs/balance/**', 'tools/balance/**', 'tools/audio/**', 'tools/bible/**', 'tools/bosses/**', 'docs/bible/**', 'tools/art/painter/**', 'BALANCE_CAMPEONES.md', '.github/workflows/champion-entry-balance.yml']
   push:
     branches: [main, 'chatgpt/**']
-    paths: ['js/**', 'css/**', 'server/**', 'tools/ux/**', 'tools/factory/**', 'tools/ascension/**', 'tools/founders/**', 'docs/founders/**', 'tools/alpha/**', 'tools/collection/**', 'tools/quality/**', 'docs/production/**', 'docs/ART_BIBLE.md', 'AGENTS.md', 'index.html', 'crystal-wars.html', 'tools/crystal-wars/**', 'tests/competitive-*.test.js', 'docs/modes/**', 'docs/balance/**', 'tools/balance/**', 'tools/audio/**', 'tools/bible/**', 'tools/bosses/**', 'docs/bible/**', 'tools/art/painter/**', 'BALANCE_CAMPEONES.md', '.github/workflows/champion-entry-balance.yml']
+    paths: ['js/**', 'css/**', 'server/**', 'tools/ux/**', 'tools/factory/**', 'tools/ascension/**', 'tools/founders/**', 'docs/founders/**', 'tools/alpha/**', 'tools/collection/**', 'tools/quality/**', 'docs/production/**', 'docs/ART_BIBLE.md', 'AGENTS.md', 'index.html', 'crystal-wars.html', 'tools/crystal-wars/**', 'tools/lanes/**', 'tools/net-test/**', 'tests/competitive-*.test.js', 'docs/modes/**', 'docs/balance/**', 'tools/balance/**', 'tools/audio/**', 'tools/bible/**', 'tools/bosses/**', 'docs/bible/**', 'tools/art/painter/**', 'BALANCE_CAMPEONES.md', '.github/workflows/champion-entry-balance.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -247,3 +247,21 @@ jobs:
           NODE_PATH: /tmp/horda-webkit/node_modules
           SITE: http://127.0.0.1:8814
           BROWSER: webkit
+
+  lanes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - run: npm install --prefix /tmp/horda-balance --no-audit --no-fund playwright@1.61.1
+      - run: /tmp/horda-balance/node_modules/.bin/playwright install --with-deps chromium
+      - run: npm ci --prefix server --no-audit --no-fund
+      - run: |
+          node tools/lanes/flow.js
+          node tools/lanes/sim.js 3 150
+          node tools/net-test/lanes_coop.js
+          node tools/lanes/kits.js 20
+        env:
+          NODE_PATH: /tmp/horda-balance/node_modules

@@ -76,3 +76,10 @@ function lanesLeaveOnline(leaveRoom){
   if(netInRoom()) netLeaveRoom();
   lanesStop("mainmenu");
 }
+
+// Aviso de equipos en la Sala (solo cuando la sala es de Guerra de Cristales).
+function lanesTeamHint(){
+  if(typeof currentArena === "undefined" || currentArena !== "convergencia") return "";
+  const me = typeof net !== "undefined" ? net.slot : 0, mine = me < 2 ? "ZAFIRO" : "ÁMBAR";
+  return '<div class="net-hint" style="font-size:15px;line-height:1.35"><b style="color:#70c9ff">ZAFIRO:</b> jugadores 1 y 2 · <b style="color:#ffb86a">ÁMBAR:</b> jugadores 3 y 4. Vos jugás en <b>' + mine + '</b>. Todos juegan al mismo nivel y sin equipo; los lugares libres los ocupan bots.</div>';
+}

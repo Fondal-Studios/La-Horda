@@ -77,6 +77,7 @@ function netRenderLobbyBar(){
         <button class="btn secondary small" id="net-close-btn">Cerrar sala</button></div>
       <div class="net-hint">${net.room.pub ? "🌍 Tu sala aparece en MULTIJUGADOR → Salas abiertas: cualquiera puede sumarse. " : ""}Pasales el código <b>${net.code}</b> a tus amigos: en su juego van a MULTIJUGADOR → 🔑 UNIRSE CON CÓDIGO (o a su Sala) y lo escriben. También sirve el enlace. Aparecen acá en tiempo real. Cuando estén LISTOS, COMENZAR: los lugares libres los ocupan bots. La arena la cambiás arriba, sin cerrar la sala.</div>
       <div class="net-link">${url}</div>
+      ${typeof lanesTeamHint==="function" ? lanesTeamHint() : ""}
       ${netChampStripHTML()}
       ${dup.length ? `<div class="net-err">Hay guardianes repetidos (${dup.map(k=>CLASSES[k].name).join(", ")}): cada jugador tiene que usar uno distinto.</div>` : ""}
       ${netLobby.lastError ? `<div class="net-err">${netLobby.lastError}</div>` : ""}`;
@@ -87,6 +88,7 @@ function netRenderLobbyBar(){
     bar._next = `<div class="net-row">${nameInput}<span class="net-code">SALA <b>${net.code}</b> · Anfitrión: ${(net.room.slots[0]||{}).name||"?"}</span>
         <button class="btn small ${me.ready?"ready-on":""}" id="net-ready-btn" ${hostBusy?"disabled":""}>${me.ready ? "✔ LISTO" : "Marcar LISTO"}</button>
         <button class="btn secondary small" id="net-leave-btn">Salir de la sala</button></div>
+      ${typeof lanesTeamHint==="function" ? lanesTeamHint() : ""}
       <div class="net-hint">Elegí tu guardián y prepará tu equipo. La arena la elige el anfitrión (arriba ves cuál es).</div>
       ${hostBusy ? `<div class="net-wait-host">El anfitrión todavía está en la partida/resultados: cuando vuelva a la sala vas a poder marcar LISTO.</div>` : ""}
       ${netChampStripHTML()}
