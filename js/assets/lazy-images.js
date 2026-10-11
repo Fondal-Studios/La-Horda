@@ -26,7 +26,7 @@
    ============================================================ */
 const LAZY_IMG = (function(){
   const desc = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, "src");
-  const S = { deferredOn:true, released:false, queue:[], webp:true };
+  const S = { deferredOn:true, released:false, queue:[], webp:true, groups:{}, relGroups:new Set() };
   try{
     const q = new URLSearchParams(location.search);
     const forced = q.get("lazy")==="1" || window.__lazyAssets === true;
@@ -38,8 +38,20 @@ const LAZY_IMG = (function(){
   // que bajan se ve el atlas base (setSkinPackKey / champPackCloneAtlas) y la partida espera a que esté todo
   // (whenAssetsReady). Las miniaturas (preview) de las skins siguen en la primera tanda: las muestran la tienda y
   // la Sala. En 4G simulado la portada bajaba 24 MB y tardaba ~22 s (tools/audit/loadtime.js).
-  const DEFER_RE = /(^|\/)assets\/(sprites\/(arenas|enemies|bosses)\/|vfx\/|sprites\/champions\/[^/]+\/(skins\/[^/]+\/(?!preview)|cromas\/|set\.))/;
-  function isDeferred(u){ return DEFER_RE.test(u); }
+  // GRUPOS (carga por demanda): cada imagen diferida pertenece a un grupo y se suelta cuando hace falta.
+  //   "ch:<campeón>"  todo lo pesado de UN guardián (atlas, hojas, skins, sets, cromas; las miniaturas siguen en la 1ª tanda)
+  //   "ar:<arena>"    el arte de UNA arena (escenario, enemigos, jefes, efectos propios)
+  //   "common"        efectos de habilidades y demás arte compartido
+  // Antes la portada bajaba el atlas de los 38 guardianes (~17 MB) y la partida esperaba el arte de TODAS las arenas.
+  const CH_RE = /(^|\/)assets\/sprites\/champions\/([^/]+)\/(?!preview|set-preview|skins\/[^/]+\/preview)/;
+  const AR_DEFER_RE = /(^|\/)assets\/(sprites\/(arenas|enemies|bosses)\/|vfx\/)/;
+  const AR_RE = /(^|\/)assets\/(?:sprites\/(?:arenas|enemies|bosses)|vfx|vfx\/bosses)\/(ciudad|fortaleza|bosque|micelial|hielo|acuatica|laberinto|abismo|minas|infernal|divina)\//;
+  function groupOf(u){
+    let m = CH_RE.exec(u); if(m) return "ch:" + m[2];
+    if(!AR_DEFER_RE.test(u)) return null;
+    m = AR_RE.exec(u); return m ? "ar:" + m[2] : "common";
+  }
+  function isDeferred(u){ return groupOf(u) !== null; }
   function pick(u){
     if(!S.webp || typeof ASSET_WEBP==="undefined" || !/\.png(\?|$)/.test(u)) return u;
     const i = u.indexOf("assets/"); if(i < 0) return u;
@@ -60,16 +72,25 @@ const LAZY_IMG = (function(){
     get(){ return this.__lazySrc ? new URL(this.__lazySrc, document.baseURI).href : desc.get.call(this); },
     set(v){
       const u = String(v);
-      if(S.deferredOn && !S.released && isDeferred(u)){ if(!this.__lazySrc) S.queue.push(this); this.__lazySrc = u; return; }
+      if(S.deferredOn && !S.released){
+        const g = groupOf(u);
+        if(g && !S.relGroups.has(g)){ if(!this.__lazySrc) (S.groups[g] || (S.groups[g] = [])).push(this); this.__lazySrc = u; return; }
+      }
       this.__lazySrc = null;
       realSet(this, u);
     }
   });
-  function release(){
-    if(S.released) return;
-    S.released = true;
-    const q = S.queue; S.queue = [];
+  // suelta UN grupo (las imágenes que ya pidieron cargar, y las que pidan después)
+  function releaseGroup(g){
+    if(S.relGroups.has(g)) return;
+    S.relGroups.add(g);
+    const q = S.groups[g] || []; S.groups[g] = [];
     for(const img of q){ const u = img.__lazySrc; if(!u) continue; img.__lazySrc = null; realSet(img, u); }
   }
-  return { isDeferred, release, get deferredOn(){ return S.deferredOn; }, get released(){ return S.released; }, get webp(){ return S.webp; } };
+  function release(){   // todo junto (compatibilidad y pruebas)
+    if(S.released) return;
+    S.released = true;
+    for(const g of Object.keys(S.groups)) releaseGroup(g);
+  }
+  return { isDeferred, groupOf, release, releaseGroup, isGroupReleased:(g)=>S.released || S.relGroups.has(g), get deferredOn(){ return S.deferredOn; }, get released(){ return S.released; }, get webp(){ return S.webp; } };
 })();

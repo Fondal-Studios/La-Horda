@@ -12,19 +12,23 @@ const joy=await page.locator('#joy-base').boundingBox(),center={x:joy.x+joy.widt
 await until('move',12000); // paso 1: la misión se lee sola (7 s)
 await page.mouse.move(center.x,center.y);await page.mouse.down();await page.mouse.move(center.x+36,center.y);await page.waitForTimeout(2000);await page.mouse.up();await until('attack');
 await hold('#btn-basic',4000);await until('skill');
-await page.locator('#btn-s1').click();await until('inspect');
-await hold('#btn-s2',900);await until('cooldown');
-await page.waitForFunction(()=>player.cds[0]<=0);await page.locator('#btn-s1').click();await until('ultimate');
-await page.locator('#btn-ult').click();await until('danger');
+await page.locator('#btn-s1').click();await until('danger');
 // esquivar: caminar con el joystick fuera de la marca roja antes de que se llene
 await page.mouse.move(center.x,center.y);await page.mouse.down();await page.mouse.move(center.x,center.y-40);await page.waitForTimeout(1500);await page.mouse.up();
-await until('potion',15000);
+// punto de salida temprana: botones grandes; este jugador sigue practicando
+await until('checkpoint',15000);
+{const b=await page.locator('.alpha-training-panel .alpha-play').boundingBox();assert(b.height>=44&&b.width>=100,'JUGAR YA es un botón grande');}
+await page.locator('.alpha-training-panel .alpha-stay').click();await until('inspect');
+await hold('#btn-s2',900);await until('cooldown');
+await page.waitForFunction(()=>player.cds[0]<=0);await page.locator('#btn-s1').click();await until('ultimate');
+await page.locator('#btn-ult').click();await until('potion',15000);
 async function moveToPickup(kind,next){for(let n=0;n<35&&(await stage())===kind;n++){const v=await page.evaluate(k=>{const p=k==='potion'?ALPHA_TRAINING.potion:ALPHA_TRAINING.loot;return {x:p.x-player.x,y:p.y-player.y};},kind);const len=Math.hypot(v.x,v.y);if(len<25){await page.waitForTimeout(1500);continue;}await page.mouse.move(center.x,center.y);await page.mouse.down();await page.mouse.move(center.x+v.x/len*36,center.y+v.y/len*36);await page.waitForTimeout(150);await page.mouse.up();}await until(next);}
-await moveToPickup('potion','xp');await hold('#btn-basic',4000);await until('loot');await moveToPickup('loot','tactical');
-await page.locator('#pause-btn').click();await page.waitForTimeout(400);await page.locator('#resume-btn').click();await until('revive');
+await moveToPickup('potion','revive');
 // caminar hasta Elyra y mantener el botón de reanimar
 for(let n=0;n<30;n++){const v=await page.evaluate(()=>({x:ALPHA_TRAINING.ally.x-player.x,y:ALPHA_TRAINING.ally.y-player.y}));const len=Math.hypot(v.x,v.y);if(len<70)break;await page.mouse.move(center.x,center.y);await page.mouse.down();await page.mouse.move(center.x+v.x/len*40,center.y+v.y/len*40);await page.waitForTimeout(Math.min(600,len*4));await page.mouse.up();}
-await hold('#btn-revive',5800);await until('objective');
+await hold('#btn-revive',5800);await until('xp');
+await hold('#btn-basic',4000);await until('loot');await moveToPickup('loot','tactical');
+await page.locator('#pause-btn').click();await page.waitForTimeout(400);await page.locator('#resume-btn').click();await until('objective');
 await hold('#btn-basic',6500);await until('done');
 assert.equal(await page.evaluate(()=>save.tut.training),1);assert.deepEqual(errors,[]);console.log('PASS live novice '+Math.round((Date.now()-began)/1000)+'s: actual movement, attack, long-press inspect, cooldown, ultimate, telegraph dodge, pickups, XP, loot, tactical panel, revive and objective via pointer inputs');
 }finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

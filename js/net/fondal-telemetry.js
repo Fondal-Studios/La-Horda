@@ -38,7 +38,9 @@ const FondalTelemetry = (() => {
     infinita: "horda-infinita",                 // Horda Infinita con bots
     infinitaEnLinea: "horda-infinita-en-linea", // Horda Infinita cooperativa en línea
     divina: "arena-divina",                     // Arena Divina
-    tutorial: "tutorial"                        // entrenamiento inicial
+    tutorial: "tutorial",                       // entrenamiento inicial
+    cristales: "guerra-de-cristales",           // Guerra de Cristales (motor real)
+    cristalesEnLinea: "cristales-en-linea"      // Guerra de Cristales 2 contra 2 en línea
   });
   const MODO_VALIDO = /^[a-z0-9-]{1,24}$/;
   const PRESENCIA_CADA_MS = 30000;
@@ -102,6 +104,7 @@ const FondalTelemetry = (() => {
     try{
       if(typeof alphaTrainingActive === "function" && alphaTrainingActive()) return MODOS.tutorial;
       if(typeof divinaMode !== "undefined" && divinaMode) return MODOS.divina;
+      if(typeof lanesOn === "function" && lanesOn()){ return (typeof netMatch !== "undefined" && netMatch) ? MODOS.cristalesEnLinea : MODOS.cristales; }
       const enLinea = typeof netMatch !== "undefined" && !!netMatch && netMatch.role !== "host-offline";
       const infinita = typeof endlessOn === "function" && endlessOn();
       if(infinita) return enLinea ? MODOS.infinitaEnLinea : MODOS.infinita;

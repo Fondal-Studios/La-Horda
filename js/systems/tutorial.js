@@ -126,10 +126,12 @@ function tutTick(){
     else if(!tutSeen("energy") && player.energy < player.maxEnergy*0.2) tutSay("energy", "Te quedaste sin energía (barra azul) y sin ella no hay habilidades. Se recarga sola, o más rápido con las pociones AZULES.", null, 7000);
     else if(!tutSeen("elite") && near(["elite","subelite"])) tutSay("elite", "Ese enemigo que brilla es un ÉLITE: tiene más vida y pega más fuerte, pero deja mejor botín.", null, 7000);
     else if(!tutSeen("boss") && near(["jefe","subjefe"])) tutSay("boss", "¡Un jefe! Antes de cada golpe fuerte el suelo se marca: salí de la marca antes de que se llene.", null, 8000);
+    else if(!tutSeen("ult") && typeof ULT_MIN_ARENA_LEVEL!=="undefined" && runLevel >= ULT_MIN_ARENA_LEVEL && player.ultCharge >= player.ultMax) tutSay("ult", "¡Tu DEFINITIVA está lista! Tocá el botón ★ (abajo a la derecha): es tu golpe más fuerte, ideal contra un grupo grande.", "Tocá ★ para lanzarla", 10000);
     else if(!tutSeen("levelup") && runLevel >= 2) tutSay("levelup", "¡Sobreviviste al nivel! Se terminó el tiempo y los monstruos cayeron. Elegí una mejora para esta partida (vida, daño o velocidad) y empieza el siguiente nivel.", null, 7000);
     else if(!tutSeen("skillup") && document.querySelector(".skill-plus:not(.hidden)")) tutSay("skillup", "¡Subiste de nivel y tenés un punto! Tocá el + junto a una habilidad para hacerla más fuerte.", "Tocá el + junto a una habilidad", 12000);
   }
   if(TUT.key==="skillup" && !document.querySelector(".skill-plus:not(.hidden)")) tutDone("skillup");
+  if(TUT.key==="ult" && player.ultCharge < player.ultMax) tutDone("ult");
   // ---- revivir: la primera vez que cae un compañero ----
   if(!duoEnabled() && !tutSeen("revive") && TUT.key!=="revive" && player.alive && heroes.some(h=>h!==player && !h.alive))
     tutSay("revive", "¡Cayó un compañero! Parate al lado y mantené el botón REVIVIR ✚ para levantarlo.", "Mantené ✚ junto al caído para revivirlo", 12000, true);
