@@ -20,8 +20,8 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
    for(let f=0;f<secs*60&&!LN.ended;f++){
     basicHeld=true; update(dt); rep.frames++;
     if(f%30===0){ rep.maxEnemies=Math.max(rep.maxEnemies,enemies.length);
-      for(const e of enemies){ if(!e.alive)continue; const l=laneOfPoint(e.x); if(e.lane!==l) rep.crossLane++; }
-      for(const h of heroes){ if(laneOfPoint(h.x)!==h.lane) rep.crossLane++; } }
+      for(const e of enemies){ if(!e.alive)continue; if(e.isDuelLocked)continue; const l=laneOfPoint(e.x); if(e.lane!==l) rep.crossLane++; }
+      for(const h of heroes){ if(!h.duelActive&&laneOfPoint(h.x)!==h.lane) rep.crossLane++; } }
     if(LN.t>20000&&f%600===0&&!LN.ended){ // el jugador compra lo que pueda (como una persona)
       const ln=LN.lane[0]; for(const k of ['repair','upgrade','ward','swarm']){ if(lanesBuy(0,k,player))break; } }
    }

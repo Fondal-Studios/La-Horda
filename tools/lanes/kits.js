@@ -29,7 +29,7 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
      for(const l of LN.lane){ if(![l.crystal.hp,l.shards].every(Number.isFinite))rep.nan++; }
     }
    }
-   const s=player.stats||{};rep.dmg=Math.round(s.dmgDealt||s.dmg||0);rep.kills=LN.lane[0].kills;rep.hp0=Math.round(LN.lane[0].crystal.hp);rep.hp1=Math.round(LN.lane[1].crystal.hp);rep.respawns=heroes.filter(h=>h.dead_t).length;
+   const s=player.stats||{};rep.dmg=Math.round(s.dmgDealt||s.dmg||0);rep.kills=LN.lane[0].kills;rep.myKills=s.kills||0;rep.hp0=Math.round(LN.lane[0].crystal.hp);rep.hp1=Math.round(LN.lane[1].crystal.hp);rep.respawns=heroes.filter(h=>h.dead_t).length;
    rep.enemiesLeft=enemies.filter(e=>e.alive).length;lanesStop('mainmenu');return rep;},{champ,secs:SECS});
   const ok=!r.err&&r.nan===0&&r.cross===0&&r.kills>0&&errs.length===0;if(!ok)bad++;
   rows.push(r);console.log((ok?'OK   ':'FAIL ')+champ.padEnd(14)+JSON.stringify({kills:r.kills,dmg:r.dmg,cross:r.cross,nan:r.nan,err:r.err,errs:errs.slice(0,2)}));
