@@ -61,4 +61,15 @@ Los pagos están **apagados** hasta que el dueño los configure:
 4. Probar con `node server/test-wallet.js` (firma inválida, repetición, acreditación única, pack de bienvenida una sola
    vez, cuenta inexistente, paquete sin precio, packs con moneda) y `node tools/collection/brasas-store.js` (tienda en el navegador).
 
+### Opción recomendada para Argentina: Mercado Pago (Checkout Pro) — adaptador ya hecho
+1. En tu cuenta de Mercado Pago (developers → tus integraciones) creá una aplicación "Checkout Pro" y copiá el **Access Token de producción** (empieza con `APP_USR-`; para probar, el de prueba `TEST-`).
+2. Variables del servidor (solo en el servidor, nunca en el juego ni en el repo):
+   - `PAYMENTS_PROVIDER=mercadopago`
+   - `MP_ACCESS_TOKEN=<tu token>`
+   - `MP_ARS_PER_USD=<cotización que querés usar, p. ej. 1200>`: Mercado Pago cobra en pesos; el servidor convierte los precios en USD de `premium-packs.json` (redondeando para arriba). Revisala cuando cambie el dólar.
+   - `PAYMENTS_NOTIFY_URL=https://TU-SERVIDOR/api/payments/webhook` (HTTPS obligatorio) y `PAYMENTS_SUCCESS_URL=https://fondalstudios.com/la-horda/jugar/` (adónde vuelve el jugador).
+3. En Mercado Pago, configurá el aviso de pagos (webhooks, evento "Pagos") apuntando a esa misma URL.
+4. Cómo funciona de forma segura: el servidor crea la preferencia de pago con una referencia `cuenta:paquete:azar`; cuando llega el aviso NO confía en su contenido: consulta el pago a la API de Mercado Pago con tu token y solo acredita si está **aprobado**, es de **esa cuenta y paquete**, está en **ARS** y el monto alcanza. Un reintento del mismo aviso no acredita dos veces (referencia idempotente). Tope de 40 consultas por minuto.
+5. Probar: `node server/test-payments-mp.js` (19 chequeos con la API simulada). **Lo que NO se pudo probar acá:** el cobro real contra Mercado Pago (sin credenciales); hacé una compra de prueba con el token `TEST-` antes de abrir al público.
+
 Antes de cobrar de verdad: términos de uso, política de reembolsos, facturación y edad mínima son decisiones del dueño.
