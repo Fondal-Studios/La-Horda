@@ -1,6 +1,10 @@
 [
   {
-    "name": "catálogo de skins con entradas",
+    "name": "catálogo de skins con entradas de set y de autor",
+    "ok": true
+  },
+  {
+    "name": "precios del servidor = pricing.js (set 800, autor 1200, croma 300)",
     "ok": true
   },
   {
@@ -8,7 +12,7 @@
     "ok": true
   },
   {
-    "name": "saldo inicial 0 y precios 9000/1000",
+    "name": "saldo inicial 0 y precios por escalón",
     "ok": true
   },
   {
@@ -20,11 +24,23 @@
     "ok": true
   },
   {
-    "name": "pack de bienvenida: una vez, 1000+200, disponible",
+    "name": "valor por dólar creciente entre packs",
+    "ok": true
+  },
+  {
+    "name": "pack de bienvenida: una vez, 500+200 y 3 campeones, disponible",
+    "ok": true
+  },
+  {
+    "name": "sin compra no hay derecho a campeones",
     "ok": true
   },
   {
     "name": "comprar sin saldo: 402",
+    "ok": true
+  },
+  {
+    "name": "comprar sin cotización: 409",
     "ok": true
   },
   {
@@ -68,7 +84,11 @@
     "ok": true
   },
   {
-    "name": "compra: 1000 menos",
+    "name": "el precio del cliente no puede ser más barato: 1000 sobre 1200 rechazado",
+    "ok": true
+  },
+  {
+    "name": "compra de skin de set: 800 menos",
     "ok": true
   },
   {
@@ -81,6 +101,10 @@
   },
   {
     "name": "comprar algo que ya tenés: 409 sin cobrar",
+    "ok": true
+  },
+  {
+    "name": "skin independiente: 1200 y queda como croma comprada",
     "ok": true
   },
   {
@@ -133,6 +157,98 @@
   },
   {
     "name": "otra cuenta sigue viendo el pack de bienvenida",
+    "ok": true
+  },
+  {
+    "name": "sin compra no se puede reclamar ni hay candidatos",
+    "ok": true
+  },
+  {
+    "name": "tras la compra: 3 elecciones disponibles y candidatos STANDARD",
+    "ok": true
+  },
+  {
+    "name": "campeón inexistente o de Ascensión: rechazado",
+    "ok": true
+  },
+  {
+    "name": "elegir 1: queda en el guardado y quedan 2",
+    "ok": true
+  },
+  {
+    "name": "repetir la misma elección no consume otra",
+    "ok": true
+  },
+  {
+    "name": "tres pedidos simultáneos con 2 elecciones libres: pasan exactamente 2",
+    "ok": true
+  },
+  {
+    "name": "nunca más de 3 campeones por el pack",
+    "ok": true
+  },
+  {
+    "name": "cada elección queda en el libro con monto 0 y el saldo no se toca",
+    "ok": true
+  },
+  {
+    "name": "un segundo pago de bienvenida no da más campeones",
+    "ok": true
+  },
+  {
+    "name": "guardado viejo sin el campeón: se restaura al abrir la billetera",
+    "ok": true
+  },
+  {
+    "name": "un campeón que ya tenés no es candidato ni se puede elegir",
+    "ok": true
+  },
+  {
+    "name": "otra cuenta elige con su propio derecho",
+    "ok": true
+  },
+  {
+    "name": "el oro del guardado no cambia al elegir (es un regalo, no una compra)",
+    "ok": true
+  },
+  {
+    "name": "hay un campeón con al menos 3 apariencias",
+    "ok": true
+  },
+  {
+    "name": "el descuento es real: precio < suma de las piezas y ahorro = suma - precio",
+    "ok": true
+  },
+  {
+    "name": "colección sin saldo: 402",
+    "ok": true
+  },
+  {
+    "name": "colección con cotización vieja: 409 sin cobrar",
+    "ok": true
+  },
+  {
+    "name": "colección: se cobra el precio con descuento y llegan todas las piezas",
+    "ok": true
+  },
+  {
+    "name": "reintentar la colección no cobra de nuevo",
+    "ok": true
+  },
+  {
+    "name": "colección ya completa con otra referencia: 409 sin cobrar",
+    "ok": true
+  },
+  {
+    "name": "campeón sin apariencias: 400",
+    "ok": true
+  },
+  {
+    "name": "con una sola pieza faltante no es colección: se compra suelta",
+    "ok": true
+  },
+  {
+    "name": "4 compras simultáneas de la misma apariencia: se cobra una sola",
     "ok": true
   },
   {

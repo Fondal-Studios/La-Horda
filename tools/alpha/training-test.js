@@ -27,19 +27,21 @@ const {chromium}=require('playwright');
     player.x+=220;out.push(advance());
     enemies.forEach(e=>{e.lastHitBy=player;killEnemy(e);});out.push(advance());
     useSkill(0);out.push(advance());
+    {const d=ALPHA_TRAINING.danger;player.x=d.x+d.r+60;player.y=d.y;alphaTrainingTick(2000);out.push(advance());}
+    // punto de salida temprana: se espera la elección; "seguir practicando" continúa con las lecciones opcionales
+    {const cp=document.getElementById('alpha-training-panel');out.push('cp_visible:'+!cp.querySelector('.alpha-cp').classList.contains('hidden'));alphaTrainingTick(5000);out.push('cp_waits:'+step());cp.querySelector('.alpha-stay').click();out.push(advance());}
     abilityInspectorOpen(1,document.getElementById('btn-s2'));abilityInspectorClose();out.push(advance());
     player.cds[0]=0;player.energy=player.maxEnergy;useSkill(0);out.push(advance());
     useUltimate();out.push(advance());
-    {const d=ALPHA_TRAINING.danger;player.x=d.x+d.r+60;player.y=d.y;alphaTrainingTick(2000);out.push(advance());}
     if(!ALPHA_TRAINING.potion)throw Error('steps '+JSON.stringify(out)+' '+JSON.stringify(ALPHA_TRAINING.metrics)+' cds '+JSON.stringify(player.cds));player.x=ALPHA_TRAINING.potion.x;player.y=ALPHA_TRAINING.potion.y;updatePotions(16);out.push(advance());
+    reviveHero(ALPHA_TRAINING.ally,player);out.push(advance());
     enemies.forEach(e=>{e.lastHitBy=player;killEnemy(e);});out.push(advance());
     groundLootPick(ALPHA_TRAINING.loot);out.push(advance());
     tacticalPanelOpen();out.push(advance());
-    reviveHero(ALPHA_TRAINING.ally,player);out.push(advance());
     enemies.forEach(e=>{e.lastHitBy=player;killEnemy(e);});alphaTrainingTick(10);alphaTrainingTick(1400);
     return {out,complete:save.tut.training,active:ALPHA_TRAINING.active,state};
    });
-   assert.deepEqual(results.out,['move','attack','skill','inspect','cooldown','ultimate','danger','potion','xp','loot','tactical','revive','objective']);
+   assert.deepEqual(results.out,['move','attack','skill','danger','checkpoint','cp_visible:true','cp_waits:checkpoint','inspect','cooldown','ultimate','potion','revive','xp','loot','tactical','objective']);
    assert.equal(results.complete,1);assert.equal(results.active,false);assert.equal(results.state,'mainmenu');
    const restored=JSON.parse(await page.evaluate(()=>JSON.stringify(save)));const before=JSON.parse(initial);delete restored.tut;delete before.tut;assert.deepEqual(restored,before,'training altered campaign data');
    // Exit / reload never stores rehearsal loot or xp. Pausing must preserve tutorial.
@@ -66,7 +68,7 @@ const {chromium}=require('playwright');
    });
    assert.deepEqual(sequence,[1,2,3,4,5,6,7,8,9,10]);
    assert.deepEqual(errors,[]);
-   console.log('PASS training '+size.width+'x'+size.height+' real engine/actions, all 14 steps, save isolation, pause/exit/no time limit, guide bounds');
+   console.log('PASS training '+size.width+'x'+size.height+' real engine/actions, all 15 steps (with the early-exit checkpoint), save isolation, pause/exit/no time limit, guide bounds');
    await page.close();
   }
  }finally{await browser.close();}

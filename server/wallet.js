@@ -246,7 +246,7 @@ function routes(ctx){
   result["POST /api/payments/webhook"] = async (req, res) => {
     try{
       const raw = await new Promise((ok, ko) => { let b = ""; req.on("data", c => { b += c; if(b.length > 65536){ ko(Object.assign(new Error("TOO_BIG"), { code: "TOO_BIG" })); req.destroy(); } }); req.on("end", () => ok(b)); req.on("error", ko); });
-      const credit = payments.verifyWebhook(req.headers, raw);   // null si el proveedor no está configurado o la firma no es válida
+      const credit = await payments.verifyWebhookRequest(req, raw);   // null si el proveedor no está configurado o la firma no es válida
       if(!credit) return err(req, res, 400, "BAD_WEBHOOK", "Webhook no verificado.");
       if(!(await store().getUser(credit.userId))) return err(req, res, 404, "UNKNOWN_USER", "Cuenta inexistente.");
       // paquete de una sola vez: la referencia es por cuenta (once:<pack>:<userId>), así un segundo pago nunca acredita

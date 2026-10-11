@@ -145,6 +145,7 @@ jobs:
       - run: node server/test-founders.js
       - run: node server/test-presence.js
       - run: node server/test-wallet.js
+      - run: node server/test-payments-mp.js
       - run: node server/test-relay.js
       - run: node tools/alpha/gm-users-ui.js
         env:
