@@ -42,6 +42,8 @@ function botDangerVec(x, y, pad){
 }
 
 // Roles enemigos de apoyo: los bots los priorizan como a un élite (matar al sanador primero).
+// A quién sigue un bot: el jugador (campaña) o, en Guerra de Cristales, el humano vivo de SU carril o el punto de reunión de su carril.
+function botLeader(h){ return (typeof lanesOn==="function" && lanesOn()) ? lanesLeaderFor(h) : player; }
 const BOT_ROLE_VALUE = {sanador:2.2, resucitador:2, invocador:2, comandante:2, artillero:1.5, protector:1.2, carcelero:1, cazador:1};
 function _valueOf(e){ return (e.rank==="jefe" ? 5 : e.rank==="subjefe" ? 4 : e.rank==="elite" ? 3 : e.rank==="subelite" ? 2 : 1) + (e.role ? BOT_ROLE_VALUE[e.role]||0 : 0); }
 // Objetivo según el rol. Devuelve un enemigo (o null).
@@ -55,7 +57,7 @@ function botPickTarget(h, range){
     if(boss && boss.alive && bossActive && distance(h, boss) < range+200) return boss;
     for(const e of enemies){
       if(!e.alive) continue;
-      const dp = distance(player, e), dh = distance(h, e);
+      const dp = distance(botLeader(h), e), dh = distance(h, e);
       if(dh > range) continue;
       const s = -dp*1.0 - dh*0.35 + (e.rank!=="normal" ? 60 : 0);
       if(s > bs){ bs = s; best = e; }
@@ -88,7 +90,8 @@ function botPickTarget(h, range){
 }
 // Soporte: a quién cuidar (el aliado vivo con menos vida relativa, el jugador desempata).
 function botWard(h){
-  let w = player, wp = player.alive ? player.hp/player.maxHp - 0.08 : 9;
+  const L0 = botLeader(h);
+  let w = L0.isRally ? h : L0, wp = L0.isRally ? 9 : (L0.alive ? L0.hp/L0.maxHp - 0.08 : 9);
   for(const o of heroes){ if(o===h || !o.alive) continue; const p = o.hp/o.maxHp; if(p < wp){ wp = p; w = o; } }
   return w;
 }
@@ -116,7 +119,7 @@ function botBreakableGoal(h){
   return {x:(best.x-h.x)/d, y:(best.y-h.y)/d};
 }
 function botMove(h, dt){
-  const role = botRole(h);
+  const role = botRole(h), LD = botLeader(h);
   const divinaHit = divinaMode ? divinaHostiles("player", h.x, h.y, 620) : null;
   // el objetivo por rol se re-elige cada ~250 ms (el del mago mira grupos: no hace falta por cuadro)
   h._tgtT = (h._tgtT||0) - dt;
@@ -160,11 +163,11 @@ function botMove(h, dt){
   if(breakables.length && !divinaMode){ const bk = botBreakableGoal(h); if(bk) return {mx:bk.x, my:bk.y, target}; }
   // 3) reagruparse si se alejó mucho del jugador. Si un puente los separó, espera en el borde de
   // su tramo más cercano al jugador (no camina contra la lava) hasta que el mecanismo los una.
-  let rg = player;
-  if(arenaHas("heroReachable") && !arenaHook("heroReachable", h, player)){ rg = arenaHook("botRegroup", h, player) || h; }
+  let rg = LD;
+  if(arenaHas("heroReachable") && !arenaHook("heroReachable", h, LD)){ rg = arenaHook("botRegroup", h, LD) || h; }
   const leash = Math.hypot(h.x-rg.x, h.y-rg.y);
-  if(rg!==player){ if(leash > 30 && !target) return {mx:(rg.x-h.x)/leash, my:(rg.y-h.y)/leash, target}; }
-  else if(leash > (bossActive ? 420 : 320)){ return {mx:(player.x-h.x)/leash, my:(player.y-h.y)/leash, target}; }
+  if(rg!==LD){ if(leash > 30 && !target) return {mx:(rg.x-h.x)/leash, my:(rg.y-h.y)/leash, target}; }
+  else if(leash > (bossActive ? 420 : 320)){ return {mx:(LD.x-h.x)/leash, my:(LD.y-h.y)/leash, target}; }
   // 4) según el rol
   if(role==="soporte"){
     const w = botWard(h);
@@ -175,7 +178,7 @@ function botMove(h, dt){
   }
   if(role==="tanque" && target && !botRanged(h)){
     // se para entre el jugador y la amenaza (un poco adelante de la amenaza)
-    const px = player.x + (target.x-player.x)*0.8, py = player.y + (target.y-player.y)*0.8;
+    const px = LD.x + (target.x-LD.x)*0.8, py = LD.y + (target.y-LD.y)*0.8;
     const gx = target.rank==="jefe" ? target.x : px, gy = target.rank==="jefe" ? target.y : py;
     const dx = gx-h.x, dy = gy-h.y, l = Math.hypot(dx,dy)||1;
     const want = target.rank==="jefe" ? (target.radius||40)*0.9 : 16;
@@ -189,7 +192,7 @@ function botMove(h, dt){
     else if(l < desired-40){ mx = -dx/l; my = -dy/l; }
     else if(botRanged(h)){ const s = (h._strafe || (h._strafe = Math.random()<0.5?1:-1)); mx = -dy/l*0.5*s; my = dx/l*0.5*s; }
   } else {
-    const dx = player.x-h.x, dy = player.y-h.y, l = Math.hypot(dx,dy)||1;
+    const dx = LD.x-h.x, dy = LD.y-h.y, l = Math.hypot(dx,dy)||1;
     if(l > 120){ mx = dx/l; my = dy/l; }
   }
   return {mx, my, target};

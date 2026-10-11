@@ -90,6 +90,7 @@ function _ctl(kind, fallback){ return (typeof ctlHint==="function" && ctlHint(ki
 function tutReset(){ TUT.basicsStep = 0; TUT.moved = 0; TUT.lx = null; TUT.k0 = 0; TUT.r0 = 0; tutHide(); }
 // Cada cuadro desde updateHUD (anfitrión e invitado).
 function tutTick(){
+  if(typeof lanesOn==="function" && lanesOn()){ if(TUT.key) tutHide(); return; } // Guerra de Cristales: sin consejos del Hechicero
   if(state!=="playing" || !player){ if(TUT.key) tutHide(); return; }
   if(TUT.run !== runStats){ TUT.run = runStats; tutReset(); } // partida nueva
   const now = performance.now();

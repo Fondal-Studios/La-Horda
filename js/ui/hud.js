@@ -125,7 +125,7 @@ function updateHUD(){
   // árbol de talentos completo -solo el nombre de la Maestría elegida, nada más-.
   const emblemHtml = (champMastery && tree && tree.masteries[champMastery]) ? ` <span class="mastery-emblem" title="Maestría: ${tree.masteries[champMastery].name}">★</span>` : "";
   hudHtml(plevelEl, `${hudClassName(CLASSES[player.classKey])} · Nv. ${save.champions[player.classKey].level}${emblemHtml}`);
-  hudTxt(document.getElementById("hud-level"), (typeof ALPHA_TRAINING!=="undefined" && ALPHA_TRAINING.active) ? "1" : String(Math.min(runLevel,10))); // en el entrenamiento el nivel de la arena no avanza
+  hudTxt(document.getElementById("hud-level"), (typeof lanesOn==="function" && lanesOn()) ? String(LN.wave) : (typeof ALPHA_TRAINING!=="undefined" && ALPHA_TRAINING.active) ? "1" : String(Math.min(runLevel,10))); // en el entrenamiento el nivel de la arena no avanza
   if(typeof endlessHudTick==="function") endlessHudTick(); // Horda Infinita: ronda, puntaje y mutadores
   hudTxt(document.getElementById("hud-kills"), String(kills));
   const totalSec = Math.floor((runElapsedMs||0)/1000);
@@ -205,6 +205,7 @@ function updateHUD(){
   }
   const pct = bossActive ? 100 : Math.min(100, levelTimer/levelDuration*100);
   hudCss(document.getElementById("wave-timer-bar"), "width", hudPct(pct));
+  if(typeof lanesHudTick==="function") lanesHudTick(); // Guerra de Cristales: marcador, suministros y vista rival (lanes-hud.js)
   if(typeof goalChipTick==="function") goalChipTick(); // cartel fijo: OBJETIVO (js/ui/goal-guide.js)
 
   const ultPct = player.ultCharge/player.ultMax*100;
@@ -315,6 +316,7 @@ function renderParty(){
     });
     partyBuilt = true;
   }
+  if(typeof lanesOn==="function" && lanesOn()) allies.forEach((a,i)=>{ const r = document.getElementById("ally-row-"+i); if(r) r.style.display = a.lane===player.lane ? "" : "none"; }); // Guerra de Cristales: solo tu equipo en la lista
   allies.forEach((a,i)=>{
     const fill = document.getElementById("ally-hp-"+i);
     const shieldFill = document.getElementById("ally-shieldbar-"+i);

@@ -438,6 +438,7 @@ function persistNow(){
   if(_persistTimer){ clearTimeout(_persistTimer); _persistTimer = null; }
   // GM / TEST LAB: una sesión de prueba nunca escribe el progreso real (js/systems/test-lab.js).
   if(typeof testLabActive==="function" && testLabActive()) return;
+  if(typeof lanesOn==="function" && lanesOn()) return; // Guerra de Cristales juega con un guardado temporal: nunca se escribe
   // B1: mientras el anfitrión simula a un invitado, su guardián usa los datos del invitado;
   // netPersistView escribe siempre los datos propios del anfitrión.
   if(saveLoadFailed) return; // el guardado de verdad sigue en localStorage (y copiado en _noCargo)

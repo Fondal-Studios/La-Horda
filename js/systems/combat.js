@@ -8,6 +8,7 @@ function damageEnemy(e, amount, opts){
   opts = opts || {};
   if(e.cineT > 0) return; // cinemática de un jefe (inf-hechicero.js): intocable mientras habla o se transforma
   const src = opts.src || player;
+  if(typeof lanesOn==="function" && lanesOn()) amount *= lanesDmgMult(src); // Guerra de Cristales: mejoras de equipo
   amount = portadorBasicPower(src, amount, opts);
   if(_boonRec) boonRecHit(e, amount, src, opts); // refuerzos de habilidad: quién recibió ESTE lanzamiento
   let dmg = amount * (e.dmgTakenMult||1) * (e.curseDefTakenMult||1) * (e.crashVuln ? 1.6 : 1);
@@ -298,6 +299,7 @@ function killEnemy(e){
 let _avoidableHit = false; // lo prende bossHitHero: el golpe venía con aviso en el suelo
 function damageHero(h, amount, src, portTransferred){
   if(!h || !h.alive) return;
+  if(h.isCrystal){ lanesHitCrystal(h, amount); return; } // Guerra de Cristales: el cristal del carril recibe los golpes de la horda
   if(h.invulnTimer>0) return; // p.ej. la breve transición del Teletransporte de Axiom
   { const tk = heroDmgTakenMult(h); if(tk<=0) return; amount *= tk; } // montado / Instinto / titán / cinemáticas
   // Regla de la Arena PvE: sin fuego amigo. Un aliado (héroe, su invocación o su proyectil)

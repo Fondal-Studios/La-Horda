@@ -296,6 +296,7 @@ function bossDefeatOutcome(type){ return (ENEMY_BASE[type] && ENEMY_BASE[type].d
 
 function onPlayerDeath(){
   player.alive = false; player.moving=false;
+  if(typeof lanesOn==="function" && lanesOn()){ lanesOnPlayerDeath(); return; } // Guerra de Cristales: reaparece solo
   if(duoPending(player)) return;
   // B1: en cooperativo caer no termina la partida mientras quede algún humano en pie (te
   // pueden revivir); la derrota la decide netHostCheckDefeat.

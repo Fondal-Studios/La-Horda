@@ -1,0 +1,30 @@
+/* Guerra de Cristales en el motor real: marcador, suministros, vista rival y resultado. Letra >= 14 px, botones >= 48 px. */
+.lanes-hud{ position:fixed; inset:0; z-index:16; pointer-events:none; font-family:var(--ui-font, monospace); color:#eef4ff; }
+.lanes-hud.hidden{ display:none; }
+.lanes-hud .ln-score{ position:absolute; top:calc(4px + env(safe-area-inset-top,0px)); left:50%; transform:translateX(-50%); display:grid; grid-template-columns:1fr 92px 1fr; gap:10px; align-items:center; width:min(500px,56vw); padding:4px 10px 6px; background:rgba(11,16,32,.9); border:1px solid #5a6b88; border-radius:8px; }
+.ln-team{ display:flex; flex-direction:column; gap:2px; font-size:14px; line-height:1.1; }
+.ln-amber{ text-align:right; align-items:flex-end; }
+.ln-blue b{ color:#70c9ff; } .ln-amber b{ color:#ffb86a; }
+.ln-bar{ display:block; width:100%; height:8px; background:#1d2638; border-radius:4px; overflow:hidden; }
+.ln-bar u{ display:block; height:100%; text-decoration:none; } .ln-blue .ln-bar u{ background:#70c9ff; } .ln-amber .ln-bar u{ background:#ffb86a; float:right; }
+.ln-clock{ text-align:center; display:flex; flex-direction:column; } .ln-time{ font-size:20px; } .ln-wave{ font-size:14px; color:#ffe9a8; }
+.lanes-hud .ln-note{ position:absolute; top:calc(62px + env(safe-area-inset-top,0px)); left:50%; transform:translateX(-50%); font-size:15px; color:#ffe29d; text-shadow:0 2px 3px #000; text-align:center; max-width:60vw; }
+.lanes-hud .ln-chip{ pointer-events:auto; position:absolute; left:50%; bottom:calc(6px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); min-height:48px; padding:6px 14px; display:flex; flex-direction:column; align-items:center; gap:1px; font:inherit; font-size:14px; color:#ffe9a8; background:rgba(11,16,32,.92); border:2px solid #7a6a3a; border-radius:10px; cursor:pointer; }
+.lanes-hud.ln-supply .ln-chip{ border-color:#ffcf5c; box-shadow:0 0 14px #ffcf5c88; animation:lnPulse 1.1s ease-in-out infinite; }
+@keyframes lnPulse{ 50%{ box-shadow:0 0 24px #ffcf5cdd; } }
+.lanes-hud .ln-shop{ pointer-events:auto; position:absolute; left:calc(136px + env(safe-area-inset-left,0px)); bottom:calc(66px + env(safe-area-inset-bottom,0px)); display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:6px; width:calc(100vw - 136px - 212px); padding:8px; background:rgba(11,16,32,.95); border:2px solid #ffcf5c; border-radius:12px; }
+.lanes-hud .ln-shop.hidden{ display:none; }
+.lanes-hud.ln-shop-open .ln-rival{ display:none; }
+.ln-buy{ min-height:56px; padding:4px 3px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; font:inherit; color:#eef4ff; background:#1c2a44; border:2px solid #4a5f86; border-radius:8px; cursor:pointer; }
+.ln-buy b{ font-size:14px; line-height:1.05; } .ln-buy span{ font-size:14px; color:#ffe9a8; } .ln-buy small{ display:none; }
+.ln-buy.ln-send{ background:#3a2430; border-color:#9a5a6a; }
+.ln-buy:disabled{ opacity:.45; cursor:default; }
+.lanes-hud .ln-rival{ position:absolute; bottom:calc(6px + env(safe-area-inset-bottom,0px)); left:calc(128px + env(safe-area-inset-left,0px)); padding:3px; background:rgba(11,16,32,.9); border:1px solid #5a6b88; border-radius:8px; }
+.ln-rival-title{ font-size:14px; text-align:center; color:#ffb86a; } .ln-rival canvas{ display:block; width:170px; height:106px; }
+@media (max-height:520px){ .ln-rival canvas{ width:150px; height:94px; } }
+.lanes-result{ position:fixed; inset:0; z-index:60; display:flex; align-items:center; justify-content:center; background:rgba(4,8,16,.82); font-family:var(--ui-font, monospace); }
+.lanes-result.hidden{ display:none; }
+.ln-res-card{ width:min(620px,94vw); max-height:94vh; overflow:auto; padding:16px 20px; background:#171e2f; border:2px solid #716143; border-radius:12px; color:#e8edf5; text-align:center; }
+.ln-res-kicker{ font-size:14px; color:#ffcf5c; letter-spacing:.1em; } .ln-res-card h2{ margin:4px 0; font-size:30px; color:#ffcf5c; } .ln-res-card p{ font-size:15px; margin:4px 0 8px; }
+.ln-res-card table{ width:100%; border-collapse:collapse; font-size:14px; } .ln-res-card th,.ln-res-card td{ padding:5px 6px; border-bottom:1px solid #2b3749; text-align:right; } .ln-res-card th:first-child,.ln-res-card td:first-child{ text-align:left; } .ln-res-card tr.me td{ color:#ffe9a8; font-weight:700; }
+.ln-res-btns{ display:flex; gap:10px; justify-content:center; margin-top:12px; flex-wrap:wrap; } .ln-res-btns button{ min-height:52px; padding:8px 18px; font:inherit; font-size:16px; color:#1a1208; background:#ecc06a; border:2px solid #ffe29a; border-radius:8px; cursor:pointer; } .ln-res-btns .ln-exit{ background:#2a3550; color:#eef4ff; border-color:#5a6b88; }

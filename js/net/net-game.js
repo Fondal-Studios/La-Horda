@@ -296,7 +296,7 @@ function netApplyGuestLoadouts(){
     if(s.kind!=="human" || s.slot===0) continue;
     const L = netMatch.loadouts[s.slot];
     netMatch.backups[s.champ] = save.champions[s.champ];
-    const rec = L && L.champ===s.champ ? netLoadoutRecord(L) : netLoadoutRecord({level:s.level||1});
+    const rec = (L && L.champ===s.champ && !(typeof lanesOn==="function" && lanesOn())) ? netLoadoutRecord(L) : netLoadoutRecord({level:(typeof lanesOn==="function" && lanesOn()) ? LANES.LEVEL : (s.level||1)}); // Guerra de Cristales: todos al mismo nivel y sin equipo
     save.champions[s.champ] = rec;
     if(L && L.reserve && L.reserve.champ===s.reserve){ netMatch.backups[s.reserve]=save.champions[s.reserve]; save.champions[s.reserve]=netLoadoutRecord(L.reserve); }
   }
@@ -325,6 +325,7 @@ function netHostStartGame(){
     const bc = bots.shift();
     return {slot:i, kind:"bot", champ:bc, name:botNameFor(bc, humans.filter(Boolean).map(s=>s.name))}; // nombre propio, estable por guardián
   });
+  if(currentArena==="convergencia" && typeof lanesBegin==="function") lanesBegin("host"); // Guerra de Cristales: guardado temporal normalizado
   const seed = (Math.random()*0x7fffffff)|0 || 7;
   netMatch = {role:"host", mySlot:0, seed, slots, arena:currentArena, loadouts:(netLobby.loadouts||{}),
     diff: typeof diffEffective==="function" ? diffEffective(currentArena) : "normal", // la dificultad la elige el anfitrión
@@ -394,6 +395,7 @@ function netTeamWiped(){
 }
 function netHostCheckDefeat(){
   if(!netIsHost() || runEnding) return;
+  if(typeof lanesOn==="function" && lanesOn()) return; // Guerra de Cristales: caer = reaparecer; la partida la decide el cristal
   if(netTeamWiped()){
     runEnding = true; // corta aparición de enemigos, refuerzos y revivir (ver update/updateRevives)
     netLog("TEAM_WIPE", {level:runLevel});
@@ -452,6 +454,7 @@ function netHostOnMsg(from, d){
     case "ctx": ctxNetMsg(h, d); return; // acción contextual: mantener (on:1) / soltar (on:0)
     case "invest": investTalentPoint(h.classKey, d.idx==="ult" ? "ult" : (d.idx|0)); return;
     case "buff": netHostBuffPicked(from, d.id); return;
+    case "ln-buy": if(typeof lanesOn==="function" && lanesOn() && state==="playing") lanesBuy(h.lane, String(d.key), h); return; // Guerra de Cristales: compra del invitado
     case "loading": // el invitado todavía baja el arte de la arena (netGuestHoldStart): lo maneja un bot hasta que entre
       if(n.connected){
         n.connected = false; n.loading = true; h.isRemote = false; h._revHold = -1; h._ctxHold = null; cancelRevivesBy(h);
@@ -635,6 +638,7 @@ function netGuestStartRun(msg){
     ents:new Map(), colls:{}, lastInAt:0, posAuth:-1, pendingFull:false, started:true, ended:false,
     runStartMarked: reconnecting ? true : false};
   currentArena = msg.arena;
+  if(msg.arena==="convergencia" && typeof lanesBegin==="function") lanesBegin("guest"); // Guerra de Cristales: guardado temporal normalizado
   const mine = msg.slots[net.slot];
   if(mine) selectedClass = mine.champ;
   if(!reconnecting) markRunStartProgress(selectedClass);
@@ -884,6 +888,7 @@ function netGuestEnd(d){
   if(!netMatch || netMatch.ended) return;
   if(d.snap) netApplySnapshot(d.snap);
   netMatch.ended = true;
+  if(d.lanes && typeof lanesGuestEnd==="function"){ lanesGuestEnd(d); return; } // Guerra de Cristales: su propia pantalla de resultado
   if(d.victory){
     // la arena cuenta como superada para el invitado solo si ya la tenía desbloqueada: el
     // multijugador no sirve para saltearse la campaña.
@@ -910,7 +915,7 @@ function netHostAnnounceEnd(victory){
   if(!netIsHost() || netMatch.ended) return;
   netMatch.ended = true;
   const snap = netBuildSnapshot(true);
-  netBroadcast({k:"end", victory:!!victory, snap, eventBossDefeated:victory&&typeof AlphaServices!=="undefined"?AlphaServices.confirmedBosses():[]});
+  netBroadcast({k:"end", victory:!!victory, snap, lanes:(typeof lanesOn==="function" && lanesOn()) ? {winner:LN.winner, why:LN.why||""} : undefined, eventBossDefeated:victory&&typeof AlphaServices!=="undefined"?AlphaServices.confirmedBosses():[]});
   netLog(victory ? "GAME_VICTORY" : "GAME_DEFEAT");
 }
 // Después de cerrar las pantallas de fin: se restauran los datos del anfitrión y la sala vuelve

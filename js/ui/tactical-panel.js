@@ -85,7 +85,7 @@ function renderTacticalPanel(){
     <div class="tp-head">
       <div class="tp-name">${_tpEsc(h.cls.name || CLASSES[k].name)}</div>
       <div class="tp-sub">${_tpEsc((CLASSES[k]||{}).role||"")}</div>
-      <div class="tp-bars"><span>♥ ${Math.ceil(h.hp)}/${Math.ceil(h.maxHp)}</span><span>✦ ${Math.floor(h.energy||0)}/${Math.round(h.energyMax||h.cls.energyMax||100)}</span><span>Nv. ${champ.level||1}</span>${typeof runLevel!=="undefined" ? `<span>Arena ${runLevel}/${typeof LEVEL_COUNT!=="undefined" ? LEVEL_COUNT : 10}</span>` : ""}</div>
+      <div class="tp-bars"><span>♥ ${Math.ceil(h.hp)}/${Math.ceil(h.maxHp)}</span><span>✦ ${Math.floor(h.energy||0)}/${Math.round(h.energyMax||h.cls.energyMax||100)}</span><span>Nv. ${champ.level||1}</span>${typeof lanesOn==="function" && lanesOn() ? `<span>Oleada ${LN.wave}</span>` : (typeof runLevel!=="undefined" ? `<span>Arena ${runLevel}/${typeof LEVEL_COUNT!=="undefined" ? LEVEL_COUNT : 10}</span>` : "")}</div>
     </div>
     <div class="tp-section"><div class="tp-h">Estados</div>${_tpStatusHTML(h)}</div>
     <div class="tp-section"><div class="tp-h">Kit</div><div class="tp-grid">${defs.map(card).join("")}</div></div>

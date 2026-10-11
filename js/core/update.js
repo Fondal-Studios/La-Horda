@@ -553,7 +553,7 @@ function update(dt){
   if(levelClearing > 0){
     levelClearing -= dt;
     if(levelClearing <= 0){ levelClearing = 0; if(state==="playing" && !runEnding) openBuffChoice(); }
-  } else if(!divinaMode && !bossActive && !runEnding){
+  } else if(!divinaMode && !bossActive && !runEnding && !arenaHook("ownSpawns")){ // (ownSpawns: la arena genera sus propias oleadas, p.ej. Guerra de Cristales)
     spawnTimer -= dt;
     // Más enemigos desde la Horda 1, y el ritmo deja de acelerar a partir del nivel ~5
     // (antes seguía acelerando sin techo real y se acumulaba un "masacote" hacia el final).
