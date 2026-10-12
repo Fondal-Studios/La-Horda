@@ -1,5 +1,15 @@
 # Avance comprobado — 12/10/2026
 
+## Revisión posterior de CI
+
+Los workflows Quality five y Expedition champions finalizaron correctamente sobre
+`8ad30df`. Champion entry balance falló en `test-projectile-identity.js`: Solciju,
+Morveth y Aelith compartían `exglyph`. Se implementaron formas propias de sacacorchos,
+espora y reloj fracturado, más sable y mampostería para Veyra/Brakk. La prueba existente,
+sin modificar sus exigencias, pasó localmente: 25 tiradores con identidad única y
+28 dibujos distintos píxel a píxel. Es un arreglo visual sin cambios a daño o colisión.
+La nueva CI debe comprobar la integración; los bloqueos de arte y contratos siguen vigentes.
+
 Base auditada: main `31efa3e49b40e84d8c740b7c7f3218a887532a35`.
 PR #78 sigue en `dccb23b`; PR #87, `claude/five-champions`, incorpora sus kits.
 Este avance continúa #87; no abre otra tanda ni duplica registros.

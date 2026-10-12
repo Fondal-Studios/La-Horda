@@ -368,6 +368,35 @@ function drawProjStyle(p, style, r){
       ctx.fillStyle = "#e0b030"; ctx.fillRect(-r*2.1, -0.75, r*3.7, 1.5);
       ctx.globalAlpha = 0.5 + 0.5*Math.sin(t/50); ctx.fillStyle = "#ffffff"; ctx.fillRect(r*0.2, -r*0.45, r*0.6, 1.5); ctx.globalAlpha = 1;
       break;
+    case "wine_corkscrew": // Solciju: espiral de vino alrededor de un sacacorchos
+      ctx.strokeStyle = "#21121b"; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(-r*1.5, 0); ctx.lineTo(r*1.5, 0); ctx.stroke();
+      ctx.strokeStyle = c; ctx.lineWidth = 2; ctx.beginPath();
+      for(let i=0;i<=16;i++){ const x=-r*1.4+i*r*.175, y=Math.sin(i*Math.PI/4)*r*.65; if(i)ctx.lineTo(x,y);else ctx.moveTo(x,y); } ctx.stroke();
+      ctx.fillStyle = "#ffe1b5"; ctx.fillRect(r*1.3,-1,3,2);
+      break;
+    case "plague_spore": // Morveth: cápsula orgánica con raíces y esporas satélite
+      ctx.strokeStyle = "#17251b"; ctx.lineWidth = 2;
+      for(let i=0;i<5;i++){const a=i*Math.PI*2/5;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(Math.cos(a)*r*1.5,Math.sin(a)*r*1.5);ctx.stroke();}
+      ctx.fillStyle = c; ctx.beginPath();ctx.ellipse(0,0,r*.8,r*.6,0,0,Math.PI*2);ctx.fill();
+      for(let i=0;i<5;i++){const a=i*Math.PI*2/5;ctx.fillRect(Math.cos(a)*r*1.4-1,Math.sin(a)*r*1.4-1,3,3);}
+      ctx.fillStyle = "#ebf3bb";ctx.fillRect(-2,-2,2,2);
+      break;
+    case "fractured_clock": // Aelith: esfera rota, agujas y fragmento separado
+      ctx.strokeStyle = c;ctx.lineWidth=2;ctx.beginPath();ctx.arc(0,0,r,Math.PI*.25,Math.PI*1.8);ctx.stroke();
+      ctx.strokeStyle = "#f4e5c8";ctx.beginPath();ctx.moveTo(-r*.5,-r*.5);ctx.lineTo(0,0);ctx.lineTo(r*.65,-r*.2);ctx.stroke();
+      ctx.fillStyle=c;ctx.beginPath();ctx.moveTo(r*1.35,0);ctx.lineTo(r*1.9,r*.25);ctx.lineTo(r*1.1,r*.7);ctx.closePath();ctx.fill();
+      ctx.fillRect(-r*.2,r*1.4,r*.4,2);
+      break;
+    case "wound_saber": // Veyra: filo curvo con guarda carmesí
+      ctx.fillStyle=c;ctx.beginPath();ctx.moveTo(r*1.8,-r*.5);ctx.quadraticCurveTo(r*.3,r*.8,-r,r*.25);ctx.lineTo(-r,-r*.15);ctx.quadraticCurveTo(r*.5,r*.1,r*1.8,-r*.5);ctx.fill();
+      ctx.fillStyle="#431723";ctx.fillRect(-r*1.2,-r*.6,2,r*1.2);
+      break;
+    case "masonry_shard": // Brakk: bloque de mampostería con junta visible
+      ctx.fillStyle="#25242b";ctx.fillRect(-r,-r*.7,r*2,r*1.4);
+      ctx.fillStyle=c;ctx.fillRect(-r+1,-r*.7+1,r*2-2,r*1.4-2);
+      ctx.fillStyle="#25242b";ctx.fillRect(-r,0,r*2,1);ctx.fillRect(0,-r*.7,1,r*.7);
+      break;
     case "exglyph":     // expedición sin forma propia todavía: su marca de identidad (expedition/render.js)
       if(typeof exGlyph!=="function" || !p.src) { ctx.restore(); return false; }
       ctx.rotate(-ang); exGlyph(p.src.classKey, 0, 0, r*1.1, c);

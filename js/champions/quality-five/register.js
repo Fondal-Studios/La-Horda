@@ -9,7 +9,7 @@
  PORTADORES[k]={...CLASSES[k],title:'La Enóloga',set:'quality_solciju',branches:['Fermentación','Barricas','Brindis'],history:'Solciju conservaba las últimas cosechas de una ciudad que ya nadie recordaba. Cuando la peste alcanzó sus bodegas, descubrió que el vino retenía algo más que años: atrapaba las maldiciones de quienes lo bebían. Ahora recorre las ruinas con una reserva que jamás ofrece por cortesía. Dice detestar la compañía, pero siempre guarda una copa para quien sobreviva a su lado.'};
  CHAMPION_CATALOG.push({id:k,priceGold:CHAMPION_PRICE_GOLD,unlockedByDefault:false,lore:PORTADORES[k].history});
  save.champions[k] ||= mkChampion(false);CLASS_WEAPON_LABEL[k]='Copa maldita';SCORE_CONFIG[k]=SCORE_CONFIG[base];CHAMP_ITEM_AFFINITY[k]={...CHAMP_ITEM_AFFINITY[base]};
- PAL[k]={...PAL[base]};GRIDS[k]=GRIDS[base];ANIM_PROFILES[k]={...ANIM_PROFILES[base]};CHAMP_IDENTITY[k]={sig:'mark',proj:'exglyph'};
+ PAL[k]={...PAL[base]};GRIDS[k]=GRIDS[base];ANIM_PROFILES[k]={...ANIM_PROFILES[base]};CHAMP_IDENTITY[k]={sig:'mark',proj:'wine_corkscrew'};
  CODEX_CHAMP_LORE[k]={origin:'ciudad',history:PORTADORES[k].history};HERO_VOICES[k]={pick:'No pienso brindar por ustedes.',win:'Al menos no arruinaron la cosecha.',fall:'Qué mal año.'};
  CODEX_SKILL_FX[k]=SOLCIJU_KIT.map(()=>({color:[146,57,81],fx:'zone'}));
  const tree={masteryRequirement:8,nodes:[],masteries:{}};
@@ -35,7 +35,7 @@
  PORTADORES[k]={...CLASSES[k],title:'La Última Herida',set:'quality_veyra',branches:['Herida','Paso','Pacto'],history:'Veyra regresó del campo de batalla con una herida que ningún sanador logró cerrar. Aprendió a escuchar su pulso y a moverse en el silencio entre dos latidos. No busca una muerte gloriosa: persigue a quienes comercian con la vida de otros. Cada pacto con su propia sangre le concede un instante de ventaja y le recuerda que sobrevivir también puede ser una forma de venganza.'};
  CHAMPION_CATALOG.push({id:k,priceGold:CHAMPION_PRICE_GOLD,unlockedByDefault:false,lore:PORTADORES[k].history});
  save.champions[k] ||= mkChampion(false);CLASS_WEAPON_LABEL[k]='Hojas de sangría';SCORE_CONFIG[k]=SCORE_CONFIG[base];CHAMP_ITEM_AFFINITY[k]={...CHAMP_ITEM_AFFINITY[base]};
- PAL[k]={...PAL[base]};GRIDS[k]=GRIDS[base];ANIM_PROFILES[k]={...ANIM_PROFILES[base]};CHAMP_IDENTITY[k]={sig:'mark',proj:'exglyph'};
+ PAL[k]={...PAL[base]};GRIDS[k]=GRIDS[base];ANIM_PROFILES[k]={...ANIM_PROFILES[base]};CHAMP_IDENTITY[k]={sig:'mark',proj:'wound_saber'};
  CODEX_CHAMP_LORE[k]={origin:'ciudad',history:PORTADORES[k].history};HERO_VOICES[k]={pick:'Todavía late.',win:'Hoy no fue la última.',fall:'Un latido más.'};CODEX_SKILL_FX[k]=VEYRA_KIT.map(()=>({color:[171,52,89],fx:'zone'}));
  const tree={masteryRequirement:8,nodes:[],masteries:{}};
  [['lance','Incisión recta','El corte se convierte en una línea penetrante.'],['escape','Paso protegido','El desplazamiento otorga 15% de armadura por 1,5 s.'],['cleanse','Romper ataduras','Pacto elimina la ralentización actual.']].forEach(([flag,name,desc],b)=>{
@@ -57,7 +57,7 @@
  PORTADORES[k]={...CLASSES[k],title:'El Arquitecto del Fin',set:'quality_brakk',branches:['Muralla','Asedio','Refugio'],history:'Brakk calculó durante años las murallas de una ciudad que sus gobernantes decidieron abandonar. Cuando llegó la Horda, convirtió los planos de evacuación en fortificaciones y abrió rutas entre los derrumbes. Desde entonces construye refugios que sabe temporales: cada torre compra segundos y cada muro guarda una salida. Carga los nombres de quienes no logró salvar grabados en su martillo.'};
  CHAMPION_CATALOG.push({id:k,priceGold:CHAMPION_PRICE_GOLD,unlockedByDefault:false,lore:PORTADORES[k].history});
  save.champions[k] ||= mkChampion(false);CLASS_WEAPON_LABEL[k]='Martillo de obra';SCORE_CONFIG[k]=SCORE_CONFIG[base];CHAMP_ITEM_AFFINITY[k]={...CHAMP_ITEM_AFFINITY[base]};
- PAL[k]={...PAL[base]};GRIDS[k]=GRIDS[base];ANIM_PROFILES[k]={...ANIM_PROFILES[base]};CHAMP_IDENTITY[k]={sig:'mark',proj:'exglyph'};
+ PAL[k]={...PAL[base]};GRIDS[k]=GRIDS[base];ANIM_PROFILES[k]={...ANIM_PROFILES[base]};CHAMP_IDENTITY[k]={sig:'mark',proj:'masonry_shard'};
  CODEX_CHAMP_LORE[k]={origin:'ciudad',history:PORTADORES[k].history};HERO_VOICES[k]={pick:'Primero, una salida.',win:'La estructura resistió.',fall:'Evacúen… ahora.'};CODEX_SKILL_FX[k]=BRAKK_KIT.map(()=>({color:[206,173,122],fx:'zone'}));
  const tree={masteryRequirement:8,nodes:[],masteries:{}};
  [['gate','Muralla ancha','El muro gana 25% de longitud pero pierde 35% de duración.'],['pierce','Clavos penetrantes','La torreta dispara en línea y atraviesa hasta doce objetivos.'],['crew','Cuadrilla protegida','Apuntalar también protege a aliados cercanos.']].forEach(([flag,name,desc],b)=>{
@@ -74,7 +74,7 @@
  PORTADORES[k]={...CLASSES[k],...{"title": "El Jardinero de la Peste", "set": "quality_morveth", "branches": ["Huerto", "Contagio", "Simbiosis"], "history": "Morveth cuidaba el jardín de un hospital sitiado. Cuando las medicinas se agotaron, descubrió un micelio capaz de retener la infección en sus raíces. Ahora transporta aquel cultivo en una urna agrietada. Sus hongos necesitan tiempo y terreno para extenderse; arrancarlos deja al jardinero expuesto. No busca una cura perfecta, sino impedir que la próxima cosecha sean los vivos."}};
  CHAMPION_CATALOG.push({id:k,priceGold:CHAMPION_PRICE_GOLD,unlockedByDefault:false,lore:PORTADORES[k].history});
  save.champions[k] ||= mkChampion(false);CLASS_WEAPON_LABEL[k]='Urna de cultivo';SCORE_CONFIG[k]=SCORE_CONFIG[base];CHAMP_ITEM_AFFINITY[k]={...CHAMP_ITEM_AFFINITY[base]};
- PAL[k]={...PAL[base]};GRIDS[k]=GRIDS[base];ANIM_PROFILES[k]={...ANIM_PROFILES[base]};CHAMP_IDENTITY[k]={sig:'mark',proj:'exglyph'};
+ PAL[k]={...PAL[base]};GRIDS[k]=GRIDS[base];ANIM_PROFILES[k]={...ANIM_PROFILES[base]};CHAMP_IDENTITY[k]={sig:'mark',proj:'plague_spore'};
  CODEX_CHAMP_LORE[k]={origin:'ciudad',history:PORTADORES[k].history};HERO_VOICES[k]={pick:'La tierra recuerda.',win:'Todavía hay vida.',fall:'Otra estación…'};CODEX_SKILL_FX[k]=MORVETH_KIT.map(()=>({color:[164,197,106],fx:'zone'}));
  const tree={masteryRequirement:8,nodes:[],masteries:{}};
  [["roots", "Raíces febriles", "Los pulsos del hongo ralentizan 20% durante 0,8 s."], ["choke", "Esporas asfixiantes", "Exhalación también ralentiza 25% durante 1,5 s."], ["share", "Red simbiótica", "Simbiosis también cura y protege aliados cercanos."]].forEach(([flag,name,desc],b)=>{
@@ -91,7 +91,7 @@
  PORTADORES[k]={...CLASSES[k],...{"title": "La Ladrona de Segundos", "set": "quality_aelith", "branches": ["Ecos", "Fractura", "Préstamo"], "history": "Aelith reparaba relojes en una estación donde ningún tren volvía a tiempo. Tras la llegada de la Horda descubrió que los instantes perdidos seguían allí, suspendidos entre los dientes de los engranajes. Aprendió a soltarlos en ecos breves, incapaz de cambiar lo ocurrido. Cada aceleración exige una pausa después: roba segundos a su propio futuro, nunca una vida entera al pasado."}};
  CHAMPION_CATALOG.push({id:k,priceGold:CHAMPION_PRICE_GOLD,unlockedByDefault:false,lore:PORTADORES[k].history});
  save.champions[k] ||= mkChampion(false);CLASS_WEAPON_LABEL[k]='Reloj de bolsillo';SCORE_CONFIG[k]=SCORE_CONFIG[base];CHAMP_ITEM_AFFINITY[k]={...CHAMP_ITEM_AFFINITY[base]};
- PAL[k]={...PAL[base]};GRIDS[k]=GRIDS[base];ANIM_PROFILES[k]={...ANIM_PROFILES[base]};CHAMP_IDENTITY[k]={sig:'mark',proj:'exglyph'};
+ PAL[k]={...PAL[base]};GRIDS[k]=GRIDS[base];ANIM_PROFILES[k]={...ANIM_PROFILES[base]};CHAMP_IDENTITY[k]={sig:'mark',proj:'fractured_clock'};
  CODEX_CHAMP_LORE[k]={origin:'ciudad',history:PORTADORES[k].history};HERO_VOICES[k]={pick:'Tengo un segundo.',win:'Justo a tiempo.',fall:'Se acabó…'};CODEX_SKILL_FX[k]=AELITH_KIT.map(()=>({color:[191,167,220],fx:'zone'}));
  const tree={masteryRequirement:8,nodes:[],masteries:{}};
  [["delayed", "Eco suspendido", "El eco tarda el doble y ralentiza 30% durante 1,4 s."], ["aftershock", "Segundo impacto", "Fractura deja un eco de 20% del daño en el extremo de la línea."], ["share", "Préstamo colectivo", "Comparte aceleración y deuda temporal con aliados cercanos."]].forEach(([flag,name,desc],b)=>{
