@@ -1,5 +1,19 @@
 # Champion Factory
 
+## Importación de fuentes originales
+
+`python tools/factory/import-authored-sheet.py source.json output-directory` importa
+una fuente RGBA de 36 poses (4 columnas × 9 filas) al atlas 112×112 del motor.
+El manifiesto declara `source`, `sourceSha256` y `targetHeight` (70 por defecto).
+Usa el detector de pies existente; `bottomAnchorFrames` permite declarar poses cuya
+base necesita anclaje inferior explícito tras revisión visual.
+Rechaza huellas incorrectas, falta de transparencia, siluetas cortadas en el borde,
+poses ausentes/fusionadas, desorden de grilla y clipping al escalar uniformemente.
+Separa componentes para no arrastrar armas de celdas vecinas. Produce atlas, preview
+y recibo **IMPORTED_NOT_APPROVED**; no instala ni aprueba contenido automáticamente.
+Revisión visual, estilo, roster y contratos siguen siendo obligatorios antes de integrar.
+Pruebas: `python -m unittest tools/factory/test_import_authored_sheet.py`.
+
 Pipeline de incorporación, sin generación ficticia de arte ni cambios silenciosos del roster.
 
 ```sh
