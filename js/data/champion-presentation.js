@@ -57,11 +57,11 @@ const CHAMPION_PRESENTATION = {
   zahra:{tagline:"Forjadora de ceniza: calienta su horno con cada golpe, lo enfría a tiempo y libera el calor acumulado."},
   renko:{tagline:"Zapador incansable: cava trincheras, levanta montículos y entierra a la Horda bajo su propio terreno."},
   sira:{tagline:"Cartógrafa de rutas vivas: dibuja su camino, lo recorre al revés y convierte el mapa en un arma."},
-  solciju:{tagline:"Enóloga de la peste: salpica vino maldito, fermenta marcas en la Horda y la hace estallar con barricas."},
-  veyra:{tagline:"Asesina de riesgo: corta con sangrado, se desplaza entre latidos y consume heridas con su pacto de sangre."},
-  brakk:{tagline:"Arquitecto del fin: levanta muros y torretas, repara el refugio y lo demuele sobre la Horda."},
-  morveth:{tagline:"Jardinero de la peste: infecta, contagia a los vecinos y cultiva hongos que explotan al ser consumidos."},
-  aelith:{tagline:"Cronomante ladrona de segundos: deja ecos de tiempo, fractura líneas y acelera pagando su deuda."},
+  solciju:{title:"La Enóloga", tagline:"Solciju salpica vino maldito, fermenta marcas en la Horda y la hace estallar con barricas."},
+  veyra:{title:"La Última Herida", tagline:"Veyra corta con sangrado, se mueve entre latidos y consume heridas con su pacto de sangre."},
+  brakk:{title:"El Arquitecto del Fin", tagline:"Brakk levanta muros y torretas, repara el refugio y lo demuele sobre la Horda cuando hace falta."},
+  morveth:{title:"El Jardinero de la Peste", tagline:"Morveth infecta, contagia a los vecinos y cultiva hongos que estallan cuando él los consume."},
+  aelith:{title:"La Ladrona de Segundos", tagline:"Aelith deja ecos de tiempo, fractura líneas de segundos y acelera pagando su deuda temporal."},
 };
 // Nombre propio sin epíteto: la identidad de la Biblia (js/data/champion-identity.js) deja CLASSES[id].name
 // como "Nombre, título"; las tarjetas muestran el título en su propia línea y no lo repiten.

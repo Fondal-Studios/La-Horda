@@ -186,6 +186,29 @@ function applyChampionIdentity(){
   }
   return report;
 }
+// Cinco campeones nuevos (js/champions/quality-five/register.js): misma forma canónica; la historia se lee de PORTADORES para no duplicar texto.
+if(typeof PORTADORES!=="undefined") Object.assign(CHAMPION_IDENTITY, {
+  solciju:{ name:"Solciju", title:"la Enóloga", origin:"Las bodegas de la Ciudad Maldita",
+    tagline:"Solciju salpica vino maldito, fermenta marcas en la Horda y la hace estallar con barricas.",
+    lore:PORTADORES.solciju.history,
+    basic:{name:"Gota de cosecha", desc:"Disparo a distancia que añade una marca de fermentación."} },
+  veyra:{ name:"Veyra", title:"la Última Herida", origin:"El campo de batalla de la Ciudad Maldita",
+    tagline:"Veyra corta con sangrado, se mueve entre latidos y consume heridas con su pacto de sangre.",
+    lore:PORTADORES.veyra.history,
+    basic:{name:"Filo de sangría", desc:"Corte corto que alcanza hasta doce enemigos delante."} },
+  brakk:{ name:"Brakk", title:"el Arquitecto del Fin", origin:"Las murallas abandonadas de la ciudad",
+    tagline:"Brakk levanta muros y torretas, repara el refugio y lo demuele sobre la Horda cuando hace falta.",
+    lore:PORTADORES.brakk.history,
+    basic:{name:"Martillazo de obra", desc:"Golpe en arco frente a él; los muros propios lo protegen."} },
+  morveth:{ name:"Morveth", title:"el Jardinero de la Peste", origin:"El jardín de un hospital sitiado",
+    tagline:"Morveth infecta, contagia a los vecinos y cultiva hongos que estallan cuando él los consume.",
+    lore:PORTADORES.morveth.history,
+    basic:{name:"Esporas de cultivo", desc:"Disparo a distancia que contagia una infección de tres pulsos."} },
+  aelith:{ name:"Aelith", title:"la Ladrona de Segundos", origin:"Una estación de relojes sin trenes",
+    tagline:"Aelith deja ecos de tiempo, fractura líneas de segundos y acelera pagando su deuda temporal.",
+    lore:PORTADORES.aelith.history,
+    basic:{name:"Segundo robado", desc:"Disparo a distancia contra el enemigo más cercano."} },
+});
 // Expansión Ascensión (js/champions/ascension/catalog.js): misma forma canónica, una sola fuente de texto.
 if(typeof ASCENSION !== "undefined") for(const [k, p] of Object.entries(ASCENSION)) if(!CHAMPION_IDENTITY[k])
   CHAMPION_IDENTITY[k] = {name:p.name, title:p.title.replace(/^(El|La|Los|Las) /, m => m.toLowerCase()), origin:p.origin, tagline:p.tagline, lore:p.history};

@@ -34,7 +34,7 @@
 | Zahra, la Mano de la Válvula (`zahra`) | mago | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Renko, el Jardinero de Nombres (`renko`) | tanque | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Sira, la Cartógrafa del Regreso (`sira`) | mago | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
-| Nano GM, el Regente del Umbral (`nano_gm`) | mago | **PASS*** | 0 | 4 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Nano GM, el Regente del Umbral (`nano_gm`) | mago | **PASS*** | 0 | 3 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Facu GM, el Soberano de las Mareas (`facu_gm`) | asesino | **PASS*** | 0 | 4 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Aurelia, la Arquitecta Solar (`aurelia`) | mago | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Khepri, el Portador del Enjambre (`khepri`) | asesino | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
@@ -43,6 +43,11 @@
 | Bront, la Fortaleza Viviente (`bront`) | tanque | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Oriel, la Portera de las Cicatrices (`oriel`) | soporte | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Saelis, la Heraldo del Plumaje (`saelis`) | soporte | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Solciju, la Enóloga (`solciju`) | mago | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Veyra, la Última Herida (`veyra`) | asesino | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Brakk, el Arquitecto del Fin (`brakk`) | tanque | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Morveth, el Jardinero de la Peste (`morveth`) | mago | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Aelith, la Ladrona de Segundos (`aelith`) | mago | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 
 ## Detalle de FAIL / WARNING
 
@@ -50,7 +55,6 @@
 - **WARNING** [loot] set propio
 - **WARNING** [art] skins — 0 skins, 0 cromas
 - **WARNING** [metadata] Autoridad del GM: descripción larga (273): el tooltip usa shortDescription
-- **WARNING** [metadata] Juicio del GM: descripción larga (316): el tooltip usa shortDescription
 
 ### Facu GM, el Soberano de las Mareas — PASS*
 - **WARNING** [loot] set propio
@@ -78,4 +82,19 @@
 
 ### Saelis, la Heraldo del Plumaje — PASS*
 - **WARNING** [art] skins — 0 skins, 0 cromas
+
+### Solciju, la Enóloga — PASS*
+- **WARNING** [loot] set propio
+
+### Veyra, la Última Herida — PASS*
+- **WARNING** [loot] set propio
+
+### Brakk, el Arquitecto del Fin — PASS*
+- **WARNING** [loot] set propio
+
+### Morveth, el Jardinero de la Peste — PASS*
+- **WARNING** [loot] set propio
+
+### Aelith, la Ladrona de Segundos — PASS*
+- **WARNING** [loot] set propio
 
