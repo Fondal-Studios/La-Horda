@@ -265,6 +265,6 @@ jobs:
           node tools/coliseum/flow.js
           node tools/coliseum/sim.js 2 600
           node tools/net-test/lanes_coop.js
-          node tools/lanes/kits.js 20
+          node tools/lanes/kits.js 45
         env:
           NODE_PATH: /tmp/horda-balance/node_modules
