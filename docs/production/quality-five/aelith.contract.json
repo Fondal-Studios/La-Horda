@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "id": "aelith",
+  "name": "Aelith",
+  "title": "La Ladrona de Segundos",
+  "role": "mago",
+  "fantasy": "Maga temporal con segundos hurtados",
+  "lore": "Aelith reparaba relojes en una estación donde ningún tren volvía a tiempo. Tras la llegada de la Horda descubrió que los instantes perdidos seguían allí, suspendidos entre los dientes de los engranajes. Aprendió a soltarlos en ecos breves, incapaz de cambiar lo ocurrido. Cada aceleración exige una pausa después: roba segundos a su propio futuro, nunca una vida entera al pasado.",
+  "personality": "Impaciente, ingeniosa y consciente de cada deuda.",
+  "silhouette": "piel oscura; rulos blancos cortos; monóculo; reloj fracturado.",
+  "stats": {
+    "hp": 98,
+    "damage": 10,
+    "speed": 158
+  },
+  "kit": {
+    "basic": {
+      "id": "aelith_basic",
+      "description": "Proyectil mágico individual.",
+      "cooldownMs": 560,
+      "maxTargets": 1,
+      "hordeMechanism": "",
+      "anticipation": "Dirección de ataque.",
+      "execution": "tools/quality-five/register-aelith-fixture.js",
+      "impact": "Daño base normalizado por rol.",
+      "feedback": "Proyectil heredado; identidad visual pendiente.",
+      "vfx": "exglyph",
+      "sfx": "Motor compartido de impacto/básico (js/audio/audio.js)"
+    },
+    "skills": [
+      {
+        "id": "ael_echo",
+        "description": "Daña un área y deja un eco que repite 30% del daño tras 0,8 s. Máximo dos ecos.",
+        "cooldownMs": 6500,
+        "maxTargets": 12,
+        "hordeMechanism": "Impactos en área y eco temporizado.",
+        "anticipation": "Perfiles nativos de punto y cono/línea según acción.",
+        "execution": "js/champions/quality-five/aelith.js",
+        "impact": "Daña un área y deja un eco que repite 30% del daño tras 0,8 s. Máximo dos ecos.",
+        "feedback": "kitFx y entidades con radio y expiración.",
+        "vfx": "rune/wind",
+        "sfx": "js/champions/quality-five/audio.js: quality_aelith_cast"
+      },
+      {
+        "id": "ael_fracture",
+        "description": "Abre una línea que daña y ralentiza a sus enemigos durante 1,8 s.",
+        "cooldownMs": 8000,
+        "maxTargets": 12,
+        "hordeMechanism": "Impactos en área y eco temporizado.",
+        "anticipation": "Perfiles nativos de punto y cono/línea según acción.",
+        "execution": "js/champions/quality-five/aelith.js",
+        "impact": "Abre una línea que daña y ralentiza a sus enemigos durante 1,8 s.",
+        "feedback": "kitFx y entidades con radio y expiración.",
+        "vfx": "rune/wind",
+        "sfx": "js/champions/quality-five/audio.js: quality_aelith_cast"
+      },
+      {
+        "id": "ael_haste",
+        "description": "Gana 25% de velocidad y 10% de armadura durante 3 s. Después sufre 15% de lentitud durante 0,8 s.",
+        "cooldownMs": 12000,
+        "maxTargets": 12,
+        "hordeMechanism": "Impactos en área y eco temporizado.",
+        "anticipation": "Perfiles nativos de punto y cono/línea según acción.",
+        "execution": "js/champions/quality-five/aelith.js",
+        "impact": "Gana 25% de velocidad y 10% de armadura durante 3 s. Después sufre 15% de lentitud durante 0,8 s.",
+        "feedback": "kitFx y entidades con radio y expiración.",
+        "vfx": "rune/wind",
+        "sfx": "js/champions/quality-five/audio.js: quality_aelith_cast"
+      }
+    ],
+    "ultimate": {
+      "id": "ael_hour",
+      "description": "Tres pulsos dañan y ralentizan enemigos. Escuda a aliados dentro del círculo.",
+      "cooldownMs": 37000,
+      "maxTargets": 12,
+      "hordeMechanism": "Impactos en área y eco temporizado.",
+      "anticipation": "Perfiles nativos de punto y cono/línea según acción.",
+      "execution": "js/champions/quality-five/aelith.js",
+      "impact": "Tres pulsos dañan y ralentizan enemigos. Escuda a aliados dentro del círculo.",
+      "feedback": "kitFx y entidades con radio y expiración.",
+      "vfx": "rune/wind",
+      "sfx": "js/champions/quality-five/audio.js: quality_aelith_ult"
+    }
+  },
+  "art": {
+    "atlas": "assets/sprites/champions/aelith/atlas.png",
+    "preview": "assets/sprites/champions/aelith/preview.png",
+    "directions": 4,
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "8bb5bb0c807bfc80253ec9e32cc711ddde10346b3c00e49c919d53b0806a67c6",
+    "animations": {
+      "idle": 1,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
+    },
+    "review": {
+      "status": "PASS",
+      "reviewer": "Codex (visual inspection; not human signoff)",
+      "evidence": "docs/production/quality-five/originals/ART-REVIEW.md"
+    }
+  },
+  "integration": {
+    "runtime": "js/champions/quality-five/aelith.js",
+    "codex": "js/champions/quality-five/register.js",
+    "talents": "js/champions/quality-five/register.js",
+    "mastery": "js/champions/quality-five/register.js",
+    "set": "js/champions/quality-five/collection.js",
+    "kitTest": "tools/quality-five/temporal-plague-functional.js"
+  },
+  "cosmetics": [
+    {
+      "id": "aelith_alt1",
+      "type": "skin",
+      "champion": "aelith",
+      "name": "Aelith, Relojera del Vacío",
+      "rarity": "Épica",
+      "tagline": "Piel oscura, rulos blancos, monóculo plateado, placas violetas y reloj fracturado",
+      "lore": "Aelith guardó un segundo que nadie reclamó y lo dejó caer en el vacío. Desde entonces su levita pesa lo que pesa un instante perdido.",
+      "visualTheme": "Piel oscura, rulos blancos, monóculo plateado, placas violetas y reloj fracturado",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/aelith/skins/aelith_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "aelith_croma",
+      "type": "croma",
+      "champion": "aelith",
+      "name": "Segundo Carmesí",
+      "rarity": "Rara",
+      "tagline": "Una paleta alternativa para Aelith.",
+      "lore": "Los colores de Segundo Carmesí acompañan un nuevo viaje. Conserva su vestuario y sus decisiones: esta apariencia cambia únicamente la paleta.",
+      "visualTheme": "Paleta selectiva; conserva piel y contorno.",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "palette"
+      ],
+      "preview": "assets/sprites/champions/aelith/croma-preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "quality_aelith",
+      "type": "set",
+      "champion": "aelith",
+      "name": "Custodia del Mediodía",
+      "rarity": "Set",
+      "tagline": "Armadura solar, faldón segmentado, manto rojo y reloj radiado",
+      "lore": "Aelith vistió las piezas que marcaban el mediodía en un observatorio sin sombra. El reloj siguió roto. Aprendió a conservar la hora sin fingir que podía reparar todo lo perdido.",
+      "visualTheme": "Armadura solar, faldón segmentado, manto rojo y reloj radiado",
+      "unlockSource": "Completar Hora del Mediodía en laberinto",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/aelith/skins/quality_aelith/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
+  "set": {
+    "sourceArena": "laberinto",
+    "pieces": [
+      "quality_aelith_arma",
+      "quality_aelith_casco",
+      "quality_aelith_pechera",
+      "quality_aelith_botas"
+    ],
+    "rewardCosmetic": "quality_aelith",
+    "rewardGrantsPower": false
+  },
+  "budgets": {
+    "particles": 64,
+    "summons": 3,
+    "audioVoices": 3
+  },
+  "evidence": {
+    "reference": "docs/balance/champion-entry-reference.json",
+    "talents": "docs/production/quality-five/temporal-plague-functional-results.json",
+    "abilities": "docs/production/quality-five/ability/ability-gate.json",
+    "resources": "docs/production/quality-five/temporal-plague-functional-results.json",
+    "passives": "docs/production/quality-five/temporal-plague-functional-results.json",
+    "balance": "docs/balance/entry-gate-results.json",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "style": "docs/production/quality-five/originals/style-results.txt",
+    "audio": "docs/production/quality-five/audio-20261012.txt",
+    "multiplayer": "docs/production/quality-five/online-results.json",
+    "performance": "docs/production/quality-five/performance-aelith.json"
+  },
+  "category": "STANDARD"
+}

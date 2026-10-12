@@ -187,7 +187,7 @@ Reemplaza al mapa de un solo carril. Código en `js/arenas/lanes/` (`lanes-data/
 - **Selva:** 8 campamentos (lobos, bestias, escorpiones y un Gigante que bendice con +12 % de daño) que reaparecen a los 75 s, y dos objetivos épicos
   desde el minuto 4: **Dragón de Piedra** (+10 % de daño al equipo) y **Rey Coloso** (un coloso real por carril en las dos oleadas siguientes).
 - **Niveles 3→15 dentro de la partida** (curva de `computePlayerStats`): experiencia por súbditos, campamentos, héroes y torres, repartida entre los
-  héroes cercanos. **Cada nivel del héroe líder del equipo da una carta de horda** (elegís 1 de 3; los equipos de bots eligen solos).
+  héroes cercanos. **Cada nuevo nivel máximo del equipo da una carta de horda (una sola vez, aunque varios héroes alcancen ese nivel)** (elegís 1 de 3; los equipos de bots eligen solos).
 - **Volver a la base (B)** canalizado 5,5 s (se corta si te movés o te golpean). Reaparición que crece con el nivel y el reloj.
 - **Bots por rol** (medio, abajo ×2, arriba, selva): acompañan al frente de su horda fuera del alcance de las torres, retroceden heridos y el de la
   selva limpia campamentos. **5 contra 5** en solitario; en línea sigue siendo 2 contra 2 (límite del relay: 4 humanos).

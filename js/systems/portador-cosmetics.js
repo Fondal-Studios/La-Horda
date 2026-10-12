@@ -29,6 +29,13 @@ function portadorRecolorAtlas(P,C){
   const i=(y*c.width+x)*4;if(!D[i+3])continue;
   const R=D[i],G=D[i+1],B=D[i+2],lum=.2126*R+.7152*G+.0722*B;
   if(lum<34)continue; // dark contour
+  if(C.hueRange){
+   const hi=Math.max(R,G,B),lo=Math.min(R,G,B),delta=hi-lo;
+   if(delta<20||delta/Math.max(1,hi)<.2)continue;
+   const hue=((hi===R?(G-B)/delta:hi===G?(B-R)/delta+2:(R-G)/delta+4)*60+360)%360;
+   const [a,b]=C.hueRange;
+   if(a<=b?!(hue>=a&&hue<=b):!(hue>=a||hue<=b))continue;
+  }
   const fx=(x%P.fw)/P.fw,fy=(y%P.fh)/P.fh;
   if(fx>.27&&fx<.73&&fy<.48&&R>G*1.12&&G>B*1.12)continue; // face / brown hair
   const rgb=colors[lum<90?0:lum<150?1:lum<208?2:3];

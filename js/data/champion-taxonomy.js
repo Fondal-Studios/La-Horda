@@ -54,7 +54,14 @@ var CHAMPION_TAXONOMY = {
   vhal:     {category:"ASCENSION"},
   bront:    {category:"ASCENSION"},
   oriel:    {category:"ASCENSION"},
-  saelis:   {category:"ASCENSION"}
+  saelis:   {category:"ASCENSION"},
+  // Lote original validado para Alpha. Mantiene admisión por Balance Gate como candidato;
+  // knownChampions se actualiza solamente en una entrega posterior (AGENTS.md).
+  solciju:  {category:"STANDARD", releaseState:"RELEASED"},
+  veyra:    {category:"STANDARD", releaseState:"RELEASED"},
+  brakk:    {category:"STANDARD", releaseState:"RELEASED"},
+  morveth:  {category:"STANDARD", releaseState:"RELEASED"},
+  aelith:   {category:"STANDARD", releaseState:"RELEASED"}
 };
 
 // EVENT infrastructure. Example shape (no event champion exists yet):
