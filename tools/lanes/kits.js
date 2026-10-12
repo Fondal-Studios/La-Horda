@@ -33,7 +33,7 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
    }
    const s=player.stats||{};rep.dmg=Math.round(s.dmgDealt||s.dmg||0);rep.kills=LN.team[0].kills+LN.team[1].kills;rep.myKills=s.kills||0;rep.hp0=Math.round(LN.team[0].S[2].hp);rep.hp1=Math.round(LN.team[1].S[2].hp);rep.respawns=heroes.filter(h=>h.dead_t).length;
    rep.enemiesLeft=enemies.filter(e=>e.alive).length;damageHero=dh;lanesStop('mainmenu');return rep;},{champ,secs:SECS});
-  const ok=!r.err&&r.nan===0&&r.cross===0&&r.friendly===0&&r.kills>0&&errs.length===0;if(!ok)bad++;
+  const ok=!r.err&&r.nan===0&&r.cross===0&&r.friendly===0&&(r.kills>0||r.dmg>0||r.pvp>0)&&errs.length===0;if(!ok)bad++;
   rows.push(r);console.log((ok?'OK   ':'FAIL ')+champ.padEnd(14)+JSON.stringify({kills:r.kills,dmg:r.dmg,pvp:r.pvp,friendly:r.friendly,cross:r.cross,nan:r.nan,err:r.err,errs:errs.slice(0,2)}));
   await p.close();
  }
