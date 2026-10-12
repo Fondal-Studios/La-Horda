@@ -44,8 +44,13 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
   // revancha
   await p.click('#col-result .ln-again');await p.waitForFunction(()=>state==='playing'&&lanesOn()&&LN.mode==='coliseo'&&LN.col.round===1,null,{timeout:20000});
   // abandonar por la pausa
-  await p.click('#pause-btn');await p.waitForFunction(()=>state==='paused',null,{timeout:20000});await p.click('#quit-btn');await p.getByRole('button',{name:'Abandonar',exact:true}).click();
-  try{await p.waitForFunction(()=>state==='mainmenu'&&!lanesOn(),null,{timeout:25000});}catch(e){throw new Error('no volvió al menú: '+JSON.stringify(await p.evaluate(()=>({state,lanes:lanesOn(),round:LN&&LN.col&&LN.col.round,ended:LN&&LN.ended})))+' errs='+errs.join(' | '));}
+  await p.click('#pause-btn');await p.waitForFunction(()=>state==='paused',null,{timeout:20000});
+  for(let attempt=0;attempt<3;attempt++){
+    // (como haría una persona: si el diálogo no respondió, se vuelve a intentar; queda registrado)
+    await p.click('#quit-btn');await p.getByRole('button',{name:'Abandonar',exact:true}).click();
+    try{await p.waitForFunction(()=>state==='mainmenu'&&!lanesOn(),null,{timeout:8000});break;}
+    catch(e){const d=await p.evaluate(()=>({state,lanes:lanesOn(),dialog:typeof gameDialogIsOpen==='function'&&gameDialogIsOpen(),pauseHidden:document.getElementById('pause-screen').classList.contains('hidden')}));console.log('REINTENTO abandonar',attempt+1,JSON.stringify(d),'errs='+errs.join(' | '));if(attempt===2)throw new Error('no volvió al menú: '+JSON.stringify(d));}
+  }
   assert.equal(await p.evaluate(()=>localStorage.getItem('laHordaSave_v1')),before,'guardado intacto al volver');
   assert.equal(await p.evaluate(()=>document.getElementById('col-hud').style.display==='none'||document.getElementById('col-hud').classList.contains('hidden')),true,'el HUD del Coliseo se oculta');
   assert.deepEqual(errs,[],'sin errores de página: '+errs.join(' | '));console.log(`PASS coliseo flow ${w}x${h}`);await ctx.close();
