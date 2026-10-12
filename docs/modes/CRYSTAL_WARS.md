@@ -133,7 +133,7 @@ Resultados finales del gate CW-3 (804 partidas por lote, 1.608 en total):
 
 El 100% (redondeado) de las partidas de composición terminan por cristal; empates 1% / 0%. Son simulaciones con bots, no una evaluación de diversión ni balance competitivo humano.
 
-## Guerra de Cristales en el motor real — versión MOBA (12/10/2026)
+## Guerra de Cristales en el motor real — versión MOBA de un carril (12/10/2026, reemplazada por la de abajo)
 Reemplaza al modo de "dos carriles separados". Código: `js/arenas/lanes/` (el motor de la campaña, no el simulador simplificado).
 
 **Qué es.** Un mapa ancho con dos bases (Zafiro a la izquierda, Ámbar a la derecha). Cada base tiene **dos torres y un cristal**;
@@ -176,3 +176,22 @@ sin nadie en pie (si se acaba el tiempo, el de más vida; si empatan, nadie suma
 torneo de 8 se juega contra bots); la próxima fase es sumar luchadores "virtuales" para que los invitados vean los dos fosos. El
 balance entre kits en PvP no está afinado: con recargas naturales, vencer a un blanco quieto tarda entre 3 y 50 s según el campeón
 (mediana ≈ 15 s). `LANES.PVP_DMG` y `LANES.PVP_BURST` son las perillas.
+
+## Guerra de Cristales estilo Wild Rift 2D — fase 1 (12/10/2026)
+Reemplaza al mapa de un solo carril. Código en `js/arenas/lanes/` (`lanes-data/levels/minions/jungle/bots/core/render/hud/net`).
+- **Mapa 6400×4800** con tres carriles (arriba, medio, abajo), selva, río en diagonal y dos bases (Zafiro abajo a la izquierda, Ámbar arriba a la derecha).
+  **9 torres por equipo** (3 por carril: exterior, interior, inhibidora) + cristal. Dentro de un carril se derriban en orden; el cristal queda
+  expuesto cuando cae la inhibidora de cualquiera. Las torres disparan primero a la horda rival y después a los héroes.
+- **Horda por carril:** cada 32 s sale una oleada por cada carril (3 esqueletos, 2 cristales voladores que disparan y, cada 3 oleadas, un coloso de
+  asedio). Caminan por el carril (`laneProject`/`lanePoint`), pelean contra los súbditos rivales, atacan a héroes cercanos y derriban estructuras.
+- **Selva:** 8 campamentos (lobos, bestias, escorpiones y un Gigante que bendice con +12 % de daño) que reaparecen a los 75 s, y dos objetivos épicos
+  desde el minuto 4: **Dragón de Piedra** (+10 % de daño al equipo) y **Rey Coloso** (un coloso real por carril en las dos oleadas siguientes).
+- **Niveles 3→15 dentro de la partida** (curva de `computePlayerStats`): experiencia por súbditos, campamentos, héroes y torres, repartida entre los
+  héroes cercanos. **Cada nivel del héroe líder del equipo da una carta de horda** (elegís 1 de 3; los equipos de bots eligen solos).
+- **Volver a la base (B)** canalizado 5,5 s (se corta si te movés o te golpean). Reaparición que crece con el nivel y el reloj.
+- **Bots por rol** (medio, abajo ×2, arriba, selva): acompañan al frente de su horda fuera del alcance de las torres, retroceden heridos y el de la
+  selva limpia campamentos. **5 contra 5** en solitario; en línea sigue siendo 2 contra 2 (límite del relay: 4 humanos).
+- Pruebas: `tools/lanes/sim.js` (10 héroes, niveles, cartas, selva), `kits.js` (29 campeones en el medio del mapa frente a un rival), `flow.js`
+  (UI 844×390 y 667×375, recall, tienda, carta), `tools/net-test/lanes_coop.js` (2 clientes reales, 24 avatares/estructuras sincronizados).
+- **Pendiente para acercarse más a Wild Rift:** ítems por héroe (hoy el oro de equipo compra reparaciones/refuerzos), arbustos y visión, ping,
+  hechizos de invocador, más variedad de súbditos, IA de bots que se agrupen para objetivos, y 3 contra 3/5 contra 5 en línea.
