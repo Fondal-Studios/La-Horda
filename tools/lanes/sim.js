@@ -17,7 +17,7 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
    const ok=lanesStart({champ:['mago','tanque','soporte','guerrero'][seed%4],seed:seed+1});
    const rep={ok,friendly:0,maxEnemies:0,frames:0,towerShots:0,pvpHits:0,hordeDmgToStruct:0,protectedBlocked:0,cardsTaken:[0,0],towersDown:[0,0],heroDeaths:0,nan:0};
    // contadores: fuego amigo (golpe a un héroe del propio equipo que NO sea PvP) y PvP efectivo
-   const dh=damageHero; damageHero=function(h,a,src,pt){ if(h&&h.team!=null&&src&&!src.isPvp&&src!==h){ const t=lanesTeamOf(src); if(t!=null&&t===h.team&&!h.isStruct) rep.friendly++; } if(src&&src.isPvp&&h&&!h.isStruct) rep.pvpHits++; if(!(a>=0)) rep.nan++; return dh.call(this,h,a,src,pt); };
+   const dh=damageHero; damageHero=function(h,a,src,pt){ const hp0=h&&h.hp,isF=h&&h.team!=null&&src&&!src.isPvp&&src!==h&&!h.isStruct&&lanesTeamOf(src)===h.team; if(src&&src.isPvp&&h&&!h.isStruct) rep.pvpHits++; if(!(a>=0)) rep.nan++; const r=dh.call(this,h,a,src,pt); if(isF&&h.hp<hp0-0.01) rep.friendly++; return r; };
    const dt=1000/60;
    for(let f=0;f<secs*60&&!LN.ended;f++){
     basicHeld=true; update(dt); rep.frames++;

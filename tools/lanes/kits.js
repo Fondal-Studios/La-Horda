@@ -18,7 +18,7 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
   const r=await p.evaluate(({champ,secs})=>{
    setState('mainmenu');lanesStart({champ,seed:11});
    const rep={champ,frames:0,nan:0,cross:0,dead:0,friendly:0,pvp:0};const dt=1000/60;let ang=0;
-   const dh=damageHero;damageHero=function(h,a,src,pt){ if(h&&h.team!=null&&src&&!src.isPvp&&src!==h){const t=lanesTeamOf(src);if(t!=null&&t===h.team&&!h.isStruct)rep.friendly++;} if(src&&src.isPvp&&h&&!h.isStruct)rep.pvp++; return dh.call(this,h,a,src,pt); };
+   const dh=damageHero;damageHero=function(h,a,src,pt){ const hp0=h&&h.hp,isF=h&&h.team!=null&&src&&!src.isPvp&&src!==h&&!h.isStruct&&lanesTeamOf(src)===h.team; if(src&&src.isPvp&&h&&!h.isStruct)rep.pvp++; const r=dh.call(this,h,a,src,pt); if(isF&&h.hp<hp0-0.01)rep.friendly++; return r; };
    player.x=2000;player.y=500;heroes[2].x=2160;heroes[2].y=520;
    for(let f=0;f<secs*60&&!LN.ended;f++){
     if(f%20===0){ang+=0.7;joyVec={x:Math.cos(ang)*0.6,y:Math.sin(ang)*0.6};}
