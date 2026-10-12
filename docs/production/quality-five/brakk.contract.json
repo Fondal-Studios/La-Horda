@@ -25,7 +25,7 @@
       "impact": "Martillo cuerpo a cuerpo.",
       "feedback": "Efectos kitFx/kitFxLine y construcciones visibles con vida.",
       "vfx": "kitFx earth/shield/spike; barra de vida de construcción.",
-      "sfx": ""
+      "sfx": "Motor compartido de impacto/básico (js/audio/audio.js)"
     },
     "skills": [
       {
@@ -39,7 +39,7 @@
         "impact": "Muro destructible que daña al emerger.",
         "feedback": "Efectos kitFx/kitFxLine y construcciones visibles con vida.",
         "vfx": "kitFx earth/shield/spike; barra de vida de construcción.",
-        "sfx": ""
+        "sfx": "js/champions/quality-five/audio.js: quality_brakk_cast"
       },
       {
         "id": "brk_turret",
@@ -52,7 +52,7 @@
         "impact": "Torreta destructible de seis ráfagas.",
         "feedback": "Efectos kitFx/kitFxLine y construcciones visibles con vida.",
         "vfx": "kitFx earth/shield/spike; barra de vida de construcción.",
-        "sfx": ""
+        "sfx": "js/champions/quality-five/audio.js: quality_brakk_cast"
       },
       {
         "id": "brk_repair",
@@ -65,7 +65,7 @@
         "impact": "Repara construcciones cercanas y protege al lanzador.",
         "feedback": "Efectos kitFx/kitFxLine y construcciones visibles con vida.",
         "vfx": "kitFx earth/shield/spike; barra de vida de construcción.",
-        "sfx": ""
+        "sfx": "js/champions/quality-five/audio.js: quality_brakk_cast"
       }
     ],
     "ultimate": {
@@ -79,7 +79,7 @@
       "impact": "Consume construcciones, daña, ralentiza y escuda.",
       "feedback": "Efectos kitFx/kitFxLine y construcciones visibles con vida.",
       "vfx": "kitFx earth/shield/spike; barra de vida de construcción.",
-      "sfx": ""
+      "sfx": "js/champions/quality-five/audio.js: quality_brakk_ult"
     }
   },
   "art": {
@@ -106,9 +106,9 @@
   },
   "integration": {
     "runtime": "js/champions/quality-five/brakk.js",
-    "codex": "tools/quality-five/register-brakk-fixture.js",
-    "talents": "tools/quality-five/register-brakk-fixture.js",
-    "mastery": "tools/quality-five/register-brakk-fixture.js",
+    "codex": "js/champions/quality-five/register.js",
+    "talents": "js/champions/quality-five/register.js",
+    "mastery": "js/champions/quality-five/register.js",
     "set": "",
     "kitTest": "tools/quality-five/brakk-functional.js"
   },
@@ -120,9 +120,9 @@
     "rewardGrantsPower": false
   },
   "budgets": {
-    "particles": 32,
+    "particles": 64,
     "summons": 4,
-    "audioVoices": 2
+    "audioVoices": 3
   },
   "evidence": {
     "reference": "docs/balance/champion-entry-reference.json",
@@ -133,7 +133,7 @@
     "balance": "docs/production/quality-five/workshop-entry-results.json",
     "visuals": "",
     "style": "",
-    "audio": "",
+    "audio": "docs/production/quality-five/audio-20261012.txt",
     "multiplayer": "docs/production/quality-five/online-results.json",
     "performance": ""
   },

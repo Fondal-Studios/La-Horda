@@ -1,3 +1,12 @@
+# Estado vigente — 12/10/2026
+
+Continuación sobre PR #87: [checkpoint y pruebas](CHECKPOINT-20261012.md).
+Solciju y su skin ahora tienen arte original; el resto del lote sigue bloqueado por arte
+y contratos incompletos. La sección siguiente conserva la auditoría anterior de #87.
+No interpretar sus pendientes de audio/red o su descripción de Solciju como estado actual.
+
+---
+
 # Cinco campeones: integración en juego (12 de octubre de 2026)
 
 Rama `claude/five-champions` (desde `origin/main` a258060; trae los kits y recetas del PR #78 sin cerrarlo). Estado honesto:

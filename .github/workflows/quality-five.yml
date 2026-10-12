@@ -1,0 +1,39 @@
+name: Quality five runtime and authored sources
+on:
+  pull_request:
+    paths: ['js/champions/quality-five/**', 'tools/quality-five/**', 'tools/factory/**', 'art-source/quality-five-original/**', 'assets/sprites/champions/solciju/**', 'index.html', '.github/workflows/quality-five.yml']
+  push:
+    branches: ['claude/five-champions', 'chatgpt/quality-five-completion-20261012']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NODE_PATH: /tmp/horda-five/node_modules
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --prefix /tmp/horda-five --no-audit --no-fund playwright@1.56.1
+      - run: /tmp/horda-five/node_modules/.bin/playwright install --with-deps chromium
+      - run: npm ci --prefix server --no-audit --no-fund
+      - run: python -m pip install numpy pillow scipy opencv-python-headless
+      - run: node --test tools/factory/test.js tools/quality-five/*.test.js
+      - run: python -m unittest tools/factory/test_import_authored_sheet.py
+      - run: node tools/quality/test-talent-gate.js
+      - run: node tools/quality-five/functional.js
+      - run: node tools/quality-five/brakk-functional.js
+      - run: node tools/quality-five/temporal-plague-functional.js
+      - run: node tools/quality-five/online.js
+      - run: node tools/audio/t_audio_mix.js
+      - run: python tools/factory/produce-quality-five.py
+      - run: git diff --exit-code -- assets/sprites/champions/solciju docs/production/quality-five/originals
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quality-five-evidence
+          path: docs/production/quality-five/

@@ -201,18 +201,36 @@
  },
  "solciju": {
   "champion": "solciju",
-  "spec": "tools/art/painter/specs/solciju.json",
-  "body": "maura_skin",
-  "head": "maura_skin",
+  "pipeline": "tools/factory/import-authored-sheet.py",
+  "source": "art-source/quality-five-original/solciju.json",
+  "atlasSha256": "07f99eda23f8993c8acf02d5bfaec1e5678254ec45835a5981ad37c869c74e7c",
   "styleGate": "PASS",
+  "review": "docs/production/quality-five/originals/ART-REVIEW.md",
+  "supersedes": {
+   "champion": "solciju",
+   "spec": "tools/art/painter/specs/solciju.json",
+   "body": "maura_skin",
+   "head": "maura_skin",
+   "styleGate": "PASS",
+   "date": "2026-10-12"
+  },
   "date": "2026-10-12"
  },
  "solciju_alt1": {
   "champion": "solciju",
-  "spec": "tools/art/painter/specs/solciju_alt1.json",
-  "body": "maura_set",
-  "head": "maura_set",
+  "pipeline": "tools/factory/import-authored-sheet.py",
+  "source": "art-source/quality-five-original/solciju_alt1.json",
+  "atlasSha256": "e7e171f598d2c796d2b9f696d2facb6714e30a641e71e16ef8602d1a5fba4e50",
   "styleGate": "PASS",
+  "review": "docs/production/quality-five/originals/ART-REVIEW.md",
+  "supersedes": {
+   "champion": "solciju",
+   "spec": "tools/art/painter/specs/solciju_alt1.json",
+   "body": "maura_set",
+   "head": "maura_set",
+   "styleGate": "PASS",
+   "date": "2026-10-12"
+  },
   "date": "2026-10-12"
  },
  "brakk": {

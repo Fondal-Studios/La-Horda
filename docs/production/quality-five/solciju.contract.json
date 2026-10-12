@@ -7,7 +7,7 @@
   "fantasy": "Control de zonas mediante vino maldito, fermentación y barricas.",
   "lore": "Solciju conservaba las últimas cosechas de una ciudad que ya nadie recordaba. Cuando la peste alcanzó sus bodegas, descubrió que el vino retenía algo más que años: atrapaba las maldiciones de quienes lo bebían. Ahora recorre las ruinas con una reserva que jamás ofrece por cortesía. Dice detestar la compañía, pero siempre guarda una copa para quien sobreviva a su lado.",
   "personality": "Irónica, reservada y protectora a su pesar.",
-  "silhouette": "PENDIENTE: distinguir de Maura; copa, barrica y vestimenta de bodeguera.",
+  "silhouette": "Bob negro con mechón blanco, copa, barrica lateral y sacacorchos.",
   "stats": {
     "hp": 98,
     "damage": 10,
@@ -25,7 +25,7 @@
       "impact": "damageEnemy y daño atribuido al dueño.",
       "feedback": "Animación y efecto de impacto del motor.",
       "vfx": "Proyectil básico del motor.",
-      "sfx": ""
+      "sfx": "Motor compartido de impacto/básico (js/audio/audio.js)"
     },
     "skills": [
       {
@@ -39,7 +39,7 @@
         "impact": "Salpica vino en un área y añade una marca de fermentación.",
         "feedback": "Daño/curación y estados del motor; kitFx temático.",
         "vfx": "kitFx / kitFxLine del runtime; premarcado en ACTION_AIM_PROFILES.",
-        "sfx": ""
+        "sfx": "js/champions/quality-five/audio.js: quality_solciju_cast"
       },
       {
         "id": "sol_cask",
@@ -52,7 +52,7 @@
         "impact": "Coloca una barrica que estalla tras 2,4 s. Máximo dos; reemplazar una no la detona.",
         "feedback": "Daño/curación y estados del motor; kitFx temático.",
         "vfx": "kitFx / kitFxLine del runtime; premarcado en ACTION_AIM_PROFILES.",
-        "sfx": ""
+        "sfx": "js/champions/quality-five/audio.js: quality_solciju_cast"
       },
       {
         "id": "sol_toast",
@@ -65,7 +65,7 @@
         "impact": "Obtiene 15% de armadura durante 3 s y recupera 4% de vida máxima.",
         "feedback": "Daño/curación y estados del motor; kitFx temático.",
         "vfx": "kitFx / kitFxLine del runtime; premarcado en ACTION_AIM_PROFILES.",
-        "sfx": ""
+        "sfx": "js/champions/quality-five/audio.js: quality_solciju_cast"
       }
     ],
     "ultimate": {
@@ -79,36 +79,36 @@
       "impact": "Cuatro pulsos de vino dañan y ralentizan enemigos. Protege a aliados dentro del área.",
       "feedback": "kitFx de definitiva y estados medidos por Ability Gate.",
       "vfx": "kitFx con ult:true.",
-      "sfx": ""
+      "sfx": "js/champions/quality-five/audio.js: quality_solciju_ult"
     }
   },
   "art": {
-    "atlas": "",
-    "preview": "",
+    "atlas": "assets/sprites/champions/solciju/atlas.png",
+    "preview": "assets/sprites/champions/solciju/preview.png",
     "directions": 4,
-    "frameWidth": 0,
-    "frameHeight": 0,
-    "sha256": "",
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "07f99eda23f8993c8acf02d5bfaec1e5678254ec45835a5981ad37c869c74e7c",
     "animations": {
-      "idle": 0,
-      "walk": 0,
-      "attack": 0,
-      "cast": 0,
-      "hit": 0,
-      "death": 0,
-      "ultimate": 0
+      "idle": 1,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
     },
     "review": {
-      "status": "PENDING",
-      "reviewer": "",
-      "evidence": ""
+      "status": "PASS",
+      "reviewer": "Codex (visual inspection; not human signoff)",
+      "evidence": "docs/production/quality-five/originals/ART-REVIEW.md"
     }
   },
   "integration": {
     "runtime": "js/champions/quality-five/solciju.js",
-    "codex": "tools/quality-five/register-fixture.js",
-    "talents": "tools/quality-five/register-fixture.js",
-    "mastery": "tools/quality-five/register-fixture.js",
+    "codex": "js/champions/quality-five/register.js",
+    "talents": "js/champions/quality-five/register.js",
+    "mastery": "js/champions/quality-five/register.js",
     "set": "",
     "kitTest": "tools/quality-five/functional.js"
   },
@@ -120,9 +120,9 @@
     "rewardGrantsPower": false
   },
   "budgets": {
-    "particles": 32,
+    "particles": 64,
     "summons": 5,
-    "audioVoices": 2
+    "audioVoices": 3
   },
   "evidence": {
     "reference": "docs/production/quality-five/workshop-entry-results.json",
@@ -131,9 +131,9 @@
     "resources": "docs/production/quality-five/functional-results.json",
     "passives": "docs/production/quality-five/functional-results.json",
     "balance": "docs/production/quality-five/workshop-entry-results.json",
-    "visuals": "",
-    "style": "",
-    "audio": "",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "style": "docs/production/quality-five/originals/style-results.txt",
+    "audio": "docs/production/quality-five/audio-20261012.txt",
     "multiplayer": "docs/production/quality-five/online-results.json",
     "performance": ""
   },

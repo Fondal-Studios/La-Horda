@@ -25,7 +25,7 @@
       "impact": "Daño base normalizado por rol.",
       "feedback": "Proyectil heredado; identidad visual pendiente.",
       "vfx": "exglyph",
-      "sfx": ""
+      "sfx": "Motor compartido de impacto/básico (js/audio/audio.js)"
     },
     "skills": [
       {
@@ -39,7 +39,7 @@
         "impact": "Planta un hongo destructible que libera seis pulsos de esporas. Máximo tres hongos.",
         "feedback": "kitFx y entidades con radio y expiración.",
         "vfx": "dark/shield",
-        "sfx": ""
+        "sfx": "js/champions/quality-five/audio.js: quality_morveth_cast"
       },
       {
         "id": "mor_spores",
@@ -52,7 +52,7 @@
         "impact": "Daña un abanico e infecta a sus víctimas durante tres pulsos.",
         "feedback": "kitFx y entidades con radio y expiración.",
         "vfx": "dark/shield",
-        "sfx": ""
+        "sfx": "js/champions/quality-five/audio.js: quality_morveth_cast"
       },
       {
         "id": "mor_symbiosis",
@@ -65,7 +65,7 @@
         "impact": "Obtiene 15% de armadura y sana 2% de vida. Consume un hongo cercano para sanar 4% en total.",
         "feedback": "kitFx y entidades con radio y expiración.",
         "vfx": "dark/shield",
-        "sfx": ""
+        "sfx": "js/champions/quality-five/audio.js: quality_morveth_cast"
       }
     ],
     "ultimate": {
@@ -79,7 +79,7 @@
       "impact": "Cuatro pulsos infectan, dañan y ralentizan. Los aliados dentro del jardín reciben protección.",
       "feedback": "kitFx y entidades con radio y expiración.",
       "vfx": "dark/shield",
-      "sfx": ""
+      "sfx": "js/champions/quality-five/audio.js: quality_morveth_ult"
     }
   },
   "art": {
@@ -106,9 +106,9 @@
   },
   "integration": {
     "runtime": "js/champions/quality-five/morveth.js",
-    "codex": "tools/quality-five/register-morveth-fixture.js",
-    "talents": "tools/quality-five/register-morveth-fixture.js",
-    "mastery": "tools/quality-five/register-morveth-fixture.js",
+    "codex": "js/champions/quality-five/register.js",
+    "talents": "js/champions/quality-five/register.js",
+    "mastery": "js/champions/quality-five/register.js",
     "set": "",
     "kitTest": "tools/quality-five/temporal-plague-functional.js"
   },
@@ -120,9 +120,9 @@
     "rewardGrantsPower": false
   },
   "budgets": {
-    "particles": 32,
+    "particles": 64,
     "summons": 4,
-    "audioVoices": 2
+    "audioVoices": 3
   },
   "evidence": {
     "reference": "docs/balance/champion-entry-reference.json",
@@ -133,7 +133,7 @@
     "balance": "docs/production/quality-five/workshop-entry-results.json",
     "visuals": "",
     "style": "",
-    "audio": "",
+    "audio": "docs/production/quality-five/audio-20261012.txt",
     "multiplayer": "docs/production/quality-five/online-results.json",
     "performance": ""
   },

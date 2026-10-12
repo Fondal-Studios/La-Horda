@@ -25,7 +25,7 @@
       "impact": "Daño base normalizado por rol.",
       "feedback": "Proyectil heredado; identidad visual pendiente.",
       "vfx": "exglyph",
-      "sfx": ""
+      "sfx": "Motor compartido de impacto/básico (js/audio/audio.js)"
     },
     "skills": [
       {
@@ -39,7 +39,7 @@
         "impact": "Daña un área y deja un eco que repite 30% del daño tras 0,8 s. Máximo dos ecos.",
         "feedback": "kitFx y entidades con radio y expiración.",
         "vfx": "rune/wind",
-        "sfx": ""
+        "sfx": "js/champions/quality-five/audio.js: quality_aelith_cast"
       },
       {
         "id": "ael_fracture",
@@ -52,7 +52,7 @@
         "impact": "Abre una línea que daña y ralentiza a sus enemigos durante 1,8 s.",
         "feedback": "kitFx y entidades con radio y expiración.",
         "vfx": "rune/wind",
-        "sfx": ""
+        "sfx": "js/champions/quality-five/audio.js: quality_aelith_cast"
       },
       {
         "id": "ael_haste",
@@ -65,7 +65,7 @@
         "impact": "Gana 25% de velocidad y 10% de armadura durante 3 s. Después sufre 15% de lentitud durante 0,8 s.",
         "feedback": "kitFx y entidades con radio y expiración.",
         "vfx": "rune/wind",
-        "sfx": ""
+        "sfx": "js/champions/quality-five/audio.js: quality_aelith_cast"
       }
     ],
     "ultimate": {
@@ -79,7 +79,7 @@
       "impact": "Tres pulsos dañan y ralentizan enemigos. Escuda a aliados dentro del círculo.",
       "feedback": "kitFx y entidades con radio y expiración.",
       "vfx": "rune/wind",
-      "sfx": ""
+      "sfx": "js/champions/quality-five/audio.js: quality_aelith_ult"
     }
   },
   "art": {
@@ -106,9 +106,9 @@
   },
   "integration": {
     "runtime": "js/champions/quality-five/aelith.js",
-    "codex": "tools/quality-five/register-aelith-fixture.js",
-    "talents": "tools/quality-five/register-aelith-fixture.js",
-    "mastery": "tools/quality-five/register-aelith-fixture.js",
+    "codex": "js/champions/quality-five/register.js",
+    "talents": "js/champions/quality-five/register.js",
+    "mastery": "js/champions/quality-five/register.js",
     "set": "",
     "kitTest": "tools/quality-five/temporal-plague-functional.js"
   },
@@ -120,9 +120,9 @@
     "rewardGrantsPower": false
   },
   "budgets": {
-    "particles": 32,
+    "particles": 64,
     "summons": 3,
-    "audioVoices": 2
+    "audioVoices": 3
   },
   "evidence": {
     "reference": "docs/balance/champion-entry-reference.json",
@@ -133,7 +133,7 @@
     "balance": "docs/production/quality-five/workshop-entry-results.json",
     "visuals": "",
     "style": "",
-    "audio": "",
+    "audio": "docs/production/quality-five/audio-20261012.txt",
     "multiplayer": "docs/production/quality-five/online-results.json",
     "performance": ""
   },
