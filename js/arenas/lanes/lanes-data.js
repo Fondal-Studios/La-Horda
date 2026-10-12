@@ -24,18 +24,28 @@ const LANES = {
   RESPAWN_MS:6000, RESPAWN_PER_LEVEL:1400, RESPAWN_PER_MIN:1500, BASE_HEAL:0.08, // reaparición (crece con el nivel y el reloj) y curación en la base
   RECALL_MS:5500,                     // volver a la base: se canaliza y se corta si te golpean o te movés
   ECLIPSE_MS:780000, TIME_LIMIT_MS:1080000,
-  START_SHARDS:60, WAVE_SHARDS:12, KILL_SHARDS:3, ELITE_SHARDS:12, HERO_KILL_SHARDS:35, TOWER_SHARDS:60, MAX_SHARDS:600,
+  START_GOLD:500, GOLD_PASSIVE:1.6, GOLD_MINION:[20, 24, 60], GOLD_HERO_KILL:300, GOLD_ASSIST:110, GOLD_TOWER:130, GOLD_EPIC:170, MAX_GOLD:3500, // oro de cada héroe (se gasta en la base)
+  SHOP_RADIUS:430,                    // distancia a tu cristal para poder comprar objetos (o estar caído)
   XP_MINION:16, XP_CASTER:20, XP_SIEGE:55, XP_HERO:110, XP_TOWER:140, XP_SHARE_R:900, // experiencia por baja (se reparte entre los héroes cercanos)
   CARD_AUTO_MS:15000, MAX_CARDS:12,   // una carta de horda por cada nivel que sube el héroe líder de cada equipo; tiempo para elegir
   CAMP_RESPAWN_MS:75000, CAMP_LEASH:520, CAMP_AGGRO:250,
   EPIC_FIRST_MS:240000, EPIC_RESPAWN_MS:300000, BUFF_MS:100000,
-  SHOP:{
-    repair:{name:"Reparar estructura", desc:"+260 de vida a tu torre o cristal más dañado", cost:50, cd:15000},
-    ward:{name:"Barrera", desc:"Escudo de 200 a tu estructura más adelantada", cost:60, cd:20000},
-    swarm:{name:"Enviar acechadores", desc:"5 corredores por el carril donde estás", cost:30, cd:10000},
-    brute:{name:"Enviar coloso", desc:"Un coloso por el carril donde estás", cost:80, cd:10000}
+  SHOP:{   // pedidos de equipo (se pagan con TU oro, desde donde estés)
+    repair:{name:"Reparar estructura", desc:"+260 de vida a tu torre o cristal más dañado", cost:120, cd:15000},
+    ward:{name:"Barrera", desc:"Escudo de 200 a tu estructura más adelantada", cost:140, cd:20000},
+    swarm:{name:"Enviar acechadores", desc:"5 corredores por el carril donde estás", cost:80, cd:10000},
+    brute:{name:"Enviar coloso", desc:"Un coloso por el carril donde estás", cost:220, cd:10000}
   }
 };
+// Objetos de héroe: se compran en la base (o estando caído) con tu oro; tres niveles por objeto. `field` es la mejora en el héroe.
+const LANES_ITEMS = {
+  atk:{name:"Hoja de Ceniza", icon:"⚔", field:"itAtk", costs:[350, 700, 1100], desc:"+9 % de daño por nivel"},
+  hp:{name:"Coraza de Hueso", icon:"♥", field:"itHp", costs:[300, 600, 950], desc:"+10 % de vida por nivel"},
+  speed:{name:"Botas del Errante", icon:"➤", field:"itSpd", costs:[250, 500, 800], desc:"+7 % de velocidad por nivel"},
+  siege:{name:"Ariete de Hierro", icon:"⛫", field:"itSiege", costs:[300, 600, 950], desc:"+25 % de daño a torres y cristal por nivel"},
+  regen:{name:"Savia Viva", icon:"✧", field:"itRegen", costs:[250, 500, 800], desc:"Curación de 0,6 %/s por nivel"}
+};
+const LANES_ITEM_ORDER = ["atk", "hp", "speed", "siege", "regen"];
 // Cartas de horda: cada una potencia a las criaturas que ESTE equipo manda contra el rival. `max` = cuántas veces se puede tomar.
 const LANES_CARDS = {
   hp:{name:"Piel de ceniza", desc:"+22% de vida a tu horda", icon:"♥", max:4, mod:m=>{ m.hp *= 1.22; }},

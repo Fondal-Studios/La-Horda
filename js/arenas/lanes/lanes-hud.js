@@ -25,12 +25,11 @@ function lanesHudBuild(){
     '<div class="ln-rival"><canvas width="240" height="180"></canvas><div class="ln-horde"></div></div>';
   root.appendChild(el);
   const shop = el.querySelector(".ln-shop");
-  for(const [key, it] of Object.entries(LANES.SHOP)){
-    const b = document.createElement("button"); b.type = "button"; b.dataset.key = key; b.className = "ln-buy" + (key === "swarm" || key === "brute" ? " ln-send" : "");
-    b.innerHTML = '<b>' + it.name + '</b><span>' + it.cost + ' ◆</span><small>' + it.desc + '</small>';
-    b.addEventListener("click", ()=>{ if(player) lanesBuy(player.team, key, player); lanesHudTick(); });
-    shop.appendChild(b);
-  }
+  const hint = document.createElement("div"); hint.className = "ln-shop-hint"; hint.textContent = "OBJETOS: se compran en tu base o estando caído (B vuelve) · PEDIDOS: desde donde estés"; shop.appendChild(hint);
+  const mk = (key, name, extra)=>{ const b = document.createElement("button"); b.type = "button"; b.dataset.key = key; b.className = "ln-buy" + extra; b.innerHTML = '<b>' + name + '</b><span></span><small></small>';
+    b.addEventListener("click", ()=>{ if(player) lanesBuy(player.team, key, player); lanesHudTick(); }); shop.appendChild(b); return b; };
+  for(const id of LANES_ITEM_ORDER) mk("item:" + id, LANES_ITEMS[id].name, " ln-item");
+  for(const [key, it] of Object.entries(LANES.SHOP)) mk(key, it.name, key === "swarm" || key === "brute" ? " ln-send" : "");
   el.querySelector(".ln-recall").addEventListener("click", ()=>{ if(player) lanesRecallRequest(player); });
   if(!window._lnKeyB){ window._lnKeyB = true; addEventListener("keydown", ev=>{ if((ev.key === "b" || ev.key === "B") && LN && LN.mode !== "coliseo" && state === "playing" && player && !ev.repeat) lanesRecallRequest(player); }); }
   const chip = el.querySelector(".ln-chip");
@@ -64,12 +63,17 @@ function lanesHudTick(){
   });
   q(".ln-time").textContent = _lnClock(L.t);
   q(".ln-wave").textContent = L.t >= LANES.ECLIPSE_MS ? "☀ ECLIPSE" : "Oleada " + L.wave;
-  q(".ln-shards").textContent = "◆ " + T.shards + " oro";
+  q(".ln-shards").textContent = "◆ " + Math.floor(player.gold || 0) + " oro";
   q(".ln-phase").textContent = "Nv " + (player.mlvl || LANES.LEVEL0) + (player.mlvl >= LANES.LEVEL_MAX ? " · MÁX" : " · XP " + Math.floor((player.mxp || 0) / lanesLevelNeed(player.mlvl) * 100) + " %") + " · TIENDA";
   // objetivos épicos y bendiciones de equipo
   if(L.epics){ q(".ln-epics").textContent = L.epics.map(ep=>{ const d = LANES_EPICS[ep.id], on = ep.mon && ep.mon.alive; return (d.key === "dragon" ? "🐉 " : "👑 ") + (on ? "VIVO" : _lnMin(Math.max(0, ep.respawnAt - L.t))); }).join("  "); }
   const rc = q(".ln-recall"); rc.classList.toggle("on", !!player._recall); rc.disabled = !player.alive;
-  for(const b of el.querySelectorAll(".ln-buy")) b.disabled = !lanesCanBuy(me, b.dataset.key);
+  for(const b of el.querySelectorAll(".ln-buy")){
+    const key = b.dataset.key, sp = b.querySelector("span");
+    if(key.indexOf("item:") === 0){ const it = LANES_ITEMS[key.slice(5)], tier = player[it.field] || 0; sp.textContent = tier >= 3 ? "MÁX" : it.costs[tier] + " ◆ · Nv " + (tier + 1); b.title = it.desc; }
+    else { sp.textContent = LANES.SHOP[key].cost + " ◆"; b.title = LANES.SHOP[key].desc; }
+    b.disabled = !lanesCanBuy(me, key, player);
+  }
   const bf = []; if(T.buffs.dragon > L.t) bf.push("Dragón +10 % daño " + _lnMin(T.buffs.dragon - L.t)); if(T.buffs.rey > L.t) bf.push("Rey Coloso " + _lnMin(T.buffs.rey - L.t)); if(player._lnBuff && player._lnBuff.until > L.t) bf.push("Gigante +12 % " + _lnMin(player._lnBuff.until - L.t));
   q(".ln-note").textContent = L.t >= LANES.ECLIPSE_MS ? "Los dos cristales se apagan cada vez más rápido" : (bf.length ? "★ " + bf.join(" · ") : (L.t < 20000 ? "Tu horda sale sola por los tres carriles. Acompañala y derribá torres." : (player._recall ? "Volviendo a la base… no te muevas" : "")));
   const foes = L.feed.filter(f=>L.t - f.t < 9000).slice(-3);
@@ -118,10 +122,10 @@ function lanesShowResult(){
   let r = document.getElementById("lanes-result");
   if(!r){ r = document.createElement("div"); r.id = "lanes-result"; r.className = "lanes-result hidden"; document.body.appendChild(r); }
   const mine = player.team != null ? player.team : 0, won = L.winner === mine, draw = L.winner === -1;
-  const rows = heroes.map(h=>{ const s = h.stats || {}; return '<tr' + (h === player ? ' class="me"' : '') + '><td>' + heroLabel(h) + '</td><td>' + (h.team ? "Ámbar" : "Zafiro") + '</td><td>' + Math.round(s.dmgDealt || s.dmg || 0) + '</td><td>' + (s.kills || 0) + '</td><td>' + Math.round(s.healed || s.heal || 0) + '</td></tr>'; }).join("");
+  const rows = heroes.map(h=>{ const s = h.stats || {}; return '<tr' + (h === player ? ' class="me"' : '') + '><td>' + heroLabel(h) + '</td><td>' + (h.team ? "Ámbar" : "Zafiro") + '</td><td>' + (h.mlvl || "-") + '</td><td>' + Math.round(s.dmgDealt || s.dmg || 0) + '</td><td>' + (s.kills || 0) + '</td><td>' + Math.round(s.healed || s.heal || 0) + '</td></tr>'; }).join("");
   r.innerHTML = '<div class="ln-res-card"><div class="ln-res-kicker">GUERRA DE CRISTALES</div><h2>' + (draw ? "EMPATE" : won ? "¡VICTORIA!" : "CRISTAL CAÍDO") + '</h2>' +
     '<p>Zafiro ' + Math.ceil(L.team[0].S[9].hp) + ' · Ámbar ' + Math.ceil(L.team[1].S[9].hp) + ' · torres en pie ' + lanesTowersAlive(0) + '–' + lanesTowersAlive(1) + ' · bajas de héroes ' + L.team[0].pk + '–' + L.team[1].pk + ' · ' + (L.why === "tiempo" ? "decidida por tiempo" : "cristal destruido") + '</p>' +
-    '<table><thead><tr><th>Jugador</th><th>Equipo</th><th>Daño</th><th>Bajas</th><th>Cura</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+    '<table><thead><tr><th>Jugador</th><th>Equipo</th><th>Nv</th><th>Daño</th><th>Bajas</th><th>Cura</th></tr></thead><tbody>' + rows + '</tbody></table>' +
     '<div class="ln-res-btns"><button type="button" class="ln-again">REVANCHA</button><button type="button" class="ln-exit">VOLVER AL MENÚ</button></div></div>';
   r.classList.remove("hidden");
   const online = !!(typeof netMatch !== "undefined" && netMatch);

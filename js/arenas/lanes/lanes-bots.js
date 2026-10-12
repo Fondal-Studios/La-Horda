@@ -45,6 +45,10 @@ function lanesLeaderFor(h){
   let p = laneRally(T);
   const low = h.hp < h.maxHp * 0.35;
   const homeDist = Math.hypot(h.x - c.x, h.y - c.y);
+  // con mucho oro y sin enemigos cerca, vuelve a comprar objetos (como haría una persona)
+  if(!low && !h._recall && homeDist > 700 && (h.gold || 0) >= 700 && L.t - (h._shopTrip || 0) > 45000 && !heroes.some(o=>o.alive && o.team !== T && Math.hypot(o.x - h.x, o.y - h.y) < 750)){
+    h._shopTrip = L.t; lanesRecallStart(h);
+  }
   if(low){ if(homeDist > 400 && !h._recall && (!h._lastRecallTry || L.t - h._lastRecallTry > 4000)){ h._lastRecallTry = L.t; lanesRecallStart(h); } }   // herido: vuelve a la base
   else if(h.ln === -1){
     // selva: limpia campamentos; si hay un objetivo épico con su equipo cerca, va (a partir de los 5 minutos)

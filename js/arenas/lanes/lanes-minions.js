@@ -45,7 +45,7 @@ function lanesWaveStart(T){
     if(T.superWaves > 0) put("super");
   }
   if(T.superWaves > 0) T.superWaves--;
-  T.shards = Math.min(LANES.MAX_SHARDS, T.shards + LANES.WAVE_SHARDS * 3 + (behind ? 10 : 0)); if(behind) T.assist++;
+  if(behind){ T.assist++; lanesGrantGold(team, 25); }   // remontada: el equipo con menos torres cobra un poco más
 }
 // gancho placeSpawn: la criatura sale del punto indicado
 function lanesPlaceSpawn(e){
@@ -116,6 +116,6 @@ function lanesEnemyKilled(e){
   if(e.team === 2){ lanesJungleKilled(e, kt, k); return; }
   if(kt == null || kt === e.team) return;
   const T = L.team[kt]; T.kills++;
-  if(k && k.classKey) T.shards = Math.min(LANES.MAX_SHARDS, T.shards + (e.isBrute ? LANES.ELITE_SHARDS : LANES.KILL_SHARDS));   // el oro es del que da el último golpe
+  if(k && k.classKey) lanesAddGold(k, e.kindM === "caster" ? LANES.GOLD_MINION[1] : e.isBrute ? LANES.GOLD_MINION[2] : LANES.GOLD_MINION[0]);   // el oro es del que da el último golpe
   lanesGrantXP(kt, e.x, e.y, e.lnXp || LANES.XP_MINION);
 }

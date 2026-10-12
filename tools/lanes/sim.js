@@ -29,7 +29,7 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
    }
    rep.ended=LN.ended;rep.winner=LN.winner;rep.why=LN.why;rep.t=Math.round(LN.t/1000);rep.wave=LN.wave;rep.shards=LN.team.map(t=>t.shards);rep.kills=LN.team.map(t=>t.kills);rep.pk=LN.team.map(t=>t.pk);
    rep.cardsTaken=LN.team.map(t=>t.taken+(t.offer?1:0)+t.pendingCards);rep.towersDown=LN.team.map(t=>9-lanesTowersAlive(t.team));rep.struct=LN.team.map(t=>t.S.map(s=>Math.round(s.hp)));rep.camps=LN.camps.map(c=>c.mons.length);rep.jungle=enemies.filter(e=>e.alive&&e.team===2).length;
-   rep.alive=heroes.map(h=>h.alive);rep.setup=LN.setup;rep.mods=LN.team.map(t=>t.mods);
+   rep.items=heroes.reduce((a,h)=>a+(h.itAtk||0)+(h.itHp||0)+(h.itSpd||0)+(h.itSiege||0)+(h.itRegen||0),0);rep.gold=heroes.map(h=>Math.round(h.gold||0));rep.alive=heroes.map(h=>h.alive);rep.setup=LN.setup;rep.mods=LN.team.map(t=>t.mods);
    damageHero=dh;
    lanesStop('mainmenu');rep.restored=!LN&&typeof save.champions.mago==='object';
    return rep;},{secs:SECS,seed:g});
@@ -37,7 +37,7 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
   assert.equal(r.ok,true,'arrancó');assert.equal(r.heroes,10,'cinco contra cinco');assert.equal(r.friendly,0,'sin fuego amigo de la horda propia');assert.equal(r.nan,0,'sin daño NaN');
   assert(r.maxLvl>3,'los héroes ganaron experiencia y subieron de nivel');
   assert(r.cardsTaken[0]+r.cardsTaken[1]>=1,'se ofrecieron/eligieron cartas de horda por nivel');
-  assert(r.kills[0]+r.kills[1]>20,'las hordas combatieron');assert(r.jungle>0,'la selva tiene criaturas');
+  assert(r.items>0,'los bots compraron objetos en la base');assert(r.kills[0]+r.kills[1]>20,'las hordas combatieron');assert(r.jungle>0,'la selva tiene criaturas');
   assert(r.restored,'guardado real restaurado');
   assert.deepEqual(errs,[],'sin errores de página: '+errs.slice(0,3).join(' | '));
   await p.close();

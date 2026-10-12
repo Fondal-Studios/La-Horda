@@ -71,7 +71,7 @@ function lanesJungleKilled(e, kt, killer){
   if(e.epicId != null){
     const ep = L.epics[e.epicId], def = LANES_EPICS[e.epicId]; ep.mon = null; ep.respawnAt = L.t + LANES.EPIC_RESPAWN_MS;
     if(kt != null){
-      const T = L.team[kt]; T.shards = Math.min(LANES.MAX_SHARDS, T.shards + 120); lanesGrantXP(kt, e.x, e.y, e.lnXp);
+      const T = L.team[kt]; lanesGrantGold(kt, LANES.GOLD_EPIC); lanesGrantXP(kt, e.x, e.y, e.lnXp);
       if(def.key === "dragon"){ T.buffs.dragon = L.t + LANES.BUFF_MS; }
       else { T.buffs.rey = L.t + LANES.BUFF_MS; T.superWaves = 2; }
       lanesFeed(lanesTeamName(kt) + " venció al " + def.name, kt); showBanner("¡" + lanesTeamName(kt) + " VENCIÓ AL " + def.name.toUpperCase() + "!");
@@ -82,7 +82,7 @@ function lanesJungleKilled(e, kt, killer){
   const def = LANES_CAMPS[e.campId], K = LANES_CAMP_KINDS[def.kind];
   if(camp.mons.every(m=>!m.alive || m === e)){ camp.respawnAt = L.t + LANES.CAMP_RESPAWN_MS; camp.mons = []; }
   if(kt != null && killer && killer.classKey){
-    const T = L.team[kt]; T.shards = Math.min(LANES.MAX_SHARDS, T.shards + Math.round(K.gold / K.n));
+    lanesAddGold(killer, Math.round(K.gold / K.n));
     lanesGrantXP(kt, e.x, e.y, e.lnXp);
     if(K.buff && !camp.mons.length){ killer._lnBuff = {until:L.t + LANES.BUFF_MS * 0.8, dmg:1.12}; killer.energy = killer.maxEnergy; floatText(killer.x, killer.y - 60, "¡Bendición del Gigante!", "heal"); }
   }

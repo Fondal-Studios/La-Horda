@@ -10,9 +10,10 @@ function lanesLevelNeed(l){ return 60 + 22 * l; }    // experiencia para pasar d
 function lanesApplyLevel(h, lvl, full){
   const base = computePlayerStats(h.classKey, lvl), ratio = h.maxHp ? h.hp / h.maxHp : 1;
   const bot = h.isBot && !h.isDivineFoe;
-  h.maxHp = Math.round(base.hp * runStats.hpMult * (bot ? 1.15 : 1));
+  h.maxHp = Math.round(base.hp * runStats.hpMult * (bot ? 1.15 : 1) * (1 + 0.10 * (h.itHp || 0)));
   h.hp = full ? h.maxHp : Math.max(1, Math.round(h.maxHp * ratio));
   h.baseDmg = base.dmg * (bot ? 0.72 : 1); h.def = base.def;
+  if(h._spd0 == null) h._spd0 = h.baseSpeed; h.baseSpeed = h._spd0 * (1 + 0.07 * (h.itSpd || 0));
   h.mlvl = lvl;
   if(save.champions[h.classKey]) save.champions[h.classKey].level = lvl;   // el HUD de siempre muestra «Nv. X»
 }
@@ -56,8 +57,11 @@ function lanesRecallRequest(h){ if(typeof lanesNetRecallRequest === "function" &
 function lanesHeroTick(dt){
   const L = LN;
   for(const h of heroes){
+    h.gold = Math.min(LANES.MAX_GOLD, (h.gold == null ? LANES.START_GOLD : h.gold) + (h.alive ? LANES.GOLD_PASSIVE * dt / 1000 : 0));
     if(h.alive){
       h.dead_t = 0;
+      if(h.itRegen && h.hp < h.maxHp) h.hp = Math.min(h.maxHp, h.hp + h.maxHp * 0.006 * h.itRegen * dt / 1000);
+      if(!lanesIsHuman(h)) lanesBotShop(h);
       const c = laneCrystalPos(h.team);   // curación en la base propia
       if(Math.hypot(h.x - c.x, h.y - c.y) < 300 && h.hp < h.maxHp){ h.hp = Math.min(h.maxHp, h.hp + h.maxHp * LANES.BASE_HEAL * dt / 1000); h.energy = Math.min(h.maxEnergy || 100, (h.energy || 0) + 12 * dt / 1000); }
       if(h._recall){
@@ -76,7 +80,9 @@ function lanesHeroTick(dt){
       h.dead_t = L.t; h._respawnAt = L.t + lanesRespawnMs(h);
       const kt = h._lnKiller, kh = h._lnKillerHero; h._lnKiller = null; h._lnKillerHero = null;
       if(kt != null && kt !== h.team){
-        L.team[kt].shards = Math.min(LANES.MAX_SHARDS, L.team[kt].shards + LANES.HERO_KILL_SHARDS); L.team[kt].pk++;
+        L.team[kt].pk++;
+        if(kh) lanesAddGold(kh, LANES.GOLD_HERO_KILL);
+        for(const a of heroes) if(a.team === kt && a !== kh && a.alive && Math.hypot(a.x - h.x, a.y - h.y) < LANES.XP_SHARE_R) lanesAddGold(a, LANES.GOLD_ASSIST);
         lanesGrantXP(kt, h.x, h.y, LANES.XP_HERO + 12 * (h.mlvl || 1));
         if(kh && kh.stats) kh.stats.kills = kh.stats.kills || 0;
         lanesFeed(lanesTeamName(kt) + " derribó a " + heroLabel(h), kt);
@@ -89,4 +95,14 @@ function lanesHeroTick(dt){
       if(h._net) h._net.posAuth++; // un invitado acepta la nueva posición
     }
   }
+}
+
+// Los bots compran en la base: siguiente nivel del objeto que más les conviene según su rol.
+function lanesBotShop(h){
+  const L = LN; if(L.t - (h._shopAt || 0) < 2000 || !lanesAtShop(h)) return;
+  h._shopAt = L.t;
+  const order = h.ln === -1 ? ["atk", "speed", "hp", "regen", "siege"] : (h.cls && (h.cls.role === "tanque") ? ["hp", "atk", "regen", "speed", "siege"] : ["atk", "hp", "speed", "siege", "regen"]);
+  let best = null;
+  for(const id of order){ const it = LANES_ITEMS[id], tier = h[it.field] || 0; if(tier >= 3 || (h.gold || 0) < it.costs[tier]) continue; if(!best || tier < best.tier) best = {id, tier}; }
+  if(best) lanesBuy(h.team, "item:" + best.id, h);
 }

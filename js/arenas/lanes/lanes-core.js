@@ -85,7 +85,7 @@ function lanesNewStruct(team, kind, l, k){
 }
 function lanesNewTeam(team){
   const S = []; for(let l = 0; l < 3; l++) for(let k = 0; k < 3; k++) S.push(lanesNewStruct(team, "tower", l, k)); S.push(lanesNewStruct(team, "crystal", -1, 0));
-  return {team, shards:LANES.START_SHARDS, repairAt:0, wardAt:0, sendAt:0, kills:0, sent:0, assist:0, pk:0, tk:0, wave:0, nextWave:LANES.FIRST_WAVE_MS,
+  return {team, repairAt:0, wardAt:0, sendAt:0, kills:0, sent:0, assist:0, pk:0, tk:0, wave:0, nextWave:LANES.FIRST_WAVE_MS,
     cards:{}, taken:0, mods:lanesModsOf({}), offer:null, offerAt:0, pendingCards:0, buffs:{dragon:0, rey:0}, superWaves:0, S};
 }
 function lanesCrystal(team){ return LN.team[team].S[9]; }
@@ -111,7 +111,7 @@ function lanesRunStart(){
   heroes.forEach((h, k)=>{
     h.team = h.lane = (L.assignment && L.assignment[k] != null) ? L.assignment[k] : (k < half ? 0 : 1);
     h.ln = LANES_ROLE_LANES[slot[h.team]++ % LANES_ROLE_LANES.length]; h._lnProxy = null; h.dead_t = 0;
-    h.mlvl = LANES.LEVEL0; h.mxp = 0; h._recall = null; h._lnBuff = null;
+    h.mlvl = LANES.LEVEL0; h.mxp = 0; h._recall = null; h._lnBuff = null; h.gold = LANES.START_GOLD; h.itAtk = h.itHp = h.itSpd = h.itSiege = h.itRegen = 0; h._spd0 = null;
     lanesApplyLevel(h, LANES.LEVEL0, true);
     const r = laneRally(h.team); h.x = r.x + (Math.random() - 0.5) * 120; h.y = r.y + (Math.random() - 0.5) * 120;
   });
@@ -221,6 +221,8 @@ function lanesDmgMult(e, src){
   let m = 1; const T = L.team[h.team];
   if(T && T.buffs && T.buffs.dragon > L.t) m *= 1.10;
   if(h._lnBuff && h._lnBuff.until > L.t) m *= h._lnBuff.dmg;
+  if(h.itAtk) m *= 1 + 0.09 * h.itAtk;
+  if(h.itSiege && e.lanesProxy && e.kind === "struct") m *= 1 + 0.25 * h.itSiege;
   return m;
 }
 // Gancho de damageHero: la horda propia no le pega a su equipo
@@ -246,7 +248,7 @@ function lanesStructDown(s, byTeam){
   const L = LN; s.alive = false; s.hp = 0; if(s._lnProxy) s._lnProxy.alive = false;
   const foe = 1 - s.team;
   if(s.kind === "crystal"){ lanesFinish(foe, "cristal"); return; }
-  L.team[foe].shards = Math.min(LANES.MAX_SHARDS, L.team[foe].shards + LANES.TOWER_SHARDS); L.team[foe].tk++;
+  L.team[foe].tk++; lanesGrantGold(foe, LANES.GOLD_TOWER);
   lanesGrantXP(foe, s.x, s.y, LANES.XP_TOWER);
   const name = s.order === 0 ? "exterior" : s.order === 1 ? "interior" : "inhibidora";
   lanesFeed((s.team ? "Ámbar" : "Zafiro") + ": cayó su torre " + name + " (" + LANE_NAMES[s.lane].toLowerCase() + ")", foe);
@@ -257,14 +259,25 @@ function lanesStructDown(s, byTeam){
 }
 function lanesFeed(text, team){ const L = LN; L.feed.push({t:L.t, text, team}); if(L.feed.length > 5) L.feed.shift(); }
 
-/* ---------------- economía y compras (oro de equipo) ---------------- */
+/* ---------------- economía y compras (oro de cada héroe) ---------------- */
+function lanesAddGold(h, n){ if(h && n) h.gold = Math.max(0, Math.min(LANES.MAX_GOLD, (h.gold || 0) + n)); }
+function lanesGrantGold(team, n){ for(const h of heroes) if(h.team === team && h.alive) lanesAddGold(h, n); }
+function lanesAtShop(h){ if(!h) return false; if(!h.alive) return true; const c = laneCrystalPos(h.team); return Math.hypot(h.x - c.x, h.y - c.y) < LANES.SHOP_RADIUS; }
 function lanesShopOpen(){ return !!LN && !LN.ended; }
 function lanesWeakest(team){ let best = null; for(const s of LN.team[team].S) if(s.alive && s.hp < s.maxHp && (!best || s.maxHp - s.hp > best.maxHp - best.hp)) best = s; return best; }
 function lanesWardTarget(team){ let best = null; for(const s of LN.team[team].S) if(s.alive && lanesExposed(s) && s.ward < 200 && (!best || s.hp / s.maxHp < best.hp / best.maxHp)) best = s; return best; }
-function lanesCanBuy(team, key){
-  const L = LN, T = L && L.team[team], it = Object.prototype.hasOwnProperty.call(LANES.SHOP, key) ? LANES.SHOP[key] : null; // (un invitado puede mandar cualquier texto: "__proto__"…)
-  if(!T || !it || L.ended) return false;
-  if(T.shards < it.cost) return false;
+const _lnHas = (o, k)=>Object.prototype.hasOwnProperty.call(o, k);
+// ¿Puede `buyer` comprar `key`? Pedidos de equipo (LANES.SHOP) u objetos ("item:atk"…). Un invitado puede mandar cualquier texto ("__proto__"…).
+function lanesCanBuy(team, key, buyer){
+  const L = LN, T = L && L.team[team]; key = String(key);
+  if(!T || L.ended || !buyer || !buyer.alive && !lanesAtShop(buyer)) return false;
+  if(key.indexOf("item:") === 0){
+    const id = key.slice(5); if(!_lnHas(LANES_ITEMS, id)) return false;
+    const it = LANES_ITEMS[id], tier = buyer[it.field] || 0;
+    return tier < 3 && lanesAtShop(buyer) && (buyer.gold || 0) >= it.costs[tier];
+  }
+  const it = _lnHas(LANES.SHOP, key) ? LANES.SHOP[key] : null; if(!it) return false;
+  if((buyer.gold || 0) < it.cost) return false;
   if(key === "repair" && (!lanesWeakest(team) || L.t < T.repairAt)) return false;
   if(key === "ward" && (L.t < T.wardAt || !lanesWardTarget(team))) return false;
   if((key === "swarm" || key === "brute") && L.t < T.sendAt) return false;
@@ -272,16 +285,25 @@ function lanesCanBuy(team, key){
 }
 function lanesBuy(team, key, buyer){
   if(typeof lanesNetBuyRequest==="function" && lanesNetBuyRequest(key)) return true; // invitado: lo decide el anfitrión
-  if(!lanesCanBuy(team, key)) return false;
-  const L = LN, T = L.team[team], it = LANES.SHOP[key];
-  T.shards -= it.cost;
-  const ln = buyer && buyer.x != null ? lanesLaneOf(buyer.x, buyer.y) : 1;
+  key = String(key);
+  if(!lanesCanBuy(team, key, buyer)) return false;
+  const L = LN, T = L.team[team];
+  if(key.indexOf("item:") === 0){
+    const it = LANES_ITEMS[key.slice(5)], tier = buyer[it.field] || 0;
+    lanesAddGold(buyer, -it.costs[tier]); buyer[it.field] = tier + 1; lanesApplyLevel(buyer, buyer.mlvl, false);
+    if(typeof playSfx === "function") try{ playSfx("pickup"); }catch(e){}
+    if(buyer === player) showBanner(it.name + " nivel " + (tier + 1) + " ✓");
+    return true;
+  }
+  const it = LANES.SHOP[key];
+  lanesAddGold(buyer, -it.cost);
+  const ln = buyer.x != null ? lanesLaneOf(buyer.x, buyer.y) : 1;
   if(key === "repair"){ const s = lanesWeakest(team); s.hp = Math.min(s.maxHp, s.hp + 260); T.repairAt = L.t + it.cd; }
   else if(key === "ward"){ const s = lanesWardTarget(team); s.ward = Math.max(s.ward, 200); T.wardAt = L.t + it.cd; }
   else { T.sendAt = L.t + it.cd; T.sent++; lanesSendNow(team, key, ln); }
-  if(buyer && buyer.stats) buyer.stats.buys = (buyer.stats.buys || 0) + 1;
+  if(buyer.stats) buyer.stats.buys = (buyer.stats.buys || 0) + 1;
   if(typeof playSfx === "function") try{ playSfx("pickup"); }catch(e){}
-  showBanner(key === "swarm" || key === "brute" ? "¡Mandaste refuerzos por el carril " + LANE_NAMES[ln].toLowerCase() + "!" : it.name + " ✓");
+  if(buyer === player) showBanner(key === "swarm" || key === "brute" ? "¡Mandaste refuerzos por el carril " + LANE_NAMES[ln].toLowerCase() + "!" : it.name + " ✓");
   return true;
 }
 

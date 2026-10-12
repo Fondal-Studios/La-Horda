@@ -26,7 +26,7 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
   const small=await p.evaluate(()=>[...document.querySelectorAll('#lanes-hud *')].filter(e=>{const r=e.getBoundingClientRect(),cs=getComputedStyle(e);return r.width>0&&r.height>0&&cs.display!=='none'&&[...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim().length>1)&&parseFloat(cs.fontSize)<14;}).map(e=>e.className+':'+e.textContent.trim().slice(0,12)));
   assert.deepEqual(small,[],w+': letra menor a 14 px: '+small.join(','));
   // suministros: se abre el panel y se compra
-  await p.evaluate(()=>{LN.team[0].shards=200;});
+  await p.evaluate(()=>{player.gold=900;});
   await p.click('.ln-chip');assert(await p.isVisible('.ln-shop'),'panel de suministros');
   assert(await p.evaluate(()=>{const r=document.querySelector('.ln-recall').getBoundingClientRect();return r.width>=48&&r.height>=48;}),w+': botón de volver a la base >= 48 px');
   assert.equal(await p.evaluate(()=>heroes.length),10,'cinco contra cinco');assert.equal(await p.evaluate(()=>player.mlvl),3,'arranca en nivel 3');
@@ -34,6 +34,10 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
   await p.evaluate(()=>{player.x+=200;});await p.waitForFunction(()=>!player._recall,null,{timeout:5000});
   const bb=await p.evaluate(()=>[...document.querySelectorAll('.ln-buy')].map(b=>{const r=b.getBoundingClientRect();return {w:r.width,h:r.height,d:b.disabled};}));assert(bb.every(x=>x.h>=48),w+': botones de compra >= 48 px '+JSON.stringify(bb));
   await p.click('.ln-buy[data-key="ward"]');assert.equal(await p.evaluate(()=>LN.team[0].S.filter(x=>x.ward===200).length),1,'compra de barrera');
+  assert.equal(await p.evaluate(()=>lanesCanBuy(0,'item:atk',player)),false,'los objetos no se compran lejos de la base');
+  await p.evaluate(()=>{const r=laneRally(0);player.x=r.x;player.y=r.y;});await p.waitForFunction(()=>!document.querySelector('.ln-buy[data-key="item:atk"]').disabled,null,{timeout:5000});
+  await p.click('.ln-buy[data-key="item:atk"]');assert.equal(await p.evaluate(()=>player.itAtk),1,'compra de un objeto en la base');
+  assert.equal(await p.evaluate(()=>{const b=document.querySelector('.ln-buy[data-key="item:atk"]').querySelector('span');return /Nv 2/.test(b.textContent);}),true,'el objeto muestra su siguiente nivel');
   await p.click('.ln-chip');
   // carta de horda: se ofrece, se ve legible (>= 14 px, botones >= 48 px) y al elegirla potencia a la horda propia
   await p.evaluate(()=>{LN.team[0].pendingCards=1;});await p.waitForSelector('.ln-cards:not(.hidden) .ln-card',{timeout:8000});
