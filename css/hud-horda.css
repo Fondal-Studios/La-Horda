@@ -1,0 +1,35 @@
+/* css/hud-horda.css — Botones de habilidad con el estilo de La Horda: placas de hierro remachadas con aro de metal
+   (degradado cónico del color de cada botón), símbolos vectoriales (js/ui/skill-glyphs.js) y placa de hueso para la tecla.
+   Solo presentación: no cambia tamaños, posiciones ni lógica. Se carga después de combat-readability.css y controls.css. */
+#controls #skillzone .ability-btn{
+  --rim2:#3a2a1a; --plate1:#33261c; --plate2:#150e09;
+  border:4px solid transparent; border-radius:20px;
+  background:
+    radial-gradient(circle at 14% 14%, #e8d3a4 0 1.6px, #8a6f43 2.4px, transparent 3.4px),
+    radial-gradient(circle at 86% 14%, #e8d3a4 0 1.6px, #8a6f43 2.4px, transparent 3.4px),
+    radial-gradient(circle at 14% 86%, #e8d3a4 0 1.6px, #8a6f43 2.4px, transparent 3.4px),
+    radial-gradient(circle at 86% 86%, #e8d3a4 0 1.6px, #8a6f43 2.4px, transparent 3.4px),
+    radial-gradient(circle at 50% 38%, var(--plate1), var(--plate2) 78%) padding-box,
+    conic-gradient(from 200deg, var(--action), var(--rim2) 22%, var(--action) 48%, var(--rim2) 74%, var(--action)) border-box;
+  box-shadow:0 0 0 2px #060403, 0 4px 0 2px #060403, inset 0 0 0 2px rgba(0,0,0,.6), inset 0 4px 8px rgba(255,255,255,.12);
+  text-transform:uppercase; letter-spacing:.04em; font-size:.74rem;
+}
+#controls #skillzone .ability-btn.s1{--action:#7fdcff;--rim2:#1c4a66;--plate1:#27506b;--plate2:#0d1b2a;}
+#controls #skillzone .ability-btn.s2{--action:#c7b8ff;--rim2:#3a2f6b;--plate1:#4a3d7c;--plate2:#161230;}
+#controls #skillzone .ability-btn.s3{--action:#8ff0c8;--rim2:#1f5a48;--plate1:#2b6a58;--plate2:#0f2420;}
+#controls #skillzone .ability-btn.basic{--action:#ffc185;--rim2:#6a3a18;--plate1:#7a4a2a;--plate2:#2a170d;border-radius:50%;}
+#controls #skillzone .ability-btn.ult{--action:#ffe28e;--rim2:#8a5a12;--plate1:#6a5224;--plate2:#1e1508;border-radius:50%;}
+#controls #skillzone .ability-btn.emerg,#controls #skillzone .ability-btn.pact,#controls #skillzone .ability-btn.revive{--action:#97f3b4;--rim2:#235c3c;--plate1:#2e6b4a;--plate2:#10241c;border-radius:14px;}
+#controls #skillzone .ability-btn.sec{border-width:3px;}
+#controls #skillzone .ability-btn.cd{--action:#8a97ad;--rim2:#3a4252;filter:saturate(.7);}
+/* el símbolo: grande, con brillo del color del botón */
+#controls .ability-btn .ico .ico-glyph{ width:1.9em; height:1.9em; image-rendering:auto; filter:drop-shadow(0 0 5px var(--action)) drop-shadow(0 1px 0 #000); }
+#controls .ability-btn.sec .ico .ico-glyph{ width:1.5em; height:1.5em; }
+/* listo para usar: late como brasa */
+@keyframes hordaEmber{ 50%{ box-shadow:0 0 0 2px #060403, 0 4px 0 2px #060403, 0 0 20px 4px color-mix(in srgb, var(--action) 55%, transparent), inset 0 0 0 2px rgba(0,0,0,.6), inset 0 4px 8px rgba(255,255,255,.2); } }
+#controls #skillzone .ability-btn.ready:not(.revive):not(.sec){ animation:hordaEmber 2.4s ease-in-out infinite; }
+#controls #skillzone .ability-btn.ult.ready{ animation:hordaEmber 1.3s ease-in-out infinite; }
+body.reduce-motion #controls #skillzone .ability-btn.ready{ animation:none; }
+@media (prefers-reduced-motion:reduce){ #controls #skillzone .ability-btn.ready{ animation:none; } }
+/* tecla (teclado/mando): placa de hueso */
+body.inp-kb .kh, body.inp-pad .kh{ background:linear-gradient(#efe0bd,#c9b48a); color:#2a1a0c; border:1px solid #6a5230; border-radius:4px; box-shadow:0 2px 0 #060403; font-weight:700; }

@@ -50,6 +50,7 @@ function setState(s){
     if(muteBtn) muteBtn.classList.add("hidden");
     if(screens[s]) screens[s].classList.remove("hidden");
   }
+  if(typeof lanesHudSync==="function") lanesHudSync(s); // Guerra de Cristales: su HUD solo se ve mientras se juega
   if(typeof assetsOnState==="function") assetsOnState(s); // arte por demanda: guardianes de esta pantalla (preload.js)
   if(s==="prep" && prev!=="prep" && typeof prepSecOnEnter==="function") prepSecOnEnter(prev); // pestaña de la Sala (prep-sections.js)
   if(document.getElementById("toast-stack")) toastStackHost(); // la columna de avisos se acomoda a la pantalla nueva

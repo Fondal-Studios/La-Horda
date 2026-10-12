@@ -4,6 +4,7 @@
    HUD en partida: barras, aliados, botones de habilidad y avisos.
    ============================================================ */
 
+const HUD_GLYPH_COLOR = {"btn-s1":"#8fe0ff", "btn-s2":"#cfc2ff", "btn-s3":"#97f0cc", "btn-ult":"#ffe9a8"};
 function updateAbilityButtons(){
   // el kit ACTIVO del héroe (Eren transformado muestra el del titán)
   const cls = (player && player.cls && player.classKey===selectedClass) ? player.cls : CLASSES[selectedClass];
@@ -14,9 +15,10 @@ function updateAbilityButtons(){
     const icoEl = el.querySelector(".ico");
     const labelEl = el.querySelector("div:not(.ico):not(.cd-overlay)");
     // ícono pixel de la habilidad si existe (el mismo del panel de Habilidades); si no, el glifo de siempre
-    const img = (typeof SKILL_ICON_IMG!=="undefined") ? SKILL_ICON_IMG[sk.name] : null;
+    const pix = (typeof SKILL_ICON_IMG!=="undefined") ? SKILL_ICON_IMG[sk.name] : null;
+    const img = pix || (typeof skillGlyphUri==="function" ? skillGlyphUri(sk, HUD_GLYPH_COLOR[id] || "#ffffff", id==="btn-ult") : null); // sin ícono pixel: símbolo de La Horda (skill-glyphs.js)
     if(icoEl){
-      if(img){ if(icoEl._img !== img){ icoEl.innerHTML = `<img class="ico-img" src="${img}" alt="">`; icoEl._img = img; } }
+      if(img){ if(icoEl._img !== img){ icoEl.innerHTML = `<img class="ico-img${pix ? "" : " ico-glyph"}" src="${img}" alt="">`; icoEl._img = img; } }
       else { icoEl.textContent = sk.ico; icoEl._img = null; }
     }
     if(labelEl && id!=="btn-ult") labelEl.textContent = sk.name.split(" ")[0];
@@ -81,7 +83,8 @@ function showBanner(text, prio){
 // progreso es el real, el que lleva el anfitrión).
 function updateDownedOverlay(){
   const el = document.getElementById("downed-overlay"); if(!el) return;
-  const show = !!(!divinaMode && player && !player.alive && state==="playing" && !runEnding);
+  const lnOn = typeof lanesOn==="function" && lanesOn();
+  const show = !!(!divinaMode && player && !player.alive && state==="playing" && !runEnding) && !(lnOn && LN.mode==="coliseo"); // Coliseo: en su lugar, la barra de espectador
   el.classList.toggle("hidden", !show);
   // el cartel central ("NIVEL 7", "RUNA ACTIVA…") caía justo detrás de este y no se leía ninguno
   const cb = document.getElementById("center-banner"); if(cb) cb.classList.toggle("downed", show);
@@ -95,6 +98,7 @@ function updateDownedOverlay(){
   const by = player._reviveBy, prog = by && player._reviveT>0 ? Math.min(1, player._reviveT/(player._reviveDur||BOT_REVIVE_MS)) : 0;
   const alive = heroes.filter(h=>h.alive).length;
   document.getElementById("downed-sub").textContent = prog>0 ? `${heroLabel(by)} te está reviviendo… ${Math.round(prog*100)}%`
+    : lnOn ? "Reaparecés en " + Math.max(0, Math.ceil(((player._respawnAt||0) - LN.t)/1000)) + " s"   // Guerra de Cristales: reaparición automática
     : (alive ? "Has caído. Un aliado puede revivirte en 5 segundos." : "Todo el equipo cayó");
   document.getElementById("downed-bar").style.width = Math.round(prog*100)+"%";
 }
@@ -125,7 +129,7 @@ function updateHUD(){
   // árbol de talentos completo -solo el nombre de la Maestría elegida, nada más-.
   const emblemHtml = (champMastery && tree && tree.masteries[champMastery]) ? ` <span class="mastery-emblem" title="Maestría: ${tree.masteries[champMastery].name}">★</span>` : "";
   hudHtml(plevelEl, `${hudClassName(CLASSES[player.classKey])} · Nv. ${save.champions[player.classKey].level}${emblemHtml}`);
-  hudTxt(document.getElementById("hud-level"), (typeof ALPHA_TRAINING!=="undefined" && ALPHA_TRAINING.active) ? "1" : String(Math.min(runLevel,10))); // en el entrenamiento el nivel de la arena no avanza
+  hudTxt(document.getElementById("hud-level"), (typeof lanesOn==="function" && lanesOn()) ? String(LN.wave) : (typeof ALPHA_TRAINING!=="undefined" && ALPHA_TRAINING.active) ? "1" : String(Math.min(runLevel,10))); // en el entrenamiento el nivel de la arena no avanza
   if(typeof endlessHudTick==="function") endlessHudTick(); // Horda Infinita: ronda, puntaje y mutadores
   hudTxt(document.getElementById("hud-kills"), String(kills));
   const totalSec = Math.floor((runElapsedMs||0)/1000);
@@ -205,6 +209,7 @@ function updateHUD(){
   }
   const pct = bossActive ? 100 : Math.min(100, levelTimer/levelDuration*100);
   hudCss(document.getElementById("wave-timer-bar"), "width", hudPct(pct));
+  if(typeof lanesHudTick==="function") lanesHudTick(); // Guerra de Cristales: marcador, suministros y vista rival (lanes-hud.js)
   if(typeof goalChipTick==="function") goalChipTick(); // cartel fijo: OBJETIVO (js/ui/goal-guide.js)
 
   const ultPct = player.ultCharge/player.ultMax*100;
@@ -315,6 +320,7 @@ function renderParty(){
     });
     partyBuilt = true;
   }
+  if(typeof lanesOn==="function" && lanesOn()) allies.forEach((a,i)=>{ const r = document.getElementById("ally-row-"+i); if(r) r.style.display = a.team===player.team ? "" : "none"; }); // Guerra de Cristales: solo tu equipo en la lista
   allies.forEach((a,i)=>{
     const fill = document.getElementById("ally-hp-"+i);
     const shieldFill = document.getElementById("ally-shieldbar-"+i);

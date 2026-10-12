@@ -40,7 +40,8 @@ const FondalTelemetry = (() => {
     divina: "arena-divina",                     // Arena Divina
     tutorial: "tutorial",                       // entrenamiento inicial
     cristales: "guerra-de-cristales",           // Guerra de Cristales (motor real)
-    cristalesEnLinea: "cristales-en-linea"      // Guerra de Cristales 2 contra 2 en línea
+    cristalesEnLinea: "cristales-en-linea",     // Guerra de Cristales 2 contra 2 en línea
+    coliseo: "coliseo"                          // Coliseo: torneo 2v2 de 8 luchadores (motor real)
   });
   const MODO_VALIDO = /^[a-z0-9-]{1,24}$/;
   const PRESENCIA_CADA_MS = 30000;
@@ -104,7 +105,7 @@ const FondalTelemetry = (() => {
     try{
       if(typeof alphaTrainingActive === "function" && alphaTrainingActive()) return MODOS.tutorial;
       if(typeof divinaMode !== "undefined" && divinaMode) return MODOS.divina;
-      if(typeof lanesOn === "function" && lanesOn()){ return (typeof netMatch !== "undefined" && netMatch) ? MODOS.cristalesEnLinea : MODOS.cristales; }
+      if(typeof lanesOn === "function" && lanesOn()){ if(LN.mode === "coliseo") return MODOS.coliseo; return (typeof netMatch !== "undefined" && netMatch) ? MODOS.cristalesEnLinea : MODOS.cristales; }
       const enLinea = typeof netMatch !== "undefined" && !!netMatch && netMatch.role !== "host-offline";
       const infinita = typeof endlessOn === "function" && endlessOn();
       if(infinita) return enLinea ? MODOS.infinitaEnLinea : MODOS.infinita;

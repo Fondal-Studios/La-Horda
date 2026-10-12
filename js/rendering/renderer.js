@@ -22,9 +22,9 @@ function render(){
   // cámara alineada a píxeles del dispositivo: sin temblor de medio píxel en el pixel art
   // (CAM_LEAD_X/Y: adelanto suave hacia donde se apunta, ver juice.js)
   const _pxW = CAM_ZOOM*DPR*_pz;
-  const camTX = Math.round((VW/2/CAM_ZOOM - (player.x + CAM_LEAD_X) + shakeX)*_pxW)/_pxW;
+  const camTX = Math.round((VW/2/CAM_ZOOM - (camSub().x + CAM_LEAD_X) + shakeX)*_pxW)/_pxW;
   updateCamLift(); // (0 salvo con un jefe enorme en cámara, ver camera.js)
-  const camTY = Math.round(((VH/2 - CAM_Y_ANCHOR)/CAM_ZOOM - (player.y - CAM_LIFT + CAM_LEAD_Y) + shakeY)*_pxW)/_pxW;
+  const camTY = Math.round(((VH/2 - CAM_Y_ANCHOR)/CAM_ZOOM - (camSub().y - CAM_LIFT + CAM_LEAD_Y) + shakeY)*_pxW)/_pxW;
   ctx.translate(camTX, camTY);
 
   // Escenario: suelo, lava, muros, braseros
@@ -105,7 +105,7 @@ function render(){
   _entN = 0;
   _animCrowdCount = 0;
   for(const e of enemies){
-    if(!e.alive) continue;
+    if(!e.alive || e.lanesProxy) continue; // (los avatares de Guerra de Cristales no se dibujan: se ve al héroe real)
     if(!inView(e.x, e.y, e.rank==="jefe" ? e.radius*4 : Math.max(140, e.radius*3))) continue;
     _animCrowdCount++;
     _entPush(e.y, e, null);
