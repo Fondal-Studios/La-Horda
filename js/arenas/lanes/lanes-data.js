@@ -15,6 +15,7 @@ const LANES = {
   TOWER_X:[1450, 860],                // torres de un equipo, de afuera hacia adentro (equipo 0; el 1 es el espejo)
   CRYSTAL_HP:2000, CRYSTAL_R:52,
   TOWER_HP:2400, TOWER_R:40, TOWER_DMG:48, TOWER_RANGE:440, TOWER_CD:1100,
+  PVP_BURST:0.4,                      // tope de vida que un héroe puede perder por PvP en 1 s
   PVP_DMG:0.55,                       // los héroes se hacen menos daño entre sí que a la horda (si no, nadie dura)
   FIRST_WAVE_MS:8000, WAVE_MS:30000, SUPPLY_MS:8000, // primera oleada, intervalo y ventana de suministros
   MAX_MINIONS:70,                     // criaturas vivas por equipo

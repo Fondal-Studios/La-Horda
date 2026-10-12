@@ -48,7 +48,7 @@ function netIsHumanChamp(k){ return !!(netMatch && netMatch.slots.some(s=>s.kind
 function netSlotName(i){ const s = netMatch && netMatch.slots[i]; return s ? s.name : ""; }
 
 /* ---------------- serialización con referencias ---------------- */
-const NET_SKIP_KEYS = new Set(["lnRef","_lnProxy","_lnKiller","_portPrevX","_portPrevY","portMoveDX","portMoveDY","_portMarks","cls","_ap","_net","_tx","_ty","_s","hitSet","onHit","fn","_spdAt","_hx","_hy","_tk",
+const NET_SKIP_KEYS = new Set(["lnRef","_lnProxy","_lnKiller","_pvpW","_portPrevX","_portPrevY","portMoveDX","portMoveDY","_portMarks","cls","_ap","_net","_tx","_ty","_s","hitSet","onHit","fn","_spdAt","_hx","_hy","_tk",
   // internos de la IA/navegación del anfitrión: el invitado no los usa
   "_navT","_nmx","_nmy","_navBlocked","_kbRx","_kbRy","_tgt","_tgtT","_dangerT","atkCd","recentDamage","_hitSfxAt","_hurtSfxAt","_setFrame","path",
   // estado de animación que calcula el propio renderizador de cada cliente

@@ -161,7 +161,10 @@ function lanesSync(dt){
     const lost = LANES_BIG - P.hp;
     if(lost > 0.01){
       const from = P.lastHitBy, atk = from && from.team != null ? from : null;
-      damageHero(h, lost * LANES.PVP_DMG, {isPvp:true, from:atk || from, team:lanesTeamOf(from)});
+      // limitador de ráfaga: ningún héroe pierde más del 40 % de su vida por PvP en un segundo (hay kits de mucha ráfaga)
+      const W = h._pvpW || (h._pvpW = {t:L.t, sum:0}); if(L.t - W.t > 1000){ W.t = L.t; W.sum = 0; }
+      const dmg = Math.min(lost * LANES.PVP_DMG, Math.max(0, h.maxHp * LANES.PVP_BURST - W.sum)); W.sum += dmg;
+      if(dmg > 0) damageHero(h, dmg, {isPvp:true, from:atk || from, team:lanesTeamOf(from)});
       if(!h.alive && !h.dead_t) h._lnKiller = lanesTeamOf(from);
       P.hp = LANES_BIG;
     }
