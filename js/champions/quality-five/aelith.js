@@ -12,6 +12,7 @@ function aelithAllies(h,p,r){const team=divinaMode&&divinaEnemies.includes(h)?di
 function aelithObject(h,kind,p,life,data,cap=2){portadorLimit(h,kind,cap);portadorObjects=portadorObjects.filter(o=>o.life>0);return portadorAdd(h,kind,p,life,{aelith:true,...data});}
 function aelithEcho(h,p,r,dmg,delay=800){return aelithObject(h,'ael_echo',p,delay,{r,dmg});}
 function aelithCast(h,sk,isUlt,dmg,area,dur){
+ if(h.alive&&!h.fused&&typeof playSfx==='function')playSfx('quality_aelith'+(isUlt?'_ult':'_cast')); 
  if(!h.alive||h.fused)return;
  const r=Math.min(220,sk.radius*area),life=Math.min(6000,sk.duration*dur),p=sk.range&&sk.action!=='ael_fracture'?portadorPoint(h,Math.min(350,sk.range*area),r):h;
  h.portCastState=isUlt?'ultimate':'cast';h.portCastUntil=runElapsedMs+(isUlt?650:420);
@@ -26,7 +27,7 @@ function aelithCast(h,sk,isUlt,dmg,area,dur){
    aelithEcho(h,p,r,dmg*.3,aelithEchoDelay(h,life));break;
   case 'ael_fracture':{
    const hit=e=>portadorSlow(h,e,.35,life);
-   const d=aimDir(h,sk.range),end={x:h.x+d.x*Math.min(330,sk.range*area),y:h.y+d.y*Math.min(330,sk.range*area)};exLine(h,h,end,r,dmg,hit);kitFxLine('rune',h.x,h.y,end.x,end.y,r);
+   const d=aimDir(h,sk.range),end={x:h.x+d.x*Math.min(330,sk.range*area),y:h.y+d.y*Math.min(330,sk.range*area)};exLine(h,h,end,r,dmg,hit);qualityFiveFx(h,kitFxLine,'rune',h.x,h.y,end.x,end.y,r);
    if(aelithFlag(h,1,'aftershock'))aelithEcho(h,end,60,dmg*.2,800);break;
   }
   case 'ael_haste':
@@ -36,7 +37,7 @@ function aelithCast(h,sk,isUlt,dmg,area,dur){
    if(aelithFlag(h,'ult','reprise')&&h.aelithLastEcho)aelithEcho(h,h.aelithLastEcho,h.aelithLastEcho.r,h.aelithLastEcho.dmg,800);
    h._ultLockUntil=Math.max(h._ultLockUntil||0,runElapsedMs+life);break;
  }
- kitFx(sk.action==='ael_haste'?'wind':'rune',p.x,p.y,sk.action==='ael_fracture'?90:r,{ult:!!isUlt});
+ qualityFiveFx(h,kitFx,sk.action==='ael_haste'?'wind':'rune',p.x,p.y,sk.action==='ael_fracture'?90:r,{ult:!!isUlt});
 }
 function aelithEchoDelay(h,life){return aelithFlag(h,0,'delayed')?Math.min(2400,life*2):life;}
 function aelithUpdateObject(o,dt){
@@ -45,12 +46,12 @@ function aelithUpdateObject(o,dt){
  if(currentArena==='abismo'&&abS&&!abWalkable(o.x,o.y)){o.life=0;return true;}
  const elapsed=Math.min(Math.max(0,dt),o.life),wasAlive=o.life>0;o.life=Math.max(0,o.life-elapsed);
  if(o.kind==='ael_echo'){
-  if(wasAlive&&o.life===0){for(const e of aelithTargets(h,o,o.r)){exHit(h,e,o.dmg,true);if(aelithFlag(h,0,'delayed'))portadorSlow(h,e,.3,1400);}kitFx('rune',o.x,o.y,o.r);}return true;
+  if(wasAlive&&o.life===0){for(const e of aelithTargets(h,o,o.r)){exHit(h,e,o.dmg,true);if(aelithFlag(h,0,'delayed'))portadorSlow(h,e,.3,1400);}qualityFiveFx(h,kitFx,'rune',o.x,o.y,o.r);}return true;
  }
  o.tick-=elapsed;while(o.left>0&&o.tick<=0){o.left--;o.tick+=o.interval;
   for(const e of aelithTargets(h,o,o.r)){exHit(h,e,o.dmg,true);portadorSlow(h,e,.45,1300);}
   for(const a of aelithAllies(h,o,o.r)){exShield(h,a,.05,1400);if(aelithFlag(h,'ult','renew'))exHeal(h,a,.01);if(aelithFlag(h,'ult','haste'))kitBuff(h,a,1300,{speed:.15,label:'OTRO SEGUNDO'});}
-  kitFx('rune',o.x,o.y,o.r);
+  qualityFiveFx(h,kitFx,'rune',o.x,o.y,o.r);
  }return true;
 }
 const aelCast=expeditionCast;expeditionCast=function(h,sk,...args){return sk.action?.startsWith('ael_')?aelithCast(h,sk,...args):aelCast(h,sk,...args);};

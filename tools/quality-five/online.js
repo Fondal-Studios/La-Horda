@@ -1,27 +1,57 @@
 'use strict';
 const {chromium}=require('playwright'),{spawn}=require('node:child_process'),fs=require('node:fs'),os=require('node:os'),path=require('node:path');
 const dataDir=fs.mkdtempSync(path.join(os.tmpdir(),'horda-workshop-relay-'));
-// Los cinco están en TESTING (sólo concedidos). El relay rechaza campeones TESTING de cuentas sin concesión, así que este test arranca una COPIA del relay
-// cuya taxonomía los marca RELEASED (simula la concesión). No prueba cuentas reales ni el servidor oficial.
-const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'horda-relay-tree-'));
-fs.cpSync('server',path.join(tmp,'server'),{recursive:true,verbatimSymlinks:true});fs.mkdirSync(path.join(tmp,'docs/production'),{recursive:true});fs.copyFileSync('docs/production/shop-catalog.json',path.join(tmp,'docs/production/shop-catalog.json'));
-fs.mkdirSync(path.join(tmp,'js'));for(const e of fs.readdirSync('js'))if(e!=='data')fs.symlinkSync(path.resolve('js',e),path.join(tmp,'js',e));
-fs.cpSync('js/data',path.join(tmp,'js/data'),{recursive:true});const taxFile=path.join(tmp,'js/data/champion-taxonomy.js');fs.writeFileSync(taxFile,fs.readFileSync(taxFile,'utf8').replace(/releaseState:"TESTING"/g,'releaseState:"RELEASED"'));
-const servers=[spawn('python3',['-m','http.server','8857','--bind','127.0.0.1'],{stdio:'ignore'}),spawn('node',[path.join(tmp,'server/relay.js')],{cwd:tmp,env:{...process.env,PORT:'8858',DATA_DIR:dataDir,DATABASE_URL:''},stdio:'ignore'})];
-const checks=[],errors=[];let browser;
+// Production taxonomy remains unchanged. Only this disposable local data directory
+// receives test users and explicit grant ledger entries; no production accounts.
+const servers=[];
+async function seedLocalAccounts(){
+ const {create,hashPassword}=require('../../server/accounts');
+ const app=create({dataDir,databaseUrl:'',adminUsers:'',founders:{},log:()=>{}});
+ try{
+  await app.ready;const grants={};
+  for(const user of ['qa_five_host','qa_five_guest']){
+   const u=await app.store.createUser({user,userKey:user,name:user,createdAt:Date.now(),lastLogin:0,passHash:await hashPassword('local-fixture-password')});
+   grants[u.id]={champions:Object.fromEntries(['solciju','brakk','veyra','morveth','aelith'].map(k=>[k,{origin:'ADMIN_GRANT',by:'local-test-fixture',at:Date.now(),reason:'Isolated relay QA'}]))};
+  }
+  await app.store.gmUpdate(state=>({state:{...state,grants},value:true}));
+ }finally{await app.close();}
+}
+const checks=[],errors=[],browsers=[];
 const reportPath='docs/production/quality-five/online-results.json';
 fs.writeFileSync(reportPath,JSON.stringify({status:'RUNNING',scope:'local relay workshop'})+'\n');
 const modules=[];
 (async()=>{try{
- await new Promise(r=>setTimeout(r,900));browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||chromium.executablePath(),args:['--no-sandbox']});
+ await seedLocalAccounts();
+ servers.push(spawn('python3',['-m','http.server','8857','--bind','127.0.0.1'],{stdio:'ignore'}),spawn('node',['server/relay.js'],{env:{...process.env,PORT:'8858',DATA_DIR:dataDir,DATABASE_URL:''},stdio:'ignore'}));
+ let ready=false;
+ for(let i=0;i<100;i++){try{const r=await fetch('http://127.0.0.1:8858/api/health');if(r.ok){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,100));}
+ if(!ready)throw Error('Local relay failed to start');
+ // Negative control: a forged local unlock without a session must not enter a room.
+ const WebSocket=require('../../server/node_modules/ws');
+ for(const champ of ['solciju','brakk','veyra','morveth','aelith']){
+  const allowed=await new Promise((resolve,reject)=>{
+   const ws=new WebSocket('ws://127.0.0.1:8858');
+   const timer=setTimeout(()=>{ws.terminate();reject(Error('Anonymous entitlement probe timed out'));},5000);
+   ws.on('error',e=>{clearTimeout(timer);reject(e);});
+   ws.on('open',()=>ws.send(JSON.stringify({t:'create',protocol:1,arena:'bosque',champ,level:20,name:'Anonymous QA'})));
+   ws.on('message',data=>{const m=JSON.parse(data);if(m.t==='joined'){clearTimeout(timer);ws.close();resolve(m.room.slots[0].champ===champ);}});
+  });
+  checks.push({name:champ+' rejected without server grant',ok:!allowed});
+ }
+ const tokens=[];
+ for(const user of ['qa_five_host','qa_five_guest']){const r=await fetch('http://127.0.0.1:8858/api/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({user,pass:'local-fixture-password'})});const j=await r.json();if(!r.ok||!j.token)throw Error('Local QA login failed');tokens.push(j.token);}
+
  for(const [host,guest] of [['solciju','veyra'],['veyra','solciju'],['solciju','brakk'],['aelith','morveth'],['morveth','aelith']]){
-  const ac=await browser.newContext(),gc=await browser.newContext({viewport:{width:844,height:390},isMobile:true,hasTouch:true});
+  const launch=()=>chromium.launch({executablePath:process.env.CHROMIUM_PATH||chromium.executablePath(),args:['--no-sandbox']});
+  const ab=await launch(),gb=await launch();browsers.push(ab,gb);
+  const ac=await ab.newContext(),gc=await gb.newContext({viewport:{width:844,height:390},isMobile:true,hasTouch:true});
   const a=await ac.newPage(),g=await gc.newPage();
   for(const [p,k] of [[a,host],[g,guest]]){
    p.on('pageerror',e=>errors.push(e.message));p.setDefaultTimeout(30000);
    await p.goto('http://127.0.0.1:8857/?lazy=0&server=ws%3A%2F%2F127.0.0.1%3A8858');
    await p.waitForFunction(()=>typeof CHAMPION_ENTRY_BALANCE!=='undefined');
    for(const file of modules)await p.addScriptTag({path:file});
+   await p.evaluate(token=>{acct.session={token};},tokens[p===a?0:1]);
    await p.evaluate(k=>{save.starterChosen=true;for(const c of Object.values(save.champions)){c.unlocked=true;c.level=20;}selectedClass=k;currentArena='bosque';setState('prep');},k);
   }
   await a.evaluate(()=>netCreateRoom(currentArena,selectedClass,20));const code=await a.evaluate(()=>net.code);
@@ -52,9 +82,9 @@ const modules=[];
   if(guest==='solciju')checks.push({name:'Solciju reserve and cask replicate with guest owner',ok:gg.owned.includes('sol_reserve')&&gg.owned.includes('sol_cask')});
   await a.evaluate(()=>{heroes[1].alive=false;heroes[1].hp=0;});await g.waitForTimeout(500);
   checks.push({name:guest+' death removes owned effects',ok:await a.evaluate(()=>!portadorObjects.some(o=>o.owner===heroes[1]&&o.life>0)&&!(heroes[1].veyraBleeds||[]).length&&!(heroes[1].morvethInfections||[]).length)});
-  await ac.close();await gc.close();
+  await ac.close();await gc.close();await ab.close();await gb.close();
  }
  const status=errors.length||checks.some(c=>!c.ok)?'FAIL':'PASS';
- fs.writeFileSync(reportPath,JSON.stringify({status,scope:'local real relay, two clients; no production accounts or cosmetics',checks,errors},null,2)+'\n');
+ fs.writeFileSync(reportPath,JSON.stringify({status,scope:'Unmodified production relay and TESTING taxonomy; two authenticated local fixture accounts with explicit grants. No production accounts or cosmetics.',checks,errors},null,2)+'\n');
  console.log(JSON.stringify({status,checks,errors}));if(status==='FAIL')process.exitCode=1;
-}finally{if(browser)await browser.close();servers.forEach(s=>s.kill());fs.rmSync(dataDir,{recursive:true,force:true});}})().catch(e=>{fs.writeFileSync(reportPath,JSON.stringify({status:'FAIL',checks,errors:[...errors,e.message]},null,2)+'\n');console.error(e);process.exitCode=1;});
+}finally{for(const b of browsers)await b.close().catch(()=>{});servers.forEach(s=>s.kill());fs.rmSync(dataDir,{recursive:true,force:true});}})().catch(e=>{fs.writeFileSync(reportPath,JSON.stringify({status:'FAIL',checks,errors:[...errors,e.message]},null,2)+'\n');console.error(e);process.exitCode=1;});

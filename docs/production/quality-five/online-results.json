@@ -1,7 +1,27 @@
 {
   "status": "PASS",
-  "scope": "local real relay, two clients; no production accounts or cosmetics",
+  "scope": "Unmodified production relay and TESTING taxonomy; two authenticated local fixture accounts with explicit grants. No production accounts or cosmetics.",
   "checks": [
+    {
+      "name": "solciju rejected without server grant",
+      "ok": true
+    },
+    {
+      "name": "brakk rejected without server grant",
+      "ok": true
+    },
+    {
+      "name": "veyra rejected without server grant",
+      "ok": true
+    },
+    {
+      "name": "morveth rejected without server grant",
+      "ok": true
+    },
+    {
+      "name": "aelith rejected without server grant",
+      "ok": true
+    },
     {
       "name": "Veyra active bleed state belongs only to host",
       "ok": true,
@@ -14,7 +34,7 @@
       "host": {
         "key": "veyra",
         "casts": 4,
-        "damage": 480.9227499999999,
+        "damage": 572.7614199999999,
         "bleeds": 0
       },
       "guest": {
@@ -67,7 +87,7 @@
       "host": {
         "key": "brakk",
         "casts": 4,
-        "damage": 277.178,
+        "damage": 321.52648,
         "bleeds": 0
       },
       "guest": {

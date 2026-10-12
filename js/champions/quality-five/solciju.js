@@ -36,6 +36,7 @@ function solcijuAllies(h,p,r){
   return team.filter(a=>a.alive&&!a.fused&&distance(a,p)<=r);
 }
 function solcijuCast(h,sk,isUlt,dmg,area,dur){
+ if(h.alive&&!h.fused&&typeof playSfx==='function')playSfx('quality_solciju'+(isUlt?'_ult':'_cast')); 
   if(!h.alive||h.fused)return;
   const r=Math.min(230,sk.radius*area),life=Math.min(6000,sk.duration*dur);
   const p=sk.range?portadorPoint(h,Math.min(400,sk.range*area),r):h;
@@ -60,7 +61,7 @@ function solcijuCast(h,sk,isUlt,dmg,area,dur){
       if(solcijuFlag(h,'ult','cellarRelease'))for(const o of portadorOwned(h,'sol_cask'))if(distance(o,p)<=r)solcijuUpdate(o,o.life);
       solcijuObject(h,'sol_reserve',p,life,{r,dmg,left:4,interval:life/4,tick:life/4},1);break;
   }
-  kitFx(sk.action==='sol_toast'?'shield':'dark',p.x,p.y,r,{ult:!!isUlt});
+  qualityFiveFx(h,kitFx,sk.action==='sol_toast'?'shield':'dark',p.x,p.y,r,{ult:!!isUlt});
 }
 function solcijuUpdate(o,dt){
   if(!o.solciju)return false;
@@ -71,7 +72,7 @@ function solcijuUpdate(o,dt){
   if(o.kind==='sol_cask'){
     if(o.life===0){
       for(const e of solcijuTargets(h,o,o.r))solcijuHit(h,e,o.dmg);
-      kitFx('dark',o.x,o.y,o.r);
+      qualityFiveFx(h,kitFx,'dark',o.x,o.y,o.r);
       if(solcijuFlag(h,1,'cellar'))for(const a of solcijuAllies(h,o,o.r))kitBuff(h,a,2000,{armor:.1,label:'BODEGA'});
     }
     return true;
@@ -88,7 +89,7 @@ function solcijuUpdate(o,dt){
       for(const a of solcijuAllies(h,o,o.r))kitBuff(h,a,1200,{armor:.1,label:'RESERVA'});
       if(solcijuFlag(h,'ult','reserveHeal'))for(const a of solcijuAllies(h,o,o.r))exHeal(h,a,.01);
     }
-    kitFx('dark',o.x,o.y,o.r);
+    qualityFiveFx(h,kitFx,'dark',o.x,o.y,o.r);
   }
   return true;
 }

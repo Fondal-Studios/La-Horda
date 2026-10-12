@@ -21,6 +21,7 @@ function veyraHit(h,e,dmg,bleed=true){
  if(bleed)veyraBleed(h,e,dmg*.12);
 }
 function veyraCast(h,sk,isUlt,dmg,area,dur){
+ if(h.alive&&!h.fused&&typeof playSfx==='function')playSfx('quality_veyra'+(isUlt?'_ult':'_cast')); 
  if(!h.alive||h.fused)return;
  const r=Math.min(200,sk.radius*area),range=Math.min(180,sk.range*area),life=Math.min(5000,sk.duration*dur);
  const origin={x:h.x,y:h.y},dir=range?aimDir(h,range):{x:h.fx,y:h.fy},end={x:h.x+dir.x*range,y:h.y+dir.y*range};
@@ -53,8 +54,8 @@ function veyraCast(h,sk,isUlt,dmg,area,dur){
    h._ultLockUntil=Math.max(h._ultLockUntil||0,runElapsedMs+life);break;
   }
  }
- if(sk.action==='vey_dash')kitFxLine('slash',origin.x,origin.y,h.x,h.y,r);
- else kitFx(sk.action==='vey_pact'?'shield':'slash',h.x,h.y,isUlt?r:Math.max(r,range),{ult:!!isUlt});
+ if(sk.action==='vey_dash')qualityFiveFx(h,kitFxLine,'slash',origin.x,origin.y,h.x,h.y,r);
+ else qualityFiveFx(h,kitFx,sk.action==='vey_pact'?'shield':'slash',h.x,h.y,isUlt?r:Math.max(r,range),{ult:!!isUlt});
 }
 const veyOriginalCast=expeditionCast;
 expeditionCast=function(h,sk,...args){return sk.action?.startsWith('vey_')?veyraCast(h,sk,...args):veyOriginalCast(h,sk,...args);};

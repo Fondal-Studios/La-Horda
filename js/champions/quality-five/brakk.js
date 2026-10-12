@@ -15,6 +15,7 @@ function brakkBuild(h,kind,p,life,data={}){
  return portadorAdd(h,kind,p,life,{brakk:true,hp,maxHp:hp,hitTimer:850,...data});
 }
 function brakkCast(h,sk,isUlt,dmg,area,dur){
+ if(h.alive&&!h.fused&&typeof playSfx==='function')playSfx('quality_brakk'+(isUlt?'_ult':'_cast')); 
  if(!h.alive||h.fused)return;
  const r=Math.min(220,sk.radius*area),life=Math.min(8000,sk.duration*dur);
  const p=sk.range?portadorPoint(h,Math.min(240,sk.range*area),r):h;
@@ -42,7 +43,7 @@ function brakkCast(h,sk,isUlt,dmg,area,dur){
    h._ultLockUntil=Math.max(h._ultLockUntil||0,runElapsedMs+life);break;
   }
  }
- kitFx(sk.action==='brk_repair'?'shield':'earth',p.x,p.y,r,{ult:!!isUlt});
+ qualityFiveFx(h,kitFx,sk.action==='brk_repair'?'shield':'earth',p.x,p.y,r,{ult:!!isUlt});
 }
 function brakkAllies(h,r){const side=divinaMode&&divinaEnemies.includes(h)?divinaEnemies:heroes;return side.filter(a=>a.alive&&!a.fused&&distance(h,a)<=r);}
 function brakkUpdate(o,dt){
@@ -55,7 +56,7 @@ function brakkUpdate(o,dt){
   if(threats.length)o.hp-=Math.min(o.maxHp*.35,threats.reduce((n,e)=>n+Math.max(1,e.dmg||5)*.35,0));
   o.hitTimer=850;
  }
- if(o.hp<=0){o.life=0;kitFx('earth',o.x,o.y,35);return true;}
+ if(o.hp<=0){o.life=0;qualityFiveFx(h,kitFx,'earth',o.x,o.y,35);return true;}
  if(o.kind!=='brk_turret')return true;
  o.tick-=elapsed;
  while(o.left>0&&o.tick<=0){
@@ -64,7 +65,7 @@ function brakkUpdate(o,dt){
   if(!target)continue;
   const targets=brakkFlag(h,1,'pierce')?exTargets(h,e=>seSegDist(e.x,e.y,o.x,o.y,target.x,target.y)<18+(e.radius||0)):brakkTargets(h,target,o.r).slice(0,3);
   for(const e of targets)exHit(h,e,o.dmg,true);
-  kitFxLine('spike',o.x,o.y,target.x,target.y,18);
+  qualityFiveFx(h,kitFxLine,'spike',o.x,o.y,target.x,target.y,18);
  }
  return true;
 }

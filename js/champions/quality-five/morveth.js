@@ -19,11 +19,12 @@ function morvethInfect(h,e,dmg,generation=0){
 }
 function morvethSpread(h,m){
  if(m.generation!==0||m.spread)return;
- m.spread=true;for(const e of morvethTargets(h,m.target,95).slice(0,3))morvethInfect(h,e,m.dmg*.7,1);kitFx('dark',m.target.x,m.target.y,95);
+ m.spread=true;for(const e of morvethTargets(h,m.target,95).slice(0,3))morvethInfect(h,e,m.dmg*.7,1);qualityFiveFx(h,kitFx,'dark',m.target.x,m.target.y,95);
 }
 function morvethHit(h,e,dmg,infect=true){exHit(h,e,dmg,true);if(infect)morvethInfect(h,e,dmg*.12);}
 function morvethObject(h,kind,p,life,data,cap){portadorLimit(h,kind,cap);portadorObjects=portadorObjects.filter(o=>o.life>0);return portadorAdd(h,kind,p,life,{morveth:true,...data});}
 function morvethCast(h,sk,isUlt,dmg,area,dur){
+ if(h.alive&&!h.fused&&typeof playSfx==='function')playSfx('quality_morveth'+(isUlt?'_ult':'_cast')); 
  if(!h.alive||h.fused)return;
  const r=Math.min(220,sk.radius*area),life=Math.min(8000,sk.duration*dur),p=sk.range&&sk.action!=='mor_spores'?portadorPoint(h,Math.min(330,sk.range*area),r):h;
  h.portCastState=isUlt?'ultimate':'cast';h.portCastUntil=runElapsedMs+(isUlt?650:420);
@@ -39,7 +40,7 @@ function morvethCast(h,sk,isUlt,dmg,area,dur){
    if(morvethFlag(h,'ult','harvest'))for(const o of portadorOwned(h,'mor_mushroom'))if(distance(o,p)<=r){o.life=0;for(const e of morvethTargets(h,o,o.r))morvethHit(h,e,dmg*.4);}
    h._ultLockUntil=Math.max(h._ultLockUntil||0,runElapsedMs+life);break;
  }
- kitFx(sk.action==='mor_symbiosis'?'shield':'dark',p.x,p.y,sk.action==='mor_spores'?100:r,{ult:!!isUlt});
+ qualityFiveFx(h,kitFx,sk.action==='mor_symbiosis'?'shield':'dark',p.x,p.y,sk.action==='mor_spores'?100:r,{ult:!!isUlt});
 }
 function morvethUpdateObject(o,dt){
  if(!o.morveth)return false;
@@ -62,7 +63,7 @@ function morvethUpdateObject(o,dt){
    if(morvethFlag(h,'ult','renew'))exHeal(h,a,.01);
    if(morvethFlag(h,'ult','shelter'))exShield(h,a,.04,1200);
   }
-  kitFx('dark',o.x,o.y,o.r);
+  qualityFiveFx(h,kitFx,'dark',o.x,o.y,o.r);
  }
  return true;
 }
