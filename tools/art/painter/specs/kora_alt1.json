@@ -1,0 +1,55 @@
+{
+ "id": "kora_alt1",
+ "name": "Kora, Capataz de Hierro",
+ "prompt": "Casco con visera de soldador, delantal chamuscado y hombreras con remaches dorados.",
+ "body": "zahra",
+ "head": "orsa",
+ "paint": [
+  {
+   "part": "body",
+   "hue": [
+    0,
+    100
+   ],
+   "minChroma": 3,
+   "noSkin": true,
+   "to": "#3a3e44",
+   "keepLight": 0.7,
+   "chroma": 1.0,
+   "maxL": 60
+  }
+ ],
+ "accessories": [
+  {
+   "element": "hombreras_redondas",
+   "scale": 1.0,
+   "materials": {
+    "shell": {
+     "ramp": [
+      "#3a2008",
+      "#7a4a18",
+      "#b47a34",
+      "#e0b070"
+     ]
+    }
+   }
+  },
+  {
+   "element": "banda_cruzada",
+   "materials": {
+    "cloth": {
+     "ramp": [
+      "#16181c",
+      "#34383e",
+      "#5e646c",
+      "#98a0aa"
+     ]
+    }
+   }
+  }
+ ],
+ "install": {
+  "champion": "kora",
+  "pack": "kora_alt1"
+ }
+}

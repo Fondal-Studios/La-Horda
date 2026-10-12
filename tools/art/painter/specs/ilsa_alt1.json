@@ -1,0 +1,68 @@
+{
+ "id": "ilsa_alt1",
+ "name": "Ilsa, Esgrimista de Gala",
+ "prompt": "Casaca de gala blanca con capa corta y hombreras de plata.",
+ "body": "vesper",
+ "head": "maura",
+ "paint": [
+  {
+   "part": "head",
+   "hue": [
+    10,
+    80
+   ],
+   "minChroma": 8,
+   "noSkin": true,
+   "to": "#2a2630",
+   "keepLight": 0.85,
+   "chroma": 1.0
+  },
+  {
+   "part": "body",
+   "hue": [
+    0,
+    60
+   ],
+   "minChroma": 25,
+   "noSkin": true,
+   "to": "#d8d4e0",
+   "keepLight": 0.75,
+   "chroma": 1.0
+  }
+ ],
+ "accessories": [
+  {
+   "element": "capa_larga",
+   "scale": 0.8,
+   "materials": {
+    "cloth": {
+     "ramp": [
+      "#4c4c54",
+      "#7a7a84",
+      "#b0b0b8",
+      "#f0f0f6"
+     ]
+    }
+   }
+  },
+  {
+   "element": "hombreras_redondas",
+   "scale": 0.7,
+   "materials": {
+    "shell": {
+     "ramp": [
+      "#3a3e48",
+      "#6c7280",
+      "#a4acb8",
+      "#dde2ea"
+     ]
+    }
+   }
+  }
+ ],
+ "install": {
+  "champion": "ilsa",
+  "pack": "ilsa_alt1"
+ },
+ "headLongHair": true
+}

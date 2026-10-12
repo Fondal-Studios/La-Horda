@@ -1,0 +1,86 @@
+{
+ "id": "ostrel_alt1",
+ "name": "Ostrel, Vigia del Cenit",
+ "prompt": "Gaban violeta noche con capa de constelaciones, hombreras de laton y aro de laton.",
+ "body": "dariel",
+ "head": "sira_skin",
+ "paint": [
+  {
+   "part": "head",
+   "hue": [
+    20,
+    75
+   ],
+   "minChroma": 10,
+   "minL": 12,
+   "noSkin": true,
+   "ramp": [
+    "#4e4a5c",
+    "#8e8aa2",
+    "#cfccdc",
+    "#f7f6ff"
+   ]
+  },
+  {
+   "part": "body",
+   "hue": [
+    0,
+    60
+   ],
+   "minChroma": 4,
+   "noSkin": true,
+   "to": "#4a2f8a",
+   "keepLight": 0.7,
+   "chroma": 1.0,
+   "maxL": 55
+  }
+ ],
+ "accessories": [
+  {
+   "element": "halo_de_luz",
+   "scale": 0.7,
+   "materials": {
+    "light": {
+     "ramp": [
+      "#5a3a0c",
+      "#a87820",
+      "#e0b848",
+      "#fff0b0"
+     ]
+    }
+   }
+  },
+  {
+   "element": "capa_larga",
+   "scale": 0.9,
+   "materials": {
+    "cloth": {
+     "ramp": [
+      "#14102e",
+      "#2c2060",
+      "#5a46a8",
+      "#a898e8"
+     ]
+    }
+   }
+  },
+  {
+   "element": "hombreras_redondas",
+   "scale": 0.7,
+   "materials": {
+    "shell": {
+     "ramp": [
+      "#5a3a0c",
+      "#a87820",
+      "#e0b848",
+      "#fff0b0"
+     ]
+    }
+   }
+  }
+ ],
+ "install": {
+  "champion": "ostrel",
+  "pack": "ostrel_alt1"
+ }
+}

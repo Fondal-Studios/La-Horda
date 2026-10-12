@@ -1,0 +1,71 @@
+{
+ "id": "quillon",
+ "name": "Quillon, El Tahur de la Ultima Mano",
+ "prompt": "Frac negro con chaleco granate, sombrero de copa y baraja de plata.",
+ "body": "dariel",
+ "head": "nahir_skin",
+ "paint": [
+  {
+   "part": "head",
+   "hue": [
+    0,
+    80
+   ],
+   "minChroma": 10,
+   "minL": 12,
+   "noSkin": true,
+   "ramp": [
+    "#0c0a10",
+    "#1e1a24",
+    "#34303c",
+    "#56505e"
+   ]
+  },
+  {
+   "part": "body",
+   "hue": [
+    0,
+    60
+   ],
+   "minChroma": 4,
+   "noSkin": true,
+   "to": "#1c1a24",
+   "keepLight": 0.75,
+   "chroma": 1.0,
+   "maxL": 60
+  }
+ ],
+ "accessories": [
+  {
+   "element": "banda_cruzada",
+   "materials": {
+    "cloth": {
+     "ramp": [
+      "#24060a",
+      "#521018",
+      "#7e1e2a",
+      "#ac3c48"
+     ]
+    }
+   }
+  },
+  {
+   "element": "corona_de_picos",
+   "scale": 0.9,
+   "materials": {
+    "metal": {
+     "ramp": [
+      "#0c0a10",
+      "#1e1a24",
+      "#34303c",
+      "#56505e"
+     ]
+    }
+   }
+  }
+ ],
+ "install": {
+  "champion": "quillon",
+  "pack": "quillon"
+ }
+}

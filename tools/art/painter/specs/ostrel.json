@@ -1,0 +1,15 @@
+{
+ "id": "ostrel",
+ "name": "Ostrel, El Cazador de Estrellas",
+ "prompt": "Astronomo de gaban azul noche con telescopio de laton, pelo plateado, anillo de laton detras del cuello.",
+ "body": "dariel",
+ "head": "sira_skin",
+ "paint": [
+  {"part": "head", "hue": [20, 75], "minChroma": 10, "minL": 12, "noSkin": true, "ramp": ["#4e4a5c", "#8e8aa2", "#cfccdc", "#f7f6ff"]},
+  {"part": "body", "hue": [0, 60], "minChroma": 4, "maxL": 55, "noSkin": true, "to": "#2a4690", "keepLight": 0.7, "chroma": 1.0}
+ ],
+ "accessories": [
+  {"element": "halo_de_luz", "scale": 0.7, "materials": {"light": {"ramp": ["#5a3a0c", "#a87820", "#e0b848", "#fff0b0"]}}}
+ ],
+ "install": {"champion": "ostrel", "pack": "ostrel"}
+}

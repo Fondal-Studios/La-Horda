@@ -1,0 +1,85 @@
+{
+ "id": "quillon_alt1",
+ "name": "Quillon, Tahur de Medianoche",
+ "prompt": "Frac negro con solapa de seda plateada, capa corta y chaleco de brocado.",
+ "body": "dariel",
+ "head": "nahir_skin",
+ "paint": [
+  {
+   "part": "head",
+   "hue": [
+    0,
+    80
+   ],
+   "minChroma": 10,
+   "minL": 12,
+   "noSkin": true,
+   "ramp": [
+    "#0c0a10",
+    "#1e1a24",
+    "#34303c",
+    "#56505e"
+   ]
+  },
+  {
+   "part": "body",
+   "hue": [
+    0,
+    60
+   ],
+   "minChroma": 4,
+   "noSkin": true,
+   "to": "#12101a",
+   "keepLight": 0.75,
+   "chroma": 1.0,
+   "maxL": 60
+  }
+ ],
+ "accessories": [
+  {
+   "element": "capa_larga",
+   "scale": 0.85,
+   "materials": {
+    "cloth": {
+     "ramp": [
+      "#0a0810",
+      "#1c1830",
+      "#34305a",
+      "#6a64a8"
+     ]
+    }
+   }
+  },
+  {
+   "element": "banda_cruzada",
+   "materials": {
+    "cloth": {
+     "ramp": [
+      "#3a3e48",
+      "#6c7280",
+      "#a4acb8",
+      "#dde2ea"
+     ]
+    }
+   }
+  },
+  {
+   "element": "corona_de_picos",
+   "scale": 0.9,
+   "materials": {
+    "metal": {
+     "ramp": [
+      "#3a3e48",
+      "#6c7280",
+      "#a4acb8",
+      "#dde2ea"
+     ]
+    }
+   }
+  }
+ ],
+ "install": {
+  "champion": "quillon",
+  "pack": "quillon_alt1"
+ }
+}
