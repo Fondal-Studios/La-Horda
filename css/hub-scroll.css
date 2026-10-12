@@ -1,0 +1,50 @@
+/* HUB desplazable y legible (último en cargar: pisa las capas anteriores del menú).
+   Se desliza hacia abajo; cada ítem es una tarjeta grande con título y descripción legibles. Nada menor a 14 px. */
+#mainmenu-screen.hub-screen{ display:flex; flex-direction:column; align-items:center; justify-content:flex-start; overflow-x:hidden; overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain; padding-bottom:28px; scroll-snap-type:none; }
+#mainmenu-screen .hub-top{ flex:none; position:sticky; top:0; z-index:5; padding:4px 0 6px; background:linear-gradient(180deg,#120a07 70%,rgba(18,10,7,0)); }
+#mainmenu-screen .hub-main{ display:block; flex:none; min-height:0; width:100%; max-width:1000px; }
+#mainmenu-screen .hub-modes{ display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:10px; align-items:stretch; margin-bottom:6px; }
+#mainmenu-screen .hub-play{ min-height:150px; }
+#mainmenu-screen .hub-endless-row{ display:flex; flex-direction:column; gap:8px; }
+#mainmenu-screen .hub-endless, #mainmenu-screen .hub-endless-rank{ min-height:64px; }
+.hub-sections{ display:block; padding:2px 0 8px; }
+.hub-section-title{ margin:14px 2px 8px; font-family:var(--ui-font-brand, var(--ui-font)); font-size:16px; letter-spacing:.08em; color:var(--ui-gold,#ffd479); text-shadow:2px 2px 0 #000; display:flex; align-items:center; gap:10px; }
+.hub-section-title::after{ content:""; flex:1; height:3px; background:linear-gradient(90deg,var(--ui-line-hi,#c8a45a),transparent); }
+.hub-row{ display:grid; gap:10px; }
+.hub-row-modes{ grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+.hub-row-explore{ grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); }
+#mainmenu-screen .hub-tile{ min-height:84px; padding:10px 14px; flex-direction:row; align-items:center; justify-content:flex-start; gap:12px; text-align:left; overflow:hidden; }
+#mainmenu-screen .hub-tile-ico{ flex:none; width:48px; height:48px; margin:0; font-size:1.6rem; }
+#mainmenu-screen .hub-tile-body{ display:flex; flex-direction:column; gap:4px; min-width:0; }
+#mainmenu-screen .hub-tile-title{ font-size:20px; line-height:1.15; white-space:normal; overflow:visible; letter-spacing:.02em; }
+#mainmenu-screen .hub-tile-sub{ display:block; font-size:15px; line-height:1.25; color:var(--ui-ink,#e8dcc6); opacity:.9; }
+#mainmenu-screen .hub-tile:not(.hub-tile-wide){ flex-wrap:wrap; }
+#mainmenu-screen .hub-tile:not(.hub-tile-wide) .hub-tile-title, #mainmenu-screen .hub-tile:not(.hub-tile-wide) .hub-tile-sub{ flex:1 1 calc(100% - 64px); }
+#mainmenu-screen .hub-tile-wide{ min-height:104px; border-width:3px; border-color:var(--ui-accent,#ff9a3c); background:linear-gradient(160deg,#2a1a30,#120a18); }
+#mainmenu-screen .hub-tile-wide .hub-tile-title{ font-size:22px; color:#fff1d6; }
+#mainmenu-screen .hub-tile-wide .hub-tile-ico{ width:60px; height:60px; font-size:2rem; }
+#mainmenu-screen .hub-tile.hidden{ display:none; }
+#mainmenu-screen .hub-tile-badge, #mainmenu-screen .hub-tile-offer{ font-size:13px; padding:1px 6px; }
+#mainmenu-screen .hub-brand{ font-size:18px; }
+#mainmenu-screen .hub-profile-name{ font-size:16px; } #mainmenu-screen .hub-profile-lvl{ font-size:14px; } #mainmenu-screen .hub-gold{ font-size:16px; }
+#mainmenu-screen .hub-play-kicker{ font-size:15px; } #mainmenu-screen .hub-play-champ{ font-size:15px; } #mainmenu-screen .hub-play-arena{ font-size:18px; }
+@media (max-height:520px){
+  #mainmenu-screen .hub-modes{ grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); }
+  #mainmenu-screen .hub-play{ min-height:130px; }
+  #mainmenu-screen .hub-play-title{ font-size:1.9rem; }
+  .hub-row-modes{ grid-template-columns:1fr 1fr; }
+  .hub-row-explore{ grid-template-columns:1fr 1fr 1fr; }
+  #mainmenu-screen .hub-tile{ min-height:72px; }
+  #mainmenu-screen .hub-tile-wide{ min-height:92px; }
+  #mainmenu-screen .hub-tile-ico{ width:44px; height:44px; }
+  #mainmenu-screen .hub-tile-title{ font-size:18px; }
+  #mainmenu-screen .hub-tile-sub{ font-size:14px; }
+}
+@media (max-width:600px){ .hub-row-modes, .hub-row-explore{ grid-template-columns:1fr; } #mainmenu-screen .hub-modes{ grid-template-columns:1fr; } }
+#mainmenu-screen .hub-sections #mainmenu-quests-btn{ position:relative; top:auto; right:auto; margin:0; z-index:auto; min-height:84px; }
+#mainmenu-screen .hub-top{ background:#120a07; box-shadow:0 6px 8px -4px rgba(0,0,0,.7); }
+/* piso de legibilidad: nada menor a 14 px en el hub */
+#mainmenu-screen #alpha-onboarding, #mainmenu-screen #alpha-onboarding *{ font-size:14px; line-height:1.3; }
+#mainmenu-screen #alpha-onboarding button{ min-height:44px; padding:8px 12px; }
+#mainmenu-screen .hub-endless-lock, #mainmenu-screen #hub-endless-lock, #mainmenu-screen .ui-tag{ font-size:14px; }
+#mainmenu-screen .hub-endless-sub{ font-size:14px; } #mainmenu-screen .hub-endless-rank-txt{ font-size:15px; }

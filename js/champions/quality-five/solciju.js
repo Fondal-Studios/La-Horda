@@ -9,7 +9,7 @@ const SOLCIJU_KIT = [
 ].map(s=>({...s,kind:'expedition',ico:'✦'}));
 
 function solcijuMark(h,e,add=0){
-  const slot=heroes.indexOf(h);
+  const slot=qualityFiveSlot(h);
   if(slot<0)return {n:0,until:0};
   const marks=e._solMarks||(e._solMarks={});
   const m=marks[slot]||(marks[slot]={n:0,until:0});
@@ -18,7 +18,7 @@ function solcijuMark(h,e,add=0){
   return m;
 }
 function solcijuFlag(h,i,flag){return !!talentSkillMods(h.classKey,i).flags[flag];}
-function solcijuTargets(h,p,r){return portadorEnemies(h).filter(e=>!(e.cineT>0)&&distance(e,p)<=r+(e.radius||0)).sort((a,b)=>distance(a,p)-distance(b,p)).slice(0,12);}
+function solcijuTargets(h,p,r){return qualityFiveEnemies(h).filter(e=>!(e.cineT>0)&&distance(e,p)<=r+(e.radius||0)).sort((a,b)=>distance(a,p)-distance(b,p)).slice(0,12);}
 function solcijuHit(h,e,dmg,mark=true){
   const m=solcijuMark(h,e),ripe=m.n===3;
   if(ripe)m.n=0;
@@ -33,7 +33,7 @@ function solcijuObject(h,kind,p,life,data,cap){
 function solcijuAllies(h,p,r){
   // Never buff opponents in Arena Divina, even if they share the heroes array.
   const team=divinaMode&&divinaEnemies.includes(h)?divinaEnemies:heroes;
-  return team.filter(a=>a.alive&&!a.fused&&distance(a,p)<=r);
+  return team.filter(a=>a.alive&&!a.fused&&(h.team==null||a.team===h.team)&&distance(a,p)<=r);
 }
 function solcijuCast(h,sk,isUlt,dmg,area,dur){
  if(h.alive&&!h.fused&&typeof playSfx==='function')playSfx('quality_solciju'+(isUlt?'_ult':'_cast')); 
@@ -107,7 +107,7 @@ damageEnemy=function(e,amount,opts={}){
 const solOriginalHero=updatePortadorHero;
 updatePortadorHero=function(h,dt){solOriginalHero(h,dt);if(h.classKey==='solciju'&&(!h.alive||h.fused)){
   for(const o of portadorObjects)if(o.owner===h&&o.solciju)o.life=0;
-  for(const e of portadorEnemies(h))if(e._solMarks)delete e._solMarks[heroes.indexOf(h)];
+  for(const e of qualityFiveEnemies(h))if(e._solMarks)delete e._solMarks[qualityFiveSlot(h)];
 }};
 NET_SKIP_KEYS.add('_solMarks');
 // Arena Divina basics bypass damageEnemy. Track only the synchronous basic hit,

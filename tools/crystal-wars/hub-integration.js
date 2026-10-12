@@ -22,8 +22,9 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
       await page.evaluate(() => { save.tut = save.tut || {}; save.tut.training = 1; save.firstRun = 'hub'; save.champions.tanque.unlocked = true; persistNow(); setState('mainmenu'); renderMainMenu(); });
       await sleep(400);
       const r = await page.evaluate(() => {
-        const b = document.getElementById('hub-crystal-btn'), rc = b && b.getBoundingClientRect();
-        const play = document.getElementById('hub-play-btn').getBoundingClientRect();
+        const b = document.getElementById('hub-crystal-btn'); if (b) b.scrollIntoView({block: 'center'}); // el menú se desliza: alcanza con poder llegar
+        const rc = b && b.getBoundingClientRect();
+        const play = document.getElementById('hub-play-btn').getBoundingClientRect(); // (puede quedar fuera de pantalla: el solapamiento se mide en coordenadas del documento)
         return {vis: !!b && !b.classList.contains('hidden') && rc.width > 0, rc: rc && {x: rc.x, y: rc.y, w: rc.width, h: rc.height}, inView: rc && rc.left >= 0 && rc.right <= innerWidth + 1 && rc.top >= 0 && rc.bottom <= innerHeight + 1,
           overlapPlay: rc && !(rc.right <= play.left || rc.left >= play.right || rc.bottom <= play.top || rc.top >= play.bottom), reg: !!(window.GAME_MODE_REGISTRY && GAME_MODE_REGISTRY.crystalWars), txt: b && b.innerText};
       });

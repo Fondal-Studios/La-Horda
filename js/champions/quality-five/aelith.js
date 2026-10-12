@@ -7,8 +7,8 @@ const AELITH_KIT=[
  {name:'La hora imposible',action:'ael_hour',cost:0,cd:37000,range:260,radius:170,duration:3600,dmgMult:.4,desc:'Tres pulsos dañan y ralentizan enemigos. Escuda a aliados dentro del círculo.'}
 ].map(s=>({...s,kind:'expedition',ico:'◷'}));
 function aelithFlag(h,i,f){return !!talentSkillMods(h.classKey,i).flags[f];}
-function aelithTargets(h,p,r){return exTargets(h,e=>distance(e,p)<=r+(e.radius||0));}
-function aelithAllies(h,p,r){const team=divinaMode&&divinaEnemies.includes(h)?divinaEnemies:heroes;return team.filter(a=>a.alive&&!a.fused&&distance(a,p)<=r);}
+function aelithTargets(h,p,r){return qualityFiveTargets(h,e=>distance(e,p)<=r+(e.radius||0));}
+function aelithAllies(h,p,r){const team=divinaMode&&divinaEnemies.includes(h)?divinaEnemies:heroes;return team.filter(a=>a.alive&&!a.fused&&(h.team==null||a.team===h.team)&&distance(a,p)<=r);}
 function aelithObject(h,kind,p,life,data,cap=2){portadorLimit(h,kind,cap);portadorObjects=portadorObjects.filter(o=>o.life>0);return portadorAdd(h,kind,p,life,{aelith:true,...data});}
 function aelithEcho(h,p,r,dmg,delay=800){return aelithObject(h,'ael_echo',p,delay,{r,dmg});}
 function aelithCast(h,sk,isUlt,dmg,area,dur){

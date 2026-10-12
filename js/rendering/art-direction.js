@@ -70,7 +70,7 @@ function drawArenaLight(){
   if(state==="playing") arenaLightPerf(animDt);
   const L = arenaLightCfg(); if(!L) return;
   const W = VW/CAM_ZOOM, H = VH/CAM_ZOOM;
-  const V = {x:player.x + CAM_LEAD_X - W/2 - 40, y:(player.y - CAM_LIFT + CAM_LEAD_Y) - (VH/2 - CAM_Y_ANCHOR)/CAM_ZOOM - 40, w:W + 80, h:H + 80};
+  const V = {x:camSub().x + CAM_LEAD_X - W/2 - 40, y:(camSub().y - CAM_LIFT + CAM_LEAD_Y) - (VH/2 - CAM_Y_ANCHOR)/CAM_ZOOM - 40, w:W + 80, h:H + 80};
   const mw = Math.ceil(V.w/LIGHT_MASK_DS) + 2, mh = Math.ceil(V.h/LIGHT_MASK_DS) + 2;
   if(!_lgMask){ _lgMask = document.createElement("canvas"); _lgCtx = _lgMask.getContext("2d"); _lgHole = _lgRadial(); }
   if(_lgMask.width !== mw || _lgMask.height !== mh){ _lgMask.width = mw; _lgMask.height = mh; }

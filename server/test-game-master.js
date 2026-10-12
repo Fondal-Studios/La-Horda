@@ -64,7 +64,8 @@ async function run(){
  const persisted=fs.readFileSync(path.join(dir,'operations.json'),'utf8');assert.ok(!persisted.includes('private@example.com'));assert.ok(!persisted.includes('a'.repeat(32)));assert.ok(!persisted.includes(owner));
  await api('POST','/api/gm/gift',{user:'tester',cosmetic:'fake'},owner,400);
  await api('POST','/api/gm/gift',{user:'tester',cosmetic:'__proto__'},owner,400);
- const cat=await api('GET','/api/gm/cosmetics',undefined,owner);assert.equal(cat.cosmetics.length,32);
+ const cat=await api('GET','/api/gm/cosmetics',undefined,owner);assert.equal(cat.cosmetics.length,47);
+ for(const k of ['solciju','brakk','veyra','morveth','aelith'])for(const id of [k+'_alt1',k+'_croma','quality_'+k])assert.ok(cat.cosmetics.some(c=>c.id===id&&c.champion===k),'owner catalog: '+id);
  await api('POST','/api/gm/gift',{user:'tester',cosmetic:'tanque_ancestral'},owner);
  let current=await api('GET','/api/save',undefined,player);assert.equal(current.data.cosmeticUnlocks.tanque_ancestral,true);assert.equal(current.data.gold,50);assert.equal(current.data.champions.tanque.level,20);
  const bulkPreview=await api('POST','/api/gm/reset/preview',{user:'all',fields:['gold']},owner);assert.equal(bulkPreview.accounts,1);assert.equal(bulkPreview.missingSave,1);assert.equal(bulkPreview.confirmation,'REINICIAR 1 CUENTAS');

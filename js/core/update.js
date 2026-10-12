@@ -84,6 +84,7 @@ function update(dt){
   // enemies
   for(const e of enemies){
     if(!e.alive) continue;
+    if(e.lanesProxy) continue; // Guerra de Cristales: avatares de héroes y estructuras no actúan (los sincroniza lanesUpdate)
     if(axiomFreezeTimer>0){ continue; } // Force Quit: nadie salvo Axiom actúa mientras dura
     if(e._kbRx || e._kbRy) updateHitKnock(e, dt); // retroceso por peso en curso (feedback.js)
     if(e.frozenTimer>0) e.frozenTimer -= dt; // congelado (Invierno Sin Fin, reacciones de hielo)
@@ -511,14 +512,17 @@ function update(dt){
     p.x += p.vx*dt/1000; p.y += p.vy*dt/1000; p.life -= dt;
     if(p.enemy){
       if((p.wave || p.lob) && updateEnemyProjectileStyle(p, dt)) continue; // el tiro en arco solo pega al caer
+      if(typeof lanesOn==="function" && lanesOn()) lanesEnemyProjectile(p); // Guerra de Cristales: también pega a súbditos y estructuras rivales
       for(const h of heroes){
         if(!h.alive) continue;
+        if(h.team!==undefined && p.src && p.src.team===h.team) continue; // Guerra de Cristales: la horda propia no le pega a su equipo
         if(distance(p,h) < h.radius+p.radius){ damageHero(h, p.dmg, {x:p.x-p.vx*0.25, y:p.y-p.vy*0.25, rank:p.rank, from:p.src}); if(p.frost) addFrost(h, p.frost); p.life=0; vfxBurst(p.x, p.y, 4, "spark", 90, 200, 2.5, h===player?2:0, -20, 1); break; }
       }
     } else {
       for(const e of enemies){
         if(!e.alive) continue;
         if(p.hitSet && p.hitSet.has(e)) continue;
+        if(e.team!==undefined && p.src && p.src.team===e.team) continue; // Guerra de Cristales: los tiros atraviesan a los propios
         if(distance(p,e) < e.radius+p.radius){
           damageEnemy(e, p.dmg, {fromBasic:p.fromBasic, slow:p.slow, slowDur:2000, src:p.src,
             critChanceOverride:p.critChanceOverride, critMultOverride:p.critMultOverride, bleed:p.bleed, bleedDur:p.bleedDur});
@@ -553,7 +557,7 @@ function update(dt){
   if(levelClearing > 0){
     levelClearing -= dt;
     if(levelClearing <= 0){ levelClearing = 0; if(state==="playing" && !runEnding) openBuffChoice(); }
-  } else if(!divinaMode && !bossActive && !runEnding){
+  } else if(!divinaMode && !bossActive && !runEnding && !arenaHook("ownSpawns")){ // (ownSpawns: la arena genera sus propias oleadas, p.ej. Guerra de Cristales)
     spawnTimer -= dt;
     // Más enemigos desde la Horda 1, y el ritmo deja de acelerar a partir del nivel ~5
     // (antes seguía acelerando sin techo real y se acumulaba un "masacote" hacia el final).

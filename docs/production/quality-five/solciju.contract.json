@@ -7,7 +7,7 @@
   "fantasy": "Control de zonas mediante vino maldito, fermentación y barricas.",
   "lore": "Solciju conservaba las últimas cosechas de una ciudad que ya nadie recordaba. Cuando la peste alcanzó sus bodegas, descubrió que el vino retenía algo más que años: atrapaba las maldiciones de quienes lo bebían. Ahora recorre las ruinas con una reserva que jamás ofrece por cortesía. Dice detestar la compañía, pero siempre guarda una copa para quien sobreviva a su lado.",
   "personality": "Irónica, reservada y protectora a su pesar.",
-  "silhouette": "Bob negro con mechón blanco, copa, barrica lateral y sacacorchos.",
+  "silhouette": "bob negro con mechón blanco; barrica lateral; copa; sacacorchos.",
   "stats": {
     "hp": 98,
     "damage": 10,
@@ -109,14 +109,81 @@
     "codex": "js/champions/quality-five/register.js",
     "talents": "js/champions/quality-five/register.js",
     "mastery": "js/champions/quality-five/register.js",
-    "set": "",
+    "set": "js/champions/quality-five/collection.js",
     "kitTest": "tools/quality-five/functional.js"
   },
-  "cosmetics": [],
+  "cosmetics": [
+    {
+      "id": "solciju_alt1",
+      "type": "skin",
+      "champion": "solciju",
+      "name": "Solciju, Viuda de Medianoche",
+      "rarity": "Épica",
+      "tagline": "Vestido de luto escalonado, velo con rosas, copa y sacacorchos; conserva el bob negro y mechón blanco.",
+      "lore": "Cuando la última bodega quedó sellada, Solciju se vistió de luto por las cosechas que nadie bebió. Cada pliegue guarda un brindis que no llegó a hacerse.",
+      "visualTheme": "Vestido de luto escalonado, velo con rosas, copa y sacacorchos; conserva el bob negro y mechón blanco.",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/solciju/skins/solciju_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "solciju_croma",
+      "type": "croma",
+      "champion": "solciju",
+      "name": "Añada Esmeralda",
+      "rarity": "Rara",
+      "tagline": "Una paleta alternativa para Solciju.",
+      "lore": "Los colores de Añada Esmeralda acompañan un nuevo viaje. Conserva su vestuario y sus decisiones: esta apariencia cambia únicamente la paleta.",
+      "visualTheme": "Paleta selectiva; conserva piel y contorno.",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "palette"
+      ],
+      "preview": "assets/sprites/champions/solciju/croma-preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "quality_solciju",
+      "type": "set",
+      "champion": "solciju",
+      "name": "Vendimiadora del Asedio",
+      "rarity": "Set",
+      "tagline": "Delantal blindado, arnés, cesta y hojas de bronce",
+      "lore": "Cuando los muros de la bodega cedieron, Solciju puso su delantal sobre la coraza y cargó la última vendimia. La cesta conserva las hojas del primer rescate.",
+      "visualTheme": "Delantal blindado, arnés, cesta y hojas de bronce",
+      "unlockSource": "Completar Cosecha Sitiada en ciudad",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/solciju/skins/quality_solciju/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
   "set": {
-    "sourceArena": "",
-    "pieces": [],
-    "rewardCosmetic": "",
+    "sourceArena": "ciudad",
+    "pieces": [
+      "quality_solciju_arma",
+      "quality_solciju_casco",
+      "quality_solciju_pechera",
+      "quality_solciju_botas"
+    ],
+    "rewardCosmetic": "quality_solciju",
     "rewardGrantsPower": false
   },
   "budgets": {
@@ -130,12 +197,12 @@
     "abilities": "docs/production/quality-five/ability/ability-gate.json",
     "resources": "docs/production/quality-five/functional-results.json",
     "passives": "docs/production/quality-five/functional-results.json",
-    "balance": "docs/production/quality-five/workshop-entry-results.json",
+    "balance": "docs/balance/entry-gate-results.json",
     "visuals": "docs/art-gate/roster-gate.json",
     "style": "docs/production/quality-five/originals/style-results.txt",
     "audio": "docs/production/quality-five/audio-20261012.txt",
     "multiplayer": "docs/production/quality-five/online-results.json",
-    "performance": ""
+    "performance": "docs/production/quality-five/performance-solciju.json"
   },
   "category": "STANDARD"
 }

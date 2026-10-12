@@ -17,7 +17,7 @@ const server=http.createServer((req,res)=>{
   const page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('http://127.0.0.1:'+server.address().port);
   await page.waitForFunction(()=>typeof CHAMPION_ENTRY_BALANCE!=='undefined');
-  const absent=await page.evaluate(()=>["brakk"].every(k=>CLASSES[k]&&CHAMPION_CATALOG.some(c=>c.id===k)&&championMeta(k).releaseState==='TESTING'&&!CHAMPION_BALANCE_REFERENCE.knownChampions.includes(k)));
+  const absent=await page.evaluate(()=>["brakk"].every(k=>CLASSES[k]&&CHAMPION_CATALOG.some(c=>c.id===k)&&championMeta(k).releaseState==='RELEASED'&&!CHAMPION_BALANCE_REFERENCE.knownChampions.includes(k)));
   const checks=await page.evaluate(()=>{
    const out=[],check=(name,ok,details)=>out.push({name,ok:!!ok,...(details?{details}:{})});
    function start(level=1,key='brakk'){
@@ -67,7 +67,7 @@ const server=http.createServer((req,res)=>{
    for(const arena of ['bosque','ciudad','fortaleza','micelial','hielo','acuatica','laberinto','abismo','minas','infernal']){start(20);currentArena=arena;startRun(3);for(let i=0;i<3;i++)cast(i);cast('ult');tick(1000);check('arena '+arena+' finite hero and builds',Number.isFinite(player.hp)&&brakkOwned(player).every(o=>Number.isFinite(o.x)&&Number.isFinite(o.hp)));}
    return out;
   });
-  checks.unshift({name:'registered in production as TESTING candidate',ok:absent});
+  checks.unshift({name:'registered in production as RELEASED candidate',ok:absent});
   const status=errors.length||checks.some(x=>!x.ok)?'FAIL':'PASS';
   fs.writeFileSync(reportPath,JSON.stringify({status,scope:'Brakk workshop engine tests; not art, balance or multiplayer approval',checks,errors},null,2)+'\n');
   console.log(JSON.stringify({status,checks:checks.length,failed:checks.filter(x=>!x.ok),errors}));if(status==='FAIL')process.exitCode=1;

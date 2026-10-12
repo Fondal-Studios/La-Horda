@@ -8,7 +8,7 @@ const BRAKK_KIT=[
 ].map(s=>({...s,kind:'expedition',ico:'▣'}));
 function brakkFlag(h,i,f){return !!talentSkillMods(h.classKey,i).flags[f];}
 function brakkOwned(h){return portadorObjects.filter(o=>o.brakk&&o.owner===h&&o.life>0&&o.hp>0);}
-function brakkTargets(h,p,r){return exTargets(h,e=>distance(e,p)<=r+(e.radius||0));}
+function brakkTargets(h,p,r){return qualityFiveTargets(h,e=>distance(e,p)<=r+(e.radius||0));}
 function brakkBuild(h,kind,p,life,data={}){
  portadorLimit(h,kind,2);portadorObjects=portadorObjects.filter(o=>o.life>0);
  const hp=h.maxHp*.22;
@@ -45,7 +45,7 @@ function brakkCast(h,sk,isUlt,dmg,area,dur){
  }
  qualityFiveFx(h,kitFx,sk.action==='brk_repair'?'shield':'earth',p.x,p.y,r,{ult:!!isUlt});
 }
-function brakkAllies(h,r){const side=divinaMode&&divinaEnemies.includes(h)?divinaEnemies:heroes;return side.filter(a=>a.alive&&!a.fused&&distance(h,a)<=r);}
+function brakkAllies(h,r){const side=divinaMode&&divinaEnemies.includes(h)?divinaEnemies:heroes;return side.filter(a=>a.alive&&!a.fused&&(h.team==null||a.team===h.team)&&distance(h,a)<=r);}
 function brakkUpdate(o,dt){
  if(!o.brakk)return false;
  const h=o.owner;if(!h?.alive||h.fused||!heroes.includes(h)||o.hp<=0){o.life=0;return true;}
@@ -63,7 +63,7 @@ function brakkUpdate(o,dt){
   o.left--;o.tick+=o.interval;
   const target=brakkTargets(h,o,o.range).find(e=>!arenaHas('heroReachable')||arenaHook('heroReachable',o,e));
   if(!target)continue;
-  const targets=brakkFlag(h,1,'pierce')?exTargets(h,e=>seSegDist(e.x,e.y,o.x,o.y,target.x,target.y)<18+(e.radius||0)):brakkTargets(h,target,o.r).slice(0,3);
+  const targets=brakkFlag(h,1,'pierce')?qualityFiveTargets(h,e=>seSegDist(e.x,e.y,o.x,o.y,target.x,target.y)<18+(e.radius||0)):brakkTargets(h,target,o.r).slice(0,3);
   for(const e of targets)exHit(h,e,o.dmg,true);
   qualityFiveFx(h,kitFxLine,'spike',o.x,o.y,target.x,target.y,18);
  }
@@ -76,7 +76,7 @@ function brakkCollide(e){
  if(brakkResolvingCollision||!e?.alive||isBossRank(e)||(divinaMode&&divinaStructures.includes(e)))return;
  brakkResolvingCollision=true;try{
  for(const o of portadorObjects){
-  if(o.kind!=='brk_wall'||o.life<=0||o.hp<=0||!o.owner?.alive||o.owner.fused||(divinaMode?!portadorEnemies(o.owner).includes(e):heroes.includes(e)||(e.isDuelLocked&&e.duelOwner!==o.owner)))continue;
+  if(o.kind!=='brk_wall'||o.life<=0||o.hp<=0||!o.owner?.alive||o.owner.fused||(divinaMode?!qualityFiveEnemies(o.owner).includes(e):(o.owner.team!=null?e.team===o.owner.team:heroes.includes(e))||(e.isDuelLocked&&e.duelOwner!==o.owner)))continue;
   const x=e.x-o.x,y=e.y-o.y,l=x*o.dx+y*o.dy,n=-x*o.dy+y*o.dx,rr=e.radius||18;
   if(Math.abs(l)>o.r+rr||Math.abs(n)>=10+rr)continue;
   const before={x:e.x,y:e.y},push=(n>=0?1:-1)*(10+rr)-n;e.x-=o.dy*push;e.y+=o.dx*push;

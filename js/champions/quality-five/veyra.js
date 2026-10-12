@@ -28,12 +28,12 @@ function veyraCast(h,sk,isUlt,dmg,area,dur){
  h.portCastState=isUlt?'ultimate':'cast';h.portCastUntil=runElapsedMs+(isUlt?650:420);
  switch(sk.action){
   case 'vey_cut':
-   if(veyraFlag(h,0,'lance'))for(const e of exTargets(h,e=>seSegDist(e.x,e.y,h.x,h.y,end.x,end.y)<=r+(e.radius||0)))veyraHit(h,e,dmg);
-   else for(const e of exTargets(h,e=>{const d=distance(h,e)||1;return d<=range+(e.radius||0)&&((e.x-h.x)*dir.x+(e.y-h.y)*dir.y)/d>=Math.cos(.85);}))veyraHit(h,e,dmg);
+   if(veyraFlag(h,0,'lance'))for(const e of qualityFiveTargets(h,e=>seSegDist(e.x,e.y,h.x,h.y,end.x,end.y)<=r+(e.radius||0)))veyraHit(h,e,dmg);
+   else for(const e of qualityFiveTargets(h,e=>{const d=distance(h,e)||1;return d<=range+(e.radius||0)&&((e.x-h.x)*dir.x+(e.y-h.y)*dir.y)/d>=Math.cos(.85);}))veyraHit(h,e,dmg);
    break;
   case 'vey_dash':
    exDash(h,dir,range);
-   for(const e of exTargets(h,e=>seSegDist(e.x,e.y,origin.x,origin.y,h.x,h.y)<=r+(e.radius||0)))veyraHit(h,e,dmg);
+   for(const e of qualityFiveTargets(h,e=>seSegDist(e.x,e.y,origin.x,origin.y,h.x,h.y)<=r+(e.radius||0)))veyraHit(h,e,dmg);
    if(veyraFlag(h,1,'escape'))kitBuff(h,h,1500,{armor:.15,label:'EVASIÓN'});
    break;
   case 'vey_pact':
@@ -42,7 +42,7 @@ function veyraCast(h,sk,isUlt,dmg,area,dur){
    break;
   case 'vey_final':{
    let consumed=0;const list=veyraBleeds(h);
-   for(const e of exTargets(h,e=>distance(h,e)<=r+(e.radius||0))){
+   for(const e of qualityFiveTargets(h,e=>distance(h,e)<=r+(e.radius||0))){
     const mark=list.find(b=>b.target===e&&b.left>0);
     veyraHit(h,e,dmg*(mark?1.2:1),false);portadorSlow(h,e,.3,life);
     if(mark){mark.left=0;consumed++;}
@@ -62,7 +62,7 @@ expeditionCast=function(h,sk,...args){return sk.action?.startsWith('vey_')?veyra
 const veyOriginalHero=updatePortadorHero;
 updatePortadorHero=function(h,dt){veyOriginalHero(h,dt);if(h.classKey!=='veyra')return;
  if(!h.alive||h.fused){h.veyraBleeds=[];return;}
- const hostile=portadorEnemies(h);
+ const hostile=qualityFiveEnemies(h);
  for(const b of veyraBleeds(h)){
   if(!b.target.alive||!hostile.includes(b.target)){b.left=0;continue;}
   b.tick-=Math.max(0,dt);

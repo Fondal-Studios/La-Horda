@@ -246,6 +246,11 @@ document.getElementById("resume-btn").addEventListener("click", ()=>{
   setState("playing");
 });
 document.getElementById("quit-btn").addEventListener("click", ()=>{
+  if(typeof lanesOn==="function" && lanesOn()){ // Guerra de Cristales: abandonar = volver al menú (sin castigos: es un guardado temporal)
+    const msgQ = netIsHost() ? "Sos el anfitrión: si abandonás, la partida termina para todos. ¿Seguir?" : "¿Abandonar la partida?";
+    gameConfirm(msgQ, {okText:"Abandonar", cancelText:"Seguir jugando", danger:true}).then(ok=>{ if(ok){ document.getElementById("pause-screen").classList.add("hidden"); if(netMatch) netQuitMatch(); lanesStop("mainmenu"); } });
+    return;
+  }
   if(typeof endlessOn==="function" && endlessOn()){ endlessQuitFromPause(); return; } // Horda Infinita: terminar = resultados (sin castigo)
   if(divinaMode){
     divinaMode = false;

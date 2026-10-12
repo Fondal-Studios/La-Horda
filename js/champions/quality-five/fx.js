@@ -14,3 +14,8 @@ function qualityFiveFx(h, draw, ...args){
  vfxBurst=limit(burst);vfxSpray=limit(spray);
  try{return draw(...args);}finally{vfxBurst=burst;vfxSpray=spray;}
 }
+
+// Persistent effects run outside lanesTeamCall: filter teams again at every tick.
+function qualityFiveEnemies(h){return portadorEnemies(h).filter(e=>h.team==null||e.team!==h.team);}
+function qualityFiveTargets(h,test){return qualityFiveEnemies(h).filter(e=>!(e.cineT>0)&&test(e)).sort((a,b)=>distance(h,a)-distance(h,b)).slice(0,12);}
+function qualityFiveSlot(h){return h._qualityFiveSlot==null?heroes.indexOf(h):h._qualityFiveSlot;}

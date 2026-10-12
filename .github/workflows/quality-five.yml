@@ -30,7 +30,8 @@ jobs:
       - run: node tools/quality-five/temporal-plague-functional.js
       - run: node tools/quality-five/online.js
       - run: node tools/audio/t_audio_mix.js
-      - run: python tools/factory/produce-quality-five.py
+      - run: node tools/lanes/kits.js 55 solciju brakk veyra morveth aelith
+      - run: python tools/factory/produce-quality-five.py --require-complete
       - run: git diff --exit-code -- assets/sprites/champions/solciju docs/production/quality-five/originals
       - uses: actions/upload-artifact@v4
         if: always()

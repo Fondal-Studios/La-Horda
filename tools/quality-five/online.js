@@ -26,9 +26,9 @@ const modules=[];
  let ready=false;
  for(let i=0;i<100;i++){try{const r=await fetch('http://127.0.0.1:8858/api/health');if(r.ok){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,100));}
  if(!ready)throw Error('Local relay failed to start');
- // Negative control: a forged local unlock without a session must not enter a room.
+ // Released standard champions use the normal public roster. Founders remain grant-protected.
  const WebSocket=require('../../server/node_modules/ws');
- for(const champ of ['solciju','brakk','veyra','morveth','aelith']){
+ for(const champ of ['solciju','brakk','veyra','morveth','aelith','nano_gm','facu_gm']){
   const allowed=await new Promise((resolve,reject)=>{
    const ws=new WebSocket('ws://127.0.0.1:8858');
    const timer=setTimeout(()=>{ws.terminate();reject(Error('Anonymous entitlement probe timed out'));},5000);
@@ -36,7 +36,7 @@ const modules=[];
    ws.on('open',()=>ws.send(JSON.stringify({t:'create',protocol:1,arena:'bosque',champ,level:20,name:'Anonymous QA'})));
    ws.on('message',data=>{const m=JSON.parse(data);if(m.t==='joined'){clearTimeout(timer);ws.close();resolve(m.room.slots[0].champ===champ);}});
   });
-  checks.push({name:champ+' rejected without server grant',ok:!allowed});
+  const founder=champ.endsWith('_gm');checks.push({name:champ+(founder?' rejected without founder entitlement':' admitted as released standard champion'),ok:founder?!allowed:allowed});
  }
  const tokens=[];
  for(const user of ['qa_five_host','qa_five_guest']){const r=await fetch('http://127.0.0.1:8858/api/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({user,pass:'local-fixture-password'})});const j=await r.json();if(!r.ok||!j.token)throw Error('Local QA login failed');tokens.push(j.token);}
@@ -85,6 +85,6 @@ const modules=[];
   await ac.close();await gc.close();await ab.close();await gb.close();
  }
  const status=errors.length||checks.some(c=>!c.ok)?'FAIL':'PASS';
- fs.writeFileSync(reportPath,JSON.stringify({status,scope:'Unmodified production relay and TESTING taxonomy; two authenticated local fixture accounts with explicit grants. No production accounts or cosmetics.',checks,errors},null,2)+'\n');
+ fs.writeFileSync(reportPath,JSON.stringify({status,scope:'Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.',checks,errors},null,2)+'\n');
  console.log(JSON.stringify({status,checks,errors}));if(status==='FAIL')process.exitCode=1;
 }finally{for(const b of browsers)await b.close().catch(()=>{});servers.forEach(s=>s.kill());fs.rmSync(dataDir,{recursive:true,force:true});}})().catch(e=>{fs.writeFileSync(reportPath,JSON.stringify({status:'FAIL',checks,errors:[...errors,e.message]},null,2)+'\n');console.error(e);process.exitCode=1;});

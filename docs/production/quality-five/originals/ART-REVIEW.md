@@ -1,27 +1,12 @@
-# Solciju original — revisión del 12/10/2026
+# Revisión visual del lote original — 12/10/2026
 
-Revisor: Codex (revisión visual automatizada/asistida, no una firma humana).
-Referencia: `../original-identities-concept.png`, recuperada del concepto aprobado por el owner.
+Revisor: Codex, inspección visual asistida; no es una firma humana.
+Referencia: Caballero y concepto aprobado conservado en original-identities-concept.png.
 
-Se inspeccionaron los dos sheets fuente y ambos atlas importados: bob negro, mechón blanco,
-copa, barrica lateral y sacacorchos conservados en caminar, ataque, cast, definitiva y muerte.
-La skin modifica el vestido escalonado, velo, rosas y accesorios; no es un recolor.
-Las 36 poses están separadas. Frente, perfil derecho y espalda tienen caminata y ataque;
-izquierda usa espejo. Cast/definitiva/muerte reutilizan el frente en otras direcciones,
-como admite el formato actual; no se declara una animación distinta donde no existe.
-Idle e hit reutilizan el primer frame de caminar/atacar, respectivamente.
+Los quince atlas fueron inspeccionados: bases, skins alt1 y apariencias de Set. Se conservan bob/mechón/copa de Solciju, visor/maza de Brakk, sien rapada/trenza/sable de Veyra, raíces/hongos/hoz de Morveth y piel oscura/rulos/monóculo/reloj de Aelith. Las skins cambian vestimenta, estructura y accesorios. No utilizan los atlas de donantes; las recetas descartadas quedan archivadas.
 
-El importador usa escala uniforme, nearest-neighbor, alfa binaria y el detector de pies
-de `tools/art/redraw/build_atlas.py`. Se corrigió contaminación de armas vecinas en
-bounds superpuestos: ahora sólo conserva la componente de la pose seleccionada.
-SHA exactos y procedencia: `solciju/import-report.json`, `solciju_alt1/import-report.json`.
+La importación mantiene escala uniforme, alfa binaria, nearest-neighbor y detector de pies existente. Las fuentes tienen 36 poses. Cuatro direcciones: frente, perfil, espalda y espejo izquierdo. Idle/hit reutilizan poses; cast/ultimate/death comparten frente entre direcciones, conforme al formato existente. Brakk base utiliza tres poses distintas de ataque arriba y repite recuperación (20,21,23,20); el frame 22 frontal sirve para hit_down. Brakk Set utiliza tres ataques de perfil (16,17,18,16); el frame 19 de espalda sirve para hit_up. No se declara animación única donde se reutiliza una pose.
 
-Gate numérico: ambos PASS, `style-results.txt`, tolerancias originales intactas.
-Roster Art Gate: 126 apariencias, cero fallos de escala, presentación o página.
-Normalización cambiada exclusivamente para las dos apariencias de Solciju.
-Los nuevos atlas sustituyen únicamente el estudio Maura de Solciju en la rama de QA.
-Las recetas anteriores quedan archivadas y no deben reinstalarse.
+La revisión considera proporciones chibi, siluetas, contraste, coherencia entre poses y ausencia de contaminación/clipping. Resultado de los quince atlas: PASS para integración de arte. Los hashes exactos están en production.json e import-report.json de cada apariencia. Gate numérico: quince PASS, sin cambiar umbrales. Roster Art Gate: 136 apariencias, cero fallos de escala, presentación o página. Cosméticos en motor: 50 comprobaciones PASS; regresión general: 5786 comprobaciones PASS.
 
-Resultado: PASS técnico y visual de estos dos atlas para la rama de pruebas.
-No aprueba el lote de cinco, los otros ocho atlas, balance competitivo, teléfono físico,
-ni despliegue. Las diferencias restantes de arte del lote siguen bloqueando su release.
+Este resultado no aprueba balance competitivo, performance, red ni despliegue. Los contratos deben conservar evidencia independiente de esos gates.

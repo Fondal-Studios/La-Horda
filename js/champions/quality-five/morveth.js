@@ -7,8 +7,8 @@ const MORVETH_KIT=[
  {name:'Jardín de la peste',action:'mor_garden',cost:0,cd:36000,range:250,radius:165,duration:4000,dmgMult:.3,desc:'Cuatro pulsos infectan, dañan y ralentizan. Los aliados dentro del jardín reciben protección.'}
 ].map(s=>({...s,kind:'expedition',ico:'♧'}));
 function morvethFlag(h,i,f){return !!talentSkillMods(h.classKey,i).flags[f];}
-function morvethTargets(h,p,r){return exTargets(h,e=>distance(e,p)<=r+(e.radius||0));}
-function morvethAllies(h,p,r){const team=divinaMode&&divinaEnemies.includes(h)?divinaEnemies:heroes;return team.filter(a=>a.alive&&!a.fused&&distance(a,p)<=r);}
+function morvethTargets(h,p,r){return qualityFiveTargets(h,e=>distance(e,p)<=r+(e.radius||0));}
+function morvethAllies(h,p,r){const team=divinaMode&&divinaEnemies.includes(h)?divinaEnemies:heroes;return team.filter(a=>a.alive&&!a.fused&&(h.team==null||a.team===h.team)&&distance(a,p)<=r);}
 function morvethInfections(h){return h.morvethInfections||(h.morvethInfections=[]);}
 function morvethInfect(h,e,dmg,generation=0){
  if(!e.alive||e.cineT>0)return;
@@ -71,7 +71,7 @@ const morCast=expeditionCast;expeditionCast=function(h,sk,...args){return sk.act
 const morObject=ynaraUpdateObject;ynaraUpdateObject=function(o,dt){return morvethUpdateObject(o,dt)||morObject(o,dt);};
 const morHero=updatePortadorHero;updatePortadorHero=function(h,dt){morHero(h,dt);if(h.classKey!=='morveth')return;
  if(!h.alive||h.fused){h.morvethInfections=[];for(const o of portadorObjects)if(o.owner===h&&o.morveth)o.life=0;return;}
- const list=morvethInfections(h),hostile=portadorEnemies(h);
+ const list=morvethInfections(h),hostile=qualityFiveEnemies(h);
  // Snapshot prevents a corpse's new infections ticking again in this same update.
  for(const m of [...list]){
   if(!m.target.alive){

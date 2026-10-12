@@ -55,13 +55,13 @@ var CHAMPION_TAXONOMY = {
   bront:    {category:"ASCENSION"},
   oriel:    {category:"ASCENSION"},
   saelis:   {category:"ASCENSION"},
-  // Cinco campeones nuevos (docs/production/quality-five): STANDARD en TESTING = jugables para quien los tenga concedido, fuera de la
-  // tienda pública, bots y modos competitivos hasta la aprobación humana de arte/audio y el cierre de knownChampions. Pasar a RELEASED es el último paso.
-  solciju:  {category:"STANDARD", releaseState:"TESTING"},
-  veyra:    {category:"STANDARD", releaseState:"TESTING"},
-  brakk:    {category:"STANDARD", releaseState:"TESTING"},
-  morveth:  {category:"STANDARD", releaseState:"TESTING"},
-  aelith:   {category:"STANDARD", releaseState:"TESTING"}
+  // Lote original validado para Alpha. Mantiene admisión por Balance Gate como candidato;
+  // knownChampions se actualiza solamente en una entrega posterior (AGENTS.md).
+  solciju:  {category:"STANDARD", releaseState:"RELEASED"},
+  veyra:    {category:"STANDARD", releaseState:"RELEASED"},
+  brakk:    {category:"STANDARD", releaseState:"RELEASED"},
+  morveth:  {category:"STANDARD", releaseState:"RELEASED"},
+  aelith:   {category:"STANDARD", releaseState:"RELEASED"}
 };
 
 // EVENT infrastructure. Example shape (no event champion exists yet):

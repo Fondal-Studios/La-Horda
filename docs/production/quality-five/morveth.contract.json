@@ -7,7 +7,7 @@
   "fantasy": "Mago invocador con contagio terminal",
   "lore": "Morveth cuidaba el jardín de un hospital sitiado. Cuando las medicinas se agotaron, descubrió un micelio capaz de retener la infección en sus raíces. Ahora transporta aquel cultivo en una urna agrietada. Sus hongos necesitan tiempo y terreno para extenderse; arrancarlos deja al jardinero expuesto. No busca una cura perfecta, sino impedir que la próxima cosecha sean los vivos.",
   "personality": "Reservado y paciente.",
-  "silhouette": "PENDIENTE: revisión visual y continuidad en todas las poses.",
+  "silhouette": "anatomía de raíces y hongos; hoz.",
   "stats": {
     "hp": 96,
     "damage": 8.5,
@@ -83,25 +83,25 @@
     }
   },
   "art": {
-    "atlas": "",
-    "preview": "",
+    "atlas": "assets/sprites/champions/morveth/atlas.png",
+    "preview": "assets/sprites/champions/morveth/preview.png",
     "directions": 4,
-    "frameWidth": 0,
-    "frameHeight": 0,
-    "sha256": "",
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "7b25a4c53640d8b258448ab19ea090dfe6dc8de8096fb43a12081ca3b0213ded",
     "animations": {
-      "idle": 0,
-      "walk": 0,
-      "attack": 0,
-      "cast": 0,
-      "hit": 0,
-      "death": 0,
-      "ultimate": 0
+      "idle": 1,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
     },
     "review": {
-      "status": "PENDING",
-      "reviewer": "",
-      "evidence": ""
+      "status": "PASS",
+      "reviewer": "Codex (visual inspection; not human signoff)",
+      "evidence": "docs/production/quality-five/originals/ART-REVIEW.md"
     }
   },
   "integration": {
@@ -109,14 +109,81 @@
     "codex": "js/champions/quality-five/register.js",
     "talents": "js/champions/quality-five/register.js",
     "mastery": "js/champions/quality-five/register.js",
-    "set": "",
+    "set": "js/champions/quality-five/collection.js",
     "kitTest": "tools/quality-five/temporal-plague-functional.js"
   },
-  "cosmetics": [],
+  "cosmetics": [
+    {
+      "id": "morveth_alt1",
+      "type": "skin",
+      "champion": "morveth",
+      "name": "Morveth, Micelio Abisal",
+      "rarity": "Épica",
+      "tagline": "Raíces abisales, frondas de coral y hongos azules, con hoz orgánica",
+      "lore": "En una cueva sin luz, el cultivo de Morveth aprendió a brillar. Su abrigo lleva esas esporas como promesa: la próxima cosecha será de los vivos.",
+      "visualTheme": "Raíces abisales, frondas de coral y hongos azules, con hoz orgánica",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/morveth/skins/morveth_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "morveth_croma",
+      "type": "croma",
+      "champion": "morveth",
+      "name": "Musgo del Retorno",
+      "rarity": "Rara",
+      "tagline": "Una paleta alternativa para Morveth.",
+      "lore": "Los colores de Musgo del Retorno acompañan un nuevo viaje. Conserva su vestuario y sus decisiones: esta apariencia cambia únicamente la paleta.",
+      "visualTheme": "Paleta selectiva; conserva piel y contorno.",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "palette"
+      ],
+      "preview": "assets/sprites/champions/morveth/croma-preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "quality_morveth",
+      "type": "set",
+      "champion": "morveth",
+      "name": "Huerto de Sal",
+      "rarity": "Set",
+      "tagline": "Hongos de sal rosada, placas cristalinas y raíces blanqueadas",
+      "lore": "En las galerías secas, Morveth encontró una sal que conservaba semillas dormidas. La dejó crecer sobre sus raíces. Ahora su huerto florece donde la piedra parecía estéril.",
+      "visualTheme": "Hongos de sal rosada, placas cristalinas y raíces blanqueadas",
+      "unlockSource": "Completar Huerto de Sal en minas",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/morveth/skins/quality_morveth/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
   "set": {
-    "sourceArena": "",
-    "pieces": [],
-    "rewardCosmetic": "",
+    "sourceArena": "minas",
+    "pieces": [
+      "quality_morveth_arma",
+      "quality_morveth_casco",
+      "quality_morveth_pechera",
+      "quality_morveth_botas"
+    ],
+    "rewardCosmetic": "quality_morveth",
     "rewardGrantsPower": false
   },
   "budgets": {
@@ -130,12 +197,12 @@
     "abilities": "docs/production/quality-five/ability/ability-gate.json",
     "resources": "docs/production/quality-five/temporal-plague-functional-results.json",
     "passives": "docs/production/quality-five/temporal-plague-functional-results.json",
-    "balance": "docs/production/quality-five/workshop-entry-results.json",
-    "visuals": "",
-    "style": "",
+    "balance": "docs/balance/entry-gate-results.json",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "style": "docs/production/quality-five/originals/style-results.txt",
     "audio": "docs/production/quality-five/audio-20261012.txt",
     "multiplayer": "docs/production/quality-five/online-results.json",
-    "performance": ""
+    "performance": "docs/production/quality-five/performance-morveth.json"
   },
   "category": "STANDARD"
 }

@@ -178,3 +178,26 @@
 #crystalwars-screen #supply{overflow-y:visible;max-height:90px}
 #crystalwars-screen #skills button{min-height:46px;font-size:10px}
 }
+
+/* ===== Legibilidad (pedido del dueño: nada de letras chicas) ===== */
+#crystalwars-screen header>button, #crystalwars-screen header>span, #crystalwars-screen #sound{ font-size:15px; min-height:44px; padding:8px 14px; }
+#crystalwars-screen .eyebrow, #crystalwars-screen .competitive-title, #crystalwars-screen #competitive-title{ font-size:14px; }
+#crystalwars-screen .rules b, #crystalwars-screen .rules p, #crystalwars-screen #kit, #crystalwars-screen small, #crystalwars-screen .slot, #crystalwars-screen #status, #crystalwars-screen label{ font-size:14px; line-height:1.35; }
+#crystalwars-screen main button, #crystalwars-screen main select, #crystalwars-screen main input{ font-size:15px; min-height:46px; }
+#crystalwars-screen main{ overflow-y:auto; }
+#crystalwars-screen #cw-game #scoreboard b, #crystalwars-screen #cw-game #scoreboard span{ font-size:13px; }
+#crystalwars-screen #cw-game .clock strong{ font-size:20px; } #crystalwars-screen #cw-game #wave{ font-size:13px; }
+#crystalwars-screen #cw-game #vital, #crystalwars-screen #cw-game #view, #crystalwars-screen #cw-game #quit, #crystalwars-screen #cw-game #cw-help, #crystalwars-screen #cw-game #shards, #crystalwars-screen #cw-game #phase{ font-size:13px; }
+#crystalwars-screen #cw-game #shop button, #crystalwars-screen #cw-game #skills button, #crystalwars-screen #cw-game .cw-card{ font-size:13px; line-height:1.15; }
+#crystalwars-screen #cw-game #joystick span{ font-size:12px; }
+@media (max-height:520px) and (orientation:landscape){
+ #crystalwars-screen #cw-game #shop button{ font-size:12.5px; min-height:40px; }
+ #crystalwars-screen #cw-game #skills button{ font-size:13px; min-height:50px; }
+ #crystalwars-screen #cw-game #supply{ width:236px; }
+}
+@media (max-height:520px) and (orientation:landscape){
+ #crystalwars-screen #supply{max-height:128px; left:96px; right:186px; bottom:4px; overflow-y:auto}
+ #crystalwars-screen #supply>div:first-child{font-size:13px}
+ #crystalwars-screen #cw-game.supply #shop{grid-template-columns:repeat(4,minmax(0,1fr))}
+ #crystalwars-screen #shop button{font-size:12.5px;min-height:38px;padding:3px 4px;line-height:1.1}
+}

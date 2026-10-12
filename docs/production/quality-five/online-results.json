@@ -1,25 +1,33 @@
 {
   "status": "PASS",
-  "scope": "Unmodified production relay and TESTING taxonomy; two authenticated local fixture accounts with explicit grants. No production accounts or cosmetics.",
+  "scope": "Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.",
   "checks": [
     {
-      "name": "solciju rejected without server grant",
+      "name": "solciju admitted as released standard champion",
       "ok": true
     },
     {
-      "name": "brakk rejected without server grant",
+      "name": "brakk admitted as released standard champion",
       "ok": true
     },
     {
-      "name": "veyra rejected without server grant",
+      "name": "veyra admitted as released standard champion",
       "ok": true
     },
     {
-      "name": "morveth rejected without server grant",
+      "name": "morveth admitted as released standard champion",
       "ok": true
     },
     {
-      "name": "aelith rejected without server grant",
+      "name": "aelith admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "nano_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "facu_gm rejected without founder entitlement",
       "ok": true
     },
     {
@@ -34,11 +42,12 @@
       "host": {
         "key": "veyra",
         "casts": 4,
-        "damage": 572.7614199999999,
+        "damage": 508.0844999999999,
         "bleeds": 0
       },
       "guest": {
         "key": "veyra",
+        "casts": 4,
         "owned": [],
         "bleeds": 0
       }
@@ -58,6 +67,7 @@
       },
       "guest": {
         "key": "solciju",
+        "casts": 3,
         "owned": [
           "sol_cask",
           "sol_reserve"
@@ -87,7 +97,7 @@
       "host": {
         "key": "brakk",
         "casts": 4,
-        "damage": 321.52648,
+        "damage": 306.05608,
         "bleeds": 0
       },
       "guest": {

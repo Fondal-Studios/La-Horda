@@ -7,7 +7,7 @@
   "fantasy": "Asesina de alto riesgo con sangrado y movilidad.",
   "lore": "Veyra regresó del campo de batalla con una herida que ningún sanador logró cerrar. Aprendió a escuchar su pulso y a moverse en el silencio entre dos latidos. No busca una muerte gloriosa: persigue a quienes comercian con la vida de otros. Cada pacto con su propia sangre le concede un instante de ventaja y le recuerda que sobrevivir también puede ser una forma de venganza.",
   "personality": "Determinada, reservada y tenaz.",
-  "silhouette": "PENDIENTE: distinguir de Vesper y su set.",
+  "silhouette": "sien rapada; trenza carmesí; sable curvo.",
   "stats": {
     "hp": 95,
     "damage": 11,
@@ -83,25 +83,25 @@
     }
   },
   "art": {
-    "atlas": "",
-    "preview": "",
+    "atlas": "assets/sprites/champions/veyra/atlas.png",
+    "preview": "assets/sprites/champions/veyra/preview.png",
     "directions": 4,
-    "frameWidth": 0,
-    "frameHeight": 0,
-    "sha256": "",
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "5a2db8a7b217ac2c157e9f2dab1712e659ca38a89a96a7b873a871bb1363ce0c",
     "animations": {
-      "idle": 0,
-      "walk": 0,
-      "attack": 0,
-      "cast": 0,
-      "hit": 0,
-      "death": 0,
-      "ultimate": 0
+      "idle": 1,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
     },
     "review": {
-      "status": "PENDING",
-      "reviewer": "",
-      "evidence": ""
+      "status": "PASS",
+      "reviewer": "Codex (visual inspection; not human signoff)",
+      "evidence": "docs/production/quality-five/originals/ART-REVIEW.md"
     }
   },
   "integration": {
@@ -109,14 +109,81 @@
     "codex": "js/champions/quality-five/register.js",
     "talents": "js/champions/quality-five/register.js",
     "mastery": "js/champions/quality-five/register.js",
-    "set": "",
+    "set": "js/champions/quality-five/collection.js",
     "kitTest": "tools/quality-five/functional.js"
   },
-  "cosmetics": [],
+  "cosmetics": [
+    {
+      "id": "veyra_alt1",
+      "type": "skin",
+      "champion": "veyra",
+      "name": "Veyra, Verdugo Celestial",
+      "rarity": "Épica",
+      "tagline": "Sien rapada, trenza marfil, armadura ceremonial, halo dorado y sable curvo",
+      "lore": "Veyra juró no morir en vano. Una mañana, entre dos latidos, la herida se abrió al cielo y le devolvió un halo que ella usa como filo.",
+      "visualTheme": "Sien rapada, trenza marfil, armadura ceremonial, halo dorado y sable curvo",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/veyra/skins/veyra_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "veyra_croma",
+      "type": "croma",
+      "champion": "veyra",
+      "name": "Herida Amatista",
+      "rarity": "Rara",
+      "tagline": "Una paleta alternativa para Veyra.",
+      "lore": "Los colores de Herida Amatista acompañan un nuevo viaje. Conserva su vestuario y sus decisiones: esta apariencia cambia únicamente la paleta.",
+      "visualTheme": "Paleta selectiva; conserva piel y contorno.",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "palette"
+      ],
+      "preview": "assets/sprites/champions/veyra/croma-preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "quality_veyra",
+      "type": "set",
+      "champion": "veyra",
+      "name": "Cicatriz de Obsidiana",
+      "rarity": "Set",
+      "tagline": "Placas de vidrio negro, hombrera angular y sable de obsidiana",
+      "lore": "Veyra recogió los fragmentos de una puerta que no pudo atravesar. Los convirtió en placas, dejando visible cada cicatriz. Su armadura recuerda por qué vuelve a levantarse.",
+      "visualTheme": "Placas de vidrio negro, hombrera angular y sable de obsidiana",
+      "unlockSource": "Completar Cicatriz de Obsidiana en infernal",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/veyra/skins/quality_veyra/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
   "set": {
-    "sourceArena": "",
-    "pieces": [],
-    "rewardCosmetic": "",
+    "sourceArena": "infernal",
+    "pieces": [
+      "quality_veyra_arma",
+      "quality_veyra_casco",
+      "quality_veyra_pechera",
+      "quality_veyra_botas"
+    ],
+    "rewardCosmetic": "quality_veyra",
     "rewardGrantsPower": false
   },
   "budgets": {
@@ -130,12 +197,12 @@
     "abilities": "docs/production/quality-five/ability/ability-gate.json",
     "resources": "docs/production/quality-five/functional-results.json",
     "passives": "docs/production/quality-five/functional-results.json",
-    "balance": "docs/production/quality-five/workshop-entry-results.json",
-    "visuals": "",
-    "style": "",
+    "balance": "docs/balance/entry-gate-results.json",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "style": "docs/production/quality-five/originals/style-results.txt",
     "audio": "docs/production/quality-five/audio-20261012.txt",
     "multiplayer": "docs/production/quality-five/online-results.json",
-    "performance": ""
+    "performance": "docs/production/quality-five/performance-veyra.json"
   },
   "category": "STANDARD"
 }

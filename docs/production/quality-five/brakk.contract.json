@@ -7,7 +7,7 @@
   "fantasy": "Constructor de muros y torretas destructibles que sacrifica para proteger al grupo.",
   "lore": "Brakk calculó durante años las murallas de una ciudad que sus gobernantes decidieron abandonar. Cuando llegó la Horda, convirtió los planos de evacuación en fortificaciones y abrió rutas entre los derrumbes. Desde entonces construye refugios que sabe temporales: cada torre compra segundos y cada muro guarda una salida. Carga los nombres de quienes no logró salvar grabados en su martillo.",
   "personality": "Metódico, protector, severo consigo mismo.",
-  "silhouette": "PENDIENTE: diseño de constructor distinguible de donantes.",
+  "silhouette": "visor rectangular; armadura de albañilería; maza.",
   "stats": {
     "hp": 165,
     "damage": 9,
@@ -83,25 +83,25 @@
     }
   },
   "art": {
-    "atlas": "",
-    "preview": "",
+    "atlas": "assets/sprites/champions/brakk/atlas.png",
+    "preview": "assets/sprites/champions/brakk/preview.png",
     "directions": 4,
-    "frameWidth": 0,
-    "frameHeight": 0,
-    "sha256": "",
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "01f0d5dce66303d7348ce041a829c86601cd497b07e98b35248db614114da58a",
     "animations": {
-      "idle": 0,
-      "walk": 0,
-      "attack": 0,
-      "cast": 0,
-      "hit": 0,
-      "death": 0,
-      "ultimate": 0
+      "idle": 1,
+      "walk": 4,
+      "attack": 3,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
     },
     "review": {
-      "status": "PENDING",
-      "reviewer": "",
-      "evidence": ""
+      "status": "PASS",
+      "reviewer": "Codex (visual inspection; not human signoff)",
+      "evidence": "docs/production/quality-five/originals/ART-REVIEW.md"
     }
   },
   "integration": {
@@ -109,14 +109,81 @@
     "codex": "js/champions/quality-five/register.js",
     "talents": "js/champions/quality-five/register.js",
     "mastery": "js/champions/quality-five/register.js",
-    "set": "",
+    "set": "js/champions/quality-five/collection.js",
     "kitTest": "tools/quality-five/brakk-functional.js"
   },
-  "cosmetics": [],
+  "cosmetics": [
+    {
+      "id": "brakk_alt1",
+      "type": "skin",
+      "champion": "brakk",
+      "name": "Brakk, Arquitecto Glacial",
+      "rarity": "Épica",
+      "tagline": "Fortaleza de hielo portátil, casco almenado, visor rectangular y maza glacial",
+      "lore": "Brakk levantó su último refugio sobre un lago helado. El frío no derrumbó los planos: los volvió transparentes, y todavía se leen a contraluz.",
+      "visualTheme": "Fortaleza de hielo portátil, casco almenado, visor rectangular y maza glacial",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/brakk/skins/brakk_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "brakk_croma",
+      "type": "croma",
+      "champion": "brakk",
+      "name": "Acero de Tormenta",
+      "rarity": "Rara",
+      "tagline": "Una paleta alternativa para Brakk.",
+      "lore": "Los colores de Acero de Tormenta acompañan un nuevo viaje. Conserva su vestuario y sus decisiones: esta apariencia cambia únicamente la paleta.",
+      "visualTheme": "Paleta selectiva; conserva piel y contorno.",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "palette"
+      ],
+      "preview": "assets/sprites/champions/brakk/croma-preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "quality_brakk",
+      "type": "set",
+      "champion": "brakk",
+      "name": "Ingeniero del Abismo",
+      "rarity": "Set",
+      "tagline": "Traje de presión, depósitos, mangueras y lámpara de jaula",
+      "lore": "Brakk descendió con cuatro piezas que había probado en tierra firme. Bajo la roca aprendió que un refugio también necesita aire. Su arnés conserva las marcas de aquel rescate.",
+      "visualTheme": "Traje de presión, depósitos, mangueras y lámpara de jaula",
+      "unlockSource": "Completar Cimientos del Abismo en abismo",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/brakk/skins/quality_brakk/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
   "set": {
-    "sourceArena": "",
-    "pieces": [],
-    "rewardCosmetic": "",
+    "sourceArena": "abismo",
+    "pieces": [
+      "quality_brakk_arma",
+      "quality_brakk_casco",
+      "quality_brakk_pechera",
+      "quality_brakk_botas"
+    ],
+    "rewardCosmetic": "quality_brakk",
     "rewardGrantsPower": false
   },
   "budgets": {
@@ -130,12 +197,12 @@
     "abilities": "docs/production/quality-five/ability/ability-gate.json",
     "resources": "docs/production/quality-five/brakk-functional-results.json",
     "passives": "docs/production/quality-five/brakk-functional-results.json",
-    "balance": "docs/production/quality-five/workshop-entry-results.json",
-    "visuals": "",
-    "style": "",
+    "balance": "docs/balance/entry-gate-results.json",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "style": "docs/production/quality-five/originals/style-results.txt",
     "audio": "docs/production/quality-five/audio-20261012.txt",
     "multiplayer": "docs/production/quality-five/online-results.json",
-    "performance": ""
+    "performance": "docs/production/quality-five/performance-brakk.json"
   },
   "category": "STANDARD"
 }
