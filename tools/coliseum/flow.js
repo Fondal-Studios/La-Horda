@@ -11,7 +11,7 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});
  for(const [w,h] of [[844,390],[667,375]]){
   const ctx=await b.newContext({viewport:{width:w,height:h},hasTouch:true});await ctx.addInitScript(f=>{try{localStorage.setItem('laHordaSave_v1',JSON.stringify(f));}catch(e){}},FIX);
-  const p=await ctx.newPage(),errs=[];p.on('pageerror',e=>errs.push(e.message));
+  const p=await ctx.newPage(),errs=[];p.on('pageerror',e=>errs.push(e.message));if(process.env.THROTTLE){const cdp=await ctx.newCDPSession(p);await cdp.send('Emulation.setCPUThrottlingRate',{rate:Number(process.env.THROTTLE)});}
   await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`);await p.waitForFunction(()=>typeof setState==='function'&&typeof renderMainMenu==='function'&&typeof colStart==='function',null,{timeout:60000});
   await p.evaluate(()=>{save.tut=save.tut||{};save.tut.training=1;persistNow();setState('mainmenu');renderMainMenu();});
   const before=await p.evaluate(()=>localStorage.getItem('laHordaSave_v1'));
@@ -44,8 +44,8 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
   // revancha
   await p.click('#col-result .ln-again');await p.waitForFunction(()=>state==='playing'&&lanesOn()&&LN.mode==='coliseo'&&LN.col.round===1,null,{timeout:20000});
   // abandonar por la pausa
-  await p.click('#pause-btn');await p.click('#quit-btn');await p.getByRole('button',{name:'Abandonar',exact:true}).click();
-  await p.waitForFunction(()=>state==='mainmenu'&&!lanesOn(),null,{timeout:10000});
+  await p.click('#pause-btn');await p.waitForFunction(()=>state==='paused',null,{timeout:20000});await p.click('#quit-btn');await p.getByRole('button',{name:'Abandonar',exact:true}).click();
+  try{await p.waitForFunction(()=>state==='mainmenu'&&!lanesOn(),null,{timeout:25000});}catch(e){throw new Error('no volvió al menú: '+JSON.stringify(await p.evaluate(()=>({state,lanes:lanesOn(),round:LN&&LN.col&&LN.col.round,ended:LN&&LN.ended})))+' errs='+errs.join(' | '));}
   assert.equal(await p.evaluate(()=>localStorage.getItem('laHordaSave_v1')),before,'guardado intacto al volver');
   assert.equal(await p.evaluate(()=>document.getElementById('col-hud').style.display==='none'||document.getElementById('col-hud').classList.contains('hidden')),true,'el HUD del Coliseo se oculta');
   assert.deepEqual(errs,[],'sin errores de página: '+errs.join(' | '));console.log(`PASS coliseo flow ${w}x${h}`);await ctx.close();
