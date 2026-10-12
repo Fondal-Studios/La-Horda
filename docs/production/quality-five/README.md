@@ -16,6 +16,14 @@ Solciju, Brakk, Veyra, Morveth y Aelith tienen kits reales, talentos, maestría,
 - Rendimiento: cinco mediciones en Ciudad, CPU x4, pantalla 844x390, canvas 422x195 sin GPU. Mediana de script 20–25 ms y p95 34–48 ms; mediana RAF ~30 FPS. No cumple una promesa de 60 FPS sostenidos ni certifica teléfonos reales. Logs performance-*.json.
 - Duplicidad: detector intacto, dos diagnósticos DUPLICATE revisados en DESIGN-REVIEW.md. No se falsifica su salida automática.
 
+## Integraciones finales
+
+- Refuerzos de incursión: cuatro elecciones por rareza y un dúo por campeón (25 efectos reales). Suite completa de los 43 campeones sin fallos; evidencia en boon-results.json.
+- Catálogo regenerado desde el cliente: 267 objetos, 43 campeones y 77 apariencias; sincronización cliente/servidor 482 controles PASS.
+- Tutorial: Elyra espera en la lección de XP y regresa al objetivo cooperativo; evita quedarse con el único remate. Recorrido por controles reales y dos tamaños de pantalla PASS.
+- Cristales: cada nuevo nivel máximo del equipo concede una sola carta; límite de 12 y sincronización de hitos comprobados. Tres partidas de 150 s PASS.
+- Protocolo B1-7-quality-five-originals; clientes anteriores rechazados para impedir salas con catálogos incompatibles.
+
 ## Publicación
 
 El candidato habilita los cinco como STANDARD/RELEASED en el catálogo Alpha y conserva sus identificadores y progreso. knownChampions no cambia: continúan sometidos al Balance Gate de entrada. La aprobación de merge requiere CI verde sobre el commit final.
