@@ -27,7 +27,9 @@ await moveToPickup('potion','revive');
 // caminar hasta Elyra y mantener el botón de reanimar
 for(let n=0;n<30;n++){const v=await page.evaluate(()=>({x:ALPHA_TRAINING.ally.x-player.x,y:ALPHA_TRAINING.ally.y-player.y}));const len=Math.hypot(v.x,v.y);if(len<70)break;await page.mouse.move(center.x,center.y);await page.mouse.down();await page.mouse.move(center.x+v.x/len*40,center.y+v.y/len*40);await page.waitForTimeout(Math.min(600,len*4));await page.mouse.up();}
 await hold('#btn-revive',5800);await until('xp');
-await hold('#btn-basic',4000);await until('loot');await moveToPickup('loot','tactical');
+// el XP depende de cuántas bajas se logran: en una CI lenta 4 s no alcanzan. Se sigue peleando, acercándose al enemigo vivo más cercano, hasta que el paso avance.
+for(let n=0;n<14&&(await stage())==='xp';n++){const v=await page.evaluate(()=>{let b=null,bd=1e9;for(const e of enemies){if(!e.alive)continue;const d=Math.hypot(e.x-player.x,e.y-player.y);if(d<bd){bd=d;b=e;}}return b?{x:b.x-player.x,y:b.y-player.y,d:bd}:null;});if(v&&v.d>90){const len=Math.hypot(v.x,v.y);await page.mouse.move(center.x,center.y);await page.mouse.down();await page.mouse.move(center.x+v.x/len*40,center.y+v.y/len*40);await page.waitForTimeout(Math.min(700,v.d*3));await page.mouse.up();}await hold('#btn-basic',1500);}
+await until('loot');await moveToPickup('loot','tactical');
 await page.locator('#pause-btn').click();await page.waitForTimeout(400);await page.locator('#resume-btn').click();await until('objective');
 await hold('#btn-basic',6500);await until('done');
 assert.equal(await page.evaluate(()=>save.tut.training),1);assert.deepEqual(errors,[]);console.log('PASS live novice '+Math.round((Date.now()-began)/1000)+'s: actual movement, attack, long-press inspect, cooldown, ultimate, telegraph dodge, pickups, XP, loot, tactical panel, revive and objective via pointer inputs');
