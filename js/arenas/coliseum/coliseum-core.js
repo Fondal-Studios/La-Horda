@@ -139,11 +139,11 @@ function colCamera(){
 function colSpecNext(dir){
   const L = LN, c = L && L.col; if(!c) return;
   const list = colSpecList(); if(!list.length) return;
-  const i = Math.max(0, list.indexOf(c.spec)); c.spec = list[(i + (dir || 1) + list.length) % list.length];
+  const i = Math.max(0, list.indexOf(c.spec)); c.spec = list[(i + (dir || 1) + list.length) % list.length]; if(typeof CAM_SUBJECT !== "undefined") CAM_SUBJECT = c.spec;
 }
 function colSpecPit(){   // salta al otro foso
   const L = LN, c = L && L.col; if(!c) return;
-  const cur = c.spec ? c.spec.pit : player.pit, list = colSpecList().filter(h=>h.pit !== cur); if(list.length) c.spec = list[0];
+  const cur = c.spec ? c.spec.pit : player.pit, list = colSpecList().filter(h=>h.pit !== cur); if(list.length){ c.spec = list[0]; if(typeof CAM_SUBJECT !== "undefined") CAM_SUBJECT = c.spec; }
 }
 
 /* ---------------- geometría ---------------- */
