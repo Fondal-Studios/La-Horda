@@ -368,6 +368,29 @@ function drawProjStyle(p, style, r){
       ctx.fillStyle = "#e0b030"; ctx.fillRect(-r*2.1, -0.75, r*3.7, 1.5);
       ctx.globalAlpha = 0.5 + 0.5*Math.sin(t/50); ctx.fillStyle = "#ffffff"; ctx.fillRect(r*0.2, -r*0.45, r*0.6, 1.5); ctx.globalAlpha = 1;
       break;
+    case "starshard":   // Ostrel, el Cazador de Estrellas: esquirla de luz de cuatro puntas con un destello central
+      ctx.rotate(t/140);
+      ctx.fillStyle = "#1a1530"; ctx.beginPath(); for(let i=0;i<8;i++){ const a = i*Math.PI/4, rr = i%2 ? r*0.4 : r*1.25; ctx.lineTo(Math.cos(a)*rr, Math.sin(a)*rr); } ctx.closePath(); ctx.fill();
+      ctx.fillStyle = c; ctx.beginPath(); for(let i=0;i<8;i++){ const a = i*Math.PI/4, rr = i%2 ? r*0.28 : r*1.0; ctx.lineTo(Math.cos(a)*rr, Math.sin(a)*rr); } ctx.closePath(); ctx.fill();
+      ctx.fillStyle = "#ffffff"; ctx.fillRect(-1, -1, 2, 2);
+      break;
+    case "quarrel":     // Grelk, el Cazador de Fosos: virote corto de ballesta con punta ancha y plumas de cuero
+      ctx.fillStyle = "#3a2a18"; ctx.fillRect(-r*2.2, -1, r*3.0, 2);
+      ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(r*1.5, 0); ctx.lineTo(r*0.6, -r*0.65); ctx.lineTo(r*0.6, r*0.65); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = "#1a1612"; ctx.fillRect(-r*2.4, -r*0.55, r*0.5, r*0.3); ctx.fillRect(-r*2.4, r*0.25, r*0.5, r*0.3);
+      break;
+    case "card":        // Quillon, el Tahúr de la Última Mano: naipe que gira sobre su eje al volar
+      ctx.rotate(t/70);
+      ctx.fillStyle = "#1a0e14"; ctx.fillRect(-r*0.85, -r*1.2, r*1.7, r*2.4);
+      ctx.fillStyle = "#f7efe4"; ctx.fillRect(-r*0.7, -r*1.05, r*1.4, r*2.1);
+      ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(0, -r*0.55); ctx.lineTo(r*0.45, 0); ctx.lineTo(0, r*0.55); ctx.lineTo(-r*0.45, 0); ctx.closePath(); ctx.fill();
+      break;
+    case "reedspore":   // Nerith, la Bruja de la Ciénaga: espora verde con un hilo de juncos que gira
+      ctx.fillStyle = "#12261c"; ctx.beginPath(); ctx.arc(0, 0, r*0.95, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = c; ctx.beginPath(); ctx.arc(0, 0, r*0.7, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = "rgba(255,255,255,0.85)"; ctx.fillRect(-r*0.2, -r*0.2, r*0.4, r*0.4);
+      ctx.strokeStyle = c; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(0, 0, r*1.35, t/90, t/90 + 2.2); ctx.stroke();
+      break;
     case "exglyph":     // expedición sin forma propia todavía: su marca de identidad (expedition/render.js)
       if(typeof exGlyph!=="function" || !p.src) { ctx.restore(); return false; }
       ctx.rotate(-ang); exGlyph(p.src.classKey, 0, 0, r*1.1, c);

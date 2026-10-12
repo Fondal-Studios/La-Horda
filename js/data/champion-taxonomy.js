@@ -54,7 +54,16 @@ var CHAMPION_TAXONOMY = {
   vhal:     {category:"ASCENSION"},
   bront:    {category:"ASCENSION"},
   oriel:    {category:"ASCENSION"},
-  saelis:   {category:"ASCENSION"}
+  saelis:   {category:"ASCENSION"},
+  // Siete campeones nuevos (docs/production/siete): STANDARD en TESTING = jugables para quien los tenga concedido, fuera de la
+  // tienda pública, bots y modos competitivos hasta la aprobación humana de arte/audio y el cierre de knownChampions (segundo paso, otra rama).
+  ostrel:   {category:"STANDARD", releaseState:"TESTING"},
+  grelk:    {category:"STANDARD", releaseState:"TESTING"},
+  ilsa:     {category:"STANDARD", releaseState:"TESTING"},
+  vorn:     {category:"STANDARD", releaseState:"TESTING"},
+  nerith:   {category:"STANDARD", releaseState:"TESTING"},
+  quillon:  {category:"STANDARD", releaseState:"TESTING"},
+  kora:     {category:"STANDARD", releaseState:"TESTING"}
 };
 
 // EVENT infrastructure. Example shape (no event champion exists yet):
