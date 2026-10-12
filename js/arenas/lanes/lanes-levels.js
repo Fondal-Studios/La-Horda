@@ -99,7 +99,7 @@ function lanesHeroTick(dt){
 
 // Los bots compran en la base: siguiente nivel del objeto que más les conviene según su rol.
 function lanesBotShop(h){
-  const L = LN; if(L.t - (h._shopAt || 0) < 2000 || !lanesAtShop(h)) return;
+  const L = LN; if((h._shopAt != null && L.t - h._shopAt < 2000) || !lanesAtShop(h)) return;
   h._shopAt = L.t;
   const order = h.ln === -1 ? ["atk", "speed", "hp", "regen", "siege"] : (h.cls && (h.cls.role === "tanque") ? ["hp", "atk", "regen", "speed", "siege"] : ["atk", "hp", "speed", "siege", "regen"]);
   let best = null;
