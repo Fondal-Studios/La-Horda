@@ -1,4 +1,40 @@
-# Cinco campeones: taller visual, no lanzamiento
+# Cinco campeones: integración en juego (12 de octubre de 2026)
+
+Rama `claude/five-champions` (desde `origin/main` a258060; trae los kits y recetas del PR #78 sin cerrarlo). Estado honesto:
+
+| Campeón | Kit | Arte base / skin | Códice, selección, tienda | Estado |
+|---|---|---|---|---|
+| Solciju (referencia) | IMPLEMENTADO, VERIFICADO por pruebas | Maura repintada + barrica con aros (rediseñada); skin Viuda de Medianoche | sí | TESTING |
+| Veyra | IMPLEMENTADO, VERIFICADO | Vesper repintada; skin Verdugo Celestial | sí | TESTING |
+| Brakk | IMPLEMENTADO, VERIFICADO | Renko repintado; skin Arquitecto Glacial (corona y hombreras de hielo) | sí | TESTING |
+| Morveth | IMPLEMENTADO, VERIFICADO | Tibor repintado + sombrero de micelio; skin Micelio Abisal | sí | TESTING |
+| Aelith | IMPLEMENTADO, VERIFICADO | REDISEÑADA: abrigo de Dariel + cabeza trenzada de Orsa + reloj de arena (ya no es Sira); skin Relojera del Vacío | sí | TESTING |
+
+TESTING = jugables para cuentas con concesión; el relay rechaza estos ids de cuentas sin concesión; fuera de tienda pública, bots y modos competitivos.
+Para publicarlos: quitar sus filas de `CHAMPION_TAXONOMY` (js/data/champion-taxonomy.js). `knownChampions` NO se tocó.
+
+## Gates (salida real de esta rama)
+- `check-entry-reference`: PASS. `entry-gate`: PASS, 75 simulaciones, 43 clases, 25 candidatas, cero errores; medias de daño a 150 s (3/3 vivos): Solciju 8.018, Veyra 4.921, Brakk 4.609, Morveth 7.331, Aelith 8.687. Las estadísticas iniciales ya estaban dentro de la banda del rol (el normalizador no cambió nada). Es admisión en Bosque, no balance competitivo.
+- `ability-gate --strict`: PASS, 43 campeones, 0 nuevos que no pasan. `test-talent-gate`, `test-ability-resources` (43 campeones, 3.816 comprobaciones), `test-classic-passives`: PASS.
+- `champion-validator --strict` (Biblia de Campeones): los cinco PASS* (aviso: sin Set propio).
+- Gate de estilo del Pintor `--strict` y Roster Art Gate (126 apariencias, escala y pies vs. Caballero, textos): PASS. `test_forge.py --regress` y `test_pose_heads.py`: PASS.
+- Audio (`t_audio_mix`): PASS. Rendimiento (`tools/audit/fps.js`): exit 0, informativo (CPU x4 simulada, sin teléfono real).
+- Pruebas de kit contra el registro de producción: Solciju+Veyra 132, Brakk 81, Morveth+Aelith 131, relay con dos navegadores 16: PASS (el relay corre sobre una copia con taxonomía RELEASED porque son TESTING).
+- `factory gate visuals`: la herramienta estaba rota en main (`?lazy=0` y captura de canvas gigante); se arregló y genera la hoja (`shots/roster-visual-escala.png`), que decide una persona.
+- `factory gate multiplayer` (`lobby_code_skins.js`): FALLA IGUAL EN origin/main (13 PASS y luego timeout al tocar la pestaña Talentos en la sala del invitado). Causa ajena a este PR; no se tocó.
+- Duplicidad (`duplicity-report.json`): Solciju DUPLICATE vs Morwen (0,519; etiquetas escudo+marca), Veyra DUPLICATE vs Eren (0,527; curar+desplazarse), Brakk/Morveth/Aelith REVIEW. No se cambió el detector ni se reescribieron textos para esquivarlo: decisión de diseño pendiente.
+
+## Pendiente (no se declara hecho)
+- Revisión visual humana de las 36 celdas de cada atlas y del Visual Gate; Solciju es la referencia pero sigue siendo repintado de un donante. Aelith: arma temporal propia sin dibujar.
+- Sets (piezas, fuente de farmeo), cromas, audio propio, proyectiles propios (usan `exglyph`), pruebas en teléfono real y en el servidor oficial/cuentas concedidas, motor de Guerra de Cristales (no están en su roster).
+- Contratos de fábrica siguen INCOMPLETE (sfx por habilidad, set, croma, evidencia de audio/performance).
+- Segundo paso de AGENTS.md: añadir a `knownChampions` con nueva versión de referencia y medias, en otra PR.
+
+Capturas: `docs/production/quality-five/shots/` (selección, partida, cuatro direcciones, Códice, apariencias).
+
+---
+
+# Cinco campeones: taller visual (historial del taller, anterior a la integración)
 
 Estado: **DRAFT / NO PUBLICADOS**. Ninguna receta de este directorio instala campeones
 ni concede skins. Solciju, Veyra y Brakk tienen runtimes ejecutables únicamente mediante

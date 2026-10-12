@@ -229,3 +229,10 @@ Ajustes de kit hasta pasar con margen (la simulación varía ±10 % entre corrid
   simulaciones). Pruebas de kit: 225 comprobaciones en `tools/ascension/functional.js` (Plumas con tope 8, absorción
   y Bendición, Ráfaga que dispara plumas, Llamado y recargas, Cielo que deja 6 plumas, nunca se bendice a sí misma).
 - Duplicidad: DISTINCT (sin curación ni escudo). Biblia de Campeones: PASS*. Roster Art Gate: 116 apariencias PASS.
+
+## Solciju, Veyra, Brakk, Morveth y Aelith (candidatos, TESTING) — 12 octubre 2026
+
+Registrados en `js/champions/quality-five/register.js` antes del normalizador; `knownChampions` y las medias por rol no se tocaron.
+El normalizador no modificó sus estadísticas (ya estaban dentro de banda). Entry gate **PASS** (75 simulaciones, 25 candidatas, cero errores):
+daño medio a 150 s Solciju 8.018, Veyra 4.921, Brakk 4.609, Morveth 7.331, Aelith 8.687, todos vivos 3/3 y por debajo del techo del rol.
+Ability Gate estricto PASS. Duplicidad: Solciju/Morwen y Veyra/Eren DUPLICATE (sin resolver). Detalle: `docs/production/quality-five/README.md`.

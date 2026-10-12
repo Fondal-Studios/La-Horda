@@ -23,12 +23,32 @@
   ],
   "accessories": [
     {
-      "element": "corona_de_picos"
+      "element": "corona_de_picos",
+      "materials": {
+        "metal": {
+          "ramp": [
+            "#1d3c58",
+            "#4f93b8",
+            "#bfe6f2",
+            "#f2fbff"
+          ]
+        }
+      }
     },
     {
-      "element": "hombreras_redondas"
+      "element": "hombreras_redondas",
+      "materials": {
+        "shell": {
+          "ramp": [
+            "#1d3c58",
+            "#4f93b8",
+            "#bfe6f2",
+            "#f2fbff"
+          ]
+        }
+      }
     }
   ],
-  "notes": "CANDIDATO NO APROBADO. Cabeza y cuerpo comparten donante para conservar identidad entre caminar, ataque y muerte. Requiere separación visual del donante, revisión de todas las animaciones, escala y kit completo antes de registrar.",
+  "notes": "CANDIDATO NO APROBADO. Cabeza y cuerpo comparten donante para conservar identidad entre caminar, ataque y muerte. Requiere separación visual del donante, revisión de todas las animaciones, escala y kit completo antes de registrar. Arquitectura de hielo: corona almenada y hombreras de bloques de hielo.",
   "skinOf": "brakk"
 }
