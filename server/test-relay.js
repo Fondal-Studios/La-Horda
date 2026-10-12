@@ -6,6 +6,7 @@
 process.env.PORT = process.env.PORT || "8799";
 const { server } = require("./relay.js");
 const WebSocket = require("ws");
+const BUILD = require("node:vm").runInNewContext(require("node:fs").readFileSync(require("node:path").join(__dirname, "../js/net/net-config.js"), "utf8") + ";NET_CONFIG.build");
 const URL = "ws://127.0.0.1:" + process.env.PORT;
 let fails = 0;
 const check = (name, ok, extra) => { console.log((ok ? "PASS " : "FAIL ") + name + (extra !== undefined ? "  " + JSON.stringify(extra) : "")); if(!ok) fails++; };
@@ -20,16 +21,21 @@ function client(){
 (async () => {
   await new Promise(r => setTimeout(r, 200));
   const host = await client();
-  host.send({ t: "create", protocol: 1, arena: "bosque", name: "Mariano", champ: "tanque", level: 5, clientId: "H", build: "b1" });
+  host.send({ t: "create", protocol: 1, arena: "bosque", name: "Mariano", champ: "tanque", level: 5, clientId: "H", build: BUILD });
   const created = await host.wait(m => m.t === "joined");
   const code = created.room.code;
   check("create.room_code", /^[A-Z2-9]{6}$/.test(code), code);
   check("create.host_slot0", created.slot === 0 && created.host);
+  const oldClient = await client();
+  oldClient.send({t:"join",protocol:1,code,name:"Old build",champ:"mago",clientId:"OLD",build:"B1-6-alpha-completion"});
+  const incompatible = await oldClient.wait(m=>m.t==="error"||m.t==="joined");
+  check("join.old_build_rejected",incompatible.t==="error"&&incompatible.code==="BUILD",incompatible.code);
+  oldClient.ws.close();
   const guests = [];
   const names = ["Facundo", "Daniel", "Tercero"];
   for(let i = 0; i < 3; i++){
     const g = await client();
-    g.send({ t: "join", protocol: 1, code, name: names[i], champ: ["mago", "guerrero", "soporte"][i], level: 3, clientId: "G" + i, build: "b1" });
+    g.send({ t: "join", protocol: 1, code, name: names[i], champ: ["mago", "guerrero", "soporte"][i], level: 3, clientId: "G" + i, build: BUILD });
     const j = await g.wait(m => m.t === "joined" || m.t === "error");
     check(`join.guest${i + 1}_slot`, j.t === "joined" && j.slot === i + 1, j.slot);
     guests.push(g);
@@ -37,7 +43,7 @@ function client(){
   const hostView = await host.wait(m => m.t === "room" && m.room.slots.filter(Boolean).length === 4);
   check("room.host_sees_4", hostView.room.slots.map(s => s && s.name).join(",") === "Mariano,Facundo,Daniel,Tercero", hostView.room.slots.map(s => s && s.name));
   const fifth = await client();
-  fifth.send({ t: "join", protocol: 1, code, name: "Quinto", champ: "axiom", clientId: "X", build: "b1" });
+  fifth.send({ t: "join", protocol: 1, code, name: "Quinto", champ: "axiom", clientId: "X", build: BUILD });
   const e5 = await fifth.wait(m => m.t === "error");
   check("join.fifth_room_full", e5.code === "ROOM_FULL", e5);
   const wrong = await client();
@@ -90,10 +96,10 @@ function client(){
   guests[2].ws.close(); // se cae Tercero en plena partida
   const lost = await host.wait(m => m.t === "room" && m.room.slots[3] && !m.room.slots[3].connected);
   check("disconnect.slot_kept", !!lost);
-  fifth.send({ t: "join", protocol: 1, code, name: "Quinto", clientId: "X", build: "b1" });
+  fifth.send({ t: "join", protocol: 1, code, name: "Quinto", clientId: "X", build: BUILD });
   check("join.locked_after_start", ["STARTED", "ROOM_FULL"].includes((await fifth.wait(m => m.t === "error")).code));
   const back = await client();
-  back.send({ t: "join", protocol: 1, code, name: "Tercero", clientId: "G2", build: "b1" });
+  back.send({ t: "join", protocol: 1, code, name: "Tercero", clientId: "G2", build: BUILD });
   const rj = await back.wait(m => m.t === "joined" || m.t === "error");
   check("reconnect.same_slot", rj.t === "joined" && rj.slot === 3 && rj.reconnect, rj);
   check("chat.historial_al_reconectar", Array.isArray(rj.chat) && rj.chat.length >= 3 && rj.chat.length <= 20, rj.chat && rj.chat.length);
