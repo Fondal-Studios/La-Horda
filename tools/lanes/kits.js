@@ -26,9 +26,9 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
     if(f%45===0&&player.alive){player.cds=[0,0,0];player.energy=player.maxEnergy;player.ultCharge=player.ultMax;player.ultCd=0;try{useSkill(0,null);useSkill(1,null);useSkill(2,null);useUltimate();}catch(e){rep.err=String(e&&e.message||e);}}
     update(dt);rep.frames++;
     if(f%30===0){
-     for(const h of heroes){ if(![h.x,h.y,h.hp].every(Number.isFinite))rep.nan++; if(!h.duelActive&&!lanesInside(h.x,h.y,-40))rep.cross++; }
+     for(const h of heroes){ if(![h.x,h.y,h.hp,h.gold].every(Number.isFinite))rep.nan++; if(!h.duelActive&&!lanesInside(h.x,h.y,-40))rep.cross++; }
      for(const e of enemies){ if(!e.alive)continue; if(![e.x,e.y,e.hp].every(Number.isFinite))rep.nan++; if(!e.isDuelLocked&&!lanesInside(e.x,e.y,-40))rep.cross++; }
-     for(const T of LN.team){ if(![T.S[9].hp,T.shards].every(Number.isFinite))rep.nan++; }
+     for(const T of LN.team){ if(!Number.isFinite(T.S[9].hp))rep.nan++; }
     }
    }
    const s=player.stats||{};rep.dmg=Math.round(s.dmgDealt||s.dmg||0);rep.kills=LN.team[0].kills+LN.team[1].kills;rep.myKills=s.kills||0;rep.hp0=Math.round(LN.team[0].S[9].hp);rep.hp1=Math.round(LN.team[1].S[9].hp);rep.respawns=heroes.filter(h=>h.dead_t).length;
