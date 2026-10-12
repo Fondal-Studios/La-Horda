@@ -42,6 +42,11 @@ Categorías medidas en el motor: AREA, MULTIPLE, POTENCIA, CURA, CONTROL, MOVILI
 | bront | PASS | Placa Arrojada: AREA+MULTIPLE+INVOCA ◎ | Muro de Placas: AREA+MULTIPLE+CONTROL+INVOCA ◎ | Pulso del Cristal: AREA+MULTIPLE+POTENCIA | Ciudadela: AREA+MULTIPLE+POTENCIA+CURA+CONTROL+INVOCA |
 | oriel | PASS | Abrir Cicatriz: AREA+MULTIPLE+POTENCIA+CURA+CONTROL+MOVILIDAD+INVOCA ◎ | Eco de la Cicatriz: AREA+MULTIPLE+CURA | Paso entre Mundos: AREA+MULTIPLE+MOVILIDAD ◎ | La Gran Cicatriz: AREA+MULTIPLE+POTENCIA+CONTROL+INVOCA ◎ |
 | saelis | PASS | Abanico de Plumas: MULTIPLE+INVOCA ◎ | Ráfaga Ascendente: AREA+MULTIPLE+POTENCIA | Llamado del Plumaje: POTENCIA | Cielo de Plumas: AREA+MULTIPLE+POTENCIA+CONTROL+INVOCA ◎ |
+| solciju | PASS | Vino maldito: AREA+MULTIPLE+CONTROL ◎ | Barrica añeja: AREA+MULTIPLE+CONTROL ◎ | Brindis a solas: POTENCIA+CURA | Gran Reserva: AREA+MULTIPLE+POTENCIA+CONTROL ◎ |
+| veyra | PASS | Abrir la herida: AREA+MULTIPLE+CONTROL ◎ | Paso escarlata: AREA+MULTIPLE+CONTROL+MOVILIDAD ◎ | Pacto de dolor: POTENCIA | La última herida: AREA+MULTIPLE+CURA+CONTROL |
+| brakk | PASS | Muro de asedio: AREA+MULTIPLE+POTENCIA+CONTROL ◎ | Torreta de clavos: MULTIPLE+POTENCIA ◎ | Apuntalar: POTENCIA | Demolición final: AREA+MULTIPLE+CURA+CONTROL |
+| morveth | PASS | Huerto maldito: AREA+MULTIPLE+CONTROL ◎ | Exhalación de peste: AREA+MULTIPLE ◎ | Simbiosis: POTENCIA+CURA | Jardín de la peste: AREA+MULTIPLE+POTENCIA+CONTROL ◎ |
+| aelith | PASS | Instante roto: AREA+MULTIPLE+CONTROL ◎ | Fractura de segundos: AREA+MULTIPLE+CONTROL ◎ | Tiempo prestado: POTENCIA | La hora imposible: AREA+MULTIPLE+CURA+CONTROL ◎ |
 
 ## Problemas
 

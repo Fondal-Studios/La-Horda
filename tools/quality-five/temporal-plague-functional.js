@@ -17,8 +17,7 @@ const server=http.createServer((req,res)=>{
   const page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('http://127.0.0.1:'+server.address().port);
   await page.waitForFunction(()=>typeof CHAMPION_ENTRY_BALANCE!=='undefined');
-  const absent=await page.evaluate(()=>!CLASSES.morveth&&!CLASSES.aelith&&!CHAMPION_CATALOG.some(c=>['morveth','aelith'].includes(c.id)));
-  for(const k of ['morveth','aelith']){await page.addScriptTag({path:path.join(root,'js/champions/quality-five/'+k+'.js')});await page.addScriptTag({path:path.join(root,'tools/quality-five/register-'+k+'-fixture.js')});}
+  const absent=await page.evaluate(()=>["morveth","aelith"].every(k=>CLASSES[k]&&CHAMPION_CATALOG.some(c=>c.id===k)&&championMeta(k).releaseState==='TESTING'&&!CHAMPION_BALANCE_REFERENCE.knownChampions.includes(k)));
   const checks=await page.evaluate(()=>{
    const out=[],check=(name,ok,details)=>out.push({name,ok:!!ok,...(details?{details}:{})});
    function start(key='morveth',level=1){
@@ -71,7 +70,7 @@ const server=http.createServer((req,res)=>{
    }
    return out;
   });
-  checks.unshift({name:'not published in roster',ok:absent});
+  checks.unshift({name:'registered in production as TESTING candidate',ok:absent});
   const status=errors.length||checks.some(x=>!x.ok)?'FAIL':'PASS';
   fs.writeFileSync(reportPath,JSON.stringify({status,scope:'Morveth and Aelith workshop engine tests; not art, balance or multiplayer approval',checks,errors},null,2)+'\n');
   console.log(JSON.stringify({status,checks:checks.length,failed:checks.filter(x=>!x.ok),errors}));if(status==='FAIL')process.exitCode=1;

@@ -1,11 +1,17 @@
 'use strict';
 const {chromium}=require('playwright'),{spawn}=require('node:child_process'),fs=require('node:fs'),os=require('node:os'),path=require('node:path');
 const dataDir=fs.mkdtempSync(path.join(os.tmpdir(),'horda-workshop-relay-'));
-const servers=[spawn('python3',['-m','http.server','8857','--bind','127.0.0.1'],{stdio:'ignore'}),spawn('node',['server/relay.js'],{env:{...process.env,PORT:'8858',DATA_DIR:dataDir,DATABASE_URL:''},stdio:'ignore'})];
+// Los cinco están en TESTING (sólo concedidos). El relay rechaza campeones TESTING de cuentas sin concesión, así que este test arranca una COPIA del relay
+// cuya taxonomía los marca RELEASED (simula la concesión). No prueba cuentas reales ni el servidor oficial.
+const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'horda-relay-tree-'));
+fs.cpSync('server',path.join(tmp,'server'),{recursive:true,verbatimSymlinks:true});fs.mkdirSync(path.join(tmp,'docs/production'),{recursive:true});fs.copyFileSync('docs/production/shop-catalog.json',path.join(tmp,'docs/production/shop-catalog.json'));
+fs.mkdirSync(path.join(tmp,'js'));for(const e of fs.readdirSync('js'))if(e!=='data')fs.symlinkSync(path.resolve('js',e),path.join(tmp,'js',e));
+fs.cpSync('js/data',path.join(tmp,'js/data'),{recursive:true});const taxFile=path.join(tmp,'js/data/champion-taxonomy.js');fs.writeFileSync(taxFile,fs.readFileSync(taxFile,'utf8').replace(/releaseState:"TESTING"/g,'releaseState:"RELEASED"'));
+const servers=[spawn('python3',['-m','http.server','8857','--bind','127.0.0.1'],{stdio:'ignore'}),spawn('node',[path.join(tmp,'server/relay.js')],{cwd:tmp,env:{...process.env,PORT:'8858',DATA_DIR:dataDir,DATABASE_URL:''},stdio:'ignore'})];
 const checks=[],errors=[];let browser;
 const reportPath='docs/production/quality-five/online-results.json';
 fs.writeFileSync(reportPath,JSON.stringify({status:'RUNNING',scope:'local relay workshop'})+'\n');
-const modules=['js/champions/quality-five/solciju.js','tools/quality-five/register-fixture.js','js/champions/quality-five/veyra.js','tools/quality-five/register-veyra-fixture.js','js/champions/quality-five/brakk.js','tools/quality-five/register-brakk-fixture.js','js/champions/quality-five/morveth.js','tools/quality-five/register-morveth-fixture.js','js/champions/quality-five/aelith.js','tools/quality-five/register-aelith-fixture.js'];
+const modules=[];
 (async()=>{try{
  await new Promise(r=>setTimeout(r,900));browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||chromium.executablePath(),args:['--no-sandbox']});
  for(const [host,guest] of [['solciju','veyra'],['veyra','solciju'],['solciju','brakk'],['aelith','morveth'],['morveth','aelith']]){
@@ -13,7 +19,7 @@ const modules=['js/champions/quality-five/solciju.js','tools/quality-five/regist
   const a=await ac.newPage(),g=await gc.newPage();
   for(const [p,k] of [[a,host],[g,guest]]){
    p.on('pageerror',e=>errors.push(e.message));p.setDefaultTimeout(30000);
-   await p.goto('http://127.0.0.1:8857/?server=ws%3A%2F%2F127.0.0.1%3A8858');
+   await p.goto('http://127.0.0.1:8857/?lazy=0&server=ws%3A%2F%2F127.0.0.1%3A8858');
    await p.waitForFunction(()=>typeof CHAMPION_ENTRY_BALANCE!=='undefined');
    for(const file of modules)await p.addScriptTag({path:file});
    await p.evaluate(k=>{save.starterChosen=true;for(const c of Object.values(save.champions)){c.unlocked=true;c.level=20;}selectedClass=k;currentArena='bosque';setState('prep');},k);

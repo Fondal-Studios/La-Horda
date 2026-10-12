@@ -14,7 +14,7 @@
       "host": {
         "key": "veyra",
         "casts": 4,
-        "damage": 508.0844999999999,
+        "damage": 480.9227499999999,
         "bleeds": 0
       },
       "guest": {
@@ -33,7 +33,7 @@
       "host": {
         "key": "solciju",
         "casts": 4,
-        "damage": 177.72480000000002,
+        "damage": 138.84750000000003,
         "bleeds": 0
       },
       "guest": {
@@ -72,7 +72,6 @@
       },
       "guest": {
         "key": "brakk",
-        "casts": 3,
         "owned": [],
         "bleeds": 0
       }
@@ -84,7 +83,7 @@
     {
       "name": "Morveth infections remain host authoritative",
       "ok": true,
-      "hs": 4,
+      "hs": 5,
       "gs": 0
     },
     {
@@ -93,12 +92,11 @@
       "host": {
         "key": "morveth",
         "casts": 4,
-        "damage": 99.80960000000003,
+        "damage": 124.76200000000004,
         "bleeds": 0
       },
       "guest": {
         "key": "morveth",
-        "casts": 4,
         "owned": [
           "mor_garden"
         ],

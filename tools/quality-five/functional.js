@@ -17,11 +17,7 @@ const server=http.createServer((req,res)=>{
   const page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('http://127.0.0.1:'+server.address().port);
   await page.waitForFunction(()=>typeof CHAMPION_ENTRY_BALANCE!=='undefined');
-  const absent=await page.evaluate(()=>!CLASSES.solciju&&!CHAMPION_CATALOG.some(c=>c.id==='solciju'));
-  await page.addScriptTag({path:path.join(root,'js/champions/quality-five/solciju.js')});
-  await page.addScriptTag({path:path.join(root,'tools/quality-five/register-fixture.js')});
-  await page.addScriptTag({path:path.join(root,'js/champions/quality-five/veyra.js')});
-  await page.addScriptTag({path:path.join(root,'tools/quality-five/register-veyra-fixture.js')});
+  const absent=await page.evaluate(()=>["solciju","veyra"].every(k=>CLASSES[k]&&CHAMPION_CATALOG.some(c=>c.id===k)&&championMeta(k).releaseState==='TESTING'&&!CHAMPION_BALANCE_REFERENCE.knownChampions.includes(k)));
   const checks=await page.evaluate(()=>{
    const out=[],check=(name,ok,details)=>out.push({name,ok:!!ok,...(details?{details}:{})});
    function start(level=1,key='solciju'){
@@ -96,7 +92,7 @@ const server=http.createServer((req,res)=>{
    }
    setState('paused');return out;
   });
-  checks.unshift({name:'not registered in production',ok:absent});
+  checks.unshift({name:'registered in production as TESTING candidate, not in knownChampions',ok:absent});
   const result={status:errors.length||checks.some(c=>!c.ok)?'FAIL':'PASS',scope:'Solciju and Veyra workshop runtime, not release approval',checks,errors};
   fs.writeFileSync(reportPath,JSON.stringify(result,null,2)+'\n');
   console.log(JSON.stringify({status:result.status,checks:checks.length,failed:checks.filter(c=>!c.ok),errors}));if(result.status==='FAIL')process.exitCode=1;

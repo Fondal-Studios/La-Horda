@@ -3,7 +3,7 @@
   "scope": "Solciju and Veyra workshop runtime, not release approval",
   "checks": [
     {
-      "name": "not registered in production",
+      "name": "registered in production as TESTING candidate, not in knownChampions",
       "ok": true
     },
     {
