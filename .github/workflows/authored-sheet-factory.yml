@@ -1,0 +1,17 @@
+name: Authored sprite sheet importer
+on:
+  pull_request:
+    paths: ['tools/factory/import-authored-sheet.py', 'tools/factory/test_import_authored_sheet.py', 'tools/art/redraw/build_atlas.py', '.github/workflows/authored-sheet-factory.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  importer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy pillow scipy
+      - run: python -m unittest tools/factory/test_import_authored_sheet.py
