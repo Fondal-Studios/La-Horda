@@ -134,14 +134,14 @@ function lanesUnwrap(){ if(!_lnWrapped) return; castAbility = _lnWrapped.ca; tri
 function lanesTeamCall(caster, fn){
   const L = LN;
   if(!L || L.inCast || !caster || caster.team == null) return fn();
-  L.inCast = true;
+  L.inCast = true; L.cur = caster;
   const H = heroes, E = enemies, A = allies, t = caster.team;
   const hs = H.filter(h=>h.team === t), es = E.filter(e=>lanesHostileTo(t, e)), as = A.filter(a=>a.team === t);
   heroes = hs; enemies = es; allies = as;
   try{ return fn(); }
   finally{
     const seen = new Set(E); for(const e of enemies) if(!seen.has(e)) E.push(e);   // lo que la habilidad haya creado (invocaciones hostiles, etc.)
-    heroes = H; enemies = E; allies = A; L.inCast = false;
+    heroes = H; enemies = E; allies = A; L.inCast = false; L.cur = null;
   }
 }
 

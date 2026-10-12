@@ -7,7 +7,7 @@
 function damageEnemy(e, amount, opts){
   opts = opts || {};
   if(e.cineT > 0) return; // cinemática de un jefe (inf-hechicero.js): intocable mientras habla o se transforma
-  const src = opts.src || player;
+  const src = opts.src || (typeof lanesOn==="function" && lanesOn() && LN.cur) || player; // (en Guerra de Cristales/Coliseo, sin `src` vale el que está lanzando, no el jugador)
   if(typeof lanesOn==="function" && lanesOn()){ if(lanesBlocksDamage(e, src)) return; amount *= lanesDmgMult(e, src); } // Guerra de Cristales: sin fuego amigo, torres protegidas y PvP escalado
   amount = portadorBasicPower(src, amount, opts);
   if(_boonRec) boonRecHit(e, amount, src, opts); // refuerzos de habilidad: quién recibió ESTE lanzamiento
