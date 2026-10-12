@@ -158,3 +158,21 @@ con todas sus habilidades en el centro del mapa frente a un rival), `flow.js` (U
 (2 clientes reales con relay).
 
 **Pendiente / límites.** Balance con humanos sin medir (solo bots); sin cola pública (salas por código); relay limitado a 4 humanos.
+
+## Coliseo en el motor real — torneo 2v2 de 8 luchadores (12/10/2026)
+Código: `js/arenas/coliseum/`. Estilo "Arena" de Wild Rift: **cuatro equipos de dos**; en cada ronda se juegan **dos duelos 2v2 a la vez**
+en dos fosos del mismo mundo (el tuyo es siempre el A; el B lo juegan los otros dos equipos). Gana el duelo el equipo que deja al rival
+sin nadie en pie (si se acaba el tiempo, el de más vida; si empatan, nadie suma). **1 punto por duelo ganado; el primero en llegar a 3 gana**
+(tres emparejamientos que se repiten; tope de 9 rondas, desempata por bajas de héroes).
+- Fases por ronda: cuenta regresiva (héroes quietos e invulnerables) → pelea (80 s; desde los 28 s **el anillo se cierra** y fuera de él se
+  pierde vida) → resultados. Sin reaparición dentro de la ronda.
+- **Espectador:** si caés, la cámara (`CAM_SUBJECT`, ver `js/rendering/camera.js`) sigue a tu compañero o a otro luchador; botones
+  ‹ › para cambiar y «OTRO DUELO» para ver el otro foso. También hay un mapa con los dos fosos siempre visible.
+- Mismos campeones, habilidades y HUD de la campaña; el PvP es el de Guerra de Cristales (avatares + `lanesTeamCall`).
+- Pruebas: `tools/coliseum/sim.js` (torneos completos: puntos coherentes, sin fuego amigo, protección en la cuenta regresiva, cámara
+  espectadora, guardado restaurado) y `tools/coliseum/flow.js` (UI 844×390 y 667×375: hub → torneo → espectador → resultado → revancha → salir).
+
+**Límites honestos:** el relay admite 4 humanos y el netcode une cada héroe a un slot, así que **el Coliseo online todavía no está** (el
+torneo de 8 se juega contra bots); la próxima fase es sumar luchadores "virtuales" para que los invitados vean los dos fosos. El
+balance entre kits en PvP no está afinado: con recargas naturales, vencer a un blanco quieto tarda entre 3 y 50 s según el campeón
+(mediana ≈ 15 s). `LANES.PVP_DMG` y `LANES.PVP_BURST` son las perillas.

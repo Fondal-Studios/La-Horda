@@ -53,8 +53,8 @@ async function connect(){
 }
 function parseCode(v){try{return new URL(v).searchParams.get('room')||'';}catch{return v.trim().toUpperCase();}}
 async function joinRoom(code){await connect();send(Object.assign(identity(),{t:'join',code:parseCode(code)}));}
-$('create').onclick=async()=>{if(useReal()&&mode()==='crystal'){const c=$('champ').value;if(close())lanesOnlineCreate(c);return;}try{status('Conectando…');await connect();send(Object.assign(identity(),{t:'create',arena:mode()==='coliseum'?'coliseum':'crystal-wars',public:false}));}catch(e){status(e.message);}};
-$('join').onclick=async()=>{const code=parseCode($('code').value);if(useReal()&&mode()==='crystal'&&/^[A-Z0-9]{6}$/.test(code)){const c=$('champ').value;if(close())lanesOnlineJoin(code,c);return;}if(!/^[A-Z0-9]{6}$/.test(code)){status('Ingresá un código de seis letras/números o una invitación.');return;}try{await joinRoom(code);}catch(e){status(e.message);}};
+$('create').onclick=async()=>{if(useReal()&&mode()==='coliseum'){status('El Coliseo online todavía no está listo en el motor real. Jugá el torneo de 8 contra bots con «ENTRENAR CON BOTS».');return;}if(useReal()&&mode()==='crystal'){const c=$('champ').value;if(close())lanesOnlineCreate(c);return;}try{status('Conectando…');await connect();send(Object.assign(identity(),{t:'create',arena:mode()==='coliseum'?'coliseum':'crystal-wars',public:false}));}catch(e){status(e.message);}};
+$('join').onclick=async()=>{const code=parseCode($('code').value);if(useReal()&&mode()==='coliseum'){status('El Coliseo online todavía no está listo en el motor real. Jugá el torneo de 8 contra bots con «ENTRENAR CON BOTS».');return;}if(useReal()&&mode()==='crystal'&&/^[A-Z0-9]{6}$/.test(code)){const c=$('champ').value;if(close())lanesOnlineJoin(code,c);return;}if(!/^[A-Z0-9]{6}$/.test(code)){status('Ingresá un código de seis letras/números o una invitación.');return;}try{await joinRoom(code);}catch(e){status(e.message);}};
 $('name').onchange=()=>{if(room)send({t:'update',name:$('name').value.trim()||'Guardián',ready:false});};
 function renderRoom(){
  if(modeSelect)modeSelect.disabled=!!room;
