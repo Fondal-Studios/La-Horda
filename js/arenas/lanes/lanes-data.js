@@ -16,7 +16,7 @@ const LANES = {
   CRYSTAL_HP:2000, CRYSTAL_R:52,
   TOWER_HP:2400, TOWER_R:40, TOWER_DMG:48, TOWER_RANGE:440, TOWER_CD:1100,
   PVP_BURST:0.4,                      // tope de vida que un héroe puede perder por PvP en 1 s
-  PVP_DMG:0.55,                       // los héroes se hacen menos daño entre sí que a la horda (si no, nadie dura)
+  PVP_DMG:0.7,                        // los héroes se hacen menos daño entre sí que a la horda (si no, nadie dura)
   FIRST_WAVE_MS:8000, WAVE_MS:30000, SUPPLY_MS:8000, // primera oleada, intervalo y ventana de suministros
   MAX_MINIONS:70,                     // criaturas vivas por equipo
   RESPAWN_MS:6000, RESPAWN_PER_MIN:2500, BASE_HEAL:0.08, // reaparición (crece con el reloj) y curación en la base
