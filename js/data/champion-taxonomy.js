@@ -54,7 +54,14 @@ var CHAMPION_TAXONOMY = {
   vhal:     {category:"ASCENSION"},
   bront:    {category:"ASCENSION"},
   oriel:    {category:"ASCENSION"},
-  saelis:   {category:"ASCENSION"}
+  saelis:   {category:"ASCENSION"},
+  // Cinco campeones nuevos (docs/production/quality-five): STANDARD en TESTING = jugables para quien los tenga concedido, fuera de la
+  // tienda pública, bots y modos competitivos hasta la aprobación humana de arte/audio y el cierre de knownChampions. Pasar a RELEASED es el último paso.
+  solciju:  {category:"STANDARD", releaseState:"TESTING"},
+  veyra:    {category:"STANDARD", releaseState:"TESTING"},
+  brakk:    {category:"STANDARD", releaseState:"TESTING"},
+  morveth:  {category:"STANDARD", releaseState:"TESTING"},
+  aelith:   {category:"STANDARD", releaseState:"TESTING"}
 };
 
 // EVENT infrastructure. Example shape (no event champion exists yet):
