@@ -11,6 +11,7 @@ Solciju, Brakk, Veyra, Morveth y Aelith tienen kits reales, talentos, maestría,
 - Talent Gate PASS; Ability Gate estricto 43 campeones sin fallos; Balance Gate 75 simulaciones/25 candidatos PASS, referencia intacta.
 - Relay real local: 23 controles, cinco campeones estándar admitidos, dos fundadores rechazados sin permiso, ejecución del invitado por host, replicación y limpieza. No se cambió el relay para el test.
 - Guerra de Cristales: cinco campeones, 55 segundos simulados cada uno, sin fuego amigo, NaN ni salida del mapa. Tres partidas de 150 s: bots compran objetos al salir de base.
+- Coliseo: cinco torneos completos, uno por campeón; sin fuego amigo, NaN, daño fuera de combate ni salidas del foso; ganador, puntos y guardado coherentes. Ver coliseum-results.jsonl.
 - Server: billetera 65/65; Game Master 127 controles de integración y seguridad. Audio: gate completo PASS.
 - Rendimiento: cinco mediciones en Ciudad, CPU x4, pantalla 844x390, canvas 422x195 sin GPU. Mediana de script 20–25 ms y p95 34–48 ms; mediana RAF ~30 FPS. No cumple una promesa de 60 FPS sostenidos ni certifica teléfonos reales. Logs performance-*.json.
 - Duplicidad: detector intacto, dos diagnósticos DUPLICATE revisados en DESIGN-REVIEW.md. No se falsifica su salida automática.
