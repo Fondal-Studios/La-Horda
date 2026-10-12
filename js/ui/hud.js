@@ -4,6 +4,7 @@
    HUD en partida: barras, aliados, botones de habilidad y avisos.
    ============================================================ */
 
+const HUD_GLYPH_COLOR = {"btn-s1":"#8fe0ff", "btn-s2":"#cfc2ff", "btn-s3":"#97f0cc", "btn-ult":"#ffe9a8"};
 function updateAbilityButtons(){
   // el kit ACTIVO del héroe (Eren transformado muestra el del titán)
   const cls = (player && player.cls && player.classKey===selectedClass) ? player.cls : CLASSES[selectedClass];
@@ -14,9 +15,10 @@ function updateAbilityButtons(){
     const icoEl = el.querySelector(".ico");
     const labelEl = el.querySelector("div:not(.ico):not(.cd-overlay)");
     // ícono pixel de la habilidad si existe (el mismo del panel de Habilidades); si no, el glifo de siempre
-    const img = (typeof SKILL_ICON_IMG!=="undefined") ? SKILL_ICON_IMG[sk.name] : null;
+    const pix = (typeof SKILL_ICON_IMG!=="undefined") ? SKILL_ICON_IMG[sk.name] : null;
+    const img = pix || (typeof skillGlyphUri==="function" ? skillGlyphUri(sk, HUD_GLYPH_COLOR[id] || "#ffffff", id==="btn-ult") : null); // sin ícono pixel: símbolo de La Horda (skill-glyphs.js)
     if(icoEl){
-      if(img){ if(icoEl._img !== img){ icoEl.innerHTML = `<img class="ico-img" src="${img}" alt="">`; icoEl._img = img; } }
+      if(img){ if(icoEl._img !== img){ icoEl.innerHTML = `<img class="ico-img${pix ? "" : " ico-glyph"}" src="${img}" alt="">`; icoEl._img = img; } }
       else { icoEl.textContent = sk.ico; icoEl._img = null; }
     }
     if(labelEl && id!=="btn-ult") labelEl.textContent = sk.name.split(" ")[0];
@@ -316,7 +318,7 @@ function renderParty(){
     });
     partyBuilt = true;
   }
-  if(typeof lanesOn==="function" && lanesOn()) allies.forEach((a,i)=>{ const r = document.getElementById("ally-row-"+i); if(r) r.style.display = a.lane===player.lane ? "" : "none"; }); // Guerra de Cristales: solo tu equipo en la lista
+  if(typeof lanesOn==="function" && lanesOn()) allies.forEach((a,i)=>{ const r = document.getElementById("ally-row-"+i); if(r) r.style.display = a.team===player.team ? "" : "none"; }); // Guerra de Cristales: solo tu equipo en la lista
   allies.forEach((a,i)=>{
     const fill = document.getElementById("ally-hp-"+i);
     const shieldFill = document.getElementById("ally-shieldbar-"+i);

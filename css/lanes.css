@@ -12,7 +12,7 @@
 .lanes-hud .ln-chip{ pointer-events:auto; position:absolute; left:50%; bottom:calc(6px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); min-height:48px; padding:6px 14px; display:flex; flex-direction:column; align-items:center; gap:1px; font:inherit; font-size:14px; color:#ffe9a8; background:rgba(11,16,32,.92); border:2px solid #7a6a3a; border-radius:10px; cursor:pointer; }
 .lanes-hud.ln-supply .ln-chip{ border-color:#ffcf5c; box-shadow:0 0 14px #ffcf5c88; animation:lnPulse 1.1s ease-in-out infinite; }
 @keyframes lnPulse{ 50%{ box-shadow:0 0 24px #ffcf5cdd; } }
-.lanes-hud .ln-shop{ pointer-events:auto; position:absolute; left:calc(136px + env(safe-area-inset-left,0px)); bottom:calc(66px + env(safe-area-inset-bottom,0px)); display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:6px; width:calc(100vw - 136px - 212px); padding:8px; background:rgba(11,16,32,.95); border:2px solid #ffcf5c; border-radius:12px; }
+.lanes-hud .ln-shop{ pointer-events:auto; position:absolute; left:calc(136px + env(safe-area-inset-left,0px)); bottom:calc(66px + env(safe-area-inset-bottom,0px)); display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; width:calc(100vw - 136px - 212px); padding:8px; background:rgba(11,16,32,.95); border:2px solid #ffcf5c; border-radius:12px; }
 .lanes-hud .ln-shop.hidden{ display:none; }
 .lanes-hud.ln-shop-open .ln-rival{ display:none; }
 .ln-buy{ min-height:56px; padding:4px 3px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; font:inherit; color:#eef4ff; background:#1c2a44; border:2px solid #4a5f86; border-radius:8px; cursor:pointer; }
@@ -20,8 +20,19 @@
 .ln-buy.ln-send{ background:#3a2430; border-color:#9a5a6a; }
 .ln-buy:disabled{ opacity:.45; cursor:default; }
 .lanes-hud .ln-rival{ position:absolute; bottom:calc(6px + env(safe-area-inset-bottom,0px)); left:calc(128px + env(safe-area-inset-left,0px)); padding:3px; background:rgba(11,16,32,.9); border:1px solid #5a6b88; border-radius:8px; }
-.ln-rival-title{ font-size:14px; text-align:center; color:#ffb86a; } .ln-rival canvas{ display:block; width:170px; height:106px; }
-@media (max-height:520px){ .ln-rival canvas{ width:150px; height:94px; } }
+.ln-rival canvas{ display:block; width:250px; height:73px; }
+.ln-horde{ font-size:14px; line-height:1.25; padding:2px 4px 0; color:#ffe9a8; max-width:250px; } .ln-horde b{ color:#ffb86a; } .ln-horde i{ color:#9aa6bb; font-style:normal; } .ln-horde span{ margin-right:6px; font-size:15px; }
+.ln-pips{ font-size:14px; color:#9aa6bb; } .ln-pips em{ font-style:normal; font-size:16px; margin-right:2px; } .ln-pips em.on{ color:#fff; } .ln-pips em.off{ color:#3a4458; } .ln-pips small{ font-size:14px; }
+.lanes-hud .ln-feed{ position:absolute; top:calc(70px + env(safe-area-inset-top,0px)); right:calc(10px + env(safe-area-inset-right,0px)); max-width:30vw; font-size:14px; line-height:1.25; text-align:right; text-shadow:0 2px 3px #000; }
+.lanes-hud .ln-cards{ pointer-events:auto; position:absolute; left:50%; top:calc(84px + env(safe-area-inset-top,0px)); transform:translateX(-50%); width:min(680px,66vw); padding:10px 12px 12px; background:rgba(11,16,32,.96); border:3px solid #ffcf5c; border-radius:14px; box-shadow:0 0 30px #ffcf5c66; }
+.lanes-hud .ln-cards.hidden{ display:none; }
+.ln-cards-title{ text-align:center; font-size:18px; color:#ffcf5c; letter-spacing:.08em; margin-bottom:6px; } .ln-cards-title small{ display:block; font-size:14px; letter-spacing:0; color:#cdd6e6; }
+.ln-cards-row{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.ln-card{ min-height:92px; padding:8px 6px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; font:inherit; color:#eef4ff; background:linear-gradient(#26324f,#182036); border:2px solid #6c7fa8; border-radius:10px; cursor:pointer; }
+.ln-card:hover,.ln-card:focus-visible{ border-color:#ffcf5c; box-shadow:0 0 14px #ffcf5c88; outline:none; }
+.ln-card-ico{ font-size:30px; line-height:1; color:#ffb86a; text-shadow:0 0 10px #ff8a3d; } .ln-card b{ font-size:16px; } .ln-card-desc{ font-size:14px; color:#cdd6e6; line-height:1.2; } .ln-card small{ font-size:14px; color:#9ad0ff; }
+.ln-cards-timer{ display:block; height:6px; margin-top:8px; background:#1d2638; border-radius:3px; overflow:hidden; } .ln-cards-timer u{ display:block; height:100%; background:#ffcf5c; text-decoration:none; }
+@media (max-height:520px){ .lanes-hud .ln-cards{ top:calc(80px + env(safe-area-inset-top,0px)); width:min(640px,64vw); padding:5px 8px 7px; } .ln-card{ min-height:64px; padding:4px 4px; gap:1px; } .ln-card-desc{ line-height:1.1; } .ln-card-ico{ font-size:24px; } .ln-cards-title{ font-size:16px; margin-bottom:3px; } .ln-rival canvas{ width:210px; height:61px; } .ln-horde{ max-width:210px; } }
 .lanes-result{ position:fixed; inset:0; z-index:60; display:flex; align-items:center; justify-content:center; background:rgba(4,8,16,.82); font-family:var(--ui-font, monospace); }
 .lanes-result.hidden{ display:none; }
 .ln-res-card{ width:min(620px,94vw); max-height:94vh; overflow:auto; padding:16px 20px; background:#171e2f; border:2px solid #716143; border-radius:12px; color:#e8edf5; text-align:center; }

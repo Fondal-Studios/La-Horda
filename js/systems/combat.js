@@ -8,7 +8,7 @@ function damageEnemy(e, amount, opts){
   opts = opts || {};
   if(e.cineT > 0) return; // cinemática de un jefe (inf-hechicero.js): intocable mientras habla o se transforma
   const src = opts.src || player;
-  if(typeof lanesOn==="function" && lanesOn()) amount *= lanesDmgMult(src); // Guerra de Cristales: mejoras de equipo
+  if(typeof lanesOn==="function" && lanesOn()){ if(lanesBlocksDamage(e, src)) return; amount *= lanesDmgMult(e, src); } // Guerra de Cristales: sin fuego amigo, torres protegidas y PvP escalado
   amount = portadorBasicPower(src, amount, opts);
   if(_boonRec) boonRecHit(e, amount, src, opts); // refuerzos de habilidad: quién recibió ESTE lanzamiento
   let dmg = amount * (e.dmgTakenMult||1) * (e.curseDefTakenMult||1) * (e.crashVuln ? 1.6 : 1);
@@ -299,12 +299,13 @@ function killEnemy(e){
 let _avoidableHit = false; // lo prende bossHitHero: el golpe venía con aviso en el suelo
 function damageHero(h, amount, src, portTransferred){
   if(!h || !h.alive) return;
-  if(h.isCrystal){ lanesHitCrystal(h, amount); return; } // Guerra de Cristales: el cristal del carril recibe los golpes de la horda
+  if(h.isStruct){ lanesHitStruct(h, amount, src); return; } // Guerra de Cristales: torres y cristal reciben los golpes de la horda
+  if(typeof lanesOn==="function" && lanesOn() && lanesBlocksHeroDamage(h, src)) return; // sin fuego amigo de la horda propia
   if(h.invulnTimer>0) return; // p.ej. la breve transición del Teletransporte de Axiom
   { const tk = heroDmgTakenMult(h); if(tk<=0) return; amount *= tk; } // montado / Instinto / titán / cinemáticas
   // Regla de la Arena PvE: sin fuego amigo. Un aliado (héroe, su invocación o su proyectil)
   // nunca daña a otro aliado. Curas/escudos/buffs/revivir no pasan por acá: no se tocan.
-  if(!modeRules().friendlyFire && src && src!==h){ const atk = allyAttackerOf(src); if(atk && atk!==h) return; }
+  if(!modeRules().friendlyFire && src && src!==h && !src.isPvp){ const atk = allyAttackerOf(src); if(atk && atk!==h) return; }
   if(!h.isDivineFoe){
     const cap = src && src.rank && DIFF.hitCap[src.rank];
     if(cap && h.maxHp) amount = Math.min(amount, h.maxHp*cap*(typeof diffHitCapMult==="function" ? diffHitCapMult() : 1)); // Pesadilla/Infierno suben el tope
@@ -426,6 +427,7 @@ function nearestEnemyTo(ent, range){
     // dueño puede "verlo" como objetivo -así ningún aliado/otro héroe intenta perseguirlo
     // hasta la arena de bolsillo, aislamiento real de la sección 15-.
     if(e.isDuelLocked && e.duelOwner!==ent) continue;
+    if(ent.team!==undefined && e.team!==undefined && ent.team===e.team && typeof lanesOn==="function" && lanesOn()) continue; // Guerra de Cristales: no apuntar a los propios
     const d = distance(ent,e);
     if(d<bestD && (!range||d<=range)){ bestD=d; best=e; }
   }

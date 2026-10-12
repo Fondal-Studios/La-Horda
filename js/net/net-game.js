@@ -48,7 +48,7 @@ function netIsHumanChamp(k){ return !!(netMatch && netMatch.slots.some(s=>s.kind
 function netSlotName(i){ const s = netMatch && netMatch.slots[i]; return s ? s.name : ""; }
 
 /* ---------------- serialización con referencias ---------------- */
-const NET_SKIP_KEYS = new Set(["_portPrevX","_portPrevY","portMoveDX","portMoveDY","_portMarks","cls","_ap","_net","_tx","_ty","_s","hitSet","onHit","fn","_spdAt","_hx","_hy","_tk",
+const NET_SKIP_KEYS = new Set(["lnRef","_lnProxy","_lnKiller","_portPrevX","_portPrevY","portMoveDX","portMoveDY","_portMarks","cls","_ap","_net","_tx","_ty","_s","hitSet","onHit","fn","_spdAt","_hx","_hy","_tk",
   // internos de la IA/navegación del anfitrión: el invitado no los usa
   "_navT","_nmx","_nmy","_navBlocked","_kbRx","_kbRy","_tgt","_tgtT","_dangerT","atkCd","recentDamage","_hitSfxAt","_hurtSfxAt","_setFrame","path",
   // estado de animación que calcula el propio renderizador de cada cliente
@@ -454,7 +454,8 @@ function netHostOnMsg(from, d){
     case "ctx": ctxNetMsg(h, d); return; // acción contextual: mantener (on:1) / soltar (on:0)
     case "invest": investTalentPoint(h.classKey, d.idx==="ult" ? "ult" : (d.idx|0)); return;
     case "buff": netHostBuffPicked(from, d.id); return;
-    case "ln-buy": if(typeof lanesOn==="function" && lanesOn() && state==="playing") lanesBuy(h.lane, String(d.key), h); return; // Guerra de Cristales: compra del invitado
+    case "ln-buy": if(typeof lanesOn==="function" && lanesOn() && state==="playing") lanesBuy(h.team, String(d.key), h); return; // Guerra de Cristales: compra del invitado
+    case "ln-card": if(typeof lanesOn==="function" && lanesOn() && state==="playing") lanesPickCard(h.team, d.i); return; // Guerra de Cristales: carta de horda del invitado
     case "loading": // el invitado todavía baja el arte de la arena (netGuestHoldStart): lo maneja un bot hasta que entre
       if(n.connected){
         n.connected = false; n.loading = true; h.isRemote = false; h._revHold = -1; h._ctxHold = null; cancelRevivesBy(h);

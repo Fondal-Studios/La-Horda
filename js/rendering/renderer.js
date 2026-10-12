@@ -105,7 +105,7 @@ function render(){
   _entN = 0;
   _animCrowdCount = 0;
   for(const e of enemies){
-    if(!e.alive) continue;
+    if(!e.alive || e.lanesProxy) continue; // (los avatares de Guerra de Cristales no se dibujan: se ve al héroe real)
     if(!inView(e.x, e.y, e.rank==="jefe" ? e.radius*4 : Math.max(140, e.radius*3))) continue;
     _animCrowdCount++;
     _entPush(e.y, e, null);

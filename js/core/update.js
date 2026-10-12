@@ -84,6 +84,7 @@ function update(dt){
   // enemies
   for(const e of enemies){
     if(!e.alive) continue;
+    if(e.lanesProxy) continue; // Guerra de Cristales: avatares de héroes y estructuras no actúan (los sincroniza lanesUpdate)
     if(axiomFreezeTimer>0){ continue; } // Force Quit: nadie salvo Axiom actúa mientras dura
     if(e._kbRx || e._kbRy) updateHitKnock(e, dt); // retroceso por peso en curso (feedback.js)
     if(e.frozenTimer>0) e.frozenTimer -= dt; // congelado (Invierno Sin Fin, reacciones de hielo)
@@ -513,12 +514,14 @@ function update(dt){
       if((p.wave || p.lob) && updateEnemyProjectileStyle(p, dt)) continue; // el tiro en arco solo pega al caer
       for(const h of heroes){
         if(!h.alive) continue;
+        if(h.team!==undefined && p.src && p.src.team===h.team) continue; // Guerra de Cristales: la horda propia no le pega a su equipo
         if(distance(p,h) < h.radius+p.radius){ damageHero(h, p.dmg, {x:p.x-p.vx*0.25, y:p.y-p.vy*0.25, rank:p.rank, from:p.src}); if(p.frost) addFrost(h, p.frost); p.life=0; vfxBurst(p.x, p.y, 4, "spark", 90, 200, 2.5, h===player?2:0, -20, 1); break; }
       }
     } else {
       for(const e of enemies){
         if(!e.alive) continue;
         if(p.hitSet && p.hitSet.has(e)) continue;
+        if(e.team!==undefined && p.src && p.src.team===e.team) continue; // Guerra de Cristales: los tiros atraviesan a los propios
         if(distance(p,e) < e.radius+p.radius){
           damageEnemy(e, p.dmg, {fromBasic:p.fromBasic, slow:p.slow, slowDur:2000, src:p.src,
             critChanceOverride:p.critChanceOverride, critMultOverride:p.critMultOverride, bleed:p.bleed, bleedDur:p.bleedDur});
