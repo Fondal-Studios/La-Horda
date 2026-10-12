@@ -6,25 +6,32 @@
    el Ámbar. Los invitados reciben el mapa completo en el snapshot (enemigos y héroes ya llevan `team`);
    acá viaja solo lo propio de la modalidad (estructuras, fragmentos, cartas de horda, reloj).
    ============================================================ */
+// OJO: el serializador de red corta la profundidad (los arrays dentro de objetos anidados se pierden): solo escalares por equipo
+// y todo lo demás en arrays PLANOS al nivel superior (índice = equipo*3 + estructura, equipo*N + carta).
 function lanesNetState(){
   const L = LN; if(!L) return null;
+  const cards = [], hp = [], wd = [], al = [];
+  for(const T of L.team){ for(const id of LANES_CARD_IDS) cards.push(T.cards[id] || 0); for(const x of T.S){ hp.push(Math.round(x.hp*10)/10); wd.push(Math.round(x.ward)); al.push(x.alive ? 1 : 0); } }
   return {t:Math.round(L.t), wave:L.wave, ended:L.ended ? 1 : 0, w:L.winner, why:L.why || "",
     team:L.team.map(T=>({sh:T.shards, ra:Math.round(T.repairAt), wa:Math.round(T.wardAt), sa:Math.round(T.sendAt), k:T.kills, se:T.sent, as:T.assist, pk:T.pk, wv:T.wave, nw:Math.round(T.nextWave),
-      c:T.cards, tk:T.taken, of:T.offer, oa:Math.round(T.offerAt), nc:T.nextCard === Infinity ? -1 : Math.round(T.nextCard),
-      s:T.S.map(x=>({hp:Math.round(x.hp*10)/10, wd:Math.round(x.ward), al:x.alive ? 1 : 0}))})),
-    sh:L.shots.slice(-6).map(x=>[Math.round(x.x1), Math.round(x.y1), Math.round(x.x2), Math.round(x.y2), Math.round(L.t - x.t), x.team]),
-    feed:L.feed.map(f=>({t:Math.round(f.t), x:f.text, team:f.team}))};
+      tk:T.taken, oa:Math.round(T.offerAt), nc:T.nextCard === Infinity ? -1 : Math.round(T.nextCard)})),
+    hp, wd, al, cd:cards, of:L.team.map(T=>T.offer ? T.offer.join(",") : ""),
+    sh:L.shots.slice(-6).reduce((a, x)=>a.concat([Math.round(x.x1), Math.round(x.y1), Math.round(x.x2), Math.round(x.y2), Math.round(L.t - x.t), x.team]), []),
+    fd:L.feed.map(f=>f.team + "|" + Math.round(f.t) + "|" + f.text)};
 }
 function lanesApplyNetState(s){
-  const L = LN; if(!L || !s) return;
+  const L = LN; if(!L || !s || !s.team) return;
   L.t = s.t; L.wave = s.wave; L.winner = s.w; L.why = s.why;
   const wasEnded = L.ended; L.ended = !!s.ended;
+  const N = LANES_CARD_IDS.length;
   s.team.forEach((d, i)=>{ const T = L.team[i]; if(!T) return;
     T.shards = d.sh; T.repairAt = d.ra; T.wardAt = d.wa; T.sendAt = d.sa; T.kills = d.k; T.sent = d.se; T.assist = d.as; T.pk = d.pk; T.wave = d.wv; T.nextWave = d.nw;
-    T.cards = d.c || {}; T.taken = d.tk; T.offer = d.of || null; T.offerAt = d.oa; T.nextCard = d.nc < 0 ? Infinity : d.nc; T.mods = lanesModsOf(T.cards);
-    d.s.forEach((x, k)=>{ const S = T.S[k]; if(!S) return; if(x.hp < S.hp - 0.5) S.hitFlash = 200; S.hp = x.hp; S.ward = x.wd; S.alive = !!x.al; }); });
-  L.shots = (s.sh || []).map(a=>({x1:a[0], y1:a[1], x2:a[2], y2:a[3], t:s.t - a[4], team:a[5]}));
-  L.feed = (s.feed || []).map(f=>({t:f.t, text:f.x, team:f.team}));
+    T.cards = {}; LANES_CARD_IDS.forEach((id, k)=>{ const n = s.cd && s.cd[i * N + k]; if(n) T.cards[id] = n; });
+    T.taken = d.tk; T.offerAt = d.oa; T.nextCard = d.nc < 0 ? Infinity : d.nc; T.mods = lanesModsOf(T.cards);
+    const o = s.of && s.of[i]; T.offer = o ? o.split(",") : null;
+    T.S.forEach((S, k)=>{ const j = i * 3 + k, hp = s.hp ? s.hp[j] : S.hp; if(hp < S.hp - 0.5) S.hitFlash = 200; S.hp = hp; S.ward = s.wd ? s.wd[j] : 0; S.alive = s.al ? !!s.al[j] : true; }); });
+  L.shots = []; for(let k = 0; s.sh && k + 5 < s.sh.length; k += 6) L.shots.push({x1:s.sh[k], y1:s.sh[k+1], x2:s.sh[k+2], y2:s.sh[k+3], t:s.t - s.sh[k+4], team:s.sh[k+5]});
+  L.feed = (s.fd || []).map(f=>{ const p = String(f).split("|"); return {team:+p[0], t:+p[1], text:p.slice(2).join("|")}; });
   if(L.ended && !wasEnded && L.role === "guest") lanesGuestFinished();
 }
 // Invitado: arranca la partida (gancho guestStart; el guardado temporal ya lo puso netGuestStartRun).

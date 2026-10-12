@@ -40,6 +40,7 @@ const LANES_CARDS = {
   pace:{name:"Oleadas más rápidas", desc:"Las oleadas llegan 12% antes", icon:"⌛", max:3, mod:m=>{ m.pace *= 0.88; }},
   regen:{name:"Carne que se cierra", desc:"Tu horda se cura 2% por segundo", icon:"✧", max:3, mod:m=>{ m.regen += 0.02; }}
 };
+const LANES_CARD_IDS = Object.keys(LANES_CARDS);   // orden fijo (viaja en la red como lista de números)
 function lanesModsOf(counts){
   const m = {hp:1, dmg:1, speed:1, count:0, siege:1, brute:0, pace:1, regen:0};
   for(const id in LANES_CARDS) for(let k = 0; k < (counts[id] || 0); k++) LANES_CARDS[id].mod(m);
