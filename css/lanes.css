@@ -39,3 +39,18 @@
 .ln-res-kicker{ font-size:14px; color:#ffcf5c; letter-spacing:.1em; } .ln-res-card h2{ margin:4px 0; font-size:30px; color:#ffcf5c; } .ln-res-card p{ font-size:15px; margin:4px 0 8px; }
 .ln-res-card table{ width:100%; border-collapse:collapse; font-size:14px; } .ln-res-card th,.ln-res-card td{ padding:5px 6px; border-bottom:1px solid #2b3749; text-align:right; } .ln-res-card th:first-child,.ln-res-card td:first-child{ text-align:left; } .ln-res-card tr.me td{ color:#ffe9a8; font-weight:700; }
 .ln-res-btns{ display:flex; gap:10px; justify-content:center; margin-top:12px; flex-wrap:wrap; } .ln-res-btns button{ min-height:52px; padding:8px 18px; font:inherit; font-size:16px; color:#1a1208; background:#ecc06a; border:2px solid #ffe29a; border-radius:8px; cursor:pointer; } .ln-res-btns .ln-exit{ background:#2a3550; color:#eef4ff; border-color:#5a6b88; }
+
+/* Coliseo: marcador de cuatro equipos, espectador y mapa de los dos fosos */
+.col-hud .col-score{ position:absolute; top:calc(4px + env(safe-area-inset-top,0px)); left:50%; transform:translateX(-50%); display:flex; gap:8px; align-items:stretch; padding:4px 8px; background:rgba(11,16,32,.9); border:1px solid #5a6b88; border-radius:8px; }
+.col-teams{ display:flex; gap:6px; }
+.col-team{ border-left:4px solid var(--tc); padding:1px 6px; font-size:14px; line-height:1.15; min-width:74px; white-space:nowrap; } .col-team b{ color:var(--tc); display:block; }
+.col-team em{ font-style:normal; font-size:14px; margin-right:2px; } .col-team em.on{ color:#ffe29d; } .col-team em.off{ color:#3a4458; }
+.col-team.me{ background:rgba(255,255,255,.07); } .col-team.fighting{ box-shadow:inset 0 0 0 1px var(--tc); }
+.col-mid{ display:flex; flex-direction:column; justify-content:center; text-align:center; padding-left:8px; border-left:1px solid #3a4458; } .col-round{ font-size:15px; color:#ffe29d; } .col-clock{ font-size:14px; white-space:nowrap; }
+.col-hud .col-note{ top:calc(66px + env(safe-area-inset-top,0px)); }
+.col-hud .col-feed{ top:calc(70px + env(safe-area-inset-top,0px)); }
+.col-hud .col-spec{ pointer-events:auto; position:absolute; left:50%; top:calc(96px + env(safe-area-inset-top,0px)); transform:translateX(-50%); display:flex; align-items:center; gap:8px; padding:6px 10px; background:rgba(11,16,32,.94); border:2px solid #ffcf5c; border-radius:12px; font-size:14px; }
+.col-hud .col-spec.hidden{ display:none; }
+.col-spec button{ min-width:48px; min-height:48px; padding:4px 12px; font:inherit; font-size:18px; color:#eef4ff; background:#1c2a44; border:2px solid #4a5f86; border-radius:8px; cursor:pointer; } .col-spec .col-pit{ font-size:14px; }
+.col-spec-name{ max-width:34vw; }
+@media (max-height:520px){ .col-team{ min-width:64px; padding:1px 4px; } .col-hud .col-spec{ top:calc(90px + env(safe-area-inset-top,0px)); } }

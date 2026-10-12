@@ -222,6 +222,7 @@ function heroLabel(h){ return h ? (h.netName && h.netName!=="BOT" ? h.netName : 
 // Revivir (lo usa el jugador con el botón y también los bots entre sí, ver bot-brain.js).
 function reviveHero(a, by){
   if(duoEnabled()) return;
+  if(by && typeof lanesOn==="function" && lanesOn() && lanesNoRevive(a, by)) return; // Coliseo: nadie revive en pleno duelo
   if(state!=="playing" || !a || a.alive) return;
   if(by && by.stats) by.stats.revives++;
   a._reviveT = 0; a._reviveBy = null;

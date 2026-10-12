@@ -92,14 +92,14 @@ function botPickTarget(h, range){
 function botWard(h){
   const L0 = botLeader(h);
   let w = L0.isRally ? h : L0, wp = L0.isRally ? 9 : (L0.alive ? L0.hp/L0.maxHp - 0.08 : 9);
-  for(const o of heroes){ if(o===h || !o.alive) continue; const p = o.hp/o.maxHp; if(p < wp){ wp = p; w = o; } }
+  for(const o of heroes){ if(o===h || !o.alive || (o.team!==undefined && o.team!==h.team)) continue; const p = o.hp/o.maxHp; if(p < wp){ wp = p; w = o; } } // (Guerra de Cristales/Coliseo: solo cuida a su equipo)
   return w;
 }
 // Bot caído más cercano a este bot (para revivirlo).
 function botDownedNear(h, range){
   if(divinaMode) return null;
   let best = null, bd = range;
-  for(const a of heroes){ if(a.alive || a===h || reviveBusyFor(a, h)) continue; if(arenaHas("heroReachable") && !arenaHook("heroReachable", h, a)) continue; const d = distance(h, a); if(d < bd){ bd = d; best = a; } } // B1: en cooperativo también al anfitrión
+  for(const a of heroes){ if(a.alive || a===h || (a.team!==undefined && a.team!==h.team) || reviveBusyFor(a, h)) continue; if(arenaHas("heroReachable") && !arenaHook("heroReachable", h, a)) continue; const d = distance(h, a); if(d < bd){ bd = d; best = a; } } // B1: en cooperativo también al anfitrión
   return best;
 }
 // A distancia salvo El Libertador montado (sable corvo: caballería que carga cuerpo a cuerpo).

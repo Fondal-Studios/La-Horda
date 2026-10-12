@@ -30,7 +30,7 @@ function goalMissionPages(){
 // Texto del cartel fijo según el momento de la partida (null = no mostrar).
 function goalChipText(){
   if(typeof state==="undefined" || state!=="playing" || !player) return null;
-  if(typeof lanesOn==="function" && lanesOn()) return "OBJETIVO: derribá torres y cristal rival · cuidá el tuyo"; // Guerra de Cristales
+  if(typeof lanesOn==="function" && lanesOn()) return LN.mode==="coliseo" ? "OBJETIVO: ganá duelos 2v2 · primero a "+COL.WIN_POINTS+" puntos" : "OBJETIVO: derribá torres y cristal rival · cuidá el tuyo"; // Guerra de Cristales / Coliseo
   if(typeof ALPHA_TRAINING!=="undefined" && ALPHA_TRAINING.active) return null;
   if(typeof endlessOn==="function" && endlessOn()) return null;
   if(typeof divinaMode!=="undefined" && divinaMode) return null;

@@ -28,7 +28,7 @@ function campaignFrontier(){
   return null;
 }
 function isArenaUnlocked(key){
-  if(key==="convergencia") return true;                      // Guerra de Cristales: modo competitivo, no es parte de la campaña
+  if(key==="convergencia" || key==="coliseo") return true;   // Guerra de Cristales y Coliseo: modos competitivos, no son parte de la campaña
   const i = ARENA_ORDER.indexOf(key);
   if(i < 0) return false;                                   // Divina, arenas en construcción o desconocidas
   if(typeof PLAYTEST_UNLOCK_ALL!=="undefined" && PLAYTEST_UNLOCK_ALL) return true; // modo prueba (ver save.js)

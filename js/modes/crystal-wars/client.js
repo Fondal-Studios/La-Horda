@@ -53,8 +53,8 @@ async function connect(){
 }
 function parseCode(v){try{return new URL(v).searchParams.get('room')||'';}catch{return v.trim().toUpperCase();}}
 async function joinRoom(code){await connect();send(Object.assign(identity(),{t:'join',code:parseCode(code)}));}
-$('create').onclick=async()=>{if(useReal()){const c=$('champ').value;if(close())lanesOnlineCreate(c);return;}try{status('Conectando…');await connect();send(Object.assign(identity(),{t:'create',arena:mode()==='coliseum'?'coliseum':'crystal-wars',public:false}));}catch(e){status(e.message);}};
-$('join').onclick=async()=>{const code=parseCode($('code').value);if(useReal()&&/^[A-Z0-9]{6}$/.test(code)){const c=$('champ').value;if(close())lanesOnlineJoin(code,c);return;}if(!/^[A-Z0-9]{6}$/.test(code)){status('Ingresá un código de seis letras/números o una invitación.');return;}try{await joinRoom(code);}catch(e){status(e.message);}};
+$('create').onclick=async()=>{if(useReal()&&mode()==='crystal'){const c=$('champ').value;if(close())lanesOnlineCreate(c);return;}try{status('Conectando…');await connect();send(Object.assign(identity(),{t:'create',arena:mode()==='coliseum'?'coliseum':'crystal-wars',public:false}));}catch(e){status(e.message);}};
+$('join').onclick=async()=>{const code=parseCode($('code').value);if(useReal()&&mode()==='crystal'&&/^[A-Z0-9]{6}$/.test(code)){const c=$('champ').value;if(close())lanesOnlineJoin(code,c);return;}if(!/^[A-Z0-9]{6}$/.test(code)){status('Ingresá un código de seis letras/números o una invitación.');return;}try{await joinRoom(code);}catch(e){status(e.message);}};
 $('name').onchange=()=>{if(room)send({t:'update',name:$('name').value.trim()||'Guardián',ready:false});};
 function renderRoom(){
  if(modeSelect)modeSelect.disabled=!!room;
@@ -91,8 +91,8 @@ function begin(){
 }
 // Guerra de Cristales usa el MOTOR REAL de la campaña (mismas habilidades, HUD y controles; js/arenas/lanes/).
 // El motor simplificado queda como respaldo (enlace con ?legacy=1) y para el Coliseo hasta que tenga el suyo.
-function realCrystal(){const champ=$('champ').value;if(!close())return;try{lanesStart({champ});}catch(err){console.error(err);status('No se pudo iniciar la partida. Probá de nuevo.');}}
-const useReal=()=>mode()==='crystal'&&typeof lanesStart==='function'&&!query().get('legacy');
+function realCrystal(){const champ=$('champ').value;if(!close())return;try{if(mode()==='coliseum')colStart({champ});else lanesStart({champ});}catch(err){console.error(err);status('No se pudo iniciar la partida. Probá de nuevo.');}}
+const useReal=()=>(mode()==='crystal'&&typeof lanesStart==='function'||mode()==='coliseum'&&typeof colStart==='function')&&!query().get('legacy');
 $('practice').onclick=()=>{if(useReal())realCrystal();else begin();};$('start').onclick=()=>{if(host&&room?.state==='lobby'&&!$('start').disabled)begin();};
 function showGame(){ $('view').hidden=isColiseum();canvas.setAttribute('aria-label',isColiseum()?'Coliseo: arena compartida 2 contra 2':'Convergencia: ambos campos visibles');viewOther=false;$('view').textContent='Ampliar rival'; $('lobby').hidden=true;$('game').hidden=false;drawControls(); }
 function showLobby(){ modePresentation();$('lobby').hidden=false;$('game').hidden=true;keys={};joy={x:0,y:0};renderRoom(); }

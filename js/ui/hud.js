@@ -83,7 +83,8 @@ function showBanner(text, prio){
 // progreso es el real, el que lleva el anfitrión).
 function updateDownedOverlay(){
   const el = document.getElementById("downed-overlay"); if(!el) return;
-  const show = !!(!divinaMode && player && !player.alive && state==="playing" && !runEnding);
+  const lnOn = typeof lanesOn==="function" && lanesOn();
+  const show = !!(!divinaMode && player && !player.alive && state==="playing" && !runEnding) && !(lnOn && LN.mode==="coliseo"); // Coliseo: en su lugar, la barra de espectador
   el.classList.toggle("hidden", !show);
   // el cartel central ("NIVEL 7", "RUNA ACTIVA…") caía justo detrás de este y no se leía ninguno
   const cb = document.getElementById("center-banner"); if(cb) cb.classList.toggle("downed", show);
@@ -97,6 +98,7 @@ function updateDownedOverlay(){
   const by = player._reviveBy, prog = by && player._reviveT>0 ? Math.min(1, player._reviveT/(player._reviveDur||BOT_REVIVE_MS)) : 0;
   const alive = heroes.filter(h=>h.alive).length;
   document.getElementById("downed-sub").textContent = prog>0 ? `${heroLabel(by)} te está reviviendo… ${Math.round(prog*100)}%`
+    : lnOn ? "Reaparecés en " + Math.max(0, Math.ceil(((player._respawnAt||0) - LN.t)/1000)) + " s"   // Guerra de Cristales: reaparición automática
     : (alive ? "Has caído. Un aliado puede revivirte en 5 segundos." : "Todo el equipo cayó");
   document.getElementById("downed-bar").style.width = Math.round(prog*100)+"%";
 }

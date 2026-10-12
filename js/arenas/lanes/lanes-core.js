@@ -19,16 +19,16 @@ function lanesIsHuman(h){ return !!h && !(h.isBot || h.netName === "BOT"); }
 
 /* ---------------- entrada y salida ---------------- */
 // Cambia al guardado TEMPORAL normalizado y crea el estado de la partida. `role`: "solo" | "host" | "guest" | "lobby".
-function lanesBegin(role, seed){
+function lanesBegin(role, seed, mode){
   if(LN){ LN.role = role === "lobby" ? LN.role : role; LN.lobby = role === "lobby"; return LN; } // ya estaba en la Sala (guardado temporal puesto)
   if(typeof persistNow==="function") persistNow();   // el progreso real se guarda ANTES de usar el temporal
   const snap = {save, selectedClass, currentArena, lobbyAllies, endlessActive, endlessPending, divinaMode};
-  LN = {snap, role:role||"solo", lobby:role === "lobby", rng:((seed||((Math.random()*4294967295)>>>0))>>>0)||7, t:0, ended:true, winner:-1, team:[], shots:[], feed:[], wave:0};
+  LN = {snap, mode:mode || "cw", role:role||"solo", lobby:role === "lobby", rng:((seed||((Math.random()*4294967295)>>>0))>>>0)||7, t:0, ended:true, winner:-1, team:[], shots:[], feed:[], wave:0};
   save = defaultSave();
   for(const id in save.champions){ const c = save.champions[id]; c.level = LANES.LEVEL; c.xp = 0; c.unlocked = true; }
   save.tut = {training:1, basics:1, b_move:1, b_attack:1, b_skill:1, goalMission:1}; // sin tutoriales dentro de la partida
   divinaMode = false; endlessActive = false; endlessPending = false;
-  LN.team = [lanesNewTeam(0), lanesNewTeam(1)];
+  LN.team = LN.mode === "coliseo" ? colNewTeams() : [lanesNewTeam(0), lanesNewTeam(1)];
   lanesWrap();
   return LN;
 }
@@ -37,6 +37,7 @@ function lanesRestore(){
   if(!LN) return;
   const snap = LN.snap; LN = null;
   lanesUnwrap();
+  if(typeof colCleanup==="function") colCleanup();
   try{ clearRunTimers(); resetRunTransients(); }catch(e){}
   save = snap.save; selectedClass = snap.selectedClass; currentArena = snap.currentArena; lobbyAllies = snap.lobbyAllies;
   endlessActive = snap.endlessActive; endlessPending = snap.endlessPending; divinaMode = snap.divinaMode;
@@ -173,7 +174,7 @@ function lanesSync(dt){
     for(const k of ["burn", "bleed", "poison"]){ if(P[k + "Timer"] > 0){ damageHero(h, (P[k + "Dmg"] || 0) * P[k + "Timer"] / 1000 * LANES.PVP_DMG * 0.5, {isPvp:true, from:P.lastHitBy}); P[k + "Timer"] = 0; } }
     P.x = h.x; P.y = h.y; P.radius = Math.max(16, h.radius || 18); P.hitFlash = 0; P.frozenTimer = 0;
   }
-  for(const T of L.team) for(const s of T.S){
+  for(const T of L.team) for(const s of (T.S || [])){
     let P = s._lnProxy;
     if(!s.alive){ if(P) P.alive = false; continue; }
     if(!P || !P.alive){ P = s._lnProxy = lanesMkProxy("struct", s, s.team); P.x = s.x; P.y = s.y; P.radius = s.radius + 6; P.kindOf = s.kind; }
@@ -188,6 +189,7 @@ function lanesBlocksDamage(e, src){
   if(L.ended && (e.lanesProxy || e.team != null)) return true;
   const st = lanesTeamOf(src);
   if(st != null && e.team != null && st === e.team) return true;
+  if(L.mode === "coliseo") return colBlocksDamage(e);                  // Coliseo: sin golpes en la cuenta regresiva ni después de terminar tu duelo
   if(e.lanesProxy && e.kind === "struct" && !lanesExposed(e.lnRef)){ e.lnRef.hitFlash = 160; return true; }  // torre/cristal protegidos
   return false;
 }
@@ -329,6 +331,7 @@ function lanesEnemyTarget(e){
 }
 // Bots: a quién siguen. El humano vivo de su equipo o, si no hay, la "línea de frente" de su horda (sin entrar al alcance de las torres solos).
 function lanesLeaderFor(h){
+  if(LN.mode === "coliseo") return colLeaderFor(h);
   for(const o of heroes) if(o !== h && o.team === h.team && o.alive && lanesIsHuman(o)) return o;
   const L = LN, T = h.team, c = L.rallyObj || (L.rallyObj = [null, null]);
   const o = c[T] || (c[T] = {isRally:true, alive:true, hp:1, maxHp:1, radius:20, x:0, y:0, stunTimer:0, slowTimer:0});
@@ -346,6 +349,7 @@ function lanesLeaderFor(h){
 }
 // Gancho botTarget: héroe rival débil > criatura > estructura (solo si la horda propia la acompaña)
 function lanesBotTarget(h, range){
+  if(LN.mode === "coliseo") return colBotTarget(h, range);
   let best = null, bs = -1e9;
   for(const e of enemies){
     if(!e.alive || e.team === h.team) continue;
@@ -440,7 +444,8 @@ function lanesFinish(winnerTeam, why){
   showBanner(winnerTeam === -1 ? "¡EMPATE!" : (winnerTeam === (player && player.team) ? "¡VICTORIA!" : "CRISTAL CAÍDO"));
   setTimeout(()=>{ if(LN === L && typeof lanesShowResult === "function") lanesShowResult(); }, 1600);
 }
-function lanesOnPlayerDeath(){ /* reaparece solo (lanesUpdate): nunca hay derrota por caer */ showBanner("Caíste · volvés en " + Math.round((LN && player && player._respawnAt ? Math.max(0, player._respawnAt - LN.t) : LANES.RESPAWN_MS) / 1000) + " s"); }
+function lanesNoRevive(a, by){ return !!LN && LN.mode === "coliseo" && !!LN.col && LN.col.phase === "fight"; }
+function lanesOnPlayerDeath(){ if(LN && LN.mode === "coliseo") return; /* reaparece solo (lanesUpdate): nunca hay derrota por caer */ showBanner("Caíste · volvés en " + Math.round((LN && player && player._respawnAt ? Math.max(0, player._respawnAt - LN.t) : LANES.RESPAWN_MS) / 1000) + " s"); }
 
 ARENA_DEFS.convergencia = {
   key:"convergencia",

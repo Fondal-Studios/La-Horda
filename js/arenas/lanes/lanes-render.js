@@ -19,8 +19,9 @@ function lanesCrystalImg(team){
     g.putImageData(d, 0, 0); _lnAmber = c; return c;
   }catch(e){ return img; }
 }
-function lanesTeamColor(i){ return i === 0 ? "#70c9ff" : "#ffb86a"; }
-function lanesTeamName(i){ return i === 0 ? "ZAFIRO" : "ÁMBAR"; }
+const LANES_TEAM_COL = ["#70c9ff", "#ffb86a", "#7be0a0", "#ff7a8a"], LANES_TEAM_NAME = ["ZAFIRO", "ÁMBAR", "ESMERALDA", "CARMESÍ"];
+function lanesTeamColor(i){ return LANES_TEAM_COL[i] || "#ffffff"; }
+function lanesTeamName(i){ return LANES_TEAM_NAME[i] || "EQUIPO"; }
 
 function lanesDrawWorld(now){
   if(!LN) return;

@@ -16,7 +16,7 @@ function aidAmbReset(){ for(const p of aidAmb) p.on = false; aidAmbN = 0; aidEru
 // 7 mota marina, 8 mota sagrada (dorada), 9 brasa infernal (divina norte)
 function aidAmbSpawn(p, A, fresh){
   const hw = VW/2/CAM_ZOOM + 60, hh = VH/2/CAM_ZOOM + 60;
-  const rx = player.x + (Math.random()*2-1)*hw, ry = player.y + (Math.random()*2-1)*hh;
+  const rx = camSub().x + (Math.random()*2-1)*hw, ry = camSub().y + (Math.random()*2-1)*hh;
   p.on = true; p.ph = Math.random()*6.283; p.x = rx; p.y = ry;
   if(A==="infernal"){ p.k = 1; p.vx = 8+Math.random()*10; p.vy = 14+Math.random()*16; p.s = 1.5+Math.random()*1.5; p.max = 5000+Math.random()*4000; }
   else if(A==="hielo"){ if(Math.random()<0.16){ p.k = 3; p.vx = 380+Math.random()*120; p.vy = 60+Math.random()*30; p.s = 26+Math.random()*30; p.max = 900; } else { p.k = 2; p.vx = 60+Math.random()*50; p.vy = 50+Math.random()*50; p.s = 1.5+Math.random()*2.2; p.max = 5000+Math.random()*4000; } }
@@ -44,7 +44,7 @@ function aidAmbUpdate(dt){
     else if(p.k===5){ p.vx += (Math.random()-0.5)*40*k; p.vy += (Math.random()-0.5)*40*k; p.vx*=0.98; p.vy*=0.98; }
     else if(p.k===7) wx = Math.sin(p.ph + p.life/900)*6;
     p.x += (p.vx*gust + wx)*k; p.y += p.vy*k;
-    if(p.life<=0 || n>=budget || Math.abs(p.x-player.x)>hw || Math.abs(p.y-player.y)>hh){ p.on = false; continue; }
+    if(p.life<=0 || n>=budget || Math.abs(p.x-camSub().x)>hw || Math.abs(p.y-camSub().y)>hh){ p.on = false; continue; }
     n++;
   }
   for(const p of aidAmb){ if(n>=budget) break; if(!p.on){ aidAmbSpawn(p, A, true); n++; } }
@@ -83,7 +83,7 @@ function aidGrade(now){
   if(!player || player.duelActive) return;
   const A = currentArena;
   const hw = VW/2/CAM_ZOOM, hh = VH/2/CAM_ZOOM;
-  const x0 = player.x - hw - 40, y0 = camCenterY() - hh - 40, W = hw*2+80, H = hh*2+80; // (CAM_LIFT: ver camera.js)
+  const x0 = camSub().x - hw - 40, y0 = camCenterY() - hh - 40, W = hw*2+80, H = hh*2+80; // (CAM_LIFT: ver camera.js)
   ctx.save();
   if(A==="infernal"){
     // calor que sube desde abajo + borde oscuro: hostil, pero sin teñir todo de rojo
@@ -112,7 +112,7 @@ function aidGrade(now){
     }
   } else if(A==="laberinto"){
     ctx.fillStyle = "rgba(90,60,20,0.07)"; ctx.fillRect(x0, y0, W, H);
-    const g = ctx.createRadialGradient(player.x, player.y, hh*0.5, player.x, player.y, Math.max(hw,hh)*1.25);
+    const g = ctx.createRadialGradient(camSub().x, camSub().y, hh*0.5, camSub().x, camSub().y, Math.max(hw,hh)*1.25);
     g.addColorStop(0, "rgba(0,0,0,0)"); g.addColorStop(1, "rgba(10,6,2,0.45)");
     ctx.fillStyle = g; ctx.fillRect(x0, y0, W, H);
   } else if(A==="acuatica"){
@@ -130,12 +130,12 @@ function aidGrade(now){
     const g = ctx.createLinearGradient(0, y0+H, 0, y0);
     g.addColorStop(0, "rgba(140,40,8,0.20)"); g.addColorStop(0.5, "rgba(60,16,4,0.05)"); g.addColorStop(1, "rgba(0,0,0,0.16)");
     ctx.fillStyle = g; ctx.fillRect(x0, y0, W, H);
-    const v = ctx.createRadialGradient(player.x, player.y, hh*0.55, player.x, player.y, Math.max(hw,hh)*1.2);
+    const v = ctx.createRadialGradient(camSub().x, camSub().y, hh*0.55, camSub().x, camSub().y, Math.max(hw,hh)*1.2);
     v.addColorStop(0, "rgba(0,0,0,0)"); v.addColorStop(1, "rgba(8,4,2,0.42)");
     ctx.fillStyle = v; ctx.fillRect(x0, y0, W, H);
   } else if(A==="micelial"){
     // caverna cerrada: bordes oscuros teñidos por la etapa del Reino (sin tinte cuando está muerto)
-    const v = ctx.createRadialGradient(player.x, player.y - CAM_LIFT, hh*0.5, player.x, player.y - CAM_LIFT, Math.max(hw,hh)*1.2);
+    const v = ctx.createRadialGradient(camSub().x, camSub().y - CAM_LIFT, hh*0.5, camSub().x, camSub().y - CAM_LIFT, Math.max(hw,hh)*1.2);
     const rgb = (typeof micStageRgb==="function" && typeof micS!=="undefined" && micS && !micS.dead) ? micStageRgb() : "10,8,12";
     v.addColorStop(0, "rgba(0,0,0,0)"); v.addColorStop(0.75, `rgba(${rgb},0.05)`); v.addColorStop(1, "rgba(6,2,10,0.5)");
     ctx.fillStyle = v; ctx.fillRect(x0, y0, W, H);
