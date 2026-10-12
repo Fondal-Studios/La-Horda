@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "date": "2026-10-04",
+  "version": 4,
+  "date": "2026-10-12",
   "knownChampions": [
     "tanque",
     "guerrero",
@@ -19,64 +19,71 @@
     "eslabon",
     "morwen",
     "farolero",
-    "iria"
+    "iria",
+    "ostrel",
+    "grelk",
+    "ilsa",
+    "vorn",
+    "nerith",
+    "quillon",
+    "kora"
   ],
   "roles": {
     "asesino": {
       "hp": {
-        "mean": 110.8,
+        "mean": 109.428571,
         "min": 77.4,
         "max": 140.8
       },
       "damage": {
-        "mean": 13.6,
+        "mean": 12.857143,
         "min": 8.1,
         "max": 26.4
       },
       "defense": {
-        "mean": 0.078,
+        "mean": 0.077143,
         "min": 0.045,
         "max": 0.11
       },
       "speed": {
-        "mean": 174.8,
+        "mean": 174.857143,
         "min": 144.0,
         "max": 203.5
       },
       "basicDPS": {
-        "mean": 28.037547,
+        "mean": 26.855705,
         "min": 14.896552,
         "max": 46.538462
       },
       "effectiveHP": {
-        "mean": 120.541279,
+        "mean": 118.846522,
         "min": 81.473684,
         "max": 153.043478
       },
       "hpGrowth": {
-        "mean": 0.88,
+        "mean": 0.871429,
         "min": 0.585,
         "max": 1.155
       },
       "damageGrowth": {
-        "mean": 1.15,
+        "mean": 1.135714,
         "min": 0.9,
         "max": 1.485
       },
       "simulation": {
-        "meanDamage150s": 12877.437,
+        "meanDamage150s": 11217.845,
         "meanTeamKills150s": 496.533,
-        "samples": 15
+        "samples": 21
       }
     },
     "mago": {
       "hp": {
-        "mean": 98.428571,
+        "mean": 98.222222,
         "min": 82.8,
         "max": 118.8
       },
       "damage": {
-        "mean": 10.142857,
+        "mean": 10.111111,
         "min": 7.2,
         "max": 14.3
       },
@@ -86,44 +93,44 @@
         "max": 0.099
       },
       "speed": {
-        "mean": 157.857143,
+        "mean": 157.777778,
         "min": 135.0,
         "max": 180.4
       },
       "basicDPS": {
-        "mean": 18.624241,
+        "mean": 18.527261,
         "min": 12.857143,
         "max": 26.481481
       },
       "effectiveHP": {
-        "mean": 105.915991,
+        "mean": 105.676595,
         "min": 87.157895,
         "max": 130.549451
       },
       "hpGrowth": {
-        "mean": 0.752857,
+        "mean": 0.774444,
         "min": 0.558,
         "max": 0.88
       },
       "damageGrowth": {
-        "mean": 1.195714,
+        "mean": 1.174444,
         "min": 0.9,
         "max": 1.672
       },
       "simulation": {
-        "meanDamage150s": 15000.275,
+        "meanDamage150s": 13912.899,
         "meanTeamKills150s": 500.524,
-        "samples": 21
+        "samples": 27
       }
     },
     "soporte": {
       "hp": {
-        "mean": 114.333333,
+        "mean": 113.75,
         "min": 94.5,
         "max": 136.4
       },
       "damage": {
-        "mean": 7.666667,
+        "mean": 7.625,
         "min": 6.3,
         "max": 8.8
       },
@@ -133,44 +140,44 @@
         "max": 0.154
       },
       "speed": {
-        "mean": 165,
+        "mean": 165.0,
         "min": 145.8,
         "max": 184.8
       },
       "basicDPS": {
-        "mean": 13.536868,
+        "mean": 13.277651,
         "min": 10.5,
         "max": 16.923077
       },
       "effectiveHP": {
-        "mean": 131.468352,
+        "mean": 130.785172,
         "min": 107.386364,
         "max": 156.781609
       },
       "hpGrowth": {
-        "mean": 1.166667,
+        "mean": 1.1625,
         "min": 1.035,
         "max": 1.32
       },
       "damageGrowth": {
-        "mean": 0.75,
+        "mean": 0.7625,
         "min": 0.63,
         "max": 0.88
       },
       "simulation": {
-        "meanDamage150s": 6521.13,
+        "meanDamage150s": 6832.013,
         "meanTeamKills150s": 500.556,
-        "samples": 9
+        "samples": 12
       }
     },
     "tanque": {
       "hp": {
-        "mean": 168.666667,
+        "mean": 168.8,
         "min": 135.0,
         "max": 211.2
       },
       "damage": {
-        "mean": 10,
+        "mean": 9.6,
         "min": 8.1,
         "max": 13.2
       },
@@ -180,17 +187,17 @@
         "max": 0.242
       },
       "speed": {
-        "mean": 144.333333,
+        "mean": 143.6,
         "min": 124.2,
         "max": 165.0
       },
       "basicDPS": {
-        "mean": 15.704094,
+        "mean": 15.004187,
         "min": 12.461538,
         "max": 20.625
       },
       "effectiveHP": {
-        "mean": 211.360225,
+        "mean": 211.316135,
         "min": 164.634146,
         "max": 270.769231
       },
@@ -205,9 +212,9 @@
         "max": 0.935
       },
       "simulation": {
-        "meanDamage150s": 10503.433,
+        "meanDamage150s": 8419.815,
         "meanTeamKills150s": 492.556,
-        "samples": 9
+        "samples": 15
       }
     }
   },

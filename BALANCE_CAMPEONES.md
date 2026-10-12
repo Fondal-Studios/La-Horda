@@ -266,3 +266,13 @@ Piel de Aurora, Bruja de las Luciérnagas, Tahúr de Medianoche y Capataz de Hie
 No verificado / bloqueado: revisión humana de arte y audio; croma y Set con arte propio; gate `multiplayer` (`lobby_code_skins.js`: falla en un
 selector de la UI del lobby en este entorno, sin relación demostrada con los campeones, línea base de main no medida); `roster_visual_test.js`
 solo termina aquí si se amplía el timeout de captura (30 s) por el render por software; `fps.js` mide una arena genérica, no los kits nuevos.
+
+### Paso 2: los siete en `knownChampions` (referencia versión 4) — rama `claude/siete-campeones-known`, sin PR
+
+Se aplica **después** de validar el kit (rama `claude/siete-campeones`) y solo con aprobación humana previa; no debe fusionarse en la misma PR
+que presenta a los candidatos. Cambios: `knownChampions` suma Ostrel, Grelk, Ilsa, Vorn, Nerith, Quillon y Kora; versión 3 → 4 (2026-10-12);
+medias, mínimos y máximos por rol recalculados con las estadísticas ya normalizadas de los siete (el normalizador no cambió ninguna) y
+`simulation.meanDamage150s` ponderada con sus 3 partidas cada uno (muestras: asesino 15 → 21, mago 21 → 27, soporte 9 → 12, tanque 9 → 15).
+`meanTeamKills150s` **no** se recalculó (la corrida de entrada no registra bajas del grupo por partida). JSON y JS sincronizados
+(`check-entry-reference.js` PASS). Efecto: los techos de simulación de futuros candidatos bajan (asesino 17.385 → ≈15.144; tanque 14.180 →
+≈11.367) y el filtro de habilidades los informa como clásicos (INFO) en vez de bloquear.

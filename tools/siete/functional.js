@@ -21,7 +21,7 @@ const {chromium}=require('playwright'),fs=require('node:fs');
  for(const k of ids){
   const m=championMeta(k);
   check(k+' registered STANDARD/TESTING, hidden from public store',!!CLASSES[k]&&!!PORTADORES[k]&&m.category==='STANDARD'&&m.releaseState==='TESTING'&&championPlayable(k)&&!championBotEligible(k));
-  check(k+' NOT in knownChampions (still a candidate)',!ref.knownChampions.includes(k));
+  check(k+' promoted to knownChampions (reference v4)',ref.knownChampions.includes(k)&&ref.version===4);
   check(k+' kit 3 skills + ultimate with descriptions and premarcado where aimed',CLASSES[k].skills.length===3&&!!CLASSES[k].ultimate&&[...CLASSES[k].skills,CLASSES[k].ultimate].every(s=>s.desc&&s.cd>0));
   check(k+' talents: 3 branches + a special per branch + masteries',TALENT_TREES[k].nodes.filter(n=>n.type==='special').length===3&&Object.keys(TALENT_TREES[k].masteries).length===3);
   check(k+' boons: 4 cards + duo',BOONS.filter(x=>x.champ===k).length===5&&BOONS.filter(x=>x.champ===k&&x.duo).length===1);
