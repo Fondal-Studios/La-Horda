@@ -47,7 +47,8 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
   await p.click('#pause-btn');await p.waitForFunction(()=>state==='paused',null,{timeout:20000});
   for(let attempt=0;attempt<3;attempt++){
     // (como haría una persona: si el diálogo no respondió, se vuelve a intentar; queda registrado)
-    await p.click('#quit-btn');await p.getByRole('button',{name:'Abandonar',exact:true}).click();
+    if(!(await p.evaluate(()=>gameDialogIsOpen())))await p.click('#quit-btn');await p.waitForTimeout(400);   // (el diálogo ignora clics en sus primeros 250 ms, a propósito)
+    await p.getByRole('button',{name:'Abandonar',exact:true}).click();
     try{await p.waitForFunction(()=>state==='mainmenu'&&!lanesOn(),null,{timeout:8000});break;}
     catch(e){const d=await p.evaluate(()=>({state,lanes:lanesOn(),dialog:typeof gameDialogIsOpen==='function'&&gameDialogIsOpen(),pauseHidden:document.getElementById('pause-screen').classList.contains('hidden')}));console.log('REINTENTO abandonar',attempt+1,JSON.stringify(d),'errs='+errs.join(' | '));if(attempt===2)throw new Error('no volvió al menú: '+JSON.stringify(d));}
   }

@@ -55,7 +55,7 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
   // revancha
   await p.click('#lanes-result .ln-again');await p.waitForFunction(()=>state==='playing'&&lanesOn()&&LN.t<2000,null,{timeout:20000});
   // abandonar por la pausa
-  await p.click('#pause-btn');await p.click('#quit-btn');await p.getByRole('button',{name:'Abandonar',exact:true}).click();
+  await p.click('#pause-btn');await p.click('#quit-btn');await p.waitForTimeout(400);await p.getByRole('button',{name:'Abandonar',exact:true}).click();
   await p.waitForFunction(()=>state==='mainmenu'&&!lanesOn(),null,{timeout:10000});
   assert.equal(await p.evaluate(()=>localStorage.getItem('laHordaSave_v1')),before,'guardado intacto al volver');
   assert.equal(await p.evaluate(()=>typeof save.champions.mago.level),'number');assert.notEqual(await p.evaluate(()=>save.champions.mago.level),10,'el guardado real volvió');
