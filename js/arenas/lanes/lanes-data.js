@@ -27,7 +27,7 @@ const LANES = {
   START_GOLD:500, GOLD_PASSIVE:1.6, GOLD_MINION:[20, 24, 60], GOLD_HERO_KILL:300, GOLD_ASSIST:110, GOLD_TOWER:130, GOLD_EPIC:170, MAX_GOLD:3500, // oro de cada héroe (se gasta en la base)
   SHOP_RADIUS:430,                    // distancia a tu cristal para poder comprar objetos (o estar caído)
   XP_MINION:16, XP_CASTER:20, XP_SIEGE:55, XP_HERO:110, XP_TOWER:140, XP_SHARE_R:900, // experiencia por baja (se reparte entre los héroes cercanos)
-  CARD_AUTO_MS:15000, MAX_CARDS:12,   // una carta de horda por cada nivel que sube el héroe líder de cada equipo; tiempo para elegir
+  CARD_AUTO_MS:15000, MAX_CARDS:12,   // una carta de horda por cada nuevo nivel máximo del equipo; tiempo para elegir
   CAMP_RESPAWN_MS:75000, CAMP_LEASH:520, CAMP_AGGRO:250,
   EPIC_FIRST_MS:240000, EPIC_RESPAWN_MS:300000, BUFF_MS:100000,
   SHOP:{   // pedidos de equipo (se pagan con TU oro, desde donde estés)

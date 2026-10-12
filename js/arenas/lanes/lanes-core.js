@@ -86,7 +86,7 @@ function lanesNewStruct(team, kind, l, k){
 function lanesNewTeam(team){
   const S = []; for(let l = 0; l < 3; l++) for(let k = 0; k < 3; k++) S.push(lanesNewStruct(team, "tower", l, k)); S.push(lanesNewStruct(team, "crystal", -1, 0));
   return {team, repairAt:0, wardAt:0, sendAt:0, kills:0, sent:0, assist:0, pk:0, tk:0, wave:0, nextWave:LANES.FIRST_WAVE_MS,
-    cards:{}, taken:0, mods:lanesModsOf({}), offer:null, offerAt:0, pendingCards:0, buffs:{dragon:0, rey:0}, superWaves:0, S};
+    cards:{}, taken:0, cardLevel:LANES.LEVEL0, mods:lanesModsOf({}), offer:null, offerAt:0, pendingCards:0, buffs:{dragon:0, rey:0}, superWaves:0, S};
 }
 function lanesCrystal(team){ return LN.team[team].S[9]; }
 function lanesTower(team, l, k){ return LN.team[team].S[l * 3 + k]; }
@@ -307,7 +307,7 @@ function lanesBuy(team, key, buyer){
   return true;
 }
 
-/* ---------------- cartas de horda (una por cada nivel del héroe líder del equipo) ---------------- */
+/* ---------------- cartas de horda (una por cada nuevo nivel máximo del equipo) ---------------- */
 function lanesHumansOf(team){ return heroes.filter(h=>h.team === team && lanesIsHuman(h)); }
 function lanesOffer(T){
   const L = LN, avail = Object.keys(LANES_CARDS).filter(id=>(T.cards[id] || 0) < LANES_CARDS[id].max), pick = [];

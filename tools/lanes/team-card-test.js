@@ -1,0 +1,23 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const team=()=>({taken:0,pendingCards:0,offer:null,cardLevel:3});
+const c={LANES:{LEVEL0:3,LEVEL_MAX:15,MAX_CARDS:12},LN:{team:[team(),team()]},floatText(){},runStats:{hpMult:1},save:{champions:{}},computePlayerStats:()=>({hp:100,dmg:10,def:0})};
+vm.createContext(c);vm.runInContext(fs.readFileSync(path.join(__dirname,'../../js/arenas/lanes/lanes-levels.js'),'utf8'),c);
+const hero=team=>({team,mlvl:3,mxp:0,hp:100,maxHp:100,baseSpeed:100});
+const captain=hero(0),ally=hero(0),foe=hero(1);c.heroes=[captain,ally,foe];
+c.lanesAddXP(ally,126);assert.equal(c.LN.team[0].pendingCards,1,'ally earns first team milestone while captain remains level 3');
+c.lanesAddXP(captain,126);assert.equal(c.LN.team[0].pendingCards,1,'same milestone is not awarded twice');
+c.lanesAddXP(foe,126);assert.equal(c.LN.team[1].pendingCards,1,'teams progress independently');
+c.LN.team[0].pendingCards=0;c.LN.team[0].offer=['first'];c.lanesAddXP(ally,148);assert.equal(c.LN.team[0].pendingCards,1,'new milestone queues behind open offer');
+c.lanesAddXP(ally,1e6);assert.equal(c.LN.team[0].pendingCards+1,12,'level 15 offers exactly capped total');
+c.lanesAddXP(captain,1e6);assert.equal(c.LN.team[0].pendingCards+1,12,'catch-up levels never duplicate cards');
+console.log('PASS team cards: non-captain XP, catch-up, independent teams, pending offer and cap');
+// Host snapshots preserve milestone history for guests without sending nested objects.
+Object.assign(c,{ARENA_DEFS:{convergencia:{}},LANES_CARD_IDS:[],LANES_EPICS:[],lanesModsOf:()=>({})});
+Object.assign(c.LN,{t:5000,wave:1,ended:false,winner:-1,shots:[],feed:[]});
+for(const t of c.LN.team)Object.assign(t,{cards:{},S:[],buffs:{dragon:0,rey:0}});
+vm.runInContext(fs.readFileSync(path.join(__dirname,'../../js/arenas/lanes/lanes-net.js'),'utf8'),c);
+const snap=c.lanesNetState();assert.equal(snap.team[0].cl,15);assert.equal(snap.team[1].cl,4);
+c.LN.team.forEach(t=>{t.cardLevel=3;});c.lanesApplyNetState(snap);
+assert.equal(c.LN.team[0].cardLevel,15);assert.equal(c.LN.team[1].cardLevel,4);
+console.log('PASS team milestone snapshot round trip');
