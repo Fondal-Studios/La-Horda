@@ -49,7 +49,9 @@ function lanesLeaderFor(h){
   if(!low && !h._recall && homeDist > 700 && (h.gold || 0) >= 700 && L.t - (h._shopTrip || 0) > 45000 && !heroes.some(o=>o.alive && o.team !== T && Math.hypot(o.x - h.x, o.y - h.y) < 750)){
     h._shopTrip = L.t; lanesRecallStart(h);
   }
-  if(low){ if(homeDist > 400 && !h._recall && (!h._lastRecallTry || L.t - h._lastRecallTry > 4000)){ h._lastRecallTry = L.t; lanesRecallStart(h); } }   // herido: vuelve a la base
+  const epic = low ? null : lanesEpicCall(h);
+  if(epic){ p = epic; }
+  else if(low){ if(homeDist > 400 && !h._recall && (!h._lastRecallTry || L.t - h._lastRecallTry > 4000)){ h._lastRecallTry = L.t; lanesRecallStart(h); } }   // herido: vuelve a la base
   else if(h.ln === -1){
     // selva: limpia campamentos; si hay un objetivo épico con su equipo cerca, va (a partir de los 5 minutos)
     const camp = lanesPickCamp(h);
@@ -59,6 +61,19 @@ function lanesLeaderFor(h){
     p = lanesLanePost(h, l);
   }
   o.x = p.x; o.y = p.y; return o;
+}
+// Objetivo épico vivo al que el equipo se junta: hace falta que haya al menos 3 héroes del equipo vivos y sanos (si no, siguen en su carril).
+function lanesEpicCall(h){
+  const L = LN; if(!L.epics || L.mode === "coliseo") return null;
+  let ep = null, bd = 1e12;
+  for(const e of L.epics){ if(!e.mon || !e.mon.alive) continue; const d = Math.hypot(e.mon.x - h.x, e.mon.y - h.y); if(d < bd){ bd = d; ep = e; } }
+  if(!ep) return null;
+  const m = ep.mon;
+  const mine = heroes.filter(o=>o.team === h.team && o.alive && o.hp > o.maxHp * 0.5);
+  if(mine.length < 3) return null;
+  const foes = heroes.filter(o=>o.team !== h.team && o.alive && Math.hypot(o.x - m.x, o.y - m.y) < 900).length;
+  if(foes > mine.length) return null;
+  return {x:m.x, y:m.y - 60};
 }
 // Gancho botTarget: héroe rival débil > súbdito/criatura cercana > estructura (solo si la horda propia la acompaña)
 function lanesBotTarget(h, range){
@@ -74,7 +89,7 @@ function lanesBotTarget(h, range){
       let own = 0; for(const m of enemies) if(m.alive && !m.lanesProxy && m.team === h.team && Math.hypot(m.x - e.x, m.y - e.y) < 450) own++;
       if(e.lnRef.kind === "tower" && own < 3) continue;
       s = 130 - d * 0.2;
-    } else if(e.team === 2){ s = (h.ln === -1 ? 260 : 60) - d * 0.4; }
+    } else if(e.team === 2){ s = (h.ln === -1 || e.epicId != null ? 260 : 60) - d * 0.4; }
     else s = 200 - d * 0.5 + (e.kindM === "caster" ? 40 : 0);
     if(s > bs){ bs = s; best = e; }
   }
