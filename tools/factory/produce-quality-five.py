@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Rebuild authored sources. Never regenerate rejected donor studies or approve release.
---require-complete additionally rejects a partial batch (ten source sheets required).
+--require-complete additionally rejects a partial batch (fifteen source sheets required).
 """
 import hashlib
 import json
@@ -13,7 +13,7 @@ IDS = ['solciju', 'brakk', 'veyra', 'morveth', 'aelith']
 OUT = ROOT / 'docs/production/quality-five/originals'
 rows, missing = [], []
 for champion in IDS:
-    for key in [champion, champion + '_alt1']:
+    for key in [champion, champion + '_alt1', champion + '_set']:
         source = ROOT / 'art-source/quality-five-original' / (key + '.json')
         if not source.exists():
             missing.append(key)
@@ -23,7 +23,7 @@ for champion in IDS:
         subprocess.run([sys.executable, str(ROOT / 'tools/art/painter/style_gate.py'), str(dest / 'atlas.png')], cwd=ROOT, check=True)
         installed = ROOT / 'assets/sprites/champions' / champion
         if key != champion:
-            installed = installed / 'skins' / key
+            installed = installed / 'skins' / ('quality_' + champion if key.endswith('_set') else key)
         if (installed / 'atlas.png').exists() and (installed / 'atlas.png').read_bytes() != (dest / 'atlas.png').read_bytes():
             raise SystemExit(key + ': installed atlas does not match authored source')
         rows.append({'id': key, 'atlasSha256': hashlib.sha256((dest / 'atlas.png').read_bytes()).hexdigest(), 'numericStyle': 'PASS'})

@@ -47,12 +47,40 @@ class ImportTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'hash mismatch'):
             module.build(manifest, self.output)
 
+    def test_source_edge_clipping_fails_without_output(self):
+        manifest = self.source_manifest()
+        image = Image.open(self.source)
+        ImageDraw.Draw(image).rectangle((42, 0, 70, 20), fill=(1, 100, 80, 255))
+        image.save(self.source)
+        manifest['sourceSha256'] = hashlib.sha256(self.source.read_bytes()).hexdigest()
+        with self.assertRaisesRegex(ValueError, 'canvas edge'):
+            module.build(manifest, self.output)
+        self.assertFalse(self.output.exists())
+
     def test_clipping_fails_without_output(self):
         manifest = self.source_manifest()
         manifest['targetHeight'] = 130
         with self.assertRaisesRegex(ValueError, 'clip'):
             module.build(manifest, self.output)
         self.assertFalse(self.output.exists())
+
+    def test_explicit_nonuniform_rows(self):
+        manifest = self.source_manifest()
+        bounds = [0, 90, 180, 280, 380, 490, 610, 740, 870, 1008]
+        image = Image.new('RGBA', (448, 1008))
+        draw = ImageDraw.Draw(image)
+        for i in range(36):
+            x, y = i % 4 * 112 + 42, bounds[i // 4] + 10
+            draw.rectangle((x, y, x + 28, y + 69), fill=(i + 1, 100, 80, 255))
+        image.save(self.source)
+        manifest.update(rowBounds=bounds, sourceSha256=hashlib.sha256(self.source.read_bytes()).hexdigest())
+        self.assertEqual(module.build(manifest, self.output)['poses'], 36)
+
+    def test_invalid_row_layout_rejected(self):
+        manifest = self.source_manifest()
+        manifest['rowBounds'] = [0, 112, 224, 224, 448, 560, 672, 784, 896, 1008]
+        with self.assertRaisesRegex(ValueError, 'rowBounds'):
+            module.build(manifest, self.output)
 
 
 if __name__ == '__main__':
