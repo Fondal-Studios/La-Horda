@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "vorn",
+  "name": "Vorn",
+  "title": "El Cambiapiel",
+  "role": "tanque",
+  "fantasy": "Tanque transformista: alterna una piel de piedra que resiste y una de tormenta que persigue, y cada skill cambia con la forma.",
+  "lore": "El santuario del Laberinto exigía que alguien guardara la puerta con dos pieles: una de piedra, para resistir, y una de tormenta, para avisar. Vorn aceptó el pacto sin preguntar cuánto duraba. Ya no recuerda cuál de las dos fue la suya primero, y cada muda le cuesta un poco de nombre. Cuando entra en la Bestia deja de elegir, y dice que es el único momento en que se siente entero.",
+  "personality": "Una piel para aguantar. Otra para correr. / Las dos puertas siguen cerradas. / Cuál… era… la mía…",
+  "silhouette": "Guardián corpulento de mitad de lomo cubierto de lajas de basalto y la otra mitad de pelaje pálido; garras largas y la mirada baja.",
+  "stats": {
+    "hp": 168,
+    "damage": 9,
+    "speed": 142
+  },
+  "kit": {
+    "basic": {
+      "id": "basic",
+      "description": "Básico cuerpo a cuerpo",
+      "cooldownMs": 640,
+      "maxTargets": 1,
+      "hordeMechanism": "",
+      "anticipation": "Pose de ataque",
+      "execution": "Golpe básico",
+      "impact": "Daño único",
+      "feedback": "Número de daño",
+      "vfx": "existing basic VFX",
+      "sfx": "hit"
+    },
+    "skills": [
+      {
+        "id": "vor_shift",
+        "description": "Cambia de piel. A Piedra: onda que frena y una coraza propia. A Tormenta: onda que debilita y +velocidad y +daño. Dura hasta que mudes de nuevo.",
+        "cooldownMs": 5000,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Muda de piel con onda",
+        "execution": "Cambio Piedra/Tormenta",
+        "impact": "Onda que frena o debilita y potencia",
+        "feedback": "Aro de forma y etiqueta de forma",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_vorn_cast"
+      },
+      {
+        "id": "vor_maul",
+        "description": "Piedra: golpe en abanico que aparta y frena. Tormenta: se lanza en línea y deja sangrado.",
+        "cooldownMs": 6800,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Pose de cast y telegraph",
+        "execution": "Ejecución de Zarpa",
+        "impact": "Piedra: golpe en abanico que aparta y frena. Tormenta: se lanza en línea y deja sangrado.",
+        "feedback": "Impacto propio y número de daño",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_vorn_cast"
+      },
+      {
+        "id": "vor_instinct",
+        "description": "Piedra: Roca Viva, coraza y armadura para el grupo. Tormenta: Aullido, +velocidad y +daño para el grupo.",
+        "cooldownMs": 10500,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Pose de cast y telegraph",
+        "execution": "Ejecución de Instinto",
+        "impact": "Piedra: Roca Viva, coraza y armadura para el grupo. Tormenta: Aullido, +velocidad y +daño para el grupo.",
+        "feedback": "Impacto propio y número de daño",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_vorn_cast"
+      }
+    ],
+    "ultimate": {
+      "id": "vor_beast",
+      "description": "Funde ambas pieles 6 s: −22% de daño recibido, +velocidad y un pisotón cada 0,7 s que frena y aparta.",
+      "cooldownMs": 40000,
+      "maxTargets": 60,
+      "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+      "anticipation": "Pose de cast y telegraph",
+      "execution": "Ejecución de Bestia Primordial",
+      "impact": "Funde ambas pieles 6 s: −22% de daño recibido, +velocidad y un pisotón cada 0,7 s que frena y aparta.",
+      "feedback": "Impacto propio y número de daño",
+      "vfx": "js/champions/siete/render.js",
+      "sfx": "si_vorn_ult"
+    }
+  },
+  "art": {
+    "atlas": "assets/sprites/champions/vorn/atlas.png",
+    "preview": "assets/sprites/champions/vorn/preview.png",
+    "directions": 4,
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "d189439e247ee81f8f22c4d214ddf9abf17bfcf6dd25187add90b1789fd63d8b",
+    "animations": {
+      "idle": 1,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
+    },
+    "review": {
+      "status": "PENDING",
+      "reviewer": "",
+      "evidence": "",
+      "note": "Hoja del Pintor (donantes + forja) con gate de estilo y Roster Art Gate en PASS; requiere revisión humana del Visual Gate (docs/ART_BIBLE.md §8). Filas de muerte con rasgos del donante."
+    }
+  },
+  "integration": {
+    "runtime": "js/champions/siete/vorn.js",
+    "codex": "js/champions/siete/catalog.js",
+    "talents": "js/champions/siete/register.js",
+    "mastery": "js/champions/ascension/register.js",
+    "set": "js/champions/ascension/register.js",
+    "kitTest": "tools/siete/functional.js"
+  },
+  "cosmetics": [
+    {
+      "id": "vorn_alt1",
+      "type": "skin",
+      "champion": "vorn",
+      "name": "Piel de Aurora",
+      "rarity": "Épica",
+      "tagline": "Pelaje blanco azulado, lajas de basalto cubiertas de escarcha y un manto de plumas pálidas en los hombros.",
+      "lore": "En las noches claras del Laberinto la piel de tormenta se pone pálida. Vorn la dejó así cuando entendió que la aurora también avisa.",
+      "visualTheme": "Pelaje blanco azulado, lajas de basalto cubiertas de escarcha y un manto de plumas pálidas en los hombros.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/vorn/skins/vorn_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
+  "set": {
+    "sourceArena": "laberinto",
+    "pieces": [
+      "arma",
+      "casco",
+      "pechera",
+      "botas"
+    ],
+    "rewardCosmetic": "",
+    "rewardGrantsPower": false
+  },
+  "budgets": {
+    "particles": 64,
+    "summons": 1,
+    "audioVoices": 3
+  },
+  "evidence": {
+    "reference": "docs/balance/champion-entry-reference.json",
+    "balance": "docs/balance/entry-gate-results.json",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "audio": "",
+    "multiplayer": "docs/production/siete/functional-results.json",
+    "performance": "",
+    "style": "docs/art-gate/style-gate.json"
+  },
+  "category": "STANDARD"
+}

@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "nerith",
+  "name": "Nerith",
+  "title": "La Bruja de la Ciénaga",
+  "role": "soporte",
+  "fantasy": "Bruja de pantano de áreas persistentes: deja zonas que reponen la vida del grupo y desgastan a la Horda, y cruzalas para madurarlas.",
+  "lore": "Nerith atendía a los que llegaban a los pantanos del Abismo Líquido sin saber caminar sobre el agua mansa. No tenía casa: tenía charcos, y en cada uno una cura distinta, que dejaba abiertos para quien viniera detrás. Dicen que de noche el pantano la escucha. Ella responde que el pantano nunca olvida a nadie, y que por eso sana: para que lo que recuerde no sea el dolor.",
+  "personality": "El pantano cuida a los suyos. / Nadie se ahogó esta noche. / Ya no… suena… el agua…",
+  "silhouette": "Bruja de capa de juncos trenzados y sombrero de ala ancha cubierto de musgo; vara de juncos con un farolillo de luciérnagas y botas de barro.",
+  "stats": {
+    "hp": 112,
+    "damage": 7.5,
+    "speed": 165
+  },
+  "kit": {
+    "basic": {
+      "id": "basic",
+      "description": "Básico a distancia",
+      "cooldownMs": 600,
+      "maxTargets": 1,
+      "hordeMechanism": "",
+      "anticipation": "Pose de ataque",
+      "execution": "Golpe básico",
+      "impact": "Daño único",
+      "feedback": "Número de daño",
+      "vfx": "existing basic VFX",
+      "sfx": "hit"
+    },
+    "skills": [
+      {
+        "id": "ner_moss",
+        "description": "Abre un charco 7 s: repone la vida de los aliados que lo pisan y daña y frena a la Horda. Máx. 2.",
+        "cooldownMs": 7800,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Premarcado de charco",
+        "execution": "Charco 7 s que pulsa",
+        "impact": "Cura aliados, daña y frena enemigos",
+        "feedback": "Disco verde con juncos",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_nerith_cast"
+      },
+      {
+        "id": "ner_mud",
+        "description": "Traza un reguero de lodo que muerde y frena a lo largo de la línea durante 4,5 s. Donde se cruza con el musgo, la ciénaga madura: +30% de daño.",
+        "cooldownMs": 6600,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Pose de cast y telegraph",
+        "execution": "Ejecución de Reguero de Lodo",
+        "impact": "Traza un reguero de lodo que muerde y frena a lo largo de la línea durante 4,5 s. Donde se cruza con el musgo, la ciénaga madura: +30% de daño.",
+        "feedback": "Impacto propio y número de daño",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_nerith_cast"
+      },
+      {
+        "id": "ner_mist",
+        "description": "Los aliados cercanos ganan una barrera, armadura y se liberan de frenos; todas tus zonas duran 2,5 s más.",
+        "cooldownMs": 11500,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Pose de cast y telegraph",
+        "execution": "Ejecución de Bruma Mansa",
+        "impact": "Los aliados cercanos ganan una barrera, armadura y se liberan de frenos; todas tus zonas duran 2,5 s más.",
+        "feedback": "Impacto propio y número de daño",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_nerith_cast"
+      }
+    ],
+    "ultimate": {
+      "id": "ner_marsh",
+      "description": "Una marisma enorme durante 8 s: repone la vida del grupo en cada pulso, frena y daña a la Horda y limpia los frenos de los aliados.",
+      "cooldownMs": 42000,
+      "maxTargets": 60,
+      "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+      "anticipation": "Pose de cast y telegraph",
+      "execution": "Ejecución de Marisma Eterna",
+      "impact": "Una marisma enorme durante 8 s: repone la vida del grupo en cada pulso, frena y daña a la Horda y limpia los frenos de los aliados.",
+      "feedback": "Impacto propio y número de daño",
+      "vfx": "js/champions/siete/render.js",
+      "sfx": "si_nerith_ult"
+    }
+  },
+  "art": {
+    "atlas": "assets/sprites/champions/nerith/atlas.png",
+    "preview": "assets/sprites/champions/nerith/preview.png",
+    "directions": 4,
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "8951c8cabff3f8ca80deda672e0dc1546fd8f20ded9ae18a68a1fa87b6470c93",
+    "animations": {
+      "idle": 1,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
+    },
+    "review": {
+      "status": "PENDING",
+      "reviewer": "",
+      "evidence": "",
+      "note": "Hoja del Pintor (donantes + forja) con gate de estilo y Roster Art Gate en PASS; requiere revisión humana del Visual Gate (docs/ART_BIBLE.md §8). Filas de muerte con rasgos del donante."
+    }
+  },
+  "integration": {
+    "runtime": "js/champions/siete/nerith.js",
+    "codex": "js/champions/siete/catalog.js",
+    "talents": "js/champions/siete/register.js",
+    "mastery": "js/champions/ascension/register.js",
+    "set": "js/champions/ascension/register.js",
+    "kitTest": "tools/siete/functional.js"
+  },
+  "cosmetics": [
+    {
+      "id": "nerith_alt1",
+      "type": "skin",
+      "champion": "nerith",
+      "name": "Bruja de las Luciérnagas",
+      "rarity": "Épica",
+      "tagline": "Capa de juncos con farolillos de luciérnagas, sombrero con alas de hojas de loto y vara coronada de luz verde.",
+      "lore": "En las noches sin luna, las luciérnagas se posan sobre la vara de Nerith. Ella las deja: dice que iluminan mejor el camino de los que vuelven.",
+      "visualTheme": "Capa de juncos con farolillos de luciérnagas, sombrero con alas de hojas de loto y vara coronada de luz verde.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/nerith/skins/nerith_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
+  "set": {
+    "sourceArena": "acuatica",
+    "pieces": [
+      "arma",
+      "casco",
+      "pechera",
+      "botas"
+    ],
+    "rewardCosmetic": "",
+    "rewardGrantsPower": false
+  },
+  "budgets": {
+    "particles": 64,
+    "summons": 5,
+    "audioVoices": 3
+  },
+  "evidence": {
+    "reference": "docs/balance/champion-entry-reference.json",
+    "balance": "docs/balance/entry-gate-results.json",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "audio": "",
+    "multiplayer": "docs/production/siete/functional-results.json",
+    "performance": "",
+    "style": "docs/art-gate/style-gate.json"
+  },
+  "category": "STANDARD"
+}

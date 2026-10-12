@@ -229,3 +229,40 @@ Ajustes de kit hasta pasar con margen (la simulación varía ±10 % entre corrid
   simulaciones). Pruebas de kit: 225 comprobaciones en `tools/ascension/functional.js` (Plumas con tope 8, absorción
   y Bendición, Ráfaga que dispara plumas, Llamado y recargas, Cielo que deja 6 plumas, nunca se bendice a sí misma).
 - Duplicidad: DISTINCT (sin curación ni escudo). Biblia de Campeones: PASS*. Roster Art Gate: 116 apariencias PASS.
+
+## Siete campeones nuevos (STANDARD, TESTING) — 12 octubre 2026
+
+Ostrel (mago, rayo sostenido), Grelk (asesino/tirador, trampas), Ilsa (asesina, contraataque), Vorn (tanque, dos formas), Nerith
+(soporte, áreas persistentes), Quillon (mago, baraja) y Kora (tanque, impulso). Diseño en `js/champions/siete/catalog.js`, registrados
+antes de `champion-entry-balance.js`; **`knownChampions` y las medias por rol no se tocaron** (segundo paso en otra rama). Taxonomía:
+STANDARD/TESTING (jugables para quien los tenga concedido; fuera de tienda pública, bots y modos competitivos). Detalle: `docs/production/siete/README.md`.
+
+Entry gate (`node tools/balance/entry-gate.js`, 3 partidas de 150 s por candidato, semillas 117/431/991, Bosque, nivel 20, sin equipo):
+**PASS** (45 clases, 27 candidatas, 81 simulaciones). Daño medio del jugador frente al techo de su rol (media del rol × 1,35):
+
+| Campeón | Rol | Daño medio | Techo | Con vida (3 partidas) |
+|---|---|---:|---:|---|
+| Ostrel | Mago | 11.954 | 20.250 | 3/3 |
+| Grelk | Asesino | 9.346 | 17.385 | 3/3 |
+| Ilsa | Asesino | 4.792 | 17.385 | 3/3 |
+| Vorn | Tanque | 4.860 | 14.180 | 3/3 |
+| Nerith | Soporte | 7.765 | 8.804 | 3/3 |
+| Quillon | Mago | 8.260 | 20.250 | 3/3 |
+| Kora | Tanque | 5.728 | 14.180 | 3/3 |
+
+Ajuste: Nerith dio 9.370 (sobre su techo) con multiplicadores 0,30 / 0,35 / 0,40; pasó a Charco 0,16, Reguero 0,20 y Marisma 0,24 (7.765).
+Honestidad de la medición: el autopiloto no cronometra la Postura de Réplica de Ilsa, no coloca trampas con intención (Grelk) ni usa Impulso
+(Kora, Vorn), así que Ilsa, Vorn y Kora quedan muy por debajo de la media de su rol (el gate solo exige el techo). Con tres muestras no se
+prueba equilibrio competitivo: hace falta jugar con personas.
+
+Otros gates con salida real: `check-entry-reference` PASS; `ability-gate --strict` PASS para los siete (cada uno: una habilidad de ÁREA,
+otra distinta que daña a varios, una de POTENCIACIÓN o CURA, definitiva con 3+ categorías, efecto visual y premarcado en toda habilidad que
+apunta); `duplicity` DISTINCT para los siete (máx. 0,24); `tools/siete/functional.js` 225/225 (habilidades, mecánica propia, tope de
+entidades, expiración, limpieza al morir, jefes sin desplazar ni aturdir y con daño acotado, élites nunca ejecutadas, diez arenas,
+talentos, refuerzos, snapshot de cooperativo); gate de talentos, recursos, pasivas, estilo estricto, Roster Art Gate (130 apariencias, 0 fallos)
+y mezcla de audio PASS. Skins de autor (una por campeón, Pintor + forja): Vigía del Cenit, Cazador de Escarcha, Esgrimista de Gala,
+Piel de Aurora, Bruja de las Luciérnagas, Tahúr de Medianoche y Capataz de Hierro (visualChanges: accesorio/silueta, no solo paleta).
+
+No verificado / bloqueado: revisión humana de arte y audio; croma y Set con arte propio; gate `multiplayer` (`lobby_code_skins.js`: falla en un
+selector de la UI del lobby en este entorno, sin relación demostrada con los campeones, línea base de main no medida); `roster_visual_test.js`
+solo termina aquí si se amplía el timeout de captura (30 s) por el render por software; `fps.js` mide una arena genérica, no los kits nuevos.

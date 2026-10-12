@@ -2834,6 +2834,533 @@
    "isNew": true,
    "problems": [],
    "status": "PASS"
+  },
+  {
+   "key": "ostrel",
+   "name": "Ostrel, el Cazador de Estrellas",
+   "role": "mago",
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Haz de Sirio",
+     "kind": "ascension:ost_beam",
+     "err": null,
+     "damaged": 10,
+     "statused": 4,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CONTROL"
+     ],
+     "vfx": 719,
+     "aims": true,
+     "aimProfile": "line"
+    },
+    {
+     "slot": 1,
+     "name": "Lente de Aumento",
+     "kind": "ascension:ost_lens",
+     "err": null,
+     "damaged": 10,
+     "statused": 10,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "CONTROL"
+     ],
+     "vfx": 360,
+     "aims": true,
+     "aimProfile": "point"
+    },
+    {
+     "slot": 2,
+     "name": "Concentración Estelar",
+     "kind": "ascension:ost_focus",
+     "err": null,
+     "damaged": 0,
+     "statused": 0,
+     "cats": [
+      "POTENCIA"
+     ],
+     "vfx": 3,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": "ult",
+     "name": "Alineación de Sirio",
+     "kind": "ascension:ost_align",
+     "err": null,
+     "damaged": 10,
+     "statused": 10,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CONTROL"
+     ],
+     "vfx": 878,
+     "aims": true,
+     "aimProfile": "line"
+    }
+   ],
+   "isNew": true,
+   "problems": [],
+   "status": "PASS"
+  },
+  {
+   "key": "grelk",
+   "name": "Grelk, el Cazador de Fosos",
+   "role": "asesino",
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Cepo de Zarpa",
+     "kind": "ascension:gre_snare",
+     "err": null,
+     "damaged": 9,
+     "statused": 9,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "CONTROL"
+     ],
+     "vfx": 56,
+     "aims": true,
+     "aimProfile": "point"
+    },
+    {
+     "slot": 1,
+     "name": "Mina de Clavos",
+     "kind": "ascension:gre_mine",
+     "err": null,
+     "damaged": 10,
+     "statused": 10,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "CONTROL"
+     ],
+     "vfx": 61,
+     "aims": true,
+     "aimProfile": "point"
+    },
+    {
+     "slot": 2,
+     "name": "Pulso del Cazador",
+     "kind": "ascension:gre_hunt",
+     "err": null,
+     "damaged": 0,
+     "statused": 0,
+     "cats": [
+      "POTENCIA"
+     ],
+     "vfx": 3,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": "ult",
+     "name": "Campo de Cepos",
+     "kind": "ascension:gre_field",
+     "err": null,
+     "damaged": 10,
+     "statused": 10,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CONTROL"
+     ],
+     "vfx": 311,
+     "aims": true,
+     "aimProfile": "point"
+    }
+   ],
+   "isNew": true,
+   "problems": [],
+   "status": "PASS"
+  },
+  {
+   "key": "ilsa",
+   "name": "Ilsa, la Esgrimista de Réplica",
+   "role": "asesino",
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Postura de Réplica",
+     "kind": "ascension:ils_parry",
+     "err": null,
+     "damaged": 0,
+     "statused": 0,
+     "cats": [
+      "POTENCIA"
+     ],
+     "vfx": 3,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": 1,
+     "name": "Estocada de Réplica",
+     "kind": "ascension:ils_lunge",
+     "err": null,
+     "damaged": 10,
+     "statused": 0,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "MOVILIDAD"
+     ],
+     "vfx": 62,
+     "aims": true,
+     "aimProfile": "dash"
+    },
+    {
+     "slot": 2,
+     "name": "Giro de Acero",
+     "kind": "ascension:ils_whirl",
+     "err": null,
+     "damaged": 6,
+     "statused": 6,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "CONTROL"
+     ],
+     "vfx": 34,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": "ult",
+     "name": "Duelo de Mil Réplicas",
+     "kind": "ascension:ils_duel",
+     "err": null,
+     "damaged": 9,
+     "statused": 9,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CONTROL"
+     ],
+     "vfx": 49,
+     "aims": false,
+     "aimProfile": null
+    }
+   ],
+   "isNew": true,
+   "problems": [],
+   "status": "PASS"
+  },
+  {
+   "key": "vorn",
+   "name": "Vorn, el Cambiapiel",
+   "role": "tanque",
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Mudar",
+     "kind": "ascension:vor_shift",
+     "err": null,
+     "damaged": 7,
+     "statused": 7,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CONTROL"
+     ],
+     "vfx": 44,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": 1,
+     "name": "Zarpa",
+     "kind": "ascension:vor_maul",
+     "err": null,
+     "damaged": 9,
+     "statused": 9,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "CONTROL"
+     ],
+     "vfx": 55,
+     "aims": true,
+     "aimProfile": "cone"
+    },
+    {
+     "slot": 2,
+     "name": "Instinto",
+     "kind": "ascension:vor_instinct",
+     "err": null,
+     "damaged": 0,
+     "statused": 0,
+     "cats": [
+      "POTENCIA",
+      "CURA"
+     ],
+     "vfx": 8,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": "ult",
+     "name": "Bestia Primordial",
+     "kind": "ascension:vor_beast",
+     "err": null,
+     "damaged": 9,
+     "statused": 9,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CURA",
+      "CONTROL",
+      "INVOCA"
+     ],
+     "vfx": 193,
+     "aims": false,
+     "aimProfile": null
+    }
+   ],
+   "isNew": true,
+   "problems": [],
+   "status": "PASS"
+  },
+  {
+   "key": "nerith",
+   "name": "Nerith, la Bruja de la Ciénaga",
+   "role": "soporte",
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Charco de Musgo",
+     "kind": "ascension:ner_moss",
+     "err": null,
+     "damaged": 10,
+     "statused": 10,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CURA",
+      "CONTROL",
+      "INVOCA"
+     ],
+     "vfx": 361,
+     "aims": true,
+     "aimProfile": "point"
+    },
+    {
+     "slot": 1,
+     "name": "Reguero de Lodo",
+     "kind": "ascension:ner_mud",
+     "err": null,
+     "damaged": 10,
+     "statused": 10,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "CONTROL",
+      "INVOCA"
+     ],
+     "vfx": 423,
+     "aims": true,
+     "aimProfile": "line"
+    },
+    {
+     "slot": 2,
+     "name": "Bruma Mansa",
+     "kind": "ascension:ner_mist",
+     "err": null,
+     "damaged": 0,
+     "statused": 0,
+     "cats": [
+      "POTENCIA",
+      "CURA"
+     ],
+     "vfx": 8,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": "ult",
+     "name": "Marisma Eterna",
+     "kind": "ascension:ner_marsh",
+     "err": null,
+     "damaged": 10,
+     "statused": 10,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CURA",
+      "CONTROL",
+      "INVOCA"
+     ],
+     "vfx": 317,
+     "aims": true,
+     "aimProfile": "point"
+    }
+   ],
+   "isNew": true,
+   "problems": [],
+   "status": "PASS"
+  },
+  {
+   "key": "quillon",
+   "name": "Quillon, el Tahúr de la Última Mano",
+   "role": "mago",
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Reparto de Cartas",
+     "kind": "ascension:qui_deal",
+     "err": null,
+     "damaged": 10,
+     "statused": 10,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "CURA",
+      "CONTROL"
+     ],
+     "vfx": 119,
+     "aims": true,
+     "aimProfile": "cone"
+    },
+    {
+     "slot": 1,
+     "name": "As en la Manga",
+     "kind": "ascension:qui_ace",
+     "err": null,
+     "damaged": 10,
+     "statused": 0,
+     "cats": [
+      "AREA",
+      "MULTIPLE"
+     ],
+     "vfx": 65,
+     "aims": true,
+     "aimProfile": "line"
+    },
+    {
+     "slot": 2,
+     "name": "Apuesta Doble",
+     "kind": "ascension:qui_bet",
+     "err": null,
+     "damaged": 0,
+     "statused": 0,
+     "cats": [
+      "POTENCIA"
+     ],
+     "vfx": 8,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": "ult",
+     "name": "Escalera Real",
+     "kind": "ascension:qui_royal",
+     "err": null,
+     "damaged": 10,
+     "statused": 10,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CURA",
+      "CONTROL"
+     ],
+     "vfx": 123,
+     "aims": true,
+     "aimProfile": "point"
+    }
+   ],
+   "isNew": true,
+   "problems": [],
+   "status": "PASS"
+  },
+  {
+   "key": "kora",
+   "name": "Kora, la Ariete",
+   "role": "tanque",
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Arremetida de Ariete",
+     "kind": "ascension:kor_ram",
+     "err": null,
+     "damaged": 10,
+     "statused": 1,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "CONTROL",
+      "MOVILIDAD"
+     ],
+     "vfx": 66,
+     "aims": true,
+     "aimProfile": "dash"
+    },
+    {
+     "slot": 1,
+     "name": "Pisotón de Impulso",
+     "kind": "ascension:kor_quake",
+     "err": null,
+     "damaged": 7,
+     "statused": 7,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "CONTROL"
+     ],
+     "vfx": 44,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": 2,
+     "name": "Cabeza Gacha",
+     "kind": "ascension:kor_brace",
+     "err": null,
+     "damaged": 0,
+     "statused": 0,
+     "cats": [
+      "POTENCIA",
+      "CURA"
+     ],
+     "vfx": 8,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": "ult",
+     "name": "Estampida",
+     "kind": "ascension:kor_stampede",
+     "err": null,
+     "damaged": 10,
+     "statused": 1,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CONTROL",
+      "MOVILIDAD"
+     ],
+     "vfx": 213,
+     "aims": true,
+     "aimProfile": "line"
+    }
+   ],
+   "isNew": true,
+   "problems": [],
+   "status": "PASS"
   }
  ],
  "pageErrors": []

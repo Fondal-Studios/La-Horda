@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-04T22:56:54.660Z",
+  "generatedAt": "2026-10-12T16:19:48.660Z",
   "method": "score = 0.35·Jaccard(vocabulario) + 0.45·Jaccard(etiquetas de mecánica) + 0.2·mismo rol; DUPLICATE ≥ 0.45, REVIEW ≥ 0.32",
-  "rosterSize": 38,
+  "rosterSize": 45,
   "roleDistribution": {
-    "tanque": 7,
-    "asesino": 9,
-    "mago": 12,
-    "soporte": 8
+    "tanque": 9,
+    "asesino": 11,
+    "mago": 14,
+    "soporte": 9
   },
   "report": [
     {
@@ -26,8 +26,8 @@
       "nearest": [
         {
           "other": "aurelia",
-          "score": 0.423,
-          "text": 0.086,
+          "score": 0.421,
+          "text": 0.082,
           "tags": 0.429,
           "sharedTags": [
             "lightdark",
@@ -37,8 +37,8 @@
         },
         {
           "other": "zahra",
-          "score": 0.345,
-          "text": 0.048,
+          "score": 0.347,
+          "text": 0.053,
           "tags": 0.286,
           "sharedTags": [
             "shield",
@@ -46,12 +46,12 @@
           ]
         },
         {
-          "other": "morwen",
-          "score": 0.339,
-          "text": 0.03,
+          "other": "axiom",
+          "score": 0.343,
+          "text": 0.041,
           "tags": 0.286,
           "sharedTags": [
-            "shield",
+            "dash",
             "mark"
           ]
         }
@@ -72,6 +72,15 @@
       "forbidden": null,
       "nearest": [
         {
+          "other": "orsa",
+          "score": 0.302,
+          "text": 0.077,
+          "tags": 0.167,
+          "sharedTags": [
+            "dash"
+          ]
+        },
+        {
           "other": "khepri",
           "score": 0.3,
           "text": 0.072,
@@ -84,15 +93,6 @@
           "other": "libertador",
           "score": 0.297,
           "text": 0.062,
-          "tags": 0.167,
-          "sharedTags": [
-            "dash"
-          ]
-        },
-        {
-          "other": "orsa",
-          "score": 0.296,
-          "text": 0.061,
           "tags": 0.167,
           "sharedTags": [
             "dash"
@@ -115,8 +115,8 @@
       "nearest": [
         {
           "other": "nano_gm",
-          "score": 0.423,
-          "text": 0.086,
+          "score": 0.421,
+          "text": 0.082,
           "tags": 0.429,
           "sharedTags": [
             "lightdark",
@@ -126,8 +126,8 @@
         },
         {
           "other": "iria",
-          "score": 0.384,
-          "text": 0.098,
+          "score": 0.383,
+          "text": 0.095,
           "tags": 0.333,
           "sharedTags": [
             "geometry",
@@ -136,8 +136,8 @@
         },
         {
           "other": "sira",
-          "score": 0.319,
-          "text": 0.083,
+          "score": 0.323,
+          "text": 0.093,
           "tags": 0.2,
           "sharedTags": [
             "dash"
@@ -175,9 +175,9 @@
           ]
         },
         {
-          "other": "cazadora",
-          "score": 0.219,
-          "text": 0.053,
+          "other": "ilsa",
+          "score": 0.221,
+          "text": 0.06,
           "tags": 0,
           "sharedTags": []
         }
@@ -194,13 +194,6 @@
       "forbidden": null,
       "nearest": [
         {
-          "other": "saelis",
-          "score": 0.219,
-          "text": 0.054,
-          "tags": 0,
-          "sharedTags": []
-        },
-        {
           "other": "oriel",
           "score": 0.218,
           "text": 0.052,
@@ -208,9 +201,16 @@
           "sharedTags": []
         },
         {
-          "other": "soporte",
-          "score": 0.212,
-          "text": 0.034,
+          "other": "saelis",
+          "score": 0.218,
+          "text": 0.052,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "nerith",
+          "score": 0.215,
+          "text": 0.042,
           "tags": 0,
           "sharedTags": []
         }
@@ -229,8 +229,8 @@
       "nearest": [
         {
           "other": "sira",
-          "score": 0.356,
-          "text": 0.018,
+          "score": 0.367,
+          "text": 0.05,
           "tags": 0.333,
           "sharedTags": [
             "dash"
@@ -238,8 +238,8 @@
         },
         {
           "other": "axiom",
-          "score": 0.332,
-          "text": 0.055,
+          "score": 0.334,
+          "text": 0.06,
           "tags": 0.25,
           "sharedTags": [
             "dash"
@@ -247,8 +247,8 @@
         },
         {
           "other": "nigromante",
-          "score": 0.332,
-          "text": 0.056,
+          "score": 0.334,
+          "text": 0.061,
           "tags": 0.25,
           "sharedTags": [
             "dash"
@@ -270,26 +270,26 @@
       "nearest": [
         {
           "other": "tanque",
-          "score": 0.341,
-          "text": 0.08,
+          "score": 0.34,
+          "text": 0.079,
           "tags": 0.25,
           "sharedTags": [
             "fortify"
           ]
         },
         {
-          "other": "eslabon",
-          "score": 0.314,
-          "text": 0.069,
+          "other": "baltra",
+          "score": 0.317,
+          "text": 0.078,
           "tags": 0.2,
           "sharedTags": [
             "shield"
           ]
         },
         {
-          "other": "baltra",
-          "score": 0.311,
-          "text": 0.06,
+          "other": "eslabon",
+          "score": 0.314,
+          "text": 0.068,
           "tags": 0.2,
           "sharedTags": [
             "shield"
@@ -341,6 +341,254 @@
             "heal",
             "shield"
           ]
+        }
+      ]
+    },
+    {
+      "id": "saelis",
+      "role": "soporte",
+      "category": "ASCENSION",
+      "tags": [],
+      "verdict": "DISTINCT",
+      "forbidden": null,
+      "nearest": [
+        {
+          "other": "oriel",
+          "score": 0.235,
+          "text": 0.101,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "nerith",
+          "score": 0.229,
+          "text": 0.084,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "ynara",
+          "score": 0.228,
+          "text": 0.081,
+          "tags": 0,
+          "sharedTags": []
+        }
+      ]
+    },
+    {
+      "id": "ostrel",
+      "role": "mago",
+      "category": "STANDARD",
+      "tags": [],
+      "verdict": "DISTINCT",
+      "forbidden": null,
+      "nearest": [
+        {
+          "other": "vhal",
+          "score": 0.232,
+          "text": 0.09,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "quillon",
+          "score": 0.228,
+          "text": 0.081,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "aurelia",
+          "score": 0.22,
+          "text": 0.058,
+          "tags": 0,
+          "sharedTags": []
+        }
+      ]
+    },
+    {
+      "id": "grelk",
+      "role": "asesino",
+      "category": "STANDARD",
+      "tags": [],
+      "verdict": "DISTINCT",
+      "forbidden": null,
+      "nearest": [
+        {
+          "other": "vesper",
+          "score": 0.229,
+          "text": 0.084,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "eren",
+          "score": 0.225,
+          "text": 0.07,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "cazadora",
+          "score": 0.223,
+          "text": 0.065,
+          "tags": 0,
+          "sharedTags": []
+        }
+      ]
+    },
+    {
+      "id": "ilsa",
+      "role": "asesino",
+      "category": "STANDARD",
+      "tags": [],
+      "verdict": "DISTINCT",
+      "forbidden": null,
+      "nearest": [
+        {
+          "other": "musashi",
+          "score": 0.24,
+          "text": 0.114,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "orsa",
+          "score": 0.233,
+          "text": 0.093,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "facu_gm",
+          "score": 0.229,
+          "text": 0.082,
+          "tags": 0,
+          "sharedTags": []
+        }
+      ]
+    },
+    {
+      "id": "vorn",
+      "role": "tanque",
+      "category": "STANDARD",
+      "tags": [],
+      "verdict": "DISTINCT",
+      "forbidden": null,
+      "nearest": [
+        {
+          "other": "segador",
+          "score": 0.23,
+          "text": 0.087,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "baltra",
+          "score": 0.228,
+          "text": 0.079,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "kora",
+          "score": 0.226,
+          "text": 0.074,
+          "tags": 0,
+          "sharedTags": []
+        }
+      ]
+    },
+    {
+      "id": "nerith",
+      "role": "soporte",
+      "category": "STANDARD",
+      "tags": [],
+      "verdict": "DISTINCT",
+      "forbidden": null,
+      "nearest": [
+        {
+          "other": "ynara",
+          "score": 0.236,
+          "text": 0.102,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "oriel",
+          "score": 0.234,
+          "text": 0.098,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "saelis",
+          "score": 0.229,
+          "text": 0.084,
+          "tags": 0,
+          "sharedTags": []
+        }
+      ]
+    },
+    {
+      "id": "quillon",
+      "role": "mago",
+      "category": "STANDARD",
+      "tags": [],
+      "verdict": "DISTINCT",
+      "forbidden": null,
+      "nearest": [
+        {
+          "other": "ostrel",
+          "score": 0.228,
+          "text": 0.081,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "vhal",
+          "score": 0.217,
+          "text": 0.048,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "nano_gm",
+          "score": 0.214,
+          "text": 0.039,
+          "tags": 0,
+          "sharedTags": []
+        }
+      ]
+    },
+    {
+      "id": "kora",
+      "role": "tanque",
+      "category": "STANDARD",
+      "tags": [],
+      "verdict": "DISTINCT",
+      "forbidden": null,
+      "nearest": [
+        {
+          "other": "baltra",
+          "score": 0.226,
+          "text": 0.074,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "vorn",
+          "score": 0.226,
+          "text": 0.074,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "renko",
+          "score": 0.224,
+          "text": 0.068,
+          "tags": 0,
+          "sharedTags": []
         }
       ]
     }

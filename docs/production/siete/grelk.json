@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "grelk",
+  "name": "Grelk",
+  "title": "El Cazador de Fosos",
+  "role": "asesino",
+  "fantasy": "Tirador maestro de trampas: arma el terreno, deja que la Horda lo pise y dispara las trampas a distancia.",
+  "lore": "Grelk cazaba para tres aldeas del Bosque, y nunca en campo abierto: abría fosos, tensaba cepos y esperaba. Cuando la Horda subió por los senderos entendió que la presa más peligrosa es la que no mira el suelo. Sus trampas no tienen nada de heroico; compran segundos, y los segundos salvaron familias enteras. Todavía lleva la cuenta en un cuaderno: cada cepo que salta es una línea, cada línea una puerta que se cerró a tiempo.",
+  "personality": "Mirá dónde pisás. Yo ya sé dónde. / Cada trampa, una puerta cerrada. / El cepo… cerró… sin mí…",
+  "silhouette": "Rastreador de capa corta de cuero y capucha de musgo; ballesta de monte, bandolera de cepos y una pala plegable a la espalda.",
+  "stats": {
+    "hp": 104,
+    "damage": 10,
+    "speed": 172
+  },
+  "kit": {
+    "basic": {
+      "id": "basic",
+      "description": "Básico a distancia",
+      "cooldownMs": 520,
+      "maxTargets": 1,
+      "hordeMechanism": "",
+      "anticipation": "Pose de ataque",
+      "execution": "Golpe básico",
+      "impact": "Daño único",
+      "feedback": "Número de daño",
+      "vfx": "existing basic VFX",
+      "sfx": "hit"
+    },
+    "skills": [
+      {
+        "id": "gre_snare",
+        "description": "Coloca un cepo oculto. Se arma en 0,5 s y, cuando lo pisa un enemigo, se cierra de golpe: daña a los cercanos y los deja casi inmóviles 1,7 s. Máx. 6 trampas.",
+        "cooldownMs": 5200,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Premarcado de punto y placa tenue",
+        "execution": "Cepo oculto que se arma en 0,5 s",
+        "impact": "Salta al pisarlo: daño, casi inmovilidad y Presa",
+        "feedback": "Placa con púas y anillo de disparo",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_grelk_cast"
+      },
+      {
+        "id": "gre_mine",
+        "description": "Planta una mina de área. Al dispararse lanza clavos que dañan, sangran y frenan a toda la zona.",
+        "cooldownMs": 8600,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Pose de cast y telegraph",
+        "execution": "Ejecución de Mina de Clavos",
+        "impact": "Planta una mina de área. Al dispararse lanza clavos que dañan, sangran y frenan a toda la zona.",
+        "feedback": "Impacto propio y número de daño",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_grelk_cast"
+      },
+      {
+        "id": "gre_hunt",
+        "description": "Dispara a distancia todas tus trampas armadas cercanas, y corres con +velocidad y +daño durante 4 s.",
+        "cooldownMs": 10500,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Pose de cast y telegraph",
+        "execution": "Ejecución de Pulso del Cazador",
+        "impact": "Dispara a distancia todas tus trampas armadas cercanas, y corres con +velocidad y +daño durante 4 s.",
+        "feedback": "Impacto propio y número de daño",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_grelk_cast"
+      }
+    ],
+    "ultimate": {
+      "id": "gre_field",
+      "description": "Siembra seis trampas en rosa sobre la zona, armadas casi al instante. Quienes las pisan quedan Presa y vulnerables.",
+      "cooldownMs": 38000,
+      "maxTargets": 60,
+      "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+      "anticipation": "Pose de cast y telegraph",
+      "execution": "Ejecución de Campo de Cepos",
+      "impact": "Siembra seis trampas en rosa sobre la zona, armadas casi al instante. Quienes las pisan quedan Presa y vulnerables.",
+      "feedback": "Impacto propio y número de daño",
+      "vfx": "js/champions/siete/render.js",
+      "sfx": "si_grelk_ult"
+    }
+  },
+  "art": {
+    "atlas": "assets/sprites/champions/grelk/atlas.png",
+    "preview": "assets/sprites/champions/grelk/preview.png",
+    "directions": 4,
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "8c1ed06a98ba752769b572f017532eab4e990ac77ee547f2e225093a4b20a59d",
+    "animations": {
+      "idle": 1,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
+    },
+    "review": {
+      "status": "PENDING",
+      "reviewer": "",
+      "evidence": "",
+      "note": "Hoja del Pintor (donantes + forja) con gate de estilo y Roster Art Gate en PASS; requiere revisión humana del Visual Gate (docs/ART_BIBLE.md §8). Filas de muerte con rasgos del donante."
+    }
+  },
+  "integration": {
+    "runtime": "js/champions/siete/grelk.js",
+    "codex": "js/champions/siete/catalog.js",
+    "talents": "js/champions/siete/register.js",
+    "mastery": "js/champions/ascension/register.js",
+    "set": "js/champions/ascension/register.js",
+    "kitTest": "tools/siete/functional.js"
+  },
+  "cosmetics": [
+    {
+      "id": "grelk_alt1",
+      "type": "skin",
+      "champion": "grelk",
+      "name": "Cazador de Escarcha",
+      "rarity": "Épica",
+      "tagline": "Pieles blancas con cuello de lobo, raquetas de nieve y una ballesta forrada en tela de invierno.",
+      "lore": "En la nieve las huellas no mienten, así que Grelk aprendió a esconder las trampas bajo las suyas.",
+      "visualTheme": "Pieles blancas con cuello de lobo, raquetas de nieve y una ballesta forrada en tela de invierno.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/grelk/skins/grelk_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
+  "set": {
+    "sourceArena": "bosque",
+    "pieces": [
+      "arma",
+      "casco",
+      "pechera",
+      "botas"
+    ],
+    "rewardCosmetic": "",
+    "rewardGrantsPower": false
+  },
+  "budgets": {
+    "particles": 64,
+    "summons": 6,
+    "audioVoices": 3
+  },
+  "evidence": {
+    "reference": "docs/balance/champion-entry-reference.json",
+    "balance": "docs/balance/entry-gate-results.json",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "audio": "",
+    "multiplayer": "docs/production/siete/functional-results.json",
+    "performance": "",
+    "style": "docs/art-gate/style-gate.json"
+  },
+  "category": "STANDARD"
+}
