@@ -512,6 +512,7 @@ function update(dt){
     p.x += p.vx*dt/1000; p.y += p.vy*dt/1000; p.life -= dt;
     if(p.enemy){
       if((p.wave || p.lob) && updateEnemyProjectileStyle(p, dt)) continue; // el tiro en arco solo pega al caer
+      if(typeof lanesOn==="function" && lanesOn()) lanesEnemyProjectile(p); // Guerra de Cristales: también pega a súbditos y estructuras rivales
       for(const h of heroes){
         if(!h.alive) continue;
         if(h.team!==undefined && p.src && p.src.team===h.team) continue; // Guerra de Cristales: la horda propia no le pega a su equipo

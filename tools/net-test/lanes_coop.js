@@ -24,7 +24,7 @@ async function waitFor(c,fn,a,ms){for(let k=0;k<(ms||20000)/150;k++){if(await ev
  const A=await client(b,'Ana'),B=await client(b,'Beto');
  const realA=await ev(A,()=>localStorage.getItem('laHordaSave_v1'));
  await ev(A,()=>{setState('mainmenu');return lanesOnlineCreate('mago');});
- check('sala.anfitrion_en_sala_con_guardado_temporal',await waitFor(A,()=>!!net.code&&state==='prep'&&lanesOn()&&save.champions.tanque.level===10));
+ check('sala.anfitrion_en_sala_con_guardado_temporal',await waitFor(A,()=>!!net.code&&state==='prep'&&lanesOn()&&save.champions.tanque.level===3));
  const code=await ev(A,()=>net.code);
  await ev(B,()=>{setState('mainmenu');return lanesOnlineJoin(arguments[0],'tanque');},code).catch(()=>{});
  await ev(B,c=>{lanesOnlineJoin(c,'tanque');},code);
@@ -34,25 +34,25 @@ async function waitFor(c,fn,a,ms){for(let k=0;k<(ms||20000)/150;k++){if(await ev
  const both=await waitFor(A,()=>state==='playing'&&lanesOn()&&heroes.length===4&&!LN.lobby,null,30000)&&await waitFor(B,()=>state==='playing'&&lanesOn()&&heroes.length===4,null,60000);
  check('partida.los_dos_juegan',both,[...A.errors,...B.errors].slice(0,4));
  await sleep(3000);
- const st=await Promise.all([ev(A,()=>({lanes:heroes.map(h=>h.team),me:player.team,crystals:LN.team.map(t=>Math.round(t.S[2].hp)),hud:!!document.querySelector('.ln-score')&&document.querySelector('.ln-score').getBoundingClientRect().width>0,arena:currentArena,wave:LN.wave})),ev(B,()=>({lanes:heroes.map(h=>h.team),me:player.team,crystals:LN.team.map(t=>Math.round(t.S[2].hp)),hud:!!document.querySelector('.ln-score')&&document.querySelector('.ln-score').getBoundingClientRect().width>0,arena:currentArena,wave:LN.wave}))]);
+ const st=await Promise.all([ev(A,()=>({lanes:heroes.map(h=>h.team),me:player.team,crystals:LN.team.map(t=>Math.round(t.S[9].hp)),hud:!!document.querySelector('.ln-score')&&document.querySelector('.ln-score').getBoundingClientRect().width>0,arena:currentArena,wave:LN.wave})),ev(B,()=>({lanes:heroes.map(h=>h.team),me:player.team,crystals:LN.team.map(t=>Math.round(t.S[9].hp)),hud:!!document.querySelector('.ln-score')&&document.querySelector('.ln-score').getBoundingClientRect().width>0,arena:currentArena,wave:LN.wave}))]);
  check('partida.equipos_por_slot',JSON.stringify(st[0].lanes)==='[0,0,1,1]'&&JSON.stringify(st[1].lanes)==='[0,0,1,1]',st);
  check('partida.invitado_en_el_equipo_del_anfitrion',st[0].me===0&&st[1].me===0);
  check('partida.hud_en_los_dos',st[0].hud&&st[1].hud);
  // horda: los dos ven criaturas de los dos equipos y los avatares/estructuras (el invitado los recibe por snapshot)
  await waitFor(A,()=>LN.wave>=1,null,30000);await sleep(2500);
  const en=await Promise.all([ev(A,()=>enemies.filter(e=>e.alive&&!e.lanesProxy).length),ev(B,()=>enemies.filter(e=>e.alive&&!e.lanesProxy).length)]);
- check('partida.horda_sincronizada',en[0]>0&&en[1]>0&&Math.abs(en[0]-en[1])<=6,en);
+ check('partida.horda_sincronizada',en[0]>0&&en[1]>0&&Math.abs(en[0]-en[1])<=12,en);
  const px=await Promise.all([ev(A,()=>enemies.filter(e=>e.alive&&e.lanesProxy).length),ev(B,()=>enemies.filter(e=>e.alive&&e.lanesProxy).length)]);
- check('partida.avatares_y_estructuras_sincronizados',px[0]===10&&px[1]===10,px);   // 4 héroes + 6 estructuras
+ check('partida.avatares_y_estructuras_sincronizados',px[0]===24&&px[1]===24,px);   // 4 héroes + 20 estructuras
  // compra del invitado
- await ev(A,()=>{LN.team[0].shards=100;});await waitFor(B,()=>LN.team[0].shards===100,null,5000);
+ await ev(A,()=>{LN.team[0].shards=200;});await waitFor(B,()=>LN.team[0].shards===200,null,5000);
  await ev(B,()=>{lanesBuy(player.team,'ward',player);});await sleep(900);
- const up=await Promise.all([ev(A,()=>lanesFront(0).ward),ev(B,()=>lanesFront(0).ward)]);
- check('compra.invitado_valida_el_anfitrion',up[0]===180&&up[1]===180,up);
+ const up=await Promise.all([ev(A,()=>LN.team[0].S.filter(x=>x.ward===200).length),ev(B,()=>LN.team[0].S.filter(x=>x.ward===200).length)]);
+ check('compra.invitado_valida_el_anfitrion',up[0]===1&&up[1]===1,up);
  await ev(B,()=>{netSendToHost({k:'ln-buy',key:'__proto__'});netSendToHost({k:'ln-buy',key:'toString'});return 1;});await sleep(500);
- check('compra.clave_falsa_rechazada',await ev(A,()=>LN.team[0].shards>=100-40));
+ check('compra.clave_falsa_rechazada',await ev(A,()=>LN.team[0].shards>=200-60));
  // carta de horda: el invitado la elige por la red y la aplica el anfitrión
- await ev(A,()=>{LN.team[0].nextCard=LN.t;});await waitFor(B,()=>!!LN.team[0].offer,null,8000);
+ await ev(A,()=>{LN.team[0].pendingCards=1;});await waitFor(B,()=>!!LN.team[0].offer,null,8000);
  await ev(B,()=>{lanesNetCardRequest(1);});await sleep(900);
  const cd=await Promise.all([ev(A,()=>LN.team[0].taken),ev(B,()=>LN.team[0].taken)]);
  check('cartas.invitado_elige_y_el_anfitrion_aplica',cd[0]===1&&cd[1]===1,cd);
@@ -61,7 +61,7 @@ async function waitFor(c,fn,a,ms){for(let k=0;k<(ms||20000)/150;k++){if(await ev
  const after=await Promise.all([ev(A,i=>heroes[i].hp,pvp.id),ev(B,i=>heroes[i].hp,pvp.id)]);
  check('pvp.daño_al_avatar_llega_al_heroe',after[0]<pvp.hp&&after[1]<pvp.hp+1,{antes:pvp.hp,despues:after});
  // final: cae el cristal rival
- await ev(A,()=>{LN.team[1].S[0].alive=false;LN.team[1].S[1].alive=false;LN.team[1].S[2].hp=1;lanesStructDamage(LN.team[1].S[2],50,0);});
+ await ev(A,()=>{for(let l=0;l<3;l++)for(let k=0;k<3;k++)LN.team[1].S[l*3+k].alive=false;LN.team[1].S[9].hp=1;lanesStructDamage(LN.team[1].S[9],50,0);});
  const fin=await waitFor(A,()=>!!document.querySelector('#lanes-result:not(.hidden)'),null,15000)&&await waitFor(B,()=>!!document.querySelector('#lanes-result:not(.hidden)'),null,20000);
  check('final.resultado_en_los_dos',fin);
  const res=await Promise.all([ev(A,()=>document.querySelector('#lanes-result h2').textContent),ev(B,()=>document.querySelector('#lanes-result h2').textContent)]);
@@ -70,7 +70,7 @@ async function waitFor(c,fn,a,ms){for(let k=0;k<(ms||20000)/150;k++){if(await ev
  await ev(A,()=>document.querySelector('#lanes-result .ln-again').click());await ev(B,()=>document.querySelector('#lanes-result .ln-again').click());
  check('final.vuelven_a_la_sala',await waitFor(A,()=>state==='prep'&&netInRoom())&&await waitFor(B,()=>state==='prep'&&netInRoom()));
  await ev(B,()=>{netLeaveRoom();setState('mainmenu');});await ev(A,()=>{netLeaveRoom();setState('mainmenu');});
- check('final.guardado_real_restaurado',await waitFor(A,()=>!lanesOn()&&save.champions.tanque.level!==10)&&await waitFor(B,()=>!lanesOn()&&save.champions.tanque.level!==10));
+ check('final.guardado_real_restaurado',await waitFor(A,()=>!lanesOn()&&save.champions.tanque.level!==3)&&await waitFor(B,()=>!lanesOn()&&save.champions.tanque.level!==3));
  check('final.guardado_real_sin_cambios',(await ev(A,()=>localStorage.getItem('laHordaSave_v1')))===realA);
  check('sin_errores_de_pagina',A.errors.length+B.errors.length===0,[...A.errors,...B.errors].slice(0,3));
  await b.close();http.kill();relay.kill();console.log('SUMMARY',JSON.stringify({fails}));process.exit(fails?1:0);

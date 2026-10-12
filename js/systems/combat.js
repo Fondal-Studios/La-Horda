@@ -300,6 +300,8 @@ let _avoidableHit = false; // lo prende bossHitHero: el golpe venía con aviso e
 function damageHero(h, amount, src, portTransferred){
   if(!h || !h.alive) return;
   if(h.isStruct){ lanesHitStruct(h, amount, src); return; } // Guerra de Cristales: torres y cristal reciben los golpes de la horda
+  if(h.isWaypoint) return;                                     // Guerra de Cristales: objetivo auxiliar del carril (nadie lo golpea)
+  if(h.type!==undefined && !h.classKey && h.team!==undefined && typeof lanesMinionHit==="function"){ lanesMinionHit(h, amount, src); return; } // un súbdito golpeando a otro
   if(typeof lanesOn==="function" && lanesOn() && lanesBlocksHeroDamage(h, src)) return; // sin fuego amigo de la horda propia
   if(h.invulnTimer>0) return; // p.ej. la breve transición del Teletransporte de Axiom
   { const tk = heroDmgTakenMult(h); if(tk<=0) return; amount *= tk; } // montado / Instinto / titán / cinemáticas

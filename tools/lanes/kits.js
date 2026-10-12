@@ -19,7 +19,7 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
    setState('mainmenu');lanesStart({champ,seed:11});
    const rep={champ,frames:0,nan:0,cross:0,dead:0,friendly:0,pvp:0};const dt=1000/60;let ang=0;
    const dh=damageHero;damageHero=function(h,a,src,pt){ const hp0=h&&h.hp,isF=h&&h.team!=null&&src&&!src.isPvp&&src!==h&&!h.isStruct&&lanesTeamOf(src)===h.team; if(src&&src.isPvp&&h&&!h.isStruct)rep.pvp++; const r=dh.call(this,h,a,src,pt); if(isF&&h.hp<hp0-0.01)rep.friendly++; return r; };
-   player.x=2000;player.y=500;heroes[2].x=2160;heroes[2].y=520;
+   const mp=lanePoint(1,LANES_PATHS[1].len*0.42);player.x=mp.x;player.y=mp.y;const foeH=heroes.find(h=>h.team===1);foeH.x=mp.x+170;foeH.y=mp.y+20;
    for(let f=0;f<secs*60&&!LN.ended;f++){
     if(f%20===0){ang+=0.7;joyVec={x:Math.cos(ang)*0.6,y:Math.sin(ang)*0.6};}
     basicHeld=true;
@@ -28,10 +28,10 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
     if(f%30===0){
      for(const h of heroes){ if(![h.x,h.y,h.hp].every(Number.isFinite))rep.nan++; if(!h.duelActive&&!lanesInside(h.x,h.y,-40))rep.cross++; }
      for(const e of enemies){ if(!e.alive)continue; if(![e.x,e.y,e.hp].every(Number.isFinite))rep.nan++; if(!e.isDuelLocked&&!lanesInside(e.x,e.y,-40))rep.cross++; }
-     for(const T of LN.team){ if(![T.S[2].hp,T.shards].every(Number.isFinite))rep.nan++; }
+     for(const T of LN.team){ if(![T.S[9].hp,T.shards].every(Number.isFinite))rep.nan++; }
     }
    }
-   const s=player.stats||{};rep.dmg=Math.round(s.dmgDealt||s.dmg||0);rep.kills=LN.team[0].kills+LN.team[1].kills;rep.myKills=s.kills||0;rep.hp0=Math.round(LN.team[0].S[2].hp);rep.hp1=Math.round(LN.team[1].S[2].hp);rep.respawns=heroes.filter(h=>h.dead_t).length;
+   const s=player.stats||{};rep.dmg=Math.round(s.dmgDealt||s.dmg||0);rep.kills=LN.team[0].kills+LN.team[1].kills;rep.myKills=s.kills||0;rep.hp0=Math.round(LN.team[0].S[9].hp);rep.hp1=Math.round(LN.team[1].S[9].hp);rep.respawns=heroes.filter(h=>h.dead_t).length;
    rep.enemiesLeft=enemies.filter(e=>e.alive).length;damageHero=dh;lanesStop('mainmenu');return rep;},{champ,secs:SECS});
   const ok=!r.err&&r.nan===0&&r.cross===0&&r.friendly===0&&(r.kills>0||r.dmg>0||r.pvp>0)&&errs.length===0;if(!ok)bad++;
   rows.push(r);console.log((ok?'OK   ':'FAIL ')+champ.padEnd(14)+JSON.stringify({kills:r.kills,dmg:r.dmg,pvp:r.pvp,friendly:r.friendly,cross:r.cross,nan:r.nan,err:r.err,errs:errs.slice(0,2)}));

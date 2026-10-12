@@ -23,37 +23,57 @@ const LANES_TEAM_COL = ["#70c9ff", "#ffb86a", "#7be0a0", "#ff7a8a"], LANES_TEAM_
 function lanesTeamColor(i){ return LANES_TEAM_COL[i] || "#ffffff"; }
 function lanesTeamName(i){ return LANES_TEAM_NAME[i] || "EQUIPO"; }
 
+function lanesStrokePath(pts, w, style){
+  ctx.beginPath(); pts.forEach((q, i)=>{ if(i) ctx.lineTo(q[0], q[1]); else ctx.moveTo(q[0], q[1]); });
+  ctx.lineWidth = w; ctx.strokeStyle = style; ctx.lineJoin = "round"; ctx.lineCap = "round"; ctx.stroke();
+}
 function lanesDrawWorld(now){
   if(!LN) return;
   const W = LANES.W, H = LANES.H;
   ctx.save();
-  ctx.fillStyle = "#0c1018"; ctx.fillRect(-80, -80, W + 160, H + 160);
+  ctx.fillStyle = "#0a0e0c"; ctx.fillRect(-120, -120, W + 240, H + 240);
+  // selva: suelo con tinte verde oscuro
   ctx.fillStyle = floorPattern || "#202937"; ctx.fillRect(0, 0, W, H);
-  // tinte de cada mitad y línea central de combate
-  const g = ctx.createLinearGradient(0, 0, W, 0);
-  g.addColorStop(0, "rgba(40,110,170,.30)"); g.addColorStop(0.42, "rgba(8,12,20,.30)"); g.addColorStop(0.58, "rgba(8,12,20,.30)"); g.addColorStop(1, "rgba(190,110,40,.30)");
-  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-  ctx.fillStyle = "rgba(190,200,215,.10)"; ctx.fillRect(0, LANES.MID_Y - 130, W, 260);          // camino de la horda
-  ctx.strokeStyle = "rgba(220,230,245,.16)"; ctx.lineWidth = 3; ctx.setLineDash([22, 18]);
-  ctx.beginPath(); ctx.moveTo(0, LANES.MID_Y); ctx.lineTo(W, LANES.MID_Y); ctx.stroke(); ctx.setLineDash([]);
-  ctx.strokeStyle = "rgba(255,255,255,.08)"; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(W / 2, 0); ctx.lineTo(W / 2, H); ctx.stroke();
-  const vg = ctx.createRadialGradient(W / 2, H / 2, H * 0.4, W / 2, H / 2, W * 0.62); vg.addColorStop(0, "rgba(0,0,0,0)"); vg.addColorStop(1, "rgba(0,0,0,.45)");
-  ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
-  ctx.lineWidth = 10; ctx.strokeStyle = "#2c3850"; ctx.strokeRect(0, 0, W, H);
-  // bases: zona de curación y portales de la horda
-  const pimg = lanesImg("portal", "assets/vfx/abismo/portal_activo_0.png");
+  ctx.fillStyle = "rgba(14,40,24,.50)"; ctx.fillRect(0, 0, W, H);
+  // río en diagonal (de la esquina de arriba a la izquierda a la de abajo a la derecha)
+  const rv = ctx.createLinearGradient(0, 0, W, H);
+  ctx.save(); ctx.lineCap = "butt";
+  ctx.beginPath(); ctx.moveTo(-100, -100); ctx.lineTo(W + 100, H + 100); ctx.lineWidth = 460; ctx.strokeStyle = "rgba(34,92,150,.55)"; ctx.stroke();
+  ctx.lineWidth = 400; ctx.strokeStyle = "rgba(70,140,205,.35)"; ctx.stroke();
+  ctx.setLineDash([60, 90]); ctx.lineDashOffset = -(now * 40) % 150; ctx.lineWidth = 6; ctx.strokeStyle = "rgba(200,235,255,.25)";
+  for(const off of [-110, 0, 110]){ ctx.beginPath(); ctx.moveTo(-100 + off * 0.6, -100 - off * 0.8); ctx.lineTo(W + 100 + off * 0.6, H + 100 - off * 0.8); ctx.stroke(); }
+  ctx.restore();
+  // carriles de piedra
+  for(let l = 0; l < 3; l++){
+    const pts = LANES_PATHS[l].pts;
+    lanesStrokePath(pts, 300, "rgba(24,28,36,.80)");
+    lanesStrokePath(pts, 262, "rgba(88,96,112,.62)");
+    lanesStrokePath(pts, 236, "rgba(112,120,136,.30)");
+    ctx.save(); ctx.setLineDash([26, 30]); lanesStrokePath(pts, 4, "rgba(255,255,255,.14)"); ctx.restore();
+  }
+  // bases: zona de curación y marcas de cada equipo
   for(let t = 0; t < 2; t++){
     const c = laneCrystalPos(t), col = lanesTeamColor(t);
-    if(inView(c.x, c.y, 520)){
-      ctx.fillStyle = col + "18"; ctx.beginPath(); ctx.arc(c.x, c.y, 260, 0, Math.PI * 2); ctx.fill();
-      ctx.strokeStyle = col + "66"; ctx.lineWidth = 4; ctx.setLineDash([12, 10]); ctx.beginPath(); ctx.arc(c.x, c.y, 260, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
-      for(const p of lanePortals(t)){
-        const k = 1 + Math.sin(now * 2.4 + p.y) * 0.03;
-        if(pimg.complete && pimg.naturalWidth) ctx.drawImage(pimg, p.x - 52 * k, p.y - 50 * k, 104 * k, 98 * k);
-        else { ctx.fillStyle = "#3a1650"; ctx.beginPath(); ctx.ellipse(p.x, p.y, 44, 28, 0, 0, Math.PI * 2); ctx.fill(); }
-      }
-    }
+    if(!inView(c.x, c.y, 620)) continue;
+    ctx.fillStyle = col + "18"; ctx.beginPath(); ctx.arc(c.x, c.y, 300, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = col + "77"; ctx.lineWidth = 5; ctx.setLineDash([14, 12]); ctx.beginPath(); ctx.arc(c.x, c.y, 300, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
   }
+  // campamentos y fosos épicos
+  for(const cd of LANES_CAMPS){
+    if(!inView(cd.x, cd.y, 200)) continue;
+    const camp = LN.camps && LN.camps[cd.id], alive = camp ? camp.mons.some(m=>m.alive) : false;
+    ctx.fillStyle = "rgba(70,48,28,.55)"; ctx.beginPath(); ctx.ellipse(cd.x, cd.y + 4, 92, 60, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = alive ? "rgba(230,190,110,.55)" : "rgba(160,140,110,.25)"; ctx.lineWidth = 3; ctx.setLineDash([8, 8]); ctx.beginPath(); ctx.ellipse(cd.x, cd.y + 4, 92, 60, 0, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
+  }
+  for(const ed of LANES_EPICS){
+    if(!inView(ed.x, ed.y, 300)) continue;
+    ctx.fillStyle = "rgba(40,24,60,.60)"; ctx.beginPath(); ctx.arc(ed.x, ed.y, 150, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = "rgba(210,150,255,.55)"; ctx.lineWidth = 5; ctx.beginPath(); ctx.arc(ed.x, ed.y, 150, 0, Math.PI * 2); ctx.stroke();
+    ctx.font = pxFont(14); ctx.textAlign = "center"; ctx.fillStyle = "rgba(235,215,255,.8)"; ctx.fillText(ed.name.toUpperCase(), ed.x, ed.y + 190);
+  }
+  const vg = ctx.createRadialGradient(W / 2, H / 2, H * 0.4, W / 2, H / 2, W * 0.62); vg.addColorStop(0, "rgba(0,0,0,0)"); vg.addColorStop(1, "rgba(0,0,0,.40)");
+  ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
+  ctx.lineWidth = 12; ctx.strokeStyle = "#2a3448"; ctx.strokeRect(0, 0, W, H);
   ctx.restore();
 }
 
@@ -102,7 +122,7 @@ function lanesDrawTop(){
     const bw = s.kind === "tower" ? 96 : 130, by = s.y + (s.kind === "tower" ? 34 : 40);
     ctx.fillStyle = "rgba(5,8,14,.85)"; ctx.fillRect(s.x - bw / 2 - 2, by, bw + 4, 14);
     ctx.fillStyle = exposed ? (f > 0.5 ? col : (f > 0.25 ? "#ffcf5c" : "#ff6a5a")) : "#7c8798"; ctx.fillRect(s.x - bw / 2, by + 2, bw * f, 10);
-    if(!exposed){ ctx.font = pxFont(12); ctx.textAlign = "center"; ctx.fillStyle = "#cfd8e4"; ctx.fillText("PROTEGIDA", s.x, by + 28); }
+    if(!exposed && player && Math.hypot(player.x - s.x, player.y - s.y) < 700){ ctx.font = pxFont(12); ctx.textAlign = "center"; ctx.fillStyle = "#cfd8e4"; ctx.fillText("PROTEGIDA", s.x, by + 28); }
     else if(s.kind === "crystal"){ ctx.font = pxFont(12); ctx.textAlign = "center"; ctx.fillStyle = "#fff"; ctx.fillText(lanesTeamName(s.team) + " " + Math.ceil(s.hp), s.x, by + 28); }
   }
   // disparos de torre
@@ -117,9 +137,14 @@ function lanesDrawTop(){
   for(const h of heroes){ if(!h.alive || h.team == null || !inView(h.x, h.y, 80)) continue;
     ctx.save(); ctx.strokeStyle = lanesTeamColor(h.team); ctx.globalAlpha = h === player ? 0.95 : 0.7; ctx.lineWidth = h === player ? 4 : 3;
     ctx.beginPath(); ctx.ellipse(h.x, h.y + 12, 26, 10, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore(); }
+  // volver a la base: aro que se cierra
+  for(const h of heroes){ if(!h._recall || !h.alive || !inView(h.x, h.y, 100)) continue;
+    const k = Math.min(1, (LN.t - h._recall.t0) / LANES.RECALL_MS); ctx.save(); ctx.strokeStyle = "#bfe8ff"; ctx.lineWidth = 4; ctx.globalAlpha = 0.9;
+    ctx.beginPath(); ctx.arc(h.x, h.y + 6, 60 - 34 * k, 0, Math.PI * 2 * k); ctx.stroke(); ctx.restore(); }
   // anillo de equipo bajo las criaturas (solo las cercanas a la cámara)
   for(const e of enemies){ if(!e.alive || e.lanesProxy || e.team == null || !inView(e.x, e.y, 60)) continue;
-    ctx.save(); ctx.strokeStyle = lanesTeamColor(e.team); ctx.globalAlpha = 0.55; ctx.lineWidth = 2;
+    if(e.epicId != null && e.maxHp){ const f = Math.max(0, e.hp / e.maxHp); ctx.fillStyle = "rgba(5,8,14,.85)"; ctx.fillRect(e.x - 62, e.y - 118, 124, 14); ctx.fillStyle = "#d89bff"; ctx.fillRect(e.x - 60, e.y - 116, 120 * f, 10); }
+    ctx.save(); ctx.strokeStyle = e.team === 2 ? "#e8c46a" : lanesTeamColor(e.team); ctx.globalAlpha = 0.55; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.ellipse(e.x, e.y + 6, e.radius * 0.8, e.radius * 0.32, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore(); }
 }
 Object.assign(ARENA_DEFS.convergencia, {drawWorld:lanesDrawWorld, drawTop:lanesDrawTop});

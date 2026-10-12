@@ -296,7 +296,7 @@ function netApplyGuestLoadouts(){
     if(s.kind!=="human" || s.slot===0) continue;
     const L = netMatch.loadouts[s.slot];
     netMatch.backups[s.champ] = save.champions[s.champ];
-    const rec = (L && L.champ===s.champ && !(typeof lanesOn==="function" && lanesOn())) ? netLoadoutRecord(L) : netLoadoutRecord({level:(typeof lanesOn==="function" && lanesOn()) ? LANES.LEVEL : (s.level||1)}); // Guerra de Cristales: todos al mismo nivel y sin equipo
+    const rec = (L && L.champ===s.champ && !(typeof lanesOn==="function" && lanesOn())) ? netLoadoutRecord(L) : netLoadoutRecord({level:(typeof lanesOn==="function" && lanesOn()) ? LANES.LEVEL0 : (s.level||1)}); // Guerra de Cristales: todos al mismo nivel y sin equipo
     save.champions[s.champ] = rec;
     if(L && L.reserve && L.reserve.champ===s.reserve){ netMatch.backups[s.reserve]=save.champions[s.reserve]; save.champions[s.reserve]=netLoadoutRecord(L.reserve); }
   }
@@ -456,6 +456,7 @@ function netHostOnMsg(from, d){
     case "buff": netHostBuffPicked(from, d.id); return;
     case "ln-buy": if(typeof lanesOn==="function" && lanesOn() && state==="playing") lanesBuy(h.team, String(d.key), h); return; // Guerra de Cristales: compra del invitado
     case "ln-card": if(typeof lanesOn==="function" && lanesOn() && state==="playing") lanesPickCard(h.team, d.i); return; // Guerra de Cristales: carta de horda del invitado
+    case "ln-recall": if(typeof lanesOn==="function" && lanesOn() && state==="playing") lanesRecallStart(h); return; // Guerra de Cristales: volver a la base
     case "loading": // el invitado todavía baja el arte de la arena (netGuestHoldStart): lo maneja un bot hasta que entre
       if(n.connected){
         n.connected = false; n.loading = true; h.isRemote = false; h._revHold = -1; h._ctxHold = null; cancelRevivesBy(h);

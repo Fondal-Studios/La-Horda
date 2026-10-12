@@ -1,15 +1,17 @@
 "use strict";
 /* ============================================================
    js/arenas/lanes/lanes-core.js
-   GUERRA DE CRISTALES en el MOTOR REAL — lógica de la partida (estilo MOBA).
-   Un mapa, dos bases (lanes-data.js). Cada equipo tiene dos torres y un cristal; se derriban en orden.
-   - PvP: cada héroe tiene un AVATAR dentro de `enemies` (entidad invisible que sigue al héroe). Como todas las
-     habilidades de la campaña golpean a `enemies`, así el PvP funciona con TODOS los campeones sin tocar sus kits:
-     el daño que recibe el avatar se pasa al héroe real (ver lanesSync). Las estructuras funcionan igual.
+   GUERRA DE CRISTALES en el MOTOR REAL — lógica de la partida (estilo Wild Rift en 2D). Mapa de tres carriles (lanes-data.js).
+   Cada equipo tiene 9 torres (3 por carril) y un cristal; se derriban en orden dentro de cada carril y el cristal se expone
+   cuando cae la torre inhibidora de cualquiera.
+   - PvP: cada héroe tiene un AVATAR dentro de `enemies` (entidad invisible que sigue al héroe). Como todas las habilidades de la
+     campaña golpean a `enemies`, el PvP funciona con TODOS los campeones sin tocar sus kits: el daño que recibe el avatar se pasa
+     al héroe real (ver lanesSync). Las estructuras funcionan igual.
    - Cada habilidad se lanza viendo solo a su equipo en `heroes` y solo a sus rivales en `enemies` (lanesTeamCall).
-   - La HORDA de cada equipo marcha contra la base rival; las cartas de nivel potencian a la horda PROPIA.
-   Todo corre en el anfitrión (o en la partida local). El estado de la partida (LN) NO toca el guardado real:
-   se juega con un guardado temporal normalizado (todos al nivel 10, sin equipo) que se descarta al salir.
+   - La HORDA de cada equipo (lanes-minions.js) avanza sola por los tres carriles; las cartas de nivel la potencian.
+   - Experiencia, niveles y volver a la base: lanes-levels.js. Selva y objetivos épicos: lanes-jungle.js. Bots: lanes-bots.js.
+   Todo corre en el anfitrión (o en la partida local). El estado de la partida (LN) NO toca el guardado real: se juega con un
+   guardado temporal normalizado (sin cuenta ni equipo) que se descarta al salir.
    ============================================================ */
 let LN = null;
 const LANES_BIG = 1e9;                 // vida de los avatares: nunca mueren; lo que pierden se le pasa al héroe/estructura
@@ -23,9 +25,9 @@ function lanesBegin(role, seed, mode){
   if(LN){ LN.role = role === "lobby" ? LN.role : role; LN.lobby = role === "lobby"; return LN; } // ya estaba en la Sala (guardado temporal puesto)
   if(typeof persistNow==="function") persistNow();   // el progreso real se guarda ANTES de usar el temporal
   const snap = {save, selectedClass, currentArena, lobbyAllies, endlessActive, endlessPending, divinaMode};
-  LN = {snap, mode:mode || "cw", role:role||"solo", lobby:role === "lobby", rng:((seed||((Math.random()*4294967295)>>>0))>>>0)||7, t:0, ended:true, winner:-1, team:[], shots:[], feed:[], wave:0};
+  LN = {snap, mode:mode || "cw", role:role||"solo", lobby:role === "lobby", rng:((seed||((Math.random()*4294967295)>>>0))>>>0)||7, t:0, ended:true, winner:-1, team:[], shots:[], feed:[], wave:0, size:5};
   save = defaultSave();
-  for(const id in save.champions){ const c = save.champions[id]; c.level = LANES.LEVEL; c.xp = 0; c.unlocked = true; }
+  for(const id in save.champions){ const c = save.champions[id]; c.level = LN.mode === "coliseo" ? 10 : LANES.LEVEL0; c.xp = 0; c.unlocked = true; }   // (el Coliseo: todos al nivel 10; Guerra de Cristales: nivel 3 y suben en la partida)
   save.tut = {training:1, basics:1, b_move:1, b_attack:1, b_skill:1, goalMission:1}; // sin tutoriales dentro de la partida
   divinaMode = false; endlessActive = false; endlessPending = false;
   LN.team = LN.mode === "coliseo" ? colNewTeams() : [lanesNewTeam(0), lanesNewTeam(1)];
@@ -45,19 +47,23 @@ function lanesRestore(){
   if(typeof invalidatePassiveCache==="function") invalidatePassiveCache();
   if(typeof lanesHudHide==="function") lanesHudHide();
 }
-// opts: {champ, mate, rivals:[a,b], seed}. Devuelve true si arrancó. Partida local contra bots.
+// opts: {champ, mate:[...], rivals:[...], seed, size}. Devuelve true si arrancó. Partida local contra bots (por defecto 5 contra 5).
 function lanesStart(opts){
   if(LN || (typeof ALPHA_TRAINING!=="undefined" && ALPHA_TRAINING.active)) return false;
   opts = opts || {};
+  const size = Math.max(2, Math.min(5, opts.size || 5));
   const roster = Object.keys(CLASSES).filter(k=>championBotEligible(k));
   const mine = opts.champ && CLASSES[opts.champ] ? opts.champ : (CLASSES[selectedClass] ? selectedClass : roster[0]);
   const taken = [mine];
   const pick = (want)=>{ if(want && CLASSES[want] && !taken.includes(want)){ taken.push(want); return want; }
     const pool = roster.filter(k=>!taken.includes(k)); const k = pool[(Math.random()*pool.length)|0]; taken.push(k); return k; };
-  const mate = pick(opts.mate), r1 = pick(opts.rivals && opts.rivals[0]), r2 = pick(opts.rivals && opts.rivals[1]);
+  const asArr = v=>Array.isArray(v) ? v : (v ? [v] : []);
+  const mates = [], foes = [];
+  for(let i = 0; i < size - 1; i++) mates.push(pick(asArr(opts.mate)[i]));
+  for(let i = 0; i < size; i++) foes.push(pick(asArr(opts.rivals)[i]));
   lanesBegin("solo", opts.seed);
-  LN.setup = {mine, mate, rivals:[r1, r2]};
-  selectedClass = mine; currentArena = "convergencia"; lobbyAllies = [mate, r1, r2];
+  LN.size = size; LN.setup = {mine, mate:mates, rivals:foes, size};
+  selectedClass = mine; currentArena = "convergencia"; lobbyAllies = [...mates, ...foes];
   try{ startRun(LANES.RUNLEVEL); }
   catch(err){ console.error("Guerra de Cristales no pudo arrancar:", err); lanesRestore(); throw err; }
   return true;
@@ -70,33 +76,46 @@ function lanesStop(toState){
 }
 
 /* ---------------- equipos y estructuras ---------------- */
-function lanesNewStruct(team, order){
-  const crystal = order === 2, p = crystal ? laneCrystalPos(team) : laneTowerPos(team, order);
-  const hp = crystal ? LANES.CRYSTAL_HP : LANES.TOWER_HP;
-  return {isStruct:true, kind:crystal ? "crystal" : "tower", order, team, x:p.x, y:p.y, radius:crystal ? LANES.CRYSTAL_R : LANES.TOWER_R,
+// S[l*3 + k] = torre k (0 exterior, 1 interior, 2 inhibidora) del carril l; S[9] = cristal.
+function lanesNewStruct(team, kind, l, k){
+  const crystal = kind === "crystal", p = crystal ? laneCrystalPos(team) : laneTowerPos(team, l, k);
+  const hp = crystal ? LANES.CRYSTAL_HP : LANES.TOWER_HP[k];
+  return {isStruct:true, kind, lane:crystal ? -1 : l, order:crystal ? 3 : k, team, x:p.x, y:p.y, radius:crystal ? LANES.CRYSTAL_R : LANES.TOWER_R,
     hp, maxHp:hp, alive:true, ward:0, hitFlash:0, atkAt:0, stunTimer:0, slowTimer:0, burnTimer:0, bleedTimer:0, shield:0};
 }
 function lanesNewTeam(team){
-  return {team, shards:LANES.START_SHARDS, repairAt:0, wardAt:0, sendAt:0, kills:0, sent:0, assist:0, pk:0, wave:0, nextWave:LANES.FIRST_WAVE_MS,
-    cards:{}, taken:0, mods:lanesModsOf({}), offer:null, offerAt:0, nextCard:LANES.CARD_FIRST_MS,
-    S:[lanesNewStruct(team, 0), lanesNewStruct(team, 1), lanesNewStruct(team, 2)]};
+  const S = []; for(let l = 0; l < 3; l++) for(let k = 0; k < 3; k++) S.push(lanesNewStruct(team, "tower", l, k)); S.push(lanesNewStruct(team, "crystal", -1, 0));
+  return {team, shards:LANES.START_SHARDS, repairAt:0, wardAt:0, sendAt:0, kills:0, sent:0, assist:0, pk:0, tk:0, wave:0, nextWave:LANES.FIRST_WAVE_MS,
+    cards:{}, taken:0, mods:lanesModsOf({}), offer:null, offerAt:0, pendingCards:0, buffs:{dragon:0, rey:0}, superWaves:0, S};
 }
-function lanesCrystal(team){ return LN.team[team].S[2]; }
-function lanesFront(team){ for(const s of LN.team[team].S) if(s.alive) return s; return null; }   // la estructura que hay que derribar ahora
-function lanesExposed(s){ const S = LN.team[s.team].S; for(let k = 0; k < s.order; k++) if(S[k].alive) return false; return true; }
+function lanesCrystal(team){ return LN.team[team].S[9]; }
+function lanesTower(team, l, k){ return LN.team[team].S[l * 3 + k]; }
+// La estructura que le toca derribar a la horda que avanza por el carril `l` contra el equipo `team`.
+function lanesFrontIn(team, l){ for(let k = 0; k < 3; k++){ const s = lanesTower(team, l, k); if(s.alive) return s; } const c = lanesCrystal(team); return c.alive ? c : null; }
+function lanesExposed(s){
+  const T = LN.team[s.team];
+  if(s.kind === "crystal") return T.S.some(x=>x.kind === "tower" && x.order === 2 && !x.alive);   // se expone cuando cae una inhibidora
+  for(let k = 0; k < s.order; k++) if(lanesTower(s.team, s.lane, k).alive) return false;
+  return true;
+}
 function lanesTowersAlive(team){ let n = 0; for(const s of LN.team[team].S) if(s.alive && s.kind === "tower") n++; return n; }
 
 /* ---------------- arranque de la partida (gancho runStart) ---------------- */
+const LANES_ROLE_LANES = [1, 2, 2, 0, -1];   // carril preferido de cada integrante del equipo (para los bots): medio, abajo, abajo, arriba, selva
 function lanesRunStart(){
   const L = LN; if(!L) return;
   L.t = 0; L.wave = 0; L.ended = false; L.winner = -1; L.shots = []; L.feed = []; L.spawnCtx = null;
   L.team = [lanesNewTeam(0), lanesNewTeam(1)]; runLevel = LANES.RUNLEVEL;
   levelDuration = 1e12; levelTimer = 0; midBossSpawned = true; // el motor no cierra niveles ni genera jefes
-  // equipos: el jugador y su compañero en el equipo 0; los otros dos guardianes, el rival
-  const sets = L.assignment || [0, 0, 1, 1];
-  heroes.forEach((h, k)=>{ h.team = h.lane = sets[k] != null ? sets[k] : (k < 2 ? 0 : 1); h._lnProxy = null; });
-  const slot = [0, 0];
-  heroes.forEach(h=>{ const n = slot[h.team]++, c = laneRally(h.team); h.x = c.x + (h.team ? 40 : -40); h.y = c.y + (n ? 70 : -70); h.dead_t = 0; });
+  const half = Math.ceil(heroes.length / 2), slot = [0, 0];
+  heroes.forEach((h, k)=>{
+    h.team = h.lane = (L.assignment && L.assignment[k] != null) ? L.assignment[k] : (k < half ? 0 : 1);
+    h.ln = LANES_ROLE_LANES[slot[h.team]++ % LANES_ROLE_LANES.length]; h._lnProxy = null; h.dead_t = 0;
+    h.mlvl = LANES.LEVEL0; h.mxp = 0; h._recall = null; h._lnBuff = null;
+    lanesApplyLevel(h, LANES.LEVEL0, true);
+    const r = laneRally(h.team); h.x = r.x + (Math.random() - 0.5) * 120; h.y = r.y + (Math.random() - 0.5) * 120;
+  });
+  lanesJungleInit();
   document.getElementById("hud-arena") && (document.getElementById("hud-arena").textContent = "Guerra de Cristales");
   lanesSync(0);
   if(typeof lanesHudShow==="function") lanesHudShow();
@@ -110,6 +129,8 @@ function lanesClamp(ent){
   ent.y = Math.max(b.y0 + r + 30, Math.min(b.y1 - r, ent.y));
 }
 function lanesInside(x, y, m){ return x > m && x < LANES.W - m && y > m && y < LANES.H - m; }
+// Carril más cercano a un punto
+function lanesLaneOf(x, y){ let bl = 1, bd = 1e12; for(let l = 0; l < 3; l++){ const d = laneProject(l, x, y).d; if(d < bd){ bd = d; bl = l; } } return bl; }
 
 /* ---------------- equipos de las habilidades ---------------- */
 // Equipo de quien golpea: héroe, criatura, torre o invocación (que apunta a su dueño).
@@ -118,7 +139,7 @@ function lanesTeamOf(src){
   while(s && n++ < 4){ if(s.team != null) return s.team; s = s.owner || s.src || s.caster || s.from || s.summoner; }
   return null;
 }
-// ¿Esta entidad de `enemies` es hostil para el equipo `team`?
+// ¿Esta entidad de `enemies` es hostil para el equipo `team`? (la selva, equipo 2, es hostil para todos)
 function lanesHostileTo(team, e){ return e.team == null || e.team !== team; }
 let _lnWrapped = null;
 function lanesWrap(){
@@ -135,6 +156,7 @@ function lanesTeamCall(caster, fn){
   const L = LN;
   if(!L || L.inCast || !caster || caster.team == null) return fn();
   L.inCast = true; L.cur = caster;
+  if(caster._recall) caster._recall = null;   // lanzar cualquier cosa corta el regreso a la base
   const H = heroes, E = enemies, A = allies, t = caster.team;
   const hs = H.filter(h=>h.team === t), es = E.filter(e=>lanesHostileTo(t, e)), as = A.filter(a=>a.team === t);
   heroes = hs; enemies = es; allies = as;
@@ -165,8 +187,8 @@ function lanesSync(dt){
       // limitador de ráfaga: ningún héroe pierde más del 40 % de su vida por PvP en un segundo (hay kits de mucha ráfaga)
       const W = h._pvpW || (h._pvpW = {t:L.t, sum:0}); if(L.t - W.t > 1000){ W.t = L.t; W.sum = 0; }
       const dmg = Math.min(lost * LANES.PVP_DMG, Math.max(0, h.maxHp * LANES.PVP_BURST - W.sum)); W.sum += dmg;
-      if(dmg > 0) damageHero(h, dmg, {isPvp:true, from:atk || from, team:lanesTeamOf(from)});
-      if(!h.alive && !h.dead_t) h._lnKiller = lanesTeamOf(from);
+      if(dmg > 0){ if(h._recall) h._recall = null; damageHero(h, dmg, {isPvp:true, from:atk || from, team:lanesTeamOf(from)}); }
+      if(!h.alive && !h.dead_t){ h._lnKiller = lanesTeamOf(from); h._lnKillerHero = from && from.classKey ? from : null; }
       P.hp = LANES_BIG;
     }
     if(P.stunTimer > 0){ h.stunTimer = Math.max(h.stunTimer || 0, P.stunTimer); P.stunTimer = 0; }   // control: se le pasa al héroe real
@@ -193,7 +215,14 @@ function lanesBlocksDamage(e, src){
   if(e.lanesProxy && e.kind === "struct" && !lanesExposed(e.lnRef)){ e.lnRef.hitFlash = 160; return true; }  // torre/cristal protegidos
   return false;
 }
-function lanesDmgMult(e, src){ return 1; }
+// Gancho de damageEnemy: bendiciones de equipo/campamento sobre el daño de salida de un héroe
+function lanesDmgMult(e, src){
+  const L = LN, h = src && src.classKey ? src : null; if(!L || !h || h.team == null || L.mode === "coliseo") return 1;
+  let m = 1; const T = L.team[h.team];
+  if(T && T.buffs && T.buffs.dragon > L.t) m *= 1.10;
+  if(h._lnBuff && h._lnBuff.until > L.t) m *= h._lnBuff.dmg;
+  return m;
+}
 // Gancho de damageHero: la horda propia no le pega a su equipo
 function lanesBlocksHeroDamage(h, src){
   if(!src || src === h || src.isPvp) return false;
@@ -217,24 +246,28 @@ function lanesStructDown(s, byTeam){
   const L = LN; s.alive = false; s.hp = 0; if(s._lnProxy) s._lnProxy.alive = false;
   const foe = 1 - s.team;
   if(s.kind === "crystal"){ lanesFinish(foe, "cristal"); return; }
-  L.team[foe].shards = Math.min(LANES.MAX_SHARDS, L.team[foe].shards + LANES.TOWER_SHARDS);
-  lanesFeed((s.team ? "Ámbar" : "Zafiro") + ": cayó su torre " + (s.order === 0 ? "exterior" : "interior"), foe);
-  showBanner("¡TORRE " + (s.order === 0 ? "EXTERIOR" : "INTERIOR") + " " + (s.team ? "ÁMBAR" : "ZAFIRO") + " DERRIBADA!");
+  L.team[foe].shards = Math.min(LANES.MAX_SHARDS, L.team[foe].shards + LANES.TOWER_SHARDS); L.team[foe].tk++;
+  lanesGrantXP(foe, s.x, s.y, LANES.XP_TOWER);
+  const name = s.order === 0 ? "exterior" : s.order === 1 ? "interior" : "inhibidora";
+  lanesFeed((s.team ? "Ámbar" : "Zafiro") + ": cayó su torre " + name + " (" + LANE_NAMES[s.lane].toLowerCase() + ")", foe);
+  showBanner("¡TORRE " + name.toUpperCase() + " " + (s.team ? "ÁMBAR" : "ZAFIRO") + " DERRIBADA!");
+  if(s.order === 2) showBanner("¡CRISTAL " + (s.team ? "ÁMBAR" : "ZAFIRO") + " EXPUESTO!");
   if(typeof playSfx === "function") try{ playSfx("boom"); }catch(e){}
   for(let i = 0; i < 18; i++) particles.push({x:s.x + (Math.random() - 0.5) * 60, y:s.y + (Math.random() - 0.5) * 60, vx:(Math.random() - 0.5) * 240, vy:-Math.random() * 200, life:700, color:i % 2 ? "#cfd8e4" : "#ff9a4a"});
 }
 function lanesFeed(text, team){ const L = LN; L.feed.push({t:L.t, text, team}); if(L.feed.length > 5) L.feed.shift(); }
 
-/* ---------------- economía y compras ---------------- */
+/* ---------------- economía y compras (oro de equipo) ---------------- */
 function lanesShopOpen(){ return !!LN && !LN.ended; }
 function lanesWeakest(team){ let best = null; for(const s of LN.team[team].S) if(s.alive && s.hp < s.maxHp && (!best || s.maxHp - s.hp > best.maxHp - best.hp)) best = s; return best; }
+function lanesWardTarget(team){ let best = null; for(const s of LN.team[team].S) if(s.alive && lanesExposed(s) && s.ward < 200 && (!best || s.hp / s.maxHp < best.hp / best.maxHp)) best = s; return best; }
 function lanesCanBuy(team, key){
   const L = LN, T = L && L.team[team], it = Object.prototype.hasOwnProperty.call(LANES.SHOP, key) ? LANES.SHOP[key] : null; // (un invitado puede mandar cualquier texto: "__proto__"…)
   if(!T || !it || L.ended) return false;
   if(T.shards < it.cost) return false;
   if(key === "repair" && (!lanesWeakest(team) || L.t < T.repairAt)) return false;
-  if(key === "ward" && (L.t < T.wardAt || !lanesFront(team))) return false;
-  if((key === "swarm" || key === "brute") && (L.t < T.sendAt || !lanesFront(1 - team))) return false;
+  if(key === "ward" && (L.t < T.wardAt || !lanesWardTarget(team))) return false;
+  if((key === "swarm" || key === "brute") && L.t < T.sendAt) return false;
   return true;
 }
 function lanesBuy(team, key, buyer){
@@ -242,26 +275,22 @@ function lanesBuy(team, key, buyer){
   if(!lanesCanBuy(team, key)) return false;
   const L = LN, T = L.team[team], it = LANES.SHOP[key];
   T.shards -= it.cost;
-  if(key === "repair"){ const s = lanesWeakest(team); s.hp = Math.min(s.maxHp, s.hp + 220); T.repairAt = L.t + it.cd; }
-  else if(key === "ward"){ const s = lanesFront(team); s.ward = Math.max(s.ward, 180); T.wardAt = L.t + it.cd; }
-  else { T.sendAt = L.t + it.cd; T.sent++; lanesSendNow(team, key); }
+  const ln = buyer && buyer.x != null ? lanesLaneOf(buyer.x, buyer.y) : 1;
+  if(key === "repair"){ const s = lanesWeakest(team); s.hp = Math.min(s.maxHp, s.hp + 260); T.repairAt = L.t + it.cd; }
+  else if(key === "ward"){ const s = lanesWardTarget(team); s.ward = Math.max(s.ward, 200); T.wardAt = L.t + it.cd; }
+  else { T.sendAt = L.t + it.cd; T.sent++; lanesSendNow(team, key, ln); }
   if(buyer && buyer.stats) buyer.stats.buys = (buyer.stats.buys || 0) + 1;
   if(typeof playSfx === "function") try{ playSfx("pickup"); }catch(e){}
-  showBanner(key === "swarm" || key === "brute" ? "¡Mandaste refuerzos contra la base rival!" : it.name + " ✓");
+  showBanner(key === "swarm" || key === "brute" ? "¡Mandaste refuerzos por el carril " + LANE_NAMES[ln].toLowerCase() + "!" : it.name + " ✓");
   return true;
 }
-function lanesSendNow(team, key){
-  const p = lanePortals(team);
-  if(key === "swarm"){ for(let i = 0; i < 5; i++){ const e = lanesSpawn(team, "bestia_bosque", p[i % 3].x + (i - 2) * 16, p[i % 3].y + (i - 2) * 10, true); if(e){ e.speed *= 1.1; } } }
-  else { const e = lanesSpawn(team, "golem", p[1].x, p[1].y, true); if(e) e.isBrute = true; }
-}
 
-/* ---------------- cartas de horda ---------------- */
+/* ---------------- cartas de horda (una por cada nivel del héroe líder del equipo) ---------------- */
 function lanesHumansOf(team){ return heroes.filter(h=>h.team === team && lanesIsHuman(h)); }
 function lanesOffer(T){
   const L = LN, avail = Object.keys(LANES_CARDS).filter(id=>(T.cards[id] || 0) < LANES_CARDS[id].max), pick = [];
   while(pick.length < 3 && avail.length) pick.push(avail.splice((lanesRand() * avail.length) | 0, 1)[0]);
-  if(!pick.length){ T.nextCard = Infinity; return; }
+  if(!pick.length){ T.pendingCards = 0; return; }
   T.offer = pick; T.offerAt = L.t;
   if(lanesHumansOf(T.team).length) showBanner("¡NUEVA CARTA DE HORDA! Elegí una");
 }
@@ -270,7 +299,7 @@ function lanesPickCard(team, idx){
   const L = LN, T = L && L.team[team];
   if(!T || !T.offer || L.ended) return false;
   const id = T.offer[idx | 0]; if(!id) return false;
-  T.cards[id] = (T.cards[id] || 0) + 1; T.taken++; T.mods = lanesModsOf(T.cards); T.offer = null; T.nextCard = L.t + LANES.CARD_EVERY_MS;
+  T.cards[id] = (T.cards[id] || 0) + 1; T.taken++; T.mods = lanesModsOf(T.cards); T.offer = null;
   lanesFeed((team ? "Ámbar" : "Zafiro") + " potenció su horda: " + LANES_CARDS[id].name, team);
   if(lanesHumansOf(team).length) showBanner(LANES_CARDS[id].name + " ✓");
   return true;
@@ -278,7 +307,7 @@ function lanesPickCard(team, idx){
 function lanesCardTick(){
   const L = LN;
   for(const T of L.team){
-    if(!T.offer && L.t >= T.nextCard && T.taken < LANES.MAX_CARDS) lanesOffer(T);
+    if(!T.offer && T.pendingCards > 0 && T.taken < LANES.MAX_CARDS){ T.pendingCards--; lanesOffer(T); }
     if(T.offer){
       const humans = lanesHumansOf(T.team).length, wait = humans ? LANES.CARD_AUTO_MS : 2500 + (T.team * 700);
       if(L.t - T.offerAt >= wait) lanesPickCard(T.team, (lanesRand() * T.offer.length) | 0);
@@ -286,152 +315,47 @@ function lanesCardTick(){
   }
 }
 
-/* ---------------- la horda de cada equipo ---------------- */
-const LANES_MIX = [["esqueleto", 0.62], ["zombie", 0.26], ["demonio_menor", 0.12]];
-function lanesPickType(){ let r = lanesRand(), acc = 0; for(const [t, w] of LANES_MIX){ acc += w; if(r <= acc) return t; } return "esqueleto"; }
-function lanesMinions(team){ let n = 0; for(const e of enemies) if(e.alive && !e.lanesProxy && e.team === team) n++; return n; }
-function lanesSpawn(team, type, x, y, fromSend){
-  const T = LN.team[team];
-  if(lanesMinions(team) >= LANES.MAX_MINIONS) return null;
-  LN.spawnCtx = {team, x, y};
-  const e = spawnEnemy(type, false, false);
-  LN.spawnCtx = null;
-  if(!e) return null;
-  const m = T.mods, w = Math.max(1, T.wave);
-  e.team = team; e.noLoot = true; e.dropsItem = false; e.fromSend = !!fromSend;
-  e.hp = e.maxHp = Math.round(e.maxHp * (1 + w * 0.09) * 0.6 * m.hp);
-  e.dmg = Math.round(e.dmg * (1 + w * 0.05) * 0.8 * m.dmg);
-  e.speed *= m.speed * (type === "esqueleto" ? 0.82 : 1);
-  e.siegeMult = m.siege; e.regenPct = m.regen;
-  return e;
-}
-function lanesWaveStart(T){
-  const L = LN, m = T.mods, team = T.team;
-  T.wave++; T.nextWave += LANES.WAVE_MS * m.pace; L.wave = Math.max(L.wave, T.wave);
-  const n = Math.min(26, 5 + T.wave * 1.1 + m.count) | 0, brutes = (T.wave % 3 === 0 ? 1 : 0) + m.brute, portals = lanePortals(team);
-  for(let i = 0; i < n; i++){ const p = portals[i % 3]; lanesSpawn(team, lanesPickType(), p.x + (lanesRand() - 0.5) * 70, p.y + (lanesRand() - 0.5) * 60); }
-  for(let b = 0; b < brutes; b++){ const e = lanesSpawn(team, "golem", portals[1].x, portals[1].y + (b - (brutes - 1) / 2) * 50); if(e) e.isBrute = true; }
-  const behind = lanesTowersAlive(team) + 1 < lanesTowersAlive(1 - team) + 1;   // remontada: quien perdió torres cobra un poco más
-  T.shards = Math.min(LANES.MAX_SHARDS, T.shards + LANES.WAVE_SHARDS + (behind ? 6 : 0)); if(behind) T.assist++;
-}
-// gancho placeSpawn: la criatura sale del portal de su equipo
-function lanesPlaceSpawn(e){
-  const c = LN && LN.spawnCtx; if(!c) return;
-  e.team = c.team; e.x = c.x; e.y = c.y;
-}
-
-/* ---------------- IA de las criaturas y de los bots ---------------- */
-// Criatura: el héroe rival vivo más cercano si está a tiro; si no, la estructura que toca derribar del rival.
-function lanesEnemyTarget(e){
-  const L = LN; if(!L || e.team == null) return null;
-  const foe = 1 - e.team;
-  let best = null, bd = 380;
-  for(const h of heroes){ if(!h.alive || h.team !== foe || h.stealthTimer > 0) continue; const d = Math.hypot(h.x - e.x, h.y - e.y); if(d < bd){ bd = d; best = h; } }
-  return best || lanesFront(foe);
-}
-// Bots: a quién siguen. El humano vivo de su equipo o, si no hay, la "línea de frente" de su horda (sin entrar al alcance de las torres solos).
-function lanesLeaderFor(h){
-  if(LN.mode === "coliseo") return colLeaderFor(h);
-  for(const o of heroes) if(o !== h && o.team === h.team && o.alive && lanesIsHuman(o)) return o;
-  const L = LN, T = h.team, c = L.rallyObj || (L.rallyObj = [null, null]);
-  const o = c[T] || (c[T] = {isRally:true, alive:true, hp:1, maxHp:1, radius:20, x:0, y:0, stunTimer:0, slowTimer:0});
-  let p = laneRally(T);
-  const F = lanesFront(1 - T);
-  if(h.hp > h.maxHp * 0.35 && F){
-    let lead = null;
-    for(const e of enemies){ if(!e.alive || e.lanesProxy || e.team !== T) continue; if(!lead || (T ? e.x < lead.x : e.x > lead.x)) lead = e; }
-    let near = 0; for(const e of enemies) if(e.alive && !e.lanesProxy && e.team === T && Math.hypot(e.x - F.x, e.y - F.y) < 480) near++;
-    const margin = F.kind === "tower" ? (near >= 3 ? 150 : LANES.TOWER_RANGE + 30) : 230;
-    if(lead){ p = {x:lead.x, y:LANES.MID_Y + (h.y > LANES.MID_Y ? 60 : -60)}; p.x = T ? Math.max(p.x, F.x + margin) : Math.min(p.x, F.x - margin); }
-    else { const t0 = laneTowerPos(T, 0); p = {x:t0.x + (T ? -90 : 90), y:LANES.MID_Y}; }
-  }
-  o.x = p.x; o.y = p.y; return o;
-}
-// Gancho botTarget: héroe rival débil > criatura > estructura (solo si la horda propia la acompaña)
-function lanesBotTarget(h, range){
-  if(LN.mode === "coliseo") return colBotTarget(h, range);
-  let best = null, bs = -1e9;
-  for(const e of enemies){
-    if(!e.alive || e.team === h.team) continue;
-    const d = distance(h, e); if(d > range) continue;
-    let s;
-    if(e.lanesProxy && e.kind === "hero"){ s = 400 - d * 0.4 + (1 - e.lnRef.hp / e.lnRef.maxHp) * 300; }
-    else if(e.lanesProxy){
-      if(!lanesExposed(e.lnRef)) continue;
-      let own = 0; for(const m of enemies) if(m.alive && !m.lanesProxy && m.team === h.team && Math.hypot(m.x - e.x, m.y - e.y) < 450) own++;
-      if(e.lnRef.kind === "tower" && own < 2) continue;
-      s = 120 - d * 0.2;
-    } else s = 200 - d * 0.5;
-    if(s > bs){ bs = s; best = e; }
-  }
-  return best;
-}
-
 /* ---------------- torres ---------------- */
 function lanesTowerTick(s){
-  const L = LN; if(!s.alive || L.t < s.atkAt) return;
-  const foe = 1 - s.team, R = LANES.TOWER_RANGE, dmg = LANES.TOWER_DMG * (1 + Math.floor(L.t / 60000) * 0.12);
+  const L = LN; if(!s.alive || s.kind !== "tower" || L.t < s.atkAt) return;
+  const foe = 1 - s.team, R = LANES.TOWER_RANGE, dmg = LANES.TOWER_DMG * (1 + Math.floor(L.t / 90000) * 0.1);
   let tgt = null, bd = R;
   for(const e of enemies){ if(!e.alive || e.lanesProxy || e.team !== foe) continue; const d = Math.hypot(e.x - s.x, e.y - s.y); if(d < bd){ bd = d; tgt = e; } }
   if(tgt){
     s.atkAt = L.t + LANES.TOWER_CD; tgt.hp -= dmg * 3; tgt.hitFlash = 120; L.shots.push({x1:s.x, y1:s.y - 70, x2:tgt.x, y2:tgt.y - 14, t:L.t, team:s.team});
-    if(tgt.hp <= 0){ tgt.lastHitBy = null; tgt.noLoot = true; killEnemy(tgt); }
+    if(tgt.hp <= 0){ tgt.lastHitBy = null; tgt._killTeam = s.team; tgt.noLoot = true; killEnemy(tgt); }
     return;
   }
   let hero = null; bd = R;
   for(const h of heroes){ if(!h.alive || h.team !== foe || h.stealthTimer > 0) continue; const d = Math.hypot(h.x - s.x, h.y - s.y); if(d < bd){ bd = d; hero = h; } }
   if(hero){
     s.atkAt = L.t + LANES.TOWER_CD; L.shots.push({x1:s.x, y1:s.y - 70, x2:hero.x, y2:hero.y - 14, t:L.t, team:s.team});
+    if(hero._recall) hero._recall = null;
     damageHero(hero, dmg, {isPvp:true, from:s, team:s.team});
-    if(!hero.alive && !hero.dead_t) hero._lnKiller = s.team;
+    if(!hero.alive && !hero.dead_t){ hero._lnKiller = s.team; hero._lnKillerHero = null; }
   }
 }
 
 /* ---------------- ciclo de la partida (gancho update) ---------------- */
+function lanesRespawnMs(h){ return Math.min(45000, LANES.RESPAWN_MS + (h.mlvl || 1) * LANES.RESPAWN_PER_LEVEL + Math.floor(LN.t / 60000) * LANES.RESPAWN_PER_MIN); }
 function lanesUpdate(dt){
   const L = LN; if(!L || L.ended) return;
   L.t += dt;
   lanesSync(dt);
   if(L.ended) return;
   for(const T of L.team) if(L.t >= T.nextWave) lanesWaveStart(T);
+  lanesJungleTick(dt);
   lanesCardTick();
   for(const T of L.team) for(const s of T.S){ if(s.hitFlash > 0) s.hitFlash -= dt; lanesTowerTick(s); if(L.ended) return; }
   for(let i = L.shots.length - 1; i >= 0; i--) if(L.t - L.shots[i].t > 220) L.shots.splice(i, 1);
-  // la horda que tiene "Carne que se cierra" se cura sola
-  for(const e of enemies){ if(e.alive && !e.lanesProxy && e.regenPct && e.hp < e.maxHp) e.hp = Math.min(e.maxHp, e.hp + e.maxHp * e.regenPct * dt / 1000); }
-  // reaparición: caer cuesta tiempo (crece con el reloj) y regalo para el equipo rival
-  for(const h of heroes){
-    if(h.alive){
-      h.dead_t = 0;
-      const c = laneCrystalPos(h.team);   // curación en la base propia
-      if(Math.hypot(h.x - c.x, h.y - c.y) < 260 && h.hp < h.maxHp){ h.hp = Math.min(h.maxHp, h.hp + h.maxHp * LANES.BASE_HEAL * dt / 1000); h.energy = Math.min(h.maxEnergy || 100, (h.energy || 0) + 12 * dt / 1000); }
-      continue;
-    }
-    if(!h.dead_t){
-      h.dead_t = L.t; h._respawnAt = L.t + LANES.RESPAWN_MS + Math.floor(L.t / 60000) * LANES.RESPAWN_PER_MIN;
-      const kt = h._lnKiller; h._lnKiller = null;
-      if(kt != null && kt !== h.team){ L.team[kt].shards = Math.min(LANES.MAX_SHARDS, L.team[kt].shards + LANES.HERO_KILL_SHARDS); L.team[kt].pk++; lanesFeed((kt ? "Ámbar" : "Zafiro") + " derribó a " + heroLabel(h), kt); }
-      continue;
-    }
-    if(L.t >= h._respawnAt){
-      const c = laneRally(h.team); h.x = c.x + (Math.random() - 0.5) * 120; h.y = c.y + (Math.random() - 0.5) * 120;
-      reviveHero(h, null); h.hp = h.maxHp; h.energy = h.maxEnergy; h.invulnTimer = 2500; h.dead_t = 0;
-      if(h._net) h._net.posAuth++; // un invitado acepta la nueva posición
-    }
-  }
+  lanesMinionsTick(dt);
+  lanesHeroTick(dt);
   // Eclipse: los dos cristales se apagan cada vez más rápido (aunque sus torres sigan en pie)
-  if(L.t >= LANES.ECLIPSE_MS){ const k = 4 * (1 + (L.t - LANES.ECLIPSE_MS) / 60000) * dt / 1000; for(const T of L.team) lanesStructDamage(T.S[2], k, null); }
+  if(L.t >= LANES.ECLIPSE_MS){ const k = 5 * (1 + (L.t - LANES.ECLIPSE_MS) / 60000) * dt / 1000; for(const T of L.team) lanesStructDamage(T.S[9], k, null); }
   if(!L.ended && L.t >= LANES.TIME_LIMIT_MS){
-    const sc = t=>lanesTowersAlive(t) * 10000 + L.team[t].S[2].hp, a = sc(0), b = sc(1);
+    const sc = t=>lanesTowersAlive(t) * 10000 + L.team[t].S[9].hp, a = sc(0), b = sc(1);
     lanesFinish(Math.abs(a - b) < 1 ? -1 : (a > b ? 0 : 1), "tiempo");
   }
-}
-function lanesEnemyKilled(e){
-  const L = LN; if(!L || L.ended || e.lanesProxy || e.team == null) return;
-  const k = e.lastHitBy, kt = k ? lanesTeamOf(k) : null;
-  if(kt == null || kt === e.team) return;
-  const T = L.team[kt]; T.kills++;
-  T.shards = Math.min(LANES.MAX_SHARDS, T.shards + (e.isBrute ? LANES.ELITE_SHARDS : LANES.KILL_SHARDS));
 }
 
 /* ---------------- final ---------------- */
@@ -445,7 +369,7 @@ function lanesFinish(winnerTeam, why){
   setTimeout(()=>{ if(LN === L && typeof lanesShowResult === "function") lanesShowResult(); }, 1600);
 }
 function lanesNoRevive(a, by){ return !!LN && LN.mode === "coliseo" && !!LN.col && LN.col.phase === "fight"; }
-function lanesOnPlayerDeath(){ if(LN && LN.mode === "coliseo") return; /* reaparece solo (lanesUpdate): nunca hay derrota por caer */ showBanner("Caíste · volvés en " + Math.round((LN && player && player._respawnAt ? Math.max(0, player._respawnAt - LN.t) : LANES.RESPAWN_MS) / 1000) + " s"); }
+function lanesOnPlayerDeath(){ if(LN && LN.mode === "coliseo") return; /* reaparece solo (lanesHeroTick): nunca hay derrota por caer */ showBanner("Caíste · volvés en " + Math.round((LN && player && player._respawnAt ? Math.max(0, player._respawnAt - LN.t) : LANES.RESPAWN_MS) / 1000) + " s"); }
 
 ARENA_DEFS.convergencia = {
   key:"convergencia",

@@ -13,10 +13,12 @@ function lanesNetState(){
   const cards = [], hp = [], wd = [], al = [];
   for(const T of L.team){ for(const id of LANES_CARD_IDS) cards.push(T.cards[id] || 0); for(const x of T.S){ hp.push(Math.round(x.hp*10)/10); wd.push(Math.round(x.ward)); al.push(x.alive ? 1 : 0); } }
   return {t:Math.round(L.t), wave:L.wave, ended:L.ended ? 1 : 0, w:L.winner, why:L.why || "",
-    team:L.team.map(T=>({sh:T.shards, ra:Math.round(T.repairAt), wa:Math.round(T.wardAt), sa:Math.round(T.sendAt), k:T.kills, se:T.sent, as:T.assist, pk:T.pk, wv:T.wave, nw:Math.round(T.nextWave),
-      tk:T.taken, oa:Math.round(T.offerAt), nc:T.nextCard === Infinity ? -1 : Math.round(T.nextCard)})),
+    team:L.team.map(T=>({sh:T.shards, ra:Math.round(T.repairAt), wa:Math.round(T.wardAt), sa:Math.round(T.sendAt), k:T.kills, se:T.sent, as:T.assist, pk:T.pk, tw:T.tk, wv:T.wave, nw:Math.round(T.nextWave),
+      tk:T.taken, oa:Math.round(T.offerAt), pc:T.pendingCards, sw:T.superWaves})),
     hp, wd, al, cd:cards, of:L.team.map(T=>T.offer ? T.offer.join(",") : ""),
-    sh:L.shots.slice(-6).reduce((a, x)=>a.concat([Math.round(x.x1), Math.round(x.y1), Math.round(x.x2), Math.round(x.y2), Math.round(L.t - x.t), x.team]), []),
+    bf:L.team.reduce((a, T)=>a.concat([Math.round(T.buffs.dragon), Math.round(T.buffs.rey)]), []),
+    ep:(L.epics || []).reduce((a, e)=>a.concat([e.mon && e.mon.alive ? 1 : 0, Math.round(e.respawnAt)]), []),
+    sh:L.shots.slice(-8).reduce((a, x)=>a.concat([Math.round(x.x1), Math.round(x.y1), Math.round(x.x2), Math.round(x.y2), Math.round(L.t - x.t), x.team]), []),
     fd:L.feed.map(f=>f.team + "|" + Math.round(f.t) + "|" + f.text)};
 }
 function lanesApplyNetState(s){
@@ -25,11 +27,13 @@ function lanesApplyNetState(s){
   const wasEnded = L.ended; L.ended = !!s.ended;
   const N = LANES_CARD_IDS.length;
   s.team.forEach((d, i)=>{ const T = L.team[i]; if(!T) return;
-    T.shards = d.sh; T.repairAt = d.ra; T.wardAt = d.wa; T.sendAt = d.sa; T.kills = d.k; T.sent = d.se; T.assist = d.as; T.pk = d.pk; T.wave = d.wv; T.nextWave = d.nw;
+    T.shards = d.sh; T.repairAt = d.ra; T.wardAt = d.wa; T.sendAt = d.sa; T.kills = d.k; T.sent = d.se; T.assist = d.as; T.pk = d.pk; T.tk = d.tw; T.wave = d.wv; T.nextWave = d.nw;
     T.cards = {}; LANES_CARD_IDS.forEach((id, k)=>{ const n = s.cd && s.cd[i * N + k]; if(n) T.cards[id] = n; });
-    T.taken = d.tk; T.offerAt = d.oa; T.nextCard = d.nc < 0 ? Infinity : d.nc; T.mods = lanesModsOf(T.cards);
+    T.taken = d.tk; T.offerAt = d.oa; T.pendingCards = d.pc || 0; T.superWaves = d.sw || 0; T.mods = lanesModsOf(T.cards);
     const o = s.of && s.of[i]; T.offer = o ? o.split(",") : null;
-    T.S.forEach((S, k)=>{ const j = i * 3 + k, hp = s.hp ? s.hp[j] : S.hp; if(hp < S.hp - 0.5) S.hitFlash = 200; S.hp = hp; S.ward = s.wd ? s.wd[j] : 0; S.alive = s.al ? !!s.al[j] : true; }); });
+    if(s.bf){ T.buffs.dragon = s.bf[i * 2]; T.buffs.rey = s.bf[i * 2 + 1]; }
+    T.S.forEach((S, k)=>{ const j = i * 10 + k, hp = s.hp ? s.hp[j] : S.hp; if(hp < S.hp - 0.5) S.hitFlash = 200; S.hp = hp; S.ward = s.wd ? s.wd[j] : 0; S.alive = s.al ? !!s.al[j] : true; }); });
+  L.epics = LANES_EPICS.map((e, i)=>({id:e.id, mon:(s.ep && s.ep[i * 2]) ? {alive:true} : null, respawnAt:s.ep ? s.ep[i * 2 + 1] : 0}));
   L.shots = []; for(let k = 0; s.sh && k + 5 < s.sh.length; k += 6) L.shots.push({x1:s.sh[k], y1:s.sh[k+1], x2:s.sh[k+2], y2:s.sh[k+3], t:s.t - s.sh[k+4], team:s.sh[k+5]});
   L.feed = (s.fd || []).map(f=>{ const p = String(f).split("|"); return {team:+p[0], t:+p[1], text:p.slice(2).join("|")}; });
   if(L.ended && !wasEnded && L.role === "guest") lanesGuestFinished();
@@ -54,6 +58,7 @@ function lanesGuestEnd(d){
 }
 // Compra: el invitado la pide; el anfitrión la valida (equipo, fragmentos, enfriamientos, ventana).
 function lanesNetBuyRequest(key){ if(netIsGuest()) { netSendToHost({k:"ln-buy", key}); return true; } return false; }
+function lanesNetRecallRequest(){ if(netIsGuest()){ netSendToHost({k:"ln-recall"}); return true; } return false; }
 function lanesNetCardRequest(i){ if(netIsGuest()){ netSendToHost({k:"ln-card", i}); return true; } return false; }
 Object.assign(ARENA_DEFS.convergencia, {netState:lanesNetState, applyNetState:lanesApplyNetState, guestStart:lanesGuestStart, guestUpdate:lanesGuestUpdate});
 
@@ -66,7 +71,7 @@ async function lanesOnlineCreate(champ){
   if(champ && CLASSES[champ]) selectedClass = champ;
   currentArena = "convergencia";
   setState("prep"); if(typeof renderPrepSummary === "function") renderPrepSummary();
-  try{ await netCreateRoom("convergencia", selectedClass, LANES.LEVEL, null); }
+  try{ await netCreateRoom("convergencia", selectedClass, LANES.LEVEL0, null); }
   catch(e){ if(LN && LN.lobby) lanesRestore(); setState("mainmenu"); if(typeof renderMainMenu === "function") renderMainMenu(); if(!(e && e.handled)) showNetToast("⚠ No se pudo crear la sala: " + (e && e.message || e)); return false; }
   return true;
 }
@@ -75,7 +80,7 @@ async function lanesOnlineJoin(code, champ){
   if(LN) lanesRestore();
   lanesBegin("lobby");
   if(champ && CLASSES[champ]) selectedClass = champ;
-  try{ await netJoinRoom(code, selectedClass, LANES.LEVEL, null); }
+  try{ await netJoinRoom(code, selectedClass, LANES.LEVEL0, null); }
   catch(e){ if(LN && LN.lobby) lanesRestore(); if(!(e && e.handled)) showNetToast("⚠ No se pudo unir: " + (e && e.message || e)); return false; }
   return true;
 }
