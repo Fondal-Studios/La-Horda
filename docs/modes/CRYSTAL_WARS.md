@@ -132,3 +132,29 @@ Resultados finales del gate CW-3 (804 partidas por lote, 1.608 en total):
 | Offset 100000 | 42% | 47% | 56% | 55% | 46–54% | 49% | 259 s | PASS |
 
 El 100% (redondeado) de las partidas de composición terminan por cristal; empates 1% / 0%. Son simulaciones con bots, no una evaluación de diversión ni balance competitivo humano.
+
+## Guerra de Cristales en el motor real — versión MOBA (12/10/2026)
+Reemplaza al modo de "dos carriles separados". Código: `js/arenas/lanes/` (el motor de la campaña, no el simulador simplificado).
+
+**Qué es.** Un mapa ancho con dos bases (Zafiro a la izquierda, Ámbar a la derecha). Cada base tiene **dos torres y un cristal**;
+se derriban en orden (exterior → interior → cristal; las demás están "PROTEGIDAS"). Las torres disparan a la horda rival primero y
+a los héroes rivales después. **PvP permitido**. Las dos hordas marchan solas contra la base contraria; hay que defenderse de ella.
+**Cartas de horda:** cada ~55 s el equipo elige 1 de 3 cartas que potencian a *su propia horda* (vida, daño, velocidad, cantidad,
+asedio, colosos, oleadas más rápidas, regeneración) en lugar de potenciar al héroe. Si nadie elige, se elige sola a los 15 s.
+La tienda de fragmentos sigue (reparar, barrera, mandar acechadores/coloso).
+
+**Cómo funciona el PvP sin tocar ningún kit.** Cada héroe tiene un *avatar* invisible dentro de `enemies`; como todas las
+habilidades de la campaña golpean a `enemies`, los 29 campeones funcionan en PvP. El daño que pierde el avatar se le pasa al héroe
+real (`lanesSync`, escalado por `LANES.PVP_DMG`). Torres y cristales funcionan igual. Mientras un héroe lanza algo, `heroes`/`allies`
+son solo su equipo y `enemies` solo sus rivales (`lanesTeamCall`): curas, escudos y áreas caen del lado correcto. Redes de seguridad:
+`damageEnemy` ignora el fuego amigo y las estructuras protegidas; `damageHero` ignora a la horda propia; los proyectiles atraviesan
+a los propios.
+
+**HUD.** El mismo de la campaña. Se suman: marcador con torres en pie, mapa completo en miniatura (bases, torres, hordas, héroes y
+tu cámara), carta de horda (tres botones grandes), tienda y registro de eventos. Todo con letra ≥ 14 px.
+
+**Pruebas** (`tools/lanes/`): `sim.js` (partidas completas: sin NaN, sin fuego amigo, cartas, estructuras), `kits.js` (los 29 campeones
+con todas sus habilidades en el centro del mapa frente a un rival), `flow.js` (UI en 844×390 y 667×375), `tools/net-test/lanes_coop.js`
+(2 clientes reales con relay).
+
+**Pendiente / límites.** Balance con humanos sin medir (solo bots); sin cola pública (salas por código); relay limitado a 4 humanos.
