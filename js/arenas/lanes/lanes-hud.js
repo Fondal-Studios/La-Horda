@@ -88,6 +88,7 @@ function lanesHudTick(){
       for(const b of q(".ln-cards-row").querySelectorAll(".ln-card")) b.addEventListener("click", ()=>{ const i = +b.dataset.i; if(!lanesNetCardRequest(i)) lanesPickCard(me, i); lanesHudTick(); });
     }
     cards.classList.remove("hidden");
+    if(!q(".ln-shop").classList.contains("hidden")){ q(".ln-shop").classList.add("hidden"); el.classList.remove("ln-shop-open"); q(".ln-chip").setAttribute("aria-expanded", "false"); }   // la carta manda: cierra la tienda
     q(".ln-cards-timer u").style.width = Math.max(0, 100 - (L.t - T.offerAt) / LANES.CARD_AUTO_MS * 100) + "%";
   } else { cards.classList.add("hidden"); _lnOfferKey = ""; }
   // horda propia: cartas ya tomadas
