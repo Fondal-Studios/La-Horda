@@ -51,13 +51,17 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
   // final rápido: el cristal rival cae → resultado con estadísticas
   await p.evaluate(()=>{for(let l=0;l<3;l++)for(let k=0;k<3;k++)LN.team[1].S[l*3+k].alive=false;LN.team[1].S[9].hp=1;lanesStructDamage(LN.team[1].S[9],50,0);});
   await p.waitForSelector('#lanes-result:not(.hidden)',{timeout:8000});
-  assert.equal(await p.locator('#lanes-result tbody tr').count(),10,'estadísticas de 10 jugadores');assert.match(await p.textContent('#lanes-result h2'),/VICTORIA/);
+  assert.equal(await p.locator('#lanes-result tbody tr').count(),10,'estadísticas de 10 jugadores');assert.match(await p.textContent('#lanes-result h2'),/VICTORIA/);assert.match(await p.textContent('#lanes-result .rk-line'),/RANGO GUERRA DE CRISTALES · .* \(\+\d+\) · contra bots vale la mitad/,'el resultado muestra el cambio de rango');
   // revancha
   await p.click('#lanes-result .ln-again');await p.waitForFunction(()=>state==='playing'&&lanesOn()&&LN.t<2000,null,{timeout:20000});
   // abandonar por la pausa
   await p.click('#pause-btn');await p.click('#quit-btn');await p.waitForTimeout(400);await p.getByRole('button',{name:'Abandonar',exact:true}).click();
   await p.waitForFunction(()=>state==='mainmenu'&&!lanesOn(),null,{timeout:10000});
-  assert.equal(await p.evaluate(()=>localStorage.getItem('laHordaSave_v1')),before,'guardado intacto al volver');
+  // el guardado real queda igual salvo el RANGO (save.ladder): la victoria contra bots anotó 1 partida de Guerra de Cristales; la revancha abandonada enseguida (<20 s) no cuenta
+  const sansRank=t=>{const o=JSON.parse(t);delete o.ladder;return JSON.stringify(o);};
+  const after=await p.evaluate(()=>localStorage.getItem('laHordaSave_v1'));
+  assert.equal(sansRank(after),sansRank(before),'guardado intacto al volver (salvo el rango)');
+  const lad=JSON.parse(after).ladder;assert.equal(lad.modes.cw.games,1,'la victoria se anotó en el rango de Guerra de Cristales');assert.equal(lad.modes.cw.wins,1);assert(lad.modes.cw.mmr>1000&&lad.modes.cw.mmr<=1010,'contra bots vale la mitad: '+lad.modes.cw.mmr);assert.equal(lad.modes.cw.abandons,0);
   assert.equal(await p.evaluate(()=>typeof save.champions.mago.level),'number');assert.notEqual(await p.evaluate(()=>save.champions.mago.level),10,'el guardado real volvió');
   assert.deepEqual(errs,[],'sin errores de página');console.log(`PASS lanes flow ${w}x${h}`);await ctx.close();
  }

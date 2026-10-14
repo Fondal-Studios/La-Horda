@@ -106,7 +106,8 @@ function showResult(){if(shownResult)return;shownResult=true;const me=sim.heroes
  const rows=sim.heroes.map(h=>{const st=h.stats||{dmg:0,kills:0,heal:0,deaths:0,sent:0};return '<tr'+(h.slot===slot?' class="me"':'')+'><td>'+(mvpOf(h.team)===h?'★ ':'')+escapeHTML(h.name)+'</td><td>'+(h.team?'Ámbar':'Zafiro')+'</td><td>'+Math.round(st.dmg)+'</td><td>'+st.kills+'</td><td>'+Math.round(st.heal)+'</td><td>'+st.deaths+'</td><td>'+st.sent+'</td></tr>';}).join('');
  $('result-stats').innerHTML='<table><thead><tr><th>Jugador</th><th>Equipo</th><th>Daño</th><th>Bajas</th><th>Cura</th><th>Caídas</th><th>Envíos</th></tr></thead><tbody>'+rows+'</tbody></table><small>★ = mejor jugador de cada equipo.</small>';
  let rec=recordGet();if(sim.winner!==-1&&!offlineForRecord()){rec.games=(rec.games||0)+1;if(won){rec.wins=(rec.wins||0)+1;rec.streak=(rec.streak||0)+1;rec.best=Math.max(rec.best||0,rec.streak);}else rec.streak=0;recordSet(rec);}
- $('result-record').textContent=rec.games?('Tu racha: '+(rec.streak||0)+' · Mejor racha: '+(rec.best||0)+' · Victorias: '+(rec.wins||0)+' de '+rec.games+' partidas'):'';
+ let rankLine='';if(!offline&&typeof ladderOnLegacy==='function'){const humansOpp=sim.heroes.filter(h=>h.team!==team&&!h.bot).length,r=ladderOnLegacy({mode:isColiseum()?'col':'cw',outcome:sim.winner===-1?'draw':won?'win':'loss',humansOpp,id:matchId,durationMs:Math.round((sim.time||0)*1000)});rankLine=r&&typeof ladderResultLine==='function'?ladderResultLine(r):'';} // RANGO: solo salas en línea (el entrenamiento contra bots no cuenta)
+ $('result-record').textContent=(rec.games?('Tu racha: '+(rec.streak||0)+' · Mejor racha: '+(rec.best||0)+' · Victorias: '+(rec.wins||0)+' de '+rec.games+' partidas'):'')+(rankLine?(rec.games?' · ':'')+rankLine:'');
  $('rematch').textContent=offline?'VOLVER A ENTRENAR':host?'VOLVER A LA SALA':'ESPERAR EN LA SALA';$('result').showModal();beep(sim.winner===team?660:180);}
 function offlineForRecord(){return offline;} // el entrenamiento contra bots no suma a la racha
 function abort(reason){if(sim)sim.ended=true;shownResult=true;$('result-title').textContent='PARTIDA INTERRUMPIDA';$('result-detail').textContent=reason+' No se registra victoria ni derrota.';if(!$('result').open)$('result').showModal();}
@@ -185,6 +186,7 @@ function open(o){
 // Sale de la pantalla: si hay una partida en curso pide confirmar. Devuelve false si el jugador se queda.
 function close(){
  if(sim&&!sim.ended&&!confirm('¿Salir de la partida? Si sos anfitrión, se cerrará para todos.'))return false;
+ if(sim&&!sim.ended&&!offline&&typeof ladderOnLegacy==='function'){const me=sim.heroes[slot];if(me)ladderOnLegacy({mode:isColiseum()?'col':'cw',outcome:'loss',abandon:true,humansOpp:sim.heroes.filter(h=>h.team!==me.team&&!h.bot).length,id:matchId,durationMs:Math.round((sim.time||0)*1000)});} // RANGO: irse de una sala en plena partida es abandono
  disconnect();sim=null;closeResult();if(helpDialog.open)helpDialog.close();showLobby();keys={};joy={x:0,y:0};active=false;return true;
 }
 $('back').onclick=()=>{if(close()!==false&&typeof window.CrystalWarsUI.onExit==='function')window.CrystalWarsUI.onExit();};

@@ -124,8 +124,9 @@ function lanesShowResult(){
   if(!r){ r = document.createElement("div"); r.id = "lanes-result"; r.className = "lanes-result hidden"; document.body.appendChild(r); }
   const mine = player.team != null ? player.team : 0, won = L.winner === mine, draw = L.winner === -1;
   const rows = heroes.map(h=>{ const s = h.stats || {}; return '<tr' + (h === player ? ' class="me"' : '') + '><td>' + heroLabel(h) + '</td><td>' + (h.team ? "Ámbar" : "Zafiro") + '</td><td>' + (h.mlvl || "-") + '</td><td>' + Math.round(s.dmgDealt || s.dmg || 0) + '</td><td>' + (s.kills || 0) + '</td><td>' + Math.round(s.healed || s.heal || 0) + '</td></tr>'; }).join("");
+  const rk = typeof ladderOnLanesResult === "function" ? ladderResultLine(ladderOnLanesResult(L)) : "";   // RANGO: se anota una sola vez por partida
   r.innerHTML = '<div class="ln-res-card"><div class="ln-res-kicker">GUERRA DE CRISTALES</div><h2>' + (draw ? "EMPATE" : won ? "¡VICTORIA!" : "CRISTAL CAÍDO") + '</h2>' +
-    '<p>Zafiro ' + Math.ceil(L.team[0].S[9].hp) + ' · Ámbar ' + Math.ceil(L.team[1].S[9].hp) + ' · torres en pie ' + lanesTowersAlive(0) + '–' + lanesTowersAlive(1) + ' · bajas de héroes ' + L.team[0].pk + '–' + L.team[1].pk + ' · ' + (L.why === "tiempo" ? "decidida por tiempo" : "cristal destruido") + '</p>' +
+    '<p>Zafiro ' + Math.ceil(L.team[0].S[9].hp) + ' · Ámbar ' + Math.ceil(L.team[1].S[9].hp) + ' · torres en pie ' + lanesTowersAlive(0) + '–' + lanesTowersAlive(1) + ' · bajas de héroes ' + L.team[0].pk + '–' + L.team[1].pk + ' · ' + (L.why === "tiempo" ? "decidida por tiempo" : "cristal destruido") + '</p>' + (rk ? '<p class="rk-line">' + rk + '</p>' : '') +
     '<table><thead><tr><th>Jugador</th><th>Equipo</th><th>Nv</th><th>Daño</th><th>Bajas</th><th>Cura</th></tr></thead><tbody>' + rows + '</tbody></table>' +
     '<div class="ln-res-btns"><button type="button" class="ln-again">REVANCHA</button><button type="button" class="ln-exit">VOLVER AL MENÚ</button></div></div>';
   r.classList.remove("hidden");

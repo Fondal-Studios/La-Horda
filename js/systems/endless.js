@@ -580,6 +580,7 @@ function endlessEndRun(reason){
     L.lvl1 = (save.champions[cls]||{}).level || L.lvl0;
     L.gemsGained = (save.gems||0) - L.gems0;
     L.timeMs = runElapsedMs||0;
+    if(typeof ladderOnEndless==="function"){ try{ ladderOnEndless(L, EN.endReason); }catch(e){ console.error(e); } }   // RANGO (js/systems/ranking-hooks.js)
     persist(); if(typeof persistNow==="function") persistNow();
     // logros / desafíos / XP de cuenta (T6): la partida cuenta como jugada (siempre termina en derrota o abandono)
     if(typeof questsOnRunEnd==="function"){ try{ L.questSum = questsOnRunEnd(false, {abandon:EN.endReason==="quit", endless:true}) || L.questSum; }catch(e){ console.error(e); } }
@@ -619,6 +620,7 @@ function endlessShowResults(){
     <div class="en-res-big"><div><span>Ronda</span><b>${EN.round}</b></div><div><span>Puntaje</span><b>${_enFmt(EN.score)}</b></div></div>
     <div class="en-res-badges">${badge(L.newGlobal, "¡NUEVO RÉCORD GLOBAL!")}${badge(L.newGuardian && !L.newGlobal, `¡Récord de ${(CLASSES[cls]||{}).name||cls}!`)}${badge(L.newWeek && !L.newGlobal && !L.newGuardian, "¡Mejor de la semana!")}</div>
     <div class="en-lb-line hidden" id="en-lb-line"></div>
+    ${L.rankRes && typeof ladderResultLine==="function" && ladderResultLine(L.rankRes) ? `<div class="en-lb-line rk-line" id="en-rank-line">${ladderResultLine(L.rankRes)}</div>` : ""}
     ${L.questSum ? `<div class="qs-run-sum"><b>🏆 DESAFÍOS</b><span>+${L.questSum.xp} XP de cuenta</span>${L.questSum.pass ? `<span>Pase Nv. ${L.questSum.pass.level}${L.questSum.passUp > 0 ? " ▲" : ""}</span>` : ""}${L.questSum.chal > 0 ? `<span>${L.questSum.chal} desafío${L.questSum.chal>1?"s":""} ✔</span>` : ""}${L.questSum.ach > 0 ? `<span>${L.questSum.ach} logro${L.questSum.ach>1?"s":""} ✔</span>` : ""}</div>` : ""}
     <div class="en-res-btns">
       ${guest ? "" : `<button class="btn en-again" id="en-again-btn">⟳ UNA MÁS</button>`}

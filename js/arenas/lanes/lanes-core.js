@@ -37,6 +37,7 @@ function lanesBegin(role, seed, mode){
 // Devuelve TODO al estado anterior (guardado real incluido), sin cambiar de pantalla.
 function lanesRestore(){
   if(!LN) return;
+  if(typeof ladderOnLanesExit==="function") ladderOnLanesExit(LN);   // salir sin terminar = abandono (se anota en el guardado real)
   const snap = LN.snap; LN = null;
   lanesUnwrap();
   if(typeof colCleanup==="function") colCleanup();
@@ -46,6 +47,7 @@ function lanesRestore(){
   enemies = []; allies = []; heroes = []; player = null; bossActive = false; runEnding = false;
   if(typeof invalidatePassiveCache==="function") invalidatePassiveCache();
   if(typeof lanesHudHide==="function") lanesHudHide();
+  if(typeof ladderFlush==="function") ladderFlush();                  // el rango anotado durante la partida se escribe ya con el guardado real puesto
 }
 // opts: {champ, mate:[...], rivals:[...], seed, size}. Devuelve true si arrancó. Partida local contra bots (por defecto 5 contra 5).
 function lanesStart(opts){
@@ -217,7 +219,8 @@ function lanesBlocksDamage(e, src){
 }
 // Gancho de damageEnemy: bendiciones de equipo/campamento sobre el daño de salida de un héroe
 function lanesDmgMult(e, src){
-  const L = LN, h = src && src.classKey ? src : null; if(!L || !h || h.team == null || L.mode === "coliseo") return 1;
+  const L = LN; if(L && L.mode === "coliseo") return typeof colDmgMult === "function" && e && e.lanesProxy ? colDmgMult(src) : 1;   // Coliseo: solo las cartas de arena (y solo contra luchadores)
+  const h = src && src.classKey ? src : null; if(!L || !h || h.team == null) return 1;
   let m = 1; const T = L.team[h.team];
   if(T && T.buffs && T.buffs.dragon > L.t) m *= 1.10;
   if(h._lnBuff && h._lnBuff.until > L.t) m *= h._lnBuff.dmg;

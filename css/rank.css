@@ -1,0 +1,43 @@
+/* Rango de La Horda (js/ui/rank-screen.js). Paleta y botones de css/ui-kit.css: nada de colores propios salvo el de cada división. Letra >= 14 px, botones >= 48 px. */
+/* tarjeta del hub: ocupa la fila entera debajo de los dos modos (resume el rango de los tres) */
+#mainmenu-screen .hub-tile-rank{ grid-column:1 / -1; min-height:84px; border-color:var(--ui-gold); }
+#mainmenu-screen .hub-tile-rank .hub-tile-ico{ color:var(--ui-gold); }
+#rank-screen{ z-index:70; }
+.rk-panel{ max-width:620px !important; font-family:var(--ui-font); color:var(--ui-ink); display:flex; flex-direction:column; gap:8px; }
+.rk-head{ display:flex; align-items:center; gap:8px; }
+.rk-head .ui-panel-title{ flex:1; margin:0; color:var(--ui-gold); }
+.rk-x{ min-width:48px; min-height:48px; }
+.rk-tabs{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
+.rk-tab{ min-height:48px; padding:4px 6px; font-family:var(--ui-font); font-size:16px; line-height:1.1; color:var(--ui-dim); background:var(--ui-btn-sec); border:3px solid var(--ui-edge); box-shadow:var(--ui-hi), var(--ui-shadow-sm); cursor:pointer; overflow-wrap:anywhere; }
+.rk-tab.on{ color:#fff1dc; background:var(--ui-btn-hot); border-color:var(--ui-gold); }
+.rk-tab:focus-visible, .rk-x:focus-visible{ outline:2px solid var(--ui-gold); outline-offset:2px; }
+.rk-tab:active{ transform:translate(2px,2px); }
+.rk-card{ display:flex; align-items:center; gap:12px; padding:8px 10px; background:var(--ui-inset); border:2px solid var(--tc, var(--ui-line-hi)); box-shadow:var(--ui-hi), 0 0 14px color-mix(in srgb, var(--tc, #fff) 30%, transparent); }
+.rk-badge{ flex:none; min-width:92px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px 8px; border:3px solid var(--tc); background:linear-gradient(160deg, var(--ui-bg-1), var(--ui-bg-2)); text-align:center; }
+.rk-badge b{ font-size:22px; line-height:1.05; color:var(--tc); text-shadow:2px 2px 0 #000; }
+.rk-badge span{ font-size:20px; line-height:1.1; color:var(--ui-gold); min-height:20px; }
+.rk-main{ flex:1; min-width:0; }
+.rk-mmr{ font-size:30px; line-height:1.1; color:var(--ui-gold); } .rk-mmr small{ font-size:15px; color:var(--ui-dim); }
+.rk-bar{ height:10px; margin:6px 0 2px; background:var(--ui-bg-2); border:2px solid var(--ui-edge); } .rk-bar u{ display:block; height:100%; text-decoration:none; background:var(--tc, var(--ui-accent)); }
+.rk-next, .rk-prov{ font-size:15px; color:var(--ui-dim); } .rk-prov{ color:var(--ui-new); }
+.rk-stats{ display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:4px; }
+.rk-stats div{ display:flex; flex-direction:column; align-items:center; padding:4px 2px; background:var(--ui-inset); border:1px solid var(--ui-line); text-align:center; }
+.rk-stats b{ font-size:20px; color:var(--ui-ink); } .rk-stats span{ font-size:14px; color:var(--ui-dim); line-height:1.1; }
+.rk-prac{ font-size:15px; color:var(--ui-dim); } .rk-prac b{ color:var(--ui-ink); }
+.rk-tiers{ display:flex; flex-wrap:wrap; gap:4px; }
+.rk-tier{ padding:2px 8px; font-size:14px; line-height:1.3; color:var(--ui-dim); border:1px solid var(--ui-line); background:var(--ui-inset); } .rk-tier.on{ color:var(--tc); border-color:var(--tc); font-weight:700; }
+.rk-sub{ font-size:15px; color:var(--ui-accent-2); }
+.rk-hist{ display:flex; flex-direction:column; gap:2px; }
+.rk-row{ display:grid; grid-template-columns:56px minmax(0,1fr) minmax(0,1fr); gap:8px; align-items:center; padding:3px 8px; font-size:15px; background:var(--ui-inset); border-left:4px solid var(--ui-line-hi); }
+.rk-row b{ color:var(--ui-ink); } .rk-row.up{ border-left-color:var(--ui-ok); } .rk-row.up b{ color:var(--ui-ok); } .rk-row.down{ border-left-color:var(--ui-sale); } .rk-row.down b{ color:var(--ui-sale); } .rk-row.prac{ opacity:.8; }
+.rk-row i{ font-style:normal; color:var(--ui-dim); text-align:right; }
+.rk-empty{ padding:8px; font-size:15px; color:var(--ui-dim); text-align:center; }
+.rk-global{ padding:6px 8px; font-size:15px; border:1px dashed var(--ui-line-hi); color:var(--ui-ink); } .rk-global span{ color:var(--ui-dim); }
+.rk-rules summary{ min-height:48px; display:flex; align-items:center; font-size:16px; color:var(--ui-accent-2); cursor:pointer; }
+.rk-rules ul{ margin:0 0 4px; padding-left:18px; font-size:15px; line-height:1.3; color:var(--ui-dim); } .rk-rules li{ margin-bottom:3px; } .rk-rules b{ color:var(--ui-ink); }
+@media (max-height:520px){
+  .rk-panel{ gap:5px; padding:8px 10px; }
+  .rk-badge b{ font-size:20px; } .rk-mmr{ font-size:26px; }
+  .rk-stats b{ font-size:18px; }
+}
+@media (max-width:480px){ .rk-stats{ grid-template-columns:repeat(3,minmax(0,1fr)); } }

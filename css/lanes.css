@@ -61,3 +61,11 @@
 
 .ln-shop-hint{ grid-column:1 / -1; font-size:14px; line-height:1.2; color:#cdd6e6; text-align:center; }
 .ln-buy.ln-item{ background:#2a2f4a; border-color:#7a6fb0; }
+
+/* Coliseo: cartas de arena (mismos botones que la carta de horda), «todos contra todos» y línea de rango */
+.col-hud.col-offer .col-feed{ display:none; }
+/* las cartas de arena se corren a la izquierda: a 667 px de ancho la carta centrada tapaba el botón de la 3.ª habilidad */
+.col-hud .col-cards{ left:calc(8px + env(safe-area-inset-left,0px)); transform:none; width:calc(100vw - 206px - env(safe-area-inset-left,0px)); max-width:640px; }
+.col-hud .col-cards .ln-cards-title small{ white-space:normal; }
+.col-hud .col-cards .ln-card b{ overflow-wrap:anywhere; }
+.rk-line{ margin:6px auto 4px; padding:5px 10px; max-width:94%; font-size:15px; line-height:1.25; color:#ffe9a8; background:rgba(34,18,58,.72); border:1px solid #6a3fae; border-radius:6px; }

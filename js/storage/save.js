@@ -84,6 +84,7 @@ function defaultSave(){
     // DIFICULTADES (js/systems/difficulty-tiers.js): arenas superadas en Pesadilla / Infierno (Normal es
     // arenasCleared), la elegida en la Sala y las derrotas de la cuenta (las 3 primeras no se castigan)
     diffCleared:{pesadilla:{}, infierno:{}}, diffSelected:"normal", defeatCount:0,
+    ladder:(typeof Ladder!=="undefined" ? Ladder.defaultState() : null), // RANGO (js/systems/ranking.js): rating por modo, siempre normalizado al cargar
     recycleDust:0           // RECICLAJE (js/systems/ground-loot.js): fracción de Gema juntada al reciclar Comunes/Raros con el inventario lleno
   };
 }
@@ -252,6 +253,8 @@ function _loadSaveInner(){
       save.diffCleared = {pesadilla:Object.assign({}, dc.pesadilla||{}), infierno:Object.assign({}, dc.infierno||{})};
       if(!["normal","pesadilla","infierno"].includes(save.diffSelected)) save.diffSelected = "normal";
       save.defeatCount = Math.max(0, parsed.defeatCount|0);
+      // RANGO: guardados de antes no lo tienen; cualquier forma rara se normaliza (js/systems/ranking.js). Nunca toca otros campos.
+      if(typeof Ladder!=="undefined") save.ladder = Ladder.normalize(parsed.ladder);
       // Si hubo migración de rareza, se escribe de vuelta ya mismo: si no, el localStorage
       // se queda con las claves viejas hasta la próxima mutación (equipar/vender/etc.), y una
       // sesión que solo mira sin tocar nada perdería el arreglo al cerrar el navegador.

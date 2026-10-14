@@ -77,6 +77,7 @@ function renderMainMenu(){
   const el = document.getElementById("mainmenu-gold-line");
   if(el) el.innerHTML = `Oro: <b>${save.gold}</b> &nbsp;·&nbsp; Gemas: <b>${save.gems||0}</b>`;
   if(typeof renderHub==="function") renderHub(); // el hub (js/ui/hub.js)
+  if(typeof rankHubRefresh==="function") rankHubRefresh(); // RANGO: la división en la tarjeta del hub
 }
 // Vista previa animada genérica: cualquier <canvas class="champ-anim" data-class-key="..."> visible
 // dibuja al guardián con su arte real (drawChampFigure) caminando. Un solo bucle para toda la UI;

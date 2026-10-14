@@ -39,7 +39,7 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
   // final rápido: el equipo 1 gana el torneo
   await p.evaluate(()=>{LN.team[1].points=COL.WIN_POINTS-1;colResolve(0,1);LN.col.res[1]||colResolve(1,2);LN.col.phase='inter';LN.col.t0=LN.t-COL.INTER_MS;});
   await p.waitForSelector('#col-result:not(.hidden)',{timeout:12000});
-  assert.equal(await p.locator('#col-result tbody tr').count(),4,'tabla con los cuatro equipos');assert.match(await p.textContent('#col-result h2'),/ÁMBAR GANA/);
+  assert.equal(await p.locator('#col-result tbody tr').count(),4,'tabla con los cuatro equipos');assert.match(await p.textContent('#col-result .rk-line'),/RANGO COLISEO · .* \(/,'el resultado muestra el cambio de rango');assert.match(await p.textContent('#col-result h2'),/ÁMBAR GANA/);
   assert.equal(await p.evaluate(()=>CAM_SUBJECT),null,'cámara de vuelta a vos al terminar');
   // revancha
   await p.click('#col-result .ln-again');await p.waitForFunction(()=>state==='playing'&&lanesOn()&&LN.mode==='coliseo'&&LN.col.round===1,null,{timeout:20000});
@@ -52,7 +52,11 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
     try{await p.waitForFunction(()=>state==='mainmenu'&&!lanesOn(),null,{timeout:8000});break;}
     catch(e){const d=await p.evaluate(()=>({state,lanes:lanesOn(),dialog:typeof gameDialogIsOpen==='function'&&gameDialogIsOpen(),pauseHidden:document.getElementById('pause-screen').classList.contains('hidden')}));console.log('REINTENTO abandonar',attempt+1,JSON.stringify(d),'errs='+errs.join(' | '));if(attempt===2)throw new Error('no volvió al menú: '+JSON.stringify(d));}
   }
-  assert.equal(await p.evaluate(()=>localStorage.getItem('laHordaSave_v1')),before,'guardado intacto al volver');
+  // el guardado real queda igual salvo el RANGO (save.ladder): el torneo terminado anotó 1 partida en el Coliseo y la revancha abandonada enseguida (<20 s) no cuenta
+  const sansRank=t=>{const o=JSON.parse(t);delete o.ladder;return JSON.stringify(o);};
+  const after=await p.evaluate(()=>localStorage.getItem('laHordaSave_v1'));
+  assert.equal(sansRank(after),sansRank(before),'guardado intacto al volver (salvo el rango)');
+  const lad=JSON.parse(after).ladder;assert.equal(lad.modes.col.games,1,'el torneo terminado se anotó en el rango del Coliseo');assert.equal(lad.modes.col.abandons,0,'salir enseguida de la revancha no es abandono anotado');assert.equal(lad.modes.cw.games+lad.modes.horda.games,0,'otros modos sin tocar');
   assert.equal(await p.evaluate(()=>document.getElementById('col-hud').style.display==='none'||document.getElementById('col-hud').classList.contains('hidden')),true,'el HUD del Coliseo se oculta');
   assert.deepEqual(errs,[],'sin errores de página: '+errs.join(' | '));console.log(`PASS coliseo flow ${w}x${h}`);await ctx.close();
  }

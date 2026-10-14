@@ -2,7 +2,8 @@
 /* ============================================================
    js/arenas/coliseum/coliseum-hud.js
    COLISEO en el motor real — lo que se suma al HUD de siempre (que no se toca): marcador de los cuatro equipos con sus puntos,
-   ronda y reloj, mapa de los dos fosos (se ve el otro duelo aunque no estés), barra de espectador y pantalla de resultado.
+   ronda y reloj, mapa de los fosos (se ve el otro duelo aunque no estés), barra de espectador, CARTAS DE ARENA (mismos botones que las
+   cartas de horda de Guerra de Cristales) y pantalla de resultado.
    Todo con letra de 14 px o más y botones de 48 px o más.
    ============================================================ */
 let _colHud = null;
@@ -13,6 +14,7 @@ function colHudBuild(){
     '<div class="col-score" role="status" aria-live="polite"><div class="col-teams"></div><div class="col-mid"><strong class="col-round"></strong><span class="col-clock"></span></div></div>' +
     '<div class="ln-note col-note" role="status"></div>' +
     '<div class="ln-feed col-feed" aria-live="polite"></div>' +
+    '<div class="ln-cards col-cards hidden" role="group" aria-label="Carta de arena"><div class="ln-cards-title">CARTA DE ARENA <small>elegí 1 para tu equipo</small></div><div class="ln-cards-row"></div><i class="ln-cards-timer"><u></u></i></div>' +
     '<div class="col-spec hidden"><button type="button" class="col-prev" aria-label="Luchador anterior">‹</button><span class="col-spec-name"></span><button type="button" class="col-next" aria-label="Luchador siguiente">›</button><button type="button" class="col-pit">OTRO DUELO</button></div>' +
     '<div class="ln-rival col-map"><canvas width="330" height="96"></canvas></div>';
   document.body.appendChild(el);
@@ -35,27 +37,61 @@ function colHudTick(){
     const pips = Array.from({length:COL.WIN_POINTS}, (_, i)=>'<em class="' + (i < T.points ? "on" : "off") + '">●</em>').join("");
     return '<div class="col-team' + (mine ? " me" : "") + (c.phase === "fight" && (inMine || inOther) ? " fighting" : "") + '" style="--tc:' + lanesTeamColor(T.team) + '"><b>' + (mine ? "TU EQUIPO" : lanesTeamName(T.team)) + '</b><span>' + pips + '</span></div>';
   }).join("");
+  const ffa = c.kind === "ffa", me = L.team[player.team], pair = c.pairs[0];
   q(".col-round").textContent = "RONDA " + c.round;
-  q(".col-clock").textContent = c.phase === "prep" ? "Preparate…" : c.phase === "inter" ? "Resultados" : (c.ringR < COL.PIT_R - 2 ? "¡ANILLO CERRÁNDOSE!" : _colClock(COL.ROUND_MS - (L.t - c.t0)));
-  const pair = c.pairs[0];
-  q(".col-note").textContent = c.phase === "inter" ? c.last : (c.phase === "prep" ? "Tu duelo: " + (pair[0] === 0 ? "TU EQUIPO" : lanesTeamName(pair[0])) + " vs " + lanesTeamName(pair[1]) : (c.res[0] ? "Tu duelo terminó · mirá el otro" : ""));
+  q(".col-clock").textContent = c.phase === "prep" ? "Preparate…" : c.phase === "inter" ? "Resultados" : (c.ringR < colPitR(ffa ? 2 : 0) - 2 ? "¡ANILLO CERRÁNDOSE!" : _colClock(colRoundMs(c) - (L.t - c.t0)));
+  const hand = colHandText(me);
+  let note;
+  if(c.phase === "inter") note = c.last;
+  else if(c.phase === "prep") note = ffa ? "TODOS CONTRA TODOS · 1.º +" + COL.FFA_POINTS[0] + " · 2.º +" + COL.FFA_POINTS[1] + " puntos" : "Tu duelo: " + (pair[0] === 0 ? "TU EQUIPO" : lanesTeamName(pair[0])) + " vs " + lanesTeamName(pair[1]);
+  else if(ffa) note = c.res[2] ? "" : "TODOS CONTRA TODOS · quedan " + (4 - c.ffaOut.length) + " equipos";
+  else note = c.res[0] ? "Tu duelo terminó · mirá el otro" : "";
+  if(hand && c.phase !== "inter") note += (note ? " · " : "") + hand;
+  q(".col-note").textContent = note;
+  el.classList.toggle("col-ffa", ffa);
+  colCardsSync(el, me, c);
   q(".col-feed").innerHTML = L.feed.filter(f=>L.t - f.t < 9000).slice(-3).map(f=>'<div style="color:' + lanesTeamColor(f.team) + '">' + f.text + '</div>').join("");
   // espectador (solo si caíste en plena pelea)
   const spec = q(".col-spec"), watching = !player.alive && c.phase === "fight" && c.spec;
   spec.classList.toggle("hidden", !watching);
+  q(".col-pit").style.display = ffa ? "none" : "";                                   // en «todos contra todos» hay un solo foso
   if(watching) q(".col-spec-name").textContent = "ESPECTANDO · " + heroLabel(c.spec) + " (" + (c.spec.team === player.team ? "tu equipo" : lanesTeamName(c.spec.team)) + ")";
   colDrawMap();
 }
-// Los dos fosos en miniatura: luchadores vivos, el anillo y de quién es cada equipo.
+// Cartas activas de tu equipo en esta ronda: «Garras afiladas · Temple ×2».
+function colHandText(T){
+  if(!T) return "";
+  const out = [];
+  if(T.activePick && COL_CARDS[T.activePick]) out.push(COL_CARDS[T.activePick].name);
+  for(const id of COL_CARD_IDS) if(COL_CARDS[id].scope === "torneo" && T.cards[id]) out.push(COL_CARDS[id].name + (T.cards[id] > 1 ? " ×" + T.cards[id] : ""));
+  return out.length ? "★ " + out.join(" · ") : "";
+}
+// La oferta de cartas de tu equipo (solo entre rondas): tres botones iguales a los de la carta de horda de Guerra de Cristales.
+let _colOfferKey = "";
+function colCardsSync(el, T, c){
+  const box = el.querySelector(".col-cards"), show = !!T.offer && c.phase === "inter";
+  box.classList.toggle("hidden", !show); el.classList.toggle("col-offer", show);
+  if(!show){ _colOfferKey = ""; return; }
+  const key = T.offer.join(",") + "@" + T.offerAt;
+  if(key !== _colOfferKey){
+    _colOfferKey = key;
+    box.querySelector(".ln-cards-row").innerHTML = T.offer.map((id, i)=>{ const cd = COL_CARDS[id], n = T.cards[id] || 0;
+      return '<button type="button" class="ln-card" data-i="' + i + '"><span class="ln-card-ico">' + cd.icon + '</span><b>' + cd.name + '</b><span class="ln-card-desc">' + cd.desc + '</span><small>' + (cd.scope === "torneo" ? "Todo el torneo" + (cd.max > 1 ? " · " + (n + 1) + "/" + cd.max : "") : "Próxima ronda") + '</small></button>'; }).join("");
+    for(const b of box.querySelectorAll(".ln-card")) b.addEventListener("click", ()=>{ colPickCard(player.team, +b.dataset.i); colHudTick(); });
+  }
+  box.querySelector(".ln-cards-timer u").style.width = Math.max(0, 100 - (LN.t - T.offerAt) / COL.CARD_MS * 100) + "%";
+}
+// Los fosos en miniatura: luchadores vivos, el anillo y de quién es cada equipo.
 function colDrawMap(){
   const cv = _colHud && _colHud.querySelector(".col-map canvas"); if(!cv || !LN) return;
   const g = cv.getContext("2d"), W = cv.width, H = cv.height, sx = W / COL.W, sy = H / COL.H, c = LN.col;
   g.clearRect(0, 0, W, H); g.fillStyle = "#10141d"; g.fillRect(0, 0, W, H);
-  for(let pit = 0; pit < 2; pit++){
-    const p = colPitCenter(pit);
-    g.fillStyle = "#222a3a"; g.beginPath(); g.ellipse(p.x * sx, p.y * sy, COL.PIT_R * sx, COL.PIT_R * sy, 0, 0, Math.PI * 2); g.fill();
-    g.strokeStyle = c.ringR < COL.PIT_R - 2 ? "#ff6a5a" : "rgba(255,255,255,.4)"; g.lineWidth = 2; g.beginPath(); g.ellipse(p.x * sx, p.y * sy, c.ringR * sx, c.ringR * sy, 0, 0, Math.PI * 2); g.stroke();
-    g.font = "bold 12px sans-serif"; g.textAlign = "center"; g.fillStyle = "rgba(255,255,255,.7)"; g.fillText(pit === 0 ? "A" : "B", p.x * sx, (p.y - COL.PIT_R - 14) * sy + 4);
+  const act = colActivePits(c);
+  for(let pit = 0; pit < 3; pit++){
+    const p = colPitCenter(pit), R = colPitR(pit), on = act.includes(pit), rr = on ? c.ringR : R;
+    g.fillStyle = on ? "#222a3a" : "#161b26"; g.beginPath(); g.ellipse(p.x * sx, p.y * sy, R * sx, R * sy, 0, 0, Math.PI * 2); g.fill();
+    g.strokeStyle = on && c.ringR < R - 2 ? "#ff6a5a" : on ? "rgba(255,255,255,.4)" : "rgba(255,255,255,.12)"; g.lineWidth = 2; g.beginPath(); g.ellipse(p.x * sx, p.y * sy, rr * sx, rr * sy, 0, 0, Math.PI * 2); g.stroke();
+    g.font = "bold 12px sans-serif"; g.textAlign = "center"; g.fillStyle = on ? "rgba(255,255,255,.7)" : "rgba(255,255,255,.25)"; g.fillText(pit === 0 ? "A" : pit === 1 ? "B" : "★", p.x * sx, (p.y - R - 14) * sy + 4);
   }
   for(const h of heroes){ if(h.team == null) continue; g.fillStyle = h.alive ? "#fff" : "#444"; g.beginPath(); g.arc(h.x * sx, h.y * sy, h === player ? 5.5 : 4.5, 0, Math.PI * 2); g.fill(); g.strokeStyle = lanesTeamColor(h.team); g.lineWidth = 2; g.stroke(); }
 }
@@ -68,10 +104,12 @@ function colShowResult(){
   const mine = player.team, won = L.winner === mine, draw = L.winner === -1, st = colStanding();
   const rows = st.map((T, i)=>{
     const names = heroes.filter(h=>h.team === T.team).map(h=>heroLabel(h)).join(" + ");
-    return '<tr' + (T.team === mine ? ' class="me"' : '') + '><td>' + (i + 1) + '. ' + (T.team === mine ? "TU EQUIPO" : lanesTeamName(T.team)) + '<br><small>' + names + '</small></td><td>' + T.points + '</td><td>' + T.wins + '/' + T.duels + '</td><td>' + T.pk + '</td></tr>';
+    return '<tr' + (T.team === mine ? ' class="me"' : '') + '><td>' + (i + 1) + '. ' + (T.team === mine ? "TU EQUIPO" : lanesTeamName(T.team)) + '<br><small>' + names + '</small></td><td>' + T.points + (T.ffaPts ? '<br><small>' + T.ffaPts + ' en TcT</small>' : '') + '</td><td>' + T.wins + '/' + T.duels + '</td><td>' + T.pk + '</td></tr>';
   }).join("");
+  const rk = typeof ladderOnLanesResult === "function" ? ladderResultLine(ladderOnLanesResult(L)) : "";   // RANGO: se anota una sola vez por torneo
+  const nFfa = Math.floor(c_rounds(L) / COL.FFA_EVERY);
   r.innerHTML = '<div class="ln-res-card"><div class="ln-res-kicker">COLISEO</div><h2>' + (draw ? "EMPATE" : won ? "¡CAMPEONES!" : lanesTeamName(L.winner) + " GANA") + '</h2>' +
-    '<p>' + c_rounds(L) + ' rondas · gana quien llega a ' + COL.WIN_POINTS + ' puntos</p>' +
+    '<p>' + c_rounds(L) + ' rondas' + (nFfa ? ' (' + nFfa + ' «todos contra todos»)' : '') + ' · gana quien llega a ' + COL.WIN_POINTS + ' puntos</p>' + (rk ? '<p class="rk-line">' + rk + '</p>' : '') +
     '<table><thead><tr><th>Equipo</th><th>Puntos</th><th>Duelos ganados</th><th>Bajas</th></tr></thead><tbody>' + rows + '</tbody></table>' +
     '<div class="ln-res-btns"><button type="button" class="ln-again">REVANCHA</button><button type="button" class="ln-exit">VOLVER AL MENÚ</button></div></div>';
   r.classList.remove("hidden");

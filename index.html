@@ -52,6 +52,7 @@
 <link rel="stylesheet" href="css/controls.css">
 <link rel="stylesheet" href="css/hub-scroll.css">
 <link rel="stylesheet" href="css/lanes.css">
+<link rel="stylesheet" href="css/rank.css">
 <link rel="stylesheet" href="css/hud-horda.css">
 </head>
 <body>
@@ -191,7 +192,8 @@
         <h2 class="hub-section-title">MODOS COMPETITIVOS</h2>
         <div class="hub-row hub-row-modes">
           <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-crystal-btn"><span class="hub-tile-ico">◆</span><span class="hub-tile-body"><span class="hub-tile-title">GUERRA DE CRISTALES</span><span class="hub-tile-sub">2 contra 2 · defendé tu cristal y mirá al rival</span></span></button>
-          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-coliseum-btn"><span class="hub-tile-ico">⚔</span><span class="hub-tile-body"><span class="hub-tile-title">COLISEO</span><span class="hub-tile-sub">Torneo 2 contra 2 · sumá puntos</span></span></button>
+          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-coliseum-btn"><span class="hub-tile-ico">⚔</span><span class="hub-tile-body"><span class="hub-tile-title">COLISEO</span><span class="hub-tile-sub">Torneo 2 contra 2 · cartas y todos contra todos</span></span></button>
+          <button class="hub-tile hub-tile-crystal hub-tile-rank" id="hub-rank-btn"><span class="hub-tile-ico">♛</span><span class="hub-tile-body"><span class="hub-tile-title">RANGO</span><span class="hub-tile-sub" id="hub-rank-sub">Tu división en cada modo</span></span></button>
         </div>
         <h2 class="hub-section-title">EXPLORAR</h2>
         <div class="hub-row hub-row-explore">
@@ -579,6 +581,7 @@
 <script src="js/data/quests.js"></script>
 <script src="js/core/constants.js"></script>
 <script src="js/core/utils.js"></script>
+<script src="js/systems/ranking.js"></script>
 <script src="js/storage/save.js"></script>
 <script src="js/ui/game-dialog.js"></script>
 <script src="js/core/canvas.js"></script>
@@ -852,6 +855,8 @@
 <script src="js/data/endless.js"></script>
 <script src="js/systems/endless.js"></script>
 <script src="js/net/leaderboard.js"></script>
+<script src="js/systems/ranking-hooks.js"></script>
+<script src="js/ui/rank-screen.js"></script>
 <!-- Botín de verdad: afijos al azar + Mística, botín en el piso con haz de luz, élites con nombre -->
 <script src="js/data/affixes.js"></script>
 <script src="js/systems/affixes.js"></script>

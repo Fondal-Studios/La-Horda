@@ -6,6 +6,7 @@
    ============================================================ */
 
 function update(dt){
+  if(typeof ladderAfkTick==="function") ladderAfkTick(dt);   // RANGO: inactividad (js/systems/ranking-hooks.js)
   if(state!=="playing") return;
   // B1 cooperativo: el invitado no simula la partida, la reconstruye con lo que manda el anfitrión
   if(netMatch && netMatch.role==="guest"){ netGuestUpdate(dt); return; }
