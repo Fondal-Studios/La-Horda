@@ -1,9 +1,9 @@
 {
  "id": "vorn",
  "name": "Vorn, El Cambiapiel",
- "prompt": "Guardian corpulento mitad basalto mitad pelaje palido; hombreras y cuernos de piedra.",
- "body": "baltra",
- "head": "renko_skin",
+ "prompt": "Guardian de basalto y pelaje palido con yelmo y cuernos de piedra.",
+ "body": "renko_skin",
+ "head": "baltra_skin",
  "paint": [
   {
    "part": "head",
@@ -13,7 +13,7 @@
    ],
    "minChroma": 3,
    "noSkin": true,
-   "to": "#b8c4c0",
+   "to": "#566a66",
    "keepLight": 0.7,
    "chroma": 1.0
   },
@@ -33,10 +33,10 @@
  ],
  "accessories": [
   {
-   "element": "hombreras_redondas",
-   "scale": 0.95,
+   "element": "corona_de_picos",
+   "scale": 0.9,
    "materials": {
-    "shell": {
+    "metal": {
      "ramp": [
       "#14181a",
       "#2e3a3a",
@@ -47,10 +47,10 @@
    }
   },
   {
-   "element": "corona_de_picos",
-   "scale": 0.8,
+   "element": "hombreras_redondas",
+   "scale": 0.95,
    "materials": {
-    "metal": {
+    "shell": {
      "ramp": [
       "#14181a",
       "#2e3a3a",

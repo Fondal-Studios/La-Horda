@@ -46,12 +46,19 @@ def build(manifest, output):
     if len(bodies) != 36:
         raise ValueError(f'expected 36 separated silhouettes, found {len(bodies)}')
     bodies.sort(key=lambda b: (b[1] + b[3]) / 2)
+    # Hand-authored sheets can have unequal row spacing. An explicit reviewed
+    # layout preserves the same cell checks without widening their tolerances.
+    row_bounds = manifest.get('rowBounds', [image.height * i / 9 for i in range(10)])
+    if (len(row_bounds) != 10 or row_bounds[0] != 0 or row_bounds[-1] != image.height
+            or any(b <= a for a, b in zip(row_bounds, row_bounds[1:]))):
+        raise ValueError('rowBounds must partition the full source into nine positive rows')
     frames = []
     for row in range(9):
         group = sorted(bodies[row * 4:row * 4 + 4], key=lambda b: b[0])
         for col, box in enumerate(group):
             cx, cy = (box[0] + box[2]) / 2, (box[1] + box[3]) / 2
-            if abs(cx / image.width * 4 - (col + .5)) > .45 or abs(cy / image.height * 9 - (row + .5)) > .48:
+            row_y = (cy - row_bounds[row]) / (row_bounds[row + 1] - row_bounds[row])
+            if abs(cx / image.width * 4 - (col + .5)) > .45 or abs(row_y - .5) > .48:
                 raise ValueError(f'pose {row * 4 + col}: outside its expected grid cell')
             # Bounding boxes can overlap another pose's thin weapon. Retain only
             # this connected silhouette, never pixels from a neighbouring pose.

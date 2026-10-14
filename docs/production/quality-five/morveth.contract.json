@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "id": "morveth",
+  "name": "Morveth",
+  "title": "El Jardinero de la Peste",
+  "role": "mago",
+  "fantasy": "Mago invocador con contagio terminal",
+  "lore": "Morveth cuidaba el jardín de un hospital sitiado. Cuando las medicinas se agotaron, descubrió un micelio capaz de retener la infección en sus raíces. Ahora transporta aquel cultivo en una urna agrietada. Sus hongos necesitan tiempo y terreno para extenderse; arrancarlos deja al jardinero expuesto. No busca una cura perfecta, sino impedir que la próxima cosecha sean los vivos.",
+  "personality": "Reservado y paciente.",
+  "silhouette": "anatomía de raíces y hongos; hoz.",
+  "stats": {
+    "hp": 96,
+    "damage": 8.5,
+    "speed": 152
+  },
+  "kit": {
+    "basic": {
+      "id": "morveth_basic",
+      "description": "Proyectil mágico individual.",
+      "cooldownMs": 600,
+      "maxTargets": 1,
+      "hordeMechanism": "",
+      "anticipation": "Dirección de ataque.",
+      "execution": "tools/quality-five/register-morveth-fixture.js",
+      "impact": "Daño base normalizado por rol.",
+      "feedback": "Proyectil heredado; identidad visual pendiente.",
+      "vfx": "exglyph",
+      "sfx": "Motor compartido de impacto/básico (js/audio/audio.js)"
+    },
+    "skills": [
+      {
+        "id": "mor_plant",
+        "description": "Planta un hongo destructible que libera seis pulsos de esporas. Máximo tres hongos.",
+        "cooldownMs": 8000,
+        "maxTargets": 12,
+        "hordeMechanism": "Pulsos y contagio limitado.",
+        "anticipation": "Perfiles nativos de punto y cono/línea según acción.",
+        "execution": "js/champions/quality-five/morveth.js",
+        "impact": "Planta un hongo destructible que libera seis pulsos de esporas. Máximo tres hongos.",
+        "feedback": "kitFx y entidades con radio y expiración.",
+        "vfx": "dark/shield",
+        "sfx": "js/champions/quality-five/audio.js: quality_morveth_cast"
+      },
+      {
+        "id": "mor_spores",
+        "description": "Daña un abanico e infecta a sus víctimas durante tres pulsos.",
+        "cooldownMs": 6000,
+        "maxTargets": 12,
+        "hordeMechanism": "Pulsos y contagio limitado.",
+        "anticipation": "Perfiles nativos de punto y cono/línea según acción.",
+        "execution": "js/champions/quality-five/morveth.js",
+        "impact": "Daña un abanico e infecta a sus víctimas durante tres pulsos.",
+        "feedback": "kitFx y entidades con radio y expiración.",
+        "vfx": "dark/shield",
+        "sfx": "js/champions/quality-five/audio.js: quality_morveth_cast"
+      },
+      {
+        "id": "mor_symbiosis",
+        "description": "Obtiene 15% de armadura y sana 2% de vida. Consume un hongo cercano para sanar 4% en total.",
+        "cooldownMs": 12000,
+        "maxTargets": 12,
+        "hordeMechanism": "Pulsos y contagio limitado.",
+        "anticipation": "Perfiles nativos de punto y cono/línea según acción.",
+        "execution": "js/champions/quality-five/morveth.js",
+        "impact": "Obtiene 15% de armadura y sana 2% de vida. Consume un hongo cercano para sanar 4% en total.",
+        "feedback": "kitFx y entidades con radio y expiración.",
+        "vfx": "dark/shield",
+        "sfx": "js/champions/quality-five/audio.js: quality_morveth_cast"
+      }
+    ],
+    "ultimate": {
+      "id": "mor_garden",
+      "description": "Cuatro pulsos infectan, dañan y ralentizan. Los aliados dentro del jardín reciben protección.",
+      "cooldownMs": 36000,
+      "maxTargets": 12,
+      "hordeMechanism": "Pulsos y contagio limitado.",
+      "anticipation": "Perfiles nativos de punto y cono/línea según acción.",
+      "execution": "js/champions/quality-five/morveth.js",
+      "impact": "Cuatro pulsos infectan, dañan y ralentizan. Los aliados dentro del jardín reciben protección.",
+      "feedback": "kitFx y entidades con radio y expiración.",
+      "vfx": "dark/shield",
+      "sfx": "js/champions/quality-five/audio.js: quality_morveth_ult"
+    }
+  },
+  "art": {
+    "atlas": "assets/sprites/champions/morveth/atlas.png",
+    "preview": "assets/sprites/champions/morveth/preview.png",
+    "directions": 4,
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "7b25a4c53640d8b258448ab19ea090dfe6dc8de8096fb43a12081ca3b0213ded",
+    "animations": {
+      "idle": 1,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
+    },
+    "review": {
+      "status": "PASS",
+      "reviewer": "Codex (visual inspection; not human signoff)",
+      "evidence": "docs/production/quality-five/originals/ART-REVIEW.md"
+    }
+  },
+  "integration": {
+    "runtime": "js/champions/quality-five/morveth.js",
+    "codex": "js/champions/quality-five/register.js",
+    "talents": "js/champions/quality-five/register.js",
+    "mastery": "js/champions/quality-five/register.js",
+    "set": "js/champions/quality-five/collection.js",
+    "kitTest": "tools/quality-five/temporal-plague-functional.js"
+  },
+  "cosmetics": [
+    {
+      "id": "morveth_alt1",
+      "type": "skin",
+      "champion": "morveth",
+      "name": "Morveth, Micelio Abisal",
+      "rarity": "Épica",
+      "tagline": "Raíces abisales, frondas de coral y hongos azules, con hoz orgánica",
+      "lore": "En una cueva sin luz, el cultivo de Morveth aprendió a brillar. Su abrigo lleva esas esporas como promesa: la próxima cosecha será de los vivos.",
+      "visualTheme": "Raíces abisales, frondas de coral y hongos azules, con hoz orgánica",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/morveth/skins/morveth_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "morveth_croma",
+      "type": "croma",
+      "champion": "morveth",
+      "name": "Musgo del Retorno",
+      "rarity": "Rara",
+      "tagline": "Una paleta alternativa para Morveth.",
+      "lore": "Los colores de Musgo del Retorno acompañan un nuevo viaje. Conserva su vestuario y sus decisiones: esta apariencia cambia únicamente la paleta.",
+      "visualTheme": "Paleta selectiva; conserva piel y contorno.",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "palette"
+      ],
+      "preview": "assets/sprites/champions/morveth/croma-preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "quality_morveth",
+      "type": "set",
+      "champion": "morveth",
+      "name": "Huerto de Sal",
+      "rarity": "Set",
+      "tagline": "Hongos de sal rosada, placas cristalinas y raíces blanqueadas",
+      "lore": "En las galerías secas, Morveth encontró una sal que conservaba semillas dormidas. La dejó crecer sobre sus raíces. Ahora su huerto florece donde la piedra parecía estéril.",
+      "visualTheme": "Hongos de sal rosada, placas cristalinas y raíces blanqueadas",
+      "unlockSource": "Completar Huerto de Sal en minas",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/morveth/skins/quality_morveth/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
+  "set": {
+    "sourceArena": "minas",
+    "pieces": [
+      "quality_morveth_arma",
+      "quality_morveth_casco",
+      "quality_morveth_pechera",
+      "quality_morveth_botas"
+    ],
+    "rewardCosmetic": "quality_morveth",
+    "rewardGrantsPower": false
+  },
+  "budgets": {
+    "particles": 64,
+    "summons": 4,
+    "audioVoices": 3
+  },
+  "evidence": {
+    "reference": "docs/balance/champion-entry-reference.json",
+    "talents": "docs/production/quality-five/temporal-plague-functional-results.json",
+    "abilities": "docs/production/quality-five/ability/ability-gate.json",
+    "resources": "docs/production/quality-five/temporal-plague-functional-results.json",
+    "passives": "docs/production/quality-five/temporal-plague-functional-results.json",
+    "balance": "docs/balance/entry-gate-results.json",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "style": "docs/production/quality-five/originals/style-results.txt",
+    "audio": "docs/production/quality-five/audio-20261012.txt",
+    "multiplayer": "docs/production/quality-five/online-results.json",
+    "performance": "docs/production/quality-five/performance-morveth.json"
+  },
+  "category": "STANDARD"
+}

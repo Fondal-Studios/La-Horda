@@ -8,16 +8,16 @@ const SECS=Number(process.argv[2])||45,ONLY=process.argv.slice(3),PORT=8897;
 const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__dirname,'../..'),stdio:'ignore'});
 (async()=>{
  for(let i=0;i<60;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
- const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});
- const page0=await b.newPage();await page0.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`);await page0.waitForFunction(()=>typeof lanesStart==='function');
+ const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});const context=await b.newContext();
+ const page0=await context.newPage();await page0.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`);await page0.waitForFunction(()=>typeof lanesStart==='function');
  const roster=await page0.evaluate(()=>Object.keys(CLASSES).filter(k=>championBotEligible(k)));await page0.close();
  const list=ONLY.length?ONLY:roster;let bad=0;const rows=[];
  for(const champ of list){
-  const p=await b.newPage({viewport:{width:844,height:390}}),errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push('console:'+m.text().slice(0,160));});
+  const p=await context.newPage({viewport:{width:844,height:390}}),errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push('console:'+m.text().slice(0,160));});
   await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`);await p.waitForFunction(()=>typeof lanesStart==='function',null,{timeout:60000});
   const r=await p.evaluate(({champ,secs})=>{
    setState('mainmenu');lanesStart({champ,seed:11});
-   const rep={champ,frames:0,nan:0,cross:0,dead:0,friendly:0,pvp:0};const dt=1000/60;let ang=0;
+   const rep={champ,actualChampion:player.classKey,frames:0,nan:0,cross:0,dead:0,friendly:0,pvp:0};const dt=1000/60;let ang=0;
    const dh=damageHero;damageHero=function(h,a,src,pt){ const hp0=h&&h.hp,isF=h&&h.team!=null&&src&&!src.isPvp&&src!==h&&!h.isStruct&&lanesTeamOf(src)===h.team; if(src&&src.isPvp&&h&&!h.isStruct)rep.pvp++; const r=dh.call(this,h,a,src,pt); if(isF&&h.hp<hp0-0.01)rep.friendly++; return r; };
    const mp=lanePoint(1,LANES_PATHS[1].len*0.36);player.x=mp.x;player.y=mp.y;const foeH=heroes.find(h=>h.team===1);foeH.x=mp.x+170;foeH.y=mp.y+20;
    for(let f=0;f<secs*60&&!LN.ended;f++){
@@ -33,7 +33,7 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
    }
    const s=player.stats||{};rep.dmg=Math.round(s.dmgDealt||s.dmg||0);rep.kills=LN.team[0].kills+LN.team[1].kills;rep.myKills=s.kills||0;rep.hp0=Math.round(LN.team[0].S[9].hp);rep.hp1=Math.round(LN.team[1].S[9].hp);rep.respawns=heroes.filter(h=>h.dead_t).length;
    rep.enemiesLeft=enemies.filter(e=>e.alive).length;damageHero=dh;lanesStop('mainmenu');return rep;},{champ,secs:SECS});
-  const ok=!r.err&&r.nan===0&&r.cross===0&&r.friendly===0&&(r.kills>0||r.dmg>0||r.pvp>0)&&errs.length===0;if(!ok)bad++;
+  const ok=r.actualChampion===champ&&!r.err&&r.nan===0&&r.cross===0&&r.friendly===0&&(r.kills>0||r.dmg>0||r.pvp>0)&&errs.length===0;if(!ok)bad++;
   rows.push(r);console.log((ok?'OK   ':'FAIL ')+champ.padEnd(14)+JSON.stringify({kills:r.kills,dmg:r.dmg,pvp:r.pvp,friendly:r.friendly,cross:r.cross,nan:r.nan,err:r.err,errs:errs.slice(0,2)}));
   await p.close();
  }

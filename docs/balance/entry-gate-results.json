@@ -398,6 +398,61 @@
       "key": "kora",
       "existing": true,
       "changes": {}
+    },
+    {
+      "key": "solciju",
+      "role": "mago",
+      "referenceVersion": 4,
+      "profile": null,
+      "ceiling": 1.15,
+      "changes": {},
+      "budgetBefore": 0.9818478864524797,
+      "budgetAfter": 0.9818478864524797,
+      "needsGameplaySimulation": true
+    },
+    {
+      "key": "veyra",
+      "role": "asesino",
+      "referenceVersion": 4,
+      "profile": null,
+      "ceiling": 1.15,
+      "changes": {},
+      "budgetBefore": 0.9024415280856428,
+      "budgetAfter": 0.9024415280856428,
+      "needsGameplaySimulation": true
+    },
+    {
+      "key": "brakk",
+      "role": "tanque",
+      "referenceVersion": 4,
+      "profile": null,
+      "ceiling": 1.15,
+      "changes": {},
+      "budgetBefore": 0.9470986944022808,
+      "budgetAfter": 0.9470986944022808,
+      "needsGameplaySimulation": true
+    },
+    {
+      "key": "morveth",
+      "role": "mago",
+      "referenceVersion": 4,
+      "profile": null,
+      "ceiling": 1.15,
+      "changes": {},
+      "budgetBefore": 0.8793180390038313,
+      "budgetAfter": 0.8793180390038313,
+      "needsGameplaySimulation": true
+    },
+    {
+      "key": "aelith",
+      "role": "mago",
+      "referenceVersion": 4,
+      "profile": null,
+      "ceiling": 1.15,
+      "changes": {},
+      "budgetBefore": 0.9827985906764928,
+      "budgetAfter": 0.9827985906764928,
+      "needsGameplaySimulation": true
     }
   ],
   "runs": [
@@ -939,6 +994,141 @@
       "alive": true,
       "hp": 268,
       "casts": 84,
+      "error": null
+    },
+    {
+      "key": "solciju",
+      "seed": 117,
+      "damage": 8160.4087507384165,
+      "alive": true,
+      "hp": 212,
+      "casts": 61,
+      "error": null
+    },
+    {
+      "key": "solciju",
+      "seed": 431,
+      "damage": 8834.621621078031,
+      "alive": true,
+      "hp": 212,
+      "casts": 61,
+      "error": null
+    },
+    {
+      "key": "solciju",
+      "seed": 991,
+      "damage": 7782.460772667463,
+      "alive": true,
+      "hp": 212,
+      "casts": 62,
+      "error": null
+    },
+    {
+      "key": "veyra",
+      "seed": 117,
+      "damage": 5519.5841121255835,
+      "alive": true,
+      "hp": 168.20832000000001,
+      "casts": 64,
+      "error": null
+    },
+    {
+      "key": "veyra",
+      "seed": 431,
+      "damage": 5074.7668190025925,
+      "alive": true,
+      "hp": 209,
+      "casts": 65,
+      "error": null
+    },
+    {
+      "key": "veyra",
+      "seed": 991,
+      "damage": 4312.645026575124,
+      "alive": true,
+      "hp": 194.35544,
+      "casts": 66,
+      "error": null
+    },
+    {
+      "key": "brakk",
+      "seed": 117,
+      "damage": 4997.257430188367,
+      "alive": true,
+      "hp": 350.1206826,
+      "casts": 50,
+      "error": null
+    },
+    {
+      "key": "brakk",
+      "seed": 431,
+      "damage": 4390.831934939305,
+      "alive": true,
+      "hp": 318.15040576000007,
+      "casts": 51,
+      "error": null
+    },
+    {
+      "key": "brakk",
+      "seed": 991,
+      "damage": 4617.941278930746,
+      "alive": true,
+      "hp": 365,
+      "casts": 52,
+      "error": null
+    },
+    {
+      "key": "morveth",
+      "seed": 117,
+      "damage": 8215.74902599259,
+      "alive": true,
+      "hp": 256,
+      "casts": 63,
+      "error": null
+    },
+    {
+      "key": "morveth",
+      "seed": 431,
+      "damage": 6639.112601819526,
+      "alive": true,
+      "hp": 240,
+      "casts": 62,
+      "error": null
+    },
+    {
+      "key": "morveth",
+      "seed": 991,
+      "damage": 6690.5688150304495,
+      "alive": true,
+      "hp": 192.925035,
+      "casts": 62,
+      "error": null
+    },
+    {
+      "key": "aelith",
+      "seed": 117,
+      "damage": 7908.752150745111,
+      "alive": true,
+      "hp": 122.07289309659254,
+      "casts": 61,
+      "error": null
+    },
+    {
+      "key": "aelith",
+      "seed": 431,
+      "damage": 8810.136556915815,
+      "alive": true,
+      "hp": 205,
+      "casts": 61,
+      "error": null
+    },
+    {
+      "key": "aelith",
+      "seed": 991,
+      "damage": 8443.471135688418,
+      "alive": true,
+      "hp": 204.064659648,
+      "casts": 61,
       "error": null
     }
   ],

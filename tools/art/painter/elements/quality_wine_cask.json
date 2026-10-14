@@ -1,0 +1,85 @@
+{
+  "name": "quality_wine_cask",
+  "description": "Barrica de fermentación portátil de Solciju: tonel con aros de hierro y espita, a la espalda.",
+  "layer": "behind",
+  "anchor": "shoulders",
+  "materials": {
+    "wood": {
+      "ramp": [
+        "#281516",
+        "#653126",
+        "#ad7044",
+        "#d9a46a"
+      ]
+    },
+    "iron": {
+      "ramp": [
+        "#151722",
+        "#40444e",
+        "#85828d"
+      ]
+    },
+    "tap": {
+      "ramp": [
+        "#2b1d0c",
+        "#8a6a2a",
+        "#e0c070"
+      ]
+    }
+  },
+  "shapes": [
+    {
+      "type": "rect",
+      "box": [
+        -30,
+        -1,
+        -12,
+        1
+      ],
+      "material": "iron"
+    },
+    {
+      "type": "rect",
+      "box": [
+        -30,
+        11,
+        -12,
+        13
+      ],
+      "material": "iron"
+    },
+    {
+      "type": "rect",
+      "box": [
+        -31,
+        5,
+        -11,
+        7
+      ],
+      "material": "iron"
+    },
+    {
+      "type": "rect",
+      "box": [
+        -33,
+        4,
+        -30,
+        8
+      ],
+      "material": "tap"
+    },
+    {
+      "type": "ellipse",
+      "center": [
+        -21,
+        6
+      ],
+      "radius": [
+        10,
+        14
+      ],
+      "material": "wood"
+    }
+  ],
+  "faceRight": true
+}

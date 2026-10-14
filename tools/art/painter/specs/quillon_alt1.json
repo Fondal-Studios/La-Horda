@@ -1,9 +1,9 @@
 {
  "id": "quillon_alt1",
  "name": "Quillon, Tahur de Medianoche",
- "prompt": "Frac negro con solapa de seda plateada, capa corta y chaleco de brocado.",
- "body": "dariel",
- "head": "nahir_skin",
+ "prompt": "Frac con solapa plateada y capa corta.",
+ "body": "nahir_skin",
+ "head": "dariel_skin",
  "paint": [
   {
    "part": "head",
@@ -20,6 +20,18 @@
     "#34303c",
     "#56505e"
    ]
+  },
+  {
+   "part": "body",
+   "hue": [
+    280,
+    360
+   ],
+   "minChroma": 12,
+   "noSkin": true,
+   "to": "#d8d8e4",
+   "keepLight": 0.8,
+   "chroma": 1.0
   },
   {
    "part": "body",

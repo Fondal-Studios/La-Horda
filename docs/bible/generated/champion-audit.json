@@ -114,7 +114,7 @@
      "area": "ability",
      "name": "Hab. 1 Torbellino: SFX",
      "level": "PASS",
-     "detail": "2"
+     "detail": "3"
     },
     {
      "area": "ability",
@@ -242,7 +242,7 @@
      "selfChanged": 5,
      "spawned": 0,
      "vfx": 275,
-     "sfx": 2,
+     "sfx": 3,
      "floatText": 54,
      "netEvents": 6,
      "error": null
@@ -849,7 +849,7 @@
      "area": "ability",
      "name": "Definitiva Cataclismo Elemental: VFX",
      "level": "PASS",
-     "detail": "388"
+     "detail": "335"
     },
     {
      "area": "ability",
@@ -867,7 +867,7 @@
      "area": "ability",
      "name": "Definitiva Cataclismo Elemental: replicado a invitados",
      "level": "PASS",
-     "detail": "60 eventos de red"
+     "detail": "49 eventos de red"
     }
    ],
    "abilities": [
@@ -964,10 +964,10 @@
      "alliesHelped": 0,
      "selfChanged": 13,
      "spawned": 0,
-     "vfx": 388,
+     "vfx": 335,
      "sfx": 3,
      "floatText": 82,
-     "netEvents": 60,
+     "netEvents": 49,
      "error": null
     }
    ],
@@ -2144,7 +2144,7 @@
      "area": "ability",
      "name": "Definitiva Ascensión del Elegido: efecto de juego",
      "level": "PASS",
-     "detail": "daño 0, enemigos con estado 0, aliados 2, propio 4, entidades 0"
+     "detail": "daño 0, enemigos con estado 0, aliados 2, propio 5, entidades 0"
     },
     {
      "area": "ability",
@@ -2248,12 +2248,13 @@
      "selfKeys": [
       "stealthTimer",
       "fused",
-      "invulnTimer"
+      "invulnTimer",
+      "aelithDebtUntil"
      ],
      "dmg": 0,
      "enemiesAffected": 0,
      "alliesHelped": 2,
-     "selfChanged": 4,
+     "selfChanged": 5,
      "spawned": 0,
      "vfx": 6,
      "sfx": 1,
@@ -3048,7 +3049,7 @@
      "area": "ability",
      "name": "Hab. 2 Gólem de Carne: SFX",
      "level": "PASS",
-     "detail": "2"
+     "detail": "3"
     },
     {
      "area": "ability",
@@ -3164,7 +3165,7 @@
      "selfChanged": 0,
      "spawned": 0,
      "vfx": 127,
-     "sfx": 2,
+     "sfx": 3,
      "floatText": 25,
      "netEvents": 8,
      "error": null
@@ -4438,7 +4439,7 @@
      "area": "ability",
      "name": "Definitiva BERRINCHE: SFX",
      "level": "PASS",
-     "detail": "4"
+     "detail": "5"
     },
     {
      "area": "ability",
@@ -4544,7 +4545,7 @@
      "selfChanged": 2,
      "spawned": 1,
      "vfx": 419,
-     "sfx": 4,
+     "sfx": 5,
      "floatText": 80,
      "netEvents": 7,
      "error": null
@@ -9393,12 +9394,6 @@
     },
     {
      "area": "metadata",
-     "name": "Juicio del GM: descripción larga (316): el tooltip usa shortDescription",
-     "level": "WARNING",
-     "detail": ""
-    },
-    {
-     "area": "metadata",
      "name": "nombres de habilidad únicos",
      "level": "PASS",
      "detail": ""
@@ -9631,7 +9626,7 @@
    "status": "PASS*",
    "summary": {
     "fail": 0,
-    "warning": 4,
+    "warning": 3,
     "pass": 33
    }
   },
@@ -10165,7 +10160,7 @@
      "area": "ability",
      "name": "Definitiva Catedral del Sol: SFX",
      "level": "PASS",
-     "detail": "4"
+     "detail": "5"
     },
     {
      "area": "ability",
@@ -10262,7 +10257,7 @@
      "selfChanged": 1,
      "spawned": 4,
      "vfx": 365,
-     "sfx": 4,
+     "sfx": 5,
      "floatText": 70,
      "netEvents": 10,
      "error": null
@@ -10787,7 +10782,7 @@
      "area": "ability",
      "name": "Definitiva El Gran Teatro: SFX",
      "level": "PASS",
-     "detail": "6"
+     "detail": "7"
     },
     {
      "area": "ability",
@@ -10894,7 +10889,7 @@
      "selfChanged": 5,
      "spawned": 1,
      "vfx": 218,
-     "sfx": 6,
+     "sfx": 7,
      "floatText": 44,
      "netEvents": 10,
      "error": null
@@ -12157,6 +12152,3786 @@
     "fail": 0,
     "warning": 1,
     "pass": 34
+   }
+  },
+  {
+   "key": "ostrel",
+   "name": "Ostrel, el Cazador de Estrellas",
+   "role": "mago",
+   "checks": [
+    {
+     "area": "identity",
+     "name": "nombre propio",
+     "level": "PASS",
+     "detail": "Ostrel"
+    },
+    {
+     "area": "identity",
+     "name": "título",
+     "level": "PASS",
+     "detail": "el Cazador de Estrellas"
+    },
+    {
+     "area": "identity",
+     "name": "nombre de menú = \"Nombre, título\"",
+     "level": "PASS",
+     "detail": "Ostrel, el Cazador de Estrellas"
+    },
+    {
+     "area": "lore",
+     "name": "largo de historia",
+     "level": "PASS",
+     "detail": "430 caracteres (banda 260-480)"
+    },
+    {
+     "area": "lore",
+     "name": "origen legible",
+     "level": "PASS",
+     "detail": "El observatorio del Hielo"
+    },
+    {
+     "area": "lore",
+     "name": "frase de catálogo",
+     "level": "PASS",
+     "detail": "110 caracteres"
+    },
+    {
+     "area": "lore",
+     "name": "la frase nombra al campeón",
+     "level": "PASS",
+     "detail": "Ostrel"
+    },
+    {
+     "area": "role",
+     "name": "rol",
+     "level": "PASS",
+     "detail": "mago"
+    },
+    {
+     "area": "kit",
+     "name": "pasiva",
+     "level": "PASS",
+     "detail": "Foco Sostenido"
+    },
+    {
+     "area": "kit",
+     "name": "kit completo 3+1",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "progression",
+     "name": "árbol de talentos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "WARNING",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "skins",
+     "level": "WARNING",
+     "detail": "0 skins, 0 cromas"
+    },
+    {
+     "area": "metadata",
+     "name": "nombres de habilidad únicos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "sprite visible en partida",
+     "level": "PASS",
+     "detail": "506 píxeles"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Haz de Sirio: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 1003, enemigos con estado 5, aliados 0, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Haz de Sirio: VFX",
+     "level": "PASS",
+     "detail": "451"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Haz de Sirio: SFX",
+     "level": "PASS",
+     "detail": "11"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Haz de Sirio: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "84"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Haz de Sirio: replicado a invitados",
+     "level": "PASS",
+     "detail": "5 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Lente de Aumento: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 771, enemigos con estado 10, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Lente de Aumento: VFX",
+     "level": "PASS",
+     "detail": "360"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Lente de Aumento: SFX",
+     "level": "PASS",
+     "detail": "6"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Lente de Aumento: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "70"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Lente de Aumento: replicado a invitados",
+     "level": "PASS",
+     "detail": "26 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Concentración Estelar: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 0, enemigos con estado 0, aliados 0, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Concentración Estelar: VFX",
+     "level": "PASS",
+     "detail": "3"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Concentración Estelar: SFX",
+     "level": "PASS",
+     "detail": "2"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Concentración Estelar: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Concentración Estelar: replicado a invitados",
+     "level": "PASS",
+     "detail": "9 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Alineación de Sirio: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 3070, enemigos con estado 10, aliados 0, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Alineación de Sirio: VFX",
+     "level": "PASS",
+     "detail": "887"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Alineación de Sirio: SFX",
+     "level": "PASS",
+     "detail": "11"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Alineación de Sirio: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "174"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Alineación de Sirio: replicado a invitados",
+     "level": "PASS",
+     "detail": "11 eventos de red"
+    }
+   ],
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Haz de Sirio",
+     "kind": "ascension",
+     "targeting": "line",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil"
+     ],
+     "dmg": 1003,
+     "enemiesAffected": 5,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 451,
+     "sfx": 11,
+     "floatText": 84,
+     "netEvents": 5,
+     "error": null
+    },
+    {
+     "slot": 1,
+     "name": "Lente de Aumento",
+     "kind": "ascension",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 771,
+     "enemiesAffected": 10,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 360,
+     "sfx": 6,
+     "floatText": 70,
+     "netEvents": 26,
+     "error": null
+    },
+    {
+     "slot": 2,
+     "name": "Concentración Estelar",
+     "kind": "ascension",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil",
+      "portSpeedBonus",
+      "portSpeedTimer"
+     ],
+     "dmg": 0,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 3,
+     "sfx": 2,
+     "floatText": 4,
+     "netEvents": 9,
+     "error": null
+    },
+    {
+     "slot": "ult",
+     "name": "Alineación de Sirio",
+     "kind": "ascension",
+     "targeting": "line",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil"
+     ],
+     "dmg": 3070,
+     "enemiesAffected": 10,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 887,
+     "sfx": 11,
+     "floatText": 174,
+     "netEvents": 11,
+     "error": null
+    }
+   ],
+   "status": "PASS*",
+   "summary": {
+    "fail": 0,
+    "warning": 2,
+    "pass": 33
+   }
+  },
+  {
+   "key": "grelk",
+   "name": "Grelk, el Cazador de Fosos",
+   "role": "asesino",
+   "checks": [
+    {
+     "area": "identity",
+     "name": "nombre propio",
+     "level": "PASS",
+     "detail": "Grelk"
+    },
+    {
+     "area": "identity",
+     "name": "título",
+     "level": "PASS",
+     "detail": "el Cazador de Fosos"
+    },
+    {
+     "area": "identity",
+     "name": "nombre de menú = \"Nombre, título\"",
+     "level": "PASS",
+     "detail": "Grelk, el Cazador de Fosos"
+    },
+    {
+     "area": "lore",
+     "name": "largo de historia",
+     "level": "PASS",
+     "detail": "427 caracteres (banda 260-480)"
+    },
+    {
+     "area": "lore",
+     "name": "origen legible",
+     "level": "PASS",
+     "detail": "Los senderos del Bosque"
+    },
+    {
+     "area": "lore",
+     "name": "frase de catálogo",
+     "level": "PASS",
+     "detail": "95 caracteres"
+    },
+    {
+     "area": "lore",
+     "name": "la frase nombra al campeón",
+     "level": "PASS",
+     "detail": "Grelk"
+    },
+    {
+     "area": "role",
+     "name": "rol",
+     "level": "PASS",
+     "detail": "asesino"
+    },
+    {
+     "area": "kit",
+     "name": "pasiva",
+     "level": "PASS",
+     "detail": "Instinto de Presa"
+    },
+    {
+     "area": "kit",
+     "name": "kit completo 3+1",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "progression",
+     "name": "árbol de talentos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "WARNING",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "skins",
+     "level": "WARNING",
+     "detail": "0 skins, 0 cromas"
+    },
+    {
+     "area": "metadata",
+     "name": "nombres de habilidad únicos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "sprite visible en partida",
+     "level": "PASS",
+     "detail": "479 píxeles"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Cepo de Zarpa: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 399, enemigos con estado 10, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Cepo de Zarpa: VFX",
+     "level": "PASS",
+     "detail": "61"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Cepo de Zarpa: SFX",
+     "level": "PASS",
+     "detail": "5"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Cepo de Zarpa: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "10"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Cepo de Zarpa: replicado a invitados",
+     "level": "PASS",
+     "detail": "5 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Mina de Clavos: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 562, enemigos con estado 10, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Mina de Clavos: VFX",
+     "level": "PASS",
+     "detail": "61"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Mina de Clavos: SFX",
+     "level": "PASS",
+     "detail": "5"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Mina de Clavos: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "40"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Mina de Clavos: replicado a invitados",
+     "level": "PASS",
+     "detail": "5 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Pulso del Cazador: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 0, enemigos con estado 0, aliados 0, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Pulso del Cazador: VFX",
+     "level": "PASS",
+     "detail": "3"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Pulso del Cazador: SFX",
+     "level": "PASS",
+     "detail": "2"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Pulso del Cazador: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "1"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Pulso del Cazador: replicado a invitados",
+     "level": "PASS",
+     "detail": "6 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Campo de Cepos: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 1792, enemigos con estado 10, aliados 0, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Campo de Cepos: VFX",
+     "level": "PASS",
+     "detail": "291"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Campo de Cepos: SFX",
+     "level": "PASS",
+     "detail": "10"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Campo de Cepos: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "82"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Campo de Cepos: replicado a invitados",
+     "level": "PASS",
+     "detail": "8 eventos de red"
+    }
+   ],
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Cepo de Zarpa",
+     "kind": "ascension",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 399,
+     "enemiesAffected": 10,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 61,
+     "sfx": 5,
+     "floatText": 10,
+     "netEvents": 5,
+     "error": null
+    },
+    {
+     "slot": 1,
+     "name": "Mina de Clavos",
+     "kind": "ascension",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 562,
+     "enemiesAffected": 10,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 61,
+     "sfx": 5,
+     "floatText": 40,
+     "netEvents": 5,
+     "error": null
+    },
+    {
+     "slot": 2,
+     "name": "Pulso del Cazador",
+     "kind": "ascension",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil",
+      "portSpeedBonus",
+      "portSpeedTimer"
+     ],
+     "dmg": 0,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 3,
+     "sfx": 2,
+     "floatText": 1,
+     "netEvents": 6,
+     "error": null
+    },
+    {
+     "slot": "ult",
+     "name": "Campo de Cepos",
+     "kind": "ascension",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil",
+      "portSpeedBonus",
+      "portSpeedTimer"
+     ],
+     "dmg": 1792,
+     "enemiesAffected": 10,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 291,
+     "sfx": 10,
+     "floatText": 82,
+     "netEvents": 8,
+     "error": null
+    }
+   ],
+   "status": "PASS*",
+   "summary": {
+    "fail": 0,
+    "warning": 2,
+    "pass": 33
+   }
+  },
+  {
+   "key": "ilsa",
+   "name": "Ilsa, la Esgrimista de Réplica",
+   "role": "asesino",
+   "checks": [
+    {
+     "area": "identity",
+     "name": "nombre propio",
+     "level": "PASS",
+     "detail": "Ilsa"
+    },
+    {
+     "area": "identity",
+     "name": "título",
+     "level": "PASS",
+     "detail": "la Esgrimista de Réplica"
+    },
+    {
+     "area": "identity",
+     "name": "nombre de menú = \"Nombre, título\"",
+     "level": "PASS",
+     "detail": "Ilsa, la Esgrimista de Réplica"
+    },
+    {
+     "area": "lore",
+     "name": "largo de historia",
+     "level": "PASS",
+     "detail": "412 caracteres (banda 260-480)"
+    },
+    {
+     "area": "lore",
+     "name": "origen legible",
+     "level": "PASS",
+     "detail": "Los salones de la Ciudad"
+    },
+    {
+     "area": "lore",
+     "name": "frase de catálogo",
+     "level": "PASS",
+     "detail": "90 caracteres"
+    },
+    {
+     "area": "lore",
+     "name": "la frase nombra al campeón",
+     "level": "PASS",
+     "detail": "Ilsa"
+    },
+    {
+     "area": "role",
+     "name": "rol",
+     "level": "PASS",
+     "detail": "asesino"
+    },
+    {
+     "area": "kit",
+     "name": "pasiva",
+     "level": "PASS",
+     "detail": "Respuesta"
+    },
+    {
+     "area": "kit",
+     "name": "kit completo 3+1",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "progression",
+     "name": "árbol de talentos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "WARNING",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "skins",
+     "level": "WARNING",
+     "detail": "0 skins, 0 cromas"
+    },
+    {
+     "area": "metadata",
+     "name": "nombres de habilidad únicos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "sprite visible en partida",
+     "level": "PASS",
+     "detail": "440 píxeles"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Postura de Réplica: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 0, enemigos con estado 0, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Postura de Réplica: VFX",
+     "level": "PASS",
+     "detail": "3"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Postura de Réplica: SFX",
+     "level": "PASS",
+     "detail": "2"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Postura de Réplica: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "1"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Postura de Réplica: replicado a invitados",
+     "level": "PASS",
+     "detail": "6 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Estocada de Réplica: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 315, enemigos con estado 0, aliados 0, propio 4, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Estocada de Réplica: VFX",
+     "level": "PASS",
+     "detail": "42"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Estocada de Réplica: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Estocada de Réplica: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "6"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Estocada de Réplica: replicado a invitados",
+     "level": "PASS",
+     "detail": "19 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Giro de Acero: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 273, enemigos con estado 6, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Giro de Acero: VFX",
+     "level": "PASS",
+     "detail": "34"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Giro de Acero: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Giro de Acero: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "6"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Giro de Acero: replicado a invitados",
+     "level": "PASS",
+     "detail": "18 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Duelo de Mil Réplicas: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 238, enemigos con estado 8, aliados 0, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Duelo de Mil Réplicas: VFX",
+     "level": "PASS",
+     "detail": "44"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Duelo de Mil Réplicas: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Duelo de Mil Réplicas: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "9"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Duelo de Mil Réplicas: replicado a invitados",
+     "level": "PASS",
+     "detail": "25 eventos de red"
+    }
+   ],
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Postura de Réplica",
+     "kind": "ascension",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 0,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 3,
+     "sfx": 2,
+     "floatText": 1,
+     "netEvents": 6,
+     "error": null
+    },
+    {
+     "slot": 1,
+     "name": "Estocada de Réplica",
+     "kind": "ascension",
+     "targeting": "dash",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil"
+     ],
+     "dmg": 315,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 4,
+     "spawned": 0,
+     "vfx": 42,
+     "sfx": 4,
+     "floatText": 6,
+     "netEvents": 19,
+     "error": null
+    },
+    {
+     "slot": 2,
+     "name": "Giro de Acero",
+     "kind": "ascension",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 273,
+     "enemiesAffected": 6,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 34,
+     "sfx": 4,
+     "floatText": 6,
+     "netEvents": 18,
+     "error": null
+    },
+    {
+     "slot": "ult",
+     "name": "Duelo de Mil Réplicas",
+     "kind": "ascension",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil",
+      "portSpeedBonus",
+      "portSpeedTimer"
+     ],
+     "dmg": 238,
+     "enemiesAffected": 8,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 44,
+     "sfx": 4,
+     "floatText": 9,
+     "netEvents": 25,
+     "error": null
+    }
+   ],
+   "status": "PASS*",
+   "summary": {
+    "fail": 0,
+    "warning": 2,
+    "pass": 33
+   }
+  },
+  {
+   "key": "vorn",
+   "name": "Vorn, el Cambiapiel",
+   "role": "tanque",
+   "checks": [
+    {
+     "area": "identity",
+     "name": "nombre propio",
+     "level": "PASS",
+     "detail": "Vorn"
+    },
+    {
+     "area": "identity",
+     "name": "título",
+     "level": "PASS",
+     "detail": "el Cambiapiel"
+    },
+    {
+     "area": "identity",
+     "name": "nombre de menú = \"Nombre, título\"",
+     "level": "PASS",
+     "detail": "Vorn, el Cambiapiel"
+    },
+    {
+     "area": "lore",
+     "name": "largo de historia",
+     "level": "PASS",
+     "detail": "383 caracteres (banda 260-480)"
+    },
+    {
+     "area": "lore",
+     "name": "origen legible",
+     "level": "PASS",
+     "detail": "El santuario del Laberinto"
+    },
+    {
+     "area": "lore",
+     "name": "frase de catálogo",
+     "level": "PASS",
+     "detail": "94 caracteres"
+    },
+    {
+     "area": "lore",
+     "name": "la frase nombra al campeón",
+     "level": "PASS",
+     "detail": "Vorn"
+    },
+    {
+     "area": "role",
+     "name": "rol",
+     "level": "PASS",
+     "detail": "tanque"
+    },
+    {
+     "area": "kit",
+     "name": "pasiva",
+     "level": "PASS",
+     "detail": "Dos Pieles"
+    },
+    {
+     "area": "kit",
+     "name": "kit completo 3+1",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "progression",
+     "name": "árbol de talentos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "WARNING",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "skins",
+     "level": "WARNING",
+     "detail": "0 skins, 0 cromas"
+    },
+    {
+     "area": "metadata",
+     "name": "nombres de habilidad únicos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "sprite visible en partida",
+     "level": "PASS",
+     "detail": "605 píxeles"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Mudar: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 139, enemigos con estado 6, aliados 0, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Mudar: VFX",
+     "level": "PASS",
+     "detail": "39"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Mudar: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Mudar: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "7"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Mudar: replicado a invitados",
+     "level": "PASS",
+     "detail": "22 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Zarpa: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 387, enemigos con estado 10, aliados 0, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Zarpa: VFX",
+     "level": "PASS",
+     "detail": "60"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Zarpa: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Zarpa: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "10"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Zarpa: replicado a invitados",
+     "level": "PASS",
+     "detail": "30 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Instinto: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 0, enemigos con estado 0, aliados 6, propio 2, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Instinto: VFX",
+     "level": "PASS",
+     "detail": "8"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Instinto: SFX",
+     "level": "PASS",
+     "detail": "2"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Instinto: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Instinto: replicado a invitados",
+     "level": "PASS",
+     "detail": "12 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Bestia Primordial: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 437, enemigos con estado 10, aliados 0, propio 5, entidades 1"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Bestia Primordial: VFX",
+     "level": "PASS",
+     "detail": "197"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Bestia Primordial: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Bestia Primordial: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "31"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Bestia Primordial: replicado a invitados",
+     "level": "PASS",
+     "detail": "11 eventos de red"
+    }
+   ],
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Mudar",
+     "kind": "ascension",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil",
+      "portSpeedBonus",
+      "portSpeedTimer"
+     ],
+     "dmg": 139,
+     "enemiesAffected": 6,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 39,
+     "sfx": 4,
+     "floatText": 7,
+     "netEvents": 22,
+     "error": null
+    },
+    {
+     "slot": 1,
+     "name": "Zarpa",
+     "kind": "ascension",
+     "targeting": "cone",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil"
+     ],
+     "dmg": 387,
+     "enemiesAffected": 10,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 60,
+     "sfx": 4,
+     "floatText": 10,
+     "netEvents": 30,
+     "error": null
+    },
+    {
+     "slot": 2,
+     "name": "Instinto",
+     "kind": "ascension",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "shieldTimer",
+      "portCastUntil"
+     ],
+     "dmg": 0,
+     "enemiesAffected": 0,
+     "alliesHelped": 6,
+     "selfChanged": 2,
+     "spawned": 0,
+     "vfx": 8,
+     "sfx": 2,
+     "floatText": 4,
+     "netEvents": 12,
+     "error": null
+    },
+    {
+     "slot": "ult",
+     "name": "Bestia Primordial",
+     "kind": "ascension",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "shield",
+      "shieldTimer",
+      "portCastUntil",
+      "portSpeedBonus",
+      "portSpeedTimer"
+     ],
+     "dmg": 437,
+     "enemiesAffected": 10,
+     "alliesHelped": 0,
+     "selfChanged": 5,
+     "spawned": 1,
+     "vfx": 197,
+     "sfx": 4,
+     "floatText": 31,
+     "netEvents": 11,
+     "error": null
+    }
+   ],
+   "status": "PASS*",
+   "summary": {
+    "fail": 0,
+    "warning": 2,
+    "pass": 33
+   }
+  },
+  {
+   "key": "nerith",
+   "name": "Nerith, la Bruja de la Ciénaga",
+   "role": "soporte",
+   "checks": [
+    {
+     "area": "identity",
+     "name": "nombre propio",
+     "level": "PASS",
+     "detail": "Nerith"
+    },
+    {
+     "area": "identity",
+     "name": "título",
+     "level": "PASS",
+     "detail": "la Bruja de la Ciénaga"
+    },
+    {
+     "area": "identity",
+     "name": "nombre de menú = \"Nombre, título\"",
+     "level": "PASS",
+     "detail": "Nerith, la Bruja de la Ciénaga"
+    },
+    {
+     "area": "lore",
+     "name": "largo de historia",
+     "level": "PASS",
+     "detail": "371 caracteres (banda 260-480)"
+    },
+    {
+     "area": "lore",
+     "name": "origen legible",
+     "level": "PASS",
+     "detail": "Los pantanos del Abismo Líquido"
+    },
+    {
+     "area": "lore",
+     "name": "frase de catálogo",
+     "level": "PASS",
+     "detail": "90 caracteres"
+    },
+    {
+     "area": "lore",
+     "name": "la frase nombra al campeón",
+     "level": "PASS",
+     "detail": "Nerith"
+    },
+    {
+     "area": "role",
+     "name": "rol",
+     "level": "PASS",
+     "detail": "soporte"
+    },
+    {
+     "area": "kit",
+     "name": "pasiva",
+     "level": "PASS",
+     "detail": "Savia Densa"
+    },
+    {
+     "area": "kit",
+     "name": "kit completo 3+1",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "progression",
+     "name": "árbol de talentos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "WARNING",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "skins",
+     "level": "WARNING",
+     "detail": "0 skins, 0 cromas"
+    },
+    {
+     "area": "metadata",
+     "name": "nombres de habilidad únicos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "sprite visible en partida",
+     "level": "PASS",
+     "detail": "425 píxeles"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Charco de Musgo: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 301, enemigos con estado 10, aliados 0, propio 1, entidades 1"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Charco de Musgo: VFX",
+     "level": "PASS",
+     "detail": "362"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Charco de Musgo: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Charco de Musgo: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "70"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Charco de Musgo: replicado a invitados",
+     "level": "PASS",
+     "detail": "8 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Reguero de Lodo: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 236, enemigos con estado 6, aliados 0, propio 3, entidades 1"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Reguero de Lodo: VFX",
+     "level": "PASS",
+     "detail": "258"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Reguero de Lodo: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Reguero de Lodo: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "48"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Reguero de Lodo: replicado a invitados",
+     "level": "PASS",
+     "detail": "6 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Bruma Mansa: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 0, enemigos con estado 0, aliados 6, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Bruma Mansa: VFX",
+     "level": "PASS",
+     "detail": "8"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Bruma Mansa: SFX",
+     "level": "PASS",
+     "detail": "2"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Bruma Mansa: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Bruma Mansa: replicado a invitados",
+     "level": "PASS",
+     "detail": "12 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Marisma Eterna: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 392, enemigos con estado 10, aliados 6, propio 3, entidades 1"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Marisma Eterna: VFX",
+     "level": "PASS",
+     "detail": "315"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Marisma Eterna: SFX",
+     "level": "PASS",
+     "detail": "5"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Marisma Eterna: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "64"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Marisma Eterna: replicado a invitados",
+     "level": "PASS",
+     "detail": "14 eventos de red"
+    }
+   ],
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Charco de Musgo",
+     "kind": "ascension",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 301,
+     "enemiesAffected": 10,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 1,
+     "vfx": 362,
+     "sfx": 4,
+     "floatText": 70,
+     "netEvents": 8,
+     "error": null
+    },
+    {
+     "slot": 1,
+     "name": "Reguero de Lodo",
+     "kind": "ascension",
+     "targeting": "line",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil"
+     ],
+     "dmg": 236,
+     "enemiesAffected": 6,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 1,
+     "vfx": 258,
+     "sfx": 4,
+     "floatText": 48,
+     "netEvents": 6,
+     "error": null
+    },
+    {
+     "slot": 2,
+     "name": "Bruma Mansa",
+     "kind": "ascension",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "shieldTimer",
+      "portCastUntil",
+      "slowTimer"
+     ],
+     "dmg": 0,
+     "enemiesAffected": 0,
+     "alliesHelped": 6,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 8,
+     "sfx": 2,
+     "floatText": 4,
+     "netEvents": 12,
+     "error": null
+    },
+    {
+     "slot": "ult",
+     "name": "Marisma Eterna",
+     "kind": "ascension",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "hp",
+      "portCastUntil",
+      "slowTimer"
+     ],
+     "dmg": 392,
+     "enemiesAffected": 10,
+     "alliesHelped": 6,
+     "selfChanged": 3,
+     "spawned": 1,
+     "vfx": 315,
+     "sfx": 5,
+     "floatText": 64,
+     "netEvents": 14,
+     "error": null
+    }
+   ],
+   "status": "PASS*",
+   "summary": {
+    "fail": 0,
+    "warning": 2,
+    "pass": 33
+   }
+  },
+  {
+   "key": "quillon",
+   "name": "Quillon, el Tahúr de la Última Mano",
+   "role": "mago",
+   "checks": [
+    {
+     "area": "identity",
+     "name": "nombre propio",
+     "level": "PASS",
+     "detail": "Quillon"
+    },
+    {
+     "area": "identity",
+     "name": "título",
+     "level": "PASS",
+     "detail": "el Tahúr de la Última Mano"
+    },
+    {
+     "area": "identity",
+     "name": "nombre de menú = \"Nombre, título\"",
+     "level": "PASS",
+     "detail": "Quillon, el Tahúr de la Última Mano"
+    },
+    {
+     "area": "lore",
+     "name": "largo de historia",
+     "level": "PASS",
+     "detail": "430 caracteres (banda 260-480)"
+    },
+    {
+     "area": "lore",
+     "name": "origen legible",
+     "level": "PASS",
+     "detail": "La taberna sin salida del Laberinto"
+    },
+    {
+     "area": "lore",
+     "name": "frase de catálogo",
+     "level": "PASS",
+     "detail": "108 caracteres"
+    },
+    {
+     "area": "lore",
+     "name": "la frase nombra al campeón",
+     "level": "PASS",
+     "detail": "Quillon"
+    },
+    {
+     "area": "role",
+     "name": "rol",
+     "level": "PASS",
+     "detail": "mago"
+    },
+    {
+     "area": "kit",
+     "name": "pasiva",
+     "level": "PASS",
+     "detail": "Racha de Cuatro"
+    },
+    {
+     "area": "kit",
+     "name": "kit completo 3+1",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "progression",
+     "name": "árbol de talentos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "WARNING",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "skins",
+     "level": "WARNING",
+     "detail": "0 skins, 0 cromas"
+    },
+    {
+     "area": "metadata",
+     "name": "nombres de habilidad únicos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "sprite visible en partida",
+     "level": "PASS",
+     "detail": "590 píxeles"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Reparto de Cartas: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 143, enemigos con estado 9, aliados 0, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Reparto de Cartas: VFX",
+     "level": "PASS",
+     "detail": "92"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Reparto de Cartas: SFX",
+     "level": "PASS",
+     "detail": "5"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Reparto de Cartas: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "14"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Reparto de Cartas: replicado a invitados",
+     "level": "PASS",
+     "detail": "45 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 As en la Manga: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 276, enemigos con estado 0, aliados 0, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 As en la Manga: VFX",
+     "level": "PASS",
+     "detail": "45"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 As en la Manga: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 As en la Manga: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "6"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 As en la Manga: replicado a invitados",
+     "level": "PASS",
+     "detail": "19 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Apuesta Doble: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 0, enemigos con estado 0, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Apuesta Doble: VFX",
+     "level": "PASS",
+     "detail": "8"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Apuesta Doble: SFX",
+     "level": "PASS",
+     "detail": "2"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Apuesta Doble: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Apuesta Doble: replicado a invitados",
+     "level": "PASS",
+     "detail": "12 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Escalera Real: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 299, enemigos con estado 10, aliados 6, propio 2, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Escalera Real: VFX",
+     "level": "PASS",
+     "detail": "123"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Escalera Real: SFX",
+     "level": "PASS",
+     "detail": "3"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Escalera Real: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "28"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Escalera Real: replicado a invitados",
+     "level": "PASS",
+     "detail": "7 eventos de red"
+    }
+   ],
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Reparto de Cartas",
+     "kind": "ascension",
+     "targeting": "cone",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil"
+     ],
+     "dmg": 143,
+     "enemiesAffected": 9,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 92,
+     "sfx": 5,
+     "floatText": 14,
+     "netEvents": 45,
+     "error": null
+    },
+    {
+     "slot": 1,
+     "name": "As en la Manga",
+     "kind": "ascension",
+     "targeting": "line",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil"
+     ],
+     "dmg": 276,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 45,
+     "sfx": 4,
+     "floatText": 6,
+     "netEvents": 19,
+     "error": null
+    },
+    {
+     "slot": 2,
+     "name": "Apuesta Doble",
+     "kind": "ascension",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 0,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 8,
+     "sfx": 2,
+     "floatText": 4,
+     "netEvents": 12,
+     "error": null
+    },
+    {
+     "slot": "ult",
+     "name": "Escalera Real",
+     "kind": "ascension",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "hp",
+      "portCastUntil"
+     ],
+     "dmg": 299,
+     "enemiesAffected": 10,
+     "alliesHelped": 6,
+     "selfChanged": 2,
+     "spawned": 0,
+     "vfx": 123,
+     "sfx": 3,
+     "floatText": 28,
+     "netEvents": 7,
+     "error": null
+    }
+   ],
+   "status": "PASS*",
+   "summary": {
+    "fail": 0,
+    "warning": 2,
+    "pass": 33
+   }
+  },
+  {
+   "key": "kora",
+   "name": "Kora, la Ariete",
+   "role": "tanque",
+   "checks": [
+    {
+     "area": "identity",
+     "name": "nombre propio",
+     "level": "PASS",
+     "detail": "Kora"
+    },
+    {
+     "area": "identity",
+     "name": "título",
+     "level": "PASS",
+     "detail": "la Ariete"
+    },
+    {
+     "area": "identity",
+     "name": "nombre de menú = \"Nombre, título\"",
+     "level": "PASS",
+     "detail": "Kora, la Ariete"
+    },
+    {
+     "area": "lore",
+     "name": "largo de historia",
+     "level": "PASS",
+     "detail": "419 caracteres (banda 260-480)"
+    },
+    {
+     "area": "lore",
+     "name": "origen legible",
+     "level": "PASS",
+     "detail": "Las galerías de las Minas"
+    },
+    {
+     "area": "lore",
+     "name": "frase de catálogo",
+     "level": "PASS",
+     "detail": "96 caracteres"
+    },
+    {
+     "area": "lore",
+     "name": "la frase nombra al campeón",
+     "level": "PASS",
+     "detail": "Kora"
+    },
+    {
+     "area": "role",
+     "name": "rol",
+     "level": "PASS",
+     "detail": "tanque"
+    },
+    {
+     "area": "kit",
+     "name": "pasiva",
+     "level": "PASS",
+     "detail": "Impulso"
+    },
+    {
+     "area": "kit",
+     "name": "kit completo 3+1",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "progression",
+     "name": "árbol de talentos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "WARNING",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "skins",
+     "level": "WARNING",
+     "detail": "0 skins, 0 cromas"
+    },
+    {
+     "area": "metadata",
+     "name": "nombres de habilidad únicos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "sprite visible en partida",
+     "level": "PASS",
+     "detail": "407 píxeles"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Arremetida de Ariete: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 268, enemigos con estado 0, aliados 0, propio 4, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Arremetida de Ariete: VFX",
+     "level": "PASS",
+     "detail": "53"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Arremetida de Ariete: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Arremetida de Ariete: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "8"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Arremetida de Ariete: replicado a invitados",
+     "level": "PASS",
+     "detail": "23 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Pisotón de Impulso: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 217, enemigos con estado 6, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Pisotón de Impulso: VFX",
+     "level": "PASS",
+     "detail": "39"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Pisotón de Impulso: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Pisotón de Impulso: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "6"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Pisotón de Impulso: replicado a invitados",
+     "level": "PASS",
+     "detail": "21 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Cabeza Gacha: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 0, enemigos con estado 0, aliados 0, propio 5, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Cabeza Gacha: VFX",
+     "level": "PASS",
+     "detail": "8"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Cabeza Gacha: SFX",
+     "level": "PASS",
+     "detail": "2"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Cabeza Gacha: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "1"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Cabeza Gacha: replicado a invitados",
+     "level": "PASS",
+     "detail": "9 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Estampida: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 227, enemigos con estado 1, aliados 0, propio 6, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Estampida: VFX",
+     "level": "PASS",
+     "detail": "206"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Estampida: SFX",
+     "level": "PASS",
+     "detail": "3"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Estampida: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "38"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Estampida: replicado a invitados",
+     "level": "PASS",
+     "detail": "9 eventos de red"
+    }
+   ],
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Arremetida de Ariete",
+     "kind": "ascension",
+     "targeting": "dash",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil"
+     ],
+     "dmg": 268,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 4,
+     "spawned": 0,
+     "vfx": 53,
+     "sfx": 4,
+     "floatText": 8,
+     "netEvents": 23,
+     "error": null
+    },
+    {
+     "slot": 1,
+     "name": "Pisotón de Impulso",
+     "kind": "ascension",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 217,
+     "enemiesAffected": 6,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 39,
+     "sfx": 4,
+     "floatText": 6,
+     "netEvents": 21,
+     "error": null
+    },
+    {
+     "slot": 2,
+     "name": "Cabeza Gacha",
+     "kind": "ascension",
+     "targeting": "self",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "shieldTimer",
+      "portCastUntil",
+      "portSpeedBonus",
+      "portSpeedTimer",
+      "slowTimer"
+     ],
+     "dmg": 0,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 5,
+     "spawned": 0,
+     "vfx": 8,
+     "sfx": 2,
+     "floatText": 1,
+     "netEvents": 9,
+     "error": null
+    },
+    {
+     "slot": "ult",
+     "name": "Estampida",
+     "kind": "ascension",
+     "targeting": "line",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil",
+      "portSpeedBonus",
+      "portSpeedTimer"
+     ],
+     "dmg": 227,
+     "enemiesAffected": 1,
+     "alliesHelped": 0,
+     "selfChanged": 6,
+     "spawned": 0,
+     "vfx": 206,
+     "sfx": 3,
+     "floatText": 38,
+     "netEvents": 9,
+     "error": null
+    }
+   ],
+   "status": "PASS*",
+   "summary": {
+    "fail": 0,
+    "warning": 2,
+    "pass": 33
+   }
+  },
+  {
+   "key": "solciju",
+   "name": "Solciju, la Enóloga",
+   "role": "mago",
+   "checks": [
+    {
+     "area": "identity",
+     "name": "nombre propio",
+     "level": "PASS",
+     "detail": "Solciju"
+    },
+    {
+     "area": "identity",
+     "name": "título",
+     "level": "PASS",
+     "detail": "la Enóloga"
+    },
+    {
+     "area": "identity",
+     "name": "nombre de menú = \"Nombre, título\"",
+     "level": "PASS",
+     "detail": "Solciju, la Enóloga"
+    },
+    {
+     "area": "lore",
+     "name": "largo de historia",
+     "level": "PASS",
+     "detail": "370 caracteres (banda 260-480)"
+    },
+    {
+     "area": "lore",
+     "name": "origen legible",
+     "level": "PASS",
+     "detail": "Las bodegas de la Ciudad Maldita"
+    },
+    {
+     "area": "lore",
+     "name": "frase de catálogo",
+     "level": "PASS",
+     "detail": "90 caracteres"
+    },
+    {
+     "area": "lore",
+     "name": "la frase nombra al campeón",
+     "level": "PASS",
+     "detail": "Solciju"
+    },
+    {
+     "area": "role",
+     "name": "rol",
+     "level": "PASS",
+     "detail": "mago"
+    },
+    {
+     "area": "kit",
+     "name": "pasiva",
+     "level": "PASS",
+     "detail": "Fermentación"
+    },
+    {
+     "area": "kit",
+     "name": "kit completo 3+1",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "progression",
+     "name": "árbol de talentos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "PASS",
+     "detail": "quality_solciju"
+    },
+    {
+     "area": "art",
+     "name": "skins",
+     "level": "PASS",
+     "detail": "1 skins, 2 cromas"
+    },
+    {
+     "area": "metadata",
+     "name": "nombres de habilidad únicos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "sprite visible en partida",
+     "level": "PASS",
+     "detail": "403 píxeles"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Vino maldito: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 300, enemigos con estado 1, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Vino maldito: VFX",
+     "level": "PASS",
+     "detail": "42"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Vino maldito: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Vino maldito: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "10"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Vino maldito: replicado a invitados",
+     "level": "PASS",
+     "detail": "22 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Barrica añeja: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 465, enemigos con estado 2, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Barrica añeja: VFX",
+     "level": "PASS",
+     "detail": "51"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Barrica añeja: SFX",
+     "level": "PASS",
+     "detail": "5"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Barrica añeja: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "10"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Barrica añeja: replicado a invitados",
+     "level": "PASS",
+     "detail": "8 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Brindis a solas: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 0, enemigos con estado 0, aliados 0, propio 2, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Brindis a solas: VFX",
+     "level": "PASS",
+     "detail": "8"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Brindis a solas: SFX",
+     "level": "PASS",
+     "detail": "2"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Brindis a solas: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "1"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Brindis a solas: replicado a invitados",
+     "level": "PASS",
+     "detail": "9 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Gran Reserva: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 478, enemigos con estado 10, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Gran Reserva: VFX",
+     "level": "PASS",
+     "detail": "156"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Gran Reserva: SFX",
+     "level": "PASS",
+     "detail": "5"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Gran Reserva: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "48"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Gran Reserva: replicado a invitados",
+     "level": "PASS",
+     "detail": "10 eventos de red"
+    }
+   ],
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Vino maldito",
+     "kind": "expedition",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 300,
+     "enemiesAffected": 1,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 42,
+     "sfx": 4,
+     "floatText": 10,
+     "netEvents": 22,
+     "error": null
+    },
+    {
+     "slot": 1,
+     "name": "Barrica añeja",
+     "kind": "expedition",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 465,
+     "enemiesAffected": 2,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 51,
+     "sfx": 5,
+     "floatText": 10,
+     "netEvents": 8,
+     "error": null
+    },
+    {
+     "slot": 2,
+     "name": "Brindis a solas",
+     "kind": "expedition",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "hp",
+      "portCastUntil"
+     ],
+     "dmg": 0,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 2,
+     "spawned": 0,
+     "vfx": 8,
+     "sfx": 2,
+     "floatText": 1,
+     "netEvents": 9,
+     "error": null
+    },
+    {
+     "slot": "ult",
+     "name": "Gran Reserva",
+     "kind": "expedition",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 478,
+     "enemiesAffected": 10,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 156,
+     "sfx": 5,
+     "floatText": 48,
+     "netEvents": 10,
+     "error": null
+    }
+   ],
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   }
+  },
+  {
+   "key": "veyra",
+   "name": "Veyra, la Última Herida",
+   "role": "asesino",
+   "checks": [
+    {
+     "area": "identity",
+     "name": "nombre propio",
+     "level": "PASS",
+     "detail": "Veyra"
+    },
+    {
+     "area": "identity",
+     "name": "título",
+     "level": "PASS",
+     "detail": "la Última Herida"
+    },
+    {
+     "area": "identity",
+     "name": "nombre de menú = \"Nombre, título\"",
+     "level": "PASS",
+     "detail": "Veyra, la Última Herida"
+    },
+    {
+     "area": "lore",
+     "name": "largo de historia",
+     "level": "PASS",
+     "detail": "374 caracteres (banda 260-480)"
+    },
+    {
+     "area": "lore",
+     "name": "origen legible",
+     "level": "PASS",
+     "detail": "El campo de batalla de la Ciudad Maldita"
+    },
+    {
+     "area": "lore",
+     "name": "frase de catálogo",
+     "level": "PASS",
+     "detail": "90 caracteres"
+    },
+    {
+     "area": "lore",
+     "name": "la frase nombra al campeón",
+     "level": "PASS",
+     "detail": "Veyra"
+    },
+    {
+     "area": "role",
+     "name": "rol",
+     "level": "PASS",
+     "detail": "asesino"
+    },
+    {
+     "area": "kit",
+     "name": "pasiva",
+     "level": "PASS",
+     "detail": "Al filo"
+    },
+    {
+     "area": "kit",
+     "name": "kit completo 3+1",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "progression",
+     "name": "árbol de talentos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "PASS",
+     "detail": "quality_veyra"
+    },
+    {
+     "area": "art",
+     "name": "skins",
+     "level": "PASS",
+     "detail": "1 skins, 2 cromas"
+    },
+    {
+     "area": "metadata",
+     "name": "nombres de habilidad únicos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "sprite visible en partida",
+     "level": "PASS",
+     "detail": "413 píxeles"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Abrir la herida: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 320, enemigos con estado 2, aliados 0, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Abrir la herida: VFX",
+     "level": "PASS",
+     "detail": "112"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Abrir la herida: SFX",
+     "level": "PASS",
+     "detail": "5"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Abrir la herida: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "32"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Abrir la herida: replicado a invitados",
+     "level": "PASS",
+     "detail": "20 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Paso escarlata: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 171, enemigos con estado 1, aliados 0, propio 4, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Paso escarlata: VFX",
+     "level": "PASS",
+     "detail": "86"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Paso escarlata: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Paso escarlata: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "24"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Paso escarlata: replicado a invitados",
+     "level": "PASS",
+     "detail": "13 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Pacto de dolor: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 0, enemigos con estado 0, aliados 0, propio 4, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Pacto de dolor: VFX",
+     "level": "PASS",
+     "detail": "8"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Pacto de dolor: SFX",
+     "level": "PASS",
+     "detail": "2"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Pacto de dolor: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "1"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Pacto de dolor: replicado a invitados",
+     "level": "PASS",
+     "detail": "9 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva La última herida: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 447, enemigos con estado 10, aliados 0, propio 2, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva La última herida: VFX",
+     "level": "PASS",
+     "detail": "49"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva La última herida: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva La última herida: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "10"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva La última herida: replicado a invitados",
+     "level": "PASS",
+     "detail": "31 eventos de red"
+    }
+   ],
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Abrir la herida",
+     "kind": "expedition",
+     "targeting": "cone",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil"
+     ],
+     "dmg": 320,
+     "enemiesAffected": 2,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 112,
+     "sfx": 5,
+     "floatText": 32,
+     "netEvents": 20,
+     "error": null
+    },
+    {
+     "slot": 1,
+     "name": "Paso escarlata",
+     "kind": "expedition",
+     "targeting": "dash",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil"
+     ],
+     "dmg": 171,
+     "enemiesAffected": 1,
+     "alliesHelped": 0,
+     "selfChanged": 4,
+     "spawned": 0,
+     "vfx": 86,
+     "sfx": 4,
+     "floatText": 24,
+     "netEvents": 13,
+     "error": null
+    },
+    {
+     "slot": 2,
+     "name": "Pacto de dolor",
+     "kind": "expedition",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "hp",
+      "portCastUntil",
+      "portSpeedBonus",
+      "portSpeedTimer"
+     ],
+     "dmg": 0,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 4,
+     "spawned": 0,
+     "vfx": 8,
+     "sfx": 2,
+     "floatText": 1,
+     "netEvents": 9,
+     "error": null
+    },
+    {
+     "slot": "ult",
+     "name": "La última herida",
+     "kind": "expedition",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "hp",
+      "portCastUntil"
+     ],
+     "dmg": 447,
+     "enemiesAffected": 10,
+     "alliesHelped": 0,
+     "selfChanged": 2,
+     "spawned": 0,
+     "vfx": 49,
+     "sfx": 4,
+     "floatText": 10,
+     "netEvents": 31,
+     "error": null
+    }
+   ],
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   }
+  },
+  {
+   "key": "brakk",
+   "name": "Brakk, el Arquitecto del Fin",
+   "role": "tanque",
+   "checks": [
+    {
+     "area": "identity",
+     "name": "nombre propio",
+     "level": "PASS",
+     "detail": "Brakk"
+    },
+    {
+     "area": "identity",
+     "name": "título",
+     "level": "PASS",
+     "detail": "el Arquitecto del Fin"
+    },
+    {
+     "area": "identity",
+     "name": "nombre de menú = \"Nombre, título\"",
+     "level": "PASS",
+     "detail": "Brakk, el Arquitecto del Fin"
+    },
+    {
+     "area": "lore",
+     "name": "largo de historia",
+     "level": "PASS",
+     "detail": "390 caracteres (banda 260-480)"
+    },
+    {
+     "area": "lore",
+     "name": "origen legible",
+     "level": "PASS",
+     "detail": "Las murallas abandonadas de la ciudad"
+    },
+    {
+     "area": "lore",
+     "name": "frase de catálogo",
+     "level": "PASS",
+     "detail": "96 caracteres"
+    },
+    {
+     "area": "lore",
+     "name": "la frase nombra al campeón",
+     "level": "PASS",
+     "detail": "Brakk"
+    },
+    {
+     "area": "role",
+     "name": "rol",
+     "level": "PASS",
+     "detail": "tanque"
+    },
+    {
+     "area": "kit",
+     "name": "pasiva",
+     "level": "PASS",
+     "detail": "Cimientos firmes"
+    },
+    {
+     "area": "kit",
+     "name": "kit completo 3+1",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "progression",
+     "name": "árbol de talentos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "PASS",
+     "detail": "quality_brakk"
+    },
+    {
+     "area": "art",
+     "name": "skins",
+     "level": "PASS",
+     "detail": "1 skins, 2 cromas"
+    },
+    {
+     "area": "metadata",
+     "name": "nombres de habilidad únicos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "sprite visible en partida",
+     "level": "PASS",
+     "detail": "652 píxeles"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Muro de asedio: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 209, enemigos con estado 1, aliados 0, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Muro de asedio: VFX",
+     "level": "PASS",
+     "detail": "47"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Muro de asedio: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Muro de asedio: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "10"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Muro de asedio: replicado a invitados",
+     "level": "PASS",
+     "detail": "22 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Torreta de clavos: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 99, enemigos con estado 1, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Torreta de clavos: VFX",
+     "level": "PASS",
+     "detail": "81"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Torreta de clavos: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Torreta de clavos: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "12"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Torreta de clavos: replicado a invitados",
+     "level": "PASS",
+     "detail": "8 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Apuntalar: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 0, enemigos con estado 0, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Apuntalar: VFX",
+     "level": "PASS",
+     "detail": "8"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Apuntalar: SFX",
+     "level": "PASS",
+     "detail": "2"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Apuntalar: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "1"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Apuntalar: replicado a invitados",
+     "level": "PASS",
+     "detail": "9 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Demolición final: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 361, enemigos con estado 10, aliados 0, propio 2, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Demolición final: VFX",
+     "level": "PASS",
+     "detail": "49"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Demolición final: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Demolición final: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "10"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Demolición final: replicado a invitados",
+     "level": "PASS",
+     "detail": "31 eventos de red"
+    }
+   ],
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Muro de asedio",
+     "kind": "expedition",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil"
+     ],
+     "dmg": 209,
+     "enemiesAffected": 1,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 47,
+     "sfx": 4,
+     "floatText": 10,
+     "netEvents": 22,
+     "error": null
+    },
+    {
+     "slot": 1,
+     "name": "Torreta de clavos",
+     "kind": "expedition",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 99,
+     "enemiesAffected": 1,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 81,
+     "sfx": 4,
+     "floatText": 12,
+     "netEvents": 8,
+     "error": null
+    },
+    {
+     "slot": 2,
+     "name": "Apuntalar",
+     "kind": "expedition",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 0,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 8,
+     "sfx": 2,
+     "floatText": 1,
+     "netEvents": 9,
+     "error": null
+    },
+    {
+     "slot": "ult",
+     "name": "Demolición final",
+     "kind": "expedition",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "shieldTimer",
+      "portCastUntil"
+     ],
+     "dmg": 361,
+     "enemiesAffected": 10,
+     "alliesHelped": 0,
+     "selfChanged": 2,
+     "spawned": 0,
+     "vfx": 49,
+     "sfx": 4,
+     "floatText": 10,
+     "netEvents": 31,
+     "error": null
+    }
+   ],
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   }
+  },
+  {
+   "key": "morveth",
+   "name": "Morveth, el Jardinero de la Peste",
+   "role": "mago",
+   "checks": [
+    {
+     "area": "identity",
+     "name": "nombre propio",
+     "level": "PASS",
+     "detail": "Morveth"
+    },
+    {
+     "area": "identity",
+     "name": "título",
+     "level": "PASS",
+     "detail": "el Jardinero de la Peste"
+    },
+    {
+     "area": "identity",
+     "name": "nombre de menú = \"Nombre, título\"",
+     "level": "PASS",
+     "detail": "Morveth, el Jardinero de la Peste"
+    },
+    {
+     "area": "lore",
+     "name": "largo de historia",
+     "level": "PASS",
+     "detail": "378 caracteres (banda 260-480)"
+    },
+    {
+     "area": "lore",
+     "name": "origen legible",
+     "level": "PASS",
+     "detail": "El jardín de un hospital sitiado"
+    },
+    {
+     "area": "lore",
+     "name": "frase de catálogo",
+     "level": "PASS",
+     "detail": "92 caracteres"
+    },
+    {
+     "area": "lore",
+     "name": "la frase nombra al campeón",
+     "level": "PASS",
+     "detail": "Morveth"
+    },
+    {
+     "area": "role",
+     "name": "rol",
+     "level": "PASS",
+     "detail": "mago"
+    },
+    {
+     "area": "kit",
+     "name": "pasiva",
+     "level": "PASS",
+     "detail": "Contagio terminal"
+    },
+    {
+     "area": "kit",
+     "name": "kit completo 3+1",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "progression",
+     "name": "árbol de talentos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "PASS",
+     "detail": "quality_morveth"
+    },
+    {
+     "area": "art",
+     "name": "skins",
+     "level": "PASS",
+     "detail": "1 skins, 2 cromas"
+    },
+    {
+     "area": "metadata",
+     "name": "nombres de habilidad únicos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "sprite visible en partida",
+     "level": "PASS",
+     "detail": "529 píxeles"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Huerto maldito: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 164, enemigos con estado 2, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Huerto maldito: VFX",
+     "level": "PASS",
+     "detail": "180"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Huerto maldito: SFX",
+     "level": "PASS",
+     "detail": "6"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Huerto maldito: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "50"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Huerto maldito: replicado a invitados",
+     "level": "PASS",
+     "detail": "8 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Exhalación de peste: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 339, enemigos con estado 0, aliados 0, propio 3, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Exhalación de peste: VFX",
+     "level": "PASS",
+     "detail": "150"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Exhalación de peste: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Exhalación de peste: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "40"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Exhalación de peste: replicado a invitados",
+     "level": "PASS",
+     "detail": "30 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Simbiosis: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 0, enemigos con estado 0, aliados 0, propio 2, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Simbiosis: VFX",
+     "level": "PASS",
+     "detail": "8"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Simbiosis: SFX",
+     "level": "PASS",
+     "detail": "2"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Simbiosis: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "1"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Simbiosis: replicado a invitados",
+     "level": "PASS",
+     "detail": "9 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Jardín de la peste: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 411, enemigos con estado 10, aliados 0, propio 1, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Jardín de la peste: VFX",
+     "level": "PASS",
+     "detail": "250"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Jardín de la peste: SFX",
+     "level": "PASS",
+     "detail": "6"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Jardín de la peste: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "78"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva Jardín de la peste: replicado a invitados",
+     "level": "PASS",
+     "detail": "10 eventos de red"
+    }
+   ],
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Huerto maldito",
+     "kind": "expedition",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 164,
+     "enemiesAffected": 2,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 180,
+     "sfx": 6,
+     "floatText": 50,
+     "netEvents": 8,
+     "error": null
+    },
+    {
+     "slot": 1,
+     "name": "Exhalación de peste",
+     "kind": "expedition",
+     "targeting": "cone",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil"
+     ],
+     "dmg": 339,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 3,
+     "spawned": 0,
+     "vfx": 150,
+     "sfx": 4,
+     "floatText": 40,
+     "netEvents": 30,
+     "error": null
+    },
+    {
+     "slot": 2,
+     "name": "Simbiosis",
+     "kind": "expedition",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "hp",
+      "portCastUntil"
+     ],
+     "dmg": 0,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 2,
+     "spawned": 0,
+     "vfx": 8,
+     "sfx": 2,
+     "floatText": 1,
+     "netEvents": 9,
+     "error": null
+    },
+    {
+     "slot": "ult",
+     "name": "Jardín de la peste",
+     "kind": "expedition",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil"
+     ],
+     "dmg": 411,
+     "enemiesAffected": 10,
+     "alliesHelped": 0,
+     "selfChanged": 1,
+     "spawned": 0,
+     "vfx": 250,
+     "sfx": 6,
+     "floatText": 78,
+     "netEvents": 10,
+     "error": null
+    }
+   ],
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   }
+  },
+  {
+   "key": "aelith",
+   "name": "Aelith, la Ladrona de Segundos",
+   "role": "mago",
+   "checks": [
+    {
+     "area": "identity",
+     "name": "nombre propio",
+     "level": "PASS",
+     "detail": "Aelith"
+    },
+    {
+     "area": "identity",
+     "name": "título",
+     "level": "PASS",
+     "detail": "la Ladrona de Segundos"
+    },
+    {
+     "area": "identity",
+     "name": "nombre de menú = \"Nombre, título\"",
+     "level": "PASS",
+     "detail": "Aelith, la Ladrona de Segundos"
+    },
+    {
+     "area": "lore",
+     "name": "largo de historia",
+     "level": "PASS",
+     "detail": "380 caracteres (banda 260-480)"
+    },
+    {
+     "area": "lore",
+     "name": "origen legible",
+     "level": "PASS",
+     "detail": "Una estación de relojes sin trenes"
+    },
+    {
+     "area": "lore",
+     "name": "frase de catálogo",
+     "level": "PASS",
+     "detail": "92 caracteres"
+    },
+    {
+     "area": "lore",
+     "name": "la frase nombra al campeón",
+     "level": "PASS",
+     "detail": "Aelith"
+    },
+    {
+     "area": "role",
+     "name": "rol",
+     "level": "PASS",
+     "detail": "mago"
+    },
+    {
+     "area": "kit",
+     "name": "pasiva",
+     "level": "PASS",
+     "detail": "Segundos hurtados"
+    },
+    {
+     "area": "kit",
+     "name": "kit completo 3+1",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "progression",
+     "name": "árbol de talentos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "PASS",
+     "detail": "quality_aelith"
+    },
+    {
+     "area": "art",
+     "name": "skins",
+     "level": "PASS",
+     "detail": "1 skins, 2 cromas"
+    },
+    {
+     "area": "metadata",
+     "name": "nombres de habilidad únicos",
+     "level": "PASS",
+     "detail": ""
+    },
+    {
+     "area": "art",
+     "name": "sprite visible en partida",
+     "level": "PASS",
+     "detail": "442 píxeles"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Instante roto: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 453, enemigos con estado 1, aliados 0, propio 2, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Instante roto: VFX",
+     "level": "PASS",
+     "detail": "77"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Instante roto: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Instante roto: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "20"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 1 Instante roto: replicado a invitados",
+     "level": "PASS",
+     "detail": "22 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Fractura de segundos: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 158, enemigos con estado 6, aliados 0, propio 4, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Fractura de segundos: VFX",
+     "level": "PASS",
+     "detail": "49"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Fractura de segundos: SFX",
+     "level": "PASS",
+     "detail": "4"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Fractura de segundos: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "6"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 2 Fractura de segundos: replicado a invitados",
+     "level": "PASS",
+     "detail": "22 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Tiempo prestado: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 0, enemigos con estado 0, aliados 0, propio 7, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Tiempo prestado: VFX",
+     "level": "PASS",
+     "detail": "8"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Tiempo prestado: SFX",
+     "level": "PASS",
+     "detail": "2"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Tiempo prestado: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "1"
+    },
+    {
+     "area": "ability",
+     "name": "Hab. 3 Tiempo prestado: replicado a invitados",
+     "level": "PASS",
+     "detail": "9 eventos de red"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva La hora imposible: efecto de juego",
+     "level": "PASS",
+     "detail": "daño 394, enemigos con estado 10, aliados 4, propio 4, entidades 0"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva La hora imposible: VFX",
+     "level": "PASS",
+     "detail": "113"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva La hora imposible: SFX",
+     "level": "PASS",
+     "detail": "3"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva La hora imposible: feedback (números/avisos)",
+     "level": "PASS",
+     "detail": "33"
+    },
+    {
+     "area": "ability",
+     "name": "Definitiva La hora imposible: replicado a invitados",
+     "level": "PASS",
+     "detail": "10 eventos de red"
+    }
+   ],
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Instante roto",
+     "kind": "expedition",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil",
+      "aelithSeconds"
+     ],
+     "dmg": 453,
+     "enemiesAffected": 1,
+     "alliesHelped": 0,
+     "selfChanged": 2,
+     "spawned": 0,
+     "vfx": 77,
+     "sfx": 4,
+     "floatText": 20,
+     "netEvents": 22,
+     "error": null
+    },
+    {
+     "slot": 1,
+     "name": "Fractura de segundos",
+     "kind": "expedition",
+     "targeting": "line",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "fx",
+      "fy",
+      "portCastUntil",
+      "aelithSeconds"
+     ],
+     "dmg": 158,
+     "enemiesAffected": 6,
+     "alliesHelped": 0,
+     "selfChanged": 4,
+     "spawned": 0,
+     "vfx": 49,
+     "sfx": 4,
+     "floatText": 6,
+     "netEvents": 22,
+     "error": null
+    },
+    {
+     "slot": 2,
+     "name": "Tiempo prestado",
+     "kind": "expedition",
+     "targeting": "self_aoe",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "portCastUntil",
+      "aelithSeconds",
+      "portSpeedBonus",
+      "portSpeedTimer",
+      "aelithDebtUntil",
+      "slowAmt",
+      "slowTimer"
+     ],
+     "dmg": 0,
+     "enemiesAffected": 0,
+     "alliesHelped": 0,
+     "selfChanged": 7,
+     "spawned": 0,
+     "vfx": 8,
+     "sfx": 2,
+     "floatText": 1,
+     "netEvents": 9,
+     "error": null
+    },
+    {
+     "slot": "ult",
+     "name": "La hora imposible",
+     "kind": "expedition",
+     "targeting": "point",
+     "status": [],
+     "effect": true,
+     "selfKeys": [
+      "shield",
+      "shieldTimer",
+      "portCastUntil",
+      "aelithSeconds"
+     ],
+     "dmg": 394,
+     "enemiesAffected": 10,
+     "alliesHelped": 4,
+     "selfChanged": 4,
+     "spawned": 0,
+     "vfx": 113,
+     "sfx": 3,
+     "floatText": 33,
+     "netEvents": 10,
+     "error": null
+    }
+   ],
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
    }
   }
  ],

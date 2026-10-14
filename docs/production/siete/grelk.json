@@ -133,6 +133,26 @@
       "preview": "assets/sprites/champions/grelk/skins/grelk_alt1/preview.png",
       "availability": "alpha-test",
       "premiumPrice": null
+    },
+    {
+      "id": "grelk_alt2",
+      "type": "skin",
+      "champion": "grelk",
+      "name": "Cazador de Pantano",
+      "rarity": "Épica",
+      "tagline": "Cuero embarrado, capa de juncos y hombreras de corteza sobre la bandolera de cepos.",
+      "lore": "En el pantano los fosos se llenan solos. Grelk aprendió a dejar los cepos bajo el agua, donde nadie mira.",
+      "visualTheme": "Cuero embarrado, capa de juncos y hombreras de corteza sobre la bandolera de cepos.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/grelk/skins/grelk_alt2/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
     }
   ],
   "set": {

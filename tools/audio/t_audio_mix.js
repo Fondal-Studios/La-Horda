@@ -424,6 +424,18 @@ function pageHarness() {
     });
     for(const [k,r] of Object.entries(expedition))check('EXPEDITION.'+k,Number.isFinite(r.peak)&&r.peak<-1&&r.peak>-100&&!r.nan&&!r.errors.length&&r.never<=4,r);
 
+    const qualityFive = await E(async () => {
+      const out={};
+      for(const k of ['solciju','brakk','veyra','morveth','aelith'])for(const action of ['cast','ult']){
+        const id='quality_'+k+'_'+action;
+        if(!ARENA_SFX[id])throw Error('Missing cue '+id);
+        const r=await __AH.render(1.2,[[.05,()=>playSfx(id)]],{});
+        out[id]={peak:r.peak_dBFS,clip:r.clip,nan:r.nan,never:r.never_stopped,errors:r.errs};
+      }return out;
+    });
+    for(const [k,r] of Object.entries(qualityFive))check('QUALITY_FIVE.'+k,
+      Number.isFinite(r.peak)&&r.peak<-1&&r.peak>-100&&!r.clip&&!r.nan&&!r.never&&!r.errors.length,r);
+
     // ---------------- 4) mute y volúmenes ----------------
     const vol = await E(async () => {
       const ev = [[0, () => setMusicMode('wave', 3)]]; for (let t = 0.3; t < 3; t += 0.2) ev.push([t, () => playSfx('heavy')]);

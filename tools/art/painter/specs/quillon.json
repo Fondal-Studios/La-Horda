@@ -1,9 +1,9 @@
 {
  "id": "quillon",
  "name": "Quillon, El Tahur de la Ultima Mano",
- "prompt": "Frac negro con chaleco granate, sombrero de copa y baraja de plata.",
- "body": "dariel",
- "head": "nahir_skin",
+ "prompt": "Frac negro con chaleco granate y corona de naipes.",
+ "body": "nahir_skin",
+ "head": "dariel_skin",
  "paint": [
   {
    "part": "head",
@@ -20,6 +20,18 @@
     "#34303c",
     "#56505e"
    ]
+  },
+  {
+   "part": "body",
+   "hue": [
+    280,
+    360
+   ],
+   "minChroma": 12,
+   "noSkin": true,
+   "to": "#d8d8e4",
+   "keepLight": 0.8,
+   "chroma": 1.0
   },
   {
    "part": "body",

@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "id": "brakk",
+  "name": "Brakk",
+  "title": "El Arquitecto del Fin",
+  "role": "tanque",
+  "fantasy": "Constructor de muros y torretas destructibles que sacrifica para proteger al grupo.",
+  "lore": "Brakk calculó durante años las murallas de una ciudad que sus gobernantes decidieron abandonar. Cuando llegó la Horda, convirtió los planos de evacuación en fortificaciones y abrió rutas entre los derrumbes. Desde entonces construye refugios que sabe temporales: cada torre compra segundos y cada muro guarda una salida. Carga los nombres de quienes no logró salvar grabados en su martillo.",
+  "personality": "Metódico, protector, severo consigo mismo.",
+  "silhouette": "visor rectangular; armadura de albañilería; maza.",
+  "stats": {
+    "hp": 165,
+    "damage": 9,
+    "speed": 140
+  },
+  "kit": {
+    "basic": {
+      "id": "brakk_basic",
+      "description": "Martillo cuerpo a cuerpo.",
+      "cooldownMs": 650,
+      "maxTargets": 12,
+      "hordeMechanism": "",
+      "anticipation": "Premarcado de punto para muro/torreta; lanzamientos instantáneos con animación.",
+      "execution": "js/champions/quality-five/brakk.js",
+      "impact": "Martillo cuerpo a cuerpo.",
+      "feedback": "Efectos kitFx/kitFxLine y construcciones visibles con vida.",
+      "vfx": "kitFx earth/shield/spike; barra de vida de construcción.",
+      "sfx": "Motor compartido de impacto/básico (js/audio/audio.js)"
+    },
+    "skills": [
+      {
+        "id": "brk_wall",
+        "description": "Muro destructible que daña al emerger.",
+        "cooldownMs": 8500,
+        "maxTargets": 12,
+        "hordeMechanism": "Emergencia en área y ráfagas de torreta con límite de víctimas.",
+        "anticipation": "Premarcado de punto para muro/torreta; lanzamientos instantáneos con animación.",
+        "execution": "js/champions/quality-five/brakk.js",
+        "impact": "Muro destructible que daña al emerger.",
+        "feedback": "Efectos kitFx/kitFxLine y construcciones visibles con vida.",
+        "vfx": "kitFx earth/shield/spike; barra de vida de construcción.",
+        "sfx": "js/champions/quality-five/audio.js: quality_brakk_cast"
+      },
+      {
+        "id": "brk_turret",
+        "description": "Torreta destructible de seis ráfagas.",
+        "cooldownMs": 10000,
+        "maxTargets": 3,
+        "hordeMechanism": "Emergencia en área y ráfagas de torreta con límite de víctimas.",
+        "anticipation": "Premarcado de punto para muro/torreta; lanzamientos instantáneos con animación.",
+        "execution": "js/champions/quality-five/brakk.js",
+        "impact": "Torreta destructible de seis ráfagas.",
+        "feedback": "Efectos kitFx/kitFxLine y construcciones visibles con vida.",
+        "vfx": "kitFx earth/shield/spike; barra de vida de construcción.",
+        "sfx": "js/champions/quality-five/audio.js: quality_brakk_cast"
+      },
+      {
+        "id": "brk_repair",
+        "description": "Repara construcciones cercanas y protege al lanzador.",
+        "cooldownMs": 12000,
+        "maxTargets": 4,
+        "hordeMechanism": "",
+        "anticipation": "Premarcado de punto para muro/torreta; lanzamientos instantáneos con animación.",
+        "execution": "js/champions/quality-five/brakk.js",
+        "impact": "Repara construcciones cercanas y protege al lanzador.",
+        "feedback": "Efectos kitFx/kitFxLine y construcciones visibles con vida.",
+        "vfx": "kitFx earth/shield/spike; barra de vida de construcción.",
+        "sfx": "js/champions/quality-five/audio.js: quality_brakk_cast"
+      }
+    ],
+    "ultimate": {
+      "id": "brk_final",
+      "description": "Consume construcciones, daña, ralentiza y escuda.",
+      "cooldownMs": 36000,
+      "maxTargets": 12,
+      "hordeMechanism": "Emergencia en área y ráfagas de torreta con límite de víctimas.",
+      "anticipation": "Premarcado de punto para muro/torreta; lanzamientos instantáneos con animación.",
+      "execution": "js/champions/quality-five/brakk.js",
+      "impact": "Consume construcciones, daña, ralentiza y escuda.",
+      "feedback": "Efectos kitFx/kitFxLine y construcciones visibles con vida.",
+      "vfx": "kitFx earth/shield/spike; barra de vida de construcción.",
+      "sfx": "js/champions/quality-five/audio.js: quality_brakk_ult"
+    }
+  },
+  "art": {
+    "atlas": "assets/sprites/champions/brakk/atlas.png",
+    "preview": "assets/sprites/champions/brakk/preview.png",
+    "directions": 4,
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "01f0d5dce66303d7348ce041a829c86601cd497b07e98b35248db614114da58a",
+    "animations": {
+      "idle": 1,
+      "walk": 4,
+      "attack": 3,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
+    },
+    "review": {
+      "status": "PASS",
+      "reviewer": "Codex (visual inspection; not human signoff)",
+      "evidence": "docs/production/quality-five/originals/ART-REVIEW.md"
+    }
+  },
+  "integration": {
+    "runtime": "js/champions/quality-five/brakk.js",
+    "codex": "js/champions/quality-five/register.js",
+    "talents": "js/champions/quality-five/register.js",
+    "mastery": "js/champions/quality-five/register.js",
+    "set": "js/champions/quality-five/collection.js",
+    "kitTest": "tools/quality-five/brakk-functional.js"
+  },
+  "cosmetics": [
+    {
+      "id": "brakk_alt1",
+      "type": "skin",
+      "champion": "brakk",
+      "name": "Brakk, Arquitecto Glacial",
+      "rarity": "Épica",
+      "tagline": "Fortaleza de hielo portátil, casco almenado, visor rectangular y maza glacial",
+      "lore": "Brakk levantó su último refugio sobre un lago helado. El frío no derrumbó los planos: los volvió transparentes, y todavía se leen a contraluz.",
+      "visualTheme": "Fortaleza de hielo portátil, casco almenado, visor rectangular y maza glacial",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/brakk/skins/brakk_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "brakk_croma",
+      "type": "croma",
+      "champion": "brakk",
+      "name": "Acero de Tormenta",
+      "rarity": "Rara",
+      "tagline": "Una paleta alternativa para Brakk.",
+      "lore": "Los colores de Acero de Tormenta acompañan un nuevo viaje. Conserva su vestuario y sus decisiones: esta apariencia cambia únicamente la paleta.",
+      "visualTheme": "Paleta selectiva; conserva piel y contorno.",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "palette"
+      ],
+      "preview": "assets/sprites/champions/brakk/croma-preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "quality_brakk",
+      "type": "set",
+      "champion": "brakk",
+      "name": "Ingeniero del Abismo",
+      "rarity": "Set",
+      "tagline": "Traje de presión, depósitos, mangueras y lámpara de jaula",
+      "lore": "Brakk descendió con cuatro piezas que había probado en tierra firme. Bajo la roca aprendió que un refugio también necesita aire. Su arnés conserva las marcas de aquel rescate.",
+      "visualTheme": "Traje de presión, depósitos, mangueras y lámpara de jaula",
+      "unlockSource": "Completar Cimientos del Abismo en abismo",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/brakk/skins/quality_brakk/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
+  "set": {
+    "sourceArena": "abismo",
+    "pieces": [
+      "quality_brakk_arma",
+      "quality_brakk_casco",
+      "quality_brakk_pechera",
+      "quality_brakk_botas"
+    ],
+    "rewardCosmetic": "quality_brakk",
+    "rewardGrantsPower": false
+  },
+  "budgets": {
+    "particles": 64,
+    "summons": 4,
+    "audioVoices": 3
+  },
+  "evidence": {
+    "reference": "docs/balance/champion-entry-reference.json",
+    "talents": "docs/production/quality-five/brakk-functional-results.json",
+    "abilities": "docs/production/quality-five/ability/ability-gate.json",
+    "resources": "docs/production/quality-five/brakk-functional-results.json",
+    "passives": "docs/production/quality-five/brakk-functional-results.json",
+    "balance": "docs/balance/entry-gate-results.json",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "style": "docs/production/quality-five/originals/style-results.txt",
+    "audio": "docs/production/quality-five/audio-20261012.txt",
+    "multiplayer": "docs/production/quality-five/online-results.json",
+    "performance": "docs/production/quality-five/performance-brakk.json"
+  },
+  "category": "STANDARD"
+}

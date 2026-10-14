@@ -14,7 +14,7 @@ function lanesNetState(){
   for(const T of L.team){ for(const id of LANES_CARD_IDS) cards.push(T.cards[id] || 0); for(const x of T.S){ hp.push(Math.round(x.hp*10)/10); wd.push(Math.round(x.ward)); al.push(x.alive ? 1 : 0); } }
   return {t:Math.round(L.t), wave:L.wave, ended:L.ended ? 1 : 0, w:L.winner, why:L.why || "",
     team:L.team.map(T=>({ra:Math.round(T.repairAt), wa:Math.round(T.wardAt), sa:Math.round(T.sendAt), k:T.kills, se:T.sent, as:T.assist, pk:T.pk, tw:T.tk, wv:T.wave, nw:Math.round(T.nextWave),
-      tk:T.taken, oa:Math.round(T.offerAt), pc:T.pendingCards, sw:T.superWaves})),
+      tk:T.taken, cl:T.cardLevel, oa:Math.round(T.offerAt), pc:T.pendingCards, sw:T.superWaves})),
     hp, wd, al, cd:cards, of:L.team.map(T=>T.offer ? T.offer.join(",") : ""),
     bf:L.team.reduce((a, T)=>a.concat([Math.round(T.buffs.dragon), Math.round(T.buffs.rey)]), []),
     ep:(L.epics || []).reduce((a, e)=>a.concat([e.mon && e.mon.alive ? 1 : 0, Math.round(e.respawnAt)]), []),
@@ -29,6 +29,7 @@ function lanesApplyNetState(s){
   s.team.forEach((d, i)=>{ const T = L.team[i]; if(!T) return;
     T.repairAt = d.ra; T.wardAt = d.wa; T.sendAt = d.sa; T.kills = d.k; T.sent = d.se; T.assist = d.as; T.pk = d.pk; T.tk = d.tw; T.wave = d.wv; T.nextWave = d.nw;
     T.cards = {}; LANES_CARD_IDS.forEach((id, k)=>{ const n = s.cd && s.cd[i * N + k]; if(n) T.cards[id] = n; });
+    T.cardLevel = d.cl == null ? LANES.LEVEL0 + d.tk + (d.pc || 0) + ((s.of && s.of[i]) ? 1 : 0) : d.cl;
     T.taken = d.tk; T.offerAt = d.oa; T.pendingCards = d.pc || 0; T.superWaves = d.sw || 0; T.mods = lanesModsOf(T.cards);
     const o = s.of && s.of[i]; T.offer = o ? o.split(",") : null;
     if(s.bf){ T.buffs.dragon = s.bf[i * 2]; T.buffs.rey = s.bf[i * 2 + 1]; }

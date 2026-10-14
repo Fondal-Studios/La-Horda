@@ -133,6 +133,26 @@
       "preview": "assets/sprites/champions/nerith/skins/nerith_alt1/preview.png",
       "availability": "alpha-test",
       "premiumPrice": null
+    },
+    {
+      "id": "nerith_alt2",
+      "type": "skin",
+      "champion": "nerith",
+      "name": "Bruja de Marea Roja",
+      "rarity": "Épica",
+      "tagline": "Manglar rosado, capa de algas rojas y hombreras de coral sobre el vestido.",
+      "lore": "Cuando el agua del pantano se tiñe de rojo, Nerith planta el charco más grande: dice que la marea sana a su manera.",
+      "visualTheme": "Manglar rosado, capa de algas rojas y hombreras de coral sobre el vestido.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/nerith/skins/nerith_alt2/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
     }
   ],
   "set": {

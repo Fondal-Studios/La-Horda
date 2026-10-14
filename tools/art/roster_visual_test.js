@@ -16,7 +16,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
   const page = await (await browser.newContext({ viewport: { width: 1400, height: 900 } })).newPage();
   const errors = []; page.on('pageerror', e => errors.push(e.message));
-  await page.goto(`${BASE}/index.html`, { waitUntil: 'load' });
+  await page.goto(`${BASE}/index.html?lazy=0`, { waitUntil: 'load' });
   for (let i = 0; i < 300; i++) { const ok = await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return b && !b.disabled; }); if (ok) break; await sleep(100); }
   await sleep(500);
   const dims = await page.evaluate(() => {
@@ -54,7 +54,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
     return [cvs.width, cvs.height];
   });
   await page.setViewportSize({ width: Math.max(800, dims[0]), height: Math.max(600, dims[1]) });
-  await (await page.$('#lab')).screenshot({ path: out });
+  const png = await page.evaluate(() => document.getElementById('lab').toDataURL('image/png')); require('fs').writeFileSync(out, Buffer.from(png.split(',')[1], 'base64'));
   console.log('dims', dims, 'errors', errors.slice(0, 4));
   await browser.close();
 })();

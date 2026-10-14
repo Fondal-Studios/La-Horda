@@ -1,0 +1,86 @@
+{
+ "id": "ostrel_alt2",
+ "name": "Ostrel, Cartografo del Polo",
+ "prompt": "Abrigo glacial con capa de piel, hombreras de hielo y aro plateado.",
+ "body": "dariel",
+ "head": "sira_skin",
+ "paint": [
+  {
+   "part": "head",
+   "hue": [
+    20,
+    75
+   ],
+   "minChroma": 10,
+   "minL": 12,
+   "noSkin": true,
+   "ramp": [
+    "#4e4a5c",
+    "#8e8aa2",
+    "#cfccdc",
+    "#f7f6ff"
+   ]
+  },
+  {
+   "part": "body",
+   "hue": [
+    0,
+    60
+   ],
+   "minChroma": 4,
+   "noSkin": true,
+   "to": "#4a7a9a",
+   "keepLight": 0.7,
+   "chroma": 1.0,
+   "maxL": 55
+  }
+ ],
+ "accessories": [
+  {
+   "element": "halo_de_luz",
+   "scale": 0.7,
+   "materials": {
+    "light": {
+     "ramp": [
+      "#3a3e48",
+      "#6c7280",
+      "#a4acb8",
+      "#f0f6ff"
+     ]
+    }
+   }
+  },
+  {
+   "element": "capa_larga",
+   "scale": 0.9,
+   "materials": {
+    "cloth": {
+     "ramp": [
+      "#4a5868",
+      "#8a9ab0",
+      "#c8d6e4",
+      "#f4f8fc"
+     ]
+    }
+   }
+  },
+  {
+   "element": "hombreras_redondas",
+   "scale": 0.7,
+   "materials": {
+    "shell": {
+     "ramp": [
+      "#26405a",
+      "#5a86a8",
+      "#9ac4e0",
+      "#e0f4ff"
+     ]
+    }
+   }
+  }
+ ],
+ "install": {
+  "champion": "ostrel",
+  "pack": "ostrel_alt2"
+ }
+}

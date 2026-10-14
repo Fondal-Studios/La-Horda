@@ -51,7 +51,7 @@ const ALPHA_TRAINING_STEPS = Object.freeze([
   {id:"ultimate", title:"9 · Definitiva", text:"La definitiva (botón ★) se carga peleando y se habilita avanzada la arena. Te la cargué: usala contra el grupo.", target:"Lanzá tu definitiva"},
   {id:"potion", title:"10 · Vida y pociones", text:"La barra roja es tu vida. La reduje para practicar: caminá sobre la poción roja a tu derecha. Las azules recuperan energía.", target:"Recogé la poción roja"},
   {id:"revive", title:"11 · Reanimar", text:"Elyra cayó. Parate a su lado y MANTENÉ el botón REVIVIR ✚ (unos 5 s). Un golpe no te corta; soltar o alejarte, sí.", target:"Mantené ✚ junto a Elyra hasta revivirla"},
-  {id:"xp", title:"12 · Experiencia y nivel", text:"Derrotar enemigos da XP. Te falta muy poco: derrotá otro esqueleto y mirá subir el nivel del campeón (es permanente; el nivel de la arena es solo de esta partida).", target:"Derrotá al esqueleto y subí de nivel"},
+  {id:"xp", title:"12 · Experiencia y nivel", text:"Elyra descansa mientras practicás. Derrotar enemigos da XP. Te falta muy poco: derrotá otro esqueleto y mirá subir el nivel del campeón (es permanente; el nivel de la arena es solo de esta partida).", target:"Derrotá al esqueleto y subí de nivel"},
   {id:"loot", title:"13 · Botín", text:"Los enemigos pueden dejar equipo. Acercate al objeto luminoso para recogerlo. Después podrás equiparlo fuera de la arena.", target:"Recogé el objeto"},
   {id:"tactical", title:"14 · Panel táctico", text:"Tocá ❚❚ arriba a la derecha: el Panel táctico muestra tu kit, recargas, estados y equipo. Sola pausa; en multijugador la partida SIGUE. Cerralo con Continuar.", target:"Abrí el Panel táctico y volvé"},
   {id:"objective", title:"15 · Resumen final", text:"Última prueba: derrotá a estos tres enemigos. Recordá: en cada arena SOBREVIVÍS 10 niveles (aguantás hasta que el reloj llegue a cero), en el 10 vences a un jefe y, si caen todos tus guardianes, perdés.", target:"Derrotá a los tres enemigos"}
@@ -86,7 +86,12 @@ function alphaTrainingEnterStep(){
   if(['attack','skill','cooldown','xp','objective'].includes(s.id)) alphaTrainingSpawn(s.id==='objective'?3:1);
   if(s.id==='ultimate'){runLevel=Math.max(runLevel,ULT_MIN_ARENA_LEVEL);player.ultCharge=player.ultMax;player.ultCd=0;alphaTrainingSpawn(3);}
   if(s.id==='potion'){player.hp=player.maxHp*.45;dropPotion(player.x+110,player.y,'heal');t.potion=potions[potions.length-1];t.potion.life=300000;}
-  if(s.id==='xp')save.champions.mago.xp=xpToNext(save.champions.mago.level)-1;
+  // The revived ally must not take the sole XP lesson kill. Rejoin for the team objective.
+  if(s.id==='xp'){
+    allies=allies.filter(h=>h!==t.ally);heroes=heroes.filter(h=>h!==t.ally);
+    save.champions.mago.xp=xpToNext(save.champions.mago.level)-1;
+  }
+  if(s.id==='objective'&&t.ally&&t.ally.alive){allies.push(t.ally);heroes.push(t.ally);}
   if(s.id==='loot')t.loot=groundLootDrop(player.x+70,player.y,'B',1,'ciudad','training',false);
   if(s.id==='danger')alphaTrainingDanger();
   if(s.id==='revive')alphaTrainingDowned();

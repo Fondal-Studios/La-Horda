@@ -319,6 +319,10 @@ def render_frame(cellimg, fi, spec, opts, u, i, report=None):
     """Aplica un elemento a un cuadro (in place). Devuelve los píxeles que tocó y los que quedaron fuera de la celda."""
     view = fi['dir']
     A, face, foot = frame_anchors(cellimg, fi)
+    if spec.get('faceRight') and view == 'side' and face < 0:
+        # opt-in: las hojas donantes miran siempre a la derecha de perfil (la izquierda se espeja al dibujar); en
+        # lanzamientos inclinados la detección puede fallar y la pieza saltaría al frente.
+        face = 1; A['shoulderFront'], A['shoulderBack'] = A['shoulderRight'], A['shoulderLeft']
     mats = {k: {**v, **(opts.get('materials', {}).get(k, {}))} for k, v in spec['materials'].items()}
     amp = float(spec.get('sway', 0))
     sway = int(round(np.sin((i % COLS) * np.pi / 2) * amp)) if amp else 0

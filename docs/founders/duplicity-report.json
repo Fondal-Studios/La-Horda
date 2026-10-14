@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-12T16:19:48.660Z",
+  "generatedAt": "2026-10-14T02:47:00.289Z",
   "method": "score = 0.35·Jaccard(vocabulario) + 0.45·Jaccard(etiquetas de mecánica) + 0.2·mismo rol; DUPLICATE ≥ 0.45, REVIEW ≥ 0.32",
-  "rosterSize": 45,
+  "rosterSize": 50,
   "roleDistribution": {
-    "tanque": 9,
-    "asesino": 11,
-    "mago": 14,
+    "tanque": 10,
+    "asesino": 12,
+    "mago": 17,
     "soporte": 9
   },
   "report": [
@@ -36,6 +36,16 @@
           ]
         },
         {
+          "other": "solciju",
+          "score": 0.371,
+          "text": 0.061,
+          "tags": 0.333,
+          "sharedTags": [
+            "shield",
+            "mark"
+          ]
+        },
+        {
           "other": "zahra",
           "score": 0.347,
           "text": 0.053,
@@ -43,16 +53,6 @@
           "sharedTags": [
             "shield",
             "dash"
-          ]
-        },
-        {
-          "other": "axiom",
-          "score": 0.343,
-          "text": 0.041,
-          "tags": 0.286,
-          "sharedTags": [
-            "dash",
-            "mark"
           ]
         }
       ]
@@ -68,9 +68,19 @@
         "shield",
         "dash"
       ],
-      "verdict": "DISTINCT",
+      "verdict": "REVIEW",
       "forbidden": null,
       "nearest": [
+        {
+          "other": "veyra",
+          "score": 0.367,
+          "text": 0.049,
+          "tags": 0.333,
+          "sharedTags": [
+            "fortify",
+            "dash"
+          ]
+        },
         {
           "other": "orsa",
           "score": 0.302,
@@ -87,15 +97,6 @@
           "tags": 0.167,
           "sharedTags": [
             "shield"
-          ]
-        },
-        {
-          "other": "libertador",
-          "score": 0.297,
-          "text": 0.062,
-          "tags": 0.167,
-          "sharedTags": [
-            "dash"
           ]
         }
       ]
@@ -175,9 +176,9 @@
           ]
         },
         {
-          "other": "ilsa",
-          "score": 0.221,
-          "text": 0.06,
+          "other": "veyra",
+          "score": 0.222,
+          "text": 0.063,
           "tags": 0,
           "sharedTags": []
         }
@@ -269,6 +270,16 @@
       "forbidden": null,
       "nearest": [
         {
+          "other": "brakk",
+          "score": 0.408,
+          "text": 0.079,
+          "tags": 0.4,
+          "sharedTags": [
+            "fortify",
+            "shield"
+          ]
+        },
+        {
           "other": "tanque",
           "score": 0.34,
           "text": 0.079,
@@ -281,15 +292,6 @@
           "other": "baltra",
           "score": 0.317,
           "text": 0.078,
-          "tags": 0.2,
-          "sharedTags": [
-            "shield"
-          ]
-        },
-        {
-          "other": "eslabon",
-          "score": 0.314,
-          "text": 0.068,
           "tags": 0.2,
           "sharedTags": [
             "shield"
@@ -370,6 +372,209 @@
           "other": "ynara",
           "score": 0.228,
           "text": 0.081,
+          "tags": 0,
+          "sharedTags": []
+        }
+      ]
+    },
+    {
+      "id": "solciju",
+      "role": "mago",
+      "category": "STANDARD",
+      "tags": [
+        "shield",
+        "mark"
+      ],
+      "verdict": "DUPLICATE",
+      "forbidden": null,
+      "nearest": [
+        {
+          "other": "morwen",
+          "score": 0.519,
+          "text": 0.054,
+          "tags": 0.667,
+          "sharedTags": [
+            "shield",
+            "mark"
+          ]
+        },
+        {
+          "other": "tibor",
+          "score": 0.438,
+          "text": 0.036,
+          "tags": 0.5,
+          "sharedTags": [
+            "shield"
+          ]
+        },
+        {
+          "other": "nano_gm",
+          "score": 0.371,
+          "text": 0.061,
+          "tags": 0.333,
+          "sharedTags": [
+            "shield",
+            "mark"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "veyra",
+      "role": "asesino",
+      "category": "STANDARD",
+      "tags": [
+        "fortify",
+        "heal",
+        "dash"
+      ],
+      "verdict": "DUPLICATE",
+      "forbidden": null,
+      "nearest": [
+        {
+          "other": "eren",
+          "score": 0.527,
+          "text": 0.078,
+          "tags": 0.667,
+          "sharedTags": [
+            "heal",
+            "dash"
+          ]
+        },
+        {
+          "other": "facu_gm",
+          "score": 0.367,
+          "text": 0.049,
+          "tags": 0.333,
+          "sharedTags": [
+            "fortify",
+            "dash"
+          ]
+        },
+        {
+          "other": "orsa",
+          "score": 0.337,
+          "text": 0.07,
+          "tags": 0.25,
+          "sharedTags": [
+            "dash"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "brakk",
+      "role": "tanque",
+      "category": "STANDARD",
+      "tags": [
+        "summon",
+        "fortify",
+        "shield",
+        "turret"
+      ],
+      "verdict": "REVIEW",
+      "forbidden": null,
+      "nearest": [
+        {
+          "other": "bront",
+          "score": 0.408,
+          "text": 0.079,
+          "tags": 0.4,
+          "sharedTags": [
+            "fortify",
+            "shield"
+          ]
+        },
+        {
+          "other": "tanque",
+          "score": 0.314,
+          "text": 0.069,
+          "tags": 0.2,
+          "sharedTags": [
+            "fortify"
+          ]
+        },
+        {
+          "other": "baltra",
+          "score": 0.308,
+          "text": 0.095,
+          "tags": 0.167,
+          "sharedTags": [
+            "shield"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "morveth",
+      "role": "mago",
+      "category": "STANDARD",
+      "tags": [
+        "summon",
+        "heal"
+      ],
+      "verdict": "REVIEW",
+      "forbidden": null,
+      "nearest": [
+        {
+          "other": "nigromante",
+          "score": 0.329,
+          "text": 0.049,
+          "tags": 0.25,
+          "sharedTags": [
+            "summon"
+          ]
+        },
+        {
+          "other": "brasa",
+          "score": 0.327,
+          "text": 0.041,
+          "tags": 0.25,
+          "sharedTags": [
+            "summon"
+          ]
+        },
+        {
+          "other": "myla",
+          "score": 0.312,
+          "text": 0.064,
+          "tags": 0.2,
+          "sharedTags": [
+            "summon"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aelith",
+      "role": "mago",
+      "category": "STANDARD",
+      "tags": [
+        "time"
+      ],
+      "verdict": "REVIEW",
+      "forbidden": null,
+      "nearest": [
+        {
+          "other": "axiom",
+          "score": 0.39,
+          "text": 0.115,
+          "tags": 0.333,
+          "sharedTags": [
+            "time"
+          ]
+        },
+        {
+          "other": "solciju",
+          "score": 0.26,
+          "text": 0.173,
+          "tags": 0,
+          "sharedTags": []
+        },
+        {
+          "other": "morveth",
+          "score": 0.239,
+          "text": 0.112,
           "tags": 0,
           "sharedTags": []
         }
@@ -546,16 +751,16 @@
           "sharedTags": []
         },
         {
-          "other": "vhal",
-          "score": 0.217,
-          "text": 0.048,
+          "other": "morveth",
+          "score": 0.219,
+          "text": 0.054,
           "tags": 0,
           "sharedTags": []
         },
         {
-          "other": "nano_gm",
-          "score": 0.214,
-          "text": 0.039,
+          "other": "vhal",
+          "score": 0.217,
+          "text": 0.048,
           "tags": 0,
           "sharedTags": []
         }

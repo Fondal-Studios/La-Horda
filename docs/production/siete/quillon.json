@@ -88,7 +88,7 @@
     "directions": 4,
     "frameWidth": 112,
     "frameHeight": 112,
-    "sha256": "ba6896ce716c488f317bb48edf033681fd897d1826188767eab551c63da78003",
+    "sha256": "88faf414c7673801581dfc539098290576022f9a6cf3f242f5939b9856f06c7c",
     "animations": {
       "idle": 1,
       "walk": 4,
@@ -131,6 +131,26 @@
         "secondarySilhouette"
       ],
       "preview": "assets/sprites/champions/quillon/skins/quillon_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "quillon_alt2",
+      "type": "skin",
+      "champion": "quillon",
+      "name": "Tahúr de Oros",
+      "rarity": "Épica",
+      "tagline": "Brocado dorado con capa carmesí, hombreras de latón y corona de oros.",
+      "lore": "Quillon ganó una sola mano con el palo de Oros. Desde entonces viste del color de lo que apostó.",
+      "visualTheme": "Brocado dorado con capa carmesí, hombreras de latón y corona de oros.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/quillon/skins/quillon_alt2/preview.png",
       "availability": "alpha-test",
       "premiumPrice": null
     }

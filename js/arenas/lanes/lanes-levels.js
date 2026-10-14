@@ -3,7 +3,7 @@
    js/arenas/lanes/lanes-levels.js
    GUERRA DE CRISTALES en el motor real — experiencia y niveles dentro de la partida (de 3 a 15), reaparición, curación en la
    base y volver a la base (recall). Todos arrancan en el nivel 3 sin cuenta ni equipo; cada nivel sube vida, daño y defensa con la
-   misma curva de la campaña (computePlayerStats). Cada nivel del héroe líder del equipo ofrece una carta de horda.
+   misma curva de la campaña (computePlayerStats). Cada nuevo nivel máximo del equipo ofrece una carta de horda.
    ============================================================ */
 function lanesLevelNeed(l){ return 60 + 22 * l; }    // experiencia para pasar del nivel l al l+1
 // Aplica las estadísticas del nivel `lvl` al héroe conservando la proporción de vida (y la curva normal de bots).
@@ -37,9 +37,13 @@ function lanesLevelUp(h){
   floatText(h.x, h.y - 46, "¡NIVEL " + lvl + "!", "heal");
   if(typeof playSfx === "function") try{ playSfx("levelup"); }catch(e){}
   if(typeof juiceLevelUp === "function") try{ juiceLevelUp(h.classKey, lvl); }catch(e){}
-  // carta de horda: la gana el equipo cuando sube de nivel su héroe líder (el primero del equipo en la partida)
-  const lead = heroes.find(o=>o.team === h.team);
-  if(lead === h){ const T = L.team[h.team]; if(T.taken + T.pendingCards + (T.offer ? 1 : 0) < LANES.MAX_CARDS) T.pendingCards++; }
+  // Un hito por equipo: no depender de un capitán quieto o de su posición en heroes.
+  const T = L.team[h.team], previous = T.cardLevel == null ? LANES.LEVEL0 : T.cardLevel;
+  if(lvl > previous){
+    T.cardLevel = lvl;
+    const earned = T.taken + T.pendingCards + (T.offer ? 1 : 0);
+    T.pendingCards += Math.min(lvl - previous, Math.max(0, LANES.MAX_CARDS - earned));
+  }
 }
 
 /* ---------------- volver a la base ---------------- */

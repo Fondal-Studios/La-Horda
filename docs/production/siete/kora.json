@@ -133,6 +133,26 @@
       "preview": "assets/sprites/champions/kora/skins/kora_alt1/preview.png",
       "availability": "alpha-test",
       "premiumPrice": null
+    },
+    {
+      "id": "kora_alt2",
+      "type": "skin",
+      "champion": "kora",
+      "name": "Capataz de Cobre",
+      "rarity": "Épica",
+      "tagline": "Armadura de cobre verdoso con capa de lona y hombreras ornadas con remaches.",
+      "lore": "El cobre se pone verde con el tiempo. Kora no lo pule: cada mancha es una galería que aguantó.",
+      "visualTheme": "Armadura de cobre verdoso con capa de lona y hombreras ornadas con remaches.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/kora/skins/kora_alt2/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
     }
   ],
   "set": {

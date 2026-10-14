@@ -1,22 +1,10 @@
 {
  "id": "grelk_alt1",
  "name": "Grelk, Cazador de Escarcha",
- "prompt": "Pieles blancas con cuello de lobo y hombreras de piel.",
+ "prompt": "Pieles blancas con capa de lobo.",
  "body": "tibor_skin",
  "head": "renko_skin",
  "paint": [
-  {
-   "part": "head",
-   "hue": [
-    0,
-    120
-   ],
-   "minChroma": 3,
-   "noSkin": true,
-   "to": "#d8d8d8",
-   "keepLight": 0.7,
-   "chroma": 1.0
-  },
   {
    "part": "body",
    "hue": [

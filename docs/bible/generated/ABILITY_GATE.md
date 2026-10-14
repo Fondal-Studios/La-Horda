@@ -49,6 +49,11 @@ Categorías medidas en el motor: AREA, MULTIPLE, POTENCIA, CURA, CONTROL, MOVILI
 | nerith | PASS | Charco de Musgo: AREA+MULTIPLE+POTENCIA+CURA+CONTROL+INVOCA ◎ | Reguero de Lodo: AREA+MULTIPLE+CONTROL+INVOCA ◎ | Bruma Mansa: POTENCIA+CURA | Marisma Eterna: AREA+MULTIPLE+POTENCIA+CURA+CONTROL+INVOCA ◎ |
 | quillon | PASS | Reparto de Cartas: AREA+MULTIPLE+CURA+CONTROL ◎ | As en la Manga: AREA+MULTIPLE ◎ | Apuesta Doble: POTENCIA | Escalera Real: AREA+MULTIPLE+POTENCIA+CURA+CONTROL ◎ |
 | kora | PASS | Arremetida de Ariete: AREA+MULTIPLE+CONTROL+MOVILIDAD ◎ | Pisotón de Impulso: AREA+MULTIPLE+CONTROL | Cabeza Gacha: POTENCIA+CURA | Estampida: AREA+MULTIPLE+POTENCIA+CONTROL+MOVILIDAD ◎ |
+| solciju | PASS | Vino maldito: AREA+MULTIPLE+CONTROL ◎ | Barrica añeja: AREA+MULTIPLE+CONTROL ◎ | Brindis a solas: POTENCIA+CURA | Gran Reserva: AREA+MULTIPLE+POTENCIA+CONTROL ◎ |
+| veyra | PASS | Abrir la herida: AREA+MULTIPLE+CONTROL ◎ | Paso escarlata: AREA+MULTIPLE+CONTROL+MOVILIDAD ◎ | Pacto de dolor: POTENCIA | La última herida: AREA+MULTIPLE+CURA+CONTROL |
+| brakk | PASS | Muro de asedio: AREA+MULTIPLE+POTENCIA+CONTROL ◎ | Torreta de clavos: MULTIPLE+POTENCIA ◎ | Apuntalar: POTENCIA | Demolición final: AREA+MULTIPLE+CURA+CONTROL |
+| morveth | PASS | Huerto maldito: AREA+MULTIPLE+CONTROL ◎ | Exhalación de peste: AREA+MULTIPLE ◎ | Simbiosis: POTENCIA+CURA | Jardín de la peste: AREA+MULTIPLE+POTENCIA+CONTROL ◎ |
+| aelith | PASS | Instante roto: AREA+MULTIPLE+CONTROL ◎ | Fractura de segundos: AREA+MULTIPLE+CONTROL ◎ | Tiempo prestado: POTENCIA | La hora imposible: AREA+MULTIPLE+CURA+CONTROL ◎ |
 
 ## Problemas
 

@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "id": "veyra",
+  "name": "Veyra",
+  "title": "La Última Herida",
+  "role": "asesino",
+  "fantasy": "Asesina de alto riesgo con sangrado y movilidad.",
+  "lore": "Veyra regresó del campo de batalla con una herida que ningún sanador logró cerrar. Aprendió a escuchar su pulso y a moverse en el silencio entre dos latidos. No busca una muerte gloriosa: persigue a quienes comercian con la vida de otros. Cada pacto con su propia sangre le concede un instante de ventaja y le recuerda que sobrevivir también puede ser una forma de venganza.",
+  "personality": "Determinada, reservada y tenaz.",
+  "silhouette": "sien rapada; trenza carmesí; sable curvo.",
+  "stats": {
+    "hp": 95,
+    "damage": 11,
+    "speed": 178
+  },
+  "kit": {
+    "basic": {
+      "id": "veyra_basic",
+      "description": "Golpe cuerpo a cuerpo, hasta doce víctimas por ataque.",
+      "cooldownMs": 450,
+      "maxTargets": 12,
+      "hordeMechanism": "",
+      "anticipation": "Orientación al objetivo; animación de ataque simultánea al golpe.",
+      "execution": "js/skills/abilities.js: triggerBasic",
+      "impact": "damageEnemy y daño atribuido al dueño.",
+      "feedback": "Animación y efecto de impacto del motor.",
+      "vfx": "spawnSlash del motor.",
+      "sfx": "Motor compartido de impacto/básico (js/audio/audio.js)"
+    },
+    "skills": [
+      {
+        "id": "vey_cut",
+        "description": "Corta en abanico y provoca tres pulsos de sangrado.",
+        "cooldownMs": 5500,
+        "maxTargets": 12,
+        "hordeMechanism": "Daño a varios objetivos con límite de doce.",
+        "anticipation": "Premarcado manual de área/dirección; lanzamiento inmediato.",
+        "execution": "js/champions/quality-five/veyra.js: acción vey_cut",
+        "impact": "Corta en abanico y provoca tres pulsos de sangrado.",
+        "feedback": "Daño/curación y estados del motor; kitFx temático.",
+        "vfx": "kitFx / kitFxLine del runtime; premarcado en ACTION_AIM_PROFILES.",
+        "sfx": "js/champions/quality-five/audio.js: quality_veyra_cast"
+      },
+      {
+        "id": "vey_dash",
+        "description": "Se desplaza sin atravesar muros y hiere a quienes cruza.",
+        "cooldownMs": 8000,
+        "maxTargets": 12,
+        "hordeMechanism": "Daño a varios objetivos con límite de doce.",
+        "anticipation": "Premarcado manual de área/dirección; lanzamiento inmediato.",
+        "execution": "js/champions/quality-five/veyra.js: acción vey_dash",
+        "impact": "Se desplaza sin atravesar muros y hiere a quienes cruza.",
+        "feedback": "Daño/curación y estados del motor; kitFx temático.",
+        "vfx": "kitFx / kitFxLine del runtime; premarcado en ACTION_AIM_PROFILES.",
+        "sfx": "js/champions/quality-five/audio.js: quality_veyra_cast"
+      },
+      {
+        "id": "vey_pact",
+        "description": "Sacrifica 8% de su vida actual para ganar 25% de velocidad y 10% de armadura durante 3 s.",
+        "cooldownMs": 12000,
+        "maxTargets": 1,
+        "hordeMechanism": "Apoyo y supervivencia durante oleadas.",
+        "anticipation": "Activación sobre el propio campeón.",
+        "execution": "js/champions/quality-five/veyra.js: acción vey_pact",
+        "impact": "Sacrifica 8% de su vida actual para ganar 25% de velocidad y 10% de armadura durante 3 s.",
+        "feedback": "Daño/curación y estados del motor; kitFx temático.",
+        "vfx": "kitFx / kitFxLine del runtime; premarcado en ACTION_AIM_PROFILES.",
+        "sfx": "js/champions/quality-five/audio.js: quality_veyra_cast"
+      }
+    ],
+    "ultimate": {
+      "id": "vey_final",
+      "description": "Daña y ralentiza a enemigos cercanos. Recupera 2% de vida y consume sangrados para sanar 1% adicional por herida, hasta 6% total.",
+      "cooldownMs": 34000,
+      "maxTargets": 12,
+      "hordeMechanism": "Daño de área y control.",
+      "anticipation": "Activación de área alrededor del campeón.",
+      "execution": "js/champions/quality-five/veyra.js: acción vey_final",
+      "impact": "Daña y ralentiza a enemigos cercanos. Recupera 2% de vida y consume sangrados para sanar 1% adicional por herida, hasta 6% total.",
+      "feedback": "kitFx de definitiva y estados medidos por Ability Gate.",
+      "vfx": "kitFx con ult:true.",
+      "sfx": "js/champions/quality-five/audio.js: quality_veyra_ult"
+    }
+  },
+  "art": {
+    "atlas": "assets/sprites/champions/veyra/atlas.png",
+    "preview": "assets/sprites/champions/veyra/preview.png",
+    "directions": 4,
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "5a2db8a7b217ac2c157e9f2dab1712e659ca38a89a96a7b873a871bb1363ce0c",
+    "animations": {
+      "idle": 1,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
+    },
+    "review": {
+      "status": "PASS",
+      "reviewer": "Codex (visual inspection; not human signoff)",
+      "evidence": "docs/production/quality-five/originals/ART-REVIEW.md"
+    }
+  },
+  "integration": {
+    "runtime": "js/champions/quality-five/veyra.js",
+    "codex": "js/champions/quality-five/register.js",
+    "talents": "js/champions/quality-five/register.js",
+    "mastery": "js/champions/quality-five/register.js",
+    "set": "js/champions/quality-five/collection.js",
+    "kitTest": "tools/quality-five/functional.js"
+  },
+  "cosmetics": [
+    {
+      "id": "veyra_alt1",
+      "type": "skin",
+      "champion": "veyra",
+      "name": "Veyra, Verdugo Celestial",
+      "rarity": "Épica",
+      "tagline": "Sien rapada, trenza marfil, armadura ceremonial, halo dorado y sable curvo",
+      "lore": "Veyra juró no morir en vano. Una mañana, entre dos latidos, la herida se abrió al cielo y le devolvió un halo que ella usa como filo.",
+      "visualTheme": "Sien rapada, trenza marfil, armadura ceremonial, halo dorado y sable curvo",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/veyra/skins/veyra_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "veyra_croma",
+      "type": "croma",
+      "champion": "veyra",
+      "name": "Herida Amatista",
+      "rarity": "Rara",
+      "tagline": "Una paleta alternativa para Veyra.",
+      "lore": "Los colores de Herida Amatista acompañan un nuevo viaje. Conserva su vestuario y sus decisiones: esta apariencia cambia únicamente la paleta.",
+      "visualTheme": "Paleta selectiva; conserva piel y contorno.",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "palette"
+      ],
+      "preview": "assets/sprites/champions/veyra/croma-preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "quality_veyra",
+      "type": "set",
+      "champion": "veyra",
+      "name": "Cicatriz de Obsidiana",
+      "rarity": "Set",
+      "tagline": "Placas de vidrio negro, hombrera angular y sable de obsidiana",
+      "lore": "Veyra recogió los fragmentos de una puerta que no pudo atravesar. Los convirtió en placas, dejando visible cada cicatriz. Su armadura recuerda por qué vuelve a levantarse.",
+      "visualTheme": "Placas de vidrio negro, hombrera angular y sable de obsidiana",
+      "unlockSource": "Completar Cicatriz de Obsidiana en infernal",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/veyra/skins/quality_veyra/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
+  "set": {
+    "sourceArena": "infernal",
+    "pieces": [
+      "quality_veyra_arma",
+      "quality_veyra_casco",
+      "quality_veyra_pechera",
+      "quality_veyra_botas"
+    ],
+    "rewardCosmetic": "quality_veyra",
+    "rewardGrantsPower": false
+  },
+  "budgets": {
+    "particles": 64,
+    "summons": 0,
+    "audioVoices": 3
+  },
+  "evidence": {
+    "reference": "docs/production/quality-five/workshop-entry-results.json",
+    "talents": "docs/production/quality-five/functional-results.json",
+    "abilities": "docs/production/quality-five/ability/ability-gate.json",
+    "resources": "docs/production/quality-five/functional-results.json",
+    "passives": "docs/production/quality-five/functional-results.json",
+    "balance": "docs/balance/entry-gate-results.json",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "style": "docs/production/quality-five/originals/style-results.txt",
+    "audio": "docs/production/quality-five/audio-20261012.txt",
+    "multiplayer": "docs/production/quality-five/online-results.json",
+    "performance": "docs/production/quality-five/performance-veyra.json"
+  },
+  "category": "STANDARD"
+}
