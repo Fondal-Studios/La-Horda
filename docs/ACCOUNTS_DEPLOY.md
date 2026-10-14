@@ -152,7 +152,10 @@ direcciones internas de Render), `DATA_DIR`, `SESSION_DAYS` (60), `AUTH_MAX_FAIL
 cada 15 min), `AUTH_MAX_FAILS_IP` (30), `REGISTER_MAX_IP` (10 por hora), `TRUST_PROXY` (automático en Render).
 
 Tablas (se crean solas): `horda_users`, `horda_sessions` (hash SHA-256 del token), `horda_saves`,
-`horda_leaderboard` (sin base de datos: `leaderboard.json` en `DATA_DIR`, últimas 12 semanas).
+`horda_leaderboard` (sin base de datos: `leaderboard.json` en `DATA_DIR`, últimas 12 semanas) y
+`horda_clans` (una fila con el documento de clanes; sin base de datos: `clans.json`). Clanes: rutas
+`/api/clans` y `/api/clan/*`, variables `CLAN_MAX_MEMBERS` (30), `CLAN_MAX_CLANS` (5000), `CLAN_COOLDOWN_MS` (5 min),
+`CLAN_WAR_MIN_ARENAS` (0 = no exigir campaña completa). Detalle en `docs/modes/CLANES.md`.
 
 Cliente: `js/net/account.js` y `css/account.css`. API para el menú: `window.accountOpen()`,
 `window.accountState()` → `{logged, name, user, syncing, pending, online, lastSync, conflict}` y el

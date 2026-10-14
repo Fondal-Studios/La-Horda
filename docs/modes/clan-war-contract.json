@@ -1,0 +1,66 @@
+{
+  "$comment": "Contrato de datos de la Conquista del Castillo. Lo marcado IMPLEMENTED lo valida server/clans.js (validateWarReport) y lo comprueba server/test-clans.js contra este archivo. Lo marcado PROPOSED NO existe todavia: es el diseno para sumar clan contra clan en linea cuando el relay lo permita. Ver docs/modes/CLANES.md.",
+  "version": 1,
+  "status": { "report": "IMPLEMENTED", "online": "PROPOSED" },
+  "report": {
+    "endpoint": "POST /api/clan/war/report",
+    "auth": "Bearer <token de sesion>",
+    "trust": "El cliente informa el resultado de una partida local contra bots: es FALSIFICABLE. El servidor solo valida plausibilidad y aplica topes; no es antitrampa.",
+    "v1": {
+      "fields": {
+        "matchId": "string, 16-64 caracteres [A-Za-z0-9_-], unico por partida (idempotencia: el mismo id no suma dos veces)",
+        "mode": "castle",
+        "role": "attack | defend (el rol que jugo el clan del jugador)",
+        "result": "win | loss",
+        "opponent": "bots",
+        "tier": "1 | 2 | 3 (dificultad del clan rival simulado)",
+        "durationMs": "entero entre min y max",
+        "stats": "opcional, solo claves conocidas, enteros dentro de rango",
+        "build": "opcional, [A-Za-z0-9._-]{1,24}"
+      },
+      "enums": { "mode": ["castle"], "role": ["attack", "defend"], "result": ["win", "loss"], "opponent": ["bots"], "tier": [1, 2, 3] },
+      "durationMs": { "min": 120000, "max": 1200000 },
+      "stats": {
+        "gates": { "max": 3, "doc": "puertas derribadas" },
+        "towers": { "max": 6, "doc": "torres derribadas" },
+        "heartPct": { "max": 100, "doc": "vida restante del corazon del castillo, en %" },
+        "heroKills": { "max": 99, "doc": "bajas de heroes que hizo el equipo del jugador" },
+        "heroDeaths": { "max": 99, "doc": "caidas de heroes del equipo del jugador" },
+        "minionKills": { "max": 3000, "doc": "criaturas derrotadas por el jugador" },
+        "seconds": { "max": 1200, "doc": "segundos de reloj de partida" }
+      },
+      "example": {
+        "matchId": "match-0001-abcdefgh",
+        "mode": "castle", "role": "attack", "result": "win", "opponent": "bots", "tier": 2, "durationMs": 412000,
+        "stats": { "gates": 3, "towers": 4, "heartPct": 0, "heroKills": 5, "heroDeaths": 2 }
+      },
+      "response": { "ok": true, "delta": "puntos que cambio el clan (puede ser 0 si hay tope)", "points": "total del clan", "capped": "true si el tope diario recorto la suma", "duplicate": "true si el matchId ya estaba registrado" },
+      "errors": ["BAD_REPORT 400", "NOT_IN_CLAN 404", "MATCH_USED 409", "IMPLAUSIBLE 422", "DAILY_LIMIT 429", "TOO_MANY 429", "ENDGAME_ONLY 403 (si CLAN_WAR_MIN_ARENAS > 0)"]
+    }
+  },
+  "points": { "1": { "win": 12, "loss": -3 }, "2": { "win": 20, "loss": -5 }, "3": { "win": 30, "loss": -8 } },
+  "caps": { "userDailyReports": 8, "clanDailyGain": 400, "notes": "Las restas no tienen tope diario; los puntos de clan no bajan de 0." },
+  "online": {
+    "status": "PROPOSED",
+    "why": "Hoy el relay admite como maximo 4 humanos por sala (js/arenas/lanes/lanes-net.js: 2 contra 2). 5 contra 5 de clanes no es posible sin cambiar relay y netcode.",
+    "flow": [
+      "1. Un oficial de cada clan acepta un desafio: POST /api/clan/war/challenge {targetClanId, mode:'castle', playersPerSide:1..2} -> el servidor de cuentas crea una guerra {warId, attackerClan, defenderClan, sides, expiresAt}.",
+      "2. Cada jugador pide un ticket: POST /api/clan/war/ticket {warId} -> {ticket} firmado por el servidor de cuentas (HMAC con un secreto compartido con el relay) con {warId, userId, clanId, side, exp}.",
+      "3. Al crear/unirse a la sala, el cliente manda {t:'create'|'join', arena:'castle', warTicket}. El relay verifica la firma, el vencimiento y que el clan/lado coincidan; rechaza a quien no tenga ticket.",
+      "4. El anfitrion simula como en la Guerra de Cristales; los invitados siguen siendo no autoritativos.",
+      "5. Al terminar, el RELAY (no el cliente) informa POST /api/internal/clan-war/result {warId, winnerSide, durationMs, roster} firmado; solo asi se suman puntos de clan-vs-clan. Un parte del cliente nunca los suma."
+    ],
+    "messages": {
+      "relay.create": { "t": "create", "arena": "castle", "warTicket": "string (firmado)" },
+      "relay.join": { "t": "join", "room": "ABC123", "warTicket": "string (firmado)" },
+      "relay.result": { "k": "castle-end", "warId": "string", "winnerSide": "attack | defend", "why": "heart | banner | time", "durationMs": "int" },
+      "server.internalResult": { "warId": "string", "winnerSide": "attack | defend", "durationMs": "int", "roster": [{ "userId": "int", "clanId": "int", "side": "attack | defend" }], "sig": "HMAC-SHA256" }
+    },
+    "needs": [
+      "Soporte de mas de 4 humanos en el relay y en el netcode de lanes (hoy cada heroe esta atado a un slot).",
+      "Secreto compartido relay <-> servidor de cuentas.",
+      "Matchmaking o desafios entre clanes con calendario.",
+      "Anfitrion no confiable: simulacion o verificacion en servidor para que el resultado no dependa de un cliente."
+    ]
+  }
+}

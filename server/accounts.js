@@ -49,6 +49,10 @@
      para las rondas jugadas, el puntaje no supera un techo por ronda y por minuto, y la partida entra en
      el tiempo que pasó desde tu envío anterior. Límite de envíos por cuenta.
    - La semana es la ISO en UTC, la MISMA de los mutadores semanales (js/systems/endless.js).
+
+   CLANES (server/clans.js, mismo adaptador: clans.json o la tabla horda_clans): /api/clans, /api/clan/*.
+   Ver docs/modes/CLANES.md. Variables: CLAN_MAX_MEMBERS (30), CLAN_MAX_CLANS (5000), CLAN_COOLDOWN_MS (5 min),
+   CLAN_WAR_MIN_ARENAS (0 = sin exigir campaña completa).
    ============================================================ */
 const crypto = require("crypto");
 const adminLevels=require("./admin-levels");
@@ -56,6 +60,7 @@ const gameMaster = require("./game-master");
 const entitlements = require("./entitlements");
 const rbac = require("./rbac");
 const walletMod = require("./wallet");
+const clansMod = require("./clans");
 const fs = require("fs");
 const fsp = fs.promises;
 const path = require("path");
@@ -244,6 +249,9 @@ function fileStore(dir){
   }
   const lbName = id => { const u = db.users[id]; return u ? (u.name || u.user) : "?"; };
   // billetera premium (server/wallet.js): saldo por cuenta + libro de movimientos con referencia única (idempotente)
+  // clanes (server/clans.js): un documento JSON; clanUpdate corre de a una función (nombre único y tope de miembros sin carreras)
+  const clanFile = path.join(dir, "clans.json");
+  let clanDoc = null, clanChain = Promise.resolve();
   const walletFile = path.join(dir, "wallet.json");
   let wallet = { balances: {}, ledger: [], refs: {}, nextId: 1 }, walletChain = Promise.resolve();
   async function loadMeta(id){
@@ -270,6 +278,8 @@ function fileStore(dir){
       try{ lb = JSON.parse(await fsp.readFile(lbFile, "utf8")); }
       catch(e){ if(e.code !== "ENOENT") throw new Error("leaderboard.json ilegible: " + e.message); }
       if(!lb || typeof lb.weeks !== "object") lb = { weeks: {} };
+      try{ clanDoc = JSON.parse(await fsp.readFile(clanFile, "utf8")); }
+      catch(e){ if(e.code !== "ENOENT") throw new Error("clans.json ilegible: " + e.message); }
       try{ wallet = JSON.parse(await fsp.readFile(walletFile, "utf8")); }
       catch(e){ if(e.code !== "ENOENT") throw new Error("wallet.json ilegible: " + e.message); }
       wallet.balances = wallet.balances || {}; wallet.ledger = wallet.ledger || []; wallet.refs = wallet.refs || {}; wallet.nextId = wallet.nextId || 1;
@@ -339,6 +349,16 @@ function fileStore(dir){
       for(const w in lb.weeks){ const W = lb.weeks[w]; for(const k in W) if(k.startsWith(userId + "|") && W[k].at > t) t = W[k].at; }
       return t;
     },
+    async clanRead(){ return clanDoc ? JSON.parse(JSON.stringify(clanDoc)) : null; },
+    // fn(copiaDelEstado) -> {state?, value}: si devuelve state se guarda (atómico); si no, no cambia nada. De a una por vez.
+    async clanUpdate(fn){
+      const job = clanChain.catch(() => {}).then(async () => {
+        const r = await fn(clanDoc ? JSON.parse(JSON.stringify(clanDoc)) : null);
+        if(r && r.state){ await writeAtomic(clanFile, JSON.stringify(r.state)); clanDoc = r.state; }
+        return r ? r.value : undefined;
+      });
+      clanChain = job; return job;
+    },
     async walletGet(userId){ return { premium: (wallet.balances[userId] || {}).premium || 0 }; },
     async walletLedger(userId, limit){ return wallet.ledger.filter(e => e.userId === userId).slice(-(limit || 50)).reverse(); },
     async walletHasRef(ref){ return !!(ref && wallet.refs[ref]); },
@@ -355,7 +375,7 @@ function fileStore(dir){
       });
       walletChain = job; return job;
     },
-    async close(){ await gmChain.catch(()=>{}); await walletChain.catch(()=>{}); if(writing) await writing; if(lbWriting) await lbWriting; }
+    async close(){ await gmChain.catch(()=>{}); await walletChain.catch(()=>{}); await clanChain.catch(()=>{}); if(writing) await writing; if(lbWriting) await lbWriting; }
   };
 }
 
@@ -380,6 +400,7 @@ function pgStore(url){
   const { Pool } = require("pg");
   const pool = new Pool(pgConfig(url));
   let gmChain = Promise.resolve(); // avoid exhausting the pool with row-lock waiters
+  let clanChain = Promise.resolve(); // idem para clanes
   pool.on("error", () => {}); // una conexión inactiva que se corta no tumba el servidor
   const q = (text, params) => pool.query(text, params);
   const rowUser = r => r && { id: Number(r.id), userKey: r.user_key, user: r.username, name: r.display_name, email: r.email,
@@ -389,6 +410,24 @@ function pgStore(url){
     kind: "postgres", persistent: true,
     async listUsers(){return (await q("SELECT * FROM horda_users ORDER BY id")).rows.map(rowUser);},
     async gmRead(){const r=await q("SELECT data FROM horda_operations WHERE id=1");return r.rows[0]?.data||null;},
+    async clanRead(){ const r = await q("SELECT data FROM horda_clans WHERE id=1"); return r.rows[0] ? r.rows[0].data : null; },
+    // misma idea que el archivo: la fila única se bloquea (FOR UPDATE) mientras corre fn, así dos procesos no pisan nombres ni cupos
+    async clanUpdate(fn){
+      const job = clanChain.catch(() => {}).then(async () => {
+        const c = await pool.connect();
+        try{
+          await c.query("BEGIN");
+          await c.query("INSERT INTO horda_clans(id, data) VALUES(1, 'null'::jsonb) ON CONFLICT DO NOTHING");
+          const r = await c.query("SELECT data FROM horda_clans WHERE id=1 FOR UPDATE");
+          const res = await fn(r.rows[0].data);
+          if(res && res.state) await c.query("UPDATE horda_clans SET data=$1::jsonb WHERE id=1", [JSON.stringify(res.state)]);
+          await c.query("COMMIT");
+          return res ? res.value : undefined;
+        }catch(e){ await c.query("ROLLBACK").catch(() => {}); throw e; }
+        finally{ c.release(); }
+      });
+      clanChain = job; return job;
+    },
     async walletGet(userId){ const r = await q("SELECT premium FROM horda_wallet WHERE user_id=$1", [userId]); return { premium: r.rows[0] ? Number(r.rows[0].premium) : 0 }; },
     async walletHasRef(ref){ if(!ref) return false; const r = await q("SELECT 1 FROM horda_wallet_ledger WHERE ref=$1 LIMIT 1", [ref]); return r.rows.length > 0; },
     async walletLedger(userId, limit){ const r = await q("SELECT * FROM horda_wallet_ledger WHERE user_id=$1 ORDER BY id DESC LIMIT $2", [userId, limit || 50]);
@@ -422,6 +461,7 @@ function pgStore(url){
       await q(`CREATE TABLE IF NOT EXISTS horda_wallet_ledger (id BIGSERIAL PRIMARY KEY, user_id BIGINT NOT NULL, delta BIGINT NOT NULL,
         balance_after BIGINT NOT NULL, reason TEXT NOT NULL, ref TEXT UNIQUE, actor BIGINT, at BIGINT NOT NULL)`);
       await q(`CREATE INDEX IF NOT EXISTS horda_wallet_ledger_user ON horda_wallet_ledger(user_id, id)`);
+      await q(`CREATE TABLE IF NOT EXISTS horda_clans (id INTEGER PRIMARY KEY CHECK(id=1), data JSONB NOT NULL)`);
       await q(`CREATE TABLE IF NOT EXISTS horda_operation_snapshots (id TEXT PRIMARY KEY, data JSONB NOT NULL)`);
       await q(`CREATE TABLE IF NOT EXISTS horda_users (
         id BIGSERIAL PRIMARY KEY, user_key TEXT UNIQUE NOT NULL, username TEXT NOT NULL, display_name TEXT,
@@ -531,7 +571,7 @@ function pgStore(url){
       const r = await q(`SELECT max(created_at) AS t FROM horda_leaderboard WHERE user_id=$1`, [userId]);
       return Number(r.rows[0] && r.rows[0].t || 0);
     },
-    async close(){ await gmChain.catch(()=>{}); await pool.end(); }
+    async close(){ await gmChain.catch(()=>{}); await clanChain.catch(()=>{}); await pool.end(); }
   };
 }
 
@@ -903,6 +943,7 @@ function create(opts){
   };
 
   Object.assign(routes, gameMaster.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,ownerAccess,founderOf,founders:()=>founderBindings,seenAt}));
+  Object.assign(routes, clansMod.routes({getStore:()=>store,auth,send,err,readBody,now:now0,log,warMinArenas:opts.clanWarMinArenas}));
   Object.assign(routes, walletMod.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,log}));
 
   // Devuelve true si atendió el pedido (todo lo que empieza con /api/).
