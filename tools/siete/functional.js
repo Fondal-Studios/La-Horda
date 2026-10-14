@@ -1,5 +1,5 @@
 'use strict';
-// Pruebas de kit de los siete campeones nuevos (Ostrel, Grelk, Ilsa, Vorn, Nerith, Quillon, Kora) sobre el motor real:
+// Pruebas de kit de los tres campeones nuevos (Ilsa, Vorn, Kora) sobre el motor real:
 // habilidades, mecánica propia, invocaciones/entidades, límite, duración, limpieza, jefes, talentos, refuerzos y cooperativo.
 // Uso: ENTRY_BASE_URL=http://127.0.0.1:8851 node tools/siete/functional.js   (servir el repo antes)
 const {chromium}=require('playwright'),fs=require('node:fs');
@@ -41,19 +41,6 @@ const {chromium}=require('playwright'),fs=require('node:fs');
   for(const arena of ['ciudad','fortaleza','bosque','micelial','hielo','acuatica','laberinto','abismo','minas','infernal']){start(k,arena,20);const crowd=[enemy(40),enemy(-60),enemy(120,'elite'),enemy(0,'normal',90)];for(let i=0;i<3;i++)cast(i);cast('ult');tick(3000);
    check(k+' arena '+arena+' bounds + finite',crowd.every(e=>!e.alive||inBounds(e))&&Number.isFinite(player.hp)&&inBounds(player)&&portadorObjects.length<=48);}
  }
- // ---- Ostrel ----
- start('ostrel');let e1=enemy(100);cast(0);tick(1000);check('Ostrel beam alive at 1 s, single entity',sietOwned(player,'beam').length===1);const d1=1e7-e1.hp;tick(2600);check('Ostrel beam ends after ~2.2 s',sietOwned(player,'beam').length===0&&player.siState.beamUntil===0);
- check('Ostrel beam damages along its whole line while held',d1>0&&1e7-e1.hp>d1);
- start('ostrel');cast(0);check('Ostrel is slowed while channelling',portadorSpeedMult(player)<.7);cast(2);check('Concentración Estelar removes the channel slow and buffs',portadorSpeedMult(player)>=.9&&player._kitDmgUntil>runElapsedMs);
- start('ostrel');e1=enemy(100);cast(1);tick(100);check('Lente de Aumento marks enemies vulnerable',enemyVulnMult(e1)>1&&e1.slowTimer>0);
- start('ostrel');player.aim={x:player.x-150,y:player.y,dx:-1,dy:0};const ang0=Math.atan2(player.fy,player.fx);player.aim={x:player.x+100,y:player.y,dx:1,dy:0};cast('ult');player.aim={x:player.x,y:player.y+100,dx:0,dy:1};tick(100);check('Ostrel ultimate beam turns toward the aim with limited speed',sietOwned(player,'beam')[0].ang<Math.PI/2&&sietOwned(player,'beam')[0].ang>0);
- // ---- Grelk ----
- start('grelk');cast(0);const tr=own()[0];check('Grelk trap placed unarmed then armed',!!tr&&tr.arm>0);tick(700);check('Grelk trap armed after 0.5 s',tr.arm<=0&&tr.life>0);
- start('grelk');player.aim={x:player.x+90,y:player.y,dx:1,dy:0};cast(0);tick(700);const vic=enemy(90),by=enemy(100,'normal',20);tick(200);check('Grelk trap springs when an enemy steps on it, slowing',own().length===0&&vic.hp<1e7&&vic.slowTimer>0&&by.hp<1e7);
- const hb=1e7-vic.hp;check('Grelk marks Presa (+18%)',vic._siPreyUntil>runElapsedMs);
- start('grelk');for(let i=0;i<9;i++){player.aim={x:player.x+60+i*10,y:player.y,dx:1,dy:0};cast(0);}check('Grelk trap cap is 6',own().length<=6,own().length);
- start('grelk');player.aim={x:player.x+90,y:player.y,dx:1,dy:0};cast(1);cast(0);tick(1000);const f=enemy(300);cast(2);check('Pulso del Cazador detonates armed traps from range and buffs',own().length===0&&player._kitDmgUntil>runElapsedMs&&portadorSpeedMult(player)>1.2);
- start('grelk');cast('ult');check('Campo de Cepos places six traps',own().length===6,own().length);
  // ---- Ilsa ----
  start('ilsa');const atk=enemy(40);const hp0=player.hp;damageHero(player,30,atk);check('Ilsa takes damage outside the stance',player.hp<hp0);
  start('ilsa');const atk2=enemy(40);cast(0);const hp1=player.hp;damageHero(player,30,atk2);check('Ilsa stance blocks the hit completely',player.hp===hp1);check('Ilsa riposte damages the attacker and adds a Réplica',atk2.hp<1e7&&player.siState.riposte===1);
@@ -67,18 +54,6 @@ const {chromium}=require('playwright'),fs=require('node:fs');
  start('vorn');e1=enemy(80);cast(1);check('Zarpa in Piedra slows',e1.slowTimer>0);start('vorn');cast(0);const pos0=player.x;e1=enemy(100);cast(1);check('Zarpa in Tormenta dashes and bleeds',player.x>pos0+50&&e1.bleedTimer>0);
  start('vorn');cast(2);check('Instinto in Piedra shields',player.shield>0);start('vorn');cast(0);cast(2);check('Instinto in Tormenta buffs damage',player._kitDmgUntil>runElapsedMs);
  start('vorn');cast('ult');check('Bestia Primordial cuts damage taken',portadorTakenMult(player,null)<.8&&sietOwned(player,'stomp').length===1);tick(6500);check('Bestia ends',sietOwned(player,'stomp').length===0&&!vornBeast(player));
- // ---- Nerith ----
- start('nerith');const al=heroes.find(h=>h!==player);al.hp=al.maxHp*.3;al.x=player.x+110;al.y=player.y;player.aim={x:al.x,y:al.y,dx:1,dy:0};cast(0);tick(1500);check('Charco de Musgo heals allies standing in it',al.hp>al.maxHp*.3);
- check('Nerith zone gives -8% damage taken to allies inside',Math.abs(portadorTakenMult(al,null)-.92)<.03,portadorTakenMult(al,null));
- start('nerith');e1=enemy(100);player.aim={x:player.x+100,y:player.y,dx:1,dy:0};cast(0);cast(1);tick(700);check('Reguero + Charco mature the swamp (+30%) on overlap',nerMature(player,e1));
- start('nerith');for(let i=0;i<6;i++){cast(0);cast(1);}check('Nerith zone caps (2 moss + 2 mud)',sietOwned(player,'moss').length<=2&&sietOwned(player,'mud').length<=2);
- start('nerith');cast(0);const L0=sietOwned(player,'moss')[0].life;cast(2);check('Bruma Mansa extends zones',sietOwned(player,'moss')[0].life>L0);
- // ---- Quillon ----
- start('quillon');check('Quillon deck is fixed (♠ ♣ ♥ ♦)',[0,1,2,3].every(i=>quiPeek(player,i)===i));cast(0);check('Reparto plays three cards (deck advances by 3)',quiPeek(player,0)===3);
- start('quillon');cast(1);cast(1);cast(1);cast(1);check('Four consecutive cards trigger Racha (next doubled)',player.siState.doubleNext===true);
- start('quillon');cast(2);check('Apuesta Doble skips the top card and breaks the streak',quiPeek(player,0)===1&&player.siState.betUntil>runElapsedMs);
- start('quillon');e1=enemy(100);player.siState={deck:[0,1,2,3],pos:0,streak:0};const a0=e1.hp;cast(1);check('As en la Manga with ♠ deals damage along the line',a0-e1.hp>0);
- start('quillon');cast('ult');tick(1600);check('Escalera Real plays all four suits',!!sietOwned(player,'royal')[0]&&sietOwned(player,'royal')[0].step===4);
  // ---- Kora ----
  start('kora');const x0=player.x;for(let i=0;i<30;i++){player.x+=6;tick(16);}check('Kora gains Impulso by moving',player.siState.mom>20,player.siState.mom);const m0=player.siState.mom;tick(1000);check('Kora loses Impulso when still',player.siState.mom<m0);
  start('kora');const carr=[enemy(40),enemy(60,'normal',10),enemy(80,'normal',-10),enemy(70,'elite',0)];const el0={x:carr[3].x,y:carr[3].y};cast(0);check('Arremetida carries commons forward and hits all',carr[0].x>player.x-60&&carr.filter(e=>e.hp<1e7).length>=3);

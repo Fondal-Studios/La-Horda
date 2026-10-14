@@ -6,10 +6,8 @@
 // Uso: ROSTER_BASE_URL=http://127.0.0.1:8851 node tools/siete/compare-sheet.js  -> docs/production/siete/compare-sheet.png
 const {chromium}=require('playwright'),fs=require('node:fs'),path=require('node:path');
 const ROOT=path.resolve(__dirname,'../..'),BASE=process.env.ROSTER_BASE_URL||'http://127.0.0.1:8851';
-const ROWS={ostrel:{donors:['dariel','sira'],peers:['mago','axiom','nigromante']},quillon:{donors:['dariel','nahir'],peers:['mago','axiom','nigromante']},
- grelk:{donors:['tibor','renko'],peers:['guerrero','cazadora','musashi']},ilsa:{donors:['vesper','maura'],peers:['guerrero','cazadora','musashi']},
- vorn:{donors:['baltra','renko'],peers:['tanque','segador','eslabon']},kora:{donors:['zahra','orsa'],peers:['tanque','segador','eslabon']},
- nerith:{donors:['maura','sira'],peers:['soporte','profeta','farolero']}};
+const ROWS={ilsa:{donors:['vesper','maura'],peers:['guerrero','cazadora','musashi']},
+ vorn:{donors:['renko','baltra'],peers:['tanque','segador','eslabon']},kora:{donors:['zahra','orsa'],peers:['tanque','segador','eslabon']}};
 (async()=>{const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});
  try{const p=await b.newPage({viewport:{width:1400,height:1000}}),errors=[];p.on('pageerror',e=>errors.push(e.message));
   await p.goto(BASE+'/index.html');await p.waitForFunction(()=>typeof makeHero==='function'&&typeof CHAMPION_ENTRY_BALANCE!=='undefined',null,{timeout:120000});await p.waitForTimeout(2500);
