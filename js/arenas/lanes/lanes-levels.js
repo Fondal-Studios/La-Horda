@@ -5,6 +5,16 @@
    base y volver a la base (recall). Todos arrancan en el nivel 3 sin cuenta ni equipo; cada nivel sube vida, daño y defensa con la
    misma curva de la campaña (computePlayerStats). Cada nuevo nivel máximo del equipo ofrece una carta de horda.
    ============================================================ */
+// Nivel con el que arrancan todos en la partida: el de TU campeón (acotado) en solitario; en línea y Coliseo, el fijo.
+function lanesLvl0(){ return (typeof LN !== "undefined" && LN && LN.lvl0) || LANES.LEVEL0; }
+function lanesUseOwnLevel(champ){
+  if(!LN || LN.mode === "coliseo") return;
+  const rec = LN.snap && LN.snap.save && LN.snap.save.champions && LN.snap.save.champions[champ];
+  const real = rec && rec.level ? rec.level : 0;
+  if(real <= 0) return;
+  LN.lvl0 = Math.max(LANES.LEVEL0, Math.min(LANES.OWN_LEVEL_CAP, real));
+  for(const id in save.champions) save.champions[id].level = LN.lvl0;
+}
 function lanesLevelNeed(l){ return 60 + 22 * l; }    // experiencia para pasar del nivel l al l+1
 // Aplica las estadísticas del nivel `lvl` al héroe conservando la proporción de vida (y la curva normal de bots).
 function lanesApplyLevel(h, lvl, full){
@@ -26,7 +36,7 @@ function lanesGrantXP(team, x, y, amount){
   for(const h of near) lanesAddXP(h, each);
 }
 function lanesAddXP(h, xp){
-  if((h.mlvl || LANES.LEVEL0) >= LANES.LEVEL_MAX) return;
+  if((h.mlvl || lanesLvl0()) >= LANES.LEVEL_MAX) return;
   h.mxp = (h.mxp || 0) + xp;
   while(h.mlvl < LANES.LEVEL_MAX && h.mxp >= lanesLevelNeed(h.mlvl)){ h.mxp -= lanesLevelNeed(h.mlvl); lanesLevelUp(h); }
 }
@@ -38,7 +48,7 @@ function lanesLevelUp(h){
   if(typeof playSfx === "function") try{ playSfx("levelup"); }catch(e){}
   if(typeof juiceLevelUp === "function") try{ juiceLevelUp(h.classKey, lvl); }catch(e){}
   // Un hito por equipo: no depender de un capitán quieto o de su posición en heroes.
-  const T = L.team[h.team], previous = T.cardLevel == null ? LANES.LEVEL0 : T.cardLevel;
+  const T = L.team[h.team], previous = T.cardLevel == null ? lanesLvl0() : T.cardLevel;
   if(lvl > previous){
     T.cardLevel = lvl;
     const earned = T.taken + T.pendingCards + (T.offer ? 1 : 0);
@@ -61,6 +71,7 @@ function lanesRecallRequest(h){ if(typeof lanesNetRecallRequest === "function" &
 function lanesHeroTick(dt){
   const L = LN;
   for(const h of heroes){
+    h._bush = (h.alive && typeof lanesInBush === "function") ? lanesInBush(h.x, h.y) : null;   // escondido en un matorral
     h.gold = Math.min(LANES.MAX_GOLD, (h.gold == null ? LANES.START_GOLD : h.gold) + (h.alive ? LANES.GOLD_PASSIVE * dt / 1000 : 0));
     if(h.alive){
       h.dead_t = 0;

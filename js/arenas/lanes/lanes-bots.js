@@ -83,7 +83,7 @@ function lanesBotTarget(h, range){
     if(!e.alive || e.team === h.team) continue;
     const d = distance(h, e); if(d > range) continue;
     let s;
-    if(e.lanesProxy && e.kind === "hero"){ s = 420 - d * 0.4 + (1 - e.lnRef.hp / e.lnRef.maxHp) * 320; }
+    if(e.lanesProxy && e.kind === "hero"){ if(e.lnRef && e.lnRef._bush && d > LANES.BUSH_SEE) continue; s = 420 - d * 0.4 + (1 - e.lnRef.hp / e.lnRef.maxHp) * 320; }
     else if(e.lanesProxy){
       if(!lanesExposed(e.lnRef)) continue;
       let own = 0; for(const m of enemies) if(m.alive && !m.lanesProxy && m.team === h.team && Math.hypot(m.x - e.x, m.y - e.y) < 450) own++;

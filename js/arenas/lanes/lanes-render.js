@@ -2,7 +2,8 @@
 /* ============================================================
    js/arenas/lanes/lanes-render.js
    GUERRA DE CRISTALES en el motor real — dibujo del escenario: un mapa ancho de piedra con la línea central,
-   las bases (portales de la horda y cristal) y las torres de cada equipo. Arte reutilizado del juego.
+   las bases (portales de la horda y cristal) y las torres de cada equipo. El vestido del mapa (selva, río, empedrado,
+   braseros, pilares) está en lanes-scenery.js.
    ============================================================ */
 const _lnImg = {};
 function lanesImg(key, src){ let i = _lnImg[key]; if(!i){ i = _lnImg[key] = new Image(); i.src = src; } return i; }
@@ -31,46 +32,22 @@ function lanesDrawWorld(now){
   if(!LN) return;
   const W = LANES.W, H = LANES.H;
   ctx.save();
-  ctx.fillStyle = "#0a0e0c"; ctx.fillRect(-120, -120, W + 240, H + 240);
-  // selva: suelo con tinte verde oscuro
-  ctx.fillStyle = floorPattern || "#202937"; ctx.fillRect(0, 0, W, H);
-  ctx.fillStyle = "rgba(14,40,24,.50)"; ctx.fillRect(0, 0, W, H);
-  // río en diagonal (de la esquina de arriba a la izquierda a la de abajo a la derecha)
-  const rv = ctx.createLinearGradient(0, 0, W, H);
-  ctx.save(); ctx.lineCap = "butt";
-  ctx.beginPath(); ctx.moveTo(-100, -100); ctx.lineTo(W + 100, H + 100); ctx.lineWidth = 460; ctx.strokeStyle = "rgba(34,92,150,.55)"; ctx.stroke();
-  ctx.lineWidth = 400; ctx.strokeStyle = "rgba(70,140,205,.35)"; ctx.stroke();
-  ctx.setLineDash([60, 90]); ctx.lineDashOffset = -(now * 40) % 150; ctx.lineWidth = 6; ctx.strokeStyle = "rgba(200,235,255,.25)";
-  for(const off of [-110, 0, 110]){ ctx.beginPath(); ctx.moveTo(-100 + off * 0.6, -100 - off * 0.8); ctx.lineTo(W + 100 + off * 0.6, H + 100 - off * 0.8); ctx.stroke(); }
-  ctx.restore();
-  // carriles de piedra
-  for(let l = 0; l < 3; l++){
-    const pts = LANES_PATHS[l].pts;
-    lanesStrokePath(pts, 300, "rgba(24,28,36,.80)");
-    lanesStrokePath(pts, 262, "rgba(88,96,112,.62)");
-    lanesStrokePath(pts, 236, "rgba(112,120,136,.30)");
-    ctx.save(); ctx.setLineDash([26, 30]); lanesStrokePath(pts, 4, "rgba(255,255,255,.14)"); ctx.restore();
-  }
-  // bases: zona de curación y marcas de cada equipo
-  for(let t = 0; t < 2; t++){
-    const c = laneCrystalPos(t), col = lanesTeamColor(t);
-    if(!inView(c.x, c.y, 620)) continue;
-    ctx.fillStyle = col + "18"; ctx.beginPath(); ctx.arc(c.x, c.y, 300, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = col + "77"; ctx.lineWidth = 5; ctx.setLineDash([14, 12]); ctx.beginPath(); ctx.arc(c.x, c.y, 300, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
-  }
-  // campamentos y fosos épicos
+  if(!LNS.built) lnsBuild();
+  ctx.fillStyle = "#070b07"; ctx.fillRect(-120, -120, W + 240, H + 240);
+  ctx.fillStyle = floorPattern || "#1a2418"; ctx.fillRect(0, 0, W, H);     // suelo de selva (tema «convergencia» en arena.js)
+  lanesSceneryRiver(now);
+  lanesSceneryLanes();
+  // campamentos: tierra pisoteada
   for(const cd of LANES_CAMPS){
     if(!inView(cd.x, cd.y, 200)) continue;
     const camp = LN.camps && LN.camps[cd.id], alive = camp ? camp.mons.some(m=>m.alive) : false;
-    ctx.fillStyle = "rgba(70,48,28,.55)"; ctx.beginPath(); ctx.ellipse(cd.x, cd.y + 4, 92, 60, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = alive ? "rgba(230,190,110,.55)" : "rgba(160,140,110,.25)"; ctx.lineWidth = 3; ctx.setLineDash([8, 8]); ctx.beginPath(); ctx.ellipse(cd.x, cd.y + 4, 92, 60, 0, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = "rgba(70,48,28,.65)"; ctx.beginPath(); ctx.ellipse(cd.x, cd.y + 4, 96, 62, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = "rgba(40,26,14,.5)"; ctx.beginPath(); ctx.ellipse(cd.x, cd.y + 6, 60, 36, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = alive ? "rgba(230,190,110,.55)" : "rgba(160,140,110,.25)"; ctx.lineWidth = 3; ctx.setLineDash([8, 8]); ctx.beginPath(); ctx.ellipse(cd.x, cd.y + 4, 96, 62, 0, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
   }
-  for(const ed of LANES_EPICS){
-    if(!inView(ed.x, ed.y, 300)) continue;
-    ctx.fillStyle = "rgba(40,24,60,.60)"; ctx.beginPath(); ctx.arc(ed.x, ed.y, 150, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = "rgba(210,150,255,.55)"; ctx.lineWidth = 5; ctx.beginPath(); ctx.arc(ed.x, ed.y, 150, 0, Math.PI * 2); ctx.stroke();
-    ctx.font = pxFont(14); ctx.textAlign = "center"; ctx.fillStyle = "rgba(235,215,255,.8)"; ctx.fillText(ed.name.toUpperCase(), ed.x, ed.y + 190);
-  }
+  lanesSceneryGround(now);
+  lanesSceneryLights(now);
+  lanesSceneryEdge();
   const vg = ctx.createRadialGradient(W / 2, H / 2, H * 0.4, W / 2, H / 2, W * 0.62); vg.addColorStop(0, "rgba(0,0,0,0)"); vg.addColorStop(1, "rgba(0,0,0,.40)");
   ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
   ctx.lineWidth = 12; ctx.strokeStyle = "#2a3448"; ctx.strokeRect(0, 0, W, H);
@@ -115,6 +92,7 @@ function lanesDrawCrystal(s){
 function lanesDrawTop(){
   if(!LN) return;
   const now = performance.now() / 1000;
+  lanesSceneryBushes(now);
   for(const T of LN.team) for(const s of T.S){
     if(!s.alive || !inView(s.x, s.y, 300)) continue;
     const col = lanesTeamColor(s.team), f = Math.max(0, s.hp / s.maxHp), exposed = lanesExposed(s);

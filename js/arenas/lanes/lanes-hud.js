@@ -64,7 +64,7 @@ function lanesHudTick(){
   q(".ln-time").textContent = _lnClock(L.t);
   q(".ln-wave").textContent = L.t >= LANES.ECLIPSE_MS ? "☀ ECLIPSE" : "Oleada " + L.wave;
   q(".ln-shards").textContent = "◆ " + Math.floor(player.gold || 0) + " oro";
-  q(".ln-phase").textContent = "Nv " + (player.mlvl || LANES.LEVEL0) + (player.mlvl >= LANES.LEVEL_MAX ? " · MÁX" : " · XP " + Math.floor((player.mxp || 0) / lanesLevelNeed(player.mlvl) * 100) + " %") + " · TIENDA";
+  q(".ln-phase").textContent = "Nv " + (player.mlvl || lanesLvl0()) + (player.mlvl >= LANES.LEVEL_MAX ? " · MÁX" : " · XP " + Math.floor((player.mxp || 0) / lanesLevelNeed(player.mlvl) * 100) + " %") + " · TIENDA";
   // objetivos épicos y bendiciones de equipo
   if(L.epics){ q(".ln-epics").textContent = L.epics.map(ep=>{ const d = LANES_EPICS[ep.id], on = ep.mon && ep.mon.alive; return (d.key === "dragon" ? "🐉 " : "👑 ") + (on ? "VIVO" : _lnMin(Math.max(0, ep.respawnAt - L.t))); }).join("  "); }
   const rc = q(".ln-recall"); rc.classList.toggle("on", !!player._recall); rc.disabled = !player.alive;

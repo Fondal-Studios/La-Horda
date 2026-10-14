@@ -27,7 +27,7 @@ function lanesBegin(role, seed, mode){
   const snap = {save, selectedClass, currentArena, lobbyAllies, endlessActive, endlessPending, divinaMode};
   LN = {snap, mode:mode || "cw", role:role||"solo", lobby:role === "lobby", rng:((seed||((Math.random()*4294967295)>>>0))>>>0)||7, t:0, ended:true, winner:-1, team:[], shots:[], feed:[], wave:0, size:5};
   save = defaultSave();
-  for(const id in save.champions){ const c = save.champions[id]; c.level = LN.mode === "coliseo" ? 10 : LANES.LEVEL0; c.xp = 0; c.unlocked = true; }   // (el Coliseo: todos al nivel 10; Guerra de Cristales: nivel 3 y suben en la partida)
+  for(const id in save.champions){ const c = save.champions[id]; c.level = LN.mode === "coliseo" ? 10 : lanesLvl0(); c.xp = 0; c.unlocked = true; }   // (el Coliseo: todos al nivel 10; Guerra de Cristales: nivel 3 y suben en la partida)
   save.tut = {training:1, basics:1, b_move:1, b_attack:1, b_skill:1, goalMission:1}; // sin tutoriales dentro de la partida
   divinaMode = false; endlessActive = false; endlessPending = false;
   LN.team = LN.mode === "coliseo" ? colNewTeams() : [lanesNewTeam(0), lanesNewTeam(1)];
@@ -62,6 +62,7 @@ function lanesStart(opts){
   for(let i = 0; i < size - 1; i++) mates.push(pick(asArr(opts.mate)[i]));
   for(let i = 0; i < size; i++) foes.push(pick(asArr(opts.rivals)[i]));
   lanesBegin("solo", opts.seed);
+  lanesUseOwnLevel(mine);   // se juega con TU campeón y TU nivel (acotado a 3–10); todos los de la partida arrancan en ese nivel
   LN.size = size; LN.setup = {mine, mate:mates, rivals:foes, size};
   selectedClass = mine; currentArena = "convergencia"; lobbyAllies = [...mates, ...foes];
   try{ startRun(LANES.RUNLEVEL); }
@@ -86,7 +87,7 @@ function lanesNewStruct(team, kind, l, k){
 function lanesNewTeam(team){
   const S = []; for(let l = 0; l < 3; l++) for(let k = 0; k < 3; k++) S.push(lanesNewStruct(team, "tower", l, k)); S.push(lanesNewStruct(team, "crystal", -1, 0));
   return {team, repairAt:0, wardAt:0, sendAt:0, kills:0, sent:0, assist:0, pk:0, tk:0, wave:0, nextWave:LANES.FIRST_WAVE_MS,
-    cards:{}, taken:0, cardLevel:LANES.LEVEL0, mods:lanesModsOf({}), offer:null, offerAt:0, pendingCards:0, buffs:{dragon:0, rey:0}, superWaves:0, S};
+    cards:{}, taken:0, cardLevel:lanesLvl0(), mods:lanesModsOf({}), offer:null, offerAt:0, pendingCards:0, buffs:{dragon:0, rey:0}, superWaves:0, S};
 }
 function lanesCrystal(team){ return LN.team[team].S[9]; }
 function lanesTower(team, l, k){ return LN.team[team].S[l * 3 + k]; }
@@ -111,8 +112,8 @@ function lanesRunStart(){
   heroes.forEach((h, k)=>{
     h.team = h.lane = (L.assignment && L.assignment[k] != null) ? L.assignment[k] : (k < half ? 0 : 1);
     h.ln = LANES_ROLE_LANES[slot[h.team]++ % LANES_ROLE_LANES.length]; h._lnProxy = null; h.dead_t = 0;
-    h._qualityFiveSlot = k; h.mlvl = LANES.LEVEL0; h.mxp = 0; h._shopAt = null; h._recall = null; h._lnBuff = null; h.gold = LANES.START_GOLD; h.itAtk = h.itHp = h.itSpd = h.itSiege = h.itRegen = 0; h._spd0 = null;
-    lanesApplyLevel(h, LANES.LEVEL0, true);
+    h._qualityFiveSlot = k; h.mlvl = lanesLvl0(); h.mxp = 0; h._shopAt = null; h._recall = null; h._lnBuff = null; h.gold = LANES.START_GOLD; h.itAtk = h.itHp = h.itSpd = h.itSiege = h.itRegen = 0; h._spd0 = null;
+    lanesApplyLevel(h, lanesLvl0(), true);
     const r = laneRally(h.team); h.x = r.x + (Math.random() - 0.5) * 120; h.y = r.y + (Math.random() - 0.5) * 120;
   });
   lanesJungleInit();
@@ -127,6 +128,7 @@ function lanesClamp(ent){
   const b = laneBox(), r = (ent.radius || 18) * 0.5 + 6;
   ent.x = Math.max(b.x0 + r, Math.min(b.x1 - r, ent.x));
   ent.y = Math.max(b.y0 + r + 30, Math.min(b.y1 - r, ent.y));
+  if(typeof lanesPushOut === "function") lanesPushOut(ent);   // árboles y peñascos sólidos (lanes-scenery.js)
 }
 function lanesInside(x, y, m){ return x > m && x < LANES.W - m && y > m && y < LANES.H - m; }
 // Carril más cercano a un punto
@@ -344,12 +346,12 @@ function lanesTowerTick(s){
   let tgt = null, bd = R;
   for(const e of enemies){ if(!e.alive || e.lanesProxy || e.team !== foe) continue; const d = Math.hypot(e.x - s.x, e.y - s.y); if(d < bd){ bd = d; tgt = e; } }
   if(tgt){
-    s.atkAt = L.t + LANES.TOWER_CD; tgt.hp -= dmg * 3; tgt.hitFlash = 120; L.shots.push({x1:s.x, y1:s.y - 70, x2:tgt.x, y2:tgt.y - 14, t:L.t, team:s.team});
+    s.atkAt = L.t + LANES.TOWER_CD; tgt.hp -= dmg * LANES.TOWER_VS_MINION * (tgt.isBrute ? 0.6 : 1); tgt.hitFlash = 120; L.shots.push({x1:s.x, y1:s.y - 70, x2:tgt.x, y2:tgt.y - 14, t:L.t, team:s.team});
     if(tgt.hp <= 0){ tgt.lastHitBy = null; tgt._killTeam = s.team; tgt.noLoot = true; killEnemy(tgt); }
     return;
   }
   let hero = null; bd = R;
-  for(const h of heroes){ if(!h.alive || h.team !== foe || h.stealthTimer > 0) continue; const d = Math.hypot(h.x - s.x, h.y - s.y); if(d < bd){ bd = d; hero = h; } }
+  for(const h of heroes){ if(!h.alive || h.team !== foe || h.stealthTimer > 0) continue; const d = Math.hypot(h.x - s.x, h.y - s.y); if(h._bush && d > LANES.BUSH_SEE) continue; if(d < bd){ bd = d; hero = h; } }
   if(hero){
     s.atkAt = L.t + LANES.TOWER_CD; L.shots.push({x1:s.x, y1:s.y - 70, x2:hero.x, y2:hero.y - 14, t:L.t, team:s.team});
     if(hero._recall) hero._recall = null;

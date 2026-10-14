@@ -261,6 +261,7 @@ jobs:
       - run: npm ci --prefix server --no-audit --no-fund
       - run: |
           node tools/lanes/flow.js
+          node tools/lanes/scenery.js
           node tools/lanes/sim.js 3 150
           node tools/coliseum/flow.js
           node tools/coliseum/sim.js 2 600
