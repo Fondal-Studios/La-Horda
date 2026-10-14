@@ -1,0 +1,56 @@
+{
+ "id": "kora",
+ "name": "Kora, La Ariete",
+ "prompt": "Capataz con casco minero y hombreras de hierro.",
+ "body": "zahra",
+ "head": "orsa",
+ "paint": [
+  {
+   "part": "body",
+   "hue": [
+    0,
+    100
+   ],
+   "minChroma": 3,
+   "noSkin": true,
+   "to": "#5e646c",
+   "keepLight": 0.7,
+   "chroma": 1.0,
+   "maxL": 60
+  }
+ ],
+ "accessories": [
+  {
+   "element": "hombreras_redondas",
+   "scale": 1.0,
+   "materials": {
+    "shell": {
+     "ramp": [
+      "#16181c",
+      "#34383e",
+      "#5e646c",
+      "#98a0aa"
+     ]
+    }
+   }
+  },
+  {
+   "element": "corona_de_picos",
+   "scale": 0.7,
+   "materials": {
+    "metal": {
+     "ramp": [
+      "#3a2a10",
+      "#7a5a20",
+      "#c09038",
+      "#f0d070"
+     ]
+    }
+   }
+  }
+ ],
+ "install": {
+  "champion": "kora",
+  "pack": "kora"
+ }
+}

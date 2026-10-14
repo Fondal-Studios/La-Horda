@@ -2836,6 +2836,232 @@
    "status": "PASS"
   },
   {
+   "key": "ilsa",
+   "name": "Ilsa, la Esgrimista de Réplica",
+   "role": "asesino",
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Postura de Réplica",
+     "kind": "ascension:ils_parry",
+     "err": null,
+     "damaged": 0,
+     "statused": 0,
+     "cats": [
+      "POTENCIA"
+     ],
+     "vfx": 3,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": 1,
+     "name": "Estocada de Réplica",
+     "kind": "ascension:ils_lunge",
+     "err": null,
+     "damaged": 10,
+     "statused": 0,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "MOVILIDAD"
+     ],
+     "vfx": 62,
+     "aims": true,
+     "aimProfile": "dash"
+    },
+    {
+     "slot": 2,
+     "name": "Giro de Acero",
+     "kind": "ascension:ils_whirl",
+     "err": null,
+     "damaged": 6,
+     "statused": 6,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "CONTROL"
+     ],
+     "vfx": 34,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": "ult",
+     "name": "Duelo de Mil Réplicas",
+     "kind": "ascension:ils_duel",
+     "err": null,
+     "damaged": 9,
+     "statused": 9,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CONTROL"
+     ],
+     "vfx": 49,
+     "aims": false,
+     "aimProfile": null
+    }
+   ],
+   "isNew": true,
+   "problems": [],
+   "status": "PASS"
+  },
+  {
+   "key": "vorn",
+   "name": "Vorn, el Cambiapiel",
+   "role": "tanque",
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Mudar",
+     "kind": "ascension:vor_shift",
+     "err": null,
+     "damaged": 7,
+     "statused": 7,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CONTROL"
+     ],
+     "vfx": 44,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": 1,
+     "name": "Zarpa",
+     "kind": "ascension:vor_maul",
+     "err": null,
+     "damaged": 9,
+     "statused": 9,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "CONTROL"
+     ],
+     "vfx": 55,
+     "aims": true,
+     "aimProfile": "cone"
+    },
+    {
+     "slot": 2,
+     "name": "Instinto",
+     "kind": "ascension:vor_instinct",
+     "err": null,
+     "damaged": 0,
+     "statused": 0,
+     "cats": [
+      "POTENCIA",
+      "CURA"
+     ],
+     "vfx": 8,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": "ult",
+     "name": "Bestia Primordial",
+     "kind": "ascension:vor_beast",
+     "err": null,
+     "damaged": 9,
+     "statused": 9,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CURA",
+      "CONTROL",
+      "INVOCA"
+     ],
+     "vfx": 193,
+     "aims": false,
+     "aimProfile": null
+    }
+   ],
+   "isNew": true,
+   "problems": [],
+   "status": "PASS"
+  },
+  {
+   "key": "kora",
+   "name": "Kora, la Ariete",
+   "role": "tanque",
+   "abilities": [
+    {
+     "slot": 0,
+     "name": "Arremetida de Ariete",
+     "kind": "ascension:kor_ram",
+     "err": null,
+     "damaged": 10,
+     "statused": 1,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "CONTROL",
+      "MOVILIDAD"
+     ],
+     "vfx": 66,
+     "aims": true,
+     "aimProfile": "dash"
+    },
+    {
+     "slot": 1,
+     "name": "Pisotón de Impulso",
+     "kind": "ascension:kor_quake",
+     "err": null,
+     "damaged": 7,
+     "statused": 7,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "CONTROL"
+     ],
+     "vfx": 44,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": 2,
+     "name": "Cabeza Gacha",
+     "kind": "ascension:kor_brace",
+     "err": null,
+     "damaged": 0,
+     "statused": 0,
+     "cats": [
+      "POTENCIA",
+      "CURA"
+     ],
+     "vfx": 8,
+     "aims": false,
+     "aimProfile": null
+    },
+    {
+     "slot": "ult",
+     "name": "Estampida",
+     "kind": "ascension:kor_stampede",
+     "err": null,
+     "damaged": 10,
+     "statused": 1,
+     "cats": [
+      "AREA",
+      "MULTIPLE",
+      "POTENCIA",
+      "CONTROL",
+      "MOVILIDAD"
+     ],
+     "vfx": 213,
+     "aims": true,
+     "aimProfile": "line"
+    }
+   ],
+   "isNew": true,
+   "problems": [],
+   "status": "PASS"
+  },
+  {
    "key": "solciju",
    "name": "Solciju, la Enóloga",
    "role": "mago",

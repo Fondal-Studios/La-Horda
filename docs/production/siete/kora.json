@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "id": "kora",
+  "name": "Kora",
+  "title": "La Ariete",
+  "role": "tanque",
+  "fantasy": "Tanque de impulso: correr acumula Impulso que potencia sus golpes; arrastra y estrella a la Horda contra sí misma.",
+  "lore": "Kora era la capataz de las carretas de mineral de las Minas cuando el derrumbe cerró la galería con cuarenta personas dentro. Empujó la carreta más pesada con el hombro hasta que la roca cedió. No fue fuerza: fue no parar. Desde entonces corre hacia cualquier cosa que cierre una salida, y descubrió que lo que se mueve rápido pesa más de lo que parece. No se detiene a mirar atrás; todos los que salieron ya la siguen.",
+  "personality": "No me frenes. No hace falta. / Salieron todos. Ahora, yo. / Frené… por primera vez…",
+  "silhouette": "Capataz robusta de torso ancho, casco minero con farol y hombreras de hierro remachado; delantal de cuero y botas reforzadas.",
+  "stats": {
+    "hp": 170,
+    "damage": 9,
+    "speed": 143
+  },
+  "kit": {
+    "basic": {
+      "id": "basic",
+      "description": "Básico cuerpo a cuerpo",
+      "cooldownMs": 650,
+      "maxTargets": 1,
+      "hordeMechanism": "",
+      "anticipation": "Pose de ataque",
+      "execution": "Golpe básico",
+      "impact": "Daño único",
+      "feedback": "Número de daño",
+      "vfx": "existing basic VFX",
+      "sfx": "hit"
+    },
+    "skills": [
+      {
+        "id": "kor_ram",
+        "description": "Arremete en línea arrastrando hasta seis comunes y estrellándolos contra los vecinos. Gasta Impulso para pegar más.",
+        "cooldownMs": 8000,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Premarcado de carrera",
+        "execution": "Carrera arrastrando comunes",
+        "impact": "Colisión entre arrastrados y vecinos",
+        "feedback": "Estela de polvo",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_kora_cast"
+      },
+      {
+        "id": "kor_quake",
+        "description": "Golpea el suelo: daña, frena y empuja a los comunes; gasta la mitad del Impulso para pegar más fuerte.",
+        "cooldownMs": 8200,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Pose de cast y telegraph",
+        "execution": "Ejecución de Pisotón de Impulso",
+        "impact": "Golpea el suelo: daña, frena y empuja a los comunes; gasta la mitad del Impulso para pegar más fuerte.",
+        "feedback": "Impacto propio y número de daño",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_kora_cast"
+      },
+      {
+        "id": "kor_brace",
+        "description": "3,5 s de armadura y coraza: ningún freno ni aturdimiento te detiene, y ganas Impulso al doble.",
+        "cooldownMs": 10500,
+        "maxTargets": 24,
+        "hordeMechanism": "",
+        "anticipation": "Pose de cast y telegraph",
+        "execution": "Ejecución de Cabeza Gacha",
+        "impact": "3,5 s de armadura y coraza: ningún freno ni aturdimiento te detiene, y ganas Impulso al doble.",
+        "feedback": "Impacto propio y número de daño",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_kora_cast"
+      }
+    ],
+    "ultimate": {
+      "id": "kor_stampede",
+      "description": "Carrera guiada de 1,6 s que arrolla a todos los que cruzas y termina en un pisotón enorme.",
+      "cooldownMs": 40000,
+      "maxTargets": 60,
+      "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+      "anticipation": "Pose de cast y telegraph",
+      "execution": "Ejecución de Estampida",
+      "impact": "Carrera guiada de 1,6 s que arrolla a todos los que cruzas y termina en un pisotón enorme.",
+      "feedback": "Impacto propio y número de daño",
+      "vfx": "js/champions/siete/render.js",
+      "sfx": "si_kora_ult"
+    }
+  },
+  "art": {
+    "atlas": "assets/sprites/champions/kora/atlas.png",
+    "preview": "assets/sprites/champions/kora/preview.png",
+    "directions": 4,
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "d4f0eb3d404d34fe9476a0e21538af4acaa61ecd8776cd4975ae696b4830dcef",
+    "animations": {
+      "idle": 1,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
+    },
+    "review": {
+      "status": "PENDING",
+      "reviewer": "",
+      "evidence": "",
+      "note": "Hoja del Pintor (donantes + forja) con gate de estilo y Roster Art Gate en PASS; requiere revisión humana del Visual Gate (docs/ART_BIBLE.md §8). Filas de muerte con rasgos del donante."
+    }
+  },
+  "integration": {
+    "runtime": "js/champions/siete/kora.js",
+    "codex": "js/champions/siete/catalog.js",
+    "talents": "js/champions/siete/register.js",
+    "mastery": "js/champions/ascension/register.js",
+    "set": "js/champions/ascension/register.js",
+    "kitTest": "tools/siete/functional.js"
+  },
+  "cosmetics": [
+    {
+      "id": "kora_alt1",
+      "type": "skin",
+      "champion": "kora",
+      "name": "Capataz de Hierro",
+      "rarity": "Épica",
+      "tagline": "Casco con visera de soldador, delantal de herrero chamuscado y hombreras de hierro con remaches dorados.",
+      "lore": "Cuando las Minas dejaron de dar mineral, Kora forjó su propia armadura con los rieles que sobraron. Cada remache es una carreta que no volvió.",
+      "visualTheme": "Casco con visera de soldador, delantal de herrero chamuscado y hombreras de hierro con remaches dorados.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/kora/skins/kora_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "kora_alt2",
+      "type": "skin",
+      "champion": "kora",
+      "name": "Capataz de Cobre",
+      "rarity": "Épica",
+      "tagline": "Armadura de cobre verdoso con capa de lona y hombreras ornadas con remaches.",
+      "lore": "El cobre se pone verde con el tiempo. Kora no lo pule: cada mancha es una galería que aguantó.",
+      "visualTheme": "Armadura de cobre verdoso con capa de lona y hombreras ornadas con remaches.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/kora/skins/kora_alt2/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
+  "set": {
+    "sourceArena": "minas",
+    "pieces": [
+      "arma",
+      "casco",
+      "pechera",
+      "botas"
+    ],
+    "rewardCosmetic": "",
+    "rewardGrantsPower": false
+  },
+  "budgets": {
+    "particles": 64,
+    "summons": 0,
+    "audioVoices": 3
+  },
+  "evidence": {
+    "reference": "docs/balance/champion-entry-reference.json",
+    "balance": "docs/balance/entry-gate-results.json",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "audio": "",
+    "multiplayer": "docs/production/siete/functional-results.json",
+    "performance": "",
+    "style": "docs/art-gate/style-gate.json"
+  },
+  "category": "STANDARD"
+}

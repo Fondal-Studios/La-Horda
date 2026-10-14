@@ -1,0 +1,68 @@
+{
+ "id": "vorn_alt1",
+ "name": "Vorn, Piel de Aurora",
+ "prompt": "Pelaje blanco azulado y lajas con escarcha.",
+ "body": "renko_skin",
+ "head": "baltra_skin",
+ "paint": [
+  {
+   "part": "head",
+   "hue": [
+    0,
+    120
+   ],
+   "minChroma": 3,
+   "noSkin": true,
+   "to": "#9ab4cc",
+   "keepLight": 0.75,
+   "chroma": 1.0
+  },
+  {
+   "part": "body",
+   "hue": [
+    0,
+    120
+   ],
+   "minChroma": 3,
+   "noSkin": true,
+   "to": "#6a8aa8",
+   "keepLight": 0.7,
+   "chroma": 1.0,
+   "maxL": 70
+  }
+ ],
+ "accessories": [
+  {
+   "element": "corona_de_picos",
+   "scale": 0.9,
+   "materials": {
+    "metal": {
+     "ramp": [
+      "#26405a",
+      "#5a86a8",
+      "#9ac4e0",
+      "#e0f4ff"
+     ]
+    }
+   }
+  },
+  {
+   "element": "capa_larga",
+   "scale": 0.8,
+   "materials": {
+    "cloth": {
+     "ramp": [
+      "#4a5868",
+      "#8a9ab0",
+      "#c8d6e4",
+      "#f4f8fc"
+     ]
+    }
+   }
+  }
+ ],
+ "install": {
+  "champion": "vorn",
+  "pack": "vorn_alt1"
+ }
+}

@@ -8,7 +8,7 @@
    "foot": 2
   }
  },
- "appearances": 136,
+ "appearances": 145,
  "scaleFailures": [],
  "presentationFailures": [],
  "errors": [],
@@ -2333,6 +2333,186 @@
     "foot": -2
    }
   },
+  "ilsa": {
+   "front": {
+    "body": 59,
+    "full": 66,
+    "w": 65,
+    "foot": -2
+   },
+   "side": {
+    "body": 60,
+    "full": 61,
+    "w": 53,
+    "foot": -2
+   },
+   "up": {
+    "body": 58,
+    "full": 66,
+    "w": 61,
+    "foot": -2
+   }
+  },
+  "ilsa@ilsa_alt1": {
+   "front": {
+    "body": 59,
+    "full": 65,
+    "w": 63,
+    "foot": -2
+   },
+   "side": {
+    "body": 60,
+    "full": 61,
+    "w": 53,
+    "foot": -2
+   },
+   "up": {
+    "body": 59,
+    "full": 67,
+    "w": 61,
+    "foot": -2
+   }
+  },
+  "ilsa@ilsa_alt2": {
+   "front": {
+    "body": 59,
+    "full": 66,
+    "w": 63,
+    "foot": -2
+   },
+   "side": {
+    "body": 59,
+    "full": 63,
+    "w": 53,
+    "foot": -2
+   },
+   "up": {
+    "body": 58,
+    "full": 68,
+    "w": 59,
+    "foot": -2
+   }
+  },
+  "vorn": {
+   "front": {
+    "body": 60,
+    "full": 69,
+    "w": 77,
+    "foot": -2
+   },
+   "side": {
+    "body": 60,
+    "full": 65,
+    "w": 69,
+    "foot": -2
+   },
+   "up": {
+    "body": 59,
+    "full": 68,
+    "w": 56,
+    "foot": -2
+   }
+  },
+  "vorn@vorn_alt1": {
+   "front": {
+    "body": 60,
+    "full": 69,
+    "w": 77,
+    "foot": -2
+   },
+   "side": {
+    "body": 60,
+    "full": 64,
+    "w": 67,
+    "foot": -2
+   },
+   "up": {
+    "body": 59,
+    "full": 68,
+    "w": 56,
+    "foot": -2
+   }
+  },
+  "vorn@vorn_alt2": {
+   "front": {
+    "body": 60,
+    "full": 69,
+    "w": 77,
+    "foot": -2
+   },
+   "side": {
+    "body": 60,
+    "full": 64,
+    "w": 67,
+    "foot": -2
+   },
+   "up": {
+    "body": 59,
+    "full": 68,
+    "w": 56,
+    "foot": -2
+   }
+  },
+  "kora": {
+   "front": {
+    "body": 60,
+    "full": 64,
+    "w": 45,
+    "foot": -2
+   },
+   "side": {
+    "body": 59,
+    "full": 62,
+    "w": 41,
+    "foot": -2
+   },
+   "up": {
+    "body": 59,
+    "full": 63,
+    "w": 43,
+    "foot": -2
+   }
+  },
+  "kora@kora_alt1": {
+   "front": {
+    "body": 59,
+    "full": 62,
+    "w": 45,
+    "foot": -2
+   },
+   "side": {
+    "body": 59,
+    "full": 60,
+    "w": 41,
+    "foot": -2
+   },
+   "up": {
+    "body": 59,
+    "full": 61,
+    "w": 43,
+    "foot": -2
+   }
+  },
+  "kora@kora_alt2": {
+   "front": {
+    "body": 59,
+    "full": 62,
+    "w": 45,
+    "foot": -2
+   },
+   "side": {
+    "body": 59,
+    "full": 60,
+    "w": 41,
+    "foot": -2
+   },
+   "up": {
+    "body": 59,
+    "full": 61,
+    "w": 44,
+    "foot": -2
+   }
+  },
   "solciju": {
    "front": {
     "body": 58,
@@ -3302,6 +3482,51 @@
     "Bate las alas: aparta a los comunes, frena a los élites, bendice a los aliados cercanos y dispara cada Pluma cercana contra el enemigo más próximo.",
     "Todas sus Plumas vuelan de regreso: dañan a los enemigos del camino y cada una le acorta 0,2 s las recargas. Aunque no haya plumas, gana +20% de velocidad y bendice a los aliados que estén a su lado.",
     "Abre un cielo sobre la zona: caen plumas sobre los enemigos de adentro, los aliados quedan bendecidos y al final seis Plumas quedan en el suelo."
+   ],
+   "inCatalog": true
+  },
+  "ilsa": {
+   "name": "Ilsa, la Esgrimista de Réplica",
+   "title": "La Esgrimista de Réplica",
+   "role": "Duelista de contraataque: desvía los golpes enemigos, responde a cada atacante y gasta Réplicas en estocadas.",
+   "cardLore": "Ilsa desvía los golpes, los devuelve con interés y convierte cada Réplica en una estocada.",
+   "history": "Ilsa Corvo enseñaba esgrima en los salones de la Ciudad con una sola regla: jamás atacar primero. Perdió a su mejor alumno por un golpe que nadie desvió y decidió que a nadie más le tocaría pagar por no responder. Ahora espera el golpe con el florete bajo y la cinta carmesí en la muñeca, y devuelve cada uno con intereses. No se jacta: cuenta las respuestas, porque la tercera siempre es la que cierra el duelo.",
+   "passive": "Cada golpe desviado suma una Réplica (máx. 3). Con tres Réplicas tu siguiente básico es una réplica: +60% de daño.",
+   "skills": [
+    "Durante 0,9 s desvía todos los golpes que recibas y contraataca a cada atacante. Cada golpe desviado suma una Réplica (máx. 3) y acorta 2 s esta recarga.",
+    "Se lanza en línea y atraviesa a cuantos haya en el camino; cada Réplica gastada suma +35% de daño.",
+    "Gira con el acero: daña, frena y aparta a los comunes que la rodean. Cada Réplica gastada suma +25% de daño y empuja más lejos.",
+    "Estallido que frena alrededor y, durante 4 s, desvía hasta seis golpes con una onda de respuesta. Recibe 40% menos de daño mientras dura."
+   ],
+   "inCatalog": true
+  },
+  "vorn": {
+   "name": "Vorn, el Cambiapiel",
+   "title": "El Cambiapiel",
+   "role": "Tanque transformista: alterna una piel de piedra que resiste y una de tormenta que persigue, y cada skill cambia con la forma.",
+   "cardLore": "Vorn alterna dos pieles, Piedra y Tormenta, y las funde en una Bestia que nadie quiere frenar.",
+   "history": "El santuario del Laberinto exigía que alguien guardara la puerta con dos pieles: una de piedra, para resistir, y una de tormenta, para avisar. Vorn aceptó el pacto sin preguntar cuánto duraba. Ya no recuerda cuál de las dos fue la suya primero, y cada muda le cuesta un poco de nombre. Cuando entra en la Bestia deja de elegir, y dice que es el único momento en que se siente entero.",
+   "passive": "Piedra: −14% de daño recibido y −8% de velocidad. Tormenta: +18% de velocidad, básicos +12% y roban un poco de vida.",
+   "skills": [
+    "Cambia de piel. A Piedra: onda que frena y una coraza propia. A Tormenta: onda que debilita y +velocidad y +daño. Dura hasta que mudes de nuevo.",
+    "Piedra: golpe en abanico que aparta y frena. Tormenta: se lanza en línea y deja sangrado.",
+    "Piedra: Roca Viva, coraza y armadura para el grupo. Tormenta: Aullido, +velocidad y +daño para el grupo.",
+    "Funde ambas pieles 6 s: −22% de daño recibido, +velocidad y un pisotón cada 0,7 s que frena y aparta."
+   ],
+   "inCatalog": true
+  },
+  "kora": {
+   "name": "Kora, la Ariete",
+   "title": "La Ariete",
+   "role": "Tanque de impulso: correr acumula Impulso que potencia sus golpes; arrastra y estrella a la Horda contra sí misma.",
+   "cardLore": "Kora gana Impulso corriendo, arrastra a la Horda en su Arremetida y la arrolla en una Estampida.",
+   "history": "Kora era la capataz de las carretas de mineral de las Minas cuando el derrumbe cerró la galería con cuarenta personas dentro. Empujó la carreta más pesada con el hombro hasta que la roca cedió. No fue fuerza: fue no parar. Desde entonces corre hacia cualquier cosa que cierre una salida, y descubrió que lo que se mueve rápido pesa más de lo que parece. No se detiene a mirar atrás; todos los que salieron ya la siguen.",
+   "passive": "Moverte acumula Impulso (0–100) que suma +0,4% de daño a tus básicos y potencia Arremetida y Pisotón; si te quedas quieta, lo pierdes.",
+   "skills": [
+    "Arremete en línea arrastrando hasta seis comunes y estrellándolos contra los vecinos. Gasta Impulso para pegar más.",
+    "Golpea el suelo: daña, frena y empuja a los comunes; gasta la mitad del Impulso para pegar más fuerte.",
+    "3,5 s de armadura y coraza: ningún freno ni aturdimiento te detiene, y ganas Impulso al doble.",
+    "Carrera guiada de 1,6 s que arrolla a todos los que cruzas y termina en un pisotón enorme."
    ],
    "inCatalog": true
   },
