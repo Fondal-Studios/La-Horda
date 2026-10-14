@@ -47,6 +47,7 @@ function lanesHudSync(s){
 }
 function lanesHudHide(){ _lnPill(false); if(typeof colHudHide === "function") colHudHide(); if(_lnHud) _lnHud.classList.add("hidden"); document.body.classList.remove("lanes-on"); const r = document.getElementById("lanes-result"); if(r) r.classList.add("hidden"); }
 function _lnMin(ms){ const t = Math.ceil(ms / 1000); return Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0"); }
+function _lnCastleClock(ms){ const left = Math.max(0, Math.ceil((CASTLE.TIME_LIMIT_MS - ms) / 1000)); return Math.floor(left / 60) + ":" + String(left % 60).padStart(2, "0"); }
 function _lnClock(ms){ const left = Math.max(0, Math.ceil((LANES.TIME_LIMIT_MS - ms) / 1000)); return Math.floor(left / 60) + ":" + String(left % 60).padStart(2, "0"); }
 
 let _lnOfferKey = "";
@@ -54,15 +55,22 @@ function lanesHudTick(){
   if(LN && LN.mode === "coliseo"){ if(typeof colHudTick === "function") colHudTick(); return; }
   const L = LN; if(!L || !_lnHud || !player || !L.team.length) return;
   const el = _lnHud, q = s=>el.querySelector(s), me = player.team != null ? player.team : 0, T = L.team[me];
+  el.classList.toggle("ln-castle", !!L.castle);   // Conquista del Castillo: marcador más ancho (css/clan.css)
   [0, 1].forEach(i=>{
     const c = L.team[i].S[9], t = el.querySelectorAll(".ln-team")[i];
     t.querySelector(".ln-hp").textContent = Math.ceil(c.hp) + (c.ward > 0 ? " +" + Math.ceil(c.ward) : "");
     t.querySelector(".ln-bar u").style.width = Math.max(0, c.hp / c.maxHp * 100) + "%";
     const ex = L.team[i].S[9], nTw = L.team[i].S.filter(s=>s.kind === "tower" && s.alive).length;
+    if(L.castle){   // Conquista del Castillo: etiqueta del clan y estado del castillo (▮ puertas, ▲ torres)
+      t.querySelector("b").textContent = castleTeamLabel(i);
+      if(i === L.castle.defTeam){ const cc = castleCounts(); t.querySelector(".ln-pips").innerHTML = '<em class="on">▮</em>' + (cc.gates - cc.gatesDown) + '/' + cc.gates + ' <em class="on">▲</em>' + (cc.towers - cc.towersDown) + '/' + cc.towers + (lanesExposed(ex) ? ' <em class="off" style="color:#ff8a7a">ABIERTO</em>' : ''); }
+      else t.querySelector(".ln-pips").innerHTML = '<em class="on">⚑</em> estandarte';
+      return;
+    }
     t.querySelector(".ln-pips").innerHTML = '<em class="on">▲</em> ' + nTw + '/9 torres' + (ex && lanesExposed(ex) ? ' · <em class="off" style="color:#ff8a7a">¡EXPUESTO!</em>' : '');
   });
-  q(".ln-time").textContent = _lnClock(L.t);
-  q(".ln-wave").textContent = L.t >= LANES.ECLIPSE_MS ? "☀ ECLIPSE" : "Oleada " + L.wave;
+  q(".ln-time").textContent = L.castle ? _lnCastleClock(L.t) : _lnClock(L.t);
+  q(".ln-wave").textContent = L.castle ? "Oleada " + L.wave : (L.t >= LANES.ECLIPSE_MS ? "☀ ECLIPSE" : "Oleada " + L.wave);
   q(".ln-shards").textContent = "◆ " + Math.floor(player.gold || 0) + " oro";
   q(".ln-phase").textContent = "Nv " + (player.mlvl || LANES.LEVEL0) + (player.mlvl >= LANES.LEVEL_MAX ? " · MÁX" : " · XP " + Math.floor((player.mxp || 0) / lanesLevelNeed(player.mlvl) * 100) + " %") + " · TIENDA";
   // objetivos épicos y bendiciones de equipo
@@ -75,7 +83,7 @@ function lanesHudTick(){
     b.disabled = !lanesCanBuy(me, key, player);
   }
   const bf = []; if(T.buffs.dragon > L.t) bf.push("Dragón +10 % daño " + _lnMin(T.buffs.dragon - L.t)); if(T.buffs.rey > L.t) bf.push("Rey Coloso " + _lnMin(T.buffs.rey - L.t)); if(player._lnBuff && player._lnBuff.until > L.t) bf.push("Gigante +12 % " + _lnMin(player._lnBuff.until - L.t));
-  q(".ln-note").textContent = L.t >= LANES.ECLIPSE_MS ? "Los dos cristales se apagan cada vez más rápido" : (bf.length ? "★ " + bf.join(" · ") : (L.t < 20000 ? "Tu horda sale sola por los tres carriles. Acompañala y derribá torres." : (player._recall ? "Volviendo a la base… no te muevas" : "")));
+  q(".ln-note").textContent = L.castle ? (bf.length ? "★ " + bf.join(" · ") : (L.t < 25000 ? (L.castle.side === "attack" ? "Las puertas resisten a los héroes: que las rompa tu horda." : "Resistí hasta que el reloj llegue a 0:00.") : (player._recall ? "Volviendo a la base… no te muevas" : ""))) : L.t >= LANES.ECLIPSE_MS ? "Los dos cristales se apagan cada vez más rápido" : (bf.length ? "★ " + bf.join(" · ") : (L.t < 20000 ? "Tu horda sale sola por los tres carriles. Acompañala y derribá torres." : (player._recall ? "Volviendo a la base… no te muevas" : "")));
   const foes = L.feed.filter(f=>L.t - f.t < 9000).slice(-3);
   q(".ln-feed").innerHTML = foes.map(f=>'<div style="color:' + lanesTeamColor(f.team) + '">' + f.text + '</div>').join("");
   // carta de horda
@@ -123,14 +131,30 @@ function lanesShowResult(){
   let r = document.getElementById("lanes-result");
   if(!r){ r = document.createElement("div"); r.id = "lanes-result"; r.className = "lanes-result hidden"; document.body.appendChild(r); }
   const mine = player.team != null ? player.team : 0, won = L.winner === mine, draw = L.winner === -1;
-  const rows = heroes.map(h=>{ const s = h.stats || {}; return '<tr' + (h === player ? ' class="me"' : '') + '><td>' + heroLabel(h) + '</td><td>' + (h.team ? "Ámbar" : "Zafiro") + '</td><td>' + (h.mlvl || "-") + '</td><td>' + Math.round(s.dmgDealt || s.dmg || 0) + '</td><td>' + (s.kills || 0) + '</td><td>' + Math.round(s.healed || s.heal || 0) + '</td></tr>'; }).join("");
-  r.innerHTML = '<div class="ln-res-card"><div class="ln-res-kicker">GUERRA DE CRISTALES</div><h2>' + (draw ? "EMPATE" : won ? "¡VICTORIA!" : "CRISTAL CAÍDO") + '</h2>' +
-    '<p>Zafiro ' + Math.ceil(L.team[0].S[9].hp) + ' · Ámbar ' + Math.ceil(L.team[1].S[9].hp) + ' · torres en pie ' + lanesTowersAlive(0) + '–' + lanesTowersAlive(1) + ' · bajas de héroes ' + L.team[0].pk + '–' + L.team[1].pk + ' · ' + (L.why === "tiempo" ? "decidida por tiempo" : "cristal destruido") + '</p>' +
+  const rows = heroes.map(h=>{ const s = h.stats || {}; return '<tr' + (h === player ? ' class="me"' : '') + '><td>' + heroLabel(h) + '</td><td>' + (L.castle ? (h.team === L.castle.atkTeam ? "Ataque" : "Defensa") : (h.team ? "Ámbar" : "Zafiro")) + '</td><td>' + (h.mlvl || "-") + '</td><td>' + Math.round(s.dmgDealt || s.dmg || 0) + '</td><td>' + (s.kills || 0) + '</td><td>' + Math.round(s.healed || s.heal || 0) + '</td></tr>'; }).join("");
+  let kicker = "GUERRA DE CRISTALES", title = draw ? "EMPATE" : won ? "¡VICTORIA!" : "CRISTAL CAÍDO";
+  let sum = 'Zafiro ' + Math.ceil(L.team[0].S[9].hp) + ' · Ámbar ' + Math.ceil(L.team[1].S[9].hp) + ' · torres en pie ' + lanesTowersAlive(0) + '–' + lanesTowersAlive(1) + ' · bajas de héroes ' + L.team[0].pk + '–' + L.team[1].pk + ' · ' + (L.why === "tiempo" ? "decidida por tiempo" : "cristal destruido");
+  let clanLine = "";
+  if(L.castle){   // Conquista del Castillo
+    const C = L.castle, cc = castleCounts(), atkWon = L.winner === C.atkTeam;
+    kicker = "CONQUISTA DEL CASTILLO · " + C.clanName.toUpperCase() + " " + (C.side === "attack" ? "ATACÓ" : "DEFENDIÓ") + " A " + C.rivalName.toUpperCase();
+    title = won ? (C.side === "attack" ? "¡CASTILLO CONQUISTADO!" : "¡EL CASTILLO RESISTIÓ!") : (C.side === "attack" ? "EL CASTILLO RESISTIÓ" : "EL CASTILLO CAYÓ");
+    sum = 'Puertas caídas ' + cc.gatesDown + '/' + cc.gates + ' · torres caídas ' + cc.towersDown + '/' + cc.towers + ' · corazón ' + cc.heartPct + ' % · bajas de héroes ' + L.team[C.myTeam].pk + '–' + L.team[1 - C.myTeam].pk + ' · ' +
+      (L.why === "resistencia" ? "se acabó el tiempo: resistió" : atkWon ? "corazón destruido" : "estandarte derribado");
+    clanLine = '<div class="ln-res-clan" id="ln-res-clan" role="status" aria-live="polite">Contando los puntos de clan…</div>';
+  }
+  r.innerHTML = '<div class="ln-res-card"><div class="ln-res-kicker">' + kicker + '</div><h2>' + title + '</h2>' +
+    '<p>' + sum + '</p>' + clanLine +
     '<table><thead><tr><th>Jugador</th><th>Equipo</th><th>Nv</th><th>Daño</th><th>Bajas</th><th>Cura</th></tr></thead><tbody>' + rows + '</tbody></table>' +
     '<div class="ln-res-btns"><button type="button" class="ln-again">REVANCHA</button><button type="button" class="ln-exit">VOLVER AL MENÚ</button></div></div>';
   r.classList.remove("hidden");
   const online = !!(typeof netMatch !== "undefined" && netMatch);
   if(online){ r.querySelector(".ln-again").textContent = "VOLVER A LA SALA"; r.querySelector(".ln-exit").textContent = "SALIR DE LA SALA"; }
-  r.querySelector(".ln-exit").onclick = ()=>{ r.classList.add("hidden"); if(online){ lanesLeaveOnline(true); } else lanesStop("mainmenu"); };
-  r.querySelector(".ln-again").onclick = ()=>{ r.classList.add("hidden"); if(online){ lanesLeaveOnline(false); return; } const s = L.setup; lanesStop(); lanesStart({champ:s.mine, mate:s.mate, rivals:s.rivals, size:s.size}); };
+  if(L.castle){
+    r.querySelector(".ln-exit").textContent = "VOLVER AL CLAN";
+    if(typeof window.clanSubmitWar === "function"){ const box = r.querySelector("#ln-res-clan"); window.clanSubmitWar(L.castleReport).then(m=>{ if(box) box.textContent = m; }).catch(()=>{ if(box) box.textContent = "No se pudo contar los puntos de clan."; }); }
+    else r.querySelector("#ln-res-clan").textContent = "Los puntos de clan no están disponibles en esta versión.";
+  }
+  r.querySelector(".ln-exit").onclick = ()=>{ r.classList.add("hidden"); if(online){ lanesLeaveOnline(true); } else { const toClan = !!L.castle; lanesStop("mainmenu"); if(toClan && typeof window.clanOpen === "function") window.clanOpen(); } };
+  r.querySelector(".ln-again").onclick = ()=>{ r.classList.add("hidden"); if(online){ lanesLeaveOnline(false); return; } const s = L.setup; lanesStop(); lanesStart({champ:s.mine, mate:s.mate, rivals:s.rivals, size:s.size, mode:s.mode, castle:s.castle}); };
 }

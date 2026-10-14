@@ -1,0 +1,72 @@
+/* ============================================================
+   css/clan.css — pantalla «Clan» (js/net/clan.js) y la Conquista del Castillo (resultado de lanes-hud.js).
+   Usa los tokens y botones de css/ui-kit.css. Pensada para 667×375 y 844×390 (celular horizontal): el panel
+   nunca pasa de la pantalla, la lista scrollea por dentro y no hay texto cortado con "…".
+   ============================================================ */
+.clan-modal{ z-index:62; }
+.clan-modal.hidden{ display:none; }
+.ui-modal-panel.clan-panel{ max-width:760px; width:100%; max-height:100%; display:flex; flex-direction:column; gap:6px; padding:10px 12px; font-family:var(--ui-font); color:var(--ui-ink); overflow:hidden; }
+.clan-top{ display:flex; align-items:center; gap:8px; flex:none; }
+.clan-top .ui-panel-title{ flex:1; margin:0; color:var(--ui-gold); }
+.clan-x{ min-height:44px; min-width:44px; }
+.clan-tabs{ display:flex; gap:6px; flex:none; flex-wrap:wrap; }
+.clan-tab{ font-family:var(--ui-font); font-size:1.2rem; min-height:44px; padding:3px 14px; cursor:pointer; color:var(--ui-dim); background:var(--ui-btn-sec); border:2px solid var(--ui-line); box-shadow:var(--ui-shadow-sm); }
+.clan-tab.on{ color:#fff1dc; border-color:var(--ui-accent); background:linear-gradient(180deg, #5a2a12, #2a1208); }
+.clan-scroll{ flex:1 1 auto; min-height:0; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; padding-right:2px; display:flex; flex-direction:column; gap:8px; font-size:1.15rem; line-height:1.25; }
+.clan-btn{ min-height:44px; font-family:var(--ui-font); }
+.btn.small.clan-btn{ flex:0 0 auto; padding:5px 12px; font-size:1.1rem; white-space:normal; }
+.btn.clan-danger, .btn.secondary.clan-danger{ color:#ff9a7a; }
+.clan-empty{ padding:12px; text-align:center; color:var(--ui-dim); background:var(--ui-inset); border:2px solid var(--ui-line); }
+.clan-empty p{ margin:0 0 8px; }
+.clan-warn{ color:#ff9a7a; }
+.clan-msg{ padding:6px 10px; color:#ffe9a8; background:rgba(255,200,90,.10); border:2px solid #7a5a22; overflow-wrap:anywhere; }
+.clan-note{ font-size:1.05rem; color:var(--ui-dim); line-height:1.3; overflow-wrap:anywhere; }
+.clan-note b{ color:var(--ui-gold); }
+.clan-h3{ margin:4px 0 0; font-size:1.25rem; font-weight:normal; color:var(--ui-accent-2); }
+.clan-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+.clan-search{ display:flex; gap:8px; align-items:stretch; }
+.clan-search input, .clan-form input, .clan-form select{ flex:1; min-width:0; min-height:44px; padding:4px 8px; background:var(--ui-inset); color:var(--ui-ink); border:2px solid #000; font:inherit; font-size:1.15rem; }
+.clan-form{ display:flex; flex-direction:column; gap:8px; }
+.clan-form label{ display:flex; flex-direction:column; gap:3px; font-size:1.1rem; }
+.clan-form label small{ color:var(--ui-dim); font-size:1rem; }
+.clan-list{ display:flex; flex-direction:column; gap:4px; }
+.clan-row, .clan-member{ display:grid; grid-template-columns:auto minmax(0,1fr) auto auto; align-items:center; gap:8px; padding:5px 8px; background:rgba(20,10,8,.78); border:1px solid rgba(255,160,90,.18); }
+.clan-member{ grid-template-columns:minmax(0,1fr) auto; }
+.clan-row.me, .clan-member.me{ border-color:var(--ui-gold); background:rgba(255,215,106,.07); }
+.clan-rank{ min-width:2.4em; color:var(--ui-gold); }
+.clan-rname, .clan-mname{ display:flex; flex-direction:column; min-width:0; overflow-wrap:anywhere; }
+.clan-rname small, .clan-mname small, .clan-rstat small{ color:var(--ui-dim); font-size:1rem; line-height:1.15; }
+.clan-rstat{ display:flex; flex-direction:column; text-align:right; white-space:nowrap; }
+.clan-macts{ display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; }
+.clan-badge{ padding:2px 8px; font-size:1rem; color:#1a0c05; background:var(--ui-gold); border:2px solid #000; white-space:nowrap; }
+.clan-title{ font-size:1.6rem; color:#fff1d6; overflow-wrap:anywhere; } .clan-title b{ color:var(--ui-gold); }
+.clan-desc{ color:var(--ui-dim); overflow-wrap:anywhere; }
+.clan-chips{ display:flex; gap:6px; flex-wrap:wrap; }
+.clan-chips .ui-chip{ white-space:normal; }
+.clan-hist{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px; font-size:1.05rem; }
+.clan-hist li{ padding:2px 8px; border-left:4px solid #555; background:rgba(20,10,8,.6); } .clan-hist li.win{ border-color:var(--ui-ok); } .clan-hist li.loss{ border-color:#ff7a5a; }
+.clan-edit, .clan-disband{ padding:8px; background:var(--ui-inset); border:2px solid var(--ui-line); }
+.clan-lead{ margin:0; color:var(--ui-ink); overflow-wrap:anywhere; }
+.clan-lock{ padding:6px 10px; color:#ffb89a; background:rgba(255,90,60,.10); border:2px solid #7a3a22; }
+.clan-vs{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center; padding:6px; background:var(--ui-inset); border:2px solid var(--ui-line); }
+.clan-vs em{ color:var(--ui-dim); font-style:normal; } .clan-vs b{ color:var(--ui-gold); } .clan-vs small{ color:var(--ui-dim); font-size:1rem; }
+.clan-opts{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:6px; }
+.clan-opt{ min-height:56px; padding:4px 8px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; font:inherit; font-size:1.15rem; color:var(--ui-ink); background:var(--ui-btn-sec); border:2px solid var(--ui-line); box-shadow:var(--ui-shadow-sm); cursor:pointer; }
+.clan-opt small{ font-size:1rem; color:var(--ui-dim); line-height:1.1; text-align:center; }
+.clan-opt.on{ border-color:var(--ui-accent); background:linear-gradient(180deg,#5a2a12,#2a1208); } .clan-opt.on small{ color:#ffe9c8; }
+.clan-go{ min-width:240px; font-size:1.3rem; }
+.clan-castle{ display:flex; flex-direction:column; gap:8px; }
+@media (max-height:520px){
+  .ui-modal.clan-modal{ padding:6px; }
+  .ui-modal-panel.clan-panel{ padding:6px 10px; gap:4px; }
+  .clan-title{ font-size:1.35rem; }
+  .clan-scroll{ gap:6px; }
+}
+@media (max-width:520px){ .clan-row{ grid-template-columns:auto minmax(0,1fr) auto; } .clan-row .btn, .clan-row .clan-badge{ grid-column:2 / -1; justify-self:start; } }
+
+/* Conquista del Castillo: línea de puntos de clan en el resultado de lanes-hud.js */
+.ln-res-clan{ margin:2px 0 8px; padding:6px 10px; font-size:16px; line-height:1.25; color:#ffe9a8; background:rgba(255,215,106,.08); border:1px solid #7a5a22; border-radius:6px; overflow-wrap:anywhere; }
+.lanes-hud.ln-castle .ln-score{ grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); width:min(560px,62vw); gap:8px; }
+.lanes-hud.ln-castle .ln-note{ top:calc(80px + env(safe-area-inset-top,0px)); max-width:56vw; }
+.lanes-hud.ln-castle .ln-clock{ min-width:112px; }
+.lanes-hud.ln-castle .ln-team b{ overflow-wrap:anywhere; }

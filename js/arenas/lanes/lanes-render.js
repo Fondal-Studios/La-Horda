@@ -21,7 +21,7 @@ function lanesCrystalImg(team){
 }
 const LANES_TEAM_COL = ["#70c9ff", "#ffb86a", "#7be0a0", "#ff7a8a"], LANES_TEAM_NAME = ["ZAFIRO", "ÁMBAR", "ESMERALDA", "CARMESÍ"];
 function lanesTeamColor(i){ return LANES_TEAM_COL[i] || "#ffffff"; }
-function lanesTeamName(i){ return LANES_TEAM_NAME[i] || "EQUIPO"; }
+function lanesTeamName(i){ if(LN && LN.castle) return castleTeamLabel(i); return LANES_TEAM_NAME[i] || "EQUIPO"; }
 
 function lanesStrokePath(pts, w, style){
   ctx.beginPath(); pts.forEach((q, i)=>{ if(i) ctx.lineTo(q[0], q[1]); else ctx.moveTo(q[0], q[1]); });
@@ -115,14 +115,18 @@ function lanesDrawCrystal(s){
 function lanesDrawTop(){
   if(!LN) return;
   const now = performance.now() / 1000;
+  if(LN.castle) castleDrawWalls();
   for(const T of LN.team) for(const s of T.S){
     if(!s.alive || !inView(s.x, s.y, 300)) continue;
     const col = lanesTeamColor(s.team), f = Math.max(0, s.hp / s.maxHp), exposed = lanesExposed(s);
-    if(s.kind === "tower") lanesDrawTower(s, now); else lanesDrawCrystal(s);
+    if(s.castle === "gate") castleDrawGate(s, now); else if(s.castle === "banner") castleDrawBanner(s, now);
+    else if(s.kind === "tower"){ if(s.castle === "keep"){ ctx.save(); ctx.translate(s.x, s.y); ctx.scale(1.18, 1.18); ctx.translate(-s.x, -s.y); lanesDrawTower(s, now); ctx.restore(); } else lanesDrawTower(s, now); }
+    else lanesDrawCrystal(s);
     const bw = s.kind === "tower" ? 96 : 130, by = s.y + (s.kind === "tower" ? 34 : 40);
     ctx.fillStyle = "rgba(5,8,14,.85)"; ctx.fillRect(s.x - bw / 2 - 2, by, bw + 4, 14);
     ctx.fillStyle = exposed ? (f > 0.5 ? col : (f > 0.25 ? "#ffcf5c" : "#ff6a5a")) : "#7c8798"; ctx.fillRect(s.x - bw / 2, by + 2, bw * f, 10);
     if(!exposed && player && Math.hypot(player.x - s.x, player.y - s.y) < 700){ ctx.font = pxFont(12); ctx.textAlign = "center"; ctx.fillStyle = "#cfd8e4"; ctx.fillText("PROTEGIDA", s.x, by + 28); }
+    else if(s.castle && player && Math.hypot(player.x - s.x, player.y - s.y) < 900){ ctx.font = pxFont(12); ctx.textAlign = "center"; ctx.fillStyle = "#fff"; ctx.fillText(castleStructName(s).toUpperCase() + (s.kind === "crystal" ? " " + Math.ceil(s.hp) : ""), s.x, by + 28); }
     else if(s.kind === "crystal"){ ctx.font = pxFont(12); ctx.textAlign = "center"; ctx.fillStyle = "#fff"; ctx.fillText(lanesTeamName(s.team) + " " + Math.ceil(s.hp), s.x, by + 28); }
   }
   // disparos de torre

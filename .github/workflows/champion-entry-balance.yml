@@ -1,10 +1,10 @@
 name: Champion entry balance
 on:
   pull_request:
-    paths: ['js/**', 'css/**', 'server/**', 'tools/ux/**', 'tools/factory/**', 'tools/ascension/**', 'tools/founders/**', 'docs/founders/**', 'tools/alpha/**', 'tools/collection/**', 'tools/quality/**', 'docs/production/**', 'docs/ART_BIBLE.md', 'AGENTS.md', 'index.html', 'crystal-wars.html', 'tools/crystal-wars/**', 'tools/lanes/**', 'tools/coliseum/**', 'tools/net-test/**', 'tests/competitive-*.test.js', 'docs/modes/**', 'docs/balance/**', 'tools/balance/**', 'tools/audio/**', 'tools/bible/**', 'tools/bosses/**', 'docs/bible/**', 'tools/art/painter/**', 'BALANCE_CAMPEONES.md', '.github/workflows/champion-entry-balance.yml']
+    paths: ['js/**', 'css/**', 'server/**', 'tools/ux/**', 'tools/factory/**', 'tools/ascension/**', 'tools/founders/**', 'docs/founders/**', 'tools/alpha/**', 'tools/collection/**', 'tools/quality/**', 'docs/production/**', 'docs/ART_BIBLE.md', 'AGENTS.md', 'index.html', 'crystal-wars.html', 'tools/crystal-wars/**', 'tools/lanes/**', 'tools/clan/**', 'tools/coliseum/**', 'tools/net-test/**', 'tests/competitive-*.test.js', 'docs/modes/**', 'docs/balance/**', 'tools/balance/**', 'tools/audio/**', 'tools/bible/**', 'tools/bosses/**', 'docs/bible/**', 'tools/art/painter/**', 'BALANCE_CAMPEONES.md', '.github/workflows/champion-entry-balance.yml']
   push:
     branches: [main, 'chatgpt/**']
-    paths: ['js/**', 'css/**', 'server/**', 'tools/ux/**', 'tools/factory/**', 'tools/ascension/**', 'tools/founders/**', 'docs/founders/**', 'tools/alpha/**', 'tools/collection/**', 'tools/quality/**', 'docs/production/**', 'docs/ART_BIBLE.md', 'AGENTS.md', 'index.html', 'crystal-wars.html', 'tools/crystal-wars/**', 'tools/lanes/**', 'tools/coliseum/**', 'tools/net-test/**', 'tests/competitive-*.test.js', 'docs/modes/**', 'docs/balance/**', 'tools/balance/**', 'tools/audio/**', 'tools/bible/**', 'tools/bosses/**', 'docs/bible/**', 'tools/art/painter/**', 'BALANCE_CAMPEONES.md', '.github/workflows/champion-entry-balance.yml']
+    paths: ['js/**', 'css/**', 'server/**', 'tools/ux/**', 'tools/factory/**', 'tools/ascension/**', 'tools/founders/**', 'docs/founders/**', 'tools/alpha/**', 'tools/collection/**', 'tools/quality/**', 'docs/production/**', 'docs/ART_BIBLE.md', 'AGENTS.md', 'index.html', 'crystal-wars.html', 'tools/crystal-wars/**', 'tools/lanes/**', 'tools/clan/**', 'tools/coliseum/**', 'tools/net-test/**', 'tests/competitive-*.test.js', 'docs/modes/**', 'docs/balance/**', 'tools/balance/**', 'tools/audio/**', 'tools/bible/**', 'tools/bosses/**', 'docs/bible/**', 'tools/art/painter/**', 'BALANCE_CAMPEONES.md', '.github/workflows/champion-entry-balance.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -145,6 +145,7 @@ jobs:
       - run: node server/test-founders.js
       - run: node server/test-presence.js
       - run: node server/test-wallet.js
+      - run: node server/test-clans.js
       - run: node server/test-payments-mp.js
       - run: node server/test-relay.js
       - run: node tools/alpha/gm-users-ui.js
@@ -266,5 +267,27 @@ jobs:
           node tools/coliseum/sim.js 2 600
           node tools/net-test/lanes_coop.js
           node tools/lanes/kits.js 55
+        env:
+          NODE_PATH: /tmp/horda-balance/node_modules
+
+  # Clanes + Conquista del Castillo (guerra de clanes contra bots). Va en su propio job para no alargar `entry-reference`.
+  #   test-clans.js: servidor real (permisos, nombres, topes, seguridad, carreras, persistencia); el caso Postgres está en el job `postgres`.
+  #   clan-ui.js: pantalla Clan + partida de asedio atacando/defendiendo + puntos en el servidor, en 844x390 y 667x375 (~3 min).
+  #   castle-sim.js 1 720: 6 partidas completas con reloj virtual (2 roles x 3 dificultades, ~7-12 min según el runner). No es balance entre humanos.
+  clans:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - run: npm install --prefix /tmp/horda-balance --no-audit --no-fund playwright@1.61.1
+      - run: /tmp/horda-balance/node_modules/.bin/playwright install --with-deps chromium
+      - run: npm ci --prefix server --no-audit --no-fund
+      - run: node server/test-clans.js
+      - run: node tools/clan/clan-ui.js
+        env:
+          NODE_PATH: /tmp/horda-balance/node_modules
+      - run: node tools/lanes/castle-sim.js 1 720
         env:
           NODE_PATH: /tmp/horda-balance/node_modules

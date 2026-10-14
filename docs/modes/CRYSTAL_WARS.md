@@ -195,3 +195,8 @@ Reemplaza al mapa de un solo carril. Código en `js/arenas/lanes/` (`lanes-data/
   (UI 844×390 y 667×375, recall, tienda, carta), `tools/net-test/lanes_coop.js` (2 clientes reales, 24 avatares/estructuras sincronizados).
 - **Pendiente para acercarse más a Wild Rift:** ítems por héroe (hoy el oro de equipo compra reparaciones/refuerzos), arbustos y visión, ping,
   hechizos de invocador, más variedad de súbditos, IA de bots que se agrupen para objetivos, y 3 contra 3/5 contra 5 en línea.
+
+## Conquista del Castillo (guerra de clanes) — variante del motor de lanes (14/10/2026)
+Mismo motor (`js/arenas/lanes/`) con un modo nuevo `castle` (`lanes-castle.js`): un clan ataca un castillo con puertas, torres y corazón y el otro lo
+defiende; la horda es la fuerza de asedio. Se juega contra bots (el relay sigue limitado a 4 humanos). Reglas, contrato de datos y límites en
+[`CLANES.md`](CLANES.md).

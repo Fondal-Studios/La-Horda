@@ -31,10 +31,11 @@ function lanesSendNow(team, key, lane){
   else { const p = lanePoint(lane, s0), e = lanesSpawn(team, "siege", p.x, p.y, lane, true); if(e) e.isBrute = true; }
 }
 function lanesWaveStart(T){
+  if(LN.castle && T.team === LN.castle.defTeam) return castleDefWave(T);   // Conquista del Castillo: milicia de los defensores
   const L = LN, m = T.mods, team = T.team;
   T.wave++; T.nextWave += LANES.WAVE_MS * m.pace; L.wave = Math.max(L.wave, T.wave);
   const melee = 3 + Math.floor(m.count / 3), casters = 2 + (m.count % 3 ? 1 : 0), siege = (T.wave % 3 === 0 ? 1 : 0) + m.brute;
-  const behind = lanesTowersAlive(team) < lanesTowersAlive(1 - team);   // remontada: quien perdió torres cobra un poco más
+  const behind = !L.castle && lanesTowersAlive(team) < lanesTowersAlive(1 - team);   // remontada: quien perdió torres cobra un poco más
   for(let l = 0; l < 3; l++){
     const P = LANES_PATHS[l], dir = team === 0 ? 1 : -1, s0 = team === 0 ? 70 : P.len - 70;
     let n = 0;

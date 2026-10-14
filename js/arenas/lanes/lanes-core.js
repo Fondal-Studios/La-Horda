@@ -61,8 +61,13 @@ function lanesStart(opts){
   const mates = [], foes = [];
   for(let i = 0; i < size - 1; i++) mates.push(pick(asArr(opts.mate)[i]));
   for(let i = 0; i < size; i++) foes.push(pick(asArr(opts.rivals)[i]));
-  lanesBegin("solo", opts.seed);
-  LN.size = size; LN.setup = {mine, mate:mates, rivals:foes, size};
+  const castle = opts.mode === "castle" ? castleNormalize(opts.castle) : null;
+  lanesBegin("solo", opts.seed, castle ? "castle" : undefined);
+  LN.size = size; LN.setup = {mine, mate:mates, rivals:foes, size, mode:castle ? "castle" : undefined, castle:castle ? opts.castle : undefined};
+  if(castle){   // Conquista del Castillo: el equipo 0 ataca y el 1 defiende; si el jugador defiende, su equipo es el 1
+    LN.castle = castle;
+    LN.assignment = Array.from({length:size * 2}, (_, k)=>k < size ? castle.myTeam : 1 - castle.myTeam);
+  }
   selectedClass = mine; currentArena = "convergencia"; lobbyAllies = [...mates, ...foes];
   try{ startRun(LANES.RUNLEVEL); }
   catch(err){ console.error("Guerra de Cristales no pudo arrancar:", err); lanesRestore(); throw err; }
@@ -116,10 +121,11 @@ function lanesRunStart(){
     const r = laneRally(h.team); h.x = r.x + (Math.random() - 0.5) * 120; h.y = r.y + (Math.random() - 0.5) * 120;
   });
   lanesJungleInit();
-  document.getElementById("hud-arena") && (document.getElementById("hud-arena").textContent = "Guerra de Cristales");
+  if(L.castle) castleSetup(L);
+  document.getElementById("hud-arena") && (document.getElementById("hud-arena").textContent = L.castle ? "Asedio al castillo" : "Guerra de Cristales");
   lanesSync(0);
   if(typeof lanesHudShow==="function") lanesHudShow();
-  showBanner("¡DERRIBÁ LAS TORRES Y EL CRISTAL RIVAL!");
+  showBanner(L.castle ? (L.castle.side === "attack" ? "¡ABRÍ LAS PUERTAS Y DERRIBÁ EL CORAZÓN!" : "¡DEFENDÉ EL CASTILLO HASTA EL FINAL!") : "¡DERRIBÁ LAS TORRES Y EL CRISTAL RIVAL!");
 }
 
 /* ---------------- geometría ---------------- */
@@ -223,6 +229,7 @@ function lanesDmgMult(e, src){
   if(h._lnBuff && h._lnBuff.until > L.t) m *= h._lnBuff.dmg;
   if(h.itAtk) m *= 1 + 0.09 * h.itAtk;
   if(h.itSiege && e.lanesProxy && e.kind === "struct") m *= 1 + 0.25 * h.itSiege;
+  if(L.castle) m *= castleDmgMult(e);
   return m;
 }
 // Gancho de damageHero: la horda propia no le pega a su equipo
@@ -236,7 +243,7 @@ function lanesBlocksHeroDamage(h, src){
 // Golpe de una criatura (damageHero con la estructura como objetivo)
 function lanesHitStruct(s, amount, src){
   if(!LN || LN.ended || !s.alive) return;
-  lanesStructDamage(s, amount * ((src && src.siegeMult) || 1), src && src.team != null ? src.team : null);
+  lanesStructDamage(s, amount * ((src && src.siegeMult) || 1) * (LN.castle ? castleSiegeK(s) : 1), src && src.team != null ? src.team : null);
 }
 function lanesStructDamage(s, amount, byTeam){
   const L = LN; if(!L || L.ended || !s.alive || amount <= 0) return;
@@ -247,9 +254,17 @@ function lanesStructDamage(s, amount, byTeam){
 function lanesStructDown(s, byTeam){
   const L = LN; s.alive = false; s.hp = 0; if(s._lnProxy) s._lnProxy.alive = false;
   const foe = 1 - s.team;
-  if(s.kind === "crystal"){ lanesFinish(foe, "cristal"); return; }
+  if(s.kind === "crystal"){ lanesFinish(foe, s.castle === "banner" ? "estandarte" : "cristal"); return; }
   L.team[foe].tk++; lanesGrantGold(foe, LANES.GOLD_TOWER);
   lanesGrantXP(foe, s.x, s.y, LANES.XP_TOWER);
+  if(s.castle){   // Conquista del Castillo
+    const nm = castleStructName(s), ln = LANE_NAMES[s.lane].toLowerCase();
+    lanesFeed("Cayó: " + nm.toLowerCase() + " (" + ln + ")", foe);
+    showBanner(s.castle === "keep" ? "¡BRECHA EN " + ln.toUpperCase() + "! EL CORAZÓN QUEDÓ EXPUESTO" : "¡" + nm.toUpperCase() + " DERRIBADA! (" + ln.toUpperCase() + ")");
+    if(typeof playSfx === "function") try{ playSfx("boom"); }catch(e){}
+    for(let i = 0; i < 18; i++) particles.push({x:s.x + (Math.random() - 0.5) * 60, y:s.y + (Math.random() - 0.5) * 60, vx:(Math.random() - 0.5) * 240, vy:-Math.random() * 200, life:700, color:i % 2 ? "#cfd8e4" : "#ff9a4a"});
+    return;
+  }
   const name = s.order === 0 ? "exterior" : s.order === 1 ? "interior" : "inhibidora";
   lanesFeed((s.team ? "Ámbar" : "Zafiro") + ": cayó su torre " + name + " (" + LANE_NAMES[s.lane].toLowerCase() + ")", foe);
   showBanner("¡TORRE " + name.toUpperCase() + " " + (s.team ? "ÁMBAR" : "ZAFIRO") + " DERRIBADA!");
@@ -339,7 +354,7 @@ function lanesCardTick(){
 
 /* ---------------- torres ---------------- */
 function lanesTowerTick(s){
-  const L = LN; if(!s.alive || s.kind !== "tower" || L.t < s.atkAt) return;
+  const L = LN; if(!s.alive || s.kind !== "tower" || s.noFire || L.t < s.atkAt) return;
   const foe = 1 - s.team, R = LANES.TOWER_RANGE, dmg = LANES.TOWER_DMG * (1 + Math.floor(L.t / 90000) * 0.1);
   let tgt = null, bd = R;
   for(const e of enemies){ if(!e.alive || e.lanesProxy || e.team !== foe) continue; const d = Math.hypot(e.x - s.x, e.y - s.y); if(d < bd){ bd = d; tgt = e; } }
@@ -373,8 +388,9 @@ function lanesUpdate(dt){
   lanesMinionsTick(dt);
   lanesHeroTick(dt);
   // Eclipse: los dos cristales se apagan cada vez más rápido (aunque sus torres sigan en pie)
-  if(L.t >= LANES.ECLIPSE_MS){ const k = 5 * (1 + (L.t - LANES.ECLIPSE_MS) / 60000) * dt / 1000; for(const T of L.team) lanesStructDamage(T.S[9], k, null); }
-  if(!L.ended && L.t >= LANES.TIME_LIMIT_MS){
+  if(!L.castle && L.t >= LANES.ECLIPSE_MS){ const k = 5 * (1 + (L.t - LANES.ECLIPSE_MS) / 60000) * dt / 1000; for(const T of L.team) lanesStructDamage(T.S[9], k, null); }
+  if(!L.ended && L.castle && L.t >= CASTLE.TIME_LIMIT_MS) castleTimeUp();
+  else if(!L.ended && !L.castle && L.t >= LANES.TIME_LIMIT_MS){
     const sc = t=>lanesTowersAlive(t) * 10000 + L.team[t].S[9].hp, a = sc(0), b = sc(1);
     lanesFinish(Math.abs(a - b) < 1 ? -1 : (a > b ? 0 : 1), "tiempo");
   }
@@ -384,10 +400,12 @@ function lanesUpdate(dt){
 function lanesFinish(winnerTeam, why){
   const L = LN; if(!L || L.ended) return;
   L.ended = true; L.winner = winnerTeam; L.why = why; runEnding = true;
+  if(L.castle) L.castleReport = castleBuildReport(L, winnerTeam);   // lo que se manda a /api/clan/war/report (js/net/clan.js)
   for(const e of enemies) if(e.alive) e.alive = false;
   enemies = enemies.filter(e=>e.alive);
   if(typeof netIsHost==="function" && netIsHost()) netHostAnnounceEnd(winnerTeam === 0);
-  showBanner(winnerTeam === -1 ? "¡EMPATE!" : (winnerTeam === (player && player.team) ? "¡VICTORIA!" : "CRISTAL CAÍDO"));
+  if(L.castle) showBanner(winnerTeam === L.castle.atkTeam ? (L.castle.myTeam === winnerTeam ? "¡CASTILLO CONQUISTADO!" : "EL CASTILLO CAYÓ") : (L.castle.myTeam === winnerTeam ? "¡EL CASTILLO RESISTIÓ!" : "NO PUDISTE CONQUISTARLO"));
+  else showBanner(winnerTeam === -1 ? "¡EMPATE!" : (winnerTeam === (player && player.team) ? "¡VICTORIA!" : "CRISTAL CAÍDO"));
   setTimeout(()=>{ if(LN === L && typeof lanesShowResult === "function") lanesShowResult(); }, 1600);
 }
 function lanesNoRevive(a, by){ return !!LN && LN.mode === "coliseo" && !!LN.col && LN.col.phase === "fight"; }
