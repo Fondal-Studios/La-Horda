@@ -18,10 +18,12 @@ const FLOOR_THEME = {
   divina:   { bg:"#150a24", stoneR:108,stoneG:84,  stoneB:140, joint:"rgba(10,4,20,0.85)", dirt:"rgba(200,140,255,",fleckA:"rgba(210,140,255,0.28)", fleckB:"rgba(140,230,200,0.20)" },
   // Arena sedimentada de ruinas hundidas: piedra grisácea con un tinte verde-azulado profundo
   // -distinta de la piedra fría/blanca del Hielo-, con vetas de coral/musgo bioluminiscente.
-  acuatica: { bg:"#081a20", stoneR:52, stoneG:78,  stoneB:82,  joint:"rgba(2,10,12,0.85)", dirt:"rgba(20,70,60,",  fleckA:"rgba(70,200,180,0.26)", fleckB:"rgba(160,90,120,0.16)" }
+  acuatica: { bg:"#081a20", stoneR:52, stoneG:78,  stoneB:82,  joint:"rgba(2,10,12,0.85)", dirt:"rgba(20,70,60,",  fleckA:"rgba(70,200,180,0.26)", fleckB:"rgba(160,90,120,0.16)" },
+  // Guerra de Cristales: tierra de selva, oscura y verdosa, con pasto encima (ver abajo) para que los carriles empedrados se lean
+  convergencia: { bg:"#0a1208", stoneR:44, stoneG:58,  stoneB:36,  joint:"rgba(5,9,4,0.85)",   dirt:"rgba(8,14,6,",    fleckA:"rgba(110,160,70,0.24)", fleckB:"rgba(170,210,110,0.14)" }
 };
 let floorPatterns = {};
-const FLOOR_DIM = {bosque:0.14, hielo:0.2, acuatica:0.14, laberinto:0.1, infernal:0.06, divina:0.1};
+const FLOOR_DIM = {bosque:0.14, hielo:0.2, acuatica:0.14, laberinto:0.1, infernal:0.06, divina:0.1, convergencia:0.12};
 function buildFloorTile(){
   const theme = FLOOR_THEME[currentArena] || FLOOR_THEME.infernal;
   const S = 160;
@@ -83,6 +85,14 @@ function buildFloorTile(){
     }
     g.fillStyle = "rgba(10,40,55,0.14)";
     g.fillRect(0,0,S,S);
+  }
+  // Guerra de Cristales: matas de pasto sobre la tierra (dos verdes) para que no parezca piedra pelada
+  if(currentArena==="convergencia"){
+    for(let i=0;i<34;i++){
+      const cx=Math.random()*S, cy=Math.random()*S, r=6+Math.random()*12;
+      g.fillStyle = `rgba(38,74,30,${0.45+Math.random()*0.25})`; g.beginPath(); g.ellipse(cx,cy,r,r*0.55,0,0,Math.PI*2); g.fill();
+      g.fillStyle = `rgba(70,118,48,${0.25+Math.random()*0.2})`; g.beginPath(); g.ellipse(cx-r*0.2,cy-r*0.15,r*0.5,r*0.25,0,0,Math.PI*2); g.fill();
+    }
   }
   // detalle atrapado entre las piedras: brasas (Infernal), cristales de escarcha (Hielo) o musgo luminoso (Bosque)
   for(let i=0;i<70;i++){

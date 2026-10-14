@@ -10,11 +10,12 @@
    ============================================================ */
 const LANES = {
   W:6400, H:4800,                     // tamaño del mapa (u)
-  LEVEL0:3, LEVEL_MAX:15,             // nivel de partida: todos arrancan en 3 y suben a 15 con experiencia (sin cuenta ni equipo)
+  LEVEL0:3, LEVEL_MAX:15, OWN_LEVEL_CAP:10,             // nivel de partida: todos arrancan en 3 y suben a 15 con experiencia (sin cuenta ni equipo)
   RUNLEVEL:5,                         // runLevel fijo (habilita la definitiva, ver ULT_MIN_ARENA_LEVEL)
   BASE_OFF:560,                       // distancia del cristal a los bordes
   CRYSTAL_HP:2600, CRYSTAL_R:56,
-  TOWER_HP:[2200, 2600, 3000], TOWER_R:42, TOWER_DMG:46, TOWER_RANGE:440, TOWER_CD:1100,
+  TOWER_HP:[2200, 2600, 3000], TOWER_R:42, TOWER_DMG:46, TOWER_RANGE:440, TOWER_CD:1100, TOWER_VS_MINION:0.7, // la torre pega suave a los súbditos (antes ×3): la horda aguanta bajo torre y se puede pelear ahí
+ 
   TOWER_T:[0.36, 0.26, 0.16],         // dónde está cada torre del equipo 0 (exterior, interior, inhibidora) como fracción del carril
   PVP_BURST:0.4,                      // tope de vida que un héroe puede perder por PvP en 1 s
   PVP_DMG:0.7,                        // los héroes se hacen menos daño entre sí que a la horda (si no, nadie dura)
