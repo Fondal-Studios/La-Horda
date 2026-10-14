@@ -10,5 +10,5 @@
    ============================================================ */
 const NET_CONFIG = {
   serverUrl: "wss://fondalstudios.com/la-horda/red",
-  build: "B1-6-alpha-completion" // si el anfitrión y el invitado tienen builds distintos, el servidor no los junta
+  build: "B1-7-quality-five-originals" // si el anfitrión y el invitado tienen builds distintos, el servidor no los junta
 };

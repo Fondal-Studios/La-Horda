@@ -88,7 +88,7 @@
     "directions": 4,
     "frameWidth": 112,
     "frameHeight": 112,
-    "sha256": "d189439e247ee81f8f22c4d214ddf9abf17bfcf6dd25187add90b1789fd63d8b",
+    "sha256": "7d12fd93fed46adb410f5a730940c9f9c3a8b0b444e36e862d53367fb4b0f3fd",
     "animations": {
       "idle": 1,
       "walk": 4,
@@ -131,6 +131,26 @@
         "secondarySilhouette"
       ],
       "preview": "assets/sprites/champions/vorn/skins/vorn_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "vorn_alt2",
+      "type": "skin",
+      "champion": "vorn",
+      "name": "Piel de Ceniza",
+      "rarity": "Épica",
+      "tagline": "Roca ennegrecida con grietas de brasa, cuernos de fuego y una capa de ceniza.",
+      "lore": "Cuando el Laberinto ardió, la piel de piedra de Vorn guardó el calor. Todavía brilla en las grietas.",
+      "visualTheme": "Roca ennegrecida con grietas de brasa, cuernos de fuego y una capa de ceniza.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/vorn/skins/vorn_alt2/preview.png",
       "availability": "alpha-test",
       "premiumPrice": null
     }

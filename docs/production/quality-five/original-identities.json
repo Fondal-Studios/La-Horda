@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "source": "Owner-approved concept direction, 2026-10-10; recovered original concept on 2026-10-12. This is a reconstruction of the brief, not recovered commit 7068907.",
+  "concept": "docs/production/quality-five/original-identities-concept.png",
+  "conceptSha256": "66e3b5cc3b400f27415543bf67a5abc5465871c284fc4d8ec3139f5a73d69be8",
+  "status": "CONCEPT_APPROVED_ATLASES_REVIEWED",
+  "characters": [
+    {
+      "id": "solciju",
+      "name": "Solciju",
+      "skin": "Viuda de Medianoche",
+      "requiredIdentity": [
+        "bob negro con mechón blanco",
+        "barrica lateral",
+        "copa",
+        "sacacorchos"
+      ],
+      "forbiddenDonorsOrFeatures": [
+        "Maura",
+        "capucha"
+      ]
+    },
+    {
+      "id": "brakk",
+      "name": "Brakk",
+      "skin": "Arquitecto Glacial",
+      "requiredIdentity": [
+        "visor rectangular",
+        "armadura de albañilería",
+        "maza"
+      ],
+      "forbiddenDonorsOrFeatures": [
+        "Renko"
+      ]
+    },
+    {
+      "id": "veyra",
+      "name": "Veyra",
+      "skin": "Verdugo Celestial",
+      "requiredIdentity": [
+        "sien rapada",
+        "trenza carmesí",
+        "sable curvo"
+      ],
+      "forbiddenDonorsOrFeatures": [
+        "Vesper",
+        "capucha"
+      ]
+    },
+    {
+      "id": "morveth",
+      "name": "Morveth",
+      "skin": "Micelio Abisal",
+      "requiredIdentity": [
+        "anatomía de raíces y hongos",
+        "hoz"
+      ],
+      "forbiddenDonorsOrFeatures": [
+        "Tibor",
+        "farol"
+      ]
+    },
+    {
+      "id": "aelith",
+      "name": "Aelith",
+      "skin": "Relojera del Vacío",
+      "requiredIdentity": [
+        "piel oscura",
+        "rulos blancos cortos",
+        "monóculo",
+        "reloj fracturado"
+      ],
+      "forbiddenDonorsOrFeatures": [
+        "Sira",
+        "pluma",
+        "brújula"
+      ]
+    }
+  ],
+  "releaseRule": "Numeric style PASS cannot approve donor studies. Review every directional and animation frame against the original identity before installing.",
+  "artReview": "docs/production/quality-five/originals/ART-REVIEW.md"
+}

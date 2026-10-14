@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "id": "solciju",
+  "name": "Solciju",
+  "title": "La Enóloga",
+  "role": "mago",
+  "fantasy": "Control de zonas mediante vino maldito, fermentación y barricas.",
+  "lore": "Solciju conservaba las últimas cosechas de una ciudad que ya nadie recordaba. Cuando la peste alcanzó sus bodegas, descubrió que el vino retenía algo más que años: atrapaba las maldiciones de quienes lo bebían. Ahora recorre las ruinas con una reserva que jamás ofrece por cortesía. Dice detestar la compañía, pero siempre guarda una copa para quien sobreviva a su lado.",
+  "personality": "Irónica, reservada y protectora a su pesar.",
+  "silhouette": "bob negro con mechón blanco; barrica lateral; copa; sacacorchos.",
+  "stats": {
+    "hp": 98,
+    "damage": 10,
+    "speed": 157
+  },
+  "kit": {
+    "basic": {
+      "id": "solciju_basic",
+      "description": "Proyectil que añade fermentación al impactar.",
+      "cooldownMs": 560,
+      "maxTargets": 1,
+      "hordeMechanism": "",
+      "anticipation": "Orientación al objetivo; animación de ataque simultánea al golpe.",
+      "execution": "js/skills/abilities.js: triggerBasic",
+      "impact": "damageEnemy y daño atribuido al dueño.",
+      "feedback": "Animación y efecto de impacto del motor.",
+      "vfx": "Proyectil básico del motor.",
+      "sfx": "Motor compartido de impacto/básico (js/audio/audio.js)"
+    },
+    "skills": [
+      {
+        "id": "sol_wine",
+        "description": "Salpica vino en un área y añade una marca de fermentación.",
+        "cooldownMs": 6200,
+        "maxTargets": 12,
+        "hordeMechanism": "Daño a varios objetivos con límite de doce.",
+        "anticipation": "Premarcado manual de área/dirección; lanzamiento inmediato.",
+        "execution": "js/champions/quality-five/solciju.js: acción sol_wine",
+        "impact": "Salpica vino en un área y añade una marca de fermentación.",
+        "feedback": "Daño/curación y estados del motor; kitFx temático.",
+        "vfx": "kitFx / kitFxLine del runtime; premarcado en ACTION_AIM_PROFILES.",
+        "sfx": "js/champions/quality-five/audio.js: quality_solciju_cast"
+      },
+      {
+        "id": "sol_cask",
+        "description": "Coloca una barrica que estalla tras 2,4 s. Máximo dos; reemplazar una no la detona.",
+        "cooldownMs": 8500,
+        "maxTargets": 12,
+        "hordeMechanism": "Daño a varios objetivos con límite de doce.",
+        "anticipation": "Premarcado manual de área/dirección; lanzamiento inmediato.",
+        "execution": "js/champions/quality-five/solciju.js: acción sol_cask",
+        "impact": "Coloca una barrica que estalla tras 2,4 s. Máximo dos; reemplazar una no la detona.",
+        "feedback": "Daño/curación y estados del motor; kitFx temático.",
+        "vfx": "kitFx / kitFxLine del runtime; premarcado en ACTION_AIM_PROFILES.",
+        "sfx": "js/champions/quality-five/audio.js: quality_solciju_cast"
+      },
+      {
+        "id": "sol_toast",
+        "description": "Obtiene 15% de armadura durante 3 s y recupera 4% de vida máxima.",
+        "cooldownMs": 11000,
+        "maxTargets": 4,
+        "hordeMechanism": "Apoyo y supervivencia durante oleadas.",
+        "anticipation": "Activación sobre el propio campeón.",
+        "execution": "js/champions/quality-five/solciju.js: acción sol_toast",
+        "impact": "Obtiene 15% de armadura durante 3 s y recupera 4% de vida máxima.",
+        "feedback": "Daño/curación y estados del motor; kitFx temático.",
+        "vfx": "kitFx / kitFxLine del runtime; premarcado en ACTION_AIM_PROFILES.",
+        "sfx": "js/champions/quality-five/audio.js: quality_solciju_cast"
+      }
+    ],
+    "ultimate": {
+      "id": "sol_reserve",
+      "description": "Cuatro pulsos de vino dañan y ralentizan enemigos. Protege a aliados dentro del área.",
+      "cooldownMs": 36000,
+      "maxTargets": 12,
+      "hordeMechanism": "Daño de área y control.",
+      "anticipation": "Premarcado manual; zona persistente con pulsos temporizados.",
+      "execution": "js/champions/quality-five/solciju.js: acción sol_reserve",
+      "impact": "Cuatro pulsos de vino dañan y ralentizan enemigos. Protege a aliados dentro del área.",
+      "feedback": "kitFx de definitiva y estados medidos por Ability Gate.",
+      "vfx": "kitFx con ult:true.",
+      "sfx": "js/champions/quality-five/audio.js: quality_solciju_ult"
+    }
+  },
+  "art": {
+    "atlas": "assets/sprites/champions/solciju/atlas.png",
+    "preview": "assets/sprites/champions/solciju/preview.png",
+    "directions": 4,
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "07f99eda23f8993c8acf02d5bfaec1e5678254ec45835a5981ad37c869c74e7c",
+    "animations": {
+      "idle": 1,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
+    },
+    "review": {
+      "status": "PASS",
+      "reviewer": "Codex (visual inspection; not human signoff)",
+      "evidence": "docs/production/quality-five/originals/ART-REVIEW.md"
+    }
+  },
+  "integration": {
+    "runtime": "js/champions/quality-five/solciju.js",
+    "codex": "js/champions/quality-five/register.js",
+    "talents": "js/champions/quality-five/register.js",
+    "mastery": "js/champions/quality-five/register.js",
+    "set": "js/champions/quality-five/collection.js",
+    "kitTest": "tools/quality-five/functional.js"
+  },
+  "cosmetics": [
+    {
+      "id": "solciju_alt1",
+      "type": "skin",
+      "champion": "solciju",
+      "name": "Solciju, Viuda de Medianoche",
+      "rarity": "Épica",
+      "tagline": "Vestido de luto escalonado, velo con rosas, copa y sacacorchos; conserva el bob negro y mechón blanco.",
+      "lore": "Cuando la última bodega quedó sellada, Solciju se vistió de luto por las cosechas que nadie bebió. Cada pliegue guarda un brindis que no llegó a hacerse.",
+      "visualTheme": "Vestido de luto escalonado, velo con rosas, copa y sacacorchos; conserva el bob negro y mechón blanco.",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/solciju/skins/solciju_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "solciju_croma",
+      "type": "croma",
+      "champion": "solciju",
+      "name": "Añada Esmeralda",
+      "rarity": "Rara",
+      "tagline": "Una paleta alternativa para Solciju.",
+      "lore": "Los colores de Añada Esmeralda acompañan un nuevo viaje. Conserva su vestuario y sus decisiones: esta apariencia cambia únicamente la paleta.",
+      "visualTheme": "Paleta selectiva; conserva piel y contorno.",
+      "unlockSource": "Oro del juego",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "palette"
+      ],
+      "preview": "assets/sprites/champions/solciju/croma-preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "quality_solciju",
+      "type": "set",
+      "champion": "solciju",
+      "name": "Vendimiadora del Asedio",
+      "rarity": "Set",
+      "tagline": "Delantal blindado, arnés, cesta y hojas de bronce",
+      "lore": "Cuando los muros de la bodega cedieron, Solciju puso su delantal sobre la coraza y cargó la última vendimia. La cesta conserva las hojas del primer rescate.",
+      "visualTheme": "Delantal blindado, arnés, cesta y hojas de bronce",
+      "unlockSource": "Completar Cosecha Sitiada en ciudad",
+      "collection": "Los Cinco Nuevos",
+      "vfxProfile": "original",
+      "visualChanges": [
+        "clothing",
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/solciju/skins/quality_solciju/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
+  "set": {
+    "sourceArena": "ciudad",
+    "pieces": [
+      "quality_solciju_arma",
+      "quality_solciju_casco",
+      "quality_solciju_pechera",
+      "quality_solciju_botas"
+    ],
+    "rewardCosmetic": "quality_solciju",
+    "rewardGrantsPower": false
+  },
+  "budgets": {
+    "particles": 64,
+    "summons": 5,
+    "audioVoices": 3
+  },
+  "evidence": {
+    "reference": "docs/production/quality-five/workshop-entry-results.json",
+    "talents": "docs/production/quality-five/functional-results.json",
+    "abilities": "docs/production/quality-five/ability/ability-gate.json",
+    "resources": "docs/production/quality-five/functional-results.json",
+    "passives": "docs/production/quality-five/functional-results.json",
+    "balance": "docs/balance/entry-gate-results.json",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "style": "docs/production/quality-five/originals/style-results.txt",
+    "audio": "docs/production/quality-five/audio-20261012.txt",
+    "multiplayer": "docs/production/quality-five/online-results.json",
+    "performance": "docs/production/quality-five/performance-solciju.json"
+  },
+  "category": "STANDARD"
+}

@@ -42,8 +42,8 @@ function image(s){if(!s)return '';if(typeof s!=='string'||s.length>1000)fail('BA
 function active(x,now){return x.enabled!==false&&x.start<=now&&x.end>now;}
 function catalog(){
  // Execute only trusted repository metadata in a restricted context, never request text.
- const c={CROMA_SKINS:{},SET_SKINS:{},champPackLoadAtlas:()=>{},champPackCloneAtlas:()=>{}};vm.createContext(c);
- for(const f of ['croma-skins-meta.js','set-skins-meta.js','portadores-meta.js','ynara-meta.js','complete-set-skins-meta.js','alpha-set-skins-meta.js']){
+ const c={CROMA_SKINS:{},CROMA_CRYSTALS:{},SET_SKINS:{},champPackLoadAtlas:()=>{},champPackCloneAtlas:()=>{}};vm.createContext(c);
+ for(const f of ['croma-skins-meta.js','set-skins-meta.js','portadores-meta.js','ynara-meta.js','complete-set-skins-meta.js','alpha-set-skins-meta.js','quality-five-skins-meta.js','quality-five-collection-meta.js']){
   const source=fs.readFileSync(path.join(__dirname,'../js/assets',f),'utf8');
   vm.runInContext(source,c,{timeout:1000,filename:f});
  }

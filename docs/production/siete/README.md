@@ -46,3 +46,11 @@ Ver la sección «Siete campeones nuevos» de `BALANCE_CAMPEONES.md` y los JSON 
 - **Escucha humana del audio** y mezcla con audio real: los acentos son síntesis; `t_audio_mix` mide picos/NaN/nodos, no identidad.
 - **Multijugador real y rendimiento en dispositivo**: se comprobó serialización del snapshot de cooperativo en el motor real, no una partida en red con cuatro jugadores ni un iPhone.
 - **knownChampions**: segundo paso en `claude/siete-campeones-known` (sin PR), que además exige aprobación humana previa.
+
+## Revisión de arte (14 octubre 2026) — hoja `docs/production/siete/compare-sheet.png`
+La hoja (`node tools/siete/compare-sheet.js`) dibuja cada campeón y sus 2 skins junto a sus donantes y a tres campeones existentes de su rol con
+el mismo motor. Lectura honesta, no aprobación:
+- Comparten lenguaje con el roster (chibi, contorno de 1 px, sombreado de 2-3 tonos, alfa binario, 4 direcciones); gate de estilo estricto y Roster Art Gate PASS (157 apariencias).
+- **BLOCKED (no aprobado): Grelk** (la cabeza barbada se ve apoyada sobre el cuerpo de Tibor, composición forzada) y **Quillon** (silueta y garras de Nahir con paleta nueva: se lee como recoloreo).
+- **PENDIENTE de ojo humano**: Ostrel (Dáriel + cabeza de Sira), Ilsa (Vesper + cabeza de Maura), Vorn (cuerpo de Renko + yelmo de Baltra), Nerith (Maura + cabeza de Sira), Kora (Zahra + cabeza de Orsa): son ensamblados de donantes con paleta y accesorios de la forja, no arte original (a diferencia de los cinco del PR #87, que tienen hojas originales). Las filas de muerte heredan rasgos del donante.
+- Resolverlo exige arte original encargado (docs/ART_COMMISSION_BRIEF.md); no se simula.

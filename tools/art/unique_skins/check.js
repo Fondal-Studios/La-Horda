@@ -14,9 +14,10 @@ const OUT=process.env.SKIN_AUDIT_OUT || '/tmp/horda-skins/check';
   await page.waitForFunction(()=>Object.values(CROMA_SKINS).every(d=>d._built&&Object.values(d.packs).every(k=>CHAMP_PACK[k]?.ready)));
   const result=await page.evaluate(()=>{
    const checks=[],check=(name,ok)=>checks.push({name,ok:!!ok});
-   const exp=typeof EXPEDITION==='undefined'?{}:EXPEDITION;const added=Object.keys(exp).length;
-   check('legacy plus expedition catalog entries',cosmeticCatalog().length===32+added*3);
-   check('legacy plus expedition authored designs',Object.values(CROMA_SKINS).filter(d=>d.appearanceType==='skin').length===13+added);
+   const exp=typeof EXPEDITION==='undefined'?{}:EXPEDITION;const added=Object.keys(exp).length;const quality=typeof QUALITY_FIVE_COLLECTION==='undefined'?{}:QUALITY_FIVE_COLLECTION;const qualityIds=Object.keys(quality);
+   check('legacy, expedition and quality-five catalog entries',cosmeticCatalog().length===32+added*3+qualityIds.length*3);
+   check('legacy, expedition and quality-five authored designs',Object.values(CROMA_SKINS).filter(d=>d.appearanceType==='skin').length===13+added+qualityIds.length);
+   for(const id of qualityIds){check(id+' owns three distinct cosmetics',!!CROMA_SKINS[id+'_alt1']&&!!CROMA_SKINS[id+'_croma']&&!!SET_SKINS['quality_'+id]);}
    check('all set skins retain source art',Object.values(SET_SKINS).every(d=>Object.values(d.packs).every(k=>!CHAMP_PACK[k].cosmeticApplied)));
    selectedClass='tanque';currentArena='bosque';startRun(1);state='paused';
    const cv=document.createElement('canvas');cv.width=1050;cv.height=Object.keys(CROMA_SKINS).length*140;const g=cv.getContext('2d');g.fillStyle='#242732';g.fillRect(0,0,cv.width,cv.height);

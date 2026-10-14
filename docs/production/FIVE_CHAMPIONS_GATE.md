@@ -1,7 +1,8 @@
 # Expansión de cinco campeones — control de producción
 
-## Estado
-Solciju (Enóloga), Brakk (Arquitecto), Veyra (Asesina), Morveth (Invocador) y Aelith (Cronomante) están **propuestos, no publicados**. Una skin original por campeón: Viuda de Medianoche, Arquitecto Glacial, Verdugo Celestial, Micelio Abisal y Relojera del Vacío.
+## Estado (12 de octubre de 2026)
+Solciju (Enóloga), Brakk (Arquitecto), Veyra (Asesina), Morveth (Invocador) y Aelith (Cronomante) están **IMPLEMENTADOS y registrados en TESTING** (rama `claude/five-champions`): kit ejecutable, atlas del Pintor de cuatro direcciones con 36 celdas, una skin de autor cada uno (Viuda de Medianoche, Arquitecto Glacial, Verdugo Celestial, Micelio Abisal, Relojera del Vacío), Códice, selección, tienda (oro 2.500; skins 12.000 oro / 1.200 ✦) y catálogo de servidor. **No están aprobados**: estado TESTING = jugables sólo para cuentas con concesión, fuera de tienda pública, bots y modos competitivos. Pasarlos a RELEASED (quitar sus filas de `CHAMPION_TAXONOMY`) es una decisión del dueño. `knownChampions` NO se tocó (AGENTS.md: segundo paso, en otra PR, con versión de referencia y medias actualizadas).
+Detalle de evidencia por campeón y por gate: `docs/production/quality-five/README.md` (sección «Integración en juego»).
 
 ## Autoridades
 - `tools/factory/README.md`: ejecutar CLI y gates reales; NO basta un JSON válido.

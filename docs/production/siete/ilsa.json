@@ -133,6 +133,26 @@
       "preview": "assets/sprites/champions/ilsa/skins/ilsa_alt1/preview.png",
       "availability": "alpha-test",
       "premiumPrice": null
+    },
+    {
+      "id": "ilsa_alt2",
+      "type": "skin",
+      "champion": "ilsa",
+      "name": "Esgrimista de Carnaval",
+      "rarity": "Épica",
+      "tagline": "Casaca negra y oro con capa de seda, corona de máscara y hombreras de latón.",
+      "lore": "La noche del carnaval nadie desvió una sola estocada. Ilsa bailó con todas y no recibió ninguna.",
+      "visualTheme": "Casaca negra y oro con capa de seda, corona de máscara y hombreras de latón.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/ilsa/skins/ilsa_alt2/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
     }
   ],
   "set": {

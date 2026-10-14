@@ -1,0 +1,27 @@
+[
+  {
+    "command": "node tools/quality-five/brakk-functional.js",
+    "exitCode": 0,
+    "tail": "{\"status\":\"PASS\",\"checks\":81,\"failed\":[],\"errors\":[]}\n"
+  },
+  {
+    "command": "node tools/quality-five/temporal-plague-functional.js",
+    "exitCode": 0,
+    "tail": "{\"status\":\"PASS\",\"checks\":131,\"failed\":[],\"errors\":[]}\n"
+  },
+  {
+    "command": "node tools/quality/test-talent-gate.js",
+    "exitCode": 0,
+    "tail": "PASS Talent Gate: levels 1/39/40/60/90/99, fresh/legacy saves, no historical resets, idempotence, cache gates, irreversible mastery, cloud backup and upload\n"
+  },
+  {
+    "command": "node tools/bible/ability-gate.js --strict",
+    "exitCode": 0,
+    "tail": "no_gm     nuevo  [AREA+MULTIPLE+CONTROL \u25ce] [AREA+POTENCIA+CURA+CONTROL+INVOCA \u25ce] [AREA+MULTIPLE+CURA+MOVILIDAD \u25ce] [AREA+MULTIPLE+POTENCIA+CURA+CONTROL]\nPASS  facu_gm     nuevo  [AREA+MULTIPLE+POTENCIA+CONTROL \u25ce] [AREA+MULTIPLE+CONTROL \u25ce] [AREA+MULTIPLE+POTENCIA+CURA+CONTROL+MOVILIDAD \u25ce] [AREA+MULTIPLE+CURA+CONTROL]\nPASS  aurelia     nuevo  [AREA+MULTIPLE+INVOCA \u25ce] [AREA+MULTIPLE \u25ce] [AREA+MULTIPLE+POTENCIA+MOVILIDAD+INVOCA \u25ce] [AREA+MULTIPLE+CURA+CONTROL+INVOCA \u25ce]\nPASS  khepri      nuevo  [AREA+MULTIPLE+CONTROL \u25ce] [CURA] [AREA+MULTIPLE+MOVILIDAD \u25ce] [AREA+MULTIPLE+POTENCIA+CONTROL+INVOCA]\nPASS  velmira     nuevo  [AREA+MULTIPLE+POTENCIA \u25ce] [AREA+MULTIPLE+POTENCIA] [AREA+MULTIPLE+MOVILIDAD \u25ce] [AREA+MULTIPLE+POTENCIA+CURA+CONTROL+INVOCA]\nPASS  vhal        nuevo  [AREA+MULTIPLE \u25ce] [AREA+MULTIPLE+CONTROL \u25ce] [MULTIPLE+POTENCIA+MOVILIDAD \u25ce] [AREA+MULTIPLE+POTENCIA+CONTROL \u25ce]\nPASS  bront       nuevo  [AREA+MULTIPLE+INVOCA \u25ce] [AREA+MULTIPLE+CONTROL+INVOCA \u25ce] [AREA+MULTIPLE+POTENCIA] [AREA+MULTIPLE+POTENCIA+CURA+CONTROL+INVOCA]\nPASS  oriel       nuevo  [AREA+MULTIPLE+POTENCIA+CURA+CONTROL+MOVILIDAD+INVOCA \u25ce] [AREA+MULTIPLE+CURA] [AREA+MULTIPLE+MOVILIDAD \u25ce] [AREA+MULTIPLE+POTENCIA+CONTROL+INVOCA \u25ce]\nPASS  saelis      nuevo  [MULTIPLE+INVOCA \u25ce] [AREA+MULTIPLE+POTENCIA] [POTENCIA] [AREA+MULTIPLE+POTENCIA+CONTROL+INVOCA \u25ce]\nPASS  solciju     nuevo  [AREA+MULTIPLE+CONTROL \u25ce] [AREA+MULTIPLE+CONTROL \u25ce] [POTENCIA+CURA] [AREA+MULTIPLE+POTENCIA+CONTROL \u25ce]\nPASS  veyra       nuevo  [AREA+MULTIPLE+CONTROL \u25ce] [AREA+MULTIPLE+CONTROL+MOVILIDAD \u25ce] [POTENCIA] [AREA+MULTIPLE+CURA+CONTROL]\nPASS  brakk       nuevo  [AREA+MULTIPLE+POTENCIA+CONTROL \u25ce] [MULTIPLE+POTENCIA \u25ce] [POTENCIA] [AREA+MULTIPLE+CURA+CONTROL]\nPASS  morveth     nuevo  [AREA+MULTIPLE+CONTROL \u25ce] [AREA+MULTIPLE \u25ce] [POTENCIA+CURA] [AREA+MULTIPLE+POTENCIA+CONTROL \u25ce]\nPASS  aelith      nuevo  [AREA+MULTIPLE+CONTROL \u25ce] [AREA+MULTIPLE+CONTROL \u25ce] [POTENCIA] [AREA+MULTIPLE+CURA+CONTROL \u25ce]\n\n43 campeones \u00b7 nuevos que no pasan: 0 \u00b7 page errors: 0\n"
+  },
+  {
+    "command": "node tools/balance/entry-gate.js",
+    "exitCode": 0,
+    "tail": "{\"registered\":43,\"newChampions\":25,\"simulations\":75,\"status\":\"PASS\"}\n"
+  }
+]

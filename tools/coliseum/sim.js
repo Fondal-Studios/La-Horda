@@ -5,18 +5,18 @@
  * nada tira excepciones ni NaN y el guardado real queda como estaba.
  * Uso: node tools/coliseum/sim.js [torneos=3] [segundos=900] */
 const {chromium}=require('playwright');const {spawn}=require('node:child_process');const path=require('node:path');const assert=require('node:assert/strict');
-const N=Number(process.argv[2])||3,SECS=Number(process.argv[3])||900,PORT=8905;
+const N=Number(process.argv[2])||3,SECS=Number(process.argv[3])||900,PORT=8905,CHAMPS=process.argv.slice(4);
 const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__dirname,'../..'),stdio:'ignore'});
 (async()=>{
  for(let i=0;i<60;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
- const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});
+ const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});const context=await b.newContext();
  for(let g=0;g<N;g++){
-  const p=await b.newPage({viewport:{width:844,height:390}}),errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push('console:'+m.text());});
+  const p=await context.newPage({viewport:{width:844,height:390}}),errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push('console:'+m.text());});
   await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`);await p.waitForFunction(()=>typeof colStart==='function'&&typeof update==='function',null,{timeout:60000});
-  const r=await p.evaluate(({secs,seed})=>{
+  const r=await p.evaluate(({secs,seed,champion})=>{
    setState('mainmenu');
-   const champ=['mago','tanque','soporte','guerrero'][seed%4],ok=colStart({champ,seed:seed+1});
-   const rep={ok,friendly:0,nan:0,heroes:heroes.length,protectedHits:0,ringKills:0,specChecked:0,specBad:0,rounds:0,outside:0};
+   const champ=champion||['mago','tanque','soporte','guerrero'][seed%4],ok=colStart({champ,seed:seed+1});
+   const rep={ok,champ,actualChampion:player.classKey,friendly:0,nan:0,heroes:heroes.length,protectedHits:0,ringKills:0,specChecked:0,specBad:0,rounds:0,outside:0};
    const dh=damageHero;damageHero=function(h,a,src,pt){const hp0=h&&h.hp,isF=h&&h.team!=null&&src&&!src.isPvp&&src!==h&&lanesTeamOf(src)===h.team;if(!(a>=0))rep.nan++;const r=dh.call(this,h,a,src,pt);if(isF&&h.hp<hp0-0.01)rep.friendly++;if(h&&h.team!=null&&h.hp<hp0-0.01&&LN&&LN.col&&LN.col.phase!=='fight')rep.protectedHits++;return r;};
    const dt=1000/60;let ang=0;
    for(let f=0;f<secs*60&&!LN.ended;f++){
@@ -31,9 +31,9 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
    }
    rep.rounds=LN.col.round;rep.ended=LN.ended;rep.winner=LN.winner;rep.t=Math.round(LN.t/1000);rep.pts=LN.team.map(t=>t.points);rep.duels=LN.team.map(t=>t.duels);rep.wins=LN.team.map(t=>t.wins);rep.pk=LN.team.map(t=>t.pk);
    damageHero=dh;lanesStop('mainmenu');rep.restored=!LN&&typeof save.champions.mago==='object'&&CAM_SUBJECT===null;
-   return rep;},{secs:SECS,seed:g});
+   return rep;},{secs:SECS,seed:g,champion:CHAMPS[g%CHAMPS.length]});
   console.log(JSON.stringify(r));
-  assert.equal(r.ok,true,'arrancó');assert.equal(r.heroes,8,'ocho luchadores');assert.equal(r.ended,true,'el torneo terminó');
+  assert.equal(r.ok,true,'arrancó');assert.equal(r.actualChampion,r.champ,'campeón solicitado real');assert.equal(r.heroes,8,'ocho luchadores');assert.equal(r.ended,true,'el torneo terminó');
   assert(Math.max(...r.pts)>=3||r.rounds>=9,'alguien llegó a 3 puntos (o se jugaron 9 rondas)');
   assert.equal(r.pts.reduce((a,b)=>a+b,0),r.wins.reduce((a,b)=>a+b,0),'los puntos son las victorias');
   assert(r.duels.every(d=>d===r.rounds),'cada equipo jugó un duelo por ronda');

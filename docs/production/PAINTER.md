@@ -119,3 +119,9 @@ certifica anatomía, continuidad del traje ni aprobación del Art Gate.
 ausencia de efectos fuera de la máscara, entradas inválidas y rechazo de clipping.
 `python tools/art/painter/test_forge.py --regress` exige que las recetas instaladas
 sin esta opción sigan generando píxeles idénticos.
+
+## Cinco campeones nuevos (Solciju, Veyra, Brakk, Morveth, Aelith)
+Fichas `specs/<id>.json` instaladas con `install.py`; las skins se cargan por `authoredPacks` (`js/assets/quality-five-skins-meta.js`).
+Aelith usa el abrigo de Dariel con cabeza de Orsa (`poseHeadOverrides` en las cuatro poses de muerte). Opción nueva de elemento `faceRight`:
+fuerza el frente de perfil en lanzamientos inclinados (la barrica de Solciju saltaba al frente). En capa `behind` cada forma sólo pinta donde el
+cuadro sigue vacío: las formas que deben quedar encima (aros de hierro) van antes de la madera.

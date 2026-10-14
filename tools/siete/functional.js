@@ -25,7 +25,7 @@ const {chromium}=require('playwright'),fs=require('node:fs');
   check(k+' kit 3 skills + ultimate with descriptions and premarcado where aimed',CLASSES[k].skills.length===3&&!!CLASSES[k].ultimate&&[...CLASSES[k].skills,CLASSES[k].ultimate].every(s=>s.desc&&s.cd>0));
   check(k+' talents: 3 branches + a special per branch + masteries',TALENT_TREES[k].nodes.filter(n=>n.type==='special').length===3&&Object.keys(TALENT_TREES[k].masteries).length===3);
   check(k+' boons: 4 cards + duo',BOONS.filter(x=>x.champ===k).length===5&&BOONS.filter(x=>x.champ===k&&x.duo).length===1);
-  check(k+' Codex lore, skin and pending Set',!!CODEX_CHAMP_LORE[k]&&ASCENSION_SKINS[k].length===1&&!!ASCENSION_PENDING_SETS['asc_'+k]);
+  check(k+' Codex lore, two author skins and pending Set',!!CODEX_CHAMP_LORE[k]&&ASCENSION_SKINS[k].length===2&&!!ASCENSION_PENDING_SETS['asc_'+k]);
   start(k);const es=[enemy(60),enemy(70,'normal',14),enemy(70,'normal',-14),enemy(85),enemy(55,'normal',-20)];
   for(let i=0;i<3;i++)cast(i);cast('ult');tick(4500);
   check(k+' horde damage',es.filter(e=>e.hp<1e7).length>=3,es.map(e=>Math.round(1e7-e.hp)));

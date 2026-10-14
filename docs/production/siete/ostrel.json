@@ -133,6 +133,26 @@
       "preview": "assets/sprites/champions/ostrel/skins/ostrel_alt1/preview.png",
       "availability": "alpha-test",
       "premiumPrice": null
+    },
+    {
+      "id": "ostrel_alt2",
+      "type": "skin",
+      "champion": "ostrel",
+      "name": "Cartógrafo del Polo",
+      "rarity": "Épica",
+      "tagline": "Abrigo glacial con capa de piel, hombreras de hielo y aro de plata pálida.",
+      "lore": "En el polo no hay estrellas fijas: Ostrel las dibuja sobre el hielo para que el trineo sepa a dónde volver.",
+      "visualTheme": "Abrigo glacial con capa de piel, hombreras de hielo y aro de plata pálida.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/ostrel/skins/ostrel_alt2/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
     }
   ],
   "set": {

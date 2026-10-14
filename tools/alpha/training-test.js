@@ -4,9 +4,10 @@ const assert=require('node:assert/strict');
 const {chromium}=require('playwright');
 (async()=>{
  const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME||undefined,args:['--no-sandbox','--disable-dev-shm-usage']});
+ const context=await browser.newContext();
  try{
   for(const size of [{width:844,height:390},{width:667,height:375}]){
-   const page=await browser.newPage({viewport:size});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+   const page=await context.newPage();await page.setViewportSize(size);const errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto((process.env.SITE||'http://127.0.0.1:8805')+'/?lazy=0');
    await page.waitForFunction(()=>typeof alphaTrainingStart==='function'&&typeof renderMainMenu==='function');
    const initial=await page.evaluate(()=>{setState('mainmenu');renderMainMenu();persistNow();return JSON.stringify(save);});
@@ -35,9 +36,11 @@ const {chromium}=require('playwright');
     useUltimate();out.push(advance());
     if(!ALPHA_TRAINING.potion)throw Error('steps '+JSON.stringify(out)+' '+JSON.stringify(ALPHA_TRAINING.metrics)+' cds '+JSON.stringify(player.cds));player.x=ALPHA_TRAINING.potion.x;player.y=ALPHA_TRAINING.potion.y;updatePotions(16);out.push(advance());
     reviveHero(ALPHA_TRAINING.ally,player);out.push(advance());
+    if(heroes.includes(ALPHA_TRAINING.ally)||allies.includes(ALPHA_TRAINING.ally))throw Error('ally can steal XP lesson kill');
     enemies.forEach(e=>{e.lastHitBy=player;killEnemy(e);});out.push(advance());
     groundLootPick(ALPHA_TRAINING.loot);out.push(advance());
     tacticalPanelOpen();out.push(advance());
+    if(!heroes.includes(ALPHA_TRAINING.ally)||!allies.includes(ALPHA_TRAINING.ally))throw Error('ally missing from team objective');
     enemies.forEach(e=>{e.lastHitBy=player;killEnemy(e);});alphaTrainingTick(10);alphaTrainingTick(1400);
     return {out,complete:save.tut.training,active:ALPHA_TRAINING.active,state};
    });

@@ -230,6 +230,12 @@ Ajustes de kit hasta pasar con margen (la simulación varía ±10 % entre corrid
   y Bendición, Ráfaga que dispara plumas, Llamado y recargas, Cielo que deja 6 plumas, nunca se bendice a sí misma).
 - Duplicidad: DISTINCT (sin curación ni escudo). Biblia de Campeones: PASS*. Roster Art Gate: 116 apariencias PASS.
 
+## Solciju, Veyra, Brakk, Morveth y Aelith (candidatos, TESTING) — 12 octubre 2026
+
+Registrados en `js/champions/quality-five/register.js` antes del normalizador; `knownChampions` y las medias por rol no se tocaron.
+El normalizador no modificó sus estadísticas (ya estaban dentro de banda). Entry gate **PASS** (75 simulaciones, 25 candidatas, cero errores):
+daño medio a 150 s Solciju 8.018, Veyra 4.921, Brakk 4.609, Morveth 7.331, Aelith 8.687, todos vivos 3/3 y por debajo del techo del rol.
+Ability Gate estricto PASS. Duplicidad: Solciju/Morwen y Veyra/Eren DUPLICATE (sin resolver). Detalle: `docs/production/quality-five/README.md`.
 ## Siete campeones nuevos (STANDARD, TESTING) — 12 octubre 2026
 
 Ostrel (mago, rayo sostenido), Grelk (asesino/tirador, trampas), Ilsa (asesina, contraataque), Vorn (tanque, dos formas), Nerith
@@ -260,9 +266,19 @@ otra distinta que daña a varios, una de POTENCIACIÓN o CURA, definitiva con 3+
 apunta); `duplicity` DISTINCT para los siete (máx. 0,24); `tools/siete/functional.js` 225/225 (habilidades, mecánica propia, tope de
 entidades, expiración, limpieza al morir, jefes sin desplazar ni aturdir y con daño acotado, élites nunca ejecutadas, diez arenas,
 talentos, refuerzos, snapshot de cooperativo); gate de talentos, recursos, pasivas, estilo estricto, Roster Art Gate (130 apariencias, 0 fallos)
-y mezcla de audio PASS. Skins de autor (una por campeón, Pintor + forja): Vigía del Cenit, Cazador de Escarcha, Esgrimista de Gala,
+y mezcla de audio PASS. Skins de autor (dos por campeón, Pintor + forja): Vigía del Cenit / Cartógrafo del Polo, Cazador de Escarcha, Esgrimista de Gala,
 Piel de Aurora, Bruja de las Luciérnagas, Tahúr de Medianoche y Capataz de Hierro (visualChanges: accesorio/silueta, no solo paleta).
 
 No verificado / bloqueado: revisión humana de arte y audio; croma y Set con arte propio; gate `multiplayer` (`lobby_code_skins.js`: falla en un
 selector de la UI del lobby en este entorno, sin relación demostrada con los campeones, línea base de main no medida); `roster_visual_test.js`
 solo termina aquí si se amplía el timeout de captura (30 s) por el render por software; `fps.js` mide una arena genérica, no los kits nuevos.
+
+### Integración con main tras el PR #87 (14 octubre 2026)
+
+Merge de `origin/main` (cinco campeones Solciju, Veyra, Brakk, Morveth y Aelith RELEASED) conservando ambos lotes; lo generado se
+regeneró con las herramientas (roster_gate --write, install.py, ability-gate, entry-gate). Entry gate: 50 clases, 32 candidatas, 96
+simulaciones **PASS**. `ability-gate --strict`, `tools/siete/functional.js` (225/225), talentos, pricing-sync, `unique_skins/check.js`,
+champion-validator --strict, projectile-identity, recursos, pasivas, estilo estricto, forja y Roster Art Gate (157 apariencias, 0 fallos) PASS.
+Duplicidad de los siete frente a los cinco y a todo el roster: los siete **DISTINCT** (máx. 0,24; ninguno tiene a un campeón del PR #87 como
+vecino más cercano salvo Quillon→Morveth 0,219). Los DUPLICATE son de los cinco ya mergeados (Solciju 0,519 vs Morwen, Veyra 0,527 vs
+Eren) y varios REVIEW preexistentes: no se tocó el detector ni sus mecánicas. Segunda skin de autor por campeón con las mismas herramientas.
