@@ -43,12 +43,8 @@
 | Bront, la Fortaleza Viviente (`bront`) | tanque | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Oriel, la Portera de las Cicatrices (`oriel`) | soporte | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Saelis, la Heraldo del Plumaje (`saelis`) | soporte | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
-| Ostrel, el Cazador de Estrellas (`ostrel`) | mago | **PASS*** | 0 | 2 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
-| Grelk, el Cazador de Fosos (`grelk`) | asesino | **PASS*** | 0 | 2 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Ilsa, la Esgrimista de Réplica (`ilsa`) | asesino | **PASS*** | 0 | 2 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Vorn, el Cambiapiel (`vorn`) | tanque | **PASS*** | 0 | 2 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
-| Nerith, la Bruja de la Ciénaga (`nerith`) | soporte | **PASS*** | 0 | 2 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
-| Quillon, el Tahúr de la Última Mano (`quillon`) | mago | **PASS*** | 0 | 2 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Kora, la Ariete (`kora`) | tanque | **PASS*** | 0 | 2 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Solciju, la Enóloga (`solciju`) | mago | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Veyra, la Última Herida (`veyra`) | asesino | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
@@ -90,27 +86,11 @@
 ### Saelis, la Heraldo del Plumaje — PASS*
 - **WARNING** [art] skins — 0 skins, 0 cromas
 
-### Ostrel, el Cazador de Estrellas — PASS*
-- **WARNING** [loot] set propio
-- **WARNING** [art] skins — 0 skins, 0 cromas
-
-### Grelk, el Cazador de Fosos — PASS*
-- **WARNING** [loot] set propio
-- **WARNING** [art] skins — 0 skins, 0 cromas
-
 ### Ilsa, la Esgrimista de Réplica — PASS*
 - **WARNING** [loot] set propio
 - **WARNING** [art] skins — 0 skins, 0 cromas
 
 ### Vorn, el Cambiapiel — PASS*
-- **WARNING** [loot] set propio
-- **WARNING** [art] skins — 0 skins, 0 cromas
-
-### Nerith, la Bruja de la Ciénaga — PASS*
-- **WARNING** [loot] set propio
-- **WARNING** [art] skins — 0 skins, 0 cromas
-
-### Quillon, el Tahúr de la Última Mano — PASS*
 - **WARNING** [loot] set propio
 - **WARNING** [art] skins — 0 skins, 0 cromas
 

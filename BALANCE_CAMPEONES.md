@@ -236,58 +236,39 @@ Registrados en `js/champions/quality-five/register.js` antes del normalizador; `
 El normalizador no modificó sus estadísticas (ya estaban dentro de banda). Entry gate **PASS** (75 simulaciones, 25 candidatas, cero errores):
 daño medio a 150 s Solciju 8.018, Veyra 4.921, Brakk 4.609, Morveth 7.331, Aelith 8.687, todos vivos 3/3 y por debajo del techo del rol.
 Ability Gate estricto PASS. Duplicidad: Solciju/Morwen y Veyra/Eren DUPLICATE (sin resolver). Detalle: `docs/production/quality-five/README.md`.
-## Siete campeones nuevos (STANDARD, TESTING) — 12 octubre 2026
+## Tres campeones nuevos (STANDARD, TESTING) — Ilsa, Vorn y Kora — 14 octubre 2026
 
-Ostrel (mago, rayo sostenido), Grelk (asesino/tirador, trampas), Ilsa (asesina, contraataque), Vorn (tanque, dos formas), Nerith
-(soporte, áreas persistentes), Quillon (mago, baraja) y Kora (tanque, impulso). Diseño en `js/champions/siete/catalog.js`, registrados
-antes de `champion-entry-balance.js`; **`knownChampions` y las medias por rol no se tocaron** (segundo paso en otra rama). Taxonomía:
+Ilsa (asesina, contraataque), Vorn (tanque, dos formas) y Kora (tanque, impulso). Diseño en `js/champions/siete/catalog.js`, registrados antes de
+`champion-entry-balance.js`; **`knownChampions` y las medias por rol no se tocaron** (segundo paso en `claude/siete-campeones-known`). Taxonomía
 STANDARD/TESTING (jugables para quien los tenga concedido; fuera de tienda pública, bots y modos competitivos). Detalle: `docs/production/siete/README.md`.
+Los otros cuatro diseños originales (Ostrel, Grelk, Nerith, Quillon) quedaron respaldados en `claude/siete-pendientes` hasta tener arte propio:
+su arte se leía como repintado de un campeón existente.
 
 Entry gate (`node tools/balance/entry-gate.js`, 3 partidas de 150 s por candidato, semillas 117/431/991, Bosque, nivel 20, sin equipo):
-**PASS** (45 clases, 27 candidatas, 81 simulaciones). Daño medio del jugador frente al techo de su rol (media del rol × 1,35):
+**PASS** (46 clases, 28 candidatas, 84 simulaciones). Daño medio del jugador frente al techo de su rol (media del rol × 1,35):
 
-| Campeón | Rol | Daño medio | Techo | Con vida (3 partidas) |
+| Campeón | Rol | Daño medio | Techo | Con vida |
 |---|---|---:|---:|---|
-| Ostrel | Mago | 11.954 | 20.250 | 3/3 |
-| Grelk | Asesino | 9.346 | 17.385 | 3/3 |
 | Ilsa | Asesino | 4.792 | 17.385 | 3/3 |
 | Vorn | Tanque | 4.860 | 14.180 | 3/3 |
-| Nerith | Soporte | 7.765 | 8.804 | 3/3 |
-| Quillon | Mago | 8.260 | 20.250 | 3/3 |
 | Kora | Tanque | 5.728 | 14.180 | 3/3 |
 
-Ajuste: Nerith dio 9.370 (sobre su techo) con multiplicadores 0,30 / 0,35 / 0,40; pasó a Charco 0,16, Reguero 0,20 y Marisma 0,24 (7.765).
-Honestidad de la medición: el autopiloto no cronometra la Postura de Réplica de Ilsa, no coloca trampas con intención (Grelk) ni usa Impulso
-(Kora, Vorn), así que Ilsa, Vorn y Kora quedan muy por debajo de la media de su rol (el gate solo exige el techo). Con tres muestras no se
-prueba equilibrio competitivo: hace falta jugar con personas.
+El autopiloto no cronometra la Postura de Réplica de Ilsa ni usa el Impulso (Kora, Vorn), así que los tres quedan muy por debajo de la media de su
+rol; el gate solo exige el techo. Con tres muestras no se prueba equilibrio competitivo: hace falta jugar con personas.
 
-Otros gates con salida real: `check-entry-reference` PASS; `ability-gate --strict` PASS para los siete (cada uno: una habilidad de ÁREA,
-otra distinta que daña a varios, una de POTENCIACIÓN o CURA, definitiva con 3+ categorías, efecto visual y premarcado en toda habilidad que
-apunta); `duplicity` DISTINCT para los siete (máx. 0,24); `tools/siete/functional.js` 225/225 (habilidades, mecánica propia, tope de
-entidades, expiración, limpieza al morir, jefes sin desplazar ni aturdir y con daño acotado, élites nunca ejecutadas, diez arenas,
-talentos, refuerzos, snapshot de cooperativo); gate de talentos, recursos, pasivas, estilo estricto, Roster Art Gate (130 apariencias, 0 fallos)
-y mezcla de audio PASS. Skins de autor (dos por campeón, Pintor + forja): Vigía del Cenit / Cartógrafo del Polo, Cazador de Escarcha, Esgrimista de Gala,
-Piel de Aurora, Bruja de las Luciérnagas, Tahúr de Medianoche y Capataz de Hierro (visualChanges: accesorio/silueta, no solo paleta).
+Otros gates con salida real: `check-entry-reference`, `ability-gate --strict`, `tools/siete/functional.js` (100 comprobaciones: habilidades, mecánica
+propia, tope de entidades, expiración, limpieza, jefes, élites, diez arenas, talentos, refuerzos, snapshot de cooperativo), gate de talentos,
+pricing-sync, `unique_skins/check.js`, champion-validator --strict, recursos, pasivas, estilo, forja y Roster Art Gate (145 apariencias, 0 fallos): PASS.
+Duplicidad: los tres **DISTINCT** (máx. 0,24) frente al roster completo y a los cinco del PR #87. Skins de autor (dos por campeón, Pintor + forja):
+Esgrimista de Gala / Esgrimista de Carnaval, Piel de Aurora / Piel de Ceniza, Capataz de Hierro / Capataz de Cobre.
 
-No verificado / bloqueado: revisión humana de arte y audio; croma y Set con arte propio; gate `multiplayer` (`lobby_code_skins.js`: falla en un
-selector de la UI del lobby en este entorno, sin relación demostrada con los campeones, línea base de main no medida); `roster_visual_test.js`
-solo termina aquí si se amplía el timeout de captura (30 s) por el render por software; `fps.js` mide una arena genérica, no los kits nuevos.
+No verificado / pendiente: revisión humana de arte (ensamblados de donantes del Pintor, no arte original) y de audio; croma y Set con arte propio.
 
-### Integración con main tras el PR #87 (14 octubre 2026)
+### Paso 2: Ilsa, Vorn y Kora en `knownChampions` (referencia versión 4) — rama `claude/siete-campeones-known`, sin PR
 
-Merge de `origin/main` (cinco campeones Solciju, Veyra, Brakk, Morveth y Aelith RELEASED) conservando ambos lotes; lo generado se
-regeneró con las herramientas (roster_gate --write, install.py, ability-gate, entry-gate). Entry gate: 50 clases, 32 candidatas, 96
-simulaciones **PASS**. `ability-gate --strict`, `tools/siete/functional.js` (225/225), talentos, pricing-sync, `unique_skins/check.js`,
-champion-validator --strict, projectile-identity, recursos, pasivas, estilo estricto, forja y Roster Art Gate (157 apariencias, 0 fallos) PASS.
-Duplicidad de los siete frente a los cinco y a todo el roster: los siete **DISTINCT** (máx. 0,24; ninguno tiene a un campeón del PR #87 como
-vecino más cercano salvo Quillon→Morveth 0,219). Los DUPLICATE son de los cinco ya mergeados (Solciju 0,519 vs Morwen, Veyra 0,527 vs
-Eren) y varios REVIEW preexistentes: no se tocó el detector ni sus mecánicas. Segunda skin de autor por campeón con las mismas herramientas.
-### Paso 2: los siete en `knownChampions` (referencia versión 4) — rama `claude/siete-campeones-known`, sin PR
-
-Se aplica **después** de validar el kit (rama `claude/siete-campeones`) y solo con aprobación humana previa; no debe fusionarse en la misma PR
-que presenta a los candidatos. Cambios: `knownChampions` suma Ostrel, Grelk, Ilsa, Vorn, Nerith, Quillon y Kora; versión 3 → 4 (2026-10-12);
-medias, mínimos y máximos por rol recalculados con las estadísticas ya normalizadas de los siete (el normalizador no cambió ninguna) y
-`simulation.meanDamage150s` ponderada con sus 3 partidas cada uno (muestras: asesino 15 → 21, mago 21 → 27, soporte 9 → 12, tanque 9 → 15).
-`meanTeamKills150s` **no** se recalculó (la corrida de entrada no registra bajas del grupo por partida). JSON y JS sincronizados
-(`check-entry-reference.js` PASS). Efecto: los techos de simulación de futuros candidatos bajan (asesino 17.385 → ≈15.144; tanque 14.180 →
-≈11.367) y el filtro de habilidades los informa como clásicos (INFO) en vez de bloquear.
+Se aplica **después** de validar el kit (rama `claude/siete-campeones`) y con aprobación humana previa; no debe fusionarse en la misma PR que presenta
+a los candidatos. Cambios: `knownChampions` suma Ilsa, Vorn y Kora; versión 3 → 4 (2026-10-12); medias, mínimos y máximos por rol recalculados con sus
+estadísticas ya normalizadas (el normalizador no cambió ninguna) y `simulation.meanDamage150s` ponderada con sus 3 partidas cada uno (muestras: asesino
+15 → 18, tanque 9 → 15; mago y soporte no cambian). `meanTeamKills150s` **no** se recalculó (la corrida de entrada no registra bajas del grupo).
+JSON y JS sincronizados (`check-entry-reference.js`). Efecto: baja el techo de simulación de futuros candidatos (asesino ≈15.565; tanque ≈11.367) y el filtro de
+habilidades informa a los tres como clásicos (INFO).

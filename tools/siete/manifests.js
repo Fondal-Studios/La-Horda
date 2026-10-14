@@ -8,12 +8,8 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),cryp
 const {validate,scaffold,taxonomy}=require('../factory/contracts');
 const ROOT=path.resolve(__dirname,'../..'),OUT=path.join(ROOT,'docs/production/siete');
 const c={};vm.createContext(c);vm.runInContext('var ASCENSION={};'+fs.readFileSync(path.join(ROOT,'js/champions/siete/catalog.js'),'utf8').replace(/^'use strict';/,'')+';this.SIETE=SIETE;',c);
-const PH={ost_beam:['Telescopio apunta y el haz se carga','Haz sostenido que gira con el apuntado','Daño por pulso con Foco creciente','Línea de luz con destello final'],
- gre_snare:['Premarcado de punto y placa tenue','Cepo oculto que se arma en 0,5 s','Salta al pisarlo: daño, casi inmovilidad y Presa','Placa con púas y anillo de disparo'],
- ils_parry:['Florete bajo y anillo de guardia','Ventana de 0,9 s que desvía golpes','Daño recibido 0 y respuesta al atacante','¡RÉPLICA! y chispa de acero'],
+const PH={ils_parry:['Florete bajo y anillo de guardia','Ventana de 0,9 s que desvía golpes','Daño recibido 0 y respuesta al atacante','¡RÉPLICA! y chispa de acero'],
  vor_shift:['Muda de piel con onda','Cambio Piedra/Tormenta','Onda que frena o debilita y potencia','Aro de forma y etiqueta de forma'],
- ner_moss:['Premarcado de charco','Charco 7 s que pulsa','Cura aliados, daña y frena enemigos','Disco verde con juncos'],
- qui_deal:['Premarcado en abanico','Tres cartas con el palo que toca','Daño, freno, cura o potencia según palo','Naipes con símbolo de palo'],
  kor_ram:['Premarcado de carrera','Carrera arrastrando comunes','Colisión entre arrastrados y vecinos','Estela de polvo']};
 const ids=Object.keys(c.SIETE),results={};fs.mkdirSync(OUT,{recursive:true});
 const inst=JSON.parse(fs.readFileSync(path.join(ROOT,'docs/art-gate/painter-installs.json'),'utf8'));
@@ -30,7 +26,7 @@ for(const id of ids){
  if(fs.existsSync(f))Object.assign(m.art,{atlas:dir+'/atlas.png',preview:dir+'/preview.png',directions:4,frameWidth:112,frameHeight:112,sha256:crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex'),animations:{idle:1,walk:4,attack:4,cast:4,hit:1,death:4,ultimate:4}});
  m.cosmetics=p.skins.map(([name,visualTheme,lore],i)=>({id:id+'_alt'+(i+1),type:'skin',champion:id,name,rarity:'Épica',tagline:visualTheme,lore,visualTheme,unlockSource:'alpha-test',collection:'Siete (TESTING)',vfxProfile:'js/champions/siete/render.js',visualChanges:['accessory','secondarySilhouette'],preview:'assets/sprites/champions/'+id+'/skins/'+id+'_alt'+(i+1)+'/preview.png',availability:'alpha-test',premiumPrice:null}));
  m.set={sourceArena:p.arena,pieces:['arma','casco','pechera','botas'],rewardCosmetic:'',rewardGrantsPower:false};
- m.budgets={particles:64,summons:({grelk:6,nerith:5,quillon:1,ostrel:2,vorn:1,kora:0,ilsa:0})[id],audioVoices:3};
+ m.budgets={particles:64,summons:({vorn:1,kora:0,ilsa:0})[id],audioVoices:3};
  m.art.review={status:'PENDING',reviewer:'',evidence:'',note:'Hoja del Pintor (donantes + forja) con gate de estilo y Roster Art Gate en PASS; requiere revisión humana del Visual Gate (docs/ART_BIBLE.md §8). Filas de muerte con rasgos del donante.'};
  m.evidence={reference:exists('docs/balance/champion-entry-reference.json'),balance:exists('docs/balance/entry-gate-results.json'),visuals:exists('docs/art-gate/roster-gate.json'),audio:'',multiplayer:exists('docs/production/siete/functional-results.json'),performance:'',style:stylePass('assets/sprites/champions/'+id+'/atlas.png')?exists('docs/art-gate/style-gate.json'):''};
  const errors=validate(m);results[id]={category,releaseState:meta.releaseState,status:errors.length?'INCOMPLETE':'STRUCTURAL_PASS',errors};

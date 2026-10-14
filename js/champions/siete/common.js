@@ -1,8 +1,7 @@
 'use strict';
 /* ============================================================
    js/champions/siete/common.js — BASE COMPARTIDA DE LOS SIETE CAMPEONES
-   Ostrel (rayo sostenido), Grelk (trampas), Ilsa (réplica), Vorn (dos formas), Nerith (ciénaga),
-   Quillon (baraja) y Kora (ariete). Se registran como campeones del catálogo "Ascensión" (catalog.js)
+   Ilsa (réplica), Vorn (dos formas) y Kora (ariete). Se registran como campeones del catálogo "Ascensión" (catalog.js)
    para reutilizar su registro, talentos, Códice y skins, pero son STANDARD en TESTING (champion-taxonomy.js).
    Simulación del anfitrión (host-authoritative) sobre los sistemas existentes: portadorObjects (serializado por
    js/net/net-game.js), exHit/exSafeStep, ascHit (techo contra jefes), kitBuff/kitFx (kit-shared.js).
@@ -12,7 +11,7 @@
    - Empujes y desplazamientos validados (ascSafeMove / exSafeStep): nadie queda fuera de la arena.
    - Nada guarda referencias a enemigos dentro de las entidades (se serializan): solo posiciones e ids.
    ============================================================ */
-const SIETE_IDS = ['ostrel', 'grelk', 'ilsa', 'vorn', 'nerith', 'quillon', 'kora'];
+const SIETE_IDS = ['ilsa', 'vorn', 'kora'];
 const SIETE_TOTAL = 10;              // tope de entidades propias vivas por campeón
 const SIETE_ACTIONS = {};            // acción -> manejador(h, sk, c)
 const SIETE_OBJECTS = {};            // tipo de entidad -> actualizador(o, dt, h)

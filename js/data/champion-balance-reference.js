@@ -22,70 +22,66 @@ const CHAMPION_BALANCE_REFERENCE = {
     "morwen",
     "farolero",
     "iria",
-    "ostrel",
-    "grelk",
     "ilsa",
     "vorn",
-    "nerith",
-    "quillon",
     "kora"
   ],
   "roles": {
     "asesino": {
       "hp": {
-        "mean": 109.428571,
+        "mean": 110.333333,
         "min": 77.4,
         "max": 140.8
       },
       "damage": {
-        "mean": 12.857143,
+        "mean": 13.333333,
         "min": 8.1,
         "max": 26.4
       },
       "defense": {
-        "mean": 0.077143,
+        "mean": 0.078333,
         "min": 0.045,
         "max": 0.11
       },
       "speed": {
-        "mean": 174.857143,
+        "mean": 175.333333,
         "min": 144.0,
         "max": 203.5
       },
       "basicDPS": {
-        "mean": 26.855705,
+        "mean": 28.126527,
         "min": 14.896552,
         "max": 46.538462
       },
       "effectiveHP": {
-        "mean": 118.846522,
+        "mean": 120.016283,
         "min": 81.473684,
         "max": 153.043478
       },
       "hpGrowth": {
-        "mean": 0.871429,
+        "mean": 0.875,
         "min": 0.585,
         "max": 1.155
       },
       "damageGrowth": {
-        "mean": 1.135714,
+        "mean": 1.141667,
         "min": 0.9,
         "max": 1.485
       },
       "simulation": {
-        "meanDamage150s": 11217.845,
+        "meanDamage150s": 11529.896,
         "meanTeamKills150s": 496.533,
-        "samples": 21
+        "samples": 18
       }
     },
     "mago": {
       "hp": {
-        "mean": 98.222222,
+        "mean": 98.428571,
         "min": 82.8,
         "max": 118.8
       },
       "damage": {
-        "mean": 10.111111,
+        "mean": 10.142857,
         "min": 7.2,
         "max": 14.3
       },
@@ -95,44 +91,44 @@ const CHAMPION_BALANCE_REFERENCE = {
         "max": 0.099
       },
       "speed": {
-        "mean": 157.777778,
+        "mean": 157.857143,
         "min": 135.0,
         "max": 180.4
       },
       "basicDPS": {
-        "mean": 18.527261,
+        "mean": 18.624241,
         "min": 12.857143,
         "max": 26.481481
       },
       "effectiveHP": {
-        "mean": 105.676595,
+        "mean": 105.915991,
         "min": 87.157895,
         "max": 130.549451
       },
       "hpGrowth": {
-        "mean": 0.774444,
+        "mean": 0.752857,
         "min": 0.558,
         "max": 0.88
       },
       "damageGrowth": {
-        "mean": 1.174444,
+        "mean": 1.195714,
         "min": 0.9,
         "max": 1.672
       },
       "simulation": {
-        "meanDamage150s": 13912.899,
+        "meanDamage150s": 15000.275,
         "meanTeamKills150s": 500.524,
-        "samples": 27
+        "samples": 21
       }
     },
     "soporte": {
       "hp": {
-        "mean": 113.75,
+        "mean": 114.333333,
         "min": 94.5,
         "max": 136.4
       },
       "damage": {
-        "mean": 7.625,
+        "mean": 7.666667,
         "min": 6.3,
         "max": 8.8
       },
@@ -142,34 +138,34 @@ const CHAMPION_BALANCE_REFERENCE = {
         "max": 0.154
       },
       "speed": {
-        "mean": 165.0,
+        "mean": 165,
         "min": 145.8,
         "max": 184.8
       },
       "basicDPS": {
-        "mean": 13.277651,
+        "mean": 13.536868,
         "min": 10.5,
         "max": 16.923077
       },
       "effectiveHP": {
-        "mean": 130.785172,
+        "mean": 131.468352,
         "min": 107.386364,
         "max": 156.781609
       },
       "hpGrowth": {
-        "mean": 1.1625,
+        "mean": 1.166667,
         "min": 1.035,
         "max": 1.32
       },
       "damageGrowth": {
-        "mean": 0.7625,
+        "mean": 0.75,
         "min": 0.63,
         "max": 0.88
       },
       "simulation": {
-        "meanDamage150s": 6832.013,
+        "meanDamage150s": 6521.13,
         "meanTeamKills150s": 500.556,
-        "samples": 12
+        "samples": 9
       }
     },
     "tanque": {
