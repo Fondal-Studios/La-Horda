@@ -71,6 +71,7 @@ function lanesRecallRequest(h){ if(typeof lanesNetRecallRequest === "function" &
 function lanesHeroTick(dt){
   const L = LN;
   for(const h of heroes){
+    h._bush = (h.alive && typeof lanesInBush === "function") ? lanesInBush(h.x, h.y) : null;   // escondido en un matorral
     h.gold = Math.min(LANES.MAX_GOLD, (h.gold == null ? LANES.START_GOLD : h.gold) + (h.alive ? LANES.GOLD_PASSIVE * dt / 1000 : 0));
     if(h.alive){
       h.dead_t = 0;

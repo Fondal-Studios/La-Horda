@@ -70,7 +70,7 @@ function lanesEnemyTarget(e){
   if(best) return best;
   // 2) héroe rival cerca (si no se aleja demasiado del carril)
   bd = LANES.MINION_AGGRO_HERO;
-  for(const h of heroes){ if(!h.alive || h.team !== foe || h.stealthTimer > 0) continue; const d = Math.hypot(h.x - e.x, h.y - e.y); if(d < bd){ bd = d; best = h; } }
+  for(const h of heroes){ if(!h.alive || h.team !== foe || h.stealthTimer > 0) continue; const d = Math.hypot(h.x - e.x, h.y - e.y); if(h._bush && d > LANES.BUSH_SEE) continue; if(d < bd){ bd = d; best = h; } }
   if(best) return best;
   // 3) la estructura que le toca derribar en su carril, cuando ya está cerca
   const front = lanesFrontIn(foe, lane);

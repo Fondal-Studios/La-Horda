@@ -128,6 +128,7 @@ function lanesClamp(ent){
   const b = laneBox(), r = (ent.radius || 18) * 0.5 + 6;
   ent.x = Math.max(b.x0 + r, Math.min(b.x1 - r, ent.x));
   ent.y = Math.max(b.y0 + r + 30, Math.min(b.y1 - r, ent.y));
+  if(typeof lanesPushOut === "function") lanesPushOut(ent);   // árboles y peñascos sólidos (lanes-scenery.js)
 }
 function lanesInside(x, y, m){ return x > m && x < LANES.W - m && y > m && y < LANES.H - m; }
 // Carril más cercano a un punto
@@ -350,7 +351,7 @@ function lanesTowerTick(s){
     return;
   }
   let hero = null; bd = R;
-  for(const h of heroes){ if(!h.alive || h.team !== foe || h.stealthTimer > 0) continue; const d = Math.hypot(h.x - s.x, h.y - s.y); if(d < bd){ bd = d; hero = h; } }
+  for(const h of heroes){ if(!h.alive || h.team !== foe || h.stealthTimer > 0) continue; const d = Math.hypot(h.x - s.x, h.y - s.y); if(h._bush && d > LANES.BUSH_SEE) continue; if(d < bd){ bd = d; hero = h; } }
   if(hero){
     s.atkAt = L.t + LANES.TOWER_CD; L.shots.push({x1:s.x, y1:s.y - 70, x2:hero.x, y2:hero.y - 14, t:L.t, team:s.team});
     if(hero._recall) hero._recall = null;

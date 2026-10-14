@@ -8,7 +8,7 @@
    Todo es pixel art generado UNA vez en canvas (aidArt) y en cada cuadro solo se dibuja lo que está en cámara.
    Solo decora: no bloquea el paso, no cambia reglas, daño ni recompensas. Semilla fija: el mapa es igual en cada partida.
    ============================================================ */
-const LNS = {flat:[], tall:[], lights:[], edge:[], pads:[], reeds:[], built:false, roadPat:null, mossPat:null};
+const LNS = {flat:[], tall:[], lights:[], edge:[], pads:[], reeds:[], solid:[], grid:null, bushes:[], bushGrid:null, built:false, roadPat:null, mossPat:null};
 
 /* ---------------- sprites (pixel art, se dibujan al doble) ---------------- */
 const LNS_GREENS = [[34, 70, 36], [52, 104, 50], [86, 150, 70], [130, 196, 96]];
@@ -150,6 +150,17 @@ function lnsBuild(){
     for(let i = 0; i < 3; i++){ const a = rnd() * Math.PI * 2; L.flat.push({k:"rock", v:(rnd() * 2) | 0, x:c.x + Math.cos(a) * 105, y:c.y + 6 + Math.sin(a) * 68, fl:rnd() < 0.5}); }
     if(c.kind === "gigante") L.tall.push({k:"stake", x:c.x + 70, y:c.y - 40});
   }
+  // OBJETOS USABLES: árboles y peñascos SÓLIDOS entre los carriles (cobertura: frenan el paso, hay que rodearlos) y MATORRALES donde un
+  // héroe se esconde (los rivales, bots, torres y súbditos no lo ven si están a más de BUSH_SEE). Siempre lejos de carriles, bases y campamentos.
+  L.solid = []; L.bushes = [];
+  for(const d of L.tall) if(d.k === "tree") L.solid.push({x:d.x, y:d.y, r:22});
+  for(let gy = 260; gy < H; gy += 330) for(let gx = 260; gx < W; gx += 330){
+    const x = gx + (rnd() - 0.5) * 220, y = gy + (rnd() - 0.5) * 220, k = rnd();
+    if(!lnsFree(x, y, 235, 330)) continue;
+    if(k < 0.42){ L.tall.push({k:"boulder", v:(rnd() * 2) | 0, x, y, fl:rnd() < 0.5}); L.solid.push({x, y, r:34}); }
+    else if(k < 0.80) L.bushes.push({x, y, r:76 + rnd() * 34, ph:rnd() * 6});
+  }
+  L.grid = lnsGrid(L.solid, 160); L.bushGrid = lnsGrid(L.bushes, 220);
   L.roadPat = ctx.createPattern(lnsArtRoad(), "repeat"); L.mossPat = ctx.createPattern(lnsArtMoss(), "repeat");
   L.built = true;
 }
@@ -246,6 +257,37 @@ function lanesSceneryEdge(){
     ctx.fillStyle = "rgba(50,90,36,.3)"; ctx.beginPath(); ctx.ellipse(b.x - b.r * 0.2, b.y - b.r * 0.2, b.r * 0.5, b.r * 0.32, 0, 0, 6.283); ctx.fill(); }
 }
 
+
+/* ---------------- objetos usables: colisión y matorrales ---------------- */
+function lnsGrid(list, cell){
+  const g = {cell, m:new Map()};
+  list.forEach((o, i)=>{ const x0 = Math.floor((o.x - o.r) / cell), x1 = Math.floor((o.x + o.r) / cell), y0 = Math.floor((o.y - o.r) / cell), y1 = Math.floor((o.y + o.r) / cell);
+    for(let a = x0; a <= x1; a++) for(let b = y0; b <= y1; b++){ const k = a + "," + b; (g.m.get(k) || g.m.set(k, []).get(k)).push(i); } });
+  return g;
+}
+function lnsNear(g, list, x, y, fn){
+  if(!g) return; const c = g.cell, a = Math.floor(x / c), b = Math.floor(y / c);
+  for(let i = a - 0; i <= a; i++) for(let j = b - 0; j <= b; j++){ const arr = g.m.get(i + "," + j); if(arr) for(const k of arr) fn(list[k]); }
+}
+// Saca a una entidad de los árboles y peñascos (solo en el suelo: no afecta a lo que vuela por encima). Se llama desde lanesClamp.
+function lanesPushOut(ent){
+  const L = LNS; if(ent.lanesProxy || ent.isProj) return; if(!L.built) lnsBuild(); if(!L.grid) return;
+  const er = (ent.radius || 18) * 0.35;
+  lnsNear(L.grid, L.solid, ent.x, ent.y, o=>{
+    const dx = ent.x - o.x, dy = ent.y - o.y, d = Math.hypot(dx, dy), m = o.r + er;
+    if(d < m && d > 0.001){ ent.x = o.x + dx / d * m; ent.y = o.y + dy / d * m; }
+    else if(d <= 0.001){ ent.x = o.x + m; }
+  });
+}
+// ¿Está el punto dentro de un matorral?
+function lanesInBush(x, y){
+  const L = LNS; if(!L.built) lnsBuild(); if(!L.bushGrid) return null; let hit = null;
+  lnsNear(L.bushGrid, L.bushes, x, y, b=>{ if(!hit && Math.hypot(x - b.x, y - b.y) < b.r) hit = b; });
+  return hit;
+}
+// ¿Puede el equipo `team` ver a este héroe? Escondido en un matorral solo se ve de cerca.
+function lanesHeroVisibleTo(h, x, y){ return !h._bush || Math.hypot(h.x - x, h.y - y) < LANES.BUSH_SEE; }
+
 /* ---------------- piezas altas: se ordenan por profundidad con los personajes ---------------- */
 function lanesSceneryPushTall(){
   const L = LNS; if(!L.built) return;
@@ -253,9 +295,9 @@ function lanesSceneryPushTall(){
 }
 function lanesSceneryDrawTall(it, now){
   const d = LNS.tall[it.lnTall]; if(!d) return;
-  const img = d.k === "tree" ? lnsArtTree(d.v) : d.k === "brazier" ? lnsArtBrazier() : d.k === "banner" ? lnsArtBanner(d.team) : d.k === "portal" ? lnsArtPortal() :
+  const img = d.k === "boulder" ? lnsArtRock(d.v) : d.k === "tree" ? lnsArtTree(d.v) : d.k === "brazier" ? lnsArtBrazier() : d.k === "banner" ? lnsArtBanner(d.team) : d.k === "portal" ? lnsArtPortal() :
               d.k === "torch" ? lnsArtTorch() : d.k === "pillar" ? lnsArtPillar() : lnsArtStake();
-  const s = d.k === "portal" ? 2.6 : 2, w = img.width * s, h = img.height * s;
+  const s = d.k === "portal" ? 2.6 : d.k === "boulder" ? 3.4 : 2, w = img.width * s, h = img.height * s;
   ctx.save(); ctx.imageSmoothingEnabled = false; ctx.translate(d.x, d.y);
   if(d.k === "portal"){ const col = lanesTeamColor(d.team); ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = 0.45 + 0.2 * Math.sin(now * 2.2 + d.x);
     ctx.drawImage(glowSprite(d.team === 0 ? "110,200,255" : "255,184,106"), -70, -150, 140, 150); ctx.restore();
@@ -265,5 +307,21 @@ function lanesSceneryDrawTall(it, now){
   if(d.k === "tree"){ const sway = Math.sin(now * 0.8 + d.x * 0.01 + d.y * 0.013) * 0.012; ctx.rotate(sway); }
   ctx.drawImage(img, -w / 2, -h + 6, w, h);
   ctx.restore();
+}
+
+// Matorrales: se dibujan ENCIMA de los personajes (con transparencia) para que quien está dentro se vea tapado.
+function lanesSceneryBushes(now){
+  const L = LNS; if(!L.built) return; const mine = player ? player.team : -1;
+  for(const b of L.bushes){
+    if(!inView(b.x, b.y, b.r + 40)) continue;
+    const sway = Math.sin(now * 1.1 + b.ph) * 3, occupied = heroes.some(h=>h.alive && h._bush === b);
+    ctx.save(); ctx.globalAlpha = occupied ? 0.78 : 0.92;
+    for(let i = 0; i < 9; i++){ const a = i / 9 * Math.PI * 2 + b.ph, rr = b.r * (0.45 + (i % 3) * 0.2);
+      const x = b.x + Math.cos(a) * rr * 0.9 + sway, y = b.y + Math.sin(a) * rr * 0.55;
+      ctx.fillStyle = i % 2 ? "#2c6a30" : "#3c8a3c"; ctx.beginPath(); ctx.ellipse(x, y, b.r * 0.42, b.r * 0.30, 0, 0, 6.283); ctx.fill();
+      ctx.fillStyle = "rgba(150,220,110,.35)"; ctx.beginPath(); ctx.ellipse(x - 5, y - 7, b.r * 0.2, b.r * 0.1, 0, 0, 6.283); ctx.fill(); }
+    ctx.restore();
+    if(occupied && mine >= 0 && heroes.some(h=>h._bush === b && h.team === mine)){ ctx.save(); ctx.strokeStyle = "rgba(160,255,160,.55)"; ctx.lineWidth = 3; ctx.setLineDash([8, 8]); ctx.beginPath(); ctx.ellipse(b.x, b.y, b.r, b.r * 0.62, 0, 0, 6.283); ctx.stroke(); ctx.restore(); }
+  }
 }
 Object.assign(ARENA_DEFS.convergencia, {pushTall:lanesSceneryPushTall, drawTall:lanesSceneryDrawTall});

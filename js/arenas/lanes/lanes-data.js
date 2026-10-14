@@ -10,7 +10,8 @@
    ============================================================ */
 const LANES = {
   W:6400, H:4800,                     // tamaño del mapa (u)
-  LEVEL0:3, LEVEL_MAX:15, OWN_LEVEL_CAP:10,             // nivel de partida: todos arrancan en 3 y suben a 15 con experiencia (sin cuenta ni equipo)
+  LEVEL0:3, LEVEL_MAX:15, OWN_LEVEL_CAP:10, BUSH_SEE:190, // matorrales: un héroe escondido solo se ve a menos de BUSH_SEE
+              // nivel de partida: todos arrancan en 3 y suben a 15 con experiencia (sin cuenta ni equipo)
   RUNLEVEL:5,                         // runLevel fijo (habilita la definitiva, ver ULT_MIN_ARENA_LEVEL)
   BASE_OFF:560,                       // distancia del cristal a los bordes
   CRYSTAL_HP:2600, CRYSTAL_R:56,

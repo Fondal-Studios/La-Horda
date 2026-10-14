@@ -92,6 +92,7 @@ function lanesDrawCrystal(s){
 function lanesDrawTop(){
   if(!LN) return;
   const now = performance.now() / 1000;
+  lanesSceneryBushes(now);
   for(const T of LN.team) for(const s of T.S){
     if(!s.alive || !inView(s.x, s.y, 300)) continue;
     const col = lanesTeamColor(s.team), f = Math.max(0, s.hp / s.maxHp), exposed = lanesExposed(s);
