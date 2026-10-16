@@ -46,6 +46,9 @@ jobs:
       - run: python3 tools/art/painter/forge.py check
       - run: npm install --prefix /tmp/horda-balance --no-audit --no-fund playwright@1.61.1
       - run: /tmp/horda-balance/node_modules/.bin/playwright install --with-deps chromium
+      - run: node tools/art/roster-loading-test.js
+        env:
+          NODE_PATH: /tmp/horda-balance/node_modules
       - run: node tools/balance/entry-gate.js
         env:
           NODE_PATH: /tmp/horda-balance/node_modules
