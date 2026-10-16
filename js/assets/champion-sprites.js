@@ -615,3 +615,12 @@ AXIOM_REAL_IMG["up"].src = "assets/sprites/champions/axiom/dir-up.png";
 
 // Elyra: redraw autorizado, 24 cuadros; izquierda espejada y espalda real.
 champPackLoadAtlas("soporte", "assets/sprites/champions/soporte/v2/atlas.png", {"w":112,"h":112,"cols":4,"refH":78,"anchor":0.9375,"sets":{"idle_down":[0],"walk_down":[0,1,2,3],"attack_down":[12,13,14,15],"cast_down":[12,13,14,15],"hit_down":[0],"idle_side":[4],"walk_side":[4,5,6,7],"attack_side":[16,17,18,19],"cast_side":[16,17,18,19],"hit_side":[4],"idle_up":[8],"walk_up":[8,9,10,11],"attack_up":[20,21,22,23],"cast_up":[20,21,22,23],"hit_up":[8]}});
+
+// Encarnación del Abismo: coloso de carne cosida, 12 poses direccionales.
+const NIGRO_COLOSSUS = new Image();
+let NIGRO_COLOSSUS_READY = false;
+const NIGRO_COLOSSUS_SRC = "assets/sprites/champions/nigromante/coloso/atlas.png";
+if(typeof ASSET_WEBP !== "undefined") ASSET_WEBP.add(NIGRO_COLOSSUS_SRC);
+if(typeof assetsRegisterSource === "function") assetsRegisterSource(NIGRO_COLOSSUS_SRC);
+NIGRO_COLOSSUS.onload = ()=>{ NIGRO_COLOSSUS_READY = true; };
+NIGRO_COLOSSUS.src = NIGRO_COLOSSUS_SRC;
