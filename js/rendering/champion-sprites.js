@@ -489,6 +489,19 @@ function drawNigromanteReal(h, drawScale, alpha){
 // Nigromante transformado — "Demonio Nigromántico" (Encarnación del Abismo). Reemplaza el
 // dibujo normal mientras h.nigroDemonForm esté activo (ver enterAbyssForm/exitAbyssForm).
 function drawNigromanteDemon(h, drawScale, alpha){
+  if(NIGRO_COLOSSUS_READY){
+    const side = Math.abs(h.fx||0) > Math.abs(h.fy||0)*1.3;
+    const row = side ? 1 : ((h.fy||0)<-0.15 ? 2 : 0);
+    const col = h.attackAnim>0 ? 3 : (h.moving ? 1+Math.floor((h.animT||0)/180)%2 : 0);
+    // 132 world units: about twice a normal champion. Only the visual body grows.
+    const growth = 1-0.22*Math.max(0,Math.min(1,(h.nigroTransformTimer||0)/900));
+    const scale = 132/335 * (drawScale/(h.scale||2)) * growth;
+    const clip = {frames:[{x:col*448,y:row*384,w:448,h:384}]};
+    const el = typeof nigromanteGolemSkin === "function" ? nigromanteGolemSkin(h) : "stone";
+    nigroDrawElementAura(h.x,h.y,el,44,animNow/1000);
+    drawAnimFrameSized(NIGRO_COLOSSUS,clip,0,h.x,h.y,448*scale,384*scale,0.5,376/384,side&&(h.fx<0),alpha);
+    return true;
+  }
   if(!NIGRO_DEMON_READY.idle) return false;
   let img;
   if(h.attackAnim>0 && h.nigroCastKind==="demonSlam" && NIGRO_DEMON_READY.slam){

@@ -43,6 +43,8 @@ function drawHero(h){
 // Cuerpo del guardián según su arte real (atlas / poses recortadas / procedural de respaldo).
 // Lo comparten el dibujo normal, el hit flash y la caída al morir.
 function drawHeroBody(h, drawScale, spinning, stealthed){
+  // Ultimate body takes priority over equipped skins and pending base atlases.
+  if(h.classKey === "nigromante" && h.nigroDemonForm && drawNigromanteDemon(h,drawScale,stealthed?0.32:1)) return;
   if(champPackPending(h.classKey)) return; // nunca el arte viejo mientras baja el redibujado
   // SKIN DE SET COMPLETO (única transformación visual completa por equipo). Solo si el arte existe
   // (SET_SKINS en set-effects.js); sin arte, el set completo se ve con su aura completa.
