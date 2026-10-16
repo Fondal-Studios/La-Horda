@@ -194,6 +194,8 @@ function aidPushTall(){
   if(currentArena==="divina") for(const s of divinaStructures){ if(inView(s.x, s.y, 200)) _entPush(s.y, null, null, null, {divStruct:s}); }
 }
 function aidDrawTall(it, now){
+  if(it.bfStructure){const s=it.bfStructure;if(s.alive){if(s.kind==="tower")lanesDrawTower(s,now/1000);else lanesDrawCrystal(s);}return;}
+  if(it.battlefield&&battlefieldDrawProp(it))return;
   if(it.brk){ drawBreakable(it.brk, now); return; }
   if(it.arena){ arenaHook("drawTall", it, now); return; }
   if(it.divStruct){ const s = it.divStruct; if(s.type==="castle") drawDivinaCastle(s, now); else drawDivinaTower(s, now); return; }

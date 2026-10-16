@@ -306,6 +306,7 @@ function drawEnemy(e){
 // Dibujo del cuerpo del enemigo según qué arte real tenga (sin sombra/estado/barras): lo
 // comparten el dibujo normal, el hit flash y la animación de muerte.
 function drawEnemyBody(e){
+  if(battlefieldDrawMonster(e))return;
   if(arenaHas("drawEnemyBody") && arenaHook("drawEnemyBody", e)){
     // cuerpo propio de la arena (El Reino Micelial: núcleos, raíces, la Madre por partes)
   } else if(typeof bodySwapKey==="function" && bodySwapKey(e.type) && drawEnemyAtlasPack(e)){

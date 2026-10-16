@@ -124,6 +124,7 @@ function lanesRunStart(){
 
 /* ---------------- geometría ---------------- */
 function lanesClamp(ent){
+  if(!ent.lanesProxy)aidCollideEnemy(ent);
   const b = laneBox(), r = (ent.radius || 18) * 0.5 + 6;
   ent.x = Math.max(b.x0 + r, Math.min(b.x1 - r, ent.x));
   ent.y = Math.max(b.y0 + r + 30, Math.min(b.y1 - r, ent.y));

@@ -78,6 +78,12 @@ function lanesDrawWorld(now){
 }
 
 function lanesDrawTower(s, now){
+  const key=s.team===0?'tower-blue':'tower-amber';
+  if(BATTLEFIELD_IMAGES[key].naturalWidth){
+    ctx.save();if(s.hitFlash>0){ctx.shadowColor='#fff';ctx.shadowBlur=20;}
+    battlefieldDrawProp({battlefield:key,x:s.x,y:s.y+12,h:162,w:96});ctx.restore();
+    if(s.ward>0){ctx.save();ctx.strokeStyle='#bceaff';ctx.lineWidth=4;ctx.beginPath();ctx.ellipse(s.x,s.y-45,56,92,0,0,Math.PI*2);ctx.stroke();ctx.restore();}return;
+  }
   const col = lanesTeamColor(s.team), f = Math.max(0, s.hp / s.maxHp), x = s.x, y = s.y;
   ctx.save(); ctx.translate(x, y);
   ctx.fillStyle = "rgba(0,0,0,.35)"; ctx.beginPath(); ctx.ellipse(0, 14, 52, 17, 0, 0, Math.PI * 2); ctx.fill();
@@ -118,7 +124,7 @@ function lanesDrawTop(){
   for(const T of LN.team) for(const s of T.S){
     if(!s.alive || !inView(s.x, s.y, 300)) continue;
     const col = lanesTeamColor(s.team), f = Math.max(0, s.hp / s.maxHp), exposed = lanesExposed(s);
-    if(s.kind === "tower") lanesDrawTower(s, now); else lanesDrawCrystal(s);
+
     const bw = s.kind === "tower" ? 96 : 130, by = s.y + (s.kind === "tower" ? 34 : 40);
     ctx.fillStyle = "rgba(5,8,14,.85)"; ctx.fillRect(s.x - bw / 2 - 2, by, bw + 4, 14);
     ctx.fillStyle = exposed ? (f > 0.5 ? col : (f > 0.25 ? "#ffcf5c" : "#ff6a5a")) : "#7c8798"; ctx.fillRect(s.x - bw / 2, by + 2, bw * f, 10);
@@ -148,3 +154,13 @@ function lanesDrawTop(){
     ctx.beginPath(); ctx.ellipse(e.x, e.y + 6, e.radius * 0.8, e.radius * 0.32, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore(); }
 }
 Object.assign(ARENA_DEFS.convergencia, {drawWorld:lanesDrawWorld, drawTop:lanesDrawTop});
+
+const battlefieldStructures=new WeakMap();
+ARENA_DEFS.convergencia.pushTall=function(){
+ if(!LN)return;
+ for(const T of LN.team)for(const s of T.S){
+  if(!s.alive||!inView(s.x,s.y,300))continue;
+  let p=battlefieldStructures.get(s);if(!p){p={bfStructure:s};battlefieldStructures.set(s,p);}
+  _entPush(s.y,null,null,null,p);
+ }
+};
