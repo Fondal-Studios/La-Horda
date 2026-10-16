@@ -383,11 +383,12 @@ function champPackFeet(P){
   }
 }
 function champPackLoadAtlas(key, src, meta){
+  if(typeof assetsRegisterSource === "function") assetsRegisterSource(src);
   const img = new Image(), fix = Object.assign({}, CHAMP_PACK_FIX[key], meta.fix);
   const P = { atlas:img, fw:meta.w, fh:meta.h, cols:meta.cols, refH:meta.refH, anchor:meta.anchor, sets:champPackNormalize(meta.sets, fix),
               rawSets:meta.sets, upFrom:fix.up || null, fix, ready:false };
-  img.onload = ()=>{ P.ready = true; };
-  img.onerror = ()=>{ P.failed = true; }; // solo entonces se usa el arte anterior como respaldo
+  img.onload = ()=>{ P.ready = true; P.failed = false; };
+  img.onerror = ()=>{ if(!img.__pngSrc) P.failed = true; }; // WebP can still retry the PNG
   img.src = src;
   CHAMP_PACK[key] = P;
 }
@@ -395,10 +396,11 @@ function champPackLoadAtlas(key, src, meta){
 // El punto de apoyo (footX) sale igual porque el alfa es idéntico: se reusa si ya estaba calculado.
 function champPackCloneAtlas(key, baseKey, src){
   const B = CHAMP_PACK[baseKey]; if(!B) return null;
+  if(typeof assetsRegisterSource === "function") assetsRegisterSource(src);
   const img = new Image();
   const P = Object.assign({}, B, { atlas:img, ready:false, failed:false, footX:B.footX || null, cromaOf:baseKey });
-  img.onload = ()=>{ P.ready = true; };
-  img.onerror = ()=>{ P.failed = true; }; // sin la imagen se sigue viendo el atlas base (setSkinPackKey)
+  img.onload = ()=>{ P.ready = true; P.failed = false; };
+  img.onerror = ()=>{ if(!img.__pngSrc) P.failed = true; }; // WebP can still retry the PNG
   img.src = src;
   CHAMP_PACK[key] = P;
   return P;
