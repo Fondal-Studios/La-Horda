@@ -137,8 +137,11 @@ function abilityDefinition(championId, slot, cls){
 }
 // Valores efectivos en partida (maestría y talentos aplicados): lo que el jugador realmente lanza.
 function abilityLiveValues(h, def){
+  // El inspector puede consultar un slot aún no registrado (carga diferida o campeón de otra versión).
+  // No acceder a def antes de verificarlo: un fallo de UI nunca debe interrumpir el combate.
+  if(!def) return {cooldownMs:0, remainingMs:0, radius:0, range:0, cost:0, ready:false, reason:"Habilidad no disponible"};
   const out = {cooldownMs:def.cooldown, remainingMs:0, radius:def.radius, range:def.range, cost:def.cost, ready:true, reason:""};
-  if(!h || !def) return out;
+  if(!h) return out;
   try{
     if(typeof def.slot==="number"){
       const area = typeof aimAreaMult==="function" ? aimAreaMult(h.classKey, def.slot) : 1;
