@@ -1,0 +1,7 @@
+# Dirección de arte y fuentes
+Herramienta: imagegen integrado. Fuentes guardadas en art-source/battlefield; atlas en assets/sprites/battlefield. Importador reproducible: tools/art/import-battlefield.py.
+
+Las fuentes originales bosses1, bosses2, bosses3 y environment se recuperaron sin cambios. Dirección resumida: fantasía oscura pixel art, siluetas reconocibles, contornos oscuros, paleta terrosa y acentos mágicos; cuerpos completos, transparencia y cuatro poses por criatura. Environment contiene 16 objetos independientes.
+
+Prompt literal de reconstrucción de lanes.png:
+Production sprite sheet for La Horda, dark fantasy crisp pixel art. Transparent background. Exactly 4 rows x 4 columns with generous transparent gutters. Four distinct monsters, ONE identity per row, same size/design throughout each row. Row1 stocky pale stone dragon with cyan crystal spines, folded wings. Row2 massive moss-covered ancient stone king golem, purple chest crystal, crown and stone hammer. Row3 boar-like forest thorn beast, bark armor and jagged wood spines, tusks. Row4 squat goblin scavenger with bronze helmet, wooden round shield and curved cleaver. Columns: idle, walk left leg, walk right leg, melee attack. Full body all feet intact, facing right three-quarter view. Pixel clusters, dark outline, controlled muted earthy palette, detailed but clearly game pixel art. No text, no panels, no ground, no floating particles. No smooth painterly shading.

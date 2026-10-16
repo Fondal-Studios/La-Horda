@@ -33,6 +33,7 @@ function aidProp(img, x, y, opts){
   opts = opts || {};
   const s = opts.scale || AID_SCALE;
   const p = { img, x, y, w:img.width*s, h:img.height*s, ay: opts.ay===undefined ? 0.94 : opts.ay, flip: !!opts.flip, alpha: opts.alpha===undefined ? 1 : opts.alpha, noSolid: !!opts.passThrough };
+  if(opts.battlefield)p.battlefield=opts.battlefield;
   aidProps.push(p);
   if(opts.solid) aidSolids.push({x, y:y+(opts.solidDy||0), r:opts.solid});
   if(opts.light) aidLights.push({x, y:y+(opts.light.dy||0), r:opts.light.r, rgb:opts.light.rgb, a:opts.light.a||0.5, flick:opts.light.flick||0, ph:Math.random()*6});
@@ -74,6 +75,7 @@ function aidBuild(){
   else if(A==="acuatica") aidBuildAcuatica();
   else if(A==="divina") aidBuildDivina();
   if(typeof aidLayoutBuild==="function") aidLayoutBuild(); // trazado al azar: pilares por semilla (Horda Infinita, Pesadilla, Infierno)
+  battlefieldBuild();
   aidNavBuild();
   aidAmbReset();
 }
@@ -125,10 +127,10 @@ function aidBuildBosque(){
   for(let i=0;i<8;i++){ const a = i/8*6.283 + Math.PI/8; const p = aidOnRing(300, 300, a);
     aidProp(aidArtMenhir(i%5), p.x, p.y, {solid:14, light: i%2===0 ? {r:70, rgb:"140,230,110", a:0.32, flick:0.15, dy:-40} : null}); }
   // árboles antiguos gigantes cerca del borde
-  [0.3, 1.2, 2.1, 3.0, 3.9, 4.8, 5.6].forEach((a,i)=>{ const p = aidOnRing(730+(i%2)*60, 730+(i%2)*60, a); aidProp(aidArtAncientTree(i%3), p.x, p.y, {solid:26, flip:i%2===1}); });
+  [0.3, 1.2, 2.1, 3.0, 3.9, 4.8, 5.6].forEach((a,i)=>{ const p = aidOnRing(730+(i%2)*60, 730+(i%2)*60, a); aidProp(aidArtAncientTree(i%3), p.x, p.y, {solid:26, flip:i%2===1, battlefield:i%3===0?"dead-tree":i%2?"pine":"oak"}); });
   // ruinas: arco caído (pilares sólidos) y estatuas celtas
-  aidProp(aidArtRuinArch(), -560, 250, {passThrough:true}); aidSolids.push({x:-560-50, y:252, r:14}, {x:-560+52, y:252, r:14});
-  aidProp(aidArtRuinArch(), 540, -300, {flip:true, passThrough:true}); // arco: se pasa por la abertura, las patas chocan aidSolids.push({x:540-52, y:-298, r:14}, {x:540+50, y:-298, r:14});
+  aidProp(aidArtRuinArch(), -560, 250, {passThrough:true, battlefield:"arch"}); aidSolids.push({x:-560-50, y:252, r:14}, {x:-560+52, y:252, r:14});
+  aidProp(aidArtRuinArch(), 540, -300, {flip:true, passThrough:true, battlefield:"arch"}); // arco: se pasa por la abertura, las patas chocan aidSolids.push({x:540-52, y:-298, r:14}, {x:540+50, y:-298, r:14});
   [[-300,-420],[330,430],[-760,-60]].forEach(([x,y])=>aidProp(aidArtCelticStatue(), x, y, {solid:14, light:{r:60, rgb:"140,230,110", a:0.28, dy:-38}}));
   // arroyo con puente natural de raíces (decorativo, se cruza caminando)
   aidDecal(aidArtStream(), 420, 470, {scale:1.5});

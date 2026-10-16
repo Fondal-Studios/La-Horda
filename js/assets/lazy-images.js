@@ -47,6 +47,11 @@ const LAZY_IMG = (function(){
   const AR_DEFER_RE = /(^|\/)assets\/(sprites\/(arenas|enemies|bosses)\/|vfx\/)/;
   const AR_RE = /(^|\/)assets\/(?:sprites\/(?:arenas|enemies|bosses)|vfx|vfx\/bosses)\/(ciudad|fortaleza|bosque|micelial|hielo|acuatica|laberinto|abismo|minas|infernal|divina)\//;
   function groupOf(u){
+    if(/assets\/sprites\/battlefield\//.test(u)){
+      const key=u.split('/').pop().split('.')[0];
+      const arenas={golem_cuerpos:'infernal',mn_titan:'minas',mn_cerbero:'minas',ab_carcelero:'abismo',cm_maestro:'ciudad',cm_dama:'ciudad',cm_tramoyista:'ciudad',cm_presentador:'ciudad',minotauro:'laberinto',leviatan:'acuatica',dragon_forja:'fortaleza',micelio:'micelial'};
+      return arenas[key]?'ar:'+arenas[key]:'common';
+    }
     let m = CH_RE.exec(u); if(m) return "ch:" + m[2];
     if(!AR_DEFER_RE.test(u)) return null;
     m = AR_RE.exec(u); return m ? "ar:" + m[2] : "common";
