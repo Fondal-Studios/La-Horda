@@ -29,6 +29,7 @@ function render(){
 
   // Escenario: suelo, lava, muros, braseros
   drawArena();
+  aidDrawInlays(); // cached, flat biome details; always below combat telegraphs
 
   // partículas flotantes ambientales: brasas (Infernal), copos (Hielo) o luciérnagas (Bosque)
   const emberColor = currentArena==="hielo" ? "220,240,255" : currentArena==="bosque" ? "170,230,120" : "255,150,60";

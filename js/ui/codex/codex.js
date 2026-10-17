@@ -122,6 +122,7 @@ function codexGo(view, id, label, sub){
   codexRender(true);
 }
 function codexBack(){
+  codexStopVoice();
   if(codexStack.length > 1){ codexStack.pop(); codexRender(); }
   else { setState("mainmenu"); renderMainMenu(); }
 }
@@ -154,6 +155,7 @@ function codexLinkLabel(view, id){
    ============================================================ */
 function _cxEsc(s){ return String(s==null ? "" : s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
 function codexRender(fresh){
+  codexStopVoice();
   const body = document.getElementById("codex-body"); if(!body) return;
   const cur = codexCur();
   // migas + atrás
@@ -412,7 +414,8 @@ function codexChampHtml(key){
     panel += _sec("¿Quién es?", `<blockquote class="cx-quote">«${_cxEsc(cat.lore)}»</blockquote>${L.origin ? `<div class="cx-origin">Origen: <b>${_cxEsc(L.origin)}</b></div>` : ""}${codexDistinctHistory(cat.lore, L.history)}`, "lore");
     if(cls.passive) panel += _sec("Pasiva · "+cls.passive.ico+" "+cls.passive.name,_p(cls.passive.desc),"combat");
     const HV = typeof HERO_VOICES!=="undefined" ? HERO_VOICES[key] : null;
-    if(HV) panel += _sec("Su voz", `<div class="cx-voice"><i>Al elegirlo</i>«${_cxEsc(HV.pick)}»</div><div class="cx-voice"><i>Al ganar</i>«${_cxEsc(HV.win)}»</div><div class="cx-voice"><i>Al caer</i>«${_cxEsc(HV.fall)}»</div>`, "lore");
+    if(HV) panel += _sec("Su voz", `<div class="cx-voice-grid">${[["pick","Al elegirlo"],["win","Al ganar"],["fall","Al caer"]].map(([id,label])=>`<div class="cx-voice"><i>${label}</i><p>«${_cxEsc(HV[id])}»</p>${typeof speechSynthesis!=="undefined"?`<button class="cx-btn" data-cx-voice="${id}" aria-label="Escuchar frase: ${label}">▶ Escuchar</button>`:""}</div>`).join("")}</div><p class="cx-dim">Lectura opcional con la voz en español de tu dispositivo; no es doblaje grabado.</p><button class="cx-btn" data-cx-stop>■ Detener voz</button>`, "lore");
+    panel += _sec("Galería de movimiento", `<div class="cx-motion-gallery">${[["idle","Presencia"],["walk","Movimiento"],["attack","Ataque"]].map(([anim,label])=>`<figure>${_pv({kind:"champ",key,anim,arena:"champ",fps:12},"cx-pv cx-motion-pv")}<figcaption>${label}</figcaption></figure>`).join("")}</div>`, "lore");
     panel += _sec("Habilidades · tocá una para verla", `<div class="cx-skills">${sk.map((s, i)=>`<button class="cx-skill" data-skill="${i}">
         <span class="cx-skill-ico">${s.ico||"★"}</span><span class="cx-skill-txt"><b>${_cxEsc(s.name)}</b>${i===3?' <i class="cx-ult">Definitiva</i>':""}
         <span class="cx-skill-desc">${_cxEsc(s.desc||"")}</span><span class="cx-skill-num">${codexSkillNumbers(s, i===3)}</span></span></button>`).join("")}</div>`, "combat");
@@ -479,6 +482,8 @@ function codexChampSkinsHtml(key){
 function codexBindChamp(body, key){
   const cv = body.querySelector(".cx-stage-pv"), own = save.champions[key] && save.champions[key].unlocked;
   codexBindAnimChips(body);
+  body.querySelectorAll("[data-cx-voice]").forEach(b=>b.addEventListener("click",()=>codexSpeakVoice(key,b.dataset.cxVoice)));
+  const stopVoice=body.querySelector("[data-cx-stop]"); if(stopVoice)stopVoice.addEventListener("click",codexStopVoice);
   body.querySelectorAll("[data-ctab]").forEach(b=>b.addEventListener("click", ()=>{
     if(!own && b.dataset.ctab !== "ficha"){ if(typeof showNetToast==="function") showNetToast(`${CLASSES[key].name} está bloqueado: desbloquealo en la Tienda.`); return; }
     codexChampTab = b.dataset.ctab; codexRender();
@@ -897,3 +902,24 @@ function codexChronHtml(id){
 /* ---------------- botones fijos ---------------- */
 document.getElementById("mainmenu-codex-btn").addEventListener("click", openCodex);
 document.getElementById("codex-back-btn").addEventListener("click", codexBack);
+
+// Optional on-demand reading of canonical lines. Never auto-start or queue voices.
+let codexVoiceWatch=null, codexVoiceCurrent=null;
+function codexStopVoice(){
+ if(codexVoiceCurrent){codexVoiceCurrent.onend=null;codexVoiceCurrent.onerror=null;codexVoiceCurrent=null;}
+ if(codexVoiceWatch!==null){clearInterval(codexVoiceWatch);codexVoiceWatch=null;
+  if(typeof speechSynthesis!=="undefined")speechSynthesis.cancel();}
+}
+function codexSpeakVoice(key,event){
+ codexStopVoice();
+ if(typeof speechSynthesis==='undefined'||typeof SpeechSynthesisUtterance==='undefined')return;
+ if(typeof audioEnabled!=='undefined'&&!audioEnabled){if(typeof showNetToast==='function')showNetToast('Activá el sonido para escuchar la frase.');return;}
+ const line=typeof HERO_VOICES!=='undefined'&&HERO_VOICES[key]&&HERO_VOICES[key][event];if(!line)return;
+ const voices=speechSynthesis.getVoices().filter(v=>/^es(?:-|_)/i.test(v.lang));
+ if(!voices.length){if(typeof showNetToast==='function')showNetToast('No hay una voz en español disponible en este dispositivo.');return;}
+ const hash=Array.from(key).reduce((n,c)=>n+c.charCodeAt(0),0);
+ const u=new SpeechSynthesisUtterance(line);u.voice=voices[hash%voices.length];u.lang=u.voice.lang;u.rate=0.94;u.volume=0.65;
+ codexVoiceCurrent=u;u.onend=codexStopVoice;u.onerror=codexStopVoice;
+ codexVoiceWatch=setInterval(()=>{if(document.hidden||state!=='codex'||(typeof audioEnabled!=='undefined'&&!audioEnabled))codexStopVoice();},150);
+ speechSynthesis.speak(u);
+}
