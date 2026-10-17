@@ -253,8 +253,10 @@ async function boot(browser, opts) {
   check('TEXTO.todas_las_paginas_(' + fit.n + ')_entran_sin_recortes_en_844x390', fit.n >= 8 + 21 && fit.bad.length === 0, fit);
   const draws0 = await E(() => window.__draws); await sleep(400);
   check('RENDIMIENTO.cerrado_el_libro_no_se_sigue_dibujando', (await E(() => window.__draws)) === draws0);
-  const anim = await E(async () => { codexBookPlay('revisit', codexBookIntroPages(), {}); const t0 = performance.now(), d0 = window.__draws; await new Promise(r => setTimeout(r, 1000)); const fps = (window.__draws - d0); bookClose('x'); return fps; });
-  check('RENDIMIENTO.dibuja_a_ritmo_de_pantalla_mientras_esta_abierto', anim >= 20, anim);
+  // el visor dibuja una vez por cuadro de pantalla (se compara con los cuadros reales, así no depende de lo cargada que esté la máquina)
+  const anim = await E(async () => { codexBookPlay('revisit', codexBookIntroPages(), {}); let raf = 0, on = true; const tick = () => { raf++; if (on) requestAnimationFrame(tick); }; requestAnimationFrame(tick);
+    const d0 = window.__draws; await new Promise(r => setTimeout(r, 1500)); on = false; const draws = window.__draws - d0; bookClose('x'); return { raf, draws }; });
+  check('RENDIMIENTO.dibuja_a_ritmo_de_pantalla_mientras_esta_abierto', anim.raf >= 2 && anim.draws >= anim.raf * 0.8 && anim.draws <= anim.raf * 1.3 + 2, anim);
 
   /* ================= 8. MOVIMIENTO REDUCIDO y VERTICAL ================= */
   const red = await boot(browser, { reducedMotion: 'reduce' });
