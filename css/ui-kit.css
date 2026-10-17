@@ -32,7 +32,7 @@
   /* acento propio de cada modo: Campaña = brasa; Coliseo = arena dorada; Cristales = cristal celeste */
   --mode-accent:var(--ember1); --mode-accent-2:var(--ember3);
 }
-body[data-mode="coliseo"]{ --mode-accent:#e8c26a; --mode-accent-2:#ffe29d; }
+body[data-mode="coliseo"]{ --mode-accent:#e8c26a; --mode-accent-2:#ffd76a; }
 body[data-mode="cristales"]{ --mode-accent:#6fd3ff; --mode-accent-2:#bfe8ff; }
 
 /* ---------- estados comunes de todo lo que se toca ---------- */
