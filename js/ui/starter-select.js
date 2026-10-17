@@ -14,9 +14,11 @@ const STARTER_ROLE_LABEL = {tanque:"Tanque", asesino:"Asesino", mago:"Mago", sop
 
 // Sin elección explícita, el regalo propuesto es el Mago (DEFAULT_CHAMPION): ya viene marcado y un toque en
 // "Sí" alcanza; tocar otra carta lo cambia. Solo se marca si de verdad está entre los guardianes de regalo.
-function _starterOptions(){ return CHAMPION_CATALOG.filter(c=>championMeta(c.id).starterEligible && shopChampionPurchasable(c.id)); }
+function starterPicks(){return Array.isArray(save.starterTrioV1)?save.starterTrioV1:[];}
+function _starterOptions(){ return CHAMPION_CATALOG.filter(c=>championMeta(c.id).starterEligible && shopChampionPurchasable(c.id) && !starterPicks().includes(c.id)); }
 function openStarterSelect(onDone){
-  _starterPick = _starterOptions().some(c=>c.id===DEFAULT_CHAMPION) ? DEFAULT_CHAMPION : null; _starterDone = onDone || null;
+  _starterPick = null; _starterDone = onDone || null;
+  if(!needsStarterChampion() && !needsStarterSkin()){_starterFinish();return;}
   setState("starter");
   // ya tiene guardián y le falta la skin de regalo (cerró el juego en el medio): directo al paso 2
   if(!needsStarterChampion() && typeof needsStarterSkin==="function" && needsStarterSkin()){ openStarterSkinStep(); return; }
@@ -34,6 +36,7 @@ function _starterFinish(){
   if(next) next(); else { setState("mainmenu"); renderMainMenu(); }
 }
 function renderStarterSelect(){
+  const title=document.getElementById("starter-trio-title");if(title)title.textContent="Elegí tu guardián "+(starterPicks().length+1)+" de 3";
   const pr = document.getElementById("starter-price"); if(pr) pr.textContent = fmtGold(CHAMPION_PRICE_GOLD);
   const grid = document.getElementById("starter-grid"); if(!grid) return;
   grid.innerHTML = _starterOptions().map(c=>{
@@ -70,17 +73,21 @@ function _starterShowConfirm(){
   box.classList.remove("hidden");
 }
 function grantStarterChampion(key){
-  if(!CLASSES[key] || !save.champions[key]) return false;
-  save.champions[key].unlocked = true;
-  save.starterChosen = true;
-  selectedClass = key; save.lastChamp = key;
-  // REGALO INICIAL: ahora le toca elegir la skin de regalo de este guardián
-  if(typeof starterGiftEnabled==="function" && starterGiftEnabled() && !save.starterSkin) save.starterSkinPending = true;
+  if(typeof acct!=="undefined" && acct && (acct.applying||acct.pulling||acct.conflict))return false;
+  const picks=starterPicks();
+  if(!needsStarterChampion() || picks.length>=3 || !_starterOptions().some(c=>c.id===key) || !save.champions[key])return false;
+  save.starterTrioActive=true;save.starterTrioV1=picks.concat(key);
+  save.champions[key].unlocked=true;
+  if(!picks.length)save.starterTrioPrimary=key;
+  selectedClass=save.starterTrioPrimary;save.lastChamp=selectedClass;
+  save.starterChosen=save.starterTrioV1.length===3;
+  if(save.starterChosen && typeof starterGiftEnabled==="function" && starterGiftEnabled() && !save.starterSkin)save.starterSkinPending=true;
   persistNow();
   return true;
 }
 document.getElementById("starter-yes-btn").addEventListener("click", ()=>{
   if(!_starterPick || !grantStarterChampion(_starterPick)) return;
+  if(needsStarterChampion()){_starterPick=null;renderStarterSelect();return;}
   // el "¡X se une a tu equipo!" (neutro: hay guardianas) va en el subtítulo del paso 2 (antes era un aviso arriba a la derecha que tapaba el final
   // del subtítulo); si no hay paso 2, un aviso normal (la pantalla que sigue no tiene nada arriba a la derecha)
   if(typeof needsStarterSkin==="function" && needsStarterSkin()){ _starterJustGot = _starterPick; openStarterSkinStep(); return; }

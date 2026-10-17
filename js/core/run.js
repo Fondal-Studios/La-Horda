@@ -39,7 +39,8 @@ function updateRunTimers(dt){
 // decoración, cámara, controles) pero con divinaMode=true, que corta la generación de
 // oleadas. Todavía no hay objetivo ni combate: es para poder caminar por el escenario nuevo
 // y verlo de verdad, con tu equipo de 4, antes de construir el asedio encima.
-function startDivinaExploration(){
+function startDivinaExploration(bookRead=false){
+  if(!bookRead && typeof runIntroShow==="function"){runIntroShow("divina",()=>startDivinaExploration(true));return;}
   divinaMode = true;
   currentArena = "divina";
   divinaMinions = [];

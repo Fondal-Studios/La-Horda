@@ -11,6 +11,11 @@
    Ojo de la historia: acá parece un ángel. En la Arena Infernal se revela (inf-hechicero.js).
    ============================================================ */
 const ARENA_BRIEF = {
+  training:{say:"Antes de defender la ciudad, practicá lo esencial en un lugar seguro. Acá vas a aprender con Thalen y después volverás a tu guardián principal.",kill:"Las marcas del suelo anuncian ataques: salí antes del impacto.",help:"Seguí las indicaciones para moverte, atacar y usar habilidades.",goal:"Completá los primeros ejercicios o elegí jugar cuando te sientas listo. El entrenamiento no borra tu progreso.",mode:true},
+  divina:{say:"Una nueva batalla espera más allá de la campaña. Tu equipo debe defender su posición mientras avanza contra el rival.",kill:"El enemigo puede atacar tus estructuras mientras luchás lejos.",help:"Coordiná la defensa y el ataque con tus aliados.",goal:"Defendé tu base y avanzá sobre la fortaleza enemiga.",mode:true},
+  endless:{say:"La Horda no tiene fin. Cada ronda es más peligrosa: tu objetivo es resistir y superar tu mejor marca.",kill:"Enemigos y jefes cada vez más fuertes. Una derrota termina la incursión.",help:"Elegí mejoras entre rondas, usá el equipo y mantenete en movimiento.",goal:"Sobreviví tantas rondas como puedas y sumá puntos para el ranking semanal.",mode:true},
+  convergencia:{say:"Dos equipos luchan por el control del campo. Tu cristal es el corazón de la defensa.",kill:"Los rivales pueden avanzar hasta tu cristal mientras estás lejos.",help:"Coordiná las líneas con tus aliados y defendé antes de contraatacar.",goal:"Destruí el cristal enemigo y protegé el de tu equipo.",mode:true},
+  coliseo:{say:"El Coliseo reúne equipos rivales y criaturas en una arena compartida. Cada combate suma al resultado.",kill:"Rivales y monstruos: entrar solo al centro puede costarte la ronda.",help:"Usá los obstáculos, coordiná habilidades y mirá el marcador.",goal:"Sumá puntos con tu equipo y ganá el torneo del Coliseo.",mode:true},
   ciudad: {
     say:"Esta es tu ciudad, guardián, y la Horda volvió. No podés salvarlos a todos, pero vas a intentarlo. Cuando esto termine, te voy a mostrar el camino.",
     kill:"La horda que derriba las ESTRUCTURAS: si caen todas las críticas, la ciudad cae y perdés. En el nivel 9, los subjefes; en el 10, El Presentador.",
@@ -78,14 +83,15 @@ function runIntroShow(arena, onGo){
   // Pantallas de historia antes de la ficha (con la partida todavía sin empezar, en vez de taparte la
   // pantalla en pleno combate): el PRÓLOGO la primera vez en la primera arena, y el cartel de cada ACTO
   // la primera vez que entrás a la arena que lo abre (STORY_ACTS, js/data/story-text.js).
-  const pages = [];
+  if(RUN_INTRO.open)return;
+  const pages = [{who:"LIBRO DE INCURSIONES",title:(ARENA_MODS[arena]||{}).label||arena,text:B.say}];
   if(typeof save!=="undefined" && !save.storyPrologueSeen && typeof ARENA_ORDER!=="undefined" && arena===ARENA_ORDER[0] && typeof CAMPAIGN_PROLOGUE==="string"){
     save.storyPrologueSeen = true;
     pages.push(...(typeof CAMPAIGN_PROLOGUE_PAGES!=="undefined" ? CAMPAIGN_PROLOGUE_PAGES : [{who:"PRÓLOGO", title:"LA NOCHE EN QUE VOLVIÓ LA HORDA", text:CAMPAIGN_PROLOGUE}]));
   }
-  if(typeof goalMissionPages==="function") pages.unshift(...goalMissionPages()); // misión: SOBREVIVIR, antes de la historia
+  if(!B.mode && typeof goalMissionPages==="function") pages.unshift(...goalMissionPages()); // misión: SOBREVIVIR, antes de la historia
   const act = typeof storyActOf==="function" ? storyActOf(arena) : null;
-  if(act && act.arenas[0]===arena && typeof save!=="undefined" && !(save.storyActsSeen && save.storyActsSeen[act.n])){
+  if(!B.mode && act && act.arenas[0]===arena && typeof save!=="undefined" && !(save.storyActsSeen && save.storyActsSeen[act.n])){
     save.storyActsSeen = save.storyActsSeen || {}; save.storyActsSeen[act.n] = 1;
     pages.push({who:"ACTO " + act.n, title:act.name, text:act.intro});
   }
@@ -145,10 +151,10 @@ function runIntroFill(el, arena, B){
   if(HV && HV.pick && cls){ hero.innerHTML = ""; const b = document.createElement("b"); b.textContent = cls.name; b.style.color = cls.color || ""; hero.appendChild(b); hero.appendChild(document.createTextNode(" «" + HV.pick + "»")); hero.style.display = ""; }
   else { hero.textContent = ""; hero.style.display = "none"; }
   el.querySelector(".ri-arena").textContent = (M.icon ? M.icon + " " : "") + (typeof campaignNumberLabel==="function" && campaignNumberLabel(arena) ? campaignNumberLabel(arena) + " — " : "") + (M.label || arena).toUpperCase();
-  el.querySelector(".ri-say").textContent = "Avanzá por la campaña, recuperá los cristales y enfrentá al Rey de la Horda. Esta página te muestra cómo superar la arena que elegiste.";
+  el.querySelector(".ri-say").textContent = B.mode ? B.say : "Avanzá por la campaña, recuperá los cristales y enfrentá al Rey de la Horda. Esta página te muestra cómo superar la arena que elegiste.";
   el.querySelector(".ri-kill").textContent = B.kill;
   el.querySelector(".ri-help").textContent = B.help;
-  el.querySelector(".ri-goal").textContent = (/^Sobreviv/.test(B.goal) ? "" : "SOBREVIVÍ: aguantá 10 niveles con vida. ") + B.goal;
+  el.querySelector(".ri-goal").textContent = (B.mode || /^Sobreviv/.test(B.goal) ? "" : "SOBREVIVÍ: aguantá 10 niveles con vida. ") + B.goal;
   const first = el.querySelector(".ri-first");
   if(first){ first.hidden = arena !== "infernal"; first.textContent = arena === "infernal" ? "🏆 " + FIRST_FINISH_NOTICE : ""; }
   const cr = el.querySelector(".ri-crystals");
@@ -180,6 +186,7 @@ function runIntroGo(){
   document.getElementById("run-intro").classList.add("hidden");
   const fn = RUN_INTRO.onGo; RUN_INTRO.onGo = null; if(fn) fn();
 }
+function runIntroDismiss(){RUN_INTRO.open=false;RUN_INTRO.onGo=null;cancelAnimationFrame(RUN_INTRO.raf);document.getElementById("run-intro")?.classList.add("hidden");}
 // El libro solo anima al pasar página; permanece quieto durante la lectura.
 const RUN_BOOK_ART = new Image();
 RUN_BOOK_ART.src = "assets/ui/codex/grimoire.webp";

@@ -64,6 +64,7 @@ function defaultSave(){
     campaignResetV2:true,   // 2do reinicio (antes de la prueba con amigos): mismo mecanismo, versión nueva
     campaignResetV3:true,   // 3er reinicio (antes de la prueba real con un amigo): idem
     testStageV1:true,       // BUGFIX 01: reinicio de la etapa de prueba (nivel 1, bloqueados, solo la Arena 1) UNA vez
+    starterTrioV1:[], starterTrioActive:false, starterTrioPrimary:null,
     starterChosen:false,    // todavía no eligió su guardián de regalo (pantalla "Tu primer guardián")
     // REGALO INICIAL (js/systems/starter-gift.js): un guardián + UNA skin para ese guardián (nada de oro)
     starterGiftV1:true,     // marca de la migración: los guardados de antes reciben un vale de skin (ver starterGiftMigrate)
@@ -427,7 +428,7 @@ function starterGiftMigrate(){
 // ¿Tiene que elegir todavía su guardián de regalo? Solo mientras no tenga ningún guardián propio
 // (save.starterChosen queda como registro de que ya lo eligió).
 function needsStarterChampion(){
-  return !Object.keys(save.champions).some(k=>save.champions[k].unlocked);
+  return (Array.isArray(save.starterTrioV1) && save.starterTrioV1.length>0 && save.starterTrioV1.length<3) || !Object.keys(save.champions).some(k=>save.champions[k].unlocked);
 }
 // Durante la partida se guarda como mucho una vez cada 1.5 s: antes cada baja (XP + oro)
 // serializaba el guardado completo -con los inventarios de los 10 campeones- y lo escribía en

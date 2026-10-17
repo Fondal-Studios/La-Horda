@@ -132,5 +132,5 @@ function lanesShowResult(){
   const online = !!(typeof netMatch !== "undefined" && netMatch);
   if(online){ r.querySelector(".ln-again").textContent = "VOLVER A LA SALA"; r.querySelector(".ln-exit").textContent = "SALIR DE LA SALA"; }
   r.querySelector(".ln-exit").onclick = ()=>{ r.classList.add("hidden"); if(online){ lanesLeaveOnline(true); } else lanesStop("mainmenu"); };
-  r.querySelector(".ln-again").onclick = ()=>{ r.classList.add("hidden"); if(online){ lanesLeaveOnline(false); return; } const s = L.setup; lanesStop(); lanesStart({champ:s.mine, mate:s.mate, rivals:s.rivals, size:s.size}); };
+  r.querySelector(".ln-again").onclick = ()=>{ r.classList.add("hidden"); if(online){ lanesLeaveOnline(false); return; } const s = L.setup; lanesStop(); runIntroShow("convergencia",()=>lanesStart({champ:s.mine, mate:s.mate, rivals:s.rivals, size:s.size})); };
 }

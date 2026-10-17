@@ -734,7 +734,8 @@ function endlessDecoratePrep(){
   box._html = "endless";
   const rk = document.getElementById("en-prep-rank"); if(rk) rk.addEventListener("click", ev=>{ ev.stopPropagation(); lbOpen({guardian:""}); });
 }
-function endlessStartFromPrep(){
+function endlessStartFromPrep(bookRead=false){
+  if(!bookRead && typeof runIntroShow==="function"){runIntroShow("endless",()=>endlessStartFromPrep(true));return;}
   const online = typeof netInRoom==="function" && netInRoom();
   if(online){
     if(net.role!=="host") return;

@@ -63,7 +63,7 @@ function renderRoom(){
  $('start').hidden=!host;$('ready').hidden=host;$('ready').textContent=room.slots[slot]?.ready?'✔ LISTO':'ESTOY LISTO';$('start').disabled=room.state!=='lobby'||room.slots.some((p,i)=>i>0&&p&&p.connected&&!p.ready);
  $('champ').disabled=room.state!=='lobby';$('name').disabled=room.state!=='lobby';
 }
-$('ready').onclick=()=>send({t:'update',ready:!room.slots[slot]?.ready});
+$('ready').onclick=()=>{const ready=room?.slots[slot]?.ready;const go=()=>{if(room)send({t:'update',ready:!ready});};if(!ready&&typeof runIntroShow==='function')runIntroShow(mode()==='coliseum'?'coliseo':'convergencia',go);else go();};
 $('copy').onclick=async()=>{const u=new URL(location.href);u.hash='';const srv=openOpts.server||query().get('server');u.search='';u.searchParams.set('cw','1');u.searchParams.set('mode',mode());u.searchParams.set('room',room.code);if(srv)u.searchParams.set('server',srv);try{await navigator.clipboard.writeText(u.href);status('Invitación copiada.');}catch{status('Invitación: '+u.href);}};
 function disconnect(){closing=true;clearTimeout(retryTimer);if(ws){send({t:'leave'});ws.close();}ws=null;room=null;connection=null;host=false;offline=true;$('champ').disabled=false;$('name').disabled=false;renderRoom();}
 $('leave').onclick=()=>{disconnect();status('Saliste de la sala.');};
@@ -81,17 +81,18 @@ function receive(m){
   if(d.k==='cw-input'){if(Number.isFinite(d.x)&&Number.isFinite(d.y)){inputs[m.from]={x:Math.max(-1,Math.min(1,d.x)),y:Math.max(-1,Math.min(1,d.y))};remoteTimes[m.from]=performance.now();}return;}
   if(d.k==='cw-action'){const now=performance.now();if(now-(lastActions[m.from]||0)<100)return;lastActions[m.from]=now;if(d.action==='skill')C.ability(sim,m.from,d.value);if(d.action==='buy')C.buy(sim,m.from,d.value);}
  }else if(m.from===0&&d.k==='cw-state'&&d.state?.version===C.VERSION){
-  if(d.id===matchId&&d.n<=lastN)return;if(d.id!==matchId){matchId=d.id;lastN=-1;shownResult=false;closeResult();}lastN=d.n;lastSnap=performance.now();const starting=!sim||$('game').hidden;sim=d.state;if(starting)showGame();if(sim.ended)showResult();
+  if(d.id===matchId&&d.n<=lastN)return;if(d.id!==matchId){matchId=d.id;lastN=-1;shownResult=false;closeResult();}lastN=d.n;lastSnap=performance.now();const starting=!sim||$('game').hidden;sim=d.state;if(starting){if(typeof runIntroDismiss==="function")runIntroDismiss();showGame();}if(sim.ended)showResult();
  }
 }
-function begin(){
+function begin(bookRead=false){
+ if(!bookRead&&typeof runIntroShow==="function"){runIntroShow(mode()==='coliseum'?'coliseo':'convergencia',()=>begin(true));return;}
  offline=!room;host=!!room;slot=0;inputs={};for(const k of Object.keys(remoteTimes))delete remoteTimes[k];sim=C.create(room?room.slots:[{connected:true,champ:$('champ').value,founder:typeof accountIdentity==='function'?accountIdentity()?.founder:null,name:$('name').value||'Guardián'}],crypto.getRandomValues(new Uint32Array(1))[0],{mode:mode(),monsters:true});
  if(typeof botNameFor==='function'){const taken=sim.heroes.filter(h=>!h.bot).map(h=>h.name);for(const h of sim.heroes)if(h.bot)h.name=botNameFor('cw-'+h.role,taken);}
  matchId=crypto.randomUUID();snapshotN=0;shownResult=false;viewOther=false;acc=0;last=performance.now();closeResult();showGame();if(room){send({t:'start'});broadcast();}
 }
 // Guerra de Cristales usa el MOTOR REAL de la campaña (mismas habilidades, HUD y controles; js/arenas/lanes/).
 // El motor simplificado queda como respaldo (enlace con ?legacy=1) y para el Coliseo hasta que tenga el suyo.
-function realCrystal(){const champ=$('champ').value;if(!close())return;try{if(mode()==='coliseum')colStart({champ});else lanesStart({champ});}catch(err){console.error(err);status('No se pudo iniciar la partida. Probá de nuevo.');}}
+function realCrystal(){const champ=$('champ').value,m=mode();if(!close())return;runIntroShow(m==='coliseum'?'coliseo':'convergencia',()=>{try{if(m==='coliseum')colStart({champ});else lanesStart({champ});}catch(err){console.error(err);status('No se pudo iniciar la partida. Probá de nuevo.');}});}
 const useReal=()=>(mode()==='crystal'&&typeof lanesStart==='function'||mode()==='coliseum'&&typeof colStart==='function')&&!query().get('legacy');
 $('practice').onclick=()=>{if(useReal())realCrystal();else begin();};$('start').onclick=()=>{if(host&&room?.state==='lobby'&&!$('start').disabled)begin();};
 function showGame(){ $('view').hidden=isColiseum();canvas.setAttribute('aria-label',isColiseum()?'Coliseo: arena compartida 2 contra 2':'Convergencia: ambos campos visibles');viewOther=false;$('view').textContent='Ampliar rival'; $('lobby').hidden=true;$('game').hidden=false;drawControls(); }

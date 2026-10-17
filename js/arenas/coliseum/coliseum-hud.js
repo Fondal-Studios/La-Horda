@@ -76,6 +76,6 @@ function colShowResult(){
     '<div class="ln-res-btns"><button type="button" class="ln-again">REVANCHA</button><button type="button" class="ln-exit">VOLVER AL MENÚ</button></div></div>';
   r.classList.remove("hidden");
   r.querySelector(".ln-exit").onclick = ()=>{ r.classList.add("hidden"); lanesStop("mainmenu"); };
-  r.querySelector(".ln-again").onclick = ()=>{ r.classList.add("hidden"); const s = L.setup; lanesStop(); colStart({champ:s.mine, mate:s.mate, rivals:s.rivals}); };
+  r.querySelector(".ln-again").onclick = ()=>{ r.classList.add("hidden"); const s = L.setup; lanesStop(); runIntroShow("coliseo",()=>colStart({champ:s.mine, mate:s.mate, rivals:s.rivals})); };
 }
 function c_rounds(L){ return L.col ? L.col.round : 0; }

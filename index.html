@@ -55,6 +55,7 @@
 <link rel="stylesheet" href="css/hub-scroll.css">
 <link rel="stylesheet" href="css/lanes.css">
 <link rel="stylesheet" href="css/hud-horda.css">
+<link rel="stylesheet" href="css/world-book.css">
 </head>
 <body>
 
@@ -198,6 +199,7 @@
         </div>
         <h2 class="hub-section-title">EXPLORAR</h2>
         <div class="hub-row hub-row-explore">
+          <button class="hub-tile" id="world-book-replay">📖 Volver a ver la historia</button>
           <button class="hub-tile" id="mainmenu-codex-btn"><span class="hub-tile-ico">📖</span><span class="hub-tile-title">CÓDICE</span><span class="hub-tile-sub">Cómo jugar · objetivos · colección</span></button>
           <button class="hub-tile" id="mainmenu-guardianes-btn"><span class="hub-tile-ico">🛡</span><span class="hub-tile-title">GUARDIANES</span><span class="hub-tile-sub">Equipo · talentos · skins</span><span class="ui-tag hub-tile-badge hidden" id="hub-badge-guard"></span></button>
           <button class="hub-tile" id="mainmenu-tienda-btn"><span class="hub-tile-ico">🪙</span><span class="hub-tile-title">TIENDA</span><span class="hub-tile-sub">Ofertas del día · skins</span><span class="ui-tag new hub-tile-badge hidden" id="hub-badge-shop">NUEVO</span><span class="ui-tag sale hub-tile-offer hidden" id="hub-badge-offer">OFERTA</span></button>
@@ -253,8 +255,8 @@
   <!-- REGALO INICIAL (js/systems/starter-gift.js): 1) el guardián, 2) UNA skin para ese guardián (queda equipada) -->
   <div id="starter-screen" class="screen hidden">
     <div id="starter-step-champ" class="starter-step">
-      <div class="arena-title">Tu primer guardián</div>
-      <div class="lobby-sub">Elegí uno: es tu regalo para empezar la campaña, y después le elegís una skin. Los demás se desbloquean en la Tienda por <b id="starter-price">2.500</b> de oro.</div>
+      <div class="arena-title" id="starter-trio-title">Elegí tus tres guardianes</div>
+      <div class="lobby-sub">Elegí tres guardianes distintos para empezar de cero. El primero será tu principal y recibirá una skin de regalo. Los demás se desbloquean en la Tienda por <b id="starter-price">2.500</b> de oro.</div>
       <div id="starter-grid"></div>
       <div class="starter-confirm hidden" id="starter-confirm">
         <div id="starter-confirm-text"></div>
@@ -905,6 +907,7 @@
 <script src="js/systems/arena-tutorials.js"></script>
 <script src="js/systems/telemetry.js"></script>
 <script src="js/arenas/coliseum/coliseum-cover.js"></script>
+<script src="js/ui/world-book.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

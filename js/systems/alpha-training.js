@@ -19,6 +19,7 @@ function alphaFirstRunContinue(){
   if(typeof acct!=='undefined'&&(acct.applying||acct.pulling||acct.conflict)){
     showNetToast('Esperá a que termine la sincronización de tu cuenta.');return;
   }
+  if(typeof worldBookNeeded==="function" && worldBookNeeded()){openWorldBook(alphaFirstRunContinue);return;}
   if(needsStarterChampion() || needsStarterSkin()){
     openStarterSelect(alphaFirstRunContinue);return;
   }
@@ -40,7 +41,7 @@ function alphaTrainingSkip(){
   setState('mainmenu');renderMainMenu();alphaOnboardingDestination();
 }
 const ALPHA_TRAINING_STEPS = Object.freeze([
-  {id:"goal", title:"1 · Tu misión: SOBREVIVIR", text:"En el juego te rodea una horda de monstruos. Tu misión es una sola: SOBREVIVIR. Cada nivel dura un ratito; cuando el reloj llega a cero, los monstruos caen. Se pierde si todos los guardianes del equipo caen. Primero practiquemos.", target:"Leé la misión (se sigue sola)"},
+  {id:"goal", title:"1 · Tu misión: SOBREVIVIR", text:"En el juego te rodea una horda de monstruos. Para avanzar tenés que sobrevivir, completar el objetivo de cada arena y derrotar a sus jefes. Cada nivel dura un ratito; cuando el reloj llega a cero, los monstruos caen. Se pierde si todos los guardianes del equipo caen. Primero practiquemos.", target:"Leé la misión (se sigue sola)"},
   {id:"move", title:"2 · Movimiento", text:"Practicamos con Thalen; después volvés a tu campeón. Usá el joystick de abajo a la izquierda para moverte.", target:"Movete por la arena"},
   {id:"attack", title:"3 · Ataque básico", text:"Mantené el botón Ataque de la derecha. Tu mago dispara al enemigo cercano. Derrotá al esqueleto.", target:"Derrotá al enemigo con Ataque"},
   {id:"skill", title:"4 · Habilidades", text:"Las habilidades pegan mucho más que el ataque. Tocá una. Si la mantenés y arrastrás, elegís dónde cae.", target:"Lanzá una habilidad"},
@@ -142,10 +143,11 @@ function alphaTrainingTick(dt){
   if(!t.doneAt&&alphaTrainingSatisfied(s.id,m,player)){t.doneAt=t.phaseTime;el.querySelector('.alpha-training-goal').textContent='✓ Completado';alphaTrainingEmit('tutorial_step_complete',{step:s.id});}
   if(t.doneAt&&t.phaseTime-t.doneAt>1300){t.step++;if(t.step===ALPHA_TRAINING_STEPS.length)alphaTrainingExit(true);else alphaTrainingEnterStep();}
 }
-function alphaTrainingStart(){
+function alphaTrainingStart(bookRead=false){
   if(ALPHA_TRAINING.active||!['mainmenu','codex','modeselect'].includes(state))return false;
   if(netMatch||(typeof netInRoom==='function'&&netInRoom())){if(typeof showNetToast==='function')showNetToast('Salí de la sala multijugador antes de entrar al entrenamiento.');return false;}
   if(typeof acct!=='undefined'&&(acct.applying||acct.pulling||acct.conflict)){if(typeof showNetToast==='function')showNetToast('Esperá a que termine la sincronización de tu cuenta.');return false;}
+  if(!bookRead && typeof runIntroShow==="function"){runIntroShow("training",()=>alphaTrainingStart(true));return true;}
   persistNow();
   const t=ALPHA_TRAINING;t.snapshot={save,selectedClass,currentArena,divinaMode,lobbyAllies,endlessActive,endlessPending};t.active=true;t.step=0;t.elapsed=0;
   save=defaultSave();save.champions.mago.unlocked=true;selectedClass='mago';currentArena='training';divinaMode=false;endlessActive=false;endlessPending=false;lobbyAllies=null;

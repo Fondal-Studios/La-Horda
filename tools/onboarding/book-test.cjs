@@ -7,8 +7,8 @@ const c={console,Image:class {complete=true;naturalWidth=1254;naturalHeight=1254
 for(const f of ['js/ui/goal-guide.js','js/ui/run-intro.js','js/ui/codex/player-book.js'])vm.runInContext(fs.readFileSync(f,'utf8'),c);
 const E=s=>vm.runInContext(s,c);
 assert.equal(E('goalMissionPages().length'),3);assert.equal(E('goalMissionPages().length'),0);E('save.tut.goalBookV1=0');
-E('runIntroShow("ciudad",()=>{window.started=true})');assert.equal(E('RUN_INTRO.pages.length'),3);now+=500;E('runIntroGo()');assert.equal(E('RUN_INTRO.turning'),true);E('runIntroGo()');assert.equal(E('RUN_INTRO.pages.length'),3);
-for(const f of frames.splice(0))f(now+600);now+=600;assert.equal(E('RUN_INTRO.pages.length'),2);assert.equal(E('RUN_INTRO.turning'),false);assert.equal(c.window.started,undefined);
-c.window.matchMedia=()=>({matches:true});for(let i=0;i<2;i++){now+=500;E('runIntroGo()');}assert.equal(E('RUN_INTRO.prologue'),false);assert.equal(c.window.started,undefined);now+=500;E('runIntroGo()');assert.equal(c.window.started,true);
+E('runIntroShow("ciudad",()=>{window.started=true})');assert.equal(E('RUN_INTRO.pages.length'),4);now+=500;E('runIntroGo()');assert.equal(E('RUN_INTRO.turning'),true);E('runIntroGo()');assert.equal(E('RUN_INTRO.pages.length'),4);
+for(const f of frames.splice(0))f(now+600);now+=600;assert.equal(E('RUN_INTRO.pages.length'),3);assert.equal(E('RUN_INTRO.turning'),false);assert.equal(c.window.started,undefined);
+c.window.matchMedia=()=>({matches:true});for(let i=0;i<3;i++){now+=500;E('runIntroGo()');}assert.equal(E('RUN_INTRO.prologue'),false);assert.equal(c.window.started,undefined);now+=500;E('runIntroGo()');assert.equal(c.window.started,true);
 c._cxEsc=s=>String(s);assert.match(E('playerBookHtml()'),/Rey de la Horda/);assert.match(E('playerBookHtml()'),/50%/);
 console.log('PASS: three introductory pages, one-time state, page-turn lock, reduced motion, explicit start, codex objective and defeat rules');

@@ -314,7 +314,7 @@ document.getElementById("prep-start-btn").addEventListener("click", ()=>{
             pct=>{ if(sb) sb.textContent = "Preparando la arena… " + pct + "%"; });
           return;
         }
-        try{ netHostStartGame(); }catch(err){ _prepStartFailed(err); }
+        runIntroShow(currentArena,()=>{if(!netInRoom()||net.role!=="host"||state!=="prep")return;try{ netHostStartGame(); }catch(err){ _prepStartFailed(err); }});
       };
       if(nr.length){
         gameConfirm(`${nr.map(s=>s.name).join(", ")} todavía no ${nr.length>1?"están":"está"} LISTO. ¿Comenzar igual?`, {okText:"Comenzar"}).then(ok=>{
@@ -507,7 +507,7 @@ function netBackToRoomIfAny(){
 document.getElementById("retry-btn").addEventListener("click", ()=>{
   if(netBackToRoomIfAny()) return;
   if(currentArena==="divina"){ startDivinaExploration(); return; }
-  startRun(1);
+  runIntroShow(currentArena,()=>startRun(1));
 });
 function netLeaveAfterMatch(){
   // "Salir de la sala" / "Cerrar la sala y salir" desde los resultados
@@ -529,7 +529,7 @@ document.getElementById("menu-btn-1").addEventListener("click", ()=>{
   }
   go();
 });
-document.getElementById("again-btn").addEventListener("click", ()=>{ if(netBackToRoomIfAny()) return; startRun(1); });
+document.getElementById("again-btn").addEventListener("click", ()=>{ if(netBackToRoomIfAny()) return; runIntroShow(currentArena,()=>startRun(1)); });
 document.getElementById("menu-btn-2").addEventListener("click", ()=>{
   const go = ()=>{
     if(netLeaveAfterMatch()){ setState("mainmenu"); renderMainMenu(); return; }

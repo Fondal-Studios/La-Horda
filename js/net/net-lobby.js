@@ -134,7 +134,8 @@ function netRenderLobbyBar(){
     const me = net.room.slots[net.slot]||{};
     if(!me.ready && netDuplicateChamps().includes(selectedClass)){ showNetToast("Ese guardián ya lo usa otro jugador: elegí otro."); return; }
     if(!me.ready && typeof assetsAllReady==="function" && !assetsAllReady()){ showNetToast("Esperá un momento: todavía se está cargando el arte de la arena (" + assetsRestPct() + "%)."); return; }
-    netSendLoadout(true); netSend({t:"update", ready:!me.ready});
+    const ready=()=>{if(!net.room||state!=="prep")return;netSendLoadout(true);netSend({t:"update",ready:!me.ready});};
+    if(!me.ready)runIntroShow(typeof endlessPending!=="undefined"&&endlessPending?"endless":currentArena,ready);else ready();
   });
   bar.querySelectorAll("[data-net-champ]").forEach(b=> b.addEventListener("click", ()=> netPickChamp(b.getAttribute("data-net-champ"))));
   const lv = document.getElementById("net-leave-btn");

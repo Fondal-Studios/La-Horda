@@ -1,0 +1,30 @@
+'use strict';
+const assert=require('assert/strict'),fs=require('fs'),os=require('os'),path=require('path');
+process.env.PORT='8817';process.env.DATA_DIR=fs.mkdtempSync(path.join(os.tmpdir(),'horda-reset-'));if(process.env.RESET_TEST_PG)process.env.DATABASE_URL="postgres://localhost/reset_test";else delete process.env.DATABASE_URL;
+const {server,accounts}=require('./relay');
+const base='http://127.0.0.1:8817';let token;
+async function api(method,url,body){const r=await fetch(base+url,{method,headers:{'content-type':'application/json',authorization:'Bearer '+token},body:body?JSON.stringify(body):undefined});return {status:r.status,j:await r.json()};}
+(async()=>{
+await accounts.ready;
+let r=await api('POST','/api/register',{user:'ResetTest',pass:'password123'});assert.equal(r.status,201);token=r.j.token;
+const original={gold:5000,gems:400,champions:{mago:{unlocked:true,level:70}},stash:[{uid:'weapon'}],skins:{skin:true},arenasCleared:{ciudad:true},quests:{xp:400}};
+r=await api('PUT','/api/save',{data:original,baseVersion:0});assert.equal(r.status,200);
+await accounts.store.walletApply({userId:1,delta:600,reason:'test',ref:'initial',at:Date.now()});
+await accounts.store.lbPut('2026-W42',1,'mago',{score:999,round:10,durationMs:50000,at:Date.now()});
+assert.equal((await api('POST','/api/account/reset-once',{baseVersion:1})).status,400);
+assert.equal((await api('POST','/api/account/reset-once',{baseVersion:0,confirm:'BORRAR TODO'})).status,409);
+const pair=await Promise.all([api('POST','/api/account/reset-once',{baseVersion:1,confirm:'BORRAR TODO'}),api('POST','/api/account/reset-once',{baseVersion:1,confirm:'BORRAR TODO'})]);
+assert.deepEqual(pair.map(x=>x.status).sort(),[200,409]);
+const reset=pair.find(x=>x.status===200).j;
+assert.equal(reset.data.gold,0);assert.equal(reset.data.stash.length,0);assert.ok(Object.values(reset.data.champions).every(c=>!c.unlocked&&c.level===1));
+assert.equal((await accounts.store.walletGet(1)).premium,0);assert.equal((await accounts.store.lbTop('2026-W42',null,50)).length,0);
+assert.equal((await api('PUT','/api/save',{data:original,baseVersion:reset.version,force:true})).status,409);
+let data=structuredClone(reset.data);data.starterTrioV1=['mago','tanque','guerrero'];for(const k of data.starterTrioV1)data.champions[k].unlocked=true;
+r=await api('PUT','/api/save',{data,baseVersion:reset.version});assert.equal(r.status,200,JSON.stringify(r));
+let version=r.j.version;data.starterTrioV1=[];assert.equal((await api('PUT','/api/save',{data,baseVersion:version,force:true})).status,409);
+assert.equal((await api('GET','/api/me')).j.user.resetUsed,true);
+await accounts.close();await new Promise(ok=>server.close(ok));
+const second=require('./accounts').create({dataDir:process.env.DATA_DIR});await second.ready;
+assert.equal((await second.store.resetAccount(1,version)).used,true);assert.ok((await second.store.getUser(1)).resetUsed);await second.close();
+console.log('PASS: full wipe, currency/ranking, concurrent once-only reset, stale force rejected, immutable trio, restart persistence');process.exit(0);
+})().catch(async e=>{console.error(e);await accounts.close();server.close();process.exitCode=1;});

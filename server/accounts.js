@@ -51,6 +51,7 @@
    - La semana es la ISO en UTC, la MISMA de los mutadores semanales (js/systems/endless.js).
    ============================================================ */
 const crypto = require("crypto");
+const playerReset = require("./player-reset");
 const adminLevels=require("./admin-levels");
 const gameMaster = require("./game-master");
 const entitlements = require("./entitlements");
@@ -221,6 +222,8 @@ function fileStore(dir){
     })().finally(() => { writing = null; });
     return writing;
   }
+  const accountChains = new Map();
+  const serial=(id,fn)=>{const job=(accountChains.get(id)||Promise.resolve()).catch(()=>{}).then(fn);accountChains.set(id,job);return job;};
   const saveFile = id => path.join(savesDir, String(id) + ".json");
   const saveChains = new Map();     // escrituras de un mismo guardado, en fila
   // ranking: leaderboard.json = {weeks: {"2026-W40": {"<id>|<guardián>": {score, round, durationMs, at}}}}
@@ -273,6 +276,7 @@ function fileStore(dir){
       try{ wallet = JSON.parse(await fsp.readFile(walletFile, "utf8")); }
       catch(e){ if(e.code !== "ENOENT") throw new Error("wallet.json ilegible: " + e.message); }
       wallet.balances = wallet.balances || {}; wallet.ledger = wallet.ledger || []; wallet.refs = wallet.refs || {}; wallet.nextId = wallet.nextId || 1;
+      for(const u of Object.values(db.users))if(u.resetPending)await this.resetAccount(u.id,0);
       // restos de una escritura cortada a la mitad
       for(const d of [dir, savesDir]) for(const f of await fsp.readdir(d)) if(f.endsWith(".tmp")) fsp.unlink(path.join(d, f)).catch(() => {});
     },
@@ -301,7 +305,9 @@ function fileStore(dir){
       catch(e){ return null; }
     },
     // control de versión optimista: solo escribe si la versión de la nube es la que el cliente conocía
-    async putSave(id, dataStr, summary, baseVersion, force){
+    async putSave(id, dataStr, summary, baseVersion, force){return serial(id,async()=>{
+      const old=await this.getSave(id);
+      if(db.users[id]?.resetPending || !playerReset.validWrite(old?JSON.parse(old.data):null,JSON.parse(dataStr)))return {conflict:true,current:await loadMeta(id)};
       const meta = await loadMeta(id);
       const cur = meta ? meta.version : 0;
       if(!force && cur !== baseVersion) return { conflict: true, current: meta };
@@ -313,7 +319,25 @@ function fileStore(dir){
       await job;
       if(saveChains.get(id) === job) saveChains.delete(id);
       return { ok: true, version: next.version, updatedAt: next.updatedAt };
-    },
+    });},
+    async resetAccount(id,base){return serial(id,async()=>{
+      const u=db.users[id], old=await this.getSave(id);
+      if(u.resetUsed && !u.resetPending)return {used:true};
+      if(!u.resetPending){
+        if((old?.version||0)!==base)return {conflict:true};
+        u.resetUsed=Date.now();u.resetPending={data:playerReset.fresh(),version:(old?.version||0)+1};
+        await flush(); // durable intent: retry/restart can finish but can never reset twice
+      }
+      const pending=u.resetPending;
+      const balance=await this.walletGet(id);
+      await this.walletApply({userId:id,delta:-balance.premium,reason:"player_reset",ref:"player-reset:"+id,at:u.resetUsed});
+      for(const week of Object.values(lb.weeks))for(const key of Object.keys(week))if(key.startsWith(id+"|"))delete week[key];
+      await lbFlush();
+      const result={data:pending.data,version:pending.version,updatedAt:u.resetUsed,summary:summarize(pending.data)};
+      await writeAtomic(saveFile(id),JSON.stringify({...result,data:JSON.stringify(result.data)}));
+      saveMeta.set(id,{version:result.version,updatedAt:result.updatedAt,summary:result.summary});
+      delete u.resetPending;await flush();return {ok:true,...result};
+    });},
     // ranking: guarda solo si mejora lo de esa cuenta con ese guardián esa semana
     async lbPut(week, userId, guardian, e){
       const W = lb.weeks[week] || (lb.weeks[week] = {}), k = userId + "|" + guardian, prev = W[k];
@@ -383,7 +407,7 @@ function pgStore(url){
   pool.on("error", () => {}); // una conexión inactiva que se corta no tumba el servidor
   const q = (text, params) => pool.query(text, params);
   const rowUser = r => r && { id: Number(r.id), userKey: r.user_key, user: r.username, name: r.display_name, email: r.email,
-    passHash: r.pass_hash, createdAt: Number(r.created_at), lastLogin: Number(r.last_login || 0) };
+    resetUsed:Number(r.reset_used||0), passHash: r.pass_hash, createdAt: Number(r.created_at), lastLogin: Number(r.last_login || 0) };
   const rowMeta = r => r && { version: r.version | 0, updatedAt: Number(r.updated_at), summary: r.summary ? JSON.parse(r.summary) : null };
   return {
     kind: "postgres", persistent: true,
@@ -426,6 +450,7 @@ function pgStore(url){
       await q(`CREATE TABLE IF NOT EXISTS horda_users (
         id BIGSERIAL PRIMARY KEY, user_key TEXT UNIQUE NOT NULL, username TEXT NOT NULL, display_name TEXT,
         email TEXT, pass_hash TEXT NOT NULL, created_at BIGINT NOT NULL, last_login BIGINT)`);
+      await q(`ALTER TABLE horda_users ADD COLUMN IF NOT EXISTS reset_used BIGINT NOT NULL DEFAULT 0`);
       await q(`CREATE TABLE IF NOT EXISTS horda_sessions (
         token_hash TEXT PRIMARY KEY, user_id BIGINT NOT NULL REFERENCES horda_users(id) ON DELETE CASCADE,
         created_at BIGINT NOT NULL, expires_at BIGINT NOT NULL)`);
@@ -471,22 +496,35 @@ function pgStore(url){
       return r ? Object.assign({ data: r.data }, rowMeta(r)) : null;
     },
     async putSave(id, dataStr, summary, baseVersion, force){
-      const now = Date.now(), sum = JSON.stringify(summary);
-      let r;
-      if(force){
-        r = await q(`INSERT INTO horda_saves (user_id, data, summary, version, updated_at) VALUES ($1,$2,$3,1,$4)
-          ON CONFLICT (user_id) DO UPDATE SET data=EXCLUDED.data, summary=EXCLUDED.summary, version=horda_saves.version+1, updated_at=EXCLUDED.updated_at
-          RETURNING version, updated_at`, [id, dataStr, sum, now]);
-      } else if(baseVersion === 0){
-        r = await q(`INSERT INTO horda_saves (user_id, data, summary, version, updated_at) VALUES ($1,$2,$3,1,$4)
-          ON CONFLICT (user_id) DO NOTHING RETURNING version, updated_at`, [id, dataStr, sum, now]);
-      } else {
-        // UPDATE condicional: si otro dispositivo ya subió una versión nueva, no pisa nada
-        r = await q(`UPDATE horda_saves SET data=$2, summary=$3, version=version+1, updated_at=$4
-          WHERE user_id=$1 AND version=$5 RETURNING version, updated_at`, [id, dataStr, sum, now, baseVersion]);
-      }
-      if(!r.rows.length) return { conflict: true, current: await this.getSaveMeta(id) };
-      return { ok: true, version: r.rows[0].version | 0, updatedAt: Number(r.rows[0].updated_at) };
+      const c=await pool.connect();
+      try{
+        await c.query('BEGIN');
+        await c.query('SELECT id FROM horda_users WHERE id=$1 FOR UPDATE',[id]);
+        const old=(await c.query('SELECT * FROM horda_saves WHERE user_id=$1',[id])).rows[0];
+        if((!force && (old?.version||0)!==baseVersion) || !playerReset.validWrite(old?JSON.parse(old.data):null,JSON.parse(dataStr))){await c.query('ROLLBACK');return {conflict:true,current:rowMeta(old)};}
+        const version=(old?.version||0)+1,updatedAt=Date.now();
+        await c.query(`INSERT INTO horda_saves(user_id,data,summary,version,updated_at) VALUES($1,$2,$3,$4,$5) ON CONFLICT(user_id) DO UPDATE SET data=EXCLUDED.data,summary=EXCLUDED.summary,version=EXCLUDED.version,updated_at=EXCLUDED.updated_at`,[id,dataStr,JSON.stringify(summary),version,updatedAt]);
+        await c.query('COMMIT');return {ok:true,version,updatedAt};
+      }catch(e){await c.query('ROLLBACK');throw e;}finally{c.release();}
+    },
+    async resetAccount(id,base){
+      const c=await pool.connect();
+      try{
+        await c.query('BEGIN');
+        const u=(await c.query('SELECT * FROM horda_users WHERE id=$1 FOR UPDATE',[id])).rows[0];
+        if(u.reset_used>0){await c.query('ROLLBACK');return {used:true};}
+        const old=(await c.query('SELECT * FROM horda_saves WHERE user_id=$1',[id])).rows[0];
+        if((old?.version||0)!==base){await c.query('ROLLBACK');return {conflict:true};}
+        const data=playerReset.fresh(),at=Date.now(),version=(old?.version||0)+1,summary=summarize(data);
+        await c.query('INSERT INTO horda_wallet(user_id,premium,updated_at) VALUES($1,0,$2) ON CONFLICT DO NOTHING',[id,at]);
+        const balance=Number((await c.query('SELECT premium FROM horda_wallet WHERE user_id=$1 FOR UPDATE',[id])).rows[0].premium);
+        await c.query("INSERT INTO horda_wallet_ledger(user_id,delta,balance_after,reason,ref,at) VALUES($1,$2,0,'player_reset',$3,$4)",[id,-balance,'player-reset:'+id,at]);
+        await c.query('UPDATE horda_wallet SET premium=0,updated_at=$2 WHERE user_id=$1',[id,at]);
+        await c.query('DELETE FROM horda_leaderboard WHERE user_id=$1',[id]);
+        await c.query('UPDATE horda_users SET reset_used=$2 WHERE id=$1',[id,at]);
+        await c.query(`INSERT INTO horda_saves(user_id,data,summary,version,updated_at) VALUES($1,$2,$3,$4,$5) ON CONFLICT(user_id) DO UPDATE SET data=EXCLUDED.data,summary=EXCLUDED.summary,version=EXCLUDED.version,updated_at=EXCLUDED.updated_at`,[id,JSON.stringify(data),JSON.stringify(summary),version,at]);
+        await c.query('COMMIT');return {ok:true,data,version,summary,updatedAt:at};
+      }catch(e){await c.query('ROLLBACK');throw e;}finally{c.release();}
     },
     // ranking: UPSERT condicional (mismo orden que lbCmp: puntaje, ronda, el más rápido)
     async lbPut(week, userId, guardian, e){
@@ -686,7 +724,7 @@ function create(opts){
     });
   }
 
-  function publicUser(u){ return { user: u.user, name: u.name || u.user, email: u.email || null, createdAt: u.createdAt }; }
+  function publicUser(u){ return { user: u.user, name: u.name || u.user, email: u.email || null, createdAt: u.createdAt, resetUsed:!!u.resetUsed }; }
   async function newSession(u){
     const token = newToken(), now = Date.now();
     const s = { tokenHash: sha256(token), userId: u.id, createdAt: now, expiresAt: now + SESSION_TTL_MS };
@@ -725,7 +763,12 @@ function create(opts){
   // Server-controlled champion ownership (Founder / grant-only). Applied to every save the server
   // accepts or serves, so a manipulated client can never persist or receive a Founder it is not owed.
   async function opsState(){ return (await store.gmRead()) || {}; }
-  async function entitledFor(u){ return entitlements.entitledChampions(founderBindings, await opsState(), u.id); }
+  async function entitledFor(u){
+    const current=await store.getUser(u.id),ops=await opsState();
+    const entitled=entitlements.entitledChampions(founderBindings,ops,u.id);
+    if(current?.resetUsed){const grants=entitlements.ledgerChampions(ops,u.id);for(const id of Object.keys(entitled))if(!(grants[id]?.at>current.resetUsed))delete entitled[id];}
+    return entitled;
+  }
   async function putSaveCommon(req, res, u, body){
     const data = body.data;
     if(!data || typeof data !== "object" || Array.isArray(data)) return err(req, res, 400, "BAD_SAVE", "El guardado no tiene el formato esperado.");
@@ -821,6 +864,15 @@ function create(opts){
       const a = await auth(req); if(!a.user) return authFail(req, res, a);
       const meta = await store.getSaveMeta(a.user.id);
       return send(req, res, 200, { user: publicUser(a.user), expiresAt: a.session.expiresAt, save: meta || null });
+    },
+    "POST /api/account/reset-once":async(req,res)=>{
+      const a=await auth(req);if(!a.user)return authFail(req,res,a);
+      const body=await readBody(req,SMALL_BODY_BYTES);
+      if(body.confirm!=="BORRAR TODO" || !Number.isInteger(body.baseVersion))return err(req,res,400,"RESET_CONFIRM","Confirmá BORRAR TODO para reiniciar una sola vez.");
+      const r=await store.resetAccount(a.user.id,body.baseVersion);
+      if(r.used)return err(req,res,409,"RESET_USED","Esta cuenta ya utilizó su único reinicio.");
+      if(r.conflict)return err(req,res,409,"CONFLICT","El progreso cambió. Sincronizá antes de reiniciar.");
+      return send(req,res,200,r);
     },
     "GET /api/save": async (req, res) => {
       const a = await auth(req); if(!a.user) return authFail(req, res, a);

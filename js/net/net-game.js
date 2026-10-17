@@ -634,6 +634,7 @@ function netHostTick(){
    INVITADO
    ===================================================================== */
 function netGuestStartRun(msg){
+  if(typeof runIntroDismiss==="function")runIntroDismiss();
   // reconexión = misma sala y la partida anterior NO había terminado (si terminó, es una nueva)
   const reconnecting = !!(netMatch && netMatch.role==="guest" && netMatch.code===net.code && !netMatch.ended);
   netMatch = {role:"guest", mySlot:net.slot, seed:msg.seed, slots:msg.slots, arena:msg.arena, code:net.code, diff:msg.diff || "normal", lay:!!msg.lay,

@@ -251,7 +251,7 @@ function accountOnState(s){
 }
 async function accountUpload(reason){
   const s = acct.session, y = acct.sync;
-  if(!s || !y || acct.uploading || acct.conflict) return false;
+  if(!s || !y || acct.uploading || acct.resetting || acct.conflict) return false;
   if(y.user !== _acctKey(s.user)) return false;   // todavía no se reconcilió este dispositivo con esta cuenta
   const raw = _acctLocalRaw(); if(!raw) return false;
   let data; try{ data = JSON.parse(raw); }catch(e){ return false; }
@@ -347,37 +347,26 @@ async function _acctReconcile(cloud){
 // Reinicio explícito del jugador: respalda ambas copias antes de reemplazar la nube.
 // La cuenta, contraseña y permisos no cambian. CAS evita borrar cambios de otro celular.
 async function accountStartFresh(){
-  if(!acct.session || acct.uploading || acct.pulling) return false;
-  acct.lastError = "";
+  if(!acct.session || acct.uploading || acct.pulling || acct.conflict)return false;
+  acct.lastError="";
+  if(acct.timer){clearTimeout(acct.timer);acct.timer=null;}
+  acct.pulling=true;acct.resetting=true;
   try{
-    const r = await accountFetch("GET", "/api/save");
-    if(r.status !== 200){ if(r.status === 401) _acctSessionLost(); return false; }
-    const cloud = r.j;
-    const stamp = Date.now();
-    localStorage.setItem(SAVE_KEY+"_antesDeReinicio_"+stamp, _acctLocalRaw() || "{}");
-    localStorage.setItem(SAVE_KEY+"_nubeAntesDeReinicio_"+stamp, JSON.stringify(cloud));
-    const data = defaultSave();
-    for(const c of Object.values(data.champions)) c.unlocked = false;
-    const put = await accountFetch("PUT", "/api/save", {data, baseVersion:cloud.version|0});
-    if(put.status !== 200){
-      acct.lastError = put.status === 409 ? "Otro dispositivo cambió la nube. Revisá las copias y volvé a intentar el reinicio." : (put.j.msg || "No se pudo reiniciar la nube.");
-      if(put.status === 409) await accountPull("conflicto");
-      if(put.status === 401) _acctSessionLost();
-      return false;
-    }
+    const r=await accountFetch("GET","/api/save");
+    if(r.status!==200){acct.lastError=r.j.msg||"No se pudo consultar la nube.";return false;}
+    const result=await accountFetch("POST","/api/account/reset-once",{confirm:"BORRAR TODO",baseVersion:r.j.version|0});
+    if(result.status!==200){acct.lastError=result.j.msg||"No se pudo confirmar el reinicio.";return false;}
+    acct.conflict=null;acct.pendingApply=null;acct.sync=acct.sync||{};acct.sync.user=_acctKey(acct.session.user);
     localStorage.removeItem("laHordaDev");
-    if(new URLSearchParams(location.search).has("dev")){
-      const url = new URL(location.href); url.searchParams.delete("dev"); history.replaceState(null, "", url.href);
-    }
-    acct.conflict = null; acct.pendingApply = null;
-    acct.sync = acct.sync || {};
-    acct.sync.user = _acctKey(acct.session.user);
-    accountApplyCloud({data, version:put.j.version, updatedAt:put.j.updatedAt});
+    for(const key of ["cw-record-crystal","cw-record-coliseum"])localStorage.removeItem(key);
+    const url=new URL(location.href);if(url.searchParams.has("dev")){url.searchParams.delete("dev");history.replaceState(null,"",url.href);}
+    if(typeof worldBookSessionSeen!=="undefined")worldBookSessionSeen=false;
+    accountApplyCloud(result.j);
+    if(save.resetGeneration!==result.j.data.resetGeneration){acct.lastError="La cuenta se reinició en el servidor. Recargá el juego para aplicar el progreso nuevo.";return false;}
+    acct.session.resetUsed=true;_acctSaveSession();
     return true;
-  }catch(e){
-    acct.lastError = e.name === "QuotaExceededError" ? "No hay espacio para respaldar las partidas. No se borró el progreso." : "No se pudo confirmar el reinicio. Sincronizá antes de volver a intentar.";
-    return false;
-  }
+  }catch(e){acct.lastError="No se pudo confirmar el resultado. Sincronizá la cuenta antes de volver a intentar.";return false;}
+  finally{acct.pulling=false;acct.resetting=false;_acctEmit();}
 }
 /* ---------------- identidad pública: Fundador / permisos ----------------
    SOLO para la interfaz (insignia, botón del panel, Test Lab). El servidor decide todo lo demás:
@@ -433,14 +422,15 @@ async function accountAdminAccess(){
 function _acctAddRecovery(body){
   const reset = document.createElement("button");
   reset.type = "button"; reset.className = "btn secondary acc-danger";
-  reset.textContent = "Borrar progreso de prueba y empezar de cero";
+  reset.textContent = "Reiniciar y elegir tres guardianes · una sola vez";
+  reset.disabled=!!(acct.session?.resetUsed || save.resetGeneration);
   reset.onclick = async () => {
     if(acct.busy) return;
-    const ok = typeof gameConfirm === "function" && await gameConfirm("Se reiniciará el progreso de ESTA cuenta en la nube y en este dispositivo: campeones a nivel 1, nueva elección de guardián y campaña desde el inicio. También se borrarán oro, objetos y logros. Las dos partidas anteriores quedarán respaldadas en este dispositivo. Tu cuenta y permisos se conservan.\n\n¿Empezar de cero?", {okText:"Reiniciar mi progreso",cancelText:"Cancelar"});
+    const ok = typeof gameConfirm === "function" && await gameConfirm("Este botón se puede usar UNA SOLA VEZ por cuenta. Perderás TODO el progreso: campeones y sus niveles, habilidades, equipo, objetos, skins, oro, gemas, saldo de Brasas, logros, campaña y ranking. Empezarás de cero y elegirás tres guardianes; el primero será tu principal. Solo se conservan tu acceso a la cuenta y tus permisos. No se puede deshacer.\n\n¿Borrar todo y volver a empezar?", {okText:"Borrar todo · usar mi único reinicio",cancelText:"Cancelar",danger:true});
     if(!ok) return;
-    acct.busy = true; reset.disabled = true; _acctStatus("Respaldando y reiniciando…");
+    acct.busy = true; reset.disabled = true; _acctStatus("Reiniciando tu cuenta…");
     const done = await accountStartFresh();
-    acct.busy = false; reset.disabled = false;
+    acct.busy = false; reset.disabled = done;
     if(done) _acctFinish("Progreso reiniciado en la nube y en este dispositivo.");
     else _acctStatus(acct.lastError || "No se pudo reiniciar. Probá de nuevo.", "err");
   };
@@ -488,7 +478,7 @@ async function accountResolveConflict(choice){
 
 /* ---------------- entrar / crear / salir ---------------- */
 function _acctSetSession(j){
-  acct.session = { token: j.token, user: j.user.user, name: j.user.name || j.user.user, expiresAt: j.expiresAt, apiBase: ACCOUNT_API_BASE };
+  acct.session = { token: j.token, resetUsed:!!j.user.resetUsed, user: j.user.user, name: j.user.name || j.user.user, expiresAt: j.expiresAt, apiBase: ACCOUNT_API_BASE };
   _acctSaveSession();
   try{ sessionStorage.removeItem(ACCOUNT_GUEST_KEY); }catch(e){}
   // el nombre de la cuenta pasa a ser el de la Sala multijugador
@@ -907,7 +897,7 @@ function _acctRenderChip(){
   // al cerrar u ocultar la pestaña: se sube lo pendiente (beacon si es chico; si no, queda en cola)
   window.addEventListener("pagehide", () => {
     const s = acct.session, y = acct.sync;
-    if(!s || !y || !y.dirty || acct.conflict || y.user !== _acctKey(s.user) || !navigator.sendBeacon) return;
+    if(!s || !y || !y.dirty || acct.resetting || acct.conflict || y.user !== _acctKey(s.user) || !navigator.sendBeacon) return;
     const raw = _acctLocalRaw(); if(!raw) return;
     const body = '{"token":' + JSON.stringify(s.token) + ',"baseVersion":' + (y.version | 0) + ',"data":' + raw + "}";
     if(body.length > ACCOUNT_BEACON_MAX) return;
