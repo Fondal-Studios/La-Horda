@@ -515,10 +515,10 @@ function aidArtInlay(arena, variant){
 }
 function aidDrawInlays(){
  if(!player || player.duelActive || !AID_INLAY_PALETTES[currentArena])return;
- const step=176, cx=camSub().x, cy=camCenterY();
+ const step=currentArena==='abismo'?104:176, cx=camSub().x+(typeof CAM_LEAD_X==='number'?CAM_LEAD_X:0), cy=camCenterY();
  const hw=VW/(2*CAM_ZOOM)+100, hh=VH/(2*CAM_ZOOM)+100;
  let drawn=0;ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=0.58;
- for(let gy=Math.floor((cy-hh)/step);gy<=Math.ceil((cy+hh)/step);gy++){
+ for(let gy=Math.floor((cy-hh)/step);gy<=Math.ceil((cy+hh)/step)&&drawn<64;gy++){
   for(let gx=Math.floor((cx-hw)/step);gx<=Math.ceil((cx+hw)/step);gx++){
    if(drawn>=64)break;
    const seed=(Math.imul(gx,73856093)^Math.imul(gy,19349663))>>>0;
