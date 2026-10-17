@@ -229,17 +229,18 @@ function bsvArtGlowShrooms(v){
 function bsvTry(x, y, r, opt){
   opt = opt || {};
   x = Math.round(x); y = Math.round(y);
-  if(!aidInside(x, y, r + (opt.edge===undefined ? 110 : opt.edge))) return false;
-  if(Math.hypot(x/1.18, y/0.82) < (opt.center || 330)) return false;            // salida de héroes y jefe
-  if(!opt.onPath && bsvPathDist(x, y) < 70 + r) return false;                    // los senderos quedan libres
+  const no = why=>{ const w = BSV.info.why; w[why] = (w[why]||0) + 1; return false; };
+  if(!aidInside(x, y, r + (opt.edge===undefined ? 110 : opt.edge))) return no("borde");
+  if(Math.hypot(x/1.18, y/0.82) < (opt.center || 330)) return no("centro");     // salida de héroes y jefe
+  if(!opt.onPath && bsvPathDist(x, y) < 70 + r) return no("sendero");            // los senderos quedan libres
   const clr = opt.clear===undefined ? 70 : opt.clear;
-  if(aidSolids.some(s=>Math.hypot(s.x-x, s.y-y) < s.r + r + clr)) return false;
-  if(labyrinthWalls.some(w=>aidPointInWall(w, x, y, r + clr))) return false;
+  if(aidSolids.some(s=>Math.hypot(s.x-x, s.y-y) < s.r + r + clr)) return no("solido");
+  if(labyrinthWalls.some(w=>aidPointInWall(w, x, y, r + clr))) return no("muro");
   const s = {x, y, r, bsv:true}; if(opt.low) s.low = true;
   aidSolids.push(s);
   // navegación: nada de lo que se alcanzaba antes puede quedar encerrado
   const now = _layReach(AID_LAYOUT_PAD), base = BSV._base;
-  for(let c=0;c<base.seen.length;c++) if(base.seen[c] && !now.blocked[c] && !now.seen[c]){ aidSolids.pop(); return false; }
+  for(let c=0;c<base.seen.length;c++) if(base.seen[c] && !now.blocked[c] && !now.seen[c]){ aidSolids.pop(); return no("encierra"); }
   return true;
 }
 function bsvPut(art, x, y, r, opt){
@@ -251,21 +252,22 @@ function bsvPut(art, x, y, r, opt){
   return true;
 }
 function bsvBuild(rnd){
-  const info = BSV.info = {placed:0, rejected:0, boulders:0, thickets:0, logs:0, columns:0, trees:0};
+  const info = BSV.info = {placed:0, rejected:0, boulders:0, thickets:0, logs:0, columns:0, trees:0, why:{}};
   const salt = _aidSalt();
   const key = String(salt);
   if(!BSV.ground || BSV.groundKey !== key){ BSV.ground = bsvBakeGround(salt); BSV.groundKey = key; }
   BSV._base = _layReach(AID_LAYOUT_PAD);
   // --- templo en ruinas (noroeste): losas, altar bajo, columnas rotas con hueco de entrada al sur ---
-  const T = {x:-640, y:-470};
+  const T = {x:-560, y:-350};
   aidDecal(bsvArtFlagstones(), T.x, T.y, {scale:1.6});
   aidLights.push({x:T.x, y:T.y-10, r:150, rgb:"150,230,110", a:0.34, flick:0.1, ph:1.3});
   [[-150,-70,0],[-90,-110,1],[0,-120,0],[90,-110,1],[150,-70,0],[-165,10,1],[165,10,0]].forEach(([dx,dy,v])=>{
-    if(bsvPut(bsvArtBrokenColumn(v), T.x+dx, T.y+dy, 14, {clear:30, edge:90, onPath:true, center:200})) info.columns++;
+    if(bsvPut(bsvArtBrokenColumn(v), T.x+dx, T.y+dy, 14, {clear:30, edge:60, onPath:true, center:200})) info.columns++;
   });
   // --- árboles antiguos extra en los huecos del borde (copas altas, paran los tiros) ---
-  [[-900,-340,1],[880,-380,2],[930,300,0],[-920,380,2],[300,-690,1],[-330,690,0],[-190,-700,2]].forEach(([x,y,v],i)=>{
-    if(bsvPut(aidArtAncientTree(v), x, y, 26, {flip:i%2===1, clear:60, edge:50, center:200})) info.trees++;
+  [0.75, 1.65, 2.55, 3.45, 4.35, 5.2, 6.1].forEach((a,i)=>{
+    const p = aidOnRing(795, 795, a);
+    if(bsvPut(aidArtAncientTree(i%3), p.x, p.y, 26, {flip:i%2===1, clear:60, edge:50, center:200})) info.trees++;
   });
   // --- rocas: solas y en pares, repartidas por anillos ---
   const place = (n, fn, ring, arc0)=>{
