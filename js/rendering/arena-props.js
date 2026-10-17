@@ -453,3 +453,82 @@ function aidArtInfernalSpike(v){
     aidPx(g, 2, h-5, 26, 5, "#1a0c16");
   });
 }
+
+// Environmental storytelling: small, flat, noninteractive inlays. Pixel geometry is
+// cached by biome/variant; no gameplay RNG, collision changes or per-frame canvases.
+const AID_INLAY_PALETTES = {
+ ciudad:['#302b30','#65534b','#92745b'], fortaleza:['#302c29','#655343','#a7824f'],
+ bosque:['#24302b','#455b3c','#829365'], micelial:['#302635','#604365','#a078a2'],
+ hielo:['#293b4b','#496577','#91b7c5'], acuatica:['#233b40','#42636a','#7baca7'],
+ laberinto:['#342e25','#685b43','#aa9363'], abismo:['#29253c','#52496a','#9381ac'],
+ minas:['#2c2c31','#615b56','#b39767'], infernal:['#342424','#674137','#a96b4b'],
+ divina:['#343139','#726a61','#c2b28b'], coliseo:['#322b2c','#6e5046','#b58a60'],
+ convergencia:['#292e39','#4d6271','#91b4bc']
+};
+function aidArtInlay(arena, variant){
+ const colors=AID_INLAY_PALETTES[arena]; if(!colors)return null;
+ return aidArt('inlay-'+arena+'-'+variant,64,40,(g)=>{
+  const px=(x,y,w,h,c=1)=>aidPx(g,x,y,w,h,colors[c]);
+  const rnd=aidRng(4107+variant*179+arena.length*71);
+  // Weathered foundation, deliberately fragmented so it cannot read as a pickup.
+  for(let i=0;i<12;i++)px(5+rnd()*53,7+rnd()*26,2+rnd()*4,1,0);
+  if(arena==='ciudad'){
+   for(let y=0;y<3;y++)for(let x=0;x<4;x++){px(9+x*11+(y%2)*3,11+y*6,9,4);px(9+x*11+(y%2)*3,11+y*6,7,1,2);}
+   for(let i=0;i<5;i++)px(19+i*5,8+i*4,2,3,0);
+  }else if(arena==='fortaleza'){
+   px(8,13,46,14,0);px(8,13,46,2);px(8,26,46,2);
+   for(let x=12;x<52;x+=6){px(x,15,2,10);px(x,15,1,3,2);}px(4,20,8,3);px(53,20,7,3);
+  }else if(arena==='bosque'){
+   for(let i=0;i<9;i++){px(9+i*5,23-(i%3)*3,7,2);px(12+i*5,18-(i%3)*3,2,7);px(14+i*5,16-(i%3)*3,4,2,2);}
+   px(26,11,13,3,0);px(30,8,2,9);px(34,10,5,1,2);
+  }else if(arena==='micelial'){
+   for(let i=0;i<7;i++){const x=8+i*7,y=15+(i%3)*4;px(x,y,2,11);px(x-3,y,8,3);px(x-2,y-2,6,2,2);px(x+3,y+8,5,1,0);}
+  }else if(arena==='hielo'){
+   for(let i=0;i<5;i++){const x=8+i*9,y=12+(i%2)*7;px(x,y,13,2);px(x+5,y-4,2,12);px(x+2,y-2,8,1,2);px(x+7,y+4,7,1,0);}
+  }else if(arena==='acuatica'){
+   for(let i=0;i<5;i++){const x=9+i*10,y=20+(i%2)*5;px(x,y,6,4);px(x+1,y-2,4,2,2);px(x+2,y,1,3,0);px(x+6,y+4,4,1);}
+   for(let i=0;i<4;i++)px(14+i*9,9,6,1);
+  }else if(arena==='laberinto'){
+   px(9,9,45,2);px(9,9,2,23);px(9,30,45,2);px(52,9,2,23);
+   px(17,16,30,2);px(17,16,2,10);px(17,24,21,2);px(37,19,2,7,2);px(45,16,2,10);
+  }else if(arena==='abismo'){
+   for(let i=0;i<6;i++){const x=9+i*8,y=10+(i%3)*6;px(x,y,6,3);px(x+1,y+3,4,5,0);px(x,y,4,1,2);}
+  }else if(arena==='minas'){
+   px(8,12,46,2);px(8,26,46,2);for(let x=12;x<53;x+=10){px(x,9,3,22,0);px(x,10,1,20);}
+   px(29,17,7,4);px(31,16,4,1,2);
+  }else if(arena==='infernal'){
+   for(let i=0;i<8;i++){px(9+i*6,20+(i%3)*2,7,3,0);px(10+i*6,21+(i%3)*2,4,1);}
+   for(let i=0;i<4;i++){px(17+i*9,10,3,6);px(19+i*9,12,4,1,2);}
+  }else if(arena==='divina'){
+   for(let i=0;i<6;i++){px(8+i*8,16+(i%2)*4,6,6);px(9+i*8,17+(i%2)*4,4,1,2);}
+   px(24,9,16,2);px(30,6,3,8,2);px(24,30,16,1);
+  }else if(arena==='coliseo'){
+   px(13,27,38,2);for(let i=0;i<5;i++){px(12+i*4,23-i*3,6,3);px(46-i*4,23-i*3,6,3);}
+   px(29,16,5,10,0);px(30,16,2,8,2);
+  }else{
+   for(let i=0;i<5;i++){px(10+i*9,12+i*3,6,2);px(12+i*9,22-i*2,2,7);}
+   px(28,14,7,9,0);px(30,16,3,5,2);
+  }
+  // Three authored wear masks per motif, not hue-only variants.
+  for(let i=0;i<variant*7;i++)g.clearRect(rnd()*64|0,rnd()*40|0,2+rnd()*5|0,2);
+ });
+}
+function aidDrawInlays(){
+ if(!player || player.duelActive || !AID_INLAY_PALETTES[currentArena])return;
+ const step=176, cx=camSub().x, cy=camCenterY();
+ const hw=VW/(2*CAM_ZOOM)+100, hh=VH/(2*CAM_ZOOM)+100;
+ let drawn=0;ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=0.58;
+ for(let gy=Math.floor((cy-hh)/step);gy<=Math.ceil((cy+hh)/step);gy++){
+  for(let gx=Math.floor((cx-hw)/step);gx<=Math.ceil((cx+hw)/step);gx++){
+   if(drawn>=64)break;
+   const seed=(Math.imul(gx,73856093)^Math.imul(gy,19349663))>>>0;
+   if(seed%4===0)continue;
+   const x=gx*step+(seed%47)-23,y=gy*step+((seed>>>8)%43)-21;
+   // Check full footprint, including collapsing platforms and custom map geometry.
+   if(!aidInside(x,y,65)||!aidInside(x-60,y-36,8)||!aidInside(x+60,y+36,8)||!aidInside(x-60,y+36,8)||!aidInside(x+60,y-36,8))continue;
+   if(typeof labyrinthWalls!=='undefined' && labyrinthWalls.some(w=>aidPointInWall(w,x,y,65)))continue;
+   const img=aidArtInlay(currentArena,seed%3);ctx.drawImage(img,x-64,y-40,128,80);drawn++;
+  }
+ }
+ ctx.restore();
+}

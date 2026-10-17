@@ -249,3 +249,14 @@ button.cx-card:hover, button.cx-home-card:hover, button.cx-chapter:hover, button
 .cx-unlock-bar > div{ height:100%; background:var(--ui-gold, #ffd34d); }
 .cx-unlock-n{ font-size:0.85rem; color:var(--ui-dim, #b9b0a0); }
 .cx-unlock-or{ margin-top:4px; font-size:0.8rem; color:var(--ui-dim, #b9b0a0); }
+
+/* Champion folios: real animated artwork, readable quotations and touch controls. */
+.cx-motion-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.cx-motion-gallery figure{margin:0;min-width:0;border:1px solid #685039;background:linear-gradient(#201922,#110e14);border-radius:6px;overflow:hidden}
+.cx-motion-pv{width:100%;height:132px;display:block;image-rendering:pixelated}
+.cx-motion-gallery figcaption{text-align:center;padding:8px 2px;color:#d7b98b;font-size:12px}
+.cx-voice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.cx-voice-grid .cx-voice{border:1px solid #584232;border-left:3px solid #b38b54;padding:12px;background:#19151c;overflow-wrap:anywhere}
+.cx-voice-grid p{line-height:1.65;margin:9px 0 12px}
+.cx-voice-grid .cx-btn,[data-cx-stop]{min-height:44px}
+@media(max-width:700px){.cx-motion-pv{height:104px}.cx-voice-grid{grid-template-columns:1fr}}
