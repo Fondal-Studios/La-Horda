@@ -21,7 +21,7 @@ const BOTAI = {
   GROUP_MIN:3,           // héroes sanos que hacen falta para empujar/entrar al objetivo épico en grupo
   PUSH_FROM_MS:150000,   // desde cuándo se agrupan para empujar
   DEFEND_R:1900,         // a qué distancia de una torre bajo ataque acuden los bots a defender
-  EPIC_TRY_MS:45000, EPIC_COOL_MS:60000,   // cuánto intenta un épico antes de rendirse y cuánto espera para reintentar
+  EPIC_TRY_MS:30000, EPIC_COOL_MS:90000,   // cuánto intenta un épico antes de rendirse y cuánto espera para reintentar
   PLAN_MS:500, DECIDE_MS:250
 };
 function botVictoryOn(h){ const t = globalThis.BOT_VICTORY_TEAMS; return !t || (h && t.includes(h.team)); }
@@ -68,7 +68,7 @@ function lanesPlan(team){
       if(e.lanesProxy){ if(e.kind === "hero") hv++; } else if(Math.hypot(e.x - s.x, e.y - s.y) < 640) en++;
     }
     // amenaza real: héroes rivales encima, o una horda que ya la está dañando (una oleada normal no mueve a nadie), o algo en el cristal
-    const real = hv > 0 || (s.kind === "tower" && en >= 4 && s.hp < s.maxHp * 0.85) || (s.kind === "crystal" && en > 0);
+    const real = (hv > 0 && (s.hp < s.maxHp * 0.9 || en >= 3 || hv >= 2)) || (s.kind === "tower" && en >= 4 && s.hp < s.maxHp * 0.85) || (s.kind === "crystal" && en > 0);
     const score = en + hv * 4 + (s.kind === "crystal" ? 12 : 0);
     if(real && score > best){ best = score; plan.alert = {s, en, hv, score}; }
   }
@@ -80,7 +80,7 @@ function lanesPlan(team){
     let ep = null, bd = 1e12;
     const ref = laneRally(team);
     for(const e of L.epics){ if(!e.mon || !e.mon.alive) continue; const d = Math.hypot(e.mon.x - ref.x, e.mon.y - ref.y); if(d < bd){ bd = d; ep = e.mon; } }
-    // presupuesto del intento: si tras 45 s el épico sigue sano (>50 %), se rinde 60 s y vuelve a los carriles (no se queda de por vida en el río)
+    // presupuesto del intento: si tras 30 s el épico sigue sano (>50 %), se rinde 90 s y vuelve a los carriles (no se queda de por vida en el río)
     let et = P[team] && P[team].et;
     if(ep){
       if(!et || et.mon !== ep) et = {mon:ep, t0:L.t, until:0};
