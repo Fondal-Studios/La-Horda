@@ -256,6 +256,7 @@ function codexHomeHtml(){
       <div class="cx-home-blurb">${sec.blurb}</div><div class="cx-home-count">${count}</div></div></button>`;
   return `<div class="cx-home">
     <div class="cx-home-head"><div class="cx-home-brand">CÓDICE</div>${typeof alphaGuideOpen==="function" ? `<button class="cx-btn" id="codex-guide-btn">GUÍA · aprender a jugar</button>` : ""}<div class="cx-home-sub">El archivo prohibido de la Horda · lo que viste, lo que venciste y lo que todavía te espera</div></div>
+    ${playerBookHtml()}
     <div class="cx-home-grid">
       ${card(CODEX_SECTIONS[0], `<div class="cx-home-trio">${heroes.map((k,i)=>_pv({kind:"champ", key:k, anim:i===1?"idle":"walk", bg:"none"}, "cx-pv cx-trio-"+i)).join("")}</div>`, `${N.champs[0]} / ${N.champs[1]} tuyos`)}
       ${card(CODEX_SECTIONS[1], _pv({kind:"enemy", key:cre, anim:"walk", arena:codexArenaOfType(cre), silhouette:!knownCre.length}), `${N.creatures[0]} / ${N.creatures[1]} descubiertas · ${N.creatures[2]} derrotadas`)}

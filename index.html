@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="css/panels.css">
 <link rel="stylesheet" href="css/overlays.css">
 <link rel="stylesheet" href="css/codex.css">
+<link rel="stylesheet" href="css/player-book.css">
 <link rel="stylesheet" href="css/ui-kit.css">
 <link rel="stylesheet" href="css/story.css">
 <link rel="stylesheet" href="css/camp.css">
@@ -197,7 +198,7 @@
         </div>
         <h2 class="hub-section-title">EXPLORAR</h2>
         <div class="hub-row hub-row-explore">
-          <button class="hub-tile" id="mainmenu-codex-btn"><span class="hub-tile-ico">📖</span><span class="hub-tile-title">CÓDICE</span><span class="hub-tile-sub">Bestiario · jefes · lore</span></button>
+          <button class="hub-tile" id="mainmenu-codex-btn"><span class="hub-tile-ico">📖</span><span class="hub-tile-title">CÓDICE</span><span class="hub-tile-sub">Cómo jugar · objetivos · colección</span></button>
           <button class="hub-tile" id="mainmenu-guardianes-btn"><span class="hub-tile-ico">🛡</span><span class="hub-tile-title">GUARDIANES</span><span class="hub-tile-sub">Equipo · talentos · skins</span><span class="ui-tag hub-tile-badge hidden" id="hub-badge-guard"></span></button>
           <button class="hub-tile" id="mainmenu-tienda-btn"><span class="hub-tile-ico">🪙</span><span class="hub-tile-title">TIENDA</span><span class="hub-tile-sub">Ofertas del día · skins</span><span class="ui-tag new hub-tile-badge hidden" id="hub-badge-shop">NUEVO</span><span class="ui-tag sale hub-tile-offer hidden" id="hub-badge-offer">OFERTA</span></button>
           <button class="hub-tile" id="mainmenu-jugar-btn"><span class="hub-tile-ico">🌐</span><span class="hub-tile-title">MULTIJUGADOR</span><span class="hub-tile-sub">Sala con código · modos</span></button>
@@ -534,10 +535,10 @@
   </div>
 </div>
 
-<div id="run-intro" class="hidden" role="dialog" aria-label="El Hechicero">
-      <canvas class="ri-art"></canvas>
+<div id="run-intro" class="hidden" role="dialog" aria-label="Códice: objetivo de tu incursión">
+      <canvas class="ri-art" role="img" aria-label="Libro antiguo ilustrado con espadas, runas y el viaje de un guardián"></canvas>
       <div class="ri-card">
-        <div class="ri-who">EL HECHICERO SUPREMO</div>
+        <div class="ri-who">CÓDICE DE LA HORDA</div>
         <div class="ri-arena"></div>
         <div class="ri-say"></div>
         <div class="ri-row ri-goalrow"><b class="ri-k goal">🎯 Objetivo</b><span class="ri-goal"></span></div>
@@ -829,6 +830,7 @@
 <script src="js/data/body-swaps.js"></script>
 <script src="js/ui/codex/codex-track.js"></script>
 <script src="js/ui/codex/codex-preview.js"></script>
+<script src="js/ui/codex/player-book.js"></script>
 <script src="js/ui/codex/codex.js"></script>
 <script src="js/core/run.js"></script>
 <script src="js/core/update.js"></script>

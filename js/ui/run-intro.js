@@ -65,7 +65,7 @@ const ARENA_BRIEF = {
 // Aviso (solo texto, sin sistema que adjudique): "completar el juego" = vencer al Rey de la Horda en la Arena Infernal, la misma condición
 // que abre a Aurelia (js/systems/ascension-unlocks.js). Mismo texto que la tarjeta de Campaña (#campaign-first-notice en index.html).
 const FIRST_FINISH_NOTICE = "El primer jugador en completar el juego puede pedir un campeón con diseño propio.";
-const RUN_INTRO = { open:false, raf:0, t0:0, onGo:null, prologue:false, pages:[], arena:null };
+const RUN_INTRO = { open:false, raf:0, t0:0, onGo:null, prologue:false, pages:[], arena:null, turning:false };
 
 function runIntroShow(arena, onGo){
   const el = document.getElementById("run-intro"); const B = ARENA_BRIEF[arena];
@@ -96,7 +96,7 @@ function runIntroShow(arena, onGo){
   RUN_INTRO.open = true; RUN_INTRO.onGo = onGo; RUN_INTRO.t0 = performance.now(); RUN_INTRO.arena = arena;
   cancelAnimationFrame(RUN_INTRO.raf);
   const cv = el.querySelector("canvas");
-  const draw = ()=>{ if(!RUN_INTRO.open) return; runIntroDraw(cv, (performance.now()-RUN_INTRO.t0)/1000); RUN_INTRO.raf = requestAnimationFrame(draw); };
+  const draw = ()=>runIntroDraw(cv);
   draw();
   if(typeof playSfx==="function") playSfx("ready");
 }
@@ -112,7 +112,7 @@ function runIntroFill(el, arena, B){
     whenAssetsReady(()=>{ if(!RUN_INTRO.prologue){ go.disabled = false; go.textContent = "¡A LA BATALLA!"; } },
       pct=>{ if(!RUN_INTRO.prologue && go.disabled) go.textContent = "Preparando la arena… " + pct + "%"; });
   }
-  const tap = el.querySelector(".ri-tap"); if(tap) tap.textContent = pro ? "tocá para seguir" : "tocá ¡A LA BATALLA! para empezar";
+  const tap = el.querySelector(".ri-tap"); if(tap) tap.textContent = pro ? "tocá SEGUIR para pasar de página" : "tocá ¡A LA BATALLA! para empezar";
   // "Saltar ▸▸" (arriba a la izquierda, sobre el arte): con la historia en pantalla, un toque lleva directo a la
   // ficha de la arena (primer arranque corto)
   let skip = el.querySelector(".ri-skip");
@@ -120,7 +120,7 @@ function runIntroFill(el, arena, B){
     skip = document.createElement("button"); skip.type = "button"; skip.className = "btn secondary small ri-skip"; skip.textContent = "Saltar ▸▸";
     skip.setAttribute("aria-label", "Saltar la historia");
     skip.addEventListener("click", ev=>{
-      ev.stopPropagation(); if(!RUN_INTRO.open || !RUN_INTRO.prologue) return;
+      ev.stopPropagation(); if(!RUN_INTRO.open || !RUN_INTRO.prologue || RUN_INTRO.turning) return;
       RUN_INTRO.pages = []; RUN_INTRO.prologue = false; RUN_INTRO.t0 = performance.now();
       runIntroFill(el, RUN_INTRO.arena, ARENA_BRIEF[RUN_INTRO.arena]);
     });
@@ -136,7 +136,7 @@ function runIntroFill(el, arena, B){
     hero.textContent = ""; hero.style.display = "none"; if(actEl) actEl.textContent = "";
     return;
   }
-  if(who) who.textContent = "EL HECHICERO SUPREMO";
+  if(who) who.textContent = "CÓDICE · TU PRÓXIMA INCURSIÓN";
   // en qué acto de la historia estás, y lo que dice tu guardián al entrar (HERO_VOICES, story-text.js)
   const act = typeof storyActOf==="function" ? storyActOf(arena) : null;
   if(actEl) actEl.textContent = act ? "ACTO " + act.n + " · " + act.name : "";
@@ -145,7 +145,7 @@ function runIntroFill(el, arena, B){
   if(HV && HV.pick && cls){ hero.innerHTML = ""; const b = document.createElement("b"); b.textContent = cls.name; b.style.color = cls.color || ""; hero.appendChild(b); hero.appendChild(document.createTextNode(" «" + HV.pick + "»")); hero.style.display = ""; }
   else { hero.textContent = ""; hero.style.display = "none"; }
   el.querySelector(".ri-arena").textContent = (M.icon ? M.icon + " " : "") + (typeof campaignNumberLabel==="function" && campaignNumberLabel(arena) ? campaignNumberLabel(arena) + " — " : "") + (M.label || arena).toUpperCase();
-  el.querySelector(".ri-say").textContent = "«" + B.say + "»";
+  el.querySelector(".ri-say").textContent = "Avanzá por la campaña, recuperá los cristales y enfrentá al Rey de la Horda. Esta página te muestra cómo superar la arena que elegiste.";
   el.querySelector(".ri-kill").textContent = B.kill;
   el.querySelector(".ri-help").textContent = B.help;
   el.querySelector(".ri-goal").textContent = (/^Sobreviv/.test(B.goal) ? "" : "SOBREVIVÍ: aguantá 10 niveles con vida. ") + B.goal;
@@ -166,11 +166,13 @@ function runIntroHeroEl(el){
   return h;
 }
 function runIntroGo(){
-  if(!RUN_INTRO.open) return;
+  if(!RUN_INTRO.open || RUN_INTRO.turning) return;
   if(performance.now() - RUN_INTRO.t0 < 450) return; // un toque apurado del botón "Comenzar" no la saltea
   if(RUN_INTRO.prologue){ // pantalla de historia → la siguiente, y al final la ficha de la arena
-    RUN_INTRO.pages.shift(); RUN_INTRO.prologue = RUN_INTRO.pages.length > 0; RUN_INTRO.t0 = performance.now();
-    runIntroFill(document.getElementById("run-intro"), RUN_INTRO.arena, ARENA_BRIEF[RUN_INTRO.arena]);
+    runIntroTurnPage(()=>{
+      RUN_INTRO.pages.shift(); RUN_INTRO.prologue = RUN_INTRO.pages.length > 0; RUN_INTRO.t0 = performance.now();
+      runIntroFill(document.getElementById("run-intro"), RUN_INTRO.arena, ARENA_BRIEF[RUN_INTRO.arena]);
+    });
     return;
   }
   if(typeof assetsAllReady==="function" && !assetsAllReady()) return; // "Preparando la arena…"
@@ -178,94 +180,51 @@ function runIntroGo(){
   document.getElementById("run-intro").classList.add("hidden");
   const fn = RUN_INTRO.onGo; RUN_INTRO.onGo = null; if(fn) fn();
 }
-// Alas de luz (estilo ángel de Diablo): cintas de luz que nacen en la espalda, suben un poco y
-// caen hacia afuera; cada cinta se afina hacia la punta (relleno, no trazo) y flamea despacio.
-function _bz(p0, p1, p2, p3, u){ const v = 1-u; return v*v*v*p0 + 3*v*v*u*p1 + 3*v*u*u*p2 + u*u*u*p3; }
-function _riWing(c, cx, cy, side, t, s){
-  c.save(); c.globalCompositeOperation = "lighter";
-  const N = 9, SEG = 22;
-  for(let i=0;i<N;i++){
-    const k = i/(N-1);
-    const fl = Math.sin(t*1.4 + i*0.8), fl2 = Math.sin(t*0.9 + i*0.5);
-    const P = [[cx + side*6*s, cy],
-               [cx + side*(55 + k*25)*s, cy - (95 - k*55)*s + fl2*5*s],
-               [cx + side*(140 + k*35)*s + side*fl*6*s, cy - (60 - k*110)*s],
-               [cx + side*(170 + k*20)*s + side*fl*12*s, cy + (25 + k*120)*s]];
-    const wid = (13 - k*5)*s;
-    const L = [], R = [];
-    for(let j=0;j<=SEG;j++){
-      const u = j/SEG;
-      const x = _bz(P[0][0],P[1][0],P[2][0],P[3][0],u), y = _bz(P[0][1],P[1][1],P[2][1],P[3][1],u);
-      const u2 = Math.min(1, u+0.02), x2 = _bz(P[0][0],P[1][0],P[2][0],P[3][0],u2), y2 = _bz(P[0][1],P[1][1],P[2][1],P[3][1],u2);
-      let nx = -(y2-y), ny = (x2-x); const nl = Math.hypot(nx, ny)||1; nx/=nl; ny/=nl;
-      const w = wid*Math.sin(Math.PI*Math.min(1, u*1.15 + 0.04))*(1 - u*0.55) + 0.6*s;
-      L.push([x + nx*w, y + ny*w]); R.push([x - nx*w, y - ny*w]);
-    }
-    const g = c.createLinearGradient(P[0][0], P[0][1], P[3][0], P[3][1]);
-    g.addColorStop(0, "rgba(255,252,236,0.9)"); g.addColorStop(0.4, "rgba(255,228,160,0.55)"); g.addColorStop(1, "rgba(255,180,90,0)");
-    c.fillStyle = g; c.globalAlpha = 0.85 - k*0.25;
-    c.beginPath(); c.moveTo(L[0][0], L[0][1]);
-    for(const p of L) c.lineTo(p[0], p[1]);
-    for(let j=R.length-1;j>=0;j--) c.lineTo(R[j][0], R[j][1]);
-    c.closePath(); c.fill();
-    // núcleo brillante de cada pluma
-    c.strokeStyle = "rgba(255,255,245,0.8)"; c.lineWidth = 1.2*s; c.globalAlpha = 0.7 - k*0.3;
-    c.beginPath(); c.moveTo(P[0][0], P[0][1]); c.bezierCurveTo(P[1][0], P[1][1], P[2][0], P[2][1], P[3][0], P[3][1]); c.stroke();
-  }
-  c.restore();
-}
-function runIntroDraw(cv, t){
+// El libro solo anima al pasar página; permanece quieto durante la lectura.
+const RUN_BOOK_ART = new Image();
+RUN_BOOK_ART.src = "assets/ui/codex/grimoire.webp";
+RUN_BOOK_ART.onload = ()=>{ if(RUN_INTRO.open) runIntroDraw(document.querySelector("#run-intro canvas")); };
+function runIntroDraw(cv){
+  if(!cv) return;
   const dpr = Math.min(2, window.devicePixelRatio||1);
-  const W = cv.clientWidth, H = cv.clientHeight;
-  if(cv.width !== Math.round(W*dpr) || cv.height !== Math.round(H*dpr)){ cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr); }
-  const c = cv.getContext("2d"); c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, W, H);
-  const scale = Math.min(W/360, H/330);
-  const cx = W/2, cy = H*0.5;
-  // resplandor de fondo
-  const rg = c.createRadialGradient(cx, cy, 10, cx, cy, Math.min(W, H)*0.5);
-  rg.addColorStop(0, "rgba(255,226,150,0.35)"); rg.addColorStop(0.4, "rgba(170,110,60,0.12)"); rg.addColorStop(1, "rgba(0,0,0,0)");
-  c.fillStyle = rg; c.fillRect(0, 0, W, H);
-  // rayos de luz detrás
-  c.save(); c.globalCompositeOperation = "lighter"; c.translate(cx, cy - 40*scale);
-  for(let i=0;i<14;i++){
-    const a = i/14*Math.PI*2 + t*0.08;
-    c.rotate(Math.PI*2/14); c.globalAlpha = 0.05 + 0.04*Math.sin(t*1.7 + i);
-    c.fillStyle = "#ffe7a8"; c.beginPath(); c.moveTo(0, 0); c.lineTo(-9*scale, -150*scale); c.lineTo(9*scale, -150*scale); c.closePath(); c.fill();
+  const W=cv.clientWidth, H=cv.clientHeight;
+  cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
+  const c=cv.getContext("2d"); c.setTransform(dpr,0,0,dpr,0,0);
+  if(RUN_BOOK_ART.complete && RUN_BOOK_ART.naturalWidth){
+    const scale=Math.min(W/RUN_BOOK_ART.naturalWidth,H/RUN_BOOK_ART.naturalHeight);
+    const w=RUN_BOOK_ART.naturalWidth*scale,h=RUN_BOOK_ART.naturalHeight*scale;
+    c.imageSmoothingEnabled=false;c.drawImage(RUN_BOOK_ART,(W-w)/2,(H-h)/2,w,h);
   }
-  c.restore();
-  // alas (detrás del cuerpo)
-  const shY = cy - 62*scale;
-  _riWing(c, cx - 6*scale, shY, -1, t, scale);
-  _riWing(c, cx + 6*scale, shY, 1, t, scale);
-  // el Hechicero (retrato real de su hoja), aclarado para que se vea "santo"
-  const img = HECH_PORTRAIT;
-  if(img && img.complete && img.naturalWidth){
-    const h = 250*scale, w = img.naturalWidth/img.naturalHeight*h;
-    const bob = Math.sin(t*1.6)*4*scale;
-    c.save(); c.imageSmoothingEnabled = false;
-    c.filter = "brightness(1.28) saturate(0.7) contrast(1.08)";
-    c.drawImage(img, cx - w/2, cy - h*0.62 + bob, w, h);
-    c.filter = "none";
-    // halo: brillo aditivo encima
-    c.globalCompositeOperation = "lighter"; c.globalAlpha = 0.35 + 0.15*Math.sin(t*2.2);
-    const hg = c.createRadialGradient(cx, cy - h*0.47 + bob, 2, cx, cy - h*0.47 + bob, 60*scale);
-    hg.addColorStop(0, "rgba(255,240,190,0.9)"); hg.addColorStop(1, "rgba(255,200,100,0)");
-    c.fillStyle = hg; c.fillRect(cx - 70*scale, cy - h*0.47 + bob - 70*scale, 140*scale, 140*scale);
-    c.restore();
-  }
-  // motas de luz que suben
-  c.save(); c.globalCompositeOperation = "lighter";
-  for(let i=0;i<26;i++){
-    const ph = (t*0.18 + i*0.137) % 1, x = cx + Math.sin(i*12.9)*150*scale + Math.sin(t + i)*6, y = cy + 120*scale - ph*260*scale;
-    c.globalAlpha = Math.sin(ph*Math.PI)*0.8; c.fillStyle = "#fff0c0"; c.fillRect(x, y, 2*scale, 2*scale);
-  }
-  c.restore();
 }
+function runIntroTurnPage(done){
+  const el=document.getElementById("run-intro"),cv=el.querySelector("canvas");
+  if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches){done();return;}
+  RUN_INTRO.turning=true; el.classList.add("ri-turning");
+  const start=performance.now(), duration=520;
+  function frame(now){
+    if(!RUN_INTRO.open){RUN_INTRO.turning=false;el.classList.remove("ri-turning");return;}
+    const p=Math.min(1,(now-start)/duration),ease=(1-Math.cos(p*Math.PI))/2;
+    runIntroDraw(cv);
+    const c=cv.getContext("2d"),W=cv.clientWidth,H=cv.clientHeight;
+    const size=Math.min(W,H),cx=W/2,top=(H-size)/2+size*.12, bottom=top+size*.64;
+    // Une feuille tourne autour de la reliure: son bord traverse de droite à gauche.
+    const edge=cx+Math.cos(ease*Math.PI)*size*.39, lift=Math.sin(ease*Math.PI)*size*.13;
+    c.save(); c.beginPath();c.moveTo(cx,top);c.lineTo(edge,top-lift);c.lineTo(edge,bottom-lift*.4);c.lineTo(cx,bottom);c.closePath();
+    const g=c.createLinearGradient(Math.min(cx,edge),0,Math.max(cx,edge)+.1,0);
+    g.addColorStop(0,ease<.5?"#ac7941":"#e8cd91");g.addColorStop(1,ease<.5?"#f3dfa8":"#9a6936");c.fillStyle=g;c.shadowColor="#0009";c.shadowBlur=12;c.fill();c.shadowBlur=0;c.strokeStyle="#9b733e";c.stroke();
+    c.clip();c.globalAlpha=.35;c.strokeStyle="#805b2e";
+    for(let i=1;i<9;i++){c.beginPath();c.moveTo(cx+(edge-cx)*.12,top+size*.1+i*size*.045);c.lineTo(cx+(edge-cx)*.85,top+size*.1+i*size*.045-lift*.5);c.stroke();}
+    c.restore();
+    if(p<1){RUN_INTRO.raf=requestAnimationFrame(frame);}else{RUN_INTRO.turning=false;el.classList.remove("ri-turning");runIntroDraw(cv);done();}
+  }
+  RUN_INTRO.raf=requestAnimationFrame(frame);
+}
+window.addEventListener("resize",()=>{if(RUN_INTRO.open)runIntroDraw(document.querySelector("#run-intro canvas"));});
 (()=>{
   const el = document.getElementById("run-intro"); if(!el) return;
   el.addEventListener("click", (e)=>{ // en la ficha larga, deslizar/tocar el texto NO empieza la partida: solo el botón (o el fondo)
-    if(!RUN_INTRO.prologue && e.target.closest && e.target.closest(".ri-card") && !e.target.closest(".ri-go")) return;
+    if(!e.target.closest || !e.target.closest(".ri-go")) return;
     runIntroGo();
   });
-  document.addEventListener("keydown", (e)=>{ if(RUN_INTRO.open && (e.key==="Enter" || e.key===" ")) runIntroGo(); });
+  document.addEventListener("keydown", (e)=>{ if(RUN_INTRO.open && (e.key==="Enter" || e.key===" ") && !e.target.closest("button")){ e.preventDefault(); runIntroGo(); } });
 })();
