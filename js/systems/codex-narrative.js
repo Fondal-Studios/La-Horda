@@ -55,8 +55,20 @@ function codexBookSave(){
 }
 function _cbPersist(){ try{ if(typeof persist==="function") persist(); }catch(e){} }
 
+// Las pruebas automáticas viejas (navigator.webdriver) siguen el camino de antes, sin libro por iniciativa propia: igual que el
+// regalo inicial (starter-gift.js) y el primer arranque. Las que miden el libro definen window.__codexBook = true (o __firstRun / ?primera=1).
+function codexBookAutoEnabled(){
+  try{
+    if(typeof window==="undefined") return true;
+    if(window.__codexBook===false) return false;
+    if(window.__codexBook) return true;
+    if(window.__firstRun || (typeof location!=="undefined" && /[?&]primera=1\b/.test(location.search))) return true;
+    return !(typeof navigator!=="undefined" && navigator.webdriver);
+  }catch(e){ return true; }
+}
 // ¿Se puede mostrar algo por iniciativa propia? No dentro de una sala/partida ni en modos que no usan el guardado real.
 function codexBookCanAuto(){
+  if(!codexBookAutoEnabled()) return false;
   try{
     if(typeof state!=="undefined" && (state==="playing" || state==="paused")) return false;
     if(typeof netInRoom==="function" && netInRoom()) return false;
