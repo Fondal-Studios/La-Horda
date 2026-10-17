@@ -65,7 +65,7 @@
 #codex-book.bk-portrait .bk-leaf, #codex-book.bk-portrait .bk-spine{ display:none; }
 #codex-book.bk-portrait .bk-text{ padding:12px 16px; justify-content:flex-start; }
 #codex-book.bk-portrait .bk-title{ font-size:calc(var(--bk-w)*0.075); } #codex-book.bk-portrait .bk-body p{ font-size:calc(var(--bk-w)*0.05); }
-#codex-book.bk-portrait .bk-kicker{ font-size:calc(var(--bk-w)*0.022); }
+#codex-book.bk-portrait .bk-kicker{ font-size:calc(var(--bk-w)*0.04); }
 @media (prefers-reduced-motion:reduce){ #codex-book{ animation:none; } .bk-leaf{ transition:none; } }
 body.book-open{ overflow:hidden; }
 
