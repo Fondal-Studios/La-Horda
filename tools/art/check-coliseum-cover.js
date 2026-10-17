@@ -28,10 +28,10 @@ const out='docs/coliseum-cover';
   const c=LN.col;return{time:LN.t,round:c.round,damage,moved:heroes.some((h,i)=>Math.hypot(h.x-start[i].x,h.y-start[i].y)>70),finite:heroes.every(h=>Number.isFinite(h.x)&&Number.isFinite(h.y)),outsideSolids:heroes.filter(h=>h.alive).every(h=>!aidSolids.some(s=>s.colCover&&Math.hypot(h.x-s.x,h.y-s.y)<s.r+(h.radius||18)-1))};
  });
  assert(report.simulation.damage&&report.simulation.moved&&report.simulation.finite&&report.simulation.outsideSolids,JSON.stringify(report.simulation));
- await page.evaluate(()=>{state='paused';colStartRound();player.x=COL.PITS[0].x;player.y=COL.PITS[0].y;render();});
+ await page.evaluate(()=>{colStart({champ:'tanque',seed:42});state='playing';update(16);colHudTick();state='paused';player.x=COL.PITS[0].x;player.y=COL.PITS[0].y;render();});
  await page.locator('#game').screenshot({path:out+'/gameplay.png'});
  await page.evaluate(()=>{CAM_ZOOM=.55;CAM_LIFT=0;render();});await page.locator('#game').screenshot({path:out+'/overview.png'});
- await page.setViewportSize({width:844,height:390});await page.evaluate(()=>render());await page.locator('#game').screenshot({path:out+'/mobile.png'});
+ await page.setViewportSize({width:844,height:390});await page.waitForTimeout(250);await page.evaluate(()=>{resize(true);render();});await page.locator('#game').screenshot({path:out+'/mobile.png'});
  report.reset=await page.evaluate(()=>{lanesStop();currentArena='bosque';selectedClass='tanque';lobbyAllies=[];startRun(1);state='paused';return !aidSolids.some(s=>s.colCover);});assert(report.reset);assert(!report.errors.length,JSON.stringify(report.errors));console.log(JSON.stringify(report));
  }finally{fs.writeFileSync(out+'/report.json',JSON.stringify(report,null,2));if(browser)await browser.close();server.kill();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
