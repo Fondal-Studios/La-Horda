@@ -383,11 +383,12 @@ function updateAllies(dt){
       const d = distance(h,o);
       if(d < 34 && d > 0.01){ mx += (h.x-o.x)/d*0.6; my += (h.y-o.y)/d*0.6; }
     }
+    if(currentArena==="coliseo"){const d=colBotMove(h,target,bm.dodging);if(d){mx=d.x;my=d.y;}}
     const ml = Math.hypot(mx,my);
     h.moving = ml > 0.05 && !h.fused;
     if(h.moving){
       mx/=ml; my/=ml;
-      const nd = bm.navd ? null : aidAllyDir(h, mx, my); if(nd){ mx = nd.x; my = nd.y; } // (navd: ya sigue su propio camino, p.ej. a un objetivo contextual)
+      const nd = bm.navd || currentArena==="coliseo" ? null : aidAllyDir(h, mx, my); if(nd){ mx = nd.x; my = nd.y; } // (navd: ya sigue su propio camino, p.ej. a un objetivo contextual)
       const spd = h.baseSpeed * runStats.speedMult * arenaRuleSpeedMult() * setSpeedMult(h) * (1-Math.min(0.8,h.slowAmt||0)) * heroSpeedMult(h);
       h.x += mx*spd*dt/1000; h.y += my*spd*dt/1000;
       if(!target){ h.fx = mx; h.fy = my; }
