@@ -15,7 +15,7 @@ Categorías medidas en el motor: AREA, MULTIPLE, POTENCIA, CURA, CONTROL, MOVILI
 | cazadora | INFO | Flecha Perforante: — ◎ | Trampa del Bosque: AREA+CONTROL ◎ | Lluvia de la Cazadora: AREA+MULTIPLE ◎ | Cacería Salvaje: CONTROL |
 | nigromante | INFO | Cosecha de Almas: AREA+MULTIPLE+POTENCIA+CONTROL ◎ | Gólem de Carne: AREA+MULTIPLE+CONTROL | Plaga de los Condenados: AREA+CONTROL ◎ | Encarnación del Abismo: CURA |
 | libertador | INFO | Bayoneta: POTENCIA+CONTROL | ¡Granaderos, a la carga!: POTENCIA | Carga de San Lorenzo: AREA+MULTIPLE+POTENCIA+CONTROL+MOVILIDAD | Cruce de los Andes: AREA+MULTIPLE+POTENCIA+MOVILIDAD+INVOCA |
-| eren | INFO | Equipo de Maniobras: AREA+MULTIPLE+CONTROL+MOVILIDAD | Instinto de Supervivencia: — | ¡Avancen!: POTENCIA | El Portador: POTENCIA+CURA |
+| ilkan | INFO | Lanza-Pendón: AREA+MULTIPLE+CONTROL+MOVILIDAD | Piel de Duna: — | Grito de Caravana: POTENCIA | Coloso de Arena: POTENCIA+CURA |
 | ynara | PASS | Mirada fulminante: AREA+MULTIPLE+CONTROL ◎ | Estrogonof reparador: AREA+MULTIPLE+POTENCIA+CURA+CONTROL+INVOCA ◎ | No quiero seguir esta conversación: AREA+MULTIPLE+CONTROL+MOVILIDAD ◎ | Santa Paciencia: AREA+MULTIPLE+CURA+CONTROL+INVOCA |
 | myla | INFO | Torre de Yogur: CONTROL+INVOCA ◎ | Yogurazo: AREA+MULTIPLE+CONTROL ◎ | Burbuja Cremosa: CURA | BERRINCHE: AREA+MULTIPLE+CONTROL+INVOCA |
 | brasa | INFO | Centinela de Latón: INVOCA ◎ | Purga de Vapor: AREA+MULTIPLE+CONTROL ◎ | Desmontaje Rápido: POTENCIA | Turno de Emergencia: POTENCIA+INVOCA |
@@ -89,8 +89,8 @@ Categorías medidas en el motor: AREA, MULTIPLE, POTENCIA, CURA, CONTROL, MOVILI
 ### libertador (INFO)
 - falta otra habilidad (distinta de la de área) que dañe a varios enemigos
 
-### eren (INFO)
-- Hab. 2 Instinto de Supervivencia: sin efecto medible
+### ilkan (INFO)
+- Hab. 2 Piel de Duna: sin efecto medible
 - falta otra habilidad (distinta de la de área) que dañe a varios enemigos
 - la definitiva suma 2 categorías (POTENCIA, CURA); se piden 3+
 
