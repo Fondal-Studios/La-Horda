@@ -1,4 +1,15 @@
 "use strict";
+// Operator-only bootstrap for hosts without an interactive shell. Remove this secret after use.
+// Reuses the existing recovery CLI and its password policy; no HTTP recovery endpoint.
+if(process.env.OWNER_RECOVERY_PASSWORD){
+  const password = process.env.OWNER_RECOVERY_PASSWORD;
+  delete process.env.OWNER_RECOVERY_PASSWORD;
+  const recovery = require('child_process').spawnSync(process.execPath,
+    [require('path').join(__dirname,'recover-owner.js')],
+    {input:password,encoding:'utf8',timeout:60000,stdio:['pipe','pipe','pipe']});
+  if(recovery.status !== 0){ console.error('OWNER_RECOVERY_FAILED'); process.exit(1); }
+  console.log('OWNER_RECOVERY_COMPLETE');
+}
 /* ============================================================
    LA HORDA — B1 COOPERATIVE PLAYTEST · servidor de salas + relay WebSocket
 
