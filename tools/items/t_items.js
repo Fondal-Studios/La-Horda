@@ -171,7 +171,7 @@ async function boot(browser, initSave){
   check('CSET.errante_iaijutsu_tras_pausa', await cs('errante', 'musashi', `()=>{ runElapsedMs += 2000; const a = champSetIaijutsu(player); runElapsedMs += 300; const b = champSetIaijutsu(player); player.cds[0] = 3000; champSetOnPerfectStep(player); return a && !b && player.cds[0] === 0; }`));
   check('CSET.manada_trampa_marca_y_lobo', await cs('manada', 'cazadora', `()=>{ const e = __foe(); champSetOnTrapRoot(player, e); const marked = player.huntTarget === e; sylvaAddTrack(player, e, 5); return marked && !!player.wolf; }`));
   check('CSET.granadero_aturde_y_recarga', await cs('granadero', 'libertador', `()=>{ const e = __foe(); damageEnemy(e, 5, {src:player, fromBasic:true}); const st = e.stunTimer > 0; const k = __foe(); k.hp = 1; player.basicCd = 1400; damageEnemy(k, 50, {src:player, fromBasic:true}); return st && player.basicCd <= 60; }`));
-  check('CSET.legion_furia_y_titan_mas_largo', await cs('legion', 'ilkan', `()=>setFuryMult(player) === 1.15 && champSetTitanDurMult(player) === 1.3`));
+  check('CSET.legion_furia_y_titan_mas_largo', await cs('legion', 'ilkan', `()=>setFuryMult(player) === 1.15 && champSetColossusDurMult(player) === 1.3`));
   check('ITEMS.sin_errores', errors.length === 0, errors);
   console.log(`SUMMARY ${fails === 0 ? 'OK' : 'FAIL'} fails=${fails}`);
   await browser.close();
