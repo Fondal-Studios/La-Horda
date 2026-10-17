@@ -148,6 +148,7 @@ function colSpecPit(){   // salta al otro foso
 
 /* ---------------- geometría ---------------- */
 function colClamp(ent){
+  if(!ent.lanesProxy)aidResolveCircles(ent,1);
   const pit = ent.pit != null ? ent.pit : colPitOf(ent.x), ctr = colPitCenter(pit), R = COL.PIT_R - 16;
   const dx = ent.x - ctr.x, dy = ent.y - ctr.y, d = Math.hypot(dx, dy);
   if(d > R){ ent.x = ctr.x + dx / d * R; ent.y = ctr.y + dy / d * R; }

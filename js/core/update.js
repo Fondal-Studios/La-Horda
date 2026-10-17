@@ -509,7 +509,9 @@ function update(dt){
 
   // projectiles
   for(const p of projectiles){
+    const oldX=p.x,oldY=p.y;
     p.x += p.vx*dt/1000; p.y += p.vy*dt/1000; p.life -= dt;
+    if(currentArena==="coliseo" && colBlockProjectile(p,oldX,oldY))continue;
     if(p.enemy){
       if((p.wave || p.lob) && updateEnemyProjectileStyle(p, dt)) continue; // el tiro en arco solo pega al caer
       if(typeof lanesOn==="function" && lanesOn()) lanesEnemyProjectile(p); // Guerra de Cristales: también pega a súbditos y estructuras rivales
