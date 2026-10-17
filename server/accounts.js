@@ -589,7 +589,11 @@ function create(opts){
   }
 
   let store = null, status = "starting", lastError = "";
-  try{ store = url ? pgStore(url) : fileStore(dataDir); }
+  try{
+    if(process.env.REQUIRE_PERSISTENT_ACCOUNTS === "1" && !url && !filePersistent())
+      throw new Error("Cuentas temporalmente no disponibles: falta conectar almacenamiento persistente.");
+    store = url ? pgStore(url) : fileStore(dataDir);
+  }
   catch(e){ status = "error"; lastError = String(e.message || e); }
   const fails = new Limiter(), registers = new Limiter(), apiHits = new Limiter(), lbHits = new Limiter();
   const lbLast = new Map();   // cuenta -> último envío al ranking (ms), para el "¿entra en el tiempo que pasó?"
