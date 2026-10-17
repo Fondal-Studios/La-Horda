@@ -11,5 +11,6 @@ keys.forEach((arena,row)=>{s.fillStyle='#dfc798';s.font='16px sans-serif';s.fill
  env.currentArena=arena;env.aidDrawInlays();});
 // Dynamic geometry must reject the entire decoration; cache budget remains bounded.
 let draws=0;env.ctx={save(){},restore(){},drawImage(){draws++;}};env.aidInside=()=>false;env.aidDrawInlays();assert.equal(draws,0);env.aidInside=()=>true;env.VW=10000;env.VH=10000;env.aidDrawInlays();assert(draws<=64);
+fs.mkdirSync('docs/art-enrichment',{recursive:true});
 fs.writeFileSync('docs/art-enrichment/inlays.png',sheet.toBuffer('image/png'));
 console.log(JSON.stringify({arenas:keys.length,artVariants:checks,maxVisible:draws,alpha:'binary',geometryRejection:'pass'}));
