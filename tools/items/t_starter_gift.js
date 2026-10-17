@@ -134,6 +134,7 @@ const waitFor = async (E, fn, ms = 8000) => { const t0 = Date.now(); while (Date
     const s = await E(() => ({ sub: document.getElementById('starter-skin-sub').textContent, vale: !!document.querySelector('#starter-skin-grid .starter-skin-vale'), later: document.getElementById('starter-skin-later-btn').classList.contains('hidden') }));
     check('VALE.guardian_sin_skins_lo_explica', /todavía no tiene skins/.test(s.sub) && /vale de skin/.test(s.sub) && s.vale && s.later, s);
     await tap('#starter-skin-yes-btn');
+    if (await waitFor(E, () => typeof BOOK !== 'undefined' && BOOK.open, 3000)) await tap('#codex-book .bk-skip'); // la intro del Libro (se saltea)
     await waitFor(E, () => state === 'mainmenu' || state === 'playing', 5000);
     check('VALE.queda_guardado', await E((R) => { const S = eval(R); return S.skinVoucher === 1 && S.starterSkin === 'vale' && !S.starterSkinPending; }, REAL));
     // Tienda: cartel + canje sin oro (se sale del entrenamiento si arrancó)

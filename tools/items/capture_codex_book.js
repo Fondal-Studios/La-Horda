@@ -7,9 +7,10 @@ try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = requ
 const BASE = process.env.SE_BASE_URL || 'http://127.0.0.1:8821', EXE = process.env.PW_EXE || '/opt/pw-browsers';
 const OUT = process.argv[2]; if (!OUT) { console.error('Falta la carpeta de salida'); process.exit(2); }
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+const PART = process.env.CAP_PART || 'all'; // 'rest' = sin la intro ni los fragmentos (ya sacados)
 async function boot(browser, opts) {
   const page = await (await browser.newContext(Object.assign({ viewport: { width: 844, height: 390 } }, opts || {}))).newPage();
-  await page.addInitScript(() => { window.__campaignMode = true; });
+  await page.addInitScript(() => { window.__campaignMode = true; window.__codexBook = true; });
   await page.goto(`${BASE}/index.html`, { waitUntil: 'load', timeout: 180000 });
   for (let k = 0; k < 300; k++) { if (await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return !!b && !b.disabled; })) break; await sleep(100); }
   await sleep(600);
@@ -22,6 +23,7 @@ async function boot(browser, opts) {
   const page = await boot(browser), E = (fn, a) => page.evaluate(fn, a), shot = n => page.screenshot({ path: `${OUT}/${n}.png` });
   const waitOpen = async v => { for (let k = 0; k < 100; k++) { if ((await E(() => BOOK.open)) === v) return; await sleep(50); } };
   await E(() => { setState('mainmenu'); renderMainMenu(); });
+  if (PART === 'all') {
   // intro
   await E(() => { codexBookOpenIntro(); }); await sleep(1300); await shot('intro_01');
   for (let i = 2; i <= 8; i++) { await page.click('#codex-book .bk-next'); if (i === 2) { await E(async () => { const leaf = document.querySelector('#codex-book .bk-leaf'); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); const a = leaf.getAnimations()[0]; if (a) { a.pause(); a.currentTime = 420; } await new Promise(r => requestAnimationFrame(r)); }); await shot('intro_giro_de_pagina'); await E(() => { const a = document.querySelector('#codex-book .bk-leaf').getAnimations()[0]; if (a) a.finish(); }); await sleep(900); } else await sleep(1300); await shot('intro_0' + i); }
@@ -33,8 +35,10 @@ async function boot(browser, opts) {
     if (a === 'infernal') { await page.click('#codex-book .bk-next'); await sleep(1500); await shot('fragmento_infernal_3'); }
     await page.keyboard.press('Escape'); await waitOpen(false);
   }
+  }
+  if (PART === 'rest') { await E(() => { codexBookOpenFragment('minas', null, { force: true }); }); await sleep(900); await page.click('#codex-book .bk-next'); await sleep(1500); await shot('fragmento_minas_2'); await page.keyboard.press('Escape'); await waitOpen(false); }
   // carga corta desde la Sala (pantalla real de preparación)
-  await E(() => { save.storyPrologueSeen = true; save.tut.goalMission = 1; save.storyActsSeen = { I: 1, II: 1, III: 1 }; save.codexBook.shortCount = {}; currentArena = 'laberinto'; selectedClass = 'mago'; lobbyAllies = ['tanque', 'soporte', 'asesino']; setState('prep'); renderPrepSummary(); });
+  await E(() => { save.storyPrologueSeen = true; save.tut.goalMission = 1; save.storyActsSeen = { I: 1, II: 1, III: 1 }; save.codexBook.shortCount = {}; currentArena = 'laberinto'; selectedClass = 'mago'; lobbyAllies = pickLobbyAllies('mago'); setState('prep'); renderPrepSummary(); });
   await sleep(600); await shot('carga_00_sala');
   await page.click('#prep-start-btn'); await sleep(250); await shot('carga_01_tapa'); await sleep(750); await shot('carga_02_pasando'); await sleep(1100); await shot('carga_03_pagina');
   await waitOpen(false); await sleep(500); await shot('carga_04_ficha_de_la_arena');

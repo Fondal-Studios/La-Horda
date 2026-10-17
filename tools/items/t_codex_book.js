@@ -17,7 +17,7 @@ async function boot(browser, opts) {
   const page = await ctx.newPage(), errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
   page.on('console', m => { if (m.type() === 'error' && !/ERR_CERT|fonts\.g|net::|404|ERR_TUNNEL/.test(m.text())) errors.push('console: ' + m.text().slice(0, 300)); });
-  await page.addInitScript(() => { window.__campaignMode = true; });
+  await page.addInitScript(() => { window.__campaignMode = true; window.__codexBook = true; });
   await page.goto(`${BASE}/index.html`, { waitUntil: 'load', timeout: 180000 });
   for (let k = 0; k < 300; k++) { if (await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return !!b && !b.disabled; })) break; await sleep(100); }
   await sleep(500);

@@ -100,6 +100,25 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   check('INTRO.sin_guardado_cargado_no_rompe', none && none.introSeen === false);
 }
 
+/* ---------------- PRUEBAS AUTOMÁTICAS VIEJAS (webdriver): camino de antes, sin libro por iniciativa propia ---------------- */
+{
+  const c = ctx('var window = {}; var navigator = {webdriver:true}; var location = {search:""};');
+  check('WEBDRIVER.sin_banderas_no_hay_libro_automatico_(intro_ni_carga)', run(c, 'codexBookIntroDue()') === false && run(c, 'codexBookShortDue("bosque")') === false);
+  run(c, 'window.__codexBook = true;');
+  check('WEBDRIVER.__codexBook_lo_habilita', run(c, 'codexBookIntroDue()') === true && run(c, 'codexBookShortDue("bosque")') === true);
+  run(c, 'window.__codexBook = undefined; window.__firstRun = true;');
+  check('WEBDRIVER.__firstRun_lo_habilita_(camino_nuevo)', run(c, 'codexBookIntroDue()') === true);
+  run(c, 'window.__firstRun = false; location.search = "?primera=1";');
+  check('WEBDRIVER.?primera=1_lo_habilita', run(c, 'codexBookIntroDue()') === true);
+  run(c, 'location.search = ""; window.__codexBook = false; navigator.webdriver = false;');
+  check('WEBDRIVER.__codexBook=false_lo_apaga_siempre', run(c, 'codexBookIntroDue()') === false);
+  run(c, 'window.__codexBook = undefined;');
+  check('JUGADOR_REAL.sin_webdriver_toca_normalmente', run(c, 'codexBookIntroDue()') === true);
+  // los fragmentos y el Códice no dependen de esto: son contenido a pedido
+  run(c, 'navigator.webdriver = true; save.arenasCleared.ciudad = true;');
+  check('WEBDRIVER.los_fragmentos_siguen_disponibles_(son_a_pedido)', run(c, 'codexBookFragmentUnlocked("ciudad")') === true && J(c, 'codexBookFragmentPages("ciudad")').length === 2);
+}
+
 /* ---------------- FRAGMENTOS ---------------- */
 {
   const c = ctx();
