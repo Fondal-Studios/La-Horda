@@ -38,7 +38,6 @@ PREVIEW = {
     'profeta': grid('%s/profeta/v2/atlas.png' % CH, 93, 133, 8, 17),
     'cazadora': grid('%s/cazadora/v2/atlas.png' % CH, 90, 94, 8, 17),
     'axiom': grid('%s/axiom/v2/atlas.png' % CH, 88, 99, 8, 17),
-    'eren': grid('%s/eren/v2/atlas.png' % CH, 128, 111, 8, 31),
 }
 
 # Banda de tono -> destino. h: rango de tono de origen (grados, puede cruzar 360), smin: saturación
@@ -103,8 +102,7 @@ CROMAS = [
          lore='Encontró reglas escritas en la piedra del Laberinto, más viejas que cualquier código. Las copió en su túnica.',
          files={'axiom': '%s/axiom/v2/atlas.png' % CH},
          bands=[band(214, 300, 34, sat=0.75, gain=1.35, gamma=0.95, smin=0.22)]),
-    # Eren: su capa es verde oliva casi gris (saturación 0.1-0.3, igual que el pelo y el cuero): no se
-    # puede separar por paleta sin teñir la piel. Queda sin croma hasta tener una máscara de capa.
+    # Ilkan (campeón original): sin croma generado; su apariencia alternativa es la skin de set procedural.
 ]
 
 # ---------------------------------------------------------------- color

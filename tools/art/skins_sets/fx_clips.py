@@ -22,14 +22,6 @@ CLIPS = {
         'ring':   {'boxes': [(127, 958, 227, 985)], 'ground': True},
         'pillar': {'boxes': [(18, 845, 117, 986)]},
     },
-    # Eren, Titán Bestia: roca, estacas de piedra y anillos de impacto
-    'legion': {
-        'streak': {'boxes': [(842, 704, 881, 719)]},
-        'ring':   {'boxes': [(1034, 900, 1127, 935)], 'ground': True},
-        'spikes': {'boxes': [(936, 740, 1009, 816)]},
-        'quake':  {'boxes': [(1017, 737, 1128, 816)]},
-        'bigring': {'boxes': [(783, 895, 934, 933)], 'ground': True},
-    },
     # Axiom, Skin Z (Realidad Corrupta): glitch violeta
     'sistema': {
         'orb':    {'boxes': [(1124, 917, 1145, 933)]},
