@@ -13,6 +13,10 @@ const configFile=path.join(out,'js/net/net-config.js');
 const config=await readFile(configFile,'utf8');
 if(!/serverUrl:\s*"[^"]*"/.test(config))throw new Error('Missing relay config');
 await writeFile(configFile,config.replace(/serverUrl:\s*"[^"]*"/,'serverUrl: '+JSON.stringify(relay.href.replace(/\/$/,''))));
+const coreFile=path.join(out,'js/net/net-core.js');
+const core=await readFile(coreFile,'utf8');
+await writeFile(coreFile,core.replace('if(value==="wss://fondalstudios.com/la-horda/red")',
+  'if(value==='+JSON.stringify(relay.href.replace(/\/$/,''))+')').replace('FONDAL · ALPHA PRINCIPAL','LA HORDA · ALPHA PRINCIPAL'));
 if(process.env.GAME_SITE_URL){
   const site=new URL(process.env.GAME_SITE_URL);
   if(site.protocol!=='https:'||site.username||site.password)throw new Error('Invalid public site URL');
