@@ -173,7 +173,10 @@ progresión. Los textos no spoilean la traición del Hechicero antes de la Infer
 **Reglas que no se rompen:** omitir/saltear siempre posible (botón, Esc, tocar); omitir cuenta como visto; nunca
 bloquea una partida ni "Continuar"; todo es **local** (sin eventos de red); la intro y la carga no aparecen dentro de una
 sala/partida y se cierran solas si el jugador entra a una; quien llega a unirse a una sala con un perfil nuevo no ve la
-intro en ese momento (queda con insignia en el Códice); movimiento reducido = sin giro de página.
+intro en ese momento (queda con insignia en el Códice); movimiento reducido = sin giro de página. Las pruebas
+automáticas viejas (`navigator.webdriver`) siguen el camino de antes, sin libro por iniciativa propia (igual que el regalo
+inicial); las que miden el libro definen `window.__codexBook = true` (o `__firstRun` / `?primera=1`). El paso de la victoria,
+la lista del Códice y las relecturas no dependen de eso (son contenido a pedido).
 
 **Guardado:** `save.codexBook = {v, introSeen, introAt, frag:{arena:ts}, shortCount:{arena:n}, shortOff}`. Los guardados
 anteriores migran en `loadSave` (`codexBookMigrate`): no se pierde nada; quien ya tenía campeón o arenas superadas no ve la
