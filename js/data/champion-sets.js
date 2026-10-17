@@ -96,13 +96,13 @@ const CHAMPION_SETS = {
       {count:3, desc:"Gastar almas en un Pacto cura 3% de vida por alma a vos, a tu gólem y a tus esqueletos", mods:()=>[]},
       {count:4, desc:"LEGIÓN SIN FIN: con 5 o más esqueletos, vos y tu ejército reciben 15% menos daño y tus esqueletos golpean 20% más fuerte.", mods:()=>[]}
     ]},
-  legion: { champion:"eren", name:"Legión de Reconocimiento", theme:"Eren · maniobras · el Portador", aura:"200,90,60", full:"legion",
-    lore:"Las alas en la espalda no son un adorno: son una promesa de volver.",
-    pieces:{arma:"Hojas de la Legión", pechera:"Arnés de Maniobras", guantes:"Empuñaduras de la Legión", botas:"Botas de la Legión"},
+  legion: { champion:"ilkan", name:"Caravana de Medianoche", theme:"Ilkan · lanzas de pendón · el Coloso de Arena", aura:"90,220,205", full:"legion",
+    lore:"Cada farol de cristal guarda la última luz de una caravana que no llegó. Quien los lleva promete cruzar por ella.",
+    pieces:{arma:"Hoces de la Caravana", pechera:"Arnés de Faroles", guantes:"Empuñaduras de Cristal", botas:"Botas de Arena"},
     thresholds:[
-      {count:2, desc:"+15% Furia generada", mods:()=>[]},
-      {count:3, desc:"Cada Equipo de Maniobras que corta a 3 o más enemigos reduce su enfriamiento a la mitad", mods:()=>[]},
-      {count:4, desc:"EL PORTADOR ETERNO: la forma titánica dura 30% más y cada baja transformado te cura 2% de la vida.", mods:()=>[]}
+      {count:2, desc:"+15% Tormenta generada", mods:()=>[]},
+      {count:3, desc:"Cada Lanza-Pendón que corta a 3 o más enemigos reduce su enfriamiento a la mitad", mods:()=>[]},
+      {count:4, desc:"COLOSO ETERNO: el Coloso de Arena dura 30% más y cada baja transformado te cura 2% de la vida.", mods:()=>[]}
     ]}
 };
 /* SET DE 2 PIEZAS QUE CAMBIA UNA HABILIDAD (reseña del crítico §6.4 #4): con 2 piezas del set de
@@ -144,8 +144,8 @@ const CHAMPION_SET_TRANSFORMS = {
   requiem:      {skill:0, name:"Siega de Almas", look:"void", test:"pull",
     text:"la Cosecha de Almas arrastra hacia vos a los enemigos del cono",
     fx:[{t:"pull", at:"caster", r:210, px:60}]},
-  legion:       {skill:0, name:"Estela de Gas", look:"steam", test:"zone",
-    text:"el Equipo de Maniobras deja una estela de gas 3 s que frena 40% y quema donde despegás",
+  legion:       {skill:0, name:"Estela de Arena", look:"sand", test:"zone",
+    text:"la Lanza-Pendón deja una estela de arena 3 s que frena 40% y quema donde despegás",
     fx:[{t:"ground", at:"origin", r:95, dur:3000, dps:0.3, slow:0.4, burn:true}]}
 };
 (function registerChampionSets(){

@@ -4,7 +4,7 @@
    Comportamiento de los SETS DE GUARDIÁN (datos en js/data/champion-sets.js). Se engancha a los
    mismos eventos que los sets universales (js/systems/set-effects.js: setsOnHit/Kill/Cast/Hurt,
    updateSets) y a unos pocos puntos del kit de cada guardián (Paso Perfecto, Trampa del Bosque,
-   Giro del Presagio, básico de Musashi, forma titánica de Eren...). Todo con tope o enfriamiento.
+   Giro del Presagio, básico de Musashi, forma de coloso de Ilkan...). Todo con tope o enfriamiento.
    ============================================================ */
 const _normalish = e => e.rank==="normal" || e.rank==="subelite" || e.rank==="elite";
 
@@ -24,14 +24,14 @@ function champSetCritBonus(h, e, opts){
   return null;
 }
 function champSetLifesteal(h){ return h && h._tide ? 0.015*h._tide : 0; }
-// Furia generada (Segador: Marea Roja 2 · Eren: Legión 2)
+// Furia generada (Segador: Marea Roja 2) / Tormenta generada (Ilkan: Caravana de Medianoche 2)
 function setFuryMult(h){
   if(!h || !h.classKey) return 1;
   if(h.classKey==="segador" && setN(h, "marea") >= 2) return 1.2;
-  if(h.classKey==="eren" && setN(h, "legion") >= 2) return 1.15;
+  if(h.classKey==="ilkan" && setN(h, "legion") >= 2) return 1.15;
   return 1;
 }
-function champSetTitanDurMult(h){ return setN(h, "legion") >= 4 ? 1.3 : 1; }
+function champSetColossusDurMult(h){ return setN(h, "legion") >= 4 ? 1.3 : 1; }
 
 /* ---------------- set de 2 piezas que transforma una habilidad ----------------
    Datos en CHAMPION_SET_TRANSFORMS (js/data/champion-sets.js). Se presenta al motor de refuerzos
@@ -52,7 +52,7 @@ function champSetTransformOnSkill(h, sk){
   if(!setId || setN(h, setId) < 2) return null;
   const b = champSetTransformBoon(setId);
   if(!b || b.champ!==h.classKey) return null;
-  const base = boonSkillOf(b); // por NOMBRE, como los refuerzos (Eren titán tiene otro kit)
+  const base = boonSkillOf(b); // por NOMBRE, como los refuerzos (Ilkan coloso tiene otro kit)
   return base && base.name===sk.name ? b : null;
 }
 
@@ -118,8 +118,8 @@ function champSetsOnKill(h, e){
     h.basicCd = Math.min(h.basicCd||0, 60);
     if(h===player) floatText(h.x, h.y-58, "¡RECARGA!", "crit");
   }
-  // Legión 4: transformado, cada baja cura 2%
-  if((c.legion||0) >= 4 && h.classKey==="eren" && h.erenTitan){ h.hp = Math.min(h.maxHp, h.hp + h.maxHp*0.02*arenaRuleHealMult()); }
+  // Caravana 4: transformado, cada baja cura 2%
+  if((c.legion||0) >= 4 && h.classKey==="ilkan" && h.ilkanColossus){ h.hp = Math.min(h.maxHp, h.hp + h.maxHp*0.02*arenaRuleHealMult()); }
 }
 function champSetsOnCast(h, sk, isUlt){
   const c = heroSetCounts(h); if(!c) return;
@@ -215,8 +215,8 @@ function iaijutsuLine(h, dmg, skip){
 // Cazadora: trampa (Manada 3) y presa acorralada (Manada 4)
 function champSetOnTrapRoot(h, e){ if(h && setN(h, "manada") >= 3 && e.alive && e!==h.huntTarget) sylvaAddTrack(h, e, 1); }
 function champSetOnCornered(h){ if(setN(h, "manada") >= 4){ sylvaSummonWolf(h, 6000); _setMsg(h, "¡LA MANADA!"); } }
-// Eren: gancho que corta a 3+ (Legión 3)
-function champSetOnHookEnd(h, hits){ if(hits >= 3 && setN(h, "legion") >= 3 && h.cds && h.cds[0]>0){ h.cds[0] *= 0.5; _setMsg(h, "¡GANCHO LISTO!"); } }
+// Ilkan: gancho que corta a 3+ (Caravana 3)
+function champSetOnHookEnd(h, hits){ if(hits >= 3 && setN(h, "legion") >= 3 && h.cds && h.cds[0]>0){ h.cds[0] *= 0.5; _setMsg(h, "¡LANZA LISTA!"); } }
 
 /* ---------------- efectos ---------------- */
 function baluarteQuake(h){

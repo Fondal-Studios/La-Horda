@@ -397,17 +397,17 @@ const ROLES={
       "desc": "Tus ataques básicos infligen un 10% más mientras te mueves y un 10% menos estando quieto."
     }
   },
-  "eren": {
+  "ilkan": {
     "hp": 155,
     "speed": 195,
     "damage": 29,
     "range": 100,
     "rate": 0.48,
     "skills": [
-      "Corte del Avance",
-      "Paso del Avance",
-      "Campo del Avance",
-      "Ruptura del Avance"
+      "Corte de Duna",
+      "Paso de Duna",
+      "Campo de Duna",
+      "Ruptura de Duna"
     ],
     "skillDescriptions": [
       "Golpe circular de corto alcance.",
@@ -415,11 +415,11 @@ const ROLES={
       "Zona persistente de daño.",
       "Gran golpe circular y ralentización."
     ],
-    "id": "eren",
+    "id": "ilkan",
     "archetype": "guerrero",
-    "name": "Eren",
-    "title": "el Indómito",
-    "color": "#7a3b2e",
+    "name": "Ilkan",
+    "title": "el Caminante de Dunas",
+    "color": "#b8793a",
     "ownerOnly": false,
     "founder": null,
     "adapted": true,

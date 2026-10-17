@@ -286,7 +286,7 @@ function champPackCasting(h){
   return animNow < (h._pcuLocal||0);
 }
 function drawChampPack(key, h, drawScale, alpha){
-  const base = h._codexPack || key; // preview del Códice: otro atlas del mismo guardián (a caballo, El Portador)
+  const base = h._codexPack || key; // preview del Códice: otro atlas del mismo guardián (a caballo, el Coloso)
   const P = CHAMP_PACK[typeof setSkinPackKey==="function" ? setSkinPackKey(h, base) : base]; // skin de set completo
 
   if(!P || !P.ready) return false;

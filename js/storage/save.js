@@ -155,6 +155,19 @@ function applyTestSkins(){
   save.testSkinsV1 = true;
   persist();
 }
+// Los objetos del set del campeón renombrado guardaron el nombre/lore viejos al crearse: se refrescan con el
+// texto vigente (conservan uid, nivel, tirada y valor). Devuelve true si cambió algo.
+let legacyChampionRenamed = false;
+function legacyRefreshSetItem(it){
+  if(!it || !it.designed || typeof it.designId !== "string" || it.designId.indexOf("legion_") !== 0) return false;
+  if(typeof makeDesignedItem !== "function") return false;
+  let fresh = null; try{ fresh = makeDesignedItem(it.designId); }catch(e){ return false; }
+  if(!fresh || (it.name === fresh.name && it.desc === fresh.desc)) return false;
+  const pct = /\+(\d+)%/.exec(it.desc || ""), np = /\+(\d+)%/.exec(fresh.desc || "");
+  it.name = fresh.name;
+  it.desc = (pct && np) ? fresh.desc.replace(np[0], pct[0]) : fresh.desc;
+  return true;
+}
 function loadSave(){
   saveLoadStarted = true;
   try{ _loadSaveInner(); }finally{ applyTestUnlock90(); applyTestSkins();
@@ -167,6 +180,8 @@ function _loadSaveInner(){
     const raw = localStorage.getItem(SAVE_KEY);
     if(raw){
       const parsed = JSON.parse(raw);
+      // Rework del campeón "eren" -> "ilkan" (js/storage/legacy-champion-ids.js): ids, talentos, objetos. Idempotente.
+      if(legacyChampionMigrate(parsed, {refreshItem: legacyRefreshSetItem})) legacyChampionRenamed = true;
       const needsRarityMigration = parsed.itemSchemaV !== ITEM_SCHEMA_VERSION;
       save = Object.assign(defaultSave(), parsed);
       save.itemSchemaV = ITEM_SCHEMA_VERSION;
@@ -255,7 +270,7 @@ function _loadSaveInner(){
       // Si hubo migración de rareza, se escribe de vuelta ya mismo: si no, el localStorage
       // se queda con las claves viejas hasta la próxima mutación (equipar/vender/etc.), y una
       // sesión que solo mira sin tocar nada perdería el arreglo al cerrar el navegador.
-      if(needsRarityMigration) persist();
+      if(needsRarityMigration || legacyChampionRenamed){ legacyChampionRenamed = false; persist(); }
     } else {
       persist(); // perfil nuevo: queda guardado desde ya (el regalo -guardián + skin- se elige al entrar)
     }

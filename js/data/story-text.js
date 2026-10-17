@@ -184,9 +184,9 @@ const HERO_VOICES = {
   libertador:{pick:"Crucé una cordillera entera. Una Horda no me va a detener.",
               win:"Seamos libres. Lo demás no importa nada.",
               fall:"Que otro… siga la marcha…"},
-  eren:      {pick:"Nací entre muros. No pienso morir entre ellos.",
-              win:"Detrás de cada muro hay otro muro. Este también lo crucé.",
-              fall:"Todavía… no soy libre…"}
+  ilkan:      {pick:"Nací donde el viento borra los caminos. No pienso quedarme quieto.",
+              win:"Detrás de cada duna hay otra duna. Esta también la crucé.",
+              fall:"Todavía… no llegué al pozo…"}
 };
 
 /* ---------------- CRÓNICAS: páginas coleccionables ----------------

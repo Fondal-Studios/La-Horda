@@ -94,7 +94,7 @@ const CAMP_SMITH_HERO = {
   cazadora:"Cuerdas de tripa, de las del bosque. Mañana te trenzo una con crin, que en el frío no se corta.",
   nigromante:"Los huesos que llevás colgando no los templé yo, y no pienso preguntar de dónde salieron.",
   libertador:"Un sable de caballería, tan lejos de cualquier caballo. Te enderezo la punta; la cordillera, no.",
-  eren:"Esas hojas son para cortar algo mucho más grande que un hombre. Ojalá no tengas que usarlas para eso.",
+  ilkan:"Esas hoces cortan viento y arena. Ojalá no tengas que usarlas contra algo que no se deja cortar.",
   ynara:"Curás sin preguntar a quién. Te dejé una olla de cobre junto al fuego: la tuya ya no aguanta otro guiso para cuarenta.",
   myla:"Me pediste que te arregle la cuchara. Es la primera vez en treinta años que alguien me trae una cuchara a la fragua. Quedó como nueva.",
   brasa:"Vos sabés de engranajes más que yo, mecánica. Pero esas torretas tienen remaches flojos: dejame a mí, que el martillo no se apura.",

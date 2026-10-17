@@ -28,7 +28,7 @@ function update(dt){
   hechWorldTick(dt); // efectos diferidos del Hechicero Supremo (inf-hechicero.js)
   for(const h of heroes){ updateSylvaMomentum(h, dt); updateSylvaWolf(h, dt); }
   for(const h of heroes){ updateNigromanteSkeletons(h, dt); updateNigromanteGolem(h, dt); updateNigromanteDemonForm(h, dt); updateNigromantePassive(h, dt); }
-  // El Libertador / Eren (+ buffs de equipo que dan): js/champions/champ-shared.js
+  // El Libertador / Ilkan (+ buffs de equipo que dan): js/champions/champ-shared.js
   for(const h of heroes) updateChampExtras(h, dt);
   updateChampFx(dt);
   for(const h of heroes) updatePortadorHero(h, dt);

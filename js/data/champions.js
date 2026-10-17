@@ -27,7 +27,7 @@ const CHAMPION_CATALOG = [
   {id:"cazadora", priceGold:CHAMPION_PRICE_GOLD, unlockedByDefault:false, lore:"Una tiradora extremadamente móvil que gana velocidad mientras persigue a su presa."},
   {id:"nigromante", priceGold:CHAMPION_PRICE_GOLD, unlockedByDefault:false, lore:"No pelea solo. Levanta a los caídos, crea un coloso de piedra y, si hace falta, se convierte él mismo en un demonio."},
   {id:"libertador", priceGold:CHAMPION_PRICE_GOLD, unlockedByDefault:false, lore:"Un comandante legendario que castiga a sus enemigos con disparos devastadores y lidera cargas capaces de quebrar ejércitos."},
-  {id:"eren", priceGold:CHAMPION_PRICE_GOLD, unlockedByDefault:false, lore:"Un guerrero que convierte el peligro en furia. Domina el campo mediante movilidad extrema hasta liberar una fuerza monstruosa capaz de hacer temblar la arena."}
+  {id:"ilkan", priceGold:CHAMPION_PRICE_GOLD, unlockedByDefault:false, lore:"Un caminante de dunas que convierte el riesgo en tormenta. Domina el campo con movilidad extrema hasta alzar un coloso de arena capaz de hacer temblar todo el campo."}
 ];
 
 const CLASSES = {
@@ -202,31 +202,31 @@ const CLASSES = {
     ],
     ultimate:{name:"Cruce de los Andes", ico:"★", cd:45000, kind:"sm_andes_ult", dmgMult:4.2, duration:10000, desc:"Carga con Granaderos espectrales entre nieve y escarcha y queda 10 s a caballo: sable corvo, más velocidad y daño, menos daño recibido"}
   },
-  eren:{
-    name:"Eren", icon:"⚔", color:"#7a3b2e", glow:"#ff7a55",
-    role:"Guerrero / Berserker: movilidad extrema con ganchos, gana Furia con el riesgo y se transforma en El Portador.", roleCategory:"asesino",
-    // Recurso FURIA = barra de la definitiva (sube pegando, recibiendo daño y con poca vida,
-    // EREN_CFG.fury). Guerrero ágil y frágil en forma humana; la forma monstruosa es su pico.
+  ilkan:{
+    name:"Ilkan", icon:"🌪", color:"#b8793a", glow:"#4fe3cf",
+    role:"Guerrero / Berserker: movilidad extrema con lanzas de pendón, gana Tormenta con el riesgo y se transforma en el Coloso de Arena.", roleCategory:"asesino",
+    // Recurso TORMENTA = barra de la definitiva (sube pegando, recibiendo daño y con poca vida,
+    // ILKAN_CFG.fury). Guerrero ágil y frágil en forma humana; el Coloso de Arena es su pico.
     baseHP:128, baseDmg:11, baseDef:0.08, baseSpeed:178, energyMax:100, energyRegen:11, hpGrowthMult:1.05, dmgGrowthMult:1.0,
     basicRange:84, basicCd:380, basicArc:true,
-    isEren:true, isFuryClass:false, noDivinaFoe:true,
+    isIlkan:true, isFuryClass:false, noDivinaFoe:true,
     skills:[
-      {name:"Equipo de Maniobras", ico:"🪝", cost:22, cd:7000, kind:"eren_hook", range:360, dmgMult:1.4, desc:"Mantené para apuntar y soltá: dispara los ganchos y sale volando. Durante el vuelo, volvé a usarla para un SEGUNDO gancho con cambio de dirección. Corta a los que pasan cerca"},
-      {name:"Instinto de Supervivencia", ico:"⚡", cost:25, cd:14000, kind:"eren_instinct", duration:3500, desc:"Por un momento recibís menos daño y cada golpe que te dan carga MUCHA más Furia. No es invulnerabilidad: es exponerse para transformarse antes"},
-      {name:"¡Avancen!", ico:"📢", cost:30, cd:15000, kind:"eren_advance", duration:7000, desc:"Grito de guerra: más velocidad, daño y Furia (más fuerte con poca vida). Los aliados cercanos reciben una parte"}
+      {name:"Lanza-Pendón", ico:"🚩", cost:22, cd:7000, kind:"ilkan_lance", range:360, dmgMult:1.4, desc:"Mantené para apuntar y soltá: arroja la lanza y sale disparado tras su pendón de arena. Durante el vuelo, volvé a usarla para una SEGUNDA lanza con cambio de dirección. Corta a los que pasan cerca"},
+      {name:"Piel de Duna", ico:"🏜", cost:25, cd:14000, kind:"ilkan_temple", duration:3500, desc:"Por un momento recibís menos daño y cada golpe que te dan carga MUCHA más Tormenta. No es invulnerabilidad: es exponerse para transformarse antes"},
+      {name:"Grito de Caravana", ico:"🧭", cost:30, cd:15000, kind:"ilkan_caravan", duration:7000, desc:"Grito de caravana: más velocidad, daño y Tormenta (más fuerte con poca vida). Los aliados cercanos reciben una parte"}
     ],
-    ultimate:{name:"El Portador", ico:"★", cd:40000, kind:"eren_titan_ult", duration:22000, desc:"Con la Furia llena se transforma en El Portador: golpes en área, Sismo, Terremoto, Retumbar y regeneración. Llenar la Furia de nuevo desbloquea algo más"}
+    ultimate:{name:"Coloso de Arena", ico:"★", cd:40000, kind:"ilkan_colossus_ult", duration:22000, desc:"Con la Tormenta llena se transforma en el Coloso de Arena: golpes en área, Alud, Hundimiento, Marcha de Dunas y regeneración. Llenar la Tormenta de nuevo desbloquea algo más"}
   }
 };
-// Eren transformado usa esta "clase" mientras dura El Portador (h.cls apunta acá): así todo lo que
-// ya lee h.cls (botones, IA, apuntado, HUD, cooldowns) muestra y usa el kit del titán sin tocar nada
+// Ilkan transformado usa esta "clase" mientras dura el Coloso de Arena (h.cls apunta acá): así todo lo que
+// ya lee h.cls (botones, IA, apuntado, HUD, cooldowns) muestra y usa el kit del coloso sin tocar nada
 // más. Las habilidades comparten el índice (y la maestría/talentos) de la habilidad humana 0/1/2.
-const EREN_TITAN_CLS = Object.assign({}, CLASSES.eren, {
-  name:"El Portador", icon:"👹", basicRange:112, basicCd:950, basicArc:true, ranged:false, isTitanForm:true,
+const ILKAN_COLOSSUS_CLS = Object.assign({}, CLASSES.ilkan, {
+  name:"Coloso de Arena", icon:"🗿", basicRange:112, basicCd:950, basicArc:true, ranged:false, isColossusForm:true,
   skills:[
-    {name:"Sismo", ico:"💥", cost:0, cd:6500, kind:"titan_sismo", radius:230, dmgMult:3.2, desc:"Golpe violento al suelo: onda expansiva circular, muchísimo daño en el centro"},
-    {name:"Terremoto", ico:"🌋", cost:0, cd:13000, kind:"titan_terremoto", radius:250, dmgMult:1.25, desc:"Canalizada: planta los pies y revienta el suelo en 4 pulsos. Mientras dura recibís más daño"},
-    {name:"Retumbar", ico:"🦶", cost:0, cd:14000, kind:"titan_retumbar", radius:160, dmgMult:1.35, desc:"Avanza pisando: cada paso es una onda de destrucción. Control de dirección limitado"}
+    {name:"Alud", ico:"⛰", cost:0, cd:6500, kind:"colossus_slam", radius:230, dmgMult:3.2, desc:"Golpe violento al suelo: onda expansiva circular, muchísimo daño en el centro"},
+    {name:"Hundimiento", ico:"🕳", cost:0, cd:13000, kind:"colossus_sinkhole", radius:250, dmgMult:1.25, desc:"Canalizada: planta los pies y hunde el suelo en 4 pulsos. Mientras dura recibís más daño"},
+    {name:"Marcha de Dunas", ico:"👣", cost:0, cd:14000, kind:"colossus_march", radius:160, dmgMult:1.35, desc:"Avanza pisando: cada paso es una onda de destrucción. Control de dirección limitado"}
   ],
-  ultimate:{name:"El Retumbar", ico:"☠", cd:0, kind:"eren_rumbling_ult", desc:"Tres pisadas colosales sobre la arena, con aviso. Después, Eren vuelve agotado"}
+  ultimate:{name:"Los Tres Pasos", ico:"☠", cd:0, kind:"ilkan_finale_ult", desc:"Tres pasos colosales sobre el campo, con aviso. Después, Ilkan vuelve agotado"}
 });

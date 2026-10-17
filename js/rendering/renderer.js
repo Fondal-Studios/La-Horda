@@ -89,7 +89,7 @@ function render(){
   drawAxiomZones();
   drawSylvaRainZones();
   fxGlowBegin(); drawAxiomVfxActive(); fxGlowEnd();
-  drawChampFxGround(); // El Libertador / Eren: escarcha, grietas, avisos de pisada
+  drawChampFxGround(); // El Libertador / Ilkan: escarcha, grietas, avisos de pisada
   drawPortadorGround();
 
   // héroes caídos (se dibujan bajo los vivos); en la Arena Divina también los guardianes rivales,
@@ -274,6 +274,6 @@ function render(){
   ctxDrawScreen(); // flechas hacia objetivos contextuales importantes fuera de cámara
   if(typeof eliteDrawScreenNames==="function") eliteDrawScreenNames(); // nombre dorado de las élites con nombre (en píxeles de pantalla: legible en el teléfono)
   if(typeof groundLootDrawNames==="function") groundLootDrawNames(); // nombre del objeto del piso al acercarse
-  drawChampFxScreen();       // Cruce de los Andes (Cordillera + nieve) y siluetas de El Retumbar
+  drawChampFxScreen();       // Cruce de los Andes (Cordillera + nieve) y siluetas de Los Tres Pasos
   drawScreenFeedback();      // viñeta de daño, dirección del golpe, flechas en el borde, destellos
 }
