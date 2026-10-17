@@ -269,12 +269,12 @@ const BOOK_SCENES = {
     const mid = W/2; c.strokeStyle = "rgba(255,217,138,0.6)"; c.lineWidth = 2; c.setLineDash([5, 5]); c.beginPath(); c.moveTo(mid, H*0.08); c.lineTo(mid, H*0.92); c.stroke(); c.setLineDash([]);
     const lx = W*0.25, rx = W*0.75, cy = H*0.46;
     c.fillStyle = "#cfd6de"; c.beginPath(); c.moveTo(lx, cy - 40*u); c.lineTo(lx + 5*u, cy + 6*u); c.lineTo(lx - 5*u, cy + 6*u); c.closePath(); c.fill(); c.fillRect(lx - 12*u, cy + 6*u, 24*u, 4*u); c.fillRect(lx - 2.5*u, cy + 10*u, 5*u, 14*u);
-    c.fillStyle = "#ffcf5c"; c.beginPath(); c.arc(lx + 22*u, cy + 22*u, 8*u, 0, 7); c.fill(); _bkText(c, "ORO", lx, H*0.82, 15*u, "#ffcf5c"); _bkText(c, "poder: se gana jugando", lx, H*0.92, 12*u, "#b39a84");
+    c.fillStyle = "#ffcf5c"; c.beginPath(); c.arc(lx + 22*u, cy + 22*u, 8*u, 0, 7); c.fill(); _bkText(c, "ORO", lx, H*0.82, 15*u, "#ffcf5c"); _bkText(c, "se gana jugando", lx, H*0.92, 11*u, "#b39a84");
     const f = 0.8 + 0.2*Math.sin(t*5); _bkGlow(c, rx - 22*u, cy - 6*u, 38*u, "255,140,60", 0.5*f);
     c.fillStyle = "#ff9a4a"; c.beginPath(); c.moveTo(rx - 22*u, cy - 30*u*f); c.lineTo(rx - 14*u, cy - 6*u); c.lineTo(rx - 22*u, cy + 16*u); c.lineTo(rx - 30*u, cy - 6*u); c.closePath(); c.fill();
     _bkText(c, "✦", rx - 22*u, cy - 38*u, 18*u, "#ffd98a");
     c.strokeStyle = "#b48aff"; c.fillStyle = "rgba(180,138,255,0.25)"; c.lineWidth = 2; c.beginPath(); c.moveTo(rx + 10*u, cy - 26*u); c.lineTo(rx + 34*u, cy - 26*u); c.lineTo(rx + 40*u + Math.sin(t*2)*2, cy + 22*u); c.lineTo(rx + 4*u, cy + 22*u); c.closePath(); c.fill(); c.stroke();
-    _bkText(c, "BRASAS ✦", rx, H*0.82, 15*u, "#ff9a4a"); _bkText(c, "solo apariencia, nunca poder", rx, H*0.92, 12*u, "#b39a84");
+    _bkText(c, "BRASAS ✦", rx, H*0.82, 15*u, "#ff9a4a"); _bkText(c, "solo apariencia", rx, H*0.92, 11*u, "#b39a84");
   },
   postgame(c, W, H, t, u){
     _bkBg(c, W, H, "#2a2210", "#0a0803");
