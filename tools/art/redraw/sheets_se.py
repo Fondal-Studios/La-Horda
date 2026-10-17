@@ -1,5 +1,5 @@
-"""Cell coordinates for the San Martín ('libertador') and Eren sheets (1536x1024), measured with the
-dark-separator detector in build_se.py --probe and checked by eye (see docs/SANMARTIN_EREN.md)."""
+"""Cell coordinates for the San Martín ('libertador') sheet (1536x1024), measured with the
+dark-separator detector in build_se.py --probe and checked by eye (see docs/SANMARTIN_LIBERTADOR.md)."""
 def row(xs, y0, y1):
     """consecutive cell borders -> list of (x0, y0, x1, y1) cells"""
     return [(xs[i], y0, xs[i+1], y1) for i in range(len(xs)-1)]
@@ -34,48 +34,4 @@ LIB = {
   'blood':      [(943,924,1018,1010),(1023,924,1096,1010)],
   'dust':       row([1102,1176,1254,1331], 924, 1010),
   'frost':      row([1341,1433,1526], 924, 1010),
-}
-EREN = {
-  'walk_down':  row([11,88,161,233,308,388], 97, 171),
-  'walk_left':  row([396,480,553,629,706,787], 97, 171),
-  'walk_right': row([795,880,954,1027,1101,1192], 97, 171),
-  'walk_up':    row([1202,1276,1339,1402,1465,1529], 97, 171),
-  'idle':       row([6,86,161,235], 197, 268),
-  'aim':        row([243,305,365,424], 197, 268),
-  'attack':     row([432,521,611,712,804], 197, 268),
-  'run':        row([812,878,945,1011,1076], 197, 268),
-  'hit':        row([1085,1168,1250], 197, 268),
-  'death':      row([1258,1340,1434,1526], 197, 268),
-  'hook_prep':  row([6,85,166], 316, 395),
-  'hook_launch':row([166,298], 316, 395),
-  'hook_fly':   row([298,409,515,589], 316, 395),
-  'hook_slash': row([589,700,782], 316, 395),
-  'hook_land':  row([782,893], 316, 395),
-  'instinct':   row([902,986,1066,1146,1225], 300, 395),
-  'advance':    row([1239,1327,1419,1525], 300, 395),
-  'bite':       row([6,77,144,209,271], 447, 562),
-  'exhausted':  row([1323,1394,1462,1529], 747, 872),
-  # titán
-  'tf':         row([271,350,443,525,627,719,815], 447, 562),
-  'titan':      row([820,921,1015,1103,1191,1280,1364,1447,1529], 428, 562),
-  'titan_atk':  row([7,100,174,289], 591, 695),
-  'sismo':      row([295,390,484,569,658], 591, 695),
-  'terremoto':  row([663,739,829,955,1065], 591, 695),
-  'retumbar':   row([1070,1177,1271,1359,1457,1529], 591, 695),
-  'roar':       row([6,158], 747, 872),
-  # El Retumbar (paneles de escena) y efectos
-  'step':       [(165,747,391,872),(396,747,693,872),(693,747,990,872)],
-  'shadows':    row([990,1323], 747, 872),
-  'fx_hook':    row([6,117], 928, 1016),
-  'fx_cable':   row([117,235], 928, 1016),
-  'fx_slash':   row([235,356], 928, 1016),
-  'fx_wind':    row([356,458], 928, 1016),
-  'fx_impact':  row([458,553], 928, 1016),
-  'fx_dust_s':  row([553,643], 928, 1016),
-  'fx_dust_l':  row([643,740], 928, 1016),
-  'fx_rocks':   row([740,855], 928, 1016),
-  'fx_crack':   row([855,921,985,1048], 928, 1016),
-  'fx_bolt':    row([1048,1106,1162], 928, 1016),
-  'fx_blood':   row([1162,1232,1300], 928, 1016),
-  'fx_steam':   row([1300,1360,1414,1469,1529], 928, 1016),
 }

@@ -132,7 +132,7 @@ Lore Bible: todos llegan o pasan por la Ciudad Maldita y ninguno contradice a lo
 | La Cazadora | Los bosques de las Ruinas |
 | Nigromante | Las criptas bajo la ciudad |
 | Libertador | Del otro lado de la Cordillera |
-| Eren | Detrás de los muros |
+| Ilkan | Las Dunas Quebradas |
 
 **Decisiones de canon que respeta el Códice:**
 

@@ -302,7 +302,7 @@ function libertadorDrawBuffIcon(h){
   const img = seFx("buff_icon_0"+(1+((animNow/140|0)%4)));
   if(!img) return;
   const s = 0.55;
-  drawSeImg(img, h.x, h.y - 66*(h.erenTitan ? 2.2 : 1), img.width*s, img.height*s, 0.5, 1, false, 0.75);
+  drawSeImg(img, h.x, h.y - 66*(h.ilkanColossus ? 2.2 : 1), img.width*s, img.height*s, 0.5, 1, false, 0.75);
 }
 function libertadorDrawSpectral(f){
   const a = _fxA(f), prog = 1-a;

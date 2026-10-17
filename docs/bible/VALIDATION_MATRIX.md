@@ -17,7 +17,7 @@
 | Sylva, la Cazadora del Bosque | 4/4 | 4/4 | PASS | PASS (genérico) | sin cambios de valores | PASS (genérico) | 4/4 | **PASS** |
 | Ilvar, el Señor de las Criptas | 4/4 | 4/4 | PASS | PASS (genérico) | sin cambios de valores | PASS (genérico) | 4/4 | **PASS** |
 | San Martín, el Libertador | 4/4 | 4/4 | PASS | PASS (genérico) | sin cambios de valores | PASS (genérico) | 4/4 | **PASS** |
-| Eren, el Indómito | 4/4 | 4/4 | PASS | PASS (genérico) | sin cambios de valores | PASS (genérico) | 4/4 | **PASS** |
+| Ilkan, el Caminante de Dunas | 4/4 | 4/4 | PASS | PASS (genérico) | sin cambios de valores | PASS (genérico) | 4/4 | **PASS** |
 | Ynara, la Médica de los Refugios | 4/4 | 4/4 | PASS | PASS (genérico) | entry-gate PASS (simulado) | PASS (genérico) | 4/4 | **PASS** |
 | Myla, la Niña de la Cuchara | 4/4 | 4/4 | PASS | PASS (genérico) | sin cambios de valores | PASS (genérico) | 4/4 | **PASS** |
 | Brasa, la Mecánica Fugitiva | 4/4 | 4/4 | PASS | PASS (genérico) | sin cambios de valores | PASS (genérico) | 4/4 | **PASS** |
@@ -36,7 +36,7 @@
 | Renko, el Jardinero de Nombres | 4/4 | 4/4 | PASS | PASS (genérico) | entry-gate PASS (simulado) | PASS (genérico) | 4/4 | **PASS** |
 | Sira, la Cartógrafa del Regreso | 4/4 | 4/4 | PASS | PASS (genérico) | entry-gate PASS (simulado) | PASS (genérico) | 4/4 | **PASS** |
 
-UX/Mobile "genérico": el inspector y el panel táctico leen la misma ficha para todos (`test-ability-inspector`, `test-tactical-panel`, `test-touch-targets` con Thalen, Musashi, Vesper, Eren e Ilvar).
+UX/Mobile "genérico": el inspector y el panel táctico leen la misma ficha para todos (`test-ability-inspector`, `test-tactical-panel`, `test-touch-targets` con Thalen, Musashi, Vesper, Ilkan e Ilvar).
 
 ## Arenas
 

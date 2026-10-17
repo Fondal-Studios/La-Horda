@@ -23,10 +23,10 @@ const ABILITY_META = {
   ascension_fusion:{targeting:"ally"}, spin_channel:{targeting:"self_aoe"}, frost_nova:{targeting:"self_aoe"},
   taunt_provoke:{targeting:"self_aoe"}, elemental_storm:{targeting:"self_aoe"}, self_spin_stun:{targeting:"self_aoe"},
   thousand_cuts:{targeting:"self_aoe"}, force_quit_ult:{targeting:"self_aoe"}, last_duel_ult:{targeting:"target"},
-  sm_granaderos:{targeting:"self_aoe", status:["buff"]}, eren_advance:{targeting:"self_aoe", status:["buff"]},
-  eren_instinct:{status:["buff"]}, war_cry:{status:["buff"]}, fury_armor:{status:["buff"]}, last_stand_burst:{status:["buff"]},
+  sm_granaderos:{targeting:"self_aoe", status:["buff"]}, ilkan_caravan:{targeting:"self_aoe", status:["buff"]},
+  ilkan_temple:{status:["buff"]}, war_cry:{status:["buff"]}, fury_armor:{status:["buff"]}, last_stand_burst:{status:["buff"]},
   berserker_ult:{status:["buff"]}, wild_hunt_ult:{status:["buff"]}, shadow_stealth:{status:["poison","bleed","invulnerable"]},
-  abyss_incarnation_ult:{status:["buff"], tags:["transform"]}, eren_titan_ult:{status:["buff"], tags:["transform"]},
+  abyss_incarnation_ult:{status:["buff"], tags:["transform"]}, ilkan_colossus_ult:{status:["buff"], tags:["transform"]},
   summon_golem:{tags:["summon"]}, my_tower:{tags:["summon"], status:["slow"]}, br_turret:{tags:["summon"]},
   my_bubble:{status:["shield"]}, condemned_plague:{status:["curse","debuff","dot"]}, soul_harvest:{status:["slow"]},
   forest_trap:{status:["root"]}, area_trap:{tags:["trap"]}, fire_wall:{status:["burn","dot"]},
@@ -166,7 +166,7 @@ function validateAbilityDefinition(def){
   if(!def.fullDescription) issues.push({level:"FAIL", msg:"sin descripción"});
   else if(def.fullDescription.length > (typeof CHAMPION_STANDARD!=="undefined" ? CHAMPION_STANDARD.abilityDescMax : 200)) issues.push({level:"WARNING", msg:"descripción larga ("+def.fullDescription.length+"): el tooltip usa shortDescription"});
   if(!def.icon.glyph && !def.icon.img) issues.push({level:"FAIL", msg:"sin ícono"});
-  if((def.type==="skill" || def.type==="ultimate") && !(def.cooldown > 0) && def.kind!=="eren_rumbling_ult") issues.push({level:"FAIL", msg:"sin enfriamiento"});
+  if((def.type==="skill" || def.type==="ultimate") && !(def.cooldown > 0) && def.kind!=="ilkan_finale_ult") issues.push({level:"FAIL", msg:"sin enfriamiento"});
   if(!TARGETING_LANGUAGE[def.targetingType]) issues.push({level:"FAIL", msg:"targeting desconocido"});
   for(const s of def.statusEffects) if(!COMBAT_LANGUAGE[s]) issues.push({level:"FAIL", msg:"estado sin lenguaje visual: "+s});
   return issues;

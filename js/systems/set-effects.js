@@ -306,7 +306,7 @@ function drawSetAuras(){
 // Registro de arte de skin por set (js/assets/set-skins-meta.js, generado por
 // tools/art/skins_sets/extract.py): SET_SKINS[setId] = {champ, name, preview, packs:{claveBase: claveSkin}}.
 // La skin REMAPEA el atlas del guardián (CHAMP_PACK) solo mientras el set está COMPLETO: cada estado
-// (caminar, atacar, habilidades, forma titán de Eren...) sigue su propia lógica, cambia el dibujo.
+// (caminar, atacar, habilidades, forma de coloso de Ilkan...) sigue su propia lógica, cambia el dibujo.
 // Sets sin arte: el set completo se ve con su aura plena (docs/assets_faltantes/skins_sets/).
 // Formato viejo (una sola imagen, {src}) se sigue aceptando por si llega una pose suelta.
 const SET_SKINS = {};
@@ -371,7 +371,7 @@ function activeSetSkinId(h){
   if(id && setN(h, id) >= setFullCount(id)){ const d = SET_SKINS[id]; if(d && (!d.champ || d.champ === h.classKey)) return id; }
   return typeof cromaEquippedId === "function" ? cromaEquippedId(h.classKey) : null;
 }
-// Clave de atlas a usar para `key` (p.ej. "eren", "eren_titan"): la de la skin si está activa y cargada.
+// Clave de atlas a usar para `key` (p.ej. "ilkan", "ilkan_colossus"): la de la skin si está activa y cargada.
 function setSkinPackKey(h, key){
   const d = activeSetSkin(h); if(!d || !d.packs) return key;
   const k = d.packs[key], P = k && CHAMP_PACK[k];

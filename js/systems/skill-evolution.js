@@ -36,7 +36,7 @@ const CHAMP_IDENTITY = {
   cazadora:   {sig:"mark",    proj:"arrow"},
   nigromante: {sig:"wither",  proj:"soul"},
   libertador: {sig:"stagger", proj:"bullet"},
-  eren:       {sig:"bleed",   proj:"dagger"}
+  ilkan:       {sig:"bleed",   proj:"dagger"}
 };
 const EVO_SIG_LABEL = {stagger:"aturde", bleed:"sangrado", burn:"quemadura", chill:"escarcha", shock:"descarga", mark:"marca (+10% daño recibido)", wither:"marchitar (+10% daño recibido)", element:"estado de su elemento"};
 

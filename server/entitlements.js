@@ -5,6 +5,7 @@
 const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
+const legacyIds = require("../js/storage/legacy-champion-ids.js");
 
 let TAXONOMY;
 function taxonomy(){
@@ -48,7 +49,12 @@ function founderOf(bindings, userId){
 }
 
 // Ledger rows live in GM operations state: s.grants[userId].champions[id] = {origin, by, at, reason}.
-function ledgerChampions(ops, userId){ return (ops && ops.grants && ops.grants[userId] && ops.grants[userId].champions) || {}; }
+// Las concesiones registradas con un id viejo (eren) se leen con el id vigente (ilkan).
+function ledgerChampions(ops, userId){
+  const raw = (ops && ops.grants && ops.grants[userId] && ops.grants[userId].champions) || {}, out = {};
+  for(const [id, g] of Object.entries(raw)){ const k = legacyIds.legacyChampionId(id); if(!out[k] || (out[k].revokedAt && !g.revokedAt)) out[k] = g; }
+  return out;
+}
 function entitledChampions(bindings, ops, userId){
   const out = {};
   for(const [id, g] of Object.entries(ledgerChampions(ops, userId))) if(!g.revokedAt && isChampion(id) && taxonomy().meta(id).category !== "FOUNDER") out[id] = g.origin;
@@ -58,8 +64,9 @@ function entitledChampions(bindings, ops, userId){
 // Forces server-controlled champion flags. Never touches progress fields of other champions and
 // keeps level/xp of a locked entry so a later valid grant restores it.
 function sanitizeSave(data, entitled){
-  if(!data || typeof data !== "object") return {data, changed:[]};
+  if(!data || typeof data !== "object") return {data, changed:[], migrated:false};
   const changed = [];
+  const migrated = legacyIds.legacyChampionMigrate(data); // ids viejos -> nuevos (progreso intacto)
   const champs = data.champions && typeof data.champions === "object" ? data.champions : (data.champions = {});
   for(const id of taxonomy().ids){
     if(!taxonomy().requiresGrant(id)) continue;
@@ -67,6 +74,6 @@ function sanitizeSave(data, entitled){
     if(allowed && !(c && c.unlocked)){ champs[id] = Object.assign({}, c || {}, {unlocked:true}); changed.push({id, unlocked:true}); }
     else if(!allowed && c && c.unlocked){ c.unlocked = false; changed.push({id, unlocked:false}); }
   }
-  return {data, changed};
+  return {data, changed, migrated};
 }
 module.exports = {taxonomy, isChampion, resolveFounders, founderOf, entitledChampions, sanitizeSave, ledgerChampions};

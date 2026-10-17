@@ -1251,41 +1251,41 @@ Aura rgb(90,230,140) · 4 piezas · sale más en: — · completo: LEGIÓN SIN F
 - **Descripción visual:** garras de color del set (rgb 90,230,140). Cada pieza fue cosida con el nombre de un muerto. Todavía responden cuando las llaman.
 - **Prompt:** `Garras de la Tumba — game item icon, a claw gloves, palette: the set color rgb(90,230,140) as accent; lore hint: "Cada pieza fue cosida con el nombre de un muerto. Todavía responden cuando las llaman."; pixel art, dark-fantasy chibi style of LA HORDA (same grammar as the Knight/Tanque master reference), 1px uniform dark outline, 2-3 flat shading tones per color, no gradients or airbrush, limited palette of 4-6 colors plus outline, crisp alpha (only 0 or 255), transparent background, centered, slight 3/4 angle, no text, no frame (the game draws the rarity frame), 64x64`
 
-### Legión de Reconocimiento  `legion` — Eren · maniobras · el Portador · solo Eren
+### Caravana de Medianoche  `legion` — Ilkan · lanzas de pendón · el Coloso de Arena · solo Ilkan, el Caminante de Dunas
 
-Aura rgb(200,90,60) · 4 piezas · sale más en: — · completo: EL PORTADOR ETERNO: la forma titánica dura 30% más y cada baja transformado te cura 2% de la vida.
+Aura rgb(90,220,205) · 4 piezas · sale más en: — · completo: COLOSO ETERNO: el Coloso de Arena dura 30% más y cada baja transformado te cura 2% de la vida.
 
-#### Hojas de la Legión  `legion_arma`
-- **Categoría:** Set · **Rareza:** Set · **Slot real:** Arma (arma) · **Set:** Legión de Reconocimiento · **Uso:** Eren
+#### Hoces de la Caravana  `legion_arma`
+- **Categoría:** Set · **Rareza:** Set · **Slot real:** Arma (arma) · **Set:** Caravana de Medianoche · **Uso:** Ilkan, el Caminante de Dunas
 - **Arena / fuente:** Botín de set
 - **Archivo:** `assets/items/legion_arma.png` · 64×64 PNG, fondo transparente (se registra en `ITEM_ICON_ART["legion_arma"]`)
 - **Efecto (para que el arte lo cuente):** solo estadísticas
-- **Descripción visual:** par de hojas de color del set (rgb 200,90,60). Las alas en la espalda no son un adorno: son una promesa de volver.
-- **Prompt:** `Hojas de la Legión — game item icon, a pair of twin blades, palette: the set color rgb(200,90,60) as accent; lore hint: "Las alas en la espalda no son un adorno: son una promesa de volver."; pixel art, dark-fantasy chibi style of LA HORDA (same grammar as the Knight/Tanque master reference), 1px uniform dark outline, 2-3 flat shading tones per color, no gradients or airbrush, limited palette of 4-6 colors plus outline, crisp alpha (only 0 or 255), transparent background, centered, slight 3/4 angle, no text, no frame (the game draws the rarity frame), 64x64`
+- **Descripción visual:** espada de color del set (rgb 90,220,205). Cada farol de cristal guarda la última luz de una caravana que no llegó. Quien los lleva promete cruzar por ella.
+- **Prompt:** `Hoces de la Caravana — game item icon, a sword, palette: the set color rgb(90,220,205) as accent; lore hint: "Cada farol de cristal guarda la última luz de una caravana que no llegó. Quien los lleva promete cruzar por ella."; pixel art, dark-fantasy chibi style of LA HORDA (same grammar as the Knight/Tanque master reference), 1px uniform dark outline, 2-3 flat shading tones per color, no gradients or airbrush, limited palette of 4-6 colors plus outline, crisp alpha (only 0 or 255), transparent background, centered, slight 3/4 angle, no text, no frame (the game draws the rarity frame), 64x64`
 
-#### Arnés de Maniobras  `legion_pechera`
-- **Categoría:** Set · **Rareza:** Set · **Slot real:** Pechera (pechera) · **Set:** Legión de Reconocimiento · **Uso:** Eren
+#### Arnés de Faroles  `legion_pechera`
+- **Categoría:** Set · **Rareza:** Set · **Slot real:** Pechera (pechera) · **Set:** Caravana de Medianoche · **Uso:** Ilkan, el Caminante de Dunas
 - **Arena / fuente:** Botín de set
 - **Archivo:** `assets/items/legion_pechera.png` · 64×64 PNG, fondo transparente (se registra en `ITEM_ICON_ART["legion_pechera"]`)
 - **Efecto (para que el arte lo cuente):** solo estadísticas
-- **Descripción visual:** coraza/peto de color del set (rgb 200,90,60). Las alas en la espalda no son un adorno: son una promesa de volver.
-- **Prompt:** `Arnés de Maniobras — game item icon, a chest armor, palette: the set color rgb(200,90,60) as accent; lore hint: "Las alas en la espalda no son un adorno: son una promesa de volver."; pixel art, dark-fantasy chibi style of LA HORDA (same grammar as the Knight/Tanque master reference), 1px uniform dark outline, 2-3 flat shading tones per color, no gradients or airbrush, limited palette of 4-6 colors plus outline, crisp alpha (only 0 or 255), transparent background, centered, slight 3/4 angle, no text, no frame (the game draws the rarity frame), 64x64`
+- **Descripción visual:** coraza/peto de color del set (rgb 90,220,205). Cada farol de cristal guarda la última luz de una caravana que no llegó. Quien los lleva promete cruzar por ella.
+- **Prompt:** `Arnés de Faroles — game item icon, a chest armor, palette: the set color rgb(90,220,205) as accent; lore hint: "Cada farol de cristal guarda la última luz de una caravana que no llegó. Quien los lleva promete cruzar por ella."; pixel art, dark-fantasy chibi style of LA HORDA (same grammar as the Knight/Tanque master reference), 1px uniform dark outline, 2-3 flat shading tones per color, no gradients or airbrush, limited palette of 4-6 colors plus outline, crisp alpha (only 0 or 255), transparent background, centered, slight 3/4 angle, no text, no frame (the game draws the rarity frame), 64x64`
 
-#### Empuñaduras de la Legión  `legion_guantes`
-- **Categoría:** Set · **Rareza:** Set · **Slot real:** Guantes (guantes) · **Set:** Legión de Reconocimiento · **Uso:** Eren
+#### Empuñaduras de Cristal  `legion_guantes`
+- **Categoría:** Set · **Rareza:** Set · **Slot real:** Guantes (guantes) · **Set:** Caravana de Medianoche · **Uso:** Ilkan, el Caminante de Dunas
 - **Arena / fuente:** Botín de set
 - **Archivo:** `assets/items/legion_guantes.png` · 64×64 PNG, fondo transparente (se registra en `ITEM_ICON_ART["legion_guantes"]`)
 - **Efecto (para que el arte lo cuente):** solo estadísticas
-- **Descripción visual:** guantes de color del set (rgb 200,90,60). Las alas en la espalda no son un adorno: son una promesa de volver.
-- **Prompt:** `Empuñaduras de la Legión — game item icon, a gloves, palette: the set color rgb(200,90,60) as accent; lore hint: "Las alas en la espalda no son un adorno: son una promesa de volver."; pixel art, dark-fantasy chibi style of LA HORDA (same grammar as the Knight/Tanque master reference), 1px uniform dark outline, 2-3 flat shading tones per color, no gradients or airbrush, limited palette of 4-6 colors plus outline, crisp alpha (only 0 or 255), transparent background, centered, slight 3/4 angle, no text, no frame (the game draws the rarity frame), 64x64`
+- **Descripción visual:** cristal/gema de color del set (rgb 90,220,205). Cada farol de cristal guarda la última luz de una caravana que no llegó. Quien los lleva promete cruzar por ella.
+- **Prompt:** `Empuñaduras de Cristal — game item icon, a crystal, palette: the set color rgb(90,220,205) as accent; lore hint: "Cada farol de cristal guarda la última luz de una caravana que no llegó. Quien los lleva promete cruzar por ella."; pixel art, dark-fantasy chibi style of LA HORDA (same grammar as the Knight/Tanque master reference), 1px uniform dark outline, 2-3 flat shading tones per color, no gradients or airbrush, limited palette of 4-6 colors plus outline, crisp alpha (only 0 or 255), transparent background, centered, slight 3/4 angle, no text, no frame (the game draws the rarity frame), 64x64`
 
-#### Botas de la Legión  `legion_botas`
-- **Categoría:** Set · **Rareza:** Set · **Slot real:** Botas (botas) · **Set:** Legión de Reconocimiento · **Uso:** Eren
+#### Botas de Arena  `legion_botas`
+- **Categoría:** Set · **Rareza:** Set · **Slot real:** Botas (botas) · **Set:** Caravana de Medianoche · **Uso:** Ilkan, el Caminante de Dunas
 - **Arena / fuente:** Botín de set
 - **Archivo:** `assets/items/legion_botas.png` · 64×64 PNG, fondo transparente (se registra en `ITEM_ICON_ART["legion_botas"]`)
 - **Efecto (para que el arte lo cuente):** solo estadísticas
-- **Descripción visual:** botas de color del set (rgb 200,90,60). Las alas en la espalda no son un adorno: son una promesa de volver.
-- **Prompt:** `Botas de la Legión — game item icon, a boots, palette: the set color rgb(200,90,60) as accent; lore hint: "Las alas en la espalda no son un adorno: son una promesa de volver."; pixel art, dark-fantasy chibi style of LA HORDA (same grammar as the Knight/Tanque master reference), 1px uniform dark outline, 2-3 flat shading tones per color, no gradients or airbrush, limited palette of 4-6 colors plus outline, crisp alpha (only 0 or 255), transparent background, centered, slight 3/4 angle, no text, no frame (the game draws the rarity frame), 64x64`
+- **Descripción visual:** botas de color del set (rgb 90,220,205). Cada farol de cristal guarda la última luz de una caravana que no llegó. Quien los lleva promete cruzar por ella.
+- **Prompt:** `Botas de Arena — game item icon, a boots, palette: the set color rgb(90,220,205) as accent; lore hint: "Cada farol de cristal guarda la última luz de una caravana que no llegó. Quien los lleva promete cruzar por ella."; pixel art, dark-fantasy chibi style of LA HORDA (same grammar as the Knight/Tanque master reference), 1px uniform dark outline, 2-3 flat shading tones per color, no gradients or airbrush, limited palette of 4-6 colors plus outline, crisp alpha (only 0 or 255), transparent background, centered, slight 3/4 angle, no text, no frame (the game draws the rarity frame), 64x64`
 
 ## 6. Arquetipos procedurales (Común → Mítico procedural)
 

@@ -220,7 +220,7 @@ Los primeros 2 minutos ahora son limpios:
   - Abismo: 8–104 s;
   - Cerbero: 7–159 s.
 - **Posible estancamiento (P1, NOT VERIFIED):** 2 de ~25 partidas de la Ciudad llegaron al tope de 22 min
-  sin terminar. Una fue en el nivel 10, con El Presentador vivo; la otra fue Eren en el nivel 9.
+  sin terminar. Una fue en el nivel 10, con El Presentador vivo; la otra fue Ilkan en el nivel 9.
   Puede ser el piloto (no reacciona al Gran Número) o una ventana que no se abre. Hay que verlo con
   una persona.
 
@@ -228,7 +228,7 @@ Los primeros 2 minutos ahora son limpios:
 
 - **12 jugables**, cada uno con 3 habilidades, ulti, talentos y bot propio.
 - En la Ciudad, en nivel 1, ganaron 6 de 12: Tanque, Mago, Segador, Profeta, Libertador y Nigromante.
-  Perdieron 5 (Cazadora, Asesino, Musashi y Soporte, más Axiom en el nivel 2). Eren no terminó.
+  Perdieron 5 (Cazadora, Asesino, Musashi y Soporte, más Axiom en el nivel 2). Ilkan no terminó.
 - Hay dispersión, pero no hay un guardián "roto". Axiom es el más frágil al empezar (P2, DECISIÓN).
 - La identidad de cada guardián no se tocó.
 

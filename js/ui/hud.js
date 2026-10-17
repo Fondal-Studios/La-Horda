@@ -6,7 +6,7 @@
 
 const HUD_GLYPH_COLOR = {"btn-s1":"#8fe0ff", "btn-s2":"#cfc2ff", "btn-s3":"#97f0cc", "btn-ult":"#ffe9a8"};
 function updateAbilityButtons(){
-  // el kit ACTIVO del héroe (Eren transformado muestra el del titán)
+  // el kit ACTIVO del héroe (Ilkan transformado muestra el del coloso)
   const cls = (player && player.cls && player.classKey===selectedClass) ? player.cls : CLASSES[selectedClass];
   const map = [["btn-s1",cls.skills[0]], ["btn-s2",cls.skills[1]], ["btn-s3",cls.skills[2]], ["btn-ult",cls.ultimate]];
   map.forEach(([id, sk], mi)=>{
@@ -41,7 +41,7 @@ const hudPct = x => (Math.round(x*10)/10) + "%"; // décimas de punto: menos esc
 // hudStackLayout lee alturas (layout forzado): solo cuando cambió el tamaño de esos bloques o la ventana
 let _hudStackDirty = true, _hudStackRO = null;
 // El bloque de estado del guardián crece con sus indicadores propios (Nigromante con gólem y
-// Abismo: 4 filas más; El Libertador / Eren con su línea): en celular apaisado pisaba la pastilla
+// Abismo: 4 filas más; El Libertador / Ilkan con su línea): en celular apaisado pisaba la pastilla
 // de Arena/Nivel/Bajas, que tiene posición fija. Se corren hacia abajo la pastilla y los aliados
 // lo que haga falta (y los aliados pierden ese alto de su tope, para no invadir los botones).
 function hudStackLayout(){
@@ -136,13 +136,13 @@ function updateHUD(){
   hudTxt(document.getElementById("hud-timer"), Math.floor(totalSec/60)+":"+String(totalSec%60).padStart(2,"0"));
   document.getElementById("atk-badge").classList.toggle("hidden", player.atkAuraTimer<=0);
   document.getElementById("shield-badge").classList.toggle("hidden", player.shieldAuraTimer<=0);
-  // El Libertador / Eren: indicadores propios (Disparo de Oficial, Cabral, montura / Furia,
-  // Seguir Adelante, transformación, regeneración, El Retumbar, agotado). Solo se toca el DOM si cambió.
+  // El Libertador / Ilkan: indicadores propios (Disparo de Oficial, Cabral, montura / Tormenta,
+  // Sed de Horizonte, transformación, regeneración, Los Tres Pasos, agotado). Solo se toca el DOM si cambió.
   if(player.cls !== _hudLastCls){ _hudLastCls = player.cls; updateAbilityButtons(); }
   if(typeof boonHudTick==="function") boonHudTick(); // refuerzos de habilidad nuevos (también los del invitado, que llegan por snapshot)
   const seHudEl = document.getElementById("se-hud");
   if(seHudEl){
-    const html = player.classKey==="libertador" ? libertadorHudHtml(player) : player.classKey==="eren" ? erenHudHtml(player) : "";
+    const html = player.classKey==="libertador" ? libertadorHudHtml(player) : player.classKey==="ilkan" ? ilkanHudHtml(player) : "";
     if(html !== _hudLastSe){ _hudLastSe = html; seHudEl.innerHTML = html; seHudEl.classList.toggle("hidden", !html); }
   }
   // Musashi: Concentración (0/10, sección 26) y Victorias de Duelo -discreto, no satura el HUD-.
@@ -215,14 +215,14 @@ function updateHUD(){
   const ultPct = player.ultCharge/player.ultMax*100;
   hudCss(document.getElementById("ult-ring"), "background", `conic-gradient(var(--ult) ${Math.round(ultPct*3.6)}deg, #2a1c10 0deg)`);
   const ultBtn = document.getElementById("btn-ult");
-  const ultReady = (player.ultCharge>=player.ultMax && player.ultCd<=0 && runLevel>=ULT_MIN_ARENA_LEVEL && !(player.classKey==="eren" && erenUltBlocked(player))) || !!player.erenRumblingReady;
+  const ultReady = (player.ultCharge>=player.ultMax && player.ultCd<=0 && runLevel>=ULT_MIN_ARENA_LEVEL && !(player.classKey==="ilkan" && ilkanUltBlocked(player))) || !!player.ilkanFinaleReady;
   if(ultReady && !ultBtn.classList.contains("ready") && !ultBtn.classList.contains("locked")){
     // ulti lista: destello del botón + aro dorado en el guardián (juice.js), una sola vez por carga
     ultBtn.classList.remove("ready-pop"); void ultBtn.offsetWidth; ultBtn.classList.add("ready-pop");
     if(typeof juiceUltReady==="function") juiceUltReady();
   }
   ultBtn.classList.toggle("ready", ultReady);
-  ultBtn.classList.toggle("rumble", !!player.erenRumblingReady);
+  ultBtn.classList.toggle("finale", !!player.ilkanFinaleReady);
   ultBtn.classList.toggle("locked", runLevel<ULT_MIN_ARENA_LEVEL);
 
   renderParty();

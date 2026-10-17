@@ -6,7 +6,7 @@ const server=spawn('python3',['-m','http.server','8805'],{stdio:'ignore'});let b
 const checks=await p.evaluate(()=>{
  const out=[],ok=(name,pass)=>out.push({name,ok:!!pass});
  for(const c of Object.values(save.champions)){c.unlocked=true;c.level=20;}
- save.tut={training:1};selectedClass='mago';save.duoReserve='eren';currentArena='ciudad';divinaMode=false;titleContinue();ok('Completed onboarding reaches menu',state==='mainmenu');
+ save.tut={training:1};selectedClass='mago';save.duoReserve='ilkan';currentArena='ciudad';divinaMode=false;titleContinue();ok('Completed onboarding reaches menu',state==='mainmenu');
  for(const key of Object.keys(CLASSES)){
   setState('prep');selectedClass=key;lobbyAllies=['soporte','tanque','guerrero'].filter(k=>k!==key);startRun(1);clearRunTimers();
   const h=player;h.alive=false;duoUpdate();ok('No automatic champion swap '+key,player===h&&!h.alive&&h.classKey===key&&!duoPending(h));

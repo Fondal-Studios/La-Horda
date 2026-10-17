@@ -23,7 +23,7 @@ Se comprueba la geometría de suelo y cuatro esquinas, se excluyen muros del lab
 
 `python tools/art/scan_sprites.py --dir champions`: 549 PNG revisados, 225 con uno o más avisos. 203 con aviso de halo, 39 de semitransparencia, 40 de fragmentos; las categorías se solapan. Resultado completo: `champion-technical-scan.txt`.
 
-Estos son indicadores heurísticos, no un veredicto visual: metal claro puede parecer halo, proyectiles separados pueden parecer fragmentos y efectos VFX permiten alfa. No se ejecutó `--apply`. Ejemplos para revisión individual: skin sistema de Axiom (4,2% semialfa), titán de skin legion de Eren (7,2%); los archivos `eren/v2/fx/` deben evaluarse como efectos y no como cuerpos de personaje.
+Estos son indicadores heurísticos, no un veredicto visual: metal claro puede parecer halo, proyectiles separados pueden parecer fragmentos y efectos VFX permiten alfa. No se ejecutó `--apply`. Ejemplos para revisión individual: skin sistema de Axiom (4,2% semialfa), titán de skin legion de Ilkan (7,2%); los archivos `ilkan/v2/fx/` deben evaluarse como efectos y no como cuerpos de personaje.
 
 ## Validación
 

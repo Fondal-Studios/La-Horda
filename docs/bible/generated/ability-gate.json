@@ -223,7 +223,7 @@
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 378,
+     "vfx": 323,
      "aims": false,
      "aimProfile": null
     }
@@ -251,7 +251,7 @@
       "MULTIPLE",
       "CURA"
      ],
-     "vfx": 59,
+     "vfx": 53,
      "aims": false,
      "aimProfile": null
     },
@@ -295,7 +295,7 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 11,
+     "vfx": 5,
      "aims": false,
      "aimProfile": null
     }
@@ -323,7 +323,7 @@
       "AREA",
       "MULTIPLE"
      ],
-     "vfx": 28,
+     "vfx": 26,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -368,7 +368,7 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 5,
+     "vfx": 3,
      "aims": false,
      "aimProfile": null
     }
@@ -821,14 +821,14 @@
    "status": "INFO"
   },
   {
-   "key": "eren",
-   "name": "Eren, el Indómito",
+   "key": "ilkan",
+   "name": "Ilkan, el Caminante de Dunas",
    "role": "asesino",
    "abilities": [
     {
      "slot": 0,
-     "name": "Equipo de Maniobras",
-     "kind": "eren_hook",
+     "name": "Lanza-Pendón",
+     "kind": "ilkan_lance",
      "err": null,
      "damaged": 10,
      "statused": 1,
@@ -844,8 +844,8 @@
     },
     {
      "slot": 1,
-     "name": "Instinto de Supervivencia",
-     "kind": "eren_instinct",
+     "name": "Piel de Duna",
+     "kind": "ilkan_temple",
      "err": null,
      "damaged": 0,
      "statused": 0,
@@ -856,8 +856,8 @@
     },
     {
      "slot": 2,
-     "name": "¡Avancen!",
-     "kind": "eren_advance",
+     "name": "Grito de Caravana",
+     "kind": "ilkan_caravan",
      "err": null,
      "damaged": 0,
      "statused": 0,
@@ -870,8 +870,8 @@
     },
     {
      "slot": "ult",
-     "name": "El Portador",
-     "kind": "eren_titan_ult",
+     "name": "Coloso de Arena",
+     "kind": "ilkan_colossus_ult",
      "err": null,
      "damaged": 0,
      "statused": 0,
@@ -886,7 +886,7 @@
    ],
    "isNew": false,
    "problems": [
-    "Hab. 2 Instinto de Supervivencia: sin efecto medible",
+    "Hab. 2 Piel de Duna: sin efecto medible",
     "falta otra habilidad (distinta de la de área) que dañe a varios enemigos",
     "la definitiva suma 2 categorías (POTENCIA, CURA); se piden 3+"
    ],

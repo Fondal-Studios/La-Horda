@@ -17,7 +17,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   await p.goto(`${BASE}/index.html`, { timeout: 120000 });
   for (let k = 0; k < 1200; k++) { if (await p.evaluate(() => { const x = document.getElementById('title-continue-btn'); return x && !x.disabled; })) break; await sleep(100); }
   await p.evaluate(() => { for (const k in save.champions) { save.champions[k].level = 30; save.champions[k].unlocked = true; } save.starterChosen = true; save.arenasCleared = {}; for (const a of CAMPAIGN_ORDER) save.arenasCleared[a] = true; persistNow(); document.getElementById('title-continue-btn').click(); });
-  for (const c of ['nigromante', 'libertador', 'eren', 'musashi', 'cazadora', 'tanque']) {
+  for (const c of ['nigromante', 'libertador', 'ilkan', 'musashi', 'cazadora', 'tanque']) {
     const r = await p.evaluate(async ([c]) => {
       selectedClass = c; currentArena = 'bosque'; startRun(1);
       await new Promise(r => setTimeout(r, 600));

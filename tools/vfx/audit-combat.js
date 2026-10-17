@@ -58,7 +58,7 @@ process.on('exit',()=>server.kill());
   const layouts=[];
   for(const size of [{width:844,height:390},{width:667,height:375},{width:1280,height:800}]){
    await page.setViewportSize(size);
-   for(const key of ['mago','nigromante','eren']){
+   for(const key of ['mago','nigromante','ilkan']){
     const layout=await page.evaluate(k=>{
      netMatch=null;selectedClass=k;currentArena='bosque';lobbyAllies=['tanque','soporte','guerrero'];startRun(3);state='paused';
      runLevel=4;enemies=[];spawnTimer=1e9;arenaHazardTimer=1e9;

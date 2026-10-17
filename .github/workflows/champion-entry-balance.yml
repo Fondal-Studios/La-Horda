@@ -121,6 +121,7 @@ jobs:
           NODE_PATH: /tmp/horda-balance/node_modules
       - run: npm ci --prefix server --no-audit --no-fund
       - run: node server/test-competitive-entitlements.js
+      - run: node server/test-legacy-champion-ids.js
       - run: node tools/crystal-wars/competitive-integration-test.js
         env:
           NODE_PATH: /tmp/horda-balance/node_modules

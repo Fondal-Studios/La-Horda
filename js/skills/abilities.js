@@ -15,9 +15,9 @@ function triggerBasic(caster){
   const cls = caster.cls;
   const mythicBonus = mythicExecuteBonus(caster); // Sobrecarga Mítica: bonus si vida<50%
   const aspd = (1 + passiveSum(caster.classKey,"atkspeed_mult") + mythicBonus) * setAtkSpeedMult(caster) * (runStats.atkSpeedMult||1) * heroAtkSpeedMult(caster);
-  // El Libertador (fusil / sable montado) y Eren (doble hoja / puños del titán): básicos propios
+  // El Libertador (fusil / sable montado) y Ilkan (hoces gemelas / puños del coloso): básicos propios
   if(caster.classKey==="libertador" && !divinaMode && libertadorBasic(caster, aspd)) return;
-  if(caster.classKey==="eren" && !divinaMode && erenBasic(caster, aspd)) return;
+  if(caster.classKey==="ilkan" && !divinaMode && ilkanBasic(caster, aspd)) return;
 
   // La Profeta — Danza del Presagio: su básico es siempre cuerpo a cuerpo (mismo criterio de
   // rango/objetivo que el resto de las clases melee) pero cada golpe acumula una carga de
@@ -239,9 +239,9 @@ function spawnSlash(caster){
 function useSkill(idx, aim){
   if(!player.alive || state!=="playing") return false;
   if(netIsGuest()) return netGuestCast(idx, aim); // B1: intención al anfitrión
-  // Eren: segundo gancho durante el vuelo (no cuesta ni espera enfriamiento)
-  if(idx===0 && erenHookCanRedirect(player)) return erenHookRedirect(player, aim);
-  if(player.classKey==="eren" && player.erenPhase && player.erenPhase!=="land") return false;
+  // Ilkan: segunda lanza durante el vuelo (no cuesta ni espera enfriamiento)
+  if(idx===0 && ilkanHookCanRedirect(player)) return ilkanHookRedirect(player, aim);
+  if(player.classKey==="ilkan" && player.ilkanPhase && player.ilkanPhase!=="land") return false;
   if(player.classKey==="libertador" && player.smPhase) return false;
   const sk = player.cls.skills[idx];
   if(player.cds[idx]>0 || player.energy < sk.cost) return false;
@@ -281,7 +281,7 @@ function useSylvaPiercingShot(caster, chargeMs, aim){
    reglas y talentos como antes, pero con un PISO: nunca baja del 55% del enfriamiento base, por
    más reducción que se apile. Además, durante 4 s la propia definitiva no carga su barra (una
    ulti de área no puede rellenarse sola). Ningún efecto reinicia la definitiva (la Ascensión de
-   la Profeta solo acelera las habilidades 1-3). Lo usan jugador, bots, Eren y San Martín. */
+   la Profeta solo acelera las habilidades 1-3). Lo usan jugador, bots, Ilkan y San Martín. */
 const ULT_CD_FLOOR = 0.55, ULT_SELF_CHARGE_LOCK_MS = 4000;
 function ultCooldownFor(h, baseCd, passiveCdMult){
   const m = masteryCdMult(masteryOf(h.classKey, "ult")) * (passiveCdMult||1) * arenaMods().heroCdMult * arenaRuleCdMult() * talentSkillCdMult(h.classKey, "ult");
@@ -290,14 +290,14 @@ function ultCooldownFor(h, baseCd, passiveCdMult){
 }
 function useUltimate(){
   if(!player.alive || state!=="playing") return;
-  // Eren: agotado / ocupado no transforma; transformado, la ulti es El Retumbar (solo si se desbloqueó)
-  if(player.classKey==="eren" && !netIsGuest()){
-    const why = erenUltBlocked(player);
+  // Ilkan: agotado / ocupado no transforma; transformado, la ulti es Los Tres Pasos (solo si se desbloqueó)
+  if(player.classKey==="ilkan" && !netIsGuest()){
+    const why = ilkanUltBlocked(player);
     if(why){ if(why==="exhausted") floatText(player.x, player.y-64, "Agotado", null); return; }
-    if(player.erenTitan){ gainSkillUseXp(player.classKey, "ult"); castAbility(player, player.cls.ultimate, true); return; }
+    if(player.ilkanColossus){ gainSkillUseXp(player.classKey, "ult"); castAbility(player, player.cls.ultimate, true); return; }
   }
   if(player.classKey==="libertador" && player.smPhase && !netIsGuest()) return;
-  if(netIsGuest()){ if((player.ultCharge>=player.ultMax && player.ultCd<=0 && runLevel>=ULT_MIN_ARENA_LEVEL) || player.erenRumblingReady) netSendToHost({k:"ult"}); return; }
+  if(netIsGuest()){ if((player.ultCharge>=player.ultMax && player.ultCd<=0 && runLevel>=ULT_MIN_ARENA_LEVEL) || player.ilkanFinaleReady) netSendToHost({k:"ult"}); return; }
   if(player.ultCharge < player.ultMax) return;
   if(player.ultCd > 0) return; // antes no se chequeaba: la ulti podía saltarse su propio enfriamiento
   if(runLevel < ULT_MIN_ARENA_LEVEL) return; // no disponible hasta cierto punto de la arena
@@ -373,12 +373,12 @@ function castAbility(caster, sk, isUlt, idx){
     case "ir_anchor": case "ir_tension": case "ir_cut": case "ir_triangle":
       portadorCast(caster, sk, isUlt, dmg, AREA, DUR, POWER); break;
 
-    // El Libertador (js/champions/libertador.js) y Eren (js/champions/eren.js)
+    // El Libertador (js/champions/libertador.js) y Ilkan (js/champions/ilkan.js)
     case "sm_bayonet": case "sm_granaderos": case "sm_san_lorenzo": case "sm_andes_ult":
       libertadorCast(caster, sk, isUlt, dmg, AREA, DUR); break;
-    case "eren_hook": case "eren_instinct": case "eren_advance": case "eren_titan_ult":
-    case "titan_sismo": case "titan_terremoto": case "titan_retumbar": case "eren_rumbling_ult":
-      erenCast(caster, sk, isUlt, dmg, AREA, DUR, POWER); break;
+    case "ilkan_lance": case "ilkan_temple": case "ilkan_caravan": case "ilkan_colossus_ult":
+    case "colossus_slam": case "colossus_sinkhole": case "colossus_march": case "ilkan_finale_ult":
+      ilkanCast(caster, sk, isUlt, dmg, AREA, DUR, POWER); break;
 
     case "placeholder": {
       // Se mantiene por si algún futuro guardián necesita un slot vacío temporal (ya no lo usa

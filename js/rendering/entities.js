@@ -69,8 +69,8 @@ function drawHeroBody(h, drawScale, spinning, stealthed){
     // Sylva: dibujado con éxito desde sus sprites reales recortados.
   } else if(h.classKey==="libertador" && drawLibertador(h, drawScale, stealthed?0.32:1)){
     // El Libertador: a pie / a caballo (js/champions/libertador.js)
-  } else if(h.classKey==="eren" && drawEren(h, drawScale, stealthed?0.32:1)){
-    // Eren: humano / El Portador (js/champions/eren.js)
+  } else if(h.classKey==="ilkan" && drawIlkan(h, drawScale, stealthed?0.32:1)){
+    // Ilkan: humano / Coloso de Arena (js/champions/ilkan.js)
   } else if(h.classKey==="nigromante" && h.nigroDemonForm && drawNigromanteDemon(h, drawScale, stealthed?0.32:1)){
     // Nigromante transformado (Encarnación del Abismo): Demonio Nigromántico.
   } else if(h.classKey==="nigromante" && drawNigromanteReal(h, drawScale, stealthed?0.32:1)){

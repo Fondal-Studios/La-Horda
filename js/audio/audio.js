@@ -1030,7 +1030,7 @@ const SFX_CFG = {
   clear:{p:4,gap:800}, heal:{p:2,gap:200}, shield:{p:2,gap:200}, potion:{p:2,gap:120},
   levelup:{p:4,gap:400}, victory:{p:5,gap:1000}, ult:{p:4,gap:300},
   playerDeath:{p:5,gap:2000}, // cae el grupo (pantalla de derrota)
-  // El Libertador / Eren (sintetizados, sin archivos de audio)
+  // El Libertador / Ilkan (sintetizados, sin archivos de audio)
   musket:{p:3,gap:120}, musketOfficer:{p:4,gap:150}, blade:{p:1,gap:70}, bugle:{p:4,gap:800}, gallop:{p:3,gap:400},
   hook:{p:2,gap:90}, roar:{p:4,gap:600}, stomp:{p:3,gap:140}, punch:{p:2,gap:90}, thunder:{p:5,gap:800},
   // Botín: cada rareza suena distinto (la revelación se oye aunque no se mire la pantalla)
@@ -1098,7 +1098,7 @@ function _sfxMat(x){
 }
 // Arma del que pega (el jugador): filo, contundente, magia o proyectil
 const SFX_WEAPON = { guerrero:"blade", musashi:"blade", asesino:"blade", segador:"blade", libertador:"blade",
-  tanque:"blunt", eren:"blunt", mago:"magic", nigromante:"magic", profeta:"magic", axiom:"magic", soporte:"magic", cazadora:"shot" };
+  tanque:"blunt", ilkan:"blunt", mago:"magic", nigromante:"magic", profeta:"magic", axiom:"magic", soporte:"magic", cazadora:"shot" };
 function _sub(t, f0, len, vol, D){ // sub-grave corto + su armónico (para que se sienta en parlantes chicos)
   _tone(t, "sine", f0, Math.max(28, f0*0.5), len, vol, D, 0.004);
   _tone(t, "triangle", f0*2, f0*0.9, len*0.45, vol*0.22, D, 0.003);
@@ -1227,7 +1227,7 @@ function playSfx(type, src, wx){
       _wet(_tone(t0+0.48,"square",783.99,783.99,0.42,0.07,D,0.02),1); len=0.95; break;
     }
     case "gallop": for(let i=0;i<6;i++){ _noise(t0+i*0.11,0.05,0.2,"lowpass",420,0,D); _tone(t0+i*0.11,"sine",90,60,0.06,0.2,D); } len=0.7; break;
-    // ---- Eren ----
+    // ---- Ilkan ----
     case "hook": _noise(t0,0.18,0.12,"bandpass",2600,6,D); _tone(t0,"sawtooth",1800,520,0.16,0.04,D); len=0.2; break;
     case "punch": _click(t0,0.2,D,1500); _sub(t0,110,0.14,0.42,D); _noise(t0,0.1,0.2,"lowpass",800,0,D); len=0.16; break;
     case "stomp": _click(t0,0.25,D,1200); _sub(t0,66,0.38,0.6,D); _wet(_nz(t0,W.brown,0.32,0.36,D,0,0,0,0,0.45),1); _duck(0.7,250); len=0.4; break;

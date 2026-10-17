@@ -144,7 +144,7 @@ const COSMETIC_SET_STORIES = {
   santa_paciencia:"Ynara conservó las insignias de cada refugio que sostuvo abierto durante el asedio. Unidas, recuerdan las noches en que cocinar también fue una forma de resistir.",
   manada:"En un bosque que aprendió a arder sin morir, Sylva recogió una pluma de fuego. Ahora sus flechas señalan el camino de regreso entre las cenizas.",
   errante:"Musashi dejó su antigua armadura bajo un cerezo sin flores. Esta vestimenta pertenece al viaje que comenzó después de su último duelo.",
-  legion:"Al otro lado del muro, Eren encontró una posibilidad distinta de su transformación. La piel de la bestia conserva las marcas de aquella primera noche.",
+  legion:"Una noche sin luna, Ilkan se unió a una caravana que cruzaba las Dunas Quebradas guiándose por faroles de cristal. El Coloso que lo acompaña guardó, en sus grietas, la luz de aquellos faroles.",
   sistema:"Axiom recompiló su propio cuerpo para cruzar una fractura imposible. Las líneas de esta apariencia son las costuras que le permiten regresar.",
   profecia:"La Profeta vistió los colores de un futuro que consiguió impedir. Cada hilo recuerda una vida que ya no tendrá que perderse.",
   convergencia:"En la noche en que las dos torres ardieron, el mago unió sus insignias. Esta vestidura celebra la tregua entre la llama y el invierno.",

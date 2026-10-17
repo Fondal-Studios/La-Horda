@@ -183,7 +183,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('MIGRACION.nivel_bajo_conserva_respaldo_sin_habilitar_arbol', mig.gTP === 11 && mig.gTree === 0 && mig.tTP === 5 && mig.tTree === 0 && mig.tNodes === 0 && mig.tBackup === 5, mig);
 
   // ---- partida real con bots que tienen refuerzos: nada se rompe
-  const real = await E(() => { let casts = 0; for (const [cls, arena] of [['mago','bosque'], ['nigromante','hielo'], ['libertador','acuatica'], ['eren','infernal']]){
+  const real = await E(() => { let casts = 0; for (const [cls, arena] of [['mago','bosque'], ['nigromante','hielo'], ['libertador','acuatica'], ['ilkan','infernal']]){
       __lvl(cls, 5); __start(6, arena, cls, ['profeta','cazadora','musashi']); spawnTimer = 0;
       for (const h of heroes){ h.boons = {}; for (const b of BOONS.filter(b => b.champ === h.classKey)) h.boons[b.id] = 2; }
       for (let i = 0; i < 1200 && state === 'playing'; i++){ for (const h of heroes) h.hp = h.maxHp; if (i % 40 === 0){ for (let s = 0; s < 3; s++) if (useSkill(s)) casts++; } update(16); if (i % 200 === 0) render(); } }

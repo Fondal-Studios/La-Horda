@@ -35,7 +35,7 @@ Entorno: Chromium headless de escritorio, viewport emulado; no equivale a hardwa
 
 - **296 checks PASS, 76 habilidades, 57 simulaciones de 150 segundos (3 seeds × 19 campeones), cero excepciones**.
 - Pools, replicación numérica de firmas, retención de casts bajo saturación de eventos, definitivas, limpieza, HUD y pausa/audio aprobados por esos checks.
-- Nueve capturas: Mago/Nigromante/Eren en 667×375, 844×390 y 1280×800. Inspección directa de Mago 667×375 y Eren 844×390: controles dentro de pantalla y amenazas distinguibles. La primera pasada detectó números de daño superpuestos con 70 enemigos; quedó reparado y revalidado en la fase de cierre detallada abajo.
+- Nueve capturas: Mago/Nigromante/Ilkan en 667×375, 844×390 y 1280×800. Inspección directa de Mago 667×375 y Ilkan 844×390: controles dentro de pantalla y amenazas distinguibles. La primera pasada detectó números de daño superpuestos con 70 enemigos; quedó reparado y revalidado en la fase de cierre detallada abajo.
 - Las simulaciones muestran integridad del motor, no establecen por sí solas win rates ni balance competitivo; no se normalizaron kits automáticamente por esta muestra.
 
 `node server/test-relay.js`: **38 checks PASS**, cero fallos, protocolo de salas incluido retorno/siguiente arena.
@@ -82,7 +82,7 @@ Se conserva el pool de 70, la suma por objetivo, colores elementales, pop y cadu
 | Tanque | Tanque | 34,9 |
 | Tanque | Eslabón | 28,6 |
 | Asesino | Guerrero | 29,9 |
-| Asesino | Eren | 42,5 |
+| Asesino | Ilkan | 42,5 |
 | Mago | Mago | 49,9 |
 | Mago | Iria | 36,7 |
 | Soporte | Soporte | 16,1 |

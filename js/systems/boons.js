@@ -25,7 +25,7 @@ function boonSkillOf(b){
   return b.skill==="ult" ? cls.ultimate : cls.skills[b.skill];
 }
 function boonsForChamp(k){ return BOONS.filter(b=>b.champ===k); }
-// Refuerzos del héroe que transforman la habilidad sk (por nombre: Eren titán tiene otro kit).
+// Refuerzos del héroe que transforman la habilidad sk (por nombre: Ilkan coloso tiene otro kit).
 function boonsOnSkill(h, sk){
   const out = [], B = heroBoons(h);
   for(const id in B){ const b = BOON_BY_ID[id]; if(!b || b.minion || b.champ!==h.classKey) continue; const s = boonSkillOf(b); if(s && sk && s.name===sk.name) out.push({b, r:B[id]}); }

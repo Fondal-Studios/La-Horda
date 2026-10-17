@@ -1,13 +1,13 @@
-// LA HORDA — El Libertador y Eren en cooperativo (host autoritativo).
-// Anfitrión = El Libertador, invitado 1 = Eren, invitado 2 = Soporte, + 1 bot.
+// LA HORDA — El Libertador y Ilkan en cooperativo (host autoritativo).
+// Anfitrión = El Libertador, invitado 1 = Ilkan, invitado 2 = Soporte, + 1 bot.
 // Verifica que el INVITADO vea/controle: fases de San Martín (montar, cargar, forma montada,
-// Cruce de los Andes), la transformación de Eren (clase del titán, botones, tamaño), El Retumbar
+// Cruce de los Andes), la transformación de Ilkan (clase del titán, botones, tamaño), Los Tres Pasos
 // (pedido por el invitado, pisadas sincronizadas), AGOTADO, y que el anfitrión vea lo mismo.
 // uso: node tools/net-test/champs_se.js   (sitio en :8771 y relay en :8799, ver README.md)
 let chromium;
 try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
 const SITE = process.env.SITE || 'http://127.0.0.1:8771', RELAY = process.env.RELAY || 'ws://127.0.0.1:8799';
-const CH = ['libertador', 'eren', 'soporte'];
+const CH = ['libertador', 'ilkan', 'soporte'];
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL ') + n + (x !== undefined ? '  ' + JSON.stringify(x).slice(0, 400) : '')); if (!ok) fails++; };
 (async () => {
@@ -34,7 +34,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   // mundo tranquilo para mirar estados: sin oleadas, nivel con ulti habilitada
   await H.p.evaluate(() => { runLevel = Math.max(runLevel, ULT_MIN_ARENA_LEVEL); setInterval(() => { spawnTimer = 1e9; levelTimer = 0; for (const h of heroes) { h.hp = Math.max(h.hp, h.maxHp * 0.6); h.energy = h.maxEnergy; } }, 50); enemies.forEach(e => e.alive = false); for (let j = 0; j < 12; j++) { const e = spawnEnemy('duende_bosque'); e.x = player.x + 150 + (j % 4) * 40; e.y = player.y + ((j / 4) | 0) * 50 - 50; e.speed = 0; e.dmg = 0; e.hp = e.maxHp = 5000; } });
   const who = await Promise.all(all.map(c => c.p.evaluate(() => ({ me: player && player.classKey, heroes: heroes.map(h => h.classKey), role: net.role }))));
-  check('net.roles', who[0].me === 'libertador' && who[1].me === 'eren' && who[2].me === 'soporte' && who.every(w => w.heroes.includes('libertador') && w.heroes.includes('eren')), who);
+  check('net.roles', who[0].me === 'libertador' && who[1].me === 'ilkan' && who[2].me === 'soporte' && who.every(w => w.heroes.includes('libertador') && w.heroes.includes('ilkan')), who);
 
   // ---- San Martín (anfitrión): San Lorenzo + Cruce de los Andes, visto por los invitados ----
   await H.p.evaluate(() => { player.cds = [0, 0, 0]; useSkill(2, null); });
@@ -48,34 +48,34 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('net.guest_sees_mounted_and_andes', smM.mounted && smM.fx.includes('andes'), smM);
   await G1.p.screenshot({ path: (process.env.OUT || '/tmp') + '/net_guest_andes.png' });
 
-  // ---- Eren (invitado 1): transformación pedida por el invitado ----
-  await H.p.evaluate(() => { const e = heroes.find(h => h.classKey === 'eren'); e.ultCharge = e.ultMax; e.ultCd = 0; });
+  // ---- Ilkan (invitado 1): transformación pedida por el invitado ----
+  await H.p.evaluate(() => { const e = heroes.find(h => h.classKey === 'ilkan'); e.ultCharge = e.ultMax; e.ultCd = 0; });
   await sleep(300);
   await G1.p.evaluate(() => useUltimate());
   await sleep(2300);
-  const tHost = await H.p.evaluate(() => { const e = heroes.find(h => h.classKey === 'eren'); return { titan: !!e.erenTitan, r: e.radius }; });
-  const tGuest = await G1.p.evaluate(() => ({ titan: !!player.erenTitan, cls: player.cls.name, r: player.radius, btn: [...document.querySelectorAll('.skill-btn .skill-name, .ability-btn span')].map(x => x.textContent).join('|') }));
-  check('net.guest_eren_transforms', tHost.titan && tGuest.titan && tGuest.cls === 'El Portador' && tGuest.r > 40, { tHost, tGuest });
+  const tHost = await H.p.evaluate(() => { const e = heroes.find(h => h.classKey === 'ilkan'); return { titan: !!e.ilkanColossus, r: e.radius }; });
+  const tGuest = await G1.p.evaluate(() => ({ titan: !!player.ilkanColossus, cls: player.cls.name, r: player.radius, btn: [...document.querySelectorAll('.skill-btn .skill-name, .ability-btn span')].map(x => x.textContent).join('|') }));
+  check('net.guest_ilkan_transforms', tHost.titan && tGuest.titan && tGuest.cls === 'Coloso de Arena' && tGuest.r > 40, { tHost, tGuest });
   // habilidades del titán pedidas por el invitado
   await G1.p.evaluate(() => useSkill(0, null));
   await sleep(400);
-  const sismo = await H.p.evaluate(() => { const e = heroes.find(h => h.classKey === 'eren'); return { cd0: Math.round(e.cds[0]) }; });
+  const sismo = await H.p.evaluate(() => { const e = heroes.find(h => h.classKey === 'ilkan'); return { cd0: Math.round(e.cds[0]) }; });
   check('net.guest_titan_skill', sismo.cd0 > 0, sismo);
   await G1.p.screenshot({ path: (process.env.OUT || '/tmp') + '/net_guest_titan.png' });
-  // El Retumbar: Furia llena transformado -> el invitado lo pide
-  await H.p.evaluate(() => { const e = heroes.find(h => h.classKey === 'eren'); e.erenPhase = null; e.ultCharge = e.ultMax; erenCheckRumbling(e); });
+  // Los Tres Pasos: Furia llena transformado -> el invitado lo pide
+  await H.p.evaluate(() => { const e = heroes.find(h => h.classKey === 'ilkan'); e.ilkanPhase = null; e.ultCharge = e.ultMax; ilkanCheckFinale(e); });
   await sleep(400);
-  const readyG = await G1.p.evaluate(() => ({ ready: !!player.erenRumblingReady, hud: (document.getElementById('se-hud') || {}).innerText || '' }));
+  const readyG = await G1.p.evaluate(() => ({ ready: !!player.ilkanFinaleReady, hud: (document.getElementById('se-hud') || {}).innerText || '' }));
   await G1.p.evaluate(() => useUltimate());
   await sleep(1500);
-  const rG = await G1.p.evaluate(() => ({ ph: player.erenPhase, steps: champFx.filter(f => f.type === 'rumbleStep').length, sil: champFx.some(f => f.type === 'rumbling') }));
-  const rO = await G2.p.evaluate(() => ({ steps: champFx.filter(f => f.type === 'rumbleStep').length }));
-  check('net.guest_rumbling', readyG.ready && /RETUMBAR/.test(readyG.hud) && rG.ph === 'rumble' && rG.steps === 3 && rG.sil && rO.steps === 3, { readyG, rG, other: rO });
+  const rG = await G1.p.evaluate(() => ({ ph: player.ilkanPhase, steps: champFx.filter(f => f.type === 'finaleStep').length, sil: champFx.some(f => f.type === 'finaleScreen') }));
+  const rO = await G2.p.evaluate(() => ({ steps: champFx.filter(f => f.type === 'finaleStep').length }));
+  check('net.guest_rumbling', readyG.ready && /TRES PASOS/.test(readyG.hud) && rG.ph === 'finale' && rG.steps === 3 && rG.sil && rO.steps === 3, { readyG, rG, other: rO });
   await sleep(1800);
   await G2.p.screenshot({ path: (process.env.OUT || '/tmp') + '/net_other_rumbling.png' });
   await sleep(5500);
-  const ex = await G1.p.evaluate(() => ({ titan: !!player.erenTitan, cls: player.cls.name, exhaust: Math.round(player.erenExhaustTimer || 0), hud: (document.getElementById('se-hud') || {}).innerText || '' }));
-  check('net.guest_exhausted', !ex.titan && ex.cls === 'Eren' && ex.exhaust > 0 && /AGOTADO/.test(ex.hud), ex);
+  const ex = await G1.p.evaluate(() => ({ titan: !!player.ilkanColossus, cls: player.cls.name, exhaust: Math.round(player.ilkanExhaustTimer || 0), hud: (document.getElementById('se-hud') || {}).innerText || '' }));
+  check('net.guest_exhausted', !ex.titan && ex.cls === 'Ilkan' && ex.exhaust > 0 && /AGOTADO/.test(ex.hud), ex);
   // el Soldado Cabral del anfitrión lo ven todos
   await H.p.evaluate(() => { player.invulnTimer = 0; player.hp = 3; damageHero(player, 1e6, null); });
   await sleep(400);

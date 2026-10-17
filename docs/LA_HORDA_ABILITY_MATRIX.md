@@ -43,7 +43,7 @@ Desde el nivel 3 de talento de cada habilidad, sus golpes dejan el estado propio
 | Campeón | Firma | Habilita |
 |---|---|---|
 | Tanque, El Libertador | Aturde (220 ms; élites/jefes: ralentiza) | — |
-| Asesino, Segador, Musashi, Eren | Sangrado | Hemorragia |
+| Asesino, Segador, Musashi, Ilkan | Sangrado | Hemorragia |
 | Mago | Según el elemento de la habilidad: quemadura / escarcha / descarga | Vapor, Quiebre |
 | Soporte, La Profeta, La Cazadora | Marca (+10% de daño recibido, 3 s) | — |
 | Nigromante | Marchitar (+10% de daño recibido, 3 s) | — |
@@ -90,8 +90,8 @@ Nv. 7 (Resonancia): golpear con la habilidad a un enemigo que **ya** tiene tu fi
 | Nigromante | **Ulti** Encarnación del Abismo | Sombra | — | — |
 | El Libertador | Bayoneta / ¡Granaderos! / Carga de San Lorenzo | Físico | Defensa rota | — |
 | El Libertador | **Ulti** Cruce de los Andes | Hielo (nieve) + Físico | Defensa rota | candidata: `ice` |
-| Eren | Equipo de Maniobras / Instinto / ¡Avancen! | Físico | — | — |
-| Eren | **Ulti** El Portador | Físico | — | — |
+| Ilkan | Lanza-Pendón / Piel de Duna / Grito de Caravana | Físico | — | — |
+| Ilkan | **Ulti** Coloso de Arena | Físico | — | — |
 
 ## Enemigos y peligros que ya aplican estados
 

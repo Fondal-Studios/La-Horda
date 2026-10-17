@@ -52,7 +52,7 @@ Los eventos con jefe seleccionan el encuentro nativo de su arena (nueve director
 
 - `gate talents`: carga/migración local y nube, niveles 1/39/40/60/90/99, idempotencia, maestría irreversible y caché por nivel.
 - `gate abilities`: medición diferencial de efectos en el motor y canario negativo; los clásicos conservan diagnóstico INFO.
-- `gate resources`: entradas reales de lanzamiento en 38 campeones a seis niveles; rechaza gasto sin energía, durante cooldown, pausa o muerte, y comprueba recursos finitos. Informa explícitamente excepciones por estado del kit y la definitiva transformada de Eren.
+- `gate resources`: entradas reales de lanzamiento en 38 campeones a seis niveles; rechaza gasto sin energía, durante cooldown, pausa o muerte, y comprueba recursos finitos. Informa explícitamente excepciones por estado del kit y la definitiva transformada de Ilkan.
 - `gate passives`: pasivas clásicas con daño, curación y límites medidos.
 - `gate style`: métricas del roster en modo estricto; candidatos vacíos, ilegibles, incompletos o de formato incorrecto fallan. Los formatos ajenos al pintor se enumeran como omitidos, nunca PASS.
 

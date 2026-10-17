@@ -10,7 +10,7 @@ function harness(){
   window:{addEventListener(){},dispatchEvent(){}},document:{addEventListener(){},getElementById:()=>null,querySelector:()=>null}});
  const run=s=>vm.runInContext(s,c);
  run('const CHAMPION_CATALOG=[{id:"axiom",unlockedByDefault:false}]; const CLASSES={axiom:{}}; const EQUIP_SLOT_TYPES=[]; function equippedItem(){return null;}');
- for(const f of ['js/data/talent-trees.js','js/storage/save.js','js/systems/talents.js','js/net/net-config.js','js/net/net-core.js','js/net/account.js'])run(fs.readFileSync(f,'utf8'));
+ for(const f of ['js/data/talent-trees.js','js/storage/legacy-champion-ids.js','js/storage/save.js','js/systems/talents.js','js/net/net-config.js','js/net/net-core.js','js/net/account.js'])run(fs.readFileSync(f,'utf8'));
  return {data,run};
 }
 const h=harness(),r=h.run;

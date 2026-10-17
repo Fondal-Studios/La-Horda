@@ -8,7 +8,7 @@ const phase=process.argv[2]||'after',port=phase==='before'?'8808':'8807',server=
 const SEEDS=Math.max(1,+process.env.SEEDS||3),SHARDS=Math.max(1,+process.env.SHARDS||3);
 const PROFILES=process.env.PROFILES?JSON.parse(process.env.PROFILES):[{name:'aprendiz',skill:.45,reaction:650},{name:'ocasional',skill:.7,reaction:400},{name:'habitual',skill:.9,reaction:220}];
 // SAME_SEED=1: la misma semilla para todos los perfiles (aísla el efecto de habilidad/reacción del azar de la partida).
-// CLASS=x: todos los perfiles juegan con ese guardián (por defecto: habitual con Eren, el resto con el Mago).
+// CLASS=x: todos los perfiles juegan con ese guardián (por defecto: habitual con Ilkan, el resto con el Mago).
 const SAME_SEED=!!process.env.SAME_SEED, CLASS=process.env.CLASS||null;
 const HOOK=()=>{if(window.__PT)return;const PT=window.__PT={reset(){PT.killer=null;PT.dmg={};}};PT.reset();
   const dh=window.damageHero;window.damageHero=function(h,amount,src){const hp0=h.hp,a0=h.alive;const r=dh(h,amount,src);
@@ -28,7 +28,7 @@ async function worker(p){for(let job;(job=jobs.shift());){
   // semilla 0 = la fórmula histórica (comparable con corridas anteriores)
   let n=(arena.length*7919+(same?0:profile.reaction)+seed*104729)|0||1;Math.random=()=>{n^=n<<13;n^=n>>>17;n^=n<<5;return (n>>>0)/4294967296;};
   for(const [k,c]of Object.entries(save.champions)){c.unlocked=true;c.level=DIFF.arenaLevel[arena]||1;c.xp=0;c.equipment=mkEquipment();c.talents=mkTalentState();c.treeBonus=0;let budget=Math.min(30,c.level-1);const ms=[...c.skillMastery,c.ultMastery];ms.forEach(m=>{m.alloc=0;m.useLvl=1;m.useXp=0;});for(let i=0;i<budget;i++)ms[i%4].alloc++;c.talentPoints=0;}
-  save.relics={hp:0,dmg:0,def:0,vel:0};selectedClass=cls||(profile.name==='habitual'?'eren':'mago');save.duoReserve=selectedClass==='mago'?'eren':'mago';currentArena=arena;lobbyAllies=['tanque','soporte','guerrero'];
+  save.relics={hp:0,dmg:0,def:0,vel:0};selectedClass=cls||(profile.name==='habitual'?'ilkan':'mago');save.duoReserve=selectedClass==='mago'?'ilkan':'mago';currentArena=arena;lobbyAllies=['tanque','soporte','guerrero'];
   __AP.skill=profile.skill;__AP.reaction=profile.reaction;__AP.err=null;
   // Before is the original single-card and Normal multipliers, same bots and seed.
   const norm=DIFF_TIERS.normal,orig={hp:norm.hp,dmg:norm.dmg,bossDmg:norm.bossDmg,spawn:norm.spawn};

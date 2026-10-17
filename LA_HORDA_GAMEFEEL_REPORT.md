@@ -12,7 +12,7 @@
   encadenar 12 pausas.
 - Los élites no pierden su ataque por un crítico (sin tambaleo): el crítico se siente, pero el aviso del élite
   sigue siendo confiable.
-- Campeones "pesados" (Tanque, Segador, titán de Eren) tienen más retroceso y un leve temblor hasta en el básico.
+- Campeones "pesados" (Tanque, Segador, Coloso de Ilkan) tienen más retroceso y un leve temblor hasta en el básico.
 - **HUMAN TEST REQUIRED:** si el hit-stop del crítico (36–50 ms) se siente "trabado" en celulares de 60 Hz.
 
 ## 2. Gore que informa

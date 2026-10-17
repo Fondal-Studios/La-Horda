@@ -33,12 +33,12 @@ const AIM_PROFILES = {
   triple_hit:       {type:"target", range:(sk,cls)=>cls.basicRange+50},
   ronin_slash:      {type:"target"},
   ghost_step:       {type:"target"},
-  // El Libertador / Eren
+  // El Libertador / Ilkan
   sm_bayonet:       {type:"dash", w:30},
   sm_san_lorenzo:   {type:"dash", w:64},
-  eren_hook:        {type:"dash", w:24},
-  // Retumbar: 6 pasos de 0,52 s a 95 u/s, unas 300 u de recorrido (EREN_CFG.retumbar)
-  titan_retumbar:   {type:"dash", w:120, range:()=>{ const R = typeof EREN_CFG!=="undefined" && EREN_CFG.retumbar; return R ? R.steps*R.stepMs/1000*R.speed : 300; }}
+  ilkan_lance:        {type:"dash", w:24},
+  // Marcha de Dunas: 6 pasos de 0,52 s a 95 u/s, unas 300 u de recorrido (ILKAN_CFG.march)
+  colossus_march:   {type:"dash", w:120, range:()=>{ const R = typeof ILKAN_CFG!=="undefined" && ILKAN_CFG.march; return R ? R.steps*R.stepMs/1000*R.speed : 300; }}
 };
 // Kits por ACCIÓN (Ascensión y Expedición comparten un "kind" genérico y se distinguen por sk.action): cada acción
 // declara su forma con los mismos topes de radio/alcance que usa su runtime (ascensionCast / expeditionCast), así el

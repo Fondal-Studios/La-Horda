@@ -35,7 +35,7 @@ Matriz de 12 campeones × Ruinas/Fortaleza/Infernal, campeones nivel 10 y 20, eq
 | Nueva, tanda 1 | 11/36 | 4/12 | 4/12 | 3/12 |
 | Nueva, tanda 2 | 8/36 | 3/12 | 3/12 | 2/12 |
 
-No se volvió más difícil. Por campeón (tandas nuevas juntas): Segador 5/6, Eren 4/6, Soporte 4/6, Libertador 2/6,
+No se volvió más difícil. Por campeón (tandas nuevas juntas): Segador 5/6, Ilkan 4/6, Soporte 4/6, Libertador 2/6,
 Profeta 2/6; Axiom, Cazadora, Guerrero, Mago y Nigromante 0/6. Con 1 partida por celda las diferencias
 individuales son ruido; lo firme es que no hay regresión.
 

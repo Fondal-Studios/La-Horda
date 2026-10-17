@@ -46,7 +46,7 @@ tocar el balance: ver [ARCHITECTURE.md](ARCHITECTURE.md).**
   Ver [LA_HORDA_BOSS_IDENTITY.md](LA_HORDA_BOSS_IDENTITY.md) (matriz y exploits) y
   [LA_HORDA_BOSS_ASSET_MANIFEST.md](LA_HORDA_BOSS_ASSET_MANIFEST.md); pruebas en `tools/bosses/boss_rules.js`.
 - **12 guardianes**: Tanque, Asesino, Mago, Soporte, Segador Olvidado, Axiom, La Profeta,
-  Musashi, La Cazadora, Nigromante, El Libertador y Eren, cada uno con 3 habilidades y ulti.
+  Musashi, La Cazadora, Nigromante, El Libertador y Ilkan, cada uno con 3 habilidades y ulti.
   Un perfil nuevo elige **un guardián de regalo**; los demás se compran en la Tienda.
 - **Arena Divina**: asedio 4v4 con torres, castillos, minions y campeones divinos.
 - **Progresión persistente** en `localStorage`: niveles, oro, maestría de habilidades,
