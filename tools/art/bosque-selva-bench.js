@@ -73,8 +73,10 @@ const server = spawn('python3', ['-m', 'http.server', String(PORT), '--bind', '1
         const d = dts.slice(2);
         return {frameMs: st(d), fpsAvg: +(1000 / (d.reduce((x, y) => x + y, 0) / d.length)).toFixed(1), renderMs: st(rt), updateMs: st(ut), enemiesAlive: enemies.length, props: aidProps.length, solids: aidSolids.length, walls: labyrinthWalls.length, inBounds: heroes.every(h => Math.abs(h.x) < 3000 && isFinite(h.x))};
       }, SECS);
+      // costo de render() SIN rAF ni compositor (300 llamadas síncronas, héroes quietos): menos ruido que el FPS de headless
+      r.syncRenderMs = await page.evaluate(() => { const a = []; for (let i = 0; i < 20; i++) render(); for (let i = 0; i < 300; i++) { const t = performance.now(); render(); a.push(performance.now() - t); } a.sort((x, y) => x - y); return {avg: +(a.reduce((x, y) => x + y, 0) / a.length).toFixed(2), p50: +a[150].toFixed(2), p95: +a[285].toFixed(2)}; });
       result.runs.push({cpuThrottle: rate, ...r});
-      console.log(`[${label}] cpu x${rate}: ${r.fpsAvg} fps · frame p50/p95/p99 ${r.frameMs.p50}/${r.frameMs.p95}/${r.frameMs.p99} ms · render avg/p95 ${r.renderMs.avg}/${r.renderMs.p95} ms · update avg ${r.updateMs.avg} ms · enemigos ${r.enemiesAlive}`);
+      console.log(`[${label}] cpu x${rate}: ${r.fpsAvg} fps · frame p50/p95/p99 ${r.frameMs.p50}/${r.frameMs.p95}/${r.frameMs.p99} ms · render avg/p95 ${r.renderMs.avg}/${r.renderMs.p95} ms · update avg ${r.updateMs.avg} ms · render sincrono avg/p50/p95 ${r.syncRenderMs.avg}/${r.syncRenderMs.p50}/${r.syncRenderMs.p95} ms · enemigos ${r.enemiesAlive}`);
     }
     await cdp.send('Emulation.setCPUThrottlingRate', {rate: 1});
     result.pageErrors = errors.slice(0, 10);
