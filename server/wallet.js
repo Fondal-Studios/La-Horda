@@ -159,7 +159,7 @@ function routes(ctx){
       prices: { brasas: P.brasas, goldCosmetic: P.gold.cosmetic, collection: P.collection, skinPremium: P.brasas.set, skinGold: P.gold.cosmetic.set },
       welcome: { pack: P.welcome.pack, champions: P.welcome.champions, entitled: welcome.entitled, claimed: welcome.claimed, remaining: welcome.remaining, eligible: welcome.eligible },
       ledger: (await store().walletLedger(user.id, 20)).map(e => ({ delta: e.delta, balanceAfter: e.balanceAfter, reason: e.reason, at: e.at })),
-      payments: await payments.publicInfo(bought(user.id)) };
+      payments: { ...(await payments.publicInfo(bought(user.id))), enabled: !!store().persistent && payments.enabled() } };
   });
 
   // Comprar una apariencia (skin de set, skin independiente o croma) con Brasas. ref: identificador del intento que genera el
@@ -242,12 +242,17 @@ function routes(ctx){
   // El Game Master acredita y ve saldos desde el panel de usuarios (server/admin-users.js, permiso MODIFY_CURRENCY).
 
   // Pagos con dinero real (apagado hasta configurar un proveedor: server/payments.js)
-  route("POST", "/api/wallet/checkout", "user", async ({ user, body }) => payments.checkout({ user, pack: body.pack, bought: bought(user.id) }));
+  route("POST", "/api/wallet/checkout", "user", async ({ user, body }) => {
+    if(payments.enabled() && !store().persistent) fail("PAYMENTS_STORAGE_UNSAFE", 503);
+    return payments.checkout({ user, pack: body.pack, bought: bought(user.id), expectedPrice: body.expectedPrice });
+  });
   result["POST /api/payments/webhook"] = async (req, res) => {
     try{
       const raw = await new Promise((ok, ko) => { let b = ""; req.on("data", c => { b += c; if(b.length > 65536){ ko(Object.assign(new Error("TOO_BIG"), { code: "TOO_BIG" })); req.destroy(); } }); req.on("end", () => ok(b)); req.on("error", ko); });
       const credit = await payments.verifyWebhookRequest(req, raw);   // null si el proveedor no está configurado o la firma no es válida
       if(!credit) return err(req, res, 400, "BAD_WEBHOOK", "Webhook no verificado.");
+      if(credit.ignored){ log("PAYMENT_STATUS_REVIEW", { paymentId: credit.paymentId, status: credit.status }); return send(req, res, 200, { ok: true, ignored: true }); }
+      if(!store().persistent) return err(req, res, 503, "PAYMENTS_STORAGE_UNSAFE", "Almacenamiento no persistente.");
       if(!(await store().getUser(credit.userId))) return err(req, res, 404, "UNKNOWN_USER", "Cuenta inexistente.");
       // paquete de una sola vez: la referencia es por cuenta (once:<pack>:<userId>), así un segundo pago nunca acredita
       const r = await store().walletApply({ userId: credit.userId, delta: credit.premium, reason: "purchase:" + credit.pack + ":" + credit.paymentId, ref: payments.creditRef(credit), actor: null, at: now() });

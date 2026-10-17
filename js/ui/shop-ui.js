@@ -501,7 +501,7 @@ function renderShopBrasas(panel){
     ${status}
     ${welcome ? _brasasPackCard(welcome, true) : ""}
     ${logged && regular.length ? `<div class="brasas-packs">${regular.map(p=>_brasasPackCard(p, false)).join("")}</div>
-    <div class="brasas-fine">Precios en dólares estadounidenses (US$), finales y a la vista antes de pagar. Cada apariencia tiene precio fijo en Brasas: croma ${premiumFmt(PRICING.brasas.croma)}, skin ${premiumFmt(PRICING.brasas.set)} y skin con diseño propio ${premiumFmt(PRICING.brasas.autor)} Brasas. Los campeones no se compran con Brasas: se compran con oro. Sin cajas sorpresa: comprás exactamente lo que ves.</div>` : ""}
+    <div class="brasas-fine">La moneda y el importe de cada paquete se muestran antes de pagar. Mercado Pago cobra en pesos argentinos (AR$). Cada apariencia tiene precio fijo en Brasas: croma ${premiumFmt(PRICING.brasas.croma)}, skin ${premiumFmt(PRICING.brasas.set)} y skin con diseño propio ${premiumFmt(PRICING.brasas.autor)} Brasas. Los campeones no se compran con Brasas: se compran con oro. Sin cajas sorpresa: comprás exactamente lo que ves.</div>` : ""}
     ${_brasasWhatHTML()}
     ${logged ? _shopCollectionsHTML({limit:4}) : ""}`;
   const lg = panel.querySelector("#brasas-login");
@@ -511,7 +511,7 @@ function renderShopBrasas(panel){
     const ok = await gameConfirm(`¿Comprar ${(p.premium + (p.bonus||0)).toLocaleString("es-AR")} Brasas por ${premiumPriceLabel(p.price)}? Vas a ir a la página de pago. Las Brasas solo compran apariencia.`, {okText:"Ir a pagar"});
     if(!ok) return;
     b.disabled = true;
-    const r = await premiumCheckout(id);
+    const r = await premiumCheckout(id, p.price);
     b.disabled = false;
     if(!r.ok){ gameAlert(r.reason); return; }
     window.location.assign(r.redirect);

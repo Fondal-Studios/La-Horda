@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-16 America/Argentina/Jujuy",
+  "baseCommit": "885f6b7f7cc4b1735ced8de61e0e4672bce1ab25",
+  "checks": {
+    "serverSuite": "PASS: relay, accounts, trades, Game Master, owner policy, founders, presence, wallet",
+    "mercadoPagoMocked": {
+      "passed": 35,
+      "realProvider": false
+    },
+    "wallet": {
+      "passed": 65
+    },
+    "syntaxAndWhitespace": "PASS",
+    "capacity": "See capacity-local.json: synthetic local only",
+    "browserStore": "BLOCKED: Chromium unavailable; browser download failed (truncated archive)",
+    "publicWebsocket": "BLOCKED: HTTP 403 on handshake from this environment",
+    "livePurchaseAndRefund": "NOT RUN: credentials and production administrative access unavailable",
+    "deployment": "NOT PERFORMED",
+    "preflightWithoutCredentials": "EXPECTED FAIL: configurationReady=false"
+  },
+  "commercialReady": false
+}

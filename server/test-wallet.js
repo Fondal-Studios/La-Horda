@@ -1,3 +1,4 @@
+process.env.DATA_PERSISTENT = "1"; // isolated temp storage for payment-route tests
 "use strict";
 // BILLETERA PREMIUM (Brasas): saldo en el servidor, acreditación del panel (RBAC), compras idempotentes con reintegro,
 // pagos apagados por defecto y webhook firmado. Escribe docs/ux/wallet-results.json.

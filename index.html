@@ -23,6 +23,7 @@
 <meta name="theme-color" content="#0b0705">
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <!-- fuentes pixel servidas desde el juego (antes Google Fonts: sin red o con el CDN bloqueado, todo caía a
      Georgia/monoespaciada con otro ancho y el HUD se desarmaba). Ver css/base.css -->
 <link rel="preload" href="assets/fonts/vt323-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -145,6 +146,7 @@
     <div class="brand title-brand">LA HORDA</div>
     <div class="brand-sub">UN CAMINO AL INFIERNO, LLENO DE MONSTRUOS</div>
     <button class="btn wide" id="title-continue-btn" disabled>Cargando…</button>
+    <a href="instalar.html" style="display:block;margin:10px auto;color:#f9c971;font-size:14px">Instalar en mi dispositivo</a>
     <!-- B1: invitación a una sala online (?room=CÓDIGO en la URL) -->
     <label class="hidden" id="title-join-name">Tu nombre <input maxlength="16" placeholder="Jugador"></label>
     <button class="btn wide hidden" id="title-join-btn">Unirse a la sala</button>
