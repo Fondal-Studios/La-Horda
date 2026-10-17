@@ -29,7 +29,7 @@ const MIME = { '.js': 'text/javascript', '.html': 'text/html', '.css': 'text/css
   page.setDefaultTimeout(0); // el Monte Carlo tarda; y con la máquina cargada la página (~1.800 archivos) también
   await page.goto('http://q4.local/index.html', { waitUntil: 'load', timeout: 300000 });
   for (let i = 0; i < 1200; i++) { const ok = await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return b && !b.disabled; }); if (ok) break; await new Promise(r => setTimeout(r, 100)); }
-  const ONLY = (process.env.Q4_CHAMPS || 'tanque,guerrero,mago,soporte,segador,axiom,profeta,musashi,cazadora,nigromante,libertador,eren').split(',');
+  const ONLY = (process.env.Q4_CHAMPS || 'tanque,guerrero,mago,soporte,segador,axiom,profeta,musashi,cazadora,nigromante,libertador,ilkan').split(',');
   const out = await page.evaluate(([N, ONLY]) => {
     loop = function () {};
     let seed = 20260929; const rng = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };

@@ -206,7 +206,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   // maquetación en celular horizontal (844×390 y 667×375)
   for (const [w, h] of [[844, 390], [667, 375]]) {
     await page.setViewportSize({ width: w, height: h });
-    for (const v of [['list', 'bestiario'], ['boss', 'mago_gelido'], ['champ', 'eren'], ['arena', 'abismo'], ['creature', 'ab_jinete']]) {
+    for (const v of [['list', 'bestiario'], ['boss', 'mago_gelido'], ['champ', 'ilkan'], ['arena', 'abismo'], ['creature', 'ab_jinete']]) {
       await E(([v, id]) => { codexStack = [{ view: 'home', label: 'CÓDICE' }]; if (v === 'list') codexGo('list', id, id.toUpperCase()); else codexLink(v + ':' + id); }, v); await sleep(250);
       const o = await noOverflow();
       const back = await E(() => { const r = document.getElementById('codex-back-btn').getBoundingClientRect(); return r.top >= 0 && r.bottom <= innerHeight && r.height >= 34; });

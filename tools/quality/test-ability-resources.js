@@ -32,7 +32,7 @@ const server=spawn('python3',['-m','http.server',String(PORT),'--bind','127.0.0.
     check(`${k}/${level}/${i}: finite positive cooldown`,Number.isFinite(player.cds[i])&&player.cds[i]>0,player.cds[i]);
     check(`${k}/${level}/${i}: finite bounded resource`,Number.isFinite(player.energy)&&player.energy>=0&&player.energy<=10000,player.energy);
    }
-   if(k!=='eren'){
+   if(k!=='ilkan'){
     player.ultCharge=player.ultMax;player.ultCd=5000;useUltimate();
     check(`${k}/${level}: ultimate respects cooldown`,player.ultCharge===player.ultMax&&player.ultCd===5000);
    } else exceptions.push({champion:k,level,reason:'transformed ultimate has a separate fury contract'});

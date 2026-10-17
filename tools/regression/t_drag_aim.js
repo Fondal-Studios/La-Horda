@@ -91,11 +91,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   const table = [];
   const jobs = [];
   for (const cls of roster) for (let i = 0; i < 3; i++) jobs.push({ cls, i });
-  for (let i = 0; i < 3; i++) jobs.push({ cls: 'eren', i, titan: true });   // Eren transformado: Sismo, Terremoto, Retumbar
+  for (let i = 0; i < 3; i++) jobs.push({ cls: 'ilkan', i, titan: true });   // Ilkan transformado: Sismo, Terremoto, Retumbar
   for (const { cls, i, titan } of jobs) {
     {
       const info = await E(([cls, i, titan]) => { __start(cls);
-        if (titan) erenEnterTitan(player);
+        if (titan) ilkanEnterColossus(player);
         const sk0 = player.cls.skills[i];
         if (sk0.kind === 'summon_golem') { useSkill(i); player.cds[i] = 0; __casts.length = 0; }   // con el gólem en pie se apunta "¡Aplasta!"
         const sk = player.cls.skills[i]; const prof = aimProfileOf(sk, player); return { kind: sk.kind, type: prof ? prof.type : null }; }, [cls, i, !!titan]);

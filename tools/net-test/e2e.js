@@ -19,7 +19,7 @@ let fails = 0;
 const check = (name, ok, extra) => { console.log((ok ? 'PASS ' : 'FAIL ') + name + (extra !== undefined ? '  ' + JSON.stringify(extra).slice(0, 400) : '')); if (!ok) fails++; };
 const NAMES = ['Mariano', 'Facundo', 'Daniel', 'Lucia', 'Quinto'];
 const CHAMPS = ['tanque', 'mago', 'guerrero', 'soporte', 'axiom'];
-const RESERVES = ['eren', 'musashi', 'nigromante', 'cazadora', 'profeta'];
+const RESERVES = ['ilkan', 'musashi', 'nigromante', 'cazadora', 'profeta'];
 const CHAMP_LABEL = { tanque: 'Tanque', mago: 'Mago', guerrero: 'Asesino', soporte: 'Soporte', axiom: 'Axiom' };
 
 async function newClient(browser, i, url) {

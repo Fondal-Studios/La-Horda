@@ -9,7 +9,7 @@ const server=spawn('python3',['-m','http.server',String(PORT),'--bind','127.0.0.
 const SCREENS={
  mainmenu:"setState('mainmenu');renderMainMenu();",
  codex_home:"setState('codex');codexGo('home','home','Códice');",
- codex_champ:"setState('codex');codexGo('champ','eren','Eren');",
+ codex_champ:"setState('codex');codexGo('champ','ilkan','Ilkan');",
  codex_arena:"setState('codex');codexGo('arena','micelial','Reino');",
  codex_set:"setState('codex');codexGo('set',Object.keys(SET_DB)[0],'Set');",
  shop:"setState('shop');renderShop();",

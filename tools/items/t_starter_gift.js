@@ -152,7 +152,7 @@ const waitFor = async (E, fn, ms = 8000) => { const t0 = Date.now(); while (Date
   // ---------- 5. guardados viejos ----------
   const legacy = (withChamp) => {
     const champs = {};
-    for (const k of ['tanque', 'guerrero', 'mago', 'soporte', 'segador', 'axiom', 'profeta', 'musashi', 'cazadora', 'nigromante', 'libertador', 'eren'])
+    for (const k of ['tanque', 'guerrero', 'mago', 'soporte', 'segador', 'axiom', 'profeta', 'musashi', 'cazadora', 'nigromante', 'libertador', 'ilkan'])
       champs[k] = { level: withChamp && k === 'mago' ? 12 : 1, xp: 0, unlocked: withChamp && k === 'mago', equipment: { arma: null, casco: null, escudo: null, pechera: null, guantes: null, botas: null } };
     return { itemSchemaV: 2, stashV1: true, affixV1: true, testStageV1: true, campaignResetV1: true, campaignResetV2: true, campaignResetV3: true, fortalezaMigrated: true, micelialMigrated: true,
       abismoMigrated: true, campaignV2: true, ciudadV1: true, talentTreeV2: true, minasV1: true, playtestV1Bonus: true, startGoldNotice: false,

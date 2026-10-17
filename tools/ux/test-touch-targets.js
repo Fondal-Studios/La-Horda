@@ -19,7 +19,7 @@ const IDS=['btn-basic','btn-s1','btn-s2','btn-s3','btn-ult','btn-emerg','btn-pac
    const page=await ctx.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(`http://127.0.0.1:${PORT}/`,{waitUntil:'domcontentloaded'});
    await page.waitForFunction(()=>typeof startRun==='function',null,{timeout:120000});
-   for(const champ of ['mago','eren','nigromante']){
+   for(const champ of ['mago','ilkan','nigromante']){
     const r=await page.evaluate(([champ,IDS])=>{
      for(const ck in save.champions){const s=save.champions[ck];s.unlocked=true;s.level=20;}
      selectedClass=champ;currentArena='bosque';lobbyAllies=['tanque','soporte','guerrero'];netMatch=null;startRun(3);setState('playing');updateHUD();
