@@ -1,5 +1,7 @@
 # Brasas ✦ — moneda premium
 
+> Actualización comercial 2026-10-16: seguir [LAUNCH.md](../commercial/LAUNCH.md) y `server/launch.env.example`. Mercado Pago ahora requiere firma de Webhook, secreto de órdenes, vendedor y modo explícitos; el checkout exige `expectedPrice`. Las instrucciones históricas de activación de este documento no bastan. No activar ventas sin persistencia y prueba de pago/entrega/devolución.
+
 ## Reglas
 - Las Brasas compran **apariencia**: skins de colección (✦ 800 · o 9.000 de oro), skins con diseño propio (✦ 1.200 · o 12.000 de oro),
   cromas (✦ 300 · o su precio en oro) y **colecciones** (todas las apariencias que te falten de un campeón, con 15 % / 20 % de

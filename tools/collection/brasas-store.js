@@ -11,6 +11,7 @@ const {chromium}=require('playwright'),path=require('path'),fs=require('fs'),os=
 const ROOT=path.resolve(__dirname,'../..');
 const TYPES={'.html':'text/html','.js':'text/javascript','.css':'text/css','.png':'image/png','.json':'application/json','.webp':'image/webp','.svg':'image/svg+xml','.webmanifest':'application/json','.woff2':'font/woff2','.ttf':'font/ttf','.mp3':'audio/mpeg','.ogg':'audio/ogg','.wav':'audio/wav'};
 const SHOTS=path.join(ROOT,'docs/production');
+process.env.DATA_PERSISTENT='1'; // isolated browser test storage
 const SECRET='secreto-de-prueba-brasas-0123';
 (async()=>{
  delete process.env.PAYMENTS_PROVIDER;delete process.env.PAYMENTS_WEBHOOK_SECRET;delete process.env.PAYMENTS_CHECKOUT_URL;

@@ -191,10 +191,10 @@ function premiumPaymentsOn(){ return !!(PREMIUM.payments && PREMIUM.payments.ena
 // Pack de bienvenida: solo si el servidor dice que todavía no se compró en esta cuenta
 function premiumWelcomePack(){ return premiumPacks().find(p => p.once && p.available) || null; }
 // Pedir un pago: el servidor arma el enlace de la pasarela; sin proveedor responde "todavía no conectados".
-async function premiumCheckout(packId){
+async function premiumCheckout(packId, expectedPrice){
   if(!premiumAvailable()) return { ok: false, reason: "Iniciá sesión para comprar Brasas." };
   let r;
-  try{ r = await accountFetch("POST", "/api/wallet/checkout", { pack: packId }); }
+  try{ r = await accountFetch("POST", "/api/wallet/checkout", { pack: packId, expectedPrice }); }
   catch(e){ return { ok: false, reason: "Sin conexión con el servidor. No se cobró nada." }; }
   if(r.status === 200 && r.j && r.j.redirect) return { ok: true, redirect: r.j.redirect };
   if(r.status === 501) return { ok: false, soon: true, reason: (r.j && r.j.msg) || "Muy pronto: los pagos todavía no están conectados." };
