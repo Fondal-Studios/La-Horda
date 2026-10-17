@@ -11,6 +11,7 @@
 //   · Pagos con dinero real: server/payments.js (apagado hasta configurar un proveedor; ver docs/production/PREMIUM_CURRENCY.md).
 const crypto = require("crypto");
 const fs = require("fs");
+const legacyIds = require("../js/storage/legacy-champion-ids.js");
 const path = require("path");
 const vm = require("vm");
 const payments = require("./payments");
@@ -126,7 +127,7 @@ function routes(ctx){
   async function welcomeState(userId, d){
     const W = pricing().PRICING.welcome;
     const entitled = (await bought(userId)(W.pack)) ? W.champions : 0;
-    const claimed = entitled ? (await store().walletLedger(userId, 5000)).filter(e => typeof e.reason === "string" && e.reason.startsWith("welcome_pick:")).map(e => e.reason.slice(13)) : [];
+    const claimed = entitled ? (await store().walletLedger(userId, 5000)).filter(e => typeof e.reason === "string" && e.reason.startsWith("welcome_pick:")).map(e => legacyIds.legacyChampionId(e.reason.slice(13))) : [];
     const out = { entitled, claimed: [...new Set(claimed)].reverse(), remaining: 0, eligible: [] };
     out.remaining = Math.max(0, entitled - out.claimed.length);
     if(out.remaining && d){ const has = (id) => !!(d.champions && d.champions[id] && d.champions[id].unlocked); out.eligible = welcomeEligibleIds().filter(id => !has(id)); }
@@ -193,7 +194,7 @@ function routes(ctx){
   // la suma de los precios sueltos de ESAS piezas). Una sola compra, un solo cobro, un solo asiento en el libro.
   route("POST", "/api/wallet/buy-collection", "user", async ({ user, body }) => withLock("buy:" + user.id, async () => {   // mismo candado que la compra individual
     const ref = refOf(body.ref); if(!ref) fail("BAD_REF");
-    const champ = typeof body.champion === "string" ? body.champion : "";
+    const champ = typeof body.champion === "string" ? legacyIds.legacyChampionId(body.champion) : "";
     const all = Object.values(skinCatalog()).filter(s => s.champion === champ); if(!champ || !all.length) fail("BAD_CHAMPION");
     const debitRef = "buycol:" + user.id + ":" + ref;
     const saved = await store().getSave(user.id); if(!saved) fail("NO_CLOUD_SAVE", 409);
@@ -217,7 +218,7 @@ function routes(ctx){
 
   // Elegir uno de los 3 campeones de regalo del Pack de bienvenida.
   route("POST", "/api/wallet/welcome/claim", "user", async ({ user, body }) => withLock("welcome:" + user.id, async () => {
-    const champ = typeof body.champion === "string" ? body.champion : "";
+    const champ = typeof body.champion === "string" ? legacyIds.legacyChampionId(body.champion) : "";
     if(!champ || !welcomeEligibleIds().includes(champ)) fail("BAD_CHAMPION");
     if(!(await welcomeState(user.id, null)).entitled) fail("NOT_PURCHASED", 403);   // sin compra no hay derecho, haya o no guardado
     const saved = await store().getSave(user.id); if(!saved) fail("NO_CLOUD_SAVE", 409);
