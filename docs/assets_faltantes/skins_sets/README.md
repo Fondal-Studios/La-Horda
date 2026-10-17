@@ -24,7 +24,7 @@ Una skin se activa SOLO con el set completo (regla canónica: Set verde = sinerg
   - [`manada_cazadora.md`](manada_cazadora.md) — La Manada (La Cazadora, 41 cuadros)
   - [`granadero_libertador.md`](granadero_libertador.md) — Uniforme del Granadero (El Libertador, 71 cuadros)
   - [`requiem_nigromante.md`](requiem_nigromante.md) — Réquiem del Señor de la Muerte (Nigromante, 45 cuadros)
-  - [`legion_eren.md`](legion_eren.md) — Legión de Reconocimiento (Eren, 68 cuadros)
+  - [`legion_ilkan.md`](legion_ilkan.md) — Caravana de Medianoche (Ilkan, arte procedural integrado)
 
 - **Sets universales (11):** [`universales.md`](universales.md) — matriz set × campeón (132 hojas) y plantilla.
 

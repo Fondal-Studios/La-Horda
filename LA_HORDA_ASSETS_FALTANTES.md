@@ -20,7 +20,7 @@
 
 | ID | Prioridad | Qué | Dónde | Hoja completa a pedir | Referencia | Notas |
 |---|---|---|---|---|---|---|
-| SKIN-SET | P1 | Skins de set (3 de campeón restantes: Baluarte, Granadero, Réquiem + universales) | Todas | ver docs/assets_faltantes/skins_sets/ (una ficha por set con la hoja completa y su prompt) | atlas canon de cada campeón | Ya integradas (cuerpo + efectos de habilidad): Manada/Sylva Flecha de Fuego, Errante/Musashi Samurái Legendario, Legión/Eren Titán Bestia, Sistema/Axiom Skin Z, Convergencia/Mago Ángel Arcano, Custodio/Sanadora Ángel del Alba, Marea/Segador Leónidas, Nocturno/Asesino Jack el Destripador, Profecía/Profeta Ángel Caído. |
+| SKIN-SET | P1 | Skins de set (3 de campeón restantes: Baluarte, Granadero, Réquiem + universales) | Todas | ver docs/assets_faltantes/skins_sets/ (una ficha por set con la hoja completa y su prompt) | atlas canon de cada campeón | Ya integradas (cuerpo + efectos de habilidad): Manada/Sylva Flecha de Fuego, Errante/Musashi Samurái Legendario, Legión/Ilkan Titán Bestia, Sistema/Axiom Skin Z, Convergencia/Mago Ángel Arcano, Custodio/Sanadora Ángel del Alba, Marea/Segador Leónidas, Nocturno/Asesino Jack el Destripador, Profecía/Profeta Ángel Caído. |
 | ITEM-ICON | P2 | Íconos finales de objetos (169) | UI | ver LA_HORDA_ITEM_ASSET_MANIFEST.md | — | Hoy se usan íconos procedurales provisorios. |
 | ARENA-CM | P2 | Ciudad Maldita (arena completa) | Arena en desarrollo | set de arena: piso, muros, props, enemigos, jefe | — |  |
 | ARENA-AB | P0/P1 | Arena del Abismo: hojas a mayor resolución (6 enemigos, Carcelero del Vacío, El Que Mora Debajo) + tiles/portal/VFX | Abismo (jugable) | ver LA_HORDA_ABISMO_ASSETS.md — sección ABYSS_MISSING_ASSETS (prompts de hoja completa por entidad) | art-source/abismo/*.png | La arena ya es jugable con el arte de las 4 hojas oficiales; los recortes son chicos (29-56 px de alto) y se escalan 2-6x. |
@@ -50,7 +50,7 @@
 | Duende del Bosque / Zombi | `packs actuales (idle1.png, walk1.png...)` | set completo con 1 ataque | **Duende: 2º ataque · Zombi: ataque propio (hoy usa la embestida)** |
 | Madre Espora | `art-source/micelial (atlas recortado)` | retrato animado por partes | **frames completos del cuerpo** |
 | Guardián Ancestral Corrompido (jefe del Bosque) | `art-source/guardian_elfico/guardian_elfico_ancestral.png` | set completo + paleta FURIA + 14 VFX | **caminar de perfil 4 (el panel dibuja 3) · hurt 2 propio** |
-| Skins de set: Sylva · Musashi · Eren · Axiom | `art-source/skins_sets/*.png` | grilla de 6 vistas × idle/caminata/corrida/ataque/casteo/daño + muerte (1 cuadro por celda) | **caminata de 4 cuadros por vista (hoy 2: caminata + corrida) · idle de 4 cuadros · Axiom: fila de casteo · Eren Titán: vistas de frente/espaldas** |
+| Skins de set: Sylva · Musashi · Ilkan · Axiom | `art-source/skins_sets/*.png` | grilla de 6 vistas × idle/caminata/corrida/ataque/casteo/daño + muerte (1 cuadro por celda) | **caminata de 4 cuadros por vista (hoy 2: caminata + corrida) · idle de 4 cuadros · Axiom: fila de casteo · Ilkan Titán: vistas de frente/espaldas** |
 | Brasero de hielo (HIE-01) | `brasero infernal actual` | reusa el brasero infernal | **versión de hielo: encendido (loop) · apagado · encendiéndose** |
 
 ### Prompts de hoja completa (parciales)
@@ -157,10 +157,10 @@ Full sprite sheet of Madre Espora for LA HORDA — the EXACT SAME design as the 
 Full sprite sheet of Guardián Ancestral Corrompido (jefe del Bosque) for LA HORDA — the EXACT SAME design as the attached reference (same body, proportions, palette, weapon, height). ALL animations in ONE sheet, one row per animation: hoja completa del Guardián con: idle 4 · caminar abajo/perfil/arriba 4 c/u · básico 5 · golpe pesado 3 · raíces 6 · lanza 2 · transformación 6 · hurt 2 · muerte 7. dark-fantasy detailed 16-bit pixel art, same grammar as LA HORDA (1px dark outline, 2-3 flat tones per color, limited palette, crisp alpha), transparent background, uniform grid, feet on the same baseline, side views facing right, NO text, NO labels, NO frames, NO grid lines, NO background panels.
 ```
 
-**Skins de set: Sylva · Musashi · Eren · Axiom** — adjuntar `art-source/skins_sets/*.png`
+**Skins de set: Sylva · Musashi · Ilkan · Axiom** — adjuntar `art-source/skins_sets/*.png`
 
 ```
-Full sprite sheet of Skins de set: Sylva · Musashi · Eren · Axiom for LA HORDA — the EXACT SAME design as the attached reference (same body, proportions, palette, weapon, height). ALL animations in ONE sheet, one row per animation: la hoja completa de cada skin con 4 cuadros por estado y vista. dark-fantasy detailed 16-bit pixel art, same grammar as LA HORDA (1px dark outline, 2-3 flat tones per color, limited palette, crisp alpha), transparent background, uniform grid, feet on the same baseline, side views facing right, NO text, NO labels, NO frames, NO grid lines, NO background panels.
+Full sprite sheet of Skins de set: Sylva · Musashi · Ilkan · Axiom for LA HORDA — the EXACT SAME design as the attached reference (same body, proportions, palette, weapon, height). ALL animations in ONE sheet, one row per animation: la hoja completa de cada skin con 4 cuadros por estado y vista. dark-fantasy detailed 16-bit pixel art, same grammar as LA HORDA (1px dark outline, 2-3 flat tones per color, limited palette, crisp alpha), transparent background, uniform grid, feet on the same baseline, side views facing right, NO text, NO labels, NO frames, NO grid lines, NO background panels.
 ```
 
 **Brasero de hielo (HIE-01)** — adjuntar `brasero infernal actual`

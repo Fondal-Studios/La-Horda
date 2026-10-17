@@ -25,7 +25,7 @@ Estos precios son una hipótesis comercial para aprobar, no una estimación de i
 - `/la-horda/red/api/health` devolvió `store:file`, `persistent:false`, `status:ready`. Es una declaración del software; no confirma por sí sola la presencia o ausencia física de un volumen. Hay que inspeccionar montaje y respaldo.
 - Relay sintético local: 50 conexiones / 13 salas / 60 segundos / 20 Hz / payload de 16 KiB. 88.504 entregas esperadas y recibidas, 0 desconexiones, 0 errores. Ver `capacity-local.json`. No equivale a FPS del móvil, carga de cuentas ni capacidad garantizada del host público.
 - Intento WebSocket público: HTTP 403 desde este entorno. No se pudo determinar aquí si proviene del proxy o del servicio. NO se declara prueba pública aprobada.
-- `js/champions/eren.js` y el catálogo incluyen a Eren. No se verificó autorización para usar ese personaje en un producto comercial. Resolver derechos o sustituirlo por un personaje original antes de vender; cambiar solo el nombre no resuelve el arte o la identidad derivados.
+- Resuelto en la rama `claude/eren-original`: el personaje derivado de una IP ajena se reemplazó por **Ilkan**, un campeón original (nombre, identidad, silueta, paleta, arte procedural, lore, textos y VFX nuevos; mecánicas idénticas), con migración de guardados. Ver `docs/ILKAN_REWORK.md`. **Pendiente antes de vender:** revisión humana de arte y registro privado de derechos de ese arte; el resto del catálogo, música y audio requieren su propia verificación de derechos.
 - Las apariencias siguen formando parte del guardado que aporta el cliente; no se debe publicitar protección antifraude completa. Revisar autoridad del servidor y recuperación de compras antes de escalar.
 
 ## Trabajo preparado en esta rama

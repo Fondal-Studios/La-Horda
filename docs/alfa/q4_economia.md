@@ -103,7 +103,7 @@ Supuestos:
 | Cazadora (Manada) | 23 % → 100 % | 7 → 5 |
 | Nigromante (Réquiem) | 13 % → 100 % | 6 → 4 |
 | Libertador (Granadero) | 15 % → 100 % | 7 → 5 |
-| Eren (Legión) | 3 % → 100 % | 9 → 5 |
+| Ilkan (Caravana) | 3 % → 100 % | 9 → 5 |
 
 ## 4. Oro por partida y por fuente
 
@@ -165,7 +165,7 @@ La tabla compara, sobre el guardián sin nada, el set regalado puesto (nivel de 
 | Cazadora | +54 % / +0 % | +32 % / +51 % | +39 % / +67 % |
 | Nigromante | +50 % / +60 % | +31 % / +59 % | +39 % / +68 % |
 | Libertador | +48 % / +59 % | +34 % / +59 % | +40 % / +69 % |
-| Eren | +55 % / +70 % | +33 % / +55 % | +40 % / +71 % |
+| Ilkan | +55 % / +70 % | +33 % / +55 % | +40 % / +71 % |
 
 **Qué no entra en la tabla, y pesa:** los bonos del set, que son la transformación de una habilidad con 2 piezas,
 un bono con 3 y el efecto completo con 4.

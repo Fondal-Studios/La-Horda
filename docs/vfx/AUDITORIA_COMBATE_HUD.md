@@ -40,7 +40,7 @@ Los enemigos conservan sus avisos peligrosos; no se añade un relleno opaco a to
 | Cazadora | Flecha, trampa, lluvia, cacería | Firma de flechas; conserva lluvia persistente y lobo |
 | Nigromante | Cosecha, gólem, plaga, transformación | Firma de cráneo; conserva invocaciones/plaga; recursos compactos y todos los aliados visibles |
 | Libertador | Bayoneta, granaderos, montura, definitiva | Firma solar; conserva efectos propios y desplazamiento |
-| Eren | Gancho, instinto, avance, titán | Firma de filos; preserva íntegramente gancho, avance y transformación |
+| Ilkan | Gancho, instinto, avance, titán | Firma de filos; preserva íntegramente gancho, avance y transformación |
 | Myla | Yogurazo, Burbuja, Berrinche | Gotas como firma y marcadores de charco; conserva torre y transformación |
 | Brasa | Purga, torreta, sobrecarga | Cono direccional de vapor; corona de sobrecarga en las torretas |
 | Eslabón | Cadena, línea, Custodia, anillo | Firma de eslabones y líneas/aros con contraste |

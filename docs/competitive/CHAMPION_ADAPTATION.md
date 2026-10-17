@@ -36,7 +36,7 @@ Los cuatro marcos de habilidades (tanque, asesino, mago y soporte) se combinan c
 | Sylva | guerrero | Paso de Cazadora | Impulso |
 | Ilvar | mago | Diezmo de Almas | Sustento |
 | San Martín | guerrero | Avance Libertador | Impulso |
-| Eren | guerrero | Impulso Imparable | Impulso |
+| Ilkan | guerrero | Impulso Imparable | Impulso |
 | Ynara | soporte | Santa Paciencia | Restauración |
 | Myla | mago | Yogur Pegajoso | Contención |
 | Brasa | mago | Presión de Caldera | Concentración |

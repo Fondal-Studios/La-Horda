@@ -16,7 +16,7 @@ automático (`tools/playtest/autopilot.js`). No son personas: los perfiles solo 
 
 Conclusiones:
 - La corrida de la tarjeta daba ocasional 16/30 < aprendiz 22/30. No era el juego: la semilla dependía del tiempo de
-  reacción del perfil (cada perfil jugaba otra partida) y el habitual juega con Eren. Con la misma semilla y el mismo
+  reacción del perfil (cada perfil jugaba otra partida) y el habitual juega con Ilkan. Con la misma semilla y el mismo
   guardián, aprendiz y ocasional quedan iguales: **este piloto no distingue bien esos dos perfiles**. La métrica
   "la habilidad importa" de la tarjeta mide sobre todo ruido de semilla entre esos dos.
 - Hecho real del juego: el Mago, al nivel esperado y **sin equipo**, gana ~50 % en Fortaleza, Bosque, Gélida e

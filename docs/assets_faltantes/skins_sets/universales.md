@@ -22,7 +22,7 @@ Son 11 sets que puede completar cualquiera de los 12 campeones. Una skin "de cue
 
 ## Matriz de faltantes (✗ = falta la hoja completa; ★ = prioridad)
 
-| Set \ Campeón | Tanque | Asesino | Mago | Soporte | Segador Olvidado | Axiom | La Profeta | Musashi | La Cazadora | Nigromante | El Libertador | Eren |
+| Set \ Campeón | Tanque | Asesino | Mago | Soporte | Segador Olvidado | Axiom | La Profeta | Musashi | La Cazadora | Nigromante | El Libertador | Ilkan |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Set de Lucifer | ✗ | ★✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ |
 | Pacto del Glaciar | ✗ | ✗ | ★✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ |

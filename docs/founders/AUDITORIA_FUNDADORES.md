@@ -6,7 +6,7 @@ Fecha: 2026-10-03 · Base: `main` @ `e6c0063`. Solo lectura; este documento no c
 
 | Origen | Ids | Archivo |
 |---|---|---|
-| Base (12) | tanque, guerrero, mago, soporte, segador, axiom, profeta, musashi, cazadora, nigromante, libertador, eren | `js/data/champions.js` (`CHAMPION_CATALOG`, `CLASSES`) |
+| Base (12) | tanque, guerrero, mago, soporte, segador, axiom, profeta, musashi, cazadora, nigromante, libertador, ilkan | `js/data/champions.js` (`CHAMPION_CATALOG`, `CLASSES`) |
 | Portadores (7) | ynara, myla, brasa, eslabon, morwen, farolero, iria | `js/data/portadores.js` → push a `CHAMPION_CATALOG`/`CLASSES` |
 | Expedición (10) | vesper, nahir, orsa, baltra, maura, renko, dariel, tibor, zahra, sira | `js/champions/expedition/catalog.js` + `register.js` (cargado en producción, `index.html:720`) |
 

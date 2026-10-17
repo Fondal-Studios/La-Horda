@@ -136,7 +136,7 @@ a distance.
 ```
 
 ### PR-01 — Proyectiles por campeón
-- **Estado:** PROCEDURAL (`drawProjStyle`): flecha (Cazadora), daga (Asesino, Musashi, Eren), orbe (Mago),
+- **Estado:** PROCEDURAL (`drawProjStyle`): flecha (Cazadora), daga (Asesino, Musashi, Ilkan), orbe (Mago),
   destello (Soporte), medialuna (Segador), glifo (Axiom), runa (Profeta), alma (Nigromante), bala con humo
   (Libertador), bala pesada (Tanque). La estela y el brillo quedan en código.
 - **Tamaño:** 12×12 px, 3 frames de loop (8 fps), orientados hacia la derecha (el código rota).
