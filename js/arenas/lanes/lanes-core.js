@@ -406,6 +406,7 @@ ARENA_DEFS.convergencia = {
   enemyTarget:lanesEnemyTarget,
   enemyKilled:lanesEnemyKilled,
   botTarget:lanesBotTarget,
+  botState:lanesBotState,
   ownSpawns:()=>true,
   holdLevel:()=>true,
   afterEnemies:()=>{ for(const e of enemies) if(e.alive) lanesClamp(e); }
