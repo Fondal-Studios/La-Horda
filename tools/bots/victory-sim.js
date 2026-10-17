@@ -29,9 +29,15 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:ROOT,stdio:'ign
    const nT=mode==='col'?4:2,swap=seed%2===1;
    const vt=cfg==='legacy'?[]:cfg==='victory'?[...Array(nT).keys()]:(mode==='col'?(swap?[1,3]:[0,2]):(swap?[1]:[0]));
    globalThis.BOT_VICTORY_TEAMS=vt;
-   const champs=['mago','tanque','soporte','guerrero'];
-   const ok=mode==='col'?colStart({champ:champs[seed%4],seed:seed+1}):lanesStart({champ:champs[seed%4],seed:seed+1});
-   const mk=()=>({hits:{hero:0,struct:0,epic:0,minion:0,camp:0},dmg:{hero:0,struct:0,epic:0,minion:0,camp:0},distracted:0,distractable:0,campByLaner:0,campByLanerBasic:0,basicHits:0,basicRel:0,deaths:0,tgt:{hero:0,struct:0,epic:0,minion:0,camp:0,none:0},st:{}});
+   // misma partida para todas las configuraciones: PRNG con semilla (el motor usa Math.random) y composición de campeones fija por semilla
+   const mulberry=a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};
+   const rnd=mulberry(seed*7919+13);
+   const pool=Object.keys(CLASSES).filter(k=>championBotEligible(k)).sort();
+   for(let i=pool.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+   const comp={champ:pool[0],mate:mode==='col'?pool[1]:pool.slice(1,5),rivals:pool.slice(mode==='col'?2:5,mode==='col'?8:10),seed:seed+1};
+   Math.random=mulberry(seed*104729+7);
+   const ok=mode==='col'?colStart(comp):lanesStart(comp);
+   const mk=()=>({hits:{hero:0,struct:0,epic:0,minion:0,camp:0},dmg:{hero:0,struct:0,epic:0,minion:0,camp:0},distracted:0,distractable:0,campByLaner:0,campByLanerBasic:0,basicHits:0,basicRel:0,epicSolo:0,lanerT:0,lanerCamp:0,deaths:0,tgt:{hero:0,struct:0,epic:0,minion:0,camp:0,none:0},st:{}});
    const M=[...Array(nT)].map(mk);
    const isBot=h=>h&&h!==player&&heroes.includes(h);
    const cat=e=>{ if(e.lanesProxy) return e.kind==='hero'?'hero':'struct'; if(e.team===2) return e.epicId!=null?'epic':'camp'; return 'minion'; };
@@ -44,6 +50,7 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:ROOT,stdio:'ign
      let blocked=false;try{blocked=lanesBlocksDamage(e,src);}catch(_){}
      if(!blocked){ const c=cat(e),m=M[src.team],eff=amount*(lanesDmgMult?lanesDmgMult(e,src):1);
       m.hits[c]++;m.dmg[c]+=eff;
+      if(c==='epic'){ let al=0; for(const o of heroes) if(o.alive&&o.team===src.team&&Math.hypot(o.x-e.x,o.y-e.y)<700) al++; if(al<3) m.epicSolo++; }
       if(c==='minion'||c==='camp'){ m.distractable++; if(betterIn(src)) m.distracted++; }
       if(c==='camp'&&src.ln!==-1){ m.campByLaner++; if(opts&&opts.fromBasic) m.campByLanerBasic++; } if(opts&&opts.fromBasic){ m.basicHits++; if(c==='hero'||c==='struct'||c==='epic') m.basicRel++; } }
     } else if(isBot(src)&&mode==='col'&&e&&e.lanesProxy&&e.kind==='hero'&&e.team!==src.team){ const m=M[src.team]; m.hits.hero++; m.dmg.hero+=amount; }
@@ -58,7 +65,7 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:ROOT,stdio:'ign
     const t0=performance.now(); update(dt); aiTime+=performance.now()-t0; frames++;
     if(f%15===0){
      for(const h of heroes){ if(!isBot(h)) continue; const was=wasAlive.get(h); if(was&&!h.alive) M[h.team].deaths++; wasAlive.set(h,h.alive);
-      if(!h.alive||!M[h.team]) continue; const t=h._tgt; let c='none'; if(t&&t.alive) c=cat(t); M[h.team].tgt[c]++; const s=h._ai?(h._ai.state+(h._ai.why?':'+h._ai.why:'')):'-'; M[h.team].st[s]=(M[h.team].st[s]||0)+1; } }
+      if(!h.alive||!M[h.team]) continue; const t=h._tgt; let c='none'; if(t&&t.alive) c=cat(t); M[h.team].tgt[c]++; if(h.ln!==-1&&mode==='cw'){ M[h.team].lanerT++; if(c==='camp') M[h.team].lanerCamp++; } const s=h._ai?(h._ai.state+(h._ai.why?':'+h._ai.why:'')):'-'; M[h.team].st[s]=(M[h.team].st[s]||0)+1; } }
     if(mode==='cw'){ for(const T of [0,1]){ if(firstTower[T]===null&&lanesTowersAlive(1-T)<9) firstTower[T]=Math.round(LN.t/1000); } }
    }
    const rep={ok,cfg,vt,mode,swap,t:Math.round(LN.t/1000),ended:LN.ended,winner:LN.winner,M,ring,err:globalThis.__err||null,frames,msPerFrame:+(aiTime/frames).toFixed(3)};
@@ -75,11 +82,11 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:ROOT,stdio:'ign
  const out={mode:MODE,cfg:CFG,games:N,secs:SECS};
  // lado "nuevo" y "legacy" de cada partida: en victory/legacy son todos los equipos; en h2h, los listados en vt
  const sides=(r)=>{const n=r.M.length,all=[...Array(n).keys()];const nw=r.vt;return {nw,old:all.filter(i=>!nw.includes(i))};};
- const agg=(sel)=>{const a={hits:{hero:0,struct:0,epic:0,minion:0,camp:0},dmg:{hero:0,struct:0,epic:0,minion:0,camp:0},distracted:0,distractable:0,campByLaner:0,campByLanerBasic:0,basicHits:0,basicRel:0,deaths:0,tgt:{hero:0,struct:0,epic:0,minion:0,camp:0,none:0},st:{}};
-  for(const r of runs)for(const i of sel(sides(r))){const m=r.M[i];for(const k in a.hits){a.hits[k]+=m.hits[k];a.dmg[k]+=m.dmg[k];a.tgt[k]+=m.tgt[k];}a.tgt.none+=m.tgt.none;a.distracted+=m.distracted;a.distractable+=m.distractable;a.campByLaner+=m.campByLaner;a.campByLanerBasic+=m.campByLanerBasic;a.basicHits+=m.basicHits;a.basicRel+=m.basicRel;a.deaths+=m.deaths;for(const s in m.st)a.st[s]=(a.st[s]||0)+m.st[s];}
+ const agg=(sel)=>{const a={hits:{hero:0,struct:0,epic:0,minion:0,camp:0},dmg:{hero:0,struct:0,epic:0,minion:0,camp:0},distracted:0,distractable:0,campByLaner:0,campByLanerBasic:0,basicHits:0,basicRel:0,epicSolo:0,lanerT:0,lanerCamp:0,deaths:0,tgt:{hero:0,struct:0,epic:0,minion:0,camp:0,none:0},st:{}};
+  for(const r of runs)for(const i of sel(sides(r))){const m=r.M[i];for(const k in a.hits){a.hits[k]+=m.hits[k];a.dmg[k]+=m.dmg[k];a.tgt[k]+=m.tgt[k];}a.tgt.none+=m.tgt.none;a.distracted+=m.distracted;a.distractable+=m.distractable;a.campByLaner+=m.campByLaner;a.campByLanerBasic+=m.campByLanerBasic;a.epicSolo+=m.epicSolo;a.lanerT+=m.lanerT;a.lanerCamp+=m.lanerCamp;a.basicHits+=m.basicHits;a.basicRel+=m.basicRel;a.deaths+=m.deaths;for(const s in m.st)a.st[s]=(a.st[s]||0)+m.st[s];}
   const H=a.hits,D=a.dmg,T=a.tgt,tot=Object.values(H).reduce((x,y)=>x+y,0),dt=Object.values(D).reduce((x,y)=>x+y,0),tt=Object.values(T).reduce((x,y)=>x+y,0);
   return {golpes:tot,pct_golpes_relevantes:pct(H.hero+H.struct+H.epic,tot),pct_golpes_a_mobs:pct(H.minion+H.camp,tot),pct_dano_relevante:pct(D.hero+D.struct+D.epic,dt),
-   dano_a_estructuras_por_partida:Math.round(D.struct/N),dano_a_heroes_por_partida:Math.round(D.hero/N),golpes_a_campamentos_por_laner:Math.round(a.campByLaner/N),de_ellos_ataque_basico:Math.round(a.campByLanerBasic/N),pct_ataques_basicos_relevantes:pct(a.basicRel,a.basicHits),
+   dano_a_estructuras_por_partida:Math.round(D.struct/N),dano_a_heroes_por_partida:Math.round(D.hero/N),golpes_a_campamentos_por_laner:Math.round(a.campByLaner/N),de_ellos_ataque_basico:Math.round(a.campByLanerBasic/N),pct_tiempo_laners_con_campamento_de_objetivo:pct(a.lanerCamp,a.lanerT),golpes_a_epicos:H.epic,golpes_a_epicos_sin_3_aliados:a.epicSolo,pct_ataques_basicos_relevantes:pct(a.basicRel,a.basicHits),
    golpes_desviados:a.distracted,pct_mobs_golpeados_con_algo_mejor_en_alcance:pct(a.distracted,a.distractable),
    pct_tiempo_objetivo_relevante:pct(T.hero+T.struct+T.epic,tt),pct_tiempo_objetivo_mob:pct(T.minion+T.camp,tt),pct_tiempo_sin_objetivo:pct(T.none,tt),
    muertes_por_partida:+(a.deaths/N).toFixed(1),estados:a.st};};
