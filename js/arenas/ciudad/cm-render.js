@@ -72,6 +72,36 @@ function cmRenderTick(dt){
 }
 function cmRenderReset(){ for(const k in CM_ROOF_A) delete CM_ROOF_A[k]; }
 
+/* ---------------- ciudad lejana (fuera del mapa) ---------------- */
+let _cmFarPat = null;
+function _cmFarCityPat(){
+  if(_cmFarPat) return _cmFarPat;
+  const T = 192, c = document.createElement("canvas"); c.width = c.height = T; const g = c.getContext("2d");
+  const px = (x, y, w, h, col)=>{ g.fillStyle = col; g.fillRect(Math.round(x), Math.round(y), w, h); };
+  px(0, 0, T, T, "#09060c");
+  const CELL = 48;
+  for(let gy=0;gy<T/CELL;gy++) for(let gx=0;gx<T/CELL;gx++){
+    const r = k=>_cmHash(gx*7 + gy*131, 900 + k);
+    const w = 28 + Math.floor(r(1)*12), h = 20 + Math.floor(r(2)*10);
+    const x = gx*CELL + 3 + Math.floor(r(3)*(CELL - w - 6)), y = gy*CELL + 3 + Math.floor(r(4)*(CELL - h - 10));
+    const warm = r(5) > 0.5;
+    const roof = warm ? ["#150c14", "#20121c", "#2e1a26"] : ["#0e0c18", "#171424", "#241f36"];
+    px(x - 1, y - 1, w + 2, h + 8, "#040206");                    // contorno de 1 px
+    px(x, y + h, w, 6, "#0c0710");                                  // pared en sombra
+    px(x, y, w, h, roof[1]);                                        // faldón del techo
+    px(x, y, w, 2, roof[2]); px(x, y, 2, h, roof[2]);               // luz arriba a la izquierda
+    px(x, y + h - 2, w, 2, roof[0]); px(x + w - 2, y, 2, h, roof[0]);
+    for(let k=1;k<4;k++) px(x + 2, y + Math.round(k*h/4), w - 4, 1, roof[0]); // hiladas de teja
+    if(r(6) > 0.45) { px(x + 5 + Math.floor(r(7)*(w - 14)), y - 5, 5, 6, "#040206"); px(x + 6 + Math.floor(r(7)*(w - 14)), y - 4, 3, 4, roof[0]); } // chimenea
+    const nw = 2 + Math.floor(r(8)*3);
+    for(let k=0;k<nw;k++){ const wx = x + 4 + k*Math.floor((w - 8)/nw), lit = _cmHash(gx*31 + k, gy*17 + 5) > 0.82; px(wx, y + h + 1, 3, 3, lit ? "#c8843a" : "#1c1220"); }
+  }
+  const ctx2 = (typeof ctx !== "undefined" && ctx) || null;
+  _cmFarPat = ctx2 ? ctx2.createPattern(c, "repeat") : null;
+  if(_cmFarPat && _cmFarPat.setTransform && typeof DOMMatrix !== "undefined") _cmFarPat.setTransform(new DOMMatrix().scale(2));
+  return _cmFarPat;
+}
+
 /* ---------------- piso ---------------- */
 function cmDrawWorld(now){
   if(!cmS || !player) return;
@@ -79,7 +109,21 @@ function cmDrawWorld(now){
   ctx.imageSmoothingEnabled = false;
   // afuera de la ciudad: techos lejanos en la oscuridad
   ctx.fillStyle = "#0b070c"; ctx.fillRect(V.x0 - 50, V.y0 - 50, V.x1 - V.x0 + 100, V.y1 - V.y0 + 100);
-  if(V.x0 < B.x0 || V.x1 > B.x1 || V.y0 < B.y0 || V.y1 > B.y1) _cmFillPat("tex_techo", 2, "#241018", V.x0 - 50, V.y0 - 50, V.x1 - V.x0 + 100, V.y1 - V.y0 + 100, 0.35);
+  if(V.x0 < B.x0 || V.x1 > B.x1 || V.y0 < B.y0 || V.y1 > B.y1){
+    // Fuera del mapa: la ciudad lejana, siluetas de techos casi negras con pocas ventanas encendidas (a 2 u/px como el
+    // suelo, ART_BIBLE §14). Antes era el ladrillo del techo repetido: se leía como un patrón vacío y competía con el héroe.
+    const far = _cmFarCityPat();
+    if(far){ ctx.fillStyle = far; ctx.fillRect(V.x0 - 50, V.y0 - 50, V.x1 - V.x0 + 100, V.y1 - V.y0 + 100); }
+    // muralla de borde: el límite del mapa se ve como un muro, no como un corte
+    const WT = 150, bw = B.x1 - B.x0, bh = B.y1 - B.y0;
+    for(const r of [[B.x0 - WT, B.y0 - WT, WT, bh + 2*WT], [B.x1, B.y0 - WT, WT, bh + 2*WT], [B.x0, B.y0 - WT, bw, WT], [B.x0, B.y1, bw, WT]]){
+      if(!_cmVis(V, r[0], r[1], r[0] + r[2], r[1] + r[3])) continue;
+      _cmFillPat("tex_muralla", 2, "#3a3036", r[0], r[1], r[2], r[3], 0.9);
+      ctx.fillStyle = "rgba(6,3,9,0.5)"; ctx.fillRect(r[0], r[1], r[2], r[3]);
+    }
+    ctx.fillStyle = "rgba(210,180,160,0.32)";
+    ctx.fillRect(B.x0 - 4, B.y0 - 4, bw + 8, 4); ctx.fillRect(B.x0 - 4, B.y1, bw + 8, 4); ctx.fillRect(B.x0 - 4, B.y0, 4, bh); ctx.fillRect(B.x1, B.y0, 4, bh);
+  }
   // calles: base de tierra/escombro + adoquín en avenidas, plaza y escenario
   const ix0 = Math.max(B.x0, V.x0), iy0 = Math.max(B.y0, V.y0), ix1 = Math.min(B.x1, V.x1), iy1 = Math.min(B.y1, V.y1);
   if(ix1 > ix0 && iy1 > iy0){
