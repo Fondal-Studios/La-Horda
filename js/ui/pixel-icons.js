@@ -57,8 +57,8 @@ const PXI_ART = {
     "..RrrrrrrrrrrRw.",
     "..RgrrrrrrrrgRw.",
     "..RrrrrrrrrrrRw.",
-    "..RRRRRRRRRRRRW.",
-    "...WWWWWWWWWWW..",
+    "..RRRRRRRRRRRRw.",
+    "...wwwwwwwwwww..",
     "................"],
   torre:[
     "................",
