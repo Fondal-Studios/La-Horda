@@ -1,0 +1,1388 @@
+{
+ "threshold": 1.5,
+ "snapsMs": [
+  64,
+  192,
+  480,
+  960
+ ],
+ "rows": [
+  {
+   "champ": "tanque",
+   "noise": 1.4111678211204277,
+   "basicVsIdle": 1.670919917365415,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Torbellino",
+     "vsBasic": 1.5032203183861952,
+     "vsIdle": 2.5060760724267834
+    },
+    {
+     "slot": 1,
+     "name": "Embestida",
+     "vsBasic": 55.774699234414875,
+     "vsIdle": 55.70482440150687
+    },
+    {
+     "slot": 2,
+     "name": "Grito de Guerra",
+     "vsBasic": 1.4673714910681734,
+     "vsIdle": 2.4784299428849192
+    },
+    {
+     "slot": "ult",
+     "name": "Grito Provocador",
+     "vsBasic": 75.23453639567384,
+     "vsIdle": 72.02120549276947
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "guerrero",
+   "noise": 0.0012152144853566655,
+   "basicVsIdle": 0.4402114473204521,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Corte Sangrante",
+     "vsBasic": 1.1107060396159922,
+     "vsIdle": 1.0581480131243164
+    },
+    {
+     "slot": 1,
+     "name": "Triple Golpe",
+     "vsBasic": 1.7590229675537732,
+     "vsIdle": 1.6858062948110342
+    },
+    {
+     "slot": 2,
+     "name": "Trampa de Área",
+     "vsBasic": 0.883764734475635,
+     "vsIdle": 0.8779924656701907
+    },
+    {
+     "slot": "ult",
+     "name": "Pestilencia Sombría",
+     "vsBasic": 41.84530319601409,
+     "vsIdle": 41.82798638959776
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "mago",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.3697290071697655,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Muro de Fuego",
+     "vsBasic": 2.368453031960141,
+     "vsIdle": 2.402782841171467
+    },
+    {
+     "slot": 1,
+     "name": "Nova de Escarcha",
+     "vsBasic": 2.695345728521084,
+     "vsIdle": 2.680763154696804
+    },
+    {
+     "slot": 2,
+     "name": "Cadena de Relámpago",
+     "vsBasic": 1.353141329444647,
+     "vsIdle": 1.3191153238546602
+    },
+    {
+     "slot": "ult",
+     "name": "Cataclismo Elemental",
+     "vsBasic": 96.71314862073156,
+     "vsIdle": 96.71162960262487
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "soporte",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.3973751367116296,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Alba Purificadora",
+     "vsBasic": 2.1664236237695955,
+     "vsIdle": 2.149714424595941
+    },
+    {
+     "slot": 1,
+     "name": "Bendición de Guerra",
+     "vsBasic": 1.4375987361769351,
+     "vsIdle": 1.4357759144489002
+    },
+    {
+     "slot": 2,
+     "name": "Escudo Sagrado",
+     "vsBasic": 1.67274273909345,
+     "vsIdle": 1.6736541499574675
+    },
+    {
+     "slot": "ult",
+     "name": "Bendición Suprema",
+     "vsBasic": 71.62109612346579,
+     "vsIdle": 71.60377931704946
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "segador",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.6042654028436019,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Tajo del Segador",
+     "vsBasic": 1.3944586219467736,
+     "vsIdle": 1.2771904241098553
+    },
+    {
+     "slot": 1,
+     "name": "Armadura de la Furia",
+     "vsBasic": 0.8406246202454734,
+     "vsIdle": 0.8403208166241342
+    },
+    {
+     "slot": 2,
+     "name": "Último Aliento",
+     "vsBasic": 1.1975938753189939,
+     "vsIdle": 1.1626564588649897
+    },
+    {
+     "slot": "ult",
+     "name": "Segador de Almas",
+     "vsBasic": 17.446226759022966,
+     "vsIdle": 17.443492526430916
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "axiom",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.4596548790861587,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Error 404",
+     "vsBasic": 1.9823186292380606,
+     "vsIdle": 1.8474298213634706
+    },
+    {
+     "slot": 1,
+     "name": "Sobrescribir",
+     "vsBasic": 1.5645886498967068,
+     "vsIdle": 1.3525337222019687
+    },
+    {
+     "slot": 2,
+     "name": "Teletransporte",
+     "vsBasic": 51.78940332968769,
+     "vsIdle": 51.70130027949933
+    },
+    {
+     "slot": "ult",
+     "name": "Force Quit",
+     "vsBasic": 79.83928788431159,
+     "vsIdle": 79.8356422408555
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "profeta",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.5963665086887836,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Destino Restaurado",
+     "vsBasic": 1.015615506136833,
+     "vsIdle": 0.9512091384129299
+    },
+    {
+     "slot": 1,
+     "name": "Visión del Inmortal",
+     "vsBasic": 2.3161988090898045,
+     "vsIdle": 2.3398954915542594
+    },
+    {
+     "slot": 2,
+     "name": "Danza del Augurio",
+     "vsBasic": 1.3856483169279379,
+     "vsIdle": 1.3115202333211813
+    },
+    {
+     "slot": "ult",
+     "name": "Ascensión del Elegido",
+     "vsBasic": 75.52861830113015,
+     "vsIdle": 75.52193462146069
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "musashi",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.5161623526552437,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Corte del Rōnin",
+     "vsBasic": 43.05778344877871,
+     "vsIdle": 43.052314983594606
+    },
+    {
+     "slot": 1,
+     "name": "Paso Fantasma",
+     "vsBasic": 42.96451573702758,
+     "vsIdle": 42.961781504435535
+    },
+    {
+     "slot": 2,
+     "name": "Mil Cortes",
+     "vsBasic": 2.092599343784178,
+     "vsIdle": 2.028800583302953
+    },
+    {
+     "slot": "ult",
+     "name": "Último Duelo",
+     "vsBasic": 68.01525094179122,
+     "vsIdle": 68.02831449750882
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "cazadora",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.4633005225422287,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Flecha Perforante",
+     "vsBasic": 1.2492404909466521,
+     "vsIdle": 1.1110098432373314
+    },
+    {
+     "slot": 1,
+     "name": "Trampa del Bosque",
+     "vsBasic": 1.1745048000972171,
+     "vsIdle": 1.0046785757686232
+    },
+    {
+     "slot": 2,
+     "name": "Lluvia de la Cazadora",
+     "vsBasic": 2.371794871794872,
+     "vsIdle": 2.1156884190059544
+    },
+    {
+     "slot": "ult",
+     "name": "Cacería Salvaje",
+     "vsBasic": 68.56027463847369,
+     "vsIdle": 68.54083120670798
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "nigromante",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.47271843480374287,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Cosecha de Almas",
+     "vsBasic": 2.051282051282051,
+     "vsIdle": 1.990217523392879
+    },
+    {
+     "slot": 1,
+     "name": "Gólem de Carne",
+     "vsBasic": 2.2852108397132094,
+     "vsIdle": 2.249665816016527
+    },
+    {
+     "slot": 2,
+     "name": "Plaga de los Condenados",
+     "vsBasic": 6.148073885040709,
+     "vsIdle": 6.109187021509296
+    },
+    {
+     "slot": "ult",
+     "name": "Encarnación del Abismo",
+     "vsBasic": 55.001215214485356,
+     "vsIdle": 54.90187143030745
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "libertador",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.5270992830234537,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Bayoneta",
+     "vsBasic": 24.28940332968769,
+     "vsIdle": 24.301555474541257
+    },
+    {
+     "slot": 1,
+     "name": "¡Granaderos, a la carga!",
+     "vsBasic": 3.570603961599222,
+     "vsIdle": 3.4797666788188115
+    },
+    {
+     "slot": 2,
+     "name": "Carga de San Lorenzo",
+     "vsBasic": 63.492526430915056,
+     "vsIdle": 63.4703487665573
+    },
+    {
+     "slot": "ult",
+     "name": "Cruce de los Andes",
+     "vsBasic": 99.71472839956252,
+     "vsIdle": 99.722323490096
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "ilkan",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.489427633977397,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Lanza-Pendón",
+     "vsBasic": 60.3800583302953,
+     "vsIdle": 60.359399684044234
+    },
+    {
+     "slot": 1,
+     "name": "Piel de Duna",
+     "vsBasic": 0.6783934864503585,
+     "vsIdle": 0.6443674808603719
+    },
+    {
+     "slot": 2,
+     "name": "Grito de Caravana",
+     "vsBasic": 0.7904970227245108,
+     "vsIdle": 0.7914084335885284
+    },
+    {
+     "slot": "ult",
+     "name": "Coloso de Arena",
+     "vsBasic": 99.54399076436991,
+     "vsIdle": 99.55188965852473
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "ynara",
+   "noise": 0.13336978976789404,
+   "basicVsIdle": 0.25610645278891725,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Mirada fulminante",
+     "vsBasic": 2.4936201239518776,
+     "vsIdle": 2.513063555717584
+    },
+    {
+     "slot": 1,
+     "name": "Estrogonof reparador",
+     "vsBasic": 2.5890144610523755,
+     "vsIdle": 2.6591930975817233
+    },
+    {
+     "slot": 2,
+     "name": "No quiero seguir esta conversación",
+     "vsBasic": 53.23368574553409,
+     "vsIdle": 53.2345971563981
+    },
+    {
+     "slot": "ult",
+     "name": "Santa Paciencia",
+     "vsBasic": 96.00072912869122,
+     "vsIdle": 96.02746384736906
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "myla",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.5866447928059303,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Torre de Yogur",
+     "vsBasic": 1.1590108154089196,
+     "vsIdle": 0.7203183861951634
+    },
+    {
+     "slot": 1,
+     "name": "Yogurazo",
+     "vsBasic": 34.065500060760726,
+     "vsIdle": 33.937294932555595
+    },
+    {
+     "slot": 2,
+     "name": "Burbuja Cremosa",
+     "vsBasic": 32.50455705432009,
+     "vsIdle": 32.44926479523636
+    },
+    {
+     "slot": "ult",
+     "name": "BERRINCHE",
+     "vsBasic": 32.50455705432009,
+     "vsIdle": 32.44926479523636
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "brasa",
+   "noise": 1.4382063434196135,
+   "basicVsIdle": 1.7152752460809333,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Centinela de Latón",
+     "vsBasic": 1.0693887471138657,
+     "vsIdle": 1.9106209746020173
+    },
+    {
+     "slot": 1,
+     "name": "Purga de Vapor",
+     "vsBasic": 2.7184348037428605,
+     "vsIdle": 3.393182646737149
+    },
+    {
+     "slot": 2,
+     "name": "Desmontaje Rápido",
+     "vsBasic": 0.9478672985781991,
+     "vsIdle": 1.8665694495078382
+    },
+    {
+     "slot": "ult",
+     "name": "Turno de Emergencia",
+     "vsBasic": 70.93510754648196,
+     "vsIdle": 68.25282537367845
+    }
+   ],
+   "err": null,
+   "reloaded": true
+  },
+  {
+   "champ": "eslabon",
+   "noise": 0.0012152144853566655,
+   "basicVsIdle": 0.5176813707619394,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Cadena de Retorno",
+     "vsBasic": 1.0052861830113016,
+     "vsIdle": 0.9554623891116782
+    },
+    {
+     "slot": 1,
+     "name": "Línea Infranqueable",
+     "vsBasic": 1.6930975817231741,
+     "vsIdle": 1.5214485356665453
+    },
+    {
+     "slot": 2,
+     "name": "Custodia",
+     "vsBasic": 0.7938388625592417,
+     "vsIdle": 0.540466642362377
+    },
+    {
+     "slot": "ult",
+     "name": "Nadie Queda Atrás",
+     "vsBasic": 85.70300157977883,
+     "vsIdle": 85.7361161745048
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "morwen",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.496718920889537,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Resina Amarga",
+     "vsBasic": 1.9218617085915664,
+     "vsIdle": 1.8671770567505164
+    },
+    {
+     "slot": 1,
+     "name": "Sal de Ruptura",
+     "vsBasic": 2.4589865111192126,
+     "vsIdle": 2.428909952606635
+    },
+    {
+     "slot": 2,
+     "name": "Destilación",
+     "vsBasic": 0.9469558877141816,
+     "vsIdle": 0.5255802649167578
+    },
+    {
+     "slot": "ult",
+     "name": "Alambique del Silencio",
+     "vsBasic": 72.75792927451695,
+     "vsIdle": 72.77737270628266
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "farolero",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.5653785393121886,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Farol de Guardia",
+     "vsBasic": 1.3364321302709927,
+     "vsIdle": 1.3227609673107303
+    },
+    {
+     "slot": 1,
+     "name": "Destello",
+     "vsBasic": 2.5792927451695222,
+     "vsIdle": 2.5847612103536273
+    },
+    {
+     "slot": 2,
+     "name": "Paso Seguro",
+     "vsBasic": 1.1711629602624862,
+     "vsIdle": 0.9715639810426541
+    },
+    {
+     "slot": "ult",
+     "name": "Vigilia",
+     "vsBasic": 85.55292259083728,
+     "vsIdle": 85.62765828168672
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "iria",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.5082634585004253,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Ancla",
+     "vsBasic": 0.9703487665572974,
+     "vsIdle": 0.5544416089439786
+    },
+    {
+     "slot": 1,
+     "name": "Tensión",
+     "vsBasic": 1.2863045327500304,
+     "vsIdle": 1.1969862680763155
+    },
+    {
+     "slot": 2,
+     "name": "Corte de Hilo",
+     "vsBasic": 1.8252521570057114,
+     "vsIdle": 1.7839348645035848
+    },
+    {
+     "slot": "ult",
+     "name": "Sello de los Tres Caminos",
+     "vsBasic": 92.58384979948961,
+     "vsIdle": 92.58476121035363
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "vesper",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.4806173289585612,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Agujas de penumbra",
+     "vsBasic": 2.5999513914205856,
+     "vsIdle": 2.5650139749665817
+    },
+    {
+     "slot": 1,
+     "name": "Costura de fuga",
+     "vsBasic": 52.490278284117146,
+     "vsIdle": 52.43498602503342
+    },
+    {
+     "slot": 2,
+     "name": "Deshilachar",
+     "vsBasic": 2.533418398347308,
+     "vsIdle": 2.4662777980313524
+    },
+    {
+     "slot": "ult",
+     "name": "La última puntada",
+     "vsBasic": 5.110584518167457,
+     "vsIdle": 5.085976424838984
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "nahir",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.4942884919188237,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Astillas errantes",
+     "vsBasic": 2.6670919917365414,
+     "vsIdle": 2.6336735933892332
+    },
+    {
+     "slot": 1,
+     "name": "Reflejo fugitivo",
+     "vsBasic": 51.12073155912019,
+     "vsIdle": 51.08214849921011
+    },
+    {
+     "slot": 2,
+     "name": "Corte cruzado",
+     "vsBasic": 2.029104386924292,
+     "vsIdle": 2.002065864625106
+    },
+    {
+     "slot": "ult",
+     "name": "Galería de nadie",
+     "vsBasic": 96.87264552193461,
+     "vsIdle": 96.88358245230283
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "baltra",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.5480617328958561,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Bronce vivo",
+     "vsBasic": 3.002187386073642,
+     "vsIdle": 2.9718070239397254
+    },
+    {
+     "slot": 1,
+     "name": "Bajo la campana",
+     "vsBasic": 1.0417426175720015,
+     "vsIdle": 1.031717098067809
+    },
+    {
+     "slot": 2,
+     "name": "Badajo de retorno",
+     "vsBasic": 2.6212176449143274,
+     "vsIdle": 2.577166119820148
+    },
+    {
+     "slot": "ult",
+     "name": "Que todos la escuchen",
+     "vsBasic": 18.17474784299429,
+     "vsIdle": 18.17110219953822
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "maura",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.5188965852472961,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Raíces de paso",
+     "vsBasic": 2.191335520719407,
+     "vsIdle": 2.1500182282172804
+    },
+    {
+     "slot": 1,
+     "name": "Corteza prestada",
+     "vsBasic": 1.2641268683922713,
+     "vsIdle": 1.1811884797666787
+    },
+    {
+     "slot": 2,
+     "name": "Poda necesaria",
+     "vsBasic": 1.65086887835703,
+     "vsIdle": 1.5958804228946408
+    },
+    {
+     "slot": "ult",
+     "name": "El bosque camina",
+     "vsBasic": 3.194495078381334,
+     "vsIdle": 3.212419492040345
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "dariel",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.4013245837890388,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Nota discordante",
+     "vsBasic": 2.3095151294203426,
+     "vsIdle": 2.2742739093449993
+    },
+    {
+     "slot": 1,
+     "name": "Marcha de salida",
+     "vsBasic": 2.1378660833637135,
+     "vsIdle": 1.955887714181553
+    },
+    {
+     "slot": 2,
+     "name": "Volver al estribillo",
+     "vsBasic": 2.006622918945194,
+     "vsIdle": 1.962875197472354
+    },
+    {
+     "slot": "ult",
+     "name": "Todavía hay una salida",
+     "vsBasic": 10.223295661684288,
+     "vsIdle": 10.225118483412322
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "orsa",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.4478065378539312,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Perno conductor",
+     "vsBasic": 2.1190302588406853,
+     "vsIdle": 2.105662899501762
+    },
+    {
+     "slot": 1,
+     "name": "Apoyar la culata",
+     "vsBasic": 1.2841779074006563,
+     "vsIdle": 0.9390569935593632
+    },
+    {
+     "slot": 2,
+     "name": "Cerrar el circuito",
+     "vsBasic": 2.7105359095880424,
+     "vsIdle": 2.6704338315712723
+    },
+    {
+     "slot": "ult",
+     "name": "Tormenta de rescate",
+     "vsBasic": 6.115870701178758,
+     "vsIdle": 6.138352169157856
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "tibor",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.4359581966217037,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Nube obrera",
+     "vsBasic": 2.3262243285939967,
+     "vsIdle": 2.2630331753554502
+    },
+    {
+     "slot": 1,
+     "name": "Volvé a casa",
+     "vsBasic": 1.2307084700449629,
+     "vsIdle": 0.8816381091262608
+    },
+    {
+     "slot": 2,
+     "name": "Polen de aviso",
+     "vsBasic": 1.9607485721229798,
+     "vsIdle": 1.8923927573216672
+    },
+    {
+     "slot": "ult",
+     "name": "El cielo zumba",
+     "vsBasic": 6.5603353991979585,
+     "vsIdle": 6.499270871308786
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "zahra",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.4550978247660712,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Boca de horno",
+     "vsBasic": 2.4337708105480615,
+     "vsIdle": 2.3930611252886136
+    },
+    {
+     "slot": 1,
+     "name": "Enfriar",
+     "vsBasic": 3.319662170373071,
+     "vsIdle": 3.269230769230769
+    },
+    {
+     "slot": 2,
+     "name": "Paso de ceniza",
+     "vsBasic": 52.52734232592052,
+     "vsIdle": 52.434074614169404
+    },
+    {
+     "slot": "ult",
+     "name": "Abrir todas las válvulas",
+     "vsBasic": 5.490339044841415,
+     "vsIdle": 5.490946652084093
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "renko",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.5596062705067444,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Surco de contención",
+     "vsBasic": 2.2302223842508204,
+     "vsIdle": 2.2031838619516346
+    },
+    {
+     "slot": 1,
+     "name": "Montículo",
+     "vsBasic": 1.7019078867420099,
+     "vsIdle": 1.656337343541135
+    },
+    {
+     "slot": 2,
+     "name": "Devolver a la tierra",
+     "vsBasic": 2.0749787337465064,
+     "vsIdle": 2.063130392514279
+    },
+    {
+     "slot": "ult",
+     "name": "Aquí siguen los nombres",
+     "vsBasic": 5.091444890023089,
+     "vsIdle": 5.093267711751124
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "sira",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.42319844452545874,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Línea de tinta",
+     "vsBasic": 2.055839105602139,
+     "vsIdle": 2.0224207072548306
+    },
+    {
+     "slot": 1,
+     "name": "Volver sobre los pasos",
+     "vsBasic": 52.68349738728886,
+     "vsIdle": 52.60754648195407
+    },
+    {
+     "slot": 2,
+     "name": "Borrar el camino",
+     "vsBasic": 1.1954672499696197,
+     "vsIdle": 1.1307570786243772
+    },
+    {
+     "slot": "ult",
+     "name": "Atlas de los ausentes",
+     "vsBasic": 23.499210110584517,
+     "vsIdle": 23.51986875683558
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "nano_gm",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.4438570907765221,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Sentencia Umbría",
+     "vsBasic": 2.2764005346943734,
+     "vsIdle": 2.244501154453761
+    },
+    {
+     "slot": 1,
+     "name": "Edicto de Luz",
+     "vsBasic": 5.829080082634585,
+     "vsIdle": 5.671406003159557
+    },
+    {
+     "slot": 2,
+     "name": "Inversión",
+     "vsBasic": 52.01573702758537,
+     "vsIdle": 51.93522906793049
+    },
+    {
+     "slot": "ult",
+     "name": "Juicio del GM",
+     "vsBasic": 82.59995139142059,
+     "vsIdle": 82.52582330781382
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "facu_gm",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.5471503220318387,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Corriente de Resaca",
+     "vsBasic": 3.491615020051039,
+     "vsIdle": 3.474602017256046
+    },
+    {
+     "slot": 1,
+     "name": "Presión Abisal",
+     "vsBasic": 3.223052618787216,
+     "vsIdle": 3.204824401506866
+    },
+    {
+     "slot": 2,
+     "name": "Cabalgar la Ola",
+     "vsBasic": 59.6114351683072,
+     "vsIdle": 59.59472596913355
+    },
+    {
+     "slot": "ult",
+     "name": "El Océano Reclama la Arena",
+     "vsBasic": 83.73769595333576,
+     "vsIdle": 83.75896220682951
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "aurelia",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.4262364807388504,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Prisma",
+     "vsBasic": 1.67638838254952,
+     "vsIdle": 1.6499574674930124
+    },
+    {
+     "slot": 1,
+     "name": "Refracción",
+     "vsBasic": 2.0239397253615263,
+     "vsIdle": 2.0044962935958197
+    },
+    {
+     "slot": 2,
+     "name": "Paso Luminal",
+     "vsBasic": 51.947077409162716,
+     "vsIdle": 51.941608943978615
+    },
+    {
+     "slot": "ult",
+     "name": "Catedral del Sol",
+     "vsBasic": 89.29213756227975,
+     "vsIdle": 89.30580872524
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "khepri",
+   "noise": 0.002430428970713331,
+   "basicVsIdle": 0.5182889780046178,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Enjambre",
+     "vsBasic": 1.616235265524365,
+     "vsIdle": 1.5755255802649168
+    },
+    {
+     "slot": 1,
+     "name": "Caparazón Vivo",
+     "vsBasic": 1.0487301008628023,
+     "vsIdle": 1.0447806537853932
+    },
+    {
+     "slot": 2,
+     "name": "Vuelo de Élitros",
+     "vsBasic": 55.61368331510511,
+     "vsIdle": 55.600619759387534
+    },
+    {
+     "slot": "ult",
+     "name": "Eclipse de Escarabajos",
+     "vsBasic": 43.526856240126385,
+     "vsIdle": 43.51136225543809
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "velmira",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.4636043261635679,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Máscara Arrojada",
+     "vsBasic": 2.111435168307206,
+     "vsIdle": 2.0795357880665937
+    },
+    {
+     "slot": 1,
+     "name": "Coro de Rostros",
+     "vsBasic": 2.8317535545023698,
+     "vsIdle": 2.7873982257868515
+    },
+    {
+     "slot": 2,
+     "name": "Cambio de Rostro",
+     "vsBasic": 54.414266618058086,
+     "vsIdle": 54.38813950662292
+    },
+    {
+     "slot": "ult",
+     "name": "El Gran Teatro",
+     "vsBasic": 86.07394580143395,
+     "vsIdle": 86.08184469558877
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "vhal",
+   "noise": 0.0009114108640174991,
+   "basicVsIdle": 0.4942884919188237,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Estrella Errante",
+     "vsBasic": 2.127232956616843,
+     "vsIdle": 2.085308056872038
+    },
+    {
+     "slot": 1,
+     "name": "Pozo Gravitatorio",
+     "vsBasic": 3.649896706768745,
+     "vsIdle": 3.634098918459108
+    },
+    {
+     "slot": 2,
+     "name": "Órbita",
+     "vsBasic": 57.54010207801677,
+     "vsIdle": 57.46415117268198
+    },
+    {
+     "slot": "ult",
+     "name": "Colapso",
+     "vsBasic": 90.61550613683315,
+     "vsIdle": 90.58968282901932
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "bront",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.5586948596427269,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Placa Arrojada",
+     "vsBasic": 2.1524486571879935,
+     "vsIdle": 2.081662413415968
+    },
+    {
+     "slot": 1,
+     "name": "Muro de Placas",
+     "vsBasic": 1.9057601166605906,
+     "vsIdle": 1.809758172317414
+    },
+    {
+     "slot": 2,
+     "name": "Pulso del Cristal",
+     "vsBasic": 3.193583667517317,
+     "vsIdle": 3.2251792441365903
+    },
+    {
+     "slot": "ult",
+     "name": "Ciudadela",
+     "vsBasic": 89.62844817110219,
+     "vsIdle": 89.6159922226273
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "oriel",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.4827439543079354,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Abrir Cicatriz",
+     "vsBasic": 52.337161258962205,
+     "vsIdle": 52.29159071576133
+    },
+    {
+     "slot": 1,
+     "name": "Eco de la Cicatriz",
+     "vsBasic": 2.0728521083971323,
+     "vsIdle": 2.0360918702150927
+    },
+    {
+     "slot": 2,
+     "name": "Paso entre Mundos",
+     "vsBasic": 51.81218860128813,
+     "vsIdle": 51.79669461659983
+    },
+    {
+     "slot": "ult",
+     "name": "La Gran Cicatriz",
+     "vsBasic": 85.67110219953823,
+     "vsIdle": 85.69297606027465
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "saelis",
+   "noise": 0.0015190181066958319,
+   "basicVsIdle": 0.5097824766071212,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Abanico de Plumas",
+     "vsBasic": 2.7454733260420463,
+     "vsIdle": 2.708713087860007
+    },
+    {
+     "slot": 1,
+     "name": "Ráfaga Ascendente",
+     "vsBasic": 3.982561672135132,
+     "vsIdle": 3.979219832300401
+    },
+    {
+     "slot": 2,
+     "name": "Llamado del Plumaje",
+     "vsBasic": 1.2556203669947745,
+     "vsIdle": 0.8956130757078624
+    },
+    {
+     "slot": "ult",
+     "name": "Cielo de Plumas",
+     "vsBasic": 92.65402843601896,
+     "vsIdle": 92.63397739701057
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "solciju",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.4809211325799004,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Vino maldito",
+     "vsBasic": 1.6776035970348766,
+     "vsIdle": 1.6350710900473933
+    },
+    {
+     "slot": 1,
+     "name": "Barrica añeja",
+     "vsBasic": 1.5533479159071577,
+     "vsIdle": 1.2188601288127354
+    },
+    {
+     "slot": 2,
+     "name": "Brindis a solas",
+     "vsBasic": 1.6678818811520233,
+     "vsIdle": 1.4072183740430186
+    },
+    {
+     "slot": "ult",
+     "name": "Gran Reserva",
+     "vsBasic": 2.7819297606027464,
+     "vsIdle": 2.5890144610523755
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "veyra",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.5246688540527403,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Abrir la herida",
+     "vsBasic": 1.7766435775914449,
+     "vsIdle": 1.740187143030745
+    },
+    {
+     "slot": 1,
+     "name": "Paso escarlata",
+     "vsBasic": 54.662474176692186,
+     "vsIdle": 54.62601774213149
+    },
+    {
+     "slot": 2,
+     "name": "Pacto de dolor",
+     "vsBasic": 1.0745534086766315,
+     "vsIdle": 0.8861951634463483
+    },
+    {
+     "slot": "ult",
+     "name": "La última herida",
+     "vsBasic": 96.86869607485721,
+     "vsIdle": 96.84287276704339
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "brakk",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.5997083485235144,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Muro de asedio",
+     "vsBasic": 1.9604447685016406,
+     "vsIdle": 1.8714303074492649
+    },
+    {
+     "slot": 1,
+     "name": "Torreta de clavos",
+     "vsBasic": 0.9709563737999757,
+     "vsIdle": 0.9578928180823916
+    },
+    {
+     "slot": 2,
+     "name": "Apuntalar",
+     "vsBasic": 1.9091019564953213,
+     "vsIdle": 1.9455583910560215
+    },
+    {
+     "slot": "ult",
+     "name": "Demolición final",
+     "vsBasic": 97.20713330902905,
+     "vsIdle": 97.19801920038887
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "morveth",
+   "noise": 0.0027342325920524974,
+   "basicVsIdle": 0.4362620002430429,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Huerto maldito",
+     "vsBasic": 1.4859035119698627,
+     "vsIdle": 1.1790618544173046
+    },
+    {
+     "slot": 1,
+     "name": "Exhalación de peste",
+     "vsBasic": 2.402782841171467,
+     "vsIdle": 2.3754405152509417
+    },
+    {
+     "slot": 2,
+     "name": "Simbiosis",
+     "vsBasic": 2.0424717462632156,
+     "vsIdle": 1.8489488394701665
+    },
+    {
+     "slot": "ult",
+     "name": "Jardín de la peste",
+     "vsBasic": 3.7744561915178028,
+     "vsIdle": 3.612225057722688
+    }
+   ],
+   "err": null
+  },
+  {
+   "champ": "aelith",
+   "noise": 0.0030380362133916637,
+   "basicVsIdle": 0.4806173289585612,
+   "acts": [
+    {
+     "slot": 0,
+     "name": "Instante roto",
+     "vsBasic": 2.063130392514279,
+     "vsIdle": 2.023028314497509
+    },
+    {
+     "slot": 1,
+     "name": "Fractura de segundos",
+     "vsBasic": 2.0804471989306115,
+     "vsIdle": 2.0549276947381214
+    },
+    {
+     "slot": 2,
+     "name": "Tiempo prestado",
+     "vsBasic": 2.085611860493377,
+     "vsIdle": 1.82950540770446
+    },
+    {
+     "slot": "ult",
+     "name": "La hora imposible",
+     "vsBasic": 54.74571636893912,
+     "vsIdle": 54.62541013488881
+    }
+   ],
+   "err": null
+  }
+ ]
+}
