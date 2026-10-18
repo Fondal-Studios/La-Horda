@@ -46,6 +46,6 @@
       else { kvbDecal('or_circuit', o.x, o.y, o.r, 820, {layer: 'g'}); kvbEmit('or_spark', 14, o.x, o.y, {ring: o.r * .6, v0: 50, v1: 160, up: 30, l0: 320, l1: 560, scale: 1.5, flat: .7, shrink: true}); } } }, 'orsa');
   // postura de apoyo: ancla viva mientras dura (braceUntil) con un perno por cada disparo reforzado que queda
   kvbOverlay('orsa', (h, layer, t) => { const s = h.exState; if(layer !== 'g' || !s || !(s.braceUntil > runElapsedMs)) return; kvbLoopDecal('or_anchor_idle', h.x, h.y + 4, 38, t, 900, {alpha: .95});
-    for(let i = 0; i < (s.shots || 0); i++){ ctx.fillStyle = OR[3]; ctx.strokeStyle = OR[0]; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(h.x - 12 + i * 12, h.y - 70, 3.5, 0, 6.2832); ctx.fill(); ctx.stroke(); } });
+    for(let i = 0; i < (s.shots || 0); i++){ pxsDisc(h.x - 12 + i * 12, h.y - 70, 5, 5, OR[0], {cell: 2.2}); pxsDisc(h.x - 12 + i * 12, h.y - 70, 3.3, 3.3, OR[3], {cell: 2.2}); } });
   kvbBasic('orsa', OR, 'or_spark');
 }
