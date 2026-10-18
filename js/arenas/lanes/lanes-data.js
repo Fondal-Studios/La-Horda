@@ -1,7 +1,7 @@
 "use strict";
 /* ============================================================
    js/arenas/lanes/lanes-data.js
-   GUERRA DE CRISTALES en el MOTOR REAL — datos y geometría. Mapa 2D inspirado en Wild Rift:
+   GUERRA DE CRISTALES en el MOTOR REAL — datos y geometría. Mapa 2D de tres carriles:
    tres carriles (arriba, medio, abajo) entre dos bases (Zafiro abajo a la izquierda, Ámbar arriba a la derecha), selva con
    campamentos entre los carriles y un río en diagonal con dos objetivos épicos. Cada equipo tiene 3 torres por carril
    (exterior, interior, inhibidora) y un cristal; el cristal queda expuesto cuando cae la torre inhibidora de cualquier carril.

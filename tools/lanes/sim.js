@@ -1,5 +1,5 @@
 'use strict';
-/* Guerra de Cristales (estilo Wild Rift 2D, 5 contra 5) en el motor real: simulación de partidas completas SIN interfaz (motor real en Chromium,
+/* Guerra de Cristales (MOBA 2D de tres carriles, 5 contra 5) en el motor real: simulación de partidas completas SIN interfaz (motor real en Chromium,
  * reloj virtual). Verifica: nada tira excepciones, sin fuego amigo de la horda, hay combate (bajas de súbditos, PvP), los héroes ganan
  * experiencia y suben de nivel, la selva reaparece y las cartas de horda se ofrecen y se aplican.
  * Uso: node tools/lanes/sim.js [partidas=3] [segundos=300] */

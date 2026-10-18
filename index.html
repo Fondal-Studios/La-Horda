@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>La Horda · ARPG cooperativo gratis</title>
-<meta name="description" content="La Horda: cuatro guardianes contra la horda. Cooperativo, Guerra de Cristales 2 contra 2 y Horda Infinita. Gratis, jugalo en el celular o la compu, sin instalar nada.">
+<meta name="description" content="La Horda: cuatro guardianes contra la horda. Cooperativo, Guerra de Cristales 5 contra 5, Coliseo y Horda Infinita. Gratis, jugalo en el celular o la compu, sin instalar nada.">
 <link rel="canonical" href="https://fondalstudios.com/la-horda/jugar/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="La Horda">
@@ -193,8 +193,8 @@
       <div class="hub-sections" id="hub-grid">
         <h2 class="hub-section-title">MODOS COMPETITIVOS</h2>
         <div class="hub-row hub-row-modes">
-          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-crystal-btn"><span class="hub-tile-ico">◆</span><span class="hub-tile-body"><span class="hub-tile-title">GUERRA DE CRISTALES</span><span class="hub-tile-sub">2 contra 2 · defendé tu cristal y mirá al rival</span></span></button>
-          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-coliseum-btn"><span class="hub-tile-ico">⚔</span><span class="hub-tile-body"><span class="hub-tile-title">COLISEO</span><span class="hub-tile-sub">Torneo 2 contra 2 · sumá puntos</span></span></button>
+          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-crystal-btn"><span class="hub-tile-ico">◆</span><span class="hub-tile-body"><span class="hub-tile-title">GUERRA DE CRISTALES</span><span class="hub-tile-sub">5 contra 5 con bots · 3 carriles y selva</span></span></button>
+          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-coliseum-btn"><span class="hub-tile-ico">⚔</span><span class="hub-tile-body"><span class="hub-tile-title">COLISEO</span><span class="hub-tile-sub">Duelos 2 contra 2 · primero a 3 puntos</span></span></button>
         </div>
         <h2 class="hub-section-title">EXPLORAR</h2>
         <div class="hub-row hub-row-explore">
@@ -367,11 +367,11 @@
       </button>
       <button class="mode-card" id="mode-crystal-wars-btn">
         <div class="mode-card-title">◆ CONVERGENCIA <span class="ui-tag">ALPHA</span></div>
-        <div class="mode-card-desc">Guerra de Cristales estilo Wild Rift en 2D: 5 contra 5, tres carriles, selva, torres, PvP y tu propia horda. Mapa completo siempre visible.</div>
+        <div class="mode-card-desc">Guerra de Cristales: 5 contra 5 con bots (2 contra 2 en línea), tres carriles, selva, torres, PvP y tu propia horda. Mapa completo siempre visible.</div>
       </button>
       <button class="mode-card" id="mode-coliseum-btn">
         <div class="mode-card-title">⚔ COLISEO <span class="ui-tag">ALPHA</span></div>
-        <div class="mode-card-desc">Combate directo 2 contra 2 en una arena compartida, con cobertura y monstruos neutrales. Gana el primer equipo en alcanzar 15 eliminaciones.</div>
+        <div class="mode-card-desc">Torneo de ocho luchadores: cuatro equipos de dos, duelos 2 contra 2 con anillo que se cierra. Gana el primer equipo en llegar a 3 puntos.</div>
       </button>
       <button class="mode-card mode-endless hidden" id="mode-endless-btn">
         <div class="mode-card-title">♾ HORDA INFINITA <span class="ui-tag hidden" id="mode-endless-lock">🔒</span></div>
@@ -387,12 +387,12 @@
 <div id="cw-root">
 <header><button id="back" type="button">‹ LA HORDA</button><span id="competitive-title">CONVERGENCIA · ALPHA</span><button id="sound" aria-pressed="false">Sonido: apagado</button></header>
 <main id="lobby">
- <div class="eyebrow">DOS EQUIPOS · UNA HORDA · ECLIPSE A LOS 5 MINUTOS</div><h1>CONVERGENCIA<br><em>GUERRA DE CRISTALES</em></h1>
- <p class="intro">Cada equipo defiende su cristal contra la misma horda. Ganás cuando el cristal rival cae: por sus errores, por tus envíos de monstruos o por el Eclipse final. Convertí las bajas en fragmentos y decidí cómo usarlos.</p>
- <div class="rules"><div><b>01 / RESISTÍ</b><p>Entrás directo en acción. El ataque básico es automático: movete y combiná tus cuatro habilidades.</p></div><div><b>02 / DECIDÍ</b><p>Al comienzo de cada oleada, tenés 7 segundos para reparar, mejorar o enviar amenazas. Mirá cómo atacan en el campo rival, siempre visible.</p></div><div><b>03 / REMATÁ</b><p>Pasados los 5 minutos llega el ECLIPSE: los dos cristales se apagan cada vez más rápido. Gana el que más vida conserve. Si vas perdiendo, el cristal te ayuda con fragmentos extra.</p></div></div>
- <section class="setup"><div><label for="competitive-mode">Modo competitivo</label><select id="competitive-mode"><option value="crystal">Convergencia — Guerra de Cristales</option><option value="coliseum">Coliseo — Combate 2 contra 2</option></select><label for="name">Tu nombre</label><input id="name" maxlength="24" placeholder="Guardián"><label for="champ">Tu campeón</label><select id="champ"></select><p id="kit"></p><small>Plantel de guardianes con perfiles competitivos adaptados y estadísticas normalizadas. Sin ventajas por nivel, equipo de campaña o compras. Los personajes exclusivos conservan sus restricciones.</small></div>
+ <div class="eyebrow">5 CONTRA 5 CON BOTS · EN LÍNEA 2 CONTRA 2 · 3 CARRILES</div><h1>CONVERGENCIA<br><em>GUERRA DE CRISTALES</em></h1>
+ <p class="intro">Mapa de tres carriles con selva, río y objetivos épicos. Tu horda sale sola por cada carril; con cada nivel elegís una carta para hacerla más fuerte. Derribá las torres y el cristal rival. El PvP está permitido y jugás con tus habilidades de siempre.</p>
+ <div class="rules"><div><b>01 / EMPUJÁ</b><p>Tu horda sale sola por los tres carriles. Acompañala y derribá las torres (exterior, interior, inhibidora). Con una inhibidora caída, el cristal queda expuesto.</p></div><div><b>02 / CRECÉ</b><p>Empezás en nivel 3 y subís a 15 con súbditos, selva y héroes. Cada nivel da una carta para tu horda. B vuelve a la base.</p></div><div><b>03 / REMATÁ</b><p>Vencé a los héroes rivales para ganar oro. A los 13 minutos el Eclipse apaga ambos cristales; a los 18 gana quien tenga más torres y vida.</p></div></div>
+ <section class="setup"><div><label for="competitive-mode">Modo competitivo</label><select id="competitive-mode"><option value="crystal">Convergencia — Guerra de Cristales</option><option value="coliseum">Coliseo — Torneo 2 contra 2</option></select><label for="name">Tu nombre</label><input id="name" maxlength="24" placeholder="Guardián"><label for="champ">Tu campeón</label><select id="champ"></select><p id="kit"></p><small>Plantel de guardianes con perfiles competitivos adaptados y estadísticas normalizadas. Sin ventajas por nivel, equipo de campaña o compras. Los personajes exclusivos conservan sus restricciones.</small></div>
  <div class="connect"><button class="primary" id="practice">ENTRENAR CON BOTS</button><button id="create">CREAR SALA PRIVADA</button><label for="code">Código o enlace de tu amigo</label><div class="join"><input id="code" maxlength="240" placeholder="ABC123"><button id="join">UNIRSE</button></div></div></section>
- <section id="room" hidden><div class="room-head"><h2>SALA <span id="room-code"></span></h2><button id="copy">Copiar invitación</button></div><p>J1 + J2: equipo Zafiro. J3 + J4: equipo Ámbar. Los lugares libres se completan con bots.</p><div id="slots"></div><div class="actions"><button id="ready">ESTOY LISTO</button><button id="start" class="primary">COMENZAR 2 CONTRA 2</button><button id="leave">Salir de la sala</button></div></section>
+ <section id="room" hidden><div class="room-head"><h2>SALA <span id="room-code"></span></h2><button id="copy">Copiar invitación</button></div><p>J1 + J2: equipo Zafiro. J3 + J4: equipo Ámbar. Los lugares libres se completan con bots.</p><div id="slots"></div><div class="actions"><button id="ready">ESTOY LISTO</button><button id="start" class="primary">COMENZAR PARTIDA</button><button id="leave">Salir de la sala</button></div></section>
  <p id="status" role="status" aria-live="polite">Entrenamiento disponible sin conexión. Online usa el servidor configurado de La Horda.</p>
 </main>
 <section id="cw-game" hidden>

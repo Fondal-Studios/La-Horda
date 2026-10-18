@@ -569,8 +569,8 @@ function competitiveOpen(mode){
 // registro de modos (mismo formato que la Horda Infinita: js/data/endless.js)
 window.GAME_MODE_REGISTRY = window.GAME_MODE_REGISTRY || {};
 window.GAME_MODE_REGISTRY.crystalWars = {id:"crystalWars", name:"Convergencia — Guerra de Cristales", icon:"◆",
-  desc:"Estilo Wild Rift 2D: 3 carriles, selva, PvP y tu propia horda contra la base rival.", unlock:()=>true, open:openCrystalWars, coop:true};
-window.GAME_MODE_REGISTRY.coliseum = {id:"coliseum", name:"Coliseo", icon:"⚔", desc:"Combate directo 2 contra 2: cobertura, monstruos y 15 eliminaciones para ganar.", unlock:()=>true, open:openColiseum, coop:true};
+  desc:"5 contra 5 con bots (2 contra 2 en línea): 3 carriles, selva, PvP y tu propia horda contra la base rival.", unlock:()=>true, open:openCrystalWars, coop:true};
+window.GAME_MODE_REGISTRY.coliseum = {id:"coliseum", name:"Coliseo", icon:"⚔", desc:"Torneo de duelos 2 contra 2: cobertura, anillo que se cierra y 3 puntos para ganar.", unlock:()=>true, open:openColiseum, coop:true};
 // volver al hub sin pasar por la portada (index.html?return=hub; el Coliseo ya no navega: ver cwGo)
 (function(){
   let q; try{ q = new URLSearchParams(location.search); }catch(e){ return; }
