@@ -9,6 +9,9 @@
     if(/[?&]sw=0(&|$)/.test(q) || (navigator.webdriver && !force)) return;
     if(location.protocol !== "https:" && !force) return;
     // después de "load" para no competir con la carga inicial
-    window.addEventListener("load", ()=>{ setTimeout(()=>{ navigator.serviceWorker.register("sw.js").catch(()=>{}); }, 1500); });
+    window.addEventListener("load", ()=>{ setTimeout(()=>{
+      // register() solo busca una versión nueva de sw.js cada 24 h por su cuenta: update() la pide en cada carga (un GET chico)
+      navigator.serviceWorker.register("sw.js").then(r=>{ if(r && r.update) return r.update(); }).catch(()=>{});
+    }, 1500); });
   }catch(e){}
 })();

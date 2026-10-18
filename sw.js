@@ -50,8 +50,9 @@ async function store(path, hash, resp){
 }
 
 self.addEventListener("install", ev=>{
+  self.skipWaiting(); // una versión nueva toma el control ya (los archivos de la anterior se reemplazan por hash, no se mezclan)
   ev.waitUntil((async()=>{
-    if(BUILD === null) return self.skipWaiting();
+    if(BUILD === null) return;
     const {j} = await fetchManifest();
     const meta = await caches.open(META);
     const files = j.files, cache = await caches.open(CACHE);
@@ -65,7 +66,6 @@ self.addEventListener("install", ev=>{
     }
     await meta.put(MANIFEST_URL, new Response(JSON.stringify(j), {headers:{"content-type":"application/json"}}));
     manifestP = null;
-    await self.skipWaiting();
   })());
 });
 
