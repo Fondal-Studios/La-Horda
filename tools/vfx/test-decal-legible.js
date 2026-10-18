@@ -8,7 +8,7 @@
    (rayos, gotas, plumas y chispas que cruzan volando: promedio de los tres instantes; el piso de regresión es FULL_MIN = 40 %, y los que quedan entre 40 y 80 % se listan como aviso (VERBOSE=1)).
    También mide los decales del motor de la mitad A (js/champions/skill-fx-a/: nova, zona y cono de cada tema, nivel 'efecto completo'); SFA_STRICT=1 les exige el 80 % por instante
    (hoy no lo cumplen en el impacto: la nova va sobre las entidades y con 20-25 % de relleno más sellos el sprite queda visible entre ~45 y ~90 %).
-   Exige visible >= 80 % del sprite de cada enemigo (MIN_VISIBLE), relleno del decal <= 40 % del disco interior en el impacto
+   Exige visible >= 80 % del sprite de cada enemigo (MIN_VISIBLE), relleno del decal <= 35 % del disco interior en el impacto
    (con las marcas) y que el tinte cambie de una arena a otra (el mismo efecto no puede ser del mismo color en todas partes).
    Además comprueba que los anillos de pixel-stroke.js solo producen alfa 0/255.
    LEGACY=1 solo mide la legibilidad (para comparar contra un árbol anterior que no tiene tinte ni pixel-stroke).
@@ -17,7 +17,7 @@
 const path = require('node:path'), net = require('node:net'), {spawn} = require('node:child_process');
 let chromium; try { ({chromium} = require('playwright')); } catch (e) { ({chromium} = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
 const ROOT = path.resolve(__dirname, '../..');
-const MIN_VISIBLE = +(process.env.MIN_VISIBLE || 0.8), FULL_MIN = +(process.env.FULL_MIN || 0.4), MAX_FILL = +(process.env.MAX_FILL || 0.4);
+const MIN_VISIBLE = +(process.env.MIN_VISIBLE || 0.8), FULL_MIN = +(process.env.FULL_MIN || 0.4), MAX_FILL = +(process.env.MAX_FILL || 0.35);
 const ARENAS = (process.env.ARENAS || 'bosque,hielo,infernal,laberinto,acuatica,minas').split(',');
 const freePort = () => new Promise(r => { const s = net.createServer(); s.listen(0, '127.0.0.1', () => { const p = s.address().port; s.close(() => r(p)); }); });
 (async () => {
@@ -111,16 +111,23 @@ const freePort = () => new Promise(r => { const s = net.createServer(); s.listen
           for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) { const dd = Math.hypot(x + .5 - S / 2, y + .5 - S / 2); if (dd > S / 2 * .82) continue; tot++; const i = (y * S + x) * 4; if (d[i + 3]) { n++; r += d[i]; gg += d[i + 1]; b += d[i + 2]; } }
           if (!key) out.fill.push({name, arena, fill: n / tot}); out.tint.push({name, arena, c: [r / n, gg / n, b / n].map(Math.round)}); }
       }
-      // trazos de píxel: dibuja anillos, líneas y discos y comprueba que ningún píxel del canvas auxiliar quede con alfa intermedio
-      const t = document.createElement('canvas'); t.width = 400; t.height = 300; const g = ctx; let bad = 0, tot = 0;
-      pxsRing(player.x, player.y, 90, 50, [['rgba(0,0,0,.7)', 11], ['rgba(255,120,40,.9)', 7], ['rgba(255,255,255,.4)', 2.4]]); pxsLine(player.x - 50, player.y, player.x + 60, player.y + 30, [['#fff', 3]]); pxsDisc(player.x, player.y, 40, 30, 'rgba(200,40,80,.25)');
-      const d = PXS.cv.getContext('2d').getImageData(0, 0, PXS.W, PXS.H).data; for (let i = 3; i < d.length; i += 4) { tot++; if (d[i] !== 0 && d[i] !== 255) bad++; }
-      out.stroke = {pixels: tot, intermedios: bad, dibujados: PXS.drawn}; return out;
+      // trazos de píxel: se dibujan anillos, líneas, arcos y discos (translúcidos y opacos) sobre un canvas transparente propio, con la cámara real (escala no entera),
+      // y ningún píxel del resultado puede tener alfa intermedio. ctx es `let`: se pisa un instante, como hace la previsualización de guardianes.
+      const off = document.createElement('canvas'); off.width = canvas.width; off.height = canvas.height; const og = off.getContext('2d'), keep = ctx; let bad = 0, tot = 0;
+      ctx = og; og.setTransform(1, 0, 0, 1, 0, 0); og.translate(off.width / 2 - player.x * CAM_ZOOM, off.height / 2 - player.y * CAM_ZOOM); og.scale(CAM_ZOOM, CAM_ZOOM);
+      try {
+        pxsRing(player.x, player.y, 90, 50, [['rgba(0,0,0,.7)', 11], ['rgba(255,120,40,.9)', 7], ['rgba(255,255,255,.4)', 2.4]]); pxsLine(player.x - 50, player.y, player.x + 60, player.y + 30, [['#fff', 3]]);
+        pxsRing(player.x, player.y - 20, 40, 40, [['rgba(10,10,40,.5)', 6.6], ['#9cf', 2.2]], {a0: -1.5, a1: 3, dash: [3, 2, 1], k: .6}); pxsDisc(player.x, player.y, 40, 30, 'rgba(200,40,80,.25)');
+      } finally { ctx = keep; }
+      const d = og.getImageData(0, 0, off.width, off.height).data; let painted = 0;
+      for (let i = 3; i < d.length; i += 4) { tot++; if (d[i] !== 0) painted++; if (d[i] !== 0 && d[i] !== 255) bad++; }
+      if (painted < 200) bad += 1e6; // si no pintó nada, la prueba no mide nada
+      out.stroke = {pixels: tot, intermedios: bad, dibujados: PXS.drawn, pintados: painted}; return out;
     });
     for (const f of r2.fill) { const ok = f.fill <= MAX_FILL; console.log(`relleno ${f.name} (${f.arena}) en el impacto: ${(f.fill * 100).toFixed(0)}% ${ok ? 'OK' : 'EXCEDE ' + MAX_FILL * 100 + '%'}`); if (!ok) bad++; }
     const by = {}; for (const t of r2.tint) (by[t.name] = by[t.name] || []).push(t);
     for (const k in by) { const [a, b] = by[k], d = Math.abs(a.c[0] - b.c[0]) + Math.abs(a.c[1] - b.c[1]) + Math.abs(a.c[2] - b.c[2]), ok = d >= 12; console.log(`tinte ${k}: ${a.arena} rgb(${a.c}) vs ${b.arena} rgb(${b.c}) ${ok ? 'OK' : 'IGUAL'}`); if (!ok) bad++; }
-    console.log(`trazos de píxel: ${r2.stroke.intermedios} píxeles con alfa intermedio de ${r2.stroke.pixels} (dibujados ${r2.stroke.dibujados})`); if (r2.stroke.intermedios) bad++;
+    console.log(`trazos de píxel: ${r2.stroke.intermedios} píxeles con alfa intermedio de ${r2.stroke.pixels} (pintados ${r2.stroke.pintados})`); if (r2.stroke.intermedios) bad++;
     }
     console.log(`errores de página: ${errors.length}`, errors.slice(0, 3)); if (errors.length) bad++;
   } finally { await browser.close(); }

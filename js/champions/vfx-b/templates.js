@@ -13,7 +13,7 @@ function kvbRingPaint(pal0, o){
     const rad = ant ? R * (.5 + .5 * kvbEase(P.ant)) : R, fl = Math.min(KVB_FILL_CAP, o.fill === undefined ? .45 : o.fill);
     const fill = big * (ant ? .1 * P.ant : q < .42 ? fl : fl * (1 - P.post));
     if(o.fill !== 0) kvbLayer(g, S, fill, lg => { kvbDisc(lg, c, c, rad - 1, kvbTintCol(o.fillCol) || pal[1]); if(o.core) kvbDisc(lg, c, c, rad * .5, kvbTintCol(o.core, .6)); });
-    const detLv = (ant ? P.ant * .55 : Math.max(0, 1 - P.post * 1.15)) * (S >= 72 ? .7 : 1); // marcas internas: más ralas en zonas grandes, para no cubrir al enemigo
+    const detLv = (ant ? P.ant * .55 : Math.max(0, 1 - P.post * 1.15)) * (S >= 72 ? .5 : .85); // marcas internas: más ralas, sobre todo en zonas grandes, para no cubrir al enemigo
     if(o.details && detLv > .05) kvbLayer(g, S, detLv, lg => o.details(lg, c, R, rad, pal, q, P));
     const th = ant ? 1 : q < .42 ? (o.rimThick || 3) : Math.max(1, Math.round((o.rimThick || 3) - 1 - P.post * 1.2));
     const rimLv = P.post < .55 ? 1 : Math.max(0, 1 - (P.post - .55) / .45);
