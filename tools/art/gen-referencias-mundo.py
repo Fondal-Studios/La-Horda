@@ -172,6 +172,8 @@ def h01_enemigos():
         ("assets/sprites/arenas/abismo/ab_errante/atlas.png", "REF criatura", "1,28 u/px"),
         ("assets/sprites/enemies/bosque/enjambre_hadas/v3/atlas.png", "REF enjambre chico", "1,04 u/px"),
         ("assets/sprites/enemies/laberinto/escorpion_gigante/walk-strip.png", "REF artrópodo (tira)", "1,18 u/px"),
+        ("assets/sprites/arenas/micelial/sabueso/atlas.png", "REF cuadrúpedo (sabueso)", "0,56 u/px"),
+        ("assets/sprites/enemies/acuatica/anguila_electrica/idle_01.png", "REF acuático (anguila)", "1,87 u/px"),
         ("assets/sprites/arenas/ciudad/cm_perro/atlas.png", "REHACER cm_perro", "PIXEL_GRUESO 2,59 u/px"),
         ("assets/sprites/arenas/ciudad/cm_acechante/atlas.png", "REHACER cm_acechante", "PIXEL_GRUESO 2,67 u/px"),
         ("assets/sprites/arenas/ciudad/cm_campanero/atlas.png", "REHACER cm_campanero", "PIXEL_GRUESO 2,95 u/px"),
@@ -273,7 +275,7 @@ def h05_iconos_ui():
         cuerpo = src[src.index("const PXI_ART"):]
         cuerpo = cuerpo[:cuerpo.index("const PXI_EMOJI")] if "const PXI_EMOJI" in cuerpo else cuerpo
         ambiguos = {"idolo", "figura", "antena", "cuerno", "caballo", "huellas", "silencio", "enlace", "cadena",
-                    "chispa", "estrella", "murcielago", "orbe", "ticket", "agujero", "carrito", "pechera", "vapor"}
+                    "chispa", "estrella", "murcielago", "orbe", "ticket", "agujero", "carrito", "pechera", "vapor", "intercambio"}
         grillas = []
         for m in re.finditer(r"^\s{2}(\w+):\[((?:\s*\"[^\"]{16}\",?)+)\s*\]", cuerpo, re.M):
             filas = re.findall(r'"([^"]{16})"', m.group(2))
