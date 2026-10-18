@@ -138,7 +138,7 @@ function kvbAdd(e){
 function kvbDecal(name, x, y, R, dur, o){
   if(!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(R) || !(dur > 0)) return null; R = Math.max(4, Math.min(520, R));
   o = o || {}; const S = kvbS(R), fr = kvbDecalFrames(name, S); if(!fr) return null;
-  return kvbAdd({frames: fr, x, y, w: 2 * R, h: 2 * R, rot: o.rot || 0, dur, layer: o.layer || 'g', ax: o.ax === undefined ? .5 : o.ax, ay: o.ay === undefined ? .5 : o.ay,
+  return kvbAdd({name, frames: fr, x, y, w: 2 * R, h: 2 * R, rot: o.rot || 0, dur, layer: o.layer || 'g', ax: o.ax === undefined ? .5 : o.ax, ay: o.ay === undefined ? .5 : o.ay,
     follow: o.follow || null, ofx: o.ofx || 0, ofy: o.ofy || 0, loop: !!o.loop, fps: o.fps || 0, alpha: o.alpha, fadeAt: o.fadeAt, add: !!o.add, prio: o.prio, flip: !!o.flip, vx: o.vx || 0, vy: o.vy || 0});
 }
 // Sprite de motivo (una pluma, una abeja…) en un punto, con velocidad / gravedad / giro

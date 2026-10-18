@@ -5,7 +5,7 @@
    Fases de toda animación de golpe (q = 0..1): anticipación 0–.22 (el borde converge y el glifo se forma), impacto .22–.42
    (relleno trameado, borde grueso en el RADIO REAL) y disipación .42–1 (el relleno y el borde se deshacen por tramado).
    ============================================================ */
-// Disco con borde en el radio real. o.details(lg, c, R, rad, pal, q, P): marcas internas (rayos, glifo, sellos).
+// Disco con borde en el radio real. o.details(lg, c, R, rad, pal, q, P): marcas internas (rayos, glifo, sellos). o.noRim: sin borde (capa superior que no debe cruzar al enemigo).
 function kvbRingPaint(pal0, o){
   o = o || {};
   return function(g, q, S){
@@ -17,7 +17,7 @@ function kvbRingPaint(pal0, o){
     if(o.details && detLv > .05) kvbLayer(g, S, detLv, lg => o.details(lg, c, R, rad, pal, q, P));
     const th = ant ? 1 : q < .42 ? (o.rimThick || 3) : Math.max(1, Math.round((o.rimThick || 3) - 1 - P.post * 1.2));
     const rimLv = P.post < .55 ? 1 : Math.max(0, 1 - (P.post - .55) / .45);
-    if(rimLv > .05) kvbLayer(g, S, rimLv, lg => kvbRim(lg, c, c, rad, pal, th, ant ? [5, 3] : (o.dash || null)));
+    if(rimLv > .05 && !o.noRim) kvbLayer(g, S, rimLv, lg => kvbRim(lg, c, c, rad, pal, th, ant ? [5, 3] : (o.dash || null)));
     if(!ant && q < .5 && o.flash) kvbLayer(g, S, .2 * (1 - (q - .22) / .28), lg => kvbDisc(lg, c, c, rad * .72, kvbTintCol(o.flash, .5)));
   };
 }
