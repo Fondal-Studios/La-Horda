@@ -161,7 +161,7 @@ Ciudad Maldita (la misma de la Crónica de la Noche del Regreso). Se muestra de 
 
 | Momento | Qué es | Dónde está |
 |---|---|---|
-| **Introducción** | Libro animado de 8 páginas (universo, guerra, la Horda, la noche del regreso, las Cicatrices, la voz dorada, la misión, cómo sigue). Una vez, al terminar de elegir al primer campeón | `starter-select.js` → `codexBookMaybeIntro` |
+| **Introducción** | Libro animado de 8 páginas (universo, guerra, la Horda, la noche del regreso, las Cicatrices, la voz dorada, la misión, cómo sigue). Una sola vez, OFRECIDA al volver al menú tras la primera arena ("Leer el Libro" / "Después"); ya no se abre antes de jugar. Siempre releíble en Códice › El Libro | `codex-book.js` → `codexBookOffer` → `codexBookMaybeIntro` |
 | **Fragmentos** | Uno por arena de la campaña: página de historia + página "lo que aprendiste". Aparecen como paso propio de la victoria ("Fragmento del Libro") y quedan en el Códice | `story.js` (`storyVictoryBookHtml`), `end-screens.js` (paso 3, se omite solo si no hay fragmento) |
 | **Página de carga** | Una página que se da vuelta sola (≈3 s) antes de entrar a una arena de campaña en solitario; hasta 3 veces por arena; se apaga desde el Códice | `run-intro.js` → `codexBookShort` |
 
