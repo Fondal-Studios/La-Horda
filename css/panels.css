@@ -516,3 +516,15 @@
 #tactical-panel .tp-rule{ font-size:13px; margin:2px 0; overflow-wrap:anywhere; }
 #tactical-panel .tp-actions{ display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
 #tactical-panel .tp-actions .btn{ min-height:44px; }
+
+/* Derrota clara: arriba, en letra legible, qué se perdió y el botón de reintentar; el resumen va debajo. Nada queda
+   bajo el botón fijo (padding inferior). */
+#gameover-screen{ padding-bottom:calc(24px + env(safe-area-inset-bottom,0px)); }
+#go-loss{ max-width:min(640px, 94vw); margin:0 auto 10px; font-size:1.05rem; line-height:1.25; text-align:center; text-shadow:1px 1px 0 #000; }
+#go-loss .go-loss-sub{ display:block; margin-top:4px; font-size:0.95rem; color:#cfc6b0; }
+#go-loss:empty{ display:none; }
+#gameover-screen #retry-btn{ position:static; box-shadow:4px 4px 0 #000; }
+#gameover-screen #go-stats{ margin-top:14px; }
+#gameover-screen .save-line{ margin-top:8px; }
+@media (max-height:500px){ #go-title{ font-size:min(2.2vw, 1.15rem); margin-bottom:6px; } }
+@media (max-height:500px){ #go-loss{ max-width:min(640px, calc(100vw - 300px)); } }

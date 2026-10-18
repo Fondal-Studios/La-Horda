@@ -231,17 +231,17 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     // 1) Ciudad (primera arena, Normal): perdona aunque ya haya muchas derrotas
     save.defeatCount = 7; const lv0 = save.champions.mago.level;
     r.ciudad = run('ciudad', earn); r.ciudadLv = save.champions.mago.level > lv0;
-    // 2) otra arena: las 3 primeras derrotas de la cuenta se perdonan; la 4ta se castiga
-    save.defeatCount = 0; save.arenasCleared.ciudad = true;
+    // 2) otra arena: las 3 primeras derrotas DE ESA ARENA se perdonan; la 4ta se castiga
+    save.defeatCount = 0; save.arenaDefeats = {}; save.defeatLegacy = 0; save.arenasCleared.ciudad = true;
     r.seq = [];
     for (let i = 0; i < 4; i++) { const p = run('fortaleza', earn); r.seq.push([p.forgiven, p.xpLost > 0, p.goldLost > 0, p.forgivenLeft]); }
     // 3) la Ciudad en Pesadilla ya no está en el perdón de "primera arena"
-    __allNormal(); save.diffCleared.pesadilla = {}; diffSetSelected('pesadilla');
+    __allNormal(); save.diffCleared.pesadilla = {}; diffSetSelected('pesadilla'); save.arenaDefeats.ciudad = 3;
     r.ciudadPes = run('ciudad', earn).forgiven;
     diffSetSelected('normal');
     // 4) pantalla de derrota
-    save.defeatCount = 0; __start('fortaleza', 1); showGameOverScreen();
-    r.go = document.getElementById('go-progress').textContent;
+    save.defeatCount = 0; save.arenaDefeats = {}; __start('fortaleza', 1); showGameOverScreen();
+    r.go = document.getElementById('go-loss').textContent;
     return r;
   });
   check('DERROTA.primera_arena_sin_castigo', dv.ciudad.forgiven === 'arena' && dv.ciudad.xpLost === 0 && dv.ciudad.goldLost === 0 && dv.ciudadLv, dv.ciudad);
