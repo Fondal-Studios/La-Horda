@@ -12,7 +12,7 @@ body.ctl-custom.lefty #joyzone{ transform-origin:right bottom; }
 body.ctl-custom.lefty #skillzone{ transform-origin:left bottom; }
 
 /* vista previa en Opciones: joystick y botones al tamaño y opacidad elegidos */
-.ctl-preview{ position:relative; height:112px; margin:4px 0 8px; border:2px solid #000; border-radius:6px; overflow:hidden;
+.ctl-preview{ position:relative; height:152px; margin:4px 0 8px; border:2px solid #000; border-radius:6px; overflow:hidden;
   background:repeating-linear-gradient(45deg,#1b130d 0 10px,#241912 10px 20px); }
 .ctl-preview .cp-cap{ position:absolute; left:6px; top:3px; font-size:.8rem; color:var(--ui-dim,#b89a86); }
 .ctl-preview .cp-joy, .ctl-preview .cp-btns{ position:absolute; bottom:6px; transform:scale(var(--ctl-sc,1)); opacity:var(--ctl-op,1); }
