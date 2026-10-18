@@ -29,24 +29,43 @@ async function boot(browser, opts) {
   const { ctx, page, errors } = await boot(browser);
   const E = (fn, a) => page.evaluate(fn, a);
   const shot = async n => { if (OUT) await page.screenshot({ path: `${OUT}/${n}.png` }); };
-  const bookState = () => E(() => ({ open: BOOK.open, kind: BOOK.kind, i: BOOK.i, n: BOOK.pages.length, hidden: document.getElementById('codex-book').classList.contains('hidden'), flipping: BOOK.flipping }));
+  const bookState = () => E(() => ({ open: BOOK.open, kind: BOOK.kind, i: BOOK.i, n: BOOK.pages.length, hidden: !document.getElementById('codex-book') || document.getElementById('codex-book').classList.contains('hidden'), flipping: BOOK.flipping }));
   const waitBook = async (open, ms) => { for (let k = 0; k < (ms || 10000) / 50; k++) { if ((await E(() => BOOK.open)) === open) return true; await sleep(50); } return false; };
+  const waitFor = async (fn, ms) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { if (await fn().catch(() => false)) return true; await sleep(100); } return false; };
   const idle = async () => { for (let k = 0; k < 200; k++) { if (!(await E(() => BOOK.flipping))) return; await sleep(50); } };
   const turn = async () => { await page.click('#codex-book .bk-next'); await sleep(60); await idle(); await sleep(150); };
   await E(() => { loop = function () {}; window.__draws = 0; const o = bookArtDraw; bookArtDraw = function () { window.__draws++; return o.apply(this, arguments); }; });
 
-  /* ================= 1. INTRO TRAS ELEGIR AL PRIMER CAMPEÓN (clics reales) ================= */
-  const pre = await E(() => ({ need: needsStarterChampion(), seen: save.codexBook.introSeen, book: save.codexBook }));
-  check('INTRO.perfil_nuevo_arranca_sin_campeon_y_sin_intro_vista', pre.need === true && pre.seen === false, pre);
+  /* ================= 1. EL LIBRO SE OFRECE TRAS LA PRIMERA ARENA (ya no se abre antes de jugar) ================= */
+  const pre = await E(() => ({ need: needsStarterChampion(), seen: save.codexBook.introSeen, ran: save.codexBook.ran, offered: save.codexBook.offered }));
+  check('INTRO.perfil_nuevo_arranca_sin_campeon_sin_intro_vista_y_sin_oferta', pre.need === true && pre.seen === false && pre.ran === false && pre.offered === false, pre);
   await E(() => { window.__done = 0; openStarterSelect(() => { window.__done++; setState('mainmenu'); }); });
-  await sleep(400);
+  await sleep(600); // las cartas ignoran toques fantasma justo al abrir
   await shot('00_elegir_campeon');
-  await page.click('#starter-yes-btn'); await sleep(500);
+  await page.click('.starter-card[data-champ="mago"]'); await page.click('#starter-yes-btn'); await sleep(500);
   const skinStep = await E(() => !document.getElementById('starter-step-skin').classList.contains('hidden'));
   if (skinStep) { await page.click('#starter-skin-later-btn'); }
   await sleep(500);
   let b = await bookState();
-  check('INTRO.se_abre_sola_al_terminar_la_eleccion_(no_sigue_el_flujo_hasta_cerrarla)', b.open && b.kind === 'intro' && !b.hidden && b.n === 8 && (await E(() => window.__done)) === 0, b);
+  check('INTRO.ya_NO_se_abre_al_elegir_guardian_y_el_flujo_sigue_directo', !b.open && (await E(() => window.__done)) === 1 && (await E(() => save.codexBook.introSeen)) === false, b);
+  // se juega la primera arena (victoria o derrota) y se vuelve al menú: ahí se OFRECE (cartel con "Leer el Libro" / "Después")
+  await E(() => { window.__done = 0; setState('gameover'); });
+  check('OFERTA.terminar_una_partida_queda_registrado', await E(() => save.codexBook.ran === true && JSON.parse(localStorage.getItem(SAVE_KEY)).codexBook.ran === true));
+  await E(() => { setState('mainmenu'); renderMainMenu(); });
+  const offerUp = await waitFor(() => E(() => gameDialogIsOpen()), 6000);
+  const offerTxt = await E(() => (document.querySelector('#game-dialog') || {}).textContent || '');
+  check('OFERTA.al_volver_al_menu_aparece_el_cartel_sin_abrir_el_libro', offerUp && /El Libro de la Horda/.test(offerTxt) && /Leer el Libro/.test(offerTxt) && /Después/.test(offerTxt) && !(await E(() => BOOK.open)), offerTxt);
+  await shot('00b_oferta_del_libro');
+  await page.click('#game-dialog .gd-cancel'); await sleep(300);
+  check('OFERTA.Despues_no_abre_nada_y_no_se_repite', !(await E(() => BOOK.open)) && (await E(() => save.codexBook.offered)) === true && (await E(() => save.codexBook.introSeen)) === false);
+  await E(() => { setState('mainmenu'); renderMainMenu(); }); await sleep(1500);
+  check('OFERTA.no_vuelve_a_aparecer_sola', !(await E(() => gameDialogIsOpen())));
+  // "Leer el Libro" → abre la intro de 8 páginas (misma ruta: codexBookOffer → codexBookMaybeIntro)
+  await E(() => { save.codexBook.offered = false; setState('mainmenu'); renderMainMenu(); });
+  await waitFor(() => E(() => gameDialogIsOpen()), 6000);
+  await page.click('#game-dialog .gd-ok'); await sleep(500);
+  b = await bookState();
+  check('INTRO.se_abre_al_aceptar_la_oferta_(8_paginas)', b.open && b.kind === 'intro' && !b.hidden && b.n === 8, b);
   check('INTRO.queda_registrada_como_vista_ya_al_abrir_(omitir_o_cerrar_el_juego_no_la_repite)', await E(() => save.codexBook.introSeen === true && JSON.parse(localStorage.getItem(SAVE_KEY)).codexBook.introSeen === true));
   const lay = await E(() => { const r = document.querySelector('#codex-book .bk-book').getBoundingClientRect(); return { l: r.left, t: r.top, r: r.right, b: r.bottom, w: innerWidth, h: innerHeight }; });
   check('INTRO.el_libro_entra_en_844x390', lay.l >= 0 && lay.t >= 0 && lay.r <= lay.w && lay.b <= lay.h - 40, lay);
@@ -68,16 +87,16 @@ async function boot(browser, opts) {
   await shot('04_intro_ultima');
   await turn(); // "✔" cierra
   b = await bookState();
-  check('INTRO.al_cerrar_sigue_el_flujo_normal_(menu)', !b.open && b.hidden && (await E(() => window.__done)) === 1 && (await E(() => state)) === 'mainmenu', b);
+  check('INTRO.al_cerrar_se_vuelve_al_menu', !b.open && b.hidden && (await E(() => state)) === 'mainmenu', b);
 
   // omitir con el botón "Saltar" desde la primera página
-  await E(() => { save.codexBook.introSeen = false; window.__done = 0; _starterDone = () => { window.__done++; }; _starterJoins = false; _starterFinish(); });
+  await E(() => { save.codexBook.introSeen = false; window.__done = 0; codexBookMaybeIntro(() => { window.__done++; }, {}); });
   check('OMITIR.abre_otra_vez_si_no_estaba_vista', await waitBook(true) && (await bookState()).kind === 'intro');
   const t0 = Date.now(); await page.click('#codex-book .bk-skip'); await waitBook(false);
   check('OMITIR.Saltar_cierra_en_el_acto_y_sigue_el_flujo', (await E(() => window.__done)) === 1 && Date.now() - t0 < 6000);
   // ya vista: no vuelve
-  await E(() => { window.__done = 0; _starterDone = () => { window.__done++; }; _starterFinish(); });
-  check('OMITIR.una_vez_vista_no_vuelve_a_aparecer_y_no_demora', !(await E(() => BOOK.open)) && (await E(() => window.__done)) === 1);
+  await E(() => { window.__done = 0; codexBookMaybeIntro(() => { window.__done++; }, {}); });
+  check('OMITIR.una_vez_vista_no_vuelve_a_aparecer_y_no_demora', !(await E(() => BOOK.open)) && (await E(() => window.__done)) === 0 && (await E(() => codexBookOfferDue())) === false);
   // Esc y teclado
   await E(() => { window.__done = 0; codexBookMaybeIntro(() => { window.__done++; }, {}); }); // introSeen ya true => no abre
   check('OMITIR.codexBookMaybeIntro_devuelve_false_si_ya_se_vio', !(await E(() => BOOK.open)) && (await E(() => window.__done)) === 0);
@@ -96,14 +115,14 @@ async function boot(browser, opts) {
   check('OMITIR.un_toque_tranquilo_pasa_de_pagina', (await bookState()).i === 1);
   await page.click('#codex-book .bk-skip'); await waitBook(false);
   // el camino siguiente es unirse a una sala: no se demora a nadie
-  await E(() => { save.codexBook.introSeen = false; window.__done = 0; _starterDone = () => { window.__done++; }; _starterJoins = true; _starterFinish(); });
-  check('SALA.al_unirse_a_una_sala_no_aparece_ni_demora', !(await E(() => BOOK.open)) && (await E(() => window.__done)) === 1 && (await E(() => save.codexBook.introSeen)) === false);
-  await E(() => { save.codexBook.introSeen = true; _starterJoins = false; });
+  await E(() => { save.codexBook.introSeen = false; window.__done = 0; window.__r = codexBookMaybeIntro(() => { window.__done++; }, { joinsRoom: true }); });
+  check('SALA.al_unirse_a_una_sala_no_aparece_ni_demora', !(await E(() => BOOK.open)) && (await E(() => window.__r)) === false && (await E(() => window.__done)) === 0 && (await E(() => save.codexBook.introSeen)) === false);
+  await E(() => { save.codexBook.introSeen = true; });
 
   /* ================= 2. MIGRACIÓN DE UN GUARDADO VIEJO (recargando la página) ================= */
   const legacy = await E(() => { const raw = JSON.parse(localStorage.getItem(SAVE_KEY)); delete raw.codexBook; raw.gems = 99; raw.relics = { hp: 7, dmg: 0, def: 0, vel: 0 }; raw.defeatCount = 5; raw.arenasCleared = Object.assign(raw.arenasCleared || {}, { ciudad: true, fortaleza: true });
     raw.champions.mago.unlocked = true; raw.champions.mago.level = 17; raw.stash = raw.stash || []; localStorage.setItem(SAVE_KEY, JSON.stringify(raw)); return { gems: raw.gems, lvl: raw.champions.mago.level, keys: Object.keys(raw).length }; });
-  await page.reload({ waitUntil: 'load' }); for (let k = 0; k < 300; k++) { if (await E(() => !document.getElementById('title-continue-btn').disabled)) break; await sleep(100); } await sleep(500);
+  await page.reload({ waitUntil: 'load', timeout: 180000 }); for (let k = 0; k < 300; k++) { if (await E(() => !document.getElementById('title-continue-btn').disabled)) break; await sleep(100); } await sleep(500);
   const mig = await E(() => ({ cb: save.codexBook, gems: save.gems, relics: save.relics.hp, defeats: save.defeatCount, lvl: save.champions.mago.level, cleared: save.arenasCleared, disk: JSON.parse(localStorage.getItem(SAVE_KEY)).codexBook, keys: Object.keys(JSON.parse(localStorage.getItem(SAVE_KEY))).length }));
   // (el oro no se compara: los logros retroactivos de quests.js pagan oro al cargar, con o sin Libro)
   check('MIGRACION.guardado_viejo_sin_campo_se_completa_sin_perder_nada', mig.gems === 99 && mig.relics === 7 && mig.defeats === 5 && mig.lvl === 17 && mig.cleared.ciudad && mig.cleared.fortaleza && mig.keys >= legacy.keys, mig);
@@ -112,7 +131,7 @@ async function boot(browser, opts) {
   check('MIGRACION.sin_nuevos_avisos_de_fragmento', (await E(() => codexBookUnread().length)) === 0);
   // un guardado a medio camino (sin campeón) sí ve la intro
   await E(() => { const raw = JSON.parse(localStorage.getItem(SAVE_KEY)); delete raw.codexBook; for (const k of Object.keys(raw.champions)) raw.champions[k].unlocked = false; raw.arenasCleared = {}; raw.starterChosen = false; localStorage.setItem(SAVE_KEY, JSON.stringify(raw)); });
-  await page.reload({ waitUntil: 'load' }); for (let k = 0; k < 300; k++) { if (await E(() => !document.getElementById('title-continue-btn').disabled)) break; await sleep(100); } await sleep(500);
+  await page.reload({ waitUntil: 'load', timeout: 180000 }); for (let k = 0; k < 300; k++) { if (await E(() => !document.getElementById('title-continue-btn').disabled)) break; await sleep(100); } await sleep(500);
   check('MIGRACION.guardado_sin_campeon_ve_la_intro_al_elegir_el_primero', (await E(() => save.codexBook.introSeen)) === false && (await E(() => needsStarterChampion())) === true);
   await E(() => { loop = function () {}; window.__draws = 0; const o = bookArtDraw; bookArtDraw = function () { window.__draws++; return o.apply(this, arguments); };
     for (const k of Object.keys(save.champions)) save.champions[k].unlocked = true; save.codexBook.introSeen = true; save.tut = save.tut || {};

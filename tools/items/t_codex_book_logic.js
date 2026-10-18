@@ -100,6 +100,25 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   check('INTRO.sin_guardado_cargado_no_rompe', none && none.introSeen === false);
 }
 
+/* ---------------- OFERTA TRAS LA PRIMERA ARENA (primer minuto) ---------------- */
+{
+  const c = ctx();
+  check('OFERTA.perfil_nuevo_no_toca_antes_de_jugar', run(c, 'codexBookOfferDue()') === false && run(c, 'save.codexBook.ran') === false && run(c, 'save.codexBook.offered') === false);
+  run(c, 'codexBookMarkRan()');
+  check('OFERTA.terminar_una_partida_la_habilita_en_el_menu', run(c, 'codexBookOfferDue()') === true && run(c, 'save.codexBook.ran') === true);
+  run(c, 'state = "playing"'); check('OFERTA.no_toca_jugando', run(c, 'codexBookOfferDue()') === false);
+  run(c, 'state = "mainmenu"; netInRoom = function(){ return true; }'); check('OFERTA.no_toca_en_una_sala_cooperativa', run(c, 'codexBookOfferDue()') === false);
+  run(c, 'netInRoom = function(){ return false; }; save.codexBook.offered = true'); check('OFERTA.una_sola_vez_(offered)', run(c, 'codexBookOfferDue()') === false);
+  run(c, 'save.codexBook.offered = false; save.codexBook.introSeen = true'); check('OFERTA.si_ya_leyo_la_intro_no_toca', run(c, 'codexBookOfferDue()') === false);
+  const before = c.persisted; run(c, 'codexBookMarkRan()'); check('OFERTA.marcar_dos_veces_no_reescribe', c.persisted === before);
+  const m = J(c, 'codexBookMigrate({codexBook:{v:1,introSeen:false,ran:1,offered:0,frag:{},shortCount:{}}})');
+  check('OFERTA.migracion_normaliza_ran_y_offered', m.ran === true && m.offered === false);
+  const old = J(c, 'codexBookMigrate({codexBook:{v:1,introSeen:false,frag:{},shortCount:{}}})');
+  check('OFERTA.guardados_anteriores_sin_los_campos_quedan_en_false', old.ran === false && old.offered === false);
+  const w = ctx('var window = {}; var navigator = {webdriver:true}; var location = {search:""};'); run(w, 'codexBookMarkRan()');
+  check('OFERTA.pruebas_viejas_con_webdriver_no_reciben_la_oferta', run(w, 'codexBookOfferDue()') === false);
+}
+
 /* ---------------- PRUEBAS AUTOMÁTICAS VIEJAS (webdriver): camino de antes, sin libro por iniciativa propia ---------------- */
 {
   const c = ctx('var window = {}; var navigator = {webdriver:true}; var location = {search:""};');
@@ -175,7 +194,9 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   check('ENGANCHE.scripts_y_css_cargados_en_index.html', order.every(i => i > 0) && html.includes('css/codex-book.css'), order);
   check('ENGANCHE.los_datos_cargan_antes_que_la_logica_y_antes_de_main.js', order[0] < order[3] && html.indexOf('js/main.js') > Math.max(...order), order);
   check('ENGANCHE.save.js_trae_el_campo_y_migra', /codexBook:\{v:1/.test(save) && /codexBookMigrate\(parsed\)/.test(save));
-  check('ENGANCHE.starter_dispara_la_intro_y_las_salas_la_esquivan', /codexBookMaybeIntro\(go/.test(rd('js/ui/starter-select.js')) && (rd('js/net/net-lobby.js').match(/joinsRoom:true/g) || []).length === 2 && /joinsRoom:true/.test(rd('js/net/net-rooms.js')));
+  // PRIMER MINUTO: la intro de 8 páginas ya NO se abre al elegir guardián (era leer antes de jugar): se OFRECE al volver de la primera arena.
+  check('ENGANCHE.el_starter_ya_no_abre_la_intro_(se_ofrece_tras_la_primera_arena)', !/codexBookMaybeIntro\(/.test(rd('js/ui/starter-select.js')) && /function codexBookOffer/.test(rd('js/ui/codex/codex-book.js')) && /codexBookMarkRan\(\)/.test(rd('js/ui/codex/codex-book.js')));
+  check('ENGANCHE.las_salas_siguen_sin_demorar_a_nadie', (rd('js/net/net-lobby.js').match(/joinsRoom:true/g) || []).length === 2 && /joinsRoom:true/.test(rd('js/net/net-rooms.js')));
   check('ENGANCHE.run_intro_usa_la_carga_corta', /codexBookShort\(arena/.test(rd('js/ui/run-intro.js')));
   check('ENGANCHE.la_victoria_tiene_su_paso_Fragmento_del_Libro_y_se_omite_solo', /storyVictoryBookHtml/.test(rd('js/systems/story.js')) && /Fragmento del Libro/.test(rd('js/ui/end-screens.js')) && /VICTORY_STEPS\[3\]\.skip/.test(rd('js/ui/end-screens.js')));
   check('ENGANCHE.el_menu_muestra_la_insignia_NUEVO_del_Codice', /codexBookBadgeSync/.test(rd('js/ui/menus.js')) && /function codexBookBadgeSync/.test(rd('js/ui/codex/codex-book.js')));
