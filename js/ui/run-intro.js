@@ -85,7 +85,8 @@ function runIntroNeedsAct(arena){
   return act;
 }
 
-// ¿Esta entrada va a mostrar pantallas de historia (prólogo, misión, cartel de acto)? Solo lee: no marca nada como visto.
+// ¿Esta entrada va a mostrar pantallas de historia (prólogo, misión, cartel de acto)? No marca nada como visto, salvo lo que el
+// Libro ya contó (intro leída: prólogo y Acto I quedan como vistos, ver runIntroNeedsPrologue / runIntroNeedsAct).
 function runIntroHasStoryPages(arena){
   if(typeof save==="undefined") return false;
   if(runIntroNeedsPrologue(arena)) return true;

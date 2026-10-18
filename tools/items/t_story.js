@@ -55,7 +55,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('DATOS.cada_jefe_de_campaña_tiene_voz', d.badBoss.length === 0 && d.bossesNoVoice.length === 0 && !d.hordeSpeaks, d);
 
   // ---------------- PRÓLOGO + ACTO I + FICHA ----------------
-  const pro = await E(() => { save.storyPrologueSeen = false; save.storyActsSeen = {}; selectedClass = 'tanque'; state = 'menu';
+  const pro = await E(() => { save.storyPrologueSeen = false; save.storyActsSeen = {}; save.tut = save.tut || {}; save.tut.goalMission = 1; /* la misión (goal-guide.js) va antes y tiene su propia prueba; acá se mide prólogo + Acto I */ selectedClass = 'tanque'; state = 'menu';
     const el = document.getElementById('run-intro'), seen = []; let went = 0;
     runIntroShow('ciudad', () => { went++; });
     for (let i = 0; i < 6 && RUN_INTRO.open; i++){

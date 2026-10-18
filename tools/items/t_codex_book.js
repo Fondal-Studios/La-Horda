@@ -334,7 +334,7 @@ async function boot(browser, opts) {
   await E(() => { save.codexBook.introSeen = true; setState('mainmenu'); });
 
   /* ================= 7. TEXTO SIN RECORTES EN TODAS LAS PÁGINAS (844×390) ================= */
-  const fit = await E(async () => { const bad = [], all = [['intro', codexBookIntroPages()]];
+  const fit = await E(async () => { const bad = [], all = [['intro', codexBookIntroPages()]]; { const was = save.storyPrologueSeen; save.storyPrologueSeen = true; all.push(['intro-recap', codexBookIntroPages()]); save.storyPrologueSeen = was; }
     for (const a of Object.keys(BOOK_FRAGMENTS)) all.push(['frag:' + a, codexBookFragmentPages(a)]);
     for (const a of Object.keys(BOOK_SHORT_LINES)) all.push(['short:' + a, codexBookShortPages(a)]);
     let n = 0;
@@ -345,7 +345,7 @@ async function boot(browser, opts) {
         if (t.scrollHeight > t.clientHeight + 1 || r.bottom > innerHeight || r.right > innerWidth) bad.push(id + '#' + i + ' ' + t.scrollHeight + '>' + t.clientHeight); }
       bookClose('x'); }
     return { n, bad }; });
-  check('TEXTO.todas_las_paginas_(' + fit.n + ')_entran_sin_recortes_en_844x390', fit.n >= 8 + 21 && fit.bad.length === 0, fit);
+  check('TEXTO.todas_las_paginas_(' + fit.n + ')_entran_sin_recortes_en_844x390', fit.n >= 8 + 8 + 21 && fit.bad.length === 0, fit);
   const draws0 = await E(() => window.__draws); await sleep(400);
   check('RENDIMIENTO.cerrado_el_libro_no_se_sigue_dibujando', (await E(() => window.__draws)) === draws0);
   // el visor dibuja una vez por cuadro de pantalla (se compara con los cuadros reales, así no depende de lo cargada que esté la máquina)

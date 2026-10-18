@@ -205,12 +205,26 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   check('RED.el_libro_es_local_(nada_viaja_por_la_red)', !/NET_EVENT_FNS|netBroadcast|netSend|fetch\(|WebSocket/.test(nonet));
 }
 
+/* ---------------- INTRO: versión recap para quien ya vio el prólogo ---------------- */
+{
+  const c = ctx();
+  const raw = J(c, 'BOOK_INTRO_PAGES'), fresh = J(c, 'codexBookIntroPages()');
+  run(c, 'save.storyPrologueSeen = true;');
+  const seen = J(c, 'codexBookIntroPages()');
+  const withRecap = raw.map((p, i) => p.recap ? i : -1).filter(i => i >= 0);
+  check('RECAP.perfil_sin_prologue_visto_lee_el_texto_completo_de_siempre', fresh.length === 8 && fresh.every((p, i) => p.text === raw[i].text) && fresh.every(p => !('recap' in p)), fresh.map(p => p.text.slice(0, 20)));
+  check('RECAP.con_el_prologue_visto_las_paginas_que_lo_repetirian_cuentan_otra_cosa_(mismas_8_paginas)', seen.length === 8 && withRecap.length >= 3 && withRecap.every(i => seen[i].text === raw[i].recap && seen[i].text !== raw[i].text && seen[i].title === raw[i].title && seen[i].art === raw[i].art), { withRecap });
+  check('RECAP.cada_recap_entra_en_la_pagina_(<=360)', raw.every(p => !p.recap || p.recap.length <= 360), raw.map(p => p.recap && p.recap.length));
+  check('RECAP.la_fuente_no_se_modifica_al_leer', J(c, 'BOOK_INTRO_PAGES').every((p, i) => p.text === raw[i].text));
+}
+
 /* ---------------- NARRADOR: el Hechicero (PR "libro-hechicero") ---------------- */
 {
   const c = ctx();
   const intro = J(c, 'BOOK_INTRO_PAGES'), short = J(c, 'BOOK_SHORT_LINES'), frags = J(c, 'BOOK_FRAGMENTS');
   const allTexts = [];
   intro.forEach((p, i) => allTexts.push({ w: 'intro' + (i + 1), t: p.text }));
+  intro.forEach((p, i) => { if (p.recap) allTexts.push({ w: 'recap' + (i + 1), t: p.recap }); });
   Object.keys(short).forEach(a => allTexts.push({ w: 'short:' + a, t: short[a] }));
   Object.keys(frags).forEach(a => { allTexts.push({ w: 'lore:' + a, t: frags[a].lore }); allTexts.push({ w: 'lesson:' + a, t: frags[a].lesson }); (frags[a].extra || []).forEach((e, i) => allTexts.push({ w: 'extra:' + a + i, t: e.text })); });
   check('NARRADOR.ningun_texto_del_libro_nombra_a_Ismena_(la_Cronica_de_la_Noche_sigue_siendo_de_ella,_en_story-text.js)', allTexts.every(x => !/Ismena/i.test(x.t)), allTexts.filter(x => /Ismena/i.test(x.t)));

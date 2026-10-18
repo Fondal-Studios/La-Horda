@@ -24,20 +24,26 @@
 const BOOK_NARRATOR = "El Hechicero";
 const BOOK_NARRATOR_SIGN = "— El Hechicero Supremo";
 
-// GRAN INTRODUCCIÓN: se lee una vez, al elegir al primer campeón (y se puede revisitar desde el Códice).
+// GRAN INTRODUCCIÓN: se OFRECE una vez, al volver al menú tras la primera arena (y se puede revisitar desde el Códice).
+// `recap` (opcional): texto de la misma página para quien YA vio el prólogo de la Ciudad en la ficha previa (save.storyPrologueSeen,
+// js/ui/run-intro.js): cuenta lo que el prólogo no dijo en vez de repetirlo. Misma cantidad de páginas, mismo título y mismo arte.
 const BOOK_INTRO_PAGES = [
   {kicker:"EL CÓDICE", title:"EL LIBRO DE LA HORDA", art:"tapa",
    text:"Lo escribo yo, el Hechicero Supremo, para que no pelees a ciegas. Si lo estás leyendo, ya elegiste a tu guardián. Pasá la página: antes de seguir tenés que saber contra qué, y cómo se juega."},
   {kicker:"ANTES DE TODO", title:"CUATRO GUARDIANES, CUATRO CRISTALES", art:"guardianes",
-   text:"Hace siglos, cuatro Guardianes sostenían un sello hecho de cuatro cristales. Mientras el sello aguantó, la Horda quedó encerrada en su propia dimensión y el mundo pudo dormir. Los conocí a todos."},
+   text:"Hace siglos, cuatro Guardianes sostenían un sello hecho de cuatro cristales. Mientras el sello aguantó, la Horda quedó encerrada en su propia dimensión y el mundo pudo dormir. Los conocí a todos.",
+   recap:"Cuatro Guardianes, cuatro cristales: eso ya lo sabés. Cada cristal guardaba una parte del sello, y mientras estuvieron los cuatro la Horda siguió encerrada en su propia dimensión y el mundo pudo dormir. Los conocí a todos."},
   {kicker:"EL ENEMIGO", title:"LA HORDA NO MUERE", art:"horda",
    text:"La Horda es la maldad que hay en el mundo, y eso no se mata. No destruye: corrompe. Los monstruos que hoy custodian los cristales alguna vez fueron héroes. Acordate de eso cuando los tengas enfrente: yo no lo olvido."},
   {kicker:"LA NOCHE DEL REGRESO", title:"LAS CAMPANAS SONARON SOLAS", art:"arena:ciudad",
-   text:"A medianoche las campanas sonaron sin que nadie tirara de las cuerdas. La Horda ya estaba adentro: atravesó las puertas como atraviesa el frío. Los guardianes de la muralla resistieron hasta el amanecer. Yo hablé desde el humo, porque desde mi lado no puedo cruzar."},
+   text:"A medianoche las campanas sonaron sin que nadie tirara de las cuerdas. La Horda ya estaba adentro: atravesó las puertas como atraviesa el frío. Los guardianes de la muralla resistieron hasta el amanecer. Yo hablé desde el humo, porque desde mi lado no puedo cruzar.",
+   recap:"La noche de las campanas ya la viste. Lo que falta: los guardianes de la muralla no retrocedieron ni un paso aunque la Horda ya estuviera adentro. Por eso la ciudad sigue en pie. Maldita, pero en pie. Yo hablé desde el humo, porque desde mi lado no puedo cruzar."},
   {kicker:"LA GUERRA", title:"LAS CICATRICES", art:"cicatriz",
-   text:"Los Guardianes fueron cayendo, uno por uno. Donde la Horda pasa, la realidad queda herida: son las Cicatrices. Forman un camino de diez arenas, y vas a seguirlo de a una, hasta el fondo. Yo te marco el rumbo."},
+   text:"Los Guardianes fueron cayendo, uno por uno. Donde la Horda pasa, la realidad queda herida: son las Cicatrices. Forman un camino de diez arenas, y vas a seguirlo de a una, hasta el fondo. Yo te marco el rumbo.",
+   recap:"Esa grieta del suelo no es la única: son diez arenas y vas a seguirlas de a una, hasta el fondo. Cada Cicatriz late distinto, según cuántos cristales hayas juntado. Los Guardianes fueron cayendo uno por uno. Yo te marco el rumbo."},
   {kicker:"QUIEN TE GUÍA", title:"UN GUÍA CON ALAS DE LUZ", art:"hechicero",
-   text:"Soy la figura de luz que salió del humo. Conozco cada cristal y cada Guardián, y por eso puedo guiarte hasta ellos. Con cada uno que juntes, el sello está más cerca de volver. Escuchame con atención y vas a llegar hasta el fondo."},
+   text:"Soy la figura de luz que salió del humo. Conozco cada cristal y cada Guardián, y por eso puedo guiarte hasta ellos. Con cada uno que juntes, el sello está más cerca de volver. Escuchame con atención y vas a llegar hasta el fondo.",
+   recap:"Ya me oíste en el humo; ahora me ves. Conozco cada cristal y cada Guardián, y por eso puedo guiarte hasta ellos. Con cada uno que juntes, el sello está más cerca de volver. Escuchame con atención y vas a llegar hasta el fondo."},
   {kicker:"TU MISIÓN", title:"SOBREVIVIR", art:"mision",
    text:"Tu único trabajo es seguir con vida. Cada arena tiene 10 niveles y cada nivel dura un ratito: aguantá hasta que el reloj llegue a cero. En el último hay un jefe. Si un compañero cae, mantené ✚ a su lado para levantarlo."},
   {kicker:"UN LIBRO QUE SE ESCRIBE SOLO", title:"SEGUÍ LEYENDO", art:"libro",

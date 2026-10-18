@@ -116,7 +116,11 @@ function narrationWhenFree(fn, maxMs){
 }
 
 /* ---------------- 1. introducción ---------------- */
-function codexBookIntroPages(){ return BOOK_INTRO_PAGES.map(p=>Object.assign({}, p)); }
+// Las páginas que repetirían el prólogo de la Ciudad (ya visto en la ficha previa) salen en su versión `recap`: mismas 8 páginas, sin repetir.
+function codexBookIntroPages(){
+  const pro = typeof save!=="undefined" && !!(save && save.storyPrologueSeen);
+  return BOOK_INTRO_PAGES.map(p=>{ const o = Object.assign({}, p); delete o.recap; if(pro && p.recap) o.text = p.recap; return o; });
+}
 // opts.joinsRoom: el flujo que sigue es entrar a la sala de otro: no se demora a nadie, queda para el Códice.
 function codexBookIntroDue(opts){
   if(codexBookSave().introSeen) return false;
