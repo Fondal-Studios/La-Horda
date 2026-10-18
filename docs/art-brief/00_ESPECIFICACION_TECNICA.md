@@ -19,7 +19,7 @@ Archivos de apoyo en esta carpeta: `plantillas/` (hojas guía con rejilla, gener
 5. **Cada pose = una sola silueta conectada** (8-conectividad). El importador cuenta componentes: si una espada flota separada del cuerpo, falla con `expected 36 separated silhouettes` (`tools/factory/import-authored-sheet.py:47`).
 6. **Los FX tienen tres tiempos**: anticipación → impacto → disipación (`engine.js:8-10`), y **el borde exterior del arte es el radio real de la habilidad** (la hitbox). El arte nunca decide el área.
 7. **Hoy NO hay forma de que un PNG pintado reemplace a un FX procedural de habilidad, ni a un muro/torreta, ni a un ícono** (salvo skins de set y unos pocos efectos sueltos). Es el **hueco principal**: la sección 8 propone el contrato exacto. Mientras no se construya, el artista puede entregar igual (sección 6) y Claude integra.
-8. **Hay contradicciones en las propias reglas** que el artista debe conocer antes de empezar (sección 1.3), sobre todo: la Art Bible dice "4–6 colores por personaje" pero el gate de estilo exige **entre ~1.260 y ~2.920 colores distintos por cuadro** (pintura reducida con mucho sombreado). Hay que decidir (**[DECIDE EL DUEÑO]**) antes de producir en serie.
+8. **Paleta = 4–6 colores BASE + variaciones tonales** (decisión del dueño, sección 1.3). La Art Bible fija la identidad (4–6 colores base) y el Style Gate mide la riqueza por cuadro (≈1.260–2.920 colores distintos): esa riqueza sale de las sombras, luces y tintes que el artista construye a partir de los colores base. No hay contradicción; se cumplen las dos. Además hay otras discrepancias menores en 1.3.
 9. **El arte tiene que ser 100 % original** (sección 5). El caso Eren → Ilkan es la lección.
 10. **Ante cualquier duda, entregar 1 muestra** (un campeón, un FX, un ícono) y pedir que Claude corra los chequeos (sección 3) antes de producir el lote.
 
@@ -68,11 +68,16 @@ Una unidad de mundo = 0,6 px CSS a 844×390 (1,2 px de dispositivo con DPR 2).
 | Muro (teja) | ≈ 2,15 de alto (28 u / 13 px) y 2,15 de largo (34,5 u / 16 px) | `props.js:sfaDrawWallObj` |
 | Ícono | 16×16 mostrado a 32 px CSS (2×) o 24 px (secundarias) | `css/hud-horda.css:38-39` |
 
-### 1.3 Contradicciones del repo que hay que conocer antes de producir [VERIFICADO]
+### 1.3 Regla de paleta y contradicciones del repo que hay que conocer antes de producir [VERIFICADO]
+
+**Regla de paleta (decisión del dueño): Art Bible y Style Gate son compatibles.** La Art Bible (§2) fija **4–6 colores BASE** por personaje (identidad); el Style Gate (`style_gate.py`) mide la **riqueza de color por cuadro** (1.484,5–2.535,5 colores distintos, ±15 % → ≈ 1.262–2.916), que sale de las **variaciones** (sombras, luces, tintes, sombreado) de esos colores base. El artista elige 4–6 colores base y construye todas las variaciones tonales a partir de ellos hasta entrar en el rango del gate. No se cambia ninguno de los dos.
+
+**Ejemplo verificado (Baltra, cuadro 0 de `assets/sprites/champions/baltra/atlas.png`)**: 1.965 píxeles opacos con **1.881 colores distintos**; la mediana de los 12 cuadros de caminar es 1.806,5 (rango 1.664–1.944, dentro del gate). Agrupados en 6 colores base (cuantización por mediana de corte, % de píxeles): `#100b0b` 24,8 % (contorno/sombra profunda) · `#342018` 20,5 % · `#473328` 15,4 % · `#945b31` 14,3 % · `#6c3f22` 13,7 % · `#d6995e` 11,3 % (luz). Los ~1.880 colores son las gradaciones entre esas familias. Contraprueba: el mismo atlas reducido a 12 colores falla el gate (`colores 12 fuera de [1.26e+03, 2.92e+03]`, única medida que falla). Por eso: paleta base corta **y** variaciones tonales ricas, nunca paleta plana.
+
+**Otras contradicciones:**
 
 | # | Contradicción | Evidencia | Qué hacer |
 |---|---|---|---|
-| C1 | **Paleta**: la Art Bible pide 4–6 colores principales y 2–3 tonos por color. El gate de estilo (`style_gate.py`) compara contra las hojas del roster y exige **1.484,5 – 2.535,5 colores distintos por cuadro** (±15 %); el arte plano "falla (30-45 colores contra 1484-2535)". Medido: `baltra` cuadro 0 = 1.965 píxeles opacos con **1.881 colores**; `ynara` 2.364 px con 2.062 colores. El roster actual es **pintura reducida con alfa binario**, no pixel art de paleta corta. **Prueba hecha**: `atlas.png` de Baltra cuantizado a 12 colores (mismo alfa, mismo dibujo) → `style_gate.py` responde `FAIL … colores 12 fuera de [1.26e+03, 2.92e+03]` y es la **única** medida que falla. | `docs/ART_BIBLE.md` §2; `docs/production/PAINTER.md` ("Gates"); `docs/art-gate/style-gate.json`; medición propia | **[DECIDE EL DUEÑO]**: (a) seguir el roster (pintura reducida, muchos tonos, alfa binario) o (b) pixel art de paleta corta y **cambiar el gate**. Hasta decidir, un arte de paleta corta **no pasará** `style_gate.py` (mide solo hojas 4×9 de 112 px). |
 | C2 | **El Caballero (Master Reference) no cumple el canon técnico**: `tanque/atlas.png` es `1024×1536`, cuadros de ~168×202 px, y **todos** sus píxeles no transparentes tienen alfa < 255 (máx. 254, borde difuso); se dibuja reducido con mipmap (`js/rendering/art-direction.js:129-149`). | medición propia (621.242 px no transparentes, 0 con alfa 255); `docs/ART_BIBLE.md` §2 vs §6 | No copiar el formato técnico del Caballero. Copiar su **gramática** (proporción chibi, contorno, lectura). El formato a seguir es el atlas de 112 px (2.1). |
 | C3 | **Unidad de escala**: `docs/ART_COMMISSION_BRIEF.md` dice "1 px de arte = 2 u; un guardián ≈ 32–36 px"; `SPRITE_PRODUCTION_LIST.md` dice "90–120 px de alto para campeones"; `ART_BIBLE.md` §14 dice 1,0 u/px (≈ 65 px). El gate mide con §14. | los tres documentos; `pixel-density.js:CANON` | **Usar §14: ≈ 65 px de alto de cuerpo.** |
 | C4 | **El gate de densidad no mide campeones ni FX**: `loadDensity` y el inventario excluyen `assets/sprites/champions` y `fx/vfx` (`pixel-density.js:120,155`). Los campeones solo pasan por `roster_gate.js` (escala/pies) y `style_gate.py` (estilo); los FX por nada de arte. | `tools/art/pixel-density.js` | Los FX no tienen gate visual hoy: ver 3.4 y sección 8 (`check-entrega`). |
@@ -86,7 +91,7 @@ Una unidad de mundo = 0,6 px CSS a 844×390 (1,2 px de dispositivo con DPR 2).
 |---|---|---|---|
 | Alfa | 0/255 | 0/255 (translucidez = tramado Bayer 4×4, no alfa) | 0/255 |
 | Contorno | 1 px oscuro, todo el borde | 1 px oscuro (`o`) en motivos; en anillos, borde exterior = radio | 1 px `#0b0f18` automático |
-| Colores | rango del roster (C1) | 5–6 roles de tema | ≤ 6 (contrato) |
+| Colores | 4–6 base + variaciones hasta el rango del roster (1.3) | 5–6 roles de tema | ≤ 6 (contrato) |
 | Degradé | prohibido (sombreado por tonos) | prohibido (tramado) | prohibido |
 | Glow / halo | **no pintado** (va en capas del motor, `docs/ART_BIBLE.md` §7) | **no pintar glow**: el motor suma sombra de contraste y copia aditiva (`anim-atlas.js:96-107`) en el camino `drawAnimFrameSized` | no |
 | Texto en el arte | prohibido | prohibido | rótulo lo pone el HUD |
