@@ -1,0 +1,26 @@
+name: Pixel density gate (informativo)
+on:
+  pull_request:
+    paths: ['assets/sprites/**', 'assets/vfx/**/tex_*.png', 'assets/ui/codex/**', 'tools/art/pixel-density.js', 'docs/art-gate/pixel-density-exceptions.json']
+permissions:
+  contents: read
+jobs:
+  density:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: npm install --prefix /tmp/horda-art-tools playwright@1.58.2
+      - run: /tmp/horda-art-tools/node_modules/.bin/playwright install --with-deps chromium
+      - name: Detector (autoprueba)
+        run: node tools/art/pixel-density.js --self-test
+        env:
+          NODE_PATH: /tmp/horda-art-tools/node_modules
+      # Informativo (docs/ART_BIBLE.md §14): no bloquea el merge; --strict falla solo por desvíos sin excepción documentada.
+      - name: Densidad de píxel
+        continue-on-error: true
+        run: node tools/art/pixel-density.js --strict
+        env:
+          NODE_PATH: /tmp/horda-art-tools/node_modules
