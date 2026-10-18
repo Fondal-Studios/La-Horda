@@ -51,11 +51,11 @@ function kvbArenaKey(){ try{ return (typeof currentArena === 'string' && typeof 
 function kvbMix(a, b, t){ const A = kvbRGB(a), B = kvbRGB(b), h = v => Math.round(v).toString(16).padStart(2, '0'); return '#' + h(A[0] + (B[0] - A[0]) * t) + h(A[1] + (B[1] - A[1]) * t) + h(A[2] + (B[2] - A[2]) * t); }
 const KVB_TINT = {key: '', pal: null};
 // tinte activo (solo durante el horneado de un sprite): kvbTintCol(hex, fuerza) / kvbTintPal(paleta de 5 tonos)
-function kvbTintCol(hex, t){ const A = KVB_TINT.pal; return !A || !hex ? hex : kvbMix(hex, A[2], t === undefined ? .55 : t); }
+function kvbTintCol(hex, t){ const A = KVB_TINT.pal; return !A || !hex ? hex : kvbMix(hex, A[2], t === undefined ? .72 : t); }
 function kvbTintPal(pal){
   const A = KVB_TINT.pal; if(!A) return pal;
   const lit = (c, k) => kvbMix(c, '#ffffff', k);
-  return [kvbMix(pal[0], A[0], .35), kvbMix(pal[1], A[1], .55), kvbMix(pal[2], A[2], .5), kvbMix(pal[3], lit(A[2], .25), .55), kvbMix(pal[4], lit(A[2], .55), .5)];
+  return [kvbMix(pal[0], A[0], .45), kvbMix(pal[1], A[1], .75), kvbMix(pal[2], A[2], .7), kvbMix(pal[3], lit(A[2], .3), .7), kvbMix(pal[4], lit(A[2], .6), .6)];
 }
 // Techo de relleno trameado (fracción de píxeles del disco): 20–25 % deja ver al enemigo señalado y el anillo exterior manda
 const KVB_FILL_CAP = .24;

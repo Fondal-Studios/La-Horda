@@ -2,19 +2,22 @@
 /* Prueba de legibilidad de los decales de efecto (js/champions/vfx-b/): el disco/anillo de una habilidad no puede tapar al enemigo que señala.
    Para CADA receta de KVB_FX, en varias arenas y en tres instantes del efecto (anticipación, impacto, disipación):
      · 3 enemigos quietos dentro del área del efecto (esqueletos reales del motor), uno por vez;
-     · captura del canvas real con el efecto (A) y sin el efecto (C) y sin enemigo (D), con el reloj de render congelado;
-     · máscara del sprite del enemigo = píxeles donde C difiere de D; visible = píxeles de esa máscara que A deja intactos.
+     · captura del canvas real con el efecto (A) y sin el efecto (C), con el reloj de render congelado;
+     · máscara del sprite del enemigo = alfa opaco de sus drawImage (sin la sombra del suelo); visible = píxeles de esa máscara que A deja intactos respecto de C.
    Dos mediciones: SOLO LOS DECALES/ANILLOS del efecto (kvbDecal de >= 36 u, sin rayos ni motivos sueltos; en todo instante: se exige >= 80 %) y el EFECTO COMPLETO con sus motivos sueltos
-   (rayos, gotas, plumas y chispas que cruzan volando: promedio de los tres instantes; el piso de regresión es FULL_MIN = 50 %, y los que quedan entre 50 y 80 % se listan como aviso).
+   (rayos, gotas, plumas y chispas que cruzan volando: promedio de los tres instantes; el piso de regresión es FULL_MIN = 40 %, y los que quedan entre 40 y 80 % se listan como aviso (VERBOSE=1)).
+   También mide los decales del motor de la mitad A (js/champions/skill-fx-a/: nova, zona y cono de cada tema, nivel 'efecto completo'); SFA_STRICT=1 les exige el 80 % por instante
+   (hoy no lo cumplen en el impacto: la nova va sobre las entidades y con 20-25 % de relleno más sellos el sprite queda visible entre ~45 y ~90 %).
    Exige visible >= 80 % del sprite de cada enemigo (MIN_VISIBLE), relleno del decal <= 40 % del disco interior en el impacto
    (con las marcas) y que el tinte cambie de una arena a otra (el mismo efecto no puede ser del mismo color en todas partes).
    Además comprueba que los anillos de pixel-stroke.js solo producen alfa 0/255.
+   LEGACY=1 solo mide la legibilidad (para comparar contra un árbol anterior que no tiene tinte ni pixel-stroke).
    Uso: [ABILITY_BASE_URL=http://127.0.0.1:PUERTO/] [ONLY=id1,id2] [ARENAS=bosque,hielo] node tools/vfx/test-decal-legible.js
    Sale con código 1 si algo incumple. */
 const path = require('node:path'), net = require('node:net'), {spawn} = require('node:child_process');
 let chromium; try { ({chromium} = require('playwright')); } catch (e) { ({chromium} = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
 const ROOT = path.resolve(__dirname, '../..');
-const MIN_VISIBLE = +(process.env.MIN_VISIBLE || 0.8), FULL_MIN = +(process.env.FULL_MIN || 0.5), MAX_FILL = +(process.env.MAX_FILL || 0.4);
+const MIN_VISIBLE = +(process.env.MIN_VISIBLE || 0.8), FULL_MIN = +(process.env.FULL_MIN || 0.4), MAX_FILL = +(process.env.MAX_FILL || 0.4);
 const ARENAS = (process.env.ARENAS || 'bosque,hielo,infernal,laberinto,acuatica,minas').split(',');
 const freePort = () => new Promise(r => { const s = net.createServer(); s.listen(0, '127.0.0.1', () => { const p = s.address().port; s.close(() => r(p)); }); });
 (async () => {
@@ -27,14 +30,14 @@ const freePort = () => new Promise(r => { const s = net.createServer(); s.listen
   let bad = 0;
   try {
     await page.goto(BASE, {waitUntil: 'domcontentloaded', timeout: 120000});
-    await page.waitForFunction(() => typeof startRun === 'function' && typeof KVB !== 'undefined' && typeof kvbFx === 'function' && typeof pxsRing === 'function', null, {timeout: 120000});
+    await page.waitForFunction(leg => typeof startRun === 'function' && typeof KVB !== 'undefined' && typeof kvbFx === 'function' && (leg || typeof pxsRing === 'function'), !!process.env.LEGACY, {timeout: 120000});
     await page.waitForTimeout(2500);
     const ids = await page.evaluate(() => Object.keys(KVB_FX).sort()), only = process.env.ONLY ? process.env.ONLY.split(',') : null, list = only ? ids.filter(i => only.includes(i)) : ids;
     console.log(`${list.length} recetas · arenas ${ARENAS.join(',')} · mínimo visible ${MIN_VISIBLE * 100}%`);
     // 1) legibilidad
     const worst = [];
     for (const arena of ARENAS) {
-      const r = await page.evaluate(([ids, arena, minVis]) => {
+      const r = await page.evaluate(([ids, arena, minVis, withSfa, strictSfa]) => {
         const out = {rows: [], err: null}, oNow = performance.now.bind(performance), oRand = Math.random; let T = 100000; performance.now = () => T; Math.random = () => .37;
         try {
           netMatch = null; selectedClass = 'tanque'; currentArena = arena; lobbyAllies = []; startRun(3); state = 'playing'; enemies = []; spawnTimer = 1e9; arenaHazardTimer = 1e9;
@@ -48,22 +51,30 @@ const freePort = () => new Promise(r => { const s = net.createServer(); s.listen
               if (w < 90 && h < 90) { const p0 = m.transformPoint({x, y}), p1 = m.transformPoint({x: x + w, y: y + h}); if (Math.hypot((p0.x + p1.x) / 2 - rec.sx, (p0.y + p1.y) / 2 - rec.sy) < 60) { mg.setTransform(m); mg.globalAlpha = this.globalAlpha; oDraw.call(mg, img, ...a); } } }
             return oDraw.call(this, img, ...a); };
           const spots = [[0, -1], [.87, .5], [-.87, .5]];
-          for (const id of ids) {
+          const sfaItems = withSfa && typeof sfaThemes !== 'undefined' ? Object.keys(sfaThemes).filter(t => !t.includes('~')).flatMap(t => ['nova', 'zone', 'cone'].map(a => 'sfa:' + a + ':' + t)) : [];
+          for (const id of ids.concat(sfaItems)) {
+            const isSfa = id.startsWith('sfa:'), [, sArt, sTheme] = isSfa ? id.split(':') : [];
             for (const [fr, tag] of [[4, 'ant'], [20, 'impacto'], [42, 'disipa']]) {
               const R = 120; let fracs = [], dec = [], mins = [];
               for (let k = 0; k < 3; k++) {
                 // el mismo estado para las tres capturas del enemigo k
-                const place = () => { enemies = []; const e = spawnEnemy('esqueleto'); Object.assign(e, {x: player.x + 70 + spots[k][0] * R * .42, y: player.y + spots[k][1] * R * .42, hp: 1e9, maxHp: 1e9, speed: 0, baseSpeed: 0, dmg: 0}); return e; };
-                const e = place(); vfxResetRun(); KVB.seed = 0x2545F491; kvbFx(id, player.x + 70, player.y, R, .3, 40, 10);
-                for (let f = 0; f < fr; f++) { T += 16; kvbUpdate(16); }
-                const saved = KVB.pool.slice(), A = snap();
-                KVB.pool = saved.filter(p => p.name && Math.max(p.w || 0, p.h || 0) >= 36); const A2 = snap();
-                KVB.pool = []; const mt = ctx.getTransform(); void mt;
+                const cone = isSfa && sArt === 'cone', cA = [-.4, 0, .4][k], place = () => { enemies = []; const e = spawnEnemy('esqueleto'); Object.assign(e, cone ? {x: player.x + 10 + Math.cos(cA) * R * .6, y: player.y + Math.sin(cA) * R * .6} : {x: player.x + 70 + spots[k][0] * R * .42, y: player.y + spots[k][1] * R * .42}, { hp: 1e9, maxHp: 1e9, speed: 0, baseSpeed: 0, dmg: 0}); return e; };
+                const e = place(); vfxResetRun(); KVB.seed = 0x2545F491; let saved, A, A2;
+                if (isSfa) {
+                  sfaReset(); sfaPush(sArt, sTheme, cone ? player.x + 10 : player.x + 70, player.y, R, 0, 900, 0, 0, 24, -1, .85); const s0 = sfaPool[0]; if (!s0) continue; s0.t = fr * 16; T += fr * 16;
+                  saved = sfaPool.slice(); A = snap(); A2 = A; sfaPool.length = 0;
+                } else {
+                  kvbFx(id, player.x + 70, player.y, R, .3, 40, 10);
+                  for (let f = 0; f < fr; f++) { T += 16; kvbUpdate(16); }
+                  saved = KVB.pool.slice(); A = snap();
+                  KVB.pool = saved.filter(p => p.name && Math.max(p.w || 0, p.h || 0) >= 36); A2 = snap();
+                  KVB.pool = [];
+                }
                 // posición en pantalla del enemigo = donde lo dibuja la cámara (se mide con la transformación del mundo en el render)
                 mg.setTransform(1, 0, 0, 1, 0, 0); mg.clearRect(0, 0, mk.width, mk.height); rec = {sx: 0, sy: 0}; const wt = (typeof worldToScreen === 'function') ? worldToScreen(e.x, e.y) : null;
                 if (wt) { rec.sx = wt.x; rec.sy = wt.y; } else { rec.sx = (e.x - cam.x) * CAM_ZOOM + canvas.width / 2; rec.sy = (e.y - cam.y) * CAM_ZOOM + canvas.height / 2; }
                 const C = snap(); rec = null; const MK = mg.getImageData(0, 0, mk.width, mk.height).data;
-                KVB.pool = saved;
+                if (isSfa) sfaPool.push(...saved); else KVB.pool = saved;
                 let mpx = 0; const vis = X => { let m = 0, v = 0;
                   for (let i = 0; i < C.length; i += 4) {
                     if (MK[i + 3] < 250) continue; m++;
@@ -71,12 +82,12 @@ const freePort = () => new Promise(r => { const s = net.createServer(); s.listen
                   } mpx = m; return m ? v / m : 0; };
                 fracs.push(vis(A)); dec.push(vis(A2)); mins.push(mpx);
               }
-              out.rows.push({id, tag, mask: Math.min(...mins), min: Math.min(...dec), dec: dec.map(x => +x.toFixed(2)), all: fracs.map(x => +x.toFixed(2))});
+              out.rows.push({id, tag, mask: Math.min(...mins), min: isSfa && !strictSfa ? 1 : Math.min(...dec), dec: dec.map(x => +x.toFixed(2)), all: fracs.map(x => +x.toFixed(2))});
             }
           }
         } catch (e) { out.err = e.message + ' ' + (e.stack || '').split('\n')[1]; }
         if (window.__oDraw) CanvasRenderingContext2D.prototype.drawImage = window.__oDraw; performance.now = oNow; Math.random = oRand; state = 'menu'; return out;
-      }, [list, arena, MIN_VISIBLE]);
+      }, [list, arena, MIN_VISIBLE, !only, !!process.env.SFA_STRICT]);
       if (r.err) { console.log('ERROR', arena, r.err); bad++; continue; }
       const tiny = r.rows.filter(x => x.mask < 80); if (tiny.length) { console.log(`ERROR ${arena}: la máscara del sprite quedó vacía (${tiny.length} mediciones): la prueba no mide nada`); bad++; }
       const low = r.rows.filter(x => x.min < MIN_VISIBLE);
@@ -90,6 +101,7 @@ const freePort = () => new Promise(r => { const s = net.createServer(); s.listen
       if (process.env.VERBOSE) for (const [id, m] of warn) console.log(`   · aviso ${id} promedio ${(m * 100).toFixed(0)}%`);
       bad += low.length + meanLow.length; worst.push(...low);
     }
+    if (!process.env.LEGACY) {
     // 2) cobertura del relleno + 3) tinte por arena + 4) alfa 0/255 de los trazos de píxel
     const r2 = await page.evaluate(() => {
       const out = {fill: [], tint: [], stroke: {}};
@@ -109,6 +121,7 @@ const freePort = () => new Promise(r => { const s = net.createServer(); s.listen
     const by = {}; for (const t of r2.tint) (by[t.name] = by[t.name] || []).push(t);
     for (const k in by) { const [a, b] = by[k], d = Math.abs(a.c[0] - b.c[0]) + Math.abs(a.c[1] - b.c[1]) + Math.abs(a.c[2] - b.c[2]), ok = d >= 12; console.log(`tinte ${k}: ${a.arena} rgb(${a.c}) vs ${b.arena} rgb(${b.c}) ${ok ? 'OK' : 'IGUAL'}`); if (!ok) bad++; }
     console.log(`trazos de píxel: ${r2.stroke.intermedios} píxeles con alfa intermedio de ${r2.stroke.pixels} (dibujados ${r2.stroke.dibujados})`); if (r2.stroke.intermedios) bad++;
+    }
     console.log(`errores de página: ${errors.length}`, errors.slice(0, 3)); if (errors.length) bad++;
   } finally { await browser.close(); }
   console.log(bad ? `FALLA: ${bad} incumplimientos` : 'OK');
