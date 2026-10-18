@@ -177,6 +177,82 @@ async function boot(browser, opts) {
   check('CARGA.no_se_apila_sobre_el_prologo_ni_la_mision', !(await E(() => BOOK.open)) && (await E(() => RUN_INTRO.open)) === true);
   await E(() => { while (RUN_INTRO.open) { RUN_INTRO.t0 = 0; runIntroGo(); } save.storyPrologueSeen = true; });
 
+  /* ================= 3b. UN SOLO NARRADOR A LA VEZ (el Libro es la voz escrita del Hechicero) ================= */
+  const fichaDone = () => E(() => { let g = 0; while (RUN_INTRO.open && g++ < 12) { RUN_INTRO.t0 = 0; runIntroGo(); } });
+  const sayLook = () => E(() => { const s = document.querySelector('#run-intro .ri-say'); return { disp: getComputedStyle(s).display, txt: s.textContent, told: RUN_INTRO.bookTold, kill: document.querySelector('#run-intro .ri-kill').textContent.length, goal: document.querySelector('#run-intro .ri-goal').textContent.length, who: document.querySelector('#run-intro .ri-who').textContent }; });
+  await E(() => { state = 'menu'; save.storyPrologueSeen = true; save.tut.goalMission = 1; save.storyActsSeen = { I: 1, II: 1, III: 1 }; save.codexBook.shortCount = {}; save.codexBook.shortOff = false; });
+  // la página de carga se leyó: la ficha NO repite la frase de apertura (queda lo que el Libro no dice)
+  await E(() => { runIntroShow('micelial', () => {}); }); await waitBook(true); await sleep(300);
+  const sg = await E(() => document.querySelector('#codex-book .bk-sign').textContent);
+  check('NARRADOR.el_libro_va_firmado_por_el_Hechicero_en_cada_pagina', sg === '— El Hechicero Supremo' && /Hechicero/.test(await E(() => document.getElementById('codex-book').getAttribute('aria-label'))), sg);
+  await shot('13_carga_firmada_por_el_Hechicero');
+  await waitBook(false, 12000); await sleep(300);
+  let sl = await sayLook(); await shot('14_ficha_sin_repetir_la_frase');
+  check('SECUENCIA.carga_leida_la_ficha_no_repite_la_frase_de_apertura_del_Hechicero', sl.told === true && sl.disp === 'none' && sl.txt === '' && sl.kill > 10 && sl.goal > 10 && sl.who === 'EL HECHICERO SUPREMO', sl);
+  await fichaDone();
+  // la carga se saltea al instante (no se leyó): la ficha SÍ dice su frase
+  await E(() => { runIntroShow('micelial', () => {}); }); await waitBook(true); await page.mouse.click(420, 200); await sleep(300);
+  sl = await sayLook();
+  check('SECUENCIA.carga_salteada_al_toque_la_ficha_si_dice_su_frase', sl.told === false && sl.disp !== 'none' && /^«/.test(sl.txt), sl);
+  await fichaDone();
+  // sin carga (apagada o tope): la ficha dice su frase como siempre
+  await E(() => { codexBookSetShortOff(true); runIntroShow('hielo', () => {}); }); await sleep(250);
+  sl = await sayLook(); await shot('15_ficha_con_su_frase_sin_libro');
+  check('SECUENCIA.sin_carga_la_ficha_dice_su_frase', sl.told === false && sl.disp !== 'none' && /^«/.test(sl.txt), sl);
+  await fichaDone(); await E(() => codexBookSetShortOff(false));
+  // la frase vuelve en la ficha siguiente aunque la anterior la haya ocultado (no queda el estilo pegado)
+  await E(() => { save.codexBook.shortCount = {}; runIntroShow('acuatica', () => {}); }); await waitBook(true); await waitBook(false, 12000); await sleep(200); await fichaDone();
+  await E(() => { codexBookSetShortOff(true); runIntroShow('minas', () => {}); }); await sleep(250);
+  sl = await sayLook(); await fichaDone(); await E(() => { codexBookSetShortOff(false); save.codexBook.shortCount = {}; });
+  check('SECUENCIA.la_frase_oculta_no_queda_pegada_para_la_ficha_siguiente', sl.disp !== 'none' && /^«/.test(sl.txt), sl);
+  // con el Libro abierto a mano, el Hechicero no habla en el panel ni en la cola, y la ficha espera
+  await E(() => { state = 'menu'; codexBookOpenIntro(); }); await waitBook(true); await sleep(200);
+  const mute = await E(() => { const r = tutSay('zz_test', 'Texto de prueba del Hechicero', null, 3000); storyEnsureRun(); storySay('hech', 'Voz de prueba de la historia', { wait: 20000 }); return { r, key: TUT.key, q: STORY.q.length, panelHidden: document.getElementById('tut-panel').classList.contains('hidden') }; });
+  check('UN_NARRADOR.con_el_libro_abierto_el_panel_del_Hechicero_no_abre', mute.r === false && mute.key === null && mute.panelHidden === true, mute);
+  await E(() => { window.__go = 0; runIntroShow('laberinto', () => { window.__go++; }); }); await sleep(900);
+  check('UN_NARRADOR.con_el_libro_abierto_la_ficha_del_Hechicero_espera', (await E(() => BOOK.open)) === true && (await E(() => RUN_INTRO.open)) === false);
+  await page.keyboard.press('Escape'); await waitBook(false);
+  const fichaUp = await waitFor(() => E(() => RUN_INTRO.open), 4000);
+  check('UN_NARRADOR.al_cerrar_el_libro_la_ficha_aparece_sola_(no_se_pierde_el_flujo)', fichaUp === true && (await E(() => BOOK.open)) === false);
+  await fichaDone(); await E(() => { STORY.q.length = 0; });
+
+  // DESPUÉS DEL LIBRO el flujo no repite: intro LEÍDA → sin prólogo, misión ni Acto I; intro OMITIDA → sigue todo
+  await E(() => { save.storyPrologueSeen = false; save.storyActsSeen = {}; save.tut.goalMission = 0; save.codexBook.introSeen = false; save.codexBook.introRead = false; save.codexBook.shortOff = true; });
+  await E(() => { codexBookOpenIntro(); }); await waitBook(true); await sleep(250);
+  await page.keyboard.press('Escape'); await waitBook(false);
+  check('DESPUES_DEL_LIBRO.omitir_la_intro_no_cuenta_como_leida_y_la_historia_sigue_completa', (await E(() => ({ r: save.codexBook.introRead, p: runIntroHasStoryPages('ciudad'), m: goalNeedsMission() }))).r === false && (await E(() => runIntroHasStoryPages('ciudad'))) === true);
+  await E(() => { codexBookOpenIntro(); }); await waitBook(true);
+  for (let k = 0; k < 7 && (await E(() => BOOK.open && BOOK.i < BOOK.pages.length - 1)); k++) await turn();
+  await shot('16_ultima_pagina_firmada');
+  for (let k = 0; k < 4 && (await E(() => BOOK.open)); k++) { await page.click('#codex-book .bk-next'); await sleep(120); await idle(); } await waitBook(false);
+  const rd = await E(() => ({ r: save.codexBook.introRead, m: goalNeedsMission(), p: runIntroHasStoryPages('ciudad'), persisted: JSON.parse(localStorage.getItem(SAVE_KEY)).codexBook.introRead }));
+  check('DESPUES_DEL_LIBRO.leer_la_intro_hasta_el_final_la_marca_leida_y_se_guarda', rd.r === true && rd.persisted === true, rd);
+  check('DESPUES_DEL_LIBRO.intro_leida_la_ficha_no_repite_mision_ni_prologue_ni_Acto_I', rd.m === false && rd.p === false, rd);
+  await E(() => { runIntroShow('ciudad', () => {}); }); await sleep(250);
+  const noRepeat = await E(() => ({ prologue: RUN_INTRO.prologue, pages: RUN_INTRO.pages.length, seen: save.storyPrologueSeen, actI: !!(save.storyActsSeen && save.storyActsSeen.I) }));
+  check('DESPUES_DEL_LIBRO.la_ficha_de_la_Ciudad_va_directo_a_la_ficha_de_arena', noRepeat.prologue === false && noRepeat.pages === 0 && noRepeat.seen === true && noRepeat.actI === true, noRepeat);
+  await shot('17_ficha_directa_tras_leer_el_libro');
+  await fichaDone();
+  // el Acto II no se saltea: el Libro no lo cuenta
+  check('DESPUES_DEL_LIBRO.el_cartel_del_Acto_II_sigue_apareciendo', (await E(() => runIntroHasStoryPages('micelial'))) === true);
+  // la práctica completada cuenta la misión
+  await E(() => { save.tut.goalMission = 0; save.codexBook.introRead = false; });
+  check('DESPUES_DEL_LIBRO.sin_leer_el_libro_la_mision_sigue_para_quien_no_hizo_la_practica', (await E(() => goalNeedsMission())) === true);
+  await E(() => { save.codexBook.shortOff = false; save.tut.goalMission = 1; save.codexBook.introRead = true; save.codexBook.introSeen = true; save.storyPrologueSeen = true; save.storyActsSeen = { I: 1, II: 1, III: 1 }; });
+
+  // la oferta del Libro no se pone encima de otra capa de historia: espera y aparece cuando queda libre
+  await E(() => { state = 'mainmenu'; renderMainMenu(); save.codexBook.introSeen = false; save.codexBook.introRead = false; save.codexBook.offered = false; save.codexBook.ran = true; RUN_INTRO.open = true; codexBookOfferSoon(); });
+  await sleep(3200);
+  const held = await E(() => ({ dlg: gameDialogIsOpen(), offered: save.codexBook.offered }));
+  check('SECUENCIA.la_oferta_del_Libro_espera_si_la_ficha_del_Hechicero_esta_abierta', held.dlg === false && held.offered === false, held);
+  await E(() => { RUN_INTRO.open = false; });
+  const offUp = await waitFor(() => E(() => gameDialogIsOpen()), 6000);
+  const offerTxt2 = await E(() => (document.querySelector('#game-dialog') || {}).textContent || '');
+  check('SECUENCIA.al_quedar_libre_la_oferta_aparece_y_habla_el_Hechicero', offUp && /El Libro de la Horda/.test(offerTxt2) && /— El Hechicero/.test(offerTxt2) && /Leer el Libro/.test(offerTxt2), offerTxt2);
+  await shot('18_oferta_del_Hechicero');
+  await page.click('#game-dialog .gd-cancel'); await sleep(300);
+  await E(() => { save.codexBook.introSeen = true; save.codexBook.introRead = true; state = 'menu'; });
+
   /* ================= 4. COOPERATIVO / MULTIJUGADOR: nunca frena a otros ================= */
   await E(() => { window.__realNet = netInRoom; netInRoom = () => true; window.__go = 0; runIntroShow('hielo', () => { window.__go++; }); });
   await sleep(250);
@@ -212,7 +288,7 @@ async function boot(browser, opts) {
     return { st: state, txt: f ? f.textContent : '', btn: !!b3.querySelector('[data-book-frag="bosque"]'), un: codexBookFragmentUnlocked('bosque'), seen: codexBookFragmentSeen('bosque'), next: !document.getElementById('victory-next-btn').classList.contains('hidden'),
       sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth, cardBottom: r && r.bottom, nextTop: nb.top, ch: innerHeight,
       art: (() => { const cv = b3.querySelector('.vb-art'); if (!cv || !cv.width) return 0; const d = cv.getContext('2d').getImageData(0, 0, cv.width, cv.height).data; let n = 0; for (let k = 0; k < d.length; k += 400) if (d[k + 3] > 0) n++; return n; })() }; });
-  check('VICTORIA.la_tarjeta_trae_historia_y_lo_que_se_aprende_(equipo,_Gemas)', vb.st === 'victory' && /EL GUARDI[ÁA]N DE LA NIEBLA/.test(vb.txt) && /LO QUE LLEV[ÁA]S PUESTO/.test(vb.txt) && /Gemas/.test(vb.txt) && /monstruos de este mundo/.test(vb.txt) && vb.btn, vb);
+  check('VICTORIA.la_tarjeta_trae_historia_y_lo_que_se_aprende_(equipo,_Gemas)', vb.st === 'victory' && /EL GUARDI[ÁA]N DE LA NIEBLA/.test(vb.txt) && /LO QUE LLEV[ÁA]S PUESTO/.test(vb.txt) && /Gemas/.test(vb.txt) && /celda/.test(vb.txt) && /— El Hechicero Supremo/.test(vb.txt) && vb.btn, vb);
   check('VICTORIA.la_ilustracion_se_dibuja_(canvas_con_pixeles)', vb.art > 50, vb.art);
   check('VICTORIA.completar_la_arena_abre_el_fragmento_y_verlo_lo_marca_leido', vb.un && vb.seen, vb);
   check('VICTORIA.no_bloquea_(Continuar_visible)_y_sin_desborde_horizontal', vb.next && vb.sw <= vb.cw, vb);
