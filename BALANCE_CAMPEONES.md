@@ -244,3 +244,52 @@ Registrados en `js/champions/quality-five/register.js` antes del normalizador; `
 El normalizador no modificó sus estadísticas (ya estaban dentro de banda). Entry gate **PASS** (75 simulaciones, 25 candidatas, cero errores):
 daño medio a 150 s Solciju 8.018, Veyra 4.921, Brakk 4.609, Morveth 7.331, Aelith 8.687, todos vivos 3/3 y por debajo del techo del rol.
 Ability Gate estricto PASS. Duplicidad: Solciju/Morwen y Veyra/Ilkan DUPLICATE (sin resolver). Detalle: `docs/production/quality-five/README.md`.
+
+## Limpieza de horda por rol (18 octubre 2026)
+
+Herramienta: `tools/balance/clear-potential.js` (motor real, piloto automático de `tools/balance/autopilot.js`, Bosque, mismo equipo
+que el gate, sin equipo ni talentos, semillas fijas, **mediana** de varias corridas). Mide bajas personales (`player.stats.kills`), daño útil
+y daño de área (golpes de habilidad que alcanzan 3 o más enemigos en 150 ms). Agrupa por rol y compara con la **mediana de su rol** entre los
+campeones aprobados (`knownChampions`); los candidatos se miden pero no mueven la mediana. Extremo = fuera de ±35 % de esa mediana en bajas.
+Uso: `SITE=... [KEYS=..] [LEVEL=20] [DURATION_MS=60000] [SEEDS=..] [SHARD=i/n] node tools/balance/clear-potential.js salida.json`, y
+`MERGE=a.json,b.json node tools/balance/clear-potential.js` para unir fragmentos.
+
+Tres conjuntos medidos (18 aprobados; 5 semillas en los dos últimos): A) nivel 20, 40 s, 3 semillas, 44 clases; B) nivel 20, 60 s; C) nivel 4, 34 s.
+Bajas medianas y razón contra la mediana del rol (aprobados):
+
+| Rol | Campeón | A 40 s | B 60 s | C nivel 4 |
+|---|---|---:|---:|---:|
+| asesino | La Cazadora | 46 (1,59) | 68 (1,58) | 30 (1,50) |
+| asesino | Libertador / Ilkan / Musashi / Kael | 32 / 29 / 21 / 19 | 46 / 43 / 38 / 27 | 20 / 29 / 17 / 14 |
+| mago | Nigromante | 56 (1,33) | 82 (1,37) | 40 (1,38) |
+| mago | Mago / Myla / Axiom / Brasa / Iria / Morwen | 47 / 45 / 38 / 42 / 38 / 35 | 69 / 69 / 60 / 60 / 54 / 54 | 33 / 29 / 32 / 29 / 27 / 24 |
+| soporte | Farolero / Soporte / Profeta | 23 / 18 / 11 | 30 / 25 / 26 | 12 / 15 / 13 |
+| tanque | Aldric / El Eslabón / Segador | 23 / 21 / 17 | 31 / 29 / 24 | 13 / 14 / 8 |
+
+Lectura honesta: el contraste del informe original (Mago 66 contra Musashi 4 y Vhal 7) **no se reprodujo** con este procedimiento; Musashi queda en 0,72-0,88
+de su rol y Vhal (candidato) en 1,0-1,4. Solo **La Cazadora** está fuera de ±35 % en los tres conjuntos. Sin cambio, por quedar al borde o por no repetirse:
+Nigromante (1,33-1,38; su fuerza son las invocaciones y en el gate de 150 s está a 1,15 de su rol), Kael (0,63-0,70), Segador (0,62 solo en nivel 4; 0,81-0,83 en los otros),
+Profeta (0,61 con 40 s, 1,0 con 60 s: ruido), e Ilkan (1,0 en A y B; 1,45 en C porque la mediana de su rol en nivel 4 es baja). **Ilkan no se tocó**: paridad mecánica intacta.
+La varianza entre semillas es alta (rango de Cazadora 26-43 en C), por eso se usan 10 semillas para comparar antes y después.
+
+### Ajuste aplicado: La Cazadora
+
+Pasivas escaladas desde `SYLVA_CFG` en `js/data/champion-tuning.js` (antes estaban fijas en `js/champions/cazadora.js`). No se tocan vida, defensa, daño base, recarga, alcance ni habilidades; la referencia por rol (JSON y JS) no cambia.
+
+| Parámetro | Antes | Después |
+|---|---:|---:|
+| Rastreo: cadencia por marca (máx. 5) | +5 % | +3,5 % |
+| Rastreo: crítico extra acorralada | +25 % | +18 % |
+| Impulso: cadencia por punto (máx. 10) | +2 % | +1,4 % |
+| Daño de la flecha básica | ×1,0 | ×0,88 (solo básico) |
+
+Antes / después, 10 semillas (117, 431, 991, 577, 2027, 31, 64, 1234, 4242, 8888), mediana; razón contra la mediana del rol medida en la línea base:
+
+| Escenario | Bajas antes | Bajas después | Razón antes | Razón después | Daño antes | Daño después | Con vida |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Nivel 20, 60 s | 66,5 | 56,5 | 1,55 | 1,31 | 1.766 | 1.731 | 10/10 |
+| Nivel 4, 34 s | 32 | 28,5 | 1,60 | 1,43 | 440 | 408 | 10/10 |
+
+Queda dentro de ±35 % a nivel 20 y algo por encima a nivel 4 (1,43): se prefirió no seguir recortando para no quitarle identidad (cadencia creciente, movilidad, Presa). Pendiente: reconsiderar con telemetría real.
+
+Candidatos fuera de banda (solo informe, no se tocan; en pruebas): Oriel, Velmira, Saelis (soporte, 1,7-1,9 sobre la mediana de 3 aprobados), Brakk (tanque, 0,43), Facu GM y Orsa (asesino, alto). La mediana de soporte y tanque se apoya en solo 3 aprobados.

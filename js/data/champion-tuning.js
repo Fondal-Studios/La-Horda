@@ -61,6 +61,13 @@ const ILKAN_CFG = {
              maxPerRun:2, gapMs2:90000, lowHpPct:0.35, bossHpPct2:0.5},
   exhausted:{durationMs:6000, speedPct:-0.30, noTransformMs:20000}
 };
+// La Cazadora (clave "cazadora"): escalado de sus pasivas Rastreo (por marca sobre la Presa, máx. 5) e Impulso (por punto, máx. 10).
+// Balance de limpieza de horda (2026-10, tools/balance/clear-potential.js; ver BALANCE_CAMPEONES.md): antes: Rastreo cadencia 0,05 y crítico acorralada 0,25; Impulso cadencia 0,02 (velocidades sin cambio).
+const SYLVA_CFG = {
+  basicDmgMult: 0.88, // solo la flecha básica (antes 1,0); las habilidades no cambian
+  track:    {atkSpeedPerStack:0.035, speedPerStack:0.04, corneredCrit:0.18},
+  momentum: {atkSpeedPerPoint:0.014, speedPerPoint:0.01}
+};
 // PASIVAS DE LOS CAMPEONES CLÁSICOS (2026-10, Champion Bible §4): Aldric, Kael, Thalen, Elyra y Axiom no
 // tenían rasgo permanente. Son de IDENTIDAD (refuerzan su verbo), condicionales y chicas: no son DPS plano.
 // Medidas con tools/balance/known-champion-sim.js contra la referencia por rol (docs/bible/AUDIT_LOG.md A15).
