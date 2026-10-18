@@ -56,6 +56,7 @@
 <link rel="stylesheet" href="css/lanes.css">
 <link rel="stylesheet" href="css/hud-horda.css">
 <link rel="stylesheet" href="css/hud-mobile.css">
+<link rel="stylesheet" href="css/first-minute.css">
 </head>
 <body>
 
@@ -256,8 +257,9 @@
   <div id="starter-screen" class="screen hidden">
     <div id="starter-step-champ" class="starter-step">
       <div class="arena-title">Tu primer guardián</div>
-      <div class="lobby-sub">Elegí uno: es tu regalo para empezar la campaña, y después le elegís una skin. Los demás se desbloquean en la Tienda por <b id="starter-price">2.500</b> de oro.</div>
+      <div class="lobby-sub">Tocá uno: es tu regalo para empezar (gratis). Los demás se compran en la Tienda por <b id="starter-price">2.500</b> de oro.</div>
       <div id="starter-grid"></div>
+      <button class="btn small secondary" id="starter-all-btn" type="button">Ver todos los guardianes</button>
       <div class="starter-confirm hidden" id="starter-confirm">
         <div id="starter-confirm-text"></div>
         <div class="net-row" style="justify-content:center;"><button class="btn" id="starter-yes-btn">¡Lo quiero!</button><button class="btn secondary" id="starter-no-btn">Elegir otro</button></div>
@@ -828,6 +830,7 @@
 <script src="js/ui/welcome-picks.js"></script>
 <script src="js/ui/inventory-ui.js"></script>
 <script src="js/ui/starter-select.js"></script>
+<script src="js/ui/first-minute.js"></script>
 <script src="js/ui/buff-choice.js"></script>
 <script src="js/ui/loot-ceremony.js"></script>
 <script src="js/ui/end-screens.js"></script>

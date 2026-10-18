@@ -48,3 +48,48 @@
 #mainmenu-screen #alpha-onboarding button{ min-height:44px; padding:8px 12px; }
 #mainmenu-screen .hub-endless-lock, #mainmenu-screen #hub-endless-lock, #mainmenu-screen .ui-tag{ font-size:14px; }
 #mainmenu-screen .hub-endless-sub{ font-size:14px; } #mainmenu-screen .hub-endless-rank-txt{ font-size:15px; }
+
+/* ---------- UNA SOLA PANTALLA en celular acostado (844x390, 667x375) ----------
+   JUGAR, los modos competitivos y Códice / Guardianes / Tienda / Multijugador se ven juntos, sin deslizar.
+   La grilla reparte el alto que queda debajo de la cabecera (fr), así que se adapta a cada alto; si en un
+   aparato rarísimo no entra, el hub sigue deslizándose (min-height) y la cabecera queda fija.
+     fila 1-2: JUGAR (2 columnas)  |  Guerra de Cristales / Coliseo
+     fila 3:   Códice · Guardianes · Tienda · Multijugador (· Desafíos)
+     fila 4:   Horda Infinita · Ranking · Entrenamiento */
+@media (max-height:520px) and (min-width:560px){
+  #mainmenu-screen.hub-screen{ gap:0; padding-top:0; padding-bottom:8px; }
+  #mainmenu-screen .hub-top{ flex:none; position:sticky; top:0; z-index:5; margin:0 0 6px; padding:4px 0 6px; background:#120a07; box-shadow:0 5px 6px -3px rgba(0,0,0,.8); }
+  #mainmenu-screen .hub-profile{ min-height:44px; }
+  #mainmenu-screen .hub-main{ flex:1 1 auto; display:grid; min-height:296px; grid-template-columns:repeat(4,minmax(0,1fr)); grid-template-rows:1.45fr 1.45fr 1fr .9fr; gap:8px; }
+  #mainmenu-screen .hub-modes, #mainmenu-screen .hub-sections, #mainmenu-screen .hub-row-modes, #mainmenu-screen .hub-endless-row{ display:contents; }
+  #mainmenu-screen .hub-section-title{ display:none; }
+  #mainmenu-screen .hub-play{ grid-column:1 / 3; grid-row:1 / 3; min-height:0; margin:0; }
+  #mainmenu-screen #hub-crystal-btn{ grid-column:3 / 5; grid-row:1; }
+  #mainmenu-screen #hub-coliseum-btn{ grid-column:3 / 5; grid-row:2; }
+  #mainmenu-screen .hub-row-explore{ display:grid; grid-column:1 / -1; grid-row:3; grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); gap:8px; }
+  #mainmenu-screen #hub-endless-btn{ grid-column:1 / 3; grid-row:4; min-height:0; }
+  #mainmenu-screen #hub-endless-rank-btn{ grid-column:3; grid-row:4; min-height:0; }
+  #mainmenu-screen #alpha-onboarding{ grid-column:4; grid-row:4; display:flex; align-items:stretch; padding:0; border:0; background:none; min-height:0; }
+  #mainmenu-screen #alpha-onboarding details{ display:none; }
+  #mainmenu-screen #alpha-onboarding [data-train]{ flex:1; min-height:0; font-size:14px; line-height:1.15; padding:2px 6px; }
+  #mainmenu-screen .hub-tile, #mainmenu-screen .hub-tile-wide, #mainmenu-screen .hub-sections #mainmenu-quests-btn{ min-height:0; }
+  #mainmenu-screen .hub-tile-wide{ border-width:3px; padding:6px 12px; }
+  #mainmenu-screen .hub-tile-wide .hub-tile-ico{ width:48px; height:48px; font-size:1.6rem; }
+  #mainmenu-screen .hub-tile-wide .hub-tile-title{ font-size:20px; }
+  #mainmenu-screen .hub-row-explore .hub-tile{ padding:4px 8px; gap:8px; flex-wrap:nowrap; }
+  #mainmenu-screen .hub-row-explore .hub-tile-ico{ width:30px; height:30px; font-size:1.1rem; }
+  #mainmenu-screen .hub-row-explore .hub-tile-title{ flex:1 1 auto; min-width:0; font-size:16px; white-space:normal; letter-spacing:0; }
+  #mainmenu-screen .hub-row-explore .hub-tile-sub{ display:none; }
+  #mainmenu-screen .hub-row-explore .hub-tile-badge, #mainmenu-screen .hub-row-explore .hub-tile-offer{ top:2px; right:2px; bottom:auto; left:auto; width:auto; height:auto; min-width:0; min-height:0; font-size:14px; line-height:1.15; padding:0 4px; }
+  #mainmenu-screen .hub-row-explore #hub-badge-offer{ top:auto; bottom:2px; }
+  @media (max-width:720px){
+    #mainmenu-screen .hub-row-explore .hub-tile{ justify-content:center; padding:2px 3px; }
+    #mainmenu-screen .hub-row-explore .hub-tile-ico{ display:none; }
+    #mainmenu-screen .hub-row-explore .hub-tile-title{ flex:0 1 auto; font-size:14px; text-align:center; }
+  }
+  #mainmenu-screen .hub-endless{ padding:2px 12px; }
+  #mainmenu-screen .hub-endless-rank{ padding:2px 6px; }
+  #mainmenu-screen .hub-play-anim{ width:min(34vh,130px); height:min(34vh,130px); }
+  /* los avisos bajan debajo de la cabecera: no tapan ⚙, ⏏ ni el logo */
+  body:has(#mainmenu-screen:not(.hidden)) #toast-stack{ top:calc(64px + env(safe-area-inset-top,0px)); }
+}

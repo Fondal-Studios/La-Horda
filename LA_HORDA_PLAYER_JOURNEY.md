@@ -27,6 +27,13 @@ arregló esta auditoría.
 | ~14 s (4G simulado) | El botón pasa a "Toca para continuar". Antes del título baja solo lo necesario (14 MB, WebP); el arte de las arenas sigue bajando mientras mirás el menú. | ✅ (Antes: 1.366 imágenes y 51 MB antes del título, 52 s en 4G simulado.) En un teléfono real: **NOT VERIFIED IN RUNTIME**. |
 | ~12 s | "**Tu primer guardián**": 10 tarjetas con rol y frase (Tanque, Asesino, Mago…). Elige y confirma con "¡Lo quiero!". | ✅ Clara, linda, bien explicada. |
 
+**Primer minuto (PR "hub y primer minuto")**, medido en 844×390 y 667×375 con toques reales (capturas antes/después en `docs/ux/hub-primer-minuto/`):
+- "Tu primer guardián" ya no viene con el Mago marcado (la preselección era de código, `_starterPick = DEFAULT_CHAMPION`; además un doble toque en el botón del título caía sobre la carta del centro). Ahora muestra **4 recomendados** (Aldric, Thalen, Elyra, Kael) con una línea de "para quién", los nombres completos y **"Ver los 34 guardianes"** detrás.
+- La skin de regalo es saltable por defecto (nada marcado; el botón principal es "Seguir sin skin" y deja un vale en la Tienda).
+- Después: **3 líneas de historia** con "Empezar la práctica" / "Saltar la práctica", y el tutorial se juega **con el guardián elegido** (antes forzaba a Thalen).
+- **El Libro de la Horda** ya no se abre antes de jugar: se ofrece ("Leer el Libro" / "Después") al volver al menú tras la primera arena.
+- El hub entra en **una sola pantalla** (JUGAR, modos competitivos, Códice/Guardianes/Tienda/Multijugador, Horda Infinita) sin deslizar.
+
 **Antes de esta auditoría**, un perfil nuevo recibía de entrada:
 - todos los guardianes en **nivel 90**;
 - **todas las arenas** abiertas, más la Divina;
