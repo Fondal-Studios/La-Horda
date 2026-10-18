@@ -42,9 +42,23 @@ function goalChipText(){
   const mm = Math.floor(left/60) + ":" + String(left%60).padStart(2,"0");
   return "OBJETIVO: sobrevivir" + civ + " · " + mm;
 }
+// Celular apaisado: el objetivo solo se ve cuando CAMBIA (otro objetivo, no el reloj) o al tocar la pastilla de arena.
+// En escritorio sigue fijo. Mientras se ve, se dibuja sobre la pastilla (css/hud-mobile.css) y no mueve nada.
+const GOAL_PEEK_MS = 5000;
+let _goalKey = "", _goalPeekUntil = 0;
+function goalChipPeek(){ _goalPeekUntil = performance.now() + GOAL_PEEK_MS; }
 function goalChipTick(){
   const el = document.getElementById("goal-chip"); if(!el) return;
   const t = goalChipText();
+  if(typeof hudCompact==="function" && hudCompact()){
+    const now = performance.now(), key = t===null ? "" : t.replace(/\d+:\d\d/, "");
+    if(key !== _goalKey){ _goalKey = key; if(t!==null) _goalPeekUntil = now + GOAL_PEEK_MS; }
+    el.classList.add("peekable");
+    el.classList.toggle("hidden", t===null || now > _goalPeekUntil);
+    if(t!==null && el.textContent!==t) el.textContent = t;
+    return;
+  }
+  el.classList.remove("peekable");
   el.classList.toggle("hidden", t===null);
   if(t!==null && el.textContent!==t) el.textContent = t;
 }
@@ -60,6 +74,11 @@ function goalDefeatWhy(){
 function goalDefeatHtml(level){
   return `<div class="go-why"><b>¿Qué pasó?</b> ${goalDefeatWhy()}<br><b>Llegaste al nivel ${level} de ${GOAL_LEVELS}.</b> Probá de nuevo: cada intento te acerca al jefe.</div>`;
 }
+// Tocar la pastilla de arena (celular apaisado) muestra el objetivo otra vez unos segundos.
+(function(){
+  const bind = ()=>{ const p = document.querySelector("#hud .top-pill"); if(p) p.addEventListener("pointerdown", ()=>{ if(typeof hudCompact==="function" && hudCompact()) goalChipPeek(); }); };
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", bind); else bind();
+})();
 // Resumen al ganar la primera arena: todo lo que hay que saber, en pocas líneas.
 function goalVictoryRecapHtml(data){
   if(!data) return "";

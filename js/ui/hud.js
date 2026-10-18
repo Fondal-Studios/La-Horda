@@ -306,7 +306,7 @@ function renderParty(){
     wrap.innerHTML = "";
     allies.forEach((a,i)=>{
       const row = document.createElement("div");
-      row.className = "ally-row";
+      row.className = "ally-row"; row.title = a.netName && a.netName!=="BOT" ? a.netName+" · "+hudClassName(a.cls) : hudClassName(a.cls); // el nombre completo (en celular la fila es solo el ícono)
       row.id = "ally-row-"+i;
       row.innerHTML = `
         <div class="ally-badge" style="color:${a.cls.color};background:${a.cls.color}22;">${a.cls.icon}</div>
