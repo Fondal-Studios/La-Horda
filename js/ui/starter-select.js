@@ -34,12 +34,15 @@ function _starterOrdered(){
 function _starterWhy(id){ const r = STARTER_RECOMMENDED.find(x=>x.id===id); return r ? r.why : ""; }
 function openStarterSelect(onDone, opts){
   _starterJoins = !!(opts && opts.joinsRoom);
-  _starterPick = null; _starterDone = onDone || null; _starterAll = false; _starterOpenedAt = performance.now();
+  _starterPick = null; _starterDone = onDone || null; _starterAll = false; _starterOpenedAt = performance.now() + 1e6; // se fija al terminar de dibujar (abajo)
   setState("starter");
   // ya tiene guardián y le falta la skin de regalo (cerró el juego en el medio): directo al paso 2
-  if(!needsStarterChampion() && typeof needsStarterSkin==="function" && needsStarterSkin()){ openStarterSkinStep(); return; }
+  if(!needsStarterChampion() && typeof needsStarterSkin==="function" && needsStarterSkin()){ openStarterSkinStep(); _starterOpenedAt = performance.now(); return; }
   _starterShowStep("champ");
   renderStarterSelect();
+  // la marca va DESPUÉS de dibujar: si la máquina se trabó dibujando, los toques que ya estaban en cola (y su ev.timeStamp es anterior)
+  // siguen contando como "recién abierta la pantalla"
+  _starterOpenedAt = performance.now();
 }
 function _starterShowStep(step){
   const a = document.getElementById("starter-step-champ"), b = document.getElementById("starter-step-skin");
@@ -75,10 +78,10 @@ function renderStarterSelect(){
     </button>`;
   }).join("");
   grid.querySelectorAll(".starter-card").forEach(card=>{
-    card.addEventListener("click", ()=>{
+    card.addEventListener("click", ev=>{
       // doble toque en el botón del título: el segundo caía sobre la carta que quedaba debajo (el Mago, justo al centro). Las pruebas
       // automáticas con webdriver (que clickean enseguida) no pasan por acá, igual que el resto de lo nuevo del primer minuto.
-      if(typeof firstMinuteEnabled==="function" && firstMinuteEnabled() && performance.now() - _starterOpenedAt < STARTER_TAP_GUARD_MS) return;
+      if(typeof firstMinuteEnabled==="function" && firstMinuteEnabled() && (ev.timeStamp || performance.now()) - _starterOpenedAt < STARTER_TAP_GUARD_MS) return;
       _starterPick = card.getAttribute("data-champ");
       grid.querySelectorAll(".starter-card").forEach(c2=>c2.classList.toggle("sel", c2===card));
       _starterShowConfirm();
