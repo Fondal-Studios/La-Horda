@@ -3,7 +3,7 @@
    js/ui/codex/codex-book.js
    EL LIBRO DE LA HORDA — visor de libro animado (pasa páginas en 3D con CSS, ilustraciones en canvas:
    js/ui/codex/codex-book-art.js). Cuatro usos, todos con el mismo visor:
-     "intro"     gran introducción, una vez, tras elegir al primer campeón (codexBookMaybeIntro)
+     "intro"     gran introducción, una vez, OFRECIDA al volver de la primera arena (codexBookOffer → codexBookMaybeIntro)
      "fragment"  fragmento de una arena ganada (botón en la victoria y lista del Códice)
      "short"     carga corta antes de entrar a una arena de campaña en solitario (codexBookShort)
      "revisit"   lo que se vuelve a abrir desde Códice › El Libro
@@ -172,6 +172,30 @@ function codexBookMaybeIntro(next, opts){
   try{ ok = codexBookPlay("intro", codexBookIntroPages(), {onEnd:()=>{ if(next) next(); }}); }catch(err){ console.error("No se pudo abrir el Libro:", err); ok = false; }
   return ok;
 }
+// OFERTA (no obliga): al volver al menú tras la primera arena, un cartel "Leer el Libro / Después". Una sola vez.
+function codexBookOffer(){
+  if(typeof codexBookOfferDue!=="function" || !codexBookOfferDue() || BOOK.open) return false;
+  if(typeof gameDialogIsOpen==="function" && gameDialogIsOpen()) return false;
+  codexBookSave().offered = true; if(typeof persist==="function") persist();
+  const msg = "📖 El Libro de la Horda\nPasaste tu primera arena. ¿Querés leer cómo empezó todo? Son 8 páginas y podés saltarlas cuando quieras. Queda siempre en Códice › El Libro.";
+  gameConfirm(msg, {okText:"Leer el Libro", cancelText:"Después"}).then(ok=>{
+    if(ok && typeof state!=="undefined" && state==="mainmenu") codexBookMaybeIntro(null, {});
+  });
+  return true;
+}
+// Gancho de estados: terminar una partida marca "ya jugó"; al llegar al menú se ofrece el Libro (después de que el hub dibuje).
+(function(){
+  if(typeof setState!=="function") return;
+  const base = setState;
+  setState = function(s){
+    const r = base.apply(this, arguments);
+    try{
+      if(s==="victory" || s==="gameover") codexBookMarkRan();
+      if(s==="mainmenu") setTimeout(()=>{ try{ codexBookOffer(); }catch(e){} }, 900);
+    }catch(e){}
+    return r;
+  };
+})();
 // Releer la introducción desde el Códice (siempre disponible).
 function codexBookOpenIntro(onEnd){ return codexBookPlay("revisit", codexBookIntroPages(), {onEnd}); }
 // 2. Fragmento de una arena (solo si la ganaste).
@@ -206,7 +230,7 @@ document.addEventListener("click", ev=>{
 function codexBookBadgeSync(){
   const tile = document.getElementById("mainmenu-codex-btn"); if(!tile) return;
   let b = tile.querySelector(".cxb-new");
-  const pending = typeof codexBookSave==="function" && (!codexBookSave().introSeen || codexBookUnread().length > 0) && !(typeof needsStarterChampion==="function" && needsStarterChampion());
+  const pending = typeof codexBookSave==="function" && ((!codexBookSave().introSeen && (codexBookSave().ran || codexBookSave().offered)) || codexBookUnread().length > 0) && !(typeof needsStarterChampion==="function" && needsStarterChampion());
   if(pending && !b){ b = document.createElement("span"); b.className = "cxb-new"; b.textContent = "NUEVO"; b.setAttribute("aria-label", "Libro nuevo en el Códice"); tile.appendChild(b); }
   else if(!pending && b) b.remove();
 }

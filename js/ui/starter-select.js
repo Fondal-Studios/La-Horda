@@ -13,12 +13,28 @@ let _starterJoins = false; // el camino que sigue es entrar a la sala de otro: e
 let _starterPick = null, _starterDone = null, _starterSkinPick = null, _starterSkinBusy = false, _starterJustGot = null;
 const STARTER_ROLE_LABEL = {tanque:"Tanque", asesino:"Asesino", mago:"Mago", soporte:"Soporte"};
 
-// Sin elección explícita, el regalo propuesto es el Mago (DEFAULT_CHAMPION): ya viene marcado y un toque en
-// "Sí" alcanza; tocar otra carta lo cambia. Solo se marca si de verdad está entre los guardianes de regalo.
+// PRIMER MINUTO: la pantalla muestra 4 guardianes recomendados para quien nunca jugó (uno por rol) y "Ver todos" detrás
+// (antes eran 34 tarjetas en scroll). NADA viene preseleccionado: antes se marcaba el Mago solo (y un toque del botón del
+// título (o un doble toque) que "atravesaba" a la pantalla nueva dejaba una carta marcada sin querer). Por eso, además, las
+// cartas ignoran toques en los primeros STARTER_TAP_GUARD_MS después de abrir la pantalla.
+const STARTER_RECOMMENDED = [
+  {id:"tanque",   why:"Aguanta y protege. Perdona errores: ideal para aprender."},
+  {id:"mago",     why:"Pega de lejos con fuego, escarcha y rayos. Fácil de entender."},
+  {id:"soporte",  why:"Cura y protege al equipo. Juega en segunda línea."},
+  {id:"guerrero", why:"Rápido y letal, con trampas. Pide algo más de puntería."}
+];
+const STARTER_TAP_GUARD_MS = 400;
+let _starterOpenedAt = 0, _starterAll = false;
 function _starterOptions(){ return CHAMPION_CATALOG.filter(c=>championMeta(c.id).starterEligible && shopChampionPurchasable(c.id)); }
+// Recomendados primero (en el orden de arriba), después el resto del catálogo.
+function _starterOrdered(){
+  const opts = _starterOptions(), rec = STARTER_RECOMMENDED.map(r=>opts.find(c=>c.id===r.id)).filter(Boolean);
+  return {rec, all: rec.concat(opts.filter(c=>!rec.includes(c)))};
+}
+function _starterWhy(id){ const r = STARTER_RECOMMENDED.find(x=>x.id===id); return r ? r.why : ""; }
 function openStarterSelect(onDone, opts){
   _starterJoins = !!(opts && opts.joinsRoom);
-  _starterPick = _starterOptions().some(c=>c.id===DEFAULT_CHAMPION) ? DEFAULT_CHAMPION : null; _starterDone = onDone || null;
+  _starterPick = null; _starterDone = onDone || null; _starterAll = false; _starterOpenedAt = performance.now();
   setState("starter");
   // ya tiene guardián y le falta la skin de regalo (cerró el juego en el medio): directo al paso 2
   if(!needsStarterChampion() && typeof needsStarterSkin==="function" && needsStarterSkin()){ openStarterSkinStep(); return; }
@@ -34,25 +50,35 @@ function _starterShowStep(step){
 function _starterFinish(){
   const next = _starterDone; _starterDone = null;
   const go = next || (()=>{ setState("mainmenu"); renderMainMenu(); });
-  // EL LIBRO DE LA HORDA: tras elegir al primer campeón, la gran introducción (js/ui/codex/codex-book.js). Se puede saltear
-  // siempre y nunca se muestra si el camino que sigue es unirse a una sala (ahí no se demora a nadie).
-  if(typeof codexBookMaybeIntro==="function" && codexBookMaybeIntro(go, {joinsRoom:_starterJoins})) return;
+  // EL LIBRO DE LA HORDA ya no se abre acá (eran 8 páginas antes de jugar): se OFRECE al volver de la primera arena
+  // (codexBookOffer, js/ui/codex/codex-book.js) y queda siempre en Códice › El Libro.
+  if(typeof firstMinuteMark==="function" && !_starterJoins) firstMinuteMark(); // recién eligió guardián: toca la historia corta antes del tutorial
   go();
 }
 function renderStarterSelect(){
   const pr = document.getElementById("starter-price"); if(pr) pr.textContent = fmtGold(CHAMPION_PRICE_GOLD);
   const grid = document.getElementById("starter-grid"); if(!grid) return;
-  grid.innerHTML = _starterOptions().map(c=>{
-    const cls = CLASSES[c.id];
-    return `<button class="gallery-card starter-card ${_starterPick===c.id?"sel":""}" data-champ="${c.id}">
+  const ord = _starterOrdered(), recIds = new Set(ord.rec.map(c=>c.id));
+  grid.classList.toggle("all", _starterAll);
+  const allBtn = document.getElementById("starter-all-btn");
+  if(allBtn){
+    allBtn.classList.toggle("hidden", ord.all.length <= ord.rec.length);
+    allBtn.textContent = _starterAll ? "‹ Solo los recomendados" : `Ver los ${ord.all.length} guardianes`;
+  }
+  grid.innerHTML = ord.all.map(c=>{
+    const cls = CLASSES[c.id], reco = recIds.has(c.id);
+    return `<button class="gallery-card starter-card ${reco?"reco":"more"} ${_starterPick===c.id?"sel":""}" data-champ="${c.id}">
       <canvas class="champ-anim starter-anim" width="110" height="110" data-class-key="${c.id}" data-idle="1" style="background:${cls.color}1c;"></canvas>
       <div class="gallery-card-name">${championShortName(c.id)}</div><div class="champ-title">${championTitle(c.id)}</div>
       ${(STARTER_ROLE_LABEL[cls.roleCategory]||"") && STARTER_ROLE_LABEL[cls.roleCategory]!==championShortName(c.id) ? `<div class="mychamp-meta">${STARTER_ROLE_LABEL[cls.roleCategory]}</div>` : ""}
-      <div class="starter-lore">${c.lore}</div>
+      <div class="starter-lore">${reco ? _starterWhy(c.id) : c.lore}</div>
     </button>`;
   }).join("");
   grid.querySelectorAll(".starter-card").forEach(card=>{
     card.addEventListener("click", ()=>{
+      // doble toque en el botón del título: el segundo caía sobre la carta que quedaba debajo (el Mago, justo al centro). Las pruebas
+      // automáticas con webdriver (que clickean enseguida) no pasan por acá, igual que el resto de lo nuevo del primer minuto.
+      if(typeof firstMinuteEnabled==="function" && firstMinuteEnabled() && performance.now() - _starterOpenedAt < STARTER_TAP_GUARD_MS) return;
       _starterPick = card.getAttribute("data-champ");
       grid.querySelectorAll(".starter-card").forEach(c2=>c2.classList.toggle("sel", c2===card));
       _starterShowConfirm();
@@ -85,6 +111,11 @@ function grantStarterChampion(key){
   persistNow();
   return true;
 }
+document.getElementById("starter-all-btn").addEventListener("click", ()=>{
+  _starterAll = !_starterAll;
+  renderStarterSelect();
+  const sc = document.getElementById("starter-screen"); if(sc) sc.scrollTop = 0;
+});
 document.getElementById("starter-yes-btn").addEventListener("click", ()=>{
   if(!_starterPick || !grantStarterChampion(_starterPick)) return;
   // el "¡X se une a tu equipo!" (neutro: hay guardianas) va en el subtítulo del paso 2 (antes era un aviso arriba a la derecha que tapaba el final
@@ -115,7 +146,7 @@ function _starterEsc(t){ return String(t==null ? "" : t).replace(/[&<>"]/g, c=>(
 function openStarterSkinStep(){
   ensureOwnedSelection(); // la skin es para el guardián de regalo (el único tuyo en un perfil nuevo)
   const opts = starterSkinOptions(selectedClass);
-  _starterSkinPick = opts.length ? opts[0].id : null; _starterSkinBusy = false;
+  _starterSkinPick = null; _starterSkinBusy = false; // saltable por defecto: nada marcado, el botón principal es "Elegir después"
   if(state!=="starter") setState("starter");
   _starterShowStep("skin");
   renderStarterSkinStep();
@@ -135,15 +166,15 @@ function renderStarterSkinStep(){
       <div class="gallery-card-name">🎟 Vale de skin</div>
       <div class="starter-lore">Canjealo cuando quieras en la Tienda por cualquier skin o croma: el precio queda cubierto.</div></div>`;
     if(txt) txt.innerHTML = "Tu vale te espera en la Tienda.";
-    if(yes){ yes.textContent = "¡Seguir!"; yes.disabled = false; if(yes.parentElement) yes.parentElement.classList.remove("hidden"); }
+    if(yes){ yes.textContent = "¡Seguir!"; yes.classList.remove("hidden"); yes.disabled = false; if(yes.parentElement) yes.parentElement.classList.remove("hidden"); }
     if(later) later.classList.add("hidden");
     startChampAnimLoop();
     return;
   }
   const nm = `<b style="color:${cls.color||"#ffcf5c"}">${_starterEsc(cls.name)}</b>`;
   if(sub) sub.innerHTML = _starterJustGot===k
-    ? `🎁 ¡${nm} se une a tu equipo! Ahora elegí su skin: es tuya y la llevás puesta desde ya.`
-    : `Elegí una skin para ${nm}: es tuya y la llevás puesta desde ya.`;
+    ? `🎁 ¡${nm} se une a tu equipo! Si querés, elegí su skin (es tuya y la llevás puesta). Si no, seguí: te guardamos un vale para la Tienda.`
+    : `Si querés, elegí una skin para ${nm} (es tuya y la llevás puesta). Si no, seguí: te guardamos un vale para la Tienda.`;
   grid.innerHTML = opts.map(o=>`<button class="gallery-card starter-skin-card ${_starterSkinPick===o.id?"sel":""}" data-skin-gift="${o.id}">
       <span class="starter-skin-own hidden">¡Es tuya!</span>
       <canvas class="champ-anim starter-anim" width="110" height="110" data-class-key="${k}" data-skin="${o.id}" data-idle="1" style="background:${cls.color||"#888"}1c;"></canvas>
@@ -151,10 +182,15 @@ function renderStarterSkinStep(){
       <div class="mychamp-meta starter-skin-tag" style="color:${o.color}">${o.kind==="croma" ? "◆" : "✦"} ${_starterEsc(o.tag)}</div>
       <div class="starter-lore">${_starterEsc(o.lore)}</div>
     </button>`).join("");
-  const setTxt = ()=>{ const o = opts.find(x=>x.id===_starterSkinPick); if(txt && o) txt.innerHTML = `¿Te quedás con <b>${_starterEsc(o.name)}</b>?`; };
-  setTxt();
-  if(yes){ yes.textContent = "¡La quiero!"; yes.disabled = false; if(yes.parentElement) yes.parentElement.classList.remove("hidden"); }
+  const setTxt = ()=>{
+    const o = opts.find(x=>x.id===_starterSkinPick);
+    if(txt) txt.innerHTML = o ? `¿Te quedás con <b>${_starterEsc(o.name)}</b>?` : "Sin apuro: la skin se puede elegir cuando quieras en la Tienda.";
+    if(yes){ yes.textContent = "¡La quiero!"; yes.classList.toggle("hidden", !o); }
+    if(later){ later.textContent = o ? "Elegir después" : "Seguir sin skin ›"; later.classList.toggle("secondary", !!o); }
+  };
+  if(yes){ yes.disabled = false; if(yes.parentElement) yes.parentElement.classList.remove("hidden"); }
   if(later){ later.classList.remove("hidden"); later.disabled = false; }
+  setTxt();
   grid.querySelectorAll("[data-skin-gift]").forEach(card=> card.addEventListener("click", ()=>{
     if(_starterSkinBusy) return;
     _starterSkinPick = card.getAttribute("data-skin-gift");

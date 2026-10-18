@@ -6,7 +6,10 @@
    js/data/codex-book-text.js y el visor animado en js/ui/codex/codex-book.js.
 
    Qué se muestra y cuándo (todo es local, nunca viaja por la red):
-     1. INTRODUCCIÓN grande: una sola vez, al terminar la elección del primer campeón (starter-select.js).
+     1. INTRODUCCIÓN grande (8 páginas): ya NO se abre antes de jugar. Se OFRECE una sola vez al volver al menú después de la
+        primera arena (victoria o derrota): "Leer el Libro" o "Después" (codexBookOffer, js/ui/codex/codex-book.js). Si dice
+        "Después" queda siempre en Códice › El Libro. Antes (PR "primer minuto") se abría tras elegir guardián, o sea
+        8 páginas de lectura antes de tocar un botón de juego.
      2. FRAGMENTOS: uno por arena de la campaña, se ganan al completarla y aparecen en la pantalla de
         victoria (story.js); quedan siempre releíbles en Códice › El Libro.
      3. CARGA CORTA: una página de libro antes de entrar a una arena de campaña en solitario
@@ -15,7 +18,8 @@
      - NUNCA bloquea: siempre hay "Saltar", Esc o tocar; omitir cuenta como visto.
      - Nunca arranca por sí sola dentro de una sala/partida online ni jugando (no frena a nadie).
      - Todo se puede revisitar desde el Códice.
-   Guardado: save.codexBook = {v, introSeen, introAt, frag:{arena:ts}, shortCount:{arena:n}, shortOff}.
+   Guardado: save.codexBook = {v, introSeen, introAt, ran, offered, frag:{arena:ts}, shortCount:{arena:n}, shortOff}.
+   ran = ya terminó una partida (victoria o derrota); offered = ya se le ofreció el Libro (no se repite).
    Guardados anteriores: ver codexBookMigrate (no pierde nada; quien ya tenía campeón no ve la intro
    a la fuerza, y las arenas ya superadas quedan como fragmentos "leídos" pero releíbles).
    ============================================================ */
@@ -23,7 +27,7 @@ const CODEX_BOOK_V = 1;
 const BOOK_SHORT_MAX = 3;      // veces que la carga corta se muestra sola por arena
 const BOOK_PAGE_MIN_MS = 600;  // un toque apurado no saltea una página sin leer (el botón Saltar sí corta)
 
-function codexBookDefault(){ return {v:CODEX_BOOK_V, introSeen:false, introAt:0, frag:{}, shortCount:{}, shortOff:false}; }
+function codexBookDefault(){ return {v:CODEX_BOOK_V, introSeen:false, introAt:0, ran:false, offered:false, frag:{}, shortCount:{}, shortOff:false}; }
 function _cbObj(o){ return o && typeof o==="object" && !Array.isArray(o) ? o : {}; }
 // Normaliza lo que haya guardado (o nada) sin perder campos desconocidos. `raw` = el guardado leído del disco.
 function codexBookMigrate(raw){
@@ -31,7 +35,7 @@ function codexBookMigrate(raw){
   const cur = raw.codexBook;
   if(cur && typeof cur==="object"){
     const out = Object.assign(codexBookDefault(), cur);
-    out.v = CODEX_BOOK_V; out.introSeen = !!out.introSeen; out.introAt = +out.introAt || 0; out.shortOff = !!out.shortOff;
+    out.v = CODEX_BOOK_V; out.introSeen = !!out.introSeen; out.introAt = +out.introAt || 0; out.shortOff = !!out.shortOff; out.ran = !!out.ran; out.offered = !!out.offered;
     out.frag = Object.assign({}, _cbObj(cur.frag));
     out.shortCount = {}; const sc = _cbObj(cur.shortCount); for(const k in sc) out.shortCount[k] = Math.max(0, sc[k]|0);
     return out;
@@ -87,6 +91,14 @@ function codexBookIntroDue(opts){
   if(opts && opts.joinsRoom) return false;
   return codexBookCanAuto();
 }
+// OFERTA tras la primera arena: toca si no vio la intro, no se le ofreció todavía y ya terminó una partida.
+function codexBookOfferDue(){
+  const cb = codexBookSave();
+  if(cb.introSeen || cb.offered || !cb.ran) return false;
+  if(typeof state!=="undefined" && state!=="mainmenu") return false;
+  return codexBookCanAuto();
+}
+function codexBookMarkRan(){ const cb = codexBookSave(); if(cb.ran) return; cb.ran = true; _cbPersist(); }
 function codexBookMarkIntro(){
   const cb = codexBookSave(); if(cb.introSeen) return;
   cb.introSeen = true; cb.introAt = Date.now(); _cbPersist();
