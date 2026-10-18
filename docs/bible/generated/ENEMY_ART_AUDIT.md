@@ -164,7 +164,7 @@ Jefes y subjefes: estado de arte completo (cuerpos prestados, poses faltantes, e
 | cm_raptor | subelite | 2.17 | ×2.3 | PASS | `assets/sprites/arenas/ciudad/cm_raptor/atlas.webp` |
 | cm_planidera | subelite | 1.98 | ×2.1 | PASS | `assets/sprites/arenas/ciudad/cm_planidera/atlas.webp` |
 | cm_campanero | elite | 2.95 | ×3.1 | FIX (vigilar) | `assets/sprites/arenas/ciudad/cm_campanero/atlas.webp` |
-| cm_verdugo | elite | 2.82 | ×3 | FIX (vigilar) | `assets/sprites/arenas/ciudad/cm_verdugo/atlas.webp` |
+| cm_verdugo | elite | 0.99 | ×1.1 | PASS | `assets/sprites/arenas/ciudad/cm_verdugo/atlas.webp` |
 | cm_maestro | subjefe | 1.03 | ×1.1 | PASS | `assets/sprites/arenas/ciudad/cm_maestro/atlas.webp` |
 | cm_dama | subjefe | 1.17 | ×1.2 | PASS | `assets/sprites/arenas/ciudad/cm_dama/atlas.webp` |
 | cm_tramoyista | subjefe | 1.11 | ×1.2 | PASS | `assets/sprites/arenas/ciudad/cm_tramoyista/atlas.webp` |

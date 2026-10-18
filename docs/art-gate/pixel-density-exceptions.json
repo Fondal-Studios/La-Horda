@@ -1,0 +1,386 @@
+{
+ "nota": "Excepciones documentadas del gate tools/art/pixel-density.js (docs/ART_BIBLE.md §14). Cada entrada es deuda de arte conocida, con su plan; --strict solo falla por desvíos que NO estén acá. Al rehacer un asset se borra su entrada.",
+ "exceptions": [
+  {
+   "id": "assets/sprites/arenas/ciudad/cm_acechante",
+   "issues": [
+    "PIXEL_GRUESO"
+   ],
+   "motivo": "Arte chico ampliado (> 2,4 u/px). Plan: rehacer a resolución nativa con tools/art/pixrig (como el Verdugo); ver docs/ART_REPLACEMENT_QUEUE.md y docs/bible/generated/ENEMY_ART_AUDIT.md."
+  },
+  {
+   "id": "assets/sprites/arenas/ciudad/cm_campanero",
+   "issues": [
+    "PIXEL_GRUESO"
+   ],
+   "motivo": "Arte chico ampliado (> 2,4 u/px). Plan: rehacer a resolución nativa con tools/art/pixrig (como el Verdugo); ver docs/ART_REPLACEMENT_QUEUE.md y docs/bible/generated/ENEMY_ART_AUDIT.md."
+  },
+  {
+   "id": "assets/sprites/arenas/ciudad/cm_perro",
+   "issues": [
+    "PIXEL_GRUESO"
+   ],
+   "motivo": "Arte chico ampliado (> 2,4 u/px). Plan: rehacer a resolución nativa con tools/art/pixrig (como el Verdugo); ver docs/ART_REPLACEMENT_QUEUE.md y docs/bible/generated/ENEMY_ART_AUDIT.md."
+  },
+  {
+   "id": "assets/sprites/arenas/fortaleza/dragon_forja",
+   "issues": [
+    "PIXEL_GRUESO"
+   ],
+   "motivo": "Arte chico ampliado (> 2,4 u/px). Plan: rehacer a resolución nativa con tools/art/pixrig (como el Verdugo); ver docs/ART_REPLACEMENT_QUEUE.md y docs/bible/generated/ENEMY_ART_AUDIT.md."
+  },
+  {
+   "id": "assets/sprites/arenas/minas/mn_devoraluz",
+   "issues": [
+    "PIXEL_GRUESO"
+   ],
+   "motivo": "Arte chico ampliado (> 2,4 u/px). Plan: rehacer a resolución nativa con tools/art/pixrig (como el Verdugo); ver docs/ART_REPLACEMENT_QUEUE.md y docs/bible/generated/ENEMY_ART_AUDIT.md."
+  },
+  {
+   "id": "assets/sprites/enemies/bosque/dama_bosque",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Degradé suave con pocos píxeles nítidos (ilustración reducida). Plan: rehacer o repintar a píxel nativo con revisión humana de arte."
+  },
+  {
+   "id": "assets/sprites/enemies/infernal/demonio_mago",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Degradé suave con pocos píxeles nítidos (ilustración reducida). Plan: rehacer o repintar a píxel nativo con revisión humana de arte."
+  },
+  {
+   "id": "assets/sprites/enemies/infernal/demonio_menor",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Degradé suave con pocos píxeles nítidos (ilustración reducida). Plan: rehacer o repintar a píxel nativo con revisión humana de arte."
+  },
+  {
+   "id": "assets/sprites/enemies/infernal/golem",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Degradé suave con pocos píxeles nítidos (ilustración reducida). Plan: rehacer o repintar a píxel nativo con revisión humana de arte."
+  },
+  {
+   "id": "assets/vfx/abismo/tex_carne.png",
+   "issues": [
+    "PALETA_EXCESIVA"
+   ],
+   "motivo": "Textura de suelo con paleta excesiva. Plan: reducir paleta en la próxima pasada de arte del Abismo."
+  },
+  {
+   "id": "assets/vfx/abismo/tex_tentaculo.png",
+   "issues": [
+    "PALETA_EXCESIVA"
+   ],
+   "motivo": "Textura de suelo con paleta excesiva. Plan: reducir paleta en la próxima pasada de arte del Abismo."
+  },
+  {
+   "id": "assets/sprites/battlefield/scavenger",
+   "issues": [
+    "PIXEL_FINO",
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/battlefield/thornbeast",
+   "issues": [
+    "PIXEL_FINO",
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/battlefield/ab_carcelero",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/battlefield/cm_dama",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/battlefield/cm_maestro",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/battlefield/cm_presentador",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/battlefield/cm_tramoyista",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/battlefield/golem_cuerpos",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/battlefield/king-colossus",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/battlefield/micelio",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/battlefield/minotauro",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/battlefield/mn_cerbero",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/battlefield/mn_titan",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/battlefield/stone-dragon",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Retrato de jefe de campo de batalla casi ilustración (≈0,5-0,9 u/px, degradé suave). Plan: pasar por tools/art/battlefield_pixelize.py (como el Dragón de la Forja) con revisión humana de arte, uno por uno."
+  },
+  {
+   "id": "assets/sprites/bosses/acuatica/leviatan",
+   "issues": [
+    "PIXEL_GRUESO"
+   ],
+   "motivo": "Arte chico ampliado (> 2,4 u/px). Plan: rehacer a resolución nativa con tools/art/pixrig (como el Verdugo); ver docs/ART_REPLACEMENT_QUEUE.md y docs/bible/generated/ENEMY_ART_AUDIT.md."
+  },
+  {
+   "id": "assets/sprites/bosses/bosque/jinete_sin_cabeza/v2",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Degradé suave con pocos píxeles nítidos (ilustración reducida). Plan: rehacer o repintar a píxel nativo con revisión humana de arte."
+  },
+  {
+   "id": "assets/sprites/bosses/infernal/demonio_mayor",
+   "issues": [
+    "ILUSTRACION"
+   ],
+   "motivo": "Degradé suave con pocos píxeles nítidos (ilustración reducida). Plan: rehacer o repintar a píxel nativo con revisión humana de arte."
+  },
+  {
+   "id": "assets/sprites/bosses/laberinto/minotauro/v3",
+   "issues": [
+    "PIXEL_GRUESO"
+   ],
+   "motivo": "Arte chico ampliado (> 2,4 u/px). Plan: rehacer a resolución nativa con tools/art/pixrig (como el Verdugo); ver docs/ART_REPLACEMENT_QUEUE.md y docs/bible/generated/ENEMY_ART_AUDIT.md."
+  },
+  {
+   "id": "assets/ui/codex/arenas/abismo.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/arenas/acuatica.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/arenas/bosque.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/arenas/ciudad.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/arenas/divina.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/arenas/fortaleza.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/arenas/hielo.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/arenas/infernal.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/arenas/laberinto.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/arenas/micelial.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/arenas/minas.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/minas/acechador.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/minas/cerbero.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/minas/consumidor.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/minas/devoraluz_full.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/minas/devoraluz.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/minas/esclavo.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/minas/escupidor.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/minas/insecto.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/minas/minero.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/minas/titan_full.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  },
+  {
+   "id": "assets/ui/codex/minas/titan.jpg",
+   "issues": [
+    "ILUSTRACION",
+    "FORMATO_JPG"
+   ],
+   "motivo": "Panorámica/retrato ilustrado del Códice (JPG), no es un sprite de partida. Plan: rehacer a píxel nativo con battlefield_pixelize.py o pixrig y revisión humana; el Códice ya dibuja los sprites reales de enemigos y jefes."
+  }
+ ]
+}
