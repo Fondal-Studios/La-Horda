@@ -10,7 +10,7 @@
 - **Paleta sugerida:** azul mar `#5aa8e4` (color de clase, `ascension/catalog.js:27`), espuma `#d4ecff`, azul profundo `#0c3c6c` y `#3c84cc` (atlas), turquesa `#7af0e0` (acento del tema `tide`), blanco `#ffffff`, contorno `#0a1a34`.
 - **Motivos visuales:** ola con cresta, remolino, espuma, burbujas, corriente en vetas, silueta abisal bajo el agua, quilla.
 - **NO debe parecerse a:** **Baltra** (bronce y metal sumergido: el agua de Facu es azul vivo y fluida, sin bronce); **Mago/Thalen** (hielo cristalino: aquí no hay cristales ni copos, solo agua curva); **Bront** (acero); **Khepri** (verde).
-- **Estado actual del VFX (verificado en código):** Tema procedural `tide` (`themes.js:17`, forma `wave`, motivos wave/drop/shell/bubble). `skill-fx-a/c/facu_gm.js`: Corriente = estallido + teja de haz, Presión = nova, Ola = trazo ancho 56, definitiva = nova. Proyectil básico `wave` (`ascension/register.js:10`).
+- **Estado actual del VFX (verificado en código):** Tema procedural `tide` (`themes.js:16`, forma `wave`, motivos wave/drop/shell/bubble). `skill-fx-a/c/facu_gm.js`: Corriente = estallido + teja de haz, Presión = nova, Ola = trazo ancho 56, definitiva = nova. Proyectil básico `wave` (`ascension/register.js:10`).
 - **Fuentes del kit:** `js/champions/ascension/catalog.js:27-41` (stats y kit), lanzamiento `ascension/runtime.js:111-114`, objetos `:205-213`, cabalgata `:262-267`, premarcado `js/skills/aim-targeting.js:52-53`.
 
 ## B. Habilidades
@@ -70,7 +70,7 @@
 
 - **Mecánica (código):** Cabalga una ola hasta 320 u a 620 u/s (~520 ms): aparta a los enemigos a ≤46 u, los daña, los ralentiza 30% 1200 ms, protege 5% a los aliados que cruza y deja espuma (radio 26 u, 2000 ms). Se detiene ante muros. Costo 24, cooldown 7000 ms. (Flujo: Oleada.) *(`catalog.js:40`, `runtime.js:113,262-267`, premarcado `aim-targeting.js:53`)*
 - **Silueta y forma:** Cresta de ola de 92 u de ancho con Facu de pie sobre ella, que arrastra una estela de espuma a lo largo del recorrido.
-- **Color dominante:** Azul claro `#84ccfc` con espuma blanca.
+- **Color dominante:** Azul saturado `#2f8fe0` con espuma blanca.
 - **Movimiento:** La ola se levanta bajo sus pies, sale a gran velocidad; la espuma queda atrás y se va disolviendo 2000 ms.
 - **Anticipación:** El agua se levanta bajo él, 3 cuadros.
 - **Impacto:** Cresta en movimiento, 4 cuadros (loop corto de 4 mientras dura el recorrido).

@@ -10,7 +10,7 @@
 - **Paleta sugerida:** ocre `#d6af77` (color de clase, `expedition/catalog.js:31`), crema `#f6dba8` y `#fffaf0`, vino `#7a1f35`, negro cálido `#1a1410`, acento violeta `#c88aff` (acento del tema `music`). (Atlas: marrón `#6c3c24`, dorado apagado `#b4843c`.)
 - **Motivos visuales:** pentagrama de 5 líneas, notas (negra, corchea, bemol), diapasón, telón de teatro, cartel de salida, aplausos.
 - **NO debe parecerse a:** **Baltra** (sonido como anillos concéntricos de bronce; el de Dáriel son NOTAS y pentagramas); **Aelith/Aurelia/Farolero** (dorados: Dáriel mezcla ocre con vino y negro); **Libertador** (clarín); **Velmira** (máscaras).
-- **Estado actual del VFX (verificado en código):** Tema procedural `music` (`themes.js:15`, forma `wave`, motivos note/note2/star/spark). `skill-fx-a/c/dariel.js`: hab. 1 = cono, hab. 2 y 3 = nova en sí mismo + aura de aliados, definitiva = nova. Las notas acumuladas se muestran como texto "♪♪♪" sobre la cabeza (`expedition/render.js:34`).
+- **Estado actual del VFX (verificado en código):** Tema procedural `music` (`themes.js:14`, forma `wave`, motivos note/note2/star/spark). `skill-fx-a/c/dariel.js`: hab. 1 = cono, hab. 2 y 3 = nova en sí mismo + aura de aliados, definitiva = nova. Las notas acumuladas se muestran como texto "♪♪♪" sobre la cabeza (`expedition/render.js:34`).
 - **Fuentes del kit:** `js/champions/expedition/catalog.js:31-36`, lanzamiento `expedition/runtime.js:49-52`, cono `:6`, nota acumulada `:30`, premarcado `aim-targeting.js:69`, proyectil `expedition/register.js:3`.
 
 ## B. Habilidades

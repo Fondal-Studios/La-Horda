@@ -10,7 +10,7 @@
 - **Paleta sugerida:** arena `#cead7a` (color de clase, `quality-five/register.js:56`), tierra `#6d5636`, claro `#f0dcae`, hierro `#504637`, naranja de fragua `#ff8a3c` (solo chispas), contorno `#1b140c`. (Atlas medido: marrones `#6c3c24`, grises `#9c8484`.)
 - **Motivos visuales:** ladrillos con juntas desfasadas, clavos, vigas cruzadas, andamio, chispas de soldadura, polvo y escombro, bola de demolición.
 - **NO debe parecerse a:** **Bront** (acero azul y cristal celeste, placas): Brakk es marrón-tierra y madera, sin azul; **Eslabón** (gris acero y cadenas); **Brasa** (latón con vapor); **Libertador** (azul y pólvora).
-- **Estado actual del VFX (verificado en código):** Tema procedural `siege` (`themes.js:11`, forma `square`). Muro y torreta tienen props propios (`skill-fx-a/props.js:30-62`: muro 130x28 u de ladrillos, torreta de 28 px escalada x2,3); base/golpe usan nova genérica (`skill-fx-a/c/brakk.js`).
+- **Estado actual del VFX (verificado en código):** Tema procedural `siege` (`themes.js:10`, forma `square`). Muro y torreta tienen props propios (`skill-fx-a/props.js:15-58`: muro 130x28 u de ladrillos, torreta de 28 px escalada x2,3); base/golpe usan nova genérica (`skill-fx-a/c/brakk.js`).
 - **Fuentes del kit:** `js/champions/quality-five/brakk.js` (kit :4-7, lanzamiento :17-46, objetos :49-75, premarcado :94, dibujo base :95-100), clase y pasiva `quality-five/register.js:56`.
 
 ## B. Habilidades
@@ -36,7 +36,7 @@
 
 - **Mecánica (código):** Levanta un muro destructible de 130 u de largo (perpendicular a la mira) en un punto (alcance 180 u, tope 240 u); daña a los enemigos en radio 65 u al aparecer, bloquea a los enemigos 4500 ms; vida 22% de la suya; máximo 2. Costo 28, cooldown 8500 ms. *(`brakk.js:4,24-29,94,98`; muro dibujado 18 u `brakk.js:97`)*
 - **Silueta y forma:** Pared de ladrillo de 130x28 u con juntas desfasadas, almenas rotas y 2 clavos; sube del suelo en 3 etapas y muestra grietas al perder vida.
-- **Color dominante:** Tierra y arena `#6d5636` / `#cead7a`.
+- **Color dominante:** Arena oscura `#9a7a4e` y arena `#cead7a` (junta de mortero `#6d5636`).
 - **Movimiento:** Surge del suelo con sacudida (260 ms); polvo a los lados.
 - **Anticipación:** Sombra rectangular en el suelo que se agranda, 3 cuadros.
 - **Impacto:** Muro sube y golpea con onda de 65 u, 3 cuadros.
@@ -70,7 +70,7 @@
 
 - **Mecánica (código):** Repara 35% de vida a sus construcciones a ≤160 u y gana 15% de armadura durante 3000 ms (aliados con el talento `crew`). Costo 24, cooldown 12000 ms. *(`brakk.js:6,31-35`)*
 - **Silueta y forma:** Vigas de madera cruzadas en X que se clavan sobre cada construcción y sobre él, con un halo de soldadura azulada.
-- **Color dominante:** Madera clara `#f0dcae` con chispa blanco-azulada.
+- **Color dominante:** Madera media `#b08a54` con chispa blanco-azulada.
 - **Movimiento:** Las vigas se clavan una a una (golpes secos); el halo late 3000 ms mientras dura la armadura.
 - **Anticipación:** Clavos y vigas caen, 3 cuadros.
 - **Impacto:** Apuntalado con chispas de soldadura, 3 cuadros.

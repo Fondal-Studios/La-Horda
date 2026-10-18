@@ -10,7 +10,7 @@
 - **Paleta sugerida:** acero azul-gris `#8aa4b8` (color de clase, `ascension/catalog.js:91`), cristal celeste `#bfe8ff` y brillo `#5fd0ff`, sombra `#44627a`, hierro `#101c26`, blanco `#ffffff`. (Atlas: `#849cb4`, `#9cb4cc`, `#3c5454`.)
 - **Motivos visuales:** placas rectangulares con remaches, cristal facetado que late, juntas con luz azul, almenas, puertas.
 - **NO debe parecerse a:** **Baltra** (su `a=#8bb4bd` es casi igual al de Bront `#8aa4b8`: Baltra es bronce cálido y agua, Bront acero frío SIN bronce ni burbujas); **Brakk** (marrón y ladrillo); **Eslabón** (gris con cadenas); **Mago** (hielo): el cristal de Bront no es hielo, es facetado y cian, sin copos.
-- **Estado actual del VFX (verificado en código):** Tema procedural `crystal` (`themes.js:13`, forma `hex`, motivos shard/plate/ice/diamond). `skill-fx-a/c/bront.js`: Placa = línea ancha 52, Muro = estallidos en los extremos, Pulso = nova + aura, Ciudadela = nova. El muro usa teja de haz (`SFA_OBJ.as_wall`).
+- **Estado actual del VFX (verificado en código):** Tema procedural `crystal` (`themes.js:12`, forma `hex`, motivos shard/plate/ice/diamond). `skill-fx-a/c/bront.js`: Placa = línea ancha 52, Muro = estallidos en los extremos, Pulso = nova + aura, Ciudadela = nova. El muro usa teja de haz (`SFA_OBJ.as_wall`).
 - **Fuentes del kit:** `js/champions/ascension/catalog.js:91-102`, lanzamiento `ascension/runtime.js:145-152`, objetos `:235`, daño de placa `:281`, caída de placas `:290`, premarcado `js/skills/aim-targeting.js:60`, proyectil `ascension/register.js:10`.
 
 ## B. Habilidades
@@ -53,7 +53,7 @@
 
 - **Mecánica (código):** Levanta una muralla de 160 u de largo a 90 u frente a él (colisión ≤26 u, premarcado 52 u de ancho, alcance 110 u) durante 5000 ms; daña (45%) y ralentiza mucho a los que la cruzan. Costo 28, cooldown 9400 ms. *(`catalog.js:100`, `runtime.js:146-147`, premarcado `aim-targeting.js:60`)*
 - **Silueta y forma:** Pared de 4-5 placas verticales encajadas con juntas de luz azul y almenas, más alta que larga (160x52 u); pequeños cristales en las juntas.
-- **Color dominante:** Acero `#8aa4b8` con juntas de luz `#5fd0ff`.
+- **Color dominante:** Acero oscuro `#5b7a94` con juntas de luz `#5fd0ff`.
 - **Movimiento:** Las placas suben en cascada de izquierda a derecha, 120 ms entre cada una; las juntas pulsan al ser cruzadas.
 - **Anticipación:** Sombra alargada y vibración del suelo, 3 cuadros.
 - **Impacto:** Placas emergen y encastran, 4 cuadros.

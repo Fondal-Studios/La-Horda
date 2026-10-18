@@ -10,7 +10,7 @@
 - **Paleta sugerida:** ámbar apagado `#bba56e` (color de clase, `data/portadores.js:45`), luz `#ffe7a5`, llama `#ff9a3c`, dorado cálido `#e8c060`, pardo de mina `#3c2424`, humo `#5a4a3a`, contorno `#2a1c08`.
 - **Motivos visuales:** farol de vidrio con llama, polillas, rieles, madera de apuntalar, picota, polvo de carbón, halo de luz tenue.
 - **NO debe parecerse a:** **Aurelia** (oro facetado y frío); **Dáriel** (ocre con notas); **Brasa** (latón rojizo con vapor); **Libertador** (sol de mayo): el Farolero es luz de LLAMA viva, parpadeante y sin geometría; **Khepri** (polillas/escarabajos: sus polillas son pequeñas y de luz).
-- **Estado actual del VFX (verificado en código):** Tema procedural `lantern` (`themes.js:18`, forma `sun`, motivos flame/moth/star/spark, emblema farol). `skill-fx-a/c/farolero.js`: farol = prop con motivo de farol + nova del radio, Destello = cono + estallido, Paso Seguro = haz 36-84 u, Vigilia = zona de héroe + nova. Firma `sun` `#ffe592` (`skills/champion-signatures.js:10`).
+- **Estado actual del VFX (verificado en código):** Tema procedural `lantern` (`themes.js:17`, forma `sun`, motivos flame/moth/star/spark, emblema farol). `skill-fx-a/c/farolero.js`: farol = prop con motivo de farol + nova del radio, Destello = cono + estallido, Paso Seguro = haz 36-84 u, Vigilia = zona de héroe + nova. Firma `sun` `#ffe592` (`skills/champion-signatures.js:10`).
 - **Fuentes del kit:** `js/data/portadores.js:45-52`, lanzamiento `js/champions/portadores.js:148-154`, objetos `:239-`, luz `:216-224`, escudos de Vigilia `:235`, pasiva `data/portadores-lore.js:29`.
 
 ## B. Habilidades

@@ -10,7 +10,7 @@
 - **Paleta sugerida:** carmesí `#c4544a` (color de clase, `champions.js:47`), rosa de sangre `#f0a89a`, rojo oscuro `#7a1c1c`, negro `#2a0808`, verde veneno `#8dffa0` (trampa y definitiva, `asesino.js:62`), violeta de sombra `#9a6ac7`. (Atlas medido: gris y blanco `#3c3c3c`/`#fcfcfc`: el rojo es acento de efectos, el cuerpo es gris encapuchado.)
 - **Motivos visuales:** cortes diagonales rápidos, gotas de sangre, rombo de trampa con 4 puntas, humo violeta, hilo de veneno que gotea.
 - **NO debe parecerse a:** **Veyra** (sangre y pacto, mitad B); **Segador** (guadaña roja pesada); **Musashi** (tinta azul y trazos largos); **Cazadora** (su trampa es verde oscuro de raíces; la de Kael es un rombo metálico con luz verde neón).
-- **Estado actual del VFX (verificado en código):** Ya tiene hojas propias en `assets/vfx/guerrero/` (`corte_sangrante`, `triple_golpe`, `trampa`, `pestilencia`, 336x336 c/u) disparadas con `pushAsesinoFx` (`js/rendering/effects.js:295`) más el tema procedural `blood` (`themes.js:19`, forma `spike`). `skill-fx-a/c/guerrero.js` añade estallido de sangre por habilidad y nova de 60 u en la definitiva.
+- **Estado actual del VFX (verificado en código):** Ya tiene hojas propias en `assets/vfx/guerrero/` (`corte_sangrante`, `triple_golpe`, `trampa`, `pestilencia`, 336x336 c/u) disparadas con `pushAsesinoFx` (`js/rendering/effects.js:295`) más el tema procedural `blood` (`themes.js:18`, forma `spike`). `skill-fx-a/c/guerrero.js` añade estallido de sangre por habilidad y nova de 60 u en la definitiva.
 - **Fuentes del kit:** `js/data/champions.js:46-57`, `js/skills/abilities.js:893-902` (Corte), `:1252-1269` (Triple), `:1271-1289` (Trampa), `:1291-1298` (sigilo), `js/champions/asesino.js:11-109` (trampas y Pestilencia), `aim-targeting.js:15-16,32-33`.
 
 ## B. Habilidades
@@ -85,9 +85,9 @@
 
 ### Definitiva - Pestilencia Sombría
 
-- **Mecánica (código):** Sigilo de 2000 ms y luego un triple golpe (2 críticos y un final x1,4) a un enemigo a ≤280 u, con veneno 3000 ms y sangrado; encadena veneno a 3 enemigos en radio 150 u (55%, -25% por salto). Sin costo, cooldown 32000 ms. *(`champions.js:56`, `abilities.js:1291-1298`, `asesino.js:70-105`)*
+- **Mecánica (código):** Sigilo de 2000 ms y luego un triple golpe (2 críticos y un final x1,4) a un enemigo a ≤280 u, con veneno 3000 ms y sangrado; encadena veneno a 3 enemigos en radio 150 u (55%, -25% por salto). Sin costo, cooldown 32000 ms. *(`champions.js:56`, `abilities.js:1291-1298`, `asesino.js:75-109`)*
 - **Silueta y forma:** Kael se disuelve en humo violeta; reaparece a la espalda del objetivo; tres cortes en cruz y una nube verde tóxica; el veneno une a los vecinos con hilos verdes.
-- **Color dominante:** Violeta `#9a6ac7` (sigilo) → verde veneno `#8dffa0` (golpe).
+- **Color dominante:** Violeta oscuro `#5a3d7a` (sigilo y humo; el juego hoy usa `#9a6ac7`) → verde veneno `#8dffa0` (golpe).
 - **Movimiento:** Desaparece en 200 ms; la emboscada cae en 120 ms; la nube verde se expande a 100 u y los hilos saltan a los vecinos.
 - **Anticipación:** Sigilo: humo y silueta translúcida durante 2000 ms (loop), 6 cuadros de entrada.
 - **Impacto:** Emboscada y 3 cortes, 6 cuadros; hilos de veneno, 4 cuadros por salto.

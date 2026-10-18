@@ -7,11 +7,11 @@
 ## A. Identidad
 
 - **Rol y tono:** Guerrero / berserker (rol asesino, melee, movilidad extrema; gana Tormenta con el riesgo y se transforma en el Coloso de Arena). Tono: nómada, orgulloso, sereno bajo presión. Lenguaje: pendón, lanza, duna, grano de arena, caravana.
-- **Paleta sugerida:** arena ocre `#d89a4a` (tema `sand`, `themes.js:20`) y tierra `#b8793a` (color de clase, `champions.js:206`), claro `#f4d08a`, oscuro `#8a5a2a`, turquesa de Tormenta `#4fe3cf` (glow de clase), contorno `#2a1608`. (Atlas: `#cc9c54`, turquesa `#249c9c`, amarillo `#fccc54`.)
+- **Paleta sugerida:** arena ocre `#d89a4a` (tema `sand`, `themes.js:19`) y tierra `#b8793a` (color de clase, `champions.js:206`), claro `#f4d08a`, oscuro `#8a5a2a`, turquesa de Tormenta `#4fe3cf` (glow de clase), contorno `#2a1608`. (Atlas: `#cc9c54`, turquesa `#249c9c`, amarillo `#fccc54`.)
 - **Motivos visuales:** pendón de tela con flecos, lanza, hoces gemelas, dunas ondulantes, granos de arena arrastrados por el viento, remolino de tormenta, coloso de arena con runas turquesas.
 - **NO debe parecerse a:** **Libertador** (pendón azul y sable); **Brakk** (arena pero ladrillo y madera); **Khepri** (dorado con verde); **Facu** (olas de agua). El turquesa de Ilkan SOLO aparece como Tormenta/energía (runas, núcleos), nunca como color de agua.
-- **Estado actual del VFX (verificado en código):** Tema procedural `sand` (`themes.js:20`, forma `scallop`, motivos grain/banner/flag/spark). `skill-fx-a/c/ilkan.js`: Lanza = haz 40 u, Piel = aura, Caravana = nova + aura, definitiva = nova r=230. Tiene hojas propias en `assets/sprites/champions/ilkan/` (v2) y efectos en `ilkanQuakeFx` (`ilkan.js`).
-- **Fuentes del kit:** `js/data/champions.js:205-233` (kit humano y Coloso), `js/data/champion-tuning.js:33-62` (`ILKAN_CFG`), `js/champions/ilkan.js:150-200` (casteo), `aim-targeting.js:39-40`.
+- **Estado actual del VFX (verificado en código):** Tema procedural `sand` (`themes.js:19`, forma `scallop`, motivos grain/banner/flag/spark). `skill-fx-a/c/ilkan.js`: Lanza = haz 40 u, Piel = aura, Caravana = nova + aura, definitiva = nova r=230. Tiene hojas propias en `assets/sprites/champions/ilkan/` (v2) y efectos en `ilkanQuakeFx` (`ilkan.js`).
+- **Fuentes del kit:** `js/data/champions.js:205-232` (kit humano y Coloso), `js/data/champion-tuning.js:33-62` (`ILKAN_CFG`), `js/champions/ilkan.js:150-200` (casteo), `aim-targeting.js:39-40`.
 
 ## B. Habilidades
 
@@ -102,7 +102,7 @@
 
 ### Coloso 1 - Alud
 
-- **Mecánica (código):** Golpe violento al suelo: onda circular de 230 u, daño x3,2 con caída del 45% hacia el borde, empuja 95 u y aturde 500 ms a élites. Cooldown 6500 ms, sin costo. *(`champions.js:227`, `champion-tuning.js:51` (`sismo`), `ilkan.js:196-205`)*
+- **Mecánica (código):** Golpe violento al suelo: onda circular de 230 u, daño x3,2 con caída del 45% hacia el borde, empuja 95 u y aturde 500 ms a élites. Cooldown 6500 ms, sin costo. *(`champions.js:227`, `champion-tuning.js:51` (`sismo`), `ilkan.js:189-199`)*
 - **Silueta y forma:** El coloso levanta ambos puños y los baja; del impacto sale una onda circular de arena con grietas radiales y rocas que saltan.
 - **Color dominante:** Ocre `#d89a4a` con grietas oscuras.
 - **Movimiento:** Puños arriba 300 ms, bajada rápida y onda de 230 u; las grietas se extienden 180 ms más.

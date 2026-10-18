@@ -10,7 +10,7 @@
 - **Paleta sugerida:** gris acero `#9195a1` (color de clase, `data/portadores.js:29`), gris oscuro `#5b606e`, hueso `#e4dfc8`, oro viejo `#d8b868`, azul pálido de firma `#d3dff5` (`champion-signatures.js:9`), contorno `#14161c`. (Atlas: grises `#3c3c3c`, hueso `#e4ccb4`.)
 - **Motivos visuales:** eslabones ovales, grilletes abiertos, candado, llave, barrotes, cadena tendida.
 - **NO debe parecerse a:** **Iria** (hilo/ancla índigo con triángulos); **Bront/Brakk** (placas y ladrillos: Garren no levanta muros, extiende cadenas); **Aelith** (violeta); **Baltra** (cuerda y bronce).
-- **Estado actual del VFX (verificado en código):** Tema procedural `chain` (`themes.js:16`, forma `hex`, motivos link/chain/nail/spark). `skill-fx-a/c/eslabon.js`: gancho = haz de cadena de 24 u + estallido; línea = tejas de cadena (`SFA_OBJ.chain`); Custodia = auras + haz; definitiva = nova del radio real.
+- **Estado actual del VFX (verificado en código):** Tema procedural `chain` (`themes.js:15`, forma `hex`, motivos link/chain/nail/spark). `skill-fx-a/c/eslabon.js`: gancho = haz de cadena de 24 u + estallido; línea = tejas de cadena (`SFA_OBJ.chain`); Custodia = auras + haz; definitiva = nova del radio real.
 - **Fuentes del kit:** `js/data/portadores.js:29-36`, lanzamiento `js/champions/portadores.js:110-133`, objetos `:239-`, daño compartido `:183-195`, velocidad `:205`.
 
 ## B. Habilidades

@@ -10,7 +10,7 @@
 - **Paleta sugerida:** índigo `#8889c1` (color de clase, `data/portadores.js:53`), oscuro `#4e50a0`, lila claro `#e3e0ff`, azul medianoche `#24243c` (atlas), oro pálido `#ffd870` (nodos), firma triángulo `#b9b3ff`, contorno `#181830`.
 - **Motivos visuales:** hilos finos tensos, nodos en rombo, triángulo de tres anclas, aguja rúnica, tijeras, puntadas.
 - **NO debe parecerse a:** **Aelith** (lavanda con relojes: sin círculos graduados ni agujas de reloj); **Aurelia** (triángulos dorados con volumen: los de Iria son de línea fina índigo y SIN relleno sólido); **Vesper** (mitad B: hilo y tijeras ciruela — el icono de tijeras de Corte de Hilo y las puntadas son lo más cercano: Iria usa hilo recto de geometría, nunca puntadas de costura); **Velmira**.
-- **Estado actual del VFX (verificado en código):** Tema procedural `thread` (`themes.js:21`, forma `tri`, motivos tri/node/thread/spark). `skill-fx-a/c/iria.js`: ancla = prop con motivo nodo + estallido, Tensión = nova, Corte = nova, definitiva = triángulo de teja de haz + nova 160. Los hilos entre anclas se dibujan con teja de haz (9 u en reposo, 18 u en tensión). Firma `triangle` `#b9b3ff` (`champion-signatures.js:10`).
+- **Estado actual del VFX (verificado en código):** Tema procedural `thread` (`themes.js:20`, forma `tri`, motivos tri/node/thread/spark). `skill-fx-a/c/iria.js`: ancla = prop con motivo nodo + estallido, Tensión = nova, Corte = nova, definitiva = triángulo de teja de haz + nova 160. Los hilos entre anclas se dibujan con teja de haz (9 u en reposo, 18 u en tensión). Firma `triangle` `#b9b3ff` (`champion-signatures.js:10`).
 - **Fuentes del kit:** `js/data/portadores.js:53-60`, lanzamiento `js/champions/portadores.js:155-180`, vínculos `:180-182`, tensión `:236`, triángulo `:261`, pasiva `data/portadores-lore.js:30`.
 
 ## B. Habilidades
@@ -102,5 +102,5 @@
 
 ### Pasiva - Trama
 
-- **Mecánica (código):** Hasta tres anclas se unen en orden con un máximo de 400 u por hilo; Tensión activa su daño y control; no son paredes (`data/portadores-lore.js:30`, `portadores.js:180-182`). El juego ya dibuja los hilos en reposo (9 u, 50% de alfa) y en tensión (18 u, 90%) (`skill-fx-a/c/iria.js:5`).
+- **Mecánica (código):** Hasta tres anclas se unen en orden con un máximo de 400 u por hilo; Tensión activa su daño y control; no son paredes (`data/portadores-lore.js:30`, `portadores.js:180-182`). El juego ya dibuja los hilos en reposo (9 u, 50% de alfa) y en tensión (18 u, 90%) (`skill-fx-a/c/iria.js:6`).
 - **Arte:** Hilo de reposo: una sola línea de luz de 2 px con nudos cada 40 u; es la base de la que parten Tensión (más gruesa y vibrante) y el Sello (relleno).

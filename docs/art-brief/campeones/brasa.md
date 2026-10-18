@@ -10,7 +10,7 @@
 - **Paleta sugerida:** latón `#c58543` y brillo `#ffd28a` (color y glow de clase, `data/portadores.js:21`), rojo de caldera `#b43c24` y `#842424` (atlas), vapor `#fff4dc`, hierro `#3c2424`, contorno `#2a1608`.
 - **Motivos visuales:** engranajes gruesos de pocos dientes, válvulas, tuberías con codo, manómetro de aguja, remaches, nubes de vapor con perlas de condensación, sirena giratoria.
 - **NO debe parecerse a:** **Brakk** (también torretas: Brakk es hierro oscuro cuadrado con clavos y fogonazo naranja; Brasa es latón redondo con chimenea y vapor); **Zahra** (válvulas y calor de horno, segunda mitad); **Farolero/Aurelia/Dáriel** (dorados: el latón de Brasa es naranja-rojizo con vapor blanco); **Morwen** (frascos de vidrio).
-- **Estado actual del VFX (verificado en código):** Tema procedural `steam` (`themes.js:12`, forma `gear`, motivos gear/steam/rivet/spark). `skill-fx-a/c/brasa.js`: torreta = estallido + nova, Purga = cono, Desmontaje = aura + estallido, definitiva = nova r=120 + nova por torreta. Firma de partículas: engranaje `#ffcb78` (`skills/champion-signatures.js:9`).
+- **Estado actual del VFX (verificado en código):** Tema procedural `steam` (`themes.js:11`, forma `gear`, motivos gear/steam/rivet/spark). `skill-fx-a/c/brasa.js`: torreta = estallido + nova, Purga = cono, Desmontaje = aura + estallido, definitiva = nova r=120 + nova por torreta. Firma de partículas: engranaje `#ffcb78` (`skills/champion-signatures.js:9`).
 - **Fuentes del kit:** `js/data/portadores.js:21-28` (stats y kit), `js/champions/portadores.js:57-61` (torreta), `:94-109` (lanzamiento), `:210-214` (pasiva), `:239-` (objetos), `skill-fx-a/c/brasa.js`.
 
 ## B. Habilidades
@@ -19,7 +19,7 @@
 
 - **Mecánica (código):** Disparo a distancia; alcance 310 u, cooldown 580 ms (arma: Remachadora). *(`data/portadores.js:21` (`range:310, basic:580, ranged:true`))*
 - **Silueta y forma:** Remache grande de cabeza redonda (10x10 u) que gira como una tuerca; deja chispas de metal.
-- **Color dominante:** Latón `#ffd28a`.
+- **Color dominante:** Latón dorado `#e0a050`.
 - **Movimiento:** Vuelo recto con giro rápido; la cabeza deja una línea de vapor de 1 px.
 - **Anticipación:** Fogonazo corto en la boca de la remachadora, 2 cuadros.
 - **Impacto:** Clavado del remache con anillo de chispas, 3 cuadros.
@@ -70,7 +70,7 @@
 
 - **Mecánica (código):** Retira la torreta más cercana (recupera hasta 3500 ms de la recarga de Centinela) y gana +25% velocidad durante 2200 ms; sin torreta también acelera. Costo 18, cooldown 7500 ms. *(`data/portadores.js:26`, `portadores.js:101-105`)*
 - **Silueta y forma:** La torreta se pliega en una caja de piezas que sale volando hacia su mochila; Brasa deja una estela de engranajes y líneas de velocidad.
-- **Color dominante:** Latón brillante `#ffd28a` con líneas blancas.
+- **Color dominante:** Latón `#e0a050` con líneas blancas.
 - **Movimiento:** La llave inglesa gira y desarma en 200 ms; las piezas viajan en arco hasta ella; los engranajes de la estela giran 2200 ms.
 - **Anticipación:** La llave inglesa gira sobre la torreta, 3 cuadros.
 - **Impacto:** Torreta se pliega y vuela, 4 cuadros.

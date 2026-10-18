@@ -10,7 +10,7 @@
 - **Paleta sugerida:** oro `#f2c14e` (color de clase, `ascension/catalog.js:43`), oro claro `#ffe69a`, blanco solar `#fffbe8`, ámbar oscuro `#a86a12`, contorno `#3a2400`, y SOLO en los bordes de dispersión: cian `#7fe3ff` y magenta `#ff7ad9` (luz partida por el prisma). (Atlas medido: oro `#cc9c3c` y `#e4b454`, sombras `#9c6c24`.)
 - **Motivos visuales:** prismas y octaedros de cristal sólido, haces rectos que rebotan a 60°, hexágonos, compás, arcos ojivales y rosetón de catedral, dispersión espectral en los bordes.
 - **NO debe parecerse a:** **Iria** (también triángulos: Aurelia es oro con VOLUMEN y relleno de luz, Iria es índigo con líneas finas e hilos); **Farolero** (llama cálida y polillas); **Dáriel** (ocre con notas); **Brakk** (arena/ladrillo); **Libertador** (sol de mayo): el oro de Aurelia es frío-brillante, nunca naranja.
-- **Estado actual del VFX (verificado en código):** Tema procedural `prism` (`themes.js:8`, forma `hex`, motivos prism/diamond/ray/spark). `skill-fx-a/c/aurelia.js`: hab. 1 y definitiva = nova, hab. 2 = línea, hab. 3 = línea ancha (dash). La catedral reutiliza la nova (`SFA_OBJ.as_cathedral`).
+- **Estado actual del VFX (verificado en código):** Tema procedural `prism` (`themes.js:7`, forma `hex`, motivos prism/diamond/ray/spark). `skill-fx-a/c/aurelia.js`: hab. 1 y definitiva = nova, hab. 2 = línea, hab. 3 = línea ancha (dash). La catedral reutiliza la nova (`SFA_OBJ.as_cathedral`).
 - **Fuentes del kit:** `js/champions/ascension/catalog.js:43-54` (stats y kit), `ascension/runtime.js:116-125` (lanzamiento), `:214` (catedral), `:271` (triángulo de nodos), premarcado `js/skills/aim-targeting.js:54-55`, proyectil `ascension/register.js:10`.
 
 ## B. Habilidades

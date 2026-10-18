@@ -10,7 +10,7 @@
 - **Paleta sugerida:** esmeralda `#3fae8a` (color de clase, `ascension/catalog.js:55`), lima `#c8f27a` (glow), verde profundo `#1f6a50` y `#0c543c` (atlas), oro ritual `#ffd24a`, naranja de élitro `#e48424` (atlas), negro verdoso `#0a1a12`.
 - **Motivos visuales:** escarabajo con élitros abiertos, hoces curvas, disco solar opaco con corona, enjambre en nube, caparazón segmentado iridiscente, jeroglíficos mínimos.
 - **NO debe parecerse a:** **Morveth** (verde enfermizo con púrpura y hongos); **Maura/Sylva** (verde vegetal y hojas); **Axiom** (turquesa digital); **Ilkan** (ocre y dorado de desierto). Khepri es verde IRIDISCENTE (esmeralda a lima con destellos naranja) hecho de insectos, nunca de plantas.
-- **Estado actual del VFX (verificado en código):** Tema procedural `scarab` (`themes.js:22`, forma `petal`, motivos beetle/wing/spark/spore). `skill-fx-a/c/khepri.js`: Enjambre = haz + nova en el destino, Caparazón = aura, Élitros = trazo 44 u, definitiva = nova en sí mismo; el eclipse tiene `SFA_OBJ.as_eclipse`. El render del Regente dibuja élitros procedurales (`ascension/render.js:24-40`).
+- **Estado actual del VFX (verificado en código):** Tema procedural `scarab` (`themes.js:21`, forma `petal`, motivos beetle/wing/spark/spore). `skill-fx-a/c/khepri.js`: Enjambre = haz + nova en el destino, Caparazón = aura, Élitros = trazo 44 u, definitiva = nova en sí mismo; el eclipse tiene `SFA_OBJ.as_eclipse`. El render del Regente dibuja élitros procedurales (`ascension/render.js:24-40`).
 - **Fuentes del kit:** `js/champions/ascension/catalog.js:55-66`, lanzamiento `ascension/runtime.js:127-130`, objetos `:216-221`, daño recibido `:284`, estado `:15`, premarcado `js/skills/aim-targeting.js:56`, proyectil `ascension/register.js:10`.
 
 ## B. Habilidades

@@ -10,7 +10,7 @@
 - **Paleta sugerida:** turquesa `#3ad6c4` (color de clase, `champions.js:100`), cian claro `#9df5ea`, azul eléctrico `#5aa8d8`/`#5ac8ff` (teletransporte, `abilities.js:752`), magenta de falla `#ff4fd8`, negro azulado `#06161a`/`#24243c` (atlas), blanco `#ffffff`.
 - **Motivos visuales:** bloques cuadrados de 4-8 px, ventanas de sistema con barra de título, cursores, scanlines, desplazamiento RGB (cian/magenta), dígitos hexadecimales, inversión de color.
 - **NO debe parecerse a:** **Aelith** (relojes y lavanda); **Mago/Thalen** (rayos y elementos); **Aurelia** (facetas doradas); **Iria** (hilos). Evitar cualquier curva suave: todo en bloques y rectas.
-- **Estado actual del VFX (verificado en código):** Tema procedural `glitch` (`themes.js:9`, forma `glitch`). `skill-fx-a/c/axiom.js`: hab. 1 = estallido, hab. 2 = rayos de cadena, hab. 3 = trazo dash, definitiva = nova de r=230. Además existen PNG propios en `assets/vfx/axiom/` (`err404`, `overwrite`, `teleport_in/out`, `forcequit`) y la zona punteada turquesa de `axiom.js:drawAxiomZones`. Ya hay inversión de color de pantalla durante Force Quit (`abilities.js:775`, `axiomForceQuitFlash`).
+- **Estado actual del VFX (verificado en código):** Tema procedural `glitch` (`themes.js:8`, forma `glitch`). `skill-fx-a/c/axiom.js`: hab. 1 = estallido, hab. 2 = rayos de cadena, hab. 3 = trazo dash, definitiva = nova de r=230. Además existen PNG propios en `assets/vfx/axiom/` (`err404`, `overwrite`, `teleport_in/out`, `forcequit`) y la zona punteada turquesa de `axiom.js:drawAxiomZones`. Ya hay inversión de color de pantalla durante Force Quit (`abilities.js:775`, `axiomForceQuitFlash`).
 - **Fuentes del kit:** `js/data/champions.js:99-120` (kit y stats), `js/skills/abilities.js:687-766` (Error 404, Sobrescribir, Teletransporte, Force Quit :767-800), `js/champions/axiom.js:1-54`, `aim-targeting.js:17,21,31`.
 
 ## B. Habilidades
@@ -70,7 +70,7 @@
 
 - **Mecánica (código):** Blink en la dirección que mira (alcance 280 u) con 250 ms de invulnerabilidad; casi sin cooldown al máximo. Anillo de salida de 36 u. Costo 24, cooldown 2500 ms. *(`champions.js:117`, `abilities.js:745-766`, premarcado `aim-targeting.js:21`)*
 - **Silueta y forma:** Se pixela en una columna de bloques cuadrados en el origen (teleport_out) y se recompone de abajo hacia arriba en el destino (teleport_in), unidos por un trazo recto de 30 u.
-- **Color dominante:** Azul eléctrico `#5ac8ff` (el anillo que ya usa el juego).
+- **Color dominante:** Azul eléctrico `#4f8cff` (distinto del cian `#5ac8ff` del anillo actual del juego, para que no se confunda con el cristal de Bront).
 - **Movimiento:** Cuadros en vertical tipo barrido de monitor: 4 scanlines suben/bajan en 250 ms.
 - **Anticipación:** Pixelado del personaje, 2 cuadros (~170 ms).
 - **Impacto:** Reaparición con barrido de abajo hacia arriba, 3 cuadros.

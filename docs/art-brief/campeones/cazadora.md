@@ -10,7 +10,7 @@
 - **Paleta sugerida:** verde bosque `#5c9a4a` (color de clase, `champions.js:158`), hoja clara `#c8f0a8`, verde oscuro `#2f5a24`, dorado `#d8b050` (plumas), crema `#f4ffe0`, turquesa espectral `#5ad0c8` (el lobo, `cazadora.js:167`), contorno `#12220c`.
 - **Motivos visuales:** hojas afiladas, flechas con plumas, raíces que atrapan, huellas de lobo, lluvia vertical, lobo espectral.
 - **NO debe parecerse a:** **Maura** (olivas y espinas), **Morveth** (verde enfermizo con púrpura), **Khepri** (esmeralda y lima con oro), **Saelis** (plumas celestes): Sylva es verde natural y vivo, sin púrpura ni oro dominante; **Ilkan/Musashi** (trazos de hoja/tinta).
-- **Estado actual del VFX (verificado en código):** Tema procedural `hunt` (`themes.js:14`, forma `petal`, motivos leaf/arrow/thorn/spark). `skill-fx-a/c/cazadora.js`: Flecha = haz 30 u, Trampa = estallido 46, Lluvia = nova del radio real, definitiva = nova 110 + aura 4000 ms. Hay arte propio previo en `assets/vfx/cazadora/` (`trap-f1..f4`, `rain-f1..f3`) y una Trampa que crece en 4 etapas durante 200 ms (`asesino.js:drawTrap`).
+- **Estado actual del VFX (verificado en código):** Tema procedural `hunt` (`themes.js:13`, forma `petal`, motivos leaf/arrow/thorn/spark). `skill-fx-a/c/cazadora.js`: Flecha = haz 30 u, Trampa = estallido 46, Lluvia = nova del radio real, definitiva = nova 110 + aura 4000 ms. Hay arte propio previo en `assets/vfx/cazadora/` (`trap-f1..f4`, `rain-f1..f3`) y una Trampa que crece en 4 etapas durante 200 ms (`asesino.js:drawTrap`).
 - **Fuentes del kit:** `js/data/champions.js:157-174` (stats y kit), `js/skills/abilities.js:534-607` (Flecha, Trampa, Lluvia, Cacería), `js/champions/cazadora.js:13-50` (Lluvia), `:83` (carga), `:161-196` (lobo), `js/champions/asesino.js:25-60` (Trampa del Bosque), `js/data/champion-tuning.js:64-71` (pasivas).
 
 ## B. Habilidades
@@ -19,7 +19,7 @@
 
 - **Mecánica (código):** Disparo a distancia; alcance 300 u, cooldown 420 ms (acelera con Impulso y Rastreo); daño x0,88. *(`champions.js:166`, `champion-tuning.js:66-69`)*
 - **Silueta y forma:** Flecha corta con plumas doradas (6x18 u) y punta de hoja.
-- **Color dominante:** Verde claro `#c8f0a8` con pluma `#d8b050`.
+- **Color dominante:** Crema verdosa `#f4ffe0` con pluma `#d8b050`.
 - **Movimiento:** Vuelo recto y silbante; deja 2 hojitas en la estela.
 - **Anticipación:** Arco que se tensa, 2 cuadros.
 - **Impacto:** Clavado con una hojita que salta, 3 cuadros.

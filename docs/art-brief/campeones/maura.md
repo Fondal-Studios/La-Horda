@@ -10,7 +10,7 @@
 - **Paleta sugerida:** oliva `#879c60` (color de clase, `expedition/catalog.js:25`), verde oscuro `#4a5a30`, claro `#cfe0a0`, rojo seco `#8b3a2a` (atlas `#542424`), corteza `#6c5424`, rosa de espina `#d86a8a` (acento), contorno `#1a2010`.
 - **Motivos visuales:** zarza con espinas largas, corteza agrietada, semillas, rosas rígidas, cayado curvo, vereda estrecha.
 - **NO debe parecerse a:** **Sylva** (verde vivo con flechas y hojas); **Morveth** (verde enfermo con púrpura y hongos); **Khepri** (esmeralda iridiscente de insectos); **Baltra/Brakk** (los otros tanques de expedición, bronce y ladrillo): Maura es madera, espina y oliva, SIN metal.
-- **Estado actual del VFX (verificado en código):** Tema procedural `thorn` (`themes.js:27`, forma `petal`, motivos thorn/seed/vine/leaf). `skill-fx-a/c/maura.js`: Raíces = haz, Corteza = nova + aura, Poda = nova, definitiva = nova. Las semillas se muestran como puntos "•" sobre la cabeza (`expedition/render.js:34`).
+- **Estado actual del VFX (verificado en código):** Tema procedural `thorn` (`themes.js:26`, forma `petal`, motivos thorn/seed/vine/leaf). `skill-fx-a/c/maura.js`: Raíces = haz, Corteza = nova + aura, Poda = nova, definitiva = nova. Las semillas se muestran como puntos "•" sobre la cabeza (`expedition/render.js:34`).
 - **Fuentes del kit:** `js/champions/expedition/catalog.js:25-30`, lanzamiento `expedition/runtime.js:45-48`, pulsos `:17`, premarcado `aim-targeting.js:69`.
 
 ## B. Habilidades

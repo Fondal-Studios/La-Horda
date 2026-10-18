@@ -10,7 +10,7 @@
 - **Paleta sugerida:** verde-azulado frío `#8bb4bd` (color de clase, `expedition/catalog.js:19`), bronce `#b46c3c` y cobre `#cc9c54` (atlas), cuero `#6c3c24`, claro `#cfeef0`, contorno `#0f2326`, acento verdín oxidado `#6fae9a`.
 - **Motivos visuales:** campana y badajo, cuerda, remaches, anillos de sonido (concéntricos con huecos), burbujas de aire, algas, pequeñas gotas.
 - **NO debe parecerse a:** **Bront** (acero azul-grisáceo `#8aa4b8` y cristal: Baltra es BRONCE cálido con verdín); **Facu GM** (azul mar y espuma: aquí el agua es solo ambiente, el protagonista es el metal); **Dáriel** (notas musicales: el sonido de Baltra son anillos, no notas).
-- **Estado actual del VFX (verificado en código):** Tema procedural `bell` (`themes.js:10`, forma `scallop`; su `a=#8bb4bd` es casi idéntico al de `crystal` de Bront `#8aa4b8`). `skill-fx-a/c/baltra.js`: hab. 1 y definitiva = nova centrada, hab. 2 = cono + aura, hab. 3 = cono. La guardia hoy se dibuja como un arco de ±60° y radio 27 u (`expedition/render.js:35`) y la vibración como puntos sobre la cabeza (`render.js:34`).
+- **Estado actual del VFX (verificado en código):** Tema procedural `bell` (`themes.js:9`, forma `scallop`; su `a=#8bb4bd` es casi idéntico al de `crystal` de Bront `#8aa4b8`). `skill-fx-a/c/baltra.js`: hab. 1 y definitiva = nova centrada, hab. 2 = cono + aura, hab. 3 = cono. La guardia hoy se dibuja como un arco de ±60° y radio 27 u (`expedition/render.js:35`) y la vibración como puntos sobre la cabeza (`render.js:34`).
 - **Fuentes del kit:** `js/champions/expedition/catalog.js:19-24` (stats y kit), `expedition/runtime.js:41-44` (lanzamiento), `:117` (guardia), `expedition/render.js:20-38`, premarcado `aim-targeting.js:68`.
 
 ## B. Habilidades
@@ -36,7 +36,7 @@
 
 - **Mecánica (código):** Onda circular centrada en ella, radio 125 u (tope 230 u); consume las cargas de vibración (máx. 5): +12% de daño por carga. Costo 26, cooldown 6000 ms. *(`catalog.js:24`, `runtime.js:41`)*
 - **Silueta y forma:** Anillo de bronce macizo visto desde arriba con 5 muescas (una por carga posible) que se iluminan según las cargas consumidas; de él salen 1 a 3 ondas.
-- **Color dominante:** Bronce `#b46c3c` y dorado apagado `#cc9c54`.
+- **Color dominante:** Cobre rojizo `#9c4a2e` con dorado apagado `#cc9c54` y verdín en los bordes.
 - **Movimiento:** El anillo nace pegado a ella y se expande en 5 cuadros; cada carga consumida añade una onda extra.
 - **Anticipación:** Pose de 420 ms (`expedition/runtime.js:28`): la campana vibra; las muescas se encienden una a una según las cargas, 3 cuadros.
 - **Impacto:** Anillo y ondas a r=125 u, 4 cuadros.
@@ -53,7 +53,7 @@
 
 - **Mecánica (código):** Guardia frontal de 25% de reducción de daño durante 3500 ms; velocidad -20% mientras dura. Alcance 90 u, radio 70 u (catálogo). Costo 26, cooldown 10000 ms. *(`catalog.js:24`, `runtime.js:42`, `:117`, premarcado `aim-targeting.js:68`)*
 - **Silueta y forma:** Media cúpula de bronce (una campana cortada) que cubre 120° frente a ella, con una burbuja de aire azul pálido dentro y remaches visibles.
-- **Color dominante:** Verdín-azulado `#8bb4bd` con bordes bronce.
+- **Color dominante:** Verdín oxidado `#6fae9a` con bordes cobre.
 - **Movimiento:** Baja desde arriba como una campana y se planta; vibra cuando recibe golpes (+1 ondita por impacto).
 - **Anticipación:** La campana cae, 3 cuadros (~250 ms).
 - **Impacto:** Se asienta con anillo de agua, 3 cuadros.
@@ -87,7 +87,7 @@
 
 - **Mecánica (código):** Tres tañidos durante 2400 ms (uno cada 800 ms), radio 190 u (tope 230 u); el último empuja a comunes (no desplaza jefes); escudo 6% a aliados a ≤ r+60 u; ralentiza 30% 1500 ms. Sin costo, cooldown 37000 ms. *(`catalog.js:24`, `runtime.js:44`, `exPulse` `runtime.js:17`)*
 - **Silueta y forma:** Una campana colosal de bronce (silueta de 150 u de alto) con algas y cadenas cuelga sobre ella y toca tres veces; cada tañido expulsa un anillo de agua distorsionada, el tercero con una cresta que empuja.
-- **Color dominante:** Bronce `#b46c3c` con verdín `#6fae9a` y destellos `#cfeef0`.
+- **Color dominante:** Cobre rojizo `#9c4a2e` con verdín `#6fae9a` y destellos `#cfeef0`.
 - **Movimiento:** La campana baja oscilando, tañido 1 (anillo r=110 u), tañido 2 (r=150 u), tañido 3 (r=190 u con cresta); cada golpe sacude la imagen levemente.
 - **Anticipación:** Pose de 650 ms: la campana desciende entre cadenas, 6 cuadros.
 - **Impacto:** Tres tañidos de 4 cuadros cada uno con anillo creciente (12 cuadros), el último con cresta.
