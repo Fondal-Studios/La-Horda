@@ -9,9 +9,9 @@
 function kvbRingPaint(pal, o){
   o = o || {};
   return function(g, q, S){
-    const c = S / 2, R = c - 1.5, P = kvbPhase(q), ant = q < .22;
+    const c = S / 2, R = c - 1.5, P = kvbPhase(q), ant = q < .22, big = S >= 96 ? .55 : S >= 72 ? .8 : 1; // las zonas enormes (≥ 200 u) llevan menos relleno para no tapar la pantalla
     const rad = ant ? R * (.5 + .5 * kvbEase(P.ant)) : R;
-    const fill = ant ? .1 * P.ant : q < .42 ? (o.fill === undefined ? .45 : o.fill) : (o.fill === undefined ? .45 : o.fill) * (1 - P.post);
+    const fill = big * (ant ? .1 * P.ant : q < .42 ? (o.fill === undefined ? .45 : o.fill) : (o.fill === undefined ? .45 : o.fill) * (1 - P.post));
     if(o.fill !== 0) kvbLayer(g, S, fill, lg => { kvbDisc(lg, c, c, rad - 1, o.fillCol || pal[1]); if(o.core) kvbDisc(lg, c, c, rad * .5, o.core); });
     const detLv = ant ? P.ant * .55 : Math.max(0, 1 - P.post * 1.15);
     if(o.details && detLv > .05) kvbLayer(g, S, detLv, lg => o.details(lg, c, R, rad, pal, q, P));
@@ -25,8 +25,8 @@ function kvbRingPaint(pal, o){
 function kvbIdlePaint(pal, o){
   o = o || {};
   return function(g, q, S){
-    const c = S / 2, R = c - 1.5, pulse = .5 + .5 * Math.sin(q * 6.2832);
-    kvbLayer(g, S, (o.fill === undefined ? .22 : o.fill) + .08 * pulse, lg => { kvbDisc(lg, c, c, R - 1, o.fillCol || pal[1]); });
+    const c = S / 2, R = c - 1.5, pulse = .5 + .5 * Math.sin(q * 6.2832), big = S >= 96 ? .55 : S >= 72 ? .8 : 1;
+    kvbLayer(g, S, ((o.fill === undefined ? .22 : o.fill) + .08 * pulse) * big, lg => { kvbDisc(lg, c, c, R - 1, o.fillCol || pal[1]); });
     if(o.details) kvbLayer(g, S, 1, lg => o.details(lg, c, R, R, pal, q, {pulse}));
     kvbLayer(g, S, 1, lg => kvbRim(lg, c, c, R, pal, 2, o.dash || null));
   };

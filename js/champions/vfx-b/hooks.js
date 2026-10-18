@@ -78,29 +78,33 @@ function kvbScale(c, sk, isUlt, idx, evo){
   }catch(e){ return {AREA: 1, DUR: 1}; }
 }
 (function(){
+  // fn(caster, sk, isUlt, {AREA, DUR}, puntoApuntado, posiciónPrevia) → [id, x, y, r, ang, a, b] o null. El dibujo sale por kvbFx (se repite en los invitados).
   const oCast = castAbility;
   castAbility = function(caster, sk, isUlt, idx){
     const fn = !KVB.off && caster && caster.classKey && sk && KVB_CLASSIC[caster.classKey + ':' + sk.kind];
     if(!fn) return oCast.apply(this, arguments);
     const oEvo = skillEvoOnCast; let evo = null;
     skillEvoOnCast = function(){ evo = oEvo.apply(this, arguments); return evo; };
-    KVB.castSeen = false; KVB.lastAim = null; let ret;
+    KVB.castSeen = false; KVB.lastAim = null; let ret; const pre = {x: caster.x, y: caster.y};
+    const before = heroes.map(h => h.hp / Math.max(1, h.maxHp));
+    KVB.pre = {pos: pre, hpRatio: before};
     try{ ret = oCast.apply(this, arguments); } finally{ skillEvoOnCast = oEvo; }
-    if(KVB.castSeen && caster.alive){ try{ fn(caster, sk, !!isUlt, kvbScale(caster, sk, isUlt, idx, evo), KVB.lastAim); }catch(e){ KVB.err = String(e && e.message || e); } }
+    if(KVB.castSeen && caster.alive){ try{ const a = fn(caster, sk, !!isUlt, kvbScale(caster, sk, isUlt, idx, evo), KVB.lastAim, pre, KVB.pre); if(a) kvbFx.apply(null, a); }catch(e){ KVB.err = String(e && e.message || e); } }
     return ret;
   };
   // Portadores (Ynara, Myla): el motor ya entrega área y duración reales a portadorCast
   const oPort = portadorCast;
   portadorCast = function(h, sk, isUlt, dmg, area, dur, power){
+    const pre = {x: h.x, y: h.y}; KVB.lastAim = null;
     const ret = oPort.apply(this, arguments);
     const fn = !KVB.off && h && h.classKey && KVB_PORT[h.classKey + ':' + sk.kind];
-    if(fn && h.alive){ try{ fn(h, sk, !!isUlt, {AREA: area, DUR: dur}, h._lastAimPt || KVB.lastAim || null); }catch(e){ KVB.err = String(e && e.message || e); } }
+    if(fn && h.alive){ try{ const a = fn(h, sk, !!isUlt, {AREA: area, DUR: dur}, h._lastAimPt || KVB.lastAim || null, pre); if(a) kvbFx.apply(null, a); }catch(e){ KVB.err = String(e && e.message || e); } }
     return ret;
   };
 })();
 
 /* ---------------- pieles de objetos persistentes ---------------- */
-// spec: {R(o), loop:'decal' [, period], layers:['g','t'], draw(o,t,layer,R), born(o), pulse(o), end(o), hideBase=true}
+// spec: {R(o), loop:'decal' [, period], layers:['g','t'], draw(o,t,layer,R), born(o), pulse(o), upd(o, st), end(o), hideBase=true}
 KVB.objSeen = new Map();
 function kvbObjUpdate(){
   if(typeof portadorObjects === 'undefined') return;
@@ -111,6 +115,7 @@ function kvbObjUpdate(){
     let st = seen.get(o.id);
     if(!st){ st = {left: o.left, o, born: false, sp}; seen.set(o.id, st); if(sp.born && o.life > 0){ try{ sp.born(o); }catch(e){} } }
     if(sp.pulse && o.left !== undefined && st.left !== undefined && o.left < st.left){ try{ sp.pulse(o, st.left - o.left); }catch(e){} }
+    if(sp.upd){ try{ sp.upd(o, st); }catch(e){} }
     st.left = o.left; st.o = o;
   }
   for(const [id, st] of seen){ if(!now.has(id)){ const sp = st.sp; if(sp && sp.end){ try{ sp.end(st.o); }catch(e){} } seen.delete(id); } }
