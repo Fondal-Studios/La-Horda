@@ -24,7 +24,7 @@
      node tools/art/emoji-lint.js --json          # salida JSON
      node tools/art/emoji-lint.js --strict        # exit 1 si hay color sin cubrir ni excepción
      node tools/art/emoji-lint.js --self-test
-   Excepciones: tools/art/emoji-lint-exceptions.json ("files", "glyphs", "lines"; cada una con motivo).
+   Excepciones: tools/art/emoji-lint-exceptions.json ("skip", "files", "glyphs", "lines"; cada una con motivo).
    ============================================================ */
 const fs = require("fs"), path = require("path");
 const ROOT = path.resolve(__dirname, "../..");
@@ -133,9 +133,9 @@ function listFiles(){
 
 function loadExceptions(){
   const p = path.join(__dirname, "emoji-lint-exceptions.json");
-  if(!fs.existsSync(p)) return {files: {}, glyphs: {}, lines: []};
+  if(!fs.existsSync(p)) return {files: {}, glyphs: {}, lines: [], skip: {}};
   const j = JSON.parse(fs.readFileSync(p, "utf8"));
-  return {files: j.files || {}, glyphs: j.glyphs || {}, lines: j.lines || []};
+  return {files: j.files || {}, glyphs: j.glyphs || {}, lines: j.lines || [], skip: j.skip || {}};
 }
 
 function run(){
@@ -144,6 +144,7 @@ function run(){
   const tot = {color: 0, mono: 0, covered: 0, uncovered: 0};
   for(const f of listFiles()){
     const rel = path.relative(ROOT, f).replace(/\\/g, "/");
+    if(ex.skip[rel] !== undefined) continue;                 // definiciones (no se muestran): ver "skip" en las excepciones
     const kind = f.endsWith(".html") ? "html" : f.endsWith(".css") ? "css" : "js";
     const hits = scanText(fs.readFileSync(f, "utf8"), kind, covered);
     for(const h of hits){

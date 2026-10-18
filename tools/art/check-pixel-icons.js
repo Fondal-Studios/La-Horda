@@ -17,7 +17,7 @@ for(const [id, rows] of Object.entries(PXI_ART)){
   const cols = new Set(rows.join("").replace(/[.k]/g, ""));
   if(cols.size > 6) errs.push(`${id}: ${cols.size} colores (máximo 6): ${[...cols].join("")}`);
   for(const c of cols) if(!PXI_PAL[c]) errs.push(`${id}: letra "${c}" no está en PXI_PAL`);
-  if(!PXI_NAME[id]) errs.push(`${id}: falta nombre accesible en PXI_NAME`);
+  if(PXI_NAME[id] === undefined) errs.push(`${id}: falta nombre accesible en PXI_NAME`);
 }
 for(const [e, id] of Object.entries(PXI_EMOJI)) if(!PXI_ART[id]) errs.push(`emoji ${e} apunta a "${id}", que no existe`);
 if(errs.length){ console.error(errs.join("\n")); process.exit(1); }

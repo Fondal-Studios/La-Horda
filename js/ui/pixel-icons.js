@@ -1318,6 +1318,74 @@ const PXI_ART = {
     "................",
     "................",
     "................"],
+  brasa:[
+    "................",
+    ".......ee.......",
+    ".......ee.......",
+    "......egge......",
+    "......egge......",
+    ".....egggge.....",
+    "...eeggyyggee...",
+    ".eeeggyyyyggeee.",
+    ".eeeggyyyyggeee.",
+    "...eeggyyggee...",
+    ".....egggge.....",
+    "......egge......",
+    "......egge......",
+    ".......ee.......",
+    ".......ee.......",
+    "................"],
+  estrella:[
+    "................",
+    ".......gg.......",
+    ".......gg.......",
+    "......gyyg......",
+    "......gyyg......",
+    ".gggggyyyyggggg.",
+    "..gyyyyyyyyyyG..",
+    "...gyyyyyyyyG...",
+    "....gyyyyyyG....",
+    "....gyyyyyyG....",
+    "...gyyyGGyyyG...",
+    "...gyyG..GyyG...",
+    "..gyyG....GyyG..",
+    "..gGG......GGG..",
+    "................",
+    "................"],
+  cruz:[
+    "................",
+    "................",
+    "......mnnN......",
+    "......mnnN......",
+    "......mnnN......",
+    "..mmmmmnnNNNNN..",
+    "..mnnnnnnnnnNN..",
+    "..mnnnnnnnnnNN..",
+    "..nNNNNnnNNNNN..",
+    "......mnnN......",
+    "......mnnN......",
+    "......nNNN......",
+    "................",
+    "................",
+    "................",
+    "................"],
+  check:[
+    "................",
+    "................",
+    "............mm..",
+    "............mmN.",
+    "...........mmnN.",
+    "..........mmnn..",
+    ".........mmnn...",
+    ".mmm....mmnn....",
+    ".mnnm..mmnn.....",
+    ".mnnnmmmnn......",
+    "..mnnnmmn.......",
+    "...mnnnn........",
+    "....mnnN........",
+    "................",
+    "................",
+    "................"],
   chispa:[
     "................",
     ".......yy.......",
@@ -1353,7 +1421,8 @@ const PXI_EMOJI = {"🪙":"moneda", "📖":"libro", "🏰":"torre", "🌵":"cact
   "👥":"grupo", "📦":"caja", "📡":"antena", "📴":"sinsenal", "🌑":"luna", "🔮":"orbe", "📜":"pergamino", "🦇":"murcielago", "🎖":"medalla", "💠":"gema", "👻":"fantasma",
   "📯":"cuerno", "🚩":"bandera", "⛰":"montana", "🚫":"prohibido", "✂":"tijera", "🌲":"arbol", "🌿":"arbol",
   "🧭":"brujula", "👣":"huellas", "🐎":"caballo", "🐂":"toro", "☣":"veneno", "🌧":"nube", "💨":"torbellino",
-  "🏜":"sol", "🏚":"torre", "🐜":"grupo", "😡":"fuego", "🐉":"fuego", "🐙":"ola", "🐢":"escudo", "🌸":"chispa", "🕸":"cadena", "✨":"chispa"};
+  "🏜":"sol", "🏚":"torre", "🐜":"grupo", "😡":"fuego", "🐉":"fuego", "🐙":"ola", "🐢":"escudo", "🌸":"chispa", "🕸":"cadena", "✨":"chispa",
+  "✦":"brasa", "★":"estrella", "✔":"check", "✓":"check", "✚":"cruz"};
 
 // Nombre accesible de cada ícono (lectores de pantalla): el emoji solo se leería en el idioma del sistema.
 const PXI_NAME = {moneda:"monedas", libro:"libro", torre:"torre", cactus:"cactus", pechera:"pechera", guantes:"guantes", botas:"botas",
@@ -1367,7 +1436,8 @@ const PXI_NAME = {moneda:"monedas", libro:"libro", torre:"torre", cactus:"cactus
   grupo:"jugadores", caja:"caja", antena:"señal", chispa:"destello", intercambio:"intercambio", sinsenal:"sin conexión",
   agua:"agua", veneno:"veneno", luna:"luna", orbe:"orbe", pergamino:"pergamino", murcielago:"murciélago", medalla:"medalla",
   gema:"gema", fantasma:"fantasma", cuerno:"cuerno", bandera:"bandera", montana:"montaña", prohibido:"prohibido",
-  tijera:"tijera", arbol:"árbol", brujula:"brújula", huellas:"huellas", caballo:"caballo", toro:"toro"};
+  tijera:"tijera", arbol:"árbol", brujula:"brújula", huellas:"huellas", caballo:"caballo", toro:"toro",
+  brasa:"", estrella:"estrella", check:"listo", cruz:"cruz"}; // "" = decorativo (aria-hidden)
 function _pxiCanvas(id){
   const art = PXI_ART[id]; if(!art || typeof document==="undefined") return null;
   const cv = document.createElement("canvas"); cv.width = 16; cv.height = 16;
@@ -1387,7 +1457,7 @@ function pixelIconURL(id){
   let u = null; try{ const cv = _pxiCanvas(id); u = cv ? cv.toDataURL("image/png") : null; }catch(e){ u = null; }
   return (_pxiURL[id] = u);
 }
-function pixelIconHTML(id, emoji){ return `<i class="pxi pxi-${id}" role="img" aria-label="${PXI_NAME[id]||emoji||id}">${emoji||""}</i>`; }
+function pixelIconHTML(id, emoji){ const nm = PXI_NAME[id]; return nm === "" ? `<i class="pxi pxi-${id}" aria-hidden="true">${emoji||""}</i>` : `<i class="pxi pxi-${id}" role="img" aria-label="${nm||emoji||id}">${emoji||""}</i>`; }
 
 (function(){
   if(typeof document==="undefined") return;
@@ -1409,7 +1479,7 @@ function pixelIconHTML(id, emoji){ return `<i class="pxi pxi-${id}" role="img" a
     const frag = document.createDocumentFragment(); let last = 0;
     s.replace(RXG, (m, e, i)=>{
       if(i > last) frag.appendChild(document.createTextNode(s.slice(last, i)));
-      const el = document.createElement("i"); el.className = "pxi pxi-" + PXI_EMOJI[e]; el.setAttribute("role", "img"); el.setAttribute("aria-label", PXI_NAME[PXI_EMOJI[e]] || e); el.textContent = m;
+      const el = document.createElement("i"); el.className = "pxi pxi-" + PXI_EMOJI[e]; const nm = PXI_NAME[PXI_EMOJI[e]]; if(nm === "") el.setAttribute("aria-hidden", "true"); else { el.setAttribute("role", "img"); el.setAttribute("aria-label", nm || e); } el.textContent = m;
       frag.appendChild(el); last = i + m.length; return m;
     });
     if(last < s.length) frag.appendChild(document.createTextNode(s.slice(last)));
@@ -1434,5 +1504,9 @@ function pixelIconHTML(id, emoji){ return `<i class="pxi pxi-${id}" role="img" a
   }
   if(document.body) start(); else document.addEventListener("DOMContentLoaded", start);
 })();
-/* Nota: quedan como emoji, a propósito, los que son parte de un texto largo o no tienen equivalente
-   claro en 16×16 todavía (🧪 💥 🗡 👑 📜 🌪 🎯 🦇 🔮 🏹 💀 🎨 🔒): ver el reporte de la tarea V6. */
+/* Nota: todo emoji de COLOR visible tiene ícono en PXI_EMOJI (lo comprueba tools/art/emoji-lint.js --strict). Para un
+   emoji nuevo: dibujar el ícono arriba (16x16, <= 6 colores: tools/art/check-pixel-icons.js), sumarlo a PXI_EMOJI y a
+   PXI_NAME (nombre accesible; "" si es decorativo). En el lienzo (canvas) usar drawCanvasIcon / drawIconText
+   (js/rendering/effects.js); en ::before/::after, background:var(--pxi-ID). Las fuentes pixel del juego no traen
+   dingbats (solo ↑ ↓): los más usados (✦ ★ ✔ ✓ ✚) también son íconos; el resto (◆ ▸ → …) cae a la fuente del sistema
+   en monocromo y se informa con --mono. */
