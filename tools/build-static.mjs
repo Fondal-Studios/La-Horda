@@ -7,7 +7,7 @@ const relay = new URL(process.env.GAME_RELAY_URL || 'wss://fondalstudios.com/la-
 if(relay.protocol !== 'wss:' || relay.username || relay.password || relay.search || relay.hash)
   throw new Error('GAME_RELAY_URL must be a public wss:// URL without credentials or query');
 await mkdir(out, {recursive:true});
-for(const name of ['assets','css','js','index.html','instalar.html','crystal-wars.html','manifest.webmanifest'])
+for(const name of ['assets','css','js','index.html','instalar.html','crystal-wars.html','manifest.webmanifest','sw.js'])
   await cp(path.join(root,name),path.join(out,name),{recursive:true});
 const configFile=path.join(out,'js/net/net-config.js');
 const config=await readFile(configFile,'utf8');
@@ -22,6 +22,13 @@ if(process.env.GAME_SITE_URL){
   if(site.protocol!=='https:'||site.username||site.password)throw new Error('Invalid public site URL');
   const html=await readFile(path.join(out,'index.html'),'utf8');
   await writeFile(path.join(out,'index.html'),html.replaceAll('https://fondalstudios.com/la-horda/jugar/',site.href.endsWith('/')?site.href:site.href+'/'));
+}
+// OPCIONAL (GAME_PERF=1): paquetes de scripts (~360 pedidos -> ~25) + service worker con caché por hash.
+// Va después de las reescrituras de arriba porque los hashes se calculan sobre lo que realmente se publica.
+if(process.env.GAME_PERF==='1'){
+  const {execFileSync}=await import('node:child_process');
+  execFileSync('node',[path.join(root,'tools/perf/bundle.js'),'--root',out,'--out',out,'--html','index.html'],{stdio:'inherit'});
+  execFileSync('node',[path.join(root,'tools/perf/stamp-sw.js'),out],{stdio:'inherit'});
 }
 await writeFile(path.join(out,'deployment.json'),JSON.stringify({revision:process.env.RENDER_GIT_COMMIT||null,relay:relay.href,builtAt:new Date().toISOString()},null,2));
 console.log('Static game built in dist with relay '+relay.href);
