@@ -43,7 +43,7 @@ function kvbHeroAt(x, y, classKey){ let best = null, bd = 1e9; for(const h of he
     window[name] = function(h, sk, isUlt, r, origin, end){
       const id = !KVB.off && sk && KVB_ACT[prefix + sk.action];
       if(!id) return o.apply(this, arguments);
-      const g = kvbCastGeom(h, sk, isUlt, r, origin, end); kvbFx(id, g[0], g[1], g[2], g[3], g[4], g[5]);
+      const g = kvbCastGeom(h, sk, isUlt, r, origin, end); kvbFx(id, g[0], g[1], g[2], g[3], g[4], g[5]); kvbPunch(h, g[0], g[1], g[2], isUlt ? 2 : 1);
     };
   }
   wrap('exCastFx', 'ex:'); wrap('ascCastFx', 'asc:');
@@ -62,6 +62,7 @@ function kvbHeroAt(x, y, classKey){ let best = null, bd = 1e9; for(const h of he
       if(!id) return oQ.apply(this, arguments);
       if(draw === kitFxLine){ const [, ax, ay, bx, by, w] = args; kvbFx(id, ax, ay, w, Math.atan2(by - ay, bx - ax), Math.hypot(bx - ax, by - ay), 0); }
       else kvbFx(id, args[1], args[2], args[3], Math.atan2(h.fy || 0, h.fx || 1), .85, 0);
+      kvbPunch(h, args[1], args[2], args[3] || 60, h.cls && h.cls.ultimate === c.sk ? 2 : 1);
     };
   }
   // Último punto apuntado (premarcado) y marca de "el lanzamiento sí ocurrió" (castAbility sale antes si está congelado/fusionado)
@@ -89,7 +90,7 @@ function kvbScale(c, sk, isUlt, idx, evo){
     const before = heroes.map(h => h.hp / Math.max(1, h.maxHp));
     KVB.pre = {pos: pre, hpRatio: before};
     try{ ret = oCast.apply(this, arguments); } finally{ skillEvoOnCast = oEvo; }
-    if(KVB.castSeen && caster.alive){ try{ const a = fn(caster, sk, !!isUlt, kvbScale(caster, sk, isUlt, idx, evo), KVB.lastAim, pre, KVB.pre); if(a) kvbFx.apply(null, a); }catch(e){ KVB.err = String(e && e.message || e); } }
+    if(KVB.castSeen && caster.alive){ try{ const a = fn(caster, sk, !!isUlt, kvbScale(caster, sk, isUlt, idx, evo), KVB.lastAim, pre, KVB.pre); if(a){ kvbFx.apply(null, a); kvbPunch(caster, a[1], a[2], a[3] || 60, isUlt ? 2 : 1); } }catch(e){ KVB.err = String(e && e.message || e); } }
     return ret;
   };
   // Portadores (Ynara, Myla): el motor ya entrega área y duración reales a portadorCast
@@ -98,7 +99,7 @@ function kvbScale(c, sk, isUlt, idx, evo){
     const pre = {x: h.x, y: h.y}; KVB.lastAim = null;
     const ret = oPort.apply(this, arguments);
     const fn = !KVB.off && h && h.classKey && KVB_PORT[h.classKey + ':' + sk.kind];
-    if(fn && h.alive){ try{ const a = fn(h, sk, !!isUlt, {AREA: area, DUR: dur}, h._lastAimPt || KVB.lastAim || null, pre); if(a) kvbFx.apply(null, a); }catch(e){ KVB.err = String(e && e.message || e); } }
+    if(fn && h.alive){ try{ const a = fn(h, sk, !!isUlt, {AREA: area, DUR: dur}, h._lastAimPt || KVB.lastAim || null, pre); if(a){ kvbFx.apply(null, a); kvbPunch(h, a[1], a[2], a[3] || 60, isUlt ? 2 : 1); } }catch(e){ KVB.err = String(e && e.message || e); } }
     return ret;
   };
 })();
@@ -191,3 +192,41 @@ function kvbBasic(classKey, pal, motif){
     return ret;
   };
 })();
+
+/* ---------------- impacto común: flash + ondas + chispas con la paleta del campeón; la definitiva es un momento aparte ---------------- */
+// level 1 = habilidad (destello y onda cortos), 2 = definitiva (rayos, tres ondas escalonadas, pilar de motas, sacudida leve existente).
+// Solo usa primitivas sin azar (vfxShock, vfxShake, kvb*): no toca el azar de la simulación. Adaptativo: con vfxLoad bajo o «Reducir efectos» se queda en lo esencial.
+const KVB_TONE = {};
+function kvbTone(hex){
+  let t = KVB_TONE[hex]; if(t) return t; const c = kvbRGB(hex || '#ffffff'), mix = (a, k) => '#' + c.map((v, i) => Math.max(0, Math.min(255, Math.round(k > 0 ? v + (255 - v) * k : v * (1 + k)))).toString(16).padStart(2, '0')).join('');
+  t = KVB_TONE[hex] = {pal: [mix(0, -.82), mix(0, -.45), hex || '#ffffff', mix(0, .45), mix(0, .85)], key: String(hex).replace('#', '')};
+  const k = t.key, pal = t.pal;
+  kvbDefMotif('pn_mote_' + k, 5, 5, kvbBmp(['..a..', '.aba.', 'abcba', '.aba.', '..a..'], {a: pal[2], b: pal[3], c: pal[4]}));
+  kvbDefDecal('pn_flash_' + k, 7, kvbRingPaint(pal, {fillCol: pal[1], core: pal[3], fill: .5, rimThick: 3, flash: pal[4], details: (lg, c, R, rad, p) => { for(let i = 0; i < 8; i++){ const a = i * .7854 + .39, nx = -Math.sin(a), ny = Math.cos(a); kvbPoly(lg, [[c + Math.cos(a) * rad * .2, c + Math.sin(a) * rad * .2], [c + Math.cos(a) * rad * .98 + nx * 1.6, c + Math.sin(a) * rad * .98 + ny * 1.6], [c + Math.cos(a) * rad * .98 - nx * 1.6, c + Math.sin(a) * rad * .98 - ny * 1.6]], i & 1 ? p[3] : p[4]); } }}));
+  kvbDefDecal('pn_ult_' + k, 12, kvbRingPaint(pal, {fillCol: pal[1], core: pal[3], fill: .5, rimThick: 4, flash: pal[4], details: (lg, c, R, rad, p, q) => { for(let i = 0; i < 18; i++){ const a = i * .349 + q * .5, L = rad * (i & 1 ? .62 : .98), nx = -Math.sin(a), ny = Math.cos(a); kvbPoly(lg, [[c + Math.cos(a) * rad * .15, c + Math.sin(a) * rad * .15], [c + Math.cos(a) * L + nx * 2.4, c + Math.sin(a) * L + ny * 2.4], [c + Math.cos(a) * L - nx * 2.4, c + Math.sin(a) * L - ny * 2.4]], i & 1 ? p[3] : p[4]); } kvbCircle(lg, c, c, rad * .55, p[3], 1.4); kvbCircle(lg, c, c, rad * .3, p[4], 1); }}));
+  return t;
+}
+// kvbPunch viaja por la red como kvbFx('punch', x, y, r, 0, nivel, color numérico) para que los invitados lo vean igual
+function kvbPunch(h, x, y, r, level){
+  if(KVB.off || !h || !h.cls) return; const hex = (h.cls.glow || h.cls.color || '#ffffff').replace('#', '');
+  kvbFx('punch', x, y, r, 0, level, parseInt(hex, 16));
+}
+KVB_FX['punch'] = (x, y, r, ang, level, num) => {
+  const hex = '#' + (num >>> 0).toString(16).padStart(6, '0').slice(-6);
+  const t = kvbTone(hex), k = t.key, ult = level >= 2;
+  r = Math.max(30, Math.min(ult ? 260 : 120, r || 60));
+  const rgb = kvbRGB(hex).join(',');
+  if(typeof vfxShock === 'function'){
+    vfxShock(x, y, r * .1, r * (ult ? .9 : .6), rgb, ult ? 560 : 340, 2);
+    if(ult){ vfxShock(x, y, r * .05, r * 1.25, '255,255,255', 760, 2); vfxShock(x, y, r * .1, r * .55, rgb, 900, 1); }
+  }
+  kvbDecal('pn_flash_' + k, x, y, Math.min(r, 90) * (ult ? 1.1 : .7), ult ? 520 : 340, {layer: 't', alpha: .9});
+  if(ult){
+    kvbDecal('pn_ult_' + k, x, y, Math.min(r * 1.15, 280), 1100, {layer: 'g'});
+    kvbEmit('pn_mote_' + k, 22, x, y, {ring: r * .4, v0: 10, v1: 50, up: 140, grav: -30, l0: 700, l1: 1300, scale: 1.5, flat: .6}); // pilar de motas que sube
+    kvbEmit('pn_mote_' + k, 16, x, y, {v0: 80, v1: 240, up: 40, grav: 120, l0: 500, l1: 900, scale: 1.3, flat: .6, shrink: true});
+    if(typeof vfxShake === 'function' && !kvbCalm()) vfxShake(6);
+  } else {
+    kvbEmit('pn_mote_' + k, 7, x, y, {v0: 60, v1: 170, up: 30, grav: 140, l0: 260, l1: 460, scale: 1.2, shrink: true});
+  }
+};

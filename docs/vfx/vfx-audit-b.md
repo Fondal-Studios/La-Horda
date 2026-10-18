@@ -165,14 +165,17 @@ Leyenda de «Antes»: **G** = solo efecto genérico del motor/`kitFx` (sprite co
 
 ## Costo por frame
 
-Medido con `tools/vfx/bench-cost.js` (cada campeón lanza su kit completo en bucle contra 12 muñecos con el pool de efectos llevado al tope de 128 entradas: es el **peor caso**, no el juego normal;
-alterna `KVB.off` y mide aparte el tiempo propio de las funciones de `vfx-b`).
+Medido con `tools/vfx/bench-cost.js` en el entorno de trabajo (Chromium sin GPU, máquina ya sin carga): cada campeón lanza su kit completo en bucle contra 12 muñecos con el pool llevado al tope (128), que es el **peor caso**;
+alterna `KVB.off` (3 repeticiones tras calentamiento) y mide aparte el tiempo propio de `vfx-b`. Resultado en los 21 campeones: frame medio **3,75 ms sin y 3,94 ms con los efectos (+0,19 ms)**, tiempo propio de `vfx-b` **0,26 ms por frame** (3,8–10 %
+del frame; el máximo, Nahir, 10 %), p95 sin cambio apreciable. Resultados en `docs/vfx/vfx-b-cost.json`. (Una medición anterior hecha con la máquina saturada por otros procesos no es fiable y se descartó.)
 
-- **Medición en máquina tranquila** (primera corrida, 21 campeones, 3 repeticiones, sin calentamiento): el frame medio fue de 11,3 ms sin los efectos y 10,5 ms con ellos (Δ −0,8 ms: es ruido, el orden de las corridas favorecía a la segunda). Con eso solo se puede decir que **la diferencia queda dentro del ruido de la medición**.
-- **Medición con la máquina saturada** (carga de 80–100 en 4 núcleos por otros procesos; los frames tardaron 100–300 ms, así que el tiempo absoluto no sirve): lo único que se pudo medir con fiabilidad es el **tiempo propio de `vfx-b` como fracción del frame**,
-  y en los 7 campeones más cargados (oriel, zahra, soporte, vhal, velmira, tibor, renko) fue de **3,6 % a 6,9 % del frame, media 4,9 %** en ese peor caso con el pool al tope. Traducido a una máquina normal (~10 ms por frame) son del orden de **0,4–0,7 ms por frame**. En el bucle de la prueba el pool llegó a 57–128 entradas según el campeón; en juego real con las habilidades en enfriamiento será menor, pero **no se midió**.
-- Los dos controles que la acotan por diseño: pool de 128 (si se llena se descartan los efectos secundarios y se conservan los prioritarios) y recorte por visibilidad (`inView`); con «Reducir efectos» (`JUICE.reduceFx`) o con `vfxLoad` bajo las ráfagas de motivos se reducen al 40–60 %.
-- **Sin medir** en un móvil real ni con GPU. Si el costo preocupa, el siguiente paso barato es bajar `KVB.MAX` a 96 o cachear los decales ya escalados.
+- **Móvil**: no se midió en un móvil real. Como orientación, un móvil de gama media ejecuta JS de canvas entre 3 y 6 veces más lento que este entorno, lo que daría del orden de 0,6–1,2 ms por frame en el peor caso (**estimación, no medición**).
+- **Adaptativo**: el pool tiene tope 128 y baja a 64 si el frame va lento (`vfxLoad < .6`) o con «Reducir efectos»; las ráfagas de motivos se reducen al 40–60 % en esos casos; todo se recorta por visibilidad (`inView`); con «Reducir movimiento» desaparecen la sacudida y la animación de los bucles.
+
+## Campeones que no cumplen gates (decide el dueño)
+
+Ninguno de los 21 quedó bloqueado ni se quitó. `ability-gate --strict`: **0 campeones nuevos que no pasan** (43 evaluados). Los INFO preexistentes de clásicos (no causados por esta rama, listados en `docs/bible/generated/ABILITY_GATE.md`):
+tanque, guerrero, mago, soporte, segador, axiom, profeta, musashi, cazadora, nigromante, libertador, ilkan, myla, brasa, eslabon, farolero e iria (17, estado INFO en el generado) incumplen alguna de las reglas de la tabla (p. ej. «falta otra habilidad que dañe a varios», «la definitiva suma menos de 3 categorías», «sin efecto medible»). `entry-gate.js` y `check-entry-reference.js` **no se corrieron** (no se agregó ningún campeón ni se tocó el balance).
 
 ## Pendientes
 

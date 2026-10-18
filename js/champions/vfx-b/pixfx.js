@@ -110,7 +110,9 @@ function kvbBeamFrames(name){
 /* ---------------- pool de entradas ---------------- */
 function kvbAdd(e){
   if(KVB.off) return null;
-  if(KVB.pool.length >= KVB.MAX){ if(!e.prio){ KVB.stats.dropped++; return null; } KVB.pool.shift(); }
+  // adaptativo: si el frame va lento (vfxLoad < .6, móviles) o con «Reducir efectos», el tope baja a la mitad y se descartan antes los efectos secundarios
+  const cap = (typeof JUICE !== 'undefined' && JUICE.reduceFx) || (typeof vfxLoad !== 'undefined' && vfxLoad < .6) ? KVB.MAX >> 1 : KVB.MAX;
+  if(KVB.pool.length >= cap){ if(!e.prio){ KVB.stats.dropped++; return null; } KVB.pool.shift(); }
   e.t = e.t || 0; e.alpha = e.alpha === undefined ? 1 : e.alpha; e.fadeAt = e.fadeAt === undefined ? .62 : e.fadeAt;
   e.layer = e.layer || 't'; KVB.pool.push(e); KVB.stats.added++; return e;
 }
