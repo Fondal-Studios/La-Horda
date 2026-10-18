@@ -102,5 +102,5 @@
 
 ### Pasiva - Contrapeso
 
-- **Mecánica (código):** Controlar a un enemigo concede 12% de resistencia durante 1,6 s, con 2,2 s de espera interna; no acumula (`js/data/portadores-lore.js:28`; código `portadores.js:41` y `:198`).
+- **Mecánica (código):** Controlar a un enemigo concede 12% de resistencia durante 1,6 s, con 2,2 s de espera interna; no acumula (`js/data/portadores-lore.js:27`; código `portadores.js:41` y `:198`).
 - **Arte:** No se verificó un indicador visible. Sugerencia: un eslabón brillante que gira sobre el hombro durante los 1600 ms de resistencia.
