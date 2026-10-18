@@ -119,7 +119,6 @@ function sylvaAddTrack(h, target, amount){
   if(!wasCornered && h.trackStacks>=5){
     champSetOnCornered(h); // set La Manada
     if(h===player){
-      floatText(h.x, h.y-46, "¡PRESA ACORRALADA!", "crit");
       particles.push({x:h.x,y:h.y, life:320, ring:true, maxLife:320, maxR:46, color:"#ffb84a"});
     }
   }
@@ -147,7 +146,6 @@ function updateSylvaMomentum(h, dt){
     const wasMaxed = h.momentum>=10;
     h.momentum = Math.min(10, h.momentum + dt*0.006);
     if(!wasMaxed && h.momentum>=10 && h===player){
-      floatText(h.x, h.y-46, "¡IMPULSO MÁXIMO!", null);
     }
   } else {
     h.momentumGraceTimer -= dt;

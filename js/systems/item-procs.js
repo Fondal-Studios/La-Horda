@@ -65,7 +65,6 @@ function itemProcsOnHit(h, e, dmg, crit, opts){
     h._rampTimer = 2000;
     if(h._rampStacks >= 2) damageEnemy(e, dmg*0.035*h._rampStacks*p, {src:h, fromProc:true});
     if(h._rampStacks===5 || h._rampStacks===10) vfxShock(h.x, h.y-8, 6, 20 + h._rampStacks*3, "255,170,70", 260, _procPr(h)); // la furia sube
-    if(h._rampStacks===10 && h===player && _procReady(h, "rampMsg", 4000)) floatText(h.x, h.y-58, "¡FURIA x10!", "crit");
   }
   if(crit && (p = _procPower(h, "crit_quake")) && _procReady(h, "quake", 600)){
     const R = 80;
@@ -211,7 +210,6 @@ function itemProcsOnHurt(h, dmg, src){
   h.shield = Math.min(h.maxHp*0.5, (h.shield||0) + h.maxHp*0.14*p);
   h.shieldTimer = Math.max(h.shieldTimer||0, 5000);
   vfxShock(h.x, h.y-10, 10, 46, "143,208,255", 360, h===player?2:1);
-  if(h===player) floatText(h.x, h.y-52, "¡ÉGIDA!", "heal");
 }
 
 function updateItemProcTimers(h, dt){
