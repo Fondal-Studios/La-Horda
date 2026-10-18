@@ -37,7 +37,10 @@ function tutSay(key, text, goal, ms, urgent, who){
   if(tutSeen(key) || (!urgent && TUT.key && TUT.key!==key && performance.now() < TUT.until - 1500)) return false;
   if(urgent && TUT.key && TUT.key!==key && !TUT.key.startsWith("b_")) tutMark(TUT.key); // el que se tapa se da por visto
   const el = document.getElementById("tut-panel"); if(!el) return false;
-  el.querySelector(".tut-text").textContent = text;
+  const compact = typeof hudCompact==="function" && hudCompact();
+  el.querySelector(".tut-text").textContent = compact ? hudShortText(text, innerWidth < 760 ? 72 : 104) : text; // celular apaisado: 1-2 renglones
+  el.classList.remove("ghost"); clearTimeout(el._ghostT);
+  if(compact) el._ghostT = setTimeout(()=>el.classList.add("ghost"), 5500); // se desvanece solo; el objetivo sigue vigente en el juego
   const wh = el.querySelector(".tut-who"); if(wh) wh.textContent = who && who.name ? who.name : "EL HECHICERO";
   el.dataset.face = who && who.face ? who.face : "hech";
   const g = el.querySelector(".tut-goal"); g.textContent = goal ? "▶ " + goal : ""; g.classList.remove("done");
