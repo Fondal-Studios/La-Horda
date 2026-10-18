@@ -6,38 +6,38 @@
    (relleno trameado, borde grueso en el RADIO REAL) y disipación .42–1 (el relleno y el borde se deshacen por tramado).
    ============================================================ */
 // Disco con borde en el radio real. o.details(lg, c, R, rad, pal, q, P): marcas internas (rayos, glifo, sellos).
-function kvbRingPaint(pal, o){
+function kvbRingPaint(pal0, o){
   o = o || {};
   return function(g, q, S){
-    const c = S / 2, R = c - 1.5, P = kvbPhase(q), ant = q < .22, big = S >= 96 ? .32 : S >= 72 ? .7 : 1; // las zonas enormes (≥ 200 u) llevan menos relleno para no tapar la pantalla
-    const rad = ant ? R * (.5 + .5 * kvbEase(P.ant)) : R;
-    const fill = big * (ant ? .1 * P.ant : q < .42 ? (o.fill === undefined ? .45 : o.fill) : (o.fill === undefined ? .45 : o.fill) * (1 - P.post));
-    if(o.fill !== 0) kvbLayer(g, S, fill, lg => { kvbDisc(lg, c, c, rad - 1, o.fillCol || pal[1]); if(o.core) kvbDisc(lg, c, c, rad * .5, o.core); });
-    const detLv = ant ? P.ant * .55 : Math.max(0, 1 - P.post * 1.15);
+    const pal = kvbTintPal(pal0), c = S / 2, R = c - 1.5, P = kvbPhase(q), ant = q < .22, big = S >= 96 ? .75 : S >= 72 ? .9 : 1; // las zonas enormes (≥ 200 u) llevan menos relleno para no tapar la pantalla
+    const rad = ant ? R * (.5 + .5 * kvbEase(P.ant)) : R, fl = Math.min(KVB_FILL_CAP, o.fill === undefined ? .45 : o.fill);
+    const fill = big * (ant ? .1 * P.ant : q < .42 ? fl : fl * (1 - P.post));
+    if(o.fill !== 0) kvbLayer(g, S, fill, lg => { kvbDisc(lg, c, c, rad - 1, kvbTintCol(o.fillCol) || pal[1]); if(o.core) kvbDisc(lg, c, c, rad * .5, kvbTintCol(o.core, .5)); });
+    const detLv = (ant ? P.ant * .55 : Math.max(0, 1 - P.post * 1.15)) * (S >= 72 ? .7 : 1); // marcas internas: más ralas en zonas grandes, para no cubrir al enemigo
     if(o.details && detLv > .05) kvbLayer(g, S, detLv, lg => o.details(lg, c, R, rad, pal, q, P));
     const th = ant ? 1 : q < .42 ? (o.rimThick || 3) : Math.max(1, Math.round((o.rimThick || 3) - 1 - P.post * 1.2));
     const rimLv = P.post < .55 ? 1 : Math.max(0, 1 - (P.post - .55) / .45);
     if(rimLv > .05) kvbLayer(g, S, rimLv, lg => kvbRim(lg, c, c, rad, pal, th, ant ? [5, 3] : (o.dash || null)));
-    if(!ant && q < .5 && o.flash) kvbLayer(g, S, .5 * (1 - (q - .22) / .28), lg => kvbDisc(lg, c, c, rad * .72, o.flash));
+    if(!ant && q < .5 && o.flash) kvbLayer(g, S, .2 * (1 - (q - .22) / .28), lg => kvbDisc(lg, c, c, rad * .72, kvbTintCol(o.flash, .5)));
   };
 }
 // Anillo "de zona viva" en bucle (q = fase del bucle, sin disipación): borde fijo + marcas que giran
-function kvbIdlePaint(pal, o){
+function kvbIdlePaint(pal0, o){
   o = o || {};
   return function(g, q, S){
-    const c = S / 2, R = c - 1.5, pulse = .5 + .5 * Math.sin(q * 6.2832), big = S >= 96 ? .32 : S >= 72 ? .7 : 1;
-    kvbLayer(g, S, ((o.fill === undefined ? .22 : o.fill) + .08 * pulse) * big, lg => { kvbDisc(lg, c, c, R - 1, o.fillCol || pal[1]); });
+    const pal = kvbTintPal(pal0), c = S / 2, R = c - 1.5, pulse = .5 + .5 * Math.sin(q * 6.2832), big = S >= 96 ? .75 : S >= 72 ? .9 : 1;
+    kvbLayer(g, S, Math.min(KVB_FILL_CAP, ((o.fill === undefined ? .22 : o.fill) + .06 * pulse)) * big, lg => { kvbDisc(lg, c, c, R - 1, kvbTintCol(o.fillCol) || pal[1]); });
     if(o.details) kvbLayer(g, S, 1, lg => o.details(lg, c, R, R, pal, q, {pulse}));
     kvbLayer(g, S, 1, lg => kvbRim(lg, c, c, R, pal, 2, o.dash || null));
   };
 }
 // Sector (cono) con el vértice en el centro y el eje en +x: el borde exterior llega al alcance real (R) y los lados a ±half.
-function kvbSectorPaint(pal, o){
+function kvbSectorPaint(pal0, o){
   o = o || {}; const half = o.half || .85;
   return function(g, q, S){
-    const c = S / 2, R = c - 1.5, P = kvbPhase(q);
-    const front = R * kvbEase(Math.min(1, q / .4)), fill = q < .42 ? .55 : .55 * (1 - P.post);
-    kvbLayer(g, S, fill, lg => { lg.beginPath(); lg.moveTo(c, c); lg.arc(c, c, Math.max(2, front), -half, half); lg.closePath(); lg.fillStyle = o.fillCol || pal[1]; lg.fill(); });
+    const pal = kvbTintPal(pal0), c = S / 2, R = c - 1.5, P = kvbPhase(q);
+    const front = R * kvbEase(Math.min(1, q / .4)), fill = q < .42 ? KVB_FILL_CAP : KVB_FILL_CAP * (1 - P.post);
+    kvbLayer(g, S, fill, lg => { lg.beginPath(); lg.moveTo(c, c); lg.arc(c, c, Math.max(2, front), -half, half); lg.closePath(); lg.fillStyle = kvbTintCol(o.fillCol) || pal[1]; lg.fill(); });
     const detLv = q < .12 ? q / .12 : Math.max(0, 1 - P.post * 1.2);
     if(o.streaks && detLv > .05) kvbLayer(g, S, detLv, lg => o.streaks(lg, c, R, front, q, half, pal));
     const rimLv = P.post < .5 ? 1 : Math.max(0, 1 - (P.post - .5) / .5), th = q < .42 ? 2 : 1;
