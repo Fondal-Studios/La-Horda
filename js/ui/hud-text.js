@@ -115,7 +115,7 @@ function hudCompact(){ try{ return !!(window.matchMedia && window.matchMedia("(m
 function hudShortText(text, max){
   const s = String(text||"").trim(); max = max || 110;
   if(s.length <= max) return s;
-  const parts = s.match(/[^.!?¡¿]*[.!?]+\s*|[^.!?]+$/g) || [s];
+  const parts = s.match(/[^.!?]+[.!?]+\s*|[^.!?]+$/g) || [s];
   let out = "";
   for(const p of parts){ if((out + p).length > max) break; out += p; }
   out = out.trim();
