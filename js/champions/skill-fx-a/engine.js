@@ -235,7 +235,30 @@ function sfaBakeAura(T) {
 }
 
 /* ---------------- horneado con caché ---------------- */
-function sfaTheme(name) { return sfaThemes[name] || null; }
+function sfaTheme(name) {
+  let T = sfaThemes[name]; if (T) return T;
+  const i = name.indexOf('~'); if (i < 0) return null;
+  const base = sfaThemes[name.slice(0, i)]; if (!base) return null;
+  return (sfaThemes[name] = sfaDeriveVariant(base, name.slice(i + 1)));
+}
+// Variantes de un tema para que las habilidades de un mismo campeón no se vean iguales: h = tono girado (cálido/frío), p = pálida y brillante,
+// k = oscura y densa. Cambian color, silueta del frente y motivos; el borde exterior sigue siendo el radio real.
+const SFA_SHAPES = ['round', 'hex', 'spike', 'petal', 'sun', 'wave', 'scallop', 'gear', 'square', 'glitch'];
+function sfaHsl(hex) { const n = parseInt(hex.slice(1), 16), r = (n >> 16 & 255) / 255, g = (n >> 8 & 255) / 255, b = (n & 255) / 255, mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2;
+  let h = 0, s = 0; if (mx !== mn) { const d = mx - mn; s = l > .5 ? d / (2 - mx - mn) : d / (mx + mn); h = mx === r ? (g - b) / d + (g < b ? 6 : 0) : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; h *= 60; } return [h, s, l]; }
+function sfaHex(h, s, l) { h = ((h % 360) + 360) % 360; s = sfaClamp(s, 0, 1); l = sfaClamp(l, 0, 1); const c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = l - c / 2; let r = 0, g = 0, b = 0;
+  if (h < 60) [r, g, b] = [c, x, 0]; else if (h < 120) [r, g, b] = [x, c, 0]; else if (h < 180) [r, g, b] = [0, c, x]; else if (h < 240) [r, g, b] = [0, x, c]; else if (h < 300) [r, g, b] = [x, 0, c]; else [r, g, b] = [c, 0, x];
+  return '#' + [r, g, b].map(v => Math.round((v + m) * 255).toString(16).padStart(2, '0')).join(''); }
+function sfaDeriveVariant(base, v) {
+  const P = {}, mut = (hex, dh, ds, dl) => { const [h, s, l] = sfaHsl(hex); return sfaHex(h + dh, s * ds, l + dl); };
+  const k = {h: [50, 1.15, .02], p: [0, .55, .22], k: [-40, 1.05, -.14]}[v] || [0, 1, 0];
+  for (const c of ['d', 'a', 'b']) P[c] = mut(base.pal[c], k[0], k[1], k[2]);
+  P.o = v === 'k' ? mut(base.pal.o, k[0], 1, -.04) : base.pal.o; P.c = v === 'p' ? '#ffffff' : base.pal.c; P.e = mut(base.pal.e, k[0] + 30, 1, 0);
+  const si = SFA_SHAPES.indexOf(base.shape), shift = {h: 2, p: 4, k: 6}[v] || 0, rot = {h: 0, p: 1, k: 2}[v] || 0;
+  let mo = base.motifs.slice(); mo = mo.slice(rot).concat(mo.slice(0, rot)); if (v === 'h') mo.reverse();
+  const px = {}; for (const c in P) px[c] = sfaCol(P[c]);
+  return Object.assign({}, base, {pal: P, px, shape: SFA_SHAPES[(Math.max(0, si) + shift) % SFA_SHAPES.length], motifs: mo});
+}
 function sfaBake(art, theme, size, arc) {
   const key = art + '|' + theme + '|' + size + '|' + (arc || 0); let b = sfaCache.get(key); if (b) return b;
   const T = sfaTheme(theme); if (!T) return null;
@@ -243,6 +266,7 @@ function sfaBake(art, theme, size, arc) {
   let S;
   if (art === 'nova') S = sfaBakeNova(T, size); else if (art === 'zone') S = sfaBakeZone(T, size, arc); else if (art === 'cone') S = sfaBakeCone(T, size, arc);
   else if (art === 'beam') S = sfaBakeBeam(T, size); else if (art === 'burst') S = sfaBakeBurst(T, size); else if (art === 'aura') S = sfaBakeAura(T);
+  else if (art === 'rays') S = sfaBakeRays(T, size); else if (art === 'rings') S = sfaBakeRings(T, size); else if (art === 'column') S = sfaBakeColumn(T);
   else return null;
   b = {cv: S.toCanvas(), w: S.w, h: S.h, n: S.n}; sfaCache.set(key, b); sfaStats.baked++; sfaStats.bakeMs += performance.now() - t0; return b;
 }
@@ -253,16 +277,18 @@ function sfaDefineTheme(name, def) {
 const sfaBucket = d => d <= 44 ? 32 : d <= 66 ? 48 : d <= 98 ? 64 : d <= 150 ? 80 : d <= 230 ? 96 : d <= 340 ? 128 : d <= 500 ? 160 : 192; // diámetro en unidades de mundo -> px de diseño (de ~1,4 a ~4,5 u/px)
 
 /* ---------------- reproducción ---------------- */
-const SFA_LAYER = {nova: 'top', cone: 'top', beam: 'top', burst: 'top', aura: 'top', zone: 'ground'};
+const SFA_LAYER = {nova: 'top', cone: 'top', beam: 'top', burst: 'top', aura: 'top', zone: 'ground', rays: 'top', rings: 'top', column: 'top'};
+const sfaLite = () => (typeof JUICE !== 'undefined' && JUICE.reduceFx) || (typeof vfxLoad === 'number' && vfxLoad < .6);   // pocos recursos: se omiten las capas decorativas
 // art: nova|zone|cone|beam|burst|aura; (x,y) centro / origen; r radio (cono: alcance); ang dirección del cono; (bx,by) fin del haz; w ancho del haz; fi índice de héroe a seguir (aura)
-function vfxSfaPlay(art, theme, x, y, r, ang, dur, bx, by, w, fi, arc) { return sfaPush(art, theme, x, y, r, ang, dur, bx, by, w, fi, arc); }
-function sfaPush(art, theme, x, y, r, ang, dur, bx, by, w, fi, arc) {
-  if (!Number.isFinite(x) || !Number.isFinite(y) || !sfaThemes[theme] || !SFA_LAYER[art]) return;
+function vfxSfaPlay(art, theme, x, y, r, ang, dur, bx, by, w, fi, arc, dl) { return sfaPush(art, theme, x, y, r, ang, dur, bx, by, w, fi, arc, dl); }
+function sfaPush(art, theme, x, y, r, ang, dur, bx, by, w, fi, arc, dl) {
+  if (!Number.isFinite(x) || !Number.isFinite(y) || !sfaTheme(theme) || !SFA_LAYER[art]) return;
+  if (sfaLite() && (art === 'rays' || art === 'rings' || art === 'column' || w === -3)) return;
   const span = art === 'beam' ? Math.max(Math.abs(bx - x), Math.abs(by - y)) + r : r * 2;
   if (typeof inView === 'function' && !inView(art === 'beam' ? (x + bx) / 2 : x, art === 'beam' ? (y + by) / 2 : y, Math.max(90, span / 2 + 30))) return;
-  const cap = (typeof JUICE !== 'undefined' && JUICE.reduceFx) ? 14 : SFA_POOL_MAX;
+  const cap = sfaLite() ? 16 : SFA_POOL_MAX;
   if (sfaPool.length >= cap) { const i = sfaPool.findIndex(s => !s.ult && s.art !== 'zone'); sfaPool.splice(i < 0 ? 0 : i, 1); }
-  sfaPool.push({art, theme, x, y, r: r || 60, ang: ang || 0, t: 0, dur: dur || (art === 'nova' ? 720 : art === 'beam' ? 560 : art === 'cone' ? 520 : art === 'aura' ? 1200 : 460), bx: bx || 0, by: by || 0, w: w || 24, fi: fi === undefined ? -1 : fi, arc: arc || .85, ult: (dur || 0) >= 900});
+  sfaPool.push({art, theme, x, y, r: r || 60, ang: ang || 0, t: -(dl || 0), dur: dur || (art === 'nova' ? 720 : art === 'beam' ? 560 : art === 'cone' ? 520 : art === 'aura' ? 1200 : 460), bx: bx || 0, by: by || 0, w: w || 24, fi: fi === undefined ? -1 : fi, arc: arc || .85, ult: (dur || 0) >= 900});
 }
 // tejas del haz entre (ax,ay) y (bx,by): ancho w, opacidad alpha, espesor relativo thick (anticipación = fino, disipación = se afina)
 function sfaBeamTiles(g, theme, ax, ay, bx, by, w, alpha, thick) {
@@ -274,7 +300,8 @@ function sfaBeamTiles(g, theme, ax, ay, bx, by, w, alpha, thick) {
   g.restore();
 }
 const sfaDrawOne = (s, g) => {
-  const k = s.t / s.dur; if (k >= 1) return;
+  const k = s.t / s.dur; if (k >= 1 || k < 0) return;
+  if (s.art === 'rays' || s.art === 'rings' || s.art === 'column') { sfaDrawArt2(s, g, k); sfaStats.drawn++; return; }
   const calm = typeof JUICE !== 'undefined' && JUICE.reduceFx, T = sfaThemes[s.theme];
   if (s.art === 'nova' || s.art === 'zone') {
     const size = sfaBucket(s.r * 2), b = sfaBake(s.art, s.theme, size); if (!b) return;

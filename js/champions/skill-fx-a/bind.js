@@ -27,7 +27,13 @@ const SFA_OBJ = {};       // kind de portadorObjects -> {theme, art:'zone', end:
 })();
 // El kit genérico se ejecuta igual (mismas partículas y mismo azar: la paridad mecánica no cambia) pero sin sus sprites ni ondas, que ahora pone el efecto propio.
 function sfaQuiet(fn) { const vs = window.vfxSprite, vk = window.vfxShock; window.vfxSprite = window.vfxShock = function () {}; try { return fn(); } finally { window.vfxSprite = vs; window.vfxShock = vk; } }
-function sfaP(art, theme, x, y, r, o) { o = o || {}; vfxSfaPlay(art, theme, x, y, r, o.ang || 0, o.dur, o.bx, o.by, o.w, o.noEnd ? -2 : o.fi, o.arc); }
+// Variante por habilidad: básico/hab.1 base, hab.2 tono girado (h), hab.3 pálida (p), definitiva girada; así las de un mismo campeón difieren en color, silueta y motivos.
+const SFA_CUR = {slot: null, pushed: null};
+const SFA_VSUF = {basic: '~p', 0: '', 1: '~h', 2: '~p', ult: '~h'};
+const sfaVarOf = theme => (SFA_CUR.slot === null || theme.indexOf('~') >= 0) ? theme : theme + (SFA_VSUF[SFA_CUR.slot] || '');
+function sfaP(art, theme, x, y, r, o) { o = o || {}; theme = sfaVarOf(theme); if (SFA_CUR.pushed) SFA_CUR.pushed.push({art, theme, x, y, r, o});
+  vfxSfaPlay(art, theme, x, y, r, o.ang || 0, o.dur, o.bx, o.by, o.w, o.noEnd ? -2 : o.fi, o.arc, o.dl); }
+const sfaRaw = (art, theme, x, y, r, o) => { o = o || {}; vfxSfaPlay(art, theme, x, y, r, o.ang || 0, o.dur, o.bx, o.by, o.w, o.fi, o.arc, o.dl); };
 const sfaHeroIdx = h => heroes.indexOf(h);
 // geometría de ayuda a partir del registro
 const sfaFx = (c, fn) => c.rec.fx.find(f => f.fn === (fn || 'fx'));
@@ -43,33 +49,38 @@ const sfaObj = (c, kindRe) => c.objs.find(o => !kindRe || kindRe.test(o.kind));
     Object.assign(SFA_REC, {on: true, mute: spec.mute !== false, fx: [], pts: [], dirs: [], cones: [], shocks: [], tgts: [], bolts: [], frost: []});
     const from = {x: caster.x, y: caster.y};
     let out;
+    const prevSlot = SFA_CUR.slot, prevPushed = SFA_CUR.pushed;
     try { out = ca.apply(this, arguments); }
     finally { SFA_REC.on = false; }
     try {
       const c = {h: caster, sk, isUlt: !!isUlt, idx, from, to: {x: caster.x, y: caster.y}, dir: {x: caster.fx || 1, y: caster.fy || 0}, rec: Object.assign({}, SFA_REC), objs: (typeof portadorObjects !== 'undefined' ? portadorObjects : []).filter(o => o.id >= id0 && o.owner === caster)};
+      SFA_CUR.slot = slot; SFA_CUR.pushed = [];
+      for (const o of c.objs) sfaObjVar.set(o.id, SFA_VSUF[slot] || '');
       (spec.run || spec)(c);
+      sfaExtras(c, slot, SFA_CUR.pushed);
     } catch (e) { sfaFail(e); }
+    finally { SFA_CUR.slot = prevSlot; SFA_CUR.pushed = prevPushed; }
     return out;
   };
 })();
 /* ---------------- zonas persistentes derivadas de los objetos (cada cliente las dibuja del estado sincronizado) ---------------- */
-const sfaSeen = new Map();
-function sfaObjectsReset() { sfaSeen.clear(); sfaListSeen.clear(); }
+const sfaSeen = new Map(), sfaObjVar = new Map();
+function sfaObjectsReset() { sfaSeen.clear(); sfaListSeen.clear(); sfaObjVar.clear(); }
 function sfaObjectsFrame() {
   if (typeof portadorObjects === 'undefined') return;
   const live = new Set(); let drew = false;
   for (const o of portadorObjects) {
     const cfg = SFA_OBJ[o.kind]; if (!cfg || o.life <= 0 || !o.owner) continue;
-    const r = o[cfg.rk || 'r'] || 60; live.add(o.id);
+    const r = o[cfg.rk || 'r'] || 60; live.add(o.id); const th = cfg.theme + (sfaObjVar.get(o.id) || '');
     let st = sfaSeen.get(o.id);
-    if (!st) { st = {kind: o.kind, x: o.x, y: o.y, r, left: o.left, cfg}; sfaSeen.set(o.id, st); }
+    if (!st) { st = {kind: o.kind, x: o.x, y: o.y, r, left: o.left, cfg, th}; sfaSeen.set(o.id, st); }
     st.x = o.x; st.y = o.y; st.r = r;
-    if (cfg.pulse && o.left !== undefined && st.left !== undefined && o.left < st.left) sfaPush(cfg.pulseArt || 'nova', cfg.theme, o.x, o.y, cfg.pulseR || r, 0, cfg.pulseDur || 520);
+    if (cfg.pulse && o.left !== undefined && st.left !== undefined && o.left < st.left) sfaPush(cfg.pulseArt || 'nova', th, o.x, o.y, cfg.pulseR || r, 0, cfg.pulseDur || 520);
     st.left = o.left;
     if (cfg.draw) { cfg.draw(o, r); continue; }
     const age = (o.maxLife || o.life) - o.life, a = Math.min(1, age / 260, o.life / 420) * .92;
     if (a <= 0) continue;
-    const size = sfaBucket(r * 2), b = sfaBake('zone', cfg.theme, size); if (!b) continue;
+    const size = sfaBucket(r * 2), b = sfaBake('zone', th, size); if (!b) continue;
     if (!drew) { ctx.save(); ctx.imageSmoothingEnabled = false; drew = true; }
     const f = ((animNow / 95) | 0) % b.n, sc = (r * 2) / (size - 3), D = size * sc;
     ctx.globalAlpha = a; ctx.drawImage(b.cv, f * b.w, 0, b.w, b.h, o.x - D / 2, o.y - D / 2, D, D);
@@ -77,16 +88,17 @@ function sfaObjectsFrame() {
   if (drew) { ctx.restore(); ctx.globalAlpha = 1; }
   sfaListsFrame(); sfaHeroZFrame();
   for (const fn of SFA_POLL) { try { fn(); } catch (e) { sfaFail(e); } }
-  for (const [id, st] of sfaSeen) if (!live.has(id)) { sfaSeen.delete(id); if (st.cfg.end) sfaPush(st.cfg.end, st.cfg.theme, st.x, st.y, st.cfg.endR || st.r, 0, st.cfg.endDur || 560); }
+  for (const [id, st] of sfaSeen) if (!live.has(id)) { sfaSeen.delete(id); if (st.cfg.end) sfaPush(st.cfg.end, st.th || st.cfg.theme, st.x, st.y, st.cfg.endR || st.r, 0, st.cfg.endDur || 560); }
 }
 /* ---------------- horneado previo en tiempo ocioso (evita el tirón de hornear en pleno combate) ---------------- */
 function sfaPrebake(k) {
   const B = SFA_BIND[k], cls = CLASSES[k]; if (!B || !cls || !B.themes) return;
   const sizes = new Set([48, 64]), jobs = [];
   for (const sk of [...cls.skills, cls.ultimate]) { const r = Math.min(480, sk.radius || 0); if (r) sizes.add(sfaBucket(r * 2)); }
-  for (const th of B.themes) {
+  const all = []; for (const t of B.themes) all.push(t, t + '~h', t + '~p', t + '~k');
+  for (const th of all) {
     for (const sz of sizes) { jobs.push(['nova', th, sz]); jobs.push(['zone', th, sz]); }
-    jobs.push(['burst', th, 32], ['burst', th, 48], ['aura', th, 0], ['beam', th, 12], ['beam', th, 16], ['cone', th, 64, .85]);
+    jobs.push(['burst', th, 32], ['burst', th, 48], ['aura', th, 0], ['rays', th, 48], ['rays', th, 64], ['rings', th, 64], ['column', th, 0], ['beam', th, 12], ['beam', th, 16], ['cone', th, 64, .85]);
   }
   (function step() { const j = jobs.shift(); if (!j) return; try { sfaBake.apply(null, j); } catch (e) { sfaFail(e); } setTimeout(step, 40); })();
 }
@@ -134,3 +146,46 @@ function sfaHeroZFrame() {
     } else if (st) { delete m[key]; if (cfg.end) sfaPush(cfg.end, cfg.theme, st.x, st.y, st.r, 0, 600); }
   }
 }
+
+/* ---------------- capas de impacto añadidas a cada habilidad: destello, ondas y, en la definitiva, columna, segunda onda y sacudida ---------------- */
+function sfaExtras(c, slot, pushed) {
+  if (!pushed.length) return;
+  const base = t => t.split('~')[0], ult = slot === 'ult', h = c.h;
+  const nov = pushed.filter(p => p.art === 'nova'), bm = pushed.filter(p => p.art === 'beam'), cn = pushed.filter(p => p.art === 'cone'), au = pushed.filter(p => p.art === 'aura');
+  const th0 = base(pushed[0].theme);
+  if (ult) {
+    const m = nov[0] || {x: h.x, y: h.y, r: 120}, R = Math.min(m.r, 300);
+    sfaRaw('rays', th0 + '~p', m.x, m.y, Math.max(70, R * .5), {dur: 520});                                      // destello de anticipación
+    sfaRaw('rings', th0 + '~p', m.x, m.y, R * 1.02, {dur: 900, dl: 140});                                       // ondas de choque
+    sfaRaw('column', th0 + '~p', m.x, m.y + 6, Math.max(26, Math.min(70, R * .3)), {dur: 1250, dl: 90});         // columna de luz
+    sfaRaw('nova', th0 + '~k', m.x, m.y, R * .72, {dur: 820, dl: 380});                                          // segunda onda, más oscura y cerrada
+    if (typeof vfxShake === 'function') vfxShake(8);
+    return;
+  }
+  for (const m of nov.slice(0, 2)) {
+    sfaRaw('rays', base(m.theme) + '~p', m.x, m.y, Math.max(40, m.r * .42), {dur: 380});
+    if (m.r >= 60) sfaRaw('rings', base(m.theme) + (slot === 2 ? '' : '~p'), m.x, m.y, m.r, {dur: 700, dl: 120});
+  }
+  for (const m of bm.slice(0, 2)) sfaRaw('rays', base(m.theme) + '~p', m.x, m.y, 40, {dur: 340});
+  for (const m of cn.slice(0, 1)) sfaRaw('rays', base(m.theme) + '~p', m.x, m.y, 44, {dur: 340});
+  for (const m of au.slice(0, 2)) { const a = m.o && m.o.fi >= 0 ? heroes[m.o.fi] : null; sfaRaw('column', base(m.theme) + '~p', a ? a.x : m.x, (a ? a.y : m.y) + 4, 16, {dur: 700}); }
+}
+/* ---------------- ataque básico: tajo/destello corto, pálido y rápido (no es un efecto de habilidad) ---------------- */
+const sfaBasicAt = new WeakMap();
+(function () {
+  if (typeof triggerBasic !== 'function') return;
+  const tb = triggerBasic;
+  triggerBasic = function (h) {
+    const c0 = h || player, ready = !!c0 && !(c0.basicCd > 0);
+    const r = tb.apply(this, arguments);
+    try {
+      const c = h || player, B = c && SFA_BIND[c.classKey];
+      if (B && !window.SFA_OFF && c.alive && ready && c.basicCd > 0 && (sfaBasicAt.get(c) || 0) + 150 < animNow) {
+        sfaBasicAt.set(c, animNow); const th = (B.themes[0]) + '~p', fx = c.fx || 1, fy = c.fy || 0, rg = (c.cls && c.cls.basicRange) || 60;
+        if (c.cls && c.cls.ranged) { sfaRaw('burst', th, c.x + fx * 26, c.y - 12 + fy * 26, 24, {dur: 280, w: -3}); }
+        else sfaRaw('cone', th, c.x, c.y - 6, rg + 18, {ang: Math.atan2(fy, fx), arc: .6, dur: 260, w: -3});
+      }
+    } catch (e) { sfaFail(e); }
+    return r;
+  };
+})();
