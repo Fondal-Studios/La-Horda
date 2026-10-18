@@ -246,7 +246,10 @@ function killEnemy(e){
     grantXP(player.classKey, Math.round(e.xp*(runStats.xpMult||1)));
   }
   if(Math.random()<0.6){
-    const g = Math.round(e.gold*(krs.goldMult||1));
+    // oro por baja: refuerzos del que remata x multiplicador de la dificultad de la partida (difficulty-tiers.js, lo que
+    // promete el selector). Normal (x1) queda igual; con x1,5 un enemigo de 1 de oro paga 1,5 de media (redondeo estocástico).
+    const dg = typeof diffGoldMult==="function" ? diffGoldMult() : 1, gRaw = e.gold*(krs.goldMult||1)*dg;
+    const g = dg===1 ? Math.round(gRaw) : Math.floor(gRaw) + (Math.random() < gRaw-Math.floor(gRaw) ? 1 : 0);
     if(killer && killer.isRemote) netEmitTo(killer._netSlot, "gold", [g]); else grantGold(g);
   }
   if(e.dropsItem && Math.random()<0.42){
