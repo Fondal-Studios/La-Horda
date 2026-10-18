@@ -35,6 +35,7 @@ function openBuffChoice(){
       // B1: en cooperativo cada humano elige el suyo; se sigue cuando eligieron todos
       if(netIsHost()){ cards.innerHTML = `<div class="net-wait">Elegiste <b>${buffOptName(opt)}</b>.</div>`; netHostPickedLocal(); return; }
       runLevel++;
+      checkpointOnLevelPassed(); // al superar el nivel 5: punto de control (checkpoint.js)
       player.hp = Math.min(player.maxHp, player.hp + player.maxHp*0.25);
       player.energy = player.maxEnergy;
       beginLevel();

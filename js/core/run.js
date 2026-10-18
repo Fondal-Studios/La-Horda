@@ -86,7 +86,7 @@ function startRun(fromLevel){
   if(CLASSES[selectedClass] && !save.champions[selectedClass]) save.champions[selectedClass] = mkChampion(false);
   resetRunTransients();
   if(!fromLevel || fromLevel===1){ try{ if(typeof penaltyHeadsUp==='function' && !(typeof endlessOn==='function' && endlessOn()) && !divinaMode) setTimeout(penaltyHeadsUp, 1800); }catch(e){} } // aviso único: desde ahora perder cuesta
-  markRunStartProgress(selectedClass); // base para el castigo de derrota/abandono (solo lo ganado en esta partida)
+  markRunStartProgress(selectedClass); checkpointOnRunStart(); // base para el castigo de derrota/abandono (solo lo ganado en esta partida)
   clearRunTimers();
   runEnding = false; _arenaExitDone = false;
   crystalReset();
@@ -252,6 +252,7 @@ function onBossDefeated(){
 let runFirstClear = false;
 function finishBossVictory(){
   if(typeof endlessOn==="function" && endlessOn()){ endlessBossDown(); return; } // Horda Infinita: el jefe es una ronda, no el cierre de la arena
+  cpVictory = true; checkpointClear(currentArena); // ganar la arena borra su punto de control (checkpoint.js); la XP/oro de la victoria no se descuentan
   bossActive = false;
   if(typeof setMusicMode==="function") setMusicMode("victory");
   grantGold(Math.round(80*(typeof diffGoldMult==="function" ? diffGoldMult() : 1)));
