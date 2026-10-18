@@ -163,6 +163,7 @@ function render(){
   drawFxContrastTop(); // anticipación al lanzar + estrella de impacto (fx-contrast.js)
   if(arenaHas("drawTop")) arenaHook("drawTop");
   if(typeof endlessDrawWorld==="function") endlessDrawWorld(); // Horda Infinita: cofres y cristales para rescatar
+  if(typeof objDraw==="function") objDraw(); // marcas del objetivo de la arena (arena-objectives.js)
   ctxDraw(); // aviso + progreso de las acciones contextuales
   if(typeof drawArenaTutTarget==="function") drawArenaTutTarget(); // objetivo del micro-tutorial de la arena (arena-tutorials.js)
   fxGlowBegin(); drawChampFxTop(); fxGlowEnd(); // jinetes espectrales, pies gigantes, rayo, vapor, cables, íconos de buff
@@ -271,6 +272,7 @@ function render(){
 
   ctx.restore();
   if(arenaHas("drawScreen")) arenaHook("drawScreen"); // minimapa de las arenas grandes
+  if(typeof objDrawScreen==="function") objDrawScreen();
   ctxDrawScreen(); // flechas hacia objetivos contextuales importantes fuera de cámara
   if(typeof eliteDrawScreenNames==="function") eliteDrawScreenNames(); // nombre dorado de las élites con nombre (en píxeles de pantalla: legible en el teléfono)
   if(typeof groundLootDrawNames==="function") groundLootDrawNames(); // nombre del objeto del piso al acercarse

@@ -40,6 +40,8 @@ function goalChipText(){
   if(bossActive || runLevel>=GOAL_LEVELS) return "OBJETIVO: ¡derrotá al jefe!" + (civ ? "" : "");
   const left = Math.max(0, Math.ceil((levelDuration - levelTimer)/1000));
   const mm = Math.floor(left/60) + ":" + String(left%60).padStart(2,"0");
+  const own = typeof objChipText==="function" ? objChipText() : null; // verbo propio de la arena (arena-objectives.js)
+  if(own) return "OBJETIVO: " + own + " · " + mm;
   return "OBJETIVO: sobrevivir" + civ + " · " + mm;
 }
 function goalChipTick(){
