@@ -98,7 +98,7 @@ function arenaRuleEnemyRegenMult(){ return currentArena==="bosque" && arenaRule(
 // Frecuencia de los peligros ambientales: más seguidos cuanto más intensa la regla.
 function arenaRuleHazardIntervalMult(){ return Math.max(0.45, 1 - 0.06*arenaRuleStacks()); }
 
-function resetArenaRule(){ arenaRuleBossTimer = 0; arenaRuleBossStacks = 0; updateArenaRuleChip(); }
+function resetArenaRule(){ arenaRuleBossTimer = 0; arenaRuleBossStacks = 0; updateArenaRuleChip(); if(typeof objReset==="function") objReset(); }
 // Durante la pelea con el jefe la regla se intensifica cada 45 s (máximo +4).
 function updateArenaRuleBoss(dt){
   if(!bossActive || !arenaRule() || arenaRuleBossStacks >= 4) return;

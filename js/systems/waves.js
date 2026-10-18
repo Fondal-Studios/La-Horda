@@ -22,6 +22,7 @@ function beginLevel(){
   if(!(typeof lanesOn==="function" && lanesOn())) showBanner(runLevel===LEVEL_COUNT ? "NIVEL 10 — EL JEFE ESPERA" + ruleTxt : `NIVEL ${runLevel}` + ruleTxt);
   if(typeof endlessOn==="function" && endlessOn()) endlessBeginLevel(); // Horda Infinita: duración y cartel de la ronda
   if(arenaHas("beginLevel")) arenaHook("beginLevel"); // puertas, sectores y jefes de la arena
+  if(typeof objBeginLevel==="function") objBeginLevel(); // objetivo variado de la arena (arena-objectives.js)
   if(runLevel===1 && typeof campaignTitleCard==="function"){ campaignTitleCard(); campaignMaybePrologue(); } // "ARENA NN" + prólogo de la Ciudad Maldita (campaign-story.js)
 }
 let midBossSpawned = false;

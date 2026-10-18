@@ -38,6 +38,7 @@ function update(dt){
   updateAcuaAmbience(dt);
   aidNavUpdate(dt); aidAmbUpdate(dt);
   if(arenaHas("update")) arenaHook("update", dt); // mecanismos propios de la arena (La Fortaleza)
+  if(typeof objUpdate==="function") objUpdate(dt); // objetivo variado de la arena (arena-objectives.js)
   if(axiomForceQuitFlash>0){
     axiomForceQuitFlash -= dt;
     canvas.style.filter = "invert(1)";
