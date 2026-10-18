@@ -33,3 +33,16 @@ body.reduce-motion #controls #skillzone .ability-btn.ready{ animation:none; }
 @media (prefers-reduced-motion:reduce){ #controls #skillzone .ability-btn.ready{ animation:none; } }
 /* tecla (teclado/mando): placa de hueso */
 body.inp-kb .kh, body.inp-pad .kh{ background:linear-gradient(#efe0bd,#c9b48a); color:#2a1a0c; border:1px solid #6a5230; border-radius:4px; box-shadow:0 2px 0 #060403; font-weight:700; }
+
+/* Glifos pixel por habilidad (js/ui/skill-pixel-glyphs.js): 32 px = 2x la grilla de 16, así no hay píxeles de tamaños distintos. */
+#controls .ability-btn .ico .ico-pix{ display:block; width:32px; height:32px; margin:0 auto; image-rendering:pixelated; image-rendering:crisp-edges; pointer-events:none; filter:drop-shadow(0 0 4px var(--action)); }
+#controls .ability-btn.sec .ico .ico-pix{ width:24px; height:24px; }
+/* Rótulo bajo el ícono: una línea, nunca más ancho que el botón (antes "TELETRANSPORTE" o "SOBRESCRIBIR" se salían y se
+   pisaban con el número del enfriamiento). Se achica según el largo; durante el enfriamiento el número ocupa su lugar. */
+#controls #skillzone .ability-btn.s1 > div:not(.ico):not(.cd-overlay),
+#controls #skillzone .ability-btn.s2 > div:not(.ico):not(.cd-overlay),
+#controls #skillzone .ability-btn.s3 > div:not(.ico):not(.cd-overlay){ max-width:100%; white-space:nowrap; overflow:hidden; text-overflow:clip; letter-spacing:0; line-height:1; font-size:.62rem; text-align:center; }
+#controls #skillzone .ability-btn > div[data-len="m"]{ font-size:.54rem; }
+#controls #skillzone .ability-btn > div[data-len="l"]{ font-size:.48rem; }
+#controls #skillzone .ability-btn.cd > div:not(.ico):not(.cd-overlay),
+#controls #skillzone .ability-btn.active > div:not(.ico):not(.cd-overlay){ visibility:hidden; }

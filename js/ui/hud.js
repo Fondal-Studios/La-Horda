@@ -5,6 +5,13 @@
    ============================================================ */
 
 const HUD_GLYPH_COLOR = {"btn-s1":"#8fe0ff", "btn-s2":"#cfc2ff", "btn-s3":"#97f0cc", "btn-ult":"#ffe9a8"};
+// Rótulo corto del botón: la palabra más larga entre las dos primeras que entre sin cortarse (máx. 8 caracteres;
+// "SOBRESCRIBIR" -> "SOBRESC."), así no se pisa con el cooldown ni se sale del botón (844x390).
+function hudSkillLabel(name){
+  const w = String(name||"").split(" ").filter(x=>x.length>0 && !/^(de|del|la|el|los|las|a|y|en)$/i.test(x));
+  const first = w[0] || String(name||"");
+  return first.length > 8 ? first.slice(0, 7) + "." : first;
+}
 function updateAbilityButtons(){
   // el kit ACTIVO del héroe (Ilkan transformado muestra el del coloso)
   const cls = (player && player.cls && player.classKey===selectedClass) ? player.cls : CLASSES[selectedClass];
@@ -16,12 +23,14 @@ function updateAbilityButtons(){
     const labelEl = el.querySelector("div:not(.ico):not(.cd-overlay)");
     // ícono pixel de la habilidad si existe (el mismo del panel de Habilidades); si no, el glifo de siempre
     const pix = (typeof SKILL_ICON_IMG!=="undefined") ? SKILL_ICON_IMG[sk.name] : null;
-    const img = pix || (typeof skillGlyphUri==="function" ? skillGlyphUri(sk, HUD_GLYPH_COLOR[id] || "#ffffff", id==="btn-ult") : null); // sin ícono pixel: símbolo de La Horda (skill-glyphs.js)
+    // glifo pixel propio de la habilidad (skill-pixel-glyphs.js); sin él, el símbolo genérico de skill-glyphs.js
+    const col = HUD_GLYPH_COLOR[id] || "#ffffff", pxg = (!pix && typeof skillPixelGlyphUri==="function") ? skillPixelGlyphUri(cls.isColossusForm ? "ilkan_colossus" : selectedClass, mi, col) : null;
+    const img = pix || pxg || (typeof skillGlyphUri==="function" ? skillGlyphUri(sk, col, id==="btn-ult") : null);
     if(icoEl){
-      if(img){ if(icoEl._img !== img){ icoEl.innerHTML = `<img class="ico-img${pix ? "" : " ico-glyph"}" src="${img}" alt="">`; icoEl._img = img; } }
+      if(img){ if(icoEl._img !== img){ icoEl.innerHTML = `<img class="ico-img${pix ? "" : pxg ? " ico-pix" : " ico-glyph"}" src="${img}" alt="">`; icoEl._img = img; } }
       else { icoEl.textContent = sk.ico; icoEl._img = null; }
     }
-    if(labelEl && id!=="btn-ult") labelEl.textContent = sk.name.split(" ")[0];
+    if(labelEl && id!=="btn-ult"){ const w = hudSkillLabel(sk.name); labelEl.textContent = w; labelEl.dataset.len = w.length>7 ? "l" : w.length>5 ? "m" : "s"; }
     el.title = sk.name + " — " + sk.desc;
     el.setAttribute('aria-label', sk.name);
     // Sinergias del árbol (estilo Diablo II) con su valor actual
