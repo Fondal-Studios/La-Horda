@@ -789,11 +789,9 @@ function stepParticles(dt){
     if(pt.life>0) particles[_pw++] = pt;
   }
   particles.length = _pw;
-  // tope adaptativo según la carga (vfxLoad baja cuando los cuadros tardan: vfx.js). Con vfxLoad = 1 es el de siempre (900/650).
-  const _pCap = typeof vfxLoad==="number" ? Math.max(450, Math.round(900*Math.min(1, vfxLoad))) : 900;
-  if(particles.length > _pCap){
+  if(particles.length > 900){
     // tope dinámico: se descartan primero las chispas simples más viejas (nunca anillos/telegraphs)
-    let drop = particles.length - (_pCap - 250), w2 = 0;
+    let drop = particles.length - 650, w2 = 0;
     for(let i=0;i<particles.length;i++){
       const pt = particles[i];
       const plain = !pt.ring && !pt.warnRing && !pt.corpse && !pt.bolt && !pt.spin && !pt.slash && !pt.crystal && !pt.runeRing;
