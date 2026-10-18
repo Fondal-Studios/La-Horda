@@ -54,7 +54,9 @@ function deskSetDevice(d){
   try{
     const fine = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
     const touch = ("ontouchstart" in window) || (navigator.maxTouchPoints||0) > 0;
-    const set = ()=>{ if(fine && !touch) deskSetDevice("kb"); };
+    // (un viewport apaisado de teléfono, <=500 px de alto, no se trata como teclado hasta que se aprieta una tecla: sin Esc/Espacio/R sobre los botones)
+    const phoneSized = Math.min(innerWidth||0, innerHeight||0) <= 500;
+    const set = ()=>{ if(fine && !touch && !phoneSized) deskSetDevice("kb"); };
     if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", set); else set();
   }catch(e){}
 })();
