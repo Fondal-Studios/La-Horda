@@ -1,0 +1,124 @@
+{
+ "res": [
+  {
+   "banner": null,
+   "card": null,
+   "intro": null,
+   "bossHud": null,
+   "down": null,
+   "nameTxt": "",
+   "nameCut": false,
+   "nameW": 0,
+   "hero": {
+    "x": 422,
+    "y": 226
+   },
+   "words": [],
+   "t": 3000
+  },
+  {
+   "banner": null,
+   "card": {
+    "id": "arena-title-card",
+    "t": "JEFEGUARDIAN ANCESTRAL CORROMPIDOEl Bosque que Recuerda",
+    "x": 242,
+    "y": 47,
+    "w": 360,
+    "h": 155,
+    "hPct": 40
+   },
+   "intro": null,
+   "bossHud": {
+    "id": "boss-hud",
+    "t": "Guardián Ancestral CorrompidoEl Bosque que Recuerda Fase 1/3",
+    "x": 245,
+    "y": 8,
+    "w": 354,
+    "h": 70,
+    "hPct": 18
+   },
+   "down": null,
+   "nameTxt": "Guardián Ancestral Corrompido",
+   "nameCut": false,
+   "nameW": 313,
+   "hero": {
+    "x": 422,
+    "y": 226
+   },
+   "words": [],
+   "t": 8000
+  },
+  {
+   "banner": null,
+   "card": null,
+   "intro": {
+    "id": "boss-intro",
+    "t": "COMO SOBREVIVIREl Bosque que Recuerda⚠Cuando CLAVA el báculo",
+    "x": 289,
+    "y": 334,
+    "w": 267,
+    "h": 54,
+    "hPct": 14
+   },
+   "bossHud": {
+    "id": "boss-hud",
+    "t": "Guardián Ancestral CorrompidoEl Bosque que Recuerda Fase 1/3",
+    "x": 245,
+    "y": 8,
+    "w": 354,
+    "h": 77,
+    "hPct": 20
+   },
+   "down": null,
+   "nameTxt": "Guardián Ancestral Corrompido",
+   "nameCut": false,
+   "nameW": 313,
+   "hero": {
+    "x": 422,
+    "y": 226
+   },
+   "words": [],
+   "t": 10000
+  },
+  {
+   "banner": null,
+   "card": null,
+   "intro": null,
+   "bossHud": {
+    "id": "boss-hud",
+    "t": "Guardián Ancestral CorrompidoEl Bosque que Recuerda Fase 1/3",
+    "x": 245,
+    "y": 8,
+    "w": 354,
+    "h": 77,
+    "hPct": 20
+   },
+   "down": null,
+   "nameTxt": "Guardián Ancestral Corrompido",
+   "nameCut": false,
+   "nameW": 313,
+   "hero": {
+    "x": 422,
+    "y": 226
+   },
+   "words": [
+    "¡Una runa despierta!",
+    "¡El Guardián la corrompe!"
+   ],
+   "t": 12500
+  },
+  {
+   "moveBefore": {
+    "id": "boss-intro",
+    "t": "COMO SOBREVIVIREl Bosque que Recuerda⚠Cuando CLAVA el báculo",
+    "x": 289,
+    "y": 334,
+    "w": 267,
+    "h": 54,
+    "hPct": 14
+   },
+   "moveAfter": null
+  }
+ ],
+ "fails": []
+}
