@@ -37,6 +37,10 @@ let _hudLastCls = null, _hudLastSe = null, _hudStackH = -1;
 function hudTxt(el, v){ if(el && el._hv !== v){ el._hv = v; el.textContent = v; } }
 function hudHtml(el, v){ if(el && el._hh !== v){ el._hh = v; el.innerHTML = v; } }
 function hudCss(el, prop, v){ if(el){ const k = "_hs_" + prop; if(el[k] !== v){ el[k] = v; el.style[prop] = v; } } }
+// classList.add/remove reescriben el atributo "class" (y el navegador lo registra como cambio) aunque la clase ya
+// esté puesta o ya falte: con estos HUD ocultos se hacía cuatro veces por cuadro. Acá solo se toca si cambia.
+function hudHide(el, hide){ if(el && el.classList.contains("hidden") !== hide) el.classList.toggle("hidden", hide); }
+const hudPct05 = x => (Math.round(x*2)/2) + "%";
 const hudPct = x => (Math.round(x*10)/10) + "%"; // décimas de punto: menos escrituras, sin salto visible
 // hudStackLayout lee alturas (layout forzado): solo cuando cambió el tamaño de esos bloques o la ventana
 let _hudStackDirty = true, _hudStackRO = null;
@@ -121,7 +125,7 @@ function updateHUD(){
   const hpFillEl = document.getElementById("hp-fill");
   hudCss(hpFillEl, "left", hudPct(pShieldPct));
   hudCss(hpFillEl, "width", hudPct(pHpPct));
-  hudCss(document.getElementById("en-fill"), "width", hudPct(player.energy/player.maxEnergy*100));
+  hudCss(document.getElementById("en-fill"), "width", hudPct05(player.energy/player.maxEnergy*100)); // la energía regenera de a poco: pasos de 0,5 % (<1 px) en vez de reescribir casi cada cuadro
   const plevelEl = document.getElementById("plevel");
   const champMastery = talentState(player.classKey).mastery;
   const tree = talentTreeFor(player.classKey);
@@ -148,19 +152,19 @@ function updateHUD(){
   // Musashi: Concentración (0/10, sección 26) y Victorias de Duelo -discreto, no satura el HUD-.
   const musashiHudEl = document.getElementById("musashi-hud");
   if(player.classKey==="musashi"){
-    musashiHudEl.classList.remove("hidden");
+    hudHide(musashiHudEl, false);
     const concRow = document.getElementById("musashi-conc-row");
     hudTxt(concRow, `Concentración ${player.concentration||0}/${MUSASHI_CONC_MAX}`);
     concRow.classList.toggle("perfect", (player.concentration||0)>=MUSASHI_CONC_MAX);
     hudTxt(document.getElementById("musashi-victories-val"), String((player.stats&&player.stats.duelVictories)||0));
   } else {
-    musashiHudEl.classList.add("hidden");
+    hudHide(musashiHudEl, true);
   }
   // Sylva: Rastreo (0/5, Presa Acorralada resaltada) e Impulso (0/10, "bloqueado" durante
   // Cacería Salvaje) -mismo criterio discreto que el HUD de Musashi-.
   const sylvaHudEl = document.getElementById("sylva-hud");
   if(player.classKey==="cazadora"){
-    sylvaHudEl.classList.remove("hidden");
+    hudHide(sylvaHudEl, false);
     const trackRow = document.getElementById("sylva-track-row");
     hudTxt(trackRow, `Rastreo ${Math.round(player.trackStacks||0)}/5`);
     trackRow.classList.toggle("cornered", (player.trackStacks||0)>=5);
@@ -169,34 +173,34 @@ function updateHUD(){
     hudTxt(momRow, `Impulso ${momShown}/10${player.wildHuntTimer>0?" 🔒":""}`);
     momRow.classList.toggle("locked", player.wildHuntTimer>0);
   } else {
-    sylvaHudEl.classList.add("hidden");
+    hudHide(sylvaHudEl, true);
   }
   // Nigromante: cantidad de esqueletos vivos / máximo actual, estado del gólem, y cuenta
   // regresiva de la Encarnación del Abismo mientras esté transformado.
   const nigroHudEl = document.getElementById("nigromante-hud");
   if(player.classKey==="nigromante"){
-    nigroHudEl.classList.remove("hidden");
+    hudHide(nigroHudEl, false);
     const maxCount = nigromanteMaxSkeletons(masteryOf("nigromante", 0)) + (typeof champSetExtraSkeletons==="function" ? champSetExtraSkeletons(player) : 0);
     hudTxt(document.getElementById("nigro-skeleton-val"), `${player.skeletons.length}/${maxCount}`);
     const souls = Math.floor(player.nigroSouls||0);
     const pipsEl = document.getElementById("nigro-souls-pips");
     const sig = souls + (player.nigroPact?"p":"");
     if(pipsEl._sig !== sig){ pipsEl._sig = sig; let s = ""; for(let i=0;i<NIGRO_SOUL_MAX;i++) s += `<i class="${i<souls?"on":""} ${i===NIGRO_PACT_COST-1?"pact":""}"></i>`; pipsEl.innerHTML = s; }
-    const pb = document.getElementById("btn-pact"); pb.classList.remove("hidden");
+    const pb = document.getElementById("btn-pact"); hudHide(pb, false);
     pb.classList.toggle("ready", souls >= NIGRO_PACT_COST && !player.nigroPact); pb.classList.toggle("armed", !!player.nigroPact);
     const golemRow = document.getElementById("nigro-golem-row");
     hudTxt(document.getElementById("nigro-golem-val"), player.golem ? "Activo" : "Inactivo");
     golemRow.classList.toggle("active", !!player.golem);
     const demonRow = document.getElementById("nigro-demon-row");
     if(player.nigroDemonForm){
-      demonRow.classList.remove("hidden");
+      hudHide(demonRow, false);
       hudTxt(document.getElementById("nigro-demon-val"), Math.ceil(player.nigroDemonTimer/1000)+"s");
     } else {
-      demonRow.classList.add("hidden");
+      hudHide(demonRow, true);
     }
   } else {
-    nigroHudEl.classList.add("hidden");
-    document.getElementById("btn-pact").classList.add("hidden");
+    hudHide(nigroHudEl, true);
+    hudHide(document.getElementById("btn-pact"), true);
   }
   hudStackLayout();
   // curación de emergencia: lista (verde), urgente (<35% vida, late) o gastada hasta el próximo nivel
@@ -277,9 +281,10 @@ function _setBtnState(id, el, st, cdFrac, cdSec){
     }
     ui.st = st;
   }
-  el.dataset.state=st;
+  if(ui.dat !== st){ ui.dat = st; el.dataset.state=st; }
   if(st==="cd" || st==="active"){
-    el.style.setProperty("--cdp", cdFrac.toFixed(3));
+    const q = cdFrac.toFixed(2); // 1 % de paso (3,6° del barrido): sin esto la variable CSS cambiaba en cada cuadro y reevaluaba el estilo del botón
+    if(ui.cdp !== q){ ui.cdp = q; el.style.setProperty("--cdp", q); }
     if(ui.sec !== cdSec){ ui.ov.textContent = cdSec; ui.sec = cdSec; }
   }
 }
