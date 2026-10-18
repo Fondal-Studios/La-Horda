@@ -24,7 +24,7 @@
      node tools/art/emoji-lint.js --json          # salida JSON
      node tools/art/emoji-lint.js --strict        # exit 1 si hay color sin cubrir ni excepción
      node tools/art/emoji-lint.js --self-test
-   Excepciones: tools/art/emoji-lint-exceptions.json ("files": archivo → motivo; "glyphs": glifo → motivo).
+   Excepciones: tools/art/emoji-lint-exceptions.json ("files", "glyphs", "lines"; cada una con motivo).
    ============================================================ */
 const fs = require("fs"), path = require("path");
 const ROOT = path.resolve(__dirname, "../..");
@@ -113,7 +113,7 @@ function scanText(src, kind, covered){
     for(let k = 0; k < cps.length; k++){
       const ch = cps[k], tier = classify(ch, cps[k + 1] === "️");
       if(!tier) continue;
-      found.push({line: idx + 1, ch, tier, covered: covered.has(ch), nonDom: NON_DOM.test(ln), text: ln.trim().slice(0, 140)});
+      found.push({line: idx + 1, ch, tier, covered: kind !== "css" && covered.has(ch), nonDom: NON_DOM.test(ln), text: ln.trim().slice(0, 140)});
     }
   });
   return found;
@@ -133,9 +133,9 @@ function listFiles(){
 
 function loadExceptions(){
   const p = path.join(__dirname, "emoji-lint-exceptions.json");
-  if(!fs.existsSync(p)) return {files: {}, glyphs: {}};
+  if(!fs.existsSync(p)) return {files: {}, glyphs: {}, lines: []};
   const j = JSON.parse(fs.readFileSync(p, "utf8"));
-  return {files: j.files || {}, glyphs: j.glyphs || {}};
+  return {files: j.files || {}, glyphs: j.glyphs || {}, lines: j.lines || []};
 }
 
 function run(){
@@ -152,7 +152,7 @@ function run(){
       if(h.tier !== "color") continue;
       if(h.covered && !h.nonDom){ tot.covered++; continue; }
       tot.uncovered++;
-      if(ex.files[rel] !== undefined || ex.glyphs[h.ch] !== undefined){ rep.excepted++; continue; }
+      if(ex.files[rel] !== undefined || ex.glyphs[h.ch] !== undefined || ex.lines.some(l=>l.file === rel && h.text.includes(l.includes))){ rep.excepted++; continue; }
       rep.violations.push({file: rel, line: h.line, ch: h.ch, why: h.covered ? "cubierto pero en contexto no-DOM" : "sin ícono pixel", text: h.text});
     }
   }

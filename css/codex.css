@@ -153,7 +153,7 @@ button.cx-card:hover, button.cx-home-card:hover, button.cx-chapter:hover, button
 .cx-sec-title{ margin:0 0 6px; font-family:var(--font-retro); font-weight:normal; font-size:1.2rem; letter-spacing:1px; color:var(--cx-gold); border-bottom:1px solid rgba(176,122,60,0.3); padding-bottom:3px; }
 .cx-sec.lore{ background:linear-gradient(180deg, rgba(40,26,16,0.96), rgba(22,14,9,0.98)); }
 .cx-sec.lore .cx-sec-title::before{ content:"❦ "; color:var(--cx-metal-hi); }
-.cx-sec.combat .cx-sec-title::before{ content:"⚔ "; color:var(--ember1); }
+.cx-sec.combat .cx-sec-title::before{ content:""; display:inline-block; width:1em; height:1em; margin-right:.35em; vertical-align:-.15em; background:var(--pxi-espadas) center/contain no-repeat; image-rendering:pixelated; }
 .cx-sec p{ margin:0 0 6px; font-size:0.88rem; line-height:1.45; color:var(--cx-ink); }
 .cx-quote{ margin:0 0 7px; padding:4px 10px; border-left:3px solid var(--cx-metal-hi); font-style:italic; color:#f3dcc0; font-size:0.9rem; }
 .cx-origin{ font-size:0.82rem; color:var(--cx-dim); margin:3px 0; } .cx-origin b{ color:var(--cx-ink); font-weight:normal; }
