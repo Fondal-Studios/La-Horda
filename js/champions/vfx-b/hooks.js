@@ -12,7 +12,8 @@
    KVB.off = true apaga todo (así las pruebas comparan la mecánica con y sin efectos).
    ============================================================ */
 const KVB_ACT = {}, KVB_Q5 = {}, KVB_CLASSIC = {}, KVB_PORT = {}, KVB_OBJ = {}, KVB_HEROES = new Set();
-function kvbBind(key, id){ KVB_ACT[key] = id; }
+const KVB_KEEPCUE = {}; // acciones cuyo aviso original (asCue) se conserva porque ya es fiel y legible
+function kvbBind(key, id, keepCue){ KVB_ACT[key] = id; if(keepCue) KVB_KEEPCUE[key] = true; }
 function kvbBindQ5(action, id){ KVB_Q5[action] = id; }
 function kvbClassic(classKey, kind, fn){ KVB_CLASSIC[classKey + ':' + kind] = fn; KVB_HEROES.add(classKey); }
 // Portadores (Ynara, Myla): su lanzamiento pasa por portadorCast, que ya recibe área y duración reales
@@ -24,14 +25,14 @@ const kvbDist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 
 // Geometría real del lanzamiento (mismos perfiles de apuntado que usan los kits) → [x, y, r, ang, a, b]:
 //   línea  : origen, semiancho r, ángulo, a = largo         salto : origen, semiancho r, ángulo, a = largo recorrido
-//   cono   : vértice, r = alcance, ángulo, a = semiángulo    punto : punto apuntado, r, ángulo
+//   cono   : vértice, r = alcance, ángulo, a = semiángulo    punto : punto apuntado, r, ángulo hacia él, (a, b) = origen del lanzamiento
 //   sobre sí: posición actual, r, ángulo, (a, b) = posición de origen del lanzamiento
 function kvbCastGeom(h, sk, isUlt, r, origin, end){
   const prof = typeof aimProfileOf === 'function' ? aimProfileOf(sk, h) : null, ang = Math.atan2(end.y - origin.y, end.x - origin.x);
   if(prof && prof.type === 'line') return [origin.x, origin.y, r, ang, Math.hypot(end.x - origin.x, end.y - origin.y)];
   if(prof && prof.type === 'cone') return [h.x, h.y, Math.hypot(end.x - h.x, end.y - h.y), Math.atan2(end.y - h.y, end.x - h.x), .85];
   if(prof && prof.type === 'dash') return [origin.x, origin.y, r, ang, Math.hypot(h.x - origin.x, h.y - origin.y)];
-  if(prof && prof.type === 'point' && h._lastAimPt) return [h._lastAimPt.x, h._lastAimPt.y, r, ang, 0];
+  if(prof && prof.type === 'point' && h._lastAimPt) return [h._lastAimPt.x, h._lastAimPt.y, r, Math.atan2(h._lastAimPt.y - origin.y, h._lastAimPt.x - origin.x), origin.x, origin.y];
   return [h.x, h.y, r, ang, origin.x, origin.y];
 }
 // Héroe de una clase en una posición (los recetas solo reciben números, que son lo que viaja por la red)
@@ -99,7 +100,7 @@ function kvbScale(c, sk, isUlt, idx, evo){
 })();
 
 /* ---------------- pieles de objetos persistentes ---------------- */
-// spec: {R(o), loop:'decal' [, period], draw(o,t,layer), born(o), pulse(o), end(o), hideBase=true}
+// spec: {R(o), loop:'decal' [, period], layers:['g','t'], draw(o,t,layer,R), born(o), pulse(o), end(o), hideBase=true}
 KVB.objSeen = new Map();
 function kvbObjUpdate(){
   if(typeof portadorObjects === 'undefined') return;
@@ -119,10 +120,10 @@ function kvbObjDraw(layer){
   const t = animNow;
   for(const o of portadorObjects){
     const sp = kvbSpecOf(o); if(!sp || o.life <= 0 || !o.owner || (o.owner.alive === false)) continue;
-    if((sp.layer || 'g') !== layer) continue;
+    if(!(sp.layers || [sp.layer || 'g']).includes(layer)) continue;
     const R = sp.R ? sp.R(o) : o.r;
     if(!inView(o.x, o.y, R + 60)) continue;
-    if(sp.loop) kvbLoopDecal(sp.loop, o.x, o.y, R, t + (o.id || 0) * 137, sp.period || 1400, {alpha: sp.alpha});
+    if(sp.loop && layer === 'g') kvbLoopDecal(sp.loop, o.x, o.y, R, t + (o.id || 0) * 137, sp.period || 1400, {alpha: sp.alpha});
     if(sp.draw) sp.draw(o, t, layer, R);
   }
 }
@@ -132,13 +133,14 @@ function kvbObjDraw(layer){
     if(KVB.off) return oG.apply(this, arguments);
     const saved = [], cues = [];
     for(const o of portadorObjects){ const sp = kvbSpecOf(o); if(sp && sp.hideBase !== false && o.life > 0) for(const f of KVB_FLAGS) if(o[f]){ saved.push([o, f]); o[f] = false; } }
-    for(const h of heroes){ if(h.exCue && KVB_HEROES.has(h.classKey) && KVB_ACT['ex:' + h.exCue.action]){ cues.push([h, h.exCue]); h.exCue = null; } }
+    for(const h of heroes){ if(h.exCue && KVB_ACT['ex:' + h.exCue.action]){ cues.push([h, h.exCue]); h.exCue = null; }
+      if(h.asCue && KVB_ACT['asc:' + h.asCue.action] && !KVB_KEEPCUE['asc:' + h.asCue.action]){ cues.push([h, h.asCue, 'asCue']); h.asCue = null; } }
     // Sira: el trazo propio (ruta de tinta) lo dibuja su piel; se oculta el segmento genérico solo durante el dibujo base
     const routes = [];
     for(const h of heroes){ if(h.classKey === 'sira' && h.exState && h.exState.route){ routes.push([h.exState, h.exState.route]); h.exState.route = []; } }
     try{ return oG.apply(this, arguments); }
     finally{
-      for(const [o, f] of saved) o[f] = true; for(const [h, c] of cues) h.exCue = c; for(const [s, r] of routes) s.route = r;
+      for(const [o, f] of saved) o[f] = true; for(const [h, c, k] of cues) h[k || 'exCue'] = c; for(const [s, r] of routes) s.route = r;
       try{ kvbObjDraw('g'); kvbOverlays('g'); }catch(e){ KVB.err = String(e && e.message || e); }
     }
   };
