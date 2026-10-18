@@ -14,7 +14,7 @@
    Clave: localStorage "horda_prefs" (JSON). Sin localStorage (modo privado) se usa lo de fábrica.
    ============================================================ */
 const PREFS_KEY = "horda_prefs";
-const PREFS_DEFAULT = { vibrate:true, shake:"normal", textLg:false, lefty:false, contrast:false };
+const PREFS_DEFAULT = { vibrate:true, shake:"normal", textLg:false, lefty:false, contrast:false, botCallouts:false };
 const PREFS = (function(){
   const p = Object.assign({}, PREFS_DEFAULT);
   try{
@@ -25,6 +25,7 @@ const PREFS = (function(){
       if(typeof v.textLg==="boolean") p.textLg = v.textLg;
       if(typeof v.lefty==="boolean") p.lefty = v.lefty;
       if(typeof v.contrast==="boolean") p.contrast = v.contrast;
+      if(typeof v.botCallouts==="boolean") p.botCallouts = v.botCallouts;
     }
   }catch(e){}
   return p;
