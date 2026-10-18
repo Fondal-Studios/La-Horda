@@ -106,16 +106,27 @@ function buildSprites(){
       outline: makeSpriteCanvas(grid, darkPal(pal), base)
     };
   };
-  Object.keys(CLASSES).forEach(key=>{ SPRITES[key] = mk(key, key, true); });
-  Object.keys(ENEMY_SPRITE).forEach(type=>{ SPRITES["enemy_"+type] = mk(ENEMY_SPRITE[type], ENEMY_SPRITE[type]); });
-  // Capa extra de brillo pulsante: arma/equipo de los héroes y de los enemigos que aparecen al principio
-  Object.keys(SHINE_KEYS).forEach(type=>{
-    if(CLASSES[type]){
-      SPRITES[type].shine = makeSpriteCanvas(GRIDS[type], shinePal(PAL[type], SHINE_KEYS[type]), {res:32, legRow:24, amt:2});
-    } else {
-      const gridKey = ENEMY_SPRITE[type], pal = PAL[gridKey];
-      SPRITES["enemy_"+type].shine = makeSpriteCanvas(GRIDS[gridKey], shinePal(pal, SHINE_KEYS[type]), {});
-    }
+  // Construcción PEREZOSA: cada hoja procedural se arma la primera vez que algo la pide (SPRITES[clave]). Antes se
+  // armaban de golpe las ~45 (11 canvases cada una, ~34 MB de píxeles y bastante CPU al empezar la partida) aunque casi
+  // todos los guardianes se dibujan con sus atlas reales y estas solo son el respaldo. El resultado es idéntico.
+  const lazy = (name, build)=>{
+    const settle = v=>Object.defineProperty(SPRITES, name, {value:v, writable:true, configurable:true, enumerable:true});
+    Object.defineProperty(SPRITES, name, {configurable:true, enumerable:true, get(){ const v = build(); settle(v); return v; }, set:settle});
+  };
+  Object.keys(CLASSES).forEach(key=>{
+    lazy(key, ()=>{
+      const sp = mk(key, key, true);
+      // Capa extra de brillo pulsante: arma/equipo de los héroes y de los enemigos que aparecen al principio
+      if(SHINE_KEYS[key]) sp.shine = makeSpriteCanvas(GRIDS[key], shinePal(PAL[key], SHINE_KEYS[key]), {res:32, legRow:24, amt:2});
+      return sp;
+    });
+  });
+  Object.keys(ENEMY_SPRITE).forEach(type=>{
+    lazy("enemy_"+type, ()=>{
+      const sp = mk(ENEMY_SPRITE[type], ENEMY_SPRITE[type]);
+      if(SHINE_KEYS[type] && !CLASSES[type]){ const gridKey = ENEMY_SPRITE[type], pal = PAL[gridKey]; sp.shine = makeSpriteCanvas(GRIDS[gridKey], shinePal(pal, SHINE_KEYS[type]), {}); }
+      return sp;
+    });
   });
 }
 
