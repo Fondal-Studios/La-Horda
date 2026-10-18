@@ -383,7 +383,7 @@ function updateAllies(dt){
       const d = distance(h,o);
       if(d < 34 && d > 0.01){ mx += (h.x-o.x)/d*0.6; my += (h.y-o.y)/d*0.6; }
     }
-    if(currentArena==="coliseo"){const d=colBotMove(h,target,bm.dodging);if(d){mx=d.x;my=d.y;}}
+    if(currentArena==="coliseo" && !bm.kite){const d=colBotMove(h,target,bm.dodging);if(d){mx=d.x;my=d.y;}}
     const ml = Math.hypot(mx,my);
     h.moving = ml > 0.05 && !h.fused;
     if(h.moving){

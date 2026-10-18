@@ -119,6 +119,7 @@ function botBreakableGoal(h){
   return {x:(best.x-h.x)/d, y:(best.y-h.y)/d};
 }
 function botMove(h, dt){
+  h._bot = true;   // lo conduce la IA (nearestEnemyTo lo usa para atacar lo que el cerebro eligió, ver combat.js)
   const role = botRole(h), LD = botLeader(h);
   const divinaHit = divinaMode ? divinaHostiles("player", h.x, h.y, 620) : null;
   // el objetivo por rol se re-elige cada ~250 ms (el del mago mira grupos: no hace falta por cuadro)
@@ -157,6 +158,8 @@ function botMove(h, dt){
   }
   // 2b) empujón propio de la arena (p.ej. en la Gélida, moverse si tiene frío)
   if(arenaHas("botNudge")){ const nu = arenaHook("botNudge", h, target); if(nu) return nu; }
+  // 2e) estado de decisión de la arena (Guerra de Cristales: retirada / defensa / objetivo / empuje; Coliseo: sobrevivir)
+  if(arenaHas("botState")){ const st = arenaHook("botState", h, target); if(st) return st; }
   // 2c) objetivo de la arena (cerrar una fisura, encender un brasero...): js/systems/context-actions.js
   if(!divinaMode){ const ob = ctxBotObjective(h, dt, target); if(ob) return ob; }
   // 2d) patear una urna/barril/ánfora cuando la horda se amontonó al lado (breakables.js)

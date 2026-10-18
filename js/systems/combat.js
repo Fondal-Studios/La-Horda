@@ -422,6 +422,9 @@ function nearestHeroTo(x, y){
   return best;
 }
 function nearestEnemyTo(ent, range){
+  // Bots de Guerra de Cristales/Coliseo con cerebro de victoria: atacan lo que importa (héroe débil, estructura, épico con el equipo),
+  // no lo que tengan más cerca (súbditos y criaturas de la selva). Ver js/arenas/lanes/lanes-bot-ai.js.
+  if(ent._bot && ent.alive && typeof lanesOn==="function" && lanesOn() && botVictoryOn(ent) && arenaHas("botTarget")) return arenaHook("botTarget", ent, range || 620) || null;
   let best=null, bestD=Infinity;
   for(const e of enemies){
     if(!e.alive) continue;
