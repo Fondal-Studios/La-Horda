@@ -479,8 +479,10 @@ function drawEnemyOverlays(e){
     const bw = Math.max(e.radius*1.7, 24);
     const by = e.y - e.radius - 12;
     ctx.fillStyle = "rgba(0,0,0,0.6)"; ctx.fillRect(e.x-bw/2, by, bw, 4);
-    ctx.fillStyle = e.rank==="jefe" ? "#ffb300" : "#e04a3a";
+    const cpE = typeof cvdPal==="function" ? cvdPal() : null;
+    ctx.fillStyle = cpE ? cpE.enemyHex : (e.rank==="jefe" ? "#ffb300" : "#e04a3a");
     ctx.fillRect(e.x-bw/2, by, bw*hpPct, 4);
+    if(cpE){ ctx.fillStyle = "rgba(0,0,0,0.65)"; for(let mx=8; mx<bw; mx+=8) ctx.fillRect(e.x-bw/2+mx, by, 1, 4); } // muescas: se lee sin color
   }
   if(e.electrifiedTimer>0){
     // Aura eléctrica real (sprite) de Cadena de Relámpagos mientras dura el efecto
