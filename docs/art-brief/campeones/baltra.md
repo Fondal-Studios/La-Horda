@@ -11,7 +11,7 @@
 - **Motivos visuales:** campana y badajo, cuerda, remaches, anillos de sonido (concéntricos con huecos), burbujas de aire, algas, pequeñas gotas.
 - **NO debe parecerse a:** **Bront** (acero azul-grisáceo `#8aa4b8` y cristal: Baltra es BRONCE cálido con verdín); **Facu GM** (azul mar y espuma: aquí el agua es solo ambiente, el protagonista es el metal); **Dáriel** (notas musicales: el sonido de Baltra son anillos, no notas).
 - **Estado actual del VFX (verificado en código):** Tema procedural `bell` (`themes.js:10`, forma `scallop`; su `a=#8bb4bd` es casi idéntico al de `crystal` de Bront `#8aa4b8`). `skill-fx-a/c/baltra.js`: hab. 1 y definitiva = nova centrada, hab. 2 = cono + aura, hab. 3 = cono. La guardia hoy se dibuja como un arco de ±60° y radio 27 u (`expedition/render.js:35`) y la vibración como puntos sobre la cabeza (`render.js:34`).
-- **Fuentes del kit:** `js/champions/expedition/catalog.js:19-24` (stats y kit), `expedition/runtime.js:41-44` (lanzamiento), `:117` (guardia), `expedition/render.js:20-38`, premarcado `aim-targeting.js:70-72`.
+- **Fuentes del kit:** `js/champions/expedition/catalog.js:19-24` (stats y kit), `expedition/runtime.js:41-44` (lanzamiento), `:117` (guardia), `expedition/render.js:20-38`, premarcado `aim-targeting.js:68`.
 
 ## B. Habilidades
 
@@ -51,7 +51,7 @@
 
 ### Hab. 2 - Bajo la campana
 
-- **Mecánica (código):** Guardia frontal de 25% de reducción de daño durante 3500 ms; velocidad -20% mientras dura. Alcance 90 u, radio 70 u (catálogo). Costo 26, cooldown 10000 ms. *(`catalog.js:24`, `runtime.js:42`, `:117`, premarcado `aim-targeting.js:70`)*
+- **Mecánica (código):** Guardia frontal de 25% de reducción de daño durante 3500 ms; velocidad -20% mientras dura. Alcance 90 u, radio 70 u (catálogo). Costo 26, cooldown 10000 ms. *(`catalog.js:24`, `runtime.js:42`, `:117`, premarcado `aim-targeting.js:68`)*
 - **Silueta y forma:** Media cúpula de bronce (una campana cortada) que cubre 120° frente a ella, con una burbuja de aire azul pálido dentro y remaches visibles.
 - **Color dominante:** Verdín-azulado `#8bb4bd` con bordes bronce.
 - **Movimiento:** Baja desde arriba como una campana y se planta; vibra cuando recibe golpes (+1 ondita por impacto).
@@ -68,7 +68,7 @@
 
 ### Hab. 3 - Badajo de retorno
 
-- **Mecánica (código):** Golpe en cono (alcance 180 u, semiángulo 0,85 rad = 97° de boca) que consume vibración (+12% por carga), daña y ralentiza 30% 1200 ms (jefes máx. 12%). Costo 28, cooldown 8500 ms. *(`catalog.js:24`, `runtime.js:43`, `expedition/runtime.js:6` (exCone), premarcado `aim-targeting.js:71`)*
+- **Mecánica (código):** Golpe en cono (alcance 180 u, semiángulo 0,85 rad = 97° de boca) que consume vibración (+12% por carga), daña y ralentiza 30% 1200 ms (jefes máx. 12%). Costo 28, cooldown 8500 ms. *(`catalog.js:24`, `runtime.js:43`, `expedition/runtime.js:6` (exCone), premarcado `aim-targeting.js:68`)*
 - **Silueta y forma:** Abanico de ondas en V (4 arcos concéntricos cada vez más anchos) que sale de un golpe de badajo hacia adelante.
 - **Color dominante:** Azul-verde frío `#cfeef0` con núcleo blanco.
 - **Movimiento:** El badajo se recoge y devuelve el golpe: las 4 ondas se despliegan en secuencia (80 ms entre cada una).

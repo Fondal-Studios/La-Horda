@@ -11,7 +11,7 @@
 - **Motivos visuales:** prismas y octaedros de cristal sólido, haces rectos que rebotan a 60°, hexágonos, compás, arcos ojivales y rosetón de catedral, dispersión espectral en los bordes.
 - **NO debe parecerse a:** **Iria** (también triángulos: Aurelia es oro con VOLUMEN y relleno de luz, Iria es índigo con líneas finas e hilos); **Farolero** (llama cálida y polillas); **Dáriel** (ocre con notas); **Brakk** (arena/ladrillo); **Libertador** (sol de mayo): el oro de Aurelia es frío-brillante, nunca naranja.
 - **Estado actual del VFX (verificado en código):** Tema procedural `prism` (`themes.js:8`, forma `hex`, motivos prism/diamond/ray/spark). `skill-fx-a/c/aurelia.js`: hab. 1 y definitiva = nova, hab. 2 = línea, hab. 3 = línea ancha (dash). La catedral reutiliza la nova (`SFA_OBJ.as_cathedral`).
-- **Fuentes del kit:** `js/champions/ascension/catalog.js:43-54` (stats y kit), `ascension/runtime.js:116-125` (lanzamiento), `:214` (catedral), `:271` (triángulo de nodos), premarcado `js/skills/aim-targeting.js:56-60`, proyectil `ascension/register.js:10`.
+- **Fuentes del kit:** `js/champions/ascension/catalog.js:43-54` (stats y kit), `ascension/runtime.js:116-125` (lanzamiento), `:214` (catedral), `:271` (triángulo de nodos), premarcado `js/skills/aim-targeting.js:54-55`, proyectil `ascension/register.js:10`.
 
 ## B. Habilidades
 
@@ -34,7 +34,7 @@
 
 ### Hab. 1 - Prisma
 
-- **Mecánica (código):** Cristaliza un Nodo Solar en el punto elegido (alcance 280 u, tope 420 u) con un estallido de radio 40 u; el nodo dura hasta 9000 ms y se acumulan 3 como máximo (radio del nodo 16 u). Costo 22, cooldown 4200 ms. *(`ascension/catalog.js:51`, `runtime.js:116`, premarcado `aim-targeting.js:56`)*
+- **Mecánica (código):** Cristaliza un Nodo Solar en el punto elegido (alcance 280 u, tope 420 u) con un estallido de radio 40 u; el nodo dura hasta 9000 ms y se acumulan 3 como máximo (radio del nodo 16 u). Costo 22, cooldown 4200 ms. *(`ascension/catalog.js:51`, `runtime.js:116`, premarcado `aim-targeting.js:54`)*
 - **Silueta y forma:** Octaedro de cristal dorado (rombo alto, 28x44 u) que flota sobre su punto, con una base de anillo hexagonal fina.
 - **Color dominante:** Oro saturado `#f2c14e`.
 - **Movimiento:** Cae una gota de luz desde arriba, se solidifica y queda flotando con vaivén de ±3 px y un giro lento de brillo.
@@ -51,7 +51,7 @@
 
 ### Hab. 2 - Refracción
 
-- **Mecánica (código):** Rayo en línea (alcance 340 u, tope 420 u, ancho de premarcado 24 u); cada nodo a ≤40 u de la línea refracta un segundo rayo al enemigo más cercano a ≤260 u (60% del daño, visible 300 ms). Costo 26, cooldown 6400 ms. *(`catalog.js:52`, `runtime.js:117-119`, premarcado `aim-targeting.js:56`)*
+- **Mecánica (código):** Rayo en línea (alcance 340 u, tope 420 u, ancho de premarcado 24 u); cada nodo a ≤40 u de la línea refracta un segundo rayo al enemigo más cercano a ≤260 u (60% del daño, visible 300 ms). Costo 26, cooldown 6400 ms. *(`catalog.js:52`, `runtime.js:117-119`, premarcado `aim-targeting.js:54`)*
 - **Silueta y forma:** Haz recto de luz blanca con núcleo fino y dos filamentos de dispersión (cian y magenta) en los bordes; en cada nodo se quiebra en ángulo de 60°.
 - **Color dominante:** Blanco dorado `#fffbe8` con borde `#ffe69a`.
 - **Movimiento:** Se dispara instantáneo y "respira" (ancho +20%) 2 cuadros; los rayos refractados se encienden 300 ms después en cadena nodo a nodo.
@@ -68,7 +68,7 @@
 
 ### Hab. 3 - Paso Luminal
 
-- **Mecánica (código):** Se traslada al nodo más lejano (o al punto elegido si no hay nodos; alcance 320 u, tope 420 u), deja un nodo nuevo donde estaba y estalla en radio 90 u al llegar; ella y los aliados a ≤160 u ganan +15% de daño durante 4000 ms ("LUZ SÓLIDA"). Costo 24, cooldown 8800 ms. *(`catalog.js:53`, `runtime.js:120-121`, premarcado `aim-targeting.js:57`)*
+- **Mecánica (código):** Se traslada al nodo más lejano (o al punto elegido si no hay nodos; alcance 320 u, tope 420 u), deja un nodo nuevo donde estaba y estalla en radio 90 u al llegar; ella y los aliados a ≤160 u ganan +15% de daño durante 4000 ms ("LUZ SÓLIDA"). Costo 24, cooldown 8800 ms. *(`catalog.js:53`, `runtime.js:120-121`, premarcado `aim-targeting.js:55`)*
 - **Silueta y forma:** Desmaterialización: la silueta se corta en líneas horizontales de luz (scanlines) que viajan al destino y se recomponen; en el destino un destello hexagonal de 90 u; los aliados reciben un halo hexagonal dorado.
 - **Color dominante:** Ámbar solar `#e4b454` con trazos blancos.
 - **Movimiento:** Origen: se desarma de arriba hacia abajo; trayecto: ráfaga horizontal; destino: se arma de abajo hacia arriba. Aliados: halo hexagonal que gira lento 4000 ms.
@@ -85,7 +85,7 @@
 
 ### Definitiva - Catedral del Sol
 
-- **Mecánica (código):** Los 3 nodos se elevan en una catedral geométrica; radio 170 u (tope 480 u en definitiva) durante 6500 ms, pulsos cada 700 ms que dañan dentro del triángulo o a ≤ r/2 y curan 1,5% de vida máxima a aliados. Sin nodos, crea 3 alrededor del punto (alcance 200 u, 140 u del centro). Sin costo, cooldown 40000 ms. *(`catalog.js:54`, `runtime.js:122-125,214`, premarcado `aim-targeting.js:56-60`)*
+- **Mecánica (código):** Los 3 nodos se elevan en una catedral geométrica; radio 170 u (tope 480 u en definitiva) durante 6500 ms, pulsos cada 700 ms que dañan dentro del triángulo o a ≤ r/2 y curan 1,5% de vida máxima a aliados. Sin nodos, crea 3 alrededor del punto (alcance 200 u, 140 u del centro). Sin costo, cooldown 40000 ms. *(`catalog.js:54`, `runtime.js:122-125,214`, premarcado `aim-targeting.js:55`)*
 - **Silueta y forma:** Catedral de luz: tres columnas verticales (una por nodo, 40x140 u) unidas por arcos ojivales; en el centro un rosetón circular que gira con rayos solares. El suelo del triángulo se rellena de luz dorada.
 - **Color dominante:** Oro blanco `#fffbe8` y oro `#f2c14e`, con vitral cian/magenta SOLO en el rosetón.
 - **Movimiento:** Las columnas suben en ~600 ms, los arcos se cierran, el rosetón gira lento y lanza un pulso de luz cada 700 ms (9 pulsos en 6500 ms).

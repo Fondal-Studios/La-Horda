@@ -11,7 +11,7 @@
 - **Motivos visuales:** ola con cresta, remolino, espuma, burbujas, corriente en vetas, silueta abisal bajo el agua, quilla.
 - **NO debe parecerse a:** **Baltra** (bronce y metal sumergido: el agua de Facu es azul vivo y fluida, sin bronce); **Mago/Thalen** (hielo cristalino: aquí no hay cristales ni copos, solo agua curva); **Bront** (acero); **Khepri** (verde).
 - **Estado actual del VFX (verificado en código):** Tema procedural `tide` (`themes.js:17`, forma `wave`, motivos wave/drop/shell/bubble). `skill-fx-a/c/facu_gm.js`: Corriente = estallido + teja de haz, Presión = nova, Ola = trazo ancho 56, definitiva = nova. Proyectil básico `wave` (`ascension/register.js:10`).
-- **Fuentes del kit:** `js/champions/ascension/catalog.js:27-41` (stats y kit), lanzamiento `ascension/runtime.js:111-114`, objetos `:205-213`, cabalgata `:262-267`, premarcado `js/skills/aim-targeting.js:54-56`.
+- **Fuentes del kit:** `js/champions/ascension/catalog.js:27-41` (stats y kit), lanzamiento `ascension/runtime.js:111-114`, objetos `:205-213`, cabalgata `:262-267`, premarcado `js/skills/aim-targeting.js:52-53`.
 
 ## B. Habilidades
 
@@ -34,7 +34,7 @@
 
 ### Hab. 1 - Corriente de Resaca
 
-- **Mecánica (código):** Abre una corriente en línea (alcance 300 u, ancho de colisión 68 u) durante 3500 ms: empuja a los comunes en su dirección (9 u cada 120 ms), daña 25% cada 500 ms y acelera 25% a los aliados que la pisan. Costo 22, cooldown 5000 ms. (Flujo: Corriente.) *(`catalog.js:38`, `runtime.js:111,205`, premarcado `aim-targeting.js:54`)*
+- **Mecánica (código):** Abre una corriente en línea (alcance 300 u, ancho de colisión 68 u) durante 3500 ms: empuja a los comunes en su dirección (9 u cada 120 ms), daña 25% cada 500 ms y acelera 25% a los aliados que la pisan. Costo 22, cooldown 5000 ms. (Flujo: Corriente.) *(`catalog.js:38`, `runtime.js:111,205`, premarcado `aim-targeting.js:52`)*
 - **Silueta y forma:** Río de agua en el suelo: vetas paralelas azules con flechas de corriente que corren en la dirección del lanzamiento y espuma en los bordes.
 - **Color dominante:** Azul medio `#3c84cc` con vetas claras.
 - **Movimiento:** Las vetas fluyen continuamente hacia la punta a velocidad constante durante 3500 ms.
@@ -51,7 +51,7 @@
 
 ### Hab. 2 - Presión Abisal
 
-- **Mecánica (código):** Implosión en un punto (alcance 280 u, radio 120 u): atrae a los comunes hasta 120 u hacia el centro (élites 50 u), daña y ralentiza 35% 1500 ms; los jefes solo reciben daño y lentitud. Costo 24, cooldown 7400 ms. (Flujo: Presión.) *(`catalog.js:39`, `runtime.js:112`, premarcado `aim-targeting.js:54`)*
+- **Mecánica (código):** Implosión en un punto (alcance 280 u, radio 120 u): atrae a los comunes hasta 120 u hacia el centro (élites 50 u), daña y ralentiza 35% 1500 ms; los jefes solo reciben daño y lentitud. Costo 24, cooldown 7400 ms. (Flujo: Presión.) *(`catalog.js:39`, `runtime.js:112`, premarcado `aim-targeting.js:52`)*
 - **Silueta y forma:** Remolino cerrado: espiral de agua oscura cuyo centro es casi negro y de cuyos bordes caen cataratas hacia dentro; burbujas que suben desde el fondo.
 - **Color dominante:** Azul profundo `#0c3c6c` con vetas `#5aa8e4`.
 - **Movimiento:** La espiral gira cada vez más rápido y se hunde; al final un estampido sordo y sube una burbuja grande.
@@ -68,7 +68,7 @@
 
 ### Hab. 3 - Cabalgar la Ola
 
-- **Mecánica (código):** Cabalga una ola hasta 320 u a 620 u/s (~520 ms): aparta a los enemigos a ≤46 u, los daña, los ralentiza 30% 1200 ms, protege 5% a los aliados que cruza y deja espuma (radio 26 u, 2000 ms). Se detiene ante muros. Costo 24, cooldown 7000 ms. (Flujo: Oleada.) *(`catalog.js:40`, `runtime.js:113,262-267`, premarcado `aim-targeting.js:55`)*
+- **Mecánica (código):** Cabalga una ola hasta 320 u a 620 u/s (~520 ms): aparta a los enemigos a ≤46 u, los daña, los ralentiza 30% 1200 ms, protege 5% a los aliados que cruza y deja espuma (radio 26 u, 2000 ms). Se detiene ante muros. Costo 24, cooldown 7000 ms. (Flujo: Oleada.) *(`catalog.js:40`, `runtime.js:113,262-267`, premarcado `aim-targeting.js:53`)*
 - **Silueta y forma:** Cresta de ola de 92 u de ancho con Facu de pie sobre ella, que arrastra una estela de espuma a lo largo del recorrido.
 - **Color dominante:** Azul claro `#84ccfc` con espuma blanca.
 - **Movimiento:** La ola se levanta bajo sus pies, sale a gran velocidad; la espuma queda atrás y se va disolviendo 2000 ms.

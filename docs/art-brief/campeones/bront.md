@@ -11,7 +11,7 @@
 - **Motivos visuales:** placas rectangulares con remaches, cristal facetado que late, juntas con luz azul, almenas, puertas.
 - **NO debe parecerse a:** **Baltra** (su `a=#8bb4bd` es casi igual al de Bront `#8aa4b8`: Baltra es bronce cálido y agua, Bront acero frío SIN bronce ni burbujas); **Brakk** (marrón y ladrillo); **Eslabón** (gris con cadenas); **Mago** (hielo): el cristal de Bront no es hielo, es facetado y cian, sin copos.
 - **Estado actual del VFX (verificado en código):** Tema procedural `crystal` (`themes.js:13`, forma `hex`, motivos shard/plate/ice/diamond). `skill-fx-a/c/bront.js`: Placa = línea ancha 52, Muro = estallidos en los extremos, Pulso = nova + aura, Ciudadela = nova. El muro usa teja de haz (`SFA_OBJ.as_wall`).
-- **Fuentes del kit:** `js/champions/ascension/catalog.js:91-102`, lanzamiento `ascension/runtime.js:145-152`, objetos `:235`, daño de placa `:281`, caída de placas `:290`, premarcado `js/skills/aim-targeting.js:61-62`, proyectil `ascension/register.js:10`.
+- **Fuentes del kit:** `js/champions/ascension/catalog.js:91-102`, lanzamiento `ascension/runtime.js:145-152`, objetos `:235`, daño de placa `:281`, caída de placas `:290`, premarcado `js/skills/aim-targeting.js:60`, proyectil `ascension/register.js:10`.
 
 ## B. Habilidades
 
@@ -34,7 +34,7 @@
 
 ### Hab. 1 - Placa Arrojada
 
-- **Mecánica (código):** Lanza una placa en línea (alcance 280 u, colisión ≤32 u del eje) que daña y queda clavada en el suelo como placa defensiva (radio 34 u, 12000 ms, máx. 4): ralentiza 30% a enemigos que la tocan. Costo 22, cooldown 5000 ms. *(`catalog.js:99`, `runtime.js:145`, `:235`, premarcado `aim-targeting.js:61`)*
+- **Mecánica (código):** Lanza una placa en línea (alcance 280 u, colisión ≤32 u del eje) que daña y queda clavada en el suelo como placa defensiva (radio 34 u, 12000 ms, máx. 4): ralentiza 30% a enemigos que la tocan. Costo 22, cooldown 5000 ms. *(`catalog.js:99`, `runtime.js:145`, `:235`, premarcado `aim-targeting.js:60`)*
 - **Silueta y forma:** Placa rectangular de acero (32x48 u) que gira como una guillotina horizontal y se clava vertical al final.
 - **Color dominante:** Acero `#8aa4b8` con cantos `#bfe8ff`.
 - **Movimiento:** Gira 2 vueltas en vuelo; se clava con rebote y sacude el suelo.
@@ -51,7 +51,7 @@
 
 ### Hab. 2 - Muro de Placas
 
-- **Mecánica (código):** Levanta una muralla de 160 u de largo a 90 u frente a él (colisión ≤26 u, premarcado 52 u de ancho, alcance 110 u) durante 5000 ms; daña (45%) y ralentiza mucho a los que la cruzan. Costo 28, cooldown 9400 ms. *(`catalog.js:100`, `runtime.js:146-147`, premarcado `aim-targeting.js:62`)*
+- **Mecánica (código):** Levanta una muralla de 160 u de largo a 90 u frente a él (colisión ≤26 u, premarcado 52 u de ancho, alcance 110 u) durante 5000 ms; daña (45%) y ralentiza mucho a los que la cruzan. Costo 28, cooldown 9400 ms. *(`catalog.js:100`, `runtime.js:146-147`, premarcado `aim-targeting.js:60`)*
 - **Silueta y forma:** Pared de 4-5 placas verticales encajadas con juntas de luz azul y almenas, más alta que larga (160x52 u); pequeños cristales en las juntas.
 - **Color dominante:** Acero `#8aa4b8` con juntas de luz `#5fd0ff`.
 - **Movimiento:** Las placas suben en cascada de izquierda a derecha, 120 ms entre cada una; las juntas pulsan al ser cruzadas.
