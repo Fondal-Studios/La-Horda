@@ -83,11 +83,11 @@ const SYLVA_MOMENTUM_GRACE_MS = 700;
 const SYLVA_CHARGE_MAX_MS = 900; // tiempo de mantener pulsado Flecha Perforante para carga máxima
 function sylvaTrackBonuses(stacks){
   const s = Math.max(0, Math.min(5, stacks||0));
-  return { speedMult: 1+0.04*s, atkSpeedMult: 1+0.05*s, cornered: s>=5 };
+  return { speedMult: 1+SYLVA_CFG.track.speedPerStack*s, atkSpeedMult: 1+SYLVA_CFG.track.atkSpeedPerStack*s, cornered: s>=5 };
 }
 function sylvaMomentumBonuses(momentum){
   const m = Math.max(0, Math.min(10, momentum||0));
-  return { atkSpeedMult: 1+0.02*m, speedMult: 1+0.01*m };
+  return { atkSpeedMult: 1+SYLVA_CFG.momentum.atkSpeedPerPoint*m, speedMult: 1+SYLVA_CFG.momentum.speedPerPoint*m };
 }
 // Combina Rastreo + Impulso (+ el máximo fijo de Impulso durante Cacería Salvaje) en un solo
 // paquete, aplicado una sola vez sobre velocidad/daño/crítico -mismo criterio "sin
@@ -102,7 +102,7 @@ function sylvaCombatMods(h){
     speedMult: track.speedMult * mom.speedMult * trapBurst * (ultMods ? ultMods.speedMult : 1),
     atkSpeedMult: track.atkSpeedMult * mom.atkSpeedMult * (ultMods ? ultMods.atkSpeedMult : 1),
     dmgMult: 1 + (track.cornered ? 0.15 : 0),
-    critChanceAdd: (track.cornered ? 0.25 : 0) + (ultMods ? ultMods.critChanceBonus : 0),
+    critChanceAdd: (track.cornered ? SYLVA_CFG.track.corneredCrit : 0) + (ultMods ? ultMods.critChanceBonus : 0),
     rangeMult: ultMods ? ultMods.rangeMult : 1,
     cornered: track.cornered
   };

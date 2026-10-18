@@ -79,6 +79,14 @@ const FT_NUM_CAP = (function(){ try{ return window.matchMedia && window.matchMed
 // "+" curación, "-" recibido, "◈" escudo, número chico y corto para DoT.
 // dk (opcional): tipo de daño -> color. key (opcional): el enemigo golpeado -> golpes seguidos al mismo
 // objetivo se AGRUPAN en un solo número que crece (sin key se agrupan por cercanía: invitados).
+// Carteles de palabras que nacen sobre un aliado controlado por la IA (kitBuff: PACTO, AFILADA; ¡IMPULSO MÁXIMO!...):
+// el de los bots tapa la pelea sin informar nada al jugador; se apagan salvo que active "Carteles de los bots" en Opciones.
+// Se reconocen por salir exactamente sobre la x de un héroe bot, por encima de su cabeza (los del jugador no se tocan).
+function _ftFromBot(x, y){
+  if(typeof heroes==="undefined" || !heroes) return false;
+  for(const h of heroes){ if(h && h!==player && h.isBot && Math.abs(h.x - x) < 0.5 && y <= h.y && h.y - y <= 90) return true; }
+  return false;
+}
 function floatText(x,y,text,cls,dk,key){
   let kind = 0;
   let s = String(text);
@@ -87,6 +95,7 @@ function floatText(x,y,text,cls,dk,key){
   else if(cls==="heal") kind = 2;
   else if(s.charAt(0)==="-") kind = 3;
   else if(!/^[0-9]+$/.test(s)) kind = 4;
+  if(kind===4 && typeof PREFS!=="undefined" && !PREFS.botCallouts && _ftFromBot(x, y)) return;
   // palabra flotante con el cartel grande de arena/jefe arriba: si caería encima, se corre por debajo del cartel
   // (zonas del HUD, hud-text.js; tools/audit/center_text.js lo mide)
   if(kind===4 && typeof _hudTitleOn==="function" && _hudTitleOn(performance.now()) && typeof worldToScreen==="function"){

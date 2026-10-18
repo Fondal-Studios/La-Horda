@@ -106,3 +106,20 @@ function hudTextFreeRect(x, y, w, h, taken){
   if(hudTextBlockRects().some(hit)) return false;
   return !(taken && taken.some(hit));
 }
+
+/* ---------------- HUD compacto (celular apaisado, <=500 px de alto) ----------------
+   Misma condición que css/hud-mobile.css. Lo usan goal-guide.js (objetivo solo al cambiar), tutorial.js
+   (Hechicero corto y con auto-ocultado) y boss-hud.js (guía del jefe en pictogramas). */
+function hudCompact(){ try{ return !!(window.matchMedia && window.matchMedia("(max-height:500px)").matches); }catch(e){ return false; } }
+// Recorta un texto largo a las primeras oraciones que entran en `max` caracteres (2 renglones del cuadro del Hechicero).
+function hudShortText(text, max){
+  const s = String(text||"").trim(); max = max || 110;
+  if(s.length <= max) return s;
+  const parts = s.match(/[^.!?]+[.!?]+\s*|[^.!?]+$/g) || [s];
+  let out = "";
+  for(const p of parts){ if((out + p).length > max) break; out += p; }
+  out = out.trim();
+  if(out.length >= 20) return out;
+  const cut = s.slice(0, max - 1), sp = cut.lastIndexOf(" ");
+  return (sp > 30 ? cut.slice(0, sp) : cut).replace(/[,:;\s]+$/, "") + "…";
+}

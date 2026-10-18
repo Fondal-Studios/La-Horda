@@ -1,0 +1,26 @@
+/* PRIMER MINUTO (js/ui/first-minute.js, js/ui/starter-select.js): historia corta y "Tu primer guardián" con 4 recomendados.
+   Último en cargar. Pensado para 844x390 y 667x375 sin deslizar la pantalla del primer guardián. */
+#first-story{ z-index:130; }
+#first-story .fs-panel{ max-width:560px; font-family:var(--font-retro); }
+#first-story .fs-line{ margin:0 0 8px; font-size:1.2rem; line-height:1.25; color:var(--ui-ink,#e8dcc6); }
+#first-story .fs-btns{ display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap; margin-top:10px; }
+#first-story .fs-btns .btn{ min-height:44px; font-size:1.1rem; width:auto; padding:6px 16px; }
+@media (max-height:520px){ #first-story .fs-line{ font-size:1.05rem; margin-bottom:5px; } #first-story .ui-panel-title{ margin-bottom:4px; } }
+
+/* nombres y títulos de guardianes completos (antes "la Guardiana del Al…") */
+#starter-screen .gallery-card-name, #starter-screen .champ-title{ white-space:normal; overflow:visible; text-overflow:clip; overflow-wrap:break-word; }
+#starter-screen .champ-title{ line-height:1.1; }
+/* recomendados: una fila de 4; "Ver todos" muestra la grilla completa */
+#starter-grid:not(.all) .starter-card.more{ display:none; }
+#starter-grid:not(.all){ grid-template-columns:repeat(4,minmax(0,1fr)); width:min(900px, 96vw); }
+#starter-grid:not(.all) .starter-card .starter-lore{ font-size:0.8rem; line-height:1.2; }
+#starter-all-btn{ font-size:1.1rem; width:auto; min-height:44px; margin:2px auto 6px; padding:6px 18px; }
+@media (max-height:520px){
+  #starter-grid:not(.all){ gap:8px; margin:4px auto; }
+  #starter-grid:not(.all) .starter-card{ padding:4px 6px; gap:1px; }
+  #starter-grid:not(.all) .starter-anim{ width:84px; height:84px; }
+  #starter-grid:not(.all) .starter-card .gallery-card-name{ font-size:1rem; margin:0; }
+  #starter-grid:not(.all) .starter-card .champ-title{ font-size:14px; }
+  #starter-grid:not(.all) .starter-card .mychamp-meta{ font-size:14px; }
+  #starter-grid:not(.all) .starter-card .starter-lore{ font-size:14px; }
+}

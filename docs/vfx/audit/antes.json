@@ -1,0 +1,2449 @@
+{
+ "phase": "antes",
+ "errors": [],
+ "champions": {
+  "aelith": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 16,
+    "arcs": 3,
+    "strokes": 0,
+    "fills": 13,
+    "renderMs": 5.004,
+    "ctlRenderMs": 5.074,
+    "shots": [
+     "aelith_basic_0.png",
+     "aelith_basic_1.png",
+     "aelith_basic_2.png",
+     "aelith_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Instante roto",
+    "kind": "expedition",
+    "sprites": [
+     "fxFrostRune"
+    ],
+    "shocks": 5,
+    "bursts": 27,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 6,
+    "fills": 30,
+    "renderMs": 5.183,
+    "ctlRenderMs": 4.401,
+    "shots": [
+     "aelith_0_0.png",
+     "aelith_0_1.png",
+     "aelith_0_2.png",
+     "aelith_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Fractura de segundos",
+    "kind": "expedition",
+    "sprites": [
+     "fxFrostRune"
+    ],
+    "shocks": 2,
+    "bursts": 22,
+    "teles": 0,
+    "drawImage": 13,
+    "arcs": 11,
+    "strokes": 13,
+    "fills": 36,
+    "renderMs": 4.085,
+    "ctlRenderMs": 3.939,
+    "shots": [
+     "aelith_1_0.png",
+     "aelith_1_1.png",
+     "aelith_1_2.png",
+     "aelith_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Tiempo prestado",
+    "kind": "expedition",
+    "sprites": [
+     "fxWhirl"
+    ],
+    "shocks": 2,
+    "bursts": 2,
+    "teles": 0,
+    "drawImage": 8,
+    "arcs": 2,
+    "strokes": 4,
+    "fills": 14,
+    "renderMs": 3.522,
+    "ctlRenderMs": 3.596,
+    "shots": [
+     "aelith_2_0.png",
+     "aelith_2_1.png",
+     "aelith_2_2.png",
+     "aelith_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "La hora imposible",
+    "kind": "expedition",
+    "sprites": [
+     "fxFrostRune"
+    ],
+    "shocks": 4,
+    "bursts": 13,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 12,
+    "fills": 23,
+    "renderMs": 4.169,
+    "ctlRenderMs": 3.481,
+    "shots": [
+     "aelith_ult_0.png",
+     "aelith_ult_1.png",
+     "aelith_ult_2.png",
+     "aelith_ult_3.png"
+    ]
+   }
+  ],
+  "aurelia": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 4,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 5.579,
+    "ctlRenderMs": 4.322,
+    "shots": [
+     "aurelia_basic_0.png",
+     "aurelia_basic_1.png",
+     "aurelia_basic_2.png",
+     "aurelia_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Prisma",
+    "kind": "ascension",
+    "sprites": [
+     "fxHolyHealBurst"
+    ],
+    "shocks": 2,
+    "bursts": 20,
+    "teles": 0,
+    "drawImage": 8,
+    "arcs": 3,
+    "strokes": 6,
+    "fills": 26,
+    "renderMs": 3.524,
+    "ctlRenderMs": 3.553,
+    "shots": [
+     "aurelia_0_0.png",
+     "aurelia_0_1.png",
+     "aurelia_0_2.png",
+     "aurelia_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Refracción",
+    "kind": "ascension",
+    "sprites": [
+     "fxHolyHealBurst"
+    ],
+    "shocks": 2,
+    "bursts": 22,
+    "teles": 0,
+    "drawImage": 12,
+    "arcs": 2,
+    "strokes": 3,
+    "fills": 32,
+    "renderMs": 3.47,
+    "ctlRenderMs": 3.388,
+    "shots": [
+     "aurelia_1_0.png",
+     "aurelia_1_1.png",
+     "aurelia_1_2.png",
+     "aurelia_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Paso Luminal",
+    "kind": "ascension",
+    "sprites": [
+     "fxHolyHealBurst"
+    ],
+    "shocks": 2,
+    "bursts": 22,
+    "teles": 0,
+    "drawImage": 13,
+    "arcs": 0,
+    "strokes": 10,
+    "fills": 36,
+    "renderMs": 3.775,
+    "ctlRenderMs": 3.512,
+    "shots": [
+     "aurelia_2_0.png",
+     "aurelia_2_1.png",
+     "aurelia_2_2.png",
+     "aurelia_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Catedral del Sol",
+    "kind": "ascension",
+    "sprites": [
+     "fxHolyHealBurst"
+    ],
+    "shocks": 3,
+    "bursts": 42,
+    "teles": 0,
+    "drawImage": 11,
+    "arcs": 6,
+    "strokes": 23,
+    "fills": 68,
+    "renderMs": 3.508,
+    "ctlRenderMs": 3.469,
+    "shots": [
+     "aurelia_ult_0.png",
+     "aurelia_ult_1.png",
+     "aurelia_ult_2.png",
+     "aurelia_ult_3.png"
+    ]
+   }
+  ],
+  "axiom": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 4.263,
+    "ctlRenderMs": 3.727,
+    "shots": [
+     "axiom_basic_0.png",
+     "axiom_basic_1.png",
+     "axiom_basic_2.png",
+     "axiom_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Error 404",
+    "kind": "glitch_delay_nova",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 21,
+    "teles": 0,
+    "drawImage": 32,
+    "arcs": 9,
+    "strokes": 7,
+    "fills": 38,
+    "renderMs": 4.189,
+    "ctlRenderMs": 4.462,
+    "shots": [
+     "axiom_0_0.png",
+     "axiom_0_1.png",
+     "axiom_0_2.png",
+     "axiom_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Sobrescribir",
+    "kind": "overwrite_nova",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 6,
+    "teles": 0,
+    "drawImage": 30,
+    "arcs": 4,
+    "strokes": 5,
+    "fills": 29,
+    "renderMs": 3.908,
+    "ctlRenderMs": 3.985,
+    "shots": [
+     "axiom_1_0.png",
+     "axiom_1_1.png",
+     "axiom_1_2.png",
+     "axiom_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Teletransporte",
+    "kind": "teleport_blink",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 1,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 2,
+    "fills": 2,
+    "renderMs": 3.404,
+    "ctlRenderMs": 3.663,
+    "shots": [
+     "axiom_2_0.png",
+     "axiom_2_1.png",
+     "axiom_2_2.png",
+     "axiom_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Force Quit",
+    "kind": "force_quit_ult",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 1,
+    "teles": 0,
+    "drawImage": 6,
+    "arcs": 1,
+    "strokes": 7,
+    "fills": 4,
+    "renderMs": 3.885,
+    "ctlRenderMs": 3.585,
+    "shots": [
+     "axiom_ult_0.png",
+     "axiom_ult_1.png",
+     "axiom_ult_2.png",
+     "axiom_ult_3.png"
+    ]
+   }
+  ],
+  "baltra": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 0,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 4.816,
+    "ctlRenderMs": 3.562,
+    "shots": [
+     "baltra_basic_0.png",
+     "baltra_basic_1.png",
+     "baltra_basic_2.png",
+     "baltra_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Bronce vivo",
+    "kind": "expedition",
+    "sprites": [
+     "fxWave"
+    ],
+    "shocks": 4,
+    "bursts": 22,
+    "teles": 0,
+    "drawImage": 7,
+    "arcs": 1,
+    "strokes": 4,
+    "fills": 26,
+    "renderMs": 3.519,
+    "ctlRenderMs": 3.464,
+    "shots": [
+     "baltra_0_0.png",
+     "baltra_0_1.png",
+     "baltra_0_2.png",
+     "baltra_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Bajo la campana",
+    "kind": "expedition",
+    "sprites": [
+     "fxHolyShieldBubble"
+    ],
+    "shocks": 2,
+    "bursts": 2,
+    "teles": 0,
+    "drawImage": 22,
+    "arcs": 5,
+    "strokes": 4,
+    "fills": 20,
+    "renderMs": 3.4,
+    "ctlRenderMs": 3.546,
+    "shots": [
+     "baltra_1_0.png",
+     "baltra_1_1.png",
+     "baltra_1_2.png",
+     "baltra_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Badajo de retorno",
+    "kind": "expedition",
+    "sprites": [
+     "fxWave"
+    ],
+    "shocks": 2,
+    "bursts": 22,
+    "teles": 0,
+    "drawImage": 7,
+    "arcs": 11,
+    "strokes": 17,
+    "fills": 26,
+    "renderMs": 3.162,
+    "ctlRenderMs": 3.612,
+    "shots": [
+     "baltra_2_0.png",
+     "baltra_2_1.png",
+     "baltra_2_2.png",
+     "baltra_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Que todos la escuchen",
+    "kind": "expedition",
+    "sprites": [
+     "fxWave"
+    ],
+    "shocks": 3,
+    "bursts": 42,
+    "teles": 0,
+    "drawImage": 2,
+    "arcs": 14,
+    "strokes": 24,
+    "fills": 52,
+    "renderMs": 3.427,
+    "ctlRenderMs": 3.023,
+    "shots": [
+     "baltra_ult_0.png",
+     "baltra_ult_1.png",
+     "baltra_ult_2.png",
+     "baltra_ult_3.png"
+    ]
+   }
+  ],
+  "brakk": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 0,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 3.816,
+    "ctlRenderMs": 3.457,
+    "shots": [
+     "brakk_basic_0.png",
+     "brakk_basic_1.png",
+     "brakk_basic_2.png",
+     "brakk_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Muro de asedio",
+    "kind": "expedition",
+    "sprites": [
+     "fxSpike"
+    ],
+    "shocks": 3,
+    "bursts": 25,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 3,
+    "fills": 0,
+    "renderMs": 4.529,
+    "ctlRenderMs": 3.716,
+    "shots": [
+     "brakk_0_0.png",
+     "brakk_0_1.png",
+     "brakk_0_2.png",
+     "brakk_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Torreta de clavos",
+    "kind": "expedition",
+    "sprites": [
+     "fxSpike"
+    ],
+    "shocks": 2,
+    "bursts": 5,
+    "teles": 0,
+    "drawImage": 10,
+    "arcs": 1,
+    "strokes": 3,
+    "fills": 17,
+    "renderMs": 3.649,
+    "ctlRenderMs": 3.595,
+    "shots": [
+     "brakk_1_0.png",
+     "brakk_1_1.png",
+     "brakk_1_2.png",
+     "brakk_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Apuntalar",
+    "kind": "expedition",
+    "sprites": [
+     "fxHolyShieldBubble"
+    ],
+    "shocks": 2,
+    "bursts": 2,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 2,
+    "fills": 0,
+    "renderMs": 4.733,
+    "ctlRenderMs": 3.672,
+    "shots": [
+     "brakk_2_0.png",
+     "brakk_2_1.png",
+     "brakk_2_2.png",
+     "brakk_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Demolición final",
+    "kind": "expedition",
+    "sprites": [
+     "fxSpike"
+    ],
+    "shocks": 4,
+    "bursts": 23,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 7,
+    "strokes": 21,
+    "fills": 72,
+    "renderMs": 5.558,
+    "ctlRenderMs": 5.028,
+    "shots": [
+     "brakk_ult_0.png",
+     "brakk_ult_1.png",
+     "brakk_ult_2.png",
+     "brakk_ult_3.png"
+    ]
+   }
+  ],
+  "brasa": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 16,
+    "arcs": 3,
+    "strokes": 1,
+    "fills": 12,
+    "renderMs": 3.524,
+    "ctlRenderMs": 3.488,
+    "shots": [
+     "brasa_basic_0.png",
+     "brasa_basic_1.png",
+     "brasa_basic_2.png",
+     "brasa_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Centinela de Latón",
+    "kind": "br_turret",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 4,
+    "arcs": 1,
+    "strokes": 3,
+    "fills": 15,
+    "renderMs": 3.308,
+    "ctlRenderMs": 3.245,
+    "shots": [
+     "brasa_0_0.png",
+     "brasa_0_1.png",
+     "brasa_0_2.png",
+     "brasa_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Purga de Vapor",
+    "kind": "br_purge",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 64,
+    "teles": 0,
+    "drawImage": 15,
+    "arcs": 9,
+    "strokes": 15,
+    "fills": 16,
+    "renderMs": 3.509,
+    "ctlRenderMs": 3.154,
+    "shots": [
+     "brasa_1_0.png",
+     "brasa_1_1.png",
+     "brasa_1_2.png",
+     "brasa_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Desmontaje Rápido",
+    "kind": "br_dismantle",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 1,
+    "teles": 0,
+    "drawImage": 13,
+    "arcs": 2,
+    "strokes": 2,
+    "fills": 10,
+    "renderMs": 3.424,
+    "ctlRenderMs": 3.47,
+    "shots": [
+     "brasa_2_0.png",
+     "brasa_2_1.png",
+     "brasa_2_2.png",
+     "brasa_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Turno de Emergencia",
+    "kind": "br_overclock",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 5,
+    "teles": 0,
+    "drawImage": 2,
+    "arcs": 2,
+    "strokes": 9,
+    "fills": 19,
+    "renderMs": 3.323,
+    "ctlRenderMs": 3.556,
+    "shots": [
+     "brasa_ult_0.png",
+     "brasa_ult_1.png",
+     "brasa_ult_2.png",
+     "brasa_ult_3.png"
+    ]
+   }
+  ],
+  "bront": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 0,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 1,
+    "arcs": 1,
+    "strokes": 0,
+    "fills": 4,
+    "renderMs": 3.633,
+    "ctlRenderMs": 3.362,
+    "shots": [
+     "bront_basic_0.png",
+     "bront_basic_1.png",
+     "bront_basic_2.png",
+     "bront_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Placa Arrojada",
+    "kind": "ascension",
+    "sprites": [
+     "fxSpike"
+    ],
+    "shocks": 1,
+    "bursts": 21,
+    "teles": 0,
+    "drawImage": 8,
+    "arcs": 1,
+    "strokes": 5,
+    "fills": 23,
+    "renderMs": 3.467,
+    "ctlRenderMs": 3.326,
+    "shots": [
+     "bront_0_0.png",
+     "bront_0_1.png",
+     "bront_0_2.png",
+     "bront_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Muro de Placas",
+    "kind": "ascension",
+    "sprites": [
+     "fxSpike"
+    ],
+    "shocks": 1,
+    "bursts": 43,
+    "teles": 0,
+    "drawImage": 12,
+    "arcs": 8,
+    "strokes": 9,
+    "fills": 48,
+    "renderMs": 3.54,
+    "ctlRenderMs": 3.542,
+    "shots": [
+     "bront_1_0.png",
+     "bront_1_1.png",
+     "bront_1_2.png",
+     "bront_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Pulso del Cristal",
+    "kind": "ascension",
+    "sprites": [
+     "fxHolyShieldBubble"
+    ],
+    "shocks": 2,
+    "bursts": 58,
+    "teles": 0,
+    "drawImage": 14,
+    "arcs": 6,
+    "strokes": 8,
+    "fills": 25,
+    "renderMs": 3.521,
+    "ctlRenderMs": 3.124,
+    "shots": [
+     "bront_2_0.png",
+     "bront_2_1.png",
+     "bront_2_2.png",
+     "bront_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Ciudadela",
+    "kind": "ascension",
+    "sprites": [
+     "fxHolyShieldBubble"
+    ],
+    "shocks": 5,
+    "bursts": 28,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 5,
+    "strokes": 15,
+    "fills": 113,
+    "renderMs": 4.031,
+    "ctlRenderMs": 3.471,
+    "shots": [
+     "bront_ult_0.png",
+     "bront_ult_1.png",
+     "bront_ult_2.png",
+     "bront_ult_3.png"
+    ]
+   }
+  ],
+  "cazadora": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 16,
+    "arcs": 2,
+    "strokes": 1,
+    "fills": 11,
+    "renderMs": 3.537,
+    "ctlRenderMs": 3.481,
+    "shots": [
+     "cazadora_basic_0.png",
+     "cazadora_basic_1.png",
+     "cazadora_basic_2.png",
+     "cazadora_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Flecha Perforante",
+    "kind": "piercing_shot",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 2,
+    "fills": 0,
+    "renderMs": 4.776,
+    "ctlRenderMs": 3.631,
+    "shots": [
+     "cazadora_0_0.png",
+     "cazadora_0_1.png",
+     "cazadora_0_2.png",
+     "cazadora_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Trampa del Bosque",
+    "kind": "forest_trap",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 1,
+    "teles": 0,
+    "drawImage": 17,
+    "arcs": 4,
+    "strokes": 4,
+    "fills": 32,
+    "renderMs": 3.538,
+    "ctlRenderMs": 3.651,
+    "shots": [
+     "cazadora_1_0.png",
+     "cazadora_1_1.png",
+     "cazadora_1_2.png",
+     "cazadora_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Lluvia de la Cazadora",
+    "kind": "hunter_rain",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 26,
+    "teles": 0,
+    "drawImage": 7,
+    "arcs": 2,
+    "strokes": 4,
+    "fills": 32,
+    "renderMs": 3.728,
+    "ctlRenderMs": 3.419,
+    "shots": [
+     "cazadora_2_0.png",
+     "cazadora_2_1.png",
+     "cazadora_2_2.png",
+     "cazadora_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Cacería Salvaje",
+    "kind": "wild_hunt_ult",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 5,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 1,
+    "strokes": 9,
+    "fills": 0,
+    "renderMs": 4.28,
+    "ctlRenderMs": 4.378,
+    "shots": [
+     "cazadora_ult_0.png",
+     "cazadora_ult_1.png",
+     "cazadora_ult_2.png",
+     "cazadora_ult_3.png"
+    ]
+   }
+  ],
+  "dariel": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 5.197,
+    "ctlRenderMs": 3.777,
+    "shots": [
+     "dariel_basic_0.png",
+     "dariel_basic_1.png",
+     "dariel_basic_2.png",
+     "dariel_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Nota discordante",
+    "kind": "expedition",
+    "sprites": [
+     "fxFrostRune"
+    ],
+    "shocks": 3,
+    "bursts": 23,
+    "teles": 0,
+    "drawImage": 36,
+    "arcs": 6,
+    "strokes": 8,
+    "fills": 44,
+    "renderMs": 5.461,
+    "ctlRenderMs": 4.479,
+    "shots": [
+     "dariel_0_0.png",
+     "dariel_0_1.png",
+     "dariel_0_2.png",
+     "dariel_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Marcha de salida",
+    "kind": "expedition",
+    "sprites": [
+     "fxHolyShieldBubble"
+    ],
+    "shocks": 2,
+    "bursts": 2,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 6,
+    "fills": 5,
+    "renderMs": 5.802,
+    "ctlRenderMs": 6.896,
+    "shots": [
+     "dariel_1_0.png",
+     "dariel_1_1.png",
+     "dariel_1_2.png",
+     "dariel_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Volver al estribillo",
+    "kind": "expedition",
+    "sprites": [
+     "fxHolyHealBurst"
+    ],
+    "shocks": 4,
+    "bursts": 21,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 4,
+    "fills": 12,
+    "renderMs": 4.715,
+    "ctlRenderMs": 4.57,
+    "shots": [
+     "dariel_2_0.png",
+     "dariel_2_1.png",
+     "dariel_2_2.png",
+     "dariel_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Todavía hay una salida",
+    "kind": "expedition",
+    "sprites": [
+     "fxFrostRune"
+    ],
+    "shocks": 3,
+    "bursts": 20,
+    "teles": 0,
+    "drawImage": 27,
+    "arcs": 7,
+    "strokes": 13,
+    "fills": 50,
+    "renderMs": 4.828,
+    "ctlRenderMs": 5.045,
+    "shots": [
+     "dariel_ult_0.png",
+     "dariel_ult_1.png",
+     "dariel_ult_2.png",
+     "dariel_ult_3.png"
+    ]
+   }
+  ],
+  "eslabon": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 4,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 5.043,
+    "ctlRenderMs": 4.491,
+    "shots": [
+     "eslabon_basic_0.png",
+     "eslabon_basic_1.png",
+     "eslabon_basic_2.png",
+     "eslabon_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Cadena de Retorno",
+    "kind": "es_hook",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 6,
+    "teles": 0,
+    "drawImage": 51,
+    "arcs": 10,
+    "strokes": 5,
+    "fills": 42,
+    "renderMs": 4.097,
+    "ctlRenderMs": 4.315,
+    "shots": [
+     "eslabon_0_0.png",
+     "eslabon_0_1.png",
+     "eslabon_0_2.png",
+     "eslabon_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Línea Infranqueable",
+    "kind": "es_line",
+    "sprites": [],
+    "shocks": 4,
+    "bursts": 36,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 11,
+    "fills": 0,
+    "renderMs": 4.727,
+    "ctlRenderMs": 4.357,
+    "shots": [
+     "eslabon_1_0.png",
+     "eslabon_1_1.png",
+     "eslabon_1_2.png",
+     "eslabon_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Custodia",
+    "kind": "es_guard",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 1,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 1,
+    "fills": 0,
+    "renderMs": 8.478,
+    "ctlRenderMs": 3.629,
+    "shots": [
+     "eslabon_2_0.png",
+     "eslabon_2_1.png",
+     "eslabon_2_2.png",
+     "eslabon_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Nadie Queda Atrás",
+    "kind": "es_ring",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 46,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 14,
+    "fills": 0,
+    "renderMs": 5.781,
+    "ctlRenderMs": 4.114,
+    "shots": [
+     "eslabon_ult_0.png",
+     "eslabon_ult_1.png",
+     "eslabon_ult_2.png",
+     "eslabon_ult_3.png"
+    ]
+   }
+  ],
+  "facu_gm": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 0,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 5.48,
+    "ctlRenderMs": 3.879,
+    "shots": [
+     "facu_gm_basic_0.png",
+     "facu_gm_basic_1.png",
+     "facu_gm_basic_2.png",
+     "facu_gm_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Corriente de Resaca",
+    "kind": "ascension",
+    "sprites": [
+     "fxWave"
+    ],
+    "shocks": 2,
+    "bursts": 42,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 2,
+    "fills": 0,
+    "renderMs": 11.283,
+    "ctlRenderMs": 7.145,
+    "shots": [
+     "facu_gm_0_0.png",
+     "facu_gm_0_1.png",
+     "facu_gm_0_2.png",
+     "facu_gm_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Presión Abisal",
+    "kind": "ascension",
+    "sprites": [
+     "fxVortex"
+    ],
+    "shocks": 2,
+    "bursts": 44,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 5,
+    "strokes": 11,
+    "fills": 0,
+    "renderMs": 5.352,
+    "ctlRenderMs": 5.16,
+    "shots": [
+     "facu_gm_1_0.png",
+     "facu_gm_1_1.png",
+     "facu_gm_1_2.png",
+     "facu_gm_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Cabalgar la Ola",
+    "kind": "ascension",
+    "sprites": [
+     "fxSplash"
+    ],
+    "shocks": 2,
+    "bursts": 55,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 6,
+    "strokes": 17,
+    "fills": 29,
+    "renderMs": 6.806,
+    "ctlRenderMs": 5.428,
+    "shots": [
+     "facu_gm_2_0.png",
+     "facu_gm_2_1.png",
+     "facu_gm_2_2.png",
+     "facu_gm_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "El Océano Reclama la Arena",
+    "kind": "ascension",
+    "sprites": [
+     "fxWave"
+    ],
+    "shocks": 3,
+    "bursts": 22,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 6,
+    "strokes": 15,
+    "fills": 61,
+    "renderMs": 4.827,
+    "ctlRenderMs": 4.477,
+    "shots": [
+     "facu_gm_ult_0.png",
+     "facu_gm_ult_1.png",
+     "facu_gm_ult_2.png",
+     "facu_gm_ult_3.png"
+    ]
+   }
+  ],
+  "farolero": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 0,
+    "bursts": 2,
+    "teles": 0,
+    "drawImage": 132,
+    "arcs": 20,
+    "strokes": 4,
+    "fills": 89,
+    "renderMs": 3.875,
+    "ctlRenderMs": 9.076,
+    "shots": [
+     "farolero_basic_0.png",
+     "farolero_basic_1.png",
+     "farolero_basic_2.png",
+     "farolero_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Farol de Guardia",
+    "kind": "fa_lantern",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 1,
+    "teles": 0,
+    "drawImage": 56,
+    "arcs": 12,
+    "strokes": 6,
+    "fills": 67,
+    "renderMs": 4.649,
+    "ctlRenderMs": 6.612,
+    "shots": [
+     "farolero_0_0.png",
+     "farolero_0_1.png",
+     "farolero_0_2.png",
+     "farolero_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Destello",
+    "kind": "fa_flash",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 21,
+    "teles": 0,
+    "drawImage": 30,
+    "arcs": 16,
+    "strokes": 16,
+    "fills": 25,
+    "renderMs": 6.571,
+    "ctlRenderMs": 9.6,
+    "shots": [
+     "farolero_1_0.png",
+     "farolero_1_1.png",
+     "farolero_1_2.png",
+     "farolero_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Paso Seguro",
+    "kind": "fa_path",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 1,
+    "teles": 0,
+    "drawImage": 86,
+    "arcs": 14,
+    "strokes": 8,
+    "fills": 59,
+    "renderMs": 5.073,
+    "ctlRenderMs": 9.338,
+    "shots": [
+     "farolero_2_0.png",
+     "farolero_2_1.png",
+     "farolero_2_2.png",
+     "farolero_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Vigilia",
+    "kind": "fa_vigil",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 1,
+    "teles": 0,
+    "drawImage": 9,
+    "arcs": 7,
+    "strokes": 13,
+    "fills": 14,
+    "renderMs": 3.839,
+    "ctlRenderMs": 3.752,
+    "shots": [
+     "farolero_ult_0.png",
+     "farolero_ult_1.png",
+     "farolero_ult_2.png",
+     "farolero_ult_3.png"
+    ]
+   }
+  ],
+  "guerrero": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 0,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 5.411,
+    "ctlRenderMs": 4.39,
+    "shots": [
+     "guerrero_basic_0.png",
+     "guerrero_basic_1.png",
+     "guerrero_basic_2.png",
+     "guerrero_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Corte Sangrante",
+    "kind": "bleed_hit",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 4,
+    "teles": 0,
+    "drawImage": 88,
+    "arcs": 15,
+    "strokes": 6,
+    "fills": 73,
+    "renderMs": 5.754,
+    "ctlRenderMs": 6.134,
+    "shots": [
+     "guerrero_0_0.png",
+     "guerrero_0_1.png",
+     "guerrero_0_2.png",
+     "guerrero_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Triple Golpe",
+    "kind": "triple_hit",
+    "sprites": [],
+    "shocks": 3,
+    "bursts": 9,
+    "teles": 0,
+    "drawImage": 56,
+    "arcs": 10,
+    "strokes": 6,
+    "fills": 45,
+    "renderMs": 4.158,
+    "ctlRenderMs": 5.106,
+    "shots": [
+     "guerrero_1_0.png",
+     "guerrero_1_1.png",
+     "guerrero_1_2.png",
+     "guerrero_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Trampa de Área",
+    "kind": "area_trap",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 10,
+    "teles": 0,
+    "drawImage": 45,
+    "arcs": 7,
+    "strokes": 7,
+    "fills": 42,
+    "renderMs": 4.885,
+    "ctlRenderMs": 5.484,
+    "shots": [
+     "guerrero_2_0.png",
+     "guerrero_2_1.png",
+     "guerrero_2_2.png",
+     "guerrero_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Pestilencia Sombría",
+    "kind": "shadow_stealth",
+    "sprites": [],
+    "shocks": 3,
+    "bursts": 2,
+    "teles": 0,
+    "drawImage": 107,
+    "arcs": 16,
+    "strokes": 12,
+    "fills": 71,
+    "renderMs": 4.04,
+    "ctlRenderMs": 5.751,
+    "shots": [
+     "guerrero_ult_0.png",
+     "guerrero_ult_1.png",
+     "guerrero_ult_2.png",
+     "guerrero_ult_3.png"
+    ]
+   }
+  ],
+  "ilkan": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 4,
+    "teles": 0,
+    "drawImage": 64,
+    "arcs": 9,
+    "strokes": 2,
+    "fills": 44,
+    "renderMs": 4.303,
+    "ctlRenderMs": 4.914,
+    "shots": [
+     "ilkan_basic_0.png",
+     "ilkan_basic_1.png",
+     "ilkan_basic_2.png",
+     "ilkan_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Lanza-Pendón",
+    "kind": "ilkan_lance",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 47,
+    "teles": 0,
+    "drawImage": 88,
+    "arcs": 21,
+    "strokes": 6,
+    "fills": 85,
+    "renderMs": 5.715,
+    "ctlRenderMs": 8.354,
+    "shots": [
+     "ilkan_0_0.png",
+     "ilkan_0_1.png",
+     "ilkan_0_2.png",
+     "ilkan_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Piel de Duna",
+    "kind": "ilkan_temple",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 22,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 1,
+    "fills": 7,
+    "renderMs": 7.091,
+    "ctlRenderMs": 5.729,
+    "shots": [
+     "ilkan_1_0.png",
+     "ilkan_1_1.png",
+     "ilkan_1_2.png",
+     "ilkan_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Grito de Caravana",
+    "kind": "ilkan_caravan",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 20,
+    "teles": 0,
+    "drawImage": 10,
+    "arcs": 2,
+    "strokes": 3,
+    "fills": 13,
+    "renderMs": 4.45,
+    "ctlRenderMs": 4.681,
+    "shots": [
+     "ilkan_2_0.png",
+     "ilkan_2_1.png",
+     "ilkan_2_2.png",
+     "ilkan_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Coloso de Arena",
+    "kind": "ilkan_colossus_ult",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 2,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 2,
+    "strokes": 7,
+    "fills": 13,
+    "renderMs": 5.622,
+    "ctlRenderMs": 5.934,
+    "shots": [
+     "ilkan_ult_0.png",
+     "ilkan_ult_1.png",
+     "ilkan_ult_2.png",
+     "ilkan_ult_3.png"
+    ]
+   }
+  ],
+  "iria": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 51,
+    "arcs": 6,
+    "strokes": 2,
+    "fills": 37,
+    "renderMs": 4.471,
+    "ctlRenderMs": 4.916,
+    "shots": [
+     "iria_basic_0.png",
+     "iria_basic_1.png",
+     "iria_basic_2.png",
+     "iria_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Ancla",
+    "kind": "ir_anchor",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 1,
+    "teles": 0,
+    "drawImage": 87,
+    "arcs": 15,
+    "strokes": 5,
+    "fills": 57,
+    "renderMs": 8.013,
+    "ctlRenderMs": 9.959,
+    "shots": [
+     "iria_0_0.png",
+     "iria_0_1.png",
+     "iria_0_2.png",
+     "iria_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Tensión",
+    "kind": "ir_tension",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 9,
+    "teles": 0,
+    "drawImage": 92,
+    "arcs": 15,
+    "strokes": 6,
+    "fills": 79,
+    "renderMs": 5.017,
+    "ctlRenderMs": 8.95,
+    "shots": [
+     "iria_1_0.png",
+     "iria_1_1.png",
+     "iria_1_2.png",
+     "iria_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Corte de Hilo",
+    "kind": "ir_cut",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 21,
+    "teles": 0,
+    "drawImage": 54,
+    "arcs": 8,
+    "strokes": 3,
+    "fills": 49,
+    "renderMs": 5.142,
+    "ctlRenderMs": 5.802,
+    "shots": [
+     "iria_2_0.png",
+     "iria_2_1.png",
+     "iria_2_2.png",
+     "iria_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Sello de los Tres Caminos",
+    "kind": "ir_triangle",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 1,
+    "teles": 0,
+    "drawImage": 22,
+    "arcs": 5,
+    "strokes": 9,
+    "fills": 22,
+    "renderMs": 3.365,
+    "ctlRenderMs": 3.688,
+    "shots": [
+     "iria_ult_0.png",
+     "iria_ult_1.png",
+     "iria_ult_2.png",
+     "iria_ult_3.png"
+    ]
+   }
+  ],
+  "khepri": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 0,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 3.937,
+    "ctlRenderMs": 3.835,
+    "shots": [
+     "khepri_basic_0.png",
+     "khepri_basic_1.png",
+     "khepri_basic_2.png",
+     "khepri_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Enjambre",
+    "kind": "ascension",
+    "sprites": [
+     "fxSpark"
+    ],
+    "shocks": 4,
+    "bursts": 72,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 2,
+    "fills": 0,
+    "renderMs": 5.158,
+    "ctlRenderMs": 3.615,
+    "shots": [
+     "khepri_0_0.png",
+     "khepri_0_1.png",
+     "khepri_0_2.png",
+     "khepri_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Caparazón Vivo",
+    "kind": "ascension",
+    "sprites": [
+     "fxHolyShieldBubble"
+    ],
+    "shocks": 2,
+    "bursts": 2,
+    "teles": 0,
+    "drawImage": 68,
+    "arcs": 0,
+    "strokes": 5,
+    "fills": 26,
+    "renderMs": 4.474,
+    "ctlRenderMs": 5.802,
+    "shots": [
+     "khepri_1_0.png",
+     "khepri_1_1.png",
+     "khepri_1_2.png",
+     "khepri_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Vuelo de Élitros",
+    "kind": "ascension",
+    "sprites": [
+     "fxWhirl"
+    ],
+    "shocks": 2,
+    "bursts": 22,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 2,
+    "fills": 20,
+    "renderMs": 3.978,
+    "ctlRenderMs": 3.882,
+    "shots": [
+     "khepri_2_0.png",
+     "khepri_2_1.png",
+     "khepri_2_2.png",
+     "khepri_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Eclipse de Escarabajos",
+    "kind": "ascension",
+    "sprites": [
+     "fxSoulReapBurst"
+    ],
+    "shocks": 4,
+    "bursts": 83,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 9,
+    "fills": 38,
+    "renderMs": 4.554,
+    "ctlRenderMs": 3.592,
+    "shots": [
+     "khepri_ult_0.png",
+     "khepri_ult_1.png",
+     "khepri_ult_2.png",
+     "khepri_ult_3.png"
+    ]
+   }
+  ],
+  "libertador": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 5,
+    "teles": 0,
+    "drawImage": 10,
+    "arcs": 3,
+    "strokes": 1,
+    "fills": 12,
+    "renderMs": 5.013,
+    "ctlRenderMs": 4.947,
+    "shots": [
+     "libertador_basic_0.png",
+     "libertador_basic_1.png",
+     "libertador_basic_2.png",
+     "libertador_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Bayoneta",
+    "kind": "sm_bayonet",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 5,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 6.129,
+    "ctlRenderMs": 3.925,
+    "shots": [
+     "libertador_0_0.png",
+     "libertador_0_1.png",
+     "libertador_0_2.png",
+     "libertador_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "¡Granaderos, a la carga!",
+    "kind": "sm_granaderos",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 1,
+    "teles": 0,
+    "drawImage": 60,
+    "arcs": 10,
+    "strokes": 4,
+    "fills": 34,
+    "renderMs": 6.425,
+    "ctlRenderMs": 4.817,
+    "shots": [
+     "libertador_1_0.png",
+     "libertador_1_1.png",
+     "libertador_1_2.png",
+     "libertador_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Carga de San Lorenzo",
+    "kind": "sm_san_lorenzo",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 55,
+    "teles": 1,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 2,
+    "fills": 0,
+    "renderMs": 6.502,
+    "ctlRenderMs": 5.9,
+    "shots": [
+     "libertador_2_0.png",
+     "libertador_2_1.png",
+     "libertador_2_2.png",
+     "libertador_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Cruce de los Andes",
+    "kind": "sm_andes_ult",
+    "sprites": [],
+    "shocks": 3,
+    "bursts": 64,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 23,
+    "fills": 85,
+    "renderMs": 5.538,
+    "ctlRenderMs": 4.217,
+    "shots": [
+     "libertador_ult_0.png",
+     "libertador_ult_1.png",
+     "libertador_ult_2.png",
+     "libertador_ult_3.png"
+    ]
+   }
+  ],
+  "mago": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 4.592,
+    "ctlRenderMs": 3.646,
+    "shots": [
+     "mago_basic_0.png",
+     "mago_basic_1.png",
+     "mago_basic_2.png",
+     "mago_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Muro de Fuego",
+    "kind": "fire_wall",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 7,
+    "teles": 0,
+    "drawImage": 40,
+    "arcs": 8,
+    "strokes": 7,
+    "fills": 23,
+    "renderMs": 4.896,
+    "ctlRenderMs": 6.131,
+    "shots": [
+     "mago_0_0.png",
+     "mago_0_1.png",
+     "mago_0_2.png",
+     "mago_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Nova de Escarcha",
+    "kind": "frost_nova",
+    "sprites": [
+     "fxIceCrystal"
+    ],
+    "shocks": 1,
+    "bursts": 13,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 8,
+    "fills": 0,
+    "renderMs": 6.041,
+    "ctlRenderMs": 3.864,
+    "shots": [
+     "mago_1_0.png",
+     "mago_1_1.png",
+     "mago_1_2.png",
+     "mago_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Cadena de Relámpago",
+    "kind": "chain",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 8,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 8.113,
+    "ctlRenderMs": 4.32,
+    "shots": [
+     "mago_2_0.png",
+     "mago_2_1.png",
+     "mago_2_2.png",
+     "mago_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Cataclismo Elemental",
+    "kind": "elemental_storm",
+    "sprites": [
+     "fxIceCrystal",
+     "fxFrostRune"
+    ],
+    "shocks": 4,
+    "bursts": 47,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 81,
+    "fills": 113,
+    "renderMs": 8.477,
+    "ctlRenderMs": 4.792,
+    "shots": [
+     "mago_ult_0.png",
+     "mago_ult_1.png",
+     "mago_ult_2.png",
+     "mago_ult_3.png"
+    ]
+   }
+  ],
+  "maura": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 0,
+    "bursts": 2,
+    "teles": 0,
+    "drawImage": 1,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 6,
+    "renderMs": 4.591,
+    "ctlRenderMs": 4.369,
+    "shots": [
+     "maura_basic_0.png",
+     "maura_basic_1.png",
+     "maura_basic_2.png",
+     "maura_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Raíces de paso",
+    "kind": "expedition",
+    "sprites": [
+     "fxSpike"
+    ],
+    "shocks": 2,
+    "bursts": 22,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 10,
+    "strokes": 16,
+    "fills": 16,
+    "renderMs": 4.093,
+    "ctlRenderMs": 3.595,
+    "shots": [
+     "maura_0_0.png",
+     "maura_0_1.png",
+     "maura_0_2.png",
+     "maura_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Corteza prestada",
+    "kind": "expedition",
+    "sprites": [
+     "fxHolyShieldBubble"
+    ],
+    "shocks": 2,
+    "bursts": 2,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 5,
+    "fills": 0,
+    "renderMs": 5.537,
+    "ctlRenderMs": 4.154,
+    "shots": [
+     "maura_1_0.png",
+     "maura_1_1.png",
+     "maura_1_2.png",
+     "maura_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Poda necesaria",
+    "kind": "expedition",
+    "sprites": [
+     "fxScytheSlash"
+    ],
+    "shocks": 2,
+    "bursts": 14,
+    "teles": 0,
+    "drawImage": 123,
+    "arcs": 22,
+    "strokes": 8,
+    "fills": 97,
+    "renderMs": 5.978,
+    "ctlRenderMs": 9.192,
+    "shots": [
+     "maura_2_0.png",
+     "maura_2_1.png",
+     "maura_2_2.png",
+     "maura_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "El bosque camina",
+    "kind": "expedition",
+    "sprites": [
+     "fxSpike"
+    ],
+    "shocks": 4,
+    "bursts": 21,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 18,
+    "fills": 0,
+    "renderMs": 14.433,
+    "ctlRenderMs": 4.668,
+    "shots": [
+     "maura_ult_0.png",
+     "maura_ult_1.png",
+     "maura_ult_2.png",
+     "maura_ult_3.png"
+    ]
+   }
+  ],
+  "morveth": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 2,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 6.109,
+    "ctlRenderMs": 4.824,
+    "shots": [
+     "morveth_basic_0.png",
+     "morveth_basic_1.png",
+     "morveth_basic_2.png",
+     "morveth_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Huerto maldito",
+    "kind": "expedition",
+    "sprites": [
+     "fxSoulReapBurst"
+    ],
+    "shocks": 4,
+    "bursts": 15,
+    "teles": 0,
+    "drawImage": 75,
+    "arcs": 12,
+    "strokes": 8,
+    "fills": 74,
+    "renderMs": 4.518,
+    "ctlRenderMs": 4.624,
+    "shots": [
+     "morveth_0_0.png",
+     "morveth_0_1.png",
+     "morveth_0_2.png",
+     "morveth_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Exhalación de peste",
+    "kind": "expedition",
+    "sprites": [
+     "fxSoulReapBurst"
+    ],
+    "shocks": 3,
+    "bursts": 33,
+    "teles": 0,
+    "drawImage": 6,
+    "arcs": 1,
+    "strokes": 7,
+    "fills": 35,
+    "renderMs": 3.363,
+    "ctlRenderMs": 3.265,
+    "shots": [
+     "morveth_1_0.png",
+     "morveth_1_1.png",
+     "morveth_1_2.png",
+     "morveth_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Simbiosis",
+    "kind": "expedition",
+    "sprites": [
+     "fxHolyShieldBubble"
+    ],
+    "shocks": 2,
+    "bursts": 2,
+    "teles": 0,
+    "drawImage": 1,
+    "arcs": 2,
+    "strokes": 3,
+    "fills": 14,
+    "renderMs": 3.286,
+    "ctlRenderMs": 3.486,
+    "shots": [
+     "morveth_2_0.png",
+     "morveth_2_1.png",
+     "morveth_2_2.png",
+     "morveth_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Jardín de la peste",
+    "kind": "expedition",
+    "sprites": [
+     "fxSoulReapBurst"
+    ],
+    "shocks": 5,
+    "bursts": 15,
+    "teles": 0,
+    "drawImage": 15,
+    "arcs": 8,
+    "strokes": 15,
+    "fills": 55,
+    "renderMs": 3.757,
+    "ctlRenderMs": 3.64,
+    "shots": [
+     "morveth_ult_0.png",
+     "morveth_ult_1.png",
+     "morveth_ult_2.png",
+     "morveth_ult_3.png"
+    ]
+   }
+  ],
+  "morwen": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 2,
+    "arcs": 1,
+    "strokes": 1,
+    "fills": 6,
+    "renderMs": 3.231,
+    "ctlRenderMs": 3.691,
+    "shots": [
+     "morwen_basic_0.png",
+     "morwen_basic_1.png",
+     "morwen_basic_2.png",
+     "morwen_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Resina Amarga",
+    "kind": "mo_resin",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 21,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 7,
+    "strokes": 12,
+    "fills": 12,
+    "renderMs": 3.938,
+    "ctlRenderMs": 3.539,
+    "shots": [
+     "morwen_0_0.png",
+     "morwen_0_1.png",
+     "morwen_0_2.png",
+     "morwen_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Sal de Ruptura",
+    "kind": "mo_salt",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 21,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 6,
+    "fills": 21,
+    "renderMs": 3.682,
+    "ctlRenderMs": 3.459,
+    "shots": [
+     "morwen_1_0.png",
+     "morwen_1_1.png",
+     "morwen_1_2.png",
+     "morwen_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Destilación",
+    "kind": "mo_distill",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 1,
+    "teles": 0,
+    "drawImage": 1,
+    "arcs": 2,
+    "strokes": 3,
+    "fills": 6,
+    "renderMs": 3.536,
+    "ctlRenderMs": 3.534,
+    "shots": [
+     "morwen_2_0.png",
+     "morwen_2_1.png",
+     "morwen_2_2.png",
+     "morwen_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Alambique del Silencio",
+    "kind": "mo_alembic",
+    "sprites": [],
+    "shocks": 2,
+    "bursts": 61,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 7,
+    "fills": 27,
+    "renderMs": 3.965,
+    "ctlRenderMs": 3.512,
+    "shots": [
+     "morwen_ult_0.png",
+     "morwen_ult_1.png",
+     "morwen_ult_2.png",
+     "morwen_ult_3.png"
+    ]
+   }
+  ],
+  "musashi": [
+   {
+    "slot": "basic",
+    "name": "Basico",
+    "kind": "-",
+    "sprites": [],
+    "shocks": 0,
+    "bursts": 3,
+    "teles": 0,
+    "drawImage": 4,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 2,
+    "renderMs": 3.321,
+    "ctlRenderMs": 3.559,
+    "shots": [
+     "musashi_basic_0.png",
+     "musashi_basic_1.png",
+     "musashi_basic_2.png",
+     "musashi_basic_3.png"
+    ]
+   },
+   {
+    "slot": 0,
+    "name": "Corte del Rōnin",
+    "kind": "ronin_slash",
+    "sprites": [
+     "musashiRoninImpact"
+    ],
+    "shocks": 1,
+    "bursts": 9,
+    "teles": 0,
+    "drawImage": 13,
+    "arcs": 2,
+    "strokes": 2,
+    "fills": 14,
+    "renderMs": 3.597,
+    "ctlRenderMs": 3.88,
+    "shots": [
+     "musashi_0_0.png",
+     "musashi_0_1.png",
+     "musashi_0_2.png",
+     "musashi_0_3.png"
+    ]
+   },
+   {
+    "slot": 1,
+    "name": "Paso Fantasma",
+    "kind": "ghost_step",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 2,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 6.406,
+    "ctlRenderMs": 4.947,
+    "shots": [
+     "musashi_1_0.png",
+     "musashi_1_1.png",
+     "musashi_1_2.png",
+     "musashi_1_3.png"
+    ]
+   },
+   {
+    "slot": 2,
+    "name": "Mil Cortes",
+    "kind": "thousand_cuts",
+    "sprites": [],
+    "shocks": 1,
+    "bursts": 29,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 0,
+    "fills": 0,
+    "renderMs": 9.355,
+    "ctlRenderMs": 5.655,
+    "shots": [
+     "musashi_2_0.png",
+     "musashi_2_1.png",
+     "musashi_2_2.png",
+     "musashi_2_3.png"
+    ]
+   },
+   {
+    "slot": "ult",
+    "name": "Último Duelo",
+    "kind": "last_duel_ult",
+    "sprites": [
+     "musashiPortal"
+    ],
+    "shocks": 2,
+    "bursts": 1,
+    "teles": 0,
+    "drawImage": 0,
+    "arcs": 0,
+    "strokes": 19,
+    "fills": 0,
+    "renderMs": 1.376,
+    "ctlRenderMs": 5.017,
+    "shots": [
+     "musashi_ult_0.png",
+     "musashi_ult_1.png",
+     "musashi_ult_2.png",
+     "musashi_ult_3.png"
+    ]
+   }
+  ]
+ }
+}

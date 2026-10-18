@@ -1,7 +1,7 @@
 "use strict";
 /* ============================================================
    js/arenas/lanes/lanes-core.js
-   GUERRA DE CRISTALES en el MOTOR REAL — lógica de la partida (estilo Wild Rift en 2D). Mapa de tres carriles (lanes-data.js).
+   GUERRA DE CRISTALES en el MOTOR REAL — lógica de la partida (MOBA de tres carriles en 2D). Mapa de tres carriles (lanes-data.js).
    Cada equipo tiene 9 torres (3 por carril) y un cristal; se derriban en orden dentro de cada carril y el cristal se expone
    cuando cae la torre inhibidora de cualquiera.
    - PvP: cada héroe tiene un AVATAR dentro de `enemies` (entidad invisible que sigue al héroe). Como todas las habilidades de la
@@ -406,6 +406,7 @@ ARENA_DEFS.convergencia = {
   enemyTarget:lanesEnemyTarget,
   enemyKilled:lanesEnemyKilled,
   botTarget:lanesBotTarget,
+  botState:lanesBotState,
   ownSpawns:()=>true,
   holdLevel:()=>true,
   afterEnemies:()=>{ for(const e of enemies) if(e.alive) lanesClamp(e); }

@@ -120,7 +120,7 @@ function triggerBasic(caster){
     let dx=caster.fx, dy=caster.fy;
     if(target){ dx=target.x-caster.x; dy=target.y-caster.y; const l=Math.hypot(dx,dy)||1; dx/=l; dy/=l; caster.fx=dx; caster.fy=dy; }
     caster.attackAnim = Math.max(70, 190/totalAspd);
-    const dmg = caster.baseDmg * runStats.dmgMult * (caster.buffDmgMult||1) * arenaMods().heroDmgMult * (1 + passiveSum(caster.classKey,"dmg_mult") + mythicBonus) * mods.dmgMult;
+    const dmg = caster.baseDmg * runStats.dmgMult * (caster.buffDmgMult||1) * arenaMods().heroDmgMult * (1 + passiveSum(caster.classKey,"dmg_mult") + mythicBonus) * mods.dmgMult * SYLVA_CFG.basicDmgMult;
     const lunaRoja = heroUniqueKey(caster)==="uniq_lunaroja"; // Único: flechas de sangre que atraviesan a la Presa
     projectiles.push({x:caster.x, y:caster.y-14, vx:dx*480, vy:dy*480, dmg, life:750, radius:6, color: lunaRoja ? "#ff4a5a" : "#c8f0a8",
       fromBasic:true, pierce: lunaRoja && !!target && target===caster.huntTarget, hitSet: new Set(), src:caster, critChanceOverride: runStats.critChance+mods.critChanceAdd});

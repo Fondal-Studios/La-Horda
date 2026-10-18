@@ -1,0 +1,64 @@
+/* css/hud-mobile.css — HUD de partida para celular apaisado (844x390, 667x375): menos paneles, menos tapado.
+   Solo aplica con max-height:500px (misma condición que hudCompact(), js/ui/hud-text.js); el escritorio no cambia.
+   Usa los tokens de css/ui-kit.css (--hud-panel-*, --mode-accent*, --ui-*): cambian solos con body[data-mode]
+   (Campaña brasa, Coliseo dorado, Cristales celeste). Se carga después de combat-readability.css y hud-horda.css. */
+
+/* la guía del jefe en pictogramas existe siempre en el DOM; en escritorio se ve el texto completo de antes */
+#boss-intro .bi-ico, #boss-intro .bi-short{ display:none; }
+
+@media (max-height:500px){
+  /* ---------- columna izquierda: barras, arena, objetivo y aliados en ~45% del alto ---------- */
+  #hud #player-status{ padding:4px 8px 3px; }
+  #hud .bar-row{ margin-bottom:3px; }
+  #hud .bar-track{ height:9px; }
+  #hud #plevel{ font-size:.9rem; line-height:1; }
+  #hud .top-pill{ display:flex; flex-direction:column; gap:0; padding:3px 7px; font-size:.88rem; line-height:1.05;
+    border-color:color-mix(in srgb, var(--mode-accent) 45%, var(--hud-line)); pointer-events:auto; }
+  #hud .top-pill > span[title]{ display:none; }          /* "Total 0:00": está en la pausa */
+  #hud #arena-rule-chip{ display:none; }                  /* la regla de la arena se anuncia con el cartel de entrada */
+  #hud #hud-arena-line{ font-size:.9rem; color:var(--mode-accent-2); }
+  #hud #wave-timer-wrap{ height:3px; }
+
+  /* objetivo: solo al cambiar o al tocar la pastilla; se dibuja SOBRE la pastilla (no empuja a los aliados) */
+  #hud #goal-chip.peekable{ position:absolute; left:0; right:0; top:0; z-index:3; width:auto; box-sizing:border-box;
+    padding:4px 7px; font-size:.86rem; line-height:1.05; min-height:36px; display:flex; align-items:center;
+    color:var(--ui-gold); border-color:var(--mode-accent-2); background:rgba(12,20,33,.97); box-shadow:var(--ui-shadow-sm); pointer-events:auto; }
+  #hud #goal-chip.peekable.hidden{ display:none; }
+  body:has(#goal-chip.peekable:not(.hidden)) #hud .top-pill{ visibility:hidden; }  /* el objetivo reemplaza a la pastilla mientras se ve */
+
+  /* aliados: una sola línea de mini-iconos (ícono de clase + barra de vida); el nombre va en el title */
+  #hud #party, #hud #party.compact{ flex-direction:row; flex-wrap:wrap; align-items:flex-start; gap:3px; width:164px; overflow:visible; max-height:none !important; }
+  #hud #party .ally-row, #hud #party.compact .ally-row{ flex-direction:column; align-items:stretch; gap:2px; width:34px; min-height:0; padding:3px; border-radius:6px; }
+  #hud #party .ally-badge, #hud #party.compact .ally-badge{ width:18px; height:18px; margin:0 auto; font-size:.7rem; }
+  #hud #party .ally-meta{ width:100%; }
+  #hud #party .ally-name{ display:none; }
+  #hud #party .ally-hp-track, #hud #party.compact .ally-hp-track{ height:4px; }
+  #hud #party .status-badge{ display:none; }
+  #hud #party .ally-row.down{ width:auto; min-width:34px; flex-direction:row; align-items:center; padding:3px 4px; }
+  #hud #party .ally-row.down .ally-meta{ width:22px; flex:none; }
+
+  /* ---------- Hechicero: 1-2 renglones, se desvanece solo ---------- */
+  #tut-panel{ width:max(200px, min(360px, calc(100vw - 440px))); }
+  #tut-panel .tut-text{ display:-webkit-box; -webkit-line-clamp:2; line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  #tut-panel .tut-goal{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  #tut-panel.show.ghost{ opacity:0; transition:opacity .6s; }
+
+  /* ---------- "Cómo sobrevivir": pictograma de 3 iconos, sin tapar el centro ---------- */
+  #boss-intro{ width:max-content; max-width:max(250px, calc(100vw - 440px)); padding:4px 8px 5px; border-color:var(--mode-accent); background:rgba(12,20,33,.86); border-radius:8px; }
+  #boss-intro .bi-name{ font-size:.42rem; letter-spacing:1px; margin-bottom:3px; color:var(--mode-accent-2); }
+  #boss-intro .bi-tips{ display:flex; gap:6px; padding:0; list-style:none; }
+  #boss-intro .bi-tips li{ flex:1 1 0; min-width:62px; max-width:96px; text-align:center; font-size:.86rem; line-height:1; }
+  #boss-intro .bi-full{ display:none; }
+  #boss-intro .bi-ico{ display:block; font-size:1.25rem; line-height:1.1; }
+  #boss-intro .bi-short{ display:-webkit-box; -webkit-line-clamp:2; line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+
+  /* ---------- avisos (logros, red, botín): arriba a la derecha junto a Pausa/Sonido, lejos de la Definitiva ---------- */
+  #toast-stack.play{ top:calc(58px + env(safe-area-inset-top,0px)); right:calc(10px + env(safe-area-inset-right,0px)); width:min(190px, 26vw); max-height:60px; }
+  #toast-stack.play .qs-toast{ padding:3px 6px; gap:6px; }
+  #toast-stack.play .qs-toast-ico{ width:22px; height:22px; }
+  #toast-stack.play .qs-toast-head, #toast-stack.play .qs-toast-sub{ display:none; }
+  #toast-stack.play .qs-toast-name{ font-size:.95rem; }
+  /* menús (Códice incluido): arriba al centro, angostos; ni las flechas de página ni "Saltar" quedan debajo */
+  #toast-stack:not(.play):not(.end){ right:auto; left:50%; transform:translateX(-50%); width:min(260px, 40vw); top:calc(6px + env(safe-area-inset-top,0px)); }
+}
+body.lefty #toast-stack.play{ right:auto; left:calc(10px + env(safe-area-inset-left,0px)); }

@@ -29,6 +29,8 @@ function abilityIconHTML(def){
   const img = def.icon.img && typeof SKILL_ICON_IMG!=="undefined" && SKILL_ICON_IMG[def.icon.img];
   const src = typeof img==="string" ? img : (img && img.src);
   if(src) return `<img class="ab-ico" src="${_abEsc(src)}" alt="">`;
+  const pxg = typeof skillPixelGlyphUri==="function" && (def.slot===0||def.slot===1||def.slot===2||def.slot==="ult") ? skillPixelGlyphUri(def.championId, def.slot, def.slot==="ult" ? "#ffe9a8" : "#8fe0ff") : null;
+  if(pxg) return `<img class="ab-ico" src="${_abEsc(pxg)}" alt="">`;
   return `<span class="ab-ico glyph">${_abEsc(def.icon.glyph || "◆")}</span>`;
 }
 const ABILITY_SLOT_LABEL = {basic:"Ataque básico", passive:"Pasiva", 0:"Habilidad 1", 1:"Habilidad 2", 2:"Habilidad 3", ult:"Definitiva"};

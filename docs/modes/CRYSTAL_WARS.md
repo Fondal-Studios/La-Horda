@@ -194,4 +194,5 @@ Reemplaza al mapa de un solo carril. Código en `js/arenas/lanes/` (`lanes-data/
 - Pruebas: `tools/lanes/sim.js` (10 héroes, niveles, cartas, selva), `kits.js` (29 campeones en el medio del mapa frente a un rival), `flow.js`
   (UI 844×390 y 667×375, recall, tienda, carta), `tools/net-test/lanes_coop.js` (2 clientes reales, 24 avatares/estructuras sincronizados).
 - **Pendiente para acercarse más a Wild Rift:** ítems por héroe (hoy el oro de equipo compra reparaciones/refuerzos), arbustos y visión, ping,
-  hechizos de invocador, más variedad de súbditos, IA de bots que se agrupen para objetivos, y 3 contra 3/5 contra 5 en línea.
+  hechizos de invocador, más variedad de súbditos, y 3 contra 3/5 contra 5 en línea.
+- **Bots orientados a victoria** (estados retirada/defensa/objetivo/empuje, amenazas, camino táctico, objetivos por prioridad; Coliseo: rematar, fuego concentrado, sobrevivir): ver `docs/competitive/BOTS_VICTORIA.md` y `tools/bots/victory-sim.js` (A/B contra el cerebro anterior).
