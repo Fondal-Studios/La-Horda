@@ -1,7 +1,7 @@
 # Velmira — La Reina de las Máscaras (`velmira`)
 
 > **Especificación técnica** (atlas, paleta, alfa, nombres de archivo, export): `docs/art-brief/00_ESPECIFICACION_TECNICA.md`. Este brief NO la duplica; si ella fija otra escala de píxel, convertir con `px = u ÷ escala`.
-> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones). Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
+> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones), salvo que midan más de 160 u de lado: entonces también 2,0 u/px. Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
 > **Tiempos:** casi todas las habilidades son instantáneas (el daño se aplica al lanzar). La pose de lanzamiento del héroe dura 420 ms (650 ms en definitiva); la anticipación del efecto debe caber ahí y en el premarcado del apuntado, sin retrasar el golpe, salvo donde se indica un retardo real.
 
 ## A. Identidad
@@ -63,7 +63,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Loop:** La máscara vuela en bucle de 6 cuadros (giro); impacto y disipación no repiten.
 - **Tamaño de los assets:**
   - Máscara en vuelo: 50×50 u → **50×50 px** nativos (1 u/px)
-  - Estela (línea completa): 320×40 u → **320×40 px** nativos (1 u/px)
+  - Estela (línea completa): 320×40 u → **160×20 px** nativos (2 u/px)
   - Icono de efecto: 14×14 u → **14×14 px** nativos (1 u/px)
 - **Partículas / capas secundarias:** 4 variantes de color y de icono. Confeti con tope bajo.
 - **Ícono 16×16:** hoy `mask+arrow` (`js/ui/skill-pixel-glyphs.js:199`); propuesta: máscara con flecha.
@@ -125,7 +125,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Loop:** Escenario en bucle de 8 cuadros durante 5,6 s; las 4 máscaras son capas de 5 cuadros por acto.
 - **Tamaño de los assets:**
   - Escenario y telón (bucle): 520×520 u → **260×260 px** nativos (2 u/px)
-  - Máscara gigante (×4, una por acto): 200×200 u → **200×200 px** nativos (1 u/px)
+  - Máscara gigante (×4, una por acto): 200×200 u → **100×100 px** nativos (2 u/px)
   - Onda de acto: 520×520 u → **260×260 px** nativos (2 u/px)
 - **Partículas / capas secundarias:** 4 variantes completas de color. Focos y confeti con tope bajo.
 - **Ícono 16×16:** hoy `curtain+ring` (`js/ui/skill-pixel-glyphs.js:199`); propuesta: telón de teatro con anillo.

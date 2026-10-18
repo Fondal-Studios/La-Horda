@@ -1,7 +1,7 @@
 # Saelis — La Heraldo del Plumaje (`saelis`)
 
 > **Especificación técnica** (atlas, paleta, alfa, nombres de archivo, export): `docs/art-brief/00_ESPECIFICACION_TECNICA.md`. Este brief NO la duplica; si ella fija otra escala de píxel, convertir con `px = u ÷ escala`.
-> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones). Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
+> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones), salvo que midan más de 160 u de lado: entonces también 2,0 u/px. Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
 > **Tiempos:** casi todas las habilidades son instantáneas (el daño se aplica al lanzar). La pose de lanzamiento del héroe dura 420 ms (650 ms en definitiva); la anticipación del efecto debe caber ahí y en el premarcado del apuntado, sin retrasar el golpe, salvo donde se indica un retardo real.
 
 ## A. Identidad
@@ -61,7 +61,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Loop:** La pluma clavada tiene su propio bucle (ver Pasiva).
 - **Tamaño de los assets:**
   - Pluma en vuelo: 36×14 u → **36×14 px** nativos (1 u/px)
-  - Abanico completo (largo × ancho en la punta): 300×244,7 u → **300×245 px** nativos (1 u/px)
+  - Abanico completo (largo × ancho en la punta): 300×244,7 u → **150×122 px** nativos (2 u/px)
 - **Partículas / capas secundarias:** Estelas muy finas; evitar mancha opaca que tape enemigos.
 - **Ícono 16×16:** hoy `fan+arrow` (`js/ui/skill-pixel-glyphs.js:203`); propuesta: abanico de plumas con flecha.
 - **Cómo se distingue de las otras del mismo campeón:** Es la única de proyectiles discretos y paralelos; Ráfaga es un anillo y Llamado una vuelta.
@@ -82,7 +82,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Tamaño de los assets:**
   - Ráfaga (anillo): 300×300 u → **150×150 px** nativos (2 u/px)
   - Alas abiertas (capa del cuerpo): 90×60 u → **90×60 px** nativos (1 u/px)
-  - Línea de pluma disparada: 300×12 u → **300×12 px** nativos (1 u/px)
+  - Línea de pluma disparada: 300×12 u → **150×6 px** nativos (2 u/px)
 - **Partículas / capas secundarias:** Nubecitas (puffs) y plumillas; hasta 8 líneas de pluma si hay muchas.
 - **Ícono 16×16:** hoy `updraft+up` (`js/ui/skill-pixel-glyphs.js:203`); propuesta: flechas hacia arriba entre alas.
 - **Cómo se distingue de las otras del mismo campeón:** Es la única circular y la única con alas; Abanico es direccional, Llamado es de vuelta, Cielo es una nube en el aire.
@@ -101,7 +101,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Frames sugeridos:** anticipación 2 · impacto 3 · disipación 4 (= 9 cuadros)
 - **Loop:** No hace bucle.
 - **Tamaño de los assets:**
-  - Estela dorada (por pluma): 300×26 u → **300×26 px** nativos (1 u/px)
+  - Estela dorada (por pluma): 300×26 u → **150×13 px** nativos (2 u/px)
   - Destello en el pecho: 40×40 u → **40×40 px** nativos (1 u/px)
 - **Partículas / capas secundarias:** Sin plumas hay un halo dorado solo (sin estelas): es el estado vacío.
 - **Ícono 16×16:** hoy `feather+spark` (`js/ui/skill-pixel-glyphs.js:203`); propuesta: pluma con chispa.

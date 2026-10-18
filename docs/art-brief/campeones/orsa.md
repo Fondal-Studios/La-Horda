@@ -1,7 +1,7 @@
 # Orsa — La Guardacables (La Cazadora del Trueno) (`orsa`)
 
 > **Especificación técnica** (atlas, paleta, alfa, nombres de archivo, export): `docs/art-brief/00_ESPECIFICACION_TECNICA.md`. Este brief NO la duplica; si ella fija otra escala de píxel, convertir con `px = u ÷ escala`.
-> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones). Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
+> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones), salvo que midan más de 160 u de lado: entonces también 2,0 u/px. Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
 > **Tiempos:** casi todas las habilidades son instantáneas (el daño se aplica al lanzar). La pose de lanzamiento del héroe dura 420 ms (650 ms en definitiva); la anticipación del efecto debe caber ahí y en el premarcado del apuntado, sin retrasar el golpe, salvo donde se indica un retardo real.
 
 ## A. Identidad
@@ -62,7 +62,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Loop:** No hace bucle.
 - **Tamaño de los assets:**
   - Perno: 60×12 u → **60×12 px** nativos (1 u/px)
-  - Cable tendido (línea completa): 340×44 u → **340×44 px** nativos (1 u/px)
+  - Cable tendido (línea completa): 340×44 u → **170×22 px** nativos (2 u/px)
   - Chispazo por blanco: 48×48 u → **48×48 px** nativos (1 u/px)
 - **Partículas / capas secundarias:** Chispas cortas y angulosas (nada de arcos curvos).
 - **Ícono 16×16:** hoy `rod+bolt` (`js/ui/skill-pixel-glyphs.js:190`); propuesta: perno con cable y chispa.
@@ -125,7 +125,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Loop:** Nube en bucle de 8 cuadros durante 2,4 s; los barridos son capas de 4 cuadros, no repiten.
 - **Tamaño de los assets:**
   - Nube (bucle): 420×420 u → **210×210 px** nativos (2 u/px)
-  - Barrido cónico (largo × ancho): 280×420,7 u → **280×421 px** nativos (1 u/px)
+  - Barrido cónico (largo × ancho): 280×420,7 u → **140×210 px** nativos (2 u/px)
   - Descarga final (⌀): 420×420 u → **210×210 px** nativos (2 u/px)
 - **Partículas / capas secundarias:** Lluvia fina y chispas; el rayo debe leerse como cable de cobre quebrado, no como relámpago de tormenta azul.
 - **Ícono 16×16:** hoy `storm+ring` (`js/ui/skill-pixel-glyphs.js:190`); propuesta: nube con rayo y anillo.

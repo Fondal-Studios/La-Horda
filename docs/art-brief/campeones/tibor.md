@@ -1,7 +1,7 @@
 # Tibor — El Rey sin Corona (El Rey del Enjambre) (`tibor`)
 
 > **Especificación técnica** (atlas, paleta, alfa, nombres de archivo, export): `docs/art-brief/00_ESPECIFICACION_TECNICA.md`. Este brief NO la duplica; si ella fija otra escala de píxel, convertir con `px = u ÷ escala`.
-> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones). Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
+> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones), salvo que midan más de 160 u de lado: entonces también 2,0 u/px. Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
 > **Tiempos:** casi todas las habilidades son instantáneas (el daño se aplica al lanzar). La pose de lanzamiento del héroe dura 420 ms (650 ms en definitiva); la anticipación del efecto debe caber ahí y en el premarcado del apuntado, sin retrasar el golpe, salvo donde se indica un retardo real.
 
 ## A. Identidad
@@ -81,7 +81,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Frames sugeridos:** anticipación 2 · impacto 3 · disipación 4 (= 9 cuadros) + bucle de 6 cuadros
 - **Loop:** Escudo en bucle de 6 cuadros durante 3 s.
 - **Tamaño de los assets:**
-  - Cinta de abejas (largo variable ≤ 260 u): 260×30 u → **260×30 px** nativos (1 u/px)
+  - Cinta de abejas (largo variable ≤ 260 u): 260×30 u → **130×15 px** nativos (2 u/px)
   - Escudo hexagonal de cera: 60×60 u → **60×60 px** nativos (1 u/px)
 - **Partículas / capas secundarias:** Sin nube: solo el escudo (variante pequeña).
 - **Ícono 16×16:** hoy `hive+arrow` (`js/ui/skill-pixel-glyphs.js:191`); propuesta: colmena con flecha.
@@ -123,7 +123,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Tamaño de los assets:**
   - Nube y panal (bucle): 310×310 u → **155×155 px** nativos (2 u/px)
   - Hexágono grande: 40×46 u → **40×46 px** nativos (1 u/px)
-  - Haz de luz de miel: 60×200 u → **60×200 px** nativos (1 u/px)
+  - Haz de luz de miel: 60×200 u → **30×100 px** nativos (2 u/px)
 - **Partículas / capas secundarias:** Hexágonos que se iluminan en secuencia con cada pulso.
 - **Ícono 16×16:** hoy `bee+ring` (`js/ui/skill-pixel-glyphs.js:191`); propuesta: abeja con anillo.
 - **Cómo se distingue de las otras del mismo campeón:** La mayor y la única con panal gigante; la Nube obrera es plana y chica.

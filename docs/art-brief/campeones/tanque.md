@@ -1,7 +1,7 @@
 # Aldric — El Último Bastión (Tanque) (`tanque`)
 
 > **Especificación técnica** (atlas, paleta, alfa, nombres de archivo, export): `docs/art-brief/00_ESPECIFICACION_TECNICA.md`. Este brief NO la duplica; si ella fija otra escala de píxel, convertir con `px = u ÷ escala`.
-> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones). Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
+> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones), salvo que midan más de 160 u de lado: entonces también 2,0 u/px. Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
 > **Tiempos:** casi todas las habilidades son instantáneas (el daño se aplica al lanzar). La pose de lanzamiento del héroe dura 420 ms (650 ms en definitiva); la anticipación del efecto debe caber ahí y en el premarcado del apuntado, sin retrasar el golpe, salvo donde se indica un retardo real.
 
 ## A. Identidad
@@ -61,7 +61,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Frames sugeridos:** anticipación 2 · impacto 3 · disipación 4 (= 9 cuadros) + bucle de 8 cuadros
 - **Loop:** Aro giratorio en bucle de 8 cuadros durante 2,4 s (más largo si Grito de Guerra extiende el giro).
 - **Tamaño de los assets:**
-  - Aro de hojas (bucle): 230×230 u → **230×230 px** nativos (1 u/px)
+  - Aro de hojas (bucle): 230×230 u → **115×115 px** nativos (2 u/px)
   - Estela circular: 230×230 u → **115×115 px** nativos (2 u/px)
   - Destello de punta: 14×14 u → **14×14 px** nativos (1 u/px)
 - **Partículas / capas secundarias:** El efecto crece por niveles de talento (`tierOf`: nivel ≥3, ≥5, ≥7): base + 3 capas opcionales (más hojas, runas, segundo anillo); entregar la base y las capas por separado. Ya existe ícono PNG propio (`assets/ui/skill-icons/torbellino.png`).
@@ -82,7 +82,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Frames sugeridos:** anticipación 1 · impacto 3 · disipación 5 (= 9 cuadros)
 - **Loop:** No hace bucle.
 - **Tamaño de los assets:**
-  - Estela: 230×40 u → **230×40 px** nativos (1 u/px)
+  - Estela: 230×40 u → **115×20 px** nativos (2 u/px)
   - Choque de escudo: 80×80 u → **80×80 px** nativos (1 u/px)
 - **Partículas / capas secundarias:** Polvo en el suelo detrás de la estela (6 puntos). Ya existe ícono PNG propio (`assets/ui/skill-icons/embestida.png`).
 - **Ícono 16×16:** propuesta: conservar el PNG existente.

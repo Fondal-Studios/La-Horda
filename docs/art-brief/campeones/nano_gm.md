@@ -1,7 +1,7 @@
 # Nano GM — El Regente del Umbral (`nano_gm`)
 
 > **Especificación técnica** (atlas, paleta, alfa, nombres de archivo, export): `docs/art-brief/00_ESPECIFICACION_TECNICA.md`. Este brief NO la duplica; si ella fija otra escala de píxel, convertir con `px = u ÷ escala`.
-> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones). Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
+> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones), salvo que midan más de 160 u de lado: entonces también 2,0 u/px. Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
 > **Tiempos:** casi todas las habilidades son instantáneas (el daño se aplica al lanzar). La pose de lanzamiento del héroe dura 420 ms (650 ms en definitiva); la anticipación del efecto debe caber ahí y en el premarcado del apuntado, sin retrasar el golpe, salvo donde se indica un retardo real.
 
 ## A. Identidad
@@ -60,7 +60,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Frames sugeridos:** anticipación 2 · impacto 4 · disipación 4 (= 10 cuadros)
 - **Loop:** No hace bucle; la marca sobre los sentenciados repite 3 cuadros durante 4 s.
 - **Tamaño de los assets:**
-  - Franja del decreto: 330×60 u → **330×60 px** nativos (1 u/px)
+  - Franja del decreto: 330×60 u → **165×30 px** nativos (2 u/px)
   - Sello final: 140×140 u → **140×140 px** nativos (1 u/px)
   - Marca sobre enemigo: 20×20 u → **20×20 px** nativos (1 u/px)
 - **Partículas / capas secundarias:** Fragmentos de pergamino, 1 destello dorado por sello. En Forma del Regente (afinidad "ambas") los aliados en la línea reciben un escudo corto: añadir un borde dorado.
@@ -103,7 +103,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Tamaño de los assets:**
   - Runa del origen (2 variantes: blanca y negra): 220×220 u → **110×110 px** nativos (2 u/px)
   - Estallido de llegada: 286×286 u → **143×143 px** nativos (2 u/px)
-  - Hebra del trayecto: 260×30 u → **260×30 px** nativos (1 u/px)
+  - Hebra del trayecto: 260×30 u → **130×15 px** nativos (2 u/px)
 - **Partículas / capas secundarias:** Producir **dos variantes** de la runa (negra para Sombra, blanca para Luz). El texto/estado del botón no depende del arte.
 - **Ícono 16×16:** hoy `swap+spark` (`js/ui/skill-pixel-glyphs.js:195`); propuesta: dos flechas opuestas, mitad blanca y mitad negra.
 - **Cómo se distingue de las otras del mismo campeón:** Es la única bicolor al mismo tiempo; Sentencia es toda negra y Edicto toda dorada.
@@ -144,7 +144,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Loop:** Alas abiertas: bucle de 6 cuadros (aleteo leve).
 - **Tamaño de los assets:**
   - Par de alas (capa detrás del cuerpo): 84×64 u → **84×64 px** nativos (1 u/px)
-  - Anillo de entrada: 200×200 u → **200×200 px** nativos (1 u/px)
+  - Anillo de entrada: 200×200 u → **100×100 px** nativos (2 u/px)
 - **Partículas / capas secundarias:** Las alas son capa propia (ART_BIBLE §7); no cambian el diseño del personaje.
 - **Cómo se distingue de las otras del mismo campeón:** Es una aura del cuerpo, no un área; se diferencia del Juicio por ser pequeña y persistente.
 - **Habilidad más parecida de otro campeón y cómo evitarla:** Alas de Saelis (plumas azules) y de Elyra (alas de luz): las de Nano son asimétricas y bicolor.

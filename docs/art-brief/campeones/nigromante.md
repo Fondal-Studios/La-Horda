@@ -1,7 +1,7 @@
 # Ilvar — El Señor de las Criptas (Nigromante) (`nigromante`)
 
 > **Especificación técnica** (atlas, paleta, alfa, nombres de archivo, export): `docs/art-brief/00_ESPECIFICACION_TECNICA.md`. Este brief NO la duplica; si ella fija otra escala de píxel, convertir con `px = u ÷ escala`.
-> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones). Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
+> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones), salvo que midan más de 160 u de lado: entonces también 2,0 u/px. Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
 > **Tiempos:** casi todas las habilidades son instantáneas (el daño se aplica al lanzar). La pose de lanzamiento del héroe dura 420 ms (650 ms en definitiva); la anticipación del efecto debe caber ahí y en el premarcado del apuntado, sin retrasar el golpe, salvo donde se indica un retardo real.
 
 ## A. Identidad
@@ -61,7 +61,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Frames sugeridos:** anticipación 2 · impacto 4 · disipación 4 (= 10 cuadros)
 - **Loop:** No hace bucle.
 - **Tamaño de los assets:**
-  - Sector del cono (largo × ancho en la punta): 210×364,3 u → **210×364 px** nativos (1 u/px)
+  - Sector del cono (largo × ancho en la punta): 210×364,3 u → **105×182 px** nativos (2 u/px)
   - Alma en vuelo: 12×12 u → **12×12 px** nativos (1 u/px)
   - Nova con Pacto (⌀): 462×462 u → **231×231 px** nativos (2 u/px)
 - **Partículas / capas secundarias:** Cadenas de alma (hoy `pushChainBolt`, máx. 6): conservar como capa de eslabones finos. Con Pacto, la nova es un anillo completo con 2 esqueletos que brotan.
@@ -125,7 +125,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Loop:** Aura de llamas del demonio en bucle de 8 cuadros durante 11 s; absorción y transformación no repiten.
 - **Tamaño de los assets:**
   - Estallido/anillo de transformación: 180×180 u → **90×90 px** nativos (2 u/px)
-  - Columna de fuego verde: 90×200 u → **90×200 px** nativos (1 u/px)
+  - Columna de fuego verde: 90×200 u → **45×100 px** nativos (2 u/px)
   - Aura de llamas (capa detrás del demonio): 120×150 u → **120×150 px** nativos (1 u/px)
   - Alma individual: 10×10 u → **10×10 px** nativos (1 u/px)
 - **Partículas / capas secundarias:** Almas en espiral (hasta ~14 por unidad), chispas verdes; el demonio ya tiene arte (garras, pose `soulFireCast`): este brief es el aura y las transiciones.

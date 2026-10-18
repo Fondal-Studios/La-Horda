@@ -1,7 +1,7 @@
 # Nahir — El Restaurador de Espejos (El Vidrio Errante) (`nahir`)
 
 > **Especificación técnica** (atlas, paleta, alfa, nombres de archivo, export): `docs/art-brief/00_ESPECIFICACION_TECNICA.md`. Este brief NO la duplica; si ella fija otra escala de píxel, convertir con `px = u ÷ escala`.
-> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones). Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
+> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones), salvo que midan más de 160 u de lado: entonces también 2,0 u/px. Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
 > **Tiempos:** casi todas las habilidades son instantáneas (el daño se aplica al lanzar). La pose de lanzamiento del héroe dura 420 ms (650 ms en definitiva); la anticipación del efecto debe caber ahí y en el premarcado del apuntado, sin retrasar el golpe, salvo donde se indica un retardo real.
 
 ## A. Identidad
@@ -61,7 +61,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Frames sugeridos:** anticipación 2 · impacto 4 · disipación 4 (= 10 cuadros)
 - **Loop:** No hace bucle.
 - **Tamaño de los assets:**
-  - Sector completo (largo × ancho en la punta): 240×360,6 u → **240×361 px** nativos (1 u/px)
+  - Sector completo (largo × ancho en la punta): 240×360,6 u → **120×180 px** nativos (2 u/px)
   - Esquirla suelta: 48×10 u → **48×10 px** nativos (1 u/px)
 - **Partículas / capas secundarias:** Chispas de vidrio (motivo `nh_glint`); un reflejo tenue de la forma del cono en el suelo.
 - **Ícono 16×16:** hoy `crystal+dots` (`js/ui/skill-pixel-glyphs.js:186`); propuesta: mantener: cristal facetado.
@@ -102,8 +102,8 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Frames sugeridos:** anticipación 2 · impacto 3 · disipación 4 (= 9 cuadros)
 - **Loop:** No hace bucle.
 - **Tamaño de los assets:**
-  - Tajo principal: 240×48 u → **240×48 px** nativos (1 u/px)
-  - Eco (línea tenue): 240×20 u → **240×20 px** nativos (1 u/px)
+  - Tajo principal: 240×48 u → **120×24 px** nativos (2 u/px)
+  - Eco (línea tenue): 240×20 u → **120×10 px** nativos (2 u/px)
   - Destello final: 40×40 u → **40×40 px** nativos (1 u/px)
 - **Partículas / capas secundarias:** Cruces brillantes en cada punto donde se cortan tajo y eco.
 - **Ícono 16×16:** hoy `swords+x` (`js/ui/skill-pixel-glyphs.js:186`); propuesta: dos tajos cruzados en X.

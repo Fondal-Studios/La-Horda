@@ -1,7 +1,7 @@
 # Oriel — La Portera de las Cicatrices (`oriel`)
 
 > **Especificación técnica** (atlas, paleta, alfa, nombres de archivo, export): `docs/art-brief/00_ESPECIFICACION_TECNICA.md`. Este brief NO la duplica; si ella fija otra escala de píxel, convertir con `px = u ÷ escala`.
-> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones). Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
+> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones), salvo que midan más de 160 u de lado: entonces también 2,0 u/px. Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
 > **Tiempos:** casi todas las habilidades son instantáneas (el daño se aplica al lanzar). La pose de lanzamiento del héroe dura 420 ms (650 ms en definitiva); la anticipación del efecto debe caber ahí y en el premarcado del apuntado, sin retrasar el golpe, salvo donde se indica un retardo real.
 
 ## A. Identidad
@@ -103,7 +103,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Tamaño de los assets:**
   - Grieta del origen (bucle): 140×140 u → **70×70 px** nativos (2 u/px)
   - Aro de llegada: 120×120 u → **60×60 px** nativos (2 u/px)
-  - Hilo del trayecto: 300×24 u → **300×24 px** nativos (1 u/px)
+  - Hilo del trayecto: 300×24 u → **150×12 px** nativos (2 u/px)
 - **Partículas / capas secundarias:** Pétalos que salen hacia atrás en la llegada.
 - **Ícono 16×16:** hoy `portal+spark` (`js/ui/skill-pixel-glyphs.js:202`); propuesta: portal con chispa.
 - **Cómo se distingue de las otras del mismo campeón:** La única que deja una grieta en el suelo; Abrir Cicatriz son aros, Eco es un anillo de fisuras.

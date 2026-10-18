@@ -1,7 +1,7 @@
 # Vhal — El Astrónomo Caído (`vhal`)
 
 > **Especificación técnica** (atlas, paleta, alfa, nombres de archivo, export): `docs/art-brief/00_ESPECIFICACION_TECNICA.md`. Este brief NO la duplica; si ella fija otra escala de píxel, convertir con `px = u ÷ escala`.
-> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones). Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
+> **Estilo:** `docs/ART_BIBLE.md` §7 (VFX libres, en capas propias, nunca pintados dentro del cuerpo) y §14 (densidad). **Unidades:** `u` = unidad de mundo; la pantalla muestra 650 u en el lado corto (`js/core/constants.js:20`); un campeón mide ~66–70 u (ART_BIBLE §2). **Escala de px usada acá (supuesto explícito):** decales y zonas de suelo 2,0 u/px (canon de suelos, ART_BIBLE §14); proyectiles, auras y efectos a escala de cuerpo 1,0 u/px (canon de campeones), salvo que midan más de 160 u de lado: entonces también 2,0 u/px. Los tamaños en u son del código (a nivel base: maestría y talentos multiplican radio/alcance, `AREA` en `js/skills/abilities.js`); los px son conversión.
 > **Tiempos:** casi todas las habilidades son instantáneas (el daño se aplica al lanzar). La pose de lanzamiento del héroe dura 420 ms (650 ms en definitiva); la anticipación del efecto debe caber ahí y en el premarcado del apuntado, sin retrasar el golpe, salvo donde se indica un retardo real.
 
 ## A. Identidad
@@ -61,7 +61,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Frames sugeridos:** anticipación 2 · impacto 3 · disipación 4 (= 9 cuadros)
 - **Loop:** No hace bucle.
 - **Tamaño de los assets:**
-  - Estrella con cola (largo × ancho): 360×40 u → **360×40 px** nativos (1 u/px)
+  - Estrella con cola (largo × ancho): 360×40 u → **180×20 px** nativos (2 u/px)
   - Destello de impacto: 36×36 u → **36×36 px** nativos (1 u/px)
 - **Partículas / capas secundarias:** Polvo estelar con tope bajo (≤20 puntos).
 - **Ícono 16×16:** hoy `star+arrow` (`js/ui/skill-pixel-glyphs.js:200`); propuesta: estrella con flecha.
@@ -101,7 +101,7 @@ Convención de cada ficha: *Mecánica* = lo que hace el código hoy (no se inven
 - **Frames sugeridos:** anticipación 1 · impacto 4 · disipación 5 (= 10 cuadros)
 - **Loop:** No hace bucle.
 - **Tamaño de los assets:**
-  - Arco (radio máximo 160 u): 320×160 u → **320×160 px** nativos (1 u/px)
+  - Arco (radio máximo 160 u): 320×160 u → **160×80 px** nativos (2 u/px)
   - Estrella del trayecto: 12×12 u → **12×12 px** nativos (1 u/px)
 - **Partículas / capas secundarias:** La forma real depende de la distancia al centro; hacer la banda modular por tramos.
 - **Ícono 16×16:** hoy `orbit+up` (`js/ui/skill-pixel-glyphs.js:200`); propuesta: órbita con flecha hacia arriba.
