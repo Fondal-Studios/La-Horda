@@ -41,4 +41,5 @@
     pulse: o => { kvbDecal('so_splash', o.x, o.y, o.r, 760, {layer: 'g', alpha: .9}); kvbEmit('so_drop', 8, o.x, o.y, {ring: o.r * .6, v0: 30, v1: 100, up: 90, grav: 320, l0: 400, l1: 660, scale: 1.4, flat: .6}); },
     end: o => { kvbEmit('so_drop', 8, o.x, o.y, {ring: o.r * .5, v0: 10, v1: 50, up: 30, grav: 200, l0: 400, l1: 640, scale: 1.3, flat: .6}); }}, 'solciju');
   kvbSkin('sol_lees', {R: o => o.r, loop: 'so_pool_idle', period: 2000, alpha: .7}, 'solciju');
+  kvbBasic('solciju', SO, 'so_drop');
 }

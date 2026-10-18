@@ -39,4 +39,5 @@
   kvbClassic('soporte', 'team_atk_buff', (c, sk, u, sc) => ['elyra.war', c.x, c.y, sk.radius * sc.AREA, 0, sk.duration * sc.DUR, 0]);
   kvbClassic('soporte', 'team_shield_buff', (c, sk, u, sc) => ['elyra.shield', c.x, c.y, sk.radius * sc.AREA, 0, sk.duration * sc.DUR, 0]);
   kvbClassic('soporte', 'team_grand_buff', (c, sk, u, sc) => ['elyra.grand', c.x, c.y, sk.radius * sc.AREA, 0, sk.duration * sc.DUR, 0]);
+  kvbBasic('soporte', EL, 'el_mote');
 }

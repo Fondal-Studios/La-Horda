@@ -43,4 +43,5 @@
     for(let k = 0; k < 4; k++){ kvbEmit('vl_conf' + k, 6, x, y, {ring: r * .5, v0: 30, v1: 120, up: 90, grav: 180, l0: 560, l1: 900, scale: 1.6, spin: 8, flat: .7}); const a = -1.5708 + k * 1.5708; kvbPart('vl_mask' + k, x, y, {vx: Math.cos(a) * r * 1.0, vy: Math.sin(a) * r * .6, dur: 700, scale: 3.4, layer: 't', fadeAt: .4, drag: 2.4}); }
   };
   kvbBind('asc:mask_throw', 'velmira.mask_throw'); kvbBind('asc:chorus', 'velmira.chorus'); kvbBind('asc:face_swap', 'velmira.face_swap'); kvbBind('asc:theatre', 'velmira.theatre');
+  kvbBasic('velmira', VL, 'vl_conf4');
 }

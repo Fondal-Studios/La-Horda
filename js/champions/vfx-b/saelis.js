@@ -33,4 +33,5 @@
     kvbEmit('sa_puff', 8, x, y - 30, {ring: r * .6, v0: 8, v1: 30, up: 20, l0: 700, l1: 1100, scale: 1.8, flat: .6}); kvbEmit('sa_feather', 10, x, y - 60, {ring: r * .6, v0: 5, v1: 25, grav: 80, l0: 700, l1: 1100, scale: 1.4, spin: 4, flat: .6});
   };
   kvbBind('asc:feather_fan', 'saelis.feather_fan'); kvbBind('asc:updraft', 'saelis.updraft', true); kvbBind('asc:recall', 'saelis.recall', true); kvbBind('asc:feather_sky', 'saelis.feather_sky');
+  kvbBasic('saelis', SA, 'sa_feather_g');
 }

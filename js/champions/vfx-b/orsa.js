@@ -47,4 +47,5 @@
   // postura de apoyo: ancla viva mientras dura (braceUntil) con un perno por cada disparo reforzado que queda
   kvbOverlay('orsa', (h, layer, t) => { const s = h.exState; if(layer !== 'g' || !s || !(s.braceUntil > runElapsedMs)) return; kvbLoopDecal('or_anchor_idle', h.x, h.y + 4, 38, t, 900, {alpha: .95});
     for(let i = 0; i < (s.shots || 0); i++){ ctx.fillStyle = OR[3]; ctx.strokeStyle = OR[0]; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(h.x - 12 + i * 12, h.y - 70, 3.5, 0, 6.2832); ctx.fill(); ctx.stroke(); } });
+  kvbBasic('orsa', OR, 'or_spark');
 }

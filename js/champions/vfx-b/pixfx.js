@@ -12,7 +12,8 @@
    Contrato visual: alfa 0/255 (umbral), contorno oscuro de 1 px, 2–3 tonos por color, translucidez por tramado
    ordenado (Bayer 4x4) en vez de alfa suave: lenguaje pixel art de docs/ART_BIBLE.md; el glow/destello va aparte.
    ============================================================ */
-const KVB = {off:false, pool:[], MAX:128, seed:0x2545F491, hooks:[], overlays:[], stats:{added:0, dropped:0}};
+// ?kvb=0 en la URL apaga los efectos propios (comparaciones antes/después y pruebas diferenciales)
+const KVB = {off: (function(){ try{ return /[?&]kvb=0\b/.test(location.search); }catch(e){ return false; } })(), pool:[], MAX:128, seed:0x2545F491, hooks:[], overlays:[], stats:{added:0, dropped:0}};
 // RNG cosmético propio: jamás se usa Math.random (no debe consumir el azar de la simulación).
 function kvbR(){ let x = KVB.seed; x ^= x << 13; x >>>= 0; x ^= x >>> 17; x ^= x << 5; x >>>= 0; KVB.seed = x; return x / 4294967296; }
 function kvbRR(a, b){ return a + (b - a) * kvbR(); }
@@ -115,12 +116,14 @@ function kvbAdd(e){
 }
 // Decal animado de un solo pase (o en bucle). R = radio en unidades de mundo (el borde del sprite ES el radio).
 function kvbDecal(name, x, y, R, dur, o){
+  if(!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(R) || !(dur > 0)) return null; R = Math.max(4, Math.min(520, R));
   o = o || {}; const S = kvbS(R), fr = kvbDecalFrames(name, S); if(!fr) return null;
   return kvbAdd({frames: fr, x, y, w: 2 * R, h: 2 * R, rot: o.rot || 0, dur, layer: o.layer || 'g', ax: o.ax === undefined ? .5 : o.ax, ay: o.ay === undefined ? .5 : o.ay,
     follow: o.follow || null, ofx: o.ofx || 0, ofy: o.ofy || 0, loop: !!o.loop, fps: o.fps || 0, alpha: o.alpha, fadeAt: o.fadeAt, add: !!o.add, prio: o.prio, flip: !!o.flip, vx: o.vx || 0, vy: o.vy || 0});
 }
 // Sprite de motivo (una pluma, una abeja…) en un punto, con velocidad / gravedad / giro
 function kvbPart(mot, x, y, o){
+  if(!Number.isFinite(x) || !Number.isFinite(y)) return null;
   o = o || {}; const fr = kvbMotif(mot); if(!fr) return null; const sc = (o.scale || 1.6) * 1.35; // los motivos se agrandan un 35 % para leerse a 844x390
   return kvbAdd({frames: fr, x, y, w: fr[0].width * sc, h: fr[0].height * sc, rot: o.rot || 0, spin: o.spin || 0, vx: o.vx || 0, vy: o.vy || 0, grav: o.grav || 0, drag: o.drag || 0,
     dur: o.dur || 600, layer: o.layer || 't', ax: .5, ay: o.ay === undefined ? .5 : o.ay, follow: o.follow || null, ofx: o.ofx || 0, ofy: o.ofy || 0, loop: o.fps ? true : false, fps: o.fps || 0,
@@ -128,7 +131,8 @@ function kvbPart(mot, x, y, o){
 }
 // Ráfaga de motivos: ang+spread = abanico (spread omitido = en todas direcciones); v0..v1 velocidad; up = empuje hacia arriba
 function kvbEmit(mot, n, x, y, o){
-  o = o || {}; n = kvbBudget(n);
+  o = o || {}; n = kvbBudget(Math.min(60, n));
+  if(!Number.isFinite(x) || !Number.isFinite(y)) return;
   for(let i = 0; i < n; i++){
     const a = o.spread === undefined ? kvbRR(0, 6.2832) : (o.ang || 0) + kvbRR(-o.spread / 2, o.spread / 2), v = kvbRR(o.v0 === undefined ? 30 : o.v0, o.v1 === undefined ? 90 : o.v1), rr = o.ring ? o.ring * kvbRR(.6, 1) : 0;
     kvbPart(mot, x + Math.cos(a) * rr + (o.jx ? kvbRR(-o.jx, o.jx) : 0), y + Math.sin(a) * rr * (o.flat === undefined ? 1 : o.flat) + (o.jy ? kvbRR(-o.jy, o.jy) : 0), {
@@ -138,8 +142,9 @@ function kvbEmit(mot, n, x, y, o){
 }
 // Rayo tileado de A a B con ancho w (unidades de mundo). Las puntas (cabeza y cola) son decales opcionales.
 function kvbBeam(name, ax, ay, bx, by, w, dur, o){
+  if(!Number.isFinite(ax) || !Number.isFinite(ay) || !Number.isFinite(bx) || !Number.isFinite(by) || !Number.isFinite(w) || !(dur > 0)) return null;
   o = o || {}; const fr = kvbBeamFrames(name); if(!fr) return null;
-  const L = Math.hypot(bx - ax, by - ay); if(L < 4) return null;
+  const L = Math.min(900, Math.hypot(bx - ax, by - ay)); if(L < 4) return null; w = Math.max(2, Math.min(400, w));
   return kvbAdd({beam: true, frames: fr, spec: KVB_BEAM[name], x: ax, y: ay, rot: Math.atan2(by - ay, bx - ax), len: L, w, dur, layer: o.layer || 't', alpha: o.alpha, fadeAt: o.fadeAt, prio: o.prio, add: !!o.add});
 }
 function kvbReset(){ KVB.pool.length = 0; }

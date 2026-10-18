@@ -32,4 +32,5 @@
     kvbEmit('oe_shard', 10, x, y, {ring: r * .5, v0: 50, v1: 160, up: 90, grav: 200, l0: 480, l1: 820, scale: 1.6, spin: 6, flat: .7}); kvbEmit('oe_glow', 8, x, y, {ring: r * .6, v0: 8, v1: 30, up: 70, l0: 600, l1: 1000, scale: 1.4, flat: .7});
   };
   kvbBind('asc:portal', 'oriel.portal'); kvbBind('asc:rift_echo', 'oriel.rift_echo'); kvbBind('asc:rift_step', 'oriel.rift_step'); kvbBind('asc:great_rift', 'oriel.great_rift');
+  kvbBasic('oriel', OE, 'oe_petal');
 }

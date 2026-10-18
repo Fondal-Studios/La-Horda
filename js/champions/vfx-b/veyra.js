@@ -44,4 +44,5 @@
   // Pacto de dolor: mientras dura la velocidad/armadura (temporizador real portSpeedTimer) un sello late bajo sus pies y sube vapor de sangre
   kvbOverlay('veyra', (h, layer, t) => { if(layer === 'g' && h.portSpeedTimer > 0 && h.portSpeedBonus >= .24) kvbLoopDecal('vy_pact_idle', h.x, h.y + 4, 30, t, 800, {alpha: .9}); },
     (h, dt) => { if(h.portSpeedTimer > 0 && h.portSpeedBonus >= .24 && kvbPulseEvery(h, 'wisp', 130, dt)) kvbPart('vy_wisp', h.x + kvbRR(-10, 10), h.y - 4, {vy: -46, dur: 520, scale: 1.1, layer: 't', shrink: true}); });
+  kvbBasic('veyra', VY, 'vy_drop');
 }

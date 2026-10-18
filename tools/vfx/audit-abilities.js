@@ -8,7 +8,7 @@
    Servidor: python3 -m http.server <PUERTO> en la raíz (ABILITY_BASE_URL por defecto http://127.0.0.1:8961/). */
 const fs = require('node:fs'), path = require('node:path');
 let chromium; try { ({chromium} = require('playwright')); } catch (e) { ({chromium} = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
-const ROOT = path.resolve(__dirname, '../..'), BASE = process.env.ABILITY_BASE_URL || 'http://127.0.0.1:8961/';
+const ROOT = path.resolve(__dirname, '../..'), BASE = (process.env.ABILITY_BASE_URL || 'http://127.0.0.1:8961/') + (process.env.KVB === '0' ? '?kvb=0' : ''); // KVB=0: sin efectos propios (equivale a main)
 const TAG = process.env.TAG || 'antes', OUT = path.join(ROOT, 'docs/vfx/shots', TAG);
 const SECOND_HALF = ['myla', 'nahir', 'nano_gm', 'nigromante', 'oriel', 'orsa', 'profeta', 'renko', 'saelis', 'segador', 'sira', 'solciju', 'soporte', 'tanque', 'tibor', 'velmira', 'vesper', 'veyra', 'vhal', 'ynara', 'zahra'];
 (async () => {
@@ -18,7 +18,9 @@ const SECOND_HALF = ['myla', 'nahir', 'nano_gm', 'nigromante', 'oriel', 'orsa', 
   page.on('pageerror', e => errors.push(e.message));
   await page.goto(BASE, {waitUntil: 'domcontentloaded', timeout: 120000});
   await page.waitForFunction(() => typeof startRun === 'function' && typeof aimProfileOf === 'function' && typeof CHAMPION_BALANCE_REFERENCE !== 'undefined', null, {timeout: 120000});
-  await page.waitForTimeout(2500);
+  // los atlas y los sprites de efecto cargan en segundo plano: sin esperarlos, las primeras capturas salen sin el arte propio (gólem, plaga…)
+  await page.waitForFunction(() => typeof CHAMP_PACK !== 'undefined' && Object.keys(PORTADORES).every(k => CHAMP_PACK[k] && CHAMP_PACK[k].ready), null, {timeout: 180000}).catch(() => {});
+  await page.waitForTimeout(8000);
   const keys = (process.env.ONLY ? process.env.ONLY.split(',') : SECOND_HALF);
   const all = {};
   for (const k of keys) {
@@ -51,7 +53,7 @@ const SECOND_HALF = ['myla', 'nahir', 'nano_gm', 'nigromante', 'oriel', 'orsa', 
       const oRand = Math.random;
       for (let row = 0; row < 5; row++) {
         const slot = row === 0 ? 'basic' : row === 4 ? 'ult' : row - 1;
-        seed(77); start(); for (const n in counters) delete counters[n];
+        seed(77); start(); for (const n in counters) delete counters[n]; const kv0 = KVB.stats.added;
         const sk = slot === 'basic' ? null : slot === 'ult' ? player.cls.ultimate : player.cls.skills[slot];
         player.aim = {x: player.x + 115, y: player.y, dx: 1, dy: 0};
         update(16); render();
@@ -64,14 +66,14 @@ const SECOND_HALF = ['myla', 'nahir', 'nano_gm', 'nigromante', 'oriel', 'orsa', 
         }
         sx.fillStyle = '#fff'; sx.font = '14px monospace'; sx.fillText(slot === 'basic' ? 'Basico' : slot === 'ult' ? 'Ulti' : 'Hab ' + (slot + 1), 6, row * CELL_H + 20);
         sx.font = '11px monospace'; const nm = slot === 'basic' ? 'ataque' : sk.name; sx.fillText(nm.slice(0, 16), 6, row * CELL_H + 36);
-        out.slots.push({slot, name: slot === 'basic' ? 'Ataque básico' : sk.name, kind: sk && (sk.kind + (sk.action ? ':' + sk.action : '')), err, msPerFrame: +(cost / frames).toFixed(3), counters: JSON.parse(JSON.stringify(counters))});
+        out.slots.push({slot, name: slot === 'basic' ? 'Ataque básico' : sk.name, kind: sk && (sk.kind + (sk.action ? ':' + sk.action : '')), err, msPerFrame: +(cost / frames).toFixed(3), counters: Object.assign(JSON.parse(JSON.stringify(counters)), {kvb: KVB.stats.added - kv0})});
       }
       Math.random = oRand; for (const n in orig) window[n] = orig[n]; state = 'menu';
       out.sheet = sheet.toDataURL('image/png');
       return out;
     }, k).catch(e => ({key: k, error: e.message}));
     if (r.sheet) { fs.writeFileSync(path.join(OUT, k + '.png'), Buffer.from(r.sheet.split(',')[1], 'base64')); delete r.sheet; }
-    all[k] = r; console.log(k, r.error || r.slots.map(s => `${s.name}[${Object.keys(s.counters.sprites || {}).join('+') || '-'};b${s.counters.vfxBurst || 0}/s${s.counters.vfxShock || 0}/t${s.counters.vfxTelegraph || 0};${s.msPerFrame}ms${s.err ? ' ERR ' + s.err : ''}]`).join(' '));
+    all[k] = r; console.log(k, r.error || r.slots.map(s => `${s.name}[${Object.keys(s.counters.sprites || {}).join('+') || '-'};b${s.counters.vfxBurst || 0}/s${s.counters.vfxShock || 0}/t${s.counters.vfxTelegraph || 0}/kv${s.counters.kvb || 0};${s.msPerFrame}ms${s.err ? ' ERR ' + s.err : ''}]`).join(' '));
   }
   fs.writeFileSync(path.join(OUT, 'stats.json'), JSON.stringify({errors, champions: all}, null, 1));
   console.log('page errors:', errors.length, errors.slice(0, 3));

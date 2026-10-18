@@ -36,4 +36,5 @@
     if(h.berserkTimer > 0) kvbLoopDecal('sg_berserk_idle', h.x, h.y + 4, 52, t, 700, {alpha: Math.min(1, h.berserkTimer / 400)});
     else if(h.furyArmorTimer > 0) kvbLoopDecal('sg_armor_idle', h.x, h.y + 4, 36, t, 1400, {alpha: Math.min(1, h.furyArmorTimer / 400) * .95});
   }, (h, dt) => { if(h.berserkTimer > 0 && kvbPulseEvery(h, 'soul', 150, dt)) kvbPart('sg_wisp', h.x + kvbRR(-16, 16), h.y - 4, {vy: -52, dur: 640, scale: 1.2, layer: 't', shrink: true}); });
+  kvbBasic('segador', SG, 'sg_drop');
 }

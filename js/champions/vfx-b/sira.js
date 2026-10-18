@@ -11,7 +11,7 @@
   kvbDefMotif('si_scrap', 4, 4, kvbBmp(['.pp.', 'pppp', 'pdpp', '.pp.'], {p: '#e8d9b0', d: '#a8946a'}));
 
   kvbDefBeam('si_ink', 8, 22, 18, (g, q, W, H, f) => {
-    const m = H / 2, post = q < .5 ? 0 : (q - .5) / .5, half = Math.max(1, Math.round(m * (q < .18 ? .3 + 3.8 * q : .78 - .5 * post)));
+    const m = H / 2, post = q < .5 ? 0 : (q - .5) / .5, half = Math.max(1, Math.round(m * (q < .18 ? .3 + 2.6 * q : .62 - .4 * post)));
     g.fillStyle = SI[4]; g.fillRect(0, m - half - 2, W, half * 2 + 4); g.fillStyle = INK; g.fillRect(0, m - half - 1, W, half * 2 + 2);
     g.fillStyle = '#2a3f7a'; g.fillRect(0, m - half, W, half * 2); g.fillStyle = SI[2]; for(let x = 0; x < W; x += 3){ if(kvbHash(x + f, 3) > .35) g.fillRect(x, m - half, 2, 1); }
     g.fillStyle = INK; for(let x = 2; x < W; x += 7){ const b = kvbHash(x, 9) > .5 ? 1 : -1; g.fillRect(x, m + b * (half + 1), 3, 1); }
@@ -58,4 +58,5 @@
     for(let i = 1; i < rt.length; i++){ const age = runElapsedMs - rt[i].at, k = Math.max(.15, 1 - age / 4200); ctx.globalAlpha = .75 * k; ctx.strokeStyle = '#cfe0ff'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(rt[i - 1].x, rt[i - 1].y); ctx.lineTo(rt[i].x, rt[i].y); ctx.stroke(); ctx.strokeStyle = INK; ctx.lineWidth = 3; ctx.stroke(); }
     ctx.fillStyle = '#8aa7da'; for(const p of rt){ ctx.globalAlpha = .9; ctx.fillRect(p.x - 2, p.y - 2, 4, 4); } ctx.restore();
   }, (h, dt) => { const rt = routeOf(h); if(rt.length) kvbHS(h).routeCopy = rt.map(p => ({x: p.x, y: p.y})); });
+  kvbBasic('sira', SI, 'si_blot');
 }

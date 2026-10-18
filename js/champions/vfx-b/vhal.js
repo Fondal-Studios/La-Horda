@@ -42,4 +42,5 @@
     for(let i = 0; i < kvbBudget(12); i++){ const a = kvbRR(0, 6.2832), d = r * kvbRR(.5, 1), sp = d / .7; kvbPart('vh_star4', x + Math.cos(a) * d, y + Math.sin(a) * d, {vx: -Math.cos(a) * sp, vy: -Math.sin(a) * sp, dur: 700, scale: 1.5, layer: 't', shrink: true, spin: 4}); }
   };
   kvbBind('asc:star_bolt', 'vhal.star_bolt'); kvbBind('asc:well', 'vhal.well'); kvbBind('asc:orbit', 'vhal.orbit'); kvbBind('asc:collapse', 'vhal.collapse');
+  kvbBasic('vhal', VH, 'vh_dust');
 }

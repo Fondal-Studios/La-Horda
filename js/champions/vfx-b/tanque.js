@@ -48,4 +48,5 @@
       ctx.restore();
     }
   });
+  kvbBasic('tanque', AL, 'al_spark');
 }

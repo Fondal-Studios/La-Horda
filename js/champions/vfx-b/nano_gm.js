@@ -44,4 +44,5 @@
     kvbPart('ng_scroll', x, y - 46, {dur: 1200, scale: 3, layer: 't', vy: -10, fadeAt: .55});
   };
   kvbBind('asc:sentence', 'nano.sentence'); kvbBind('asc:edict', 'nano.edict'); kvbBind('asc:invert', 'nano.invert'); kvbBind('asc:judgement', 'nano.judgement');
+  kvbBasic('nano_gm', NG, 'ng_mote');
 }

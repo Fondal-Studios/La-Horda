@@ -58,4 +58,5 @@
   // La última puntada: bordado circular fijo + un corte por pulso (el último, mayor)
   kvbSkin('ex_stitch', {R: o => o.r, loop: 'vs_stitch_idle', period: 2400,
     pulse: o => { kvbDecal(o.left === 0 ? 'vs_cut' : 'vs_unpick', o.x, o.y, o.r, 760, {layer: 'g'}); if(o.left === 0) kvbEmit('vs_needle', 14, o.x, o.y, {ring: o.r * .4, v0: 90, v1: 220, l0: 300, l1: 520, scale: 1.4, faceVel: true, drag: .8, flat: .7, shrink: true}); } }, 'vesper');
+  kvbBasic('vesper', VS, 'vs_stitch');
 }

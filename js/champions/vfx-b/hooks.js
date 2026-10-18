@@ -169,3 +169,25 @@ function kvbOverlayUpdate(dt){
 KVB.hs = new WeakMap(); // estado cosmético por héroe (no se escribe en el héroe: no viaja por la red)
 function kvbHS(h){ let s = KVB.hs.get(h); if(!s){ s = {}; KVB.hs.set(h, s); } return s; }
 function kvbPulseEvery(h, key, ms, dt){ const s = kvbHS(h); s[key] = (s[key] || 0) - dt; if(s[key] <= 0){ s[key] += ms; return true; } return false; }
+
+/* ---------------- golpes del ataque básico: micro-impacto con la paleta de cada campeón ---------------- */
+// El básico ya tiene su animación de cuerpo (atlas) y su proyectil; esto solo da el "toque" del impacto en el enemigo (antes: chispa blanca genérica).
+const KVB_BASIC = {};
+function kvbBasic(classKey, pal, motif){
+  KVB_BASIC[classKey] = true;
+  kvbDefDecal('bh_' + classKey, 6, kvbRingPaint(pal, {fillCol: pal[1], fill: .5, rimThick: 2, flash: pal[3], details: (lg, c, R, rad, p) => { for(let i = 0; i < 6; i++){ const a = i * 1.047 + .3, nx = -Math.sin(a), ny = Math.cos(a); kvbPoly(lg, [[c + Math.cos(a) * rad * .2, c + Math.sin(a) * rad * .2], [c + Math.cos(a) * rad * .95 + nx * 1.5, c + Math.sin(a) * rad * .95 + ny * 1.5], [c + Math.cos(a) * rad * .95 - nx * 1.5, c + Math.sin(a) * rad * .95 - ny * 1.5]], i & 1 ? p[3] : p[4]); } }}));
+  KVB_FX['bh.' + classKey] = (x, y, r, ang) => { kvbDecal('bh_' + classKey, x, y, 17, 300, {layer: 't'}); kvbEmit(motif, 2, x, y, {ang, spread: 2.2, v0: 30, v1: 90, up: 20, grav: 100, l0: 200, l1: 340, scale: 1, shrink: true}); };
+  KVB_HEROES.add(classKey);
+}
+(function(){
+  if(typeof vfxHit !== 'function') return;
+  const oHit = vfxHit;
+  vfxHit = function(e, src, opts, crit){
+    const ret = oHit.apply(this, arguments);
+    if(!KVB.off && opts && opts.fromBasic && src && src.classKey && KVB_BASIC[src.classKey] && e && Number.isFinite(e.x)){
+      const s = kvbHS(src), now = typeof animNow === 'number' ? animNow : 0;
+      if(!(s.bh > now - 110)){ s.bh = now; kvbFx('bh.' + src.classKey, e.x, e.y - 12, 17, Math.atan2(e.y - src.y, e.x - src.x), crit ? 1 : 0, 0); }
+    }
+    return ret;
+  };
+})();

@@ -62,4 +62,5 @@
       ctx.save(); ctx.globalAlpha = .5; drawChampPack('nahir', {...h, x: o.x, y: o.y, _codexSet: 'idle_down', _codexT: 0}, h.scale || 2, .5); ctx.restore();
       const kf = kvbMotif('nh_mirror'); if(kf){ const bob = Math.sin(t / 380 + o.id) * 2; ctx.save(); ctx.imageSmoothingEnabled = false; ctx.globalAlpha = .9; ctx.drawImage(kf[0], o.x - 9, o.y - 58 + bob, 18, 32); ctx.restore(); }
     }}, 'nahir');
+  kvbBasic('nahir', NH, 'nh_glint');
 }

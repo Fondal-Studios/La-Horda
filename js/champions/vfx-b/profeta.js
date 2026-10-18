@@ -28,4 +28,5 @@
   kvbClassic('profeta', 'brief_immunity', (c, sk, u, sc) => { let t = null, bd = sk.range || 260; for(const h of heroes){ if(h === c || !h.alive) continue; const d = Math.hypot(h.x - (c.x), h.y - c.y); if(d <= bd){ bd = d; t = h; } } t = t || c; return ['profeta.immune', t.x, t.y, 44, 0, sk.duration * sc.DUR, 0]; });
   kvbClassic('profeta', 'self_spin_stun', (c, sk, u, sc) => ['profeta.spin', c.x, c.y, sk.radius * sc.AREA, 0, sk.innerR * sc.AREA, 0]);
   kvbClassic('profeta', 'ascension_fusion', (c, sk, u, sc) => { let t = null, bd = 1e9; for(const h of heroes){ if(h === c || !h.alive) continue; const d = Math.hypot(h.x - c.x, h.y - c.y); if(d < bd){ bd = d; t = h; } } t = t || c; return ['profeta.fusion', t.x, t.y, 50, 0, sk.duration * sc.DUR, 0]; });
+  kvbBasic('profeta', PF, 'pf_mote');
 }

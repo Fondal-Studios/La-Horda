@@ -67,4 +67,5 @@
   kvbSkin('ex_mound', {R: o => o.r, loop: 'rk_mound_idle', period: 1800, end: o => { kvbEmit('rk_puff', 4, o.x, o.y, {ring: o.r * .6, v0: 15, v1: 40, l0: 400, l1: 600, scale: 1.6, flat: .6}); }}, 'renko');
   kvbSkin('ex_faults', {R: o => o.r, loop: 'rk_faults_idle', period: 1500,
     pulse: o => { kvbDecal('rk_faults', o.x, o.y, o.r, 800, {layer: 'g', alpha: .9}); kvbEmit('rk_clod', 8, o.x, o.y, {ring: o.r * .55, v0: 40, v1: 120, up: 100, grav: 360, spin: 8, l0: 420, l1: 680, scale: 1.5, flat: .6}); if(o.left === 0) kvbEmit('rk_pebble', 14, o.x, o.y, {ring: o.r * .7, v0: 60, v1: 160, up: 120, grav: 380, l0: 400, l1: 640, scale: 1.8}); }}, 'renko');
+  kvbBasic('renko', SOIL, 'rk_pebble');
 }

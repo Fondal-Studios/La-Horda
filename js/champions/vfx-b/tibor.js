@@ -43,4 +43,5 @@
     draw: (o, t, layer) => { if(layer !== 't') return; const fr = kvbMotif('tb_bee'); if(!fr) return; ctx.save(); ctx.imageSmoothingEnabled = false; const n = beesOf(o), k = Math.min(1, o.life / 400);
       for(let i = 0; i < n; i++){ const ph = t / 1000 * (1.1 + (i % 3) * .35) + i * 2.399, rad = o.r * (.18 + .72 * kvbHash(i, 5)), x = o.x + Math.cos(ph) * rad, y = o.y + Math.sin(ph * 1.3) * rad * .8 - 8 + Math.sin(t / 90 + i) * 2, f = fr[(Math.floor(t / 70) + i) & 1];
         ctx.globalAlpha = k; ctx.drawImage(f, x - 12, y - 10, 24, 21); } ctx.restore(); }}, 'tibor');
+  kvbBasic('tibor', TB, 'tb_pollen');
 }

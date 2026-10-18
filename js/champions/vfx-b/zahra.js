@@ -54,4 +54,5 @@
       ctx.fillStyle = '#4a423c'; ctx.fillRect(0, -h, len, h * 2); ctx.globalAlpha = k; ctx.fillStyle = '#16100c'; ctx.fillRect(0, -h - 1, len, 2); ctx.fillRect(0, h - 1, len, 2); ctx.fillStyle = (Math.floor(t / 140) & 1) ? ZH[3] : ZH[2]; for(let x = 0; x < len; x += 9) ctx.fillRect(x, ((x >> 3) & 1) ? -2 : 1, 6, 2); ctx.restore(); }}, 'zahra');
   kvbSkin('ex_vent', {R: o => o.r, loop: 'zh_vent_idle', period: 1800,
     pulse: o => { kvbDecal('zh_vent', o.x, o.y, o.r, 760, {layer: 'g'}); kvbEmit('zh_steam', 8, o.x, o.y, {ring: o.r * .6, v0: 20, v1: 60, up: 60, l0: 520, l1: 820, scale: 1.8, flat: .7}); if(o.left === 0) kvbEmit('zh_ember', 14, o.x, o.y, {ring: o.r * .5, v0: 40, v1: 130, up: 90, grav: 80, l0: 420, l1: 700, scale: 1.3}); } }, 'zahra');
+  kvbBasic('zahra', ZH, 'zh_ember');
 }

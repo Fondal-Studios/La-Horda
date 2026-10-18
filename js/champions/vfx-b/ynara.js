@@ -12,7 +12,7 @@
   kvbDefDecal('yn_gaze', 10, kvbSectorPaint(YN, {fillCol: '#b04a78', streaks: gazeStreaks}));
   kvbDefDecal('yn_stew_idle', 12, kvbIdlePaint(YN, {fill: .12, fillCol: '#b04a78', dash: [5, 4], details: (lg, c, R, rad, pal, q) => { for(let i = 0; i < 6; i++){ const a = q * 6.2832 + i * 1.047, x = c + Math.cos(a) * R * .76, y = c + Math.sin(a) * R * .76 - 2; kvbDisc(lg, x, y, 3, pal[3]); kvbDisc(lg, x - 1, y - 1, 1.4, pal[4]); } }}));
   kvbDefDecal('yn_stew', 10, kvbRingPaint(YN, {fillCol: '#b04a78', fill: .3, details: (lg, c, R, rad, pal, q) => { for(let i = 0; i < 8; i++){ const a = i * .7854, x = c + Math.cos(a) * rad * .78, y = c + Math.sin(a) * rad * .78; kvbDisc(lg, x, y, 3, pal[3]); kvbDisc(lg, x - 1, y - 1, 1.2, pal[4]); } }, flash: '#fff0f7', rimThick: 3}));
-  const halo = (lg, c, R, rad, pal, q) => { for(let i = 0; i < 12; i++){ const a = i * .5236 + q * .6, L = rad * (i & 1 ? .66 : .9), nx = -Math.sin(a), ny = Math.cos(a); kvbPoly(lg, [[c + Math.cos(a) * rad * .5, c + Math.sin(a) * rad * .5], [c + Math.cos(a) * L + nx * 2, c + Math.sin(a) * L + ny * 2], [c + Math.cos(a) * L - nx * 2, c + Math.sin(a) * L - ny * 2]], i & 1 ? pal[3] : pal[4]); } kvbCircle(lg, c, c, rad * .5, pal[2], 1.2); };
+  const halo = (lg, c, R, rad, pal, q) => { for(let i = 0; i < 10; i++){ const a = i * .6283 + q * .6, L = rad * (i & 1 ? .68 : .86), nx = -Math.sin(a), ny = Math.cos(a); kvbPoly(lg, [[c + Math.cos(a) * rad * .56, c + Math.sin(a) * rad * .56], [c + Math.cos(a) * L + nx * 1.2, c + Math.sin(a) * L + ny * 1.2], [c + Math.cos(a) * L - nx * 1.2, c + Math.sin(a) * L - ny * 1.2]], i & 1 ? pal[3] : pal[4]); } kvbCircle(lg, c, c, rad * .5, pal[2], 1.2); };
   kvbDefDecal('yn_halo_idle', 12, kvbIdlePaint(YN, {fill: .1, fillCol: '#b04a78', dash: [8, 5], details: halo}));
   kvbDefDecal('yn_pulse', 10, kvbRingPaint(YN, {fillCol: '#b04a78', fill: .3, details: halo, flash: '#fff0f7', rimThick: 3}));
   kvbDefBeam('yn_water', 8, 18, 16, (g, q, W, H, f) => {
@@ -44,4 +44,5 @@
     born: o => { kvbDecal('yn_pulse', o.x, o.y, o.r, 900, {layer: 'g'}); },
     upd: (o, st) => { if(st.tick !== undefined && o.tick > st.tick + 300) kvbDecal('yn_pulse', o.x, o.y, o.r, 560, {layer: 'g', alpha: .6}); st.tick = o.tick; },
     end: o => { kvbDecal('yn_pulse', o.x, o.y, o.r, 900, {layer: 'g'}); kvbEmit('yn_heart', 8, o.x, o.y, {ring: o.r * .5, v0: 20, v1: 80, up: 60, l0: 520, l1: 900, scale: 1.4, flat: .7}); }}, 'ynara');
+  kvbBasic('ynara', YN, 'yn_heart');
 }
