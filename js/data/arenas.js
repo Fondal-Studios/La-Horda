@@ -45,8 +45,9 @@ const ARENA_MODS = {
   infernal: { label:"Arena Infernal",    icon:"🔥", desc:"Arena 10. La dimensión de la Horda. El final del viaje.", hazardName:"Ignición Eterna",
               fireDmgMult:0.8,  iceDmgMult:1.25, enemyDmgPerWave:0.22, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:0.6, heroDmgMult:1.0, enemyRegenPct:0, hazard:"ignicion", hasWalls:false,
-              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste da 38% (6/16). Normal da 33% en esta arena, por eso no se baja más.
-              tierMods:{ pesadilla:{ hp:0.45, dmg:0.35, bossDmg:0.65 } } },
+              // Dificultad del grupo 3 (docs/economy/DIFICULTAD_GRUPO3.md), medido con equipo real (lootPath + equipBest): Normal queda como está (aprendiz 91 %, habitual 88 %);
+              // Pesadilla y Infierno se afinan por arena.
+              tierMods:{ pesadilla:{ hp:0.8, dmg:0.7, bossDmg:0.9 }, infierno:{ hp:0.5, dmg:0.4, bossDmg:0.7 } } },
   // Segunda arena por dificultad (entre Bosque y Hielo, ver ARENA_ORDER). Sin peligro ambiental
   // propio -su identidad de riesgo pasa por el roster (embestidas/descargas/agarres) más que
   // por un hazard de piso como las demás- y con una corriente suave que empuja (ver
@@ -84,8 +85,8 @@ const ARENA_MODS = {
               fireDmgMult:1.0, iceDmgMult:1.0, enemyDmgPerWave:0.18, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.86, enemyRegenPct:0, hazard:null, hasWalls:false,
               potionMult:1.3,
-              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 25% (8/32); con este ajuste (solo Pesadilla) da 40% (16/40).
-              tierMods:{ pesadilla:{ hp:0.85, dmg:0.75, bossDmg:0.9 } } },
+              // Dificultad del grupo 3 (docs/economy/DIFICULTAD_GRUPO3.md), medido con equipo real (lootPath + equipBest): Normal queda como está; Pesadilla y Infierno se afinan por arena.
+              tierMods:{ pesadilla:{ hp:1.15, dmg:1.1, bossDmg:1 }, infierno:{ hp:0.72, dmg:0.63, bossDmg:0.8 } } },
   // Arena Divina: la de asedio 4v4. Todavía sin combate (Fase 1: solo el escenario), así que
   // sin debuffs propios por ahora -esto se termina de calibrar cuando exista el combate de
   // verdad. NO va en ARENA_ORDER a propósito: no tiene que aparecer en la selección normal
