@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "lote": "B002_tanque",
+  "bloque": "B002",
+  "fecha": "2026-10-19",
+  "autor": "ChatGPT; IA autorizada por el dueño",
+  "estado": "EN_CORRECCION",
+  "estado_tecnico": "TECNICO_VERIFICADO",
+  "proveniencia": {
+    "original": true,
+    "ia": true,
+    "referencias": [
+      "art-source/entregas/2026-10-19_tanque_revision_02/campeones/tanque/hoja_36poses.png",
+      "docs/art-brief/campeones/tanque.md",
+      "docs/art-brief/ejemplos/tanque/tanque.cuerpo.muerte__ref.webp"
+    ],
+    "herramientas": [
+      "normalize_sprites.py:process",
+      "import-authored-sheet.py",
+      "style_gate.py",
+      "scan_sprites.py:analyze",
+      "gen-referencias.py",
+      "ImageMagick export PSD"
+    ],
+    "fuentesEditables": [
+      "fuentes/hoja_36poses.psd"
+    ],
+    "nota": "PSD raster de una capa. Reutiliza la fuente guardada; no se generaron imágenes adicionales ni se certifica autoría nativa."
+  },
+  "assets": [
+    {
+      "tipo": "campeon",
+      "id": "tanque",
+      "archivo": "campeones/tanque/hoja_36poses.png",
+      "items_manifiesto": [
+        "tanque.cuerpo.muerte"
+      ],
+      "resuelve": false,
+      "celda": [
+        112,
+        112
+      ],
+      "cols": 4,
+      "filas": 9,
+      "cuadros": 36,
+      "refH": 69,
+      "colores_base": [
+        "#14213a",
+        "#103090",
+        "#905030",
+        "#a9b5c2",
+        "#f0ba91",
+        "#dca62d"
+      ],
+      "hoja_contacto": "campeones/tanque/hoja_contacto.png",
+      "chequeos": "campeones/tanque/chequeos.json"
+    }
+  ],
+  "pendientes": [
+    "Revisar/corregir continuidad de espada en cuadros24–26 y29.",
+    "Revisar diferencia de altura entre caminar frontal y espalda; no se certifica fluidez.",
+    "Aprobación visual del dueño e integración por Claude."
+  ]
+}
