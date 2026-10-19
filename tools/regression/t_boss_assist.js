@@ -27,7 +27,7 @@ function ping(url) { return new Promise(res => { const r = http.get(url, x => { 
     currentArena = 'bosque';
     // 1. sin derrotas: nada (ni en el nivel 10)
     o.eligible0 = bossAssistEligible(); o.pct0 = bossAssistPct();
-    startRun(10); setState('playing'); spawnTimer = 1e12; o.frac0 = bossAssistFrac; const b0 = bossHp(); o.base = b0; const avg0 = runDifficulty.avgHp;
+    startRun(10); setState('playing'); spawnTimer = 1e12; o.frac0 = bossAssistFrac; const b0 = bossHp(); o.base = b0; const avg0 = runDifficulty.avgHp, dmg0 = runDifficulty.dmg;
     // 2. una derrota en un nivel anterior al jefe NO cuenta
     startRun(5); setState('playing'); lose(); o.afterLvl5Loss = save.bossDefeats.bosque | 0; o.lastNull = bossAssistLast;
     // 3. derrota en el nivel del jefe: cuenta 1, el siguiente intento lleva -7 %
@@ -37,11 +37,11 @@ function ping(url) { return new Promise(res => { const r = http.get(url, x => { 
     const rows = [];
     for (let n = 1; n <= 6; n++) {
       save.bossDefeats.bosque = n; startRun(10); setState('playing'); spawnTimer = 1e12; const b = bossHp();
-      rows.push({ n, frac: +bossAssistFrac.toFixed(3), hpRatio: +(b.hp / b0.hp).toFixed(3), dmgRatio: +(b.dmg / b0.dmg).toFixed(3), avgRatio: +(runDifficulty.avgHp / avg0).toFixed(3) });
+      rows.push({ n, dmgRun: +(runDifficulty.dmg / dmg0).toFixed(3), frac: +bossAssistFrac.toFixed(3), hpRatio: +(b.hp / b0.hp).toFixed(3), dmgRatio: +(b.dmg / b0.dmg).toFixed(3), avgRatio: +(runDifficulty.avgHp / avg0).toFixed(3) });
     }
     o.rows = rows;
     // 5. la ayuda se fija en el nivel 10: en el nivel 4 de esa partida no toca nada
-    save.bossDefeats.bosque = 3; startRun(4); setState('playing'); spawnTimer = 1e12; o.frac4 = bossAssistFrac; o.avg4 = +(runDifficulty.avgHp / avg0).toFixed(3);
+    save.bossDefeats.bosque = 3; startRun(4); setState('playing'); spawnTimer = 1e12; o.frac4 = bossAssistFrac; o.avg4 = +(runDifficulty.avgHp / avg0).toFixed(3) + +(runDifficulty.dmg / dmg0).toFixed(3) - 1;
     // 6. aviso al entrar y renglón de derrota con las cifras exactas (2 derrotas previas -> 14 %)
     save.bossDefeats.bosque = 2; o.entry = bossAssistEntryText(); save.bossDefeats.bosque = 0; o.entry0 = bossAssistEntryText();
     // 7. preferencia apagada: sin ayuda, el jefe pleno, y la derrota igual cuenta (y ofrece activarla)
@@ -82,8 +82,9 @@ function ping(url) { return new Promise(res => { const r = http.get(url, x => { 
   check('acumula 7 % por derrota y topa en 25 %', R.rows.every((r, i) => Math.abs(r.frac - want[i]) < 0.0011), R.rows.map(r => r.frac));
   check('vida del jefe baja exactamente la ayuda', R.rows.every((r, i) => Math.abs(r.hpRatio - (1 - want[i])) < 0.004), R.rows.map(r => r.hpRatio));
   check('daño del jefe y golpes anclados bajan exactamente la ayuda', R.rows.every((r, i) => Math.abs(r.dmgRatio - (1 - want[i])) < 0.01 && Math.abs(r.avgRatio - (1 - want[i])) < 0.002), R.rows.map(r => [r.dmgRatio, r.avgRatio]));
+  check('daño de la horda del nivel 10 baja lo mismo (vida de la horda no)', R.rows.every((r, i) => Math.abs(r.dmgRun - (1 - want[i])) < 0.002), R.rows.map(r => r.dmgRun));
   check('la ayuda recién se fija en el nivel 10 (nivel 4: nada cambia)', R.frac4 === 0 && R.avg4 === 1, [R.frac4, R.avg4]);
-  check('aviso al entrar con la cifra exacta, y nada sin derrotas', R.entry === 'Ayuda activa: el jefe tiene −14 % de vida y daño tras tus intentos. Se puede apagar en Opciones.' && R.entry0 === null, [R.entry, R.entry0]);
+  check('aviso al entrar con la cifra exacta, y nada sin derrotas', R.entry === 'Ayuda activa: el jefe tiene −14 % de vida y daño tras tus intentos; la horda del nivel 10 también pega −14 %. Se puede apagar en Opciones.' && R.entry0 === null, [R.entry, R.entry0]);
   check('apagada: ningún efecto, jefe pleno, sin aviso', R.pctOff === 0 && R.entryOff === null && R.offRatio[0] === 1 && R.offRatio[1] === 1 && R.offRatio[2] === 0, [R.pctOff, R.offRatio]);
   check('apagada: la derrota igual cuenta y se ofrece activarla', R.offN === 3 && /desactivada/.test(R.offTxt) && R.offBtn && R.offBtn.bossAssist === 'on', [R.offN, R.offTxt, R.offBtn]);
   check('solo en solitario/Normal: sala, Pesadilla, Infierno, endless, Coliseo/Cristales, Divina, arena superada = 0', R.solo === 0.14 && [R.coop, R.pesadilla, R.infierno, R.endless, R.lanes, R.divina, R.room, R.cleared].every(v => v === 0), R);

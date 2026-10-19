@@ -11,7 +11,9 @@
    - Acotada: solo Normal (Pesadilla/Infierno no), solo en solitario (nada en cooperativo, sala, Horda Infinita, Divina, Coliseo,
      Guerra de Cristales, Test Lab ni entrenamiento) y solo en arenas de la campaña sin superar (rejugar una superada es el jefe pleno).
    - Qué toca: vida del jefe (scaleBossStats, waves.js) y daño (runDifficulty.avgHp, que ancla e.dmg y los golpes con aviso del jefe, se
-     reduce UNA vez al empezar el nivel 10). La horda, los subjefes de niveles anteriores y los enemigos invocados no cambian.
+     reduce UNA vez al empezar el nivel 10). Medido (docs/economy/JEFE_AYUDA.md): casi todas las derrotas del tramo final caen ANTES de que
+     salga el jefe (la horda del nivel 10), así que en ese nivel también baja el daño de la horda (runDifficulty.dmg) en el mismo porcentaje; su
+     vida no. Niveles 1-9, subjefes anteriores y rejugar arenas superadas no cambian.
    - Guardado: save.bossDefeats = {arena: derrotas en el nivel del jefe}. Guardados viejos no lo tienen: vale 0 (save.js lo normaliza).
    ============================================================ */
 let BOSS_ASSIST = { step:0.07, cap:0.25 };   // let: tools/playtest/boss-assist.js lo varía para calibrar
@@ -49,7 +51,7 @@ function bossAssistBegin(){
   bossAssistFrac = 0;
   if(typeof LEVEL_COUNT==="undefined" || runLevel!==LEVEL_COUNT) return;
   const f = bossAssistPct();
-  if(f > 0 && typeof runDifficulty!=="undefined" && runDifficulty){ bossAssistFrac = f; runDifficulty.avgHp *= (1 - f); }
+  if(f > 0 && typeof runDifficulty!=="undefined" && runDifficulty){ bossAssistFrac = f; runDifficulty.avgHp *= (1 - f); runDifficulty.dmg *= (1 - f); }
 }
 // Multiplicador de vida del jefe (scaleBossStats). Solo vale desde el nivel 10.
 function bossAssistHpMult(){ return (bossAssistFrac > 0 && runLevel>=LEVEL_COUNT) ? (1 - bossAssistFrac) : 1; }
@@ -72,7 +74,7 @@ function bossAssistOnVictory(arena){
 // Aviso al entrar a la arena (solo si hay ayuda activa)
 function bossAssistEntryText(){
   const f = bossAssistPct(); if(f <= 0) return null;
-  return `Ayuda activa: el jefe tiene ${bossAssistTxt(f)} de vida y daño tras tus intentos. Se puede apagar en Opciones.`;
+  return `Ayuda activa: el jefe tiene ${bossAssistTxt(f)} de vida y daño tras tus intentos; la horda del nivel 10 también pega ${bossAssistTxt(f)}. Se puede apagar en Opciones.`;
 }
 function bossAssistEntryNotice(){
   if(typeof state!=="undefined" && state!=="playing") return;

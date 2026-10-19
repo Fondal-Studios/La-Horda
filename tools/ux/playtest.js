@@ -27,7 +27,7 @@ const maps=process.env.ARENAS?process.env.ARENAS.split(','):await pages[0].evalu
 const jobs=[];for(let seed=SEED0;seed<SEED0+SEEDS;seed++)for(const arena of maps)for(const profile of PROFILES)for(const bd of BD)jobs.push({arena,profile,seed,bd});
 const save=()=>fs.writeFileSync(OUT,JSON.stringify({method:`${maps.length} arenas x 3 scripted experience profiles x ${SEEDS} seeds; expected level; no gear; 900s cap`,results:[...results].sort((a,b)=>maps.indexOf(a.arena)-maps.indexOf(b.arena)||PROFILES.findIndex(p=>p.name===a.profile)-PROFILES.findIndex(p=>p.name===b.profile)||a.seed-b.seed||(a.bossDefeats|0)-(b.bossDefeats|0)),errors},null,2));
 async function worker(p){for(let job;(job=jobs.shift());){
- const row=await p.evaluate(({arena,profile,seed,phase,same,cls,bd,bstep,bcap})=>{
+ const row=await p.evaluate(({arena,profile,seed,phase,same,cls,bd,bstep,bcap,fast})=>{
   __AP.on=false;state='menu';netMatch=null;divinaMode=false;diffSetSelected('normal');__PT.reset();save.arenasCleared={};save.bossDefeats=bd?{[arena]:bd}:{};if(typeof BOSS_ASSIST!=='undefined'){if(bstep!=null)BOSS_ASSIST.step=bstep;if(bcap!=null)BOSS_ASSIST.cap=bcap;}
   // semilla 0 = la fórmula histórica (comparable con corridas anteriores)
   let n=(arena.length*7919+(same?0:profile.reaction)+seed*104729)|0||1;Math.random=()=>{n^=n<<13;n^=n>>>17;n^=n<<5;return (n>>>0)/4294967296;};
@@ -38,10 +38,12 @@ async function worker(p){for(let job;(job=jobs.shift());){
   const norm=DIFF_TIERS.normal,orig={hp:norm.hp,dmg:norm.dmg,bossDmg:norm.bossDmg,spawn:norm.spawn};
   if(phase==='before')Object.assign(norm,{hp:1,dmg:1,bossDmg:1,spawn:1});
   __AP.start(selectedClass,arena,1);if(phase==='before')heroes.forEach(h=>h._duoReserve=null);
+  // FAST=1: los niveles 1-9 se saltan (se cobra el refuerzo de cada uno) y se juega entero el nivel 10: ~7 veces más barato, algo más duro que una partida real (sin XP de bajas ni botín de 9 niveles)
+  if(fast){for(let L=1;L<LEVEL_COUNT&&['playing','buff'].includes(state);L++){enemies.length=0;spawnTimer=1e12;levelTimer=levelDuration+1;let g=0;while(runLevel===L&&['playing','buff'].includes(state)&&g++<400)__AP.sim(100,20);}}
   let ms=0;while(ms<900000&&['playing','buff'].includes(state)){const out=__AP.sim(1000,40);ms+=out.t||1000;}
   const top=Object.entries(__PT.dmg).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([k,v])=>k+' '+Math.round(v));
   Object.assign(norm,orig);const r={arena,profile:profile.name,seed,level:DIFF.arenaLevel[arena],phase,result:state,seconds:Math.round(ms/1000),wave:runLevel,kills,reserveUsed:!!player._duoUsed,active:player.classKey,boss:boss?{type:boss.type,hp:Math.round(boss.hp),max:boss.maxHp}:null,killer:__PT.killer,topDamage:top,autopilotError:__AP.err,bossDefeats:bd|0,assist:typeof bossAssistFrac!=='undefined'?+bossAssistFrac.toFixed(3):null};__AP.on=false;clearRunTimers();state='menu';return r;
- },{arena:job.arena,profile:job.profile,seed:job.seed,phase,same:SAME_SEED,cls:CLASS,bd:job.bd,bstep:process.env.BOSS_STEP?+process.env.BOSS_STEP:null,bcap:process.env.BOSS_CAP?+process.env.BOSS_CAP:null});results.push(row);save();console.log(JSON.stringify(row));}}
+ },{arena:job.arena,profile:job.profile,seed:job.seed,phase,same:SAME_SEED,cls:CLASS,bd:job.bd,bstep:process.env.BOSS_STEP?+process.env.BOSS_STEP:null,bcap:process.env.BOSS_CAP?+process.env.BOSS_CAP:null,fast:!!process.env.FAST});results.push(row);save();console.log(JSON.stringify(row));}}
 await Promise.all(pages.map(worker));
 await browser.close();server.kill();if(errors.length||results.some(r=>r.autopilotError))process.exitCode=1;
 })().catch(e=>{console.error(e);server.kill();process.exit(1)});
