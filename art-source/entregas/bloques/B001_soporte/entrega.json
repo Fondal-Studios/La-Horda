@@ -4,7 +4,7 @@
   "bloque": "B001",
   "autor": "ChatGPT; IA autorizada por el dueño",
   "fecha": "2026-10-19",
-  "estado": "TECNICO_VERIFICADO",
+  "estado": "EN_CORRECCION",
   "proveniencia": {
     "original": true,
     "ia": true,
@@ -60,12 +60,33 @@
       "referencia": "Identidad del atlas propio y ritmo de muerte de Oriel; filas7-9 reutilizadas de la fuente ya guardada.",
       "hoja_contacto": "campeones/soporte/hoja_contacto.png",
       "chequeos": "campeones/soporte/chequeos.json",
-      "estado": "TECNICO_VERIFICADO"
+      "estado": "FIX_NATIVE"
     }
   ],
   "pendientes": [
-    "Aprobación visual del dueño: coherencia de diseño, arma, movimiento, outline1px y apariencia de píxel nativo.",
-    "Integración, roster_gate, skin_audit y capturas en juego a cargo de Claude."
+    "Corregir señal ILUSTRACION en 1/36 cuadros; índices en revision_nativa. La autorización de trabajo ya está otorgada.",
+    "Revisión visual de identidad y animaciones, roster_gate, skin_audit y prueba en juego después de corregir el arte; no es una espera de permiso del dueño."
   ],
-  "integracion": "NO_INTEGRADO; no modificar assets existentes desde esta entrega."
+  "integracion": "NO_INTEGRADO; no modificar assets existentes desde esta entrega.",
+  "revision_tecnica_previa": {
+    "estado": "TECNICO_VERIFICADO",
+    "estado_tecnico": "TECNICO_VERIFICADO",
+    "alcance": "Resultados históricos de importador/scan/Style Gate; no certifican todos los cuadros."
+  },
+  "estado_tecnico": "FIX_NATIVE",
+  "revision_nativa": {
+    "estado": "FIX",
+    "detector": "tools/art/check-authored-density.js (canónico, escala1)",
+    "git_blob": "fc3b159828099647e25b880768fa3626161ee89d",
+    "cuadros_fallidos": [
+      11
+    ],
+    "motivo": "ILUSTRACION",
+    "run": 39293150014,
+    "job": 118198719642,
+    "commit": "5feaf4bfb3e62a318aaf469e8bc12df0e92fe524",
+    "evidencia_url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39293150014",
+    "approvalClaimed": false,
+    "installed": false
+  }
 }
