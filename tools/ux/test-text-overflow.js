@@ -13,6 +13,7 @@ const SCREENS={
  codex_arena:"setState('codex');codexGo('arena','micelial','Reino');",
  codex_set:"setState('codex');codexGo('set',Object.keys(SET_DB)[0],'Set');",
  shop:"setState('shop');renderShop();",
+ shop_skin_hero:"if(!window.__origShowcase){window.__origShowcase=shopDailyShowcase;shopDailyShowcase=function(){return Object.assign({},window.__origShowcase.apply(this,arguments),{featured:{kind:'skin',id:'exp_vesper',price:900,base:900,owned:false}});};}setState('shop');renderShop();",
  prep:"setState('prep');renderPrepSummary();",
  run_intro:"runIntroShow('micelial',()=>{});RUN_INTRO.pages=[];RUN_INTRO.prologue=false;runIntroFill(document.getElementById('run-intro'),'micelial',ARENA_BRIEF.micelial);",
  tactical:"selectedClass='libertador';currentArena='bosque';lobbyAllies=['tanque','soporte','mago'];startRun(3);setState('playing');document.getElementById('pause-btn').click();",

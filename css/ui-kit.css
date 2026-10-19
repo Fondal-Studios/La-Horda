@@ -332,6 +332,9 @@ body.reduce-motion .shop-hero-art::after, body.reduce-motion .ui-tag.new, body.r
 .shop-show-top .shop-hero-buy .shop-price{ font-size:1.3rem; }
 .shop-show-top .shop-hero-buy .shop-btn{ font-size:1.15rem; padding:4px 14px; }
 @media (max-height:520px){ .shop-show-top .shop-hero-desc{ display:none; } .shop-hero-title{ font-size:0.9rem; } }
+/* Nombres largos de una sola palabra ("Costurera de Espantapájaros"): a 667 px de ancho la columna de texto mide ~173 px y la palabra
+   de 14 letras se partía a media palabra ("Espantapájar/os"). Letra más chica para que la palabra entre entera. */
+@media (max-width:720px){ .shop-hero-title{ font-size:0.74rem; } }
 .shop-deal-head{ display:flex; align-items:center; gap:8px; width:100%; min-width:0; }
 .shop-deal-meta{ min-width:0; flex:1; }
 .shop-deal-buy .shop-btn{ width:100%; }
