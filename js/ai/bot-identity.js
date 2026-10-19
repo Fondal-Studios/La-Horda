@@ -27,6 +27,9 @@ function _botShuffled(){ const a = BOT_NAME_POOL.slice(); for(let i = a.length -
 function botNameFor(classKey, avoid){
   const bad = new Set((avoid || []).filter(Boolean).map(n=>String(n).toLowerCase()));
   for(const k of Object.keys(_botNameByClass)) if(k !== classKey) bad.add(_botNameByClass[k].toLowerCase());
+  // Defensa: tampoco repite el nombre de ningún héroe vivo de la partida (otro compañero que lo recibió por otra vía, p. ej. de
+  // una sala en red) ni el de un humano. Si el nombre guardado de este guardián ya lo usa otro, se sortea uno nuevo.
+  if(typeof heroes !== "undefined" && Array.isArray(heroes)) for(const h of heroes) if(h && h.netName && h.classKey !== classKey) bad.add(String(h.netName).toLowerCase());
   const keep = _botNameByClass[classKey];
   if(keep && !bad.has(keep.toLowerCase())) return keep;
   for(let guard = 0; guard < 400; guard++){
