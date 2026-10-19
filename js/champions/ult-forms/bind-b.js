@@ -98,3 +98,16 @@ for(const [kind, champ] of [['as_great', 'oriel'], ['as_sky', 'saelis'], ['as_co
       if(champ === 'oriel' && o.echo && o.echo.until > runElapsedMs){ const roster = ['tanque', 'guerrero', 'musashi', 'cazadora', 'segador', 'ilkan'], k = roster[o.echo.champ % roster.length]; ctx.save(); ctx.globalAlpha = .45; try{ drawChampPack(k, {x: o.echo.x, y: o.echo.y, classKey: k, _codexSet: 'attack_down', _codexT: (500 - (o.echo.until - runElapsedMs)) / 500}, 2, .45); }catch(e){} ctx.restore(); }
     }}, champ);
 }
+/* Segador: su definitiva heredaba cataclysmVFX (anillo naranja, giro celeste, brasas y cristales de hielo de Thalen). Se deja que corra (consume el mismo azar que antes: la mecánica
+   y la comparación con ?uf=0 no cambian) y se retiran las partículas que dibujó; el sprite del lanzamiento ya lo silencia el envoltorio de bind.js. */
+(function(){
+  if(!UF.champs.segador || typeof castAbility !== 'function') return;
+  const ca = castAbility, COL = new Set(['#ff6a3d', '#9fe3ff', '#ffb36a', '#bfe8ff', '#ffcf5c', '#7ad0ff']);
+  castAbility = function(caster, sk){
+    if(!caster || caster.classKey !== 'segador' || !sk || sk.kind !== 'berserker_ult' || !ufHas('segador') || typeof particles === 'undefined') return ca.apply(this, arguments);
+    const n0 = particles.length;
+    try{ return ca.apply(this, arguments); } finally {
+      for(let i = particles.length - 1; i >= n0; i--){ const p = particles[i]; if(p && (p.ring || p.spin || p.crystal || p.runeRing || COL.has(p.color))) particles.splice(i, 1); }
+    }
+  };
+})();
