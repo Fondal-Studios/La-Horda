@@ -1,0 +1,45 @@
+name: Libertador death component gate
+on:
+  pull_request:
+    paths: ['assets/sprites/champions/libertador/v2/death.png', 'js/assets/champion-sprites.js', 'js/rendering/champion-sprites.js', 'js/data/codex-content.js', 'tools/art/check-libertador-death.js', 'tools/art/check-authored-clip-density.js', 'tools/factory/extract-authored-clip.py', 'tools/factory/test_authored_clip.py', 'docs/art-gate/libertador-death/**', '.github/workflows/libertador-death.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  component:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pillow numpy opencv-python-headless
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - run: python -m unittest tools/factory/test_authored_clip.py tools/factory/test_authored_frame.py
+      - name: Reproduce exact source pixels
+        run: |
+          python tools/factory/extract-authored-clip.py docs/art-gate/libertador-death/source.json /tmp/death.png /tmp/extraction.json
+          python - <<'PY'
+          from PIL import Image
+          assert Image.open('/tmp/death.png').tobytes() == Image.open('assets/sprites/champions/libertador/v2/death.png').tobytes()
+          PY
+      - run: node tools/art/check-authored-clip-density.js assets/sprites/champions/libertador/v2/death.png docs/art-gate/libertador-death/native.json
+      - name: Source family style (not whole-sheet native approval)
+        run: python tools/art/painter/style_gate.py art-source/entregas/bloques/B004_libertador/campeones/atlas.png
+      - run: node tools/art/check-libertador-death.js
+      - name: Existing roster and skins
+        run: |
+          python -m http.server 8750 --bind 127.0.0.1 >/tmp/art-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          ROSTER_BASE_URL=http://127.0.0.1:8750 node tools/art/roster_gate.js
+          SE_BASE_URL=http://127.0.0.1:8750 PACKS=libertador node tools/art/skin_audit.js docs/art-gate/libertador-death/skins
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: libertador-death-component
+          path: docs/art-gate/
+          retention-days: 30

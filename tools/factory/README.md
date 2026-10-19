@@ -66,7 +66,7 @@ Estas pruebas se complementan: recursos finitos no demuestran daño correcto, la
 - `python3 tools/factory/replace-authored-frame.py MANIFIESTO SALIDA`: ensambla un reemplazo de autor con hashes; conserva los otros 35 cuadros sin cambios. No aprueba arte.
 - `node tools/art/check-authored-density.js ATLAS REPORTE [escala]`: detector canónico por cada uno de los 36 cuadros; rechaza cuadros vacíos. Complementa el Style Gate por medianas. Un PASS técnico tampoco reemplaza revisión visual ni prueba a escala de runtime.
 
-Los candidatos B001/B004 siguen en FIX. No reutilizar sus PNG como si hubieran aprobado el Art Gate. Fuentes y reportes están preservados para continuar sin repetir generaciones.
+B001 Soporte v3 se integró tras validación en PR #163; evidencia en `docs/art-gate/soporte-v3/`. El reemplazo completo B004 sigue en FIX: no reutilizar su hoja como si hubiera aprobado el Art Gate. Las extracciones de clips independientes necesitan validación propia y no cierran el resto de B004. Fuentes y reportes están preservados para continuar sin repetir generaciones.
 
 El ensamblador de un cuadro admite `targetHeight` entero de1 a106, en píxeles de silueta completa; por defecto conserva la altura original. Se calibra explícitamente cuando el arma ocupa una proporción diferente y no permite igualar el cuerpo usando solo la altura total. Escala uniforme NEAREST, pies106 y otros35 cuadros intactos; rechaza clipping y valores inválidos. No es aprobación del arte. Pruebas: `python -m unittest tools/factory/test_authored_frame.py`.
 
@@ -83,3 +83,7 @@ Conservar también el pack montado; cambiar de arma en una fase equivocada requi
 `COMPATIBLE_NOT_ART_APPROVAL` verifica solo contrato declarado. No certifica contenido visual, efectos, habilidades implementadas, red, Style Gate ni Visual Gate.
 Seguir ejecutando los gates existentes y observando el renderer real. No agregar nombres ficticios para esconder poses faltantes.
 Pruebas: `node --test tools/factory/test-animation-contract.js`; el canario de Libertador debe ser rechazado por los clips reales ausentes.
+
+### Componentes sin sustitución del atlas completo
+
+`python3 tools/factory/extract-authored-clip.py MANIFIESTO SALIDA RECIBO` extrae cuadros únicos en orden, con SHA-256 de fuente y RGBA por cuadro. No escala, filtra ni cambia la paleta. Rechaza grillas inválidas, duplicados, cuadros vacíos y alfa parcial. El recibo `EXTRACTED_NOT_APPROVED` no aprueba arte. Para un clip de cuatro cuadros112×112: `node tools/art/check-authored-clip-density.js ATLAS REPORTE` reutiliza el detector canónico sin cambiar umbrales; su alcance son esos cuatro cuadros. El checker de hojas36 conserva sus exigencias. Completar revisión visual, escala, Códice, skins, fallback, renderer y red antes de integrar. Prueba: `python3 -m unittest tools/factory/test_authored_clip.py`.
