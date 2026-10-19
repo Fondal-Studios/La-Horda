@@ -17,6 +17,10 @@ const {chromium}=require('playwright');
    startRun(1);
    updateHUD();
    const chip=document.getElementById('goal-chip');
+   // la misión ya se enseñó (páginas de arriba): el cartel no repite "sobrevivir", queda con nivel y reloj
+   out.chipTaught=goalChipText();
+   save.tut.goalMission=0; // sin enseñar todavía: el cartel completo
+   updateHUD();
    out.chip=chip.textContent;out.chipHidden=chip.classList.contains('hidden');
    out.chipCiudad=/proteg/.test(chip.textContent);
    levelTimer=levelDuration-5000;out.chipLeft=goalChipText();
@@ -27,6 +31,7 @@ const {chromium}=require('playwright');
    return out;
   });
   assert.equal(r.mission1,2);assert.equal(r.mission2,0);assert.match(r.missionTitle,/SOBREVIVIR/);
+  assert.match(r.chipTaught,/^NIVEL 1\/10 · protegé la ciudad · \d+:\d\d$/);assert.doesNotMatch(r.chipTaught,/sobrevivir/i);
   assert.equal(r.chipHidden,false);assert.match(r.chip,/OBJETIVO: sobrevivir/);assert.ok(r.chipCiudad);
   assert.match(r.chipLeft,/0:05$/);assert.match(r.chipBoss,/jefe/);assert.match(r.chipDown,/levantarte/);
   assert.match(r.whyHtml,/nivel 7 de 10/);assert.match(r.recap,/sobreviviste/);
