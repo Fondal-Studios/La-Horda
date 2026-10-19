@@ -82,6 +82,15 @@ const BASE = process.env.BASE_URL || process.env.ABILITY_BASE_URL || 'http://127
     const a = await once(true), b = await once(false); if (a === b) same++; else diffs.push(k + '\n  ' + a.slice(0, 240) + '\n  ' + b.slice(0, 240));
   }
   ok('4. mecánica idéntica con y sin formas (' + ults.length + ' definitivas, 150 cuadros, mismo azar)', diffs.length === 0, `iguales=${same} ` + diffs.slice(0, 2).join('\n'));
+  // 7: segunda tanda (13 definitivas, mitad B): cada una tiene forma propia registraday se reproduce con ufPlay
+  const B2 = ['oriel', 'orsa', 'renko', 'saelis', 'segador', 'sira', 'solciju', 'tibor', 'vesper', 'veyra', 'vhal', 'ynara', 'zahra'].filter(k => !only || only.includes(k));
+  const r7 = await page.evaluate(B2 => {
+    const out = {missing: B2.filter(k => !UF.champs[k]), notPlayed: []};
+    selectedClass = 'tanque'; netMatch = null; startRun(1); state = 'playing';
+    for (const k of B2) { const p0 = UF.stats.played; ufPlay(k, player.x, player.y, 150, 0); if (UF.stats.played !== p0 + 1) out.notPlayed.push(k); }
+    vfxResetRun(); state = 'menu'; return out;
+  }, B2);
+  ok('7. segunda tanda: ' + B2.length + ' definitivas con forma propia registrada y reproducible', r7.missing.length === 0 && r7.notPlayed.length === 0, JSON.stringify(r7));
   ok('0. sin errores de página', errors.length === 0, errors.slice(0, 3).join(' | '));
   await browser.close(); process.exitCode = bad ? 1 : 0;
 })().catch(e => { console.error(e); process.exitCode = 1; });
