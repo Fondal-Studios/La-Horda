@@ -10,6 +10,7 @@
  * Con profile=max también imprime la ventaja contra `none` si existe el archivo --base=... (salida de una corrida none). */
 const {chromium}=require('playwright');const {spawn}=require('node:child_process');const path=require('node:path');const net=require('node:net');const fs=require('node:fs');
 const arg=(n,d)=>{const a=process.argv.find(x=>x.startsWith('--'+n+'='));return a?a.split('=')[1]:d;};
+const CAPJ=arg('cap',null);   // JSON que se mezcla en LANES.PROGRESS_CAP (solo para calibrar topes; p. ej. --cap={"talentPoints":0})
 const PROFILE=arg('profile','none'),REPEAT=Number(arg('repeat',2)),SECS=Number(arg('secs',90)),OUT=arg('out',null),BASE=arg('base',null);
 const ONLY=process.argv.slice(2).filter(x=>!x.startsWith('--'));
 const freePort=()=>new Promise(r=>{const s=net.createServer().listen(0,'127.0.0.1',()=>{const p=s.address().port;s.close(()=>r(p));});});
@@ -28,8 +29,8 @@ const median=a=>{const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length?(
   if(++n%8===0){await p.close();p=await newPage();}
   const times=[],info={};
   for(let rep=0;rep<REPEAT;rep++){
-   const r=await p.evaluate(({champ,profile,secs,seed})=>{
-    setState('mainmenu');
+   const r=await p.evaluate(({champ,profile,secs,seed,capj})=>{
+    setState('mainmenu');if(capj){const o=JSON.parse(capj);for(const k in o){if(o[k]&&typeof o[k]==='object'&&!Array.isArray(o[k]))Object.assign(LANES.PROGRESS_CAP[k],o[k]);else LANES.PROGRESS_CAP[k]=o[k];}}
     // guardado de prueba: campaña completa y, según el perfil, el campeón al máximo de la campaña
     const c=save.champions[champ];c.unlocked=true;save.arenasCleared.infernal=true;
     if(profile!=='none'){
@@ -59,7 +60,7 @@ const median=a=>{const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length?(
      if(!foe.alive||foe.hp<=0){out.ttk=Math.round(t)/1000;break;}
     }
     lanesStop('mainmenu');
-    return out;},{champ,profile:PROFILE,secs:SECS,seed:11+rep});
+    return out;},{champ,profile:PROFILE,secs:SECS,seed:11+rep,capj:CAPJ});
    if(r.ttk!=null)times.push(r.ttk);Object.assign(info,{progress:r.progress,hp:r.hp,dmg:r.dmg,eHp:r.eHp});
   }
   const ttk=times.length===REPEAT?median(times):(times.length?median(times):null);
