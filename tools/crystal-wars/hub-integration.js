@@ -19,7 +19,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
       page.on('pageerror', e => errors.push(e.message));
       await page.goto(`http://127.0.0.1:${PORT}/`, {waitUntil: 'domcontentloaded'});
       await page.waitForFunction(() => typeof setState === 'function' && typeof renderMainMenu === 'function', null, {timeout: 120000});
-      await page.evaluate(() => { save.tut = save.tut || {}; save.tut.training = 1; save.firstRun = 'hub'; save.champions.tanque.unlocked = true; persistNow(); setState('mainmenu'); renderMainMenu(); });
+      await page.evaluate(() => { save.tut = save.tut || {}; save.tut.training = 1; save.firstRun = 'hub'; save.champions.tanque.unlocked = true; save.arenasCleared.infernal = true; persistNow(); setState('mainmenu'); renderMainMenu(); });
       await sleep(400);
       const r = await page.evaluate(() => {
         const b = document.getElementById('hub-crystal-btn'); if (b) b.scrollIntoView({block: 'center'}); // el menú se desliza: alcanza con poder llegar
@@ -54,7 +54,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
       page.on('pageerror', e => errors.push(e.message));
       await page.goto(`http://127.0.0.1:${PORT}/`, {waitUntil: 'domcontentloaded'});
       await page.waitForFunction(() => typeof setState === 'function' && typeof renderMainMenu === 'function', null, {timeout: 120000});
-      await page.evaluate(() => { save.tut = {}; save.firstRun = 'hub'; save.champions.tanque.unlocked = true; save.starterSkinPending = false; persistNow(); setState('mainmenu'); renderMainMenu(); });
+      await page.evaluate(() => { save.tut = {}; save.firstRun = 'hub'; save.champions.tanque.unlocked = true; save.arenasCleared.infernal = true; save.starterSkinPending = false; persistNow(); setState('mainmenu'); renderMainMenu(); });
       await sleep(400);
       await page.click('#hub-crystal-btn');
       await page.waitForSelector('#cw-gate:not(.hidden)', {timeout: 5000});
@@ -78,7 +78,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
       await page.route('**/js/modes/crystal-wars/**', route => route.fulfill({status: 404, contentType: 'text/plain', body: 'No esta'}));
       await page.goto(`http://127.0.0.1:${PORT}/`, {waitUntil: 'domcontentloaded'});
       await page.waitForFunction(() => typeof setState === 'function' && typeof renderMainMenu === 'function', null, {timeout: 120000});
-      await page.evaluate(() => { save.tut = save.tut || {}; save.tut.training = 1; save.firstRun = 'hub'; save.champions.tanque.unlocked = true; persistNow(); setState('mainmenu'); renderMainMenu(); });
+      await page.evaluate(() => { save.tut = save.tut || {}; save.tut.training = 1; save.firstRun = 'hub'; save.champions.tanque.unlocked = true; save.arenasCleared.infernal = true; persistNow(); setState('mainmenu'); renderMainMenu(); });
       await sleep(400);
       await page.click('#hub-crystal-btn');
       await page.waitForFunction(() => /El competitivo todavía no está publicado/.test(document.body.innerText), null, {timeout: 8000});

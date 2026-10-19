@@ -5,7 +5,7 @@
  * Uso: node tools/lanes/sim.js [partidas=3] [segundos=300] */
 const {chromium}=require('playwright');const {spawn}=require('node:child_process');const path=require('node:path');const assert=require('node:assert/strict');
 require('./team-card-test.js');
-const N=Number(process.argv[2])||3,SECS=Number(process.argv[3])||300,PORT=8893;
+const N=Number(process.argv[2])||3,SECS=Number(process.argv[3])||300,PORT=+process.env.LH_PORT||8893;
 const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__dirname,'../..'),stdio:'ignore'});
 (async()=>{
  for(let i=0;i<60;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}

@@ -4,7 +4,7 @@
  * Verifica: sin excepciones, sin valores NaN, sin fuego amigo de la horda propia, nadie sale del mapa y el campeón realmente peleó (bajas > 0).
  * Uso: node tools/lanes/kits.js [segundos=45] [campeón...]  (sin campeones = todos los de CLASSES con perfil de bot) */
 const {chromium}=require('playwright');const {spawn}=require('node:child_process');const path=require('node:path');
-const SECS=Number(process.argv[2])||45,ONLY=process.argv.slice(3),PORT=8897;
+const SECS=Number(process.argv[2])||45,ONLY=process.argv.slice(3),PORT=+process.env.LH_PORT||8897;
 const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__dirname,'../..'),stdio:'ignore'});
 (async()=>{
  for(let i=0;i<60;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}

@@ -5,7 +5,7 @@
  * nada tira excepciones ni NaN y el guardado real queda como estaba.
  * Uso: node tools/coliseum/sim.js [torneos=3] [segundos=900] */
 const {chromium}=require('playwright');const {spawn}=require('node:child_process');const path=require('node:path');const assert=require('node:assert/strict');
-const N=Number(process.argv[2])||3,SECS=Number(process.argv[3])||900,PORT=8905,CHAMPS=process.argv.slice(4);
+const N=Number(process.argv[2])||3,SECS=Number(process.argv[3])||900,PORT=+process.env.LH_PORT||8905,CHAMPS=process.argv.slice(4);
 const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__dirname,'../..'),stdio:'ignore'});
 (async()=>{
  for(let i=0;i<60;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
