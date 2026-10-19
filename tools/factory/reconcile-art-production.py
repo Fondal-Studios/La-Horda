@@ -63,6 +63,11 @@ def verify_runtime_icons(entry):
     source = ROOT / receipt['source']
     require(hashlib.sha256(source.read_bytes()).hexdigest() == receipt['sourceSha256'],
             'icon renderer hash mismatch')
+    historical_source = subprocess.run(['git', 'show', entry['merge'] + ':' + receipt['source']],
+                                       cwd=ROOT, capture_output=True)
+    require(historical_source.returncode == 0
+            and hashlib.sha256(historical_source.stdout).hexdigest() == receipt['sourceSha256'],
+            'icon renderer does not match referenced merge')
     declared = entry['items']
     require(len({e['item'] for e in declared}) == len(declared), 'duplicate icon task mapping')
     icons = receipt['icons']
@@ -80,6 +85,11 @@ def verify_runtime_icons(entry):
         require(hashlib.sha256(data).hexdigest() == icon['pngSha256']
                 and data[:8] == b'\x89PNG\r\n\x1a\n'
                 and struct.unpack('>II', data[16:24]) == (16, 16), 'icon PNG hash/dimensions mismatch')
+        historical_png = subprocess.run(['git', 'show', entry['merge'] + ':' + icon['file']],
+                                        cwd=ROOT, capture_output=True)
+        require(historical_png.returncode == 0, 'icon PNG absent from referenced merge')
+        require(hashlib.sha256(historical_png.stdout).hexdigest() == icon['pngSha256'],
+                'icon PNG does not match referenced merge')
         proof = {'pr': entry['pr'], 'commit_main': entry['merge'], 'icon': icon['id'],
                  'png': icon['file'], 'sha256': icon['pngSha256'], 'rgba_sha256': icon['rgbaSha256'],
                  'evidencia': entry['receipt'], 'runtime': receipt['source'],

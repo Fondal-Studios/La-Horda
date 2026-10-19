@@ -76,5 +76,20 @@ class ProductionGuards(unittest.TestCase):
         self.assertIn(b'icon task mapping', result.stderr)
         self.assertEqual(before, [hashlib.sha256(p.read_bytes()).digest() for p in paths])
 
+
+    def test_merge_before_delivery_cannot_close_icon_tasks(self):
+        paths = [ROOT / 'art-source/entregas/control_produccion.json', ROOT / 'art-source/entregas/bloques/plan_bloques.json']
+        before = [hashlib.sha256(p.read_bytes()).digest() for p in paths]
+        data = json.loads((ROOT / 'docs/production/art-integrations.json').read_text())
+        data['runtimeIconExports'][0]['merge'] = 'af87450f036ebb701021145f83a79bb0b22bc408'
+        with tempfile.TemporaryDirectory() as folder:
+            registry = Path(folder) / 'bad-merge.json'
+            registry.write_text(json.dumps(data))
+            result = subprocess.run(['python3', 'tools/factory/reconcile-art-production.py',
+                                     '--registry', str(registry), '--write'], cwd=ROOT, capture_output=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn(b'icon PNG absent from referenced merge', result.stderr)
+        self.assertEqual(before, [hashlib.sha256(p.read_bytes()).digest() for p in paths])
+
 if __name__ == '__main__':
     unittest.main()
