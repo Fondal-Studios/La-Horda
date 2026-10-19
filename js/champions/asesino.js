@@ -84,7 +84,6 @@ function performShadowStrike(caster){
   t.bleedTimer = Math.max(t.bleedTimer||0, sk.duration||3000); t.bleedDmg = Math.max(t.bleedDmg||0, dmg*(sk.bleedDmgMult||0.14));
   particles.push({x:t.x,y:t.y, life:420, ring:true, maxLife:420, maxR:52, color:"#8dffa0"});
   pushAsesinoFx("pestilencia", "emboscada", t.x, t.y, 100, 500, (t.x-caster.x)<0);
-  if(caster===player) floatText(t.x, t.y-46, "¡PESTILENCIA!", "crit");
   // veneno encadenado a enemigos cercanos
   let hitList=[t], cur=t, curDmg=dmg*0.55, px_=caster.x, py_=caster.y;
   for(let i=0;i<3 && cur;i++){

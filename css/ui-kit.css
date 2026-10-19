@@ -29,6 +29,12 @@
   --hud-panel-bg:rgba(10,6,4,0.78); --hud-panel-line:var(--panel-b); --hud-panel-r:12px;
   --hud-ink:var(--text); --hud-dim:var(--text-dim); --hud-gold:var(--ui-gold); --hud-track:#241410;
   --team-a:#6fd3ff; --team-b:#ffb86a; --team-c:#7dffa0; --team-d:#ff7a8a;
+  /* AMIGO / ENEMIGO / NEUTRAL (Guerra de Cristales y Coliseo): se leen desde quien mira, no por el color del equipo.
+     Un tema para daltónicos solo tiene que sobrescribir estas variables (JS y CSS las leen; ver js/arenas/lanes/lanes-sides.js). */
+  --ally:#3fe06a; --ally-dark:#0b3a1a; --ally-hi:#a6ffbc;
+  --enemy:#ff4a4a; --enemy-dark:#4a0c0c; --enemy-hi:#ffa59a;
+  --neutral:#ffc233; --neutral-dark:#4a3300; --neutral-hi:#ffe49a;
+  --self:#8dffa8; --self-edge:#ffffff;
   /* acento propio de cada modo: Campaña = brasa; Coliseo = arena dorada; Cristales = cristal celeste */
   --mode-accent:var(--ember1); --mode-accent-2:var(--ember3);
 }
@@ -200,7 +206,7 @@ body[data-mode="cristales"]{ --mode-accent:#6fd3ff; --mode-accent-2:#bfe8ff; }
 .shop-hero.champ .shop-hero-anim{ inset:auto 0 0 0; margin:auto; width:190px; height:190px; }
 .shop-hero-info{ display:flex; flex-direction:column; gap:4px; padding:10px 12px 10px 0; min-width:0; }
 .shop-hero-tags{ display:flex; flex-wrap:wrap; gap:5px; }
-.shop-hero-title{ font-family:var(--ui-font-brand); font-size:1.05rem; line-height:1.5; text-shadow:3px 3px 0 #000; }
+.shop-hero-title{ overflow-wrap:anywhere; min-width:0; font-family:var(--ui-font-brand); font-size:1.05rem; line-height:1.5; text-shadow:3px 3px 0 #000; }
 .shop-hero-sub{ font-family:var(--ui-font); font-size:1.1rem; color:var(--ui-ink); }
 .shop-hero-desc{ font-size:0.78rem; color:var(--ui-dim); line-height:1.35; font-style:italic; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
 .shop-hero-buy{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:auto; }
@@ -439,3 +445,35 @@ body.reduce-motion .shop-hero-art::after, body.reduce-motion .ui-tag.new, body.r
 .wp-foot .shop-btn{ min-height:44px; }
 .wp-banner{ display:flex; align-items:center; flex-wrap:wrap; gap:6px 10px; }
 @media (max-height:420px){ .wp-panel{ padding:6px 10px 8px; gap:4px; } .wp-title{ font-size:1.1rem; } .wp-sub{ font-size:0.72rem; } .wp-grid{ grid-template-columns:repeat(auto-fill, minmax(100px,1fr)); } .wp-anim{ width:44px; height:44px; } }
+
+/* Tienda: "Lo que podés comprar ya" / "Tu próxima meta" (js/ui/shop-ui.js shopNowRowHTML) */
+.shop-now{ margin:0 0 8px; padding:6px 10px 8px; border:2px solid var(--ui-line); background:rgba(10,6,4,0.5); }
+.shop-now .shop-row-head{ margin:0 0 6px; }
+.shop-now-strip{ display:flex; gap:8px; overflow-x:auto; padding-bottom:2px; }
+.shop-now-card{ flex:0 0 156px; display:flex; flex-direction:column; gap:3px; padding:6px 8px; border:2px solid #000; background:var(--ui-inset,#1a100a); }
+.shop-now-card .shop-bundle-name{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.shop-now-card .shop-btn{ margin-top:auto; }
+.shop-goal{ display:flex; flex-wrap:wrap; align-items:center; gap:4px 14px; }
+.shop-goal-main{ flex:1 1 220px; min-width:0; }
+.shop-goal-miss{ color:var(--ui-ink); }
+.shop-goal-bar{ flex:1 1 100%; height:8px; border:2px solid #000; background:var(--ui-inset,#1a100a); }
+.shop-goal-bar i{ display:block; height:100%; min-width:2px; background:var(--ember3,#ffca78); }
+
+/* Tienda en modo "live": "A la venta hoy" (rotación diaria, js/ui/shop-ui.js shopRotationRowHTML) */
+.shop-rot{ margin:0 0 8px; padding:6px 10px 8px; border:2px solid var(--ui-line); background:rgba(10,6,4,0.5); }
+.shop-rot .shop-row-head{ margin:0 0 6px; }
+.shop-rot-strip{ display:flex; gap:8px; overflow-x:auto; padding-bottom:2px; }
+.shop-rot-card{ flex:0 0 168px; display:flex; flex-direction:column; gap:3px; min-width:0; padding:6px 8px; border:2px solid #000; border-top:3px solid var(--ic,#ffca78); background:var(--ui-inset,#1a100a); }
+.shop-rot-top{ display:flex; gap:6px; align-items:center; min-width:0; }
+.shop-rot-meta{ min-width:0; flex:1; }
+.shop-rot-name{ font-family:var(--ui-font); font-size:1.05rem; line-height:1.1; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+.shop-rot-meta .shop-item-sub{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.shop-rot-price{ display:flex; align-items:center; justify-content:space-between; gap:6px; flex-wrap:wrap; }
+.shop-rot-miss{ font-size:0.85rem; color:var(--ui-ink); }
+.shop-rot-miss.ok{ color:#9be07a; }
+.shop-rot-card .shop-goal-bar{ flex:none; height:6px; }
+.shop-rot-card .shop-btn{ margin-top:auto; min-height:40px; }
+.shop-rot-note{ margin-top:6px; font-size:0.8rem; color:var(--ui-dim); line-height:1.25; }
+.shop-rot-state{ color:var(--ui-dim); }
+.shop-rot-state.on{ color:#9be07a; }
+.shop-set-live{ margin-top:4px; }

@@ -12,7 +12,10 @@
    ============================================================ */
 const SHOP_PRICE = {raro:[260, 360], muyraro:[950, 1300], legendario:[4600, 5600]};
 const SHOP_LEGEND_DAY_CHANCE = 1/3;
-function shopDayKey(d){ d = d || new Date(); return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate(); }
+// Modo de la tienda (js/data/pricing.js: SHOP_MODE). "demo" = catálogo completo siempre; "live" = rotación y precios altos.
+function shopIsLive(){ return typeof SHOP_MODE!=="undefined" && SHOP_MODE==="live"; }
+// Día de la tienda: en "demo" la fecha local (como siempre); en "live" la fecha UTC, así todo se renueva a la vez para todos.
+function shopDayKey(d){ d = d || new Date(); return shopIsLive() ? d.getUTCFullYear()+"-"+(d.getUTCMonth()+1)+"-"+d.getUTCDate() : d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate(); }
 // RNG con semilla (el día) para que dos jugadores vean ofertas parecidas el mismo día.
 function _shopRng(seedStr){ let h = 2166136261; for(let i=0;i<seedStr.length;i++){ h ^= seedStr.charCodeAt(i); h = Math.imul(h, 16777619); } return ()=>{ h = Math.imul(h ^ (h>>>15), 2246822507); h = Math.imul(h ^ (h>>>13), 3266489909); h ^= h>>>16; return (h>>>0)/4294967296; }; }
 function _withRng(rng, fn){ const r = Math.random; Math.random = rng; try{ return fn(); } finally { Math.random = r; } }
@@ -47,6 +50,7 @@ function generateShopOffers(day){
   return {day, offers};
 }
 function shopBuy(offerId){
+  if(shopIsLive()) return {ok:false, reason:"En esta modalidad las piezas se compran desde la Tienda, en 'A la venta hoy'"}; // legado: sin UI; no debe saltear la rotación
   const st = shopState();
   const of = st.offers.find(o=>o.id===offerId);
   if(!of || of.sold) return {ok:false, reason:"Esa oferta ya no está"};
@@ -92,7 +96,8 @@ function shopConfiguredPrice(kind, id, fallback){
 }
 function shopPriceOf(entry, tier){
   if(!entry) return 0;
-  const base = entry.kind==="archetype" ? (SHOP_PRICES.base[tier] || SHOP_PRICES.base.raro) : (SHOP_PRICES[entry.cat] || SHOP_PRICES.campeon);
+  let base = entry.kind==="archetype" ? (SHOP_PRICES.base[tier] || SHOP_PRICES.base.raro) : (SHOP_PRICES[entry.cat] || SHOP_PRICES.campeon);
+  if(shopIsLive()) base = Math.round(base * pricingShopLiveScale(entry.cat)); // modo live: piezas de set y legendarios cuestan mucho más
   return shopConfiguredPrice("item", entry.key || "d:"+entry.id, base);
 }
 function shopChampionPrice(id){
@@ -118,6 +123,8 @@ function shopSkinPrice(setId){
 }
 function shopBuySetBundle(setId, appearance, discount, expectedPrice){
   if(typeof state!=="undefined" && state==="playing") return {ok:false, reason:"La tienda se usa fuera de la partida"};
+  // modo live: el paquete de set completo saltearía la rotación diaria; las piezas se compran de a una cuando salen
+  if(shopIsLive()) return {ok:false, reason:"En esta modalidad las piezas del set se compran de a una, cuando están a la venta"};
   if(!Object.prototype.hasOwnProperty.call(SET_DB,setId)) return {ok:false,reason:"Ese set no existe"};
   const missing=shopSetMissing(setId);
   if(!missing.length || (appearance && skinOwnedFull(setId))) return {ok:false,reason:"Ya es tuyo"};
@@ -145,7 +152,7 @@ function shopCatalog(){
   if(_shopCatalog) return _shopCatalog;
   const designed = Object.keys(DESIGNED_ITEMS).map(id=>({key:"d:"+id, kind:"designed", id, cat:shopCategoryOf(DESIGNED_ITEMS[id])}))
     .filter(e=>e.cat!=="mitico" && e.cat!=="unico" && !DESIGNED_ITEMS[e.id].mythic && DESIGNED_ITEMS[e.id].rarity!=="unico" && DESIGNED_ITEMS[e.id].rarity!=="mitico" && !DESIGNED_ITEMS[e.id].buildPower); // los que cambian la build solo caen
-  designed.forEach(e=>{ e.price = shopPriceOf(e); });
+  designed.forEach(e=>{ Object.defineProperty(e, "price", {enumerable:true, get:()=>shopPriceOf(e)}); }); // getter: sigue al modo de la tienda
   const base = [];
   for(const type of EQUIP_SLOT_TYPES) for(const noun of (ITEM_NOUNS[type]||[])) base.push({key:"a:"+type+":"+noun, kind:"archetype", type, noun, cat:"base", price:SHOP_PRICES.base.raro});
   return (_shopCatalog = designed.concat(base));
@@ -171,6 +178,7 @@ function shopBuyCatalog(key, tier, priceOverride, expectedPrice){
   const entry = shopCatalog().find(e=>e.key===key);
   if(!entry) return {ok:false, reason:"Ese objeto no existe"};
   if(entry.kind==="archetype" && !SHOP_ARCHETYPE_TIERS.includes(tier)) return {ok:false, reason:"Categoría inválida"};
+  if(!shopRotationAllows(entry)) return {ok:false, reason:shopRotationWhyNot(entry)};
   const price = priceOverride!=null ? priceOverride : shopPriceOf(entry, tier);
   if(expectedPrice!=null && expectedPrice!==price) return {ok:false,reason:"El precio cambió. Revisá el nuevo valor y volvé a confirmar."};
   if(!shopValidGoldPrice(price)) return {ok:false, reason:"Precio inválido"};
@@ -256,7 +264,8 @@ function shopDailyShowcase(){
     const skins = typeof SET_SKINS!=="undefined" ? Object.keys(SET_SKINS).filter(id=>SET_DB[id]) : [];
     const pool = _shopShuffle(skins.map(id=>({kind:"skin", id})).concat(CHAMPION_CATALOG.filter(c=>shopChampionPurchasable(c.id)).map(c=>({kind:"champ", id:c.id}))), rng);
     const featOff = SHOP_DEAL_OFF[(rng()*SHOP_DEAL_OFF.length)|0];
-    const cands = _shopShuffle(shopCatalog().filter(e=>e.cat==="legendario" || e.cat==="campeon" || e.cat==="base"), rng);
+    // modo live: los legendarios con nombre solo salen por la rotación (con descuento sería saltearla)
+    const cands = _shopShuffle(shopCatalog().filter(e=>(e.cat==="legendario" && !shopIsLive()) || e.cat==="campeon" || e.cat==="base"), rng);
     const deals = [], perCat = {};
     for(const e of cands){
       if(deals.length >= SHOP_DEALS_PER_DAY) break;
@@ -287,7 +296,8 @@ function _shopDealsState(){
 }
 function shopDealBought(id){ return !!_shopDealsState().bought[id]; }
 // Minutos que faltan para que se renueve la vitrina (medianoche local).
-function shopMinutesToRenew(){ const n = new Date(), m = new Date(n.getFullYear(), n.getMonth(), n.getDate()+1); return Math.max(1, Math.ceil((m - n)/60000)); }
+// En "live": medianoche UTC (cuando cambia la rotación). En "demo": medianoche local.
+function shopMinutesToRenew(now){ const n = now || new Date(), m = shopIsLive() ? new Date(Date.UTC(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate()+1)) : new Date(n.getFullYear(), n.getMonth(), n.getDate()+1); return Math.max(1, Math.ceil((m - n)/60000)); }
 function shopBuyDeal(id, expectedPrice){
   const d = shopDailyShowcase().deals.find(x=>x.id===id);
   if(!d) return {ok:false, reason:"Esa oferta ya no está"};
@@ -306,3 +316,72 @@ function shopBuyFeatured(expected){
   if(f.kind==="champ") return Object.assign(shopBuyChampion(f.id, f.price), {kind:"champ", id:f.id});
   return Object.assign(shopBuySetBundle(f.id, true, f.off), {kind:"skin", id:f.id});
 }
+
+/* ============================================================
+   ROTACIÓN DIARIA (solo modo "live"; docs/economy/TIENDA_ROTACION.md)
+   Piezas de set y legendarios con nombre: cada día están a la venta solo SHOP_LIVE.rotation.piecesPerDay.
+   Es una función PURA del número de día UTC y de la lista de piezas: todos los jugadores ven lo mismo, no cambia
+   al recargar ni depende del guardado (así tampoco se "reinicia" borrando datos).
+   Construcción:
+     1) Orden fijo A de todas las piezas: las de set repartidas "de a una por set" (así un día trae sets distintos) y los
+        legendarios intercalados parejo (a lo sumo uno por día).
+     2) Ciclo de L = ceil(piezas / piecesPerDay) días. El "día de origen" h de la pieza i es floor(i / piecesPerDay).
+     3) El ciclo se parte en ventanas de windowDays. En cada ciclo, los días de origen de una ventana se barajan SOLO
+        dentro de esa ventana (semilla = ciclo + ventana). Cada pieza sale exactamente una vez por ciclo y su
+        reaparición cae siempre entre L-windowDays+1 y L+windowDays-1 días: esa cota es la garantía (shopRotationInfo).
+   Si cambia la cantidad de piezas del catálogo o la configuración, el calendario se recalcula (la garantía rige desde ahí).
+   ============================================================ */
+const SHOP_ROT_CATS = ["set", "legendario"];
+const SHOP_MS_DAY = 86400000;
+function shopUtcDay(now){ const t = now instanceof Date ? now.getTime() : (typeof now==="number" ? now : Date.now()); return Math.floor(t / SHOP_MS_DAY); }
+let _shopRotCtx = null;
+function shopRotationPoolEntries(){ return shopCatalog().filter(e=>SHOP_ROT_CATS.includes(e.cat)).sort((a,b)=>a.key<b.key ? -1 : a.key>b.key ? 1 : 0); }
+function _shopRotCfg(){ const r = SHOP_LIVE.rotation; return {n:Math.max(1, r.piecesPerDay|0), w:Math.max(1, r.windowDays|0), seed:String(r.seed)}; }
+// Contexto: orden A, longitud del ciclo y cotas de reaparición. Se rearma si cambia el catálogo o la configuración.
+function shopRotationContext(){
+  const cfg = _shopRotCfg(), pool = shopRotationPoolEntries(), sig = cfg.n+"|"+cfg.w+"|"+cfg.seed+"|"+pool.map(e=>e.key).join(",");
+  if(_shopRotCtx && _shopRotCtx.sig === sig) return _shopRotCtx;
+  const setPieces = {}, legends = [];
+  for(const e of pool){
+    if(e.cat==="legendario") legends.push(e.key);
+    else { const g = (DESIGNED_ITEMS[e.id] && DESIGNED_ITEMS[e.id].set) || e.id; (setPieces[g] = setPieces[g] || []).push(e.key); }
+  }
+  const groups = _shopShuffle(Object.keys(setPieces).sort(), _shopRng(cfg.seed+"|sets"));
+  const S = []; for(let r=0; S.length < pool.length - legends.length; r++) for(const g of groups) if(setPieces[g][r]) S.push(setPieces[g][r]);
+  const G = _shopShuffle(legends, _shopRng(cfg.seed+"|legend")), T = S.length + G.length, A = new Array(T), at = {};
+  G.forEach((k, i)=>{ at[Math.floor((i + 0.5) * T / G.length)] = k; });
+  for(let p=0, si=0; p<T; p++) A[p] = at[p] !== undefined ? at[p] : S[si++];
+  const L = Math.max(1, Math.ceil(T / cfg.n));
+  return (_shopRotCtx = {sig, cfg, A, T, L, maxGap:L + Math.min(cfg.w, L) - 1, minGap:Math.max(1, L - Math.min(cfg.w, L) + 1), entries:Object.fromEntries(pool.map(e=>[e.key, e]))});
+}
+// Claves de las piezas a la venta el día UTC número `dayNum` (por defecto, hoy).
+function shopRotationKeys(dayNum){
+  const c = shopRotationContext(), {n, w, seed} = c.cfg, D = dayNum == null ? shopUtcDay() : dayNum;
+  if(!c.T) return [];
+  const cyc = Math.floor(D / c.L), k = D - cyc * c.L, win = Math.floor(k / w), start = win * w, size = Math.min(w, c.L - start);
+  const perm = _shopShuffle(Array.from({length:size}, (_, i)=>i), _shopRng(seed+"|c"+cyc+"|w"+win)); // perm[j] = día (en la ventana) de la pieza-día j
+  const h = start + perm.indexOf(k - start);
+  return c.A.slice(h * n, h * n + n);
+}
+function shopRotationToday(now){ const c = shopRotationContext(); return shopRotationKeys(shopUtcDay(now)).map(k=>c.entries[k]).filter(Boolean); }
+// Días hasta que `key` vuelva a estar a la venta: 0 = hoy, 1 = mañana… (null si no rota). Un solo recorrido por día UTC.
+let _shopRotNext = null;
+function shopRotationDaysUntil(key, now){
+  const c = shopRotationContext(), D = shopUtcDay(now);
+  if(!_shopRotNext || _shopRotNext.sig !== c.sig || _shopRotNext.day !== D){
+    const map = {};
+    for(let i=0; i <= c.maxGap + 1; i++) for(const k of shopRotationKeys(D + i)) if(map[k] === undefined) map[k] = i;
+    _shopRotNext = {sig:c.sig, day:D, map};
+  }
+  return _shopRotNext.map[key] === undefined ? null : _shopRotNext.map[key];
+}
+function shopRotates(entry){ return !!entry && SHOP_ROT_CATS.includes(entry.cat); }
+function shopRotationHas(key, now){ return shopRotationKeys(shopUtcDay(now)).includes(key); }
+// ¿Se puede comprar ESTA entrada ahora? En "demo", siempre. En "live", lo que rota solo si está a la venta hoy.
+function shopRotationAllows(entry, now){ return !shopIsLive() || !shopRotates(entry) || shopRotationHas(entry.key, now); }
+function shopRotationWhyNot(entry, now){
+  const d = shopRotationDaysUntil(entry.key, now);
+  return "Esta pieza no está a la venta hoy" + (d==null ? "." : d===1 ? ": vuelve mañana." : `: vuelve en ${d} días.`);
+}
+// Resumen para la UI y la documentación.
+function shopRotationInfo(){ const c = shopRotationContext(); return {pieces:c.T, perDay:c.cfg.n, cycleDays:c.L, maxGapDays:c.maxGap, minGapDays:c.minGap}; }

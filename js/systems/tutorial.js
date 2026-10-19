@@ -34,6 +34,7 @@ function tutMark(key){ if(key.charAt(0)!=="~" && !tutSeen(key)){ tutFlags()[key]
 // `who` = quién habla, si no es el Hechicero: {name, face} (voces de la historia, story.js). El retrato
 // cambia con data-face (css/story.css).
 function tutSay(key, text, goal, ms, urgent, who){
+  if(typeof narrationBookOpen==="function" && narrationBookOpen()) return false; // con el Libro abierto (su voz escrita) el Hechicero no habla acá
   if(tutSeen(key) || (!urgent && TUT.key && TUT.key!==key && performance.now() < TUT.until - 1500)) return false;
   if(urgent && TUT.key && TUT.key!==key && !TUT.key.startsWith("b_")) tutMark(TUT.key); // el que se tapa se da por visto
   const el = document.getElementById("tut-panel"); if(!el) return false;

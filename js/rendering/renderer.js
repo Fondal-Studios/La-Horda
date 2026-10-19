@@ -58,6 +58,8 @@ function render(){
       const prog = Math.max(0, Math.min(1, 1-(pt.life/base)));
       const r = Math.max(0, pt.maxR*(pt.warnRing?0.9:prog));
       if(r <= 0) continue;
+      // sobre la rejilla de píxel (pixel-stroke.js): sin antialias, alfa 0/255
+      if(typeof pxsRing==="function" && pxsRing(pt.x, pt.y+6, r, r, pt.warnRing ? [["rgba(255,90,40,0.85)", 3]] : [[`rgba(0,0,0,${(1-prog)*fxUnder()})`, 9], [pt.color+"cc", 5], ...(prog < 0.7 ? [[`rgba(255,255,255,${(0.7-prog)*0.9})`, 1.6]] : [])])) continue;
       ctx.beginPath(); ctx.arc(pt.x,pt.y+6,r,0,Math.PI*2); // radio real del efecto (antes aplastado)
       if(!pt.warnRing){ ctx.strokeStyle = `rgba(0,0,0,${(1-prog)*fxUnder()})`; ctx.lineWidth = 9; ctx.stroke(); } // contraste
       ctx.strokeStyle = pt.warnRing ? "rgba(255,90,40,0.85)" : (pt.color+"cc");
@@ -150,7 +152,8 @@ function render(){
     }
   }
   for(const h of heroes){ if(h.wolf) drawSpectralWolf(h.wolf); }
-  if(netMatch) netDrawNameTags(); else botDrawNameTags(); // B1: nombre de cada amigo sobre su guardián; en solitario, "BOT" sobre cada compañero
+  if(typeof lanesOn==="function" && lanesOn() && typeof sidesDrawNameTags==="function") sidesDrawNameTags(); // Cristales/Coliseo: rótulos por bando (verde/rojo + escudo/espada)
+  else if(netMatch) netDrawNameTags(); else botDrawNameTags(); // B1: nombre de cada amigo sobre su guardián; en solitario, "BOT" sobre cada compañero
   drawMusashiAfterimages();
   drawDownedMarkers();
   drawNigroGolemFx(); // impactos / chorros / rayos de los golpes del gólem

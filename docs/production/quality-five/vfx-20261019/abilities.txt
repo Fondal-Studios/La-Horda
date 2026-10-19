@@ -1,0 +1,77 @@
+Running abilities: node tools/bible/ability-gate.js --strict
+canario rechazado (8 problemas)
+INFO  tanque      clásico [AREA+MULTIPLE+CONTROL] [CONTROL+MOVILIDAD ◎] [POTENCIA+CURA] [AREA+POTENCIA+CURA+CONTROL]
+       · falta otra habilidad (distinta de la de área) que dañe a varios enemigos
+INFO  guerrero    clásico [CONTROL ◎] [CONTROL ◎] [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE+POTENCIA+CONTROL]
+       · falta otra habilidad (distinta de la de área) que dañe a varios enemigos
+       · ninguna habilidad de POTENCIACIÓN (buff propio o de aliados) ni cura/escudo
+INFO  mago        clásico [CONTROL+INVOCA ◎] [AREA+MULTIPLE+CONTROL] [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE+POTENCIA+CONTROL]
+       · ninguna habilidad de POTENCIACIÓN (buff propio o de aliados) ni cura/escudo
+INFO  soporte     clásico [AREA+MULTIPLE+CURA+CONTROL] [POTENCIA] [POTENCIA+CURA] [POTENCIA+CURA]
+       · falta otra habilidad (distinta de la de área) que dañe a varios enemigos
+       · la definitiva suma 2 categorías (POTENCIA, CURA); se piden 3+
+INFO  segador     clásico [AREA+MULTIPLE+CONTROL ◎] [POTENCIA+CURA] [POTENCIA+CURA] [POTENCIA+CURA]
+       · falta otra habilidad (distinta de la de área) que dañe a varios enemigos
+       · la definitiva suma 2 categorías (POTENCIA, CURA); se piden 3+
+INFO  axiom       clásico [AREA+MULTIPLE+CONTROL ◎] [MULTIPLE+CONTROL ◎] [POTENCIA+MOVILIDAD ◎] [AREA+MULTIPLE]
+       · la definitiva suma 1 categorías (AREA); se piden 3+
+INFO  profeta     clásico [CURA] [POTENCIA+CURA+CONTROL] [AREA+MULTIPLE+CONTROL] [POTENCIA+CURA]
+       · falta otra habilidad (distinta de la de área) que dañe a varios enemigos
+       · la definitiva suma 2 categorías (POTENCIA, CURA); se piden 3+
+INFO  musashi     clásico [CONTROL+MOVILIDAD ◎] [POTENCIA+MOVILIDAD ◎] [AREA+MULTIPLE+CONTROL] [POTENCIA+MOVILIDAD]
+       · falta otra habilidad (distinta de la de área) que dañe a varios enemigos
+       · la definitiva suma 2 categorías (POTENCIA, MOVILIDAD); se piden 3+
+INFO  cazadora    clásico [— ◎] [AREA+CONTROL ◎] [AREA+MULTIPLE ◎] [CONTROL]
+       · Hab. 1 Flecha Perforante: sin efecto medible
+       · ninguna habilidad de POTENCIACIÓN (buff propio o de aliados) ni cura/escudo
+       · la definitiva suma 1 categorías (CONTROL); se piden 3+
+INFO  nigromante  clásico [AREA+MULTIPLE+POTENCIA+CONTROL ◎] [AREA+MULTIPLE+CONTROL] [AREA+CONTROL ◎] [CURA]
+       · la definitiva suma 1 categorías (CURA); se piden 3+
+INFO  libertador  clásico [POTENCIA+CONTROL] [POTENCIA] [AREA+MULTIPLE+POTENCIA+MOVILIDAD] [AREA+MULTIPLE+POTENCIA+MOVILIDAD+INVOCA]
+       · falta otra habilidad (distinta de la de área) que dañe a varios enemigos
+INFO  ilkan       clásico [AREA+MULTIPLE+MOVILIDAD] [—] [POTENCIA] [POTENCIA+CURA]
+       · Hab. 2 Piel de Duna: sin efecto medible
+       · falta otra habilidad (distinta de la de área) que dañe a varios enemigos
+       · la definitiva suma 2 categorías (POTENCIA, CURA); se piden 3+
+PASS  ynara       nuevo  [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE+POTENCIA+CURA+CONTROL+INVOCA ◎] [AREA+MULTIPLE+CONTROL+MOVILIDAD ◎] [AREA+MULTIPLE+CURA+CONTROL+INVOCA]
+INFO  myla        clásico [CONTROL+INVOCA ◎] [AREA+MULTIPLE+CONTROL ◎] [CURA] [AREA+MULTIPLE+CONTROL+INVOCA]
+       · falta otra habilidad (distinta de la de área) que dañe a varios enemigos
+INFO  brasa       clásico [INVOCA ◎] [AREA+MULTIPLE+CONTROL ◎] [POTENCIA] [POTENCIA+INVOCA]
+       · falta otra habilidad (distinta de la de área) que dañe a varios enemigos
+       · la definitiva suma 2 categorías (POTENCIA, INVOCA); se piden 3+
+INFO  eslabon     clásico [POTENCIA+CONTROL ◎] [AREA+MULTIPLE+POTENCIA+CONTROL+INVOCA ◎] [—] [AREA+MULTIPLE+POTENCIA+CONTROL]
+       · Hab. 3 Custodia: sin efecto medible
+       · falta otra habilidad (distinta de la de área) que dañe a varios enemigos
+PASS  morwen      clásico [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE+CONTROL ◎] [CURA] [AREA+MULTIPLE+CONTROL+INVOCA ◎]
+INFO  farolero    clásico [POTENCIA+CURA+INVOCA ◎] [AREA+MULTIPLE+CONTROL ◎] [POTENCIA+INVOCA ◎] [POTENCIA+CURA]
+       · falta otra habilidad (distinta de la de área) que dañe a varios enemigos
+       · la definitiva suma 2 categorías (POTENCIA, CURA); se piden 3+
+INFO  iria        clásico [INVOCA ◎] [AREA+MULTIPLE+CONTROL] [AREA+MULTIPLE+CONTROL ◎] [INVOCA]
+       · ninguna habilidad de POTENCIACIÓN (buff propio o de aliados) ni cura/escudo
+       · la definitiva suma 1 categorías (INVOCA); se piden 3+
+PASS  vesper      nuevo  [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE+CONTROL+MOVILIDAD ◎] [AREA+MULTIPLE+POTENCIA+CONTROL] [AREA+MULTIPLE+POTENCIA+CONTROL]
+PASS  nahir       nuevo  [AREA+MULTIPLE+CONTROL ◎] [POTENCIA+MOVILIDAD+INVOCA ◎] [AREA+MULTIPLE+CONTROL ◎] [AREA+POTENCIA+CONTROL+INVOCA]
+PASS  baltra      nuevo  [AREA+MULTIPLE+CONTROL] [POTENCIA ◎] [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE+CURA+CONTROL]
+PASS  maura       nuevo  [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE+CURA] [AREA+MULTIPLE+CURA+CONTROL] [AREA+MULTIPLE+CONTROL+INVOCA]
+PASS  dariel      nuevo  [AREA+MULTIPLE+CONTROL ◎] [POTENCIA+CURA] [AREA+MULTIPLE+CURA+CONTROL] [AREA+MULTIPLE+CURA+INVOCA]
+PASS  orsa        nuevo  [AREA+MULTIPLE+CONTROL ◎] [POTENCIA] [AREA+MULTIPLE+CONTROL] [AREA+MULTIPLE+POTENCIA+CONTROL]
+PASS  tibor       nuevo  [AREA+MULTIPLE+CONTROL+INVOCA ◎] [CURA] [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE+CONTROL+INVOCA ◎]
+PASS  zahra       nuevo  [AREA+MULTIPLE+CONTROL ◎] [CURA] [AREA+MULTIPLE+CONTROL+MOVILIDAD ◎] [AREA+MULTIPLE+CURA+CONTROL]
+PASS  renko       nuevo  [AREA+MULTIPLE+CONTROL+INVOCA ◎] [POTENCIA ◎] [AREA+MULTIPLE+CONTROL] [AREA+MULTIPLE+CURA+CONTROL]
+PASS  sira        nuevo  [AREA+MULTIPLE+CONTROL ◎] [POTENCIA+MOVILIDAD] [AREA+MULTIPLE+CONTROL] [AREA+MULTIPLE+POTENCIA+CONTROL]
+PASS  nano_gm     nuevo  [AREA+MULTIPLE+CONTROL ◎] [AREA+POTENCIA+CURA+CONTROL+INVOCA ◎] [AREA+MULTIPLE+CURA+CONTROL+MOVILIDAD ◎] [AREA+MULTIPLE+POTENCIA+CURA+CONTROL]
+PASS  facu_gm     nuevo  [AREA+MULTIPLE+POTENCIA+CONTROL ◎] [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE+POTENCIA+CURA+CONTROL+MOVILIDAD ◎] [AREA+MULTIPLE+CURA+CONTROL]
+PASS  aurelia     nuevo  [AREA+MULTIPLE+CONTROL+INVOCA ◎] [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE+POTENCIA+CONTROL+MOVILIDAD+INVOCA ◎] [AREA+MULTIPLE+CURA+CONTROL+INVOCA ◎]
+PASS  khepri      nuevo  [AREA+MULTIPLE+CONTROL ◎] [CURA] [AREA+MULTIPLE+CONTROL+MOVILIDAD ◎] [AREA+MULTIPLE+POTENCIA+CONTROL+INVOCA]
+PASS  velmira     nuevo  [AREA+MULTIPLE+POTENCIA+CONTROL ◎] [AREA+MULTIPLE+POTENCIA+CONTROL] [AREA+MULTIPLE+CONTROL+MOVILIDAD ◎] [AREA+MULTIPLE+POTENCIA+CURA+CONTROL+INVOCA]
+PASS  vhal        nuevo  [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE+CONTROL ◎] [MULTIPLE+POTENCIA+CONTROL+MOVILIDAD ◎] [AREA+MULTIPLE+POTENCIA+CONTROL ◎]
+PASS  bront       nuevo  [AREA+MULTIPLE+CONTROL+INVOCA ◎] [AREA+MULTIPLE+CONTROL+INVOCA ◎] [AREA+MULTIPLE+POTENCIA+CONTROL] [AREA+MULTIPLE+POTENCIA+CURA+CONTROL+INVOCA]
+PASS  oriel       nuevo  [AREA+MULTIPLE+POTENCIA+CURA+CONTROL+MOVILIDAD+INVOCA ◎] [AREA+MULTIPLE+CURA+CONTROL] [AREA+MULTIPLE+CONTROL+MOVILIDAD ◎] [AREA+MULTIPLE+POTENCIA+CONTROL+INVOCA ◎]
+PASS  saelis      nuevo  [MULTIPLE+CONTROL+INVOCA ◎] [AREA+MULTIPLE+POTENCIA+CONTROL] [POTENCIA] [AREA+MULTIPLE+POTENCIA+CONTROL+INVOCA ◎]
+PASS  solciju     nuevo  [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE ◎] [POTENCIA+CURA] [AREA+MULTIPLE+POTENCIA+CONTROL ◎]
+PASS  veyra       nuevo  [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE+CONTROL+MOVILIDAD ◎] [POTENCIA] [AREA+MULTIPLE+CURA+CONTROL]
+PASS  brakk       nuevo  [AREA+MULTIPLE+POTENCIA+CONTROL ◎] [MULTIPLE+POTENCIA ◎] [POTENCIA] [AREA+MULTIPLE+CURA+CONTROL]
+PASS  morveth     nuevo  [AREA+MULTIPLE ◎] [AREA+MULTIPLE+CONTROL ◎] [POTENCIA+CURA] [AREA+MULTIPLE+POTENCIA+CONTROL ◎]
+PASS  aelith      nuevo  [AREA+MULTIPLE+CONTROL ◎] [AREA+MULTIPLE+CONTROL ◎] [POTENCIA] [AREA+MULTIPLE+CURA+CONTROL ◎]
+
+43 campeones · nuevos que no pasan: 0 · page errors: 0

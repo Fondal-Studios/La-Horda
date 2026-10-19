@@ -1,0 +1,34 @@
+== TRAMO A: arranque ==
+  0.1s  titulo                     (nada)
+  4.0s  relato                     PRIMER-RELATO
+  6.2s  practica-paso1             TUTORIAL
+  7.6s  practica-completa          (nada)
+  9.7s  A4_ficha_ciudad_0          HECH-FICHA(historia:LA NOCHE EN QUE VOLVIO LA HORDA)
+ 11.2s  A4_ficha_ciudad_1          HECH-FICHA(historia:EL HUMO)
+ 12.5s  A4_ficha_ciudad_2          HECH-FICHA(historia:LA PRIMERA CICATRIZ)
+ 13.7s  A4_ficha_ciudad_3          HECH-FICHA(historia:EL GUIA)
+ 14.9s  A4_ficha_ciudad_4          HECH-FICHA(arena; frase de apertura SI)
+ 17.9s  en-juego                   HECH-PANEL + OBJETIVO
+== TRAMO B: fin de la primera partida -> Libro -> siguiente arena ==
+ 20.0s  vuelta-al-menu             DIALOGO( Confirmar 📖 El Libro de la H)
+ 21.2s  intro-abierta              LIBRO(intro:EL LIBRO DE LA HORDA)
+ 31.5s  intro-pag6                 LIBRO(intro:UN GUÍA CON ALAS DE LUZ)
+ 33.7s  intro-pag7                 LIBRO(intro:SOBREVIVIR)
+ 37.5s  intro-cerrada              (nada)
+ 38.7s  entrada-fortaleza          LIBRO(short:)
+ 39.0s  entrada-fortaleza          LIBRO(short:)
+ 39.4s  entrada-fortaleza          LIBRO(short:)
+ 40.0s  entrada-fortaleza          LIBRO(short:FÁBRICA SIN FIN)
+ 40.4s  entrada-fortaleza          LIBRO(short:FÁBRICA SIN FIN)
+ 40.7s  entrada-fortaleza          LIBRO(short:FÁBRICA SIN FIN)
+ 41.1s  entrada-fortaleza          LIBRO(short:FÁBRICA SIN FIN)
+ 41.5s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura NO)
+ 41.9s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura NO)
+ 42.3s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura NO)
+ 42.9s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura NO)
+ 43.2s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura NO)
+ 43.6s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura NO)
+ 44.0s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura NO)
+ 44.7s  B8_ficha_fortaleza_0       HECH-FICHA(arena; frase de apertura NO)
+ 48.0s  en-juego-2                 HECH-PANEL + OBJETIVO
+errores []

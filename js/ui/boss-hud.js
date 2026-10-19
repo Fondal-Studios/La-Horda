@@ -29,7 +29,7 @@ function _bossTipPicto(t){
   const ico = /expuest|vulnerab|pegale|contené|contene|derrib/i.test(act) ? "⚔" : /sal[ií]|alejate|movete|moviéndote|moviendo|costado|rodealo|no te quedes|esper|busc/i.test(act) ? "➤" : "⚠";
   return {ico, label: (label.charAt(0).toUpperCase() + label.slice(1)) || plain.slice(0, 24)};
 }
-let hudBoss = null, _bossChip = 1, _bossHintT = 0, _bossIntroT = 0, _bossIntroDelay = 0, _bossPhaseTxt = "";
+let hudBoss = null, _bossChip = 1, _bossHintT = 0, _bossIntroT = 0, _bossIntroDelay = 0, _bossIntroShown = 0, _bossPhaseTxt = "";
 const _bh = {};
 function _bhEl(id){ return _bh[id] || (_bh[id] = document.getElementById(id)); }
 // Ficha de presentación del jefe: la forma ACTUAL manda (e.designKey: el Demonio Mayor que nace del Gólem
@@ -50,6 +50,7 @@ function bossHudShow(e){
   hud.classList.remove("hidden"); hud.classList.toggle("sub", isSub);
   _bhEl("boss-name").textContent = e.name;
   _bhEl("boss-epithet").textContent = d && d.epithet ? d.epithet : (isSub ? "Subjefe" : "Jefe");
+  _bhEl("boss-name").title = e.name + " — " + _bhEl("boss-epithet").textContent; // celular: el epíteto se esconde, el nombre va completo
   // marcas de fase sobre la barra (umbrales de vida del diseño)
   const ticks = _bhEl("boss-ticks"); ticks.innerHTML = "";
   const phases = d && d.phases && !d.byLevPhase ? d.phases : [];
@@ -66,7 +67,7 @@ function bossHudShow(e){
     _bossIntroDelay = isSub ? 300 : 2100;
     // si hay un cartel grande de presentación (arenaTitleCard), la guía espera a que se vaya
     _bossIntroDelay = Math.max(_bossIntroDelay, _arenaTitleUntil - performance.now() + 200);
-    _bossIntroT = (typeof hudCompact==="function" && hudCompact()) ? 4200 : (isSub ? 4600 : 7500); // celular: pictogramas, más corta
+    _bossIntroShown = 0; _bossIntroT = (typeof hudCompact==="function" && hudCompact()) ? 3000 : (isSub ? 4600 : 7500); // celular: pictogramas, 3 s o hasta el primer movimiento
   } else { _bossIntroDelay = 0; _bossIntroT = 0; }
   bossHudHint("", "");
   if(typeof storyBossIntro==="function") storyBossIntro(e); // su presentación (voz del jefe, js/systems/story.js)
@@ -127,5 +128,9 @@ function updateBossHud(dt){
     if(_bossIntroDelay<=0){ const intro = _bhEl("boss-intro"); intro.classList.remove("hidden","fade"); void intro.offsetWidth; }
     return;
   }
-  if(_bossIntroT>0){ _bossIntroT -= dt; if(_bossIntroT<=700) _bhEl("boss-intro").classList.add("fade"); if(_bossIntroT<=0) _bhEl("boss-intro").classList.add("hidden"); }
+  if(_bossIntroT>0){
+    // celular: la guía se va con el primer movimiento (después de 0,5 s para que el jugador llegue a verla)
+    _bossIntroShown += dt;
+    if(_bossIntroShown > 500 && _bossIntroT > 700 && typeof hudCompact==="function" && hudCompact() && typeof joyVec!=="undefined" && joyVec && Math.hypot(joyVec.x||0, joyVec.y||0) > 0.25) _bossIntroT = 700;
+    _bossIntroT -= dt; if(_bossIntroT<=700) _bhEl("boss-intro").classList.add("fade"); if(_bossIntroT<=0) _bhEl("boss-intro").classList.add("hidden"); }
 }

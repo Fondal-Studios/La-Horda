@@ -14,6 +14,8 @@
    - PANTALLAS: la victoria muestra las últimas palabras del jefe y la voz de tu guardián (paso 1) y la
      Cicatriz hacia la próxima arena (último paso); la derrota, la voz de tu guardián al caer. Al completar
      la Arena Infernal por primera vez, el EPÍLOGO por pantallas y un post-créditos (se repite desde el Códice).
+   Un solo narrador a la vez: con el Libro de la Horda abierto (la voz escrita del Hechicero) el cuadro de voz no abre y el
+   epílogo espera (narrationBookOpen, js/systems/codex-narrative.js). Las líneas viejas de la cola se descartan igual.
    Red: la simulación decide (un jugador o el anfitrión). storyVoice y storyPageDrop se repiten en los
    invitados como el resto de los efectos (NET_EVENT_FNS); cada uno junta SUS páginas en SU guardado.
    ============================================================ */
@@ -68,6 +70,7 @@ function storyOtherTexts(){
 }
 function storyQueueTick(){
   const q = STORY.q; if(!q.length || typeof tutSay!=="function") return;
+  if(typeof narrationBookOpen==="function" && narrationBookOpen()) return; // el Libro es la voz del Hechicero: con él abierto, el cuadro no habla
   const now = performance.now();
   while(q.length && q[0].exp < now) q.shift();
   if(!q.length) return;
@@ -295,6 +298,7 @@ function storyVictoryBookHtml(vd){
   return `<article class="vic-book"><canvas class="vb-art" data-book-art="arena:${_stEsc(vd.arena)}" aria-hidden="true"></canvas>
     <div class="vb-txt"><div class="vb-k">📖 EL LIBRO DE LA HORDA · ARENA ${_stEsc(num)}${isNew ? ' <span class="cxb-new">NUEVO</span>' : ""}</div>
       <h3 class="vb-title">${_stEsc(F.title)}</h3><p class="vb-lore">${_stEsc(F.lore)}</p>
+      <div class="vb-sign">${_stEsc(typeof BOOK_NARRATOR_SIGN!=="undefined" ? BOOK_NARRATOR_SIGN : "")}</div>
       <div class="vb-lesson"><b>${_stEsc(F.topicTitle)}</b>${_stEsc(F.lesson)}</div>
       <button class="btn secondary small vb-read" data-book-frag="${_stEsc(vd.arena)}" data-book-force>Leer en el libro ▸</button></div></article>`;
 }
@@ -324,6 +328,8 @@ function storyCineEl(){
   return el;
 }
 function storyPlayCine(list, onEnd){
+  // un solo narrador a la vez: si el Libro está abierto, el epílogo espera a que se cierre (js/systems/codex-narrative.js)
+  if(typeof narrationBookOpen==="function" && narrationBookOpen()){ narrationWhenFree(()=>storyPlayCine(list, onEnd)); return; }
   const el = storyCineEl();
   STORY_CINE.open = true; STORY_CINE.list = list; STORY_CINE.i = 0; STORY_CINE.onEnd = onEnd || null;
   el.classList.remove("hidden");

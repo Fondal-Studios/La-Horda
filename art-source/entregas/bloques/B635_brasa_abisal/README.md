@@ -13,7 +13,7 @@ Fuente original generado con imagegen, transparencia real, sin donantes ni recol
 - Fábrica: 36 poses; alpha binaria, cero halos, cero fragmentos. Style Gate PASS.
 - Roster Gate: 137 apariencias, cero errores de escala o presentación.
 - Todas las skins: 5917 comprobaciones, cero fallos/errores JS.
-- Tienda: 30 comprobaciones; catálogo 267 ítems, 43 campeones, 78 apariencias.
+- Tienda: 29 comprobaciones; catálogo 267 ítems, 43 campeones, 78 apariencias.
 - `node tools/art/test-brasa-abyssal.js`: 12 controles de compra/equipamiento/guardado/carga remota/anims/estadísticas/progreso, todos aprobados; detector canónico de densidad sobre los 36 frames sin excepciones.
 - Estas pruebas usan guardados aislados, nunca cuentas/billeteras reales. Sin cambios al kit, talentos ni maestría.
 
@@ -32,4 +32,6 @@ node tools/art/test-brasa-abyssal.js
 
 ## Próximo paso
 
-Completar prueba real de dos clientes con este cosmético, CI y validación del despliegue. Las otras cuatro skins adicionales siguen pendientes; no abrir otros cinco campeones para ocultar esta deuda. El lote Q5 original ya está en main y su despliegue Fondal fue comprobado el 2026-10-19 (evidencia en PR #146).
+La prueba real de dos clientes ya pasó (7 controles, skin del host y del invitado visible en ambos renderers, habilidades funcionales, catálogo del servidor). Pendiente CI y validación del despliegue. Las otras cuatro skins adicionales siguen pendientes; no abrir otros cinco campeones para ocultar esta deuda. El lote Q5 original ya está en main y su despliegue Fondal fue comprobado el 2026-10-19 (evidencia en PR #146).
+
+Revalidado después de integrar main `7b6b67c4` (PR #147) y las correcciones de #146. Workflow `brasa-abyssal.yml` reproduce la importación, valida todos los cosméticos y ejecuta la prueba de dos clientes.

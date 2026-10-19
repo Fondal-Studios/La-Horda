@@ -208,3 +208,21 @@ entrada: lo que se desvía y todavía no se rehízo está en `docs/art-gate/pixe
 `--strict` solo falla por desvíos **sin** excepción documentada. Un asset nuevo no entra a esa lista: entra dentro del canon.
 `--self-test` valida el detector con imágenes sintéticas. Resultados y capturas de la unificación inicial en
 `docs/art-gate/pixel-unificado/README.md`. La revisión de arte sigue siendo humana (§8).
+
+## 15. Íconos de interfaz: sin emojis de color
+
+Un emoji de color se dibuja con la fuente del sistema: cambia entre Android, iOS y Windows y rompe el lenguaje de píxel
+(§1) en la misma pantalla donde Tienda y Desafíos ya usan íconos pixel. Regla: **ningún emoji de color visible al jugador**.
+
+- Los íconos viven en `js/ui/pixel-icons.js` (`PXI_ART`): grilla 16×16, **hasta 6 colores** de `PXI_PAL`, contorno de 1 px
+  (se calcula solo). `PXI_EMOJI` dice qué emoji reemplaza cada uno y `PXI_NAME` su nombre accesible (`""` = decorativo).
+  `node tools/art/check-pixel-icons.js` valida el contrato.
+- DOM: el emoji escrito en un texto se convierte solo en `<i class="pxi pxi-ID">` (el emoji queda adentro, invisible, para
+  `textContent`; el lector de pantalla lee el nombre). Lienzo: `drawCanvasIcon` / `drawIconText` (`js/rendering/effects.js`).
+  `::before`/`::after`: `background:var(--pxi-ID) center/contain no-repeat`.
+- Las fuentes pixel (Press Start 2P, VT323) no traen dingbats (solo ↑ ↓): ✦ ★ ✔ ✓ ✚ también son íconos; el resto (◆ ▸ → …)
+  cae a la fuente del sistema en monocromo y se informa con `--mono`, sin romper el gate.
+- Gate: `node tools/art/emoji-lint.js --strict` (workflow `Emoji lint`). Un emoji nuevo sin ícono falla; las excepciones van
+  en `tools/art/emoji-lint-exceptions.json` con motivo. Capturas antes/después en `docs/ux/emojis-pixel/`.
+- Pendiente de arte humano: las 10 portadas de arena del Códice (`assets/ui/codex/arenas/*.jpg`) son ilustraciones suaves
+  (§14: sin JPG ni degradé); necesitan repintado a mano en píxel nativo, no un filtro.

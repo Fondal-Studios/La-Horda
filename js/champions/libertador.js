@@ -80,7 +80,7 @@ function libertadorBasic(caster, aspd){
   } else {
     p.onHit = ()=>{ if(hits++) return; caster.smShots = (caster.smShots||0)+1;
       if(caster.smShots >= Math.max(2, O.every - everyBonus)){ caster.smOfficerReady = true; caster.smShots = 0;
-        if(caster===player) floatText(caster.x, caster.y-70, "¡DISPARO DE OFICIAL!", "crit"); } };
+        } };
   }
   projectiles.push(p);
   // fogonazo + humo + retroceso

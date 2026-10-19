@@ -20,7 +20,10 @@ function goalNeedsMission(){
   if(typeof save==="undefined" || !save) return false;
   if((typeof divinaMode!=="undefined" && divinaMode) || (typeof endlessOn==="function" && endlessOn())) return false;
   const t = save.tut || {};
-  return !t.goalMission;
+  if(t.goalMission) return false;
+  // la misión también es la página 7 de la introducción del Libro: si ya la leyó (o la práctica la contó), el Hechicero no la repite
+  if(typeof codexBookIntroRead==="function" && codexBookIntroRead()) return false;
+  return true;
 }
 function goalMissionPages(){
   if(!goalNeedsMission()) return [];
