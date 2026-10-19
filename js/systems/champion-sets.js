@@ -100,7 +100,6 @@ function champSetsOnKill(h, e){
     if(h.cds) h.cds[1] = 0;
     for(const o of enemies) if(o.target===h) o.target = null;
     vfxBurst(h.x, h.y-18, 12, "shadow", 120, 400, 3, h===player?2:1, -20, 0);
-    _setMsg(h, "¡SOMBRA!");
   }
   // Marea Roja 4: bajas con poca vida suman Sangre
   if((c.marea||0) >= 4 && h.classKey==="segador" && h.hp < h.maxHp*0.5){
@@ -116,7 +115,6 @@ function champSetsOnKill(h, e){
   // Granadero 4: disparo de fusil que mata = recarga instantánea
   if((c.granadero||0) >= 4 && h.classKey==="libertador" && !h.smMounted && e._lastFromBasic && _setReady(h, "reload", 120)){
     h.basicCd = Math.min(h.basicCd||0, 60);
-    if(h===player) floatText(h.x, h.y-58, "¡RECARGA!", "crit");
   }
   // Caravana 4: transformado, cada baja cura 2%
   if((c.legion||0) >= 4 && h.classKey==="ilkan" && h.ilkanColossus){ h.hp = Math.min(h.maxHp, h.hp + h.maxHp*0.02*arenaRuleHealMult()); }
@@ -125,7 +123,7 @@ function champSetsOnCast(h, sk, isUlt){
   const c = heroSetCounts(h); if(!c) return;
   // Convergencia 3: cambiar de elemento potencia
   if((c.convergencia||0) >= 3 && sk.element && ["fire","ice","lightning"].includes(sk.element)){
-    if(h._lastElem && h._lastElem !== sk.element){ h._elemSwapT = 4000; _setMsg(h, "¡CAMBIO DE ELEMENTO!"); }
+    if(h._lastElem && h._lastElem !== sk.element){ h._elemSwapT = 4000; }
     h._lastElem = sk.element;
   }
   // Bendición del Custodio 3: los buffs también curan
@@ -154,7 +152,7 @@ function champSetsOnCast(h, sk, isUlt){
     }
     vfxShock(h.x+h.fx*100, h.y+h.fy*100, 20, R*0.7, "220,40,40", 420, 2);
     vfxBurst(h.x+h.fx*80, h.y+h.fy*80-10, 20, "blood", 220, 460, 3.5, h===player?2:1, -20, 0);
-    if(h===player){ vfxShake(6); playSfx("heavy"); floatText(h.x, h.y-60, "¡TAJO DE LA MUERTE!", "crit"); }
+    if(h===player){ vfxShake(6); playSfx("heavy"); }
   }
 }
 // El que recibe el golpe: Ángel Guardián (Custodio 4) de cualquier soporte cercano con el set completo.
@@ -167,7 +165,6 @@ function champSetsOnHurt(h, dmgFinal){
     h.shield = Math.min(h.maxHp*0.5, (h.shield||0) + h.maxHp*0.25); h.shieldTimer = Math.max(h.shieldTimer||0, 3000);
     h._guardDRT = Math.max(h._guardDRT||0, 3000);
     vfxShock(h.x, h.y-10, 10, 56, "255,235,160", 420, 2); vfxBurst(h.x, h.y-30, 10, "holy", 90, 500, 3, 1, -40, 0);
-    if(h===player || s===player) floatText(h.x, h.y-62, "¡ÁNGEL GUARDIÁN!", "heal");
     if(s.stats){ s.stats.alliesSaved = (s.stats.alliesSaved||0) + 1; }
     break;
   }
@@ -181,7 +178,6 @@ function champSetPreventDeath(h){
     p._prophecyAt = runElapsedMs;
     h.hp = 1; h.invulnTimer = Math.max(h.invulnTimer||0, 1500);
     vfxShock(h.x, h.y-10, 10, 70, "120,240,220", 520, 2); vfxBurst(h.x, h.y-30, 14, "spirit", 110, 600, 3, 2, -40, 0);
-    if(h===player || p===player) floatText(h.x, h.y-62, "¡PROFECÍA CUMPLIDA!", "heal");
     if(p.stats) p.stats.alliesSaved = (p.stats.alliesSaved||0) + 1;
     return true;
   }
@@ -210,11 +206,10 @@ function iaijutsuLine(h, dmg, skip){
     damageEnemy(o, dmg, {src:h, fromProc:true, forceCrit:true, critMultOverride:(runStats.critMult||1.8)+1.5});
   }
   vfxShock(h.x+h.fx*80, h.y+h.fy*80, 4, 60, "200,230,255", 220, h===player?2:1);
-  if(h===player) floatText(h.x, h.y-58, "¡IAI!", "crit");
 }
 // Cazadora: trampa (Manada 3) y presa acorralada (Manada 4)
 function champSetOnTrapRoot(h, e){ if(h && setN(h, "manada") >= 3 && e.alive && e!==h.huntTarget) sylvaAddTrack(h, e, 1); }
-function champSetOnCornered(h){ if(setN(h, "manada") >= 4){ sylvaSummonWolf(h, 6000); _setMsg(h, "¡LA MANADA!"); } }
+function champSetOnCornered(h){ if(setN(h, "manada") >= 4){ sylvaSummonWolf(h, 6000); } }
 // Ilkan: gancho que corta a 3+ (Caravana 3)
 function champSetOnHookEnd(h, hits){ if(hits >= 3 && setN(h, "legion") >= 3 && h.cds && h.cds[0]>0){ h.cds[0] *= 0.5; _setMsg(h, "¡LANZA LISTA!"); } }
 
@@ -244,7 +239,7 @@ function convergenceBurst(h, e){
   vfxBurst(e.x, e.y-16, 12, "ember", 170, 420, 3.5, h===player?1:0, -30, 0);
   vfxBurst(e.x, e.y-16, 12, "ice", 170, 420, 3.5, h===player?1:0, -30, 0);
   vfxBurst(e.x, e.y-16, 8, "shock", 170, 300, 3, 0, -30, 1);
-  if(h===player){ vfxShake(5); playSfx("boom"); floatText(e.x, e.y-50, "¡CONVERGENCIA!", "crit"); }
+  if(h===player){ vfxShake(5); playSfx("boom"); }
 }
 function updateChampionSets(h, dt){
   if(h._elemSwapT > 0) h._elemSwapT -= dt;

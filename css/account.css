@@ -127,3 +127,18 @@
   .acc-conflict{ flex-direction:column; }
 }
 .acc-warn-db{ color:var(--ember3); margin:4px 0 0; }
+
+/* qué da una cuenta + dirección técnica escondida */
+.acc-perks{ text-align:left; list-style:none; margin:6px 0 8px; padding:6px 10px; border:1px solid #3a1c10; background:rgba(0,0,0,.25); font-family:var(--font-retro); font-size:1rem; line-height:1.15; color:var(--text-dim); }
+.acc-perks li{ margin:0 0 2px; padding-left:14px; position:relative; }
+.acc-perks li::before{ content:"✔"; position:absolute; left:0; color:var(--ember3,#ffca78); }
+.acc-perks b{ color:var(--ember3,#ffca78); font-weight:normal; }
+.net-environment .net-tech{ flex:1 0 100%; font-size:11px; text-align:left; }
+.net-environment .net-tech summary{ list-style:none; cursor:pointer; color:var(--text-dim,#c9ad8b); min-height:30px; line-height:30px; display:inline-block; text-decoration:underline dotted; }
+@media (orientation: landscape) and (max-height: 520px){
+  .acc-perks{ margin:4px 0 6px; padding:4px 8px; font-size:.92rem; }
+  .acc-perks li{ margin:0; }
+}
+.net-environment .net-tech summary::-webkit-details-marker{ display:none; }
+.net-environment .net-tech summary::before{ content:"▸ "; }
+.net-environment .net-tech[open] summary::before{ content:"▾ "; }

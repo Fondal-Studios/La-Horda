@@ -1,0 +1,47 @@
+name: Brasa authored cosmetic validation
+on:
+  pull_request:
+    paths: ['assets/sprites/champions/brasa/**', 'js/assets/quality-five-skins-meta.js', 'js/data/champion-art-normalize.js', 'tools/art/test-brasa-abyssal*.js', 'tools/art/unique_skins/check.js', '.github/workflows/brasa-abyssal.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  brasa-cosmetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NODE_PATH: /tmp/horda-brasa/node_modules
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: npm install --prefix /tmp/horda-brasa --no-audit --no-fund playwright@1.56.1
+      - run: /tmp/horda-brasa/node_modules/.bin/playwright install --with-deps chromium
+      - run: npm ci --prefix server --no-audit --no-fund
+      - run: python -m pip install numpy pillow scipy opencv-python-headless
+      - name: Reproducible factory and style gate
+        run: |
+          python tools/factory/import-authored-sheet.py art-source/entregas/bloques/B635_brasa_abisal/fuentes/importacion.json /tmp/brasa-import
+          cmp /tmp/brasa-import/atlas.png assets/sprites/champions/brasa/skins/brasa_abisal/atlas.png
+          python tools/art/painter/style_gate.py assets/sprites/champions/brasa/skins/brasa_abisal/atlas.png
+          node tools/factory/cli.js gate reference
+          node tools/factory/cli.js gate talents
+      - name: Real cosmetic and roster regression
+        run: |
+          export CHROMIUM_PATH="$(node -p 'require("playwright").chromium.executablePath()')"
+          export PLAYWRIGHT_EXECUTABLE_PATH="$CHROMIUM_PATH"
+          python3 -m http.server 8775 --bind 127.0.0.1 >/tmp/brasa-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          export SE_BASE_URL=http://127.0.0.1:8775 ROSTER_BASE_URL=http://127.0.0.1:8775
+          sleep 1
+          node tools/art/roster_gate.js
+          node tools/art/unique_skins/check.js
+          node tools/collection/shop-pricing-browser.js
+          node tools/art/test-brasa-abyssal.js
+          node tools/art/test-brasa-abyssal-online.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: brasa-cosmetic-evidence
+          path: art-source/entregas/bloques/B635_brasa_abisal/runtime/

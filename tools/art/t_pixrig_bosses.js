@@ -1,6 +1,8 @@
 // JEFES REDIBUJADOS CON PIXRIG (tools/art/pixrig): cada hoja carga, no queda ningún cuerpo prestado, trae TODOS los
 // estados que pide su código (con cuadros distintos para caminar y atacar), su densidad de píxel queda < ×2,5 la del
-// roster, y en partida (en su arena) se dibuja con SU atlas, ataca y muere sin errores.
+// roster, y en partida (en su arena) se dibuja con SU arte, ataca y muere sin errores.
+// Los reemplazos propios de battlefield tienen prioridad desde la unificación de arte:
+// comprobarlos y comprobar además el atlas Pixrig de respaldo, nunca aceptar otro jefe.
 //   node tools/art/t_pixrig_bosses.js [outdir]   (sirve el repo en SE_BASE_URL, default http://127.0.0.1:8771; lo levanta si no hay nada)
 let chromium;
 try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
@@ -36,7 +38,7 @@ async function ensureServer() {
 
 (async () => {
   const srv = await ensureServer();
-  const browser = await chromium.launch({ args: ['--no-sandbox'] });
+  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
   const page = await (await browser.newContext({ viewport: { width: 1000, height: 600 } })).newPage();
   const errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
@@ -82,14 +84,39 @@ async function ensureServer() {
         if (k !== t) e.atlasKey = k;
         e.cine = null; e.cineT = 0;
         e.x = player.x - 300 + i * 120; e.y = player.y + 80; e.stunTimer = 1e9; e.abEmerge = 0; e.mnEmerge = 0; e.abRise = 0; e.cmRoof = false;
-        const f0 = window.drawAnimFrameSized, used = [];
-        window.drawAnimFrameSized = function (img) { used.push(img); return f0.apply(this, arguments); };
-        try { drawEnemyBody(e); e.attackAnim = 300; e.stunTimer = 0; drawEnemyBody(e); } finally { window.drawAnimFrameSized = f0; }
-        res[k] = { own: used.includes(ENEMY_ATLAS_PACK[k].atlas), n: used.length };
+        const f0 = window.drawAnimFrameSized;
+        const draw = () => {
+          const used = [];
+          window.drawAnimFrameSized = function (img) { used.push(img); return f0.apply(this, arguments); };
+          try { e.attackAnim = 0; drawEnemyBody(e); e.attackAnim = 300; e.stunTimer = 0; drawEnemyBody(e); }
+          finally { window.drawAnimFrameSized = f0; }
+          return used;
+        };
+        // The expected identity comes from the fixture's enemy type, not the
+        // renderer's selection function (which could itself select a donor).
+        const field = typeof BATTLEFIELD_IMAGES !== 'undefined' && BATTLEFIELD_IMAGES[t];
+        const expected = field || ENEMY_ATLAS_PACK[k].atlas;
+        const used = draw();
+        let fallback = true, rejectsDonor = true;
+        if (field) {
+          try {
+            BATTLEFIELD_IMAGES[t] = null;
+            fallback = draw().includes(ENEMY_ATLAS_PACK[k].atlas);
+            const donor = Object.values(BATTLEFIELD_IMAGES).find(img => img && img !== field && img.complete && img.naturalWidth);
+            BATTLEFIELD_IMAGES[t] = donor;
+            rejectsDonor = !!donor && !draw().includes(expected);
+          } finally { BATTLEFIELD_IMAGES[t] = field; }
+        }
+        res[k] = { own: used.length >= 2 && used.every(img => img === expected), n: used.length,
+          source: field ? 'battlefield/' + t : 'pixrig/' + k, fallback, rejectsDonor };
       });
       return res;
     }, { keys: byArena[a], B: BOSSES });
-    for (const k in r) check(`dibuja_propio.${k}`, r[k].own, r[k]);
+    for (const k in r) {
+      check(`dibuja_propio.${k}`, r[k].own, r[k]);
+      check(`respaldo_propio.${k}`, r[k].fallback);
+      check(`rechaza_prestado.${k}`, r[k].rejectsDonor);
+    }
     if (a === 'ciudad') {  // los espejismos de la Dama: su mismo cuerpo, translúcido (cm-render.js)
       const m = await page.evaluate(() => { const e = spawnEnemy('cm_espejismo', false, false); e.x = player.x; e.y = player.y - 120; e.stunTimer = 1e9;
         const f0 = window.drawAnimFrameSized; let used = null; window.drawAnimFrameSized = function (img) { if (!used) used = img; return f0.apply(this, arguments); };

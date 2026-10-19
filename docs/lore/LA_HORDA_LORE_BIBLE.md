@@ -162,6 +162,11 @@ los cristales no se pueden destruir ni fundir; los guardianes quedan como **los 
 - **Guardianes jugables** (`HERO_VOICES`): 3 líneas cada uno (al elegirlo en la ficha previa, al ganar en
   la victoria, al caer en la derrota), sacadas de su historia del Códice. Un guardián nuevo suma su fila.
 
+**El Libro de la Horda (Códice › El Libro).** Lo narra el **Hechicero Supremo**, en primera persona; no es una Crónica ni la
+escribe Ismena (su Crónica de la Noche del Regreso, §12, sigue siendo suya). Respeta el arco de §5: guía cálido en los primeros
+fragmentos, sospecha en una frase, y recién el fragmento de la Arena Infernal confiesa que fue el Primero de los Cuatro. Texto en
+`js/data/codex-book-text.js`; reglas de secuencia en `LA_HORDA_CODEX.md` §9.
+
 ## 12. Las Crónicas (páginas coleccionables)
 25 páginas en 10 libros, 2-4 por arena. Aparecen en el piso (niveles 4 y 7), las suelta el primer subjefe
 de la partida (y, rara vez, un élite) o se encuentran al completar la arena. Se leen en **Códice › CRÓNICAS**.

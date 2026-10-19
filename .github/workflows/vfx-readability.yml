@@ -1,0 +1,52 @@
+name: VFX readability and combat parity
+on:
+  pull_request:
+    paths: ['js/champions/skill-fx-a/**', 'js/champions/vfx-b/**', 'js/rendering/**', 'tools/vfx/**', 'index.html', '.github/workflows/vfx-readability.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  readability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      NODE_PATH: /tmp/horda-vfx/node_modules
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: npm install --prefix /tmp/horda-vfx --no-audit --no-fund playwright@1.56.1
+      - run: /tmp/horda-vfx/node_modules/.bin/playwright install --with-deps chromium
+      - name: Strict decal visibility in six arenas
+        run: |
+          mkdir -p /tmp/horda-vfx-results
+          export CHROMIUM_PATH="$(node -p 'require("playwright").chromium.executablePath()')"
+          set -o pipefail
+          node tools/vfx/test-decal-legible.js | tee /tmp/horda-vfx-results/readability.txt
+      - name: Reject original occlusion defect
+        run: |
+          export CHROMIUM_PATH="$(node -p 'require("playwright").chromium.executablePath()')"
+          set +e
+          CANARY_SFA_TOP=1 ARENAS=bosque node tools/vfx/test-decal-legible.js > /tmp/horda-vfx-results/negative-control.txt 2>&1
+          code=$?
+          set -e
+          cat /tmp/horda-vfx-results/negative-control.txt
+          test "$code" -eq 1
+          grep -q 'decal sfa:' /tmp/horda-vfx-results/negative-control.txt
+          grep -q 'FALLA:' /tmp/horda-vfx-results/negative-control.txt
+      - name: Combat parity and host event replay
+        run: |
+          export CHROMIUM_PATH="$(node -p 'require("playwright").chromium.executablePath()')"
+          python3 -m http.server 8961 --bind 127.0.0.1 >/tmp/horda-vfx-results/http.txt 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          export ABILITY_BASE_URL=http://127.0.0.1:8961 BASE_URL=http://127.0.0.1:8961
+          sleep 1
+          node tools/vfx/verify-mechanics.js > /tmp/horda-vfx-results/mechanics.txt
+          node tools/vfx/parity-skill-fx.js > /tmp/horda-vfx-results/parity.txt
+          node tools/vfx/test-vfx-b.js > /tmp/horda-vfx-results/events.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: vfx-readability-evidence
+          path: /tmp/horda-vfx-results/

@@ -43,6 +43,22 @@ function kvbOutline(c, col){
   }
   d.data.set(o); g.putImageData(d, 0, 0); return c;
 }
+/* ---------------- tinte por arena ----------------
+   Los decales se hornean con la paleta de la arena en curso (AID_INLAY_PALETTES, js/rendering/arena-props.js): el mismo rosa de la
+   Enóloga o de la Sangre ya no es idéntico en el bosque, el hielo o el infierno. El borde exterior (el radio real) conserva el contorno
+   oscuro del campeón para leerse sobre cualquier suelo; se tiñen relleno, marcas y filo. Sin paleta de arena (menús, arena nueva) no hay tinte. */
+function kvbArenaKey(){ try{ return (typeof currentArena === 'string' && typeof AID_INLAY_PALETTES !== 'undefined' && AID_INLAY_PALETTES[currentArena]) ? currentArena : ''; }catch(e){ return ''; } }
+function kvbMix(a, b, t){ const A = kvbRGB(a), B = kvbRGB(b), h = v => Math.round(v).toString(16).padStart(2, '0'); return '#' + h(A[0] + (B[0] - A[0]) * t) + h(A[1] + (B[1] - A[1]) * t) + h(A[2] + (B[2] - A[2]) * t); }
+const KVB_TINT = {key: '', pal: null};
+// tinte activo (solo durante el horneado de un sprite): kvbTintCol(hex, fuerza) / kvbTintPal(paleta de 5 tonos)
+function kvbTintCol(hex, t){ const A = KVB_TINT.pal; return !A || !hex ? hex : kvbMix(hex, A[2], t === undefined ? .72 : t); }
+function kvbTintPal(pal){
+  const A = KVB_TINT.pal; if(!A) return pal;
+  const lit = (c, k) => kvbMix(c, '#ffffff', k);
+  return [kvbMix(pal[0], A[0], .45), kvbMix(pal[1], A[1], .75), kvbMix(pal[2], A[2], .7), kvbMix(pal[3], lit(A[2], .3), .7), kvbMix(pal[4], lit(A[2], .6), .6)];
+}
+// Techo de relleno trameado (fracción de píxeles del disco): 20–25 % deja ver al enemigo señalado y el anillo exterior manda
+const KVB_FILL_CAP = .24;
 const KVB_BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
 // translucidez "de pixel art": conserva solo una fracción (level 0..1) de los píxeles, con tramado ordenado
 function kvbDither(c, level){
@@ -80,14 +96,24 @@ function kvbBmp(rows, map){
 
 /* ---------------- registro y caché de sprites ---------------- */
 const KVB_DEC = {}, KVB_MOT = {}, KVB_BEAM = {}, KVB_CACHE = {};
+let kvbCacheArena = null;
 // Decal cuadrado centrado: el borde de la imagen = radio real. paint(g, q, S, f, N) con q = 0..1 a lo largo de la tira.
 function kvbDefDecal(name, N, paint){ KVB_DEC[name] = {N, paint}; }
 // 1 píxel de arte ≈ 4,4 unidades de mundo (≈2,5 px de pantalla a 844x390): se lee a distancia y el tramado no es ruido
 function kvbS(R){ return Math.max(24, Math.min(128, Math.round(2 * R / 4.4 / 4) * 4)); }
 function kvbDecalFrames(name, S){
-  const k = name + '@' + S; let fr = KVB_CACHE[k]; if(fr) return fr;
+  const ak = kvbArenaKey();
+  // Only decals are arena-tinted. Keep reusable motifs/beams but release the
+  // previous arena's cache; active entries still own their frame references.
+  if(ak !== kvbCacheArena){
+    for(const key of Object.keys(KVB_CACHE)) if(key.includes('@')) delete KVB_CACHE[key];
+    kvbCacheArena = ak;
+  }
+  const k = name + '@' + S + '@' + ak; let fr = KVB_CACHE[k]; if(fr) return fr;
   const d = KVB_DEC[name]; if(!d) return null; fr = [];
-  for(let f = 0; f < d.N; f++){ const [c, g] = kvbCanvas(S, S); d.paint(g, f / (d.N - 1), S, f, d.N); fr.push(kvbCrisp(c)); }
+  KVB_TINT.key = ak; KVB_TINT.pal = ak ? AID_INLAY_PALETTES[ak] : null;
+  try{ for(let f = 0; f < d.N; f++){ const [c, g] = kvbCanvas(S, S); d.paint(g, f / (d.N - 1), S, f, d.N); fr.push(kvbCrisp(c)); } }
+  finally{ KVB_TINT.key = ''; KVB_TINT.pal = null; }
   return KVB_CACHE[k] = fr;
 }
 // Motivo pequeño (sprite suelto con contorno); frames = lista de funciones paint(g, pad) o una sola
@@ -120,7 +146,7 @@ function kvbAdd(e){
 function kvbDecal(name, x, y, R, dur, o){
   if(!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(R) || !(dur > 0)) return null; R = Math.max(4, Math.min(520, R));
   o = o || {}; const S = kvbS(R), fr = kvbDecalFrames(name, S); if(!fr) return null;
-  return kvbAdd({frames: fr, x, y, w: 2 * R, h: 2 * R, rot: o.rot || 0, dur, layer: o.layer || 'g', ax: o.ax === undefined ? .5 : o.ax, ay: o.ay === undefined ? .5 : o.ay,
+  return kvbAdd({name, frames: fr, x, y, w: 2 * R, h: 2 * R, rot: o.rot || 0, dur, layer: o.layer || 'g', ax: o.ax === undefined ? .5 : o.ax, ay: o.ay === undefined ? .5 : o.ay,
     follow: o.follow || null, ofx: o.ofx || 0, ofy: o.ofy || 0, loop: !!o.loop, fps: o.fps || 0, alpha: o.alpha, fadeAt: o.fadeAt, add: !!o.add, prio: o.prio, flip: !!o.flip, vx: o.vx || 0, vy: o.vy || 0});
 }
 // Sprite de motivo (una pluma, una abeja…) en un punto, con velocidad / gravedad / giro

@@ -106,9 +106,11 @@ function drawDivinaTeamRing(ent, side){
   // cuerpo (drawDivinaTeamAura, mismo criterio que ya usan las estructuras).
   const r = ent.radius||24;
   drawDivinaTeamAura(ent.x, ent.y+r*0.5, r*1.5, r*0.9, side, 0.85);
-  const col = side==="enemy" ? "#ff5a6a" : "#4ac8ff";
+  const cp = typeof cvdPal==="function" ? cvdPal() : null;
+  const col = cp ? "rgb("+(side==="enemy" ? cp.enemy : cp.ally)+")" : (side==="enemy" ? "#ff5a6a" : "#4ac8ff");
   const pulse = 0.6+0.4*Math.sin(performance.now()/260 + ent.x*0.01);
   ctx.save();
+  if(cp && side==="enemy") ctx.setLineDash([7, 5]); // daltonismo: el rival se reconoce por el anillo discontinuo
   ctx.globalAlpha = 0.5+0.25*pulse;
   ctx.strokeStyle = col; ctx.lineWidth = 2.2; ctx.shadowColor = col; ctx.shadowBlur = 6;
   ctx.beginPath(); ctx.ellipse(ent.x, ent.y+r*0.5, r*1.05, r*0.42, 0, 0, Math.PI*2); ctx.stroke();
@@ -128,7 +130,8 @@ function drawDivinaHpBar(s){
 // para el propio. La usan tanto las estructuras (ver más abajo) como drawDivinaTeamRing (heroes/
 // minions), así el criterio visual es el mismo en todas partes.
 function drawDivinaTeamAura(x, y, rx, ry, side, strength){
-  const col = side==="enemy" ? "255,90,100" : "80,200,255";
+  const cp = typeof cvdPal==="function" ? cvdPal() : null;
+  const col = cp ? (side==="enemy" ? cp.enemy : cp.ally) : (side==="enemy" ? "255,90,100" : "80,200,255");
   const pulse = 0.65+0.35*Math.sin(performance.now()/300 + x*0.01);
   ctx.save();
   ctx.globalCompositeOperation = "lighter";
@@ -139,6 +142,7 @@ function drawDivinaTeamAura(x, y, rx, ry, side, strength){
   ctx.beginPath(); ctx.ellipse(x, y, rx*1.35, ry*1.35, 0, 0, Math.PI*2); ctx.fill();
   ctx.restore();
   ctx.save();
+  if(cp && side==="enemy") ctx.setLineDash([7, 5]);
   ctx.globalAlpha = 0.55+0.3*pulse;
   ctx.strokeStyle = `rgb(${col})`; ctx.lineWidth = 2.4; ctx.shadowColor = `rgb(${col})`; ctx.shadowBlur = 8;
   ctx.beginPath(); ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI*2); ctx.stroke();

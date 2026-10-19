@@ -1,0 +1,79 @@
+{
+  "bloque": "B002",
+  "estado": "EN_CORRECCION",
+  "estado_tecnico": "TECNICO_VERIFICADO",
+  "pendientes_visuales": [
+    "Revisar/corregir continuidad de espada en cuadros24–26 y29.",
+    "Revisar diferencia de altura entre caminar frontal y espalda; no se certifica fluidez."
+  ],
+  "generaciones_ia_adicionales": 0,
+  "archivos": [
+    {
+      "archivo": "entrega.json",
+      "sha256": "ba2fb533dda593fc0d50cd4ccf077af00feab16642bf6635933a8466010c20d8",
+      "bytes": 1786
+    },
+    {
+      "archivo": "ESTADO.md",
+      "sha256": "e569605d13d19cfd75304f5960de4cf2f812233d86655a691eaff125a34f6371",
+      "bytes": 762
+    },
+    {
+      "archivo": "fuentes/hoja_preparada.png",
+      "sha256": "b418adeec7c301782edf93efabf7519dc6e5d95ffa159e81866e6c2c1e0548b0",
+      "bytes": 298502
+    },
+    {
+      "archivo": "fuentes/importacion.json",
+      "sha256": "04e251f06524cde0eca270c555837a3d6abf38d3a2a05d18904c5fc9a12235ac",
+      "bytes": 503
+    },
+    {
+      "archivo": "fuentes/normalizacion.json",
+      "sha256": "874e041d8f1075db73bd9cc437303603792904b1d58a3c09fdd55a03076d10ef",
+      "bytes": 1533
+    },
+    {
+      "archivo": "fuentes/hoja_36poses.psd",
+      "sha256": "6d04ba594096e5a7527f2dbcae63f42d105c60588e9bb78d40e1720adedd4abb",
+      "bytes": 673105
+    },
+    {
+      "archivo": "campeones/tanque/chequeos.json",
+      "sha256": "845d5eb78eb4340d81c9f970ee7209a16976e3f4a1445cb8eb23dd87610a35e8",
+      "bytes": 6552
+    },
+    {
+      "archivo": "campeones/tanque/style.log",
+      "sha256": "aa39dc34d6d0fb0334bc9bfb1ae47a8f5987ea87bfe9f2bb60ad83cc9bd08caa",
+      "bytes": 211
+    },
+    {
+      "archivo": "campeones/tanque/import.log",
+      "sha256": "ae875ba07d7418c1af22c616303dbb8a8fe930991ef0f092eef06018757c041d",
+      "bytes": 230
+    },
+    {
+      "archivo": "campeones/tanque/hoja_contacto.png",
+      "sha256": "1daf2868d7ed4bcf49f4f60814b4d6ee252f166811dbc55209f122a25a78f768",
+      "bytes": 414376
+    },
+    {
+      "archivo": "campeones/tanque/import-report.json",
+      "sha256": "baf91b1e27a7822fbba83a839692d7bd825365d88718ee7edde771de81ea3e4c",
+      "bytes": 242
+    },
+    {
+      "archivo": "campeones/tanque/preview.png",
+      "sha256": "3513f77a9ff50d7bfa1de53ee19cd264e53dfff9cbd7839b57d97071aa9d5caf",
+      "bytes": 8052
+    },
+    {
+      "archivo": "campeones/tanque/hoja_36poses.png",
+      "sha256": "b418adeec7c301782edf93efabf7519dc6e5d95ffa159e81866e6c2c1e0548b0",
+      "bytes": 298502
+    }
+  ],
+  "siguiente_bloque_independiente": "B003",
+  "siguiente_paso_de_este_bloque": "Corregir continuidad de espada en cuadros24–26,29 y revisar escala entre vistas; reutilizar este atlas."
+}

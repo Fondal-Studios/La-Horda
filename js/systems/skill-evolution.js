@@ -139,7 +139,6 @@ function skillEvoOnKill(e){
   if(ev.cdDone || !src.cds || typeof ev.key!=="number") return;
   ev.cdDone = true;
   src.cds[ev.key] = (src.cds[ev.key]||0) * (1 - EVO_CFG.impetuCdCut);
-  if(src===player) floatText(src.x, src.y-48, "ímpetu", null);
 }
 // Texto de los hitos para la UI de habilidades.
 function skillEvoLines(classKey, sk, idx){

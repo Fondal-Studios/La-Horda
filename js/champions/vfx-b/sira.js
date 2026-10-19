@@ -48,14 +48,19 @@
   kvbSkin('ex_atlas', {R: o => o.r + 30, hideBase: true,
     pulse: o => { const p = o.points || []; for(let i = 0; i < p.length; i += 2) kvbDecal('si_atlas', p[i].x, p[i].y, Math.max(26, o.r * 1.5), 560, {layer: 'g', alpha: .85}); kvbEmit('si_scrap', 6, o.owner.x, o.owner.y, {v0: 40, v1: 110, up: 40, grav: 100, l0: 360, l1: 620, scale: 1.4, spin: 6}); },
     draw: (o, t) => { const p = o.points || []; if(p.length < 2) return; const k = Math.min(1, o.life / 500, (o.maxLife - o.life) / 250 + .15);
-      ctx.save(); ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.globalAlpha = .22 * k; ctx.strokeStyle = PARCH; ctx.lineWidth = o.r * 2; ctx.beginPath(); ctx.moveTo(p[0].x, p[0].y); for(const q of p) ctx.lineTo(q.x, q.y); ctx.stroke();
-      ctx.globalAlpha = .9 * k; ctx.setLineDash([8, 6]); ctx.lineDashOffset = -t / 60; ctx.strokeStyle = '#101a33'; ctx.lineWidth = 5; ctx.stroke(); ctx.strokeStyle = '#cfe0ff'; ctx.lineWidth = 2; ctx.stroke(); ctx.setLineDash([]);
-      for(const q of p){ ctx.strokeStyle = '#c4543a'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(q.x - 4, q.y - 4); ctx.lineTo(q.x + 4, q.y + 4); ctx.moveTo(q.x + 4, q.y - 4); ctx.lineTo(q.x - 4, q.y + 4); ctx.stroke(); }
-      const cf = kvbMotif('si_compass'); if(cf){ ctx.imageSmoothingEnabled = false; ctx.globalAlpha = k; ctx.drawImage(cf[0], o.owner.x - 17, o.owner.y - 70, 34, 34); } ctx.restore(); }}, 'sira');
+      // banda de pergamino, hilo punteado y cruces sobre la rejilla de píxel (pixel-stroke.js: sin antialias, translucidez por tramado)
+      const flat = []; for(const q of p) flat.push(q.x, q.y);
+      ctx.save(); pxsPath(flat, [[PARCH, o.r * 2]], {cell: 4.4, k: .22 * k});
+      pxsPath(flat, [['#101a33', 6.6], ['#cfe0ff', 2.2]], {cell: 2.2, k: k > .6 ? 1 : k, dash: [3, 2, Math.floor(t / 180)]});
+      for(const q of p){ pxsLine(q.x - 4, q.y - 4, q.x + 4, q.y + 4, [['#c4543a', 2.2]], {cell: 2.2, k}); pxsLine(q.x + 4, q.y - 4, q.x - 4, q.y + 4, [['#c4543a', 2.2]], {cell: 2.2, k}); }
+      const cf = kvbMotif('si_compass'); if(cf){ ctx.imageSmoothingEnabled = false; ctx.drawImage(cf[0], o.owner.x - 17, o.owner.y - 70, 34, 34); } ctx.restore(); }}, 'sira');
   // El rastro real (su ruta de los últimos 4 s) como huellas de tinta que se desvanecen; se guarda una copia para Borrar el camino
   kvbOverlay('sira', (h, layer, t) => {
-    if(layer !== 'g') return; const rt = routeOf(h); if(rt.length < 2) return; ctx.save(); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-    for(let i = 1; i < rt.length; i++){ const age = runElapsedMs - rt[i].at, k = Math.max(.15, 1 - age / 4200); ctx.globalAlpha = .75 * k; ctx.strokeStyle = '#cfe0ff'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(rt[i - 1].x, rt[i - 1].y); ctx.lineTo(rt[i].x, rt[i].y); ctx.stroke(); ctx.strokeStyle = INK; ctx.lineWidth = 3; ctx.stroke(); }
+    if(layer !== 'g') return; const rt = routeOf(h); if(rt.length < 2) return; ctx.save();
+    // el rastro en 4 tramos por antigüedad (cada uno con su tramado de desvanecido), sobre la rejilla de píxel
+    const nb = 4, per = Math.ceil((rt.length - 1) / nb);
+    for(let b = 0; b < nb; b++){ const i0 = b * per, i1 = Math.min(rt.length - 1, i0 + per); if(i1 <= i0) break; const flat = []; for(let i = i0; i <= i1; i++) flat.push(rt[i].x, rt[i].y);
+      const age = runElapsedMs - rt[(i0 + i1) >> 1].at, k = Math.max(.15, 1 - age / 4200); pxsPath(flat, [['#cfe0ff', 4.4], [INK, 2.2]], {cell: 2.2, k: .75 * k + .2}); }
     ctx.fillStyle = '#8aa7da'; for(const p of rt){ ctx.globalAlpha = .9; ctx.fillRect(p.x - 2, p.y - 2, 4, 4); } ctx.restore();
   }, (h, dt) => { const rt = routeOf(h); if(rt.length) kvbHS(h).routeCopy = rt.map(p => ({x: p.x, y: p.y})); });
   kvbBasic('sira', SI, 'si_blot');

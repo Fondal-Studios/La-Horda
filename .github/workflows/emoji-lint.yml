@@ -1,0 +1,20 @@
+name: Emoji lint (arte pixel)
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  emoji-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Contrato de los iconos pixel (16x16, <= 6 colores)
+        run: node tools/art/check-pixel-icons.js
+      - name: Linter de emojis de color (auto-prueba y --strict)
+        run: |
+          node tools/art/emoji-lint.js --self-test
+          node tools/art/emoji-lint.js --strict

@@ -26,8 +26,8 @@ function renderSkillsPanel(panel, classKey, rerender){
     const nextM = {useXp:0, useLvl:m.useLvl, alloc: Math.min(TALENT_MAX, m.alloc+1)};
     const statNext = tMaxed ? "" : `<span class="mastery-next"> → ${skillStatLine(sk, nextM)}</span>`;
     const useBonusPct = Math.round((usePowerMult(m)-1)*100);
-    const iconImg = SKILL_ICON_IMG[sk.name];
-    const pxg = !iconImg && typeof skillPixelGlyphUri==="function" ? skillPixelGlyphUri(classKey, idx==="ult" ? 3 : idx, idx==="ult" ? "#ffe9a8" : "#8fe0ff") : null;
+    const iconImg = null; // un solo idioma de ícono: el contrato de pixel-icons.js (nada de recortes de sprite)
+    const pxg = !iconImg && typeof skillPixelGlyphUri==="function" ? skillPixelGlyphUri(classKey, idx==="ult" ? 3 : idx) : null;
     const iconHtml = (iconImg || pxg) ? `<img src="${iconImg || pxg}" style="width:100%;height:100%;object-fit:contain;image-rendering:pixelated;">` : sk.ico;
     const ultLock = (idx==="ult" && champ.level < ULT_POINTS_MIN_LEVEL) ? `<div class="talent-lock-reason">🔒 ${lock}</div>` : "";
     html += `

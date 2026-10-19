@@ -1,18 +1,13 @@
 "use strict";
 /* ============================================================
    js/ui/skill-pixel-glyphs.js
-   GLIFOS PIXEL de las habilidades en los botones del HUD (y en la ficha / panel de Habilidades).
-   Antes los campeones de Ascensión y Expedición mostraban el mismo engranaje en las 3 habilidades y la misma
-   estrella en la definitiva (skill-glyphs.js decide por palabras clave y todas caían en "nova"/"star"); solo
-   se distinguían por el texto. Ahora cada habilidad de cada campeón tiene su propio glifo, dibujado con
-   la grilla del juego: un MOTIVO de 12x12 (lo que hace la habilidad) + una INSIGNIA de 4x4 en la esquina
-   (cómo: potencia, cura, rotura, sangrado, área, movimiento...). Todo procedural, sin recursos de terceros.
+   MOTIVOS y MAPA de los íconos de habilidad del HUD (y del panel de Habilidades, la ficha y los refuerzos).
+   Cada habilidad de cada campeón (43 + el Coloso de Ilkan) tiene su propio motivo de 12x12, sin repetir en todo el
+   roster; el render (16x16, 6 colores, contorno de 1 px, marco por categoría) lo hace el contrato de pixel-icons.js.
+   Los motivos nuevos están en skill-icon-motifs.js (generado por tools/art/skill-motifs/gen.py) y pisan a los de acá.
    Es solo presentación: no toca estadísticas, daño ni efectos de ningún kit.
-
-   Paleta por letra:  # color del botón · l luz · d sombra · k trazo oscuro · a oro · r rojo · g verde · c celeste · w blanco
-   Contorno de 1 px oscuro automático alrededor de toda la silueta (lenguaje de La Horda: contorno uniforme).
-   Contrato (lo verifica tools/ux/test-skill-glyphs.js): dos habilidades del mismo kit nunca comparten motivo, ningún
-   campeón cae en el glifo genérico y ninguna pareja motivo+insignia se repite en todo el roster.
+   Letras: # cuerpo · l luz · d sombra · k detalle oscuro · a acento (a r g c w colapsan a un solo acento por ícono).
+   Verifica: tools/ux/test-skill-glyphs.js (glifos únicos por kit) y tools/art/check-skill-icons.js (contrato).
    ============================================================ */
 const PIX_MOTIFS = {
   sword:['.....ll.....','.....l#d....','.....l#d....','.....l#d....','.....l#d....','.....l#d....','..aaaaaaaa..','.....ad.....','.....ad.....','.....aa.....','....aaaa....','............'],
@@ -142,109 +137,84 @@ const PIX_MOTIFS = {
   sunstep:['....aaaa....','..aa####aa..','.a########a.','a##########a','a#llllllll#a','a##########a','.a########a.','..aa####aa..','....aaaa....','.c..c..c..c.','..c.c..c.c..','............'],
   bark:['.aaaaaaaaaa.','a##l#d#l###a','a#l##d##l#da','a##ld#l###da','a#l##d##l#da','a##l#dd#l#da','a#l###d##lda','a##l#d#l###a','a#l##d##l#da','.aaaaaaaaaa.','............','............'],
   tombstone:['....llll....','...l####d...','..l######d..','..l##a###d..','..l#aaa##d..','..l##a###d..','..l##a###d..','..l######d..','.llllllllll.','.dddddddddd.','............','............'],
-};
-// Insignias de 4x4 (esquina inferior derecha): cómo actúa la habilidad.
-const PIX_PIPS = {
-  none:null,
-  up:['.aa.','aaaa','.aa.','.aa.'],
-  plus:['.gg.','gggg','gggg','.gg.'],
-  drop:['.rr.','.rr.','rrrr','.rr.'],
-  ring:['.cc.','c..c','c..c','.cc.'],
-  arrow:['.c..','cccc','cccc','.c..'],
-  x:['r..r','.rr.','.rr.','r..r'],
-  spark:['.a..','aaaa','.aa.','a..a'],
-  snow:['c.c.','.cc.','cccc','c.c.'],
-  flame:['.r..','rrr.','rrra','.rr.'],
-  bolt:['..aa','.aa.','aaaa','.a..'],
-  skull:['wwww','wkkw','wwww','w.w.'],
-  dots:['a..a','....','.aa.','a..a']
+  bolt:['........l##.','.......l##d.','......l##d..','.....l##d...','....l#####d.','.....ddd##d.','........##d.','.......l#d..','......l#d...','.....l#d....','....l#d.....','....ld......'],
+  frost:['.....##.....','.#..l##l..#.','..#..##..#..','...#.##.#...','.l..####..l.','#####aa#####','#####aa#####','.l..####..l.','...#.##.#...','..#..##..#..','.#..l##l..#.','.....##.....'],
+  cross:['....llll....','....l##d....','....l##d....','....l##d....','llll####llll','l##########d','l##########d','lddd####dddd','....l##d....','....l##d....','....l##d....','....lddd....'],
 };
 // Qué lleva cada habilidad. Clave "campeón:ranura" (0, 1, 2 y "u" = definitiva) -> "motivo+insignia".
 // Las 6 con ícono PNG propio (SKILL_ICON_IMG) no se tocan y no figuran acá.
 const SKILL_PIXEL_MAP = {
-  "tanque:u":"horn+up",
-  "guerrero:0":"dagger+drop","guerrero:1":"claws","guerrero:2":"trap+dots","guerrero:u":"mask+skull",
-  "mago:u":"comet+flame",
-  "soporte:0":"sun+plus","soporte:1":"sword+up","soporte:2":"shield+plus","soporte:u":"crown+up",
-  "segador:0":"scythe","segador:1":"armor+up","segador:2":"tombstone+x","segador:u":"skull+drop",
-  "axiom:0":"glitch+x","axiom:1":"cursor+spark","axiom:2":"portal+arrow","axiom:u":"power+x",
-  "profeta:0":"ankh+plus","profeta:1":"eye+up","profeta:2":"moon+spark","profeta:u":"wings+up",
-  "musashi:0":"sword+arrow","musashi:1":"ghost+arrow","musashi:2":"slashes","musashi:u":"swords+spark",
-  "cazadora:0":"arrow+x","cazadora:1":"trap+ring","cazadora:2":"rain","cazadora:u":"claws+flame",
-  "nigromante:0":"ghost+skull","nigromante:1":"fist+skull","nigromante:2":"cloud+skull","nigromante:u":"demon+skull",
-  "libertador:0":"rifle","libertador:1":"ball+arrow","libertador:2":"boots+bolt","libertador:u":"mountain+up",
-  "ilkan:0":"banner","ilkan:1":"dune+up","ilkan:2":"compass+up","ilkan:u":"fist+ring",
-  "ilkan_colossus:0":"fist+x","ilkan_colossus:1":"dune+x","ilkan_colossus:2":"boots+ring","ilkan_colossus:u":"footprints+skull",
-  "ynara:0":"eye+bolt","ynara:1":"bowl+plus","ynara:2":"door+arrow","ynara:u":"halo+up",
-  "myla:0":"bowl+ring","myla:1":"splat+drop","myla:2":"bubble+up","myla:u":"burst+x",
-  "brasa:0":"turret+ring","brasa:1":"cloud+ring","brasa:2":"wrench+x","brasa:u":"siren+up",
-  "eslabon:0":"hook+arrow","eslabon:1":"barrier+x","eslabon:2":"padlock+up","eslabon:u":"chain+ring",
-  "morwen:0":"drop+dots","morwen:1":"crystal+x","morwen:2":"flask+up","morwen:u":"alembic+ring",
-  "farolero:0":"lantern+up","farolero:1":"star+spark","farolero:2":"boots+arrow","farolero:u":"candle+plus",
-  "iria:0":"anchor+x","iria:1":"stitch+bolt","iria:2":"scissors+x","iria:u":"triskele+ring",
-  "vesper:0":"needle+dots","vesper:1":"stitch+arrow","vesper:2":"scissors+dots","vesper:u":"spool+ring",
-  "nahir:0":"crystal+dots","nahir:1":"mirror+arrow","nahir:2":"swords+x","nahir:u":"frame+ring",
-  "baltra:0":"bell+up","baltra:1":"shield+ring","baltra:2":"hammer+arrow","baltra:u":"horn+ring",
-  "maura:0":"roots+arrow","maura:1":"bark+up","maura:2":"shears+x","maura:u":"tree+arrow",
-  "dariel:0":"note+x","dariel:1":"drum+arrow","dariel:2":"repeat+spark","dariel:u":"trumpet+ring",
-  "orsa:0":"rod+bolt","orsa:1":"rifle+up","orsa:2":"circuit+bolt","orsa:u":"storm+ring",
-  "tibor:0":"swarm+x","tibor:1":"hive+arrow","tibor:2":"flower+up","tibor:u":"bee+ring",
-  "zahra:0":"furnace+flame","zahra:1":"ember+snow","zahra:2":"boots+flame","zahra:u":"valve+ring",
-  "renko:0":"mound+x","renko:1":"mountain+dots","renko:2":"shovel+x","renko:u":"tablet+ring",
-  "sira:0":"quill+arrow","sira:1":"footprints+arrow","sira:2":"eraser+x","sira:u":"map+ring",
-  "nano_gm:0":"gavel+x","nano_gm:1":"scroll+up","nano_gm:2":"swap+spark","nano_gm:u":"scales+ring",
-  "facu_gm:0":"hook+dots","facu_gm:1":"bubble+x","facu_gm:2":"wave+up","facu_gm:u":"vortex+ring",
-  "aurelia:0":"prism+arrow","aurelia:1":"rays+x","aurelia:2":"sunstep+arrow","aurelia:u":"sun+ring",
-  "khepri:0":"swarm+arrow","khepri:1":"beetle+up","khepri:2":"wings+arrow","khepri:u":"eclipse+ring",
-  "velmira:0":"mask+arrow","velmira:1":"masks+ring","velmira:2":"swap+arrow","velmira:u":"curtain+ring",
-  "vhal:0":"star+arrow","vhal:1":"vortex+dots","vhal:2":"orbit+up","vhal:u":"blackhole+ring",
-  "bront:0":"plate+arrow","bront:1":"wall+up","bront:2":"crystal+ring","bront:u":"castle+up",
-  "oriel:0":"door+spark","oriel:1":"ghost+dots","oriel:2":"portal+spark","oriel:u":"rift+ring",
-  "saelis:0":"fan+arrow","saelis:1":"updraft+up","saelis:2":"feather+spark","saelis:u":"wings+ring",
-  "solciju:0":"goblet+skull","solciju:1":"cask+drop","solciju:2":"toast+up","solciju:u":"bottle+ring",
-  "veyra:0":"wound+x","veyra:1":"dagger+arrow","veyra:2":"pact+x","veyra:u":"heart+drop",
-  "brakk:0":"wall+x","brakk:1":"nails+ring","brakk:2":"brace+up","brakk:u":"ball+ring",
-  "morveth:0":"sprout+skull","morveth:1":"cloud+drop","morveth:2":"mushroom+up","morveth:u":"tree+skull",
-  "aelith:0":"clock+x","aelith:1":"crystal+spark","aelith:2":"boots+up","aelith:u":"hourglass+ring"
+  "tanque:0":"tornado","tanque:1":"shieldrush","tanque:2":"raisedfist","tanque:u":"horn",
+  "guerrero:0":"dagger","guerrero:1":"triple","guerrero:2":"beartrap","guerrero:u":"plaguemask",
+  "mago:0":"flamewall","mago:1":"frost","mago:2":"chainbolt","mago:u":"meteor",
+  "soporte:0":"sun","soporte:1":"sword","soporte:2":"shield","soporte:u":"crown",
+  "segador:0":"scythe","segador:1":"chestplate","segador:2":"tombstone","segador:u":"reaper",
+  "axiom:0":"glitch","axiom:1":"cursor","axiom:2":"portal","axiom:u":"power",
+  "profeta:0":"ankh","profeta:1":"eye","profeta:2":"moon","profeta:u":"wings",
+  "musashi:0":"katana","musashi:1":"afterimage","musashi:2":"millcuts","musashi:u":"swords",
+  "cazadora:0":"arrow","cazadora:1":"snare","cazadora:2":"arrowrain","cazadora:u":"wolfhead",
+  "nigromante:0":"wisp","nigromante:1":"golem","nigromante:2":"plaguecloud","nigromante:u":"demon",
+  "libertador:0":"rifle","libertador:1":"grenade","libertador:2":"horse","libertador:u":"mountain",
+  "ilkan:0":"banner","ilkan:1":"dunes","ilkan:2":"compass","ilkan:u":"sandgiant",
+  "ilkan_colossus:0":"avalanche","ilkan_colossus:1":"sinkhole","ilkan_colossus:2":"footprint","ilkan_colossus:u":"threesteps",
+  "ynara:0":"glare","ynara:1":"bowl","ynara:2":"stophand","ynara:u":"pray",
+  "myla:0":"yogurtower","myla:1":"splat","myla:2":"bubble","myla:u":"tantrum",
+  "brasa:0":"turret","brasa:1":"steam","brasa:2":"wrench","brasa:u":"siren",
+  "eslabon:0":"hook","eslabon:1":"barrier","eslabon:2":"padlock","eslabon:u":"chainlinks",
+  "morwen:0":"drop","morwen:1":"saltcrystal","morwen:2":"flask","morwen:u":"alembic",
+  "farolero:0":"lantern","farolero:1":"flash","farolero:2":"steppingstone","farolero:u":"candle",
+  "iria:0":"anchor","iria:1":"taut","iria:2":"scissors","iria:u":"triskele",
+  "vesper:0":"needle","vesper:1":"sew","vesper:2":"frayed","vesper:u":"spool",
+  "nahir:0":"shards","nahir:1":"mirror","nahir:2":"crosscut","nahir:u":"gallery",
+  "baltra:0":"anvil","baltra:1":"dome","baltra:2":"clapper","baltra:u":"ringing",
+  "maura:0":"roots","maura:1":"logshield","maura:2":"shears","maura:u":"walktree",
+  "dariel:0":"note","dariel:1":"drum","dariel:2":"repeatsign","dariel:u":"trumpet",
+  "orsa:0":"rod","orsa:1":"stock","orsa:2":"circuit","orsa:u":"stormcloud",
+  "tibor:0":"beecloud","tibor:1":"hive","tibor:2":"flower","tibor:u":"bee",
+  "zahra:0":"furnace","zahra:1":"snowflame","zahra:2":"ashstep","zahra:u":"valve",
+  "renko:0":"furrow","renko:1":"mound","renko:2":"shovel","renko:u":"stele",
+  "sira:0":"quill","sira:1":"backtrack","sira:2":"eraser","sira:u":"compassrose",
+  "nano_gm:0":"gavel","nano_gm:1":"scroll","nano_gm:2":"invert","nano_gm:u":"scales",
+  "facu_gm:0":"riptide","facu_gm:1":"pressure","facu_gm:2":"wave","facu_gm:u":"whirlpool",
+  "aurelia:0":"prism","aurelia:1":"refract","aurelia:2":"lightstep","aurelia:u":"rosewindow",
+  "khepri:0":"locusts","khepri:1":"carapace","khepri:2":"elytra","khepri:u":"scarab",
+  "velmira:0":"mask","velmira:1":"masks","velmira:2":"twoface","velmira:u":"curtain",
+  "vhal:0":"shootingstar","vhal:1":"gravwell","vhal:2":"orbit","vhal:u":"implode",
+  "bront:0":"plate","bront:1":"platewall","bront:2":"pulsecrystal","bront:u":"citadel",
+  "oriel:0":"tear","oriel:1":"echo","oriel:2":"worldstep","oriel:u":"scar",
+  "saelis:0":"fan","saelis:1":"updraft","saelis:2":"feather","saelis:u":"featherstorm",
+  "solciju:0":"goblet","solciju:1":"cask","solciju:2":"toast","solciju:u":"bottle",
+  "veyra:0":"wound","veyra:1":"slip","veyra:2":"pact","veyra:u":"stabbedheart",
+  "brakk:0":"siegewall","brakk:1":"nails","brakk:2":"brace","brakk:u":"wreckball",
+  "morveth:0":"sprout","morveth:1":"sporecloud","morveth:2":"mushroom","morveth:u":"rotflower",
+  "aelith:0":"brokenclock","aelith:1":"splitseconds","aelith:2":"pocketwatch","aelith:u":"hourglass"
 };
-const SKILL_PIXEL_COLORS = {k:"#0d1220", a:"#ffd35a", r:"#ff6a58", g:"#7dff9a", c:"#7fe3ff", w:"#f4f1e6"};
-const _pixTint = (hex, t)=>{ // t>0 aclara hacia blanco, t<0 oscurece hacia negro
-  const n = parseInt(hex.slice(1), 16), c = [n>>16&255, n>>8&255, n&255].map(v=>Math.round(t>0 ? v+(255-v)*t : v*(1+t)));
-  return "#" + c.map(v=>v.toString(16).padStart(2, "0")).join("");
-};
+// Contrato de ícono (pixel-icons.js): 1 solo acento por ícono (el color de la primera letra de acento del motivo). Sin insignias.
+const PIX_ACCENT_LETTERS = {a:"#fff0b0", r:"#ff6a58", g:"#7dff9a", c:"#7fe3ff", w:"#f4f1e6"};
 function skillPixelGlyphKey(champId, slot){ return SKILL_PIXEL_MAP[champId + ":" + (slot===3 || slot==="ult" ? "u" : slot)] || null; }
-// Grilla 14x14 (12 del motivo + 1 px de contorno): filas de caracteres, '.' = vacío.
+// Grilla 14x14 (12 del motivo + 1 px de margen para el contorno): filas de caracteres, '.' = vacío.
 function skillPixelGrid(key){
-  const [m, p] = key.split("+"), rows = PIX_MOTIFS[m];
+  const rows = PIX_MOTIFS[key.split("+")[0]];
   if(!rows) return null;
   const g = Array.from({length:14}, ()=>Array(14).fill("."));
   rows.forEach((r, y)=>{ for(let x=0; x<12; x++) g[y+1][x+1] = r[x] || "."; });
-  const pip = PIX_PIPS[p || "none"];
-  if(pip){ // la insignia se apoya sobre el motivo con un borde oscuro de 1 px
-    for(let y=8; y<14; y++) for(let x=8; x<14; x++) if(g[y][x] !== ".") g[y][x] = "k";
-    pip.forEach((r, y)=>{ for(let x=0; x<4; x++) if(r[x] !== ".") g[y+9][x+9] = r[x]; });
-  }
   return g.map(r=>r.join(""));
 }
-const _pixUri = {};
-function skillPixelGlyphUriFromKey(key, color){
-  const id = key + color;
-  if(_pixUri[id]) return _pixUri[id];
-  const g = skillPixelGrid(key); if(!g) return null;
-  const pal = Object.assign({"#":color, l:_pixTint(color, .55), d:_pixTint(color, -.35)}, SKILL_PIXEL_COLORS);
-  const solid = (x, y)=> y>=0 && y<14 && x>=0 && x<14 && g[y][x] !== ".";
-  let out = "";
-  for(let y=0; y<14; y++) for(let x=0; x<14; x++){ // contorno: vacío con vecino ocupado (4 direcciones + diagonales)
-    if(solid(x, y)) continue;
-    if(solid(x-1,y) || solid(x+1,y) || solid(x,y-1) || solid(x,y+1) || solid(x-1,y-1) || solid(x+1,y-1) || solid(x-1,y+1) || solid(x+1,y+1))
-      out += `<rect x="${x}" y="${y}" width="1" height="1" fill="#0b0f18"/>`;
-  }
-  for(let y=0; y<14; y++) for(let x=0; x<14; x++) if(solid(x, y)) out += `<rect x="${x}" y="${y}" width="1" height="1" fill="${pal[g[y][x]] || color}"/>`;
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 16 16" shape-rendering="crispEdges">${out}</svg>`;
-  return _pixUri[id] = "data:image/svg+xml," + encodeURIComponent(svg);
+// Letras de acento (a r g c w) -> "a": el contrato permite un solo acento por ícono.
+function skillPixelContractRows(grid14){ return grid14.map(r=>r.replace(/[rgcw]/g, "a")); }
+function skillPixelAccent(key){
+  const rows = PIX_MOTIFS[key.split("+")[0]] || [];
+  for(const r of rows){ const m = /[argcw]/.exec(r); if(m) return PIX_ACCENT_LETTERS[m[0]]; }
+  return PIX_ACCENT_LETTERS.a;
 }
-// Glifo pixel de una habilidad de un campeón (null si no tiene: el llamador usa el símbolo de skill-glyphs.js).
-function skillPixelGlyphUri(champId, slot, color){
+// Ícono (data URI PNG 16x16 del contrato) de una clave "motivo+insignia" en una ranura (0|1|2|3|"ult"|"basic").
+function skillPixelGlyphUriFromKey(key, slot){
+  const g = skillPixelGrid(key); if(!g) return null;
+  return skillIconUriFromGlyph(skillPixelContractRows(g), slot, skillPixelAccent(key));
+}
+// Ícono de una habilidad de un campeón (null si no tiene entrada: el llamador usa el motivo genérico de skill-glyphs.js).
+// El 3er argumento (color) quedó por compatibilidad: el color lo fija la ranura, no el llamador.
+function skillPixelGlyphUri(champId, slot){
   const key = skillPixelGlyphKey(champId, slot);
-  return key ? skillPixelGlyphUriFromKey(key, color) : null;
+  return key ? skillPixelGlyphUriFromKey(key, slot) : null;
 }

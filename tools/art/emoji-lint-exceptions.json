@@ -1,0 +1,20 @@
+{
+  "formato": "skip: archivo -> motivo (no se cuenta: define emojis, no los muestra). files: ruta -> motivo (se ignora todo el archivo). glyphs: glifo -> motivo (se ignora en todos lados). lines: [{file, includes, motivo}] se ignora la línea del archivo que contenga ese texto. Toda excepción lleva motivo; las nuevas se revisan en el PR. Un emoji de color con ícono en js/ui/pixel-icons.js (PXI_EMOJI) NO necesita excepción: se convierte solo en ícono pixel en el DOM y con drawCanvasIcon/drawIconText en el lienzo.",
+  "skip": {
+    "js/ui/pixel-icons.js": "Es la tabla PXI_EMOJI/PXI_NAME: los emojis son las claves que se convierten en ícono pixel."
+  },
+  "files": {},
+  "glyphs": {},
+  "lines": [
+    {
+      "file": "css/combat-readability.css",
+      "includes": "ability-btn.ult.locked::after",
+      "motivo": "Candado de la definitiva bloqueada en el HUD de íconos de habilidades: pertenece a otro frente de trabajo (HUD de habilidades). Pendiente: content:'' + background:var(--pxi-candado)."
+    },
+    {
+      "file": "js/rendering/effects.js",
+      "includes": "const CV_PERSON",
+      "motivo": "Tabla de reconocimiento (clave del ícono -> silueta dibujada con formas); el emoji es una clave, nunca se muestra."
+    }
+  ]
+}

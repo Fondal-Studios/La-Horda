@@ -160,6 +160,8 @@ function vfxTelegraph(o){
   for(let i=0;i<VFX_TELE_MAX;i++){ if(!vfxTeles[i].on){ s = vfxTeles[i]; break; } }
   if(!s) s = vfxTeles[0];
   s.on = true; s.t = 0; s.dur = o.dur||700; s.r = o.r||100; s.rgb = o.rgb||"255,70,50"; s.shape = o.shape||0;
+  // Opciones > Colores para daltonismo: peligro y zona segura con la paleta elegida (el color del jefe/elemento no manda)
+  if(typeof cvdPal==="function"){ const cp = cvdPal(); if(cp) s.rgb = s.shape===4 ? cp.safe : cp.danger; }
   s.dx = o.dx||1; s.dy = o.dy||0; s.arc = o.arc||0.8; s.len = o.len||0; s.r2 = o.r2||0; s.follow = o.follow||null; s.link = o.link||null; s.aimAt = o.aimAt||null;
   s.x = o.x!==undefined ? o.x : (s.follow ? s.follow.x : 0); s.y = o.y!==undefined ? o.y : (s.follow ? s.follow.y : 0);
   return s;
@@ -261,7 +263,7 @@ function vfxUpdate(dt){
 // Opciones > "Avisos de alto contraste" (js/core/prefs.js): las zonas de peligro se reconocen por la FORMA
 // (contorno negro, filo blanco punteado que corre y rayado diagonal), no solo por el color: sirve con
 // daltonismo y sobre pisos del mismo tono que el aviso. La zona SEGURA queda lisa con doble borde blanco.
-function VFX_HICON(){ return typeof PREFS!=="undefined" && !!PREFS.contrast; }
+function VFX_HICON(){ return typeof PREFS!=="undefined" && (!!PREFS.contrast || PREFS.cvd!=="off"); } // daltonismo: siempre con rayado y borde (forma, no solo color)
 function vfxHiConMarks(s){
   // se llama con el camino del aviso armado y el contexto ya trasladado (y rotado en las líneas)
   ctx.setLineDash([16, 10]); ctx.lineDashOffset = -(animNow/30)%26;
@@ -333,8 +335,9 @@ function vfxDrawGround(){
   for(let i=0;i<VFX_SHOCK_MAX;i++){
     const s = vfxShocks[i]; if(!s.on) continue;
     const q = s.t/s.dur, e = _easeOut(q), r = s.r0 + (s.r1-s.r0)*e, lw = 1+6*(1-q);
+    // contraste: sombra oscura debajo, color, y filo casi blanco encima (fx-contrast.js); sobre la rejilla de píxel (pixel-stroke.js)
+    if(typeof pxsRing==="function" && pxsRing(s.x, s.y+6, r, r*0.55, [[`rgba(0,0,0,${(1-q)*fxUnder()})`, lw+4], [`rgba(${s.rgb},${(1-q)*0.9})`, lw], ...(q < 0.6 ? [[`rgba(255,255,255,${(0.6-q)*1.2})`, Math.max(1, lw*0.35)]] : [])])) continue;
     ctx.beginPath(); ctx.ellipse(s.x, s.y+6, r, r*0.55, 0, 0, Math.PI*2);
-    // contraste: sombra oscura debajo, color, y filo casi blanco encima (fx-contrast.js)
     ctx.strokeStyle = `rgba(0,0,0,${(1-q)*fxUnder()})`; ctx.lineWidth = lw+4; ctx.stroke();
     ctx.strokeStyle = `rgba(${s.rgb},${(1-q)*0.9})`; ctx.lineWidth = lw; ctx.stroke();
     if(q < 0.6){ ctx.strokeStyle = `rgba(255,255,255,${(0.6-q)*1.2})`; ctx.lineWidth = Math.max(1, lw*0.35); ctx.stroke(); }

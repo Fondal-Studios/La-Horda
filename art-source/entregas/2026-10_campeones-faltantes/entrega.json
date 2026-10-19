@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "lote": "tanque_36poses_revision_01",
+  "autor": "ChatGPT, arte asistido por IA autorizado por el dueño",
+  "fecha": "2026-10-18",
+  "estado": "FIX_NO_INTEGRAR",
+  "base_commit": "be39f60",
+  "proveniencia": {
+    "original": true,
+    "ia": true,
+    "referencias": ["assets/sprites/champions/tanque/atlas.png", "docs/art-brief/ejemplos/tanque/tanque.cuerpo.muerte__ref.webp", "docs/art-brief/campeones/tanque.md"],
+    "herramientas": ["image_gen integrado, tres iteraciones", "tools/factory/import-authored-sheet.py", "ImageMagick exportación PSD", "tools/art/gen-referencias.py"],
+    "fuentesEditables": ["fuentes/tanque/hoja_36poses.psd"],
+    "notaFuente": "PSD raster de una capa; no contiene capas de dibujo originales. Fuente generada conservada como PNG. No se utilizaron recursos externos.",
+    "notaPixel": "Fuente generada a mayor tamaño y normalizada con NEAREST por importador existente. No se certifica autoría nativa a resolución final."
+  },
+  "assets": [{
+    "tipo": "campeon", "id": "tanque",
+    "archivo": "campeones/tanque/hoja_36poses.png",
+    "items_manifiesto": ["tanque.cuerpo.muerte", "tanque.cuerpo.lanzar", "tanque.cuerpo.golpe"],
+    "resolucion_items": "Candidatos; pendientes de aprobación visual, no marcar resueltos",
+    "celda": [112,112], "cols": 4, "filas": 9, "cuadros": 36, "refH": 69,
+    "colores_base": ["#14213a", "#103090", "#905030", "#a9b5c2", "#f0ba91", "#dca62d"],
+    "notaPaleta": "Seis familias de identidad solicitadas; hex representativos, no cuantización a seis colores totales.",
+    "referencia": "Tanque para identidad; Maura fila 9, cuadros 32-35, para ritmo de muerte",
+    "hoja_contacto": "campeones/tanque/hoja_contacto.png",
+    "chequeos": "campeones/tanque/chequeos.json",
+    "estado": "FIX_NO_INTEGRAR"
+  }],
+  "pendientes": ["Cuadro 18 gira demasiado hacia frente", "Verificar caminata en reproducción: desplazamiento de piernas poco marcado", "Espalda de reposo 74px frente a 69px frontal: revisar consistencia", "Extremos inferiores de cuadros 12,18,24,25,31 quedan en 107-108 por ancla de pies del importador; revisar apoyo", "Cuadro 30 contiene 3068 colores, por encima de banda orientativa por cuadro; Style Gate mide las caminatas", "Confirmar pixel nativo y ausencia de apariencia de ilustración reducida mediante Visual Gate humano", "Pruebas integradas de Claude pendientes"]
+}

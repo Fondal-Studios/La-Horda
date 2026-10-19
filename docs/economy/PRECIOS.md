@@ -8,6 +8,8 @@ Una sola fuente por moneda, que cliente y servidor ejecutan (no copian):
 | Dólares de los packs de Brasas | `server/premium-packs.json` (precios **sugeridos**; el dueño confirma en su proveedor) | Servidor | `server/test-wallet.js`, `tools/collection/brasas-store.js` |
 | Oro de equipo, sets, talentos, Mística | `js/systems/shop.js` (`SHOP_PRICES`), `talents.js`, `affixes.js` | Cliente (el guardado de oro es del cliente; ver riesgos) | `tools/collection/shop-pricing-browser.js` |
 
+> **Tienda de objetos: modo demo / live.** Las filas de equipo y sets de la tabla de §2 son las del modo `demo` (por defecto). El modo `live` (rotación diaria, piezas de set ×6 y legendarios ×4, sin paquete de set) se activa con `SHOP_MODE` en `js/data/pricing.js`: ver [`TIENDA_ROTACION.md`](TIENDA_ROTACION.md).
+
 Regla de oro: **el cliente PIDE; el servidor DECIDE.** El cliente manda el precio que vio (`expectedPrice`); si no coincide con el del servidor, 409 `PRICE_CHANGED` y no se cobra. Toda operación lleva una referencia única (idempotente) y deja un asiento en el libro mayor de la billetera.
 
 Los cobros con dinero real siguen **desactivados** ("Muy pronto") hasta que el dueño conecte un proveedor. No hay claves ni secretos en el repositorio; los tests simulan el webhook firmado.

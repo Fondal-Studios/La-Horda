@@ -21,6 +21,12 @@ const HUDTXT = {q:[], cur:"", until:0, run:null, tmo:0};
 const HUDTXT_READ_MS = 1600, HUDTXT_MAX_Q = 3, HUDTXT_TTL_MS = 6000;
 const HUDTXT_URGENT = /DESPIERTA|EMERGE|CA[IÍ]STE|CUIDADO|FASE|FURIA|ENFURECE|ÚLTIMA|ULTIMA|CORRÉ|REVIV/i;
 function hudTextPrio(text){ return HUDTXT_URGENT.test(String(text||"")) ? 2 : 1; }
+// Celular: la guía "Cómo sobrevivir" (boss-hud.js) entra en la misma cola: mientras espera su turno o se ve, los carteles
+// normales (runa, oleada, compañero caído) esperan. Un solo anuncio protagonista a la vez en pantalla.
+function _hudBossGuideOn(){
+  if(typeof _bossIntroT==="undefined" || !(_bossIntroDelay>0 || _bossIntroT>0)) return false;
+  return typeof hudCompact==="function" && hudCompact();
+}
 function _hudTitleOn(now){ return typeof _arenaTitleUntil!=="undefined" && now < _arenaTitleUntil; }
 // Muestra ya el cartel central (lo que antes hacía showBanner entero).
 function _hudBannerNow(text){
@@ -51,7 +57,7 @@ function hudBannerPush(text, prio){
   // fuera de la partida (victoria, derrota, Sala): no hay nada con qué pisarse y la cola se vacía al salir del
   // juego, así que se muestra ya (p. ej. "02 — Fábrica abierta" al ganar se perdía en la cola)
   if(typeof state!=="undefined" && state!=="playing" && state!=="paused"){ _hudBannerNow(s); return; }
-  const busy = now < HUDTXT.until, title = _hudTitleOn(now);
+  const busy = now < HUDTXT.until, title = _hudTitleOn(now) || _hudBossGuideOn();
   if(prio >= 2 || (!busy && !title)){ _hudBannerNow(s); return; }
   HUDTXT.q.push({text:s, prio, at:now});
   HUDTXT.q.sort((a,b)=> (b.prio - a.prio) || (a.at - b.at));
@@ -72,7 +78,7 @@ function hudTextTick(){
   if(typeof state!=="undefined" && state!=="playing" && state!=="paused"){ HUDTXT.q.length = 0; return; }
   const now = performance.now();
   HUDTXT.q = HUDTXT.q.filter(x=>now - x.at <= HUDTXT_TTL_MS); // lo que esperó demasiado ya no sirve
-  if(!HUDTXT.q.length || now < HUDTXT.until || _hudTitleOn(now)) return;
+  if(!HUDTXT.q.length || now < HUDTXT.until || _hudTitleOn(now) || _hudBossGuideOn()) return;
   _hudBannerNow(HUDTXT.q.shift().text);
 }
 

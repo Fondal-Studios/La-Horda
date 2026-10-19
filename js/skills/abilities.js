@@ -96,7 +96,6 @@ function triggerBasic(caster){
     if(hitSomething){
       caster.comboCharges = (caster.comboCharges||0)+1;
       caster.comboTimer = MUSASHI_COMBO_WINDOW_MS;
-      if(caster===player && isStrongHit) floatText(caster.x, caster.y-40, "¡GOLPE FUERTE!", "crit");
     }
     return;
   }
@@ -452,7 +451,6 @@ function castAbility(caster, sk, isUlt, idx){
         caster.invulnTimer = Math.max(caster.invulnTimer, 340);
         // Talento "Instinto Perfecto": Concentración extra en un Paso Perfecto.
         musashiAddConcentration(caster, perfectSource, 3+(tSkill.flags.pasoPerfectoConcBonus||0));
-        if(caster===player) floatText(caster.x, caster.y-46, "¡PASO PERFECTO!", "crit");
         champSetOnPerfectStep(caster); // set El Rōnin Errante
         particles.push({x:caster.x,y:caster.y, life:340, ring:true, maxLife:340, maxR:44, color:"#bfe4ff"});
       }
@@ -499,7 +497,6 @@ function castAbility(caster, sk, isUlt, idx){
       // Pose real del remolino de cortes (reemplaza el cuerpo de Musashi durante la animación,
       // igual criterio que "ronin" arriba), sobre el anillo procedural que ya existía.
       caster.musashiCastKind = "thousand"; caster.musashiCastDur = 380; caster.attackAnim = Math.max(caster.attackAnim, 380);
-      if(caster===player) floatText(caster.x, caster.y-50, "¡MIL CORTES!", null);
       break;
     }
 
@@ -568,7 +565,6 @@ function castAbility(caster, sk, isUlt, idx){
       spawnSlash(caster);
       // Pose real del disparo (reemplaza el combo básico durante un instante muy breve).
       caster.sylvaCastKind = "piercing"; caster.sylvaCastDur = 180; caster.attackAnim = Math.max(caster.attackAnim, 180);
-      if(caster===player) floatText(caster.x, caster.y-40, tier===3?"¡Flecha Perforante MAX!":"Flecha Perforante", tier===3?"crit":null);
       break;
     }
 
@@ -584,7 +580,6 @@ function castAbility(caster, sk, isUlt, idx){
       traps.push({x:tx3, y:ty3, radius:sk.radius*AREA, chainRadius:0, dmg:0, timer:9000, armTime:200,
         src:caster, triggered:false, phase:0, kind:"forest_root", rootDur:sk.rootDur*DUR});
       particles.push({x:tx3,y:ty3, life:500, ring:true, maxLife:500, maxR:sk.radius*AREA*0.9, color:"#4a7a2e"});
-      if(caster===player) floatText(tx3, ty3-20, "Trampa colocada", null);
       break;
     }
 
@@ -596,7 +591,6 @@ function castAbility(caster, sk, isUlt, idx){
       const totalHitsRain = Math.round((sk.totalHits||12)*(1+ (POWER-1)*0.5)) + (tSkill.flags.extraHits||0);
       sylvaRainZones.push({x:tx4, y:ty4, radius:sk.radius*AREA, timer:900, exploded:false,
         dmg, totalHits:totalHitsRain, src:caster});
-      if(caster===player) floatText(tx4, ty4-20, "¡LLUVIA DE LA CAZADORA!", null);
       break;
     }
 
@@ -609,7 +603,6 @@ function castAbility(caster, sk, isUlt, idx){
       caster.wildHuntMaxTimer = sk.duration*DUR;
       spawnSylvaWolf(caster);
       particles.push({x:caster.x,y:caster.y, life:480, ring:true, maxLife:480, maxR:80, color:"#c8f0a8"});
-      if(caster===player) floatText(caster.x, caster.y-56, "¡CACERÍA SALVAJE!", "crit");
       break;
     }
 
@@ -630,7 +623,6 @@ function castAbility(caster, sk, isUlt, idx){
       caster.nigroCastKind = "skeleton";
       caster.attackAnim = Math.max(caster.attackAnim, 320);
       particles.push({x:caster.x,y:caster.y, life:400, ring:true, maxLife:400, maxR:60, color:"#7ad48a"});
-      if(caster===player) floatText(caster.x, caster.y-50, "¡LEVANTAR ESQUELETOS!", null);
       break;
     }
 
@@ -672,7 +664,6 @@ function castAbility(caster, sk, isUlt, idx){
       // destello decorativo (arte real, no es un proyectil de verdad -no aplica daño ni viaja
       // con lógica propia-) sobre la mano del Nigromante transformado al momento del cast.
       if(caster.nigroDemonForm && NIGRO_DEMON_READY.soulFireProj) vfxSprite("nigroSoulFireFlare", 0, caster.x+caster.fx*22, caster.y-30, 34, 320, caster, 0.15, caster.fx<-0.12, 0.5, 0);
-      if(caster===player) floatText(tx, ty-30, "¡PLAGA DE LOS CONDENADOS!", null);
       break;
     }
 
@@ -691,7 +682,6 @@ function castAbility(caster, sk, isUlt, idx){
         x:tx, y:ty, radius:sk.radius*AREA, timer:sk.delay, mode:"delay", exploded:false,
         dmg, slow:sk.slow, slowDur:sk.slowDur, src:caster, bannerText:"ERROR 404"
       });
-      if(caster===player) floatText(tx, ty-30, "ERROR 404", null);
       drawAxiomVfxBurst(tx, ty, "err404");
       // Talento "Eco de Falla": un segundo colapso, más débil, sobre el mismo punto poco
       // después del primero (reusa el mismo mecanismo de zona con demora que ya existe).
@@ -738,7 +728,6 @@ function castAbility(caster, sk, isUlt, idx){
         }
         cur = next;
       }
-      if(caster===player) floatText(caster.x, caster.y-50, "SOBRESCRIBIR", null);
       break;
     }
 
@@ -1062,8 +1051,7 @@ function castAbility(caster, sk, isUlt, idx){
       caster.sigilRadius = 46; caster.sigilColor = "#8fd0ff"; caster.sigilTier = tierOf(allocLevel(mastery));
       particles.push({x:caster.x,y:caster.y, life:450, ring:true, maxLife:450, maxR:56, color:"#8fd0ff"});
       tieredBurstVFX(caster.x, caster.y, 56, allocLevel(mastery), "#8fd0ff", "#bfe0ff");
-      floatText(caster.x, caster.y-42, "🛡", "heal");
-      if(caster===player) floatText(caster.x, caster.y-58, "+VIDA MÁX", "heal");
+      
       break;
     }
 
@@ -1084,7 +1072,6 @@ function castAbility(caster, sk, isUlt, idx){
       caster.sigilRadius = (sk.radius*AREA)*0.5; caster.sigilColor = "#ff5a3d"; caster.sigilTier = tierOf(allocLevel(mastery));
       particles.push({x:caster.x,y:caster.y, life:700, ring:true, maxLife:700, maxR:(sk.radius*AREA), color:"#ff5a3d"});
       tieredBurstVFX(caster.x, caster.y, (sk.radius*AREA)*0.5, allocLevel(mastery), "#ff5a3d", "#ffb08a");
-      if(caster===player) floatText(caster.x, caster.y-52, "¡PROVOCACIÓN!", "crit");
       break;
     }
 
@@ -1148,7 +1135,6 @@ function castAbility(caster, sk, isUlt, idx){
       // sistema de buffs ya existente, así se limpia solo cuando expira buffTimer).
       caster.buffDefMult = Math.min(caster.buffDefMult||1, 1-sk.armorDefBonus-(tSkill.flags.ultDefBonus||0));
       caster.buffTimer = Math.max(caster.buffTimer, stormDur);
-      if(caster===player) floatText(caster.x, caster.y-52, "¡CATACLISMO!", "crit");
       break;
     }
 
@@ -1245,7 +1231,6 @@ function castAbility(caster, sk, isUlt, idx){
       caster.sigilRadius = (sk.radius*AREA)*0.55; caster.sigilColor = "#c88cff"; caster.sigilTier = tierOf(allocLevel(mastery));
       particles.push({x:caster.x,y:caster.y, life:800, ring:true, maxLife:800, maxR:(sk.radius*AREA), color:"#c88cff"});
       tieredBurstVFX(caster.x, caster.y, (sk.radius*AREA)*0.55, allocLevel(mastery), "#c88cff", "#ffcf5c");
-      if(caster===player) floatText(caster.x, caster.y-52, "¡BENDICIÓN SUPREMA!", "crit");
       break;
     }
 
@@ -1263,7 +1248,6 @@ function castAbility(caster, sk, isUlt, idx){
         particles.push({x:t.x+4,y:t.y, life:280, slash:true, color:"#ff3b3b"});
         tieredBurstVFX(t.x, t.y, 42, allocLevel(mastery), "#ff3b3b", "#ffb08a");
         pushAsesinoFx("triple_golpe", "combo", t.x, t.y, 95, 1200, caster.fx<0);
-        if(caster===player) floatText(t.x, t.y-42, "¡TRIPLE GOLPE!", "crit");
       }
       break;
     }
@@ -1294,7 +1278,6 @@ function castAbility(caster, sk, isUlt, idx){
       caster.stealthSk = sk;
       tieredBurstVFX(caster.x, caster.y, 50, allocLevel(mastery), "#4a3a5a", "#9a6ac7");
       pushAsesinoFx("pestilencia", "sigilo", caster.x, caster.y, 100, 500, caster.fx<0);
-      if(caster===player) floatText(caster.x, caster.y-50, "¡SIGILO!", "heal");
       break;
     }
 
@@ -1368,7 +1351,6 @@ function castAbility(caster, sk, isUlt, idx){
       }
       caster.furyFinalSlash = flvl>=6;
       tieredBurstVFX(caster.x, caster.y, 46, allocLevel(mastery), "#c62828", "#ff5c4a");
-      if(caster===player) floatText(caster.x, caster.y-50, "¡FURIA!"+(flvl>=6?" MÁXIMA":""), "crit");
       break;
     }
 
@@ -1381,7 +1363,6 @@ function castAbility(caster, sk, isUlt, idx){
       caster.hp = Math.min(caster.maxHp, caster.hp+healAmt);
       floatText(caster.x, caster.y-34, "+"+Math.round(healAmt), "heal");
       tieredBurstVFX(caster.x, caster.y, 40, allocLevel(mastery), "#8a1414", "#ff5c4a");
-      if(caster===player) floatText(caster.x, caster.y-56, "¡ÚLTIMO ALIENTO!", "crit");
       break;
     }
 
@@ -1399,7 +1380,6 @@ function castAbility(caster, sk, isUlt, idx){
       // Vórtice de almas real (calavera emergiendo) sobre el instante del cast, además del
       // estallido genérico ya existente arriba.
       if(newfxReady('soulReapBurst')) vfxSprite("fxSoulReapBurst", 0, caster.x, caster.y-30, 150, 650, null, 0, false, 0.5, 8);
-      if(caster===player) floatText(caster.x, caster.y-56, "¡SEGADOR DE ALMAS!", "crit");
       break;
     }
 
@@ -1433,7 +1413,6 @@ function castAbility(caster, sk, isUlt, idx){
           const retroAmt = recovered*(sk.retroPct*POWER);
           target.hp = Math.min(target.maxHp, target.hp+retroAmt);
           floatText(target.x, target.y-54, "+"+Math.round(retroAmt), "heal");
-          if(target===player || caster===player) floatText(target.x, target.y-74, "¡DESTINO RESTAURADO!", "crit");
         }
       }
       particles.push({x:target.x,y:target.y, life:500, ring:true, maxLife:500, maxR:60, color:"#8fffe0"});
@@ -1456,7 +1435,6 @@ function castAbility(caster, sk, isUlt, idx){
       target.visionImmortalRegenPct = sk.regenPct*POWER;
       particles.push({x:target.x,y:target.y, life:420, ring:true, maxLife:420, maxR:44, color:"#eafff8"});
       tieredBurstVFX(target.x, target.y, 44, allocLevel(mastery), "#bffff0", "#ffffff");
-      if(target===player || caster===player) floatText(target.x, target.y-46, "¡VISIÓN DEL INMORTAL!", "crit");
       break;
     }
 

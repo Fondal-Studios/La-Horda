@@ -251,7 +251,7 @@ function objDraw(){
       ctx.globalAlpha = 1;
       ctx.fillStyle = "rgba(10,8,12,0.85)"; ctx.beginPath(); ctx.arc(it.x, it.y-8+bob, 13, 0, Math.PI*2); ctx.fill();
       ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.stroke();
-      ctx.fillStyle = "#fff"; ctx.font = pxFont(17); ctx.fillText(d.glyph, it.x, it.y-8+bob);
+      ctx.fillStyle = "#fff"; ctx.font = pxFont(17); drawCanvasIcon(ctx, d.glyph, it.x, it.y-8+bob, 17, "#fff");
     }
   } else if(k==="hold"){
     for(const z of OBJ.items){
@@ -265,7 +265,7 @@ function objDraw(){
       ctx.globalAlpha = 1;
       ctx.fillStyle = "rgba(10,8,12,0.85)"; ctx.beginPath(); ctx.arc(z.x, z.y-6, 14, 0, Math.PI*2); ctx.fill();
       ctx.strokeStyle = col; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(z.x, z.y-6, 14, -Math.PI/2, -Math.PI/2 + Math.PI*2*f); ctx.stroke();
-      ctx.fillStyle = z.done ? col : "#fff"; ctx.font = pxFont(17); ctx.fillText(d.glyph, z.x, z.y-6);
+      ctx.fillStyle = z.done ? col : "#fff"; ctx.font = pxFont(17); drawCanvasIcon(ctx, d.glyph, z.x, z.y-6, 17, z.done ? col : "#fff");
     }
   } else if(k==="defend"){
     const o = OBJ.items[0];
@@ -277,7 +277,7 @@ function objDraw(){
       ctx.fillStyle = "#2a2220"; ctx.fillRect(o.x-26, o.y-38, 52, 42);
       ctx.fillStyle = "#4a3b34"; ctx.fillRect(o.x-26, o.y-38, 52, 8);
       ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.strokeRect(o.x-26, o.y-38, 52, 42);
-      ctx.fillStyle = col; ctx.font = pxFont(32); ctx.fillText(d.glyph, o.x, o.y-16);
+      ctx.fillStyle = col; ctx.font = pxFont(32); drawCanvasIcon(ctx, d.glyph, o.x, o.y-16, 30, col);
       _objBar(o.x, o.y-50, 56, OBJ.hp/100, OBJ.hp>40 ? col : "#ff4a4a");
     }
   } else if(k==="escort"){
@@ -303,7 +303,7 @@ function objDraw(){
       const r = (e.radius||16) + 14 + Math.sin(now*6)*2;
       ctx.globalAlpha = 0.9; ctx.strokeStyle = "#ff4a4a"; ctx.lineWidth = 3;
       ctx.beginPath(); ctx.arc(e.x, e.y-4, r, 0, Math.PI*2); ctx.stroke();
-      ctx.fillStyle = "#ff4a4a"; ctx.font = pxFont(18); ctx.fillText("☠", e.x, e.y - r - 8);
+      ctx.fillStyle = "#ff4a4a"; ctx.font = pxFont(18); drawCanvasIcon(ctx, "☠", e.x, e.y - r - 8, 18, "#ff4a4a");
       _objBar(e.x, e.y + r + 4, 34, e.hp/e.maxHp, "#ff4a4a");
     }
   }
@@ -332,6 +332,6 @@ function objDrawScreen(){
   ctx.rotate(a); ctx.fillStyle = col;
   ctx.beginPath(); ctx.moveTo(22, 0); ctx.lineTo(14, -6); ctx.lineTo(14, 6); ctx.closePath(); ctx.fill();
   ctx.rotate(-a); ctx.fillStyle = "#fff"; ctx.font = pxFont(14); ctx.textAlign = "center"; ctx.textBaseline = "middle";
-  ctx.fillText(OBJ.def.glyph, 0, 1);
+  drawCanvasIcon(ctx, OBJ.def.glyph, 0, 1, 14, "#fff");
   ctx.restore();
 }
