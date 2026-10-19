@@ -19,7 +19,10 @@ const relay=spawn(process.execPath,['server/relay.js'],{cwd:path.resolve(__dirna
  }
  try{
   // ---- A abre sala ----
-  const A=await player('A',true);
+  // Preload both clients before the real eight-second public-room window starts.
+  // Asset download time is not an attempted join and must not expire A's room
+  // before this test clicks B's button. Keep matchmaking timers/assertions intact.
+  const A=await player('A',true),B=await player('B',true);
   await A.p.click('#mode-quickplay-btn');
   await A.p.waitForFunction(()=>netInRoom()&&net.role==='host',null,{timeout:20000});
   await A.p.waitForFunction(()=>{const e=document.getElementById('qp-bar');return e&&/Empezar ya/.test(e.innerText);},null,{timeout:10000});
@@ -28,7 +31,6 @@ const relay=spawn(process.execPath,['server/relay.js'],{cwd:path.resolve(__dirna
   await delay(1300); // el relay guarda la lista de salas 1 s
   const rooms=await (await fetch('http://127.0.0.1:'+PORT+'/api/rooms')).json();ok(rooms.rooms.length===1&&rooms.rooms[0].humans===1,'sala pública con 1 humano '+JSON.stringify(rooms));
   // ---- B toca JUGAR YA y se une a la sala de A ----
-  const B=await player('B',true);
   await B.p.click('#mode-quickplay-btn');
   await B.p.waitForFunction(()=>netInRoom()&&net.role==='guest',null,{timeout:20000});
   ok(true,'B se unió como invitado (humanos primero)');
