@@ -31,6 +31,30 @@ var PRICING = {
   welcome: { pack: "brasas_bienvenida", champions: 3, category: "STANDARD" }
 };
 
+/* ============================================================
+   INTERRUPTOR DE LA TIENDA DE OBJETOS — un único lugar (docs/economy/TIENDA_ROTACION.md)
+     "demo" (POR DEFECTO): la página de muestra. Todo el catálogo se puede comprar siempre, a los precios de
+                           js/systems/shop.js (SHOP_PRICES). Es el comportamiento de siempre.
+     "live"              : el juego real. (1) Las piezas de set y los legendarios con nombre rotan: cada día
+                           (medianoche UTC) solo SHOP_LIVE.rotation.piecesPerDay están a la venta y cada una vuelve
+                           a salir dentro de un plazo máximo conocido; (2) cuestan mucho más (SHOP_LIVE.priceScale);
+                           (3) "comprar las que faltan" del set se desactiva (saltearía la rotación).
+                           Guardianes, equipo Básico, objetos de guardián, skins y cromas no cambian.
+   Para cambiar de modo basta editar la línea de abajo. Las Brasas siguen siendo solo apariencia.
+   OJO: el oro es del cliente (editable): sin servidor autoritativo la rotación es solo de presentación.
+   ============================================================ */
+var SHOP_MODE = "demo";   // "demo" | "live"
+var SHOP_LIVE = {
+  // Multiplicador sobre el precio de demo, por categoría de catálogo (pieza de set 1.200 → 7.200 · legendario 4.000 → 16.000).
+  priceScale: { set: 6, legendario: 4 },
+  rotation: {
+    piecesPerDay: 6,        // piezas (de set + legendarios con nombre) a la venta cada día
+    windowDays: 7,          // cada pieza cae siempre en la misma "semana" del ciclo: su reaparición varía como mucho ±6 días
+    seed: "horda-rotacion-v1"   // cambiarla baraja todo el calendario (úsese solo en un relanzamiento)
+  }
+};
+function pricingShopLiveScale(cat){ return Object.prototype.hasOwnProperty.call(SHOP_LIVE.priceScale, cat) ? SHOP_LIVE.priceScale[cat] : 1; }
+
 // Escalón de una apariencia: "set" si es una skin de colección, "autor" si es una skin independiente, "croma" si es paleta.
 function pricingCosmeticTier(isSetSkin, cromaDef){
   if(isSetSkin) return "set";
