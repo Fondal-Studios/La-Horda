@@ -56,6 +56,15 @@
         "Revisar continuidad de segunda daga en cuadros 24-25.",
         "Revisión humana de fluidez y comparación a escala de juego pendiente."
       ]
+    },
+    {
+      "lote": "2026-10-19_soporte_12poses",
+      "estado": "REVISION_NO_INTEGRAR",
+      "manifiesto": "art-source/entregas/2026-10-19_soporte_12poses/entrega.json",
+      "pendientes": [
+        "Revisión humana de12poses nuevas y píxel nativo no certificado."
+      ],
+      "evidencia": "36siluetas; alfa0/255;24poses previas intactas; StyleGate sobre caminatas originales PASS"
     }
   ],
   "bloqueos_decision": [
@@ -68,7 +77,7 @@
       "motivo": "Manifiesto indica marco puesto por juego; especificación pide marco pintado. Preguntar al dueño antes de entregar."
     }
   ],
-  "siguiente_trabajo": "Revisar candidato tanque sin recrear hoja entera; si requiere corrección puntual, conservar fuente anterior. Continuar P0 soporte/libertador/myla; Ynara e íconos esperan decisión.",
+  "siguiente_trabajo": "P0 libertador y myla. Reutilizar atlas propios; no regenerar caminatas ya compatibles. Ynara e íconos esperan decisión.",
   "items": [
     {
       "id": "tanque.cuerpo.lanzar",
@@ -207,8 +216,8 @@
       "id": "soporte.cuerpo.lanzar",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/soporte/hoja_36poses.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null
+      "estado": "CANDIDATO_REVISION",
+      "version_reutilizable": "art-source/entregas/2026-10-19_soporte_12poses/entrega.json"
     },
     {
       "id": "soporte.cuerpo.golpe",
@@ -221,8 +230,8 @@
       "id": "soporte.cuerpo.muerte",
       "prioridad": "P0",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/soporte/hoja_36poses.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null
+      "estado": "CANDIDATO_REVISION",
+      "version_reutilizable": "art-source/entregas/2026-10-19_soporte_12poses/entrega.json"
     },
     {
       "id": "soporte.skin.nueva_1",
