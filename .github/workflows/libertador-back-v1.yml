@@ -1,7 +1,7 @@
 name: Libertador back-pose source diagnostic
 on:
   push:
-    branches: ['art-workshop/libertador-back-v1-20261019']
+    branches: ['art-workshop/libertador-back-v1-20261019', 'art-workshop/libertador-back-check-20261019']
 permissions:
   contents: read
 jobs:
