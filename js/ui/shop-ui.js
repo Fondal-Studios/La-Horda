@@ -112,6 +112,48 @@ function _shopSeen(){ if(!save.shopSeen || typeof save.shopSeen!=="object") save
 function _shopTagNew(key){ return _shopSeen()[key] ? "" : '<span class="ui-tag new">NUEVO</span>'; }
 function _shopPriceHTML(price, base){ return `<span class="shop-price">${base && base > price ? `<s>${fmtGold(base)}</s> ` : ""}🪙 ${fmtGold(price)}</span>`; }
 function _shopRenewTxt(){ const m = shopMinutesToRenew(); return m >= 60 ? `${Math.floor(m/60)} h ${m%60} min` : `${m} min`; }
+/* ---------------- A la venta hoy (modo "live": rotación diaria de piezas de set y legendarios) ----------------
+   js/systems/shop.js (shopRotation*). Sin urgencia inventada: el precio no cambia, no hay cantidad limitada y se ve cuándo
+   vuelve cada pieza. Muestra cuánto oro falta para cada una. En modo "demo" no existe (todo se vende siempre). */
+function _shopRenewClock(){
+  const n = new Date(), t = new Date(Date.UTC(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate()+1));
+  try{ return t.toLocaleTimeString("es-AR", {hour:"2-digit", minute:"2-digit", hour12:false}); }catch(e){ return ""; }
+}
+function _shopRotLabel(e){
+  if(e.cat==="legendario") return "Legendario";
+  const sid = DESIGNED_ITEMS[e.id] && DESIGNED_ITEMS[e.id].set;
+  return "Set " + ((sid && SET_DB[sid] && SET_DB[sid].name) || "");
+}
+function _shopUntilTxt(d){ return d==null ? "" : d===0 ? "A la venta hoy" : d===1 ? "Vuelve mañana" : `Vuelve en ${d} días`; }
+function shopRotationRowHTML(){
+  if(!shopIsLive()) return "";
+  const list = shopRotationToday(), info = shopRotationInfo(), gold = save.gold || 0;
+  const cards = list.map(e=>{
+    const it = shopPreviewItem(e), col = itemColor(it), price = shopPriceOf(e), n = shopOwnedCount(e), miss = Math.max(0, price - gold);
+    const pct = Math.max(0, Math.min(100, Math.round(gold*100/Math.max(1, price))));
+    return `<div class="shop-rot-card" data-rot="${e.key}" style="--ic:${col}">
+      <div class="shop-rot-top">${itemIconHTML(it)}<div class="shop-rot-meta"><div class="shop-rot-name" style="color:${col}">${it.name}</div><div class="shop-item-sub">${_shopRotLabel(e)} · ${ITEM_TYPES[it.type].label}</div></div></div>
+      <div class="shop-rot-price"><span class="shop-price">🪙 ${fmtGold(price)}</span>${n ? `<span class="shop-st own">Tenés ${n}</span>` : ""}</div>
+      ${miss ? `<div class="shop-rot-miss">Te faltan <b>🪙 ${fmtGold(miss)}</b></div><div class="shop-goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="Oro hacia ${it.name}"><i style="width:${pct}%"></i></div>` : '<div class="shop-rot-miss ok">Te alcanza</div>'}
+      <button class="shop-btn" type="button" data-rot-buy="${e.key}" data-gold-price="${price}" ${miss ? "disabled" : ""}>Comprar</button></div>`;
+  }).join("");
+  return `<div class="shop-rot" data-shop-rot><div class="shop-row-head"><span class="shop-row-title">A LA VENTA HOY</span><span class="shop-renew" data-shop-renew data-prefix="Se renueva en ">Se renueva en ${_shopRenewTxt()}</span></div>
+    <div class="shop-rot-strip ui-scroll-x">${cards}</div>
+    <div class="shop-rot-note">Piezas de set y legendarios: cada día salen ${info.perDay} distintas (cambian a las 00:00 UTC, ${_shopRenewClock()} en tu reloj). El precio no cambia ni hay cantidad limitada. Cada pieza vuelve a salir al menos cada ${info.maxGapDays} días; en <b>Objetos</b> ves cuándo vuelve la que buscás. Guardianes y equipo Básico se compran siempre.</div></div>`;
+}
+function shopRotationBind(panel){
+  panel.querySelectorAll("[data-rot-buy]").forEach(b=> b.addEventListener("click", ev=>{
+    ev.stopPropagation();
+    const key = b.getAttribute("data-rot-buy"), entry = shopCatalog().find(e=>e.key===key); if(!entry) return;
+    const price = Number(b.dataset.goldPrice), it = shopPreviewItem(entry);
+    gameConfirm(`¿Comprar ${it.name} por ${fmtGold(price)} de oro?`, {okText:"Comprar"}).then(ok=>{
+      if(!ok) return;
+      const r = shopBuyCatalog(key, undefined, null, price);
+      if(!r.ok){ gameAlert(r.reason); return; }
+      _shopAfterBuy(`🛒 ${r.item.name} va a tu inventario (−${fmtGold(r.price)} de oro)`, "lootLegend");
+    });
+  }));
+}
 /* ---------------- "Lo que podés comprar ya" / "Tu próxima meta" ----------------
    Fila arriba de la vitrina. Solo reordena lo que ya se vende, a los precios de siempre (nada de ofertas nuevas):
    con oro suficiente, hasta 4 cosas que te alcanzan (ofertas del día, guardianes, Básicos, skins, cromas); con poco
@@ -129,8 +171,9 @@ function shopNowRowHTML(sc){
   const skinIds = typeof SET_SKINS!=="undefined" ? Object.keys(SET_SKINS).filter(id=>SET_DB[id] && shopSetMissing(id).length) : [];
   const skins = skinIds.map(id=>({g:3, price:shopSkinPrice(id), name:SET_SKINS[id].name || SET_DB[id].name, sub:"Skin · solo apariencia", btn:`data-skin-buy="${id}"`}));
   const cromas = (typeof shopCromaProducts==="function" ? shopCromaProducts() : []).filter(p=>!p.owned).map(p=>({g:4, price:p.price, name:p.name, sub:"Croma · solo cosmético", btn:`data-croma-buy="${p.id}"`}));
+  const rots = shopIsLive() ? shopRotationToday().map(e=>({g:0, price:shopPriceOf(e), name:shopPreviewItem(e).name, sub:`A la venta hoy · ${_shopRotLabel(e)}`, btn:`data-rot-buy="${e.key}" data-gold-price="${shopPriceOf(e)}"`})) : [];
   const basics = basicCommon!=null && gold >= basicCommon ? [{g:2, price:basicCommon, name:"Equipo Básico Común", sub:"Desde acá se empieza a armar la build", go:"basics"}] : [];
-  const can = deals.concat(champs, basics, skins, cromas).filter(x=>x.price <= gold);
+  const can = deals.concat(rots, champs, basics, skins, cromas).filter(x=>x.price <= gold);
   can.sort((a,b)=>(a.g-b.g) || (b.price-a.price));
   if(can.length){
     const card = x=>`<div class="shop-now-card"><div class="shop-bundle-name">${x.name}</div><div class="shop-item-sub">${x.sub}</div>
@@ -223,8 +266,8 @@ function renderShopShowcase(panel){
       <div class="shop-deal-buy"><button class="shop-btn" data-champ-buy="${c.id}" ${save.gold < shopChampionPrice(c.id) ? "disabled" : ""}>🪙 ${fmtGold(shopChampionPrice(c.id))}</button></div>
     </div>`;
   }).join("");
-  panel.innerHTML = `${shopNowRowHTML(sc)}<div class="shop-show-top">${hero}
-      <div class="shop-deals-box"><div class="shop-row-head"><span class="shop-row-title">OFERTAS DEL DÍA</span><span class="shop-renew" id="shop-renew" title="Las ofertas se renuevan a la medianoche">⟳ ${_shopRenewTxt()}</span></div>
+  panel.innerHTML = `${shopNowRowHTML(sc)}${shopRotationRowHTML()}<div class="shop-show-top">${hero}
+      <div class="shop-deals-box"><div class="shop-row-head"><span class="shop-row-title">OFERTAS DEL DÍA</span><span class="shop-renew" id="shop-renew" data-shop-renew title="${shopIsLive() ? "Las ofertas y la rotación se renuevan a las 00:00 UTC" : "Las ofertas se renuevan a la medianoche"}">⟳ ${_shopRenewTxt()}</span></div>
       <div class="shop-deals-grid">${deals}</div></div></div>
     ${bundles ? `<div class="shop-row-head"><span class="shop-row-title">SKINS</span><span class="shop-renew">solo apariencia · no cambia estadísticas</span></div><div class="shop-strip ui-scroll-x">${bundles}</div>` : ""}
     ${cromas ? `<div class="shop-row-head"><span class="shop-row-title">CROMAS</span><span class="shop-renew">otra paleta · solo cosmético</span></div><div class="shop-strip ui-scroll-x">${cromas}</div>` : ""}
@@ -255,6 +298,7 @@ function renderShopShowcase(panel){
     openShopItemPreview(shopCatalog().find(e=>e.key===d.key), d.tier);
   }));
   _bindSkinBuy(panel);
+  shopRotationBind(panel);
   panel.querySelectorAll("[data-champ-buy]").forEach(b=> b.addEventListener("click", ()=> shopConfirmChampion(b.getAttribute("data-champ-buy"))));
   panel.querySelectorAll("[data-croma-buy]").forEach(b=> b.addEventListener("click", ()=>{
     const id = b.getAttribute("data-croma-buy"), d = CROMA_SKINS[id], ch = save.champions[d.champ];
@@ -279,7 +323,7 @@ function renderShopShowcase(panel){
   startChampAnimLoop();
 }
 // el contador "se renuevan en…" se actualiza solo mientras la vitrina está abierta
-setInterval(()=>{ if(typeof state!=="undefined" && state==="shop"){ const el = document.getElementById("shop-renew"); if(el) el.textContent = "⟳ " + _shopRenewTxt(); } }, 30000);
+setInterval(()=>{ if(typeof state!=="undefined" && state==="shop") document.querySelectorAll("[data-shop-renew]").forEach(el=>{ el.textContent = (el.dataset.prefix || "⟳ ") + _shopRenewTxt(); }); }, 30000);
 function _bindSkinBuy(panel){
   panel.querySelectorAll("[data-skin-buy]").forEach(b=> b.addEventListener("click", ()=>{
     const id = b.getAttribute("data-skin-buy");
@@ -334,6 +378,8 @@ function renderShopChampions(panel){
 function _shopItemCard(entry, tier){
   const it = shopPreviewItem(entry, tier), col = itemColor(it), n = shopOwnedCount(entry);
   const lines = itemEffectLines(it).slice(0, 3).map(l=>`<div class="shop-eff ${l.cls}">${l.txt}</div>`).join("");
+  const rot = shopIsLive() && shopRotates(entry), today = !rot || shopRotationHas(entry.key);
+  const rotLine = rot ? `<div class="shop-st shop-rot-state ${today ? "on" : ""}">${today ? "A la venta hoy" : "No está hoy · " + _shopUntilTxt(shopRotationDaysUntil(entry.key)).toLowerCase()}</div>` : "";
   const tiers = entry.kind==="archetype" ? `<div class="shop-tiers">${SHOP_ARCHETYPE_TIERS.map(t=>`<button class="shop-tier ${t===tier?"on":""}" data-tier-for="${entry.key}" data-tier="${t}" style="--tc:${RARITY_META[t].color}">${TIER_LABEL[t]}</button>`).join("")}</div>` : "";
   return `<div class="shop-item" data-item="${entry.key}" style="--ic:${col}">
     ${itemIconHTML(it)}
@@ -344,8 +390,8 @@ function _shopItemCard(entry, tier){
     </div>
     <div class="shop-item-buy">
       <div class="shop-price">🪙 ${fmtGold(shopPriceOf(entry, tier))}</div>
-      ${n ? `<div class="shop-st own">Tenés ${n}</div>` : '<div class="shop-st">No comprado</div>'}
-      <button class="shop-btn" data-buy-item="${entry.key}" data-gold-price="${shopPriceOf(entry, tier)}" ${save.gold < shopPriceOf(entry, tier) ? "disabled" : ""}>Comprar</button>
+      ${n ? `<div class="shop-st own">Tenés ${n}</div>` : '<div class="shop-st">No comprado</div>'}${rotLine}
+      <button class="shop-btn" data-buy-item="${entry.key}" data-gold-price="${shopPriceOf(entry, tier)}" ${save.gold < shopPriceOf(entry, tier) || !today ? "disabled" : ""}>Comprar</button>
     </div>
   </div>`;
 }
@@ -362,7 +408,7 @@ function _shopSetBlock(setId){
       <span class="shop-set-count">${have}/${ids.length} piezas · ${eq} equipadas</span></div>
     <div class="shop-set-bonus">${bon}</div>
     <div class="shop-set-pieces">${entries.map(e=>_shopItemCard(e)).join("")}</div>
-    ${missing.length ? `<button class="shop-btn sec shop-set-buyall" data-buy-set="${setId}" ${save.gold < shopSetPrice(setId) ? "disabled" : ""}>Comprar las ${missing.length} que faltan · 🪙 ${fmtGold(shopSetPrice(setId))}</button>` : '<div class="shop-st own">✔ Tenés el set completo</div>'}
+    ${missing.length && shopIsLive() ? `<div class="shop-item-sub shop-set-live" data-set-live>Hoy a la venta: ${entries.filter(e=>missing.includes(e.id) && shopRotationHas(e.key)).length} de las ${missing.length} que te faltan. Las piezas se compran de a una, cuando salen (no hay paquete).</div>` : missing.length ? `<button class="shop-btn sec shop-set-buyall" data-buy-set="${setId}" ${save.gold < shopSetPrice(setId) ? "disabled" : ""}>Comprar las ${missing.length} que faltan · 🪙 ${fmtGold(shopSetPrice(setId))}</button>` : '<div class="shop-st own">✔ Tenés el set completo</div>'}
   </div>`;
 }
 function renderShopObjects(panel){
@@ -404,7 +450,7 @@ function openShopItemPreview(entry, tier){
   let el = document.getElementById("item-preview");
   if(!el){ el = document.createElement("div"); el.id = "item-preview"; document.body.appendChild(el); }
   el.innerHTML = `<div class="ip-backdrop" data-ip-close></div><div class="ip-panel">${itemDetailHTML(it, null, {shop:true})}
-    <div class="ip-actions"><button class="primary" data-ip-buy ${save.gold < shopPriceOf(entry, tier) ? "disabled" : ""}>Comprar · 🪙 ${fmtGold(shopPriceOf(entry, tier))}</button><button data-ip-close>Cerrar</button></div></div>`;
+    <div class="ip-actions"><button class="primary" data-ip-buy ${save.gold < shopPriceOf(entry, tier) || !shopRotationAllows(entry) ? "disabled" : ""}>${shopRotationAllows(entry) ? "Comprar" : "No está hoy"} · 🪙 ${fmtGold(shopPriceOf(entry, tier))}</button><button data-ip-close>Cerrar</button></div></div>`;
   el.classList.remove("hidden");
   const close = ()=>{ el.classList.add("hidden"); el.innerHTML = ""; };
   el.querySelectorAll("[data-ip-close]").forEach(b=>b.addEventListener("click", close));
