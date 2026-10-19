@@ -15,8 +15,8 @@
     "INTEGRADO_CLAUDE",
     "SEGUIMIENTO"
   ],
-  "bloque_activo": "B002",
-  "siguiente_accion": "B002: recuperar tanque revision02; quitar el fragmento del cuadro0 con normalizador existente; conservar y documentar pendientes visuales de arma.",
+  "bloque_activo": "B003",
+  "siguiente_accion": "B003: recuperar Guerrero guardado; normalizar contorno y escala; volver a medir sombreado. No generar otro atlas completo.",
   "bloques": [
     {
       "id": "B001",
@@ -165,7 +165,18 @@
       ],
       "decisiones_pendientes": [],
       "revision_visual": "PENDIENTE",
-      "integracion": "A_CARGO_DE_CLAUDE"
+      "integracion": "A_CARGO_DE_CLAUDE",
+      "estado_tecnico": "TECNICO_VERIFICADO",
+      "entrega": "art-source/entregas/bloques/B002_tanque/entrega.json",
+      "ultimo_resultado": {
+        "siluetas": 36,
+        "refH": 69,
+        "halo": 0,
+        "fragmentos_eliminados": 1,
+        "style_gate": "PASS",
+        "imagenes_generadas": 0
+      },
+      "siguiente_paso": "Corregir continuidad de espada en cuadros24–26,29 y revisar escala entre vistas; reutilizar este atlas."
     },
     {
       "id": "B003",

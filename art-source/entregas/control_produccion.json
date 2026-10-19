@@ -85,6 +85,16 @@
         "Aprobación visual del dueño e integración por Claude."
       ],
       "preferida": true
+    },
+    {
+      "lote": "B002_tanque",
+      "estado": "EN_CORRECCION",
+      "estado_tecnico": "TECNICO_VERIFICADO",
+      "manifiesto": "art-source/entregas/bloques/B002_tanque/entrega.json",
+      "pendientes": [
+        "Continuidad de espada24–26,29 y escala entre vistas."
+      ],
+      "preferida": true
     }
   ],
   "bloqueos_decision": [
@@ -103,24 +113,24 @@
       "id": "tanque.cuerpo.lanzar",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/tanque/hoja_36poses.png",
-      "estado": "CANDIDATO_FIX",
-      "version_reutilizable": "art-source/entregas/2026-10_campeones-faltantes/entrega.json",
+      "estado": "EN_CORRECCION_VISUAL",
+      "version_reutilizable": "art-source/entregas/bloques/B002_tanque/entrega.json",
       "bloque": "B002"
     },
     {
       "id": "tanque.cuerpo.muerte",
       "prioridad": "P0",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/tanque/hoja_36poses.png",
-      "estado": "CANDIDATO_FIX",
-      "version_reutilizable": "art-source/entregas/2026-10-19_tanque_revision_02/entrega.json",
+      "estado": "EN_CORRECCION_VISUAL",
+      "version_reutilizable": "art-source/entregas/bloques/B002_tanque/entrega.json",
       "bloque": "B002"
     },
     {
       "id": "tanque.cuerpo.golpe",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/tanque/hoja_36poses.png",
-      "estado": "CANDIDATO_FIX",
-      "version_reutilizable": "art-source/entregas/2026-10_campeones-faltantes/entrega.json",
+      "estado": "EN_CORRECCION_VISUAL",
+      "version_reutilizable": "art-source/entregas/bloques/B002_tanque/entrega.json",
       "bloque": "B002"
     },
     {
@@ -10054,12 +10064,12 @@
   ],
   "plan_bloques": "art-source/entregas/bloques/plan_bloques.json",
   "auditoria_guardados": "art-source/entregas/bloques/B000_auditoria/auditoria.json",
-  "bloque_activo": "B002",
+  "bloque_activo": "B003",
   "ultimo_checkpoint": {
-    "bloque": "B001",
-    "estado": "TECNICO_VERIFICADO",
-    "revision_visual": "PENDIENTE_DUENO",
-    "entrega": "art-source/entregas/bloques/B001_soporte/entrega.json",
-    "siguiente_paso": "B002: recuperar tanque revision02; quitar el fragmento del cuadro0 con normalizador existente; conservar y documentar pendientes visuales de arma."
+    "bloque": "B002",
+    "estado": "EN_CORRECCION",
+    "estado_tecnico": "TECNICO_VERIFICADO",
+    "entrega": "art-source/entregas/bloques/B002_tanque/entrega.json",
+    "siguiente_paso": "B003: recuperar Guerrero guardado; normalizar contorno y escala; volver a medir sombreado. No generar otro atlas completo."
   }
 }

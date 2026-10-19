@@ -1,6 +1,6 @@
 # La Horda: bloques chequeables de arte
 
-**Bloque activo: B002 (tanque). B001 (Elyra): técnico verificado, visual pendiente.**
+**Bloque activo: B003 (guerrero). B001: técnico verificado; B002: técnico verificado y corrección visual pendiente.**
 
 [Control de producción](../control_produccion.json) · [Plan completo](plan_bloques.json) · [Auditoría de guardados](B000_auditoria/auditoria.json) · [Revisar B001](B001_soporte/ESTADO.md)
 
