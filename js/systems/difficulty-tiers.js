@@ -18,7 +18,7 @@
      objetos que caen con nivel (+itemLvl), más XP y más oro. La XP por baja viaja en runDifficulty.xp (spawnEnemy -> e.xp) y el
      oro por baja se multiplica por diffGoldMult() en killEnemy (combat.js); el bono de victoria (80) usa el mismo multiplicador.
    - Ajuste por arena: ARENA_MODS[arena].tierMods[tier] = {hp, dmg, bossDmg} (multiplicadores extra sobre la dificultad; hoy solo
-     en Pesadilla, arena por arena, medido con tools/playtest/campaign.js: docs/economy/PESADILLA_PAREJA.md).
+     en Pesadilla (e Infierno y Normal según arena), arena por arena, medido con tools/playtest/campaign.js: docs/economy/PESADILLA_PAREJA.md).
    - Guardado: save.diffCleared = {pesadilla:{arena:true}, infierno:{…}} (Normal sigue siendo
      save.arenasCleared) y save.diffSelected (la elegida en la Sala). Guardados viejos: vacíos = todo en Normal.
    - Cooperativo: la elige el ANFITRIÓN. Viaja en la Sala ({k:"cos"}, campo d) y en el arranque
@@ -85,7 +85,11 @@ function diffSetSelected(k){
 function diffApplyToRun(rd, avgLevel){
   const T = diffTier(diffCurrent());
   rd.tier = diffCurrent();
-  if(T===DIFF_TIERS.normal){ rd.hp*=T.hp; rd.dmg*=T.dmg; rd.avgHp*=T.bossDmg; rd.spawnRate*=T.spawn; if(["bosque","hielo"].includes(currentArena)){rd.hp*=0.85;rd.dmg*=0.8;rd.spawnRate*=1.12;} return rd; }
+  if(T===DIFF_TIERS.normal){ rd.hp*=T.hp; rd.dmg*=T.dmg; rd.avgHp*=T.bossDmg; rd.spawnRate*=T.spawn; if(["bosque","hielo"].includes(currentArena)){rd.hp*=0.85;rd.dmg*=0.8;rd.spawnRate*=1.12;}
+    // ajuste puntual de Normal por arena (ARENA_MODS[arena].tierMods.normal = {hp, dmg, bossDmg}; docs/economy/DIFICULTAD_GRUPO3.md)
+    const tn = (typeof ARENA_MODS!=="undefined" && typeof currentArena!=="undefined" && ARENA_MODS[currentArena] && ARENA_MODS[currentArena].tierMods || {}).normal;
+    if(tn){ rd.hp *= tn.hp||1; rd.dmg *= tn.dmg||1; rd.avgHp *= tn.bossDmg||1; }
+    return rd; }
   // nivel esperado corrido: el seguimiento parcial de REJUGAR mide la brecha contra ese nivel
   const exp = ((typeof currentArena!=="undefined" && DIFF.arenaLevel[currentArena]) || 1) + T.lvlOffset;
   const gap = Math.max(0, avgLevel - exp), rf = Math.min(DIFF.replayFollowMax, gap*DIFF.replayFollowPerLvl), rf0 = rd.replayFollow||0;
