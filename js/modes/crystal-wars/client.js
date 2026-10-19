@@ -113,7 +113,7 @@ function receive(m){
 }
 function begin(){
  offline=!room;host=!!room;slot=0;inputs={};for(const k of Object.keys(remoteTimes))delete remoteTimes[k];sim=C.create(room?room.slots:[{connected:true,champ:$('champ').value,founder:typeof accountIdentity==='function'?accountIdentity()?.founder:null,name:$('name').value||'Guardián'}],crypto.getRandomValues(new Uint32Array(1))[0],{mode:mode(),monsters:true});
- if(typeof botNameFor==='function'){const taken=sim.heroes.filter(h=>!h.bot).map(h=>h.name);for(const h of sim.heroes)if(h.bot)h.name=botNameFor('cw-'+h.role,taken);}
+ if(typeof botNameFor==='function'){const taken=sim.heroes.filter(h=>!h.bot).map(h=>h.name);sim.heroes.forEach((h,i)=>{if(h.bot){h.name=botNameFor('cw-'+h.role+'-'+i,taken);taken.push(h.name);}});}  // clave por bot (rol + puesto): dos bots del mismo rol no comparten nombre
  matchId=crypto.randomUUID();snapshotN=0;shownResult=false;viewOther=false;acc=0;last=performance.now();closeResult();showGame();if(room){send({t:'start'});broadcast();}
 }
 // Guerra de Cristales usa el MOTOR REAL de la campaña (mismas habilidades, HUD y controles; js/arenas/lanes/).
