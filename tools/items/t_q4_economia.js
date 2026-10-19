@@ -37,11 +37,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
       const drop = materializeLoot({ tier: 'raro' }, 'guerrero', 'laberinto');
       const setDrop = materializeLoot({ tier: 'set', designId: setPieceIds(Object.keys(SET_DB)[0])[0] }, 'guerrero', 'infernal');
       return { s1: itemStat(a), s8: itemStat(b), sOld: itemStat(old), sCheat: itemStat(cheat), af1: affixValue(a, a.affixes[0]), af8: affixValue(b, b.affixes[0]),
-        lv, drop: drop.ilvl, setDrop: setDrop.ilvl, gemCostSame: gemUpgradeCost(a) === gemUpgradeCost(b) };
+        lv, maxMult: 1 + ITEM_ILVL_STEP * (ITEM_ILVL_MAX - 1), drop: drop.ilvl, setDrop: setDrop.ilvl, gemCostSame: gemUpgradeCost(a) === gemUpgradeCost(b) };
     });
     check('ILVL.sin_campo_vale_como_nivel_1_(objetos_viejos_y_tienda)', Math.abs(r.sOld - r.s1) < 1e-9, r);
     check('ILVL.arena_8_vale_+35%_en_stat_y_afijos', Math.abs(r.s8 / r.s1 - 1.35) < 1e-6 && Math.abs(r.af8 / r.af1 - 1.35) < 1e-6, r);
-    check('ILVL.se_recorta_al_tope_(no_se_infla_por_intercambio)', Math.abs(r.sCheat / r.s1 - 1.45) < 1e-6, r);
+    check('ILVL.se_recorta_al_tope_(no_se_infla_por_intercambio)', Math.abs(r.sCheat / r.s1 - r.maxMult) < 1e-6, r); // el tope es ITEM_ILVL_MAX (Normal llega a 10 = x1,45; Pesadilla/Infierno suben hasta 28)
     check('ILVL.una_por_arena_en_el_orden_de_la_campania', JSON.stringify(r.lv) === JSON.stringify([1,2,3,4,5,6,7,8,9,10]), r.lv);
     check('ILVL.lo_que_cae_trae_el_nivel_de_su_arena_(tambien_sets)', r.drop === 7 && r.setDrop === 10, r);
     check('ILVL.no_cambia_el_costo_en_Gemas', r.gemCostSame, r);
