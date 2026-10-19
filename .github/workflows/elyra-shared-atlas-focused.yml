@@ -1,0 +1,28 @@
+name: Elyra shared-atlas focused verification
+on:
+  push:
+    branches: ['art-workshop/elyra-shared-atlas-20261019']
+permissions:
+  contents: read
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Find remaining runtime or test dependencies on old atlas version
+        run: |
+          rg -n 'soporte/v2' js tools tests .github || test $? = 1
+      - run: node --check tools/portadores/test-elyra.js
+      - run: node tools/portadores/test-elyra.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: elyra-real-title-game-atlas
+          path: docs/elyra/
+          retention-days: 30
