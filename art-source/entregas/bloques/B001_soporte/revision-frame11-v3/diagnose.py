@@ -5,6 +5,9 @@ import json
 from pathlib import Path
 import subprocess
 
+import numpy as np
+from PIL import Image
+
 ROOT = Path.cwd()
 FOLDER = ROOT / 'art-source/entregas/bloques/B001_soporte/revision-frame11-v3'
 OUT = Path('/tmp/soporte-frame11-v3')
@@ -48,6 +51,32 @@ else:
     scan = scanner.analyze(str(OUT / 'atlas.png'))
     (OUT / 'scan.json').write_text(json.dumps(scan, indent=2, default=lambda v: v.item()) + '\n')
     summary.update(status=report['status'], failedFrames=failed, assembly=receipt)
+
+    # Same 22%-of-row-width body-mass heuristic as tools/art/roster_gate.js.
+    # Source-pixel comparison only; it does not replace the renderer's Roster Gate.
+    def body_metrics(path):
+        image = Image.open(path).convert('RGBA')
+        out = []
+        for frame in range(8, 12):
+            x, y = frame % 4 * 112, frame // 4 * 112
+            mask = np.array(image.crop((x, y, x+112, y+112)))[:, :, 3] > 40
+            rows = mask.sum(axis=1)
+            full = np.flatnonzero(rows)
+            body = np.flatnonzero(rows >= rows.max() * .22)
+            out.append({'frame': frame, 'body': int(body[-1]-body[0]+1),
+                        'full': int(full[-1]-full[0]+1), 'foot': int(full[-1]),
+                        'opaque': int(mask.sum())})
+        return out
+    summary['sourceBodyComparison'] = {'reference': body_metrics(ROOT / spec['atlas']),
+                                       'candidate': body_metrics(OUT / 'atlas.png')}
+    refs_spec = importlib.util.spec_from_file_location('candidate_refs', ROOT / 'tools/art/gen-referencias.py')
+    refs = importlib.util.module_from_spec(refs_spec)
+    refs_spec.loader.exec_module(refs)
+    for name, source in [('reference.png', ROOT / spec['atlas']), ('contact.png', OUT / 'atlas.png')]:
+        refs.render({'src': str(source), 'fw': 112, 'fh': 112, 'cols': 4, 'anchor': 106/112},
+                    [{'etiqueta': 'Espalda: 8,9,10,11', 'cuadros': [8,9,10,11]}],
+                    escala=3, titulo='B001 fuente: ' + name, pie='Comparacion sin VFX; no aprueba arte', max_por_linea=4).save(OUT / name)
+
 assert hashlib.sha256((ROOT / spec['atlas']).read_bytes()).hexdigest() == spec['atlasSha256']
 (OUT / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
 print('CANDIDATE_SUMMARY ' + json.dumps(summary), flush=True)
@@ -57,7 +86,7 @@ exports = ['assembly.json', 'summary.json']
 if (OUT / 'native.json').exists():
     exports += ['native.json', 'scan.json']
 if summary['status'] == 'TECHNICAL_SCREEN_PASS':
-    exports += ['atlas.png', 'atlas.json']
+    exports += ['atlas.png', 'atlas.json', 'reference.png', 'contact.png']
 for name in exports:
     data = (OUT / name).read_bytes()
     encoded = base64.b64encode(data).decode()
