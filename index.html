@@ -52,6 +52,7 @@
 <link rel="stylesheet" href="css/founders.css">
 <link rel="stylesheet" href="css/alpha-training.css">
 <link rel="stylesheet" href="css/controls.css">
+<link rel="stylesheet" href="css/accessibility.css">
 <link rel="stylesheet" href="css/hub-scroll.css">
 <link rel="stylesheet" href="css/lanes.css">
 <link rel="stylesheet" href="css/hud-horda.css">
@@ -235,11 +236,17 @@
       <div class="opt-sec">Controles</div>
       <div class="opt-row"><span class="opt-lbl">Modo zurdo<span class="opt-sub">Joystick a la derecha y botones a la izquierda</span></span><button class="opt-switch" data-pref="lefty" role="switch" aria-checked="false">No</button></div>
       <div class="opt-row"><span class="opt-lbl">Vibración<span class="opt-sub">Al recibir un golpe fuerte y con la Definitiva</span></span><button class="opt-switch" data-pref="vibrate" role="switch" aria-checked="true">Sí</button></div>
+      <div class="opt-row"><span class="opt-lbl">Ataque<span class="opt-sub">Mantener: apretás el botón. Alternar: un toque prende y otro apaga. Auto: ataca solo si hay un enemigo cerca</span></span><div class="opt-seg" data-pref="atkMode" role="group" aria-label="Modo de ataque"><button data-v="hold">Mantener</button><button data-v="toggle">Alternar</button><button data-v="auto">Auto</button></div></div>
+      <div class="opt-row"><span class="opt-lbl">Tamaño de los controles<span class="opt-sub">Joystick y botones: <b data-pref-out="ctlSize">100%</b></span></span><input type="range" id="opt-ctl-size" data-pref-range="ctlSize" min="90" max="150" step="10" aria-label="Tamaño de los controles táctiles"></div>
+      <div class="opt-row"><span class="opt-lbl">Opacidad de los controles<span class="opt-sub">Más baja: se ve más el juego detrás. <b data-pref-out="ctlOp">100%</b></span></span><input type="range" id="opt-ctl-op" data-pref-range="ctlOp" min="40" max="100" step="10" aria-label="Opacidad de los controles táctiles"></div>
+      <div class="ctl-preview" id="ctl-preview" aria-hidden="true"><span class="cp-cap">Vista previa</span><div class="cp-joy"><i></i></div><div class="cp-btns"><b class="cp-b3"></b><b class="cp-b2"></b><b class="cp-b1"></b><b class="cp-atk">⚔</b></div></div>
       <div class="opt-sec">Pantalla</div>
       <div class="opt-row"><span class="opt-lbl">Sacudida de pantalla</span><div class="opt-seg" data-pref="shake" role="group" aria-label="Sacudida de pantalla"><button data-v="normal">Normal</button><button data-v="reducida">Poca</button><button data-v="off">No</button></div></div>
       <div class="opt-row"><span class="opt-lbl">Reducir movimiento<span class="opt-sub">Sin sacudidas, cámara lenta ni pulsos</span></span><button class="opt-switch" data-pref="motion" role="switch" aria-checked="false">No</button></div>
       <div class="opt-row"><span class="opt-lbl">Tamaño del texto</span><div class="opt-seg" data-pref="textLg" role="group" aria-label="Tamaño del texto"><button data-v="0">Normal</button><button data-v="1">Grande</button></div></div>
       <div class="opt-row"><span class="opt-lbl">Avisos de alto contraste<span class="opt-sub">Zonas de peligro con borde y rayado, no solo color</span></span><button class="opt-switch" data-pref="contrast" role="switch" aria-checked="false">No</button></div>
+      <div class="opt-row"><span class="opt-lbl">Colores para daltonismo<span class="opt-sub">Cambia equipos, barras, avisos y peligros, y suma rayas y marcas. Rojo-verde: deuteranopia y protanopia. Azul-amarillo: tritanopia</span></span><div class="opt-seg" data-pref="cvd" role="group" aria-label="Colores para daltonismo"><button data-v="off">No</button><button data-v="rg">Rojo-verde</button><button data-v="by">Azul-amarillo</button></div></div>
+      <div class="cvd-demo" id="cvd-demo" aria-hidden="true"><span class="cd-ally">Aliado</span><span class="cd-foe">Enemigo</span><span class="cd-danger">Peligro</span><span class="cd-safe">Seguro</span><span class="cd-hp"><i></i></span></div>
       <div class="opt-row"><span class="opt-lbl">Carteles de los bots<span class="opt-sub">Textos flotantes de aliados controlados por la IA (IMPULSO, PACTO, AFILADA…). Apagado: partida más limpia</span></span><button class="opt-switch" data-pref="botCallouts" role="switch" aria-checked="false">No</button></div>
       <div class="opt-note">Teclado: WASD o flechas para moverte, Espacio para atacar, 1 2 3 habilidades, R Definitiva, Q curación, E acción, Esc pausa. También funciona con mando.</div>
       <div class="opt-note">Compañeros: si en tu equipo faltan jugadores, el juego completa los lugares con compañeros que controla él mismo. Siempre tienen prioridad los jugadores reales.</div>
@@ -505,11 +512,12 @@
   <!-- GAME OVER -->
   <div id="gameover-screen" class="screen hidden">
     <div class="arena-title" style="color:#c62828;" id="go-title">La Horda te ha consumido</div>
+    <div id="go-loss"></div>
+    <button class="btn wide" id="retry-btn">Reintentar desde el Nivel 1</button>
+    <button class="btn secondary hidden" id="retry-from1-btn">Empezar de nuevo desde el nivel 1</button>
+    <button class="btn secondary" id="menu-btn-1">Volver al menú</button>
     <div class="brand" id="go-stats">Nivel 1 · 0 bajas</div>
     <div class="save-line" id="go-progress"></div>
-    <div style="height:18px;"></div>
-    <button class="btn wide" id="retry-btn">Reintentar desde el Nivel 1</button>
-    <button class="btn secondary" id="menu-btn-1">Volver al menú</button>
   </div>
 
   <!-- VICTORY -->
@@ -628,6 +636,7 @@
 <script src="js/rendering/entities.js"></script>
 <script src="js/rendering/renderer.js"></script>
 <script src="js/systems/progression.js"></script>
+<script src="js/systems/checkpoint.js"></script>
 <script src="js/systems/mastery.js"></script>
 <script src="js/systems/talents.js"></script>
 <script src="js/systems/items.js"></script>
@@ -760,6 +769,7 @@
 <script src="js/arenas/minas/mn-bosses.js"></script>
 <script src="js/arenas/minas/mn-render.js"></script>
 <script src="js/arenas/minas/mn-arena.js"></script>
+<script src="js/arenas/lanes/lanes-sides.js"></script>
 <script src="js/arenas/lanes/lanes-data.js"></script>
 <script src="js/arenas/lanes/lanes-levels.js"></script>
 <script src="js/arenas/lanes/lanes-minions.js"></script>
@@ -767,6 +777,9 @@
 <script src="js/arenas/lanes/lanes-bots.js"></script>
 <script src="js/arenas/lanes/lanes-bot-ai.js"></script>
 <script src="js/arenas/lanes/lanes-core.js"></script>
+<script src="js/arenas/lanes/lanes-art-field.js"></script>
+<script src="js/arenas/lanes/lanes-art-bake.js"></script>
+<script src="js/arenas/lanes/lanes-art-draw.js"></script>
 <script src="js/arenas/lanes/lanes-render.js"></script>
 <script src="js/arenas/lanes/lanes-hud.js"></script>
 <script src="js/arenas/lanes/lanes-net.js"></script>
@@ -811,6 +824,7 @@
 <script src="js/ui/hud-text.js"></script>
 <script src="js/ui/skill-glyphs.js"></script>
 <script src="js/ui/skill-pixel-glyphs.js"></script>
+<script src="js/ui/skill-icon-motifs.js"></script>
 <script src="js/ui/hud.js"></script>
 <script src="js/ui/ability-inspector.js"></script>
 <script src="js/ui/tactical-panel.js"></script>
@@ -956,6 +970,18 @@
 <script src="js/champions/vfx-b/ynara.js"></script>
 <script src="js/champions/vfx-b/myla.js"></script>
 <script src="js/champions/vfx-b/nigromante.js"></script>
+<script src="js/champions/ult-forms/kit.js"></script>
+<script src="js/champions/ult-forms/forms-1.js"></script>
+<script src="js/champions/ult-forms/forms-2.js"></script>
+<script src="js/champions/ult-forms/forms-3.js"></script>
+<script src="js/champions/ult-forms/forms-b1.js"></script>
+<script src="js/champions/ult-forms/forms-b2.js"></script>
+<script src="js/champions/ult-forms/forms-b3.js"></script>
+<script src="js/champions/ult-forms/bind.js"></script>
+<script src="js/champions/ult-forms/forms-2a-1.js"></script>
+<script src="js/champions/ult-forms/forms-2a-2.js"></script>
+<script src="js/champions/ult-forms/bind-2a.js"></script>
+<script src="js/champions/ult-forms/bind-b.js"></script>
 <script src="js/data/champion-presentation.js"></script>
 <script src="js/data/champion-identity.js"></script>
 <script src="js/systems/champion-entry-balance.js"></script>

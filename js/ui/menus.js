@@ -508,6 +508,11 @@ function netBackToRoomIfAny(){
 document.getElementById("retry-btn").addEventListener("click", ()=>{
   if(netBackToRoomIfAny()) return;
   if(currentArena==="divina"){ startDivinaExploration(); return; }
+  if(document.getElementById("retry-btn").dataset.cp==="resume" && checkpointResume()) return; // "Reanudar desde el nivel 5" (checkpoint.js)
+  startRun(1);
+});
+document.getElementById("retry-from1-btn").addEventListener("click", ()=>{
+  if(netBackToRoomIfAny()) return;
   startRun(1);
 });
 function netLeaveAfterMatch(){

@@ -78,7 +78,7 @@ function deskApplyMove(){
   if(l > 0.01){ if(l > 1){ x /= l; y /= l; } joyVec = {x, y}; DESK.drove = true; }
   else if(DESK.drove){ joyVec = {x:0, y:0}; DESK.drove = false; }
 }
-function _deskBasicSync(){ basicHeld = DESK.kbBasic || DESK.mouseBasic || DESK.gpBasic || (typeof basicPtr!=="undefined" && basicPtr!==null); }
+function _deskBasicSync(){ basicHeld = DESK.kbBasic || DESK.mouseBasic || DESK.gpBasic || (typeof basicPtr!=="undefined" && basicPtr!==null && (typeof atkMode!=="function" || atkMode()!=="toggle")) || (typeof basicLatch!=="undefined" && basicLatch); }
 
 /* ---------------- apuntado con mouse / stick derecho ---------------- */
 function _deskMouseWorld(){

@@ -11,6 +11,7 @@ const HOOKS = () => {
   CP.reset();
   const dh = window.damageHero;
   window.damageHero = function (h, amount, src) {
+    if (CP.god) amount = 0; // job.god: el equipo no recibe daño (mide ingresos/ritmo de una partida completa aunque la dificultad sea un muro)
     const hp0 = h.hp, a0 = h.alive; dh(h, amount, src);
     if (h === player) { let k = src && src.type ? src.type : (src && src.from && src.from.type ? src.from.type + '(proj)' : null);
       if (!k) { const fr = (new Error().stack || '').split('\n').slice(2, 5).map(x => (x.trim().split(' ')[1] || '?')).join('<'); k = 'fn:' + fr; }
@@ -33,12 +34,34 @@ async function runOne(page, job) {
   return page.evaluate(([job]) => {
     if (job.lvl > 0) for (const k in save.champions) { save.champions[k].level = job.lvl; const al = Math.min(10, Math.floor(job.lvl / 3)); save.champions[k].skillMastery.forEach(m => m.alloc = al); save.champions[k].ultMastery.alloc = al; }
     if (job.diff) Object.assign(DIFF, job.diff);
+    // job.seed: Math.random determinista (mulberry32) para repetir una partida; el host sigue metiendo ruido de tiempo
+    if (job.seed) { let s = job.seed >>> 0; Math.random = () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+    // job.tier ("pesadilla"|"infierno"): abre esa dificultad y las arenas anteriores a job.arena en ella, y la elige
+    if (job.tier && job.tier !== 'normal') {
+      save.arenasCleared = save.arenasCleared || {}; for (const k of ARENA_ORDER) save.arenasCleared[k] = true;
+      diffSetSelected('normal'); // fuerza _diffSaveShape
+      const ti = DIFF_TIER_ORDER.indexOf(job.tier);
+      for (let i = 1; i < ti; i++) for (const k of ARENA_ORDER) save.diffCleared[DIFF_TIER_ORDER[i]][k] = true;
+      for (const k of ARENA_ORDER) { if (k === job.arena) break; save.diffCleared[job.tier][k] = true; }
+      diffSetSelected(job.tier);
+    }
     if (job.penalty !== undefined) ARENA_FAIL_PENALTY_PCT = job.penalty;
     if (job.mods) Object.assign(ARENA_MODS[job.arena], job.mods);
+    // job.loot = N: el botín de N victorias de campaña (rollLoot + materializeLoot, como tools/balance/lootsim2.js) para job.cls,
+    // repartidas en orden por las arenas; sin esto un guardado de prueba juega a nivel 54 SIN equipo (más duro que un jugador real)
+    if (job.loot) {
+      const GR = () => { const x = Math.random(); return x < 0.12 ? 'B' : (x < 0.55 ? 'A' : (x < 0.9 ? 'S' : 'S+')); };
+      let pity = {}; save.stash = save.stash || [];
+      for (let v = 0; v < job.loot; v++) {
+        const a = ARENA_ORDER[Math.min(ARENA_ORDER.length - 1, Math.floor(v * ARENA_ORDER.length / job.loot))];
+        const r = rollLoot({ arena: a, grade: GR(), victory: true, subjefes: 2, owned: ownedDesignIds(), pity, classKey: job.cls }); pity = r.pity;
+        for (const spec of r.items) { const it = materializeLoot(spec, job.cls, a); if (it.rarity === 'comun') continue; save.stash.push(it); collectionRegister(it, true); }
+      }
+    }
     if (job.gear) { for (const k in save.champions) if (typeof autoEquipBest === 'function') autoEquipBest(k); }
     // un jugador competente gasta sus puntos de talento (el HUD le sugiere cuál subir)
     if (job.lvl <= 0 && typeof suggestedSkillInvest === 'function') for (let g = 0; g < 60; g++) { const i = suggestedSkillInvest(job.cls); if (i === null || i === undefined || !investTalentPoint(job.cls, i)) break; }
-    __CP.reset();
+    __CP.reset(); __CP.god = !!job.god;
     if (job.arena === 'auto') job.arena = ARENA_ORDER.find(a => !(save.arenasCleared||{})[a]) || 'infernal';
     const lvl0 = save.champions[job.cls].level, xp0 = save.champions[job.cls].xp, gold0 = save.gold;
     __AP.start(job.cls, job.arena, 1);
@@ -56,7 +79,7 @@ async function runOne(page, job) {
     const st = player.stats || {};
     const allyDmg = allies.reduce((s, a) => s + ((a.stats && a.stats.dmgDealt) || 0), 0);
     const top = Object.entries(__CP.dmgSrc).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([k, v]) => k + ' ' + Math.round(v));
-    const res = { tag: job.tag, cls: job.cls, arena: job.arena, lvl: lvl0, result: state, reached: runLevel, secs: Math.round(t / 1000), kills,
+    const res = { tag: job.tag, tier: (typeof diffCurrent === 'function' ? diffCurrent() : 'normal'), seed: job.seed || null, cls: job.cls, arena: job.arena, lvl: lvl0, result: state, reached: runLevel, secs: Math.round(t / 1000), kills,
       bossSecs: __CP.bossAt !== null ? ((__CP.bossDeadAt || Math.round(t / 1000)) - __CP.bossAt) : null, bossType: boss ? boss.type : null, bossHpLeftPct: boss && boss.alive ? Math.round(100 * boss.hp / boss.maxHp) : 0,
       dmgShare: Math.round(100 * (st.dmgDealt || 0) / Math.max(1, (st.dmgDealt || 0) + allyDmg)), casts: st.skillCasts || 0, dmgTaken: Math.round(st.dmgTaken || 0), healDone: Math.round(st.healDone || 0),
       minHpPct: __CP.minHpPct, idleSecs: Math.round(__CP.idleMs / 1000), peakEnemies: __CP.peakEnemies, allyDowns: __CP.allyDowns,

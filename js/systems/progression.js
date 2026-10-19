@@ -18,7 +18,7 @@ if(DEV_XP_MULT > 1) window.addEventListener("DOMContentLoaded", ()=>{ const b = 
   b.style.cssText = "position:fixed;left:50%;bottom:2px;transform:translateX(-50%);z-index:9999;font:10px monospace;color:#ffd24a;background:rgba(0,0,0,0.6);padding:1px 6px;border-radius:4px;pointer-events:none"; document.body.appendChild(b); });
 function grantXP(champKey, amount){
   const c = save.champions[champKey];
-  amount = Math.round(amount*DEV_XP_MULT*(typeof alphaWorldMultiplier==="function"?alphaWorldMultiplier("xp"):1));
+  amount = Math.round(amount*DEV_XP_MULT*(typeof alphaWorldMultiplier==="function"?alphaWorldMultiplier("xp"):1)*(typeof checkpointPay==="function"?checkpointPay():1));
   c.xp += amount;
   let leveled = false;
   while(c.level < 99 && c.xp >= xpToNext(c.level)){
@@ -105,26 +105,49 @@ function setChampFromTotalXp(champKey, totalXp){
 }
 // PRIMERAS DERROTAS SIN CASTIGO (reseña #11): perder el 50 % y bajar de nivel en la primera arena
 // espantaba al que recién empieza. No se castiga en la primera arena de la campaña (en Normal: ahí se
-// aprende) ni en las primeras FAIL_FORGIVE_FIRST derrotas de la cuenta, en cualquier arena. Después,
-// como siempre. Las derrotas se cuentan en save.defeatCount (también las perdonadas y los abandonos).
+// aprende) ni en las primeras FAIL_FORGIVE_FIRST derrotas DE CADA ARENA. Después, como siempre.
+// save.arenaDefeats = {arena: derrotas} (también las perdonadas y los abandonos). save.defeatCount sigue siendo
+// el total de la cuenta. Guardados de antes de este cambio no tienen arenaDefeats: save.defeatLegacy congela
+// su total de entonces y vale como punto de partida de toda arena sin registro, así nadie recupera perdones
+// que ya gastó (quien ya perdía 3 veces sigue perdiendo desde la primera derrota en arenas nuevas).
 const FAIL_FORGIVE_FIRST = 3;
+function arenaDefeatsOf(arena){
+  const m = save.arenaDefeats || {};
+  return (arena in m) ? (m[arena]|0) : (save.defeatLegacy|0);
+}
 // null = se castiga; si no, el motivo del perdón ("arena" o "primeras")
 function arenaFailureForgiveReason(){
   const first = typeof ARENA_ORDER!=="undefined" ? ARENA_ORDER[0] : "ciudad";
   const tier = typeof diffCurrent==="function" ? diffCurrent() : "normal";
   if(currentArena===first && tier==="normal") return "arena";
-  if((save.defeatCount||0) < FAIL_FORGIVE_FIRST) return "primeras";
+  if(arenaDefeatsOf(currentArena) < FAIL_FORGIVE_FIRST) return "primeras";
   return null;
+}
+// Aviso ANTES de jugar: la primera vez que perder en esta arena va a costar (ya se gastaron los perdones de la
+// arena). Devuelve el texto o null. Se muestra una sola vez por arena (save.penaltyWarned).
+function penaltyHeadsUpText(){
+  if(arenaFailureForgiveReason()!==null) return null;
+  if((save.defeatLegacy|0) >= FAIL_FORGIVE_FIRST) return null;   // cuenta veterana: ya conoce el castigo
+  if((save.penaltyWarned||{})[currentArena]) return null;
+  return "Desde ahora, si caés en esta arena perdés la mitad de la XP y el oro ganados en la partida.";
+}
+function penaltyHeadsUp(){
+  if(typeof state!=="undefined" && state!=="playing") return;
+  const t = penaltyHeadsUpText(); if(!t) return;
+  (save.penaltyWarned = save.penaltyWarned || {})[currentArena] = true; persist();
+  if(typeof showBanner==="function") showBanner(t, 2);
 }
 // Devuelve {beforeLevel, afterLevel, lostPct, xpLost, goldLost, forgiven, forgivenLeft} para la pantalla de derrota
 function applyArenaFailurePenalty(champKey){
   const c = save.champions[champKey];
   const forgiven = arenaFailureForgiveReason();
+  const nArena = arenaDefeatsOf(currentArena) + 1;
   save.defeatCount = (save.defeatCount||0) + 1;
+  (save.arenaDefeats = save.arenaDefeats || {})[currentArena] = nArena;
   if(forgiven){
     persist();
-    return {beforeLevel:c.level, afterLevel:c.level, lostPct:0, xpLost:0, goldLost:0, forgiven,
-      forgivenLeft: Math.max(0, FAIL_FORGIVE_FIRST - save.defeatCount)};
+    return {beforeLevel:c.level, afterLevel:c.level, lostPct:0, xpLost:0, goldLost:0, forgiven, banked:!!runBanked,
+      forgivenLeft: Math.max(0, FAIL_FORGIVE_FIRST - nArena)};
   }
   const beforeLevel = c.level, total = totalXpForChamp(champKey);
   const xpLost = Math.floor(Math.max(0, total - runStartXp) * ARENA_FAIL_PENALTY_PCT);
@@ -132,7 +155,7 @@ function applyArenaFailurePenalty(champKey){
   const goldLost = Math.floor(Math.max(0, save.gold - runStartGold) * ARENA_FAIL_PENALTY_PCT);
   save.gold = Math.max(0, save.gold - goldLost);
   persist();
-  return {beforeLevel, afterLevel:c.level, lostPct:Math.round(ARENA_FAIL_PENALTY_PCT*100), xpLost, goldLost, forgiven:null, forgivenLeft:0};
+  return {beforeLevel, afterLevel:c.level, lostPct:Math.round(ARENA_FAIL_PENALTY_PCT*100), xpLost, goldLost, forgiven:null, forgivenLeft:0, banked:!!runBanked};
 }
-function grantGold(n){ save.gold += Math.round(n*(typeof alphaWorldMultiplier==="function"?alphaWorldMultiplier("gold"):1)); persist(); }
+function grantGold(n){ save.gold += Math.round(n*(typeof alphaWorldMultiplier==="function"?alphaWorldMultiplier("gold"):1)*(typeof checkpointPay==="function"?checkpointPay():1)); persist(); }
 function grantRelic(kind){ save.relics[kind] = Math.min(30, (save.relics[kind]||0)+1); persist(); }

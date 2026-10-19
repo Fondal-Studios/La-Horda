@@ -11,10 +11,16 @@
    - lefty:    modo zurdo: joystick a la derecha y botones a la izquierda.
    - contrast: avisos de peligro de alto contraste (borde negro + filo blanco punteado + rayado),
                que se distinguen por la FORMA y no solo por el color (daltonismo).
+   - cvd:      paleta para daltonismo: "off" | "rg" (rojo-verde: deuteranopia/protanopia) | "by" (azul-amarillo:
+               tritanopia). Cambia equipos, barras, avisos y zonas de peligro, y SUMA forma (rayado, marcas).
+   - atkMode:  ataque: "hold" (mantener el botón, como siempre) | "toggle" (un toque prende/apaga el ataque
+               continuo) | "auto" (ataca solo cuando hay un enemigo a tu alcance, sin tocar el botón).
+   - ctlSize:  tamaño de los controles táctiles en % (90-150, 100 = como siempre).
+   - ctlOp:    opacidad de los controles táctiles en % (40-100, 100 = como siempre).
    Clave: localStorage "horda_prefs" (JSON). Sin localStorage (modo privado) se usa lo de fábrica.
    ============================================================ */
 const PREFS_KEY = "horda_prefs";
-const PREFS_DEFAULT = { vibrate:true, shake:"normal", textLg:false, lefty:false, contrast:false, botCallouts:false };
+const PREFS_DEFAULT = { vibrate:true, shake:"normal", textLg:false, lefty:false, contrast:false, botCallouts:false, cvd:"off", atkMode:"hold", ctlSize:100, ctlOp:100 };
 const PREFS = (function(){
   const p = Object.assign({}, PREFS_DEFAULT);
   try{
@@ -26,6 +32,10 @@ const PREFS = (function(){
       if(typeof v.lefty==="boolean") p.lefty = v.lefty;
       if(typeof v.contrast==="boolean") p.contrast = v.contrast;
       if(typeof v.botCallouts==="boolean") p.botCallouts = v.botCallouts;
+      if(v.cvd==="off" || v.cvd==="rg" || v.cvd==="by") p.cvd = v.cvd;
+      if(v.atkMode==="hold" || v.atkMode==="toggle" || v.atkMode==="auto") p.atkMode = v.atkMode;
+      if(typeof v.ctlSize==="number" && isFinite(v.ctlSize)) p.ctlSize = Math.max(90, Math.min(150, Math.round(v.ctlSize/10)*10));
+      if(typeof v.ctlOp==="number" && isFinite(v.ctlOp)) p.ctlOp = Math.max(40, Math.min(100, Math.round(v.ctlOp/10)*10));
     }
   }catch(e){}
   return p;
@@ -37,15 +47,37 @@ function prefsApply(changed){
   b.classList.toggle("lefty", !!PREFS.lefty);
   b.classList.toggle("text-lg", !!PREFS.textLg);
   b.classList.toggle("hi-contrast", !!PREFS.contrast);
+  b.classList.toggle("cvd-rg", PREFS.cvd==="rg");
+  b.classList.toggle("cvd-by", PREFS.cvd==="by");
+  // controles táctiles: solo se tocan si el valor se aparta del de fábrica (así el 100% no crea transform ni opacity)
+  const custom = PREFS.ctlSize!==100 || PREFS.ctlOp!==100;
+  b.classList.toggle("ctl-custom", custom);
+  b.style.setProperty("--ctl-sc", String(PREFS.ctlSize/100));
+  b.style.setProperty("--ctl-inv", String(100/PREFS.ctlSize));
+  b.style.setProperty("--ctl-op", String(PREFS.ctlOp/100));
+  b.classList.toggle("atk-toggle", PREFS.atkMode==="toggle");
+  b.classList.toggle("atk-auto", PREFS.atkMode==="auto");
   // los "+" de subir habilidad y el apuntado se ubican con el rect del botón: que se vuelvan a medir
   if(changed===true){ try{ window.dispatchEvent(new Event("resize")); }catch(e){} }
 }
 function prefSet(key, val){
   if(!(key in PREFS_DEFAULT)) return;
+  if(key==="ctlSize") val = Math.max(90, Math.min(150, Math.round(+val/10)*10)) || 100;
+  if(key==="ctlOp") val = Math.max(40, Math.min(100, Math.round(+val/10)*10)) || 100;
   PREFS[key] = val;
   prefsSave(); prefsApply(true);
   if(typeof optionsSync==="function") optionsSync();
 }
+/* ---------------- paleta para daltonismo ----------------
+   Colores "rgb" (formato "r,g,b" como usa vfx.js) y hex. Nunca es lo único que distingue algo: las zonas de
+   peligro suman rayado y borde punteado, el equipo enemigo anillo discontinuo y las barras marcas. Basada en
+   la paleta de Okabe-Ito (azul / naranja / amarillo para rojo-verde; verde / rosa para azul-amarillo). */
+const CVD_PAL = {
+  rg:{ ally:"86,180,233", enemy:"255,176,0", danger:"255,176,0", safe:"86,180,233", good:"86,180,233", warn:"240,228,66", goodHex:"#7fd0ff", enemyHex:"#ffb000" },
+  by:{ ally:"60,220,120", enemy:"255,60,110", danger:"255,60,110", safe:"60,220,120", good:"60,220,120", warn:"255,130,210", goodHex:"#5fe590", enemyHex:"#ff4d82" }
+};
+function cvdPal(){ return CVD_PAL[PREFS.cvd] || null; }
+
 // Modo zurdo: TODO el HUD se espeja (lo de la izquierda pasa a la derecha y al revés), así los botones
 // no caen encima de la vida/arena y el joystick no tapa la Definitiva. Lo que se dibuja en el canvas
 // pegado a un costado (minimapas, racha) usa hudMirrorX: x de una caja de ancho w, del lado que toca.
@@ -80,6 +112,10 @@ function optionsSync(){
     const k = g.dataset.pref, cur = k==="textLg" ? (PREFS.textLg ? "1" : "0") : String(PREFS[k]);
     g.querySelectorAll("button[data-v]").forEach(b=> b.setAttribute("aria-pressed", b.dataset.v===cur ? "true" : "false"));
   });
+  box.querySelectorAll("input[data-pref-range]").forEach(r=>{
+    const k = r.dataset.prefRange; if(+r.value!==PREFS[k]) r.value = PREFS[k];
+    const out = box.querySelector('[data-pref-out="'+k+'"]'); if(out) out.textContent = PREFS[k]+"%";
+  });
 }
 (function(){
   const bind = ()=>{
@@ -94,6 +130,7 @@ function optionsSync(){
       const k = g.dataset.pref;
       prefSet(k, k==="textLg" ? b.dataset.v==="1" : b.dataset.v);
     })));
+    box.querySelectorAll("input[data-pref-range]").forEach(r=> r.addEventListener("input", ()=> prefSet(r.dataset.prefRange, +r.value)));
     // la casilla "Reducir movimiento" de la pausa y la de Opciones muestran lo mismo
     const pm = document.getElementById("opt-reduce-motion"); if(pm) pm.addEventListener("change", ()=> setTimeout(optionsSync, 0));
     const po = document.getElementById("pause-opts-btn");

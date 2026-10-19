@@ -26,9 +26,13 @@ function joyCenter(){
   return {x:r.left+r.width/2, y:r.top+r.height/2};
 }
 let joyOff = {x:0, y:0}; // cuánto se corrió la base de su lugar (lo suma también la perilla)
+// Opciones > "Tamaño de los controles" (css/controls.css escala #joyzone): las medidas de pantalla se pasan a
+// medidas locales (÷ escala) para mover base y perilla. Con 100% es 1 y todo queda igual que siempre.
+function ctlScale(){ return (typeof PREFS!=="undefined" && PREFS.ctlSize ? PREFS.ctlSize : 100)/100; }
 function _joyPlaceBase(dx, dy){
-  joyOff = {x:dx||0, y:dy||0};
-  joyBase.style.transform = dx||dy ? `translate(${dx}px,${dy}px)` : "";
+  const sc = ctlScale();
+  joyOff = {x:(dx||0)/sc, y:(dy||0)/sc};
+  joyBase.style.transform = dx||dy ? `translate(${joyOff.x}px,${joyOff.y}px)` : "";
 }
 function _joyHomeCenter(){
   _joyPlaceBase(0, 0);
@@ -39,7 +43,7 @@ joyZone.addEventListener("pointerdown", e=>{
   e.preventDefault();
   if(joyActive && joyId!==e.pointerId) return; // otro dedo ya maneja el joystick
   joyActive = true; joyId = e.pointerId;
-  const home = _joyHomeCenter(), R = joyBase.offsetWidth/2 || 46;
+  const home = _joyHomeCenter(), R = (joyBase.offsetWidth/2 || 46) * ctlScale();
   if(Math.hypot(e.clientX-home.x, e.clientY-home.y) > R){
     // que la base no quede cortada por el borde de la pantalla
     const x = Math.max(R+4, Math.min(innerWidth-R-4, e.clientX)), y = Math.max(R+4, Math.min(innerHeight-R-4, e.clientY));
@@ -66,12 +70,13 @@ function updateJoy(e){
   const c = joyCenter();
   let dx = e.clientX-c.x, dy = e.clientY-c.y;
   const dist = Math.hypot(dx,dy);
-  const clamped = Math.min(dist, JOY_MAX);
+  const sc = ctlScale(), jmax = JOY_MAX*sc;
+  const clamped = Math.min(dist, jmax);
   const ang = Math.atan2(dy,dx);
-  const kx = Math.cos(ang)*clamped, ky = Math.sin(ang)*clamped;
+  const kx = Math.cos(ang)*clamped/sc, ky = Math.sin(ang)*clamped/sc;
   joyKnob.style.transform = `translate(${JOY_CENTER+kx+joyOff.x}px,${JOY_CENTER+ky+joyOff.y}px)`;
   // zona muerta chica: un pulgar apoyado quieto no hace caminar de a poquito
-  const k = clamped < 5 ? 0 : clamped/JOY_MAX;
+  const k = clamped < 5 ? 0 : clamped/jmax;
   joyVec = { x: k*Math.cos(ang), y: k*Math.sin(ang) };
 }
 
@@ -93,8 +98,40 @@ let basicHeld = false;
 const basicBtn = document.getElementById("btn-basic");
 let basicPtr = null;
 // Captura del puntero: con el mouse, apretar Ataque y soltar afuera del botón dejaba basicHeld pegado.
-basicBtn.addEventListener("pointerdown", (e)=>{ basicHeld = true; basicPtr = e.pointerId; try{ basicBtn.setPointerCapture(e.pointerId); }catch(_){} });
-function basicUp(e){ if(basicPtr===null || e.pointerId===basicPtr){ basicHeld = false; basicPtr = null; } }
+// Opciones > "Ataque": "hold" (mantener, como siempre) | "toggle" (un toque prende/apaga el ataque continuo) |
+// "auto" (ataca solo con un enemigo a tu alcance; el botón sigue sirviendo para atacar a mano).
+let basicLatch = false;
+function atkMode(){ return typeof PREFS!=="undefined" ? PREFS.atkMode : "hold"; }
+basicBtn.addEventListener("pointerdown", (e)=>{
+  basicPtr = e.pointerId; try{ basicBtn.setPointerCapture(e.pointerId); }catch(_){}
+  if(atkMode()==="toggle"){ basicLatch = !basicLatch; basicBtnSync(); if(typeof _deskBasicSync==="function") _deskBasicSync(); else basicHeld = basicLatch; }
+  else basicHeld = true;
+});
+function basicUp(e){
+  if(basicPtr===null || e.pointerId===basicPtr){
+    basicPtr = null;
+    if(atkMode()==="toggle" && typeof _deskBasicSync==="function") _deskBasicSync(); else basicHeld = false;
+  }
+}
+// lo que el jugador está apretando de verdad (teclado, mouse, mando o el botón en pantalla)
+function basicPhysicalHeld(){
+  const d = typeof DESK!=="undefined" ? DESK : null;
+  return !!((d && (d.kbBasic || d.mouseBasic || d.gpBasic)) || (basicPtr!==null && atkMode()!=="toggle"));
+}
+function basicBtnSync(){
+  basicBtn.classList.toggle("atk-on", basicLatch);
+  basicBtn.setAttribute("aria-pressed", atkMode()==="toggle" ? (basicLatch ? "true" : "false") : "false");
+}
+// una vez por cuadro, ANTES de que el héroe actúe (update.js): aplica el modo de ataque al héroe propio
+function basicAutoTick(){
+  const mode = atkMode();
+  if(mode==="hold"){ if(basicLatch){ basicLatch = false; basicBtnSync(); } return; }
+  if(!player || !player.alive || state!=="playing"){ if(basicLatch){ basicLatch = false; basicBtnSync(); } return; }
+  if(mode!=="toggle" && basicLatch){ basicLatch = false; basicBtnSync(); }
+  let want = basicPhysicalHeld() || basicLatch;
+  if(!want && mode==="auto" && player.cls && player.cls.basicRange) want = !!nearestEnemyTo(player, player.cls.basicRange);
+  basicHeld = want;
+}
 basicBtn.addEventListener("pointerup", basicUp);
 basicBtn.addEventListener("pointercancel", basicUp);
 basicBtn.addEventListener("lostpointercapture", e=>{ if(e.target===basicBtn) basicUp(e); });
@@ -103,7 +140,7 @@ basicBtn.addEventListener("lostpointercapture", e=>{ if(e.target===basicBtn) bas
 // un dedo o una tecla que se soltó "afuera" dejaba al guardián caminando o pegando solo al volver.
 function inputResetAll(){
   if(joyActive || joyVec.x || joyVec.y) joyRelease();
-  basicHeld = false; basicPtr = null;
+  basicHeld = false; basicPtr = null; basicLatch = false; basicBtnSync();
   if(typeof aimCancelActive==="function") aimCancelActive();
   if(typeof deskInputReset==="function") deskInputReset();
   try{ if(typeof reviveBtnTarget!=="undefined" && reviveBtnTarget) stopReviveBtnHold(); }catch(_){}
@@ -266,7 +303,7 @@ document.getElementById("quit-btn").addEventListener("click", ()=>{
   const abandon = ()=>{
     const forgive = typeof arenaFailureForgiveReason==="function" && arenaFailureForgiveReason();
     const costMsg = forgive ? "Cuenta como una derrota, pero esta vez la Horda te perdona: no perdés XP ni oro."
-      : "Vas a perder el "+Math.round(ARENA_FAIL_PENALTY_PCT*100)+"% de la XP y del oro que ganaste en esta partida, igual que si perdieras.";
+      : "Vas a perder el "+Math.round(ARENA_FAIL_PENALTY_PCT*100)+"% de la XP y del oro que ganaste "+(runBanked ? "desde el punto de control" : "en esta partida")+", igual que si perdieras.";
     gameConfirm("¿Abandonar la arena? "+costMsg+lootMsg, {okText:"Abandonar", cancelText:"Seguir jugando", danger:true}).then(ok=>{
       if(!ok || !stillHere()) return;
       applyArenaFailurePenalty(player.classKey);

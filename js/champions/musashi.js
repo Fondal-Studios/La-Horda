@@ -109,7 +109,6 @@ function updateMusashiFx(dt){
       if(c.target && c.target.alive && c.caster.alive){
         damageEnemy(c.target, c.dmg, {src:c.caster, critChanceOverride:c.critChance, critMultOverride:c.critMult});
         pushSpark("impacto", c.target.x, c.target.y, 40, 220);
-        if(c.caster===player) floatText(c.target.x, c.target.y-30, "2º CORTE", "crit");
       }
     });
   }
@@ -170,7 +169,6 @@ function musashiHandleDuelWin(m, target){
   m.duelGraceTimer = 650*graceBonus;
   m.stunTimer = Math.max(m.stunTimer||0, 650*graceBonus);
   screenShake = Math.max(screenShake, 6);
-  if(m===player) floatText(m.x, m.y-50, "GOLPE DE GRACIA", "crit");
   // Banner decorativo real (antes sin usar), superpuesto sobre Musashi durante el mismo lapso
   // que ya dura el Golpe de Gracia (no alarga ni acorta nada de la mecánica existente).
   vfxSprite("musashiFinish", 0, m.x, m.y-40, 110, 650*graceBonus, m, 0.08, m.fx<-0.12, 0.7, 0);

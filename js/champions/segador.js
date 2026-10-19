@@ -22,7 +22,6 @@ function triggerFuryFinalSlash(caster){
     const a = Math.random()*Math.PI*2;
     particles.push({x:caster.x, y:caster.y, vx:Math.cos(a)*180, vy:Math.sin(a)*180-20, life:500, color:Math.random()<0.5?"#ff3d1f":"#ffcf5c"});
   }
-  if(caster===player) floatText(caster.x, caster.y-60, "¡TAJO FINAL!", "crit");
 }
 // Pasivo del Segador Olvidado (Último Aliento): cuanto menos vida le queda, más daño hace.
 // Corre SIEMPRE, no solo cuando activa la habilidad 3 (esa es un burst extra encima de esto).

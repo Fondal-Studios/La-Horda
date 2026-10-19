@@ -76,7 +76,7 @@ function cmSubDirector(dt){
     if(levelClearing || runEnding) return;
     if(levelTimer > levelDuration*0.3){
       S.st = "curtain"; S.t = 0;
-      playSfx("cmCurtain"); showBanner("🎭 Suenan aplausos en la ciudad vacía… EL TELÓN SE LEVANTA");
+      playSfx("cmCurtain"); showBanner("Suenan aplausos en la ciudad vacía… EL TELÓN SE LEVANTA");
       if(typeof setMusicMode==="function") setMusicMode("prelude");
     }
     return;

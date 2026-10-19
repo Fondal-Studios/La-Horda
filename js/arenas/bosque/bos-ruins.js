@@ -147,7 +147,7 @@ function bosOnLit(r){
   vfxBurst(r.x, r.y-60, 14, "ember", 140, 520, 3, 1, -60, 0);
   playSfx("bosRuneFire");
   const n = bosLitCount();
-  showBanner(n >= 4 ? "¡LAS CUATRO RUNAS ARDEN!" : `RUNA ACTIVA (${n}/4): LA HORDA SE FORTALECE`);
+  showBanner(n >= 4 ? "¡LAS CUATRO RUNAS ARDEN!" : `RUNA ACTIVA (${n}/4)`);
 }
 // Enemigos que salen de una runa activa: corrompidos (más daño y velocidad).
 function bosRuneSpawn(r, n){

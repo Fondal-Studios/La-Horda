@@ -1,33 +1,44 @@
 "use strict";
 /* ============================================================
    js/ui/skill-glyphs.js
-   SÍMBOLOS de las habilidades en los botones del HUD, con el estilo de La Horda: trazos gruesos de hierro y hueso,
-   siempre del color del botón. 146 de las 152 habilidades solo tenían un emoji suelto; acá cada una recibe un símbolo
-   por su tipo (espada, llama, escudo, calavera...). Las que ya tienen ícono pixel propio (SKILL_ICON_IMG) no cambian.
+   ÍCONOS DE HABILIDAD: paleta, categorías y búsqueda por palabras clave, bajo el CONTRATO ÚNICO de js/ui/pixel-icons.js
+   (16x16 nativos, 6 colores como máximo, contorno de 1 px, marco por categoría, sin degradés, alfa 0/255).
+   Antes había tres idiomas (ilustraciones con degradé, recortes del sprite del héroe y glifos de 2 tonos con insignia
+   diminuta); ahora todo sale de skillIconUriFromGlyph(). El arte de cada habilidad de cada campeón está en
+   js/ui/skill-pixel-glyphs.js; este archivo cubre además a las que no tienen entrada propia (Crystal Wars, kits
+   nuevos) con un motivo genérico por tipo (espada, llama, escudo, calavera...).
    Es solo presentación: no toca estadísticas ni el kit de ningún campeón.
    ============================================================ */
-const SKILL_GLYPHS = {
-  blade:'<path d="M26 3l3 3-16 16-3-3z"/><path d="M7 19l6 6-2 2-6-6z"/><path d="M9 23l-5 5" stroke-width="3" fill="none"/>',
-  crossed:'<path d="M5 3l-3 3 12 12 3-3z"/><path d="M27 3l3 3-12 12-3-3z"/><path d="M5 29l-3-3 5-5 3 3zM27 29l3-3-5-5-3 3z"/>',
-  bolt:'<path d="M18 1L5 18h8l-3 13 17-19h-9z"/>',
-  flame:'<path d="M16 1c3 8 11 10 11 19 0 6-5 11-11 11S5 26 5 20c0-5 4-7 5-12 3 2 4 4 4 7 2-4 2-8 2-14z"/><path d="M16 17c3 3 5 5 5 8a5 5 0 0 1-10 0c0-3 3-5 5-8z" fill="#0b0f18" opacity=".45"/>',
-  frost:'<g fill="none" stroke-width="3.2" stroke-linecap="round"><path d="M16 2v28M4 9l24 14M28 9L4 23"/><path d="M12 4l4 3 4-3M12 28l4-3 4 3" stroke-width="2.4"/></g>',
-  nova:'<circle cx="16" cy="16" r="5"/><circle cx="16" cy="16" r="11" fill="none" stroke-width="2.6"/><g stroke-width="3" stroke-linecap="round"><path d="M16 1v4M16 27v4M1 16h4M27 16h4M5 5l3 3M24 24l3 3M27 5l-3 3M5 27l3-3"/></g>',
-  shield:'<path d="M16 2l12 4v9c0 8-6 13-12 15C10 28 4 23 4 15V6z"/><path d="M16 7v18M9 13h14" stroke="#0b0f18" stroke-width="2.4" opacity=".5" fill="none"/>',
-  heal:'<path d="M12 3h8v9h9v8h-9v9h-8v-9H3v-8h9z"/>',
-  horn:'<g fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17l11-10 11 10"/><path d="M5 27l11-10 11 10"/></g>',
-  eye:'<path d="M1 16C6 7 26 7 31 16 26 25 6 25 1 16z"/><circle cx="16" cy="16" r="5" fill="#0b0f18"/><circle cx="16" cy="16" r="2" />',
-  dash:'<path d="M2 6l13 10L2 26z"/><path d="M15 6l13 10-13 10z"/>',
-  trap:'<path d="M2 24l5-14 5 10 4-12 4 12 5-10 5 14z"/><rect x="2" y="25" width="28" height="3"/>',
-  skull:'<path fill-rule="evenodd" d="M16 2C9 2 4 7 4 14c0 4 2 7 5 9v6h4v-3h2v3h2v-3h2v3h4v-6c3-2 5-5 5-9 0-7-5-12-12-12zM10.5 12a3 3 0 1 0 .01 0zm11 0a3 3 0 1 0 .01 0z"/>',
-  whirl:'<path d="M16 4a12 12 0 1 1-12 12" fill="none" stroke-width="4" stroke-linecap="round"/><path d="M0 12l8 8 4-9z"/>',
-  hook:'<path d="M20 3v16a6 6 0 1 1-12 0" fill="none" stroke-width="4" stroke-linecap="round"/><path d="M3 15l5 7 5-7z"/>',
-  tower:'<path d="M7 29V11h3V6h3v5h6V6h3v5h3v18z"/><rect x="13" y="19" width="6" height="10" fill="#0b0f18" opacity=".5"/>',
-  flask:'<path d="M11 2h10v2h-2v7l9 15c1 3-1 5-4 5H8c-3 0-5-2-4-5l9-15V4h-2z"/><path d="M9 21h14" stroke="#0b0f18" stroke-width="2.6" opacity=".5" fill="none"/>',
-  drop:'<path d="M16 2c6 9 11 13 11 19a11 11 0 0 1-22 0C5 15 10 11 16 2z"/>',
-  arrow:'<path d="M3 29L24 8" stroke-width="3.4" stroke-linecap="round" fill="none"/><path d="M28 4v12l-4-3-4 4-4-4 4-4-3-4z"/><path d="M3 29l-1-6 4 1 1 4z"/>',
-  star:'<path d="M16 1l4.5 9.5L31 12l-7.5 7.3L25.3 30 16 25 6.7 30l1.8-10.7L1 12l10.5-1.5z"/>',
-  crown:'<path d="M3 26L1 8l8 8 7-12 7 12 8-8-2 18z"/><rect x="3" y="27" width="26" height="3"/>'
+// Color de cuerpo por botón del HUD (identidad de cada ranura; el marco lo fija la categoría, no la ranura).
+const SKILL_ICON_BODY = {basic:"#e8884a", s1:"#4fc3f7", s2:"#a98bff", s3:"#4fe0a0", ult:"#ff9d3a"};
+// Crystal Wars (y cualquier llamador viejo) pasa un color de ranura: se traduce a la ranura.
+const SKILL_ICON_SLOT_OF_COLOR = {"#8fe0ff":"s1", "#cfc2ff":"s2", "#97f0cc":"s3", "#ffe9a8":"ult"};
+// slot: 0|1|2 (habilidades), 3|"ult"|"u" (definitiva), "basic", o ya "s1".."s3"
+function skillIconSlotKey(slot){
+  if(slot===3 || slot==="ult" || slot==="u") return "ult";
+  if(slot==="basic") return "basic";
+  if(slot===0 || slot===1 || slot===2) return "s" + (slot+1);
+  return SKILL_ICON_BODY[slot] ? slot : "s1";
+}
+function skillIconCategory(slotKey){ return slotKey==="ult" ? "ult" : slotKey==="basic" ? "basic" : "skill"; }
+const _skillTint = (hex, t)=>{ // t>0 aclara hacia blanco, t<0 oscurece hacia negro
+  const n = parseInt(hex.slice(1), 16), c = [n>>16&255, n>>8&255, n&255].map(v=>Math.round(t>0 ? v+(255-v)*t : v*(1+t)));
+  return "#" + c.map(v=>v.toString(16).padStart(2, "0")).join("");
+};
+const _skillIconUri = {};
+// rows14: 14 filas de 14 letras (. k # l d a). Devuelve la imagen (data URI PNG 16x16) bajo el contrato, o null sin canvas.
+function skillIconUriFromGlyph(rows14, slot, accent){
+  const slotKey = skillIconSlotKey(slot), id = rows14.join("") + "|" + slotKey + "|" + accent;
+  if(_skillIconUri[id] !== undefined) return _skillIconUri[id];
+  const cat = skillIconCategory(slotKey), m = SKILL_ICON_BODY[slotKey];
+  const rows = pxiIconCompose(rows14, cat), colors = pxiIconColors(cat, {m, l:_skillTint(m, .55), d:_skillTint(m, -.35)}, accent);
+  return _skillIconUri[id] = pxiIconDataURL(rows, colors);
+}
+// Motivo genérico por palabras clave -> nombre de motivo de PIX_MOTIFS (skill-pixel-glyphs.js).
+const SKILL_GLYPH_MOTIF = {
+  blade:"sword", crossed:"swords", bolt:"bolt", flame:"ember", frost:"frost", nova:"burst", shield:"shield", heal:"cross",
+  horn:"horn", eye:"eye", dash:"boots", trap:"trap", skull:"skull", whirl:"vortex", hook:"hook", tower:"turret",
+  flask:"flask", drop:"drop", arrow:"arrow", star:"star", crown:"crown"
 };
 // Qué símbolo lleva cada habilidad, por su tipo/nombre/descripción (la primera regla que coincida).
 const SKILL_GLYPH_RULES = [
@@ -55,11 +66,67 @@ function skillGlyphKey(sk, isUlt){
   for(const [re, key] of SKILL_GLYPH_RULES) if(re.test(hay)) return key;
   return isUlt ? "star" : "nova";
 }
-const _glyphUri = {};
-// Devuelve una imagen (data URI de un SVG) con el símbolo de la habilidad, del color indicado.
+// Imagen (data URI PNG 16x16 del contrato) con el motivo genérico de la habilidad. `color` solo identifica la ranura.
 function skillGlyphUri(sk, color, isUlt){
-  const key = skillGlyphKey(sk, isUlt), id = key + color;
-  if(_glyphUri[id]) return _glyphUri[id];
-  const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="' + color + '" stroke="' + color + '" stroke-linejoin="round"><g stroke-width="1.2">' + SKILL_GLYPHS[key] + '</g></svg>';
-  return _glyphUri[id] = "data:image/svg+xml," + encodeURIComponent(svg);
+  const motif = SKILL_GLYPH_MOTIF[skillGlyphKey(sk, isUlt)], g = typeof skillPixelGrid==="function" ? skillPixelGrid(motif) : null;
+  if(!g) return null;
+  const slot = isUlt ? "ult" : (SKILL_ICON_SLOT_OF_COLOR[color] || "s1");
+  return skillIconUriFromGlyph(skillPixelContractRows(g), slot, skillPixelAccent(motif));
+}
+
+// Rótulo corto del botón (fuente pixel del juego, 8 px = su grilla nativa, 5 letras como máximo = 40 px en el
+// botón de 46 px útiles). Nombre completo siempre en el tooltip y en el aria-label. Se escribe a mano por habilidad:
+// truncar el nombre dejaba rótulos como "EMBES." o "TORBELL.". Clave "campeón:ranura".
+const SKILL_SHORT_LABEL = {
+  "tanque:0":"GIRO","tanque:1":"CARGA","tanque:2":"GRITO",
+  "guerrero:0":"CORTE","guerrero:1":"GOLPE","guerrero:2":"CEPO",
+  "mago:0":"MURO","mago:1":"HIELO","mago:2":"RAYO",
+  "soporte:0":"ALBA","soporte:1":"VIGOR","soporte:2":"EGIDA",
+  "segador:0":"TAJO","segador:1":"FURIA","segador:2":"FINAL",
+  "axiom:0":"404","axiom:1":"SOBRE","axiom:2":"WARP",
+  "profeta:0":"HADO","profeta:1":"VISTA","profeta:2":"DANZA",
+  "musashi:0":"RONIN","musashi:1":"PASO","musashi:2":"MIL",
+  "cazadora:0":"TIRO","cazadora:1":"LAZO","cazadora:2":"SALVA",
+  "nigromante:0":"ALMAS","nigromante:1":"GOLEM","nigromante:2":"PLAGA",
+  "libertador:0":"BAYON","libertador:1":"GRANA","libertador:2":"CARGA",
+  "ilkan:0":"LANZA","ilkan:1":"DUNA","ilkan:2":"GRITO",
+  "ynara:0":"MIRA","ynara:1":"PLATO","ynara:2":"NO",
+  "myla:0":"TORRE","myla:1":"YOGUR","myla:2":"CREMA",
+  "brasa:0":"LATON","brasa:1":"PURGA","brasa:2":"RAPID",
+  "eslabon:0":"CADEN","eslabon:1":"LINEA","eslabon:2":"CUSTO",
+  "morwen:0":"RESIN","morwen:1":"SAL","morwen:2":"ALQUI",
+  "farolero:0":"FAROL","farolero:1":"FLASH","farolero:2":"PASO",
+  "iria:0":"ANCLA","iria:1":"TENSA","iria:2":"HILO",
+  "vesper:0":"AGUJA","vesper:1":"COSER","vesper:2":"TRAMA",
+  "nahir:0":"ASTIL","nahir:1":"ESPEJ","nahir:2":"CRUZ",
+  "baltra:0":"BRONC","baltra:1":"CAMPA","baltra:2":"BADAJ",
+  "maura:0":"RAICE","maura:1":"CORTE","maura:2":"PODA",
+  "dariel:0":"NOTA","dariel:1":"MARCH","dariel:2":"ESTRI",
+  "orsa:0":"PERNO","orsa:1":"CULAT","orsa:2":"CIRCU",
+  "tibor:0":"NUBE","tibor:1":"CASA","tibor:2":"POLEN",
+  "zahra:0":"HORNO","zahra:1":"FRIO","zahra:2":"CENIZ",
+  "renko:0":"SURCO","renko:1":"MONTE","renko:2":"TIERR",
+  "sira:0":"TINTA","sira:1":"VUELT","sira:2":"BORRA",
+  "nano_gm:0":"FALLO","nano_gm:1":"EDICT","nano_gm:2":"INVER",
+  "facu_gm:0":"RESAC","facu_gm:1":"PRESI","facu_gm:2":"OLA",
+  "aurelia:0":"PRISM","aurelia:1":"REFRA","aurelia:2":"LUMIN",
+  "khepri:0":"ENJAM","khepri:1":"CAPA","khepri:2":"VUELO",
+  "velmira:0":"MASCA","velmira:1":"CORO","velmira:2":"CAMBI",
+  "vhal:0":"ESTRE","vhal:1":"POZO","vhal:2":"ORBIT",
+  "bront:0":"PLACA","bront:1":"MURO","bront:2":"PULSO",
+  "oriel:0":"ABRIR","oriel:1":"ECO","oriel:2":"PASO",
+  "saelis:0":"PLUMA","saelis:1":"RAFAG","saelis:2":"LLAMA",
+  "solciju:0":"VINO","solciju:1":"BARRI","solciju:2":"BRIND",
+  "veyra:0":"HERID","veyra:1":"PASO","veyra:2":"PACTO",
+  "brakk:0":"MURO","brakk:1":"TORRE","brakk:2":"APUNT",
+  "morveth:0":"HUERT","morveth:1":"PESTE","morveth:2":"SIMBI",
+  "aelith:0":"INSTA","aelith:1":"FRACT","aelith:2":"TIEMP",
+  "ilkan_colossus:0":"ALUD","ilkan_colossus:1":"HUNDE","ilkan_colossus:2":"MARCH"
+};
+function skillShortLabel(champId, slot, name){
+  const k = champId + ":" + slot;
+  if(SKILL_SHORT_LABEL[k]) return SKILL_SHORT_LABEL[k];
+  // sin entrada propia: primera palabra de más de 2 letras, 5 letras como máximo, sin tildes (la fuente pixel no las trae)
+  const w = String(name||"").normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().split(/\s+/).filter(x=>x.length>2 && !/^(DEL|LAS|LOS|CON|POR)$/.test(x));
+  return (w[0] || String(name||"").toUpperCase()).slice(0, 5);
 }

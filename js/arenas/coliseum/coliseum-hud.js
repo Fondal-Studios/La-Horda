@@ -33,13 +33,13 @@ function colHudTick(){
   q(".col-teams").innerHTML = L.team.map(T=>{
     const inMine = c.pairs[0].includes(T.team), inOther = c.pairs[1].includes(T.team), mine = T.team === player.team;
     const pips = Array.from({length:COL.WIN_POINTS}, (_, i)=>'<em class="' + (i < T.points ? "on" : "off") + '">●</em>').join("");
-    return '<div class="col-team' + (mine ? " me" : "") + (c.phase === "fight" && (inMine || inOther) ? " fighting" : "") + '" style="--tc:' + lanesTeamColor(T.team) + '"><b>' + (mine ? "TU EQUIPO" : lanesTeamName(T.team)) + '</b><span>' + pips + '</span></div>';
+    return '<div class="col-team' + (mine ? " me" : "") + (c.phase === "fight" && (inMine || inOther) ? " fighting" : "") + '" data-side="' + sidesOfTeam(T.team) + '" style="--tc:' + lanesTeamColor(T.team) + '"><b><i class="ln-side"></i>' + (mine ? "TU EQUIPO" : lanesTeamName(T.team)) + '</b><span>' + pips + '</span></div>';
   }).join("");
   q(".col-round").textContent = "RONDA " + c.round;
   q(".col-clock").textContent = c.phase === "prep" ? "Preparate…" : c.phase === "inter" ? "Resultados" : (c.ringR < COL.PIT_R - 2 ? "¡ANILLO CERRÁNDOSE!" : _colClock(COL.ROUND_MS - (L.t - c.t0)));
   const pair = c.pairs[0];
   q(".col-note").textContent = c.phase === "inter" ? c.last : (c.phase === "prep" ? "Tu duelo: " + (pair[0] === 0 ? "TU EQUIPO" : lanesTeamName(pair[0])) + " vs " + lanesTeamName(pair[1]) : (c.res[0] ? "Tu duelo terminó · mirá el otro" : ""));
-  q(".col-feed").innerHTML = L.feed.filter(f=>L.t - f.t < 9000).slice(-3).map(f=>'<div style="color:' + lanesTeamColor(f.team) + '">' + f.text + '</div>').join("");
+  q(".col-feed").innerHTML = L.feed.filter(f=>L.t - f.t < 9000).slice(-3).map(f=>'<div style="color:' + sidesFeedColor(f.team) + '">' + f.text + '</div>').join("");
   // espectador (solo si caíste en plena pelea)
   const spec = q(".col-spec"), watching = !player.alive && c.phase === "fight" && c.spec;
   spec.classList.toggle("hidden", !watching);
@@ -57,7 +57,12 @@ function colDrawMap(){
     g.strokeStyle = c.ringR < COL.PIT_R - 2 ? "#ff6a5a" : "rgba(255,255,255,.4)"; g.lineWidth = 2; g.beginPath(); g.ellipse(p.x * sx, p.y * sy, c.ringR * sx, c.ringR * sy, 0, 0, Math.PI * 2); g.stroke();
     g.font = "bold 12px sans-serif"; g.textAlign = "center"; g.fillStyle = "rgba(255,255,255,.7)"; g.fillText(pit === 0 ? "A" : "B", p.x * sx, (p.y - COL.PIT_R - 14) * sy + 4);
   }
-  for(const h of heroes){ if(h.team == null) continue; g.fillStyle = h.alive ? "#fff" : "#444"; g.beginPath(); g.arc(h.x * sx, h.y * sy, h === player ? 5.5 : 4.5, 0, Math.PI * 2); g.fill(); g.strokeStyle = lanesTeamColor(h.team); g.lineWidth = 2; g.stroke(); }
+  // luchadores: aliado = círculo con aro verde, rival = rombo con aro rojo, yo = círculo grande con aro blanco y verde
+  for(const h of heroes){ if(h.team == null) continue; const rel = sidesOf(h), cc = sidesCol(rel), x = h.x * sx, y = h.y * sy, r = h === player ? 5.5 : 4.5;
+    g.fillStyle = h.alive ? "#fff" : "#444"; g.strokeStyle = cc.fill; g.lineWidth = 2; g.beginPath();
+    if(rel === "enemy"){ g.moveTo(x, y - r - 1.5); g.lineTo(x + r + 1.5, y); g.lineTo(x, y + r + 1.5); g.lineTo(x - r - 1.5, y); g.closePath(); } else g.arc(x, y, r, 0, Math.PI * 2);
+    g.fill(); g.stroke();
+    if(rel === "self"){ g.strokeStyle = "#fff"; g.lineWidth = 1.5; g.beginPath(); g.arc(x, y, r + 3, 0, Math.PI * 2); g.stroke(); } }
 }
 
 /* ---------------- resultado ---------------- */
