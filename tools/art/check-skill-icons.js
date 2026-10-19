@@ -11,12 +11,12 @@
 // Uso: node tools/art/check-skill-icons.js [--self-test] [--write]
 //   --self-test  prueba el verificador con imágenes sintéticas malas (degradé, 7 colores, alfa, tamaño) y buenas.
 //   --write      escribe docs/ux/iconos-contrato/check-report.json con los números.
-// Entorno: ICON_CHECK_PORT (por omisión 8975), CHROMIUM_PATH.
+// Entorno: SE_BASE_URL (servidor externo; por omisión levanta uno propio en un puerto libre), CHROMIUM_PATH.
 const {spawn} = require('node:child_process'), path = require('node:path'), fs = require('node:fs');
-let chromium; try { ({chromium} = require('playwright')); } catch (e) { ({chromium} = require('/opt/node22/lib/node_modules/playwright')); }
-const ROOT = path.resolve(__dirname, '../..'), PORT = +(process.env.ICON_CHECK_PORT || 8975), THRESHOLD = 0.85, SIL_THRESHOLD = 0.92;
+const H = require('../lib/serve');
+const ROOT = path.resolve(__dirname, '../..'), THRESHOLD = 0.85, SIL_THRESHOLD = 0.92;
 const argv = new Set(process.argv.slice(2));
-const server = spawn('python3', ['-m', 'http.server', String(PORT), '--bind', '127.0.0.1'], {cwd: ROOT, stdio: 'ignore'});
+let site = null;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const BTN = [['btn-s1', 'skill'], ['btn-s2', 'skill'], ['btn-s3', 'skill'], ['btn-ult', 'ult'], ['btn-basic', 'basic'], ['btn-emerg', 'skill'], ['btn-pact', 'skill']];
 
@@ -38,14 +38,14 @@ function iou(a, b) { let i = 0, u = 0; for (let k = 0; k < a.length; k++) { if (
 function equalFrac(a, b) { let n = 0; for (let i = 0; i < a.length; i++) if (a[i] === b[i]) n++; return n / a.length; }
 
 (async () => {
-  await sleep(600);
-  const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium', args: ['--no-sandbox']});
+  site = await H.startSite({envUrl: ['SE_BASE_URL']});
+  const browser = await H.launch();
   const problems = [], report = {champions: 0, icons: 0, ultPairs: 0, worstUlt: [], worstKit: []};
   try {
     const ctx = await browser.newContext({viewport: {width: 844, height: 390}, deviceScaleFactor: 1, isMobile: true, hasTouch: true});
     const page = await ctx.newPage(), errors = [];
     page.on('pageerror', e => errors.push(e.message));
-    await page.goto(`http://127.0.0.1:${PORT}/`, {waitUntil: 'domcontentloaded'});
+    await H.goto(page, site.url + '/');
     await page.waitForFunction(() => typeof startRun === 'function' && typeof pxiIconAudit === 'function', null, {timeout: 120000});
     await page.evaluate(IN_PAGE);
 
@@ -161,7 +161,7 @@ function equalFrac(a, b) { let n = 0; for (let i = 0; i < a.length; i++) if (a[i
       fs.mkdirSync(path.dirname(out), {recursive: true});
       fs.writeFileSync(out, JSON.stringify({...report, problems: problems.length}, null, 2) + '\n');
     }
-  } finally { await browser.close(); server.kill(); }
+  } finally { await browser.close(); await site.close(); }
   if (problems.length) { console.log('FAIL (' + problems.length + ')\n - ' + problems.slice(0, 80).join('\n - ') + (problems.length > 80 ? `\n ... y ${problems.length - 80} más` : '')); process.exitCode = 1; }
   else console.log('PASS contrato de íconos: 16x16 nativos, <= 6 colores, alfa 0/255, contorno de 1 px, marco por categoría, definitivas distinguibles (<= 85 % iguales)');
-})().catch(e => { console.error(e); server.kill(); process.exitCode = 1; });
+})().catch(e => { console.error(e); if (site) site.close(); process.exitCode = 1; });

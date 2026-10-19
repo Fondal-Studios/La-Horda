@@ -3,11 +3,10 @@
 // roster, y en partida (en su arena) se dibuja con SU arte, ataca y muere sin errores.
 // Los reemplazos propios de battlefield tienen prioridad desde la unificación de arte:
 // comprobarlos y comprobar además el atlas Pixrig de respaldo, nunca aceptar otro jefe.
-//   node tools/art/t_pixrig_bosses.js [outdir]   (sirve el repo en SE_BASE_URL, default http://127.0.0.1:8771; lo levanta si no hay nada)
-let chromium;
-try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
+//   node tools/art/t_pixrig_bosses.js [outdir]   (sirve el repo en un puerto libre; SE_BASE_URL para usar otro)
+const H = require('../lib/serve');
 const fs = require('fs'), path = require('path'), http = require('http'), { spawn } = require('child_process');
-const BASE = process.env.SE_BASE_URL || 'http://127.0.0.1:8771';
+let BASE;
 const OUT = process.argv[2] || null; if (OUT) fs.mkdirSync(OUT, { recursive: true });
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL ') + n + (x !== undefined ? '  ' + JSON.stringify(x).slice(0, 300) : '')); if (!ok) fails++; };
@@ -27,22 +26,13 @@ const BOSSES = {
   golem_cuerpos: ['golem_cuerpos', 'infernal', 0, ['idle', 'walk', 'atk', 'hit', 'death', 'slam', 'tf', 'pre']],
 };
 
-function ping(url) { return new Promise(res => { const r = http.get(url, x => { x.resume(); res(x.statusCode < 500); }); r.on('error', () => res(false)); r.setTimeout(1500, () => { r.destroy(); res(false); }); }); }
-async function ensureServer() {
-  if (await ping(BASE + '/index.html')) return null;
-  const u = new URL(BASE);
-  const srv = spawn('python3', ['-m', 'http.server', u.port || '80', '--bind', u.hostname], { cwd: path.resolve(__dirname, '..', '..'), stdio: 'ignore' });
-  for (let i = 0; i < 50 && !(await ping(BASE + '/index.html')); i++) await sleep(100);
-  return srv;
-}
-
 (async () => {
-  const srv = await ensureServer();
-  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
+  const site = await H.startSite({ envUrl: ['SE_BASE_URL'] }); BASE = site.url;
+  const browser = await H.launch();
   const page = await (await browser.newContext({ viewport: { width: 1000, height: 600 } })).newPage();
   const errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
-  await page.goto(`${BASE}/index.html?dev=1`, { waitUntil: 'load', timeout: 180000 });
+  await H.goto(page, `${BASE}/index.html?dev=1`, { waitUntil: 'load', timeout: 180000 });
   for (let i = 0; i < 400; i++) { if (await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return b && !b.disabled; })) break; await sleep(100); }
   for (let i = 0; i < 300; i++) { if (await page.evaluate((ks) => ks.every(k => ENEMY_ATLAS_PACK[k] && ENEMY_ATLAS_PACK[k].ready), Object.keys(BOSSES))) break; await sleep(150); }
   const info = await page.evaluate((B) => {
@@ -130,7 +120,7 @@ async function ensureServer() {
     if (OUT) await page.screenshot({ path: path.join(OUT, `muertes_${a}.png`) });
   }
   check('sin_errores_de_pagina', errors.length === 0, errors.slice(0, 5));
-  await browser.close(); if (srv) srv.kill();
+  await browser.close(); await site.close();
   console.log(`SUMMARY ${fails ? 'FALLAS: ' + fails : 'OK'}`);
   process.exit(fails ? 1 : 0);
 })();

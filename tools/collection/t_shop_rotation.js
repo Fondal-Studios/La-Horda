@@ -7,24 +7,21 @@
 //          descuento no cuelan legendarios, guardianes/Básicos siguen comprables, el temporizador, la UI y que
 //          "una victoria Infernal >= 25% del precio de un set" NO se cumple (umbral del crítico).
 // Uso: node tools/collection/t_shop_rotation.js   (levanta su propio servidor en un puerto libre; SE_BASE_URL para usar otro)
-const {spawn} = require('node:child_process'), net = require('node:net'), path = require('node:path'), fs = require('node:fs');
-let chromium; try { ({chromium} = require('playwright')); } catch (e) { ({chromium} = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
-const ROOT = path.resolve(__dirname, '../..');
+const fs = require('node:fs'), path = require('node:path'), H = require('../lib/serve');
+const ROOT = H.ROOT;
 let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL ') + n + (x !== undefined ? '  ' + JSON.stringify(x).slice(0, 400) : '')); if (!ok) fails++; };
-const freePort = () => new Promise(r => { const s = net.createServer(); s.listen(0, '127.0.0.1', () => { const p = s.address().port; s.close(() => r(p)); }); });
 const T18_48 = Date.UTC(2026, 9, 19, 18, 48, 0); // 5 h 12 min antes de la medianoche UTC
 
 (async () => {
-  let server = null, base = process.env.SE_BASE_URL;
-  if (!base) { const port = await freePort(); server = spawn('python3', ['-m', 'http.server', String(port), '--bind', '127.0.0.1'], {cwd: ROOT, stdio: 'ignore'}); base = `http://127.0.0.1:${port}`; await new Promise(r => setTimeout(r, 700)); console.log('server', base, 'cwd', ROOT); }
-  const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium', args: ['--no-sandbox', '--disable-dev-shm-usage']});
+  const site = await H.startSite({envUrl: ['SE_BASE_URL']}), base = site.url;   // puerto libre propio; SE_BASE_URL para uno externo
+  const browser = await H.launch();
   const errors = [];
   async function boot() {
     const ctx = await browser.newContext({viewport: {width: 844, height: 390}});
     const page = await ctx.newPage();
     page.on('pageerror', e => errors.push(e.message));
     await ctx.addInitScript(() => { window.__autoConfirm = true; try { localStorage.clear(); } catch (e) {} });
-    await page.goto(base + '/index.html', {waitUntil: 'domcontentloaded', timeout: 180000});
+    await H.goto(page, base + '/index.html', {timeout: 180000});
     await page.waitForFunction(() => typeof shopRotationInfo === 'function' && typeof renderShop === 'function', null, {timeout: 180000});
     await page.waitForTimeout(800);
     return page;
@@ -220,7 +217,7 @@ const T18_48 = Date.UTC(2026, 9, 19, 18, 48, 0); // 5 h 12 min antes de la media
 
     check('sin errores de página', errors.length === 0, errors);
   } finally {
-    await browser.close(); if (server) server.kill();
+    await browser.close(); await site.close();
   }
   console.log(fails ? `\n${fails} FALLAS` : '\nTODO OK');
   process.exit(fails ? 1 : 0);
