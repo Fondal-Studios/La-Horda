@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Audit saved atlases without installing them or treating a technical screen as art approval."""
 import argparse
+from collections import Counter
 import hashlib
 import importlib.util
 import json
@@ -67,10 +68,11 @@ def main():
         scan = scanner.analyze(str(ROOT / candidate['source']))
         result = {**candidate, 'sha256': source_hash,
                   'nativeStatus': report['status'], 'failedFrames': failed,
+                  'nativeIssues': dict(sorted(Counter(issue for row in report['rows'] for issue in row['issues']).items())),
                   'scanner': scan, 'releaseApproved': False,
                   'pending': ['Visual identity, direction, proportions, animation and runtime gates']}
         results.append(result)
-        print(json.dumps({k: result[k] for k in ['block', 'source', 'nativeStatus', 'failedFrames', 'releaseApproved']}), flush=True)
+        print(json.dumps({k: result[k] for k in ['block', 'source', 'nativeStatus', 'failedFrames', 'nativeIssues', 'releaseApproved']}), flush=True)
     summary = {'schema': 1, 'status': 'DIAGNOSTIC_COMPLETE_NOT_RELEASE_APPROVAL',
                'commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                'detectorSha256': hashlib.sha256((ROOT / 'tools/art/pixel-density.js').read_bytes()).hexdigest(),

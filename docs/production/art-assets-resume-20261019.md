@@ -18,3 +18,13 @@ CI conserva summary.json y reportes completos como artifact authored-candidate-d
 - El siguiente trabajo artístico sigue siendo B004; después completar las correcciones focales de B001/B002/B003 y retomar B005 sin regenerar fuentes guardadas.
 
 Ningún merge de diagnóstico completa todos los assets pendientes ni prueba un nuevo despliegue público. No se cambian estadísticas, habilidades, pagos, cuentas o infraestructura.
+
+## Ejecución real en Actions
+
+Run39292727298, commit c5e4b62, job118197256060: 16 pruebas Python PASS (7 importador +3 guardas +6 auditor), exportación19/19 y gates de íconos/emojis PASS. Se auditaron los144 cuadros de los cuatro atlas fijados por hash:
+- B001: FIX en cuadro11.
+- B002: FIX en19 cuadros.
+- B003: FIX en los36 cuadros.
+- B004: FIX en7 cuadros.
+
+El índice de resultados se conserva en authored-candidate-results-20261019.json y los informes completos en el artifact del run. Los resultados justifican mantener los cuatro candidatos fuera del runtime; no basta reparar la espada de Tanque ni el halo de Guerrero. Se añaden conteos por tipo de defecto al log para dirigir la corrección, sin cambiar el detector.
