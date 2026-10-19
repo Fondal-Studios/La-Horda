@@ -45,7 +45,7 @@ const BOOK_INTRO_PAGES = [
    text:"Soy la figura de luz que salió del humo. Conozco cada cristal y cada Guardián, y por eso puedo guiarte hasta ellos. Con cada uno que juntes, el sello está más cerca de volver. Escuchame con atención y vas a llegar hasta el fondo.",
    recap:"Ya me oíste en el humo; ahora me ves. Conozco cada cristal y cada Guardián, y por eso puedo guiarte hasta ellos. Con cada uno que juntes, el sello está más cerca de volver. Escuchame con atención y vas a llegar hasta el fondo."},
   {kicker:"TU MISIÓN", title:"SOBREVIVIR", art:"mision",
-   text:"Tu único trabajo es seguir con vida. Cada arena tiene 10 niveles y cada nivel dura un ratito: aguantá hasta que el reloj llegue a cero. En el último hay un jefe. Si un compañero cae, mantené ✚ a su lado para levantarlo."},
+   text:"Tu único trabajo es seguir con vida. Cada arena tiene 10 niveles y cada nivel dura un ratito: aguantá hasta que el reloj llegue a cero. En el último hay un jefe: derrotalo y ganás la arena. Se pierde si caen todos los guardianes de tu equipo; si un compañero cae, mantené ✚ a su lado para levantarlo."},
   {kicker:"UN LIBRO QUE SE ESCRIBE SOLO", title:"SEGUÍ LEYENDO", art:"libro",
    text:"Cada vez que termines una arena, sumo un fragmento: qué pasó ahí y cómo se juega lo que viene. Podés saltear esta lectura cuando quieras y volver a abrirla desde Menú › Códice › Libro. Yo sigo escribiendo."}
 ];
