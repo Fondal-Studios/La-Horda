@@ -6,12 +6,15 @@
    LANES.PROGRESS_CAP (js/arenas/lanes/lanes-data.js). Documento: docs/modes/POSTGAME.md.
 
    INTERRUPTOR DE ACCESO — un único lugar:
-     "campaign" (POR DEFECTO): los dos modos se abren al ganar la última arena de la campaña (o con la campaña completa). Antes de
-                               eso el hub los muestra bloqueados y ofrece el Entrenamiento (campeón normalizado, sin recompensas).
-     "open"                  : todo abierto desde el primer minuto (página de muestra / demos). No toca el guardado.
+     "open" (POR DEFECTO en ALFA): todo abierto desde el primer minuto, como hasta ahora. La progresión y las recompensas funcionan igual
+                               (con el progreso real del jugador y su tope). No toca el guardado.
+     "campaign" (= cerrado)  : regla de desbloqueo completa: los modos se abren al ganar la última arena de la campaña EN NORMAL (flag real
+                               `arenasCleared`; no hace falta Pesadilla ni Infierno). Antes de eso el hub los muestra bloqueados («Se abre al
+                               terminar la campaña») y ofrece el Entrenamiento (campeón normalizado, sin recompensas).
+   Para cerrar el postgame al salir de la alfa basta cambiar la línea de abajo a "campaign".
    Esto solo decide el modo SOLO contra bots; las salas online no cambian (siguen normalizadas y sin recompensas).
    ============================================================ */
-var POSTGAME_GATE = "campaign";   // "campaign" | "open"
+var POSTGAME_GATE = "open";   // "open" (alfa: abierto) | "campaign" (cerrado hasta terminar la campaña)
 
 // RECOMPENSAS (honestas y sin pay-to-win: oro del juego, XP de cuenta, uso de maestría y cosméticos; nada se compra con plata).
 // El oro, el reloj y el guardado son del CLIENTE: el tope diario frena el farmeo honesto, no a quien edite su guardado ni a quien

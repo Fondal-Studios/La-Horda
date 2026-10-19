@@ -121,6 +121,6 @@ La entrega de la fábrica de producción, Códice/colección, entrenamiento y op
 
 ## Modos de postgame: Guerra de Cristales y Coliseo (Alpha)
 
-Contenido de DESPUÉS de la campaña, contra bots (salas privadas en línea para Cristales). **Guerra de Cristales**: 5 contra 5, tres carriles, selva, torres y PvP con los campeones de la campaña. **Coliseo**: torneo de ocho luchadores, cuatro equipos de dos, duelos 2 contra 2 con anillo que se cierra. Se abren al terminar la campaña y entran con tu nivel, talentos, maestría y equipo con un tope configurable (`LANES.PROGRESS_CAP`); antes hay un Entrenamiento normalizado sin recompensas. Recompensas diarias con tope.
+Contenido de DESPUÉS de la campaña, contra bots (salas privadas en línea para Cristales). **Guerra de Cristales**: 5 contra 5, tres carriles, selva, torres y PvP con los campeones de la campaña. **Coliseo**: torneo de ocho luchadores, cuatro equipos de dos, duelos 2 contra 2 con anillo que se cierra. En alfa están abiertos (`POSTGAME_GATE = "open"`); con `"campaign"` se abren al terminar la campaña en Normal. Entran con tu nivel, talentos, maestría y equipo con un tope configurable (`LANES.PROGRESS_CAP`); antes hay un Entrenamiento normalizado sin recompensas. Recompensas diarias con tope.
 
 [Reglas, controles y validación](docs/modes/CRYSTAL_WARS.md) · [Progresión, tope, bloqueo y recompensas](docs/modes/POSTGAME.md).

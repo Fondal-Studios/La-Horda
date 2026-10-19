@@ -19,7 +19,8 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
   await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});
   await p.waitForFunction(()=>typeof setState==='function'&&typeof lanesStart==='function'&&typeof postgameSettle==='function',null,{timeout:90000});
   const shot=async n=>{await p.waitForTimeout(500);await p.screenshot({path:path.join(OUT,`${n}_${w}.png`)});};
-  // 1) hub bloqueado
+  // 1) hub bloqueado (con el interruptor en "campaign"; por defecto viene "open")
+  await p.evaluate(()=>{POSTGAME_GATE='campaign';});
   await p.evaluate(()=>{save.tut=save.tut||{};save.tut.training=1;persistNow();setState('mainmenu');renderMainMenu();document.getElementById('hub-postgame-title').scrollIntoView({block:'start'});});
   await shot('hub_bloqueado');
   // 2) aviso de bloqueo

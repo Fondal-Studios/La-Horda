@@ -6,14 +6,18 @@ Dónde se cambia cada perilla (un solo lugar cada una):
 
 | Qué | Dónde |
 |---|---|
-| Abrir todo (página de muestra) o exigir la campaña | `POSTGAME_GATE` en `js/data/postgame.js` (`"campaign"` / `"open"`) |
+| Abrir todo (alfa) o exigir la campaña | `POSTGAME_GATE` en `js/data/postgame.js`: `"open"` (**por defecto en alfa**) / `"campaign"` (cerrado hasta terminar la campaña) |
 | Tope de nivel, talentos, maestría, objetos, reliquias, pasivas, vida, daño, velocidad, bots | `LANES.PROGRESS_CAP` en `js/arenas/lanes/lanes-data.js` |
 | Oro, XP, topes diarios, tiempos mínimos, trofeos, logros y cosméticos | `POSTGAME_CFG`, `POSTGAME_ACHIEVEMENTS` en `js/data/postgame.js` |
 
-## 1. Acceso: se abre al terminar la campaña
+## 1. Acceso: se abre al terminar la campaña (cerrado) o siempre (alfa)
 
-- **Condición:** victoria en la última arena de `ARENA_ORDER` (flag real `save.arenasCleared[infernal]`) o todas las arenas ganadas (`postgameCampaignDone`). Se **deriva** del guardado: un jugador que ya terminó la campaña queda abierto sin migrar ni perder nada (`arenasCleared`/`legacyOpenArenas` no se tocan). Al detectarlo se guarda `save.postgame.unlocked` para que un reinicio posterior de la campaña no lo cierre.
-- **Antes de terminar:** las tarjetas del hub se ven apagadas, con borde punteado y dicen «Se abre al terminar la campaña · Entrenamiento disponible». Tocarlas abre un aviso con la condición y el progreso (`n/10 arenas`) y el botón **Entrenar (sin recompensas)**.
+**Estado actual: `POSTGAME_GATE = "open"` (alfa).** Cualquiera entra desde el primer minuto, como hasta ahora; la progresión, el tope y las recompensas funcionan igual: un jugador que aún no terminó la campaña entra con su progreso real recortado por el tope (y, si es un perfil nuevo, simplemente con poco). **Para cerrar el postgame al salir de la alfa:** en `js/data/postgame.js` cambiar `var POSTGAME_GATE = "open";` por `"campaign"`; no hace falta tocar nada más (la regla de abajo ya está implementada y probada, `postgame-test.js` la corre con el interruptor en `"campaign"`).
+
+Con el interruptor en `"campaign"`:
+
+- **Condición:** victoria **en Normal** en la última arena de `ARENA_ORDER` (no hace falta Pesadilla ni Infierno: `arenasCleared` es el flag de Normal) (flag real `save.arenasCleared[infernal]`) o todas las arenas ganadas (`postgameCampaignDone`). Se **deriva** del guardado: un jugador que ya terminó la campaña queda abierto sin migrar ni perder nada (`arenasCleared`/`legacyOpenArenas` no se tocan). Al detectarlo se guarda `save.postgame.unlocked` para que un reinicio posterior de la campaña no lo cierre.
+- **Antes de terminar (interruptor cerrado):** las tarjetas del hub se ven apagadas, con borde punteado y dicen «Se abre al terminar la campaña · Entrenamiento disponible». Tocarlas abre un aviso con la condición y el progreso (`n/10 arenas`) y el botón **Entrenar (sin recompensas)**.
 - **Entrenamiento** (acceso universal, explícito): campeón normalizado como siempre (Cristales nivel 3→15 de partida; Coliseo nivel 10), cualquier campeón del plantel, **sin progresión, sin recompensas, sin racha**. También se usa si el campeón elegido no es tuyo o si marcás «Entrenamiento normalizado» en el lobby (para probar kits con la campaña terminada). La pantalla de resultado lo dice.
 - `isArenaUnlocked("convergencia"/"coliseo")` **sigue devolviendo `true`** a propósito: lo consultan las salas online, que no se tocan. El acceso en solitario lo decide `postgameUnlocked()`.
 - **Online:** crear/unirse a una sala privada sigue disponible aunque el postgame esté cerrado, con perfiles normalizados (`lanesBegin("lobby"|"host"|"guest")` nunca instala progreso; probado). Consecuencia a decidir por el dueño: hoy un jugador nuevo puede jugar Cristales **online** sin terminar la campaña.

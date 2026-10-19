@@ -2,13 +2,13 @@
 
 Un solo documento, una sola versión. Las reglas están verificadas contra el código (`js/arenas/lanes/`, `js/arenas/coliseum/`) y las constantes se leen de `LANES` y `COL`. El historial de cómo se llegó acá (simulador CW-1/2/3, mapa de un carril, dos carriles) está en git: **no rige nada de eso**. Estado: Alpha.
 
-Los dos modos son **contenido de postgame**: usan la progresión de campaña (con tope) y se abren al terminar la campaña. Progresión, bloqueo, Entrenamiento y recompensas: [`POSTGAME.md`](POSTGAME.md).
+Los dos modos son **contenido de postgame**: usan la progresión de campaña (con tope) y están pensados para después de la campaña. **En alfa están abiertos para todos** (`POSTGAME_GATE = "open"`); con `"campaign"` se abren al terminar la campaña en Normal. Progresión, bloqueo, Entrenamiento y recompensas: [`POSTGAME.md`](POSTGAME.md).
 
 ## Cómo entrar
 
 Hub → **MODOS DE POSTGAME** → *Guerra de Cristales* o *Coliseo* (también desde Multijugador → Modos). Es una pantalla del propio `index.html` (state `crystalwars`); el enlace de invitación es `index.html?cw=1&room=ABC123[&server=…]` y `crystal-wars.html` solo redirige ahí.
 
-- **Campaña sin terminar:** la tarjeta se ve bloqueada («Se abre al terminar la campaña») y ofrece **Entrenar**: campeón normalizado contra bots, sin progreso ni recompensas.
+- **Con el interruptor en `"campaign"` y la campaña sin terminar:** la tarjeta se ve bloqueada («Se abre al terminar la campaña») y ofrece **Entrenar**: campeón normalizado contra bots, sin progreso ni recompensas.
 - **Campaña terminada:** se entra directo. *ENTRENAR CON BOTS* usa tu campeón con tope de progresión; la casilla «Entrenamiento normalizado» lo apaga.
 - **Salas privadas (online):** siguen disponibles siempre y **normalizadas** (nivel fijo, sin equipo ni talentos, sin recompensas). No dependen del postgame.
 

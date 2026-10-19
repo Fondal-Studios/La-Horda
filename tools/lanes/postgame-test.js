@@ -26,6 +26,9 @@ let ok=0;const pass=m=>{ok++;console.log('  ok  '+m);};
  const E=(fn,arg)=>p.evaluate(fn,arg);
 
  console.log('1) bloqueo / desbloqueo por campaña');
+ assert.equal(await E(()=>POSTGAME_GATE),'open','el interruptor viene ABIERTO por defecto (alfa)');pass('POSTGAME_GATE viene en "open" (alfa)');
+ assert.equal(await E(()=>postgameUnlocked(defaultSave())),true);pass('con el interruptor abierto un perfil nuevo entra (y usa su progreso real con tope)');
+ await E(()=>{POSTGAME_GATE='campaign';});   // el resto de esta sección prueba la regla de cierre
  await E(()=>{save.tut=save.tut||{};save.tut.training=1;persistNow();setState('mainmenu');renderMainMenu();});
  let r=await E(()=>({un:postgameUnlocked(),text:postgameLockText(),gate:POSTGAME_GATE,cls:document.getElementById('hub-crystal-btn').className,sub:document.getElementById('hub-crystal-sub').textContent,subC:document.getElementById('hub-coliseum-sub').textContent}));
  assert.equal(r.un,false,'perfil nuevo: bloqueado');assert.equal(r.gate,'campaign');assert.match(r.text,/Se abre al terminar la campaña/);
