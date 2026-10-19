@@ -25,6 +25,8 @@ assert git_sha(replacement) == spec['replacementGitBlobSha']
 manifest = {'atlas': spec['atlas'], 'atlasSha256': spec['atlasSha256'],
             'replacement': spec['replacement'], 'replacementSha256': hashlib.sha256(replacement).hexdigest(),
             'frame': spec['frame']}
+if 'targetHeight' in spec:
+    manifest['targetHeight'] = spec['targetHeight']
 (OUT / 'assembly.json').write_text(json.dumps(manifest, indent=2) + '\n')
 process = subprocess.run(['python3', 'tools/factory/replace-authored-frame.py',
                           str(OUT / 'assembly.json'), str(OUT / 'atlas.png')],
@@ -69,6 +71,14 @@ else:
         return out
     summary['sourceBodyComparison'] = {'reference': body_metrics(ROOT / spec['atlas']),
                                        'candidate': body_metrics(OUT / 'atlas.png')}
+    reference_body = float(np.median([r['body'] for r in summary['sourceBodyComparison']['reference'][:3]]))
+    candidate_body = summary['sourceBodyComparison']['candidate'][-1]
+    summary['sourceBodyScreen'] = {'referenceMedian': reference_body,
+                                  'candidateBody': candidate_body['body'],
+                                  'relativeDeviation': candidate_body['body']/reference_body-1,
+                                  'foot': candidate_body['foot'],
+                                  'within4PercentAndFoot2Pixels': abs(candidate_body['body']/reference_body-1) <= .04 and abs(candidate_body['foot']-106) <= 2,
+                                  'scope': 'Source-pixel mass only; full renderer and visual approval still required'}
     refs_spec = importlib.util.spec_from_file_location('candidate_refs', ROOT / 'tools/art/gen-referencias.py')
     refs = importlib.util.module_from_spec(refs_spec)
     refs_spec.loader.exec_module(refs)

@@ -8,5 +8,16 @@
   "frame": 11,
   "installed": false,
   "approvalClaimed": false,
-  "scope": "Single-frame authored correction; preserve other35 RGBA frames; diagnostics do not approve production art"
+  "scope": "Single-frame authored correction; preserve other35 RGBA frames; diagnostics do not approve production art",
+  "targetHeight": 78,
+  "alignment": {
+    "reason": "Body mass was64px against the reference67–69px despite matching full73px height; uniformly calibrate authored source, preserving35 frames and foot106.",
+    "bodyRowThreshold": 0.22,
+    "referenceFrames": [
+      8,
+      9,
+      10
+    ],
+    "maximumRelativeBodyDeviation": 0.04
+  }
 }
