@@ -67,6 +67,8 @@ missing=sorted(set(required['libertador'])-template)
 assert {'fire','reload','bayo_emb','ult_cast'}.issubset(missing),'Specialized runtime audit must detect weapon clips'
 summary['runtimeContract']={'coverage':'STATIC_REAL_CALLERS_NOT_RUNTIME_APPROVAL','source':'js/champions/libertador.js','sourceGitBlobSha':git_sha((ROOT/'js/champions/libertador.js').read_bytes()),'requiredByCurrentRenderer':required,'missingFromGeneric36PoseFootPack':missing,'preserveMountedPack':True,'status':'REJECT_FULL_PACK_REPLACEMENT' if missing else 'DECLARED_CONTRACT_ONLY'}
 summary['integrationStatus']='FIX_RUNTIME_CONTRACT' if missing else 'RUNTIME_AND_VISUAL_REVIEW_STILL_REQUIRED'
+summary['visualReview']={'status':'REDRAW_REQUIRED','reviewer':'ChatGPT (AI); no owner approval claimed','reason':'Generated back/front repairs substituted saber for musket in firearm phases; preserve weapon and existing specialized silhouette.'}
+summary['integrationStatus']='REDRAW_REQUIRED_WEAPON_CONTINUITY_AND_RUNTIME_CONTRACT'
 
 (OUT/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
 print('CANDIDATE_SUMMARY '+json.dumps(summary),flush=True)
