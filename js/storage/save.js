@@ -54,7 +54,7 @@ function defaultSave(){
     micelialMigrated:true,  // idem para el Reino Micelial (4ta arena, antes del Hielo)
     abismoMigrated:true,    // idem para la Arena del Abismo (antes del Laberinto): save.legacyLabOpen
     codex:{seen:{}, kills:{}},  // Códice: criaturas vistas y derrotadas (js/ui/codex/codex-track.js)
-    codexBook:{v:1, introSeen:false, introAt:0, ran:false, offered:false, frag:{}, shortCount:{}, shortOff:false}, // EL LIBRO DE LA HORDA (js/systems/codex-narrative.js): intro vista, fragmentos leídos, cargas cortas
+    codexBook:{v:1, introSeen:false, introAt:0, introRead:false, ran:false, offered:false, frag:{}, shortCount:{}, shortOff:false}, // EL LIBRO DE LA HORDA (js/systems/codex-narrative.js): intro vista, fragmentos leídos, cargas cortas
     campaignV2:true,        // ORDEN CANÓNICO de la campaña (ver loadSave: migración de arenas abiertas y cristales)
     ciudadV1:true,          // la Ciudad Maldita (Arena 01) pasó a ser jugable (ver loadSave: nadie pierde la arena que ya tenía abierta)
     talentTreeV2:true,      // bolsa del árbol separada de las mejoras del kit
