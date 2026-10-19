@@ -1,0 +1,311 @@
+name: Integracion pruebas
+# Pruebas de lo ya integrado que no corrian en ningun workflow. Todas usan tools/lib/serve.js o tools/lib/with-site.js:
+# servidor propio en un puerto libre, sin relay ni dispositivos. Ver docs/quality/ARNES_PRUEBAS.md.
+# Reglas: cada paso es independiente (if: !cancelled()) y los jobs no cancelan a los demas (fail-fast: false).
+# continue-on-error SOLO en pruebas que hoy fallan o son intermitentes, con el motivo al lado; se corren igual y se informan.
+# Lo nuevo (pasos sin continue-on-error) falla en rojo de verdad.
+on:
+  pull_request:
+    paths: ['tools/vfx/**', 'tools/regression/**', 'tools/items/**', 'tools/identity/**', 'tools/lanes/**', 'tools/ux/**', 'tools/art/**', 'tools/collection/**', 'tools/lib/**', 'js/**', 'css/**', 'index.html', '.github/workflows/integracion-pruebas.yml', '.github/actions/setup-playwright/**']
+  push:
+    branches: [main, 'chatgpt/**']
+    paths: ['tools/vfx/**', 'tools/regression/**', 'tools/items/**', 'tools/identity/**', 'tools/lanes/**', 'tools/ux/**', 'tools/art/**', 'tools/collection/**', 'tools/lib/**', 'js/**', 'css/**', 'index.html', '.github/workflows/integracion-pruebas.yml', '.github/actions/setup-playwright/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: integracion-pruebas-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  node-sin-navegador:
+    name: "Arnés y lógica pura (sin navegador)"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: "Arnés: servidor en puerto libre, árbol correcto, reintentos"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 3
+        run: node tools/lib/test-serve.js
+      - name: "Libro de la Horda: lógica pura"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 3
+        run: node tools/items/t_codex_book_logic.js
+  vfx-iconos:
+    name: "VFX de definitivas, decales e íconos de habilidad"
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - name: "Formas de definitivas (test-ult-forms)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 35
+        run: node tools/vfx/test-ult-forms.js
+      - name: "Decales legibles en seis arenas (test-decal-legible)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 25
+        run: node tools/vfx/test-decal-legible.js
+      - name: "Contrato de íconos de habilidad: autoprueba y HUD real de 43 campeones"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 15
+        run: node tools/art/check-skill-icons.js --self-test
+      - name: "Glifos de habilidad (test-skill-glyphs)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/ux/test-skill-glyphs.js
+  regresion-ux-carriles:
+    name: "Regresión, UX y carriles"
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - name: "Punto de control (t_checkpoint)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/regression/t_checkpoint.js
+      - name: "Derrota clara (t_defeat_clear)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/regression/t_defeat_clear.js
+      - name: "Juice / feedback de golpe (t_juice)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/regression/t_juice.js
+      - name: "Áreas táctiles (test-touch-targets)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/ux/test-touch-targets.js
+      - name: "Legibilidad del hub (test-hub-legibility)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/ux/test-hub-legibility.js
+      - name: "Briefing y tutorial de arena (test-arena-briefing-tutorial)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/ux/test-arena-briefing-tutorial.js
+      - name: "Preferencias de accesibilidad (test-accessibility-prefs)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Una corrida local de dos falló con ReferenceError championShortName en shop-ui.js (carga inconsistente de scripts); la otra pasó 32/32. Sin causa raíz: se promueve a bloqueante si CI la pasa de forma estable.
+        continue-on-error: true
+        run: node tools/ux/test-accessibility-prefs.js
+      - name: "Equipos claros en Cristales y Coliseo (test-sides)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 15
+        # Conocida/intermitente: Intermitente local: una corrida falló el muestreo del píxel de la barra aliada (brillo 0.19 en minion, Cristales 667x375) y la siguiente pasó. Se promueve a bloqueante si CI la pasa de forma estable.
+        continue-on-error: true
+        run: node tools/lanes/test-sides.js
+      - name: "Desborde de texto (test-text-overflow)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 15
+        # Conocida/intermitente: Intermitente según el equipo (reporte de auditoría); pasó en la corrida local. Se corre igual y se informa.
+        continue-on-error: true
+        run: node tools/ux/test-text-overflow.js
+      - name: "Panel táctico (test-tactical-panel)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base: page.click(#pause-btn) agota 30 s esperando navegaciones programadas (TimeoutError); el paso del workflow principal fallaría igual. Se corre igual y se informa.
+        continue-on-error: true
+        run: node tools/ux/test-tactical-panel.js
+      - name: "Reacción al golpe (t_hit_react)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base: CAM.*.hechicero_se_agacha_al_recibir_danio_y_vuelve (iphone 844x390 y escritorio 1440x810) fallan (VH 390/810, heroFrac 0.57/0.54).
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/regression/t_hit_react.js
+  identidad:
+    name: "Identidad de arenas, objetivos y regalo inicial"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - name: "Objetivos de arena (t_objectives)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/identity/t_objectives.js
+      - name: "Regalo inicial (t_starter_gift)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 15
+        run: node tools/items/t_starter_gift.js
+      - name: "Libro de la Horda en navegador (t_codex_book)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 15
+        run: node tools/items/t_codex_book.js
+      - name: "Identidad de arenas (t_identity)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 20
+        # Conocida/intermitente: Falla en la base: TUT.empieza_con_moverse y TUT.moverse_atacar_habilidad_en_orden (la prueba lee el orden de los avisos del tutorial).
+        continue-on-error: true
+        run: node tools/identity/t_identity.js
+  items-economia-a:
+    name: "Objetos, economía y tienda (parte A)"
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - name: "Rotación de la tienda (t_shop_rotation)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/collection/t_shop_rotation.js
+      - name: "Bendiciones (t_boons)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_boons.js
+      - name: "Únicos de build (t_build_uniques)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_build_uniques.js
+      - name: "Colisiones (t_collision)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_collision.js
+      - name: "Horda infinita (t_endless)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_endless.js
+      - name: "Botín en el suelo (t_ground_loot)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_ground_loot.js
+      - name: "Hechicero (t_hechicero)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_hechicero.js
+      - name: "Bonus de vida (t_hpbonus)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_hpbonus.js
+      - name: "Nigromante (t_nigromante)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_nigromante.js
+      - name: "Elementos del nigromante (t_nigro_elements)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_nigro_elements.js
+      - name: "Ritmo de partida (t_pacing)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_pacing.js
+      - name: "Explotaciones de rendimiento (t_perf_exploits)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_perf_exploits.js
+      - name: "Economía Q4 (t_q4_economia)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_q4_economia.js
+      - name: "Misiones (t_quests)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_quests.js
+      - name: "Reacciones (t_reactions)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_reactions.js
+      - name: "Roles (t_roles)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_roles.js
+      - name: "Historia (t_story)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/lib/with-site.js tools/items/t_story.js
+      - name: "Rompibles (t_breakables)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Intermitente local: una corrida falló BRK.bot_patea_cuando_la_horda_se_amontona {goal:true, armed:false} y la siguiente pasó 100%. Se promueve a bloqueante si CI la pasa de forma estable.
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_breakables.js
+  items-economia-b:
+    name: "Objetos, economía y tienda (pruebas que hoy fallan en la base)"
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - name: "Abismo (t_abismo)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base: TERRAIN.metadata_por_tipo_de_habilidad (table:14, perKind:false).
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_abismo.js
+      - name: "Campamento (t_camp)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base: DATOS.herrero_para_cada_guardian (12 guardianes sin herrero) y excepción "invisible #chron-card .cc-read".
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_camp.js
+      - name: "Códice (t_codex)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base: MENU.hub_accesos (lista de accesos del hub).
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_codex.js
+      - name: "Cromas (t_cromas)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base: REGISTRO.cada_guardian_sin_skin_tiene_croma y TIENDA.compra/noDosVeces/equipa.
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_cromas.js
+      - name: "Cristales (t_crystals)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base: CR.pantalla_previa_muestra_2_de_3.
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_crystals.js
+      - name: "Dificultad (t_difficulty)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 15
+        # Conocida/intermitente: Falla en la base (8 FAIL): CALIBRACION.*, SEMILLA.*, TRAZADO.* (reportado por la auditoría; reproducido).
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_difficulty.js
+      - name: "Evolución (t_evolution)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base: EVO.todos_los_campeones_dejan_su_firma.
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_evolution.js
+      - name: "Itemización (t_itemization)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base (reproducido con servidor python y sin el arnés): ICON.identidad_visual_distinta {n:269, unique:254}.
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_itemization.js
+      - name: "Objetos (t_items)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base: TEST.reinicio_unico_de_la_etapa_de_prueba y TEST.respaldo_del_guardado_anterior.
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_items.js
+      - name: "Golems del nigromante (t_nigro_golems)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base (reproducido con servidor python): NGOL.atlas_*_cargado_y_registrado y orden por profundidad.
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_nigro_golems.js
+      - name: "Resonancia (t_resonance)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base: TypeError "Cannot read properties of null (reading click)" en E() (t_resonance.js:70).
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_resonance.js
+      - name: "Sets (t_sets)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base: SKIN.color_en_los_eventos_de_red {shocks:9, shockTinted:false}.
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_sets.js
+      - name: "Sinergias (t_synergies)"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        # Conocida/intermitente: Falla en la base: TOOLTIP.nodo_dice_sinergia_con_valor_actual y resumen_de_sinergias_en_el_arbol (ahora +0%).
+        continue-on-error: true
+        run: node tools/lib/with-site.js tools/items/t_synergies.js
