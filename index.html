@@ -52,6 +52,7 @@
 <link rel="stylesheet" href="css/founders.css">
 <link rel="stylesheet" href="css/alpha-training.css">
 <link rel="stylesheet" href="css/controls.css">
+<link rel="stylesheet" href="css/accessibility.css">
 <link rel="stylesheet" href="css/hub-scroll.css">
 <link rel="stylesheet" href="css/lanes.css">
 <link rel="stylesheet" href="css/hud-horda.css">
@@ -235,11 +236,17 @@
       <div class="opt-sec">Controles</div>
       <div class="opt-row"><span class="opt-lbl">Modo zurdo<span class="opt-sub">Joystick a la derecha y botones a la izquierda</span></span><button class="opt-switch" data-pref="lefty" role="switch" aria-checked="false">No</button></div>
       <div class="opt-row"><span class="opt-lbl">Vibración<span class="opt-sub">Al recibir un golpe fuerte y con la Definitiva</span></span><button class="opt-switch" data-pref="vibrate" role="switch" aria-checked="true">Sí</button></div>
+      <div class="opt-row"><span class="opt-lbl">Ataque<span class="opt-sub">Mantener: apretás el botón. Alternar: un toque prende y otro apaga. Auto: ataca solo si hay un enemigo cerca</span></span><div class="opt-seg" data-pref="atkMode" role="group" aria-label="Modo de ataque"><button data-v="hold">Mantener</button><button data-v="toggle">Alternar</button><button data-v="auto">Auto</button></div></div>
+      <div class="opt-row"><span class="opt-lbl">Tamaño de los controles<span class="opt-sub">Joystick y botones: <b data-pref-out="ctlSize">100%</b></span></span><input type="range" id="opt-ctl-size" data-pref-range="ctlSize" min="90" max="150" step="10" aria-label="Tamaño de los controles táctiles"></div>
+      <div class="opt-row"><span class="opt-lbl">Opacidad de los controles<span class="opt-sub">Más baja: se ve más el juego detrás. <b data-pref-out="ctlOp">100%</b></span></span><input type="range" id="opt-ctl-op" data-pref-range="ctlOp" min="40" max="100" step="10" aria-label="Opacidad de los controles táctiles"></div>
+      <div class="ctl-preview" id="ctl-preview" aria-hidden="true"><span class="cp-cap">Vista previa</span><div class="cp-joy"><i></i></div><div class="cp-btns"><b class="cp-b3"></b><b class="cp-b2"></b><b class="cp-b1"></b><b class="cp-atk">⚔</b></div></div>
       <div class="opt-sec">Pantalla</div>
       <div class="opt-row"><span class="opt-lbl">Sacudida de pantalla</span><div class="opt-seg" data-pref="shake" role="group" aria-label="Sacudida de pantalla"><button data-v="normal">Normal</button><button data-v="reducida">Poca</button><button data-v="off">No</button></div></div>
       <div class="opt-row"><span class="opt-lbl">Reducir movimiento<span class="opt-sub">Sin sacudidas, cámara lenta ni pulsos</span></span><button class="opt-switch" data-pref="motion" role="switch" aria-checked="false">No</button></div>
       <div class="opt-row"><span class="opt-lbl">Tamaño del texto</span><div class="opt-seg" data-pref="textLg" role="group" aria-label="Tamaño del texto"><button data-v="0">Normal</button><button data-v="1">Grande</button></div></div>
       <div class="opt-row"><span class="opt-lbl">Avisos de alto contraste<span class="opt-sub">Zonas de peligro con borde y rayado, no solo color</span></span><button class="opt-switch" data-pref="contrast" role="switch" aria-checked="false">No</button></div>
+      <div class="opt-row"><span class="opt-lbl">Colores para daltonismo<span class="opt-sub">Cambia equipos, barras, avisos y peligros, y suma rayas y marcas. Rojo-verde: deuteranopia y protanopia. Azul-amarillo: tritanopia</span></span><div class="opt-seg" data-pref="cvd" role="group" aria-label="Colores para daltonismo"><button data-v="off">No</button><button data-v="rg">Rojo-verde</button><button data-v="by">Azul-amarillo</button></div></div>
+      <div class="cvd-demo" id="cvd-demo" aria-hidden="true"><span class="cd-ally">Aliado</span><span class="cd-foe">Enemigo</span><span class="cd-danger">Peligro</span><span class="cd-safe">Seguro</span><span class="cd-hp"><i></i></span></div>
       <div class="opt-row"><span class="opt-lbl">Carteles de los bots<span class="opt-sub">Textos flotantes de aliados controlados por la IA (IMPULSO, PACTO, AFILADA…). Apagado: partida más limpia</span></span><button class="opt-switch" data-pref="botCallouts" role="switch" aria-checked="false">No</button></div>
       <div class="opt-note">Teclado: WASD o flechas para moverte, Espacio para atacar, 1 2 3 habilidades, R Definitiva, Q curación, E acción, Esc pausa. También funciona con mando.</div>
       <div class="opt-note">Compañeros: si en tu equipo faltan jugadores, el juego completa los lugares con compañeros que controla él mismo. Siempre tienen prioridad los jugadores reales.</div>

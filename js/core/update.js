@@ -77,6 +77,7 @@ function update(dt){
     if(divinaWaveTimer<=0){ divinaWaveTimer = DIVINA_WAVE_INTERVAL; spawnDivinaWave(); }
   }
 
+  if(typeof basicAutoTick==="function") basicAutoTick(); // Opciones > Ataque (alternar / automático)
   updateControlledHero(dt);
   // B1 cooperativo: los héroes de los invitados usan exactamente el mismo código (ver net-game.js)
   if(netMatch && netMatch.role==="host") netHostUpdateRemotes(dt);

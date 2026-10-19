@@ -439,3 +439,16 @@ body.reduce-motion .shop-hero-art::after, body.reduce-motion .ui-tag.new, body.r
 .wp-foot .shop-btn{ min-height:44px; }
 .wp-banner{ display:flex; align-items:center; flex-wrap:wrap; gap:6px 10px; }
 @media (max-height:420px){ .wp-panel{ padding:6px 10px 8px; gap:4px; } .wp-title{ font-size:1.1rem; } .wp-sub{ font-size:0.72rem; } .wp-grid{ grid-template-columns:repeat(auto-fill, minmax(100px,1fr)); } .wp-anim{ width:44px; height:44px; } }
+
+/* Tienda: "Lo que podés comprar ya" / "Tu próxima meta" (js/ui/shop-ui.js shopNowRowHTML) */
+.shop-now{ margin:0 0 8px; padding:6px 10px 8px; border:2px solid var(--ui-line); background:rgba(10,6,4,0.5); }
+.shop-now .shop-row-head{ margin:0 0 6px; }
+.shop-now-strip{ display:flex; gap:8px; overflow-x:auto; padding-bottom:2px; }
+.shop-now-card{ flex:0 0 156px; display:flex; flex-direction:column; gap:3px; padding:6px 8px; border:2px solid #000; background:var(--ui-inset,#1a100a); }
+.shop-now-card .shop-bundle-name{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.shop-now-card .shop-btn{ margin-top:auto; }
+.shop-goal{ display:flex; flex-wrap:wrap; align-items:center; gap:4px 14px; }
+.shop-goal-main{ flex:1 1 220px; min-width:0; }
+.shop-goal-miss{ color:var(--ui-ink); }
+.shop-goal-bar{ flex:1 1 100%; height:8px; border:2px solid #000; background:var(--ui-inset,#1a100a); }
+.shop-goal-bar i{ display:block; height:100%; min-width:2px; background:var(--ember3,#ffca78); }

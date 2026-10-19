@@ -112,6 +112,43 @@ function _shopSeen(){ if(!save.shopSeen || typeof save.shopSeen!=="object") save
 function _shopTagNew(key){ return _shopSeen()[key] ? "" : '<span class="ui-tag new">NUEVO</span>'; }
 function _shopPriceHTML(price, base){ return `<span class="shop-price">${base && base > price ? `<s>${fmtGold(base)}</s> ` : ""}🪙 ${fmtGold(price)}</span>`; }
 function _shopRenewTxt(){ const m = shopMinutesToRenew(); return m >= 60 ? `${Math.floor(m/60)} h ${m%60} min` : `${m} min`; }
+/* ---------------- "Lo que podés comprar ya" / "Tu próxima meta" ----------------
+   Fila arriba de la vitrina. Solo reordena lo que ya se vende, a los precios de siempre (nada de ofertas nuevas):
+   con oro suficiente, hasta 4 cosas que te alcanzan (ofertas del día, guardianes, Básicos, skins, cromas); con poco
+   oro, el objeto útil más barato y cuánto oro falta. Los botones reutilizan los de la vitrina (mismos data-*). */
+function shopNowRowHTML(sc){
+  const gold = save.gold || 0;
+  const basicEntry = shopCatalog().find(e=>e.kind==="archetype");
+  const basicCommon = basicEntry ? shopPriceOf(basicEntry, "comun") : null;
+  const deals = (sc.deals||[]).filter(d=>!shopDealBought(d.id)).map(d=>{
+    const entry = shopCatalog().find(e=>e.key===d.key); if(!entry) return null;
+    const it = shopPreviewItem(entry, d.tier);
+    return {g:0, price:d.price, name:it.name, sub:`Oferta del día · ${itemTierLabel(it)}`, btn:`data-deal-buy="${d.id}" data-gold-price="${d.price}"`};
+  }).filter(Boolean);
+  const champs = CHAMPION_CATALOG.filter(c=>!(save.champions[c.id]||{}).unlocked && shopChampionPurchasable(c.id)).map(c=>({g:1, price:shopChampionPrice(c.id), name:CLASSES[c.id].name, sub:"Guardián nuevo", btn:`data-champ-buy="${c.id}"`}));
+  const skinIds = typeof SET_SKINS!=="undefined" ? Object.keys(SET_SKINS).filter(id=>SET_DB[id] && shopSetMissing(id).length) : [];
+  const skins = skinIds.map(id=>({g:3, price:shopSkinPrice(id), name:SET_SKINS[id].name || SET_DB[id].name, sub:"Skin · solo apariencia", btn:`data-skin-buy="${id}"`}));
+  const cromas = (typeof shopCromaProducts==="function" ? shopCromaProducts() : []).filter(p=>!p.owned).map(p=>({g:4, price:p.price, name:p.name, sub:"Croma · solo cosmético", btn:`data-croma-buy="${p.id}"`}));
+  const basics = basicCommon!=null && gold >= basicCommon ? [{g:2, price:basicCommon, name:"Equipo Básico Común", sub:"Desde acá se empieza a armar la build", go:"basics"}] : [];
+  const can = deals.concat(champs, basics, skins, cromas).filter(x=>x.price <= gold);
+  can.sort((a,b)=>(a.g-b.g) || (b.price-a.price));
+  if(can.length){
+    const card = x=>`<div class="shop-now-card"><div class="shop-bundle-name">${x.name}</div><div class="shop-item-sub">${x.sub}</div>
+      ${x.go ? `<button class="shop-btn" type="button" data-now-go="${x.go}">Ver desde 🪙 ${fmtGold(x.price)}</button>` : `<button class="shop-btn" type="button" ${x.btn}>🪙 ${fmtGold(x.price)}</button>`}</div>`;
+    return `<div class="shop-now" data-shop-now="can"><div class="shop-row-head"><span class="shop-row-title">LO QUE PODÉS COMPRAR YA</span><span class="shop-renew">con tus 🪙 ${fmtGold(gold)} de oro</span></div>
+      <div class="shop-now-strip ui-scroll-x">${can.slice(0,4).map(card).join("")}</div></div>`;
+  }
+  // sin oro para nada: la meta más cercana entre lo que da poder (Básico Común, ofertas del día, guardianes)
+  const goals = deals.concat(champs, basicCommon!=null ? [{g:2, price:basicCommon, name:"Equipo Básico Común", sub:"Lo más barato que da poder", go:"basics"}] : []);
+  if(!goals.length) return "";
+  goals.sort((a,b)=>a.price-b.price);
+  const t = goals[0], miss = Math.max(0, t.price - gold), pct = Math.max(0, Math.min(100, Math.round(gold*100/Math.max(1, t.price))));
+  return `<div class="shop-now goal" data-shop-now="goal"><div class="shop-row-head"><span class="shop-row-title">TU PRÓXIMA META</span><span class="shop-renew">se gana jugando las arenas</span></div>
+    <div class="shop-goal"><div class="shop-goal-main"><b>${t.name}</b> <span class="shop-item-sub">${t.sub} · 🪙 ${fmtGold(t.price)}</span></div>
+      <div class="shop-goal-miss">Te faltan <b>🪙 ${fmtGold(miss)}</b> de oro</div>
+      ${t.go ? '<button class="shop-btn sec" type="button" data-now-go="basics">Ver Básicos</button>' : ""}
+      <div class="shop-goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="Oro hacia tu próxima meta"><i style="width:${pct}%"></i></div></div></div>`;
+}
 function renderShopShowcase(panel){
   const sc = shopDailyShowcase(), f = sc.featured, seenNow = [];
   let hero = "";
@@ -186,7 +223,7 @@ function renderShopShowcase(panel){
       <div class="shop-deal-buy"><button class="shop-btn" data-champ-buy="${c.id}" ${save.gold < shopChampionPrice(c.id) ? "disabled" : ""}>🪙 ${fmtGold(shopChampionPrice(c.id))}</button></div>
     </div>`;
   }).join("");
-  panel.innerHTML = `<div class="shop-show-top">${hero}
+  panel.innerHTML = `${shopNowRowHTML(sc)}<div class="shop-show-top">${hero}
       <div class="shop-deals-box"><div class="shop-row-head"><span class="shop-row-title">OFERTAS DEL DÍA</span><span class="shop-renew" id="shop-renew" title="Las ofertas se renuevan a la medianoche">⟳ ${_shopRenewTxt()}</span></div>
       <div class="shop-deals-grid">${deals}</div></div></div>
     ${bundles ? `<div class="shop-row-head"><span class="shop-row-title">SKINS</span><span class="shop-renew">solo apariencia · no cambia estadísticas</span></div><div class="shop-strip ui-scroll-x">${bundles}</div>` : ""}
@@ -194,6 +231,7 @@ function renderShopShowcase(panel){
     ${champs ? `<div class="shop-row-head"><span class="shop-row-title">GUARDIANES</span><span class="shop-renew">${locked.length} por desbloquear</span></div><div class="shop-strip ui-scroll-x">${champs}</div>` : ""}
     ${founders.length ? `<div class="shop-row-head"><span class="shop-row-title">FUNDADORES · LOS REGENTES</span><span class="shop-renew">no se compran: se conceden</span></div><div class="shop-strip ui-scroll-x">${founders.map(c=>shopFounderCardHTML(c.id)).join("")}</div>` : ""}
     <div class="shop-fair">⚖ Todo el poder se consigue jugando, con el oro que ganás en las arenas. Las Brasas ✦ solo compran apariencia, nunca poder. Míticos y Únicos no se venden: se fabrican o se ganan peleando.</div>`;
+  panel.querySelectorAll("[data-now-go]").forEach(b=> b.addEventListener("click", ()=>{ shopTab = "objetos"; shopCat = "base"; renderShop(); const p = document.getElementById("shop-screen"); if(p) p.scrollTop = 0; }));
   const fb = panel.querySelector("#shop-feat-buy");
   if(fb) fb.addEventListener("click", ()=>{
     if(f.kind==="champ"){ shopConfirmChampion(f.id, f); return; }
