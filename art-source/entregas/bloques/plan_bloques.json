@@ -13,7 +13,9 @@
     "TECNICO_VERIFICADO",
     "APROBADO_DUENO",
     "INTEGRADO_CLAUDE",
-    "SEGUIMIENTO"
+    "SEGUIMIENTO",
+    "INTEGRADO_MAIN",
+    "ENTREGADO_PNG_RUNTIME_EXISTENTE"
   ],
   "bloque_activo": "B004",
   "siguiente_accion": "B004: normalizar exportación de Libertador guardado, conservando pendientes de orientación y proporciones.",
@@ -23,7 +25,7 @@
       "prioridad": "P0",
       "tipo": "campeon",
       "titulo": "Campeón soporte: un atlas para todos sus faltantes de cuerpo",
-      "estado": "TECNICO_VERIFICADO",
+      "estado": "EN_CORRECCION",
       "items": [
         "soporte.cuerpo.lanzar",
         "soporte.cuerpo.golpe",
@@ -58,6 +60,15 @@
             "Revisión humana de12poses nuevas y píxel nativo no certificado."
           ],
           "evidencia": "36siluetas; alfa0/255;24poses previas intactas; StyleGate sobre caminatas originales PASS"
+        },
+        {
+          "lote": "revision-frame11",
+          "estado": "RECHAZADO_NO_INTEGRAR",
+          "manifiesto": "art-source/entregas/bloques/B001_soporte/revision-frame11/ESTADO.md",
+          "pendientes": [
+            "Redibujo nativo cuadro 11; ambos intentos generados fallan ILUSTRACION",
+            "Revisión visual y runtime posterior"
+          ]
         }
       ],
       "referencias": [
@@ -77,7 +88,7 @@
         "Importador/StyleGate/scan con resultados reales; el StyleGate de caminatas no valida filas nuevas."
       ],
       "decisiones_pendientes": [],
-      "revision_visual": "PENDIENTE_DUENO",
+      "revision_visual": "FIX_NATIVE_CUADRO_11",
       "integracion": "A_CARGO_DE_CLAUDE",
       "entrega": "art-source/entregas/bloques/B001_soporte/entrega.json",
       "ultimo_resultado": {
@@ -291,6 +302,16 @@
             "266px señalados como halo.",
             "Ataque frontal cuadro13 gira de perfil.",
             "Cabeza nueva mayor que caminatas: ajustar proporciones."
+          ]
+        },
+        {
+          "lote": "B004_libertador",
+          "estado": "FIX_NATIVE_NO_INTEGRAR",
+          "manifiesto": "art-source/entregas/bloques/B004_libertador/entrega.json",
+          "pendientes": [
+            "Redibujar estilo nativo cuadros 8,9,10,11,20,21,23",
+            "Corregir orientación de cuadro 13 y proporciones de cabeza",
+            "Validación visual y animaciones en runtime"
           ]
         }
       ],
@@ -13902,7 +13923,7 @@
       "prioridad": "P1",
       "tipo": "E",
       "titulo": "Ícono UI 16×16 \"idolo\" (emoji 🗿) / Ícono UI 16×16 \"figura\" (emoji 🧍) / Ícono UI 16×16 \"antena\" (emoji 📡) / Ícono UI 16×16 \"cuerno\" (emoji 📯)",
-      "estado": "PENDIENTE",
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
       "items": [
         "E-PXI-idolo",
         "E-PXI-figura",
@@ -13935,7 +13956,12 @@
           "destino": "art-source/entregas/2026-10_mundo/ui/iconos/cuerno.png"
         }
       ],
-      "versiones_reutilizables": [],
+      "versiones_reutilizables": [
+        {
+          "manifiesto": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+          "estado": "EXACT_RUNTIME_EXPORT"
+        }
+      ],
       "referencias": [
         "assets/ui/skill-icons/torbellino.png",
         "docs/art-brief/plantillas/icono_16x16_ampliado_x16_PLANTILLA.png"
@@ -13950,15 +13976,15 @@
         "Usar tamaños, pivotes, cuadros y destinos de cada ítem; si falta un dato, bloquear solo este bloque."
       ],
       "decisiones_pendientes": [],
-      "revision_visual": "PENDIENTE",
-      "integracion": "A_CARGO_DE_CLAUDE"
+      "revision_visual": "EXPORTACION_EXACTA_DE_ARTE_EXISTENTE",
+      "integracion": "RUNTIME_EXISTENTE_SIN_MODIFICAR"
     },
     {
       "id": "B325",
       "prioridad": "P1",
       "tipo": "E",
       "titulo": "Ícono UI 16×16 \"caballo\" (emoji 🐎) / Ícono UI 16×16 \"huellas\" (emoji 👣) / Ícono UI 16×16 \"silencio\" (emoji 🔇) / Ícono UI 16×16 \"ticket\" (emoji 🎟)",
-      "estado": "PENDIENTE",
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
       "items": [
         "E-PXI-caballo",
         "E-PXI-huellas",
@@ -13991,7 +14017,12 @@
           "destino": "art-source/entregas/2026-10_mundo/ui/iconos/ticket.png"
         }
       ],
-      "versiones_reutilizables": [],
+      "versiones_reutilizables": [
+        {
+          "manifiesto": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+          "estado": "EXACT_RUNTIME_EXPORT"
+        }
+      ],
       "referencias": [
         "assets/ui/skill-icons/torbellino.png",
         "docs/art-brief/plantillas/icono_16x16_ampliado_x16_PLANTILLA.png"
@@ -14006,15 +14037,15 @@
         "Usar tamaños, pivotes, cuadros y destinos de cada ítem; si falta un dato, bloquear solo este bloque."
       ],
       "decisiones_pendientes": [],
-      "revision_visual": "PENDIENTE",
-      "integracion": "A_CARGO_DE_CLAUDE"
+      "revision_visual": "EXPORTACION_EXACTA_DE_ARTE_EXISTENTE",
+      "integracion": "RUNTIME_EXISTENTE_SIN_MODIFICAR"
     },
     {
       "id": "B326",
       "prioridad": "P1",
       "tipo": "E",
       "titulo": "Ícono UI 16×16 \"agujero\" (emoji 🕳)",
-      "estado": "PENDIENTE",
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
       "items": [
         "E-PXI-agujero"
       ],
@@ -14026,7 +14057,12 @@
           "destino": "art-source/entregas/2026-10_mundo/ui/iconos/agujero.png"
         }
       ],
-      "versiones_reutilizables": [],
+      "versiones_reutilizables": [
+        {
+          "manifiesto": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+          "estado": "EXACT_RUNTIME_EXPORT"
+        }
+      ],
       "referencias": [
         "assets/ui/skill-icons/torbellino.png",
         "docs/art-brief/plantillas/icono_16x16_ampliado_x16_PLANTILLA.png"
@@ -14041,8 +14077,8 @@
         "Usar tamaños, pivotes, cuadros y destinos de cada ítem; si falta un dato, bloquear solo este bloque."
       ],
       "decisiones_pendientes": [],
-      "revision_visual": "PENDIENTE",
-      "integracion": "A_CARGO_DE_CLAUDE"
+      "revision_visual": "EXPORTACION_EXACTA_DE_ARTE_EXISTENTE",
+      "integracion": "RUNTIME_EXISTENTE_SIN_MODIFICAR"
     },
     {
       "id": "B327",
@@ -23364,7 +23400,7 @@
       "prioridad": "P2",
       "tipo": "E",
       "titulo": "Ícono UI 16×16 \"enlace\" (emoji 🔗) / Ícono UI 16×16 \"cadena\" (emoji ⛓ 🕸) / Ícono UI 16×16 \"chispa\" (emoji 🌸 ✨) / Ícono UI 16×16 \"estrella\" (emoji ★)",
-      "estado": "PENDIENTE",
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
       "items": [
         "E-PXI-enlace",
         "E-PXI-cadena",
@@ -23397,7 +23433,12 @@
           "destino": "art-source/entregas/2026-10_mundo/ui/iconos/estrella.png"
         }
       ],
-      "versiones_reutilizables": [],
+      "versiones_reutilizables": [
+        {
+          "manifiesto": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+          "estado": "EXACT_RUNTIME_EXPORT"
+        }
+      ],
       "referencias": [
         "assets/ui/skill-icons/torbellino.png",
         "docs/art-brief/plantillas/icono_16x16_ampliado_x16_PLANTILLA.png"
@@ -23412,15 +23453,15 @@
         "Usar tamaños, pivotes, cuadros y destinos de cada ítem; si falta un dato, bloquear solo este bloque."
       ],
       "decisiones_pendientes": [],
-      "revision_visual": "PENDIENTE",
-      "integracion": "A_CARGO_DE_CLAUDE"
+      "revision_visual": "EXPORTACION_EXACTA_DE_ARTE_EXISTENTE",
+      "integracion": "RUNTIME_EXISTENTE_SIN_MODIFICAR"
     },
     {
       "id": "B555",
       "prioridad": "P2",
       "tipo": "E",
       "titulo": "Ícono UI 16×16 \"murcielago\" (emoji 🦇) / Ícono UI 16×16 \"orbe\" (emoji 🔮) / Ícono UI 16×16 \"carrito\" (emoji 🛒) / Ícono UI 16×16 \"pechera\" (emoji 🎽)",
-      "estado": "PENDIENTE",
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
       "items": [
         "E-PXI-murcielago",
         "E-PXI-orbe",
@@ -23453,7 +23494,12 @@
           "destino": "art-source/entregas/2026-10_mundo/ui/iconos/pechera.png"
         }
       ],
-      "versiones_reutilizables": [],
+      "versiones_reutilizables": [
+        {
+          "manifiesto": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+          "estado": "EXACT_RUNTIME_EXPORT"
+        }
+      ],
       "referencias": [
         "assets/ui/skill-icons/torbellino.png",
         "docs/art-brief/plantillas/icono_16x16_ampliado_x16_PLANTILLA.png"
@@ -23468,15 +23514,15 @@
         "Usar tamaños, pivotes, cuadros y destinos de cada ítem; si falta un dato, bloquear solo este bloque."
       ],
       "decisiones_pendientes": [],
-      "revision_visual": "PENDIENTE",
-      "integracion": "A_CARGO_DE_CLAUDE"
+      "revision_visual": "EXPORTACION_EXACTA_DE_ARTE_EXISTENTE",
+      "integracion": "RUNTIME_EXISTENTE_SIN_MODIFICAR"
     },
     {
       "id": "B556",
       "prioridad": "P2",
       "tipo": "E",
       "titulo": "Ícono UI 16×16 \"vapor\" (emoji ♨) / Ícono UI 16×16 \"intercambio\" (emoji 🤝)",
-      "estado": "PENDIENTE",
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
       "items": [
         "E-PXI-vapor",
         "E-PXI-intercambio"
@@ -23495,7 +23541,12 @@
           "destino": "art-source/entregas/2026-10_mundo/ui/iconos/intercambio.png"
         }
       ],
-      "versiones_reutilizables": [],
+      "versiones_reutilizables": [
+        {
+          "manifiesto": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+          "estado": "EXACT_RUNTIME_EXPORT"
+        }
+      ],
       "referencias": [
         "assets/ui/skill-icons/torbellino.png",
         "docs/art-brief/plantillas/icono_16x16_ampliado_x16_PLANTILLA.png"
@@ -23510,8 +23561,8 @@
         "Usar tamaños, pivotes, cuadros y destinos de cada ítem; si falta un dato, bloquear solo este bloque."
       ],
       "decisiones_pendientes": [],
-      "revision_visual": "PENDIENTE",
-      "integracion": "A_CARGO_DE_CLAUDE"
+      "revision_visual": "EXPORTACION_EXACTA_DE_ARTE_EXISTENTE",
+      "integracion": "RUNTIME_EXISTENTE_SIN_MODIFICAR"
     },
     {
       "id": "B557",
@@ -26319,7 +26370,7 @@
       "prioridad": "P2",
       "tipo": "skin",
       "titulo": "Brasa, Calderera de las Profundidades: skin original en PR #148",
-      "estado": "TECNICO_VERIFICADO",
+      "estado": "INTEGRADO_MAIN",
       "items": [
         "brasa.skin.nueva_1"
       ],
@@ -26336,10 +26387,10 @@
           "lote": "B635_brasa_abisal",
           "rama": "chatgpt/brasa-abyssal-skin-20261019",
           "pr": 148,
-          "estado": "TECNICO_VERIFICADO",
+          "estado": "INTEGRADO_MAIN",
           "manifiesto": "art-source/entregas/bloques/B635_brasa_abisal/entrega.json",
           "pendientes": [
-            "CI y publicación; revisión visual asistida documentada, sin atribuir firma humana"
+            "Publicación pendiente de verificar"
           ]
         }
       ],
@@ -26357,14 +26408,24 @@
       ],
       "decisiones_pendientes": [],
       "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño",
-      "integracion": "IMPLEMENTADA_EN_PR_148; CI_PENDIENTE"
+      "integracion": "INTEGRADO_MAIN",
+      "evidencia_integracion": {
+        "pr": 148,
+        "commit_main": "fa2b5befa9eb57847f4e13dfd6cce7d35b457d35",
+        "skin": "brasa_abisal",
+        "atlas": "assets/sprites/champions/brasa/skins/brasa_abisal/atlas.png",
+        "sha256": "1b8b89f68328f8fc29ecb4f2578da122e6b3c39761b0b432916b423157f47759",
+        "evidencia": "art-source/entregas/bloques/B635_brasa_abisal",
+        "publicacion": "PENDIENTE_VERIFICACION",
+        "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
+      }
     },
     {
       "id": "B636",
       "prioridad": "P2",
       "tipo": "skin",
       "titulo": "Skin nueva #1 (concepto a definir con el dueño): el campeón tiene 1 skins de diseño propio y el objetivo es 2",
-      "estado": "BLOQUEADO_DECISION",
+      "estado": "INTEGRADO_MAIN",
       "items": [
         "eslabon.skin.nueva_1"
       ],
@@ -26389,11 +26450,19 @@
         "No dar por aprobado arte con chequeos fallidos; separar revisión técnica, aprobación visual e integración.",
         "Usar tamaños, pivotes, cuadros y destinos de cada ítem; si falta un dato, bloquear solo este bloque."
       ],
-      "decisiones_pendientes": [
-        "Decisión o medida pendiente indicada por eslabon.skin.nueva_1"
-      ],
-      "revision_visual": "PENDIENTE",
-      "integracion": "A_CARGO_DE_CLAUDE"
+      "decisiones_pendientes": [],
+      "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño",
+      "integracion": "INTEGRADO_MAIN",
+      "evidencia_integracion": {
+        "pr": 150,
+        "commit_main": "a61b02d2e113ea91d03db096aedc52f201d2f0fc",
+        "skin": "eslabon_porcelana",
+        "atlas": "assets/sprites/champions/eslabon/skins/eslabon_porcelana/atlas.png",
+        "sha256": "cddf01a1782296cb0ff24fba5bf972e44bdc7e260e88c7c7be780a2ce13c585f",
+        "evidencia": "art-source/entregas/cosmetics-20261019/eslabon_porcelana",
+        "publicacion": "PENDIENTE_VERIFICACION",
+        "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
+      }
     },
     {
       "id": "B637",
@@ -26628,7 +26697,7 @@
       "prioridad": "P2",
       "tipo": "skin",
       "titulo": "Skin nueva #1 (concepto a definir con el dueño): el campeón tiene 1 skins de diseño propio y el objetivo es 2",
-      "estado": "BLOQUEADO_DECISION",
+      "estado": "INTEGRADO_MAIN",
       "items": [
         "morwen.skin.nueva_1"
       ],
@@ -26653,11 +26722,19 @@
         "No dar por aprobado arte con chequeos fallidos; separar revisión técnica, aprobación visual e integración.",
         "Usar tamaños, pivotes, cuadros y destinos de cada ítem; si falta un dato, bloquear solo este bloque."
       ],
-      "decisiones_pendientes": [
-        "Decisión o medida pendiente indicada por morwen.skin.nueva_1"
-      ],
-      "revision_visual": "PENDIENTE",
-      "integracion": "A_CARGO_DE_CLAUDE"
+      "decisiones_pendientes": [],
+      "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño",
+      "integracion": "INTEGRADO_MAIN",
+      "evidencia_integracion": {
+        "pr": 150,
+        "commit_main": "a61b02d2e113ea91d03db096aedc52f201d2f0fc",
+        "skin": "morwen_escarcha",
+        "atlas": "assets/sprites/champions/morwen/skins/morwen_escarcha/atlas.png",
+        "sha256": "547ca5efd4b3d725c5aa71cf6a2f3bf4e6dbec26a6f3a269e322ae8aef98a3e8",
+        "evidencia": "art-source/entregas/cosmetics-20261019/morwen_escarcha",
+        "publicacion": "PENDIENTE_VERIFICACION",
+        "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
+      }
     },
     {
       "id": "B644",

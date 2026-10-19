@@ -1,0 +1,33 @@
+name: Art production evidence
+on:
+  pull_request:
+    paths: ['tools/factory/**', 'tools/art/check-authored-density.js', 'docs/production/art-integrations.json', 'art-source/entregas/**', '.github/workflows/art-production-evidence.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m pip install numpy pillow scipy
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - run: python -m unittest tools/factory/test_import_authored_sheet.py tools/factory/test_production_guards.py
+      - run: python tools/factory/reconcile-art-production.py
+      - run: node tools/factory/export-runtime-icons.js
+      - run: node tools/art/check-pixel-icons.js
+      - run: node tools/art/emoji-lint.js --strict
+      - name: Empty authored sheets must fail
+        run: |
+          python -c "from PIL import Image; Image.new('RGBA',(448,1008)).save('/tmp/blank.png')"
+          if node tools/art/check-authored-density.js /tmp/blank.png /tmp/blank.json; then exit 1; fi
+          python -c "import json; d=json.load(open('/tmp/blank.json')); assert len(d['failedFrames'])==36; assert all('FRAME_VACIO' in r['issues'] for r in d['rows'])"

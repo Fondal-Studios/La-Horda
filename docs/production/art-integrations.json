@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "note": "Records integration into Git, not publication or a human art approval.",
+  "integrations": [
+    {"item": "brasa.skin.nueva_1", "block": "B635", "champion": "brasa", "skin": "brasa_abisal", "delivery": "art-source/entregas/bloques/B635_brasa_abisal", "checks": "runtime/brasa-checks.json", "pr": 148, "merge": "fa2b5befa9eb57847f4e13dfd6cce7d35b457d35", "atlasSha256": "1b8b89f68328f8fc29ecb4f2578da122e6b3c39761b0b432916b423157f47759"},
+    {"item": "eslabon.skin.nueva_1", "block": "B636", "champion": "eslabon", "skin": "eslabon_porcelana", "delivery": "art-source/entregas/cosmetics-20261019/eslabon_porcelana", "checks": "runtime/eslabon_porcelana-checks.json", "pr": 150, "merge": "a61b02d2e113ea91d03db096aedc52f201d2f0fc", "atlasSha256": "cddf01a1782296cb0ff24fba5bf972e44bdc7e260e88c7c7be780a2ce13c585f"},
+    {"item": "morwen.skin.nueva_1", "block": "B643", "champion": "morwen", "skin": "morwen_escarcha", "delivery": "art-source/entregas/cosmetics-20261019/morwen_escarcha", "checks": "runtime/morwen_escarcha-checks.json", "pr": 150, "merge": "a61b02d2e113ea91d03db096aedc52f201d2f0fc", "atlasSha256": "547ca5efd4b3d725c5aa71cf6a2f3bf4e6dbec26a6f3a269e322ae8aef98a3e8"}
+  ]
+}
