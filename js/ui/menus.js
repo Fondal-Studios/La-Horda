@@ -566,6 +566,8 @@ function competitiveOpen(mode){
   if(typeof netInRoom==="function" && netInRoom()){ showNetToast("Salí de tu sala actual antes de entrar al competitivo."); return; }
   competitivePendingMode = mode === "coliseum" ? "coliseum" : "crystal";
   if(!HordaOnboarding.ready(save)){ cwGateOpen(); return; }
+  // POSTGAME (js/systems/postgame.js): sin la campaña terminada, el modo SOLO se ofrece como Entrenamiento normalizado
+  if(typeof postgameUnlocked==="function" && !postgameUnlocked()){ postgameGateOpen(competitivePendingMode); return; }
   cwGo({mode:competitivePendingMode});
 }
 // acceso directo desde el hub (tarjeta propia, como la Horda Infinita)
@@ -574,8 +576,8 @@ function competitiveOpen(mode){
 // registro de modos (mismo formato que la Horda Infinita: js/data/endless.js)
 window.GAME_MODE_REGISTRY = window.GAME_MODE_REGISTRY || {};
 window.GAME_MODE_REGISTRY.crystalWars = {id:"crystalWars", name:"Convergencia — Guerra de Cristales", icon:"◆",
-  desc:"5 contra 5 con bots (2 contra 2 en línea): 3 carriles, selva, PvP y tu propia horda contra la base rival.", unlock:()=>true, open:openCrystalWars, coop:true};
-window.GAME_MODE_REGISTRY.coliseum = {id:"coliseum", name:"Coliseo", icon:"⚔", desc:"Torneo de duelos 2 contra 2: cobertura, anillo que se cierra y 3 puntos para ganar.", unlock:()=>true, open:openColiseum, coop:true};
+  desc:"5 contra 5 con bots (2 contra 2 en línea): 3 carriles, selva, PvP y tu propia horda contra la base rival.", unlock:()=>(typeof postgameUnlocked!=="function"||postgameUnlocked()), open:openCrystalWars, coop:true};
+window.GAME_MODE_REGISTRY.coliseum = {id:"coliseum", name:"Coliseo", icon:"⚔", desc:"Torneo de 8 luchadores: cuatro equipos de dos, duelos 2 contra 2 con anillo que se cierra; el primero a 3 puntos gana.", unlock:()=>(typeof postgameUnlocked!=="function"||postgameUnlocked()), open:openColiseum, coop:true};
 // volver al hub sin pasar por la portada (index.html?return=hub; el Coliseo ya no navega: ver cwGo)
 (function(){
   let q; try{ q = new URLSearchParams(location.search); }catch(e){ return; }
@@ -629,6 +631,20 @@ function cwGateOpen(){
   document.getElementById("cw-gate-train").textContent=noChamp?"Elegir mi guardián":"Hacer el entrenamiento";
   m.classList.remove("hidden"); document.getElementById("cw-gate-train").focus();
 }
+function postgameGateOpen(mode){
+  const m=document.getElementById("pg-gate"); if(!m){ cwGo({mode, training:true}); return; }
+  const col=mode==="coliseum";
+  m.dataset.mode=mode;
+  document.getElementById("pg-gate-title").textContent="🔒 "+(col?"COLISEO":"GUERRA DE CRISTALES")+" · postgame";
+  document.getElementById("pg-gate-text").innerHTML="<b>"+postgameLockText()+".</b> Este modo es contenido de DESPUÉS de la campaña: tu nivel, talentos, maestría y equipo cuentan (con tope) y hay recompensas diarias.<br>Mientras tanto podés entrenar: tu campeón normalizado contra bots, sin recompensas ni progresión, para probar kits.";
+  m.classList.remove("hidden"); document.getElementById("pg-gate-train").focus();
+}
+function postgameGateClose(){ const m=document.getElementById("pg-gate"); if(m) m.classList.add("hidden"); }
+(function(){
+  const m=document.getElementById("pg-gate"); if(!m) return;
+  m.querySelectorAll("[data-pg-gate-close]").forEach(b=>b.addEventListener("click", postgameGateClose));
+  document.getElementById("pg-gate-train").addEventListener("click", ()=>{ const mode=m.dataset.mode==="coliseum"?"coliseum":"crystal"; postgameGateClose(); cwGo({mode, training:true}); });
+})();
 function cwGateClose(){ const m=document.getElementById("cw-gate"); if(m) m.classList.add("hidden"); }
 (function(){
   const m=document.getElementById("cw-gate"); if(!m) return;
@@ -638,7 +654,9 @@ function cwGateClose(){ const m=document.getElementById("cw-gate"); if(m) m.clas
     if(typeof acct!=="undefined"&&(acct.applying||acct.pulling||acct.conflict)){ showNetToast("Esperá a que termine la sincronización de tu cuenta."); return; }
     save.tut=save.tut||{}; save.tut.trainingSkipped=1; persistNow();
     if(typeof AlphaServices!=="undefined") AlphaServices.emit("tutorial_skipped",{from:"crystal-wars"});
-    cwGateClose(); cwGo({mode:competitivePendingMode});
+    cwGateClose();
+    if(typeof postgameUnlocked==="function" && !postgameUnlocked()){ postgameGateOpen(competitivePendingMode); return; }   // saltó el entrenamiento: igual falta la campaña
+    cwGo({mode:competitivePendingMode});
   });
   document.addEventListener("keydown", e=>{ if(e.key==="Escape"&&!m.classList.contains("hidden")) cwGateClose(); });
 })();

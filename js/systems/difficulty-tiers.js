@@ -18,7 +18,7 @@
      objetos que caen con nivel (+itemLvl), más XP y más oro. La XP por baja viaja en runDifficulty.xp (spawnEnemy -> e.xp) y el
      oro por baja se multiplica por diffGoldMult() en killEnemy (combat.js); el bono de victoria (80) usa el mismo multiplicador.
    - Ajuste por arena: ARENA_MODS[arena].tierMods[tier] = {hp, dmg, bossDmg} (multiplicadores extra sobre la dificultad; hoy solo
-     la Gélida en Pesadilla, medido con tools/playtest/campaign.js).
+     en Pesadilla, arena por arena, medido con tools/playtest/campaign.js: docs/economy/PESADILLA_PAREJA.md).
    - Guardado: save.diffCleared = {pesadilla:{arena:true}, infierno:{…}} (Normal sigue siendo
      save.arenasCleared) y save.diffSelected (la elegida en la Sala). Guardados viejos: vacíos = todo en Normal.
    - Cooperativo: la elige el ANFITRIÓN. Viaja en la Sala ({k:"cos"}, campo d) y en el arranque

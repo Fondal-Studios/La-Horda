@@ -70,6 +70,7 @@ function renderHub(){
   const tsub = document.querySelector("#mainmenu-tienda-btn .hub-tile-sub");
   if(tsub) tsub.textContent = vale ? "Tenés una skin de regalo: elegila" : "Ofertas del día · skins";
   renderEndlessCards();
+  renderPostgameTiles();
   const q = document.getElementById("mainmenu-quests-btn");
   if(q) q.classList.toggle("hidden", typeof window.questsOpen!=="function");
   const grid = document.getElementById("hub-grid");
@@ -95,6 +96,35 @@ function firstRunToHub(){
   prepReturnTo = null;
   setState("mainmenu"); renderMainMenu();
   return true;
+}
+/* PRIMERA PARTIDA EN SOLITARIO, DIRECTA: con el entrenamiento hecho o saltado (save.tut.training / trainingSkipped) y sin ninguna arena
+   superada, JUGAR va derecho a la ficha de la arena (una sola pantalla) y de ahí a la partida: sin la Sala con pestañas ("Sala online /
+   Arena", "Cambiar campeón"). Pasa UNA vez (save.tut.soloIntro); desde la segunda partida JUGAR abre la Sala como siempre, y la Sala
+   sigue siendo el camino de las partidas con equipo (crear sala, unirse por código, Partida rápida: llaman a hubPlay(), no a esto). */
+function hubSoloDirectDue(){
+  try{
+    if(typeof tutorialDone!=="function" || !tutorialDone()) return false;
+    if(save.tut && save.tut.soloIntro) return false;
+    if(ARENA_ORDER.some(a=>(save.arenasCleared||{})[a])) return false;
+    if(typeof netInRoom==="function" && netInRoom()) return false;
+    if(typeof needsStarterChampion==="function" && (needsStarterChampion() || (typeof needsStarterSkin==="function" && needsStarterSkin()))) return false;
+    if(typeof runIntroShow!=="function" || typeof duoValid!=="function") return false;
+    return true;
+  }catch(e){ return false; }
+}
+function hubPlayClick(){
+  if(!hubSoloDirectDue()){ hubPlay(); return; }
+  if(!ensureOwnedSelection()) return;
+  if(!duoValid()){ hubPlay(); return; }
+  if(save.firstRun){ save.firstRun = null; }
+  save.tut = save.tut || {}; save.tut.soloIntro = 1; persist();
+  currentArena = hubNextArena();
+  if(save.justUnlockedArena===currentArena){ save.justUnlockedArena = null; persist(); }
+  updateMenuBrandSub();
+  lobbyAllies = pickLobbyAllies(selectedClass);
+  prepReturnTo = "mainmenu"; // al terminar la partida, "‹ Menú" de la Sala vuelve al hub, igual que con JUGAR de siempre
+  if(typeof playSfx==="function") playSfx("ready");
+  runIntroShow(currentArena, ()=>{ try{ startRun(1); }catch(err){ console.error("Error al arrancar la partida:", err); } }, {first:true});
 }
 function hubPlay(){
   if(typeof needsStarterChampion==="function" && (needsStarterChampion() || (typeof needsStarterSkin==="function" && needsStarterSkin()))){ openStarterSelect(()=>hubPlay()); return; }
@@ -150,6 +180,25 @@ function renderEndlessCards(){
   if(rk) rk.classList.toggle("hidden", !info || typeof window.lbOpen!=="function");
   const row = rk && rk.parentElement; if(row && row.classList.contains("hub-endless-row")) row.classList.toggle("hidden", !info);
 }
+/* ---------------- MODOS DE POSTGAME (Guerra de Cristales y Coliseo) ----------------
+   Se abren al terminar la campaña (js/systems/postgame.js, interruptor POSTGAME_GATE en js/data/postgame.js). Antes de eso la tarjeta
+   se ve bloqueada, dice la condición y al tocarla ofrece el Entrenamiento (campeón normalizado, sin recompensas). */
+function renderPostgameTiles(){
+  if(typeof postgameHubInfo!=="function") return;
+  try{ postgameSyncUnlock(); }catch(e){}
+  const info = postgameHubInfo();
+  const mk = (btnId, subId, open, modeKey)=>{
+    const b = document.getElementById(btnId), s = document.getElementById(subId); if(!b || !s) return;
+    b.classList.toggle("locked", !info.unlocked);
+    b.dataset.locked = info.unlocked ? "0" : "1";   // (sin aria-disabled: el toque sigue funcionando y explica la condición)
+    if(!info.unlocked){ s.textContent = "🔒 " + info.lockText.replace(/ \(.*$/, "") + " · Entrenamiento disponible"; b.title = info.lockText; return; }
+    const m = info[modeKey];
+    s.textContent = open + (m.played ? " · 🏆 " + m.trophies + (m.streak > 1 ? " · racha " + m.streak : "") : "");
+    b.title = m.played ? m.wins + " victorias de " + m.played + " · mejor racha " + m.best : "";
+  };
+  mk("hub-crystal-btn", "hub-crystal-sub", "5 contra 5 con bots · 3 carriles y selva", "cw");
+  mk("hub-coliseum-btn", "hub-coliseum-sub", "Torneo de 8: 4 equipos de 2 · duelos 2v2 · primero a 3", "col");
+}
 function openEndless(){
   const info = endlessInfo(); if(!info) return;
   if(!info.unlocked){ if(typeof showNetToast==="function") showNetToast("🔒 Horda Infinita: " + info.hint); return; }
@@ -159,7 +208,7 @@ document.getElementById("hub-endless-btn").addEventListener("click", openEndless
 document.getElementById("mode-endless-btn").addEventListener("click", openEndless);
 document.getElementById("mainmenu-jugar-btn").addEventListener("click", ()=> setTimeout(renderEndlessCards, 0));
 
-document.getElementById("hub-play-btn").addEventListener("click", hubPlay);
+document.getElementById("hub-play-btn").addEventListener("click", hubPlayClick);
 document.getElementById("mainmenu-guardianes-btn").addEventListener("click", ()=> openGuardians());
 // DESAFÍOS: el botón lleva [data-quests-open]; el sistema de desafíos (quests-ui.js) atiende ese toque
 // (delegado en document) y le pone el contador en .qs-badge. Acá no se engancha otro click.

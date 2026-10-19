@@ -14,23 +14,18 @@
    LEGACY=1 solo mide la legibilidad (para comparar contra un árbol anterior que no tiene tinte ni pixel-stroke).
    Uso: [ABILITY_BASE_URL=http://127.0.0.1:PUERTO/] [ONLY=id1,id2] [ARENAS=bosque,hielo] node tools/vfx/test-decal-legible.js
    Sale con código 1 si algo incumple. */
-const path = require('node:path'), net = require('node:net'), {spawn} = require('node:child_process');
-let chromium; try { ({chromium} = require('playwright')); } catch (e) { ({chromium} = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
-const ROOT = path.resolve(__dirname, '../..');
+const H = require('../lib/serve');
 const MIN_VISIBLE = +(process.env.MIN_VISIBLE || 0.8), FULL_MIN = +(process.env.FULL_MIN || 0.4), MAX_FILL = +(process.env.MAX_FILL || 0.35);
 const ARENAS = (process.env.ARENAS || 'bosque,hielo,infernal,laberinto,acuatica,minas').split(',');
-const freePort = () => new Promise(r => { const s = net.createServer(); s.listen(0, '127.0.0.1', () => { const p = s.address().port; s.close(() => r(p)); }); });
 (async () => {
-  let server = null, BASE = process.env.ABILITY_BASE_URL || process.env.BASE_URL;
-  if (!BASE) { const port = await freePort(); server = spawn('python3', ['-m', 'http.server', String(port), '--bind', '127.0.0.1'], {cwd: ROOT, stdio: 'ignore'}); BASE = `http://127.0.0.1:${port}/`; await new Promise(r => setTimeout(r, 900)); }
-  process.on('exit', () => server && server.kill());
-  const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium', args: ['--no-sandbox']});
+  const site = await H.startSite({envUrl: ['ABILITY_BASE_URL', 'BASE_URL']}), BASE = site.url + '/';
+  const browser = await H.launch();
   const page = await browser.newPage({viewport: {width: 844, height: 390}}), errors = [];
   page.on('pageerror', e => errors.push(e.message));
   let bad = 0;
   try {
-    await page.goto(BASE, {waitUntil: 'domcontentloaded', timeout: 120000});
-    await page.waitForFunction(leg => typeof startRun === 'function' && typeof KVB !== 'undefined' && typeof kvbFx === 'function' && (leg || typeof pxsRing === 'function'), !!process.env.LEGACY, {timeout: 120000});
+    await H.goto(page, BASE);
+    await H.waitFor(page, leg => typeof startRun === 'function' && typeof KVB !== 'undefined' && typeof kvbFx === 'function' && (leg || typeof pxsRing === 'function'), !!process.env.LEGACY);
     await page.waitForTimeout(2500);
     // Negative control: restore the faulty render order. The same strict
     // measurement must fail; a gate that only checks registration cannot pass.
@@ -159,7 +154,7 @@ const freePort = () => new Promise(r => { const s = net.createServer(); s.listen
     console.log('arena cache:', JSON.stringify(r2.cache)); if (!Object.values(r2.cache).every(Boolean)) bad++;
     }
     console.log(`errores de página: ${errors.length}`, errors.slice(0, 3)); if (errors.length) bad++;
-  } finally { await browser.close(); if (server) server.kill(); }
+  } finally { await browser.close(); await site.close(); }
   console.log(bad ? `FALLA: ${bad} incumplimientos` : 'OK');
   process.exitCode = bad ? 1 : 0;
 })().catch(e => { console.error(e); process.exitCode = 1; });

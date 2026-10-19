@@ -1,22 +1,19 @@
 // PUNTO DE CONTROL en el nivel 5 (js/systems/checkpoint.js): crear al pasar el 5, ofrecerlo tras perder, reanudar con el
 // estado esperado, limpiar al ganar, no ofrecerlo en sala/Horda Infinita/Divina, guardado viejo sin el campo, arenas.
-//   node tools/regression/t_checkpoint.js   (SE_BASE_URL, default http://127.0.0.1:8773; lo levanta si no hay nada)
+//   node tools/regression/t_checkpoint.js   (servidor propio en puerto libre; SE_BASE_URL para usar otro)
 //   SHOTS=docs/ux/checkpoint  -> guarda capturas de la pantalla de derrota con punto de control
-let chromium;
-try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
+const HARNESS = require('../lib/serve');   // (no se llama H: la prueba usa un H local)
 const path = require('path'), http = require('http'), fs = require('fs'), { spawn } = require('child_process');
-const BASE = process.env.SE_BASE_URL || 'http://127.0.0.1:8773';
+let BASE;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL ') + n + (x !== undefined ? '  ' + JSON.stringify(x) : '')); if (!ok) fails++; };
-function ping(url) { return new Promise(res => { const r = http.get(url, x => { x.resume(); res(x.statusCode < 500); }); r.on('error', () => res(false)); r.setTimeout(1500, () => { r.destroy(); res(false); }); }); }
 (async () => {
-  let srv = null;
-  if (!(await ping(BASE + '/index.html'))) { const u = new URL(BASE); srv = spawn('python3', ['-m', 'http.server', u.port, '--bind', u.hostname], { cwd: path.resolve(__dirname, '..', '..'), stdio: 'ignore' }); for (let i = 0; i < 50 && !(await ping(BASE + '/index.html')); i++) await sleep(100); }
-  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
+  const site = await HARNESS.startSite({ envUrl: ['SE_BASE_URL'] }); BASE = site.url;   // puerto libre propio; SE_BASE_URL para uno externo
+  const browser = await HARNESS.launch();
   const ctx = await browser.newContext({ viewport: { width: 844, height: 390 } });
   const page = await ctx.newPage();
   const errors = []; page.on('pageerror', e => errors.push(e.message));
-  const boot = async () => { await page.goto(`${BASE}/index.html?dev=1`, { waitUntil: 'load', timeout: 180000 }); await page.waitForFunction(() => typeof startRun === 'function' && typeof save !== 'undefined' && typeof checkpointAvailable === 'function', null, { timeout: 120000 }); await sleep(1200); };
+  const boot = async () => { await HARNESS.goto(page, `${BASE}/index.html?dev=1`, { waitUntil: 'load', timeout: 180000 }); await page.waitForFunction(() => typeof startRun === 'function' && typeof save !== 'undefined' && typeof checkpointAvailable === 'function', null, { timeout: 120000 }); await sleep(1200); };
   await boot();
   const shot = async name => { if (process.env.SHOTS) { fs.mkdirSync(process.env.SHOTS, { recursive: true }); await page.screenshot({ path: path.join(process.env.SHOTS, name) }); } };
 
@@ -200,5 +197,5 @@ function ping(url) { return new Promise(res => { const r = http.get(url, x => { 
   });
   check('reanudar en las ' + T.length + ' arenas: sin excepciones y en el nivel 5', T.every(x => x[1] === true && x[2] === 5 && x[3] === 'playing'), T.filter(x => !(x[1] === true && x[2] === 5 && x[3] === 'playing')));
   check('sin errores de página', errors.length === 0 && errs0 === 0, errors.slice(0, 3));
-  await browser.close(); if (srv) srv.kill(); console.log(fails ? 'FALLÓ ' + fails : 'OK'); process.exit(fails ? 1 : 0);
+  await browser.close(); await site.close(); console.log(fails ? 'FALLÓ ' + fails : 'OK'); process.exit(fails ? 1 : 0);
 })();

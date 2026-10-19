@@ -28,7 +28,10 @@ function campaignFrontier(){
   return null;
 }
 function isArenaUnlocked(key){
-  if(key==="convergencia" || key==="coliseo") return true;   // Guerra de Cristales y Coliseo: modos competitivos, no son parte de la campaña
+  // Guerra de Cristales y Coliseo: modos de POSTGAME, no son parte de la campaña. Esto sigue en `true` a propósito: lo consultan las salas
+  // ONLINE (que siguen abiertas y normalizadas, no se tocan). El acceso en SOLITARIO (hub, Entrenamiento y recompensas) lo decide
+  // postgameUnlocked() (js/systems/postgame.js; interruptor POSTGAME_GATE en js/data/postgame.js).
+  if(key==="convergencia" || key==="coliseo") return true;
   const i = ARENA_ORDER.indexOf(key);
   if(i < 0) return false;                                   // Divina, arenas en construcción o desconocidas
   if(typeof PLAYTEST_UNLOCK_ALL!=="undefined" && PLAYTEST_UNLOCK_ALL) return true; // modo prueba (ver save.js)

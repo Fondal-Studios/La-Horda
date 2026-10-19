@@ -10,12 +10,14 @@ function lanesLevelNeed(l){ return 60 + 22 * l; }    // experiencia para pasar d
 function lanesApplyLevel(h, lvl, full){
   const base = computePlayerStats(h.classKey, lvl), ratio = h.maxHp ? h.hp / h.maxHp : 1;
   const bot = h.isBot && !h.isDivineFoe;
-  h.maxHp = Math.round(base.hp * runStats.hpMult * (bot ? 1.15 : 1) * (1 + 0.10 * (h.itHp || 0)));
+  const pg = h._pg;   // postgame (js/systems/postgame.js): multiplicador de progreso ya recortado por LANES.PROGRESS_CAP (el jugador) o bono de bot
+  h.maxHp = Math.round(base.hp * runStats.hpMult * (bot ? 1.15 : 1) * (1 + 0.10 * (h.itHp || 0)) * (pg ? pg.hp : 1));
   h.hp = full ? h.maxHp : Math.max(1, Math.round(h.maxHp * ratio));
-  h.baseDmg = base.dmg * (bot ? 0.72 : 1); h.def = base.def;
-  if(h._spd0 == null) h._spd0 = h.baseSpeed; h.baseSpeed = h._spd0 * (1 + 0.07 * (h.itSpd || 0));
+  h.baseDmg = base.dmg * (bot ? 0.72 : 1) * (pg ? pg.dmg : 1); h.def = pg ? Math.max(0, base.def - pg.defSub) : base.def;
+  if(pg && h === player){ h.itemMaxShield = Math.round(h.maxHp * Math.min(base.shieldPct || 0, pg.shieldMax)); h.itemShield = full ? h.itemMaxShield : Math.min(h.itemShield || 0, h.itemMaxShield); }
+  if(h._spd0 == null) h._spd0 = h.baseSpeed; h.baseSpeed = h._spd0 * (pg ? pg.speed : 1) * (1 + 0.07 * (h.itSpd || 0));
   h.mlvl = lvl;
-  if(save.champions[h.classKey]) save.champions[h.classKey].level = lvl;   // el HUD de siempre muestra «Nv. X»
+  if(save.champions[h.classKey] && !(pg && h === player)) save.champions[h.classKey].level = lvl;   // el HUD de siempre muestra «Nv. X» (con postgame el nivel del guardado temporal abre talentos/maestría y no se toca)
 }
 // Reparte experiencia entre los héroes vivos del equipo que estén cerca de (x, y).
 function lanesGrantXP(team, x, y, amount){
@@ -88,7 +90,7 @@ function lanesHeroTick(dt){
         if(kh) lanesAddGold(kh, LANES.GOLD_HERO_KILL);
         for(const a of heroes) if(a.team === kt && a !== kh && a.alive && Math.hypot(a.x - h.x, a.y - h.y) < LANES.XP_SHARE_R) lanesAddGold(a, LANES.GOLD_ASSIST);
         lanesGrantXP(kt, h.x, h.y, LANES.XP_HERO + 12 * (h.mlvl || 1));
-        if(kh && kh.stats) kh.stats.kills = kh.stats.kills || 0;
+        if(kh){ kh.pgKills = (kh.pgKills || 0) + 1; if(kh.stats) kh.stats.kills = kh.stats.kills || 0; }   // bajas de HÉROES (las usa la recompensa de postgame)
         lanesFeed(lanesTeamName(kt) + " derribó a " + heroLabel(h), kt);
       }
       continue;

@@ -5,17 +5,16 @@
 // del botón o los 4 botones no muestran imágenes distintas. Incluye el kit del Coloso de Ilkan.
 // GLYPH_FAST=1 omite la parte del HUD (la lenta: arranca una partida por campeón).
 const assert=require('node:assert/strict'),{spawn}=require('node:child_process'),path=require('node:path');
-let chromium;try{({chromium}=require('playwright'));}catch(e){({chromium}=require('/opt/node22/lib/node_modules/playwright'));}
-const ROOT=path.resolve(__dirname,'../..'),PORT=+(process.env.GLYPH_PORT||8845);
-const server=spawn('python3',['-m','http.server',String(PORT),'--bind','127.0.0.1'],{cwd:ROOT,stdio:'ignore'});
+const H=require('../lib/serve');
+let site=null;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 (async()=>{
- await sleep(500);
- const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||chromium.executablePath(),args:['--no-sandbox']});
+ site=await H.startSite({envUrl:['SE_BASE_URL']});
+ const browser=await H.launch();
  const problems=[];
  try{
   const page=await browser.newPage({viewport:{width:844,height:390}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(`http://127.0.0.1:${PORT}/`,{waitUntil:'domcontentloaded'});
+  await H.goto(page,site.url+'/');
   await page.waitForFunction(()=>typeof startRun==='function'&&typeof skillPixelGlyphKey==='function'&&typeof PIX_MOTIFS_V2==='object',null,{timeout:120000});
   // 1) datos: kits, motivos y parejas
   const data=await page.evaluate(()=>{
@@ -80,7 +79,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   for(const r of hud)for(const i of r.issues)problems.push(`HUD ${r.champ}: ${i}`);
   console.log(`HUD 844x390: ${hud.length} campeones revisados`);
   assert.deepEqual(errors,[]);
- }finally{await browser.close();server.kill();}
+ }finally{await browser.close();await site.close();}
  if(problems.length){console.log('FAIL\n - '+problems.join('\n - '));process.exitCode=1;}
  else console.log('PASS glifos: cada habilidad con glifo propio, sin repetidos en el kit ni genéricos, rótulos dentro del botón');
-})().catch(e=>{console.error(e);server.kill();process.exitCode=1;});
+})().catch(e=>{console.error(e);if(site)site.close();process.exitCode=1;});

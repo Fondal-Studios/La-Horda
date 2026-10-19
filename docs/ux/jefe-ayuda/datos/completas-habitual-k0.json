@@ -1,0 +1,318 @@
+{
+  "method": "4 arenas x 3 scripted experience profiles x 3 seeds; expected level; no gear; 900s cap",
+  "results": [
+    {
+      "arena": "laberinto",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 418,
+      "wave": 10,
+      "kills": 960,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "minotauro",
+        "hp": -753,
+        "max": 22798
+      },
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 1732",
+        "kind:rock 1270",
+        "medusa(proj) 717"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 451,
+      "wave": 10,
+      "kills": 977,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "minotauro",
+        "hp": -356,
+        "max": 22798
+      },
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 1468",
+        "kind:rock 622",
+        "golem_piedra 309"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 433,
+      "wave": 10,
+      "kills": 967,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "minotauro",
+        "hp": -175,
+        "max": 22798
+      },
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 1568",
+        "kind:rock 965",
+        "fn:updateEnemyProjectileStyle<update 789"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 317,
+      "wave": 9,
+      "kills": 905,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": "golem L9",
+      "topDamage": [
+        "demonio_mago(proj) 897",
+        "esqueleto_h 606",
+        "demonio_menor 410"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 34,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 419,
+      "wave": 10,
+      "kills": 1016,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "demonio_mayor",
+        "hp": -640,
+        "max": 22649
+      },
+      "killer": null,
+      "topDamage": [
+        "demonio_mago(proj) 1265",
+        "fn:updateHazardZones<updateArenaHazards 954",
+        "golem 595"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 372,
+      "wave": 10,
+      "kills": 991,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": "demonio_mago(proj) L10",
+      "topDamage": [
+        "golem 1752",
+        "fn:updateHazardZones<updateArenaHazards 1026",
+        "demonio_mago(proj) 976"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "fortaleza",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 1,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 585,
+      "wave": 10,
+      "kills": 666,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "caballero",
+        "hp": -24,
+        "max": 8259
+      },
+      "killer": null,
+      "topDamage": [
+        "verdugo 274",
+        "automata 246",
+        "arana(proj) 190"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "fortaleza",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 1,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 244,
+      "wave": 7,
+      "kills": 388,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": "verdugo L7",
+      "topDamage": [
+        "verdugo 167",
+        "carcelero 119",
+        "arana(proj) 102"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "fortaleza",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 1,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 557,
+      "wave": 10,
+      "kills": 661,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "caballero",
+        "hp": -3,
+        "max": 8259
+      },
+      "killer": null,
+      "topDamage": [
+        "verdugo 334",
+        "arana(proj) 236",
+        "caballero 204"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "ciudad",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 1,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 523,
+      "wave": 10,
+      "kills": 469,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "cm_presentador",
+        "hp": -12,
+        "max": 10826
+      },
+      "killer": null,
+      "topDamage": [
+        "cm_saqueador 602",
+        "fn:bossHitHero<http://127.0.0.1:8841/js/arenas/ciudad/cm-bosses.js:42:9 385",
+        "fn:bossHitHero<cmShotsUpdate 279"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "ciudad",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 1,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 555,
+      "wave": 10,
+      "kills": 497,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "cm_presentador",
+        "hp": -43,
+        "max": 10623
+      },
+      "killer": null,
+      "topDamage": [
+        "cm_saqueador 628",
+        "fn:bossHitHero<http://127.0.0.1:8841/js/arenas/ciudad/cm-bosses.js:42:9 306",
+        "fn:bossHitHero<cmShotsUpdate 104"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "ciudad",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 1,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 485,
+      "wave": 10,
+      "kills": 455,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "cm_presentador",
+        "hp": -32,
+        "max": 10826
+      },
+      "killer": null,
+      "topDamage": [
+        "cm_saqueador 478",
+        "fn:bossHitHero<cmShotsUpdate 211",
+        "cm_verdugo 157"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    }
+  ],
+  "errors": []
+}
