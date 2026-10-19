@@ -20,6 +20,30 @@ async function until(url){for(let i=0;i<50;i++){try{if((await fetch(url)).ok)ret
  await host.waitForFunction(()=>!document.querySelector('#start').disabled);await host.screenshot({path:'/tmp/cw-lobby.png'});await host.locator('#start').click();
  for(const p of pages)await p.locator('#cw-game').waitFor({state:'visible'});
  await pages[1].waitForFunction(()=>window.__cwSnapshot?.state.time>1);const first=await pages[1].evaluate(()=>window.__cwSnapshot);assert.equal(first.state.heroes[1].role,'mago');assert.equal(first.state.heroes[2].team,1);assert(first.state.heroes.every(h=>!h.bot));
+ // Observe actual legacy competitive draws after entering the match, not menu previews.
+ await pages[3].evaluate(()=>{
+  window.__soporteCWDraws={};const original=CanvasRenderingContext2D.prototype.drawImage;
+  CanvasRenderingContext2D.prototype.drawImage=function(img,...args){
+   if(this.canvas.id==='battle'&&typeof img?.src==='string'&&img.src.includes('/soporte/')){
+    const rect=args.slice(0,4),mirror=this.getTransform().a<0,key=img.src+'|'+rect.join(',')+'|'+mirror;
+    if(Object.keys(window.__soporteCWDraws).length<48)window.__soporteCWDraws[key]={src:img.currentSrc||img.src,rect,mirror,dimensions:[img.naturalWidth,img.naturalHeight]};
+   }
+   return original.call(this,img,...args);
+  };
+ });
+ await pages[3].waitForFunction(()=>Object.values(window.__soporteCWDraws).some(r=>r.src===CHAMP_PACK.soporte.atlas.src));
+ for(const [direction,key] of [['up','w'],['right','d'],['down','s'],['left','a']]){
+  await pages[3].keyboard.down(key);
+  await pages[3].waitForFunction(direction=>{
+   const meta=CW_ATLAS.soporte,clip=meta.animations['walk_'+direction],frames=clip.frames.slice(1).map(i=>meta.frames[i]);
+   return Object.values(window.__soporteCWDraws).some(r=>r.src===CHAMP_PACK.soporte.atlas.src&&r.mirror===!!clip.flip&&frames.some(f=>r.rect.every((n,i)=>n===[f.x,f.y,f.w,f.h][i])));
+  },direction);
+  await pages[3].keyboard.up(key);
+ }
+ const actualArt=await pages[3].evaluate(()=>({expected:CHAMP_PACK.soporte.atlas.src,meta:CW_ATLAS.soporte,draws:Object.values(window.__soporteCWDraws)}));
+ assert(actualArt.draws.length>=4,'authored walking frames observed in all four directions');
+ assert(actualArt.draws.every(r=>r.src===actualArt.expected&&r.dimensions[0]===actualArt.meta.imageSize[0]&&r.dimensions[1]===actualArt.meta.imageSize[1]),'competitive and main renderer share actual atlas and dimensions');
+ console.log('PASS Soporte competitive atlas: actual four-direction walking, left mirror, main/competitive source and dimensions');
  // Both fields render together, and focusing the rival must not stop guest controls.
  await pages[1].waitForFunction(()=>Object.keys(window.__cwLabels).length===2);
  const oldRivalSize=await pages[1].evaluate(()=>window.__cwArenaSizes['#ffb86a']);
