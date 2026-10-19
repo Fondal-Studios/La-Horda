@@ -89,3 +89,10 @@ body[data-mode] #pause-screen #resume-btn{ box-shadow:var(--ui-bevel), 0 0 0 2px
 .col-team[data-side="enemy"] .ln-side{ margin-right:3px; }
 /* lista de compañeros (campaña): en Cristales/Coliseo la vida del aliado es verde */
 body.lanes-on .ally-hp-fill:not(.shield-seg){ background:linear-gradient(90deg,var(--ally-dark),var(--ally)); }
+/* Leyenda del minimapa (colores = LNA_MINI en lanes-art-draw.js): botón ? de 44 px y panel de 14 px+ */
+.lanes-hud .ln-rival{ pointer-events:none; }
+.ln-legend-btn{ pointer-events:auto; position:absolute; top:0; left:0; width:44px; height:44px; padding:0; font:inherit; font-size:18px; font-weight:700; color:var(--hud-ink); background:transparent; border:0; cursor:pointer; text-shadow:2px 2px 0 #000; }
+.ln-legend{ pointer-events:auto; position:absolute; left:0; bottom:100%; margin-bottom:4px; width:min(300px,44vw); display:grid; grid-template-columns:1fr 1fr; gap:2px 8px; padding:6px 8px; font-size:14px; line-height:1.2; color:var(--hud-ink); background:var(--hud-panel-bg); border:1px solid var(--hud-panel-line); border-radius:var(--hud-panel-r); }
+.ln-legend.hidden{ display:none; }
+.ln-legend span{ display:flex; align-items:center; gap:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.ln-legend i{ flex:0 0 12px; width:12px; height:12px; border:1px solid #000; }

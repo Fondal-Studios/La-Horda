@@ -32,47 +32,20 @@ function lanesDrawWorld(now){
   const W = LANES.W, H = LANES.H;
   ctx.save();
   ctx.fillStyle = "#0a0e0c"; ctx.fillRect(-120, -120, W + 240, H + 240);
-  // selva: suelo con tinte verde oscuro
-  ctx.fillStyle = floorPattern || "#202937"; ctx.fillRect(0, 0, W, H);
-  ctx.fillStyle = "rgba(14,40,24,.50)"; ctx.fillRect(0, 0, W, H);
-  // río en diagonal (de la esquina de arriba a la izquierda a la de abajo a la derecha)
-  const rv = ctx.createLinearGradient(0, 0, W, H);
-  ctx.save(); ctx.lineCap = "butt";
-  ctx.beginPath(); ctx.moveTo(-100, -100); ctx.lineTo(W + 100, H + 100); ctx.lineWidth = 460; ctx.strokeStyle = "rgba(34,92,150,.55)"; ctx.stroke();
-  ctx.lineWidth = 400; ctx.strokeStyle = "rgba(70,140,205,.35)"; ctx.stroke();
-  ctx.setLineDash([60, 90]); ctx.lineDashOffset = -(now * 40) % 150; ctx.lineWidth = 6; ctx.strokeStyle = "rgba(200,235,255,.25)";
-  for(const off of [-110, 0, 110]){ ctx.beginPath(); ctx.moveTo(-100 + off * 0.6, -100 - off * 0.8); ctx.lineTo(W + 100 + off * 0.6, H + 100 - off * 0.8); ctx.stroke(); }
-  ctx.restore();
-  // carriles de piedra
-  for(let l = 0; l < 3; l++){
-    const pts = LANES_PATHS[l].pts;
-    lanesStrokePath(pts, 300, "rgba(24,28,36,.80)");
-    lanesStrokePath(pts, 262, "rgba(88,96,112,.62)");
-    lanesStrokePath(pts, 236, "rgba(112,120,136,.30)");
-    ctx.save(); ctx.setLineDash([26, 30]); lanesStrokePath(pts, 4, "rgba(255,255,255,.14)"); ctx.restore();
-  }
-  // bases: zona de curación y marcas de cada equipo
-  for(let t = 0; t < 2; t++){
-    const c = laneCrystalPos(t), col = lanesTeamColor(t);
-    if(!inView(c.x, c.y, 620)) continue;
-    ctx.fillStyle = col + "18"; ctx.beginPath(); ctx.arc(c.x, c.y, 300, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = col + "77"; ctx.lineWidth = 5; ctx.setLineDash([14, 12]); ctx.beginPath(); ctx.arc(c.x, c.y, 300, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
-  }
-  // campamentos y fosos épicos
+  // suelo horneado por trozos (lanes-art-*.js): zonas con identidad, carriles, río, bases. Por cuadro solo se blitean los visibles.
+  lanesArtDrawGround(now);
+  // anillo de los campamentos vivos (dinámico: indica si hay criaturas) y nombre de los objetivos épicos
   for(const cd of LANES_CAMPS){
     if(!inView(cd.x, cd.y, 200)) continue;
     const camp = LN.camps && LN.camps[cd.id], alive = camp ? camp.mons.some(m=>m.alive) : false;
-    ctx.fillStyle = "rgba(70,48,28,.55)"; ctx.beginPath(); ctx.ellipse(cd.x, cd.y + 4, 92, 60, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = alive ? "rgba(230,190,110,.55)" : "rgba(160,140,110,.25)"; ctx.lineWidth = 3; ctx.setLineDash([8, 8]); ctx.beginPath(); ctx.ellipse(cd.x, cd.y + 4, 92, 60, 0, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
+    if(!alive) continue;
+    ctx.strokeStyle = "rgba(255,214,120,.7)"; ctx.lineWidth = 4; ctx.setLineDash([10, 10]); ctx.beginPath(); ctx.ellipse(cd.x, cd.y + 4, 100, 66, 0, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
   }
   for(const ed of LANES_EPICS){
     if(!inView(ed.x, ed.y, 300)) continue;
-    ctx.fillStyle = "rgba(40,24,60,.60)"; ctx.beginPath(); ctx.arc(ed.x, ed.y, 150, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = "rgba(210,150,255,.55)"; ctx.lineWidth = 5; ctx.beginPath(); ctx.arc(ed.x, ed.y, 150, 0, Math.PI * 2); ctx.stroke();
-    ctx.font = pxFont(14); ctx.textAlign = "center"; ctx.fillStyle = "rgba(235,215,255,.8)"; ctx.fillText(ed.name.toUpperCase(), ed.x, ed.y + 190);
+    ctx.font = pxFont(14); ctx.textAlign = "center"; ctx.fillStyle = "#101018"; ctx.fillText(ed.name.toUpperCase(), ed.x + 2, ed.y + 192); ctx.fillStyle = "rgba(240,225,255,.92)"; ctx.fillText(ed.name.toUpperCase(), ed.x, ed.y + 190);
   }
-  const vg = ctx.createRadialGradient(W / 2, H / 2, H * 0.4, W / 2, H / 2, W * 0.62); vg.addColorStop(0, "rgba(0,0,0,0)"); vg.addColorStop(1, "rgba(0,0,0,.40)");
-  ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
+  if(typeof aidDrawLights === "function") aidDrawLights(now);
   ctx.lineWidth = 12; ctx.strokeStyle = "#2a3448"; ctx.strokeRect(0, 0, W, H);
   ctx.restore();
 }
@@ -82,6 +55,7 @@ function lanesDrawTower(s, now){
   if(BATTLEFIELD_IMAGES[key].naturalWidth){
     ctx.save();if(s.hitFlash>0){ctx.shadowColor='#fff';ctx.shadowBlur=20;}
     battlefieldDrawProp({battlefield:key,x:s.x,y:s.y+12,h:162,w:96});ctx.restore();
+    if(typeof glowSprite==='function'){ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=.34+.1*Math.sin(now*3+s.x);ctx.drawImage(glowSprite(s.team===0?'120,190,255':'255,170,80'),s.x-80,s.y-150,160,110);ctx.restore();}
     if(s.ward>0){ctx.save();ctx.strokeStyle='#bceaff';ctx.lineWidth=4;ctx.beginPath();ctx.ellipse(s.x,s.y-45,56,92,0,0,Math.PI*2);ctx.stroke();ctx.restore();}return;
   }
   const col = lanesTeamColor(s.team), f = Math.max(0, s.hp / s.maxHp), x = s.x, y = s.y;
@@ -107,7 +81,8 @@ function lanesDrawTower(s, now){
 function lanesDrawCrystal(s){
   const col = lanesTeamColor(s.team), f = Math.max(0, s.hp / s.maxHp), pulse = 1 + Math.sin(performance.now() / 330) * 0.035;
   ctx.save(); ctx.translate(s.x, s.y); ctx.scale(pulse, pulse);
-  ctx.fillStyle = "#17222f"; ctx.beginPath(); ctx.ellipse(0, 12, 74, 25, 0, 0, Math.PI * 2); ctx.fill();
+  // peana escalonada (píxel, sin antialias) con el color del equipo
+  ctx.fillStyle = "#0e141c"; ctx.fillRect(-84, 4, 168, 16); ctx.fillStyle = "#1c2a3c"; ctx.fillRect(-72, -2, 144, 16); ctx.fillStyle = col; ctx.fillRect(-72, -2, 144, 3); ctx.fillStyle = "#2c3e56"; ctx.fillRect(-56, -8, 112, 10); ctx.fillStyle = col; ctx.fillRect(-56, -8, 112, 2);
   ctx.shadowColor = col; ctx.shadowBlur = s.hitFlash > 0 ? 44 : 22;
   const img = lanesCrystalImg(s.team), w = 33 * 2.7, h = 75 * 2.7;
   if(img && (img.width || img.naturalWidth)) ctx.drawImage(img, -w / 2, -h + 14, w, h);
@@ -153,11 +128,12 @@ function lanesDrawTop(){
     if(e.epicId != null && e.maxHp) sidesBar(ctx, rel, e.x - 60, e.y - 116, 120, 10, Math.max(0, e.hp / e.maxHp));
     sidesRing(ctx, rel, e.x, e.y + 6, e.radius * 0.8, e.radius * 0.32, {lw:2, alpha:0.7}); }
 }
-Object.assign(ARENA_DEFS.convergencia, {drawWorld:lanesDrawWorld, drawTop:lanesDrawTop});
+Object.assign(ARENA_DEFS.convergencia, {drawWorld:lanesDrawWorld, drawTop:lanesDrawTop, drawTall:(it, now)=>{ if(it.lnaTall) lanesArtDrawTall(it); }});
 
 const battlefieldStructures=new WeakMap();
 ARENA_DEFS.convergencia.pushTall=function(){
  if(!LN)return;
+ if(typeof lanesArtPushTall==='function')lanesArtPushTall();
  for(const T of LN.team)for(const s of T.S){
   if(!s.alive||!inView(s.x,s.y,300))continue;
   let p=battlefieldStructures.get(s);if(!p){p={bfStructure:s};battlefieldStructures.set(s,p);}

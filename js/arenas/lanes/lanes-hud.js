@@ -6,6 +6,13 @@
    Todo con letra de 14 px o más y botones de 48 px o más.
    ============================================================ */
 let _lnHud = null;
+// Leyenda del minimapa: mismos colores que LNA_MINI (lanes-art-draw.js)
+function lanesLegendHtml(){
+  const Z = (typeof LNA_MINI !== "undefined") ? LNA_MINI : {zone:["#3c7a40", "#8a3a2c", "#2f7f78", "#5e4b8a"], water:"#3cc4be", plazaB:"#4a80b4", plazaR:"#c24a30", center:"#a070ff", bridge:"#aeb4be", laneM:"#d2c08e"};
+  const row = (c, t)=>'<span><i style="background:' + c + '"></i>' + t + '</span>';
+  return row(Z.plazaB, "Base Zafiro") + row(Z.plazaR, "Base Ámbar") + row(Z.zone[0], "Bosque Ancestral") + row(Z.zone[1], "Jungla Volcánica") + row(Z.zone[2], "Pantano Cristalino") + row(Z.zone[3], "Necrópolis") +
+    row(Z.water, "Agua poco profunda") + row(Z.center, "La Convergencia") + row(Z.bridge, "Puente") + row(Z.laneM, "Carril / sendero") + row("#e8c46a", "Campamento") + row("#d89bff", "Objetivo épico") + row("#70c9ff", "Torres y cristal") ;
+}
 function lanesHudBuild(){
   if(_lnHud) return _lnHud;
   const root = document.body; // fuera de #hud (z-index 10) para quedar sobre los controles táctiles
@@ -22,7 +29,7 @@ function lanesHudBuild(){
     '<button type="button" class="ln-chip" aria-expanded="false"><span class="ln-shards">◆ 0</span><span class="ln-phase">Suministros</span></button>' +
     '<button type="button" class="ln-recall" aria-label="Volver a la base (B)"><b>B</b><span>VOLVER</span></button>' +
     '<div class="ln-shop hidden"></div>' +
-    '<div class="ln-rival"><canvas width="240" height="180"></canvas><div class="ln-horde"></div></div>';
+    '<div class="ln-rival"><canvas width="240" height="180"></canvas><div class="ln-horde"></div><button type="button" class="ln-legend-btn" aria-expanded="false" aria-label="Leyenda del mapa">?</button><div class="ln-legend hidden" role="note">' + lanesLegendHtml() + '</div></div>';
   root.appendChild(el);
   const shop = el.querySelector(".ln-shop");
   const hint = document.createElement("div"); hint.className = "ln-shop-hint"; hint.textContent = "OBJETOS: se compran en tu base o estando caído (B vuelve) · PEDIDOS: desde donde estés"; shop.appendChild(hint);
@@ -32,6 +39,8 @@ function lanesHudBuild(){
   for(const [key, it] of Object.entries(LANES.SHOP)) mk(key, it.name, key === "swarm" || key === "brute" ? " ln-send" : "");
   el.querySelector(".ln-recall").addEventListener("click", ()=>{ if(player) lanesRecallRequest(player); });
   if(!window._lnKeyB){ window._lnKeyB = true; addEventListener("keydown", ev=>{ if((ev.key === "b" || ev.key === "B") && LN && LN.mode !== "coliseo" && state === "playing" && player && !ev.repeat) lanesRecallRequest(player); }); }
+  const lb = el.querySelector(".ln-legend-btn"), lg = el.querySelector(".ln-legend");
+  lb.addEventListener("click", ()=>{ const open = lg.classList.toggle("hidden") === false; lb.setAttribute("aria-expanded", String(open)); });
   const chip = el.querySelector(".ln-chip");
   chip.addEventListener("click", ()=>{ const open = shop.classList.toggle("hidden") === false; chip.setAttribute("aria-expanded", String(open)); el.classList.toggle("ln-shop-open", open); });
   _lnHud = el; return el;
@@ -103,10 +112,10 @@ function lanesHudTick(){
 function lanesDrawMap(){
   const cv = _lnHud && _lnHud.querySelector(".ln-rival canvas"); if(!cv || !LN) return;
   const g = cv.getContext("2d"), W = cv.width, H = cv.height, sx = W / LANES.W, sy = H / LANES.H;
-  g.clearRect(0, 0, W, H); g.fillStyle = "#12261a"; g.fillRect(0, 0, W, H);
-  g.strokeStyle = "rgba(70,140,205,.55)"; g.lineWidth = 15; g.beginPath(); g.moveTo(0, 0); g.lineTo(W, H); g.stroke();
+  g.clearRect(0, 0, W, H); g.imageSmoothingEnabled = false;
+  const bg = typeof lanesArtMini === "function" ? lanesArtMini() : null;
+  if(bg) g.drawImage(bg, 0, 0, W, H); else { g.fillStyle = "#12261a"; g.fillRect(0, 0, W, H); }
   g.lineCap = "round"; g.lineJoin = "round";
-  for(let l = 0; l < 3; l++){ g.beginPath(); LANES_PATHS[l].pts.forEach((q, i)=>{ if(i) g.lineTo(q[0] * sx, q[1] * sy); else g.moveTo(q[0] * sx, q[1] * sy); }); g.strokeStyle = "#7a8296"; g.lineWidth = 8; g.stroke(); }
   g.strokeStyle = "#5a6b88"; g.lineWidth = 2; g.strokeRect(1, 1, W - 2, H - 2);
   const NE = sidesCol("neutral");
   for(const cd of LANES_CAMPS){ const camp = LN.camps && LN.camps[cd.id], on = camp ? camp.mons.some(m=>m.alive) : (enemies.some(e=>e.alive && e.campId === cd.id)); g.fillStyle = on ? NE.fill : NE.dark; g.beginPath(); g.arc(cd.x * sx, cd.y * sy, 3, 0, Math.PI * 2); g.fill(); }

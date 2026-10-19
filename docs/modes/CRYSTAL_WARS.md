@@ -215,3 +215,6 @@ Aplica a: barras de héroes, súbditos, torres, cristales, selva y épicos; rót
 **Tokens.** `--ally/--enemy/--neutral/--self` (+ `-dark`, `-hi`, `--self-edge`) en `css/ui-kit.css`. El render JS los lee de `<html>` y se actualiza solo al cambiar sus atributos/estilo, así que una paleta para daltónicos (p. ej. `cvd`) solo debe sobrescribir esas variables, sin tocar el render (la prueba lo verifica con azul/naranja).
 
 **Prueba:** `node tools/lanes/test-sides.js` (píxeles reales de las barras; Cristales con el jugador en cada equipo, Coliseo normal y espectando, 844×390 y 667×375; marcador, minimapa y paleta CSS sobrescrita).
+
+## Identidad visual del mapa (octubre 2026)
+El escenario del motor de carriles tiene zonas con identidad (Bosque Ancestral, Jungla Volcánica, Pantano Cristalino, Necrópolis, bases Zafiro/Ámbar, río y La Convergencia), suelo horneado por trozos y minimapa con leyenda. Geometría y colisiones sin cambios. Decisiones, capturas, costo por cuadro y pendientes de arte humano: `docs/production/art-unification/cristales-identidad/README.md`.

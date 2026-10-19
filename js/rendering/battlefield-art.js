@@ -52,6 +52,7 @@ function battlefieldBuild(){
   }
   for(const [i,c]of LANES_CAMPS.entries())battlefieldProp(i%2?'cart':'bones',c.x+110,c.y+80,i%2?52:34,0);
   for(const c of LANES_EPICS)battlefieldProp('altar',c.x,c.y-210,105,0);
+  if(typeof lanesArtBuildProps==='function')lanesArtBuildProps(); // identidad del mapa: decorado no sólido (lanes-art-draw.js)
  }else if(currentArena==='coliseo'){
   colBuildCover();
   for(const c of COL.PITS)for(let i=0;i<12;i++){const a=i*Math.PI/6;battlefieldProp(i%3?'column':'brazier',c.x+Math.cos(a)*445,c.y+Math.sin(a)*445,i%3?100:72,0);}
