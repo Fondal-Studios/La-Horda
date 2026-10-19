@@ -21,3 +21,11 @@ Chromium necesitó una excepción explícita de TLS en este entorno por la CA de
 `campaign-harness-positive.jsonl`: piloto existente en Ciudad, victoria y datos finitos con cierre normal. Se declara su invulnerabilidad y remate de jefes a16min; no mide dificultad humana. La regresión negativa con Chromium confirmó dos reintentos y fallo explícito en el tercero. PR169 quedó integrado en6fe59ffa.
 
 La caída de Libertador se integró en PR170/6f47511f con11 workflows exitosos,4 cuadros nativos,127 comprobaciones del renderer y139 apariencias. La comprobación focalizada se repitió después del merge junto al test de arranque de campaña. Las pruebas en cuarentena del repositorio conservan sus limitaciones; no se afirma que todas las pruebas o todos los sistemas del juego estén resueltos. El taller PR166/403a80c sigue FIX en20/21/23 y debe conservar el contrato especializado de61 cuadros más caballo.
+
+## P0 externo: persistencia del servidor canónico
+
+`health.json`: a las22:58:10 UTC del19/10/2026, el endpoint público https://fondalstudios.com/la-horda/red/api/health respondió200 con `ok:true`, `status:ready`, `store:file`, `persistent:false`. El servicio está respondiendo, pero su propia declaración no confirma almacenamiento durable. Falta comprobar montaje/configuración real y respaldos de cuentas, partidas, billeteras y permisos. El estado de NanoGM en una sesión autenticada sigue sin verificar.
+
+Se preservó el servicio sin reinicios, despliegues ni cambios de almacenamiento. Antes de una intervención operativa, el responsable del hosting debe identificar el servicio y almacenamiento canónicos, verificar un respaldo recuperable y confirmar la durabilidad. La documentación del repositorio describe Fly.io como host principal y Render como alternativa; esta lectura HTTP no autentica al operador ni habilita migrar datos entre ambos. No subir archivos de cuentas, copias privadas, credenciales o cadenas de conexión a GitHub.
+
+Este bloqueo P0 es independiente del avance de arte/código y de los cinco campeones ya comprobados en la web. El control de seis archivos estáticos tampoco certifica persistencia del backend.
