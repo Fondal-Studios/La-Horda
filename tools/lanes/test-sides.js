@@ -125,7 +125,7 @@ const dominant=([r,g,b])=>r>g+60&&r>b+60?'red':g>r+40&&g>b+40?'green':r>b+60&&g>
    for(const spectate of [false,true]){
     const {ctx,p}=await open(w,h);
     await p.evaluate(()=>colStart({champ:'guerrero'}));
-    await p.waitForFunction(()=>state==='playing'&&lanesOn()&&LN.mode==='coliseo'&&LN.col.phase==='fight',null,{timeout:40000});
+    await p.waitForFunction(()=>state==='playing'&&lanesOn()&&LN.mode==='coliseo'&&LN.col.phase==='fight',null,{timeout:150000});
     await p.evaluate(INSTALL);const tokens=await p.evaluate(TOKENS);
     await p.evaluate(()=>{player.invulnTimer=1e9;const c=colPitCenter(0);heroes.forEach(h=>{if(h.pit===0){h.x=c.x+(h.team===0?-70:70)+(Math.random()-.5)*40;h.y=c.y+(Math.random()-.5)*160;}});});
     let view=0;

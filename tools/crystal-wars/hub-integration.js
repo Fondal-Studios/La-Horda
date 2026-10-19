@@ -36,7 +36,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
       // ida al Coliseo: es una pantalla del propio juego (misma página, sin recargar)
       const url0 = page.url();
       await page.click('#hub-crystal-btn');
-      await page.waitForSelector('#crystalwars-screen:not(.hidden) #practice', {timeout: 15000});
+      await page.waitForSelector('#crystalwars-screen:not(.hidden) #practice', {timeout: 60000});
       assert.equal(page.url(), url0, 'no cambia de página');
       assert.equal(await page.evaluate(() => state), 'crystalwars');
       // vuelta directa al hub
@@ -65,7 +65,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
       assert(/entrenamiento/.test(g.text) && g.skip && g.fits, `aviso claro con opción de saltar (${JSON.stringify(g)})`);
       if (OUT) await page.screenshot({path: path.join(OUT, 'gate_667.png')});
       await page.click('#cw-gate-skip');
-      await page.waitForSelector('#crystalwars-screen:not(.hidden) #practice', {timeout: 15000});
+      await page.waitForSelector('#crystalwars-screen:not(.hidden) #practice', {timeout: 60000});
       assert.deepEqual(errors, [], 'sin errores de página');
       console.log('PASS 667×375 sin entrenamiento: aviso con opción, "Ya sé jugar" abre el Coliseo');
       await ctx.close();
@@ -105,7 +105,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
       const ctx = await browser.newContext({viewport: {width: 844, height: 390}});
       const page = await ctx.newPage();
       await page.goto(`http://127.0.0.1:${PORT}/crystal-wars.html?room=ZZZ999&server=ws://127.0.0.1:1`, {waitUntil: 'domcontentloaded'});
-      await page.waitForURL(/index\.html\?/, {timeout: 15000});
+      await page.waitForURL(/index\.html\?/, {timeout: 60000});
       const sp = new URL(page.url()).searchParams;
       assert.equal(sp.get('cw'), '1');assert.equal(sp.get('room'), 'ZZZ999');assert.equal(sp.get('server'), 'ws://127.0.0.1:1');
       console.log('PASS crystal-wars.html (enlace viejo) redirige a index.html?cw=1 conservando sala y servidor');

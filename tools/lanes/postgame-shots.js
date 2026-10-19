@@ -28,7 +28,7 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
   await p.click('#pg-gate-train');await p.waitForFunction(()=>state==='crystalwars');await shot('lobby_entrenamiento');
   await p.evaluate(()=>{CrystalWarsUI.close();});
   // 4) hub desbloqueado (campaña terminada y algo de historial)
-  await p.evaluate(()=>{window.__questsNow=new Date(2026,9,19,12,0,0).getTime();save.arenasCleared.infernal=true;const P=postgameState();P.modes.cw=Object.assign(P.modes.cw,{played:9,wins:6,losses:3,streak:3,best:4,trophies:85});P.modes.col=Object.assign(P.modes.col,{played:3,wins:1,losses:2,streak:0,best:1,trophies:15});setState('mainmenu');renderMainMenu();document.getElementById('hub-postgame-title').scrollIntoView({block:'start'});});
+  await p.evaluate(()=>{window.__questsNow=new Date(2026,9,19,12,0,0).getTime();save.arenasCleared.infernal=true;save.champions.mago.unlocked=true;const P=postgameState();P.modes.cw=Object.assign(P.modes.cw,{played:9,wins:6,losses:3,streak:3,best:4,trophies:85});P.modes.col=Object.assign(P.modes.col,{played:3,wins:1,losses:2,streak:0,best:1,trophies:15});setState('mainmenu');renderMainMenu();document.getElementById('hub-postgame-title').scrollIntoView({block:'start'});});
   await shot('hub_desbloqueado');
   await p.evaluate(()=>document.getElementById('hub-crystal-btn').click());await p.waitForFunction(()=>state==='crystalwars');await shot('lobby_postgame');
   await p.evaluate(()=>{CrystalWarsUI.close();setState('mainmenu');});

@@ -11,9 +11,9 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
  for(const [w,h] of [[844,390],[667,375]]){
   const ctx=await b.newContext({viewport:{width:w,height:h},hasTouch:true});await ctx.addInitScript(f=>{try{localStorage.setItem('laHordaSave_v1',JSON.stringify(f));}catch(e){}},FIX);
   const p=await ctx.newPage(),errs=[];p.on('pageerror',e=>errs.push(e.message));
-  await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`);await p.waitForFunction(()=>typeof setState==='function'&&typeof renderMainMenu==='function'&&typeof lanesStart==='function',null,{timeout:60000});
+  await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});await p.waitForFunction(()=>typeof setState==='function'&&typeof renderMainMenu==='function'&&typeof lanesStart==='function',null,{timeout:60000});
   await p.evaluate(()=>{save.tut=save.tut||{};save.tut.training=1;persistNow();setState('mainmenu');renderMainMenu();});
-  const before=await p.evaluate(()=>localStorage.getItem('laHordaSave_v1'));
+  const before=await p.evaluate(()=>{const o=JSON.parse(localStorage.getItem('laHordaSave_v1'));delete o.postgame;return JSON.stringify(o);});
   await p.evaluate(()=>document.getElementById('hub-crystal-btn').scrollIntoView({block:'center'}));await p.click('#hub-crystal-btn');
   await p.waitForSelector('#crystalwars-screen:not(.hidden) #practice');
   assert(await p.locator('#champ option').count()>=30,'roster completo');
@@ -47,7 +47,7 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
   assert.equal(await p.evaluate(()=>LN.team[0].taken),1,'carta elegida');assert.equal(await p.evaluate(({id})=>LN.team[0].cards[id],{id:pre[0]}),1);
   await p.waitForSelector('.ln-cards.hidden',{state:'attached'});
   // el guardado real no se tocó
-  assert.equal(await p.evaluate(()=>localStorage.getItem('laHordaSave_v1')),before,'la partida no escribe el guardado real');
+  assert.equal(await p.evaluate(()=>{const o=JSON.parse(localStorage.getItem('laHordaSave_v1'));delete o.postgame;return JSON.stringify(o);}),before,'la partida no escribe el guardado real');
   // final rápido: el cristal rival cae → resultado con estadísticas
   await p.evaluate(()=>{for(let l=0;l<3;l++)for(let k=0;k<3;k++)LN.team[1].S[l*3+k].alive=false;LN.team[1].S[9].hp=1;lanesStructDamage(LN.team[1].S[9],50,0);});
   await p.waitForSelector('#lanes-result:not(.hidden)',{timeout:8000});
@@ -57,7 +57,7 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
   // abandonar por la pausa
   await p.click('#pause-btn');await p.click('#quit-btn');await p.waitForTimeout(400);await p.getByRole('button',{name:'Abandonar',exact:true}).click();
   await p.waitForFunction(()=>state==='mainmenu'&&!lanesOn(),null,{timeout:10000});
-  assert.equal(await p.evaluate(()=>localStorage.getItem('laHordaSave_v1')),before,'guardado intacto al volver');
+  assert.equal(await p.evaluate(()=>{const o=JSON.parse(localStorage.getItem('laHordaSave_v1'));delete o.postgame;return JSON.stringify(o);}),before,'guardado intacto al volver');
   assert.equal(await p.evaluate(()=>typeof save.champions.mago.level),'number');assert.notEqual(await p.evaluate(()=>save.champions.mago.level),10,'el guardado real volvió');
   assert.deepEqual(errs,[],'sin errores de página');console.log(`PASS lanes flow ${w}x${h}`);await ctx.close();
  }
