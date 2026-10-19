@@ -1,8 +1,8 @@
 const {chromium}=require('playwright'),fs=require('fs'),{spawn}=require('child_process');
 const server=spawn('python3',['-m','http.server','8798'],{stdio:'ignore'});process.on('exit',()=>server.kill());
 (async()=>{await new Promise(r=>setTimeout(r,400));const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||chromium.executablePath(),args:['--no-sandbox']});try{
- const page=await browser.newPage({viewport:{width:844,height:390},isMobile:true,hasTouch:true}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:8798');await page.waitForFunction(()=>CHAMP_PACK.soporte?.ready&&CHAMP_PACK.tanque?.ready);
- const checks=await page.evaluate(()=>{
+ const page=await browser.newPage({viewport:{width:844,height:390},isMobile:true,hasTouch:true}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:8798');await page.waitForFunction(()=>CHAMP_PACK.soporte?.ready);
+ const checks=await page.evaluate(async()=>{
   const out=[],check=(name,ok)=>out.push({name,ok:!!ok});
   function start(k='soporte',arena='bosque'){netMatch=null;save.stash=[];for(const c in save.champions)Object.assign(save.champions[c],{unlocked:true,level:20,equipment:{},inventory:[],talents:{nodes:{},mastery:null,masteryNodes:{}},skillMastery:[0,1,2].map(()=>({...mkMastery(),alloc:0})),ultMastery:{...mkMastery(),alloc:0}});selectedClass=k;currentArena=arena;lobbyAllies=k==='soporte'?['tanque','guerrero','mago']:['soporte','guerrero','mago'];startRun(3);setState('paused');enemies=[];spawnTimer=1e9;arenaHazardTimer=1e9;return player;}
   function enemy(dx,rank='normal'){const e=spawnEnemy('esqueleto');Object.assign(e,{x:player.x+dx,y:player.y,hp:1e7,maxHp:1e7,speed:0,dmg:0,rank});return e;}
@@ -21,11 +21,12 @@ const server=spawn('python3',['-m','http.server','8798'],{stdio:'ignore'});proce
   for(const d of ['down','side','left','up'])check('four walk/cast frames '+d,CHAMP_PACK.soporte.sets['walk_'+d].length===4&&CHAMP_PACK.soporte.sets['cast_'+d].length===4);
   for(const arena of ['bosque','hielo','laberinto','acuatica','fortaleza','micelial','ciudad','abismo','minas','infernal']){start('soporte',arena);const e=enemy(60);cast();check('arena '+arena,e.hp<1e7&&Number.isFinite(player.hp));}
   start();particles=[];cast();_netHeroIdx=new Map(heroes.map((h,i)=>[h,i]));netMatch={snapN:0,last:{},lastG:{},lastH:[{},{},{},{}]};const snap=netBuildSnapshot(true,false);check('pulse VFX serialize',JSON.stringify(snap).includes('ffe7a5'));netMatch=null;startRun(3);check('run reset clears pulse',!particles.some(p=>p.color==='#ffe7a5'));setState('title');const c=document.getElementById('title-canvas');_titleCast=null;_titleSetup(c);check('Elyra marches in foreground',_titleCast.some(h=>h.key==='soporte'&&h.row===2));// Trace both real drawing paths instead of pinning an obsolete atlas version.
+  let canaryAtlas;
   const probe=document.createElement('canvas');probe.width=probe.height=300;const g=probe.getContext('2d',{willReadFrequently:true});
   function trace(draw,redirect=false){
     const images=[],original=champPackDrawFrame,saved=ctx;
     g.clearRect(0,0,300,300);
-    champPackDrawFrame=function(P,...args){const pack=redirect&&P===CHAMP_PACK.soporte?CHAMP_PACK.tanque:P;if(pack.atlas)images.push(pack.atlas);return original.call(this,pack,...args);};
+    champPackDrawFrame=function(P,...args){const pack=redirect&&P===CHAMP_PACK.soporte?Object.assign({},P,{atlas:canaryAtlas}):P;if(pack.atlas)images.push(pack.atlas);return original.call(this,pack,...args);};
     try{ctx=g;draw();return {images,visible:g.getImageData(0,0,300,300).data.some((v,i)=>i%4===3&&v>40)};}
     finally{ctx=saved;champPackDrawFrame=original;}
   }
@@ -35,6 +36,8 @@ const server=spawn('python3',['-m','http.server','8798'],{stdio:'ignore'});proce
     const game=trace(()=>drawHeroBody(h,h.scale,false,false)),title=trace(()=>drawChampFigure(g,'soporte',150,270,2,1,300,true));
     const shared=(a,b)=>a.visible&&b.visible&&a.images.length>0&&b.images.length>0&&[...a.images,...b.images].every(img=>img===CHAMP_PACK.soporte.atlas);
     check('new art shared by title and game',shared(title,game));
+    const wrong=document.createElement('canvas');wrong.width=CHAMP_PACK.soporte.atlas.naturalWidth;wrong.height=CHAMP_PACK.soporte.atlas.naturalHeight;const wg=wrong.getContext('2d');wg.fillStyle='#ff00ff';wg.fillRect(0,0,wrong.width,wrong.height);
+    canaryAtlas=new Image();canaryAtlas.src=wrong.toDataURL('image/png');await canaryAtlas.decode();
     const wrongTitle=trace(()=>drawChampFigure(g,'soporte',150,270,2,1,300,true),true);
     check('different title atlas is rejected',wrongTitle.visible&&!shared(wrongTitle,game));
   }finally{window.ART_GATE_NO_VFX=noFx;}return out;
