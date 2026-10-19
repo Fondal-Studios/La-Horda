@@ -1,6 +1,7 @@
 // Playtest campaign: full runs (level 1 -> victory/defeat) driven by the autopilot "competent player".
 // usage: node campaign.js <jobs.json> <out.jsonl> [port]   (serve the repo first: python3 -m http.server <port>)
 //   job: {cls, arena, lvl, tag, progression?:[{cls,arena}...]}  (lvl<=0: keep save as is)
+//        opciones de equipo: loot=N (solo cofres), gear (autoEquipBest), lootPath=P (equipo real de P victorias por arena previa), equipBest (equipa lo mejor por stat)
 const { chromium } = (()=>{ try { return require('playwright'); } catch (e) { return require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright'); } })();
 const fs = require('fs'); const path = require('path'); const sleep = ms => new Promise(r => setTimeout(r, ms));
 const [jobsFile, outFile, port] = [process.argv[2], process.argv[3], process.argv[4] || '8763'];
@@ -63,6 +64,11 @@ async function runOne(page, job) {
     if (job.lvl <= 0 && typeof suggestedSkillInvest === 'function') for (let g = 0; g < 60; g++) { const i = suggestedSkillInvest(job.cls); if (i === null || i === undefined || !investTalentPoint(job.cls, i)) break; }
     __CP.reset(); __CP.god = !!job.god;
     if (job.arena === 'auto') job.arena = ARENA_ORDER.find(a => !(save.arenasCleared||{})[a]) || 'infernal';
+    // job.lootPath = P: el equipo REAL de un jugador que ganó P veces (1 o 2) cada arena anterior a (job.tier, job.arena) en el orden Normal -> Pesadilla -> Infierno
+    // (piso + cofre, tools/balance/real-loot.js; job.loot=N tira SOLO el cofre: ~2 objetos por victoria contra ~12 de una victoria real).
+    // job.equipBest = true: se equipa el objeto de más stat por ranura (autoEquipBest, de job.gear, solo llena ranuras vacías con piezas diseñadas para el guardián).
+    if (job.lootPath) { __RL.path(job.tier || 'normal', job.arena, job.lootPath, job.cls); }
+    if (job.equipBest) { __RL.equipBest(job.cls); }
     const lvl0 = save.champions[job.cls].level, xp0 = save.champions[job.cls].xp, gold0 = save.gold;
     __AP.start(job.cls, job.arena, 1);
     let t = 0, lastLv = 0;
@@ -122,6 +128,7 @@ async function runOne(page, job) {
     for (let i = 0; i < 300; i++) { const ok = await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return b && !b.disabled; }); if (ok) break; await sleep(100); }
     await page.addScriptTag({ path: path.join(__dirname, 'autopilot.js') });
     await page.evaluate(require('../fortaleza/sim-helpers.js'));
+    await page.evaluate(require('../balance/real-loot.js'));
     await page.evaluate(HOOKS);
   };
   for (const job of jobs) {
