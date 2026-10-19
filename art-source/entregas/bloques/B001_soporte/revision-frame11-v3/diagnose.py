@@ -51,6 +51,13 @@ else:
     scanner = importlib.util.module_from_spec(scanner_spec)
     scanner_spec.loader.exec_module(scanner)
     scan = scanner.analyze(str(OUT / 'atlas.png'))
+    style = subprocess.run(['python3', 'tools/art/painter/style_gate.py', '--strict', str(OUT / 'atlas.png')],
+                           text=True, capture_output=True)
+    if style.returncode not in (0, 1) or not any(line.startswith(('PASS ', 'FAIL ')) for line in style.stdout.splitlines()):
+        raise ValueError('Style Gate could not produce valid evidence: ' + style.stderr)
+    (OUT / 'style.log').write_text(style.stdout + style.stderr)
+    summary['styleGate'] = {'status': 'PASS' if style.returncode == 0 else 'FIX', 'output': style.stdout}
+
     (OUT / 'scan.json').write_text(json.dumps(scan, indent=2, default=lambda v: v.item()) + '\n')
     summary.update(status=report['status'], failedFrames=failed, assembly=receipt)
 
@@ -94,7 +101,7 @@ print('CANDIDATE_SUMMARY ' + json.dumps(summary), flush=True)
 # A successful transport is never visual approval. No PNG is installed by this job.
 exports = ['assembly.json', 'summary.json']
 if (OUT / 'native.json').exists():
-    exports += ['native.json', 'scan.json']
+    exports += ['native.json', 'scan.json', 'style.log']
 if summary['status'] == 'TECHNICAL_SCREEN_PASS':
     exports += ['atlas.png', 'atlas.json', 'reference.png', 'contact.png']
 for name in exports:
