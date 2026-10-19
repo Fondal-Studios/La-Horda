@@ -100,7 +100,8 @@ const ITEM_ROLL_RANGE = [0.90, 1.10];  // dos copias del mismo objeto: stats ent
 // campaña donde cayó (1-10; la Arena Divina, 10). Multiplica los mismos números que el nivel de Gemas
 // (stat garantizado, pasivas numéricas y afijos). Los objetos viejos, los de la tienda y el regalo
 // inicial no tienen ilvl: valen como nivel de objeto 1 (sin migración: nada cambia en lo que ya tenías).
-const ITEM_ILVL_MAX = 10;
+const ITEM_ILVL_NORMAL_MAX = 10;       // Normal: arenas 1-10 (y la Divina). Pesadilla suma +ilvlBase (11-20) e Infierno (19-28): DIFF_TIERS
+const ITEM_ILVL_MAX = 30;
 const ITEM_ILVL_STEP = 0.05;           // +5% por arena: un objeto de la arena 10 vale ×1,45 que el mismo de la arena 1
 // Costo en Gemas de subir de nivel L a L+1 = base × 1,5^(L-1). Sin azar, sin romperse, sin perder nivel.
 const GEM_UPGRADE_BASE = {comun:1, raro:2, muyraro:3, legendario:5, set:6, mitico:8, unico:10};

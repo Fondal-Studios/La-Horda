@@ -17,8 +17,16 @@ function _pick(weights, rng){
   return Object.keys(weights)[0];
 }
 // Pesos finales por categoría para una arena + calificación + protección (+ derrota).
+// Fila de ARENA_LOOT que paga `arena` en la dificultad de la partida. Normal: la suya. Pesadilla/Infierno corren la fila
+// (DIFF_TIERS[t].lootRowShift, difficulty-tiers.js): su 1ª arena ya no paga como "Introducción", porque quien llega ahí ya
+// terminó la campaña anterior (docs/economy/COHERENCIA.md). Tope: la última fila (Infernal). Arenas sin número (Divina): la suya.
+function lootRowKey(arena){
+  const n = typeof campaignNumber==="function" ? campaignNumber(arena) : 0;
+  const sh = n > 0 && typeof diffLootRowShift==="function" ? diffLootRowShift() : 0;
+  return sh > 0 ? CAMPAIGN_ORDER[Math.min(CAMPAIGN_ORDER.length, n + sh) - 1] : arena;
+}
 function lootTierWeights(arena, grade, pity, defeat){
-  const base = ARENA_LOOT[arena] || ARENA_LOOT.ciudad;
+  const base = ARENA_LOOT[lootRowKey(arena)] || ARENA_LOOT.ciudad;
   const g = GRADE_LOOT[grade] || GRADE_LOOT.A;
   const df = typeof diffLootFactor==="function" ? diffLootFactor() : 1; // Pesadilla/Infierno: mejor rareza
   const w = {};
@@ -38,11 +46,13 @@ function lootApplyFloor(w, floor){
   for(const t in w) if(t!==floor && (TIER_ORDER[t]||0) < TIER_ORDER[floor]){ w[floor] += w[t]; w[t] = 0; }
   return w;
 }
-// Nivel de objeto (item-identity.js, ITEM_ILVL_*) de lo que cae en una arena: su número en la campaña;
-// lo que no tiene número (Arena Divina) cae con el tope.
+// Nivel de objeto (item-identity.js, ITEM_ILVL_*) de lo que cae en una arena: su número en la campaña (+ la base de la
+// dificultad: Pesadilla 11-20, Infierno 19-28, ver DIFF_TIERS[t].ilvlBase); lo que no tiene número (Arena Divina) cae
+// con el tope de Normal (10).
 function lootItemLevelFor(arena){
   const n = typeof campaignNumber==="function" ? campaignNumber(arena) : 0;
-  return Math.max(1, Math.min(ITEM_ILVL_MAX, n > 0 ? n : ITEM_ILVL_MAX));
+  const base = n > 0 && typeof diffItemIlvlBase==="function" ? diffItemIlvlBase() : 0;
+  return Math.max(1, Math.min(ITEM_ILVL_MAX, n > 0 ? n + base : ITEM_ILVL_NORMAL_MAX));
 }
 // owned: Set de designIds que el guardián ya tiene (inventario), para elegir set/pieza.
 function _rollSetPiece(arena, owned, rng, classKey){

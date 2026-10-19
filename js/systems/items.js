@@ -190,6 +190,8 @@ function itemLevel(it){ return Math.max(1, Math.min(ITEM_MAX_LEVEL, (it && it.le
 // Nivel de OBJETO (arena donde cayó, item-identity.js ITEM_ILVL_*): eje aparte del nivel de Gemas. Sin campo
 // (objetos viejos, tienda, regalo) = 1. Se recorta al leer: un objeto que llega de otro jugador no lo puede inflar.
 function itemIlvl(it){ return Math.max(1, Math.min(ITEM_ILVL_MAX, (it && it.ilvl)|0 || 1)); }
+// Texto del nivel de objeto: arena 1-10 de Normal; más arriba cayó en Pesadilla/Infierno (nivel de objeto 11-30).
+function itemIlvlLabel(it){ const n = itemIlvl(it); return n <= ITEM_ILVL_NORMAL_MAX ? "Arena "+n : "Nivel de objeto "+n; }
 function itemIlvlMult(it){ return 1 + ITEM_ILVL_STEP*(itemIlvl(it)-1); }
 // Multiplicador de TODOS los números del objeto: nivel de Gemas × nivel de objeto.
 function itemLevelMult(it){ return (1 + ITEM_LEVEL_STEP*(itemLevel(it)-1)) * itemIlvlMult(it); }
