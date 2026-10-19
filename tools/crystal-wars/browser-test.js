@@ -1,15 +1,16 @@
 'use strict';
-const {chromium}=require('playwright');const {spawn}=require('node:child_process');const assert=require('node:assert/strict');const path=require('node:path');
+const H=require('../lib/serve'),net=require('node:net');const {spawn}=require('node:child_process');const assert=require('node:assert/strict');const path=require('node:path');
 const fs=require('node:fs'),os=require('node:os');
 const dataDir=fs.mkdtempSync(path.join(os.tmpdir(),'cw-browser-'));
-const root=path.resolve(__dirname,'../..'),port=8897,relayPort=8898;
-const http=spawn('python3',['-m','http.server',String(port)],{cwd:root,stdio:'ignore'});
-const relay=spawn(process.execPath,['server/relay.js'],{cwd:root,env:{...process.env,PORT:String(relayPort),DATA_DIR:dataDir,DATABASE_URL:''},stdio:'pipe'});
-let browser;const errors=[];
-async function until(url){for(let i=0;i<50;i++){try{if((await fetch(url)).ok)return;}catch{}await new Promise(r=>setTimeout(r,100));}throw Error('Server not ready');}
+const root=path.resolve(__dirname,'../..');
+let port,relayPort,site,relay,browser;const errors=[];
+const freePort=()=>new Promise((resolve,reject)=>{const s=net.createServer();s.once('error',reject);s.listen(0,'127.0.0.1',()=>{const p=s.address().port;s.close(()=>resolve(p));});});
+async function until(url){for(let i=0;i<50;i++){try{const r=await fetch(url);await r.arrayBuffer();if(r.ok)return;}catch{}await new Promise(r=>setTimeout(r,100));}throw Error('Server not ready');}
 (async()=>{
- await Promise.all([until('http://127.0.0.1:'+port),until('http://127.0.0.1:'+relayPort+'/health')]);
- browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH,args:['--no-sandbox']});const pages=[];
+ site=await H.startSite({root,envUrl:[]});port=Number(new URL(site.url).port);relayPort=await freePort();
+ relay=spawn(process.execPath,['server/relay.js'],{cwd:root,env:{...process.env,PORT:String(relayPort),DATA_DIR:dataDir,DATABASE_URL:''},stdio:'pipe'});
+ await until('http://127.0.0.1:'+relayPort+'/health');
+ browser=await H.launch();const pages=[];
  for(let i=0;i<4;i++){
   const context=await browser.newContext({viewport:i===0?{width:1280,height:1000}:{width:844,height:390},hasTouch:i>0,isMobile:i>0});const p=await context.newPage();p.on('pageerror',e=>errors.push(e.message));
   await p.addInitScript(rp=>{localStorage.setItem('laHordaSave_v1',JSON.stringify({tut:{training:1}}));window.__cwArenaSizes={};const stroke=CanvasRenderingContext2D.prototype.strokeRect;CanvasRenderingContext2D.prototype.strokeRect=function(x,y,w,h){if(w===840&&h===560)window.__cwArenaSizes[this.strokeStyle]=w*this.getTransform().a;return stroke.call(this,x,y,w,h);};window.__cwLabels={};const fill=CanvasRenderingContext2D.prototype.fillText;CanvasRenderingContext2D.prototype.fillText=function(text,...args){if(typeof text==='string'&&['TU CAMPO · DEFENDÉ','RIVAL · TUS ENVÍOS'].includes(text))window.__cwLabels[text]=performance.now();return fill.call(this,text,...args);};const Native=window.WebSocket;window.__cwMessages=[];window.WebSocket=class extends Native{constructor(...args){super(...args);if(!String(args[0]).includes(':'+rp))return;this.addEventListener('message',e=>{const m=JSON.parse(e.data);if(m.d?.k==='cw-state'){window.__cwSnapshot=m.d;window.__cwMessages.push(m.d.id);}});window.__cwSocket=this;}};},relayPort);
@@ -81,4 +82,4 @@ async function until(url){for(let i=0;i<50;i++){try{if((await fetch(url)).ok)ret
  // Close host during a match; guests must see interruption, not invented victory.
  await host.close();await pages[1].waitForFunction(()=>document.querySelector('#result-title').textContent==='PARTIDA INTERRUMPIDA');
  assert.deepEqual(errors,[]);console.log('PASS 4-client relay: choices, teams, simultaneous arenas, focus-safe movement/skills/sends, attributed arrivals, hostile inputs, guest reconnect, result, same-room rematch, host loss; desktop/mobile no JS errors');
-})().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();http.kill();relay.kill();fs.rmSync(dataDir,{recursive:true,force:true});});
+})().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();if(site)await site.close();if(relay)relay.kill();fs.rmSync(dataDir,{recursive:true,force:true});});

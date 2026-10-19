@@ -12,6 +12,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
 
 async function boot(browser, opts) {
   const ctx = await browser.newContext(Object.assign({ viewport: { width: 844, height: 390 } }, opts || {}));
+  // These are local UI/persistence tests; never poll real account/room services or remote fonts.
+  await ctx.route('**/*', route => {
+    const u=new URL(route.request().url());
+    return u.origin===new URL(BASE).origin||['data:','blob:'].includes(u.protocol)?route.continue():route.abort('blockedbyclient');
+  });
   const page = await ctx.newPage(), errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
   page.on('console', m => { if (m.type() === 'error' && !/ERR_CERT|fonts\.g|net::|404|ERR_TUNNEL/.test(m.text())) errors.push('console: ' + m.text().slice(0, 300)); });
@@ -28,6 +33,8 @@ async function boot(browser, opts) {
   const { ctx, page, errors } = await boot(browser);
   const E = (fn, a) => page.evaluate(fn, a);
   const shot = async n => { if (OUT) await page.screenshot({ path: `${OUT}/${n}.png` }); };
+  // A real pointer click is intentionally ignored for250ms after a dialog opens.
+  const clickDialog = async selector => { await page.waitForFunction(() => GAME_DIALOG.cur && Date.now()-GAME_DIALOG.openedAt >= 250); await page.click(selector); };
   const bookState = () => E(() => ({ open: BOOK.open, kind: BOOK.kind, i: BOOK.i, n: BOOK.pages.length, hidden: !document.getElementById('codex-book') || document.getElementById('codex-book').classList.contains('hidden'), flipping: BOOK.flipping }));
   const waitBook = async (open, ms) => { for (let k = 0; k < (ms || 10000) / 50; k++) { if ((await E(() => BOOK.open)) === open) return true; await sleep(50); } return false; };
   const waitFor = async (fn, ms) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { if (await fn().catch(() => false)) return true; await sleep(100); } return false; };
@@ -55,14 +62,14 @@ async function boot(browser, opts) {
   const offerTxt = await E(() => (document.querySelector('#game-dialog') || {}).textContent || '');
   check('OFERTA.al_volver_al_menu_aparece_el_cartel_sin_abrir_el_libro', offerUp && /El Libro de la Horda/.test(offerTxt) && /Leer el Libro/.test(offerTxt) && /Después/.test(offerTxt) && !(await E(() => BOOK.open)), offerTxt);
   await shot('00b_oferta_del_libro');
-  await page.click('#game-dialog .gd-cancel'); await sleep(300);
+  await clickDialog('#game-dialog .gd-cancel'); await sleep(300);
   check('OFERTA.Despues_no_abre_nada_y_no_se_repite', !(await E(() => BOOK.open)) && (await E(() => save.codexBook.offered)) === true && (await E(() => save.codexBook.introSeen)) === false);
   await E(() => { setState('mainmenu'); renderMainMenu(); }); await sleep(1500);
-  check('OFERTA.no_vuelve_a_aparecer_sola', !(await E(() => gameDialogIsOpen())));
+  check('OFERTA.no_vuelve_a_aparecer_sola', !(await E(() => gameDialogIsOpen())), await E(() => ({offered:save.codexBook.offered,introSeen:save.codexBook.introSeen,ran:save.codexBook.ran,dialog:(document.getElementById('game-dialog')?.textContent||'').trim().slice(0,260)})));
   // "Leer el Libro" → abre la intro de 8 páginas (misma ruta: codexBookOffer → codexBookMaybeIntro)
   await E(() => { save.codexBook.offered = false; setState('mainmenu'); renderMainMenu(); });
   await waitFor(() => E(() => gameDialogIsOpen()), 6000);
-  await page.click('#game-dialog .gd-ok'); await sleep(500);
+  await clickDialog('#game-dialog .gd-ok'); await sleep(500);
   b = await bookState();
   check('INTRO.se_abre_al_aceptar_la_oferta_(8_paginas)', b.open && b.kind === 'intro' && !b.hidden && b.n === 8, b);
   check('INTRO.queda_registrada_como_vista_ya_al_abrir_(omitir_o_cerrar_el_juego_no_la_repite)', await E(() => save.codexBook.introSeen === true && JSON.parse(localStorage.getItem(SAVE_KEY)).codexBook.introSeen === true));
@@ -249,7 +256,7 @@ async function boot(browser, opts) {
   const offerTxt2 = await E(() => (document.querySelector('#game-dialog') || {}).textContent || '');
   check('SECUENCIA.al_quedar_libre_la_oferta_aparece_y_habla_el_Hechicero', offUp && /El Libro de la Horda/.test(offerTxt2) && /— El Hechicero/.test(offerTxt2) && /Leer el Libro/.test(offerTxt2), offerTxt2);
   await shot('18_oferta_del_Hechicero');
-  await page.click('#game-dialog .gd-cancel'); await sleep(300);
+  await clickDialog('#game-dialog .gd-cancel'); await sleep(300);
   await E(() => { save.codexBook.introSeen = true; save.codexBook.introRead = true; state = 'menu'; });
 
   /* ================= 4. COOPERATIVO / MULTIJUGADOR: nunca frena a otros ================= */
@@ -333,7 +340,7 @@ async function boot(browser, opts) {
   await E(() => { save.codexBook.introSeen = true; setState('mainmenu'); });
 
   /* ================= 7. TEXTO SIN RECORTES EN TODAS LAS PÁGINAS (844×390) ================= */
-  const fit = await E(async () => { const bad = [], all = [['intro', codexBookIntroPages()]]; { const was = save.storyPrologueSeen; save.storyPrologueSeen = true; all.push(['intro-recap', codexBookIntroPages()]); save.storyPrologueSeen = was; }
+  const measureFit = () => E(async () => { const bad = [], all = [['intro', codexBookIntroPages()]]; { const was = save.storyPrologueSeen; save.storyPrologueSeen = true; all.push(['intro-recap', codexBookIntroPages()]); save.storyPrologueSeen = was; }
     for (const a of Object.keys(BOOK_FRAGMENTS)) all.push(['frag:' + a, codexBookFragmentPages(a)]);
     for (const a of Object.keys(BOOK_SHORT_LINES)) all.push(['short:' + a, codexBookShortPages(a)]);
     let n = 0;
@@ -344,7 +351,12 @@ async function boot(browser, opts) {
         if (t.scrollHeight > t.clientHeight + 1 || r.bottom > innerHeight || r.right > innerWidth) bad.push(id + '#' + i + ' ' + t.scrollHeight + '>' + t.clientHeight); }
       bookClose('x'); }
     return { n, bad }; });
+  const fit = await measureFit();
   check('TEXTO.todas_las_paginas_(' + fit.n + ')_entran_sin_recortes_en_844x390', fit.n >= 8 + 8 + 21 && fit.bad.length === 0, fit);
+  await page.setViewportSize({width:667,height:375});
+  const smallFit = await measureFit();
+  check('TEXTO.todas_las_paginas_(' + smallFit.n + ')_entran_sin_recortes_en_667x375', smallFit.n === fit.n && smallFit.bad.length === 0, smallFit);
+  await page.setViewportSize({width:844,height:390});
   const draws0 = await E(() => window.__draws); await sleep(400);
   check('RENDIMIENTO.cerrado_el_libro_no_se_sigue_dibujando', (await E(() => window.__draws)) === draws0);
   // el visor dibuja una vez por cuadro de pantalla (se compara con los cuadros reales, así no depende de lo cargada que esté la máquina)
