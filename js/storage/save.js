@@ -84,7 +84,7 @@ function defaultSave(){
     quests:null,            // logros, desafíos, pase de temporada y perfil (js/systems/quests.js: questsNormalize completa los campos)
     // DIFICULTADES (js/systems/difficulty-tiers.js): arenas superadas en Pesadilla / Infierno (Normal es
     // arenasCleared), la elegida en la Sala y las derrotas de la cuenta (las 3 primeras no se castigan)
-    diffCleared:{pesadilla:{}, infierno:{}}, diffSelected:"normal", defeatCount:0, arenaDefeats:{}, defeatLegacy:0, penaltyWarned:{},
+    diffCleared:{pesadilla:{}, infierno:{}}, diffSelected:"normal", defeatCount:0, arenaDefeats:{}, defeatLegacy:0, penaltyWarned:{}, checkpoints:{},
     recycleDust:0           // RECICLAJE (js/systems/ground-loot.js): fracción de Gema juntada al reciclar Comunes/Raros con el inventario lleno
   };
 }
@@ -271,6 +271,7 @@ function _loadSaveInner(){
       // perdón de derrotas POR ARENA (progression.js): guardados anteriores congelan su total como punto de partida
       save.arenaDefeats = {}; if(parsed.arenaDefeats && typeof parsed.arenaDefeats==="object") for(const k in parsed.arenaDefeats) save.arenaDefeats[k] = Math.max(0, parsed.arenaDefeats[k]|0);
       save.defeatLegacy = ("defeatLegacy" in parsed) ? Math.max(0, parsed.defeatLegacy|0) : (parsed.arenaDefeats ? 0 : save.defeatCount);
+      save.checkpoints = typeof checkpointsNormalize==="function" ? checkpointsNormalize(parsed.checkpoints) : {}; // punto de control del nivel 5 por arena (checkpoint.js); guardados viejos: vacío
       save.penaltyWarned = {}; if(parsed.penaltyWarned && typeof parsed.penaltyWarned==="object") for(const k in parsed.penaltyWarned) if(parsed.penaltyWarned[k]) save.penaltyWarned[k] = true;
       // EL LIBRO DE LA HORDA: guardados de antes no lo tienen. Quien ya tiene guardián o ya jugó NO ve la gran introducción
       // a la fuerza (queda releíble en el Códice) y sus arenas superadas figuran como fragmentos ya leídos. No se pierde nada.

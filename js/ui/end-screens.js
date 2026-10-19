@@ -15,6 +15,7 @@ function showGameOverScreen(divinaOutcome){
   const title = document.getElementById("go-title");
   const retryBtn = document.getElementById("retry-btn");
   retryBtn.classList.remove("hidden");
+  retryBtn.dataset.cp = ""; { const b1 = document.getElementById("retry-from1-btn"); if(b1) b1.classList.add("hidden"); } // punto de control: solo la derrota normal en solitario (checkpoint.js)
   if(divinaMode || divinaOutcome){
     divinaMode = false;
     if(divinaOutcome==="victory"){
@@ -59,7 +60,12 @@ function showGameOverScreen(divinaOutcome){
     ${typeof diffResultRowHTML==="function" ? diffResultRowHTML(false) : ""}${arenaRows ? `<div class="res-rows" style="margin-top:8px;">${arenaRows}</div>` : ""}`;
   // Arriba, junto a "Reintentar": lo que se perdió (o se perdonó) y desde dónde se vuelve a empezar. Sin oferta de
   // apariencias en la derrota (queda en la victoria y en la Tienda).
-  document.getElementById("go-loss").innerHTML = defeatPenaltyLineHTML(penalty) + `<span class="go-loss-sub">Sin puntos de control: la próxima incursión comienza en el Nivel 1.</span>`;
+  const cpHtml = typeof checkpointDefeatHTML==="function" ? checkpointDefeatHTML() : null;
+  document.getElementById("go-loss").innerHTML = defeatPenaltyLineHTML(penalty) + (cpHtml ? `<span class="go-loss-cp">${cpHtml}</span>` : `<span class="go-loss-sub">${typeof checkpointNoOfferHTML==="function" ? checkpointNoOfferHTML() : "Sin puntos de control: la próxima incursión comienza en el Nivel 1."}</span>`);
+  if(cpHtml && !netMatch){
+    retryBtn.textContent = `Reanudar desde el nivel ${CP_LEVEL}`; retryBtn.dataset.cp = "resume";
+    const b1 = document.getElementById("retry-from1-btn"); if(b1) b1.classList.remove("hidden");
+  }
   if(typeof questsOnRunEnd==="function") questsOnRunEnd(false); // después del castigo: lo que dan los desafíos no se descuenta
 }
 // Acceso discreto a las apariencias del guardián (Tienda → Skins, solo las suyas). Solo jugando solo, fuera de la
@@ -85,7 +91,8 @@ function defeatPenaltyLineHTML(p){
         : "Fue la última sin castigo en esta arena: desde ahora perder cuesta la mitad de lo ganado en la partida.");
     return `<b class="go-forgiven" style="color:#9fe8a8;">Esta vez la Horda te perdona: no perdiste XP ni oro.</b><br><span style="color:#cfc6b0;">${why}</span>`;
   }
-  return `<b style="color:#ff8a6a;">No terminaste la arena: perdiste el ${p.lostPct}% de lo ganado en esta partida (${p.xpLost} de XP${p.afterLevel<p.beforeLevel?`, volviste a Nv. ${p.afterLevel}`:""} y ${p.goldLost} de oro).</b>`;
+  const what = p.banked ? "desde el punto de control" : "en esta partida";
+  return `<b style="color:#ff8a6a;">No terminaste la arena: perdiste el ${p.lostPct}% de lo ganado ${what} (${p.xpLost} de XP${p.afterLevel<p.beforeLevel?`, volviste a Nv. ${p.afterLevel}`:""} y ${p.goldLost} de oro).</b>${p.banked ? `<span class="go-loss-sub">Lo ganado antes del punto de control quedó a salvo.</span>` : ""}`;
 }
 /* ============================================================
    FASE 3 — PANTALLA DE VICTORIA COMPLETA

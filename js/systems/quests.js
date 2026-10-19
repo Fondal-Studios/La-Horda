@@ -369,7 +369,7 @@ function questsOnRunEnd(victory, opts){
     }
   }
   if(k === "musashi" && (s.duelVictories|0) >= 5) st.duel5 = true;
-  const xp = questsRunXp({divina, victory, kills, level:(typeof runLevel !== "undefined" ? runLevel : 1), grade, coop});
+  const xp = questsRunXp({divina, victory, kills, level:(typeof runLevel !== "undefined" ? runLevel - (typeof runResumed !== "undefined" && runResumed ? CP_LEVEL - 1 : 0) : 1), grade, coop});
   questsAddXp(xp);
   questsEvaluate(false);
   persist();

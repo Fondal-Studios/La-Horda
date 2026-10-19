@@ -18,7 +18,7 @@ if(DEV_XP_MULT > 1) window.addEventListener("DOMContentLoaded", ()=>{ const b = 
   b.style.cssText = "position:fixed;left:50%;bottom:2px;transform:translateX(-50%);z-index:9999;font:10px monospace;color:#ffd24a;background:rgba(0,0,0,0.6);padding:1px 6px;border-radius:4px;pointer-events:none"; document.body.appendChild(b); });
 function grantXP(champKey, amount){
   const c = save.champions[champKey];
-  amount = Math.round(amount*DEV_XP_MULT*(typeof alphaWorldMultiplier==="function"?alphaWorldMultiplier("xp"):1));
+  amount = Math.round(amount*DEV_XP_MULT*(typeof alphaWorldMultiplier==="function"?alphaWorldMultiplier("xp"):1)*(typeof checkpointPay==="function"?checkpointPay():1));
   c.xp += amount;
   let leveled = false;
   while(c.level < 99 && c.xp >= xpToNext(c.level)){
@@ -146,7 +146,7 @@ function applyArenaFailurePenalty(champKey){
   (save.arenaDefeats = save.arenaDefeats || {})[currentArena] = nArena;
   if(forgiven){
     persist();
-    return {beforeLevel:c.level, afterLevel:c.level, lostPct:0, xpLost:0, goldLost:0, forgiven,
+    return {beforeLevel:c.level, afterLevel:c.level, lostPct:0, xpLost:0, goldLost:0, forgiven, banked:!!runBanked,
       forgivenLeft: Math.max(0, FAIL_FORGIVE_FIRST - nArena)};
   }
   const beforeLevel = c.level, total = totalXpForChamp(champKey);
@@ -155,7 +155,7 @@ function applyArenaFailurePenalty(champKey){
   const goldLost = Math.floor(Math.max(0, save.gold - runStartGold) * ARENA_FAIL_PENALTY_PCT);
   save.gold = Math.max(0, save.gold - goldLost);
   persist();
-  return {beforeLevel, afterLevel:c.level, lostPct:Math.round(ARENA_FAIL_PENALTY_PCT*100), xpLost, goldLost, forgiven:null, forgivenLeft:0};
+  return {beforeLevel, afterLevel:c.level, lostPct:Math.round(ARENA_FAIL_PENALTY_PCT*100), xpLost, goldLost, forgiven:null, forgivenLeft:0, banked:!!runBanked};
 }
-function grantGold(n){ save.gold += Math.round(n*(typeof alphaWorldMultiplier==="function"?alphaWorldMultiplier("gold"):1)); persist(); }
+function grantGold(n){ save.gold += Math.round(n*(typeof alphaWorldMultiplier==="function"?alphaWorldMultiplier("gold"):1)*(typeof checkpointPay==="function"?checkpointPay():1)); persist(); }
 function grantRelic(kind){ save.relics[kind] = Math.min(30, (save.relics[kind]||0)+1); persist(); }
