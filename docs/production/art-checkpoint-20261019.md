@@ -4,7 +4,7 @@ Base auditada: main af87450. Tres skins integradas por PR148/150 estaban todaví
 
 ## Entrega real
 
-19 PNG 16×16 exportados del renderizador existente, con fuente editable en `js/ui/pixel-icons.js`, grillas/paletas/hashes y preview en `art-source/entregas/2026-10_mundo/ui/iconos/`. Son entregas faltantes de diseños ya jugables, no contenido nuevo. La verificación compara los bytes y recibos con el renderizador actual. B324–326 y B554–556 documentados como exportaciones, separados de integraciones y aprobación visual nueva.
+19 PNG 16×16 exportados del renderizador existente, con fuente editable en `js/ui/pixel-icons.js`, grillas/paletas/hashes y preview en `art-source/entregas/2026-10_mundo/ui/iconos/`. Son entregas faltantes de diseños ya jugables, no contenido nuevo. La verificación compara los píxeles RGBA decodificados y recibos con el renderizador actual; verifica también el hash del PNG guardado. B324–326 y B554–556 documentados como exportaciones, separados de integraciones y aprobación visual nueva.
 
 ## Correcciones preservadas, fuera del juego
 
@@ -14,11 +14,12 @@ Base auditada: main af87450. Tres skins integradas por PR148/150 estaban todaví
 
 ## Validación local
 
-- 7 pruebas existentes del importador PASS.
-- 2 controles negativos nuevos: hash falso de integración no escribe inventario; hash falso de reemplazo no crea atlas.
+- 7 pruebas existentes del importador PASS (10 pruebas con los 3 controles nuevos).
+- 3 controles nuevos: recompresión del mismo PNG aceptada y cambio de píxeles rechazado; hash falso de integración no escribe inventario; hash falso de reemplazo no crea atlas.
 - Detector por cuadro: atlas vacío rechazado en 36 cuadros; sin modificar umbrales canónicos.
 - Exportador: 19 coincidencias exactas; PNG deliberadamente alterado rechazado y restaurado.
 - Gate de 84 íconos y 105 mapeos PASS; emoji lint estricto PASS (2 excepciones existentes).
 - Conciliación idempotente PASS; sintaxis Python/JS PASS.
+- 34 pruebas Node de fábrica/Q5 PASS; Talent Gate PASS en niveles 1/39/40/60/90/99, migración local/nube y maestría irreversible.
 
 No se modificaron runtime, balance, habilidades, infraestructura, cuentas ni pagos. Estos cambios no justifican afirmar nuevas aprobaciones del dueño, lanzamiento público ni una puntuación comercial 8/10. La cola tiene 1244 tareas; su cantidad no equivale al número de archivos faltantes, y quedan registros históricos por conciliar con pruebas.

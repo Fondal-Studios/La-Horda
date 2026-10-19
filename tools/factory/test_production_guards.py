@@ -5,6 +5,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -31,6 +32,34 @@ class ProductionGuards(unittest.TestCase):
             self.assertNotEqual(result.returncode, 0)
             self.assertIn(b'Source hash mismatch', result.stderr)
             self.assertFalse(output.exists())
+
+    def test_png_compression_is_irrelevant_but_changed_pixels_fail(self):
+        folder = ROOT / 'art-source/entregas/2026-10_mundo/ui/iconos'
+        png, receipt = folder / 'idolo.png', folder / 'entrega.json'
+        original, original_receipt = png.read_bytes(), receipt.read_bytes()
+        def update_receipt():
+            data = json.loads(original_receipt)
+            next(x for x in data['icons'] if x['id'] == 'idolo')['pngSha256'] = hashlib.sha256(png.read_bytes()).hexdigest()
+            receipt.write_text(json.dumps(data))
+        def verify():
+            return subprocess.run(['node', 'tools/factory/export-runtime-icons.js'], cwd=ROOT, capture_output=True)
+        try:
+            with Image.open(png) as source:
+                image = source.copy()
+            image.save(png, compress_level=0)
+            self.assertNotEqual(png.read_bytes(), original)
+            update_receipt()
+            result = verify()
+            self.assertEqual(result.returncode, 0, result.stderr.decode())
+            image.putpixel((0, 0), (255, 0, 0, 255))
+            image.save(png, compress_level=0)
+            update_receipt()
+            result = verify()
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn(b'Export pixels differ', result.stderr)
+        finally:
+            png.write_bytes(original)
+            receipt.write_bytes(original_receipt)
 
 if __name__ == '__main__':
     unittest.main()
