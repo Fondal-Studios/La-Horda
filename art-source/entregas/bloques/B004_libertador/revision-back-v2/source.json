@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "scope": "CANDIDATE_REPAIR_NOT_APPROVED",
+  "atlas": "art-source/entregas/bloques/B004_libertador/campeones/atlas.png",
+  "atlasGitBlobSha": "5ba98ab90d0678814f042e9db47a5f9dca74f7ef",
+  "frames": [
+    9,
+    20,
+    21,
+    8,
+    10,
+    11,
+    23
+  ],
+  "replacements": [
+    {
+      "frame": 9,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-back-v1/source.png",
+      "sourceGitBlobSha": "c86cf2c9a2cc2d96a0cd9b1e5144f52f31e5c2b5",
+      "rect": [
+        444,
+        0,
+        887,
+        444
+      ]
+    },
+    {
+      "frame": 20,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-back-v1/source.png",
+      "sourceGitBlobSha": "c86cf2c9a2cc2d96a0cd9b1e5144f52f31e5c2b5",
+      "rect": [
+        0,
+        444,
+        444,
+        887
+      ],
+      "targetHeight": 76
+    },
+    {
+      "frame": 21,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-back-v1/source.png",
+      "sourceGitBlobSha": "c86cf2c9a2cc2d96a0cd9b1e5144f52f31e5c2b5",
+      "rect": [
+        444,
+        444,
+        887,
+        887
+      ]
+    },
+    {
+      "frame": 8,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-back-v2/source.png",
+      "sourceGitBlobSha": "32a73a344cc74587a03f252fbde61c2304e3ee82",
+      "rect": [
+        0,
+        0,
+        552,
+        745
+      ]
+    },
+    {
+      "frame": 10,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-back-v2/source.png",
+      "sourceGitBlobSha": "32a73a344cc74587a03f252fbde61c2304e3ee82",
+      "rect": [
+        552,
+        0,
+        1056,
+        745
+      ]
+    },
+    {
+      "frame": 11,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-back-v2/source.png",
+      "sourceGitBlobSha": "32a73a344cc74587a03f252fbde61c2304e3ee82",
+      "rect": [
+        1056,
+        0,
+        1584,
+        745
+      ]
+    },
+    {
+      "frame": 23,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-back-v2/source.png",
+      "sourceGitBlobSha": "32a73a344cc74587a03f252fbde61c2304e3ee82",
+      "rect": [
+        1584,
+        0,
+        2112,
+        745
+      ]
+    }
+  ],
+  "approvalClaimed": false,
+  "installed": false,
+  "note": "Reuse v1 native-passing9/21; adjust20 body uniformly via tested factory targetHeight; preserve original valid22. Redraw only8/10/11/23. Orientation13 and runtime still pending."
+}
