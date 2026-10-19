@@ -13,12 +13,10 @@
       "P2": 662
     },
     "por_estado": {
-      "CANDIDATO_FIX": 2,
       "ENTREGADO_PNG_RUNTIME_EXISTENTE": 19,
-      "EN_CORRECCION_VISUAL": 3,
+      "EN_CORRECCION_VISUAL": 13,
       "INTEGRADO_MAIN": 3,
-      "PENDIENTE": 1214,
-      "TECNICO_VERIFICADO_REVISION_PENDIENTE": 3
+      "PENDIENTE": 1209
     },
     "sin_integracion_documentada": 1241,
     "exportaciones_runtime_documentadas": 19
@@ -89,19 +87,24 @@
     },
     {
       "lote": "B001_soporte",
-      "estado": "TECNICO_VERIFICADO",
+      "estado": "FIX_NATIVE_NO_INTEGRAR",
       "manifiesto": "art-source/entregas/bloques/B001_soporte/entrega.json",
       "pendientes": [
-        "Aprobación visual del dueño e integración por Claude."
+        "Auditoría nativa: 1/36 cuadros fallan; evidencia detallada en docs/production/authored-candidate-results-20261019.json.",
+        "Redibujo nativo del cuadro 11: original y dos reemplazos fallan ILUSTRACION.",
+        "Después, revisión visual de identidad/animaciones y pruebas de runtime; autorización de trabajo ya otorgada."
       ],
-      "preferida": true
+      "preferida": true,
+      "evidencia_actual": "art-source/entregas/bloques/B001_soporte/revision-frame11/ESTADO.md",
+      "estado_tecnico": "FIX_NATIVE"
     },
     {
       "lote": "B002_tanque",
       "estado": "EN_CORRECCION",
-      "estado_tecnico": "TECNICO_VERIFICADO",
+      "estado_tecnico": "FIX_NATIVE",
       "manifiesto": "art-source/entregas/bloques/B002_tanque/entrega.json",
       "pendientes": [
+        "Auditoría nativa: 19/36 cuadros fallan; evidencia detallada en docs/production/authored-candidate-results-20261019.json.",
         "Continuidad de espada24–26,29 y escala entre vistas."
       ],
       "preferida": true
@@ -111,9 +114,11 @@
       "estado": "EN_CORRECCION",
       "manifiesto": "art-source/entregas/bloques/B003_guerrero/entrega.json",
       "pendientes": [
+        "Auditoría nativa: 36/36 cuadros fallan; evidencia detallada en docs/production/authored-candidate-results-20261019.json.",
         "StyleGate y45px de halo siguen fallando."
       ],
-      "preferida": false
+      "preferida": false,
+      "estado_tecnico": "FIX_NATIVE"
     },
     {
       "lote": "B635_brasa_abisal",
@@ -125,6 +130,20 @@
         "Publicación pendiente de verificar"
       ],
       "commit_main": "fa2b5befa9eb57847f4e13dfd6cce7d35b457d35"
+    },
+    {
+      "lote": "B004_libertador",
+      "estado": "FIX_NATIVE_NO_INTEGRAR",
+      "manifiesto": "art-source/entregas/bloques/B004_libertador/entrega.json",
+      "commit_main": "a055278bc0e3ca3004a2cccf796fe36b8dfd40bc",
+      "pendientes": [
+        "Auditoría nativa: 7/36 cuadros fallan; evidencia detallada en docs/production/authored-candidate-results-20261019.json.",
+        "Redibujar estilo nativo cuadros 8,9,10,11,20,21,23",
+        "Corregir orientación13 y proporciones; normalización ya guardada",
+        "Validación visual y runtime"
+      ],
+      "preferida": true,
+      "estado_tecnico": "FIX_NATIVE"
     }
   ],
   "bloqueos_decision": [
@@ -145,7 +164,34 @@
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/tanque/hoja_36poses.png",
       "estado": "EN_CORRECCION_VISUAL",
       "version_reutilizable": "art-source/entregas/bloques/B002_tanque/entrega.json",
-      "bloque": "B002"
+      "bloque": "B002",
+      "revision_nativa": {
+        "estado": "FIX",
+        "cuadros_fallidos": [
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          25,
+          32,
+          33,
+          34,
+          35
+        ],
+        "evidencia": "docs/production/authored-candidate-results-20261019.json",
+        "run": 39292727298,
+        "source": "art-source/entregas/bloques/B002_tanque/campeones/tanque/hoja_36poses.png"
+      }
     },
     {
       "id": "tanque.cuerpo.muerte",
@@ -153,7 +199,34 @@
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/tanque/hoja_36poses.png",
       "estado": "EN_CORRECCION_VISUAL",
       "version_reutilizable": "art-source/entregas/bloques/B002_tanque/entrega.json",
-      "bloque": "B002"
+      "bloque": "B002",
+      "revision_nativa": {
+        "estado": "FIX",
+        "cuadros_fallidos": [
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          25,
+          32,
+          33,
+          34,
+          35
+        ],
+        "evidencia": "docs/production/authored-candidate-results-20261019.json",
+        "run": 39292727298,
+        "source": "art-source/entregas/bloques/B002_tanque/campeones/tanque/hoja_36poses.png"
+      }
     },
     {
       "id": "tanque.cuerpo.golpe",
@@ -161,7 +234,34 @@
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/tanque/hoja_36poses.png",
       "estado": "EN_CORRECCION_VISUAL",
       "version_reutilizable": "art-source/entregas/bloques/B002_tanque/entrega.json",
-      "bloque": "B002"
+      "bloque": "B002",
+      "revision_nativa": {
+        "estado": "FIX",
+        "cuadros_fallidos": [
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          25,
+          32,
+          33,
+          34,
+          35
+        ],
+        "evidencia": "docs/production/authored-candidate-results-20261019.json",
+        "run": 39292727298,
+        "source": "art-source/entregas/bloques/B002_tanque/campeones/tanque/hoja_36poses.png"
+      }
     },
     {
       "id": "tanque.fx.habilidades",
@@ -183,25 +283,157 @@
       "id": "guerrero.cuerpo.lanzar",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/guerrero/hoja_36poses.png",
-      "estado": "PENDIENTE",
+      "estado": "EN_CORRECCION_VISUAL",
       "version_reutilizable": null,
-      "bloque": "B003"
+      "bloque": "B003",
+      "revision_nativa": {
+        "estado": "FIX",
+        "cuadros_fallidos": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        "evidencia": "docs/production/authored-candidate-results-20261019.json",
+        "run": 39292727298,
+        "source": "art-source/entregas/bloques/B003_guerrero/campeones/guerrero/hoja_36poses.png"
+      }
     },
     {
       "id": "guerrero.cuerpo.muerte",
       "prioridad": "P0",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/guerrero/hoja_36poses.png",
-      "estado": "CANDIDATO_FIX",
+      "estado": "EN_CORRECCION_VISUAL",
       "version_reutilizable": "art-source/entregas/2026-10-19_guerrero_revision_01/entrega.json",
-      "bloque": "B003"
+      "bloque": "B003",
+      "revision_nativa": {
+        "estado": "FIX",
+        "cuadros_fallidos": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        "evidencia": "docs/production/authored-candidate-results-20261019.json",
+        "run": 39292727298,
+        "source": "art-source/entregas/bloques/B003_guerrero/campeones/guerrero/hoja_36poses.png"
+      }
     },
     {
       "id": "guerrero.cuerpo.golpe",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/guerrero/hoja_36poses.png",
-      "estado": "PENDIENTE",
+      "estado": "EN_CORRECCION_VISUAL",
       "version_reutilizable": null,
-      "bloque": "B003"
+      "bloque": "B003",
+      "revision_nativa": {
+        "estado": "FIX",
+        "cuadros_fallidos": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        "evidencia": "docs/production/authored-candidate-results-20261019.json",
+        "run": 39292727298,
+        "source": "art-source/entregas/bloques/B003_guerrero/campeones/guerrero/hoja_36poses.png"
+      }
     },
     {
       "id": "guerrero.skin.nueva_1",
@@ -295,25 +527,55 @@
       "id": "soporte.cuerpo.lanzar",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/soporte/hoja_36poses.png",
-      "estado": "TECNICO_VERIFICADO_REVISION_PENDIENTE",
+      "estado": "EN_CORRECCION_VISUAL",
       "version_reutilizable": "art-source/entregas/bloques/B001_soporte/entrega.json",
-      "bloque": "B001"
+      "bloque": "B001",
+      "defecto_pendiente": "Cuadro 11 falla ILUSTRACION; ver revision-frame11/ESTADO.md. No es una espera de permiso del dueño.",
+      "revision_nativa": {
+        "estado": "FIX",
+        "cuadros_fallidos": [
+          11
+        ],
+        "evidencia": "docs/production/authored-candidate-results-20261019.json",
+        "run": 39292727298,
+        "source": "art-source/entregas/bloques/B001_soporte/campeones/soporte/hoja_36poses.png"
+      }
     },
     {
       "id": "soporte.cuerpo.golpe",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/soporte/hoja_36poses.png",
-      "estado": "TECNICO_VERIFICADO_REVISION_PENDIENTE",
+      "estado": "EN_CORRECCION_VISUAL",
       "version_reutilizable": "art-source/entregas/bloques/B001_soporte/entrega.json",
-      "bloque": "B001"
+      "bloque": "B001",
+      "defecto_pendiente": "Cuadro 11 falla ILUSTRACION; ver revision-frame11/ESTADO.md. No es una espera de permiso del dueño.",
+      "revision_nativa": {
+        "estado": "FIX",
+        "cuadros_fallidos": [
+          11
+        ],
+        "evidencia": "docs/production/authored-candidate-results-20261019.json",
+        "run": 39292727298,
+        "source": "art-source/entregas/bloques/B001_soporte/campeones/soporte/hoja_36poses.png"
+      }
     },
     {
       "id": "soporte.cuerpo.muerte",
       "prioridad": "P0",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/soporte/hoja_36poses.png",
-      "estado": "TECNICO_VERIFICADO_REVISION_PENDIENTE",
+      "estado": "EN_CORRECCION_VISUAL",
       "version_reutilizable": "art-source/entregas/bloques/B001_soporte/entrega.json",
-      "bloque": "B001"
+      "bloque": "B001",
+      "defecto_pendiente": "Cuadro 11 falla ILUSTRACION; ver revision-frame11/ESTADO.md. No es una espera de permiso del dueño.",
+      "revision_nativa": {
+        "estado": "FIX",
+        "cuadros_fallidos": [
+          11
+        ],
+        "evidencia": "docs/production/authored-candidate-results-20261019.json",
+        "run": 39292727298,
+        "source": "art-source/entregas/bloques/B001_soporte/campeones/soporte/hoja_36poses.png"
+      }
     },
     {
       "id": "soporte.skin.nueva_1",
@@ -535,33 +797,93 @@
       "id": "libertador.cuerpo.ataque_abajo",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/libertador/hoja_36poses.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B004"
+      "estado": "EN_CORRECCION_VISUAL",
+      "version_reutilizable": "art-source/entregas/bloques/B004_libertador/entrega.json",
+      "bloque": "B004",
+      "revision_nativa": {
+        "estado": "FIX",
+        "cuadros_fallidos": [
+          8,
+          9,
+          10,
+          11,
+          20,
+          21,
+          23
+        ],
+        "evidencia": "docs/production/authored-candidate-results-20261019.json",
+        "run": 39292727298,
+        "source": "art-source/entregas/bloques/B004_libertador/campeones/atlas.png"
+      }
     },
     {
       "id": "libertador.cuerpo.ataque_arriba",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/libertador/hoja_36poses.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B004"
+      "estado": "EN_CORRECCION_VISUAL",
+      "version_reutilizable": "art-source/entregas/bloques/B004_libertador/entrega.json",
+      "bloque": "B004",
+      "revision_nativa": {
+        "estado": "FIX",
+        "cuadros_fallidos": [
+          8,
+          9,
+          10,
+          11,
+          20,
+          21,
+          23
+        ],
+        "evidencia": "docs/production/authored-candidate-results-20261019.json",
+        "run": 39292727298,
+        "source": "art-source/entregas/bloques/B004_libertador/campeones/atlas.png"
+      }
     },
     {
       "id": "libertador.cuerpo.golpe",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/libertador/hoja_36poses.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B004"
+      "estado": "EN_CORRECCION_VISUAL",
+      "version_reutilizable": "art-source/entregas/bloques/B004_libertador/entrega.json",
+      "bloque": "B004",
+      "revision_nativa": {
+        "estado": "FIX",
+        "cuadros_fallidos": [
+          8,
+          9,
+          10,
+          11,
+          20,
+          21,
+          23
+        ],
+        "evidencia": "docs/production/authored-candidate-results-20261019.json",
+        "run": 39292727298,
+        "source": "art-source/entregas/bloques/B004_libertador/campeones/atlas.png"
+      }
     },
     {
       "id": "libertador.cuerpo.muerte",
       "prioridad": "P0",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/libertador/hoja_36poses.png",
-      "estado": "CANDIDATO_FIX",
-      "version_reutilizable": "art-source/entregas/2026-10-19_libertador_24poses/entrega.json",
-      "bloque": "B004"
+      "estado": "EN_CORRECCION_VISUAL",
+      "version_reutilizable": "art-source/entregas/bloques/B004_libertador/entrega.json",
+      "bloque": "B004",
+      "revision_nativa": {
+        "estado": "FIX",
+        "cuadros_fallidos": [
+          8,
+          9,
+          10,
+          11,
+          20,
+          21,
+          23
+        ],
+        "evidencia": "docs/production/authored-candidate-results-20261019.json",
+        "run": 39292727298,
+        "source": "art-source/entregas/bloques/B004_libertador/campeones/atlas.png"
+      }
     },
     {
       "id": "libertador.fx.habilidades",
