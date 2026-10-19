@@ -1,0 +1,45 @@
+{
+  "status": "SOURCE_ONLY_NOT_APPROVED",
+  "sourceSha256": "12c3923916a95e5de0b051d7df0e1887ff3a378dc92c11df401c0a678cacb57b",
+  "operations": [
+    "binarize",
+    "fragments"
+  ],
+  "replacements": [
+    {
+      "frame": 20,
+      "rect": [
+        0,
+        0,
+        760,
+        724
+      ],
+      "targetHeight": 66,
+      "technicalNormalization": {}
+    },
+    {
+      "frame": 21,
+      "rect": [
+        760,
+        0,
+        1464,
+        724
+      ],
+      "targetHeight": 66,
+      "technicalNormalization": {
+        "fragments": 1
+      }
+    },
+    {
+      "frame": 23,
+      "rect": [
+        1464,
+        0,
+        2172,
+        724
+      ],
+      "targetHeight": 66,
+      "technicalNormalization": {}
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "status": "SOURCE_ONLY_NOT_APPROVED",
+  "approvalClaimed": false,
+  "installed": false,
+  "atlas": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/preflight-v2/atlas.png",
+  "atlasGitBlobSha": "29940a88c1bffd9221be909c1c420a29cd8ca7ff",
+  "frames": [
+    8,
+    10,
+    20,
+    21,
+    23
+  ],
+  "runtimeContractPolicy": "PRESERVE61_FRAME_FOOT_AND_MOUNTED_PACK",
+  "replacements": [
+    {
+      "frame": 8,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-native-v2/source.png",
+      "sourceGitBlobSha": "13ee69951c9dbb4bce21ba62d30fb4add820577e",
+      "rect": [
+        0,
+        0,
+        512,
+        560
+      ],
+      "targetHeight": 82
+    },
+    {
+      "frame": 10,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-native-v2/source.png",
+      "sourceGitBlobSha": "13ee69951c9dbb4bce21ba62d30fb4add820577e",
+      "rect": [
+        512,
+        0,
+        1024,
+        560
+      ],
+      "targetHeight": 81
+    },
+    {
+      "frame": 20,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-native-v2/source.png",
+      "sourceGitBlobSha": "13ee69951c9dbb4bce21ba62d30fb4add820577e",
+      "rect": [
+        1024,
+        0,
+        1536,
+        560
+      ],
+      "targetHeight": 66
+    },
+    {
+      "frame": 21,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-native-v2/source.png",
+      "sourceGitBlobSha": "13ee69951c9dbb4bce21ba62d30fb4add820577e",
+      "rect": [
+        0,
+        560,
+        512,
+        1024
+      ],
+      "targetHeight": 66
+    },
+    {
+      "frame": 23,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-native-v2/source.png",
+      "sourceGitBlobSha": "13ee69951c9dbb4bce21ba62d30fb4add820577e",
+      "rect": [
+        512,
+        560,
+        1024,
+        1024
+      ],
+      "targetHeight": 66
+    }
+  ]
+}
