@@ -66,7 +66,7 @@ function renderStarterSelect(){
   const allBtn = document.getElementById("starter-all-btn");
   if(allBtn){
     allBtn.classList.toggle("hidden", ord.all.length <= ord.rec.length);
-    allBtn.textContent = _starterAll ? "‹ Solo los recomendados" : `Ver los ${ord.all.length} guardianes`;
+    allBtn.textContent = _starterAll ? "‹ Solo los recomendados" : `Ver los ${ord.all.length} guardianes para empezar`;
   }
   grid.innerHTML = ord.all.map(c=>{
     const cls = CLASSES[c.id], reco = recIds.has(c.id);

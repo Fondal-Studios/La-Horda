@@ -101,7 +101,7 @@ function codexCounts(){
   const cs = cre.map(codexCreatureState), bs = CODEX_BOSSES.map(codexBossState);
   const arenas = CAMPAIGN_ORDER.filter(a=>!ARENA_MODS[a].comingSoon);
   return {
-    champs:[CHAMPION_CATALOG.filter(c=>championInProgression(c.id) && save.champions[c.id] && save.champions[c.id].unlocked).length, CHAMPION_CATALOG.filter(c=>championInProgression(c.id)).length],
+    champs:(()=>{ const n = championCounts(); return [n.owned, n.obtainable]; })(), // misma fuente que el starter y los logros (championCounts)
     creatures:[cs.filter(codexKnown).length, cre.length, cs.filter(codexFullyKnown).length],
     bosses:[bs.filter(codexKnown).length, CODEX_BOSSES.length, bs.filter(codexFullyKnown).length],
     arenas:[arenas.filter(codexArenaCleared).length, arenas.length]
