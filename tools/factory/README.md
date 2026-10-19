@@ -60,7 +60,7 @@ Estas pruebas se complementan: recursos finitos no demuestran daño correcto, la
 
 ### Evidencia de producción y exportaciones existentes
 
-- `python3 tools/factory/reconcile-art-production.py [--write]`: concilia únicamente las integraciones explícitas de `docs/production/art-integrations.json`. Comprueba ascendencia del merge, metadatos, hashes de fuente/atlas, dimensiones y pruebas guardadas antes de tocar el inventario. Un PNG existente no cierra una tarea. Publicación se comprueba por separado.
+- `python3 tools/factory/reconcile-art-production.py [--write]`: concilia únicamente las integraciones explícitas de `docs/production/art-integrations.json`. Comprueba ascendencia del merge, metadatos, hashes de fuente/atlas, dimensiones y pruebas guardadas antes de tocar el inventario. Las exportaciones PXI requieren además comprobar el merge, la correspondencia exacta tarea/bloque, el hash del renderizador, PNG/RGBA y coincidencia con el renderizador real (necesita Playwright/Chromium). Un PNG existente no cierra una tarea. Publicación se comprueba por separado.
 - `node tools/factory/export-runtime-icons.js [--write]`: exporta 19 íconos pendientes usando `_pxiCanvas` real, con paleta, nombres accesibles y hashes RGBA. Sin `--write` exige coincidencia exacta de píxeles RGBA y recibo (incluye hash del PNG guardado; admite diferencias de compresión del navegador). No crea diseños nuevos.
 - `python3 tools/factory/prepare-grid-atlas.py FUENTE SALIDA`: preparación técnica en staging, con el normalizador/importador existentes. No instala ni aprueba arte.
 - `python3 tools/factory/replace-authored-frame.py MANIFIESTO SALIDA`: ensambla un reemplazo de autor con hashes; conserva los otros 35 cuadros sin cambios. No aprueba arte.
