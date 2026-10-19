@@ -22,7 +22,16 @@ function harness(href,initial={}){
  main.data.delete(main.run('ACCOUNT_KEY'));
  const loggedOut=harness('https://fondalstudios.com/la-horda/jugar/',Object.fromEntries(main.data));
  assert.equal(loggedOut.run('accountState().logged'),false,'legacy migration cannot resurrect logged-out session');
- const other=harness('https://fondalstudios.com/la-horda/jugar/?server=wss://manual.example.test',{horda_account:legacy});
+ // An unaccepted URL stays on the canonical environment and cannot receive the main token.
+ const blocked=harness('https://fondalstudios.com/la-horda/jugar/?server=wss://manual.example.test',{horda_account:legacy});
+ assert.equal(blocked.run('netInitialServer()'),'wss://fondalstudios.com/la-horda/red','unaccepted host falls back to official relay');
+ assert.equal(blocked.run('netAcceptedHosts().length'),0,'a URL never accepts its own host');
+ assert.equal(blocked.run('acct.session.apiBase'),'https://fondalstudios.com/la-horda/red');
+ await blocked.run('accountFetch("GET","/api/save")');
+ assert.equal(blocked.calls[0].url,'https://fondalstudios.com/la-horda/red/api/save','unaccepted host receives no authenticated request');
+ // Explicit acceptance changes the environment; it must still never import the canonical session.
+ const other=harness('https://fondalstudios.com/la-horda/jugar/?server=wss://manual.example.test',{horda_account:legacy,horda_server_ok:JSON.stringify(['manual.example.test'])});
+ assert.equal(other.run('netEnvironment().kind'),'test','accepted manual host is a separate environment');
  assert.equal(other.run('accountState().logged'),false,'manual server never inherits main token');
  await other.run('accountFetch("GET","/api/save")');
  assert.equal(other.calls[0].options.headers.authorization,undefined);

@@ -1,21 +1,21 @@
 // Pruebas de los OBJETIVOS VARIADOS por arena (js/arenas/common/arena-objectives.js).
-//   (python3 -m http.server 8771 &) ; node tools/identity/t_objectives.js [carpeta_capturas]
-//   variables: SE_BASE_URL (default http://127.0.0.1:8771), CHROMIUM_PATH (opcional)
-let chromium;
-try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
+//   node tools/identity/t_objectives.js [carpeta_capturas]
+//   variables: SE_BASE_URL (servidor externo; por omisión levanta uno propio en un puerto libre), CHROMIUM_PATH (opcional)
+const H = require('../lib/serve');
 const path = require('path');
-const BASE = process.env.SE_BASE_URL || 'http://127.0.0.1:8771';
+let BASE;
 const OUT = process.argv[2] || null;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL ') + n + (x !== undefined ? '  ' + JSON.stringify(x).slice(0, 300) : '')); if (!ok) fails++; };
 (async () => {
-  const browser = await chromium.launch({ args: ['--no-sandbox'], executablePath: process.env.CHROMIUM_PATH || undefined });
+  const site = await H.startSite({ envUrl: ['SE_BASE_URL'] }); BASE = site.url;   // servidor propio en puerto libre; SE_BASE_URL para uno externo
+  const browser = await H.launch();
   const page = await (await browser.newContext({ viewport: { width: 900, height: 506 } })).newPage();
   const errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
   page.on('console', m => { if (m.type() === 'error' && !/ERR_CERT|fonts\.g|net::/.test(m.text())) errors.push('console: ' + m.text().slice(0, 300)); });
   await page.addInitScript(() => { window.__campaignMode = true; });
-  await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded', timeout: 90000 });
+  await H.goto(page, `${BASE}/index.html`, { waitUntil: 'domcontentloaded', timeout: 90000 });
   for (let k = 0; k < 300; k++) { if (await page.evaluate(() => !document.getElementById('title-continue-btn').disabled)) break; await sleep(100); }
   await page.evaluate(() => { loop = function(){}; });
   const E = (fn, a) => page.evaluate(fn, a);
@@ -96,6 +96,6 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
 
   check('SIN_ERRORES', errors.length === 0, errors.slice(0, 5));
   console.log(fails ? `FALLAS: ${fails}` : 'OK todas');
-  await browser.close();
+  await browser.close(); await site.close();
   process.exit(fails ? 1 : 0);
 })();

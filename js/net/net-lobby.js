@@ -85,7 +85,7 @@ function netRenderLobbyBar(){
     const me = net.room.slots[net.slot] || {};
     const dup = netDuplicateChamps();
     const hostBusy = net.room.state!=="lobby";
-    bar._next = `<div class="net-row">${nameInput}<span class="net-code">SALA <b>${net.code}</b> · Anfitrión: ${(net.room.slots[0]||{}).name||"?"}</span>
+    bar._next = `<div class="net-row">${nameInput}<span class="net-code">SALA <b>${net.code}</b> · Anfitrión: ${guideEsc((net.room.slots[0]||{}).name||"?")}</span>
         <button class="btn small ${me.ready?"ready-on":""}" id="net-ready-btn" ${hostBusy?"disabled":""}>${me.ready ? "✔ LISTO" : "Marcar LISTO"}</button>
         <button class="btn secondary small" id="net-leave-btn">Salir de la sala</button></div>
       ${typeof lanesTeamHint==="function" ? lanesTeamHint() : ""}
@@ -199,7 +199,7 @@ function netRenderLobbySlots(){
     return `<div class="lobby-slot pc${i} ${you?"you":""} ${fb?"is-founder":""}">
       <div class="lobby-tag p${i}">${tag}</div>
       <canvas class="champ-anim lobby-anim" width="120" height="120" data-class-key="${key}" data-skin="${skin}" data-idle="1" data-ph="${i*1.3}" style="background:${cls.color}1c;"></canvas>
-      <div class="lobby-name" style="color:${NET_SLOT_COLORS[i]}">${s.name}</div>${fb ? `<div class="lobby-founder">${fb}</div>` : ""}
+      <div class="lobby-name" style="color:${NET_SLOT_COLORS[i]}">${guideEsc(s.name)}</div>${fb ? `<div class="lobby-founder">${fb}</div>` : ""}
       ${skin && (typeof skinDefOf==="function" ? skinDefOf(skin) : SET_SKINS[skin]) ? `<div class="lobby-skin">🎨 ${(typeof skinDefOf==="function" ? skinDefOf(skin) : SET_SKINS[skin]).name}</div>` : ""}
       <div class="lobby-meta">${cls.name} · ${NET_ROLE_LABEL[cls.roleCategory]||""}</div>
       <div class="lobby-meta">Nv. ${lv||1}</div>

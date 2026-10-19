@@ -248,6 +248,7 @@ function _passiveBucket(champKey){
   // automáticamente respeta también los talentos, sin que esa fórmula se entere de que existen.
   const all = equippedPassives(champKey).concat(talentPassives(champKey));
   for(const p of all) c.sums[p.effect] = (c.sums[p.effect]||0) + p.value;
+  if(typeof postgamePassiveCap==="function") postgamePassiveCap(c.sums, champKey); // postgame: tope de cada pasiva (solo el campeón con progreso de una partida de Cristales/Coliseo)
   return c;
 }
 function passiveSum(champKey, effect){

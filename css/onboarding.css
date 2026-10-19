@@ -95,6 +95,13 @@ body.reduce-motion .hub-play.hub-next{ animation:none; }
 #run-intro .ri-skip{ position:absolute; top:calc(8px + env(safe-area-inset-top, 0px)); left:calc(10px + env(safe-area-inset-left, 0px)); z-index:3;
   min-height:40px; min-width:40px; padding:4px 14px; font-family:var(--font-retro); font-size:1.1rem; letter-spacing:0.04em; }
 #run-intro .ri-skip.hidden{ display:none; }
+/* Carteles en mayúsculas con tilde (TU MISIÓN, PRÓLOGO, EL GUÍA): Press Start 2P no trae ÁÉÍÓÚ, así que estos usan VT323, que sí las
+   trae (pixel-font-fix.js los saltea). Tamaños un poco mayores: a igual px VT323 se ve más chica. */
+.keep-accents, #run-intro .ri-who.keep-accents, #run-intro .ri-arena.keep-accents, #run-intro .ri-act.keep-accents{ font-family:'VT323',monospace; text-transform:none; }
+#run-intro .ri-who.keep-accents{ font-size:1.05rem; letter-spacing:2px; }
+#run-intro .ri-arena.keep-accents{ font-size:1.6rem; line-height:1; letter-spacing:1px; }
+#run-intro .ri-act.keep-accents{ font-size:1rem; letter-spacing:2px; }
+@media (max-height:500px){ #run-intro .ri-who.keep-accents{ font-size:0.95rem; } #run-intro .ri-arena.keep-accents{ font-size:1.3rem; } }
 
 /* ---------- victoria: el "VICTORIA" entra agrandado (vicHeroIn) y durante 0,6 s asomaba scroll horizontal ---------- */
 #victory-screen{ overflow-x:hidden; }

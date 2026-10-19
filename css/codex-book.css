@@ -20,7 +20,7 @@
 .bk-left{ border-radius:3px 0 0 3px; box-shadow:inset -22px 0 24px -14px rgba(70,38,12,0.55), inset 0 0 40px rgba(110,70,24,0.35); }
 .bk-right{ border-radius:0 3px 3px 0; box-shadow:inset 22px 0 24px -14px rgba(70,38,12,0.55), inset 0 0 40px rgba(110,70,24,0.35); }
 .bk-art, .bk-art2{ position:absolute; inset:calc(var(--bk-h)*0.03); width:calc(100% - var(--bk-h)*0.06); height:calc(100% - var(--bk-h)*0.06); display:block; }
-.bk-text{ position:absolute; inset:0; padding:calc(var(--bk-h)*0.075) calc(var(--bk-h)*0.075) calc(var(--bk-h)*0.09) calc(var(--bk-h)*0.095); box-sizing:border-box; overflow:hidden;
+.bk-text{ position:absolute; inset:0; padding:calc(var(--bk-h)*0.065) calc(var(--bk-h)*0.075) calc(var(--bk-h)*0.08) calc(var(--bk-h)*0.095); box-sizing:border-box; overflow:hidden;
   display:flex; flex-direction:column; justify-content:center; text-align:left; }
 .bk-kicker{ font-family:'VT323',monospace; font-size:calc(var(--bk-h)*0.05); letter-spacing:0.14em; color:#8a4a1a; line-height:1.1; margin-bottom:calc(var(--bk-h)*0.012); text-transform:uppercase; }
 .bk-title{ margin:0 0 calc(var(--bk-h)*0.03); font-family:'VT323',monospace; font-weight:400; font-size:calc(var(--bk-h)*0.088); line-height:0.95; color:#4a1a0a; text-shadow:0 1px 0 rgba(255,240,200,0.6); }

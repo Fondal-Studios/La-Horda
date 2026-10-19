@@ -9,11 +9,10 @@
 //  - daltonismo: telegrafías con la paleta elegida, siempre con rayado, barras con marcas;
 //  - cuentas: sin la dirección cruda a la vista, con 3 beneficios; Tienda: fila "próxima meta" con 0 de oro y
 //    "lo que podés comprar ya" con oro, sin tocar precios.
-// Uso: node tools/ux/test-accessibility-prefs.js   (A11Y_PORT para elegir el puerto; CHROMIUM_PATH opcional)
+// Uso: node tools/ux/test-accessibility-prefs.js   (servidor propio en puerto libre; SE_BASE_URL para uno externo; CHROMIUM_PATH opcional)
 const assert=require('node:assert/strict'),{spawn}=require('node:child_process'),path=require('node:path');
-let chromium;try{({chromium}=require('playwright'));}catch(e){({chromium}=require('/opt/node22/lib/node_modules/playwright'));}
-const ROOT=path.resolve(__dirname,'../..'),PORT=+(process.env.A11Y_PORT||8847);
-const server=spawn('python3',['-m','http.server',String(PORT),'--bind','127.0.0.1'],{cwd:ROOT,stdio:'ignore'});
+const H=require('../lib/serve');
+let BASE;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 let checks=0;const ok=(c,m)=>{assert(c,m);checks++;console.log('PASS '+m);};
 async function load(browser,prefs){
@@ -21,15 +20,15 @@ async function load(browser,prefs){
  if(prefs!==undefined)await ctx.addInitScript(v=>{try{if(!sessionStorage.getItem('seeded')){localStorage.setItem('horda_prefs',v);sessionStorage.setItem('seeded','1');}}catch(e){}},prefs);
  const page=await ctx.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.route('https://fondalstudios.com/**',r=>r.fulfill({status:200,headers:{'access-control-allow-origin':'*'},contentType:'application/json',body:'{"ok":true}'}));
- await page.goto(`http://127.0.0.1:${PORT}/?lazy=0`,{waitUntil:'domcontentloaded'});
+ await H.goto(page,`${BASE}/?lazy=0`);
  await page.waitForFunction(()=>typeof startRun==='function'&&typeof shopOpen==='function'&&typeof renderMainMenu==='function'&&typeof assetsAllReady==='function'&&assetsAllReady(),null,{timeout:120000});
  return {ctx,page,errors};
 }
 const startPlay=page=>page.evaluate(()=>{for(const ck in save.champions){const s=save.champions[ck];s.unlocked=true;s.level=20;}
  selectedClass='mago';currentArena='bosque';lobbyAllies=['tanque'];netMatch=null;startRun(3);setState('playing');updateHUD();});
 (async()=>{
- await sleep(500);
- const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||chromium.executablePath(),args:['--no-sandbox']});
+ const site=await H.startSite({envUrl:['SE_BASE_URL']});BASE=site.url;
+ const browser=await H.launch();
  try{
   // ---- valores de fábrica ----
   let {ctx,page,errors}=await load(browser);
@@ -145,5 +144,5 @@ const startPlay=page=>page.evaluate(()=>{for(const ck in save.champions){const s
   ok(errors.length===0,'sin errores de página en el último contexto '+(errors[0]||''));
   console.log(`\n${checks} comprobaciones OK`);
  }catch(e){console.error('FAIL',e.message||e);process.exitCode=1;}
- finally{await browser.close();server.kill();}
+ finally{await browser.close();await site.close();}
 })();

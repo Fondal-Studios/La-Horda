@@ -38,14 +38,77 @@ function netNormalizeServer(value){
     return u.href.replace(/\/+$/,"");
   }catch(e){ return ""; }
 }
+/* ---- SERVIDORES NO OFICIALES (?server= / ?api= / horda_server) ----------------------------------------
+   Un enlace armado con ?server=wss://otro-host o un horda_server en localStorage mandaba el usuario y la clave
+   de la cuenta (login por la API) a un servidor ajeno. Ahora, un host que NO es oficial/permitido NO se usa
+   hasta que el jugador acepte un aviso en pantalla; mientras tanto el juego usa el servidor oficial. El uso
+   normal (sin parámetros, servidor oficial, el servidor anterior de Render, localhost para desarrollo) queda
+   idéntico y sin avisos. La aceptación vale solo para esta pestaña (sessionStorage) y recarga la página, así
+   la cuenta y el relay quedan atados al mismo servidor desde el arranque. */
+const NET_TRUSTED_HOSTS = ["fondalstudios.com", "la-horda-relay.onrender.com"];
+const NET_DEV_HOSTS = ["localhost", "127.0.0.1", "[::1]"];
+const NET_OK_KEY = "horda_server_ok";
+function netHostOfficial(url){
+  try{
+    const u = new URL(String(url||"")), h = u.hostname;
+    if(NET_DEV_HOSTS.includes(h)) return true;
+    let own = ""; try{ own = new URL(NET_CONFIG.serverUrl).hostname; }catch(e){}
+    if(h !== own && !NET_TRUSTED_HOSTS.includes(h)) return false;
+    return (u.protocol === "wss:" || u.protocol === "https:") && !u.port; // un host oficial con otro puerto u otro protocolo no cuenta
+  }catch(e){ return false; }
+}
+function netAcceptedHosts(){ try{ const a = JSON.parse(sessionStorage.getItem(NET_OK_KEY)||"[]"); return Array.isArray(a) ? a : []; }catch(e){ return []; } }
+function netHostKey(url){ try{ const u = new URL(String(url||"")); return u.host; }catch(e){ return ""; } }
+// ¿Se puede usar este servidor/API ya? (oficial, desarrollo local o aceptado por el jugador en esta pestaña)
+function netServerAllowed(url){ return netHostOfficial(url) || netAcceptedHosts().includes(netHostKey(url)); }
+let _netPromptHost = "";
+// Pide la confirmación una sola vez por host. source: "param" (enlace) | "stored" (horda_server) | "api" (?api=)
+function netAskUnofficial(url, source){
+  const host = netHostKey(url); if(!host || _netPromptHost === host) return;
+  _netPromptHost = host;
+  const show = ()=>{
+    if(document.getElementById("net-unofficial")) return;
+    const box = document.createElement("div"); box.id = "net-unofficial"; box.setAttribute("role","alertdialog"); box.setAttribute("aria-modal","true");
+    box.style.cssText = "position:fixed;inset:0;z-index:2147483000;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;padding:16px;font-family:system-ui,sans-serif";
+    const card = document.createElement("div");
+    card.style.cssText = "max-width:460px;background:#1b1420;color:#f3ead8;border:2px solid #d9a441;border-radius:10px;padding:18px;line-height:1.45;font-size:16px";
+    const p = document.createElement("p"); p.style.margin = "0 0 14px";
+    p.textContent = "Este enlace quiere conectarte a un servidor no oficial: " + host + ". Podrían ver tu usuario y contraseña. ¿Continuar?";
+    const row = document.createElement("div"); row.style.cssText = "display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap";
+    const no = document.createElement("button"), yes = document.createElement("button");
+    no.id = "net-unofficial-no"; yes.id = "net-unofficial-yes";
+    no.textContent = "No, usar el servidor oficial"; yes.textContent = "Continuar";
+    for(const b of [no, yes]) b.style.cssText = "min-height:44px;padding:8px 14px;border-radius:8px;border:1px solid #d9a441;background:#2a1f33;color:#f3ead8;font-size:15px;cursor:pointer";
+    yes.style.background = "#6b2323";
+    no.onclick = ()=>{
+      try{ if(source === "stored") localStorage.removeItem("horda_server"); }catch(e){}
+      try{ const q = new URLSearchParams(location.search); if(source === "param") q.delete("server"); if(source === "api") q.delete("api");
+        history.replaceState(null, "", location.pathname + (q.toString() ? "?" + q : "") + location.hash); }catch(e){}
+      box.remove();
+    };
+    yes.onclick = ()=>{
+      try{ const a = netAcceptedHosts(); if(!a.includes(host)) a.push(host); sessionStorage.setItem(NET_OK_KEY, JSON.stringify(a)); }catch(e){}
+      location.reload();
+    };
+    row.append(no, yes); card.append(p, row); box.append(card); document.body.append(box); no.focus();
+  };
+  if(document.body) show(); else document.addEventListener("DOMContentLoaded", show);
+}
+// Devuelve la URL si se puede usar; si no, pide confirmación y devuelve "" (el llamador cae al servidor oficial).
+function netGateServer(url, source){
+  if(!url || netServerAllowed(url)) return url;
+  netAskUnofficial(url, source);
+  return "";
+}
 function netInitialServer(){
+  const official = netNormalizeServer(NET_CONFIG.serverUrl);
   try{
     const q=new URLSearchParams(location.search).get("server");
-    if(q) return netNormalizeServer(q);
+    if(q){ const n = netNormalizeServer(q); return n ? (netGateServer(n, "param") || official) : n; }
     const stored=localStorage.getItem("horda_server");
-    if(stored) return netNormalizeServer(stored);
+    if(stored){ const n = netNormalizeServer(stored); return n ? (netGateServer(n, "stored") || official) : n; }
   }catch(e){}
-  return netNormalizeServer(NET_CONFIG.serverUrl);
+  return official;
 }
 function netServerUrl(){ return net.serverOverride ? netNormalizeServer(net.serverOverride) : netInitialServer(); }
 function netEnvironment(url){

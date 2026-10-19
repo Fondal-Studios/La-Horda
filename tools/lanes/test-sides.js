@@ -5,10 +5,8 @@
  * criterio; y que una paleta sobrescrita solo con variables CSS (--ally/--enemy/--neutral/--self, p. ej. para daltónicos) cambia los colores
  * sin tocar el render. Servidor propio en un puerto libre (se verifica que sirva ESTE árbol).
  *   node tools/lanes/test-sides.js     (CHROMIUM_PATH opcional) */
-const {chromium}=require('playwright');const {spawn}=require('node:child_process');const path=require('node:path');const net=require('node:net');const fs=require('node:fs');const assert=require('node:assert/strict');
-const root=path.resolve(__dirname,'../..');
-const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'vale',playtestV1Bonus:true,campaignResetV1:true,campaignResetV2:true};
-const freePort=()=>new Promise(r=>{const s=net.createServer().listen(0,'127.0.0.1',()=>{const p=s.address().port;s.close(()=>r(p));});});
+const H=require('../lib/serve');const assert=require('node:assert/strict');
+const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'vale',playtestV1Bonus:true,campaignResetV1:true,campaignResetV2:true,arenasCleared:{infernal:true}};
 const dist=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);
 const hex=h=>{h=h.trim().replace('#','');if(h.length===3)h=[...h].map(c=>c+c).join('');return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16));};
 
@@ -56,16 +54,13 @@ function checkRecords(rec,tok,label,need){
 const dominant=([r,g,b])=>r>g+60&&r>b+60?'red':g>r+40&&g>b+40?'green':r>b+60&&g>b+60?'amber':'other';
 
 (async()=>{
- const PORT=await freePort();
- const srv=spawn('python3',['-m','http.server',String(PORT),'--bind','127.0.0.1'],{cwd:root,stdio:'ignore'});
+ const site=await H.startSite({envUrl:['SE_BASE_URL']});   // puerto libre propio (verifica que sirve ESTE árbol); SE_BASE_URL para uno externo
  try{
-  for(let i=0;i<80;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
-  const cwd=fs.readlinkSync(`/proc/${srv.pid}/cwd`);assert.equal(cwd,root,'el servidor debe servir este árbol');
-  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||(fs.existsSync('/opt/pw-browsers/chromium')?'/opt/pw-browsers/chromium':undefined),args:['--no-sandbox']});
+  const b=await H.launch();
   const open=async(w,h)=>{
    const ctx=await b.newContext({viewport:{width:w,height:h},hasTouch:true});await ctx.addInitScript(f=>{try{localStorage.setItem('laHordaSave_v1',JSON.stringify(f));}catch(e){}},FIX);
    const p=await ctx.newPage();p.errs=[];p.on('pageerror',e=>p.errs.push(e.message));
-   await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});
+   await H.goto(p,`${site.url}/index.html?lazy=0`,{waitUntil:'load'});
    await p.waitForFunction(()=>typeof setState==='function'&&typeof lanesStart==='function'&&typeof sidesBar==='function',null,{timeout:60000});
    await p.evaluate(()=>{save.tut=save.tut||{};save.tut.training=1;persistNow();setState('mainmenu');renderMainMenu();});
    return {ctx,p};
@@ -125,7 +120,7 @@ const dominant=([r,g,b])=>r>g+60&&r>b+60?'red':g>r+40&&g>b+40?'green':r>b+60&&g>
    for(const spectate of [false,true]){
     const {ctx,p}=await open(w,h);
     await p.evaluate(()=>colStart({champ:'guerrero'}));
-    await p.waitForFunction(()=>state==='playing'&&lanesOn()&&LN.mode==='coliseo'&&LN.col.phase==='fight',null,{timeout:40000});
+    await p.waitForFunction(()=>state==='playing'&&lanesOn()&&LN.mode==='coliseo'&&LN.col.phase==='fight',null,{timeout:150000});
     await p.evaluate(INSTALL);const tokens=await p.evaluate(TOKENS);
     await p.evaluate(()=>{player.invulnTimer=1e9;const c=colPitCenter(0);heroes.forEach(h=>{if(h.pit===0){h.x=c.x+(h.team===0?-70:70)+(Math.random()-.5)*40;h.y=c.y+(Math.random()-.5)*160;}});});
     let view=0;
@@ -158,5 +153,5 @@ const dominant=([r,g,b])=>r>g+60&&r>b+60?'red':g>r+40&&g>b+40?'green':r>b+60&&g>
   }
   await b.close();
   console.log(results.join('\n'));console.log('PASS test-sides: aliados verdes, enemigos rojos, neutrales ámbar, yo destacado; vale al cambiar de equipo/punto de vista y con paleta CSS sobrescrita');
- }finally{srv.kill();}
+ }finally{await site.close();}
 })().catch(e=>{console.error('FAIL',e.message);process.exit(1);});

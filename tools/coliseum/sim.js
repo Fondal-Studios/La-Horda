@@ -5,14 +5,14 @@
  * nada tira excepciones ni NaN y el guardado real queda como estaba.
  * Uso: node tools/coliseum/sim.js [torneos=3] [segundos=900] */
 const {chromium}=require('playwright');const {spawn}=require('node:child_process');const path=require('node:path');const assert=require('node:assert/strict');
-const N=Number(process.argv[2])||3,SECS=Number(process.argv[3])||900,PORT=8905,CHAMPS=process.argv.slice(4);
+const N=Number(process.argv[2])||3,SECS=Number(process.argv[3])||900,PORT=+process.env.LH_PORT||8905,CHAMPS=process.argv.slice(4);
 const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__dirname,'../..'),stdio:'ignore'});
 (async()=>{
  for(let i=0;i<60;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});const context=await b.newContext();
  for(let g=0;g<N;g++){
   const p=await context.newPage({viewport:{width:844,height:390}}),errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push('console:'+m.text());});
-  await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`);await p.waitForFunction(()=>typeof colStart==='function'&&typeof update==='function',null,{timeout:60000});
+  await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});await p.waitForFunction(()=>typeof colStart==='function'&&typeof update==='function',null,{timeout:60000});
   const r=await p.evaluate(({secs,seed,champion})=>{
    setState('mainmenu');
    const champ=champion||['mago','tanque','soporte','guerrero'][seed%4],ok=colStart({champ,seed:seed+1});
