@@ -53,6 +53,9 @@ else:
     scanner=importlib.util.module_from_spec(scan_spec);scan_spec.loader.exec_module(scanner)
     (OUT/'scan.json').write_text(json.dumps(scanner.analyze(str(result)),indent=2,default=lambda v:v.item())+'\n')
     summary.update(status=report['status'],failedFrames=failed,retainedFrames=28,styleGate='PASS' if style.returncode==0 else 'FIX',atlasSha256=hashlib.sha256(result.read_bytes()).hexdigest())
+    comparison=[{'frame':r['frame'],'expected':r['before']['body'],'actual':r['after']['body'],'foot':r['after']['foot'],'relativeDeviation':abs(r['after']['body']-r['before']['body'])/r['before']['body']} for r in summary['bodyComparison']]
+    summary['sourceBodyGate']={'coverage':'SOURCE_PIXEL_MASS_NOT_RUNTIME_NORMALIZATION','status':'PASS' if all(r['relativeDeviation']<=.04 and r['foot']==106 for r in comparison) else 'FIX','rows':comparison}
+
     refs_spec=importlib.util.spec_from_file_location('candidate_refs',ROOT/'tools/art/gen-referencias.py')
     refs=importlib.util.module_from_spec(refs_spec);refs_spec.loader.exec_module(refs)
     refs.render({'src':str(result),'fw':112,'fh':112,'cols':4,'anchor':106/112},[{'etiqueta':'Ataque frontal','cuadros':[12,13,14,15]},{'etiqueta':'Espalda caminar','cuadros':[8,9,10,11]},{'etiqueta':'Espalda ataque','cuadros':[20,21,22,23]}],escala=3,titulo='B004 correccion de mosquete; candidato',pie='Diagnostico: no es aprobacion de arte',max_por_linea=4).save(OUT/'contact.png')
