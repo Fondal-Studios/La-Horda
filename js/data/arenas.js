@@ -45,8 +45,8 @@ const ARENA_MODS = {
   infernal: { label:"Arena Infernal",    icon:"🔥", desc:"Arena 10. La dimensión de la Horda. El final del viaje.", hazardName:"Ignición Eterna",
               fireDmgMult:0.8,  iceDmgMult:1.25, enemyDmgPerWave:0.22, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:0.6, heroDmgMult:1.0, enemyRegenPct:0, hazard:"ignicion", hasWalls:false,
-              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste (solo Pesadilla) ronda 46%.
-              tierMods:{ pesadilla:{ hp:0.4, dmg:0.3, bossDmg:0.6 } } },
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste (solo Pesadilla) ronda 35%; Normal da 33% en esta arena, por eso no se baja más.
+              tierMods:{ pesadilla:{ hp:0.45, dmg:0.35, bossDmg:0.65 } } },
   // Segunda arena por dificultad (entre Bosque y Hielo, ver ARENA_ORDER). Sin peligro ambiental
   // propio -su identidad de riesgo pasa por el roster (embestidas/descargas/agarres) más que
   // por un hazard de piso como las demás- y con una corriente suave que empuja (ver
