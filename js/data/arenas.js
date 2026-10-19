@@ -25,14 +25,14 @@ const ARENA_MODS = {
   bosque:   { label:"Ruinas Célticas / Élficas", icon:"🌲", desc:"Arena 03. Ruinas de un bosque sagrado. Acá espera el primer Guardián caído.", hazardName:"Niebla del Olvido",
               fireDmgMult:1.3, iceDmgMult:1.0, enemyDmgPerWave:0.14, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.90, enemyRegenPct:0.012, hazard:null, hasWalls:false,
-              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 3% (1/32); con este ajuste (solo Pesadilla) ronda 46%.
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 3% (1/32); con este ajuste (solo Pesadilla) da 42% (17/40).
               tierMods:{ pesadilla:{ hp:0.6, dmg:0.5, bossDmg:0.8 } } },
   hielo:    { label:"Arena Gélida",      icon:"❄", desc:"Arena 05. El frío es el enemigo. Acá espera el segundo Guardián.", hazardName:"Furia del Vendaval Helado",
               fireDmgMult:1.0,  iceDmgMult:1.0, enemyDmgPerWave:0.148, unlockLevel:0,
               heroSpeedMult:0.90, heroCdMult:1.10, heroEnergyRegenMult:0.85, abilityDmgMult:1.0, heroDmgMult:0.85, enemyRegenPct:0, hazard:"nova_gelida", hasWalls:false,
               // Pesadilla en la Gélida era un muro (0 de 18 victorias con Tanque/Mago/Cazadora a nivel 54, siempre en los niveles 5-7 por el Ángel de Hielo,
               // el Gólem y el Demonio de Hielo y Fuego): solo acá se baja la vida/daño de Pesadilla (difficulty-tiers.js, diffApplyToRun).
-              // Segunda pasada (PESADILLA_PAREJA.md): x0,5/0,4/0,7 todavía dejaba 16% (5/32); x0,35/0,3/0,55 -> ~67%.
+              // Segunda pasada (PESADILLA_PAREJA.md): x0,5/0,4/0,7 todavía dejaba 16% (5/32); x0,35/0,3/0,55 -> 70% (28/40).
               tierMods:{ pesadilla:{ hp:0.35, dmg:0.3, bossDmg:0.55 } } },
   laberinto:{ label:"Laberinto", icon:"🗿", desc:"Arena 07. Muros, sismos y maná escaso. Acá espera el tercer Guardián.", hazardName:"Maldición del Minotauro",
               fireDmgMult:1.0,  iceDmgMult:1.0, enemyDmgPerWave:0.16, unlockLevel:0,
@@ -40,12 +40,12 @@ const ARENA_MODS = {
               // Era un muro (~12% de victorias a nivel 30 vs ~37-40% en Hielo/Infernal): más pociones
               // (vida y maná, x2.2) y -20% de vida a todo lo que aparece -> ~33% en 40 partidas.
               potionMult:2.2, enemyHpMult:0.8,
-              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste (solo Pesadilla) ronda 50%.
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste (solo Pesadilla) da 58% (23/40).
               tierMods:{ pesadilla:{ hp:0.5, dmg:0.4, bossDmg:0.7 } } },
   infernal: { label:"Arena Infernal",    icon:"🔥", desc:"Arena 10. La dimensión de la Horda. El final del viaje.", hazardName:"Ignición Eterna",
               fireDmgMult:0.8,  iceDmgMult:1.25, enemyDmgPerWave:0.22, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:0.6, heroDmgMult:1.0, enemyRegenPct:0, hazard:"ignicion", hasWalls:false,
-              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste (solo Pesadilla) ronda 35%; Normal da 33% en esta arena, por eso no se baja más.
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste da 38% (6/16). Normal da 33% en esta arena, por eso no se baja más.
               tierMods:{ pesadilla:{ hp:0.45, dmg:0.35, bossDmg:0.65 } } },
   // Segunda arena por dificultad (entre Bosque y Hielo, ver ARENA_ORDER). Sin peligro ambiental
   // propio -su identidad de riesgo pasa por el roster (embestidas/descargas/agarres) más que
@@ -54,7 +54,7 @@ const ARENA_MODS = {
   acuatica: { label:"Arena Acuática",    icon:"🌊", desc:"Arena 06. Ruinas hundidas: el agua te mueve. Las Cicatrices se vuelven inestables.", hazardName:"Corriente Profunda",
               fireDmgMult:1.15, iceDmgMult:0.9, enemyDmgPerWave:0.15, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.88, enemyRegenPct:0, hazard:"corriente_acuatica", hasWalls:false,
-              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste (solo Pesadilla) ronda 58%.
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste (solo Pesadilla) da 58% (23/40).
               tierMods:{ pesadilla:{ hp:0.6, dmg:0.5, bossDmg:0.8 } } },
   // ARENA III (tercera en la campaña, entre la Acuática y el Hielo). Su peligro no es un hazard de
   // piso sino el MAPA: un recorrido largo por sectores con puentes que se reconfiguran y el Ciclo
@@ -64,7 +64,7 @@ const ARENA_MODS = {
               fireDmgMult:1.1, iceDmgMult:1.0, enemyDmgPerWave:0.12, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.87, enemyRegenPct:0, hazard:null, hasWalls:false,
               potionMult:1.25,
-              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 12% (4/32); con este ajuste (solo Pesadilla) ronda 62%.
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 12% (4/32); con este ajuste (solo Pesadilla) da 65% (26/40).
               tierMods:{ pesadilla:{ hp:0.6, dmg:0.5, bossDmg:0.8 } } },
   // ARENA IV (cuarta en la campaña, entre la Fortaleza y el Hielo). "EL ESCENARIO CRECE, MADURA Y
   // MUERE": el mapa entero es un organismo (la Madre Espora) con ciclo de vida por etapas, Núcleos
@@ -74,7 +74,7 @@ const ARENA_MODS = {
               fireDmgMult:1.15, iceDmgMult:1.0, enemyDmgPerWave:0.145, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.87, enemyRegenPct:0, hazard:null, hasWalls:false,
               potionMult:1.3,
-              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 34% (11/32); con este ajuste (solo Pesadilla) ronda 62%.
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 34% (11/32); con este ajuste (solo Pesadilla) da 62% (24/39).
               tierMods:{ pesadilla:{ hp:0.9, dmg:0.85, bossDmg:0.95 } } },
   // ARENA DEL ABISMO (entre el Hielo y el Laberinto; el orden final se revisa después). "EL TERRENO ES
   // UN RECURSO": ruinas suspendidas sobre el vacío con plataformas que se agrietan, colapsan y el
@@ -84,7 +84,7 @@ const ARENA_MODS = {
               fireDmgMult:1.0, iceDmgMult:1.0, enemyDmgPerWave:0.18, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.86, enemyRegenPct:0, hazard:null, hasWalls:false,
               potionMult:1.3,
-              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 25% (8/32); con este ajuste (solo Pesadilla) ronda 42%.
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 25% (8/32); con este ajuste (solo Pesadilla) da 40% (16/40).
               tierMods:{ pesadilla:{ hp:0.85, dmg:0.75, bossDmg:0.9 } } },
   // Arena Divina: la de asedio 4v4. Todavía sin combate (Fase 1: solo el escenario), así que
   // sin debuffs propios por ahora -esto se termina de calibrar cuando exista el combate de
@@ -114,7 +114,7 @@ Object.assign(ARENA_MODS, {
   minas:    { label:"Minas Profundas", icon:"⛏", desc:"Arena 09. La luz es territorio. Y el camino baja hasta la puerta del Infierno.", hazardName:"La Oscuridad",
               fireDmgMult:1.0, iceDmgMult:1.0, enemyDmgPerWave:0.17, unlockLevel:0, heroSpeedMult:1.0, heroCdMult:1.0, heroEnergyRegenMult:1.0, abilityDmgMult:1.0, heroDmgMult:0.86, enemyRegenPct:0, hazard:null, hasWalls:false,
               potionMult:1.3,
-              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 3% (1/32); con este ajuste (solo Pesadilla) ronda ~60%.
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 3% (1/32); con este ajuste (solo Pesadilla) da 50% (20/40).
               tierMods:{ pesadilla:{ hp:0.6, dmg:0.5, bossDmg:0.8 } } }
 });
 /* ORDEN CANÓNICO DE LA CAMPAÑA (Lore Bible: docs/lore/LA_HORDA_LORE_BIBLE.md). Los IDs internos NO
