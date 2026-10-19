@@ -5,7 +5,7 @@
    columna de fuego verde con cráneo cornudo y almas que entran. */
 
 /* ---------- TEJIDO (iria): triángulo de hilos finos con arte de cuerdas entre los lados, triskel que gira y tres agujas de luz en los vértices ---------- */
-ufDefForm('weave', {N: 40, tall: 1.5, dur: 3600, gdur: 3800, shake: 4,
+ufDefForm('weave', {N: 40, tall: 1.5, dur: 3600, gdur: 0, shake: 4,
   paint(L, o){
     const {P, R, cx, cy, q, f} = o, S = L.soft, Hd = L.hard, TAU = 6.2832, EY = .62, fray = ufC((q - .8) / .2, 0, 1);
     const V = [0, 1, 2].map(i => { const a = -1.5708 + i * 2.0944; return [cx + Math.cos(a) * R * .98, cy + Math.sin(a) * R * .98 * EY]; });
@@ -33,12 +33,10 @@ ufDefForm('weave', {N: 40, tall: 1.5, dur: 3600, gdur: 3800, shake: 4,
     // pulso de trama: el interior brilla tramado
     ufPoly(S, V, P.b, .1 + .08 * glow, ufKeep(fray * .9));
     if(fray > 0) for(let i = 0; i < 12; i++){ const v = V[i % 3], u = ufH(i, 5) * (1 - fray * .5); if(ufH(i, 6) > fray) ufPx(S, ufLerp(cx, v[0], u), ufLerp(cy, v[1], u) + fray * 6, P.d); }
-  },
-  gpaint(L, o){ const {P, R, cx, cy, q} = o; if(q < .2) return; const fade = ufC((q - .8) / .2, 0, 1), EY = .62;
-    for(let i = 0; i < 3; i++){ const a = -1.5708 + i * 2.0944, x = cx + Math.cos(a) * R * .98, y = cy + Math.sin(a) * R * .98 * EY; for(let s = 0; s < 4; s++) if(ufH(s, i + 2) > fade) ufPx(L.soft, x + (s - 1.5) * 3, y + (s & 1), s & 1 ? P.a : P.e); } }});
+  }});
 
 /* ---------- ECLIPSE (khepri): un disco negro con corona de oro se alza sobre la zona; debajo gira un huracán de escarabajos y al final todo estalla hacia afuera ---------- */
-ufDefForm('eclipse', {N: 40, tall: 2.0, dur: 3800, gdur: 4000, shake: 9,
+ufDefForm('eclipse', {N: 40, tall: 2.0, dur: 3800, gdur: 0, shake: 9,
   paint(L, o){
     const {P, R, cx, cy, q, f} = o, S = L.soft, Hd = L.hard, TAU = 6.2832, EY = .55, rise = ufEase(ufC((q - .12) / .18, 0, 1)), fin = ufC((q - .8) / .2, 0, 1), blast = ufEase(ufC((q - .8) / .2, 0, 1));
     const dc = [cx, cy - R * (.5 + 1.15 * rise)], dr = R * .46 * (.3 + .7 * rise), pul = Math.max(0, Math.sin(q * 52));
@@ -59,8 +57,8 @@ ufDefForm('eclipse', {N: 40, tall: 2.0, dur: 3800, gdur: 4000, shake: 9,
     if(dr > 3 && fin < 1){
       const cr = dr * (1.55 + .35 * pul), nr = 28;
       for(let i = 0; i < nr; i++){ const a = i * TAU / nr + q * .4, ln = cr * (i % 2 ? .78 : 1) * (.85 + .3 * ufH(i, 7)), wb = i % 2 ? .1 : .13;
-        if(fin > 0 && ufH(i, 8) < fin) continue; ufPoly(Hd, [[dc[0] + Math.cos(a - wb) * dr, dc[1] + Math.sin(a - wb) * dr], [dc[0] + Math.cos(a) * ln, dc[1] + Math.sin(a) * ln], [dc[0] + Math.cos(a + wb) * dr, dc[1] + Math.sin(a + wb) * dr]], i % 4 === 0 ? P.c : P.e === P.e ? P.e : P.c); }
-      ufDisc(S, dc[0], dc[1], dr * 1.28, P.c, .3 + .2 * pul);
+        if(fin > 0 && ufH(i, 8) < fin) continue; ufPoly(Hd, [[dc[0] + Math.cos(a - wb) * dr, dc[1] + Math.sin(a - wb) * dr], [dc[0] + Math.cos(a) * ln, dc[1] + Math.sin(a) * ln], [dc[0] + Math.cos(a + wb) * dr, dc[1] + Math.sin(a + wb) * dr]], i % 4 === 0 ? P.c : P.e); }
+      if(fin < .6) ufDisc(S, dc[0], dc[1], dr * 1.28, P.c, (.3 + .2 * pul) * (1 - fin / .6));
       const pieces = fin > 0 ? 3 : 1;
       for(let pi = 0; pi < pieces; pi++){ const a0 = pi * 2.0944 + .5, off = fin * R * .8, dx = Math.cos(a0 + 1.05) * off, dy = Math.sin(a0 + 1.05) * off + fin * fin * R * .6;
         if(pieces === 1) ufDisc(Hd, dc[0], dc[1], dr, P.o); else { const pts = [[dc[0] + dx, dc[1] + dy]]; for(let s = 0; s <= 8; s++){ const a = a0 + s / 8 * 2.0944; pts.push([dc[0] + dx + Math.cos(a) * dr, dc[1] + dy + Math.sin(a) * dr]); } ufPoly(Hd, pts, P.o, 1, ufKeep(fin * .9, pi)); } }
@@ -69,13 +67,10 @@ ufDefForm('eclipse', {N: 40, tall: 2.0, dur: 3800, gdur: 4000, shake: 9,
     }
     // chispas de oro que caen de la corona
     for(let i = 0; i < 12; i++){ const u = (ufH(i, 9) + q * 1.5) % 1, x = dc[0] + (ufH(i, 10) - .5) * dr * 3, y = dc[1] + dr + u * (cy - dc[1] - dr); if(rise > .5 && ufH(i, 11) > fin) ufPx(S, x, y, i & 1 ? P.c : P.e); }
-  },
-  gpaint(L, o){ const {P, R, cx, cy, q} = o; if(q < .14) return; const fade = ufC((q - .8) / .2, 0, 1), g = ufEase(ufC((q - .14) / .2, 0, 1));
-    ufEll(L.soft, cx, cy, R * .95 * g, R * .5 * g, P.d, .2 * (1 - fade), ufKeep(0));
-    for(let i = 0; i < 20; i++){ const a = ufH(i, 21) * 6.28, d = Math.sqrt(ufH(i, 22)) * R * .9 * g; if(ufH(i, 23) > fade) ufPx(L.soft, cx + Math.cos(a) * d, cy + Math.sin(a) * d * .5, i & 1 ? P.a : P.e); } }});
+  }});
 
 /* ---------- ARBOLEDA (maura): seis arbolitos espinosos brotan y caminan; cada pulso un seto de zarzas sale y vuelve ---------- */
-ufDefForm('grove', {N: 40, tall: 1.55, dur: 3600, gdur: 3800, shake: 5,
+ufDefForm('grove', {N: 40, tall: 1.55, dur: 3600, gdur: 0, shake: 5,
   paint(L, o){
     const {P, R, cx, cy, q, f} = o, S = L.soft, Hd = L.hard, TAU = 6.2832, EY = .55, wilt = ufC((q - .82) / .18, 0, 1), sprout = i => ufEase(ufC((q - .08 - i * .02) / .1, 0, 1));
     if(q < .12) ufEdgeMarks(S, o, 12, 'chev', P.a, 0, 1, 1.5708 * 3);
@@ -98,12 +93,10 @@ ufDefForm('grove', {N: 40, tall: 1.55, dur: 3600, gdur: 3800, shake: 5,
     }
     // hojas que caen al marchitarse
     if(wilt > 0) for(let i = 0; i < 24; i++){ const u = (ufH(i, 4) + wilt * 1.2) % 1, x = cx + (ufH(i, 5) - .5) * R * 1.8, y = cy - R * .6 + u * R * .7; if(ufH(i, 6) > wilt) ufPx(S, x + Math.sin(u * 9 + i) * 2, y, i & 1 ? P.a : P.c); }
-  },
-  gpaint(L, o){ const {P, R, cx, cy, q} = o; if(q < .1) return; const fade = ufC((q - .82) / .18, 0, 1);
-    for(let i = 0; i < 6; i++){ const a = i * 1.0472 + .5 + (ufH(i, 1) - .5) * .5, d = R * (.58 + .2 * ufH(i, 2)), x = cx + Math.cos(a) * d, y = cy + Math.sin(a) * d * .55; for(let s = 0; s < 5; s++) if(ufH(s, i + 9) > fade) ufPx(L.soft, x + (s - 2) * 3, y + 2 + (s & 1), s & 1 ? P.d : P.e); } }});
+  }});
 
 /* ---------- JARDÍN (morveth): hongos de sombrero púrpura brotan del borde al centro, un hongo gigante en medio y el micelio lleva olas de esporas ---------- */
-ufDefForm('garden', {N: 40, tall: 1.5, dur: 3600, gdur: 3800, shake: 5,
+ufDefForm('garden', {N: 40, tall: 1.5, dur: 3600, gdur: 0, shake: 5,
   paint(L, o){
     const {P, R, cx, cy, q, f} = o, S = L.soft, Hd = L.hard, TAU = 6.2832, EY = .58, burst = ufC((q - .8) / .2, 0, 1), pulses = [.26, .42, .58, .72];
     if(q < .14){ ufEdgeMarks(S, o, 12, 'dot', P.b, 0, 1); ufDisc(Hd, cx, cy - 2, 2 + 3 * q / .14, P.c); ufLine(S, cx, cy - 2, cx, cy - 2 - 8 * q / .14, 1, P.b); }
@@ -132,12 +125,10 @@ ufDefForm('garden', {N: 40, tall: 1.5, dur: 3600, gdur: 3800, shake: 5,
       ufLine(S, x, y, x + 1, y - 7 * g, 1, P.a); ufPx(S, x + 2, y - 7 * g, P.e); ufPx(S, x + 1, y - 7 * g + 1, P.e); ufPx(S, x + 3, y - 7 * g + 1, P.d); }
     // los hongos revientan: lluvia de esporas
     if(burst > 0) for(let i = 0; i < 46; i++){ const u = (ufH(i, 61) + burst * 1.4) % 1, x = cx + (ufH(i, 62) - .5) * R * 1.9, y = cy - R * (.9 - u * 1.1) - 4; if(ufH(i, 63) > burst * .95) ufPx(S, x + Math.sin(u * 7 + i) * 2, y, i % 3 === 0 ? P.c : i % 3 === 1 ? P.b : P.e); }
-  },
-  gpaint(L, o){ const {P, R, cx, cy, q} = o; if(q < .1) return; const fade = ufC((q - .8) / .2, 0, 1);
-    for(let i = 0; i < 22; i++){ const a = ufH(i, 71) * 6.28, d = Math.sqrt(ufH(i, 72)) * R * .9; if(ufH(i, 73) > fade) ufPx(L.soft, cx + Math.cos(a) * d, cy + Math.sin(a) * d * .58, i & 1 ? P.d : P.e); } }});
+  }});
 
 /* ---------- ALAMBIQUE (morwen): un alambique de cobre y vidrio se ensambla; cada burbuja que revienta suelta un eco con rostro que sube ---------- */
-ufDefForm('still', {N: 40, tall: 1.85, dur: 3800, gdur: 4000, shake: 4,
+ufDefForm('still', {N: 40, tall: 1.85, dur: 3800, gdur: 0, shake: 4,
   paint(L, o){
     const {P, R, cx, cy, q, f} = o, S = L.soft, Hd = L.hard, TAU = 6.2832, as = i => ufEase(ufC((q - .02 - i * .035) / .1, 0, 1)), cool = ufC((q - .84) / .16, 0, 1), brk = ufC((q - .86) / .14, 0, 1);
     if(q < .16) ufEdgeMarks(S, o, 12, 'hex', P.b, 0, 1);
@@ -171,13 +162,10 @@ ufDefForm('still', {N: 40, tall: 1.85, dur: 3800, gdur: 4000, shake: 4,
         if(face < .25) for(let s = 0; s < 6; s++){ const aa = s * 1.0472; ufPx(S, ex + Math.cos(aa) * (3 + face * 30), ey + Math.sin(aa) * (3 + face * 30), P.b); } } }
     // vapor ciruela que sale del cuello al final
     if(cool > 0) for(let i = 0; i < 8; i++){ const u = (ufH(i, 5) + cool) % 1; ufPx(S, cxC + (ufH(i, 6) - .5) * 8, yh - u * R * .6, P.d); }
-  },
-  gpaint(L, o){ const {P, R, cx, cy, q} = o; if(q < .16) return; const fade = ufC((q - .84) / .16, 0, 1);
-    for(let i = 0; i < 16; i++){ const a = ufH(i, 1) * 6.28, d = Math.sqrt(ufH(i, 2)) * R * .85; if(ufH(i, 3) > fade) ufPx(L.soft, cx + Math.cos(a) * d, cy + Math.sin(a) * d * .55, i & 1 ? P.d : P.a); }
-    if(q > .2) for(let i = 0; i < 5; i++) if(ufH(i, 9) > fade) ufPx(L.soft, cx + (i - 2) * R * .3, cy + 4, P.e); }});
+  }});
 
 /* ---------- LÁGRIMAS (myla): tres lágrimas gigantes caen, salpican yogur en corona y dejan charcos de bordes lobulados que se evaporan ---------- */
-ufDefForm('tears', {N: 36, tall: 1.9, dur: 3400, gdur: 3600, shake: 6,
+ufDefForm('tears', {N: 36, tall: 1.9, dur: 3400, gdur: 0, shake: 6,
   paint(L, o){
     const {P, R, cx, cy, q, f} = o, S = L.soft, Hd = L.hard, TAU = 6.2832, EY = .55, evap = ufC((q - .76) / .24, 0, 1);
     const fall = [.2, .38, .56], land = [[-.46, .1], [.42, -.12], [.02, .3]].map(([x, y]) => [cx + x * R, cy + y * R * EY / .55 * .75]);
@@ -200,12 +188,10 @@ ufDefForm('tears', {N: 36, tall: 1.9, dur: 3400, gdur: 3600, shake: 6,
     if(q > .3 && q < .8) for(let i = 0; i < 7; i++){ const u = (ufH(i, 5) + q * 2.6) % 1, x = cx + (ufH(i, 6) - .5) * R * 1.8, y = cy - R * 1.6 + u * R * 1.6; tear(x, y, 1.4, P.e, P.c, P.c); }
     // burbujitas de yogur que suben al evaporarse
     if(evap > 0) for(let i = 0; i < 14; i++){ const u = (ufH(i, 15) + evap) % 1, x = cx + (ufH(i, 16) - .5) * R * 1.4, y = cy - u * R * .9; if(ufH(i, 17) > evap) ufRing(Hd, x, y, 1.6, 1, P.b); }
-  },
-  gpaint(L, o){ const {P, R, cx, cy, q} = o; if(q < .2) return; const fade = ufC((q - .76) / .24, 0, 1);
-    [[-.46, .1], [.42, -.12], [.02, .3]].forEach(([x, y], i) => { if(q < [.2, .38, .56][i] + .08) return; for(let s = 0; s < 9; s++){ const a = s * .698 + i, d = R * (.2 + .18 * ufH(s, i + 3)); if(ufH(s, i + 7) > fade) ufPx(L.soft, cx + x * R + Math.cos(a) * d, cy + y * R * .75 + Math.sin(a) * d * .5, s & 1 ? P.a : P.b); } }); }});
+  }});
 
 /* ---------- ABISMO (nigromante): las almas del ejército entran en arcos, una hélice de huesos se cierra, estalla una columna de fuego verde con cráneo cornudo ---------- */
-ufDefForm('abyss', {N: 40, tall: 2.0, dur: 3800, gdur: 4000, shake: 9,
+ufDefForm('abyss', {N: 40, tall: 2.0, dur: 3800, gdur: 0, shake: 9,
   paint(L, o){
     const {P, R, cx, cy, q, f} = o, S = L.soft, Hd = L.hard, TAU = 6.2832, EY = .55, abs = ufC(q / .2, 0, 1), tr = ufC((q - .18) / .2, 0, 1), col = ufEase(ufC((q - .36) / .1, 0, 1)), collapse = ufC((q - .8) / .2, 0, 1);
     const hub = [cx, cy - R * .15];
@@ -242,7 +228,4 @@ ufDefForm('abyss', {N: 40, tall: 2.0, dur: 3800, gdur: 4000, shake: 9,
         ufPx(Hd, sk[0] - sw2 * .38 * kk, sk[1] + sw2 * .1 * kk, P.e); ufPx(Hd, sk[0] + sw2 * .38 * kk, sk[1] + sw2 * .1 * kk, P.e);
         for(const sg of [-1, 1]){ let px = sk[0] + sg * sw2 * .7 * kk, py = sk[1] - sw2 * .4 * kk; for(let s = 1; s <= 6; s++){ const u = s / 6, x = sk[0] + sg * (sw2 * .7 + sw2 * 1.3 * Math.sin(u * 1.4)) * kk, yy = sk[1] - sw2 * (.4 + 1.5 * u) * kk; ufLine(Hd, px, py, x, yy, 2 - (u > .6 ? 1 : 0), P.c); px = x; py = yy; } } }
     }
-  },
-  gpaint(L, o){ const {P, R, cx, cy, q} = o; if(q < .3) return; const fade = ufC((q - .8) / .2, 0, 1), g = ufEase(ufC((q - .34) / .1, 0, 1));
-    ufEll(L.soft, cx, cy, R * .55 * g, R * .3 * g, P.d, .3 * (1 - fade));
-    for(let i = 0; i < 14; i++){ const a = i * .4488, d = R * (.4 + .5 * ufH(i, 5)) * g; if(ufH(i, 6) > fade) ufLine(L.soft, cx + Math.cos(a) * d * .35, cy + Math.sin(a) * d * .2, cx + Math.cos(a) * d, cy + Math.sin(a) * d * .55, 1, i & 1 ? P.a : P.e); } }});
+  }});

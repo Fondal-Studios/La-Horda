@@ -63,7 +63,7 @@ ufDefForm('dial', {N: 40, tall: 1.35, dur: 3400, gdur: 0, shake: 6,
   }});
 
 /* ---------- CATEDRAL (aurelia): tres pilares en los vértices del triángulo, arcos ojivales y un rosetón de vitral que gira ---------- */
-ufDefForm('cathedral', {N: 40, tall: 1.75, dur: 3600, gdur: 3800, shake: 6,
+ufDefForm('cathedral', {N: 40, tall: 1.75, dur: 3600, gdur: 0, shake: 6,
   paint(L, o){
     const {P, R, cx, cy, q, f} = o, S = L.soft, Hd = L.hard, TAU = 6.2832, EY = .55, ph = ufC(q / .14, 0, 1), up = ufEase(ufC((q - .14) / .17, 0, 1)), dis = ufC((q - .72) / .28, 0, 1), keep = ufKeep(dis * .9);
     const V = [[-.74, .42], [.74, .42], [0, -.52]].map(([x, y]) => [cx + x * R, cy + y * R * EY / .55 * .75]);   // izquierda, derecha y fondo
@@ -103,9 +103,7 @@ ufDefForm('cathedral', {N: 40, tall: 1.75, dur: 3600, gdur: 3800, shake: 6,
     }
     // el vidrio de luz asciende al final
     if(dis > 0) for(let i = 0; i < 22; i++){ const x = cx + (ufH(i, 1) - .5) * R * 1.8, y = cy - ufH(i, 2) * R * .6 - dis * R * (.8 + ufH(i, 3)); if(ufH(i, 4) > dis * .95) ufPx(S, x, y, i & 1 ? P.c : P.b); }
-  },
-  gpaint(L, o){ const {P, R, cx, cy, q} = o; if(q < .14) return; const fade = ufC((q - .72) / .28, 0, 1), V = [[-.74, .42], [.74, .42], [0, -.52]].map(([x, y]) => [cx + x * R, cy + y * R * .75]);
-    for(let i = 0; i < 3; i++){ const a = V[i], b = V[(i + 1) % 3]; for(let t = 0; t < 40; t++){ const u = t / 40; if(t % 4 < 2 && ufH(t, i) > fade) ufPx(L.soft, a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u, P.a); } } }});
+  }});
 
 /* ---------- VENTANA (axiom): un diálogo de sistema gigante se abre por trazos, congela, parpadea, implosiona en bloques y estalla ---------- */
 ufDefForm('window', {N: 44, tall: 1.15, dur: 4400, gdur: 0, shake: 9,
@@ -146,7 +144,7 @@ ufDefForm('window', {N: 44, tall: 1.15, dur: 4400, gdur: 0, shake: 9,
   }});
 
 /* ---------- CAMPANA (baltra): una campana colosal de bronce baja entre cadenas y toca tres veces; cada tañido expulsa una onda de agua con huecos ---------- */
-ufDefForm('bell', {N: 36, tall: 1.95, dur: 3000, gdur: 3200, shake: 7,
+ufDefForm('bell', {N: 36, tall: 1.95, dur: 3000, gdur: 0, shake: 7,
   paint(L, o){
     const {P, R, cx, cy, q, f} = o, S = L.soft, Hd = L.hard, TAU = 6.2832, EY = .5, tolls = [.3, .52, .74];
     const desc = ufEase(ufC(q / .2, 0, 1)), rise = ufC((q - .86) / .14, 0, 1), by = cy - R * (1.5 - .95 * desc + rise * 1.2);   // y del labio de la campana
@@ -174,9 +172,7 @@ ufDefForm('bell', {N: 36, tall: 1.95, dur: 3000, gdur: 3200, shake: 7,
       for(let s = 0; s < 70; s++){ const a = s / 70 * TAU; if(((s + i * 3) % 7) < 2) continue; if(ufH(s, i + 90) < fd) continue; const wob = 1 + Math.sin(a * 6 + f * .5 + i) * .035, x = cx + Math.cos(a) * rr * wob, y = cy + Math.sin(a) * rr * wob * EY;
         const crest = i === 2 && Math.sin(a) > 0 ? 2 : 1; ufDisc(Hd, x, y, crest > 1 ? 1.7 : 1.1, i === 2 ? P.c : P.e); if(crest > 1 && s % 2) ufPx(Hd, x, y - 2, P.c); }
       if(k < .25) ufEll(S, cx, cy, R * .5 * (k / .25), R * .25 * (k / .25), P.e, .4); });
-  },
-  gpaint(L, o){ const {P, R, cx, cy, q} = o; if(q < .2) return; const fade = ufC((q - .75) / .25, 0, 1);
-    for(let i = 0; i < 18; i++){ const a = ufH(i, 5) * 6.28, d = Math.sqrt(ufH(i, 6)) * R * .9; if(ufH(i, 7) > fade) ufPx(L.soft, cx + Math.cos(a) * d, cy + Math.sin(a) * d * .5, i % 3 ? P.d : P.e); } }});
+  }});
 
 /* ---------- PENTAGRAMA (dariel): un pentagrama ondulado cruza el área con notas que saltan, un reflector cae y al final se enciende la puerta de SALIDA ---------- */
 ufDefForm('staff', {N: 40, tall: 1.5, dur: 3800, gdur: 0, shake: 4,
@@ -212,7 +208,7 @@ ufDefForm('staff', {N: 40, tall: 1.5, dur: 3800, gdur: 0, shake: 4,
   }});
 
 /* ---------- FAROLES (farolero): siete faroles de llama giran alrededor, un farol grande arriba y gotas de luz que salen en cada pulso ---------- */
-ufDefForm('lanterns', {N: 40, tall: 1.65, dur: 3600, gdur: 3800, shake: 3,
+ufDefForm('lanterns', {N: 40, tall: 1.65, dur: 3600, gdur: 0, shake: 3,
   paint(L, o){
     const {P, R, cx, cy, q, f} = o, S = L.soft, Hd = L.hard, TAU = 6.2832, EY = .5, pulse = i => .2 + i * .15, on = ufEase(ufC(q / .14, 0, 1)), die = ufC((q - .8) / .2, 0, 1);
     const surge = (() => { let s = 0; for(let i = 0; i < 5; i++){ const k = (q - pulse(i)) / .06; if(k > 0 && k < 1) s = Math.max(s, Math.sin(k * 3.14)); } return s; })();
@@ -245,12 +241,10 @@ ufDefForm('lanterns', {N: 40, tall: 1.65, dur: 3600, gdur: 3800, shake: 3,
       for(let m = 0; m < 5; m++){ const a = q * 11 + m * 1.26, mx = cx + Math.cos(a) * big * 2.1, my = cyL + Math.sin(a * 1.3) * big * 1.2; ufPx(Hd, mx, my, P.c); ufPx(Hd, mx - 1, my - ((f + m) & 1), P.b); ufPx(Hd, mx + 1, my - ((f + m) & 1), P.b); } }
     // gotas de luz que salen de los faroles hacia el centro en cada pulso
     for(let i = 0; i < 5; i++){ const k = (q - pulse(i) - .02) / .12; if(k <= 0 || k >= 1) continue; for(const p of sp){ if((p.i + i) % 2) continue; const e = ufEase(k), gx = p.x + (cx - p.x) * e, gy = p.y + (cy - R * .15 - p.y) * e - Math.sin(e * 3.14) * R * .25; ufDisc(Hd, gx, gy, 1.6 * (1 - k * .5), P.c); ufPx(S, gx - (cx - p.x) * .08, gy + 1, P.b); } }
-  },
-  gpaint(L, o){ const {P, R, cx, cy, q} = o; if(q < .14) return; const fade = ufC((q - .8) / .2, 0, 1);
-    for(let i = 0; i < 16; i++){ const a = ufH(i, 1) * 6.28, d = Math.sqrt(ufH(i, 2)) * R * .85; if(ufH(i, 3) > fade) ufPx(L.soft, cx + Math.cos(a) * d, cy + Math.sin(a) * d * .5, i & 1 ? P.a : P.d); } }});
+  }});
 
 /* ---------- RED DE VENENO (guerrero): el rombo de trampa marca el área, tres cortes en cruz, una nube tóxica y hilos verdes que saltan entre los vecinos ---------- */
-ufDefForm('toxin', {N: 36, tall: 1.4, dur: 3400, gdur: 3600, shake: 6,
+ufDefForm('toxin', {N: 36, tall: 1.4, dur: 3400, gdur: 0, shake: 6,
   paint(L, o){
     const {P, R, cx, cy, q, f} = o, S = L.soft, Hd = L.hard, TAU = 6.2832, EY = .55, qs = .58, post = ufC((q - qs) / (1 - qs), 0, 1), k = ufC((q - qs) / .08, 0, 1);
     const nodes = [0, 1, 2].map(i => { const a = -1.9 + i * 2.2 + ufH(i, 11) * .5, d = R * (.78 + .2 * ufH(i, 12)); return [cx + Math.cos(a) * d, cy + Math.sin(a) * d * EY]; });
@@ -277,6 +271,4 @@ ufDefForm('toxin', {N: 36, tall: 1.4, dur: 3400, gdur: 3600, shake: 6,
       if(t >= 1 && fd < .8){ dia(e[0], e[1], 4, P.a, P.c); ufPx(Hd, e[0], e[1] - 5 - (f % 3), P.b); const drip = ((f + i * 3) % 9); ufPx(Hd, e[0], e[1] + 5 + drip, P.b); ufPx(Hd, e[0] + 1, e[1] + 5 + drip, P.b); } });
     // gotas y chispas rojas
     for(let i = 0; i < 16; i++){ const a = ufH(i, 31) * TAU, d = R * (.1 + .7 * ufH(i, 32)) * cl, u = (ufH(i, 33) + post * 1.5) % 1; if(ufH(i, 34) > fd) ufPx(S, cx + Math.cos(a) * d, cy - R * .2 + Math.sin(a) * d * .5 + u * 8, i % 3 ? P.b : P.e); }
-  },
-  gpaint(L, o){ const {P, R, cx, cy, q} = o; const qs = .58; if(q < qs) return; const fd = ufC((q - .78) / .22, 0, 1), EY = .55;
-    for(let i = 0; i < 3; i++){ const a = -1.9 + i * 2.2 + ufH(i, 11) * .5, d = R * (.78 + .2 * ufH(i, 12)), ex = cx + Math.cos(a) * d, ey = cy + Math.sin(a) * d * EY; for(let t = 0; t < 14; t++){ const u = t / 14; if(ufH(t, i + 7) > fd) ufPx(L.soft, cx + (ex - cx) * u, cy + (ey - cy) * u, t & 1 ? P.a : P.d); } ufEll(L.soft, ex, ey, 6, 3, P.d, .4 * (1 - fd)); } }});
+  }});
