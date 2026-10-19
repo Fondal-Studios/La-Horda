@@ -30,7 +30,7 @@ const path = require('path'); const sleep = ms => new Promise(r => setTimeout(r,
       const LV = Object.assign({ ciudad: 1, fortaleza: 7, bosque: 11, micelial: 15, hielo: 19, acuatica: 23, laberinto: 27, abismo: 30, minas: 33, infernal: 36 }, lvlTable || {});
       const lvl = LV[a] || DIFF.arenaLevel[a] || 1;
       for (const k in save.champions) { const c = save.champions[k]; c.level = lvl; c.xp = 0; c.unlocked = true; const al = Math.min(10, Math.floor(lvl / 4)); c.skillMastery.forEach(m => m.alloc = al); c.ultMastery.alloc = al; }
-      save.stash = []; save.gold = 0; save.defeatCount = 99;
+      save.stash = []; save.gold = 0; save.defeatCount = 99; save.defeatLegacy = 99;
       const kills = {}; let named = 0, killXp = 0, inRun = true;
       const ok = window.killEnemy;
       killEnemy = function (e) { const k = e.eliteName ? 'named' : e.rank; kills[k] = (kills[k] || 0) + 1; return ok.apply(this, arguments); };

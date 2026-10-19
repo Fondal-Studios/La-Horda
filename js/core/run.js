@@ -85,6 +85,7 @@ function startRun(fromLevel){
   // Campeones sin fila en el guardado (INTERNAL en Test Lab / herramientas): fila temporal en memoria.
   if(CLASSES[selectedClass] && !save.champions[selectedClass]) save.champions[selectedClass] = mkChampion(false);
   resetRunTransients();
+  if(!fromLevel || fromLevel===1){ try{ if(typeof penaltyHeadsUp==='function' && !(typeof endlessOn==='function' && endlessOn()) && !divinaMode) setTimeout(penaltyHeadsUp, 1800); }catch(e){} } // aviso único: desde ahora perder cuesta
   markRunStartProgress(selectedClass); // base para el castigo de derrota/abandono (solo lo ganado en esta partida)
   clearRunTimers();
   runEnding = false; _arenaExitDone = false;
