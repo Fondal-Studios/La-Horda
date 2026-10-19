@@ -84,7 +84,7 @@ function defaultSave(){
     quests:null,            // logros, desafíos, pase de temporada y perfil (js/systems/quests.js: questsNormalize completa los campos)
     // DIFICULTADES (js/systems/difficulty-tiers.js): arenas superadas en Pesadilla / Infierno (Normal es
     // arenasCleared), la elegida en la Sala y las derrotas de la cuenta (las 3 primeras no se castigan)
-    diffCleared:{pesadilla:{}, infierno:{}}, diffSelected:"normal", defeatCount:0, arenaDefeats:{}, defeatLegacy:0, penaltyWarned:{}, checkpoints:{},
+    diffCleared:{pesadilla:{}, infierno:{}}, diffSelected:"normal", defeatCount:0, arenaDefeats:{}, bossDefeats:{}, defeatLegacy:0, penaltyWarned:{}, checkpoints:{},
     recycleDust:0           // RECICLAJE (js/systems/ground-loot.js): fracción de Gema juntada al reciclar Comunes/Raros con el inventario lleno
   };
 }
@@ -181,6 +181,10 @@ function _loadSaveInner(){
     const raw = localStorage.getItem(SAVE_KEY);
     if(raw){
       const parsed = JSON.parse(raw);
+      // Tipos y rangos antes de usar nada (js/storage/save-sanitize.js): NaN/strings/objetos/"__proto__" en lo crítico.
+      // Lanza si el JSON no es un objeto: cae en el catch de abajo (copia _noCargo, no se pisa el guardado).
+      if(typeof saveSanitize==="function") saveSanitize(parsed, {defaults: defaultSave(),
+        arenaKeys: typeof ARENA_ORDER!=="undefined" ? ARENA_ORDER : null, championKeys: typeof CLASSES!=="undefined" ? Object.keys(CLASSES) : null});
       // Rework del campeón "eren" -> "ilkan" (js/storage/legacy-champion-ids.js): ids, talentos, objetos. Idempotente.
       if(legacyChampionMigrate(parsed, {refreshItem: legacyRefreshSetItem})) legacyChampionRenamed = true;
       const needsRarityMigration = parsed.itemSchemaV !== ITEM_SCHEMA_VERSION;
@@ -270,6 +274,7 @@ function _loadSaveInner(){
       save.defeatCount = Math.max(0, parsed.defeatCount|0);
       // perdón de derrotas POR ARENA (progression.js): guardados anteriores congelan su total como punto de partida
       save.arenaDefeats = {}; if(parsed.arenaDefeats && typeof parsed.arenaDefeats==="object") for(const k in parsed.arenaDefeats) save.arenaDefeats[k] = Math.max(0, parsed.arenaDefeats[k]|0);
+      save.bossDefeats = {}; if(parsed.bossDefeats && typeof parsed.bossDefeats==="object") for(const k in parsed.bossDefeats){ const n = Math.max(0, Math.min(99, parsed.bossDefeats[k]|0)); if(n) save.bossDefeats[k] = n; } // derrotas en el jefe por arena (boss-assist.js); guardados viejos: vacío
       save.defeatLegacy = ("defeatLegacy" in parsed) ? Math.max(0, parsed.defeatLegacy|0) : (parsed.arenaDefeats ? 0 : save.defeatCount);
       save.checkpoints = typeof checkpointsNormalize==="function" ? checkpointsNormalize(parsed.checkpoints) : {}; // punto de control del nivel 5 por arena (checkpoint.js); guardados viejos: vacío
       save.penaltyWarned = {}; if(parsed.penaltyWarned && typeof parsed.penaltyWarned==="object") for(const k in parsed.penaltyWarned) if(parsed.penaltyWarned[k]) save.penaltyWarned[k] = true;
@@ -462,7 +467,9 @@ function persistNow(){
   if(_persistTimer){ clearTimeout(_persistTimer); _persistTimer = null; }
   // GM / TEST LAB: una sesión de prueba nunca escribe el progreso real (js/systems/test-lab.js).
   if(typeof testLabActive==="function" && testLabActive()) return;
-  if(typeof lanesOn==="function" && lanesOn()) return; // Guerra de Cristales juega con un guardado temporal: nunca se escribe
+  // Guerra de Cristales juega con un guardado temporal: nunca se escribe. ÚNICA excepción: la recompensa final del postgame, que se escribe
+  // sobre el guardado REAL mientras postgame.js lo pone (window.__pgCommit, js/systems/postgame.js).
+  if(typeof lanesOn==="function" && lanesOn() && !window.__pgCommit) return;
   // B1: mientras el anfitrión simula a un invitado, su guardián usa los datos del invitado;
   // netPersistView escribe siempre los datos propios del anfitrión.
   if(saveLoadFailed) return; // el guardado de verdad sigue en localStorage (y copiado en _noCargo)

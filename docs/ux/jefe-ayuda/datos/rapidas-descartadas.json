@@ -1,0 +1,3597 @@
+{
+  "method": "6 arenas x 3 scripted experience profiles x 4 seeds; expected level; no gear; 900s cap",
+  "results": [
+    {
+      "arena": "laberinto",
+      "profile": "aprendiz",
+      "seed": 0,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 95,
+      "wave": 10,
+      "kills": 105,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "minotauro",
+        "hp": -4,
+        "max": 24102
+      },
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 457",
+        "kind:rock 391",
+        "fn:updateEnemyProjectileStyle<update 152"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "aprendiz",
+      "seed": 0,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 92,
+      "wave": 10,
+      "kills": 105,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "minotauro",
+        "hp": -32,
+        "max": 20728
+      },
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 457",
+        "kind:rock 250",
+        "fn:updateEnemyProjectileStyle<update 152"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "laberinto",
+      "profile": "aprendiz",
+      "seed": 1,
+      "level": 26,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 39,
+      "wave": 10,
+      "kills": 60,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "esfinge(proj) L10",
+      "topDamage": [
+        "esfinge(proj) 329",
+        "medusa(proj) 126",
+        "kind:rock 95"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "aprendiz",
+      "seed": 1,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 100,
+      "wave": 10,
+      "kills": 100,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "minotauro",
+        "hp": -5,
+        "max": 20728
+      },
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 257",
+        "kind:rock 175",
+        "medusa(proj) 69"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "laberinto",
+      "profile": "aprendiz",
+      "seed": 2,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 104,
+      "wave": 10,
+      "kills": 96,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "minotauro",
+        "hp": -25,
+        "max": 24102
+      },
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 413",
+        "fn:updateEnemyProjectileStyle<update 243",
+        "medusa(proj) 106"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "aprendiz",
+      "seed": 2,
+      "level": 26,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 44,
+      "wave": 10,
+      "kills": 78,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "fn:updateEnemyProjectileStyle<update L10",
+      "topDamage": [
+        "esfinge(proj) 377",
+        "fn:updateEnemyProjectileStyle<update 259",
+        "medusa(proj) 162"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "laberinto",
+      "profile": "aprendiz",
+      "seed": 3,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 98,
+      "wave": 10,
+      "kills": 99,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "minotauro",
+        "hp": -26,
+        "max": 24102
+      },
+      "killer": "esfinge(proj) L10",
+      "topDamage": [
+        "esfinge(proj) 418",
+        "fn:updateEnemyProjectileStyle<update 243",
+        "kind:rock 143"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "aprendiz",
+      "seed": 3,
+      "level": 26,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 47,
+      "wave": 10,
+      "kills": 52,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "esfinge(proj) L10",
+      "topDamage": [
+        "esfinge(proj) 203",
+        "medusa(proj) 131",
+        "fn:updateEnemyProjectileStyle<update 114"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "laberinto",
+      "profile": "ocasional",
+      "seed": 0,
+      "level": 26,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 42,
+      "wave": 10,
+      "kills": 66,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "escorpion_gigante L10",
+      "topDamage": [
+        "esfinge(proj) 521",
+        "medusa(proj) 202",
+        "kind:rock 75"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "ocasional",
+      "seed": 0,
+      "level": 26,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 34,
+      "wave": 10,
+      "kills": 20,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "esfinge(proj) L10",
+      "topDamage": [
+        "esfinge(proj) 289",
+        "kind:rock 126"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "laberinto",
+      "profile": "ocasional",
+      "seed": 1,
+      "level": 26,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 44,
+      "wave": 10,
+      "kills": 66,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "kind:rock L10",
+      "topDamage": [
+        "esfinge(proj) 731",
+        "fn:updateEnemyProjectileStyle<update 132",
+        "kind:rock 61"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "ocasional",
+      "seed": 1,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 97,
+      "wave": 10,
+      "kills": 100,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "minotauro",
+        "hp": -34,
+        "max": 20728
+      },
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 306",
+        "fn:updateEnemyProjectileStyle<update 47",
+        "medusa(proj) 28"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "laberinto",
+      "profile": "ocasional",
+      "seed": 2,
+      "level": 26,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 37,
+      "wave": 10,
+      "kills": 62,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 428",
+        "medusa(proj) 200",
+        "fn:http://127.0.0.1:8841/js/enemies/elite-affixes.js:155:80<Array.fn 46"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "ocasional",
+      "seed": 2,
+      "level": 26,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 49,
+      "wave": 10,
+      "kills": 79,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "minotauro",
+        "hp": 20728,
+        "max": 20728
+      },
+      "killer": "esfinge(proj) L10",
+      "topDamage": [
+        "esfinge(proj) 243",
+        "medusa(proj) 102",
+        "kind:rock 70"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "laberinto",
+      "profile": "ocasional",
+      "seed": 3,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 114,
+      "wave": 10,
+      "kills": 101,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "minotauro",
+        "hp": -233,
+        "max": 24102
+      },
+      "killer": null,
+      "topDamage": [
+        "kind:rock 155",
+        "fn:updateEnemyProjectileStyle<update 64",
+        "esfinge(proj) 60"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "ocasional",
+      "seed": 3,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 138,
+      "wave": 10,
+      "kills": 67,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "minotauro",
+        "hp": -7,
+        "max": 20728
+      },
+      "killer": "esfinge(proj) L10",
+      "topDamage": [
+        "esfinge(proj) 263",
+        "kind:rock 133",
+        "medusa(proj) 105"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "laberinto",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 92,
+      "wave": 10,
+      "kills": 109,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "minotauro",
+        "hp": -17,
+        "max": 22798
+      },
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 660",
+        "kind:rock 256",
+        "medusa(proj) 176"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 74,
+      "wave": 10,
+      "kills": 98,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "minotauro",
+        "hp": -13,
+        "max": 19606
+      },
+      "killer": null,
+      "topDamage": [
+        "kind:rock 365",
+        "esfinge(proj) 354",
+        "medusa(proj) 125"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "laberinto",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 105,
+      "wave": 10,
+      "kills": 90,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "minotauro",
+        "hp": 0,
+        "max": 22798
+      },
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 557",
+        "kind:rock 336",
+        "minotauro 257"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 88,
+      "wave": 10,
+      "kills": 103,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "minotauro",
+        "hp": -6,
+        "max": 19606
+      },
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 441",
+        "medusa(proj) 256",
+        "fn:updateEnemyProjectileStyle<update 202"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "laberinto",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 77,
+      "wave": 10,
+      "kills": 96,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "minotauro",
+        "hp": -404,
+        "max": 22798
+      },
+      "killer": null,
+      "topDamage": [
+        "kind:rock 406",
+        "esfinge(proj) 403",
+        "medusa(proj) 163"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 113,
+      "wave": 10,
+      "kills": 105,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "minotauro",
+        "hp": -362,
+        "max": 19606
+      },
+      "killer": null,
+      "topDamage": [
+        "kind:rock 615",
+        "medusa(proj) 337",
+        "minotauro 253"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "laberinto",
+      "profile": "habitual",
+      "seed": 3,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 110,
+      "wave": 10,
+      "kills": 105,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "minotauro",
+        "hp": -18,
+        "max": 22798
+      },
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 698",
+        "kind:rock 364",
+        "minotauro 194"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "laberinto",
+      "profile": "habitual",
+      "seed": 3,
+      "level": 26,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 79,
+      "wave": 10,
+      "kills": 107,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "minotauro",
+        "hp": -177,
+        "max": 19606
+      },
+      "killer": null,
+      "topDamage": [
+        "esfinge(proj) 453",
+        "kind:rock 271",
+        "medusa(proj) 149"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "infernal",
+      "profile": "aprendiz",
+      "seed": 0,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 30,
+      "wave": 10,
+      "kills": 32,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_mago(proj) L10",
+      "topDamage": [
+        "demonio_mago(proj) 280",
+        "fn:updateControlledHero<update 22",
+        "fn:updateHazardZones<updateArenaHazards 15"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "aprendiz",
+      "seed": 0,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 23,
+      "wave": 10,
+      "kills": 15,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "golem L10",
+      "topDamage": [
+        "golem 251",
+        "demonio_menor 141",
+        "zombie 43"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "infernal",
+      "profile": "aprendiz",
+      "seed": 1,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 30,
+      "wave": 10,
+      "kills": 37,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "esqueleto_h L10",
+      "topDamage": [
+        "golem 360",
+        "esqueleto_h 46",
+        "fn:updateControlledHero<update 29"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "aprendiz",
+      "seed": 1,
+      "level": 34,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 219,
+      "wave": 10,
+      "kills": 117,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "demonio_mayor",
+        "hp": -49,
+        "max": 20762
+      },
+      "killer": "hechicero_supremo(proj) L10",
+      "topDamage": [
+        "fn:updateHazardZones<updateArenaHazards 508",
+        "demonio_mago(proj) 326",
+        "hechicero_supremo(proj) 316"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "infernal",
+      "profile": "aprendiz",
+      "seed": 2,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 42,
+      "wave": 10,
+      "kills": 107,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_mago(proj) L10",
+      "topDamage": [
+        "demonio_mago(proj) 283",
+        "fn:updateHazardZones<updateArenaHazards 94",
+        "hechicero_supremo(proj) 89"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "aprendiz",
+      "seed": 2,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 24,
+      "wave": 10,
+      "kills": 20,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "golem L10",
+      "topDamage": [
+        "demonio_menor 112",
+        "golem 109",
+        "demonio_mago(proj) 43"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "infernal",
+      "profile": "aprendiz",
+      "seed": 3,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 27,
+      "wave": 10,
+      "kills": 48,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_mago(proj) L10",
+      "topDamage": [
+        "golem 264",
+        "demonio_mago(proj) 252",
+        "demonio_menor 129"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "aprendiz",
+      "seed": 3,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 33,
+      "wave": 10,
+      "kills": 58,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_mago(proj) L10",
+      "topDamage": [
+        "demonio_mago(proj) 449",
+        "golem 68",
+        "fn:updateControlledHero<update 39"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "infernal",
+      "profile": "ocasional",
+      "seed": 0,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 29,
+      "wave": 10,
+      "kills": 42,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_mago(proj) L10",
+      "topDamage": [
+        "demonio_mago(proj) 528",
+        "demonio_menor 59",
+        "esqueleto_h 55"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "ocasional",
+      "seed": 0,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 26,
+      "wave": 10,
+      "kills": 31,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_mago(proj) L10",
+      "topDamage": [
+        "demonio_mago(proj) 384",
+        "esqueleto_h 48",
+        "demonio_menor 48"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "infernal",
+      "profile": "ocasional",
+      "seed": 1,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 32,
+      "wave": 10,
+      "kills": 70,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_mago(proj) L10",
+      "topDamage": [
+        "demonio_mago(proj) 358",
+        "golem 81",
+        "kind:holy 40"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "ocasional",
+      "seed": 1,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 25,
+      "wave": 10,
+      "kills": 26,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "golem L10",
+      "topDamage": [
+        "demonio_menor 193",
+        "esqueleto 60",
+        "hechicero_supremo(proj) 45"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "infernal",
+      "profile": "ocasional",
+      "seed": 2,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 35,
+      "wave": 10,
+      "kills": 60,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "golem L10",
+      "topDamage": [
+        "demonio_mago(proj) 186",
+        "golem 179",
+        "demonio_menor 47"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "ocasional",
+      "seed": 2,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 27,
+      "wave": 10,
+      "kills": 38,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_mago(proj) L10",
+      "topDamage": [
+        "demonio_mago(proj) 399",
+        "golem 81",
+        "esqueleto 60"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "infernal",
+      "profile": "ocasional",
+      "seed": 3,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 27,
+      "wave": 10,
+      "kills": 25,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "hechicero_supremo(proj) L10",
+      "topDamage": [
+        "demonio_menor 238",
+        "demonio_mago(proj) 184",
+        "zombie 74"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "ocasional",
+      "seed": 3,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 27,
+      "wave": 10,
+      "kills": 42,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_mago(proj) L10",
+      "topDamage": [
+        "demonio_mago(proj) 247",
+        "esqueleto_h 67",
+        "demonio_menor 67"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "infernal",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 34,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 139,
+      "wave": 10,
+      "kills": 149,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "demonio_mayor",
+        "hp": -9,
+        "max": 22649
+      },
+      "killer": null,
+      "topDamage": [
+        "fn:updateHazardZones<updateArenaHazards 1295",
+        "demonio_mayor(proj) 436",
+        "fn:updateControlledHero<update 389"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 34,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 130,
+      "wave": 10,
+      "kills": 152,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "demonio_mayor",
+        "hp": -54,
+        "max": 19478
+      },
+      "killer": null,
+      "topDamage": [
+        "fn:updateControlledHero<update 290",
+        "fn:updateHazardZones<updateArenaHazards 200",
+        "demonio_mayor(proj) 157"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "infernal",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 34,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 144,
+      "wave": 10,
+      "kills": 151,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "demonio_mayor",
+        "hp": -2,
+        "max": 22649
+      },
+      "killer": null,
+      "topDamage": [
+        "fn:updateHazardZones<updateArenaHazards 810",
+        "fn:updateControlledHero<update 331",
+        "golem 273"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 34,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 41,
+      "wave": 10,
+      "kills": 71,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": "esqueleto_h L10",
+      "topDamage": [
+        "demonio_mago(proj) 1240",
+        "demonio_menor 283",
+        "fn:updateHazardZones<updateArenaHazards 227"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "infernal",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 34,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 112,
+      "wave": 10,
+      "kills": 151,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "demonio_mayor",
+        "hp": -1896,
+        "max": 22649
+      },
+      "killer": null,
+      "topDamage": [
+        "fn:updateHazardZones<updateArenaHazards 437",
+        "golem 263",
+        "demonio_mago(proj) 225"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 34,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 166,
+      "wave": 10,
+      "kills": 137,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "demonio_mayor",
+        "hp": -94,
+        "max": 19478
+      },
+      "killer": null,
+      "topDamage": [
+        "fn:updateHazardZones<updateArenaHazards 520",
+        "fn:updateControlledHero<update 321",
+        "demonio_mayor(proj) 216"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "infernal",
+      "profile": "habitual",
+      "seed": 3,
+      "level": 34,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 158,
+      "wave": 10,
+      "kills": 158,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "demonio_mayor",
+        "hp": -26,
+        "max": 22649
+      },
+      "killer": null,
+      "topDamage": [
+        "fn:updateHazardZones<updateArenaHazards 934",
+        "golem 460",
+        "demonio_mayor(proj) 455"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "infernal",
+      "profile": "habitual",
+      "seed": 3,
+      "level": 34,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 112,
+      "wave": 10,
+      "kills": 157,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "demonio_mayor",
+        "hp": -119,
+        "max": 19478
+      },
+      "killer": null,
+      "topDamage": [
+        "demonio_mago(proj) 910",
+        "golem 442",
+        "fn:updateHazardZones<updateArenaHazards 342"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "bosque",
+      "profile": "aprendiz",
+      "seed": 0,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 19,
+      "wave": 10,
+      "kills": 43,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "dama_bosque(proj) L10",
+      "topDamage": [
+        "dama_bosque(proj) 207",
+        "doblador_arquera(proj) 33",
+        "bestia_bosque 30"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "bosque",
+      "profile": "aprendiz",
+      "seed": 0,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 10,
+      "wave": 10,
+      "kills": 12,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "fn:updateControlledHero<update L10",
+      "topDamage": [
+        "dama_bosque(proj) 60",
+        "bestia_bosque 50",
+        "doblador_picaro 17"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "bosque",
+      "profile": "aprendiz",
+      "seed": 1,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 21,
+      "wave": 10,
+      "kills": 30,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "bestia_bosque L10",
+      "topDamage": [
+        "dama_bosque(proj) 151",
+        "cu_sith 45",
+        "bestia_bosque 44"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "bosque",
+      "profile": "aprendiz",
+      "seed": 1,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 22,
+      "wave": 10,
+      "kills": 35,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "cu_sith L10",
+      "topDamage": [
+        "cu_sith 168",
+        "dama_bosque(proj) 56",
+        "duende_bosque 49"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "bosque",
+      "profile": "aprendiz",
+      "seed": 2,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 21,
+      "wave": 10,
+      "kills": 27,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "dama_bosque(proj) L10",
+      "topDamage": [
+        "cu_sith 91",
+        "dama_bosque(proj) 34",
+        "ent 28"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "bosque",
+      "profile": "aprendiz",
+      "seed": 2,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 27,
+      "wave": 10,
+      "kills": 37,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "doblador_picaro L10",
+      "topDamage": [
+        "dama_bosque(proj) 93",
+        "cu_sith 52",
+        "enjambre_hadas(proj) 23"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "bosque",
+      "profile": "aprendiz",
+      "seed": 3,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 47,
+      "wave": 10,
+      "kills": 63,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "dama_bosque(proj) L10",
+      "topDamage": [
+        "dama_bosque(proj) 181",
+        "bestia_bosque 103",
+        "fn:bossHitHero<Object.fn 35"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "bosque",
+      "profile": "aprendiz",
+      "seed": 3,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 14,
+      "wave": 10,
+      "kills": 22,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "dama_bosque(proj) L10",
+      "topDamage": [
+        "dama_bosque(proj) 165",
+        "doblador_arquera(proj) 35",
+        "fn:bossHitHero<Object.fn 23"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "bosque",
+      "profile": "ocasional",
+      "seed": 0,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 17,
+      "wave": 10,
+      "kills": 27,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "dama_bosque(proj) L10",
+      "topDamage": [
+        "ent 121",
+        "dama_bosque(proj) 72",
+        "bestia_bosque 34"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "bosque",
+      "profile": "ocasional",
+      "seed": 0,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 17,
+      "wave": 10,
+      "kills": 27,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "dama_bosque(proj) L10",
+      "topDamage": [
+        "ent 121",
+        "dama_bosque(proj) 72",
+        "bestia_bosque 34"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "bosque",
+      "profile": "ocasional",
+      "seed": 1,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 18,
+      "wave": 10,
+      "kills": 33,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "dama_bosque(proj) L10",
+      "topDamage": [
+        "dama_bosque(proj) 166",
+        "doblador_arquera(proj) 38",
+        "enjambre_hadas(proj) 20"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "bosque",
+      "profile": "ocasional",
+      "seed": 1,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 17,
+      "wave": 10,
+      "kills": 29,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "ent L10",
+      "topDamage": [
+        "ent 110",
+        "dama_bosque(proj) 91",
+        "enjambre_hadas(proj) 15"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "bosque",
+      "profile": "ocasional",
+      "seed": 2,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 17,
+      "wave": 10,
+      "kills": 29,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "dama_bosque(proj) L10",
+      "topDamage": [
+        "cu_sith 176",
+        "dama_bosque(proj) 88",
+        "bestia_bosque 69"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "bosque",
+      "profile": "ocasional",
+      "seed": 2,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 21,
+      "wave": 10,
+      "kills": 24,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "cu_sith L10",
+      "topDamage": [
+        "cu_sith 76",
+        "dama_bosque(proj) 70",
+        "bestia_bosque 40"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "bosque",
+      "profile": "ocasional",
+      "seed": 3,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 23,
+      "wave": 10,
+      "kills": 29,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "dama_bosque(proj) L10",
+      "topDamage": [
+        "dama_bosque(proj) 157",
+        "cu_sith 19",
+        "doblador_arquera(proj) 16"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "bosque",
+      "profile": "ocasional",
+      "seed": 3,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 14,
+      "wave": 10,
+      "kills": 22,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "dama_bosque(proj) L10",
+      "topDamage": [
+        "dama_bosque(proj) 158",
+        "bestia_bosque 17",
+        "enjambre_hadas(proj) 7"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "bosque",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 27,
+      "wave": 10,
+      "kills": 67,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": "ent L10",
+      "topDamage": [
+        "dama_bosque(proj) 449",
+        "cu_sith 250",
+        "bestia_bosque 159"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "bosque",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 29,
+      "wave": 10,
+      "kills": 69,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": "ent L10",
+      "topDamage": [
+        "dama_bosque(proj) 427",
+        "cu_sith 249",
+        "bestia_bosque 116"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "bosque",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 28,
+      "wave": 10,
+      "kills": 71,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": "bestia_bosque L10",
+      "topDamage": [
+        "dama_bosque(proj) 313",
+        "ent 261",
+        "cu_sith 221"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "bosque",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 28,
+      "wave": 10,
+      "kills": 71,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": "bestia_bosque L10",
+      "topDamage": [
+        "dama_bosque(proj) 313",
+        "ent 261",
+        "cu_sith 221"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "bosque",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 24,
+      "wave": 10,
+      "kills": 61,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": "dama_bosque(proj) L10",
+      "topDamage": [
+        "dama_bosque(proj) 247",
+        "cu_sith 245",
+        "bestia_bosque 125"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "bosque",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 39,
+      "wave": 10,
+      "kills": 100,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": "cu_sith L10",
+      "topDamage": [
+        "dama_bosque(proj) 346",
+        "ent 234",
+        "bestia_bosque 171"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "bosque",
+      "profile": "habitual",
+      "seed": 3,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 32,
+      "wave": 10,
+      "kills": 76,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": "dama_bosque(proj) L10",
+      "topDamage": [
+        "dama_bosque(proj) 245",
+        "cu_sith 93",
+        "bestia_bosque 76"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "bosque",
+      "profile": "habitual",
+      "seed": 3,
+      "level": 6,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 41,
+      "wave": 10,
+      "kills": 77,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": "dama_bosque(proj) L10",
+      "topDamage": [
+        "dama_bosque(proj) 563",
+        "cu_sith 131",
+        "bestia_bosque 74"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "hielo",
+      "profile": "aprendiz",
+      "seed": 0,
+      "level": 17,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 34,
+      "wave": 10,
+      "kills": 56,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "fn:updateEnemyProjectileStyle<update L10",
+      "topDamage": [
+        "fn:updateEnemyProjectileStyle<update 124",
+        "demonio_hielo_fuego 118",
+        "angel_hielo(proj) 114"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "hielo",
+      "profile": "aprendiz",
+      "seed": 0,
+      "level": 17,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 33,
+      "wave": 10,
+      "kills": 39,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_hielo_fuego L10",
+      "topDamage": [
+        "demonio_hielo_fuego 192",
+        "kind:prisma 86",
+        "angel_hielo(proj) 12"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "hielo",
+      "profile": "aprendiz",
+      "seed": 1,
+      "level": 17,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 63,
+      "wave": 10,
+      "kills": 100,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "mago_hielo_cristal",
+        "hp": 5250,
+        "max": 5578
+      },
+      "killer": "kind:prisma L10",
+      "topDamage": [
+        "demonio_hielo_fuego 96",
+        "kind:prisma 82",
+        "angel_hielo(proj) 81"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "hielo",
+      "profile": "aprendiz",
+      "seed": 1,
+      "level": 17,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 40,
+      "wave": 10,
+      "kills": 53,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "kind:prisma L10",
+      "topDamage": [
+        "kind:prisma 150",
+        "angel_hielo(proj) 43",
+        "fn:updateEnemyProjectileStyle<update 22"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "hielo",
+      "profile": "aprendiz",
+      "seed": 2,
+      "level": 17,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 37,
+      "wave": 10,
+      "kills": 53,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_hielo_fuego L10",
+      "topDamage": [
+        "demonio_hielo_fuego 259",
+        "fn:updateEnemyProjectileStyle<update 102",
+        "kind:prisma 20"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "hielo",
+      "profile": "aprendiz",
+      "seed": 2,
+      "level": 17,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 30,
+      "wave": 10,
+      "kills": 33,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_hielo_fuego L10",
+      "topDamage": [
+        "demonio_hielo_fuego 184",
+        "kind:fire 49",
+        "fn:updateEnemyProjectileStyle<update 44"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "hielo",
+      "profile": "aprendiz",
+      "seed": 3,
+      "level": 17,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 42,
+      "wave": 10,
+      "kills": 64,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_hielo_fuego L10",
+      "topDamage": [
+        "angel_hielo(proj) 137",
+        "demonio_hielo_fuego 83",
+        "fn:updateEnemyProjectileStyle<update 22"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "hielo",
+      "profile": "aprendiz",
+      "seed": 3,
+      "level": 17,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 26,
+      "wave": 10,
+      "kills": 22,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "kind:prisma L10",
+      "topDamage": [
+        "demonio_hielo_fuego 129",
+        "kind:prisma 94",
+        "angel_hielo(proj) 0"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "hielo",
+      "profile": "ocasional",
+      "seed": 0,
+      "level": 17,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 91,
+      "wave": 10,
+      "kills": 119,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "angel_caido_hielo",
+        "hp": -14,
+        "max": 11603
+      },
+      "killer": null,
+      "topDamage": [
+        "angel_hielo(proj) 60",
+        "angel_caido_hielo 32",
+        "demonio_hielo_fuego 17"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "hielo",
+      "profile": "ocasional",
+      "seed": 0,
+      "level": 17,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 30,
+      "wave": 10,
+      "kills": 40,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "fn:updateEnemyProjectileStyle<update L10",
+      "topDamage": [
+        "demonio_hielo_fuego 275",
+        "kind:prisma 36",
+        "fn:updateEnemyProjectileStyle<update 23"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "hielo",
+      "profile": "ocasional",
+      "seed": 1,
+      "level": 17,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 100,
+      "wave": 10,
+      "kills": 123,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "angel_caido_hielo",
+        "hp": -56,
+        "max": 11603
+      },
+      "killer": null,
+      "topDamage": [
+        "demonio_hielo_fuego 198",
+        "kind:prisma 182",
+        "mago_hielo_cristal(proj) 48"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "hielo",
+      "profile": "ocasional",
+      "seed": 1,
+      "level": 17,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 47,
+      "wave": 10,
+      "kills": 93,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "kind:prisma L10",
+      "topDamage": [
+        "demonio_hielo_fuego 233",
+        "angel_hielo(proj) 103",
+        "kind:prisma 60"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "hielo",
+      "profile": "ocasional",
+      "seed": 2,
+      "level": 17,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 37,
+      "wave": 10,
+      "kills": 44,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_hielo_fuego L10",
+      "topDamage": [
+        "demonio_hielo_fuego 196",
+        "kind:prisma 91",
+        "angel_hielo(proj) 62"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "hielo",
+      "profile": "ocasional",
+      "seed": 2,
+      "level": 17,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 33,
+      "wave": 10,
+      "kills": 47,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "dragoncito_hielo L10",
+      "topDamage": [
+        "demonio_hielo_fuego 109",
+        "fn:updateEnemyProjectileStyle<update 83",
+        "kind:fire 37"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "hielo",
+      "profile": "ocasional",
+      "seed": 3,
+      "level": 17,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 129,
+      "wave": 10,
+      "kills": 113,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "angel_caido_hielo",
+        "hp": -25,
+        "max": 11603
+      },
+      "killer": null,
+      "topDamage": [
+        "demonio_hielo_fuego 65",
+        "fn:updateEnemyProjectileStyle<update 64",
+        "kind:fire 49"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "hielo",
+      "profile": "ocasional",
+      "seed": 3,
+      "level": 17,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 35,
+      "wave": 10,
+      "kills": 68,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "demonio_hielo_fuego L10",
+      "topDamage": [
+        "demonio_hielo_fuego 183",
+        "kind:fire 24",
+        "kind:prisma 19"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "hielo",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 17,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 112,
+      "wave": 10,
+      "kills": 113,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "angel_caido_hielo",
+        "hp": -24,
+        "max": 11126
+      },
+      "killer": null,
+      "topDamage": [
+        "kind:ice 249",
+        "angel_hielo(proj) 162",
+        "demonio_hielo_fuego 102"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "hielo",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 17,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 97,
+      "wave": 10,
+      "kills": 113,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "angel_caido_hielo",
+        "hp": -230,
+        "max": 9568
+      },
+      "killer": null,
+      "topDamage": [
+        "demonio_hielo_fuego 107",
+        "fn:updateEnemyProjectileStyle<update 53",
+        "mago_hielo_cristal(proj) 49"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "hielo",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 17,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 119,
+      "wave": 10,
+      "kills": 124,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "angel_caido_hielo",
+        "hp": -88,
+        "max": 11126
+      },
+      "killer": null,
+      "topDamage": [
+        "mago_hielo_cristal(proj) 133",
+        "angel_hielo(proj) 116",
+        "demonio_hielo_fuego 80"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "hielo",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 17,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 118,
+      "wave": 10,
+      "kills": 81,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "angel_caido_hielo",
+        "hp": -75,
+        "max": 9568
+      },
+      "killer": null,
+      "topDamage": [
+        "mago_hielo_cristal(proj) 129",
+        "demonio_hielo_fuego 95",
+        "angel_hielo(proj) 69"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "hielo",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 17,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 122,
+      "wave": 10,
+      "kills": 103,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "angel_caido_hielo",
+        "hp": -24,
+        "max": 11126
+      },
+      "killer": null,
+      "topDamage": [
+        "angel_caido_hielo 63",
+        "demonio_hielo_fuego 47",
+        "fn:updateEnemyProjectileStyle<update 45"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "hielo",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 17,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 111,
+      "wave": 10,
+      "kills": 122,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "angel_caido_hielo",
+        "hp": -35,
+        "max": 9568
+      },
+      "killer": null,
+      "topDamage": [
+        "kind:prisma 134",
+        "kind:ice 131",
+        "demonio_hielo_fuego 107"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "hielo",
+      "profile": "habitual",
+      "seed": 3,
+      "level": 17,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 106,
+      "wave": 10,
+      "kills": 89,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "angel_caido_hielo",
+        "hp": -163,
+        "max": 11126
+      },
+      "killer": null,
+      "topDamage": [
+        "demonio_hielo_fuego 163",
+        "kind:fire 119",
+        "mago_hielo_cristal(proj) 114"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "hielo",
+      "profile": "habitual",
+      "seed": 3,
+      "level": 17,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 102,
+      "wave": 10,
+      "kills": 103,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "angel_caido_hielo",
+        "hp": -160,
+        "max": 9568
+      },
+      "killer": null,
+      "topDamage": [
+        "angel_hielo(proj) 176",
+        "mago_hielo_cristal(proj) 95",
+        "demonio_hielo_fuego 34"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "acuatica",
+      "profile": "aprendiz",
+      "seed": 0,
+      "level": 23,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 48,
+      "wave": 10,
+      "kills": 88,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "tiburon_blanco L10",
+      "topDamage": [
+        "tiburon_blanco 343",
+        "sirena_abisal(proj) 95",
+        "tiburon_joven 22"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "acuatica",
+      "profile": "aprendiz",
+      "seed": 0,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 172,
+      "wave": 10,
+      "kills": 122,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "leviatan",
+        "hp": -8,
+        "max": 11005
+      },
+      "killer": null,
+      "topDamage": [
+        "tiburon_blanco 225",
+        "leviatan 71",
+        "leviatan(proj) 36"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "acuatica",
+      "profile": "aprendiz",
+      "seed": 1,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 240,
+      "wave": 10,
+      "kills": 141,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "leviatan",
+        "hp": -22,
+        "max": 12797
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan 221",
+        "leviatan(proj) 25",
+        "sirena_abisal(proj) 14"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "acuatica",
+      "profile": "aprendiz",
+      "seed": 1,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 201,
+      "wave": 10,
+      "kills": 125,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "leviatan",
+        "hp": -17,
+        "max": 11005
+      },
+      "killer": null,
+      "topDamage": [
+        "tiburon_blanco 143",
+        "leviatan 121",
+        "kind:water 60"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "acuatica",
+      "profile": "aprendiz",
+      "seed": 2,
+      "level": 23,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 39,
+      "wave": 10,
+      "kills": 57,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "tiburon_blanco L10",
+      "topDamage": [
+        "tiburon_blanco 211",
+        "sirena_abisal(proj) 62",
+        "anguila_electrica 45"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "acuatica",
+      "profile": "aprendiz",
+      "seed": 2,
+      "level": 23,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 36,
+      "wave": 10,
+      "kills": 46,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "cangrejo_acorazado L10",
+      "topDamage": [
+        "tiburon_blanco 183",
+        "anguila_electrica 39",
+        "sirena_abisal(proj) 33"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "acuatica",
+      "profile": "aprendiz",
+      "seed": 3,
+      "level": 23,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 32,
+      "wave": 10,
+      "kills": 42,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "sirena_abisal(proj) L10",
+      "topDamage": [
+        "tiburon_blanco 259",
+        "cangrejo_acorazado 124",
+        "sirena_abisal(proj) 87"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "acuatica",
+      "profile": "aprendiz",
+      "seed": 3,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 256,
+      "wave": 10,
+      "kills": 124,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "leviatan",
+        "hp": -61,
+        "max": 11005
+      },
+      "killer": null,
+      "topDamage": [
+        "tiburon_blanco 133",
+        "sirena_abisal(proj) 104",
+        "leviatan 90"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "acuatica",
+      "profile": "ocasional",
+      "seed": 0,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 209,
+      "wave": 10,
+      "kills": 136,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "leviatan",
+        "hp": -12,
+        "max": 12797
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan 176",
+        "sirena_abisal(proj) 46",
+        "leviatan(proj) 33"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "acuatica",
+      "profile": "ocasional",
+      "seed": 0,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 303,
+      "wave": 10,
+      "kills": 138,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "leviatan",
+        "hp": -15,
+        "max": 11005
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan 113",
+        "tiburon_joven 63",
+        "kind:water 51"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "acuatica",
+      "profile": "ocasional",
+      "seed": 1,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 320,
+      "wave": 10,
+      "kills": 132,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "leviatan",
+        "hp": -24,
+        "max": 12797
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan 281",
+        "leviatan(proj) 91",
+        "sirena_abisal(proj) 75"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "acuatica",
+      "profile": "ocasional",
+      "seed": 1,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 253,
+      "wave": 10,
+      "kills": 127,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "leviatan",
+        "hp": -13,
+        "max": 11005
+      },
+      "killer": null,
+      "topDamage": [
+        "tiburon_blanco 132",
+        "leviatan 130",
+        "sirena_abisal(proj) 79"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "acuatica",
+      "profile": "ocasional",
+      "seed": 2,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 262,
+      "wave": 10,
+      "kills": 134,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "leviatan",
+        "hp": -102,
+        "max": 12797
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan 308",
+        "tiburon_blanco 109",
+        "leviatan(proj) 64"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "acuatica",
+      "profile": "ocasional",
+      "seed": 2,
+      "level": 23,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 31,
+      "wave": 10,
+      "kills": 51,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "tiburon_blanco L10",
+      "topDamage": [
+        "tiburon_blanco 211",
+        "sirena_abisal(proj) 48",
+        "anguila_electrica 13"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "acuatica",
+      "profile": "ocasional",
+      "seed": 3,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 284,
+      "wave": 10,
+      "kills": 135,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "leviatan",
+        "hp": -52,
+        "max": 12797
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan 128",
+        "leviatan(proj) 87",
+        "tiburon_blanco 67"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "acuatica",
+      "profile": "ocasional",
+      "seed": 3,
+      "level": 23,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 40,
+      "wave": 10,
+      "kills": 63,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "fn:updateControlledHero<update L10",
+      "topDamage": [
+        "tiburon_blanco 260",
+        "sirena_abisal(proj) 72",
+        "medusa_electrica 58"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "acuatica",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 200,
+      "wave": 10,
+      "kills": 135,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "leviatan",
+        "hp": -65,
+        "max": 12153
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan 185",
+        "leviatan(proj) 157",
+        "tiburon_blanco 132"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "acuatica",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 158,
+      "wave": 10,
+      "kills": 134,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "leviatan",
+        "hp": -21,
+        "max": 10452
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan 153",
+        "leviatan(proj) 127",
+        "fn:http://127.0.0.1:8841/js/enemies/elite-affixes.js:155:80<Array.fn 88"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "acuatica",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 184,
+      "wave": 10,
+      "kills": 126,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "leviatan",
+        "hp": -73,
+        "max": 12153
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan 49",
+        "leviatan(proj) 34",
+        "kind:water 33"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "acuatica",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 147,
+      "wave": 10,
+      "kills": 125,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "leviatan",
+        "hp": -222,
+        "max": 10452
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan 101",
+        "kind:water 95",
+        "anguila_electrica 52"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "acuatica",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 166,
+      "wave": 10,
+      "kills": 130,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "leviatan",
+        "hp": -328,
+        "max": 12153
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan(proj) 108",
+        "leviatan 92",
+        "tiburon_blanco 74"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "acuatica",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 240,
+      "wave": 10,
+      "kills": 134,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "leviatan",
+        "hp": -185,
+        "max": 10452
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan 119",
+        "leviatan(proj) 88",
+        "kind:water 60"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "acuatica",
+      "profile": "habitual",
+      "seed": 3,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 227,
+      "wave": 10,
+      "kills": 141,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "leviatan",
+        "hp": -8,
+        "max": 12153
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan 162",
+        "kind:water 126",
+        "leviatan(proj) 93"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "acuatica",
+      "profile": "habitual",
+      "seed": 3,
+      "level": 23,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 195,
+      "wave": 10,
+      "kills": 121,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "leviatan",
+        "hp": -521,
+        "max": 10452
+      },
+      "killer": null,
+      "topDamage": [
+        "leviatan 161",
+        "leviatan(proj) 137",
+        "tiburon_blanco 107"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "abismo",
+      "profile": "aprendiz",
+      "seed": 0,
+      "level": 28,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 521,
+      "wave": 9,
+      "kills": 0,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": "ab_carcelero L9",
+      "topDamage": [
+        "ab_carcelero 355"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "aprendiz",
+      "seed": 0,
+      "level": 28,
+      "phase": "after",
+      "result": "playing",
+      "seconds": 900,
+      "wave": 9,
+      "kills": 0,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 4"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "aprendiz",
+      "seed": 1,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 190,
+      "wave": 10,
+      "kills": 13,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -5,
+        "max": 35395
+      },
+      "killer": null,
+      "topDamage": [
+        "fn:bossHitHero<updateBossSkillWorld 151",
+        "ab_carcelero 120",
+        "ab_jinete 80"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "aprendiz",
+      "seed": 1,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 750,
+      "wave": 10,
+      "kills": 15,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -37,
+        "max": 30440
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 934",
+        "fn:bossHitHero<updateBossSkillWorld 77",
+        "ab_morador 32"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "abismo",
+      "profile": "aprendiz",
+      "seed": 2,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 70,
+      "wave": 10,
+      "kills": 8,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -76,
+        "max": 35395
+      },
+      "killer": null,
+      "topDamage": [
+        "fn:bossHitHero<updateBossSkillWorld 54",
+        "ab_carcelero 53",
+        "ab_tentaculo 42"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "aprendiz",
+      "seed": 2,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 62,
+      "wave": 10,
+      "kills": 11,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -92,
+        "max": 30440
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_tentaculo 17",
+        "ab_carcelero 13",
+        "fn:bossHitHero<updateBossSkillWorld 0"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "abismo",
+      "profile": "aprendiz",
+      "seed": 3,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 112,
+      "wave": 10,
+      "kills": 11,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -834,
+        "max": 35395
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_tentaculo 80",
+        "fn:bossHitHero<updateBossSkillWorld 68",
+        "fn:bossHitHero<abWaveUpdate 40"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "aprendiz",
+      "seed": 3,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 448,
+      "wave": 10,
+      "kills": 11,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -42,
+        "max": 30440
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 415",
+        "fn:bossHitHero<updateBossSkillWorld 27",
+        "fn:bossHitHero<abWaveUpdate 0"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "abismo",
+      "profile": "ocasional",
+      "seed": 0,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 102,
+      "wave": 10,
+      "kills": 10,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -167,
+        "max": 35395
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 70",
+        "ab_morador 33",
+        "fn:bossHitHero<abWaveUpdate 29"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "ocasional",
+      "seed": 0,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 90,
+      "wave": 10,
+      "kills": 9,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -7,
+        "max": 30440
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_morador 19",
+        "fn:bossHitHero<updateBossSkillWorld 14",
+        "fn:bossHitHero<abWaveUpdate 12"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "abismo",
+      "profile": "ocasional",
+      "seed": 1,
+      "level": 28,
+      "phase": "after",
+      "result": "playing",
+      "seconds": 900,
+      "wave": 9,
+      "kills": 0,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": null,
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 0"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "ocasional",
+      "seed": 1,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 70,
+      "wave": 10,
+      "kills": 7,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -69,
+        "max": 30440
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 37",
+        "fn:bossHitHero<updateBossSkillWorld 0",
+        "ab_morador 0"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "abismo",
+      "profile": "ocasional",
+      "seed": 2,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 103,
+      "wave": 10,
+      "kills": 13,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -28,
+        "max": 35395
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 45",
+        "fn:bossHitHero<updateBossSkillWorld 35",
+        "ab_morador 33"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "ocasional",
+      "seed": 2,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 51,
+      "wave": 10,
+      "kills": 5,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -50,
+        "max": 30440
+      },
+      "killer": null,
+      "topDamage": [
+        "fn:bossHitHero<abWaveUpdate 26",
+        "fn:bossHitHero<updateBossSkillWorld 22",
+        "ab_carcelero 0"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "abismo",
+      "profile": "ocasional",
+      "seed": 3,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 243,
+      "wave": 10,
+      "kills": 11,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -5,
+        "max": 35395
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_tentaculo 46",
+        "fn:bossHitHero<abWaveUpdate 28",
+        "ab_morador 22"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "ocasional",
+      "seed": 3,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 105,
+      "wave": 10,
+      "kills": 15,
+      "reserveUsed": false,
+      "active": "mago",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -80,
+        "max": 30440
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 21",
+        "ab_tentaculo 17",
+        "fn:bossHitHero<updateBossSkillWorld 16"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "abismo",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 66,
+      "wave": 10,
+      "kills": 12,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "ab_morador",
+        "hp": 0,
+        "max": 33398
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 0",
+        "ab_morador 0",
+        "fn:bossHitHero<updateBossSkillWorld 0"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "habitual",
+      "seed": 0,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 103,
+      "wave": 10,
+      "kills": 11,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -5,
+        "max": 28722
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 68",
+        "fn:bossHitHero<updateBossSkillWorld 32",
+        "ab_morador 20"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "abismo",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 45,
+      "wave": 10,
+      "kills": 5,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -23,
+        "max": 33398
+      },
+      "killer": null,
+      "topDamage": [
+        "fn:bossHitHero<updateBossSkillWorld 30",
+        "ab_morador 0",
+        "fn:bossHitHero<abWaveUpdate 0"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "habitual",
+      "seed": 1,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 136,
+      "wave": 10,
+      "kills": 11,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "ab_morador",
+        "hp": 0,
+        "max": 28722
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 21",
+        "fn:bossHitHero<abWaveUpdate 21",
+        "ab_morador 0"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0.14
+    },
+    {
+      "arena": "abismo",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 28,
+      "phase": "after",
+      "result": "victory",
+      "seconds": 67,
+      "wave": 10,
+      "kills": 9,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": {
+        "type": "ab_morador",
+        "hp": -112,
+        "max": 33398
+      },
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 43",
+        "fn:bossHitHero<abWaveUpdate 8",
+        "ab_jinete 7"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "habitual",
+      "seed": 2,
+      "level": 28,
+      "phase": "after",
+      "result": "gameover",
+      "seconds": 234,
+      "wave": 9,
+      "kills": 0,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": "ab_carcelero L9",
+      "topDamage": [
+        "ab_carcelero 662"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "habitual",
+      "seed": 3,
+      "level": 28,
+      "phase": "after",
+      "result": "playing",
+      "seconds": 900,
+      "wave": 9,
+      "kills": 0,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 156"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 0,
+      "assist": 0
+    },
+    {
+      "arena": "abismo",
+      "profile": "habitual",
+      "seed": 3,
+      "level": 28,
+      "phase": "after",
+      "result": "playing",
+      "seconds": 900,
+      "wave": 9,
+      "kills": 0,
+      "reserveUsed": false,
+      "active": "ilkan",
+      "boss": null,
+      "killer": null,
+      "topDamage": [
+        "ab_carcelero 72"
+      ],
+      "autopilotError": null,
+      "bossDefeats": 2,
+      "assist": 0
+    }
+  ],
+  "errors": []
+}

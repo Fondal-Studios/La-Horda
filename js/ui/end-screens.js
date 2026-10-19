@@ -48,6 +48,7 @@ function showGameOverScreen(divinaOutcome){
   retryBtn.textContent = netMatch ? "VOLVER AL LOBBY" : "Reintentar desde el Nivel 1";
   if(netMatch) netOnEndScreen(false); else netEndLabels();
   const penalty = applyArenaFailurePenalty(player.classKey);
+  if(typeof bossAssistOnDefeat==="function") bossAssistOnDefeat(); // derrota en el nivel del jefe: suma la ayuda del próximo intento (boss-assist.js)
   // Derrota: la performance igual se muestra, y a veces hay un objeto de consuelo (ver DEFEAT_LOOT)
   const perf = computePerformance(player);
   const loot = grantEndOfRunLoot(player.classKey, perf, false);
@@ -62,6 +63,7 @@ function showGameOverScreen(divinaOutcome){
   // apariencias en la derrota (queda en la victoria y en la Tienda).
   const cpHtml = typeof checkpointDefeatHTML==="function" ? checkpointDefeatHTML() : null;
   document.getElementById("go-loss").innerHTML = defeatPenaltyLineHTML(penalty) + (cpHtml ? `<span class="go-loss-cp">${cpHtml}</span>` : `<span class="go-loss-sub">${typeof checkpointNoOfferHTML==="function" ? checkpointNoOfferHTML() : "Sin puntos de control: la próxima incursión comienza en el Nivel 1."}</span>`);
+  { const ba = typeof bossAssistDefeatHTML==="function" ? bossAssistDefeatHTML() : null; if(ba) document.getElementById("go-loss").insertAdjacentHTML("beforeend", `<span class="go-loss-assist">${ba}</span>`); } // ayuda del jefe (boss-assist.js)
   if(cpHtml && !netMatch){
     retryBtn.textContent = `Reanudar desde el nivel ${CP_LEVEL}`; retryBtn.dataset.cp = "resume";
     const b1 = document.getElementById("retry-from1-btn"); if(b1) b1.classList.remove("hidden");
@@ -92,7 +94,14 @@ function defeatPenaltyLineHTML(p){
     return `<b class="go-forgiven" style="color:#9fe8a8;">Esta vez la Horda te perdona: no perdiste XP ni oro.</b><br><span style="color:#cfc6b0;">${why}</span>`;
   }
   const what = p.banked ? "desde el punto de control" : "en esta partida";
-  return `<b style="color:#ff8a6a;">No terminaste la arena: perdiste el ${p.lostPct}% de lo ganado ${what} (${p.xpLost} de XP${p.afterLevel<p.beforeLevel?`, volviste a Nv. ${p.afterLevel}`:""} y ${p.goldLost} de oro).</b>${p.banked ? `<span class="go-loss-sub">Lo ganado antes del punto de control quedó a salvo.</span>` : ""}`;
+  // solo se nombra lo que de verdad se perdió: nada de "perdiste 50 % (0 de XP y 0 de oro)"
+  const lost = [];
+  if(p.xpLost > 0) lost.push(`${p.xpLost} de XP`);
+  if(p.afterLevel < p.beforeLevel) lost.push(`volviste a Nv. ${p.afterLevel}`);
+  if(p.goldLost > 0) lost.push(`${p.goldLost} de oro`);
+  const detail = lost.length > 1 ? lost.slice(0, -1).join(", ") + " y " + lost[lost.length-1] : lost.join("");
+  const head = lost.length ? `No terminaste la arena: perdiste el ${p.lostPct}% de lo ganado ${what} (${detail}).` : `No terminaste la arena: no perdiste nada de lo ganado ${what}.`;
+  return `<b style="color:#ff8a6a;">${head}</b>${p.banked ? `<span class="go-loss-sub">Lo ganado antes del punto de control quedó a salvo.</span>` : ""}`;
 }
 /* ============================================================
    FASE 3 — PANTALLA DE VICTORIA COMPLETA

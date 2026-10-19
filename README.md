@@ -124,8 +124,8 @@ El panel de niveles se habilita en Opciones para las cuentas incluidas en `ADMIN
 
 La entrega de la fábrica de producción, Códice/colección, entrenamiento y operaciones está documentada en [LA_HORDA_ALPHA_AUTONOMOUS_AUDIT.md](LA_HORDA_ALPHA_AUTONOMOUS_AUDIT.md), con gates ejecutados y pendientes explícitos. Estándares: [Production Bibles](docs/production/PRODUCTION_BIBLES.md). Incorporación de campeones: [Factory](tools/factory/README.md). Configuración del owner, contratos y respaldos: [Game Master](docs/production/operations.md). No hay pagos activos.
 
-## Guerra de Cristales (Alpha)
+## Modos de postgame: Guerra de Cristales y Coliseo (Alpha)
 
-Nuevo modo de Coliseo 2 contra 2, accesible desde Modos: defensa de cristales, oleadas simétricas, fragmentos compartidos y envío de amenazas. Entrenamiento con bots o salas privadas sobre el relay existente. Cuatro kits adaptados al modo, sin afectar la progresión de campaña.
+Contenido de DESPUÉS de la campaña, contra bots (salas privadas en línea para Cristales). **Guerra de Cristales**: 5 contra 5, tres carriles, selva, torres y PvP con los campeones de la campaña. **Coliseo**: torneo de ocho luchadores, cuatro equipos de dos, duelos 2 contra 2 con anillo que se cierra. En alfa están abiertos (`POSTGAME_GATE = "open"`); con `"campaign"` se abren al terminar la campaña en Normal. Entran con tu nivel, talentos, maestría y equipo con un tope configurable (`LANES.PROGRESS_CAP`); antes hay un Entrenamiento normalizado sin recompensas. Recompensas diarias con tope.
 
-[Reglas, controles, arquitectura y validación](docs/modes/CRYSTAL_WARS.md).
+[Reglas, controles y validación](docs/modes/CRYSTAL_WARS.md) · [Progresión, tope, bloqueo y recompensas](docs/modes/POSTGAME.md).
