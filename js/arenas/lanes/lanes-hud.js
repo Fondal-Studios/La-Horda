@@ -89,7 +89,7 @@ function lanesHudTick(){
   const bf = []; if(T.buffs.dragon > L.t) bf.push("Dragón +10 % daño " + _lnMin(T.buffs.dragon - L.t)); if(T.buffs.rey > L.t) bf.push("Rey Coloso " + _lnMin(T.buffs.rey - L.t)); if(player._lnBuff && player._lnBuff.until > L.t) bf.push("Gigante +12 % " + _lnMin(player._lnBuff.until - L.t));
   q(".ln-note").textContent = L.t >= LANES.ECLIPSE_MS ? "Los dos cristales se apagan cada vez más rápido" : (bf.length ? "★ " + bf.join(" · ") : (L.t < 20000 ? "Tu horda sale sola por los tres carriles. Acompañala y derribá torres." : (player._recall ? "Volviendo a la base… no te muevas" : "")));
   const foes = L.feed.filter(f=>L.t - f.t < 9000).slice(-3);
-  q(".ln-feed").innerHTML = foes.map(f=>'<div style="color:' + sidesFeedColor(f.team) + '">' + f.text + '</div>').join("");
+  q(".ln-feed").innerHTML = foes.map(f=>'<div style="color:' + sidesFeedColor(f.team) + '">' + guideEsc(f.text) + '</div>').join("");
   // carta de horda
   const cards = q(".ln-cards"), key = T.offer ? T.offer.join(",") + "@" + T.offerAt : "";
   if(T.offer){
@@ -145,9 +145,11 @@ function lanesShowResult(){
   let r = document.getElementById("lanes-result");
   if(!r){ r = document.createElement("div"); r.id = "lanes-result"; r.className = "lanes-result hidden"; document.body.appendChild(r); }
   const mine = player.team != null ? player.team : 0, won = L.winner === mine, draw = L.winner === -1;
+  const pgRes = typeof postgameSettle === "function" ? postgameSettle(L) : null;   // postgame: recompensas con tope diario (solo en solitario)
   const rows = heroes.map(h=>{ const s = h.stats || {}; return '<tr' + (h === player ? ' class="me"' : '') + '><td>' + heroLabel(h) + '</td><td>' + (h.team ? "Ámbar" : "Zafiro") + '</td><td>' + (h.mlvl || "-") + '</td><td>' + Math.round(s.dmgDealt || s.dmg || 0) + '</td><td>' + (s.kills || 0) + '</td><td>' + Math.round(s.healed || s.heal || 0) + '</td></tr>'; }).join("");
   r.innerHTML = '<div class="ln-res-card"><div class="ln-res-kicker">GUERRA DE CRISTALES</div><h2>' + (draw ? "EMPATE" : won ? "¡VICTORIA!" : "CRISTAL CAÍDO") + '</h2>' +
     '<p>Zafiro ' + Math.ceil(L.team[0].S[9].hp) + ' · Ámbar ' + Math.ceil(L.team[1].S[9].hp) + ' · torres en pie ' + lanesTowersAlive(0) + '–' + lanesTowersAlive(1) + ' · bajas de héroes ' + L.team[0].pk + '–' + L.team[1].pk + ' · ' + (L.why === "tiempo" ? "decidida por tiempo" : "cristal destruido") + '</p>' +
+    postgameResultHtml(pgRes) +
     '<table><thead><tr><th>Jugador</th><th>Equipo</th><th>Nv</th><th>Daño</th><th>Bajas</th><th>Cura</th></tr></thead><tbody>' + rows + '</tbody></table>' +
     '<div class="ln-res-btns"><button type="button" class="ln-again">REVANCHA</button><button type="button" class="ln-exit">VOLVER AL MENÚ</button></div></div>';
   r.classList.remove("hidden");

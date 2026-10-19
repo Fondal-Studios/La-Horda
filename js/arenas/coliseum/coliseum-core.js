@@ -22,6 +22,7 @@ function colStart(opts){
     const pool = roster.filter(k=>!taken.includes(k)); const k = pool[(Math.random()*pool.length)|0]; taken.push(k); return k; };
   const mate = pick(opts.mate), foes = [0, 1, 2, 3, 4, 5].map(i=>pick(opts.rivals && opts.rivals[i]));
   lanesBegin("solo", opts.seed, "coliseo");
+  if(typeof postgameInstall === "function") postgameInstall("coliseo", mine, opts);   // postgame: tu campeón con tope de progresión (o Entrenamiento normalizado)
   LN.setup = {mine, mate, rivals:foes};
   selectedClass = mine; currentArena = "coliseo"; lobbyAllies = [mate, ...foes];
   try{ startRun(LANES.RUNLEVEL); }
@@ -36,7 +37,8 @@ function colRunStart(){
   L.t = 0; L.wave = 0; L.ended = false; L.winner = -1; L.shots = []; L.feed = []; L.spawnCtx = null;
   L.team = colNewTeams(); runLevel = LANES.RUNLEVEL;
   levelDuration = 1e12; levelTimer = 0; midBossSpawned = true;
-  heroes.forEach((h, k)=>{ h.team = h.lane = Math.min(3, (k / 2) | 0); h._lnProxy = null; h._colDead = false; });
+  if(typeof postgameTagHeroes === "function") postgameTagHeroes();
+  heroes.forEach((h, k)=>{ h.team = h.lane = Math.min(3, (k / 2) | 0); h._lnProxy = null; h._colDead = false; if(h._pg) lanesApplyLevel(h, 10, true); });   // con postgame las estadísticas salen del nivel fijo 10 + tope de progresión
   L.col = {round:0, phase:"inter", t0:0, cd:-1, pairs:COL_PAIRINGS[0], res:[null, null], ringR:COL.PIT_R, spec:null, specPit:-1, last:""};
   document.getElementById("hud-arena") && (document.getElementById("hud-arena").textContent = "Coliseo");
   colStartRound();
@@ -91,7 +93,8 @@ function colFight(dt){
   }
   for(const h of heroes){
     if(h.alive || h._colDead) continue;
-    h._colDead = true; const kt = h._lnKiller; h._lnKiller = null;
+    h._colDead = true; const kt = h._lnKiller, kh = h._lnKillerHero; h._lnKiller = null; h._lnKillerHero = null;
+    if(kh && kt != null && kt !== h.team) kh.pgKills = (kh.pgKills || 0) + 1;   // bajas de héroes (recompensa de postgame)
     if(kt != null && kt !== h.team){ L.team[kt].pk++; colFeed(colTeamName(kt) + " derribó a " + heroLabel(h), kt); }
     else colFeed(heroLabel(h) + " cayó", h.team);
   }

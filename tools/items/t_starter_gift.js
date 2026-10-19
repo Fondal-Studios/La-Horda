@@ -6,10 +6,9 @@
 // guardián sin skins → vale; "Elegir después" → vale; canje del vale en la Tienda (sin cobrar oro);
 // guardados viejos (con los 10.000 de oro: los conservan y reciben el vale UNA vez; sin guardián: camino
 // nuevo sin vale); pruebas viejas con webdriver siguen el camino de antes (guardián solo).
-//   (python3 -m http.server 8771 &) ; node tools/items/t_starter_gift.js
-let chromium;
-try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
-const BASE = process.env.SE_BASE_URL || 'http://127.0.0.1:8771';
+//   node tools/items/t_starter_gift.js
+const H = require('../lib/serve');
+let BASE;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL ') + n + (x !== undefined ? '  ' + JSON.stringify(x).slice(0, 500) : '')); if (!ok) fails++; };
 
@@ -27,7 +26,7 @@ async function boot(browser, opts = {}) {
   }, [opts.firstRun !== false, opts.save || null]);
   const E = (fn, a) => page.evaluate(fn, a);
   const ready = async () => { for (let k = 0; k < 300; k++) { if (await E(() => { const b = document.getElementById('title-continue-btn'); return !!b && !b.disabled; }).catch(() => false)) break; await sleep(100); } };
-  await page.goto(`${BASE}/index.html`, { waitUntil: 'load', timeout: 180000 });
+  await H.goto(page, `${BASE}/index.html`, { waitUntil: 'load', timeout: 180000 });
   await ready();
   const tap = async (sel) => {
     let el = null;
@@ -47,7 +46,8 @@ const REAL = '(typeof ALPHA_TRAINING!=="undefined" && ALPHA_TRAINING.active ? AL
 const waitFor = async (E, fn, ms = 8000) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { if (await E(fn).catch(() => false)) return true; await sleep(100); } return false; };
 
 (async () => {
-  const browser = await chromium.launch({ args: ['--no-sandbox'] });
+  const site = await H.startSite({ envUrl: ['SE_BASE_URL'] }); BASE = site.url;   // servidor propio en puerto libre; SE_BASE_URL para uno externo
+  const browser = await H.launch();
 
   // ---------- 1. perfil nuevo: guardián → croma → equipada → Ciudad ----------
   {
@@ -212,7 +212,7 @@ const waitFor = async (E, fn, ms = 8000) => { const t0 = Date.now(); while (Date
     await B.ctx.close();
   }
 
-  await browser.close();
+  await browser.close(); await site.close();
   console.log(fails ? `\n${fails} FALLAS` : '\nTODO OK');
   process.exit(fails ? 1 : 0);
 })().catch(e => { console.error(e); process.exit(1); });

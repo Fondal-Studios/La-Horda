@@ -1,0 +1,658 @@
+{
+ "profile": "max",
+ "secs": 60,
+ "repeat": 1,
+ "roles": {
+  "asesino": {
+   "median": 8.433,
+   "champions": [
+    {
+     "champ": "guerrero",
+     "ttk": 8.433,
+     "ratio": 1
+    },
+    {
+     "champ": "musashi",
+     "ttk": 4.783,
+     "ratio": 0.57
+    },
+    {
+     "champ": "cazadora",
+     "ttk": 8.183,
+     "ratio": 0.97
+    },
+    {
+     "champ": "libertador",
+     "ttk": 42.8,
+     "ratio": 5.08
+    },
+    {
+     "champ": "ilkan",
+     "ttk": 7.233,
+     "ratio": 0.86
+    },
+    {
+     "champ": "vesper",
+     "ttk": 9.617,
+     "ratio": 1.14
+    },
+    {
+     "champ": "nahir",
+     "ttk": 8.267,
+     "ratio": 0.98
+    },
+    {
+     "champ": "orsa",
+     "ttk": 9.117,
+     "ratio": 1.08
+    },
+    {
+     "champ": "veyra",
+     "ttk": 10,
+     "ratio": 1.19
+    }
+   ]
+  },
+  "mago": {
+   "median": 11,
+   "champions": [
+    {
+     "champ": "mago",
+     "ttk": 8.85,
+     "ratio": 0.8
+    },
+    {
+     "champ": "axiom",
+     "ttk": 10.85,
+     "ratio": 0.99
+    },
+    {
+     "champ": "nigromante",
+     "ttk": 24.1,
+     "ratio": 2.19
+    },
+    {
+     "champ": "myla",
+     "ttk": 14.817,
+     "ratio": 1.35
+    },
+    {
+     "champ": "brasa",
+     "ttk": 9.667,
+     "ratio": 0.88
+    },
+    {
+     "champ": "morwen",
+     "ttk": 10.65,
+     "ratio": 0.97
+    },
+    {
+     "champ": "iria",
+     "ttk": 12.5,
+     "ratio": 1.14
+    },
+    {
+     "champ": "tibor",
+     "ttk": 10.983,
+     "ratio": 1
+    },
+    {
+     "champ": "zahra",
+     "ttk": 10.35,
+     "ratio": 0.94
+    },
+    {
+     "champ": "sira",
+     "ttk": 11,
+     "ratio": 1
+    },
+    {
+     "champ": "solciju",
+     "ttk": 14.183,
+     "ratio": 1.29
+    },
+    {
+     "champ": "morveth",
+     "ttk": 15.617,
+     "ratio": 1.42
+    },
+    {
+     "champ": "aelith",
+     "ttk": 12.05,
+     "ratio": 1.1
+    }
+   ]
+  },
+  "soporte": {
+   "median": 23.367,
+   "champions": [
+    {
+     "champ": "soporte",
+     "ttk": 16.183,
+     "ratio": 0.69
+    },
+    {
+     "champ": "profeta",
+     "ttk": 42.583,
+     "ratio": 1.82
+    },
+    {
+     "champ": "ynara",
+     "ttk": 23.367,
+     "ratio": 1
+    },
+    {
+     "champ": "farolero",
+     "ttk": 37.433,
+     "ratio": 1.6
+    },
+    {
+     "champ": "dariel",
+     "ttk": 21.85,
+     "ratio": 0.94
+    }
+   ]
+  },
+  "tanque": {
+   "median": 12.983,
+   "champions": [
+    {
+     "champ": "tanque",
+     "ttk": 21.633,
+     "ratio": 1.67
+    },
+    {
+     "champ": "segador",
+     "ttk": 11.617,
+     "ratio": 0.89
+    },
+    {
+     "champ": "eslabon",
+     "ttk": 14.517,
+     "ratio": 1.12
+    },
+    {
+     "champ": "baltra",
+     "ttk": 12.633,
+     "ratio": 0.97
+    },
+    {
+     "champ": "maura",
+     "ttk": 12.017,
+     "ratio": 0.93
+    },
+    {
+     "champ": "renko",
+     "ttk": 12.983,
+     "ratio": 1
+    },
+    {
+     "champ": "brakk",
+     "ttk": 16.683,
+     "ratio": 1.28
+    }
+   ]
+  }
+ },
+ "outliers": [
+  {
+   "champ": "libertador",
+   "role": "asesino",
+   "ttk": 42.8,
+   "ratio": 5.08,
+   "why": "más de 50 % por encima de la mediana"
+  },
+  {
+   "champ": "nigromante",
+   "role": "mago",
+   "ttk": 24.1,
+   "ratio": 2.19,
+   "why": "más de 50 % por encima de la mediana"
+  },
+  {
+   "champ": "profeta",
+   "role": "soporte",
+   "ttk": 42.583,
+   "ratio": 1.82,
+   "why": "más de 50 % por encima de la mediana"
+  },
+  {
+   "champ": "farolero",
+   "role": "soporte",
+   "ttk": 37.433,
+   "ratio": 1.6,
+   "why": "más de 50 % por encima de la mediana"
+  },
+  {
+   "champ": "tanque",
+   "role": "tanque",
+   "ttk": 21.633,
+   "ratio": 1.67,
+   "why": "más de 50 % por encima de la mediana"
+  }
+ ],
+ "global": {
+  "median": 12.0335,
+  "n": 34,
+  "p10": 8.267,
+  "p90": 24.1
+ },
+ "rows": [
+  {
+   "champ": "tanque",
+   "role": "tanque",
+   "ttk": 21.633,
+   "runs": [
+    21.633
+   ],
+   "progress": true,
+   "hp": 298,
+   "dmg": 17.3,
+   "eHp": 322
+  },
+  {
+   "champ": "guerrero",
+   "role": "asesino",
+   "ttk": 8.433,
+   "runs": [
+    8.433
+   ],
+   "progress": true,
+   "hp": 217,
+   "dmg": 27,
+   "eHp": 234
+  },
+  {
+   "champ": "mago",
+   "role": "mago",
+   "ttk": 8.85,
+   "runs": [
+    8.85
+   ],
+   "progress": true,
+   "hp": 170,
+   "dmg": 26.2,
+   "eHp": 184
+  },
+  {
+   "champ": "soporte",
+   "role": "soporte",
+   "ttk": 16.183,
+   "runs": [
+    16.183
+   ],
+   "progress": true,
+   "hp": 223,
+   "dmg": 14.5,
+   "eHp": 241
+  },
+  {
+   "champ": "segador",
+   "role": "tanque",
+   "ttk": 11.617,
+   "runs": [
+    11.617
+   ],
+   "progress": true,
+   "hp": 340,
+   "dmg": 21.6,
+   "eHp": 367
+  },
+  {
+   "champ": "axiom",
+   "role": "mago",
+   "ttk": 10.85,
+   "runs": [
+    10.85
+   ],
+   "progress": true,
+   "hp": 161,
+   "dmg": 29.1,
+   "eHp": 174
+  },
+  {
+   "champ": "profeta",
+   "role": "soporte",
+   "ttk": 42.583,
+   "runs": [
+    42.583
+   ],
+   "progress": true,
+   "hp": 230,
+   "dmg": 16.1,
+   "eHp": 248
+  },
+  {
+   "champ": "musashi",
+   "role": "asesino",
+   "ttk": 4.783,
+   "runs": [
+    4.783
+   ],
+   "progress": true,
+   "hp": 185,
+   "dmg": 25.2,
+   "eHp": 200
+  },
+  {
+   "champ": "cazadora",
+   "role": "asesino",
+   "ttk": 8.183,
+   "runs": [
+    8.183
+   ],
+   "progress": true,
+   "hp": 156,
+   "dmg": 20.1,
+   "eHp": 168
+  },
+  {
+   "champ": "nigromante",
+   "role": "mago",
+   "ttk": 24.1,
+   "runs": [
+    24.1
+   ],
+   "progress": true,
+   "hp": 179,
+   "dmg": 19.7,
+   "eHp": 193
+  },
+  {
+   "champ": "libertador",
+   "role": "asesino",
+   "ttk": 42.8,
+   "runs": [
+    42.8
+   ],
+   "progress": true,
+   "hp": 226,
+   "dmg": 36.9,
+   "eHp": 244
+  },
+  {
+   "champ": "ilkan",
+   "role": "asesino",
+   "ttk": 7.233,
+   "runs": [
+    7.233
+   ],
+   "progress": true,
+   "hp": 239,
+   "dmg": 21.9,
+   "eHp": 258
+  },
+  {
+   "champ": "ynara",
+   "role": "soporte",
+   "ttk": 23.367,
+   "runs": [
+    23.367
+   ],
+   "progress": true,
+   "hp": 226,
+   "dmg": 14.7,
+   "eHp": 244
+  },
+  {
+   "champ": "myla",
+   "role": "mago",
+   "ttk": 14.817,
+   "runs": [
+    14.817
+   ],
+   "progress": true,
+   "hp": 185,
+   "dmg": 19.5,
+   "eHp": 200
+  },
+  {
+   "champ": "brasa",
+   "role": "mago",
+   "ttk": 9.667,
+   "runs": [
+    9.667
+   ],
+   "progress": true,
+   "hp": 194,
+   "dmg": 21.7,
+   "eHp": 210
+  },
+  {
+   "champ": "eslabon",
+   "role": "tanque",
+   "ttk": 14.517,
+   "runs": [
+    14.517
+   ],
+   "progress": true,
+   "hp": 311,
+   "dmg": 17.7,
+   "eHp": 336
+  },
+  {
+   "champ": "morwen",
+   "role": "mago",
+   "ttk": 10.65,
+   "runs": [
+    10.65
+   ],
+   "progress": true,
+   "hp": 180,
+   "dmg": 21.7,
+   "eHp": 194
+  },
+  {
+   "champ": "farolero",
+   "role": "soporte",
+   "ttk": 37.433,
+   "runs": [
+    37.433
+   ],
+   "progress": true,
+   "hp": 242,
+   "dmg": 16.6,
+   "eHp": 261
+  },
+  {
+   "champ": "iria",
+   "role": "mago",
+   "ttk": 12.5,
+   "runs": [
+    12.5
+   ],
+   "progress": true,
+   "hp": 185,
+   "dmg": 21.7,
+   "eHp": 200
+  },
+  {
+   "champ": "vesper",
+   "role": "asesino",
+   "ttk": 9.617,
+   "runs": [
+    9.617
+   ],
+   "progress": true,
+   "hp": 190,
+   "dmg": 22.9,
+   "eHp": 205
+  },
+  {
+   "champ": "nahir",
+   "role": "asesino",
+   "ttk": 8.267,
+   "runs": [
+    8.267
+   ],
+   "progress": true,
+   "hp": 186,
+   "dmg": 22.9,
+   "eHp": 201
+  },
+  {
+   "champ": "baltra",
+   "role": "tanque",
+   "ttk": 12.633,
+   "runs": [
+    12.633
+   ],
+   "progress": true,
+   "hp": 313,
+   "dmg": 17.7,
+   "eHp": 338
+  },
+  {
+   "champ": "maura",
+   "role": "tanque",
+   "ttk": 12.017,
+   "runs": [
+    12.017
+   ],
+   "progress": true,
+   "hp": 296,
+   "dmg": 17.7,
+   "eHp": 320
+  },
+  {
+   "champ": "dariel",
+   "role": "soporte",
+   "ttk": 21.85,
+   "runs": [
+    21.85
+   ],
+   "progress": true,
+   "hp": 228,
+   "dmg": 14.9,
+   "eHp": 246
+  },
+  {
+   "champ": "orsa",
+   "role": "asesino",
+   "ttk": 9.117,
+   "runs": [
+    9.117
+   ],
+   "progress": true,
+   "hp": 186,
+   "dmg": 22.9,
+   "eHp": 201
+  },
+  {
+   "champ": "tibor",
+   "role": "mago",
+   "ttk": 10.983,
+   "runs": [
+    10.983
+   ],
+   "progress": true,
+   "hp": 184,
+   "dmg": 20.6,
+   "eHp": 199
+  },
+  {
+   "champ": "zahra",
+   "role": "mago",
+   "ttk": 10.35,
+   "runs": [
+    10.35
+   ],
+   "progress": true,
+   "hp": 184,
+   "dmg": 20.6,
+   "eHp": 199
+  },
+  {
+   "champ": "renko",
+   "role": "tanque",
+   "ttk": 12.983,
+   "runs": [
+    12.983
+   ],
+   "progress": true,
+   "hp": 306,
+   "dmg": 17.7,
+   "eHp": 330
+  },
+  {
+   "champ": "sira",
+   "role": "mago",
+   "ttk": 11,
+   "runs": [
+    11
+   ],
+   "progress": true,
+   "hp": 180,
+   "dmg": 20.6,
+   "eHp": 194
+  },
+  {
+   "champ": "solciju",
+   "role": "mago",
+   "ttk": 14.183,
+   "runs": [
+    14.183
+   ],
+   "progress": true,
+   "hp": 182,
+   "dmg": 20.8,
+   "eHp": 197
+  },
+  {
+   "champ": "veyra",
+   "role": "asesino",
+   "ttk": 10,
+   "runs": [
+    10
+   ],
+   "progress": true,
+   "hp": 179,
+   "dmg": 21.9,
+   "eHp": 193
+  },
+  {
+   "champ": "brakk",
+   "role": "tanque",
+   "ttk": 16.683,
+   "runs": [
+    16.683
+   ],
+   "progress": true,
+   "hp": 312,
+   "dmg": 17.7,
+   "eHp": 337
+  },
+  {
+   "champ": "morveth",
+   "role": "mago",
+   "ttk": 15.617,
+   "runs": [
+    15.617
+   ],
+   "progress": true,
+   "hp": 176,
+   "dmg": 20.1,
+   "eHp": 190
+  },
+  {
+   "champ": "aelith",
+   "role": "mago",
+   "ttk": 12.05,
+   "runs": [
+    12.05
+   ],
+   "progress": true,
+   "hp": 179,
+   "dmg": 21.7,
+   "eHp": 193
+  }
+ ],
+ "vsBase": {
+  "dpsAdvantageMedian": 1.63,
+  "dpsAdvantageMin": 1.17,
+  "dpsAdvantageMax": 4.02,
+  "ehpRatioMedian": 1.3,
+  "n": 33,
+  "lanchesterMedian": 2.12
+ }
+}

@@ -7,16 +7,16 @@
       huellas del estado (vida y posición de cada enemigo y héroe, recargas, cantidad de objetos, proyectiles y zonas) y el número de llamadas a Math.random.
    5. Red: el lanzamiento queda grabado como kvbFx('uf.<clave>', ...) con argumentos numéricos.
    6. Cada campeón con forma existe en el roster, y cada habilidad con forma (clave.casilla) corresponde a una casilla real.
-   Uso: BASE_URL=http://127.0.0.1:9301/ [ONLY=a,b] node tools/vfx/test-ult-forms.js        (sale con 1 si algo falla) */
-let chromium; try { ({chromium} = require('playwright')); } catch (e) { ({chromium} = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
-const BASE = process.env.BASE_URL || process.env.ABILITY_BASE_URL || 'http://127.0.0.1:9301/';
+   Uso: [BASE_URL=http://127.0.0.1:PUERTO/ (servidor externo; si no, levanta el suyo en un puerto libre)] [ONLY=a,b] node tools/vfx/test-ult-forms.js        (sale con 1 si algo falla) */
+const H = require('../lib/serve');
 (async () => {
-  const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium', args: ['--no-sandbox']});
+  const site = await H.startSite({envUrl: ['BASE_URL', 'ABILITY_BASE_URL']}), BASE = site.url + '/';   // servidor propio en puerto libre; BASE_URL/ABILITY_BASE_URL para uno externo
+  const browser = await H.launch();
   const page = await browser.newPage({viewport: {width: 844, height: 390}}), errors = []; let bad = 0;
   page.on('pageerror', e => errors.push(e.message));
   const ok = (name, cond, extra) => { if (!cond) bad++; console.log((cond ? 'OK     ' : 'FALLA  ') + name + (extra ? ' ' + extra : '')); };
-  await page.goto(BASE, {waitUntil: 'domcontentloaded', timeout: 120000});
-  await page.waitForFunction(() => typeof startRun === 'function' && typeof UF !== 'undefined' && assetsAllReady(), null, {timeout: 120000});
+  await H.goto(page, BASE);
+  await H.waitFor(page, () => typeof startRun === 'function' && typeof UF !== 'undefined' && assetsAllReady(), null);
   await page.waitForTimeout(1500);
   const only = process.env.ONLY ? process.env.ONLY.split(',') : null;
   const keys = (await page.evaluate(() => Object.keys(UF.champs))).filter(k => !only || only.includes(k.split('.')[0]));
@@ -76,7 +76,7 @@ const BASE = process.env.BASE_URL || process.env.ABILITY_BASE_URL || 'http://127
         h: heroes.map(h => [Math.round(h.x * 100), Math.round(h.hp), Math.round(h.shield || 0)]), objs: (typeof portadorObjects !== 'undefined' ? portadorObjects : []).map(o => o.kind + ':' + Math.round(o.x) + ':' + Math.round(o.y)), pr: projectiles.length, fw: typeof fireWalls !== 'undefined' ? fireWalls.length : 0});
     } finally { Math.random = rnd; performance.now = pn; window.UF_OFF = false; state = 'menu'; }
   };
-  const fresh = async () => { const pg = await browser.newPage({viewport: {width: 844, height: 390}}); pg.on('pageerror', e => errors.push(e.message)); await pg.goto(BASE, {waitUntil: 'domcontentloaded', timeout: 120000}); await pg.waitForFunction(() => typeof startRun === 'function' && typeof UF !== 'undefined' && assetsAllReady(), null, {timeout: 120000}); await pg.waitForTimeout(600); return pg; };
+  const fresh = async () => { const pg = await browser.newPage({viewport: {width: 844, height: 390}}); pg.on('pageerror', e => errors.push(e.message)); await H.goto(pg, BASE); await H.waitFor(pg, () => typeof startRun === 'function' && typeof UF !== 'undefined' && assetsAllReady(), null); await pg.waitForTimeout(600); return pg; };
   for (const k of ults) {
     const once = async off => { const pg = await fresh(); try { return await pg.evaluate(`(${SIM.toString()})(${JSON.stringify([k, off])})`); } finally { await pg.close(); } };
     const a = await once(true), b = await once(false); if (a === b) same++; else diffs.push(k + '\n  ' + a.slice(0, 240) + '\n  ' + b.slice(0, 240));
@@ -92,5 +92,5 @@ const BASE = process.env.BASE_URL || process.env.ABILITY_BASE_URL || 'http://127
   }, B2);
   ok('7. segunda tanda: ' + B2.length + ' definitivas con forma propia registrada y reproducible', r7.missing.length === 0 && r7.notPlayed.length === 0, JSON.stringify(r7));
   ok('0. sin errores de página', errors.length === 0, errors.slice(0, 3).join(' | '));
-  await browser.close(); process.exitCode = bad ? 1 : 0;
+  await browser.close(); await site.close(); process.exitCode = bad ? 1 : 0;
 })().catch(e => { console.error(e); process.exitCode = 1; });

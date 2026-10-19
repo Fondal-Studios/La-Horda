@@ -88,3 +88,8 @@ Capturas (844×390 y 667×375, con el reloj fijado a las 18:48 UTC): `docs/ux/ti
 - **Escala sin datos propios:** las cifras de oro por victoria son las de la crítica; hace falta medirlas con una sesión real de Pesadilla/Infierno antes de activar `live`.
 - **Compras de a una:** completar un set (y recibir su apariencia gratis por colección) exige que salgan sus 4 piezas (entre 1 y varias semanas); la skin por oro (9.000) o Brasas sigue siendo la vía directa para el aspecto.
 - **No cubierto:** regalo inicial, buzón de administración y botín siguen entregando piezas sin pasar por la rotación (a propósito). El modo `live` no está activado en ningún despliegue: la rama deja `demo`.
+
+
+## Postgame (Cristales y Coliseo) y esta escala
+
+Los modos de postgame pagan hasta **900 de oro por día** (tope compartido, `POSTGAME_CFG.daily.gold`). Con precios `live` eso es el 3 % de un set y el 17 % de una victoria Infernal; no cambia la rotación, pero acelera ≈ 2× a un jugador casual. Cuentas completas en [`docs/modes/POSTGAME.md`](../modes/POSTGAME.md#impacto-en-la-economía-de-la-tienda-shop_mode). No se tocó `SHOP_MODE` ni los precios.

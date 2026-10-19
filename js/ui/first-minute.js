@@ -28,7 +28,7 @@ function firstMinuteStory(onStart, onSkip){
   if(typeof narrationBookOpen==="function" && narrationBookOpen()){ narrationWhenFree(()=>{ if(!firstMinuteStory(onStart, onSkip) && onStart) onStart(); }); return true; }
   _fmJust = false;
   if(!firstMinuteEnabled()) return false;
-  if(typeof save!=="undefined" && save.tut && save.tut.firstStory) return false;
+  if(typeof save!=="undefined" && save.tut && (save.tut.firstStory || save.tut.training===1 || save.tut.trainingSkipped===1)) return false; // ya hizo o saltó la práctica: no hay nada que presentar
   let el = document.getElementById("first-story");
   if(el) el.remove();
   el = document.createElement("div"); el.id = "first-story"; el.className = "ui-modal"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-labelledby", "first-story-title");

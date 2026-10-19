@@ -93,3 +93,7 @@
   /* los avisos bajan debajo de la cabecera: no tapan ⚙, ⏏ ni el logo */
   body:has(#mainmenu-screen:not(.hidden)) #toast-stack{ top:calc(64px + env(safe-area-inset-top,0px)); }
 }
+
+/* Modos de postgame bloqueados (js/ui/hub.js: renderPostgameTiles): se ven apagados pero la condición se lee entera */
+#mainmenu-screen .hub-tile.locked{ filter:grayscale(.55) brightness(.9); border-style:dashed; }
+#mainmenu-screen .hub-tile.locked .hub-tile-sub{ color:var(--hud-gold,#ffcf5c); white-space:normal; font-size:14px; line-height:1.2; }
