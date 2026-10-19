@@ -38,7 +38,7 @@ const DIFF_TIERS = {
              desc:"Campaña accesible: aprendé las arenas con margen para recuperarte."},
   pesadilla:{label:"Pesadilla", color:"#ff9a4a", hp:2.5,  dmg:2.3, bossDmg:1.3,  hitCap:1.3,  elite:1.8, resist:0.15, lootFactor:1.7, itemLvl:2, ilvlBase:10, lootRowShift:6, xp:1.6, gold:1.5, lvlOffset:36,
              desc:"La Horda vuelve con más vida, pega más fuerte, resiste el fuego, el hielo y el rayo, y trae más élites."},
-  infierno: {label:"Infierno",  color:"#ff4a5a", hp:5.5,  dmg:4.5,  bossDmg:1.65, hitCap:1.6,  elite:2.6, resist:0.3,  lootFactor:2.6, itemLvl:4, ilvlBase:18, lootRowShift:9, xp:2.3, gold:2,   lvlOffset:62,
+  infierno: {label:"Infierno",  color:"#ff4a5a", hp:5.5,  dmg:4.5,  bossDmg:1.65, hitCap:1.6,  elite:2.6, resist:0.3,  lootFactor:2.6, itemLvl:4, ilvlBase:18, lootRowShift:9, xp:2.3, gold:3,   lvlOffset:62,
              desc:"Para guardianes hechos: cada golpe duele, las élites son la regla y los elementos casi no les entran."}
 };
 const DIFF_ELEM_KINDS = ["fire", "ice", "lightning"];

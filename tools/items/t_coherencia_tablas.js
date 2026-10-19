@@ -72,5 +72,5 @@ check('XP.el_tope_es_de_niveles_y_<=_1,5', CFG.capLevels <= 1.5 && CFG.maxLevels
 // ---- Configuración ----
 check('CONF.perillas_de_botin_en_DIFF_TIERS', TIERS.every(t => typeof DT[t].ilvlBase === 'number' && typeof DT[t].lootRowShift === 'number' && typeof DT[t].lootFactor === 'number' && typeof DT[t].itemLvl === 'number'), TIERS.map(t => [DT[t].ilvlBase, DT[t].lootRowShift]));
 check('CONF.perillas_crecen_Normal_<_Pesadilla_<_Infierno', DT.normal.ilvlBase === 0 && DT.normal.lootRowShift === 0 && DT.pesadilla.ilvlBase > 0 && DT.infierno.ilvlBase > DT.pesadilla.ilvlBase && DT.infierno.lootRowShift >= DT.pesadilla.lootRowShift && DT.pesadilla.lootRowShift > 0);
-check('CONF.oro_de_Pesadilla_e_Infierno_no_baja_(decision_del_dueno)', DT.normal.gold === 1 && DT.pesadilla.gold >= 1.5 && DT.infierno.gold >= 2, [DT.normal.gold, DT.pesadilla.gold, DT.infierno.gold]);
+check('CONF.oro_de_Pesadilla_e_Infierno_no_baja_(decision_del_dueno)', DT.normal.gold === 1 && DT.pesadilla.gold >= 1.5 && DT.infierno.gold >= 2 && DT.infierno.gold > DT.pesadilla.gold, [DT.normal.gold, DT.pesadilla.gold, DT.infierno.gold]);
 console.log(fails ? `\n${fails} FALLAS` : '\nTODO OK'); process.exit(fails ? 1 : 0);

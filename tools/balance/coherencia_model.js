@@ -21,16 +21,28 @@ const xpToNext = G('xpToNext'), victoryXpFor = G('victoryXpFor'), ORDER = G('CAM
 const SCORE = +(process.env.SCORE || 80), TRIES = +(process.env.TRIES || 1.4), FAILFRAC = +(process.env.FAILFRAC || 0.5);
 const runs = {};
 if (process.env.RUNS) for (const f of process.env.RUNS.split(',')) for (const l of fs.readFileSync(f, 'utf8').split('\n')) { try { const r = JSON.parse(l.trim()); if (r.arena && r.killXp !== undefined && r.state === 'victory') (runs[(r.tier || 'normal') + ':' + r.arena] = runs[(r.tier || 'normal') + ':' + r.arena] || []).push(r); } catch (e) {} }
+// multiplicador de oro con que se MIDIERON las partidas de tools/balance/campaign_runs.js (si DIFF_TIERS.gold cambia después, el modelo reescala)
+const GOLD_MEASURED = { normal: 1, pesadilla: 1.5, infierno: 2 };
+const goldFix = tier => DT[tier].gold / (GOLD_MEASURED[tier] || 1);
 const lvXp = L => 1 + Math.min(1.5, Math.max(0, L - 1) * 0.022);
 const mean = a => a.reduce((s, x) => s + x, 0) / a.length;
 // XP y oro de bajas (por partida completa) a nivel L en (tier, arena)
 function killAt(tier, arena, L) {
   const rs = runs[tier + ':' + arena];
-  if (rs && rs.length) { return { xp: mean(rs.map(r => r.killXp * lvXp(L) / lvXp(r.lvl))), gold: mean(rs.map(r => r.goldFight)), n: rs.length }; }
-  // sin medición: cociente respecto de la misma arena en Normal x (cociente medio de las arenas de esa dificultad que sí se midieron)
-  const base = runs['normal:' + arena]; const ratios = [];
-  for (const a of ORDER) { const t = runs[tier + ':' + a], n = runs['normal:' + a]; if (t && n) ratios.push(mean(t.map(r => r.killXp * lvXp(1) / lvXp(r.lvl))) / mean(n.map(r => r.killXp * lvXp(1) / lvXp(r.lvl)))); }
-  if (base && ratios.length) { const q = mean(ratios); return { xp: mean(base.map(r => r.killXp * lvXp(L) / lvXp(r.lvl))) * q, gold: mean(base.map(r => r.goldFight)) * DT[tier].gold, n: 0, est: true }; }
+  if (rs && rs.length) { return { xp: mean(rs.map(r => r.killXp * lvXp(L) / lvXp(r.lvl))), gold: mean(rs.map(r => r.goldFight)) * goldFix(tier), n: rs.length }; }
+  // sin medición: interpolación lineal por posición en la campaña entre las arenas medidas de la MISMA dificultad (XP normalizada por nivel);
+  // si no hay ninguna medida de esa dificultad, la de Normal por el cociente medio de las dificultades medidas (XP) y por el multiplicador de oro.
+  const idx = ORDER.indexOf(arena), have = ORDER.map((a, i) => ({ i, rs: runs[tier + ':' + a] })).filter(x => x.rs && x.rs.length);
+  const norm = x => ({ xp: mean(x.rs.map(r => r.killXp / lvXp(r.lvl))), gold: mean(x.rs.map(r => r.goldFight)) * goldFix(tier) });
+  if (have.length) {
+    const lo = have.filter(x => x.i < idx).pop(), hi = have.find(x => x.i > idx);
+    let q;
+    if (lo && hi) { const a = norm(lo), b = norm(hi), t = (idx - lo.i) / (hi.i - lo.i); q = { xp: a.xp + (b.xp - a.xp) * t, gold: a.gold + (b.gold - a.gold) * t }; }
+    else q = norm(lo || hi);
+    return { xp: q.xp * lvXp(L), gold: q.gold, n: 0, est: true };
+  }
+  const base = runs['normal:' + arena];
+  if (base) return { xp: mean(base.map(r => r.killXp * lvXp(L) / lvXp(r.lvl))) * (process.env.TIER_XP_RATIO ? +process.env.TIER_XP_RATIO : DT[tier].xp * 2), gold: mean(base.map(r => r.goldFight)) * DT[tier].gold, n: 0, est: true };
   return null;
 }
 function career(opts) {
