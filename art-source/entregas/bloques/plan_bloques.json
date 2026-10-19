@@ -15,8 +15,8 @@
     "INTEGRADO_CLAUDE",
     "SEGUIMIENTO"
   ],
-  "bloque_activo": "B003",
-  "siguiente_accion": "B003: recuperar Guerrero guardado; normalizar contorno y escala; volver a medir sombreado. No generar otro atlas completo.",
+  "bloque_activo": "B004",
+  "siguiente_accion": "B004: normalizar exportación de Libertador guardado, conservando pendientes de orientación y proporciones.",
   "bloques": [
     {
       "id": "B001",
@@ -238,7 +238,10 @@
       ],
       "decisiones_pendientes": [],
       "revision_visual": "PENDIENTE",
-      "integracion": "A_CARGO_DE_CLAUDE"
+      "integracion": "A_CARGO_DE_CLAUDE",
+      "estado_tecnico": "EN_CORRECCION",
+      "entrega": "art-source/entregas/bloques/B003_guerrero/entrega.json",
+      "siguiente_paso": "La normalización no resuelve StyleGate ni halo. Leer style.log; no repetir normalización ni generar hoja completa. Corregir sombra y contorno con revisión artística focalizada."
     },
     {
       "id": "B004",
