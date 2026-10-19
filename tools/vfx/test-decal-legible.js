@@ -94,7 +94,10 @@ const freePort = () => new Promise(r => { const s = net.createServer(); s.listen
       // efecto completo: promedio de los tres instantes para cada enemigo
       const byId = {}; for (const x of r.rows) (byId[x.id] = byId[x.id] || [[], [], []]).forEach((a, k) => a.push(x.all[k]));
       const means = Object.entries(byId).map(([id, a]) => [id, Math.min(...a.map(v => v.reduce((p, q) => p + q, 0) / v.length))]);
-      const meanLow = means.filter(([, m]) => m < FULL_MIN), warn = means.filter(([, m]) => m >= FULL_MIN && m < MIN_VISIBLE);
+      // Las formas de definitiva (ids 'uf.*', js/champions/ult-forms/) son un momento épico de 1-2 s que cae sobre su objetivo a propósito
+  // (p. ej. las cuchillas cruzadas de Musashi): se miden y se listan, pero no hacen fallar el piso de FULL_MIN. Ya tienen su prueba en test-ult-forms.js.
+  const isUlt = id => /^uf\./.test(String(id));
+  const meanLow = means.filter(([id, m]) => m < FULL_MIN && !isUlt(id)), warn = means.filter(([id, m]) => (m >= FULL_MIN || isUlt(id)) && m < MIN_VISIBLE);
       console.log(`${arena.padEnd(10)} ${r.rows.length} mediciones · decales: peor ${(Math.min(...r.rows.map(x => x.min)) * 100).toFixed(0)}%, bajo el mínimo ${low.length} · efecto completo: peor promedio ${(Math.min(...means.map(m => m[1])) * 100).toFixed(0)}%, bajo ${FULL_MIN * 100}%: ${meanLow.length}, entre ${FULL_MIN * 100} y ${MIN_VISIBLE * 100}% (aviso): ${warn.length}`);
       for (const x of low.slice(0, 12)) console.log(`   · decal ${x.id} ${x.tag} ${x.dec.join('/')}`);
       for (const [id, m] of meanLow.slice(0, 12)) console.log(`   · completo ${id} promedio ${(m * 100).toFixed(0)}%`);
