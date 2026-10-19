@@ -92,7 +92,14 @@ function defeatPenaltyLineHTML(p){
     return `<b class="go-forgiven" style="color:#9fe8a8;">Esta vez la Horda te perdona: no perdiste XP ni oro.</b><br><span style="color:#cfc6b0;">${why}</span>`;
   }
   const what = p.banked ? "desde el punto de control" : "en esta partida";
-  return `<b style="color:#ff8a6a;">No terminaste la arena: perdiste el ${p.lostPct}% de lo ganado ${what} (${p.xpLost} de XP${p.afterLevel<p.beforeLevel?`, volviste a Nv. ${p.afterLevel}`:""} y ${p.goldLost} de oro).</b>${p.banked ? `<span class="go-loss-sub">Lo ganado antes del punto de control quedó a salvo.</span>` : ""}`;
+  // solo se nombra lo que de verdad se perdió: nada de "perdiste 50 % (0 de XP y 0 de oro)"
+  const lost = [];
+  if(p.xpLost > 0) lost.push(`${p.xpLost} de XP`);
+  if(p.afterLevel < p.beforeLevel) lost.push(`volviste a Nv. ${p.afterLevel}`);
+  if(p.goldLost > 0) lost.push(`${p.goldLost} de oro`);
+  const detail = lost.length > 1 ? lost.slice(0, -1).join(", ") + " y " + lost[lost.length-1] : lost.join("");
+  const head = lost.length ? `No terminaste la arena: perdiste el ${p.lostPct}% de lo ganado ${what} (${detail}).` : `No terminaste la arena: no perdiste nada de lo ganado ${what}.`;
+  return `<b style="color:#ff8a6a;">${head}</b>${p.banked ? `<span class="go-loss-sub">Lo ganado antes del punto de control quedó a salvo.</span>` : ""}`;
 }
 /* ============================================================
    FASE 3 — PANTALLA DE VICTORIA COMPLETA
