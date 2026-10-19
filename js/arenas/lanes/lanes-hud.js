@@ -89,7 +89,7 @@ function lanesHudTick(){
   const bf = []; if(T.buffs.dragon > L.t) bf.push("Dragón +10 % daño " + _lnMin(T.buffs.dragon - L.t)); if(T.buffs.rey > L.t) bf.push("Rey Coloso " + _lnMin(T.buffs.rey - L.t)); if(player._lnBuff && player._lnBuff.until > L.t) bf.push("Gigante +12 % " + _lnMin(player._lnBuff.until - L.t));
   q(".ln-note").textContent = L.t >= LANES.ECLIPSE_MS ? "Los dos cristales se apagan cada vez más rápido" : (bf.length ? "★ " + bf.join(" · ") : (L.t < 20000 ? "Tu horda sale sola por los tres carriles. Acompañala y derribá torres." : (player._recall ? "Volviendo a la base… no te muevas" : "")));
   const foes = L.feed.filter(f=>L.t - f.t < 9000).slice(-3);
-  q(".ln-feed").innerHTML = foes.map(f=>'<div style="color:' + sidesFeedColor(f.team) + '">' + f.text + '</div>').join("");
+  q(".ln-feed").innerHTML = foes.map(f=>'<div style="color:' + sidesFeedColor(f.team) + '">' + guideEsc(f.text) + '</div>').join("");
   // carta de horda
   const cards = q(".ln-cards"), key = T.offer ? T.offer.join(",") + "@" + T.offerAt : "";
   if(T.offer){
