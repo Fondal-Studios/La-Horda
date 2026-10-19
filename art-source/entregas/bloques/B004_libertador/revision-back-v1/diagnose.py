@@ -21,7 +21,8 @@ current=ROOT/spec['atlas']
 for index,frame in enumerate(spec['frames']):
     raw=OUT/f'pose-{frame}.png'
     col,row=index%4,index//4
-    rect=(xs[col],ys[row],xs[col+1],ys[row+1])
+    rect=tuple(spec.get('cellRects',[])[index]) if spec.get('cellRects') else (xs[col],ys[row],xs[col+1],ys[row+1])
+    assert 0<=rect[0]<rect[2]<=image.width and 0<=rect[1]<rect[3]<=image.height,'Invalid source bounds'
     summary['sourceCells'].append({'frame':frame,'rect':rect})
     image.crop(rect).save(raw)
     manifest={'atlas':str(current),'atlasSha256':hashlib.sha256(current.read_bytes()).hexdigest(),'replacement':str(raw),'replacementSha256':hashlib.sha256(raw.read_bytes()).hexdigest(),'frame':frame}
@@ -39,6 +40,11 @@ else:
         if frame not in spec['frames']:
             x,y=frame%4*112,frame//4*112
             assert np.array_equal(before[y:y+112,x:x+112],after[y:y+112,x:x+112]),f'Unrequested change{frame}'
+    def metrics(array,frame):
+        x,y=frame%4*112,frame//4*112
+        rows=(array[y:y+112,x:x+112,3]>40).sum(axis=1);full=np.flatnonzero(rows);body=np.flatnonzero(rows>=rows.max()*.22)
+        return {'body':int(body[-1]-body[0]+1),'full':int(full[-1]-full[0]+1),'foot':int(full[-1])}
+    summary['bodyComparison']=[{'frame':frame,'before':metrics(before,frame),'after':metrics(after,frame)} for frame in spec['frames']]
     native=subprocess.run(['node','tools/art/check-authored-density.js',str(result),str(OUT/'native.json'),'1'],text=True,capture_output=True)
     assert native.returncode in (0,1),native.stderr
     report=json.loads((OUT/'native.json').read_text())

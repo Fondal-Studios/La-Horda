@@ -30,5 +30,56 @@
   ],
   "additionalFrame22": "Continuidad de la secuencia de ataque de espalda; no era fallo nativo.",
   "approvalClaimed": false,
-  "installed": false
+  "installed": false,
+  "cellRects": [
+    [
+      0,
+      0,
+      444,
+      444
+    ],
+    [
+      444,
+      0,
+      887,
+      444
+    ],
+    [
+      887,
+      0,
+      1330,
+      444
+    ],
+    [
+      1330,
+      0,
+      1774,
+      444
+    ],
+    [
+      0,
+      444,
+      444,
+      887
+    ],
+    [
+      444,
+      444,
+      887,
+      887
+    ],
+    [
+      887,
+      444,
+      1390,
+      887
+    ],
+    [
+      1390,
+      444,
+      1774,
+      887
+    ]
+  ],
+  "note": "Source1774x887; third attack saber extends beyond nominal equal cell. Explicit transparent-gutter rectangles preserve full blade and do not filter/repaint pixels."
 }
