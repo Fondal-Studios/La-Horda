@@ -1510,3 +1510,87 @@ function pixelIconHTML(id, emoji){ const nm = PXI_NAME[id]; return nm === "" ? `
    (js/rendering/effects.js); en ::before/::after, background:var(--pxi-ID). Las fuentes pixel del juego no traen
    dingbats (solo ↑ ↓): los más usados (✦ ★ ✔ ✓ ✚) también son íconos; el resto (◆ ▸ → …) cae a la fuente del sistema
    en monocromo y se informa con --mono. */
+
+/* ============================================================
+   CONTRATO ÚNICO DE ÍCONO DE HABILIDAD (críticas del director de arte; ART_BIBLE §14 "píxel nativo")
+   Todos los íconos de habilidad del HUD, del panel de Habilidades, de la ficha, de los refuerzos y del modo Crystal
+   Wars salen de acá. No hay ilustraciones, degradés ni recortes del sprite del héroe: un solo idioma.
+     - Tamaño nativo 16x16 (se muestra a 2x = 32 px, píxeles enteros; sin suavizado).
+     - Paleta máxima de 6 colores por ícono: contorno (k), marco (f), cuerpo en 3 tonos (# l d) y 1 acento (a).
+     - Contorno de 1 px oscuro alrededor de toda la silueta del glifo (el glifo ocupa 14x14 dentro del marco).
+     - Marco de 1 px por categoría: básico (cuadrado, cobre), habilidad (esquinas cortadas, acero), definitiva
+       (cuadrado con tachones, oro). La forma del marco también distingue la categoría, no solo el color.
+     - Alfa solo 0 o 255. El interior es transparente: la placa del botón se ve detrás.
+   El chequeo tools/art/check-skill-icons.js renderiza el HUD de los 43 campeones y falla si algo lo incumple
+   (usa pxiIconAudit de este mismo archivo, así contrato y verificación no se separan).
+   ============================================================ */
+const PXI_ICON_CONTRACT = Object.freeze({
+  size: 16, maxColors: 6, glyph: 14, outline: "#0b0f18",
+  frame: Object.freeze({basic: "#e0924f", skill: "#9fb4cc", ult: "#ffd35a"}),
+  categories: Object.freeze(["basic", "skill", "ult"])
+});
+function pxiIconFrame(cat){
+  const S = PXI_ICON_CONTRACT.size, g = Array.from({length: S}, ()=>Array(S).fill("."));
+  for(let i=0;i<S;i++){ g[0][i] = g[S-1][i] = g[i][0] = g[i][S-1] = "f"; }
+  if(cat === "skill"){ g[0][0] = g[0][S-1] = g[S-1][0] = g[S-1][S-1] = "."; }
+  return g.map(r=>r.join(""));
+}
+// Tachones del marco de la definitiva (bajo el glifo: si el glifo los toca, gana el contorno del glifo).
+const PXI_ULT_STUDS = [[1,1],[14,1],[1,14],[14,14],[7,1],[8,1],[7,14],[8,14],[1,7],[1,8],[14,7],[14,8]];
+// Compone el ícono: glyph14 = 14 filas de 14 letras (. vacío, k contorno, # l d cuerpo, a acento). Devuelve 16 filas de letras.
+function pxiIconCompose(glyph14, cat){
+  const S = PXI_ICON_CONTRACT.size, g = pxiIconFrame(cat).map(r=>r.split(""));
+  if(cat === "ult") for(const [x,y] of PXI_ULT_STUDS) g[y][x] = "f";
+  const solid = (x,y)=> y>=0 && y<14 && x>=0 && x<14 && glyph14[y][x] !== ".";
+  for(let y=0;y<14;y++) for(let x=0;x<14;x++){
+    let ch = glyph14[y][x];
+    if(ch === "."){ // contorno: vacío pegado (8 direcciones) a algo pintado
+      let near = false; for(let dy=-1;dy<=1&&!near;dy++) for(let dx=-1;dx<=1;dx++) if((dx||dy) && solid(x+dx,y+dy)){ near = true; break; }
+      if(!near) continue; ch = "k";
+    }
+    g[y+1][x+1] = ch;
+  }
+  return g.map(r=>r.join(""));
+}
+function pxiIconColors(cat, body, accent){ // body = {m,l,d} (3 tonos), accent = "#rrggbb"
+  return {k: PXI_ICON_CONTRACT.outline, f: PXI_ICON_CONTRACT.frame[cat], "#": body.m, l: body.l, d: body.d, a: accent};
+}
+function pxiIconCanvas(rows, colors){
+  if(typeof document === "undefined") return null;
+  const S = PXI_ICON_CONTRACT.size, cv = document.createElement("canvas"); cv.width = S; cv.height = S;
+  const g = cv.getContext("2d");
+  for(let y=0;y<S;y++) for(let x=0;x<S;x++){ const c = colors[rows[y][x]]; if(rows[y][x] !== "." && c){ g.fillStyle = c; g.fillRect(x, y, 1, 1); } }
+  return cv;
+}
+function pxiIconDataURL(rows, colors){ try{ const cv = pxiIconCanvas(rows, colors); return cv ? cv.toDataURL("image/png") : null; }catch(e){ return null; } }
+// Verificador del contrato sobre píxeles reales (Uint8ClampedArray RGBA de 16x16). Devuelve la lista de incumplimientos.
+function pxiIconAudit(data, w, h, cat){
+  const C = PXI_ICON_CONTRACT, bad = [];
+  if(w !== C.size || h !== C.size){ bad.push(`tamaño nativo ${w}x${h} (debe ser ${C.size}x${C.size})`); return bad; }
+  const px = (x,y)=>{ const i = (y*w+x)*4; return {r:data[i], g:data[i+1], b:data[i+2], a:data[i+3]}; };
+  const hex = p=>"#" + [p.r,p.g,p.b].map(v=>v.toString(16).padStart(2,"0")).join("");
+  const cols = new Set(); let semi = 0;
+  for(let y=0;y<h;y++) for(let x=0;x<w;x++){ const p = px(x,y); if(p.a !== 0 && p.a !== 255) semi++; if(p.a === 255) cols.add(hex(p)); }
+  if(semi) bad.push(`${semi} píxeles con alfa distinto de 0/255`);
+  if(cols.size > C.maxColors) bad.push(`${cols.size} colores (máximo ${C.maxColors})`);
+  if(cols.size < 4) bad.push(`solo ${cols.size} colores: glifo plano`);
+  const fr = pxiIconFrame(cat), fcol = C.frame[cat];
+  for(let y=0;y<h;y++) for(let x=0;x<w;x++){
+    if(x>0 && x<w-1 && y>0 && y<h-1) continue;
+    const p = px(x,y), want = fr[y][x] === "f";
+    if(want && !(p.a === 255 && hex(p) === fcol)){ bad.push(`marco ${cat} incompleto en (${x},${y})`); return bad; }
+    if(!want && p.a !== 0){ bad.push(`marco ${cat}: (${x},${y}) debería estar vacío`); return bad; }
+  }
+  let glyph = 0, ink = 0, edge = 0;
+  for(let y=1;y<h-1;y++) for(let x=1;x<w-1;x++){
+    const p = px(x,y); if(p.a === 0) continue;
+    const c = hex(p); glyph++;
+    if(c === C.outline){ ink++; continue; }
+    if(c === fcol) continue; // tachón del marco
+    for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]) if(px(x+dx,y+dy).a === 0){ edge++; break; }
+  }
+  if(glyph < 30) bad.push(`glifo casi vacío (${glyph} px)`);
+  if(ink < 12) bad.push("sin contorno oscuro de 1 px");
+  if(edge) bad.push(`${edge} píxeles del glifo tocan el vacío sin contorno de 1 px`);
+  return bad;
+}

@@ -16,14 +16,14 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
  try{
   const page=await browser.newPage({viewport:{width:844,height:390}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(`http://127.0.0.1:${PORT}/`,{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>typeof startRun==='function'&&typeof skillPixelGlyphKey==='function',null,{timeout:120000});
+  await page.waitForFunction(()=>typeof startRun==='function'&&typeof skillPixelGlyphKey==='function'&&typeof PIX_MOTIFS_V2==='object',null,{timeout:120000});
   // 1) datos: kits, motivos y parejas
   const data=await page.evaluate(()=>{
    const kits={};for(const k of Object.keys(CLASSES))kits[k]=CLASSES[k];kits.ilkan_colossus=ILKAN_COLOSSUS_CLS;
    const out={kits:[],badGrid:[],staleMap:[]};
    for(const [id,c] of Object.entries(kits)){
     const list=[...c.skills,c.ultimate].map((sk,i)=>{
-     const png=SKILL_ICON_IMG[sk.name]&&id!=='ilkan_colossus'?'png:'+sk.name:null;
+     const png=null; // el HUD ya no usa recortes de sprite: todas las habilidades salen del contrato de íconos
      const key=skillPixelGlyphKey(id,i);
      let rows=null;if(key){const g=skillPixelGrid(key);if(!g)out.badGrid.push(id+':'+i+' '+key);else rows=g.join('|');}
      return {name:sk.name,slot:i,key,png,rows};
@@ -32,7 +32,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
    }
    const ids=new Set(Object.keys(kits));
    for(const k of Object.keys(SKILL_PIXEL_MAP))if(!ids.has(k.split(':')[0])||!/:(0|1|2|u)$/.test(k))out.staleMap.push(k);
-   for(const k of Object.keys(SKILL_PIXEL_MAP)){const [m,p]=SKILL_PIXEL_MAP[k].split('+');if(!PIX_MOTIFS[m])out.badGrid.push(k+' motivo '+m);if(p&&!(p in PIX_PIPS))out.badGrid.push(k+' insignia '+p);}
+   for(const k of Object.keys(SKILL_PIXEL_MAP)){const [m]=SKILL_PIXEL_MAP[k].split('+');if(!PIX_MOTIFS[m])out.badGrid.push(k+' motivo '+m);}
    return out;
   });
   const seenPair=new Map();let total=0;

@@ -96,7 +96,7 @@ function buffOptHTML(opt, h, hint){
     return `<div class="ico">${b.ico}</div><div class="buff-name">${b.name}</div><div class="buff-desc">${b.desc}</div>${hint||""}`;
   }
   const {b, r} = pb, sk = boonSkillOf(b), R = boonRarityOf(r), L = boonLook(b);
-  const img = (typeof SKILL_ICON_IMG!=="undefined" && sk) ? SKILL_ICON_IMG[sk.name] : null;
+  const img = (typeof skillPixelGlyphUri==="function" && sk) ? skillPixelGlyphUri(b.champ, b.skill==="ult" ? 3 : b.skill) : null; // contrato de íconos (pixel-icons.js)
   const ico = img ? `<img class="boon-ico-img" src="${img}" alt="">` : (sk ? sk.ico : "✦");
   const have = boonOwned(h, b.id);
   const tag = b.duo ? "DÚO" : (have>=0 ? `MEJORA ${boonRarityOf(have).name} → ${R.name}` : R.name);
