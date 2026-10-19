@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "lote": "2026-10-19_guerrero_revision_01",
+  "fecha": "2026-10-19",
+  "autor": "ChatGPT; IA autorizada por el dueño",
+  "estado": "FIX_NO_INTEGRAR",
+  "proveniencia": {
+    "original": true,
+    "ia": true,
+    "referencias": [
+      "assets/sprites/champions/guerrero/atlas.png",
+      "docs/art-brief/ejemplos/guerrero/guerrero.cuerpo.muerte__ref.webp",
+      "docs/art-brief/campeones/guerrero.md"
+    ],
+    "herramientas": [
+      "image_gen",
+      "import-authored-sheet.py",
+      "style_gate.py",
+      "scan_sprites.py:analyze",
+      "gen-referencias.py",
+      "ImageMagick PSD"
+    ],
+    "fuentesEditables": [
+      "fuentes/hoja_36poses.psd"
+    ],
+    "nota": "PSD raster de una capa, sin capas originales. Píxel nativo no certificado."
+  },
+  "assets": [
+    {
+      "tipo": "campeon",
+      "id": "guerrero",
+      "archivo": "campeones/guerrero/hoja_36poses.png",
+      "items_manifiesto": [
+        "guerrero.cuerpo.muerte"
+      ],
+      "resuelve": false,
+      "celda": [
+        112,
+        112
+      ],
+      "cols": 4,
+      "filas": 9,
+      "cuadros": 36,
+      "refH": 71,
+      "colores_base": [
+        "#191b1c",
+        "#4b4d51",
+        "#294c2d",
+        "#795332",
+        "#bec7cc",
+        "#e6ad7c"
+      ],
+      "referencias": [
+        "assets/sprites/champions/guerrero/atlas.png",
+        "docs/art-brief/ejemplos/guerrero/guerrero.cuerpo.muerte__ref.webp",
+        "docs/art-brief/campeones/guerrero.md"
+      ],
+      "hoja_contacto": "campeones/guerrero/hoja_contacto.png",
+      "chequeos": "campeones/guerrero/chequeos.json"
+    }
+  ],
+  "pendientes": [
+    "Style Gate FAIL: sombreado 6.33 por debajo del mínimo 6.5. Escáner señala 102 píxeles de posible halo.",
+    "Revisar continuidad de segunda daga en cuadros 24-25.",
+    "Revisión humana de fluidez y comparación a escala de juego pendiente."
+  ],
+  "integracion": "Claude debe revisar antes de copiar a assets/. No se cambió código ni assets existentes."
+}
