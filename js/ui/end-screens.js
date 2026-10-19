@@ -11,9 +11,11 @@ function showGameOverScreen(divinaOutcome){
   if(netIsHost()) netHostAnnounceEnd(false); // B1: la derrota es de todo el equipo
   if(typeof endlessOn==="function" && endlessOn()){ endlessEndRun("defeat"); return; } // Horda Infinita: resultados, récords y botín
   setState("gameover");
+  document.getElementById("go-loss").innerHTML = "";   // el bloque de arriba (qué se perdió) solo lo llena la derrota normal
   const title = document.getElementById("go-title");
   const retryBtn = document.getElementById("retry-btn");
   retryBtn.classList.remove("hidden");
+  retryBtn.dataset.cp = ""; { const b1 = document.getElementById("retry-from1-btn"); if(b1) b1.classList.add("hidden"); } // punto de control: solo la derrota normal en solitario (checkpoint.js)
   if(divinaMode || divinaOutcome){
     divinaMode = false;
     if(divinaOutcome==="victory"){
@@ -53,9 +55,17 @@ function showGameOverScreen(divinaOutcome){
   document.getElementById("go-stats").innerHTML = `Nivel ${runLevel} · ${kills} enemigos vencidos · Calificación <b style="color:${perf.color};">${perf.grade}</b>`;
   const arenaRows = arenaHas("resultsHTML") ? (arenaHook("resultsHTML", false)||"") : "";   // p.ej. civiles rescatados (Ciudad Maldita)
   document.getElementById("go-progress").innerHTML = (typeof goalDefeatHtml==="function" ? goalDefeatHtml(runLevel) : "") + (typeof storyDefeatHtml==="function" ? storyDefeatHtml(player.classKey) : "") +
-    `${CLASSES[player.classKey].name} ahora en Nv. <b>${save.champions[player.classKey].level}</b> &nbsp;·&nbsp; Oro total: <b>${save.gold}</b><br>Sin puntos de control: la próxima incursión comienza en el Nivel 1.<br>
+    `${CLASSES[player.classKey].name} ahora en Nv. <b>${save.champions[player.classKey].level}</b> &nbsp;·&nbsp; Oro total: <b>${save.gold}</b><br>
     ${typeof botDisclosureText==="function" && botDisclosureText() ? `<small style="opacity:.7">${botDisclosureText()}</small><br>` : ""}Botín: ${lootLine}${loot.gems?` · <b style="color:#7fe8ff;">+${loot.gems} Gema${loot.gems>1?"s":""}</b>`:""}<br>
-    ${defeatPenaltyLineHTML(penalty)}${typeof diffResultRowHTML==="function" ? diffResultRowHTML(false) : ""}${arenaRows ? `<div class="res-rows" style="margin-top:8px;">${arenaRows}</div>` : ""}${endSkinsLinkHTML(player.classKey)}`;
+    ${typeof diffResultRowHTML==="function" ? diffResultRowHTML(false) : ""}${arenaRows ? `<div class="res-rows" style="margin-top:8px;">${arenaRows}</div>` : ""}`;
+  // Arriba, junto a "Reintentar": lo que se perdió (o se perdonó) y desde dónde se vuelve a empezar. Sin oferta de
+  // apariencias en la derrota (queda en la victoria y en la Tienda).
+  const cpHtml = typeof checkpointDefeatHTML==="function" ? checkpointDefeatHTML() : null;
+  document.getElementById("go-loss").innerHTML = defeatPenaltyLineHTML(penalty) + (cpHtml ? `<span class="go-loss-cp">${cpHtml}</span>` : `<span class="go-loss-sub">${typeof checkpointNoOfferHTML==="function" ? checkpointNoOfferHTML() : "Sin puntos de control: la próxima incursión comienza en el Nivel 1."}</span>`);
+  if(cpHtml && !netMatch){
+    retryBtn.textContent = `Reanudar desde el nivel ${CP_LEVEL}`; retryBtn.dataset.cp = "resume";
+    const b1 = document.getElementById("retry-from1-btn"); if(b1) b1.classList.remove("hidden");
+  }
   if(typeof questsOnRunEnd==="function") questsOnRunEnd(false); // después del castigo: lo que dan los desafíos no se descuenta
 }
 // Acceso discreto a las apariencias del guardián (Tienda → Skins, solo las suyas). Solo jugando solo, fuera de la
@@ -77,11 +87,12 @@ document.addEventListener("click", e=>{
 function defeatPenaltyLineHTML(p){
   if(p && p.forgiven){
     const why = p.forgiven==="arena" ? "En la primera arena se aprende sin castigo."
-      : (p.forgivenLeft > 0 ? `Te ${p.forgivenLeft===1?"queda":"quedan"} ${p.forgivenLeft} derrota${p.forgivenLeft===1?"":"s"} sin castigo; después se pierde la mitad de lo ganado en la partida.`
-        : "Fue la última sin castigo: desde ahora perder cuesta la mitad de lo ganado en la partida.");
+      : (p.forgivenLeft > 0 ? `Te ${p.forgivenLeft===1?"queda":"quedan"} ${p.forgivenLeft} derrota${p.forgivenLeft===1?"":"s"} sin castigo en esta arena; después se pierde la mitad de lo ganado en la partida.`
+        : "Fue la última sin castigo en esta arena: desde ahora perder cuesta la mitad de lo ganado en la partida.");
     return `<b class="go-forgiven" style="color:#9fe8a8;">Esta vez la Horda te perdona: no perdiste XP ni oro.</b><br><span style="color:#cfc6b0;">${why}</span>`;
   }
-  return `<b style="color:#ff8a6a;">No terminaste la arena: perdiste el ${p.lostPct}% de lo ganado en esta partida (${p.xpLost} de XP${p.afterLevel<p.beforeLevel?`, volviste a Nv. ${p.afterLevel}`:""} y ${p.goldLost} de oro).</b>`;
+  const what = p.banked ? "desde el punto de control" : "en esta partida";
+  return `<b style="color:#ff8a6a;">No terminaste la arena: perdiste el ${p.lostPct}% de lo ganado ${what} (${p.xpLost} de XP${p.afterLevel<p.beforeLevel?`, volviste a Nv. ${p.afterLevel}`:""} y ${p.goldLost} de oro).</b>${p.banked ? `<span class="go-loss-sub">Lo ganado antes del punto de control quedó a salvo.</span>` : ""}`;
 }
 /* ============================================================
    FASE 3 — PANTALLA DE VICTORIA COMPLETA

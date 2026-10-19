@@ -182,7 +182,7 @@ function alphaTrainingRestore(completed,skipped=false){
   save=snap.save;selectedClass=snap.selectedClass;currentArena=snap.currentArena;divinaMode=snap.divinaMode;lobbyAllies=snap.lobbyAllies;endlessActive=snap.endlessActive;endlessPending=snap.endlessPending;
   t.active=false;t.snapshot=null;enemies=[];allies=[];heroes=[];player=null;bossActive=false;runEnding=false;
   alphaTrainingPanel().classList.add('hidden');document.querySelectorAll('.alpha-training-target').forEach(el=>el.classList.remove('alpha-training-target'));
-  if(completed){save.tut=save.tut||{};save.tut.training=1;save.tut.basics=1;save.tut.b_move=save.tut.b_attack=save.tut.b_skill=1;persistNow();}
+  if(completed){save.tut=save.tut||{};save.tut.training=1;save.tut.basics=1;save.tut.b_move=save.tut.b_attack=save.tut.b_skill=1;save.tut.goalMission=1;/* la misión SOBREVIVIR ya se contó en el paso 1 y en el resumen final: la ficha de la primera arena no la repite */persistNow();}
   alphaTrainingEmit(completed?'tutorial_completed':skipped?'tutorial_skipped':'tutorial_abandoned',{step:t.step,duration:Math.round(t.elapsed/1000)});
 }
 function alphaTrainingExit(completed,message){

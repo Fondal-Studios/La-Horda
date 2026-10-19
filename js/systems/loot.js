@@ -183,6 +183,7 @@ function ownedDesignIds(){
 }
 // Botín real al terminar la partida. perf = computePerformance(player).
 function grantEndOfRunLoot(classKey, perf, victory){
+  if(!victory && typeof runResumed!=="undefined" && runResumed) return {items:[], inventoryFull:false, grade:perf.grade, gems:0}; // partida reanudada: sin botín de consuelo (checkpoint.js)
   save.lootPity = Object.assign({legendario:0, set:0, mitico:0, unico:0}, save.lootPity||{});
   const res = rollLoot({arena:currentArena, grade:perf.grade, victory, runLevel, subjefes:subjefesDefeated,
     owned:ownedDesignIds(), pity:save.lootPity, classKey, floor: victory ? LOOT_VICTORY_FLOOR : null});

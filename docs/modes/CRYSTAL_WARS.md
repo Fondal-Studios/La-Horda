@@ -196,3 +196,25 @@ Reemplaza al mapa de un solo carril. Código en `js/arenas/lanes/` (`lanes-data/
 - **Pendiente para acercarse más a Wild Rift:** ítems por héroe (hoy el oro de equipo compra reparaciones/refuerzos), arbustos y visión, ping,
   hechizos de invocador, más variedad de súbditos, y 3 contra 3/5 contra 5 en línea.
 - **Bots orientados a victoria** (estados retirada/defensa/objetivo/empuje, amenazas, camino táctico, objetivos por prioridad; Coliseo: rematar, fuego concentrado, sobrevivir): ver `docs/competitive/BOTS_VICTORIA.md` y `tools/bots/victory-sim.js` (A/B contra el cerebro anterior).
+
+## Equipos claros: aliado / enemigo / neutral (19/10/2026)
+Pedido del dueño: «a los enemigos la barra roja y a los aliados verde; a veces no entiendo quién es quién». Antes todas las barras de héroes y súbditos eran rojas y los rótulos «P# Nombre» usaban un color por casilla; el color del equipo (zafiro/ámbar) no decía quién era amigo. Capturas en `docs/production/art-unification/equipos-claros/` (`antes-*` / `despues-*`, 844×390 y 667×375).
+
+**Convención única** (Cristales y Coliseo; código en `js/arenas/lanes/lanes-sides.js`):
+| Bando | Color (token) | Pista de forma |
+|---|---|---|
+| Aliado | verde `--ally` | marco liso, ícono de escudo, anillo continuo |
+| Enemigo | rojo `--enemy` | marco grueso con muescas cada 25 %, ícono de espada, anillo discontinuo con relleno tenue, rótulo con borde discontinuo; en el minimapa héroe = rombo, torre = triángulo |
+| Neutral (selva, Dragón, Rey Coloso) | ámbar `--neutral` | marco punteado, rombo, anillo punteado |
+| Yo | verde brillante `--self` | borde blanco, anillo doble blanco + verde |
+
+Aplica a: barras de héroes, súbditos, torres, cristales, selva y épicos; rótulos de nombre; aros bajo los pies; disparos de torre; minimapa (puntos y estructuras); marcador (barra, ícono y etiqueta «ALIADO/ENEMIGO»; en Coliseo el borde izquierdo de cada equipo); registro de eventos; vida de la lista de compañeros. El color de EQUIPO se conserva en cuerpos de torre/cristal, zonas de base, portales y nombre del equipo.
+
+**Punto de vista.** Se lee desde el equipo del jugador; si es espectador (Coliseo, caído) se lee desde el equipo del luchador al que sigue la cámara (`CAM_SUBJECT`): su equipo se ve verde y los demás rojos. El «TU EQUIPO» sigue siendo el del jugador. Las habilidades y proyectiles de los campeones conservan los colores de su kit (no se tocaron).
+
+**Tokens.** `--ally/--enemy/--neutral/--self` (+ `-dark`, `-hi`, `--self-edge`) en `css/ui-kit.css`. El render JS los lee de `<html>` y se actualiza solo al cambiar sus atributos/estilo, así que una paleta para daltónicos (p. ej. `cvd`) solo debe sobrescribir esas variables, sin tocar el render (la prueba lo verifica con azul/naranja).
+
+**Prueba:** `node tools/lanes/test-sides.js` (píxeles reales de las barras; Cristales con el jugador en cada equipo, Coliseo normal y espectando, 844×390 y 667×375; marcador, minimapa y paleta CSS sobrescrita).
+
+## Identidad visual del mapa (octubre 2026)
+El escenario del motor de carriles tiene zonas con identidad (Bosque Ancestral, Jungla Volcánica, Pantano Cristalino, Necrópolis, bases Zafiro/Ámbar, río y La Convergencia), suelo horneado por trozos y minimapa con leyenda. Geometría y colisiones sin cambios. Decisiones, capturas, costo por cuadro y pendientes de arte humano: `docs/production/art-unification/cristales-identidad/README.md`.

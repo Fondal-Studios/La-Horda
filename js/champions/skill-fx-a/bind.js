@@ -80,6 +80,7 @@ function sfaObjectsFrame() {
     if (cfg.draw) { cfg.draw(o, r); continue; }
     const age = (o.maxLife || o.life) - o.life, a = Math.min(1, age / 260, o.life / 420) * .92;
     if (a <= 0) continue;
+    if (typeof ufZoneEdge === 'function' && ufZoneEdge(o.owner.classKey + ':' + o.kind, o.x, o.y, r, a)) continue;   // ult-forms: solo el borde del área
     const size = sfaBucket(r * 2), b = sfaBake('zone', th, size); if (!b) continue;
     if (!drew) { ctx.save(); ctx.imageSmoothingEnabled = false; drew = true; }
     const f = ((animNow / 95) | 0) % b.n, sc = (r * 2) / (size - 3), D = size * sc;
@@ -142,7 +143,8 @@ function sfaHeroZFrame() {
       const r = cfg.r(h); if (!(r > 8)) continue;
       if (!st) { m[key] = {t0: animNow, r}; sfaHeroSeen.set(h, m); }
       const q = m[key]; q.r = r; q.x = h.x; q.y = h.y;
-      sfaZoneDraw(cfg.theme, h.x, h.y, r, Math.min(1, (animNow - q.t0) / 260) * (cfg.alpha || .8));
+      const za = Math.min(1, (animNow - q.t0) / 260) * (cfg.alpha || .8);
+      if(!(typeof ufZoneEdge === 'function' && ufZoneEdge(cfg.key, h.x, h.y, r, za))) sfaZoneDraw(cfg.theme, h.x, h.y, r, za);   // ult-forms: la definitiva con forma propia deja solo el borde del área
     } else if (st) { delete m[key]; if (cfg.end) sfaPush(cfg.end, cfg.theme, st.x, st.y, st.r, 0, 600); }
   }
 }

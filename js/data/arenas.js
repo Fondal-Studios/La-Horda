@@ -27,7 +27,10 @@ const ARENA_MODS = {
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.90, enemyRegenPct:0.012, hazard:null, hasWalls:false },
   hielo:    { label:"Arena Gélida",      icon:"❄", desc:"Arena 05. El frío es el enemigo. Acá espera el segundo Guardián.", hazardName:"Furia del Vendaval Helado",
               fireDmgMult:1.0,  iceDmgMult:1.0, enemyDmgPerWave:0.148, unlockLevel:0,
-              heroSpeedMult:0.90, heroCdMult:1.10, heroEnergyRegenMult:0.85, abilityDmgMult:1.0, heroDmgMult:0.85, enemyRegenPct:0, hazard:"nova_gelida", hasWalls:false },
+              heroSpeedMult:0.90, heroCdMult:1.10, heroEnergyRegenMult:0.85, abilityDmgMult:1.0, heroDmgMult:0.85, enemyRegenPct:0, hazard:"nova_gelida", hasWalls:false,
+              // Pesadilla en la Gélida era un muro (0 de 18 victorias con Tanque/Mago/Cazadora a nivel 54, siempre en los niveles 5-7 por el Ángel de Hielo,
+              // el Gólem y el Demonio de Hielo y Fuego): solo acá se baja la vida/daño de Pesadilla (difficulty-tiers.js, diffApplyToRun).
+              tierMods:{ pesadilla:{ hp:0.5, dmg:0.4, bossDmg:0.7 } } },
   laberinto:{ label:"Laberinto", icon:"🗿", desc:"Arena 07. Muros, sismos y maná escaso. Acá espera el tercer Guardián.", hazardName:"Maldición del Minotauro",
               fireDmgMult:1.0,  iceDmgMult:1.0, enemyDmgPerWave:0.16, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:0.50, abilityDmgMult:1.0, heroDmgMult:0.85, enemyRegenPct:0, hazard:"sismo", hasWalls:true,

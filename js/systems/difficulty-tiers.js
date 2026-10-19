@@ -15,7 +15,10 @@
      enemigo / vida propia) frente a Normal en su nivel queda ~×1,2-1,5 en Pesadilla y ~×2-2,5 en
      Infierno. Los golpes de jefe (anclados a la vida del equipo) pesan ×1,3 / ×1,65: duelen, sin borrar.
    - Premio: botín de rareza más alta (peso × lootFactor^exponente de la categoría, como la calificación),
-     objetos que caen con nivel (+itemLvl), más XP y más oro.
+     objetos que caen con nivel (+itemLvl), más XP y más oro. La XP por baja viaja en runDifficulty.xp (spawnEnemy -> e.xp) y el
+     oro por baja se multiplica por diffGoldMult() en killEnemy (combat.js); el bono de victoria (80) usa el mismo multiplicador.
+   - Ajuste por arena: ARENA_MODS[arena].tierMods[tier] = {hp, dmg, bossDmg} (multiplicadores extra sobre la dificultad; hoy solo
+     la Gélida en Pesadilla, medido con tools/playtest/campaign.js).
    - Guardado: save.diffCleared = {pesadilla:{arena:true}, infierno:{…}} (Normal sigue siendo
      save.arenasCleared) y save.diffSelected (la elegida en la Sala). Guardados viejos: vacíos = todo en Normal.
    - Cooperativo: la elige el ANFITRIÓN. Viaja en la Sala ({k:"cos"}, campo d) y en el arranque
@@ -95,6 +98,9 @@ function diffApplyToRun(rd, avgLevel){
   rd.dmg *= T.dmg * extraDmg;
   rd.avgHp *= T.bossDmg;          // el daño de jefes, subjefes y golpes con aviso se ancla a esta vida
   rd.xp *= T.xp;
+  // ajuste puntual por arena y dificultad (ARENA_MODS[arena].tierMods[tier] = {hp, dmg}); el diseño del enemigo no se toca
+  const tm = (typeof ARENA_MODS!=="undefined" && typeof currentArena!=="undefined" && ARENA_MODS[currentArena] && ARENA_MODS[currentArena].tierMods || {})[rd.tier];
+  if(tm){ rd.hp *= tm.hp||1; rd.dmg *= tm.dmg||1; rd.avgHp *= tm.bossDmg||1; }
   rd.hitCapMult = T.hitCap;
   rd.expLevel = exp;
   return rd;

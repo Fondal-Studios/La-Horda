@@ -5,38 +5,43 @@
    ============================================================ */
 
 const HUD_GLYPH_COLOR = {"btn-s1":"#8fe0ff", "btn-s2":"#cfc2ff", "btn-s3":"#97f0cc", "btn-ult":"#ffe9a8"};
-// Rótulo corto del botón: la palabra más larga entre las dos primeras que entre sin cortarse (máx. 8 caracteres;
-// "SOBRESCRIBIR" -> "SOBRESC."), así no se pisa con el cooldown ni se sale del botón (844x390).
-function hudSkillLabel(name){
-  const w = String(name||"").split(" ").filter(x=>x.length>0 && !/^(de|del|la|el|los|las|a|y|en)$/i.test(x));
-  const first = w[0] || String(name||"");
-  return first.length > 8 ? first.slice(0, 7) + "." : first;
+// Botones fijos con ícono del contrato (js/ui/pixel-icons.js): clave "motivo+insignia" y ranura de color.
+const HUD_UTILITY_ICON = {"btn-emerg":["bottle+plus", "s3"], "btn-pact":["pact+skull", "s2"]};
+function hudSetIcon(el, uri){
+  const icoEl = el && el.querySelector(".ico");
+  if(!icoEl || !uri) return;
+  if(icoEl._img !== uri){ icoEl.innerHTML = `<img class="ico-img ico-pix" src="${uri}" alt="">`; icoEl._img = uri; }
 }
 function updateAbilityButtons(){
   // el kit ACTIVO del héroe (Ilkan transformado muestra el del coloso)
   const cls = (player && player.cls && player.classKey===selectedClass) ? player.cls : CLASSES[selectedClass];
+  const champKey = cls.isColossusForm ? "ilkan_colossus" : selectedClass;
   const map = [["btn-s1",cls.skills[0]], ["btn-s2",cls.skills[1]], ["btn-s3",cls.skills[2]], ["btn-ult",cls.ultimate]];
   map.forEach(([id, sk], mi)=>{
     const el = document.getElementById(id);
     if(!el) return;
     const icoEl = el.querySelector(".ico");
     const labelEl = el.querySelector("div:not(.ico):not(.cd-overlay)");
-    // ícono pixel de la habilidad si existe (el mismo del panel de Habilidades); si no, el glifo de siempre
-    const pix = (typeof SKILL_ICON_IMG!=="undefined") ? SKILL_ICON_IMG[sk.name] : null;
-    // glifo pixel propio de la habilidad (skill-pixel-glyphs.js); sin él, el símbolo genérico de skill-glyphs.js
-    const col = HUD_GLYPH_COLOR[id] || "#ffffff", pxg = (!pix && typeof skillPixelGlyphUri==="function") ? skillPixelGlyphUri(cls.isColossusForm ? "ilkan_colossus" : selectedClass, mi, col) : null;
-    const img = pix || pxg || (typeof skillGlyphUri==="function" ? skillGlyphUri(sk, col, id==="btn-ult") : null);
+    // UN solo idioma de ícono (contrato de pixel-icons.js): glifo pixel 16x16 propio de la habilidad; sin él, el motivo
+    // genérico por tipo. Nunca recortes del sprite del héroe ni ilustraciones.
+    const img = (typeof skillPixelGlyphUri==="function" ? skillPixelGlyphUri(champKey, mi) : null)
+      || (typeof skillGlyphUri==="function" ? skillGlyphUri(sk, HUD_GLYPH_COLOR[id], id==="btn-ult") : null);
     if(icoEl){
-      if(img){ if(icoEl._img !== img){ icoEl.innerHTML = `<img class="ico-img${pix ? "" : pxg ? " ico-pix" : " ico-glyph"}" src="${img}" alt="">`; icoEl._img = img; } }
+      if(img) hudSetIcon(el, img);
       else { icoEl.textContent = sk.ico; icoEl._img = null; }
     }
-    if(labelEl && id!=="btn-ult"){ const w = hudSkillLabel(sk.name); labelEl.textContent = w; labelEl.dataset.len = w.length>7 ? "l" : w.length>5 ? "m" : "s"; }
+    if(labelEl && id!=="btn-ult") labelEl.textContent = skillShortLabel(champKey, mi, sk.name);
     el.title = sk.name + " — " + sk.desc;
     el.setAttribute('aria-label', sk.name);
     // Sinergias del árbol (estilo Diablo II) con su valor actual
     { const syn = typeof talentSynergySkillLine==="function" ? talentSynergySkillLine(selectedClass, mi===3 ? "ult" : mi) : ""; if(syn) el.title += "\n" + syn; }
     if(typeof boonDecorateButton==="function") boonDecorateButton(el, sk); // refuerzos que la transforman: marca + texto en el tooltip
   });
+  // ataque básico (espada o arco según el campeón) y botones de utilidad: mismo contrato, antes un emoji/texto suelto
+  if(typeof skillPixelGlyphUriFromKey==="function"){
+    hudSetIcon(document.getElementById("btn-basic"), skillPixelGlyphUriFromKey(cls.ranged ? "arrow" : "sword", "basic"));
+    for(const id in HUD_UTILITY_ICON) hudSetIcon(document.getElementById(id), skillPixelGlyphUriFromKey(HUD_UTILITY_ICON[id][0], HUD_UTILITY_ICON[id][1]));
+  }
 }
 
 let _hudLastCls = null, _hudLastSe = null, _hudStackH = -1;

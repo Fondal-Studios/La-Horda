@@ -34,21 +34,20 @@ function colDrawWorld(now){
     // marcas de inicio de cada equipo del duelo
     const pair = c.pairs[pit];
     [-1, 1].forEach((side, i)=>{
-      const x = p.x + side * COL.START_DIST, col = lanesTeamColor(pair[i]);
-      ctx.strokeStyle = col; ctx.globalAlpha = 0.65; ctx.lineWidth = 4; ctx.beginPath(); ctx.ellipse(x, p.y, 74, 100, 0, 0, Math.PI * 2); ctx.stroke(); ctx.globalAlpha = 1;
-      ctx.font = pxFont(14); ctx.textAlign = "center"; ctx.fillStyle = col; ctx.fillText(pair[i] === 0 ? "TU EQUIPO" : lanesTeamName(pair[i]), x, p.y - 112);
+      const x = p.x + side * COL.START_DIST, rel = sidesOfTeam(pair[i]), col = sidesCol(rel).hi;   // bando (verde / rojo), no color de equipo
+      sidesRing(ctx, rel, x, p.y, 74, 100, {lw:4, alpha:0.65});
+      ctx.font = pxFont(14); ctx.textAlign = "center"; ctx.fillStyle = col; ctx.fillText(pair[i] === sidesViewTeam() ? "TU EQUIPO" : lanesTeamName(pair[i]), x, p.y - 112);
     });
     ctx.font = pxFont(14); ctx.textAlign = "center"; ctx.fillStyle = "rgba(255,255,255,.55)"; ctx.fillText(pit === 0 ? "DUELO A" : "DUELO B", p.x, p.y + COL.PIT_R + 78);
   }
   ctx.restore();
 }
-// Anillo de equipo bajo cada luchador (aliados vs rivales a simple vista).
+// Anillo del bando bajo cada luchador (verde aliado liso · rojo enemigo discontinuo · yo = blanco + verde brillante).
 function colDrawTop(){
   if(!LN) return;
   for(const h of heroes){
     if(!h.alive || h.team == null || !inView(h.x, h.y, 80)) continue;
-    ctx.save(); ctx.strokeStyle = lanesTeamColor(h.team); ctx.globalAlpha = h === player ? 0.95 : 0.75; ctx.lineWidth = h === player ? 4 : 3;
-    ctx.beginPath(); ctx.ellipse(h.x, h.y + 12, 26, 10, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+    sidesRing(ctx, sidesOf(h), h.x, h.y + 12, 26, 10, {lw:h === player ? 3.5 : 3, alpha:h === player ? 0.95 : 0.8});
   }
 }
 Object.assign(ARENA_DEFS.coliseo, {drawWorld:colDrawWorld, drawTop:colDrawTop});

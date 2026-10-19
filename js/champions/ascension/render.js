@@ -224,7 +224,7 @@ const ascOriginalGround=drawPortadorGround;drawPortadorGround=function(){ascOrig
   if(h.classKey==='nano_gm')label=s.regentUntil>runElapsedMs?'◐ REGENTE':'○'.repeat(s.light)+' ◆'.repeat(s.dark);
   else if(h.classKey==='facu_gm')label=s.highTideUntil>runElapsedMs?'≋ MAREA ALTA':'~'.repeat(s.tide)+(s.tideNext?' →'+({current:'C',pressure:'P',wave:'O'})[s.tideNext]:'');
   else if(h.classKey==='khepri')label='✱'+Math.round(s.swarm);
-  else if(h.classKey==='velmira')label=['☺','☠','✕','⛨'][s.mask|0]+(s.empowered?'+':'');
+  else if(h.classKey==='velmira')label=['●','☠','✕','⛨'][s.mask|0]+(s.empowered?'+':'');
   else if(h.classKey==='saelis')label='❦'+ascOwned(h,'feather').length;
   if(label)ctx.fillText(label,h.x-18,h.y-58);
  }
