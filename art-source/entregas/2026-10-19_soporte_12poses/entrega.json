@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "lote": "2026-10-19_soporte_12poses",
+  "autor": "ChatGPT; IA autorizada por el dueño",
+  "fecha": "2026-10-19",
+  "estado": "REVISION_NO_INTEGRAR",
+  "proveniencia": {
+    "original": true,
+    "ia": true,
+    "referencias": [
+      "assets/sprites/champions/soporte/v2/atlas.png",
+      "docs/art-brief/ejemplos/soporte/soporte.cuerpo.muerte__ref.webp",
+      "docs/art-brief/campeones/soporte.md"
+    ],
+    "herramientas": [
+      "image_gen: solo12poses nuevas",
+      "Empaquetado con recorte y NEAREST, sin redibujo procedimental",
+      "style_gate.py",
+      "scan_sprites.py:analyze",
+      "gen-referencias.py",
+      "ImageMagick PSD"
+    ],
+    "fuentesEditables": [
+      "fuentes/hoja_36poses.psd"
+    ],
+    "nota": "PSD raster de una capa; no contiene capas originales de pintura."
+  },
+  "assets": [
+    {
+      "tipo": "campeon",
+      "id": "soporte",
+      "archivo": "campeones/soporte/hoja_36poses.png",
+      "items_manifiesto": [
+        "soporte.cuerpo.muerte",
+        "soporte.cuerpo.lanzar"
+      ],
+      "resuelve": false,
+      "celda": [
+        112,
+        112
+      ],
+      "cols": 4,
+      "filas": 9,
+      "cuadros": 36,
+      "refH": 78,
+      "colores_base": [
+        "#14352a",
+        "#705030",
+        "#5fc48c",
+        "#2f8a5c",
+        "#ffe7a5",
+        "#fffbe0"
+      ],
+      "nota_paleta": "Seis familias representativas; variaciones tonales; no cuantización a seis colores totales.",
+      "hoja_contacto": "campeones/soporte/hoja_contacto.png",
+      "chequeos": "campeones/soporte/chequeos.json"
+    }
+  ],
+  "pendientes": [
+    "Visual Gate humano de filas7-9 y coherencia con filas existentes.",
+    "Dibujo nativo de las12 poses nuevas no certificado.",
+    "Integración y pruebas dentro del juego a cargo de Claude."
+  ]
+}
