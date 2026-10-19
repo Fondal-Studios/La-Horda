@@ -1,0 +1,26 @@
+name: Competitive HTTP startup proof
+on:
+  push:
+    branches: ['qa/competitive-http-drain-20261019']
+permissions:
+  contents: read
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --prefix /tmp/competitive-http-qa --no-audit --no-fund playwright@1.61.1
+      - run: /tmp/competitive-http-qa/node_modules/.bin/playwright install --with-deps chromium
+      - run: npm ci --prefix server --no-audit --no-fund
+      - name: Four-client integration after drained startup
+        run: node tools/crystal-wars/competitive-integration-test.js
+        env:
+          NODE_PATH: /tmp/competitive-http-qa/node_modules
+      - name: Repeat fresh servers and full assertions
+        run: node tools/crystal-wars/competitive-integration-test.js
+        env:
+          NODE_PATH: /tmp/competitive-http-qa/node_modules
