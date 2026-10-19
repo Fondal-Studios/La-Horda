@@ -62,6 +62,7 @@ function lanesStart(opts){
   for(let i = 0; i < size - 1; i++) mates.push(pick(asArr(opts.mate)[i]));
   for(let i = 0; i < size; i++) foes.push(pick(asArr(opts.rivals)[i]));
   lanesBegin("solo", opts.seed);
+  if(typeof postgameInstall === "function") postgameInstall("cw", mine, opts);   // postgame: tu campeón con tope de progresión (o Entrenamiento normalizado)
   LN.size = size; LN.setup = {mine, mate:mates, rivals:foes, size};
   selectedClass = mine; currentArena = "convergencia"; lobbyAllies = [...mates, ...foes];
   try{ startRun(LANES.RUNLEVEL); }
@@ -108,6 +109,7 @@ function lanesRunStart(){
   L.team = [lanesNewTeam(0), lanesNewTeam(1)]; runLevel = LANES.RUNLEVEL;
   levelDuration = 1e12; levelTimer = 0; midBossSpawned = true; // el motor no cierra niveles ni genera jefes
   const half = Math.ceil(heroes.length / 2), slot = [0, 0];
+  if(typeof postgameTagHeroes === "function") postgameTagHeroes();
   heroes.forEach((h, k)=>{
     h.team = h.lane = (L.assignment && L.assignment[k] != null) ? L.assignment[k] : (k < half ? 0 : 1);
     h.ln = LANES_ROLE_LANES[slot[h.team]++ % LANES_ROLE_LANES.length]; h._lnProxy = null; h.dead_t = 0;

@@ -73,7 +73,7 @@ const BOOK_SHORT_LINES = {
 const BOOK_FRAGMENTS = {
   ciudad: {title:"LA PRIMERA CICATRIZ", topic:"modos", topicTitle:"A QUÉ SE JUEGA", topicArt:"modos",
     lore:"La Ciudad Maldita resistió la noche, pero quedó marcada: una grieta en el suelo que no es de piedra. La Horda deja heridas así por donde pasa. Guardé esta para que la compares con las que vienen. Ya vas a ver que cada una late distinto.",
-    lesson:"MODO CAMPAÑA: las diez arenas en orden, solo o con amigos; cada una se abre al ganar la anterior. Fuera de la campaña están Convergencia (5 contra 5, tres carriles) y Coliseo (2 contra 2). Al ganar la Fábrica Sin Fin se abre la Horda Infinita."},
+    lesson:"MODO CAMPAÑA: las diez arenas en orden, solo o con amigos; cada una se abre al ganar la anterior. Fuera de la campaña están Convergencia (5 contra 5, tres carriles) y el Coliseo (torneo de cuatro equipos de dos, en duelos 2 contra 2); son de postgame: se abren al terminar la campaña. Al ganar la Fábrica Sin Fin se abre la Horda Infinita."},
   fortaleza: {title:"UNA FÁBRICA QUE NO PARA", topic:"progresion", topicTitle:"CRECER SIN APURO", topicArt:"progreso",
     lore:"La Horda contaminó las máquinas de una civilización que ya no está. Los que construyeron la Fábrica desaparecieron; las máquinas todavía no se enteraron. De los techos colgaba una cadena sin terminar: la última que se forjó.",
     lesson:"Cada victoria te da experiencia, oro y un cofre. La XP sube el nivel de tu guardián, y cada guardián lleva su propio nivel: probar otro no te hace perder nada. El oro se gasta fuera de la partida, cuando vos quieras."},

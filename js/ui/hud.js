@@ -146,7 +146,7 @@ function updateHUD(){
   // Emblema de Maestría junto al nivel (sección 18): reconocible por fuera, pero no expone el
   // árbol de talentos completo -solo el nombre de la Maestría elegida, nada más-.
   const emblemHtml = (champMastery && tree && tree.masteries[champMastery]) ? ` <span class="mastery-emblem" title="Maestría: ${tree.masteries[champMastery].name}">★</span>` : "";
-  hudHtml(plevelEl, `${hudClassName(CLASSES[player.classKey])} · Nv. ${save.champions[player.classKey].level}${emblemHtml}`);
+  hudHtml(plevelEl, `${hudClassName(CLASSES[player.classKey])} · Nv. ${(typeof lanesOn==="function" && lanesOn() && player.mlvl) ? player.mlvl : save.champions[player.classKey].level}${emblemHtml}`);   // Cristales/Coliseo: el nivel de la partida (el del guardado temporal abre los talentos)
   hudTxt(document.getElementById("hud-level"), (typeof lanesOn==="function" && lanesOn()) ? String(LN.wave) : (typeof ALPHA_TRAINING!=="undefined" && ALPHA_TRAINING.active) ? "1" : String(Math.min(runLevel,10))); // en el entrenamiento el nivel de la arena no avanza
   if(typeof endlessHudTick==="function") endlessHudTick(); // Horda Infinita: ronda, puntaje y mutadores
   hudTxt(document.getElementById("hud-kills"), String(kills));

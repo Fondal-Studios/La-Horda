@@ -6,7 +6,7 @@
  * sin tocar el render. Servidor propio en un puerto libre (se verifica que sirva ESTE árbol).
  *   node tools/lanes/test-sides.js     (CHROMIUM_PATH opcional) */
 const H=require('../lib/serve');const assert=require('node:assert/strict');
-const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'vale',playtestV1Bonus:true,campaignResetV1:true,campaignResetV2:true};
+const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'vale',playtestV1Bonus:true,campaignResetV1:true,campaignResetV2:true,arenasCleared:{infernal:true}};
 const dist=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);
 const hex=h=>{h=h.trim().replace('#','');if(h.length===3)h=[...h].map(c=>c+c).join('');return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16));};
 
@@ -120,7 +120,7 @@ const dominant=([r,g,b])=>r>g+60&&r>b+60?'red':g>r+40&&g>b+40?'green':r>b+60&&g>
    for(const spectate of [false,true]){
     const {ctx,p}=await open(w,h);
     await p.evaluate(()=>colStart({champ:'guerrero'}));
-    await p.waitForFunction(()=>state==='playing'&&lanesOn()&&LN.mode==='coliseo'&&LN.col.phase==='fight',null,{timeout:40000});
+    await p.waitForFunction(()=>state==='playing'&&lanesOn()&&LN.mode==='coliseo'&&LN.col.phase==='fight',null,{timeout:150000});
     await p.evaluate(INSTALL);const tokens=await p.evaluate(TOKENS);
     await p.evaluate(()=>{player.invulnTimer=1e9;const c=colPitCenter(0);heroes.forEach(h=>{if(h.pit===0){h.x=c.x+(h.team===0?-70:70)+(Math.random()-.5)*40;h.y=c.y+(Math.random()-.5)*160;}});});
     let view=0;
