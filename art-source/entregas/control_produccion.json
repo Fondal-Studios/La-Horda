@@ -97,6 +97,15 @@
       "preferida": true
     },
     {
+      "lote": "B003_guerrero",
+      "estado": "EN_CORRECCION",
+      "manifiesto": "art-source/entregas/bloques/B003_guerrero/entrega.json",
+      "pendientes": [
+        "StyleGate y45px de halo siguen fallando."
+      ],
+      "preferida": false
+    },
+    {
       "lote": "B635_brasa_abisal",
       "rama": "chatgpt/brasa-abyssal-skin-20261019",
       "pr": 148,
@@ -707,10 +716,9 @@
       "id": "brasa.skin.nueva_1",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/skins/brasa_skin_nueva_1/hoja_36poses.png",
-      "estado": "TECNICO_VERIFICADO",
-      "version_reutilizable": "art-source/entregas/bloques/B635_brasa_abisal/entrega.json",
-      "bloque": "B635",
-      "pr": 148
+      "estado": "PENDIENTE",
+      "version_reutilizable": null,
+      "bloque": "B635"
     },
     {
       "id": "brasa.fx.habilidades",
@@ -10075,12 +10083,11 @@
   ],
   "plan_bloques": "art-source/entregas/bloques/plan_bloques.json",
   "auditoria_guardados": "art-source/entregas/bloques/B000_auditoria/auditoria.json",
-  "bloque_activo": "B003",
+  "bloque_activo": "B004",
   "ultimo_checkpoint": {
-    "bloque": "B002",
+    "bloque": "B003",
     "estado": "EN_CORRECCION",
-    "estado_tecnico": "TECNICO_VERIFICADO",
-    "entrega": "art-source/entregas/bloques/B002_tanque/entrega.json",
-    "siguiente_paso": "B003: recuperar Guerrero guardado; normalizar contorno y escala; volver a medir sombreado. No generar otro atlas completo."
+    "entrega": "art-source/entregas/bloques/B003_guerrero/entrega.json",
+    "siguiente_paso": "B004: normalizar exportación de Libertador guardado, conservando pendientes de orientación y proporciones."
   }
 }

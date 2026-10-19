@@ -1,0 +1,81 @@
+{
+  "bloque": "B003",
+  "estado": "EN_CORRECCION",
+  "estado_tecnico": "EN_CORRECCION",
+  "pendientes_visuales": [
+    "Revisión visual de continuidad de las dos dagas en lanzamiento y definitiva."
+  ],
+  "generaciones_ia_adicionales": 0,
+  "archivos": [
+    {
+      "archivo": "ESTADO.md",
+      "sha256": "fd6714c0b7b0dcfc603201679260fe15290c73925d07e4a2d117d6c196bcf4d4",
+      "bytes": 862
+    },
+    {
+      "archivo": "campeones/guerrero/chequeos.json",
+      "sha256": "5b544c3938e6b5eaebfebbdcc221b0916cd05195f11305e41ff5269a6d4646b8",
+      "bytes": 6552
+    },
+    {
+      "archivo": "campeones/guerrero/hoja_36poses.png",
+      "sha256": "d1fca882116cef597dbef458dd31206bada53eaab297d0e3217af3ae3df8ad2e",
+      "bytes": 244510
+    },
+    {
+      "archivo": "campeones/guerrero/hoja_contacto.png",
+      "sha256": "1948bb0efe29affa9348ef26f96cfbb27ddacec6201318ad2cc75a7d36e02870",
+      "bytes": 354070
+    },
+    {
+      "archivo": "campeones/guerrero/import-report.json",
+      "sha256": "67a6464e69edb2492ae89570060bf3da71ca00ef4a6226dc86bac80209f90b17",
+      "bytes": 242
+    },
+    {
+      "archivo": "campeones/guerrero/import.log",
+      "sha256": "e27c6f85e400a0f44ee72cf1892a5928af3955ceb6d7d9a76979f3787ddeba59",
+      "bytes": 230
+    },
+    {
+      "archivo": "campeones/guerrero/preview.png",
+      "sha256": "f54791123a3b58c6589291b7c91571afeb9ffca712e896cde4eb2d3fbc2408e4",
+      "bytes": 6657
+    },
+    {
+      "archivo": "campeones/guerrero/style.log",
+      "sha256": "93b9d84c303dc82121b71780263926844a0d5ae0dcb1cc6675bc44c29afb9b8b",
+      "bytes": 252
+    },
+    {
+      "archivo": "entrega.json",
+      "sha256": "ef96c5b6e495aa0e658e48aaf3b75713972b0db4e4c6fe052ca37dc36d664570",
+      "bytes": 1954
+    },
+    {
+      "archivo": "fuentes/hoja_36poses.psd",
+      "sha256": "c5c9ec55c67b4336d2c8cb794b05a7c496c1af89df9058859794b053d9960e01",
+      "bytes": 589394
+    },
+    {
+      "archivo": "fuentes/hoja_preparada.png",
+      "sha256": "f4a0f55492726b224c1df13dc85ae155f46cb3a65b72afdb58d846a91e000763",
+      "bytes": 244434
+    },
+    {
+      "archivo": "fuentes/importacion.json",
+      "sha256": "221306f6d52e5fdc8d6f65d1a2b0c8a967890c64a056481677d245ece69a6b1f",
+      "bytes": 505
+    },
+    {
+      "archivo": "fuentes/normalizacion.json",
+      "sha256": "fc788ade4376774fd70f409c66ae7fa1da2f3572bbbfc718e6f3b97f1460cbc9",
+      "bytes": 1919
+    }
+  ],
+  "pendientes_tecnicos": [
+    "StyleGate sigue fallando; ver style.log.",
+    "Scanner señala45px de posible halo."
+  ],
+  "siguiente_paso": "Revisar sombras y contorno; no repetir esta normalización sin un cambio concreto."
+}
