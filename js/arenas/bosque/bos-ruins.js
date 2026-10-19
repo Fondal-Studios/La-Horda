@@ -237,7 +237,6 @@ function bosSpring(a){
   vfxBurst(a.x, a.y-10, 16, "leaf", 150, 520, 3, 1, -60, 0);
   playSfx("bosSpring");
 }
-function bosGuestUpdate(dt){ for(const a of BOS.amb) a.t -= dt; for(const r of BOS.runes) if(r.flash > 0) r.flash -= dt; bosTut(); }
 function bosGuestUpdate(dt){
   for(const a of BOS.amb) a.t -= dt;
   for(const r of BOS.runes){ if(r.flash > 0) r.flash -= dt; }
