@@ -215,8 +215,10 @@ button.cx-card:hover, button.cx-home-card:hover, button.cx-chapter:hover, button
 /* ---------- landscape bajo (celulares ~390 px de alto) ---------- */
 @media (max-height:480px) and (orientation:landscape){
   .cx-top{ min-height:40px; margin-bottom:4px; } .cx-back{ min-height:40px; font-size:1.05rem; }
-  .cx-home-head{ margin:0 0 6px; } .cx-home-brand{ font-size:1rem; } .cx-home-sub{ font-size:0.95rem; }
-  .cx-home-grid{ gap:8px; } .cx-home-art{ height:clamp(96px, 34vh, 170px); }
+  .cx-home-head{ margin:0 0 6px; } .cx-home-brand{ font-size:1rem; } .cx-home-sub{ display:none; }
+  /* arte bajo (22vh = 86 px a 390 de alto; el subtítulo se oculta en este alto): así EL LIBRO entra sin scroll a 844x390 (antes quedaba en y=361 de 390) */
+  .cx-home-grid{ gap:8px; } .cx-home-art{ height:clamp(64px, 22vh, 110px); }
+  .cx-home-book{ margin-top:8px; padding:6px 12px; } .cx-home-book .cxc-ico{ height:30px; }
   .cx-home-blurb{ display:none; } .cx-home-txt{ padding:6px 8px 8px; }
   .cx-title{ font-size:0.86rem; } .cx-sec{ padding:7px 9px 8px; margin-top:7px; }
   .cx-card-pv{ height:78px; } .cx-grid-boss .cx-card-pv{ height:96px; }
