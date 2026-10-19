@@ -164,107 +164,107 @@ Misma escala. Valoración visual rápida; no se modificó ningún archivo de est
 
 | Campeón | Habilidad | Antes (tipo · lectura) | Después | Medido antes: sprites vfxSprite · dibujos/cuadro · ondas · ráfagas | Captura |
 |---|---|---|---|---|---|
-| myla | Básico: ataque básico | anim. personaje | sin cambios | — · 40 · 1 · 3 | [antes](sheets/antes/myla.jpg) |
+| myla | Básico: ataque básico | anim. personaje | sin cambios | — · 40 · 1 · 3 | hoja no incluida |
 |  | Hab. 1: Torre de Yogur | P · bien | sin cambios (otra rama) | — · 0 · 1 · 3 |  |
 |  | Hab. 2: Yogurazo | P · bien | sin cambios (otra rama) | — · 4 · 4 · 83 |  |
 |  | Hab. 3: Burbuja Cremosa | P · bien | sin cambios (otra rama) | — · 0 · 2 · 1 |  |
 |  | Definitiva: BERRINCHE | P · bien | sin cambios (otra rama) | — · 0 · 6 · 42 |  |
-| nahir | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 0 · 2 | [antes](sheets/antes/nahir.jpg) |
+| nahir | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 0 · 2 | hoja no incluida |
 |  | Hab. 1: Astillas errantes | C · regular | sin cambios (otra rama) | fxSpark · 5 · 2 · 22 |  |
 |  | Hab. 2: Reflejo fugitivo | C · regular | sin cambios (otra rama) | fxSpark · 50 · 2 · 2 |  |
 |  | Hab. 3: Corte cruzado | C · regular | sin cambios (otra rama) | fxSpark · 15 · 2 · 22 |  |
 |  | Definitiva: Galería de nadie | C · regular | sin cambios (otra rama) | fxSpark · 0 · 3 · 22 |  |
-| nano_gm | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 1 · 3 | [antes](sheets/antes/nano_gm.jpg) |
+| nano_gm | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 1 · 3 | hoja no incluida |
 |  | Hab. 1: Sentencia Umbría | C · regular | sin cambios (otra rama) | fxSoulReapBurst · 3 · 2 · 22 |  |
 |  | Hab. 2: Edicto de Luz | C · regular | sin cambios (otra rama) | fxHolyHealBurst · 12 · 2 · 2 |  |
 |  | Hab. 3: Inversión | C · regular | sin cambios (otra rama) | fxFrostRune · 82 · 2 · 22 |  |
 |  | Definitiva: Juicio del GM | P · bien | sin cambios (otra rama) | fxSoulReapBurst, fxHolyHealBurst · 0 · 5 · 24 |  |
-| nigromante | Básico: ataque básico | anim. personaje | sin cambios | — · 105 · 1 · 3 | [antes](sheets/antes/nigromante.jpg) |
+| nigromante | Básico: ataque básico | anim. personaje | sin cambios | — · 105 · 1 · 3 | hoja no incluida |
 |  | Hab. 1: Cosecha de Almas | P · bien | sin cambios (otra rama) | — · 20 · 4 · 24 |  |
 |  | Hab. 2: Gólem de Carne | P · bien | sin cambios (otra rama) | nigroGolemSpawn · 43 · 2 · 20 |  |
 |  | Hab. 3: Plaga de los Condenados | P · bien | sin cambios (otra rama) | nigroPlagueBurst, nigroPlague · 0 · 1 · 1 |  |
 |  | Definitiva: Encarnación del Abismo | P · bien | sin cambios (otra rama) | — · 0 · 2 · 1 |  |
-| oriel | Básico: ataque básico | anim. personaje | sin cambios | — · 40 · 1 · 2 | [antes](sheets/antes/oriel.jpg) |
+| oriel | Básico: ataque básico | anim. personaje | sin cambios | — · 40 · 1 · 2 | hoja no incluida |
 |  | Hab. 1: Abrir Cicatriz | C · regular | sin cambios (otra rama) | fxVortex · 0 · 3 · 53 |  |
 |  | Hab. 2: Eco de la Cicatriz | C · regular | sin cambios (otra rama) | fxFrostRune · 33 · 2 · 16 |  |
 |  | Hab. 3: Paso entre Mundos | C · regular | sin cambios (otra rama) | fxSoulReapBurst · 0 · 2 · 26 |  |
 |  | Definitiva: La Gran Cicatriz | C · regular | sin cambios (otra rama) | fxSoulReapBurst · 0 · 3 · 66 |  |
-| orsa | Básico: ataque básico | anim. personaje | sin cambios | — · 4 · 1 · 3 | [antes](sheets/antes/orsa.jpg) |
+| orsa | Básico: ataque básico | anim. personaje | sin cambios | — · 4 · 1 · 3 | hoja no incluida |
 |  | Hab. 1: Perno conductor | C · regular | sin cambios (otra rama) | fxBolt · 7 · 2 · 22 |  |
 |  | Hab. 2: Apoyar la culata | C · regular | sin cambios (otra rama) | fxSpark · 2 · 2 · 2 |  |
 |  | Hab. 3: Cerrar el circuito | C · regular | sin cambios (otra rama) | fxBolt · 1 · 2 · 20 |  |
 |  | Definitiva: Tormenta de rescate | G · regular | sin cambios (otra rama) | fxBolt · 5 · 4 · 63 |  |
-| profeta | Básico: ataque básico | anim. personaje | sin cambios | — · 8 · 0 · 3 | [antes](sheets/antes/profeta.jpg) |
+| profeta | Básico: ataque básico | anim. personaje | sin cambios | — · 8 · 0 · 3 | hoja no incluida |
 |  | Hab. 1: Destino Restaurado | C · regular | sin cambios (otra rama) | — · 6 · 2 · 2 |  |
 |  | Hab. 2: Visión del Inmortal | C · regular | sin cambios (otra rama) | — · 0 · 6 · 24 |  |
 |  | Hab. 3: Danza del Augurio | G · regular | sin cambios (otra rama) | — · 0 · 2 · 10 |  |
 |  | Definitiva: Ascensión del Elegido | C · mal | sin cambios (otra rama) | — · 3 · 4 · 4 |  |
-| renko | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 1 · 4 | [antes](sheets/antes/renko.jpg) |
+| renko | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 1 · 4 | hoja no incluida |
 |  | Hab. 1: Surco de contención | G · regular | sin cambios (otra rama) | fxSpike · 10 · 1 · 21 |  |
 |  | Hab. 2: Montículo | G · regular | sin cambios (otra rama) | fxSpike · 0 · 2 · 2 |  |
 |  | Hab. 3: Devolver a la tierra | G · regular | sin cambios (otra rama) | fxSpike · 11 · 2 · 16 |  |
 |  | Definitiva: Aquí siguen los nombres | G · regular | sin cambios (otra rama) | fxSpike · 5 · 4 · 43 |  |
-| saelis | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 1 · 3 | [antes](sheets/antes/saelis.jpg) |
+| saelis | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 1 · 3 | hoja no incluida |
 |  | Hab. 1: Abanico de Plumas | C · regular | sin cambios (otra rama) | fxWhirl · 7 · 2 · 22 |  |
 |  | Hab. 2: Ráfaga Ascendente | G · regular | sin cambios (otra rama) | fxWhirl · 0 · 2 · 20 |  |
 |  | Hab. 3: Llamado del Plumaje | G · regular | sin cambios (otra rama) | fxWhirl · 4 · 2 · 2 |  |
 |  | Definitiva: Cielo de Plumas | G · regular | sin cambios (otra rama) | fxWhirl · 0 · 3 · 34 |  |
-| segador | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 0 · 3 | [antes](sheets/antes/segador.jpg) |
+| segador | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 0 · 3 | hoja no incluida |
 |  | Hab. 1: Tajo del Segador | P · bien | sin cambios (otra rama) | fxScytheSlash · 0 · 2 · 10 |  |
 |  | Hab. 2: Armadura de la Furia | C · regular | sin cambios (otra rama) | — · 2 · 2 · 2 |  |
 |  | Hab. 3: Último Aliento | C · regular | sin cambios (otra rama) | — · 1 · 2 · 2 |  |
 |  | Definitiva: Segador de Almas | P · regular | sin cambios (otra rama) | fxSoulReapBurst · 43 · 2 · 1 |  |
-| sira | Básico: ataque básico | anim. personaje | sin cambios | — · 74 · 1 · 3 | [antes](sheets/antes/sira.jpg) |
+| sira | Básico: ataque básico | anim. personaje | sin cambios | — · 74 · 1 · 3 | hoja no incluida |
 |  | Hab. 1: Línea de tinta | C · regular | sin cambios (otra rama) | fxFrostRune · 18 · 1 · 21 |  |
 |  | Hab. 2: Volver sobre los pasos | G · regular | sin cambios (otra rama) | fxWhirl · 0 · 2 · 2 |  |
 |  | Hab. 3: Borrar el camino | C · regular | sin cambios (otra rama) | fxFrostRune · 0 · 2 · 10 |  |
 |  | Definitiva: Atlas de los ausentes | C · regular | sin cambios (otra rama) | fxFrostRune · 29 · 3 · 30 |  |
-| solciju | Básico: ataque básico | anim. personaje | sin cambios | — · 4 · 1 · 3 | [antes](sheets/antes/solciju.jpg) |
+| solciju | Básico: ataque básico | anim. personaje | sin cambios | — · 4 · 1 · 3 | hoja no incluida |
 |  | Hab. 1: Vino maldito | C · regular | sin cambios (otra rama) | fxSoulReapBurst · 30 · 2 · 12 |  |
 |  | Hab. 2: Barrica añeja | C · regular | sin cambios (otra rama) | fxSoulReapBurst · 0 · 2 · 2 |  |
 |  | Hab. 3: Brindis a solas | C · regular | sin cambios (otra rama) | fxHolyShieldBubble · 14 · 2 · 2 |  |
 |  | Definitiva: Gran Reserva | P · regular | sin cambios (otra rama) | fxSoulReapBurst · 20 · 4 · 13 |  |
-| soporte | Básico: ataque básico | anim. personaje | sin cambios | — · 4 · 1 · 3 | [antes](sheets/antes/soporte.jpg) |
+| soporte | Básico: ataque básico | anim. personaje | sin cambios | — · 4 · 1 · 3 | hoja no incluida |
 |  | Hab. 1: Alba Purificadora | P · regular | sin cambios (otra rama) | fxHolyHealBurst · 6 · 3 · 21 |  |
 |  | Hab. 2: Bendición de Guerra | C · regular | sin cambios (otra rama) | — · 0 · 2 · 2 |  |
 |  | Hab. 3: Escudo Sagrado | C · regular | sin cambios (otra rama) | — · 14 · 2 · 2 |  |
 |  | Definitiva: Bendición Suprema | C · regular | sin cambios (otra rama) | fxHolyHealBurst · 5 · 3 · 2 |  |
-| tanque | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 0 · 3 | [antes](sheets/antes/tanque.jpg) |
+| tanque | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 0 · 3 | hoja no incluida |
 |  | Hab. 1: Torbellino | C · regular | sin cambios (otra rama) | — · 25 · 3 · 43 |  |
 |  | Hab. 2: Embestida | C · regular | sin cambios (otra rama) | — · 0 · 2 · 13 |  |
 |  | Hab. 3: Grito de Guerra | C · regular | sin cambios (otra rama) | — · 0 · 2 · 2 |  |
 |  | Definitiva: Grito Provocador | C · regular | sin cambios (otra rama) | — · 0 · 3 · 2 |  |
-| tibor | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 1 · 3 | [antes](sheets/antes/tibor.jpg) |
+| tibor | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 1 · 3 | hoja no incluida |
 |  | Hab. 1: Nube obrera | C · regular | sin cambios (otra rama) | fxSpark · 16 · 4 · 64 |  |
 |  | Hab. 2: Volvé a casa | C · regular | sin cambios (otra rama) | fxHolyShieldBubble · 2 · 2 · 2 |  |
 |  | Hab. 3: Polen de aviso | C · regular | sin cambios (otra rama) | fxSpark · 9 · 2 · 22 |  |
 |  | Definitiva: El cielo zumba | G · regular | sin cambios (otra rama) | fxSpark · 0 · 4 · 63 |  |
-| velmira | Básico: ataque básico | anim. personaje | sin cambios | — · 5 · 1 · 3 | [antes](sheets/antes/velmira.jpg) |
+| velmira | Básico: ataque básico | anim. personaje | sin cambios | — · 5 · 1 · 3 | hoja no incluida |
 |  | Hab. 1: Máscara Arrojada | C · regular | sin cambios (otra rama) | fxSpark · 0 · 2 · 22 |  |
 |  | Hab. 2: Coro de Rostros | C · regular | sin cambios (otra rama) | fxFrostRune · 7 · 2 · 20 |  |
 |  | Hab. 3: Cambio de Rostro | C · regular | sin cambios (otra rama) | fxSpark · 0 · 2 · 22 |  |
 |  | Definitiva: El Gran Teatro | P · regular | sin cambios (otra rama) | fxFrostRune · 4 · 3 · 22 |  |
-| vesper | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 0 · 3 | [antes](sheets/antes/vesper.jpg) |
+| vesper | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 0 · 3 | hoja no incluida |
 |  | Hab. 1: Agujas de penumbra | C · regular | sin cambios (otra rama) | fxSoulReapBurst · 9 · 2 · 22 |  |
 |  | Hab. 2: Costura de fuga | C · regular | sin cambios (otra rama) | fxSoulReapBurst · 25 · 4 · 58 |  |
 |  | Hab. 3: Deshilachar | C · regular | sin cambios (otra rama) | fxScytheSlash · 0 · 3 · 21 |  |
 |  | Definitiva: La última puntada | G · regular | sin cambios (otra rama) | fxSoulReapBurst · 0 · 6 · 59 |  |
-| veyra | Básico: ataque básico | anim. personaje | sin cambios | — · 3 · 0 · 3 | [antes](sheets/antes/veyra.jpg) |
+| veyra | Básico: ataque básico | anim. personaje | sin cambios | — · 3 · 0 · 3 | hoja no incluida |
 |  | Hab. 1: Abrir la herida | C · regular | sin cambios (otra rama) | fxScytheSlash · 0 · 3 · 22 |  |
 |  | Hab. 2: Paso escarlata | C · regular | sin cambios (otra rama) | fxScytheSlash · 0 · 2 · 21 |  |
 |  | Hab. 3: Pacto de dolor | C · regular | sin cambios (otra rama) | fxHolyShieldBubble · 14 · 2 · 2 |  |
 |  | Definitiva: La última herida | C · regular | sin cambios (otra rama) | fxScytheSlash · 13 · 4 · 21 |  |
-| vhal | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 1 · 3 | [antes](sheets/antes/vhal.jpg) |
+| vhal | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 1 · 3 | hoja no incluida |
 |  | Hab. 1: Estrella Errante | C · regular | sin cambios (otra rama) | fxBolt · 1 · 1 · 21 |  |
 |  | Hab. 2: Pozo Gravitatorio | G · regular | sin cambios (otra rama) | fxVortex · 38 · 4 · 64 |  |
 |  | Hab. 3: Órbita | P · bien | sin cambios (otra rama) | fxFrostRune · 0 · 2 · 6 |  |
 |  | Definitiva: Colapso | P · bien | sin cambios (otra rama) | fxVortex · 35 · 4 · 63 |  |
-| ynara | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 1 · 3 | [antes](sheets/antes/ynara.jpg) |
+| ynara | Básico: ataque básico | anim. personaje | sin cambios | — · 0 · 1 · 3 | hoja no incluida |
 |  | Hab. 1: Mirada fulminante | C · regular | sin cambios (otra rama) | — · 1 · 3 · 34 |  |
 |  | Hab. 2: Estrogonof reparador | P · regular | sin cambios (otra rama) | — · 52 · 4 · 64 |  |
 |  | Hab. 3: No quiero seguir esta conversación | C · regular | sin cambios (otra rama) | — · 0 · 1 · 55 |  |
 |  | Definitiva: Santa Paciencia | P · bien | sin cambios (otra rama) | — · 12 · 3 · 55 |  |
-| zahra | Básico: ataque básico | anim. personaje | sin cambios | — · 4 · 1 · 3 | [antes](sheets/antes/zahra.jpg) |
+| zahra | Básico: ataque básico | anim. personaje | sin cambios | — · 4 · 1 · 3 | hoja no incluida |
 |  | Hab. 1: Boca de horno | G · regular | sin cambios (otra rama) | fortFireBurst · 6 · 2 · 22 |  |
 |  | Hab. 2: Enfriar | G · regular | sin cambios (otra rama) | fxSplash · 25 · 2 · 2 |  |
 |  | Hab. 3: Paso de ceniza | G · regular | sin cambios (otra rama) | fortFireBurst · 0 · 2 · 56 |  |
