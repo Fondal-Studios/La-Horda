@@ -1,0 +1,20 @@
+name: Account environment fixture compatibility
+on:
+  push:
+    branches: ['art-workshop/account-environment-fixture-20261019']
+permissions:
+  contents: read
+jobs:
+  isolation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            js/net
+            tools/alpha/account-environments.js
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tools/alpha/account-environments.js
