@@ -13,14 +13,26 @@ globalThis.__retried = {};
 (async () => {
   const URL = process.env.GAME_URL || 'http://127.0.0.1:8841/index.html';
   const cls = process.argv[3] || 'guerrero';
-  const browser = await chromium.launch({ args: ['--no-sandbox'] });
+  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH, args: ['--no-sandbox'] });
   let arenas = process.argv[2] && process.argv[2] !== 'todas' ? process.argv[2].split(',') : null;
+  const navigationAttempts = new Map();
+  try {
   for (let ai = 0; ; ai++) {
     const page = await (await browser.newContext({ viewport: { width: 844, height: 390 } })).newPage();
     const errors = []; page.on('pageerror', e => errors.push(e.message));
     await page.addInitScript(() => { window.__campaignMode = true; });
     page.setDefaultTimeout(240000); // con el host cargado la página (~1.800 archivos) tarda más de los 30 s por defecto
-    try { await page.goto(URL, { waitUntil: 'load', timeout: 240000 }); } catch (err) { console.error('goto: ' + String(err.message || err).slice(0, 120) + ' (se reintenta ' + (arenas ? arenas[ai] : ai) + ')'); await page.context().close().catch(() => {}); ai--; await sleep(3000); continue; }
+    try {
+      await page.goto(URL, { waitUntil: 'load', timeout: 240000 });
+      navigationAttempts.delete(ai);
+    } catch (err) {
+      const attempt = (navigationAttempts.get(ai) || 0) + 1;
+      navigationAttempts.set(ai, attempt);
+      await page.context().close().catch(() => {});
+      if (attempt >= 3) throw new Error('Campaign navigation failed after 3 attempts for ' + (arenas ? arenas[ai] : ai), { cause: err });
+      console.error('goto: ' + String(err.message || err).slice(0, 120) + ' (attempt ' + attempt + '/3; retrying)');
+      ai--; await sleep(3000); continue;
+    }
     for (let i = 0; i < 300; i++) { const ok = await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return b && !b.disabled; }); if (ok) break; await sleep(100); }
     if (!arenas) arenas = await page.evaluate(() => CAMPAIGN_ORDER.slice());
     if (ai >= arenas.length) { await page.context().close(); break; }
@@ -69,5 +81,5 @@ globalThis.__retried = {};
     console.log(JSON.stringify(r));
     await page.context().close().catch(() => {});
   }
-  await browser.close();
+  } finally { await browser.close(); }
 })();
