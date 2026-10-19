@@ -1,0 +1,31 @@
+name: PR155 visual contract verification
+on:
+  push:
+    branches: ['chatgpt/verify-art-pr155-20261019']
+permissions:
+  contents: read
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 33abdeaa1ea9500af69e544c3d4a06bc16bca4fa
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright@1.61.1
+      - run: npx playwright install --with-deps chromium
+      - run: git rev-parse HEAD
+      - run: node tools/art/check-skill-icons.js --self-test
+      - run: node tools/art/check-skill-icons.js --write
+      - run: node tools/ux/test-skill-glyphs.js
+      - run: node tools/ux/test-text-overflow.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr155-visual-contract-evidence
+          path: |
+            docs/ux/iconos-contrato/
+            docs/ux/text-overflow/
