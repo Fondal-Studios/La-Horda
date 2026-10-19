@@ -70,6 +70,7 @@ function renderHub(){
   const tsub = document.querySelector("#mainmenu-tienda-btn .hub-tile-sub");
   if(tsub) tsub.textContent = vale ? "Tenés una skin de regalo: elegila" : "Ofertas del día · skins";
   renderEndlessCards();
+  renderPostgameTiles();
   const q = document.getElementById("mainmenu-quests-btn");
   if(q) q.classList.toggle("hidden", typeof window.questsOpen!=="function");
   const grid = document.getElementById("hub-grid");
@@ -149,6 +150,25 @@ function renderEndlessCards(){
   const rk = document.getElementById("hub-endless-rank-btn");
   if(rk) rk.classList.toggle("hidden", !info || typeof window.lbOpen!=="function");
   const row = rk && rk.parentElement; if(row && row.classList.contains("hub-endless-row")) row.classList.toggle("hidden", !info);
+}
+/* ---------------- MODOS DE POSTGAME (Guerra de Cristales y Coliseo) ----------------
+   Se abren al terminar la campaña (js/systems/postgame.js, interruptor POSTGAME_GATE en js/data/postgame.js). Antes de eso la tarjeta
+   se ve bloqueada, dice la condición y al tocarla ofrece el Entrenamiento (campeón normalizado, sin recompensas). */
+function renderPostgameTiles(){
+  if(typeof postgameHubInfo!=="function") return;
+  try{ postgameSyncUnlock(); }catch(e){}
+  const info = postgameHubInfo();
+  const mk = (btnId, subId, open, modeKey)=>{
+    const b = document.getElementById(btnId), s = document.getElementById(subId); if(!b || !s) return;
+    b.classList.toggle("locked", !info.unlocked);
+    b.dataset.locked = info.unlocked ? "0" : "1";   // (sin aria-disabled: el toque sigue funcionando y explica la condición)
+    if(!info.unlocked){ s.textContent = "🔒 " + info.lockText.replace(/ \(.*$/, "") + " · Entrenamiento disponible"; b.title = info.lockText; return; }
+    const m = info[modeKey];
+    s.textContent = open + (m.played ? " · 🏆 " + m.trophies + (m.streak > 1 ? " · racha " + m.streak : "") : "");
+    b.title = m.played ? m.wins + " victorias de " + m.played + " · mejor racha " + m.best : "";
+  };
+  mk("hub-crystal-btn", "hub-crystal-sub", "5 contra 5 con bots · 3 carriles y selva", "cw");
+  mk("hub-coliseum-btn", "hub-coliseum-sub", "Torneo de 8: 4 equipos de 2 · duelos 2v2 · primero a 3", "col");
 }
 function openEndless(){
   const info = endlessInfo(); if(!info) return;

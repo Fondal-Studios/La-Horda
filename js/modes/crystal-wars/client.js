@@ -61,6 +61,7 @@ function modePresentation(){
  $('competitive-title').textContent=T.title;lobby.querySelector('h1').innerHTML=T.h1;lobby.querySelector('.eyebrow').textContent=T.eyebrow;lobby.querySelector('.intro').textContent=T.intro;
  [...lobby.querySelectorAll('.rules>div')].forEach((el,i)=>{el.querySelector('b').textContent=T.rules[i][0];el.querySelector('p').textContent=T.rules[i][1];});
  $('result').querySelector('.eyebrow').textContent=T.result;
+ if(typeof postgameLobbyRefresh==='function')postgameLobbyRefresh();
 }
 if(modeSelect)modeSelect.onchange=modePresentation;
 const kitDetails=document.createElement('details');kitDetails.className='cw-kit-guide';const kitSummary=document.createElement('summary');kitSummary.textContent='Ver habilidades, firma y cartas';const kitBody=document.createElement('div');kitBody.id='cw-kit-details';kitDetails.append(kitSummary,kitBody);$('kit').after(kitDetails);
@@ -117,7 +118,7 @@ function begin(){
 }
 // Guerra de Cristales usa el MOTOR REAL de la campaña (mismas habilidades, HUD y controles; js/arenas/lanes/).
 // El motor simplificado queda como respaldo (enlace con ?legacy=1) y para el Coliseo hasta que tenga el suyo.
-function realCrystal(){const champ=$('champ').value;if(!close())return;try{if(mode()==='coliseum')colStart({champ});else lanesStart({champ});}catch(err){console.error(err);status('No se pudo iniciar la partida. Probá de nuevo.');}}
+function realCrystal(){const champ=$('champ').value;if(!close())return;const training=!!(document.getElementById('pg-training')&&document.getElementById('pg-training').checked);try{if(mode()==='coliseum')colStart({champ,training});else lanesStart({champ,training});}catch(err){console.error(err);status('No se pudo iniciar la partida. Probá de nuevo.');}}
 function useReal(){return (mode()==='crystal'&&typeof lanesStart==='function'||mode()==='coliseum'&&typeof colStart==='function')&&!query().get('legacy');}
 $('practice').onclick=()=>{if(useReal())realCrystal();else begin();};$('start').onclick=()=>{if(host&&room?.state==='lobby'&&!$('start').disabled)begin();};
 function showGame(){ $('view').hidden=isColiseum();canvas.setAttribute('aria-label',isColiseum()?'Coliseo: arena compartida 2 contra 2':'Convergencia: ambos campos visibles');viewOther=false;$('view').textContent='Ampliar rival'; $('lobby').hidden=true;$('game').hidden=false;drawControls(); }
