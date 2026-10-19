@@ -96,6 +96,35 @@ function firstRunToHub(){
   setState("mainmenu"); renderMainMenu();
   return true;
 }
+/* PRIMERA PARTIDA EN SOLITARIO, DIRECTA: con el entrenamiento hecho o saltado (save.tut.training / trainingSkipped) y sin ninguna arena
+   superada, JUGAR va derecho a la ficha de la arena (una sola pantalla) y de ahí a la partida: sin la Sala con pestañas ("Sala online /
+   Arena", "Cambiar campeón"). Pasa UNA vez (save.tut.soloIntro); desde la segunda partida JUGAR abre la Sala como siempre, y la Sala
+   sigue siendo el camino de las partidas con equipo (crear sala, unirse por código, Partida rápida: llaman a hubPlay(), no a esto). */
+function hubSoloDirectDue(){
+  try{
+    if(typeof tutorialDone!=="function" || !tutorialDone()) return false;
+    if(save.tut && save.tut.soloIntro) return false;
+    if(ARENA_ORDER.some(a=>(save.arenasCleared||{})[a])) return false;
+    if(typeof netInRoom==="function" && netInRoom()) return false;
+    if(typeof needsStarterChampion==="function" && (needsStarterChampion() || (typeof needsStarterSkin==="function" && needsStarterSkin()))) return false;
+    if(typeof runIntroShow!=="function" || typeof duoValid!=="function") return false;
+    return true;
+  }catch(e){ return false; }
+}
+function hubPlayClick(){
+  if(!hubSoloDirectDue()){ hubPlay(); return; }
+  if(!ensureOwnedSelection()) return;
+  if(!duoValid()){ hubPlay(); return; }
+  if(save.firstRun){ save.firstRun = null; }
+  save.tut = save.tut || {}; save.tut.soloIntro = 1; persist();
+  currentArena = hubNextArena();
+  if(save.justUnlockedArena===currentArena){ save.justUnlockedArena = null; persist(); }
+  updateMenuBrandSub();
+  lobbyAllies = pickLobbyAllies(selectedClass);
+  prepReturnTo = "mainmenu"; // al terminar la partida, "‹ Menú" de la Sala vuelve al hub, igual que con JUGAR de siempre
+  if(typeof playSfx==="function") playSfx("ready");
+  runIntroShow(currentArena, ()=>{ try{ startRun(1); }catch(err){ console.error("Error al arrancar la partida:", err); } }, {first:true});
+}
 function hubPlay(){
   if(typeof needsStarterChampion==="function" && (needsStarterChampion() || (typeof needsStarterSkin==="function" && needsStarterSkin()))){ openStarterSelect(()=>hubPlay()); return; }
   if(!ensureOwnedSelection()) return;
@@ -159,7 +188,7 @@ document.getElementById("hub-endless-btn").addEventListener("click", openEndless
 document.getElementById("mode-endless-btn").addEventListener("click", openEndless);
 document.getElementById("mainmenu-jugar-btn").addEventListener("click", ()=> setTimeout(renderEndlessCards, 0));
 
-document.getElementById("hub-play-btn").addEventListener("click", hubPlay);
+document.getElementById("hub-play-btn").addEventListener("click", hubPlayClick);
 document.getElementById("mainmenu-guardianes-btn").addEventListener("click", ()=> openGuardians());
 // DESAFÍOS: el botón lleva [data-quests-open]; el sistema de desafíos (quests-ui.js) atiende ese toque
 // (delegado en document) y le pone el contador en .qs-badge. Acá no se engancha otro click.
