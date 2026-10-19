@@ -30,7 +30,7 @@ body.reduce-motion .hub-play.hub-next{ animation:none; }
 .prep-sec.active{ color:var(--ember3); border-color:var(--ember1); background:rgba(255,122,46,0.14); }
 .prep-sec:focus-visible{ outline:2px solid var(--ui-gold, #ffd76a); outline-offset:2px; }
 .prep-sec.live .prep-sec-ico{ color:#7dffa0; text-shadow:0 0 8px rgba(125,255,160,0.7); }
-.prep-sec.warn::after{ content:"⚠"; color:#ffb35c; margin-left:2px; }
+.prep-sec.warn::after{ content:""; display:inline-block; width:1em; height:1em; margin-left:3px; vertical-align:-.15em; background:var(--pxi-alerta) center/contain no-repeat; image-rendering:pixelated; }
 @media (hover:hover) and (pointer:fine){ .prep-sec:not(.active):hover{ color:var(--text); border-color:var(--ui-line-hi, #6a3e1e); } }
 /* cada parte de la Sala se ve solo con su pestaña (los 4 lugares, siempre) */
 #prep-screen[data-sec="equipo"] [data-part]:not([data-part="equipo"]),

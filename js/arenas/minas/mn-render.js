@@ -559,14 +559,14 @@ function mnDrawScreen(){
   }
   // panel de luz (arriba al centro)
   const lit = mnLitCount(), tot = mnS.lights.length, dark = mnHeroDark(player);
-  const obj = mnS.portal.st==="open" ? "🜂 ATRAVIESA EL UMBRAL" : mnS.portal.st==="opening" ? "EL UMBRAL SE ABRE…" : "";
+  const obj = mnS.portal.st==="open" ? "ATRAVIESA EL UMBRAL" : mnS.portal.st==="opening" ? "EL UMBRAL SE ABRE…" : "";
   const txt = `🔥 Luces ${lit}/${tot}  ·  ${dark ? "🌑 A OSCURAS (+daño recibido)" : "☀ En la luz"}` + (mnS.sec < 5 ? `  ·  −${mnSector().depth} m` : "");
   ctx.font = pxFont(13); ctx.textAlign = "center";
   const bossUp = (bossActive && boss && boss.alive) || !!mnEnt("mn_titan");
-  const tw = ctx.measureText(txt).width + 24, px = VW/2, py = Math.max(52, VH*0.085) + (bossUp ? 40 : 0);
+  const tw = measureIconText(ctx, txt, 14) + 24, px = VW/2, py = Math.max(52, VH*0.085) + (bossUp ? 40 : 0);
   ctx.fillStyle = "rgba(8,4,10,0.72)"; ctx.fillRect(px - tw/2, py - 16, tw, 24);
   ctx.strokeStyle = dark ? `rgba(200,90,255,${0.5 + 0.4*Math.sin(t*6)})` : "rgba(255,200,120,0.4)"; ctx.lineWidth = 1.5; ctx.strokeRect(px - tw/2, py - 16, tw, 24);
-  ctx.fillStyle = "#f2e6dc"; ctx.fillText(txt, px, py);
+  ctx.fillStyle = "#f2e6dc"; drawIconText(ctx, txt, px, py, 14);
   if(obj){ ctx.font = pxFont(16); const w2 = ctx.measureText(obj).width + 30; ctx.fillStyle = "rgba(40,4,2,0.8)"; ctx.fillRect(px - w2/2, py + 14, w2, 26);
     ctx.strokeStyle = `rgba(255,90,40,${0.6 + 0.4*Math.sin(t*5)})`; ctx.strokeRect(px - w2/2, py + 14, w2, 26); ctx.fillStyle = "#ffd0b0"; ctx.fillText(obj, px, py + 33); }
   // alertas prioritarias con flecha hacia su lugar
