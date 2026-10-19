@@ -1,13 +1,11 @@
 // EL LIBRO DE LA HORDA — prueba en navegador real (Playwright, celular en horizontal 844×390).
-//   (python3 -m http.server 8821 &) ; node tools/items/t_codex_book.js [carpeta_capturas]
+//   node tools/items/t_codex_book.js [carpeta_capturas]
 // Cubre: intro tras elegir el primer campeón (con clics reales), omitir, esquivar salas, migración de un guardado
 // viejo recargando la página, carga corta (≈3 s, tope por arena, toque para saltear), seguridad cooperativa
 // (nada se queda sobre una sala), fragmento en la victoria real, sección del Códice, revisitar siempre, movimiento
 // reducido, vertical, texto sin recortes en las 8 + 25 páginas y que el visor deja de dibujar al cerrar.
-let chromium;
-try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
-const BASE = process.env.SE_BASE_URL || 'http://127.0.0.1:8821';
-const EXE = process.env.PW_EXE || '/opt/pw-browsers/chromium';
+const H = require('../lib/serve');
+let BASE;
 const OUT = process.argv[2];
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL ') + n + (!ok && x !== undefined ? '  ' + JSON.stringify(x).slice(0, 400) : '')); if (!ok) fails++; };
@@ -18,14 +16,15 @@ async function boot(browser, opts) {
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
   page.on('console', m => { if (m.type() === 'error' && !/ERR_CERT|fonts\.g|net::|404|ERR_TUNNEL/.test(m.text())) errors.push('console: ' + m.text().slice(0, 300)); });
   await page.addInitScript(() => { window.__campaignMode = true; window.__codexBook = true; });
-  await page.goto(`${BASE}/index.html`, { waitUntil: 'load', timeout: 180000 });
+  await H.goto(page, `${BASE}/index.html`, { waitUntil: 'load', timeout: 180000 });
   for (let k = 0; k < 300; k++) { if (await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return !!b && !b.disabled; })) break; await sleep(100); }
   await sleep(500);
   return { ctx, page, errors };
 }
 
 (async () => {
-  const browser = await chromium.launch({ executablePath: EXE, args: ['--no-sandbox'] });
+  const site = await H.startSite({ envUrl: ['SE_BASE_URL'] }); BASE = site.url;   // servidor propio en puerto libre; SE_BASE_URL para uno externo
+  const browser = await H.launch();
   const { ctx, page, errors } = await boot(browser);
   const E = (fn, a) => page.evaluate(fn, a);
   const shot = async n => { if (OUT) await page.screenshot({ path: `${OUT}/${n}.png` }); };
@@ -370,7 +369,7 @@ async function boot(browser, opts) {
   await por.ctx.close();
 
   check('SIN_ERRORES.consola_y_excepciones', errors.length === 0, errors);
-  await browser.close();
+  await browser.close(); await site.close();
   console.log(fails ? '\n' + fails + ' FALLAS' : '\nTODO OK');
   process.exit(fails ? 1 : 0);
 })().catch(e => { console.error('FALLO DE LA PRUEBA', e); process.exit(2); });

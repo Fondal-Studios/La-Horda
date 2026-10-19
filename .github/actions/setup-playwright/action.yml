@@ -1,0 +1,17 @@
+name: Setup Node, Playwright and Chromium
+description: Node 22, Playwright 1.61.1 in /tmp/horda-integracion and Chromium (same recipe as Champion entry balance). Sets NODE_PATH for later steps.
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+    - name: Install Playwright
+      shell: bash
+      run: npm install --prefix /tmp/horda-integracion --no-audit --no-fund playwright@1.61.1
+    - name: Install Chromium
+      shell: bash
+      run: /tmp/horda-integracion/node_modules/.bin/playwright install --with-deps chromium
+    - name: Expose Playwright to the tests
+      shell: bash
+      run: echo "NODE_PATH=/tmp/horda-integracion/node_modules" >> "$GITHUB_ENV"
