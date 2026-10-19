@@ -57,3 +57,13 @@ Los eventos con jefe seleccionan el encuentro nativo de su arena (nueve director
 - `gate style`: métricas del roster en modo estricto; candidatos vacíos, ilegibles, incompletos o de formato incorrecto fallan. Los formatos ajenos al pintor se enumeran como omitidos, nunca PASS.
 
 Estas pruebas se complementan: recursos finitos no demuestran daño correcto, la comparación de categorías no certifica duración ni multijugador, y el gate de estilo numérico no sustituye la revisión visual contra el Caballero.
+
+### Evidencia de producción y exportaciones existentes
+
+- `python3 tools/factory/reconcile-art-production.py [--write]`: concilia únicamente las integraciones explícitas de `docs/production/art-integrations.json`. Comprueba ascendencia del merge, metadatos, hashes de fuente/atlas, dimensiones y pruebas guardadas antes de tocar el inventario. Un PNG existente no cierra una tarea. Publicación se comprueba por separado.
+- `node tools/factory/export-runtime-icons.js [--write]`: exporta 19 íconos pendientes usando `_pxiCanvas` real, con paleta, nombres accesibles y hashes RGBA. Sin `--write` exige coincidencia exacta de píxeles RGBA y recibo (incluye hash del PNG guardado; admite diferencias de compresión del navegador). No crea diseños nuevos.
+- `python3 tools/factory/prepare-grid-atlas.py FUENTE SALIDA`: preparación técnica en staging, con el normalizador/importador existentes. No instala ni aprueba arte.
+- `python3 tools/factory/replace-authored-frame.py MANIFIESTO SALIDA`: ensambla un reemplazo de autor con hashes; conserva los otros 35 cuadros sin cambios. No aprueba arte.
+- `node tools/art/check-authored-density.js ATLAS REPORTE [escala]`: detector canónico por cada uno de los 36 cuadros; rechaza cuadros vacíos. Complementa el Style Gate por medianas. Un PASS técnico tampoco reemplaza revisión visual ni prueba a escala de runtime.
+
+Los candidatos B001/B004 siguen en FIX. No reutilizar sus PNG como si hubieran aprobado el Art Gate. Fuentes y reportes están preservados para continuar sin repetir generaciones.

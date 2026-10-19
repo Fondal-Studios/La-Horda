@@ -6,12 +6,22 @@
     "campeones": 183,
     "mundo": 1061,
     "entradas": 1244,
-    "resueltos": 0,
+    "resueltos": 3,
     "por_prioridad": {
       "P1": 464,
       "P0": 118,
       "P2": 662
-    }
+    },
+    "por_estado": {
+      "CANDIDATO_FIX": 2,
+      "ENTREGADO_PNG_RUNTIME_EXISTENTE": 19,
+      "EN_CORRECCION_VISUAL": 3,
+      "INTEGRADO_MAIN": 3,
+      "PENDIENTE": 1214,
+      "TECNICO_VERIFICADO_REVISION_PENDIENTE": 3
+    },
+    "sin_integracion_documentada": 1241,
+    "exportaciones_runtime_documentadas": 19
   },
   "reglas_continuidad": [
     "Consultar este archivo y los manifiestos de entrega antes de generar.",
@@ -109,11 +119,12 @@
       "lote": "B635_brasa_abisal",
       "rama": "chatgpt/brasa-abyssal-skin-20261019",
       "pr": 148,
-      "estado": "TECNICO_VERIFICADO",
+      "estado": "INTEGRADO_MAIN",
       "manifiesto": "art-source/entregas/bloques/B635_brasa_abisal/entrega.json",
       "pendientes": [
-        "CI y publicación"
-      ]
+        "Publicación pendiente de verificar"
+      ],
+      "commit_main": "fa2b5befa9eb57847f4e13dfd6cce7d35b457d35"
     }
   ],
   "bloqueos_decision": [
@@ -716,9 +727,19 @@
       "id": "brasa.skin.nueva_1",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/skins/brasa_skin_nueva_1/hoja_36poses.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B635"
+      "estado": "INTEGRADO_MAIN",
+      "version_reutilizable": "art-source/entregas/bloques/B635_brasa_abisal",
+      "bloque": "B635",
+      "integracion": {
+        "pr": 148,
+        "commit_main": "fa2b5befa9eb57847f4e13dfd6cce7d35b457d35",
+        "skin": "brasa_abisal",
+        "atlas": "assets/sprites/champions/brasa/skins/brasa_abisal/atlas.png",
+        "sha256": "1b8b89f68328f8fc29ecb4f2578da122e6b3c39761b0b432916b423157f47759",
+        "evidencia": "art-source/entregas/bloques/B635_brasa_abisal",
+        "publicacion": "PENDIENTE_VERIFICACION",
+        "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
+      }
     },
     {
       "id": "brasa.fx.habilidades",
@@ -748,9 +769,19 @@
       "id": "eslabon.skin.nueva_1",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/skins/eslabon_skin_nueva_1/hoja_36poses.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B636"
+      "estado": "INTEGRADO_MAIN",
+      "version_reutilizable": "art-source/entregas/cosmetics-20261019/eslabon_porcelana",
+      "bloque": "B636",
+      "integracion": {
+        "pr": 150,
+        "commit_main": "a61b02d2e113ea91d03db096aedc52f201d2f0fc",
+        "skin": "eslabon_porcelana",
+        "atlas": "assets/sprites/champions/eslabon/skins/eslabon_porcelana/atlas.png",
+        "sha256": "cddf01a1782296cb0ff24fba5bf972e44bdc7e260e88c7c7be780a2ce13c585f",
+        "evidencia": "art-source/entregas/cosmetics-20261019/eslabon_porcelana",
+        "publicacion": "PENDIENTE_VERIFICACION",
+        "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
+      }
     },
     {
       "id": "eslabon.fx.habilidades",
@@ -780,9 +811,19 @@
       "id": "morwen.skin.nueva_1",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/skins/morwen_skin_nueva_1/hoja_36poses.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B643"
+      "estado": "INTEGRADO_MAIN",
+      "version_reutilizable": "art-source/entregas/cosmetics-20261019/morwen_escarcha",
+      "bloque": "B643",
+      "integracion": {
+        "pr": 150,
+        "commit_main": "a61b02d2e113ea91d03db096aedc52f201d2f0fc",
+        "skin": "morwen_escarcha",
+        "atlas": "assets/sprites/champions/morwen/skins/morwen_escarcha/atlas.png",
+        "sha256": "547ca5efd4b3d725c5aa71cf6a2f3bf4e6dbec26a6f3a269e322ae8aef98a3e8",
+        "evidencia": "art-source/entregas/cosmetics-20261019/morwen_escarcha",
+        "publicacion": "PENDIENTE_VERIFICACION",
+        "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
+      }
     },
     {
       "id": "morwen.fx.habilidades",
@@ -9548,153 +9589,248 @@
       "id": "E-PXI-idolo",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/idolo.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B324"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B324",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "2073883961f8e20e0748be4d136005e648ae1621dc88e2842886834e7a42a672",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-figura",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/figura.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B324"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B324",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "2066d844f987c14c17061cb3df3c46dbbaa4797c4cdd8f117c6e0566256fcba0",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-antena",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/antena.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B324"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B324",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "0c5b5848265fa311bd7339a1796cf0b4c232f748512798ae73dc1c92c01ffde9",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-cuerno",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/cuerno.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B324"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B324",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "081d8d99202bba13b275dbf197e0fdafa9b68a4d5b01a7fe660a1ba8675420c0",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-caballo",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/caballo.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B325"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B325",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "77262b98303200e0f89ba133c4d37f2f1222237187bee9f589248d962abe4b92",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-huellas",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/huellas.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B325"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B325",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "76475e2394bfe7e960c3cea1817316e8c6153e0e2215d6bd0131782b5b3944a2",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-silencio",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/silencio.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B325"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B325",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "4b445a76018281a89919f8ecb167a85b9eaf170a234e8b4a1cf9e940a2d5bfae",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-enlace",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/enlace.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B554"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B554",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "656a1e9f9f00e429d692cdd3bfd2a73fd0f2d5b48e2959231707b58a1cc84b24",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-cadena",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/cadena.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B554"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B554",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "10160fa2800a3fc70dc8a661dfc27f6f745ecc4f87f38b732ca0f038291f0bc8",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-chispa",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/chispa.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B554"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B554",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "d100c9de8664f4accf5990276cc1fbd8184f68ccafcfd4038b2be33811558307",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-estrella",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/estrella.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B554"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B554",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "824ce3750a35a79ba78b732f6c78e602b2b4d2ebd7c0438f7c99da6b9e80c255",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-murcielago",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/murcielago.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B555"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B555",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "7f709618e546f656a392e2abc493ba00e197321055afc6eedbbb5a74216fe335",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-orbe",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/orbe.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B555"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B555",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "76d02f4859b48c07ad4cee6850a107673277d4b1140493306314003c7bf1da25",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-ticket",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/ticket.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B325"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B325",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "d1c1dd036cd902cdef568f3e36d9233504860554917dc8552968ae1f36922772",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-agujero",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/agujero.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B326"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B326",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "159bd56b2ebe391cb31eb304c38b70690d3e66f80f53e95f2976e687d6f84a38",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-carrito",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/carrito.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B555"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B555",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "38a59228156e349e31ea6420099e76479e2cbd5c9973c41eb0c00ddabcf4658b",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-pechera",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/pechera.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B555"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B555",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "4f877c17ce40a4a79a0bae705024c8d76be7ab850c75ab45f933e78862cf855a",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-vapor",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/vapor.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B556"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B556",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "eeb284599ebc281987bd0e9a54705ff00a161e66a03f664744fad81ef064bd73",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-PXI-intercambio",
       "prioridad": "P2",
       "destino": "art-source/entregas/2026-10_mundo/ui/iconos/intercambio.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
-      "bloque": "B556"
+      "estado": "ENTREGADO_PNG_RUNTIME_EXISTENTE",
+      "version_reutilizable": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "bloque": "B556",
+      "evidencia": {
+        "renderer": "js/ui/pixel-icons.js:_pxiCanvas",
+        "png_sha256": "1586346237a4468800065d61b7211a880fee23fb27dd0ed997716c2393011832",
+        "nuevo_diseno": false
+      }
     },
     {
       "id": "E-UI-ctx-iconos",
@@ -10085,9 +10221,9 @@
   "auditoria_guardados": "art-source/entregas/bloques/B000_auditoria/auditoria.json",
   "bloque_activo": "B004",
   "ultimo_checkpoint": {
-    "bloque": "B003",
-    "estado": "EN_CORRECCION",
-    "entrega": "art-source/entregas/bloques/B003_guerrero/entrega.json",
-    "siguiente_paso": "B004: normalizar exportación de Libertador guardado, conservando pendientes de orientación y proporciones."
+    "bloque": "B004",
+    "estado": "FIX_NATIVE_NO_INTEGRAR",
+    "entrega": "art-source/entregas/bloques/B004_libertador/entrega.json",
+    "siguiente_paso": "Redibujar cuadros 8,9,10,11,20,21,23; corregir orientación 13 y proporciones. Normalización guardada: no repetir."
   }
 }
