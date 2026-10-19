@@ -29,6 +29,12 @@
   --hud-panel-bg:rgba(10,6,4,0.78); --hud-panel-line:var(--panel-b); --hud-panel-r:12px;
   --hud-ink:var(--text); --hud-dim:var(--text-dim); --hud-gold:var(--ui-gold); --hud-track:#241410;
   --team-a:#6fd3ff; --team-b:#ffb86a; --team-c:#7dffa0; --team-d:#ff7a8a;
+  /* AMIGO / ENEMIGO / NEUTRAL (Guerra de Cristales y Coliseo): se leen desde quien mira, no por el color del equipo.
+     Un tema para daltónicos solo tiene que sobrescribir estas variables (JS y CSS las leen; ver js/arenas/lanes/lanes-sides.js). */
+  --ally:#3fe06a; --ally-dark:#0b3a1a; --ally-hi:#a6ffbc;
+  --enemy:#ff4a4a; --enemy-dark:#4a0c0c; --enemy-hi:#ffa59a;
+  --neutral:#ffc233; --neutral-dark:#4a3300; --neutral-hi:#ffe49a;
+  --self:#8dffa8; --self-edge:#ffffff;
   /* acento propio de cada modo: Campaña = brasa; Coliseo = arena dorada; Cristales = cristal celeste */
   --mode-accent:var(--ember1); --mode-accent-2:var(--ember3);
 }
