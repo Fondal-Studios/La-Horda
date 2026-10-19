@@ -279,19 +279,30 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('ECO.ui_dice_lo_que_se_entrega', new RegExp('oro ×' + String(eco.tx.pg).replace('.', ',')).test(eco.uiText) && new RegExp('XP ×' + String(eco.tx.pes).replace('.', ',')).test(eco.uiText), eco.uiText.slice(-160));
 
   // ---------------- AJUSTE PUNTUAL POR ARENA (ARENA_MODS[arena].tierMods) ----------------
+  // docs/economy/PESADILLA_PAREJA.md: cada arena con tierMods.pesadilla se verifica contra sí misma sin el ajuste, contra Normal y contra Infierno.
   const tmod = await E(() => {
     __lvl(54); __allNormal(); __allTier('pesadilla'); __allTier('infierno');
     const rd = (tier, arena) => { diffSetSelected(tier); __start(arena, 1); return { hp: runDifficulty.hp, dmg: runDifficulty.dmg, avgHp: runDifficulty.avgHp }; };
-    const tm = ARENA_MODS.hielo.tierMods && ARENA_MODS.hielo.tierMods.pesadilla;
-    const withMod = rd('pesadilla', 'hielo'), infHielo = rd('infierno', 'hielo'), normHielo = rd('normal', 'hielo');
-    const saved = ARENA_MODS.hielo.tierMods; delete ARENA_MODS.hielo.tierMods;
-    const noMod = rd('pesadilla', 'hielo'); ARENA_MODS.hielo.tierMods = saved;
-    const bosqueMod = ARENA_MODS.bosque.tierMods, bosque = rd('pesadilla', 'bosque'), infernalMod = ARENA_MODS.infernal.tierMods;
-    return { tm, withMod, noMod, normHielo, infHielo, bosqueMod: !!bosqueMod, infernalMod: !!infernalMod, bosque, otherInfMods: Object.keys(ARENA_MODS).filter(k => ARENA_MODS[k].tierMods && ARENA_MODS[k].tierMods.infierno) };
+    const per = {};
+    for (const a of ARENA_ORDER) {
+      const tm = (ARENA_MODS[a].tierMods || {}).pesadilla; if (!tm) continue;
+      const withMod = rd('pesadilla', a), normal = rd('normal', a), inf = rd('infierno', a);
+      const saved = ARENA_MODS[a].tierMods; delete ARENA_MODS[a].tierMods;
+      const noMod = rd('pesadilla', a); ARENA_MODS[a].tierMods = saved;
+      per[a] = { tm, withMod, noMod, normal, inf };
+    }
+    const hielo = per.hielo, noModArenas = ARENA_ORDER.filter(a => !(ARENA_MODS[a].tierMods || {}).pesadilla);
+    return { per, noModArenas, otherInfMods: Object.keys(ARENA_MODS).filter(k => ARENA_MODS[k].tierMods && ARENA_MODS[k].tierMods.infierno),
+      otherTiers: Object.keys(ARENA_MODS).filter(k => ARENA_MODS[k].tierMods && Object.keys(ARENA_MODS[k].tierMods).some(t => t !== 'pesadilla')) };
   });
-  check('TIERMODS.gelida_pesadilla_mas_suave', tmod.tm && Math.abs(tmod.withMod.hp / tmod.noMod.hp - tmod.tm.hp) < 0.01 && Math.abs(tmod.withMod.dmg / tmod.noMod.dmg - tmod.tm.dmg) < 0.01 && Math.abs(tmod.withMod.avgHp / tmod.noMod.avgHp - tmod.tm.bossDmg) < 0.01, tmod);
-  check('TIERMODS.sigue_mas_dura_que_normal', tmod.withMod.hp > tmod.normHielo.hp && tmod.withMod.dmg > tmod.normHielo.dmg, [tmod.withMod, tmod.normHielo]);
-  check('TIERMODS.infierno_y_otras_arenas_intactos', !tmod.bosqueMod && !tmod.infernalMod && tmod.otherInfMods.length === 0 && tmod.infHielo.hp > tmod.withMod.hp, tmod);
+  const R = (x, y) => Math.abs(x - y) < 0.01 * Math.max(1, Math.abs(y));
+  const arenasMod = Object.keys(tmod.per);
+  check('TIERMODS.arenas_ajustadas', ['bosque','fortaleza','hielo','acuatica','laberinto','micelial','abismo','minas','infernal'].every(a => arenasMod.includes(a)) && !arenasMod.includes('ciudad'), arenasMod);
+  check('TIERMODS.multiplican_hp_dmg_jefes_exactos', arenasMod.every(a => { const p = tmod.per[a]; return R(p.withMod.hp / p.noMod.hp, p.tm.hp) && R(p.withMod.dmg / p.noMod.dmg, p.tm.dmg) && R(p.withMod.avgHp / p.noMod.avgHp, p.tm.bossDmg); }), tmod.per);
+  check('TIERMODS.valores_en_rango', arenasMod.every(a => { const t = tmod.per[a].tm; return [t.hp, t.dmg, t.bossDmg].every(v => v >= 0.25 && v <= 1); }), arenasMod.map(a => tmod.per[a].tm));
+  check('TIERMODS.sigue_mas_dura_que_normal', arenasMod.every(a => tmod.per[a].withMod.hp > tmod.per[a].normal.hp && tmod.per[a].withMod.dmg > tmod.per[a].normal.dmg), arenasMod.map(a => [a, +(tmod.per[a].withMod.hp / tmod.per[a].normal.hp).toFixed(2), +(tmod.per[a].withMod.dmg / tmod.per[a].normal.dmg).toFixed(2)]));
+  check('TIERMODS.infierno_sigue_encima_de_pesadilla', arenasMod.every(a => tmod.per[a].inf.hp > tmod.per[a].withMod.hp && tmod.per[a].inf.dmg > tmod.per[a].withMod.dmg), arenasMod.map(a => [a, tmod.per[a].inf.hp, tmod.per[a].withMod.hp]));
+  check('TIERMODS.infierno_y_normal_intactos', tmod.otherInfMods.length === 0 && tmod.otherTiers.length === 0, tmod);
 
   // ---------------- UI (Sala, HUD, resultados) ----------------
   const ui = await E(() => {
