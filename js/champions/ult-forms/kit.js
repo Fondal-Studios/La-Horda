@@ -15,7 +15,8 @@
    Una forma = {N cuadros, tall (alto relativo), paint(L, o) para la capa de arriba, gpaint(L, o) opcional para el suelo,
    rot (se orienta con el ángulo), dur, gdur}. Cada campeón elige forma + paleta (ult-forms/bind.js).
    ============================================================ */
-const UF = {forms: {}, champs: {}, cache: new Map(), stats: {baked: 0, bakeMs: 0, played: 0}, off: (function(){ try{ return /[?&]uf=0\b/.test(location.search); }catch(e){ return false; } })()};
+const UF_PX_MAX = 12e6;
+const UF = {forms: {}, champs: {}, cache: new Map(), px: 0, stats: {baked: 0, bakeMs: 0, played: 0}, off: (function(){ try{ return /[?&]uf=0\b/.test(location.search); }catch(e){ return false; } })()};
 const ufIsOff = () => UF.off || window.UF_OFF === true;
 const ufCol = hex => { const n = parseInt(hex.slice(1), 16); return (((255 << 24) | ((n & 255) << 16) | (((n >> 8) & 255) << 8) | ((n >> 16) & 255)) >>> 0); };
 const UF_BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
@@ -113,7 +114,9 @@ function ufJob(key, layerName, Rpx){
   const C = UF.champs[key], F = C && UF.forms[C.form]; if(!F) return null;
   const paint = layerName === 'g' ? F.gpaint : F.paint; if(!paint) return null;
   const pad = F.pad, W = 2 * (Rpx + pad), H = Math.round(W * F.tall), P = {}, pal = {}; for(const k in C.pal){ pal[k] = C.pal[k]; P[k] = ufCol(C.pal[k]); }
-  const job = {key, layerName, Rpx, C, F, paint, W, H, cx: W / 2, cy: H - W / 2, P, pal, frames: [], done: false, ms: 0};
+  const job = {key, layerName, Rpx, C, F, paint, W, H, cx: W / 2, cy: H - W / 2, P, pal, frames: [], done: false, ms: 0, px: W * H * F.N};
+  // memoria acotada (~48 MB de tiras): si se pasa, se sueltan las tiras terminadas más viejas (las entradas del pool que las usan conservan sus cuadros)
+  UF.px += job.px; if(UF.px > UF_PX_MAX) for(const [k2, j2] of UF.cache){ if(UF.px <= UF_PX_MAX) break; if(j2.done){ UF.cache.delete(k2); UF.px -= j2.px; } }
   UF.cache.set(ck, job); return job;
 }
 function ufStep(job, budget){
@@ -178,11 +181,11 @@ function vfxUltForm(key, x, y, R, ang){ return ufPlay(key, x, y, R, ang); }
   // un id por campeón: 'uf.<clave>'
   UF.register = key => { KVB_FX['uf.' + key] = (x, y, r, ang) => vfxUltForm(key, x, y, r, ang); };
 })();
-// Horneado previo en tiempo ocioso: R de la definitiva y los dos tamaños vecinos, en cortes de ~4 ms cada 40 ms
+// Horneado previo en tiempo ocioso: R de la definitiva y el tamaño siguiente (la maestría agranda el área), en cortes de ~4 ms cada 40 ms
 function ufPrebake(key){
   const cls = typeof CLASSES !== 'undefined' && CLASSES[key]; if(!cls || !UF.champs[key]) return;
   const r0 = Math.max(60, Math.min(420, (cls.ultimate && cls.ultimate.radius) || 150)), jobs = [], base = ufRpx(r0), i0 = UF_BUCKET.indexOf(base), F = UF.forms[UF.champs[key].form];
-  for(const rp of [base, UF_BUCKET[Math.min(UF_BUCKET.length - 1, i0 + 1)], UF_BUCKET[Math.max(0, i0 - 1)]]){ const j = ufJob(key, 't', rp); if(j) jobs.push(j); if(F.gpaint){ const g = ufJob(key, 'g', rp); if(g) jobs.push(g); } }
+  for(const rp of new Set([base, UF_BUCKET[Math.min(UF_BUCKET.length - 1, i0 + 1)]])){ const j = ufJob(key, 't', rp); if(j) jobs.push(j); if(F.gpaint){ const g = ufJob(key, 'g', rp); if(g) jobs.push(g); } }
   (function step(){ while(jobs.length && jobs[0].done) jobs.shift(); const j = jobs[0]; if(!j) return; try{ ufStep(j, 4); }catch(e){ jobs.shift(); } setTimeout(step, 40); })();
 }
 (function(){
