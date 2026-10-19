@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "lote": "B635_brasa_abisal",
+  "bloque": "B635",
+  "autor": "Codex; producción autónoma autorizada por el owner",
+  "fecha": "2026-10-19",
+  "estado": "TECNICO_VERIFICADO",
+  "proveniencia": {
+    "original": true,
+    "ia": true,
+    "herramientas": [
+      "imagegen",
+      "tools/factory/import-authored-sheet.py",
+      "tools/art/painter/style_gate.py",
+      "tools/art/scan_sprites.py",
+      "tools/art/roster_gate.js"
+    ],
+    "fuentesEditables": [
+      "fuentes/source.png"
+    ],
+    "nota": "PNG raster original editable; no capas de pintura inventadas. Prompt e importación reproducible guardados."
+  },
+  "assets": [
+    {
+      "tipo": "skin",
+      "id": "brasa_abisal",
+      "champ": "brasa",
+      "archivo": "skin/atlas.png",
+      "items_manifiesto": [
+        "brasa.skin.nueva_1"
+      ],
+      "resuelve": false,
+      "celda": [
+        112,
+        112
+      ],
+      "cols": 4,
+      "filas": 9,
+      "cuadros": 36,
+      "refH": 70,
+      "anchorY": 0.9464285714285714,
+      "direcciones": [
+        "down",
+        "right",
+        "up",
+        "left mirrored"
+      ],
+      "estado": "TECNICO_VERIFICADO",
+      "colores_base": [
+        "#111b27",
+        "#214c50",
+        "#b17643",
+        "#a33e20",
+        "#e2d6b2"
+      ],
+      "nota_paleta": "Familias cromáticas, no cantidad de colores totales."
+    }
+  ],
+  "revision_visual": {
+    "revisor": "Codex",
+    "tipo": "ASISTIDA",
+    "resultado": "Coherente con la referencia y la identidad; captura real revisada, outfit distinto sin alterar el campeón.",
+    "evidencia": "runtime/brasa-comparison.png",
+    "aprobacion_humana": "NO_ATRIBUIDA"
+  },
+  "integracion": {
+    "pr": 148,
+    "estado": "RAMA_VALIDADA_LOCALMENTE_CI_PENDIENTE",
+    "assets": "assets/sprites/champions/brasa/skins/brasa_abisal"
+  },
+  "pendientes": [
+    "CI de la rama actualizada con main y #146",
+    "Merge únicamente tras validación",
+    "Comprobar publicación real; main no equivale a despliegue"
+  ]
+}

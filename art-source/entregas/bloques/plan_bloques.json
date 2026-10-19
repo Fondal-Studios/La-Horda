@@ -26318,8 +26318,8 @@
       "id": "B635",
       "prioridad": "P2",
       "tipo": "skin",
-      "titulo": "Skin nueva #1 (concepto a definir con el dueño): el campeón tiene 1 skins de diseño propio y el objetivo es 2",
-      "estado": "BLOQUEADO_DECISION",
+      "titulo": "Brasa, Calderera de las Profundidades: skin original en PR #148",
+      "estado": "TECNICO_VERIFICADO",
       "items": [
         "brasa.skin.nueva_1"
       ],
@@ -26331,7 +26331,18 @@
           "destino": "art-source/entregas/2026-10_campeones-faltantes/skins/brasa_skin_nueva_1/hoja_36poses.png"
         }
       ],
-      "versiones_reutilizables": [],
+      "versiones_reutilizables": [
+        {
+          "lote": "B635_brasa_abisal",
+          "rama": "chatgpt/brasa-abyssal-skin-20261019",
+          "pr": 148,
+          "estado": "TECNICO_VERIFICADO",
+          "manifiesto": "art-source/entregas/bloques/B635_brasa_abisal/entrega.json",
+          "pendientes": [
+            "CI y publicación; revisión visual asistida documentada, sin atribuir firma humana"
+          ]
+        }
+      ],
       "referencias": [
         "assets/sprites/champions/solciju/skins/quality_solciju/atlas.png"
       ],
@@ -26344,11 +26355,9 @@
         "No dar por aprobado arte con chequeos fallidos; separar revisión técnica, aprobación visual e integración.",
         "Usar tamaños, pivotes, cuadros y destinos de cada ítem; si falta un dato, bloquear solo este bloque."
       ],
-      "decisiones_pendientes": [
-        "Decisión o medida pendiente indicada por brasa.skin.nueva_1"
-      ],
-      "revision_visual": "PENDIENTE",
-      "integracion": "A_CARGO_DE_CLAUDE"
+      "decisiones_pendientes": [],
+      "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño",
+      "integracion": "IMPLEMENTADA_EN_PR_148; CI_PENDIENTE"
     },
     {
       "id": "B636",

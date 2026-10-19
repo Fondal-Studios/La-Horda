@@ -44,6 +44,7 @@ var CHAMP_ART_NORMALIZE = {"tanque":{"front":[1,0],"side":[0.8939,-1.11],"up":[0
 "myla@myla_arandanos":{"front":[0.9219,-1.08],"side":[0.9077,-1.09],"up":[0.9672,-1.03]},
 "brasa":{"front":[0.9365,-1.06],"side":[0.9516,-1.05],"up":[1.0727,-0.93]},
 "brasa@ultimo_turno":{"front":[0.9516,-1.05],"side":[0.9077,-1.09],"up":[1.0172,-0.98]},
+"brasa@brasa_abisal":{"front":[0.9077,-2],"side":[0.9516,-2],"up":[0.9365,-2]},
 "eslabon":{"front":[0.9833,-1.02],"side":[0.9833,-1.02],"up":[0.9672,-1.03]},
 "eslabon@juramento_roto":{"front":[1,-1],"side":[1,-1],"up":[0.9516,-1.05]},
 "morwen":{"front":[0.9516,-1.05],"side":[0.8676,-1.13],"up":[0.8939,-1.11]},

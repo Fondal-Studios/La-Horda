@@ -15,8 +15,10 @@ const OUT=process.env.SKIN_AUDIT_OUT || '/tmp/horda-skins/check';
   const result=await page.evaluate(()=>{
    const checks=[],check=(name,ok)=>checks.push({name,ok:!!ok});
    const exp=typeof EXPEDITION==='undefined'?{}:EXPEDITION;const added=Object.keys(exp).length;const quality=typeof QUALITY_FIVE_COLLECTION==='undefined'?{}:QUALITY_FIVE_COLLECTION;const qualityIds=Object.keys(quality);
-   check('legacy, expedition and quality-five catalog entries',cosmeticCatalog().length===32+added*3+qualityIds.length*3);
-   check('legacy, expedition and quality-five authored designs',Object.values(CROMA_SKINS).filter(d=>d.appearanceType==='skin').length===13+added+qualityIds.length);
+   const extraIds=['brasa_abisal'];
+   check('additional authored skin belongs to existing Brasa',CROMA_SKINS.brasa_abisal?.champ==='brasa'&&CROMA_SKINS.brasa_abisal.appearanceType==='skin');
+   check('legacy, expedition, quality-five and additional catalog entries',cosmeticCatalog().length===32+added*3+qualityIds.length*3+extraIds.length);
+   check('legacy, expedition, quality-five and additional authored designs',Object.values(CROMA_SKINS).filter(d=>d.appearanceType==='skin').length===13+added+qualityIds.length+extraIds.length);
    for(const id of qualityIds){check(id+' owns three distinct cosmetics',!!CROMA_SKINS[id+'_alt1']&&!!CROMA_SKINS[id+'_croma']&&!!SET_SKINS['quality_'+id]);}
    check('all set skins retain source art',Object.values(SET_SKINS).every(d=>Object.values(d.packs).every(k=>!CHAMP_PACK[k].cosmeticApplied)));
    selectedClass='tanque';currentArena='bosque';startRun(1);state='paused';
