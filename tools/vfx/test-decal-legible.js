@@ -127,12 +127,33 @@ const freePort = () => new Promise(r => { const s = net.createServer(); s.listen
       const d = og.getImageData(0, 0, off.width, off.height).data; let painted = 0;
       for (let i = 3; i < d.length; i += 4) { tot++; if (d[i] !== 0) painted++; if (d[i] !== 0 && d[i] !== 255) bad++; }
       if (painted < 200) bad += 1e6; // si no pintó nada, la prueba no mide nada
-      out.stroke = {pixels: tot, intermedios: bad, dibujados: PXS.drawn, pintados: painted}; return out;
+      out.stroke = {pixels: tot, intermedios: bad, dibujados: PXS.drawn, pintados: painted};
+      // Touring arenas cannot multiply the sprite cache. The current arena
+      // keeps identity/reuse; switching back rebuilds the same visible pixels.
+      const signature = cv => {
+        const d = cv.getContext('2d').getImageData(0, 0, cv.width, cv.height).data;
+        let h = 2166136261; for (const b of d) h = Math.imul(h ^ b, 16777619); return h >>> 0;
+      };
+      currentArena = 'bosque';
+      const oldK = kvbDecalFrames('so_splash', 72), oldS = sfaBake('nova', 'time', 64);
+      const hashK = signature(oldK[3]), hashS = signature(oldS.cv);
+      let bounded = true, reused = true;
+      for (const arena of ['hielo', 'infernal', 'laberinto', 'acuatica', 'minas', 'bosque']) {
+        currentArena = arena;
+        const k = kvbDecalFrames('so_splash', 72), s = sfaBake('nova', 'time', 64);
+        reused = reused && k === kvbDecalFrames('so_splash', 72) && s === sfaBake('nova', 'time', 64);
+        bounded = bounded && Object.keys(KVB_CACHE).filter(k => k.includes('@')).every(k => k.endsWith('@' + arena))
+          && [...sfaCache.keys()].every(k => k.endsWith('|' + arena));
+      }
+      out.cache = {bounded, reused, samePixels: hashK === signature(kvbDecalFrames('so_splash', 72)[3]) && hashS === signature(sfaBake('nova', 'time', 64).cv),
+        retainedFramesValid: hashK === signature(oldK[3]) && hashS === signature(oldS.cv)};
+      return out;
     });
     for (const f of r2.fill) { const ok = f.fill <= MAX_FILL; console.log(`relleno ${f.name} (${f.arena}) en el impacto: ${(f.fill * 100).toFixed(0)}% ${ok ? 'OK' : 'EXCEDE ' + MAX_FILL * 100 + '%'}`); if (!ok) bad++; }
     const by = {}; for (const t of r2.tint) (by[t.name] = by[t.name] || []).push(t);
     for (const k in by) { const [a, b] = by[k], d = Math.abs(a.c[0] - b.c[0]) + Math.abs(a.c[1] - b.c[1]) + Math.abs(a.c[2] - b.c[2]), ok = d >= 12; console.log(`tinte ${k}: ${a.arena} rgb(${a.c}) vs ${b.arena} rgb(${b.c}) ${ok ? 'OK' : 'IGUAL'}`); if (!ok) bad++; }
     console.log(`trazos de píxel: ${r2.stroke.intermedios} píxeles con alfa intermedio de ${r2.stroke.pixels} (pintados ${r2.stroke.pintados})`); if (r2.stroke.intermedios) bad++;
+    console.log('arena cache:', JSON.stringify(r2.cache)); if (!Object.values(r2.cache).every(Boolean)) bad++;
     }
     console.log(`errores de página: ${errors.length}`, errors.slice(0, 3)); if (errors.length) bad++;
   } finally { await browser.close(); if (server) server.kill(); }

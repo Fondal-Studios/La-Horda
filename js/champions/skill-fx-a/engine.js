@@ -16,6 +16,7 @@
 const SFA_POOL_MAX = 40;
 const sfaPool = [];
 const sfaCache = new Map();
+let sfaCacheArena = null;
 const sfaThemes = {};
 let sfaLastT = 0;
 const sfaStats = {baked: 0, bakeMs: 0, drawn: 0};
@@ -272,7 +273,10 @@ function sfaTintTheme(T, arena) {
   return (T[key] = Object.assign({}, T, {pal: P, px}));
 }
 function sfaBake(art, theme, size, arc) {
-  const arena = sfaArenaKey(), key = art + '|' + theme + '|' + size + '|' + (arc || 0) + '|' + arena; let b = sfaCache.get(key); if (b) return b;
+  const arena = sfaArenaKey();
+  // Arena tint must not retain ten copies of every baked animation on mobile.
+  if (arena !== sfaCacheArena) { sfaCache.clear(); sfaCacheArena = arena; }
+  const key = art + '|' + theme + '|' + size + '|' + (arc || 0) + '|' + arena; let b = sfaCache.get(key); if (b) return b;
   let T = sfaTheme(theme); if (!T) return null;
   if (arena) T = sfaTintTheme(T, arena);
   const t0 = performance.now();
