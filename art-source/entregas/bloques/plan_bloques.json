@@ -18,7 +18,7 @@
     "ENTREGADO_PNG_RUNTIME_EXISTENTE"
   ],
   "bloque_activo": "B004",
-  "siguiente_accion": "B004: conservar atlas vigente de 61 cuadros y montura; redibujar con mosquete/bayoneta, mantener clips especializados. PR166 conserva intentos rechazados; no instalar el atlas genérico de 36.",
+  "siguiente_accion": "B004: caída base integrada por PR170; quedan ataque abajo, ataque arriba y golpe. Taller PR166/403a80c conserva caminata corregida y tres ataques20/21/23 aún FIX. Mantener atlas especializado61 y montura; no instalar plantilla36 ni contar publicación sin verificar.",
   "bloques": [
     {
       "id": "B001",
@@ -473,7 +473,23 @@
         "evidencia": "docs/production/authored-candidate-results-20261019.json",
         "run": 39292727298,
         "source": "art-source/entregas/bloques/B004_libertador/campeones/atlas.png"
-      }
+      },
+      "integraciones_parciales": [
+        {
+          "item": "libertador.cuerpo.muerte",
+          "pr": 170,
+          "commit_main": "6f47511f977e3828f34cc6abf76d878fe4336a99",
+          "champion": "libertador",
+          "component": "death",
+          "atlas": "assets/sprites/champions/libertador/v2/death.png",
+          "git_blob": "3184b36a1f832ee6a3644e05a743261c78a5572d",
+          "sha256": "3c142180270cbcf3bd4477433bec65204a78e0ee65c4d15aab3efcd3e411dc7a",
+          "evidencia": "docs/art-gate/libertador-death/validation.json",
+          "publicacion": "PENDIENTE_VERIFICACION",
+          "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño",
+          "scope": "Four-frame frontal fall shared across directions; base appearance only; not whole B004 approval"
+        }
+      ]
     },
     {
       "id": "B005",
