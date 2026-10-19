@@ -71,12 +71,14 @@ function colShowResult(){
   let r = document.getElementById("col-result");
   if(!r){ r = document.createElement("div"); r.id = "col-result"; r.className = "lanes-result hidden"; document.body.appendChild(r); }
   const mine = player.team, won = L.winner === mine, draw = L.winner === -1, st = colStanding();
+  const pgRes = typeof postgameSettle === "function" ? postgameSettle(L) : null;   // postgame: recompensas con tope diario
   const rows = st.map((T, i)=>{
     const names = heroes.filter(h=>h.team === T.team).map(h=>heroLabel(h)).join(" + ");
     return '<tr' + (T.team === mine ? ' class="me"' : '') + '><td>' + (i + 1) + '. ' + (T.team === mine ? "TU EQUIPO" : lanesTeamName(T.team)) + '<br><small>' + names + '</small></td><td>' + T.points + '</td><td>' + T.wins + '/' + T.duels + '</td><td>' + T.pk + '</td></tr>';
   }).join("");
   r.innerHTML = '<div class="ln-res-card"><div class="ln-res-kicker">COLISEO</div><h2>' + (draw ? "EMPATE" : won ? "¡CAMPEONES!" : lanesTeamName(L.winner) + " GANA") + '</h2>' +
     '<p>' + c_rounds(L) + ' rondas · gana quien llega a ' + COL.WIN_POINTS + ' puntos</p>' +
+    postgameResultHtml(pgRes) +
     '<table><thead><tr><th>Equipo</th><th>Puntos</th><th>Duelos ganados</th><th>Bajas</th></tr></thead><tbody>' + rows + '</tbody></table>' +
     '<div class="ln-res-btns"><button type="button" class="ln-again">REVANCHA</button><button type="button" class="ln-exit">VOLVER AL MENÚ</button></div></div>';
   r.classList.remove("hidden");

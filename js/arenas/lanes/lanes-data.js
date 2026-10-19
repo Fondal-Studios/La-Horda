@@ -25,6 +25,27 @@ const LANES = {
   RECALL_MS:5500,                     // volver a la base: se canaliza y se corta si te golpean o te movés
   ECLIPSE_MS:780000, TIME_LIMIT_MS:1080000,
   START_GOLD:500, GOLD_PASSIVE:1.6, GOLD_MINION:[20, 24, 60], GOLD_HERO_KILL:300, GOLD_ASSIST:110, GOLD_TOWER:130, GOLD_EPIC:170, MAX_GOLD:3500, // oro de cada héroe (se gasta en la base)
+  // POSTGAME: lo que el guardado de campaña aporta a Cristales y Coliseo (SOLO en solitario contra bots, con el postgame abierto).
+  // ÚNICO LUGAR de las perillas: se limita lo que cuenta de la campaña para que el postgame premie a quien progresó sin volverse
+  // inalcanzable (cifras y cuentas en docs/modes/POSTGAME.md). Las salas online siguen usando el guardado normalizado.
+  PROGRESS_CAP:{
+    level:90,            // nivel efectivo máximo: abre el árbol de talentos (nv. 40) y la Maestría de rama (nv. 90); sube de nivel real 1-99
+    levelStatFull:60,    // nivel real con el que el bono de estadísticas por nivel llega a su máximo
+    levelStatPct:0.08,   // bono de vida y daño base al llegar a levelStatFull (lineal desde el nivel 1)
+    talentPoints:16,     // puntos del árbol (incluida la Maestría de rama) que cuentan; la campaña da hasta 30
+    masteryAlloc:2,      // puntos por habilidad (0-10 real); x1,23 de poder y -5 % de recarga por habilidad
+    ultAlloc:2,          // ídem para la definitiva
+    masteryUse:10,       // nivel de uso por habilidad (1-40 real): +1,2 % de poder por nivel
+    itemLevel:4, itemIlvl:4, // nivel y nivel de objeto máximos (1-10 real): recorta el stat de cada pieza
+    relics:8,            // reliquias por tipo (0-30 real; 1,5 % cada una)
+    statMax:{hp:1.25, dmg:1.25, speed:1.10, defAdd:0.08}, // TOPE de la vida y el daño base (nivel x equipo x reliquias), de la velocidad y de la defensa extra, contra el mismo campeón sin progreso
+    shieldMax:0.10,      // el escudo permanente de casco + escudo se recorta a este % de la vida máxima (sin tope llega a +200 %)
+    passiveMax:{         // tope de cada pasiva de equipo/talento (suma de TODAS las fuentes); lo que no está acá no se toca
+      dmg_mult:0.15, skilldmg_mult:0.15, atkspeed_mult:0.15, cd_mult:0.10, lifesteal_add:0.04, heal_mult:0.15, def_add:0.05, hp_mult:0.15,
+      speed_mult:0.08, crit_chance_add:0.05, crit_mult_add:0.20, energy_mult:0.15, res_physical:0.10, res_fire:0.10, res_ice:0.10, res_lightning:0.10
+    },
+    botShare:{cw:0.6, col:0.6}   // los bots llevan esta fracción del bono máximo ((statMax-1) x botShare) en vida y daño
+  },
   SHOP_RADIUS:430,                    // distancia a tu cristal para poder comprar objetos (o estar caído)
   XP_MINION:16, XP_CASTER:20, XP_SIEGE:55, XP_HERO:110, XP_TOWER:140, XP_SHARE_R:900, // experiencia por baja (se reparte entre los héroes cercanos)
   CARD_AUTO_MS:15000, MAX_CARDS:12,   // una carta de horda por cada nuevo nivel máximo del equipo; tiempo para elegir
