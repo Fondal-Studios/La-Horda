@@ -15,15 +15,15 @@
     "INTEGRADO_CLAUDE",
     "SEGUIMIENTO"
   ],
-  "bloque_activo": "B001",
-  "siguiente_accion": "Corregir escala de Elyra utilizando las fuentes ya guardadas; no generar nuevas poses.",
+  "bloque_activo": "B002",
+  "siguiente_accion": "B002: recuperar tanque revision02; quitar el fragmento del cuadro0 con normalizador existente; conservar y documentar pendientes visuales de arma.",
   "bloques": [
     {
       "id": "B001",
       "prioridad": "P0",
       "tipo": "campeon",
       "titulo": "Campeón soporte: un atlas para todos sus faltantes de cuerpo",
-      "estado": "EN_CORRECCION",
+      "estado": "TECNICO_VERIFICADO",
       "items": [
         "soporte.cuerpo.lanzar",
         "soporte.cuerpo.golpe",
@@ -77,8 +77,18 @@
         "Importador/StyleGate/scan con resultados reales; el StyleGate de caminatas no valida filas nuevas."
       ],
       "decisiones_pendientes": [],
-      "revision_visual": "PENDIENTE",
-      "integracion": "A_CARGO_DE_CLAUDE"
+      "revision_visual": "PENDIENTE_DUENO",
+      "integracion": "A_CARGO_DE_CLAUDE",
+      "entrega": "art-source/entregas/bloques/B001_soporte/entrega.json",
+      "ultimo_resultado": {
+        "refH": 71,
+        "siluetas": 36,
+        "semi_alpha": 0,
+        "scanner_halo": 2,
+        "style_gate": "PASS",
+        "import_scale": 1.0,
+        "generaciones_ia_adicionales": 0
+      }
     },
     {
       "id": "B002",

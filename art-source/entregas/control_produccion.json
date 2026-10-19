@@ -76,6 +76,15 @@
         "Ataque frontal cuadro13 gira de perfil.",
         "Cabeza nueva mayor que caminatas: ajustar proporciones."
       ]
+    },
+    {
+      "lote": "B001_soporte",
+      "estado": "TECNICO_VERIFICADO",
+      "manifiesto": "art-source/entregas/bloques/B001_soporte/entrega.json",
+      "pendientes": [
+        "Aprobación visual del dueño e integración por Claude."
+      ],
+      "preferida": true
     }
   ],
   "bloqueos_decision": [
@@ -246,24 +255,24 @@
       "id": "soporte.cuerpo.lanzar",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/soporte/hoja_36poses.png",
-      "estado": "CANDIDATO_REVISION",
-      "version_reutilizable": "art-source/entregas/2026-10-19_soporte_12poses/entrega.json",
+      "estado": "TECNICO_VERIFICADO_REVISION_PENDIENTE",
+      "version_reutilizable": "art-source/entregas/bloques/B001_soporte/entrega.json",
       "bloque": "B001"
     },
     {
       "id": "soporte.cuerpo.golpe",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/soporte/hoja_36poses.png",
-      "estado": "PENDIENTE",
-      "version_reutilizable": null,
+      "estado": "TECNICO_VERIFICADO_REVISION_PENDIENTE",
+      "version_reutilizable": "art-source/entregas/bloques/B001_soporte/entrega.json",
       "bloque": "B001"
     },
     {
       "id": "soporte.cuerpo.muerte",
       "prioridad": "P0",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/soporte/hoja_36poses.png",
-      "estado": "CANDIDATO_REVISION",
-      "version_reutilizable": "art-source/entregas/2026-10-19_soporte_12poses/entrega.json",
+      "estado": "TECNICO_VERIFICADO_REVISION_PENDIENTE",
+      "version_reutilizable": "art-source/entregas/bloques/B001_soporte/entrega.json",
       "bloque": "B001"
     },
     {
@@ -10045,11 +10054,12 @@
   ],
   "plan_bloques": "art-source/entregas/bloques/plan_bloques.json",
   "auditoria_guardados": "art-source/entregas/bloques/B000_auditoria/auditoria.json",
-  "bloque_activo": "B001",
+  "bloque_activo": "B002",
   "ultimo_checkpoint": {
-    "bloque": "B000",
-    "estado": "VERIFICADO",
-    "main_base": "1c78e951eba3d3fe6051b55006e8633db98cefbc",
-    "siguiente_paso": "Corregir escala de Elyra utilizando las fuentes ya guardadas; no generar nuevas poses."
+    "bloque": "B001",
+    "estado": "TECNICO_VERIFICADO",
+    "revision_visual": "PENDIENTE_DUENO",
+    "entrega": "art-source/entregas/bloques/B001_soporte/entrega.json",
+    "siguiente_paso": "B002: recuperar tanque revision02; quitar el fragmento del cuadro0 con normalizador existente; conservar y documentar pendientes visuales de arma."
   }
 }
