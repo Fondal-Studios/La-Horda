@@ -1,4 +1,6 @@
-# Cinco campeones originales — candidato Alpha del 12/10/2026
+# Cinco campeones originales — entrega Alpha integrada
+
+Estado revisado el 19/10/2026: #87 fue mergeado como `f7c554829d11640a1218f3af9122e4859f5544d0`; los cinco originales permanecen en main. Fondal y Pages sirven B1-7. La comprobación de doce archivos de Fondal, incluidos los diez atlas base/skin, coincide con main por SHA256. Ver `vfx-20261019/public-content.json`. El taller #78 está cerrado como sustituido, no debe integrarse otra vez.
 
 Solciju, Brakk, Veyra, Morveth y Aelith tienen kits reales, talentos, maestría, Códice y arte original instalado. Cada uno incorpora la skin del concepto aprobado, una apariencia de Set y un croma selectivo. Las cinco skins adicionales para campeones antiguos son una entrega pendiente distinta: no se cuentan aquí las apariencias de Set como ese pedido.
 
@@ -30,4 +32,6 @@ El candidato habilita los cinco como STANDARD/RELEASED en el catálogo Alpha y c
 
 Main no equivale a despliegue. El 12/10/2026 el sitio oficial Fondal respondió HTTP 200; /la-horda/red/api/health informó store:file y persistent:false. No reiniciar ni redesplegar ese servidor sin verificar respaldo y persistencia. No se modificaron cuentas, permisos, billeteras, cobros ni infraestructura. Render es el servidor anterior; el canónico está documentado como Fly.io.
 
-Pendientes: CI del candidato; acceso seguro al despliegue canónico; teléfono físico y sesiones públicas; optimizar p95 móvil; cinco skins adicionales del roster existente. No se afirma calidad comercial 10/10.
+La nota de despliegue del párrafo anterior describe el 12/10, no el estado del frontend al 19/10. La publicación de los originales ya se comprobó; el health canónico aún informa almacenamiento no persistente. La corrección posterior de legibilidad y caché está en #146 hasta que termine su validación: ver `vfx-20261019/README.md`.
+
+Pendientes: persistencia y respaldo canónico verificados antes de cualquier reinicio; teléfono físico y sesiones públicas; optimizar p95 móvil; cinco skins adicionales del roster existente. No se afirma calidad comercial 10/10.

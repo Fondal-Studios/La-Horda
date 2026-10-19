@@ -206,7 +206,7 @@ body[data-mode="cristales"]{ --mode-accent:#6fd3ff; --mode-accent-2:#bfe8ff; }
 .shop-hero.champ .shop-hero-anim{ inset:auto 0 0 0; margin:auto; width:190px; height:190px; }
 .shop-hero-info{ display:flex; flex-direction:column; gap:4px; padding:10px 12px 10px 0; min-width:0; }
 .shop-hero-tags{ display:flex; flex-wrap:wrap; gap:5px; }
-.shop-hero-title{ font-family:var(--ui-font-brand); font-size:1.05rem; line-height:1.5; text-shadow:3px 3px 0 #000; }
+.shop-hero-title{ overflow-wrap:anywhere; min-width:0; font-family:var(--ui-font-brand); font-size:1.05rem; line-height:1.5; text-shadow:3px 3px 0 #000; }
 .shop-hero-sub{ font-family:var(--ui-font); font-size:1.1rem; color:var(--ui-ink); }
 .shop-hero-desc{ font-size:0.78rem; color:var(--ui-dim); line-height:1.35; font-style:italic; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
 .shop-hero-buy{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:auto; }

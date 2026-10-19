@@ -96,12 +96,20 @@ function kvbBmp(rows, map){
 
 /* ---------------- registro y caché de sprites ---------------- */
 const KVB_DEC = {}, KVB_MOT = {}, KVB_BEAM = {}, KVB_CACHE = {};
+let kvbCacheArena = null;
 // Decal cuadrado centrado: el borde de la imagen = radio real. paint(g, q, S, f, N) con q = 0..1 a lo largo de la tira.
 function kvbDefDecal(name, N, paint){ KVB_DEC[name] = {N, paint}; }
 // 1 píxel de arte ≈ 4,4 unidades de mundo (≈2,5 px de pantalla a 844x390): se lee a distancia y el tramado no es ruido
 function kvbS(R){ return Math.max(24, Math.min(128, Math.round(2 * R / 4.4 / 4) * 4)); }
 function kvbDecalFrames(name, S){
-  const ak = kvbArenaKey(), k = name + '@' + S + '@' + ak; let fr = KVB_CACHE[k]; if(fr) return fr;
+  const ak = kvbArenaKey();
+  // Only decals are arena-tinted. Keep reusable motifs/beams but release the
+  // previous arena's cache; active entries still own their frame references.
+  if(ak !== kvbCacheArena){
+    for(const key of Object.keys(KVB_CACHE)) if(key.includes('@')) delete KVB_CACHE[key];
+    kvbCacheArena = ak;
+  }
+  const k = name + '@' + S + '@' + ak; let fr = KVB_CACHE[k]; if(fr) return fr;
   const d = KVB_DEC[name]; if(!d) return null; fr = [];
   KVB_TINT.key = ak; KVB_TINT.pal = ak ? AID_INLAY_PALETTES[ak] : null;
   try{ for(let f = 0; f < d.N; f++){ const [c, g] = kvbCanvas(S, S); d.paint(g, f / (d.N - 1), S, f, d.N); fr.push(kvbCrisp(c)); } }

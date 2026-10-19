@@ -6,8 +6,8 @@
      · máscara del sprite del enemigo = alfa opaco de sus drawImage (sin la sombra del suelo); visible = píxeles de esa máscara que A deja intactos respecto de C.
    Dos mediciones: SOLO LOS DECALES/ANILLOS del efecto (kvbDecal de >= 36 u, sin rayos ni motivos sueltos; en todo instante: se exige >= 80 %) y el EFECTO COMPLETO con sus motivos sueltos
    (rayos, gotas, plumas y chispas que cruzan volando: promedio de los tres instantes; el piso de regresión es FULL_MIN = 40 %, y los que quedan entre 40 y 80 % se listan como aviso (VERBOSE=1)).
-   También mide los decales del motor de la mitad A (js/champions/skill-fx-a/: nova, zona y cono de cada tema, nivel 'efecto completo'); SFA_STRICT=1 les exige el 80 % por instante
-   (hoy no lo cumplen en el impacto: la nova va sobre las entidades y con 20-25 % de relleno más sellos el sprite queda visible entre ~45 y ~90 %).
+   También exige el 80 % por instante a nova, zona y cono de cada tema del motor de la mitad A (js/champions/skill-fx-a/).
+   No se sustituye un resultado bajo por una aprobación ni se promedian las fases de estos decales para aprobarlos.
    Exige visible >= 80 % del sprite de cada enemigo (MIN_VISIBLE), relleno del decal <= 35 % del disco interior en el impacto
    (con las marcas) y que el tinte cambie de una arena a otra (el mismo efecto no puede ser del mismo color en todas partes).
    Además comprueba que los anillos de pixel-stroke.js solo producen alfa 0/255.
@@ -32,12 +32,17 @@ const freePort = () => new Promise(r => { const s = net.createServer(); s.listen
     await page.goto(BASE, {waitUntil: 'domcontentloaded', timeout: 120000});
     await page.waitForFunction(leg => typeof startRun === 'function' && typeof KVB !== 'undefined' && typeof kvbFx === 'function' && (leg || typeof pxsRing === 'function'), !!process.env.LEGACY, {timeout: 120000});
     await page.waitForTimeout(2500);
+    // Negative control: restore the faulty render order. The same strict
+    // measurement must fail; a gate that only checks registration cannot pass.
+    if (process.env.CANARY_SFA_TOP === '1') await page.evaluate(() => {
+      SFA_LAYER.nova = 'top'; SFA_LAYER.cone = 'top';
+    });
     const ids = await page.evaluate(() => Object.keys(KVB_FX).sort()), only = process.env.ONLY ? process.env.ONLY.split(',') : null, list = only ? ids.filter(i => only.includes(i)) : ids;
     console.log(`${list.length} recetas · arenas ${ARENAS.join(',')} · mínimo visible ${MIN_VISIBLE * 100}%`);
     // 1) legibilidad
     const worst = [];
     for (const arena of ARENAS) {
-      const r = await page.evaluate(([ids, arena, minVis, withSfa, strictSfa]) => {
+      const r = await page.evaluate(([ids, arena, minVis, withSfa]) => {
         const out = {rows: [], err: null}, oNow = performance.now.bind(performance), oRand = Math.random; let T = 100000; performance.now = () => T; Math.random = () => .37;
         try {
           netMatch = null; selectedClass = 'tanque'; currentArena = arena; lobbyAllies = []; startRun(3); state = 'playing'; enemies = []; spawnTimer = 1e9; arenaHazardTimer = 1e9;
@@ -82,12 +87,12 @@ const freePort = () => new Promise(r => { const s = net.createServer(); s.listen
                   } mpx = m; return m ? v / m : 0; };
                 fracs.push(vis(A)); dec.push(vis(A2)); mins.push(mpx);
               }
-              out.rows.push({id, tag, mask: Math.min(...mins), min: isSfa && !strictSfa ? 1 : Math.min(...dec), dec: dec.map(x => +x.toFixed(2)), all: fracs.map(x => +x.toFixed(2))});
+              out.rows.push({id, tag, mask: Math.min(...mins), min: Math.min(...dec), dec: dec.map(x => +x.toFixed(2)), all: fracs.map(x => +x.toFixed(2))});
             }
           }
         } catch (e) { out.err = e.message + ' ' + (e.stack || '').split('\n')[1]; }
         if (window.__oDraw) CanvasRenderingContext2D.prototype.drawImage = window.__oDraw; performance.now = oNow; Math.random = oRand; state = 'menu'; return out;
-      }, [list, arena, MIN_VISIBLE, !only, !!process.env.SFA_STRICT]);
+      }, [list, arena, MIN_VISIBLE, !only]);
       if (r.err) { console.log('ERROR', arena, r.err); bad++; continue; }
       const tiny = r.rows.filter(x => x.mask < 80); if (tiny.length) { console.log(`ERROR ${arena}: la máscara del sprite quedó vacía (${tiny.length} mediciones): la prueba no mide nada`); bad++; }
       const low = r.rows.filter(x => x.min < MIN_VISIBLE);
@@ -125,15 +130,36 @@ const freePort = () => new Promise(r => { const s = net.createServer(); s.listen
       const d = og.getImageData(0, 0, off.width, off.height).data; let painted = 0;
       for (let i = 3; i < d.length; i += 4) { tot++; if (d[i] !== 0) painted++; if (d[i] !== 0 && d[i] !== 255) bad++; }
       if (painted < 200) bad += 1e6; // si no pintó nada, la prueba no mide nada
-      out.stroke = {pixels: tot, intermedios: bad, dibujados: PXS.drawn, pintados: painted}; return out;
+      out.stroke = {pixels: tot, intermedios: bad, dibujados: PXS.drawn, pintados: painted};
+      // Touring arenas cannot multiply the sprite cache. The current arena
+      // keeps identity/reuse; switching back rebuilds the same visible pixels.
+      const signature = cv => {
+        const d = cv.getContext('2d').getImageData(0, 0, cv.width, cv.height).data;
+        let h = 2166136261; for (const b of d) h = Math.imul(h ^ b, 16777619); return h >>> 0;
+      };
+      currentArena = 'bosque';
+      const oldK = kvbDecalFrames('so_splash', 72), oldS = sfaBake('nova', 'time', 64);
+      const hashK = signature(oldK[3]), hashS = signature(oldS.cv);
+      let bounded = true, reused = true;
+      for (const arena of ['hielo', 'infernal', 'laberinto', 'acuatica', 'minas', 'bosque']) {
+        currentArena = arena;
+        const k = kvbDecalFrames('so_splash', 72), s = sfaBake('nova', 'time', 64);
+        reused = reused && k === kvbDecalFrames('so_splash', 72) && s === sfaBake('nova', 'time', 64);
+        bounded = bounded && Object.keys(KVB_CACHE).filter(k => k.includes('@')).every(k => k.endsWith('@' + arena))
+          && [...sfaCache.keys()].every(k => k.endsWith('|' + arena));
+      }
+      out.cache = {bounded, reused, samePixels: hashK === signature(kvbDecalFrames('so_splash', 72)[3]) && hashS === signature(sfaBake('nova', 'time', 64).cv),
+        retainedFramesValid: hashK === signature(oldK[3]) && hashS === signature(oldS.cv)};
+      return out;
     });
     for (const f of r2.fill) { const ok = f.fill <= MAX_FILL; console.log(`relleno ${f.name} (${f.arena}) en el impacto: ${(f.fill * 100).toFixed(0)}% ${ok ? 'OK' : 'EXCEDE ' + MAX_FILL * 100 + '%'}`); if (!ok) bad++; }
     const by = {}; for (const t of r2.tint) (by[t.name] = by[t.name] || []).push(t);
     for (const k in by) { const [a, b] = by[k], d = Math.abs(a.c[0] - b.c[0]) + Math.abs(a.c[1] - b.c[1]) + Math.abs(a.c[2] - b.c[2]), ok = d >= 12; console.log(`tinte ${k}: ${a.arena} rgb(${a.c}) vs ${b.arena} rgb(${b.c}) ${ok ? 'OK' : 'IGUAL'}`); if (!ok) bad++; }
     console.log(`trazos de píxel: ${r2.stroke.intermedios} píxeles con alfa intermedio de ${r2.stroke.pixels} (pintados ${r2.stroke.pintados})`); if (r2.stroke.intermedios) bad++;
+    console.log('arena cache:', JSON.stringify(r2.cache)); if (!Object.values(r2.cache).every(Boolean)) bad++;
     }
     console.log(`errores de página: ${errors.length}`, errors.slice(0, 3)); if (errors.length) bad++;
-  } finally { await browser.close(); }
+  } finally { await browser.close(); if (server) server.kill(); }
   console.log(bad ? `FALLA: ${bad} incumplimientos` : 'OK');
   process.exitCode = bad ? 1 : 0;
 })().catch(e => { console.error(e); process.exitCode = 1; });
