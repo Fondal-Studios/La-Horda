@@ -49,6 +49,21 @@ async function runOne(page, job) {
     if (job.mods) Object.assign(ARENA_MODS[job.arena], job.mods);
     // job.loot = N: el botín de N victorias de campaña (rollLoot + materializeLoot, como tools/balance/lootsim2.js) para job.cls,
     // repartidas en orden por las arenas; sin esto un guardado de prueba juega a nivel 54 SIN equipo (más duro que un jugador real)
+    // job.lootPlan = [{arena, tier}, ...]: una victoria por entrada, con el botín de ESA dificultad (Normal -> Pesadilla -> Infierno en orden);
+    // job.skill / job.reaction: perfil del autopiloto (aprendiz .45/650, ocasional .7/400, habitual .9/220; por defecto .85/260)
+    if (job.lootPlan) {
+      const GR = () => { const x = Math.random(); return x < 0.12 ? 'B' : (x < 0.55 ? 'A' : (x < 0.9 ? 'S' : 'S+')); };
+      let pity = {}; save.stash = save.stash || [];
+      const snap = JSON.stringify([save.arenasCleared, save.diffCleared, save.diffSelected]), ca0 = currentArena;
+      save.arenasCleared = save.arenasCleared || {}; for (const k of ARENA_ORDER) save.arenasCleared[k] = true; diffSetSelected('normal');
+      for (const t of DIFF_TIER_ORDER) if (t !== 'normal') for (const k of ARENA_ORDER) save.diffCleared[t][k] = true;
+      for (const st of job.lootPlan) {
+        currentArena = st.arena; diffSetSelected(st.tier);
+        const r = rollLoot({ arena: st.arena, grade: GR(), victory: true, subjefes: 2, owned: ownedDesignIds(), pity, classKey: job.cls }); pity = r.pity;
+        for (const spec of r.items) { const it = materializeLoot(spec, job.cls, st.arena); if (it.rarity === 'comun') continue; save.stash.push(it); collectionRegister(it, true); }
+      }
+      currentArena = ca0; const sn = JSON.parse(snap); save.arenasCleared = sn[0] || {}; save.diffCleared = sn[1]; save.diffSelected = sn[2];
+    }
     if (job.loot) {
       const GR = () => { const x = Math.random(); return x < 0.12 ? 'B' : (x < 0.55 ? 'A' : (x < 0.9 ? 'S' : 'S+')); };
       let pity = {}; save.stash = save.stash || [];
@@ -61,6 +76,7 @@ async function runOne(page, job) {
     if (job.gear) { for (const k in save.champions) if (typeof autoEquipBest === 'function') autoEquipBest(k); }
     // un jugador competente gasta sus puntos de talento (el HUD le sugiere cuál subir)
     if (job.lvl <= 0 && typeof suggestedSkillInvest === 'function') for (let g = 0; g < 60; g++) { const i = suggestedSkillInvest(job.cls); if (i === null || i === undefined || !investTalentPoint(job.cls, i)) break; }
+    if (job.skill) __AP.skill = job.skill; if (job.reaction) __AP.reaction = job.reaction;
     __CP.reset(); __CP.god = !!job.god;
     if (job.arena === 'auto') job.arena = ARENA_ORDER.find(a => !(save.arenasCleared||{})[a]) || 'infernal';
     const lvl0 = save.champions[job.cls].level, xp0 = save.champions[job.cls].xp, gold0 = save.gold;
@@ -109,7 +125,7 @@ async function runOne(page, job) {
   }, [job]);
 }
 (async () => {
-  const browser = await chromium.launch({ args: ['--no-sandbox'] });
+  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
   let page = null, errors = [];
   const fresh = async (seedSave) => {
     if (page) await page.context().close();
@@ -127,7 +143,10 @@ async function runOne(page, job) {
   for (const job of jobs) {
     if (!job.keep) await fresh(job.empty ? 'empty' : null);
     const t0 = Date.now();
-    let r; try { r = await runOne(page, job); } catch (e) { r = { tag: job.tag, cls: job.cls, arena: job.arena, crash: String(e).slice(0, 300) }; }
+    let r;
+    for (let intento = 0; intento < 2; intento++) { // un fallo de carga de página (host cargado) se reintenta una vez con página nueva
+      try { r = await runOne(page, job); break; } catch (e) { r = { tag: job.tag, cls: job.cls, arena: job.arena, crash: String(e).slice(0, 300) }; if (job.keep || intento) break; await fresh(job.empty ? 'empty' : null); }
+    }
     r.errors = errors.slice(0, 3); r.wall = Math.round((Date.now() - t0) / 1000);
     fs.appendFileSync(outFile, JSON.stringify(r) + '\n');
     console.log(`${r.tag} ${r.cls}/${r.arena} lv${r.lvl} -> ${r.result} L${r.reached} ${r.secs}s boss=${r.bossSecs} err=${r.errors.length} wall=${r.wall}s`);

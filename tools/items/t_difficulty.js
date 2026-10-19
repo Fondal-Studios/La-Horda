@@ -304,7 +304,23 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   // Aquí solo se impide que el ajuste deje a Pesadilla muy por debajo de Normal en vida x daño.
   check('TIERMODS.no_cae_por_debajo_de_normal', arenasMod.every(a => { const p = tmod.per[a]; return (p.withMod.hp * p.withMod.dmg) >= 0.6 * (p.normal.hp * p.normal.dmg); }), arenasMod.map(a => [a, +(tmod.per[a].withMod.hp / tmod.per[a].normal.hp).toFixed(2), +(tmod.per[a].withMod.dmg / tmod.per[a].normal.dmg).toFixed(2)]));
   check('TIERMODS.infierno_sigue_encima_de_pesadilla', arenasMod.every(a => tmod.per[a].inf.hp > tmod.per[a].withMod.hp && tmod.per[a].inf.dmg > tmod.per[a].withMod.dmg), arenasMod.map(a => [a, tmod.per[a].inf.hp, tmod.per[a].withMod.hp]));
-  check('TIERMODS.infierno_y_normal_intactos', tmod.otherInfMods.length === 0 && tmod.otherTiers.length === 0, tmod);
+  // GRUPO2: Normal e Infierno ahora pueden llevar tierMods (hielo/acuatica/laberinto); el chequeo 'infierno_y_normal_intactos' se reemplaza por GRUPO2.tierMods_validos (solo claves normal/pesadilla/infierno, valores acotados).
+
+  // >>> GRUPO2 (hielo / acuatica / laberinto): monotonia Normal < Pesadilla < Infierno. docs/economy/DIFICULTAD_GRUPO2.md >>>
+  const gr2 = await E(() => {
+    __lvl(54); __allNormal(); __allTier('pesadilla'); __allTier('infierno');
+    const rd = (tier, arena) => { diffSetSelected(tier); __start(arena, 1); return { hp: runDifficulty.hp, dmg: runDifficulty.dmg, avgHp: runDifficulty.avgHp }; };
+    const per = {};
+    for (const a of ['hielo', 'acuatica', 'laberinto']) per[a] = { n: rd('normal', a), p: rd('pesadilla', a), i: rd('infierno', a), tm: ARENA_MODS[a].tierMods || {} };
+    per.__badKeys = Object.keys(ARENA_MODS).filter(k => ARENA_MODS[k].tierMods && Object.keys(ARENA_MODS[k].tierMods).some(t => !['normal', 'pesadilla', 'infierno'].includes(t)));
+    return per;
+  });
+  const gr2bad = gr2.__badKeys; delete gr2.__badKeys;
+  const gr2k = Object.keys(gr2);
+  check('GRUPO2.normal_menor_que_pesadilla_menor_que_infierno', gr2k.every(a => ['hp', 'dmg', 'avgHp'].every(f => gr2[a].n[f] < gr2[a].p[f] && gr2[a].p[f] < gr2[a].i[f])), gr2k.map(a => [a, ['hp', 'dmg', 'avgHp'].map(f => [+gr2[a].n[f].toFixed(2), +gr2[a].p[f].toFixed(2), +gr2[a].i[f].toFixed(2)])]));
+  check('GRUPO2.vida_x_dano_crece_al_menos_x1_3_por_escalon', gr2k.every(a => { const m = x => x.hp * x.dmg; return m(gr2[a].p) >= 1.3 * m(gr2[a].n) && m(gr2[a].i) >= 1.3 * m(gr2[a].p); }), gr2k.map(a => [a, +(gr2[a].p.hp * gr2[a].p.dmg / (gr2[a].n.hp * gr2[a].n.dmg)).toFixed(2), +(gr2[a].i.hp * gr2[a].i.dmg / (gr2[a].p.hp * gr2[a].p.dmg)).toFixed(2)]));
+  check('GRUPO2.tierMods_validos', gr2bad.length === 0 && gr2k.every(a => Object.entries(gr2[a].tm).every(([t, v]) => ['normal', 'pesadilla', 'infierno'].includes(t) && [v.hp, v.dmg, v.bossDmg].every(x => x >= 0.25 && x <= 1.5))), gr2k.map(a => gr2[a].tm));
+  // <<< GRUPO2 <<<
 
   // ---------------- UI (Sala, HUD, resultados) ----------------
   const ui = await E(() => {
