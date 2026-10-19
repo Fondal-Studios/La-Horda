@@ -32,6 +32,7 @@ arregló esta auditoría.
 - La skin de regalo es saltable por defecto (nada marcado; el botón principal es "Seguir sin skin" y deja un vale en la Tienda).
 - Después: **3 líneas de historia** con "Empezar la práctica" / "Saltar la práctica", y el tutorial se juega **con el guardián elegido** (antes forzaba a Thalen).
 - **El Libro de la Horda** ya no se abre antes de jugar: se ofrece ("Leer el Libro" / "Después") al volver al menú tras la primera arena.
+- **El Libro lo narra el Hechicero** (PR "libro-hechicero"; capturas antes/después en `docs/ux/libro-hechicero/`): un solo narrador a la vez, la ficha no repite lo que el Libro acaba de decir y la práctica completada no repite la misión (detalle en `LA_HORDA_CODEX.md` §9).
 - El hub entra en **una sola pantalla** (JUGAR, modos competitivos, Códice/Guardianes/Tienda/Multijugador, Horda Infinita) sin deslizar.
 
 **Antes de esta auditoría**, un perfil nuevo recibía de entrada:

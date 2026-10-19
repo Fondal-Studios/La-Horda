@@ -24,6 +24,8 @@ function firstMinuteLines(){
 // Devuelve true si mostró la historia (y se hace cargo de seguir con onStart / onSkip).
 function firstMinuteStory(onStart, onSkip){
   if(!_fmJust) return false;
+  // un solo narrador a la vez: con el Libro abierto el relato espera a que se cierre y recién ahí sigue el flujo de siempre
+  if(typeof narrationBookOpen==="function" && narrationBookOpen()){ narrationWhenFree(()=>{ if(!firstMinuteStory(onStart, onSkip) && onStart) onStart(); }); return true; }
   _fmJust = false;
   if(!firstMinuteEnabled()) return false;
   if(typeof save!=="undefined" && save.tut && save.tut.firstStory) return false;
