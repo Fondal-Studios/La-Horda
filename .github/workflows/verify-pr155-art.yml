@@ -17,6 +17,9 @@ jobs:
           node-version: '22'
       - run: npm install --no-save playwright@1.61.1
       - run: npx playwright install --with-deps chromium
+      - name: Use the Chromium installed by Playwright
+        run: |
+          node -e "require('node:fs').appendFileSync(process.env.GITHUB_ENV, 'CHROMIUM_PATH=' + require('playwright').chromium.executablePath() + String.fromCharCode(10))"
       - run: git rev-parse HEAD
       - run: node tools/art/check-skill-icons.js --self-test
       - run: node tools/art/check-skill-icons.js --write
