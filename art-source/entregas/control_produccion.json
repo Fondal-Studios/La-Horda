@@ -1,23 +1,23 @@
 {
   "schema": 1,
   "fecha": "2026-10-19",
-  "alcance": "Arte nuevo; integración a cargo de Claude",
+  "alcance": "Arte e integración por agentes autorizados por el owner; solo cerrar con pruebas y merge real.",
   "totales": {
     "campeones": 183,
     "mundo": 1061,
     "entradas": 1244,
-    "resueltos": 22,
+    "resueltos": 25,
     "por_prioridad": {
       "P1": 464,
       "P0": 118,
       "P2": 662
     },
     "por_estado": {
-      "EN_CORRECCION_VISUAL": 13,
-      "INTEGRADO_MAIN": 22,
+      "EN_CORRECCION_VISUAL": 10,
+      "INTEGRADO_MAIN": 25,
       "PENDIENTE": 1209
     },
-    "sin_integracion_documentada": 1222,
+    "sin_integracion_documentada": 1219,
     "exportaciones_runtime_documentadas": 19
   },
   "reglas_continuidad": [
@@ -93,7 +93,7 @@
         "Redibujo nativo del cuadro 11: original y dos reemplazos fallan ILUSTRACION.",
         "Después, revisión visual de identidad/animaciones y pruebas de runtime; autorización de trabajo ya otorgada."
       ],
-      "preferida": true,
+      "preferida": false,
       "evidencia_actual": "art-source/entregas/bloques/B001_soporte/revision-frame11/ESTADO.md",
       "estado_tecnico": "FIX_NATIVE"
     },
@@ -143,6 +143,19 @@
       ],
       "preferida": true,
       "estado_tecnico": "FIX_NATIVE"
+    },
+    {
+      "lote": "B001_soporte_v3",
+      "estado": "INTEGRADO_MAIN",
+      "manifiesto": "art-source/entregas/bloques/B001_soporte/entrega.json",
+      "pr": 163,
+      "commit_main": "ae21839465a7dfdad469be3a4bb37cef9605cbbc",
+      "preferida": true,
+      "estado_tecnico": "PASS",
+      "evidencia_actual": "docs/art-gate/soporte-v3/validation.json",
+      "pendientes": [
+        "Publicación pendiente de verificar"
+      ]
     }
   ],
   "bloqueos_decision": [
@@ -155,7 +168,7 @@
       "motivo": "Manifiesto indica marco puesto por juego; especificación pide marco pintado. Preguntar al dueño antes de entregar."
     }
   ],
-  "siguiente_trabajo": "P0 myla; conservar originales. Corregir solo defectos documentados de candidatos ya guardados.",
+  "siguiente_trabajo": "B004: conservar atlas vigente de 61 cuadros y montura; redibujar con mosquete/bayoneta, mantener clips especializados. PR166 conserva intentos rechazados; no instalar el atlas genérico de 36.",
   "items": [
     {
       "id": "tanque.cuerpo.lanzar",
@@ -526,54 +539,120 @@
       "id": "soporte.cuerpo.lanzar",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/soporte/hoja_36poses.png",
-      "estado": "EN_CORRECCION_VISUAL",
-      "version_reutilizable": "art-source/entregas/bloques/B001_soporte/entrega.json",
+      "estado": "INTEGRADO_MAIN",
+      "version_reutilizable": "art-source/entregas/bloques/B001_soporte/revision-frame11-v3",
       "bloque": "B001",
-      "defecto_pendiente": "Cuadro 11 falla ILUSTRACION; ver revision-frame11/ESTADO.md. No es una espera de permiso del dueño.",
       "revision_nativa": {
-        "estado": "FIX",
-        "cuadros_fallidos": [
-          11
-        ],
-        "evidencia": "docs/production/authored-candidate-results-20261019.json",
-        "run": 39292727298,
-        "source": "art-source/entregas/bloques/B001_soporte/campeones/soporte/hoja_36poses.png"
+        "estado": "PASS",
+        "cuadros_fallidos": [],
+        "cuadros_validados": 36,
+        "git_blob": "f7dcca7efeff2274556195e34a1722edb1cbd422",
+        "evidencia": "art-source/entregas/bloques/B001_soporte/revision-frame11-v3/validated/native.json",
+        "run": 39302849899,
+        "installed": true,
+        "approvalClaimed": false
+      },
+      "historial_revision_nativa": [
+        {
+          "estado": "FIX",
+          "cuadros_fallidos": [
+            11
+          ],
+          "evidencia": "docs/production/authored-candidate-results-20261019.json",
+          "run": 39292727298,
+          "source": "art-source/entregas/bloques/B001_soporte/campeones/soporte/hoja_36poses.png"
+        }
+      ],
+      "integracion": {
+        "pr": 163,
+        "commit_main": "ae21839465a7dfdad469be3a4bb37cef9605cbbc",
+        "champion": "soporte",
+        "atlas": "assets/sprites/champions/soporte/v3/atlas.png",
+        "git_blob": "f7dcca7efeff2274556195e34a1722edb1cbd422",
+        "sha256": "6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34",
+        "evidencia": "docs/art-gate/soporte-v3/validation.json",
+        "publicacion": "PENDIENTE_VERIFICACION",
+        "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
       }
     },
     {
       "id": "soporte.cuerpo.golpe",
       "prioridad": "P1",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/soporte/hoja_36poses.png",
-      "estado": "EN_CORRECCION_VISUAL",
-      "version_reutilizable": "art-source/entregas/bloques/B001_soporte/entrega.json",
+      "estado": "INTEGRADO_MAIN",
+      "version_reutilizable": "art-source/entregas/bloques/B001_soporte/revision-frame11-v3",
       "bloque": "B001",
-      "defecto_pendiente": "Cuadro 11 falla ILUSTRACION; ver revision-frame11/ESTADO.md. No es una espera de permiso del dueño.",
       "revision_nativa": {
-        "estado": "FIX",
-        "cuadros_fallidos": [
-          11
-        ],
-        "evidencia": "docs/production/authored-candidate-results-20261019.json",
-        "run": 39292727298,
-        "source": "art-source/entregas/bloques/B001_soporte/campeones/soporte/hoja_36poses.png"
+        "estado": "PASS",
+        "cuadros_fallidos": [],
+        "cuadros_validados": 36,
+        "git_blob": "f7dcca7efeff2274556195e34a1722edb1cbd422",
+        "evidencia": "art-source/entregas/bloques/B001_soporte/revision-frame11-v3/validated/native.json",
+        "run": 39302849899,
+        "installed": true,
+        "approvalClaimed": false
+      },
+      "historial_revision_nativa": [
+        {
+          "estado": "FIX",
+          "cuadros_fallidos": [
+            11
+          ],
+          "evidencia": "docs/production/authored-candidate-results-20261019.json",
+          "run": 39292727298,
+          "source": "art-source/entregas/bloques/B001_soporte/campeones/soporte/hoja_36poses.png"
+        }
+      ],
+      "integracion": {
+        "pr": 163,
+        "commit_main": "ae21839465a7dfdad469be3a4bb37cef9605cbbc",
+        "champion": "soporte",
+        "atlas": "assets/sprites/champions/soporte/v3/atlas.png",
+        "git_blob": "f7dcca7efeff2274556195e34a1722edb1cbd422",
+        "sha256": "6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34",
+        "evidencia": "docs/art-gate/soporte-v3/validation.json",
+        "publicacion": "PENDIENTE_VERIFICACION",
+        "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
       }
     },
     {
       "id": "soporte.cuerpo.muerte",
       "prioridad": "P0",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/soporte/hoja_36poses.png",
-      "estado": "EN_CORRECCION_VISUAL",
-      "version_reutilizable": "art-source/entregas/bloques/B001_soporte/entrega.json",
+      "estado": "INTEGRADO_MAIN",
+      "version_reutilizable": "art-source/entregas/bloques/B001_soporte/revision-frame11-v3",
       "bloque": "B001",
-      "defecto_pendiente": "Cuadro 11 falla ILUSTRACION; ver revision-frame11/ESTADO.md. No es una espera de permiso del dueño.",
       "revision_nativa": {
-        "estado": "FIX",
-        "cuadros_fallidos": [
-          11
-        ],
-        "evidencia": "docs/production/authored-candidate-results-20261019.json",
-        "run": 39292727298,
-        "source": "art-source/entregas/bloques/B001_soporte/campeones/soporte/hoja_36poses.png"
+        "estado": "PASS",
+        "cuadros_fallidos": [],
+        "cuadros_validados": 36,
+        "git_blob": "f7dcca7efeff2274556195e34a1722edb1cbd422",
+        "evidencia": "art-source/entregas/bloques/B001_soporte/revision-frame11-v3/validated/native.json",
+        "run": 39302849899,
+        "installed": true,
+        "approvalClaimed": false
+      },
+      "historial_revision_nativa": [
+        {
+          "estado": "FIX",
+          "cuadros_fallidos": [
+            11
+          ],
+          "evidencia": "docs/production/authored-candidate-results-20261019.json",
+          "run": 39292727298,
+          "source": "art-source/entregas/bloques/B001_soporte/campeones/soporte/hoja_36poses.png"
+        }
+      ],
+      "integracion": {
+        "pr": 163,
+        "commit_main": "ae21839465a7dfdad469be3a4bb37cef9605cbbc",
+        "champion": "soporte",
+        "atlas": "assets/sprites/champions/soporte/v3/atlas.png",
+        "git_blob": "f7dcca7efeff2274556195e34a1722edb1cbd422",
+        "sha256": "6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34",
+        "evidencia": "docs/art-gate/soporte-v3/validation.json",
+        "publicacion": "PENDIENTE_VERIFICACION",
+        "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
       }
     },
     {
@@ -10790,8 +10869,21 @@
   "bloque_activo": "B004",
   "ultimo_checkpoint": {
     "bloque": "B004",
-    "estado": "FIX_NATIVE_NO_INTEGRAR",
+    "estado": "REDRAW_REQUIRED_WEAPON_CONTINUITY",
     "entrega": "art-source/entregas/bloques/B004_libertador/entrega.json",
-    "siguiente_paso": "Redibujar cuadros 8,9,10,11,20,21,23; corregir orientación 13 y proporciones. Normalización guardada: no repetir."
+    "checkpoint_pr": 166,
+    "checkpoint_commit": "df34a6b0adb66adab01256b5241e28d39fc5a9db",
+    "siguiente_paso": "B004: conservar atlas vigente de 61 cuadros y montura; redibujar con mosquete/bayoneta, mantener clips especializados. PR166 conserva intentos rechazados; no instalar el atlas genérico de 36.",
+    "ultima_integracion": {
+      "pr": 163,
+      "commit_main": "ae21839465a7dfdad469be3a4bb37cef9605cbbc",
+      "champion": "soporte",
+      "atlas": "assets/sprites/champions/soporte/v3/atlas.png",
+      "git_blob": "f7dcca7efeff2274556195e34a1722edb1cbd422",
+      "sha256": "6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34",
+      "evidencia": "docs/art-gate/soporte-v3/validation.json",
+      "publicacion": "PENDIENTE_VERIFICACION",
+      "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
+    }
   }
 }

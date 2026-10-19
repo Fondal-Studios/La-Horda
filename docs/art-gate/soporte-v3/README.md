@@ -15,3 +15,7 @@ Git blob:f7dcca7efeff2274556195e34a1722edb1cbd422
 SHA256:6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34
 
 Integración en main y publicación son estados separados. No se verificó con estos reportes un despliegue canónico, una sesión NanoGM ni rendimiento en dispositivos físicos.
+
+## Fallas heredadas visibles
+
+El workflow de integración contiene pasos ya marcados continue-on-error en main. En esta ejecución13 pruebas de esa sección registraron37 casos fallidos, detallados en known-quarantined-failures.json. No se agregaron excepciones ni se bajaron exigencias en este lote. La conclusión verde del workflow no significa que esos casos hayan pasado; queda pendiente distinguir defectos reales de fixtures anteriores a las migraciones. Los checks nuevos de Soporte son bloqueantes.
