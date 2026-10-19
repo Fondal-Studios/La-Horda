@@ -3,7 +3,7 @@
 //   node tools/playtest/difficulty-matrix.js agg <a.jsonl> [b.jsonl ...]              -> tabla victorias/intentos por casilla con IC de Wilson 95 %
 // spec: { label, arenas:[..], tier:"normal"|"pesadilla"|"infierno", profiles:["aprendiz","ocasional","habitual","competente"], classes:[..], n:8, seed0:1000,
 //         lvlAdd:0, lvl:"arena"|54, loot:"seq"|N|"pos", mods:{arena:{...}} }
-//   loot "seq" (por defecto): botín de las victorias previas EN ORDEN (posición de la arena en la campaña + 10 por cada dificultad anterior), lootSeq de campaign.js.
+//   por defecto lootPath=1 + equipBest (equipo real de haber ganado una vez cada arena anterior, Normal -> Pesadilla -> Infierno); spec.loot=N es el método viejo (solo cofres).
 const fs = require('fs'), path = require('path');
 const PROFILES = { aprendiz: { skill: 0.45, reaction: 650 }, ocasional: { skill: 0.7, reaction: 400 }, habitual: { skill: 0.9, reaction: 220 }, competente: { skill: 0.85, reaction: 260 } };
 const CAMPAIGN = ['ciudad', 'fortaleza', 'bosque', 'micelial', 'hielo', 'acuatica', 'laberinto', 'abismo', 'minas', 'infernal'];
@@ -11,13 +11,13 @@ function wilson(k, n) { if (!n) return [0, 1]; const z = 1.96, p = k / n, d = 1 
 function gen(spec, outDir, shards, doneFiles) {
   // doneFiles: resultados ya obtenidos (jsonl); sus trabajos (tag+semilla) no se repiten, para retomar una corrida cortada
   const done = new Set((doneFiles || []).flatMap(f => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').filter(Boolean).map(l => { const r = JSON.parse(l); return r.tag + '#' + r.seed; }) : []));
-  const jobs = [], tierIdx = ['normal', 'pesadilla', 'infierno'].indexOf(spec.tier);
+  const jobs = [];
   for (let i = 0; i < spec.n; i++) for (const arena of spec.arenas) for (const profile of spec.profiles) {
     const cls = spec.classes[(i + CAMPAIGN.indexOf(arena)) % spec.classes.length], pr = PROFILES[profile];
-    const prior = tierIdx * 10 + CAMPAIGN.indexOf(arena);
     const j = { tag: [spec.label, spec.tier, arena, profile].join('|'), cls, arena, tier: spec.tier, lvl: spec.lvlByArena && spec.lvlByArena[arena] !== undefined ? spec.lvlByArena[arena] : (spec.lvl === undefined ? 'arena' : spec.lvl), lvlAdd: spec.lvlAdd || 0, skill: pr.skill, reaction: pr.reaction,
       seed: (spec.seed0 || 1000) + 7 * i + CAMPAIGN.indexOf(arena) + 101 * Object.keys(PROFILES).indexOf(profile), gear: true };
-    const loot = spec.loot === undefined || spec.loot === 'seq' ? prior : spec.loot; if (loot > 0) { j.loot = loot; j.lootSeq = true; }
+    // equipo REAL (tools/balance/real-loot.js): lootPath = victorias por cada arena previa (1 por defecto), equipBest = equipa lo mejor por ranura. spec.loot=N usa el cofre suelto (método viejo, casi desnudo)
+    if (spec.loot !== undefined) { if (spec.loot > 0) { j.loot = spec.loot; j.lootSeq = true; } } else { j.lootPath = spec.lootPath || 1; j.equipBest = true; }
     if (spec.mods && spec.mods[arena]) j.mods = spec.mods[arena];
     if (!done.has(j.tag + '#' + j.seed)) jobs.push(j);
   }

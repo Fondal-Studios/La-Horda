@@ -129,7 +129,7 @@ async function runOne(page, job) {
     page = await ctx.newPage(); errors = [];
     page.on('pageerror', e => errors.push(e.message));
     await page.goto(`http://127.0.0.1:${port}/index.html`, { waitUntil: 'load', timeout: 180000 });
-    for (let i = 0; i < 300; i++) { const ok = await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return b && !b.disabled; }); if (ok) break; await sleep(100); }
+    let ready = false; for (let i = 0; i < 1200 && !ready; i++) { ready = await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return !!(b && !b.disabled) && typeof diffSetSelected === 'function' && typeof checkpointOnRunStart === 'function' && typeof vfxResetRun === 'function' && typeof AlphaServices !== 'undefined'; }).catch(() => false); if (!ready) await sleep(100); } if (!ready) throw new Error('la pagina no termino de cargar');
     await page.addScriptTag({ path: path.join(__dirname, 'autopilot.js') });
     await page.evaluate(require('../fortaleza/sim-helpers.js'));
     await page.evaluate(require('../balance/real-loot.js'));
