@@ -61,7 +61,7 @@ assert git_sha((ROOT/spec['atlas']).read_bytes())==spec['atlasGitBlobSha']
 # Named musket/bayonet/horse clips are real callers, not optional documentation.
 runtime=(ROOT/'js/champions/libertador.js').read_text()
 import re
-required={name:sorted(set(re.findall(r'_smFrame\\(\\s*'+symbol+r'\\s*,\\s*"([^"]+)"',runtime))) for name,symbol in [('libertador','P'),('libertador_horse','HP')]}
+required={name:sorted(set(re.findall(r'_smFrame\(\s*'+symbol+r'\s*,\s*"([^"]+)"',runtime))) for name,symbol in [('libertador','P'),('libertador_horse','HP')]}
 template={'idle_down','idle_side','idle_up','walk_down','walk_side','walk_up','attack_down','attack_side','attack_up','cast_down','cast_side','cast_up','ultimate_down','ultimate_side','ultimate_up','hit_down','hit_side','hit_up','death_down','death_side','death_up'}
 missing=sorted(set(required['libertador'])-template)
 assert {'fire','reload','bayo_emb','ult_cast'}.issubset(missing),'Specialized runtime audit must detect weapon clips'
