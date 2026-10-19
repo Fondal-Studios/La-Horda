@@ -1,0 +1,30 @@
+name: Libertador musket source diagnostic
+on:
+  push:
+    branches: ['qa/libertador-musket-v1-20261019']
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: python -m pip install numpy pillow scipy opencv-python-headless
+      - run: python -m unittest tools/factory/test_authored_frame.py
+      - run: node --test tools/factory/test-animation-contract.js
+      - run: npm install --no-save playwright@1.61.1
+      - run: npx playwright install --with-deps chromium
+      - run: python art-source/entregas/bloques/B004_libertador/revision-musket-v1/diagnose.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: libertador-musket-diagnostic
+          path: /tmp/libertador-musket-v1/
+          retention-days: 30
