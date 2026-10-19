@@ -290,7 +290,9 @@ function sfaDefineTheme(name, def) {
 const sfaBucket = d => d <= 44 ? 32 : d <= 66 ? 48 : d <= 98 ? 64 : d <= 150 ? 80 : d <= 230 ? 96 : d <= 340 ? 128 : d <= 500 ? 160 : 192; // diámetro en unidades de mundo -> px de diseño (de ~1,4 a ~4,5 u/px)
 
 /* ---------------- reproducción ---------------- */
-const SFA_LAYER = {nova: 'top', cone: 'top', beam: 'top', burst: 'top', aura: 'top', zone: 'ground', rays: 'top', rings: 'top', column: 'top'};
+// Area footprints belong below actors: thinning the fill alone still lets the
+// impact band and motifs hide a target. Keep airborne beams/bursts on top.
+const SFA_LAYER = {nova: 'ground', cone: 'ground', beam: 'top', burst: 'top', aura: 'top', zone: 'ground', rays: 'top', rings: 'top', column: 'top'};
 const sfaLite = () => (typeof JUICE !== 'undefined' && JUICE.reduceFx) || (typeof vfxLoad === 'number' && vfxLoad < .6);   // pocos recursos: se omiten las capas decorativas
 // art: nova|zone|cone|beam|burst|aura; (x,y) centro / origen; r radio (cono: alcance); ang dirección del cono; (bx,by) fin del haz; w ancho del haz; fi índice de héroe a seguir (aura)
 function vfxSfaPlay(art, theme, x, y, r, ang, dur, bx, by, w, fi, arc, dl) { return sfaPush(art, theme, x, y, r, ang, dur, bx, by, w, fi, arc, dl); }
