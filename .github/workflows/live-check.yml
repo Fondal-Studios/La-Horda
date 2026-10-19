@@ -22,6 +22,20 @@ env:
   SITE: https://drmarianojimenez94-sudo.github.io/La-Horda
   ORIGIN: https://drmarianojimenez94-sudo.github.io
 jobs:
+  canonical-art:
+    name: Fondal canonical files (read-only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python tools/release/check-canonical-publication.py --output docs/art-gate/canonical-publication.json
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fondal-canonical-publication
+          path: docs/art-gate/canonical-publication.json
   relay:
     runs-on: ubuntu-latest
     timeout-minutes: 8
