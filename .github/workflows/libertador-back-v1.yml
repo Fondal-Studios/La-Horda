@@ -1,0 +1,29 @@
+name: Libertador back-pose source diagnostic
+on:
+  push:
+    branches: ['art-workshop/libertador-back-v1-20261019']
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m pip install numpy pillow scipy
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Preserve28 frames and evaluate candidate without approval
+        run: python art-source/entregas/bloques/B004_libertador/revision-back-v1/diagnose.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: libertador-back-v1-source-diagnostic
+          path: /tmp/libertador-back-v1/
+          retention-days: 30
