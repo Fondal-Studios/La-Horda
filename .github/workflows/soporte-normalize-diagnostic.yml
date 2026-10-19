@@ -1,0 +1,31 @@
+name: Soporte canonical normalization diagnostic
+on:
+  push:
+    branches: ['art-workshop/soporte-normalize-20261019']
+permissions:
+  contents: read
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Generate canonical factors for inspection only
+        run: |
+          python3 -m http.server 8750 --bind 127.0.0.1 >/tmp/soporte-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          ROSTER_BASE_URL=http://127.0.0.1:8750 node tools/art/roster_gate.js --write
+          node -e "const fs=require('fs'),vm=require('vm');const context={};vm.runInNewContext(fs.readFileSync('js/data/champion-art-normalize.js','utf8'),context);console.log('SOporteGenerated='+JSON.stringify(context.CHAMP_ART_NORMALIZE.soporte));"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: soporte-generated-normalization
+          path: |
+            js/data/champion-art-normalize.js
+            docs/art-gate/roster-gate.json
+            docs/art-gate/roster-sheet.png
