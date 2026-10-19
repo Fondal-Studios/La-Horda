@@ -15,13 +15,15 @@ for path,key in [(spec['atlas'],'atlasGitBlobSha'),(spec['replacement'],'replace
 summary={'schema':1,'status':'UNTESTED','approvalClaimed':False,'installed':False,'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'frames':spec['frames'],'assemblies':[]}
 image=Image.open(ROOT/spec['replacement'])
 assert image.mode=='RGBA','Source must be RGBA'
-assert image.width%4==0 and image.height%2==0,'Source must fit exact4x2'
-cw,ch=image.width//4,image.height//2
+xs=[round(i*image.width/4) for i in range(5)];ys=[round(i*image.height/2) for i in range(3)]
+summary['sourceDimensions']=[image.width,image.height];summary['sourceCells']=[]
 current=ROOT/spec['atlas']
 for index,frame in enumerate(spec['frames']):
     raw=OUT/f'pose-{frame}.png'
-    x,y=index%4*cw,index//4*ch
-    image.crop((x,y,x+cw,y+ch)).save(raw)
+    col,row=index%4,index//4
+    rect=(xs[col],ys[row],xs[col+1],ys[row+1])
+    summary['sourceCells'].append({'frame':frame,'rect':rect})
+    image.crop(rect).save(raw)
     manifest={'atlas':str(current),'atlasSha256':hashlib.sha256(current.read_bytes()).hexdigest(),'replacement':str(raw),'replacementSha256':hashlib.sha256(raw.read_bytes()).hexdigest(),'frame':frame}
     config=OUT/f'assembly-{frame}.json';config.write_text(json.dumps(manifest))
     target=OUT/f'assembled-{frame}.png'
