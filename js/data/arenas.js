@@ -115,8 +115,9 @@ Object.assign(ARENA_MODS, {
   minas:    { label:"Minas Profundas", icon:"⛏", desc:"Arena 09. La luz es territorio. Y el camino baja hasta la puerta del Infierno.", hazardName:"La Oscuridad",
               fireDmgMult:1.0, iceDmgMult:1.0, enemyDmgPerWave:0.17, unlockLevel:0, heroSpeedMult:1.0, heroCdMult:1.0, heroEnergyRegenMult:1.0, abilityDmgMult:1.0, heroDmgMult:0.86, enemyRegenPct:0, hazard:null, hasWalls:false,
               potionMult:1.3,
-              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 3% (1/32); con este ajuste (solo Pesadilla) da 50% (20/40).
-              tierMods:{ pesadilla:{ hp:0.6, dmg:0.5, bossDmg:0.8 } } }
+              // Dificultad del grupo 3 (docs/economy/DIFICULTAD_GRUPO3.md), medido con equipo real (lootPath + equipBest): Normal queda como está; con el equipo real Pesadilla/Infierno
+              // eran un paseo (100 % con los valores de PESADILLA_PAREJA), por eso aquí SUBEN por encima de 1.
+              tierMods:{ pesadilla:{ hp:1.65, dmg:1.5, bossDmg:1.15 }, infierno:{ hp:1.1, dmg:0.98, bossDmg:1.04 } } }
 });
 /* ORDEN CANÓNICO DE LA CAMPAÑA (Lore Bible: docs/lore/LA_HORDA_LORE_BIBLE.md). Los IDs internos NO
    cambian (los guardados siguen apuntando a la misma arena); lo que cambia es el orden.
