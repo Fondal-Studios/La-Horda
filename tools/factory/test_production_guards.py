@@ -61,5 +61,20 @@ class ProductionGuards(unittest.TestCase):
             png.write_bytes(original)
             receipt.write_bytes(original_receipt)
 
+
+    def test_wrong_icon_mapping_never_rewrites_inventory(self):
+        paths = [ROOT / 'art-source/entregas/control_produccion.json', ROOT / 'art-source/entregas/bloques/plan_bloques.json']
+        before = [hashlib.sha256(p.read_bytes()).digest() for p in paths]
+        data = json.loads((ROOT / 'docs/production/art-integrations.json').read_text())
+        data['runtimeIconExports'][0]['items'][0]['item'] = 'E-PXI-inexistente'
+        with tempfile.TemporaryDirectory() as folder:
+            registry = Path(folder) / 'bad.json'
+            registry.write_text(json.dumps(data))
+            result = subprocess.run(['python3', 'tools/factory/reconcile-art-production.py',
+                                     '--registry', str(registry), '--write'], cwd=ROOT, capture_output=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn(b'icon task mapping', result.stderr)
+        self.assertEqual(before, [hashlib.sha256(p.read_bytes()).digest() for p in paths])
+
 if __name__ == '__main__':
     unittest.main()
