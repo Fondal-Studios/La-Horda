@@ -1,7 +1,7 @@
 const {chromium}=require('playwright'),fs=require('fs'),{spawn}=require('child_process');
 const server=spawn('python3',['-m','http.server','8798'],{stdio:'ignore'});process.on('exit',()=>server.kill());
 (async()=>{await new Promise(r=>setTimeout(r,400));const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||chromium.executablePath(),args:['--no-sandbox']});try{
- const page=await browser.newPage({viewport:{width:844,height:390},isMobile:true,hasTouch:true}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:8798');await page.waitForFunction(()=>CHAMP_PACK.soporte?.ready);
+ const page=await browser.newPage({viewport:{width:844,height:390},isMobile:true,hasTouch:true}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:8798');await page.waitForFunction(()=>CHAMP_PACK.soporte?.ready&&CHAMP_PACK.tanque?.ready);
  const checks=await page.evaluate(()=>{
   const out=[],check=(name,ok)=>out.push({name,ok:!!ok});
   function start(k='soporte',arena='bosque'){netMatch=null;save.stash=[];for(const c in save.champions)Object.assign(save.champions[c],{unlocked:true,level:20,equipment:{},inventory:[],talents:{nodes:{},mastery:null,masteryNodes:{}},skillMastery:[0,1,2].map(()=>({...mkMastery(),alloc:0})),ultMastery:{...mkMastery(),alloc:0}});selectedClass=k;currentArena=arena;lobbyAllies=k==='soporte'?['tanque','guerrero','mago']:['soporte','guerrero','mago'];startRun(3);setState('paused');enemies=[];spawnTimer=1e9;arenaHazardTimer=1e9;return player;}
@@ -20,7 +20,24 @@ const server=spawn('python3',['-m','http.server','8798'],{stdio:'ignore'});proce
   for(const [key,name] of [['tanque','Aldric'],['guerrero','Kael'],['mago','Thalen'],['soporte','Elyra']])check('identity '+key,CLASSES[key].name.includes(name)&&CLASSES[key].hudName===name&&CHAMPION_CATALOG.find(c=>c.id===key).lore.includes(name));
   for(const d of ['down','side','left','up'])check('four walk/cast frames '+d,CHAMP_PACK.soporte.sets['walk_'+d].length===4&&CHAMP_PACK.soporte.sets['cast_'+d].length===4);
   for(const arena of ['bosque','hielo','laberinto','acuatica','fortaleza','micelial','ciudad','abismo','minas','infernal']){start('soporte',arena);const e=enemy(60);cast();check('arena '+arena,e.hp<1e7&&Number.isFinite(player.hp));}
-  start();particles=[];cast();_netHeroIdx=new Map(heroes.map((h,i)=>[h,i]));netMatch={snapN:0,last:{},lastG:{},lastH:[{},{},{},{}]};const snap=netBuildSnapshot(true,false);check('pulse VFX serialize',JSON.stringify(snap).includes('ffe7a5'));netMatch=null;startRun(3);check('run reset clears pulse',!particles.some(p=>p.color==='#ffe7a5'));setState('title');const c=document.getElementById('title-canvas');_titleCast=null;_titleSetup(c);check('Elyra marches in foreground',_titleCast.some(h=>h.key==='soporte'&&h.row===2));check('new art shared by title and game',CHAMP_PACK.soporte.atlas.src.endsWith('/soporte/v2/atlas.png'));return out;
+  start();particles=[];cast();_netHeroIdx=new Map(heroes.map((h,i)=>[h,i]));netMatch={snapN:0,last:{},lastG:{},lastH:[{},{},{},{}]};const snap=netBuildSnapshot(true,false);check('pulse VFX serialize',JSON.stringify(snap).includes('ffe7a5'));netMatch=null;startRun(3);check('run reset clears pulse',!particles.some(p=>p.color==='#ffe7a5'));setState('title');const c=document.getElementById('title-canvas');_titleCast=null;_titleSetup(c);check('Elyra marches in foreground',_titleCast.some(h=>h.key==='soporte'&&h.row===2));// Trace both real drawing paths instead of pinning an obsolete atlas version.
+  const probe=document.createElement('canvas');probe.width=probe.height=300;const g=probe.getContext('2d',{willReadFrequently:true});
+  function trace(draw,redirect=false){
+    const images=[],original=champPackDrawFrame,saved=ctx;
+    g.clearRect(0,0,300,300);
+    champPackDrawFrame=function(P,...args){const pack=redirect&&P===CHAMP_PACK.soporte?CHAMP_PACK.tanque:P;if(pack.atlas)images.push(pack.atlas);return original.call(this,pack,...args);};
+    try{ctx=g;draw();return {images,visible:g.getImageData(0,0,300,300).data.some((v,i)=>i%4===3&&v>40)};}
+    finally{ctx=saved;champPackDrawFrame=original;}
+  }
+  const noFx=window.ART_GATE_NO_VFX;window.ART_GATE_NO_VFX=true;
+  try{
+    const h=makeHero('soporte',true,150,270);Object.assign(h,{fx:0,fy:1,moving:true,animT:300,attackAnim:0,hurtTimer:0,_packCastUntil:0,_codexSkin:null});
+    const game=trace(()=>drawHeroBody(h,h.scale,false,false)),title=trace(()=>drawChampFigure(g,'soporte',150,270,2,1,300,true));
+    const shared=(a,b)=>a.visible&&b.visible&&a.images.length>0&&b.images.length>0&&[...a.images,...b.images].every(img=>img===CHAMP_PACK.soporte.atlas);
+    check('new art shared by title and game',shared(title,game));
+    const wrongTitle=trace(()=>drawChampFigure(g,'soporte',150,270,2,1,300,true),true);
+    check('different title atlas is rejected',wrongTitle.visible&&!shared(wrongTitle,game));
+  }finally{window.ART_GATE_NO_VFX=noFx;}return out;
  });
  await page.waitForTimeout(1000);fs.mkdirSync('docs/elyra',{recursive:true});await page.screenshot({path:'docs/elyra/title-mobile.png'});
  await page.addScriptTag({path:'tools/balance/autopilot.js'});const runs=[];
