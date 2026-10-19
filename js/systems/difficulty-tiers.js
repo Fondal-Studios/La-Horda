@@ -89,7 +89,11 @@ function diffSetSelected(k){
 function diffApplyToRun(rd, avgLevel){
   const T = diffTier(diffCurrent());
   rd.tier = diffCurrent();
-  if(T===DIFF_TIERS.normal){ rd.hp*=T.hp; rd.dmg*=T.dmg; rd.avgHp*=T.bossDmg; rd.spawnRate*=T.spawn; if(["bosque","hielo"].includes(currentArena)){rd.hp*=0.85;rd.dmg*=0.8;rd.spawnRate*=1.12;} return rd; }
+  if(T===DIFF_TIERS.normal){ rd.hp*=T.hp; rd.dmg*=T.dmg; rd.avgHp*=T.bossDmg; rd.spawnRate*=T.spawn; if(["bosque","hielo"].includes(currentArena)){rd.hp*=0.85;rd.dmg*=0.8;rd.spawnRate*=1.12;}
+    // ajuste puntual de Normal por arena (ARENA_MODS[arena].tierMods.normal = {hp, dmg, bossDmg}): docs/economy/DIFICULTAD_GRUPO1.md
+    const tn = (typeof ARENA_MODS!=="undefined" && typeof currentArena!=="undefined" && ARENA_MODS[currentArena] && ARENA_MODS[currentArena].tierMods || {}).normal;
+    if(tn){ rd.hp *= tn.hp||1; rd.dmg *= tn.dmg||1; rd.avgHp *= tn.bossDmg||1; }
+    return rd; }
   // nivel esperado corrido: el seguimiento parcial de REJUGAR mide la brecha contra ese nivel
   const exp = ((typeof currentArena!=="undefined" && DIFF.arenaLevel[currentArena]) || 1) + T.lvlOffset;
   const gap = Math.max(0, avgLevel - exp), rf = Math.min(DIFF.replayFollowMax, gap*DIFF.replayFollowPerLvl), rf0 = rd.replayFollow||0;

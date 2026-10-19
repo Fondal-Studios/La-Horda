@@ -119,7 +119,8 @@ async function runOne(page, job) {
   }, [job]);
 }
 (async () => {
-  const browser = await chromium.launch({ args: ['--no-sandbox'], executablePath: process.env.CHROMIUM_PATH || undefined });
+  const launch = () => chromium.launch({ args: ['--no-sandbox'], executablePath: process.env.CHROMIUM_PATH || undefined });
+  let browser = await launch();
   let page = null, errors = [];
   const fresh = async (seedSave) => {
     if (page) await page.context().close();
@@ -136,7 +137,7 @@ async function runOne(page, job) {
     await page.evaluate(HOOKS);
   };
   for (const job of jobs) {
-    if (!job.keep) { let ok = false; for (let t = 0; t < 3 && !ok; t++) { try { await fresh(job.empty ? 'empty' : null); ok = true; } catch (e) { console.log('fresh fallo (' + String(e).slice(0, 60) + '), reintento'); await sleep(3000); } } if (!ok) { fs.appendFileSync(outFile, JSON.stringify({ tag: job.tag, cls: job.cls, arena: job.arena, crash: 'carga de pagina fallo 3 veces' }) + '\n'); continue; } }
+    if (!job.keep) { let ok = false; for (let t = 0; t < 3 && !ok; t++) { try { await fresh(job.empty ? 'empty' : null); ok = true; } catch (e) { console.log('fresh fallo (' + String(e).slice(0, 60) + '), reintento'); await sleep(3000); try { await browser.close(); } catch (e2) {} try { browser = await launch(); page = null; } catch (e3) {} } } if (!ok) { fs.appendFileSync(outFile, JSON.stringify({ tag: job.tag, cls: job.cls, arena: job.arena, crash: 'carga de pagina fallo 3 veces' }) + '\n'); continue; } }
     const t0 = Date.now();
     let r; try { r = await runOne(page, job); } catch (e) { r = { tag: job.tag, cls: job.cls, arena: job.arena, crash: String(e).slice(0, 300) }; }
     r.errors = errors.slice(0, 3); r.wall = Math.round((Date.now() - t0) / 1000);
