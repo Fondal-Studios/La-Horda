@@ -112,6 +112,15 @@ function _ftFromBot(x, y){
   for(const h of heroes){ if(h && h!==player && h.isBot && Math.abs(h.x - x) < 0.5 && y <= h.y && h.y - y <= 90) return true; }
   return false;
 }
+// ---- Texto de palabras sobre el héroe (jerarquía: js/ui/hud-text.js; prueba: tools/quality/test-floating-text-rate.js) ----
+// Sobre la cabeza del jugador solo van el daño (números) y los avisos que cambian la decisión: peligro, "X lista"
+// (definitiva, combo, pacto), no se pudo lanzar, caíste. Las demás palabras de estado (nombre de la habilidad, set,
+// pasiva, "+DAÑO") repiten un efecto que ya se ve: se funden en UNA por FT_STATUS_GAP_MS (el resto se descarta).
+const FT_STATUS_GAP_MS = 1500;
+const FT_KEEP = /PELIGRO|ALERTA|CUIDADO|LISTO|LISTA|COMBO|CONGELAD|ENRAIZAD|AGARRE|PRENDISTE|COLGADO|MARCADO|COBERTURA|REFLECTOR|ESTALLAR|¡NIVEL|CAMBIA LA BUILD|Falta|Sin |No hay|No disponible|Agotado|al máximo|Cancelado|Inventario|desarrollo|Frío|SE APAGA|EXPUESTO/i;
+let _ftStatusAt = -1e9;
+const FT_STATS = {words:0, hero:0, gated:0}; // contadores para las pruebas (palabras mostradas / sobre el héroe / descartadas)
+function _ftOverPlayer(x, y){ return !!player && Math.abs(x - player.x) < 24 && y <= player.y + 12 && player.y - y <= 122; }
 function floatText(x,y,text,cls,dk,key){
   let kind = 0;
   let s = String(text);
@@ -121,6 +130,11 @@ function floatText(x,y,text,cls,dk,key){
   else if(s.charAt(0)==="-") kind = 3;
   else if(!/^[0-9]+$/.test(s)) kind = 4;
   if(kind===4 && typeof PREFS!=="undefined" && !PREFS.botCallouts && _ftFromBot(x, y)) return;
+  if(kind===4 && cls!=="warn" && !FT_KEEP.test(s) && _ftOverPlayer(x, y)){
+    const now = performance.now();
+    if(now - _ftStatusAt < FT_STATUS_GAP_MS){ FT_STATS.gated++; return; }
+    _ftStatusAt = now;
+  }
   // palabra flotante con el cartel grande de arena/jefe arriba: si caería encima, se corre por debajo del cartel
   // (zonas del HUD, hud-text.js; tools/audit/center_text.js lo mide)
   if(kind===4 && typeof _hudTitleOn==="function" && _hudTitleOn(performance.now()) && typeof worldToScreen==="function"){
@@ -177,6 +191,7 @@ function floatText(x,y,text,cls,dk,key){
   if(kind===4 && words >= FT_WORD_CAP && oldest){ oldest.on = false; oldest.key = null; }
   const f = _ftTake(kind); if(!f) return;
   f.on = true; f.x = x; f.y = y; f.text = s; f.kind = kind; f.t = 0; f.val = 0; f.dk = null; f.key = null; f.pop = 0; f.sc = 1;
+  if(kind===4){ FT_STATS.words++; if(_ftOverPlayer(x, y)) FT_STATS.hero++; }
   f.dur = kind===4 ? 1300 : 820;
   f.vx = 0;
   f.cls = cls;

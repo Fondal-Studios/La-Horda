@@ -19,6 +19,5 @@ function triggerPresagioSpin(caster, basicDmg){
   caster.profetaSpinFxTimer = 480;
   particles.push({x:caster.x,y:caster.y, life:420, maxLife:420, spin:true, radius:R*0.85, color:"#8fffe0"});
   particles.push({x:caster.x,y:caster.y, life:380, ring:true, maxLife:380, maxR:R, color:"#eafff8"});
-  if(caster===player) floatText(caster.x, caster.y-46, "¡GIRO DEL PRESAGIO!", "crit");
   playSfx("cast");
 }
