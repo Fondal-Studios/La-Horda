@@ -1,0 +1,184 @@
+{
+  "schema": 1,
+  "date": "2026-10-19",
+  "scope": "SOporte_V3_MAIN_INTEGRATION_NOT_DEPLOYMENT",
+  "pr": 163,
+  "head": "31ee3348662a373b9debf8a58e853ddb0a0b806f",
+  "merge": "ae21839465a7dfdad469be3a4bb37cef9605cbbc",
+  "atlas": {
+    "pr": 163,
+    "commit_main": "ae21839465a7dfdad469be3a4bb37cef9605cbbc",
+    "champion": "soporte",
+    "atlas": "assets/sprites/champions/soporte/v3/atlas.png",
+    "git_blob": "f7dcca7efeff2274556195e34a1722edb1cbd422",
+    "sha256": "6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34",
+    "evidencia": "docs/art-gate/soporte-v3/validation.json",
+    "publicacion": "PENDIENTE_VERIFICACION",
+    "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
+  },
+  "art": {
+    "nativeFrames": 36,
+    "failedFrames": [],
+    "style": "PASS",
+    "preflightRun": 39302849899,
+    "review": "CODEX_ASSISTED_PASS; no new human approval attributed",
+    "reference": "Caballero / Tanque at same scale, background and lighting, without VFX"
+  },
+  "runtime": {
+    "run": 39313830349,
+    "job": 118270033037,
+    "checks": 570,
+    "errors": 0,
+    "levels": [
+      1,
+      39,
+      40,
+      60,
+      90,
+      99
+    ],
+    "all36FramesActuallySelected": true,
+    "hostGuestSnapshotClockOffset": true,
+    "liveRelayCoveredByFullPRWorkflow": true
+  },
+  "roster": {
+    "appearances": 139,
+    "scaleFailures": 0,
+    "presentationFailures": 0
+  },
+  "skins": {
+    "packs": [
+      "soporte",
+      "skin_custodio",
+      "skin_baluarte"
+    ],
+    "failures": 0
+  },
+  "workflows": [
+    {
+      "id": 39313830410,
+      "name": "VFX readability and combat parity",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39313830410"
+    },
+    {
+      "id": 39313830053,
+      "name": "Integracion pruebas",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39313830053"
+    },
+    {
+      "id": 39313830109,
+      "name": "Brasa authored cosmetic validation",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39313830109"
+    },
+    {
+      "id": 39313830065,
+      "name": "Oficios authored cosmetics",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39313830065"
+    },
+    {
+      "id": 39313830072,
+      "name": "Expedition champions",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39313830072"
+    },
+    {
+      "id": 39313830327,
+      "name": "Quality five runtime and authored sources",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39313830327"
+    },
+    {
+      "id": 39313830349,
+      "name": "Soporte v3 renderer and art gate",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39313830349"
+    },
+    {
+      "id": 39313829775,
+      "name": "Emoji lint (arte pixel)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39313829775"
+    },
+    {
+      "id": 39313830012,
+      "name": "Authored sprite sheet importer",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39313830012"
+    },
+    {
+      "id": 39313830330,
+      "name": "Pixel density gate (informativo)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39313830330"
+    },
+    {
+      "id": 39313829941,
+      "name": "Art presentation verification",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39313829941"
+    },
+    {
+      "id": 39313829904,
+      "name": "Art production evidence",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39313829904"
+    },
+    {
+      "id": 39313830182,
+      "name": "Champion entry balance",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39313830182"
+    }
+  ],
+  "knownQuarantinedFailures": {
+    "file": "docs/art-gate/soporte-v3/known-quarantined-failures.json",
+    "newExceptionsAdded": false,
+    "affectedTests": 13,
+    "observedFailedCases": 37
+  },
+  "duplicatePushFailure": {
+    "run": 39313823878,
+    "job": 118270009413,
+    "test": "tools/crystal-wars/competitive-integration-test.js",
+    "reason": "Node22 Undici Parser.finish assert(!this.paused) during readiness fetch with unread body; same real test passed in PR",
+    "fixSourceGitBlob": "b148167fd24965e4338e472bc727794524a749c5",
+    "focusedRun": 39317154406,
+    "focusedHead": "f052370c30a5a49d5fd359250538125323eca271",
+    "freshFourClientRuns": 2,
+    "focusedResult": "PASS",
+    "productionGameplayChangedByFix": false,
+    "fullFollowupCI": "Required before merging this followup"
+  },
+  "pending": [
+    "Canonical deployment not verified",
+    "No physical-device performance certification",
+    "B004 Libertador redraw: preserve musket/bayonet,61-frame specialized foot pack and mounted pack",
+    "B002 Tanque19 failed native frames; B003 Guerrero36 failed native frames",
+    "Existing nonblocking tests require separate production-versus-fixture triage"
+  ],
+  "inventory": {
+    "tasks": 1244,
+    "documentedIntegrations": 25,
+    "existingRuntimeIconExports": 19,
+    "undocumented": 1219
+  },
+  "infrastructureChanged": false,
+  "realChargesEnabled": false
+}
