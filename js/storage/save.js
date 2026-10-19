@@ -181,6 +181,10 @@ function _loadSaveInner(){
     const raw = localStorage.getItem(SAVE_KEY);
     if(raw){
       const parsed = JSON.parse(raw);
+      // Tipos y rangos antes de usar nada (js/storage/save-sanitize.js): NaN/strings/objetos/"__proto__" en lo crítico.
+      // Lanza si el JSON no es un objeto: cae en el catch de abajo (copia _noCargo, no se pisa el guardado).
+      if(typeof saveSanitize==="function") saveSanitize(parsed, {defaults: defaultSave(),
+        arenaKeys: typeof ARENA_ORDER!=="undefined" ? ARENA_ORDER : null, championKeys: typeof CLASSES!=="undefined" ? Object.keys(CLASSES) : null});
       // Rework del campeón "eren" -> "ilkan" (js/storage/legacy-champion-ids.js): ids, talentos, objetos. Idempotente.
       if(legacyChampionMigrate(parsed, {refreshItem: legacyRefreshSetItem})) legacyChampionRenamed = true;
       const needsRarityMigration = parsed.itemSchemaV !== ITEM_SCHEMA_VERSION;

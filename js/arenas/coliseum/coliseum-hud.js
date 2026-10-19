@@ -39,7 +39,7 @@ function colHudTick(){
   q(".col-clock").textContent = c.phase === "prep" ? "Preparate…" : c.phase === "inter" ? "Resultados" : (c.ringR < COL.PIT_R - 2 ? "¡ANILLO CERRÁNDOSE!" : _colClock(COL.ROUND_MS - (L.t - c.t0)));
   const pair = c.pairs[0];
   q(".col-note").textContent = c.phase === "inter" ? c.last : (c.phase === "prep" ? "Tu duelo: " + (pair[0] === 0 ? "TU EQUIPO" : lanesTeamName(pair[0])) + " vs " + lanesTeamName(pair[1]) : (c.res[0] ? "Tu duelo terminó · mirá el otro" : ""));
-  q(".col-feed").innerHTML = L.feed.filter(f=>L.t - f.t < 9000).slice(-3).map(f=>'<div style="color:' + sidesFeedColor(f.team) + '">' + f.text + '</div>').join("");
+  q(".col-feed").innerHTML = L.feed.filter(f=>L.t - f.t < 9000).slice(-3).map(f=>'<div style="color:' + sidesFeedColor(f.team) + '">' + guideEsc(f.text) + '</div>').join("");
   // espectador (solo si caíste en plena pelea)
   const spec = q(".col-spec"), watching = !player.alive && c.phase === "fight" && c.spec;
   spec.classList.toggle("hidden", !watching);
