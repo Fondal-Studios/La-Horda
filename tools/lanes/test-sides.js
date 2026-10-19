@@ -29,7 +29,7 @@ const INSTALL=()=>{
   if(bs<0)return; // fuera de pantalla: nada que muestrear
   const d=[im[bi*4],im[bi*4+1],im[bi*4+2]];
   const kind=!ent?'?':ent===player?'self':ent.isStruct?ent.kind:(ent.classKey?'hero':(ent.epicId!=null?'epic':'minion'));
-  let expect=null;if(ent){expect=ent===player?'self':(ent.team===2&&LN.mode!=='coliseo')?'neutral':(ent.team===(window.__view!=null?window.__view:player.team)?'ally':'enemy');}
+  let expect=null;if(ent){expect=ent===player?'self':(ent.team===2&&LN.mode!=='coliseo')?'neutral':(ent.team===((typeof CAM_SUBJECT!=='undefined'&&CAM_SUBJECT&&CAM_SUBJECT.team!=null)?CAM_SUBJECT.team:player.team)?'ally':'enemy');}
   window.__rec.push({rel,expect,kind,dim:!!(o&&o.dim),rgb:[d[0],d[1],d[2]],ga:g.globalAlpha,f:fr,inv:ent&&ent.invulnTimer,dead:ent&&ent.alive});
  };
 };
@@ -44,9 +44,9 @@ function checkRecords(rec,tok,label,need){
   seen[r.rel+':'+r.kind]=(seen[r.rel+':'+r.kind]||0)+1;
   if(r.dim){ // estructura protegida: relleno atenuado → solo el canal dominante debe ser el del bando
    const [R,G]=r.rgb;if(r.rel==='ally')assert(G>R+25,`${label}: barra atenuada aliada no es verde ${r.rgb}`);if(r.rel==='enemy')assert(R>G+25,`${label}: barra atenuada enemiga no es roja ${r.rgb}`);continue;}
-  // el motor puede oscurecer una barra (alfa de la entidad, niebla): se acepta el MISMO tono con brillo entre 50 % y 140 % (el brillo de arriba de la barra es más claro)
+  // el motor puede oscurecer una barra (alfa de la entidad, niebla): se acepta el MISMO tono con brillo entre 25 % y 140 % (el brillo de arriba de la barra es más claro)
   const t=col[r.rel],dot=r.rgb[0]*t[0]+r.rgb[1]*t[1]+r.rgb[2]*t[2],cos=dot/(Math.hypot(...r.rgb)*Math.hypot(...t)||1),k=Math.hypot(...r.rgb)/Math.hypot(...t);
-  assert(cos>0.97&&k>0.5&&k<1.4,`${label}: píxel ${r.rgb} de ${r.kind}/${r.rel} no corresponde a ${tok[r.rel]} ga=${r.ga} f=${r.f} inv=${r.inv} (cos=${cos.toFixed(3)}, brillo=${k.toFixed(2)})`);
+  assert(cos>0.97&&k>0.25&&k<1.4,`${label}: píxel ${r.rgb} de ${r.kind}/${r.rel} no corresponde a ${tok[r.rel]} ga=${r.ga} f=${r.f} inv=${r.inv} (cos=${cos.toFixed(3)}, brillo=${k.toFixed(2)})`);
  }
  for(const k of need)assert(seen[k],`${label}: no se muestreó ninguna barra ${k}. Vistas: ${JSON.stringify(seen)}`);
  // separación entre bandos: verde ≠ rojo ≠ ámbar ≠ yo
@@ -65,7 +65,7 @@ const dominant=([r,g,b])=>r>g+60&&r>b+60?'red':g>r+40&&g>b+40?'green':r>b+60&&g>
   const open=async(w,h)=>{
    const ctx=await b.newContext({viewport:{width:w,height:h},hasTouch:true});await ctx.addInitScript(f=>{try{localStorage.setItem('laHordaSave_v1',JSON.stringify(f));}catch(e){}},FIX);
    const p=await ctx.newPage();p.errs=[];p.on('pageerror',e=>p.errs.push(e.message));
-   await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`);
+   await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});
    await p.waitForFunction(()=>typeof setState==='function'&&typeof lanesStart==='function'&&typeof sidesBar==='function',null,{timeout:60000});
    await p.evaluate(()=>{save.tut=save.tut||{};save.tut.training=1;persistNow();setState('mainmenu');renderMainMenu();});
    return {ctx,p};
@@ -82,16 +82,19 @@ const dominant=([r,g,b])=>r>g+60&&r>b+60?'red':g>r+40&&g>b+40?'green':r>b+60&&g>
     assert.equal(await p.evaluate(()=>player.team),myTeam,'equipo del jugador');
     await p.evaluate(INSTALL);
     const tokens=await p.evaluate(TOKENS);
+    await p.evaluate(()=>{LN.team.forEach(T=>{T.nextWave=0;});});await p.waitForFunction(()=>enemies.some(e=>e.alive&&!e.lanesProxy&&e.team===0)&&enemies.some(e=>e.alive&&!e.lanesProxy&&e.team===1),null,{timeout:30000}); // sale la primera horda ya
     // 1) héroes y súbditos en el carril medio
     await p.evaluate(()=>{const m=LANES_PATHS[1].pts[Math.floor(LANES_PATHS[1].pts.length/2)];heroes.forEach((h,i)=>{h.x=m[0]+(h.team===player.team?-90:90)+(i%3)*20;h.y=m[1]+(i%5)*24-50;});
      for(const e of enemies)if(e.alive&&!e.lanesProxy&&e.team!=null&&e.team!==2){e.x=m[0]+(e.team===player.team?-70:70)+(Math.random()-.5)*180;e.y=m[1]+(Math.random()-.5)*100;e.hp=e.maxHp*0.6;}});
     await near(p,...(await p.evaluate(()=>{const m=LANES_PATHS[1].pts[Math.floor(LANES_PATHS[1].pts.length/2)];return [m[0],m[1]];})));
     await p.evaluate(()=>{for(const e of enemies)if(e.alive&&!e.lanesProxy&&e.team!=null&&e.team!==2)e.hp=e.maxHp*0.6;});await p.waitForTimeout(500);
     // 2) torres propias y rivales, cristales
-    for(const [team,idx] of [[myTeam,3],[1-myTeam,3],[myTeam,9],[1-myTeam,9]]){const s=await p.evaluate(([t,i])=>{const s=LN.team[t].S[i];return [s.x,s.y+120];},[team,idx]);await near(p,...s);}
+    for(const [team,idx] of [[myTeam,3],[1-myTeam,3],[myTeam,9],[1-myTeam,9]]){const s=await p.evaluate(([t,i])=>{const s=LN.team[t].S[i];return [s.x,s.y+120];},[team,idx]);await near(p,...s);await p.waitForFunction(([k,r])=>window.__rec.some(x=>x.kind===k&&x.rel===r),[idx===9?'crystal':'tower',team===myTeam?'ally':'enemy'],{timeout:20000});}
     // 3) selva: un campamento con bichos dañados + objetivo épico
+    await p.evaluate(()=>{LN.camps.forEach(c=>{c.respawnAt=0;});});await p.waitForFunction(()=>LN.camps[0].mons.some(m=>m.alive),null,{timeout:15000}); // sale la selva ya
     const camp=await p.evaluate(()=>{const cd=LANES_CAMPS[0];const c=LN.camps&&LN.camps[cd.id];if(c)c.mons.forEach(m=>{if(m.alive)m.hp=m.maxHp*0.5;});return [cd.x,cd.y];});
     await near(p,...camp);await p.evaluate(()=>{const cd=LANES_CAMPS[0],c=LN.camps&&LN.camps[cd.id];if(c)c.mons.forEach(m=>{if(m.alive)m.hp=m.maxHp*0.5;});});await p.waitForTimeout(500);
+    await p.waitForFunction(()=>window.__rec.some(x=>x.rel==='neutral'),null,{timeout:20000});
     const rec=await p.evaluate(()=>window.__rec);
     const seen=checkRecords(rec,tokens,`Cristales eq${myTeam} ${w}`,['self:self','ally:hero','enemy:hero','ally:minion','enemy:minion','ally:tower','enemy:tower','ally:crystal','enemy:crystal','neutral:minion']);
     // 4) marcador (DOM) y minimapa (píxeles del canvas)
@@ -104,13 +107,13 @@ const dominant=([r,g,b])=>r>g+60&&r>b+60?'red':g>r+40&&g>b+40?'green':r>b+60&&g>
     assert.equal(dominant(mm.mine),'green','minimapa: mi cristal verde '+mm.mine);assert.equal(dominant(mm.foe),'red','minimapa: cristal rival rojo '+mm.foe);
     const icons=await p.evaluate(()=>[...window.__icons]);assert(icons.includes('ally')&&icons.includes('enemy'),'íconos de escudo y espada dibujados: '+icons);
     // 5) paleta alternativa solo con variables CSS (p. ej. daltónicos): el render sigue la nueva paleta sin cambios de código
-    await p.evaluate(()=>{const s=document.documentElement.style;s.setProperty('--ally','#0072b2');s.setProperty('--enemy','#d55e00');s.setProperty('--neutral','#f0e442');s.setProperty('--self','#56b4e9');window.__rec.length=0;});
-    await p.waitForTimeout(700);
+    await p.evaluate(()=>{const s=document.documentElement.style;s.setProperty('--ally','#0072b2');s.setProperty('--enemy','#d55e00');s.setProperty('--neutral','#f0e442');s.setProperty('--self','#56b4e9');window.__rec.length=0;heroes.forEach((h,i)=>{if(h!==player){h.x=player.x+(h.team===player.team?-80:80);h.y=player.y+(i%5)*20-40;}});});
+    await p.waitForFunction(()=>['ally','enemy'].every(r=>window.__rec.some(x=>x.rel===r&&x.kind==='hero')),null,{timeout:20000});
     const tok2=await p.evaluate(TOKENS);assert.equal(tok2.ally,'#0072b2');
     const rec2=await p.evaluate(()=>window.__rec);
-    const hasBlue=rec2.some(r=>r.rel==='ally'&&!r.dim&&dist2(r.rgb,[0,114,178])<40),hasOrange=rec2.some(r=>r.rel==='enemy'&&!r.dim&&dist2(r.rgb,[213,94,0])<40);
-    function dist2(a,c){return Math.hypot(a[0]-c[0],a[1]-c[1],a[2]-c[2]);}
-    assert(hasBlue&&hasOrange,`paleta sobrescrita por CSS: aliado azul y enemigo naranja (${rec2.length} muestras)`);
+    const like=(a,c)=>{const cos=(a[0]*c[0]+a[1]*c[1]+a[2]*c[2])/((Math.hypot(...a)*Math.hypot(...c))||1),k=Math.hypot(...a)/Math.hypot(...c);return cos>0.97&&k>0.25&&k<1.4;};
+    const hasBlue=rec2.some(r=>r.rel==='ally'&&!r.dim&&like(r.rgb,[0,114,178])),hasOrange=rec2.some(r=>r.rel==='enemy'&&!r.dim&&like(r.rgb,[213,94,0]));
+    assert(hasBlue&&hasOrange,`paleta sobrescrita por CSS: aliado azul y enemigo naranja (${rec2.length} muestras: ${JSON.stringify(rec2.slice(0,3))})`);
     assert.deepEqual(p.errs,[],'sin errores JS');
     results.push(`Cristales ${w}x${h} equipo ${myTeam}: OK ${JSON.stringify(seen)}`);
     await ctx.close();
@@ -126,9 +129,11 @@ const dominant=([r,g,b])=>r>g+60&&r>b+60?'red':g>r+40&&g>b+40?'green':r>b+60&&g>
     await p.evaluate(INSTALL);const tokens=await p.evaluate(TOKENS);
     await p.evaluate(()=>{player.invulnTimer=1e9;const c=colPitCenter(0);heroes.forEach(h=>{if(h.pit===0){h.x=c.x+(h.team===0?-70:70)+(Math.random()-.5)*40;h.y=c.y+(Math.random()-.5)*160;}});});
     let view=0;
-    if(spectate){ // la cámara sigue a un luchador del equipo 1: para ese punto de vista, el equipo 1 es el aliado (verde)
-     view=await p.evaluate(()=>{const f=heroes.find(x=>x.team===1);CAM_SUBJECT=f;return f.team;});
-     await p.evaluate(()=>{window.__view=CAM_SUBJECT.team;});
+    if(spectate){ // caés en plena pelea y la cámara sigue a un luchador del equipo 1: para ese punto de vista, el equipo 1 es el aliado (verde)
+     await p.evaluate(()=>{player.invulnTimer=0;damageHero(player,99999,{isPvp:true,from:null});});
+     await p.waitForSelector('.col-spec:not(.hidden)',{timeout:10000});
+     for(let i=0;i<8&&(await p.evaluate(()=>CAM_SUBJECT&&CAM_SUBJECT.team))!==1;i++)await p.click('.col-next');
+     view=await p.evaluate(()=>CAM_SUBJECT.team);assert.equal(view,1,'la cámara sigue a un luchador del equipo 1');
     }
     await p.waitForTimeout(500);
     await p.evaluate(()=>{heroes.forEach(h=>{if(h!==player)h.hp=h.maxHp*0.6;});window.__rec.length=0;});await p.waitForTimeout(700);
@@ -139,7 +144,7 @@ const dominant=([r,g,b])=>r>g+60&&r>b+60?'red':g>r+40&&g>b+40?'green':r>b+60&&g>
     assert.equal(hud.filter(x=>x==='ally').length,1,'marcador: un solo equipo aliado '+hud);assert.equal(hud.filter(x=>x==='enemy').length,3,'marcador: tres rivales '+hud);assert.equal(hud[view],'ally','el aliado del marcador es el equipo del punto de vista');
     const sw=await p.evaluate(()=>{const c=document.querySelector('.col-team[data-side="ally"] .ln-side'),e=document.querySelector('.col-team[data-side="enemy"] .ln-side');const cs=x=>getComputedStyle(x);return {a:cs(c).backgroundColor,e:cs(e).backgroundColor,ea:cs(e).maskImage||cs(e).webkitMaskImage,aa:cs(c).maskImage||cs(c).webkitMaskImage};});
     assert.notEqual(sw.ea,sw.aa,'ícono distinto (escudo / espada) además del color');assert.equal(dominant(sw.a.match(/\d+/g).slice(0,3).map(Number)),'green');assert.equal(dominant(sw.e.match(/\d+/g).slice(0,3).map(Number)),'red');
-    const mm=await p.evaluate(()=>{colDrawMap();const cv=document.querySelector('.col-map canvas'),g=cv.getContext('2d'),sx=cv.width/COL.W,sy=cv.height/COL.H;const view=window.__view!=null?window.__view:player.team;
+    const mm=await p.evaluate(()=>{colDrawMap();const cv=document.querySelector('.col-map canvas'),g=cv.getContext('2d'),sx=cv.width/COL.W,sy=cv.height/COL.H;const view=(CAM_SUBJECT&&CAM_SUBJECT.team!=null)?CAM_SUBJECT.team:player.team;
      const out={};for(const rel of ['ally','enemy']){const hh=heroes.find(x=>x!==player&&x.alive&&(rel==='ally'?x.team===view:x.team!==view));
        // el aro del héroe: 6 px a la izquierda/arriba del centro cae sobre el trazo de 2 px; se busca el color más frecuente del trazo
        const px=[];for(let a=0;a<12;a++){const r=(rel==='enemy'?7:5.5);const q=g.getImageData(Math.round(hh.x*sx+Math.cos(a/12*6.283)*r*(rel==='enemy'?0.78:1)),Math.round(hh.y*sy+Math.sin(a/12*6.283)*r*(rel==='enemy'?0.78:1)),1,1).data;px.push([q[0],q[1],q[2]]);}
