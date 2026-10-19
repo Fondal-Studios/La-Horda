@@ -1,0 +1,26 @@
+name: Offline starter and book regression diagnosis
+on:
+  push:
+    branches: ['art-workshop/offline-book-regressions-20261019']
+permissions:
+  contents: read
+jobs:
+  ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - name: Starter gift with real UI and isolated external network
+        id: gift
+        continue-on-error: true
+        run: node tools/items/t_starter_gift.js
+      - name: Identify book offer repeat without changing its assertion
+        id: book
+        continue-on-error: true
+        run: node tools/items/t_codex_book.js
+      - name: Require both unchanged contracts
+        if: always()
+        run: |
+          test "${{ steps.gift.outcome }}" = success
+          test "${{ steps.book.outcome }}" = success

@@ -12,6 +12,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
 
 async function boot(browser, opts) {
   const ctx = await browser.newContext(Object.assign({ viewport: { width: 844, height: 390 } }, opts || {}));
+  // These are local UI/persistence tests; never poll real account/room services or remote fonts.
+  await ctx.route('**/*', route => {
+    const u=new URL(route.request().url());
+    return u.origin===new URL(BASE).origin||['data:','blob:'].includes(u.protocol)?route.continue():route.abort('blockedbyclient');
+  });
   const page = await ctx.newPage(), errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
   page.on('console', m => { if (m.type() === 'error' && !/ERR_CERT|fonts\.g|net::|404|ERR_TUNNEL/.test(m.text())) errors.push('console: ' + m.text().slice(0, 300)); });
@@ -58,7 +63,7 @@ async function boot(browser, opts) {
   await page.click('#game-dialog .gd-cancel'); await sleep(300);
   check('OFERTA.Despues_no_abre_nada_y_no_se_repite', !(await E(() => BOOK.open)) && (await E(() => save.codexBook.offered)) === true && (await E(() => save.codexBook.introSeen)) === false);
   await E(() => { setState('mainmenu'); renderMainMenu(); }); await sleep(1500);
-  check('OFERTA.no_vuelve_a_aparecer_sola', !(await E(() => gameDialogIsOpen())));
+  check('OFERTA.no_vuelve_a_aparecer_sola', !(await E(() => gameDialogIsOpen())), await E(() => ({offered:save.codexBook.offered,introSeen:save.codexBook.introSeen,ran:save.codexBook.ran,dialog:(document.getElementById('game-dialog')?.textContent||'').trim().slice(0,260)})));
   // "Leer el Libro" → abre la intro de 8 páginas (misma ruta: codexBookOffer → codexBookMaybeIntro)
   await E(() => { save.codexBook.offered = false; setState('mainmenu'); renderMainMenu(); });
   await waitFor(() => E(() => gameDialogIsOpen()), 6000);
