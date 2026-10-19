@@ -84,7 +84,7 @@ function defaultSave(){
     quests:null,            // logros, desafíos, pase de temporada y perfil (js/systems/quests.js: questsNormalize completa los campos)
     // DIFICULTADES (js/systems/difficulty-tiers.js): arenas superadas en Pesadilla / Infierno (Normal es
     // arenasCleared), la elegida en la Sala y las derrotas de la cuenta (las 3 primeras no se castigan)
-    diffCleared:{pesadilla:{}, infierno:{}}, diffSelected:"normal", defeatCount:0, arenaDefeats:{}, defeatLegacy:0, penaltyWarned:{}, checkpoints:{},
+    diffCleared:{pesadilla:{}, infierno:{}}, diffSelected:"normal", defeatCount:0, arenaDefeats:{}, bossDefeats:{}, defeatLegacy:0, penaltyWarned:{}, checkpoints:{},
     recycleDust:0           // RECICLAJE (js/systems/ground-loot.js): fracción de Gema juntada al reciclar Comunes/Raros con el inventario lleno
   };
 }
@@ -270,6 +270,7 @@ function _loadSaveInner(){
       save.defeatCount = Math.max(0, parsed.defeatCount|0);
       // perdón de derrotas POR ARENA (progression.js): guardados anteriores congelan su total como punto de partida
       save.arenaDefeats = {}; if(parsed.arenaDefeats && typeof parsed.arenaDefeats==="object") for(const k in parsed.arenaDefeats) save.arenaDefeats[k] = Math.max(0, parsed.arenaDefeats[k]|0);
+      save.bossDefeats = {}; if(parsed.bossDefeats && typeof parsed.bossDefeats==="object") for(const k in parsed.bossDefeats){ const n = Math.max(0, Math.min(99, parsed.bossDefeats[k]|0)); if(n) save.bossDefeats[k] = n; } // derrotas en el jefe por arena (boss-assist.js); guardados viejos: vacío
       save.defeatLegacy = ("defeatLegacy" in parsed) ? Math.max(0, parsed.defeatLegacy|0) : (parsed.arenaDefeats ? 0 : save.defeatCount);
       save.checkpoints = typeof checkpointsNormalize==="function" ? checkpointsNormalize(parsed.checkpoints) : {}; // punto de control del nivel 5 por arena (checkpoint.js); guardados viejos: vacío
       save.penaltyWarned = {}; if(parsed.penaltyWarned && typeof parsed.penaltyWarned==="object") for(const k in parsed.penaltyWarned) if(parsed.penaltyWarned[k]) save.penaltyWarned[k] = true;

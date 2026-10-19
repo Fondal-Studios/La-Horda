@@ -15,12 +15,13 @@
                tritanopia). Cambia equipos, barras, avisos y zonas de peligro, y SUMA forma (rayado, marcas).
    - atkMode:  ataque: "hold" (mantener el botón, como siempre) | "toggle" (un toque prende/apaga el ataque
                continuo) | "auto" (ataca solo cuando hay un enemigo a tu alcance, sin tocar el botón).
+   - bossAssist: ayuda adaptativa del jefe de campaña tras derrotas (js/systems/boss-assist.js); apagada = jefe de siempre.
    - ctlSize:  tamaño de los controles táctiles en % (90-150, 100 = como siempre).
    - ctlOp:    opacidad de los controles táctiles en % (40-100, 100 = como siempre).
    Clave: localStorage "horda_prefs" (JSON). Sin localStorage (modo privado) se usa lo de fábrica.
    ============================================================ */
 const PREFS_KEY = "horda_prefs";
-const PREFS_DEFAULT = { vibrate:true, shake:"normal", textLg:false, lefty:false, contrast:false, botCallouts:false, cvd:"off", atkMode:"hold", ctlSize:100, ctlOp:100 };
+const PREFS_DEFAULT = { vibrate:true, shake:"normal", textLg:false, lefty:false, contrast:false, botCallouts:false, bossAssist:true, cvd:"off", atkMode:"hold", ctlSize:100, ctlOp:100 };
 const PREFS = (function(){
   const p = Object.assign({}, PREFS_DEFAULT);
   try{
@@ -32,6 +33,7 @@ const PREFS = (function(){
       if(typeof v.lefty==="boolean") p.lefty = v.lefty;
       if(typeof v.contrast==="boolean") p.contrast = v.contrast;
       if(typeof v.botCallouts==="boolean") p.botCallouts = v.botCallouts;
+      if(typeof v.bossAssist==="boolean") p.bossAssist = v.bossAssist;
       if(v.cvd==="off" || v.cvd==="rg" || v.cvd==="by") p.cvd = v.cvd;
       if(v.atkMode==="hold" || v.atkMode==="toggle" || v.atkMode==="auto") p.atkMode = v.atkMode;
       if(typeof v.ctlSize==="number" && isFinite(v.ctlSize)) p.ctlSize = Math.max(90, Math.min(150, Math.round(v.ctlSize/10)*10));

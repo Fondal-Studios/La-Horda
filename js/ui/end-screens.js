@@ -48,6 +48,7 @@ function showGameOverScreen(divinaOutcome){
   retryBtn.textContent = netMatch ? "VOLVER AL LOBBY" : "Reintentar desde el Nivel 1";
   if(netMatch) netOnEndScreen(false); else netEndLabels();
   const penalty = applyArenaFailurePenalty(player.classKey);
+  if(typeof bossAssistOnDefeat==="function") bossAssistOnDefeat(); // derrota en el nivel del jefe: suma la ayuda del próximo intento (boss-assist.js)
   // Derrota: la performance igual se muestra, y a veces hay un objeto de consuelo (ver DEFEAT_LOOT)
   const perf = computePerformance(player);
   const loot = grantEndOfRunLoot(player.classKey, perf, false);
@@ -62,6 +63,7 @@ function showGameOverScreen(divinaOutcome){
   // apariencias en la derrota (queda en la victoria y en la Tienda).
   const cpHtml = typeof checkpointDefeatHTML==="function" ? checkpointDefeatHTML() : null;
   document.getElementById("go-loss").innerHTML = defeatPenaltyLineHTML(penalty) + (cpHtml ? `<span class="go-loss-cp">${cpHtml}</span>` : `<span class="go-loss-sub">${typeof checkpointNoOfferHTML==="function" ? checkpointNoOfferHTML() : "Sin puntos de control: la próxima incursión comienza en el Nivel 1."}</span>`);
+  { const ba = typeof bossAssistDefeatHTML==="function" ? bossAssistDefeatHTML() : null; if(ba) document.getElementById("go-loss").insertAdjacentHTML("beforeend", `<span class="go-loss-assist">${ba}</span>`); } // ayuda del jefe (boss-assist.js)
   if(cpHtml && !netMatch){
     retryBtn.textContent = `Reanudar desde el nivel ${CP_LEVEL}`; retryBtn.dataset.cp = "resume";
     const b1 = document.getElementById("retry-from1-btn"); if(b1) b1.classList.remove("hidden");

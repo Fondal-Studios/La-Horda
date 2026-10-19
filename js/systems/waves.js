@@ -14,6 +14,7 @@ function beginLevel(){
   midBossSpawned = false;
   activeChampion = null;
   levelClearing = 0;
+  if(typeof bossAssistBegin==="function") bossAssistBegin(); // ayuda del jefe: se fija al empezar el nivel 10 (boss-assist.js)
   resetPacing(); emergReset(); hechReset(); // ritmo del nivel de cero y una curación de emergencia por nivel
   spawnBreakables(); // objetos del escenario que estallan contra la horda (breakables.js)
   if(typeof setMusicMode==="function") setMusicMode(runLevel===LEVEL_COUNT ? "prelude" : "wave", runLevel);
@@ -35,7 +36,7 @@ let activeChampion = null; // subjefe/jefe activo: mientras exista, se detiene l
 // Vida/daño del jefe: base de su ficha x poder del equipo (difficulty.js) x perilla de jefes.
 function scaleBossStats(e, type){
   if(typeof AlphaServices!=="undefined")AlphaServices.announceBoss(e);
-  e.hp = e.maxHp = Math.round(ENEMY_BASE[type].hp * runDifficulty.hp * DIFF.bossHp * (DIFF.bossHpType[type]||1) * (arenaMods().enemyHpMult||1));
+  e.hp = e.maxHp = Math.round(ENEMY_BASE[type].hp * runDifficulty.hp * DIFF.bossHp * (DIFF.bossHpType[type]||1) * (arenaMods().enemyHpMult||1) * (typeof bossAssistHpMult==="function" ? bossAssistHpMult() : 1)); // ayuda adaptativa tras derrotas (boss-assist.js)
   e.dmg = Math.round(runDifficulty.avgHp * (DIFF.bossDmgPct[currentArena]||0.12));
   e.basicMult = DIFF.bossBasicMult;
   if(typeof endlessOn==="function" && endlessOn()) endlessScaleBoss(e);
