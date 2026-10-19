@@ -1,5 +1,3 @@
-# B004: corrección focal de espalda, fuente v1
+# B004 espalda v1: FIX, no instalar
 
-Fuente generada para los siete cuadros fallidos del lote guardado y el cuadro22 para continuidad de ataque. Conserva abrigo azul, capa carmesí con borde dorado, sable y pelo negro. No es un campeón nuevo.
-
-NO APROBADO. NO INSTALADO. Falta ensamblar mediante la fábrica, verificar conexión/alpha, densidad nativa de36cuadros, Style Gate, proporciones y orientación del cuadro13. No se autoriza a filtrar la paleta para superar el detector. Preservar los otros28cuadros y las fuentes originales. No declarar que pasa ningún gate sin resultados.
+Run39307099699, commit25fb5681e680abca7e3fc9d683676e0bfcf65a28: StyleGatePASS; nativo falla8,10,11,22,23. Cuerpo20 reducido54px frente63px original. Diagnósticos guardados en diagnostic/. Se reutilizan9/21, se corrige escala20 y se conserva22 original en revisiónv2. Las fallas iniciales de corte del sable y dependencia OpenCV fueron corregidas en el diagnóstico; no equivalían a aprobación de arte.

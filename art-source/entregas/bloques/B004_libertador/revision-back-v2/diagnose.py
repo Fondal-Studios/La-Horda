@@ -17,7 +17,7 @@ for repair in spec['replacements']:
     frame=repair['frame'];source=ROOT/repair['source']
     assert git_sha(source.read_bytes())==repair['sourceGitBlobSha'],'Repair source changed'
     image=Image.open(source);assert image.mode=='RGBA','Source must be RGBA'
-    rect=tuple(repair['rect']);assert 0<=rect[0]<rect[2]<=image.width and 0<=rect[1]<rect[3]<=image.height
+    rect=tuple(repair.get('rect') or (0,0,image.width,image.height));assert 0<=rect[0]<rect[2]<=image.width and 0<=rect[1]<rect[3]<=image.height
     summary['sourceCells'].append({'frame':frame,'source':repair['source'],'dimensions':image.size,'rect':rect})
     raw=OUT/f'pose-{frame}.png';image.crop(rect).save(raw)
     manifest={'atlas':str(current),'atlasSha256':hashlib.sha256(current.read_bytes()).hexdigest(),'replacement':str(raw),'replacementSha256':hashlib.sha256(raw.read_bytes()).hexdigest(),'frame':frame}
@@ -52,10 +52,10 @@ else:
     scan_spec=importlib.util.spec_from_file_location('candidate_scan',ROOT/'tools/art/scan_sprites.py')
     scanner=importlib.util.module_from_spec(scan_spec);scan_spec.loader.exec_module(scanner)
     (OUT/'scan.json').write_text(json.dumps(scanner.analyze(str(result)),indent=2,default=lambda v:v.item())+'\n')
-    summary.update(status=report['status'],failedFrames=failed,retainedFrames=29,styleGate='PASS' if style.returncode==0 else 'FIX',atlasSha256=hashlib.sha256(result.read_bytes()).hexdigest())
+    summary.update(status=report['status'],failedFrames=failed,retainedFrames=28,styleGate='PASS' if style.returncode==0 else 'FIX',atlasSha256=hashlib.sha256(result.read_bytes()).hexdigest())
     refs_spec=importlib.util.spec_from_file_location('candidate_refs',ROOT/'tools/art/gen-referencias.py')
     refs=importlib.util.module_from_spec(refs_spec);refs_spec.loader.exec_module(refs)
-    refs.render({'src':str(result),'fw':112,'fh':112,'cols':4,'anchor':106/112},[{'etiqueta':'Espalda caminar','cuadros':[8,9,10,11]},{'etiqueta':'Espalda ataque','cuadros':[20,21,22,23]}],escala=3,titulo='B004 correccion de espalda; candidato',pie='Diagnostico: no es aprobacion de arte',max_por_linea=4).save(OUT/'contact.png')
+    refs.render({'src':str(result),'fw':112,'fh':112,'cols':4,'anchor':106/112},[{'etiqueta':'Ataque frontal','cuadros':[12,13,14,15]},{'etiqueta':'Espalda caminar','cuadros':[8,9,10,11]},{'etiqueta':'Espalda ataque','cuadros':[20,21,22,23]}],escala=3,titulo='B004 correccion de espalda; candidato',pie='Diagnostico: no es aprobacion de arte',max_por_linea=4).save(OUT/'contact.png')
 assert git_sha((ROOT/spec['atlas']).read_bytes())==spec['atlasGitBlobSha']
 (OUT/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
 print('CANDIDATE_SUMMARY '+json.dumps(summary),flush=True)

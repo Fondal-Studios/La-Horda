@@ -1,5 +1,5 @@
-# B004 v2: reparación selectiva, no aprobada
+# B004: preflight de espalda y candidato frontal
 
-La v1 conserva28 cuadros pero falla nativo8,10,11,22,23 y reduce cuerpo20 a54px frente63px previo. Se reutilizan9 y21 que sí pasan, se conserva22 original válido y se escala20 uniformemente a76px de silueta para recuperar cuerpo. Nueva fuente solo8,10,11,23. Sin filtros ni reducción de requisitos.
+El commit74dd9ef44dc9f6000396a577c27a70875220709a pasa36/36nativos y StyleGate en run39307760141. Preflight y fuentes preservados. No instalado ni aprobado para producción. Se conservó22 original y29 cuadros intactos; se reutilizaron9/21 válidos de v1 y cuerpo20 vuelve a63px con NEAREST uniforme a76px de silueta.
 
-Falta comprobar este ensamblado, orientación13, escala/animaciones/runtime y compatibilidad. No instalar hasta completar gates. Fábrica targetHeight idéntica a PR163 (cuatro pruebas); no es un umbral nuevo de aprobación.
+La masa de cuerpo del caminar de espalda varía con la anchura de capa/botas, aunque alturas completas72–73px y pies106 se mantienen; revisar en renderer antes de decidir escala. No agrandar poses a ciegas para satisfacer una heurística. Nuevo frontal13 para corregir orientación, ahora8 cuadros cambiados y28 preservados. Repetir todos los controles y comparar animaciones al tamaño de juego.

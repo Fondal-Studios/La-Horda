@@ -10,7 +10,8 @@
     8,
     10,
     11,
-    23
+    23,
+    13
   ],
   "replacements": [
     {
@@ -90,9 +91,14 @@
         2112,
         745
       ]
+    },
+    {
+      "frame": 13,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-front13-v1/source.png",
+      "sourceGitBlobSha": "1b3fa8ee588fcea25d8a23509c6eb8e28dd825a5"
     }
   ],
   "approvalClaimed": false,
   "installed": false,
-  "note": "Reuse v1 native-passing9/21; adjust20 body uniformly via tested factory targetHeight; preserve original valid22. Redraw only8/10/11/23. Orientation13 and runtime still pending."
+  "note": "Reuse v1 native-passing9/21; adjust20 body uniformly via tested factory targetHeight; preserve original valid22. Redraw only8/10/11/23. Orientation13 and runtime still pending. Front13 now separately redrawn to correct profile turn; all metrics/scan/runtime remain required."
 }
