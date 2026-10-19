@@ -196,3 +196,7 @@ Reemplaza al mapa de un solo carril. Código en `js/arenas/lanes/` (`lanes-data/
 - **Pendiente para acercarse más a Wild Rift:** ítems por héroe (hoy el oro de equipo compra reparaciones/refuerzos), arbustos y visión, ping,
   hechizos de invocador, más variedad de súbditos, y 3 contra 3/5 contra 5 en línea.
 - **Bots orientados a victoria** (estados retirada/defensa/objetivo/empuje, amenazas, camino táctico, objetivos por prioridad; Coliseo: rematar, fuego concentrado, sobrevivir): ver `docs/competitive/BOTS_VICTORIA.md` y `tools/bots/victory-sim.js` (A/B contra el cerebro anterior).
+
+
+## Identidad visual del mapa (octubre 2026)
+El escenario del motor de carriles tiene zonas con identidad (Bosque Ancestral, Jungla Volcánica, Pantano Cristalino, Necrópolis, bases Zafiro/Ámbar, río y La Convergencia), suelo horneado por trozos y minimapa con leyenda. Geometría y colisiones sin cambios. Decisiones, capturas, costo por cuadro y pendientes de arte humano: `docs/production/art-unification/cristales-identidad/README.md`.
