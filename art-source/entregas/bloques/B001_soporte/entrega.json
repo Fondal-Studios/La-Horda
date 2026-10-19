@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "lote": "B001_soporte",
+  "bloque": "B001",
+  "autor": "ChatGPT; IA autorizada por el dueño",
+  "fecha": "2026-10-19",
+  "estado": "TECNICO_VERIFICADO",
+  "proveniencia": {
+    "original": true,
+    "ia": true,
+    "referencias": [
+      "assets/sprites/champions/soporte/v2/atlas.png",
+      "docs/art-brief/ejemplos/soporte/soporte.cuerpo.muerte__ref.webp",
+      "docs/art-brief/campeones/soporte.md",
+      "art-source/entregas/2026-10-19_soporte_12poses/campeones/soporte/hoja_36poses.png"
+    ],
+    "herramientas": [
+      "Reencuadre NEAREST de24poses para normalizar altura",
+      "tools/art/normalize_sprites.py:process (binarize y outline, sin dehalo)",
+      "tools/factory/import-authored-sheet.py",
+      "style_gate.py",
+      "scan_sprites.py:analyze",
+      "gen-referencias.py",
+      "ImageMagick export PSD"
+    ],
+    "fuentesEditables": [
+      "fuentes/hoja_36poses.psd"
+    ],
+    "fuente_ia_reutilizada": "art-source/entregas/2026-10-19_soporte_12poses/fuentes/poses_nuevas_ia.png",
+    "nota": "PSD raster de una capa; no contiene capas originales de pintura. No se generaron imágenes adicionales."
+  },
+  "assets": [
+    {
+      "tipo": "campeon",
+      "id": "soporte",
+      "archivo": "campeones/soporte/hoja_36poses.png",
+      "items_manifiesto": [
+        "soporte.cuerpo.muerte",
+        "soporte.cuerpo.lanzar",
+        "soporte.cuerpo.golpe"
+      ],
+      "resuelve": false,
+      "celda": [
+        112,
+        112
+      ],
+      "cols": 4,
+      "filas": 9,
+      "cuadros": 36,
+      "refH": 71,
+      "colores_base": [
+        "#14352a",
+        "#705030",
+        "#5fc48c",
+        "#2f8a5c",
+        "#ffe7a5",
+        "#fffbe0"
+      ],
+      "nota_paleta": "Seis familias de identidad propuestas más variaciones; no cuantización a seis colores totales.",
+      "referencia": "Identidad del atlas propio y ritmo de muerte de Oriel; filas7-9 reutilizadas de la fuente ya guardada.",
+      "hoja_contacto": "campeones/soporte/hoja_contacto.png",
+      "chequeos": "campeones/soporte/chequeos.json",
+      "estado": "TECNICO_VERIFICADO"
+    }
+  ],
+  "pendientes": [
+    "Aprobación visual del dueño: coherencia de diseño, arma, movimiento, outline1px y apariencia de píxel nativo.",
+    "Integración, roster_gate, skin_audit y capturas en juego a cargo de Claude."
+  ],
+  "integracion": "NO_INTEGRADO; no modificar assets existentes desde esta entrega."
+}
