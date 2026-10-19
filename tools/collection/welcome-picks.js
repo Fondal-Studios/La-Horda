@@ -12,6 +12,7 @@ const ROOT=path.resolve(__dirname,'../..');
 const TYPES={'.html':'text/html','.js':'text/javascript','.css':'text/css','.png':'image/png','.json':'application/json','.webp':'image/webp','.svg':'image/svg+xml','.webmanifest':'application/json','.woff2':'font/woff2','.ttf':'font/ttf','.mp3':'audio/mpeg','.ogg':'audio/ogg','.wav':'audio/wav'};
 const SHOTS=path.join(ROOT,'docs/production');
 const SECRET='secreto-de-prueba-brasas-0123';
+process.env.DATA_PERSISTENT='1'; // Isolated temporary fixture, matching brasas-store.js; production guard unchanged.
 (async()=>{
  delete process.env.PAYMENTS_PROVIDER;delete process.env.PAYMENTS_WEBHOOK_SECRET;delete process.env.PAYMENTS_CHECKOUT_URL;
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'horda-brasas-'));const oldAdmins=process.env.ADMIN_USERS;delete process.env.ADMIN_USERS;
