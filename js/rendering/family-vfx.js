@@ -79,7 +79,18 @@ function famDrawParticle(p, a){
   }
 }
 function famDrawRing(r){
-  const u = 1 - r.life/r.max, rad = r.r0 + (r.r1 - r.r0)*u; ctx.globalAlpha = Math.min(1, (1 - u)*1.2); ctx.strokeStyle = r.color; ctx.lineWidth = r.width;
+  const u = 1 - r.life/r.max, rad = r.r0 + (r.r1 - r.r0)*u, fa = Math.min(1, (1 - u)*1.2);
+  // sobre la rejilla de píxel (pixel-stroke.js): sin antialias, la translucidez pasa a tramado
+  if(typeof pxsRing === "function"){
+    const L = [[r.color, r.width]], key = r.style;
+    let ok = true;
+    if(key === "cry"){ for(let i=0;i<6;i++){ const a = i*Math.PI/3 + u; ok = pxsRing(r.x, r.y, rad, rad, L, {a0: a, a1: a + .5, k: fa}) && ok; } }
+    else if(key === "rays"){ for(let i=0;i<12;i++){ const a = i*Math.PI/6; ok = pxsLine(r.x + Math.cos(a)*rad*.4, r.y + Math.sin(a)*rad*.4*.5, r.x + Math.cos(a)*rad, r.y + Math.sin(a)*rad*.5, L, {k: fa}) && ok; } }
+    else if(key === "halo") ok = pxsRing(r.x, r.y, rad, rad*.42, L, {k: fa});
+    else ok = pxsRing(r.x, r.y, rad, rad, L, {k: fa});
+    if(ok) return;
+  }
+  ctx.globalAlpha = fa; ctx.strokeStyle = r.color; ctx.lineWidth = r.width;
   if(r.style === "cry"){ for(let i=0;i<6;i++){ const a = i*Math.PI/3 + u; ctx.beginPath(); ctx.arc(r.x, r.y, rad, a, a + .5); ctx.stroke(); } }
   else if(r.style === "rays"){ for(let i=0;i<12;i++){ const a = i*Math.PI/6; ctx.beginPath(); ctx.moveTo(r.x + Math.cos(a)*rad*.4, r.y + Math.sin(a)*rad*.4*.5); ctx.lineTo(r.x + Math.cos(a)*rad, r.y + Math.sin(a)*rad*.5); ctx.stroke(); } }
   else if(r.style === "halo"){ ctx.beginPath(); ctx.ellipse(r.x, r.y, rad, rad*.42, 0, 0, Math.PI*2); ctx.stroke(); }

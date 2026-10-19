@@ -333,8 +333,9 @@ function vfxDrawGround(){
   for(let i=0;i<VFX_SHOCK_MAX;i++){
     const s = vfxShocks[i]; if(!s.on) continue;
     const q = s.t/s.dur, e = _easeOut(q), r = s.r0 + (s.r1-s.r0)*e, lw = 1+6*(1-q);
+    // contraste: sombra oscura debajo, color, y filo casi blanco encima (fx-contrast.js); sobre la rejilla de píxel (pixel-stroke.js)
+    if(typeof pxsRing==="function" && pxsRing(s.x, s.y+6, r, r*0.55, [[`rgba(0,0,0,${(1-q)*fxUnder()})`, lw+4], [`rgba(${s.rgb},${(1-q)*0.9})`, lw], ...(q < 0.6 ? [[`rgba(255,255,255,${(0.6-q)*1.2})`, Math.max(1, lw*0.35)]] : [])])) continue;
     ctx.beginPath(); ctx.ellipse(s.x, s.y+6, r, r*0.55, 0, 0, Math.PI*2);
-    // contraste: sombra oscura debajo, color, y filo casi blanco encima (fx-contrast.js)
     ctx.strokeStyle = `rgba(0,0,0,${(1-q)*fxUnder()})`; ctx.lineWidth = lw+4; ctx.stroke();
     ctx.strokeStyle = `rgba(${s.rgb},${(1-q)*0.9})`; ctx.lineWidth = lw; ctx.stroke();
     if(q < 0.6){ ctx.strokeStyle = `rgba(255,255,255,${(0.6-q)*1.2})`; ctx.lineWidth = Math.max(1, lw*0.35); ctx.stroke(); }

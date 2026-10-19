@@ -202,8 +202,11 @@ function kvbTone(hex){
   t = KVB_TONE[hex] = {pal: [mix(0, -.82), mix(0, -.45), hex || '#ffffff', mix(0, .45), mix(0, .85)], key: String(hex).replace('#', '')};
   const k = t.key, pal = t.pal;
   kvbDefMotif('pn_mote_' + k, 5, 5, kvbBmp(['..a..', '.aba.', 'abcba', '.aba.', '..a..'], {a: pal[2], b: pal[3], c: pal[4]}));
-  kvbDefDecal('pn_flash_' + k, 7, kvbRingPaint(pal, {fillCol: pal[1], core: pal[3], fill: .5, rimThick: 3, flash: pal[4], details: (lg, c, R, rad, p) => { for(let i = 0; i < 8; i++){ const a = i * .7854 + .39, nx = -Math.sin(a), ny = Math.cos(a); kvbPoly(lg, [[c + Math.cos(a) * rad * .2, c + Math.sin(a) * rad * .2], [c + Math.cos(a) * rad * .98 + nx * 1.6, c + Math.sin(a) * rad * .98 + ny * 1.6], [c + Math.cos(a) * rad * .98 - nx * 1.6, c + Math.sin(a) * rad * .98 - ny * 1.6]], i & 1 ? p[3] : p[4]); } }}));
-  kvbDefDecal('pn_ult_' + k, 12, kvbRingPaint(pal, {fillCol: pal[1], core: pal[3], fill: .5, rimThick: 4, flash: pal[4], details: (lg, c, R, rad, p, q) => { for(let i = 0; i < 18; i++){ const a = i * .349 + q * .5, L = rad * (i & 1 ? .62 : .98), nx = -Math.sin(a), ny = Math.cos(a); kvbPoly(lg, [[c + Math.cos(a) * rad * .15, c + Math.sin(a) * rad * .15], [c + Math.cos(a) * L + nx * 2.4, c + Math.sin(a) * L + ny * 2.4], [c + Math.cos(a) * L - nx * 2.4, c + Math.sin(a) * L - ny * 2.4]], i & 1 ? p[3] : p[4]); } kvbCircle(lg, c, c, rad * .55, p[3], 1.4); kvbCircle(lg, c, c, rad * .3, p[4], 1); }}));
+  // El destello va ARRIBA de las entidades (capa 't'): solo puntas del cuarto exterior, sin borde ni relleno (el anillo y el relleno van en el suelo), para no tapar al enemigo golpeado
+  // (antes era un disco relleno al 50 % con núcleo claro: el «disco rosa» que cubría a los enemigos). El relleno vive en el suelo (pn_floor, capa 'g').
+  kvbDefDecal('pn_flash_' + k, 7, kvbRingPaint(pal, {fill: 0, noRim: true, rimThick: 3, details: (lg, c, R, rad, p) => { for(let i = 0; i < 8; i++){ const a = i * .7854 + .39, nx = -Math.sin(a), ny = Math.cos(a); kvbPoly(lg, [[c + Math.cos(a) * rad * .72, c + Math.sin(a) * rad * .72], [c + Math.cos(a) * rad * .98 + nx * 1.4, c + Math.sin(a) * rad * .98 + ny * 1.4], [c + Math.cos(a) * rad * .98 - nx * 1.4, c + Math.sin(a) * rad * .98 - ny * 1.4]], i & 1 ? p[3] : p[4]); } }}));
+  kvbDefDecal('pn_floor_' + k, 7, kvbRingPaint(pal, {fillCol: pal[1], core: pal[2], fill: .24, rimThick: 3, flash: pal[3]}));
+  kvbDefDecal('pn_ult_' + k, 12, kvbRingPaint(pal, {fillCol: pal[1], core: pal[2], fill: .24, rimThick: 4, flash: pal[4], details: (lg, c, R, rad, p, q) => { for(let i = 0; i < 18; i++){ const a = i * .349 + q * .5, L = rad * (i & 1 ? .62 : .98), nx = -Math.sin(a), ny = Math.cos(a); kvbPoly(lg, [[c + Math.cos(a) * rad * .15, c + Math.sin(a) * rad * .15], [c + Math.cos(a) * L + nx * 2.4, c + Math.sin(a) * L + ny * 2.4], [c + Math.cos(a) * L - nx * 2.4, c + Math.sin(a) * L - ny * 2.4]], i & 1 ? p[2] : p[3]); } kvbCircle(lg, c, c, rad * .55, p[3], 1.4); kvbCircle(lg, c, c, rad * .3, p[3], 1); }}));
   return t;
 }
 // kvbPunch viaja por la red como kvbFx('punch', x, y, r, 0, nivel, color numérico) para que los invitados lo vean igual
@@ -220,6 +223,7 @@ KVB_FX['punch'] = (x, y, r, ang, level, num) => {
     vfxShock(x, y, r * .1, r * (ult ? .9 : .6), rgb, ult ? 560 : 340, 2);
     if(ult){ vfxShock(x, y, r * .05, r * 1.25, '255,255,255', 760, 2); vfxShock(x, y, r * .1, r * .55, rgb, 900, 1); }
   }
+  kvbDecal('pn_floor_' + k, x, y, Math.min(r, 90) * (ult ? 1.1 : .7), ult ? 520 : 340, {layer: 'g', alpha: .9});
   kvbDecal('pn_flash_' + k, x, y, Math.min(r, 90) * (ult ? 1.1 : .7), ult ? 520 : 340, {layer: 't', alpha: .9});
   if(ult){
     kvbDecal('pn_ult_' + k, x, y, Math.min(r * 1.15, 280), 1100, {layer: 'g'});
