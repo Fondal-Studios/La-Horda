@@ -137,4 +137,6 @@ var CHAMP_ART_NORMALIZE = {"tanque":{"front":[1,0],"side":[0.8939,-1.11],"up":[0
 "aelith":{"front":[1.0536,-2],"side":[0.9672,-2],"up":[1.0536,-2]},
 "aelith@quality_aelith":{"front":[1.1132,-2],"side":[0.9365,-2],"up":[1,-2]},
 "aelith@aelith_alt1":{"front":[1.0172,-2],"side":[0.9365,-2.94],"up":[1,-2]},
-"aelith@aelith_croma":{"front":[1.0536,-2],"side":[0.9672,-2],"up":[1.0536,-2]}};
+"aelith@aelith_croma":{"front":[1.0536,-2],"side":[0.9672,-2],"up":[1.0536,-2]},
+"eslabon@eslabon_porcelana":{"front":[1.0536,-2],"side":[1.0172,-2],"up":[1,-2]},
+"morwen@morwen_escarcha":{"front":[1.0572,-2],"side":[0.9365,-2],"up":[0.9672,-2]}};

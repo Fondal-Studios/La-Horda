@@ -1,0 +1,1 @@
+Redibujo v2 con imagegen: conservar identidad y cuadrícula36 poses, clusters planos, contorno escalonado oscuro, tres bandas discretas, sin degradados/glow/textura pictórica. Resultado RECHAZADO; ver runtime. No se instala.

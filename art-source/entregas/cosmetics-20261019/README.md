@@ -1,16 +1,27 @@
-# Cuatro skins adicionales — 2026-10-19
+# Oficios del Fin — entrega parcial, 2026-10-19
 
-Continúan el ciclo Q5 y la skin de Brasa (#148); no son campeones nuevos. Fuentes originales creadas con imagegen a partir de la identidad propia de cada campeón, sin donantes ajenos. Prompts exactos y fuentes RGBA editables preservados. No se inventan capas de pintura.
+Continúa Q5 y Brasa (#148). Son skins de campeones existentes, no campeones nuevos. Fuentes propias generadas con imagegen respetando cada identidad; no se usaron donantes ajenos. Las cuatro fuentes iniciales están en c1d3ec34. Importar no equivale a aprobar ni publicar.
 
-- Garren, Campanero de Porcelana (eslabon_porcelana, B636).
-- Farolero, Guardavía de Medianoche (farolero_guardavia, B638).
-- Morwen, Herbolaria de Escarcha (morwen_escarcha, B643).
-- Dáriel, Luthier de los Autómatas (dariel_luthier, adicional).
+## Candidatas integradas en esta rama
 
-Fuente → tools/factory/import-authored-sheet.py → atlas 448×1008 y preview. Las cuatro importaciones tienen 36 poses y Style Gate PASS. Cuatro direcciones: down/right/up e izquierda por espejo. Filas de ataque direccionales; cast/ultimate/muerte frontales compartidos según contrato existente. Importación no equivale a aprobación visual ni publicación.
+- Garren, Campanero de Porcelana (`eslabon_porcelana`, B636): porcelana marfil/cobalto, hombrera de campana, cadena cerámica.
+- Morwen, Herbolaria de Escarcha (`morwen_escarcha`, B643): abrigo de boticaria, orejeras, frascos de vidrio, sin sombrero.
 
-Ajustes de encuadre respaldados por las fuentes: Farolero escala uniforme a 64px de referencia para conservar el arma extendida dentro de la celda; Dáriel mantiene 70px y usa el apoyo inferior explícito del frame 29, porque el detector automático confundía la bota con una fila superior. No se cambian tolerancias ni se recortan armas.
+Tienda, colección Oficios del Fin, historia y descripciones en español, packs propios con36 poses. Cuatro direcciones: izquierda por espejo según contrato existente. Cast/ultimate/muerte comparten poses frontales según formato vigente. Reutilizan VFX/audio originales de forma explícita, sin estadísticas. Precio del nivel de autor existente:12000 oro /1200 Brasas. No se activan cobros reales.
 
-Checkpoint de fuentes. Próximo paso: registro cosmético, Roster Gate a escala de juego, densidad nativa, guardado, tienda, multijugador, CI y revisión visual asistida documentada. Sin aprobación humana atribuida; sin cambios de estadísticas, cuentas, infraestructura o cobros.
+Pruebas locales: importación reproducible y Style Gate; Roster Gate139 apariencias sin fallos; regresión de skins6181 comprobaciones sin fallos, incluyendo dos comprobaciones explícitas de exclusión del taller rechazado; precios29/29. Por candidata:13 comprobaciones de compra, equipamiento, coste exacto, campeón incorrecto, progreso, estadísticas, atlas, animaciones, densidad a escala medida del renderer y guardado;36 fotogramas sin excepciones. Por candidata:7 comprobaciones con relay descartable y dos clientes, host e invitado como portador; atlas correcto en ambos renderers y habilidad ejecutada, cero errores JS.
 
-Escaneo técnico: alfa binaria en los cuatro atlas y cero fragmentos según el escáner. Eslabón/Farolero/Morwen/Dáriel tienen respectivamente4/2/3/3 píxeles brillantes de borde señalados por la métrica de posible halo; estos datos no se ocultan ni se sustituyen por cero. La revisión visual a escala real sigue pendiente.
+Revisión visual asistida por Codex, sin atribuir aprobación al owner ni a un artista humano: previews comparan Tanque y cuatro direcciones originales/nuevas a escala real; se revisaron cabeza/cuerpo, apoyo, contorno e identidad. Scanner: alfa binaria, cero fragmentos;4 y3 posibles píxeles claros respectivamente, por debajo del umbral15 existente. No se ocultaron datos ni aplicaron filtros para aprobar.
+
+## Rechazadas, fuera de la tienda
+
+- Farolero, Guardavía de Medianoche: densidad v1 falla por estilo de ilustración en13/36 frames. Redibujo v2 falla en9/36. Ambos resultados se conservan en runtime. La fuente principal/atlas siguen siendo v1; rejected-v2-source.png conserva el intento v2.
+- Dáriel, Luthier de los Autómatas: v1 falla densidad en frame23. V2 falla fábrica:35 siluetas separadas en lugar de36. La fuente principal/atlas siguen siendo v1; se conserva el intento rechazado por separado.
+
+No se registran las dos skins rechazadas. No bajar umbrales, agregar excepciones ni sustituir poses. Próximo paso: corrección artística focalizada y repetir todos los gates antes de registro.
+
+## Recuperación e integración
+
+El directorio local original dejó de estar disponible antes de subir el commit local5dbde1fc. Se recuperaron las fuentes desde GitHub c1d3ec34 y las pruebas desde los logs conservados. Esta rama reconstruye la integración, vuelve a probarla y conserva los resultados. No se afirma que el commit local perdido esté publicado.
+
+PR #150 depende de #148. El CI dedicado reproduce y prueba sólo las dos candidatas; el catálogo exige que las rechazadas sigan ausentes. Las fuentes en art-source no cuentan como contenido jugable. Main y despliegue público se verifican aparte. No se modifican infraestructura, cuentas, permisos o billeteras. Rendimiento en teléfono físico y acceso NanoGM no se certifican.
