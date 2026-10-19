@@ -15,6 +15,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
 // flags: {firstRun} = camino nuevo (window.__firstRun); save = guardado inicial (una sola vez por contexto)
 async function boot(browser, opts = {}) {
   const ctx = await browser.newContext({ viewport: { width: 844, height: 390 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
+  // These are local UI/persistence tests; never poll real account/room services or remote fonts.
+  await ctx.route('**/*', route => {
+    const u=new URL(route.request().url());
+    return u.origin===new URL(BASE).origin||['data:','blob:'].includes(u.protocol)?route.continue():route.abort('blockedbyclient');
+  });
   const page = await ctx.newPage();
   const errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));

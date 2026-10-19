@@ -67,3 +67,19 @@ Estas pruebas se complementan: recursos finitos no demuestran daño correcto, la
 - `node tools/art/check-authored-density.js ATLAS REPORTE [escala]`: detector canónico por cada uno de los 36 cuadros; rechaza cuadros vacíos. Complementa el Style Gate por medianas. Un PASS técnico tampoco reemplaza revisión visual ni prueba a escala de runtime.
 
 Los candidatos B001/B004 siguen en FIX. No reutilizar sus PNG como si hubieran aprobado el Art Gate. Fuentes y reportes están preservados para continuar sin repetir generaciones.
+
+El ensamblador de un cuadro admite `targetHeight` entero de1 a106, en píxeles de silueta completa; por defecto conserva la altura original. Se calibra explícitamente cuando el arma ocupa una proporción diferente y no permite igualar el cuerpo usando solo la altura total. Escala uniforme NEAREST, pies106 y otros35 cuadros intactos; rechaza clipping y valores inválidos. No es aprobación del arte. Pruebas: `python -m unittest tools/factory/test_authored_frame.py`.
+
+### Compatibilidad de animaciones antes de sustituir un atlas
+
+`node tools/factory/check-animation-contract.js --key PACK --candidate propuesta.json [--runtime archivo.js --symbol P] [--output reporte.json]`
+
+La propuesta contiene `key`, `atlas` (PNG real dentro del repo) y `meta` (w/h/cols/sets como en champPackLoadAtlas).
+Compara los clips declarados con el registro actual, rechaza clips perdidos/acortados, grillas inválidas y cuadros fuera del PNG (incluido espejo por complemento).
+Para renderers especiales, `--runtime` extrae llamadas literales a `_smFrame(P, "clip", ...)`.
+No reemplazar El Libertador por una plantilla36: perdería mosquete, recarga, bayoneta, mando y fases propias.
+Conservar también el pack montado; cambiar de arma en una fase equivocada requiere redibujar.
+
+`COMPATIBLE_NOT_ART_APPROVAL` verifica solo contrato declarado. No certifica contenido visual, efectos, habilidades implementadas, red, Style Gate ni Visual Gate.
+Seguir ejecutando los gates existentes y observando el renderer real. No agregar nombres ficticios para esconder poses faltantes.
+Pruebas: `node --test tools/factory/test-animation-contract.js`; el canario de Libertador debe ser rechazado por los clips reales ausentes.
