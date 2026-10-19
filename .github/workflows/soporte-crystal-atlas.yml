@@ -1,0 +1,25 @@
+name: Soporte competitive atlas verification
+on:
+  push:
+    branches: ['art-workshop/soporte-crystal-atlas-20261019']
+permissions:
+  contents: read
+jobs:
+  competitive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright ws
+      - run: npx playwright install --with-deps chromium
+      - run: node --check tools/crystal-wars/browser-test.js
+      - run: node tools/crystal-wars/browser-test.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: soporte-competitive-atlas
+          path: /tmp/cw-*.png
+          retention-days: 30
