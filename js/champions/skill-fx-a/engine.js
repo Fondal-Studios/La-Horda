@@ -24,6 +24,8 @@ const sfaCol = hex => { const n = parseInt(hex.slice(1), 16); return (((255 << 2
 const sfaHash = (x, y) => { let h = (x * 374761393 + y * 668265263) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
 const SFA_BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
 const sfaDither = (x, y, density) => (SFA_BAYER[((y & 3) << 2) + (x & 3)] + .5) / 16 < density;
+// Techo de relleno trameado de los decales de área (nova / zona / cono): ~20–25 % de los píxeles, el anillo exterior manda (docs/vfx/decal-legible)
+const SFA_FILL = .24;
 const sfaClamp = (v, a, b) => v < a ? a : v > b ? b : v;
 const sfaEase = k => 1 - (1 - k) * (1 - k);
 
@@ -114,8 +116,8 @@ function sfaBakeNova(T, size, o) {
       sfaDisc(S, f, c, 2 + f * 2, T.px.c, 1, T, {noShape: true});
     } else if (f < SFA_NOVA_A + SFA_NOVA_I) {   // IMPACTO: el frente barre el área real
       const k = (f - SFA_NOVA_A + 1) / SFA_NOVA_I, front = R * sfaEase(k) * .97;
-      sfaDisc(S, f, c, front, T.px.d, .66 - k * .3, T, {grad: true});
-      sfaDisc(S, f, c, front * .7, T.px.a, .5 - k * .3, T, {});
+      sfaDisc(S, f, c, front, T.px.d, SFA_FILL - k * .1, T, {grad: true});
+      sfaDisc(S, f, c, front * .7, T.px.a, SFA_FILL * .6 - k * .06, T, {});
       if (k < .45) sfaDisc(S, f, c, R * .22 * (1 - k * 1.8), T.px.c, .85, T, {noShape: true});
       sfaRing(S, f, c, front, bw + (k < .6 ? 1 : 0), T, {});
       if (k > .2) for (let i = 0; i < N; i++) { const a = i * Math.PI * 2 / N + k * .5; sfaStamp(S, f, mot[i % mot.length], c + Math.cos(a) * front * .94, c + Math.sin(a) * front * .94, T, null, false, ms); }
@@ -123,7 +125,7 @@ function sfaBakeNova(T, size, o) {
       sfaTrueEdge(S, f, c, R, T, .45, f * .1);
     } else {                        // DISIPACIÓN: el anillo se afina y los motivos se deshacen hacia afuera
       const k = (f - SFA_NOVA_A - SFA_NOVA_I + 1) / (SFA_NOVA_N - SFA_NOVA_A - SFA_NOVA_I), keep = sfaDissolve(k * .95, f);
-      sfaDisc(S, f, c, R * .96, T.px.d, .3 * (1 - k), T, {grad: true, keep});
+      sfaDisc(S, f, c, R * .96, T.px.d, SFA_FILL * .8 * (1 - k), T, {grad: true, keep});
       sfaRing(S, f, c, R * .96, k < .5 ? bw - 1 : 2, T, {keep});
       for (let i = 0; i < N; i++) { const a = i * Math.PI * 2 / N + .5 + k * .3, rr = R * (.94 + k * .1); sfaStamp(S, f, mot[i % mot.length], c + Math.cos(a) * rr, c + Math.sin(a) * rr - k * 5, T, sfaDissolve(k * .9, i * 7 + f), false, ms); }
       sfaTrueEdge(S, f, c, R, T, .4 * (1 - k), f * .1);
@@ -141,8 +143,8 @@ function sfaBakeZone(T, size, inner) {
   const band = inner ? {keep: (x, y) => Math.hypot(x + .5 - c, y + .5 - c) >= R * inner - 1} : {};
   for (let f = 0; f < SFA_ZONE_N; f++) {
     const ph = f / SFA_ZONE_N;
-    sfaDisc(S, f, c, R * .98, T.px.d, .26, T, Object.assign({grad: true}, band));
-    sfaDisc(S, f, c, R * .6, T.px.a, .14, T, inner ? {keep: band.keep} : {});
+    sfaDisc(S, f, c, R * .98, T.px.d, SFA_FILL * .7, T, Object.assign({grad: true}, band));
+    sfaDisc(S, f, c, R * .6, T.px.a, SFA_FILL * .32, T, inner ? {keep: band.keep} : {});
     sfaRing(S, f, c, R * .96, 3, T, {dash: {n: 16, on: .66, ph: -ph}});
     if (inner) sfaRing(S, f, c, R * inner, 2, T, {shape: 'round', dash: {n: 18, on: .7, ph: ph}});
     else sfaRing(S, f, c, R * .64, 1, T, {shape: 'round', rim: 'a', dash: {n: 10, on: .5, ph: ph}});
@@ -171,8 +173,8 @@ function sfaBakeCone(T, size, arc) {
       if (f < 7) {
         if (Math.abs(behind) < .09 && d > R * .25) S.set(f, x, y, d > R * .8 ? T.px.c : T.px.b);
         else if (Math.abs(behind) < .2 && d > R * .25) S.set(f, x, y, T.px.a);
-        else if (behind < 0 && sfaDither(x, y, .6 * (1 + behind / (2 * arc)) + .08)) S.set(f, x, y, behind > -.7 ? T.px.a : T.px.d);
-      } else if (sfaDither(x, y, .3 * (1 - tail)) && sfaHash(x, y) >= tail) S.set(f, x, y, T.px.d);
+        else if (behind < 0 && sfaDither(x, y, SFA_FILL * 1.2 * (1 + behind / (2 * arc)) + .05)) S.set(f, x, y, behind > -.7 ? T.px.a : T.px.d);
+      } else if (sfaDither(x, y, SFA_FILL * .8 * (1 - tail)) && sfaHash(x, y) >= tail) S.set(f, x, y, T.px.d);
     }
     if (f >= 2) for (let i = 0; i < 5; i++) { const a = -arc * .75 + i * arc * .375, rr = R * (.45 + .1 * (i % 2) + (f - 2) * .04); sfaStamp(S, f, mot[i % mot.length], 1 + Math.cos(a) * rr, cy + Math.sin(a) * rr, T, tail ? sfaDissolve(tail, i + f) : null); }
   }
@@ -259,9 +261,20 @@ function sfaDeriveVariant(base, v) {
   const px = {}; for (const c in P) px[c] = sfaCol(P[c]);
   return Object.assign({}, base, {pal: P, px, shape: SFA_SHAPES[(Math.max(0, si) + shift) % SFA_SHAPES.length], motifs: mo});
 }
+// Tinte por arena: la paleta del tema se mezcla con AID_INLAY_PALETTES[arena] (js/rendering/arena-props.js); contorno y brillo conservan el carácter del campeón.
+function sfaArenaKey() { try { return (typeof currentArena === 'string' && typeof AID_INLAY_PALETTES !== 'undefined' && AID_INLAY_PALETTES[currentArena]) ? currentArena : ''; } catch (e) { return ''; } }
+function sfaMix(a, b, t) { const A = parseInt(a.slice(1), 16), B = parseInt(b.slice(1), 16), ch = s => { const x = (A >> s) & 255, y = (B >> s) & 255; return Math.round(x + (y - x) * t); }; return '#' + [16, 8, 0].map(s => ch(s).toString(16).padStart(2, '0')).join(''); }
+function sfaTintTheme(T, arena) {
+  const key = '@' + arena; if (T[key]) return T[key];
+  const A = AID_INLAY_PALETTES[arena], lit = (c, k) => sfaMix(c, '#ffffff', k), p = T.pal, P = Object.assign({}, p);
+  P.o = sfaMix(p.o, A[0], .45); P.d = sfaMix(p.d, A[1], .75); P.a = sfaMix(p.a, A[2], .7); P.b = sfaMix(p.b, lit(A[2], .3), .7); P.c = sfaMix(p.c, lit(A[2], .6), .6); if (p.e) P.e = sfaMix(p.e, lit(A[2], .3), .5);
+  const px = {}; for (const c in P) px[c] = sfaCol(P[c]);
+  return (T[key] = Object.assign({}, T, {pal: P, px}));
+}
 function sfaBake(art, theme, size, arc) {
-  const key = art + '|' + theme + '|' + size + '|' + (arc || 0); let b = sfaCache.get(key); if (b) return b;
-  const T = sfaTheme(theme); if (!T) return null;
+  const arena = sfaArenaKey(), key = art + '|' + theme + '|' + size + '|' + (arc || 0) + '|' + arena; let b = sfaCache.get(key); if (b) return b;
+  let T = sfaTheme(theme); if (!T) return null;
+  if (arena) T = sfaTintTheme(T, arena);
   const t0 = performance.now();
   let S;
   if (art === 'nova') S = sfaBakeNova(T, size); else if (art === 'zone') S = sfaBakeZone(T, size, arc); else if (art === 'cone') S = sfaBakeCone(T, size, arc);
