@@ -33,15 +33,27 @@ jobs:
           SERVER_PID=$!
           trap 'kill "$SERVER_PID"' EXIT
           ROSTER_BASE_URL=http://127.0.0.1:8750 node tools/art/roster_gate.js
-          SE_BASE_URL=http://127.0.0.1:8750 PACKS=soporte,skin_custodio,skin_baluarte node tools/art/skin_audit.js docs/art-gate/soporte-v3/skins
+      - name: Existing skin gate
+        id: skins
+        continue-on-error: true
+        run: |
+          python3 -m http.server 8751 --bind 127.0.0.1 >/tmp/soporte-skin-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          SE_BASE_URL=http://127.0.0.1:8751 PACKS=soporte,skin_custodio,skin_baluarte node tools/art/skin_audit.js docs/art-gate/soporte-v3/skins
       - name: Emit diagnostic JSON
         if: always()
         run: |
           python3 - <<'PY'
-          import pathlib
+          import pathlib,base64,json,hashlib
           for name in ['docs/art-gate/soporte-v3/runtime.json','docs/art-gate/roster-gate.json','docs/art-gate/soporte-v3/skins/report.json']:
               p=pathlib.Path(name)
               if p.exists(): print('REPORT_BEGIN '+name+'\n'+p.read_text()+'REPORT_END '+name)
+          p=pathlib.Path('docs/art-gate/soporte-v3/runtime-contact.png')
+          if p.exists():
+              raw=p.read_bytes();encoded=base64.b64encode(raw).decode()
+              print('PREVIEW_META '+json.dumps({'sha256':hashlib.sha256(raw).hexdigest()}))
+              for index in range(0,len(encoded),4096):print('PREVIEW_CHUNK '+json.dumps({'index':index//4096,'data':encoded[index:index+4096]}))
           PY
       - uses: actions/upload-artifact@v4
         if: always()
@@ -54,3 +66,4 @@ jobs:
         run: |
           test "${{ steps.runtime.outcome }}" = success
           test "${{ steps.art.outcome }}" = success
+          test "${{ steps.skins.outcome }}" = success

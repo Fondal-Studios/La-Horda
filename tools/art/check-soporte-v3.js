@@ -31,7 +31,7 @@ const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(path.join(ROO
   }
   for(const level of [1,39,40,60,90,99]){
    const result=await host.evaluate(level=>{
-    const checks=[],seen=new Set(),trace=[],body=[];
+    const checks=[],seen=new Set(),trace=[],body=[],frameImages=new Map();
     const check=(name,ok,details)=>checks.push({name,ok:!!ok,...(details?{details}:{})});
     for(const c of Object.values(save.champions))c.unlocked=true;
     save.champions.soporte.level=level;save.champions.soporte.equipment={};save.champions.soporte.inventory=[];
@@ -51,6 +51,10 @@ const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(path.join(ROO
      g.clearRect(0,0,260,260);g.save();g.translate(130,220);g.imageSmoothingEnabled=false;ctx=g;
      try{if(death)drawChampPackDeath(h);else drawChampPack(h.classKey,h,h.scale,1);}
      finally{ctx=saved;g.restore();champPackDrawFrame=original;}
+     for(const call of calls)if(!frameImages.has(call.frame)){
+      const shot=document.createElement('canvas');shot.width=shot.height=100;
+      shot.getContext('2d').drawImage(cv,80,130,100,100,0,0,100,100);frameImages.set(call.frame,shot);
+     }
      const pixels=g.getImageData(0,0,260,260).data;
      return {calls,opaque:pixels.some((v,i)=>i%4===3&&v>40)};
     }
@@ -109,8 +113,12 @@ const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(path.join(ROO
     const old=P.sets.ultimate_down;P.sets.ultimate_down=[9999];
     const inBounds=()=>Object.values(P.sets).every(arr=>arr.every(v=>(v<0?~v:v)<P.cols*Math.floor(P.atlas.naturalHeight/P.fh)));
     check('negative canary rejects unavailable frame',!inBounds());P.sets.ultimate_down=old;check('restored frames in image',inBounds());
-    return {level,checks,trace,body,snapshot,reference};
+    let preview=null;
+    if(level===1){const sheet=document.createElement('canvas');sheet.width=600;sheet.height=600;const sg=sheet.getContext('2d');sg.fillStyle='#242837';sg.fillRect(0,0,600,600);sg.font='11px monospace';sg.imageSmoothingEnabled=false;
+     for(let n=0;n<36;n++){const x=n%6*100,y=Math.floor(n/6)*100;sg.strokeStyle='#509c79';sg.beginPath();sg.moveTo(x,y+90);sg.lineTo(x+100,y+90);sg.stroke();if(frameImages.has(n))sg.drawImage(frameImages.get(n),x,y);sg.fillStyle='#fff';sg.fillText(String(n),x+4,y+12);}preview=sheet.toDataURL('image/png');}
+    return {level,checks,trace,body,snapshot,reference,preview};
    },level);
+   if(result.preview)fs.writeFileSync(path.join(OUT,'runtime-contact.png'),Buffer.from(result.preview.split(',')[1],'base64'));
    report.checks.push(...result.checks.map(c=>({...c,name:'L'+level+' '+c.name})));
    const replay=await guest.evaluate(snapshot=>{
     const hero=netDecode(snapshot);hero.x=hero.y=0;hero.hurtTimer=0;hero.moving=false;hero._codexSkin=null;
