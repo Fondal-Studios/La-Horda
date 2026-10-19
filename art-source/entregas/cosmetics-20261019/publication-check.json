@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-10-19T14:49:31.138067+00:00",
+  "results": [
+    {
+      "url": "https://fondalstudios.com/la-horda/red/api/health",
+      "http": 200,
+      "sha256": "088c0ecee282c7ef8490abab9846ef9d6c3847e98901e57f8e51c057e320557a",
+      "bytes": 231,
+      "health": {
+        "ok": true,
+        "store": "file",
+        "persistent": false
+      }
+    },
+    {
+      "url": "https://fondalstudios.com/la-horda/jugar/js/assets/quality-five-skins-meta.js",
+      "http": 200,
+      "sha256": "d94f3b8e92ce2ca3b7bf85d33a88bf8f0958ff30e280271c9401e191c9f0fe43",
+      "bytes": 7004,
+      "present": {
+        "brasa_abisal": false,
+        "eslabon_porcelana": false,
+        "morwen_escarcha": false,
+        "B1-7-quality-five-originals": false,
+        "fondalstudios.com": false,
+        "la-horda-nano-relay": false
+      }
+    },
+    {
+      "url": "https://fondalstudios.com/la-horda/jugar/js/champions/skill-fx-a/engine.js",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://la-horda-nano-relay.onrender.com/api/health",
+      "error": "The read operation timed out"
+    },
+    {
+      "url": "https://la-horda-nano.onrender.com/js/assets/quality-five-skins-meta.js",
+      "http": 200,
+      "sha256": "d94f3b8e92ce2ca3b7bf85d33a88bf8f0958ff30e280271c9401e191c9f0fe43",
+      "bytes": 7004,
+      "present": {
+        "brasa_abisal": false,
+        "eslabon_porcelana": false,
+        "morwen_escarcha": false,
+        "B1-7-quality-five-originals": false,
+        "fondalstudios.com": false,
+        "la-horda-nano-relay": false
+      }
+    },
+    {
+      "url": "https://la-horda-nano.onrender.com/js/net-config.js",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ]
+}

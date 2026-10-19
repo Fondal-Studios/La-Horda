@@ -25,3 +25,7 @@ No se registran las dos skins rechazadas. No bajar umbrales, agregar excepciones
 El directorio local original dejó de estar disponible antes de subir el commit local5dbde1fc. Se recuperaron las fuentes desde GitHub c1d3ec34 y las pruebas desde los logs conservados. Esta rama reconstruye la integración, vuelve a probarla y conserva los resultados. No se afirma que el commit local perdido esté publicado.
 
 PR #150 depende de #148. El CI dedicado reproduce y prueba sólo las dos candidatas; el catálogo exige que las rechazadas sigan ausentes. Las fuentes en art-source no cuentan como contenido jugable. Main y despliegue público se verifican aparte. No se modifican infraestructura, cuentas, permisos o billeteras. Rendimiento en teléfono físico y acceso NanoGM no se certifican.
+
+Actualización GM: el catálogo owner incluye47 entradas previas más Brasa, Garren y Morwen (50). La prueba exige las tres identidades únicas y el total exacto.127 comprobaciones de integración/seguridad PASS. No se cambia código runtime GM.
+
+Comprobación pública14:49 UTC: Fondal y el sitio independiente todavía sirven el catálogo anterior sin las tres skins. El health Fondal responde200 pero informa store=file y persistent=false. No se reinicia ni despliega el servidor. La consulta al relay independiente agotó25s; no se concluye pérdida de datos. Render MCP no tiene workspace seleccionado, por lo que esta sesión no certifica sus despliegues. Ver publication-check.json; los404 son sondas a rutas internas, no evidencia de un fallo de la aplicación pública.
