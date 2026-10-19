@@ -317,7 +317,10 @@ function drawChampPack(key, h, drawScale, alpha){
 }
 // Muerte con los frames reales (en vez del sprite de pie rotado): queda tendido semitransparente.
 function drawChampPackDeath(h){
-  const P = CHAMP_PACK[typeof setSkinPackKey==="function" ? setSkinPackKey(h, h.classKey) : h.classKey];
+  const key = typeof setSkinPackKey==="function" ? setSkinPackKey(h, h.classKey) : h.classKey;
+  // Supplemental base-only clip: skins/cromas keep their own appearance and fallback.
+  const supplement = key === "libertador" ? CHAMP_PACK.libertador_death : null;
+  const P = supplement && supplement.ready ? supplement : CHAMP_PACK[key];
   if(!P || !P.ready) return false;
   if(!h._deadAt){ h._deadAt = animNow; vfxBurst(h.x, h.y-20, 12, "blood", 120, 420, 3, 2, -30, 0); }
   const pick = champPackSet(P, "death", h._pdir || "down", h);
