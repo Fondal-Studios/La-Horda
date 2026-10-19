@@ -150,7 +150,8 @@ function render(){
     }
   }
   for(const h of heroes){ if(h.wolf) drawSpectralWolf(h.wolf); }
-  if(netMatch) netDrawNameTags(); else botDrawNameTags(); // B1: nombre de cada amigo sobre su guardián; en solitario, "BOT" sobre cada compañero
+  if(typeof lanesOn==="function" && lanesOn() && typeof sidesDrawNameTags==="function") sidesDrawNameTags(); // Cristales/Coliseo: rótulos por bando (verde/rojo + escudo/espada)
+  else if(netMatch) netDrawNameTags(); else botDrawNameTags(); // B1: nombre de cada amigo sobre su guardián; en solitario, "BOT" sobre cada compañero
   drawMusashiAfterimages();
   drawDownedMarkers();
   drawNigroGolemFx(); // impactos / chorros / rayos de los golpes del gólem

@@ -123,35 +123,35 @@ function lanesDrawTop(){
   const now = performance.now() / 1000;
   for(const T of LN.team) for(const s of T.S){
     if(!s.alive || !inView(s.x, s.y, 300)) continue;
-    const col = lanesTeamColor(s.team), f = Math.max(0, s.hp / s.maxHp), exposed = lanesExposed(s);
-
+    const rel = sidesOf(s), sc = sidesCol(rel), f = Math.max(0, s.hp / s.maxHp), exposed = lanesExposed(s);
+    // aro bajo la estructura en el color del bando (el cuerpo conserva el color del equipo: marca de quién es la base)
+    sidesRing(ctx, rel, s.x, s.y + 14, s.kind === "tower" ? 58 : 80, s.kind === "tower" ? 19 : 26, {lw:4, alpha:0.7});
     const bw = s.kind === "tower" ? 96 : 130, by = s.y + (s.kind === "tower" ? 34 : 40);
-    ctx.fillStyle = "rgba(5,8,14,.85)"; ctx.fillRect(s.x - bw / 2 - 2, by, bw + 4, 14);
-    ctx.fillStyle = exposed ? (f > 0.5 ? col : (f > 0.25 ? "#ffcf5c" : "#ff6a5a")) : "#7c8798"; ctx.fillRect(s.x - bw / 2, by + 2, bw * f, 10);
+    sidesBar(ctx, rel, s.x - bw / 2, by + 2, bw, 10, f, {dim:!exposed});
+    sidesIcon(ctx, rel, s.x - bw / 2 - 14, by + 7, 14);
     if(!exposed && player && Math.hypot(player.x - s.x, player.y - s.y) < 700){ ctx.font = pxFont(12); ctx.textAlign = "center"; ctx.fillStyle = "#cfd8e4"; ctx.fillText("PROTEGIDA", s.x, by + 28); }
-    else if(s.kind === "crystal"){ ctx.font = pxFont(12); ctx.textAlign = "center"; ctx.fillStyle = "#fff"; ctx.fillText(lanesTeamName(s.team) + " " + Math.ceil(s.hp), s.x, by + 28); }
+    else if(s.kind === "crystal"){ ctx.font = pxFont(12); ctx.textAlign = "center"; ctx.fillStyle = sc.hi; ctx.fillText(lanesTeamName(s.team) + " " + Math.ceil(s.hp), s.x, by + 28); }
   }
   // disparos de torre
   ctx.save(); ctx.lineCap = "round";
   for(const sh of LN.shots){
-    const k = Math.min(1, (LN.t - sh.t) / 200), x = sh.x1 + (sh.x2 - sh.x1) * k, y = sh.y1 + (sh.y2 - sh.y1) * k, col = lanesTeamColor(sh.team);
+    const k = Math.min(1, (LN.t - sh.t) / 200), x = sh.x1 + (sh.x2 - sh.x1) * k, y = sh.y1 + (sh.y2 - sh.y1) * k, col = sidesCol(sidesOfTeam(sh.team)).fill;
     ctx.strokeStyle = col; ctx.lineWidth = 4; ctx.globalAlpha = 1 - k * 0.5; ctx.shadowColor = col; ctx.shadowBlur = 12;
     ctx.beginPath(); ctx.moveTo(sh.x1 + (x - sh.x1) * 0.6, sh.y1 + (y - sh.y1) * 0.6); ctx.lineTo(x, y); ctx.stroke();
   }
   ctx.restore();
-  // anillo de equipo bajo los héroes para distinguir aliados de rivales
+  // anillo del bando bajo los héroes (verde aliado liso · rojo enemigo discontinuo · yo = blanco + verde brillante)
   for(const h of heroes){ if(!h.alive || h.team == null || !inView(h.x, h.y, 80)) continue;
-    ctx.save(); ctx.strokeStyle = lanesTeamColor(h.team); ctx.globalAlpha = h === player ? 0.95 : 0.7; ctx.lineWidth = h === player ? 4 : 3;
-    ctx.beginPath(); ctx.ellipse(h.x, h.y + 12, 26, 10, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore(); }
+    sidesRing(ctx, sidesOf(h), h.x, h.y + 12, 26, 10, {lw:h === player ? 3.5 : 3, alpha:h === player ? 0.95 : 0.8}); }
   // volver a la base: aro que se cierra
   for(const h of heroes){ if(!h._recall || !h.alive || !inView(h.x, h.y, 100)) continue;
     const k = Math.min(1, (LN.t - h._recall.t0) / LANES.RECALL_MS); ctx.save(); ctx.strokeStyle = "#bfe8ff"; ctx.lineWidth = 4; ctx.globalAlpha = 0.9;
     ctx.beginPath(); ctx.arc(h.x, h.y + 6, 60 - 34 * k, 0, Math.PI * 2 * k); ctx.stroke(); ctx.restore(); }
-  // anillo de equipo bajo las criaturas (solo las cercanas a la cámara)
+  // anillo del bando bajo las criaturas (solo las cercanas a la cámara); selva y objetivos épicos = ámbar
   for(const e of enemies){ if(!e.alive || e.lanesProxy || e.team == null || !inView(e.x, e.y, 60)) continue;
-    if(e.epicId != null && e.maxHp){ const f = Math.max(0, e.hp / e.maxHp); ctx.fillStyle = "rgba(5,8,14,.85)"; ctx.fillRect(e.x - 62, e.y - 118, 124, 14); ctx.fillStyle = "#d89bff"; ctx.fillRect(e.x - 60, e.y - 116, 120 * f, 10); }
-    ctx.save(); ctx.strokeStyle = e.team === 2 ? "#e8c46a" : lanesTeamColor(e.team); ctx.globalAlpha = 0.55; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.ellipse(e.x, e.y + 6, e.radius * 0.8, e.radius * 0.32, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore(); }
+    const rel = sidesOf(e);
+    if(e.epicId != null && e.maxHp) sidesBar(ctx, rel, e.x - 60, e.y - 116, 120, 10, Math.max(0, e.hp / e.maxHp));
+    sidesRing(ctx, rel, e.x, e.y + 6, e.radius * 0.8, e.radius * 0.32, {lw:2, alpha:0.7}); }
 }
 Object.assign(ARENA_DEFS.convergencia, {drawWorld:lanesDrawWorld, drawTop:lanesDrawTop});
 

@@ -12,9 +12,9 @@ function lanesHudBuild(){
   const el = document.createElement("div"); el.id = "lanes-hud"; el.className = "lanes-hud hidden";
   el.innerHTML =
     '<div class="ln-score" role="status" aria-live="polite">' +
-      '<div class="ln-team ln-blue"><b>ZAFIRO</b><span class="ln-pips"></span><span class="ln-hp"></span><i class="ln-bar"><u></u></i></div>' +
+      '<div class="ln-team ln-blue"><b class="ln-name"><i class="ln-side"></i>ZAFIRO</b><span class="ln-pips"></span><span class="ln-hp"></span><i class="ln-bar"><u></u></i></div>' +
       '<div class="ln-clock"><strong class="ln-time">18:00</strong><span class="ln-wave"></span><span class="ln-epics"></span></div>' +
-      '<div class="ln-team ln-amber"><b>ÁMBAR</b><span class="ln-pips"></span><span class="ln-hp"></span><i class="ln-bar"><u></u></i></div>' +
+      '<div class="ln-team ln-amber"><b class="ln-name"><i class="ln-side"></i>ÁMBAR</b><span class="ln-pips"></span><span class="ln-hp"></span><i class="ln-bar"><u></u></i></div>' +
     '</div>' +
     '<div class="ln-note" role="status"></div>' +
     '<div class="ln-feed" aria-live="polite"></div>' +
@@ -49,6 +49,8 @@ function lanesHudHide(){ _lnPill(false); if(typeof colHudHide === "function") co
 function _lnMin(ms){ const t = Math.ceil(ms / 1000); return Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0"); }
 function _lnClock(ms){ const left = Math.max(0, Math.ceil((LANES.TIME_LIMIT_MS - ms) / 1000)); return Math.floor(left / 60) + ":" + String(left % 60).padStart(2, "0"); }
 
+// Color de una línea del registro: verde si el hecho fue de tu bando, rojo si fue del rival (el texto nombra al equipo).
+function sidesFeedColor(team){ const rel = sidesOfTeam(team); return rel ? sidesCol(rel).hi : "#ffffff"; }
 let _lnOfferKey = "";
 function lanesHudTick(){
   if(LN && LN.mode === "coliseo"){ if(typeof colHudTick === "function") colHudTick(); return; }
@@ -56,10 +58,11 @@ function lanesHudTick(){
   const el = _lnHud, q = s=>el.querySelector(s), me = player.team != null ? player.team : 0, T = L.team[me];
   [0, 1].forEach(i=>{
     const c = L.team[i].S[9], t = el.querySelectorAll(".ln-team")[i];
+    const rel = sidesOfTeam(i) || "enemy"; t.dataset.side = rel; t.querySelector(".ln-name").dataset.tag = SIDES_NAME[rel];   // verde = tu equipo, rojo = rival (el color del equipo queda en el nombre)
     t.querySelector(".ln-hp").textContent = Math.ceil(c.hp) + (c.ward > 0 ? " +" + Math.ceil(c.ward) : "");
     t.querySelector(".ln-bar u").style.width = Math.max(0, c.hp / c.maxHp * 100) + "%";
     const ex = L.team[i].S[9], nTw = L.team[i].S.filter(s=>s.kind === "tower" && s.alive).length;
-    t.querySelector(".ln-pips").innerHTML = '<em class="on">▲</em> ' + nTw + '/9 torres' + (ex && lanesExposed(ex) ? ' · <em class="off" style="color:#ff8a7a">¡EXPUESTO!</em>' : '');
+    t.querySelector(".ln-pips").innerHTML = '<em class="on">▲</em> ' + nTw + '/9 torres' + (ex && lanesExposed(ex) ? ' · <em class="off" style="color:var(--enemy-hi)">¡EXPUESTO!</em>' : '');
   });
   q(".ln-time").textContent = _lnClock(L.t);
   q(".ln-wave").textContent = L.t >= LANES.ECLIPSE_MS ? "☀ ECLIPSE" : "Oleada " + L.wave;
@@ -77,7 +80,7 @@ function lanesHudTick(){
   const bf = []; if(T.buffs.dragon > L.t) bf.push("Dragón +10 % daño " + _lnMin(T.buffs.dragon - L.t)); if(T.buffs.rey > L.t) bf.push("Rey Coloso " + _lnMin(T.buffs.rey - L.t)); if(player._lnBuff && player._lnBuff.until > L.t) bf.push("Gigante +12 % " + _lnMin(player._lnBuff.until - L.t));
   q(".ln-note").textContent = L.t >= LANES.ECLIPSE_MS ? "Los dos cristales se apagan cada vez más rápido" : (bf.length ? "★ " + bf.join(" · ") : (L.t < 20000 ? "Tu horda sale sola por los tres carriles. Acompañala y derribá torres." : (player._recall ? "Volviendo a la base… no te muevas" : "")));
   const foes = L.feed.filter(f=>L.t - f.t < 9000).slice(-3);
-  q(".ln-feed").innerHTML = foes.map(f=>'<div style="color:' + lanesTeamColor(f.team) + '">' + f.text + '</div>').join("");
+  q(".ln-feed").innerHTML = foes.map(f=>'<div style="color:' + sidesFeedColor(f.team) + '">' + f.text + '</div>').join("");
   // carta de horda
   const cards = q(".ln-cards"), key = T.offer ? T.offer.join(",") + "@" + T.offerAt : "";
   if(T.offer){
@@ -105,15 +108,25 @@ function lanesDrawMap(){
   g.lineCap = "round"; g.lineJoin = "round";
   for(let l = 0; l < 3; l++){ g.beginPath(); LANES_PATHS[l].pts.forEach((q, i)=>{ if(i) g.lineTo(q[0] * sx, q[1] * sy); else g.moveTo(q[0] * sx, q[1] * sy); }); g.strokeStyle = "#7a8296"; g.lineWidth = 8; g.stroke(); }
   g.strokeStyle = "#5a6b88"; g.lineWidth = 2; g.strokeRect(1, 1, W - 2, H - 2);
-  for(const cd of LANES_CAMPS){ const camp = LN.camps && LN.camps[cd.id], on = camp ? camp.mons.some(m=>m.alive) : (enemies.some(e=>e.alive && e.campId === cd.id)); g.fillStyle = on ? "#e8c46a" : "#5a5030"; g.beginPath(); g.arc(cd.x * sx, cd.y * sy, 3, 0, Math.PI * 2); g.fill(); }
-  for(const ed of LANES_EPICS){ const on = enemies.some(e=>e.alive && e.epicId === ed.id); g.fillStyle = on ? "#d89bff" : "#4a3560"; g.beginPath(); g.moveTo(ed.x * sx, ed.y * sy - 7); g.lineTo(ed.x * sx + 6, ed.y * sy + 5); g.lineTo(ed.x * sx - 6, ed.y * sy + 5); g.closePath(); g.fill(); }
+  const NE = sidesCol("neutral");
+  for(const cd of LANES_CAMPS){ const camp = LN.camps && LN.camps[cd.id], on = camp ? camp.mons.some(m=>m.alive) : (enemies.some(e=>e.alive && e.campId === cd.id)); g.fillStyle = on ? NE.fill : NE.dark; g.beginPath(); g.arc(cd.x * sx, cd.y * sy, 3, 0, Math.PI * 2); g.fill(); }
+  for(const ed of LANES_EPICS){ const on = enemies.some(e=>e.alive && e.epicId === ed.id); g.fillStyle = on ? NE.hi : NE.dark; g.strokeStyle = NE.fill; g.lineWidth = 1.5; g.beginPath(); g.moveTo(ed.x * sx, ed.y * sy - 7); g.lineTo(ed.x * sx + 6, ed.y * sy + 5); g.lineTo(ed.x * sx - 6, ed.y * sy + 5); g.closePath(); g.fill(); g.stroke(); }
+  // estructuras: verde = tuyas, rojo = rivales; cristal = rombo, torre aliada = cuadrado, torre rival = triángulo
   for(const T of LN.team) for(const s of T.S){
-    if(!s.alive) continue; g.fillStyle = lanesTeamColor(s.team);
-    if(s.kind === "crystal"){ const x = s.x * sx, y = s.y * sy; g.beginPath(); g.moveTo(x, y - 9); g.lineTo(x + 7, y); g.lineTo(x, y + 9); g.lineTo(x - 7, y); g.closePath(); g.fill(); }
-    else { g.fillRect(s.x * sx - 3, s.y * sy - 3, 6, 6); }
+    if(!s.alive) continue; const rel = sidesOf(s), c = sidesCol(rel), x = s.x * sx, y = s.y * sy;
+    g.fillStyle = c.fill; g.strokeStyle = "#000"; g.lineWidth = 1.5; g.beginPath();
+    if(s.kind === "crystal"){ g.moveTo(x, y - 9); g.lineTo(x + 7, y); g.lineTo(x, y + 9); g.lineTo(x - 7, y); g.closePath(); }
+    else if(rel === "enemy"){ g.moveTo(x, y - 5); g.lineTo(x + 5, y + 4); g.lineTo(x - 5, y + 4); g.closePath(); }
+    else g.rect(x - 3.5, y - 3.5, 7, 7);
+    g.stroke(); g.fill();
   }
-  for(const e of enemies){ if(!e.alive || e.lanesProxy || e.team == null || e.team === 2) continue; g.fillStyle = lanesTeamColor(e.team); const z = e.isBrute ? 4 : 2; g.fillRect(e.x * sx - z / 2, e.y * sy - z / 2, z, z); }
-  for(const h of heroes){ if(h.team == null) continue; g.fillStyle = h.alive ? "#fff" : "#555"; g.beginPath(); g.arc(h.x * sx, h.y * sy, h === player ? 5 : 4, 0, Math.PI * 2); g.fill(); g.strokeStyle = lanesTeamColor(h.team); g.lineWidth = 2; g.stroke(); }
+  for(const e of enemies){ if(!e.alive || e.lanesProxy || e.team == null || e.team === 2) continue; g.fillStyle = sidesCol(sidesOf(e)).fill; const z = e.isBrute ? 4 : 2; g.fillRect(e.x * sx - z / 2, e.y * sy - z / 2, z, z); }
+  // héroes: aliado = círculo con aro verde, rival = rombo con aro rojo, yo = círculo grande con aro blanco y verde
+  for(const h of heroes){ if(h.team == null) continue; const rel = sidesOf(h), c = sidesCol(rel), x = h.x * sx, y = h.y * sy, r = h === player ? 5 : 4;
+    g.fillStyle = h.alive ? "#fff" : "#555"; g.strokeStyle = c.fill; g.lineWidth = 2; g.beginPath();
+    if(rel === "enemy"){ g.moveTo(x, y - r - 1.5); g.lineTo(x + r + 1.5, y); g.lineTo(x, y + r + 1.5); g.lineTo(x - r - 1.5, y); g.closePath(); } else g.arc(x, y, r, 0, Math.PI * 2);
+    g.fill(); g.stroke();
+    if(rel === "self"){ g.strokeStyle = "#fff"; g.lineWidth = 1.5; g.beginPath(); g.arc(x, y, r + 3, 0, Math.PI * 2); g.stroke(); } }
   if(player){ const vw = (typeof VIEW_WORLD_SHORT !== "undefined" ? VIEW_WORLD_SHORT : 650) * 1.8, vh = vw * 0.56; g.strokeStyle = "rgba(255,255,255,.7)"; g.lineWidth = 1; g.strokeRect((player.x - vw / 2) * sx, (player.y - vh / 2) * sy, vw * sx, vh * sy); }
 }
 
