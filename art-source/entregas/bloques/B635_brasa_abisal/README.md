@@ -35,3 +35,5 @@ node tools/art/test-brasa-abyssal.js
 La prueba real de dos clientes ya pasó (7 controles, skin del host y del invitado visible en ambos renderers, habilidades funcionales, catálogo del servidor). Pendiente CI y validación del despliegue. Las otras cuatro skins adicionales siguen pendientes; no abrir otros cinco campeones para ocultar esta deuda. El lote Q5 original ya está en main y su despliegue Fondal fue comprobado el 2026-10-19 (evidencia en PR #146).
 
 Revalidado después de integrar main `7b6b67c4` (PR #147) y las correcciones de #146. Workflow `brasa-abyssal.yml` reproduce la importación, valida todos los cosméticos y ejecuta la prueba de dos clientes.
+
+CI detectó una expectativa fija de47 cosméticos en test-game-master.js; Brasa lleva el catálogo a48. La prueba ahora exige47 entradas anteriores más la adición explícita y verifica que brasa_abisal corresponda a Brasa exactamente una vez.127 comprobaciones de integración/seguridad PASS; no se cambia runtime GM, permisos ni recompensas.
