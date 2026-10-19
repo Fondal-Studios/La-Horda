@@ -1,0 +1,58 @@
+name: Canonical Soporte static publication check
+on:
+  push:
+    branches: ['qa/canonical-soporte-publication-20261019']
+    paths: ['.github/workflows/canonical-soporte-publication.yml']
+permissions:
+  contents: read
+jobs:
+  readonly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read only public static files and compare exact hashes
+        run: |
+          python - <<'PY'
+          import datetime,hashlib,json,urllib.request,urllib.error
+          from urllib.parse import urljoin
+          from html.parser import HTMLParser
+          BASE='https://fondalstudios.com/la-horda/jugar/'
+          EXPECTED={'js/assets/champion-sprites.js':'7b4536ce66620efc85a7037fa8622cf18d14a0f48733aea4bb408c7946c9c755','js/rendering/champion-sprites.js':'86b542e56cb6efb4b6d6b9b7854bbc9d7d17a385a134543ea123c0909c970b4c','assets/sprites/champions/soporte/v3/atlas.png':'6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34'}
+          report={'schema':1,'checkedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'scope':'READ_ONLY_PUBLIC_STATIC_DELIVERY_NOT_ACCOUNT_OR_FULL_GAME_CERTIFICATION','canonicalFrom':'js/net/net-config.js and tools/alpha/account-environments.js','base':BASE,'mainMerge':'ae21839465a7dfdad469be3a4bb37cef9605cbbc','requests':[],'accountsAccessed':False,'writesPerformed':False}
+          def get(url,kind,expected=None):
+           item={'url':url,'kind':kind}
+           try:
+            request=urllib.request.Request(url,headers={'User-Agent':'LaHorda-readonly-release-verification','Cache-Control':'no-cache'})
+            with urllib.request.urlopen(request,timeout=20) as r:
+             data=r.read(3000001);item.update(status=r.status,finalUrl=r.url,contentType=r.headers.get('Content-Type',''),bytes=len(data))
+             if len(data)>3000000:raise ValueError('Response exceeds static verification size limit')
+             item['sha256']=hashlib.sha256(data).hexdigest()
+             if expected:item.update(expectedSha256=expected,matchesExpected=item['sha256']==expected)
+             report['requests'].append(item);return data,item
+           except urllib.error.HTTPError as e:item.update(status=e.code,error='HTTPError')
+           except Exception as e:item.update(error=type(e).__name__)
+           if expected:item['matchesExpected']=False
+           report['requests'].append(item);return None,item
+          html,entry=get(BASE,'canonical-entry')
+          if html and entry.get('status')==200:
+           class Scripts(HTMLParser):
+            def __init__(self):super().__init__();self.src=[]
+            def handle_starttag(self,tag,attrs):
+             if tag=='script':
+              d=dict(attrs)
+              if d.get('src'):self.src.append(d['src'])
+           parser=Scripts();parser.feed(html.decode('utf-8','replace'))
+           report['entryScriptSources']=parser.src
+           actualBase=entry.get('finalUrl',BASE)
+           for path,expected in EXPECTED.items():get(urljoin(actualBase,path),'canonical-static',expected)
+          else:
+           for path,expected in EXPECTED.items():get(urljoin(BASE,path),'canonical-static',expected)
+          static=[r for r in report['requests'] if r['kind']=='canonical-static']
+          report['status']='EXPECTED_STATIC_BYTES_SERVED' if len(static)==3 and all(r.get('matchesExpected') for r in static) and entry.get('status')==200 else 'PUBLICATION_NOT_CONFIRMED'
+          report['limitations']=['Read-only public responses only; no authenticated NanoGM session tested','No claim that existing clients refreshed service-worker caches','No production gameplay/multiplayer or physical-device performance certification']
+          print('PUBLICATION_REPORT '+json.dumps(report,ensure_ascii=False),flush=True)
+          
+          PY
