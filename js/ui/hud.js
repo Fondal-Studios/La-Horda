@@ -399,9 +399,14 @@ function positionSkillPlusButtons(){
     const host = document.getElementById(btnId), b = document.getElementById("skill-plus-btn-"+idx);
     if(!host || !b) return;
     const r = host.getBoundingClientRect();
-    // "un poquito adelante" del botón: arriba a la izquierda, sin taparlo
-    b.style.left = Math.round(r.left - 12) + "px";
-    b.style.top = Math.round(r.top - 12) + "px";
+    // Esquina de cada botón SIN tapar su ícono ni el rótulo (propio ni de un vecino): el "+" mide 32 px y el ícono empieza a 11 px
+    // del borde, así que va 22 px hacia afuera por la izquierda. Los botones están escalonados (s2 queda arriba a la izquierda de
+    // s1), por eso s1 baja el "+" a la altura de su borde superior (arriba pisaría el rótulo de s2); la definitiva (60 px, a
+    // 20 px de s3) lo acerca 2 px para no tocar a s3.
+    const pw = b.offsetWidth || 32;
+    const dx = -(pw - (idx==="ult" ? 12 : 10)), dy = idx===0 ? 2 : -14;
+    b.style.left = Math.round(r.left + dx) + "px";
+    b.style.top = Math.round(r.top + dy) + "px";
   });
 }
 function onSkillInvested(){ _skillLvlKey = ""; if(state==="playing") updateSkillLevelUI(); }

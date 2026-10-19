@@ -109,6 +109,21 @@ function championBotEligible(id){ var m = championMeta(id); return m.releaseStat
 function championCompetitive(id){ var m = championMeta(id); return !!m.competitiveAllowed && m.releaseState === "RELEASED"; }
 // Progresión normal (logros de colección, contadores del Códice, desafíos): sin Fundadores ni sin publicar.
 function championInProgression(id){ var m = championMeta(id); return m.category !== "FOUNDER" && m.category !== "DEV" && m.releaseState === "RELEASED"; }
+// UNA sola fuente para los contadores de guardianes que ve el jugador (starter, Códice, logros). Cada número cuenta algo distinto
+// y los textos lo dicen: total = clases del motor (43), obtainable = las que se pueden llegar a tener (sin Fundadores ni sin
+// publicar: el "N / 41 tuyos" del Códice), starter = las que se ofrecen al elegir el primer guardián (comunes/familia y comprables),
+// owned = las de obtainable que el jugador ya desbloqueó. Pura (el servidor también carga este archivo): sin DOM ni guardado
+// obligatorio; `unlockedMap` es save.champions si se quiere owned.
+function championCounts(unlockedMap){
+  var cat = typeof CHAMPION_CATALOG !== "undefined" ? CHAMPION_CATALOG : [], out = {total:cat.length, obtainable:0, starter:0, owned:0};
+  var um = unlockedMap || (typeof save !== "undefined" && save ? save.champions : null) || {};
+  for(var i = 0; i < cat.length; i++){
+    var id = cat[i].id, prog = championInProgression(id);
+    if(prog){ out.obtainable++; if(um[id] && um[id].unlocked) out.owned++; }
+    if(championMeta(id).starterEligible && championAvailability(id).purchasable) out.starter++;
+  }
+  return out;
+}
 function championsByCategory(ids){
   var out = {}; for(var i = 0; i < ids.length; i++){ var c = championMeta(ids[i]).category; (out[c] || (out[c] = [])).push(ids[i]); }
   return out;

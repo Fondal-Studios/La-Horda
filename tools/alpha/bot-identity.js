@@ -23,6 +23,8 @@ const SITE=process.env.SITE||'http://127.0.0.1:8813';
   out.stable=out.classes.map((k,i)=>botNameFor(k)===out.names[i]);
   // nunca repite el nombre de un humano
   const first=out.names[0];out.avoidsHuman=botNameFor('__otro__',[first])!==first;
+  // nunca dos compañeros con el mismo nombre en una misma partida (varias partidas seguidas, equipos al azar)
+  out.dupRuns=0;{const ks=Object.keys(CLASSES);for(let n=0;n<300;n++){const t=ks.slice().sort(()=>Math.random()-.5).slice(0,3).map(k=>botNameFor(k,['Yo']).toLowerCase());if(new Set(t).size<3)out.dupRuns++;}}
   out.poolSize=BOT_NAME_POOL.length;out.longest=Math.max(...BOT_NAME_POOL.map(n=>n.length));
   return out;});
  assert(r.n>=1,'hay compañeros del juego '+JSON.stringify(r));
@@ -33,6 +35,7 @@ const SITE=process.env.SITE||'http://127.0.0.1:8813';
  assert(!r.playerBot,'el jugador no cuenta como compañero del juego');
  assert(r.stable.every(Boolean),'nombre estable por guardián');assert(r.avoidsHuman,'no repite el nombre de un humano');
  assert(/controlados por el juego/.test(r.disclosure),'aviso general disponible: '+r.disclosure);
+ assert.equal(r.dupRuns,0,'sin nombres repetidos entre compañeros de una misma partida');
  assert(r.poolSize>=100&&r.longest<=16,'pool amplio y nombres ≤ 16 caracteres');
  assert.equal(r.threw,null,'etiqueta sin errores');assert.deepEqual(errors,[],'sin errores de página');
  console.log('PASS bot-identity:',r.n,'compañeros →',r.names.join(', '));

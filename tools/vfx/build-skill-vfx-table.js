@@ -32,6 +32,9 @@ const RATE_SEGUNDA = {   // no modificada en esta rama (la cubre otro agente): s
 const TIPO = {A: 'animación del personaje', P: 'sprite/atlas propio', G: 'sprite genérico del motor', C: 'círculos/líneas/partículas', S: 'sprite procedural propio (skill-fx-a)'};
 const LECT = {B: 'bien', R: 'regular', M: 'mal'};
 const SLOT = ['Básico', 'Hab. 1', 'Hab. 2', 'Hab. 3', 'Definitiva'];
+// Solo enlaza las hojas que existen: las de la otra mitad del roster (myla … zahra) no se versionaron y el enlace quedaba roto.
+const sheetLinks = (k, rateD) => [['antes', 'antes'], ...(rateD ? [['después', 'despues']] : [])]
+  .map(([label, dir]) => fs.existsSync(path.join(ROOT, 'docs/vfx/sheets', dir, k + '.jpg')) ? `[${label}](sheets/${dir}/${k}.jpg)` : null).filter(Boolean).join(' · ') || 'hoja no incluida';
 const cell = c => TIPO[c[0]].split(' ')[0] === 'animación' ? 'anim. personaje' : `${c[0]} · ${LECT[c[1]]}`;
 const half = (title, data, rate, rateD, note) => {
   const L = [`## ${title}`, '', note, ''];
@@ -39,7 +42,7 @@ const half = (title, data, rate, rateD, note) => {
   for (const k of Object.keys(data)) {
     const R = rate[k].split(' '), D = rateD ? rateD[k].split(' ') : null;
     data[k].forEach((a, i) => {
-      L.push(`| ${i === 0 ? k : ''} | ${SLOT[i]}: ${i === 0 ? 'ataque básico' : a.name} | ${cell(R[i])} | ${D ? cell(D[i]) : (i === 0 ? 'sin cambios' : 'sin cambios (otra rama)')} | ${a.sprites.join(', ') || '—'} · ${a.drawImage} · ${a.shocks} · ${a.bursts} | ${i === 0 ? `[antes](sheets/antes/${k}.jpg)${rateD ? ` · [después](sheets/despues/${k}.jpg)` : ''}` : ''} |`);
+      L.push(`| ${i === 0 ? k : ''} | ${SLOT[i]}: ${i === 0 ? 'ataque básico' : a.name} | ${cell(R[i])} | ${D ? cell(D[i]) : (i === 0 ? 'sin cambios' : 'sin cambios (otra rama)')} | ${a.sprites.join(', ') || '—'} · ${a.drawImage} · ${a.shocks} · ${a.bursts} | ${i === 0 ? sheetLinks(k, rateD) : ''} |`);
     });
   }
   return L.join('\n');

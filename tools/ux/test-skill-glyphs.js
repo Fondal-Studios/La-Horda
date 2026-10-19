@@ -26,7 +26,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
      const png=null; // el HUD ya no usa recortes de sprite: todas las habilidades salen del contrato de íconos
      const key=skillPixelGlyphKey(id,i);
      let rows=null;if(key){const g=skillPixelGrid(key);if(!g)out.badGrid.push(id+':'+i+' '+key);else rows=g.join('|');}
-     return {name:sk.name,slot:i,key,png,rows};
+     return {name:sk.name,slot:i,key,png,rows,label:i<3?(SKILL_SHORT_LABEL[id+':'+i]||null):'-'};
     });
     out.kits.push({id,list});
    }
@@ -45,6 +45,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
     const motif=a.png||a.key.split('+')[0],img=a.png||a.rows;
     if(motifs.has(motif))problems.push(`${label}: comparte motivo "${motif}" con otra habilidad del kit`);
     if(imgs.has(img))problems.push(`${label}: comparte la misma imagen con otra habilidad del kit`);
+    if(!a.label)problems.push(`${label}: sin rótulo propio en SKILL_SHORT_LABEL (cae en el nombre truncado)`);
     motifs.add(motif);imgs.add(img);
     if(a.key){if(seenPair.has(a.key))problems.push(`${label}: pareja motivo+insignia "${a.key}" repetida con ${seenPair.get(a.key)}`);else seenPair.set(a.key,label);}
    }

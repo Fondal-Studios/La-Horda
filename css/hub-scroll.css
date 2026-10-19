@@ -71,7 +71,7 @@
   #mainmenu-screen #hub-endless-rank-btn{ grid-column:3; grid-row:4; min-height:0; }
   #mainmenu-screen #alpha-onboarding{ grid-column:4; grid-row:4; display:flex; align-items:stretch; padding:0; border:0; background:none; min-height:0; }
   #mainmenu-screen #alpha-onboarding details{ display:none; }
-  #mainmenu-screen #alpha-onboarding [data-train]{ flex:1; min-height:0; font-size:14px; line-height:1.15; padding:2px 6px; }
+  #mainmenu-screen #alpha-onboarding [data-train]{ flex:1; min-height:0; font-size:14px; line-height:1.15; padding:2px 6px; text-wrap:balance; } /* 2 renglones parejos ("ARENA DE / ENTRENAMIENTO · 3 min"), no "…· 3" + "min" huérfano */
   #mainmenu-screen .hub-tile, #mainmenu-screen .hub-tile-wide, #mainmenu-screen .hub-sections #mainmenu-quests-btn{ min-height:0; }
   #mainmenu-screen .hub-tile-wide{ border-width:3px; padding:6px 12px; }
   #mainmenu-screen .hub-tile-wide .hub-tile-ico{ width:48px; height:48px; font-size:1.6rem; }
