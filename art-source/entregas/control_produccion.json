@@ -6,18 +6,18 @@
     "campeones": 183,
     "mundo": 1061,
     "entradas": 1244,
-    "resueltos": 25,
+    "resueltos": 26,
     "por_prioridad": {
       "P1": 464,
       "P0": 118,
       "P2": 662
     },
     "por_estado": {
-      "EN_CORRECCION_VISUAL": 10,
-      "INTEGRADO_MAIN": 25,
+      "EN_CORRECCION_VISUAL": 9,
+      "INTEGRADO_MAIN": 26,
       "PENDIENTE": 1209
     },
-    "sin_integracion_documentada": 1219,
+    "sin_integracion_documentada": 1218,
     "exportaciones_runtime_documentadas": 19
   },
   "reglas_continuidad": [
@@ -168,7 +168,7 @@
       "motivo": "Manifiesto indica marco puesto por juego; especificación pide marco pintado. Preguntar al dueño antes de entregar."
     }
   ],
-  "siguiente_trabajo": "B004: conservar atlas vigente de 61 cuadros y montura; redibujar con mosquete/bayoneta, mantener clips especializados. PR166 conserva intentos rechazados; no instalar el atlas genérico de 36.",
+  "siguiente_trabajo": "B004: caída base integrada por PR170; quedan ataque abajo, ataque arriba y golpe. Taller PR166/403a80c conserva caminata corregida y tres ataques20/21/23 aún FIX. Mantener atlas especializado61 y montura; no instalar plantilla36 ni contar publicación sin verificar.",
   "items": [
     {
       "id": "tanque.cuerpo.lanzar",
@@ -944,23 +944,49 @@
       "id": "libertador.cuerpo.muerte",
       "prioridad": "P0",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/libertador/hoja_36poses.png",
-      "estado": "EN_CORRECCION_VISUAL",
-      "version_reutilizable": "art-source/entregas/bloques/B004_libertador/entrega.json",
+      "estado": "INTEGRADO_MAIN",
+      "version_reutilizable": "docs/art-gate/libertador-death",
       "bloque": "B004",
       "revision_nativa": {
-        "estado": "FIX",
-        "cuadros_fallidos": [
-          8,
-          9,
-          10,
-          11,
-          20,
-          21,
-          23
-        ],
-        "evidencia": "docs/production/authored-candidate-results-20261019.json",
-        "run": 39292727298,
-        "source": "art-source/entregas/bloques/B004_libertador/campeones/atlas.png"
+        "estado": "PASS",
+        "alcance": "SOLO_COMPONENTE_MUERTE_32_35",
+        "cuadros_fallidos": [],
+        "cuadros_validados": 4,
+        "git_blob": "3184b36a1f832ee6a3644e05a743261c78a5572d",
+        "evidencia": "docs/art-gate/libertador-death/native.json",
+        "run": 39334390841,
+        "installed": true,
+        "approvalClaimed": false
+      },
+      "historial_revision_nativa": [
+        {
+          "estado": "FIX",
+          "cuadros_fallidos": [
+            8,
+            9,
+            10,
+            11,
+            20,
+            21,
+            23
+          ],
+          "evidencia": "docs/production/authored-candidate-results-20261019.json",
+          "run": 39292727298,
+          "source": "art-source/entregas/bloques/B004_libertador/campeones/atlas.png"
+        }
+      ],
+      "integracion": {
+        "pr": 170,
+        "commit_main": "6f47511f977e3828f34cc6abf76d878fe4336a99",
+        "champion": "libertador",
+        "component": "death",
+        "atlas": "assets/sprites/champions/libertador/v2/death.png",
+        "git_blob": "3184b36a1f832ee6a3644e05a743261c78a5572d",
+        "sha256": "3c142180270cbcf3bd4477433bec65204a78e0ee65c4d15aab3efcd3e411dc7a",
+        "evidencia": "docs/art-gate/libertador-death/validation.json",
+        "publicacion": "PENDIENTE_VERIFICACION",
+        "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño",
+        "scope": "Four-frame frontal fall shared across directions; base appearance only; not whole B004 approval"
       }
     },
     {
@@ -10869,21 +10895,23 @@
   "bloque_activo": "B004",
   "ultimo_checkpoint": {
     "bloque": "B004",
-    "estado": "REDRAW_REQUIRED_WEAPON_CONTINUITY",
-    "entrega": "art-source/entregas/bloques/B004_libertador/entrega.json",
+    "estado": "FIX_THREE_NATIVE_FRAMES_AND_RUNTIME_CONTRACT",
+    "entrega": "art-source/entregas/bloques/B004_libertador/revision-native-v2",
     "checkpoint_pr": 166,
-    "checkpoint_commit": "df34a6b0adb66adab01256b5241e28d39fc5a9db",
-    "siguiente_paso": "B004: conservar atlas vigente de 61 cuadros y montura; redibujar con mosquete/bayoneta, mantener clips especializados. PR166 conserva intentos rechazados; no instalar el atlas genérico de 36.",
+    "checkpoint_commit": "403a80ca6f1862b9758b8f82ab4968b7bd2f72ed",
+    "siguiente_paso": "B004: caída base integrada por PR170; quedan ataque abajo, ataque arriba y golpe. Taller PR166/403a80c conserva caminata corregida y tres ataques20/21/23 aún FIX. Mantener atlas especializado61 y montura; no instalar plantilla36 ni contar publicación sin verificar.",
     "ultima_integracion": {
-      "pr": 163,
-      "commit_main": "ae21839465a7dfdad469be3a4bb37cef9605cbbc",
-      "champion": "soporte",
-      "atlas": "assets/sprites/champions/soporte/v3/atlas.png",
-      "git_blob": "f7dcca7efeff2274556195e34a1722edb1cbd422",
-      "sha256": "6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34",
-      "evidencia": "docs/art-gate/soporte-v3/validation.json",
+      "pr": 170,
+      "commit_main": "6f47511f977e3828f34cc6abf76d878fe4336a99",
+      "champion": "libertador",
+      "component": "death",
+      "atlas": "assets/sprites/champions/libertador/v2/death.png",
+      "git_blob": "3184b36a1f832ee6a3644e05a743261c78a5572d",
+      "sha256": "3c142180270cbcf3bd4477433bec65204a78e0ee65c4d15aab3efcd3e411dc7a",
+      "evidencia": "docs/art-gate/libertador-death/validation.json",
       "publicacion": "PENDIENTE_VERIFICACION",
-      "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
+      "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño",
+      "scope": "Four-frame frontal fall shared across directions; base appearance only; not whole B004 approval"
     }
   }
 }

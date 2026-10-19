@@ -23,6 +23,7 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: python -m unittest tools/factory/test_import_authored_sheet.py tools/factory/test_production_guards.py tools/factory/test_candidate_audit.py tools/factory/test_authored_frame.py
       - run: python -m unittest tools/release/test_canonical_publication.py
+      - run: node --check tools/release/probe-quality-five.js
       - run: node --test tools/factory/test-animation-contract.js
       - name: Preserve the Soporte animation contract
         run: node tools/factory/check-animation-contract.js --key soporte --candidate tools/factory/fixtures/soporte-36-contract.json --output /tmp/art-contract/soporte.json
