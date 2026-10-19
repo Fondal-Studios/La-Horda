@@ -33,23 +33,38 @@ function loadPlaywright() {
   throw new Error('No se encuentra Playwright (npm i playwright, NODE_PATH o PLAYWRIGHT_MODULE).');
 }
 const chromiumPath = () => process.env.CHROMIUM_PATH || (fs.existsSync('/opt/pw-browsers/chromium') ? '/opt/pw-browsers/chromium' : undefined);
-// Las páginas creadas por el navegador de launch() escalan sus esperas largas (waitForFunction y el tiempo por omisión)
-// con TEST_TIMEOUT_MS / TEST_TIMEOUT_SCALE, sin tocar cada prueba.
+// Las páginas del navegador afinado escalan sus esperas largas (waitForFunction, tiempos por omisión y de navegación)
+// con TEST_TIMEOUT_MS / TEST_TIMEOUT_SCALE, y reintentan el goto, sin tocar cada prueba.
+const RETRYABLE = /Timeout|ERR_CONNECTION|ERR_EMPTY_RESPONSE|ERR_NETWORK|ERR_ADDRESS|ERR_ABORTED|ERR_FAILED/i;
 function tunePage(page) {
   if (page.__tuned) return page; page.__tuned = true;
-  const wf = page.waitForFunction.bind(page);
+  const wf = page.waitForFunction.bind(page), go = page.goto.bind(page);
+  page.__rawGoto = go;
   page.waitForFunction = (fn, arg, o) => wf(fn, arg, {...(o || {}), timeout: timeout((o && o.timeout) || 30000)});
   page.setDefaultTimeout(timeout(30000));
+  page.setDefaultNavigationTimeout(timeout(120000));
+  page.goto = async (url, o) => {
+    const retries = process.env.TEST_GOTO_RETRIES === undefined ? 2 : Math.max(0, +process.env.TEST_GOTO_RETRIES || 0);
+    for (let i = 0; ; i++) {
+      try { return await go(url, o && o.timeout ? {...o, timeout: timeout(o.timeout)} : o); } catch (e) {
+        if (i >= retries || !RETRYABLE.test(String(e.message))) throw e;
+        console.log(`goto reintento ${i + 1}/${retries}: ${String(e.message).split('\n')[0]}`); await sleep(500 * (i + 1));
+      }
+    }
+  };
   return page;
 }
 function tuneContext(ctx) { ctx.on('page', tunePage); ctx.pages().forEach(tunePage); return ctx; }
-async function launch(opts = {}) {
-  const {chromium} = loadPlaywright();
-  const browser = await chromium.launch({executablePath: chromiumPath(), args: ['--no-sandbox', '--disable-dev-shm-usage'], ...opts});
+function tuneBrowser(browser) {
+  if (browser.__tuned) return browser; browser.__tuned = true;
   const newContext = browser.newContext.bind(browser), newPage = browser.newPage.bind(browser);
   browser.newContext = async o => tuneContext(await newContext(o));
   browser.newPage = async o => { const p = await newPage(o); tuneContext(p.context()); return tunePage(p); };
   return browser;
+}
+async function launch(opts = {}) {
+  const {chromium} = loadPlaywright();
+  return tuneBrowser(await chromium.launch({executablePath: chromiumPath(), args: ['--no-sandbox', '--disable-dev-shm-usage'], ...opts}));
 }
 
 // Tiempo (ms) de una espera que la prueba declara con `def`: TEST_TIMEOUT_MS manda; si no, def * TEST_TIMEOUT_SCALE.
@@ -63,7 +78,7 @@ async function goto(page, url, opts = {}) {
   const o = {waitUntil: 'domcontentloaded', ...opts, timeout: timeout(opts.timeout || 120000)};
   let last;
   for (let i = 0; i <= retries; i++) {
-    try { return await page.goto(url, o); } catch (e) {
+    try { return await (page.__rawGoto || page.goto.bind(page))(url, o); } catch (e) {
       last = e; if (i < retries) { console.log(`goto reintento ${i + 1}/${retries}: ${String(e.message).split('\n')[0]}`); await sleep(500 * (i + 1)); }
     }
   }
@@ -120,6 +135,7 @@ async function startSite({root = ROOT, envUrl = ['SE_BASE_URL', 'BASE_URL', 'ABI
   const srv = staticServer(root);
   await new Promise((ok, ko) => { srv.once('error', ko); srv.listen(0, '127.0.0.1', ok); });
   const url = `http://127.0.0.1:${srv.address().port}`;
+  srv.unref();   // un servidor olvidado (la prueba falló antes de cerrarlo) no debe dejar el proceso colgado
   const close = () => new Promise(r => { if (srv.closeAllConnections) srv.closeAllConnections(); srv.close(() => r()); });
   try {
     const r = await fetchText(url + '/index.html'), disk = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
@@ -129,4 +145,4 @@ async function startSite({root = ROOT, envUrl = ['SE_BASE_URL', 'BASE_URL', 'ABI
   return {url, external: false, close};
 }
 
-module.exports = {ROOT, loadPlaywright, launch, chromiumPath, timeout, goto, waitFor, startSite, sleep};
+module.exports = {ROOT, loadPlaywright, launch, tuneBrowser, chromiumPath, timeout, goto, waitFor, startSite, sleep};
