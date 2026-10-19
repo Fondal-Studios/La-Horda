@@ -1,5 +1,7 @@
-# B004: preflight de espalda y candidato frontal
+# B004: fuentes técnicas conservadas; integración pendiente
 
-El commit74dd9ef44dc9f6000396a577c27a70875220709a pasa36/36nativos y StyleGate en run39307760141. Preflight y fuentes preservados. No instalado ni aprobado para producción. Se conservó22 original y29 cuadros intactos; se reutilizaron9/21 válidos de v1 y cuerpo20 vuelve a63px con NEAREST uniforme a76px de silueta.
+Run39308710546, commitf3a6628465569591fdc6df7a855d768b83c0a481: 36/36cuadros nativos y StyleGatePASS, frontal13 orientado al frente; cuerpo13=66px frente67 previo, cuerpo20=63px restaurado.28 cuadros originales intactos. Resultados en front-preflight/. No instalado ni aprobado para producción.
 
-La masa de cuerpo del caminar de espalda varía con la anchura de capa/botas, aunque alturas completas72–73px y pies106 se mantienen; revisar en renderer antes de decidir escala. No agrandar poses a ciegas para satisfacer una heurística. Nuevo frontal13 para corregir orientación, ahora8 cuadros cambiados y28 preservados. Repetir todos los controles y comparar animaciones al tamaño de juego.
+Auditoría del motor actual: CHAMP_PACK.libertador usa un atlas especial de61cuadros (103x98,8columnas), mosquete, recarga, bayoneta, mando y llamada Cabral; CHAMP_PACK.libertador_horse resuelve montura/carga/desmontar y ataques montados. La plantilla genérica36 no cubre fire/reload/bayo_emb/bayo_imp/bayo_rem/cabral/command/ult_cast. No reemplazar el pack ni retirar la caballería. El sable solo no reemplaza las poses de mosquete ni preserva por sí solo la continuidad del arma.
+
+Próximo paso: preservar esos atlas y contratos, definir extensión para los estados faltantes y producir arte con mosquete/sable coherentes según la fase. Revisar cuerpo/cabeza y gaitas en renderer a escala real, con skins/cromas y replay de red. No agrandar poses a ciegas por variaciones de masa de capa/botas. La evidencia de píxel nativo no certifica estas condiciones.

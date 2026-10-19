@@ -57,6 +57,17 @@ else:
     refs=importlib.util.module_from_spec(refs_spec);refs_spec.loader.exec_module(refs)
     refs.render({'src':str(result),'fw':112,'fh':112,'cols':4,'anchor':106/112},[{'etiqueta':'Ataque frontal','cuadros':[12,13,14,15]},{'etiqueta':'Espalda caminar','cuadros':[8,9,10,11]},{'etiqueta':'Espalda ataque','cuadros':[20,21,22,23]}],escala=3,titulo='B004 correccion de espalda; candidato',pie='Diagnostico: no es aprobacion de arte',max_por_linea=4).save(OUT/'contact.png')
 assert git_sha((ROOT/spec['atlas']).read_bytes())==spec['atlasGitBlobSha']
+# A36-pose template must not replace an existing specialized61-frame runtime pack.
+# Named musket/bayonet/horse clips are real callers, not optional documentation.
+runtime=(ROOT/'js/champions/libertador.js').read_text()
+import re
+required={name:sorted(set(re.findall(r'_smFrame\\(\\s*'+symbol+r'\\s*,\\s*"([^"]+)"',runtime))) for name,symbol in [('libertador','P'),('libertador_horse','HP')]}
+template={'idle_down','idle_side','idle_up','walk_down','walk_side','walk_up','attack_down','attack_side','attack_up','cast_down','cast_side','cast_up','ultimate_down','ultimate_side','ultimate_up','hit_down','hit_side','hit_up','death_down','death_side','death_up'}
+missing=sorted(set(required['libertador'])-template)
+assert {'fire','reload','bayo_emb','ult_cast'}.issubset(missing),'Specialized runtime audit must detect weapon clips'
+summary['runtimeContract']={'coverage':'STATIC_REAL_CALLERS_NOT_RUNTIME_APPROVAL','source':'js/champions/libertador.js','sourceGitBlobSha':git_sha((ROOT/'js/champions/libertador.js').read_bytes()),'requiredByCurrentRenderer':required,'missingFromGeneric36PoseFootPack':missing,'preserveMountedPack':True,'status':'REJECT_FULL_PACK_REPLACEMENT' if missing else 'DECLARED_CONTRACT_ONLY'}
+summary['integrationStatus']='FIX_RUNTIME_CONTRACT' if missing else 'RUNTIME_AND_VISUAL_REVIEW_STILL_REQUIRED'
+
 (OUT/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
 print('CANDIDATE_SUMMARY '+json.dumps(summary),flush=True)
 for name in ['summary.json','atlas.png','native.json','style.log','scan.json','contact.png']:
