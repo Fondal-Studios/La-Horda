@@ -226,7 +226,14 @@ function drawHeroOverlays(h, colossal, spinning){
     ctx.strokeStyle = "rgba(143,208,255,0.75)"; ctx.lineWidth = 3;
     ctx.beginPath(); ctx.arc(h.x, h.y-14, h.radius*(colossal?1.5:1)+10, 0, Math.PI*2); ctx.stroke();
   }
-  if(h === player){
+  const sd = (typeof lanesOn==="function" && lanesOn() && typeof sidesOf==="function") ? sidesOf(h) : null; // Cristales/Coliseo: verde = aliado, rojo = enemigo (lanes-sides.js)
+  if(sd){
+    // Placa de vida: cuadrito de clase + barra del bando + ícono (escudo / espada). El aro bajo los pies lo dibuja lanesDrawTop.
+    const w = h === player ? 40 : 36, top = h.y - 58, x0 = h.x - w/2;
+    sidesBar(ctx, sd, x0, top, w, 6, h.hp/h.maxHp);
+    ctx.fillStyle = h.cls.color; ctx.fillRect(x0-12, top-1, 7, 8); ctx.strokeStyle = "rgba(0,0,0,0.85)"; ctx.lineWidth = 1; ctx.strokeRect(x0-12, top-1, 7, 8);
+    sidesIcon(ctx, sd, x0+w+9, top+3, 10);
+  } else if(h === player){
     // Anillo del jugador para no confundirlo con los aliados
     ctx.strokeStyle = "rgba(255,207,92,0.75)"; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.ellipse(h.x, h.y+5, 20, 8, 0, 0, Math.PI*2); ctx.stroke();
@@ -461,7 +468,16 @@ function drawEnemyOverlays(e){
   // horda); élites y subjefes siempre, más gruesas y con marco; el jefe usa la barra grande de
   // arriba de la pantalla (ver boss-hud.js).
   const hpPct = Math.max(0, e.hp/e.maxHp);
-  if(e.rank==="jefe" && e===boss){ /* barra grande de jefe en el HUD */ }
+  const sd = (e.team!==undefined && e.team!==null && typeof lanesOn==="function" && lanesOn() && typeof sidesOf==="function") ? sidesOf(e) : null; // súbditos y selva en Cristales/Coliseo
+  if(sd){
+    // Barra del bando (verde aliado / rojo enemigo / ámbar neutral). Las comunes aparecen al recibir daño; élites y mayores, siempre.
+    const big = e.rank==="subjefe" || e.rank==="jefe", strong = big || e.rank==="elite";
+    if(e.epicId==null && (strong || hpPct < 0.999)){ // (los objetivos épicos llevan su barra grande en lanesDrawTop)
+      const bw = strong ? Math.max(e.radius*2.2, big ? 70 : 44) : Math.max(e.radius*1.7, 26), bh = strong ? 7 : 5;
+      sidesBar(ctx, sd, e.x-bw/2, e.y - e.radius - (strong ? 16 : 12), bw, bh, hpPct);
+    }
+  }
+  else if(e.rank==="jefe" && e===boss){ /* barra grande de jefe en el HUD */ }
   else if(e.rank==="elite" || e.rank==="subjefe"){
     const big = e.rank==="subjefe";
     const bw = Math.max(e.radius*2.2, big ? 70 : 44), bh = big ? 8 : 6;

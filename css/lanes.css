@@ -70,3 +70,22 @@ body[data-mode] #pause-screen .arena-title{ color:var(--mode-accent); }
 body[data-mode="coliseo"] #pause-screen .arena-title::after{ content:" · Coliseo"; }
 body[data-mode="cristales"] #pause-screen .arena-title::after{ content:" · Guerra de Cristales"; }
 body[data-mode] #pause-screen #resume-btn{ box-shadow:var(--ui-bevel), 0 0 0 2px var(--mode-accent); }
+
+/* ---------- AMIGO / ENEMIGO / NEUTRAL (tokens --ally --enemy --neutral --self en ui-kit.css; lógica en js/arenas/lanes/lanes-sides.js) ----------
+   Verde = aliado (marco liso, escudo) · Rojo = enemigo (marco grueso con muescas, espada) · Ámbar = neutral. El color del EQUIPO queda en el nombre. */
+.ln-side{ display:inline-block; width:14px; height:14px; margin-right:4px; vertical-align:-2px; background:var(--ally); -webkit-mask:var(--ico-shield) center/contain no-repeat; mask:var(--ico-shield) center/contain no-repeat; filter:drop-shadow(1px 1px 0 #000); }
+.lanes-hud{ --ico-shield:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 2h12v7c0 3-3 5-6 6-3-1-6-3-6-6z'/%3E%3C/svg%3E"); --ico-sword:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M15 1v4L7 13l-1-1L14 4zM1 10l2-1 4 4-1 2-2-1-1 1-2-2 1-1z'/%3E%3C/svg%3E"); }
+[data-side="enemy"] > .ln-side, [data-side="enemy"] .ln-side{ background:var(--enemy); -webkit-mask-image:var(--ico-sword); mask-image:var(--ico-sword); }
+[data-side="ally"] .ln-side, [data-side="self"] .ln-side{ background:var(--ally); }
+.ln-team .ln-name::after{ content:attr(data-tag); margin-left:6px; font-weight:400; }
+.ln-team[data-side="ally"] .ln-name::after{ color:var(--ally-hi); } .ln-team[data-side="enemy"] .ln-name::after{ color:var(--enemy-hi); }
+.ln-team[data-side] .ln-bar{ position:relative; height:10px; }
+.ln-team[data-side="ally"] .ln-bar{ border:2px solid var(--ally-dark); } .ln-team[data-side="ally"] .ln-bar u{ background:var(--ally); }
+.ln-team[data-side="enemy"] .ln-bar{ border:2px solid var(--enemy-dark); box-shadow:0 0 0 1px var(--enemy); } .ln-team[data-side="enemy"] .ln-bar u{ background:var(--enemy); }
+.ln-team[data-side="enemy"] .ln-bar::after{ content:""; position:absolute; inset:0; background:repeating-linear-gradient(90deg, transparent 0 calc(25% - 2px), var(--enemy-dark) calc(25% - 2px) 25%); }
+.ln-horde b{ color:var(--ally-hi); }
+/* Coliseo: el borde izquierdo del equipo es del bando (liso = aliado, discontinuo = rival); el nombre conserva el color del equipo */
+.col-team[data-side="ally"]{ border-left:4px solid var(--ally); } .col-team[data-side="enemy"]{ border-left:4px dashed var(--enemy); }
+.col-team[data-side="enemy"] .ln-side{ margin-right:3px; }
+/* lista de compañeros (campaña): en Cristales/Coliseo la vida del aliado es verde */
+body.lanes-on .ally-hp-fill:not(.shield-seg){ background:linear-gradient(90deg,var(--ally-dark),var(--ally)); }
