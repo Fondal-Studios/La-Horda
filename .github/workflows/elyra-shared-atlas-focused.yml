@@ -17,7 +17,7 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - name: Find remaining runtime or test dependencies on old atlas version
         run: |
-          rg -n 'soporte/v2' js tools tests .github || test $? = 1
+          grep -Rn 'soporte/v2' js tools tests .github || test $? = 1
       - run: node --check tools/portadores/test-elyra.js
       - run: node tools/portadores/test-elyra.js
       - uses: actions/upload-artifact@v4
