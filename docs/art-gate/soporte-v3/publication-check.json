@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-19T20:29:07.056202+00:00",
+  "scope": "READ_ONLY_PUBLIC_STATIC_DELIVERY_NOT_ACCOUNT_OR_FULL_GAME_CERTIFICATION",
+  "canonicalFrom": "js/net/net-config.js and tools/alpha/account-environments.js",
+  "base": "https://fondalstudios.com/la-horda/jugar/",
+  "mainMerge": "ae21839465a7dfdad469be3a4bb37cef9605cbbc",
+  "requests": [
+    {
+      "url": "https://fondalstudios.com/la-horda/jugar/",
+      "kind": "canonical-entry",
+      "status": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 58032,
+      "sha256": "981538c845bb099fa47c659c82952333a92adec39d40fd1d5d2661ee0cf7585f"
+    },
+    {
+      "url": "https://fondalstudios.com/la-horda/jugar/js/assets/champion-sprites.js",
+      "kind": "canonical-static",
+      "status": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/assets/champion-sprites.js",
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 46253,
+      "sha256": "0efc9cd0666b86a49caf137a9e48e62f77b21077cc327dea9c44903e15190fca",
+      "expectedSha256": "7b4536ce66620efc85a7037fa8622cf18d14a0f48733aea4bb408c7946c9c755",
+      "matchesExpected": false
+    },
+    {
+      "url": "https://fondalstudios.com/la-horda/jugar/js/rendering/champion-sprites.js",
+      "kind": "canonical-static",
+      "status": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/rendering/champion-sprites.js",
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 56037,
+      "sha256": "d36f10b82e5caa37ea15f3f67e134ad865fdacd91438a51c0dcf3f1177f850ae",
+      "expectedSha256": "86b542e56cb6efb4b6d6b9b7854bbc9d7d17a385a134543ea123c0909c970b4c",
+      "matchesExpected": false
+    },
+    {
+      "url": "https://fondalstudios.com/la-horda/jugar/assets/sprites/champions/soporte/v3/atlas.png",
+      "kind": "canonical-static",
+      "status": 404,
+      "error": "HTTPError",
+      "matchesExpected": false
+    }
+  ],
+  "accountsAccessed": false,
+  "writesPerformed": false,
+  "entryScriptSources": [
+    "js/assets/champion-sprites.js",
+    "js/rendering/champion-sprites.js"
+  ],
+  "status": "PUBLICATION_NOT_CONFIRMED",
+  "limitations": [
+    "Read-only public responses only; no authenticated NanoGM session tested",
+    "No claim that existing clients refreshed service-worker caches",
+    "No production gameplay/multiplayer or physical-device performance certification"
+  ],
+  "entryScriptCount": 357,
+  "entryScriptSourcesScope": "Only the two verified runtime sources; full public-script list remains in job log",
+  "proof": {
+    "run": 39319678952,
+    "job": 118290180012,
+    "head": "080fc0f608644e929e547edcade527447899989a"
+  },
+  "deploymentPerformed": false,
+  "hostingAccess": {
+    "renderServicesListed": false,
+    "reason": "No workspace selected in available Render connection; canonical publishing target not verified. No workspace chosen or infrastructure changed."
+  }
+}
