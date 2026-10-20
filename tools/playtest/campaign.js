@@ -33,6 +33,9 @@ const HOOKS = () => {
 };
 async function runOne(page, job) {
   return page.evaluate(([job]) => {
+    // job.lvl = 'arena': nivel esperado de la arena (DIFF.arenaLevel + lvlOffset de la dificultad + job.lvlAdd); job.skill/job.reaction: perfil del autopilot (aprendiz .45/650, ocasional .7/400, habitual .9/220)
+    if (job.lvl === 'arena') job.lvl = Math.max(1, (DIFF.arenaLevel[job.arena] || 1) + (job.tier && DIFF_TIERS[job.tier] ? DIFF_TIERS[job.tier].lvlOffset : 0) + (job.lvlAdd || 0));
+    if (job.skill !== undefined) __AP.skill = job.skill; if (job.reaction !== undefined) __AP.reaction = job.reaction;
     if (job.lvl > 0) for (const k in save.champions) { save.champions[k].level = job.lvl; const al = Math.min(10, Math.floor(job.lvl / 3)); save.champions[k].skillMastery.forEach(m => m.alloc = al); save.champions[k].ultMastery.alloc = al; }
     if (job.diff) Object.assign(DIFF, job.diff);
     // job.seed: Math.random determinista (mulberry32) para repetir una partida; el host sigue metiendo ruido de tiempo
@@ -50,11 +53,42 @@ async function runOne(page, job) {
     if (job.mods) Object.assign(ARENA_MODS[job.arena], job.mods);
     // job.loot = N: el botín de N victorias de campaña (rollLoot + materializeLoot, como tools/balance/lootsim2.js) para job.cls,
     // repartidas en orden por las arenas; sin esto un guardado de prueba juega a nivel 54 SIN equipo (más duro que un jugador real)
+    // job.lootSeq = ['bosque','fortaleza',...]: una victoria por arena listada, en orden (la campaña real: llegar a la arena N con las N-1 anteriores ganadas);
+    // se combina con job.loot (que reparte N victorias por todas las arenas). job.skill / job.reaction: perfil del autopilot (aprendiz .45/650, ocasional .7/400, habitual .9/220)
+    if (job.skill !== undefined) __AP.skill = job.skill; if (job.reaction !== undefined) __AP.reaction = job.reaction;
+    if (job.lootSeq) {
+      const GR = () => { const x = Math.random(); return x < 0.12 ? 'B' : (x < 0.55 ? 'A' : (x < 0.9 ? 'S' : 'S+')); };
+      let pity = {}; save.stash = save.stash || [];
+      // 'arena@tier' tira ese botín con la rareza/nivel de esa dificultad (la Normal previa de un jugador de Pesadilla no tiene el premio de Pesadilla)
+      const lf0 = window.diffLootFactor, lb0 = window.diffItemLevelBonus;
+      for (const e of job.lootSeq) {
+        const [a, tr] = e.split('@'); if (tr) { window.diffLootFactor = () => DIFF_TIERS[tr].lootFactor; window.diffItemLevelBonus = () => DIFF_TIERS[tr].itemLvl; }
+        const r = rollLoot({ arena: a, grade: GR(), victory: true, subjefes: 2, owned: ownedDesignIds(), pity, classKey: job.cls }); pity = r.pity;
+        for (const spec of r.items) { const it = materializeLoot(spec, job.cls, a); if (it.rarity === 'comun') continue; save.stash.push(it); collectionRegister(it, true); }
+        window.diffLootFactor = lf0; window.diffItemLevelBonus = lb0;
+      }
+    }
+    // job.lootPlan = [{arena, tier}, ...]: una victoria por entrada, con el botín de ESA dificultad (Normal -> Pesadilla -> Infierno en orden);
+    // job.skill / job.reaction: perfil del autopiloto (aprendiz .45/650, ocasional .7/400, habitual .9/220; por defecto .85/260)
+    if (job.lootPlan) {
+      const GR = () => { const x = Math.random(); return x < 0.12 ? 'B' : (x < 0.55 ? 'A' : (x < 0.9 ? 'S' : 'S+')); };
+      let pity = {}; save.stash = save.stash || [];
+      const snap = JSON.stringify([save.arenasCleared, save.diffCleared, save.diffSelected]), ca0 = currentArena;
+      save.arenasCleared = save.arenasCleared || {}; for (const k of ARENA_ORDER) save.arenasCleared[k] = true; diffSetSelected('normal');
+      for (const t of DIFF_TIER_ORDER) if (t !== 'normal') for (const k of ARENA_ORDER) save.diffCleared[t][k] = true;
+      for (const st of job.lootPlan) {
+        currentArena = st.arena; diffSetSelected(st.tier);
+        const r = rollLoot({ arena: st.arena, grade: GR(), victory: true, subjefes: 2, owned: ownedDesignIds(), pity, classKey: job.cls }); pity = r.pity;
+        for (const spec of r.items) { const it = materializeLoot(spec, job.cls, st.arena); if (it.rarity === 'comun') continue; save.stash.push(it); collectionRegister(it, true); }
+      }
+      currentArena = ca0; const sn = JSON.parse(snap); save.arenasCleared = sn[0] || {}; save.diffCleared = sn[1]; save.diffSelected = sn[2];
+    }
     if (job.loot) {
       const GR = () => { const x = Math.random(); return x < 0.12 ? 'B' : (x < 0.55 ? 'A' : (x < 0.9 ? 'S' : 'S+')); };
       let pity = {}; save.stash = save.stash || [];
       for (let v = 0; v < job.loot; v++) {
-        const a = ARENA_ORDER[Math.min(ARENA_ORDER.length - 1, Math.floor(v * ARENA_ORDER.length / job.loot))];
+        // job.lootSeq: la v-ésima victoria fue en la v-ésima arena de la campaña (vuelve a empezar cada 10: Normal, luego Pesadilla...), como un jugador que llegó a esta arena en orden
+        const a = job.lootSeq ? ARENA_ORDER[v % ARENA_ORDER.length] : ARENA_ORDER[Math.min(ARENA_ORDER.length - 1, Math.floor(v * ARENA_ORDER.length / job.loot))];
         const r = rollLoot({ arena: a, grade: GR(), victory: true, subjefes: 2, owned: ownedDesignIds(), pity, classKey: job.cls }); pity = r.pity;
         for (const spec of r.items) { const it = materializeLoot(spec, job.cls, a); if (it.rarity === 'comun') continue; save.stash.push(it); collectionRegister(it, true); }
       }
@@ -62,6 +96,7 @@ async function runOne(page, job) {
     if (job.gear) { for (const k in save.champions) if (typeof autoEquipBest === 'function') autoEquipBest(k); }
     // un jugador competente gasta sus puntos de talento (el HUD le sugiere cuál subir)
     if (job.lvl <= 0 && typeof suggestedSkillInvest === 'function') for (let g = 0; g < 60; g++) { const i = suggestedSkillInvest(job.cls); if (i === null || i === undefined || !investTalentPoint(job.cls, i)) break; }
+    if (job.skill) __AP.skill = job.skill; if (job.reaction) __AP.reaction = job.reaction;
     __CP.reset(); __CP.god = !!job.god;
     if (job.arena === 'auto') job.arena = ARENA_ORDER.find(a => !(save.arenasCleared||{})[a]) || 'infernal';
     // job.lootPath = P: el equipo REAL de un jugador que ganó P veces (1 o 2) cada arena anterior a (job.tier, job.arena) en el orden Normal -> Pesadilla -> Infierno
@@ -115,7 +150,8 @@ async function runOne(page, job) {
   }, [job]);
 }
 (async () => {
-  const browser = await chromium.launch({ args: ['--no-sandbox'] });
+  const launch = () => chromium.launch({ args: ['--no-sandbox'], executablePath: process.env.CHROMIUM_PATH || undefined });
+  let browser = await launch();
   let page = null, errors = [];
   const fresh = async (seedSave) => {
     if (page) await page.context().close();
@@ -125,16 +161,18 @@ async function runOne(page, job) {
     page = await ctx.newPage(); errors = [];
     page.on('pageerror', e => errors.push(e.message));
     await page.goto(`http://127.0.0.1:${port}/index.html`, { waitUntil: 'load', timeout: 180000 });
-    for (let i = 0; i < 300; i++) { const ok = await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return b && !b.disabled; }); if (ok) break; await sleep(100); }
+    let ready = false; for (let i = 0; i < 1200 && !ready; i++) { ready = await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return !!(b && !b.disabled) && typeof diffSetSelected === 'function' && typeof checkpointOnRunStart === 'function' && typeof vfxResetRun === 'function' && typeof AlphaServices !== 'undefined' && typeof stashItems !== 'undefined' && typeof ENEMY_BASE !== 'undefined'; }).catch(() => false); if (!ready) await sleep(100); } if (!ready) throw new Error('la pagina no termino de cargar');
     await page.addScriptTag({ path: path.join(__dirname, 'autopilot.js') });
     await page.evaluate(require('../fortaleza/sim-helpers.js'));
     await page.evaluate(require('../balance/real-loot.js'));
     await page.evaluate(HOOKS);
   };
   for (const job of jobs) {
-    if (!job.keep) await fresh(job.empty ? 'empty' : null);
+    if (!job.keep) { let ok = false; for (let t = 0; t < 3 && !ok; t++) { try { await fresh(job.empty ? 'empty' : null); ok = true; } catch (e) { console.log('fresh fallo (' + String(e).slice(0, 60) + '), reintento'); await sleep(3000); try { await browser.close(); } catch (e2) {} try { browser = await launch(); page = null; } catch (e3) {} } } if (!ok) { fs.appendFileSync(outFile, JSON.stringify({ tag: job.tag, cls: job.cls, arena: job.arena, crash: 'carga de pagina fallo 3 veces' }) + '\n'); continue; } }
     const t0 = Date.now();
-    let r; try { r = await runOne(page, job); } catch (e) { r = { tag: job.tag, cls: job.cls, arena: job.arena, crash: String(e).slice(0, 300) }; }
+    let r; for (let tr = 0; tr < 3; tr++) { try { r = await runOne(page, job); } catch (e) { r = { tag: job.tag, cls: job.cls, arena: job.arena, crash: String(e).slice(0, 300) }; }
+      if (!(r.crash && /not defined|crashed|closed/.test(r.crash)) || job.keep) break; // carga incompleta o pestaña caída: reintentar en página nueva
+      for (let t2 = 0; t2 < 5; t2++) { try { await fresh(job.empty ? 'empty' : null); break; } catch (e) { await sleep(8000); } } }
     r.errors = errors.slice(0, 3); r.wall = Math.round((Date.now() - t0) / 1000);
     fs.appendFileSync(outFile, JSON.stringify(r) + '\n');
     console.log(`${r.tag} ${r.cls}/${r.arena} lv${r.lvl} -> ${r.result} L${r.reached} ${r.secs}s boss=${r.bossSecs} err=${r.errors.length} wall=${r.wall}s`);
