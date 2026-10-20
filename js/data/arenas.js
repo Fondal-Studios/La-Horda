@@ -43,8 +43,8 @@ const ARENA_MODS = {
               // (vida y maná, x2.2) y -20% de vida a todo lo que aparece -> ~33% en 40 partidas.
               potionMult:2.2, enemyHpMult:0.8,
               // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste (solo Pesadilla) da 58% (23/40).
-              // DIFICULTAD_GRUPO2.md: x0,5/0,4/0,7 daba ~100% con equipo real; x0,75 daba 88%: x0,9/0,9/0,95 para ~60%. Infierno x0,55/0,55/0,7 -> ~50%.
-              tierMods:{ pesadilla:{ hp:0.9, dmg:0.9, bossDmg:0.95 }, infierno:{ hp:0.55, dmg:0.55, bossDmg:0.7 } } },
+              // DIFICULTAD_GRUPO2.md: x0,5/0,4/0,7 daba ~100% con equipo real; x0,75 daba 88%: x0,9/0,9/0,85 para ~60% (jefes 0,85 y no 0,95: con 0,95 el daño de jefes de Pesadilla superaba al de Infierno x0,7). Infierno x0,55/0,55/0,7 -> ~50%.
+              tierMods:{ pesadilla:{ hp:0.9, dmg:0.9, bossDmg:0.85 }, infierno:{ hp:0.55, dmg:0.55, bossDmg:0.7 } } },
   infernal: { label:"Arena Infernal",    icon:"🔥", desc:"Arena 10. La dimensión de la Horda. El final del viaje.", hazardName:"Ignición Eterna",
               fireDmgMult:0.8,  iceDmgMult:1.25, enemyDmgPerWave:0.22, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:0.6, heroDmgMult:1.0, enemyRegenPct:0, hazard:"ignicion", hasWalls:false,
