@@ -10,7 +10,7 @@ const CAMPAIGN = ['ciudad', 'fortaleza', 'bosque', 'micelial', 'hielo', 'acuatic
 function wilson(k, n) { if (!n) return [0, 1]; const z = 1.96, p = k / n, d = 1 + z * z / n, c = p + z * z / (2 * n), m = z * Math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)); return [Math.max(0, (c - m) / d), Math.min(1, (c + m) / d)]; }
 function gen(spec, outDir, shards, doneFiles) {
   // doneFiles: resultados ya obtenidos (jsonl); sus trabajos (tag+semilla) no se repiten, para retomar una corrida cortada
-  const done = new Set((doneFiles || []).flatMap(f => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').filter(Boolean).map(l => { const r = JSON.parse(l); return r.tag + '#' + r.seed; }) : []));
+  const done = new Set((doneFiles || []).flatMap(f => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').filter(Boolean).map(l => { try { const r = JSON.parse(l); return r.tag + '#' + r.seed; } catch (e) { return ''; } }) : []));
   const jobs = [];
   for (let i = 0; i < spec.n; i++) for (const arena of spec.arenas) for (const profile of spec.profiles) {
     const cls = spec.classes[(i + CAMPAIGN.indexOf(arena)) % spec.classes.length], pr = PROFILES[profile];
@@ -26,7 +26,7 @@ function gen(spec, outDir, shards, doneFiles) {
   console.log(`${jobs.length} trabajos en ${shards} archivos`);
 }
 function agg(files) {
-  const rows = files.flatMap(f => fs.readFileSync(f, 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l))).filter(r => !r.crash);
+  const rows = files.flatMap(f => fs.readFileSync(f, 'utf8').split('\n').filter(Boolean).map(l => { try { return JSON.parse(l); } catch (e) { return { crash: 'linea cortada' }; } })).filter(r => !r.crash);
   const g = {};
   for (const r of rows) { const k = r.tag; (g[k] = g[k] || { n: 0, w: 0, secs: [], reached: [], cls: {}, killers: {} }); const c = g[k]; c.n++; const win = r.result === 'victory'; if (win) c.w++; c.secs.push(r.secs); c.reached.push(r.reached);
     const cc = c.cls[r.cls] = c.cls[r.cls] || [0, 0]; cc[1]++; if (win) cc[0]++;
