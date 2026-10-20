@@ -168,12 +168,10 @@ function shopNowRowHTML(sc){
     return {g:0, price:d.price, name:it.name, sub:`Oferta del día · ${itemTierLabel(it)}`, btn:`data-deal-buy="${d.id}" data-gold-price="${d.price}"`};
   }).filter(Boolean);
   const champs = CHAMPION_CATALOG.filter(c=>!(save.champions[c.id]||{}).unlocked && shopChampionPurchasable(c.id)).map(c=>({g:1, price:shopChampionPrice(c.id), name:CLASSES[c.id].name, sub:"Guardián nuevo", btn:`data-champ-buy="${c.id}"`}));
-  const skinIds = typeof SET_SKINS!=="undefined" ? Object.keys(SET_SKINS).filter(id=>SET_DB[id] && shopSetMissing(id).length) : [];
-  const skins = skinIds.map(id=>({g:3, price:shopSkinPrice(id), name:SET_SKINS[id].name || SET_DB[id].name, sub:"Skin · solo apariencia", btn:`data-skin-buy="${id}"`}));
-  const cromas = (typeof shopCromaProducts==="function" ? shopCromaProducts() : []).filter(p=>!p.owned).map(p=>({g:4, price:p.price, name:p.name, sub:"Croma · solo cosmético", btn:`data-croma-buy="${p.id}"`}));
+  // las skins y cromas ya no se compran con oro (solo Brasas ✦): no entran en "lo que podés comprar ya"
   const rots = shopIsLive() ? shopRotationToday().map(e=>({g:0, price:shopPriceOf(e), name:shopPreviewItem(e).name, sub:`A la venta hoy · ${_shopRotLabel(e)}`, btn:`data-rot-buy="${e.key}" data-gold-price="${shopPriceOf(e)}"`})) : [];
   const basics = basicCommon!=null && gold >= basicCommon ? [{g:2, price:basicCommon, name:"Equipo Básico Común", sub:"Desde acá se empieza a armar la build", go:"basics"}] : [];
-  const can = deals.concat(rots, champs, basics, skins, cromas).filter(x=>x.price <= gold);
+  const can = deals.concat(rots, champs, basics).filter(x=>x.price <= gold);
   can.sort((a,b)=>(a.g-b.g) || (b.price-a.price));
   if(can.length){
     const card = x=>`<div class="shop-now-card"><div class="shop-bundle-name">${x.name}</div><div class="shop-item-sub">${x.sub}</div>
@@ -204,7 +202,7 @@ function renderShopShowcase(panel){
     const sub = isSkin ? `Skin · colección ${S.name} · solo apariencia${skinSetChamp(f.id) ? " · " + cls.name : " · universal"}` : `Guardián · ${cls.role || ""}`;
     const desc = isSkin ? (S.lore || S.theme || "") : (cat ? cat.lore : "");
     const act = f.owned ? '<span class="shop-st own">✔ Ya es tuyo</span>'
-      : `<button class="shop-btn hot" id="shop-feat-buy" ${save.gold < f.price ? "disabled" : ""}>${isSkin ? "Comprar skin" : "Desbloquear"}</button>`;
+      : isSkin ? "" : `<button class="shop-btn hot" id="shop-feat-buy" ${save.gold < f.price ? "disabled" : ""}>Desbloquear</button>`;
     hero = `<div class="shop-hero ${isSkin ? "skin" : "champ"}" data-feat="${f.kind}:${f.id}" style="--hc:${cls.color || "#ff7a2e"}">
       <div class="shop-hero-art">
         ${isSkin ? `<img class="shop-hero-img" data-portador-skin="${f.id}" src="${sk.preview || sk.src}" alt="">` : ""}
@@ -215,7 +213,7 @@ function renderShopShowcase(panel){
         <div class="shop-hero-title" style="color:${cls.color || "var(--ember3)"}">${title}</div>
         <div class="shop-hero-sub">${sub}</div>
         <div class="shop-hero-desc">${desc}</div>
-        <div class="shop-hero-buy">${f.owned ? "" : _shopPriceHTML(f.price, f.base)}${act}${!f.owned && isSkin && typeof premiumSkinButton==="function" ? premiumSkinButton(f.id) : ""}</div>
+        <div class="shop-hero-buy">${f.owned || isSkin ? "" : _shopPriceHTML(f.price, f.base)}${act}${!f.owned && isSkin && typeof premiumSkinButton==="function" ? premiumSkinButton(f.id) : ""}</div>
       </div></div>`;
   }
   // ofertas del día
@@ -238,14 +236,14 @@ function renderShopShowcase(panel){
       <div class="shop-bundle-art"><img data-portador-skin="${id}" src="${sk.preview || sk.src}" alt="" loading="lazy">${own ? "" : _shopTagNew(key)}</div>
       <div class="shop-bundle-name">${sk.name || S.name}</div>
       <div class="shop-item-sub">${champ ? CLASSES[champ].name : "Universal"} · skin (solo apariencia)</div>
-      <div class="shop-deal-buy">${own ? '<span class="shop-st own">✔ Tuyo</span>' : `<button class="shop-btn" data-skin-buy="${id}" ${save.gold < shopSkinPrice(id) ? "disabled" : ""}>🪙 ${fmtGold(shopSkinPrice(id))}</button>${typeof premiumSkinButton === "function" ? premiumSkinButton(id) : ""}`}${_shopVoucherBtn(id)}</div>
+      <div class="shop-deal-buy">${own ? '<span class="shop-st own">✔ Tuyo</span>' : `${typeof premiumSkinButton === "function" ? premiumSkinButton(id) : ""}`}${_shopVoucherBtn(id)}</div>
     </div>`;
   }).join("");
   // cromas: cosméticas sueltas (js/ui/shop-cromas.js da los productos); las que no tenés primero
   const cromaList = typeof shopCromaProducts==="function" ? shopCromaProducts().sort((a,b)=>(a.owned-b.owned) || (b.champOwned-a.champOwned)) : [];
   const cromas = cromaList.map(p=>{
     const key = "croma:" + p.id; seenNow.push(key);
-    const act = !p.owned ? `<button class="shop-btn" data-croma-buy="${p.id}" ${save.gold < p.price ? "disabled" : ""}>🪙 ${fmtGold(p.price)}</button>`
+    const act = !p.owned ? (typeof premiumSkinButton === "function" ? premiumSkinButton(p.id) : "")
       : p.equipped ? '<span class="shop-st own">✔ Equipada</span>'
       : p.champOwned ? `<button class="shop-btn sec" data-croma-on="${p.id}">Equipar</button>` : '<span class="shop-st own">✔ Tuya</span>';
     return `<div class="shop-bundle shop-croma-card ${p.owned ? "owned" : ""}" data-croma-card="${p.id}">
@@ -278,12 +276,7 @@ function renderShopShowcase(panel){
   const fb = panel.querySelector("#shop-feat-buy");
   if(fb) fb.addEventListener("click", ()=>{
     if(f.kind==="champ"){ shopConfirmChampion(f.id, f); return; }
-    const nm = SET_SKINS[f.id].name || SET_DB[f.id].name;
-    gameConfirm(`¿Comprar la skin ${nm} por ${fmtGold(f.price)} de oro? Es solo apariencia: las piezas del set ${SET_DB[f.id].name} se compran aparte.`, {okText:"Comprar"}).then(ok=>{
-      if(!ok) return;
-      const r = shopBuyFeatured(f); if(!r.ok){ gameAlert(r.reason); return; }
-      _shopAfterSkinBuy(f.id, r.n);
-    });
+    // la skin del día se paga solo con Brasas ✦ (botón [data-skin-premium])
   });
   panel.querySelectorAll("[data-deal-buy]").forEach(b=> b.addEventListener("click", ev=>{
     ev.stopPropagation();
@@ -300,16 +293,6 @@ function renderShopShowcase(panel){
   _bindSkinBuy(panel);
   shopRotationBind(panel);
   panel.querySelectorAll("[data-champ-buy]").forEach(b=> b.addEventListener("click", ()=> shopConfirmChampion(b.getAttribute("data-champ-buy"))));
-  panel.querySelectorAll("[data-croma-buy]").forEach(b=> b.addEventListener("click", ()=>{
-    const id = b.getAttribute("data-croma-buy"), d = CROMA_SKINS[id], ch = save.champions[d.champ];
-    const quotedPrice = cromaPrice(id);
-    gameConfirm(`¿Comprar la croma ${d.name} por ${fmtGold(quotedPrice)} de oro?`, {okText:"Comprar"}).then(ok=>{
-      if(!ok) return;
-      const r = cromaBuy(id, quotedPrice); if(!r.ok){ gameAlert(r.reason); return; }
-      if(ch && ch.unlocked) cromaEquip(d.champ, id); // recién comprada: se pone en su guardián
-      _shopAfterBuy(`🎨 CROMA ${d.name}${ch && ch.unlocked ? " · equipada" : " · comprada"}`, "levelup");
-    });
-  }));
   panel.querySelectorAll("[data-croma-on]").forEach(b=> b.addEventListener("click", ()=>{
     const id = b.getAttribute("data-croma-on"), d = CROMA_SKINS[id];
     if(cromaEquip(d.champ, id)) _shopAfterBuy(`🎨 CROMA EQUIPADA · ${d.name}`, "levelup");
@@ -324,16 +307,7 @@ function renderShopShowcase(panel){
 }
 // el contador "se renuevan en…" se actualiza solo mientras la vitrina está abierta
 setInterval(()=>{ if(typeof state!=="undefined" && state==="shop") document.querySelectorAll("[data-shop-renew]").forEach(el=>{ el.textContent = (el.dataset.prefix || "⟳ ") + _shopRenewTxt(); }); }, 30000);
-function _bindSkinBuy(panel){
-  panel.querySelectorAll("[data-skin-buy]").forEach(b=> b.addEventListener("click", ()=>{
-    const id = b.getAttribute("data-skin-buy");
-    const quotedPrice = shopSkinPrice(id);
-    gameConfirm(`¿Comprar la skin ${SET_SKINS[id].name || SET_DB[id].name} por ${fmtGold(quotedPrice)} de oro? Es solo apariencia: las piezas del set ${SET_DB[id].name} se compran aparte.`, {okText:"Comprar"}).then(ok=>{
-      if(!ok) return;
-      shopBuySkin(id, quotedPrice);
-    });
-  }));
-}
+function _bindSkinBuy(panel){ /* las skins se compran solo con Brasas ✦: botón [data-skin-premium] (js/systems/premium.js) */ }
 
 /* ---------------- Guardianes ---------------- */
 let shopChampFilter = "ALL";
@@ -472,7 +446,7 @@ function renderShopSkins(panel){
     const eq = champ ? equippedSetCount(champ, id) : 0, active = activeOn.length > 0;
     const previewKey = champ || comp[0];
     let action;
-    if(!skinOwnedFull(id)) action = `<button class="shop-btn" data-skin-buy="${id}" ${save.gold < shopSkinPrice(id) ? "disabled" : ""}>Comprar skin · 🪙 ${fmtGold(shopSkinPrice(id))}</button>${typeof premiumSkinButton === "function" ? premiumSkinButton(id) : ""}${_shopVoucherBtn(id)}`;
+    if(!skinOwnedFull(id)) action = `${typeof premiumSkinButton === "function" ? premiumSkinButton(id) : ""}${_shopVoucherBtn(id)}`;
     else if(!comp.length) action = `<div class="shop-item-sub">Skin desbloqueada: conseguí a <b>${champ ? CLASSES[champ].name : "un guardián"}</b> en la pestaña Guardianes para usarla.</div>`;
     else {
       const rest = comp.filter(k=>!activeOn.includes(k));
@@ -502,11 +476,11 @@ function renderShopSkins(panel){
     if(skinEquipOn(id, k)) _skinEquippedFeedback(id, k); else gameAlert("No se pudo usar: revisá que hayas desbloqueado esta apariencia para el guardián.");
     renderShop();
   }));
-  if(typeof shopCromaMount==="function") shopCromaMount(panel); // cromas sueltas por oro (js/ui/shop-cromas.js)
+  if(typeof shopCromaMount==="function") shopCromaMount(panel); // cromas sueltas por Brasas ✦ (js/ui/shop-cromas.js)
   if(focus){
     panel.querySelectorAll("[data-croma-card]").forEach(c=>{ const d = typeof CROMA_SKINS!=="undefined" && CROMA_SKINS[c.getAttribute("data-croma-card")]; if(d && d.champ!==focus) c.remove(); });
     // primero lo que todavía no tenés
-    const first = panel.querySelector("[data-skin-buy], [data-croma-buy]");
+    const first = panel.querySelector("[data-skin-premium]");
     const card = first && first.closest(".shop-skin");
     if(card) setTimeout(()=>{ try{ card.scrollIntoView({block:"center"}); }catch(e){} }, 0);
   }

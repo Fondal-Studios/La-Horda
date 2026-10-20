@@ -101,7 +101,7 @@ const SECRET='secreto-de-prueba-brasas-0123';
   ok(await page.locator('[data-col-card]').count()>0,'hay colecciones');
   const col=await page.evaluate(()=>{const k=document.querySelector('[data-col-card]').dataset.colCard,q=premiumCollection(k);return {k,q,txt:document.querySelector('[data-col-card]').innerText};});
   ok(col.q.price<col.q.sum&&col.q.save===col.q.sum-col.q.price&&col.txt.includes(col.q.price.toLocaleString('es-AR')),'descuento honesto '+JSON.stringify(col));
-  ok(await page.evaluate(()=>{const b=document.querySelector('[data-skin-buy]');return !b||!!b.parentElement.querySelector('[data-skin-premium]')&&b.parentElement.querySelector('[data-skin-premium]').getBoundingClientRect().left<=b.getBoundingClientRect().left+1;}),'Brasas primero, oro como alternativa');
+  ok(await page.evaluate(()=>!document.querySelector('[data-skin-buy],[data-croma-buy]')&&!!document.querySelector('[data-skin-premium]')),'skins solo con Brasas: sin botón de oro');
   for(const [w,h] of [[844,390],[667,375]]){await page.setViewportSize({width:w,height:h});await page.waitForTimeout(150);await noOverflow(page,'skins '+w);}
   await page.setViewportSize({width:844,height:390});await page.addStyleTag({content:'#qs-toasts{display:none!important}'});await page.screenshot({path:path.join(SHOTS,'shop-skins-brasas-844x390.png')});
   await page.locator('.shop-tab[data-shop-tab="brasas"]').click();

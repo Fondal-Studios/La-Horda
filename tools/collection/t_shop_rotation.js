@@ -131,7 +131,7 @@ const T18_48 = Date.UTC(2026, 9, 19, 18, 48, 0); // 5 h 12 min antes de la media
       r = shopBuySetBundle('baluarte', false); o.bundle = !r.ok && JSON.stringify({g: save.gold, s: save.stash}) === before; o.bundleReason = r.reason;
       r = shopBuySetBundle('baluarte', false, 15); o.bundleDisc = !r.ok;
       // la skin sigue siendo solo apariencia: no entrega piezas
-      const miss = shopSetMissing('baluarte').length; r = shopBuySetBundle('baluarte', true); o.skin = r.ok && shopSetMissing('baluarte').length === miss && save.stash.length === 0;
+      const miss = shopSetMissing('baluarte').length; r = shopBuySetBundle('baluarte', true); o.skin = !r.ok && shopSetMissing('baluarte').length === miss && save.stash.length === 0;   // la skin ya no se compra con oro (solo Brasas)
       // legado
       o.legacy = !shopBuy('of0').ok;
       // guardianes y Básicos: siempre

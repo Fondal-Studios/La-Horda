@@ -62,13 +62,14 @@ const slotSkins = (c) => ev(c, () => [...document.querySelectorAll('#lobby-slots
   // igual que ese botón -menus.js no se toca en esta tanda-)
   await ev(B, () => { codexReturnTo = 'prep'; shopTab = 'skins'; setState('shop'); renderShop(); }); await sleep(300);
   check('tienda.pestana_skins_con_cromas', await ev(B, () => state === 'shop' && shopTab === 'skins' && document.querySelectorAll('[data-croma-card]').length > 0));
-  await B.page.evaluate(() => document.querySelector('[data-croma-buy="nigromante_escarcha"]').scrollIntoView({ block: 'center' })); await sleep(250);
+  check('tienda.croma_sin_boton_de_oro', await ev(B, () => !document.querySelector('[data-croma-buy]') && !!document.querySelector('[data-skin-premium="nigromante_escarcha"]')));
   const gold0 = await ev(B, () => save.gold); // (los logros/pase pueden haber sumado oro al entrar)
-  await press(B, '[data-croma-buy="nigromante_escarcha"]');
+  // entrega de una compra con Brasas ✦ (premium.js: premiumApply + equipar); el oro no se toca
+  await ev(B, () => { save.cromas = Object.assign({}, save.cromas, { nigromante_escarcha: true }); persist(); cromaEquip('nigromante', 'nigromante_escarcha'); renderShop(); });
   await sleep(700);
   const bBuy = await ev(B, () => ({ owned: cromaOwned('nigromante_escarcha'), eq: cromaEquippedId('nigromante'), skin: champSkinId('nigromante'), gold: save.gold,
     toast: (document.getElementById('net-toast') || {}).textContent || '' }));
-  check('tienda.compra_y_equipa', bBuy.owned && bBuy.eq === 'nigromante_escarcha' && bBuy.skin === 'nigromante_escarcha' && bBuy.gold === gold0 - 1500, Object.assign({ gold0 }, bBuy));
+  check('tienda.compra_y_equipa', bBuy.owned && bBuy.eq === 'nigromante_escarcha' && bBuy.skin === 'nigromante_escarcha' && bBuy.gold === gold0, Object.assign({ gold0 }, bBuy));
   if (OUT) await B.page.screenshot({ path: OUT + '/B_tienda_cromas.png' });
   await press(B, '#shop-back-btn');
   check('tienda.vuelve_a_la_sala', await ev(B, () => state === 'prep' && netInRoom()));
