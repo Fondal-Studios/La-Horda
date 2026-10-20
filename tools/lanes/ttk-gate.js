@@ -1,4 +1,6 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 /* PRUEBA INFORMATIVA de equilibrio PvP por campeón: TIEMPO PARA MATAR a un blanco quieto (motor real de Cristales/Coliseo).
  * NO bloquea nada y NO toca campeones: lista los que quedan fuera de ±50 % de la mediana de su rol (siempre sale con código 0).
  * Cada campeón juega solo, al nivel 10 (como el Coliseo), contra un luchador rival inmóvil de 600 de vida y 10 % de defensa, sin hordas ni
@@ -18,7 +20,7 @@ const median=a=>{const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length?(
 (async()=>{
  const PORT=await freePort(),root=path.resolve(__dirname,'../..');
  const srv=spawn('python3',['-m','http.server',String(PORT),'--bind','127.0.0.1'],{cwd:root,stdio:'ignore'});
- for(let i=0;i<80;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+ for(let i=0;i<80;i++){try{if((await fetchReadyOk(`http://127.0.0.1:${PORT}/index.html`)))break;}catch{}await new Promise(r=>setTimeout(r,100));}
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});
  const newPage=async()=>{const p=await b.newPage({viewport:{width:844,height:390}});p.on('pageerror',e=>console.error('pageerror',e.message));await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});await p.waitForFunction(()=>typeof lanesStart==='function'&&typeof update==='function',null,{timeout:60000});return p;};
  let p=await newPage();

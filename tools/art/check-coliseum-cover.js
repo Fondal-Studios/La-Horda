@@ -1,8 +1,10 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 const {chromium}=require('playwright'),{spawn}=require('child_process'),fs=require('fs'),assert=require('assert');
 const out='docs/coliseum-cover';
 (async()=>{const server=spawn('python3',['-m','http.server','8877'],{stdio:'ignore'});let browser;const report={errors:[]};try{
- for(let i=0;i<60;i++){try{if((await fetch('http://127.0.0.1:8877')).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+ for(let i=0;i<60;i++){try{if((await fetchReadyOk('http://127.0.0.1:8877')))break;}catch{}await new Promise(r=>setTimeout(r,100));}
  browser=await chromium.launch({args:['--no-sandbox']});const page=await browser.newPage({viewport:{width:1280,height:800}});page.on('pageerror',e=>report.errors.push(e.message));
  await page.goto('http://127.0.0.1:8877/index.html');await page.waitForFunction(()=>typeof colBuildCover==='function'&&assetsAllReady());
  await page.waitForFunction(()=>['column','slate'].every(k=>BATTLEFIELD_IMAGES[k].complete&&BATTLEFIELD_IMAGES[k].naturalWidth));

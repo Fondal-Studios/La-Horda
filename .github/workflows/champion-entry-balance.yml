@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - run: node --test tools/lib/test-http-ready.js
       - run: node --test tools/factory/test.js
       - run: node --test tools/regression/test-aim-hostiles.js
       - run: node tools/factory/boss-cli.js check

@@ -1,4 +1,6 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 /* Bots orientados a victoria — simulación headless en el motor real (Chromium, reloj virtual, sin interfaz).
  * Mide A/B si los bots se distraen con mobs irrelevantes y si eso cuesta partidas.
  *
@@ -17,7 +19,7 @@ const MODE=pos[0]==='col'?'col':'cw',N=Number(pos[1])||6,SECS=Number(pos[2])||(M
 const ROOT=path.resolve(flag('root',path.resolve(__dirname,'../..'))),PORT=8911+Math.floor(Math.random()*60);
 const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:ROOT,stdio:'ignore'});
 (async()=>{
- for(let i=0;i<60;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+ for(let i=0;i<60;i++){try{if((await fetchReadyOk(`http://127.0.0.1:${PORT}/index.html`)))break;}catch{}await new Promise(r=>setTimeout(r,100));}
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});const context=await b.newContext();
  const runs=[];
  for(let g=0;g<N;g++){

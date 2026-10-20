@@ -1,8 +1,10 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 const {chromium}=require('playwright'),{spawn}=require('child_process'),fs=require('fs'),assert=require('assert');
 const out='docs/production/art-unification';
 (async()=>{const srv=spawn('python3',['-m','http.server','8874'],{stdio:'ignore'});let browser;try{
-for(let i=0;i<60;i++){try{if((await fetch('http://127.0.0.1:8874')).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+for(let i=0;i<60;i++){try{if((await fetchReadyOk('http://127.0.0.1:8874')))break;}catch{}await new Promise(r=>setTimeout(r,100));}
 browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH,args:['--no-sandbox']});const page=await browser.newPage({viewport:{width:844,height:390}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
 if(process.env.FALLBACK)await page.route('**/battlefield/tower-blue.webp',r=>r.fulfill({status:404,body:''}));
 await page.goto('http://127.0.0.1:8874/?lazy=1');await page.waitForFunction(()=>typeof BATTLEFIELD_IMAGES!=='undefined');
