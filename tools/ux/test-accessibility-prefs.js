@@ -134,7 +134,7 @@ const startPlay=page=>page.evaluate(()=>{for(const ck in save.champions){const s
   ok(sh0.txt.replace(/\./g,'').includes(String(sh0.cheapest)),'Tienda con 0 de oro: la meta es el equipo más barato ('+sh0.cheapest+')');
   ok(JSON.stringify(sh0.prices)===JSON.stringify(sh0.sc),'Tienda: los precios de las ofertas del día no cambian');
   const sh1=await page.evaluate(()=>{save.gold=3000;renderShop();const c=document.querySelector('[data-shop-now="can"]');
-   const cards=c?[...c.querySelectorAll('.shop-now-card [data-gold-price],.shop-now-card [data-champ-buy],.shop-now-card [data-skin-buy],.shop-now-card [data-croma-buy],.shop-now-card [data-now-go]')].length:0;
+   const cards=c?[...c.querySelectorAll('.shop-now-card [data-gold-price],.shop-now-card [data-champ-buy],.shop-now-card [data-now-go]')].length:0;
    const prices=[...c.querySelectorAll('.shop-btn')].map(b=>(b.innerText.match(/[\d.]+$/)||[''])[0].replace(/\./g,'')).map(Number);return{can:!!c,cards,prices,gold:save.gold};});
   ok(sh1.can&&sh1.cards>=1&&sh1.cards<=4,'Tienda con 3.000: "Lo que podés comprar ya" con '+sh1.cards+' opciones');
   ok(sh1.prices.every(p=>p<=sh1.gold),'Tienda con 3.000: todo lo de la fila alcanza ('+sh1.prices.join(', ')+')');

@@ -285,38 +285,57 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
 
   if (want('tut')) {
     // ---------------- tutorial: la voz del Hechicero ----------------
-    const t = {};
     const txt = () => E(() => document.querySelector('#tut-panel .tut-goal').textContent);
-    await E(() => { save.tut = {}; __start('bosque', 1); __calm(); window.__ua = window.__ua || updateAllies; updateAllies = function(){}; __step(200); });
-    t.first = await txt(); t.vis = await E(() => !document.getElementById('tut-panel').classList.contains('hidden'));
-    await sleep(600); await shot('tut_hechicero_mover');
-    await E(() => { for (let i = 0; i < 200; i++){ player.x += 2; update(16); } }); t.moved = await E(() => !!save.tut.b_move);
-    await sleep(1800); await E(() => __step(50)); t.second = await txt();
-    await E(() => { const e = spawnEnemy('duende_bosque', false); e.x = player.x + 30; e.y = player.y; e.hp = 1; damageEnemy(e, 10, {src:player}); __step(50); });
-    t.attack = await E(() => !!save.tut.b_attack); await sleep(1800); await E(() => __step(50)); t.third = await txt();
-    await E(() => { player.cds[0] = 1000; __step(50); }); t.skill = await E(() => !!save.tut.b_skill);
-    await sleep(1800); await E(() => __step(50)); t.basics = await E(() => !!save.tut.basics);
+    await E(() => { window.__ua = window.__ua || updateAllies; updateAllies = function(){}; });
+    // Los básicos (mover, atacar, habilidad) se enseñan en ese orden y el OBJETIVO ("▶ ...") depende del dispositivo (ctlHint,
+    // js/core/input-desk.js): escritorio = teclado ("WASD", "Espacio", "1, 2 o 3"); celular = táctil ("joystick", "Ataque", "habilidad").
+    // Se corre la misma secuencia con los dos para que el orden y los textos de cada versión queden medidos.
+    const basicsRun = async (dev) => {
+      const t = { dev, keys: [] };
+      await E((d) => { deskSetDevice(d); save.tut = {}; __start('bosque', 1); __calm(); __step(200); }, dev);
+      const key = async () => { const k = await E(() => TUT.key); if (k && t.keys[t.keys.length - 1] !== k) t.keys.push(k); return k; };
+      t.first = await txt(); t.vis = await E(() => !document.getElementById('tut-panel').classList.contains('hidden')); await key();
+      if (dev === 'kb') { await sleep(600); await shot('tut_hechicero_mover'); }
+      await E(() => { for (let i = 0; i < 200; i++){ player.x += 2; update(16); } }); t.moved = await E(() => !!save.tut.b_move);
+      await sleep(1800); await E(() => __step(50)); t.second = await txt(); await key();
+      await E(() => { const e = spawnEnemy('duende_bosque', false); e.x = player.x + 30; e.y = player.y; e.hp = 1; damageEnemy(e, 10, {src:player}); __step(50); });
+      t.attack = await E(() => !!save.tut.b_attack); await sleep(1800); await E(() => __step(50)); t.third = await txt(); await key();
+      await E(() => { player.cds[0] = 1000; __step(50); }); t.skill = await E(() => !!save.tut.b_skill);
+      await sleep(1800); await E(() => __step(50)); t.basics = await E(() => !!save.tut.basics);
+      return t;
+    };
+    const tTouch = await basicsRun('touch'), t = await basicsRun('kb');   // t = escritorio (el que sigue para revivir, etc.)
     await sleep(5500); await E(() => __step(50));
     await E(() => { const a = heroes[1]; a.alive = false; a.hp = 0; a.x = player.x + 30; a.y = player.y; __step(100); });
     await sleep(200); await E(() => __step(50)); t.revive = await txt();
     await E(() => { const a = heroes[1]; a.alive = true; a.hp = a.maxHp; player.stats.revives = 1; __step(50); }); t.reviveDone = await E(() => !!save.tut.revive);
     await E(() => { __start('bosque', 1); __calm(); updateAllies = function(){}; __step(500); });
-    t.again = await E(() => document.getElementById('tut-panel').classList.contains('hidden') || !/joystick/.test(document.querySelector('#tut-panel .tut-goal').textContent));
+    t.again = await E(() => document.getElementById('tut-panel').classList.contains('hidden') || !/joystick|WASD/.test(document.querySelector('#tut-panel .tut-goal').textContent));
     await shot('tut_hechicero');
     // conceptos de combate: aparecen cuando pasa la cosa, uno por vez, y no se repiten
     const combat = [];
     const waitTip = async (setup, key) => { await E(setup); for (let i = 0; i < 20; i++){ await sleep(400); await E(() => __step(32, false)); const k = await E(() => TUT.key); if (k === key){ combat.push(key); await E(() => { TUT.until = 0; }); await sleep(100); await E(() => __step(32, false)); return true; } if (k && k !== key){ await E(() => { TUT.until = 0; }); await sleep(100); await E(() => __step(32, false)); } } return false; };
     await E(() => { save.tut = {basics:1, b_move:1, b_attack:1, b_skill:1, revive:1, rune:1, ambush:1}; __start('bosque', 1); __calm(); updateAllies = function(){}; });
-    await waitTip(() => {}, 'cooldown');
+    // la recarga se explica cuando el jugador YA usó una habilidad (cds en curso): sin eso no aparece (c69db084 / js/systems/tutorial.js)
+    await E(() => { player.cds = player.cds.map(() => 0); __step(32, false); });
+    await sleep(900); await E(() => __step(32, false));
+    const cdSinUso = await E(() => TUT.key !== 'cooldown' && !save.tut.cooldown);
+    await waitTip(() => { player.cds[0] = 3000; }, 'cooldown');
     await waitTip(() => { player.hp = player.maxHp*0.3; }, 'hurt');
     await waitTip(() => { player.hp = player.maxHp; player.energy = 0; }, 'energy');
     await waitTip(() => { player.energy = player.maxEnergy; const e = spawnEnemy('bestia_bosque', false); e.rank = 'elite'; e.x = player.x + 200; e.y = player.y; e.speed = 0; e.dmg = 0; }, 'elite');
     await waitTip(() => { enemies.length = 0; const e = spawnEnemy('bestia_bosque', false); e.rank = 'subjefe'; e.x = player.x + 200; e.y = player.y; e.speed = 0; e.dmg = 0; }, 'boss');
     await waitTip(() => { enemies.length = 0; activeChampion = null; runLevel = 2; }, 'levelup');
     const again2 = await E(() => { const s = Object.keys(save.tut).filter(k => ['cooldown','hurt','energy','elite','boss','levelup'].includes(k)).length; return s; });
-    check('TUT.conceptos_de_combate_cuando_aparecen', combat.join(',') === 'cooldown,hurt,energy,elite,boss,levelup' && again2 === 6, { combat, again2 });
-    check('TUT.empieza_con_moverse', /joystick/.test(t.first) && t.vis, t);
-    check('TUT.moverse_atacar_habilidad_en_orden', t.moved && /Ataque/.test(t.second) && t.attack && /habilidad/.test(t.third) && t.skill && t.basics, t);
+    check('TUT.conceptos_de_combate_cuando_aparecen', combat.join(',') === 'cooldown,hurt,energy,elite,boss,levelup' && again2 === 6 && cdSinUso, { combat, again2, cdSinUso });
+    check('TUT.recarga_no_aparece_sin_haber_usado_una_habilidad', cdSinUso);
+    // escritorio (teclado): objetivo con WASD -> Espacio -> 1, 2 o 3, en ese orden
+    check('TUT.empieza_con_moverse', /WASD/.test(t.first) && /^▶/.test(t.first) && t.vis && t.keys[0] === 'b_move', t);
+    check('TUT.moverse_atacar_habilidad_en_orden', t.moved && /Espacio/.test(t.second) && t.attack && /Apretá 1, 2 o 3/.test(t.third) && t.skill && t.basics && t.keys.join() === 'b_move,b_attack,b_skill', t);
+    // celular (táctil): el mismo orden con los textos táctiles
+    check('TUT.movil_empieza_con_moverse', /joystick/.test(tTouch.first) && tTouch.vis && tTouch.keys[0] === 'b_move', tTouch);
+    check('TUT.movil_moverse_atacar_habilidad_en_orden', tTouch.moved && /Ataque/.test(tTouch.second) && tTouch.attack && /habilidad/.test(tTouch.third) && tTouch.skill && tTouch.basics && tTouch.keys.join() === 'b_move,b_attack,b_skill', tTouch);
+    check('TUT.escritorio_y_movil_no_comparten_texto', t.first !== tTouch.first && t.second !== tTouch.second && t.third !== tTouch.third);
     check('TUT.revivir_se_ensena_al_primer_caido', /✚/.test(t.revive) && t.reviveDone, t);
     check('TUT.lo_aprendido_no_se_repite', t.again, t);
     await E(() => { updateAllies = __ua; });

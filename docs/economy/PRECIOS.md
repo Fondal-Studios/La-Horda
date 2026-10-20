@@ -38,9 +38,9 @@ Tiempo de obtención con oro: **crucero ≈ 835 de oro por partida** (jugador so
 | Ascensión: Vhal (3 arenas en Pesadilla) | 🪙 oro | **13.000** | 15,6 | 3,9 / 15,6 | Dificultad alta sostenida. |
 | Ascensión: Oriel (una arena en Infierno) | 🪙 oro | **14.000** | 16,8 | 4,2 / 16,8 | La dificultad más alta. |
 | Fundadores | — | no se compran | — | — | Solo por concesión del sistema. |
-| Skin de colección (skin de set) | ✦ **800** · o 🪙 9.000 | `brasas.set` / `gold.cosmetic.set` | 10,8 | 2,7 / 10,8 | Transformación del set. También se gana reuniendo el set. |
-| Skin con diseño propio (independiente) | ✦ **1.200** · o 🪙 12.000 | `brasas.autor` / `gold.cosmetic.autor` | 14,4 | 3,6 / 14,4 | Arte propio, solo se compra. 23 en el catálogo. |
-| Croma (otra paleta) | ✦ **300** · o 🪙 su precio propio (1.000) | `brasas.croma` | 1,2–1,8 | 0,3–0,45 / 1,2–1,8 | Recolor simple: el escalón más bajo, a propósito. 10 en el catálogo. |
+| Skin de colección (skin de set) | ✦ **800** (solo Brasas) | `brasas.set` | 10,8 | 2,7 / 10,8 | Transformación del set. También se gana reuniendo el set. |
+| Skin con diseño propio (independiente) | ✦ **1.200** (solo Brasas) | `brasas.autor` | 14,4 | 3,6 / 14,4 | Arte propio, solo se compra. 23 en el catálogo. |
+| Croma (otra paleta) | ✦ **300** (solo Brasas) | `brasas.croma` | 1,2–1,8 | 0,3–0,45 / 1,2–1,8 | Recolor simple: el escalón más bajo, a propósito. 10 en el catálogo. |
 | Colección de un campeón (2 apariencias o más que te falten) | ✦ suma suelta − **15 % (2 piezas) / 20 % (3 o más)** | `PRICING.collection` | — | — | Ejemplo medido: 3 apariencias de Aldric sueltas ✦ 3.200 → ✦ 2.560 (ahorro ✦ 640). Solo Brasas. |
 | Pack de bienvenida | US$ 6,99 (una vez) | 500 + 200 ✦ y **3 campeones a elección** | — | — | Ver §4. |
 | Equipo: arquetipo (común/raro/muy raro/legendario) | 🪙 oro | 150 / 400 / 1.100 / 3.200 | 0,2 / 0,5 / 1,3 / 3,8 | — | Q4: el poder se gana jugando. |
@@ -50,9 +50,11 @@ Tiempo de obtención con oro: **crucero ≈ 835 de oro por partida** (jugador so
 | Reinicio de talentos, Mística (re-tirada) | 🪙 oro | fórmulas en `talents.js` / `affixes.js` | — | — | Sumideros de oro: poder, nunca Brasas. |
 | Míticos y Únicos | — | no se venden | — | — | Se fabrican o se ganan peleando. |
 
-### ¿Algún cosmético también con oro? Sí: todos, a ~11× el precio en Brasas
+### ¿Algún cosmético con oro? No: las skins se compran SOLO con Brasas ✦
 
-Decisión: **todas las apariencias en venta se pueden comprar también con oro** (skin de colección 9.000, diseño propio 12.000, croma su precio de siempre). Razones: (1) es el camino del jugador gratuito, que mantiene la confianza ("todo se gana jugando"); (2) ya existía así y quitarlo sería una pérdida para quien ya ahorraba; (3) el precio en oro equivale a 11 a 14 partidas de jugador sostenido, así que no compite con la comodidad de pagar ✦ 800 y la comodidad es lo que se vende. Riesgo: canibaliza algo de ventas. Se acepta porque el oro no se acelera con dinero y porque el valor de la Brasa está en el ahorro de tiempo, las colecciones y el descuento por cantidad.
+**Decisión vigente (dueño): skins de colección, de diseño propio y cromas se compran únicamente con Brasas ✦.** Motivo: el oro vive en el guardado del cliente (editable) y quien lo editaba se llevaba skins gratis; las Brasas las valida el servidor. En el cliente `shopBuySkinGold`, `cromaBuy` y `shopBuySetBundle(…, apariencia)` quedan inoperantes (devuelven error y no cobran ni otorgan; lo verifica `tools/items/t_skins_brasas.js`) y la UI (Tienda, Códice, Sala) solo ofrece el botón ✦. Las skins que ya tenés se conservan, y las que se ganan jugando (completar el set, vale de regalo, eventos) no cambian. Los campeones siguen comprándose con oro. Los precios en Brasas no cambian (todas las apariencias ya tenían uno: 300 / 800 / 1.200). Los números de oro de `PRICING.gold.cosmetic` y `CROMA_SKINS[id].price` quedan solo como referencia histórica para las herramientas de precios; no se cobra ninguno.
+
+*Texto histórico (reemplazado):* ~~**todas las apariencias en venta se pueden comprar también con oro** (skin de colección 9.000, diseño propio 12.000, croma su precio de siempre). Razones: (1) es el camino del jugador gratuito, que mantiene la confianza ("todo se gana jugando"); (2) ya existía así y quitarlo sería una pérdida para quien ya ahorraba; (3) el precio en oro equivale a 11 a 14 partidas de jugador sostenido, así que no compite con la comodidad de pagar ✦ 800 y la comodidad es lo que se vende. Riesgo: canibaliza algo de ventas. Se acepta porque el oro no se acelera con dinero y porque el valor de la Brasa está en el ahorro de tiempo, las colecciones y el descuento por cantidad.~~
 
 Los croma de Expedición (1.000 de oro) quedan a una relación oro/✦ de 3,3 a 1, no 11 a 1: son recolores baratos que ya estaban en venta con ese precio. Subirlos queda como decisión del dueño.
 

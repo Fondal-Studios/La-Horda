@@ -1,14 +1,14 @@
 "use strict";
 /* ============================================================
    js/systems/premium.js — PRECIOS DE APARIENCIAS y MONEDA PREMIUM ("Brasas" ✦)
-   · Toda APARIENCIA (skin de set, skin independiente, croma) se paga con Brasas ✦ o con oro, según su escalón
+   · Toda APARIENCIA (skin de set, skin independiente, croma) se paga SOLO con Brasas ✦ (nunca con oro: el oro es editable), según su escalón
      (js/data/pricing.js, la misma fuente que ejecuta el servidor). Comprarla da SOLO la apariencia: nunca poder.
      Las piezas de set se siguen comprando aparte como equipo, y completar el set sigue regalando su skin.
    · Los CAMPEONES no se compran con Brasas: se compran con oro (shop.js). Las únicas elecciones de campeón "gratis" son las 3 del
      Pack de bienvenida (regalo del servidor, js/ui/welcome-picks.js).
    · Las Brasas viven en el SERVIDOR (server/wallet.js): este archivo solo las muestra y pide compras; el saldo, el precio
      y la entrega los decide el servidor (el cliente manda el precio que VIO y el servidor rechaza si no coincide).
-     Sin cuenta o sin conexión, solo se compra con oro.
+     Sin cuenta o sin conexión, las skins no se pueden comprar (hay que entrar con la cuenta).
    Carga después de shop.js, cromas.js y account.js.
    ============================================================ */
 const PREMIUM = { premium: null, welcome: null, currency: { id: "brasas", name: "Brasas", icon: "✦" }, payments: { enabled: false, packs: [] }, at: 0, busy: false };
@@ -38,41 +38,23 @@ function premiumGoldPrice(id){
 function premiumChampName(k){ return typeof CLASSES !== "undefined" && CLASSES[k] ? String(CLASSES[k].name).split(",")[0] : k; }
 function premiumFmt(n){ return n.toLocaleString("es-AR"); }
 
-/* ---------- precio en oro por escalón (9000 set · 12000 diseño propio · croma: su precio propio) ---------- */
+/* ---------- precio de REFERENCIA en oro por escalón (ya no se cobra: solo lo leen las herramientas de precios) ---------- */
 shopSkinPrice = function(setId){
   if(premiumSkinOwned(setId)) return 0;
   return shopConfiguredPrice("cosmetic", setId, premiumGoldPrice(setId));
 };
 cromaPrice = function(id){ return shopConfiguredPrice("cosmetic", id, premiumGoldPrice(id)); };
 
-// Comprar la skin de un set con oro: solo la apariencia (no las piezas).
-function shopBuySkinGold(setId, expectedPrice){
-  if(typeof state !== "undefined" && state === "playing") return { ok: false, reason: "La tienda se usa fuera de la partida" };
-  if(typeof SET_SKINS === "undefined" || !SET_SKINS[setId]) return { ok: false, reason: "Esa skin no existe" };
-  if(premiumSkinOwned(setId)) return { ok: false, reason: "Ya es tuya" };
-  const price = shopSkinPrice(setId);
-  if(expectedPrice != null && expectedPrice !== price) return { ok: false, reason: "El precio cambió. Revisá el nuevo valor y volvé a confirmar." };
-  if(!Number.isSafeInteger(price) || price < 0 || (save.gold || 0) < price) return { ok: false, reason: `No te alcanza el oro (cuesta ${price})` };
-  save.gold -= price;
-  save.cosmeticUnlocks = Object.assign({}, save.cosmeticUnlocks, { [setId]: true });
-  persist();
-  if(typeof AlphaServices !== "undefined") AlphaServices.emit("skin", { skin: setId, currency: "gold", price });
-  return { ok: true, id: setId, price };
-}
+// POLÍTICA: las apariencias (skins de set, de autor y cromas) se compran SOLO con Brasas ✦, que valida el servidor.
+// El oro vive en el guardado del cliente (editable): una ruta oro -> skin regalaría skins a quien edite el guardado.
+// Estas funciones quedan como puntos de entrada INOPERANTES (nunca descuentan oro ni otorgan nada) para que una llamada
+// directa desde la consola o un código viejo no abra una puerta trasera. Las skins que se ganan jugando (set completo,
+// vale de regalo, eventos) usan otros caminos y no pasan por acá.
+const PREMIUM_NO_GOLD_SKINS = "Las skins se compran solo con Brasas ✦. Entrá con tu cuenta para usarlas.";
+function shopBuySkinGold(setId, expectedPrice){ return { ok: false, reason: PREMIUM_NO_GOLD_SKINS }; }
 const _premiumSetBundle = shopBuySetBundle;
 shopBuySetBundle = function(setId, appearance, discount, expectedPrice){
-  if(appearance){
-    if(discount != null){ // las ofertas siguen aplicando su descuento sobre el precio de oro
-      if(!SHOP_DEAL_OFF.includes(discount)) return { ok: false, reason: "Descuento inválido" };
-      const price = _shopDisc(shopSkinPrice(setId), discount);
-      if(expectedPrice != null && expectedPrice !== price) return { ok: false, reason: "El precio cambió. Revisá el nuevo valor y volvé a confirmar." };
-      if((save.gold || 0) < price) return { ok: false, reason: "No te alcanza el oro" };
-      if(premiumSkinOwned(setId)) return { ok: false, reason: "Ya es tuya" };
-      save.gold -= price; save.cosmeticUnlocks = Object.assign({}, save.cosmeticUnlocks, { [setId]: true }); persist();
-      return { ok: true, id: setId, price };
-    }
-    return shopBuySkinGold(setId, expectedPrice);
-  }
+  if(appearance) return { ok: false, reason: PREMIUM_NO_GOLD_SKINS };   // la apariencia no se paga con oro (ni con descuento)
   return _premiumSetBundle(setId, appearance, discount, expectedPrice);
 };
 
@@ -236,8 +218,7 @@ if(typeof document !== "undefined") document.addEventListener("click", e => {
   e.preventDefault(); e.stopPropagation();
   const id = b.getAttribute("data-skin-premium");
   if(!premiumAvailable()){ gameAlert("Para pagar con Brasas tenés que entrar con tu cuenta (Opciones → Cuenta)."); return; }
-  const gold = premiumGoldPrice(id), gnote = gold > 0 ? ` (o ${premiumFmt(gold)} de oro jugando)` : "";
-  gameConfirm(`¿Comprar ${premiumTier(id) === "croma" ? "el croma" : "la skin"} ${premiumSkinName(id)} por ${premiumFmt(premiumPrice(id))} Brasas${gnote}? Es solo apariencia: no cambia estadísticas.`, { okText: "Comprar con Brasas" }).then(async ok => {
+  gameConfirm(`¿Comprar ${premiumTier(id) === "croma" ? "el croma" : "la skin"} ${premiumSkinName(id)} por ${premiumFmt(premiumPrice(id))} Brasas? Es solo apariencia: no cambia estadísticas.`, { okText: "Comprar con Brasas" }).then(async ok => {
     if(!ok) return;
     b.disabled = true;
     const r = await premiumBuySkin(id);

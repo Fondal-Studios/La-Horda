@@ -26,7 +26,7 @@ const OUT=path.resolve(__dirname,SKIN_ID==='brasa_abisal'?'../../art-source/entr
    check('unowned skin cannot equip',!cromaOwned(id)&&!cromaEquip(champ,id));
    const cost=cromaPrice(id); save.gold=cost;
    check('gold price matches authored skin tier',cost===12000);
-   check('purchase debits exact amount',cromaBuy(id).ok&&save.gold===0&&cromaOwned(id));
+   check('gold can no longer buy the skin (Brasas only)',!cromaBuy(id).ok&&save.gold===cost&&!cromaOwned(id));save.cromas=Object.assign({},save.cromas,{[id]:true});check('skin owned after Brasas grant',cromaOwned(id));
    check('equip correct champion',cromaEquip(champ,id));
    check('wrong champion rejected',!cromaEquip('mago',id));
    const loadout=netBuildLoadout(champ),remote=netLoadoutRecord(loadout);
