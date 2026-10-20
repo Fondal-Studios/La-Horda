@@ -132,6 +132,14 @@ const ICON_SHAPES = {
 const ICON_GEM_COLORS = ["#ff4d6a","#4dd8ff","#7dff8a","#ffd84d","#c07dff","#ffffff"];
 // Clave de ícono estable por identidad (dos copias del mismo objeto = mismo ícono)
 function itemIconKey(it){ return (it.designId || (it.noun||"") + "|" + (it.family||"") + "|" + it.type + "|" + (it.name||"")) + "|" + itemTier(it); }
+// Ícono pixel PROPIO de la pieza (PXI_ART["item_<designId>"], 16x16, ≤6 colores, js/ui/pixel-icons.js): se estampa ×2 en la
+// grilla de 32 (ya trae su contorno). Kit de Magos. Devuelve false si la pieza no tiene (usa la silueta procedural).
+function _paintPixelArt(P, it){
+  if(!it || !it.designId || typeof PXI_ART==="undefined" || !PXI_ART["item_"+it.designId] || typeof _pxiCanvas!=="function") return false;
+  const cv = _pxiCanvas("item_"+it.designId); if(!cv) return false;
+  P.g.imageSmoothingEnabled = false; P.g.drawImage(cv, 0, 0, 16, 16, 0, 0, 32, 32);
+  return true;
+}
 function itemIconURL(it){
   if(!it) return "";
   if(it.designId && ITEM_ICON_ART[it.designId]) return ITEM_ICON_ART[it.designId];
@@ -140,8 +148,7 @@ function itemIconURL(it){
   try{
     const P = _painter(), M = itemIconMaterial(it), v = _iconHash(key) & 255;
     const gem = it.set ? "#9dffb0" : (it.unique ? "#e0b0ff" : (it.element==="fire" ? "#ffd06a" : ICON_GEM_COLORS[v % ICON_GEM_COLORS.length]));
-    (ICON_SHAPES[itemIconShape(it)] || ICON_SHAPES.sword)(P, M, v, gem);
-    _finish(P, "#0c0a0e");
+    if(!_paintPixelArt(P, it)){ (ICON_SHAPES[itemIconShape(it)] || ICON_SHAPES.sword)(P, M, v, gem); _finish(P, "#0c0a0e"); }
     // lienzo final 64x64: fondo por categoría + ícono ×2 + marco
     const c = document.createElement("canvas"); c.width = c.height = 64;
     const g = c.getContext("2d"); g.imageSmoothingEnabled = false;
@@ -167,8 +174,7 @@ function itemIconCanvas(it){
   try{
     const P = _painter(), M = itemIconMaterial(it), v = _iconHash(key) & 255;
     const gem = it.set ? "#9dffb0" : (it.unique ? "#e0b0ff" : (it.element==="fire" ? "#ffd06a" : ICON_GEM_COLORS[v % ICON_GEM_COLORS.length]));
-    (ICON_SHAPES[itemIconShape(it)] || ICON_SHAPES.sword)(P, M, v, gem);
-    _finish(P, "#0c0a0e");
+    if(!_paintPixelArt(P, it)){ (ICON_SHAPES[itemIconShape(it)] || ICON_SHAPES.sword)(P, M, v, gem); _finish(P, "#0c0a0e"); }
     const c = document.createElement("canvas"); c.width = c.height = 32;
     c.getContext("2d").drawImage(P.c, 0, 0, 32, 32, 0, 0, 32, 32);
     return (_ICON_CV[key] = c);
