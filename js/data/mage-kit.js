@@ -35,7 +35,7 @@ const MAGE_POWERS = {
   mp_sobrante:{name:"Alquimia del Sobrante",  tag:"energía",      fx:"light",  rgb:"255,230,140",
     desc:"Con más del 80% de energía, cada 1,2 s se convierte un 12% de tu energía máxima en un 25% de carga de tu pasiva."},
   mp_tercer:  {name:"Tercer Sello",           tag:"ciclo",        fx:"bolt",   rgb:"255,240,140",
-    desc:"Cada 3.er lanzamiento RESUENA: una onda arcana daña y ralentiza a los enemigos cerca (más fuerte cuanto más llena tu pasiva) y suma 10% de carga."},
+    desc:"Cada 3.er lanzamiento RESUENA: una onda arcana (35% de tu daño, hasta 50% más con la pasiva llena) daña y ralentiza a los enemigos cerca y suma 10% de carga."},
   mp_memoria: {name:"Memoria de Hechizo",     tag:"memoria",      fx:"ice",    rgb:"170,230,255",
     desc:"Cuando un lanzamiento te gasta la pasiva (35% o más), recuperás la mitad de lo gastado 0,6 s después. Una vez cada 6 s."},
   mp_velo:    {name:"Velo de Resonancia",     tag:"protección",   fx:"shield", rgb:"180,220,255",
@@ -46,11 +46,11 @@ const MAGE_POWERS = {
     desc:"Quieto, la pasiva se llena sola: tras 0,7 s sin moverte ganás un 7% de carga cada 0,5 s (hasta el 60%)."},
   // — Míticos
   mp_coro:    {name:"Coro Sin Fin",           tag:"eco",          fx:"rune",   rgb:"210,170,255",
-    desc:"Cada 9 s en combate tu pasiva se dispara DOS VECES seguidas (0,45 s entre una y otra): cada disparo es su efecto propio más una onda de resonancia del 60% de tu daño."},
+    desc:"Cada 9 s en combate tu pasiva se dispara DOS VECES seguidas (0,45 s entre una y otra): cada disparo es su efecto propio más una onda de resonancia del 20% de tu daño."},
   mp_ciclo:   {name:"Ciclo Eterno",           tag:"ciclo",        fx:"light",  rgb:"255,225,150",
     desc:"Tu definitiva REVIVE la pasiva: 0,5 s después queda con carga máxima y tus habilidades pegan 12% más durante 6 s. Una vez cada 25 s."},
   mp_archivo: {name:"Archivo Arcano",         tag:"memoria",      fx:"spark",  rgb:"255,210,120",
-    desc:"Si lanzás las tres habilidades distintas en 9 s, el Archivo se completa: te devuelve la energía del lanzamiento, suma 40% de carga, acorta 1 s los enfriamientos y tus habilidades pegan 15% más por 3,5 s. Cada 10 s."},
+    desc:"Si lanzás las tres habilidades distintas en 9 s, el Archivo se completa: te devuelve la energía del lanzamiento, suma 40% de carga, acorta 1 s los enfriamientos y tus habilidades pegan 12% más por 3,5 s. Cada 10 s."},
   // — Únicos
   mpu_voz:    {name:"La Voz Antigua",         tag:"resonancia",   fx:"rune",   rgb:"176,140,255",
     desc:"Cada lanzamiento hace sonar tu pasiva (una vez cada 1,5 s) con su efecto y una onda. Con la pasiva casi llena (90%+), tus habilidades 1-3 se recargan 20% más rápido. Cuatro runas orbitan alrededor tuyo según tu carga."},
@@ -61,19 +61,19 @@ const MAGE_POWERS = {
 // Tuning de los poderes (un solo lugar; lo lee js/systems/mage-passives.js y la prueba).
 const MAGE_CFG = {
   // pasiva genérica de respaldo ("Resonancia"): para magos sin adaptador (o sin medidor propio)
-  resMax: 4, resPerCast: 1, resPerUlt: 2, resDecayMs: 7000, resNovaR: 120, resNovaPct: 1.0, resNovaMax: 12,
+  resMax: 4, resPerCast: 1, resPerUlt: 2, resDecayMs: 7000, resNovaR: 120, resNovaPct: 0.40, resNovaMax: 8,
   cauceCast: 0.20, cauceUlt: 0.40, cauceCd: 400,
   sobranteAbove: 0.80, sobranteEvery: 1200, sobranteTake: 0.12, sobranteGain: 0.25,
-  tercerEvery: 3, tercerR: 110, tercerPct: 0.8, tercerFrac: 0.6, tercerGain: 0.10, tercerSlow: 0.2, tercerSlowMs: 1200,
+  tercerEvery: 3, tercerR: 110, tercerPct: 0.35, tercerFrac: 0.5, tercerGain: 0.10, tercerSlow: 0.2, tercerSlowMs: 1200,
   memoriaDrop: 0.35, memoriaBack: 0.5, memoriaDelay: 600, memoriaCd: 6000,
   veloAt: 0.5, veloShield: 0.08, veloArmor: 0.10, veloMs: 3000, veloCd: 7000,
   marcaMax: 4, marcaR: 280, marcaMs: 4000, marcaDmg: 0.08, marcaGain: 0.04, marcaGainCd: 250,
   canalStillMs: 700, canalEvery: 500, canalGain: 0.07, canalCap: 0.60,
-  coroEvery: 9000, coroGap: 450, coroNear: 420, coroPct: 0.6, coroR: 110, coroMax: 10,
+  coroEvery: 9000, coroGap: 450, coroNear: 420, coroPct: 0.20, coroR: 110, coroMax: 10,
   cicloDelay: 500, cicloMs: 6000, cicloDmg: 0.12, cicloCd: 25000,
-  archivoWindow: 9000, archivoGain: 0.40, archivoCut: 1000, archivoMs: 3500, archivoDmg: 0.15, archivoCd: 10000,
-  vozEvery: 1500, vozFull: 0.90, vozCdBoost: 0.20, vozPct: 0.5,
-  faseMs: 5000, faseSpeed: 0.25, faseDmg: 0.10, faseCd: 22000, faseAfter: 0.35, fasePct: 0.6, faseNovaCd: 600, faseR: 100
+  archivoWindow: 9000, archivoGain: 0.40, archivoCut: 1000, archivoMs: 3500, archivoDmg: 0.12, archivoCd: 10000,
+  vozEvery: 1500, vozFull: 0.90, vozCdBoost: 0.20, vozPct: 0.2,
+  faseMs: 5000, faseSpeed: 0.25, faseDmg: 0.10, faseCd: 22000, faseAfter: 0.35, fasePct: 0.20, faseNovaCd: 600, faseR: 100
 };
 
 /* ---------------- LEGENDARIOS (7) ---------------- */
@@ -94,7 +94,7 @@ const MAGE_KIT_LEGENDARIES = {
     props:[{effect:"hp_mult",value:0.08},{effect:"def_add",value:0.05}], arenas:{fortaleza:3, abismo:3},
     lore:"No frena los golpes: los hace sonar. Y un golpe que suena ya no pega igual."},
   mk_cetro_marca:{name:"Cetro de la Marca Contagiosa", epithet:"que señala y se acuerda", type:"arma", element:"fire", power:"mp_marca",
-    props:[{effect:"dmg_mult",value:0.06},{effect:"skilldmg_mult",value:0.06}], arenas:{infernal:3, ciudad:2, bosque:2},
+    props:[{effect:"dmg_mult",value:0.06},{effect:"skilldmg_mult",value:0.06}], arenas:{infernal:3, fortaleza:2, bosque:2},
     lore:"Toca a uno y los demás se enteran. Nadie sabe cómo; nadie quiere averiguarlo."},
   mk_capucha_canal:{name:"Capucha del Canalizador Quieto", epithet:"que escucha sin moverse", type:"casco", element:"physical", power:"mp_canal",
     props:[{effect:"hp_mult",value:0.06},{effect:"heal_mult",value:0.06}], arenas:{bosque:3, minas:3},

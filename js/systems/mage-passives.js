@@ -94,18 +94,26 @@ function mageMeterSet(h, frac){
   const a = mageAdapter(h), mp = mpState(h);
   frac = _mpClamp01(frac);
   if(a) a.set(h, a.int ? Math.round(frac*a.max) : frac*a.max); else mp.res = frac*MAGE_CFG.resMax;
-  mp.lastFrac = mageMeterGet(h);
+  mp.acc = 0; mp.lastFrac = mageMeterGet(h);
 }
-// Suma `f` (fracción del máximo). En medidores enteros se acumula el decimal hasta completar una unidad.
-function mageMeterAdd(h, f){
+// Suma `f` (fracción del máximo) sin pasar de `cap` (0..1, por defecto 1). En medidores enteros se acumula el decimal hasta
+// completar una unidad (y nunca se completa una que pase del tope). `stats.gained` cuenta el avance pedido, aunque todavía
+// no haya completado la unidad. Devuelve cuánto avanzó el medidor visible.
+function mageMeterAdd(h, f, cap){
   const a = mageAdapter(h), mp = mpState(h), before = mageMeterGet(h);
+  cap = cap === undefined ? 1 : cap;
+  const eff = Math.max(0, Math.min(f, cap - before));
   if(a){
-    if(a.int){ mp.acc += f*a.max; const u = Math.floor(mp.acc + 1e-9); if(u > 0){ mp.acc -= u; a.set(h, Math.min(a.max, a.get(h) + u)); } }
-    else a.set(h, Math.min(a.max, a.get(h) + f*a.max));
-  } else mp.res = Math.min(MAGE_CFG.resMax, mp.res + f*MAGE_CFG.resMax);
+    if(a.int){
+      mp.acc += eff*a.max;
+      const u = Math.floor(mp.acc + 1e-9);
+      if(u > 0){ mp.acc -= u; a.set(h, Math.min(a.max, a.get(h) + u)); }
+      if((a.get(h) + 1)/a.max > cap + 1e-9) mp.acc = Math.min(mp.acc, 0.999); // la próxima unidad pasaría el tope: queda esperando
+    } else a.set(h, Math.min(a.max, a.get(h) + eff*a.max));
+  } else mp.res = Math.min(MAGE_CFG.resMax, mp.res + eff*MAGE_CFG.resMax);
   const after = mageMeterGet(h);
-  mp.lastFrac = Math.max(after, 0);
-  if(after > before) _mpStat(mp, "gained", after - before);
+  mp.lastFrac = after;
+  if(eff > 0) _mpStat(mp, "gained", eff);
   return after - before;
 }
 // Algo le gastó la pasiva al guardián (un lanzamiento suyo, o la Resonancia): lo ve la Memoria de Hechizo.
@@ -275,7 +283,7 @@ function updateMagePassives(h, dt){
         if(mp.stillT >= C.canalEvery){
           mp.stillT -= C.canalEvery;
           if(mageMeterGet(h) < C.canalCap - 1e-6){
-            mageMeterAdd(h, C.canalGain); _mpStat(mp, "canal");
+            mageMeterAdd(h, C.canalGain, C.canalCap); _mpStat(mp, "canal");
             if(h._mp && _mpFx(h, mp, "canal", 500) && inView(h.x, h.y, 0)) vfxShock(h.x, h.y+4, 40, 10, "150,160,255", 480, 0);
             frac = mageMeterGet(h);
           }
@@ -366,6 +374,21 @@ function drawMageKitAura(h){
     ctx.beginPath(); ctx.ellipse(h.x, h.y-4, 38, 20, 0, 0, Math.PI*2); ctx.stroke();
   }
   ctx.restore();
+}
+
+/* ---------------- Códice: ficha del guardián ---------------- */
+function _mpEsc(t){ return String(t).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+// Qué hace el kit con la pasiva de ESTE mago y qué piezas tiene (las que no descubriste, como ???).
+function mageKitCodexHtml(key){
+  const A = MAGE_PASSIVE_ADAPTERS[key], P = (CLASSES[key] && CLASSES[key].passive) || {};
+  const how = A
+    ? `Las piezas actúan sobre <b>${_mpEsc(A.label || P.name || "tu pasiva")}</b>: cada carga que suman acerca el disparo de esa pasiva${A.fire ? " y la hacen sonar con su efecto propio" : ""}.`
+    : `Esta pasiva todavía no tiene adaptador propio: el kit usa la <b>Resonancia</b>. Cada lanzamiento suma una carga (la definitiva, dos) y con cuatro el siguiente lanzamiento las gasta en una onda; se apaga sola si te quedás quieto.`;
+  const rows = Object.keys(DESIGNED_ITEMS).filter(id=>DESIGNED_ITEMS[id].magePower).map(id=>{
+    const d = DESIGNED_ITEMS[id], has = typeof collectionHas==="function" && collectionHas(id), pw = MAGE_POWERS[d.magePower];
+    return `<li>${has ? `<b>${_mpEsc(d.name)}</b> · ${_mpEsc(pw.name)}` : `<i>??? — ${_mpEsc(ITEM_TYPES[d.type].label)} ${d.rarity==="unico" ? "único" : d.rarity==="mitico" ? "mítico" : "legendario"}</i>`}</li>`;
+  }).join("");
+  return `<p>${how}</p><ul class="cx-kit-list">${rows}</ul><p class="cx-dim">Solo se equipan en magos. Los Legendarios caen desde la Fortaleza, los Míticos se fabrican con 3 Legendarios (o caen desde el Micelial) y los Únicos son botín raro desde la Acuática.</p>`;
 }
 
 /* ---------------- red: estado interno fuera del snapshot ---------------- */
