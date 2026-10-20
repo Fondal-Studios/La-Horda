@@ -1,0 +1,102 @@
+{
+  "baselineManifest": "art-source/entregas/cosmetics-20261019/farolero_guardavia/fuentes/rejected-v2-importacion.json",
+  "sources": {
+    "attack-start.png": "a760f893ca2c46e41fdb22605c3a3a2337f8f319e29418741daefa3c7a0ac1b4",
+    "back-walk.png": "458e2b0284f40f9538f025641aa685af50ade0de58cc0d60fa4ff2c835487d87",
+    "attack-death.png": "4485807ab08935d71b5e36c80feb4ddd2391dbad1b9404001888bf12f5ff5cd9"
+  },
+  "replacements": [
+    {
+      "frame": 20,
+      "source": "attack-start.png",
+      "rect": [
+        512,
+        341,
+        1024,
+        683
+      ]
+    },
+    {
+      "frame": 8,
+      "source": "back-walk.png",
+      "rect": [
+        0,
+        0,
+        543,
+        724
+      ]
+    },
+    {
+      "frame": 9,
+      "source": "back-walk.png",
+      "rect": [
+        543,
+        0,
+        1086,
+        724
+      ]
+    },
+    {
+      "frame": 10,
+      "source": "back-walk.png",
+      "rect": [
+        1086,
+        0,
+        1629,
+        724
+      ]
+    },
+    {
+      "frame": 11,
+      "source": "back-walk.png",
+      "rect": [
+        1629,
+        0,
+        2172,
+        724
+      ]
+    },
+    {
+      "frame": 21,
+      "source": "attack-death.png",
+      "rect": [
+        0,
+        0,
+        500,
+        622
+      ]
+    },
+    {
+      "frame": 22,
+      "source": "attack-death.png",
+      "rect": [
+        500,
+        0,
+        1263,
+        622
+      ]
+    },
+    {
+      "frame": 23,
+      "source": "attack-death.png",
+      "rect": [
+        0,
+        622,
+        500,
+        1245
+      ]
+    },
+    {
+      "frame": 35,
+      "source": "attack-death.png",
+      "rect": [
+        500,
+        622,
+        1263,
+        1245
+      ],
+      "targetHeight": 26
+    }
+  ],
+  "retainedFrames": 27
+}

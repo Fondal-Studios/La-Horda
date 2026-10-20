@@ -53,6 +53,7 @@ var CHAMP_ART_NORMALIZE = {"tanque":{"front":[1,0],"side":[0.8939,-1.11],"up":[0
 "morwen@morwen_escarcha":{"front":[1.0572,-2],"side":[0.9365,-2],"up":[0.9672,-2]},
 "farolero":{"front":[1.0351,-0.96],"side":[1.0351,-0.96],"up":[1.2041,-0.8]},
 "farolero@lumbre_persistente":{"front":[1.0536,-0.95],"side":[1.0351,-0.96],"up":[1.1132,-0.89]},
+"farolero@farolero_guardavia":{"front":[1.0536,-2],"side":[1.0172,-2],"up":[0.9833,-2]},
 "iria":{"front":[0.9516,-1.05],"side":[0.9365,-1.06],"up":[1.0351,-0.96]},
 "iria@hilo_umbral":{"front":[0.9672,-1.03],"side":[0.8939,-1.11],"up":[1.0172,-0.98]},
 "vesper":{"front":[1.0172,-0.98],"side":[0.9365,-1.06],"up":[1,-1]},

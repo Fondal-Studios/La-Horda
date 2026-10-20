@@ -65,7 +65,7 @@ async function run(){
  await api('POST','/api/gm/gift',{user:'tester',cosmetic:'fake'},owner,400);
  await api('POST','/api/gm/gift',{user:'tester',cosmetic:'__proto__'},owner,400);
  const cat=await api('GET','/api/gm/cosmetics',undefined,owner);
- const authoredAdditions=[["brasa_abisal","brasa"],["eslabon_porcelana","eslabon"],["morwen_escarcha","morwen"],["dariel_luthier","dariel"]];
+ const authoredAdditions=[["brasa_abisal","brasa"],["eslabon_porcelana","eslabon"],["morwen_escarcha","morwen"],["dariel_luthier","dariel"],["farolero_guardavia","farolero"]];
  assert.equal(cat.cosmetics.length,47+authoredAdditions.length);
  for(const [id,champion] of authoredAdditions)assert.equal(cat.cosmetics.filter(c=>c.id===id&&c.champion===champion).length,1,'owner authored catalog: '+id);
  for(const k of ['solciju','brakk','veyra','morveth','aelith'])for(const id of [k+'_alt1',k+'_croma','quality_'+k])assert.ok(cat.cosmetics.some(c=>c.id===id&&c.champion===k),'owner catalog: '+id);
