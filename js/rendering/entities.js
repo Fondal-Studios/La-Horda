@@ -10,6 +10,7 @@ function drawHero(h){
   const drawScale = (colossal ? h.scale*1.55 : (h.growTimer>0 ? h.scale*(h.growScale||1) : h.scale)) * uniqueScaleMult(h);
   if(h._deadAt) h._deadAt = 0;
   drawUniqueAura(h);
+  if(h._mpRunes || h._mpFase) drawMageKitAura(h); // Kit de Magos: runas que orbitan (mage-passives.js)
   const prof = animProfileOf(h);
   const P = animPose(h, prof, true);
   const lift = P.oy<0 ? Math.min(0.35, -P.oy/60) : 0;

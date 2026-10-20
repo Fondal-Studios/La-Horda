@@ -30,7 +30,7 @@ function itemDetailHTML(it, classKey, opts){
   const col = itemColor(it), tier = itemTier(it), lv = itemLevel(it);
   const onThis = classKey && itemEquippedBy(it.uid)===classKey;
   const [lo, hi] = itemStatRange(it);
-  const owner = it.designed && it.champion ? `Solo ${CLASSES[it.champion].name}` : "Universal";
+  const onlyLbl = itemOnlyLabel(it), owner = onlyLbl ? `Solo ${onlyLbl}` : "Universal";
   const family = it.family && ITEM_FAMILIES[it.family] ? `<span class="ip-fam" style="color:${ITEM_FAMILIES[it.family].color}">Familia ${ITEM_FAMILIES[it.family].label}</span>` : "";
   // pasivas que NO se van a sumar porque ya hay otra igual equipada (regla de duplicados)
   const dupIds = new Set();
