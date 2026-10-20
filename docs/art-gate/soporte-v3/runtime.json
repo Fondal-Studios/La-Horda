@@ -1,0 +1,4509 @@
+{
+  "scope": "Actual renderer, six levels, all36 frames, host/guest snapshot replay; existing gates cover balance and live transport",
+  "checks": [
+    {
+      "name": "L1 v3 loaded",
+      "ok": true
+    },
+    {
+      "name": "L1 36 canonical cells",
+      "ok": true
+    },
+    {
+      "name": "L1 ref/foot metadata",
+      "ok": true
+    },
+    {
+      "name": "L1 idle down",
+      "ok": true
+    },
+    {
+      "name": "L1 walk down 0",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot down 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 walk down 1",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot down 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 walk down 2",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot down 2",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 walk down 3",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot down 3",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 attack down 0",
+      "ok": true
+    },
+    {
+      "name": "L1 attack down 1",
+      "ok": true
+    },
+    {
+      "name": "L1 attack down 2",
+      "ok": true
+    },
+    {
+      "name": "L1 attack down 3",
+      "ok": true
+    },
+    {
+      "name": "L1 hit down",
+      "ok": true
+    },
+    {
+      "name": "L1 idle right",
+      "ok": true
+    },
+    {
+      "name": "L1 walk right 0",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot right 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 walk right 1",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot right 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 walk right 2",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot right 2",
+      "ok": true,
+      "details": {
+        "body": 58,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 walk right 3",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot right 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 attack right 0",
+      "ok": true
+    },
+    {
+      "name": "L1 attack right 1",
+      "ok": true
+    },
+    {
+      "name": "L1 attack right 2",
+      "ok": true
+    },
+    {
+      "name": "L1 attack right 3",
+      "ok": true
+    },
+    {
+      "name": "L1 hit right",
+      "ok": true
+    },
+    {
+      "name": "L1 idle left",
+      "ok": true
+    },
+    {
+      "name": "L1 walk left 0",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot left 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 walk left 1",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot left 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 walk left 2",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot left 2",
+      "ok": true,
+      "details": {
+        "body": 58,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 walk left 3",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot left 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 attack left 0",
+      "ok": true
+    },
+    {
+      "name": "L1 attack left 1",
+      "ok": true
+    },
+    {
+      "name": "L1 attack left 2",
+      "ok": true
+    },
+    {
+      "name": "L1 attack left 3",
+      "ok": true
+    },
+    {
+      "name": "L1 hit left",
+      "ok": true
+    },
+    {
+      "name": "L1 idle up",
+      "ok": true
+    },
+    {
+      "name": "L1 walk up 0",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot up 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 walk up 1",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot up 1",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 walk up 2",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot up 2",
+      "ok": true,
+      "details": {
+        "body": 61,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 walk up 3",
+      "ok": true
+    },
+    {
+      "name": "L1 body/foot up 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L1 attack up 0",
+      "ok": true
+    },
+    {
+      "name": "L1 attack up 1",
+      "ok": true
+    },
+    {
+      "name": "L1 attack up 2",
+      "ok": true
+    },
+    {
+      "name": "L1 attack up 3",
+      "ok": true
+    },
+    {
+      "name": "L1 hit up",
+      "ok": true
+    },
+    {
+      "name": "L1 skill0 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L1 skill0 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L1 skill0 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L1 skill0 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L1 skill0 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L1 skill0 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L1 skill1 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L1 skill1 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L1 skill1 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L1 skill1 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L1 skill1 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L1 skill1 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L1 skill2 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L1 skill2 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L1 skill2 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L1 skill2 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L1 skill2 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L1 skill2 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L1 ultimate actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L1 ultimate visible 0",
+      "ok": true
+    },
+    {
+      "name": "L1 ultimate visible 1",
+      "ok": true
+    },
+    {
+      "name": "L1 ultimate visible 2",
+      "ok": true
+    },
+    {
+      "name": "L1 ultimate visible 3",
+      "ok": true
+    },
+    {
+      "name": "L1 ultimate distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ]
+      }
+    },
+    {
+      "name": "L1 snapshot contains classic ultimate flag",
+      "ok": true
+    },
+    {
+      "name": "L1 render-local clocks not serialized",
+      "ok": true
+    },
+    {
+      "name": "L1 death 0",
+      "ok": true
+    },
+    {
+      "name": "L1 death 1",
+      "ok": true
+    },
+    {
+      "name": "L1 death 2",
+      "ok": true
+    },
+    {
+      "name": "L1 death 3",
+      "ok": true
+    },
+    {
+      "name": "L1 death final frame holds",
+      "ok": true
+    },
+    {
+      "name": "L1 all36 frames actually selected",
+      "ok": true,
+      "details": {
+        "seen": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ]
+      }
+    },
+    {
+      "name": "L1 finite resources",
+      "ok": true
+    },
+    {
+      "name": "L1 negative canary rejects unavailable frame",
+      "ok": true
+    },
+    {
+      "name": "L1 restored frames in image",
+      "ok": true
+    },
+    {
+      "name": "L1 guest snapshot replay with clock offset",
+      "ok": true,
+      "details": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "opaque": true,
+        "kind": 2,
+        "restoredClass": true,
+        "hostStamp": 10320,
+        "localClock": 900240
+      }
+    },
+    {
+      "name": "L39 v3 loaded",
+      "ok": true
+    },
+    {
+      "name": "L39 36 canonical cells",
+      "ok": true
+    },
+    {
+      "name": "L39 ref/foot metadata",
+      "ok": true
+    },
+    {
+      "name": "L39 idle down",
+      "ok": true
+    },
+    {
+      "name": "L39 walk down 0",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot down 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 walk down 1",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot down 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 walk down 2",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot down 2",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 walk down 3",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot down 3",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 attack down 0",
+      "ok": true
+    },
+    {
+      "name": "L39 attack down 1",
+      "ok": true
+    },
+    {
+      "name": "L39 attack down 2",
+      "ok": true
+    },
+    {
+      "name": "L39 attack down 3",
+      "ok": true
+    },
+    {
+      "name": "L39 hit down",
+      "ok": true
+    },
+    {
+      "name": "L39 idle right",
+      "ok": true
+    },
+    {
+      "name": "L39 walk right 0",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot right 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 walk right 1",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot right 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 walk right 2",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot right 2",
+      "ok": true,
+      "details": {
+        "body": 58,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 walk right 3",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot right 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 attack right 0",
+      "ok": true
+    },
+    {
+      "name": "L39 attack right 1",
+      "ok": true
+    },
+    {
+      "name": "L39 attack right 2",
+      "ok": true
+    },
+    {
+      "name": "L39 attack right 3",
+      "ok": true
+    },
+    {
+      "name": "L39 hit right",
+      "ok": true
+    },
+    {
+      "name": "L39 idle left",
+      "ok": true
+    },
+    {
+      "name": "L39 walk left 0",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot left 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 walk left 1",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot left 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 walk left 2",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot left 2",
+      "ok": true,
+      "details": {
+        "body": 58,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 walk left 3",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot left 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 attack left 0",
+      "ok": true
+    },
+    {
+      "name": "L39 attack left 1",
+      "ok": true
+    },
+    {
+      "name": "L39 attack left 2",
+      "ok": true
+    },
+    {
+      "name": "L39 attack left 3",
+      "ok": true
+    },
+    {
+      "name": "L39 hit left",
+      "ok": true
+    },
+    {
+      "name": "L39 idle up",
+      "ok": true
+    },
+    {
+      "name": "L39 walk up 0",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot up 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 walk up 1",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot up 1",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 walk up 2",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot up 2",
+      "ok": true,
+      "details": {
+        "body": 61,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 walk up 3",
+      "ok": true
+    },
+    {
+      "name": "L39 body/foot up 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L39 attack up 0",
+      "ok": true
+    },
+    {
+      "name": "L39 attack up 1",
+      "ok": true
+    },
+    {
+      "name": "L39 attack up 2",
+      "ok": true
+    },
+    {
+      "name": "L39 attack up 3",
+      "ok": true
+    },
+    {
+      "name": "L39 hit up",
+      "ok": true
+    },
+    {
+      "name": "L39 skill0 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L39 skill0 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L39 skill0 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L39 skill0 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L39 skill0 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L39 skill0 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L39 skill1 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L39 skill1 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L39 skill1 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L39 skill1 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L39 skill1 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L39 skill1 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L39 skill2 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L39 skill2 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L39 skill2 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L39 skill2 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L39 skill2 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L39 skill2 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L39 ultimate actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L39 ultimate visible 0",
+      "ok": true
+    },
+    {
+      "name": "L39 ultimate visible 1",
+      "ok": true
+    },
+    {
+      "name": "L39 ultimate visible 2",
+      "ok": true
+    },
+    {
+      "name": "L39 ultimate visible 3",
+      "ok": true
+    },
+    {
+      "name": "L39 ultimate distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ]
+      }
+    },
+    {
+      "name": "L39 snapshot contains classic ultimate flag",
+      "ok": true
+    },
+    {
+      "name": "L39 render-local clocks not serialized",
+      "ok": true
+    },
+    {
+      "name": "L39 death 0",
+      "ok": true
+    },
+    {
+      "name": "L39 death 1",
+      "ok": true
+    },
+    {
+      "name": "L39 death 2",
+      "ok": true
+    },
+    {
+      "name": "L39 death 3",
+      "ok": true
+    },
+    {
+      "name": "L39 death final frame holds",
+      "ok": true
+    },
+    {
+      "name": "L39 all36 frames actually selected",
+      "ok": true,
+      "details": {
+        "seen": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ]
+      }
+    },
+    {
+      "name": "L39 finite resources",
+      "ok": true
+    },
+    {
+      "name": "L39 negative canary rejects unavailable frame",
+      "ok": true
+    },
+    {
+      "name": "L39 restored frames in image",
+      "ok": true
+    },
+    {
+      "name": "L39 guest snapshot replay with clock offset",
+      "ok": true,
+      "details": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "opaque": true,
+        "kind": 2,
+        "restoredClass": true,
+        "hostStamp": 10320,
+        "localClock": 900240
+      }
+    },
+    {
+      "name": "L40 v3 loaded",
+      "ok": true
+    },
+    {
+      "name": "L40 36 canonical cells",
+      "ok": true
+    },
+    {
+      "name": "L40 ref/foot metadata",
+      "ok": true
+    },
+    {
+      "name": "L40 idle down",
+      "ok": true
+    },
+    {
+      "name": "L40 walk down 0",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot down 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 walk down 1",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot down 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 walk down 2",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot down 2",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 walk down 3",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot down 3",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 attack down 0",
+      "ok": true
+    },
+    {
+      "name": "L40 attack down 1",
+      "ok": true
+    },
+    {
+      "name": "L40 attack down 2",
+      "ok": true
+    },
+    {
+      "name": "L40 attack down 3",
+      "ok": true
+    },
+    {
+      "name": "L40 hit down",
+      "ok": true
+    },
+    {
+      "name": "L40 idle right",
+      "ok": true
+    },
+    {
+      "name": "L40 walk right 0",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot right 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 walk right 1",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot right 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 walk right 2",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot right 2",
+      "ok": true,
+      "details": {
+        "body": 58,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 walk right 3",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot right 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 attack right 0",
+      "ok": true
+    },
+    {
+      "name": "L40 attack right 1",
+      "ok": true
+    },
+    {
+      "name": "L40 attack right 2",
+      "ok": true
+    },
+    {
+      "name": "L40 attack right 3",
+      "ok": true
+    },
+    {
+      "name": "L40 hit right",
+      "ok": true
+    },
+    {
+      "name": "L40 idle left",
+      "ok": true
+    },
+    {
+      "name": "L40 walk left 0",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot left 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 walk left 1",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot left 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 walk left 2",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot left 2",
+      "ok": true,
+      "details": {
+        "body": 58,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 walk left 3",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot left 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 attack left 0",
+      "ok": true
+    },
+    {
+      "name": "L40 attack left 1",
+      "ok": true
+    },
+    {
+      "name": "L40 attack left 2",
+      "ok": true
+    },
+    {
+      "name": "L40 attack left 3",
+      "ok": true
+    },
+    {
+      "name": "L40 hit left",
+      "ok": true
+    },
+    {
+      "name": "L40 idle up",
+      "ok": true
+    },
+    {
+      "name": "L40 walk up 0",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot up 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 walk up 1",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot up 1",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 walk up 2",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot up 2",
+      "ok": true,
+      "details": {
+        "body": 61,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 walk up 3",
+      "ok": true
+    },
+    {
+      "name": "L40 body/foot up 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L40 attack up 0",
+      "ok": true
+    },
+    {
+      "name": "L40 attack up 1",
+      "ok": true
+    },
+    {
+      "name": "L40 attack up 2",
+      "ok": true
+    },
+    {
+      "name": "L40 attack up 3",
+      "ok": true
+    },
+    {
+      "name": "L40 hit up",
+      "ok": true
+    },
+    {
+      "name": "L40 skill0 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L40 skill0 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L40 skill0 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L40 skill0 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L40 skill0 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L40 skill0 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L40 skill1 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L40 skill1 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L40 skill1 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L40 skill1 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L40 skill1 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L40 skill1 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L40 skill2 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L40 skill2 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L40 skill2 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L40 skill2 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L40 skill2 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L40 skill2 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L40 ultimate actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L40 ultimate visible 0",
+      "ok": true
+    },
+    {
+      "name": "L40 ultimate visible 1",
+      "ok": true
+    },
+    {
+      "name": "L40 ultimate visible 2",
+      "ok": true
+    },
+    {
+      "name": "L40 ultimate visible 3",
+      "ok": true
+    },
+    {
+      "name": "L40 ultimate distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ]
+      }
+    },
+    {
+      "name": "L40 snapshot contains classic ultimate flag",
+      "ok": true
+    },
+    {
+      "name": "L40 render-local clocks not serialized",
+      "ok": true
+    },
+    {
+      "name": "L40 death 0",
+      "ok": true
+    },
+    {
+      "name": "L40 death 1",
+      "ok": true
+    },
+    {
+      "name": "L40 death 2",
+      "ok": true
+    },
+    {
+      "name": "L40 death 3",
+      "ok": true
+    },
+    {
+      "name": "L40 death final frame holds",
+      "ok": true
+    },
+    {
+      "name": "L40 all36 frames actually selected",
+      "ok": true,
+      "details": {
+        "seen": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ]
+      }
+    },
+    {
+      "name": "L40 finite resources",
+      "ok": true
+    },
+    {
+      "name": "L40 negative canary rejects unavailable frame",
+      "ok": true
+    },
+    {
+      "name": "L40 restored frames in image",
+      "ok": true
+    },
+    {
+      "name": "L40 guest snapshot replay with clock offset",
+      "ok": true,
+      "details": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "opaque": true,
+        "kind": 2,
+        "restoredClass": true,
+        "hostStamp": 10320,
+        "localClock": 900240
+      }
+    },
+    {
+      "name": "L60 v3 loaded",
+      "ok": true
+    },
+    {
+      "name": "L60 36 canonical cells",
+      "ok": true
+    },
+    {
+      "name": "L60 ref/foot metadata",
+      "ok": true
+    },
+    {
+      "name": "L60 idle down",
+      "ok": true
+    },
+    {
+      "name": "L60 walk down 0",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot down 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 walk down 1",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot down 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 walk down 2",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot down 2",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 walk down 3",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot down 3",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 attack down 0",
+      "ok": true
+    },
+    {
+      "name": "L60 attack down 1",
+      "ok": true
+    },
+    {
+      "name": "L60 attack down 2",
+      "ok": true
+    },
+    {
+      "name": "L60 attack down 3",
+      "ok": true
+    },
+    {
+      "name": "L60 hit down",
+      "ok": true
+    },
+    {
+      "name": "L60 idle right",
+      "ok": true
+    },
+    {
+      "name": "L60 walk right 0",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot right 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 walk right 1",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot right 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 walk right 2",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot right 2",
+      "ok": true,
+      "details": {
+        "body": 58,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 walk right 3",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot right 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 attack right 0",
+      "ok": true
+    },
+    {
+      "name": "L60 attack right 1",
+      "ok": true
+    },
+    {
+      "name": "L60 attack right 2",
+      "ok": true
+    },
+    {
+      "name": "L60 attack right 3",
+      "ok": true
+    },
+    {
+      "name": "L60 hit right",
+      "ok": true
+    },
+    {
+      "name": "L60 idle left",
+      "ok": true
+    },
+    {
+      "name": "L60 walk left 0",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot left 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 walk left 1",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot left 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 walk left 2",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot left 2",
+      "ok": true,
+      "details": {
+        "body": 58,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 walk left 3",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot left 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 attack left 0",
+      "ok": true
+    },
+    {
+      "name": "L60 attack left 1",
+      "ok": true
+    },
+    {
+      "name": "L60 attack left 2",
+      "ok": true
+    },
+    {
+      "name": "L60 attack left 3",
+      "ok": true
+    },
+    {
+      "name": "L60 hit left",
+      "ok": true
+    },
+    {
+      "name": "L60 idle up",
+      "ok": true
+    },
+    {
+      "name": "L60 walk up 0",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot up 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 walk up 1",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot up 1",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 walk up 2",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot up 2",
+      "ok": true,
+      "details": {
+        "body": 61,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 walk up 3",
+      "ok": true
+    },
+    {
+      "name": "L60 body/foot up 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L60 attack up 0",
+      "ok": true
+    },
+    {
+      "name": "L60 attack up 1",
+      "ok": true
+    },
+    {
+      "name": "L60 attack up 2",
+      "ok": true
+    },
+    {
+      "name": "L60 attack up 3",
+      "ok": true
+    },
+    {
+      "name": "L60 hit up",
+      "ok": true
+    },
+    {
+      "name": "L60 skill0 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L60 skill0 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L60 skill0 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L60 skill0 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L60 skill0 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L60 skill0 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L60 skill1 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L60 skill1 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L60 skill1 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L60 skill1 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L60 skill1 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L60 skill1 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L60 skill2 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L60 skill2 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L60 skill2 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L60 skill2 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L60 skill2 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L60 skill2 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L60 ultimate actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L60 ultimate visible 0",
+      "ok": true
+    },
+    {
+      "name": "L60 ultimate visible 1",
+      "ok": true
+    },
+    {
+      "name": "L60 ultimate visible 2",
+      "ok": true
+    },
+    {
+      "name": "L60 ultimate visible 3",
+      "ok": true
+    },
+    {
+      "name": "L60 ultimate distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ]
+      }
+    },
+    {
+      "name": "L60 snapshot contains classic ultimate flag",
+      "ok": true
+    },
+    {
+      "name": "L60 render-local clocks not serialized",
+      "ok": true
+    },
+    {
+      "name": "L60 death 0",
+      "ok": true
+    },
+    {
+      "name": "L60 death 1",
+      "ok": true
+    },
+    {
+      "name": "L60 death 2",
+      "ok": true
+    },
+    {
+      "name": "L60 death 3",
+      "ok": true
+    },
+    {
+      "name": "L60 death final frame holds",
+      "ok": true
+    },
+    {
+      "name": "L60 all36 frames actually selected",
+      "ok": true,
+      "details": {
+        "seen": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ]
+      }
+    },
+    {
+      "name": "L60 finite resources",
+      "ok": true
+    },
+    {
+      "name": "L60 negative canary rejects unavailable frame",
+      "ok": true
+    },
+    {
+      "name": "L60 restored frames in image",
+      "ok": true
+    },
+    {
+      "name": "L60 guest snapshot replay with clock offset",
+      "ok": true,
+      "details": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "opaque": true,
+        "kind": 2,
+        "restoredClass": true,
+        "hostStamp": 10320,
+        "localClock": 900240
+      }
+    },
+    {
+      "name": "L90 v3 loaded",
+      "ok": true
+    },
+    {
+      "name": "L90 36 canonical cells",
+      "ok": true
+    },
+    {
+      "name": "L90 ref/foot metadata",
+      "ok": true
+    },
+    {
+      "name": "L90 idle down",
+      "ok": true
+    },
+    {
+      "name": "L90 walk down 0",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot down 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 walk down 1",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot down 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 walk down 2",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot down 2",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 walk down 3",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot down 3",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 attack down 0",
+      "ok": true
+    },
+    {
+      "name": "L90 attack down 1",
+      "ok": true
+    },
+    {
+      "name": "L90 attack down 2",
+      "ok": true
+    },
+    {
+      "name": "L90 attack down 3",
+      "ok": true
+    },
+    {
+      "name": "L90 hit down",
+      "ok": true
+    },
+    {
+      "name": "L90 idle right",
+      "ok": true
+    },
+    {
+      "name": "L90 walk right 0",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot right 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 walk right 1",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot right 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 walk right 2",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot right 2",
+      "ok": true,
+      "details": {
+        "body": 58,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 walk right 3",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot right 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 attack right 0",
+      "ok": true
+    },
+    {
+      "name": "L90 attack right 1",
+      "ok": true
+    },
+    {
+      "name": "L90 attack right 2",
+      "ok": true
+    },
+    {
+      "name": "L90 attack right 3",
+      "ok": true
+    },
+    {
+      "name": "L90 hit right",
+      "ok": true
+    },
+    {
+      "name": "L90 idle left",
+      "ok": true
+    },
+    {
+      "name": "L90 walk left 0",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot left 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 walk left 1",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot left 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 walk left 2",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot left 2",
+      "ok": true,
+      "details": {
+        "body": 58,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 walk left 3",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot left 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 attack left 0",
+      "ok": true
+    },
+    {
+      "name": "L90 attack left 1",
+      "ok": true
+    },
+    {
+      "name": "L90 attack left 2",
+      "ok": true
+    },
+    {
+      "name": "L90 attack left 3",
+      "ok": true
+    },
+    {
+      "name": "L90 hit left",
+      "ok": true
+    },
+    {
+      "name": "L90 idle up",
+      "ok": true
+    },
+    {
+      "name": "L90 walk up 0",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot up 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 walk up 1",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot up 1",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 walk up 2",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot up 2",
+      "ok": true,
+      "details": {
+        "body": 61,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 walk up 3",
+      "ok": true
+    },
+    {
+      "name": "L90 body/foot up 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L90 attack up 0",
+      "ok": true
+    },
+    {
+      "name": "L90 attack up 1",
+      "ok": true
+    },
+    {
+      "name": "L90 attack up 2",
+      "ok": true
+    },
+    {
+      "name": "L90 attack up 3",
+      "ok": true
+    },
+    {
+      "name": "L90 hit up",
+      "ok": true
+    },
+    {
+      "name": "L90 skill0 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L90 skill0 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L90 skill0 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L90 skill0 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L90 skill0 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L90 skill0 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L90 skill1 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L90 skill1 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L90 skill1 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L90 skill1 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L90 skill1 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L90 skill1 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L90 skill2 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L90 skill2 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L90 skill2 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L90 skill2 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L90 skill2 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L90 skill2 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L90 ultimate actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L90 ultimate visible 0",
+      "ok": true
+    },
+    {
+      "name": "L90 ultimate visible 1",
+      "ok": true
+    },
+    {
+      "name": "L90 ultimate visible 2",
+      "ok": true
+    },
+    {
+      "name": "L90 ultimate visible 3",
+      "ok": true
+    },
+    {
+      "name": "L90 ultimate distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ]
+      }
+    },
+    {
+      "name": "L90 snapshot contains classic ultimate flag",
+      "ok": true
+    },
+    {
+      "name": "L90 render-local clocks not serialized",
+      "ok": true
+    },
+    {
+      "name": "L90 death 0",
+      "ok": true
+    },
+    {
+      "name": "L90 death 1",
+      "ok": true
+    },
+    {
+      "name": "L90 death 2",
+      "ok": true
+    },
+    {
+      "name": "L90 death 3",
+      "ok": true
+    },
+    {
+      "name": "L90 death final frame holds",
+      "ok": true
+    },
+    {
+      "name": "L90 all36 frames actually selected",
+      "ok": true,
+      "details": {
+        "seen": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ]
+      }
+    },
+    {
+      "name": "L90 finite resources",
+      "ok": true
+    },
+    {
+      "name": "L90 negative canary rejects unavailable frame",
+      "ok": true
+    },
+    {
+      "name": "L90 restored frames in image",
+      "ok": true
+    },
+    {
+      "name": "L90 guest snapshot replay with clock offset",
+      "ok": true,
+      "details": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "opaque": true,
+        "kind": 2,
+        "restoredClass": true,
+        "hostStamp": 10320,
+        "localClock": 900240
+      }
+    },
+    {
+      "name": "L99 v3 loaded",
+      "ok": true
+    },
+    {
+      "name": "L99 36 canonical cells",
+      "ok": true
+    },
+    {
+      "name": "L99 ref/foot metadata",
+      "ok": true
+    },
+    {
+      "name": "L99 idle down",
+      "ok": true
+    },
+    {
+      "name": "L99 walk down 0",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot down 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 walk down 1",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot down 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 walk down 2",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot down 2",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 walk down 3",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot down 3",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 attack down 0",
+      "ok": true
+    },
+    {
+      "name": "L99 attack down 1",
+      "ok": true
+    },
+    {
+      "name": "L99 attack down 2",
+      "ok": true
+    },
+    {
+      "name": "L99 attack down 3",
+      "ok": true
+    },
+    {
+      "name": "L99 hit down",
+      "ok": true
+    },
+    {
+      "name": "L99 idle right",
+      "ok": true
+    },
+    {
+      "name": "L99 walk right 0",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot right 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 walk right 1",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot right 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 walk right 2",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot right 2",
+      "ok": true,
+      "details": {
+        "body": 58,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 walk right 3",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot right 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 attack right 0",
+      "ok": true
+    },
+    {
+      "name": "L99 attack right 1",
+      "ok": true
+    },
+    {
+      "name": "L99 attack right 2",
+      "ok": true
+    },
+    {
+      "name": "L99 attack right 3",
+      "ok": true
+    },
+    {
+      "name": "L99 hit right",
+      "ok": true
+    },
+    {
+      "name": "L99 idle left",
+      "ok": true
+    },
+    {
+      "name": "L99 walk left 0",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot left 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 walk left 1",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot left 1",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 walk left 2",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot left 2",
+      "ok": true,
+      "details": {
+        "body": 58,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 walk left 3",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot left 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 attack left 0",
+      "ok": true
+    },
+    {
+      "name": "L99 attack left 1",
+      "ok": true
+    },
+    {
+      "name": "L99 attack left 2",
+      "ok": true
+    },
+    {
+      "name": "L99 attack left 3",
+      "ok": true
+    },
+    {
+      "name": "L99 hit left",
+      "ok": true
+    },
+    {
+      "name": "L99 idle up",
+      "ok": true
+    },
+    {
+      "name": "L99 walk up 0",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot up 0",
+      "ok": true,
+      "details": {
+        "body": 59,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 walk up 1",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot up 1",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 walk up 2",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot up 2",
+      "ok": true,
+      "details": {
+        "body": 61,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 walk up 3",
+      "ok": true
+    },
+    {
+      "name": "L99 body/foot up 3",
+      "ok": true,
+      "details": {
+        "body": 60,
+        "foot": -2,
+        "reference": {
+          "body": 59,
+          "foot": -2
+        }
+      }
+    },
+    {
+      "name": "L99 attack up 0",
+      "ok": true
+    },
+    {
+      "name": "L99 attack up 1",
+      "ok": true
+    },
+    {
+      "name": "L99 attack up 2",
+      "ok": true
+    },
+    {
+      "name": "L99 attack up 3",
+      "ok": true
+    },
+    {
+      "name": "L99 hit up",
+      "ok": true
+    },
+    {
+      "name": "L99 skill0 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L99 skill0 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L99 skill0 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L99 skill0 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L99 skill0 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L99 skill0 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L99 skill1 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L99 skill1 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L99 skill1 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L99 skill1 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L99 skill1 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L99 skill1 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L99 skill2 actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L99 skill2 visible 0",
+      "ok": true
+    },
+    {
+      "name": "L99 skill2 visible 1",
+      "ok": true
+    },
+    {
+      "name": "L99 skill2 visible 2",
+      "ok": true
+    },
+    {
+      "name": "L99 skill2 visible 3",
+      "ok": true
+    },
+    {
+      "name": "L99 skill2 distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          24,
+          25,
+          26,
+          27
+        ]
+      }
+    },
+    {
+      "name": "L99 ultimate actual cast marker",
+      "ok": true
+    },
+    {
+      "name": "L99 ultimate visible 0",
+      "ok": true
+    },
+    {
+      "name": "L99 ultimate visible 1",
+      "ok": true
+    },
+    {
+      "name": "L99 ultimate visible 2",
+      "ok": true
+    },
+    {
+      "name": "L99 ultimate visible 3",
+      "ok": true
+    },
+    {
+      "name": "L99 ultimate distinct authored frames",
+      "ok": true,
+      "details": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ]
+      }
+    },
+    {
+      "name": "L99 snapshot contains classic ultimate flag",
+      "ok": true
+    },
+    {
+      "name": "L99 render-local clocks not serialized",
+      "ok": true
+    },
+    {
+      "name": "L99 death 0",
+      "ok": true
+    },
+    {
+      "name": "L99 death 1",
+      "ok": true
+    },
+    {
+      "name": "L99 death 2",
+      "ok": true
+    },
+    {
+      "name": "L99 death 3",
+      "ok": true
+    },
+    {
+      "name": "L99 death final frame holds",
+      "ok": true
+    },
+    {
+      "name": "L99 all36 frames actually selected",
+      "ok": true,
+      "details": {
+        "seen": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ]
+      }
+    },
+    {
+      "name": "L99 finite resources",
+      "ok": true
+    },
+    {
+      "name": "L99 negative canary rejects unavailable frame",
+      "ok": true
+    },
+    {
+      "name": "L99 restored frames in image",
+      "ok": true
+    },
+    {
+      "name": "L99 guest snapshot replay with clock offset",
+      "ok": true,
+      "details": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "opaque": true,
+        "kind": 2,
+        "restoredClass": true,
+        "hostStamp": 10320,
+        "localClock": 900240
+      }
+    }
+  ],
+  "errors": [],
+  "levels": [
+    {
+      "level": 1,
+      "trace": [
+        {
+          "kind": "skill0",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "skill1",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "skill2",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "ultimate",
+          "frames": [
+            28,
+            29,
+            30,
+            31
+          ]
+        }
+      ],
+      "body": [
+        {
+          "dir": "down",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 3,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 2,
+          "body": 58,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 2,
+          "body": 58,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 1,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 2,
+          "body": 61,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        }
+      ],
+      "reference": {
+        "body": 59,
+        "foot": -2
+      },
+      "guest": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "opaque": true,
+        "kind": 2,
+        "restoredClass": true,
+        "hostStamp": 10320,
+        "localClock": 900240
+      }
+    },
+    {
+      "level": 39,
+      "trace": [
+        {
+          "kind": "skill0",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "skill1",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "skill2",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "ultimate",
+          "frames": [
+            28,
+            29,
+            30,
+            31
+          ]
+        }
+      ],
+      "body": [
+        {
+          "dir": "down",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 3,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 2,
+          "body": 58,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 2,
+          "body": 58,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 1,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 2,
+          "body": 61,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        }
+      ],
+      "reference": {
+        "body": 59,
+        "foot": -2
+      },
+      "guest": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "opaque": true,
+        "kind": 2,
+        "restoredClass": true,
+        "hostStamp": 10320,
+        "localClock": 900240
+      }
+    },
+    {
+      "level": 40,
+      "trace": [
+        {
+          "kind": "skill0",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "skill1",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "skill2",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "ultimate",
+          "frames": [
+            28,
+            29,
+            30,
+            31
+          ]
+        }
+      ],
+      "body": [
+        {
+          "dir": "down",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 3,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 2,
+          "body": 58,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 2,
+          "body": 58,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 1,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 2,
+          "body": 61,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        }
+      ],
+      "reference": {
+        "body": 59,
+        "foot": -2
+      },
+      "guest": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "opaque": true,
+        "kind": 2,
+        "restoredClass": true,
+        "hostStamp": 10320,
+        "localClock": 900240
+      }
+    },
+    {
+      "level": 60,
+      "trace": [
+        {
+          "kind": "skill0",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "skill1",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "skill2",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "ultimate",
+          "frames": [
+            28,
+            29,
+            30,
+            31
+          ]
+        }
+      ],
+      "body": [
+        {
+          "dir": "down",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 3,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 2,
+          "body": 58,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 2,
+          "body": 58,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 1,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 2,
+          "body": 61,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        }
+      ],
+      "reference": {
+        "body": 59,
+        "foot": -2
+      },
+      "guest": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "opaque": true,
+        "kind": 2,
+        "restoredClass": true,
+        "hostStamp": 10320,
+        "localClock": 900240
+      }
+    },
+    {
+      "level": 90,
+      "trace": [
+        {
+          "kind": "skill0",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "skill1",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "skill2",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "ultimate",
+          "frames": [
+            28,
+            29,
+            30,
+            31
+          ]
+        }
+      ],
+      "body": [
+        {
+          "dir": "down",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 3,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 2,
+          "body": 58,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 2,
+          "body": 58,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 1,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 2,
+          "body": 61,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        }
+      ],
+      "reference": {
+        "body": 59,
+        "foot": -2
+      },
+      "guest": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "opaque": true,
+        "kind": 2,
+        "restoredClass": true,
+        "hostStamp": 10320,
+        "localClock": 900240
+      }
+    },
+    {
+      "level": 99,
+      "trace": [
+        {
+          "kind": "skill0",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "skill1",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "skill2",
+          "frames": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "kind": "ultimate",
+          "frames": [
+            28,
+            29,
+            30,
+            31
+          ]
+        }
+      ],
+      "body": [
+        {
+          "dir": "down",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 3,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 2,
+          "body": 58,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 1,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 2,
+          "body": 58,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 0,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 1,
+          "body": 60,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 2,
+          "body": 61,
+          "foot": -2
+        },
+        {
+          "dir": "up",
+          "phase": 3,
+          "body": 60,
+          "foot": -2
+        }
+      ],
+      "reference": {
+        "body": 59,
+        "foot": -2
+      },
+      "guest": {
+        "frames": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "opaque": true,
+        "kind": 2,
+        "restoredClass": true,
+        "hostStamp": 10320,
+        "localClock": 900240
+      }
+    }
+  ],
+  "provenance": {
+    "atlas": "assets/sprites/champions/soporte/v3/atlas.png",
+    "atlasSha256": "6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34",
+    "metadataSha256": "7b4536ce66620efc85a7037fa8622cf18d14a0f48733aea4bb408c7946c9c755",
+    "rendererSha256": "86b542e56cb6efb4b6d6b9b7854bbc9d7d17a385a134543ea123c0909c970b4c"
+  },
+  "status": "PASS"
+}

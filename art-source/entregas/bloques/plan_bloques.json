@@ -18,14 +18,14 @@
     "ENTREGADO_PNG_RUNTIME_EXISTENTE"
   ],
   "bloque_activo": "B004",
-  "siguiente_accion": "B004: normalizar exportación de Libertador guardado, conservando pendientes de orientación y proporciones.",
+  "siguiente_accion": "B004: caída base integrada por PR170; quedan ataque abajo, ataque arriba y golpe. Taller PR166/403a80c conserva caminata corregida y tres ataques20/21/23 aún FIX. Mantener atlas especializado61 y montura; no instalar plantilla36 ni contar publicación sin verificar.",
   "bloques": [
     {
       "id": "B001",
       "prioridad": "P0",
       "tipo": "campeon",
       "titulo": "Campeón soporte: un atlas para todos sus faltantes de cuerpo",
-      "estado": "EN_CORRECCION",
+      "estado": "INTEGRADO_MAIN",
       "items": [
         "soporte.cuerpo.lanzar",
         "soporte.cuerpo.golpe",
@@ -69,6 +69,19 @@
             "Redibujo nativo cuadro 11; ambos intentos generados fallan ILUSTRACION",
             "Revisión visual y runtime posterior"
           ]
+        },
+        {
+          "lote": "B001_soporte_v3",
+          "estado": "INTEGRADO_MAIN",
+          "manifiesto": "art-source/entregas/bloques/B001_soporte/entrega.json",
+          "pr": 163,
+          "commit_main": "ae21839465a7dfdad469be3a4bb37cef9605cbbc",
+          "preferida": true,
+          "estado_tecnico": "PASS",
+          "evidencia_actual": "docs/art-gate/soporte-v3/validation.json",
+          "pendientes": [
+            "Publicación pendiente de verificar"
+          ]
         }
       ],
       "referencias": [
@@ -88,27 +101,61 @@
         "Importador/StyleGate/scan con resultados reales; el StyleGate de caminatas no valida filas nuevas."
       ],
       "decisiones_pendientes": [],
-      "revision_visual": "FIX_NATIVE_CUADRO_11",
-      "integracion": "NO_INTEGRAR_FIX_NATIVE",
+      "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño",
+      "integracion": "INTEGRADO_MAIN",
       "entrega": "art-source/entregas/bloques/B001_soporte/entrega.json",
       "ultimo_resultado": {
         "refH": 71,
-        "siluetas": 36,
-        "semi_alpha": 0,
-        "scanner_halo": 2,
+        "cuadros_nativos": 36,
+        "cuadros_fallidos": [],
         "style_gate": "PASS",
-        "import_scale": 1,
-        "generaciones_ia_adicionales": 0
+        "renderer_checks": 570,
+        "renderer_errors": 0,
+        "evidencia": "docs/art-gate/soporte-v3/validation.json"
       },
       "revision_nativa": {
-        "estado": "FIX",
-        "cuadros_fallidos": [
-          11
-        ],
-        "evidencia": "docs/production/authored-candidate-results-20261019.json",
-        "run": 39292727298,
-        "source": "art-source/entregas/bloques/B001_soporte/campeones/soporte/hoja_36poses.png"
-      }
+        "estado": "PASS",
+        "cuadros_fallidos": [],
+        "cuadros_validados": 36,
+        "git_blob": "f7dcca7efeff2274556195e34a1722edb1cbd422",
+        "evidencia": "art-source/entregas/bloques/B001_soporte/revision-frame11-v3/validated/native.json",
+        "run": 39302849899,
+        "installed": true,
+        "approvalClaimed": false
+      },
+      "historial_revision_nativa": [
+        {
+          "estado": "FIX",
+          "cuadros_fallidos": [
+            11
+          ],
+          "evidencia": "docs/production/authored-candidate-results-20261019.json",
+          "run": 39292727298,
+          "source": "art-source/entregas/bloques/B001_soporte/campeones/soporte/hoja_36poses.png"
+        }
+      ],
+      "evidencia_integracion": {
+        "pr": 163,
+        "commit_main": "ae21839465a7dfdad469be3a4bb37cef9605cbbc",
+        "champion": "soporte",
+        "atlas": "assets/sprites/champions/soporte/v3/atlas.png",
+        "git_blob": "f7dcca7efeff2274556195e34a1722edb1cbd422",
+        "sha256": "6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34",
+        "evidencia": "docs/art-gate/soporte-v3/validation.json",
+        "publicacion": "PENDIENTE_VERIFICACION",
+        "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
+      },
+      "historial_resultados": [
+        {
+          "refH": 71,
+          "siluetas": 36,
+          "semi_alpha": 0,
+          "scanner_halo": 2,
+          "style_gate": "PASS",
+          "import_scale": 1,
+          "generaciones_ia_adicionales": 0
+        }
+      ]
     },
     {
       "id": "B002",
@@ -426,7 +473,23 @@
         "evidencia": "docs/production/authored-candidate-results-20261019.json",
         "run": 39292727298,
         "source": "art-source/entregas/bloques/B004_libertador/campeones/atlas.png"
-      }
+      },
+      "integraciones_parciales": [
+        {
+          "item": "libertador.cuerpo.muerte",
+          "pr": 170,
+          "commit_main": "6f47511f977e3828f34cc6abf76d878fe4336a99",
+          "champion": "libertador",
+          "component": "death",
+          "atlas": "assets/sprites/champions/libertador/v2/death.png",
+          "git_blob": "3184b36a1f832ee6a3644e05a743261c78a5572d",
+          "sha256": "3c142180270cbcf3bd4477433bec65204a78e0ee65c4d15aab3efcd3e411dc7a",
+          "evidencia": "docs/art-gate/libertador-death/validation.json",
+          "publicacion": "PENDIENTE_VERIFICACION",
+          "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño",
+          "scope": "Four-frame frontal fall shared across directions; base appearance only; not whole B004 approval"
+        }
+      ]
     },
     {
       "id": "B005",

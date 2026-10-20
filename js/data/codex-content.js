@@ -119,7 +119,7 @@ const CODEX_SKILL_FX = {
 };
 // Animaciones extra con nombre que se ofrecen como botón en la ficha del guardián (si su atlas las tiene).
 const CODEX_CHAMP_EXTRA_ANIMS = {
-  libertador:[{label:"Disparo", set:"fire"}, {label:"A caballo", set:"m_run", pack:"libertador_horse"}],
+  libertador:[{label:"Disparo", set:"fire"}, {label:"A caballo", set:"m_run", pack:"libertador_horse"}, {label:"Caída", set:"death_down", pack:"libertador_death"}],
   ilkan:[{label:"Carrera", set:"run"}, {label:"El Coloso", set:"walk_side", pack:"ilkan_colossus"}],
   cazadora:[{label:"Apuntar", set:"aim"}],
   nigromante:[{label:"Encarnación", set:"ult"}]

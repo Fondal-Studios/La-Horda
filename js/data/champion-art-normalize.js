@@ -9,7 +9,7 @@ var CHAMP_ART_NORMALIZE = {"tanque":{"front":[1,0],"side":[0.8939,-1.11],"up":[0
 "guerrero@nocturno":{"front":[0.9833,-1.02],"side":[0.9672,-1.03],"up":[0.9833,-1.02]},
 "mago":{"front":[0.8939,-1.11],"side":[0.8939,-1.11],"up":[0.8939,-1.11]},
 "mago@convergencia":{"front":[0.8806,-1.12],"side":[0.9219,-1.08],"up":[0.8806,-1.12]},
-"soporte":{"front":[1,-2],"side":[1,-2],"up":[1.0172,-2]},
+"soporte":{"front":[0.9833,-2],"side":[0.9833,-2],"up":[0.9672,-2]},
 "soporte@custodio":{"front":[1,-1],"side":[1,-1],"up":[1.0727,-0.93]},
 "segador":{"front":[0.8676,-2.87],"side":[0.9833,-2],"up":[0.9516,-2]},
 "segador@marea":{"front":[0.9672,-1.03],"side":[0.9833,-1.02],"up":[0.9672,-1.03]},
