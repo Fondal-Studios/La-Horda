@@ -25,7 +25,7 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
    prices.champion.tanque=234;save.champions.tanque.unlocked=false;before=save.gold;result=shopBuyChampion('tanque');check('champion exact configured',result.ok&&save.gold===before-234);
    save.champions.tanque.unlocked=false;before=save.gold;result=shopBuyChampion('tanque',null,999);check('stale champion quote rejected',!result.ok&&save.gold===before&&!save.champions.tanque.unlocked);
    save.champions.tanque.unlocked=true;
-   prices.cosmetic.tanque_ancestral=345;delete save.cromas.tanque_ancestral;before=save.gold;result=cromaBuy('tanque_ancestral');check('croma exact configured',result.ok&&save.gold===before-345);
+   prices.cosmetic.tanque_ancestral=345;delete save.cromas.tanque_ancestral;before=save.gold;result=cromaBuy('tanque_ancestral');check('croma cannot be bought with gold (Brasas only)',!result.ok&&save.gold===before&&!cromaOwned('tanque_ancestral'));
    delete save.cromas.tanque_ancestral;before=save.gold;result=cromaBuy('tanque_ancestral',999);check('stale croma quote rejected',!result.ok&&save.gold===before&&!cromaOwned('tanque_ancestral'));
    save.stash=[];save.collection={};save.cosmeticUnlocks={};prices.item={};prices.cosmetic.baluarte=800;
    before=save.gold;result=shopBuySetBundle('baluarte',true,null,999);check('stale skin quote rejected',!result.ok&&save.gold===before&&stashItems().length===0);
@@ -33,7 +33,7 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
    // regla vigente (js/systems/premium.js): la skin es SOLO apariencia y tiene precio propio; tener piezas no lo cambia
    addItemToInventory(null,makeDesignedItem(piece));check('skin price ignores owned pieces',shopSkinPrice('baluarte')===800);
    const missing0=shopSetMissing('baluarte').length;
-   before=save.gold;result=shopBuySetBundle('baluarte',true);check('skin purchase is appearance only',result.ok&&save.gold===before-800&&!!save.cosmeticUnlocks.baluarte&&shopSetMissing('baluarte').length===missing0);
+   before=save.gold;result=shopBuySetBundle('baluarte',true);check('skin cannot be bought with gold (Brasas only), gives no pieces',!result.ok&&save.gold===before&&!save.cosmeticUnlocks.baluarte&&shopSetMissing('baluarte').length===missing0);
    save.stash=[];save.collection={};save.cosmeticUnlocks={};prices.cosmetic={};prices.item[key]=123;
    check('equipment bundle sum (skin keeps its own 9000 price)',shopSetPrice('baluarte')===3723&&shopSkinPrice('baluarte')===9000&&shopSkinPrice('baluarte')===PRICING.gold.cosmetic.set);
    check('tiered cosmetic quotes: set 9000 gold / 800 Brasas, authored skin 12000 / 1200',premiumGoldPrice('baluarte')===9000&&premiumPrice('baluarte')===800&&premiumGoldPrice('tanque_ancestral')===12000&&premiumPrice('tanque_ancestral')===1200&&cromaPrice('tanque_ancestral')===12000);
@@ -48,7 +48,7 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
    prices.item[deal.key]=0;check('free discount remains free',shopDailyShowcase().deals[0].price===0);
    check('small discount never raises price',_shopDisc(2,15)<=2);
    save.cosmeticUnlocks={};save.collection={};save.stash=[];prices.cosmetic.baluarte=777;
-   shopTab='skins';renderShop();check('skin UI uses effective quote',document.querySelector('[data-skin-card="baluarte"]')?.textContent.includes(fmtGold(shopSkinPrice('baluarte'))));
+   shopTab='skins';renderShop();check('skin UI quotes Brasas, no gold button',!!document.querySelector('[data-skin-card="baluarte"] [data-skin-premium]')?.textContent.includes('✦')&&!document.querySelector('[data-skin-buy]'));
    return checks;
  });
  console.log(JSON.stringify(results));assert.ok(results.every(x=>x.ok));assert.deepEqual(errors,[]);await b.close();

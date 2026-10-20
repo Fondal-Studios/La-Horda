@@ -24,7 +24,7 @@ let browser;
    p.on('pageerror',e=>errors.push(e.message));p.setDefaultTimeout(30000);
    await p.goto('http://127.0.0.1:8875/?lazy=0&server=ws%3A%2F%2F127.0.0.1%3A8876');
    await p.waitForFunction(()=>typeof netBuildLoadout==='function'&&typeof cromaLoadAll==='function');
-   await p.evaluate(({wears,id,champ})=>{save.starterChosen=true;for(const c of Object.values(save.champions)){c.unlocked=true;c.level=20;}selectedClass=wears?champ:'tanque';currentArena='bosque';if(wears){save.gold=cromaPrice(id);if(!cromaBuy(id).ok||!cromaEquip(champ,id))throw Error('Isolated skin purchase failed');}cromaLoadAll();setState('prep');},{wears:role===wearer,id:ID,champ:CHAMP});
+   await p.evaluate(({wears,id,champ})=>{save.starterChosen=true;for(const c of Object.values(save.champions)){c.unlocked=true;c.level=20;}selectedClass=wears?champ:'tanque';currentArena='bosque';if(wears){save.cromas=Object.assign({},save.cromas,{[id]:true});if(!cromaEquip(champ,id))throw Error('Isolated skin grant failed');}cromaLoadAll();setState('prep');},{wears:role===wearer,id:ID,champ:CHAMP});
    await p.waitForFunction(([id,champ])=>CHAMP_PACK[CROMA_SKINS[id].packs[champ]]?.ready,[ID,CHAMP]);
   }
   await a.evaluate(()=>netCreateRoom(currentArena,selectedClass,20));const code=await a.evaluate(()=>net.code);

@@ -98,18 +98,10 @@ function cromaEquippedId(k){
   return d && d.champ === k ? c.croma : null;
 }
 function cromaIsEquipped(id){ const d = CROMA_SKINS[id]; return !!(d && cromaEquippedId(d.champ) === id); }
+// INOPERANTE a propósito: las cromas/skins se compran solo con Brasas ✦ (premiumBuySkin, validado por el servidor).
+// El oro es del cliente y editable; ver js/systems/premium.js.
 function cromaBuy(id, expectedPrice){
-  const d = CROMA_SKINS[id];
-  if(!d) return {ok:false, reason:"Esa croma no existe"};
-  if(typeof state!=="undefined" && state==="playing") return {ok:false, reason:"La tienda se usa fuera de la partida"};
-  if(cromaOwned(id)) return {ok:false, reason:"Ya es tuya"};
-  const price = cromaPrice(id);
-  if(expectedPrice!=null && expectedPrice!==price) return {ok:false,reason:"El precio cambió. Revisá el nuevo valor y volvé a confirmar."};
-  if((save.gold||0) < price) return {ok:false, reason:`No te alcanza el oro (tenés ${save.gold||0}, cuesta ${price})`};
-  save.gold -= price;
-  save.cromas = Object.assign({}, save.cromas, {[id]:true});
-  persist();
-  return {ok:true};
+  return {ok:false, reason:"Las skins se compran solo con Brasas ✦. Entrá con tu cuenta para usarlas."};
 }
 // Equipa (o saca, con id=null) la croma del guardián `k`. Solo cromas compradas y de ese guardián.
 function cromaEquip(k, id){

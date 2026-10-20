@@ -25,7 +25,7 @@ var SHOP_MODE = "demo";   // "demo" | "live"
 
 Los números de la escala y de la rotación están en `SHOP_LIVE` (mismo archivo): `priceScale` (`set`, `legendario`) y `rotation` (`piecesPerDay`, `windowDays`, `seed`). Los guardados existentes y sus compras no se tocan en ningún modo: lo que ya tenés sigue siendo tuyo y no se reembolsa ni se cobra nada al cambiar.
 
-Las **Brasas ✦ siguen siendo solo apariencia**: no se tocó `js/systems/premium.js`, `server/premium-packs.json`, `js/net/*` ni `server/*`. Las skins (9.000 de oro o ✦ 800) tampoco cambian: son cosméticas y no entregan piezas.
+Las **Brasas ✦ siguen siendo solo apariencia**: no se tocó `js/systems/premium.js`, `server/premium-packs.json`, `js/net/*` ni `server/*`. Las skins (hoy solo ✦ 800; ya no se compran con oro, ver PRECIOS.md) tampoco cambian: son cosméticas y no entregan piezas.
 
 ## 2. Escala de precios y tiempo para comprar
 
@@ -86,7 +86,7 @@ Capturas (844×390 y 667×375, con el reloj fijado a las 18:48 UTC): `docs/ux/ti
 - **Inventario previo:** quien ya compró sets en el demo los conserva; en live las piezas que le falten cuestan lo nuevo.
 - **Frustración:** una pieza concreta tarda hasta 45 días en volver. Se mitiga mostrando cuándo vuelve y con las otras rutas siempre abiertas (skins por oro, piezas por botín, Básicos). Si se quiere una espera menor: subir `piecesPerDay` (a 10 la cota baja a 30 días) o achicar el pool.
 - **Escala sin datos propios:** las cifras de oro por victoria son las de la crítica; hace falta medirlas con una sesión real de Pesadilla/Infierno antes de activar `live`.
-- **Compras de a una:** completar un set (y recibir su apariencia gratis por colección) exige que salgan sus 4 piezas (entre 1 y varias semanas); la skin por oro (9.000) o Brasas sigue siendo la vía directa para el aspecto.
+- **Compras de a una:** completar un set (y recibir su apariencia gratis por colección) exige que salgan sus 4 piezas (entre 1 y varias semanas); la skin por Brasas (✦ 800; ya no por oro) sigue siendo la vía directa para el aspecto.
 - **No cubierto:** regalo inicial, buzón de administración y botín siguen entregando piezas sin pasar por la rotación (a propósito). El modo `live` no está activado en ningún despliegue: la rama deja `demo`.
 
 
