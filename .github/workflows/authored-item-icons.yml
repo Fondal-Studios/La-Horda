@@ -1,0 +1,26 @@
+name: Authored equipment icon identity
+on:
+  pull_request:
+    paths: ['js/ui/quality-five-item-icons.js', 'js/ui/item-icons.js', 'js/ui/pixel-icons.js', 'js/data/**', 'js/systems/quality-five*', 'index.html', 'tools/art/check-pixel-icons.js', 'tools/factory/export-authored-item-icons.js', 'tools/factory/test_authored_item_icons.py', 'art-source/entregas/quality-item-icons-20261020/**', '.github/workflows/authored-item-icons.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pillow
+      - run: node tools/art/check-pixel-icons.js
+      - run: node tools/factory/export-authored-item-icons.js
+      - run: python -m unittest tools/factory/test_authored_item_icons.py
+      - name: Itemization including the formerly failing icon identity check
+        run: |
+          node tools/lib/with-site.js tools/items/t_itemization.js | tee /tmp/authored-itemization.log
+          if grep -E '^FAIL |SUMMARY FAIL' /tmp/authored-itemization.log; then exit 1; fi
+          grep 'SUMMARY OK fails=0' /tmp/authored-itemization.log
