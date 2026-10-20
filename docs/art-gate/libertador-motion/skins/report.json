@@ -1,0 +1,31 @@
+[
+ {
+  "key": "libertador",
+  "champ": "libertador",
+  "skin": null,
+  "role": "guardian",
+  "sheet": "docs/art-gate/libertador-motion/skins/libertador.png",
+  "issues": [
+   {
+    "sev": "WARN",
+    "what": "walk/frente·der: cuadro 1 (46) parece mirar al otro lado (0.134 vs espejo 0.090)"
+   },
+   {
+    "sev": "WARN",
+    "what": "walk/frente·der: cuadro 2 (47) parece mirar al otro lado (0.148 vs espejo 0.112)"
+   },
+   {
+    "sev": "WARN",
+    "what": "walk/espalda·der: cuadro 3 (60) parece mirar al otro lado (0.054 vs espejo 0.033)"
+   }
+  ],
+  "filled": [
+   "attack_left",
+   "cast_left",
+   "hit_down",
+   "hit_side",
+   "hit_left",
+   "hit_up"
+  ]
+ }
+]

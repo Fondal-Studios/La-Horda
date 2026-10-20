@@ -30,7 +30,7 @@ var CHAMP_ART_NORMALIZE = {"tanque":{"front":[1,0],"side":[0.8939,-1.11],"up":[0
 "nigromante@requiem":{"front":[0.9516,-1.05],"side":[0.9516,-1.05],"up":[0.9516,-1.05]},
 "nigromante@nigromante_escarcha":{"front":[1.0727,-0.93],"side":[1.2826,-0.72],"up":[1.1569,-0.84]},
 "nigromante@nigromante_piedra":{"front":[1,-1],"side":[1,-1],"up":[1.0727,-0.93]},
-"libertador":{"front":[1.0172,-2],"side":[0.9365,-2],"up":[0.9365,-2]},
+"libertador":{"front":[0.9516,-2],"side":[0.9077,-2],"up":[0.9219,-2]},
 "libertador@granadero":{"front":[0.9387,-1.06],"side":[0.9672,-1.03],"up":[0.9672,-1.03]},
 "libertador@libertador_escarcha":{"front":[0.9516,-1.05],"side":[0.9365,-1.06],"up":[0.9516,-1.05]},
 "libertador@libertador_ancestral":{"front":[0.9077,-1.09],"side":[0.9219,-1.08],"up":[0.9672,-1.03]},
