@@ -296,6 +296,14 @@ function drawLibertador(h, drawScale, alpha){
   if(h.basicCd>0 && !h.moving && h.smReloadTotal){
     return _smFrame(P, "reload", 1 - h.basicCd/h.smReloadTotal, flip, h, s, alpha);
   }
+  // Solo locomoción de la apariencia original. Los disparos, recarga, bayoneta,
+  // mando, Cabral, caballo y previews de clips nombrados conservan su atlas.
+  const baseKey = sk ? setSkinPackKey(h, "libertador") : "libertador";
+  if(baseKey === "libertador" && !h._codexPack && !h._codexSet &&
+     !(h.attackAnim > 0) && !(h.hurtTimer > 0) &&
+     CHAMP_PACK.libertador_motion && CHAMP_PACK.libertador_motion.ready){
+    return drawChampPack("libertador_motion", h, drawScale, alpha);
+  }
   return drawChampPack("libertador", h, drawScale, alpha);
 }
 function libertadorDrawBuffIcon(h){
