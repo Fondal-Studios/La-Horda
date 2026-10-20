@@ -1,0 +1,34 @@
+[arnés] servidor propio: http://127.0.0.1:42787 (raíz /workspace/scratch/11fec5987a8e/La-Horda-live)
+PASS Q.perfil_nuevo_tiene_quests_normalizado  {"v":1,"dk":"2026-10-20","today":"2026-10-20","nd":3,"nw":3,"titles":["novato","t1_nuevo"],"granted":1,"gold":0,"ach":0,"retro":false}
+PASS Q.pase_nivel1_da_titulo_sin_tocar_el_oro  {"v":1,"dk":"2026-10-20","today":"2026-10-20","nd":3,"nw":3,"titles":["novato","t1_nuevo"],"granted":1,"gold":0,"ach":0,"retro":false}
+PASS Q.diarios_determinísticos_por_fecha  {"same":true,"unique":14,"allThree":true,"noDup":true,"wk":["2026-S39","2026-S39","2026-S39","2026-S39","2026-S39","2026-S39","2026-S39","2026-S40","2026-S40"],"k28":"2026-09-28","k29":"2026-09-29","w27":"2026-S39","w28":"2026-S40","w29":"2026-S40","w30":"2026-S40","back28":true}
+PASS Q.diarios_rotan_y_varían  {"unique":14}
+PASS Q.semana_iso_cambia_el_lunes  {"same":true,"unique":14,"allThree":true,"noDup":true,"wk":["2026-S39","2026-S39","2026-S39","2026-S39","2026-S39","2026-S39","2026-S39","2026-S40","2026-S40"],"k28":"2026-09-28","k29":"2026-09-29","w27":"2026-S39","w28":"2026-S40","w29":"2026-S40","w30":"2026-S40","back28":true}
+PASS Q.cambiar_un_diario_una_vez  {"ok1":true,"ok2":false,"changed":true,"uniq":true}
+PASS Q.victoria_cuenta_estadisticas  {"st":"victory","wins":1,"runs":1,"kills":42,"first":true,"dayDone":true,"gold":1210,"xp":525,"arena":{"runs":1,"wins":1,"best":36,"grade":"C","bestLevel":1},"champ":{"runs":1,"wins":1,"kills":42,"timeMs":0},"sum":"🏆 DESAFÍOS+155 XP de cuentaPase Nv. 3 ▲1 desafío ✔ · 5 logros ✔"}
+PASS Q.logro_primera_sangre_dispara_y_paga  {"st":"victory","wins":1,"runs":1,"kills":42,"first":true,"dayDone":true,"gold":1210,"xp":525,"arena":{"runs":1,"wins":1,"best":36,"grade":"C","bestLevel":1},"champ":{"runs":1,"wins":1,"kills":42,"timeMs":0},"sum":"🏆 DESAFÍOS+155 XP de cuentaPase Nv. 3 ▲1 desafío ✔ · 5 logros ✔"}
+PASS Q.desafio_diario_se_completa_ganando  {"st":"victory","wins":1,"runs":1,"kills":42,"first":true,"dayDone":true,"gold":1210,"xp":525,"arena":{"runs":1,"wins":1,"best":36,"grade":"C","bestLevel":1},"champ":{"runs":1,"wins":1,"kills":42,"timeMs":0},"sum":"🏆 DESAFÍOS+155 XP de cuentaPase Nv. 3 ▲1 desafío ✔ · 5 logros ✔"}
+PASS Q.xp_de_cuenta_y_resumen_en_pantalla  {"st":"victory","wins":1,"runs":1,"kills":42,"first":true,"dayDone":true,"gold":1210,"xp":525,"arena":{"runs":1,"wins":1,"best":36,"grade":"C","bestLevel":1},"champ":{"runs":1,"wins":1,"kills":42,"timeMs":0},"sum":"🏆 DESAFÍOS+155 XP de cuentaPase Nv. 3 ▲1 desafío ✔ · 5 logros ✔"}
+PASS Q.aviso_emergente_en_cola  "LOGRO DESBLOQUEADOPrimera sangre🪙 80"
+PASS Q.logro_salta_en_plena_partida  {"got":true,"playing":true,"rsDelta":390,"goldDelta":390,"losses":1,"kills":1042,"maxRun":1000,"st":"gameover","goldAfter":390}
+PASS Q.oro_de_logro_no_entra_en_el_castigo  {"got":true,"playing":true,"rsDelta":390,"goldDelta":390,"losses":1,"kills":1042,"maxRun":1000,"st":"gameover","goldAfter":390}
+PASS Q.derrota_cierra_la_partida_una_vez  {"got":true,"playing":true,"rsDelta":390,"goldDelta":390,"losses":1,"kills":1042,"maxRun":1000,"st":"gameover","goldAfter":390}
+PASS Q.sin_doble_conteo  {"same":true}
+PASS Q.pase_sube_de_nivel_y_entrega  {"lv0":4,"lv1":12,"granted":12,"gold":450,"expGold":450,"chests":[1,2],"titles":2,"acc":7}
+PASS Q.pase_tope_30_con_premio_final  {"lv":30,"granted":30,"frame":true,"title":true}
+PASS Q.avisos_del_pase_limitados_en_cola  11
+PASS Q.cofre_da_botin_normal_y_gemas  {"items":1,"stash":1,"gems":1,"left":0}
+PASS Q.cooperativo_suma_a_la_cuenta  {"coop":1,"wins":1,"first":true,"win":true,"frame":true,"rev":3,"sumCoop":true}
+PASS Q.persiste_al_recargar  {"snap":{"wins":2,"ach":10,"xp":1004515},"r7":{"wins":2,"ach":10,"xp":1004515,"retro":false}}
+PASS Q.migracion_guardado_viejo_sin_campos  {"v":1,"wins":4,"cleared":4,"ach":["c_first_win","c_arenas3","j_ciudad","j_fortaleza","g_own3","g_own6","g_own_all","r_crystal1"],"gold":1927,"dailyDone":0,"retroMsg":8}
+PASS Q.migracion_desbloquea_lo_ya_hecho_en_silencio  {"v":1,"wins":4,"cleared":4,"ach":["c_first_win","c_arenas3","j_ciudad","j_fortaleza","g_own3","g_own6","g_own_all","r_crystal1"],"gold":1927,"dailyDone":0,"retroMsg":8}
+PASS Q.migracion_paga_logros_retroactivos  1927
+PASS Q.guardado_a_medias_se_completa  {"kills":5,"bc":"object","nd":3,"titles":["veterano","t1_nuevo","coleccionista"],"title":"novato","chests":[2],"frame":"madera"}
+PASS Q.acceso_desde_el_menu  {"hasBtn":true,"st":"quests","tabs":{"desafios":{"cards":6,"tiers":0,"chips":0,"text":861},"logros":{"cards":59,"tiers":0,"chips":8,"text":6559},"pase":{"cards":0,"tiers":30,"chips":0,"text":827},"perfil":{"cards":0,"tiers":0,"chips":5,"text":628}},"small":[],"okT":true,"okF":true,"bad":false,"shown":"Maestro de la Horda","back":"mainmenu"}
+PASS Q.pestañas_renderizan  {"desafios":{"cards":6,"tiers":0,"chips":0,"text":861},"logros":{"cards":59,"tiers":0,"chips":8,"text":6559},"pase":{"cards":0,"tiers":30,"chips":0,"text":827},"perfil":{"cards":0,"tiers":0,"chips":5,"text":628}}
+PASS Q.botones_de_40px  []
+PASS Q.titulo_y_marco_elegibles  {"hasBtn":true,"st":"quests","tabs":{"desafios":{"cards":6,"tiers":0,"chips":0,"text":861},"logros":{"cards":59,"tiers":0,"chips":8,"text":6559},"pase":{"cards":0,"tiers":30,"chips":0,"text":827},"perfil":{"cards":0,"tiers":0,"chips":5,"text":628}},"small":[],"okT":true,"okF":true,"bad":false,"shown":"Maestro de la Horda","back":"mainmenu"}
+PASS Q.volver_al_menu  "mainmenu"
+PASS Q.cofre_se_abre_en_la_pantalla  {"ov":true,"n":2,"gone":true,"left":0}
+PASS Q.sin_errores  []
+OK
