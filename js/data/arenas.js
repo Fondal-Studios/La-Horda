@@ -33,7 +33,9 @@ const ARENA_MODS = {
               // Pesadilla en la Gélida era un muro (0 de 18 victorias con Tanque/Mago/Cazadora a nivel 54, siempre en los niveles 5-7 por el Ángel de Hielo,
               // el Gólem y el Demonio de Hielo y Fuego): solo acá se baja la vida/daño de Pesadilla (difficulty-tiers.js, diffApplyToRun).
               // Segunda pasada (PESADILLA_PAREJA.md): x0,5/0,4/0,7 todavía dejaba 16% (5/32); x0,35/0,3/0,55 -> 70% (28/40).
-              tierMods:{ pesadilla:{ hp:0.35, dmg:0.3, bossDmg:0.55 } } },
+              // DIFICULTAD_GRUPO2.md: con equipo real (lootPath+equipBest) y nivel de llegada, x0,35/0,3/0,55 daba ~94% (era un ajuste hecho con un guardián casi desnudo): x0,75/0,75/0,85 -> ~50%.
+              // Infierno (nunca medido): sin ajuste 0-13%; x0,55/0,55/0,7 -> ~40%.
+              tierMods:{ pesadilla:{ hp:0.7, dmg:0.7, bossDmg:0.8 }, infierno:{ hp:0.55, dmg:0.55, bossDmg:0.7 } } },
   laberinto:{ label:"Laberinto", icon:"🗿", desc:"Arena 07. Muros, sismos y maná escaso. Acá espera el tercer Guardián.", hazardName:"Maldición del Minotauro",
               fireDmgMult:1.0,  iceDmgMult:1.0, enemyDmgPerWave:0.16, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:0.50, abilityDmgMult:1.0, heroDmgMult:0.85, enemyRegenPct:0, hazard:"sismo", hasWalls:true,
@@ -41,7 +43,8 @@ const ARENA_MODS = {
               // (vida y maná, x2.2) y -20% de vida a todo lo que aparece -> ~33% en 40 partidas.
               potionMult:2.2, enemyHpMult:0.8,
               // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste (solo Pesadilla) da 58% (23/40).
-              tierMods:{ pesadilla:{ hp:0.5, dmg:0.4, bossDmg:0.7 } } },
+              // DIFICULTAD_GRUPO2.md: x0,5/0,4/0,7 daba ~100% con equipo real; x0,75 daba 88%: x0,9/0,9/0,85 para ~60% (jefes 0,85 y no 0,95: con 0,95 el daño de jefes de Pesadilla superaba al de Infierno x0,7). Infierno x0,55/0,55/0,7 -> ~50%.
+              tierMods:{ pesadilla:{ hp:0.9, dmg:0.9, bossDmg:0.85 }, infierno:{ hp:0.55, dmg:0.55, bossDmg:0.7 } } },
   infernal: { label:"Arena Infernal",    icon:"🔥", desc:"Arena 10. La dimensión de la Horda. El final del viaje.", hazardName:"Ignición Eterna",
               fireDmgMult:0.8,  iceDmgMult:1.25, enemyDmgPerWave:0.22, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:0.6, heroDmgMult:1.0, enemyRegenPct:0, hazard:"ignicion", hasWalls:false,
@@ -56,7 +59,8 @@ const ARENA_MODS = {
               fireDmgMult:1.15, iceDmgMult:0.9, enemyDmgPerWave:0.15, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.88, enemyRegenPct:0, hazard:"corriente_acuatica", hasWalls:false,
               // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste (solo Pesadilla) da 58% (23/40).
-              tierMods:{ pesadilla:{ hp:0.6, dmg:0.5, bossDmg:0.8 } } },
+              // DIFICULTAD_GRUPO2.md: x0,6/0,5/0,8 daba 100% con equipo real; x0,75/0,75/0,85 -> ~63%. Infierno: x0,65/0,65/0,75 (x0,55 daba 75%).
+              tierMods:{ pesadilla:{ hp:0.75, dmg:0.75, bossDmg:0.85 }, infierno:{ hp:0.65, dmg:0.65, bossDmg:0.75 } } },
   // ARENA III (tercera en la campaña, entre la Acuática y el Hielo). Su peligro no es un hazard de
   // piso sino el MAPA: un recorrido largo por sectores con puentes que se reconfiguran y el Ciclo
   // Mecánico de trampas (js/arenas/fortaleza/). Roster más pesado (élites y subélites desde temprano)

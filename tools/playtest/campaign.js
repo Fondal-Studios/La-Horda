@@ -65,6 +65,21 @@ async function runOne(page, job) {
         window.diffLootFactor = lf0; window.diffItemLevelBonus = lb0;
       }
     }
+    // job.lootPlan = [{arena, tier}, ...]: una victoria por entrada, con el botín de ESA dificultad (Normal -> Pesadilla -> Infierno en orden);
+    // job.skill / job.reaction: perfil del autopiloto (aprendiz .45/650, ocasional .7/400, habitual .9/220; por defecto .85/260)
+    if (job.lootPlan) {
+      const GR = () => { const x = Math.random(); return x < 0.12 ? 'B' : (x < 0.55 ? 'A' : (x < 0.9 ? 'S' : 'S+')); };
+      let pity = {}; save.stash = save.stash || [];
+      const snap = JSON.stringify([save.arenasCleared, save.diffCleared, save.diffSelected]), ca0 = currentArena;
+      save.arenasCleared = save.arenasCleared || {}; for (const k of ARENA_ORDER) save.arenasCleared[k] = true; diffSetSelected('normal');
+      for (const t of DIFF_TIER_ORDER) if (t !== 'normal') for (const k of ARENA_ORDER) save.diffCleared[t][k] = true;
+      for (const st of job.lootPlan) {
+        currentArena = st.arena; diffSetSelected(st.tier);
+        const r = rollLoot({ arena: st.arena, grade: GR(), victory: true, subjefes: 2, owned: ownedDesignIds(), pity, classKey: job.cls }); pity = r.pity;
+        for (const spec of r.items) { const it = materializeLoot(spec, job.cls, st.arena); if (it.rarity === 'comun') continue; save.stash.push(it); collectionRegister(it, true); }
+      }
+      currentArena = ca0; const sn = JSON.parse(snap); save.arenasCleared = sn[0] || {}; save.diffCleared = sn[1]; save.diffSelected = sn[2];
+    }
     if (job.loot) {
       const GR = () => { const x = Math.random(); return x < 0.12 ? 'B' : (x < 0.55 ? 'A' : (x < 0.9 ? 'S' : 'S+')); };
       let pity = {}; save.stash = save.stash || [];
@@ -77,6 +92,7 @@ async function runOne(page, job) {
     if (job.gear) { for (const k in save.champions) if (typeof autoEquipBest === 'function') autoEquipBest(k); }
     // un jugador competente gasta sus puntos de talento (el HUD le sugiere cuál subir)
     if (job.lvl <= 0 && typeof suggestedSkillInvest === 'function') for (let g = 0; g < 60; g++) { const i = suggestedSkillInvest(job.cls); if (i === null || i === undefined || !investTalentPoint(job.cls, i)) break; }
+    if (job.skill) __AP.skill = job.skill; if (job.reaction) __AP.reaction = job.reaction;
     __CP.reset(); __CP.god = !!job.god;
     if (job.arena === 'auto') job.arena = ARENA_ORDER.find(a => !(save.arenasCleared||{})[a]) || 'infernal';
     // job.lootPath = P: el equipo REAL de un jugador que ganó P veces (1 o 2) cada arena anterior a (job.tier, job.arena) en el orden Normal -> Pesadilla -> Infierno

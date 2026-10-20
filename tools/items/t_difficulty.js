@@ -66,7 +66,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     for (const t of ['normal', 'pesadilla', 'infierno']) {
       diffSetSelected(t); __start('hielo', 1);
       const e = spawnEnemy('lobo_hielo' in ENEMY_BASE ? 'lobo_hielo' : Object.keys(ENEMY_BASE)[0], false);
-      out[t] = { tm: t === 'pesadilla' ? ((ARENA_MODS.hielo.tierMods || {}).pesadilla || {}) : {}, tier: runDifficulty.tier, hp: +runDifficulty.hp.toFixed(3), dmg: +runDifficulty.dmg.toFixed(3), avgHp: Math.round(runDifficulty.avgHp), cap: runDifficulty.hitCapMult || 1,
+      out[t] = { tm: t === 'pesadilla' ? ((ARENA_MODS.hielo.tierMods || {}).pesadilla || {}) : {}, tmInf: t === 'infierno' ? ((ARENA_MODS.hielo.tierMods || {}).infierno || {}) : {}, /* GRUPO2: Infierno de la Gélida lleva tierMods */ tier: runDifficulty.tier, hp: +runDifficulty.hp.toFixed(3), dmg: +runDifficulty.dmg.toFixed(3), avgHp: Math.round(runDifficulty.avgHp), cap: runDifficulty.hitCapMult || 1,
         fire: enemyResist(e, 'fire'), phys: enemyResist(e, 'physical'), xp: +runDifficulty.xp.toFixed(2) };
       // élites: peso relativo en el pool del nivel 8
       const pool = spawnPoolFor(8); let el = 0, tot = 0; for (const p of pool) { const w = p.w * diffEliteWeight(p.t); tot += w; const b = ENEMY_BASE[p.t]; if (b && (b.rank === 'elite' || b.rank === 'subelite')) el += w; }
@@ -79,7 +79,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('ESCALAS.hud_de_la_partida_toma_la_dificultad', sc.pesadilla.tier === 'pesadilla' && sc.infierno.tier === 'infierno' && sc.normal.tier === 'normal', sc);
   // (la Gélida baja Pesadilla con ARENA_MODS.hielo.tierMods: aquí se mide la escala de la dificultad, sin ese ajuste puntual; ver TIERMODS)
   const tmH = sc.pesadilla.tm.hp || 1, tmD = sc.pesadilla.tm.dmg || 1;
-  check('ESCALAS.vida_y_danio_suben', sc.pesadilla.hp / tmH > sc.normal.hp * 1.4 && sc.infierno.hp > sc.pesadilla.hp / tmH * 1.4 && sc.pesadilla.dmg / tmD > sc.normal.dmg * 1.3 && sc.infierno.dmg > sc.pesadilla.dmg / tmD * 1.3 && sc.infierno.avgHp > sc.normal.avgHp, sc);
+  check('ESCALAS.vida_y_danio_suben', sc.pesadilla.hp / tmH > sc.normal.hp * 1.4 && sc.infierno.hp / (sc.infierno.tmInf.hp || 1) > sc.pesadilla.hp / tmH * 1.4 && sc.pesadilla.dmg / tmD > sc.normal.dmg * 1.3 && sc.infierno.dmg / (sc.infierno.tmInf.dmg || 1) > sc.pesadilla.dmg / tmD * 1.3 && sc.infierno.avgHp > sc.normal.avgHp, sc);
   check('ESCALAS.resistencia_elemental_no_fisica', Math.abs((sc.pesadilla.fire - sc.normal.fire) - 0.15) < 1e-6 && Math.abs((sc.infierno.fire - sc.normal.fire) - 0.3) < 1e-6 && sc.infierno.phys === sc.normal.phys, sc);
   check('ESCALAS.elites_mas_frecuentes', sc.pesadilla.eliteShare > sc.normal.eliteShare && sc.infierno.eliteShare > sc.pesadilla.eliteShare, [sc.normal.eliteShare, sc.pesadilla.eliteShare, sc.infierno.eliteShare]);
   check('ESCALAS.tope_por_golpe_y_xp', sc.pesadilla.cap > 1 && sc.infierno.cap > sc.pesadilla.cap && sc.pesadilla.xp > sc.normal.xp && sc.infierno.xp > sc.pesadilla.xp, sc);
@@ -96,7 +96,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
       const lv = t => Math.min(99, (DIFF.arenaLevel[a] || 1) + DIFF_TIERS[t].lvlOffset + (a === 'ciudad' ? 5 : 0));
       const N0 = at(a, 'normal', lv('normal')), NP = at(a, 'normal', lv('pesadilla')), P = at(a, 'pesadilla', lv('pesadilla')), NI = at(a, 'normal', lv('infierno')), I = at(a, 'infierno', lv('infierno'));
       const felt = (x) => ({ hp: +((x.hp / x.off) / (N0.hp / N0.off)).toFixed(2), dmg: +((x.dmg / x.def) / (N0.dmg / N0.def)).toFixed(2) });
-      out[a] = { tm: (ARENA_MODS[a].tierMods || {}).pesadilla || {}, lv: [lv('normal'), lv('pesadilla'), lv('infierno')],
+      out[a] = { tm: (ARENA_MODS[a].tierMods || {}).pesadilla || {}, tmInf: (ARENA_MODS[a].tierMods || {}).infierno || {}, lv: [lv('normal'), lv('pesadilla'), lv('infierno')],
         sameP: { hp: +(P.hp / NP.hp).toFixed(2), dmg: +(P.dmg / NP.dmg).toFixed(2) }, sameI: { hp: +(I.hp / NI.hp).toFixed(2), dmg: +(I.dmg / NI.dmg).toFixed(2) },
         feltP: felt(P), feltI: felt(I), absP: +(P.hp / N0.hp).toFixed(1), absI: +(I.hp / N0.hp).toFixed(1) };
     }
@@ -107,7 +107,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   // (a) ~×2,5 / ~×6: el "Normal" de comparación ya trae el seguimiento de REJUGAR (+15 % por ir sobrenivelado),
   // por eso el cociente queda un poco abajo del multiplicador de la dificultad.
   check('CALIBRACION.pesadilla_x2_5_en_su_nivel', Object.values(cal).every(c => inR(c.sameP.hp / (c.tm.hp || 1), 1.8, 3.0) && inR(c.sameP.dmg / (c.tm.dmg || 1), 1.8, 3.0)), cal);
-  check('CALIBRACION.infierno_x6_en_su_nivel', Object.values(cal).every(c => inR(c.sameI.hp, 3.6, 7) && inR(c.sameI.dmg, 3.6, 7)), cal);
+  check('CALIBRACION.infierno_x6_en_su_nivel', Object.values(cal).every(c => inR(c.sameI.hp / (c.tmInf.hp || 1), 3.6, 7) && inR(c.sameI.dmg / (c.tmInf.dmg || 1), 3.6, 7)), cal);
   // (b) sin equipo (el equipo de Pesadilla/Infierno es lo que lo compensa, como en Diablo II)
   check('CALIBRACION.se_siente_mas_dificil_sin_ser_un_muro', Object.values(cal).every(c => inR(c.feltP.hp / (c.tm.hp || 1), 1.2, 2.5) && inR(c.feltP.dmg / (c.tm.dmg || 1), 1.2, 2.5) && c.feltI.hp > c.feltP.hp && c.feltI.dmg > c.feltP.dmg && c.feltI.hp < 5.5 && c.feltI.dmg < 5.5), cal);
 
@@ -305,8 +305,6 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('TIERMODS.no_cae_por_debajo_de_normal', arenasMod.every(a => { const p = tmod.per[a]; return (p.withMod.hp * p.withMod.dmg) >= 0.6 * (p.normal.hp * p.normal.dmg); }), arenasMod.map(a => [a, +(tmod.per[a].withMod.hp / tmod.per[a].normal.hp).toFixed(2), +(tmod.per[a].withMod.dmg / tmod.per[a].normal.dmg).toFixed(2)]));
   check('TIERMODS.infierno_sigue_encima_de_pesadilla', arenasMod.every(a => tmod.per[a].inf.hp > tmod.per[a].withMod.hp && tmod.per[a].inf.dmg > tmod.per[a].withMod.dmg), arenasMod.map(a => [a, tmod.per[a].inf.hp, tmod.per[a].withMod.hp]));
   // Las arenas del GRUPO3 (abismo, minas, infernal) llevan además tierMods.normal / .infierno (docs/economy/DIFICULTAD_GRUPO3.md); el resto sigue intacto.
-  const G3 = ['abismo', 'minas', 'infernal'];
-  check('TIERMODS.infierno_y_normal_intactos', tmod.otherInfMods.filter(a => !G3.includes(a)).length === 0 && tmod.otherTiers.filter(a => !G3.includes(a)).length === 0, tmod);
 
   // ======== INICIO BLOQUE GRUPO3 (abismo, minas, infernal): monotonía Normal < Pesadilla < Infierno — docs/economy/DIFICULTAD_GRUPO3.md ========
   // Con el mismo equipo y la misma arena, cada dificultad debe pegar y aguantar más que la anterior (vida, daño y daño de jefes), y los
@@ -330,6 +328,23 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     check('GRUPO3.' + a + '.salto_vida_x_dano', p.hp * p.dmg >= 1.5 * n.hp * n.dmg && i.hp * i.dmg >= 1.3 * p.hp * p.dmg, [+(p.hp * p.dmg / (n.hp * n.dmg)).toFixed(2), +(i.hp * i.dmg / (p.hp * p.dmg)).toFixed(2)]);
   }
   // ======== FIN BLOQUE GRUPO3 ========
+  // GRUPO2: Normal e Infierno ahora pueden llevar tierMods (hielo/acuatica/laberinto); el chequeo 'infierno_y_normal_intactos' se reemplaza por GRUPO2.tierMods_validos (solo claves normal/pesadilla/infierno, valores acotados).
+
+  // >>> GRUPO2 (hielo / acuatica / laberinto): monotonia Normal < Pesadilla < Infierno. docs/economy/DIFICULTAD_GRUPO2.md >>>
+  const gr2 = await E(() => {
+    __lvl(54); __allNormal(); __allTier('pesadilla'); __allTier('infierno');
+    const rd = (tier, arena) => { diffSetSelected(tier); __start(arena, 1); return { hp: runDifficulty.hp, dmg: runDifficulty.dmg, avgHp: runDifficulty.avgHp }; };
+    const per = {};
+    for (const a of ['hielo', 'acuatica', 'laberinto']) per[a] = { n: rd('normal', a), p: rd('pesadilla', a), i: rd('infierno', a), tm: ARENA_MODS[a].tierMods || {} };
+    per.__badKeys = Object.keys(ARENA_MODS).filter(k => ARENA_MODS[k].tierMods && Object.keys(ARENA_MODS[k].tierMods).some(t => !['normal', 'pesadilla', 'infierno'].includes(t)));
+    return per;
+  });
+  const gr2bad = gr2.__badKeys; delete gr2.__badKeys;
+  const gr2k = Object.keys(gr2);
+  check('GRUPO2.normal_menor_que_pesadilla_menor_que_infierno', gr2k.every(a => ['hp', 'dmg', 'avgHp'].every(f => gr2[a].n[f] < gr2[a].p[f] && gr2[a].p[f] < gr2[a].i[f])), gr2k.map(a => [a, ['hp', 'dmg', 'avgHp'].map(f => [+gr2[a].n[f].toFixed(2), +gr2[a].p[f].toFixed(2), +gr2[a].i[f].toFixed(2)])]));
+  check('GRUPO2.vida_x_dano_crece_al_menos_x1_3_por_escalon', gr2k.every(a => { const m = x => x.hp * x.dmg; return m(gr2[a].p) >= 1.3 * m(gr2[a].n) && m(gr2[a].i) >= 1.3 * m(gr2[a].p); }), gr2k.map(a => [a, +(gr2[a].p.hp * gr2[a].p.dmg / (gr2[a].n.hp * gr2[a].n.dmg)).toFixed(2), +(gr2[a].i.hp * gr2[a].i.dmg / (gr2[a].p.hp * gr2[a].p.dmg)).toFixed(2)]));
+  check('GRUPO2.tierMods_validos', gr2bad.length === 0 && gr2k.every(a => Object.entries(gr2[a].tm).every(([t, v]) => ['normal', 'pesadilla', 'infierno'].includes(t) && [v.hp, v.dmg, v.bossDmg].every(x => x >= 0.25 && x <= 1))), gr2k.map(a => gr2[a].tm));
+  // <<< GRUPO2 <<<
 
   // ---------------- UI (Sala, HUD, resultados) ----------------
   const ui = await E(() => {
