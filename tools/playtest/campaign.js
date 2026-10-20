@@ -50,6 +50,21 @@ async function runOne(page, job) {
     if (job.mods) Object.assign(ARENA_MODS[job.arena], job.mods);
     // job.loot = N: el botín de N victorias de campaña (rollLoot + materializeLoot, como tools/balance/lootsim2.js) para job.cls,
     // repartidas en orden por las arenas; sin esto un guardado de prueba juega a nivel 54 SIN equipo (más duro que un jugador real)
+    // job.lootSeq = ['bosque','fortaleza',...]: una victoria por arena listada, en orden (la campaña real: llegar a la arena N con las N-1 anteriores ganadas);
+    // se combina con job.loot (que reparte N victorias por todas las arenas). job.skill / job.reaction: perfil del autopilot (aprendiz .45/650, ocasional .7/400, habitual .9/220)
+    if (job.skill !== undefined) __AP.skill = job.skill; if (job.reaction !== undefined) __AP.reaction = job.reaction;
+    if (job.lootSeq) {
+      const GR = () => { const x = Math.random(); return x < 0.12 ? 'B' : (x < 0.55 ? 'A' : (x < 0.9 ? 'S' : 'S+')); };
+      let pity = {}; save.stash = save.stash || [];
+      // 'arena@tier' tira ese botín con la rareza/nivel de esa dificultad (la Normal previa de un jugador de Pesadilla no tiene el premio de Pesadilla)
+      const lf0 = window.diffLootFactor, lb0 = window.diffItemLevelBonus;
+      for (const e of job.lootSeq) {
+        const [a, tr] = e.split('@'); if (tr) { window.diffLootFactor = () => DIFF_TIERS[tr].lootFactor; window.diffItemLevelBonus = () => DIFF_TIERS[tr].itemLvl; }
+        const r = rollLoot({ arena: a, grade: GR(), victory: true, subjefes: 2, owned: ownedDesignIds(), pity, classKey: job.cls }); pity = r.pity;
+        for (const spec of r.items) { const it = materializeLoot(spec, job.cls, a); if (it.rarity === 'comun') continue; save.stash.push(it); collectionRegister(it, true); }
+        window.diffLootFactor = lf0; window.diffItemLevelBonus = lb0;
+      }
+    }
     if (job.loot) {
       const GR = () => { const x = Math.random(); return x < 0.12 ? 'B' : (x < 0.55 ? 'A' : (x < 0.9 ? 'S' : 'S+')); };
       let pity = {}; save.stash = save.stash || [];
@@ -115,7 +130,7 @@ async function runOne(page, job) {
   }, [job]);
 }
 (async () => {
-  const browser = await chromium.launch({ args: ['--no-sandbox'] });
+  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
   let page = null, errors = [];
   const fresh = async (seedSave) => {
     if (page) await page.context().close();
@@ -125,16 +140,18 @@ async function runOne(page, job) {
     page = await ctx.newPage(); errors = [];
     page.on('pageerror', e => errors.push(e.message));
     await page.goto(`http://127.0.0.1:${port}/index.html`, { waitUntil: 'load', timeout: 180000 });
-    for (let i = 0; i < 300; i++) { const ok = await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return b && !b.disabled; }); if (ok) break; await sleep(100); }
+    for (let i = 0; i < 1800; i++) { const ok = await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return b && !b.disabled && typeof save !== 'undefined' && typeof duoInitRun !== 'undefined' && typeof stashItems !== 'undefined' && typeof SET_SKINS !== 'undefined' && typeof ENEMY_BASE !== 'undefined'; }).catch(() => false); if (ok) break; await sleep(100); } // bajo carga del host los scripts tardan: esperar a que estén todos
     await page.addScriptTag({ path: path.join(__dirname, 'autopilot.js') });
     await page.evaluate(require('../fortaleza/sim-helpers.js'));
     await page.evaluate(require('../balance/real-loot.js'));
     await page.evaluate(HOOKS);
   };
   for (const job of jobs) {
-    if (!job.keep) await fresh(job.empty ? 'empty' : null);
+    if (!job.keep) { for (let tr = 0; tr < 5; tr++) { try { await fresh(job.empty ? 'empty' : null); break; } catch (e) { console.log('fresh fallo (' + tr + '): ' + String(e).slice(0, 80)); await sleep(8000); } } } // el host compartido a veces tira la pestaña al cargar
     const t0 = Date.now();
-    let r; try { r = await runOne(page, job); } catch (e) { r = { tag: job.tag, cls: job.cls, arena: job.arena, crash: String(e).slice(0, 300) }; }
+    let r; for (let tr = 0; tr < 3; tr++) { try { r = await runOne(page, job); } catch (e) { r = { tag: job.tag, cls: job.cls, arena: job.arena, crash: String(e).slice(0, 300) }; }
+      if (!(r.crash && /not defined|crashed|closed/.test(r.crash)) || job.keep) break; // carga incompleta o pestaña caída: reintentar en página nueva
+      for (let t2 = 0; t2 < 5; t2++) { try { await fresh(job.empty ? 'empty' : null); break; } catch (e) { await sleep(8000); } } }
     r.errors = errors.slice(0, 3); r.wall = Math.round((Date.now() - t0) / 1000);
     fs.appendFileSync(outFile, JSON.stringify(r) + '\n');
     console.log(`${r.tag} ${r.cls}/${r.arena} lv${r.lvl} -> ${r.result} L${r.reached} ${r.secs}s boss=${r.bossSecs} err=${r.errors.length} wall=${r.wall}s`);

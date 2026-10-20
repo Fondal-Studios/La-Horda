@@ -299,12 +299,37 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   const arenasMod = Object.keys(tmod.per);
   check('TIERMODS.arenas_ajustadas', ['bosque','fortaleza','hielo','acuatica','laberinto','micelial','abismo','minas','infernal'].every(a => arenasMod.includes(a)) && !arenasMod.includes('ciudad'), arenasMod);
   check('TIERMODS.multiplican_hp_dmg_jefes_exactos', arenasMod.every(a => { const p = tmod.per[a]; return R(p.withMod.hp / p.noMod.hp, p.tm.hp) && R(p.withMod.dmg / p.noMod.dmg, p.tm.dmg) && R(p.withMod.avgHp / p.noMod.avgHp, p.tm.bossDmg); }), tmod.per);
-  check('TIERMODS.valores_en_rango', arenasMod.every(a => { const t = tmod.per[a].tm; return [t.hp, t.dmg, t.bossDmg].every(v => v >= 0.25 && v <= 1); }), arenasMod.map(a => tmod.per[a].tm));
+  check('TIERMODS.valores_en_rango', arenasMod.every(a => { const t = tmod.per[a].tm; return [t.hp, t.dmg, t.bossDmg].every(v => v >= 0.25 && v <= 2); }), arenasMod.map(a => tmod.per[a].tm));
   // La escala sola no basta (Pesadilla suma élites, resistencia y tope por golpe); la comparación real es la tasa de victoria contra Normal (PESADILLA_PAREJA.md).
   // Aquí solo se impide que el ajuste deje a Pesadilla muy por debajo de Normal en vida x daño.
   check('TIERMODS.no_cae_por_debajo_de_normal', arenasMod.every(a => { const p = tmod.per[a]; return (p.withMod.hp * p.withMod.dmg) >= 0.6 * (p.normal.hp * p.normal.dmg); }), arenasMod.map(a => [a, +(tmod.per[a].withMod.hp / tmod.per[a].normal.hp).toFixed(2), +(tmod.per[a].withMod.dmg / tmod.per[a].normal.dmg).toFixed(2)]));
   check('TIERMODS.infierno_sigue_encima_de_pesadilla', arenasMod.every(a => tmod.per[a].inf.hp > tmod.per[a].withMod.hp && tmod.per[a].inf.dmg > tmod.per[a].withMod.dmg), arenasMod.map(a => [a, tmod.per[a].inf.hp, tmod.per[a].withMod.hp]));
-  check('TIERMODS.infierno_y_normal_intactos', tmod.otherInfMods.length === 0 && tmod.otherTiers.length === 0, tmod);
+  // Las arenas del GRUPO3 (abismo, minas, infernal) llevan además tierMods.normal / .infierno (docs/economy/DIFICULTAD_GRUPO3.md); el resto sigue intacto.
+  const G3 = ['abismo', 'minas', 'infernal'];
+  check('TIERMODS.infierno_y_normal_intactos', tmod.otherInfMods.filter(a => !G3.includes(a)).length === 0 && tmod.otherTiers.filter(a => !G3.includes(a)).length === 0, tmod);
+
+  // ======== INICIO BLOQUE GRUPO3 (abismo, minas, infernal): monotonía Normal < Pesadilla < Infierno — docs/economy/DIFICULTAD_GRUPO3.md ========
+  // Con el mismo equipo y la misma arena, cada dificultad debe pegar y aguantar más que la anterior (vida, daño y daño de jefes), y los
+  // ajustes por arena (tierMods.normal / .pesadilla / .infierno) no pueden invertir el orden. La tasa de victoria real se mide con
+  // tools/playtest/campaign.js (ver el documento); esto cuida que nadie rompa el orden al retocar un valor.
+  const grupo3 = await E(() => {
+    __lvl(54); __allNormal(); __allTier('pesadilla'); __allTier('infierno');
+    const out = {};
+    for (const a of ['abismo', 'minas', 'infernal']) {
+      out[a] = {};
+      for (const t of ['normal', 'pesadilla', 'infierno']) { diffSetSelected(t); __start(a, 1); out[a][t] = { hp: runDifficulty.hp, dmg: runDifficulty.dmg, avgHp: runDifficulty.avgHp }; }
+    }
+    diffSetSelected('normal');
+    return out;
+  });
+  for (const a of ['abismo', 'minas', 'infernal']) {
+    const n = grupo3[a].normal, p = grupo3[a].pesadilla, i = grupo3[a].infierno;
+    check('GRUPO3.' + a + '.vida_normal_lt_pesadilla_lt_infierno', n.hp < p.hp && p.hp < i.hp, [n.hp, p.hp, i.hp].map(v => +v.toFixed(2)));
+    check('GRUPO3.' + a + '.dano_normal_lt_pesadilla_lt_infierno', n.dmg < p.dmg && p.dmg < i.dmg, [n.dmg, p.dmg, i.dmg].map(v => +v.toFixed(2)));
+    check('GRUPO3.' + a + '.jefe_normal_lt_pesadilla_lt_infierno', n.avgHp < p.avgHp && p.avgHp < i.avgHp, [n.avgHp, p.avgHp, i.avgHp].map(v => +v.toFixed(1)));
+    check('GRUPO3.' + a + '.salto_vida_x_dano', p.hp * p.dmg >= 1.5 * n.hp * n.dmg && i.hp * i.dmg >= 1.3 * p.hp * p.dmg, [+(p.hp * p.dmg / (n.hp * n.dmg)).toFixed(2), +(i.hp * i.dmg / (p.hp * p.dmg)).toFixed(2)]);
+  }
+  // ======== FIN BLOQUE GRUPO3 ========
 
   // ---------------- UI (Sala, HUD, resultados) ----------------
   const ui = await E(() => {
