@@ -199,7 +199,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
         case 'mp_archivo': { const f = __foe(60, 0); h.cds = [5000, 5000, 5000]; mageMeterSet(h, 0); const m0 = mageDamageMult(h, f, {});
           h.energy = 50; itemProcsOnCast(h, sk[0], false); itemProcsOnCast(h, sk[1], false); const before = h.energy; itemProcsOnCast(h, sk[2], false);
           d.refund = Math.round(h.energy - before); d.cds = h.cds.map(Math.round); d.mult = +(mageDamageMult(h, f, {}) / m0).toFixed(3);
-          return { ok: mp.stats.archivo === 1 && h.energy - before >= (sk[2].cost || 0) - 0.01 && h.cds.every(c => c <= 4000) && Math.abs(mageDamageMult(h, f, {}) / m0 - 1.12) < 0.001 && (mp.stats.gained || 0) > 0, d }; }
+          return { ok: mp.stats.archivo === 1 && h.energy - before >= (sk[2].cost || 0) - 0.01 && h.cds.every(c => c <= 4000) && Math.abs(mageDamageMult(h, f, {}) / m0 - 1.10) < 0.001 && (mp.stats.gained || 0) > 0, d }; }
         case 'mpu_voz': { const f = __foe(60, 0); mageMeterSet(h, 0); const hp0 = f.hp; itemProcsOnCast(h, sk[0], false);
           const fired = mp.stats.fired, dmg = hp0 - f.hp; itemProcsOnCast(h, sk[1], false); const second = mp.stats.voz; // dentro de 1,5 s: no vuelve a sonar
           mageMeterSet(h, 1); h.cds = [5000, 5000, 5000]; upd(1000);

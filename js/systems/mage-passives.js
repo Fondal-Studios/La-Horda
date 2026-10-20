@@ -364,10 +364,10 @@ function drawMageKitAura(h){
     ctx.beginPath(); ctx.ellipse(h.x, h.y-2, 42, 24, 0, 0, Math.PI*2); ctx.fill(); ctx.globalAlpha = 1;
   }
   for(let i=0;i<n;i++){
-    const a = t*1.7 + i*(Math.PI*2/n), x = Math.round(h.x + Math.cos(a)*30), y = Math.round(h.y - 6 + Math.sin(a)*15);
-    ctx.fillStyle = `rgb(${rgb})`; ctx.fillRect(x-2, y-2, 4, 4);
+    const a = t*1.7 + i*(Math.PI*2/n), x = Math.round(h.x + Math.cos(a)*40), y = Math.round(h.y - 10 + Math.sin(a)*20);
+    ctx.fillStyle = "rgba(10,6,16,0.9)"; ctx.fillRect(x-4, y-4, 8, 8);
+    ctx.fillStyle = `rgb(${rgb})`; ctx.fillRect(x-3, y-3, 6, 6);
     ctx.fillStyle = "#ffffff"; ctx.fillRect(x-1, y-1, 2, 2);
-    ctx.fillStyle = "rgba(10,6,16,0.7)"; ctx.fillRect(x-2, y+2, 4, 1);
   }
   if(h._mpFase){
     ctx.strokeStyle = `rgba(${rgb},0.85)`; ctx.lineWidth = 2; ctx.setLineDash([5, 4]); ctx.lineDashOffset = -animNow/50;
