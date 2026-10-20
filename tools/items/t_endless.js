@@ -10,6 +10,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
 (async () => {
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
   const page = await (await browser.newContext({ viewport: { width: 900, height: 506 } })).newPage();
+  // Endless gameplay is a local suite, not a live room-discovery probe.
+  // Use the same narrow room-list fixture as t_quests; keep all console/page-error checks.
+  let roomRequests = 0;
+  await page.route('**/api/rooms?*', route => { roomRequests++; return route.fulfill({status:200,
+    contentType:'application/json', headers:{'access-control-allow-origin':'*'}, body:JSON.stringify({rooms:[]})}); });
   const errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message + ' ' + (e.stack||'').split('\n').slice(0,3).join(' | ')));
   page.on('console', m => { if (m.type() === 'error' && !/ERR_CERT|fonts\.g|net::|404/.test(m.text())) errors.push('console: ' + m.text().slice(0, 300)); });
@@ -17,6 +22,8 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   await page.goto(`${BASE}/index.html`, { waitUntil: 'load', timeout: 240000 });
   for (let k = 0; k < 300; k++) { if (await page.evaluate(() => !document.getElementById('title-continue-btn').disabled)) break; await sleep(100); }
   const E = (fn, a) => page.evaluate(fn, a);
+  const fixture = await E(async () => { const r = await fetch(netRoomsUrl()); return {ok:r.ok, rooms:(await r.json()).rooms}; });
+  check('END.consulta_de_salas_aislada', roomRequests > 0 && fixture.ok && Array.isArray(fixture.rooms) && fixture.rooms.length === 0);
   await E(() => { loop = function(){};
     for (const k of Object.keys(save.champions)) save.champions[k].unlocked = true;
     window.__prep = () => { save.stash = []; for (const k in save.champions) save.champions[k].equipment = mkEquipment(); selectedClass = 'guerrero'; lobbyAllies = ['tanque','soporte','mago']; };
