@@ -151,7 +151,7 @@ let _shopCatalog = null;
 function shopCatalog(){
   if(_shopCatalog) return _shopCatalog;
   const designed = Object.keys(DESIGNED_ITEMS).map(id=>({key:"d:"+id, kind:"designed", id, cat:shopCategoryOf(DESIGNED_ITEMS[id])}))
-    .filter(e=>e.cat!=="mitico" && e.cat!=="unico" && !DESIGNED_ITEMS[e.id].mythic && DESIGNED_ITEMS[e.id].rarity!=="unico" && DESIGNED_ITEMS[e.id].rarity!=="mitico" && !DESIGNED_ITEMS[e.id].buildPower); // los que cambian la build solo caen
+    .filter(e=>e.cat!=="mitico" && e.cat!=="unico" && !DESIGNED_ITEMS[e.id].mythic && DESIGNED_ITEMS[e.id].rarity!=="unico" && DESIGNED_ITEMS[e.id].rarity!=="mitico" && !DESIGNED_ITEMS[e.id].buildPower && !DESIGNED_ITEMS[e.id].magePower); // los que cambian la build y el Kit de Magos solo caen
   designed.forEach(e=>{ Object.defineProperty(e, "price", {enumerable:true, get:()=>shopPriceOf(e)}); }); // getter: sigue al modo de la tienda
   const base = [];
   for(const type of EQUIP_SLOT_TYPES) for(const noun of (ITEM_NOUNS[type]||[])) base.push({key:"a:"+type+":"+noun, kind:"archetype", type, noun, cat:"base", price:SHOP_PRICES.base.raro});

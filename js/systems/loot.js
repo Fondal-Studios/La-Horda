@@ -142,6 +142,22 @@ function buildLegendAllowed(arena){
 function _rollBuildLegendary(arena, owned){
   return _weightedPick(Object.keys(BUILD_LEGENDARIES), id=>((BUILD_LEGENDARIES[id].arenas||{})[arena] || 1) * (owned && owned.has(id) ? 0.3 : 1));
 }
+// Kit de Magos (js/data/mage-kit.js): desde MAGE_KIT_MIN_ARENA[categoría] de la campaña (siempre en la Horda
+// Infinita y en Pesadilla/Infierno). Pesa más cuando juega un mago; las piezas de una receta empezada, más.
+function mageKitAllowed(cat, arena){
+  if(typeof MAGE_KIT_IDS==="undefined" || !MAGE_KIT_IDS[cat]) return false;
+  if(typeof endlessOn==="function" && endlessOn()) return true;
+  if(typeof diffCurrent==="function" && diffCurrent()!=="normal") return true;
+  const n = typeof campaignNumber==="function" ? campaignNumber(arena || currentArena) : 0;
+  return n===0 || n >= MAGE_KIT_MIN_ARENA[cat];
+}
+function _rollMageKit(cat, classKey, arena, owned, rng){
+  if(!mageKitAllowed(cat, arena)) return null;
+  if((rng ? rng() : Math.random()) >= MAGE_KIT_DROP[cat][typeof isMageClass==="function" && isMageClass(classKey) ? "mago" : "otro"]) return null;
+  const started = new Set();
+  if(cat==="legendario") for(const m in MAGE_KIT_MYTHICS){ const r = MAGE_KIT_MYTHICS[m].recipe; if(r.some(id=>owned.has(id))) r.forEach(id=>started.add(id)); }
+  return _weightedPick(MAGE_KIT_IDS[cat], id=>(((DESIGNED_ITEMS[id].arenas)||{})[arena] || 0.6) * (owned.has(id) ? 0.3 : 1) * (started.has(id) && !owned.has(id) ? RECIPE_MISSING_BIAS : 1));
+}
 function _rollChampionDesigned(classKey, rarity){
   const pool = Object.values(DESIGNED_ITEMS).filter(d=>d.champion && d.rarity===rarity && !d.set && !d.named);
   const champs = [...new Set(pool.map(d=>d.champion))];
@@ -165,12 +181,14 @@ function _materializeLootBase(spec, classKey, arena){
   const owned = ownedDesignIds();
   if(spec.tier==="legendario"){
     if(spec.build || (buildLegendAllowed(arena) && Math.random() < LEGEND_SOURCE_BUILD)){ const id = _rollBuildLegendary(arena, owned); if(id) return makeDesignedItem(id); }
+    { const id = _rollMageKit("legendario", classKey, arena, owned); if(id) return makeDesignedItem(id); }
     const r = Math.random();
     if(r < LEGEND_SOURCE.named){ const id = _rollNamedLegendary(arena, owned); if(id) return makeDesignedItem(id); }
     else if(r < LEGEND_SOURCE.named + LEGEND_SOURCE.champion){ const id = _rollChampionDesigned(classKey, "legendario"); if(id) return makeDesignedItem(id); }
     return makeItem(type, "legendario", classKey, {arena});
   }
   if(spec.tier==="mitico"){
+    { const id = _rollMageKit("mitico", classKey, arena, owned); if(id) return makeDesignedItem(id); }
     if(Math.random() < MYTHIC_SOURCE.recipe){
       const id = _weightedPick(Object.keys(RECIPE_MYTHICS), id=>(RECIPE_MYTHICS[id].arenas||{})[arena] || 0.6);
       if(id) return makeDesignedItem(id);
@@ -179,6 +197,7 @@ function _materializeLootBase(spec, classKey, arena){
     return makeDesignedItem(Object.keys(RECIPE_MYTHICS)[0]);
   }
   if(spec.tier==="unico"){
+    { const id = _rollMageKit("unico", classKey, arena, owned); if(id) return makeDesignedItem(id); }
     const ids = Object.keys(UNIQUE_DESIGNS);
     const byChamp = {}; ids.forEach(id=>{ (byChamp[UNIQUE_DESIGNS[id].champion] = byChamp[UNIQUE_DESIGNS[id].champion]||[]).push(id); });
     const ch = _crossChamp(classKey, Object.keys(byChamp));
