@@ -1,0 +1,28 @@
+name: Soporte frame11 authored candidate
+on:
+  push:
+    branches: ['art-workshop/soporte-frame11-v3-20261019']
+permissions:
+  contents: read
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m pip install numpy pillow scipy opencv-python-headless
+      - run: python -m unittest tools/factory/test_authored_frame.py
+      - run: npm install --no-save playwright@1.61.1
+      - run: npx playwright install --with-deps chromium
+      - run: python 'art-source/entregas/bloques/B001_soporte/revision-frame11-v3/diagnose.py'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: soporte-frame11-v3-diagnostic
+          path: /tmp/soporte-frame11-v3/

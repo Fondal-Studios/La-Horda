@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-19T22:48:51.061391+00:00",
+  "baseUrl": "https://fondalstudios.com/la-horda/jugar/",
+  "scope": "Selected file bytes only; not gameplay, accounts, ownership, live multiplayer or full release certification",
+  "status": "NOT_CONFIRMED",
+  "checks": [
+    {
+      "path": "index.html",
+      "expectedSha256": "77e0a6ce3a388fae5b0024a8317d6acc8de4dd83654cced704ebdb12e5a69adb",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/index.html",
+      "bytes": 58032,
+      "publicSha256": "981538c845bb099fa47c659c82952333a92adec39d40fd1d5d2661ee0cf7585f",
+      "status": "DIFFERENT"
+    },
+    {
+      "path": "js/assets/champion-sprites.js",
+      "expectedSha256": "91acb238b04a801925ded950275518d3af8d8b6eb548c503af463d1f91f47dcb",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/assets/champion-sprites.js",
+      "bytes": 46253,
+      "publicSha256": "0efc9cd0666b86a49caf137a9e48e62f77b21077cc327dea9c44903e15190fca",
+      "status": "DIFFERENT"
+    },
+    {
+      "path": "js/rendering/champion-sprites.js",
+      "expectedSha256": "7f547a8272a1c7b03e2b5a40823308b3493f779520413afa9a654b0f54be18fd",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/rendering/champion-sprites.js",
+      "bytes": 56037,
+      "publicSha256": "d36f10b82e5caa37ea15f3f67e134ad865fdacd91438a51c0dcf3f1177f850ae",
+      "status": "DIFFERENT"
+    },
+    {
+      "path": "js/data/codex-content.js",
+      "expectedSha256": "f36697fcc6d09efb2e5c9dd1512e22011766ab6c7d33c46290a7effc816cd23f",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/data/codex-content.js",
+      "bytes": 89543,
+      "publicSha256": "c6065ef0e2559d995e86475ea2d5ed5976196d5fdfa38cedca57ab21f9226790",
+      "status": "DIFFERENT"
+    },
+    {
+      "path": "assets/sprites/champions/soporte/v3/atlas.png",
+      "expectedSha256": "6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34",
+      "httpStatus": 404,
+      "status": "MISSING"
+    },
+    {
+      "path": "assets/sprites/champions/libertador/v2/death.png",
+      "expectedSha256": "3c142180270cbcf3bd4477433bec65204a78e0ee65c4d15aab3efcd3e411dc7a",
+      "httpStatus": 404,
+      "status": "MISSING"
+    }
+  ],
+  "checkoutRevision": "f8fb7dbfd4802742972db6bd01b942804d88992f",
+  "candidateRoot": "/workspace/scratch/11fec5987a8e/La-Horda-live"
+}

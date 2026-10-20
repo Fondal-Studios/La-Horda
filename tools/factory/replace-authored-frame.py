@@ -42,9 +42,14 @@ def main():
     old = before[y:y+112, x:x+112]
     yy = np.where(old[:, :, 3] > 127)[0]
     height = int(yy.max() - yy.min() + 1)
+    requested = manifest.get('targetHeight')
+    if requested is not None:
+        if type(requested) is not int or not 1 <= requested <= 106:
+            raise ValueError('targetHeight must be an integer from1 to106')
+        height = requested
     width = round(body.width * height / body.height)
     if not 1 <= width <= 110 or height > 106:
-        raise ValueError('Replacement would clip at the existing frame height')
+        raise ValueError('Replacement would clip at the requested frame height')
     body = body.resize((width, height), Image.Resampling.NEAREST)
     cell = Image.new('RGBA', (112, 112))
     cell.paste(body, ((112-width)//2, 107-height))
@@ -61,6 +66,8 @@ def main():
     report = {'status': 'ASSEMBLED_NOT_APPROVED', 'frame': frame, 'retainedFrames': 35,
               'height': height, 'width': width, 'resampling': 'NEAREST',
               'atlasSha256': hashlib.sha256(output.read_bytes()).hexdigest()}
+    if requested is not None:
+        report['requestedHeight'] = requested
     output.with_suffix('.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(report))
 
