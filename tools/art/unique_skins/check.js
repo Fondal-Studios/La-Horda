@@ -15,9 +15,9 @@ const OUT=process.env.SKIN_AUDIT_OUT || '/tmp/horda-skins/check';
   const result=await page.evaluate(()=>{
    const checks=[],check=(name,ok)=>checks.push({name,ok:!!ok});
    const exp=typeof EXPEDITION==='undefined'?{}:EXPEDITION;const added=Object.keys(exp).length;const quality=typeof QUALITY_FIVE_COLLECTION==='undefined'?{}:QUALITY_FIVE_COLLECTION;const qualityIds=Object.keys(quality);
-   const extraIds=['brasa_abisal','eslabon_porcelana','morwen_escarcha'];
-   for(const [id,champ] of [['eslabon_porcelana','eslabon'],['morwen_escarcha','morwen']])check(id+' belongs to its existing champion',CROMA_SKINS[id]?.champ===champ&&CROMA_SKINS[id].appearanceType==='skin');
-   for(const id of ['farolero_guardavia','dariel_luthier'])check(id+' remains outside the shop until its art gate passes',!CROMA_SKINS[id]);
+   const extraIds=['brasa_abisal','eslabon_porcelana','morwen_escarcha','dariel_luthier'];
+   for(const [id,champ] of [['eslabon_porcelana','eslabon'],['morwen_escarcha','morwen'],['dariel_luthier','dariel']])check(id+' belongs to its existing champion',CROMA_SKINS[id]?.champ===champ&&CROMA_SKINS[id].appearanceType==='skin');
+   for(const id of ['farolero_guardavia'])check(id+' remains outside the shop until its art gate passes',!CROMA_SKINS[id]);
    check('additional authored skin belongs to existing Brasa',CROMA_SKINS.brasa_abisal?.champ==='brasa'&&CROMA_SKINS.brasa_abisal.appearanceType==='skin');
    check('legacy, expedition, quality-five and additional catalog entries',cosmeticCatalog().length===32+added*3+qualityIds.length*3+extraIds.length);
    check('legacy, expedition, quality-five and additional authored designs',Object.values(CROMA_SKINS).filter(d=>d.appearanceType==='skin').length===13+added+qualityIds.length+extraIds.length);

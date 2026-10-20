@@ -29,3 +29,7 @@ PR #150 depende de #148. El CI dedicado reproduce y prueba sólo las dos candida
 Actualización GM: el catálogo owner incluye47 entradas previas más Brasa, Garren y Morwen (50). La prueba exige las tres identidades únicas y el total exacto.127 comprobaciones de integración/seguridad PASS. No se cambia código runtime GM.
 
 Comprobación pública14:49 UTC: Fondal y el sitio independiente todavía sirven el catálogo anterior sin las tres skins. El health Fondal responde200 pero informa store=file y persistent=false. No se reinicia ni despliega el servidor. La consulta al relay independiente agotó25s; no se concluye pérdida de datos. Render MCP no tiene workspace seleccionado, por lo que esta sesión no certifica sus despliegues. Ver publication-check.json; los404 son sondas a rutas internas, no evidencia de un fallo de la aplicación pública.
+
+## Continuación20/10: Dáriel
+
+El único fallo nativo23 se redibujó en revision-v3 preservando35 cuadros exactos. La candidata corregida se integra en una rama y repite gates de fábrica, estilo, roster, precios, guardado y host/invitado. Ver dariel_luthier/revision-v3/README.md y runtime/. El rechazo v1/v2 anterior es histórico, no describe el atlas corregido. Farolero sigue fuera de la tienda. Publicación pendiente de verificar separadamente.
