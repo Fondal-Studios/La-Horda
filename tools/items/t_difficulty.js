@@ -344,7 +344,6 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('GRUPO2.vida_x_dano_crece_al_menos_x1_3_por_escalon', gr2k.every(a => { const m = x => x.hp * x.dmg; return m(gr2[a].p) >= 1.3 * m(gr2[a].n) && m(gr2[a].i) >= 1.3 * m(gr2[a].p); }), gr2k.map(a => [a, +(gr2[a].p.hp * gr2[a].p.dmg / (gr2[a].n.hp * gr2[a].n.dmg)).toFixed(2), +(gr2[a].i.hp * gr2[a].i.dmg / (gr2[a].p.hp * gr2[a].p.dmg)).toFixed(2)]));
   check('GRUPO2.tierMods_validos', gr2bad.length === 0 && gr2k.every(a => Object.entries(gr2[a].tm).every(([t, v]) => ['normal', 'pesadilla', 'infierno'].includes(t) && [v.hp, v.dmg, v.bossDmg].every(x => x >= 0.25 && x <= 1))), gr2k.map(a => gr2[a].tm));
   // <<< GRUPO2 <<<
-=======
   // (desde DIFICULTAD_GRUPO1.md Normal e Infierno también pueden llevar tierMods: solo se exige que las claves sean dificultades conocidas y los valores {hp,dmg,bossDmg} sensatos)
   const tmAll = await E(() => ({ bad: Object.keys(ARENA_MODS).filter(k => ARENA_MODS[k].tierMods && Object.entries(ARENA_MODS[k].tierMods).some(([t, m]) => !DIFF_TIERS[t] || ![m.hp, m.dmg, m.bossDmg].every(v => v === undefined || (v >= 0.25 && v <= 4)))) }));
   check('TIERMODS.claves_y_valores_validos', tmAll.bad.length === 0, tmAll);
