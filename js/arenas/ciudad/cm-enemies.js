@@ -475,7 +475,7 @@ function cmAIEspectro(e, dt, tgt, dist){
 /* ---------------- proyectiles propios ---------------- */
 function cmShotsUpdate(dt){
   for(let i=cmS.shots.length-1;i>=0;i--){
-    const s = cmS.shots[i]; s.t += dt;
+    const s = cmS.shots[i]; if(!s) continue; s.t += dt;   // (bossHitHero puede vaciar/reordenar cmS.shots a mitad del bucle)
     s.x += s.vx*dt/1000; s.y += s.vy*dt/1000;
     let hit = false;
     for(const h of heroes){ if(h.alive && Math.hypot(h.x - s.x, h.y - 30 - s.y) < s.r + (h.radius||18)){ bossHitHero(h, s.dmg, {from:null}); hit = true; break; } }

@@ -33,6 +33,9 @@ const HOOKS = () => {
 };
 async function runOne(page, job) {
   return page.evaluate(([job]) => {
+    // job.lvl = 'arena': nivel esperado de la arena (DIFF.arenaLevel + lvlOffset de la dificultad + job.lvlAdd); job.skill/job.reaction: perfil del autopilot (aprendiz .45/650, ocasional .7/400, habitual .9/220)
+    if (job.lvl === 'arena') job.lvl = Math.max(1, (DIFF.arenaLevel[job.arena] || 1) + (job.tier && DIFF_TIERS[job.tier] ? DIFF_TIERS[job.tier].lvlOffset : 0) + (job.lvlAdd || 0));
+    if (job.skill !== undefined) __AP.skill = job.skill; if (job.reaction !== undefined) __AP.reaction = job.reaction;
     if (job.lvl > 0) for (const k in save.champions) { save.champions[k].level = job.lvl; const al = Math.min(10, Math.floor(job.lvl / 3)); save.champions[k].skillMastery.forEach(m => m.alloc = al); save.champions[k].ultMastery.alloc = al; }
     if (job.diff) Object.assign(DIFF, job.diff);
     // job.seed: Math.random determinista (mulberry32) para repetir una partida; el host sigue metiendo ruido de tiempo
@@ -84,7 +87,8 @@ async function runOne(page, job) {
       const GR = () => { const x = Math.random(); return x < 0.12 ? 'B' : (x < 0.55 ? 'A' : (x < 0.9 ? 'S' : 'S+')); };
       let pity = {}; save.stash = save.stash || [];
       for (let v = 0; v < job.loot; v++) {
-        const a = ARENA_ORDER[Math.min(ARENA_ORDER.length - 1, Math.floor(v * ARENA_ORDER.length / job.loot))];
+        // job.lootSeq: la v-ésima victoria fue en la v-ésima arena de la campaña (vuelve a empezar cada 10: Normal, luego Pesadilla...), como un jugador que llegó a esta arena en orden
+        const a = job.lootSeq ? ARENA_ORDER[v % ARENA_ORDER.length] : ARENA_ORDER[Math.min(ARENA_ORDER.length - 1, Math.floor(v * ARENA_ORDER.length / job.loot))];
         const r = rollLoot({ arena: a, grade: GR(), victory: true, subjefes: 2, owned: ownedDesignIds(), pity, classKey: job.cls }); pity = r.pity;
         for (const spec of r.items) { const it = materializeLoot(spec, job.cls, a); if (it.rarity === 'comun') continue; save.stash.push(it); collectionRegister(it, true); }
       }
@@ -146,7 +150,8 @@ async function runOne(page, job) {
   }, [job]);
 }
 (async () => {
-  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
+  const launch = () => chromium.launch({ args: ['--no-sandbox'], executablePath: process.env.CHROMIUM_PATH || undefined });
+  let browser = await launch();
   let page = null, errors = [];
   const fresh = async (seedSave) => {
     if (page) await page.context().close();
@@ -156,14 +161,14 @@ async function runOne(page, job) {
     page = await ctx.newPage(); errors = [];
     page.on('pageerror', e => errors.push(e.message));
     await page.goto(`http://127.0.0.1:${port}/index.html`, { waitUntil: 'load', timeout: 180000 });
-    for (let i = 0; i < 1800; i++) { const ok = await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return b && !b.disabled && typeof save !== 'undefined' && typeof duoInitRun !== 'undefined' && typeof stashItems !== 'undefined' && typeof SET_SKINS !== 'undefined' && typeof ENEMY_BASE !== 'undefined'; }).catch(() => false); if (ok) break; await sleep(100); } // bajo carga del host los scripts tardan: esperar a que estén todos
+    let ready = false; for (let i = 0; i < 1200 && !ready; i++) { ready = await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return !!(b && !b.disabled) && typeof diffSetSelected === 'function' && typeof checkpointOnRunStart === 'function' && typeof vfxResetRun === 'function' && typeof AlphaServices !== 'undefined' && typeof stashItems !== 'undefined' && typeof ENEMY_BASE !== 'undefined'; }).catch(() => false); if (!ready) await sleep(100); } if (!ready) throw new Error('la pagina no termino de cargar');
     await page.addScriptTag({ path: path.join(__dirname, 'autopilot.js') });
     await page.evaluate(require('../fortaleza/sim-helpers.js'));
     await page.evaluate(require('../balance/real-loot.js'));
     await page.evaluate(HOOKS);
   };
   for (const job of jobs) {
-    if (!job.keep) { for (let tr = 0; tr < 5; tr++) { try { await fresh(job.empty ? 'empty' : null); break; } catch (e) { console.log('fresh fallo (' + tr + '): ' + String(e).slice(0, 80)); await sleep(8000); } } } // el host compartido a veces tira la pestaña al cargar
+    if (!job.keep) { let ok = false; for (let t = 0; t < 3 && !ok; t++) { try { await fresh(job.empty ? 'empty' : null); ok = true; } catch (e) { console.log('fresh fallo (' + String(e).slice(0, 60) + '), reintento'); await sleep(3000); try { await browser.close(); } catch (e2) {} try { browser = await launch(); page = null; } catch (e3) {} } } if (!ok) { fs.appendFileSync(outFile, JSON.stringify({ tag: job.tag, cls: job.cls, arena: job.arena, crash: 'carga de pagina fallo 3 veces' }) + '\n'); continue; } }
     const t0 = Date.now();
     let r; for (let tr = 0; tr < 3; tr++) { try { r = await runOne(page, job); } catch (e) { r = { tag: job.tag, cls: job.cls, arena: job.arena, crash: String(e).slice(0, 300) }; }
       if (!(r.crash && /not defined|crashed|closed/.test(r.crash)) || job.keep) break; // carga incompleta o pestaña caída: reintentar en página nueva
