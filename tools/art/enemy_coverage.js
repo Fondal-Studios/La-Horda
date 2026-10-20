@@ -140,9 +140,12 @@ function probeType(x) {
   let calls = [], shapes = 0;
   if (!g.__covPatched) {
     const dI = g.drawImage, fl = g.fill, fr = g.fillRect;
-    g.drawImage = function (img) {
+    g.drawImage = function (img0) {
+      // OJO: no reasignar el parámetro. En modo sloppy `arguments[0]` queda atado a él: si se pisa `img`, el drawImage
+      // real termina dibujando la imagen fuente (otras coordenadas) y los cuerpos prestados salen "vacíos" (0 px)
+      // aunque el juego los dibuje bien (tiburon_joven/tiburon_blanco, donantes de recortes sueltos).
       const a = arguments, t = this.getTransform();
-      let id, kind;
+      let id, kind, img = img0;
       if (img && img._srcImg instanceof HTMLImageElement) img = img._srcImg; // recorte real con contorno horneado (packOutlined)
       if (img instanceof HTMLImageElement) { const s = img.currentSrc || img.src || ''; const i = s.indexOf('assets/'); id = (i >= 0 ? s.slice(i) : s).replace(/\.webp$/, '.png'); kind = 'real'; }
       else if (PROC.has(img)) { id = 'proc:' + PROC.get(img); kind = 'proc'; }

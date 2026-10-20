@@ -4,7 +4,7 @@
 process.env.DATA_PERSISTENT = '1'; // isolated temp directory: only simulates the storage gate in this test
 process.env.MP_WEBHOOK_SECRET = 'test-webhook-secret-32-characters-long';
 process.env.PAYMENTS_ORDER_SECRET = 'test-order-secret-32-characters-long';
-process.env.MP_COLLECTOR_ID = '123456'; process.env.MP_LIVE_MODE = 'false';
+process.env.MP_ENABLED = '1'; process.env.MP_COLLECTOR_ID = '123456'; process.env.MP_LIVE_MODE = 'false';
 const crypto = require('crypto');
 process.env.PORT = '8820'; process.env.DATABASE_URL = ''; process.env.ALLOWED_ORIGINS = 'http://127.0.0.1:8802';
 process.env.PAYMENTS_PROVIDER = 'mercadopago'; process.env.MP_ACCESS_TOKEN = 'TEST-1234567890abcdef-token'; process.env.MP_ARS_PER_USD = '1200';
@@ -20,7 +20,7 @@ async function api(method, p, body, token, extraHeaders = {}){
 }
 (async () => {
   await accounts.ready;
-  const UT = (await api('POST', '/api/register', { user: 'Jugador', pass: 'espada123' })).j.token;
+  const UT = (await api('POST', '/api/register', { user: 'Jugador', pass: 'espada123', email: 'jugador@ejemplo.test' })).j.token;
   const me = (await api('GET', '/api/wallet', undefined, UT)).j;
   const uid = (await api('GET', '/api/me', undefined, UT)).j && (await api('GET', '/api/me', undefined, UT)).j.id;
   const calls = [];
@@ -78,7 +78,8 @@ async function api(method, p, body, token, extraHeaders = {}){
   await bad('otro vendedor rechazado','555551',{...valid,collector_id:999});
   await bad('modo de producción inesperado rechazado','555552',{...valid,live_mode:true});
   await bad('referencia alterada rechazada','555553',{...valid,external_reference:ref.replace(':500:',':5000:')});
-  await bad('pago parcialmente reembolsado rechazado','555554',{...valid,transaction_amount_refunded:1});
+  payDB['555554'] = {...valid,transaction_amount_refunded:1}; const part = await hook('555554');
+  check('devolución parcial no acredita ni revierte (queda para revisión)', part.status === 200 && part.j.ignored === true, part);
   await bad('pago 1% menor rechazado','555555',{...valid,transaction_amount:5928});
   process.env.MP_ARS_PER_USD = '1400';
   const repeatAfterRateChange = await hook('111111');
@@ -99,6 +100,20 @@ async function api(method, p, body, token, extraHeaders = {}){
   check('sin persistencia checkout bloqueado', (await api('POST','/api/wallet/checkout',{pack:'brasas_500'},UT)).status === 503);
   check('sin persistencia webhook pide reintento', (await hook('111111')).status === 503);
   accounts.store.persistent = persistent;
+  // interruptor general: MP_ENABLED apagado corta el cobro aunque todo lo demás esté cargado
+  process.env.MP_ENABLED = '0'; check('MP_ENABLED=0 apaga el checkout', (await api('POST','/api/wallet/checkout',{pack:'brasas_500',expectedPrice:{currency:'ARS',amount:5988}},UT)).status === 501);
+  check('MP_ENABLED=0 apaga el catálogo', (await api('GET','/api/wallet',undefined,UT)).j.payments.enabled === false);
+  process.env.MP_ENABLED = '1';
+  // reembolso total: revierte las Brasas de ESE pago, una sola vez
+  const prevRefund = (await api('GET','/api/wallet',undefined,UT)).j.premium;
+  payDB['111111'] = { ...valid, status:'refunded', transaction_amount_refunded:5988 };
+  const rf1 = await hook('111111'); check('reembolso revierte', rf1.status === 200 && rf1.j.reversed === 500 && (await api('GET','/api/wallet',undefined,UT)).j.premium === prevRefund - 500, rf1);
+  const rf2 = await hook('111111'); check('reembolso repetido no descuenta dos veces', rf2.status === 200 && rf2.j.duplicate === true && (await api('GET','/api/wallet',undefined,UT)).j.premium === prevRefund - 500, rf2);
+  payDB['777777'] = { ...valid, status:'refunded' };
+  const rf3 = await hook('777777'); check('reembolso de un pago nunca acreditado se ignora', rf3.status === 200 && rf3.j.ignored === true, rf3);
+  const noMail = (await api('POST', '/api/register', { user: 'SinMail', pass: 'espada123' })).j.token;
+  const nm = await api('POST','/api/wallet/checkout',{pack:'brasas_500',expectedPrice:{currency:'ARS',amount:5988}},noMail);
+  check('sin correo en la cuenta no se inicia el cobro', nm.status === 403 && nm.j.error === 'NEEDS_EMAIL', nm);
   // sin token configurado: apagado
   process.env.MP_ACCESS_TOKEN = ''; const off = await api('POST', '/api/wallet/checkout', { pack: 'brasas_500', expectedPrice: {currency:'ARS', amount:5988} }, UT); check('sin token: pagos apagados', off.status === 501, off);
   server.close(); console.log(fails ? 'FAIL ' + fails + ' de ' + n : 'PASS Mercado Pago: ' + n + ' checks'); process.exit(fails ? 1 : 0);
