@@ -1,4 +1,6 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 /* POSTGAME de Cristales y Coliseo (solo contra bots). Verifica con el motor real en Chromium:
  *  1. Bloqueo y desbloqueo por campaña: perfil nuevo bloqueado (hub, condición clara, Entrenamiento); guardado que YA completó la
  *     campaña (arenasCleared) abierto sin migrar nada; POSTGAME_GATE="open" abre todo; las salas online (otro rol) no usan progreso.
@@ -16,7 +18,7 @@ let ok=0;const pass=m=>{ok++;console.log('  ok  '+m);};
 (async()=>{
  const PORT=await freePort(),root=path.resolve(__dirname,'../..');
  const srv=spawn('python3',['-m','http.server',String(PORT),'--bind','127.0.0.1'],{cwd:root,stdio:'ignore'});
- for(let i=0;i<80;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+ for(let i=0;i<80;i++){try{if((await fetchReadyOk(`http://127.0.0.1:${PORT}/index.html`)))break;}catch{}await new Promise(r=>setTimeout(r,100));}
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});
  const ctx=await b.newContext({viewport:{width:844,height:390},hasTouch:true});
  await ctx.addInitScript(f=>{try{if(!localStorage.getItem('laHordaSave_v1'))localStorage.setItem('laHordaSave_v1',JSON.stringify(f));}catch(e){}},FIX);

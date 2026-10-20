@@ -1,4 +1,6 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 /* Coliseo (torneo 2v2 de 8 luchadores) en el motor real: torneos completos SIN interfaz (Chromium, reloj virtual).
  * Verifica: el torneo termina con un ganador coherente, los puntos suman lo que se jugó, nadie le pega a su propio equipo,
  * la cuenta regresiva y el fin de duelo protegen a los luchadores, el anillo mata, la cámara espectadora sigue a otro cuando caés,
@@ -8,7 +10,7 @@ const {chromium}=require('playwright');const {spawn}=require('node:child_process
 const N=Number(process.argv[2])||3,SECS=Number(process.argv[3])||900,PORT=+process.env.LH_PORT||8905,CHAMPS=process.argv.slice(4);
 const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__dirname,'../..'),stdio:'ignore'});
 (async()=>{
- for(let i=0;i<60;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+ for(let i=0;i<60;i++){try{if((await fetchReadyOk(`http://127.0.0.1:${PORT}/index.html`)))break;}catch{}await new Promise(r=>setTimeout(r,100));}
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});const context=await b.newContext();
  for(let g=0;g<N;g++){
   const p=await context.newPage({viewport:{width:844,height:390}}),errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push('console:'+m.text());});

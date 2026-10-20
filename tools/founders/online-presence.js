@@ -1,4 +1,6 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 // Founder presence on the REAL relay with three browsers (NanoGM host, FacuGM, plain guest):
 // verified identity, lobby banners (single and grouped), FOUNDER badge, arena banner, cosmetic meeting,
 // grant-only champion gating, and no repeated banner on reconnect.
@@ -9,7 +11,7 @@ const WEB=8831,RELAY=8832,API='http://127.0.0.1:'+RELAY;let browser,servers=[];
  const {create,hashPassword}=require('../../server/accounts');const seed=create({dataDir:dir,databaseUrl:'',adminUsers:'',log:()=>{}});await seed.ready;
  for(const u of ['NanoGM','FacuGM','Invitado1'])await seed.store.createUser({user:u,userKey:u.toLowerCase(),name:u,createdAt:Date.now(),lastLogin:Date.now(),passHash:await hashPassword('fixture-password')});await seed.close();
  servers=[spawn('python3',['-m','http.server',String(WEB)],{cwd:ROOT,stdio:'ignore'}),spawn(process.execPath,['server/relay.js'],{cwd:ROOT,env:{...process.env,PORT:String(RELAY),DATABASE_URL:'',DATA_DIR:dir,ALLOWED_ORIGINS:'http://127.0.0.1:'+WEB,FOUNDERS_JSON:JSON.stringify({nano:{account:'NanoGM'},facu:{account:'FacuGM'}})},stdio:'ignore'})];
- for(let i=0;i<40;i++){try{if((await fetch(API+'/api/health')).ok)break;}catch(e){}await new Promise(r=>setTimeout(r,250));}
+ for(let i=0;i<40;i++){try{if((await fetchReadyOk(API+'/api/health')))break;}catch(e){}await new Promise(r=>setTimeout(r,250));}
  const token=async u=>(await (await fetch(API+'/api/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({user:u,pass:'fixture-password'})})).json()).token;
  browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});const errors=[],checks=[],check=(name,ok,details)=>{checks.push({name,ok:!!ok,...(details!==undefined?{details}:{})});};
  async function client(user,champ){

@@ -19,7 +19,10 @@ async function client(b,name){
 const ev=(c,fn,a)=>c.page.evaluate(fn,a);
 async function waitFor(c,fn,a,ms){for(let k=0;k<(ms||20000)/150;k++){if(await ev(c,fn,a))return true;await sleep(150);}return false;}
 (async()=>{
- for(let i=0;i<60;i++){try{if((await fetch(SITE+'/index.html')).ok&&(await fetch(`http://127.0.0.1:${RELAYP}/health`)).ok)break;}catch{}await sleep(100);}
+ // Drain readiness bodies before reusing/closing sockets (Node22/undici).
+ // The static index is large; leaving it unread can trip Parser.finish's paused assertion.
+ async function ready(url){for(let i=0;i<60;i++){try{const response=await fetch(url,{signal:AbortSignal.timeout(2000)});await response.arrayBuffer();if(response.ok)return;}catch{}await sleep(100);}throw Error('Server not ready '+url);}
+ await ready(SITE+'/index.html');await ready(`http://127.0.0.1:${RELAYP}/health`);
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox','--autoplay-policy=no-user-gesture-required']});
  const A=await client(b,'Ana'),B=await client(b,'Beto');
  const realA=await ev(A,()=>localStorage.getItem('laHordaSave_v1'));

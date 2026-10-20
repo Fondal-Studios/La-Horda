@@ -1,4 +1,6 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 /* Capturas del POSTGAME (docs/modes/postgame/): hub bloqueado y desbloqueado, aviso de bloqueo, lobby y pantallas de resultado con recompensas
  * (Cristales y Coliseo) a 844×390 y 667×375. Servidor propio en un puerto libre.
  * Uso: node tools/lanes/postgame-shots.js [carpeta=docs/modes/postgame] */
@@ -10,7 +12,7 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
  const PORT=await freePort(),root=path.resolve(__dirname,'../..');
  const srv=spawn('python3',['-m','http.server',String(PORT),'--bind','127.0.0.1'],{cwd:root,stdio:'ignore'});
  console.log('servidor propio en',PORT,'pid',srv.pid,'cwd',fs.readlinkSync('/proc/'+srv.pid+'/cwd'));
- for(let i=0;i<80;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+ for(let i=0;i<80;i++){try{if((await fetchReadyOk(`http://127.0.0.1:${PORT}/index.html`)))break;}catch{}await new Promise(r=>setTimeout(r,100));}
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});
  for(const [w,h] of [[844,390],[667,375]]){
   const ctx=await b.newContext({viewport:{width:w,height:h},hasTouch:true});

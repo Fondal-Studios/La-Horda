@@ -1,4 +1,6 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 /* Hub: en celular horizontal (alto <= 520) TODO entra en UNA pantalla sin deslizar (Jugar, modos competitivos, Códice, Guardianes,
  * Tienda, Multijugador) con la cabecera opaca; en pantallas altas sigue deslizándose. Etiquetas legibles: ningún texto visible
  * menor a 14 px ni botones menores a 44 px de alto. Viewports de celular horizontal y escritorio. */
@@ -6,7 +8,7 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
 const {spawn}=require('node:child_process'),path=require('node:path');
 const PORT=Number(process.env.HUB_PORT||8891),BASE=process.env.SITE||('http://127.0.0.1:'+PORT);
 const srv=process.env.SITE?null:spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__dirname,'../..'),stdio:'ignore'});
-const wait=async()=>{for(let i=0;i<50;i++){try{if((await fetch(BASE+'/index.html')).ok)return;}catch{}await new Promise(r=>setTimeout(r,100));}throw Error('servidor no listo');};
+const wait=async()=>{for(let i=0;i<50;i++){try{if((await fetchReadyOk(BASE+'/index.html')))return;}catch{}await new Promise(r=>setTimeout(r,100));}throw Error('servidor no listo');};
 (async()=>{await wait();const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});
  for(const [w,h] of [[844,390],[667,375],[932,430],[1280,720]]){
   const ctx=await b.newContext({viewport:{width:w,height:h}});await ctx.addInitScript(()=>{try{localStorage.setItem('laHordaSave_v1',JSON.stringify({tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'vale',playtestV1Bonus:true,campaignResetV1:true,campaignResetV2:true}));}catch(e){}});

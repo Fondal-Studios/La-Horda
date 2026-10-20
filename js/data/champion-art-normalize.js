@@ -47,8 +47,10 @@ var CHAMP_ART_NORMALIZE = {"tanque":{"front":[1,0],"side":[0.8939,-1.11],"up":[0
 "brasa@brasa_abisal":{"front":[0.9077,-2],"side":[0.9516,-2],"up":[0.9365,-2]},
 "eslabon":{"front":[0.9833,-1.02],"side":[0.9833,-1.02],"up":[0.9672,-1.03]},
 "eslabon@juramento_roto":{"front":[1,-1],"side":[1,-1],"up":[0.9516,-1.05]},
+"eslabon@eslabon_porcelana":{"front":[1.0536,-2],"side":[1.0172,-2],"up":[1,-2]},
 "morwen":{"front":[0.9516,-1.05],"side":[0.8676,-1.13],"up":[0.8939,-1.11]},
 "morwen@vidrio_negro":{"front":[0.9516,-1.05],"side":[0.8676,-1.13],"up":[0.9219,-1.08]},
+"morwen@morwen_escarcha":{"front":[1.0572,-2],"side":[0.9365,-2],"up":[0.9672,-2]},
 "farolero":{"front":[1.0351,-0.96],"side":[1.0351,-0.96],"up":[1.2041,-0.8]},
 "farolero@lumbre_persistente":{"front":[1.0536,-0.95],"side":[1.0351,-0.96],"up":[1.1132,-0.89]},
 "iria":{"front":[0.9516,-1.05],"side":[0.9365,-1.06],"up":[1.0351,-0.96]},
@@ -71,6 +73,7 @@ var CHAMP_ART_NORMALIZE = {"tanque":{"front":[1,0],"side":[0.8939,-1.11],"up":[0
 "maura@maura_croma":{"front":[1.0052,-1.05],"side":[0.9516,-1.05],"up":[0.9672,-1.03]},
 "dariel":{"front":[0.9219,-1.08],"side":[0.9516,-1.05],"up":[0.9516,-1.05]},
 "dariel@exp_dariel":{"front":[0.9833,-1.02],"side":[1.0172,-0.98],"up":[1.0536,-0.95]},
+"dariel@dariel_luthier":{"front":[1,-2],"side":[0.9516,-2],"up":[0.9249,-2]},
 "dariel@dariel_skin":{"front":[0.9365,-1.06],"side":[1,-1],"up":[1.0536,-0.95]},
 "dariel@dariel_croma":{"front":[0.9219,-1.08],"side":[0.9516,-1.05],"up":[0.9516,-1.05]},
 "orsa":{"front":[1.0172,-0.98],"side":[1,-1],"up":[0.9672,-1.03]},
@@ -137,6 +140,4 @@ var CHAMP_ART_NORMALIZE = {"tanque":{"front":[1,0],"side":[0.8939,-1.11],"up":[0
 "aelith":{"front":[1.0536,-2],"side":[0.9672,-2],"up":[1.0536,-2]},
 "aelith@quality_aelith":{"front":[1.1132,-2],"side":[0.9365,-2],"up":[1,-2]},
 "aelith@aelith_alt1":{"front":[1.0172,-2],"side":[0.9365,-2.94],"up":[1,-2]},
-"aelith@aelith_croma":{"front":[1.0536,-2],"side":[0.9672,-2],"up":[1.0536,-2]},
-"eslabon@eslabon_porcelana":{"front":[1.0536,-2],"side":[1.0172,-2],"up":[1,-2]},
-"morwen@morwen_escarcha":{"front":[1.0572,-2],"side":[0.9365,-2],"up":[0.9672,-2]}};
+"aelith@aelith_croma":{"front":[1.0536,-2],"side":[0.9672,-2],"up":[1.0536,-2]}};

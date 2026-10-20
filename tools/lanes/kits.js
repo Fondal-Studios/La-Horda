@@ -1,4 +1,6 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 /* Guerra de Cristales (motor real): humo de los 38 campeones. Cada uno juega 45 s de partida real con todas sus habilidades,
  * definitiva y ataque básico forzados en cada recarga, en el centro del mapa entre las dos hordas y frente a un rival (PvP).
  * Verifica: sin excepciones, sin valores NaN, sin fuego amigo de la horda propia, nadie sale del mapa y el campeón realmente peleó (bajas > 0).
@@ -7,7 +9,7 @@ const {chromium}=require('playwright');const {spawn}=require('node:child_process
 const SECS=Number(process.argv[2])||45,ONLY=process.argv.slice(3),PORT=+process.env.LH_PORT||8897;
 const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__dirname,'../..'),stdio:'ignore'});
 (async()=>{
- for(let i=0;i<60;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+ for(let i=0;i<60;i++){try{if((await fetchReadyOk(`http://127.0.0.1:${PORT}/index.html`)))break;}catch{}await new Promise(r=>setTimeout(r,100));}
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});const context=await b.newContext();
  const page0=await context.newPage();await page0.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});await page0.waitForFunction(()=>typeof lanesStart==='function');
  const roster=await page0.evaluate(()=>Object.keys(CLASSES).filter(k=>championBotEligible(k)));await page0.close();

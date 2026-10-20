@@ -1,4 +1,6 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 // Actual host/guest transport and renderer, disposable local relay only.
 const {chromium}=require('playwright'),{spawn}=require('node:child_process'),fs=require('node:fs'),os=require('node:os'),path=require('node:path');
 const ID=process.env.COSMETIC_ID||'brasa_abisal',SPEC=ID==='brasa_abisal'?{champ:'brasa'}:require('./cosmetics-20261019.json').find(d=>d.id===ID);
@@ -11,7 +13,7 @@ const check=(name,ok,detail)=>checks.push({name,ok:!!ok,detail});
 let browser;
 (async()=>{try{
  servers.push(spawn('python3',['-m','http.server','8875','--bind','127.0.0.1'],{cwd:ROOT,stdio:'ignore'}),spawn('node',['server/relay.js'],{cwd:ROOT,env:{...process.env,PORT:'8876',DATA_DIR:dataDir,DATABASE_URL:'',ADMIN_USERS:'',PAYMENTS_PROVIDER:''},stdio:'ignore'}));
- let ready=false;for(let i=0;i<100;i++){try{if((await fetch('http://127.0.0.1:8876/api/health')).ok){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,100));}if(!ready)throw Error('Local relay unavailable');
+ let ready=false;for(let i=0;i<100;i++){try{if((await fetchReadyOk('http://127.0.0.1:8876/api/health'))){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,100));}if(!ready)throw Error('Local relay unavailable');
  const sku=require('../../server/wallet').skinCatalog()[ID];
  check('server catalog recognizes authored cosmetic',sku?.champion===CHAMP&&sku.tier==='autor',sku);
  browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||chromium.executablePath(),args:['--no-sandbox']});

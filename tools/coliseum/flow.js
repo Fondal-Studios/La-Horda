@@ -1,4 +1,6 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 /* Coliseo (motor real) por la interfaz: hub → Coliseo → elegir campeón → torneo con el HUD real (mismos botones de habilidad) →
  * marcador de cuatro equipos y mapa de los dos fosos legibles → si caés, barra de espectador (cámara a otro luchador, "otro duelo") →
  * resultado con la tabla → revancha → abandonar → vuelta al hub con el guardado intacto. */
@@ -7,7 +9,7 @@ const PORT=+process.env.LH_PORT||8906,root=path.resolve(__dirname,'../..');
 const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:root,stdio:'ignore'});
 const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'vale',playtestV1Bonus:true,campaignResetV1:true,campaignResetV2:true,arenasCleared:{infernal:true}};
 (async()=>{
- for(let i=0;i<60;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+ for(let i=0;i<60;i++){try{if((await fetchReadyOk(`http://127.0.0.1:${PORT}/index.html`)))break;}catch{}await new Promise(r=>setTimeout(r,100));}
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});
  for(const [w,h] of [[844,390],[667,375]]){
   const ctx=await b.newContext({viewport:{width:w,height:h},hasTouch:true});await ctx.addInitScript(f=>{try{localStorage.setItem('laHordaSave_v1',JSON.stringify(f));}catch(e){}},FIX);
