@@ -247,6 +247,27 @@ function routes(ctx){
     if(payments.enabled() && !store().persistent) fail("PAYMENTS_STORAGE_UNSAFE", 503);
     return payments.checkout({ user, pack: body.pack, bought: bought(user.id), expectedPrice: body.expectedPrice });
   });
+  // Reembolso total o contracargo de un pago ya acreditado: se descuentan las Brasas de ESE pago, una sola vez (ref rev:<pago>).
+  // Si la cuenta ya gastó parte, se descuenta lo que queda (el saldo nunca es negativo) y la diferencia queda anotada en el libro
+  // como "reversal_shortfall" para que el dueño decida (ver docs/commercial/MERCADO_PAGO_PASO_A_PASO.md). Nunca se quitan skins solas.
+  const reversePurchase = (credit) => withLock("buy:" + credit.userId, async () => {
+    const orig = (await store().walletLedger(credit.userId, 100000)).find(e => e.reason === "purchase:" + credit.pack + ":" + credit.paymentId);
+    if(!orig){ log("PAYMENT_REVERSAL_NOT_CREDITED", { paymentId: credit.paymentId, status: credit.status }); return { ok: true, ignored: true, reason: "NOT_CREDITED" }; }
+    const tag = credit.status + ":" + credit.pack + ":" + credit.paymentId;
+    let r = null, took = 0;
+    for(let i = 0; i < 4; i++){
+      const have = (await store().walletGet(credit.userId)).premium;
+      took = Math.min(have, orig.delta);
+      r = await store().walletApply({ userId: credit.userId, delta: -took, reason: "reversal:" + tag, ref: "rev:" + credit.paymentId, actor: null, at: now() });
+      if(!r.insufficient) break;
+    }
+    if(r.duplicate) return { ok: true, duplicate: true };
+    if(r.insufficient) throw Object.assign(new Error("PAYMENTS_UNAVAILABLE"), { status: 503 });
+    const short = orig.delta - took;
+    if(short > 0) await store().walletApply({ userId: credit.userId, delta: 0, reason: "reversal_shortfall:" + short + ":" + tag, ref: "revshort:" + credit.paymentId, actor: null, at: now() });
+    log("WALLET_REVERSAL", { user: credit.userId, pack: credit.pack, paymentId: credit.paymentId, status: credit.status, reversed: took, shortfall: short });
+    return { ok: true, reversed: took, shortfall: short };
+  });
   result["POST /api/payments/webhook"] = async (req, res) => {
     try{
       const raw = await new Promise((ok, ko) => { let b = ""; req.on("data", c => { b += c; if(b.length > 65536){ ko(Object.assign(new Error("TOO_BIG"), { code: "TOO_BIG" })); req.destroy(); } }); req.on("end", () => ok(b)); req.on("error", ko); });
@@ -254,6 +275,7 @@ function routes(ctx){
       if(!credit) return err(req, res, 400, "BAD_WEBHOOK", "Webhook no verificado.");
       if(credit.ignored){ log("PAYMENT_STATUS_REVIEW", { paymentId: credit.paymentId, status: credit.status }); return send(req, res, 200, { ok: true, ignored: true }); }
       if(!store().persistent) return err(req, res, 503, "PAYMENTS_STORAGE_UNSAFE", "Almacenamiento no persistente.");
+      if(credit.reverse) return send(req, res, 200, await reversePurchase(credit));
       if(!(await store().getUser(credit.userId))) return err(req, res, 404, "UNKNOWN_USER", "Cuenta inexistente.");
       // paquete de una sola vez: la referencia es por cuenta (once:<pack>:<userId>), así un segundo pago nunca acredita
       const r = await store().walletApply({ userId: credit.userId, delta: credit.premium, reason: "purchase:" + credit.pack + ":" + credit.paymentId, ref: payments.creditRef(credit), actor: null, at: now() });
