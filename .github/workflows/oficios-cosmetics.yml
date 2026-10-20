@@ -1,7 +1,7 @@
 name: Oficios authored cosmetics
 on:
   pull_request:
-    paths: ['assets/sprites/champions/dariel/skins/dariel_luthier/**', 'assets/sprites/champions/eslabon/skins/eslabon_porcelana/**', 'assets/sprites/champions/morwen/skins/morwen_escarcha/**', 'art-source/entregas/cosmetics-20261019/**', 'tools/art/cosmetics-20261019.json', 'js/assets/quality-five-skins-meta.js', 'js/data/champion-art-normalize.js', 'tools/art/test-brasa-abyssal*.js', 'tools/art/unique_skins/check.js', '.github/workflows/oficios-cosmetics.yml']
+    paths: ['assets/sprites/champions/farolero/skins/farolero_guardavia/**', 'assets/sprites/champions/dariel/skins/dariel_luthier/**', 'assets/sprites/champions/eslabon/skins/eslabon_porcelana/**', 'assets/sprites/champions/morwen/skins/morwen_escarcha/**', 'art-source/entregas/cosmetics-20261019/**', 'tools/art/cosmetics-20261019.json', 'js/assets/quality-five-skins-meta.js', 'js/data/champion-art-normalize.js', 'tools/art/test-brasa-abyssal*.js', 'tools/art/unique_skins/check.js', '.github/workflows/oficios-cosmetics.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -30,6 +30,8 @@ jobs:
           done
           python art-source/entregas/cosmetics-20261019/dariel_luthier/revision-v3/reproduce.py
           python tools/art/painter/style_gate.py --strict assets/sprites/champions/dariel/skins/dariel_luthier/atlas.png
+          python art-source/entregas/cosmetics-20261019/farolero_guardavia/revision-v6/reproduce.py
+          python tools/art/painter/style_gate.py --strict assets/sprites/champions/farolero/skins/farolero_guardavia/atlas.png
           node tools/factory/cli.js gate reference
           node tools/factory/cli.js gate talents
       - name: Real cosmetic and roster regression
@@ -44,7 +46,7 @@ jobs:
           node tools/art/roster_gate.js
           node tools/art/unique_skins/check.js
           node tools/collection/shop-pricing-browser.js
-          for skin in eslabon_porcelana morwen_escarcha dariel_luthier; do
+          for skin in eslabon_porcelana morwen_escarcha dariel_luthier farolero_guardavia; do
             COSMETIC_ID="$skin" node tools/art/test-brasa-abyssal.js
             COSMETIC_ID="$skin" node tools/art/test-brasa-abyssal-online.js
           done
