@@ -17,7 +17,15 @@ const mpToken = () => (process.env.MP_ACCESS_TOKEN || "").trim();
 const mpRate = () => Number(process.env.MP_ARS_PER_USD || 0);
 const mpWebhookSecret = () => process.env.MP_WEBHOOK_SECRET || "";
 const orderSecret = () => process.env.PAYMENTS_ORDER_SECRET || "";
-const mpEnabled = () => mpWebhookSecret().length >= 32 && orderSecret().length >= 32 && /^\d+$/.test(process.env.MP_COLLECTOR_ID || "") && /^(true|false)$/.test(process.env.MP_LIVE_MODE || "") && provider() === "mercadopago" && mpToken().length >= 16 && Number.isFinite(mpRate()) && mpRate() > 0 && /^https:\/\//.test(process.env.PAYMENTS_NOTIFY_URL || "");
+// INTERRUPTOR GENERAL: MP_ENABLED=1 prende el cobro; cualquier otro valor (o vacío) lo apaga al instante, aunque el resto esté cargado.
+const mpSwitch = () => /^(1|true)$/i.test((process.env.MP_ENABLED || "").trim());
+// Modo: MP_MODE=sandbox|live (preferido). Si no está, se respeta el MP_LIVE_MODE=true|false de siempre.
+const mpModeValid = () => /^(sandbox|live)$/.test((process.env.MP_MODE || "").trim().toLowerCase()) || (!(process.env.MP_MODE || "").trim() && /^(true|false)$/.test(process.env.MP_LIVE_MODE || ""));
+const mpLive = () => (process.env.MP_MODE || "").trim() ? process.env.MP_MODE.trim().toLowerCase() === "live" : process.env.MP_LIVE_MODE === "true";
+// Base de la API: siempre la de Mercado Pago. MP_API_BASE solo se acepta en sandbox y apuntando a esta misma máquina (ensayo con servidor falso).
+const MP_API = "https://api.mercadopago.com";
+const mpApi = () => { const b = (process.env.MP_API_BASE || "").trim().replace(/\/+$/, ""); return !mpLive() && /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?$/.test(b) ? b : MP_API; };
+const mpEnabled = () => mpSwitch() && mpWebhookSecret().length >= 32 && orderSecret().length >= 32 && /^\d+$/.test(process.env.MP_COLLECTOR_ID || "") && mpModeValid() && provider() === "mercadopago" && mpToken().length >= 16 && Number.isFinite(mpRate()) && mpRate() > 0 && /^https:\/\//.test(process.env.PAYMENTS_NOTIFY_URL || "");
 const hmacEnabled = () => provider() === "hmac" && secret().length >= 16;
 const enabled = () => hmacEnabled() || mpEnabled();
 const mpAmount = p => Math.ceil(Math.round(p.price.amount * 100) * mpRate() / 100);
@@ -77,6 +85,8 @@ async function checkout({ user, pack, bought, expectedPrice }){
   const p = offered().find(p => p.id === pack); if(!p) fail("BAD_PACK", 400, "Ese paquete no está a la venta.");
   if(p.once && bought && await bought(p.id)) fail("ALREADY_BOUGHT", 409, "El Pack de bienvenida ya es tuyo: se compra una sola vez.");
   if(mpEnabled()) {
+    if(!/^(0|false)$/i.test((process.env.MP_REQUIRE_EMAIL || "").trim()) && !(user && user.email)) fail("NEEDS_EMAIL", 403, "Para comprar necesitás un correo cargado en tu cuenta. Lo usamos para el comprobante y el soporte.");
+    if(!checkoutAllowed(user.id)) fail("CHECKOUT_RATE_LIMIT", 429, "Hiciste muchos intentos de pago seguidos. Esperá unos minutos y probá de nuevo.");
     const price = displayPrice(p);
     if(!expectedPrice || expectedPrice.currency !== price.currency || expectedPrice.amount !== price.amount)
       fail("PRICE_CHANGED", 409, "El precio cambió. Actualizá la tienda y confirmá el nuevo importe.");
@@ -87,6 +97,15 @@ async function checkout({ user, pack, bought, expectedPrice }){
   return { ok: true, redirect: u.href, pack: p.id, price: p.price };
 }
 
+// Tope de intentos de pago por cuenta (el checkout llama a la API de Mercado Pago): 8 cada 10 minutos.
+const _ck = new Map();
+function checkoutAllowed(userId){
+  const t = Date.now(), a = (_ck.get(userId) || []).filter(x => t - x < 600000);
+  if(a.length >= 8){ _ck.set(userId, a); return false; }
+  a.push(t); _ck.set(userId, a);
+  if(_ck.size > 5000) for(const [k, v] of _ck) if(!v.some(x => t - x < 600000)) _ck.delete(k);
+  return true;
+}
 async function mpCheckout(user, p){
   const ref = signedReference(user, p);
   const back = process.env.PAYMENTS_SUCCESS_URL || "";
@@ -94,7 +113,7 @@ async function mpCheckout(user, p){
     external_reference: ref, notification_url: process.env.PAYMENTS_NOTIFY_URL, statement_descriptor: "LA HORDA",
     metadata: { userId: user.id, pack: p.id } };
   if(/^https:\/\//.test(back)){ body.back_urls = { success: back, pending: back, failure: back }; body.auto_return = "approved"; }
-  let r, j; try{ r = await _fetch("https://api.mercadopago.com/checkout/preferences", { method: "POST", signal: AbortSignal.timeout(12000), headers: { "content-type": "application/json", authorization: "Bearer " + mpToken() }, body: JSON.stringify(body) }); j = await r.json(); }
+  let r, j; try{ r = await _fetch(mpApi() + "/checkout/preferences", { method: "POST", signal: AbortSignal.timeout(12000), headers: { "content-type": "application/json", authorization: "Bearer " + mpToken() }, body: JSON.stringify(body) }); j = await r.json(); }
   catch(e){ fail("PAYMENTS_UNAVAILABLE", 502, "No se pudo abrir el pago. Probá de nuevo en un rato."); }
   if(!r.ok || !j || typeof j.init_point !== "string" || !/^https:\/\//.test(j.init_point)) fail("PAYMENTS_UNAVAILABLE", 502, "No se pudo abrir el pago. Probá de nuevo en un rato.");
   return { ok: true, redirect: j.init_point, pack: p.id, price: displayPrice(p), charged: { currency: "ARS", amount: mpAmount(p) } };
@@ -111,20 +130,25 @@ async function mpVerify(req, raw){
   _mpWin.push(nowMs);
   let r, pay;
   try {
-    r = await _fetch("https://api.mercadopago.com/v1/payments/" + id, {
+    r = await _fetch(mpApi() + "/v1/payments/" + id, {
       signal: AbortSignal.timeout(12000), headers: { authorization: "Bearer " + mpToken() }
     });
     pay = await r.json();
   } catch(e) { fail("PAYMENTS_UNAVAILABLE", 503); }
   if(r.status === 429 || r.status >= 500) fail("PAYMENTS_UNAVAILABLE", 503);
   if(!r.ok || !pay || String(pay.id) !== id || String(pay.collector_id) !== process.env.MP_COLLECTOR_ID ||
-     pay.live_mode !== (process.env.MP_LIVE_MODE === "true")) return null;
+     pay.live_mode !== mpLive()) return null;
   const order = readReference(pay.external_reference);
   const p = order && findPack(order.pack);
   if(!p) return null;
-  // Acknowledge non-approved notifications without granting currency. Refund reconciliation is an operator launch gate.
+  // Reembolso total o contracargo: se devuelve un pedido de REVERTIR lo acreditado (lo ejecuta wallet.js, de forma idempotente y auditada).
+  if((pay.status === "refunded" || pay.status === "charged_back") && pay.currency_id === "ARS" && Number(pay.transaction_amount) === order.amount)
+    return { reverse: true, status: pay.status, userId: order.userId, pack: p.id, once: !!p.once, premium: order.premium, paymentId: "mp" + id };
+  // Los demás estados no acreditan nada (pendiente, rechazado, cancelado, en proceso, etc.).
   if(pay.status !== "approved") return { ignored: true, status: pay.status, paymentId: "mp" + id };
-  if(pay.currency_id !== "ARS" || Number(pay.transaction_amount) !== order.amount || Number(pay.transaction_amount_refunded || 0) !== 0) return null;
+  if(pay.currency_id !== "ARS" || Number(pay.transaction_amount) !== order.amount) return null;
+  // Devolución parcial: no se acredita ni se revierte sola; se anota para revisión manual (200 para que Mercado Pago no reintente).
+  if(Number(pay.transaction_amount_refunded || 0) !== 0) return { ignored: true, status: "partial_refund", paymentId: "mp" + id };
   return { userId: order.userId, pack: p.id, once: !!p.once, premium: order.premium, paymentId: "mp" + id };
 }
 // Punto de entrada del webhook: devuelve el crédito a acreditar o null. (async: Mercado Pago consulta su API)
@@ -144,4 +168,4 @@ function verifyWebhook(headers, raw){
   return { userId: b.userId, pack: p.id, once: !!p.once, premium: p.premium + (p.bonus || 0), paymentId: b.paymentId };
 }
 
-module.exports = { publicInfo, checkout, verifyWebhook, verifyWebhookRequest, enabled, onceRef, creditRef, PACKS, _setFetch: f => { _fetch = f || ((...a) => fetch(...a)); } };
+module.exports = { mpLive, mpSwitch, _mpApi: mpApi, publicInfo, checkout, verifyWebhook, verifyWebhookRequest, enabled, onceRef, creditRef, PACKS, _setFetch: f => { _fetch = f || ((...a) => fetch(...a)); } };
