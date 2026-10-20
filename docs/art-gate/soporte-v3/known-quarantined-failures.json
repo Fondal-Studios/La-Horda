@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "scope": "OBSERVED_EXISTING_NONBLOCKING_TESTS_NOT_NEW_GATE_APPROVAL",
+  "sourceMain": "eb0282d11ea4161fbe09c16acf44718a4eb690dc",
+  "workflow": ".github/workflows/integracion-pruebas.yml",
+  "run": 39313830053,
+  "job": 118270032612,
+  "head": "31ee3348662a373b9debf8a58e853ddb0a0b806f",
+  "newExceptionsAdded": false,
+  "blockingChecksRelaxed": false,
+  "interpretation": "These steps were already continue-on-error in main; the workflow conclusion does not imply they passed. Triage production defects versus stale fixtures separately. No assets or gameplay here are approved by these failures.",
+  "tests": [
+    {
+      "file": "tools/items/t_abismo.js",
+      "failedCases": [
+        "TERRAIN.metadata_por_tipo_de_habilidad"
+      ]
+    },
+    {
+      "file": "tools/items/t_camp.js",
+      "failedCases": [
+        "DATOS.herrero_para_cada_guardian"
+      ]
+    },
+    {
+      "file": "tools/items/t_codex.js",
+      "failedCases": [
+        "MENU.hub_accesos",
+        "SIN_ERRORES"
+      ]
+    },
+    {
+      "file": "tools/items/t_cromas.js",
+      "failedCases": [
+        "REGISTRO.cada_guardian_sin_skin_tiene_croma",
+        "TIENDA.compra",
+        "TIENDA.noDosVeces",
+        "TIENDA.equipa",
+        "UI.tarjetas_de_cromas_en_la_tienda",
+        "UI.comprar_desde_la_tienda_equipa"
+      ]
+    },
+    {
+      "file": "tools/items/t_crystals.js",
+      "failedCases": [
+        "CR.pantalla_previa_muestra_2_de_3"
+      ]
+    },
+    {
+      "file": "tools/items/t_difficulty.js",
+      "failedCases": [
+        "CALIBRACION.pesadilla_x2_5_en_su_nivel",
+        "CALIBRACION.se_siente_mas_dificil_sin_ser_un_muro",
+        "SEMILLA.decorado_varia_y_los_solidos_no",
+        "SEMILLA.hielo_giros_libres_y_variados",
+        "TRAZADO.bosque_pilares_y_patrones",
+        "TRAZADO.bosque_navegacion_sin_bolsillos_nuevos",
+        "TRAZADO.hielo_salida_y_mecanicas_libres",
+        "TRAZADO.horda_infinita_siempre"
+      ]
+    },
+    {
+      "file": "tools/items/t_evolution.js",
+      "failedCases": [
+        "EVO.todos_los_campeones_dejan_su_firma"
+      ]
+    },
+    {
+      "file": "tools/items/t_itemization.js",
+      "failedCases": [
+        "ICON.identidad_visual_distinta"
+      ]
+    },
+    {
+      "file": "tools/items/t_items.js",
+      "failedCases": [
+        "TEST.reinicio_unico_de_la_etapa_de_prueba",
+        "TEST.respaldo_del_guardado_anterior"
+      ]
+    },
+    {
+      "file": "tools/items/t_nigro_golems.js",
+      "failedCases": [
+        "NGOL.atlas_stone_cargado_y_registrado",
+        "NGOL.atlas_fire_cargado_y_registrado",
+        "NGOL.atlas_ice_cargado_y_registrado"
+      ]
+    },
+    {
+      "file": "tools/items/t_resonance.js",
+      "failedCases": [
+        "page.evaluate: TypeError: null.click"
+      ]
+    },
+    {
+      "file": "tools/items/t_sets.js",
+      "failedCases": [
+        "SKIN.color_en_los_eventos_de_red"
+      ]
+    },
+    {
+      "file": "tools/items/t_synergies.js",
+      "failedCases": [
+        "TOOLTIP.nodo_dice_sinergia_con_valor_actual",
+        "TOOLTIP.resumen_de_sinergias_en_el_arbol",
+        "TOOLTIP.habilidad_panel_y_hud",
+        "RESPEC.primero_gratis_con_confirmacion",
+        "RESPEC.nunca_se_pierden_puntos",
+        "RESPEC.costo_por_nivel_y_creciente",
+        "RESPEC.bloqueos_sin_oro_sin_puntos_en_partida",
+        "RESPEC.ui_boton_y_confirmacion",
+        "COOP.sinergia_del_invitado_es_suya"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "scope": "CANDIDATE_DIAGNOSTIC_NOT_ART_APPROVAL",
+  "commit": "5efed3fbc236a625cb2e1bd4da5d02012211a213",
+  "replacementSha256": "068bf6ebdb82bbc8b6a96da31c924a77e22181a5c38a9e444fbca0a5fd643ed5",
+  "approvalClaimed": false,
+  "installed": false,
+  "styleGate": {
+    "status": "PASS",
+    "output": "PASS /tmp/soporte-frame11-v3/atlas.png\nrango del roster: {\"colores\": [1484.5, 2535.5], \"contorno\": [0.612, 0.936], \"sombreado\": [7.642, 15.534], \"detalle\": [0.37, 0.846]}\n"
+  },
+  "status": "TECHNICAL_SCREEN_PASS",
+  "failedFrames": [],
+  "assembly": {
+    "status": "ASSEMBLED_NOT_APPROVED",
+    "frame": 11,
+    "retainedFrames": 35,
+    "height": 76,
+    "width": 59,
+    "resampling": "NEAREST",
+    "atlasSha256": "6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34",
+    "requestedHeight": 76
+  },
+  "sourceBodyComparison": {
+    "reference": [
+      {
+        "frame": 8,
+        "body": 67,
+        "full": 72,
+        "foot": 106,
+        "opaque": 2877
+      },
+      {
+        "frame": 9,
+        "body": 68,
+        "full": 75,
+        "foot": 106,
+        "opaque": 2914
+      },
+      {
+        "frame": 10,
+        "body": 69,
+        "full": 74,
+        "foot": 106,
+        "opaque": 2893
+      },
+      {
+        "frame": 11,
+        "body": 67,
+        "full": 73,
+        "foot": 106,
+        "opaque": 2933
+      }
+    ],
+    "candidate": [
+      {
+        "frame": 8,
+        "body": 67,
+        "full": 72,
+        "foot": 106,
+        "opaque": 2877
+      },
+      {
+        "frame": 9,
+        "body": 68,
+        "full": 75,
+        "foot": 106,
+        "opaque": 2914
+      },
+      {
+        "frame": 10,
+        "body": 69,
+        "full": 74,
+        "foot": 106,
+        "opaque": 2893
+      },
+      {
+        "frame": 11,
+        "body": 68,
+        "full": 76,
+        "foot": 106,
+        "opaque": 2705
+      }
+    ]
+  },
+  "sourceBodyScreen": {
+    "referenceMedian": 68.0,
+    "candidateBody": 68,
+    "relativeDeviation": 0.0,
+    "foot": 106,
+    "within4PercentAndFoot2Pixels": true,
+    "scope": "Source-pixel mass only; full renderer and visual approval still required"
+  }
+}

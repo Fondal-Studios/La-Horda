@@ -1,0 +1,181 @@
+{
+  "checkedAt": "2026-10-19T22:43:20.659Z",
+  "url": "https://fondalstudios.com/la-horda/jugar/",
+  "scope": "Isolated guest browser, static GETs only, memory-only kit/render smoke; not live multiplayer, balance or deployment certification",
+  "tlsScope": "Isolated GET-only browser smoke bypasses the local proxy CA trust issue; native byte probe uses system TLS trust. Not a TLS certification.",
+  "checks": [
+    {
+      "key": "solciju",
+      "releaseState": "RELEASED",
+      "listed": true,
+      "registered": true,
+      "atlas": "https://fondalstudios.com/la-horda/jugar/assets/sprites/champions/solciju/atlas.png",
+      "atlasLoaded": true,
+      "casts": [
+        {
+          "name": "Vino maldito",
+          "finite": true
+        },
+        {
+          "name": "Barrica añeja",
+          "finite": true
+        },
+        {
+          "name": "Brindis a solas",
+          "finite": true
+        },
+        {
+          "name": "Gran Reserva",
+          "finite": true
+        }
+      ],
+      "visible": true,
+      "skin": {
+        "id": "quality_solciju",
+        "name": "Vendimiadora del Asedio",
+        "atlasReady": true,
+        "mode": "Codex preview, not ownership/purchase"
+      },
+      "ok": true
+    },
+    {
+      "key": "brakk",
+      "releaseState": "RELEASED",
+      "listed": true,
+      "registered": true,
+      "atlas": "https://fondalstudios.com/la-horda/jugar/assets/sprites/champions/brakk/atlas.png",
+      "atlasLoaded": true,
+      "casts": [
+        {
+          "name": "Muro de asedio",
+          "finite": true
+        },
+        {
+          "name": "Torreta de clavos",
+          "finite": true
+        },
+        {
+          "name": "Apuntalar",
+          "finite": true
+        },
+        {
+          "name": "Demolición final",
+          "finite": true
+        }
+      ],
+      "visible": true,
+      "skin": {
+        "id": "quality_brakk",
+        "name": "Ingeniero del Abismo",
+        "atlasReady": true,
+        "mode": "Codex preview, not ownership/purchase"
+      },
+      "ok": true
+    },
+    {
+      "key": "veyra",
+      "releaseState": "RELEASED",
+      "listed": true,
+      "registered": true,
+      "atlas": "https://fondalstudios.com/la-horda/jugar/assets/sprites/champions/veyra/atlas.png",
+      "atlasLoaded": true,
+      "casts": [
+        {
+          "name": "Abrir la herida",
+          "finite": true
+        },
+        {
+          "name": "Paso escarlata",
+          "finite": true
+        },
+        {
+          "name": "Pacto de dolor",
+          "finite": true
+        },
+        {
+          "name": "La última herida",
+          "finite": true
+        }
+      ],
+      "visible": true,
+      "skin": {
+        "id": "quality_veyra",
+        "name": "Cicatriz de Obsidiana",
+        "atlasReady": true,
+        "mode": "Codex preview, not ownership/purchase"
+      },
+      "ok": true
+    },
+    {
+      "key": "morveth",
+      "releaseState": "RELEASED",
+      "listed": true,
+      "registered": true,
+      "atlas": "https://fondalstudios.com/la-horda/jugar/assets/sprites/champions/morveth/atlas.png",
+      "atlasLoaded": true,
+      "casts": [
+        {
+          "name": "Huerto maldito",
+          "finite": true
+        },
+        {
+          "name": "Exhalación de peste",
+          "finite": true
+        },
+        {
+          "name": "Simbiosis",
+          "finite": true
+        },
+        {
+          "name": "Jardín de la peste",
+          "finite": true
+        }
+      ],
+      "visible": true,
+      "skin": {
+        "id": "quality_morveth",
+        "name": "Huerto de Sal",
+        "atlasReady": true,
+        "mode": "Codex preview, not ownership/purchase"
+      },
+      "ok": true
+    },
+    {
+      "key": "aelith",
+      "releaseState": "RELEASED",
+      "listed": true,
+      "registered": true,
+      "atlas": "https://fondalstudios.com/la-horda/jugar/assets/sprites/champions/aelith/atlas.png",
+      "atlasLoaded": true,
+      "casts": [
+        {
+          "name": "Instante roto",
+          "finite": true
+        },
+        {
+          "name": "Fractura de segundos",
+          "finite": true
+        },
+        {
+          "name": "Tiempo prestado",
+          "finite": true
+        },
+        {
+          "name": "La hora imposible",
+          "finite": true
+        }
+      ],
+      "visible": true,
+      "skin": {
+        "id": "quality_aelith",
+        "name": "Custodia del Mediodía",
+        "atlasReady": true,
+        "mode": "Codex preview, not ownership/purchase"
+      },
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "blockedWrites": [],
+  "status": "SMOKE_PASS"
+}

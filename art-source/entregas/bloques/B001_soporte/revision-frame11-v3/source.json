@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "atlas": "art-source/entregas/bloques/B001_soporte/campeones/soporte/hoja_36poses.png",
+  "atlasGitBlobSha": "fc3b159828099647e25b880768fa3626161ee89d",
+  "atlasSha256": "b8a0bb2b1f9bb83fbd0cbd513a270f831d3430de9c4547c335f38837d52efa5f",
+  "replacement": "art-source/entregas/bloques/B001_soporte/revision-frame11-v3/source.png",
+  "replacementGitBlobSha": "2a280a3f85e3e119b90e63a95a68cd81b67e36e3",
+  "frame": 11,
+  "installed": false,
+  "approvalClaimed": false,
+  "scope": "Single-frame authored correction; preserve other35 RGBA frames; diagnostics do not approve production art",
+  "targetHeight": 76,
+  "alignment": {
+    "reason": "73px full height gave64px body;78px gave70px body. Calibrate to76px full height to match the original frame11 body67px and preserve its walking rhythm.",
+    "bodyRowThreshold": 0.22,
+    "referenceFrames": [
+      8,
+      9,
+      10
+    ],
+    "maximumRelativeBodyDeviation": 0.04
+  }
+}

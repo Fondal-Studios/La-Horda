@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Four-frame frontal fall shared across directions; base appearance only; not whole B004 approval",
+  "integration": {
+    "pr": 170,
+    "commit_main": "6f47511f977e3828f34cc6abf76d878fe4336a99",
+    "champion": "libertador",
+    "component": "death",
+    "atlas": "assets/sprites/champions/libertador/v2/death.png",
+    "git_blob": "3184b36a1f832ee6a3644e05a743261c78a5572d",
+    "sha256": "3c142180270cbcf3bd4477433bec65204a78e0ee65c4d15aab3efcd3e411dc7a",
+    "evidencia": "docs/art-gate/libertador-death/validation.json",
+    "publicacion": "PENDIENTE_VERIFICACION",
+    "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño",
+    "scope": "Four-frame frontal fall shared across directions; base appearance only; not whole B004 approval"
+  },
+  "sourceManifest": "docs/art-gate/libertador-death/source.json",
+  "extraction": "docs/art-gate/libertador-death/extraction.json",
+  "native": {
+    "status": "TECHNICAL_SCREEN_PASS",
+    "frames": 4,
+    "report": "docs/art-gate/libertador-death/native.json"
+  },
+  "runtime": {
+    "status": "PASS",
+    "checks": 127,
+    "levels": [
+      1,
+      39,
+      40,
+      60,
+      90,
+      99
+    ],
+    "report": "docs/art-gate/libertador-death/runtime.json",
+    "postMergeRepeated": true
+  },
+  "roster": {
+    "appearances": 139,
+    "scaleFailures": 0,
+    "presentationFailures": 0,
+    "report": "docs/art-gate/libertador-death/roster.json"
+  },
+  "prWorkflows": {
+    "head": "6f03e5542bb99ab595764231491fc05e32252f3c",
+    "completedSuccessfully": 11,
+    "componentRun": 39334390841,
+    "balanceRun": 39334390751
+  },
+  "emptyClipCanary": {
+    "status": "REJECTED_AS_REQUIRED",
+    "emptyFrames": 4
+  },
+  "remaining": {
+    "wholeB004": "FIX",
+    "workshopPR": 166,
+    "workshopCommit": "403a80ca6f1862b9758b8f82ab4968b7bd2f72ed",
+    "nativeFailedFrames": [
+      20,
+      21,
+      23
+    ],
+    "runtimeContract": "PRESERVE61_FRAME_FOOT_AND_MOUNTED_PACK"
+  }
+}
