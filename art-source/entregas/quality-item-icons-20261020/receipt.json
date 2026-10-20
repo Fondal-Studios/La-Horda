@@ -1,0 +1,773 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "19 original item icons; no champion/skin/progression changes; publication unverified",
+  "source": "js/ui/quality-five-item-icons.js",
+  "sourceSha256": "06dc0e0792644f3b7d048bb7dd96051ad285a30ae41f681f9fb90663fef2d528",
+  "total": 281,
+  "beforeUnique": 266,
+  "afterUnique": 281,
+  "preserved": 262,
+  "icons": [
+    {
+      "id": "quality_solciju_casco",
+      "name": "Insignia de Cosecha Sitiada: copa de vino",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_solciju_casco.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "8e29ae2d885aef6214997e72b603aa2eee3a038bd7946d782270996c6dc0242e",
+      "rgbaSha256": "1af48287a6f09e2a7a3ce99f9a354bd19e4aac49a2c3562ffb0dc957fe427e84"
+    },
+    {
+      "id": "quality_brakk_casco",
+      "name": "Insignia de Cimientos del Abismo: arco de mampostería",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_brakk_casco.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "e2ff26b8aa33e482847b0f3cd916dbaed49f04846b66cd061d65e4e5c8975b41",
+      "rgbaSha256": "9dfd165b6f5b2576aa64514b19f29ed97e44fb325a4a570447d392cd52e997b9"
+    },
+    {
+      "id": "quality_veyra_casco",
+      "name": "Insignia de Cicatriz de Obsidiana: corte carmesí",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_veyra_casco.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "ad9217d56f7e0b21743f841af08201892d195ca4bb5099c28e042e5c54f2f925",
+      "rgbaSha256": "6faad8187960d0f1340af826948b30236819c3ef15723fd5a109235afc546227"
+    },
+    {
+      "id": "quality_morveth_casco",
+      "name": "Insignia de Huerto de Sal: hongo de esporas",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_morveth_casco.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "7392bd5186fa2928fd1623db59c2f60508bdcb31034920d8de4617f5237d6cca",
+      "rgbaSha256": "e837197d31f1d1a59173554572299351d8171867c3aabbed821ddaafa044c597"
+    },
+    {
+      "id": "quality_aelith_casco",
+      "name": "Insignia de Hora del Mediodía: reloj fracturado",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_aelith_casco.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "2a1dc55380e1ceb8ebaa44357310e07ca020b9a0f47a6cf40838268a2224db76",
+      "rgbaSha256": "e6e1d89933fb9427d1d27495e8487d74ef2036e58aa302f133eb260b8bd4bccb"
+    },
+    {
+      "id": "quality_solciju_pechera",
+      "name": "Vestidura de Cosecha Sitiada: delantal de bodega",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_solciju_pechera.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "833fb2fb4f0516221f2a628a85c41f4ab12e35f83c70d28694b5dc452f031f75",
+      "rgbaSha256": "942c9380e59d4d6f2949e75f36ab1838655c81317a64e87ecd46af1b948dfa66"
+    },
+    {
+      "id": "quality_brakk_pechera",
+      "name": "Vestidura de Cimientos del Abismo: placas de albañilería",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_brakk_pechera.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "5988194232860e18c74439784e92cc8c601349aaa36685ea7c40f4c259700ccc",
+      "rgbaSha256": "0b44b36a11d45cf06caae3d75173a669c79ecda8e29ac6fee84d6caa1907808e"
+    },
+    {
+      "id": "quality_veyra_pechera",
+      "name": "Vestidura de Cicatriz de Obsidiana: venda y hombrera asimétrica",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_veyra_pechera.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "47a5ae4373618be4fa94d0f2083a52fc08014d63ead469180000ecaf3aeaa1d5",
+      "rgbaSha256": "09026f48bc768c3e06866a0929039c11072d64e5343d16716e5af4e568409d80"
+    },
+    {
+      "id": "quality_morveth_pechera",
+      "name": "Vestidura de Huerto de Sal: raíces y hombreras de hongos",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_morveth_pechera.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "934056d4da97b0725ffdbfbe75e332dd126b1ef9defceeb33e3f07027aa5c489",
+      "rgbaSha256": "2a028eef7087a1adfd10a686f0164643590372c01571988340b9d9d8731b8e2a"
+    },
+    {
+      "id": "quality_aelith_pechera",
+      "name": "Vestidura de Hora del Mediodía: levita y reloj de bolsillo",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_aelith_pechera.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "7da91c72f1397f0987fa2f134b88ebdd0ef03f0022833e971d89fa480b34ff4f",
+      "rgbaSha256": "3b471d131175566113b6ff818acc6d7638f072f8c0ca2bcb391c9f8b88b1793f"
+    },
+    {
+      "id": "quality_solciju_botas",
+      "name": "Pasos de Cosecha Sitiada: bota de hebilla y tacón",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_solciju_botas.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "e0b743aa480ede12d261eb986f3fbd51c1a4080138cff95fe197605a1a3d47f5",
+      "rgbaSha256": "afe6e9122c1879aa06e0d99bae16a6cc19f68160f9cca2968df145951f6af14e"
+    },
+    {
+      "id": "quality_brakk_botas",
+      "name": "Pasos de Cimientos del Abismo: greba de puntera reforzada",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_brakk_botas.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "56202bb9ac1080e3c9f69dbe06f32aa721d03a569d0a9ded2438d6e17a794c29",
+      "rgbaSha256": "d40f242a09c3dfa03a296c705749cf58a273d7059a54c1d22afcd7415f8f465e"
+    },
+    {
+      "id": "quality_veyra_botas",
+      "name": "Pasos de Cicatriz de Obsidiana: bota y cuchillo lateral",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_veyra_botas.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "4ae0eebcb8e36473b9168ca31223c30976370faaf5990f93198d2bd5493201da",
+      "rgbaSha256": "2ee41d56643bf3cf5b17e3efd9727bfc18eb890df0f0e80db82ea00070daa425"
+    },
+    {
+      "id": "quality_morveth_botas",
+      "name": "Pasos de Huerto de Sal: raíces y micelio",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_morveth_botas.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "843b969548bfd22adb9f5068bc63be52bd12ec4f20b3078977305431609219c9",
+      "rgbaSha256": "69ced3c1932aabefa4bb35b9002d1bfb0ebe893276ba419720f05ea46c78e779"
+    },
+    {
+      "id": "quality_aelith_botas",
+      "name": "Pasos de Hora del Mediodía: polaina de relojera",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_aelith_botas.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "cc3990905ec84efa1ac4754f1940f46e713b3846d681c71048147cd43b809d5a",
+      "rgbaSha256": "8461fec0ea7a1f0019974d06b8c0228a99d75e7e871eb3f04ba94ab99a8a304d"
+    },
+    {
+      "id": "quality_brakk_arma",
+      "name": "Maza de Presión",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_brakk_arma.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "6853a954c9e504f0848d14d9628789f7ac2267bb538b3888d4ec9ea12da560d7",
+      "rgbaSha256": "5503204ed807cba7f03b85977a5327a8af1ddc1cd7739a19f8ae84979aba7030"
+    },
+    {
+      "id": "quality_veyra_arma",
+      "name": "Sable de la Cicatriz",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_veyra_arma.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "2ac52ce6ded7a1699d2246f83fcd4da3e3ff3b4ee50322078bcac558729ba8bc",
+      "rgbaSha256": "eb22b46cbdb191644ee06c05a69ef1bae1ca880de89867549c3f49054e450810"
+    },
+    {
+      "id": "quality_morveth_arma",
+      "name": "Hoz de Sal Dormida",
+      "file": "art-source/entregas/quality-item-icons-20261020/quality_morveth_arma.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "16b775a7f60b537e38d7c7c5c48260962ff7489679a17895deee20f5527e5eb6",
+      "rgbaSha256": "5a7633bc015c2f4b1d523bfacf20cba9604557f10c6517bcf6b598f9b18d55be"
+    },
+    {
+      "id": "bleg_alquimia",
+      "name": "Guantes del Alquimista Loco: ampolla de reactivo",
+      "file": "art-source/entregas/quality-item-icons-20261020/bleg_alquimia.png",
+      "size": [
+        16,
+        16
+      ],
+      "pngSha256": "18ac79062f7c097266e990508fe8601ee0ead9b4421fad1e4242af9c66ef8d76",
+      "rgbaSha256": "f1e465703f6aade6d21d8c2f98e477f72daebfae108b60cbc6c66dd7a4c1f088"
+    }
+  ],
+  "checks": [
+    {
+      "name": "registered quality_solciju_casco",
+      "ok": true
+    },
+    {
+      "name": "registered quality_brakk_casco",
+      "ok": true
+    },
+    {
+      "name": "registered quality_veyra_casco",
+      "ok": true
+    },
+    {
+      "name": "registered quality_morveth_casco",
+      "ok": true
+    },
+    {
+      "name": "registered quality_aelith_casco",
+      "ok": true
+    },
+    {
+      "name": "registered quality_solciju_pechera",
+      "ok": true
+    },
+    {
+      "name": "registered quality_brakk_pechera",
+      "ok": true
+    },
+    {
+      "name": "registered quality_veyra_pechera",
+      "ok": true
+    },
+    {
+      "name": "registered quality_morveth_pechera",
+      "ok": true
+    },
+    {
+      "name": "registered quality_aelith_pechera",
+      "ok": true
+    },
+    {
+      "name": "registered quality_solciju_botas",
+      "ok": true
+    },
+    {
+      "name": "registered quality_brakk_botas",
+      "ok": true
+    },
+    {
+      "name": "registered quality_veyra_botas",
+      "ok": true
+    },
+    {
+      "name": "registered quality_morveth_botas",
+      "ok": true
+    },
+    {
+      "name": "registered quality_aelith_botas",
+      "ok": true
+    },
+    {
+      "name": "registered quality_brakk_arma",
+      "ok": true
+    },
+    {
+      "name": "registered quality_veyra_arma",
+      "ok": true
+    },
+    {
+      "name": "registered quality_morveth_arma",
+      "ok": true
+    },
+    {
+      "name": "registered bleg_alquimia",
+      "ok": true
+    },
+    {
+      "name": "all other item pixels preserved",
+      "ok": true
+    },
+    {
+      "name": "every authored replacement changes its old icon",
+      "ok": true
+    },
+    {
+      "name": "all designed item icons are distinct",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_solciju_casco",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_solciju_casco",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_solciju_casco",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_solciju_casco",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_solciju_casco",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_solciju_casco",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_brakk_casco",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_brakk_casco",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_brakk_casco",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_brakk_casco",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_brakk_casco",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_brakk_casco",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_veyra_casco",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_veyra_casco",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_veyra_casco",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_veyra_casco",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_veyra_casco",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_veyra_casco",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_morveth_casco",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_morveth_casco",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_morveth_casco",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_morveth_casco",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_morveth_casco",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_morveth_casco",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_aelith_casco",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_aelith_casco",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_aelith_casco",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_aelith_casco",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_aelith_casco",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_aelith_casco",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_solciju_pechera",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_solciju_pechera",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_solciju_pechera",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_solciju_pechera",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_solciju_pechera",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_solciju_pechera",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_brakk_pechera",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_brakk_pechera",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_brakk_pechera",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_brakk_pechera",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_brakk_pechera",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_brakk_pechera",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_veyra_pechera",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_veyra_pechera",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_veyra_pechera",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_veyra_pechera",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_veyra_pechera",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_veyra_pechera",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_morveth_pechera",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_morveth_pechera",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_morveth_pechera",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_morveth_pechera",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_morveth_pechera",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_morveth_pechera",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_aelith_pechera",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_aelith_pechera",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_aelith_pechera",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_aelith_pechera",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_aelith_pechera",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_aelith_pechera",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_solciju_botas",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_solciju_botas",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_solciju_botas",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_solciju_botas",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_solciju_botas",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_solciju_botas",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_brakk_botas",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_brakk_botas",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_brakk_botas",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_brakk_botas",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_brakk_botas",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_brakk_botas",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_veyra_botas",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_veyra_botas",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_veyra_botas",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_veyra_botas",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_veyra_botas",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_veyra_botas",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_morveth_botas",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_morveth_botas",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_morveth_botas",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_morveth_botas",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_morveth_botas",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_morveth_botas",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_aelith_botas",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_aelith_botas",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_aelith_botas",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_aelith_botas",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_aelith_botas",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_aelith_botas",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_brakk_arma",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_brakk_arma",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_brakk_arma",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_brakk_arma",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_brakk_arma",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_brakk_arma",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_veyra_arma",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_veyra_arma",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_veyra_arma",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_veyra_arma",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_veyra_arma",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_veyra_arma",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette quality_morveth_arma",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha quality_morveth_arma",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA quality_morveth_arma",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor quality_morveth_arma",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels quality_morveth_arma",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon quality_morveth_arma",
+      "ok": true
+    },
+    {
+      "name": "native grid and named palette bleg_alquimia",
+      "ok": true
+    },
+    {
+      "name": "binary visible alpha bleg_alquimia",
+      "ok": true
+    },
+    {
+      "name": "stored export RGBA bleg_alquimia",
+      "ok": true
+    },
+    {
+      "name": "floor exact nearest-neighbor bleg_alquimia",
+      "ok": true
+    },
+    {
+      "name": "UI uses same authored opaque pixels bleg_alquimia",
+      "ok": true
+    },
+    {
+      "name": "copies and progression preserve icon bleg_alquimia",
+      "ok": true
+    },
+    {
+      "name": "item definitions unchanged by rendering",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

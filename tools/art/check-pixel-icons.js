@@ -5,7 +5,7 @@
    que se calcula solo), solo letras de la paleta PXI_PAL, y cada emoji de PXI_EMOJI apunta a un ícono que existe y
    tiene nombre accesible en PXI_NAME. Uso: node tools/art/check-pixel-icons.js  (exit 1 si algo falla). */
 const fs = require("fs"), path = require("path"), vm = require("vm");
-const src = fs.readFileSync(path.resolve(__dirname, "../../js/ui/pixel-icons.js"), "utf8");
+const src = ["pixel-icons.js", "quality-five-item-icons.js"].map(f => fs.readFileSync(path.resolve(__dirname, "../../js/ui/", f), "utf8")).join("\n");
 const ctx = {};
 vm.createContext(ctx);
 vm.runInContext(src + "\n;this.__r = {PXI_ART, PXI_PAL, PXI_EMOJI, PXI_NAME};", ctx);
