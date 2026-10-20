@@ -63,11 +63,6 @@ def verify_runtime_icons(entry):
     source = ROOT / receipt['source']
     require(hashlib.sha256(source.read_bytes()).hexdigest() == receipt['sourceSha256'],
             'icon renderer hash mismatch')
-    historical_source = subprocess.run(['git', 'show', entry['merge'] + ':' + receipt['source']],
-                                       cwd=ROOT, capture_output=True)
-    require(historical_source.returncode == 0
-            and hashlib.sha256(historical_source.stdout).hexdigest() == receipt['sourceSha256'],
-            'icon renderer does not match referenced merge')
     declared = entry['items']
     require(len({e['item'] for e in declared}) == len(declared), 'duplicate icon task mapping')
     icons = receipt['icons']
@@ -96,6 +91,19 @@ def verify_runtime_icons(entry):
                  'publicacion': 'PENDIENTE_VERIFICACION', 'nuevo_diseno': False,
                  'revision_visual': 'EXPORTACION_EXACTA_DE_DISENO_RUNTIME_EXISTENTE'}
         evidence.append((task, proof))
+    # A later renderer can add unrelated icons without changing these exports.
+    # Verify its receipt above, and the original delivery against its own commit.
+    historical_receipt = subprocess.run(['git', 'show', entry['merge'] + ':' + entry['receipt']],
+                                        cwd=ROOT, capture_output=True)
+    require(historical_receipt.returncode == 0, 'icon receipt absent from referenced merge')
+    original = json.loads(historical_receipt.stdout)
+    require(original['source'] == receipt['source'] and original['icons'] == icons,
+            'icon receipt exports do not match referenced merge')
+    historical_source = subprocess.run(['git', 'show', entry['merge'] + ':' + original['source']],
+                                       cwd=ROOT, capture_output=True)
+    require(historical_source.returncode == 0
+            and hashlib.sha256(historical_source.stdout).hexdigest() == original['sourceSha256'],
+            'icon renderer does not match referenced merge')
     return evidence
 
 
