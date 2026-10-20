@@ -47,7 +47,7 @@ const ARENA_MODS = {
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:0.6, heroDmgMult:1.0, enemyRegenPct:0, hazard:"ignicion", hasWalls:false,
               // Dificultad del grupo 3 (docs/economy/DIFICULTAD_GRUPO3.md), medido con equipo real (lootPath + equipBest): Normal queda como está (aprendiz 91 %, habitual 88 %);
               // Pesadilla y Infierno se afinan por arena.
-              tierMods:{ pesadilla:{ hp:0.8, dmg:0.7, bossDmg:0.9 }, infierno:{ hp:0.5, dmg:0.4, bossDmg:0.7 } } },
+              tierMods:{ pesadilla:{ hp:0.9, dmg:0.8, bossDmg:0.95 }, infierno:{ hp:0.55, dmg:0.45, bossDmg:0.75 } } },
   // Segunda arena por dificultad (entre Bosque y Hielo, ver ARENA_ORDER). Sin peligro ambiental
   // propio -su identidad de riesgo pasa por el roster (embestidas/descargas/agarres) más que
   // por un hazard de piso como las demás- y con una corriente suave que empuja (ver
@@ -117,7 +117,7 @@ Object.assign(ARENA_MODS, {
               potionMult:1.3,
               // Dificultad del grupo 3 (docs/economy/DIFICULTAD_GRUPO3.md), medido con equipo real (lootPath + equipBest): Normal queda como está; con el equipo real Pesadilla/Infierno
               // eran un paseo (100 % con los valores de PESADILLA_PAREJA), por eso aquí SUBEN por encima de 1.
-              tierMods:{ pesadilla:{ hp:1.65, dmg:1.5, bossDmg:1.15 }, infierno:{ hp:1.1, dmg:0.98, bossDmg:1.04 } } }
+              tierMods:{ pesadilla:{ hp:1.65, dmg:1.5, bossDmg:1.15 }, infierno:{ hp:1.25, dmg:1.05, bossDmg:1.08 } } }
 });
 /* ORDEN CANÓNICO DE LA CAMPAÑA (Lore Bible: docs/lore/LA_HORDA_LORE_BIBLE.md). Los IDs internos NO
    cambian (los guardados siguen apuntando a la misma arena); lo que cambia es el orden.

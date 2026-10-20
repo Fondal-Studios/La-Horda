@@ -299,7 +299,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   const arenasMod = Object.keys(tmod.per);
   check('TIERMODS.arenas_ajustadas', ['bosque','fortaleza','hielo','acuatica','laberinto','micelial','abismo','minas','infernal'].every(a => arenasMod.includes(a)) && !arenasMod.includes('ciudad'), arenasMod);
   check('TIERMODS.multiplican_hp_dmg_jefes_exactos', arenasMod.every(a => { const p = tmod.per[a]; return R(p.withMod.hp / p.noMod.hp, p.tm.hp) && R(p.withMod.dmg / p.noMod.dmg, p.tm.dmg) && R(p.withMod.avgHp / p.noMod.avgHp, p.tm.bossDmg); }), tmod.per);
-  check('TIERMODS.valores_en_rango', arenasMod.every(a => { const t = tmod.per[a].tm; return [t.hp, t.dmg, t.bossDmg].every(v => v >= 0.25 && v <= 1); }), arenasMod.map(a => tmod.per[a].tm));
+  check('TIERMODS.valores_en_rango', arenasMod.every(a => { const t = tmod.per[a].tm; return [t.hp, t.dmg, t.bossDmg].every(v => v >= 0.25 && v <= 2); }), arenasMod.map(a => tmod.per[a].tm));
   // La escala sola no basta (Pesadilla suma élites, resistencia y tope por golpe); la comparación real es la tasa de victoria contra Normal (PESADILLA_PAREJA.md).
   // Aquí solo se impide que el ajuste deje a Pesadilla muy por debajo de Normal en vida x daño.
   check('TIERMODS.no_cae_por_debajo_de_normal', arenasMod.every(a => { const p = tmod.per[a]; return (p.withMod.hp * p.withMod.dmg) >= 0.6 * (p.normal.hp * p.normal.dmg); }), arenasMod.map(a => [a, +(tmod.per[a].withMod.hp / tmod.per[a].normal.hp).toFixed(2), +(tmod.per[a].withMod.dmg / tmod.per[a].normal.dmg).toFixed(2)]));
