@@ -109,6 +109,7 @@ function startRun(fromLevel){
   vfxResetRun();
   resetFeedback();
   resetMythicPowers(); // suelo consagrado y otros efectos de objetos míticos
+  if(typeof resetMagePassives==="function") resetMagePassives(); // Kit de Magos: estado de pasivas y marcas
   resetEnemyRoles(); // avisos de roles enemigos vistos
   resetBreakables();
   hazardZones = []; arenaRuleTimer = 8000; resetArenaRule();

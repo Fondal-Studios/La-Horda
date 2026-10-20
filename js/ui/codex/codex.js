@@ -416,6 +416,7 @@ function codexChampHtml(key){
     const sk = [...cls.skills, cls.ultimate];
     panel += _sec("¿Quién es?", `<blockquote class="cx-quote">«${_cxEsc(cat.lore)}»</blockquote>${L.origin ? `<div class="cx-origin">Origen: <b>${_cxEsc(L.origin)}</b></div>` : ""}${codexDistinctHistory(cat.lore, L.history)}`, "lore");
     if(cls.passive) panel += _sec("Pasiva · "+cls.passive.ico+" "+cls.passive.name,_p(cls.passive.desc),"combat");
+    if(typeof mageKitCodexHtml==="function" && isMageClass(key)) panel += _sec("❂ Kit de Magos · cambia tu pasiva", mageKitCodexHtml(key), "combat");
     const HV = typeof HERO_VOICES!=="undefined" ? HERO_VOICES[key] : null;
     if(HV) panel += _sec("Su voz", `<div class="cx-voice-grid">${[["pick","Al elegirlo"],["win","Al ganar"],["fall","Al caer"]].map(([id,label])=>`<div class="cx-voice"><i>${label}</i><p>«${_cxEsc(HV[id])}»</p>${typeof speechSynthesis!=="undefined"?`<button class="cx-btn" data-cx-voice="${id}" aria-label="Escuchar frase: ${label}">▶ Escuchar</button>`:""}</div>`).join("")}</div><p class="cx-dim">Lectura opcional con la voz en español de tu dispositivo; no es doblaje grabado.</p><button class="cx-btn" data-cx-stop>■ Detener voz</button>`, "lore");
     panel += _sec("Galería de movimiento", `<div class="cx-motion-gallery">${[["idle","Presencia"],["walk","Movimiento"],["attack","Ataque"]].map(([anim,label])=>`<figure>${_pv({kind:"champ",key,anim,arena:"champ",fps:12},"cx-pv cx-motion-pv")}<figcaption>${label}</figcaption></figure>`).join("")}</div>`, "lore");

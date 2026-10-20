@@ -158,7 +158,7 @@ function lootCardHTML(item, classKey, idx){
         ${setLine}
         ${passiveTxt?`<div class="item-passives">${passiveTxt}</div>`:""}
         <div class="vic-item-actions">
-          ${canEquipItem(classKey, item) ? `<button class="primary" data-vic-equip="${item.uid}" ${equipped?"disabled":""}>${equipped?"Equipado":"Equipar"}</button>` : `<button disabled>Para ${CLASSES[item.champion].name}</button>`}
+          ${canEquipItem(classKey, item) ? `<button class="primary" data-vic-equip="${item.uid}" ${equipped?"disabled":""}>${equipped?"Equipado":"Equipar"}</button>` : `<button disabled>Para ${itemOnlyLabel(item) || "otro guardián"}</button>`}
           <button data-vic-keep="${item.uid}">Guardar</button>
         </div>
       </div></div>
