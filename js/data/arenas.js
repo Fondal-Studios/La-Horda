@@ -67,7 +67,7 @@ const ARENA_MODS = {
               potionMult:1.25,
               // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 12% (4/32); con este ajuste (solo Pesadilla) da 65% (26/40).
               // DIFICULTAD_GRUPO1.md: Normal era una barrera (68% agrupado, habitual 57%) y baja a x0,85/0,8/0,9 (96%); con el equipo real Pesadilla x0,6/0,5/0,8 daba 75-88%: se sube a x1,8/1,65/1,25. Infierno x0,55/0,45/0,8.
-              tierMods:{ normal:{ hp:0.85, dmg:0.8, bossDmg:0.9 }, pesadilla:{ hp:1.1, dmg:1.0, bossDmg:1.05 }, infierno:{ hp:0.7, dmg:0.6, bossDmg:0.85 } } },
+              tierMods:{ normal:{ hp:0.85, dmg:0.8, bossDmg:0.9 }, pesadilla:{ hp:1.1, dmg:1.0, bossDmg:1.05 }, infierno:{ hp:0.8, dmg:0.7, bossDmg:0.9 } } },
   // ARENA IV (cuarta en la campaña, entre la Fortaleza y el Hielo). "EL ESCENARIO CRECE, MADURA Y
   // MUERE": el mapa entero es un organismo (la Madre Espora) con ciclo de vida por etapas, Núcleos
   // Miceliales que infectan territorio y un jefe que ES la estructura del centro
@@ -78,7 +78,7 @@ const ARENA_MODS = {
               potionMult:1.3,
               // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 34% (11/32); con este ajuste (solo Pesadilla) da 62% (24/39).
               // DIFICULTAD_GRUPO1.md: con el equipo real x0,9/0,85/0,95 daba 75-88%: se sube a x1,4/1,3/1,1 (50%, 4/8). Infierno sin ajuste (38%).
-              tierMods:{ pesadilla:{ hp:1.5, dmg:1.4, bossDmg:1.1 }, infierno:{ hp:1.3, dmg:1.25, bossDmg:1.05 } } },
+              tierMods:{ pesadilla:{ hp:1.5, dmg:1.4, bossDmg:1.1 }, infierno:{ hp:1.2, dmg:1.15, bossDmg:1.05 } } },
   // ARENA DEL ABISMO (entre el Hielo y el Laberinto; el orden final se revisa después). "EL TERRENO ES
   // UN RECURSO": ruinas suspendidas sobre el vacío con plataformas que se agrietan, colapsan y el
   // Abismo reconstruye entre oleadas; caer no mata (quedás colgado del borde y un compañero te
