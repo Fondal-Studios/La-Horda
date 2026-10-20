@@ -124,7 +124,58 @@ Las 12 piezas tienen ícono propio `item_<designId>` en `PXI_ART` (16×16, ≤ 6
 
 ## 9. Resultados de pruebas
 
-RESULTADOS_AQUI
+### `node tools/items/t_mage_kit.js` — 51 de 51 (TODO OK)
+
+Cubre datos y recetas, ficha, iconos, tienda, restricción a magos, caída por arena, fabricación, **los 16 magos × los 12 poderes (192 mediciones con el código real)**, adaptadores, mago nuevo sin adaptador, topes, limpieza, partida larga y balance. Salida resumida:
+
+| Bloque | Resultado |
+|---|---|
+| Datos / recetas / ficha / iconos / tienda | 7 L + 3 M + 2 U = 12 piezas, 6 ranuras, un poder distinto por pieza, recetas de 3 legendarios del kit, ficha "CAMBIA TU PASIVA", íconos 16×16 ≤ 6 colores, 0 piezas en la tienda |
+| Restricción | los 16 magos equipan todo el kit; ningún otro rol (27 guardianes) puede; un no mago con la pieza forzada no recibe el poder |
+| Caída | mínimos 2/4/6 verificados por arena; a un mago le cae más del doble que a otro rol; la afinidad de arena pesa; el piso también lo suelta |
+| **Cobertura** | 16 magos × 12 poderes: todos miden un efecto (cargas, energía, daño de onda, ralentización, escudo, marcas con +8 %, disparos del Coro, medidor al máximo con el Ciclo, energía devuelta + −1 s de enfriamientos + +10 % con el Archivo, runas y enfriamiento −20 % con la Voz, velocidad + onda + cierre en 35 % con la Fase); sin kit la capa está inerte; 0 llamadas a `damageHero` (sin fuego amigo) |
+| Adaptadores | Aelith (segundos hurtados + −0,5 s a las otras), Brasa (presión), Morwen (residuos 5/5), Zahra (calor ≤ 85), Tibor (colonia), Nano GM (Equilibrio 3, sin Forma del Regente) |
+| Mago nuevo | `CLASSES.mago_nuevo_prueba` sin adaptador arranca, usa la Resonancia y los 12 poderes miden efecto; la Resonancia gasta 4 cargas en una onda y se apaga sola; un adaptador que lanza una excepción no rompe a otro mago |
+| Topes y limpieza | onda ≤ 8 blancos; el Coro hace exactamente 2 disparos por ciclo y su cola nunca pasa de 2; morir vacía colas y efectos; quitar el equipo apaga runas y Fase; una partida nueva no deja marcas ni estado; `_mp`/`_mpMark` en `NET_SKIP_KEYS` |
+| Partida larga | 60 s con 14 enemigos y 6 piezas del kit: sin excepciones, mismos enemigos al final, cola ≤ 2 |
+
+**Balance** (escenario sintético: 40 s contra maniquíes quietos, rotación fija con la energía real del guardián, 2 semillas; `horda` = 12 juntos, `jefe` = 1). `poderes` es el kit completo CON sus poderes contra las MISMAS piezas SIN poderes (lo que aportan los poderes); `total` es contra no llevar nada (kit ofensivo / kit defensivo):
+
+| Mago | Escenario | Poderes (kit ofensivo) | Poderes (kit defensivo) | Total vs sin equipo | Control: 6 míticos/legendarios que ya existían |
+|---|---|---|---|---|---|
+| Thalen (respaldo) | horda | +31 % | +20 % | +42 % / +29 % | +362 % |
+| Thalen | jefe | +11 % | — | +27 % | — |
+| Aelith (adaptador) | horda | **+33 %** (peor caso) | +17 % | +58 % / +39 % | +185 % |
+| Aelith | jefe | +13 % | — | +17 % | — |
+| Vhal (respaldo) | horda | +29 % | +7 % | +70 % / +42 % | +147 % |
+| Vhal | jefe | +12 % | — | +34 % | — |
+
+El límite pedido (~+35 % de DPS efectivo) se cumple por poco en el peor caso (horda densa de 12, kit ofensivo): **+33 %**; contra un jefe, +11 a +13 %. Las propiedades de las piezas (daño de habilidad, enfriamiento, vida…) son del orden de las demás piezas diseñadas y quedan lejos del equipo existente (el control rinde de +147 % a +362 %). Se afinaron los números de las ondas (Resonancia de 100 % a 40 %, Tercer Sello de 80 % a 30 %, Coro y Voz de 60/50 % a 20 %, Fase de 60 % a 15 %) y el Archivo (de +15 % a +10 %) hasta entrar en el límite. El balance NO se midió con `tools/playtest/campaign.js` (partidas completas): queda pendiente.
+
+### Compuertas del repositorio
+
+| Compuerta | Resultado |
+|---|---|
+| `node tools/bible/ability-gate.js --strict` | PASS: 43 campeones, 0 nuevos que no pasan, 0 errores de página (el kit no agrega habilidades) |
+| `node tools/balance/check-entry-reference.js` | PASS |
+| `node tools/balance/entry-gate.js` | PASS (`registered:43`, 75 simulaciones; sin cambios: no se agregó ningún campeón ni se tocó `knownChampions`) |
+| `node tools/art/check-pixel-icons.js` | OK: 97 íconos 16×16 (≤ 6 colores) |
+| `node tools/art/emoji-lint.js --strict` | sin violaciones |
+| `node tools/ux/test-text-overflow.js` | PASS: ninguna pantalla con texto fuera de su marco |
+| `t_build_uniques`, `t_ground_loot`, `t_coherencia_tablas`, `t_codex_book_logic`, `t_reactions`, `t_roles`, `tools/collection/t_shop_rotation.js` | OK |
+
+Los archivos generados (`docs/bible/generated/ability-gate.json`, `docs/balance/entry-gate-results.json`) se restauraron con `git checkout --` y no se commitean.
+
+### Fallas que YA existían en `origin/main` (idénticas con y sin el kit)
+
+Se corrió el mismo conjunto contra un export de `origin/main` (en otro puerto; sus únicos extras son errores de carga de imágenes por ese árbol parcial). Mismas fallas, ninguna del kit:
+
+- `t_items.js`: `TEST.reinicio_unico_de_la_etapa_de_prueba` y `TEST.respaldo_del_guardado_anterior` (laboratorio de pruebas).
+- `t_synergies.js`: 9 fallas (tooltips de sinergia "ahora +0 %", reinicio del árbol de talentos, `COOP.sinergia_del_invitado_es_suya`).
+- `t_codex.js`: `MENU.hub_accesos` (el menú tiene "DESAFÍOS").
+- `t_sets.js`: `SKIN.color_en_los_eventos_de_red`.
+- `t_resonance.js`: `TypeError … null (reading 'click')`.
+- `t_itemization.js`: `ICON.identidad_visual_distinta`: 266 URLs distintas de 281 piezas (94,7 %) contra un piso de 95 %. Sin el kit son 254 de 269 (94,4 %): el kit **mejora** el cociente porque sus 12 íconos son propios. (Este test no corrió en el export de `origin/main` por un timeout de carga; el cociente sin el kit se calculó sobre el mismo árbol excluyendo las piezas del kit.)
 
 ## 10. Limitaciones y fuera de alcance
 
