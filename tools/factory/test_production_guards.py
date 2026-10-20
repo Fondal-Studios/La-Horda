@@ -1,4 +1,6 @@
 """Negative controls: invalid evidence cannot close production tasks or write an atlas."""
+import importlib.util
+from unittest import mock
 import hashlib
 import json
 from pathlib import Path
@@ -90,6 +92,37 @@ class ProductionGuards(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn(b'icon PNG absent from referenced merge', result.stderr)
         self.assertEqual(before, [hashlib.sha256(p.read_bytes()).digest() for p in paths])
+
+    def test_current_and_historical_icon_receipts_are_verified_independently(self):
+        # PR #181 adds other renderer definitions; the delivered icons stay exact.
+        result = subprocess.run(['python3', 'tools/factory/reconcile-art-production.py'],
+                                cwd=ROOT, capture_output=True)
+        self.assertEqual(result.returncode, 0, result.stderr.decode())
+        self.assertFalse(json.loads(result.stdout)['needsReconciliation'])
+
+    def test_corrupt_historical_icon_evidence_is_rejected(self):
+        spec = importlib.util.spec_from_file_location('reconcile', ROOT / 'tools/factory/reconcile-art-production.py')
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        entry = json.loads((ROOT / 'docs/production/art-integrations.json').read_text())['runtimeIconExports'][0]
+        receipt = json.loads((ROOT / entry['receipt']).read_text())
+        run = subprocess.run
+        for path, expected in [(receipt['source'], 'icon renderer does not match referenced merge'),
+                               (entry['receipt'], 'icon receipt exports do not match referenced merge')]:
+            with self.subTest(path=path):
+                def corrupt(args, **kwargs):
+                    result = run(args, **kwargs)
+                    if args == ['git', 'show', entry['merge'] + ':' + path]:
+                        if path == receipt['source']:
+                            result.stdout += b'// modified historical renderer'
+                        else:
+                            data = json.loads(result.stdout)
+                            data['icons'][0]['rgbaSha256'] = '0' * 64
+                            result.stdout = json.dumps(data).encode()
+                    return result
+                with mock.patch.object(module.subprocess, 'run', side_effect=corrupt):
+                    with self.assertRaisesRegex(ValueError, expected):
+                        module.verify_runtime_icons(entry)
 
 if __name__ == '__main__':
     unittest.main()
