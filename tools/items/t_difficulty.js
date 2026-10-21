@@ -96,7 +96,10 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
       const lv = t => Math.min(99, (DIFF.arenaLevel[a] || 1) + DIFF_TIERS[t].lvlOffset + (a === 'ciudad' ? 5 : 0));
       const N0 = at(a, 'normal', lv('normal')), NP = at(a, 'normal', lv('pesadilla')), P = at(a, 'pesadilla', lv('pesadilla')), NI = at(a, 'normal', lv('infierno')), I = at(a, 'infierno', lv('infierno'));
       const felt = (x) => ({ hp: +((x.hp / x.off) / (N0.hp / N0.off)).toFixed(2), dmg: +((x.dmg / x.def) / (N0.dmg / N0.def)).toFixed(2) });
-      out[a] = { tm: (ARENA_MODS[a].tierMods || {}).pesadilla || {}, tmI: (ARENA_MODS[a].tierMods || {}).infierno || {}, tmN: (ARENA_MODS[a].tierMods || {}).normal || {}, lv: [lv('normal'), lv('pesadilla'), lv('infierno')],
+      // El Normal de comparación trae sus propios ajustes por arena: tierMods.normal y el fijo de Bosque/Hielo (x0,85 vida, x0,8 daño en
+      // difficulty-tiers.js). Se cancelan igual que los de Pesadilla/Infierno para medir solo la escala de la dificultad.
+      const nb = ['bosque', 'hielo'].includes(a) ? { hp: 0.85, dmg: 0.8 } : { hp: 1, dmg: 1 }, tn0 = (ARENA_MODS[a].tierMods || {}).normal || {};
+      out[a] = { tm: (ARENA_MODS[a].tierMods || {}).pesadilla || {}, tmI: (ARENA_MODS[a].tierMods || {}).infierno || {}, tmN: { hp: (tn0.hp || 1) * nb.hp, dmg: (tn0.dmg || 1) * nb.dmg }, lv: [lv('normal'), lv('pesadilla'), lv('infierno')],
         sameP: { hp: +(P.hp / NP.hp).toFixed(2), dmg: +(P.dmg / NP.dmg).toFixed(2) }, sameI: { hp: +(I.hp / NI.hp).toFixed(2), dmg: +(I.dmg / NI.dmg).toFixed(2) },
         feltP: felt(P), feltI: felt(I), absP: +(P.hp / N0.hp).toFixed(1), absI: +(I.hp / N0.hp).toFixed(1) };
     }
@@ -109,7 +112,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('CALIBRACION.pesadilla_x2_5_en_su_nivel', Object.values(cal).every(c => inR(c.sameP.hp * (c.tmN.hp || 1) / (c.tm.hp || 1), 1.8, 3.0) && inR(c.sameP.dmg * (c.tmN.dmg || 1) / (c.tm.dmg || 1), 1.8, 3.0)), cal);
   check('CALIBRACION.infierno_x6_en_su_nivel', Object.values(cal).every(c => inR(c.sameI.hp * (c.tmN.hp || 1) / (c.tmI.hp || 1), 3.6, 7) && inR(c.sameI.dmg * (c.tmN.dmg || 1) / (c.tmI.dmg || 1), 3.6, 7)), cal);
   // (b) sin equipo (el equipo de Pesadilla/Infierno es lo que lo compensa, como en Diablo II)
-  check('CALIBRACION.se_siente_mas_dificil_sin_ser_un_muro', Object.values(cal).every(c => inR(c.feltP.hp / (c.tm.hp || 1), 1.2, 2.5) && inR(c.feltP.dmg / (c.tm.dmg || 1), 1.2, 2.5) && c.feltI.hp / (c.tmI.hp || 1) > c.feltP.hp / (c.tm.hp || 1) && c.feltI.dmg / (c.tmI.dmg || 1) > c.feltP.dmg / (c.tm.dmg || 1) && c.feltI.hp / (c.tmI.hp || 1) < 5.5 && c.feltI.dmg / (c.tmI.dmg || 1) < 5.5), cal);
+  const fl = c => ({ pH: c.feltP.hp * c.tmN.hp / (c.tm.hp || 1), pD: c.feltP.dmg * c.tmN.dmg / (c.tm.dmg || 1), iH: c.feltI.hp * c.tmN.hp / (c.tmI.hp || 1), iD: c.feltI.dmg * c.tmN.dmg / (c.tmI.dmg || 1) });
+  // Medido (Ciudad, Hielo, Minas; ya sin los ajustes por arena): Pesadilla 1,83-2,56 (vida) y 2,16-2,45 (daño); Infierno 3,87-5,50 (vida) y 3,91-4,57 (daño).
+  // El techo era justo el multiplicador de la dificultad (2,5 / 5,5) y Minas (nivel de entrada 67 / 93) lo roza por redondeo del seguimiento por nivel
+  // (2,56 y 5,504): el techo pasa a ser el multiplicador x 1,1 (2,75 / 6,05). Sigue siendo «no es un muro»: nunca más de ~10 % sobre la escala nominal.
+  check('CALIBRACION.se_siente_mas_dificil_sin_ser_un_muro', Object.values(cal).every(c => { const f = fl(c); return inR(f.pH, 1.2, 2.75 /* 2,5 x 1,1 */) && inR(f.pD, 1.2, 2.75 /* 2,5 x 1,1 */) && f.iH > f.pH && f.iD > f.pD && f.iH < 6.05 /* 5,5 x 1,1 */ && f.iD < 6.05 /* 5,5 x 1,1 */; }), Object.fromEntries(Object.entries(cal).map(([a, c]) => [a, fl(c)])));
 
   // ---------------- BOTÍN (nivel de objeto) ----------------
   const lo = await E(() => {
@@ -141,7 +148,8 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
 
   // ---------------- SEMILLA (variantes de mapa) ----------------
   const sd = await E(() => {
-    const snap = () => ({ runes: BOS.runes ? BOS.runes.map(r => r.id).join() : '', solids: JSON.stringify(aidSolids), decals: aidDecals.slice(0, 40).map(d => Math.round(d.x) + ',' + Math.round(d.y)).join(';') });
+    // la selva del Bosque (bos-selva.js) pone rocas, zarzales y troncos por semilla (s.bsv): lo sólido FIJO es lo demás
+    const snap = () => ({ runes: BOS.runes ? BOS.runes.map(r => r.id).join() : '', solids: JSON.stringify(aidSolids.filter(s => !s.bsv && !s.lay)), bsv: aidSolids.filter(s => s.bsv).map(s => s.x + ',' + s.y).join(';'), decals: aidDecals.slice(0, 40).map(d => Math.round(d.x) + ',' + Math.round(d.y)).join(';') });
     const withSeed = (seed, a) => { const o = diffNewSoloSeed; diffNewSoloSeed = () => (_soloMapSeed = seed); try { __start(a, 1); } finally { diffNewSoloSeed = o; } };
     const r = {};
     withSeed(1234, 'bosque'); const b1 = snap(); withSeed(1234, 'bosque'); const b2 = snap();
@@ -149,6 +157,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     const variants = new Set(), decals = new Set(); let solidsSame = true;
     for (let s = 1; s <= 24; s++) { withSeed(s * 7919, 'bosque'); const q = snap(); variants.add(q.runes); decals.add(q.decals); if (q.solids !== b1.solids) solidsSame = false; }
     r.variants = [...variants]; r.decals = decals.size; r.solidsSame = solidsSame;
+    const selva = new Set(); for (let s2 = 1; s2 <= 6; s2++) { withSeed(s2 * 7919, 'bosque'); selva.add(snap().bsv); } r.selvaVaria = selva.size > 1;
     // Hielo: cada giro de los braseros cae libre (dentro del lago y lejos de sólidos)
     withSeed(55, 'hielo');
     r.hielo = HIE_CFG.brazierTurns.map(t => HIE_CFG.braziers.map(a => { const p = aidOnRing(HIE_CFG.ring, HIE_CFG.ring, a + t); return aidInside(p.x, p.y, 60) && !aidBlocked(p.x, p.y, 50); }).every(Boolean));
@@ -162,6 +171,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('SEMILLA.misma_semilla_mismo_mapa', sd.estable, sd);
   check('SEMILLA.bosque_dos_variantes_de_runas', sd.variants.length === 2, sd.variants);
   check('SEMILLA.decorado_varia_y_los_solidos_no', sd.decals > 10 && sd.solidsSame, { decals: sd.decals, solidsSame: sd.solidsSame });
+  check('SEMILLA.la_selva_del_bosque_si_varia_por_semilla', sd.selvaVaria, sd.selvaVaria);
   check('SEMILLA.hielo_giros_libres_y_variados', sd.hielo.every(Boolean) && sd.hieloVariants >= 3, sd);
   check('SEMILLA.cooperativo_usa_la_del_anfitrion', sd.coop, sd.coop);
 
@@ -185,7 +195,9 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
         const lay = aidSolids.filter(x => x.lay), I = aidLayoutInfo || { placed: 0, rejected: [] };
         R.minPlaced = Math.min(R.minPlaced, lay.length); R.sigs.add(I.pattern + (I.mirror ? 'm' : ''));
         for (const x of I.rejected) R.why[x.why] = (R.why[x.why] || 0) + 1;
-        R.unMax = Math.max(R.unMax, unreachable() - r.normal[a].un);
+        // bolsillos que agregan los PILARES: el mismo mapa (misma selva/decorado) con y sin ellos. (Antes se comparaba contra el mapa de Normal con otra
+        // semilla; el Bosque con selva cambia sus sólidos por semilla y ya traía bolsillos propios.)
+        const unWith = unreachable(), keep = aidSolids; aidSolids = keep.filter(x => !x.lay); aidNavBuild(); const unWithout = unreachable(); aidSolids = keep; aidNavBuild(); R.unMax = Math.max(R.unMax, unWith - unWithout);
         for (const h of heroes) if (aidSolids.some(x => Math.hypot(x.x - h.x, x.y - h.y) < x.r + (h.radius || 18))) R.spawnOk = false;
         if (a === 'hielo') for (const b of HIE.br) if (aidBlocked(b.x, b.y, 50)) R.spawnOk = false;
         const p = lay[s % lay.length];

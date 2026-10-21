@@ -74,7 +74,9 @@ function aidBuild(){
   else if(A==="laberinto") aidBuildLaberinto();
   else if(A==="acuatica") aidBuildAcuatica();
   else if(A==="divina") aidBuildDivina();
-  if(typeof aidLayoutBuild==="function") aidLayoutBuild(); // trazado al azar: pilares por semilla (Horda Infinita, Pesadilla, Infierno)
+  // trazado al azar: pilares por semilla (Horda Infinita, Pesadilla, Infierno). El Bosque lo arma ANTES de la selva (aidBuildBosque):
+  // la selva llena el mapa de rocas y zarzales y, puestos después, los pilares casi nunca encontraban lugar.
+  if(A!=="bosque" && typeof aidLayoutBuild==="function") aidLayoutBuild();
   battlefieldBuild();
   aidNavBuild();
   aidAmbReset();
@@ -136,6 +138,7 @@ function aidBuildBosque(){
   // (el arroyo con vado ahora va horneado en el suelo: js/arenas/bosque/bos-selva.js)
   for(let i=0;i<24;i++){ const s = aidFreeSpot(rnd, 160, 900, 10); if(s) aidDecal(aidArtMoss(i%6), s.x, s.y, {flip:rnd()<0.5}); }
   for(let i=0;i<10;i++){ const s = aidFreeSpot(rnd, 380, 900, 20); if(s) aidDecal(aidArtRoots(i%4), s.x, s.y, {flip:rnd()<0.5}); }
+  if(typeof aidLayoutBuild==="function") aidLayoutBuild(); // pilares al azar primero: la selva se acomoda alrededor (ver aidBuild)
   if(typeof bsvBuild==="function") bsvBuild(rnd); // selva: suelo con senderos y terrazas, rocas, zarzales, troncos, templo en ruinas
 }
 function aidBuildLaberinto(){

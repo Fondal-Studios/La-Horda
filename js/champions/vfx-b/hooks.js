@@ -211,7 +211,10 @@ function kvbTone(hex){
 }
 // kvbPunch viaja por la red como kvbFx('punch', x, y, r, 0, nivel, color numérico) para que los invitados lo vean igual
 function kvbPunch(h, x, y, r, level){
-  if(KVB.off || !h || !h.cls) return; const hex = (h.cls.glow || h.cls.color || '#ffffff').replace('#', '');
+  if(KVB.off || !h || !h.cls) return;
+  // con skin de set activa el destello lleva el color de la skin (como el resto de sus efectos: skin-fx.js), no el del guardián base
+  let skinHex = null; try{ const sf = typeof skinFxOf === 'function' ? skinFxOf(h) : null; skinHex = sf && (sf.P.tint || sf.P.glow); }catch(e){}
+  const hex = (skinHex || h.cls.glow || h.cls.color || '#ffffff').replace('#', '');
   kvbFx('punch', x, y, r, 0, level, parseInt(hex, 16));
 }
 KVB_FX['punch'] = (x, y, r, ang, level, num) => {
