@@ -23,6 +23,8 @@
      ALLOWED_ORIGINS  lista separada por comas de orígenes permitidos (ej:
                       "https://rawcdn.githack.com,https://raw.githack.com"). Vacío = cualquiera.
                       Si hay lista, siempre se suman el juego publicado y sus previews (ALWAYS_ALLOWED).
+     ALLOWED_ORIGINS_STRICT  "1" = solo los orígenes de ALLOWED_ORIGINS (sin sumar los de ALWAYS_ALLOWED)
+     HOST             dirección donde escucha (ej. 127.0.0.1 detrás de nginx). Vacío = todas
      MAX_ROOMS        tope de salas simultáneas (default 300)
      DATABASE_URL, DATA_DIR, ...  cuentas de usuario (ver server/accounts.js)
      SIM_LATENCY_MS   SOLO PRUEBAS: demora artificial de cada mensaje (default 0)
@@ -62,7 +64,10 @@ const CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // sin 0/O/1/I para di
 // ALLOWED_ORIGINS, la página principal quedaba rechazada y "Crear sala" fallaba.
 const ALWAYS_ALLOWED = ["https://fondalstudios.com", "https://drmarianojimenez94-sudo.github.io", "https://rawcdn.githack.com", "https://raw.githack.com"];
 const ALLOWED_ENV = (process.env.ALLOWED_ORIGINS || "").split(",").map(s => s.trim()).filter(Boolean);
-const ALLOWED = ALLOWED_ENV.length ? [...new Set(ALLOWED_ENV.concat(ALWAYS_ALLOWED))] : [];
+// ALLOWED_ORIGINS_STRICT=1 (producción propia): usa SOLO la lista de ALLOWED_ORIGINS, sin sumar GitHub Pages ni githack
+// (raw.githack.com sirve páginas de CUALQUIER repositorio de GitHub). Sin la variable, todo sigue exactamente igual.
+const ALLOWED_STRICT = process.env.ALLOWED_ORIGINS_STRICT === "1" && ALLOWED_ENV.length > 0;
+const ALLOWED = ALLOWED_ENV.length ? [...new Set(ALLOWED_STRICT ? ALLOWED_ENV : ALLOWED_ENV.concat(ALWAYS_ALLOWED))] : [];
 // ¿Se acepta este origen? (lo usan el WebSocket y la API de cuentas). Coincidencia exacta; una
 // entrada que termina en ":" o "*" vale como prefijo (ej. "http://localhost:" = cualquier puerto).
 // Antes bastaba con que EMPEZARA igual, y "https://drmarianojimenez94-sudo.github.io.otro.com" pasaba.
@@ -420,5 +425,8 @@ setInterval(() => {
 }, 15000);
 
 const PORT = parseInt(process.env.PORT || "8787", 10);
-server.listen(PORT, () => log("RELAY_LISTENING", { port: PORT, protocol: PROTOCOL, allowed: ALLOWED }));
+// HOST (opcional): "127.0.0.1" para que solo escuche el proxy local (nginx/Apache) del mismo servidor. Vacío = todas las interfaces, como siempre.
+const HOST = (process.env.HOST || "").trim();
+const onListening = () => log("RELAY_LISTENING", { host: HOST || "*", port: PORT, protocol: PROTOCOL, allowed: ALLOWED });
+if(HOST) server.listen(PORT, HOST, onListening); else server.listen(PORT, onListening);
 module.exports = { server, rooms, chatFilter, accounts, originAllowed, trades, publicRoomList };
