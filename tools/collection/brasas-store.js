@@ -50,7 +50,7 @@ const SECRET='secreto-de-prueba-brasas-0123';
    await chip.click();ok(await page.evaluate(()=>state==='shop'&&shopTab==='brasas'),'chip abre Brasas');
    await page.locator('.brasas-status').getByText('Iniciá sesión para comprar Brasas.').waitFor();checks++;
    ok(await page.locator('[data-brasas-buy]').count()===0,'sin sesión no hay compra');
-   await page.getByText('Las Brasas solo compran apariencia. Nunca poder.').waitFor();checks++;
+   await page.getByText('Las Brasas compran apariencia y piezas de set (equipo). Las piezas también se consiguen jugando.').waitFor();checks++;
    assert.deepEqual(errors,[]);await ctx.close();}
 
   // ---- con sesión ----

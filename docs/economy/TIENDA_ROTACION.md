@@ -25,7 +25,9 @@ var SHOP_MODE = "demo";   // "demo" | "live"
 
 Los números de la escala y de la rotación están en `SHOP_LIVE` (mismo archivo): `priceScale` (`set`, `legendario`) y `rotation` (`piecesPerDay`, `windowDays`, `seed`). Los guardados existentes y sus compras no se tocan en ningún modo: lo que ya tenés sigue siendo tuyo y no se reembolsa ni se cobra nada al cambiar.
 
-Las **Brasas ✦ siguen siendo solo apariencia**: no se tocó `js/systems/premium.js`, `server/premium-packs.json`, `js/net/*` ni `server/*`. Las skins (hoy solo ✦ 800; ya no se compran con oro, ver PRECIOS.md) tampoco cambian: son cosméticas y no entregan piezas.
+**Actualización (piezas por Brasas):** las piezas de set que rotan ya **no se pagan con oro**: cuestan ✦ 200 (mismo precio en `demo` y `live`), el servidor valida que estén a la venta hoy (`POST /api/wallet/buy-piece` ejecuta la misma rotación, núcleo puro en `js/data/pricing.js`) y se apagan con `PIECES_FOR_BRASAS`. Los precios en oro de esta tabla (7.200 por pieza en `live`) quedan como referencia histórica; los legendarios con nombre siguen en oro. Ver `PRECIOS.md` §5-bis.
+
+Las **Brasas ✦ eran solo apariencia** (antes de esa actualización): no se tocó `js/systems/premium.js`, `server/premium-packs.json`, `js/net/*` ni `server/*`. Las skins (hoy solo ✦ 800; ya no se compran con oro, ver PRECIOS.md) tampoco cambian: son cosméticas y no entregan piezas.
 
 ## 2. Escala de precios y tiempo para comprar
 
