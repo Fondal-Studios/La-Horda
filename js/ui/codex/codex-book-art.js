@@ -274,7 +274,7 @@ const BOOK_SCENES = {
     c.fillStyle = "#ff9a4a"; c.beginPath(); c.moveTo(rx - 22*u, cy - 30*u*f); c.lineTo(rx - 14*u, cy - 6*u); c.lineTo(rx - 22*u, cy + 16*u); c.lineTo(rx - 30*u, cy - 6*u); c.closePath(); c.fill();
     _bkText(c, "✦", rx - 22*u, cy - 38*u, 18*u, "#ffd98a");
     c.strokeStyle = "#b48aff"; c.fillStyle = "rgba(180,138,255,0.25)"; c.lineWidth = 2; c.beginPath(); c.moveTo(rx + 10*u, cy - 26*u); c.lineTo(rx + 34*u, cy - 26*u); c.lineTo(rx + 40*u + Math.sin(t*2)*2, cy + 22*u); c.lineTo(rx + 4*u, cy + 22*u); c.closePath(); c.fill(); c.stroke();
-    _bkText(c, "BRASAS ✦", rx, H*0.82, 15*u, "#ff9a4a"); _bkText(c, "solo apariencia", rx, H*0.92, 11*u, "#b39a84");
+    _bkText(c, "BRASAS ✦", rx, H*0.82, 15*u, "#ff9a4a"); _bkText(c, "apariencia y piezas", rx, H*0.92, 11*u, "#b39a84");
   },
   postgame(c, W, H, t, u){
     _bkBg(c, W, H, "#2a2210", "#0a0803");

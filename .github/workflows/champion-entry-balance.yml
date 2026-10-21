@@ -153,6 +153,7 @@ jobs:
       - run: node server/test-founders.js
       - run: node server/test-presence.js
       - run: node server/test-wallet.js
+      - run: node server/test-wallet-pieces.js
       - run: node server/test-payments-mp.js
       - run: node server/test-relay.js
       - run: node tools/alpha/gm-users-ui.js
@@ -185,6 +186,9 @@ jobs:
           node tools/alpha/public-onboarding.js
           node tools/collection/shop-pricing-browser.js
           node tools/collection/pricing-sync.js
+          node tools/items/t_piezas_brasas.js
+          node tools/collection/t_shop_rotation.js
+          node tools/items/t_skins_brasas.js
           node tools/factory/event-runtime.js
           node tools/factory/options-layout.js
           node tools/art/alpha_set_skins/browser.js

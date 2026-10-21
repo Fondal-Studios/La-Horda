@@ -97,7 +97,7 @@ const BOOK_FRAGMENTS = {
     lesson:"El oro se gana jugando y se gasta en la Tienda: objetos del día, nuevos guardianes, skins y cromas. Nada de eso es obligatorio para ganar; cada guardián extra es, sobre todo, otra forma de jugar."},
   minas: {title:"LA LUZ ES TERRITORIO", topic:"brasas", topicTitle:"LAS BRASAS ✦", topicArt:"brasas",
     lore:"Las Minas guardan lo que dejaron los que bajaron antes: nombres grabados en la roca, cuentas de días que se cortan de golpe. Acá la oscuridad también pega. Cerbero custodiaba el umbral, y el umbral ya quedó atrás.",
-    lesson:"Las Brasas ✦ son una moneda aparte y solo compran apariencia: skins y cromas. Nunca compran poder ni hacen falta para llegar al final. Todo el poder se consigue jugando, con el oro que ganás en las arenas."},
+    lesson:"Las Brasas ✦ son una moneda aparte: compran apariencia (skins y cromas) y piezas de set. Nunca hacen falta para llegar al final: las piezas también caen jugando y todo el poder se consigue con el oro que ganás en las arenas."},
   infernal: {title:"EL QUE ELIGIÓ QUEDARSE", topic:"postgame", topicTitle:"LO QUE SIGUE", topicArt:"postgame",
     lore:"Te mentí en lo que importaba. Fui el Primero de los Cuatro, y me quedé con la Horda por decisión propia: quería fundir los cristales para ser la Horda. Caí diciendo que alguien tenía que sostenerla, y lo creí. Este libro lo escribí yo. Ahora los cristales necesitan portadores, y son ustedes.",
     lesson:"Ganaste la campaña. Quedan la Arena Divina (las Cinco Pruebas), la Horda Infinita, las dificultades Pesadilla e Infierno, Convergencia y Coliseo. Tu guardián y tu equipo siguen creciendo en todos. El Códice guarda todo lo que viste.",

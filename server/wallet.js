@@ -4,8 +4,10 @@
 //   · Cada movimiento queda en un libro append-only con referencia ÚNICA: reintentar un pedido no cobra ni acredita dos veces.
 //   · Comprar con Brasas: el precio lo pone el servidor, se debita, se entrega la skin en el guardado (con control de
 //     versión, igual que los regalos del Game Master) y, si no se pudo entregar, se reintegra.
-//   · Solo cosméticos (skins, cromas y colecciones de apariencias): nunca poder de juego. Los CAMPEONES no se compran con
-//     Brasas: se compran con oro (js/data/pricing.js). Única excepción: las 3 elecciones del Pack de bienvenida (regalo, no compra).
+//   · Cosméticos (skins, cromas y colecciones de apariencias) y, por decisión del dueño, PIEZAS DE SET (equipo): /api/wallet/buy-piece.
+//     Es la única compra que da poder; se apaga con PIECES_FOR_BRASAS (js/data/pricing.js; ver docs/economy/PRECIOS.md, "Riesgo:
+//     poder por dinero"). Los CAMPEONES no se compran con Brasas: se compran con oro. Única excepción: las 3 elecciones del Pack de
+//     bienvenida (regalo, no compra).
 //   · Precios: UNA fuente (js/data/pricing.js, la misma que carga el cliente). Este módulo la ejecuta en un contexto aislado.
 //   · El panel de administración acredita o corrige saldos (permiso MODIFY_CURRENCY); queda en el libro y en la auditoría.
 //   · Pagos con dinero real: server/payments.js (apagado hasta configurar un proveedor; ver docs/production/PREMIUM_CURRENCY.md).
@@ -24,8 +26,22 @@ let PRICING_MOD = null;
 function pricing(){
   if(PRICING_MOD) return PRICING_MOD;
   const c = {}; vm.createContext(c);
-  vm.runInContext(fs.readFileSync(path.join(__dirname, "../js/data/pricing.js"), "utf8") + "\n;this.__P = PRICING; this.__fn = { pricingCosmeticTier, pricingBrasas, pricingCosmeticGold, pricingChampionGold, pricingCollection };", c, { timeout: 1000, filename: "pricing.js" });
-  return (PRICING_MOD = Object.assign({ PRICING: c.__P }, c.__fn));
+  vm.runInContext(fs.readFileSync(path.join(__dirname, "../js/data/pricing.js"), "utf8") + "\n;this.__P = PRICING; this.__fn = { pricingCosmeticTier, pricingBrasas, pricingCosmeticGold, pricingChampionGold, pricingCollection, pricingRotationConfig, pricingRotationContext, pricingRotationKeys }; this.__flags = () => ({ SHOP_MODE: SHOP_MODE, PIECES_FOR_BRASAS: PIECES_FOR_BRASAS });", c, { timeout: 1000, filename: "pricing.js" });
+  return (PRICING_MOD = Object.assign({ PRICING: c.__P, __flags: c.__flags }, c.__fn));
+}
+// Interruptores (js/data/pricing.js: SHOP_MODE, PIECES_FOR_BRASAS). Las pruebas pueden pisarlos con setTestFlags (nunca en producción).
+let FLAG_OVERRIDE = null;
+const flags = () => Object.assign(pricing().__flags(), FLAG_OVERRIDE || {});
+function setTestFlags(o){ FLAG_OVERRIDE = o; }
+// Piezas de set a la venta: server/shop-pieces.json lo genera tools/items/gen_shop_pieces.js desde la tienda real del cliente y
+// tools/collection/pricing-sync.js verifica que coincide (piezas, sets y rotación diaria).
+let PIECE_DB = null;
+function pieceDb(){ return PIECE_DB || (PIECE_DB = JSON.parse(fs.readFileSync(path.join(__dirname, "shop-pieces.json"), "utf8"))); }
+let ROT_CTX = null;
+function rotationKeys(day){
+  const P = pricing();
+  if(!ROT_CTX) ROT_CTX = P.pricingRotationContext(pieceDb().pool, P.pricingRotationConfig());
+  return P.pricingRotationKeys(ROT_CTX, day);
 }
 const brasasOf = (sku) => pricing().pricingBrasas(sku.tier);
 const goldOf = (sku) => pricing().pricingCosmeticGold(sku.tier, sku.goldBase);
@@ -84,7 +100,8 @@ function routes(ctx){
       const saved = await store().getSave(userId);
       const d = saved ? JSON.parse(saved.data) : null;
       if(!d) return { ok: false, reason: "NO_SAVE" };
-      mutate(d);
+      const abort = mutate(d);   // un texto = abortar sin guardar (motivo)
+      if(typeof abort === "string") return { ok: false, reason: abort };
       const r = await store().putSave(userId, JSON.stringify(d), summarize(d), saved.version, false);
       if(r.ok) return { ok: true, saveVersion: r.version, baseVersion: saved.version };
     }
@@ -157,6 +174,7 @@ function routes(ctx){
       });
     }
     return { currency: CURRENCY, premium: w.premium,
+      pieces: { enabled: !!flags().PIECES_FOR_BRASAS, price: P.brasas.pieza, mode: flags().SHOP_MODE },
       prices: { brasas: P.brasas, goldCosmetic: P.gold.cosmetic, collection: P.collection, skinPremium: P.brasas.set, skinGold: P.gold.cosmetic.set },
       welcome: { pack: P.welcome.pack, champions: P.welcome.champions, entitled: welcome.entitled, claimed: welcome.claimed, remaining: welcome.remaining, eligible: welcome.eligible },
       ledger: (await store().walletLedger(user.id, 20)).map(e => ({ delta: e.delta, balanceAfter: e.balanceAfter, reason: e.reason, at: e.at })),
@@ -189,6 +207,72 @@ function routes(ctx){
     return { ok: true, sku: sku.id, kind: sku.kind, price, cosmetic: sku.id, cosmeticType: isCromaKind(sku) ? "croma" : "skin", cosmetics: [cosmeticOut(sku)],
       premium: (await store().walletGet(user.id)).premium, saveVersion: g.saveVersion, baseVersion: g.baseVersion };
  }));
+
+  /* ---------- Piezas de set (equipo) con Brasas ----------
+     El servidor decide TODO: que el interruptor esté prendido, que la pieza exista y esté a la venta (en "live", la rotación diaria
+     UTC), el precio, que haya lugar en el inventario y que no la tengas ya. Cobra (asiento con referencia única) y la ENTREGA en
+     save.stash de la nube como esbozo {uid, designId, srvGrant} que el cliente completa al cargar (js/storage/save.js). Registra la
+     pieza en la colección y, si con ella se completa un set que tiene skin, entrega la skin (el regalo del set completo).
+     La entrega es idempotente por uid (derivado de la referencia): reintentar no duplica ni cobra otra vez; si no se pudo entregar, se reintegra. */
+  const pieceUid = (debitRef) => "it_srv_" + crypto.createHash("sha256").update(debitRef).digest("hex").slice(0, 16);
+  const stashFree = (d) => {
+    const eq = new Set(); for(const c of Object.values(d.champions || {})) for(const u of Object.values((c && c.equipment) || {})) if(u) eq.add(u);
+    return (pricing().PRICING.pieces.inventoryCapacity) - (Array.isArray(d.stash) ? d.stash.filter(it => it && !eq.has(it.uid)).length : 0);
+  };
+  const hasPiece = (d, id) => Array.isArray(d.stash) && d.stash.some(it => it && it.designId === id);
+  route("POST", "/api/wallet/buy-piece", "user", async ({ user, body }) => withLock("buy:" + user.id, async () => {
+    if(!flags().PIECES_FOR_BRASAS) fail("PIECES_OFF", 403);
+    const ref = refOf(body.ref); if(!ref) fail("BAD_REF");
+    const db = pieceDb(), id = typeof body.piece === "string" ? body.piece : "";
+    const piece = Object.hasOwn(db.pieces, id) ? db.pieces[id] : null; if(!piece) fail("BAD_SKU");
+    const price = pricing().pricingBrasas("pieza"); if(!(price > 0)) fail("BAD_SKU");
+    if(body.expectedPrice !== price) fail("PRICE_CHANGED", 409);
+    const debitRef = "buyp:" + user.id + ":" + ref, uid = pieceUid(debitRef);
+    const prev = (await store().walletLedger(user.id, 200)).find(e => e.ref === debitRef);
+    const saved = await store().getSave(user.id); if(!saved) fail("NO_CLOUD_SAVE", 409);
+    const d0 = JSON.parse(saved.data);
+    if(prev){   // reintento de una compra ya cobrada: se completa la entrega si faltaba
+      if(!(Array.isArray(d0.stash) && d0.stash.some(it => it && it.uid === uid))){
+        const g = await grantPiece(user.id, id, piece, uid);
+        if(!g.ok) fail(g.reason === "NO_SAVE" ? "NO_CLOUD_SAVE" : g.reason === "INVENTORY_FULL" ? "INVENTORY_FULL" : "CONFLICT", 409);
+      }
+      return { ok: true, repeated: true, piece: { uid, designId: id }, premium: (await store().walletGet(user.id)).premium };
+    }
+    // rotación: en "live" solo se vende lo que sale hoy (día UTC); en "demo", todo el catálogo
+    if(flags().SHOP_MODE === "live" && !rotationKeys(Math.floor(now() / 86400000)).includes("d:" + id)) fail("NOT_ON_SALE", 409);
+    if(hasPiece(d0, id)) fail("OWNED", 409);
+    if(stashFree(d0) <= 0) fail("INVENTORY_FULL", 409);
+    const debit = await store().walletApply({ userId: user.id, delta: -price, reason: "buyp:" + id, ref: debitRef, actor: user.id, at: now() });
+    if(debit.insufficient) fail("INSUFFICIENT", 402);
+    const g = await grantPiece(user.id, id, piece, uid);
+    if(!g.ok){
+      await store().walletApply({ userId: user.id, delta: price, reason: "refund:" + id + ":" + g.reason, ref: "refund:" + debitRef, actor: user.id, at: now() });
+      fail(g.reason === "NO_SAVE" ? "NO_CLOUD_SAVE" : g.reason === "INVENTORY_FULL" ? "INVENTORY_FULL" : "CONFLICT", 409);
+    }
+    log("WALLET_BUY_PIECE", { user: user.id, piece: id, price, premium: debit.premium, setCompleted: g.setCompleted || null });
+    return { ok: true, piece: { uid, designId: id }, set: piece.set, price, setCompleted: g.setCompleted || null,
+      cosmetics: g.setCompleted ? [{ id: g.setCompleted, type: "skin" }] : [],
+      premium: (await store().walletGet(user.id)).premium, saveVersion: g.saveVersion, baseVersion: g.baseVersion };
+  }));
+  async function grantPiece(userId, id, piece, uid){
+    let completed = null;
+    const r = await mutateSave(userId, d => {
+      completed = null;
+      d.stash = Array.isArray(d.stash) ? d.stash.slice() : [];
+      if(d.stash.some(it => it && it.uid === uid)) return;   // ya entregada
+      if(stashFree(d) <= 0) return "INVENTORY_FULL";
+      d.stash.push({ uid, designed: true, designId: id, type: piece.type, rarity: piece.rarity || "legendario", set: piece.set, champion: piece.champion || null, name: piece.name, level: 1, bought: true, srvGrant: true });
+      const col = Object.assign({}, d.collection), c = col[id];
+      col[id] = { n: (c && Number(c.n) > 0 ? Number(c.n) : 0) + 1, first: (c && c.first) || now(), isNew: true };
+      d.collection = col;
+      // el set completo (todas las piezas registradas en la colección) regala su skin, igual que cosmeticUnlockCompletedSet en el cliente
+      const ids = pieceDb().sets[piece.set] || [];
+      if(skinCatalog()[piece.set] && skinCatalog()[piece.set].kind === "set" && ids.length && ids.every(k => col[k] && Number(col[k].n) > 0)){
+        d.cosmeticUnlocks = Object.assign({}, d.cosmeticUnlocks, { [piece.set]: true }); completed = piece.set;
+      }
+    });
+    return Object.assign({}, r, { setCompleted: completed });
+  }
 
   // Colección de un campeón: todas sus apariencias que todavía no tenés, con descuento por cantidad (ahorro calculado contra
   // la suma de los precios sueltos de ESAS piezas). Una sola compra, un solo cobro, un solo asiento en el libro.
@@ -287,4 +371,4 @@ function routes(ctx){
   return result;
 }
 
-module.exports = { routes, CURRENCY, skinCatalog, pricing };
+module.exports = { routes, CURRENCY, skinCatalog, pricing, pieceDb, rotationKeys, setTestFlags };

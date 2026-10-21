@@ -17,7 +17,7 @@ function shopIsLive(){ return typeof SHOP_MODE!=="undefined" && SHOP_MODE==="liv
 // Día de la tienda: en "demo" la fecha local (como siempre); en "live" la fecha UTC, así todo se renueva a la vez para todos.
 function shopDayKey(d){ d = d || new Date(); return shopIsLive() ? d.getUTCFullYear()+"-"+(d.getUTCMonth()+1)+"-"+d.getUTCDate() : d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate(); }
 // RNG con semilla (el día) para que dos jugadores vean ofertas parecidas el mismo día.
-function _shopRng(seedStr){ let h = 2166136261; for(let i=0;i<seedStr.length;i++){ h ^= seedStr.charCodeAt(i); h = Math.imul(h, 16777619); } return ()=>{ h = Math.imul(h ^ (h>>>15), 2246822507); h = Math.imul(h ^ (h>>>13), 3266489909); h ^= h>>>16; return (h>>>0)/4294967296; }; }
+function _shopRng(seedStr){ return pricingRng(seedStr); }
 function _withRng(rng, fn){ const r = Math.random; Math.random = rng; try{ return fn(); } finally { Math.random = r; } }
 function shopState(){
   const day = shopDayKey();
@@ -121,23 +121,11 @@ function shopSkinPrice(setId){
   const configured = shopConfiguredPrice("cosmetic", setId, full);
   return configured===full ? shopSetPrice(setId) : Math.round(configured*missing.length/all.length);
 }
+// Mensaje de las rutas de oro cerradas para las piezas de set (js/systems/premium.js: se compran con Brasas ✦, validado por el servidor).
+const SHOP_NO_GOLD_PIECES = "Las piezas de set se compran con Brasas ✦ (entrá con tu cuenta) o se consiguen jugando. No se venden por oro.";
 function shopBuySetBundle(setId, appearance, discount, expectedPrice){
-  if(typeof state!=="undefined" && state==="playing") return {ok:false, reason:"La tienda se usa fuera de la partida"};
-  // modo live: el paquete de set completo saltearía la rotación diaria; las piezas se compran de a una cuando salen
-  if(shopIsLive()) return {ok:false, reason:"En esta modalidad las piezas del set se compran de a una, cuando están a la venta"};
-  if(!Object.prototype.hasOwnProperty.call(SET_DB,setId)) return {ok:false,reason:"Ese set no existe"};
-  const missing=shopSetMissing(setId);
-  if(!missing.length || (appearance && skinOwnedFull(setId))) return {ok:false,reason:"Ya es tuyo"};
-  let price=appearance ? shopSkinPrice(setId) : shopSetPrice(setId);
-  if(discount!=null){ if(!SHOP_DEAL_OFF.includes(discount)) return {ok:false,reason:"Descuento inválido"}; price=_shopDisc(price,discount); }
-  if(expectedPrice!=null && expectedPrice!==price) return {ok:false,reason:"El precio cambió. Revisá el nuevo valor y volvé a confirmar."};
-  if(!Number.isSafeInteger(price) || price<0 || (save.gold||0)<price) return {ok:false,reason:"No te alcanza el oro"};
-  if(stashUsedSlots()+missing.length>INVENTORY_CAPACITY) return {ok:false,reason:"No hay espacio para el paquete completo: vendé o descartá objetos"};
-  const items=missing.map(id=>makeDesignedItem(id));
-  if(items.some(it=>!it)) return {ok:false,reason:"El paquete contiene una pieza no disponible"};
-  for(const item of items){ item.bought=true; addItemToInventory(null,item); }
-  save.gold-=price; persist();
-  return {ok:true,id:setId,n:items.length,price};
+  // POLÍTICA: ni el paquete de piezas ni la apariencia se pagan con oro. El oro es del cliente (editable) y completar el set regala la skin.
+  return {ok:false, reason: appearance ? "Las skins se compran solo con Brasas ✦. Entrá con tu cuenta para usarlas." : SHOP_NO_GOLD_PIECES};
 }
 // Categoría de tienda de un objeto diseñado (una sola por objeto: no hay dos definiciones)
 function shopCategoryOf(d){
@@ -177,6 +165,7 @@ function shopBuyCatalog(key, tier, priceOverride, expectedPrice){
   if(typeof state!=="undefined" && state==="playing") return {ok:false, reason:"La tienda se usa fuera de la partida"};
   const entry = shopCatalog().find(e=>e.key===key);
   if(!entry) return {ok:false, reason:"Ese objeto no existe"};
+  if(entry.cat==="set") return {ok:false, reason:SHOP_NO_GOLD_PIECES};   // las piezas de set NO se compran con oro (ver SHOP_NO_GOLD_PIECES)
   if(entry.kind==="archetype" && !SHOP_ARCHETYPE_TIERS.includes(tier)) return {ok:false, reason:"Categoría inválida"};
   if(!shopRotationAllows(entry)) return {ok:false, reason:shopRotationWhyNot(entry)};
   const price = priceOverride!=null ? priceOverride : shopPriceOf(entry, tier);
@@ -254,7 +243,7 @@ function skinAutoEquip(setId){
    ============================================================ */
 const SHOP_DEAL_OFF = [15, 20, 25, 30];
 const SHOP_DEALS_PER_DAY = 4;
-function _shopShuffle(arr, rng){ const a = arr.slice(); for(let i=a.length-1;i>0;i--){ const j = (rng()*(i+1))|0; const t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function _shopShuffle(arr, rng){ return pricingShuffle(arr, rng); }
 function _shopDisc(base, off){ return base===0 ? 0 : Math.min(base, Math.max(1, Math.round(base*(1-off/100)/10)*10)); }
 let _shopShowcaseCache = null;
 function shopDailyShowcase(){
@@ -336,32 +325,19 @@ const SHOP_MS_DAY = 86400000;
 function shopUtcDay(now){ const t = now instanceof Date ? now.getTime() : (typeof now==="number" ? now : Date.now()); return Math.floor(t / SHOP_MS_DAY); }
 let _shopRotCtx = null;
 function shopRotationPoolEntries(){ return shopCatalog().filter(e=>SHOP_ROT_CATS.includes(e.cat)).sort((a,b)=>a.key<b.key ? -1 : a.key>b.key ? 1 : 0); }
-function _shopRotCfg(){ const r = SHOP_LIVE.rotation; return {n:Math.max(1, r.piecesPerDay|0), w:Math.max(1, r.windowDays|0), seed:String(r.seed)}; }
-// Contexto: orden A, longitud del ciclo y cotas de reaparición. Se rearma si cambia el catálogo o la configuración.
+function _shopRotCfg(){ return pricingRotationConfig(); }
+// Contexto: orden A, longitud del ciclo y cotas de reaparición (núcleo puro en js/data/pricing.js, el mismo que ejecuta el servidor).
+// Se rearma si cambia el catálogo o la configuración.
 function shopRotationContext(){
   const cfg = _shopRotCfg(), pool = shopRotationPoolEntries(), sig = cfg.n+"|"+cfg.w+"|"+cfg.seed+"|"+pool.map(e=>e.key).join(",");
   if(_shopRotCtx && _shopRotCtx.sig === sig) return _shopRotCtx;
-  const setPieces = {}, legends = [];
-  for(const e of pool){
-    if(e.cat==="legendario") legends.push(e.key);
-    else { const g = (DESIGNED_ITEMS[e.id] && DESIGNED_ITEMS[e.id].set) || e.id; (setPieces[g] = setPieces[g] || []).push(e.key); }
-  }
-  const groups = _shopShuffle(Object.keys(setPieces).sort(), _shopRng(cfg.seed+"|sets"));
-  const S = []; for(let r=0; S.length < pool.length - legends.length; r++) for(const g of groups) if(setPieces[g][r]) S.push(setPieces[g][r]);
-  const G = _shopShuffle(legends, _shopRng(cfg.seed+"|legend")), T = S.length + G.length, A = new Array(T), at = {};
-  G.forEach((k, i)=>{ at[Math.floor((i + 0.5) * T / G.length)] = k; });
-  for(let p=0, si=0; p<T; p++) A[p] = at[p] !== undefined ? at[p] : S[si++];
-  const L = Math.max(1, Math.ceil(T / cfg.n));
-  return (_shopRotCtx = {sig, cfg, A, T, L, maxGap:L + Math.min(cfg.w, L) - 1, minGap:Math.max(1, L - Math.min(cfg.w, L) + 1), entries:Object.fromEntries(pool.map(e=>[e.key, e]))});
+  const core = pricingRotationContext(pool.map(e=>({key:e.key, cat:e.cat, group:e.cat==="legendario" ? "" : ((DESIGNED_ITEMS[e.id] && DESIGNED_ITEMS[e.id].set) || e.id)})), cfg);
+  return (_shopRotCtx = Object.assign({sig, entries:Object.fromEntries(pool.map(e=>[e.key, e]))}, core));
 }
 // Claves de las piezas a la venta el día UTC número `dayNum` (por defecto, hoy).
 function shopRotationKeys(dayNum){
-  const c = shopRotationContext(), {n, w, seed} = c.cfg, D = dayNum == null ? shopUtcDay() : dayNum;
-  if(!c.T) return [];
-  const cyc = Math.floor(D / c.L), k = D - cyc * c.L, win = Math.floor(k / w), start = win * w, size = Math.min(w, c.L - start);
-  const perm = _shopShuffle(Array.from({length:size}, (_, i)=>i), _shopRng(seed+"|c"+cyc+"|w"+win)); // perm[j] = día (en la ventana) de la pieza-día j
-  const h = start + perm.indexOf(k - start);
-  return c.A.slice(h * n, h * n + n);
+  const c = shopRotationContext(), D = dayNum == null ? shopUtcDay() : dayNum;
+  return pricingRotationKeys(c, D);
 }
 function shopRotationToday(now){ const c = shopRotationContext(); return shopRotationKeys(shopUtcDay(now)).map(k=>c.entries[k]).filter(Boolean); }
 // Días hasta que `key` vuelva a estar a la venta: 0 = hoy, 1 = mañana… (null si no rota). Un solo recorrido por día UTC.

@@ -41,7 +41,7 @@ const T18_48 = Date.UTC(2026, 9, 19, 18, 48, 0); // 5 h 12 min antes de la media
       out.setPrice = shopSetPrice('baluarte');
       out.allowsAll = cat.every(e => shopRotationAllows(e));
       save.gold = 1e6; save.stash = []; save.collection = {}; save.cosmeticUnlocks = {}; state = 'shop';
-      const b = shopBuySetBundle('baluarte', false); out.bundleOk = b.ok && b.n === 4 && save.gold === 1e6 - 4800;
+      const b = shopBuySetBundle('baluarte', false); out.bundleOk = !b.ok && save.gold === 1e6 && save.stash.length === 0;   // el paquete de piezas por oro está cerrado (piezas = Brasas, t_piezas_brasas.js)
       save.stash = []; save.gold = 1e6;
       const r1 = shopBuyCatalog(leg.key); out.legBuy = r1.ok && save.gold === 1e6 - 4000;
       out.keys = cat.map(e => e.key).sort();
@@ -52,7 +52,7 @@ const T18_48 = Date.UTC(2026, 9, 19, 18, 48, 0); // 5 h 12 min antes de la media
     check('demo es el modo por defecto', demo.mode === 'demo' && demo.live === false);
     check('demo: precios de siempre (pieza 1.200, legendario 4.000, set 4.800)', demo.piece === 1200 && demo.leg === 4000 && demo.catalogPriceGetter === 1200 && demo.setPrice === 4800, demo);
     check('demo: el catálogo no cambia (mismas claves que docs/production/shop-catalog.json)', JSON.stringify(demo.keys) === JSON.stringify(golden.itemPrices));
-    check('demo: todo se puede comprar siempre y el paquete de set funciona', demo.allowsAll && demo.bundleOk && demo.legBuy, demo);
+    check('demo: todo el catálogo está siempre a la venta (las piezas de set por Brasas, el paquete por oro cerrado)', demo.allowsAll && demo.bundleOk && demo.legBuy, demo);
     check('demo: el día de la tienda es la fecha local', demo.dayKeyLocal);
 
     /* ---------------- LIVE ---------------- */
@@ -122,10 +122,11 @@ const T18_48 = Date.UTC(2026, 9, 19, 18, 48, 0); // 5 h 12 min antes de la media
       const nt = notToday.find(e => e.cat === 'set'), ntLeg = notToday.find(e => e.cat === 'legendario');
       state = 'shop'; save.gold = 1e7; save.stash = []; save.collection = {}; save.cosmeticUnlocks = {};
       let before = JSON.stringify({g: save.gold, s: save.stash});
-      let r = shopBuyCatalog(nt.key); o.ntSet = !r.ok && JSON.stringify({g: save.gold, s: save.stash}) === before && /no está a la venta hoy/.test(r.reason); o.ntReason = r.reason;
+      let r = shopBuyCatalog(nt.key); o.ntSet = !r.ok && JSON.stringify({g: save.gold, s: save.stash}) === before && /Brasas/.test(r.reason) && !shopRotationAllows(nt); o.ntReason = shopRotationWhyNot(nt);   // por oro no se compra; la rotación la aplica también el servidor (t_piezas_brasas.js)
       r = shopBuyCatalog(ntLeg.key); o.ntLeg = !r.ok && save.gold === 1e7;
-      const t = today[0]; r = shopBuyCatalog(t.key, undefined, null, 1); o.stale = !r.ok && save.gold === 1e7;
-      r = shopBuyCatalog(t.key); o.today = r.ok && save.gold === 1e7 - shopPriceOf(t);
+      const t = today.find(e => e.cat === 'legendario');   // las piezas de set de hoy ya no se pagan con oro: se prueba el precio exacto con un legendario
+      r = shopBuyCatalog(today.find(e => e.cat === 'set').key); o.todaySetGold = !r.ok && save.gold === 1e7;
+      if(t){ r = shopBuyCatalog(t.key, undefined, null, 1); o.stale = !r.ok && save.gold === 1e7; r = shopBuyCatalog(t.key); o.today = r.ok && save.gold === 1e7 - shopPriceOf(t); } else { o.stale = true; o.today = true; }
       // el paquete de set (con oro de sobra, inventario vacío) no entrega nada
       save.stash = []; save.gold = 1e7; before = JSON.stringify({g: save.gold, s: save.stash});
       r = shopBuySetBundle('baluarte', false); o.bundle = !r.ok && JSON.stringify({g: save.gold, s: save.stash}) === before; o.bundleReason = r.reason;
@@ -142,7 +143,7 @@ const T18_48 = Date.UTC(2026, 9, 19, 18, 48, 0); // 5 h 12 min antes de la media
     });
     check('live: una pieza de set que no está hoy no se compra (ni con oro de sobra) y dice cuándo vuelve', buy.ntSet && /vuelve/.test(buy.ntReason), buy.ntReason);
     check('live: un legendario que no está hoy no se compra', buy.ntLeg);
-    check('live: una pieza de hoy se compra al precio exacto; un precio viejo se rechaza', buy.today && buy.stale);
+    check('live: una pieza de set de hoy no se paga con oro; un legendario de hoy (si hay) se compra al precio exacto y un precio viejo se rechaza', buy.todaySetGold && buy.today && buy.stale);
     check('live: el paquete de set completo NO saltea la rotación (con y sin descuento), sin cobrar ni entregar', buy.bundle && buy.bundleDisc, buy.bundleReason);
     check('live: la skin sigue siendo solo apariencia (no entrega piezas)', buy.skin);
     check('live: la compra legada (shopBuy) también está cerrada', buy.legacy);
@@ -184,17 +185,22 @@ const T18_48 = Date.UTC(2026, 9, 19, 18, 48, 0); // 5 h 12 min antes de la media
     await page.waitForTimeout(300);
     const ui = await E(() => {
       const q = s => document.querySelectorAll(s).length;
-      return {cards: q('.shop-rot-card'), renew: (document.querySelector('[data-shop-rot] [data-shop-renew]') || {}).textContent, goal: q('[data-shop-now="goal"]'), disabled: q('.shop-rot-card .shop-btn:disabled'),
+      return {setCards: q('.shop-rot-card [data-piece-premium]'), goldCards: q('.shop-rot-card [data-rot-buy]'), cards: q('.shop-rot-card'), renew: (document.querySelector('[data-shop-rot] [data-shop-renew]') || {}).textContent, goal: q('[data-shop-now="goal"]'), disabled: q('.shop-rot-card [data-rot-buy]:disabled'),
         miss: !!document.querySelector('.shop-rot-miss'), note: (document.querySelector('.shop-rot-note') || {}).textContent, scrollW: document.documentElement.scrollWidth};
     });
-    check('UI live: 6 piezas "A LA VENTA HOY", temporizador "Se renueva en 5 h 12 min" y fila "Tu próxima meta"', ui.cards === N && /Se renueva en 5 h 12 min/.test(ui.renew) && ui.goal === 1 && ui.disabled === N && ui.miss, ui);
+    check('UI live: 6 piezas "A LA VENTA HOY", temporizador "Se renueva en 5 h 12 min" y fila "Tu próxima meta"', ui.cards === N && /Se renueva en 5 h 12 min/.test(ui.renew) && ui.goal === 1 && ui.setCards + ui.goldCards === N && ui.disabled === ui.goldCards && ui.miss === (ui.goldCards > 0), ui);
     check('UI live: texto honesto (sin urgencia): dice que el precio no cambia y no hay cantidad limitada', /no cambia/.test(ui.note) && /cantidad limitada/.test(ui.note) && !/última|ya!|solo hoy|apurate/i.test(ui.note), ui.note);
     // con oro: se compra desde la vitrina tocando
     await E(() => { save.gold = 1e6; renderShop(); });
-    const k0 = await E(() => document.querySelector('.shop-rot-card .shop-btn').getAttribute('data-rot-buy'));
-    await E(() => document.querySelector('.shop-rot-card [data-rot-buy]').click()); await page.waitForTimeout(600);
-    const bought = await E(k => ({gold: save.gold, owned: stashItems().some(it => 'd:' + it.designId === k)}), k0);
-    check('UI live: comprar desde "A la venta hoy" cobra el precio exacto y entrega la pieza', bought.owned && bought.gold < 1e6 && (1e6 - bought.gold) % 400 === 0, bought);
+    const k0 = await E(() => { const b = document.querySelector('.shop-rot-card [data-rot-buy]'); return b ? b.getAttribute('data-rot-buy') : null; });
+    if (k0) {   // legendario de hoy (oro)
+      await E(() => document.querySelector('.shop-rot-card [data-rot-buy]').click()); await page.waitForTimeout(600);
+      const bought = await E(k => ({gold: save.gold, owned: stashItems().some(it => 'd:' + it.designId === k)}), k0);
+      check('UI live: comprar un legendario desde "A la venta hoy" cobra el precio exacto y lo entrega', bought.owned && bought.gold < 1e6 && (1e6 - bought.gold) % 400 === 0, bought);
+    }
+    // piezas de set de hoy: botón de Brasas (sin cuenta: aviso y nada se entrega)
+    const pc = await E(async () => { const b = document.querySelector('.shop-rot-card [data-piece-premium]'); if (!b) return {none: true}; const g = save.gold, n = stashItems().length; acct.session = null; window.__al = []; gameAlert = m => { window.__al.push(String(m)); return Promise.resolve(); }; b.click(); await new Promise(r => setTimeout(r, 150)); return {txt: b.textContent.trim(), alerts: window.__al, same: save.gold === g && stashItems().length === n}; });
+    check('UI live: las piezas de set de hoy se compran con Brasas (✦ 200), sin cuenta pide entrar y no entrega nada', pc.none || (/^✦\s*200$/.test(pc.txt) && pc.alerts.some(a => /cuenta/.test(a)) && pc.same), pc);
     // Objetos > Sets: piezas que no están hoy bloqueadas, sin botón de paquete
     const objs = await E(() => { shopTab = 'objetos'; shopCat = 'set'; renderShop(); const q = s => document.querySelectorAll(s).length; return {expectOn: shopRotationToday().filter(e => e.cat === 'set').length, buyAll: q('.shop-set-buyall'), live: q('[data-set-live]'), sets: q('.shop-set'), on: q('.shop-rot-state.on'), off: q('.shop-rot-state:not(.on)'), enabled: q('.shop-set [data-buy-item]:not(:disabled)'), txt: (document.querySelector('.shop-rot-state:not(.on)') || {}).textContent}; });
     check('UI live: Sets sin botón "comprar las que faltan"; solo las 6 de hoy se pueden comprar; las demás dicen cuándo vuelven', objs.buyAll === 0 && objs.live === objs.sets && objs.on === objs.expectOn && objs.enabled <= objs.expectOn && /vuelve/.test(objs.txt), objs);
