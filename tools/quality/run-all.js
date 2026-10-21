@@ -5,6 +5,7 @@
  *
  *   node tools/quality/run-all.js                 todo lo que corre sin red (unas decenas de minutos)
  *   node tools/quality/run-all.js --quick         solo la lógica pura y las pruebas rápidas (sin navegador pesado)
+ *   node tools/quality/run-all.js --fast          todo menos las más lentas (formas de definitivas, decales, simulaciones del gate de entrada, campaña completa)
  *   node tools/quality/run-all.js --only items    solo las pruebas cuyo ruta contiene "items" (se puede repetir: --only a --only b)
  *   node tools/quality/run-all.js --list          lista las pruebas y sale
  *   node tools/quality/run-all.js --jobs 4        pruebas en paralelo (por omisión 3; con equipos lentos probá --jobs 1)
@@ -53,7 +54,7 @@ const TESTS = [
   T('tests/competitive-signatures.test.js', 'node', 120, {q: 1}),
   T('tools/crystal-wars/test-competitive.js', 'node', 300, {q: 1}),
   T('tools/crystal-wars/test-simulation.js', 'node', 300, {q: 1}),
-  T('tools/crystal-wars/balance-gate.js', 'node', 600),
+  T('tools/crystal-wars/balance-gate.js', 'node', 900, {slow: 1}),
   T('tools/crystal-wars/coliseum-balance-gate.js', 'node', 600),
   T('tools/crystal-wars/required-files.js', 'node', 120, {q: 1}),
   T('tools/bible/champion-validator.js', 'node', 300, {args: ['--strict']}),
@@ -63,7 +64,7 @@ const TESTS = [
   ...['t_abismo', 't_boons', 't_breakables', 't_build_uniques', 't_camp', 't_campaign', 't_codex', 't_codex_book', 't_collision', 't_cromas', 't_crystals',
     't_difficulty', 't_endless', 't_evolution', 't_ground_loot', 't_hechicero', 't_hpbonus', 't_itemization', 't_items', 't_mage_kit', 't_nigro_elements',
     't_nigro_golems', 't_nigromante', 't_pacing', 't_perf_exploits', 't_q4_economia', 't_quests', 't_reactions', 't_resonance', 't_roles', 't_sets',
-    't_skins_brasas', 't_starter_gift', 't_story', 't_synergies'].map(n => T(`tools/items/${n}.js`, 'site', 900)),
+    't_skins_brasas', 't_starter_gift', 't_story', 't_synergies'].map(n => T(`tools/items/${n}.js`, 'site', n === 't_campaign' ? 1800 : 900, n === 't_campaign' || n === 't_difficulty' ? {slow: 1} : {})),
   // ---- identidad, regresión, UX ----
   T('tools/identity/t_identity.js', 'site', 1200),
   T('tools/identity/t_objectives.js', 'site', 600),
@@ -87,8 +88,8 @@ const TESTS = [
   T('tools/quality/test-floating-text-rate.js', 'own', 600),
   T('tools/quality/test-nano-render.js', 'own', 600),
   T('tools/quality/test-projectile-identity.js', 'own', 600),
-  T('tools/vfx/test-ult-forms.js', 'site', 2100),
-  T('tools/vfx/test-decal-legible.js', 'site', 1500),
+  T('tools/vfx/test-ult-forms.js', 'site', 2400, {slow: 1}),
+  T('tools/vfx/test-decal-legible.js', 'site', 1800, {slow: 1}),
   T('tools/art/check-skill-icons.js', 'site', 900, {args: ['--self-test']}),
   T('tools/art/check-pixel-icons.js', 'node', 300),
   T('tools/art/roster-loading-test.js', 'own', 900),
@@ -107,7 +108,7 @@ const TESTS = [
   T('tools/collection/codex-unlock-progress.js', 'fixed', 600),
   T('tools/collection/welcome-picks.js', 'fixed', 600),
   T('tools/balance/test-campaign-startup.js', 'site', 600, {args: ['--test']}),
-  T('tools/balance/entry-gate.js', 'own', 2400),
+  T('tools/balance/entry-gate.js', 'own', 2400, {slow: 1}),
   T('tools/bible/ability-gate.js', 'site', 1200, {args: ['--strict']}),
   // ---- alpha (navegador, servidor propio en puerto fijo) ----
   ...['services-browser', 'training-test', 'goal-guide', 'main-flow', 'navigation-profiles', 'public-onboarding', 'bot-identity', 'training-player', 'new-account-starter']
@@ -148,10 +149,11 @@ function runOne(t, site, outDir, attempt) {
 }
 
 (async () => {
-  if (arg('--list')) { for (const t of TESTS) console.log(`${t.kind.padEnd(5)} ${t.f}`); return; }
   const only = args('--only'), quick = !!arg('--quick');
   const jobs = Math.max(1, +arg('--jobs', 3) || 3), retry = Math.max(0, +arg('--retry', 1) || 0);
-  let list = TESTS.filter(t => (!quick || t.q) && (!only.length || only.some(o => t.f.includes(o))));
+  const fast = !!arg('--fast');
+  let list = TESTS.filter(t => (!quick || t.q) && (!fast || !t.slow) && (!only.length || only.some(o => t.f.includes(o))));
+  if (arg('--list')) { for (const t of list) console.log(`${t.kind.padEnd(5)} ${t.slow ? 'lenta ' : '      '}${t.f}`); return; }
   const missing = list.filter(t => !fs.existsSync(path.join(ROOT, t.f)));
   if (missing.length) { console.error('No existen: ' + missing.map(t => t.f).join(', ')); list = list.filter(t => !missing.includes(t)); }
   if (!list.length) { console.error('Nada que correr.'); process.exit(2); }

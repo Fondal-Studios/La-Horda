@@ -81,7 +81,7 @@ function ping(url) { return new Promise(res => { const r = http.get(url, x => { 
   const want = [0.07, 0.14, 0.21, 0.25, 0.25, 0.25];
   check('acumula 7 % por derrota y topa en 25 %', R.rows.every((r, i) => Math.abs(r.frac - want[i]) < 0.0011), R.rows.map(r => r.frac));
   check('vida del jefe baja exactamente la ayuda', R.rows.every((r, i) => Math.abs(r.hpRatio - (1 - want[i])) < 0.004), R.rows.map(r => r.hpRatio));
-  check('daño del jefe y golpes anclados bajan exactamente la ayuda', R.rows.every((r, i) => Math.abs(r.dmgRatio - (1 - want[i])) < 0.01 && Math.abs(r.avgRatio - (1 - want[i])) < 0.002), R.rows.map(r => [r.dmgRatio, r.avgRatio]));
+  check('daño del jefe y golpes anclados bajan exactamente la ayuda', R.rows.every((r, i) => Math.abs(r.dmgRatio - (1 - want[i])) <= Math.max(0.01, 1 / R.base.dmg) + 1e-9 /* e.dmg es entero: el redondeo vale hasta un punto de daño (~0,012 con el daño base de ~80) */ && Math.abs(r.avgRatio - (1 - want[i])) < 0.002), R.rows.map(r => [r.dmgRatio, r.avgRatio]));
   check('daño de la horda del nivel 10 baja lo mismo (vida de la horda no)', R.rows.every((r, i) => Math.abs(r.dmgRun - (1 - want[i])) < 0.002), R.rows.map(r => r.dmgRun));
   check('la ayuda recién se fija en el nivel 10 (nivel 4: nada cambia)', R.frac4 === 0 && R.avg4 === 1, [R.frac4, R.avg4]);
   check('aviso al entrar con la cifra exacta, y nada sin derrotas', R.entry === 'Ayuda activa: el jefe tiene −14 % de vida y daño tras tus intentos; la horda del nivel 10 también pega −14 %. Se puede apagar en Opciones.' && R.entry0 === null, [R.entry, R.entry0]);
