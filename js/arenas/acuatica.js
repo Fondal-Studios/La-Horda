@@ -109,3 +109,15 @@ function drawAcuaAmbience(){
     ctx.restore();
   }
 }
+
+// Tiburón Joven y Tiburón Blanco: arte propio (antes se les prestaba el cuerpo de otro enemigo). Atlas dibujados con
+// pixrig (tools/art/pixrig/tiburones.py): idle, walk (nado), atk (embiste y muerde), hit, death (se da vuelta y se hunde)
+// y vistas en picada / remontando (walk_down/up, atk_down/up, hit_down/up). Placeholders mejorados: ver
+// docs/art-brief/ASSETS_FALTANTES_MUNDO.md (P0-05 / P0-06). Se dibujan con drawEnemyAtlasPack (drawAcuaticaReal).
+if(typeof PIXRIG_ATLAS!=="undefined"){
+  for(const k of ["tiburon_joven", "tiburon_blanco"]){
+    const A = PIXRIG_ATLAS[k]; if(!A) continue;
+    enemyAtlasPackLoad(k, A.src, A.meta);
+    ENEMY_ATLAS_PACK[k].hMul = A.meta.hMul;
+  }
+}
