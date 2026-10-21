@@ -58,6 +58,7 @@
 <link rel="stylesheet" href="css/hud-horda.css">
 <link rel="stylesheet" href="css/hud-mobile.css">
 <link rel="stylesheet" href="css/first-minute.css">
+<link rel="stylesheet" href="css/legal.css">
 </head>
 <body>
 
@@ -155,6 +156,7 @@
     <label class="hidden" id="title-join-name">Tu nombre <input maxlength="16" placeholder="Jugador"></label>
     <button class="btn wide hidden" id="title-join-btn">Unirse a la sala</button>
     <div class="title-join-status" id="title-join-status"></div>
+    <div class="legal-foot legal-title" id="legal-title" role="contentinfo" aria-label="Legal y soporte"></div>
     <div class="build-tag">LA HORDA — ALFA COOPERATIVA</div>
   </div>
 
@@ -264,6 +266,8 @@
       <div class="opt-note">Teclado: WASD o flechas para moverte, Espacio para atacar, 1 2 3 habilidades, R Definitiva, Q curación, E acción, Esc pausa. También funciona con mando.</div>
       <div class="opt-note">Compañeros: si en tu equipo faltan jugadores, el juego completa los lugares con compañeros que controla él mismo. Siempre tienen prioridad los jugadores reales.</div>
       <div class="opt-note">El progreso se guarda en este navegador. Para llevarlo a otro lado, usá el código de guardado.</div>
+      <div class="opt-sec">Legal y soporte</div>
+      <div class="legal-foot legal-opts" id="legal-opts"></div>
       <div class="opt-btns">
         <button class="btn small" id="opt-export-btn">Copiar código de guardado</button>
         <button class="btn small secondary" id="opt-import-btn">Restaurar con código</button>
@@ -1019,6 +1023,8 @@
 <script src="js/systems/arena-tutorials.js"></script>
 <script src="js/systems/telemetry.js"></script>
 <script src="js/arenas/coliseum/coliseum-cover.js"></script>
+<script src="js/data/legal-config.js"></script>
+<script src="js/ui/legal.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

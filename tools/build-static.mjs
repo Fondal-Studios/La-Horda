@@ -7,7 +7,7 @@ const relay = new URL(process.env.GAME_RELAY_URL || 'wss://fondalstudios.com/la-
 if(relay.protocol !== 'wss:' || relay.username || relay.password || relay.search || relay.hash)
   throw new Error('GAME_RELAY_URL must be a public wss:// URL without credentials or query');
 await mkdir(out, {recursive:true});
-for(const name of ['assets','css','js','index.html','instalar.html','crystal-wars.html','manifest.webmanifest','sw.js'])
+for(const name of ['assets','css','js','legal','index.html','instalar.html','crystal-wars.html','manifest.webmanifest','sw.js'])
   await cp(path.join(root,name),path.join(out,name),{recursive:true});
 const configFile=path.join(out,'js/net/net-config.js');
 const config=await readFile(configFile,'utf8');
