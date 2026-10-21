@@ -219,6 +219,12 @@ function _knightCromaSwap(h){
 // Solo dibuja; no toca daño, duración ni ninguna otra regla de combate.
 function drawKnightAbilityFx(h, drawScale, alpha){
   if(typeof CaballeritoHabilidades==="undefined" || h.classKey!=="tanque") return false;
+  const skill=h.dashFxTimer>0 ? "estampida" : h.spinTimer>0 ? "torbellino" : (h.growTimer>0 && h.growMaxTimer>0) ? "grito" : null;
+  if(!skill) return false;
+  const image=(typeof cromaImage==="function" && cromaImage(h,skill)) || CaballeritoHabilidades.images[skill];
+  // Vendor drawFrame silently skips unloaded images. Fall back to the body instead
+  // of reporting success and making the hero invisible on a slow/failed request.
+  if(!image || !image.complete || !image.naturalWidth) return false;
   const size = 120 * (drawScale/2.0);
   ctx.save();
   ctx.globalAlpha = alpha!==undefined ? alpha : 1;

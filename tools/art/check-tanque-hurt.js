@@ -10,7 +10,7 @@ const ROOT=path.resolve(__dirname,'../..'),OUT=path.join(ROOT,'docs/art-gate/tan
    await c.route('**/*',r=>new URL(r.request().url()).origin===site.url?r.continue():r.abort());
    const p=await c.newPage();p.on('pageerror',e=>report.errors.push(e.message));await p.goto(site.url+'/?lazy=1');await p.waitForFunction(()=>typeof drawKnightHurt==='function'&&typeof netDecode==='function');
    await p.evaluate(()=>{loop=function(){};for(const [id,d] of Object.entries({...SET_SKINS,...CROMA_SKINS}))if(d.champ==='tanque')skinDefOf(id);assetsStartGroup('ch:tanque');});
-   await p.waitForFunction(()=>TANQUE_IMG_READY&&CHAMP_PACK.tanque_hurt?.ready&&Object.entries({...SET_SKINS,...CROMA_SKINS}).filter(([id,d])=>d.champ==='tanque').every(([id])=>{const d=skinDefOf(id);return !d.packs||Object.values(d.packs).every(k=>CHAMP_PACK[k]?.ready);}));pages.push(p);
+   await p.waitForFunction(()=>TANQUE_IMG_READY&&CHAMP_PACK.tanque_hurt?.ready&&Object.entries({...SET_SKINS,...CROMA_SKINS}).filter(([id,d])=>d.champ==='tanque').every(([id])=>{const d=skinDefOf(id);return !d.packs||Object.values(d.packs).every(k=>CHAMP_PACK[k]?.ready);}));await p.waitForFunction(()=>Object.values(CaballeritoHabilidades.images).every(im=>im.complete&&im.naturalWidth));pages.push(p);
   }
   const r=await pages[0].evaluate(()=>{
    selectedClass='tanque';currentArena='bosque';lobbyAllies=[];netMatch=null;divinaMode=false;startRun(1);state='paused';window.ART_GATE_NO_VFX=true;
@@ -43,8 +43,11 @@ const ROOT=path.resolve(__dirname,'../..'),OUT=path.join(ROOT,'docs/art-gate/tan
     h._codexSkin=id;const a=draw(h);P.ready=false;try{check('skin preserved '+id,a.visible&&a.calls.every(x=>!x.hurt)&&JSON.stringify(a.pixels)===JSON.stringify(draw(h).pixels));}finally{P.ready=true;}
    }
    h._codexSkin=null;
-   for(const state of [{dashFxTimer:500},{spinTimer:300,spinMaxTimer:600},{growTimer:300,growMaxTimer:600}]){
-    Object.assign(h,{dashFxTimer:0,spinTimer:0,growTimer:0},state);const d=draw(h);check('ability retains priority '+JSON.stringify(state),d.calls.every(x=>!x.hurt));
+   for(const [skill,state] of [['estampida',{dashFxTimer:500}],['torbellino',{spinTimer:300,spinMaxTimer:600}],['grito',{growTimer:300,growMaxTimer:600}]]){
+    Object.assign(h,{dashFxTimer:0,spinTimer:0,growTimer:0},state);const d=draw(h);check('ability visible and retains priority '+skill,d.visible&&d.calls.every(x=>!x.hurt));
+    const original=CaballeritoHabilidades.images[skill];CaballeritoHabilidades.images[skill]=new Image();
+    try{const fallback=draw(h);check('unloaded ability keeps hero visible '+skill,fallback.visible&&fallback.calls.some(x=>x.hurt));h.hurtTimer=0;check('unloaded ability keeps unhurt hero visible '+skill,draw(h).visible);h.hurtTimer=160;}
+    finally{CaballeritoHabilidades.images[skill]=original;}
    }
    return{checks,snapshots,images};
   });report.checks.push(...r.checks);
