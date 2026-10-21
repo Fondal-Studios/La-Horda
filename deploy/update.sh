@@ -12,6 +12,9 @@ set -Eeuo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$HERE/lib.sh"
 
+# NOTA: todo lo que sigue va dentro de main(): bash lee una función entera antes de ejecutarla, así que si el "merge" de más
+# abajo reemplaza ESTE archivo por una versión nueva, la corrida en curso no se rompe a la mitad.
+main() {
 APP_DIR="${APP_DIR:-/opt/la-horda}"
 SITE_ROOT="${SITE_ROOT:-/var/www/la-horda}"
 STATE_DIR="${STATE_DIR:-/var/lib/la-horda-deploy}"
@@ -90,3 +93,6 @@ ls -1dt "$SITE_ROOT"/releases/*/ 2>/dev/null | tail -n +"$((KEEP_RELEASES + 1))"
 say ""
 say "LISTO. Versión nueva en marcha. Para volver atrás: sudo bash $HERE/rollback.sh"
 say "Chequeo completo (recomendado):  node $APP_DIR/tools/release/preflight.js --env-file $ENV_FILE --relay <URL pública del servidor> --url <URL pública del juego> --dist $SITE_ROOT/current"
+}
+main "$@"
+exit $?
