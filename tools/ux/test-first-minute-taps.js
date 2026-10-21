@@ -76,13 +76,13 @@ async function playFromJugar(B) {
   await sleep(1200);
   // primer movimiento: dedo real sobre el joystick (izquierda de la pantalla), 400 ms
   const cdp = await B.ctx.newCDPSession(B.page);
-  const p0 = await B.E(() => ({ x: player.x, y: player.y }));
+  const p0 = await B.E(() => ({ x: player.x, y: player.y, tip: (document.querySelector('#tut-panel:not(.hidden) .tut-text') || {}).textContent || '' }));
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: 90, y: 300, id: 1 }] }); await sleep(80);
   for (let k = 1; k <= 8; k++) { await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: 90 + k * 8, y: 300, id: 1 }] }); await sleep(60); }
   await sleep(300);
   const p1 = await B.E(() => ({ x: player.x, y: player.y, tip: (document.querySelector('#tut-panel:not(.hidden) .tut-text') || {}).textContent || '', chip: (document.getElementById('goal-chip') || {}).textContent || '' }));
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
-  r.moved = Math.hypot(p1.x - p0.x, p1.y - p0.y); r.tip = p1.tip; r.chip = p1.chip; r.taps = B.taps;
+  r.moved = Math.hypot(p1.x - p0.x, p1.y - p0.y); r.tip = p1.tip; r.tipBefore = p0.tip; /* antes de mover: con el joystick el paso «movete» se cumple (>260 u) y el aviso ya pasó al de atacar */ r.chip = p1.chip; r.taps = B.taps;
   return r;
 }
 
@@ -123,7 +123,7 @@ async function playFromJugar(B) {
       const r = await playFromJugar(B);
       console.log(`# sin práctica: ${r.taps} toques; páginas: ${r.pagesShown.map(p => p.who + ' · ' + p.title).join(' / ')}`);
       check('SIN_PRACTICA.recorrido_largo_intacto_(Sala + misión + prólogo + acto + ficha)', r.prepSeen && r.pagesShown.length >= 6 && r.taps > MAX_TAPS, { taps: r.taps, pages: r.pagesShown.length });
-      check('SIN_PRACTICA.el_tutorial_de_la_arena_sigue_enseñando_a_moverse', /movete/i.test(r.tip), r.tip);
+      check('SIN_PRACTICA.el_tutorial_de_la_arena_sigue_enseñando_a_moverse', /movete/i.test(r.tipBefore), { antes: r.tipBefore, despues: r.tip });
       check('SALTAR.visible_en_TODAS_las_paginas_(historia_y_ficha)_desde_el_primer_cuadro', r.skipMissing.length === 0 && r.pagesShown.some(p => p.ficha), r.skipMissing);
       const acc = r.pagesShown.map(p => (p.who || '') + ' ' + (p.title || '')).join(' ');
       check('TILDES.carteles_en_mayuscula_con_tilde_(TU MISIÓN, PRÓLOGO, EL GUÍA)', /TU MISIÓN/.test(acc) && /PRÓLOGO/.test(acc) && /EL GUÍA/.test(acc) && !/MISION|PROLOGO/.test(acc), acc);
