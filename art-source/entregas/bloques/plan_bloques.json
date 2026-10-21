@@ -17,8 +17,8 @@
     "INTEGRADO_MAIN",
     "ENTREGADO_PNG_RUNTIME_EXISTENTE"
   ],
-  "bloque_activo": "B004",
-  "siguiente_accion": "B004: caída base integrada por PR170; quedan ataque abajo, ataque arriba y golpe. Taller PR166/403a80c conserva caminata corregida y tres ataques20/21/23 aún FIX. Mantener atlas especializado61 y montura; no instalar plantilla36 ni contar publicación sin verificar.",
+  "bloque_activo": "B002",
+  "siguiente_accion": "Completar reacción al golpe del Caballero; conservar muerte integrada #182 y habilidades originales. Después B003 y estados especializados B004.",
   "bloques": [
     {
       "id": "B001",
@@ -270,7 +270,22 @@
         "evidencia": "docs/production/authored-candidate-results-20261019.json",
         "run": 39292727298,
         "source": "art-source/entregas/bloques/B002_tanque/campeones/tanque/hoja_36poses.png"
-      }
+      },
+      "componentes_integrados": {
+        "tanque.cuerpo.muerte": {
+          "pr": 182,
+          "commit_main": "474838fc62e28fca99509e254fe3f95cfcef6119",
+          "atlas": "assets/sprites/champions/tanque/v3/death.png",
+          "sha256": "8dc632c0afb7d9df1808dfffb873e44584499abed27c84c5f2ddb5e5ad162d78",
+          "evidencia": "docs/art-gate/tanque-death/runtime.json",
+          "publicacion": "PENDIENTE_VERIFICACION",
+          "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
+        }
+      },
+      "items_pendientes": [
+        "tanque.cuerpo.lanzar",
+        "tanque.cuerpo.golpe"
+      ]
     },
     {
       "id": "B003",

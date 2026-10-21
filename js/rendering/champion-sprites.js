@@ -186,7 +186,20 @@ function drawProfetaAtlas(h, drawScale, alpha){
   return drawAnimAtlas(PROFETA_ANIM_ATLAS, profetaResolveClip(h), h, drawScale, alpha);
 }
 
+// Base-only recoil supplement. Abilities retain their existing higher-priority art.
+function drawKnightHurt(h, drawScale, alpha){
+  if(h.classKey!=="tanque" || !(h.hurtTimer>0)) return false;
+  const key=typeof setSkinPackKey==="function" ? setSkinPackKey(h,"tanque") : "tanque";
+  const P=CHAMP_PACK.tanque_hurt;
+  if(key!=="tanque" || !P || !P.ready) return false;
+  const pick=champPackSet(P,"hit",champPackDir(h),h);
+  if(!pick) return false;
+  const n=h.hurtTimer>80 ? 0 : 1;
+  champPackDrawFrame(P,pick.arr[n],h.x,h.y,champPackScale(P,h,drawScale),pick.flip,alpha);
+  return true;
+}
 function drawDirAtlasHero(entry, h, drawScale, alpha){
+  if(drawKnightHurt(h,drawScale,alpha)) return true;
   // croma (js/systems/cromas.js): la misma grilla con la imagen recoloreada, si ya bajó
   const ci = typeof cromaImage==="function" ? cromaImage(h, h.classKey + "_atlas") : null;
   const A = ci ? { img:ci, ready:()=>true, def:entry.animAtlas.def } : entry.animAtlas;
@@ -206,6 +219,12 @@ function _knightCromaSwap(h){
 // Solo dibuja; no toca daño, duración ni ninguna otra regla de combate.
 function drawKnightAbilityFx(h, drawScale, alpha){
   if(typeof CaballeritoHabilidades==="undefined" || h.classKey!=="tanque") return false;
+  const skill=h.dashFxTimer>0 ? "estampida" : h.spinTimer>0 ? "torbellino" : (h.growTimer>0 && h.growMaxTimer>0) ? "grito" : null;
+  if(!skill) return false;
+  const image=(typeof cromaImage==="function" && cromaImage(h,skill)) || CaballeritoHabilidades.images[skill];
+  // Vendor drawFrame silently skips unloaded images. Fall back to the body instead
+  // of reporting success and making the hero invisible on a slow/failed request.
+  if(!image || !image.complete || !image.naturalWidth) return false;
   const size = 120 * (drawScale/2.0);
   ctx.save();
   ctx.globalAlpha = alpha!==undefined ? alpha : 1;

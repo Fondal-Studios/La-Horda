@@ -32,6 +32,7 @@ jobs:
           if node tools/factory/check-animation-contract.js --key libertador --candidate tools/factory/fixtures/libertador-generic36-canary.json --runtime js/champions/libertador.js --symbol P --output /tmp/art-contract/libertador-negative.json; then exit 1; fi
           node -e "const r=require('/tmp/art-contract/libertador-negative.json'),a=require('node:assert/strict');a.equal(r.status,'REJECT');for(const n of ['fire','reload','bayo_emb','ult_cast'])a(r.issues.some(x=>x.code==='MISSING_RUNTIME_CLIP'&&x.clip===n));a.equal(r.approvalClaimed,false);"
       - run: python tools/factory/reconcile-art-production.py
+      - run: python tools/factory/production-blocks.py
       - run: node tools/factory/export-runtime-icons.js
       - run: node tools/art/check-pixel-icons.js
       - run: node tools/art/emoji-lint.js --strict

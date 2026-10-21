@@ -419,6 +419,7 @@ champPackLoadAtlas("nigro_skel", "assets/sprites/champions/nigromante/skeleton/v
 champPackLoadAtlas("libertador", "assets/sprites/champions/libertador/v2/atlas.png", {"w":103,"h":98,"cols":8,"refH":79,"anchor":0.9388,"sets":{"idle_down":[34,35,36,37],"idle_side":[53],"idle_left":[49],"idle_up":[57],"walk_down":[45,46,47,48],"walk_side":[53,54,55,56],"walk_left":[49,50,51,52],"walk_up":[57,58,59,60],"attack_side":[30,31,32,33],"cast_side":[25,26,27],"aim":[0,1,2,3],"fire":[30,31,32,33],"reload":[38,39,40,41,42,43],"bayo_pre":[12,13,14,15],"bayo_emb":[4,5,6,7],"bayo_imp":[8,9,10,11],"bayo_rem":[16,17,18,19],"command":[25,26,27,28,29],"cabral":[20,21,22,23,24],"ult_cast":[44]}});
 // Independent clip; do not replace Libertador's specialized foot or mounted atlas.
 // Caída original del Caballero; no reemplaza su atlas maestro ni sus apariencias.
+champPackLoadAtlas("tanque_hurt", "assets/sprites/champions/tanque/v3/hurt.png", {w:112,h:112,cols:6,refH:71,anchor:106/112,sets:{hit_down:[0,1],hit_side:[2,3],hit_up:[4,5]}});
 champPackLoadAtlas("tanque_death", "assets/sprites/champions/tanque/v3/death.png", {w:112,h:112,cols:4,refH:71,anchor:106/112,sets:{death_down:[0,1,2,3]}});
 champPackLoadAtlas("libertador_death", "assets/sprites/champions/libertador/v2/death.png", {w:112,h:112,cols:4,refH:71,anchor:106/112,sets:{death_down:[0,1,2,3]}});
 // Movimiento base validado; los 61 cuadros especializados y las skins se conservan.

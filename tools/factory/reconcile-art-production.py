@@ -107,6 +107,26 @@ def verify_runtime_icons(entry):
     return evidence
 
 
+
+def verify_component(entry):
+    """Close only a named task backed by an unchanged merged clip and runtime report."""
+    require(subprocess.run(['git', 'merge-base', '--is-ancestor', entry['merge'], 'HEAD'],
+                           cwd=ROOT, capture_output=True).returncode == 0, 'component merge absent')
+    for key, digest in [('runtime', 'sha256'), ('report', 'reportSha256')]:
+        path = entry[key]
+        current = (ROOT / path).read_bytes()
+        old = subprocess.run(['git', 'show', entry['merge'] + ':' + path], cwd=ROOT, capture_output=True)
+        require(old.returncode == 0 and old.stdout == current
+                and hashlib.sha256(current).hexdigest() == entry[digest], 'component evidence mismatch: ' + path)
+    report = read(ROOT / entry['report'])
+    require(report.get('status') == 'PASS' and report.get('checks')
+            and all(c.get('ok') is True for c in report['checks']) and not report.get('errors'),
+            'component runtime evidence failed')
+    return {'pr': entry['pr'], 'commit_main': entry['merge'], 'atlas': entry['runtime'],
+            'sha256': entry['sha256'], 'evidencia': entry['report'],
+            'publicacion': 'PENDIENTE_VERIFICACION', 'revision_visual': 'ASISTIDA_CODEX; no atribuida al dueño'}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--write', action='store_true')
@@ -119,6 +139,7 @@ def main():
     require(len({e['item'] for e in entries}) == len(entries), 'duplicate item mapping')
     evidence = [(e, verify(e, metadata)) for e in entries]  # Validate everything before changing anything.
     icon_evidence = [proof for entry in registry.get('runtimeIconExports', []) for proof in verify_runtime_icons(entry)]
+    components = [(e, verify_component(e)) for e in registry.get('components', [])]
     before_control, before_plan = json.dumps(control), json.dumps(plan)
     for entry, proof in evidence:
         items = [x for x in control['items'] if x['id'] == entry['item']]
@@ -145,6 +166,17 @@ def main():
         blocks[0].update(estado='INTEGRADO_MAIN', integracion='INTEGRADO_MAIN',
                          evidencia_integracion={'pr': proof['pr'], 'commit_main': proof['commit_main'],
                                                 'evidencia': proof['evidencia'], 'nuevo_diseno': False})
+    for entry, proof in components:
+        items = [i for i in control['items'] if i['id'] == entry['item']]
+        blocks = [b for b in plan['bloques'] if b['id'] == entry['block']]
+        require(len(items) == len(blocks) == 1 and entry['item'] in blocks[0]['items'], 'ambiguous component mapping')
+        item, block = items[0], blocks[0]
+        if item.get('revision_nativa', {}).get('estado') == 'FIX':
+            item.setdefault('historial_revision_nativa', []).append(item.pop('revision_nativa'))
+        item.update(estado='INTEGRADO_MAIN', integracion=proof)
+        block.setdefault('componentes_integrados', {})[entry['item']] = proof
+        # Completing death must not close the remaining cast/hit tasks in the same block.
+        block['items_pendientes'] = [i for i in block['items'] if next(x for x in control['items'] if x['id'] == i)['estado'] not in ['INTEGRADO_MAIN', 'INTEGRADO_CLAUDE']]
     if 'INTEGRADO_MAIN' not in plan['estados']:
         plan['estados'].append('INTEGRADO_MAIN')
     states = collections.Counter(x['estado'] for x in control['items'])

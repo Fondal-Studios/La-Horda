@@ -124,5 +124,27 @@ class ProductionGuards(unittest.TestCase):
                     with self.assertRaisesRegex(ValueError, expected):
                         module.verify_runtime_icons(entry)
 
+
+    def test_component_evidence_cannot_close_unverified_task(self):
+        paths = [ROOT / 'art-source/entregas/control_produccion.json', ROOT / 'art-source/entregas/bloques/plan_bloques.json']
+        before = [p.read_bytes() for p in paths]
+        data = json.loads((ROOT / 'docs/production/art-integrations.json').read_text())
+        data['components'][0]['sha256'] = '0' * 64
+        with tempfile.TemporaryDirectory() as folder:
+            registry = Path(folder) / 'bad-component.json'; registry.write_text(json.dumps(data))
+            result = subprocess.run(['python3', 'tools/factory/reconcile-art-production.py', '--registry', str(registry), '--write'], cwd=ROOT, capture_output=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn(b'component evidence mismatch', result.stderr)
+        self.assertEqual(before, [p.read_bytes() for p in paths])
+
+    def test_component_closure_keeps_incomplete_block_open(self):
+        control = json.loads((ROOT / 'art-source/entregas/control_produccion.json').read_text())
+        plan = json.loads((ROOT / 'art-source/entregas/bloques/plan_bloques.json').read_text())
+        items = {i['id']: i for i in control['items']}
+        self.assertEqual(items['tanque.cuerpo.muerte']['estado'], 'INTEGRADO_MAIN')
+        block = next(b for b in plan['bloques'] if b['id'] == 'B002')
+        self.assertNotEqual(block['estado'], 'INTEGRADO_MAIN')
+        self.assertEqual(set(block['items_pendientes']), {'tanque.cuerpo.lanzar', 'tanque.cuerpo.golpe'})
+
 if __name__ == '__main__':
     unittest.main()
