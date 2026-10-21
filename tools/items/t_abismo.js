@@ -72,7 +72,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
 
   const terr = await E(() => { __run(3); const i = __idx('o2'), c = abPlatCenter(AB_PLATS[i]); player.x = AB_MAP.start.x; player.y = AB_MAP.start.y;
     const before = abS.p[i].hp; envEmit('terrain', c.x, c.y, player, {r:120, dmg:40});
-    return { before, after: abS.p[i].hp, table: typeof SKILL_TERRAIN !== 'undefined' && Object.keys(SKILL_TERRAIN).length, perKind: !!SKILL_TERRAIN.titan_terremoto && !SKILL_TERRAIN.guerrero }; });
+    return { before, after: abS.p[i].hp, table: typeof SKILL_TERRAIN !== 'undefined' && Object.keys(SKILL_TERRAIN).length, perKind: !!SKILL_TERRAIN.colossus_sinkhole && !SKILL_TERRAIN.guerrero }; });
   check('TERRAIN.metadata_por_tipo_de_habilidad', terr.after < terr.before && terr.table >= 10 && terr.perKind, terr);
 
   // ---------- caminar no tira; empujar sí ----------
