@@ -1,0 +1,48 @@
+# LA HORDA — servicio systemd del servidor de salas + cuentas + pagos (server/relay.js).
+# Instalación (como root):  cp deploy/la-horda.service /etc/systemd/system/ && systemctl daemon-reload && systemctl enable --now la-horda
+# Guía completa: docs/commercial/DESPLIEGUE_FONDAL.md
+# Rutas que asume (cambialas acá Y en /etc/la-horda/la-horda.env si usás otras):
+#   código ........ /opt/la-horda            (clon del repositorio; el servicio solo LEE ahí)
+#   configuración . /etc/la-horda/la-horda.env   (secretos; modo 600; NUNCA dentro del repositorio)
+#   datos locales . /var/lib/la-horda        (lo crea systemd; solo para el intercambio de objetos y el modo sin base)
+[Unit]
+Description=La Horda - servidor de salas, cuentas y pagos
+Documentation=file:///opt/la-horda/docs/commercial/DESPLIEGUE_FONDAL.md
+After=network-online.target postgresql.service
+Wants=network-online.target
+# si arranca y se cae 5 veces en 60 s, systemd deja de insistir (se ve con: systemctl status la-horda)
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=lahorda
+Group=lahorda
+WorkingDirectory=/opt/la-horda/server
+EnvironmentFile=/etc/la-horda/la-horda.env
+Environment=NODE_ENV=production
+Environment=DATA_DIR=/var/lib/la-horda
+ExecStart=/usr/bin/node /opt/la-horda/server/relay.js
+Restart=always
+RestartSec=3
+# los logs van al diario del sistema: journalctl -u la-horda -f
+SyslogIdentifier=la-horda
+LimitNOFILE=65536
+# permisos mínimos: el servicio no puede escribir en el sistema ni ver /home
+StateDirectory=la-horda
+StateDirectoryMode=0750
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+LockPersonality=true
+MemoryMax=1G
+
+[Install]
+WantedBy=multi-user.target
