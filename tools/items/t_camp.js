@@ -150,11 +150,15 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   await tap('#chron-read .cr-close');
   const back = await E(() => ({ on: !document.getElementById('chron-read').classList.contains('hidden'), slow: slowMoScale, t: slowMoTimer }));
   check('CRONICA.volver_a_la_pelea_devuelve_el_tiempo', !back.on && back.slow === 1 && back.t === 0, back);
-  // la tarjeta sola se va a los 3-4 s y el tiempo vuelve
+  // la tarjeta sola se va a los 3-4 s y el tiempo vuelve. Se espera por la CONDICIÓN (tarjeta oculta) y se mide desde el levantamiento:
+  // antes dormía 4,3 s fijos y el margen sobre los 3,8 s + 0,32 s de la salida no alcanzaba con la máquina cargada.
   const gone = await E(async () => { chronCardReset(); save.chronicles = {}; __start('laberinto', 6); __step(32); storyPageDrop(Math.round(player.x + 30), Math.round(player.y), 'laberinto', 'sub');
-    const p = STORY.pages[0]; player.x = p.x; player.y = p.y; __step(32); await new Promise(r => setTimeout(r, 4300));
-    const el = document.getElementById('chron-card'); return { hidden: el.classList.contains('hidden'), slow: slowMoScale }; });
-  check('CRONICA.la_tarjeta_se_va_sola_en_3_4_s', gone.hidden && gone.slow === 1, gone);
+    const p = STORY.pages[0]; player.x = p.x; player.y = p.y; const t0 = performance.now(); __step(32);
+    const el = document.getElementById('chron-card'), nap = ms => new Promise(r => setTimeout(r, ms));
+    await nap(1200); const shown = !el.classList.contains('hidden') && slowMoScale < 1;
+    while (!el.classList.contains('hidden') && performance.now() - t0 < 12000) await nap(50);
+    return { shown, hidden: el.classList.contains('hidden'), slow: slowMoScale, ms: Math.round(performance.now() - t0) }; });
+  check('CRONICA.la_tarjeta_se_va_sola_en_3_4_s', gone.shown && gone.hidden && gone.slow === 1 && gone.ms >= 3500 && gone.ms <= 7000, gone);
   // en red: sin pausa
   const net = await E(() => { chronCardReset(); const saved = netMatch; netMatch = { role: 'host' }; slowMoScale = 1; slowMoTimer = 0;
     const ok = campChronCard('ecos_1'); const r = { ok, slow: slowMoScale, t: slowMoTimer, on: !document.getElementById('chron-card').classList.contains('hidden'), btn: document.querySelector('#chron-card .cc-read').style.display }; chronCardReset(); netMatch = saved; return r; });

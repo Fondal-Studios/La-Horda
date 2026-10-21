@@ -29,7 +29,10 @@ const HIE_CFG = {
   braziers: [0.35, 1.95, 3.5, 5.05], // ángulos (anillo interior)
   // variante por semilla: el anillo de braseros gira. Giros revisados (tools/items/t_difficulty.js): ninguno
   // cae sobre el arco de hielo ni sobre otro sólido, y todos quedan en el lago, lejos de los glaciares.
-  brazierTurns: [0, 0.39, 0.79, -0.39],
+  // (El giro -0.39 dejaba un brasero a 36 u del monolito de hielo del norte, que desde que es sólido ocupa el
+  // arco: se lo reemplazó por 0.59, que queda a >= 75 u de todo sólido. El anillo de 4 braseros casi se repite
+  // cada pi/2, por eso los giros útiles caen entre 0 y 0.85.)
+  brazierTurns: [0, 0.39, 0.79, 0.59],
   ring: 330,
   warmR: 150,
   fuel: [48000, 64000], // ms encendido

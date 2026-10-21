@@ -67,7 +67,10 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('RES.juicio_solo_tras_el_final', !r4.noJ && r4.k === 'juicio' && Math.abs(r4.boss - 1.12) < 1e-6 && r4.minion === 1, r4);
   check('RES.el_hechicero_apaga_la_resonancia', r4.keepsJuicio && r4.stolen === null && r4.stillStolen === null, r4);
 
-  const r5 = await E(() => { state = 'menu'; let went = 0; runIntroShow('bosque', () => { went++; });
+  // {first:true} = «primera partida / JUGAR directo»: la ficha es la ÚNICA pantalla, sin la página de carga del Libro de la Horda
+  // (desde que el Libro se antepone, runIntroShow ya no muestra la ficha en el mismo cuadro y .res-pick no existía todavía).
+  // (y con el entrenamiento hecho: «primer minuto limpio» da UNA sola página, la ficha; sin eso la misión SOBREVIVIR va antes)
+  const r5 = await E(() => { state = 'menu'; save.tut = Object.assign(save.tut || {}, { training: 1 }); let went = 0; runIntroShow('bosque', () => { went++; }, { first: true });
     const el = document.getElementById('run-intro'); const btns = [...el.querySelectorAll('.res-pick')].map(b => b.dataset.res);
     el.querySelector('.res-pick[data-res="ancestral"]').click();
     const on = (el.querySelector('.res-pick.on') || {}).dataset; const desc = (el.querySelector('.res-desc') || {}).textContent;
