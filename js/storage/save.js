@@ -350,6 +350,11 @@ function migrateToAccountStash(parsed){
     delete c._legacyInventory;
   }
   for(const it of stash){
+    // pieza de set entregada por el servidor (compra con Brasas): llega como esbozo {uid, designId, srvGrant}; se completa con el objeto real
+    if(it.srvGrant && typeof it.designId==="string" && typeof makeDesignedItem==="function"){
+      let fresh = null; try{ fresh = makeDesignedItem(it.designId); }catch(e){}
+      if(fresh) Object.assign(it, fresh, {uid:it.uid, bought:true}); delete it.srvGrant;
+    }
     if(!it.designed) it.champion = null;
     if(it.placeholder && it.rarity==="unico"){
       it.rarity = "legendario"; it.placeholder = false; it.value = RARITY_VALUES[it.type].legendario; it.mythicPassive = null;

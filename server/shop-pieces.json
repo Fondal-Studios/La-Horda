@@ -1,0 +1,2964 @@
+{
+ "_comment": "GENERADO por tools/items/gen_shop_pieces.js desde la tienda del cliente. No editar a mano.",
+ "version": 1,
+ "pieces": {
+  "alba_arma": {
+   "set": "alba",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Báculo del Alba"
+  },
+  "alba_botas": {
+   "set": "alba",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Sandalias de Luz"
+  },
+  "alba_casco": {
+   "set": "alba",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Aureola Profética"
+  },
+  "alba_pechera": {
+   "set": "alba",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Túnica del Amanecer"
+  },
+  "arcano_arma": {
+   "set": "arcano",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Orbe del Arcano"
+  },
+  "arcano_botas": {
+   "set": "arcano",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Pasos del Vacío"
+  },
+  "arcano_casco": {
+   "set": "arcano",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Ojo Abierto"
+  },
+  "arcano_guantes": {
+   "set": "arcano",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Dedos del Sello"
+  },
+  "asc_aurelia_arma": {
+   "set": "asc_aurelia",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "aurelia",
+   "name": "Compás de Luz Sólida"
+  },
+  "asc_aurelia_botas": {
+   "set": "asc_aurelia",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "aurelia",
+   "name": "Pasos de Aurelia"
+  },
+  "asc_aurelia_casco": {
+   "set": "asc_aurelia",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "aurelia",
+   "name": "Insignia de Aurelia"
+  },
+  "asc_aurelia_pechera": {
+   "set": "asc_aurelia",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "aurelia",
+   "name": "Vestidura de Aurelia"
+  },
+  "asc_bront_arma": {
+   "set": "asc_bront",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "bront",
+   "name": "Puño de Bastión"
+  },
+  "asc_bront_botas": {
+   "set": "asc_bront",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "bront",
+   "name": "Pasos de Bront"
+  },
+  "asc_bront_casco": {
+   "set": "asc_bront",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "bront",
+   "name": "Insignia de Bront"
+  },
+  "asc_bront_pechera": {
+   "set": "asc_bront",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "bront",
+   "name": "Vestidura de Bront"
+  },
+  "asc_khepri_arma": {
+   "set": "asc_khepri",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "khepri",
+   "name": "Hoces de Élitro"
+  },
+  "asc_khepri_botas": {
+   "set": "asc_khepri",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "khepri",
+   "name": "Pasos de Khepri"
+  },
+  "asc_khepri_casco": {
+   "set": "asc_khepri",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "khepri",
+   "name": "Insignia de Khepri"
+  },
+  "asc_khepri_pechera": {
+   "set": "asc_khepri",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "khepri",
+   "name": "Vestidura de Khepri"
+  },
+  "asc_oriel_arma": {
+   "set": "asc_oriel",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "oriel",
+   "name": "Llave de las Cicatrices"
+  },
+  "asc_oriel_botas": {
+   "set": "asc_oriel",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "oriel",
+   "name": "Pasos de Oriel"
+  },
+  "asc_oriel_casco": {
+   "set": "asc_oriel",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "oriel",
+   "name": "Insignia de Oriel"
+  },
+  "asc_oriel_pechera": {
+   "set": "asc_oriel",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "oriel",
+   "name": "Vestidura de Oriel"
+  },
+  "asc_saelis_arma": {
+   "set": "asc_saelis",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "saelis",
+   "name": "Báculo de Plumas"
+  },
+  "asc_saelis_botas": {
+   "set": "asc_saelis",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "saelis",
+   "name": "Pasos de Saelis"
+  },
+  "asc_saelis_casco": {
+   "set": "asc_saelis",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "saelis",
+   "name": "Insignia de Saelis"
+  },
+  "asc_saelis_pechera": {
+   "set": "asc_saelis",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "saelis",
+   "name": "Vestidura de Saelis"
+  },
+  "asc_velmira_arma": {
+   "set": "asc_velmira",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "velmira",
+   "name": "Cetro de Bambalinas"
+  },
+  "asc_velmira_botas": {
+   "set": "asc_velmira",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "velmira",
+   "name": "Pasos de Velmira"
+  },
+  "asc_velmira_casco": {
+   "set": "asc_velmira",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "velmira",
+   "name": "Insignia de Velmira"
+  },
+  "asc_velmira_pechera": {
+   "set": "asc_velmira",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "velmira",
+   "name": "Vestidura de Velmira"
+  },
+  "asc_vhal_arma": {
+   "set": "asc_vhal",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "vhal",
+   "name": "Astrolabio Roto"
+  },
+  "asc_vhal_botas": {
+   "set": "asc_vhal",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "vhal",
+   "name": "Pasos de Vhal"
+  },
+  "asc_vhal_casco": {
+   "set": "asc_vhal",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "vhal",
+   "name": "Insignia de Vhal"
+  },
+  "asc_vhal_pechera": {
+   "set": "asc_vhal",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "vhal",
+   "name": "Vestidura de Vhal"
+  },
+  "baluarte_botas": {
+   "set": "baluarte",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "tanque",
+   "name": "Grebas del Baluarte"
+  },
+  "baluarte_casco": {
+   "set": "baluarte",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "tanque",
+   "name": "Yelmo del Baluarte"
+  },
+  "baluarte_escudo": {
+   "set": "baluarte",
+   "type": "escudo",
+   "rarity": "legendario",
+   "champion": "tanque",
+   "name": "Pavés del Baluarte"
+  },
+  "baluarte_pechera": {
+   "set": "baluarte",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "tanque",
+   "name": "Coraza del Baluarte"
+  },
+  "berserker_arma": {
+   "set": "berserker",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Hacha Sedienta"
+  },
+  "berserker_botas": {
+   "set": "berserker",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Botas de la Carga"
+  },
+  "berserker_guantes": {
+   "set": "berserker",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Puños de Sangre"
+  },
+  "berserker_pechera": {
+   "set": "berserker",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Piel del Berserker"
+  },
+  "cazador_arma": {
+   "set": "cazador",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Colmillo de la Sombra"
+  },
+  "cazador_botas": {
+   "set": "cazador",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Pasos de Sombra"
+  },
+  "cazador_casco": {
+   "set": "cazador",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Máscara del Acecho"
+  },
+  "cazador_guantes": {
+   "set": "cazador",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Guantes Silenciosos"
+  },
+  "coloso_botas": {
+   "set": "coloso",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Pisada del Coloso"
+  },
+  "coloso_casco": {
+   "set": "coloso",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Yelmo del Coloso"
+  },
+  "coloso_escudo": {
+   "set": "coloso",
+   "type": "escudo",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Bastión del Coloso"
+  },
+  "coloso_pechera": {
+   "set": "coloso",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Corazón de Piedra"
+  },
+  "convergencia_arma": {
+   "set": "convergencia",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "mago",
+   "name": "Bastón de la Convergencia"
+  },
+  "convergencia_casco": {
+   "set": "convergencia",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "mago",
+   "name": "Capucha Tricolor"
+  },
+  "convergencia_guantes": {
+   "set": "convergencia",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": "mago",
+   "name": "Sellos Elementales"
+  },
+  "convergencia_pechera": {
+   "set": "convergencia",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "mago",
+   "name": "Túnica de los Tres Elementos"
+  },
+  "custodio_arma": {
+   "set": "custodio",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "soporte",
+   "name": "Báculo del Custodio"
+  },
+  "custodio_botas": {
+   "set": "custodio",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "soporte",
+   "name": "Sandalias del Custodio"
+  },
+  "custodio_casco": {
+   "set": "custodio",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "soporte",
+   "name": "Mitra del Custodio"
+  },
+  "custodio_pechera": {
+   "set": "custodio",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "soporte",
+   "name": "Hábito del Custodio"
+  },
+  "errante_arma": {
+   "set": "errante",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "musashi",
+   "name": "Bokken del Errante"
+  },
+  "errante_botas": {
+   "set": "errante",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "musashi",
+   "name": "Waraji del Errante"
+  },
+  "errante_casco": {
+   "set": "errante",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "musashi",
+   "name": "Kasa del Errante"
+  },
+  "errante_guantes": {
+   "set": "errante",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": "musashi",
+   "name": "Tekko del Errante"
+  },
+  "exp_baltra_arma": {
+   "set": "exp_baltra",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "baltra",
+   "name": "Badajo de salvamento"
+  },
+  "exp_baltra_botas": {
+   "set": "exp_baltra",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "baltra",
+   "name": "Pasos de Baltra"
+  },
+  "exp_baltra_casco": {
+   "set": "exp_baltra",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "baltra",
+   "name": "Insignia de Baltra"
+  },
+  "exp_baltra_pechera": {
+   "set": "exp_baltra",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "baltra",
+   "name": "Vestidura de Baltra"
+  },
+  "exp_dariel_arma": {
+   "set": "exp_dariel",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "dariel",
+   "name": "Diapasón del telón"
+  },
+  "exp_dariel_botas": {
+   "set": "exp_dariel",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "dariel",
+   "name": "Pasos de Dáriel"
+  },
+  "exp_dariel_casco": {
+   "set": "exp_dariel",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "dariel",
+   "name": "Insignia de Dáriel"
+  },
+  "exp_dariel_pechera": {
+   "set": "exp_dariel",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "dariel",
+   "name": "Vestidura de Dáriel"
+  },
+  "exp_maura_arma": {
+   "set": "exp_maura",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "maura",
+   "name": "Cayado de zarza"
+  },
+  "exp_maura_botas": {
+   "set": "exp_maura",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "maura",
+   "name": "Pasos de Maura"
+  },
+  "exp_maura_casco": {
+   "set": "exp_maura",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "maura",
+   "name": "Insignia de Maura"
+  },
+  "exp_maura_pechera": {
+   "set": "exp_maura",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "maura",
+   "name": "Vestidura de Maura"
+  },
+  "exp_nahir_arma": {
+   "set": "exp_nahir",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "nahir",
+   "name": "Hojas de espejo"
+  },
+  "exp_nahir_botas": {
+   "set": "exp_nahir",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "nahir",
+   "name": "Pasos de Nahir"
+  },
+  "exp_nahir_casco": {
+   "set": "exp_nahir",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "nahir",
+   "name": "Insignia de Nahir"
+  },
+  "exp_nahir_pechera": {
+   "set": "exp_nahir",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "nahir",
+   "name": "Vestidura de Nahir"
+  },
+  "exp_orsa_arma": {
+   "set": "exp_orsa",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "orsa",
+   "name": "Ballesta de bobina"
+  },
+  "exp_orsa_botas": {
+   "set": "exp_orsa",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "orsa",
+   "name": "Pasos de Orsa"
+  },
+  "exp_orsa_casco": {
+   "set": "exp_orsa",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "orsa",
+   "name": "Insignia de Orsa"
+  },
+  "exp_orsa_pechera": {
+   "set": "exp_orsa",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "orsa",
+   "name": "Vestidura de Orsa"
+  },
+  "exp_renko_arma": {
+   "set": "exp_renko",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "renko",
+   "name": "Pala de nombres"
+  },
+  "exp_renko_botas": {
+   "set": "exp_renko",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "renko",
+   "name": "Pasos de Renko"
+  },
+  "exp_renko_casco": {
+   "set": "exp_renko",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "renko",
+   "name": "Insignia de Renko"
+  },
+  "exp_renko_pechera": {
+   "set": "exp_renko",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "renko",
+   "name": "Vestidura de Renko"
+  },
+  "exp_sira_arma": {
+   "set": "exp_sira",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "sira",
+   "name": "Pluma de agrimensor"
+  },
+  "exp_sira_botas": {
+   "set": "exp_sira",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "sira",
+   "name": "Pasos de Sira"
+  },
+  "exp_sira_casco": {
+   "set": "exp_sira",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "sira",
+   "name": "Insignia de Sira"
+  },
+  "exp_sira_pechera": {
+   "set": "exp_sira",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "sira",
+   "name": "Vestidura de Sira"
+  },
+  "exp_tibor_arma": {
+   "set": "exp_tibor",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "tibor",
+   "name": "Incensario de apicultor"
+  },
+  "exp_tibor_botas": {
+   "set": "exp_tibor",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "tibor",
+   "name": "Pasos de Tibor"
+  },
+  "exp_tibor_casco": {
+   "set": "exp_tibor",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "tibor",
+   "name": "Insignia de Tibor"
+  },
+  "exp_tibor_pechera": {
+   "set": "exp_tibor",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "tibor",
+   "name": "Vestidura de Tibor"
+  },
+  "exp_vesper_arma": {
+   "set": "exp_vesper",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "vesper",
+   "name": "Tijeras de luto"
+  },
+  "exp_vesper_botas": {
+   "set": "exp_vesper",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "vesper",
+   "name": "Pasos de Vesper"
+  },
+  "exp_vesper_casco": {
+   "set": "exp_vesper",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "vesper",
+   "name": "Insignia de Vesper"
+  },
+  "exp_vesper_pechera": {
+   "set": "exp_vesper",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "vesper",
+   "name": "Vestidura de Vesper"
+  },
+  "exp_zahra_arma": {
+   "set": "exp_zahra",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "zahra",
+   "name": "Guante de horno"
+  },
+  "exp_zahra_botas": {
+   "set": "exp_zahra",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "zahra",
+   "name": "Pasos de Zahra"
+  },
+  "exp_zahra_casco": {
+   "set": "exp_zahra",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "zahra",
+   "name": "Insignia de Zahra"
+  },
+  "exp_zahra_pechera": {
+   "set": "exp_zahra",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "zahra",
+   "name": "Vestidura de Zahra"
+  },
+  "glaciar_arma": {
+   "set": "glaciar",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Colmillo del Glaciar"
+  },
+  "glaciar_casco": {
+   "set": "glaciar",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Diadema de Escarcha"
+  },
+  "glaciar_guantes": {
+   "set": "glaciar",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Garras Gélidas"
+  },
+  "glaciar_pechera": {
+   "set": "glaciar",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Coraza del Invierno"
+  },
+  "granadero_arma": {
+   "set": "granadero",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "libertador",
+   "name": "Fusil del Granadero"
+  },
+  "granadero_botas": {
+   "set": "granadero",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "libertador",
+   "name": "Botas de Caballería"
+  },
+  "granadero_casco": {
+   "set": "granadero",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "libertador",
+   "name": "Morrión del Granadero"
+  },
+  "granadero_pechera": {
+   "set": "granadero",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "libertador",
+   "name": "Casaca Azul"
+  },
+  "guardian_casco": {
+   "set": "guardian",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Yelmo del Guardián"
+  },
+  "guardian_escudo": {
+   "set": "guardian",
+   "type": "escudo",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Égida del Juramento"
+  },
+  "guardian_guantes": {
+   "set": "guardian",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Guanteletes de la Promesa"
+  },
+  "guardian_pechera": {
+   "set": "guardian",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Peto Juramentado"
+  },
+  "hilo_umbral_arma": {
+   "set": "hilo_umbral",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "iria",
+   "name": "Aguja Rúnica del Hilo del Umbral"
+  },
+  "hilo_umbral_botas": {
+   "set": "hilo_umbral",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "iria",
+   "name": "Pasos del Hilo del Umbral"
+  },
+  "hilo_umbral_casco": {
+   "set": "hilo_umbral",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "iria",
+   "name": "Insignia del Hilo del Umbral"
+  },
+  "hilo_umbral_pechera": {
+   "set": "hilo_umbral",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "iria",
+   "name": "Vestidura del Hilo del Umbral"
+  },
+  "juramento_roto_arma": {
+   "set": "juramento_roto",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "eslabon",
+   "name": "Cadena de Grilletes del Juramento Roto"
+  },
+  "juramento_roto_botas": {
+   "set": "juramento_roto",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "eslabon",
+   "name": "Pasos del Juramento Roto"
+  },
+  "juramento_roto_casco": {
+   "set": "juramento_roto",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "eslabon",
+   "name": "Insignia del Juramento Roto"
+  },
+  "juramento_roto_pechera": {
+   "set": "juramento_roto",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "eslabon",
+   "name": "Vestidura del Juramento Roto"
+  },
+  "laberinto_botas": {
+   "set": "laberinto",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Botas del Rey"
+  },
+  "laberinto_casco": {
+   "set": "laberinto",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Corona del Rey Errante"
+  },
+  "laberinto_guantes": {
+   "set": "laberinto",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Guantes del Cartógrafo"
+  },
+  "laberinto_pechera": {
+   "set": "laberinto",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Manto de los Pasillos"
+  },
+  "legion_arma": {
+   "set": "legion",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "ilkan",
+   "name": "Hoces de la Caravana"
+  },
+  "legion_botas": {
+   "set": "legion",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "ilkan",
+   "name": "Botas de Arena"
+  },
+  "legion_guantes": {
+   "set": "legion",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": "ilkan",
+   "name": "Empuñaduras de Cristal"
+  },
+  "legion_pechera": {
+   "set": "legion",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "ilkan",
+   "name": "Arnés de Faroles"
+  },
+  "lucifer_arma": {
+   "set": "lucifer",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Espada de Lucifer"
+  },
+  "lucifer_botas": {
+   "set": "lucifer",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Botas de Lucifer"
+  },
+  "lucifer_casco": {
+   "set": "lucifer",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Casco de Lucifer"
+  },
+  "lucifer_escudo": {
+   "set": "lucifer",
+   "type": "escudo",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Escudo de Lucifer"
+  },
+  "lucifer_guantes": {
+   "set": "lucifer",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Guantes de Lucifer"
+  },
+  "lucifer_pechera": {
+   "set": "lucifer",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Pechera de Lucifer"
+  },
+  "lumbre_persistente_arma": {
+   "set": "lumbre_persistente",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "farolero",
+   "name": "Piqueta de Guardia del Lumbre Persistente"
+  },
+  "lumbre_persistente_botas": {
+   "set": "lumbre_persistente",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "farolero",
+   "name": "Pasos del Lumbre Persistente"
+  },
+  "lumbre_persistente_casco": {
+   "set": "lumbre_persistente",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "farolero",
+   "name": "Insignia del Lumbre Persistente"
+  },
+  "lumbre_persistente_pechera": {
+   "set": "lumbre_persistente",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "farolero",
+   "name": "Vestidura del Lumbre Persistente"
+  },
+  "manada_arma": {
+   "set": "manada",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "cazadora",
+   "name": "Arco de la Manada"
+  },
+  "manada_botas": {
+   "set": "manada",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "cazadora",
+   "name": "Botas del Sendero"
+  },
+  "manada_casco": {
+   "set": "manada",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "cazadora",
+   "name": "Capucha del Rastreador"
+  },
+  "manada_guantes": {
+   "set": "manada",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": "cazadora",
+   "name": "Guantes de la Cuerda Tensa"
+  },
+  "marea_arma": {
+   "set": "marea",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "segador",
+   "name": "Guadaña de la Marea"
+  },
+  "marea_botas": {
+   "set": "marea",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "segador",
+   "name": "Botas del Olvido"
+  },
+  "marea_guantes": {
+   "set": "marea",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": "segador",
+   "name": "Garras de la Marea"
+  },
+  "marea_pechera": {
+   "set": "marea",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "segador",
+   "name": "Coraza Carmesí"
+  },
+  "merienda_magica_arma": {
+   "set": "merienda_magica",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "myla",
+   "name": "Cuchara Encantada del Merienda Mágica"
+  },
+  "merienda_magica_botas": {
+   "set": "merienda_magica",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "myla",
+   "name": "Pasos del Merienda Mágica"
+  },
+  "merienda_magica_casco": {
+   "set": "merienda_magica",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "myla",
+   "name": "Insignia del Merienda Mágica"
+  },
+  "merienda_magica_pechera": {
+   "set": "merienda_magica",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "myla",
+   "name": "Vestidura del Merienda Mágica"
+  },
+  "nocturno_arma": {
+   "set": "nocturno",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "guerrero",
+   "name": "Colmillo Nocturno"
+  },
+  "nocturno_botas": {
+   "set": "nocturno",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "guerrero",
+   "name": "Pasos Nocturnos"
+  },
+  "nocturno_casco": {
+   "set": "nocturno",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "guerrero",
+   "name": "Capucha Nocturna"
+  },
+  "nocturno_guantes": {
+   "set": "nocturno",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": "guerrero",
+   "name": "Guantes del Degollador"
+  },
+  "profecia_botas": {
+   "set": "profecia",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "profeta",
+   "name": "Pasos del Presagio"
+  },
+  "profecia_casco": {
+   "set": "profecia",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "profeta",
+   "name": "Velo de la Profecía"
+  },
+  "profecia_guantes": {
+   "set": "profecia",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": "profeta",
+   "name": "Brazales del Destino"
+  },
+  "profecia_pechera": {
+   "set": "profecia",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "profeta",
+   "name": "Manto del Augurio"
+  },
+  "quality_aelith_arma": {
+   "set": "quality_aelith",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "aelith",
+   "name": "Reloj del Mediodía"
+  },
+  "quality_aelith_botas": {
+   "set": "quality_aelith",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "aelith",
+   "name": "Pasos de Hora del Mediodía"
+  },
+  "quality_aelith_casco": {
+   "set": "quality_aelith",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "aelith",
+   "name": "Insignia de Hora del Mediodía"
+  },
+  "quality_aelith_pechera": {
+   "set": "quality_aelith",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "aelith",
+   "name": "Vestidura de Hora del Mediodía"
+  },
+  "quality_brakk_arma": {
+   "set": "quality_brakk",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "brakk",
+   "name": "Maza de Presión"
+  },
+  "quality_brakk_botas": {
+   "set": "quality_brakk",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "brakk",
+   "name": "Pasos de Cimientos del Abismo"
+  },
+  "quality_brakk_casco": {
+   "set": "quality_brakk",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "brakk",
+   "name": "Insignia de Cimientos del Abismo"
+  },
+  "quality_brakk_pechera": {
+   "set": "quality_brakk",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "brakk",
+   "name": "Vestidura de Cimientos del Abismo"
+  },
+  "quality_morveth_arma": {
+   "set": "quality_morveth",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "morveth",
+   "name": "Hoz de Sal Dormida"
+  },
+  "quality_morveth_botas": {
+   "set": "quality_morveth",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "morveth",
+   "name": "Pasos de Huerto de Sal"
+  },
+  "quality_morveth_casco": {
+   "set": "quality_morveth",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "morveth",
+   "name": "Insignia de Huerto de Sal"
+  },
+  "quality_morveth_pechera": {
+   "set": "quality_morveth",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "morveth",
+   "name": "Vestidura de Huerto de Sal"
+  },
+  "quality_solciju_arma": {
+   "set": "quality_solciju",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "solciju",
+   "name": "Sacacorchos de la Vendimia"
+  },
+  "quality_solciju_botas": {
+   "set": "quality_solciju",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "solciju",
+   "name": "Pasos de Cosecha Sitiada"
+  },
+  "quality_solciju_casco": {
+   "set": "quality_solciju",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "solciju",
+   "name": "Insignia de Cosecha Sitiada"
+  },
+  "quality_solciju_pechera": {
+   "set": "quality_solciju",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "solciju",
+   "name": "Vestidura de Cosecha Sitiada"
+  },
+  "quality_veyra_arma": {
+   "set": "quality_veyra",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "veyra",
+   "name": "Sable de la Cicatriz"
+  },
+  "quality_veyra_botas": {
+   "set": "quality_veyra",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "veyra",
+   "name": "Pasos de Cicatriz de Obsidiana"
+  },
+  "quality_veyra_casco": {
+   "set": "quality_veyra",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "veyra",
+   "name": "Insignia de Cicatriz de Obsidiana"
+  },
+  "quality_veyra_pechera": {
+   "set": "quality_veyra",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "veyra",
+   "name": "Vestidura de Cicatriz de Obsidiana"
+  },
+  "requiem_arma": {
+   "set": "requiem",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "nigromante",
+   "name": "Cetro del Réquiem"
+  },
+  "requiem_casco": {
+   "set": "requiem",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "nigromante",
+   "name": "Corona de Huesos"
+  },
+  "requiem_guantes": {
+   "set": "requiem",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": "nigromante",
+   "name": "Garras de la Tumba"
+  },
+  "requiem_pechera": {
+   "set": "requiem",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "nigromante",
+   "name": "Mortaja del Señor"
+  },
+  "santa_paciencia_arma": {
+   "set": "santa_paciencia",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "ynara",
+   "name": "Halo Nacarado del Santa Paciencia"
+  },
+  "santa_paciencia_botas": {
+   "set": "santa_paciencia",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "ynara",
+   "name": "Pasos del Santa Paciencia"
+  },
+  "santa_paciencia_casco": {
+   "set": "santa_paciencia",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "ynara",
+   "name": "Insignia del Santa Paciencia"
+  },
+  "santa_paciencia_pechera": {
+   "set": "santa_paciencia",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "ynara",
+   "name": "Vestidura del Santa Paciencia"
+  },
+  "sepulturero_arma": {
+   "set": "sepulturero",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Pala del Sepulturero"
+  },
+  "sepulturero_casco": {
+   "set": "sepulturero",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Capucha del Réquiem"
+  },
+  "sepulturero_guantes": {
+   "set": "sepulturero",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Manos de Tierra"
+  },
+  "sepulturero_pechera": {
+   "set": "sepulturero",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Mortaja Cosida"
+  },
+  "sistema_arma": {
+   "set": "sistema",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "axiom",
+   "name": "Núcleo Raíz"
+  },
+  "sistema_botas": {
+   "set": "sistema",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "axiom",
+   "name": "Pasos Asíncronos"
+  },
+  "sistema_casco": {
+   "set": "sistema",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "axiom",
+   "name": "Visor de Depuración"
+  },
+  "sistema_guantes": {
+   "set": "sistema",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": "axiom",
+   "name": "Guantes de Compilación"
+  },
+  "tempestad_arma": {
+   "set": "tempestad",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Cetro del Relámpago"
+  },
+  "tempestad_botas": {
+   "set": "tempestad",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Botas del Rayo"
+  },
+  "tempestad_casco": {
+   "set": "tempestad",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Corona de Nubes"
+  },
+  "tempestad_guantes": {
+   "set": "tempestad",
+   "type": "guantes",
+   "rarity": "legendario",
+   "champion": null,
+   "name": "Guantes de Descarga"
+  },
+  "ultimo_turno_arma": {
+   "set": "ultimo_turno",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "brasa",
+   "name": "Remachadora del Último Turno"
+  },
+  "ultimo_turno_botas": {
+   "set": "ultimo_turno",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "brasa",
+   "name": "Pasos del Último Turno"
+  },
+  "ultimo_turno_casco": {
+   "set": "ultimo_turno",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "brasa",
+   "name": "Insignia del Último Turno"
+  },
+  "ultimo_turno_pechera": {
+   "set": "ultimo_turno",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "brasa",
+   "name": "Vestidura del Último Turno"
+  },
+  "vidrio_negro_arma": {
+   "set": "vidrio_negro",
+   "type": "arma",
+   "rarity": "legendario",
+   "champion": "morwen",
+   "name": "Aguja de Vidrio del Vidrio Negro"
+  },
+  "vidrio_negro_botas": {
+   "set": "vidrio_negro",
+   "type": "botas",
+   "rarity": "legendario",
+   "champion": "morwen",
+   "name": "Pasos del Vidrio Negro"
+  },
+  "vidrio_negro_casco": {
+   "set": "vidrio_negro",
+   "type": "casco",
+   "rarity": "legendario",
+   "champion": "morwen",
+   "name": "Insignia del Vidrio Negro"
+  },
+  "vidrio_negro_pechera": {
+   "set": "vidrio_negro",
+   "type": "pechera",
+   "rarity": "legendario",
+   "champion": "morwen",
+   "name": "Vestidura del Vidrio Negro"
+  }
+ },
+ "sets": {
+  "lucifer": [
+   "lucifer_arma",
+   "lucifer_escudo",
+   "lucifer_casco",
+   "lucifer_pechera",
+   "lucifer_guantes",
+   "lucifer_botas"
+  ],
+  "glaciar": [
+   "glaciar_arma",
+   "glaciar_casco",
+   "glaciar_pechera",
+   "glaciar_guantes"
+  ],
+  "coloso": [
+   "coloso_escudo",
+   "coloso_casco",
+   "coloso_pechera",
+   "coloso_botas"
+  ],
+  "sepulturero": [
+   "sepulturero_arma",
+   "sepulturero_casco",
+   "sepulturero_pechera",
+   "sepulturero_guantes"
+  ],
+  "tempestad": [
+   "tempestad_arma",
+   "tempestad_casco",
+   "tempestad_guantes",
+   "tempestad_botas"
+  ],
+  "berserker": [
+   "berserker_arma",
+   "berserker_pechera",
+   "berserker_guantes",
+   "berserker_botas"
+  ],
+  "guardian": [
+   "guardian_escudo",
+   "guardian_casco",
+   "guardian_pechera",
+   "guardian_guantes"
+  ],
+  "alba": [
+   "alba_arma",
+   "alba_casco",
+   "alba_pechera",
+   "alba_botas"
+  ],
+  "cazador": [
+   "cazador_arma",
+   "cazador_casco",
+   "cazador_guantes",
+   "cazador_botas"
+  ],
+  "arcano": [
+   "arcano_arma",
+   "arcano_casco",
+   "arcano_guantes",
+   "arcano_botas"
+  ],
+  "laberinto": [
+   "laberinto_casco",
+   "laberinto_pechera",
+   "laberinto_guantes",
+   "laberinto_botas"
+  ],
+  "baluarte": [
+   "baluarte_escudo",
+   "baluarte_casco",
+   "baluarte_pechera",
+   "baluarte_botas"
+  ],
+  "nocturno": [
+   "nocturno_arma",
+   "nocturno_casco",
+   "nocturno_guantes",
+   "nocturno_botas"
+  ],
+  "convergencia": [
+   "convergencia_arma",
+   "convergencia_casco",
+   "convergencia_pechera",
+   "convergencia_guantes"
+  ],
+  "custodio": [
+   "custodio_arma",
+   "custodio_casco",
+   "custodio_pechera",
+   "custodio_botas"
+  ],
+  "marea": [
+   "marea_arma",
+   "marea_pechera",
+   "marea_guantes",
+   "marea_botas"
+  ],
+  "sistema": [
+   "sistema_arma",
+   "sistema_casco",
+   "sistema_guantes",
+   "sistema_botas"
+  ],
+  "profecia": [
+   "profecia_casco",
+   "profecia_pechera",
+   "profecia_guantes",
+   "profecia_botas"
+  ],
+  "errante": [
+   "errante_arma",
+   "errante_casco",
+   "errante_guantes",
+   "errante_botas"
+  ],
+  "manada": [
+   "manada_arma",
+   "manada_casco",
+   "manada_guantes",
+   "manada_botas"
+  ],
+  "granadero": [
+   "granadero_arma",
+   "granadero_casco",
+   "granadero_pechera",
+   "granadero_botas"
+  ],
+  "requiem": [
+   "requiem_arma",
+   "requiem_casco",
+   "requiem_pechera",
+   "requiem_guantes"
+  ],
+  "legion": [
+   "legion_arma",
+   "legion_pechera",
+   "legion_guantes",
+   "legion_botas"
+  ],
+  "santa_paciencia": [
+   "santa_paciencia_arma",
+   "santa_paciencia_casco",
+   "santa_paciencia_pechera",
+   "santa_paciencia_botas"
+  ],
+  "merienda_magica": [
+   "merienda_magica_arma",
+   "merienda_magica_casco",
+   "merienda_magica_pechera",
+   "merienda_magica_botas"
+  ],
+  "ultimo_turno": [
+   "ultimo_turno_arma",
+   "ultimo_turno_casco",
+   "ultimo_turno_pechera",
+   "ultimo_turno_botas"
+  ],
+  "juramento_roto": [
+   "juramento_roto_arma",
+   "juramento_roto_casco",
+   "juramento_roto_pechera",
+   "juramento_roto_botas"
+  ],
+  "vidrio_negro": [
+   "vidrio_negro_arma",
+   "vidrio_negro_casco",
+   "vidrio_negro_pechera",
+   "vidrio_negro_botas"
+  ],
+  "lumbre_persistente": [
+   "lumbre_persistente_arma",
+   "lumbre_persistente_casco",
+   "lumbre_persistente_pechera",
+   "lumbre_persistente_botas"
+  ],
+  "hilo_umbral": [
+   "hilo_umbral_arma",
+   "hilo_umbral_casco",
+   "hilo_umbral_pechera",
+   "hilo_umbral_botas"
+  ],
+  "exp_vesper": [
+   "exp_vesper_arma",
+   "exp_vesper_casco",
+   "exp_vesper_pechera",
+   "exp_vesper_botas"
+  ],
+  "exp_nahir": [
+   "exp_nahir_arma",
+   "exp_nahir_casco",
+   "exp_nahir_pechera",
+   "exp_nahir_botas"
+  ],
+  "exp_baltra": [
+   "exp_baltra_arma",
+   "exp_baltra_casco",
+   "exp_baltra_pechera",
+   "exp_baltra_botas"
+  ],
+  "exp_maura": [
+   "exp_maura_arma",
+   "exp_maura_casco",
+   "exp_maura_pechera",
+   "exp_maura_botas"
+  ],
+  "exp_dariel": [
+   "exp_dariel_arma",
+   "exp_dariel_casco",
+   "exp_dariel_pechera",
+   "exp_dariel_botas"
+  ],
+  "exp_orsa": [
+   "exp_orsa_arma",
+   "exp_orsa_casco",
+   "exp_orsa_pechera",
+   "exp_orsa_botas"
+  ],
+  "exp_tibor": [
+   "exp_tibor_arma",
+   "exp_tibor_casco",
+   "exp_tibor_pechera",
+   "exp_tibor_botas"
+  ],
+  "exp_zahra": [
+   "exp_zahra_arma",
+   "exp_zahra_casco",
+   "exp_zahra_pechera",
+   "exp_zahra_botas"
+  ],
+  "exp_renko": [
+   "exp_renko_arma",
+   "exp_renko_casco",
+   "exp_renko_pechera",
+   "exp_renko_botas"
+  ],
+  "exp_sira": [
+   "exp_sira_arma",
+   "exp_sira_casco",
+   "exp_sira_pechera",
+   "exp_sira_botas"
+  ],
+  "asc_aurelia": [
+   "asc_aurelia_arma",
+   "asc_aurelia_casco",
+   "asc_aurelia_pechera",
+   "asc_aurelia_botas"
+  ],
+  "asc_khepri": [
+   "asc_khepri_arma",
+   "asc_khepri_casco",
+   "asc_khepri_pechera",
+   "asc_khepri_botas"
+  ],
+  "asc_velmira": [
+   "asc_velmira_arma",
+   "asc_velmira_casco",
+   "asc_velmira_pechera",
+   "asc_velmira_botas"
+  ],
+  "asc_vhal": [
+   "asc_vhal_arma",
+   "asc_vhal_casco",
+   "asc_vhal_pechera",
+   "asc_vhal_botas"
+  ],
+  "asc_bront": [
+   "asc_bront_arma",
+   "asc_bront_casco",
+   "asc_bront_pechera",
+   "asc_bront_botas"
+  ],
+  "asc_oriel": [
+   "asc_oriel_arma",
+   "asc_oriel_casco",
+   "asc_oriel_pechera",
+   "asc_oriel_botas"
+  ],
+  "asc_saelis": [
+   "asc_saelis_arma",
+   "asc_saelis_casco",
+   "asc_saelis_pechera",
+   "asc_saelis_botas"
+  ],
+  "quality_solciju": [
+   "quality_solciju_arma",
+   "quality_solciju_casco",
+   "quality_solciju_pechera",
+   "quality_solciju_botas"
+  ],
+  "quality_brakk": [
+   "quality_brakk_arma",
+   "quality_brakk_casco",
+   "quality_brakk_pechera",
+   "quality_brakk_botas"
+  ],
+  "quality_veyra": [
+   "quality_veyra_arma",
+   "quality_veyra_casco",
+   "quality_veyra_pechera",
+   "quality_veyra_botas"
+  ],
+  "quality_morveth": [
+   "quality_morveth_arma",
+   "quality_morveth_casco",
+   "quality_morveth_pechera",
+   "quality_morveth_botas"
+  ],
+  "quality_aelith": [
+   "quality_aelith_arma",
+   "quality_aelith_casco",
+   "quality_aelith_pechera",
+   "quality_aelith_botas"
+  ]
+ },
+ "pool": [
+  {
+   "key": "d:alba_arma",
+   "cat": "set",
+   "group": "alba"
+  },
+  {
+   "key": "d:alba_botas",
+   "cat": "set",
+   "group": "alba"
+  },
+  {
+   "key": "d:alba_casco",
+   "cat": "set",
+   "group": "alba"
+  },
+  {
+   "key": "d:alba_pechera",
+   "cat": "set",
+   "group": "alba"
+  },
+  {
+   "key": "d:arcano_arma",
+   "cat": "set",
+   "group": "arcano"
+  },
+  {
+   "key": "d:arcano_botas",
+   "cat": "set",
+   "group": "arcano"
+  },
+  {
+   "key": "d:arcano_casco",
+   "cat": "set",
+   "group": "arcano"
+  },
+  {
+   "key": "d:arcano_guantes",
+   "cat": "set",
+   "group": "arcano"
+  },
+  {
+   "key": "d:asc_aurelia_arma",
+   "cat": "set",
+   "group": "asc_aurelia"
+  },
+  {
+   "key": "d:asc_aurelia_botas",
+   "cat": "set",
+   "group": "asc_aurelia"
+  },
+  {
+   "key": "d:asc_aurelia_casco",
+   "cat": "set",
+   "group": "asc_aurelia"
+  },
+  {
+   "key": "d:asc_aurelia_pechera",
+   "cat": "set",
+   "group": "asc_aurelia"
+  },
+  {
+   "key": "d:asc_bront_arma",
+   "cat": "set",
+   "group": "asc_bront"
+  },
+  {
+   "key": "d:asc_bront_botas",
+   "cat": "set",
+   "group": "asc_bront"
+  },
+  {
+   "key": "d:asc_bront_casco",
+   "cat": "set",
+   "group": "asc_bront"
+  },
+  {
+   "key": "d:asc_bront_pechera",
+   "cat": "set",
+   "group": "asc_bront"
+  },
+  {
+   "key": "d:asc_khepri_arma",
+   "cat": "set",
+   "group": "asc_khepri"
+  },
+  {
+   "key": "d:asc_khepri_botas",
+   "cat": "set",
+   "group": "asc_khepri"
+  },
+  {
+   "key": "d:asc_khepri_casco",
+   "cat": "set",
+   "group": "asc_khepri"
+  },
+  {
+   "key": "d:asc_khepri_pechera",
+   "cat": "set",
+   "group": "asc_khepri"
+  },
+  {
+   "key": "d:asc_oriel_arma",
+   "cat": "set",
+   "group": "asc_oriel"
+  },
+  {
+   "key": "d:asc_oriel_botas",
+   "cat": "set",
+   "group": "asc_oriel"
+  },
+  {
+   "key": "d:asc_oriel_casco",
+   "cat": "set",
+   "group": "asc_oriel"
+  },
+  {
+   "key": "d:asc_oriel_pechera",
+   "cat": "set",
+   "group": "asc_oriel"
+  },
+  {
+   "key": "d:asc_saelis_arma",
+   "cat": "set",
+   "group": "asc_saelis"
+  },
+  {
+   "key": "d:asc_saelis_botas",
+   "cat": "set",
+   "group": "asc_saelis"
+  },
+  {
+   "key": "d:asc_saelis_casco",
+   "cat": "set",
+   "group": "asc_saelis"
+  },
+  {
+   "key": "d:asc_saelis_pechera",
+   "cat": "set",
+   "group": "asc_saelis"
+  },
+  {
+   "key": "d:asc_velmira_arma",
+   "cat": "set",
+   "group": "asc_velmira"
+  },
+  {
+   "key": "d:asc_velmira_botas",
+   "cat": "set",
+   "group": "asc_velmira"
+  },
+  {
+   "key": "d:asc_velmira_casco",
+   "cat": "set",
+   "group": "asc_velmira"
+  },
+  {
+   "key": "d:asc_velmira_pechera",
+   "cat": "set",
+   "group": "asc_velmira"
+  },
+  {
+   "key": "d:asc_vhal_arma",
+   "cat": "set",
+   "group": "asc_vhal"
+  },
+  {
+   "key": "d:asc_vhal_botas",
+   "cat": "set",
+   "group": "asc_vhal"
+  },
+  {
+   "key": "d:asc_vhal_casco",
+   "cat": "set",
+   "group": "asc_vhal"
+  },
+  {
+   "key": "d:asc_vhal_pechera",
+   "cat": "set",
+   "group": "asc_vhal"
+  },
+  {
+   "key": "d:baluarte_botas",
+   "cat": "set",
+   "group": "baluarte"
+  },
+  {
+   "key": "d:baluarte_casco",
+   "cat": "set",
+   "group": "baluarte"
+  },
+  {
+   "key": "d:baluarte_escudo",
+   "cat": "set",
+   "group": "baluarte"
+  },
+  {
+   "key": "d:baluarte_pechera",
+   "cat": "set",
+   "group": "baluarte"
+  },
+  {
+   "key": "d:berserker_arma",
+   "cat": "set",
+   "group": "berserker"
+  },
+  {
+   "key": "d:berserker_botas",
+   "cat": "set",
+   "group": "berserker"
+  },
+  {
+   "key": "d:berserker_guantes",
+   "cat": "set",
+   "group": "berserker"
+  },
+  {
+   "key": "d:berserker_pechera",
+   "cat": "set",
+   "group": "berserker"
+  },
+  {
+   "key": "d:cazador_arma",
+   "cat": "set",
+   "group": "cazador"
+  },
+  {
+   "key": "d:cazador_botas",
+   "cat": "set",
+   "group": "cazador"
+  },
+  {
+   "key": "d:cazador_casco",
+   "cat": "set",
+   "group": "cazador"
+  },
+  {
+   "key": "d:cazador_guantes",
+   "cat": "set",
+   "group": "cazador"
+  },
+  {
+   "key": "d:coloso_botas",
+   "cat": "set",
+   "group": "coloso"
+  },
+  {
+   "key": "d:coloso_casco",
+   "cat": "set",
+   "group": "coloso"
+  },
+  {
+   "key": "d:coloso_escudo",
+   "cat": "set",
+   "group": "coloso"
+  },
+  {
+   "key": "d:coloso_pechera",
+   "cat": "set",
+   "group": "coloso"
+  },
+  {
+   "key": "d:convergencia_arma",
+   "cat": "set",
+   "group": "convergencia"
+  },
+  {
+   "key": "d:convergencia_casco",
+   "cat": "set",
+   "group": "convergencia"
+  },
+  {
+   "key": "d:convergencia_guantes",
+   "cat": "set",
+   "group": "convergencia"
+  },
+  {
+   "key": "d:convergencia_pechera",
+   "cat": "set",
+   "group": "convergencia"
+  },
+  {
+   "key": "d:custodio_arma",
+   "cat": "set",
+   "group": "custodio"
+  },
+  {
+   "key": "d:custodio_botas",
+   "cat": "set",
+   "group": "custodio"
+  },
+  {
+   "key": "d:custodio_casco",
+   "cat": "set",
+   "group": "custodio"
+  },
+  {
+   "key": "d:custodio_pechera",
+   "cat": "set",
+   "group": "custodio"
+  },
+  {
+   "key": "d:errante_arma",
+   "cat": "set",
+   "group": "errante"
+  },
+  {
+   "key": "d:errante_botas",
+   "cat": "set",
+   "group": "errante"
+  },
+  {
+   "key": "d:errante_casco",
+   "cat": "set",
+   "group": "errante"
+  },
+  {
+   "key": "d:errante_guantes",
+   "cat": "set",
+   "group": "errante"
+  },
+  {
+   "key": "d:exp_baltra_arma",
+   "cat": "set",
+   "group": "exp_baltra"
+  },
+  {
+   "key": "d:exp_baltra_botas",
+   "cat": "set",
+   "group": "exp_baltra"
+  },
+  {
+   "key": "d:exp_baltra_casco",
+   "cat": "set",
+   "group": "exp_baltra"
+  },
+  {
+   "key": "d:exp_baltra_pechera",
+   "cat": "set",
+   "group": "exp_baltra"
+  },
+  {
+   "key": "d:exp_dariel_arma",
+   "cat": "set",
+   "group": "exp_dariel"
+  },
+  {
+   "key": "d:exp_dariel_botas",
+   "cat": "set",
+   "group": "exp_dariel"
+  },
+  {
+   "key": "d:exp_dariel_casco",
+   "cat": "set",
+   "group": "exp_dariel"
+  },
+  {
+   "key": "d:exp_dariel_pechera",
+   "cat": "set",
+   "group": "exp_dariel"
+  },
+  {
+   "key": "d:exp_maura_arma",
+   "cat": "set",
+   "group": "exp_maura"
+  },
+  {
+   "key": "d:exp_maura_botas",
+   "cat": "set",
+   "group": "exp_maura"
+  },
+  {
+   "key": "d:exp_maura_casco",
+   "cat": "set",
+   "group": "exp_maura"
+  },
+  {
+   "key": "d:exp_maura_pechera",
+   "cat": "set",
+   "group": "exp_maura"
+  },
+  {
+   "key": "d:exp_nahir_arma",
+   "cat": "set",
+   "group": "exp_nahir"
+  },
+  {
+   "key": "d:exp_nahir_botas",
+   "cat": "set",
+   "group": "exp_nahir"
+  },
+  {
+   "key": "d:exp_nahir_casco",
+   "cat": "set",
+   "group": "exp_nahir"
+  },
+  {
+   "key": "d:exp_nahir_pechera",
+   "cat": "set",
+   "group": "exp_nahir"
+  },
+  {
+   "key": "d:exp_orsa_arma",
+   "cat": "set",
+   "group": "exp_orsa"
+  },
+  {
+   "key": "d:exp_orsa_botas",
+   "cat": "set",
+   "group": "exp_orsa"
+  },
+  {
+   "key": "d:exp_orsa_casco",
+   "cat": "set",
+   "group": "exp_orsa"
+  },
+  {
+   "key": "d:exp_orsa_pechera",
+   "cat": "set",
+   "group": "exp_orsa"
+  },
+  {
+   "key": "d:exp_renko_arma",
+   "cat": "set",
+   "group": "exp_renko"
+  },
+  {
+   "key": "d:exp_renko_botas",
+   "cat": "set",
+   "group": "exp_renko"
+  },
+  {
+   "key": "d:exp_renko_casco",
+   "cat": "set",
+   "group": "exp_renko"
+  },
+  {
+   "key": "d:exp_renko_pechera",
+   "cat": "set",
+   "group": "exp_renko"
+  },
+  {
+   "key": "d:exp_sira_arma",
+   "cat": "set",
+   "group": "exp_sira"
+  },
+  {
+   "key": "d:exp_sira_botas",
+   "cat": "set",
+   "group": "exp_sira"
+  },
+  {
+   "key": "d:exp_sira_casco",
+   "cat": "set",
+   "group": "exp_sira"
+  },
+  {
+   "key": "d:exp_sira_pechera",
+   "cat": "set",
+   "group": "exp_sira"
+  },
+  {
+   "key": "d:exp_tibor_arma",
+   "cat": "set",
+   "group": "exp_tibor"
+  },
+  {
+   "key": "d:exp_tibor_botas",
+   "cat": "set",
+   "group": "exp_tibor"
+  },
+  {
+   "key": "d:exp_tibor_casco",
+   "cat": "set",
+   "group": "exp_tibor"
+  },
+  {
+   "key": "d:exp_tibor_pechera",
+   "cat": "set",
+   "group": "exp_tibor"
+  },
+  {
+   "key": "d:exp_vesper_arma",
+   "cat": "set",
+   "group": "exp_vesper"
+  },
+  {
+   "key": "d:exp_vesper_botas",
+   "cat": "set",
+   "group": "exp_vesper"
+  },
+  {
+   "key": "d:exp_vesper_casco",
+   "cat": "set",
+   "group": "exp_vesper"
+  },
+  {
+   "key": "d:exp_vesper_pechera",
+   "cat": "set",
+   "group": "exp_vesper"
+  },
+  {
+   "key": "d:exp_zahra_arma",
+   "cat": "set",
+   "group": "exp_zahra"
+  },
+  {
+   "key": "d:exp_zahra_botas",
+   "cat": "set",
+   "group": "exp_zahra"
+  },
+  {
+   "key": "d:exp_zahra_casco",
+   "cat": "set",
+   "group": "exp_zahra"
+  },
+  {
+   "key": "d:exp_zahra_pechera",
+   "cat": "set",
+   "group": "exp_zahra"
+  },
+  {
+   "key": "d:glaciar_arma",
+   "cat": "set",
+   "group": "glaciar"
+  },
+  {
+   "key": "d:glaciar_casco",
+   "cat": "set",
+   "group": "glaciar"
+  },
+  {
+   "key": "d:glaciar_guantes",
+   "cat": "set",
+   "group": "glaciar"
+  },
+  {
+   "key": "d:glaciar_pechera",
+   "cat": "set",
+   "group": "glaciar"
+  },
+  {
+   "key": "d:granadero_arma",
+   "cat": "set",
+   "group": "granadero"
+  },
+  {
+   "key": "d:granadero_botas",
+   "cat": "set",
+   "group": "granadero"
+  },
+  {
+   "key": "d:granadero_casco",
+   "cat": "set",
+   "group": "granadero"
+  },
+  {
+   "key": "d:granadero_pechera",
+   "cat": "set",
+   "group": "granadero"
+  },
+  {
+   "key": "d:guardian_casco",
+   "cat": "set",
+   "group": "guardian"
+  },
+  {
+   "key": "d:guardian_escudo",
+   "cat": "set",
+   "group": "guardian"
+  },
+  {
+   "key": "d:guardian_guantes",
+   "cat": "set",
+   "group": "guardian"
+  },
+  {
+   "key": "d:guardian_pechera",
+   "cat": "set",
+   "group": "guardian"
+  },
+  {
+   "key": "d:hilo_umbral_arma",
+   "cat": "set",
+   "group": "hilo_umbral"
+  },
+  {
+   "key": "d:hilo_umbral_botas",
+   "cat": "set",
+   "group": "hilo_umbral"
+  },
+  {
+   "key": "d:hilo_umbral_casco",
+   "cat": "set",
+   "group": "hilo_umbral"
+  },
+  {
+   "key": "d:hilo_umbral_pechera",
+   "cat": "set",
+   "group": "hilo_umbral"
+  },
+  {
+   "key": "d:juramento_roto_arma",
+   "cat": "set",
+   "group": "juramento_roto"
+  },
+  {
+   "key": "d:juramento_roto_botas",
+   "cat": "set",
+   "group": "juramento_roto"
+  },
+  {
+   "key": "d:juramento_roto_casco",
+   "cat": "set",
+   "group": "juramento_roto"
+  },
+  {
+   "key": "d:juramento_roto_pechera",
+   "cat": "set",
+   "group": "juramento_roto"
+  },
+  {
+   "key": "d:laberinto_botas",
+   "cat": "set",
+   "group": "laberinto"
+  },
+  {
+   "key": "d:laberinto_casco",
+   "cat": "set",
+   "group": "laberinto"
+  },
+  {
+   "key": "d:laberinto_guantes",
+   "cat": "set",
+   "group": "laberinto"
+  },
+  {
+   "key": "d:laberinto_pechera",
+   "cat": "set",
+   "group": "laberinto"
+  },
+  {
+   "key": "d:leg_acecho",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_alba_sandalias",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_belial",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_brasa_viva",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_caceria_roja",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_carnicero",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_ceniza_arcana",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_centinela",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_descarga",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_duelista",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_glaciar_manto",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_herrero_caido",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_juramento_roto",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_kaelen",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_medianoche",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_mil_sellos",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_morrah",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_peregrino",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_relampago_errante",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_seraphine",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_tundraverx",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_umbral",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_ventisquero",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:leg_ysolde",
+   "cat": "legendario",
+   "group": ""
+  },
+  {
+   "key": "d:legion_arma",
+   "cat": "set",
+   "group": "legion"
+  },
+  {
+   "key": "d:legion_botas",
+   "cat": "set",
+   "group": "legion"
+  },
+  {
+   "key": "d:legion_guantes",
+   "cat": "set",
+   "group": "legion"
+  },
+  {
+   "key": "d:legion_pechera",
+   "cat": "set",
+   "group": "legion"
+  },
+  {
+   "key": "d:lucifer_arma",
+   "cat": "set",
+   "group": "lucifer"
+  },
+  {
+   "key": "d:lucifer_botas",
+   "cat": "set",
+   "group": "lucifer"
+  },
+  {
+   "key": "d:lucifer_casco",
+   "cat": "set",
+   "group": "lucifer"
+  },
+  {
+   "key": "d:lucifer_escudo",
+   "cat": "set",
+   "group": "lucifer"
+  },
+  {
+   "key": "d:lucifer_guantes",
+   "cat": "set",
+   "group": "lucifer"
+  },
+  {
+   "key": "d:lucifer_pechera",
+   "cat": "set",
+   "group": "lucifer"
+  },
+  {
+   "key": "d:lumbre_persistente_arma",
+   "cat": "set",
+   "group": "lumbre_persistente"
+  },
+  {
+   "key": "d:lumbre_persistente_botas",
+   "cat": "set",
+   "group": "lumbre_persistente"
+  },
+  {
+   "key": "d:lumbre_persistente_casco",
+   "cat": "set",
+   "group": "lumbre_persistente"
+  },
+  {
+   "key": "d:lumbre_persistente_pechera",
+   "cat": "set",
+   "group": "lumbre_persistente"
+  },
+  {
+   "key": "d:manada_arma",
+   "cat": "set",
+   "group": "manada"
+  },
+  {
+   "key": "d:manada_botas",
+   "cat": "set",
+   "group": "manada"
+  },
+  {
+   "key": "d:manada_casco",
+   "cat": "set",
+   "group": "manada"
+  },
+  {
+   "key": "d:manada_guantes",
+   "cat": "set",
+   "group": "manada"
+  },
+  {
+   "key": "d:marea_arma",
+   "cat": "set",
+   "group": "marea"
+  },
+  {
+   "key": "d:marea_botas",
+   "cat": "set",
+   "group": "marea"
+  },
+  {
+   "key": "d:marea_guantes",
+   "cat": "set",
+   "group": "marea"
+  },
+  {
+   "key": "d:marea_pechera",
+   "cat": "set",
+   "group": "marea"
+  },
+  {
+   "key": "d:merienda_magica_arma",
+   "cat": "set",
+   "group": "merienda_magica"
+  },
+  {
+   "key": "d:merienda_magica_botas",
+   "cat": "set",
+   "group": "merienda_magica"
+  },
+  {
+   "key": "d:merienda_magica_casco",
+   "cat": "set",
+   "group": "merienda_magica"
+  },
+  {
+   "key": "d:merienda_magica_pechera",
+   "cat": "set",
+   "group": "merienda_magica"
+  },
+  {
+   "key": "d:nocturno_arma",
+   "cat": "set",
+   "group": "nocturno"
+  },
+  {
+   "key": "d:nocturno_botas",
+   "cat": "set",
+   "group": "nocturno"
+  },
+  {
+   "key": "d:nocturno_casco",
+   "cat": "set",
+   "group": "nocturno"
+  },
+  {
+   "key": "d:nocturno_guantes",
+   "cat": "set",
+   "group": "nocturno"
+  },
+  {
+   "key": "d:profecia_botas",
+   "cat": "set",
+   "group": "profecia"
+  },
+  {
+   "key": "d:profecia_casco",
+   "cat": "set",
+   "group": "profecia"
+  },
+  {
+   "key": "d:profecia_guantes",
+   "cat": "set",
+   "group": "profecia"
+  },
+  {
+   "key": "d:profecia_pechera",
+   "cat": "set",
+   "group": "profecia"
+  },
+  {
+   "key": "d:quality_aelith_arma",
+   "cat": "set",
+   "group": "quality_aelith"
+  },
+  {
+   "key": "d:quality_aelith_botas",
+   "cat": "set",
+   "group": "quality_aelith"
+  },
+  {
+   "key": "d:quality_aelith_casco",
+   "cat": "set",
+   "group": "quality_aelith"
+  },
+  {
+   "key": "d:quality_aelith_pechera",
+   "cat": "set",
+   "group": "quality_aelith"
+  },
+  {
+   "key": "d:quality_brakk_arma",
+   "cat": "set",
+   "group": "quality_brakk"
+  },
+  {
+   "key": "d:quality_brakk_botas",
+   "cat": "set",
+   "group": "quality_brakk"
+  },
+  {
+   "key": "d:quality_brakk_casco",
+   "cat": "set",
+   "group": "quality_brakk"
+  },
+  {
+   "key": "d:quality_brakk_pechera",
+   "cat": "set",
+   "group": "quality_brakk"
+  },
+  {
+   "key": "d:quality_morveth_arma",
+   "cat": "set",
+   "group": "quality_morveth"
+  },
+  {
+   "key": "d:quality_morveth_botas",
+   "cat": "set",
+   "group": "quality_morveth"
+  },
+  {
+   "key": "d:quality_morveth_casco",
+   "cat": "set",
+   "group": "quality_morveth"
+  },
+  {
+   "key": "d:quality_morveth_pechera",
+   "cat": "set",
+   "group": "quality_morveth"
+  },
+  {
+   "key": "d:quality_solciju_arma",
+   "cat": "set",
+   "group": "quality_solciju"
+  },
+  {
+   "key": "d:quality_solciju_botas",
+   "cat": "set",
+   "group": "quality_solciju"
+  },
+  {
+   "key": "d:quality_solciju_casco",
+   "cat": "set",
+   "group": "quality_solciju"
+  },
+  {
+   "key": "d:quality_solciju_pechera",
+   "cat": "set",
+   "group": "quality_solciju"
+  },
+  {
+   "key": "d:quality_veyra_arma",
+   "cat": "set",
+   "group": "quality_veyra"
+  },
+  {
+   "key": "d:quality_veyra_botas",
+   "cat": "set",
+   "group": "quality_veyra"
+  },
+  {
+   "key": "d:quality_veyra_casco",
+   "cat": "set",
+   "group": "quality_veyra"
+  },
+  {
+   "key": "d:quality_veyra_pechera",
+   "cat": "set",
+   "group": "quality_veyra"
+  },
+  {
+   "key": "d:requiem_arma",
+   "cat": "set",
+   "group": "requiem"
+  },
+  {
+   "key": "d:requiem_casco",
+   "cat": "set",
+   "group": "requiem"
+  },
+  {
+   "key": "d:requiem_guantes",
+   "cat": "set",
+   "group": "requiem"
+  },
+  {
+   "key": "d:requiem_pechera",
+   "cat": "set",
+   "group": "requiem"
+  },
+  {
+   "key": "d:santa_paciencia_arma",
+   "cat": "set",
+   "group": "santa_paciencia"
+  },
+  {
+   "key": "d:santa_paciencia_botas",
+   "cat": "set",
+   "group": "santa_paciencia"
+  },
+  {
+   "key": "d:santa_paciencia_casco",
+   "cat": "set",
+   "group": "santa_paciencia"
+  },
+  {
+   "key": "d:santa_paciencia_pechera",
+   "cat": "set",
+   "group": "santa_paciencia"
+  },
+  {
+   "key": "d:sepulturero_arma",
+   "cat": "set",
+   "group": "sepulturero"
+  },
+  {
+   "key": "d:sepulturero_casco",
+   "cat": "set",
+   "group": "sepulturero"
+  },
+  {
+   "key": "d:sepulturero_guantes",
+   "cat": "set",
+   "group": "sepulturero"
+  },
+  {
+   "key": "d:sepulturero_pechera",
+   "cat": "set",
+   "group": "sepulturero"
+  },
+  {
+   "key": "d:sistema_arma",
+   "cat": "set",
+   "group": "sistema"
+  },
+  {
+   "key": "d:sistema_botas",
+   "cat": "set",
+   "group": "sistema"
+  },
+  {
+   "key": "d:sistema_casco",
+   "cat": "set",
+   "group": "sistema"
+  },
+  {
+   "key": "d:sistema_guantes",
+   "cat": "set",
+   "group": "sistema"
+  },
+  {
+   "key": "d:tempestad_arma",
+   "cat": "set",
+   "group": "tempestad"
+  },
+  {
+   "key": "d:tempestad_botas",
+   "cat": "set",
+   "group": "tempestad"
+  },
+  {
+   "key": "d:tempestad_casco",
+   "cat": "set",
+   "group": "tempestad"
+  },
+  {
+   "key": "d:tempestad_guantes",
+   "cat": "set",
+   "group": "tempestad"
+  },
+  {
+   "key": "d:ultimo_turno_arma",
+   "cat": "set",
+   "group": "ultimo_turno"
+  },
+  {
+   "key": "d:ultimo_turno_botas",
+   "cat": "set",
+   "group": "ultimo_turno"
+  },
+  {
+   "key": "d:ultimo_turno_casco",
+   "cat": "set",
+   "group": "ultimo_turno"
+  },
+  {
+   "key": "d:ultimo_turno_pechera",
+   "cat": "set",
+   "group": "ultimo_turno"
+  },
+  {
+   "key": "d:vidrio_negro_arma",
+   "cat": "set",
+   "group": "vidrio_negro"
+  },
+  {
+   "key": "d:vidrio_negro_botas",
+   "cat": "set",
+   "group": "vidrio_negro"
+  },
+  {
+   "key": "d:vidrio_negro_casco",
+   "cat": "set",
+   "group": "vidrio_negro"
+  },
+  {
+   "key": "d:vidrio_negro_pechera",
+   "cat": "set",
+   "group": "vidrio_negro"
+  }
+ ]
+}

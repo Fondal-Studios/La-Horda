@@ -39,7 +39,7 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   check('CONTENIDO.la_campaña_cubre_modos_progresion_talentos_maestria_Brasas_y_mas', cov.missing.length === 0 && req.length >= 10, cov);
   check('CONTENIDO.un_tema_distinto_por_fragmento', new Set(Object.values(frags).map(f => f.topic)).size === ARENAS.length);
   const brasas = frags.minas.lesson, tienda = frags.abismo.lesson;
-  check('CONTENIDO.Brasas_y_tienda_sin_presionar_a_comprar', /solo compran apariencia/.test(brasas) && /Nunca compran poder/.test(brasas) && /no hacen falta|ni hacen falta/.test(brasas) && /Nada de eso es obligatorio/.test(tienda) && !/(comprá|conseguí ya|oferta|últim[oa]s|no te lo pierdas|aprovechá)/i.test(brasas + tienda), { brasas, tienda });
+  check('CONTENIDO.Brasas_y_tienda_sin_presionar_a_comprar', /compran apariencia/.test(brasas) && /piezas de set/.test(brasas) && /Nunca hacen falta/.test(brasas) && /también caen jugando/.test(brasas) && /Nada de eso es obligatorio/.test(tienda) && !/(comprá|conseguí ya|oferta|últim[oa]s|no te lo pierdas|aprovechá)/i.test(brasas + tienda), { brasas, tienda });
   const all = JSON.stringify([intro, frags, short]);
   check('CONTENIDO.voseo_rioplatense_sin_tuteo', !/\b(tienes|puedes|haz clic|elige tu|pulsa|vosotros|ustedes puedes)\b/i.test(all) && /Pasá|Podés|Acordate|mantené/.test(all));
   check('CONTENIDO.sin_spoiler_del_Hechicero_antes_del_fragmento_final', !/(traici|traidor|Rey de la Horda)/i.test(JSON.stringify([intro, Object.fromEntries(Object.entries(frags).filter(([a]) => a !== 'infernal'))])));

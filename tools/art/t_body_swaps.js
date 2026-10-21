@@ -25,6 +25,7 @@ async function open(browser, q) {
   const { page, errors } = await open(browser);
   for (let i = 0; i < 200; i++) { if (await page.evaluate(() => bodySwapsReady())) break; await sleep(150); }
   check('atlas_prestados_listos', await page.evaluate(() => bodySwapsReady()));
+  check('tiburones_sin_prestamo', await page.evaluate(() => !BODY_SWAPS.tiburon_joven && !BODY_SWAPS.tiburon_blanco && !bodySwapped('tiburon_joven') && !bodySwapped('tiburon_blanco')));
   // cuadros por estado del atlas prestado y lo que dibuja drawEnemyAtlasPack en cada estado
   const info = await page.evaluate(() => {
     const out = {};
@@ -47,6 +48,7 @@ async function open(browser, q) {
   // (los jefes de la Ciudad, el Carcelero y el Gólem de Cuerpos ya tienen arte propio: tools/art/t_pixrig_bosses.js)
   const ARENA = { tiburon_joven: 'acuatica', tiburon_blanco: 'acuatica', cangrejo_acorazado: 'acuatica', medusa_electrica: 'acuatica', sirena_abisal: 'acuatica',
     ab_jinete: 'abismo', esfinge: 'laberinto' };
+  const OWN = ['tiburon_joven', 'tiburon_blanco'];
   const byArena = {};
   for (const t in ARENA) (byArena[ARENA[t]] = byArena[ARENA[t]] || []).push(t);
   for (const a in byArena) {
@@ -64,11 +66,13 @@ async function open(browser, q) {
         window.drawAnimFrameSized = function (img) { if (!used) used = img; return f0.apply(this, arguments); };
         try { drawEnemyBody(e); } finally { window.drawAnimFrameSized = f0; }
         const bs = Object.keys(ENEMY_ATLAS_PACK).filter(k => k.startsWith('bs_')).map(k => ENEMY_ATLAS_PACK[k].atlas);
-        res[t].drawnBy = used && bs.includes(used) ? 'prestado' : (used ? 'otro' : 'nada');
+        const own = ENEMY_ATLAS_PACK[t] && !ENEMY_ATLAS_PACK[t].bodyOf && ENEMY_ATLAS_PACK[t].atlas;
+        res[t].drawnBy = used && bs.includes(used) ? 'prestado' : (used && used === own ? 'propio' : (used ? 'otro' : 'nada'));
       });
       return res;
     }, byArena[a]);
-    for (const t in r) check(`dibuja_prestado.${t}`, r[t].drawnBy === 'prestado', r[t]);
+    // los tiburones ya NO se prestan: se dibujan con su atlas propio (tools/art/pixrig/tiburones.py, tools/art/check-tiburones.js)
+    for (const t in r) check(`dibuja_prestado.${t}`, r[t].drawnBy === (OWN.includes(t) ? 'propio' : 'prestado'), r[t]);
     await sleep(700);
     if (OUT) await page.screenshot({ path: path.join(OUT, `vivos_${a}.png`) });
     // muerte: se matan y se mira que el cadáver/la muerte se dibuje sin errores
@@ -78,7 +82,7 @@ async function open(browser, q) {
   }
   // nombres del Códice
   const names = await page.evaluate(() => ({ tj: ENEMY_BASE.tiburon_joven.name, tb: ENEMY_BASE.tiburon_blanco.name, cg: ENEMY_BASE.cangrejo_acorazado.name, lore: CODEX_CREATURES.tiburon_joven.lore.slice(0, 40) }));
-  check('nombres_nuevos', names.tj === 'Ahogado de las Ruinas' && names.tb === 'Tritón de las Fosas' && names.cg === 'Cangrejo Araña', names);
+  check('nombres_nuevos', names.tj === 'Tiburón Joven' && names.tb === 'Tiburón Blanco' && names.cg === 'Cangrejo Araña', names); // tiburones: nombre propio (sin préstamo)
   check('sin_errores_de_pagina', errors.length === 0, errors.slice(0, 5));
   // ?bodyswap=0: vuelve el arte y el nombre original
   const off = await open(browser, '&bodyswap=0');

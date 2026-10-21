@@ -16,12 +16,15 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
    save.gold=100000; save.stash=[];save.collection={};save.cosmeticUnlocks={};state='shop';
    const piece=setPieceIds('baluarte')[0],key='d:'+piece,entry=shopCatalog().find(e=>e.key===key);
    check('default',shopPriceOf(entry)===1200);
+   // las piezas de set ya no se compran con oro (solo Brasas): el precio de oro configurable se prueba con un legendario con nombre
+   const legE=shopCatalog().find(e=>e.cat==='legendario'),legKey=legE.key;
    prices.item[key]=123;
-   let before=save.gold,result=shopBuyCatalog(key);check('single debits exact configured',result.ok&&save.gold===before-123);
-   prices.item[key]=0;before=save.gold;result=shopBuyCatalog(key);check('zero price supported',result.ok&&save.gold===before);
+   let before=save.gold,result=shopBuyCatalog(key);check('set piece cannot be bought with gold even with a configured price',!result.ok&&save.gold===before&&stashItems().length===0);
+   prices.item[legKey]=123;before=save.gold;result=shopBuyCatalog(legKey);check('single debits exact configured',result.ok&&save.gold===before-123);
+   prices.item[legKey]=0;before=save.gold;result=shopBuyCatalog(legKey);check('zero price supported',result.ok&&save.gold===before);
    for(const bad of [-1,NaN,Infinity,'5']){prices.item[key]=bad;check('invalid configuration falls back '+String(bad),shopPriceOf(entry)===1200);}
    prices.item[key]=123; before=save.gold;result=shopBuyCatalog(key,null,-10);check('negative transaction rejected',!result.ok&&save.gold===before);
-   const stale=shopPriceOf(entry);prices.item[key]=124;before=save.gold;result=shopBuyCatalog(key,null,null,stale);check('stale item quote rejected',!result.ok&&save.gold===before);
+   const stale=shopPriceOf(legE);prices.item[legKey]=124;before=save.gold;result=shopBuyCatalog(legKey,null,null,stale);check('stale item quote rejected',!result.ok&&save.gold===before);
    prices.champion.tanque=234;save.champions.tanque.unlocked=false;before=save.gold;result=shopBuyChampion('tanque');check('champion exact configured',result.ok&&save.gold===before-234);
    save.champions.tanque.unlocked=false;before=save.gold;result=shopBuyChampion('tanque',null,999);check('stale champion quote rejected',!result.ok&&save.gold===before&&!save.champions.tanque.unlocked);
    save.champions.tanque.unlocked=true;

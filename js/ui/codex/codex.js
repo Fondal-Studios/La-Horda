@@ -815,7 +815,7 @@ function codexSetHtml(id){
   panel += _sec("Bonus", (S.thresholds||[]).map(th=>`<div class="cx-phase"><span class="cx-phase-n">${th.count}</span><div class="cx-dim">${_cxEsc(th.desc)}</div></div>`).join(""), "combat");
   panel += _sec("Dónde conseguirlo", `<p>Las piezas pueden caer jugando. ${arenas.length ? "Mayor afinidad: " + arenas.sort((a,b)=>SET_ARENA_WEIGHTS[b][id]-SET_ARENA_WEIGHTS[a][id]).map(a=>_cxEsc(codexArenaName(a))).join(" · ") + "." : "Sin arena de afinidad específica registrada."} La afinidad aumenta su peso en el botín; no garantiza una pieza en cada partida.</p>`);
   const pieces = Object.entries(S.pieces || {});
-  panel += _sec("Piezas de la colección", pieces.map(([slot,name])=>`<div class="cx-stat"><span>${_cxEsc(name)}</span><b>${!miss.includes(id+"_"+slot) ? "En inventario" : (save.collection && save.collection[id+"_"+slot] ? "Descubierta" : "Por encontrar")}</b></div>`).join(""));
+  panel += _sec("Piezas de la colección", pieces.map(([slot,name])=>`<div class="cx-stat"><span>${_cxEsc(name)}</span><b>${!miss.includes(id+"_"+slot) ? "En inventario" : (save.collection && save.collection[id+"_"+slot] ? "Descubierta" : "Por encontrar")}</b>${miss.includes(id+"_"+slot) && typeof premiumPieceButton==="function" ? premiumPieceButton(id+"_"+slot, "cx-btn") : ""}</div>`).join(""));
   panel += _sec("Tus piezas", `<p>${full - miss.length} de ${full} piezas en el inventario.${skin ? " Apariencia de colección: <b>" + _cxEsc(skin.name) + "</b>. " + (skinOwnedFull(id) ? "Desbloqueada permanentemente; vender piezas no la elimina." : "Reuní las piezas para desbloquearla permanentemente.") : ""}</p>`);
   return codexEntryHtml(stage, panel, "cx-entry-set");
 }
