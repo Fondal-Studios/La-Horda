@@ -27,6 +27,9 @@ const PAGE_HELPERS = () => {
       selectedClass = champ; currentArena = 'bosque';
       if (allies) lobbyAllies = allies.slice();
       startRun(level || 3);
+      // escena controlada: la selva del Bosque (bos-selva.js) pone rocas, zarzales y troncos al azar y bloquean tiros y embestidas según la semilla;
+      // estas pruebas miden la mecánica del guardián, no el mapa, así que se sacan (los sólidos fijos del escenario quedan).
+      aidSolids = aidSolids.filter(s => !s.bsv); if (typeof aidNavBuild === 'function') aidNavBuild();
       window.__seFreeze = true;
       return player.classKey;
     },
@@ -104,6 +107,8 @@ const PAGE_HELPERS = () => {
     const hud = await E(() => document.getElementById('se-hud').innerText.includes('Oficial'));
     check('SM1.humano', k === 'libertador' && b.x - a.x > 60 && hud, { k, moved: b.x - a.x, hud, cls: b.cls });
 
+    // SM2-SM4 miden SOLO al Libertador: los aliados (bots) quedan quietos, porque sus ataques le pegaban al muñeco (y consumían el sangrado con reacciones)
+    await E(() => { window.__ua0 = updateAllies; updateAllies = function () {}; });
     // SM2: disparo normal (lento, pesado, sin cancelar recarga)
     const i1 = await E(() => __se.spawn('duende_bosque', 220, 0, { hp: 5000 }));
     await E(() => { basicHeld = true; });
@@ -140,13 +145,15 @@ const PAGE_HELPERS = () => {
     const ib = await E(() => __se.spawn('dama_bosque', 150, 0, { hp: 99999 }));
     await E(() => { player.cds = [0, 0, 0]; player.energy = 999; player.fx = 1; player.fy = 0; });
     const pb0 = await P();
+    await phaseLog(); // limpia el registro de fases por cuadro
     await E(() => useSkill(0, { x: player.x + 150, y: player.y, dx: 1, dy: 0 }));
-    await sleep(80);
-    const phB = (await P()).sm;
-    await sleep(600);
+    await sleep(680);
+    // la embestida dura ~100-200 ms (190 u a 950 u/s, y se corta al conectar): se mira el REGISTRO de fases por cuadro en vez de una foto a los 80 ms
+    const phB = (await phaseLog()).some(x => x.startsWith('bayo')) ? 'bayo' : null;
     const pb1 = await P(), eb = await E(i => __se.en(i), ib);
     check('SM4.bayoneta', phB === 'bayo' && pb1.sm === null && eb.dmg > 0 && eb.bleed > 0 && pb1.x - pb0.x > 60 && pb1.x - pb0.x < 190 && eb.x > 0,
       { phase: phB, dashPx: pb1.x - pb0.x, enemyDmg: eb.dmg, bleed: eb.bleed, stun: eb.stun, enemyDx: eb.x });
+    await E(() => { updateAllies = window.__ua0; });
 
     // SM5: buff de equipo (solo aliados)
     await E(() => { __se.clear(); allies.forEach((h, i) => { h.x = player.x + 60 + i * 20; h.y = player.y + 30; }); player.cds = [0, 0, 0]; player.energy = 999; });
@@ -411,7 +418,8 @@ const PAGE_HELPERS = () => {
     await E(() => { player.ultCharge = 0; player.ilkanFinaleReady = false; });
     await sleep(300);
     const hidden = await E(() => document.getElementById('se-hud').innerText.includes('TRES PASOS'));
-    await E(() => { player.ultCharge = player.ultMax - 1; ilkanAddFury(player, 5); });
+    // Los Tres Pasos solo se habilitan en peligro (vida < 35 % o un aliado caído) o contra un jefe (ilkanFinaleCondition; ILKAN_CFG.finale): se pone al héroe en peligro
+    await E(() => { player.hp = Math.max(1, player.maxHp * 0.2); player.ultCharge = player.ultMax - 1; ilkanAddFury(player, 5); });
     await sleep(150);
     const p15 = await P();
     const shown = await E(() => document.getElementById('se-hud').innerText.includes('TRES PASOS LISTOS'));
@@ -423,7 +431,8 @@ const PAGE_HELPERS = () => {
     const rs = [];
     for (const [dx, dy] of [[-320, -80], [320, 80], [0, 0], [60, 40]]) rs.push(await E(([dx, dy]) => __se.spawn('duende_bosque', dx, dy, { hp: 999999 }), [dx, dy]));
     await E(() => { window.__steps = []; const orig = ilkanUpdateFinaleStep; window.__origStep = orig; });
-    await E(() => useUltimate());
+    // en peligro justo al lanzar (la regeneración de Ilkan y la curación del Soporte lo subían de 35 % entre E15 y acá y la condición se caía)
+    await E(() => { player.hp = Math.max(1, player.maxHp * 0.2); useUltimate(); });
     await sleep(150);
     const p16 = await P();
     const fx16 = await E(() => champFx.filter(f => f.type === 'finaleStep').map(f => ({ idx: f.idx, dx: Math.round(f.x - player.x), dy: Math.round(f.y - player.y), r: f.r, delay: f.delay })));
@@ -492,7 +501,7 @@ const PAGE_HELPERS = () => {
         if (er && er.alive && !er.ilkanColossus && !er.ilkanNoTfTimer && runElapsedMs > 6000) er.ultCharge = er.ultMax;
         if (er && er.ilkanColossus && runElapsedMs > 16000) er.ultCharge = er.ultMax;
         player.cds = player.cds.map(c => Math.min(c, 800)); player.energy = 999; basicHeld = true;
-        if (Math.random() < 0.3) useSkill((Math.random() * 3) | 0, null);
+        window.__tk = (window.__tk || 0) + 1; if (window.__tk % 2 === 0) useSkill((window.__tk >> 1) % 3, null); /* las 3 habilidades en rotación (antes al azar: los Granaderos no siempre salían) */
         if (runElapsedMs > 9000 && !player.smMounted) { player.ultCharge = player.ultMax; player.ultCd = 0; useUltimate(); }
         player.hp = Math.max(player.hp, player.maxHp * 0.5);
         heroes.forEach(h => { if (h.alive) h.hp = Math.max(h.hp, h.maxHp * 0.3); });
@@ -508,7 +517,8 @@ const PAGE_HELPERS = () => {
     const f = await fpsRead();
     // pasar a jefe
     await E(() => { __se.freeze(true); __se.clear(); startBossFight(); });
-    await sleep(6000);
+    // los bots tardan en llegar al jefe (intro + camino): se espera la condición (el jefe recibió daño), hasta 30 s, en vez de 6 s fijos
+    for (let k = 0; k < 60; k++) { await sleep(500); if (await E(() => !!boss && boss.hp < boss.maxHp)) break; }
     const bossSt = await E(() => ({ boss: !!boss, bossHp: boss ? Math.round(boss.hp) : null, bossMax: boss ? boss.maxHp : null, state }));
     await shot('team_boss');
     check('TEAM.sm_ilkan_2bots', team.join(',') === 'libertador,ilkan,soporte,mago' && stats.granAllies >= 1 && stats.ilkanColossus && stats.smMounted && errCount() === e0,

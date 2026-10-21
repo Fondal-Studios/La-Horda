@@ -157,6 +157,8 @@ async function boot(browser, opts) {
   const shortLook = await E(() => ({ bar: getComputedStyle(document.querySelector('#codex-book .bk-bar')).display, timer: getComputedStyle(document.querySelector('#codex-book .bk-timer')).display, h: document.querySelector('#codex-book .bk-book').getBoundingClientRect().height }));
   check('CARGA.es_distinta_de_la_intro_(sin_botones_ni_puntos,_libro_mas_chico,_barra_de_tiempo)', shortLook.bar === 'none' && shortLook.timer === 'block' && shortLook.h < lay.b - lay.t, shortLook);
   await sleep(750); await shot('11_carga_corta_pasando'); await sleep(900); await shot('12_carga_corta_pagina');
+  // la vuelta de página es una animación temporizada: se espera la CONDICIÓN (hasta 8 s) en vez de contar sobre el reloj (con la máquina cargada llegaba tarde)
+  for (let k = 0; k < 80; k++) { if (await E(() => BOOK.i === 1)) break; await sleep(100); }
   const mid2 = await E(() => ({ i: BOOK.i, txt: document.querySelector('#codex-book .bk-title').textContent, kick: document.querySelector('#codex-book .bk-kicker').textContent }));
   check('CARGA.da_vuelta_a_la_pagina_de_la_arena', mid2.i === 1 && mid2.txt.length > 3 && /ARENA 03/.test(mid2.kick), mid2);
   await waitBook(false, 12000);
