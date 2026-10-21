@@ -55,7 +55,7 @@ step "Dependencias del servidor"
 ( cd server && npm ci --omit=dev --no-audit --no-fund --loglevel=error ) || die "npm ci falló. El servidor puede estar inconsistente: pedí ayuda (los datos están intactos)."
 
 step "Sitio del juego"
-if [ -z "$REL" ] && [ -f "$LOG" ]; then REL="$(grep " new=$(git rev-parse HEAD) " "$LOG" | tail -n1 | sed -n 's/.* release=\(.*\)$/\1/p')"; fi
+if [ -z "$REL" ] && [ -f "$LOG" ]; then REL="$(grep " new=$(git rev-parse HEAD) " "$LOG" | tail -n1 | sed -n 's/.* release=\([^ ]*\).*/\1/p')"; fi
 if [ -n "$REL" ] && [ -d "$REL" ]; then
   say "Se reutiliza el sitio armado antes: $REL"
 else

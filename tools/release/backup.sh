@@ -29,6 +29,14 @@ ONLY="$(env_get BACKUP_ONLY_HORDA)"; ONLY="${ONLY:-1}"
 if [ -n "$DB" ]; then
   need_cmd pg_dump "Instalá el cliente de Postgres: sudo apt install postgresql-client (la versión tiene que ser igual o mayor que la de la base)."
   need_cmd pg_restore "Viene con postgresql-client."
+  if [ "$ONLY" = "1" ] && command -v psql >/dev/null 2>&1; then
+    NT="$( ( pg_connect "$DB"; psql -Atc "SELECT count(*) FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'horda\_%'" ) 2>/dev/null || echo err)"
+    if [ "$NT" = "0" ]; then
+      say "La base todavía no tiene tablas de La Horda (servidor nuevo, nunca arrancó): no hay nada que copiar."
+      say "Si esto NO es un servidor nuevo, revisá que DATABASE_URL apunte a la base correcta."
+      exit 0
+    fi
+  fi
   OUT="$BACKUP_DIR/la-horda-$TS.dump"; TMP="$OUT.partial"
   trap 'rm -f "$TMP"' EXIT
   ARGS=(--format=custom --no-owner --no-privileges --file="$TMP")
