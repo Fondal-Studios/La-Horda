@@ -186,7 +186,20 @@ function drawProfetaAtlas(h, drawScale, alpha){
   return drawAnimAtlas(PROFETA_ANIM_ATLAS, profetaResolveClip(h), h, drawScale, alpha);
 }
 
+// Base-only recoil supplement. Abilities retain their existing higher-priority art.
+function drawKnightHurt(h, drawScale, alpha){
+  if(h.classKey!=="tanque" || !(h.hurtTimer>0)) return false;
+  const key=typeof setSkinPackKey==="function" ? setSkinPackKey(h,"tanque") : "tanque";
+  const P=CHAMP_PACK.tanque_hurt;
+  if(key!=="tanque" || !P || !P.ready) return false;
+  const pick=champPackSet(P,"hit",champPackDir(h),h);
+  if(!pick) return false;
+  const n=h.hurtTimer>80 ? 0 : 1;
+  champPackDrawFrame(P,pick.arr[n],h.x,h.y,champPackScale(P,h,drawScale),pick.flip,alpha);
+  return true;
+}
 function drawDirAtlasHero(entry, h, drawScale, alpha){
+  if(drawKnightHurt(h,drawScale,alpha)) return true;
   // croma (js/systems/cromas.js): la misma grilla con la imagen recoloreada, si ya bajó
   const ci = typeof cromaImage==="function" ? cromaImage(h, h.classKey + "_atlas") : null;
   const A = ci ? { img:ci, ready:()=>true, def:entry.animAtlas.def } : entry.animAtlas;
