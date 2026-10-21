@@ -6,18 +6,18 @@
     "campeones": 183,
     "mundo": 1061,
     "entradas": 1244,
-    "resueltos": 26,
+    "resueltos": 27,
     "por_prioridad": {
       "P1": 464,
       "P0": 118,
       "P2": 662
     },
     "por_estado": {
-      "EN_CORRECCION_VISUAL": 9,
-      "INTEGRADO_MAIN": 26,
+      "EN_CORRECCION_VISUAL": 8,
+      "INTEGRADO_MAIN": 27,
       "PENDIENTE": 1209
     },
-    "sin_integracion_documentada": 1218,
+    "sin_integracion_documentada": 1217,
     "exportaciones_runtime_documentadas": 19
   },
   "reglas_continuidad": [
@@ -209,35 +209,46 @@
       "id": "tanque.cuerpo.muerte",
       "prioridad": "P0",
       "destino": "art-source/entregas/2026-10_campeones-faltantes/campeones/tanque/hoja_36poses.png",
-      "estado": "EN_CORRECCION_VISUAL",
+      "estado": "INTEGRADO_MAIN",
       "version_reutilizable": "art-source/entregas/bloques/B002_tanque/entrega.json",
       "bloque": "B002",
-      "revision_nativa": {
-        "estado": "FIX",
-        "cuadros_fallidos": [
-          4,
-          5,
-          6,
-          8,
-          9,
-          10,
-          11,
-          17,
-          18,
-          19,
-          20,
-          21,
-          22,
-          23,
-          25,
-          32,
-          33,
-          34,
-          35
-        ],
-        "evidencia": "docs/production/authored-candidate-results-20261019.json",
-        "run": 39292727298,
-        "source": "art-source/entregas/bloques/B002_tanque/campeones/tanque/hoja_36poses.png"
+      "historial_revision_nativa": [
+        {
+          "estado": "FIX",
+          "cuadros_fallidos": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            11,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            25,
+            32,
+            33,
+            34,
+            35
+          ],
+          "evidencia": "docs/production/authored-candidate-results-20261019.json",
+          "run": 39292727298,
+          "source": "art-source/entregas/bloques/B002_tanque/campeones/tanque/hoja_36poses.png"
+        }
+      ],
+      "integracion": {
+        "pr": 182,
+        "commit_main": "474838fc62e28fca99509e254fe3f95cfcef6119",
+        "atlas": "assets/sprites/champions/tanque/v3/death.png",
+        "sha256": "8dc632c0afb7d9df1808dfffb873e44584499abed27c84c5f2ddb5e5ad162d78",
+        "evidencia": "docs/art-gate/tanque-death/runtime.json",
+        "publicacion": "PENDIENTE_VERIFICACION",
+        "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño"
       }
     },
     {
@@ -12145,7 +12156,7 @@
   ],
   "plan_bloques": "art-source/entregas/bloques/plan_bloques.json",
   "auditoria_guardados": "art-source/entregas/bloques/B000_auditoria/auditoria.json",
-  "bloque_activo": "B004",
+  "bloque_activo": "B002",
   "ultimo_checkpoint": {
     "bloque": "B004",
     "estado": "FIX_THREE_NATIVE_FRAMES_AND_RUNTIME_CONTRACT",
@@ -12166,5 +12177,6 @@
       "revision_visual": "ASISTIDA_CODEX; no atribuida al dueño",
       "scope": "Four-frame frontal fall shared across directions; base appearance only; not whole B004 approval"
     }
-  }
+  },
+  "siguiente_accion": "Completar reacción al golpe del Caballero; conservar muerte integrada #182 y habilidades originales. Después B003 y estados especializados B004."
 }
