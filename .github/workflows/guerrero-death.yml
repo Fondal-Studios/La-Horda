@@ -34,7 +34,7 @@ jobs:
       - run: node tools/art/check-guerrero-death.js
       - run: node tools/art/check-tanque-death.js
       - run: node tools/art/check-libertador-death.js
-      - run: ROSTER_BASE_URL=http://127.0.0.1:8750 node tools/lib/with-site.js tools/art/roster_gate.js
+      - run: node tools/lib/with-site.js tools/art/roster_gate.js
         env: {WITH_SITE_ENV: ROSTER_BASE_URL}
       - uses: actions/upload-artifact@v4
         if: always()
