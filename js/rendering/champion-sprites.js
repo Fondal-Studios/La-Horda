@@ -338,7 +338,7 @@ function drawChampPack(key, h, drawScale, alpha){
 function drawChampPackDeath(h){
   const key = typeof setSkinPackKey==="function" ? setSkinPackKey(h, h.classKey) : h.classKey;
   // Supplemental base-only clip: skins/cromas keep their own appearance and fallback.
-  const supplement = key === "libertador" ? CHAMP_PACK.libertador_death : key === "tanque" ? CHAMP_PACK.tanque_death : null;
+  const supplement = key === "libertador" ? CHAMP_PACK.libertador_death : key === "tanque" ? CHAMP_PACK.tanque_death : key === "guerrero" ? CHAMP_PACK.guerrero_death : null;
   const P = supplement && supplement.ready ? supplement : CHAMP_PACK[key];
   if(!P || !P.ready) return false;
   if(!h._deadAt){ h._deadAt = animNow; vfxBurst(h.x, h.y-20, 12, "blood", 120, 420, 3, 2, -30, 0); }
@@ -565,7 +565,7 @@ function drawRealFallen(h, alpha){
 // queda tendido semitransparente, o la pose real de muerte cuando existe arte para eso.
 function drawFallenHero(h){
   const skinPack = typeof setSkinPackKey==="function" && setSkinPackKey(h, h.classKey) !== h.classKey;
-  if((CHAMP_PACK[h.classKey] || skinPack || h.classKey === "tanque") && drawChampPackDeath(h)) return; // muerte con sus frames reales (o los de su skin de set)
+  if((CHAMP_PACK[h.classKey] || skinPack || h.classKey === "tanque" || h.classKey === "guerrero") && drawChampPackDeath(h)) return; // muerte con sus frames reales (o los de su skin de set)
   if(h.classKey==="mago" && drawMagoFallen(h, 0.5)) return; // el propio arte ya lo muestra boca abajo
   // DEATH del guardián con su propio sprite real: reacción al golpe, caída de costado y
   // queda tendido semitransparente (antes: siempre el sprite procedural, fuera cual fuera el arte).
