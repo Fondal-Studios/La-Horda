@@ -280,8 +280,9 @@ function sfaBake(art, theme, size, arc) {
   let T = sfaTheme(theme); if (!T) return null;
   if (arena) T = sfaTintTheme(T, arena);
   const t0 = performance.now();
-  let S;
-  if (art === 'nova') S = sfaBakeNova(T, size); else if (art === 'zone') S = sfaBakeZone(T, size, arc); else if (art === 'cone') S = sfaBakeCone(T, size, arc);
+  let S = typeof T.bake === 'function' ? T.bake(T, art, size, arc) : null;
+  if (S) { /* receta propia de un kit, con la misma caché y tinte de arena */ }
+  else if (art === 'nova') S = sfaBakeNova(T, size); else if (art === 'zone') S = sfaBakeZone(T, size, arc); else if (art === 'cone') S = sfaBakeCone(T, size, arc);
   else if (art === 'beam') S = sfaBakeBeam(T, size); else if (art === 'burst') S = sfaBakeBurst(T, size); else if (art === 'aura') S = sfaBakeAura(T);
   else if (art === 'rays') S = sfaBakeRays(T, size); else if (art === 'rings') S = sfaBakeRings(T, size); else if (art === 'column') S = sfaBakeColumn(T);
   else return null;
