@@ -144,10 +144,10 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     check('RETENCION.el_pase_paga_Gemas_y_se_ven', r.gotGems === 3 && /3 Gemas/.test(r.txt) && r.passGems >= 4, r);
     check('RETENCION.cofre_lleno_paga_el_valor_de_venta_no_150', r.items === 0 && r.chestGold > 0 && r.chestGold !== 150 && r.chestGold <= 220, r);
   }
-  // ---------- 8) la tienda sigue completa ----------
+  // ---------- 8) la tienda sigue completa (lo comprado por oro es un legendario: las piezas de set se compran con Brasas, t_piezas_brasas.js) ----------
   {
     const r = await E(() => { const c = shopCatalog(); return { sets: c.filter(e => e.cat === 'set').length, leg: c.filter(e => e.cat === 'legendario').length, base: c.filter(e => e.cat === 'base').length, champs: CHAMPION_CATALOG.filter(x => x.priceGold).length,
-      bought: (() => { setState('menu'); save.gold = 1e6; save.stash = []; const e = c.find(x => x.cat === 'set'); const b = shopBuyCatalog(e.key); return b.ok && !b.item.ilvl; })() }; });
+      bought: (() => { setState('menu'); save.gold = 1e6; save.stash = []; const e = c.find(x => x.cat === 'legendario'); const b = shopBuyCatalog(e.key); return b.ok && !b.item.ilvl; })() }; });
     check('TIENDA.sigue_vendiendo_sets_legendarios_basicos_y_guardianes', r.sets > 50 && r.leg >= 20 && r.base > 20 && r.champs >= 10, r);
     check('TIENDA.lo_comprado_nace_con_nivel_de_objeto_1', r.bought, r);
   }

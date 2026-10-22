@@ -1159,6 +1159,8 @@ const ASSET_MANIFEST = [
   "assets/vfx/divina/tower-projectile-frame3.png",
   "assets/vfx/divina/tower-projectile-frame4.png",
   "assets/vfx/divina/tower-projectile-frame5.png",
+  "assets/sprites/enemies/acuatica/tiburon_joven/atlas.png",
+  "assets/sprites/enemies/acuatica/tiburon_blanco/atlas.png",
   "assets/sprites/enemies/acuatica/tiburon_joven/idle.png",
   "assets/sprites/enemies/acuatica/tiburon_joven/atk.png",
   "assets/sprites/enemies/acuatica/tiburon_blanco/idle.png",

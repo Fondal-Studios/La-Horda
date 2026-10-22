@@ -113,7 +113,20 @@ const CAMP_SMITH_HERO = {
   renko:"Tu pala tiene el filo comido por la piedra. Le soldé una punta nueva. Que siga abriendo surcos y nunca tumbas.",
   sira:"Me pediste tinta que no se corra con la lluvia. Hollín de la fragua y aceite de lámpara: así se marcan los caminos de vuelta.",
   nano_gm:"No sé si sos guardián o algo que manda sobre los guardianes. Te dejé el yunque libre esta noche: lo que quieras forjar, forjalo.",
-  facu_gm:"Te mojaste las botas en la arena seca de la Fábrica, y nadie sabe de dónde vino el agua. Te las engrasé con sebo: que el mar te espere."
+  facu_gm:"Te mojaste las botas en la arena seca de la Fábrica, y nadie sabe de dónde vino el agua. Te las engrasé con sebo: que el mar te espere.",
+  // Campeones de las expansiones Quality Five y Ascensión (misma voz: lo que un herrero ve en las manos y el arma de cada uno).
+  solciju:"Barricas con duelas de roble y aros de hierro: eso sí lo entiendo. Te apreté dos aros flojos; lo que fermenta adentro, no me lo muestres.",
+  veyra:"Ese filo no se afila: sangra solo. Le pasé el trapo y se lo bebió. Guardalo lejos de mi yunque, por favor.",
+  brakk:"Un martillo de obra y un plano que no cierra con ninguna pared que conozca. Te cambié el cabo. Los muros, como siempre, los levantás vos.",
+  morveth:"Tu pala tiene tierra de un jardín que no existe más, y en la tierra algo respira. Le saqué el óxido; el resto, regalo tuyo.",
+  aelith:"Tu reloj atrasa y adelanta a la vez, y yo cobro por hora. Te lo dejé andando derecho un rato. No me pidas cuánto fue.",
+  aurelia:"Un compás de luz sólida: no tiene dónde clavar la punta de mi lima. Te pulí el estuche. A la luz la dejo como está.",
+  khepri:"Hoces de élitro, livianas como una cáscara y más duras que mi acero. Me llené el delantal de escarabajos. Te los devuelvo.",
+  velmira:"Cuatro máscaras y ninguna miente igual. Les reparé las cintas; no me preguntes cuál usé para mirarte a la cara.",
+  vhal:"Un astrolabio partido, y el pedazo que falta pesa más que el entero. Te lo ajusté con remaches de hierro negro. Que no se caiga.",
+  bront:"Puños de bastión y placas que se te despegan como escamas. Te las remaché una por una. Aguantan mejor que mi puerta.",
+  oriel:"Una llave para cerraduras que no son de hierro. Le limé los dientes gastados. Ojalá abra más puertas de las que cierra.",
+  saelis:"Un báculo de plumas que no se queman en mi fragua, por más que lo intenté. Ya está: te lo dejé tan liviano como lo trajiste."
 };
 // La vidente, en la Ciudad: los civiles que se perdieron en esta partida.
 const CAMP_SEER_CIVILIANS = {

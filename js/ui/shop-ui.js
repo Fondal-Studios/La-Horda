@@ -9,7 +9,7 @@
    - Skins: las skins de set que existen (SET_SKINS). Cada apariencia cuesta Brasas ✦ o su precio en oro (escalones en js/data/pricing.js) y da SOLO la
      apariencia (js/systems/premium.js); completar el set la sigue regalando. Las piezas se compran aparte.
    - ✦ Brasas: saldo, paquetes con precio en moneda real (los manda el servidor), Pack de bienvenida mientras no
-     se haya comprado y tres skins de tus guardianes como ejemplo. Las Brasas solo compran apariencia, nunca poder;
+     se haya comprado y tres skins de tus guardianes como ejemplo. Las Brasas compran apariencia y, con el interruptor PIECES_FOR_BRASAS, piezas de set;
      sin pasarela conectada el botón dice "Muy pronto" (no hay compras de mentira).
    Tocar un objeto abre su ficha completa (itemDetailHTML en modo tienda).
    shopOpen(tab, {champ}) abre la tienda en una pestaña (el hub abre ✦ Brasas; el final de partida, las skins de un guardián).
@@ -19,7 +19,7 @@ const SHOP_CATS = [["set", "Sets"], ["legendario", "Legendarios"], ["campeon", "
 const TIER_LABEL = {comun:"Común", raro:"Raro", muyraro:"Muy Raro", legendario:"Legendario", mitico:"Mítico"};
 
 function renderShop(){
-  const prem = typeof premiumLabel === "function" ? `<span class="ui-chip premium" data-premium-chip title="Brasas: solo compran apariencia">✦ <b data-premium-balance>${premiumLabel()}</b></span>` : "";
+  const prem = typeof premiumLabel === "function" ? `<span class="ui-chip premium" data-premium-chip title="${typeof premiumRuleText==="function" ? premiumRuleText() : "Brasas"}">✦ <b data-premium-balance>${premiumLabel()}</b></span>` : "";
   if(typeof premiumRefresh === "function") premiumRefresh();
   document.getElementById("shop-gold-line").innerHTML = `<span class="ui-chip gold">🪙 <b>${fmtGold(save.gold)}</b></span><span class="ui-chip" title="Inventario">🎒 ${stashUsedSlots()}/${INVENTORY_CAPACITY}</span>${prem}`;
   document.querySelectorAll("[data-shop-tab]").forEach(b=>{
@@ -130,6 +130,10 @@ function shopRotationRowHTML(){
   const list = shopRotationToday(), info = shopRotationInfo(), gold = save.gold || 0;
   const cards = list.map(e=>{
     const it = shopPreviewItem(e), col = itemColor(it), price = shopPriceOf(e), n = shopOwnedCount(e), miss = Math.max(0, price - gold);
+    if(e.cat==="set") return `<div class="shop-rot-card" data-rot="${e.key}" style="--ic:${col}">
+      <div class="shop-rot-top">${itemIconHTML(it)}<div class="shop-rot-meta"><div class="shop-rot-name" style="color:${col}">${it.name}</div><div class="shop-item-sub">${_shopRotLabel(e)} · ${ITEM_TYPES[it.type].label}</div></div></div>
+      <div class="shop-rot-price">${n ? `<span class="shop-st own">Tenés ${n}</span>` : ""}</div>
+      ${typeof premiumPieceButton==="function" ? premiumPieceButton(e.id) : ""}</div>`;
     const pct = Math.max(0, Math.min(100, Math.round(gold*100/Math.max(1, price))));
     return `<div class="shop-rot-card" data-rot="${e.key}" style="--ic:${col}">
       <div class="shop-rot-top">${itemIconHTML(it)}<div class="shop-rot-meta"><div class="shop-rot-name" style="color:${col}">${it.name}</div><div class="shop-item-sub">${_shopRotLabel(e)} · ${ITEM_TYPES[it.type].label}</div></div></div>
@@ -169,7 +173,7 @@ function shopNowRowHTML(sc){
   }).filter(Boolean);
   const champs = CHAMPION_CATALOG.filter(c=>!(save.champions[c.id]||{}).unlocked && shopChampionPurchasable(c.id)).map(c=>({g:1, price:shopChampionPrice(c.id), name:CLASSES[c.id].name, sub:"Guardián nuevo", btn:`data-champ-buy="${c.id}"`}));
   // las skins y cromas ya no se compran con oro (solo Brasas ✦): no entran en "lo que podés comprar ya"
-  const rots = shopIsLive() ? shopRotationToday().map(e=>({g:0, price:shopPriceOf(e), name:shopPreviewItem(e).name, sub:`A la venta hoy · ${_shopRotLabel(e)}`, btn:`data-rot-buy="${e.key}" data-gold-price="${shopPriceOf(e)}"`})) : [];
+  const rots = shopIsLive() ? shopRotationToday().filter(e=>e.cat!=="set").map(e=>({g:0, price:shopPriceOf(e), name:shopPreviewItem(e).name, sub:`A la venta hoy · ${_shopRotLabel(e)}`, btn:`data-rot-buy="${e.key}" data-gold-price="${shopPriceOf(e)}"`})) : [];
   const basics = basicCommon!=null && gold >= basicCommon ? [{g:2, price:basicCommon, name:"Equipo Básico Común", sub:"Desde acá se empieza a armar la build", go:"basics"}] : [];
   const can = deals.concat(rots, champs, basics).filter(x=>x.price <= gold);
   can.sort((a,b)=>(a.g-b.g) || (b.price-a.price));
@@ -271,7 +275,7 @@ function renderShopShowcase(panel){
     ${cromas ? `<div class="shop-row-head"><span class="shop-row-title">CROMAS</span><span class="shop-renew">otra paleta · solo cosmético</span></div><div class="shop-strip ui-scroll-x">${cromas}</div>` : ""}
     ${champs ? `<div class="shop-row-head"><span class="shop-row-title">GUARDIANES</span><span class="shop-renew">${locked.length} por desbloquear</span></div><div class="shop-strip ui-scroll-x">${champs}</div>` : ""}
     ${founders.length ? `<div class="shop-row-head"><span class="shop-row-title">FUNDADORES · LOS REGENTES</span><span class="shop-renew">no se compran: se conceden</span></div><div class="shop-strip ui-scroll-x">${founders.map(c=>shopFounderCardHTML(c.id)).join("")}</div>` : ""}
-    <div class="shop-fair">⚖ Todo el poder se consigue jugando, con el oro que ganás en las arenas. Las Brasas ✦ solo compran apariencia, nunca poder. Míticos y Únicos no se venden: se fabrican o se ganan peleando.</div>`;
+    <div class="shop-fair">⚖ Casi todo el poder se consigue jugando, con el oro que ganás en las arenas. ${typeof premiumRuleText==="function" ? premiumRuleText() : ""} Míticos y Únicos no se venden: se fabrican o se ganan peleando.</div>`;
   panel.querySelectorAll("[data-now-go]").forEach(b=> b.addEventListener("click", ()=>{ shopTab = "objetos"; shopCat = "base"; renderShop(); const p = document.getElementById("shop-screen"); if(p) p.scrollTop = 0; }));
   const fb = panel.querySelector("#shop-feat-buy");
   if(fb) fb.addEventListener("click", ()=>{
@@ -349,6 +353,13 @@ function renderShopChampions(panel){
 }
 
 /* ---------------- Objetos y sets ---------------- */
+// Piezas de set: se compran SOLO con Brasas ✦ (js/systems/premium.js, validado por el servidor). Sin cuenta, el botón da el aviso de siempre.
+function _shopPieceBuyHTML(entry, n, rotLine){
+  const btn = typeof premiumPieceButton==="function" ? premiumPieceButton(entry.id) : "";
+  const st = n ? `<div class="shop-st own">Tenés ${n}</div>` : '<div class="shop-st">No comprado</div>';
+  const how = btn ? "" : (typeof premiumPiecePrice==="function" && premiumPiecePrice(entry.id) > 0 ? "" : '<div class="shop-item-sub">Se consigue jugando</div>');
+  return `${st}${rotLine || ""}${btn}${how}`;
+}
 function _shopItemCard(entry, tier){
   const it = shopPreviewItem(entry, tier), col = itemColor(it), n = shopOwnedCount(entry);
   const lines = itemEffectLines(it).slice(0, 3).map(l=>`<div class="shop-eff ${l.cls}">${l.txt}</div>`).join("");
@@ -363,9 +374,9 @@ function _shopItemCard(entry, tier){
       ${lines}${tiers}
     </div>
     <div class="shop-item-buy">
-      <div class="shop-price">🪙 ${fmtGold(shopPriceOf(entry, tier))}</div>
+      ${entry.cat==="set" ? _shopPieceBuyHTML(entry, n, rotLine) : `<div class="shop-price">🪙 ${fmtGold(shopPriceOf(entry, tier))}</div>
       ${n ? `<div class="shop-st own">Tenés ${n}</div>` : '<div class="shop-st">No comprado</div>'}${rotLine}
-      <button class="shop-btn" data-buy-item="${entry.key}" data-gold-price="${shopPriceOf(entry, tier)}" ${save.gold < shopPriceOf(entry, tier) || !today ? "disabled" : ""}>Comprar</button>
+      <button class="shop-btn" data-buy-item="${entry.key}" data-gold-price="${shopPriceOf(entry, tier)}" ${save.gold < shopPriceOf(entry, tier) || !today ? "disabled" : ""}>Comprar</button>`}
     </div>
   </div>`;
 }
@@ -382,7 +393,7 @@ function _shopSetBlock(setId){
       <span class="shop-set-count">${have}/${ids.length} piezas · ${eq} equipadas</span></div>
     <div class="shop-set-bonus">${bon}</div>
     <div class="shop-set-pieces">${entries.map(e=>_shopItemCard(e)).join("")}</div>
-    ${missing.length && shopIsLive() ? `<div class="shop-item-sub shop-set-live" data-set-live>Hoy a la venta: ${entries.filter(e=>missing.includes(e.id) && shopRotationHas(e.key)).length} de las ${missing.length} que te faltan. Las piezas se compran de a una, cuando salen (no hay paquete).</div>` : missing.length ? `<button class="shop-btn sec shop-set-buyall" data-buy-set="${setId}" ${save.gold < shopSetPrice(setId) ? "disabled" : ""}>Comprar las ${missing.length} que faltan · 🪙 ${fmtGold(shopSetPrice(setId))}</button>` : '<div class="shop-st own">✔ Tenés el set completo</div>'}
+    ${missing.length && shopIsLive() ? `<div class="shop-item-sub shop-set-live" data-set-live>Hoy a la venta: ${entries.filter(e=>missing.includes(e.id) && shopRotationHas(e.key)).length} de las ${missing.length} que te faltan. Las piezas se compran de a una, cuando salen (no hay paquete).</div>` : missing.length ? `<div class="shop-item-sub shop-set-ember" data-set-ember>Las piezas se compran de a una con Brasas ✦ (no hay paquete) o se consiguen jugando.${typeof SET_SKINS!=="undefined" && SET_SKINS[setId] ? " Reunir el set completo regala su skin." : ""}</div>`: '<div class="shop-st own">✔ Tenés el set completo</div>'}
   </div>`;
 }
 function renderShopObjects(panel){
@@ -400,17 +411,6 @@ function renderShopObjects(panel){
     _shopAfterBuy(`🛒 ${r.item.name} va a tu inventario (−${fmtGold(r.price)} de oro)`, r.item.set || r.item.rarity==="legendario" ? "lootLegend" : "ready");
     _shopFlash(document.querySelector(`.shop-item[data-item="${CSS.escape(key)}"]`));
   }));
-  panel.querySelectorAll("[data-buy-set]").forEach(b=> b.addEventListener("click", ()=>{
-    const setId = b.getAttribute("data-buy-set"), miss = shopSetMissing(setId), quotedPrice=shopSetPrice(setId);
-    gameConfirm(`¿Comprar las ${miss.length} piezas que te faltan de ${SET_DB[setId].name} por ${fmtGold(quotedPrice)} de oro?`, {okText:"Comprar"}).then(ok=>{
-      if(!ok) return;
-      const result = shopBuySetBundle(setId, false, null, quotedPrice);
-      if(!result.ok){ gameAlert(result.reason); return; }
-      const n = result.n;
-      if(typeof SET_SKINS!=="undefined" && SET_SKINS[setId]) _shopAfterSkinBuy(setId, n); // completar el set = comprar su skin
-      else _shopAfterBuy(`🛒 ${n} pieza${n>1?"s":""} de ${SET_DB[setId].name} en tu inventario`, "lootLegend");
-    });
-  }));
   panel.querySelectorAll(".shop-item").forEach(card=> card.addEventListener("click", ev=>{
     if(ev.target.closest("button")) return;
     const key = card.getAttribute("data-item"), entry = shopCatalog().find(e=>e.key===key);
@@ -424,11 +424,13 @@ function openShopItemPreview(entry, tier){
   let el = document.getElementById("item-preview");
   if(!el){ el = document.createElement("div"); el.id = "item-preview"; document.body.appendChild(el); }
   el.innerHTML = `<div class="ip-backdrop" data-ip-close></div><div class="ip-panel">${itemDetailHTML(it, null, {shop:true})}
-    <div class="ip-actions"><button class="primary" data-ip-buy ${save.gold < shopPriceOf(entry, tier) || !shopRotationAllows(entry) ? "disabled" : ""}>${shopRotationAllows(entry) ? "Comprar" : "No está hoy"} · 🪙 ${fmtGold(shopPriceOf(entry, tier))}</button><button data-ip-close>Cerrar</button></div></div>`;
+    <div class="ip-actions">${entry.cat==="set" ? (typeof premiumPieceButton==="function" ? premiumPieceButton(entry.id, "primary") : "") || '<span class="shop-item-sub">Se consigue jugando</span>'
+      : `<button class="primary" data-ip-buy ${save.gold < shopPriceOf(entry, tier) || !shopRotationAllows(entry) ? "disabled" : ""}>${shopRotationAllows(entry) ? "Comprar" : "No está hoy"} · 🪙 ${fmtGold(shopPriceOf(entry, tier))}</button>`}<button data-ip-close>Cerrar</button></div></div>`;
   el.classList.remove("hidden");
   const close = ()=>{ el.classList.add("hidden"); el.innerHTML = ""; };
   el.querySelectorAll("[data-ip-close]").forEach(b=>b.addEventListener("click", close));
-  el.querySelector("[data-ip-buy]").addEventListener("click", ()=>{
+  const ipBuy = el.querySelector("[data-ip-buy]");
+  if(ipBuy) ipBuy.addEventListener("click", ()=>{
     const r = shopBuyCatalog(entry.key, tier, null, quotedPrice); if(!r.ok){ gameAlert(r.reason); return; }
     close(); _shopAfterBuy(`🛒 ${r.item.name} va a tu inventario (−${fmtGold(r.price)} de oro)`, "lootLegend");
   });
@@ -554,7 +556,7 @@ function renderShopBrasas(panel){
   else if(!on) status = `<div class="brasas-status" data-brasas-soon-note><b>Muy pronto.</b> Los pagos todavía no están conectados: por ahora no se pueden comprar Brasas.</div>`;
   panel.innerHTML = `<div class="brasas-head">
       <div class="brasas-bal">✦ <b data-premium-balance>${premiumLabel()}</b> <span>Brasas</span></div>
-      <div class="brasas-rule">Las Brasas solo compran apariencia. Nunca poder.</div>
+      <div class="brasas-rule">${typeof premiumRuleText==="function" ? premiumRuleText() : ""}</div>
     </div>
     ${status}
     ${welcome ? _brasasPackCard(welcome, true) : ""}
@@ -566,7 +568,7 @@ function renderShopBrasas(panel){
   if(lg) lg.addEventListener("click", ()=>{ if(typeof window.accountOpen==="function") window.accountOpen(); });
   panel.querySelectorAll("[data-brasas-buy]").forEach(b=> b.addEventListener("click", async ()=>{
     const id = b.getAttribute("data-brasas-buy"), p = packs.find(x=>x.id===id); if(!p) return;
-    const ok = await gameConfirm(`¿Comprar ${(p.premium + (p.bonus||0)).toLocaleString("es-AR")} Brasas por ${premiumPriceLabel(p.price)}? Vas a ir a la página de pago. Las Brasas solo compran apariencia.`, {okText:"Ir a pagar"});
+    const ok = await gameConfirm(`¿Comprar ${(p.premium + (p.bonus||0)).toLocaleString("es-AR")} Brasas por ${premiumPriceLabel(p.price)}? Vas a ir a la página de pago. ${typeof premiumRuleText==="function" ? premiumRuleText() : ""}`, {okText:"Ir a pagar"});
     if(!ok) return;
     b.disabled = true;
     const r = await premiumCheckout(id, p.price);

@@ -86,7 +86,13 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   // 5) mutador aplicado (se fuerzan los siete y se mide cada uno)
   const r5 = await E(() => { const out = {}; const keep = EN.mutators.slice();
     EN.mutators = []; const base = { spawn: endlessSpawnIntervalMult(), role: endlessRoleChance(0.1), dur: endlessRoundDuration(EN.round), bossHp: endlessBossHp() };
-    EN.mutators = ['fast_horde']; out.fast = endlessSpawnIntervalMult() < base.spawn; const e1 = spawnEnemy(pickFromPool(spawnPoolFor(runLevel)), false); EN.mutators = []; const e0 = spawnEnemy(e1.type, false); out.fastSpeed = e1.speed > e0.speed*1.15;
+    // Compare equivalent ordinary enemies. A random elite may roll a different
+    // 'rapido' affix on each spawn, masking the weekly +22% speed modifier.
+    EN.mutators = ['fast_horde']; out.fast = endlessSpawnIntervalMult() < base.spawn;
+    const e1 = spawnEnemy('esqueleto', false);
+    EN.mutators = []; const e0 = spawnEnemy('esqueleto', false);
+    out.fastFixture = e1.rank === 'normal' && e0.rank === 'normal' && !e1.eliteMods && !e0.eliteMods && e0.speed > 0;
+    out.fastSpeed = Math.abs(e1.speed / e0.speed - 1.22) < 1e-9;
     EN.mutators = ['elites_x2']; out.elites = endlessRoleChance(0.1) > base.role*1.9;
     EN.mutators = ['dense']; out.dense = endlessRoundDuration(EN.round) < base.dur;
     EN.mutators = ['furious']; out.furious = endlessBossHp() > base.bossHp*1.2;

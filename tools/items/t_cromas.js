@@ -29,7 +29,10 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   const reg = await E(() => {
     const ids = Object.keys(CROMA_SKINS), bad = [], sizes = [];
     const withSet = new Set(Object.values(SET_SKINS).map(d => d.champ));
-    const noSkin = Object.keys(CLASSES).filter(k => !withSet.has(k));
+    // Los guardianes de Ascensión (y los dos GM) traen sus propias skins en ASCENSION_SKINS (js/champions/ascension/register.js), no en SET_SKINS:
+    // tienen skin, así que la regla «el guardián sin skin tiene al menos una croma» no les corresponde.
+    const withAsc = new Set(typeof ASCENSION_SKINS !== 'undefined' ? Object.keys(ASCENSION_SKINS).filter(k => (ASCENSION_SKINS[k] || []).length) : []);
+    const noSkin = Object.keys(CLASSES).filter(k => !withSet.has(k) && !withAsc.has(k));
     for (const id of ids) {
       const d = CROMA_SKINS[id];
       if (!CLASSES[d.champ] || !CROMA_CRYSTALS[d.crystal] || !(d.price > 0) || !d.name || !d.lore || !d.preview) bad.push(id);

@@ -420,6 +420,9 @@ function drawBossSkillAnim(e){
 // del idle1 se veía gigante y pixelado: se deja fuera)
 const ACUA_IDLE2 = { tiburon_joven:"tiburonJovenIdle2", cangrejo_acorazado:"cangrejoIdle2", medusa_electrica:"medusaIdle2" };
 function drawAcuaticaReal(e){
+  // Tiburones: arte propio por atlas (tools/art/pixrig/tiburones.py; se registra en js/arenas/acuatica.js). Los PNG sueltos de abajo
+  // quedan solo de respaldo si el atlas no cargó.
+  if((e.type==="tiburon_joven" || e.type==="tiburon_blanco") && ENEMY_ATLAS_PACK[e.type] && ENEMY_ATLAS_PACK[e.type].ready && drawEnemyAtlasPack(e)) return true;
   let idleKey, atkKey;
   if(e.type==="tiburon_joven"){ idleKey="tiburonJovenIdle"; atkKey="tiburonJovenAtk"; }
   else if(e.type==="tiburon_blanco"){ idleKey="tiburonBlancoIdle"; atkKey="tiburonBlancoAtk"; }

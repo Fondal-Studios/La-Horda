@@ -421,6 +421,8 @@ champPackLoadAtlas("libertador", "assets/sprites/champions/libertador/v2/atlas.p
 // Caída original del Caballero; no reemplaza su atlas maestro ni sus apariencias.
 champPackLoadAtlas("tanque_hurt", "assets/sprites/champions/tanque/v3/hurt.png", {w:112,h:112,cols:6,refH:71,anchor:106/112,sets:{hit_down:[0,1],hit_side:[2,3],hit_up:[4,5]}});
 champPackLoadAtlas("tanque_death", "assets/sprites/champions/tanque/v3/death.png", {w:112,h:112,cols:4,refH:71,anchor:106/112,sets:{death_down:[0,1,2,3]}});
+// Caída base del Guerrero; conserva el atlas de locomoción y sus skins.
+champPackLoadAtlas("guerrero_death", "assets/sprites/champions/guerrero/v3/death.png", {w:112,h:112,cols:4,refH:79,anchor:106/112,sets:{death_down:[0,1,2,3]}});
 champPackLoadAtlas("libertador_death", "assets/sprites/champions/libertador/v2/death.png", {w:112,h:112,cols:4,refH:71,anchor:106/112,sets:{death_down:[0,1,2,3]}});
 // Movimiento base validado; los 61 cuadros especializados y las skins se conservan.
 champPackLoadAtlas("libertador_motion", "assets/sprites/champions/libertador/v3/motion.png", {"w":112,"h":112,"cols":12,"refH":70,"anchor":0.9464285714285714,"sets":{"idle_down":[0,1,2,3],"walk_down":[0,1,2,3],"idle_side":[4],"walk_side":[4,5,6,7],"idle_up":[8],"walk_up":[8,9,10,11]}});

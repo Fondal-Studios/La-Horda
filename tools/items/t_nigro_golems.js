@@ -23,17 +23,18 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   for (let k = 0; k < 100; k++) { if (await page.evaluate(() => ['stone','fire','ice','storm','plague'].every(s => NIGRO_GOLEM_ATLAS[s] && NIGRO_GOLEM_ATLAS[s].ready))) break; await sleep(100); }
   const E = (fn, a) => page.evaluate(fn, a);
 
-  // carga: un atlas por gólem, en el manifiesto y en la primera tanda (nunca se juega con el arte a medio cargar)
+  // carga: un atlas por gólem, en el manifiesto y en el grupo de carga diferida del Nigromante ("ch:nigromante": baja con el guardián; la partida
+  // espera a whenAssetsReady, así nunca se juega con el arte a medio cargar). Antes iban en la primera tanda.
   const ld = await E(() => ({
     atlases: ['stone','fire','ice'].map(k => { const A = NIGRO_GOLEM_ATLAS[k]; return { k, ready: A.ready, w: A.img.naturalWidth, src: A.meta.src,
-      inManifest: ASSET_MANIFEST.includes(A.meta.src), deferred: LAZY_IMG.isDeferred(A.meta.src),
+      inManifest: ASSET_MANIFEST.includes(A.meta.src), deferred: LAZY_IMG.isDeferred(A.meta.src), group: LAZY_IMG.groupOf(A.meta.src),
       inBounds: A.meta.frames.every(f => f[0] >= 0 && f[1] >= 0 && f[0] + f[2] <= A.img.naturalWidth && f[1] + f[3] <= A.img.naturalHeight),
       setsOk: Object.values(A.meta.sets).every(arr => arr.length && arr.every(i => i >= 0 && i < A.meta.frames.length)) }; }),
     tinted: ['storm','plague'].map(k => ({ k, ready: NIGRO_GOLEM_ATLAS[k].ready, canvas: NIGRO_GOLEM_ATLAS[k].img instanceof HTMLCanvasElement, sameMeta: NIGRO_GOLEM_ATLAS[k].meta === NIGRO_GOLEM_ATLAS.stone.meta })),
     stoneSets: Object.keys(NIGRO_GOLEM_META.stone.sets), fireSets: Object.keys(NIGRO_GOLEM_META.fire.sets), iceSets: Object.keys(NIGRO_GOLEM_META.ice.sets),
     oldImgsGone: !('stone' in NIGRO_GOLEM_IMG) && !('fire' in NIGRO_GOLEM_IMG) && !('ice' in NIGRO_GOLEM_IMG)
   }));
-  for (const a of ld.atlases) check(`NGOL.atlas_${a.k}_cargado_y_registrado`, a.ready && a.w > 0 && a.inManifest && !a.deferred && a.inBounds && a.setsOk, a);
+  for (const a of ld.atlases) check(`NGOL.atlas_${a.k}_cargado_y_registrado`, a.ready && a.w > 0 && a.inManifest && a.inBounds && a.setsOk && a.group === 'ch:nigromante' /* carga por demanda: grupo del guardián (lazy-images.js), no la primera tanda */, a);
   for (const t of ld.tinted) check(`NGOL.${t.k}_usa_la_piedra_recoloreada`, t.ready && t.canvas && t.sameMeta, t);
   check('NGOL.piedra_tiene_4_direcciones_caminata_golpe_escombros_e_impacto',
     ['idle_down','idle_side','idle_up','walk_side','walk_down','walk_up','atk','rise','death','fx_slam'].every(k => ld.stoneSets.includes(k)), ld.stoneSets);

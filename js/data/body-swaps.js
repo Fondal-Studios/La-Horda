@@ -46,28 +46,9 @@ const BODY_SWAPS = {
      Ceremonias y el Tramoyista ya tienen arte propio a la densidad del juego (tools/art/pixrig): sin préstamo. ---- */
 
   /* ---- 06 · Arena Acuática: comunes y élite (1–2 cuadros quietos + 1 de ataque, sin golpe ni muerte) ---- */
-  // Los cinco llevan paleta de agua propia (degradé), un contorno de agua que late y variación de tamaño:
+  // Los tres que quedan llevan paleta de agua propia (degradé), un contorno de agua que late y variación de tamaño:
   // derivan del arte de otras arenas, pero no se leen como copias (panel de críticos, Q6 del alfa).
-  tiburon_joven: {body:"esqueleto_h", brief:"P0-05", hMul:2.5,
-    tint:{hueTo:168, satTo:0.28, minSat:0.08, lum:0.92}, death:"frames",
-    pal:{ramp:["#04161b", "#0d383b", "#2a6b5e", "#79b294", "#d6efd6"], mix:0.82, keepSat:0.7},
-    aura:{rgb:"90,220,200", d:1, a:0.5}, sizeVar:0.08,
-    name:"Ahogado de las Ruinas",
-    codex:{family:"Muerto del agua",
-      lore:"Soldados que se hundieron con las ruinas. El agua inestable no los deja descansar: se arrastran por el fondo, rápidos y en jauría, con percebes donde antes tenían armadura.",
-      origin:"Los escombros sumergidos de la Arena Acuática.",
-      horde:"Presas del Leviatán convertidas en cazadores.",
-      behavior:"Rápido, ataca de frente y en grupo.", attacks:["Zarpazo"]}},
-  tiburon_blanco: {body:"demonio_hielo_fuego", brief:"P0-06", hMul:2.6,
-    tint:{hueTo:176, satTo:0.4, minSat:0.1, lum:0.85}, death:"frames",
-    pal:{ramp:["#0a0614", "#2a1640", "#51397c", "#3fb3a8", "#d8fff2"], mix:0.86, keepSat:0.72},
-    aura:{rgb:"90,230,200", d:1, a:0.55}, sizeVar:0.05,
-    name:"Tritón de las Fosas",
-    codex:{family:"Criatura abisal",
-      lore:"El más grande de los cazadores de las fosas: medio hombre, medio bestia, con un tridente de coral negro. Dicen que el Leviatán lo dejó vivir para que cace por él.",
-      origin:"Las fosas más profundas.",
-      horde:"El cazador favorito del Leviatán.",
-      behavior:"Élite: embiste en línea recta y ensarta con el tridente.", attacks:["Embestida","Estocada de tridente"]}},
+  // tiburon_joven y tiburon_blanco ya NO se prestan: tienen arte propio (tools/art/pixrig/tiburones.py, P0-05 / P0-06).
   cangrejo_acorazado: {body:"arana", brief:"P0-07", hMul:2.35,
     tint:{hue:-14, sat:1.3, lum:1.02}, death:"frames",
     pal:{ramp:["#061214", "#14333a", "#35655f", "#c7744a", "#ffe0b0"], mix:0.86, keepSat:0.8},

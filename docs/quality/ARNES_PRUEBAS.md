@@ -2,6 +2,8 @@
 
 Estado: rama `claude/ci-pruebas-nuevas`. Nada de lo que sigue cambia el juego (`js/`, `css/`, `assets/`, `server/`): solo `tools/`, `.github/` y esta nota.
 
+> **Antes de lanzar**: `node tools/quality/run-all.js` corre toda la batería con servidor propio y resume PASS/FAIL; el estado, las causas y lo que sigue rojo están en `docs/quality/ESTADO_DE_PRUEBAS.md`.
+
 ## Por qué
 
 La auditoría técnica encontró que el CI no corría pruebas clave de lo integrado (`test-ult-forms`, `test-decal-legible` fuera de su filtro, `t_checkpoint`, `t_defeat_clear`, `t_shop_rotation`, `test-accessibility-prefs`, `test-sides`, `tools/identity/*`, `tools/items/*`), que el filtro `paths` no incluía `tools/vfx/**`, `tools/items/**`, `tools/regression/**` ni `tools/identity/**`, y que la mayoría de las pruebas con navegador asumen un servidor externo en un puerto fijo (8771, 8822, 8826, 8841, 8894, 8906, 8961...) y usan `page.goto` con 30 s fijos. Con el puerto ocupado por otra copia del repo el resultado es "connection refused" o, peor, se prueba **otro árbol** sin saberlo; con la máquina cargada, el `goto` agota los 30 s.

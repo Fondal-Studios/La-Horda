@@ -52,7 +52,10 @@ function probe(type) {
     death: draw(e => { e.alive = false; e._dyingP = 0.9; }),
   };
   const walk = new Set(); for (let t = 0; t < 1500; t += 45) walk.add(draw(x => { x.animT = t; }).hash);
-  return { st, walkFrames: walk.size, swapped: bodySwapped(type), swapKey: bodySwapKey(type), radius: e.radius };
+  const P = ENEMY_ATLAS_PACK[type];
+  const own = !!(P && P.ready && !P.bodyOf && /\/tiburon_(joven|blanco)\/atlas\.png$/.test(PIXRIG_ATLAS[type] ? PIXRIG_ATLAS[type].src : ''));
+  const sets = P ? Object.keys(P.sets).reduce((o, k) => (o[k] = P.sets[k].length, o), {}) : {};
+  return { st, walkFrames: walk.size, swapped: bodySwapped(type), swapKey: bodySwapKey(type), radius: e.radius, own, sets, name: ENEMY_BASE[type].name, hMul: P && P.hMul };
 }
 
 async function runViewport(browser, name, vp) {
@@ -62,7 +65,7 @@ async function runViewport(browser, name, vp) {
   page.on('console', m => { if (m.type() === 'error' && !/ERR_CERT|fonts\.g|net::/.test(m.text())) errors.push('console: ' + m.text()); });
   await page.goto(`http://127.0.0.1:${server.address().port}/index.html?dev=1`, { waitUntil: 'load', timeout: 180000 });
   for (let i = 0; i < 300; i++) { if (await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return b && !b.disabled; })) break; await sleep(100); }
-  for (let i = 0; i < 200; i++) { if (await page.evaluate(() => bodySwapsReady())) break; await sleep(150); }
+  for (let i = 0; i < 200; i++) { if (await page.evaluate(() => bodySwapsReady() && ['tiburon_joven', 'tiburon_blanco'].every(k => ENEMY_ATLAS_PACK[k] && ENEMY_ATLAS_PACK[k].ready))) break; await sleep(150); }
   await sleep(500);
   await page.evaluate(() => { selectedClass = 'guerrero'; currentArena = 'acuatica'; lobbyAllies = []; startRun(1); });
   await sleep(1200);
@@ -73,6 +76,7 @@ async function runViewport(browser, name, vp) {
   check(`${name}: Joven aparece desde el nivel 1`, pools.l1.includes('tiburon_joven'));
   check(`${name}: Blanco no antes del nivel 7 y sí desde el 7`, !pools.l6.includes('tiburon_blanco') && pools.l7.includes('tiburon_blanco'));
 
+  const out = {};
   for (const type of ['tiburon_joven', 'tiburon_blanco']) {
     const r = await page.evaluate(probe, type);
     const S = r.st, keys = Object.keys(S);
@@ -81,8 +85,17 @@ async function runViewport(browser, name, vp) {
     check(`${name}: ${type} caminata con varios cuadros`, r.walkFrames >= 3, r.walkFrames);
     const h = k => S[k].hash;
     check(`${name}: ${type} ataque, golpe y muerte distintos de caminar e idle`, new Set([h('idle'), h('walk_R'), h('attack'), h('hit'), h('death')]).size === 5);
-    check(`${name}: ${type} dibuja con el cuerpo prestado (body-swaps) o arte propio`, !!r.swapKey || !r.swapped, r.swapKey);
+    check(`${name}: ${type} vistas de frente/espalda y de ataque/golpe distintas entre sí y del perfil`, new Set([h('walk_R'), h('walk_D'), h('walk_U'), h('attack'), h('attack_D'), h('attack_U'), h('hit'), h('hit_D')]).size === 8);
+    check(`${name}: ${type} espejo izquierda/derecha del mismo cuadro (sin cuadro propio por lado)`, h('walk_L') !== undefined && S.walk_L.px === S.walk_R.px, [S.walk_L.px, S.walk_R.px]);
+    // ARTE PROPIO: nada de cuerpo prestado (body-swaps.js) y el atlas es el del tiburón (pixrig)
+    check(`${name}: ${type} NO usa cuerpo prestado`, !r.swapped && !r.swapKey, r.swapKey);
+    check(`${name}: ${type} usa su atlas propio de tiburón (assets/sprites/enemies/acuatica/${type}/atlas.png)`, r.own);
+    check(`${name}: ${type} conserva su nombre y sus 5 estados con varios cuadros`, /^Tibur/.test(r.name) && ['idle', 'walk', 'atk', 'hit', 'death'].every(k => r.sets[k] >= 1) && r.sets.walk >= 6 && r.sets.atk >= 6 && r.sets.death >= 6, [r.name, r.sets]);
+    out[type] = r;
   }
+  // identidad: distintos entre sí (tamaño dibujado, hMul, píxeles del idle)
+  const a = out.tiburon_joven, b = out.tiburon_blanco;
+  check(`${name}: Joven y Blanco con identidad distinta (cuadros distintos y Blanco más grande)`, a.st.idle.hash !== b.st.idle.hash && b.st.idle.px > a.st.idle.px * 1.5, [a.st.idle.px, b.st.idle.px]);
 
   // en partida: los dos juntos cerca del héroe, unos cuadros reales de juego, sin errores
   await page.evaluate(() => {

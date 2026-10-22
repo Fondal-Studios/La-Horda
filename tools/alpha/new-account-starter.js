@@ -81,6 +81,7 @@ async function pickStarter(p,champ,label){
   await p.locator('#title-continue-btn').click();
   await p.locator('[data-acc-tab="register"]').click();
   await p.fill('#acc-user','n'+Date.now().toString(36).slice(-8));await p.fill('#acc-pass','secret123');await p.fill('#acc-pass2','secret123');
+  await p.check('#legal-consent-cb'); // el registro exige aceptar los términos (js/ui/legal.js)
   await p.locator('#acc-submit').click();
   await pickStarter(p,'soporte','new account');
   await p.waitForFunction(()=>!acct.uploading&&!acct.pulling&&acct.sync&&!acct.sync.dirty,null,{timeout:15000}).catch(()=>{});
