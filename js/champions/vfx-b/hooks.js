@@ -50,7 +50,7 @@ function kvbHeroAt(x, y, classKey){ let best = null, bd = 1e9; for(const h of he
   // Calidad cinco: la acción en curso viene del lanzamiento (solcijuCast / veyraCast)
   function ctxWrap(name){
     const o = window[name]; if(typeof o !== 'function') return;
-    window[name] = function(h, sk){ const prev = KVB.q5; KVB.q5 = {h, sk}; try{ return o.apply(this, arguments); } finally{ KVB.q5 = prev; } };
+    window[name] = function(h, sk){ const prev = KVB.q5; KVB.q5 = {h, sk, area: arguments[4]}; try{ return o.apply(this, arguments); } finally{ KVB.q5 = prev; } };
   }
   ctxWrap('solcijuCast'); ctxWrap('veyraCast');
   if(typeof qualityFiveFx === 'function'){
@@ -61,8 +61,12 @@ function kvbHeroAt(x, y, classKey){ let best = null, bd = 1e9; for(const h of he
       if(!c || c.h !== h){ return; } // efectos de objetos persistentes: los dibuja la piel del objeto
       if(!id) return oQ.apply(this, arguments);
       if(draw === kitFxLine){ const [, ax, ay, bx, by, w] = args; kvbFx(id, ax, ay, w, Math.atan2(by - ay, bx - ax), Math.hypot(bx - ax, by - ay), 0); }
-      else kvbFx(id, args[1], args[2], args[3], Math.atan2(h.fy || 0, h.fx || 1), .85, 0);
-      kvbPunch(h, args[1], args[2], args[3] || 60, h.cls && h.cls.ultimate === c.sk ? 2 : 1);
+      else if(c.sk.action === 'vey_cut' && aimProfileOf(c.sk,h).type === 'line'){
+        const area = c.area || 1;
+        kvbFx('veyra.lance',args[1],args[2],Math.min(200,c.sk.radius*area),Math.atan2(h.fy||0,h.fx??1),Math.min(180,c.sk.range*area),0);
+      }else kvbFx(id, args[1], args[2], args[3], Math.atan2(h.fy || 0, h.fx ?? 1), .85, 0);
+      // Los filos y el latido de Veyra ya aportan impacto sin un disco adicional.
+      if(h.classKey !== 'veyra') kvbPunch(h, args[1], args[2], args[3] || 60, h.cls && h.cls.ultimate === c.sk ? 2 : 1);
     };
   }
   // Último punto apuntado (premarcado) y marca de "el lanzamiento sí ocurrió" (castAbility sale antes si está congelado/fusionado)
