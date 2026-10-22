@@ -1,0 +1,198 @@
+{
+  "results": [
+    {
+      "lance": false,
+      "champion": "aelith",
+      "slot": 0,
+      "action": "ael_echo",
+      "trace": [
+        [
+          "nova",
+          "time",
+          115,
+          0,
+          75,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rays",
+          "time~p",
+          115,
+          0,
+          40,
+          0,
+          380,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rings",
+          "time~p",
+          115,
+          0,
+          75,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Instante roto",
+      "sceneHash": "f865b91e7149ed79b007232b5716ccf6cfb4a54d82ba06a523515be212efff0e"
+    },
+    {
+      "lance": false,
+      "champion": "aelith",
+      "slot": 1,
+      "action": "ael_fracture",
+      "trace": [
+        [
+          "beam",
+          "time~h",
+          0,
+          0,
+          0,
+          0,
+          720,
+          260,
+          0,
+          52,
+          -2
+        ],
+        [
+          "burst",
+          "time~h",
+          260,
+          0,
+          34,
+          0,
+          420,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rays",
+          "time~p",
+          0,
+          0,
+          40,
+          0,
+          340,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Fractura de segundos",
+      "sceneHash": "0896513c70162ead60cf589706a00115059b8fb2ac977d74a97610f2b9a40d08"
+    },
+    {
+      "lance": false,
+      "champion": "aelith",
+      "slot": 2,
+      "action": "ael_haste",
+      "trace": [
+        [
+          "aura",
+          "time~p",
+          0,
+          0,
+          44,
+          0,
+          1600,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "column",
+          "time~p",
+          0,
+          4,
+          16,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Tiempo prestado",
+      "sceneHash": "7ce1131ecaa82e529cd4cd0b8c93b7e0713b21eee8dd22d9f58253f29baa4cc1"
+    },
+    {
+      "lance": false,
+      "champion": "aelith",
+      "slot": 3,
+      "action": "ael_hour",
+      "trace": [],
+      "objects": [
+        "ael_hour"
+      ],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "La hora imposible",
+      "sceneHash": "7510740c5c0a09fa8e6b8f7aeb205052ff38c0b6d74af6bdafa8ac3d4f302c60"
+    }
+  ],
+  "errors": []
+}

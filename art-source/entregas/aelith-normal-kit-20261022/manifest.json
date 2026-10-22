@@ -1,0 +1,298 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "repository": "Fondal-Studios/La-Horda",
+  "repositoryId": 1379488490,
+  "branch": "art/aelith-normal-kit-first-pass-20261022",
+  "base": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+  "state": "EN_CORRECCION",
+  "mergeGate": "NO_INTEGRAR",
+  "generated": true,
+  "validated": false,
+  "integratedMain": false,
+  "publication": "NO_VERIFICADA",
+  "atlases": 4,
+  "frames": 48,
+  "dynamicSnapshots": 3,
+  "next": "Grouped corrections recent-five kits; preserve PR191",
+  "components": [
+    {
+      "block": "B105",
+      "id": "A-FX-aelith-h1",
+      "state": "EN_CORRECCION"
+    },
+    {
+      "block": "B106",
+      "id": "A-FX-aelith-h2",
+      "state": "EN_CORRECCION"
+    },
+    {
+      "block": "B107",
+      "id": "A-FX-aelith-h3",
+      "state": "EN_CORRECCION"
+    }
+  ],
+  "files": {
+    "art-source/entregas/aelith-normal-kit-20261022/CHECKPOINT.md": {
+      "sha256": "68ff8b9da262672e9e924e86c835f6b55ec4b5cf339d572d4a84d42deaaa339c",
+      "bytes": 6059
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/atlas-preview.png": {
+      "sha256": "f63d245036f1bf7f557060272b6821e6fc9ab359d8d1e78734cdb4ee8ae7a0e1",
+      "bytes": 22680
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/moving-comparison.png": {
+      "sha256": "f832faf128f3221fed968f66698c74c6ab13700d55dc98c6346a30bb276879e1",
+      "bytes": 880093
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/recipe.json": {
+      "sha256": "71dfb873d13576dad257b58b9a59a61bd801dfdfb3b8a41fd91f8ed3750cd85a",
+      "bytes": 2180
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/FIRST_PASS_RECONCILIATION.json": {
+      "sha256": "06f222b0e4e8b9574218a819edf6739939eaa997ace5a4e55eba2e2fb712a954",
+      "bytes": 1640
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md": {
+      "sha256": "1b1a1df16eee0926a00615dc5e9cfee3adcf49ba8b024fee22100f025953f54f",
+      "bytes": 1923
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/verification.json": {
+      "sha256": "c4a15c7d05741019016e3ac83ff805bab24be406b7e9a9376624e178aa8a5b1a",
+      "bytes": 5333
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/mobile-comparison.png": {
+      "sha256": "871b6288edf509bfd5273239f1d81d026cc3eb3e9afd085abad8a207467b58a0",
+      "bytes": 841406
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/comparison.png": {
+      "sha256": "c4ff2a74308c527902511dc3d51a46fdfc7c78aaf3dc13011a9cb9747cdefb8d",
+      "bytes": 865883
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/moving-before/aelith-3.png": {
+      "sha256": "bdbb196de527d56d1009667e1fa3e01a0b5d297a9dee6bb120240d18cf5cd115",
+      "bytes": 153573
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/moving-before/aelith-0.png": {
+      "sha256": "f52ee0246c7e36f808f50b51d2348b6d51f488cc95105d0bbaa52f2832881b4e",
+      "bytes": 142881
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/moving-before/aelith-2.png": {
+      "sha256": "a9503cc621928e54ea7d2264b47c4c7785ea6580abbdb1b52143816b2bf091cf",
+      "bytes": 165319
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/moving-before/capture.json": {
+      "sha256": "eb740f492b16eca76ffee510806fd890f75e6b64d23a370b03ceeded056a863e",
+      "bytes": 3415
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/moving-before/aelith-1.png": {
+      "sha256": "29824966e270638fb29671198d5e5d25dd8d731ec4bc4b60a9b9bf0870b9e079",
+      "bytes": 144557
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/moving-after/aelith-3.png": {
+      "sha256": "bdbb196de527d56d1009667e1fa3e01a0b5d297a9dee6bb120240d18cf5cd115",
+      "bytes": 153573
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/moving-after/aelith-0.png": {
+      "sha256": "05dcad3e7c4f4068f86803d2665687b851c44e42deebafb8a82b31e160ae143c",
+      "bytes": 137697
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/moving-after/aelith-2.png": {
+      "sha256": "ac3627e0cec37d527f7d95f2abe5b8fb3fdd6434ed2bc04b92faf7ddcb462589",
+      "bytes": 164251
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/moving-after/capture.json": {
+      "sha256": "b993035a3708f08eca1414e23963c6d93cdbcf1a97c8b6ca80c6dceae1ddb8bd",
+      "bytes": 2481
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/moving-after/aelith-1.png": {
+      "sha256": "0f758215b2a6eef3e082c9dc8226e2ed3d5e3dcd2e396340933bc7787b9aaab5",
+      "bytes": 144539
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/atlases/borrowed-sand.png": {
+      "sha256": "9442036a2e04173ab4cca2eddde115f66d9da5889489cf9974fde467bdf54287",
+      "bytes": 2512
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/atlases/echo-countdown.png": {
+      "sha256": "85f29aa6f0a871ed3a6cc1d0911a8b03a9c7e67d20082339e1a672a9d86a9e40",
+      "bytes": 9176
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/atlases/echo-shatter.png": {
+      "sha256": "bb04985f01f63e0dc443f1114d1062c9d7aa4993084b63bf735d269daa6ab505",
+      "bytes": 11058
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/atlases/fracture-glass.png": {
+      "sha256": "16bb813121b6088b3f56f2dc47e67b7f3eaac9987a2f35288bc0ced94336bb4a",
+      "bytes": 1289
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/mobile-before/aelith-3.png": {
+      "sha256": "bdbb196de527d56d1009667e1fa3e01a0b5d297a9dee6bb120240d18cf5cd115",
+      "bytes": 153573
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/mobile-before/aelith-0.png": {
+      "sha256": "f52ee0246c7e36f808f50b51d2348b6d51f488cc95105d0bbaa52f2832881b4e",
+      "bytes": 142881
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/mobile-before/aelith-2.png": {
+      "sha256": "ba7d8353bcb8df4981d6f8e9ee10e91459b7f5e7797b90478afba308eb2496c2",
+      "bytes": 141605
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/mobile-before/capture.json": {
+      "sha256": "d097e060e1b23255dd2e150b35934bd126d7a2c81809f16bb77975d31a6fca26",
+      "bytes": 3335
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/mobile-before/aelith-1.png": {
+      "sha256": "29824966e270638fb29671198d5e5d25dd8d731ec4bc4b60a9b9bf0870b9e079",
+      "bytes": 144557
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/tests/reproducibility.json": {
+      "sha256": "2db477950024d5c7f46911392050a776c66c371967c7ce56e8d0ace2172fe98d",
+      "bytes": 588
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/tests/online-general-first-attempt.json": {
+      "sha256": "4a4993ca9985570301bb8d85f62c6b75f7e114e3d03b789a7df5cd1ec9be8d37",
+      "bytes": 3631
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/tests/parity.txt": {
+      "sha256": "9bbe3ab9389e9e4ebfa664ec8edca39112083055cc75d9dc27f52c2fdc3d874e",
+      "bytes": 116
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/tests/functional-results.json": {
+      "sha256": "ccf3cdab250a7dcf95213098c71e035a8b0ca44b8624f51c17ecf74c58557b6e",
+      "bytes": 10195
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/tests/online-harness-first-attempt.json": {
+      "sha256": "b0b035a96ea025aa618f5f0750b9b119052c3720cf47774333507365a0bb1b22",
+      "bytes": 930
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/tests/comparison.json": {
+      "sha256": "913848fb1023c37178cce4335153f74132e20c9c7d3622db7eee5e5155bd75fc",
+      "bytes": 3299
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/tests/vfx-online-results.json": {
+      "sha256": "b1d7899e32893a493297440d7027f90c06d351946b53828c2e30ea5f012d3c01",
+      "bytes": 3682
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/before/aelith-3.png": {
+      "sha256": "63d866d05e422809715b9c472a41db7b1adbfdafbb451fab4c33feb124603e49",
+      "bytes": 161835
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/before/aelith-0.png": {
+      "sha256": "127a78beaca407a0e1afa3c28a0be1eaae7d9085c8e973b06343b700a90438c9",
+      "bytes": 153677
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/before/aelith-2.png": {
+      "sha256": "35f3399ee3b79714f2da4845dc8d51b9946a5f849832701d1cd66e442e53ff5c",
+      "bytes": 151526
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/before/capture.json": {
+      "sha256": "4746b653eff681b0005b7c84350c6bc5aec698c7ba8c78cfd64318bb57b39009",
+      "bytes": 3335
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/before/aelith-1.png": {
+      "sha256": "70898e1e4cda023f7a435537ea72c7ee19958c796540151cf34fe571194b8bba",
+      "bytes": 154261
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/after/aelith-3.png": {
+      "sha256": "63d866d05e422809715b9c472a41db7b1adbfdafbb451fab4c33feb124603e49",
+      "bytes": 161835
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/after/aelith-0.png": {
+      "sha256": "5bbc256529509ca90f1fe4df2c1edeca530cccf725b64596246bdd4634d7b2cf",
+      "bytes": 148649
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/after/aelith-2.png": {
+      "sha256": "2162eb2b0556490bac4c4340a71c0bc6d0a48313323a7e9bea6a00e0388b4ab2",
+      "bytes": 149744
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/after/capture.json": {
+      "sha256": "572b67729655ca32ff38b6caac7a81ac24b5aaa851084e5a5a3d9715844d66e5",
+      "bytes": 2401
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/after/aelith-1.png": {
+      "sha256": "cef177d9c33047a5bb2ce9ca2c22e04efe10dd3e245600e5cc59306a50ca694f",
+      "bytes": 154215
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/mobile-after/aelith-3.png": {
+      "sha256": "bdbb196de527d56d1009667e1fa3e01a0b5d297a9dee6bb120240d18cf5cd115",
+      "bytes": 153573
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/mobile-after/aelith-0.png": {
+      "sha256": "05dcad3e7c4f4068f86803d2665687b851c44e42deebafb8a82b31e160ae143c",
+      "bytes": 137697
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/mobile-after/aelith-2.png": {
+      "sha256": "e0640dde35fc5fdcfcdb1986967d130a4829f154411f39cd8493d28321b0a86b",
+      "bytes": 139791
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/mobile-after/capture.json": {
+      "sha256": "4f2f1abf1e79abc5e4a2bbe8ffd6060f4fce4fc5286710ff70e99a3b02c15416",
+      "bytes": 2401
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/mobile-after/aelith-1.png": {
+      "sha256": "0f758215b2a6eef3e082c9dc8226e2ed3d5e3dcd2e396340933bc7787b9aaab5",
+      "bytes": 144539
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/engine-off/aelith-3.png": {
+      "sha256": "60689caa6925fcdc4ed545ddf3a1a77cf1d1fccff6ad1cadf47b642335a20dfb",
+      "bytes": 158912
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/engine-off/aelith-0.png": {
+      "sha256": "1049c497b981b6bd507c09c250554404968f70b86d16fa873162b1295cbea0ca",
+      "bytes": 148222
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/engine-off/aelith-2.png": {
+      "sha256": "0d94d0149a9a7c8dba120afc943bf569062aebc35c3c3ccb4f56a75c1f540a2b",
+      "bytes": 153437
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/engine-off/capture.json": {
+      "sha256": "50bab8cf162e5d55ce6872bfbe21727907e809917494d247ae242584183da5fa",
+      "bytes": 1882
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/engine-off/aelith-1.png": {
+      "sha256": "212016ba90bc3ecd36548dd0bbf8ab95fdeaedf8270882b332e299c3def0e34b",
+      "bytes": 153369
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/trail-snapshots/sample-2.png": {
+      "sha256": "4bb665693e19c813be32a359ff08485a889b1f38e7efbae0f30265738e4a73d4",
+      "bytes": 1655
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/trail-snapshots/sample-1.png": {
+      "sha256": "4bb665693e19c813be32a359ff08485a889b1f38e7efbae0f30265738e4a73d4",
+      "bytes": 1655
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/trail-snapshots/sample-0.png": {
+      "sha256": "4bb665693e19c813be32a359ff08485a889b1f38e7efbae0f30265738e4a73d4",
+      "bytes": 1655
+    },
+    "js/champions/skill-fx-a/engine.js": {
+      "sha256": "67a3deeb96beaad21e54e71013d44f63ec9a2995a46f691f8b5055423e98a24c",
+      "bytes": 28951
+    },
+    "js/champions/skill-fx-a/bind.js": {
+      "sha256": "c91af8cc18022c7cad781f78286ca5accc6a2dc20caefa405aadaf0e9ffc49ba",
+      "bytes": 14360
+    },
+    "js/champions/skill-fx-a/c/aelith.js": {
+      "sha256": "36a57bc1da0347999b1f0871457b3e743ca9335cf8bdbea99ce1a81388bf3c80",
+      "bytes": 4981
+    },
+    "tools/vfx/capture-aelith-kit.js": {
+      "sha256": "c4e91fab2254c4bc2282f4d4a49a050df8211643ee501c5fb679dc9dd5fd511b",
+      "bytes": 6133
+    },
+    "tools/vfx/verify-aelith-kit.js": {
+      "sha256": "5160b1603df9e7e1a2a633afcc37c5e763f707f67188ed8e1d5719274f0d2208",
+      "bytes": 7465
+    },
+    "tools/vfx/aelith-online.js": {
+      "sha256": "1d3df657a022a37120780e6867ee13eaa06e3b63ccf7e28348d845aff193dcbb",
+      "bytes": 8924
+    },
+    "docs/production/CORRECTION_BATCH.json": {
+      "sha256": "95cde316951841b449361ac7008526a5b5d8396af023a7689bc1bc40cf10ce71",
+      "bytes": 18759
+    }
+  },
+  "hashPolicy": "Manifest excludes itself; closure recomputes changed files."
+}

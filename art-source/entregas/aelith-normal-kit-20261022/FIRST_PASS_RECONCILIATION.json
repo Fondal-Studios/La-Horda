@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-22",
+  "repository": "Fondal-Studios/La-Horda",
+  "base": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+  "scope": "Only recent-five normal ability first passes; not complete project inventory",
+  "kits": [
+    {
+      "champion": "solciju",
+      "pr": 195,
+      "head": "7b89de24bdea58d5e5e321e18957d3b0c5715f05",
+      "atlases": 4,
+      "frames": 44,
+      "state": "EN_CORRECCION",
+      "integratedMain": false
+    },
+    {
+      "champion": "veyra",
+      "pr": 196,
+      "head": "0185b9d9a0dbed5d649371ba2d3302961800ce2b",
+      "atlases": 6,
+      "frames": 56,
+      "state": "EN_CORRECCION",
+      "integratedMain": false
+    },
+    {
+      "champion": "brakk",
+      "pr": 197,
+      "head": "3b01d7613b6636ce8c717e13b96d0376830ad878",
+      "atlases": 5,
+      "frames": 53,
+      "state": "EN_CORRECCION",
+      "integratedMain": false
+    },
+    {
+      "champion": "morveth",
+      "pr": 198,
+      "head": "7ddcc511b7554495e933a70aafab94bdc1951c9b",
+      "atlases": 4,
+      "frames": 55,
+      "state": "EN_CORRECCION",
+      "integratedMain": false
+    },
+    {
+      "champion": "aelith-normal",
+      "pr": null,
+      "head": null,
+      "atlases": 4,
+      "frames": 48,
+      "state": "EN_CORRECCION",
+      "integratedMain": false
+    }
+  ],
+  "totals": {
+    "atlases": 23,
+    "frames": 256,
+    "note": "Includes animation dissipation; not256 approved assets. AelithPR191 ultimate separate."
+  },
+  "next": "Reconcile latest remote heads and begin grouped corrections for this prioritized five-kit batch; preserve existing IDs, sources and gates. Other champion/inventory work remains."
+}
