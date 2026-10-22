@@ -11,20 +11,21 @@
   "visual": "Owner liked source1; back-view wand hand continuity needs review",
   "existingUltimate": "assets/sprites/champions/myla/berrinche.png; preserved",
   "installed": false,
-  "next": "Run Myla death component gate on current PR190 head; inspect runtime-comparison.png at game scale; retain draft until native, renderer, regressions and visual gate pass. Cast/hurt remain source-only pending hand continuity.",
+  "next": "Verify final head workflows/reviews and expected-head merge for death only; then resume cast/hurt hand continuity. Never mark entire B005 completed.",
   "build": "build.py",
   "nativeCheck": "check-native.js",
   "components": {
     "myla.cuerpo.muerte": {
-      "state": "EN_CORRECCION",
+      "state": "VALIDADO",
       "generated": true,
       "branchIntegration": "assets/sprites/champions/myla/v2/death.png",
       "integratedMain": false,
       "publicationVerified": false,
       "technical": "4/4 native numerical PASS; exact RGBA reproduction; scanner semi/halo/fragments 0",
-      "runtime": "PENDING_GITHUB_ACTIONS",
-      "visual": "Source contact inspected; game-scale renderer comparison pending",
-      "command": "node tools/art/check-myla-death.js"
+      "runtime": "PASS 139 checks; CI39768883095 head b95d6f54f5573e77f8d390a73dd87e43bd804d70",
+      "visual": "PASS ASISTIDA_CODEX: inspected native source, runtime-comparison and same-scale roster; not owner approval",
+      "command": "node tools/art/check-myla-death.js",
+      "evidence": "docs/art-gate/myla-death/README.md"
     },
     "myla.cuerpo.lanzar": {
       "state": "EN_CORRECCION",

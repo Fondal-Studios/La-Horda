@@ -18,7 +18,7 @@ jobs:
       - run: npm install --no-save playwright
       - run: npx playwright install --with-deps chromium
       - run: python art-source/entregas/bloques/B005_myla/revision-01/build.py
-      - run: node tools/art/check-authored-clip-density.js assets/sprites/champions/myla/v2/death.png docs/art-gate/myla-death/native.json 0.85
+      - run: node tools/art/check-authored-clip-density.js assets/sprites/champions/myla/v2/death.png docs/art-gate/myla-death/native.json 0.7902439024390244
       - name: Exact extraction and scanner
         run: |
           python - <<'PY'

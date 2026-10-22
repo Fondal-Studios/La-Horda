@@ -23,3 +23,9 @@ La descarga de Chromium y del headless shell falla con ZIP truncado en este ento
 3. Corregir cualquier fallo sin bajar umbrales. Si el workflow aún no corrió, ejecutar con Playwright/Chromium: `node tools/art/check-myla-death.js`; el workflow contiene los demás comandos de regresión.
 4. Solo tras gate visual, pruebas y checks requeridos PASS: marcar listo, releer base/head/reviews y merge con expected_head_sha. Registrar muerte como componente, nunca cerrar B005 completo.
 5. Después, reparar mano/varita en lanzamiento/golpe. PR191 conserva Aelith FIX_NO_INTEGRAR con defectos exactos; no duplicar esa producción. PR166 sigue taller; Guerrero muerte ya main por PR187.
+
+## Validación recuperada de GitHub — cierre del ciclo
+
+El bloqueo de navegador local fue resuelto para esta validación mediante CI39768883095 sobre b95d6f54f5573e77f8d390a73dd87e43bd804d70: Myla139 checks PASS; Guerrero133, Tanque135, Libertador127 PASS; roster141 sin fallos. Artefacto descargado y hash ZIP verificado; runtime-comparison y hoja del roster inspeccionados: Visual Gate PASS asistido por Codex. Evidencias persistidas en docs/art-gate/myla-death/. Se registra solo muerte como VALIDADO, no como INTEGRADO_MAIN anticipadamente. Lanzar/golpe siguen EN_CORRECCION.
+
+La siguiente acción sustituye los pasos de validación pendientes anteriores: comprobar todos los checks/reviews del HEAD final, marcar listo y mergear con expected_head_sha si todo está correcto. Consultar el estado real de PR190 para saber si ya se mergeó; registrar merge real en el PR. Continuar después mano/varita en esta fuente sin duplicarla. Si hay un fallo nuevo de CI, mantener borrador y corregirlo.
