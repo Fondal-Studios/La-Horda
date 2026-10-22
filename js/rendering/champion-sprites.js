@@ -338,7 +338,7 @@ function drawChampPack(key, h, drawScale, alpha){
 function drawChampPackDeath(h){
   const key = typeof setSkinPackKey==="function" ? setSkinPackKey(h, h.classKey) : h.classKey;
   // Supplemental base-only clip: skins/cromas keep their own appearance and fallback.
-  const supplement = key === "libertador" ? CHAMP_PACK.libertador_death : key === "tanque" ? CHAMP_PACK.tanque_death : key === "guerrero" ? CHAMP_PACK.guerrero_death : null;
+  const supplement = key === "libertador" ? CHAMP_PACK.libertador_death : key === "tanque" ? CHAMP_PACK.tanque_death : key === "guerrero" ? CHAMP_PACK.guerrero_death : key === "myla" ? CHAMP_PACK.myla_death : null;
   const P = supplement && supplement.ready ? supplement : CHAMP_PACK[key];
   if(!P || !P.ready) return false;
   if(!h._deadAt){ h._deadAt = animNow; vfxBurst(h.x, h.y-20, 12, "blood", 120, 420, 3, 2, -30, 0); }

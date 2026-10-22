@@ -1,6 +1,6 @@
 {
   "block": "B005",
-  "state": "REVIEW_NOT_INSTALLED",
+  "state": "EN_CORRECCION",
   "newPoses": 28,
   "items": [
     "myla.cuerpo.lanzar",
@@ -11,7 +11,37 @@
   "visual": "Owner liked source1; back-view wand hand continuity needs review",
   "existingUltimate": "assets/sprites/champions/myla/berrinche.png; preserved",
   "installed": false,
-  "next": "Review hand consistency and runtime scale; integrate only validated base supplements, preserving skins and Berrinche",
+  "next": "Run Myla death component gate on current PR190 head; inspect runtime-comparison.png at game scale; retain draft until native, renderer, regressions and visual gate pass. Cast/hurt remain source-only pending hand continuity.",
   "build": "build.py",
-  "nativeCheck": "check-native.js"
+  "nativeCheck": "check-native.js",
+  "components": {
+    "myla.cuerpo.muerte": {
+      "state": "EN_CORRECCION",
+      "generated": true,
+      "branchIntegration": "assets/sprites/champions/myla/v2/death.png",
+      "integratedMain": false,
+      "publicationVerified": false,
+      "technical": "4/4 native numerical PASS; exact RGBA reproduction; scanner semi/halo/fragments 0",
+      "runtime": "PENDING_GITHUB_ACTIONS",
+      "visual": "Source contact inspected; game-scale renderer comparison pending",
+      "command": "node tools/art/check-myla-death.js"
+    },
+    "myla.cuerpo.lanzar": {
+      "state": "EN_CORRECCION",
+      "generated": true,
+      "integratedMain": false,
+      "next": "Fix back-view wand/hand continuity before installation"
+    },
+    "myla.cuerpo.golpe": {
+      "state": "EN_CORRECCION",
+      "generated": true,
+      "integratedMain": false,
+      "next": "Review back-view wand/hand continuity before installation"
+    },
+    "myla.cuerpo.definitiva": {
+      "state": "EXISTING_PRESERVED",
+      "source": "assets/sprites/champions/myla/berrinche.png",
+      "regenerated": false
+    }
+  }
 }
