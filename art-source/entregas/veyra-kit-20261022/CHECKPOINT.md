@@ -41,3 +41,11 @@ PLAYWRIGHT_MODULE=/ruta/playwright CHROMIUM_PATH=/ruta/chromium MOBILE=1 OUT=/tm
 PLAYWRIGHT_MODULE=/ruta/playwright CHROMIUM_PATH=/ruta/chromium LANCE=1 OUT=/tmp/veyra-lance node tools/vfx/capture-veyra-kit.js
 NODE_PATH=/ruta/node_modules CHROMIUM_PATH=/ruta/chromium node tools/vfx/test-decal-legible.js
 ```
+
+## Cierre remoto del 22/10/2026
+
+Producción guardada en commit 91735b7b42d75fb48e2e20587877b61bf883362c, PR196 borrador: https://github.com/drmarianojimenez94-sudo/La-Horda/pull/196 . Se verificaron los 59 archivos remotos contra la lista local y sus blobs; el diff de runtime toca únicamente hooks.js y veyra.js. main seguía en 6334ff40b6514808ef0fe00b50bec15e19f10c25. No hubo merge ni publicación.
+
+En el head de producción se iniciaron 14 checks y seis workflows; estaban pendientes/en curso al guardar este cierre. Consultar nuevamente el head actual: este commit documental vuelve a disparar CI y no hereda aprobación de otro SHA. Aunque todos terminen correctamente, PR196 sigue NO_INTEGRAR por el aura B228 y la matriz visual de skins pendiente.
+
+Próxima acción concreta: leer este checkpoint y CORRECTION_BATCH.json desde GitHub, revisar main/PR abiertos; auditar js/champions/vfx-b/brakk.js y sus consumidores SFA, capturar el kit original con escena/escala fijas, producir primera pasada B117/B118/B119 y guardar un nuevo checkpoint antes de Morveth. No regenerar Veyra, Solciju, Axiom, Aurelia ni Aelith PR191. Para revisar Veyra usar los comandos reproducibles anteriores.
