@@ -1,0 +1,284 @@
+{
+  "schema": 1,
+  "updated": "2026-10-22",
+  "policy": "First-pass champion batches; save failures and move forward. Run a grouped correction pass later; never merge failed or unvalidated assets.",
+  "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
+  "entries": [
+    {
+      "block": "B005",
+      "component": "myla.cuerpo.lanzar",
+      "pr": 192,
+      "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-02",
+      "frames": [
+        11
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "ILUSTRACION: suave0.429 ruido75"
+      ],
+      "next": "Redraw only recovery11; preserve0-10 exactly; repeat canonical detector and renderer."
+    },
+    {
+      "block": "B007",
+      "component": "A-FX-aelith-ult",
+      "pr": 191,
+      "source": "art-source/entregas/bloques/B007_aelith/revision-01",
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Dial lacks exactly13 marks",
+        "Pulse effects overlap neighboring cells"
+      ],
+      "next": "Correct dial/spacing in grouped VFX pass, then export and test runtime timing."
+    },
+    {
+      "block": "B108",
+      "component": "A-FX-aurelia-h1",
+      "source": "art-source/entregas/bloques/B008_aurelia/primera-pasada-01",
+      "sheet": "source-prism.png",
+      "sourceSha256": "24c0c0be5f19c62d90b9b453c725b0aa093da0d7be2d6122c80f9b5f0ba6ea4a",
+      "frames": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "CELL_EDGE_CONTACT; node bases too close to source row boundary"
+      ],
+      "next": "Reframe affected source cells without clipping light or individually scaling the animation; preserve original."
+    },
+    {
+      "block": "B008",
+      "component": "A-FX-aurelia-ult",
+      "source": "art-source/entregas/bloques/B008_aurelia/primera-pasada-01",
+      "sheet": "source-cathedral.png",
+      "sourceSha256": "5372060ef473c44ad7ae7302898776dd7b09ca539a34b58d4dbaf43a4b39ab53",
+      "frames": [
+        17,
+        18,
+        19,
+        20,
+        23,
+        24,
+        29
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "EMPTY_FRAME23/24/29",
+        "CELL_EDGE_CONTACT17/18/19/20",
+        "Only two connecting pointed arches clearly visible; third connection must follow three-node geometry",
+        "Loop/dissipation order and footprint need temporal review"
+      ],
+      "next": "Complete missing poses and three-node architecture in grouped correction pass; preserve open center, no destructive crop."
+    },
+    {
+      "block": "B430",
+      "component": "A-FX-axiom-basico",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/kit-primera-pasada-02/packet-source.png",
+      "sourceSha256": "81214f75db108062712baf40a87bb75825fd97f47e01681beb98fc65da9a83f7",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Alfa suave; cubo se lee redondo en2–4, caída8–10 deja trazos alargados. A24px necesita revisar legibilidad y fase de4fragmentos."
+      ],
+      "next": "Corregir cubo cuadrado y disipación, limpiar alfa mediante edición de fuente; comprobar clip24px antes de integrar."
+    },
+    {
+      "block": "B111",
+      "component": "A-FX-axiom-h1",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/kit-primera-pasada-02/error404-source.png",
+      "sourceSha256": "8d239b4cbe27cf9fe6e2fe456942784249245d7ba454749edcd0895f873aa5b8",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Nube coloreada visible por semialfa, contactos de borde0–11; no cumple capa transparente limpia. Geometría se mantiene inclinada y debe verificarse a radio130."
+      ],
+      "next": "Eliminar residuo de fondo y glow en fuente, recuperar margen de0–11, estabilizar bucle6–11."
+    },
+    {
+      "block": "B112",
+      "component": "A-FX-axiom-h2",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/kit-primera-pasada-02/overwrite-source.png",
+      "sourceSha256": "5cd86bbcbf09c2ba1ac2ca1cfc5964d10215f838841a93cf58daf37dac0df4f0",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Semialfa/ruido RGB; cadena no separada de cabeza y motivo infección. Faltan exports independientes del tile16px y cabeza48px."
+      ],
+      "next": "Separar enlace/cabeza/infección, exportar fases y corregir bordes. Revisar cadena multiobjetivo y duración2600ms sin cambiar gameplay."
+    },
+    {
+      "block": "B113",
+      "component": "A-FX-axiom-h3",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/kit-primera-pasada-02/teleport-source.png",
+      "sourceSha256": "a470eda5b49e299dc62278cdaf4e8eebf7fe1199f66402a7260e2998ac2cd42c",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Nube azul visible semitransparente aunque hay alfa0; sin píxeles totalmente opacos. Cambios de anclaje y tamaño entre salida y llegada; trazo188x24 no producido."
+      ],
+      "next": "Editar fuente para transparencia limpia y anclas constantes; producir trazo independiente pendiente. Separar salida0–7 y llegada8–15, validar48px."
+    },
+    {
+      "block": "B009",
+      "component": "A-FX-axiom-ult",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/primera-pasada-01/source.png",
+      "sourceSha256": "861df4e2f27a6683cf2a281a32a2d818f260812c3f8e57edbb231bbf6b9ee4dc",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Semialfa548169 pixels; loop6–13 scale/anchor inconsistency"
+      ],
+      "next": "Correct original source alpha and stabilize held window; no regeneration before correction batch."
+    },
+    {
+      "block": "B208/B209/B490/B491",
+      "component": "A-FX-solciju-h1;A-FX-solciju-h2;A-PROP-kvb-solciju-sol_reserve",
+      "source": "js/champions/vfx-b/solciju.js",
+      "sourceBase": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+      "evidence": "art-source/entregas/habilidades-recientes-20261022/atlas-preview.png",
+      "frames": {
+        "so_splash": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "so_fuse": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "so_pool_idle": "0-13"
+      },
+      "state": "EN_CORRECCION",
+      "defects": [
+        "La mancha lobulada mejora diferenciación frente al anillo anterior, pero sus cinco puntas se leen como estrella/sello. Redondear asimétricamente en lote de corrección.",
+        "so_pool_idle es fallback cuando UF está apagado; no contar como sustitución de Gran Reserva activa."
+      ],
+      "next": "En lote agrupado corregir silueta del charco manteniendo radio de premarcado, paleta, alfa y timing. Repetir export y revisión en móvil; no tocar balance.",
+      "sourceSha256": "f40019b51b48cdf1956ff7ced323133a171a0553c3370c80848111cedaf372fd"
+    }
+  ],
+  "pendingVerificationNotFailures": [
+    "Aurelia basic/refraction/luminal-step: generated, no empty/edge flags, still need final-scale readability, proper layer split and runtime tests",
+    "Myla hurt: visual continuity review pending",
+    "Libertador PR166: specialized61-frame integration pending, do not use generic36 replacement",
+    "Solciju B210 copa: revisión visual inicial favorable y alpha PASS; pendiente revisión de skins/arenas y CI del head antes de VALIDADO/main."
+  ],
+  "nextProduction": "Veyra: primera pasada de habilidades desde main y auditoría habilidades-recientes-20261022; luego Brakk, Morveth, Aelith normal. Conservar PR191 de Aelith. Solciju queda en revisión por componentes, sin iterar manchas antes de pasar al siguiente kit."
+}

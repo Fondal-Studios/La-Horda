@@ -62,7 +62,8 @@ function kvbHeroAt(x, y, classKey){ let best = null, bd = 1e9; for(const h of he
       if(!id) return oQ.apply(this, arguments);
       if(draw === kitFxLine){ const [, ax, ay, bx, by, w] = args; kvbFx(id, ax, ay, w, Math.atan2(by - ay, bx - ax), Math.hypot(bx - ax, by - ay), 0); }
       else kvbFx(id, args[1], args[2], args[3], Math.atan2(h.fy || 0, h.fx || 1), .85, 0);
-      kvbPunch(h, args[1], args[2], args[3] || 60, h.cls && h.cls.ultimate === c.sk ? 2 : 1);
+      // Solciju aporta su propio impacto (vino/copa/barrica); el flash circular lo ocultaba.
+      if(h.classKey !== 'solciju') kvbPunch(h, args[1], args[2], args[3] || 60, h.cls && h.cls.ultimate === c.sk ? 2 : 1);
     };
   }
   // Último punto apuntado (premarcado) y marca de "el lanzamiento sí ocurrió" (castAbility sale antes si está congelado/fusionado)

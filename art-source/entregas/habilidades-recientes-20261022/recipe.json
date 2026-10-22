@@ -1,0 +1,16 @@
+{
+  "method": "native KVB canvas recipes; exact runtime export, no new imagegen source",
+  "source": "js/champions/vfx-b/solciju.js",
+  "base": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+  "frames": {
+    "so_splash": 10,
+    "so_fuse": 10,
+    "so_pool_idle": 14,
+    "so_toast": 10
+  },
+  "export": "node tools/vfx/export-solciju-kit.js",
+  "targetArena": "bosque",
+  "filter": "nearest, existing kvbCrisp, ordered dither",
+  "noMechanicsChanged": true,
+  "reexportByteIdentical": true
+}
