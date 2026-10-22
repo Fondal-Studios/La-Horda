@@ -57,7 +57,7 @@ const sfaObj = (c, kindRe) => c.objs.find(o => !kindRe || kindRe.test(o.kind));
       SFA_CUR.slot = slot; SFA_CUR.pushed = [];
       for (const o of c.objs) sfaObjVar.set(o.id, SFA_VSUF[slot] || '');
       (spec.run || spec)(c);
-      sfaExtras(c, slot, SFA_CUR.pushed);
+      if (spec.extras !== false) sfaExtras(c, slot, SFA_CUR.pushed);
     } catch (e) { sfaFail(e); }
     finally { SFA_CUR.slot = prevSlot; SFA_CUR.pushed = prevPushed; }
     return out;
