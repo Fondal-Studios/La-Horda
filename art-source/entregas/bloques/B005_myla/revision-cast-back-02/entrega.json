@@ -1,0 +1,50 @@
+{
+  "block": "B005",
+  "component": "myla.cuerpo.lanzar",
+  "state": "EN_CORRECCION",
+  "visualSet": "FIX_NO_INTEGRAR",
+  "generator": "image_gen built-in",
+  "newCorrectedPoses": 3,
+  "changedFrames": [
+    9,
+    10,
+    11
+  ],
+  "preservedFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "native": {
+    "status": "FIX",
+    "pass": 11,
+    "total": 12,
+    "failed": [
+      {
+        "frame": 11,
+        "issue": "ILUSTRACION",
+        "suave": 0.429,
+        "ruido": 75
+      }
+    ]
+  },
+  "visual": "Hand continuity corrected: back view spoon on viewer-left, bow remains viewer-right. Game-scale animation pending. No owner approval claimed.",
+  "scanner": {
+    "semi": 0,
+    "fragments": 0,
+    "halo": 1,
+    "note": "Halo candidate belongs to preserved original cast sheet; inspect without erasing legitimate highlights."
+  },
+  "installed": false,
+  "integratedMain": false,
+  "publicationVerified": false,
+  "preserved": "revision-01 and approved death untouched",
+  "resume": "python art-source/entregas/bloques/B005_myla/revision-cast-back-02/build.py && node art-source/entregas/bloques/B005_myla/revision-cast-back-02/check-native.js",
+  "next": "Targeted imagegen redraw only recovery frame11, keeping left hand and right bow; preserve passing frames0-10 exactly. Re-run native gate without lowering thresholds; then test base cast integration/skins/Berrinche/network."
+}
