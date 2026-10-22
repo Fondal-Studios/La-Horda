@@ -40,7 +40,7 @@ function brakkFxStrip(kind,T,art,size){
  }
  return S;
 }
-for(const kind of ['build','deploy','nails','repair'])sfaDefineTheme('brakk_'+kind,{...sfaThemes.siege,bake:(T,art,size)=>brakkFxStrip(kind,T,art,size)});
+for(const kind of ['build','deploy','nails','repair'])sfaDefineTheme('brakk_'+kind,{...sfaThemes.siege,beamEventPhase:kind==='build',bake:(T,art,size)=>brakkFxStrip(kind,T,art,size)});
 SFA_OBJ.brk_wall = {theme: 'siege', draw: sfaDrawWallObj('siege'), end: 'burst', endR: 52, endDur: 520};
 SFA_OBJ.brk_turret = {theme: 'siege', draw: sfaDrawTurretObj('siege'), pulse: true, pulseArt: 'burst', pulseR: 28, pulseDur: 380, end: 'burst', endR: 46, endDur: 520};
 SFA_BIND.brakk = {themes: ['siege','brakk_build','brakk_deploy','brakk_nails','brakk_repair'],

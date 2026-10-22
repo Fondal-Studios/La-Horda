@@ -289,7 +289,15 @@
       "next": "En lote común vincular la persistencia visual al pacto propio y a su dueño en host/invitado, sin cambiar duración ni buffs mecánicos. Probar múltiples Veyra, muerte, reset y buffs ajenos.",
       "sourceSha256": "41ab122f98c6ce7ad90d5b74450d7b1315411b180ac6857c42f5abfdedc2fd75",
       "pr": 196,
-      "productionCommit": "91735b7b42d75fb48e2e20587877b61bf883362c"
+      "productionCommit": "91735b7b42d75fb48e2e20587877b61bf883362c",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 196,
+        "path": "art-source/entregas/veyra-kit-20261022/correccion-01",
+        "technical": "14 ownership checks PASS; 21 actual relay checks PASS; 132 functional PASS; numeric caster/duration event owns aura; registered KVB network wrapper after late module load.",
+        "state": "EN_CORRECCION",
+        "remaining": "Full skins/arenas/contrast/warmup/re-entry and integral visual gate; inherited KVB on/off RNG mismatch; CI current head."
+      }
     },
     {
       "block": "B117",
@@ -304,7 +312,15 @@
       ],
       "next": "En lote común reproducir el montaje según edad del evento, conservando orientación, radio y tiempo mecánico del muro; no cambiar fase global de los proyectiles existentes.",
       "pr": 197,
-      "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b"
+      "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 197,
+        "path": "art-source/entregas/brakk-kit-20261022/correccion-01",
+        "technical": "20 real draw frame checks PASS; 14 actual relay checks PASS; 132 functional PASS; combat/RNG 29232 identical. Build-only event phase; nails and legacy loops unchanged.",
+        "state": "EN_CORRECCION",
+        "remaining": "Full skins/arenas/contrast/warmup and visual gate. B118 arrow supports remain FIX; do not merge whole workshop."
+      }
     },
     {
       "block": "B118",
@@ -320,6 +336,215 @@
       "next": "En lote común convertir puntas en pies articulados con remaches; mantener centro abierto, alcance y la torreta existente. Revisar en escenario móvil a escala real.",
       "pr": 197,
       "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b"
+    },
+    {
+      "block": "B166",
+      "component": "A-FX-morveth-h1",
+      "source": "art-source/entregas/morveth-kit-20261022",
+      "sheet": "atlases/spore-pulse.png",
+      "sourceFile": "js/champions/skill-fx-a/c/morveth.js",
+      "sourceSha256": "9394db83bae05d5ff924e4731b15b39a3f7e99fdf8af6b09202fdaf240e9f30a",
+      "atlasSha256": "b6e2e5e7ac685d5549ddae885b4e49188f534ea630fbf9cead9ed02cc002945b",
+      "frames": [
+        10
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "El borde conserva152 píxeles al final del atlas y corta de golpe; el renderer de nova no atenúa la fase final."
+      ],
+      "evidence": [
+        "comparison.png",
+        "mobile-comparison.png",
+        "atlas-preview.png",
+        "verification.json"
+      ],
+      "next": "Disolver el borde con la receta del pulso; preservar radio85 y los seis pulsos reales; comparar520ms en el lote común.",
+      "pr": 198,
+      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5"
+    },
+    {
+      "block": "B167",
+      "component": "A-FX-morveth-h2",
+      "source": "art-source/entregas/morveth-kit-20261022",
+      "sheet": "atlases/spore-exhalation.png",
+      "sourceFile": "js/champions/skill-fx-a/c/morveth.js",
+      "sourceSha256": "9394db83bae05d5ff924e4731b15b39a3f7e99fdf8af6b09202fdaf240e9f30a",
+      "atlasSha256": "9d85f6c49ecc55899acfd79b33f57f60791b0c06cfc8cde0949caa33a58c7abd",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Las esporas son distintas, pero en la escena siguen dominando rayos/impactos blancos compartidos con el efecto legado; falta una lectura propia del impacto en el conjunto."
+      ],
+      "evidence": [
+        "comparison.png",
+        "mobile-comparison.png",
+        "atlas-preview.png",
+        "verification.json"
+      ],
+      "next": "Auditar capas visuales heredadas del cast/infección antes de añadir arte. En lote común ajustar solo VFX, conservar cono210/arc0.85 y contagios.",
+      "pr": 198,
+      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5"
+    },
+    {
+      "block": "B168",
+      "component": "A-FX-morveth-h3",
+      "source": "art-source/entregas/morveth-kit-20261022",
+      "sheet": "atlases/symbiosis-mycelium.png",
+      "sourceFile": "js/champions/skill-fx-a/c/morveth.js",
+      "sourceSha256": "9394db83bae05d5ff924e4731b15b39a3f7e99fdf8af6b09202fdaf240e9f30a",
+      "atlasSha256": "11be6bd6010338dcedf0bcc02596d05af9123cf9d3a2a1f30d12b09cf45fa7a6",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Los filamentos se ven como dos ramas/antenas finas; en móvil no se identifica con claridad el micelio alrededor del receptor."
+      ],
+      "evidence": [
+        "comparison.png",
+        "mobile-comparison.png",
+        "atlas-preview.png",
+        "verification.json"
+      ],
+      "next": "En lote común dar ramificación reconocible al micelio y contrastar a escala real sin tapar cuerpo; conservar destinatarios/timer comprobados.",
+      "pr": 198,
+      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5"
+    },
+    {
+      "block": "B105",
+      "component": "A-FX-aelith-h1",
+      "source": "js/champions/skill-fx-a/c/aelith.js",
+      "sourceSha256": "36a57bc1da0347999b1f0871457b3e743ca9335cf8bdbea99ce1a81388bf3c80",
+      "atlas": "art-source/entregas/aelith-normal-kit-20261022/atlases/echo-shatter.png",
+      "atlasSha256": "bb04985f01f63e0dc443f1114d1062c9d7aa4993084b63bf735d269daa6ab505",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "El observador end muestra un estallido al cancelar el eco por muerte aunque no hubo segundo daño; reproducido."
+      ],
+      "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
+      "next": "Distinguir expiración con impacto de cancelación en host/invitado; preservar objeto y daño.",
+      "pr": 199,
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d"
+    },
+    {
+      "block": "B106",
+      "component": "A-FX-aelith-h2",
+      "source": "js/champions/skill-fx-a/c/aelith.js",
+      "sourceSha256": "36a57bc1da0347999b1f0871457b3e743ca9335cf8bdbea99ce1a81388bf3c80",
+      "atlas": "art-source/entregas/aelith-normal-kit-20261022/atlases/fracture-glass.png",
+      "atlasSha256": "16bb813121b6088b3f56f2dc47e67b7f3eaac9987a2f35288bc0ced94336bb4a",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "La grieta se ve como una línea dentada demasiado fina a escala móvil; aún no tiene apertura/cierre longitudinal de150ms ni estado de arena lenta propio."
+      ],
+      "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
+      "next": "Revisar grosor/fragmentos y fase longitudinal en lote común; usar endpoints reales, mantener ancho mecánico52 y no convertirlo en haz liso.",
+      "pr": 199,
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d"
+    },
+    {
+      "block": "B107",
+      "component": "A-FX-aelith-h3",
+      "source": "js/champions/skill-fx-a/c/aelith.js",
+      "sourceSha256": "36a57bc1da0347999b1f0871457b3e743ca9335cf8bdbea99ce1a81388bf3c80",
+      "atlas": "art-source/entregas/aelith-normal-kit-20261022/atlases/borrowed-sand.png",
+      "atlasSha256": "9442036a2e04173ab4cca2eddde115f66d9da5889489cf9974fde467bdf54287",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Falta colapso de las post-imágenes y fase gris de800ms de deuda.",
+        "Segundero usa animNow global/12 cuadros a100ms: no recorre una única vuelta en los3000ms reales.",
+        "Estela corta y tenue en comparación móvil; skins y perfiles de movimiento pendientes."
+      ],
+      "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
+      "next": "Lote común: fase visual relativa al buff/deuda real, cierre de siluetas y contraste; validar todos los receptores/skins sin tocar velocidad ni armadura.",
+      "pr": 199,
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d"
+    },
+    {
+      "block": "B228",
+      "component": "A-FX-veyra-kvb-rng-parity",
+      "pr": 196,
+      "state": "EN_CORRECCION",
+      "source": "art-source/entregas/veyra-kit-20261022/correccion-01",
+      "frames": [],
+      "defects": [
+        "KVB.off true/false consumes 29969/28804 Math.random calls. Reproduced identically at previous PR196 head and correction; full on/on and off/off snapshots match before/after. This is not a PASS."
+      ],
+      "next": "Trace inherited generic VFX Math.random paths with KVB toggled; preserve combat mechanics and thresholds. Keep failing evidence."
     }
   ],
   "pendingVerificationNotFailures": [
@@ -330,5 +555,5 @@
     "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
-  "nextProduction": "Morveth B166/B167/B168, luego Aelith normal B105/B106/B107. Brakk primera pasada guardada; no repetir B117/B118 hasta lote común. Conservar UF y Aelith PR191."
+  "nextProduction": "Continue grouped corrections: Aelith B105 cancellation/death/replacement and B107 event-relative haste/debt. Then grouped silhouettes/contrast for Solciju, Brakk B118, Morveth B166/B167/B168, Aelith B106/B107; preserve sources and PR191. Investigate inherited KVB toggle RNG mismatch before any Veyra merge."
 }

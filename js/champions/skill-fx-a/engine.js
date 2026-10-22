@@ -311,10 +311,11 @@ function sfaPush(art, theme, x, y, r, ang, dur, bx, by, w, fi, arc, dl) {
   sfaPool.push({art, theme, x, y, r: r || 60, ang: ang || 0, t: -(dl || 0), dur: dur || (art === 'nova' ? 720 : art === 'beam' ? 560 : art === 'cone' ? 520 : art === 'aura' ? 1200 : 460), bx: bx || 0, by: by || 0, w: w || 24, fi: fi === undefined ? -1 : fi, arc: arc || .85, ult: (dur || 0) >= 900});
 }
 // tejas del haz entre (ax,ay) y (bx,by): ancho w, opacidad alpha, espesor relativo thick (anticipación = fino, disipación = se afina)
-function sfaBeamTiles(g, theme, ax, ay, bx, by, w, alpha, thick) {
+function sfaBeamTiles(g, theme, ax, ay, bx, by, w, alpha, thick, phase) {
   const L = Math.hypot(bx - ax, by - ay); if (L < 4) return;
   const H = w < 18 ? 8 : w < 34 ? 12 : w < 56 ? 16 : 24, b = sfaBake('beam', theme, H); if (!b) return;
-  const sc = w / H, f = ((animNow / 70) | 0) % b.n, step = 16 * sc, n = Math.ceil(L / step);
+  const eventPhase = sfaTheme(theme).beamEventPhase && Number.isFinite(phase);
+  const sc = w / H, f = eventPhase ? Math.min(b.n-1,Math.max(0,Math.floor(phase*b.n))) : ((animNow / 70) | 0) % b.n, step = 16 * sc, n = Math.ceil(L / step);
   g.save(); g.translate(ax, ay); g.rotate(Math.atan2(by - ay, bx - ax)); g.globalAlpha = alpha;
   for (let i = 0; i < n; i++) { const wl = Math.min(step, L - i * step); g.drawImage(b.cv, f * 16, 0, 16 * (wl / step), H, i * step, -b.h * sc * thick / 2, wl, b.h * sc * thick); }
   g.restore();
@@ -339,7 +340,7 @@ const sfaDrawOne = (s, g) => {
     g.drawImage(b.cv, f * b.w, 0, b.w, b.h, -sc, -b.h / 2 * sc, b.w * sc, b.h * sc); g.restore();
   } else if (s.art === 'beam') {
     const dis = k > .62 ? (k - .62) / .38 : 0;
-    sfaBeamTiles(g, s.theme, s.x, s.y, s.bx, s.by, s.w, (k < .18 ? .45 : .95) * (1 - dis * .8), k < .18 ? .3 : 1 - dis * .75);
+    sfaBeamTiles(g, s.theme, s.x, s.y, s.bx, s.by, s.w, (k < .18 ? .45 : .95) * (1 - dis * .8), k < .18 ? .3 : 1 - dis * .75, k);
     if (k >= .12 && k < .6 && !calm && s.fi !== -2) { const q = sfaBake('burst', s.theme, 32); if (q) { const fb = Math.min(q.n - 1, (((k - .12) / .48) * q.n) | 0), D = Math.max(40, s.w * 1.8); g.globalAlpha = .95; g.drawImage(q.cv, fb * q.w, 0, q.w, q.h, s.bx - D / 2, s.by - D / 2, D, D); } }
   } else if (s.art === 'aura') {
     const b = sfaBake('aura', s.theme, 0); if (!b) return;

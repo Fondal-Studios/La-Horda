@@ -1,0 +1,176 @@
+{
+  "results": [
+    {
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          115,
+          -65,
+          0,
+          0,
+          600,
+          115,
+          65,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        "brk_wall"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "b729556fe06a3c43d6d3b742dbde3f7609ce1d0393aefdb6d5bc57bf589d2650"
+    },
+    {
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          115,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          115,
+          0,
+          0,
+          0,
+          260,
+          100,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          115,
+          0,
+          0,
+          0,
+          260,
+          100,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        "brk_turret"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "757522e8d360dcd28e0c10fa743f4bdf31fb95ec969476258afefad8d5a23638"
+    },
+    {
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [
+        "brk_wall"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "ad40addceb16caddb8bacf736e0be5960536394b5d7879a9b8243f199ae85c57"
+    },
+    {
+      "lance": false,
+      "champion": "brakk",
+      "slot": 3,
+      "action": "brk_final",
+      "trace": [],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Demolición final",
+      "sceneHash": "df9b1f1035f47eccbfe8957285e339e781e0ed1a4eb38b355dfdf98eacbfd89c"
+    }
+  ],
+  "errors": []
+}

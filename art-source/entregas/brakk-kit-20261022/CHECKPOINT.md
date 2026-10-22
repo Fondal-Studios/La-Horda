@@ -1,3 +1,7 @@
+# Actualización posterior: corrección agrupada01
+
+Leer [correccion-01/CHECKPOINT.md](correccion-01/CHECKPOINT.md) antes de retomar. Primera pasada e historial conservados debajo. Estado EN_CORRECCION/NO_INTEGRAR.
+
 # Brakk — primera pasada B117/B118/B119
 
 22/10/2026. Rama art/brakk-kit-first-pass-20261022, base main 6334ff40b6514808ef0fe00b50bec15e19f10c25. Retomado el cierre remoto de Veyra PR196 head0185b9d9a0dbed5d649371ba2d3302961800ce2b. No hubo interrupción sin cierre detectada. No había otra rama/PR de producción activa de Brakk en la consulta inicial.

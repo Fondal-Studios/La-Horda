@@ -39,8 +39,7 @@ const OUT=path.resolve(process.env.OUT||'art-source/entregas/brakk-kit-20261022'
    check('crisp alpha '+name,soft===0&&opaque>0,{soft,opaque});exports.push({name,art,theme,size,cell:[b.w,b.h],frames:b.n,png:b.cv.toDataURL()});}
   check('native painting leaves combat RNG unchanged',randomCalls===0);Math.random=rnd;
   const plain=sfaBake('nova','siege',64),legacy=sfaBakeNova(sfaTintTheme(sfaTheme('siege'),sfaArenaKey()),64).toCanvas();check('legacy siege nova pixels unchanged',plain.cv.toDataURL()===legacy.toDataURL());
-  const b=sfaBake('beam','brakk_build',12);const f=(t)=>Math.floor(t/70)%b.n;
-  observations.push({component:'A-FX-brakk-h1',state:'EN_CORRECCION',finding:'El montaje del muro usa la fase global animNow del renderer de haces; no arranca necesariamente por anticipación0.',reproduced:f(1000)!==f(1400),phaseAt1000:f(1000),phaseAt1400:f(1400),next:'En lote común asociar fase de montaje al tiempo del evento sin cambiar el bucle de proyectiles ni la duración mecánica.'});
+  observations.push({component:'A-FX-brakk-h1',state:'EN_CORRECCION',finding:'La fase se verifica sobre sfaDrawOne real con tools/vfx/verify-brakk-build-phase.js; el cálculo histórico animNow/70 ya no representa este tema.',next:'Completar gate visual/skins/contraste específico y CI antes de aprobar el componente.'});
   for(const lite of [false,true]){JUICE.reduceFx=lite;sfaReset();for(let i=0;i<100;i++)old('burst','brakk_deploy',player.x,player.y,45,0,620);check('pool bounded reduceFx='+lite,sfaPool.length<=(lite?16:40),sfaPool.length);}
   return{checks,observations,exports};
  });
