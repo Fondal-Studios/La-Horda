@@ -42,3 +42,11 @@ NODE_PATH=/ruta/node_modules CHROMIUM_PATH=/ruta/chromium node tools/vfx/test-de
 ```
 
 Antes de merge exigir diff real, revisión visual integral, pruebas necesarias, head SHA vigente, todos los checks/workflows aplicables y base/conflictos. Mantener borrador NO_INTEGRAR mientras contenga FIX. No asumir aprobación de otro SHA ni despliegue por estar en GitHub. Recuperar este checkpoint remoto ante interrupción; no depender del disco.
+
+## Cierre remoto 22/10/2026
+
+Producción guardada en49dfb32611f58a8b4367fa39f3e890c9f85494c5; [PR198 borrador](https://github.com/Fondal-Studios/La-Horda/pull/198). Verificados51 archivos del diff remoto contra hashes Git locales, sin diferencias. El alcance runtime sigue limitado a tres archivos SFA. main permanece6334ff40b6514808ef0fe00b50bec15e19f10c25. No hubo merge ni publicación.
+
+Consulta de CI del head de producción:17 checks y siete workflows pendientes/en curso. Registro en tests/remote-production-audit.json. Este cierre documental producirá otro head: no hereda aprobación y hay que consultar todos los checks del SHA vigente. No esperar CI para iniciar Aelith; mantener NO_INTEGRAR por los tres FIX independientemente del resultado remoto.
+
+Próxima acción exacta: recuperar este checkpoint y CORRECTION_BATCH.json de la rama remota art/morveth-kit-first-pass-20261022 en Fondal-Studios/La-Horda; leer main/PR actuales y abrir una rama independiente para Aelith normal B105/B106/B107. Auditar ecos, fractura y aceleración reales antes de producir. Conservar UF y PR191. No depender de archivos locales ni repetir Morveth. Si hay un cierre posterior, ese cierre manda.

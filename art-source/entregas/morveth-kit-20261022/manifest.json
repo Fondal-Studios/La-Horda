@@ -33,8 +33,8 @@
   "next": "Aelith normal B105/B106/B107; preserve PR191",
   "files": {
     "art-source/entregas/morveth-kit-20261022/CHECKPOINT.md": {
-      "sha256": "3ddad9214d6b7a951ccbe96dc68f2690c5942fb277c7ec70f36f2182fa67072a",
-      "bytes": 5403
+      "sha256": "ccbf6df1f0f43548fed7178dc06cb0d5732b242d5ba1876c9d0935bea706578c",
+      "bytes": 6596
     },
     "art-source/entregas/morveth-kit-20261022/atlas-preview.png": {
       "sha256": "79b8d1b58c46fbd8b6ef96a32a175bc47d519262d39650806dacb450993d7867",
@@ -229,9 +229,16 @@
       "bytes": 8672
     },
     "docs/production/CORRECTION_BATCH.json": {
-      "sha256": "0d6ff7c4a6efd6ebf221cc2f2cbcc77fd1b26de57b8e663b4f79961adede69cd",
-      "bytes": 15378
+      "sha256": "88d81529ec3ea0f0fbbf928111aebabd9f2425f21c565ae40984ad8d731fe66b",
+      "bytes": 15639
+    },
+    "art-source/entregas/morveth-kit-20261022/tests/remote-production-audit.json": {
+      "sha256": "d2aa0187828703f17321accd7f788692bfaf1668c1bf7701066c733429e3b523",
+      "bytes": 3138
     }
   },
-  "hashPolicy": "Manifest excludes itself; closure recomputes affected hashes."
+  "hashPolicy": "Manifest excludes itself; closure recomputes affected hashes.",
+  "pr": 198,
+  "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5",
+  "closure": "Remote first pass saved; next Aelith normal; no merge/deployment"
 }
