@@ -14,36 +14,37 @@
   kvbDefMotif('so_grape', 7, 7, kvbBmp(['..ll...', '.pppp..', 'ppPpp..', '.pppPp.', '..pppp.', '...pp..'], {l: '#6fae4f', p: '#6b1f38', P: '#d46a86'}));
   kvbDefMotif('so_spark', 5, 5, kvbBmp(['..y..', '..y..', 'yywyy', '..y..', '..y..'], {y: '#e8c76a', w: '#ffffff'}));
 
-  // Receta propia: mancha lobulada y gotas; el contorno del charco no sustituye
-  // el premarcado circular de alcance. Paleta de vino estable en cada arena.
+  // Derrame asimétrico: curvas de líquido, sin cinco puntas ni sello radial.
+  // Mantiene el premarcado/radio mecánico. El tinte de arena conserva el burdeos.
   const winePaint = (idle, burst) => (g, q, S) => {
     const c = S / 2, R = c - 3, spread = idle ? .94 : .25 + .75 * kvbEase(Math.min(1, q / .32));
     const fade = idle ? 1 : Math.max(0, 1 - Math.max(0, q - .48) / .52);
-    const pts = [];
-    for(let i = 0; i < 32; i++){
-      const a = i * Math.PI / 16, lobe = .69 + .16 * Math.sin(a * 5 + .8) + .07 * Math.cos(a * 9);
-      pts.push([c + Math.cos(a) * R * spread * lobe, c + Math.sin(a) * R * spread * lobe]);
-    }
-    kvbLayer(g, S, Math.min(KVB_FILL_CAP, .22 * fade), lg => kvbPoly(lg, pts, SO[1]));
-    kvbLayer(g, S, fade, lg => {
-      kvbPoly(lg, pts, null, SO[0], 3); kvbPoly(lg, pts, null, SO[3], 1);
-      for(let i = 0; i < 7; i++){
-        const a = i * .8976 + .25, d = R * spread * (.55 + .31 * kvbHash(i, 19));
-        const x = c + Math.cos(a) * d, y = c + Math.sin(a) * d;
-        kvbDisc(lg, x, y, 1.8, SO[0]); kvbDisc(lg, x, y, 1, SO[3]);
+    const fill = kvbTintCol(SO[1], .30), rim = kvbTintCol(SO[3], .35);
+    const outline = lg => {
+      const r=R*spread, p=(x,y)=>[c+x*r,c+y*r];
+      lg.beginPath();lg.moveTo(...p(-.63,-.20));
+      for(const b of [
+        [-.72,-.54,-.38,-.68,-.10,-.53], [.07,-.58,.27,-.76,.42,-.58],
+        [.56,-.47,.33,-.30,.54,-.20], [.89,-.11,.78,.14,.55,.18],
+        [.43,.24,.63,.46,.38,.56], [.13,.69,.03,.39,-.15,.43],
+        [-.44,.72,-.69,.48,-.56,.25], [-.78,.23,-.84,-.06,-.63,-.20]
+      ])lg.bezierCurveTo(...p(b[0],b[1]),...p(b[2],b[3]),...p(b[4],b[5]));
+      lg.closePath();
+    };
+    kvbLayer(g,S,Math.min(KVB_FILL_CAP,.16*fade),lg=>{outline(lg);lg.fillStyle=fill;lg.fill();});
+    kvbLayer(g,S,fade,lg=>{
+      outline(lg);lg.strokeStyle=SO[0];lg.lineWidth=2.2;lg.stroke();
+      outline(lg);lg.strokeStyle=rim;lg.lineWidth=1;lg.stroke();
+      for(const [x,y] of [[-.87,-.23],[.70,-.42],[.86,.18],[.32,.78],[-.61,.65],[-.88,.34]]){
+        const px=c+x*R*spread,py=c+y*R*spread;
+        kvbDisc(lg,px,py,1.8,SO[0]);kvbDisc(lg,px,py,1,rim);
       }
-      if(idle){ // pequeñas burbujas de fermentación, sin otro anillo concéntrico
-        for(let i = 0; i < 3; i++){
-          const a = i * 2.094, d = R * .35, bob = Math.sin(q * 6.2832 + i) * 1.5;
-          kvbCircle(lg, c + Math.cos(a) * d, c + Math.sin(a) * d + bob, 2, SO[3], 1);
-        }
-      }
-      if(burst && q > .15 && q < .7){ // duelas angulares, diferentes de una onda mágica
-        for(let i = 0; i < 6; i++){
-          const a = i * 1.0472 + .2, d = R * spread * .8, x = c + Math.cos(a) * d, y = c + Math.sin(a) * d;
-          kvbLine(lg, x, y, x - Math.cos(a) * 5, y - Math.sin(a) * 5, '#2d1b18', 3);
-          kvbLine(lg, x, y, x - Math.cos(a) * 5, y - Math.sin(a) * 5, '#c99a57', 1);
-        }
+      if(idle)for(const [x,y,i] of [[-.25,-.18,0],[.24,.20,1],[.10,-.38,2]])
+        kvbCircle(lg,c+x*R,c+y*R+Math.sin(q*6.2832+i)*1.5,2,rim,1);
+      if(burst&&q>.15&&q<.7)for(let i=0;i<6;i++){
+        const a=i*1.0472+.2,d=R*spread*.8,x=c+Math.cos(a)*d,y=c+Math.sin(a)*d;
+        kvbLine(lg,x,y,x-Math.cos(a)*5,y-Math.sin(a)*5,'#2d1b18',3);
+        kvbLine(lg,x,y,x-Math.cos(a)*5,y-Math.sin(a)*5,kvbTintCol('#c99a57',.25),1);
       }
     });
   };
@@ -54,9 +55,11 @@
   kvbDefDecal('so_toast', 10, (g, q, S) => {
     const c = S / 2, u = S / 24, lift = Math.sin(Math.min(1, q / .65) * Math.PI / 2) * 3;
     const y = c - lift * u, fade = q < .65 ? 1 : (1 - q) / .35;
+    const cup = [[c-6*u,y-6*u],[c+6*u,y-6*u],[c+4*u,y],[c,y+2*u],[c-4*u,y]];
+    // Vidrio abierto y vino trameado: la copa no oculta al enemigo bajo el brindis.
+    kvbLayer(g,S,.18*fade,lg=>kvbPoly(lg,cup,kvbTintCol('#923951',.30)));
     kvbLayer(g, S, fade, lg => {
-      const cup = [[c-6*u,y-6*u],[c+6*u,y-6*u],[c+4*u,y],[c,y+2*u],[c-4*u,y]];
-      kvbPoly(lg, cup, '#923951', '#2a0814', 3*u);
+      kvbPoly(lg, cup, null, '#2a0814', 3*u);
       kvbPoly(lg, cup, null, '#e8c76a', u);
       kvbLine(lg,c-4*u,y-4*u,c+4*u,y-4*u,'#ffd2dc',u);
       kvbLine(lg,c,y+2*u,c,y+6*u,'#2a0814',3*u);
