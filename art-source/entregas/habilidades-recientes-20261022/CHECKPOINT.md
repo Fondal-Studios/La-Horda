@@ -47,3 +47,10 @@ PLAYWRIGHT_MODULE=/ruta/playwright CHROMIUM_PATH=/ruta/chromium MOBILE=1 ONLY=so
 ```
 
 Para reproducir before usar un checkout separado de la base indicada con el mismo arnés. No asumir persistencia del disco local. PR191–194 y PR166 conservados; Myla caída PR190 y Guerrero PR187 no se regeneraron. El inventario completo del proyecto sigue abierto.
+
+## Cierre remoto verificado
+
+PR195: https://github.com/drmarianojimenez94-sudo/La-Horda/pull/195 (borrador).
+Produccion: 6a288654ac71f2b7faa63aeeed3fc6ae37874a82.
+Diff remoto verificado: 65 archivos, solo dos de runtime visual; restantes son recetas, arneses y evidencia. Los 65 blobs coinciden con los hashes Git locales. CI aun en curso al cerrar, no se afirma PASS de CI. FIX impide merge aunque termine CI.
+Este cierre modifica solo registro y hashes; retomar head actual de PR195. Proximo trabajo: Veyra B226/B227/B228, no otra iteracion de Solciju.
