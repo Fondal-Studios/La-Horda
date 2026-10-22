@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "updated": "2026-10-22",
+  "policy": "First-pass champion batches; save failures and move forward. Run a grouped correction pass later; never merge failed or unvalidated assets.",
+  "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
+  "entries": [
+    {
+      "block": "B005",
+      "component": "myla.cuerpo.lanzar",
+      "pr": 192,
+      "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-02",
+      "frames": [
+        11
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "ILUSTRACION: suave0.429 ruido75"
+      ],
+      "next": "Redraw only recovery11; preserve0-10 exactly; repeat canonical detector and renderer."
+    },
+    {
+      "block": "B007",
+      "component": "A-FX-aelith-ult",
+      "pr": 191,
+      "source": "art-source/entregas/bloques/B007_aelith/revision-01",
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Dial lacks exactly13 marks",
+        "Pulse effects overlap neighboring cells"
+      ],
+      "next": "Correct dial/spacing in grouped VFX pass, then export and test runtime timing."
+    },
+    {
+      "block": "B108",
+      "component": "A-FX-aurelia-h1",
+      "source": "art-source/entregas/bloques/B008_aurelia/primera-pasada-01",
+      "sheet": "source-prism.png",
+      "sourceSha256": "24c0c0be5f19c62d90b9b453c725b0aa093da0d7be2d6122c80f9b5f0ba6ea4a",
+      "frames": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "CELL_EDGE_CONTACT; node bases too close to source row boundary"
+      ],
+      "next": "Reframe affected source cells without clipping light or individually scaling the animation; preserve original."
+    },
+    {
+      "block": "B008",
+      "component": "A-FX-aurelia-ult",
+      "source": "art-source/entregas/bloques/B008_aurelia/primera-pasada-01",
+      "sheet": "source-cathedral.png",
+      "sourceSha256": "5372060ef473c44ad7ae7302898776dd7b09ca539a34b58d4dbaf43a4b39ab53",
+      "frames": [
+        17,
+        18,
+        19,
+        20,
+        23,
+        24,
+        29
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "EMPTY_FRAME23/24/29",
+        "CELL_EDGE_CONTACT17/18/19/20",
+        "Only two connecting pointed arches clearly visible; third connection must follow three-node geometry",
+        "Loop/dissipation order and footprint need temporal review"
+      ],
+      "next": "Complete missing poses and three-node architecture in grouped correction pass; preserve open center, no destructive crop."
+    }
+  ],
+  "pendingVerificationNotFailures": [
+    "Aurelia basic/refraction/luminal-step: generated, no empty/edge flags, still need final-scale readability, proper layer split and runtime tests",
+    "Myla hurt: visual continuity review pending",
+    "Libertador PR166: specialized61-frame integration pending, do not use generic36 replacement"
+  ],
+  "nextProduction": "Axiom B009; reconcile existing procedural effects, sources, body and skins before producing."
+}
