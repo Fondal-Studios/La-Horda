@@ -1,0 +1,17 @@
+{
+  "block": "B005",
+  "state": "REVIEW_NOT_INSTALLED",
+  "newPoses": 28,
+  "items": [
+    "myla.cuerpo.lanzar",
+    "myla.cuerpo.golpe",
+    "myla.cuerpo.muerte"
+  ],
+  "native": "28/28 numerical PASS; runtime scale pending",
+  "visual": "Owner liked source1; back-view wand hand continuity needs review",
+  "existingUltimate": "assets/sprites/champions/myla/berrinche.png; preserved",
+  "installed": false,
+  "next": "Review hand consistency and runtime scale; integrate only validated base supplements, preserving skins and Berrinche",
+  "build": "build.py",
+  "nativeCheck": "check-native.js"
+}
