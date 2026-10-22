@@ -31,3 +31,9 @@ node tools/vfx/verify-veyra-pact-owner.js
 node tools/vfx/veyra-pact-online.js
 PARITY_OUT=/tmp/veyra-parity.json node tools/vfx/parity-veyra-pact.js
 ```
+
+## Cierre remoto verificado
+
+Producción de esta corrección: fbe79306b46cc5829ba5b30ee06581da5cf2c6a5. Todos los blobs de la entrega fueron cotejados contra GitHub. Ver REMOTE_CLOSURE.json: 17 checks y7 workflows del SHA de producción pendientes/en curso al consultar; no es aprobación del nuevo commit de cierre. Rama y PR siguen abiertos como borrador.
+
+Lote compañero: Brakk PR197 producción c4b3aaf754a9cd315ae214162a181ee8afa1210c; Veyra PR196 producción fbe79306b46cc5829ba5b30ee06581da5cf2c6a5. Retomar los heads frescos de ambos. No hay merge ni publicación verificada.
