@@ -302,7 +302,9 @@
       "defects": [
         "La teja de montaje usa animNow global del renderer beam: a t1000 inicia en3 y a t1400 en9, no en anticipación0."
       ],
-      "next": "En lote común reproducir el montaje según edad del evento, conservando orientación, radio y tiempo mecánico del muro; no cambiar fase global de los proyectiles existentes."
+      "next": "En lote común reproducir el montaje según edad del evento, conservando orientación, radio y tiempo mecánico del muro; no cambiar fase global de los proyectiles existentes.",
+      "pr": 197,
+      "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b"
     },
     {
       "block": "B118",
@@ -315,7 +317,9 @@
       "defects": [
         "Los cuatro soportes se leen como flechas diagonales en la revisión de atlas; falta articulación/pie de apoyo que los haga claramente ingeniería de asedio."
       ],
-      "next": "En lote común convertir puntas en pies articulados con remaches; mantener centro abierto, alcance y la torreta existente. Revisar en escenario móvil a escala real."
+      "next": "En lote común convertir puntas en pies articulados con remaches; mantener centro abierto, alcance y la torreta existente. Revisar en escenario móvil a escala real.",
+      "pr": 197,
+      "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b"
     }
   ],
   "pendingVerificationNotFailures": [

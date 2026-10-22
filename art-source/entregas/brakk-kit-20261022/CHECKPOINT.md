@@ -21,7 +21,7 @@ El runtime toca solo tres archivos SFA: engine.js acepta receta opcional por tem
 - brakk-functional.js:81 PASS. Paridad SFA on/off: combate idéntico y29232 llamadas RNG en ambos.
 - online.js:23 PASS en cinco parejas. brakk-online.js:14 PASS; los cuatro temas nuevos llegan por el relay real desde anfitrión al invitado táctil, con argumentos registrados de ambos. Esto no equivale a revisión visual en dispositivo físico.
 - engine-off/ conserva fallback sin eventos SFA y sin errores.
-- Legibilidad estricta general en seis arenas iniciada; resultado en cierre posterior. Su alcance cubre decales nova/zone/cone y KVB; no sustituye inspección visual de los nuevos burst/beam/aura.
+- Legibilidad estricta general PASS en seis arenas; log final y alcance en cierre posterior. Su alcance cubre decales nova/zone/cone y KVB; no sustituye inspección visual de los nuevos burst/beam/aura.
 - Revisión inicial: soldadura en X y clavos distinguibles; muro necesita sincronización de fase, soportes de torreta necesitan forma menos similar a flechas. Skins completas, contraste móvil final y coste de warmup pendientes. No marcar PASS visual integral.
 
 Estado global EN_CORRECCION / NO_INTEGRAR. Ningún componente VALIDADO ni INTEGRADO_MAIN en esta entrega. Publicación pública NO_VERIFICADA. Mantener borrador aunque CI pase. No rebajar gates.
@@ -39,3 +39,13 @@ PLAYWRIGHT_MODULE=/ruta/playwright CHROMIUM_PATH=/ruta/chromium ONLY=brakk node 
 ```
 
 No depender de este disco para reanudar: usar el checkpoint de la rama remota. Antes de integrar revisar diff real, skins/Art Gate, head SHA, checks/workflows aplicables y conflictos. Las ramas de Veyra/Solciju no se incorporan aquí.
+
+## Cierre remoto 22/10/2026
+
+Producción guardada en a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b; PR197 borrador: https://github.com/drmarianojimenez94-sudo/La-Horda/pull/197 . Se cotejaron49 archivos del diff remoto con el inventario local; todos los blobs coincidieron con su hash Git. main permanecía en6334ff40b6514808ef0fe00b50bec15e19f10c25. Sin merge ni publicación.
+
+Gate estricto general finalizado con PASS en seis arenas,4.176 mediciones, sin incumplimientos y sin errores de página. Log completo en tests/decal-legibility.txt. El alcance de ese gate sigue siendo el descrito arriba: no certifica automáticamente la forma de soportes/beam/aura ni su fase.
+
+CI del head de producción:14 checks y seis workflows, en curso/cola al cerrar. Consultar el head vigente y todos sus resultados; este cierre documental no hereda aprobación de otro SHA. B117/B118 siguen FIX y B119 no tiene aprobación visual integral. NO_INTEGRAR.
+
+Próxima acción exacta: partir de main actualizado en rama independiente para Morveth, leer su kit SFA y objetos reales, guardar captura antes de editar, producir la primera pasada de B166/B167/B168 y registrar cada defecto sin rehacer ahora Brakk. Usar esta CORRECTION_BATCH.json remota como base para conservar los13 hallazgos previos. Si se detecta otro cierre posterior, ese cierre manda.
