@@ -1,0 +1,3 @@
+Generar hojaVFX La Horda Aelith, La hora imposible:30 celdas cuadradas independientes,6 columnas×5 filas, fondo transparente, sin textos/rejilla. Dial cenital violeta#5a4a8c, agujas ámbar#f0c070 y acentos blancos,13 marcas horarias en cada dial completo, centro abierto. Radio/pivote constantes y márgenes amplios. Fila1 anticipación6; fila2 loop6; filas3–4 tres pulsos de4 cuadros con saltos120grados y fractura final; fila5 disipación6. Pixel art nítido sin blur; no personajes ni portal.
+
+Resultado rechazado para integración por conteo de marcas y desborde entre celdas; no cambiar el brief para aprobarlo.

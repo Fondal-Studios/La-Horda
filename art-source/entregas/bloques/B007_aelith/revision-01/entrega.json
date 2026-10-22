@@ -1,0 +1,27 @@
+{
+  "block": "B007",
+  "item": "A-FX-aelith-ult",
+  "state": "FIX_NO_INTEGRAR",
+  "source": "source.png",
+  "sha256": "309e29704b9b445b2230ba8840876e8ee7e86243755e8a77153ae62a455c3552",
+  "dimensions": [
+    1374,
+    1145
+  ],
+  "mode": "RGBA",
+  "layout": {
+    "columns": 6,
+    "rows": 5,
+    "candidateFrames": 30
+  },
+  "visualReview": "ASSISTED",
+  "issues": [
+    "La hoja no cumple13 marcas horarias: los diales muestran menos; corregir antes de aprobar.",
+    "Pulsos invaden margen de celdas vecinas; no cortar automáticamente para ocultar clipping.",
+    "El centro se llena durante pulsos; revisar legibilidad con enemigos y alpha en renderer."
+  ],
+  "next": "Reparar fuente con image_gen:13 marcas verificables, márgenes transparentes completos y radio/pivote constantes; después exportar232px y validar renderer. No regenerar Myla.",
+  "installed": false,
+  "runtimeTests": "NOT_RUN",
+  "mechanics": "Preservar tiempos reales de aelithUpdateObject; brief temporal desactualizado."
+}
