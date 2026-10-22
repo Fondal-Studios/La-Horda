@@ -452,7 +452,9 @@
         "El observador end muestra un estallido al cancelar el eco por muerte aunque no hubo segundo daño; reproducido."
       ],
       "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
-      "next": "Distinguir expiración con impacto de cancelación en host/invitado; preservar objeto y daño."
+      "next": "Distinguir expiración con impacto de cancelación en host/invitado; preservar objeto y daño.",
+      "pr": 199,
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d"
     },
     {
       "block": "B106",
@@ -480,7 +482,9 @@
         "La grieta se ve como una línea dentada demasiado fina a escala móvil; aún no tiene apertura/cierre longitudinal de150ms ni estado de arena lenta propio."
       ],
       "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
-      "next": "Revisar grosor/fragmentos y fase longitudinal en lote común; usar endpoints reales, mantener ancho mecánico52 y no convertirlo en haz liso."
+      "next": "Revisar grosor/fragmentos y fase longitudinal en lote común; usar endpoints reales, mantener ancho mecánico52 y no convertirlo en haz liso.",
+      "pr": 199,
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d"
     },
     {
       "block": "B107",
@@ -510,7 +514,9 @@
         "Estela corta y tenue en comparación móvil; skins y perfiles de movimiento pendientes."
       ],
       "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
-      "next": "Lote común: fase visual relativa al buff/deuda real, cierre de siluetas y contraste; validar todos los receptores/skins sin tocar velocidad ni armadura."
+      "next": "Lote común: fase visual relativa al buff/deuda real, cierre de siluetas y contraste; validar todos los receptores/skins sin tocar velocidad ni armadura.",
+      "pr": 199,
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d"
     }
   ],
   "pendingVerificationNotFailures": [

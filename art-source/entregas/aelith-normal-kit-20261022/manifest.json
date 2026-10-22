@@ -34,12 +34,12 @@
   ],
   "files": {
     "art-source/entregas/aelith-normal-kit-20261022/CHECKPOINT.md": {
-      "sha256": "68ff8b9da262672e9e924e86c835f6b55ec4b5cf339d572d4a84d42deaaa339c",
-      "bytes": 6059
+      "sha256": "53c27fa8eb22baa66aab570bf67418c12037eeccb6969479e9f4c2a355b27d58",
+      "bytes": 7831
     },
     "art-source/entregas/aelith-normal-kit-20261022/atlas-preview.png": {
-      "sha256": "f63d245036f1bf7f557060272b6821e6fc9ab359d8d1e78734cdb4ee8ae7a0e1",
-      "bytes": 22680
+      "sha256": "1fcb3dab1891b3765be2847fd9cb740e958b6c8c022bf3313dea83cd5092dd65",
+      "bytes": 24169
     },
     "art-source/entregas/aelith-normal-kit-20261022/moving-comparison.png": {
       "sha256": "f832faf128f3221fed968f66698c74c6ab13700d55dc98c6346a30bb276879e1",
@@ -50,8 +50,8 @@
       "bytes": 2180
     },
     "art-source/entregas/aelith-normal-kit-20261022/FIRST_PASS_RECONCILIATION.json": {
-      "sha256": "06f222b0e4e8b9574218a819edf6739939eaa997ace5a4e55eba2e2fb712a954",
-      "bytes": 1640
+      "sha256": "f85f7f09a9fbe7687577c75c6e28877dc7003b6580243eceae33d6f257335548",
+      "bytes": 1765
     },
     "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md": {
       "sha256": "1b1a1df16eee0926a00615dc5e9cfee3adcf49ba8b024fee22100f025953f54f",
@@ -290,9 +290,24 @@
       "bytes": 8924
     },
     "docs/production/CORRECTION_BATCH.json": {
-      "sha256": "95cde316951841b449361ac7008526a5b5d8396af023a7689bc1bc40cf10ce71",
-      "bytes": 18759
+      "sha256": "aa6db24f4daa443032fedb0d38baf839b0f16d4b7b7e670d3d32d41d8c04578e",
+      "bytes": 19020
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/tests/remote-production-audit.json": {
+      "sha256": "b9f12428e7563f0baf337a7b897c60915d280c2b92bf63aa6ee8f6248a787c39",
+      "bytes": 3086
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/tests/decal-legibility.txt": {
+      "sha256": "86462f1af13757592537fa42b0c8f4297a6c6e499aacdd95f31385d2e21e4d14",
+      "bytes": 1733
+    },
+    "art-source/entregas/aelith-normal-kit-20261022/tests/online-general-retry.json": {
+      "sha256": "182a8b80058709c2de285574ab91d61fd9e2c873ca05d71ee454fc424e7fbff0",
+      "bytes": 3680
     }
   },
-  "hashPolicy": "Manifest excludes itself; closure recomputes changed files."
+  "hashPolicy": "Manifest excludes itself; closure recomputes changed files.",
+  "pr": 199,
+  "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d",
+  "closure": "Remote first pass saved; next grouped correction of recent-five kits; no merge/deployment"
 }

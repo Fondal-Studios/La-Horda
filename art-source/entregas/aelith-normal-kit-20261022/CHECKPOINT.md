@@ -41,3 +41,13 @@ NODE_PATH=/ruta/node_modules CHROMIUM_PATH=/ruta/chromium node tools/vfx/test-de
 ```
 
 Para reproducir antes/después, usar worktrees independientes del commit base y candidato con el mismo arnés; no servir otra carpeta por error. El arnés usa servidor aislado. Ante interrupción recuperar cierre remoto, no este disco; si existe un cierre posterior, ese manda.
+
+## Cierre remoto 22/10/2026
+
+Producción0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d, [PR199 borrador](https://github.com/Fondal-Studios/La-Horda/pull/199). Se verificaron66 archivos del diff remoto contra hashes Git locales, sin diferencias; tres archivos runtime SFA. main permanece6334ff40b6514808ef0fe00b50bec15e19f10c25. No hubo merge ni publicación.
+
+Legibilidad estricta final PASS:seis arenas,4122 mediciones,0 errores, umbrales originales. Log tests/decal-legibility.txt. Online general repetido sin modificar prueba/runtime:23/23 PASS; el primer22/23 se conserva en tests/online-general-first-attempt.json y el nuevo resultado en tests/online-general-retry.json. El fallo intermitente de snapshot de torreta Brakk no se reprodujo; no se afirma causa raíz resuelta. No afecta la clasificación NO_INTEGRAR ni habilita merge.
+
+CI del head de producción:17 checks y siete workflows pendientes/en curso; registro tests/remote-production-audit.json. El cierre cambia el head documental: volver a consultar todo por el SHA vigente, sin heredar aprobaciones. Skins, contraste específico, coste de snapshots/warmup y Art Gate integral pendientes. UF conserva sus fuentes y capturas base; la maestría reprise reutiliza el eco normal, por lo que su combinación necesita revisión antes de integrar.
+
+Próxima acción exacta: leer este cierre remoto y CORRECTION_BATCH.json (19 entradas), cotejar nuevos commits de PR195–199, mantener PR191 aparte y preparar lote grueso de corrección de habilidades recientes. Priorizar enlaces/temporizadores/cancelaciones de los cinco kits antes de una revisión visual conjunta. Conservar fuentes/IDs/hashes y registrar cada componente; no cerrar el juego ni todo un campeón por este lote. Si hay un cierre posterior, ese manda.
