@@ -1,3 +1,5 @@
+> Cierre posterior: [correccion-01/CHECKPOINT.md](correccion-01/CHECKPOINT.md). Historial de primera pasada debajo; el estado vigente sigue EN_CORRECCION / NO_INTEGRAR.
+
 # Aelith normal — primera pasada B105/B106/B107
 
 22/10/2026. Rama art/aelith-normal-kit-first-pass-20261022, base main6334ff40b6514808ef0fe00b50bec15e19f10c25. Repositorio canónico Fondal-Studios/La-Horda, ID1379488490. Retomado checkpoint remoto Morveth PR198 head7ddcc511b7554495e933a70aafab94bdc1951c9b y cola de16 hallazgos. No falta de cierre detectada; PR191 es solo definitiva y se preserva. Sin otro PR de habilidades normales de Aelith al comenzar.

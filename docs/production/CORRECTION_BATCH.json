@@ -476,7 +476,9 @@
         "pr": 199,
         "state": "EN_CORRECCION",
         "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01",
-        "technical": "Initial41 lifecycle checks PASS; network/visual/full gate pending. Preserve original defect history."
+        "sourceSha256": "78d7ebbe0f88ecf2c09e9c3634648a405fd6685e5826fff37ac1ae54d8a6ccee",
+        "technical": "41 lifecycle,27 kit,11 variants,31 relay,132 functional,23 general online PASS; SFA RNG29884 identical. TEST_ATTEMPTS preserves failures.",
+        "remaining": "Full visual gate, skins/arenas/specific contrast, warmup/performance and saturation/reentry. H3 grey/trail faint in mobile comparison. CI exact head pending."
       }
     },
     {
@@ -545,7 +547,9 @@
         "pr": 199,
         "state": "EN_CORRECCION",
         "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01",
-        "technical": "Initial41 lifecycle checks PASS; network/visual/full gate pending. Preserve original defect history."
+        "sourceSha256": "78d7ebbe0f88ecf2c09e9c3634648a405fd6685e5826fff37ac1ae54d8a6ccee",
+        "technical": "41 lifecycle,27 kit,11 variants,31 relay,132 functional,23 general online PASS; SFA RNG29884 identical. TEST_ATTEMPTS preserves failures.",
+        "remaining": "Full visual gate, skins/arenas/specific contrast, warmup/performance and saturation/reentry. H3 grey/trail faint in mobile comparison. CI exact head pending."
       }
     },
     {
@@ -569,7 +573,7 @@
     "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
-  "nextProduction": "Finish and close Aelith lifecycle correction01, then grouped silhouette/contrast failures; preserve PR191. No repeated first pass.",
+  "nextProduction": "Lote grueso de siluetas/contraste: Solciju, Brakk B118, Morveth B166/B167/B168 y Aelith B106/B107. Conservar correcciones técnicas probadas y fuentes originales; KVB RNG heredado de Veyra pendiente.",
   "groupedCorrectionCheckpoint": {
     "date": "2026-10-22",
     "productionCommits": {
@@ -577,6 +581,19 @@
       "veyra": "fbe79306b46cc5829ba5b30ee06581da5cf2c6a5"
     },
     "state": "EN_CORRECCION",
-    "next": "Aelith B105 cancellation/replacement + B107 buff clock/debt, then grouped silhouettes/contrast. KVB parity inherited failure remains gate."
+    "next": "Lote grueso de siluetas/contraste: Solciju, Brakk B118, Morveth B166/B167/B168 y Aelith B106/B107. Conservar correcciones técnicas probadas y fuentes originales; KVB RNG heredado de Veyra pendiente.",
+    "aelith": {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01",
+      "pr": 199,
+      "state": "EN_CORRECCION",
+      "technicalChecks": [
+        41,
+        27,
+        11,
+        31,
+        132,
+        23
+      ]
+    }
   }
 }
