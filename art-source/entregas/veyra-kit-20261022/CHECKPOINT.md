@@ -1,3 +1,7 @@
+# Actualización posterior: corrección agrupada01
+
+Leer [correccion-01/CHECKPOINT.md](correccion-01/CHECKPOINT.md) antes de retomar. Primera pasada e historial conservados debajo. Estado EN_CORRECCION/NO_INTEGRAR.
+
 # Veyra — primera pasada del kit normal
 
 22/10/2026. Base main 6334ff40b6514808ef0fe00b50bec15e19f10c25. Rama art/veyra-kit-first-pass-20261022. B226/B227/B228, conservando IDs originales. Estado global EN_CORRECCION / NO_INTEGRAR; ninguna integración en main ni publicación verificada.

@@ -85,11 +85,21 @@
     kvbEmit('vy_drop', 8, x, y, {ang, spread: 1.4, v0: 30, v1: 110, up: 30, grav: 300, l0: 340, l1: 560, scale: 1.3, shrink: true});
     kvbPart('vy_claw', ex, ey, {rot: ang + .2, dur: 360, scale: 2.2, layer: 't', fadeAt: .4}); kvbDecal('vy_dash_end', ex, ey, Math.max(28, r * 1.5), 520, {layer: 'g', alpha: .8});
   };
-  KVB_FX['veyra.pact'] = (x, y, r) => { kvbDecal('vy_pact', x, y - 42, 38, 760, {layer: 't', prio: true}); kvbEmit('vy_wisp', 7, x, y, {ring: 20, v0: 5, v1: 25, up: 70, l0: 520, l1: 800, scale: 1.3, flat: .6}); };
+  KVB_FX['veyra.pact'] = (x, y, r, ang, duration, ownerIndex) => {
+    kvbDecal('vy_pact', x, y - 42, 38, 760, {layer: 't', prio: true});
+    kvbEmit('vy_wisp', 7, x, y, {ring: 20, v0: 5, v1: 25, up: 70, l0: 520, l1: 800, scale: 1.3, flat: .6});
+    const h = Number.isInteger(ownerIndex) ? heroes[ownerIndex] : null;
+    if(!h || h.classKey !== 'veyra' || !h.alive || !(duration > 0)) return;
+    // Un solo latido por lanzamiento real; el pool limpia muerte, fin y reinicio.
+    for(let i=KVB.pool.length-1;i>=0;i--) if(KVB.pool[i].name==='vy_pact_idle' && KVB.pool[i].follow===h) KVB.pool.splice(i,1);
+    kvbDecal('vy_pact_idle', h.x, h.y+4, 30, Math.min(5000,duration), {follow:h,ofy:4,loop:true,fps:15,layer:'g',alpha:.9,fadeAt:1,prio:true});
+  };
   KVB_FX['veyra.final'] = (x, y, r) => { kvbDecal('vy_wound', x, y, r, 880, {layer: 'g'}); kvbEmit('vy_drop', 14, x, y, {ring: r * .5, v0: 50, v1: 160, up: 110, grav: 340, l0: 420, l1: 700, scale: 1.4, flat: .6}); kvbEmit('vy_wisp', 6, x, y, {ring: r * .4, v0: 5, v1: 30, up: 90, l0: 560, l1: 900, scale: 1.4, flat: .6}); };
   kvbBindQ5('vey_cut', 'veyra.cut'); kvbBindQ5('vey_dash', 'veyra.dash'); kvbBindQ5('vey_pact', 'veyra.pact'); kvbBindQ5('vey_final', 'veyra.final');
-  // Pacto de dolor: mientras dura la velocidad/armadura (temporizador real portSpeedTimer) un sello late bajo sus pies y sube vapor de sangre
-  kvbOverlay('veyra', (h, layer, t) => { if(layer === 'g' && h.portSpeedTimer > 0 && h.portSpeedBonus >= .24) kvbLoopDecal('vy_pact_idle', h.x, h.y + 4, 30, t, 800, {alpha: .9}); },
-    (h, dt) => { if(h.portSpeedTimer > 0 && h.portSpeedBonus >= .24 && kvbPulseEvery(h, 'wisp', 130, dt)) kvbPart('vy_wisp', h.x + kvbRR(-10, 10), h.y - 4, {vy: -46, dur: 520, scale: 1.1, layer: 't', shrink: true}); });
+  // Vapor solo mientras existe el latido propio, nunca por un buff de otro campeón.
+  kvbOverlay('veyra', null, (h, dt) => {
+    if(KVB.pool.some(e=>e.name==='vy_pact_idle' && e.follow===h && e.t<e.dur) && kvbPulseEvery(h,'wisp',130,dt))
+      kvbPart('vy_wisp',h.x+kvbRR(-10,10),h.y-4,{vy:-46,dur:520,scale:1.1,layer:'t',shrink:true});
+  });
   kvbBasic('veyra', VY, 'vy_drop');
 }

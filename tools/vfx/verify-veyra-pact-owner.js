@@ -1,0 +1,38 @@
+'use strict';
+const fs=require('node:fs'),H=require('../lib/serve');
+const OUT='art-source/entregas/veyra-kit-20261022/correccion-01';
+(async()=>{const site=await H.startSite(),browser=await H.launch();try{
+ const page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await H.goto(page,site.url);await H.waitFor(page,()=>typeof KVB_FX!=='undefined'&&assetsAllReady());
+ const checks=await page.evaluate(()=>{
+  const checks=[],check=(name,pass,details)=>checks.push({name,pass:!!pass,details});
+  netMatch=null;save.champions.veyra.unlocked=true;save.champions.veyra.level=60;save.champions.veyra.talents={nodes:{},mastery:null,masteryNodes:{}};
+  selectedClass='veyra';currentArena='bosque';startRun(2);state='menu';enemies=[];
+  const aura=h=>KVB.pool.filter(e=>e.name==='vy_pact_idle'&&e.follow===h);
+  const cast=(h=player,dur=1)=>veyraCast(h,h.cls.skills[2],false,10,1,dur);
+  kvbReset();kitBuff(allies[0],player,9000,{speed:.3,armor:.2});kvbOverlays('g');kvbOverlayUpdate(16);
+  check('foreign speed and armor do not start pact',aura(player).length===0&&KVB.pool.length===0);
+  const events=[],old=window.kvbFx;window.kvbFx=function(...a){events.push(a);return old.apply(this,a);};
+  cast();const event=events.find(e=>e[0]==='veyra.pact');
+  check('real cast owns numeric duration and recipient',event&&event[5]===3000&&event[6]===heroes.indexOf(player),event);
+  check('cast starts a single following aura',aura(player).length===1&&aura(player)[0].dur===3000);
+  player.x+=30;player.y+=10;kvbUpdate(100);
+  check('aura follows movement at foot offset',aura(player)[0].x===player.x&&aura(player)[0].y===player.y+4);
+  kvbUpdate(2899);check('aura alive before actual end',aura(player).length===1);
+  kvbUpdate(1);kvbOverlayUpdate(16);check('foreign longer buff cannot prolong pact',player.portSpeedTimer>0&&aura(player).length===0);
+  cast(player,2);check('duration modifiers respect original five second cap',aura(player)[0].dur===5000);
+  cast(player,.5);check('recast replaces rather than stacks aura',aura(player).length===1&&aura(player)[0].dur===1500);
+  player.alive=false;kvbUpdate(1);player.alive=true;kvbOverlayUpdate(16);
+  check('death removes aura and resurrection does not restore it',aura(player).length===0);
+  cast();kvbReset();kvbOverlayUpdate(16);check('reset removes all cast owned aura state',aura(player).length===0);
+  const twin={...player,x:player.x+2};heroes.push(twin);cast(twin);
+  check('overlapping same class heroes preserve exact owner',aura(twin).length===1&&aura(player).length===0);
+  kvbReset();old(...event);check('numeric replay restores original recipient',aura(player).length===1&&aura(twin).length===0);
+  kvbReset();old('veyra.pact',player.x,player.y,80,0,3000,-1);check('invalid owner does not guess nearest hero',aura(player).length===0&&aura(twin).length===0);
+  kvbReset();player.energy=0;player.cds[2]=1000;state='playing';const n=events.length;useSkill(2);state='menu';
+  check('blocked cast creates no aura or event',aura(player).length===0&&events.length===n);
+  window.kvbFx=old;return checks;
+ });
+ const status=errors.length||checks.some(c=>!c.pass)?'FAIL':'PASS';
+ fs.writeFileSync(OUT+'/ownership-tests.json',JSON.stringify({status,checks,errors},null,2)+'\n');console.log(JSON.stringify({status,checks,errors}));if(status==='FAIL')process.exitCode=1;
+ }finally{await browser.close();await site.close();}})().catch(e=>{console.error(e);process.exitCode=1;});
