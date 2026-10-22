@@ -27,3 +27,9 @@ node tools/vfx/verify-brakk-build-phase.js
 node tools/vfx/brakk-phase-online.js
 ONLY=brakk node tools/vfx/parity-skill-fx.js
 ```
+
+## Cierre remoto verificado
+
+Producción de esta corrección: c4b3aaf754a9cd315ae214162a181ee8afa1210c. Todos los blobs de la entrega fueron cotejados contra GitHub. Ver REMOTE_CLOSURE.json: 17 checks y7 workflows del SHA de producción pendientes/en curso al consultar; no es aprobación del nuevo commit de cierre. Rama y PR siguen abiertos como borrador.
+
+Lote compañero: Brakk PR197 producción c4b3aaf754a9cd315ae214162a181ee8afa1210c; Veyra PR196 producción fbe79306b46cc5829ba5b30ee06581da5cf2c6a5. Retomar los heads frescos de ambos. No hay merge ni publicación verificada.

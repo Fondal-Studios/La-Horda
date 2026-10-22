@@ -555,5 +555,14 @@
     "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
-  "nextProduction": "Continue grouped corrections: Aelith B105 cancellation/death/replacement and B107 event-relative haste/debt. Then grouped silhouettes/contrast for Solciju, Brakk B118, Morveth B166/B167/B168, Aelith B106/B107; preserve sources and PR191. Investigate inherited KVB toggle RNG mismatch before any Veyra merge."
+  "nextProduction": "Continue grouped corrections: Aelith B105 cancellation/death/replacement and B107 event-relative haste/debt. Then grouped silhouettes/contrast for Solciju, Brakk B118, Morveth B166/B167/B168, Aelith B106/B107; preserve sources and PR191. Investigate inherited KVB toggle RNG mismatch before any Veyra merge.",
+  "groupedCorrectionCheckpoint": {
+    "date": "2026-10-22",
+    "productionCommits": {
+      "brakk": "c4b3aaf754a9cd315ae214162a181ee8afa1210c",
+      "veyra": "fbe79306b46cc5829ba5b30ee06581da5cf2c6a5"
+    },
+    "state": "EN_CORRECCION",
+    "next": "Aelith B105 cancellation/replacement + B107 buff clock/debt, then grouped silhouettes/contrast. KVB parity inherited failure remains gate."
+  }
 }
