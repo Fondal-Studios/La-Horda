@@ -1,0 +1,260 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "no premature impact 800",
+      "pass": true
+    },
+    {
+      "name": "real expiry emits exactly once 800",
+      "pass": true
+    },
+    {
+      "name": "repeated updates and observer do not duplicate impact 800",
+      "pass": true
+    },
+    {
+      "name": "no premature impact 1600",
+      "pass": true
+    },
+    {
+      "name": "real expiry emits exactly once 1600",
+      "pass": true
+    },
+    {
+      "name": "repeated updates and observer do not duplicate impact 1600",
+      "pass": true
+    },
+    {
+      "name": "cancel without damage signal has no shatter: death",
+      "pass": true,
+      "details": {
+        "life": 0
+      }
+    },
+    {
+      "name": "cancel without damage signal has no shatter: fusion",
+      "pass": true,
+      "details": {
+        "life": 0
+      }
+    },
+    {
+      "name": "cancel without damage signal has no shatter: owner-removal",
+      "pass": true,
+      "details": {
+        "life": 0
+      }
+    },
+    {
+      "name": "cancel without damage signal has no shatter: cap-replacement",
+      "pass": true,
+      "details": {
+        "life": 0
+      }
+    },
+    {
+      "name": "cancel without damage signal has no shatter: snapshot-removal",
+      "pass": true,
+      "details": {
+        "life": 800
+      }
+    },
+    {
+      "name": "cancel without damage signal has no shatter: reset",
+      "pass": true,
+      "details": {
+        "life": 800
+      }
+    },
+    {
+      "name": "cancel without damage signal has no shatter: void",
+      "pass": true,
+      "details": {
+        "life": 0
+      }
+    },
+    {
+      "name": "normal cast still has initial impact",
+      "pass": true
+    },
+    {
+      "name": "cast plus real expiry has exactly two impacts",
+      "pass": true
+    },
+    {
+      "name": "haste owns full actual buff duration",
+      "pass": true
+    },
+    {
+      "name": "one revolution independent of global clock 1500 0",
+      "pass": true,
+      "details": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "one revolution independent of global clock 1500 0.25",
+      "pass": true,
+      "details": [
+        3,
+        3
+      ]
+    },
+    {
+      "name": "one revolution independent of global clock 1500 0.5",
+      "pass": true,
+      "details": [
+        6,
+        6
+      ]
+    },
+    {
+      "name": "one revolution independent of global clock 1500 0.999",
+      "pass": true,
+      "details": [
+        11,
+        11
+      ]
+    },
+    {
+      "name": "one revolution independent of global clock 3000 0",
+      "pass": true,
+      "details": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "one revolution independent of global clock 3000 0.25",
+      "pass": true,
+      "details": [
+        3,
+        3
+      ]
+    },
+    {
+      "name": "one revolution independent of global clock 3000 0.5",
+      "pass": true,
+      "details": [
+        6,
+        6
+      ]
+    },
+    {
+      "name": "one revolution independent of global clock 3000 0.999",
+      "pass": true,
+      "details": [
+        11,
+        11
+      ]
+    },
+    {
+      "name": "one revolution independent of global clock 6000 0",
+      "pass": true,
+      "details": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "one revolution independent of global clock 6000 0.25",
+      "pass": true,
+      "details": [
+        3,
+        3
+      ]
+    },
+    {
+      "name": "one revolution independent of global clock 6000 0.5",
+      "pass": true,
+      "details": [
+        6,
+        6
+      ]
+    },
+    {
+      "name": "one revolution independent of global clock 6000 0.999",
+      "pass": true,
+      "details": [
+        11,
+        11
+      ]
+    },
+    {
+      "name": "three equipped-body snapshots before debt",
+      "pass": true
+    },
+    {
+      "name": "real slowdown transition emits 800ms debt",
+      "pass": true
+    },
+    {
+      "name": "debt replaces only own haste clock",
+      "pass": true
+    },
+    {
+      "name": "debt retains and greys existing snapshots",
+      "pass": true
+    },
+    {
+      "name": "collapse advances ghost positions toward owner",
+      "pass": true,
+      "details": [
+        {
+          "x": -44,
+          "y": -140,
+          "alpha": 0.05
+        },
+        {
+          "x": -38,
+          "y": -140,
+          "alpha": 0.1
+        }
+      ]
+    },
+    {
+      "name": "debt remains until final millisecond",
+      "pass": true
+    },
+    {
+      "name": "debt removes trail at800ms",
+      "pass": true
+    },
+    {
+      "name": "debt transition emitted once",
+      "pass": true
+    },
+    {
+      "name": "numeric replay of recast cancels debt only for recipient",
+      "pass": true
+    },
+    {
+      "name": "recast does not stack clocks",
+      "pass": true
+    },
+    {
+      "name": "death never emits grey debt",
+      "pass": true
+    },
+    {
+      "name": "run reset clears snapshot memory",
+      "pass": true
+    },
+    {
+      "name": "debt atlas has crisp nonempty alpha",
+      "pass": true,
+      "details": {
+        "soft": 0,
+        "opaque": 394
+      }
+    }
+  ],
+  "debtAtlas": {
+    "width": 40,
+    "height": 56,
+    "frames": 12
+  },
+  "errors": []
+}

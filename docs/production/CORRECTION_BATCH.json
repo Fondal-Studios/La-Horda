@@ -289,7 +289,15 @@
       "next": "En lote común vincular la persistencia visual al pacto propio y a su dueño en host/invitado, sin cambiar duración ni buffs mecánicos. Probar múltiples Veyra, muerte, reset y buffs ajenos.",
       "sourceSha256": "41ab122f98c6ce7ad90d5b74450d7b1315411b180ac6857c42f5abfdedc2fd75",
       "pr": 196,
-      "productionCommit": "91735b7b42d75fb48e2e20587877b61bf883362c"
+      "productionCommit": "91735b7b42d75fb48e2e20587877b61bf883362c",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 196,
+        "path": "art-source/entregas/veyra-kit-20261022/correccion-01",
+        "technical": "14 ownership checks PASS; 21 actual relay checks PASS; 132 functional PASS; numeric caster/duration event owns aura; registered KVB network wrapper after late module load.",
+        "state": "EN_CORRECCION",
+        "remaining": "Full skins/arenas/contrast/warmup/re-entry and integral visual gate; inherited KVB on/off RNG mismatch; CI current head."
+      }
     },
     {
       "block": "B117",
@@ -304,7 +312,15 @@
       ],
       "next": "En lote común reproducir el montaje según edad del evento, conservando orientación, radio y tiempo mecánico del muro; no cambiar fase global de los proyectiles existentes.",
       "pr": 197,
-      "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b"
+      "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 197,
+        "path": "art-source/entregas/brakk-kit-20261022/correccion-01",
+        "technical": "20 real draw frame checks PASS; 14 actual relay checks PASS; 132 functional PASS; combat/RNG 29232 identical. Build-only event phase; nails and legacy loops unchanged.",
+        "state": "EN_CORRECCION",
+        "remaining": "Full skins/arenas/contrast/warmup and visual gate. B118 arrow supports remain FIX; do not merge whole workshop."
+      }
     },
     {
       "block": "B118",
@@ -454,7 +470,14 @@
       "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
       "next": "Distinguir expiración con impacto de cancelación en host/invitado; preservar objeto y daño.",
       "pr": 199,
-      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d"
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 199,
+        "state": "EN_CORRECCION",
+        "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01",
+        "technical": "Initial41 lifecycle checks PASS; network/visual/full gate pending. Preserve original defect history."
+      }
     },
     {
       "block": "B106",
@@ -516,7 +539,26 @@
       "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
       "next": "Lote común: fase visual relativa al buff/deuda real, cierre de siluetas y contraste; validar todos los receptores/skins sin tocar velocidad ni armadura.",
       "pr": 199,
-      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d"
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 199,
+        "state": "EN_CORRECCION",
+        "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01",
+        "technical": "Initial41 lifecycle checks PASS; network/visual/full gate pending. Preserve original defect history."
+      }
+    },
+    {
+      "block": "B228",
+      "component": "A-FX-veyra-kvb-rng-parity",
+      "pr": 196,
+      "state": "EN_CORRECCION",
+      "source": "art-source/entregas/veyra-kit-20261022/correccion-01",
+      "frames": [],
+      "defects": [
+        "KVB.off true/false consumes 29969/28804 Math.random calls. Reproduced identically at previous PR196 head and correction; full on/on and off/off snapshots match before/after. This is not a PASS."
+      ],
+      "next": "Trace inherited generic VFX Math.random paths with KVB toggled; preserve combat mechanics and thresholds. Keep failing evidence."
     }
   ],
   "pendingVerificationNotFailures": [
@@ -527,5 +569,14 @@
     "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
-  "nextProduction": "Morveth B166/B167/B168, luego Aelith normal B105/B106/B107. Brakk primera pasada guardada; no repetir B117/B118 hasta lote común. Conservar UF y Aelith PR191."
+  "nextProduction": "Finish and close Aelith lifecycle correction01, then grouped silhouette/contrast failures; preserve PR191. No repeated first pass.",
+  "groupedCorrectionCheckpoint": {
+    "date": "2026-10-22",
+    "productionCommits": {
+      "brakk": "c4b3aaf754a9cd315ae214162a181ee8afa1210c",
+      "veyra": "fbe79306b46cc5829ba5b30ee06581da5cf2c6a5"
+    },
+    "state": "EN_CORRECCION",
+    "next": "Aelith B105 cancellation/replacement + B107 buff clock/debt, then grouped silhouettes/contrast. KVB parity inherited failure remains gate."
+  }
 }

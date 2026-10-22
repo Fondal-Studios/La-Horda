@@ -307,14 +307,23 @@ function sfaPush(art, theme, x, y, r, ang, dur, bx, by, w, fi, arc, dl) {
   const span = art === 'beam' ? Math.max(Math.abs(bx - x), Math.abs(by - y)) + r : r * 2;
   if (typeof inView === 'function' && !inView(art === 'beam' ? (x + bx) / 2 : x, art === 'beam' ? (y + by) / 2 : y, Math.max(90, span / 2 + 30))) return;
   const cap = sfaLite() ? 16 : SFA_POOL_MAX;
+  // Auras de fase única: una secuencia vigente por tema y receptor, incluso al relanzar.
+  if (art === 'aura' && fi >= 0 && sfaTheme(theme).auraEventPhase) {
+    const family=sfaTheme(theme).auraFamily;
+    for (let i=sfaPool.length-1;i>=0;i--) {
+      const old=sfaPool[i],same=old.theme===theme || family && sfaTheme(old.theme)?.auraFamily===family;
+      if(old.art==='aura' && same && old.fi===fi) sfaPool.splice(i,1);
+    }
+  }
   if (sfaPool.length >= cap) { const i = sfaPool.findIndex(s => !s.ult && s.art !== 'zone'); sfaPool.splice(i < 0 ? 0 : i, 1); }
   sfaPool.push({art, theme, x, y, r: r || 60, ang: ang || 0, t: -(dl || 0), dur: dur || (art === 'nova' ? 720 : art === 'beam' ? 560 : art === 'cone' ? 520 : art === 'aura' ? 1200 : 460), bx: bx || 0, by: by || 0, w: w || 24, fi: fi === undefined ? -1 : fi, arc: arc || .85, ult: (dur || 0) >= 900});
 }
 // tejas del haz entre (ax,ay) y (bx,by): ancho w, opacidad alpha, espesor relativo thick (anticipación = fino, disipación = se afina)
-function sfaBeamTiles(g, theme, ax, ay, bx, by, w, alpha, thick) {
+function sfaBeamTiles(g, theme, ax, ay, bx, by, w, alpha, thick, phase) {
   const L = Math.hypot(bx - ax, by - ay); if (L < 4) return;
   const H = w < 18 ? 8 : w < 34 ? 12 : w < 56 ? 16 : 24, b = sfaBake('beam', theme, H); if (!b) return;
-  const sc = w / H, f = ((animNow / 70) | 0) % b.n, step = 16 * sc, n = Math.ceil(L / step);
+  const eventPhase = sfaTheme(theme).beamEventPhase && Number.isFinite(phase);
+  const sc = w / H, f = eventPhase ? Math.min(b.n-1,Math.max(0,Math.floor(phase*b.n))) : ((animNow / 70) | 0) % b.n, step = 16 * sc, n = Math.ceil(L / step);
   g.save(); g.translate(ax, ay); g.rotate(Math.atan2(by - ay, bx - ax)); g.globalAlpha = alpha;
   for (let i = 0; i < n; i++) { const wl = Math.min(step, L - i * step); g.drawImage(b.cv, f * 16, 0, 16 * (wl / step), H, i * step, -b.h * sc * thick / 2, wl, b.h * sc * thick); }
   g.restore();
@@ -339,13 +348,13 @@ const sfaDrawOne = (s, g) => {
     g.drawImage(b.cv, f * b.w, 0, b.w, b.h, -sc, -b.h / 2 * sc, b.w * sc, b.h * sc); g.restore();
   } else if (s.art === 'beam') {
     const dis = k > .62 ? (k - .62) / .38 : 0;
-    sfaBeamTiles(g, s.theme, s.x, s.y, s.bx, s.by, s.w, (k < .18 ? .45 : .95) * (1 - dis * .8), k < .18 ? .3 : 1 - dis * .75);
+    sfaBeamTiles(g, s.theme, s.x, s.y, s.bx, s.by, s.w, (k < .18 ? .45 : .95) * (1 - dis * .8), k < .18 ? .3 : 1 - dis * .75, k);
     if (k >= .12 && k < .6 && !calm && s.fi !== -2) { const q = sfaBake('burst', s.theme, 32); if (q) { const fb = Math.min(q.n - 1, (((k - .12) / .48) * q.n) | 0), D = Math.max(40, s.w * 1.8); g.globalAlpha = .95; g.drawImage(q.cv, fb * q.w, 0, q.w, q.h, s.bx - D / 2, s.by - D / 2, D, D); } }
   } else if (s.art === 'aura') {
     const b = sfaBake('aura', s.theme, 0); if (!b) return;
     const h = s.fi >= 0 && typeof heroes !== 'undefined' ? heroes[s.fi] : null, x = h ? h.x : s.x, y = h ? h.y : s.y;
     if (h && !h.alive) { s.t = s.dur; return; }
-    const f = ((animNow / 100) | 0) % b.n, a = Math.min(1, k * 10, (1 - k) * 5), sc = (s.r || 28) / 20;
+    const f = sfaTheme(s.theme).auraEventPhase ? Math.min(b.n-1,Math.max(0,Math.floor(k*b.n))) : ((animNow / 100) | 0) % b.n, a = Math.min(1, k * 10, (1 - k) * 5), sc = (s.r || 28) / 20;
     g.globalAlpha = a * .95; g.drawImage(b.cv, f * b.w, 0, b.w, b.h, x - b.w * sc / 2, y + 8 * sc - b.h * sc, b.w * sc, b.h * sc);
   }
   sfaStats.drawn++;

@@ -30,12 +30,37 @@ function aelithFxStrip(kind,T,art,size){
  }
  return S;
 }
-for(const kind of ['echo','fracture','haste'])sfaDefineTheme('aelith_'+kind,{...sfaThemes.time,bake:(T,art,size)=>aelithFxStrip(kind,T,art,size)});
+for(const kind of ['echo','fracture','haste'])sfaDefineTheme('aelith_'+kind,{...sfaThemes.time,auraEventPhase:kind==='haste',auraFamily:kind==='haste'?'aelith_clock':null,bake:(T,art,size)=>aelithFxStrip(kind,T,art,size)});
+// Reutiliza la receta de arena en gris lavanda, sin sobrescribir el atlas ámbar.
+sfaDefineTheme('aelith_debt',{...sfaThemes.time,auraEventPhase:true,auraFamily:'aelith_clock',pal:{o:'#27252f',a:'#504c59',b:'#aaa3b4',c:'#d2cbdc',d:'#77717f',e:'#b7b0c1'},bake:(T,art,size)=>aelithFxStrip('haste',T,art,size)});
 function aelithEchoFrame(o,n){return Math.min(n-1,Math.max(0,Math.floor((1-o.life/(o.maxLife||o.life))*n)));}
-SFA_OBJ.ael_echo={theme:'aelith_echo',end:'nova',endDur:520,draw:(o,r)=>{
+SFA_OBJ.ael_echo={theme:'aelith_echo',draw:(o,r)=>{
  const size=sfaBucket(r*2),b=sfaBake('zone','aelith_echo',size),f=aelithEchoFrame(o,b.n),D=r*2*size/(size-3);
  ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=.7;ctx.drawImage(b.cv,f*b.w,0,b.w,b.h,o.x-D/2,o.y-D/2,D,D);ctx.restore();
 }};
+// El fin gráfico nace de la llamada de impacto real, no de perder un objeto del snapshot.
+// Mantiene la llamada genérica y todo su RNG. Muerte, fusión, vacío o reemplazo no la emiten.
+(function(){
+ const update=aelithUpdateObject;
+ aelithUpdateObject=function(o,dt){
+  if(window.SFA_OFF || !o || o.kind!=='ael_echo')return update.apply(this,arguments);
+  const fx=qualityFiveFx;let impact=false,result;
+  qualityFiveFx=function(h,draw,...args){
+   if(h===o.owner && draw===kitFx && args[0]==='rune' && args[1]===o.x && args[2]===o.y)impact=true;
+   return fx.apply(this,arguments);
+  };
+  try{result=update.apply(this,arguments);}finally{qualityFiveFx=fx;}
+  if(impact)sfaRaw('nova','aelith_echo',o.x,o.y,o.r,{dur:520});
+  return result;
+ };
+ const hero=updatePortadorHero;
+ updatePortadorHero=function(h,dt){
+  const until=h.aelithDebtUntil||0,result=hero.apply(this,arguments);
+  if(!window.SFA_OFF && h.alive && !h.fused && heroes.includes(h) && until>0 && runElapsedMs>=until && h.aelithDebtUntil===0)
+   sfaRaw('aura','aelith_debt',h.x,h.y,25,{fi:sfaHeroIdx(h),dur:800});
+  return result;
+ };
+})();
 SFA_OBJ.ael_hour={theme:'time',pulse:true,end:'nova',endDur:720};
 SFA_BIND.aelith={themes:['time'],
  0:{extras:false,run:sfaNovaAt('aelith_echo',{dur:520})},
@@ -47,6 +72,7 @@ SFA_BIND.aelith={themes:['time'],
 // Capturas del cuerpo equipado, no una silueta genérica que cambie la skin.
 // Estado exclusivamente visual y local; el temporizador de deuda llega del host.
 const aelithTrailState=new Map();
+(function(){const reset=vfxResetRun;vfxResetRun=function(){aelithTrailState.clear();return reset.apply(this,arguments);};})();
 function aelithTrailStamp(h){
  const cv=document.createElement('canvas');cv.width=cv.height=160;const g=cv.getContext('2d'),main=ctx,m=ANIM_ALPHA_MUL;
  g.imageSmoothingEnabled=false;g.translate(80-h.x,140-h.y);ctx=g;ANIM_ALPHA_MUL=1;
@@ -55,10 +81,24 @@ function aelithTrailStamp(h){
  return cv;
 }
 SFA_POLL.push(()=>{
- for(const h of [...aelithTrailState.keys()])if(!heroes.includes(h)||!h.alive||h.fused||!(h.aelithDebtUntil>runElapsedMs))aelithTrailState.delete(h);
- for(const h of heroes){if(!h.alive||h.fused||!(h.aelithDebtUntil>runElapsedMs))continue;
-  let s=aelithTrailState.get(h);if(!s||s.until!==h.aelithDebtUntil){s={until:h.aelithDebtUntil,last:-1e9,shots:[]};aelithTrailState.set(h,s);}
-  if(runElapsedMs-s.last>=60){s.last=runElapsedMs;s.shots.push({cv:aelithTrailStamp(h),x:h.x,y:h.y});while(s.shots.length>3)s.shots.shift();}
-  ctx.save();ctx.imageSmoothingEnabled=false;for(let i=0;i<s.shots.length;i++){const p=s.shots[i];if(Math.hypot(p.x-h.x,p.y-h.y)<3)continue;ctx.globalAlpha=(i+1)*.1;ctx.drawImage(p.cv,p.x-80,p.y-140);}ctx.restore();
+ for(const h of [...aelithTrailState.keys()])if(!heroes.includes(h)||!h.alive||h.fused)aelithTrailState.delete(h);
+ for(const h of heroes){if(!h.alive||h.fused)continue;
+  const active=h.aelithDebtUntil>runElapsedMs,fi=sfaHeroIdx(h),debt=sfaPool.find(e=>e.theme==='aelith_debt'&&e.fi===fi&&e.t>=0&&e.t<e.dur);
+  let s=aelithTrailState.get(h);
+  if(!active&&!debt){aelithTrailState.delete(h);continue;}
+  if(active){
+   if(!s||s.until!==h.aelithDebtUntil||s.debt){s={until:h.aelithDebtUntil,last:-1e9,shots:[]};aelithTrailState.set(h,s);}
+   if(runElapsedMs-s.last>=60){s.last=runElapsedMs;s.shots.push({cv:aelithTrailStamp(h),x:h.x,y:h.y});while(s.shots.length>3)s.shots.shift();}
+  }else if(s&&!s.debt){
+   s.debt=true;
+   for(const p of s.shots){const g=p.cv.getContext('2d');g.globalCompositeOperation='source-in';g.fillStyle='#aaa3b4';g.fillRect(0,0,160,160);g.globalCompositeOperation='source-over';}
+  }
+  if(!s)continue;
+  const collapse=active?0:Math.min(1,debt.t/220);
+  ctx.save();ctx.imageSmoothingEnabled=false;for(let i=0;i<s.shots.length;i++){
+   const p=s.shots[i],x=p.x+(h.x-p.x)*collapse,y=p.y+(h.y-p.y)*collapse;
+   if(Math.hypot(x-h.x,y-h.y)<3)continue;
+   ctx.globalAlpha=(i+1)*.1*(1-collapse);ctx.drawImage(p.cv,x-80,y-140);
+  }ctx.restore();
  }
 });
