@@ -1,0 +1,65 @@
+{
+  "sheets": [
+    {
+      "source": "source-cast-death.png",
+      "sha256": "c7c587bc5531e9f06625274014fffc194640c893acd3ed09c218115d9ab9b3e9",
+      "count": 16,
+      "contact": "contact-cast-death.png",
+      "clips": {
+        "cast": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "death": [
+          12,
+          13,
+          14,
+          15
+        ]
+      },
+      "uprightHeight": 82
+    },
+    {
+      "source": "source-hurt.png",
+      "sha256": "7990163ddacb27139dc31884411b4b84aa9e3e3834223a065e82f264ccff56f1",
+      "count": 12,
+      "contact": "contact-hurt.png",
+      "clips": {
+        "hurt": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "uprightHeight": 82
+    }
+  ],
+  "reference": "assets/sprites/champions/myla/atlas.png",
+  "referenceSha256": "2ce122a36d910b55633ffb44029ecf25d63e0e7bf4326124f2ce44051a78028d",
+  "generator": "image_gen",
+  "operations": [
+    "connected silhouette extraction",
+    "uniform NEAREST scale",
+    "binary alpha",
+    "bottom center anchor 106"
+  ]
+}

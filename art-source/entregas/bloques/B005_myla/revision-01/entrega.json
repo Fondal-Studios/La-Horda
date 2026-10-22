@@ -1,0 +1,48 @@
+{
+  "block": "B005",
+  "state": "EN_CORRECCION",
+  "newPoses": 28,
+  "items": [
+    "myla.cuerpo.lanzar",
+    "myla.cuerpo.golpe",
+    "myla.cuerpo.muerte"
+  ],
+  "native": "28/28 numerical PASS; runtime scale pending",
+  "visual": "Owner liked source1; back-view wand hand continuity needs review",
+  "existingUltimate": "assets/sprites/champions/myla/berrinche.png; preserved",
+  "installed": false,
+  "next": "Verify final head workflows/reviews and expected-head merge for death only; then resume cast/hurt hand continuity. Never mark entire B005 completed.",
+  "build": "build.py",
+  "nativeCheck": "check-native.js",
+  "components": {
+    "myla.cuerpo.muerte": {
+      "state": "VALIDADO",
+      "generated": true,
+      "branchIntegration": "assets/sprites/champions/myla/v2/death.png",
+      "integratedMain": false,
+      "publicationVerified": false,
+      "technical": "4/4 native numerical PASS; exact RGBA reproduction; scanner semi/halo/fragments 0",
+      "runtime": "PASS 139 checks; CI39768883095 head b95d6f54f5573e77f8d390a73dd87e43bd804d70",
+      "visual": "PASS ASISTIDA_CODEX: inspected native source, runtime-comparison and same-scale roster; not owner approval",
+      "command": "node tools/art/check-myla-death.js",
+      "evidence": "docs/art-gate/myla-death/README.md"
+    },
+    "myla.cuerpo.lanzar": {
+      "state": "EN_CORRECCION",
+      "generated": true,
+      "integratedMain": false,
+      "next": "Fix back-view wand/hand continuity before installation"
+    },
+    "myla.cuerpo.golpe": {
+      "state": "EN_CORRECCION",
+      "generated": true,
+      "integratedMain": false,
+      "next": "Review back-view wand/hand continuity before installation"
+    },
+    "myla.cuerpo.definitiva": {
+      "state": "EXISTING_PRESERVED",
+      "source": "assets/sprites/champions/myla/berrinche.png",
+      "regenerated": false
+    }
+  }
+}
