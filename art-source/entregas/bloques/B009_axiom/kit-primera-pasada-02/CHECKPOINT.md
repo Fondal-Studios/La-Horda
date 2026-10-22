@@ -13,3 +13,9 @@ Fallos y siguiente corrección exacta: corrections.json. Semialfa en las4fuentes
 Siguiente primera pasada: Baltra B010; leer brief, fuentes/main y PR antes de producir. Si otro ciclo empezó Baltra, continuar el próximo no ocupado. No repetir Axiom ni iterar los frames fallidos ahora. Para integrar Axiom: corrección original, contratos por capa, Art Gate visual a escala real, renderer/hitbox, pruebas de carga/coste/multiplayer y checks del headSHA.
 
 Myla PR190: el job safari-engine119792794260 fue cancelado durante instalaciónWebKit; se solicitó rerun del mismo job. Los demás workflows habían completado; revisar intento actual antes de merge. No saltar gate.
+
+## Actualización posterior al merge
+
+Myla caída INTEGRADO_MAIN: PR190 merge6334ff40b6514808ef0fe00b50bec15e19f10c25 confirmado en main el22/10/2026. Head validado664a568bad536aafe585c33d6b04fe924d74afc7,22checks y14runs success; Champion entry balance intento2 completó Safari. Expected_head_sha respetado. PR192 retargeteado a main;11archivos propios, sigue borrador. B005 no cerrado. Publicación pública sigue PENDIENTE_VERIFICACION.
+
+Axiom kit guardado en commit8d0dcf5a526fd1f1fc08dc13405b4d77568de6c3 del PR194; este cierre actualiza solo el registro. Próxima primera pasada Baltra B010. No reintentar generación de Axiom hasta la tanda de corrección.
