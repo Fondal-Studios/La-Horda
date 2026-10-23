@@ -105,16 +105,37 @@ SFA_BIND.aelith={themes:['time'],
 // Estado exclusivamente visual y local; el temporizador de deuda llega del host.
 const aelithTrailState=new Map();
 (function(){const reset=vfxResetRun;vfxResetRun=function(){aelithTrailState.clear();return reset.apply(this,arguments);};})();
+// Una máscara por snapshot: el cambio a deuda reutiliza alfa/borde, sin otra lectura GPU.
+const aelithTrailMasks=new WeakMap();
 function aelithTrailPaint(cv,debt){
- const g=cv.getContext('2d'),im=g.getImageData(0,0,cv.width,cv.height),d=im.data;
- const alpha=new Uint8Array(cv.width*cv.height);for(let i=0;i<alpha.length;i++)alpha[i]=d[i*4+3];
- const edge=debt?[236,227,249]:[255,231,181],fill=debt?[119,108,141]:[184,120,57];
- for(let y=0;y<cv.height;y++)for(let x=0;x<cv.width;x++){
-  const n=y*cv.width+x;if(!alpha[n])continue;
-  const border=!x||!y||x===cv.width-1||y===cv.height-1||!alpha[n-1]||!alpha[n+1]||!alpha[n-cv.width]||!alpha[n+cv.width],col=border?edge:fill;
-  d[n*4]=col[0];d[n*4+1]=col[1];d[n*4+2]=col[2];
- }g.putImageData(im,0,0);
+ const g=cv.getContext('2d');let mask=aelithTrailMasks.get(cv);
+ if(!mask){
+  const im=g.getImageData(0,0,cv.width,cv.height),alpha=new Uint8Array(cv.width*cv.height),edge=new Uint8Array(alpha.length),rim=new Uint8Array(alpha.length);
+  let x0=cv.width,y0=cv.height,x1=0,y1=0;
+  for(let i=0;i<alpha.length;i++){const a=im.data[i*4+3];alpha[i]=a;if(a){const x=i%cv.width,y=Math.floor(i/cv.width);x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y);}}
+  const indices=[];
+  // Recorrer solo el rectángulo ocupado evita25.600 arrays temporales por pose.
+  for(let y=Math.max(0,y0-1);y<=Math.min(cv.height-1,y1+1);y++)for(let x=Math.max(0,x0-1);x<=Math.min(cv.width-1,x1+1);x++){
+   const n=y*cv.width+x,l=x?alpha[n-1]:0,r=x<cv.width-1?alpha[n+1]:0,u=y?alpha[n-cv.width]:0,d=y<cv.height-1?alpha[n+cv.width]:0;
+   if(alpha[n]&&(!l||!r||!u||!d))edge[n]=alpha[n];
+   else if(!alpha[n])rim[n]=Math.max(l,r,u,d);
+   if(alpha[n]||rim[n])indices.push(n);
+  }
+  const outline=document.createElement('canvas');outline.width=cv.width;outline.height=cv.height;
+  mask={alpha,edge,rim,outline,indices,cx:Math.floor((x0+x1)/2),cy:Math.floor((y0+y1)/2)};aelithTrailMasks.set(cv,mask);
+ }
+ const im=g.createImageData(cv.width,cv.height),og=mask.outline.getContext('2d'),oi=og.createImageData(cv.width,cv.height);
+ const edge=debt?[236,227,249]:[255,231,181],fill=debt?[119,108,141]:[184,120,57],dark=debt?[39,37,47]:[48,32,52];
+ for(const n of mask.indices){
+  const col=mask.edge[n]?edge:fill;
+  for(let k=0;k<3;k++){im.data[n*4+k]=col[k];oi.data[n*4+k]=mask.edge[n]?edge[k]:dark[k];}
+  im.data[n*4+3]=mask.alpha[n];oi.data[n*4+3]=mask.edge[n]||mask.rim[n];
+ }
+ g.putImageData(im,0,0);og.putImageData(oi,0,0);
 }
+// El relleno conserva16/28/40%; el contorno independiente distingue tres poses
+// sin volver opaca toda la masa ni ampliar la silueta más de un píxel.
+function aelithTrailEdgeAlpha(i,collapse){return (.55+i*.15)*(1-collapse);}
 function aelithTrailAlpha(i,collapse){return (.16+i*.12)*(1-collapse);}
 function aelithTrailStamp(h){
  const cv=document.createElement('canvas');cv.width=cv.height=160;const g=cv.getContext('2d'),main=ctx,m=ANIM_ALPHA_MUL;
@@ -141,10 +162,42 @@ SFA_POLL.push(()=>{
   ctx.save();ctx.imageSmoothingEnabled=false;for(let i=0;i<s.shots.length;i++){
    const p=s.shots[i],x=p.x+(h.x-p.x)*collapse,y=p.y+(h.y-p.y)*collapse;
    if(Math.hypot(x-h.x,y-h.y)<3)continue;
-   ctx.globalAlpha=aelithTrailAlpha(i,collapse);ctx.drawImage(p.cv,x-80,y-140);
+   const px=Math.round(x-80),py=Math.round(y-140);
+   ctx.globalAlpha=aelithTrailAlpha(i,collapse);ctx.drawImage(p.cv,px,py);
+
   }ctx.restore();
  }
 });
+
+
+// Solo el borde posterior de la pose más antigua va sobre cuerpos.
+// Las tres masas siguen en suelo: un recuerdo separado, no tres dobles sólidos.
+// Resuelve dueño y deuda otra vez al dibujar: no conserva una cola con posiciones viejas.
+function aelithDrawTrailEdges(g){
+ if(window.SFA_OFF)return;
+ g.save();g.imageSmoothingEnabled=false;
+ for(const [h,s] of aelithTrailState){
+  if(!heroes?.includes(h)||!h.alive||h.fused)continue;
+  const active=h.aelithDebtUntil>runElapsedMs,fi=sfaHeroIdx(h);
+  const debt=active?null:sfaPool.find(e=>e.theme==='aelith_debt'&&e.fi===fi&&e.t>=0&&e.t<e.dur);
+  if(!active&&!debt)continue;
+  const collapse=active?0:Math.min(1,debt.t/220);
+  if(collapse>=1)continue;
+  for(let i=0;i<Math.min(1,s.shots.length);i++){
+   const p=s.shots[i],x=p.x+(h.x-p.x)*collapse,y=p.y+(h.y-p.y)*collapse;
+   const mask=aelithTrailMasks.get(p.cv),outline=mask?.outline;
+   if(!outline||Math.hypot(x-h.x,y-h.y)<3||!inView(x,y,160))continue;
+   const px=Math.round(x-80),py=Math.round(y-140),dx=x-h.x,dy=y-h.y;
+   g.save();g.beginPath();
+   // Eje dominante del desplazamiento real; recorte sobre la mitad que se aleja.
+   if(Math.abs(dx)>=Math.abs(dy))g.rect(px+(dx<0?0:mask.cx),py,dx<0?mask.cx:160-mask.cx,160);
+   else g.rect(px,py+(dy<0?0:mask.cy),160,dy<0?mask.cy:160-mask.cy);
+   g.clip();g.globalAlpha=aelithTrailEdgeAlpha(i,collapse);g.drawImage(outline,px,py);g.restore();
+  }
+ }
+ g.restore();
+}
+(function(){const top=drawPortadorTop;drawPortadorTop=function(){const r=top.apply(this,arguments);aelithDrawTrailEdges(ctx);return r;};})();
 
 // B106: procedencia del impacto real. Solo metadatos cosméticos; los snapshots
 // existentes transportan estos escalares junto al objetivo, sin otro evento ni ID.

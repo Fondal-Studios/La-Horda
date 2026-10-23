@@ -1,0 +1,23 @@
+[arnés] servidor propio: http://127.0.0.1:46609 (raíz /workspace/scratch/a01f80e6b406/la-horda-aelith)
+{
+  "checks": 27,
+  "failed": [],
+  "observations": [
+    {
+      "component": "A-FX-aelith-h3",
+      "block": "B107",
+      "state": "EN_CORRECCION",
+      "finding": "Este control elimina directamente el timer: comprueba limpieza sin transición. La deuda real/colapso se verifica en verify-aelith-lifecycle.js; contraste integral pendiente.",
+      "next": "Consultar correccion-01/lifecycle-tests.json y online-results.json; completar skins y contraste."
+    },
+    {
+      "component": "A-FX-aelith-h1",
+      "block": "B105",
+      "state": "EN_CORRECCION",
+      "finding": "Reproducción del fallo histórico: falseEnd indica si apareció una nova indebida al morir.",
+      "reproduced": false,
+      "next": "Consultar correccion-01: muerte/expiración/reemplazo se prueban con eventos del impacto real y relay."
+    }
+  ],
+  "errors": []
+}
