@@ -23,3 +23,7 @@ Capturas JSON completas e índice SHA256 de todos los PNG generados; selección 
 3. Corregir composición en lote Brakk: firma normal propia conservando UF, soportes B118 y refuerzo B119 frente a capas legadas. No volver a generar53cuadros ni rebajar gates. Cualquier cambio de capa debe conservar emisores/azar/duración; validar renderer y relay según alcance.
 4. Repetir comparación en mismo estado, contraste compuesto/skins/equipo/seisarenas, performance y revisión integral. Separar componente aprobado; no mergear PR197 completo con FIX.
 5. Mantener residuales Morveth B168 y Aelith B106/B107 y22entradas históricas. Guardar siguiente cierre remoto antes de abrir otrokit.
+
+## Cierre remoto
+
+Producción `2de750f64a212bbc8d1f97078e7dc369f9c55957`:46archivos cotejados por Git blob remoto. La ascendencia de main `758aa2ffacaae6542d31776e4a66ea7847a73b1b` fue incorporada como segundo padre: tools/items/t_story.js era byteidéntico en ambos árboles, sin traer otro runtime ni arte. Assets/ sin modificaciones locales. PR197 sigue borrador/FIX; main contiene solamente el merge independiente PR200. REMOTE_CLOSURE.json registra comprobación y próximo paso; el commit de cierre se verifica después de escribirlo, sin hash autorreferente.
