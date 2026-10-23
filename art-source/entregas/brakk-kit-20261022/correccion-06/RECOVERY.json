@@ -1,11 +1,17 @@
 {
   "date": "2026-10-23",
-  "status": "EN_CORRECCION",
-  "integration": "NO_INTEGRAR",
-  "parent": "f1af16282f024e430dee8eb138f17693ccff6425",
   "pr": 197,
-  "scope": "Diagnosticar 14 restauraciones Acuática y composición B118/B119; preservar 53 cuadros, firmas 05 y mecánicas.",
-  "last_closed": "art-source/entregas/brakk-kit-20261022/correccion-05/CHECKPOINT.md",
-  "next": "Ejecutar controles de redibujado idéntico y trazar azar del renderer antes de atribuir diferencias a firmas. Guardar fuentes, evidencia y cierre06.",
-  "closed": false
+  "branch": "art/brakk-kit-first-pass-20261022",
+  "parent": "f1af16282f024e430dee8eb138f17693ccff6425",
+  "recovery": "0e4a24a90dae97648301aafda89b8b28627eef5e",
+  "production": "2c3b875217b76a6ba7e4433c193183b76b1587e9",
+  "productionTree": "780f4269211115914b6b2d87cf51e2276e4ee5b6",
+  "verifiedProductionFiles": 80,
+  "status": "EN_CORRECCION",
+  "integratedMain": false,
+  "publicationVerified": false,
+  "closed": true,
+  "next": "B118/B119 contraste compuesto; reproducir B117 dos filas bajo80 y relay torreta20/22. No integrar taller FIX.",
+  "finalVerificationProcedure": "After closure commit, verify branch ref and all83 final files against Git blob SHA. Do not infer that step from this file alone.",
+  "resume": "Read CHECKPOINT.md and current PR head before any edit."
 }

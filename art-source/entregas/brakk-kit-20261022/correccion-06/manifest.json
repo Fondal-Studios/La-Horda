@@ -480,7 +480,21 @@
       "bytes": 3525,
       "sha256": "92d5dcbcaeded52c1c84472a46327c9a15407f02fc993fd90542fa7084ba9627",
       "gitBlob": "998ba291e8b8f08dbf575abd8ed976945cdc732d"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/correccion-06/CHECKPOINT.md",
+      "bytes": 4234,
+      "sha256": "bf10aac75d7c1f8dfe7dc34b94833c1df00a6cee39b15ac7801d8a0b79dd0156",
+      "gitBlob": "d8dec77fea3eaf5427355f9d4d4226f3ed89a766"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/correccion-06/RECOVERY.json",
+      "bytes": 824,
+      "sha256": "11502fc6b338bba97c3d3e556f4c551f5cd3cfc544bccea995d9a7d376c48080",
+      "gitBlob": "94e84609f3c2cfe9b1bd6f07249c7e4428923076"
     }
   ],
-  "note": "Only selected raster uploaded; CAPTURE_INDEX lists all generated PNG, including local diagnostic attempts. Recipes reproduce matrices. Manifest excludes itself and later closure files."
+  "note": "Only selected raster uploaded; CAPTURE_INDEX lists all generated PNG, including local diagnostic attempts. Recipes reproduce matrices. Manifest excludes itself and later closure files.",
+  "productionCommit": "2c3b875217b76a6ba7e4433c193183b76b1587e9",
+  "manifestNote": "Excludes itself and REMOTE_CLOSURE to avoid recursive hashes; final ref/blob verification performed externally."
 }
