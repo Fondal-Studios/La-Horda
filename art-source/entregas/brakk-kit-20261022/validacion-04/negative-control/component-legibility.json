@@ -1,0 +1,448 @@
+{
+  "minimum": 0.8,
+  "delta": 24,
+  "fullMinimum": 0.4,
+  "scope": "isolated B117/B119 SFA only, not compound contrast",
+  "measurements": [
+    {
+      "arena": "bosque",
+      "rows": [
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "ant",
+          "mask": 371,
+          "min": 0.8820326678765881,
+          "dec": [
+            0.88,
+            1,
+            1
+          ],
+          "all": [
+            0.88,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.730909090909091,
+          "dec": [
+            0.73,
+            0.93,
+            0.93
+          ],
+          "all": [
+            0.73,
+            0.93,
+            0.93
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "disipa",
+          "mask": 371,
+          "min": 0.8817106460418562,
+          "dec": [
+            0.88,
+            1,
+            1
+          ],
+          "all": [
+            0.88,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "ant",
+          "mask": 1090,
+          "min": 0.6979071883530482,
+          "dec": [
+            0.84,
+            0.7,
+            0.7
+          ],
+          "all": [
+            0.84,
+            0.7,
+            0.7
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "impacto",
+          "mask": 1084,
+          "min": 0.6959276018099547,
+          "dec": [
+            0.84,
+            0.7,
+            0.7
+          ],
+          "all": [
+            0.84,
+            0.7,
+            0.7
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "disipa",
+          "mask": 1085,
+          "min": 0.6942675159235668,
+          "dec": [
+            0.84,
+            0.69,
+            0.7
+          ],
+          "all": [
+            0.84,
+            0.69,
+            0.7
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "ant",
+          "mask": 1083,
+          "min": 0.6593406593406593,
+          "dec": [
+            0.66,
+            0.69,
+            0.66
+          ],
+          "all": [
+            0.66,
+            0.69,
+            0.66
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "impacto",
+          "mask": 1083,
+          "min": 0.6580645161290323,
+          "dec": [
+            0.66,
+            0.69,
+            0.66
+          ],
+          "all": [
+            0.66,
+            0.69,
+            0.66
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "disipa",
+          "mask": 1077,
+          "min": 0.6583793738489871,
+          "dec": [
+            0.66,
+            0.69,
+            0.66
+          ],
+          "all": [
+            0.66,
+            0.69,
+            0.66
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "ant",
+          "mask": 369,
+          "min": 0.8815426997245179,
+          "dec": [
+            0.88,
+            1,
+            1
+          ],
+          "all": [
+            0.88,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "impacto",
+          "mask": 369,
+          "min": 0.7300275482093664,
+          "dec": [
+            0.73,
+            0.93,
+            0.93
+          ],
+          "all": [
+            0.73,
+            0.93,
+            0.93
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "disipa",
+          "mask": 369,
+          "min": 0.8815426997245179,
+          "dec": [
+            0.88,
+            1,
+            1
+          ],
+          "all": [
+            0.88,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "ant",
+          "mask": 1089,
+          "min": 0.6911090742438131,
+          "dec": [
+            0.84,
+            0.69,
+            0.69
+          ],
+          "all": [
+            0.84,
+            0.69,
+            0.69
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "impacto",
+          "mask": 1089,
+          "min": 0.6911090742438131,
+          "dec": [
+            0.84,
+            0.69,
+            0.69
+          ],
+          "all": [
+            0.84,
+            0.69,
+            0.69
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "disipa",
+          "mask": 1081,
+          "min": 0.6896869244935543,
+          "dec": [
+            0.84,
+            0.69,
+            0.69
+          ],
+          "all": [
+            0.84,
+            0.69,
+            0.69
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "ant",
+          "mask": 1077,
+          "min": 0.6577736890524379,
+          "dec": [
+            0.66,
+            0.69,
+            0.66
+          ],
+          "all": [
+            0.66,
+            0.69,
+            0.66
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "impacto",
+          "mask": 1078,
+          "min": 0.6577736890524379,
+          "dec": [
+            0.66,
+            0.69,
+            0.66
+          ],
+          "all": [
+            0.66,
+            0.69,
+            0.66
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "disipa",
+          "mask": 1078,
+          "min": 0.6586936522539099,
+          "dec": [
+            0.66,
+            0.69,
+            0.66
+          ],
+          "all": [
+            0.66,
+            0.69,
+            0.66
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "ant",
+          "mask": 369,
+          "min": 0.881651376146789,
+          "dec": [
+            0.88,
+            1,
+            1
+          ],
+          "all": [
+            0.88,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "impacto",
+          "mask": 362,
+          "min": 0.7336363636363636,
+          "dec": [
+            0.73,
+            0.93,
+            0.93
+          ],
+          "all": [
+            0.73,
+            0.93,
+            0.93
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "disipa",
+          "mask": 363,
+          "min": 0.8827272727272727,
+          "dec": [
+            0.88,
+            1,
+            1
+          ],
+          "all": [
+            0.88,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "ant",
+          "mask": 1092,
+          "min": 0.698455949137148,
+          "dec": [
+            0.84,
+            0.7,
+            0.7
+          ],
+          "all": [
+            0.84,
+            0.7,
+            0.7
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "impacto",
+          "mask": 1090,
+          "min": 0.6979071883530482,
+          "dec": [
+            0.84,
+            0.7,
+            0.7
+          ],
+          "all": [
+            0.84,
+            0.7,
+            0.7
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "disipa",
+          "mask": 1088,
+          "min": 0.6973564266180492,
+          "dec": [
+            0.84,
+            0.7,
+            0.7
+          ],
+          "all": [
+            0.84,
+            0.7,
+            0.7
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "ant",
+          "mask": 1086,
+          "min": 0.6517775752051048,
+          "dec": [
+            0.65,
+            0.69,
+            0.66
+          ],
+          "all": [
+            0.65,
+            0.69,
+            0.66
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "impacto",
+          "mask": 1086,
+          "min": 0.6520947176684881,
+          "dec": [
+            0.65,
+            0.69,
+            0.66
+          ],
+          "all": [
+            0.65,
+            0.69,
+            0.66
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "disipa",
+          "mask": 1089,
+          "min": 0.6566757493188011,
+          "dec": [
+            0.66,
+            0.69,
+            0.66
+          ],
+          "all": [
+            0.66,
+            0.69,
+            0.66
+          ]
+        }
+      ],
+      "err": null
+    }
+  ],
+  "errors": [],
+  "bad": 21
+}

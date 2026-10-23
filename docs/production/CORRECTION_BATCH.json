@@ -384,6 +384,21 @@
             "Exact-head CI and applicable workflow completion",
             "Shared extension reconciliation when splitting approved components; never import full FIX workshops"
           ]
+        },
+        {
+          "date": "2026-10-23",
+          "path": "art-source/entregas/brakk-kit-20261022/validacion-04",
+          "change": "Validation04, no new pixels:360 real equipped scenes, B117/B119 isolated gate,12same-frame signature ablations. Independent test fixPR200 merged.",
+          "sourceSha256": "81be8914332b0e0fa33941c02fd9fb37827f86ce8e1ec8917896c26b0e7c81f9",
+          "frame": "B118 330ms, dense/sparse; same-frame ABA12/12",
+          "finding": "Sparse330ms shows articulated deployment; dense body overlap conceals most of support. Removing airborne generic signature reduces distraction at caster but does not expose supports at turret. All three normal casts use fallback star for brakk (CHAMPION_SIGNATURES has no brakk key). Actual live pool records shape star. Observational finding, no runtime change; ultimate remains untouched.",
+          "remaining": [
+            "Grouped composition correction: normal Brakk signature and deployment readability, preserve original IDs/UF and all emitter/RNG behavior",
+            "B119 brace vs armor/team rings; full compound contrast across equipped skins/arenas",
+            "Sustained mobile performance and remaining lifecycle cases before integral Art Gate",
+            "Exact new-head CI; prior success does not approve workshop",
+            "Keep Morveth B168 and Aelith B106/B107 residuals; inventory globally incomplete"
+          ]
         }
       ]
     },
@@ -772,7 +787,7 @@
     "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
-  "nextProduction": "Finish Brakk per-component gates: grouped dense-contact visibility and B117/B119 full scenes; consult validacion-03 and exact CI. Keep Morveth B168 and Aelith B106/B107 residuals, no new first passes or RNG re-investigation.",
-  "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-03/CHECKPOINT.md",
-  "next": "Finish Brakk per-component gates: grouped dense-contact visibility and B117/B119 full scenes; consult validacion-03 and exact CI. Keep Morveth B168 and Aelith B106/B107 residuals, no new first passes or RNG re-investigation."
+  "nextProduction": "Brakk grouped composition correction from validacion-04: fallback normal signature and B118 deployment contrast, B119 brace/rings. Preserve UF/IDs/emitters/RNG. PR200 already merged; do not reopen or repeat test fix. Then integral gates, keeping Aelith/Morveth residuals.",
+  "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-04/CHECKPOINT.md",
+  "next": "Brakk grouped composition correction from validacion-04: fallback normal signature and B118 deployment contrast, B119 brace/rings. Preserve UF/IDs/emitters/RNG. PR200 already merged; do not reopen or repeat test fix. Then integral gates, keeping Aelith/Morveth residuals."
 }
