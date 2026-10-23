@@ -1,0 +1,1633 @@
+{
+  "schema": 1,
+  "updated": "2026-10-23",
+  "policy": "First-pass champion batches; save failures and move forward. Run a grouped correction pass later; never merge failed or unvalidated assets.",
+  "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
+  "entries": [
+    {
+      "block": "B005",
+      "component": "myla.cuerpo.lanzar",
+      "pr": 192,
+      "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-02",
+      "frames": [
+        11
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "ILUSTRACION: suave0.429 ruido75"
+      ],
+      "next": "Redraw only recovery11; preserve0-10 exactly; repeat canonical detector and renderer."
+    },
+    {
+      "block": "B007",
+      "component": "A-FX-aelith-ult",
+      "pr": 191,
+      "source": "art-source/entregas/bloques/B007_aelith/revision-01",
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Dial lacks exactly13 marks",
+        "Pulse effects overlap neighboring cells"
+      ],
+      "next": "Correct dial/spacing in grouped VFX pass, then export and test runtime timing."
+    },
+    {
+      "block": "B108",
+      "component": "A-FX-aurelia-h1",
+      "source": "art-source/entregas/bloques/B008_aurelia/primera-pasada-01",
+      "sheet": "source-prism.png",
+      "sourceSha256": "24c0c0be5f19c62d90b9b453c725b0aa093da0d7be2d6122c80f9b5f0ba6ea4a",
+      "frames": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "CELL_EDGE_CONTACT; node bases too close to source row boundary"
+      ],
+      "next": "Reframe affected source cells without clipping light or individually scaling the animation; preserve original."
+    },
+    {
+      "block": "B008",
+      "component": "A-FX-aurelia-ult",
+      "source": "art-source/entregas/bloques/B008_aurelia/primera-pasada-01",
+      "sheet": "source-cathedral.png",
+      "sourceSha256": "5372060ef473c44ad7ae7302898776dd7b09ca539a34b58d4dbaf43a4b39ab53",
+      "frames": [
+        17,
+        18,
+        19,
+        20,
+        23,
+        24,
+        29
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "EMPTY_FRAME23/24/29",
+        "CELL_EDGE_CONTACT17/18/19/20",
+        "Only two connecting pointed arches clearly visible; third connection must follow three-node geometry",
+        "Loop/dissipation order and footprint need temporal review"
+      ],
+      "next": "Complete missing poses and three-node architecture in grouped correction pass; preserve open center, no destructive crop."
+    },
+    {
+      "block": "B430",
+      "component": "A-FX-axiom-basico",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/kit-primera-pasada-02/packet-source.png",
+      "sourceSha256": "81214f75db108062712baf40a87bb75825fd97f47e01681beb98fc65da9a83f7",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Alfa suave; cubo se lee redondo en2–4, caída8–10 deja trazos alargados. A24px necesita revisar legibilidad y fase de4fragmentos."
+      ],
+      "next": "Corregir cubo cuadrado y disipación, limpiar alfa mediante edición de fuente; comprobar clip24px antes de integrar."
+    },
+    {
+      "block": "B111",
+      "component": "A-FX-axiom-h1",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/kit-primera-pasada-02/error404-source.png",
+      "sourceSha256": "8d239b4cbe27cf9fe6e2fe456942784249245d7ba454749edcd0895f873aa5b8",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Nube coloreada visible por semialfa, contactos de borde0–11; no cumple capa transparente limpia. Geometría se mantiene inclinada y debe verificarse a radio130."
+      ],
+      "next": "Eliminar residuo de fondo y glow en fuente, recuperar margen de0–11, estabilizar bucle6–11."
+    },
+    {
+      "block": "B112",
+      "component": "A-FX-axiom-h2",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/kit-primera-pasada-02/overwrite-source.png",
+      "sourceSha256": "5cd86bbcbf09c2ba1ac2ca1cfc5964d10215f838841a93cf58daf37dac0df4f0",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Semialfa/ruido RGB; cadena no separada de cabeza y motivo infección. Faltan exports independientes del tile16px y cabeza48px."
+      ],
+      "next": "Separar enlace/cabeza/infección, exportar fases y corregir bordes. Revisar cadena multiobjetivo y duración2600ms sin cambiar gameplay."
+    },
+    {
+      "block": "B113",
+      "component": "A-FX-axiom-h3",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/kit-primera-pasada-02/teleport-source.png",
+      "sourceSha256": "a470eda5b49e299dc62278cdaf4e8eebf7fe1199f66402a7260e2998ac2cd42c",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Nube azul visible semitransparente aunque hay alfa0; sin píxeles totalmente opacos. Cambios de anclaje y tamaño entre salida y llegada; trazo188x24 no producido."
+      ],
+      "next": "Editar fuente para transparencia limpia y anclas constantes; producir trazo independiente pendiente. Separar salida0–7 y llegada8–15, validar48px."
+    },
+    {
+      "block": "B009",
+      "component": "A-FX-axiom-ult",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/primera-pasada-01/source.png",
+      "sourceSha256": "861df4e2f27a6683cf2a281a32a2d818f260812c3f8e57edbb231bbf6b9ee4dc",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Semialfa548169 pixels; loop6–13 scale/anchor inconsistency"
+      ],
+      "next": "Correct original source alpha and stabilize held window; no regeneration before correction batch."
+    },
+    {
+      "block": "B208/B209/B490/B491",
+      "component": "A-FX-solciju-h1;A-FX-solciju-h2;A-PROP-kvb-solciju-sol_reserve",
+      "source": "js/champions/vfx-b/solciju.js",
+      "sourceBase": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+      "evidence": "art-source/entregas/habilidades-recientes-20261022/atlas-preview.png",
+      "frames": {
+        "so_splash": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "so_fuse": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "so_pool_idle": "0-13"
+      },
+      "state": "EN_CORRECCION",
+      "defects": [
+        "La mancha lobulada mejora diferenciación frente al anillo anterior, pero sus cinco puntas se leen como estrella/sello. Redondear asimétricamente en lote de corrección.",
+        "so_pool_idle es fallback cuando UF está apagado; no contar como sustitución de Gran Reserva activa.",
+        "CI del head 7b89de24bdea58d5e5e321e18957d3b0c5715f05: test-decal-legible falla 7 incumplimientos; so_splash relleno de impacto 36% >35% y mismo tinte RGB en bosque/infernal. No reducir umbrales."
+      ],
+      "next": "Conservar corrección local y completar gates pendientes; no repetir primera pasada ni integrar taller completo.",
+      "sourceSha256": "f40019b51b48cdf1956ff7ced323133a171a0553c3370c80848111cedaf372fd",
+      "pr": 195,
+      "ciEvidence": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39825077102/job/119986111833",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "delivery": "art-source/entregas/habilidades-recientes-20261022/correccion-01",
+          "sourceSha256": "0627fd7fd76749615aab737a343e68ed39e0f687fe47c63a8ebfce4dbbeaaf47",
+          "status": "CORRECTED_LOCAL_PENDING_FULL_GATE",
+          "changes": [
+            "Sello de cinco puntas reemplazado por ocho curvas asimétricas con gotas irregulares.",
+            "Fill medido36%→24%; copa visible78%→82%; tintes bosque/infernal diferentes."
+          ],
+          "tests": "legibility-after.txt seis arenas PASS; 15 relay; 23 online;132 funcionales;10 sceneHash; UF idéntica.",
+          "pending": [
+            "KVB off/on RNG heredado FAIL",
+            "skins y Art Gate integral",
+            "warmup/performance y CI final"
+          ]
+        }
+      ]
+    },
+    {
+      "block": "B228",
+      "component": "A-FX-veyra-h3",
+      "source": "js/champions/vfx-b/veyra.js",
+      "evidence": "art-source/entregas/veyra-kit-20261022/verification.json#observations",
+      "frames": "vy_pact_idle 0-11 (condición de activación, no defecto de raster)",
+      "state": "EN_CORRECCION",
+      "defects": [
+        "El aura de pacto usa portSpeedTimer/portSpeedBonus compartidos; kitBuff de otro héroe con speed=.3 activa el corazón sin lanzar Pacto. Reproducido con renderer real."
+      ],
+      "next": "En lote común vincular la persistencia visual al pacto propio y a su dueño en host/invitado, sin cambiar duración ni buffs mecánicos. Probar múltiples Veyra, muerte, reset y buffs ajenos.",
+      "sourceSha256": "41ab122f98c6ce7ad90d5b74450d7b1315411b180ac6857c42f5abfdedc2fd75",
+      "pr": 196,
+      "productionCommit": "91735b7b42d75fb48e2e20587877b61bf883362c",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 196,
+        "path": "art-source/entregas/veyra-kit-20261022/correccion-01",
+        "technical": "14 ownership checks PASS; 21 actual relay checks PASS; 132 functional PASS; numeric caster/duration event owns aura; registered KVB network wrapper after late module load.",
+        "state": "EN_CORRECCION",
+        "remaining": "Full skins/arenas/contrast/warmup/re-entry and integral visual gate; inherited KVB on/off RNG mismatch; CI current head."
+      }
+    },
+    {
+      "block": "B117",
+      "component": "A-FX-brakk-h1",
+      "source": "js/champions/skill-fx-a/c/brakk.js",
+      "sourceSha256": "9748b27d05d5dde840ddba9efc89a41359ea31e346663009da877ca0a3227946",
+      "frames": "wall-mount 0-10; enlace de fase",
+      "state": "EN_CORRECCION",
+      "evidence": "art-source/entregas/brakk-kit-20261022/verification.json#observations",
+      "defects": [
+        "La teja de montaje usa animNow global del renderer beam: a t1000 inicia en3 y a t1400 en9, no en anticipación0."
+      ],
+      "next": "En lote común reproducir el montaje según edad del evento, conservando orientación, radio y tiempo mecánico del muro; no cambiar fase global de los proyectiles existentes.",
+      "pr": 197,
+      "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 197,
+        "path": "art-source/entregas/brakk-kit-20261022/correccion-01",
+        "technical": "20 real draw frame checks PASS; 14 actual relay checks PASS; 132 functional PASS; combat/RNG 29232 identical. Build-only event phase; nails and legacy loops unchanged.",
+        "state": "EN_CORRECCION",
+        "remaining": "Full skins/arenas/contrast/warmup and visual gate. B118 arrow supports remain FIX; do not merge whole workshop."
+      },
+      "correctionHistory": [
+        {
+          "date": "2026-10-23",
+          "path": "art-source/entregas/brakk-kit-20261022/correccion-05",
+          "source": "js/skills/champion-signatures.js",
+          "sourceSha256": "b8b984b3282974973861c1aff35f1e0b967010a9477e29238852718dd203b784",
+          "state": "EN_CORRECCION",
+          "components": [
+            "A-FX-brakk-h1",
+            "A-FX-brakk-h2",
+            "A-FX-brakk-h3"
+          ],
+          "change": "Normal-only masonry/turret/cross-brace native crests; cached12cells; key/slot/lifetime/UF unchanged.",
+          "tests": "108renderer,19kit,81functional,20relay PASS; parent/candidate29232 RNG identical360frames.",
+          "remaining": [
+            "Investigate fourteen Acuatica same-frame restoration mismatches before relying on those pairs; other130 restore exactly,144 pool/object states identical. Pixel diff bbox/count recorded, root cause not claimed.",
+            "Grouped B118 support/B119 brace composition; do not regenerate53original frames.",
+            "Full compound contrast with equipped skins/arenas; no new numeric compound gate claimed.",
+            "Sustained mobile performance/GC and cold bake benchmark; local draw benchmark does not certify physical devices.",
+            "Exact final head CI and Art Gate before isolating any approved component; PR197 remains draft.",
+            "Preserve Morveth B168 and Aelith B106/B107 residuals; global inventory incomplete."
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-06",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "eafcdcda620620b7ff0ab598aab47d5f26e13c964b5f429995e111d1b0a3c310",
+          "finding": "A/B/A Acuatica14fails diagnosed as mutable animPose in harness,144/144 exact after pose snapshot restore. Two new horizontal B117 beam~h isolated rows79.886% below80; source/atlas unchanged,root not demonstrated.",
+          "next": "Resolver lote composición/contraste y gates; no integrar taller FIX."
+        }
+      ]
+    },
+    {
+      "block": "B118",
+      "component": "A-FX-brakk-h2",
+      "source": "js/champions/skill-fx-a/c/brakk.js",
+      "sourceSha256": "9748b27d05d5dde840ddba9efc89a41359ea31e346663009da877ca0a3227946",
+      "frames": "turret-deploy 4-6",
+      "state": "EN_CORRECCION",
+      "evidence": "art-source/entregas/brakk-kit-20261022/atlas-preview.png",
+      "defects": [
+        "Los cuatro soportes se leen como flechas diagonales en la revisión de atlas; falta articulación/pie de apoyo que los haga claramente ingeniería de asedio."
+      ],
+      "next": "Revisar composición B118/B119 integral y crew/performance; no repetir diagnóstico de capas ni abrir otra primera pasada de estos53cuadros.",
+      "pr": 197,
+      "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-02",
+          "sourceSha256": "81be8914332b0e0fa33941c02fd9fb37827f86ce8e1ec8917896c26b0e7c81f9",
+          "status": "CORRECTED_LOCAL_PENDING_FULL_GATE",
+          "changes": [
+            "Flechas reemplazadas por brazos articulados, remaches y pies planos.",
+            "Intento inicial 79% visible falló; brazo afinado supera82% horizontal/móvil sin cambiar umbral80%."
+          ],
+          "tests": "Legibilidad específica burst seis arenas, tres escalas y tres variantes PASS;19 kit;20 fase;14 relay;paridad29232/29232.",
+          "pending": [
+            "skins equipadas y Art Gate integral",
+            "warmup/performance/reentrada y CI final"
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "path": "art-source/entregas/brakk-kit-20261022/validacion-03",
+          "change": "No new pixels. 60 real scenes verify five equipped appearances in six arenas and two viewports; 11 lifecycle/cache checks; test-only CI race correction.",
+          "sourceSha256": "81be8914332b0e0fa33941c02fd9fb37827f86ce8e1ec8917896c26b0e7c81f9",
+          "frame": "330ms (frame6 of12 at620ms), dense contact",
+          "finding": "B118 articulated support is drawn38 times per scene, but at330ms dense skeletons conceal most of its silhouette; generic caster diamond/rings and equipment hit flashes dominate. A successful isolated occlusion gate does not certify recognizability in this composition.",
+          "remaining": [
+            "B118 dense-contact recognizability and full compound contrast",
+            "B117/B119 equipped-skin full scene and beam/aura gates",
+            "Sustained physical-device mobile performance",
+            "Exact-head CI and applicable workflow completion",
+            "Shared extension reconciliation when splitting approved components; never import full FIX workshops"
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "path": "art-source/entregas/brakk-kit-20261022/validacion-04",
+          "change": "Validation04, no new pixels:360 real equipped scenes, B117/B119 isolated gate,12same-frame signature ablations. Independent test fixPR200 merged.",
+          "sourceSha256": "81be8914332b0e0fa33941c02fd9fb37827f86ce8e1ec8917896c26b0e7c81f9",
+          "frame": "B118 330ms, dense/sparse; same-frame ABA12/12",
+          "finding": "Sparse330ms shows articulated deployment; dense body overlap conceals most of support. Removing airborne generic signature reduces distraction at caster but does not expose supports at turret. All three normal casts use fallback star for brakk (CHAMPION_SIGNATURES has no brakk key). Actual live pool records shape star. Observational finding, no runtime change; ultimate remains untouched.",
+          "remaining": [
+            "Grouped composition correction: normal Brakk signature and deployment readability, preserve original IDs/UF and all emitter/RNG behavior",
+            "B119 brace vs armor/team rings; full compound contrast across equipped skins/arenas",
+            "Sustained mobile performance and remaining lifecycle cases before integral Art Gate",
+            "Exact new-head CI; prior success does not approve workshop",
+            "Keep Morveth B168 and Aelith B106/B107 residuals; inventory globally incomplete"
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "path": "art-source/entregas/brakk-kit-20261022/correccion-05",
+          "source": "js/skills/champion-signatures.js",
+          "sourceSha256": "b8b984b3282974973861c1aff35f1e0b967010a9477e29238852718dd203b784",
+          "state": "EN_CORRECCION",
+          "components": [
+            "A-FX-brakk-h1",
+            "A-FX-brakk-h2",
+            "A-FX-brakk-h3"
+          ],
+          "change": "Normal-only masonry/turret/cross-brace native crests; cached12cells; key/slot/lifetime/UF unchanged.",
+          "tests": "108renderer,19kit,81functional,20relay PASS; parent/candidate29232 RNG identical360frames.",
+          "remaining": [
+            "Investigate fourteen Acuatica same-frame restoration mismatches before relying on those pairs; other130 restore exactly,144 pool/object states identical. Pixel diff bbox/count recorded, root cause not claimed.",
+            "Grouped B118 support/B119 brace composition; do not regenerate53original frames.",
+            "Full compound contrast with equipped skins/arenas; no new numeric compound gate claimed.",
+            "Sustained mobile performance/GC and cold bake benchmark; local draw benchmark does not certify physical devices.",
+            "Exact final head CI and Art Gate before isolating any approved component; PR197 remains draft.",
+            "Preserve Morveth B168 and Aelith B106/B107 residuals; global inventory incomplete."
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-06",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "eafcdcda620620b7ff0ab598aab47d5f26e13c964b5f429995e111d1b0a3c310",
+          "finding": "Attempt lowering deployment6nativepx fails36rows,min~71%; source/hash/atlas preserved. Returned to previous deployment byteidentical. Dense contact residual remains.",
+          "next": "Resolver lote composición/contraste y gates; no integrar taller FIX."
+        },
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-09",
+          "sourceSha256": "18831420feb6c79603932d1c8e06ade1cf4dafd8e53409200d4e44471175d9aa",
+          "state": "EN_CORRECCION",
+          "finding": "Measured post-body deployment layer; later layers preserve98.198..100% contribution in8parent scenes. Staged lateral feet candidate: candidate01FAIL22 retained; candidate02 isolated82%min both viewports,120same-frame exact comparisons,26relay,29232RNG parity. Compound ArtGate pending."
+        }
+      ]
+    },
+    {
+      "block": "B166",
+      "component": "A-FX-morveth-h1",
+      "source": "art-source/entregas/morveth-kit-20261022",
+      "sheet": "atlases/spore-pulse.png",
+      "sourceFile": "js/champions/skill-fx-a/c/morveth.js",
+      "sourceSha256": "9394db83bae05d5ff924e4731b15b39a3f7e99fdf8af6b09202fdaf240e9f30a",
+      "atlasSha256": "b6e2e5e7ac685d5549ddae885b4e49188f534ea630fbf9cead9ed02cc002945b",
+      "frames": [
+        10
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "El borde conserva152 píxeles al final del atlas y corta de golpe; el renderer de nova no atenúa la fase final."
+      ],
+      "evidence": [
+        "comparison.png",
+        "mobile-comparison.png",
+        "atlas-preview.png",
+        "verification.json"
+      ],
+      "next": "Revisión integral y skins/arenas; no cerrar B166 entero.",
+      "pr": 198,
+      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 198,
+          "path": "art-source/entregas/morveth-kit-20261022/correccion-01",
+          "sourceSha256": "0fb59f44b844921aab209d0892db716563077dc6ade606e311c490ddaa23a5e9",
+          "state": "EN_CORRECCION",
+          "change": "Pulso: borde usa misma disolución que esporas; cuadro10 pasa152→0 píxeles.",
+          "evidence": "30 silhouette checks;23 kit;131 functional;16 relay;23 general online;SFA RNG30414 identical;legibility six arenas horizontal/mobile PASS",
+          "remaining": "Revisión integral y skins/arenas; no cerrar B166 entero."
+        }
+      ]
+    },
+    {
+      "block": "B167",
+      "component": "A-FX-morveth-h2",
+      "source": "art-source/entregas/morveth-kit-20261022",
+      "sheet": "atlases/spore-exhalation.png",
+      "sourceFile": "js/champions/skill-fx-a/c/morveth.js",
+      "sourceSha256": "9394db83bae05d5ff924e4731b15b39a3f7e99fdf8af6b09202fdaf240e9f30a",
+      "atlasSha256": "9d85f6c49ecc55899acfd79b33f57f60791b0c06cfc8cde0949caa33a58c7abd",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Las esporas son distintas, pero en la escena siguen dominando rayos/impactos blancos compartidos con el efecto legado; falta una lectura propia del impacto en el conjunto."
+      ],
+      "evidence": [
+        "comparison.png",
+        "mobile-comparison.png",
+        "atlas-preview.png",
+        "verification.json"
+      ],
+      "next": "Revisar conjunto de impactos/material y contraste de superposiciones en skins/arenas; no afirmar que se retiraron todos los blancos.",
+      "pr": 198,
+      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 198,
+          "path": "art-source/entregas/morveth-kit-20261022/correccion-01",
+          "sourceSha256": "0fb59f44b844921aab209d0892db716563077dc6ade606e311c490ddaa23a5e9",
+          "state": "EN_CORRECCION",
+          "change": "Cono específico sin cinco rayos genéricos; conserva alcance210/arc0.85, daño, contagios y partículas del material golpeado. Perfil escalar viaja por evento existente al pool real del invitado.",
+          "evidence": "30 silhouette checks;23 kit;131 functional;16 relay;23 general online;SFA RNG30414 identical;legibility six arenas horizontal/mobile PASS",
+          "remaining": "Revisar conjunto de impactos/material y contraste de superposiciones en skins/arenas; no afirmar que se retiraron todos los blancos."
+        }
+      ]
+    },
+    {
+      "block": "B168",
+      "component": "A-FX-morveth-h3",
+      "source": "art-source/entregas/morveth-kit-20261022",
+      "sheet": "atlases/symbiosis-mycelium.png",
+      "sourceFile": "js/champions/skill-fx-a/c/morveth.js",
+      "sourceSha256": "9394db83bae05d5ff924e4731b15b39a3f7e99fdf8af6b09202fdaf240e9f30a",
+      "atlasSha256": "11be6bd6010338dcedf0bcc02596d05af9123cf9d3a2a1f30d12b09cf45fa7a6",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Los filamentos se ven como dos ramas/antenas finas; en móvil no se identifica con claridad el micelio alrededor del receptor."
+      ],
+      "evidence": [
+        "comparison.png",
+        "mobile-comparison.png",
+        "atlas-preview.png",
+        "verification.json"
+      ],
+      "next": "Integral per-component gates, starting Brakk PR197 corrected supports plus exact failing CI investigation. Keep B168 compound rings/skin-equipment review in shared batch, without repeating first pass.",
+      "pr": 198,
+      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 198,
+          "path": "art-source/entregas/morveth-kit-20261022/correccion-01",
+          "sourceSha256": "0fb59f44b844921aab209d0892db716563077dc6ade606e311c490ddaa23a5e9",
+          "state": "EN_CORRECCION",
+          "change": "Micelio conectado al suelo con bifurcaciones y cuatro sombreros laterales. Centros retraídos para no cortar contorno.",
+          "evidence": "30 silhouette checks;23 kit;131 functional;16 relay;23 general online;SFA RNG30414 identical;legibility six arenas horizontal/mobile PASS",
+          "remaining": "FIX residual: identificación aún tenue entre cuerpos/escudo genérico en móvil. Revisar silueta a1:1 en escena menos solapada y contacto real; skins/contraste integral pendientes."
+        },
+        {
+          "date": "2026-10-23",
+          "pr": 198,
+          "path": "art-source/entregas/morveth-kit-20261022/correccion-02",
+          "sourceSha256": "18c4475c2daa309dc9066cda1c1c59f37b993a38faf825d3b8e691d41c0ed1ce",
+          "atlasSha256": "7ffd8daef7ca3d3bbe80e64c682483b74e58701e0699a633550cdf8657aaf697",
+          "state": "EN_CORRECCION",
+          "change": "B168 only: 48x56x18, four lateral violet caps with closed dark contour and light gills, open torso and two lateral spores. Common arena tint retained on roots; cap uses 80% canon violet / 20% tinted accent. Cosmetic width60 world units at radius25; no mechanics radius change.",
+          "evidence": "43 component,23 kit,131 functional,17 relay actual atlas draw;30414 parity;2268 protection placements per viewport >=80%; nine initial scenes equal;UF identical",
+          "remaining": "Compound contact with legacy rings still dominant; full equipped skins/arenas/performance/Art Gate pending."
+        }
+      ]
+    },
+    {
+      "block": "B105",
+      "component": "A-FX-aelith-h1",
+      "source": "js/champions/skill-fx-a/c/aelith.js",
+      "sourceSha256": "36a57bc1da0347999b1f0871457b3e743ca9335cf8bdbea99ce1a81388bf3c80",
+      "atlas": "art-source/entregas/aelith-normal-kit-20261022/atlases/echo-shatter.png",
+      "atlasSha256": "bb04985f01f63e0dc443f1114d1062c9d7aa4993084b63bf735d269daa6ab505",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "El observador end muestra un estallido al cancelar el eco por muerte aunque no hubo segundo daño; reproducido."
+      ],
+      "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
+      "next": "Distinguir expiración con impacto de cancelación en host/invitado; preservar objeto y daño.",
+      "pr": 199,
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 199,
+        "state": "EN_CORRECCION",
+        "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01",
+        "sourceSha256": "78d7ebbe0f88ecf2c09e9c3634648a405fd6685e5826fff37ac1ae54d8a6ccee",
+        "technical": "41 lifecycle,27 kit,11 variants,31 relay,132 functional,23 general online PASS; SFA RNG29884 identical. TEST_ATTEMPTS preserves failures.",
+        "remaining": "Full visual gate, skins/arenas/specific contrast, warmup/performance and saturation/reentry. H3 grey/trail faint in mobile comparison. CI exact head pending."
+      }
+    },
+    {
+      "block": "B106",
+      "component": "A-FX-aelith-h2",
+      "source": "js/champions/skill-fx-a/c/aelith.js",
+      "sourceSha256": "36a57bc1da0347999b1f0871457b3e743ca9335cf8bdbea99ce1a81388bf3c80",
+      "atlas": "art-source/entregas/aelith-normal-kit-20261022/atlases/fracture-glass.png",
+      "atlasSha256": "16bb813121b6088b3f56f2dc47e67b7f3eaac9987a2f35288bc0ced94336bb4a",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "La grieta se ve como una línea dentada demasiado fina a escala móvil; aún no tiene apertura/cierre longitudinal de150ms ni estado de arena lenta propio."
+      ],
+      "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
+      "next": "Full B106 gate with skin/arena/contact matrix; do not redo Fractura or slow-sand first pass.",
+      "pr": 199,
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-02",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "da501c89333585a1b3bd1e0dfa99a9d0f7b793b452b116db3c85dcf12f288cdf",
+          "technical": "34 silhouette,41 lifecycle,27 kit,11 local variants,132 functional,33 relay,23 general online; SFA RNG29884 identical; final exact CI pending.",
+          "resolved": "Full-length glass/open-close150ms and moderate arena tint",
+          "remaining": "Actual target slow icon1800ms plus integral gate"
+        },
+        {
+          "date": "2026-10-23",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-03",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "dc03e27be526e43ad4c74ebc491f1b6af56291055f85dd3da444c93248b1d75d",
+          "atlasSha256": "7fd600b726be6d509bae71d60ddd1e865cbbd7b0b30310d0c73d5c69f769b10c",
+          "resolved": "Native12-frame slow-sand mark from actual affected target; base1800ms, scaled duration, cleanse/death and existing relay snapshots",
+          "technical": "33 component,27 kit,131 functional and41 real-relay checks PASS; combat/RNG29884/29884;2 initial sceneHashes identical",
+          "remaining": "Equipped skins, compound contrast, six arenas1:1, warmup/performance and full Art Gate. Dense marker overlap needs review."
+        }
+      ]
+    },
+    {
+      "block": "B107",
+      "component": "A-FX-aelith-h3",
+      "source": "js/champions/skill-fx-a/c/aelith.js",
+      "sourceSha256": "36a57bc1da0347999b1f0871457b3e743ca9335cf8bdbea99ce1a81388bf3c80",
+      "atlas": "art-source/entregas/aelith-normal-kit-20261022/atlases/borrowed-sand.png",
+      "atlasSha256": "9442036a2e04173ab4cca2eddde115f66d9da5889489cf9974fde467bdf54287",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Falta colapso de las post-imágenes y fase gris de800ms de deuda.",
+        "Segundero usa animNow global/12 cuadros a100ms: no recorre una única vuelta en los3000ms reales.",
+        "Estela corta y tenue en comparación móvil; skins y perfiles de movimiento pendientes."
+      ],
+      "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
+      "next": "Lote común: fase visual relativa al buff/deuda real, cierre de siluetas y contraste; validar todos los receptores/skins sin tocar velocidad ni armadura.",
+      "pr": 199,
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 199,
+        "state": "EN_CORRECCION",
+        "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01",
+        "sourceSha256": "78d7ebbe0f88ecf2c09e9c3634648a405fd6685e5826fff37ac1ae54d8a6ccee",
+        "technical": "41 lifecycle,27 kit,11 variants,31 relay,132 functional,23 general online PASS; SFA RNG29884 identical. TEST_ATTEMPTS preserves failures.",
+        "remaining": "Full visual gate, skins/arenas/specific contrast, warmup/performance and saturation/reentry. H3 grey/trail faint in mobile comparison. CI exact head pending."
+      },
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-02",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "da501c89333585a1b3bd1e0dfa99a9d0f7b793b452b116db3c85dcf12f288cdf",
+          "technical": "34 silhouette,41 lifecycle,27 kit,11 local variants,132 functional,33 relay,23 general online; SFA RNG29884 identical; final exact CI pending.",
+          "resolved": "Two-tone equipped body snapshots at16/28/40%; stronger clock/sand with canon amber/grey palette",
+          "remaining": "Readability in mobile overlap, skins, warmup/performance and integral gate"
+        },
+        {
+          "date": "2026-10-23",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-04",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "d3b4c2084c4d289856f383dde4ca805f800c613e831baab92d42b5fcc6db5793",
+          "resolved": "Rear half oldest equipped snapshot on upper layer; cached masks, no debt readback.51component/41lifecycle/33slow/27kit/131functional/43relay PASS;720strict layer rows per viewport minimum83%, unchanged80% threshold. RNG29884 identical.",
+          "remaining": "Integral compound contrast,800ms debt aura after220ms collapse, equipment/arenas/device performance. No merge.",
+          "attempts": "TEST_ATTEMPTS.json preserves full-outline occlusion failure, cold-body readback fixture, binary decimal duration fixture, and performance regression."
+        }
+      ]
+    },
+    {
+      "block": "B228",
+      "component": "A-FX-veyra-kvb-rng-parity",
+      "pr": 196,
+      "state": "EN_CORRECCION",
+      "source": "art-source/entregas/veyra-kit-20261022/correccion-01",
+      "frames": [],
+      "defects": [
+        "KVB.off true/false consumes 29969/28804 Math.random calls. Reproduced identically at previous PR196 head and correction; full on/on and off/off snapshots match before/after. This is not a PASS."
+      ],
+      "next": "Complete compound visual/skin/performance gates; reconcile shared hooks without importing other FIX art.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-23 UTC",
+          "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02",
+          "pr": 196,
+          "state": "EN_CORRECCION",
+          "technical": "CORRECTED_LOCAL: repeated complete on/off snapshots equal generic parent baseline; actual legacy particle/budget path restored; no RNG padding or seed changes.49 emission tests and12 follower renderer checks PASS.",
+          "sourceSha256": "98bfb135fde7e185a87ab478f3d2f809275c35435b4077b076cc088cac42bef7",
+          "remaining": "Full compound visual gate/skins/arenas/performance and exact-head CI; not an asset or block closure."
+        }
+      ]
+    },
+    {
+      "block": "B208/B209/B210",
+      "component": "A-FX-solciju-kvb-rng-parity",
+      "pr": 195,
+      "source": "js/champions/vfx-b/solciju.js",
+      "sourceSha256": "0627fd7fd76749615aab737a343e68ed39e0f687fe47c63a8ebfce4dbbeaaf47",
+      "state": "EN_CORRECCION",
+      "frames": "runtime completo KVB.off on/off",
+      "defects": [
+        "Math.random31834 sin KVB /26414 con KVB y estados de enemigos diferentes. Reproducido en head anterior7b89de24bdea58d5e5e321e18957d3b0c5715f05 y corrección."
+      ],
+      "evidence": "art-source/entregas/habilidades-recientes-20261022/correccion-01/parity-comparison.json",
+      "next": "Complete compound visual/skin/performance gates; reconcile shared hooks without importing other FIX art.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-23 UTC",
+          "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02",
+          "pr": 195,
+          "state": "EN_CORRECCION",
+          "technical": "CORRECTED_LOCAL: repeated complete on/off snapshots equal generic parent baseline; actual legacy particle/budget path restored; no RNG padding or seed changes.49 emission tests and12 follower renderer checks PASS.",
+          "sourceSha256": "a2f99d22924d3305c3dd55a0d1ca9d08d25db36d0ba4f9b9e207237490f52442",
+          "remaining": "Full compound visual gate/skins/arenas/performance and exact-head CI; not an asset or block closure."
+        }
+      ]
+    },
+    {
+      "block": "B228",
+      "component": "A-FX-veyra-pact-render-follow",
+      "pr": 196,
+      "state": "EN_CORRECCION",
+      "source": "js/champions/vfx-b/pixfx.js",
+      "frames": "render after hero movement, camera reentry and death",
+      "defects": [
+        "Observed host dx=-15 under real relay: follower coordinates updated before hero motion, not refreshed before drawing/culling. Parent renderer reproduced10 failures/12 checks."
+      ],
+      "correctionHistory": [
+        {
+          "date": "2026-10-23 UTC",
+          "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02",
+          "change": "Resolve live owner+offset before culling/drawing; skip owner killed since last update. No clock/buff/protocol changes.",
+          "technical": "12 renderer checks and21 real relay checks PASS; shared patch also applied PR195.",
+          "remaining": "Full visual/performance/skins gate and exact-head CI."
+        }
+      ],
+      "next": "Reconcile shared pixfx patch when isolating approved components; keep full pending gates."
+    },
+    {
+      "block": "B119",
+      "component": "A-FX-brakk-h3",
+      "source": "js/champions/skill-fx-a/c/brakk.js",
+      "sourceSha256": "eafcdcda620620b7ff0ab598aab47d5f26e13c964b5f429995e111d1b0a3c310",
+      "frames": "repair-brace0-11",
+      "state": "EN_CORRECCION",
+      "pr": 197,
+      "evidence": "art-source/entregas/brakk-kit-20261022/correccion-06/REVIEW.json",
+      "defects": [
+        "Aliado y anillos legados/arena/set aún compiten con postes en contacto; contraste compuesto integral no aprobado."
+      ],
+      "correctionHistory": [
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-06",
+          "technical": "Native48x56x12,center empty.112controls,19kit,81functional PASS. B119isolated PASS; full horizontal gate2FAIL B117; relay20/22FAIL.192/192same-frame exact; parity29232/29232.",
+          "atlasSha256": "465fa2e9445c919dd3920d4fefc6da65ee074841d11e9f6322368ab456c68e28"
+        },
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-08",
+          "technical": "Optional generic-ring crossfade tied to real cached aura and exact recipient.33component,19kit,81functional,24relay PASS;120scenes240same-frame exact;5atlas53frames pixel-identical;29232/29232RNG. No Art Gate.",
+          "sourceSha256": "68f360d6ecf20a9ccd087ffb750448db207b167db424a2ce7e00e9228baa65b9"
+        },
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/validacion-10",
+          "technical": "30local +29real relay checks PASS for4actualcrewrecipients,48sameframecomparisons exact. Runtime/53frames unchanged.",
+          "remaining": "Dense crew armor motifs overlap; max30.0885% sharedmask pixels diagnostic, not gate. First-frame fullstep234.8/258.6ms traced; root subsystem unproven. No ArtGate."
+        },
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/validacion-11",
+          "technical": "450JS unchanged. First-frame actual crew-ready profile165.3/190.6ms, distributed arena/mips/feet/update; SFA3.7/3.4ms. No runtime optimization.",
+          "remaining": "Crew composition and full mobile performance approval remain. Do not attribute startup entirely to53Brakkframes."
+        }
+      ],
+      "next": "Group crew-safe B118/B119 composition correction and first-frame component profile; preserve genuine mechanical signals; do not repeat solved recipient/relay tests as new work."
+    },
+    {
+      "block": "B410",
+      "component": "bront.body.redesign",
+      "originalIds": [
+        "bront.calidad.cuadros_repetidos",
+        "bront.calidad.siluetas_partidas"
+      ],
+      "source": "art-source/entregas/bront-redesign-20261023/primera-pasada-01/sources/pose-sheet-raw.png",
+      "sourceSha256": "56e9f2c55ecbbb3c275316c65bf3970c2378f5f1f3251ad19bd5e94c28d320e8",
+      "frames": "0..35",
+      "state": "EN_CORRECCION",
+      "userDirectionAuthorized": true,
+      "evidence": "art-source/entregas/bront-redesign-20261023/primera-pasada-01/REVIEW.json",
+      "defects": [
+        {
+          "id": "bront.redesign.head-proportion",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+          ],
+          "diagnosis": "Casco pequeño respecto a meta chibi40–45%; pecho/cuerpo domina. Sin medición anatómica automatizada.",
+          "next": "Aumentar casco angular sin volver a escafandra; simplificar torso en lote de vistas y estados.",
+          "sourceSha256": "56e9f2c55ecbbb3c275316c65bf3970c2378f5f1f3251ad19bd5e94c28d320e8",
+          "atlasSha256": "689f820550f091d067c5993439a3a97457d9efffc669c18930ff7417e6023149"
+        },
+        {
+          "id": "bront.redesign.floating-plates",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+          ],
+          "diagnosis": "Hombreras aparecen unidas y cristal puede leerse como emblema sobre placa; vacío/levitación no consistente.",
+          "next": "Espacio negativo visible entre cuerpo y placas y detrás del cristal, coherente en perfil/espalda.",
+          "sourceSha256": "56e9f2c55ecbbb3c275316c65bf3970c2378f5f1f3251ad19bd5e94c28d320e8",
+          "atlasSha256": "689f820550f091d067c5993439a3a97457d9efffc669c18930ff7417e6023149"
+        },
+        {
+          "id": "bront.redesign.alpha",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "diagnosis": "Alfa parcial en 122995 píxeles del atlas; fuente tiene729351; no alpha0/255.",
+          "next": "Rehacer acabado de bordes sin halo conservando fuente original; no convertir automáticamente y declarar aprobado.",
+          "sourceSha256": "56e9f2c55ecbbb3c275316c65bf3970c2378f5f1f3251ad19bd5e94c28d320e8",
+          "atlasSha256": "689f820550f091d067c5993439a3a97457d9efffc669c18930ff7417e6023149"
+        },
+        {
+          "id": "bront.redesign.cast-halo",
+          "frames": [
+            26
+          ],
+          "diagnosis": "Halo suave y partículas compiten con cuerpo, fuera del acabado solicitado.",
+          "next": "Separar pulso VFX del cuerpo y mantener lectura del cristal.",
+          "sourceSha256": "56e9f2c55ecbbb3c275316c65bf3970c2378f5f1f3251ad19bd5e94c28d320e8",
+          "atlasSha256": "689f820550f091d067c5993439a3a97457d9efffc669c18930ff7417e6023149"
+        },
+        {
+          "id": "bront.redesign.animation",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "diagnosis": "36RGBA distintos no certifican ciclo; escala de perfiles/ataques y pie fluctúan; muerte progresiva pero no renderer validado.",
+          "next": "Revisar ciclo a escala real, anclajes compartidos y continuidad de casco/manos/placas en lote36.",
+          "sourceSha256": "56e9f2c55ecbbb3c275316c65bf3970c2378f5f1f3251ad19bd5e94c28d320e8",
+          "atlasSha256": "689f820550f091d067c5993439a3a97457d9efffc669c18930ff7417e6023149"
+        },
+        {
+          "id": "bront.redesign.source-grid",
+          "frames": [
+            13,
+            14,
+            17,
+            18,
+            21,
+            22,
+            30,
+            33,
+            34,
+            35
+          ],
+          "diagnosis": "Grilla irregular: recorte uniforme original tocaba figuras y dejaba fragmentos; cortes por fila corregidos sin modificar fuente.",
+          "state": "CORREGIDO_EXTRACCION",
+          "next": "Conservar límites explícitos; todos36sin contacto opaco con límite de celda fuente en extracción03. No equivale a anatomía PASS.",
+          "sourceSha256": "56e9f2c55ecbbb3c275316c65bf3970c2378f5f1f3251ad19bd5e94c28d320e8",
+          "atlasSha256": "689f820550f091d067c5993439a3a97457d9efffc669c18930ff7417e6023149"
+        }
+      ],
+      "next": "Corrección agrupada36poses: cabeza chibi, vacío/placas flotantes, alpha y anclajes; luego skins/renderer/ArtGate. No reutilizar cuerpo Baltra.",
+      "corrections": [
+        {
+          "checkpoint": "art-source/entregas/bront-redesign-20261023/correccion-02/CHECKPOINT.md",
+          "status": "EN_CORRECCION",
+          "sourceSha256": "9ef650cbc7454b4d4a4100918dd33f718f2481e4c3e61b5c4a2086836623a0ef",
+          "atlasSha256": "92f010b7cf1053f0f85ed1f43e233818123ae6982ce0b3e4f58a3bfcd2292e3d",
+          "defects": [
+            {
+              "id": "bront.redesign.head-proportion",
+              "frames": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31
+              ],
+              "diagnosis": "Corrección aumenta casco. Revisión visual estima cerca de mitad de altura en frente, posiblemente sobre meta40–45%; no medición anatómica automatizada certificada.",
+              "next": "Ajustar proporciones por vistas en lote, anotar contorno de casco y medir relación antes de aprobar.",
+              "sourceSha256": "9ef650cbc7454b4d4a4100918dd33f718f2481e4c3e61b5c4a2086836623a0ef",
+              "atlasSha256": "92f010b7cf1053f0f85ed1f43e233818123ae6982ce0b3e4f58a3bfcd2292e3d"
+            },
+            {
+              "id": "bront.redesign.floating-plates",
+              "frames": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31
+              ],
+              "diagnosis": "Dos placas laterales se distinguen mejor en frente pero hueco estrecho, intermitente en perfil/espalda y poses levantadas; pecho aún puede leerse como paño negro con gema.",
+              "next": "Corregir separación transparente real y cavidad alrededor del cristal sin modificar ID/poses.",
+              "sourceSha256": "9ef650cbc7454b4d4a4100918dd33f718f2481e4c3e61b5c4a2086836623a0ef",
+              "atlasSha256": "92f010b7cf1053f0f85ed1f43e233818123ae6982ce0b3e4f58a3bfcd2292e3d"
+            },
+            {
+              "id": "bront.redesign.alpha",
+              "frames": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35
+              ],
+              "diagnosis": "Atlas conserva 123423 píxeles alfa parcial; fuente 860617. Solicitud de borde duro no fue cumplida por generador. No se endureció alfa para simular PASS.",
+              "next": "Acabado nativo en lote completo con fuente preservada; comprobar bordes sobre claros/oscuros.",
+              "sourceSha256": "9ef650cbc7454b4d4a4100918dd33f718f2481e4c3e61b5c4a2086836623a0ef",
+              "atlasSha256": "92f010b7cf1053f0f85ed1f43e233818123ae6982ce0b3e4f58a3bfcd2292e3d"
+            },
+            {
+              "id": "bront.redesign.animation",
+              "frames": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35
+              ],
+              "diagnosis": "36RGBA únicos no certifican animación. Caja de actor cambia entre vistas/acciones, centrado automático mueve anclaje corporal al extender puño; ultimo cuadro muerte retiene cristal luminoso.",
+              "next": "Anclaje de torso/pies por pose, continuidad de brazos/placas y revisar muerte según canon; reproducir contrato real antes de instalación.",
+              "sourceSha256": "9ef650cbc7454b4d4a4100918dd33f718f2481e4c3e61b5c4a2086836623a0ef",
+              "atlasSha256": "92f010b7cf1053f0f85ed1f43e233818123ae6982ce0b3e4f58a3bfcd2292e3d"
+            },
+            {
+              "id": "bront.redesign.cast-halo",
+              "frames": [
+                26
+              ],
+              "diagnosis": "Halo suave original ausente en revisión fuente/celda26 corregida.",
+              "state": "CORREGIDO_VISUAL_INICIAL",
+              "next": "Comprobar composición con VFX real separado cuando base completa esté aprobada.",
+              "sourceSha256": "9ef650cbc7454b4d4a4100918dd33f718f2481e4c3e61b5c4a2086836623a0ef",
+              "atlasSha256": "92f010b7cf1053f0f85ed1f43e233818123ae6982ce0b3e4f58a3bfcd2292e3d"
+            },
+            {
+              "id": "bront.redesign.source-grid",
+              "frames": [
+                0,
+                1,
+                2,
+                3,
+                13,
+                17,
+                18,
+                29
+              ],
+              "diagnosis": "Primer corte escogía límite junto a píxeles opacos. Intento01 preservado; límites finales en centro de pasillos transparentes,0contactos opacos en36celdas.",
+              "state": "CORREGIDO_EXTRACCION",
+              "next": "Usar coordenadas exactas extract.py. No equivale a aprobación anatómica.",
+              "sourceSha256": "9ef650cbc7454b4d4a4100918dd33f718f2481e4c3e61b5c4a2086836623a0ef",
+              "atlasSha256": "92f010b7cf1053f0f85ed1f43e233818123ae6982ce0b3e4f58a3bfcd2292e3d"
+            }
+          ],
+          "next": "Finish native alpha/proportion/negative-space in full base batch; then two skins and actual renderer. Do not install partial atlas."
+        }
+      ]
+    },
+    {
+      "block": "B114",
+      "component": "A-FX-baltra-h1",
+      "source": "js/champions/skill-fx-a/c/baltra.js",
+      "sourceSha256": "1de844cb268b8139118037585ba839ed010751c452c00f35a1975231542da275",
+      "atlas": "baltra_wave-nova.png",
+      "atlasSha256": "893f5f66d462e30d0087c264479b8f4ccfff90f064100a09a6b9fc752166bd8e",
+      "phase": "contacto500ms; tira80/250/500/1100/2000ms",
+      "frames": "0..11 (revisión de conjunto, no defecto de todos los cuadros)",
+      "diagnosis": "Ondas muy finas y campana central poco evidente en contacto móvil; anillos de aliados dominan a500ms.",
+      "evidence": "after-mobile/baltra-0-native500.png",
+      "next": "Lote posterior: composición/silueta a escala real; conservar geometría y señales mecánicas, validar arenas/skins/relay antes de integrar.",
+      "state": "EN_CORRECCION",
+      "sourceDelivery": "art-source/entregas/baltra-kit-20261023/primera-pasada-01",
+      "defects": [
+        "Ondas muy finas y campana central poco evidente en contacto móvil; anillos de aliados dominan a500ms."
+      ]
+    },
+    {
+      "block": "B115",
+      "component": "A-FX-baltra-h2",
+      "source": "js/champions/skill-fx-a/c/baltra.js",
+      "sourceSha256": "1de844cb268b8139118037585ba839ed010751c452c00f35a1975231542da275",
+      "atlas": "baltra_guard-aura.png",
+      "atlasSha256": "4effbf2579181fd74768d159d1b1d2a5e3c3896b2f8f4bb6506863d49ed08f49",
+      "phase": "contacto500ms; tira80/250/500/1100/2000ms",
+      "frames": "0..11 (revisión de conjunto, no defecto de todos los cuadros)",
+      "diagnosis": "Guardia se lee como arco fino y las placas votivas son pequeñas; continuidad/recast/muerte y contraste compuesto pendientes.",
+      "evidence": "after-mobile/baltra-1-native500.png",
+      "next": "Lote posterior: composición/silueta a escala real; conservar geometría y señales mecánicas, validar arenas/skins/relay antes de integrar.",
+      "state": "EN_CORRECCION",
+      "sourceDelivery": "art-source/entregas/baltra-kit-20261023/primera-pasada-01",
+      "defects": [
+        "Guardia se lee como arco fino y las placas votivas son pequeñas; continuidad/recast/muerte y contraste compuesto pendientes."
+      ]
+    },
+    {
+      "block": "B116",
+      "component": "A-FX-baltra-h3",
+      "source": "js/champions/skill-fx-a/c/baltra.js",
+      "sourceSha256": "1de844cb268b8139118037585ba839ed010751c452c00f35a1975231542da275",
+      "atlas": "baltra_clapper-cone.png",
+      "atlasSha256": "8b6088e5fdfa08e9af7a4c6efde901f1dfa6615c426ebb113509e4c82f586cc5",
+      "phase": "contacto500ms; tira80/250/500/1100/2000ms",
+      "frames": "0..11 (revisión de conjunto, no defecto de todos los cuadros)",
+      "diagnosis": "Rayos blancos y cono legados dominan la composición; badajo poco reconocible dentro del conjunto.",
+      "evidence": "after-horizontal/baltra-2.png",
+      "next": "Lote posterior: composición/silueta a escala real; conservar geometría y señales mecánicas, validar arenas/skins/relay antes de integrar.",
+      "state": "EN_CORRECCION",
+      "sourceDelivery": "art-source/entregas/baltra-kit-20261023/primera-pasada-01",
+      "defects": [
+        "Rayos blancos y cono legados dominan la composición; badajo poco reconocible dentro del conjunto."
+      ]
+    },
+    {
+      "block": "B120",
+      "component": "A-FX-brasa-h1",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/brasa.js",
+      "sourceSha256": "9e700e8ccc98ebac0352fc826d5eabb740f01907128cd2491ea48a0d7e9dca7f",
+      "atlas": "brasa_mount-burst.png",
+      "atlasSha256": "0e6f2b418d98ce8e6e9b7b5f2b9777458274a6122d54cb42ba39cdfb87fba21b",
+      "frames": "0..11, kit-level diagnosis; not a defect attributed to every frame",
+      "phase": "80/256/512/1104/2000ms captures; online set dismantle",
+      "diagnosis": "Clamps/bolts are too small at mobile contact scale; construction reads as sparks, not mechanical assembly.",
+      "defects": [
+        "Clamps/bolts are too small at mobile contact scale; construction reads as sparks, not mechanical assembly."
+      ],
+      "evidence": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-0-native250.png",
+      "sourceDelivery": "art-source/entregas/brasa-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes. Preserve IDs, mechanics, sources and diagnostic failures; validate composite contrast/skins/arenas/lifecycle/performance/relay before integration."
+    },
+    {
+      "block": "B121",
+      "component": "A-FX-brasa-h2",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/brasa.js",
+      "sourceSha256": "9e700e8ccc98ebac0352fc826d5eabb740f01907128cd2491ea48a0d7e9dca7f",
+      "atlas": "brasa_purge-cone.png",
+      "atlasSha256": "02b604a805f492c1f49f0858f8ecbb6925b6735c039e51860418020546adf001",
+      "frames": "0..11, kit-level diagnosis; not a defect attributed to every frame",
+      "phase": "80/256/512/1104/2000ms captures; online set dismantle",
+      "diagnosis": "Three hollow plumes are distinct in atlas but legacy radial pressure rays dominate the real cast; plume tips read as outlines.",
+      "defects": [
+        "Three hollow plumes are distinct in atlas but legacy radial pressure rays dominate the real cast; plume tips read as outlines."
+      ],
+      "evidence": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-1.png",
+      "sourceDelivery": "art-source/entregas/brasa-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes. Preserve IDs, mechanics, sources and diagnostic failures; validate composite contrast/skins/arenas/lifecycle/performance/relay before integration."
+    },
+    {
+      "block": "B122",
+      "component": "A-FX-brasa-h3",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/brasa.js",
+      "sourceSha256": "9e700e8ccc98ebac0352fc826d5eabb740f01907128cd2491ea48a0d7e9dca7f",
+      "atlas": "brasa_dismantle-aura.png",
+      "atlasSha256": "44ef3438c67d9abf7cb08999bfe660fab767136bc928299163974085cfdcd658",
+      "frames": "0..11, kit-level diagnosis; not a defect attributed to every frame",
+      "phase": "80/256/512/1104/2000ms captures; online set dismantle",
+      "diagnosis": "Wrench/fastener marks are thin and hidden by allied bodies and rings in mobile contact. Lifecycle recast/death/pool saturation still needs integral testing.",
+      "defects": [
+        "Wrench/fastener marks are thin and hidden by allied bodies and rings in mobile contact. Lifecycle recast/death/pool saturation still needs integral testing."
+      ],
+      "evidence": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-2-native500.png",
+      "sourceDelivery": "art-source/entregas/brasa-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes. Preserve IDs, mechanics, sources and diagnostic failures; validate composite contrast/skins/arenas/lifecycle/performance/relay before integration."
+    },
+    {
+      "block": "B484",
+      "component": "A-PROP-sfa-steam",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/brasa.js",
+      "sourceSha256": "9e700e8ccc98ebac0352fc826d5eabb740f01907128cd2491ea48a0d7e9dca7f",
+      "atlas": "brasa_vent-zone.png",
+      "atlasSha256": "f568c2ccc433bf504b143f85bd1314ed338aea6c095e79854204f4d33a2b9452",
+      "frames": "0..11, kit-level diagnosis; not a defect attributed to every frame",
+      "phase": "80/256/512/1104/2000ms captures; online set dismantle",
+      "diagnosis": "Actual steam renders on both peers, but host uses brasa_vent~p while guest uses brasa_vent. Variant parity FAIL; no protocol/runtime fix included.",
+      "defects": [
+        "Actual steam renders on both peers, but host uses brasa_vent~p while guest uses brasa_vent. Variant parity FAIL; no protocol/runtime fix included."
+      ],
+      "evidence": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/online-results.json",
+      "sourceDelivery": "art-source/entregas/brasa-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes. Preserve IDs, mechanics, sources and diagnostic failures; validate composite contrast/skins/arenas/lifecycle/performance/relay before integration."
+    },
+    {
+      "block": "B129",
+      "component": "A-FX-dariel-h1",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/dariel.js",
+      "sourceSha256": "1d2b35cc7f04b2d905cee31b5d1a09858ba19b7ff2d26bbf3eeed112c0fedd62",
+      "atlas": "dariel_discord-cone.png",
+      "atlasSha256": "2c1a4d80f5588e4a267462b4c79ed2b1f58901de8e0f86434a779b1564d61dff",
+      "frames": "0..11; kit-level diagnosis, not a defect attributed to every frame",
+      "phase": "256/512ms real captures; event lifecycle static consumer audit",
+      "diagnosis": "Three angular waves are distinct from music star, but read as chevrons/arrows; thin notes and inherited white rays dominate mobile contact.",
+      "defects": [
+        "Three angular waves are distinct from music star, but read as chevrons/arrows; thin notes and inherited white rays dominate mobile contact."
+      ],
+      "evidence": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-0-native250.png",
+      "sourceDelivery": "art-source/entregas/dariel-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes; preserve source/IDs, then composite contrast, real recipient lifecycle, skins/equipment/six arenas/relay/performance and integral Art Gate."
+    },
+    {
+      "block": "B130",
+      "component": "A-FX-dariel-h2",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/dariel.js",
+      "sourceSha256": "1d2b35cc7f04b2d905cee31b5d1a09858ba19b7ff2d26bbf3eeed112c0fedd62",
+      "atlas": "dariel_march-aura.png",
+      "atlasSha256": "7a3c704f0f64b8499846d75ea38949e4add1a44eeaa3e973a49c2901b178e90a",
+      "frames": "0..11; kit-level diagnosis, not a defect attributed to every frame",
+      "phase": "256/512ms real captures; event lifecycle static consumer audit",
+      "diagnosis": "Staff/barlines are small over bodies and shared rings. Inherited SFA aura defaults1600ms versus march2400ms before modifiers, hardcoded150 and generic shield filter; actual buff recipient/lifecycle coupling remains pending.",
+      "defects": [
+        "Staff/barlines are small over bodies and shared rings. Inherited SFA aura defaults1600ms versus march2400ms before modifiers, hardcoded150 and generic shield filter; actual buff recipient/lifecycle coupling remains pending."
+      ],
+      "evidence": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-1-native500.png",
+      "sourceDelivery": "art-source/entregas/dariel-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes; preserve source/IDs, then composite contrast, real recipient lifecycle, skins/equipment/six arenas/relay/performance and integral Art Gate."
+    },
+    {
+      "block": "B131",
+      "component": "A-FX-dariel-h3",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/dariel.js",
+      "sourceSha256": "1d2b35cc7f04b2d905cee31b5d1a09858ba19b7ff2d26bbf3eeed112c0fedd62",
+      "atlas": "dariel_refrain-nova.png",
+      "atlasSha256": "07bfe89007e316f6264ed23735160c154214ece9219f3ed152f25d70d1afd852",
+      "frames": "0..11; kit-level diagnosis, not a defect attributed to every frame",
+      "phase": "256/512ms real captures; event lifecycle static consumer audit",
+      "diagnosis": "Repeat brackets distinguish trajectory but remain thin; rising notes overlap bodies. Inherited post-heal hp<max selection can omit fully healed allies and hardcoded140 can differ from modified actual radius; scope remains visual workshop.",
+      "defects": [
+        "Repeat brackets distinguish trajectory but remain thin; rising notes overlap bodies. Inherited post-heal hp<max selection can omit fully healed allies and hardcoded140 can differ from modified actual radius; scope remains visual workshop."
+      ],
+      "evidence": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-2-native250.png",
+      "sourceDelivery": "art-source/entregas/dariel-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes; preserve source/IDs, then composite contrast, real recipient lifecycle, skins/equipment/six arenas/relay/performance and integral Art Gate."
+    },
+    {
+      "block": "B132",
+      "component": "A-FX-eslabon-h1",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/eslabon.js",
+      "sourceSha256": "4e001f57a1409458b9c551294102f519841c882f9ef2051ab5f5cd4525c8726c",
+      "atlas": "eslabon_hook-burst.png",
+      "atlasSha256": "789060becb2d7d45c438439bd00d4b91802ea3e61a02c4ccaae2240c9cf6f466",
+      "frames": "beam0..7 / burst or aura0..11; kit diagnosis, not all frames individually rejected",
+      "phase": "Native real256/512ms; lifecycle audit",
+      "diagnosis": "Open links and hook replace filled ray/star, but the hook still competes with white legacy hit effects at mobile256ms. The beam uses global loop phase; pull silhouette and actual trajectory continuity need grouped review.",
+      "defects": [
+        "Open links and hook replace filled ray/star, but the hook still competes with white legacy hit effects at mobile256ms. The beam uses global loop phase; pull silhouette and actual trajectory continuity need grouped review."
+      ],
+      "evidence": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01/after-mobile/eslabon-0-native250.png",
+      "sourceDelivery": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes; preserve IDs/sources. Composite contrast, actual guard lifetime/recipients, skins/equipment/six arenas/relay/performance and integral Art Gate."
+    },
+    {
+      "block": "B133",
+      "component": "A-FX-eslabon-h2",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/eslabon.js",
+      "sourceSha256": "4e001f57a1409458b9c551294102f519841c882f9ef2051ab5f5cd4525c8726c",
+      "atlas": "eslabon_line-beam.png",
+      "atlasSha256": "6e94e42b3170ea73e580d6e03c31959822af404a9f1cd24479b67850431a86b0",
+      "frames": "beam0..7 / burst or aura0..11; kit diagnosis, not all frames individually rejected",
+      "phase": "Native real256/512ms; lifecycle audit",
+      "diagnosis": "Repeated open links are visible, but the vertical line reads as thin ornamental posts; endpoint stakes are small and the inherited solid ground line remains beneath. Actual object persists6000ms, candidate uses it, no mechanical bounds changed.",
+      "defects": [
+        "Repeated open links are visible, but the vertical line reads as thin ornamental posts; endpoint stakes are small and the inherited solid ground line remains beneath. Actual object persists6000ms, candidate uses it, no mechanical bounds changed."
+      ],
+      "evidence": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01/after-mobile/eslabon-1-native250.png",
+      "sourceDelivery": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes; preserve IDs/sources. Composite contrast, actual guard lifetime/recipients, skins/equipment/six arenas/relay/performance and integral Art Gate."
+    },
+    {
+      "block": "B134",
+      "component": "A-FX-eslabon-h3",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/eslabon.js",
+      "sourceSha256": "4e001f57a1409458b9c551294102f519841c882f9ef2051ab5f5cd4525c8726c",
+      "atlas": "eslabon_ward-aura.png",
+      "atlasSha256": "d908353ca1c20af2a28bc9886b00c247eb11458479350be50ab797323755c37f",
+      "frames": "beam0..7 / burst or aura0..11; kit diagnosis, not all frames individually rejected",
+      "phase": "Native real256/512ms; lifecycle audit",
+      "diagnosis": "Two lock pairs overlap into a grid when caster and recipient are close. Inherited aura2200ms versus guard5000ms and fixed700ms cast-endpoint beam do not represent ongoing real guard range/budget/recipient lifetime. Technical test reproduces duration mismatch; dynamic range/budget cases not certified online.",
+      "defects": [
+        "Two lock pairs overlap into a grid when caster and recipient are close. Inherited aura2200ms versus guard5000ms and fixed700ms cast-endpoint beam do not represent ongoing real guard range/budget/recipient lifetime. Technical test reproduces duration mismatch; dynamic range/budget cases not certified online."
+      ],
+      "evidence": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01/after-mobile/eslabon-2-native500.png",
+      "sourceDelivery": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes; preserve IDs/sources. Composite contrast, actual guard lifetime/recipients, skins/equipment/six arenas/relay/performance and integral Art Gate."
+    },
+    {
+      "block": "B135",
+      "component": "A-FX-facu_gm-h1",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/facu_gm.js",
+      "sourceSha256": "45135dcbfae0e703c1d2974fcd04e0c54ac98686f98f4a6563a8e632d8b4f496",
+      "atlas": "facu_current-beam.png",
+      "atlasSha256": "d46e25367816c7c66f5b0b64149ed550fd7ce35c9183c06369c8f62032586166",
+      "frames": "beam0..7 / burst or nova0..11; grouped diagnosis, not individual rejection of every frame",
+      "phase": "Native256/512ms and inherited beam phase audit",
+      "diagnosis": "Corriente sinuosa nativa, pero fina y parecida a una línea eléctrica en contacto; siguen dominando las flechas y la banda azul legadas. El bucle de beam usa reloj global, no fase del objeto.",
+      "defects": [
+        "Corriente sinuosa nativa, pero fina y parecida a una línea eléctrica en contacto; siguen dominando las flechas y la banda azul legadas. El bucle de beam usa reloj global, no fase del objeto."
+      ],
+      "evidence": "art-source/entregas/facu-gm-kit-20261023/primera-pasada-01/after-mobile/facu_gm-0-native500.png",
+      "sourceDelivery": "art-source/entregas/facu-gm-kit-20261023/primera-pasada-01",
+      "next": "Lote posterior de composición/silueta/contraste, fase y cresta móvil; conservar IDs y fuentes. Skins/equipo/seis arenas, lifecycle/render/relay/performance y Art Gate antes de integrar."
+    },
+    {
+      "block": "B136",
+      "component": "A-FX-facu_gm-h2",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/facu_gm.js",
+      "sourceSha256": "45135dcbfae0e703c1d2974fcd04e0c54ac98686f98f4a6563a8e632d8b4f496",
+      "atlas": "facu_pressure-nova.png",
+      "atlasSha256": "05b1804e064a82afa964ab6956f853c0f9fcfbec51db0ca5af5176d145f46e6e",
+      "frames": "beam0..7 / burst or nova0..11; grouped diagnosis, not individual rejection of every frame",
+      "phase": "Native256/512ms and inherited beam phase audit",
+      "diagnosis": "La espiral converge hacia el centro pero a256ms queda pequeña bajo los cuerpos; el gran anillo legado y golpes blancos dominan. Falta lectura inequívoca de presión hundida a escala móvil.",
+      "defects": [
+        "La espiral converge hacia el centro pero a256ms queda pequeña bajo los cuerpos; el gran anillo legado y golpes blancos dominan. Falta lectura inequívoca de presión hundida a escala móvil."
+      ],
+      "evidence": "art-source/entregas/facu-gm-kit-20261023/primera-pasada-01/after-mobile/facu_gm-1-native250.png",
+      "sourceDelivery": "art-source/entregas/facu-gm-kit-20261023/primera-pasada-01",
+      "next": "Lote posterior de composición/silueta/contraste, fase y cresta móvil; conservar IDs y fuentes. Skins/equipo/seis arenas, lifecycle/render/relay/performance y Art Gate antes de integrar."
+    },
+    {
+      "block": "B137",
+      "component": "A-FX-facu_gm-h3",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/facu_gm.js",
+      "sourceSha256": "45135dcbfae0e703c1d2974fcd04e0c54ac98686f98f4a6563a8e632d8b4f496",
+      "atlas": "facu_ride-beam.png",
+      "atlasSha256": "a5354b1cf3b6390173d8734e0687a49f05302adac8eaf403a5ed2a6724662bf6",
+      "frames": "beam0..7 / burst or nova0..11; grouped diagnosis, not individual rejection of every frame",
+      "phase": "Native256/512ms and inherited beam phase audit",
+      "diagnosis": "Espuma rizada sigue los segmentos reales; la franja blanca legada la domina. Falta cresta propia asociada al frente móvil del campeón; el beam de espuma conserva reloj global. Skin Soberano de la Fosa y su transmisión no certificadas.",
+      "defects": [
+        "Espuma rizada sigue los segmentos reales; la franja blanca legada la domina. Falta cresta propia asociada al frente móvil del campeón; el beam de espuma conserva reloj global. Skin Soberano de la Fosa y su transmisión no certificadas."
+      ],
+      "evidence": "art-source/entregas/facu-gm-kit-20261023/primera-pasada-01/after-mobile/facu_gm-2-native500.png",
+      "sourceDelivery": "art-source/entregas/facu-gm-kit-20261023/primera-pasada-01",
+      "next": "Lote posterior de composición/silueta/contraste, fase y cresta móvil; conservar IDs y fuentes. Skins/equipo/seis arenas, lifecycle/render/relay/performance y Art Gate antes de integrar."
+    }
+  ],
+  "pendingVerificationNotFailures": [
+    "Aurelia basic/refraction/luminal-step: generated, no empty/edge flags, still need final-scale readability, proper layer split and runtime tests",
+    "Myla hurt: visual continuity review pending",
+    "Libertador PR166: specialized61-frame integration pending, do not use generic36 replacement",
+    "Solciju B210 copa: revisión visual inicial favorable y alpha PASS; pendiente revisión de skins/arenas y CI del head antes de VALIDADO/main.",
+    "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
+    "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
+  ],
+  "nextProduction": "Audit Farolero B138/B139/B140 in fresh main/PR/real consumers; preserve body/UF/basic/lantern if already present. Broad first passes before correcting Facu/Eslabón/Dáriel/older workshops.",
+  "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
+  "next": "Audit Farolero B138/B139/B140 in fresh main/PR/real consumers; preserve body/UF/basic/lantern if already present. Broad first passes before correcting Facu/Eslabón/Dáriel/older workshops.",
+  "validation07": {
+    "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
+    "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
+    "B117": "fresh strictsamepose PASS, historical2FAIL notrootresolved",
+    "state": "EN_CORRECCION",
+    "preservesEntries": 23
+  },
+  "queueSnapshotOrigin": {
+    "branch": "art/eslabon-kit-first-pass-20261023",
+    "sha": "a9c2f653d9f4cc608bce8b62bf039683bfa1a477",
+    "preservedHistoricalEntries": 37
+  }
+}

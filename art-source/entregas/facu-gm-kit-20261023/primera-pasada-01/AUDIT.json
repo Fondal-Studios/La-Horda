@@ -1,0 +1,39 @@
+{
+  "base": "f62d181477adcb4607cc615411cc51bad769f681",
+  "date": "2026-10-23",
+  "openPRs": "17 open at start; no Facu workshop. Latest remote Eslabón closure complete, no lost closure. PR204/91/200 already merged; other drafts have FIX.",
+  "blocks": [
+    {
+      "block": "B135",
+      "id": "A-FX-facu_gm-h1",
+      "before": "Generic tide SFA plus existing Ascension renderer.",
+      "after": "Native current, pressure spiral and ride launch/real foam segment source, workshop only."
+    },
+    {
+      "block": "B136",
+      "id": "A-FX-facu_gm-h2",
+      "before": "Generic tide SFA plus existing Ascension renderer.",
+      "after": "Native current, pressure spiral and ride launch/real foam segment source, workshop only."
+    },
+    {
+      "block": "B137",
+      "id": "A-FX-facu_gm-h3",
+      "before": "Generic tide SFA plus existing Ascension renderer.",
+      "after": "Native current, pressure spiral and ride launch/real foam segment source, workshop only."
+    }
+  ],
+  "partialAdditionalItem": {
+    "block": "B485",
+    "id": "A-PROP-sfa-as_current",
+    "state": "GENERADO",
+    "scope": "Only current source. as_ocean/other champions not closed. as_foam has no standalone plan ID; retained as B137 sublayer, no invented inventory ID."
+  },
+  "actualConsumerFinding": {
+    "ride": "sfaDash sees identical from/to at cast; movement and as_foam creation occur later in updatePortadorHero. Main capture traces two origin bursts and no beam. Focused test confirms deferred movement; candidate binds actual replicated foam endpoints.",
+    "current": "as_current carries300u segment, radius34 and3500ms at base; real fade remains.",
+    "pressure": "sfaNovaAt uses actual asCue point/radius, immediate damage unchanged.",
+    "ultimate": "Original UF wrapper bypasses normal SFA at cast; as_ocean/leviathan and tide end effect retained."
+  },
+  "preserved": "Body and Soberano de la Fosa atlas, basic wave/Quilla, icons, legacy render, UF ocean. B017/B247/B394/B413/B438/B637/B485 not declared complete.",
+  "onlineFixture": "Initial unauthenticated guest was rejected by founder entitlement (slot champ empty). Final uses throwaway loopback account + existing FOUNDERS_JSON immutable-id policy in temporary DATA_DIR, DATABASE_URL empty. No real account, permission, deployment or server-source changes; token never saved."
+}

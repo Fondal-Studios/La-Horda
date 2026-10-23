@@ -1,0 +1,469 @@
+{
+  "results": [
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "speed": 536,
+          "objects": [
+            {
+              "kind": "as_current",
+              "life": 3420,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "speed": 488,
+          "objects": [
+            {
+              "kind": "as_current",
+              "life": 3244,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "speed": 488,
+          "objects": [
+            {
+              "kind": "as_current",
+              "life": 2988,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "speed": 536,
+          "objects": [
+            {
+              "kind": "as_current",
+              "life": 2396,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "speed": 536,
+          "objects": [
+            {
+              "kind": "as_current",
+              "life": 1500,
+              "owner": 0
+            }
+          ]
+        }
+      ],
+      "lance": false,
+      "champion": "facu_gm",
+      "slot": 0,
+      "action": "current",
+      "trace": [
+        [
+          "burst",
+          "tide",
+          0,
+          0,
+          44,
+          0,
+          480,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        "as_current"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Corriente de Resaca",
+      "sceneHash": "f2ddbd2f850dc93cbaac427e1eaadde65854ad6ae79147b7e5e5980e8d340146"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": []
+        }
+      ],
+      "lance": false,
+      "champion": "facu_gm",
+      "slot": 1,
+      "action": "pressure",
+      "trace": [
+        [
+          "nova",
+          "tide~h",
+          115,
+          0,
+          120,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rays",
+          "tide~p",
+          115,
+          0,
+          50.4,
+          0,
+          380,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rings",
+          "tide~p",
+          115,
+          0,
+          120,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Presión Abisal",
+      "sceneHash": "02840002bcc9c96f7c82c9940a18b5a0c027f451b98bb6874fbfaa28af2a2b0d"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "as_foam",
+              "life": 1984,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": [
+            {
+              "kind": "as_foam",
+              "life": 1808,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 1888,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 1968,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": [
+            {
+              "kind": "as_foam",
+              "life": 1552,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 1632,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 1712,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 1792,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 1872,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 1952,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": [
+            {
+              "kind": "as_foam",
+              "life": 1040,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 1120,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 1200,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 1280,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 1360,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 1408,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": [
+            {
+              "kind": "as_foam",
+              "life": 144,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 224,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 304,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 384,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 464,
+              "owner": 0
+            },
+            {
+              "kind": "as_foam",
+              "life": 512,
+              "owner": 0
+            }
+          ]
+        }
+      ],
+      "lance": false,
+      "champion": "facu_gm",
+      "slot": 2,
+      "action": "ride",
+      "trace": [
+        [
+          "burst",
+          "tide~p",
+          0,
+          0,
+          30,
+          0,
+          420,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "tide~p",
+          0,
+          0,
+          38,
+          0,
+          460,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        "as_foam",
+        "as_foam",
+        "as_foam",
+        "as_foam",
+        "as_foam",
+        "as_foam"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Cabalgar la Ola",
+      "sceneHash": "05a535d9ee3d219cf0a14158ec6fe866c81c6465d854198241d7481fffb56a00"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "as_ocean",
+              "life": 4120,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": [
+            {
+              "kind": "as_ocean",
+              "life": 3944,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": [
+            {
+              "kind": "as_ocean",
+              "life": 3688,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": [
+            {
+              "kind": "as_ocean",
+              "life": 3096,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": [
+            {
+              "kind": "as_ocean",
+              "life": 2200,
+              "owner": 0
+            }
+          ]
+        }
+      ],
+      "lance": false,
+      "champion": "facu_gm",
+      "slot": 3,
+      "action": "ocean",
+      "trace": [],
+      "objects": [
+        "as_ocean"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "El Océano Reclama la Arena",
+      "sceneHash": "204259de21783dcf19d4d0feadf42b79fcf6823725dad2dcfd6a5f701b3a9e76"
+    }
+  ],
+  "errors": []
+}

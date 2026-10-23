@@ -1,0 +1,62 @@
+{
+  "status": "EN_CORRECCION",
+  "artGate": "FIX / NO_INTEGRAR",
+  "generated": {
+    "atlas": 5,
+    "phases": 52,
+    "nonempty": 49,
+    "intentionalTransparentClosures": 3,
+    "distinctRGBAWithinAtlasTotal": 51,
+    "note": "One repeated beam phase; totals are animation phases, not52 unique poses."
+  },
+  "validatedTechnicalOnly": {
+    "atlasChecks": 29,
+    "focusedKitChecks": 28,
+    "ascensionRegression": 225,
+    "realRelayChecks": 6,
+    "precastMatches": 8,
+    "UFpngSame": 6,
+    "RNG": 40680,
+    "parityScope": "360 frames summarized state only, not full snapshots/global isolation",
+    "reexport": 5
+  },
+  "visualInspection": [
+    "Mobile before/after four actions at same scale inspected.",
+    "Native390x844 H1/H3 at512ms and H2 at256ms inspected.",
+    "Current thin, pressure under bodies, white trail dominant; no integral approval."
+  ],
+  "findings": [
+    {
+      "block": "B135",
+      "id": "A-FX-facu_gm-h1",
+      "diagnosis": "Corriente sinuosa nativa, pero fina y parecida a una línea eléctrica en contacto; siguen dominando las flechas y la banda azul legadas. El bucle de beam usa reloj global, no fase del objeto.",
+      "evidence": "after-mobile/facu_gm-0-native500.png"
+    },
+    {
+      "block": "B136",
+      "id": "A-FX-facu_gm-h2",
+      "diagnosis": "La espiral converge hacia el centro pero a256ms queda pequeña bajo los cuerpos; el gran anillo legado y golpes blancos dominan. Falta lectura inequívoca de presión hundida a escala móvil.",
+      "evidence": "after-mobile/facu_gm-1-native250.png"
+    },
+    {
+      "block": "B137",
+      "id": "A-FX-facu_gm-h3",
+      "diagnosis": "Espuma rizada sigue los segmentos reales; la franja blanca legada la domina. Falta cresta propia asociada al frente móvil del campeón; el beam de espuma conserva reloj global. Skin Soberano de la Fosa y su transmisión no certificadas.",
+      "evidence": "after-mobile/facu_gm-2-native500.png"
+    }
+  ],
+  "pending": [
+    "Composite contrast/silhouette and integral Art Gate",
+    "Six arenas, skins/equipment1:1 including Soberano de la Fosa guest",
+    "Moving crest and event-relative beam phase",
+    "Cold/warm performance, saturation/reentry/culling",
+    "Exact-head CI"
+  ],
+  "states": {
+    "GENERADO": true,
+    "EN_CORRECCION": true,
+    "VALIDADO": false,
+    "INTEGRADO_MAIN": false,
+    "publicationVerified": false
+  }
+}

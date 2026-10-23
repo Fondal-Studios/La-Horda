@@ -1,0 +1,159 @@
+{
+  "checks": [
+    {
+      "host": "solciju",
+      "guest": "facu_gm",
+      "ok": true,
+      "rh": {
+        "draw": {
+          "facu_current:beam": 300,
+          "facu_current:burst": 9,
+          "facu_pressure~h:nova": 17,
+          "facu_ride~p:burst": 14,
+          "facu_ride~p:beam": 193
+        },
+        "k": "facu_gm",
+        "casts": 4,
+        "objects": [
+          {
+            "id": 1,
+            "owner": 1,
+            "kind": "as_current"
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "kind": "as_foam"
+          },
+          {
+            "id": 4,
+            "owner": 1,
+            "kind": "as_foam"
+          },
+          {
+            "id": 5,
+            "owner": 1,
+            "kind": "as_foam"
+          },
+          {
+            "id": 6,
+            "owner": 3,
+            "kind": "stroganoff"
+          },
+          {
+            "id": 7,
+            "owner": 1,
+            "kind": "as_foam"
+          },
+          {
+            "id": 8,
+            "owner": 1,
+            "kind": "as_foam"
+          },
+          {
+            "id": 9,
+            "owner": 1,
+            "kind": "as_foam"
+          },
+          {
+            "id": 10,
+            "owner": 1,
+            "kind": "as_ocean"
+          }
+        ],
+        "hp": 171.6,
+        "skin": "facu_gm"
+      },
+      "rg": {
+        "draw": {
+          "facu_current:beam": 672,
+          "facu_current:burst": 28,
+          "facu_pressure~h:nova": 35,
+          "facu_ride~p:beam": 328,
+          "facu_ride~p:burst": 22
+        },
+        "k": "facu_gm",
+        "objects": [
+          {
+            "id": 1,
+            "owner": 1,
+            "kind": "as_current"
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "kind": "as_foam"
+          },
+          {
+            "id": 4,
+            "owner": 1,
+            "kind": "as_foam"
+          },
+          {
+            "id": 5,
+            "owner": 1,
+            "kind": "as_foam"
+          },
+          {
+            "id": 6,
+            "owner": 3,
+            "kind": "stroganoff"
+          },
+          {
+            "id": 7,
+            "owner": 1,
+            "kind": "as_foam"
+          },
+          {
+            "id": 8,
+            "owner": 1,
+            "kind": "as_foam"
+          },
+          {
+            "id": 9,
+            "owner": 1,
+            "kind": "as_foam"
+          },
+          {
+            "id": 10,
+            "owner": 1,
+            "kind": "as_ocean"
+          }
+        ],
+        "hp": 171.6,
+        "skin": "facu_gm"
+      }
+    },
+    {
+      "name": "facu_current:beam drawn both peers exact variant",
+      "ok": true,
+      "host": 300,
+      "guest": 672
+    },
+    {
+      "name": "facu_current:burst drawn both peers exact variant",
+      "ok": true,
+      "host": 9,
+      "guest": 28
+    },
+    {
+      "name": "facu_pressure~h:nova drawn both peers exact variant",
+      "ok": true,
+      "host": 17,
+      "guest": 35
+    },
+    {
+      "name": "facu_ride~p:burst drawn both peers exact variant",
+      "ok": true,
+      "host": 14,
+      "guest": 22
+    },
+    {
+      "name": "facu_ride~p:beam drawn both peers exact variant",
+      "ok": true,
+      "host": 193,
+      "guest": 328
+    }
+  ],
+  "errors": []
+}

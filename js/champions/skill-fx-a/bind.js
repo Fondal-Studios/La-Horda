@@ -151,7 +151,7 @@ function sfaHeroZFrame() {
 
 /* ---------------- capas de impacto añadidas a cada habilidad: destello, ondas y, en la definitiva, columna, segunda onda y sacudida ---------------- */
 function sfaExtras(c, slot, pushed) {
-  if (!pushed.length) return;
+  if (!pushed.length || SFA_BIND[c.h.classKey]?.[slot]?.extras === false) return;
   const base = t => t.split('~')[0], ult = slot === 'ult', h = c.h;
   const nov = pushed.filter(p => p.art === 'nova'), bm = pushed.filter(p => p.art === 'beam'), cn = pushed.filter(p => p.art === 'cone'), au = pushed.filter(p => p.art === 'aura');
   const th0 = base(pushed[0].theme);

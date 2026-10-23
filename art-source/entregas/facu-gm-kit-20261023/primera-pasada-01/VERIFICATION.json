@@ -1,0 +1,306 @@
+{
+  "checks": [
+    {
+      "name": "facu_currentbeam binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "facu_currentbeam clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "facu_currentbeam active cells",
+      "ok": true,
+      "detail": [
+        44,
+        45,
+        45,
+        45,
+        45,
+        44,
+        45,
+        45
+      ]
+    },
+    {
+      "name": "facu_currentbeam final phase",
+      "ok": true,
+      "detail": 45
+    },
+    {
+      "name": "facu_currentbeam cache reuse",
+      "ok": true
+    },
+    {
+      "name": "facu_currentburst binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "facu_currentburst clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "facu_currentburst active cells",
+      "ok": true,
+      "detail": [
+        143,
+        176,
+        199,
+        215,
+        256,
+        282,
+        294,
+        287,
+        218,
+        145,
+        76,
+        0
+      ]
+    },
+    {
+      "name": "facu_currentburst final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "facu_currentburst cache reuse",
+      "ok": true
+    },
+    {
+      "name": "facu_pressurenova binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "facu_pressurenova clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "facu_pressurenova active cells",
+      "ok": true,
+      "detail": [
+        411,
+        398,
+        385,
+        363,
+        358,
+        324,
+        284,
+        234,
+        168,
+        101,
+        48,
+        0
+      ]
+    },
+    {
+      "name": "facu_pressurenova final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "facu_pressurenova cache reuse",
+      "ok": true
+    },
+    {
+      "name": "facu_rideburst binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "facu_rideburst clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "facu_rideburst active cells",
+      "ok": true,
+      "detail": [
+        131,
+        156,
+        180,
+        204,
+        231,
+        259,
+        281,
+        273,
+        206,
+        138,
+        70,
+        0
+      ]
+    },
+    {
+      "name": "facu_rideburst final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "facu_rideburst cache reuse",
+      "ok": true
+    },
+    {
+      "name": "facu_ridebeam binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "facu_ridebeam clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "facu_ridebeam active cells",
+      "ok": true,
+      "detail": [
+        46,
+        47,
+        46,
+        46,
+        47,
+        45,
+        43,
+        46
+      ]
+    },
+    {
+      "name": "facu_ridebeam final phase",
+      "ok": true,
+      "detail": 46
+    },
+    {
+      "name": "facu_ridebeam cache reuse",
+      "ok": true
+    },
+    {
+      "name": "chain fallback nova",
+      "ok": true
+    },
+    {
+      "name": "chain fallback cone",
+      "ok": true
+    },
+    {
+      "name": "chain fallback aura",
+      "ok": true
+    },
+    {
+      "name": "original basic theme",
+      "ok": true
+    }
+  ],
+  "sources": [
+    {
+      "theme": "facu_current",
+      "art": "beam",
+      "size": 16,
+      "arc": 0,
+      "w": 16,
+      "h": 16,
+      "n": 8,
+      "cells": [
+        44,
+        45,
+        45,
+        45,
+        45,
+        44,
+        45,
+        45
+      ]
+    },
+    {
+      "theme": "facu_current",
+      "art": "burst",
+      "size": 64,
+      "arc": 0,
+      "w": 64,
+      "h": 64,
+      "n": 12,
+      "cells": [
+        143,
+        176,
+        199,
+        215,
+        256,
+        282,
+        294,
+        287,
+        218,
+        145,
+        76,
+        0
+      ]
+    },
+    {
+      "theme": "facu_pressure",
+      "art": "nova",
+      "size": 128,
+      "arc": 0,
+      "w": 128,
+      "h": 128,
+      "n": 12,
+      "cells": [
+        411,
+        398,
+        385,
+        363,
+        358,
+        324,
+        284,
+        234,
+        168,
+        101,
+        48,
+        0
+      ]
+    },
+    {
+      "theme": "facu_ride",
+      "art": "burst",
+      "size": 64,
+      "arc": 0,
+      "w": 64,
+      "h": 64,
+      "n": 12,
+      "cells": [
+        131,
+        156,
+        180,
+        204,
+        231,
+        259,
+        281,
+        273,
+        206,
+        138,
+        70,
+        0
+      ]
+    },
+    {
+      "theme": "facu_ride",
+      "art": "beam",
+      "size": 16,
+      "arc": 0,
+      "w": 16,
+      "h": 16,
+      "n": 8,
+      "cells": [
+        46,
+        47,
+        46,
+        46,
+        47,
+        45,
+        43,
+        46
+      ]
+    }
+  ]
+}

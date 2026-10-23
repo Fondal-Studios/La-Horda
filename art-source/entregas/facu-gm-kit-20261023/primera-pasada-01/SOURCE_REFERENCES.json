@@ -1,0 +1,81 @@
+{
+  "base": "f62d181477adcb4607cc615411cc51bad769f681",
+  "references": [
+    {
+      "path": "assets/sprites/champions/facu_gm/atlas.png",
+      "sha256": "9a4ce3cdc71b83205f6128f7a1ef90ed0b9e3712487e4bf16581e2532d58e625",
+      "unchanged": true
+    },
+    {
+      "path": "assets/sprites/champions/facu_gm/preview.png",
+      "sha256": "6c2a71274862651c214cbd872f50be5d7b829dd3ac16937ca32d99e8ab8e94b1",
+      "unchanged": true
+    },
+    {
+      "path": "assets/sprites/champions/facu_gm/skins/facu_gm_alt1/atlas.png",
+      "sha256": "9f11ff2816336f869f3ac9b722dc2daed992659f0c1379c0c3991159998b5297",
+      "unchanged": true
+    },
+    {
+      "path": "assets/sprites/champions/facu_gm/skins/facu_gm_alt1/preview.png",
+      "sha256": "ba3116b3e4858830f551782de152cacdae2c12fc40f48fa2f1ece3e3e85e1ef8",
+      "unchanged": true
+    },
+    {
+      "path": "js/champions/ascension/catalog.js",
+      "sha256": "4eb79495b4bcf1da8e9464fac5fd06595c87585674f98d1acbb92fd04661b4c2",
+      "unchanged": true
+    },
+    {
+      "path": "js/champions/ascension/runtime.js",
+      "sha256": "a7e103014f783eda23dbdde21e1c8953ed8de517a0b5975050538308b0956aeb",
+      "unchanged": true
+    },
+    {
+      "path": "js/champions/ascension/render.js",
+      "sha256": "5b532d20ecada999c55ca55d6c53d1a47fe1d0a17257c9ff73a3ab8b73762aa9",
+      "unchanged": true
+    },
+    {
+      "path": "js/champions/ascension/art.js",
+      "sha256": "4c6c2cce51fc0ea2394beae56d882bbc639a2384c17a3ad9fa7f1eeb51853f2d",
+      "unchanged": true
+    },
+    {
+      "path": "js/champions/ult-forms/bind.js",
+      "sha256": "24c159def604c9ad9a8886599503c89600fcf37ab68ab37a5d444b53f85b0381",
+      "unchanged": true
+    },
+    {
+      "path": "js/champions/skill-fx-a/themes.js",
+      "sha256": "1607b7c6fa0babe4e2b81b6137485431e76c95aa0a02894edba0fdadbc7f9a4c",
+      "unchanged": true
+    },
+    {
+      "path": "js/champions/skill-fx-a/templates.js",
+      "sha256": "f80af213b7a5c93bf935a19ba6be4e8e79ab456ade711ec49ccc482ab264ae38",
+      "unchanged": true
+    },
+    {
+      "path": "js/skills/champion-signatures.js",
+      "sha256": "2bbe76162cac478de248ebbbfa7ff98e8cda17b672ef1bd9d83f2be46098a3ad",
+      "unchanged": true
+    },
+    {
+      "path": "js/ui/skill-pixel-glyphs.js",
+      "sha256": "3b61984845023e19cbc7d6e6ecda2be18c34fbdca8d064356c8c11f2ea8f391a",
+      "unchanged": true
+    },
+    {
+      "path": "js/net/net-game.js",
+      "sha256": "cdecc7e05b135cee8c66aeb2436efcc7fba8085da6595c38dfdf85ebece38d72",
+      "unchanged": true
+    },
+    {
+      "path": "server/relay.js",
+      "sha256": "69bd2efa4a3a1b436159da0c6aca07b7328f55995195da3698479035df4b5161",
+      "unchanged": true
+    }
+  ],
+  "approach": "Native SfaStrip source in established canvas VFX system, Art Bible sections7/14. Pintor body/donor forge and imagegen are unnecessary for these code-native water shapes; bodies and original images exist. No external paid service or bitmap resampling."
+}
