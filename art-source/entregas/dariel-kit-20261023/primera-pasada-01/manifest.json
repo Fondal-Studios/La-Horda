@@ -1,0 +1,607 @@
+{
+  "state": "EN_CORRECCION",
+  "integratedMain": false,
+  "publicationVerified": false,
+  "files": [
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/AUDIT.json",
+      "bytes": 2030,
+      "sha256": "7e28b5d62916781919425412cb4acb9a194ef5456de145ec1b2ed37ee500a736",
+      "gitBlob": "f8d2f20ab93453c2ebf21dee5510748ae935ab4f"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/CHECKPOINT.md",
+      "bytes": 2964,
+      "sha256": "0d4aadb6f285783f96c89a1164baa6a478d333b400bd90364e99a4feecb5d8c9",
+      "gitBlob": "fb9ef7f46fa2a4898b9159bc542998573cd2a1ce"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/COMPARISON.json",
+      "bytes": 3533,
+      "sha256": "ea04e05be56e79ef589c4b2f0c3567c6f1e6a53d690693da84436ed450341e1b",
+      "gitBlob": "883f79d5bddf01f8e579a33f2c20c04c20891b1a"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/GENERATED_INDEX.json",
+      "bytes": 8211,
+      "sha256": "d627aa12a95df926f57d61620a8e08d4daad1be99e89471fb7967ecd978d5f1f",
+      "gitBlob": "c59cffb24854c6a86e1e16cb1e52d09639a5440f"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/PREVIEW_TEST.json",
+      "bytes": 1677,
+      "sha256": "2ed3d065622f202498c3a95ad5bc41b9322a6e2ad7a32060dc086e0d2b2aab4e",
+      "gitBlob": "d40742666d2345986fca2c00d519c67bdc25827b"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/REEXPORT.json",
+      "bytes": 734,
+      "sha256": "a1edd73261f7ff7e5a311d1e77731cbcf0155b33c2918c9fd06e285a8fc00eee",
+      "gitBlob": "bacd3a6b36ce509afc40d76eb7852a83062752b0"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/REVIEW.json",
+      "bytes": 2062,
+      "sha256": "85d14214720650216d5ab3e30317a3a5c04f55b6c5454dea476394c2b8bea85f",
+      "gitBlob": "2cbcaa21350d9aa47398fe7518c7120a4cd1b9ef"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/RUNTIME_DIFF.json",
+      "bytes": 302,
+      "sha256": "d56d80fb65500abeb235353d3b8531d4b595f70c146d484fb77cc18731e90e20",
+      "gitBlob": "1fdfff804e064935e4db5f409880ad741131bea9"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/SOURCE_REFERENCES.json",
+      "bytes": 2955,
+      "sha256": "9574b670275b29ba74e46003e485703a77a6421936e5202404cc6413fafe32fe",
+      "gitBlob": "75db449059a13d4ba8cf4db55609227078dfba31"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/TEST_ATTEMPTS.json",
+      "bytes": 703,
+      "sha256": "25ae85859de985dee158484ad67dd84790b3e0a6d6ee635ceae11d4ce4f24060",
+      "gitBlob": "fb11f1affd302068dbcf4f12aa0838bdc76f92ef"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/VERIFICATION.json",
+      "bytes": 5044,
+      "sha256": "63f96051e20ab6ffd3a8f87f49721bb3a69593497f9c1328d987bcceec4c69b4",
+      "gitBlob": "7b507371af6240dad2eb489d0662b6a0b20a0ed2"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile.log",
+      "bytes": 471,
+      "sha256": "9436a1ab2fa528c2232ac0ea80b3713e4cb32f0b3d89c2d3939470ff38ebf089",
+      "gitBlob": "03840ac5a1452141736b474de17d0eb6766906d1"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/capture.json",
+      "bytes": 6314,
+      "sha256": "d7745b1b72e61f71e1c3b54a0a3ace0dcb19870846570c48f294c5c5c52b8415",
+      "gitBlob": "c9150132745626ff7902778468b183b02e714aa9"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-0-native250.png",
+      "bytes": 386752,
+      "sha256": "b7469321c049287b03d5d15c0ee790de113ec18e6299bdbf1365e5d70e310d30",
+      "gitBlob": "727546c5a1e345bc1a0ef2218f3439b7fed8be82"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-0-native500.png",
+      "bytes": 379481,
+      "sha256": "52310cc6cb9412d99108c2cb4fee17ef599c6d5d2281c87fdaa1f9a18d0e9fff",
+      "gitBlob": "045e897535d90ad855137ac786e6308025fd04a5"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-0.png",
+      "bytes": 119565,
+      "sha256": "07bb4d34d27582c39642eb58c4478ae7e7122c185034683c9ce9b10b3b9b9a15",
+      "gitBlob": "ba5f5fd643d4ab0e9abc450ce66e75659236a5eb"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-1-native250.png",
+      "bytes": 384464,
+      "sha256": "938dfa62a3ae2acdc8fa5e2599bfbb28bdc3361e105b4b4083ca6baeecd49367",
+      "gitBlob": "5ec9b5033e9b9defa1e0b801c8835cab659db61f"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-1-native500.png",
+      "bytes": 382114,
+      "sha256": "d6fb122372adc0c5b89b218e603b2e90e9351d328d051fc9dbc20cb77a1c329f",
+      "gitBlob": "631c8cb39e1093c631508d2f2feeeaa84692dc84"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-1.png",
+      "bytes": 121552,
+      "sha256": "2846fd1c9a23e9ea704c1bd0f61528f1ac9d33c07f68dba6dcfbc75b789ebf74",
+      "gitBlob": "a9c813fdba167cc4d5814f848b780d695f50fe1f"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-2-native250.png",
+      "bytes": 389204,
+      "sha256": "1bd893b45f5d3866f315626d3505b2ddd581c64a44fd3b3b88405e9b3bfbf515",
+      "gitBlob": "7a6a97deff1021729333f611d1f2368f7ccad2ce"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-2-native500.png",
+      "bytes": 380477,
+      "sha256": "76b11746b3b886716f3dc882e479c1dfee499f1f9587e13d2aa305341d8bee23",
+      "gitBlob": "07993e20ef9e218e835af59c808045eb2701c96a"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-2.png",
+      "bytes": 123994,
+      "sha256": "f4c6da18a0fafdcfaa172c69a8e202012e341680d691c3a2a8c05d62eb316655",
+      "gitBlob": "2aee59aa9dd7cfeed8a0a0e69923b29912d98e67"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-3-native250.png",
+      "bytes": 370488,
+      "sha256": "973fa2b2d5a14589488b16fce0cd45b8054c7eab6c00df61f3e66a69bbf37740",
+      "gitBlob": "40b305ba3df5c2a91bc4c36a4a39170848245286"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-3-native500.png",
+      "bytes": 368084,
+      "sha256": "8046cc34e74cdf7dcbe30eee95c27927ce79274f91925e8c8a4fbd4339284a12",
+      "gitBlob": "c5b9994fe2428f2a268a5e2d61a71b8047b3e952"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile/dariel-3.png",
+      "bytes": 135963,
+      "sha256": "3f7e527191dd2894711264eab0c36a524bf2f135dfbcf833b42847ac4163ab72",
+      "gitBlob": "3f4fe0abeb29c687491b24c7297627c614d5ad6e"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after.log",
+      "bytes": 471,
+      "sha256": "f6e6d1bd21a4f4190af683022a6fc336683b15ff81524c6ba671c40342a19d84",
+      "gitBlob": "74f035f4e30a42471cef1d5324dfffa6be9a025f"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after/capture.json",
+      "bytes": 6314,
+      "sha256": "0470825c1e7eea95cbea9de3b2c94d11f48d3811bb449e166b151587b654bc1b",
+      "gitBlob": "4ed0b13a761a0c78f2cc0fcd120a36717144d2b1"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after/dariel-0-native250.png",
+      "bytes": 408741,
+      "sha256": "b4101316cd075bcf8f53151065e7bc1c7c54d2ea3346d1560e47d9bea232cfbc",
+      "gitBlob": "86a37457f3d291602df2f8a3697fac2fb55dbe9b"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after/dariel-0-native500.png",
+      "bytes": 400132,
+      "sha256": "28285f4dbecc194efc6f0d1b5de83f4c69d40d9f312c76b48571152ee490f155",
+      "gitBlob": "427dfea622fb361f8c8f38581de2b2cb0bda82fe"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after/dariel-0.png",
+      "bytes": 123728,
+      "sha256": "71015956951d8a0350d4f534dea962b67acf4eafa9e88f5a70d873cfce3d7f91",
+      "gitBlob": "8e603701f356f026c54a432054e408930e119048"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after/dariel-1-native250.png",
+      "bytes": 398831,
+      "sha256": "0574c58058fed10258ff8513bc7862138250fc16dc3dab71e1d3ee599d33113a",
+      "gitBlob": "595bf730903c6a610b013b221e31124c47f0ef6f"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after/dariel-1-native500.png",
+      "bytes": 396895,
+      "sha256": "5f4c530b1016ffbbece8b55f6ca5ded9fee7458f4537dcdd92dc223eb37a5670",
+      "gitBlob": "8bc7c510a71c7828e0d98d49fd10eeec6d8b3e0e"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after/dariel-1.png",
+      "bytes": 124580,
+      "sha256": "3af234bb6ab86156a500789797a0ad348c1ef3827d873691c383f72c6270e8b8",
+      "gitBlob": "672254ee10a79f0689a37b3a5dadec7a1e3892c9"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after/dariel-2-native250.png",
+      "bytes": 404029,
+      "sha256": "65cb443afb751f6b8d9aada1e893fa7a5a69baffe2fce867209d2d0b375a6804",
+      "gitBlob": "95505f33c73d0a84467cfbc2257295ef9de2cd5f"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after/dariel-2-native500.png",
+      "bytes": 395092,
+      "sha256": "2c7eca3e348688fd4886a8231f2e55992a778617daee4bcd3f16ecd780e65bdf",
+      "gitBlob": "6b5f528b270882da9dd995126ae2444362ade08c"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after/dariel-2.png",
+      "bytes": 127116,
+      "sha256": "42772d9fe27a933324325a704591c98e19d6eea69a579303084e971b1d367907",
+      "gitBlob": "df9e12a5a8563c53245c6e041adced316c96b2b0"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after/dariel-3-native250.png",
+      "bytes": 384452,
+      "sha256": "f2214e9de0c5049eafcff8ce40e646483a57fe57f1b78f13bd82e762ecdc8764",
+      "gitBlob": "b8984a3e8e6724685d53b8ee654ba835e0b14b9b"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after/dariel-3-native500.png",
+      "bytes": 381304,
+      "sha256": "219b96225c125708b47e7c47fead9b08eb3e079605e3ee17569063d75fddea0f",
+      "gitBlob": "688cc75b8ef1aa4ab9e7122678b3a782d9c2902b"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/after/dariel-3.png",
+      "bytes": 135584,
+      "sha256": "9f2c308f95c9d201f4e9911f5664a374d8fd64289631f1a9b15f7b967f174569",
+      "gitBlob": "0da5cb029c9fabe52277f7ec2e8245e9d2468dec"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/attempt-parity-all-interrupted.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile.log",
+      "bytes": 577,
+      "sha256": "9da22a26e8665293162bb29293105ffb1e7df65974e11c1c1f2c3d58147f1e07",
+      "gitBlob": "64f3a1aaa6106a0429f2a445109634c99099c161"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile/capture.json",
+      "bytes": 7978,
+      "sha256": "98d3db0f55a480594dc7817ee27f3d13feba2cd6e0a4d02b4ce8f18b56b8f3f1",
+      "gitBlob": "9662cea1ccad84b7a244d0e7a517e417e2cb4174"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile/dariel-0-native250.png",
+      "bytes": 388618,
+      "sha256": "eafacbef762037f34943e84057ee0bdf4e16300ad71a88db2ce155fe27768505",
+      "gitBlob": "0d9f3770a834004aff99ee2a783d932f26e74e2a"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile/dariel-0-native500.png",
+      "bytes": 378664,
+      "sha256": "cb8bef274b3d3ee60ce1960901930eab1c39829d768dc31613bd8ef46d2a8c32",
+      "gitBlob": "143db418ecf8f3eea49e8abca46aab2d551aaf9b"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile/dariel-0.png",
+      "bytes": 120901,
+      "sha256": "56711044f983132feb8b51bb8738d09dddaa125ec7bac92bfdec84eb32a5581a",
+      "gitBlob": "21b8de9365e7897b17b4b96de8181329911d303d"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile/dariel-1-native250.png",
+      "bytes": 388629,
+      "sha256": "18afb3281793ce26c33bf258681fd218eeb9b9ea925a6911f0e0c53e487c33e7",
+      "gitBlob": "3c7e2ca1b9d750afdf2af238c224d99bde7f4c61"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile/dariel-1-native500.png",
+      "bytes": 391685,
+      "sha256": "b85f47a8a2280748d9750076ac7443e74544210d5f8ba7db5c9c08d043d65fb9",
+      "gitBlob": "4ea04539ffb59e98ea041b19087bc57b300badf8"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile/dariel-1.png",
+      "bytes": 133053,
+      "sha256": "1cca064a8f59de1fdd2442d1104c10b609e618ff75b3afdb09865463fda9cb21",
+      "gitBlob": "90731f8d90b501b90f0fc8cb0209713cde729462"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile/dariel-2-native250.png",
+      "bytes": 393512,
+      "sha256": "76b874817f2a0cdc61a29499927b69d724f83c81d34d0b532df3af9bf379ae8d",
+      "gitBlob": "1cea58568dcf792b576b24b3edafad7620d45f8d"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile/dariel-2-native500.png",
+      "bytes": 390601,
+      "sha256": "a9696c7880de0fac688bbbe83ffc744a857a879e088f6cba9ca9940b0a4919be",
+      "gitBlob": "97ea582c1353a00964d0e4cad2a0ed6811ac6758"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile/dariel-2.png",
+      "bytes": 134461,
+      "sha256": "c20b30820a1fbeb9e5b6b7186423d0af9dd7ca35b2250ae1bd572d7db0841c8c",
+      "gitBlob": "57995f951bafb6df6b6b10d93cf28555a27fa90d"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile/dariel-3-native250.png",
+      "bytes": 370488,
+      "sha256": "973fa2b2d5a14589488b16fce0cd45b8054c7eab6c00df61f3e66a69bbf37740",
+      "gitBlob": "40b305ba3df5c2a91bc4c36a4a39170848245286"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile/dariel-3-native500.png",
+      "bytes": 368084,
+      "sha256": "8046cc34e74cdf7dcbe30eee95c27927ce79274f91925e8c8a4fbd4339284a12",
+      "gitBlob": "c5b9994fe2428f2a268a5e2d61a71b8047b3e952"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile/dariel-3.png",
+      "bytes": 135963,
+      "sha256": "3f7e527191dd2894711264eab0c36a524bf2f135dfbcf833b42847ac4163ab72",
+      "gitBlob": "3f4fe0abeb29c687491b24c7297627c614d5ad6e"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before.log",
+      "bytes": 577,
+      "sha256": "1b6e20b77d55373287ba09053a87b161767556b7967ada8c0db6d27a4cdce60e",
+      "gitBlob": "b3aeee40b10555b7e6c670e4e75110060a20298a"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before/capture.json",
+      "bytes": 7978,
+      "sha256": "cae37d825a93e34989b0ed78fe95ce18bef87704dad9d7384d26101b81b4104b",
+      "gitBlob": "5ebc8eeccd4b6c4a4d79e6a24ecf008612189589"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before/dariel-0-native250.png",
+      "bytes": 410500,
+      "sha256": "9b6dc6a75349e4f0d1af7d9e898afbc9dd89b040376e23a6b48a6e879825b361",
+      "gitBlob": "8166872b5517bd95ec5c9b4a605431edfb04f6c1"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before/dariel-0-native500.png",
+      "bytes": 399548,
+      "sha256": "ac946176e1627a55e2b63a601098e62f7941800312f48952e054af608694e456",
+      "gitBlob": "58ae4287f1f418d61c88222e19e36db7c0dd2ff4"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before/dariel-0.png",
+      "bytes": 124995,
+      "sha256": "56a93ae6d1ec3135c1817349b947b762ea9670f768e7ee2da2da374bdf5be83a",
+      "gitBlob": "2ff4003c86be8a8df19333f0400dbbc55df4fa2d"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before/dariel-1-native250.png",
+      "bytes": 403269,
+      "sha256": "3c82a18a557952edc416a8de38ab82a9a7b5c988f134181aa6099980e5afd636",
+      "gitBlob": "11b46403070c8996e771e5ff66b0c60fe224915a"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before/dariel-1-native500.png",
+      "bytes": 407005,
+      "sha256": "21b45299e244633d1a660b4111c40396ab9353c8cd52f81b7539138c620f00c4",
+      "gitBlob": "9cb7c78296dd934fdded82b9566b6fe9ed6b8efe"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before/dariel-1.png",
+      "bytes": 136314,
+      "sha256": "3ec4c27fa683af3c93e4f11b04c4947cbfe041e9af0baf8f5483b0a111a385a4",
+      "gitBlob": "3a1620c286978371a22976f050307b4612e666d0"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before/dariel-2-native250.png",
+      "bytes": 408552,
+      "sha256": "236cc6e30ec523e69c3ef5a5586f16ed1a31db4c5dd8be8aa3a98fff92ebe512",
+      "gitBlob": "74c076e561ba6206d0804b21e92eec8707e0d467"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before/dariel-2-native500.png",
+      "bytes": 405868,
+      "sha256": "121acb2b88f21300f7db049ff10ff293a9f3e93e7f1481454ad4627570d87492",
+      "gitBlob": "e216bb1603bbc1cbea04e6f453447858e1ce7845"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before/dariel-2.png",
+      "bytes": 137837,
+      "sha256": "58f04a7e4cba828c371f8b19977975b6e4c9113c5db5ab49b9810c19a376bd83",
+      "gitBlob": "cab2a3937a11133110fb7e7a9eeb75d711d0962f"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before/dariel-3-native250.png",
+      "bytes": 384452,
+      "sha256": "f2214e9de0c5049eafcff8ce40e646483a57fe57f1b78f13bd82e762ecdc8764",
+      "gitBlob": "b8984a3e8e6724685d53b8ee654ba835e0b14b9b"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before/dariel-3-native500.png",
+      "bytes": 381304,
+      "sha256": "219b96225c125708b47e7c47fead9b08eb3e079605e3ee17569063d75fddea0f",
+      "gitBlob": "688cc75b8ef1aa4ab9e7122678b3a782d9c2902b"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/before/dariel-3.png",
+      "bytes": 135584,
+      "sha256": "9f2c308f95c9d201f4e9911f5664a374d8fd64289631f1a9b15f7b967f174569",
+      "gitBlob": "0da5cb029c9fabe52277f7ec2e8245e9d2468dec"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/dariel_discord-cone.png",
+      "bytes": 9165,
+      "sha256": "2c1a4d80f5588e4a267462b4c79ed2b1f58901de8e0f86434a779b1564d61dff",
+      "gitBlob": "ec954492aba86eeea73b8d25d4f98d87eb629cb8"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/dariel_march-aura.png",
+      "bytes": 2242,
+      "sha256": "7a3c704f0f64b8499846d75ea38949e4add1a44eeaa3e973a49c2901b178e90a",
+      "gitBlob": "08c553ee8c8babb0dbe098e79367f28a819e9487"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/dariel_march-nova.png",
+      "bytes": 8655,
+      "sha256": "93d0be097909dda67271614e98ba55f10f40efae447b33c7dbe2a7dd7a88e3e0",
+      "gitBlob": "e22f410e4a936fdd6de9970d3b2dd1b781d7116c"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/dariel_refrain-aura.png",
+      "bytes": 1576,
+      "sha256": "60a28aca5c40167dd206bd195db12cd03a7e03ebba74be5e329259af7aed01b6",
+      "gitBlob": "4f5f466c66e14185d2d04db5e673c14158b204e9"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/dariel_refrain-nova.png",
+      "bytes": 7361,
+      "sha256": "07bfe89007e316f6264ed23735160c154214ece9219f3ed152f25d70d1afd852",
+      "gitBlob": "c6d36d403cd73756dee624763cfc16d6fd5ad65f"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/functional-results.json",
+      "bytes": 18143,
+      "sha256": "efb6c93ae605a768bf374518503899bf7db0cc6d589fa43194a15bd3e229944b",
+      "gitBlob": "c29a791bbd9dcf7d5119c7cdbe32cb7a9481c13d"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/functional.log",
+      "bytes": 144,
+      "sha256": "ce02273367d46eb50e2a8533cd00e8c4c74f56356476245c7ea66761238993c8",
+      "gitBlob": "6ada1025a43767e8163ea2a993a7258df5a9c1c6"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/online-results.json",
+      "bytes": 2121,
+      "sha256": "4e27667a3cf646189f450890ac0901ac4656aab2473c051607cfe5f60d966bba",
+      "gitBlob": "a6e627294b2bd1568026c4f95c7dbab1fc7716c6"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/online.log",
+      "bytes": 1860,
+      "sha256": "37f05b7f6acd38e1a866464bb77d08d08fc44a7232e708fa968eb504ef000bd1",
+      "gitBlob": "26504d799e85244473be5eff7b1111906ffabe47"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/parity.json",
+      "bytes": 5839,
+      "sha256": "eb729877df825ad7aa11d6e2d252edbaa5641b24692e476d893e1593e7c29464",
+      "gitBlob": "01c0961be66e64b9449854f2750282959f34ea2d"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/parity.log",
+      "bytes": 107,
+      "sha256": "ff558dcd071d3353786e76dbff87221d37d2f2bcb316abbfa13839f4f74fc8b8",
+      "gitBlob": "5e69f1b462a352e76fe81927797f4356ca353ce1"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/pr204-ci/PR204_CI.json",
+      "bytes": 969,
+      "sha256": "98800da28978e6c11f824369ceca0357ce4f8b1f0ecca1eb0d18d8974da4703b",
+      "gitBlob": "657070ef1395fb60b660d60bb42ca8f7eacda999"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/pr204-ci/lanes-candidate.log",
+      "bytes": 1015,
+      "sha256": "f6cf15520328c97f2b7a4e709c57419fe1f72a2b8e1fb974833949510fed567a",
+      "gitBlob": "5f1e35fa915e7b68eda458e17d23041cde7096f6"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/pr204-ci/lanes-main.log",
+      "bytes": 1027,
+      "sha256": "89471a21687c68b8fe2564e862111b39026b7bd3cfab3c7244954fee7caac18b",
+      "gitBlob": "6fa0519eed08fac4b7b9206fb57c042c084dcc3f"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/preview.html",
+      "bytes": 3720,
+      "sha256": "da54c5e1d0ce66ca72c9a7b27603781dc46ff31d0efb1e6efb26b177f713491b",
+      "gitBlob": "40502fba26ca5f1210c05856c094bade98de26c4"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/recipe.json",
+      "bytes": 3838,
+      "sha256": "bf505fea573b8f9a28e62d3bc2d53530e051ca697e20e6951f2d5ba21d6d0d6b",
+      "gitBlob": "45af95eb85c35802b07a9d3f5d2ed8de4987267b"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/sources/bind.js",
+      "bytes": 14385,
+      "sha256": "febce1761294fb2e39ad632387bc0147a8813bc57f32c486ef206e612f0169ff",
+      "gitBlob": "79333aeff3e81042397c8edc4835acd8658a91a5"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/sources/dariel.js",
+      "bytes": 4045,
+      "sha256": "1d2b35cc7f04b2d905cee31b5d1a09858ba19b7ff2d26bbf3eeed112c0fedd62",
+      "gitBlob": "ac7dd6408f53528c128935db69c181a2c70393fb"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/sources/engine.js",
+      "bytes": 28948,
+      "sha256": "2aa1c15cd9e6ba0567b7870a2d40dbf25a662fa1b58762e2bd8464213dbd4c02",
+      "gitBlob": "f62d52aac23c0cc7695bdf53c0eb36e31e7b45e3"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/sources/main-bind.js",
+      "bytes": 14333,
+      "sha256": "cd20be261d1dce171411b65aff5ed69d6e05deb4ac9fdc8e2b30583d0c4a0fd4",
+      "gitBlob": "4a3cd8c0efd669d031766832be4770436cca8aa1"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/sources/main-dariel.js",
+      "bytes": 498,
+      "sha256": "c4d08cb2a3a732893a2e5c3d97b126e5b606ab98235af045eddad217c001cc40",
+      "gitBlob": "c7db5f45aef433e6d6febe6101b0c47aa2da8351"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/sources/main-engine.js",
+      "bytes": 28799,
+      "sha256": "d0fe4ea2aa6028f9440fa36189bc5fa1e30200b0da6abcabdf6b6cc26a0c9339",
+      "gitBlob": "ddde362461734022e16db37fb7e02e0a64f78260"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/sources/run-functional.js",
+      "bytes": 313,
+      "sha256": "431e54c98fc7010e73e650a4ba0a0404e2ee2f06e19a6d87b34e1dc19a5fb73c",
+      "gitBlob": "ffcb88c659c5f08ef220ec1ca005f61b5e09d014"
+    },
+    {
+      "path": "art-source/entregas/dariel-kit-20261023/primera-pasada-01/verification.log",
+      "bytes": 131,
+      "sha256": "3cb6319f358535d504870beb924e83ac44d7d210acc3cfa5a2b3b9d2451ca05c",
+      "gitBlob": "906d2254076dd4d6357c9aa98199d7432212ffac"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "bytes": 69852,
+      "sha256": "205a8a5ef01341f01e09512d523ab8a16c046784a97c14d6b5f5e4cadd0d63e4",
+      "gitBlob": "a325d10d0bc83940545d7260cc2cb1e93951bff6"
+    },
+    {
+      "path": "js/champions/skill-fx-a/bind.js",
+      "bytes": 14385,
+      "sha256": "febce1761294fb2e39ad632387bc0147a8813bc57f32c486ef206e612f0169ff",
+      "gitBlob": "79333aeff3e81042397c8edc4835acd8658a91a5"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/dariel.js",
+      "bytes": 4045,
+      "sha256": "1d2b35cc7f04b2d905cee31b5d1a09858ba19b7ff2d26bbf3eeed112c0fedd62",
+      "gitBlob": "ac7dd6408f53528c128935db69c181a2c70393fb"
+    },
+    {
+      "path": "js/champions/skill-fx-a/engine.js",
+      "bytes": 28948,
+      "sha256": "2aa1c15cd9e6ba0567b7870a2d40dbf25a662fa1b58762e2bd8464213dbd4c02",
+      "gitBlob": "f62d52aac23c0cc7695bdf53c0eb36e31e7b45e3"
+    },
+    {
+      "path": "tools/portadores/dariel-firstpass-online.js",
+      "bytes": 4879,
+      "sha256": "98a9e00a4f48be98ba498527a52354c5328f7dc9f902901c6f8427d147a0b839",
+      "gitBlob": "bfb1634f05250e2672ad0459269e64c001472151"
+    },
+    {
+      "path": "tools/vfx/capture-dariel-kit.js",
+      "bytes": 7010,
+      "sha256": "61582809d44dcd031637d4061ee188c687c6eaed8357d88a24099bb85f662f62",
+      "gitBlob": "dd5660b8c487ebafd371b103587d8a086bf20bc5"
+    },
+    {
+      "path": "tools/vfx/parity-dariel-kit.js",
+      "bytes": 6928,
+      "sha256": "6608f24ab72c054d64364af053c74f185b1976eda98204713ad0bd1e4c7f7b75",
+      "gitBlob": "6f803d9189f9a10d91ea0d3fac1897749b5ed72d"
+    },
+    {
+      "path": "tools/vfx/verify-dariel-kit.js",
+      "bytes": 2691,
+      "sha256": "6af2506d46c6de5fc2d3a00f9c5480e46f835f0f4dc88e22a6df04461fd5c922",
+      "gitBlob": "ec36e96fcbdbb9f5a6cfc88af4804234766d2679"
+    }
+  ]
+}

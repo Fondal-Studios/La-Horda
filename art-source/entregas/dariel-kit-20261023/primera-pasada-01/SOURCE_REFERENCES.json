@@ -1,0 +1,77 @@
+{
+  "base": "817610a78595e894995cec8032dd64149dbfe925",
+  "references": [
+    {
+      "path": "assets/sprites/champions/dariel/atlas.png",
+      "sha256": "506fba3f259765aad5c05ef13da0855f4ebf0faa92265e1a2d5de7d992b48d78",
+      "unchanged": true
+    },
+    {
+      "path": "assets/sprites/champions/dariel/croma-preview.png",
+      "sha256": "389379642bb1d100a470ebb2d8413d94dabf98cc0889d0e6e777e86dd419ee2c",
+      "unchanged": true
+    },
+    {
+      "path": "assets/sprites/champions/dariel/preview.png",
+      "sha256": "686264635cb6856bfab58c2b7aee75f0ef8cf95506c53ee0c6d1054f5228b908",
+      "unchanged": true
+    },
+    {
+      "path": "assets/sprites/champions/dariel/skins/dariel_set/atlas.png",
+      "sha256": "0261d09f114ce778069b21ac160e9699a3a3da6ec4e08bd635eb4e4e42961982",
+      "unchanged": true
+    },
+    {
+      "path": "assets/sprites/champions/dariel/skins/dariel_set/preview.png",
+      "sha256": "811697e354fc1e34b64dd0572eaf875589f7f35bf359f3ddc4194490030506c6",
+      "unchanged": true
+    },
+    {
+      "path": "assets/sprites/champions/dariel/skins/dariel_luthier/atlas.png",
+      "sha256": "266b903ae392fa9f613a50560d89ab14ae3aab344205a876ef897e8e8b89d64b",
+      "unchanged": true
+    },
+    {
+      "path": "assets/sprites/champions/dariel/skins/dariel_luthier/preview.png",
+      "sha256": "a07f335f5f3516de6b0a35022b8a686411cc0b74636ae1d101d44b7a494e631f",
+      "unchanged": true
+    },
+    {
+      "path": "assets/sprites/champions/dariel/skins/dariel_skin/atlas.png",
+      "sha256": "e5199581bbee910783c4e767f3b355e9d108bc52cffe5377dc665fe4e186ae82",
+      "unchanged": true
+    },
+    {
+      "path": "assets/sprites/champions/dariel/skins/dariel_skin/preview.png",
+      "sha256": "b5b24e801ed2f03735f4d18b9cedc62f18a51225bc592c97708c03c829ddc1ec",
+      "unchanged": true
+    },
+    {
+      "path": "js/champions/expedition/catalog.js",
+      "sha256": "3d6e482a9b365a1d98d94d85a44d7f41bbe9404d17fc1da952c2e518a9574807",
+      "unchanged": true
+    },
+    {
+      "path": "js/champions/expedition/runtime.js",
+      "sha256": "ad86f5d511fa3609fc149ebfd4d6073993ed0fce58eb1bdb5e38d1997e1b09a9",
+      "unchanged": true
+    },
+    {
+      "path": "js/champions/ult-forms/bind-2a.js",
+      "sha256": "26c8b92621475179daa45239c626b0bb350a9d2c7443de65f7e9b63bd3f73727",
+      "unchanged": true
+    },
+    {
+      "path": "js/champions/skill-fx-a/templates.js",
+      "sha256": "f80af213b7a5c93bf935a19ba6be4e8e79ab456ade711ec49ccc482ab264ae38",
+      "unchanged": true
+    },
+    {
+      "path": "js/champions/skill-fx-a/themes.js",
+      "sha256": "1607b7c6fa0babe4e2b81b6137485431e76c95aa0a02894edba0fdadbc7f9a4c",
+      "unchanged": true
+    }
+  ],
+  "bodySkinsUF": "Existing and preserved; no B015/B411/B436/B245/B484 blanket completion",
+  "nativeRecipe": "Canvas-native SfaStrip matches existing VFX system; Pintor/body forge not appropriate for these geometric VFX. No imagegen body or new body generated."
+}
