@@ -1,3 +1,5 @@
+> Cierre posterior 22/10/2026: [correccion-01/CHECKPOINT.md](correccion-01/CHECKPOINT.md). Leerlo antes de reanudar; conserva este historial.
+
 # Habilidades recientes — Solciju, primera pasada de identidad
 
 22/10/2026. Base main `6334ff40b6514808ef0fe00b50bec15e19f10c25`.

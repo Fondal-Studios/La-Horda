@@ -1,0 +1,19 @@
+{
+  "initial": [
+    {
+      "report": "legibility-before.txt",
+      "result": "FAIL seven checks",
+      "fixed": "legibility-after.txt"
+    },
+    {
+      "report": "vfx-engine-launch-failed.txt",
+      "result": "No own server",
+      "rerun": "vfx-engine.txt PASS"
+    },
+    {
+      "report": "parity-before.json",
+      "result": "FAIL on/off inherited; remains open"
+    }
+  ],
+  "finalParity": "parity.json FAIL on/off; parity-comparison.json proves no before/after regression"
+}
