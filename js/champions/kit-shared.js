@@ -56,6 +56,12 @@ function kitFxLine(theme, ax, ay, bx, by, w){
   for(let i = 0; i <= n; i++){ const u = i/n; vfxSpray(ax + (bx-ax)*u, ay + (by-ay)*u, 3, T[3], (bx-ax)/L, (by-ay)/L, 120, 380, 2.5, 1); }
   if(typeof vfxSprReady === "function" && vfxSprReady(T[0])) vfxSprite(T[0], 0, bx, by + 6, Math.max(40, (w||30)*1.6), 380, null, 0.1, bx < ax, 0.8, 8);
 }
+// Perfil cosmético opcional. Un módulo ausente, defectuoso o sin cobertura conserva el anillo.
+function kitArmorRingOpacity(h){
+  try { const a = typeof window.kitArmorVisualOpacity === 'function' ? window.kitArmorVisualOpacity(h) : 1;
+    return Number.isFinite(a) ? Math.max(0, Math.min(1, a)) : 1;
+  } catch (_) { return 1; }
+}
 // Indicador persistente: chevrones dorados (+daño) y anillo celeste (armadura) sobre quien está potenciado.
 (function(){
   if(typeof drawPortadorTop !== "function") return;
@@ -66,7 +72,7 @@ function kitFxLine(theme, ax, ay, bx, by, w){
       ctx.save(); const bob = Math.sin(t/160)*2;
       if(dmgOn){ ctx.fillStyle = '#ffd34d'; ctx.strokeStyle = '#3a2508'; ctx.lineWidth = 1.5;
         for(let i = 0; i < 2; i++){ const y = h.y - 64 - i*6 + bob; ctx.beginPath(); ctx.moveTo(h.x - 7, y + 4); ctx.lineTo(h.x, y - 2); ctx.lineTo(h.x + 7, y + 4); ctx.lineTo(h.x + 7, y + 7); ctx.lineTo(h.x, y + 1); ctx.lineTo(h.x - 7, y + 7); ctx.closePath(); ctx.fill(); ctx.stroke(); } }
-      if(armOn){ ctx.globalAlpha = .55 + .2*Math.sin(t/200); ctx.strokeStyle = '#bfe8ff'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(h.x, h.y - 6, 20, 9, 0, 0, Math.PI*2); ctx.stroke(); }
+      if(armOn){ ctx.globalAlpha = (.55 + .2*Math.sin(t/200)) * kitArmorRingOpacity(h); ctx.strokeStyle = '#bfe8ff'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(h.x, h.y - 6, 20, 9, 0, 0, Math.PI*2); ctx.stroke(); }
       ctx.restore(); }
   };
 })();

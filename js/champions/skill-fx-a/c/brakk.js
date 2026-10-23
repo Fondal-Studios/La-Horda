@@ -71,3 +71,21 @@ SFA_BIND.brakk = {themes: ['siege','brakk_build','brakk_deploy','brakk_nails','b
   return original.call(this,h,draw,...args);
  };
 }
+
+// La armadura genérica cede gradualmente al refuerzo propio SOLO si el atlas está
+// listo y el pool contiene el aura real de ese receptor. Sin evento, tras expulsión,
+// reset, cambio de arena o SFA_OFF, el indicador genérico se conserva íntegro.
+window.kitArmorVisualOpacity = function(h){
+ if(window.SFA_OFF || !h?.alive || !(h._kitArmorUntil > runElapsedMs))return 1;
+ const fi=heroes.indexOf(h),arena=sfaArenaKey();
+ if(fi<0 || sfaCacheArena!==arena)return 1;
+ let coverage=0;
+ for(const s of sfaPool){
+  if(s.art!=='aura' || s.fi!==fi || !/^brakk_repair(?:~[hpk])?$/.test(s.theme))continue;
+  const k=s.t/s.dur;if(!Number.isFinite(k)||k<0||k>=1)continue;
+  const b=sfaCache.get('aura|'+s.theme+'|0|0|'+arena);
+  if(!b || b.w!==48 || b.h!==56 || b.n!==12 || !b.cv?.width)continue;
+  coverage=Math.max(coverage,Math.min(1,k*10,(1-k)*5));
+ }
+ return 1-coverage;
+};
