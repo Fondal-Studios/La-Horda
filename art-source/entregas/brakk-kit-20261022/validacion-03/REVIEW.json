@@ -24,7 +24,8 @@
     "atlasUnchanged": 5,
     "newMultiplayerTests": 0,
     "referenceMultiplayer": "correccion-02/online-results.json (14 PASS on previous art, not rerun here)",
-    "note": "No new combat/RNG or protocol change; previous parity not represented as a new run."
+    "note": "No new combat/RNG or protocol change; previous parity not represented as a new run.",
+    "storyOnCleanMain": 37
   },
   "ci": {
     "failedHead": "d411b331324095b61def28454cf04feb3ac6e441",
@@ -32,8 +33,10 @@
     "job": 120165818911,
     "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39877153827/job/120165818911",
     "failure": "VOZ.fase_emitida expected after144 simulated ms while actual phase could still be delayed by ally stun. Reproduced controlled seeds; exact CI stun state was not logged.",
-    "fix": "Wait for boss.bd.phase>0 with existing3000ms bound; preserve queued/shown and eventual display assertions. No game changes.",
-    "finalHead": "PENDING_REMOTE_COMMIT_CHECKS"
+    "fix": "Additional bounded3000ms wait observes boss.bd.phase>0; retained emission assertion and existing3000ms display wait. Total possible wait increases; no runtime or visual threshold changes.",
+    "finalHead": "PENDING_REMOTE_COMMIT_CHECKS",
+    "isolatedPR": 200,
+    "isolatedHead": "ae3d384a2117323d7154b30760ad621106dec0c6"
   },
   "remaining": [
     "B118 dense-contact recognizability and full compound contrast",

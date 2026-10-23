@@ -66,5 +66,13 @@
     "status": "PASS",
     "checks": 11,
     "evidence": "deploy-runtime.json"
+  },
+  {
+    "id": "story-clean-main",
+    "status": "PASS",
+    "checks": 37,
+    "evidence": "story-main-fixed.log",
+    "base": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+    "onlyChangedFile": "tools/items/t_story.js"
   }
 ]
