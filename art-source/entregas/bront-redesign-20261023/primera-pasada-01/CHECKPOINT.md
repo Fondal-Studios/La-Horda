@@ -17,3 +17,5 @@ Siguiente acción: leer AUTHORIZATION, REVIEW, VERIFICATION y source; corregir e
 Reproducción: `PYTHONPATH=/tmp/la-horda-python-deps python art-source/entregas/bront-redesign-20261023/primera-pasada-01/extract.py`. Dependencias/versiones en recipe.json; la regeneración image_gen no es determinista, la extracción desde fuente preservada sí.
 
 Brakk sigue PR197, cierre validacion-11 en9ca6215bd259a79fd8cef842874feb9c9ccc519c. No arrastrar su taller FIX a este PR. Su diagnóstico frío identifica costos repartidos; no hay optimización runtime ni aprobación móvil. Inventario global incompleto.
+
+Cierre remoto: PR201 borrador; producción `cb339587b24412cfcaf45c2ab34c23c5af682074`.26archivos de producción cotejados por Git blob remoto. Reproducción determinista adicional: atlas/preview/contacto/comparación/verificación5/5hashes exactos. Cierre final incluye manifest actualizado y REMOTE_CLOSURE; consultar head fresco antes de continuar.
