@@ -1,0 +1,58 @@
+{
+  "status": "EN_CORRECCION",
+  "artGate": "FIX / NO_INTEGRAR",
+  "generated": {
+    "atlas": 6,
+    "phases": 60,
+    "nonempty": 58,
+    "intentionalTransparentClosures": 2
+  },
+  "validatedTechnicalOnly": {
+    "atlasChecks": 34,
+    "focusedKitChecks": 25,
+    "realRelayChecks": 7,
+    "precastMatches": 8,
+    "UFpngSame": 6,
+    "RNG": 32415,
+    "parityScope": "360 frames, summarized mechanical state only, not full snapshots/global RNG isolation",
+    "reexport": 6
+  },
+  "visualInspection": [
+    "Full comparison sheet plus native mobile H2 256ms/H3 512ms inspected. H1 native256ms separately inspected before closure.",
+    "Thin stakes and small lock grid overlap remain. No integral approval."
+  ],
+  "findings": [
+    {
+      "block": "B132",
+      "id": "A-FX-eslabon-h1",
+      "diagnosis": "Open links and hook replace filled ray/star, but the hook still competes with white legacy hit effects at mobile256ms. The beam uses global loop phase; pull silhouette and actual trajectory continuity need grouped review.",
+      "evidence": "after-mobile/eslabon-0-native250.png"
+    },
+    {
+      "block": "B133",
+      "id": "A-FX-eslabon-h2",
+      "diagnosis": "Repeated open links are visible, but the vertical line reads as thin ornamental posts; endpoint stakes are small and the inherited solid ground line remains beneath. Actual object persists6000ms, candidate uses it, no mechanical bounds changed.",
+      "evidence": "after-mobile/eslabon-1-native250.png"
+    },
+    {
+      "block": "B134",
+      "id": "A-FX-eslabon-h3",
+      "diagnosis": "Two lock pairs overlap into a grid when caster and recipient are close. Inherited aura2200ms versus guard5000ms and fixed700ms cast-endpoint beam do not represent ongoing real guard range/budget/recipient lifetime. Technical test reproduces duration mismatch; dynamic range/budget cases not certified online.",
+      "evidence": "after-mobile/eslabon-2-native500.png"
+    }
+  ],
+  "pending": [
+    "Composite contrast and integral Art Gate",
+    "Six arenas, skins/equipment1:1",
+    "Guard real lifecycle/recipient/range/budget",
+    "Cold/warm performance, saturation/reentry/culling",
+    "Exact-head CI"
+  ],
+  "states": {
+    "GENERADO": true,
+    "EN_CORRECCION": true,
+    "VALIDADO": false,
+    "INTEGRADO_MAIN": false,
+    "publicationVerified": false
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "attempts": [
+    {
+      "name": "export harness syntax",
+      "result": "FAIL before browser",
+      "reason": "Extra closing bracket during adaptation; original invalid script retained in attempts/verify-syntax-invalid.js.txt. Runtime untouched. Corrected harness passed34."
+    },
+    {
+      "name": "initial diagnostic beam export",
+      "result": "DIAGNOSTIC_ONLY",
+      "reason": "Event width24/18 is not raster height. First beam PNG and verification saved in attempts/export-diagnostic. Runtime sfaBeamTiles maps all three widths to12; final exports16x12. Source/runtime unchanged."
+    },
+    {
+      "name": "native export final",
+      "result": "34PASS",
+      "log": "verify.log"
+    },
+    {
+      "name": "focused actual kit regression",
+      "result": "25PASS",
+      "log": "functional.log"
+    },
+    {
+      "name": "real relay exact variants",
+      "result": "7PASS",
+      "log": "online.log"
+    },
+    {
+      "name": "parity main/candidate360",
+      "result": "PASS summarized state and RNG32415",
+      "log": "parity.log"
+    }
+  ]
+}
