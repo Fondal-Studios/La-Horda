@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "medium": "native canvas pixel recipe; no raster image generation",
+  "source": "js/champions/vfx-b/solciju.js",
+  "sourceSha256": "0627fd7fd76749615aab737a343e68ed39e0f687fe47c63a8ebfce4dbbeaaf47",
+  "previousSource": "source-before.js",
+  "previousSourceSha256": "f40019b51b48cdf1956ff7ced323133a171a0553c3370c80848111cedaf372fd",
+  "framesAndCells": {
+    "so_splash": {
+      "frames": 10,
+      "cell": 40,
+      "radius": 85,
+      "soft": 0
+    },
+    "so_fuse": {
+      "frames": 10,
+      "cell": 44,
+      "radius": 100,
+      "soft": 0
+    },
+    "so_pool_idle": {
+      "frames": 14,
+      "cell": 72,
+      "radius": 160,
+      "soft": 0
+    },
+    "so_toast": {
+      "frames": 10,
+      "cell": 24,
+      "radius": 38,
+      "soft": 0
+    }
+  },
+  "preserved": "Original sources in parent commit and source-before.js. IDs, gameplay times, radii, UF and props unchanged.",
+  "commands": {
+    "export": "OUT=art-source/entregas/habilidades-recientes-20261022/correccion-01 node tools/vfx/export-solciju-kit.js",
+    "capture": "ONLY=solciju SLOTS=0,1,2,3 TIMES=160,400,800,2400,2700 MOBILE=1 FULL=1 OUT=/tmp/review node tools/vfx/capture-silhouette-kit.js",
+    "legibility": "ONLY=solciju.wine,solciju.cask,solciju.toast,solciju.reserve node tools/vfx/test-decal-legible.js"
+  },
+  "environment": "Node; playwright available via NODE_PATH; CHROMIUM_PATH executable. Start own root server for vfx-b-engine via tools/lib/serve. No external paid service."
+}

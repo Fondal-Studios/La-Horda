@@ -1,0 +1,100 @@
+{
+  "results": [
+    {
+      "champion": "solciju",
+      "slot": 0,
+      "action": "sol_wine",
+      "trace": [
+        "solciju.wine",
+        "punch"
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        800,
+        1200
+      ],
+      "name": "Vino maldito",
+      "sceneHash": "4236c4e97e48ce6310eec1832eb4fb0b9d4d4be10b7fde98839d149ee99bb66c"
+    },
+    {
+      "champion": "solciju",
+      "slot": 1,
+      "action": "sol_cask",
+      "trace": [
+        "solciju.cask",
+        "punch"
+      ],
+      "objects": [
+        "sol_cask"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        800,
+        1200
+      ],
+      "name": "Barrica añeja",
+      "sceneHash": "ab9192574c1d6047b25b59f6cb8275f8295af7cb8ca3855e5832572c61054251"
+    },
+    {
+      "champion": "solciju",
+      "slot": 2,
+      "action": "sol_toast",
+      "trace": [
+        "solciju.toast",
+        "punch"
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        800,
+        1200
+      ],
+      "name": "Brindis a solas",
+      "sceneHash": "0c7f41b39b3370cd416083d4e9a7ff61f078f519d53f983347070881b6b14204"
+    },
+    {
+      "champion": "solciju",
+      "slot": 3,
+      "action": "sol_reserve",
+      "trace": [
+        "uf.solciju"
+      ],
+      "objects": [
+        "sol_reserve"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        800,
+        1200
+      ],
+      "name": "Gran Reserva",
+      "sceneHash": "3e0a78a19cd1b565156411ec6a433687e9f19cc83839c223d14d3e036ee8e5a0"
+    }
+  ],
+  "errors": []
+}

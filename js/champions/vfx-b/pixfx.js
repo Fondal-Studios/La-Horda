@@ -196,6 +196,9 @@ function kvbDrawLayer(layer){
   ctx.save(); ctx.imageSmoothingEnabled = false;
   for(let i = 0; i < P.length; i++){
     const e = P[i]; if(e.layer !== layer) continue;
+    // Heroes move after vfxUpdate. Resolve a follower at draw time as well,
+    // before culling, so its sprite stays on the current equipped owner.
+    if(e.follow){ if(e.follow.alive === false) continue; e.x = e.follow.x + e.ofx; e.y = e.follow.y + e.ofy; }
     const q = e.t / e.dur, ex = e.beam ? e.len : (e.w || 0) * 1.5;
     if(!inView(e.x, e.y, Math.max(ex, 60))) continue;
     const a = (q < e.fadeAt ? 1 : Math.max(0, (1 - q) / (1 - e.fadeAt))) * e.alpha;
@@ -237,4 +240,6 @@ function kvbFx(id, x, y, r, ang, a, b){
   const oGround = vfxDrawGround; vfxDrawGround = function(){ oGround.apply(this, arguments); kvbDrawLayer('g'); };
   const oSig = drawChampionSignatures; drawChampionSignatures = function(){ kvbDrawLayer('t'); oSig.apply(this, arguments); };
   if(typeof NET_EVENT_FNS !== 'undefined' && !NET_EVENT_FNS.includes('kvbFx')) NET_EVENT_FNS.push('kvbFx');
+  // Este módulo carga después del primer netHookEvents: registrar también el wrapper.
+  if(typeof netHookEvents === 'function') netHookEvents();
 })();
