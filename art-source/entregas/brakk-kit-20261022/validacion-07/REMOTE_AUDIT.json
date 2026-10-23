@@ -1,0 +1,213 @@
+{
+  "date": "2026-10-23",
+  "main": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "prs": [
+    {
+      "number": 199,
+      "sha": "6c5087d93c7c2d4fe08d57c992cb0cdb260114b6",
+      "draft": true,
+      "branch": "art/aelith-normal-kit-first-pass-20261022"
+    },
+    {
+      "number": 198,
+      "sha": "326ab368fbafcb91c6714a5f01f66578b0bf04bc",
+      "draft": true,
+      "branch": "art/morveth-kit-first-pass-20261022"
+    },
+    {
+      "number": 197,
+      "sha": "47812843cdfb4e2002b9b373594ed0988ff2bc6a",
+      "draft": true,
+      "branch": "art/brakk-kit-first-pass-20261022"
+    },
+    {
+      "number": 196,
+      "sha": "2b98dc02a9eb2d0b18c547b37ac0d4dd813c5ccd",
+      "draft": true,
+      "branch": "art/veyra-kit-first-pass-20261022"
+    },
+    {
+      "number": 195,
+      "sha": "0c51a940ddc726c0d045d72d66d819cc557fab6c",
+      "draft": true,
+      "branch": "art/recent-abilities-solciju-20261022"
+    },
+    {
+      "number": 194,
+      "sha": "772ec7d8b40dcc5efc57d20b8b14e922f4ba9705",
+      "draft": true,
+      "branch": "art/axiom-forcequit-first-pass-20261022"
+    },
+    {
+      "number": 193,
+      "sha": "11657b767fdcc33ba9f034119fad32e9a343baf9",
+      "draft": true,
+      "branch": "art/aurelia-kit-first-pass-20261022"
+    },
+    {
+      "number": 192,
+      "sha": "7391b1c2818e5a6427691401c0acb23381eac8a1",
+      "draft": true,
+      "branch": "art/myla-cast-back-20261022"
+    },
+    {
+      "number": 191,
+      "sha": "e87a9b2a5f90a842cb4837070e81af98517131c1",
+      "draft": true,
+      "branch": "art/aelith-ultimate-b007-20261022"
+    },
+    {
+      "number": 166,
+      "sha": "d75d6a18c9abc861969e3780e182525cd205fafd",
+      "draft": true,
+      "branch": "art-workshop/libertador-back-check-20261019"
+    },
+    {
+      "number": 92,
+      "sha": "4fadf0656852cbcddb3007c0a2bc675e1c329c50",
+      "draft": false,
+      "branch": "claude/cw-mapa-arte"
+    },
+    {
+      "number": 91,
+      "sha": "9976ee6641070610f28f3b5516ae25368d0f8c79",
+      "draft": false,
+      "branch": "claude/objetivo-claro"
+    },
+    {
+      "number": 90,
+      "sha": "78ef0aee8518423ced97aa9f194894975ed13254",
+      "draft": false,
+      "branch": "claude/siete-campeones"
+    }
+  ],
+  "parentChecks": [
+    {
+      "name": "CodeQL",
+      "id": 120355760641,
+      "conclusion": "success"
+    },
+    {
+      "name": "Arnés y lógica pura (sin navegador)",
+      "id": 120355606863,
+      "conclusion": "success"
+    },
+    {
+      "name": "Objetos, economía y tienda (pruebas que hoy fallan en la base)",
+      "id": 120355606720,
+      "conclusion": "success"
+    },
+    {
+      "name": "Objetos, economía y tienda (parte A)",
+      "id": 120355606641,
+      "conclusion": "success"
+    },
+    {
+      "name": "Identidad de arenas, objetivos y regalo inicial",
+      "id": 120355606567,
+      "conclusion": "success"
+    },
+    {
+      "name": "VFX de definitivas, decales e íconos de habilidad",
+      "id": 120355606536,
+      "conclusion": "success"
+    },
+    {
+      "name": "Regresión, UX y carriles",
+      "id": 120355606487,
+      "conclusion": "success"
+    },
+    {
+      "name": "safari-engine",
+      "id": 120355361765,
+      "conclusion": "success"
+    },
+    {
+      "name": "lanes",
+      "id": 120355361717,
+      "conclusion": "success"
+    },
+    {
+      "name": "entry-reference",
+      "id": 120355361713,
+      "conclusion": "success"
+    },
+    {
+      "name": "readability",
+      "id": 120355361536,
+      "conclusion": "success"
+    },
+    {
+      "name": "emoji-lint",
+      "id": 120355361514,
+      "conclusion": "success"
+    },
+    {
+      "name": "postgres",
+      "id": 120355361413,
+      "conclusion": "success"
+    },
+    {
+      "name": "evidence",
+      "id": 120355361047,
+      "conclusion": "success"
+    },
+    {
+      "name": "Analyze (javascript-typescript)",
+      "id": 120355344528,
+      "conclusion": "success"
+    },
+    {
+      "name": "Analyze (actions)",
+      "id": 120355344414,
+      "conclusion": "success"
+    },
+    {
+      "name": "Analyze (python)",
+      "id": 120355344062,
+      "conclusion": "success"
+    },
+    {
+      "name": "emoji-lint",
+      "id": 120355332927,
+      "conclusion": "success"
+    }
+  ],
+  "parentWorkflows": [
+    {
+      "name": "Emoji lint (arte pixel)",
+      "id": 39935935424,
+      "conclusion": "success"
+    },
+    {
+      "name": "Art production evidence",
+      "id": 39935935288,
+      "conclusion": "success"
+    },
+    {
+      "name": "VFX readability and combat parity",
+      "id": 39935935465,
+      "conclusion": "success"
+    },
+    {
+      "name": "Champion entry balance",
+      "id": 39935935397,
+      "conclusion": "success"
+    },
+    {
+      "name": "Integracion pruebas",
+      "id": 39935935203,
+      "conclusion": "success"
+    },
+    {
+      "name": "PR #197",
+      "id": 39935927747,
+      "conclusion": "success"
+    },
+    {
+      "name": "Emoji lint (arte pixel)",
+      "id": 39935926058,
+      "conclusion": "success"
+    }
+  ]
+}

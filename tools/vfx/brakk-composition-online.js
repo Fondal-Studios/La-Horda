@@ -17,7 +17,11 @@ async function seedLocalAccounts(){
  }finally{await app.close();}
 }
 const checks=[],errors=[],browsers=[];
-const reportPath='art-source/entregas/brakk-kit-20261022/correccion-06/online-results.json';
+const reportPath=process.env.REPORT || 'art-source/entregas/brakk-kit-20261022/validacion-07/online-results.json';
+fs.mkdirSync(path.dirname(reportPath),{recursive:true});
+// Real relay/simulation states, bounded wall-clock failure; no mechanical timers changed.
+const waits=[];
+async function observeUntil(page,fn,label){const start=Date.now();try{await page.waitForFunction(fn,null,{timeout:30000});waits.push({label,ok:true,wallMs:Date.now()-start});}catch(e){waits.push({label,ok:false,wallMs:Date.now()-start,error:e.message.split('\n')[0]});}}
 fs.writeFileSync(reportPath,JSON.stringify({status:'RUNNING',scope:'local relay workshop'})+'\n');
 const modules=[];
 (async()=>{try{
@@ -72,10 +76,13 @@ const modules=[];
   }
   if(guest==='morveth'){const hs=await a.evaluate(()=>(heroes[1].morvethInfections||[]).length),gs=await g.evaluate(()=>(player.morvethInfections||[]).length);checks.push({name:'Morveth infections remain host authoritative',ok:hs>0&&gs===0,hs,gs});}
   if(guest==='brakk'){
+   await observeUntil(g,()=>['brk_wall','brk_turret'].every(kind=>portadorObjects.some(o=>o.owner===player&&o.kind===kind&&o.life>0)),'guest receives both live builds');
    const builds=await g.evaluate(()=>portadorObjects.filter(o=>o.owner===player&&o.brakk&&o.life>0).map(o=>o.kind));
    checks.push({name:'Brakk wall and turret replicate with guest owner',ok:builds.includes('brk_wall')&&builds.includes('brk_turret'),builds});
   }
   await g.waitForTimeout(1100);
+  await observeUntil(a,()=>portadorObjects.some(o=>o.owner===heroes[1]&&o.kind==='brk_turret'&&o.left<6),'host turret completes first real interval');
+  await observeUntil(g,()=>brakkTrace.some(x=>x[1]==='brakk_nails'),'guest receives nails event');
   const ht=await a.evaluate(()=>brakkTrace),gt=await g.evaluate(()=>brakkTrace);
   for(const [role,pg]of [['host',a],['touch guest',g]]){const seen=await pg.evaluate(()=>signatureDraws);for(let slot=0;slot<3;slot++)checks.push({name:role+' renders own signature slot '+slot,ok:seen.some(s=>s.slot===slot&&s.key==='brakk'&&!s.ult&&s.dur===460),draws:seen.filter(s=>s.slot===slot).length});}
   for(const [role,pg]of [['host',a],['touch guest',g]]){const draws=await pg.evaluate(()=>braceDraws);checks.push({name:role+' draws new 48x56 brace atlas in real renderer',ok:draws>0,draws});}
@@ -90,7 +97,7 @@ const modules=[];
   checks.push({name:guest+' death removes owned effects',ok:await a.evaluate(()=>!portadorObjects.some(o=>o.owner===heroes[1]&&o.life>0)&&!(heroes[1].veyraBleeds||[]).length&&!(heroes[1].morvethInfections||[]).length)});
   await ac.close();await gc.close();await ab.close();await gb.close();
  }
- const status=errors.length||checks.some(c=>!c.ok)?'FAIL':'PASS';
- fs.writeFileSync(reportPath,JSON.stringify({status,scope:'Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.',checks,errors},null,2)+'\n');
+ const status=errors.length||waits.some(w=>!w.ok)||checks.some(c=>!c.ok)?'FAIL':'PASS';
+ fs.writeFileSync(reportPath,JSON.stringify({status,waits,scope:'Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.',checks,errors},null,2)+'\n');
  console.log(JSON.stringify({status,checks,errors}));if(status==='FAIL')process.exitCode=1;
-}finally{for(const b of browsers)await b.close().catch(()=>{});servers.forEach(s=>s.kill());fs.rmSync(dataDir,{recursive:true,force:true});}})().catch(e=>{fs.writeFileSync(reportPath,JSON.stringify({status:'FAIL',checks,errors:[...errors,e.message]},null,2)+'\n');console.error(e);process.exitCode=1;});
+}finally{for(const b of browsers)await b.close().catch(()=>{});servers.forEach(s=>s.kill());fs.rmSync(dataDir,{recursive:true,force:true});}})().catch(e=>{fs.writeFileSync(reportPath,JSON.stringify({status:'FAIL',waits,checks,errors:[...errors,e.message]},null,2)+'\n');console.error(e);process.exitCode=1;});
