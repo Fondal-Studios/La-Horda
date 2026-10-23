@@ -15,7 +15,7 @@ const CHAMPION_BALANCE_REFERENCE = {
     "cazadora",
     "nigromante",
     "libertador",
-    "eren",
+    "ilkan",
     "myla",
     "brasa",
     "eslabon",

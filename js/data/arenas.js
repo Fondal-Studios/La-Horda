@@ -24,26 +24,44 @@
 const ARENA_MODS = {
   bosque:   { label:"Ruinas Célticas / Élficas", icon:"🌲", desc:"Arena 03. Ruinas de un bosque sagrado. Acá espera el primer Guardián caído.", hazardName:"Niebla del Olvido",
               fireDmgMult:1.3, iceDmgMult:1.0, enemyDmgPerWave:0.14, unlockLevel:0,
-              heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.90, enemyRegenPct:0.012, hazard:null, hasWalls:false },
+              heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.90, enemyRegenPct:0.012, hazard:null, hasWalls:false,
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 3% (1/32); con este ajuste (solo Pesadilla) da 42% (17/40).
+              // DIFICULTAD_GRUPO1.md (equipo real de lootPath + equipBest): con ese equipo x0,6/0,5/0,8 era 100% (8/8): se sube a x0,85/0,8/0,9 (63%, 5/8). Infierno x0,7/0,6/0,85.
+              tierMods:{ pesadilla:{ hp:1.0, dmg:0.92, bossDmg:1.0 }, infierno:{ hp:0.8, dmg:0.7, bossDmg:0.9 } } },
   hielo:    { label:"Arena Gélida",      icon:"❄", desc:"Arena 05. El frío es el enemigo. Acá espera el segundo Guardián.", hazardName:"Furia del Vendaval Helado",
               fireDmgMult:1.0,  iceDmgMult:1.0, enemyDmgPerWave:0.148, unlockLevel:0,
-              heroSpeedMult:0.90, heroCdMult:1.10, heroEnergyRegenMult:0.85, abilityDmgMult:1.0, heroDmgMult:0.85, enemyRegenPct:0, hazard:"nova_gelida", hasWalls:false },
+              heroSpeedMult:0.90, heroCdMult:1.10, heroEnergyRegenMult:0.85, abilityDmgMult:1.0, heroDmgMult:0.85, enemyRegenPct:0, hazard:"nova_gelida", hasWalls:false,
+              // Pesadilla en la Gélida era un muro (0 de 18 victorias con Tanque/Mago/Cazadora a nivel 54, siempre en los niveles 5-7 por el Ángel de Hielo,
+              // el Gólem y el Demonio de Hielo y Fuego): solo acá se baja la vida/daño de Pesadilla (difficulty-tiers.js, diffApplyToRun).
+              // Segunda pasada (PESADILLA_PAREJA.md): x0,5/0,4/0,7 todavía dejaba 16% (5/32); x0,35/0,3/0,55 -> 70% (28/40).
+              // DIFICULTAD_GRUPO2.md: con equipo real (lootPath+equipBest) y nivel de llegada, x0,35/0,3/0,55 daba ~94% (era un ajuste hecho con un guardián casi desnudo): x0,75/0,75/0,85 -> ~50%.
+              // Infierno (nunca medido): sin ajuste 0-13%; x0,55/0,55/0,7 -> ~40%.
+              tierMods:{ pesadilla:{ hp:0.7, dmg:0.7, bossDmg:0.8 }, infierno:{ hp:0.55, dmg:0.55, bossDmg:0.7 } } },
   laberinto:{ label:"Laberinto", icon:"🗿", desc:"Arena 07. Muros, sismos y maná escaso. Acá espera el tercer Guardián.", hazardName:"Maldición del Minotauro",
               fireDmgMult:1.0,  iceDmgMult:1.0, enemyDmgPerWave:0.16, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:0.50, abilityDmgMult:1.0, heroDmgMult:0.85, enemyRegenPct:0, hazard:"sismo", hasWalls:true,
               // Era un muro (~12% de victorias a nivel 30 vs ~37-40% en Hielo/Infernal): más pociones
               // (vida y maná, x2.2) y -20% de vida a todo lo que aparece -> ~33% en 40 partidas.
-              potionMult:2.2, enemyHpMult:0.8 },
+              potionMult:2.2, enemyHpMult:0.8,
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste (solo Pesadilla) da 58% (23/40).
+              // DIFICULTAD_GRUPO2.md: x0,5/0,4/0,7 daba ~100% con equipo real; x0,75 daba 88%: x0,9/0,9/0,85 para ~60% (jefes 0,85 y no 0,95: con 0,95 el daño de jefes de Pesadilla superaba al de Infierno x0,7). Infierno x0,55/0,55/0,7 -> ~50%.
+              tierMods:{ pesadilla:{ hp:0.9, dmg:0.9, bossDmg:0.85 }, infierno:{ hp:0.55, dmg:0.55, bossDmg:0.7 } } },
   infernal: { label:"Arena Infernal",    icon:"🔥", desc:"Arena 10. La dimensión de la Horda. El final del viaje.", hazardName:"Ignición Eterna",
               fireDmgMult:0.8,  iceDmgMult:1.25, enemyDmgPerWave:0.22, unlockLevel:0,
-              heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:0.6, heroDmgMult:1.0, enemyRegenPct:0, hazard:"ignicion", hasWalls:false },
+              heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:0.6, heroDmgMult:1.0, enemyRegenPct:0, hazard:"ignicion", hasWalls:false,
+              // Dificultad del grupo 3 (docs/economy/DIFICULTAD_GRUPO3.md), medido con equipo real (lootPath + equipBest): Normal queda como está (aprendiz 91 %, habitual 88 %);
+              // Pesadilla y Infierno se afinan por arena.
+              tierMods:{ pesadilla:{ hp:1.2, dmg:1.1, bossDmg:1.05 }, infierno:{ hp:0.73, dmg:0.6, bossDmg:0.84 } } },
   // Segunda arena por dificultad (entre Bosque y Hielo, ver ARENA_ORDER). Sin peligro ambiental
   // propio -su identidad de riesgo pasa por el roster (embestidas/descargas/agarres) más que
   // por un hazard de piso como las demás- y con una corriente suave que empuja (ver
   // updateAcuaCurrents) como único elemento ambiental que roza el gameplay.
   acuatica: { label:"Arena Acuática",    icon:"🌊", desc:"Arena 06. Ruinas hundidas: el agua te mueve. Las Cicatrices se vuelven inestables.", hazardName:"Corriente Profunda",
               fireDmgMult:1.15, iceDmgMult:0.9, enemyDmgPerWave:0.15, unlockLevel:0,
-              heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.88, enemyRegenPct:0, hazard:"corriente_acuatica", hasWalls:false },
+              heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.88, enemyRegenPct:0, hazard:"corriente_acuatica", hasWalls:false,
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 0% (0/32); con este ajuste (solo Pesadilla) da 58% (23/40).
+              // DIFICULTAD_GRUPO2.md: x0,6/0,5/0,8 daba 100% con equipo real; x0,75/0,75/0,85 -> ~63%. Infierno: x0,65/0,65/0,75 (x0,55 daba 75%).
+              tierMods:{ pesadilla:{ hp:0.75, dmg:0.75, bossDmg:0.85 }, infierno:{ hp:0.65, dmg:0.65, bossDmg:0.75 } } },
   // ARENA III (tercera en la campaña, entre la Acuática y el Hielo). Su peligro no es un hazard de
   // piso sino el MAPA: un recorrido largo por sectores con puentes que se reconfiguran y el Ciclo
   // Mecánico de trampas (js/arenas/fortaleza/). Roster más pesado (élites y subélites desde temprano)
@@ -51,7 +69,10 @@ const ARENA_MODS = {
   fortaleza:{ label:"Fábrica Sin Fin", icon:"⚙", desc:"Arena 02. Una fábrica viva que la Horda contaminó: puentes que se mueven, trampas y máquinas que no perdonan.", hazardName:"Ciclo Mecánico",
               fireDmgMult:1.1, iceDmgMult:1.0, enemyDmgPerWave:0.12, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.87, enemyRegenPct:0, hazard:null, hasWalls:false,
-              potionMult:1.25 },
+              potionMult:1.25,
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 12% (4/32); con este ajuste (solo Pesadilla) da 65% (26/40).
+              // DIFICULTAD_GRUPO1.md: Normal era una barrera (68% agrupado, habitual 57%) y baja a x0,85/0,8/0,9 (96%); con el equipo real Pesadilla x0,6/0,5/0,8 daba 75-88%: se sube a x1,8/1,65/1,25. Infierno x0,55/0,45/0,8.
+              tierMods:{ normal:{ hp:0.85, dmg:0.8, bossDmg:0.9 }, pesadilla:{ hp:1.1, dmg:1.0, bossDmg:1.05 }, infierno:{ hp:0.8, dmg:0.7, bossDmg:0.9 } } },
   // ARENA IV (cuarta en la campaña, entre la Fortaleza y el Hielo). "EL ESCENARIO CRECE, MADURA Y
   // MUERE": el mapa entero es un organismo (la Madre Espora) con ciclo de vida por etapas, Núcleos
   // Miceliales que infectan territorio y un jefe que ES la estructura del centro
@@ -59,7 +80,10 @@ const ARENA_MODS = {
   micelial: { label:"Reino Fúngico", icon:"🍄", desc:"Arena 04. Una caverna viva que crece, madura y muere. La Madre ya te está mirando.", hazardName:"La Colonia",
               fireDmgMult:1.15, iceDmgMult:1.0, enemyDmgPerWave:0.145, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.87, enemyRegenPct:0, hazard:null, hasWalls:false,
-              potionMult:1.3 },
+              potionMult:1.3,
+              // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 34% (11/32); con este ajuste (solo Pesadilla) da 62% (24/39).
+              // DIFICULTAD_GRUPO1.md: con el equipo real x0,9/0,85/0,95 daba 75-88%: se sube a x1,4/1,3/1,1 (50%, 4/8). Infierno sin ajuste (38%).
+              tierMods:{ pesadilla:{ hp:1.5, dmg:1.4, bossDmg:1.1 }, infierno:{ hp:1.2, dmg:1.15, bossDmg:1.05 } } },
   // ARENA DEL ABISMO (entre el Hielo y el Laberinto; el orden final se revisa después). "EL TERRENO ES
   // UN RECURSO": ruinas suspendidas sobre el vacío con plataformas que se agrietan, colapsan y el
   // Abismo reconstruye entre oleadas; caer no mata (quedás colgado del borde y un compañero te
@@ -67,7 +91,9 @@ const ARENA_MODS = {
   abismo:   { label:"Abismo", icon:"🕳", desc:"Arena 08. El punto de no retorno: el mundo se rompe y el piso también pelea.", hazardName:"El Vacío",
               fireDmgMult:1.0, iceDmgMult:1.0, enemyDmgPerWave:0.18, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.86, enemyRegenPct:0, hazard:null, hasWalls:false,
-              potionMult:1.3 },
+              potionMult:1.3,
+              // Dificultad del grupo 3 (docs/economy/DIFICULTAD_GRUPO3.md), medido con equipo real (lootPath + equipBest): Normal queda como está; Pesadilla y Infierno se afinan por arena.
+              tierMods:{ pesadilla:{ hp:1.15, dmg:1.1, bossDmg:1 }, infierno:{ hp:0.72, dmg:0.63, bossDmg:0.8 } } },
   // Arena Divina: la de asedio 4v4. Todavía sin combate (Fase 1: solo el escenario), así que
   // sin debuffs propios por ahora -esto se termina de calibrar cuando exista el combate de
   // verdad. NO va en ARENA_ORDER a propósito: no tiene que aparecer en la selección normal
@@ -89,13 +115,18 @@ Object.assign(ARENA_MODS, {
               // (simulación: 4 derrotas en el nivel 9 antes de ganar, 45-60 min). Más amable sin cambiar su
               // identidad: el daño enemigo crece más lento, el guardián pega normal, -12% de vida enemiga y
               // más pociones.
-              potionMult:1.6, enemyHpMult:0.88 },
+              potionMult:1.6, enemyHpMult:0.88,
+              // DIFICULTAD_GRUPO1.md: Normal 83% agrupado -> x0,85/0,8/0,9 (88%); Pesadilla e Infierno no tenian ajuste y daban 100% / 88% con el equipo real.
+              tierMods:{ normal:{ hp:0.75, dmg:0.7, bossDmg:0.75 }, pesadilla:{ hp:2.5, dmg:2.4, bossDmg:1.3 }, infierno:{ hp:3.0, dmg:2.8, bossDmg:1.4 } } },
   // MINAS PROFUNDAS (Arena 09, la última antes de la Infernal): "LA LUZ ES TERRITORIO". Descenso por seis
   // sectores; los enemigos apagan las luces y el equipo las reenciende; Devoraluz, Titán de Piedra y
   // Cerbero. Matar a Cerbero NO termina la partida: hay que ATRAVESAR EL UMBRAL (js/arenas/minas/).
   minas:    { label:"Minas Profundas", icon:"⛏", desc:"Arena 09. La luz es territorio. Y el camino baja hasta la puerta del Infierno.", hazardName:"La Oscuridad",
               fireDmgMult:1.0, iceDmgMult:1.0, enemyDmgPerWave:0.17, unlockLevel:0, heroSpeedMult:1.0, heroCdMult:1.0, heroEnergyRegenMult:1.0, abilityDmgMult:1.0, heroDmgMult:0.86, enemyRegenPct:0, hazard:null, hasWalls:false,
-              potionMult:1.3 }
+              potionMult:1.3,
+              // Dificultad del grupo 3 (docs/economy/DIFICULTAD_GRUPO3.md), medido con equipo real (lootPath + equipBest): Normal queda como está; con el equipo real Pesadilla/Infierno
+              // eran un paseo (100 % con los valores de PESADILLA_PAREJA), por eso aquí SUBEN por encima de 1.
+              tierMods:{ pesadilla:{ hp:1.65, dmg:1.5, bossDmg:1.15 }, infierno:{ hp:1.25, dmg:1.05, bossDmg:1.08 } } }
 });
 /* ORDEN CANÓNICO DE LA CAMPAÑA (Lore Bible: docs/lore/LA_HORDA_LORE_BIBLE.md). Los IDs internos NO
    cambian (los guardados siguen apuntando a la misma arena); lo que cambia es el orden.

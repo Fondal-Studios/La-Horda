@@ -21,7 +21,7 @@ function colHudBuild(){
   el.querySelector(".col-pit").addEventListener("click", ()=>colSpecPit());
   _colHud = el; return el;
 }
-function colHudShow(){ const el = colHudBuild(); el.classList.remove("hidden"); document.body.classList.add("lanes-on"); const lv = document.getElementById("hud-level"), sp = lv && lv.parentElement; if(sp) sp.innerHTML = 'Ronda <b id="hud-level">0</b> · Vencidos <b id="hud-kills">0</b>'; }
+function colHudShow(){ const el = colHudBuild(); el.classList.remove("hidden"); document.body.classList.add("lanes-on"); document.body.dataset.mode = "coliseo"; const lv = document.getElementById("hud-level"), sp = lv && lv.parentElement; if(sp) sp.innerHTML = 'Ronda <b id="hud-level">0</b> · Vencidos <b id="hud-kills">0</b>'; }
 function colHudSync(s){ if(_colHud) _colHud.style.display = (s === "playing" && LN && LN.mode === "coliseo") ? "" : "none"; }
 function colHudHide(){ if(_colHud){ _colHud.classList.add("hidden"); } const r = document.getElementById("col-result"); if(r) r.classList.add("hidden"); }
 function _colClock(ms){ const left = Math.max(0, Math.ceil(ms / 1000)); return Math.floor(left / 60) + ":" + String(left % 60).padStart(2, "0"); }
@@ -33,13 +33,13 @@ function colHudTick(){
   q(".col-teams").innerHTML = L.team.map(T=>{
     const inMine = c.pairs[0].includes(T.team), inOther = c.pairs[1].includes(T.team), mine = T.team === player.team;
     const pips = Array.from({length:COL.WIN_POINTS}, (_, i)=>'<em class="' + (i < T.points ? "on" : "off") + '">●</em>').join("");
-    return '<div class="col-team' + (mine ? " me" : "") + (c.phase === "fight" && (inMine || inOther) ? " fighting" : "") + '" style="--tc:' + lanesTeamColor(T.team) + '"><b>' + (mine ? "TU EQUIPO" : lanesTeamName(T.team)) + '</b><span>' + pips + '</span></div>';
+    return '<div class="col-team' + (mine ? " me" : "") + (c.phase === "fight" && (inMine || inOther) ? " fighting" : "") + '" data-side="' + sidesOfTeam(T.team) + '" style="--tc:' + lanesTeamColor(T.team) + '"><b><i class="ln-side"></i>' + (mine ? "TU EQUIPO" : lanesTeamName(T.team)) + '</b><span>' + pips + '</span></div>';
   }).join("");
   q(".col-round").textContent = "RONDA " + c.round;
   q(".col-clock").textContent = c.phase === "prep" ? "Preparate…" : c.phase === "inter" ? "Resultados" : (c.ringR < COL.PIT_R - 2 ? "¡ANILLO CERRÁNDOSE!" : _colClock(COL.ROUND_MS - (L.t - c.t0)));
   const pair = c.pairs[0];
   q(".col-note").textContent = c.phase === "inter" ? c.last : (c.phase === "prep" ? "Tu duelo: " + (pair[0] === 0 ? "TU EQUIPO" : lanesTeamName(pair[0])) + " vs " + lanesTeamName(pair[1]) : (c.res[0] ? "Tu duelo terminó · mirá el otro" : ""));
-  q(".col-feed").innerHTML = L.feed.filter(f=>L.t - f.t < 9000).slice(-3).map(f=>'<div style="color:' + lanesTeamColor(f.team) + '">' + f.text + '</div>').join("");
+  q(".col-feed").innerHTML = L.feed.filter(f=>L.t - f.t < 9000).slice(-3).map(f=>'<div style="color:' + sidesFeedColor(f.team) + '">' + guideEsc(f.text) + '</div>').join("");
   // espectador (solo si caíste en plena pelea)
   const spec = q(".col-spec"), watching = !player.alive && c.phase === "fight" && c.spec;
   spec.classList.toggle("hidden", !watching);
@@ -57,7 +57,12 @@ function colDrawMap(){
     g.strokeStyle = c.ringR < COL.PIT_R - 2 ? "#ff6a5a" : "rgba(255,255,255,.4)"; g.lineWidth = 2; g.beginPath(); g.ellipse(p.x * sx, p.y * sy, c.ringR * sx, c.ringR * sy, 0, 0, Math.PI * 2); g.stroke();
     g.font = "bold 12px sans-serif"; g.textAlign = "center"; g.fillStyle = "rgba(255,255,255,.7)"; g.fillText(pit === 0 ? "A" : "B", p.x * sx, (p.y - COL.PIT_R - 14) * sy + 4);
   }
-  for(const h of heroes){ if(h.team == null) continue; g.fillStyle = h.alive ? "#fff" : "#444"; g.beginPath(); g.arc(h.x * sx, h.y * sy, h === player ? 5.5 : 4.5, 0, Math.PI * 2); g.fill(); g.strokeStyle = lanesTeamColor(h.team); g.lineWidth = 2; g.stroke(); }
+  // luchadores: aliado = círculo con aro verde, rival = rombo con aro rojo, yo = círculo grande con aro blanco y verde
+  for(const h of heroes){ if(h.team == null) continue; const rel = sidesOf(h), cc = sidesCol(rel), x = h.x * sx, y = h.y * sy, r = h === player ? 5.5 : 4.5;
+    g.fillStyle = h.alive ? "#fff" : "#444"; g.strokeStyle = cc.fill; g.lineWidth = 2; g.beginPath();
+    if(rel === "enemy"){ g.moveTo(x, y - r - 1.5); g.lineTo(x + r + 1.5, y); g.lineTo(x, y + r + 1.5); g.lineTo(x - r - 1.5, y); g.closePath(); } else g.arc(x, y, r, 0, Math.PI * 2);
+    g.fill(); g.stroke();
+    if(rel === "self"){ g.strokeStyle = "#fff"; g.lineWidth = 1.5; g.beginPath(); g.arc(x, y, r + 3, 0, Math.PI * 2); g.stroke(); } }
 }
 
 /* ---------------- resultado ---------------- */
@@ -66,12 +71,14 @@ function colShowResult(){
   let r = document.getElementById("col-result");
   if(!r){ r = document.createElement("div"); r.id = "col-result"; r.className = "lanes-result hidden"; document.body.appendChild(r); }
   const mine = player.team, won = L.winner === mine, draw = L.winner === -1, st = colStanding();
+  const pgRes = typeof postgameSettle === "function" ? postgameSettle(L) : null;   // postgame: recompensas con tope diario
   const rows = st.map((T, i)=>{
     const names = heroes.filter(h=>h.team === T.team).map(h=>heroLabel(h)).join(" + ");
     return '<tr' + (T.team === mine ? ' class="me"' : '') + '><td>' + (i + 1) + '. ' + (T.team === mine ? "TU EQUIPO" : lanesTeamName(T.team)) + '<br><small>' + names + '</small></td><td>' + T.points + '</td><td>' + T.wins + '/' + T.duels + '</td><td>' + T.pk + '</td></tr>';
   }).join("");
   r.innerHTML = '<div class="ln-res-card"><div class="ln-res-kicker">COLISEO</div><h2>' + (draw ? "EMPATE" : won ? "¡CAMPEONES!" : lanesTeamName(L.winner) + " GANA") + '</h2>' +
     '<p>' + c_rounds(L) + ' rondas · gana quien llega a ' + COL.WIN_POINTS + ' puntos</p>' +
+    postgameResultHtml(pgRes) +
     '<table><thead><tr><th>Equipo</th><th>Puntos</th><th>Duelos ganados</th><th>Bajas</th></tr></thead><tbody>' + rows + '</tbody></table>' +
     '<div class="ln-res-btns"><button type="button" class="ln-again">REVANCHA</button><button type="button" class="ln-exit">VOLVER AL MENÚ</button></div></div>';
   r.classList.remove("hidden");

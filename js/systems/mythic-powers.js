@@ -57,7 +57,6 @@ function mythicOnHit(h, e, dmg, crit, opts){
       e._eclipseBy = null;
       vfxBurst(e.x, e.y-20, 12, "shadow", 140, 360, 3, h===player?2:1, -20, 0);
       vfxShock(e.x, e.y, 4, 46, "140,120,200", 260, 1);
-      if(h===player) floatText(e.x, e.y-50, "¡EJECUTADO!", "crit");
       damageEnemy(e, e.hp + 1, {src:h, fromProc:true, critChanceOverride:0, execute:true});
       return;
     }
@@ -102,9 +101,9 @@ function mythicOnKill(h, e){
 }
 
 /* ---------------- al lanzar ---------------- */
-const MYTH_ECHO_BLOCK = {charge_drag:1, teleport_blink:1, ghost_step:1, eren_hook:1, sm_bayonet:1, sm_san_lorenzo:1, ronin_slash:1,
-  raise_skeletons:1, soul_harvest:0, summon_golem:1, war_cry:1, fury_armor:1, brief_immunity:1, sm_granaderos:1, eren_instinct:1, eren_advance:1,
-  spin_channel:1, titan_terremoto:1, titan_retumbar:1, piercing_shot:1};
+const MYTH_ECHO_BLOCK = {charge_drag:1, teleport_blink:1, ghost_step:1, ilkan_lance:1, sm_bayonet:1, sm_san_lorenzo:1, ronin_slash:1,
+  raise_skeletons:1, soul_harvest:0, summon_golem:1, war_cry:1, fury_armor:1, brief_immunity:1, sm_granaderos:1, ilkan_temple:1, ilkan_caravan:1,
+  spin_channel:1, colossus_sinkhole:1, colossus_march:1, piercing_shot:1};
 function mythicOnCast(h, sk, isUlt){
   if(h._mythEcho) return; // la repetición del Eco no cuenta para nada más
   // Último Bastión: la habilidad libera lo acumulado
@@ -117,13 +116,13 @@ function mythicOnCast(h, sk, isUlt){
     }
     vfxShock(h.x, h.y, 14, R, "255,210,140", 420, 2);
     vfxBurst(h.x, h.y, 14, "rock", 180, 360, 3.5, h===player?2:1, -20, 0);
-    if(h===player){ vfxShake(5); floatText(h.x, h.y-60, "¡BASTIÓN!", "crit"); playSfx("heavy"); }
+    if(h===player){ vfxShake(5); playSfx("heavy"); }
     h._bastionStore = 0;
   }
   // Tormenta Viva: cada 3 habilidades
   if(!isUlt && _myth(h, "myth_storm")){
     h._stormN = (h._stormN||0) + 1;
-    if(h._stormN >= 3){ h._stormN = 0; h._stormT = 4000; h._stormTick = 0; if(h===player) floatText(h.x, h.y-60, "¡TORMENTA!", "crit"); }
+    if(h._stormN >= 3){ h._stormN = 0; h._stormT = 4000; h._stormTick = 0; }
   }
   // Eco del Vacío: 25% de repetir al 60%
   if(!isUlt && _myth(h, "myth_echo") && !MYTH_ECHO_BLOCK[sk.kind] && Math.random() < 0.25){
@@ -134,7 +133,6 @@ function mythicOnCast(h, sk, isUlt){
       h.buffDmgMult = b*0.6; h._mythEcho = true;
       try{ vfxBurst(h.x, h.y-20, 8, "arcane", 120, 320, 3, h===player?1:0, -20, 1); castAbility(h, sk, false, idx>=0?idx:undefined); }
       finally{ h.buffDmgMult = b; h._mythEcho = false; }
-      if(h===player) floatText(h.x, h.y-58, "ECO", "crit");
     });
   }
 }
@@ -144,7 +142,6 @@ function mythicOnHurt(h, dmg, src){
   // umbral después de la defensa: los golpes de élites, jefes y comunes grandes (un común está topado en 12% antes de defensa)
   if(dmg > h.maxHp*0.07 && _myth(h, "myth_bastion")){
     h._bastionStore = Math.min(h.maxHp*1.2, (h._bastionStore||0) + dmg*0.4);
-    if(h===player) floatText(h.x, h.y-46, "▲ carga", "heal");
   }
 }
 function mythicOnHeal(caster, target, restored){

@@ -386,7 +386,7 @@ function nigroConsumePact(h){
   if(typeof champSetOnSoulsSpent==="function") champSetOnSoulsSpent(h, NIGRO_PACT_COST);
   vfxBurst(h.x, h.y-30, 14, "necro", 150, 500, 3.5, h===player?2:1, -30, 0);
   vfxShock(h.x, h.y, 10, 90, "90,230,140", 420, h===player?2:1);
-  if(h===player){ floatText(h.x, h.y-66, "¡PACTO!", "crit"); playSfx("cast"); }
+  if(h===player){ playSfx("cast"); }
   return true;
 }
 // Necromancia pasiva: levanta esqueletos de los cadáveres cercanos.
@@ -445,7 +445,6 @@ function nigroCastGolem(h, sk, dmg, AREA){
     spawnOrRenewGolem(h);
     const g = h.golem; const k = 0.7 + 0.15*used; g.maxHp *= k; g.hp = g.maxHp;
     g.corpses = used;
-    if(h===player) floatText(h.x, h.y-50, used ? `¡GÓLEM DE CARNE! (${used} cuerpos)` : "¡GÓLEM! (sin cuerpos: más débil)", null);
   } else {
     // ¡Aplasta!: el gólem salta al punto apuntado
     const g = h.golem;
@@ -460,8 +459,8 @@ function nigroCastGolem(h, sk, dmg, AREA){
     g.attackAnim = 320; g.slamBig = true; // (el dibujo usa el impacto grande de la hoja)
     vfxShock(g.x, g.y, 12, R, g.skin==="fire"?"255,138,61":g.skin==="ice"?"159,227,255":"143,174,122", 440, h===player?2:1);
     vfxBurst(g.x, g.y, 14, "rock", 160, 380, 3.5, h===player?1:0, -20, 0);
-    if(h===player){ vfxShake(4); playSfx("stomp"); floatText(g.x, g.y-60, "¡APLASTA!", "crit"); }
+    if(h===player){ vfxShake(4); playSfx("stomp"); }
   }
-  if(pact && h.golem){ h.golem.furyT = 8000; h.golem.hp = Math.min(h.golem.maxHp, h.golem.hp + h.golem.maxHp*0.4); if(h===player) floatText(h.golem.x, h.golem.y-70, "¡FURIA DE HUESOS!", "crit"); }
+  if(pact && h.golem){ h.golem.furyT = 8000; h.golem.hp = Math.min(h.golem.maxHp, h.golem.hp + h.golem.maxHp*0.4); }
   h.nigroCastKind = "golem"; h.attackAnim = Math.max(h.attackAnim, 320);
 }

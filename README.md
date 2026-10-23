@@ -45,14 +45,19 @@ tocar el balance: ver [ARCHITECTURE.md](ARCHITECTURE.md).**
   paredes agrietadas, tentáculos, Gran Helada, Convergencia…) con ventana EXPUESTO, anti-kite y anti-facetank.
   Ver [LA_HORDA_BOSS_IDENTITY.md](LA_HORDA_BOSS_IDENTITY.md) (matriz y exploits) y
   [LA_HORDA_BOSS_ASSET_MANIFEST.md](LA_HORDA_BOSS_ASSET_MANIFEST.md); pruebas en `tools/bosses/boss_rules.js`.
-- **12 guardianes**: Tanque, Asesino, Mago, Soporte, Segador Olvidado, Axiom, La Profeta,
-  Musashi, La Cazadora, Nigromante, El Libertador y Eren, cada uno con 3 habilidades y ulti.
-  Un perfil nuevo elige **un guardián de regalo**; los demás se compran en la Tienda.
+- **43 guardianes** (clases del motor en `CLASSES`, catálogo en `js/data/champions.js`, categorías en
+  `js/data/champion-taxonomy.js`: 32 Standard, 2 Familia, 7 Ascensión y 2 Fundadores), cada uno con 3 habilidades y
+  definitiva. Los originales son Tanque, Guerrero, Mago, Soporte, Segador Olvidado, Axiom, La Profeta, Musashi,
+  La Cazadora, Nigromante, El Libertador e Ilkan. Los contadores que ve el jugador salen de una sola función,
+  `championCounts()`: **43** en total, **41** obtenibles por progresión (los 2 Fundadores no entran: se conceden) y
+  **34** elegibles como regalo inicial (Standard y Familia comprables; Ascensión y Fundadores no).
+  Un perfil nuevo elige **un guardián de regalo** (más una skin); los demás se compran en la Tienda o se ganan.
 - **Arena Divina**: asedio 4v4 con torres, castillos, minions y campeones divinos.
 - **Progresión persistente** en `localStorage`: niveles, oro, maestría de habilidades,
   árboles de talentos, objetos con rarezas/sets/fusión; exportación/importación por código.
 - **Códice** (guardianes, bestiario, jefes y arenas) y **Tienda** (guardianes, objetos/sets y skins;
-  precio por rareza; guardianes a 2.500; Míticos y Únicos no se venden; un perfil nuevo recibe 10.000 de oro una vez).
+  precio por rareza; guardianes a 2.500 de oro (Ascensión con precio propio); Míticos y Únicos no se venden; un perfil nuevo empieza con **0 de oro**:
+  el regalo inicial es un guardián y una skin, `js/storage/save.js` y `js/systems/starter-gift.js`).
 - **Cooperativo online** de hasta 4 guardianes (sala con código de 6 letras; relay en `server/`).
 
 ## Carga de imágenes
@@ -119,8 +124,8 @@ El panel de niveles se habilita en Opciones para las cuentas incluidas en `ADMIN
 
 La entrega de la fábrica de producción, Códice/colección, entrenamiento y operaciones está documentada en [LA_HORDA_ALPHA_AUTONOMOUS_AUDIT.md](LA_HORDA_ALPHA_AUTONOMOUS_AUDIT.md), con gates ejecutados y pendientes explícitos. Estándares: [Production Bibles](docs/production/PRODUCTION_BIBLES.md). Incorporación de campeones: [Factory](tools/factory/README.md). Configuración del owner, contratos y respaldos: [Game Master](docs/production/operations.md). No hay pagos activos.
 
-## Guerra de Cristales (Alpha)
+## Modos de postgame: Guerra de Cristales y Coliseo (Alpha)
 
-Nuevo modo de Coliseo 2 contra 2, accesible desde Modos: defensa de cristales, oleadas simétricas, fragmentos compartidos y envío de amenazas. Entrenamiento con bots o salas privadas sobre el relay existente. Cuatro kits adaptados al modo, sin afectar la progresión de campaña.
+Contenido de DESPUÉS de la campaña, contra bots (salas privadas en línea para Cristales). **Guerra de Cristales**: 5 contra 5, tres carriles, selva, torres y PvP con los campeones de la campaña. **Coliseo**: torneo de ocho luchadores, cuatro equipos de dos, duelos 2 contra 2 con anillo que se cierra. En alfa están abiertos (`POSTGAME_GATE = "open"`); con `"campaign"` se abren al terminar la campaña en Normal. Entran con tu nivel, talentos, maestría y equipo con un tope configurable (`LANES.PROGRESS_CAP`); antes hay un Entrenamiento normalizado sin recompensas. Recompensas diarias con tope.
 
-[Reglas, controles, arquitectura y validación](docs/modes/CRYSTAL_WARS.md).
+[Reglas, controles y validación](docs/modes/CRYSTAL_WARS.md) · [Progresión, tope, bloqueo y recompensas](docs/modes/POSTGAME.md).

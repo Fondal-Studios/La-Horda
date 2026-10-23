@@ -1,7 +1,7 @@
-// Pruebas de partida real de El Libertador (San Martín) y Eren (El Portador).
+// Pruebas de partida real de El Libertador (San Martín) y Ilkan (Coloso de Arena).
 // No es parte del juego. Corre sobre el repo servido tal cual:
 //   (python3 -m http.server 8771 &) ; SE_BASE_URL=http://127.0.0.1:8771 node tools/regression/t_champs_se.js <outdir>
-// Casos: SM 1-13, EREN 1-20, EQUIPO (SM + Eren + 2 bots), AMBOS COMO BOTS, rendimiento.
+// Casos: SM 1-13, ILKAN 1-20, EQUIPO (SM + Ilkan + 2 bots), AMBOS COMO BOTS, rendimiento.
 let chromium;
 try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
 const fs = require('fs');
@@ -27,6 +27,9 @@ const PAGE_HELPERS = () => {
       selectedClass = champ; currentArena = 'bosque';
       if (allies) lobbyAllies = allies.slice();
       startRun(level || 3);
+      // escena controlada: la selva del Bosque (bos-selva.js) pone rocas, zarzales y troncos al azar y bloquean tiros y embestidas según la semilla;
+      // estas pruebas miden la mecánica del guardián, no el mapa, así que se sacan (los sólidos fijos del escenario quedan).
+      aidSolids = aidSolids.filter(s => !s.bsv); if (typeof aidNavBuild === 'function') aidNavBuild();
       window.__seFreeze = true;
       return player.classKey;
     },
@@ -49,8 +52,8 @@ const PAGE_HELPERS = () => {
       const h = player;
       return { x: Math.round(h.x), y: Math.round(h.y), hp: Math.round(h.hp), maxHp: h.maxHp, alive: h.alive, downed: !!h.downed,
         sm: h.smPhase || null, mounted: !!h.smMounted, cabral: !!h.smCabralUsed, officer: !!h.smOfficerReady, shots: h.smShots || 0,
-        er: h.erenPhase || null, titan: !!h.erenTitan, ready: !!h.erenRumblingReady, exhaust: Math.round(h.erenExhaustTimer || 0), notf: Math.round(h.erenNoTfTimer || 0),
-        fury: Math.round(h.ultCharge || 0), furyMax: h.ultMax, combo: h.erenCombo || 0, cls: h.cls.name, radius: h.radius, invuln: Math.round(h.invulnTimer || 0),
+        er: h.ilkanPhase || null, titan: !!h.ilkanColossus, ready: !!h.ilkanFinaleReady, exhaust: Math.round(h.ilkanExhaustTimer || 0), notf: Math.round(h.ilkanNoTfTimer || 0),
+        fury: Math.round(h.ultCharge || 0), furyMax: h.ultMax, combo: h.ilkanCombo || 0, cls: h.cls.name, radius: h.radius, invuln: Math.round(h.invulnTimer || 0),
         speed: +heroSpeedMult(h).toFixed(3), dmgOut: +heroDmgOutMult(h).toFixed(3), taken: +heroDmgTakenMult(h).toFixed(3), cds: h.cds.map(c => Math.round(c)), state };
     },
   };
@@ -63,7 +66,7 @@ const PAGE_HELPERS = () => {
   // registro de fases por cuadro (para verificar secuencias montar->cargar->desmontar, etc.)
   window.__phaseLog = [];
   (function logLoop() {
-    try { if (typeof player !== 'undefined' && player) { const ph = (player.smPhase || '') + '|' + (player.erenPhase || '') + '|' + (player.smMounted ? 'M' : '') + (player.erenTitan ? 'T' : ''); const L = window.__phaseLog; if (L[L.length - 1] !== ph) L.push(ph); if (L.length > 400) L.shift(); } } catch (e) {}
+    try { if (typeof player !== 'undefined' && player) { const ph = (player.smPhase || '') + '|' + (player.ilkanPhase || '') + '|' + (player.smMounted ? 'M' : '') + (player.ilkanColossus ? 'T' : ''); const L = window.__phaseLog; if (L[L.length - 1] !== ph) L.push(ph); if (L.length > 400) L.shift(); } } catch (e) {}
     requestAnimationFrame(logLoop);
   })();
   // FPS medido con requestAnimationFrame
@@ -104,6 +107,8 @@ const PAGE_HELPERS = () => {
     const hud = await E(() => document.getElementById('se-hud').innerText.includes('Oficial'));
     check('SM1.humano', k === 'libertador' && b.x - a.x > 60 && hud, { k, moved: b.x - a.x, hud, cls: b.cls });
 
+    // SM2-SM4 miden SOLO al Libertador: los aliados (bots) quedan quietos, porque sus ataques le pegaban al muñeco (y consumían el sangrado con reacciones)
+    await E(() => { window.__ua0 = updateAllies; updateAllies = function () {}; });
     // SM2: disparo normal (lento, pesado, sin cancelar recarga)
     const i1 = await E(() => __se.spawn('duende_bosque', 220, 0, { hp: 5000 }));
     await E(() => { basicHeld = true; });
@@ -140,13 +145,15 @@ const PAGE_HELPERS = () => {
     const ib = await E(() => __se.spawn('dama_bosque', 150, 0, { hp: 99999 }));
     await E(() => { player.cds = [0, 0, 0]; player.energy = 999; player.fx = 1; player.fy = 0; });
     const pb0 = await P();
+    await phaseLog(); // limpia el registro de fases por cuadro
     await E(() => useSkill(0, { x: player.x + 150, y: player.y, dx: 1, dy: 0 }));
-    await sleep(80);
-    const phB = (await P()).sm;
-    await sleep(600);
+    await sleep(680);
+    // la embestida dura ~100-200 ms (190 u a 950 u/s, y se corta al conectar): se mira el REGISTRO de fases por cuadro en vez de una foto a los 80 ms
+    const phB = (await phaseLog()).some(x => x.startsWith('bayo')) ? 'bayo' : null;
     const pb1 = await P(), eb = await E(i => __se.en(i), ib);
     check('SM4.bayoneta', phB === 'bayo' && pb1.sm === null && eb.dmg > 0 && eb.bleed > 0 && pb1.x - pb0.x > 60 && pb1.x - pb0.x < 190 && eb.x > 0,
       { phase: phB, dashPx: pb1.x - pb0.x, enemyDmg: eb.dmg, bleed: eb.bleed, stun: eb.stun, enemyDx: eb.x });
+    await E(() => { updateAllies = window.__ua0; });
 
     // SM5: buff de equipo (solo aliados)
     await E(() => { __se.clear(); allies.forEach((h, i) => { h.x = player.x + 60 + i * 20; h.y = player.y + 30; }); player.cds = [0, 0, 0]; player.energy = 999; });
@@ -258,11 +265,11 @@ const PAGE_HELPERS = () => {
     check('SM13.oleadas_densas', errCount() === e0 && st13.fx <= 60, { ...f13, ...st13, errors: errors.slice(e0) });
   }
 
-  /* ================= EREN ================= */
+  /* ================= ILKAN ================= */
   {
     const e0 = errCount();
     // E1: movimiento humano
-    const k = await E(() => __se.start('eren', ['tanque', 'soporte', 'mago']));
+    const k = await E(() => __se.start('ilkan', ['tanque', 'soporte', 'mago']));
     await sleep(600);
     await E(() => __se.clear());
     const a = await P();
@@ -270,11 +277,11 @@ const PAGE_HELPERS = () => {
     await sleep(600);
     await E(() => { joyVec = { x: 0, y: 0 }; });
     const b = await P();
-    check('E1.movimiento_humano', k === 'eren' && b.y - a.y > 60 && !b.titan, { moved: b.y - a.y, cls: b.cls });
+    check('E1.movimiento_humano', k === 'ilkan' && b.y - a.y > 60 && !b.titan, { moved: b.y - a.y, cls: b.cls });
 
     // E2: combo de 3 (el 3ro da Furia extra)
     const ic = await E(() => __se.spawn('duende_bosque', 45, 0, { hp: 99999 }));
-    await E(() => { player.ultCharge = 0; player.erenCombo = 0; player.erenComboTimer = 0; player.basicCd = 0; player.fx = 1; player.fy = 0; });
+    await E(() => { player.ultCharge = 0; player.ilkanCombo = 0; player.ilkanComboTimer = 0; player.basicCd = 0; player.fx = 1; player.fy = 0; });
     const furyLog = [], comboLog = [];
     for (let j = 0; j < 3; j++) {
       await E(() => { player.basicCd = 0; triggerBasic(player); });
@@ -291,7 +298,7 @@ const PAGE_HELPERS = () => {
     await E(() => useSkill(0, { x: player.x + 300, y: player.y, dx: 1, dy: 0 }));
     await sleep(200);
     const h1 = await P();
-    const redirOk = await E(() => erenHookCanRedirect(player));
+    const redirOk = await E(() => ilkanHookCanRedirect(player));
     await E(() => useSkill(0, { x: player.x, y: player.y + 300, dx: 0, dy: 1 }));
     await sleep(60);
     const h2 = await P();
@@ -302,14 +309,14 @@ const PAGE_HELPERS = () => {
     check('E4.segundo_gancho', redirOk && h2.er === 'hook', { canRedirect: redirOk, phase: h2.er });
     check('E5.cambio_direccion', h3.y - h2.y > 80 && Math.abs(h3.x - h2.x) < 60, { firstLegDx: h2.x - h0.x, secondLegDy: h3.y - h2.y, secondLegDx: h3.x - h2.x, log: log3.slice(0, 8) });
     await E(() => { player.cds = [0, 0, 0]; });
-    const noThird = await E(() => { const r = erenHookCanRedirect(player); return r; });
+    const noThird = await E(() => { const r = ilkanHookCanRedirect(player); return r; });
     check('E5b.sin_gancho_infinito', !noThird, { canRedirectAfterSecond: noThird });
 
     // E6: límites de arena (ganchos repetidos hacia afuera, nunca sale)
     const bounds = [];
     for (const d of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
       for (let j = 0; j < 6; j++) {
-        await E(d => { player.cds = [0, 0, 0]; player.energy = 999; player.erenPhase = null; useSkill(0, { x: player.x + d[0] * 300, y: player.y + d[1] * 300, dx: d[0], dy: d[1] }); }, d);
+        await E(d => { player.cds = [0, 0, 0]; player.energy = 999; player.ilkanPhase = null; useSkill(0, { x: player.x + d[0] * 300, y: player.y + d[1] * 300, dx: d[0], dy: d[1] }); }, d);
         await sleep(450);
       }
       bounds.push(await E(() => { const o = { x: player.x, y: player.y, radius: player.radius }; const x0 = o.x, y0 = o.y; clampToArena(o); return { x: Math.round(player.x), y: Math.round(player.y), inside: Math.abs(o.x - x0) < 1 && Math.abs(o.y - y0) < 1, finite: isFinite(player.x) && isFinite(player.y) }; }));
@@ -317,7 +324,7 @@ const PAGE_HELPERS = () => {
     check('E6.limites_arena', bounds.every(b => b.inside && b.finite), bounds);
 
     // E7: Furia (sube al recibir daño; Instinto la multiplica; Instinto NO es invulnerable)
-    await E(() => { __se.clear(); player.x = 0; player.y = 0; player.erenPhase = null; player.hp = player.maxHp; player.ultCharge = 0; player.erenInstinctTimer = 0; player.invulnTimer = 0; });
+    await E(() => { __se.clear(); player.x = 0; player.y = 0; player.ilkanPhase = null; player.hp = player.maxHp; player.ultCharge = 0; player.ilkanInstinctTimer = 0; player.invulnTimer = 0; });
     const f7h0 = (await P()).hp;
     await E(() => damageHero(player, player.maxHp * 0.1, null));
     const f7a = (await P()).fury, f7a0lost = f7h0 - (await P()).hp;
@@ -329,12 +336,12 @@ const PAGE_HELPERS = () => {
     check('E7.furia', f7a > 0 && perHpI > perHpN * 2.5 && f7b.hp < hpBefore && Math.abs(f7b.taken - 0.65) < 0.02, { furyNormal: f7a, furyInstinct: f7b.fury, furyPerHpNormal: +perHpN.toFixed(3), furyPerHpInstinct: +perHpI.toFixed(3), hpLost: hpBefore - f7b.hp, takenMult: f7b.taken });
 
     // E8: HP bajo (Seguir Adelante: <25% -> +15% vel/daño y más Furia)
-    await E(() => { player.erenInstinctTimer = 0; player.erenAdvanceTimer = 0; player.hp = player.maxHp; });
+    await E(() => { player.ilkanInstinctTimer = 0; player.ilkanAdvanceTimer = 0; player.hp = player.maxHp; });
     const full = await P();
-    const g1 = await E(() => erenFuryGainMult(player));
+    const g1 = await E(() => ilkanFuryGainMult(player));
     await E(() => { player.hp = player.maxHp * 0.2; });
     const low = await P();
-    const g2 = await E(() => erenFuryGainMult(player));
+    const g2 = await E(() => ilkanFuryGainMult(player));
     await shot('e8_lowhp');
     check('E8.hp_bajo', Math.abs(low.speed / full.speed - 1.15) < 0.02 && Math.abs(low.dmgOut / full.dmgOut - 1.15) < 0.02 && g2 > g1 * 1.5, { speed: [full.speed, low.speed], dmg: [full.dmgOut, low.dmgOut], furyMult: [+g1.toFixed(2), +g2.toFixed(2)] });
 
@@ -351,16 +358,16 @@ const PAGE_HELPERS = () => {
     const t9 = await P();
     await shot('e9_titan');
     const log9 = await phaseLog();
-    check('E9.transformacion', t9.titan && t9.cls === 'El Portador' && t9.radius > r0 * 2 && t9.maxHp > full.maxHp * 2 && log9.some(s => s.split('|')[1] === 'tf') && t9.fury === 0,
+    check('E9.transformacion', t9.titan && t9.cls === 'Coloso de Arena' && t9.radius > r0 * 2 && t9.maxHp > full.maxHp * 2 && log9.some(s => s.split('|')[1] === 'tf') && t9.fury === 0,
       { radius: [r0, t9.radius], maxHp: [full.maxHp, t9.maxHp], log: log9.slice(0, 6) });
 
     // E10: ataque monstruoso (puño-puño-pisotón; comunes empujados, jefes quietos)
     const ic10 = await E(() => __se.spawn('duende_bosque', 90, 0, { hp: 99999 }));
     const ib10 = await E(() => __se.spawn('demonio_mayor', 0, 110, { boss: true, hp: 99999 }));
     const cP0 = await E(i => __se.en(i), ic10), bP0 = await E(i => ({ x: enemies[i].x, y: enemies[i].y }), ib10);
-    await E(() => { player.erenCombo = 0; player.erenComboTimer = 0; player.fx = 1; player.fy = 0; });
+    await E(() => { player.ilkanCombo = 0; player.ilkanComboTimer = 0; player.fx = 1; player.fy = 0; });
     const steps10 = [];
-    for (let j = 0; j < 3; j++) { await E(() => { player.basicCd = 0; triggerBasic(player); }); steps10.push(await E(() => player.erenAtkStep)); await sleep(200); }
+    for (let j = 0; j < 3; j++) { await E(() => { player.basicCd = 0; triggerBasic(player); }); steps10.push(await E(() => player.ilkanAtkStep)); await sleep(200); }
     const bK = await E(i => __se.en(i), ib10);
     const cP1 = await E(i => __se.en(i), ic10), bP1 = await E(i => ({ x: enemies[i].x, y: enemies[i].y, hp: enemies[i].hp }), ib10);
     check('E10.ataque_monstruoso', steps10.join(',') === '0,1,2' && cP1.dmg > 0 && Math.hypot(cP1.x - cP0.x, cP1.y - cP0.y) > 20 && bK.dmg > 0 && bK.bossKnocks === 0,
@@ -401,20 +408,21 @@ const PAGE_HELPERS = () => {
     check('E13.retumbar', r13b.er === 'stomp' && r13c.x - r13a.x > 150 && er13.dmg > 0 && r13c.er === null, { advancedPx: r13c.x - r13a.x, enemyDmg: er13.dmg, phaseMid: r13b.er, phaseEnd: r13c.er });
 
     // E14: regeneración (parte del daño vuelve con vapor; no inmortal)
-    await E(() => { __se.clear(); player.hp = player.maxHp * 0.9; player.erenRegenPool = 0; player.invulnTimer = 0; damageHero(player, player.maxHp * 0.3, null); });
+    await E(() => { __se.clear(); player.hp = player.maxHp * 0.9; player.ilkanRegenPool = 0; player.invulnTimer = 0; damageHero(player, player.maxHp * 0.3, null); });
     const r14a = await P();
     await sleep(2000);
     const r14b = await P();
     check('E14.regeneracion', r14b.hp > r14a.hp && r14b.hp < r14a.maxHp * 0.9, { hpAfterHit: r14a.hp, hpAfter2s: r14b.hp, max: r14a.maxHp });
 
     // E15: llenar Furia transformado -> indicador especial
-    await E(() => { player.ultCharge = 0; player.erenRumblingReady = false; });
+    await E(() => { player.ultCharge = 0; player.ilkanFinaleReady = false; });
     await sleep(300);
-    const hidden = await E(() => document.getElementById('se-hud').innerText.includes('RETUMBAR'));
-    await E(() => { player.ultCharge = player.ultMax - 1; erenAddFury(player, 5); });
+    const hidden = await E(() => document.getElementById('se-hud').innerText.includes('TRES PASOS'));
+    // Los Tres Pasos solo se habilitan en peligro (vida < 35 % o un aliado caído) o contra un jefe (ilkanFinaleCondition; ILKAN_CFG.finale): se pone al héroe en peligro
+    await E(() => { player.hp = Math.max(1, player.maxHp * 0.2); player.ultCharge = player.ultMax - 1; ilkanAddFury(player, 5); });
     await sleep(150);
     const p15 = await P();
-    const shown = await E(() => document.getElementById('se-hud').innerText.includes('RETUMBAR LISTO'));
+    const shown = await E(() => document.getElementById('se-hud').innerText.includes('TRES PASOS LISTOS'));
     check('E15.furia_llena_transformado', p15.ready && shown && !hidden, { ready: p15.ready, bannerOrHud: shown, notShownBefore: !hidden });
 
     // E16/E17/E18/E19: Ultimate II -> 3 pisadas -> humano -> agotado
@@ -422,11 +430,12 @@ const PAGE_HELPERS = () => {
     const allyHp0 = await E(() => allies.map(h => Math.round(h.hp)));
     const rs = [];
     for (const [dx, dy] of [[-320, -80], [320, 80], [0, 0], [60, 40]]) rs.push(await E(([dx, dy]) => __se.spawn('duende_bosque', dx, dy, { hp: 999999 }), [dx, dy]));
-    await E(() => { window.__steps = []; const orig = erenUpdateRumbleStep; window.__origStep = orig; });
-    await E(() => useUltimate());
+    await E(() => { window.__steps = []; const orig = ilkanUpdateFinaleStep; window.__origStep = orig; });
+    // en peligro justo al lanzar (la regeneración de Ilkan y la curación del Soporte lo subían de 35 % entre E15 y acá y la condición se caía)
+    await E(() => { player.hp = Math.max(1, player.maxHp * 0.2); useUltimate(); });
     await sleep(150);
     const p16 = await P();
-    const fx16 = await E(() => champFx.filter(f => f.type === 'rumbleStep').map(f => ({ idx: f.idx, dx: Math.round(f.x - player.x), dy: Math.round(f.y - player.y), r: f.r, delay: f.delay })));
+    const fx16 = await E(() => champFx.filter(f => f.type === 'finaleStep').map(f => ({ idx: f.idx, dx: Math.round(f.x - player.x), dy: Math.round(f.y - player.y), r: f.r, delay: f.delay })));
     await E(() => { joyVec = { x: 1, y: 0 }; });
     await sleep(900);
     const ctl = await P();
@@ -443,18 +452,18 @@ const PAGE_HELPERS = () => {
     await sleep(2000);
     const p18 = await P();
     const allyHp1 = await E(() => allies.map(h => Math.round(h.hp)));
-    check('E16.ultimate_II', p16.er === 'rumble' && !p16.ready && Math.abs(ctl.x - p16.x) < 2, { phase: p16.er, playerMovedWhileRumble: ctl.x - p16.x });
+    check('E16.ultimate_II', p16.er === 'finale' && !p16.ready && Math.abs(ctl.x - p16.x) < 2, { phase: p16.er, playerMovedWhileRumble: ctl.x - p16.x });
     check('E17.tres_pisadas', fx16.length === 3 && fx16[0].dx < 0 && fx16[1].dx > 0 && fx16[2].r > fx16[0].r && hpSteps.filter(d => d > 0).length >= 3 && allyHp1.every((h, i) => h >= allyHp0[i] - 1),
       { steps: fx16, enemyDmg: hpSteps, allyHp: [allyHp0, allyHp1] });
-    check('E18.retorno_humano', !p18.titan && p18.cls !== 'El Portador' && p18.radius < 40, { titan: p18.titan, cls: p18.cls, radius: p18.radius });
-    const blocked = await E(() => { player.ultCharge = player.ultMax; player.ultCd = 0; useUltimate(); return !player.erenTitan && player.erenPhase !== 'tf'; });
+    check('E18.retorno_humano', !p18.titan && p18.cls !== 'Coloso de Arena' && p18.radius < 40, { titan: p18.titan, cls: p18.cls, radius: p18.radius });
+    const blocked = await E(() => { player.ultCharge = player.ultMax; player.ultCd = 0; useUltimate(); return !player.ilkanColossus && player.ilkanPhase !== 'tf'; });
     check('E19.agotamiento', p18.fury === 0 && p18.exhaust > 0 && p18.notf > 0 && p18.speed < 1 && blocked, { fury: p18.fury, exhaustMs: p18.exhaust, noTransformMs: p18.notf, speed: p18.speed, ultBlocked: blocked });
     await shot('e19_exhausted');
 
     // E20: muerte durante distintos estados (gancho, transformación, titán, Terremoto)
     const deaths = {};
     for (const st of ['hook', 'tf', 'titan', 'quake']) {
-      await E(() => __se.start('eren', ['tanque', 'soporte', 'mago']));
+      await E(() => __se.start('ilkan', ['tanque', 'soporte', 'mago']));
       await sleep(300);
       await E(() => { __se.clear(); runLevel = Math.max(runLevel, ULT_MIN_ARENA_LEVEL); });
       if (st === 'hook') await E(() => { player.cds = [0, 0, 0]; player.energy = 999; useSkill(0, { x: player.x + 300, y: player.y, dx: 1, dy: 0 }); });
@@ -462,43 +471,43 @@ const PAGE_HELPERS = () => {
       if (st === 'titan' || st === 'quake') { await E(() => { player.ultCharge = player.ultMax; player.ultCd = 0; useUltimate(); }); await sleep(1900); }
       if (st === 'quake') await E(() => { player.cds = [0, 0, 0]; player.energy = 999; useSkill(1, null); });
       await sleep(120);
-      await E(() => { player.invulnTimer = 0; if (player.erenPhase === 'tf') { player.erenPhase = null; } player.hp = 1; damageHero(player, 1e7, null); });
+      await E(() => { player.invulnTimer = 0; if (player.ilkanPhase === 'tf') { player.ilkanPhase = null; } player.hp = 1; damageHero(player, 1e7, null); });
       await sleep(300);
       deaths[st] = await P();
     }
     const deathOk = Object.values(deaths).every(d => (!d.alive || d.downed) && !d.titan && d.er === null && d.radius < 40);
     check('E20.muerte_estados', deathOk && errCount() === e0, Object.fromEntries(Object.entries(deaths).map(([k, d]) => [k, { alive: d.alive, titan: d.titan, er: d.er, r: d.radius, cls: d.cls }])));
     // cinemáticas (tf/retumbar) sin daño recibido
-    await E(() => __se.start('eren', ['tanque', 'soporte', 'mago']));
+    await E(() => __se.start('ilkan', ['tanque', 'soporte', 'mago']));
     await sleep(300);
-    const cinem = await E(() => { __se.clear(); runLevel = Math.max(runLevel, ULT_MIN_ARENA_LEVEL); player.ultCharge = player.ultMax; player.ultCd = 0; useUltimate(); const hp = player.hp; damageHero(player, 50, null); return { phase: player.erenPhase, noDamage: player.hp === hp }; });
+    const cinem = await E(() => { __se.clear(); runLevel = Math.max(runLevel, ULT_MIN_ARENA_LEVEL); player.ultCharge = player.ultMax; player.ultCd = 0; useUltimate(); const hp = player.hp; damageHero(player, 50, null); return { phase: player.ilkanPhase, noDamage: player.hp === hp }; });
     check('E20b.cinematica_protegida', cinem.phase === 'tf' && cinem.noDamage, cinem);
-    check('EREN.sin_errores', errCount() === e0, errors.slice(e0));
+    check('ILKAN.sin_errores', errCount() === e0, errors.slice(e0));
   }
 
-  /* ================= EQUIPO: SAN MARTÍN + EREN + 2 BOTS ================= */
+  /* ================= EQUIPO: SAN MARTÍN + ILKAN + 2 BOTS ================= */
   {
     const e0 = errCount();
-    await E(() => __se.start('libertador', ['eren', 'soporte', 'mago'], ULT_MIN_ARENA_LEVEL));
+    await E(() => __se.start('libertador', ['ilkan', 'soporte', 'mago'], ULT_MIN_ARENA_LEVEL));
     await E(() => { __se.freeze(false); });
     await sleep(400);
     const team = await E(() => heroes.map(h => h.classKey));
-    // el Eren BOT también tiene que funcionar; se le llena la Furia para ver su IA de titán
+    // el Ilkan BOT también tiene que funcionar; se le llena la Furia para ver su IA de titán
     await fpsReset();
-    const stats = { granAllies: 0, erenTitan: false, erenHook: false, smMounted: false, rumble: false, maxFx: 0, maxParts: 0 };
+    const stats = { granAllies: 0, ilkanColossus: false, ilkanHook: false, smMounted: false, rumble: false, maxFx: 0, maxParts: 0 };
     for (let t = 0; t < 45; t++) {
       const s = await E(() => {
-        const er = heroes.find(h => h.classKey === 'eren');
-        if (er && er.alive && !er.erenTitan && !er.erenNoTfTimer && runElapsedMs > 6000) er.ultCharge = er.ultMax;
-        if (er && er.erenTitan && runElapsedMs > 16000) er.ultCharge = er.ultMax;
+        const er = heroes.find(h => h.classKey === 'ilkan');
+        if (er && er.alive && !er.ilkanColossus && !er.ilkanNoTfTimer && runElapsedMs > 6000) er.ultCharge = er.ultMax;
+        if (er && er.ilkanColossus && runElapsedMs > 16000) er.ultCharge = er.ultMax;
         player.cds = player.cds.map(c => Math.min(c, 800)); player.energy = 999; basicHeld = true;
-        if (Math.random() < 0.3) useSkill((Math.random() * 3) | 0, null);
+        window.__tk = (window.__tk || 0) + 1; if (window.__tk % 2 === 0) useSkill((window.__tk >> 1) % 3, null); /* las 3 habilidades en rotación (antes al azar: los Granaderos no siempre salían) */
         if (runElapsedMs > 9000 && !player.smMounted) { player.ultCharge = player.ultMax; player.ultCd = 0; useUltimate(); }
         player.hp = Math.max(player.hp, player.maxHp * 0.5);
         heroes.forEach(h => { if (h.alive) h.hp = Math.max(h.hp, h.maxHp * 0.3); });
-        return { gran: allies.filter(h => h.granTimer > 0).length, titan: !!(er && er.erenTitan), hook: !!(er && (er.erenPhase === 'hook' || er.erenPhase === 'hookPrep')), rumble: !!(er && er.erenPhase === 'rumble'), mounted: !!player.smMounted, fx: champFx.length, parts: particles.length, en: enemies.filter(e => e.alive).length };
+        return { gran: allies.filter(h => h.granTimer > 0).length, titan: !!(er && er.ilkanColossus), hook: !!(er && (er.ilkanPhase === 'hook' || er.ilkanPhase === 'hookPrep')), rumble: !!(er && er.ilkanPhase === 'finale'), mounted: !!player.smMounted, fx: champFx.length, parts: particles.length, en: enemies.filter(e => e.alive).length };
       });
-      stats.granAllies = Math.max(stats.granAllies, s.gran); stats.erenTitan ||= s.titan; stats.erenHook ||= s.hook; stats.smMounted ||= s.mounted; stats.rumble ||= s.rumble;
+      stats.granAllies = Math.max(stats.granAllies, s.gran); stats.ilkanColossus ||= s.titan; stats.ilkanHook ||= s.hook; stats.smMounted ||= s.mounted; stats.rumble ||= s.rumble;
       stats.maxFx = Math.max(stats.maxFx, s.fx); stats.maxParts = Math.max(stats.maxParts, s.parts);
       if (t === 20) await shot('team_mid');
       if (s.rumble && !stats.shotR) { stats.shotR = true; await shot('team_rumble_bot'); }
@@ -508,10 +517,11 @@ const PAGE_HELPERS = () => {
     const f = await fpsRead();
     // pasar a jefe
     await E(() => { __se.freeze(true); __se.clear(); startBossFight(); });
-    await sleep(6000);
+    // los bots tardan en llegar al jefe (intro + camino): se espera la condición (el jefe recibió daño), hasta 30 s, en vez de 6 s fijos
+    for (let k = 0; k < 60; k++) { await sleep(500); if (await E(() => !!boss && boss.hp < boss.maxHp)) break; }
     const bossSt = await E(() => ({ boss: !!boss, bossHp: boss ? Math.round(boss.hp) : null, bossMax: boss ? boss.maxHp : null, state }));
     await shot('team_boss');
-    check('TEAM.sm_eren_2bots', team.join(',') === 'libertador,eren,soporte,mago' && stats.granAllies >= 1 && stats.erenTitan && stats.smMounted && errCount() === e0,
+    check('TEAM.sm_ilkan_2bots', team.join(',') === 'libertador,ilkan,soporte,mago' && stats.granAllies >= 1 && stats.ilkanColossus && stats.smMounted && errCount() === e0,
       { team, ...stats, ...f, boss: bossSt, errors: errors.slice(e0) });
     check('TEAM.boss', bossSt.boss && bossSt.bossHp < bossSt.bossMax, bossSt);
   }
@@ -519,17 +529,17 @@ const PAGE_HELPERS = () => {
   /* ================= AMBOS COMO BOTS ================= */
   {
     const e0 = errCount();
-    await E(() => __se.start('tanque', ['libertador', 'eren', 'soporte'], ULT_MIN_ARENA_LEVEL));
+    await E(() => __se.start('tanque', ['libertador', 'ilkan', 'soporte'], ULT_MIN_ARENA_LEVEL));
     await E(() => { __se.freeze(false); });
     const seen = { smShots: 0, smSkills: new Set(), erSkills: new Set(), erTitan: false, smUlt: false, erHook: false };
     for (let t = 0; t < 60; t++) {
       const s = await E(() => {
-        const sm = heroes.find(h => h.classKey === 'libertador'), er = heroes.find(h => h.classKey === 'eren');
+        const sm = heroes.find(h => h.classKey === 'libertador'), er = heroes.find(h => h.classKey === 'ilkan');
         player.hp = player.maxHp; // el jugador (tanque) no muere: se mira a los bots
         heroes.forEach(h => { if (h.alive) h.hp = Math.max(h.hp, h.maxHp * 0.35); });
-        if (runElapsedMs > 8000) { if (sm && sm.ultCharge < sm.ultMax) sm.ultCharge += 3; if (er && !er.erenTitan && er.ultCharge < er.ultMax) er.ultCharge += 3; }
+        if (runElapsedMs > 8000) { if (sm && sm.ultCharge < sm.ultMax) sm.ultCharge += 3; if (er && !er.ilkanColossus && er.ultCharge < er.ultMax) er.ultCharge += 3; }
         return { sm: sm && { ph: sm.smPhase, m: sm.smMounted, cds: sm.cds.map(c => c > 0), shots: projectiles.filter(p => p.smShot && p.src === sm).length },
-          er: er && { ph: er.erenPhase, t: er.erenTitan, cds: er.cds.map(c => c > 0) } };
+          er: er && { ph: er.ilkanPhase, t: er.ilkanColossus, cds: er.cds.map(c => c > 0) } };
       });
       if (s.sm) { seen.smShots += s.sm.shots; s.sm.cds.forEach((c, i) => c && seen.smSkills.add(i)); if (s.sm.m) seen.smUlt = true; }
       if (s.er) { s.er.cds.forEach((c, i) => c && seen.erSkills.add(i)); if (s.er.t) seen.erTitan = true; if (s.er.ph === 'hook' || s.er.ph === 'hookPrep') seen.erHook = true; }
@@ -538,7 +548,7 @@ const PAGE_HELPERS = () => {
     }
     const r = { smShots: seen.smShots, smSkills: [...seen.smSkills], smUlt: seen.smUlt, erSkills: [...seen.erSkills], erTitan: seen.erTitan, erHook: seen.erHook };
     check('BOTS.libertador', r.smShots > 0 && r.smSkills.length >= 2 && r.smUlt, r);
-    check('BOTS.eren', r.erSkills.length >= 2 && r.erTitan, r);
+    check('BOTS.ilkan', r.erSkills.length >= 2 && r.erTitan, r);
     check('BOTS.sin_errores', errCount() === e0, errors.slice(e0));
   }
 

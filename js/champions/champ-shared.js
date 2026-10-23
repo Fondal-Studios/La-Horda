@@ -1,7 +1,7 @@
 "use strict";
 /* ============================================================
    js/champions/champ-shared.js
-   Piezas comunes a El Libertador (libertador.js) y Eren (eren.js), enganchadas al motor en
+   Piezas comunes a El Libertador (libertador.js) y Ilkan (ilkan.js), enganchadas al motor en
    pocos puntos para no tocar a ningún otro guardián:
    - champFx: UNA colección de efectos de mundo (zonas, avisos, jinetes espectrales, pisadas,
      escarcha). Es lógica liviana + dibujo; se sincroniza sola en cooperativo (NET_COLLS).
@@ -69,8 +69,8 @@ function heroSpeedMult(h){
   let m = 1;
   if(h.granTimer>0) m *= 1 + SM_CFG.granaderos.speedPct;
   if(h.classKey==="libertador") m *= libertadorSpeedMult(h);
-  if(h.classKey==="eren") m *= erenSpeedMult(h);
-  if(h.advAllyTimer>0) m *= 1 + EREN_CFG.advance.speedPct*EREN_CFG.advance.allyShare;
+  if(h.classKey==="ilkan") m *= ilkanSpeedMult(h);
+  if(h.advAllyTimer>0) m *= 1 + ILKAN_CFG.advance.speedPct*ILKAN_CFG.advance.allyShare;
   m *= itemSpeedMult(h); // Paso del Cazador / Gracia Veloz (objetos)
   m *= portadorSpeedMult(h);
   return m;
@@ -84,9 +84,9 @@ function heroDmgOutMult(h){
   if(!h || !h.classKey) return 1;
   let m = 1;
   if(h.granTimer>0) m *= 1 + SM_CFG.granaderos.dmgPct;
-  if(h.advAllyTimer>0) m *= 1 + EREN_CFG.advance.dmgPct*EREN_CFG.advance.allyShare;
+  if(h.advAllyTimer>0) m *= 1 + ILKAN_CFG.advance.dmgPct*ILKAN_CFG.advance.allyShare;
   if(h.classKey==="libertador") m *= libertadorDmgMult(h);
-  if(h.classKey==="eren") m *= erenDmgMult(h);
+  if(h.classKey==="ilkan") m *= ilkanDmgMult(h);
   if(h.classKey==="nigromante") m *= nigroSoulDmgMult(h); // almas guardadas: +2% por alma
   return m;
 }
@@ -94,7 +94,7 @@ function heroDmgTakenMult(h){
   if(!h) return 1;
   if(h.abHang) return 0;                       // Abismo: colgado del borde (el peligro es el reloj, no los golpes)
   if(h.classKey==="libertador") return libertadorDmgTakenMult(h);
-  if(h.classKey==="eren") return erenDmgTakenMult(h);
+  if(h.classKey==="ilkan") return ilkanDmgTakenMult(h);
   return classicBastionMult(h);
 }
 // Anillo del Bastión en el piso, solo mientras protege a alguien (sin ruido cuando está solo).
@@ -119,7 +119,7 @@ function heroCcResist(h){
   let r = 0;
   if(h.granTimer>0) r = Math.max(r, SM_CFG.granaderos.ccResist);
   if(h.classKey==="libertador") r = Math.max(r, libertadorCcResist(h));
-  if(h.classKey==="eren") r = Math.max(r, erenCcResist(h));
+  if(h.classKey==="ilkan") r = Math.max(r, ilkanCcResist(h));
   return Math.min(0.95, r);
 }
 // Movimiento propio bloqueado (embestidas, montar, transformación, cinemática): lo mueve su habilidad.
@@ -127,7 +127,7 @@ function heroMoveLocked(h){
   if(!h) return false;
   if(h.abHang || h.abHook) return true;        // Abismo: colgado del borde / arrastrado por el gancho
   if(h.classKey==="libertador") return libertadorMoveLocked(h);
-  if(h.classKey==="eren") return erenMoveLocked(h);
+  if(h.classKey==="ilkan") return ilkanMoveLocked(h);
   return false;
 }
 // Golpe letal: ¿la evita algo propio del guardián? (Soldado Cabral). true = no muere.
@@ -147,7 +147,7 @@ function updateChampExtras(h, dt){
     if(h.slowAmt>0) h.slowAmt = Math.max(0, h.slowAmt*(1-cc*0.5));
   }
   if(h.classKey==="libertador") updateLibertador(h, dt);
-  else if(h.classKey==="eren") updateEren(h, dt);
+  else if(h.classKey==="ilkan") updateIlkan(h, dt);
 }
 
 /* ---------------- efectos de mundo ---------------- */
@@ -155,9 +155,9 @@ function updateChampExtras(h, dt){
 const CHAMP_FX_MAX = 60;
 function pushChampFx(o){
   if(champFx.length >= CHAMP_FX_MAX){
-    // las pisadas del Retumbar llevan daño: nunca se descartan, se hace lugar quitando un efecto decorativo
-    if(o.type!=="rumbleStep") return o;
-    const i = champFx.findIndex(f=>f.type!=="rumbleStep" && f.type!=="rumbling");
+    // los pasos de Los Tres Pasos llevan daño: nunca se descartan, se hace lugar quitando un efecto decorativo
+    if(o.type!=="finaleStep") return o;
+    const i = champFx.findIndex(f=>f.type!=="finaleStep" && f.type!=="finaleScreen");
     if(i<0) return o;
     champFx.splice(i, 1);
   }
@@ -166,7 +166,7 @@ function pushChampFx(o){
 function updateChampFx(dt){
   for(const f of champFx){
     f.life -= dt;
-    if(f.type==="rumbleStep") erenUpdateRumbleStep(f, dt);
+    if(f.type==="finaleStep") ilkanUpdateFinaleStep(f, dt);
     else if(f.type==="boonZone") boonZoneTick(f, dt); // refuerzos de habilidad (js/systems/boons.js)
   }
   champFx = champFx.filter(f=>f.life > 0);
@@ -187,32 +187,32 @@ function drawChampFxGround(){
   for(const f of champFx){
     if(!inView(f.x||0, f.y||0, (f.r||200)+200) && f.type!=="andes") continue;
     if(f.type==="frost") libertadorDrawFrost(f);
-    else if(f.type==="crack") erenDrawCrack(f);
-    else if(f.type==="rumbleStep") erenDrawRumbleTelegraph(f);
+    else if(f.type==="crack") ilkanDrawCrack(f);
+    else if(f.type==="finaleStep") ilkanDrawFinaleTelegraph(f);
     else if(f.type==="ring") seDrawRing(f);
     else if(f.type==="boonZone") boonDrawZone(f);
   }
 }
-// Capa superior (sobre los personajes): jinetes, siluetas, pies gigantes, cables.
+// Capa superior (sobre los personajes): jinetes, siluetas, pies gigantes, pendones.
 function drawChampFxTop(){
   for(const f of champFx){
     if(f.type==="riders") libertadorDrawRiders(f);
     else if(f.type==="spectral") libertadorDrawSpectral(f);
-    else if(f.type==="rumbleStep") erenDrawRumbleFoot(f);
-    else if(f.type==="bolt") erenDrawBolt(f);
-    else if(f.type==="steam") erenDrawSteam(f);
+    else if(f.type==="finaleStep") ilkanDrawFinaleFoot(f);
+    else if(f.type==="pillar") ilkanDrawPillar(f);
+    else if(f.type==="sandPuff") ilkanDrawSandPuff(f);
   }
   for(const h of heroes){
     if(!h.alive) continue;
     if(h.granTimer>0) libertadorDrawBuffIcon(h);
-    if(h.classKey==="eren") erenDrawOverlays(h);
+    if(h.classKey==="ilkan") ilkanDrawOverlays(h);
   }
 }
-// Capa de pantalla (encima de todo el mundo): Cordillera y nieve del Cruce, siluetas del Retumbar.
+// Capa de pantalla (encima de todo el mundo): Cordillera y nieve del Cruce, siluetas de Los Tres Pasos.
 function drawChampFxScreen(){
   for(const f of champFx){
     if(f.type==="andes") libertadorDrawAndesScreen(f);
-    else if(f.type==="rumbling") erenDrawRumblingScreen(f);
+    else if(f.type==="finaleScreen") ilkanDrawFinaleScreen(f);
   }
 }
 function seDrawRing(f){

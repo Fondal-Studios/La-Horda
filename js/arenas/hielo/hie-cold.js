@@ -29,7 +29,10 @@ const HIE_CFG = {
   braziers: [0.35, 1.95, 3.5, 5.05], // ángulos (anillo interior)
   // variante por semilla: el anillo de braseros gira. Giros revisados (tools/items/t_difficulty.js): ninguno
   // cae sobre el arco de hielo ni sobre otro sólido, y todos quedan en el lago, lejos de los glaciares.
-  brazierTurns: [0, 0.39, 0.79, -0.39],
+  // (El giro -0.39 dejaba un brasero a 36 u del monolito de hielo del norte, que desde que es sólido ocupa el
+  // arco: se lo reemplazó por 0.59, que queda a >= 75 u de todo sólido. El anillo de 4 braseros casi se repite
+  // cada pi/2, por eso los giros útiles caen entre 0 y 0.85.)
+  brazierTurns: [0, 0.39, 0.79, 0.59],
   ring: 330,
   warmR: 150,
   fuel: [48000, 64000], // ms encendido
@@ -233,7 +236,7 @@ function hieDrawTop(){
   ctx.fillStyle = "rgba(8,14,22,0.8)"; ctx.fillRect(x-1, y-1, w+2, 6);
   ctx.fillStyle = c > 75 ? (Math.sin(animNow/90) > 0 ? "#e8f6ff" : "#7fc4ff") : "#7fc4ff";
   ctx.fillRect(x, y, Math.round(w*Math.min(1, c/100)), 4);
-  ctx.fillStyle = "#dff2ff"; ctx.font = pxFont(11); ctx.textAlign = "right"; ctx.textBaseline = "middle"; ctx.fillText("❄", x-3, y+2);
+  ctx.fillStyle = "#dff2ff"; ctx.font = pxFont(11); ctx.textAlign = "right"; ctx.textBaseline = "middle"; drawCanvasIcon(ctx, "❄", x-9, y+2, 12, "#dff2ff");
   ctx.restore();
 }
 function hieDrawScreen(){

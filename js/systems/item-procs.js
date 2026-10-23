@@ -30,6 +30,7 @@ function itemProcsOnHit(h, e, dmg, crit, opts){
   mythicOnHit(h, e, dmg, crit, opts);
   uniqueOnHit(h, e, dmg, crit, opts);
   buildOnHit(h, e, dmg, crit, opts); // legendarios que cambian la build (build-powers.js)
+  mageOnHit(h, e, dmg, crit, opts); // Kit de Magos: marcas (mage-passives.js)
   if(!e.alive) return;
   const fromBasic = !!opts.fromBasic;
   let p;
@@ -65,7 +66,6 @@ function itemProcsOnHit(h, e, dmg, crit, opts){
     h._rampTimer = 2000;
     if(h._rampStacks >= 2) damageEnemy(e, dmg*0.035*h._rampStacks*p, {src:h, fromProc:true});
     if(h._rampStacks===5 || h._rampStacks===10) vfxShock(h.x, h.y-8, 6, 20 + h._rampStacks*3, "255,170,70", 260, _procPr(h)); // la furia sube
-    if(h._rampStacks===10 && h===player && _procReady(h, "rampMsg", 4000)) floatText(h.x, h.y-58, "¡FURIA x10!", "crit");
   }
   if(crit && (p = _procPower(h, "crit_quake")) && _procReady(h, "quake", 600)){
     const R = 80;
@@ -122,7 +122,7 @@ function itemDamageMult(h, e, opts){
   if(h.classKey!=="segador" && h.maxHp){ const b = passiveSum(h.classKey, "missinghp_dmg_bonus"); if(b) m *= 1 + b*Math.max(0, 1 - h.hp/h.maxHp); }
   if((p = _procPower(h, "burn_vs")) && e.burnTimer>0) m *= 1 + 0.25*p;
   if((p = _procPower(h, "execute_edge")) && e.rank!=="jefe" && e.rank!=="subjefe" && e.hp < e.maxHp*0.2) m *= 1 + 0.6*p;
-  return m * mythicDamageMult(h, e, opts) * buildDamageMult(h, e);
+  return m * mythicDamageMult(h, e, opts) * buildDamageMult(h, e) * mageDamageMult(h, e, opts);
 }
 // Daño crítico extra de los poderes (Frío que Quiebra, Eclipse).
 function itemCritMultBonus(h, e){
@@ -183,6 +183,7 @@ function itemProcsOnKill(h, e){
 function itemProcsOnCast(h, sk, isUlt){
   mythicOnCast(h, sk, isUlt);
   buildOnCast(h, sk, isUlt);
+  mageOnCast(h, sk, isUlt); // Kit de Magos: cambia la pasiva (mage-passives.js)
   const p = _procPower(h, "skill_nova");
   if(!p || !_procReady(h, "nova", 1500)) return;
   const R = 125, dmg = _procDmgBase(h)*(isUlt ? 2.2 : 1.1)*p;
@@ -211,10 +212,10 @@ function itemProcsOnHurt(h, dmg, src){
   h.shield = Math.min(h.maxHp*0.5, (h.shield||0) + h.maxHp*0.14*p);
   h.shieldTimer = Math.max(h.shieldTimer||0, 5000);
   vfxShock(h.x, h.y-10, 10, 46, "143,208,255", 360, h===player?2:1);
-  if(h===player) floatText(h.x, h.y-52, "¡ÉGIDA!", "heal");
 }
 
 function updateItemProcTimers(h, dt){
+  updateMagePassives(h, dt); // Kit de Magos (se encarga solo de la muerte y de quitar el equipo)
   if(h._rampTimer>0){ h._rampTimer -= dt; if(h._rampTimer<=0) h._rampStacks = 0; }
   if(h._hasteT>0){ h._hasteT -= dt; if(h._hasteT<=0) h._hasteStacks = 0; }
   if(h._healHasteT>0) h._healHasteT -= dt;

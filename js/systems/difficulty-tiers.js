@@ -16,6 +16,13 @@
      Infierno. Los golpes de jefe (anclados a la vida del equipo) pesan ×1,3 / ×1,65: duelen, sin borrar.
    - Premio: botín de rareza más alta (peso × lootFactor^exponente de la categoría, como la calificación),
      objetos que caen con nivel (+itemLvl), más XP y más oro.
+     COHERENCIA DEL BOTÍN (docs/economy/COHERENCIA.md): lo que cae NO vuelve a empezar de cero al cambiar de dificultad. Dos perillas más,
+     aquí mismo: ilvlBase (suma al nivel de OBJETO de la arena: Pesadilla 11-20, Infierno 19-28; loot.js lootItemLevelFor) y lootRowShift
+     (corre la fila de ARENA_LOOT que paga la arena, con tope en la Infernal; loot.js lootRowKey). Con ellas el primer escalón de Pesadilla paga
+     más que el último de Normal y el de Infierno más que el último de Pesadilla (tools/items/t_coherencia_tablas.js lo verifica). La XP por baja viaja en runDifficulty.xp (spawnEnemy -> e.xp) y el
+     oro por baja se multiplica por diffGoldMult() en killEnemy (combat.js); el bono de victoria (80) usa el mismo multiplicador.
+   - Ajuste por arena: ARENA_MODS[arena].tierMods[tier] = {hp, dmg, bossDmg} (multiplicadores extra sobre la dificultad; hoy solo
+     en Pesadilla, arena por arena, medido con tools/playtest/campaign.js: docs/economy/PESADILLA_PAREJA.md).
    - Guardado: save.diffCleared = {pesadilla:{arena:true}, infierno:{…}} (Normal sigue siendo
      save.arenasCleared) y save.diffSelected (la elegida en la Sala). Guardados viejos: vacíos = todo en Normal.
    - Cooperativo: la elige el ANFITRIÓN. Viaja en la Sala ({k:"cos"}, campo d) y en el arranque
@@ -27,11 +34,11 @@
    ============================================================ */
 const DIFF_TIER_ORDER = ["normal", "pesadilla", "infierno"];
 const DIFF_TIERS = {
-  normal:   {label:"Normal",    color:"#d8cfb8", hp:0.9,  dmg:0.82, bossDmg:0.86, spawn:1.18,    hitCap:1,    elite:1,   resist:0,    lootFactor:1,   itemLvl:0, xp:1,   gold:1,   lvlOffset:0,
+  normal:   {label:"Normal",    color:"#d8cfb8", hp:0.9,  dmg:0.82, bossDmg:0.86, spawn:1.18,    hitCap:1,    elite:1,   resist:0,    lootFactor:1,   itemLvl:0, ilvlBase:0, lootRowShift:0, xp:1,   gold:1,   lvlOffset:0,
              desc:"Campaña accesible: aprendé las arenas con margen para recuperarte."},
-  pesadilla:{label:"Pesadilla", color:"#ff9a4a", hp:2.5,  dmg:2.3, bossDmg:1.3,  hitCap:1.3,  elite:1.8, resist:0.15, lootFactor:1.7, itemLvl:2, xp:1.6, gold:1.5, lvlOffset:36,
+  pesadilla:{label:"Pesadilla", color:"#ff9a4a", hp:2.5,  dmg:2.3, bossDmg:1.3,  hitCap:1.3,  elite:1.8, resist:0.15, lootFactor:1.7, itemLvl:2, ilvlBase:10, lootRowShift:6, xp:1.6, gold:1.5, lvlOffset:36,
              desc:"La Horda vuelve con más vida, pega más fuerte, resiste el fuego, el hielo y el rayo, y trae más élites."},
-  infierno: {label:"Infierno",  color:"#ff4a5a", hp:5.5,  dmg:4.5,  bossDmg:1.65, hitCap:1.6,  elite:2.6, resist:0.3,  lootFactor:2.6, itemLvl:4, xp:2.3, gold:2,   lvlOffset:62,
+  infierno: {label:"Infierno",  color:"#ff4a5a", hp:5.5,  dmg:4.5,  bossDmg:1.65, hitCap:1.6,  elite:2.6, resist:0.3,  lootFactor:2.6, itemLvl:4, ilvlBase:18, lootRowShift:9, xp:2.3, gold:3,   lvlOffset:62,
              desc:"Para guardianes hechos: cada golpe duele, las élites son la regla y los elementos casi no les entran."}
 };
 const DIFF_ELEM_KINDS = ["fire", "ice", "lightning"];
@@ -82,7 +89,11 @@ function diffSetSelected(k){
 function diffApplyToRun(rd, avgLevel){
   const T = diffTier(diffCurrent());
   rd.tier = diffCurrent();
-  if(T===DIFF_TIERS.normal){ rd.hp*=T.hp; rd.dmg*=T.dmg; rd.avgHp*=T.bossDmg; rd.spawnRate*=T.spawn; if(["bosque","hielo"].includes(currentArena)){rd.hp*=0.85;rd.dmg*=0.8;rd.spawnRate*=1.12;} return rd; }
+  if(T===DIFF_TIERS.normal){ rd.hp*=T.hp; rd.dmg*=T.dmg; rd.avgHp*=T.bossDmg; rd.spawnRate*=T.spawn; if(["bosque","hielo"].includes(currentArena)){rd.hp*=0.85;rd.dmg*=0.8;rd.spawnRate*=1.12;}
+    // ajuste puntual de Normal por arena (ARENA_MODS[arena].tierMods.normal = {hp, dmg, bossDmg}): docs/economy/DIFICULTAD_GRUPO1.md
+    const tn = (typeof ARENA_MODS!=="undefined" && typeof currentArena!=="undefined" && ARENA_MODS[currentArena] && ARENA_MODS[currentArena].tierMods || {}).normal;
+    if(tn){ rd.hp *= tn.hp||1; rd.dmg *= tn.dmg||1; rd.avgHp *= tn.bossDmg||1; }
+    return rd; }
   // nivel esperado corrido: el seguimiento parcial de REJUGAR mide la brecha contra ese nivel
   const exp = ((typeof currentArena!=="undefined" && DIFF.arenaLevel[currentArena]) || 1) + T.lvlOffset;
   const gap = Math.max(0, avgLevel - exp), rf = Math.min(DIFF.replayFollowMax, gap*DIFF.replayFollowPerLvl), rf0 = rd.replayFollow||0;
@@ -95,6 +106,9 @@ function diffApplyToRun(rd, avgLevel){
   rd.dmg *= T.dmg * extraDmg;
   rd.avgHp *= T.bossDmg;          // el daño de jefes, subjefes y golpes con aviso se ancla a esta vida
   rd.xp *= T.xp;
+  // ajuste puntual por arena y dificultad (ARENA_MODS[arena].tierMods[tier] = {hp, dmg}); el diseño del enemigo no se toca
+  const tm = (typeof ARENA_MODS!=="undefined" && typeof currentArena!=="undefined" && ARENA_MODS[currentArena] && ARENA_MODS[currentArena].tierMods || {})[rd.tier];
+  if(tm){ rd.hp *= tm.hp||1; rd.dmg *= tm.dmg||1; rd.avgHp *= tm.bossDmg||1; }
   rd.hitCapMult = T.hitCap;
   rd.expLevel = exp;
   return rd;
@@ -114,6 +128,8 @@ function diffResistBonus(kind){
 // Botín: factor sobre los pesos de categoría (loot.js: lootTierWeights) y nivel con que cae el objeto.
 function diffLootFactor(){ return diffTier(diffCurrent()).lootFactor; }
 function diffItemLevelBonus(){ return diffTier(diffCurrent()).itemLvl; }
+function diffItemIlvlBase(){ return diffTier(diffCurrent()).ilvlBase||0; }       // nivel de OBJETO base de la dificultad (loot.js: lootItemLevelFor)
+function diffLootRowShift(){ return diffTier(diffCurrent()).lootRowShift||0; }   // corrimiento de la fila de ARENA_LOOT (loot.js: lootRowKey)
 function diffGoldMult(){ return diffTier(diffCurrent()).gold; }
 
 /* ---------------- progreso ---------------- */

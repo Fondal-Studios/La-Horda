@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>La Horda · ARPG cooperativo gratis</title>
-<meta name="description" content="La Horda: cuatro guardianes contra la horda. Cooperativo, Guerra de Cristales 2 contra 2 y Horda Infinita. Gratis, jugalo en el celular o la compu, sin instalar nada.">
+<meta name="description" content="La Horda: cuatro guardianes contra la horda. Cooperativo, Guerra de Cristales 5 contra 5, Coliseo y Horda Infinita. Gratis, jugalo en el celular o la compu, sin instalar nada.">
 <link rel="canonical" href="https://fondalstudios.com/la-horda/jugar/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="La Horda">
@@ -23,6 +23,7 @@
 <meta name="theme-color" content="#0b0705">
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <!-- fuentes pixel servidas desde el juego (antes Google Fonts: sin red o con el CDN bloqueado, todo caía a
      Georgia/monoespaciada con otro ancho y el HUD se desarmaba). Ver css/base.css -->
 <link rel="preload" href="assets/fonts/vt323-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -35,6 +36,7 @@
 <link rel="stylesheet" href="css/codex.css">
 <link rel="stylesheet" href="css/ui-kit.css">
 <link rel="stylesheet" href="css/story.css">
+<link rel="stylesheet" href="css/codex-book.css">
 <link rel="stylesheet" href="css/camp.css">
 <link rel="stylesheet" href="css/mobile.css">
 <link rel="stylesheet" href="css/quests.css">
@@ -51,9 +53,13 @@
 <link rel="stylesheet" href="css/founders.css">
 <link rel="stylesheet" href="css/alpha-training.css">
 <link rel="stylesheet" href="css/controls.css">
+<link rel="stylesheet" href="css/accessibility.css">
 <link rel="stylesheet" href="css/hub-scroll.css">
 <link rel="stylesheet" href="css/lanes.css">
 <link rel="stylesheet" href="css/hud-horda.css">
+<link rel="stylesheet" href="css/hud-mobile.css">
+<link rel="stylesheet" href="css/first-minute.css">
+<link rel="stylesheet" href="css/legal.css">
 </head>
 <body>
 
@@ -146,10 +152,12 @@
     <div class="brand title-brand">LA HORDA</div>
     <div class="brand-sub">SOBREVIVÍ A LA HORDA CON TU EQUIPO · MEJORÁ EN CADA NIVEL</div>
     <button class="btn wide" id="title-continue-btn" disabled>Cargando…</button>
+    <a href="instalar.html" style="display:block;margin:10px auto;color:#f9c971;font-size:14px">Instalar en mi dispositivo</a>
     <!-- B1: invitación a una sala online (?room=CÓDIGO en la URL) -->
     <label class="hidden" id="title-join-name">Tu nombre <input maxlength="16" placeholder="Jugador"></label>
     <button class="btn wide hidden" id="title-join-btn">Unirse a la sala</button>
     <div class="title-join-status" id="title-join-status"></div>
+    <div class="legal-foot legal-title" id="legal-title" role="contentinfo" aria-label="Legal y soporte"></div>
     <div class="build-tag">LA HORDA — ALFA COOPERATIVA</div>
   </div>
 
@@ -190,10 +198,10 @@
         </div>
       </div>
       <div class="hub-sections" id="hub-grid">
-        <h2 class="hub-section-title">MODOS COMPETITIVOS</h2>
+        <h2 class="hub-section-title" id="hub-postgame-title">MODOS DE POSTGAME</h2>
         <div class="hub-row hub-row-modes">
-          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-crystal-btn"><span class="hub-tile-ico">◆</span><span class="hub-tile-body"><span class="hub-tile-title">GUERRA DE CRISTALES</span><span class="hub-tile-sub">2 contra 2 · defendé tu cristal y mirá al rival</span></span></button>
-          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-coliseum-btn"><span class="hub-tile-ico">⚔</span><span class="hub-tile-body"><span class="hub-tile-title">COLISEO</span><span class="hub-tile-sub">Torneo 2 contra 2 · sumá puntos</span></span></button>
+          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-crystal-btn"><span class="hub-tile-ico">◆</span><span class="hub-tile-body"><span class="hub-tile-title">GUERRA DE CRISTALES</span><span class="hub-tile-sub" id="hub-crystal-sub">5 contra 5 con bots · 3 carriles y selva</span></span></button>
+          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-coliseum-btn"><span class="hub-tile-ico">⚔</span><span class="hub-tile-body"><span class="hub-tile-title">COLISEO</span><span class="hub-tile-sub" id="hub-coliseum-sub">Torneo de 8: 4 equipos de 2 · duelos 2v2 · primero a 3</span></span></button>
         </div>
         <h2 class="hub-section-title">EXPLORAR</h2>
         <div class="hub-row hub-row-explore">
@@ -220,6 +228,18 @@
       <button class="btn small secondary" data-cw-gate-close>Cancelar</button>
     </div>
   </div>
+  <!-- POSTGAME bloqueado: dice la condición y ofrece el Entrenamiento normalizado (js/ui/menus.js: postgameGateOpen) -->
+  <div id="pg-gate" class="ui-modal hidden" role="dialog" aria-modal="true" aria-labelledby="pg-gate-title">
+    <div class="ui-modal-back" data-pg-gate-close></div>
+    <div class="ui-panel ui-modal-panel">
+      <div class="ui-panel-title" id="pg-gate-title">🔒 Postgame</div>
+      <p class="cw-gate-text" id="pg-gate-text"></p>
+      <div class="cw-gate-btns">
+        <button class="btn small" id="pg-gate-train">Entrenar (sin recompensas)</button>
+      </div>
+      <button class="btn small secondary" data-pg-gate-close>Cerrar</button>
+    </div>
+  </div>
   <!-- OPCIONES (desde el hub): nombre, volumen y código de guardado -->
   <div id="hub-options" class="ui-modal hidden" role="dialog" aria-label="Opciones">
     <div class="ui-modal-back" data-opt-close></div>
@@ -232,14 +252,24 @@
       <div class="opt-sec">Controles</div>
       <div class="opt-row"><span class="opt-lbl">Modo zurdo<span class="opt-sub">Joystick a la derecha y botones a la izquierda</span></span><button class="opt-switch" data-pref="lefty" role="switch" aria-checked="false">No</button></div>
       <div class="opt-row"><span class="opt-lbl">Vibración<span class="opt-sub">Al recibir un golpe fuerte y con la Definitiva</span></span><button class="opt-switch" data-pref="vibrate" role="switch" aria-checked="true">Sí</button></div>
+      <div class="opt-row"><span class="opt-lbl">Ataque<span class="opt-sub">Mantener: apretás el botón. Alternar: un toque prende y otro apaga. Auto: ataca solo si hay un enemigo cerca</span></span><div class="opt-seg" data-pref="atkMode" role="group" aria-label="Modo de ataque"><button data-v="hold">Mantener</button><button data-v="toggle">Alternar</button><button data-v="auto">Auto</button></div></div>
+      <div class="opt-row"><span class="opt-lbl">Tamaño de los controles<span class="opt-sub">Joystick y botones: <b data-pref-out="ctlSize">100%</b></span></span><input type="range" id="opt-ctl-size" data-pref-range="ctlSize" min="90" max="150" step="10" aria-label="Tamaño de los controles táctiles"></div>
+      <div class="opt-row"><span class="opt-lbl">Opacidad de los controles<span class="opt-sub">Más baja: se ve más el juego detrás. <b data-pref-out="ctlOp">100%</b></span></span><input type="range" id="opt-ctl-op" data-pref-range="ctlOp" min="40" max="100" step="10" aria-label="Opacidad de los controles táctiles"></div>
+      <div class="ctl-preview" id="ctl-preview" aria-hidden="true"><span class="cp-cap">Vista previa</span><div class="cp-joy"><i></i></div><div class="cp-btns"><b class="cp-b3"></b><b class="cp-b2"></b><b class="cp-b1"></b><b class="cp-atk">⚔</b></div></div>
       <div class="opt-sec">Pantalla</div>
       <div class="opt-row"><span class="opt-lbl">Sacudida de pantalla</span><div class="opt-seg" data-pref="shake" role="group" aria-label="Sacudida de pantalla"><button data-v="normal">Normal</button><button data-v="reducida">Poca</button><button data-v="off">No</button></div></div>
       <div class="opt-row"><span class="opt-lbl">Reducir movimiento<span class="opt-sub">Sin sacudidas, cámara lenta ni pulsos</span></span><button class="opt-switch" data-pref="motion" role="switch" aria-checked="false">No</button></div>
       <div class="opt-row"><span class="opt-lbl">Tamaño del texto</span><div class="opt-seg" data-pref="textLg" role="group" aria-label="Tamaño del texto"><button data-v="0">Normal</button><button data-v="1">Grande</button></div></div>
       <div class="opt-row"><span class="opt-lbl">Avisos de alto contraste<span class="opt-sub">Zonas de peligro con borde y rayado, no solo color</span></span><button class="opt-switch" data-pref="contrast" role="switch" aria-checked="false">No</button></div>
+      <div class="opt-row"><span class="opt-lbl">Colores para daltonismo<span class="opt-sub">Cambia equipos, barras, avisos y peligros, y suma rayas y marcas. Rojo-verde: deuteranopia y protanopia. Azul-amarillo: tritanopia</span></span><div class="opt-seg" data-pref="cvd" role="group" aria-label="Colores para daltonismo"><button data-v="off">No</button><button data-v="rg">Rojo-verde</button><button data-v="by">Azul-amarillo</button></div></div>
+      <div class="cvd-demo" id="cvd-demo" aria-hidden="true"><span class="cd-ally">Aliado</span><span class="cd-foe">Enemigo</span><span class="cd-danger">Peligro</span><span class="cd-safe">Seguro</span><span class="cd-hp"><i></i></span></div>
+      <div class="opt-row"><span class="opt-lbl">Ayuda con el jefe<span class="opt-sub">Solo campaña en solitario, en Normal: tras cada derrota contra el jefe de una arena, ese jefe tiene hasta 25 % menos de vida y daño, y la horda del nivel 10 hasta 25 % menos de daño, en tus próximos intentos. Se avisa siempre. Apagado: el jefe de siempre</span></span><button class="opt-switch" data-pref="bossAssist" role="switch" aria-checked="true">Sí</button></div>
+      <div class="opt-row"><span class="opt-lbl">Carteles de los bots<span class="opt-sub">Textos flotantes de aliados controlados por la IA (IMPULSO, PACTO, AFILADA…). Apagado: partida más limpia</span></span><button class="opt-switch" data-pref="botCallouts" role="switch" aria-checked="false">No</button></div>
       <div class="opt-note">Teclado: WASD o flechas para moverte, Espacio para atacar, 1 2 3 habilidades, R Definitiva, Q curación, E acción, Esc pausa. También funciona con mando.</div>
       <div class="opt-note">Compañeros: si en tu equipo faltan jugadores, el juego completa los lugares con compañeros que controla él mismo. Siempre tienen prioridad los jugadores reales.</div>
       <div class="opt-note">El progreso se guarda en este navegador. Para llevarlo a otro lado, usá el código de guardado.</div>
+      <div class="opt-sec">Legal y soporte</div>
+      <div class="legal-foot legal-opts" id="legal-opts"></div>
       <div class="opt-btns">
         <button class="btn small" id="opt-export-btn">Copiar código de guardado</button>
         <button class="btn small secondary" id="opt-import-btn">Restaurar con código</button>
@@ -253,8 +283,9 @@
   <div id="starter-screen" class="screen hidden">
     <div id="starter-step-champ" class="starter-step">
       <div class="arena-title">Tu primer guardián</div>
-      <div class="lobby-sub">Elegí uno: es tu regalo para empezar la campaña, y después le elegís una skin. Los demás se desbloquean en la Tienda por <b id="starter-price">2.500</b> de oro.</div>
+      <div class="lobby-sub">Tocá uno: es tu regalo para empezar (gratis). Los demás se compran en la Tienda por <b id="starter-price">2.500</b> de oro.</div>
       <div id="starter-grid"></div>
+      <button class="btn small secondary" id="starter-all-btn" type="button">Ver todos los guardianes</button>
       <div class="starter-confirm hidden" id="starter-confirm">
         <div id="starter-confirm-text"></div>
         <div class="net-row" style="justify-content:center;"><button class="btn" id="starter-yes-btn">¡Lo quiero!</button><button class="btn secondary" id="starter-no-btn">Elegir otro</button></div>
@@ -366,11 +397,11 @@
       </button>
       <button class="mode-card" id="mode-crystal-wars-btn">
         <div class="mode-card-title">◆ CONVERGENCIA <span class="ui-tag">ALPHA</span></div>
-        <div class="mode-card-desc">Guerra de Cristales estilo Wild Rift en 2D: 5 contra 5, tres carriles, selva, torres, PvP y tu propia horda. Mapa completo siempre visible.</div>
+        <div class="mode-card-desc">Guerra de Cristales: 5 contra 5 con bots (2 contra 2 en línea), tres carriles, selva, torres, PvP y tu propia horda. Postgame: se abre al terminar la campaña.</div>
       </button>
       <button class="mode-card" id="mode-coliseum-btn">
         <div class="mode-card-title">⚔ COLISEO <span class="ui-tag">ALPHA</span></div>
-        <div class="mode-card-desc">Combate directo 2 contra 2 en una arena compartida, con cobertura y monstruos neutrales. Gana el primer equipo en alcanzar 15 eliminaciones.</div>
+        <div class="mode-card-desc">Torneo de ocho luchadores: cuatro equipos de dos; en cada ronda se juegan dos duelos 2 contra 2 con anillo que se cierra. Gana el primer equipo en llegar a 3 puntos. Postgame: se abre al terminar la campaña.</div>
       </button>
       <button class="mode-card mode-endless hidden" id="mode-endless-btn">
         <div class="mode-card-title">♾ HORDA INFINITA <span class="ui-tag hidden" id="mode-endless-lock">🔒</span></div>
@@ -386,12 +417,12 @@
 <div id="cw-root">
 <header><button id="back" type="button">‹ LA HORDA</button><span id="competitive-title">CONVERGENCIA · ALPHA</span><button id="sound" aria-pressed="false">Sonido: apagado</button></header>
 <main id="lobby">
- <div class="eyebrow">DOS EQUIPOS · UNA HORDA · ECLIPSE A LOS 5 MINUTOS</div><h1>CONVERGENCIA<br><em>GUERRA DE CRISTALES</em></h1>
- <p class="intro">Cada equipo defiende su cristal contra la misma horda. Ganás cuando el cristal rival cae: por sus errores, por tus envíos de monstruos o por el Eclipse final. Convertí las bajas en fragmentos y decidí cómo usarlos.</p>
- <div class="rules"><div><b>01 / RESISTÍ</b><p>Entrás directo en acción. El ataque básico es automático: movete y combiná tus cuatro habilidades.</p></div><div><b>02 / DECIDÍ</b><p>Al comienzo de cada oleada, tenés 7 segundos para reparar, mejorar o enviar amenazas. Mirá cómo atacan en el campo rival, siempre visible.</p></div><div><b>03 / REMATÁ</b><p>Pasados los 5 minutos llega el ECLIPSE: los dos cristales se apagan cada vez más rápido. Gana el que más vida conserve. Si vas perdiendo, el cristal te ayuda con fragmentos extra.</p></div></div>
- <section class="setup"><div><label for="competitive-mode">Modo competitivo</label><select id="competitive-mode"><option value="crystal">Convergencia — Guerra de Cristales</option><option value="coliseum">Coliseo — Combate 2 contra 2</option></select><label for="name">Tu nombre</label><input id="name" maxlength="24" placeholder="Guardián"><label for="champ">Tu campeón</label><select id="champ"></select><p id="kit"></p><small>Plantel de guardianes con perfiles competitivos adaptados y estadísticas normalizadas. Sin ventajas por nivel, equipo de campaña o compras. Los personajes exclusivos conservan sus restricciones.</small></div>
+ <div class="eyebrow">5 CONTRA 5 CON BOTS · EN LÍNEA 2 CONTRA 2 · 3 CARRILES</div><h1>CONVERGENCIA<br><em>GUERRA DE CRISTALES</em></h1>
+ <p class="intro">Mapa de tres carriles con selva, río y objetivos épicos. Tu horda sale sola por cada carril; con cada nivel elegís una carta para hacerla más fuerte. Derribá las torres y el cristal rival. El PvP está permitido y jugás con tus habilidades de siempre.</p>
+ <div class="rules"><div><b>01 / EMPUJÁ</b><p>Tu horda sale sola por tres carriles. Derribá torres; con una inhibidora caída, el cristal queda expuesto.</p></div><div><b>02 / CRECÉ</b><p>Nivel 3 a 15 con súbditos, selva y héroes. Cada nivel da una carta para tu horda. B vuelve a la base.</p></div><div><b>03 / REMATÁ</b><p>Vencé héroes rivales para ganar oro. Eclipse a los 13 min; a los 18 gana quien tenga más torres y vida.</p></div></div>
+ <section class="setup"><div><label for="competitive-mode">Modo competitivo</label><select id="competitive-mode"><option value="crystal">Convergencia — Guerra de Cristales</option><option value="coliseum">Coliseo — Torneo 2 contra 2</option></select><label for="name">Tu nombre</label><input id="name" maxlength="24" placeholder="Guardián"><label for="champ">Tu campeón</label><select id="champ"></select><p id="kit"></p><p id="pg-lobby" class="pg-lobby" role="status"></p><label class="pg-train" id="pg-train-row"><input type="checkbox" id="pg-training"> Entrenamiento normalizado (sin progreso ni recompensas)</label><small>En línea el plantel es normalizado: sin ventajas por nivel, equipo de campaña o compras. Los personajes exclusivos conservan sus restricciones.</small></div>
  <div class="connect"><button class="primary" id="practice">ENTRENAR CON BOTS</button><button id="create">CREAR SALA PRIVADA</button><label for="code">Código o enlace de tu amigo</label><div class="join"><input id="code" maxlength="240" placeholder="ABC123"><button id="join">UNIRSE</button></div></div></section>
- <section id="room" hidden><div class="room-head"><h2>SALA <span id="room-code"></span></h2><button id="copy">Copiar invitación</button></div><p>J1 + J2: equipo Zafiro. J3 + J4: equipo Ámbar. Los lugares libres se completan con bots.</p><div id="slots"></div><div class="actions"><button id="ready">ESTOY LISTO</button><button id="start" class="primary">COMENZAR 2 CONTRA 2</button><button id="leave">Salir de la sala</button></div></section>
+ <section id="room" hidden><div class="room-head"><h2>SALA <span id="room-code"></span></h2><button id="copy">Copiar invitación</button></div><p>J1 + J2: equipo Zafiro. J3 + J4: equipo Ámbar. Los lugares libres se completan con bots.</p><div id="slots"></div><div class="actions"><button id="ready">ESTOY LISTO</button><button id="start" class="primary">COMENZAR PARTIDA</button><button id="leave">Salir de la sala</button></div></section>
  <p id="status" role="status" aria-live="polite">Entrenamiento disponible sin conexión. Online usa el servidor configurado de La Horda.</p>
 </main>
 <section id="cw-game" hidden>
@@ -500,11 +531,12 @@
   <!-- GAME OVER -->
   <div id="gameover-screen" class="screen hidden">
     <div class="arena-title" style="color:#c62828;" id="go-title">La Horda te ha consumido</div>
+    <div id="go-loss"></div>
+    <button class="btn wide" id="retry-btn">Reintentar desde el Nivel 1</button>
+    <button class="btn secondary hidden" id="retry-from1-btn">Empezar de nuevo desde el nivel 1</button>
+    <button class="btn secondary" id="menu-btn-1">Volver al menú</button>
     <div class="brand" id="go-stats">Nivel 1 · 0 bajas</div>
     <div class="save-line" id="go-progress"></div>
-    <div style="height:18px;"></div>
-    <button class="btn wide" id="retry-btn">Reintentar desde el Nivel 1</button>
-    <button class="btn secondary" id="menu-btn-1">Volver al menú</button>
   </div>
 
   <!-- VICTORY -->
@@ -528,7 +560,7 @@
       <label class="pause-motion" title="Menos partículas y sin destellos en definitivas, banners y efectos especiales. No cambia el daño ni los avisos de peligro">✨ Reducir efectos intensos <input type="checkbox" id="opt-reduce-fx"></label>
     </div>
     <button class="btn small secondary pause-opts-btn" id="pause-opts-btn">⚙ Opciones: zurdo, texto, vibración…</button>
-    <button class="btn small secondary" id="pause-howto-btn">❓ Cómo se juega</button>
+    <button class="btn small secondary" id="pause-howto-btn">? Cómo se juega</button>
     <div id="stats-panel"></div>
     <button class="btn wide" id="resume-btn">Continuar</button>
     <button class="btn secondary" id="quit-btn">Abandonar arena</button>
@@ -555,6 +587,7 @@
 <script src="js/assets/lazy-images.js"></script>
 <script src="js/assets/asset-manifest.js"></script>
 <script src="js/assets/preload.js"></script>
+<script src="js/assets/sw-register.js"></script>
 <script src="js/vendor/cadena-relampagos.js"></script>
 <script src="js/vendor/muro-fuego.js"></script>
 <script src="js/vendor/caballerito-habilidades.js"></script>
@@ -568,6 +601,7 @@
 <script src="js/data/sets.js"></script>
 <script src="js/data/loot.js"></script>
 <script src="js/data/legendaries.js"></script>
+<script src="js/data/mage-kit.js"></script>
 <script src="js/data/champion-sets.js"></script>
 <script src="js/data/item-identity.js"></script>
 <script src="js/data/rewards.js"></script>
@@ -580,8 +614,11 @@
 <script src="js/data/boons.js"></script>
 <script src="js/data/boons-heroes.js"></script>
 <script src="js/data/quests.js"></script>
+<script src="js/data/postgame.js"></script>
 <script src="js/core/constants.js"></script>
 <script src="js/core/utils.js"></script>
+<script src="js/storage/legacy-champion-ids.js"></script>
+<script src="js/storage/save-sanitize.js"></script>
 <script src="js/storage/save.js"></script>
 <script src="js/ui/game-dialog.js"></script>
 <script src="js/core/canvas.js"></script>
@@ -610,6 +647,7 @@
 <script src="js/rendering/feedback.js"></script>
 <script src="js/rendering/juice.js"></script>
 <script src="js/rendering/animfx.js"></script>
+<script src="js/rendering/pixel-stroke.js"></script>
 <script src="js/rendering/vfx.js"></script>
 <script src="js/assets/boss-sheets-meta.js"></script>
 <script src="js/assets/canon-sheets-meta.js"></script>
@@ -621,6 +659,8 @@
 <script src="js/rendering/entities.js"></script>
 <script src="js/rendering/renderer.js"></script>
 <script src="js/systems/progression.js"></script>
+<script src="js/systems/checkpoint.js"></script>
+<script src="js/systems/boss-assist.js"></script>
 <script src="js/systems/mastery.js"></script>
 <script src="js/systems/talents.js"></script>
 <script src="js/systems/items.js"></script>
@@ -663,6 +703,7 @@
 <script src="js/systems/crystal-resonance.js"></script>
 <script src="js/systems/campaign-story.js"></script>
 <script src="js/systems/quests.js"></script>
+<script src="js/systems/postgame.js"></script>
 <script src="js/champions/hero-factory.js"></script>
 <script src="js/champions/segador.js"></script>
 <script src="js/champions/mago.js"></script>
@@ -676,7 +717,7 @@
 <script src="js/champions/champ-shared.js"></script>
 <script src="js/systems/boons.js"></script>
 <script src="js/champions/libertador.js"></script>
-<script src="js/champions/eren.js"></script>
+<script src="js/champions/ilkan.js"></script>
 <script src="js/champions/portadores.js"></script>
 <script src="js/champions/ynara.js"></script>
 <script src="js/assets/portadores-meta.js"></script>
@@ -701,6 +742,7 @@
 <script src="js/enemies/ranged-styles.js"></script>
 <script src="js/enemies/bestias-ai.js"></script>
 <script src="js/arenas/arena-rules.js"></script>
+<script src="js/arenas/common/arena-objectives.js"></script>
 <script src="js/arenas/arena-identity.js"></script>
 <script src="js/arenas/arena-layouts.js"></script>
 <script src="js/arenas/divina.js"></script>
@@ -752,12 +794,17 @@
 <script src="js/arenas/minas/mn-bosses.js"></script>
 <script src="js/arenas/minas/mn-render.js"></script>
 <script src="js/arenas/minas/mn-arena.js"></script>
+<script src="js/arenas/lanes/lanes-sides.js"></script>
 <script src="js/arenas/lanes/lanes-data.js"></script>
 <script src="js/arenas/lanes/lanes-levels.js"></script>
 <script src="js/arenas/lanes/lanes-minions.js"></script>
 <script src="js/arenas/lanes/lanes-jungle.js"></script>
 <script src="js/arenas/lanes/lanes-bots.js"></script>
+<script src="js/arenas/lanes/lanes-bot-ai.js"></script>
 <script src="js/arenas/lanes/lanes-core.js"></script>
+<script src="js/arenas/lanes/lanes-art-field.js"></script>
+<script src="js/arenas/lanes/lanes-art-bake.js"></script>
+<script src="js/arenas/lanes/lanes-art-draw.js"></script>
 <script src="js/arenas/lanes/lanes-render.js"></script>
 <script src="js/arenas/lanes/lanes-hud.js"></script>
 <script src="js/arenas/lanes/lanes-net.js"></script>
@@ -765,6 +812,8 @@
 <script src="js/arenas/coliseum/coliseum-core.js"></script>
 <script src="js/arenas/coliseum/coliseum-render.js"></script>
 <script src="js/arenas/coliseum/coliseum-hud.js"></script>
+<script src="js/assets/battlefield-meta.js"></script>
+<script src="js/rendering/battlefield-art.js"></script>
 <script src="js/arenas/infernal/inf-fissures.js"></script>
 <script src="js/arenas/infernal/inf-hechicero.js"></script>
 <script src="js/arenas/infernal/inf-hech-rift.js"></script>
@@ -773,6 +822,7 @@
 <script src="js/arenas/hielo/hie-cold.js"></script>
 <script src="js/arenas/hielo/hie-boss.js"></script>
 <script src="js/arenas/hielo/hie-tundraverx.js"></script>
+<script src="js/arenas/bosque/bos-selva.js"></script>
 <script src="js/arenas/bosque/bos-ruins.js"></script>
 <script src="js/arenas/bosque/bos-doppels.js"></script>
 <script src="js/arenas/acuatica/acu-currents.js"></script>
@@ -798,12 +848,15 @@
 <script src="js/ui/panels-inventory.js"></script>
 <script src="js/ui/hud-text.js"></script>
 <script src="js/ui/skill-glyphs.js"></script>
+<script src="js/ui/skill-pixel-glyphs.js"></script>
+<script src="js/ui/skill-icon-motifs.js"></script>
 <script src="js/ui/hud.js"></script>
 <script src="js/ui/ability-inspector.js"></script>
 <script src="js/ui/tactical-panel.js"></script>
 <script src="js/ui/boss-hud.js"></script>
 <script src="js/ui/pixel-font-fix.js"></script>
 <script src="js/ui/pixel-icons.js"></script>
+<script src="js/ui/quality-five-item-icons.js"></script>
 <script src="js/ui/goal-guide.js"></script>
 <script src="js/ui/how-to-play.js"></script>
 <script src="js/ui/run-intro.js"></script>
@@ -819,17 +872,21 @@
 <script src="js/ui/welcome-picks.js"></script>
 <script src="js/ui/inventory-ui.js"></script>
 <script src="js/ui/starter-select.js"></script>
+<script src="js/ui/first-minute.js"></script>
 <script src="js/ui/buff-choice.js"></script>
 <script src="js/ui/loot-ceremony.js"></script>
 <script src="js/ui/end-screens.js"></script>
 <script src="js/ui/quests-ui.js"></script>
 <script src="js/data/codex-content.js"></script>
 <script src="js/data/story-text.js"></script>
+<script src="js/data/codex-book-text.js"></script>
 <script src="js/data/portadores-lore.js"></script>
 <script src="js/data/body-swaps.js"></script>
 <script src="js/ui/codex/codex-track.js"></script>
 <script src="js/ui/codex/codex-preview.js"></script>
 <script src="js/ui/codex/codex.js"></script>
+<script src="js/ui/codex/codex-book-art.js"></script>
+<script src="js/ui/codex/codex-book.js"></script>
 <script src="js/core/run.js"></script>
 <script src="js/core/update.js"></script>
 <script src="js/core/loop.js"></script>
@@ -838,6 +895,7 @@
 <script src="js/ui/founder-presence.js"></script>
 <script src="js/net/net-game.js"></script>
 <script src="js/systems/story.js"></script>
+<script src="js/systems/codex-narrative.js"></script>
 <script src="js/data/camp-text.js"></script>
 <script src="js/systems/camp.js"></script>
 <script src="js/net/net-lobby.js"></script>
@@ -886,6 +944,72 @@
 <script src="js/champions/quality-five/aelith.js"></script>
 <script src="js/champions/quality-five/register.js"></script>
 <script src="js/champions/quality-five/collection.js"></script>
+<script src="js/systems/mage-passives.js"></script>
+<script src="js/champions/skill-fx-a/motifs.js"></script>
+<script src="js/champions/skill-fx-a/engine.js"></script>
+<script src="js/champions/skill-fx-a/themes.js"></script>
+<script src="js/champions/skill-fx-a/bind.js"></script>
+<script src="js/champions/skill-fx-a/arts2.js"></script>
+<script src="js/champions/skill-fx-a/props.js"></script>
+<script src="js/champions/skill-fx-a/templates.js"></script>
+<script src="js/champions/skill-fx-a/c/aelith.js"></script>
+<script src="js/champions/skill-fx-a/c/aurelia.js"></script>
+<script src="js/champions/skill-fx-a/c/axiom.js"></script>
+<script src="js/champions/skill-fx-a/c/baltra.js"></script>
+<script src="js/champions/skill-fx-a/c/brakk.js"></script>
+<script src="js/champions/skill-fx-a/c/brasa.js"></script>
+<script src="js/champions/skill-fx-a/c/bront.js"></script>
+<script src="js/champions/skill-fx-a/c/cazadora.js"></script>
+<script src="js/champions/skill-fx-a/c/dariel.js"></script>
+<script src="js/champions/skill-fx-a/c/eslabon.js"></script>
+<script src="js/champions/skill-fx-a/c/facu_gm.js"></script>
+<script src="js/champions/skill-fx-a/c/farolero.js"></script>
+<script src="js/champions/skill-fx-a/c/guerrero.js"></script>
+<script src="js/champions/skill-fx-a/c/ilkan.js"></script>
+<script src="js/champions/skill-fx-a/c/iria.js"></script>
+<script src="js/champions/skill-fx-a/c/khepri.js"></script>
+<script src="js/champions/skill-fx-a/c/libertador.js"></script>
+<script src="js/champions/skill-fx-a/c/mago.js"></script>
+<script src="js/champions/skill-fx-a/c/maura.js"></script>
+<script src="js/champions/skill-fx-a/c/morveth.js"></script>
+<script src="js/champions/skill-fx-a/c/morwen.js"></script>
+<script src="js/champions/skill-fx-a/c/musashi.js"></script>
+<script src="js/champions/vfx-b/pixfx.js"></script>
+<script src="js/champions/vfx-b/templates.js"></script>
+<script src="js/champions/vfx-b/hooks.js"></script>
+<script src="js/champions/vfx-b/renko.js"></script>
+<script src="js/champions/vfx-b/nahir.js"></script>
+<script src="js/champions/vfx-b/vesper.js"></script>
+<script src="js/champions/vfx-b/zahra.js"></script>
+<script src="js/champions/vfx-b/orsa.js"></script>
+<script src="js/champions/vfx-b/sira.js"></script>
+<script src="js/champions/vfx-b/tibor.js"></script>
+<script src="js/champions/vfx-b/solciju.js"></script>
+<script src="js/champions/vfx-b/veyra.js"></script>
+<script src="js/champions/vfx-b/nano_gm.js"></script>
+<script src="js/champions/vfx-b/oriel.js"></script>
+<script src="js/champions/vfx-b/saelis.js"></script>
+<script src="js/champions/vfx-b/velmira.js"></script>
+<script src="js/champions/vfx-b/vhal.js"></script>
+<script src="js/champions/vfx-b/tanque.js"></script>
+<script src="js/champions/vfx-b/soporte.js"></script>
+<script src="js/champions/vfx-b/segador.js"></script>
+<script src="js/champions/vfx-b/profeta.js"></script>
+<script src="js/champions/vfx-b/ynara.js"></script>
+<script src="js/champions/vfx-b/myla.js"></script>
+<script src="js/champions/vfx-b/nigromante.js"></script>
+<script src="js/champions/ult-forms/kit.js"></script>
+<script src="js/champions/ult-forms/forms-1.js"></script>
+<script src="js/champions/ult-forms/forms-2.js"></script>
+<script src="js/champions/ult-forms/forms-3.js"></script>
+<script src="js/champions/ult-forms/forms-b1.js"></script>
+<script src="js/champions/ult-forms/forms-b2.js"></script>
+<script src="js/champions/ult-forms/forms-b3.js"></script>
+<script src="js/champions/ult-forms/bind.js"></script>
+<script src="js/champions/ult-forms/forms-2a-1.js"></script>
+<script src="js/champions/ult-forms/forms-2a-2.js"></script>
+<script src="js/champions/ult-forms/bind-2a.js"></script>
+<script src="js/champions/ult-forms/bind-b.js"></script>
 <script src="js/data/champion-presentation.js"></script>
 <script src="js/data/champion-identity.js"></script>
 <script src="js/systems/champion-entry-balance.js"></script>
@@ -902,6 +1026,9 @@
 <script src="js/systems/alpha-training.js"></script>
 <script src="js/systems/arena-tutorials.js"></script>
 <script src="js/systems/telemetry.js"></script>
+<script src="js/arenas/coliseum/coliseum-cover.js"></script>
+<script src="js/data/legal-config.js"></script>
+<script src="js/ui/legal.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

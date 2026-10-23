@@ -22,7 +22,7 @@ Método: lectura de cada umbral contra el código y una prueba automática nueva
 | La Manada (Cazadora) | ✅ +8% velocidad | ✅ trampa → Presa + crítico | ✅ Lobo Espectral + rebote | ✅ Flecha de Fuego |
 | Granadero (Libertador) | ✅ +10% daño | ✅ el fusil aturde | ✅ recarga al matar | ❌ falta hoja |
 | Réquiem (Nigromante) | ✅ +1 esqueleto | ✅ Pacto cura | ✅ Legión (−15% daño recibido) | ❌ falta hoja |
-| Legión (Eren) | ✅ +15% Furia | ✅ gancho a 3+ baja el enfriamiento | ✅ titán +30% y cura por baja | ✅ Titán Bestia |
+| Caravana de Medianoche (Ilkan, id `legion`) | ✅ +15% Tormenta | ✅ lanza a 3+ baja el enfriamiento | ✅ Coloso +30% y cura por baja | ✅ skin Caravana de Medianoche |
 
 ### Sets universales
 

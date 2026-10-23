@@ -33,3 +33,22 @@ body.reduce-motion #controls #skillzone .ability-btn.ready{ animation:none; }
 @media (prefers-reduced-motion:reduce){ #controls #skillzone .ability-btn.ready{ animation:none; } }
 /* tecla (teclado/mando): placa de hueso */
 body.inp-kb .kh, body.inp-pad .kh{ background:linear-gradient(#efe0bd,#c9b48a); color:#2a1a0c; border:1px solid #6a5230; border-radius:4px; box-shadow:0 2px 0 #060403; font-weight:700; }
+
+/* Íconos de habilidad bajo el CONTRATO de js/ui/pixel-icons.js: 16x16 nativos mostrados a 2x (32 px, píxeles enteros), sin
+   resplandor ni filtros que los vuelvan a suavizar. El botón chico (Cura, Pacto) los muestra a 1x (16 px). */
+#controls .ability-btn .ico .ico-pix{ display:block; width:32px; height:32px; margin:0 auto; image-rendering:pixelated; image-rendering:crisp-edges; pointer-events:none; filter:none; }
+#controls .ability-btn.sec .ico .ico-pix{ width:16px; height:16px; }
+/* Rótulo: fuente pixel del juego (Press Start 2P) a 8 px = su grilla nativa, sin suavizado, una línea, 5 letras como máximo
+   (40 px) dentro del botón de 46 px útiles; nunca toca el aro. Durante el enfriamiento el número ocupa su lugar. */
+#controls #skillzone .ability-btn.s1 > div:not(.ico):not(.cd-overlay):not(.kh),
+#controls #skillzone .ability-btn.s2 > div:not(.ico):not(.cd-overlay):not(.kh),
+#controls #skillzone .ability-btn.s3 > div:not(.ico):not(.cd-overlay):not(.kh),
+#controls #skillzone .ability-btn.ult > div:not(.ico):not(.cd-overlay):not(.kh),
+#controls #skillzone .ability-btn.basic > div:not(.ico):not(.cd-overlay):not(.kh),
+#controls #skillzone .ability-btn.emerg > div:not(.ico):not(.cd-overlay):not(.kh),
+#controls #skillzone .ability-btn.pact > div:not(.ico):not(.cd-overlay):not(.kh){
+  font-family:'Press Start 2P', monospace; font-size:8px; line-height:8px; letter-spacing:0; font-weight:normal; text-transform:uppercase;
+  max-width:100%; white-space:nowrap; overflow:hidden; text-overflow:clip; text-align:center;
+  -webkit-font-smoothing:none; font-smooth:never; text-rendering:optimizeSpeed; }
+#controls #skillzone .ability-btn.cd > div:not(.ico):not(.cd-overlay):not(.kh),
+#controls #skillzone .ability-btn.active > div:not(.ico):not(.cd-overlay):not(.kh){ visibility:hidden; }

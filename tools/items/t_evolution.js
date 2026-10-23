@@ -82,8 +82,8 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('UI.hitos_visibles_con_el_proximo_explicado', r8.rows === 4 && r8.chips === 4 && r8.on === 2 && /Nv\.7 Resonancia: /.test(r8.next||''), r8);
 
   // partida real con bots y todo en Nv.10: nada se rompe
-  const r9 = await E(() => { let casts = 0; for (const k of ['mago','soporte','axiom','nigromante','libertador','eren','profeta','segador']) __lvl(k, 10);
-    for (const [a, cls] of [['bosque','mago'], ['infernal','axiom'], ['hielo','nigromante'], ['acuatica','libertador']]){ __start(6, a, cls); lobbyAllies = ['eren','profeta','segador']; spawnTimer = 0;
+  const r9 = await E(() => { let casts = 0; for (const k of ['mago','soporte','axiom','nigromante','libertador','ilkan','profeta','segador']) __lvl(k, 10);
+    for (const [a, cls] of [['bosque','mago'], ['infernal','axiom'], ['hielo','nigromante'], ['acuatica','libertador']]){ __start(6, a, cls); lobbyAllies = ['ilkan','profeta','segador']; spawnTimer = 0;
       for (let i = 0; i < 1500 && state === 'playing'; i++){ for (const h of heroes) h.hp = h.maxHp; if (i % 40 === 0){ for (let s = 0; s < 3; s++) if (useSkill(s)) casts++; } update(16); if (i % 300 === 0) render(); } }
     return { casts }; });
   check('EVO.partidas_reales_nivel_10', r9.casts > 20, r9);

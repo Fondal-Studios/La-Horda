@@ -29,7 +29,7 @@
 
 - Jefes y subjefes no reciben retroceso ni tambaleo; los élites reciben 45% del retroceso y ningún tambaleo (un
   crítico no les cancela el ataque telegrafiado).
-- `IMPACT_WEIGHT` por campeón: el Tanque, el Segador y el titán de Eren pegan "más pesado".
+- `IMPACT_WEIGHT` por campeón: el Tanque, el Segador y el Coloso de Ilkan pegan "más pesado".
 
 ## 3. Gore dark-fantasy (pixel)
 
@@ -98,7 +98,7 @@
 
 ## 8. Campeones
 
-- **Sin dash universal.** Cada campeón conserva su movilidad propia (Paso Fantasma de Musashi, ganchos de Eren...).
+- **Sin dash universal.** Cada campeón conserva su movilidad propia (Paso Fantasma de Musashi, lanzas de Ilkan...).
 - **Identidad:** cada campeón tiene su forma de proyectil (flecha, daga, orbe, runa, glifo, alma, bala con humo,
   medialuna, bala pesada...) y su paleta de impacto.
 - **Evolución de habilidades 1/3/5/7/10** (`skill-evolution.js`): Firma (estado propio del campeón) → Ímpetu
@@ -108,7 +108,7 @@
   Pacto (5 almas: la próxima habilidad sale potenciada); Cosecha de Almas (cono) y Gólem de Carne (más cadáveres =
   más vida; si ya existe, salta y aplasta); pieles de fuego/hielo. **Sin Explosión de Cadáver.**
 - **Chequeo con datos** (piloto automático, 1 partida por celda, campeones nivel 10/20): ver
-  `LA_HORDA_PLAYTEST_REPORT.md`, sección "Pase nocturno". Segador, Soporte, Eren y Libertador ganan con más frecuencia; Axiom y Musashi
+  `LA_HORDA_PLAYTEST_REPORT.md`, sección "Pase nocturno". Segador, Soporte, Ilkan y Libertador ganan con más frecuencia; Axiom y Musashi
   (frágiles) son los que más sufren en la Fortaleza. **HUMAN TEST REQUIRED** para "peso" del Tanque y decisiones
   elementales del Mago.
 

@@ -173,3 +173,56 @@ de habilidades acotadas, sin textos duplicados entre campeones (`js/data/champio
 
 Este gate iguala **escala y apoyo**; no corrige forma ni estilo. Un atlas con proporciones o densidad de
 píxel distintas sigue requiriendo REDRAW según §8.
+
+## 14. Píxel nativo canónico (densidad de píxel única)
+
+Un solo juego tiene una sola resolución de píxel. Hasta ahora convivían un Dragón de la Forja casi ilustración, un
+Verdugo de ~37 px ampliado ×5, héroes hi-bit y un suelo Micelial pintado con ruido de 1 px: es la "mezcla de densidades"
+del §1. Esta sección fija el canon medible; la medición es `node tools/art/pixel-density.js` (gate informativo).
+
+**Definiciones.** *Píxel nativo* = la celda más chica que el artista controla (si un arte se dibujó a 40 px y se amplió ×N
+por vecino más cercano, el píxel nativo es de N píxeles de imagen). *Densidad efectiva* = unidades de mundo por píxel
+nativo (u/px) = unidades de mundo por píxel de imagen × bloque.
+
+| Tipo de arte | Canon | Banda PASS | Notas |
+|---|---|---|---|
+| Campeones, enemigos comunes, élites, jefes, retratos del Códice | **1,0 u/px** | 0,45 – 2,4 u/px | 2,4 = ×2,5 de la mediana del roster (0,95). Los jefes ganan tamaño y detalle, nunca píxeles más gruesos (§9). |
+| Suelos y fondos de arena (texturas, mapas) | **2,0 u/px** (Ciudad, Minas) | 1 – 2,4 u/px | Paleta corta (≤ 250 tonos), sin JPG ni degradé; vecino más cercano siempre (`imageSmoothingEnabled = false`). |
+| VFX | libre (§7) | — | Fuera de este gate. |
+
+**Más finos que la banda (< 0,45 u/px)** se leen como ilustración reducida; **más gruesos (> 2,4)** como arte chico
+ampliado. Ambos son REDRAW según el §8. Otras señales que el gate informa:
+
+- **ILUSTRACION**: degradé suave (más del 18 % de los pares de píxeles vecinos difieren 1–6 niveles) con pocos píxeles
+  sueltos (< 80 por 1000): pintura reducida, no pixel art (contorno de 1 px, 2–3 tonos por color, §2).
+- **PALETA_EXCESIVA / FORMATO_JPG** (suelos): miles de tonos y ruido de compresión = ruido de alta frecuencia y motas que
+  parecen artefactos sobre la tierra.
+
+**Cómo se corrige** (sin recursos de terceros, conservando diseño y hitboxes): rehacer a resolución nativa con
+`tools/art/pixrig/` (personajes), reducir a la grilla nativa con paleta propia con `tools/art/battlefield_pixelize.py`
+(retratos de campo de batalla) o `tools/art/micelial/pixel_floor.py` (mapas); nunca con un filtro en pantalla.
+
+**Gate informativo.** `node tools/art/pixel-density.js [--group enemigos,jefes,retratos,fondos] [--write]` mide cada
+entidad y escribe `docs/art-gate/PIXEL_DENSITY.md` y `docs/art-gate/pixel-density-report.json`. No rompe el repo de
+entrada: lo que se desvía y todavía no se rehízo está en `docs/art-gate/pixel-density-exceptions.json` con motivo y plan;
+`--strict` solo falla por desvíos **sin** excepción documentada. Un asset nuevo no entra a esa lista: entra dentro del canon.
+`--self-test` valida el detector con imágenes sintéticas. Resultados y capturas de la unificación inicial en
+`docs/art-gate/pixel-unificado/README.md`. La revisión de arte sigue siendo humana (§8).
+
+## 15. Íconos de interfaz: sin emojis de color
+
+Un emoji de color se dibuja con la fuente del sistema: cambia entre Android, iOS y Windows y rompe el lenguaje de píxel
+(§1) en la misma pantalla donde Tienda y Desafíos ya usan íconos pixel. Regla: **ningún emoji de color visible al jugador**.
+
+- Los íconos viven en `js/ui/pixel-icons.js` (`PXI_ART`): grilla 16×16, **hasta 6 colores** de `PXI_PAL`, contorno de 1 px
+  (se calcula solo). `PXI_EMOJI` dice qué emoji reemplaza cada uno y `PXI_NAME` su nombre accesible (`""` = decorativo).
+  `node tools/art/check-pixel-icons.js` valida el contrato.
+- DOM: el emoji escrito en un texto se convierte solo en `<i class="pxi pxi-ID">` (el emoji queda adentro, invisible, para
+  `textContent`; el lector de pantalla lee el nombre). Lienzo: `drawCanvasIcon` / `drawIconText` (`js/rendering/effects.js`).
+  `::before`/`::after`: `background:var(--pxi-ID) center/contain no-repeat`.
+- Las fuentes pixel (Press Start 2P, VT323) no traen dingbats (solo ↑ ↓): ✦ ★ ✔ ✓ ✚ también son íconos; el resto (◆ ▸ → …)
+  cae a la fuente del sistema en monocromo y se informa con `--mono`, sin romper el gate.
+- Gate: `node tools/art/emoji-lint.js --strict` (workflow `Emoji lint`). Un emoji nuevo sin ícono falla; las excepciones van
+  en `tools/art/emoji-lint-exceptions.json` con motivo. Capturas antes/después en `docs/ux/emojis-pixel/`.
+- Pendiente de arte humano: las 10 portadas de arena del Códice (`assets/ui/codex/arenas/*.jpg`) son ilustraciones suaves
+  (§14: sin JPG ni degradé); necesitan repintado a mano en píxel nativo, no un filtro.

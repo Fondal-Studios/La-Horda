@@ -132,7 +132,7 @@ Lore Bible: todos llegan o pasan por la Ciudad Maldita y ninguno contradice a lo
 | La Cazadora | Los bosques de las Ruinas |
 | Nigromante | Las criptas bajo la ciudad |
 | Libertador | Del otro lado de la Cordillera |
-| Eren | Detrás de los muros |
+| Ilkan | Las Dunas Quebradas |
 
 **Decisiones de canon que respeta el Códice:**
 
@@ -152,3 +152,64 @@ ni habilidades. La compra de skins y objetos sigue en la Tienda: el Códice abre
   atrás y flechas; maquetación a 844×390 y 667×375 sin desbordes; rendimiento; y elegir en el Códice → la Sala.
 - Regresión: las 18 suites de `tools/items/`, `tools/regression/t_func.js` (94/94, con la navegación de campeones
   ya adentro del Códice) y los *smoke* de Fortaleza y Micelial.
+
+## 9. El Libro de la Horda (el Códice como eje narrativo)
+
+El Códice también es el **libro que cuenta la historia y enseña el juego**. Lo narra **el Hechicero Supremo**, en primera
+persona y en voseo (antes narraba Ismena, la escriba del Archivo: sigue siendo la autora de la Crónica de la Noche del
+Regreso, que no cambió). Cada página va firmada «— El Hechicero Supremo» al pie y la tarjeta del fragmento en la victoria
+también. Un solo narrador a la vez: ver «Orden de la secuencia» abajo. Se muestra de tres formas y siempre se puede releer en
+**Códice › El Libro** (`id:"libro"`, franja en la home, con insignia NUEVO también en el botón CÓDICE del menú).
+
+| Momento | Qué es | Dónde está |
+|---|---|---|
+| **Introducción** | Libro animado de 8 páginas (universo, guerra, la Horda, la noche del regreso, las Cicatrices, la voz dorada, la misión, cómo sigue). Una sola vez, OFRECIDA al volver al menú tras la primera arena ("Leer el Libro" / "Después"); ya no se abre antes de jugar. Siempre releíble en Códice › El Libro | `codex-book.js` → `codexBookOffer` → `codexBookMaybeIntro` |
+| **Fragmentos** | Uno por arena de la campaña: página de historia + página "lo que aprendiste". Aparecen como paso propio de la victoria ("Fragmento del Libro") y quedan en el Códice | `story.js` (`storyVictoryBookHtml`), `end-screens.js` (paso 3, se omite solo si no hay fragmento) |
+| **Página de carga** | Una página que se da vuelta sola (≈3 s) antes de entrar a una arena de campaña en solitario; hasta 3 veces por arena; se apaga desde el Códice. Es la frase de apertura de la ficha del Hechicero en versión corta | `run-intro.js` → `codexBookShort` |
+
+**Voz y spoilers:** el Hechicero habla claro y la sospecha va en una frase (biblia §5). Arenas 1-3 sin ninguna sospecha; primera
+grieta en la 4; interés por los cristales en la 5-6; descarta la advertencia del Tercero en la 7. **Nada de lo anterior a la
+Infernal dice que fue Guardián ni que los cristales sean para él**: lo confiesa el fragmento de la Infernal («Te mentí en lo que
+importaba. Fui el Primero de los Cuatro…»). `t_codex_book_logic.js` lo verifica con una lista de frases prohibidas. Los
+`lore` de los fragmentos tampoco repiten la línea del Hechicero sobre el cristal ni las últimas palabras del Guardián, que la
+victoria ya muestra en sus propios pasos.
+
+**Orden de la secuencia (un solo narrador a la vez, `narration*` en `codex-narrative.js`):**
+1. Con el Libro abierto, el Hechicero no habla en ningún otro lado: el cuadro de consejos (`tutSay`) no abre, la cola de voces
+   de la historia espera, la ficha previa (`runIntroShow`), el relato del primer minuto y el epílogo esperan a que cierre.
+2. El Libro por iniciativa propia (oferta, intro, carga corta) no se pone encima de otra capa de historia (ficha, epílogo,
+   relato del primer minuto, práctica); la oferta reintenta unos segundos y, si no hubo hueco, queda para la próxima vuelta al menú.
+3. Entrada a una arena: página de carga (si toca) → ficha. Si la página estuvo a la vista (≥ 1,5 s), la ficha **no repite la frase
+   de apertura** (`say`) y deja lo que el Libro no dice: qué te mata, qué te ayuda, objetivo y la voz de tu guardián.
+4. Introducción **leída hasta la última página** (`save.codexBook.introRead`): la ficha de la Ciudad no vuelve a pasar el
+   prólogo, la misión ni el cartel del Acto I. Si solo se **omitió**, queda «vista» pero no «leída» y todo sigue. Si el prólogo ya
+   se vio antes, cuatro páginas de la introducción salen en su versión `recap` (cuentan lo que el prólogo no dijo).
+5. Práctica completada: la misión SOBREVIVIR (ya contada en su paso 1 y en el resumen) no se repite en la ficha. Saltarla sí la deja.
+6. Cooperativo: el Libro nunca abre en una sala, así que nada de esto aplica ni bloquea; el Hechicero sigue hablando en su cuadro.
+
+Recorrido de temas (lo verifica `t_codex_book_logic.js`): 01 modos · 02 progresión (XP, oro, cofre) · 03 equipo y Gemas ·
+04 maestría de habilidades · 05 talentos (desde el nivel 40) · 06 dificultades (Pesadilla/Infierno) · 07 cooperativo y
+rol · 08 oro y Tienda · 09 Brasas ✦ (solo apariencia, sin presionar) · 10 lo que sigue + resumen de historia, modos y
+progresión. Los textos no spoilean la traición del Hechicero antes de la Infernal.
+
+**Reglas que no se rompen:** omitir/saltear siempre posible (botón, Esc, tocar); omitir cuenta como visto; nunca
+bloquea una partida ni "Continuar"; todo es **local** (sin eventos de red); la intro y la carga no aparecen dentro de una
+sala/partida y se cierran solas si el jugador entra a una; quien llega a unirse a una sala con un perfil nuevo no ve la
+intro en ese momento (queda con insignia en el Códice); movimiento reducido = sin giro de página. Las pruebas
+automáticas viejas (`navigator.webdriver`) siguen el camino de antes, sin libro por iniciativa propia (igual que el regalo
+inicial); las que miden el libro definen `window.__codexBook = true` (o `__firstRun` / `?primera=1`). El paso de la victoria,
+la lista del Códice y las relecturas no dependen de eso (son contenido a pedido).
+
+**Guardado:** `save.codexBook = {v, introSeen, introAt, introRead, ran, offered, frag:{arena:ts}, shortCount:{arena:n}, shortOff}` (`introRead` es nuevo: los guardados sin él migran a `false`). Los guardados
+anteriores migran en `loadSave` (`codexBookMigrate`): no se pierde nada; quien ya tenía campeón o arenas superadas no ve la
+intro a la fuerza y sus arenas figuran como fragmentos leídos (valor `1`, sin insignia, releíbles).
+
+**Arte:** 100% propio. Las ilustraciones se dibujan en vivo en canvas (`codex-book-art.js`: 18 escenas procedurales) y las
+de arena reusan las panorámicas existentes de `assets/ui/codex/arenas/` teñidas de tinta. Sin recursos de terceros.
+
+**Cómo sumar contenido:** una página de la intro = una fila en `BOOK_INTRO_PAGES`; un tema nuevo = editar el `lesson` del
+fragmento de la arena (≤ 360 caracteres por página; el test lo exige); una escena nueva = una función en `BOOK_SCENES`
+y su nombre en `BOOK_ART_NAMES`.
+
+**QA:** `node tools/items/t_codex_book_logic.js` (headless, sin navegador) y
+`node tools/items/t_codex_book.js [carpeta]` (Playwright, 844×390, con capturas).

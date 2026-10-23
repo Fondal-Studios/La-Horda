@@ -40,7 +40,7 @@ const ANIM_PROFILES = {
   cazadora:   {speed:1.2, weight:0.8, amp:0.8, recoil:1.0, lunge:4,  cast:1.0, impact:1.0, particle:"leaf",   basic:"ranged", tier:"static"},
   nigromante: {speed:0.8, weight:1.0, amp:0.45,recoil:0.5, lunge:3,  cast:1.5, impact:1.1, particle:"necro",  basic:"cast",   tier:"static"},
   libertador: {speed:0.9, weight:1.2, amp:0.5, recoil:1.6, lunge:6,  cast:1.1, impact:1.4, particle:"spark",  basic:"ranged", tier:"static"},
-  eren:       {speed:1.4, weight:0.9, amp:0.8, recoil:0.8, lunge:14, cast:1.0, impact:1.3, particle:"blood",  basic:"melee",  tier:"static"},
+  ilkan:       {speed:1.4, weight:0.9, amp:0.8, recoil:0.8, lunge:14, cast:1.0, impact:1.3, particle:"blood",  basic:"melee",  tier:"static"},
   // ---- invocaciones ----
   nigro_skel: {speed:1.4, weight:0.6, amp:1.1, lunge:8,  impact:0.8, particle:"bone", material:"bone", tier:"static"},
   nigro_golem:{speed:0.55,weight:2.4, amp:0.6, lunge:12, impact:2.0, particle:"rock", material:"rock", tier:"full"}, // atlas con caminata y golpe reales
@@ -83,12 +83,12 @@ const ANIM_PROFILES = {
   esfinge:            {speed:0.9, weight:1.6, basic:"ranged", impact:1.6, material:"sand"},
   guardian_laberinto: {speed:0.6, weight:2.2, lunge:14, impact:2.1, material:"rock", death:"frames"},
   minotauro:          {speed:1.0, weight:1.9, amp:0.9, lunge:26, impact:2.4, material:"flesh", death:"collapse"},
-  tiburon_joven:      {speed:1.4, weight:0.8, lunge:16, material:"water", death:"sink"},
+  tiburon_joven:      {speed:1.4, weight:0.8, lunge:16, material:"water", death:"frames"},
   medusa_electrica:   {speed:0.7, weight:0.4, amp:1.4, basic:"cast", particle:"shock", material:"shock", death:"dissolve"},
   cangrejo_acorazado: {speed:0.8, weight:1.6, lunge:8, impact:1.5, material:"shell", death:"sink"},
   sirena_abisal:      {basic:"ranged", cast:1.3, material:"water", particle:"water", death:"sink"},
   anguila_electrica:  {speed:1.6, weight:0.5, amp:0.8, lunge:12, material:"shock", particle:"shock", death:"frames"},
-  tiburon_blanco:     {speed:1.2, weight:1.4, lunge:20, impact:1.8, material:"water", death:"sink"},
+  tiburon_blanco:     {speed:1.2, weight:1.4, lunge:20, impact:1.8, material:"water", death:"frames"},
   kraken_joven:       {speed:0.6, weight:2.3, amp:0.7, lunge:8, impact:2.0, material:"ink", particle:"ink", death:"frames"},
   leviatan:           {speed:0.8, weight:2.6, amp:0.5, lunge:24, impact:2.4, material:"water", particle:"water", death:"frames"},
 };

@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 // ⚡ JUGAR YA de punta a punta con el relay REAL: (1) un jugador solo abre una sala pública y puede empezar con BOTs rotulados;
 // (2) el segundo jugador que toca JUGAR YA se une a esa sala (humanos primero); (3) sin servidor online arranca solo con bots.
 // Uso: NODE_PATH=/opt/node-tools/node_modules:server/node_modules node tools/net/quick-play.js  (SITE=http://127.0.0.1:8813)
@@ -8,7 +10,7 @@ const SITE=process.env.SITE||'http://127.0.0.1:8813',PORT=18993,delay=ms=>new Pr
 const data=fs.mkdtempSync(path.join(os.tmpdir(),'horda-qp-'));
 const relay=spawn(process.execPath,['server/relay.js'],{cwd:path.resolve(__dirname,'../..'),env:{...process.env,PORT:String(PORT),ACCOUNT_DATA_DIR:data,DATABASE_URL:''},stdio:'ignore'});
 (async()=>{
- for(let i=0;i<60;i++){try{if((await fetch('http://127.0.0.1:'+PORT+'/health')).ok)break}catch{}await delay(100)}
+ for(let i=0;i<60;i++){try{if((await fetchReadyOk('http://127.0.0.1:'+PORT+'/health')))break}catch{}await delay(100)}
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox','--disable-dev-shm-usage']});let checks=0;const ok=(c,m)=>{assert(c,m);checks++;};
  async function player(name,server){
   const ctx=await b.newContext({viewport:{width:844,height:390}});const p=await ctx.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));
@@ -19,7 +21,10 @@ const relay=spawn(process.execPath,['server/relay.js'],{cwd:path.resolve(__dirna
  }
  try{
   // ---- A abre sala ----
-  const A=await player('A',true);
+  // Preload both clients before the real eight-second public-room window starts.
+  // Asset download time is not an attempted join and must not expire A's room
+  // before this test clicks B's button. Keep matchmaking timers/assertions intact.
+  const A=await player('A',true),B=await player('B',true);
   await A.p.click('#mode-quickplay-btn');
   await A.p.waitForFunction(()=>netInRoom()&&net.role==='host',null,{timeout:20000});
   await A.p.waitForFunction(()=>{const e=document.getElementById('qp-bar');return e&&/Empezar ya/.test(e.innerText);},null,{timeout:10000});
@@ -28,7 +33,6 @@ const relay=spawn(process.execPath,['server/relay.js'],{cwd:path.resolve(__dirna
   await delay(1300); // el relay guarda la lista de salas 1 s
   const rooms=await (await fetch('http://127.0.0.1:'+PORT+'/api/rooms')).json();ok(rooms.rooms.length===1&&rooms.rooms[0].humans===1,'sala pública con 1 humano '+JSON.stringify(rooms));
   // ---- B toca JUGAR YA y se une a la sala de A ----
-  const B=await player('B',true);
   await B.p.click('#mode-quickplay-btn');
   await B.p.waitForFunction(()=>netInRoom()&&net.role==='guest',null,{timeout:20000});
   ok(true,'B se unió como invitado (humanos primero)');

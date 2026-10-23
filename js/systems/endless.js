@@ -190,6 +190,7 @@ function endlessEnterArena(key){
   acuaFish = []; acuaBubbles = []; acuaBubbleTimer = 0; acuaCurrent = {active:false, dx:0, dy:0, timer:0};
   if(typeof vfxResetRun==="function") vfxResetRun();
   if(typeof resetMythicPowers==="function") resetMythicPowers();
+  if(typeof resetMagePassives==="function") resetMagePassives();
   if(typeof resetEnemyRoles==="function") resetEnemyRoles();
   resetBreakables();
   hazardZones = []; arenaRuleTimer = 8000; resetArenaRule();

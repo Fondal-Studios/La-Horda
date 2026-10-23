@@ -27,7 +27,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 188,
+     "vfx": 189,
      "aims": false,
      "aimProfile": null
     },
@@ -42,7 +42,7 @@
       "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 16,
+     "vfx": 17,
      "aims": true,
      "aimProfile": "dash"
     },
@@ -57,7 +57,7 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 5,
+     "vfx": 6,
      "aims": false,
      "aimProfile": null
     },
@@ -74,7 +74,7 @@
       "CURA",
       "CONTROL"
      ],
-     "vfx": 5,
+     "vfx": 9,
      "aims": false,
      "aimProfile": null
     }
@@ -100,7 +100,7 @@
      "cats": [
       "CONTROL"
      ],
-     "vfx": 12,
+     "vfx": 15,
      "aims": true,
      "aimProfile": "target"
     },
@@ -114,7 +114,7 @@
      "cats": [
       "CONTROL"
      ],
-     "vfx": 25,
+     "vfx": 29,
      "aims": true,
      "aimProfile": "target"
     },
@@ -124,13 +124,13 @@
      "kind": "area_trap",
      "err": null,
      "damaged": 4,
-     "statused": 2,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 29,
+     "vfx": 27,
      "aims": true,
      "aimProfile": "point"
     },
@@ -147,7 +147,7 @@
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 49,
+     "vfx": 56,
      "aims": false,
      "aimProfile": null
     }
@@ -191,7 +191,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 47,
+     "vfx": 53,
      "aims": false,
      "aimProfile": null
     },
@@ -201,12 +201,13 @@
      "kind": "chain",
      "err": null,
      "damaged": 4,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 32,
+     "vfx": 45,
      "aims": true,
      "aimProfile": "target"
     },
@@ -223,7 +224,7 @@
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 378,
+     "vfx": 390,
      "aims": false,
      "aimProfile": null
     }
@@ -245,13 +246,14 @@
      "kind": "team_heal_aoe",
      "err": null,
      "damaged": 9,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
-      "CURA"
+      "CURA",
+      "CONTROL"
      ],
-     "vfx": 59,
+     "vfx": 63,
      "aims": false,
      "aimProfile": null
     },
@@ -265,7 +267,7 @@
      "cats": [
       "POTENCIA"
      ],
-     "vfx": 5,
+     "vfx": 6,
      "aims": false,
      "aimProfile": null
     },
@@ -280,7 +282,7 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 5,
+     "vfx": 6,
      "aims": false,
      "aimProfile": null
     },
@@ -295,7 +297,7 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 11,
+     "vfx": 15,
      "aims": false,
      "aimProfile": null
     }
@@ -318,12 +320,13 @@
      "kind": "cone_slash",
      "err": null,
      "damaged": 4,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 28,
+     "vfx": 32,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -338,7 +341,7 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 5,
+     "vfx": 6,
      "aims": false,
      "aimProfile": null
     },
@@ -353,7 +356,7 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 5,
+     "vfx": 6,
      "aims": false,
      "aimProfile": null
     },
@@ -368,7 +371,7 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 5,
+     "vfx": 9,
      "aims": false,
      "aimProfile": null
     }
@@ -397,7 +400,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 53,
+     "vfx": 54,
      "aims": true,
      "aimProfile": "point"
     },
@@ -412,7 +415,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 16,
+     "vfx": 25,
      "aims": true,
      "aimProfile": "target"
     },
@@ -427,7 +430,7 @@
       "POTENCIA",
       "MOVILIDAD"
      ],
-     "vfx": 3,
+     "vfx": 7,
      "aims": true,
      "aimProfile": "dash"
     },
@@ -442,7 +445,7 @@
       "AREA",
       "MULTIPLE"
      ],
-     "vfx": 59,
+     "vfx": 62,
      "aims": false,
      "aimProfile": null
     }
@@ -468,7 +471,7 @@
      "cats": [
       "CURA"
      ],
-     "vfx": 5,
+     "vfx": 6,
      "aims": false,
      "aimProfile": null
     },
@@ -478,14 +481,13 @@
      "kind": "brief_immunity",
      "err": null,
      "damaged": 0,
-     "statused": 10,
+     "statused": 1,
      "cats": [
-      "AREA",
       "POTENCIA",
       "CURA",
       "CONTROL"
      ],
-     "vfx": 545,
+     "vfx": 262,
      "aims": false,
      "aimProfile": null
     },
@@ -495,12 +497,13 @@
      "kind": "self_spin_stun",
      "err": null,
      "damaged": 4,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 26,
+     "vfx": 30,
      "aims": false,
      "aimProfile": null
     },
@@ -515,13 +518,14 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 6,
+     "vfx": 10,
      "aims": false,
      "aimProfile": null
     }
    ],
    "isNew": false,
    "problems": [
+    "falta otra habilidad (distinta de la de área) que dañe a varios enemigos",
     "la definitiva suma 2 categorías (POTENCIA, CURA); se piden 3+"
    ],
    "status": "INFO"
@@ -537,11 +541,12 @@
      "kind": "ronin_slash",
      "err": null,
      "damaged": 1,
-     "statused": 0,
+     "statused": 1,
      "cats": [
+      "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 12,
+     "vfx": 19,
      "aims": true,
      "aimProfile": "target"
     },
@@ -556,7 +561,7 @@
       "POTENCIA",
       "MOVILIDAD"
      ],
-     "vfx": 3,
+     "vfx": 8,
      "aims": true,
      "aimProfile": "target"
     },
@@ -572,7 +577,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 86,
+     "vfx": 89,
      "aims": false,
      "aimProfile": null
     },
@@ -587,7 +592,7 @@
       "POTENCIA",
       "MOVILIDAD"
      ],
-     "vfx": 5,
+     "vfx": 12,
      "aims": false,
      "aimProfile": null
     }
@@ -612,7 +617,7 @@
      "damaged": 1,
      "statused": 0,
      "cats": [],
-     "vfx": 9,
+     "vfx": 11,
      "aims": true,
      "aimProfile": "line"
     },
@@ -627,7 +632,7 @@
       "AREA",
       "CONTROL"
      ],
-     "vfx": 3,
+     "vfx": 4,
      "aims": true,
      "aimProfile": "point"
     },
@@ -642,7 +647,7 @@
       "AREA",
       "MULTIPLE"
      ],
-     "vfx": 73,
+     "vfx": 76,
      "aims": true,
      "aimProfile": "point"
     },
@@ -656,7 +661,7 @@
      "cats": [
       "CONTROL"
      ],
-     "vfx": 39,
+     "vfx": 49,
      "aims": false,
      "aimProfile": null
     }
@@ -687,7 +692,7 @@
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 62,
+     "vfx": 65,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -697,13 +702,13 @@
      "kind": "summon_golem",
      "err": null,
      "damaged": 9,
-     "statused": 1,
+     "statused": 4,
      "cats": [
       "AREA",
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 145,
+     "vfx": 157,
      "aims": false,
      "aimProfile": "point"
     },
@@ -732,7 +737,7 @@
      "cats": [
       "CURA"
      ],
-     "vfx": 3,
+     "vfx": 7,
      "aims": false,
      "aimProfile": null
     }
@@ -759,7 +764,7 @@
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 10,
+     "vfx": 14,
      "aims": false,
      "aimProfile": "dash"
     },
@@ -773,7 +778,7 @@
      "cats": [
       "POTENCIA"
      ],
-     "vfx": 9,
+     "vfx": 12,
      "aims": false,
      "aimProfile": null
     },
@@ -783,15 +788,14 @@
      "kind": "sm_san_lorenzo",
      "err": null,
      "damaged": 10,
-     "statused": 1,
+     "statused": 0,
      "cats": [
       "AREA",
       "MULTIPLE",
       "POTENCIA",
-      "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 94,
+     "vfx": 89,
      "aims": false,
      "aimProfile": "dash"
     },
@@ -809,7 +813,7 @@
       "MOVILIDAD",
       "INVOCA"
      ],
-     "vfx": 179,
+     "vfx": 176,
      "aims": false,
      "aimProfile": null
     }
@@ -821,57 +825,56 @@
    "status": "INFO"
   },
   {
-   "key": "eren",
-   "name": "Eren, el Indómito",
+   "key": "ilkan",
+   "name": "Ilkan, el Caminante de Dunas",
    "role": "asesino",
    "abilities": [
     {
      "slot": 0,
-     "name": "Equipo de Maniobras",
-     "kind": "eren_hook",
+     "name": "Lanza-Pendón",
+     "kind": "ilkan_lance",
      "err": null,
      "damaged": 10,
-     "statused": 1,
+     "statused": 0,
      "cats": [
       "AREA",
       "MULTIPLE",
-      "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 80,
+     "vfx": 81,
      "aims": false,
      "aimProfile": "dash"
     },
     {
      "slot": 1,
-     "name": "Instinto de Supervivencia",
-     "kind": "eren_instinct",
+     "name": "Piel de Duna",
+     "kind": "ilkan_temple",
      "err": null,
      "damaged": 0,
      "statused": 0,
      "cats": [],
-     "vfx": 4,
+     "vfx": 6,
      "aims": false,
      "aimProfile": null
     },
     {
      "slot": 2,
-     "name": "¡Avancen!",
-     "kind": "eren_advance",
+     "name": "Grito de Caravana",
+     "kind": "ilkan_caravan",
      "err": null,
      "damaged": 0,
      "statused": 0,
      "cats": [
       "POTENCIA"
      ],
-     "vfx": 82,
+     "vfx": 105,
      "aims": false,
      "aimProfile": null
     },
     {
      "slot": "ult",
-     "name": "El Portador",
-     "kind": "eren_titan_ult",
+     "name": "Coloso de Arena",
+     "kind": "ilkan_colossus_ult",
      "err": null,
      "damaged": 0,
      "statused": 0,
@@ -879,14 +882,14 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 11,
+     "vfx": 17,
      "aims": false,
      "aimProfile": null
     }
    ],
    "isNew": false,
    "problems": [
-    "Hab. 2 Instinto de Supervivencia: sin efecto medible",
+    "Hab. 2 Piel de Duna: sin efecto medible",
     "falta otra habilidad (distinta de la de área) que dañe a varios enemigos",
     "la definitiva suma 2 categorías (POTENCIA, CURA); se piden 3+"
    ],
@@ -909,7 +912,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 55,
+     "vfx": 59,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -928,7 +931,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 408,
+     "vfx": 414,
      "aims": true,
      "aimProfile": "point"
     },
@@ -945,7 +948,7 @@
       "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 182,
+     "vfx": 192,
      "aims": true,
      "aimProfile": "line"
     },
@@ -963,7 +966,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 372,
+     "vfx": 369,
      "aims": false,
      "aimProfile": null
     }
@@ -988,7 +991,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 31,
+     "vfx": 28,
      "aims": true,
      "aimProfile": "point"
     },
@@ -1004,7 +1007,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 355,
+     "vfx": 370,
      "aims": true,
      "aimProfile": "point"
     },
@@ -1018,7 +1021,7 @@
      "cats": [
       "CURA"
      ],
-     "vfx": 4,
+     "vfx": 5,
      "aims": false,
      "aimProfile": null
     },
@@ -1035,7 +1038,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 418,
+     "vfx": 424,
      "aims": false,
      "aimProfile": null
     }
@@ -1077,7 +1080,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 51,
+     "vfx": 56,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -1091,7 +1094,7 @@
      "cats": [
       "POTENCIA"
      ],
-     "vfx": 3,
+     "vfx": 6,
      "aims": false,
      "aimProfile": null
     },
@@ -1106,7 +1109,7 @@
       "POTENCIA",
       "INVOCA"
      ],
-     "vfx": 43,
+     "vfx": 51,
      "aims": false,
      "aimProfile": null
     }
@@ -1134,7 +1137,7 @@
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 9,
+     "vfx": 14,
      "aims": true,
      "aimProfile": "target"
     },
@@ -1152,7 +1155,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 326,
+     "vfx": 334,
      "aims": true,
      "aimProfile": "point"
     },
@@ -1164,7 +1167,7 @@
      "damaged": 0,
      "statused": 0,
      "cats": [],
-     "vfx": 3,
+     "vfx": 9,
      "aims": false,
      "aimProfile": "point"
     },
@@ -1181,7 +1184,7 @@
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 158,
+     "vfx": 170,
      "aims": false,
      "aimProfile": null
     }
@@ -1210,7 +1213,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 55,
+     "vfx": 61,
      "aims": true,
      "aimProfile": "point"
     },
@@ -1220,12 +1223,13 @@
      "kind": "mo_salt",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 56,
+     "vfx": 61,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -1239,7 +1243,7 @@
      "cats": [
       "CURA"
      ],
-     "vfx": 3,
+     "vfx": 6,
      "aims": false,
      "aimProfile": null
     },
@@ -1256,7 +1260,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 409,
+     "vfx": 421,
      "aims": true,
      "aimProfile": "point"
     }
@@ -1282,7 +1286,7 @@
       "CURA",
       "INVOCA"
      ],
-     "vfx": 3,
+     "vfx": 6,
      "aims": true,
      "aimProfile": "point"
     },
@@ -1298,7 +1302,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 56,
+     "vfx": 62,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -1313,7 +1317,7 @@
       "POTENCIA",
       "INVOCA"
      ],
-     "vfx": 3,
+     "vfx": 5,
      "aims": true,
      "aimProfile": "line"
     },
@@ -1328,7 +1332,7 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 3,
+     "vfx": 9,
      "aims": false,
      "aimProfile": null
     }
@@ -1355,7 +1359,7 @@
      "cats": [
       "INVOCA"
      ],
-     "vfx": 3,
+     "vfx": 6,
      "aims": true,
      "aimProfile": "point"
     },
@@ -1365,13 +1369,13 @@
      "kind": "ir_tension",
      "err": null,
      "damaged": 4,
-     "statused": 1,
+     "statused": 2,
      "cats": [
       "AREA",
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 24,
+     "vfx": 30,
      "aims": false,
      "aimProfile": null
     },
@@ -1381,12 +1385,13 @@
      "kind": "ir_cut",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 55,
+     "vfx": 61,
      "aims": true,
      "aimProfile": "point"
     },
@@ -1400,7 +1405,7 @@
      "cats": [
       "INVOCA"
      ],
-     "vfx": 3,
+     "vfx": 9,
      "aims": false,
      "aimProfile": null
     }
@@ -1423,12 +1428,13 @@
      "kind": "expedition:needles",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 60,
+     "vfx": 59,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -1445,7 +1451,7 @@
       "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 201,
+     "vfx": 193,
      "aims": true,
      "aimProfile": "dash"
     },
@@ -1455,13 +1461,14 @@
      "kind": "expedition:unpick",
      "err": null,
      "damaged": 9,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
-      "POTENCIA"
+      "POTENCIA",
+      "CONTROL"
      ],
-     "vfx": 54,
+     "vfx": 53,
      "aims": false,
      "aimProfile": null
     },
@@ -1471,14 +1478,14 @@
      "kind": "expedition:last_stitch",
      "err": null,
      "damaged": 9,
-     "statused": 2,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 194,
+     "vfx": 190,
      "aims": false,
      "aimProfile": null
     }
@@ -1498,12 +1505,13 @@
      "kind": "expedition:shards",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 60,
+     "vfx": 59,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -1519,7 +1527,7 @@
       "MOVILIDAD",
       "INVOCA"
      ],
-     "vfx": 15,
+     "vfx": 4,
      "aims": true,
      "aimProfile": "dash"
     },
@@ -1529,12 +1537,13 @@
      "kind": "expedition:cross",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 63,
+     "vfx": 58,
      "aims": true,
      "aimProfile": "line"
     },
@@ -1551,7 +1560,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 59,
+     "vfx": 60,
      "aims": false,
      "aimProfile": null
     }
@@ -1571,12 +1580,13 @@
      "kind": "expedition:bell",
      "err": null,
      "damaged": 9,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 54,
+     "vfx": 57,
      "aims": false,
      "aimProfile": null
     },
@@ -1590,7 +1600,7 @@
      "cats": [
       "POTENCIA"
      ],
-     "vfx": 8,
+     "vfx": 9,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -1606,7 +1616,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 60,
+     "vfx": 62,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -1623,7 +1633,7 @@
       "CURA",
       "CONTROL"
      ],
-     "vfx": 164,
+     "vfx": 161,
      "aims": false,
      "aimProfile": null
     }
@@ -1649,7 +1659,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 63,
+     "vfx": 67,
      "aims": true,
      "aimProfile": "line"
     },
@@ -1665,7 +1675,7 @@
       "MULTIPLE",
       "CURA"
      ],
-     "vfx": 28,
+     "vfx": 30,
      "aims": false,
      "aimProfile": null
     },
@@ -1675,13 +1685,14 @@
      "kind": "expedition:shear",
      "err": null,
      "damaged": 6,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
-      "CURA"
+      "CURA",
+      "CONTROL"
      ],
-     "vfx": 39,
+     "vfx": 42,
      "aims": false,
      "aimProfile": null
     },
@@ -1698,7 +1709,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 278,
+     "vfx": 287,
      "aims": false,
      "aimProfile": null
     }
@@ -1718,12 +1729,13 @@
      "kind": "expedition:discord",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 60,
+     "vfx": 62,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -1738,7 +1750,7 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 8,
+     "vfx": 14,
      "aims": false,
      "aimProfile": null
     },
@@ -1748,13 +1760,14 @@
      "kind": "expedition:refrain",
      "err": null,
      "damaged": 9,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
-      "CURA"
+      "CURA",
+      "CONTROL"
      ],
-     "vfx": 54,
+     "vfx": 63,
      "aims": false,
      "aimProfile": null
     },
@@ -1764,12 +1777,11 @@
      "kind": "expedition:concert",
      "err": null,
      "damaged": 9,
-     "statused": 1,
+     "statused": 0,
      "cats": [
       "AREA",
       "MULTIPLE",
       "CURA",
-      "CONTROL",
       "INVOCA"
      ],
      "vfx": 146,
@@ -1792,12 +1804,13 @@
      "kind": "expedition:pierce",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 66,
+     "vfx": 58,
      "aims": true,
      "aimProfile": "line"
     },
@@ -1811,7 +1824,7 @@
      "cats": [
       "POTENCIA"
      ],
-     "vfx": 8,
+     "vfx": 4,
      "aims": false,
      "aimProfile": null
     },
@@ -1821,12 +1834,13 @@
      "kind": "expedition:discharge",
      "err": null,
      "damaged": 9,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 54,
+     "vfx": 53,
      "aims": false,
      "aimProfile": null
     },
@@ -1843,7 +1857,7 @@
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 199,
+     "vfx": 201,
      "aims": false,
      "aimProfile": null
     }
@@ -1863,14 +1877,14 @@
      "kind": "expedition:swarm",
      "err": null,
      "damaged": 10,
-     "statused": 3,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 420,
+     "vfx": 410,
      "aims": true,
      "aimProfile": "point"
     },
@@ -1884,7 +1898,7 @@
      "cats": [
       "CURA"
      ],
-     "vfx": 8,
+     "vfx": 4,
      "aims": false,
      "aimProfile": null
     },
@@ -1900,7 +1914,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 59,
+     "vfx": 58,
      "aims": true,
      "aimProfile": "point"
     },
@@ -1917,7 +1931,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 411,
+     "vfx": 413,
      "aims": true,
      "aimProfile": "point"
     }
@@ -1937,12 +1951,13 @@
      "kind": "expedition:furnace",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 60,
+     "vfx": 59,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -1956,7 +1971,7 @@
      "cats": [
       "CURA"
      ],
-     "vfx": 8,
+     "vfx": 4,
      "aims": false,
      "aimProfile": null
     },
@@ -1966,14 +1981,14 @@
      "kind": "expedition:ash_step",
      "err": null,
      "damaged": 9,
-     "statused": 2,
+     "statused": 3,
      "cats": [
       "AREA",
       "MULTIPLE",
       "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 201,
+     "vfx": 193,
      "aims": true,
      "aimProfile": "dash"
     },
@@ -1983,14 +1998,14 @@
      "kind": "expedition:vent",
      "err": null,
      "damaged": 9,
-     "statused": 2,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
       "CURA",
       "CONTROL"
      ],
-     "vfx": 194,
+     "vfx": 190,
      "aims": false,
      "aimProfile": null
     }
@@ -2017,7 +2032,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 63,
+     "vfx": 58,
      "aims": true,
      "aimProfile": "line"
     },
@@ -2031,7 +2046,7 @@
      "cats": [
       "POTENCIA"
      ],
-     "vfx": 8,
+     "vfx": 4,
      "aims": true,
      "aimProfile": "point"
     },
@@ -2041,12 +2056,13 @@
      "kind": "expedition:burial",
      "err": null,
      "damaged": 7,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 44,
+     "vfx": 43,
      "aims": false,
      "aimProfile": null
     },
@@ -2063,7 +2079,7 @@
       "CURA",
       "CONTROL"
      ],
-     "vfx": 164,
+     "vfx": 160,
      "aims": false,
      "aimProfile": null
     }
@@ -2083,12 +2099,13 @@
      "kind": "expedition:ink_line",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 64,
+     "vfx": 58,
      "aims": true,
      "aimProfile": "line"
     },
@@ -2103,7 +2120,7 @@
       "POTENCIA",
       "MOVILIDAD"
      ],
-     "vfx": 8,
+     "vfx": 4,
      "aims": false,
      "aimProfile": null
     },
@@ -2113,12 +2130,13 @@
      "kind": "expedition:erase",
      "err": null,
      "damaged": 4,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 29,
+     "vfx": 28,
      "aims": false,
      "aimProfile": null
     },
@@ -2135,7 +2153,7 @@
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 113,
+     "vfx": 124,
      "aims": false,
      "aimProfile": null
     }
@@ -2161,7 +2179,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 65,
+     "vfx": 58,
      "aims": true,
      "aimProfile": "line"
     },
@@ -2179,7 +2197,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 8,
+     "vfx": 4,
      "aims": true,
      "aimProfile": "point"
     },
@@ -2189,14 +2207,15 @@
      "kind": "ascension:invert",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 2,
      "cats": [
       "AREA",
       "MULTIPLE",
       "CURA",
+      "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 66,
+     "vfx": 61,
      "aims": true,
      "aimProfile": "dash"
     },
@@ -2214,7 +2233,7 @@
       "CURA",
       "CONTROL"
      ],
-     "vfx": 69,
+     "vfx": 68,
      "aims": false,
      "aimProfile": null
     }
@@ -2234,14 +2253,14 @@
      "kind": "ascension:current",
      "err": null,
      "damaged": 10,
-     "statused": 1,
+     "statused": 4,
      "cats": [
       "AREA",
       "MULTIPLE",
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 342,
+     "vfx": 350,
      "aims": true,
      "aimProfile": "line"
     },
@@ -2257,7 +2276,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 59,
+     "vfx": 62,
      "aims": true,
      "aimProfile": "point"
     },
@@ -2276,7 +2295,7 @@
       "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 68,
+     "vfx": 65,
      "aims": true,
      "aimProfile": "dash"
     },
@@ -2286,14 +2305,14 @@
      "kind": "ascension:ocean",
      "err": null,
      "damaged": 10,
-     "statused": 2,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
       "CURA",
       "CONTROL"
      ],
-     "vfx": 264,
+     "vfx": 267,
      "aims": false,
      "aimProfile": null
     }
@@ -2313,13 +2332,14 @@
      "kind": "ascension:prism",
      "err": null,
      "damaged": 9,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
+      "CONTROL",
       "INVOCA"
      ],
-     "vfx": 54,
+     "vfx": 57,
      "aims": true,
      "aimProfile": "point"
     },
@@ -2329,12 +2349,13 @@
      "kind": "ascension:refract",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 66,
+     "vfx": 70,
      "aims": true,
      "aimProfile": "line"
     },
@@ -2344,15 +2365,16 @@
      "kind": "ascension:luminal",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 2,
      "cats": [
       "AREA",
       "MULTIPLE",
       "POTENCIA",
+      "CONTROL",
       "MOVILIDAD",
       "INVOCA"
      ],
-     "vfx": 66,
+     "vfx": 71,
      "aims": true,
      "aimProfile": "dash"
     },
@@ -2362,7 +2384,7 @@
      "kind": "ascension:cathedral",
      "err": null,
      "damaged": 10,
-     "statused": 1,
+     "statused": 2,
      "cats": [
       "AREA",
       "MULTIPLE",
@@ -2370,7 +2392,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 364,
+     "vfx": 373,
      "aims": true,
      "aimProfile": "point"
     }
@@ -2390,13 +2412,13 @@
      "kind": "ascension:swarm_send",
      "err": null,
      "damaged": 10,
-     "statused": 4,
+     "statused": 2,
      "cats": [
       "AREA",
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 493,
+     "vfx": 486,
      "aims": true,
      "aimProfile": "point"
     },
@@ -2410,7 +2432,7 @@
      "cats": [
       "CURA"
      ],
-     "vfx": 8,
+     "vfx": 7,
      "aims": false,
      "aimProfile": null
     },
@@ -2420,13 +2442,14 @@
      "kind": "ascension:elytra",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 2,
      "cats": [
       "AREA",
       "MULTIPLE",
+      "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 67,
+     "vfx": 72,
      "aims": true,
      "aimProfile": "dash"
     },
@@ -2436,7 +2459,7 @@
      "kind": "ascension:eclipse",
      "err": null,
      "damaged": 10,
-     "statused": 2,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
@@ -2444,7 +2467,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 620,
+     "vfx": 614,
      "aims": false,
      "aimProfile": null
     }
@@ -2464,13 +2487,14 @@
      "kind": "ascension:mask_throw",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
-      "POTENCIA"
+      "POTENCIA",
+      "CONTROL"
      ],
-     "vfx": 65,
+     "vfx": 58,
      "aims": true,
      "aimProfile": "line"
     },
@@ -2480,13 +2504,14 @@
      "kind": "ascension:chorus",
      "err": null,
      "damaged": 9,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
-      "POTENCIA"
+      "POTENCIA",
+      "CONTROL"
      ],
-     "vfx": 54,
+     "vfx": 53,
      "aims": false,
      "aimProfile": null
     },
@@ -2496,13 +2521,14 @@
      "kind": "ascension:face_swap",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 2,
      "cats": [
       "AREA",
       "MULTIPLE",
+      "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 66,
+     "vfx": 61,
      "aims": true,
      "aimProfile": "dash"
     },
@@ -2521,7 +2547,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 217,
+     "vfx": 210,
      "aims": false,
      "aimProfile": null
     }
@@ -2541,12 +2567,13 @@
      "kind": "ascension:star_bolt",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 66,
+     "vfx": 58,
      "aims": true,
      "aimProfile": "line"
     },
@@ -2556,13 +2583,13 @@
      "kind": "ascension:well",
      "err": null,
      "damaged": 10,
-     "statused": 2,
+     "statused": 3,
      "cats": [
       "AREA",
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 364,
+     "vfx": 363,
      "aims": true,
      "aimProfile": "point"
     },
@@ -2572,13 +2599,14 @@
      "kind": "ascension:orbit",
      "err": null,
      "damaged": 2,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "MULTIPLE",
       "POTENCIA",
+      "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 18,
+     "vfx": 17,
      "aims": true,
      "aimProfile": "point"
     },
@@ -2595,7 +2623,7 @@
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 214,
+     "vfx": 210,
      "aims": true,
      "aimProfile": "point"
     }
@@ -2615,13 +2643,14 @@
      "kind": "ascension:plate_throw",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
+      "CONTROL",
       "INVOCA"
      ],
-     "vfx": 64,
+     "vfx": 68,
      "aims": true,
      "aimProfile": "line"
     },
@@ -2638,7 +2667,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 341,
+     "vfx": 339,
      "aims": true,
      "aimProfile": "line"
     },
@@ -2648,13 +2677,14 @@
      "kind": "ascension:crystal_pulse",
      "err": null,
      "damaged": 7,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
-      "POTENCIA"
+      "POTENCIA",
+      "CONTROL"
      ],
-     "vfx": 44,
+     "vfx": 53,
      "aims": false,
      "aimProfile": null
     },
@@ -2673,7 +2703,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 191,
+     "vfx": 197,
      "aims": false,
      "aimProfile": null
     }
@@ -2693,7 +2723,7 @@
      "kind": "ascension:portal",
      "err": null,
      "damaged": 9,
-     "statused": 2,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
@@ -2703,7 +2733,7 @@
       "MOVILIDAD",
       "INVOCA"
      ],
-     "vfx": 214,
+     "vfx": 207,
      "aims": true,
      "aimProfile": "point"
     },
@@ -2713,13 +2743,14 @@
      "kind": "ascension:rift_echo",
      "err": null,
      "damaged": 7,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
-      "CURA"
+      "CURA",
+      "CONTROL"
      ],
-     "vfx": 44,
+     "vfx": 43,
      "aims": false,
      "aimProfile": null
     },
@@ -2729,13 +2760,14 @@
      "kind": "ascension:rift_step",
      "err": null,
      "damaged": 9,
-     "statused": 0,
+     "statused": 2,
      "cats": [
       "AREA",
       "MULTIPLE",
+      "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 86,
+     "vfx": 81,
      "aims": true,
      "aimProfile": "dash"
     },
@@ -2753,7 +2785,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 459,
+     "vfx": 443,
      "aims": true,
      "aimProfile": "point"
     }
@@ -2773,12 +2805,13 @@
      "kind": "ascension:feather_fan",
      "err": null,
      "damaged": 3,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "MULTIPLE",
+      "CONTROL",
       "INVOCA"
      ],
-     "vfx": 60,
+     "vfx": 58,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -2788,13 +2821,14 @@
      "kind": "ascension:updraft",
      "err": null,
      "damaged": 9,
-     "statused": 0,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
-      "POTENCIA"
+      "POTENCIA",
+      "CONTROL"
      ],
-     "vfx": 54,
+     "vfx": 53,
      "aims": false,
      "aimProfile": null
     },
@@ -2808,7 +2842,7 @@
      "cats": [
       "POTENCIA"
      ],
-     "vfx": 8,
+     "vfx": 4,
      "aims": false,
      "aimProfile": null
     },
@@ -2818,7 +2852,7 @@
      "kind": "ascension:feather_sky",
      "err": null,
      "damaged": 10,
-     "statused": 2,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
@@ -2826,7 +2860,7 @@
       "CONTROL",
       "INVOCA"
      ],
-     "vfx": 263,
+     "vfx": 250,
      "aims": true,
      "aimProfile": "point"
     }
@@ -2852,7 +2886,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 42,
+     "vfx": 38,
      "aims": true,
      "aimProfile": "point"
     },
@@ -2862,13 +2896,12 @@
      "kind": "expedition:sol_cask",
      "err": null,
      "damaged": 10,
-     "statused": 2,
+     "statused": 0,
      "cats": [
       "AREA",
-      "MULTIPLE",
-      "CONTROL"
+      "MULTIPLE"
      ],
-     "vfx": 51,
+     "vfx": 34,
      "aims": true,
      "aimProfile": "point"
     },
@@ -2883,7 +2916,7 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 8,
+     "vfx": 4,
      "aims": false,
      "aimProfile": null
     },
@@ -2900,7 +2933,7 @@
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 152,
+     "vfx": 127,
      "aims": true,
      "aimProfile": "point"
     }
@@ -2920,13 +2953,13 @@
      "kind": "expedition:vey_cut",
      "err": null,
      "damaged": 9,
-     "statused": 2,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 128,
+     "vfx": 116,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -2936,14 +2969,14 @@
      "kind": "expedition:vey_dash",
      "err": null,
      "damaged": 9,
-     "statused": 2,
+     "statused": 1,
      "cats": [
       "AREA",
       "MULTIPLE",
       "CONTROL",
       "MOVILIDAD"
      ],
-     "vfx": 126,
+     "vfx": 116,
      "aims": true,
      "aimProfile": "dash"
     },
@@ -2957,7 +2990,7 @@
      "cats": [
       "POTENCIA"
      ],
-     "vfx": 8,
+     "vfx": 4,
      "aims": false,
      "aimProfile": null
     },
@@ -2974,7 +3007,7 @@
       "CURA",
       "CONTROL"
      ],
-     "vfx": 45,
+     "vfx": 46,
      "aims": false,
      "aimProfile": null
     }
@@ -3001,7 +3034,7 @@
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 47,
+     "vfx": 48,
      "aims": true,
      "aimProfile": "point"
     },
@@ -3016,7 +3049,7 @@
       "MULTIPLE",
       "POTENCIA"
      ],
-     "vfx": 81,
+     "vfx": 77,
      "aims": true,
      "aimProfile": "point"
     },
@@ -3030,7 +3063,7 @@
      "cats": [
       "POTENCIA"
      ],
-     "vfx": 8,
+     "vfx": 10,
      "aims": false,
      "aimProfile": null
     },
@@ -3047,7 +3080,7 @@
       "CURA",
       "CONTROL"
      ],
-     "vfx": 49,
+     "vfx": 54,
      "aims": false,
      "aimProfile": null
     }
@@ -3067,13 +3100,12 @@
      "kind": "expedition:mor_plant",
      "err": null,
      "damaged": 10,
-     "statused": 1,
+     "statused": 0,
      "cats": [
       "AREA",
-      "MULTIPLE",
-      "CONTROL"
+      "MULTIPLE"
      ],
-     "vfx": 172,
+     "vfx": 168,
      "aims": true,
      "aimProfile": "point"
     },
@@ -3083,12 +3115,13 @@
      "kind": "expedition:mor_spores",
      "err": null,
      "damaged": 10,
-     "statused": 0,
+     "statused": 2,
      "cats": [
       "AREA",
-      "MULTIPLE"
+      "MULTIPLE",
+      "CONTROL"
      ],
-     "vfx": 150,
+     "vfx": 156,
      "aims": true,
      "aimProfile": "cone"
     },
@@ -3103,7 +3136,7 @@
       "POTENCIA",
       "CURA"
      ],
-     "vfx": 8,
+     "vfx": 10,
      "aims": false,
      "aimProfile": null
     },
@@ -3120,7 +3153,7 @@
       "POTENCIA",
       "CONTROL"
      ],
-     "vfx": 254,
+     "vfx": 253,
      "aims": true,
      "aimProfile": "point"
     }
@@ -3162,7 +3195,7 @@
       "MULTIPLE",
       "CONTROL"
      ],
-     "vfx": 69,
+     "vfx": 70,
      "aims": true,
      "aimProfile": "line"
     },
@@ -3176,7 +3209,7 @@
      "cats": [
       "POTENCIA"
      ],
-     "vfx": 8,
+     "vfx": 7,
      "aims": false,
      "aimProfile": null
     },
@@ -3193,7 +3226,7 @@
       "CURA",
       "CONTROL"
      ],
-     "vfx": 121,
+     "vfx": 128,
      "aims": true,
      "aimProfile": "point"
     }

@@ -29,6 +29,7 @@ function render(){
 
   // Escenario: suelo, lava, muros, braseros
   drawArena();
+  aidDrawInlays(); // cached, flat biome details; always below combat telegraphs
 
   // partículas flotantes ambientales: brasas (Infernal), copos (Hielo) o luciérnagas (Bosque)
   const emberColor = currentArena==="hielo" ? "220,240,255" : currentArena==="bosque" ? "170,230,120" : "255,150,60";
@@ -57,6 +58,8 @@ function render(){
       const prog = Math.max(0, Math.min(1, 1-(pt.life/base)));
       const r = Math.max(0, pt.maxR*(pt.warnRing?0.9:prog));
       if(r <= 0) continue;
+      // sobre la rejilla de píxel (pixel-stroke.js): sin antialias, alfa 0/255
+      if(typeof pxsRing==="function" && pxsRing(pt.x, pt.y+6, r, r, pt.warnRing ? [["rgba(255,90,40,0.85)", 3]] : [[`rgba(0,0,0,${(1-prog)*fxUnder()})`, 9], [pt.color+"cc", 5], ...(prog < 0.7 ? [[`rgba(255,255,255,${(0.7-prog)*0.9})`, 1.6]] : [])])) continue;
       ctx.beginPath(); ctx.arc(pt.x,pt.y+6,r,0,Math.PI*2); // radio real del efecto (antes aplastado)
       if(!pt.warnRing){ ctx.strokeStyle = `rgba(0,0,0,${(1-prog)*fxUnder()})`; ctx.lineWidth = 9; ctx.stroke(); } // contraste
       ctx.strokeStyle = pt.warnRing ? "rgba(255,90,40,0.85)" : (pt.color+"cc");
@@ -88,7 +91,7 @@ function render(){
   drawAxiomZones();
   drawSylvaRainZones();
   fxGlowBegin(); drawAxiomVfxActive(); fxGlowEnd();
-  drawChampFxGround(); // El Libertador / Eren: escarcha, grietas, avisos de pisada
+  drawChampFxGround(); // El Libertador / Ilkan: escarcha, grietas, avisos de pisada
   drawPortadorGround();
 
   // héroes caídos (se dibujan bajo los vivos); en la Arena Divina también los guardianes rivales,
@@ -149,7 +152,8 @@ function render(){
     }
   }
   for(const h of heroes){ if(h.wolf) drawSpectralWolf(h.wolf); }
-  if(netMatch) netDrawNameTags(); else botDrawNameTags(); // B1: nombre de cada amigo sobre su guardián; en solitario, "BOT" sobre cada compañero
+  if(typeof lanesOn==="function" && lanesOn() && typeof sidesDrawNameTags==="function") sidesDrawNameTags(); // Cristales/Coliseo: rótulos por bando (verde/rojo + escudo/espada)
+  else if(netMatch) netDrawNameTags(); else botDrawNameTags(); // B1: nombre de cada amigo sobre su guardián; en solitario, "BOT" sobre cada compañero
   drawMusashiAfterimages();
   drawDownedMarkers();
   drawNigroGolemFx(); // impactos / chorros / rayos de los golpes del gólem
@@ -162,6 +166,7 @@ function render(){
   drawFxContrastTop(); // anticipación al lanzar + estrella de impacto (fx-contrast.js)
   if(arenaHas("drawTop")) arenaHook("drawTop");
   if(typeof endlessDrawWorld==="function") endlessDrawWorld(); // Horda Infinita: cofres y cristales para rescatar
+  if(typeof objDraw==="function") objDraw(); // marcas del objetivo de la arena (arena-objectives.js)
   ctxDraw(); // aviso + progreso de las acciones contextuales
   if(typeof drawArenaTutTarget==="function") drawArenaTutTarget(); // objetivo del micro-tutorial de la arena (arena-tutorials.js)
   fxGlowBegin(); drawChampFxTop(); fxGlowEnd(); // jinetes espectrales, pies gigantes, rayo, vapor, cables, íconos de buff
@@ -270,9 +275,10 @@ function render(){
 
   ctx.restore();
   if(arenaHas("drawScreen")) arenaHook("drawScreen"); // minimapa de las arenas grandes
+  if(typeof objDrawScreen==="function") objDrawScreen();
   ctxDrawScreen(); // flechas hacia objetivos contextuales importantes fuera de cámara
   if(typeof eliteDrawScreenNames==="function") eliteDrawScreenNames(); // nombre dorado de las élites con nombre (en píxeles de pantalla: legible en el teléfono)
   if(typeof groundLootDrawNames==="function") groundLootDrawNames(); // nombre del objeto del piso al acercarse
-  drawChampFxScreen();       // Cruce de los Andes (Cordillera + nieve) y siluetas de El Retumbar
+  drawChampFxScreen();       // Cruce de los Andes (Cordillera + nieve) y siluetas de Los Tres Pasos
   drawScreenFeedback();      // viñeta de daño, dirección del golpe, flechas en el borde, destellos
 }

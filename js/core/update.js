@@ -28,7 +28,7 @@ function update(dt){
   hechWorldTick(dt); // efectos diferidos del Hechicero Supremo (inf-hechicero.js)
   for(const h of heroes){ updateSylvaMomentum(h, dt); updateSylvaWolf(h, dt); }
   for(const h of heroes){ updateNigromanteSkeletons(h, dt); updateNigromanteGolem(h, dt); updateNigromanteDemonForm(h, dt); updateNigromantePassive(h, dt); }
-  // El Libertador / Eren (+ buffs de equipo que dan): js/champions/champ-shared.js
+  // El Libertador / Ilkan (+ buffs de equipo que dan): js/champions/champ-shared.js
   for(const h of heroes) updateChampExtras(h, dt);
   updateChampFx(dt);
   for(const h of heroes) updatePortadorHero(h, dt);
@@ -38,6 +38,7 @@ function update(dt){
   updateAcuaAmbience(dt);
   aidNavUpdate(dt); aidAmbUpdate(dt);
   if(arenaHas("update")) arenaHook("update", dt); // mecanismos propios de la arena (La Fortaleza)
+  if(typeof objUpdate==="function") objUpdate(dt); // objetivo variado de la arena (arena-objectives.js)
   if(axiomForceQuitFlash>0){
     axiomForceQuitFlash -= dt;
     canvas.style.filter = "invert(1)";
@@ -76,6 +77,7 @@ function update(dt){
     if(divinaWaveTimer<=0){ divinaWaveTimer = DIVINA_WAVE_INTERVAL; spawnDivinaWave(); }
   }
 
+  if(typeof basicAutoTick==="function") basicAutoTick(); // Opciones > Ataque (alternar / automático)
   updateControlledHero(dt);
   // B1 cooperativo: los héroes de los invitados usan exactamente el mismo código (ver net-game.js)
   if(netMatch && netMatch.role==="host") netHostUpdateRemotes(dt);
@@ -509,7 +511,10 @@ function update(dt){
 
   // projectiles
   for(const p of projectiles){
+    const oldX=p.x,oldY=p.y;
     p.x += p.vx*dt/1000; p.y += p.vy*dt/1000; p.life -= dt;
+    if(currentArena==="coliseo" && colBlockProjectile(p,oldX,oldY))continue;
+    if(currentArena==="bosque" && typeof bosBlockProjectile==="function" && bosBlockProjectile(p,oldX,oldY))continue; // árboles, rocas, columnas y muros paran los tiros rectos
     if(p.enemy){
       if((p.wave || p.lob) && updateEnemyProjectileStyle(p, dt)) continue; // el tiro en arco solo pega al caer
       if(typeof lanesOn==="function" && lanesOn()) lanesEnemyProjectile(p); // Guerra de Cristales: también pega a súbditos y estructuras rivales

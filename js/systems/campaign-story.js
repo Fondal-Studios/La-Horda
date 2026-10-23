@@ -74,8 +74,16 @@ function campaignArenaKicker(key){ return "ARENA " + campaignNumberLabel(key); }
 // ficha (bloquearía a los demás): el prólogo espera a la primera pantalla de refuerzos, con el juego
 // quieto, en vez de taparte media pantalla en pleno combate.
 let _campaignPendingPrologue = false;
+// Con el entrenamiento hecho o saltado el prólogo no frena la partida (ni en la ficha ni en el refuerzo): queda marcado como
+// "pospuesto" y se lee entero en el Libro de la Horda (Códice › El Libro; codexBookIntroPages no lo reemplaza por el resumen).
+function storyDeferPrologue(){
+  if(typeof save==="undefined" || !save) return;
+  save.storyPrologueSeen = true; save.tut = save.tut || {}; save.tut.prologueDeferred = 1;
+  if(typeof persist==="function") persist();
+}
 function campaignMaybePrologue(){
   if(typeof save==="undefined" || save.storyPrologueSeen || currentArena!==ARENA_ORDER[0]) return;
+  if(typeof tutorialDone==="function" && tutorialDone()){ storyDeferPrologue(); return; }
   save.storyPrologueSeen = true; if(typeof persist==="function") persist();
   _campaignPendingPrologue = true;
 }

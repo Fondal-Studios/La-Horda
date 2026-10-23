@@ -1,14 +1,14 @@
 "use strict";
 /* ============================================================
    js/systems/premium.js — PRECIOS DE APARIENCIAS y MONEDA PREMIUM ("Brasas" ✦)
-   · Toda APARIENCIA (skin de set, skin independiente, croma) se paga con Brasas ✦ o con oro, según su escalón
+   · Toda APARIENCIA (skin de set, skin independiente, croma) se paga SOLO con Brasas ✦ (nunca con oro: el oro es editable), según su escalón
      (js/data/pricing.js, la misma fuente que ejecuta el servidor). Comprarla da SOLO la apariencia: nunca poder.
-     Las piezas de set se siguen comprando aparte como equipo, y completar el set sigue regalando su skin.
+     Las piezas de set (equipo) también se compran con Brasas (ver PIEZAS DE SET más abajo), y completar el set sigue regalando su skin.
    · Los CAMPEONES no se compran con Brasas: se compran con oro (shop.js). Las únicas elecciones de campeón "gratis" son las 3 del
      Pack de bienvenida (regalo del servidor, js/ui/welcome-picks.js).
    · Las Brasas viven en el SERVIDOR (server/wallet.js): este archivo solo las muestra y pide compras; el saldo, el precio
      y la entrega los decide el servidor (el cliente manda el precio que VIO y el servidor rechaza si no coincide).
-     Sin cuenta o sin conexión, solo se compra con oro.
+     Sin cuenta o sin conexión, las skins no se pueden comprar (hay que entrar con la cuenta).
    Carga después de shop.js, cromas.js y account.js.
    ============================================================ */
 const PREMIUM = { premium: null, welcome: null, currency: { id: "brasas", name: "Brasas", icon: "✦" }, payments: { enabled: false, packs: [] }, at: 0, busy: false };
@@ -28,6 +28,12 @@ function premiumTier(id){
   const d = typeof CROMA_SKINS !== "undefined" ? CROMA_SKINS[id] : null;
   return d ? pricingCosmeticTier(false, d) : null;
 }
+// Texto público sobre qué compran las Brasas: depende del interruptor (si las piezas se venden, no se puede decir "nunca poder").
+function premiumRuleText(){
+  return (typeof PIECES_FOR_BRASAS !== "undefined" && PIECES_FOR_BRASAS)
+    ? "Las Brasas compran apariencia y piezas de set (equipo). Las piezas también se consiguen jugando."
+    : "Las Brasas solo compran apariencia. Nunca poder.";
+}
 const PREMIUM_TIER_LABEL = { set: "Skin de colección", autor: "Skin con diseño propio", croma: "Croma (otra paleta)" };
 function premiumPrice(id){ return pricingBrasas(premiumTier(id)); }   // ✦ (0 = no se vende por Brasas)
 function premiumGoldPrice(id){
@@ -38,41 +44,23 @@ function premiumGoldPrice(id){
 function premiumChampName(k){ return typeof CLASSES !== "undefined" && CLASSES[k] ? String(CLASSES[k].name).split(",")[0] : k; }
 function premiumFmt(n){ return n.toLocaleString("es-AR"); }
 
-/* ---------- precio en oro por escalón (9000 set · 12000 diseño propio · croma: su precio propio) ---------- */
+/* ---------- precio de REFERENCIA en oro por escalón (ya no se cobra: solo lo leen las herramientas de precios) ---------- */
 shopSkinPrice = function(setId){
   if(premiumSkinOwned(setId)) return 0;
   return shopConfiguredPrice("cosmetic", setId, premiumGoldPrice(setId));
 };
 cromaPrice = function(id){ return shopConfiguredPrice("cosmetic", id, premiumGoldPrice(id)); };
 
-// Comprar la skin de un set con oro: solo la apariencia (no las piezas).
-function shopBuySkinGold(setId, expectedPrice){
-  if(typeof state !== "undefined" && state === "playing") return { ok: false, reason: "La tienda se usa fuera de la partida" };
-  if(typeof SET_SKINS === "undefined" || !SET_SKINS[setId]) return { ok: false, reason: "Esa skin no existe" };
-  if(premiumSkinOwned(setId)) return { ok: false, reason: "Ya es tuya" };
-  const price = shopSkinPrice(setId);
-  if(expectedPrice != null && expectedPrice !== price) return { ok: false, reason: "El precio cambió. Revisá el nuevo valor y volvé a confirmar." };
-  if(!Number.isSafeInteger(price) || price < 0 || (save.gold || 0) < price) return { ok: false, reason: `No te alcanza el oro (cuesta ${price})` };
-  save.gold -= price;
-  save.cosmeticUnlocks = Object.assign({}, save.cosmeticUnlocks, { [setId]: true });
-  persist();
-  if(typeof AlphaServices !== "undefined") AlphaServices.emit("skin", { skin: setId, currency: "gold", price });
-  return { ok: true, id: setId, price };
-}
+// POLÍTICA: las apariencias (skins de set, de autor y cromas) se compran SOLO con Brasas ✦, que valida el servidor.
+// El oro vive en el guardado del cliente (editable): una ruta oro -> skin regalaría skins a quien edite el guardado.
+// Estas funciones quedan como puntos de entrada INOPERANTES (nunca descuentan oro ni otorgan nada) para que una llamada
+// directa desde la consola o un código viejo no abra una puerta trasera. Las skins que se ganan jugando (set completo,
+// vale de regalo, eventos) usan otros caminos y no pasan por acá.
+const PREMIUM_NO_GOLD_SKINS = "Las skins se compran solo con Brasas ✦. Entrá con tu cuenta para usarlas.";
+function shopBuySkinGold(setId, expectedPrice){ return { ok: false, reason: PREMIUM_NO_GOLD_SKINS }; }
 const _premiumSetBundle = shopBuySetBundle;
 shopBuySetBundle = function(setId, appearance, discount, expectedPrice){
-  if(appearance){
-    if(discount != null){ // las ofertas siguen aplicando su descuento sobre el precio de oro
-      if(!SHOP_DEAL_OFF.includes(discount)) return { ok: false, reason: "Descuento inválido" };
-      const price = _shopDisc(shopSkinPrice(setId), discount);
-      if(expectedPrice != null && expectedPrice !== price) return { ok: false, reason: "El precio cambió. Revisá el nuevo valor y volvé a confirmar." };
-      if((save.gold || 0) < price) return { ok: false, reason: "No te alcanza el oro" };
-      if(premiumSkinOwned(setId)) return { ok: false, reason: "Ya es tuya" };
-      save.gold -= price; save.cosmeticUnlocks = Object.assign({}, save.cosmeticUnlocks, { [setId]: true }); persist();
-      return { ok: true, id: setId, price };
-    }
-    return shopBuySkinGold(setId, expectedPrice);
-  }
+  if(appearance) return { ok: false, reason: PREMIUM_NO_GOLD_SKINS };   // la apariencia no se paga con oro (ni con descuento)
   return _premiumSetBundle(setId, appearance, discount, expectedPrice);
 };
 
@@ -93,7 +81,8 @@ const PREMIUM_ERR = {
   OWNED: "Ya es tuyo.", NO_CLOUD_SAVE: "Primero guardá tu partida en la nube (Opciones → Cuenta). No se cobró nada.",
   CONFLICT: "Tu guardado cambió mientras comprabas. No se cobró nada: probá de nuevo.", PRICE_CHANGED: "El precio cambió. Revisá y volvé a confirmar.",
   BAD_SKU: "Eso no se vende por Brasas.", NOT_A_COLLECTION: "Ya casi la tenés completa: comprá la que falta suelta.", BAD_CHAMPION: "Ese campeón no está disponible.",
-  NOT_PURCHASED: "Tenés que comprar el Pack de bienvenida primero.", NO_PICKS_LEFT: "Ya elegiste tus 3 campeones."
+  NOT_PURCHASED: "Tenés que comprar el Pack de bienvenida primero.", NO_PICKS_LEFT: "Ya elegiste tus 3 campeones.",
+  PIECES_OFF: "Las piezas de set no están a la venta por ahora.", NOT_ON_SALE: "Esa pieza no está a la venta hoy.", INVENTORY_FULL: "Tu inventario está lleno (30/30): vendé o descartá algo. No se cobró nada."
 };
 // Pedido al servidor con la misma referencia en el reintento (un corte de red nunca cobra dos veces). Devuelve {r} o {fail}.
 async function premiumPost(path, body){
@@ -139,6 +128,69 @@ async function premiumBuySkin(id){
   if(typeof AlphaServices !== "undefined") AlphaServices.emit("skin", { skin: id, currency: "premium", price });
   return { ok: true, premium: o.r.j.premium };
 }
+
+/* ---------- PIEZAS DE SET (equipo) por Brasas ✦ ----------
+   Decisión del dueño: las piezas se compran con Brasas, nunca con oro (shop.js: SHOP_NO_GOLD_PIECES). El servidor cobra, decide si la
+   pieza está a la venta (en "live", la rotación diaria) y la ENTREGA en save.stash de la nube (server/wallet.js: /api/wallet/buy-piece);
+   si con esa pieza se completa el set, también entrega su skin. Interruptor único: PIECES_FOR_BRASAS (js/data/pricing.js).
+   Es la única compra con Brasas que da poder: docs/economy/PRECIOS.md, "Riesgo: poder por dinero". */
+function premiumPieceEntry(designId){ return typeof shopCatalog === "function" ? shopCatalog().find(e => e.kind === "designed" && e.id === designId && e.cat === "set") || null : null; }
+function premiumPiecePrice(designId){ return (typeof PIECES_FOR_BRASAS !== "undefined" && PIECES_FOR_BRASAS && premiumPieceEntry(designId)) ? pricingBrasas("pieza") : 0; }   // 0 = no se vende
+function premiumPieceOwned(designId){ return typeof ownedDesignIds === "function" && ownedDesignIds().has(designId); }
+function premiumPieceOnSale(designId){ const e = premiumPieceEntry(designId); return !!e && (typeof shopRotationAllows !== "function" || shopRotationAllows(e)); }
+function premiumPieceName(designId){ const d = typeof DESIGNED_ITEMS !== "undefined" && DESIGNED_ITEMS[designId]; return d ? d.name : designId; }
+// El servidor entrega la pieza con un esbozo (uid + designId); se completa con makeDesignedItem y se registra en la colección como cualquier pieza.
+function premiumApplyPiece(j){
+  PREMIUM.premium = j.premium; PREMIUM.at = Date.now();
+  const p = j.piece || {};
+  if(typeof acct !== "undefined" && acct.sync && Number.isInteger(j.baseVersion) && j.baseVersion === acct.sync.version && Number.isInteger(j.saveVersion)) acct.sync.version = j.saveVersion;   // misma regla de versión que accountApplyEventReward
+  if(p.uid && p.designId && !stashItems().some(it => it.uid === p.uid)){
+    const it = makeDesignedItem(p.designId);
+    if(it){ it.uid = p.uid; it.bought = true; stashItems().push(it); if(typeof collectionRegister === "function") collectionRegister(it); }
+  }
+  for(const c of (j.cosmetics || [])){ save.cosmeticUnlocks = Object.assign({}, save.cosmeticUnlocks, { [c.id]: true }); }
+  if(typeof persistNow === "function") persistNow(); else persist();
+  if(typeof _acctSaveSync === "function") try{ _acctSaveSync(); }catch(e){}
+  premiumRender();
+}
+async function premiumBuyPiece(designId){
+  if(!premiumAvailable()) return { ok: false, reason: "Para usar Brasas tenés que entrar con tu cuenta." };
+  const price = premiumPiecePrice(designId); if(!(price > 0)) return { ok: false, reason: PREMIUM_ERR.PIECES_OFF };
+  if(premiumPieceOwned(designId)) return { ok: false, reason: "Ya la tenés" };
+  if(!premiumPieceOnSale(designId)) return { ok: false, reason: PREMIUM_ERR.NOT_ON_SALE };
+  if(typeof stashFull === "function" && stashFull()) return { ok: false, reason: PREMIUM_ERR.INVENTORY_FULL };
+  const o = await premiumPost("/api/wallet/buy-piece", { piece: designId, ref: premiumNewRef(), expectedPrice: price });
+  if(!o.r) return { ok: false, reason: o.code === "INSUFFICIENT" ? `No te alcanzan las Brasas (cuesta ${premiumFmt(price)}).` : o.fail };
+  premiumApplyPiece(o.r.j);
+  if(typeof AlphaServices !== "undefined") AlphaServices.emit("piece", { piece: designId, currency: "premium", price });
+  return { ok: true, premium: o.r.j.premium, setCompleted: !!o.r.j.setCompleted, skin: o.r.j.setCompleted || null };
+}
+// Botón "✦ 200" de una pieza (Tienda, Colección, ficha). Vacío si ya la tenés o si el interruptor está apagado.
+function premiumPieceButton(designId, cls){
+  const price = premiumPiecePrice(designId);
+  if(!(price > 0) || premiumPieceOwned(designId)) return "";
+  const onSale = premiumPieceOnSale(designId), can = PREMIUM.premium != null && PREMIUM.premium >= price;
+  const title = !onSale ? "Esta pieza no está a la venta hoy" : PREMIUM.premium == null ? "Entrá con tu cuenta para usar Brasas" : can ? "Pagar con Brasas" : "No te alcanzan las Brasas";
+  return `<button type="button" class="${cls || "shop-btn"} premium-btn" data-piece-premium="${designId}" title="${title}" ${(PREMIUM.premium != null && !can) || !onSale ? "disabled" : ""}>✦ ${premiumFmt(price)}</button>`;
+}
+if(typeof document !== "undefined") document.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest("[data-piece-premium]"); if(!b) return;
+  e.preventDefault(); e.stopPropagation();
+  const id = b.getAttribute("data-piece-premium");
+  if(!premiumAvailable()){ gameAlert("Para pagar con Brasas tenés que entrar con tu cuenta (Opciones → Cuenta)."); return; }
+  gameConfirm(`¿Comprar la pieza ${premiumPieceName(id)} por ${premiumFmt(premiumPiecePrice(id))} Brasas? Es equipo: suma estadísticas y bonos de set.`, { okText: "Comprar con Brasas" }).then(async ok => {
+    if(!ok) return;
+    b.disabled = true;
+    const r = await premiumBuyPiece(id);
+    if(!r.ok){ b.disabled = false; gameAlert(r.reason); return; }
+    if(typeof playSfx === "function") playSfx("lootLegend");
+    if(typeof showNetToast === "function") showNetToast(`🛒 ${premiumPieceName(id)} va a tu inventario (comprada con Brasas)${r.setCompleted ? " · ¡set completo! Skin desbloqueada" : ""}`);
+    const ip = document.getElementById("item-preview"); if(ip){ ip.classList.add("hidden"); ip.innerHTML = ""; }
+    if(typeof state !== "undefined" && state === "shop" && typeof renderShop === "function") renderShop();
+    if(typeof state !== "undefined" && state === "codex" && typeof codexRender === "function") codexRender();
+    if(typeof renderSaveLine === "function") renderSaveLine();
+  });
+});
 
 /* ---------- colecciones: todas las apariencias de un campeón que te faltan, con descuento por cantidad ---------- */
 function premiumCollection(k){
@@ -191,10 +243,10 @@ function premiumPaymentsOn(){ return !!(PREMIUM.payments && PREMIUM.payments.ena
 // Pack de bienvenida: solo si el servidor dice que todavía no se compró en esta cuenta
 function premiumWelcomePack(){ return premiumPacks().find(p => p.once && p.available) || null; }
 // Pedir un pago: el servidor arma el enlace de la pasarela; sin proveedor responde "todavía no conectados".
-async function premiumCheckout(packId){
+async function premiumCheckout(packId, expectedPrice){
   if(!premiumAvailable()) return { ok: false, reason: "Iniciá sesión para comprar Brasas." };
   let r;
-  try{ r = await accountFetch("POST", "/api/wallet/checkout", { pack: packId }); }
+  try{ r = await accountFetch("POST", "/api/wallet/checkout", { pack: packId, expectedPrice }); }
   catch(e){ return { ok: false, reason: "Sin conexión con el servidor. No se cobró nada." }; }
   if(r.status === 200 && r.j && r.j.redirect) return { ok: true, redirect: r.j.redirect };
   if(r.status === 501) return { ok: false, soon: true, reason: (r.j && r.j.msg) || "Muy pronto: los pagos todavía no están conectados." };
@@ -236,8 +288,7 @@ if(typeof document !== "undefined") document.addEventListener("click", e => {
   e.preventDefault(); e.stopPropagation();
   const id = b.getAttribute("data-skin-premium");
   if(!premiumAvailable()){ gameAlert("Para pagar con Brasas tenés que entrar con tu cuenta (Opciones → Cuenta)."); return; }
-  const gold = premiumGoldPrice(id), gnote = gold > 0 ? ` (o ${premiumFmt(gold)} de oro jugando)` : "";
-  gameConfirm(`¿Comprar ${premiumTier(id) === "croma" ? "el croma" : "la skin"} ${premiumSkinName(id)} por ${premiumFmt(premiumPrice(id))} Brasas${gnote}? Es solo apariencia: no cambia estadísticas.`, { okText: "Comprar con Brasas" }).then(async ok => {
+  gameConfirm(`¿Comprar ${premiumTier(id) === "croma" ? "el croma" : "la skin"} ${premiumSkinName(id)} por ${premiumFmt(premiumPrice(id))} Brasas? Es solo apariencia: no cambia estadísticas.`, { okText: "Comprar con Brasas" }).then(async ok => {
     if(!ok) return;
     b.disabled = true;
     const r = await premiumBuySkin(id);

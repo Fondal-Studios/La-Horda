@@ -124,7 +124,7 @@ const NET_COLLS = {
   iceWalls:          [()=>iceWalls, a=>{ iceWalls = a; }],
   activeAxiomVfx:    [()=>activeAxiomVfx, a=>{ activeAxiomVfx = a; }],
   musashiAfterimages:[()=>musashiAfterimages, a=>{ musashiAfterimages = a; }],
-  champFx:           [()=>champFx, a=>{ champFx = a; }], // El Libertador / Eren: zonas, avisos de pisada, jinetes, escarcha
+  champFx:           [()=>champFx, a=>{ champFx = a; }], // El Libertador / Ilkan: zonas, avisos de pisada, jinetes, escarcha
   breakables:        [()=>breakables, a=>{ breakables = a; }] // urnas, barriles, ánforas que estallan contra la horda
 };
 // Estado global de la partida (no-entidades) que los invitados necesitan para HUD/dibujo.
@@ -739,7 +739,7 @@ function netApplySnapshot(s){
     // posición propia: solo se corrige cuando el anfitrión dice que la movió él (posAuth nuevo)
     if(own && d._netPA!==undefined && d._netPA!==M.posAuth){ M.posAuth = d._netPA; if(h._hx!==undefined){ h.x = h._hx; h.y = h._hy; } }
     if(!own && h._tx!==undefined && (h._first===undefined)){ h.x = h._tx; h.y = h._ty; h._first = 1; }
-    h.cls = heroClsOf(h); // Eren transformado usa el kit del titán
+    h.cls = heroClsOf(h); // Ilkan transformado usa el kit del coloso
   });
   // 4) colecciones: campos
   for(const name in colls){
@@ -858,7 +858,7 @@ function netGuestSendInput(force){
 }
 // Acciones del invitado -> intención al anfitrión (llamadas desde useSkill/useUltimate/etc.)
 function netGuestCast(idx, aim){
-  if(idx===0 && erenHookCanRedirect(player)){ netSendToHost({k:"cast", idx, aim: aim ? {x:Math.round(aim.x), y:Math.round(aim.y), dx:aim.dx, dy:aim.dy} : null}); return true; }
+  if(idx===0 && ilkanHookCanRedirect(player)){ netSendToHost({k:"cast", idx, aim: aim ? {x:Math.round(aim.x), y:Math.round(aim.y), dx:aim.dx, dy:aim.dy} : null}); return true; }
   const sk = player.cls.skills[idx];
   if(!player.alive || !sk || player.cds[idx]>0 || player.energy < sk.cost) return false;
   netSendToHost({k:"cast", idx, aim: aim ? {x:Math.round(aim.x), y:Math.round(aim.y), dx:aim.dx, dy:aim.dy} : null});

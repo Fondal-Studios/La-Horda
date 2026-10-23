@@ -1,0 +1,20 @@
+PASS sala.anfitrion_en_sala_con_guardado_temporal
+PASS sala.invitado_en_sala
+PASS partida.los_dos_juegan  []
+PASS partida.equipos_por_slot  [{"lanes":[0,0,1,1],"me":0,"crystals":[2600,2600],"hud":true,"arena":"convergencia","wave":0},{"lanes":[0,0,1,1],"me":0,"crystals":[2600,2600],"hud":true,"arena":"convergencia","wave":0}]
+PASS partida.invitado_en_el_equipo_del_anfitrion
+PASS partida.hud_en_los_dos
+PASS partida.horda_sincronizada  [30,30]
+PASS partida.avatares_y_estructuras_sincronizados  [24,24]
+PASS compra.invitado_valida_el_anfitrion  [1,1]
+PASS compra.clave_falsa_rechazada
+PASS compra.objeto_del_invitado_en_la_base  [1,1]
+PASS cartas.invitado_elige_y_el_anfitrion_aplica  [1,1]
+PASS pvp.daño_al_avatar_llega_al_heroe  {"antes":110,"despues":[70.2344,70.23]}
+PASS final.resultado_en_los_dos
+PASS final.mismo_ganador  ["¡VICTORIA!","¡VICTORIA!"]
+PASS final.vuelven_a_la_sala
+PASS final.guardado_real_restaurado
+PASS final.guardado_real_sin_cambios
+PASS sin_errores_de_pagina  []
+SUMMARY {"fails":0}

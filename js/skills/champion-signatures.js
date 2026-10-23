@@ -5,7 +5,7 @@ const CHAMPION_SIGNATURES = {
   tanque:['shield','#89caff'], guerrero:['blades','#ff7971'], mago:['star','#d6a0ff'],
   soporte:['wings','#93ffc3'], segador:['scythe','#ff595e'], axiom:['glitch','#65ffe4'],
   profeta:['eye','#e3b0ff'], musashi:['blades','#f1dcab'], cazadora:['arrows','#b0ed78'],
-  nigromante:['skull','#83efb5'], libertador:['sun','#9fe9ff'], eren:['blades','#ffb575'],
+  nigromante:['skull','#83efb5'], libertador:['sun','#9fe9ff'], ilkan:['blades','#6fe8d6'],
   myla:['drops','#ffc2dd'], brasa:['gear','#ffcb78'], eslabon:['chain','#d3dff5'],
   morwen:['drops','#cc99ff'], farolero:['sun','#ffe592'], iria:['triangle','#b9b3ff']
 };

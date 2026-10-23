@@ -7,12 +7,12 @@ const {chromium}=require('playwright'),fs=require('fs');
   const checks=[],previews={},check=(name,ok)=>checks.push({name,ok:!!ok});state='prep';save.gold=10000000;/* oro de sobra: se compra la skin de cada campeón seguidas y su precio (12.000 de oro, js/data/pricing.js) no es lo que se prueba */save.collection={};save.cosmeticUnlocks={};
   for(const k of Object.keys(EXPEDITION)){
    const rec=save.champions[k],before=JSON.stringify([rec.level,rec.equipment,rec.talents,CLASSES[k]]);check(k+' starts locked at level 1',!rec.unlocked&&rec.level===1);
-   const id=k+'_skin',set='exp_'+k,cid=k+'_croma';check(k+' buy and equip real skin',cromaBuy(id).ok&&cromaEquip(k,id)&&activeSetSkinId({classKey:k})===id);
+   const id=k+'_skin',set='exp_'+k,cid=k+'_croma';check(k+' grant (Brasas-owned) and equip real skin',(save.cromas=Object.assign({},save.cromas,{[id]:true}),true)&&cromaEquip(k,id)&&activeSetSkinId({classKey:k})===id);
    check(k+' rejects wrong champion',!cromaEquip(k,Object.keys(EXPEDITION).find(q=>q!==k)+'_skin'));
    for(const slot of Object.keys(SET_DB[set].pieces))save.collection[set+'_'+slot]={n:1};check(k+' set grant',cosmeticUnlockCompletedSet(set)&&skinCosmeticEquip(k,set));
    const count=Object.keys(save.cosmeticUnlocks).length;cosmeticUnlockCompletedSet(set);check(k+' grant idempotent',Object.keys(save.cosmeticUnlocks).length===count);
    save.collection={};check(k+' set stays after sale',skinOwnedFull(set)&&skinCosmeticEquip(k,set));
-   check(k+' croma buys/equips',cromaBuy(cid).ok&&cromaEquip(k,cid));
+   check(k+' croma granted/equips',(save.cromas=Object.assign({},save.cromas,{[cid]:true}),true)&&cromaEquip(k,cid));
    check(k+' cosmetic cannot change combat',JSON.stringify([rec.level,rec.equipment,rec.talents,CLASSES[k]])===before);
    const P=CHAMP_PACK[CROMA_SKINS[cid].packs[k]],c=document.createElement('canvas');c.width=P.fw;c.height=P.fh;const g=c.getContext('2d');g.drawImage(P.atlas,0,0,P.fw,P.fh,0,0,P.fw,P.fh);previews[k]=c.toDataURL();
    check(k+' croma changes palette only',P.cosmeticChangedPixels>0&&P.fw===CHAMP_PACK[k].fw&&P.refH===CHAMP_PACK[k].refH);

@@ -16,24 +16,22 @@
      - entre sus 3 habilidades: una de AREA, otra (distinta) que dañe a varios (MULTIPLE) y una de POTENCIA o CURA;
      - la definitiva suma 3+ categorías;
      - toda habilidad con efecto visible (VFX) y premarcado cuando apunta.
-   Uso: node tools/bible/ability-gate.js [--strict]   (ONLY=a,b para filtrar; --strict sale 1 si un campeón nuevo falla)
+   Uso: node tools/bible/ability-gate.js [--strict]   (ONLY=a,b para filtrar; ABILITY_BASE_URL=url externa opcional; --strict sale 1 si un campeón nuevo falla)
    Escribe docs/bible/generated/ability-gate.json y ABILITY_GATE.md (sin ONLY). */
-const fs = require('node:fs'), path = require('node:path'), {spawn} = require('node:child_process');
-let chromium; try { ({chromium} = require('playwright')); } catch (e) { ({chromium} = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
-const ROOT = path.resolve(__dirname, '../..'), PORT = +(process.env.ABILITY_GATE_PORT || 8833), OUT = path.join(ROOT, 'docs/bible/generated');
-const server = process.env.ABILITY_BASE_URL ? null : spawn('python3', ['-m', 'http.server', String(PORT), '--bind', '127.0.0.1'], {cwd: ROOT, stdio: 'ignore'});
-const BASE = process.env.ABILITY_BASE_URL || `http://127.0.0.1:${PORT}/`;
-process.on('exit', () => server && server.kill());
+const fs = require('node:fs'), path = require('node:path'), H = require('../lib/serve');
+const ROOT = path.resolve(__dirname, '../..'), OUT = path.join(ROOT, 'docs/bible/generated');
+let site = null;   // servidor propio en puerto libre; ABILITY_BASE_URL (o BASE_URL) para uno externo
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const CATS = ['AREA', 'MULTIPLE', 'POTENCIA', 'CURA', 'CONTROL', 'MOVILIDAD', 'INVOCA'];
 
 (async () => {
-  await sleep(server ? 600 : 0);
-  const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || chromium.executablePath(), args: ['--no-sandbox']});
+  site = await H.startSite({envUrl: ['ABILITY_BASE_URL', 'BASE_URL']});
+  const BASE = site.url + '/';
+  const browser = await H.launch();
   try {
     const page = await browser.newPage({viewport: {width: 844, height: 390}}), pageErrors = [];
     page.on('pageerror', e => pageErrors.push(e.message));
-    await page.goto(BASE, {waitUntil: 'domcontentloaded', timeout: 120000});
+    await H.goto(page, BASE);
     await page.waitForFunction(() => typeof startRun === 'function' && typeof CHAMPION_BALANCE_REFERENCE !== 'undefined' && typeof aimProfileOf === 'function', null, {timeout: 120000});
     await page.waitForTimeout(1500);
     const roster = (await page.evaluate(() => Object.keys(CLASSES))).filter(k => !process.env.ONLY || process.env.ONLY.split(',').includes(k));
@@ -78,7 +76,7 @@ const CATS = ['AREA', 'MULTIPLE', 'POTENCIA', 'CURA', 'CONTROL', 'MOVILIDAD', 'I
             for (const [dx, dy] of spots) { const e = spawnEnemy('esqueleto'); Object.assign(e, {x: player.x + dx, y: player.y + dy, hp: 1e7, maxHp: 1e7, speed: 0, baseSpeed: 0, dmg: 0}); }
             for (let i = 0; i < allies.length; i++) { allies[i].x = player.x - 35 - i * 24; allies[i].y = player.y + 15; allies[i].hp = allies[i].maxHp * 0.5; }
             player.hp = player.maxHp * 0.6; player.energy = 1e4; player.ultCharge = player.ultMax;
-            if (k === 'eren') player.erenFury = 1e4;
+            if (k === 'ilkan') player.ilkanFury = 1e4;
           }
           const oRand = Math.random;
           // daño por enemigo, contado al entrar cada golpe (los muñecos se regeneran entre cuadros)
@@ -173,8 +171,8 @@ const CATS = ['AREA', 'MULTIPLE', 'POTENCIA', 'CURA', 'CONTROL', 'MOVILIDAD', 'I
     const failed = results.filter(r => r.status === 'FAIL');
     console.log(`\n${results.length} campeones · nuevos que no pasan: ${failed.length} · page errors: ${pageErrors.length}`);
     if (process.argv.includes('--strict') && (failed.length || pageErrors.length)) process.exitCode = 1;
-  } finally { await browser.close(); if (server) server.kill(); }
-})().catch(e => { console.error(e); process.exitCode = 1; if (server) server.kill(); });
+  } finally { await browser.close(); await site.close(); }
+})().catch(e => { console.error(e); process.exitCode = 1; if (site) site.close(); });
 
 function md(results) {
   const L = ['# Filtro de habilidades (generado por tools/bible/ability-gate.js)', '',

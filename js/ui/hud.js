@@ -5,29 +5,43 @@
    ============================================================ */
 
 const HUD_GLYPH_COLOR = {"btn-s1":"#8fe0ff", "btn-s2":"#cfc2ff", "btn-s3":"#97f0cc", "btn-ult":"#ffe9a8"};
+// Botones fijos con ícono del contrato (js/ui/pixel-icons.js): clave "motivo+insignia" y ranura de color.
+const HUD_UTILITY_ICON = {"btn-emerg":["bottle+plus", "s3"], "btn-pact":["pact+skull", "s2"]};
+function hudSetIcon(el, uri){
+  const icoEl = el && el.querySelector(".ico");
+  if(!icoEl || !uri) return;
+  if(icoEl._img !== uri){ icoEl.innerHTML = `<img class="ico-img ico-pix" src="${uri}" alt="">`; icoEl._img = uri; }
+}
 function updateAbilityButtons(){
-  // el kit ACTIVO del héroe (Eren transformado muestra el del titán)
+  // el kit ACTIVO del héroe (Ilkan transformado muestra el del coloso)
   const cls = (player && player.cls && player.classKey===selectedClass) ? player.cls : CLASSES[selectedClass];
+  const champKey = cls.isColossusForm ? "ilkan_colossus" : selectedClass;
   const map = [["btn-s1",cls.skills[0]], ["btn-s2",cls.skills[1]], ["btn-s3",cls.skills[2]], ["btn-ult",cls.ultimate]];
   map.forEach(([id, sk], mi)=>{
     const el = document.getElementById(id);
     if(!el) return;
     const icoEl = el.querySelector(".ico");
     const labelEl = el.querySelector("div:not(.ico):not(.cd-overlay)");
-    // ícono pixel de la habilidad si existe (el mismo del panel de Habilidades); si no, el glifo de siempre
-    const pix = (typeof SKILL_ICON_IMG!=="undefined") ? SKILL_ICON_IMG[sk.name] : null;
-    const img = pix || (typeof skillGlyphUri==="function" ? skillGlyphUri(sk, HUD_GLYPH_COLOR[id] || "#ffffff", id==="btn-ult") : null); // sin ícono pixel: símbolo de La Horda (skill-glyphs.js)
+    // UN solo idioma de ícono (contrato de pixel-icons.js): glifo pixel 16x16 propio de la habilidad; sin él, el motivo
+    // genérico por tipo. Nunca recortes del sprite del héroe ni ilustraciones.
+    const img = (typeof skillPixelGlyphUri==="function" ? skillPixelGlyphUri(champKey, mi) : null)
+      || (typeof skillGlyphUri==="function" ? skillGlyphUri(sk, HUD_GLYPH_COLOR[id], id==="btn-ult") : null);
     if(icoEl){
-      if(img){ if(icoEl._img !== img){ icoEl.innerHTML = `<img class="ico-img${pix ? "" : " ico-glyph"}" src="${img}" alt="">`; icoEl._img = img; } }
+      if(img) hudSetIcon(el, img);
       else { icoEl.textContent = sk.ico; icoEl._img = null; }
     }
-    if(labelEl && id!=="btn-ult") labelEl.textContent = sk.name.split(" ")[0];
+    if(labelEl && id!=="btn-ult") labelEl.textContent = skillShortLabel(champKey, mi, sk.name);
     el.title = sk.name + " — " + sk.desc;
     el.setAttribute('aria-label', sk.name);
     // Sinergias del árbol (estilo Diablo II) con su valor actual
     { const syn = typeof talentSynergySkillLine==="function" ? talentSynergySkillLine(selectedClass, mi===3 ? "ult" : mi) : ""; if(syn) el.title += "\n" + syn; }
     if(typeof boonDecorateButton==="function") boonDecorateButton(el, sk); // refuerzos que la transforman: marca + texto en el tooltip
   });
+  // ataque básico (espada o arco según el campeón) y botones de utilidad: mismo contrato, antes un emoji/texto suelto
+  if(typeof skillPixelGlyphUriFromKey==="function"){
+    hudSetIcon(document.getElementById("btn-basic"), skillPixelGlyphUriFromKey(cls.ranged ? "arrow" : "sword", "basic"));
+    for(const id in HUD_UTILITY_ICON) hudSetIcon(document.getElementById(id), skillPixelGlyphUriFromKey(HUD_UTILITY_ICON[id][0], HUD_UTILITY_ICON[id][1]));
+  }
 }
 
 let _hudLastCls = null, _hudLastSe = null, _hudStackH = -1;
@@ -37,11 +51,15 @@ let _hudLastCls = null, _hudLastSe = null, _hudStackH = -1;
 function hudTxt(el, v){ if(el && el._hv !== v){ el._hv = v; el.textContent = v; } }
 function hudHtml(el, v){ if(el && el._hh !== v){ el._hh = v; el.innerHTML = v; } }
 function hudCss(el, prop, v){ if(el){ const k = "_hs_" + prop; if(el[k] !== v){ el[k] = v; el.style[prop] = v; } } }
+// classList.add/remove reescriben el atributo "class" (y el navegador lo registra como cambio) aunque la clase ya
+// esté puesta o ya falte: con estos HUD ocultos se hacía cuatro veces por cuadro. Acá solo se toca si cambia.
+function hudHide(el, hide){ if(el && el.classList.contains("hidden") !== hide) el.classList.toggle("hidden", hide); }
+const hudPct05 = x => (Math.round(x*2)/2) + "%";
 const hudPct = x => (Math.round(x*10)/10) + "%"; // décimas de punto: menos escrituras, sin salto visible
 // hudStackLayout lee alturas (layout forzado): solo cuando cambió el tamaño de esos bloques o la ventana
 let _hudStackDirty = true, _hudStackRO = null;
 // El bloque de estado del guardián crece con sus indicadores propios (Nigromante con gólem y
-// Abismo: 4 filas más; El Libertador / Eren con su línea): en celular apaisado pisaba la pastilla
+// Abismo: 4 filas más; El Libertador / Ilkan con su línea): en celular apaisado pisaba la pastilla
 // de Arena/Nivel/Bajas, que tiene posición fija. Se corren hacia abajo la pastilla y los aliados
 // lo que haga falta (y los aliados pierden ese alto de su tope, para no invadir los botones).
 function hudStackLayout(){
@@ -121,14 +139,14 @@ function updateHUD(){
   const hpFillEl = document.getElementById("hp-fill");
   hudCss(hpFillEl, "left", hudPct(pShieldPct));
   hudCss(hpFillEl, "width", hudPct(pHpPct));
-  hudCss(document.getElementById("en-fill"), "width", hudPct(player.energy/player.maxEnergy*100));
+  hudCss(document.getElementById("en-fill"), "width", hudPct05(player.energy/player.maxEnergy*100)); // la energía regenera de a poco: pasos de 0,5 % (<1 px) en vez de reescribir casi cada cuadro
   const plevelEl = document.getElementById("plevel");
   const champMastery = talentState(player.classKey).mastery;
   const tree = talentTreeFor(player.classKey);
   // Emblema de Maestría junto al nivel (sección 18): reconocible por fuera, pero no expone el
   // árbol de talentos completo -solo el nombre de la Maestría elegida, nada más-.
   const emblemHtml = (champMastery && tree && tree.masteries[champMastery]) ? ` <span class="mastery-emblem" title="Maestría: ${tree.masteries[champMastery].name}">★</span>` : "";
-  hudHtml(plevelEl, `${hudClassName(CLASSES[player.classKey])} · Nv. ${save.champions[player.classKey].level}${emblemHtml}`);
+  hudHtml(plevelEl, `${hudClassName(CLASSES[player.classKey])} · Nv. ${(typeof lanesOn==="function" && lanesOn() && player.mlvl) ? player.mlvl : save.champions[player.classKey].level}${emblemHtml}`);   // Cristales/Coliseo: el nivel de la partida (el del guardado temporal abre los talentos)
   hudTxt(document.getElementById("hud-level"), (typeof lanesOn==="function" && lanesOn()) ? String(LN.wave) : (typeof ALPHA_TRAINING!=="undefined" && ALPHA_TRAINING.active) ? "1" : String(Math.min(runLevel,10))); // en el entrenamiento el nivel de la arena no avanza
   if(typeof endlessHudTick==="function") endlessHudTick(); // Horda Infinita: ronda, puntaje y mutadores
   hudTxt(document.getElementById("hud-kills"), String(kills));
@@ -136,31 +154,31 @@ function updateHUD(){
   hudTxt(document.getElementById("hud-timer"), Math.floor(totalSec/60)+":"+String(totalSec%60).padStart(2,"0"));
   document.getElementById("atk-badge").classList.toggle("hidden", player.atkAuraTimer<=0);
   document.getElementById("shield-badge").classList.toggle("hidden", player.shieldAuraTimer<=0);
-  // El Libertador / Eren: indicadores propios (Disparo de Oficial, Cabral, montura / Furia,
-  // Seguir Adelante, transformación, regeneración, El Retumbar, agotado). Solo se toca el DOM si cambió.
+  // El Libertador / Ilkan: indicadores propios (Disparo de Oficial, Cabral, montura / Tormenta,
+  // Sed de Horizonte, transformación, regeneración, Los Tres Pasos, agotado). Solo se toca el DOM si cambió.
   if(player.cls !== _hudLastCls){ _hudLastCls = player.cls; updateAbilityButtons(); }
   if(typeof boonHudTick==="function") boonHudTick(); // refuerzos de habilidad nuevos (también los del invitado, que llegan por snapshot)
   const seHudEl = document.getElementById("se-hud");
   if(seHudEl){
-    const html = player.classKey==="libertador" ? libertadorHudHtml(player) : player.classKey==="eren" ? erenHudHtml(player) : "";
+    const html = player.classKey==="libertador" ? libertadorHudHtml(player) : player.classKey==="ilkan" ? ilkanHudHtml(player) : "";
     if(html !== _hudLastSe){ _hudLastSe = html; seHudEl.innerHTML = html; seHudEl.classList.toggle("hidden", !html); }
   }
   // Musashi: Concentración (0/10, sección 26) y Victorias de Duelo -discreto, no satura el HUD-.
   const musashiHudEl = document.getElementById("musashi-hud");
   if(player.classKey==="musashi"){
-    musashiHudEl.classList.remove("hidden");
+    hudHide(musashiHudEl, false);
     const concRow = document.getElementById("musashi-conc-row");
     hudTxt(concRow, `Concentración ${player.concentration||0}/${MUSASHI_CONC_MAX}`);
     concRow.classList.toggle("perfect", (player.concentration||0)>=MUSASHI_CONC_MAX);
     hudTxt(document.getElementById("musashi-victories-val"), String((player.stats&&player.stats.duelVictories)||0));
   } else {
-    musashiHudEl.classList.add("hidden");
+    hudHide(musashiHudEl, true);
   }
   // Sylva: Rastreo (0/5, Presa Acorralada resaltada) e Impulso (0/10, "bloqueado" durante
   // Cacería Salvaje) -mismo criterio discreto que el HUD de Musashi-.
   const sylvaHudEl = document.getElementById("sylva-hud");
   if(player.classKey==="cazadora"){
-    sylvaHudEl.classList.remove("hidden");
+    hudHide(sylvaHudEl, false);
     const trackRow = document.getElementById("sylva-track-row");
     hudTxt(trackRow, `Rastreo ${Math.round(player.trackStacks||0)}/5`);
     trackRow.classList.toggle("cornered", (player.trackStacks||0)>=5);
@@ -169,34 +187,34 @@ function updateHUD(){
     hudTxt(momRow, `Impulso ${momShown}/10${player.wildHuntTimer>0?" 🔒":""}`);
     momRow.classList.toggle("locked", player.wildHuntTimer>0);
   } else {
-    sylvaHudEl.classList.add("hidden");
+    hudHide(sylvaHudEl, true);
   }
   // Nigromante: cantidad de esqueletos vivos / máximo actual, estado del gólem, y cuenta
   // regresiva de la Encarnación del Abismo mientras esté transformado.
   const nigroHudEl = document.getElementById("nigromante-hud");
   if(player.classKey==="nigromante"){
-    nigroHudEl.classList.remove("hidden");
+    hudHide(nigroHudEl, false);
     const maxCount = nigromanteMaxSkeletons(masteryOf("nigromante", 0)) + (typeof champSetExtraSkeletons==="function" ? champSetExtraSkeletons(player) : 0);
     hudTxt(document.getElementById("nigro-skeleton-val"), `${player.skeletons.length}/${maxCount}`);
     const souls = Math.floor(player.nigroSouls||0);
     const pipsEl = document.getElementById("nigro-souls-pips");
     const sig = souls + (player.nigroPact?"p":"");
     if(pipsEl._sig !== sig){ pipsEl._sig = sig; let s = ""; for(let i=0;i<NIGRO_SOUL_MAX;i++) s += `<i class="${i<souls?"on":""} ${i===NIGRO_PACT_COST-1?"pact":""}"></i>`; pipsEl.innerHTML = s; }
-    const pb = document.getElementById("btn-pact"); pb.classList.remove("hidden");
+    const pb = document.getElementById("btn-pact"); hudHide(pb, false);
     pb.classList.toggle("ready", souls >= NIGRO_PACT_COST && !player.nigroPact); pb.classList.toggle("armed", !!player.nigroPact);
     const golemRow = document.getElementById("nigro-golem-row");
     hudTxt(document.getElementById("nigro-golem-val"), player.golem ? "Activo" : "Inactivo");
     golemRow.classList.toggle("active", !!player.golem);
     const demonRow = document.getElementById("nigro-demon-row");
     if(player.nigroDemonForm){
-      demonRow.classList.remove("hidden");
+      hudHide(demonRow, false);
       hudTxt(document.getElementById("nigro-demon-val"), Math.ceil(player.nigroDemonTimer/1000)+"s");
     } else {
-      demonRow.classList.add("hidden");
+      hudHide(demonRow, true);
     }
   } else {
-    nigroHudEl.classList.add("hidden");
-    document.getElementById("btn-pact").classList.add("hidden");
+    hudHide(nigroHudEl, true);
+    hudHide(document.getElementById("btn-pact"), true);
   }
   hudStackLayout();
   // curación de emergencia: lista (verde), urgente (<35% vida, late) o gastada hasta el próximo nivel
@@ -215,14 +233,14 @@ function updateHUD(){
   const ultPct = player.ultCharge/player.ultMax*100;
   hudCss(document.getElementById("ult-ring"), "background", `conic-gradient(var(--ult) ${Math.round(ultPct*3.6)}deg, #2a1c10 0deg)`);
   const ultBtn = document.getElementById("btn-ult");
-  const ultReady = (player.ultCharge>=player.ultMax && player.ultCd<=0 && runLevel>=ULT_MIN_ARENA_LEVEL && !(player.classKey==="eren" && erenUltBlocked(player))) || !!player.erenRumblingReady;
+  const ultReady = (player.ultCharge>=player.ultMax && player.ultCd<=0 && runLevel>=ULT_MIN_ARENA_LEVEL && !(player.classKey==="ilkan" && ilkanUltBlocked(player))) || !!player.ilkanFinaleReady;
   if(ultReady && !ultBtn.classList.contains("ready") && !ultBtn.classList.contains("locked")){
     // ulti lista: destello del botón + aro dorado en el guardián (juice.js), una sola vez por carga
     ultBtn.classList.remove("ready-pop"); void ultBtn.offsetWidth; ultBtn.classList.add("ready-pop");
     if(typeof juiceUltReady==="function") juiceUltReady();
   }
   ultBtn.classList.toggle("ready", ultReady);
-  ultBtn.classList.toggle("rumble", !!player.erenRumblingReady);
+  ultBtn.classList.toggle("finale", !!player.ilkanFinaleReady);
   ultBtn.classList.toggle("locked", runLevel<ULT_MIN_ARENA_LEVEL);
 
   renderParty();
@@ -277,9 +295,10 @@ function _setBtnState(id, el, st, cdFrac, cdSec){
     }
     ui.st = st;
   }
-  el.dataset.state=st;
+  if(ui.dat !== st){ ui.dat = st; el.dataset.state=st; }
   if(st==="cd" || st==="active"){
-    el.style.setProperty("--cdp", cdFrac.toFixed(3));
+    const q = cdFrac.toFixed(2); // 1 % de paso (3,6° del barrido): sin esto la variable CSS cambiaba en cada cuadro y reevaluaba el estilo del botón
+    if(ui.cdp !== q){ ui.cdp = q; el.style.setProperty("--cdp", q); }
     if(ui.sec !== cdSec){ ui.ov.textContent = cdSec; ui.sec = cdSec; }
   }
 }
@@ -306,7 +325,7 @@ function renderParty(){
     wrap.innerHTML = "";
     allies.forEach((a,i)=>{
       const row = document.createElement("div");
-      row.className = "ally-row";
+      row.className = "ally-row"; row.title = a.netName && a.netName!=="BOT" ? a.netName+" · "+hudClassName(a.cls) : hudClassName(a.cls); // el nombre completo (en celular la fila es solo el ícono)
       row.id = "ally-row-"+i;
       row.innerHTML = `
         <div class="ally-badge" style="color:${a.cls.color};background:${a.cls.color}22;">${a.cls.icon}</div>
@@ -380,9 +399,14 @@ function positionSkillPlusButtons(){
     const host = document.getElementById(btnId), b = document.getElementById("skill-plus-btn-"+idx);
     if(!host || !b) return;
     const r = host.getBoundingClientRect();
-    // "un poquito adelante" del botón: arriba a la izquierda, sin taparlo
-    b.style.left = Math.round(r.left - 12) + "px";
-    b.style.top = Math.round(r.top - 12) + "px";
+    // Esquina de cada botón SIN tapar su ícono ni el rótulo (propio ni de un vecino): el "+" mide 32 px y el ícono empieza a 11 px
+    // del borde, así que va 22 px hacia afuera por la izquierda. Los botones están escalonados (s2 queda arriba a la izquierda de
+    // s1), por eso s1 baja el "+" a la altura de su borde superior (arriba pisaría el rótulo de s2); la definitiva (60 px, a
+    // 20 px de s3) lo acerca 2 px para no tocar a s3.
+    const pw = b.offsetWidth || 32;
+    const dx = -(pw - (idx==="ult" ? 12 : 10)), dy = idx===0 ? 2 : -14;
+    b.style.left = Math.round(r.left + dx) + "px";
+    b.style.top = Math.round(r.top + dy) + "px";
   });
 }
 function onSkillInvested(){ _skillLvlKey = ""; if(state==="playing") updateSkillLevelUI(); }

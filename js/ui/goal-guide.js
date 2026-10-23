@@ -16,11 +16,28 @@ const GOAL_MISSION_PAGES = [
   {who:"EL HECHICERO", title:"CÓMO SE GANA Y CÓMO SE PIERDE",
    text:"Se gana aguantando 10 niveles; en el último aparece un jefe: derrotalo y ganás la arena. Se pierde si caen todos los guardianes de tu equipo. Si un compañero cae, mantené ✚ a su lado para levantarlo."}
 ];
+// PRIMER MINUTO LIMPIO: ¿ya hizo o saltó el entrenamiento? (mismas marcas que HordaOnboarding, js/systems/onboarding-access.js:
+// save.tut.training / save.tut.trainingSkipped; los guardados viejos las tienen igual). Con eso, la ficha previa a la arena es UNA
+// sola página y el prólogo y "cómo se gana" quedan en el Libro de la Horda (Códice › El Libro).
+function tutorialDone(){
+  try{ return typeof save!=="undefined" && !!save && (typeof HordaOnboarding!=="undefined" ? HordaOnboarding.ready(save) : !!(save.tut && (save.tut.training===1 || save.tut.trainingSkipped===1))); }catch(e){ return false; }
+}
+// ¿La misión SOBREVIVIR ya se enseñó? Una sola vez: el entrenamiento (save.tut.training, que también deja goalMission) o la ficha
+// previa (goalMission). Lo que se enseñó no se repite en el HUD, ni en la ficha de cada arena, ni en el Hechicero (tutorial.js).
+function goalMissionTaught(){
+  const t = (typeof save!=="undefined" && save && save.tut) || {};
+  if(t.goalMission || t.training===1) return true;
+  return typeof codexBookIntroRead==="function" && codexBookIntroRead(); // el Libro (página 6) también la cuenta
+}
 function goalNeedsMission(){
   if(typeof save==="undefined" || !save) return false;
   if((typeof divinaMode!=="undefined" && divinaMode) || (typeof endlessOn==="function" && endlessOn())) return false;
   const t = save.tut || {};
-  return !t.goalMission;
+  if(t.goalMission) return false;
+  if(tutorialDone()) return false; // hizo o saltó el entrenamiento: la ficha de la arena (una página) lo dice una sola vez, sin las páginas de misión
+  // la misión también es la página 7 de la introducción del Libro: si ya la leyó (o la práctica la contó), el Hechicero no la repite
+  if(typeof codexBookIntroRead==="function" && codexBookIntroRead()) return false;
+  return true;
 }
 function goalMissionPages(){
   if(!goalNeedsMission()) return [];
@@ -40,11 +57,29 @@ function goalChipText(){
   if(bossActive || runLevel>=GOAL_LEVELS) return "OBJETIVO: ¡derrotá al jefe!" + (civ ? "" : "");
   const left = Math.max(0, Math.ceil((levelDuration - levelTimer)/1000));
   const mm = Math.floor(left/60) + ":" + String(left%60).padStart(2,"0");
+  const own = typeof objChipText==="function" ? objChipText() : null; // verbo propio de la arena (arena-objectives.js)
+  if(own) return "OBJETIVO: " + own + " · " + mm;
+  // la misión ya se enseñó: el cartel deja de repetir "sobrevivir" y queda con lo útil (nivel y reloj; en la Ciudad, qué proteger)
+  if(goalMissionTaught()) return "NIVEL " + Math.min(GOAL_LEVELS, Math.max(1, runLevel|0)) + "/" + GOAL_LEVELS + (civ ? " · protegé la ciudad" : "") + " · " + mm;
   return "OBJETIVO: sobrevivir" + civ + " · " + mm;
 }
+// Celular apaisado: el objetivo solo se ve cuando CAMBIA (otro objetivo, no el reloj) o al tocar la pastilla de arena.
+// En escritorio sigue fijo. Mientras se ve, se dibuja sobre la pastilla (css/hud-mobile.css) y no mueve nada.
+const GOAL_PEEK_MS = 5000;
+let _goalKey = "", _goalPeekUntil = 0;
+function goalChipPeek(){ _goalPeekUntil = performance.now() + GOAL_PEEK_MS; }
 function goalChipTick(){
   const el = document.getElementById("goal-chip"); if(!el) return;
   const t = goalChipText();
+  if(typeof hudCompact==="function" && hudCompact()){
+    const now = performance.now(), key = t===null ? "" : t.replace(/\d+:\d\d/, "").replace(/^NIVEL \d+\/\d+/, "NIVEL");
+    if(key !== _goalKey){ _goalKey = key; if(t!==null) _goalPeekUntil = now + GOAL_PEEK_MS; }
+    el.classList.add("peekable");
+    el.classList.toggle("hidden", t===null || now > _goalPeekUntil);
+    if(t!==null && el.textContent!==t) el.textContent = t;
+    return;
+  }
+  el.classList.remove("peekable");
   el.classList.toggle("hidden", t===null);
   if(t!==null && el.textContent!==t) el.textContent = t;
 }
@@ -60,6 +95,11 @@ function goalDefeatWhy(){
 function goalDefeatHtml(level){
   return `<div class="go-why"><b>¿Qué pasó?</b> ${goalDefeatWhy()}<br><b>Llegaste al nivel ${level} de ${GOAL_LEVELS}.</b> Probá de nuevo: cada intento te acerca al jefe.</div>`;
 }
+// Tocar la pastilla de arena (celular apaisado) muestra el objetivo otra vez unos segundos.
+(function(){
+  const bind = ()=>{ const p = document.querySelector("#hud .top-pill"); if(p) p.addEventListener("pointerdown", ()=>{ if(typeof hudCompact==="function" && hudCompact()) goalChipPeek(); }); };
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", bind); else bind();
+})();
 // Resumen al ganar la primera arena: todo lo que hay que saber, en pocas líneas.
 function goalVictoryRecapHtml(data){
   if(!data) return "";

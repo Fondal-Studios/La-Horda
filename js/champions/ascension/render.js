@@ -203,7 +203,7 @@ const ascOriginalGround=drawPortadorGround;drawPortadorGround=function(){ascOrig
     saelisFeatherDraw(ax+Math.sin(u*6+i)*6,ay-60*(1-u),.6+Math.sin(u*5+i)*.4,14,C,fade*Math.min(1,u*3,(1-u)*4));}break;}
   case 'as_great':{ctx.save();ctx.globalAlpha=fade*.3;ctx.fillStyle='#2a0612';ctx.beginPath();ctx.ellipse(o.x,o.y,o.r,o.r*.55,0,0,Math.PI*2);ctx.fill();ctx.restore();
    ctx.save();ctx.globalAlpha=fade;ctx.strokeStyle='#e05a7a';ctx.lineWidth=3;ctx.beginPath();for(let i=0;i<=16;i++){const u=i/16,x=o.x+(u-.5)*o.r*1.8,y=o.y+Math.sin(u*11+t*3)*10*(1-Math.abs(u-.5)*2);if(!i)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.stroke();ctx.restore();
-   if(o.echo&&o.echo.until>runElapsedMs){const roster=['tanque','guerrero','musashi','cazadora','segador','eren'],k=roster[o.echo.champ%roster.length];ctx.save();ctx.globalAlpha=.45;try{drawChampPack(k,{x:o.echo.x,y:o.echo.y,classKey:k,_codexSet:'attack_down',_codexT:(500-(o.echo.until-runElapsedMs))/500},2,.45);}catch(e){}ctx.restore();ascRing(o.echo.x,o.echo.y,22,'#ffd0dc',2,.8);}
+   if(o.echo&&o.echo.until>runElapsedMs){const roster=['tanque','guerrero','musashi','cazadora','segador','ilkan'],k=roster[o.echo.champ%roster.length];ctx.save();ctx.globalAlpha=.45;try{drawChampPack(k,{x:o.echo.x,y:o.echo.y,classKey:k,_codexSet:'attack_down',_codexT:(500-(o.echo.until-runElapsedMs))/500},2,.45);}catch(e){}ctx.restore();ascRing(o.echo.x,o.echo.y,22,'#ffd0dc',2,.8);}
    ascRing(o.x,o.y,o.r,'#e05a7a',2,.5);break;}
   }
  }
@@ -224,7 +224,7 @@ const ascOriginalGround=drawPortadorGround;drawPortadorGround=function(){ascOrig
   if(h.classKey==='nano_gm')label=s.regentUntil>runElapsedMs?'◐ REGENTE':'○'.repeat(s.light)+' ◆'.repeat(s.dark);
   else if(h.classKey==='facu_gm')label=s.highTideUntil>runElapsedMs?'≋ MAREA ALTA':'~'.repeat(s.tide)+(s.tideNext?' →'+({current:'C',pressure:'P',wave:'O'})[s.tideNext]:'');
   else if(h.classKey==='khepri')label='✱'+Math.round(s.swarm);
-  else if(h.classKey==='velmira')label=['☺','☠','✕','⛨'][s.mask|0]+(s.empowered?'+':'');
+  else if(h.classKey==='velmira')label=['●','☠','✕','⛨'][s.mask|0]+(s.empowered?'+':'');
   else if(h.classKey==='saelis')label='❦'+ascOwned(h,'feather').length;
   if(label)ctx.fillText(label,h.x-18,h.y-58);
  }

@@ -1,0 +1,27 @@
+name: Skill icon source exports
+on:
+  pull_request:
+    paths:
+      - 'tools/factory/export-skill-icons.js'
+      - 'art-source/entregas/2026-10_mundo/iconos/habilidades/**'
+      - 'js/ui/*glyphs.js'
+      - 'js/ui/pixel-icons.js'
+      - 'js/ui/skill-icon-motifs.js'
+      - '.github/workflows/skill-icon-exports.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-hud-exports:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NODE_PATH: /tmp/horda-icons/node_modules
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: npm install --prefix /tmp/horda-icons --no-audit --no-fund playwright@1.56.1
+      - run: /tmp/horda-icons/node_modules/.bin/playwright install --with-deps chromium
+      - run: node tools/art/check-skill-icons.js --self-test
+      - run: node tools/factory/export-skill-icons.js

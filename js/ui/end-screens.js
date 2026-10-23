@@ -11,9 +11,11 @@ function showGameOverScreen(divinaOutcome){
   if(netIsHost()) netHostAnnounceEnd(false); // B1: la derrota es de todo el equipo
   if(typeof endlessOn==="function" && endlessOn()){ endlessEndRun("defeat"); return; } // Horda Infinita: resultados, récords y botín
   setState("gameover");
+  document.getElementById("go-loss").innerHTML = "";   // el bloque de arriba (qué se perdió) solo lo llena la derrota normal
   const title = document.getElementById("go-title");
   const retryBtn = document.getElementById("retry-btn");
   retryBtn.classList.remove("hidden");
+  retryBtn.dataset.cp = ""; { const b1 = document.getElementById("retry-from1-btn"); if(b1) b1.classList.add("hidden"); } // punto de control: solo la derrota normal en solitario (checkpoint.js)
   if(divinaMode || divinaOutcome){
     divinaMode = false;
     if(divinaOutcome==="victory"){
@@ -46,6 +48,7 @@ function showGameOverScreen(divinaOutcome){
   retryBtn.textContent = netMatch ? "VOLVER AL LOBBY" : "Reintentar desde el Nivel 1";
   if(netMatch) netOnEndScreen(false); else netEndLabels();
   const penalty = applyArenaFailurePenalty(player.classKey);
+  if(typeof bossAssistOnDefeat==="function") bossAssistOnDefeat(); // derrota en el nivel del jefe: suma la ayuda del próximo intento (boss-assist.js)
   // Derrota: la performance igual se muestra, y a veces hay un objeto de consuelo (ver DEFEAT_LOOT)
   const perf = computePerformance(player);
   const loot = grantEndOfRunLoot(player.classKey, perf, false);
@@ -53,9 +56,18 @@ function showGameOverScreen(divinaOutcome){
   document.getElementById("go-stats").innerHTML = `Nivel ${runLevel} · ${kills} enemigos vencidos · Calificación <b style="color:${perf.color};">${perf.grade}</b>`;
   const arenaRows = arenaHas("resultsHTML") ? (arenaHook("resultsHTML", false)||"") : "";   // p.ej. civiles rescatados (Ciudad Maldita)
   document.getElementById("go-progress").innerHTML = (typeof goalDefeatHtml==="function" ? goalDefeatHtml(runLevel) : "") + (typeof storyDefeatHtml==="function" ? storyDefeatHtml(player.classKey) : "") +
-    `${CLASSES[player.classKey].name} ahora en Nv. <b>${save.champions[player.classKey].level}</b> &nbsp;·&nbsp; Oro total: <b>${save.gold}</b><br>Sin puntos de control: la próxima incursión comienza en el Nivel 1.<br>
+    `${CLASSES[player.classKey].name} ahora en Nv. <b>${save.champions[player.classKey].level}</b> &nbsp;·&nbsp; Oro total: <b>${save.gold}</b><br>
     ${typeof botDisclosureText==="function" && botDisclosureText() ? `<small style="opacity:.7">${botDisclosureText()}</small><br>` : ""}Botín: ${lootLine}${loot.gems?` · <b style="color:#7fe8ff;">+${loot.gems} Gema${loot.gems>1?"s":""}</b>`:""}<br>
-    ${defeatPenaltyLineHTML(penalty)}${typeof diffResultRowHTML==="function" ? diffResultRowHTML(false) : ""}${arenaRows ? `<div class="res-rows" style="margin-top:8px;">${arenaRows}</div>` : ""}${endSkinsLinkHTML(player.classKey)}`;
+    ${typeof diffResultRowHTML==="function" ? diffResultRowHTML(false) : ""}${arenaRows ? `<div class="res-rows" style="margin-top:8px;">${arenaRows}</div>` : ""}`;
+  // Arriba, junto a "Reintentar": lo que se perdió (o se perdonó) y desde dónde se vuelve a empezar. Sin oferta de
+  // apariencias en la derrota (queda en la victoria y en la Tienda).
+  const cpHtml = typeof checkpointDefeatHTML==="function" ? checkpointDefeatHTML() : null;
+  document.getElementById("go-loss").innerHTML = defeatPenaltyLineHTML(penalty) + (cpHtml ? `<span class="go-loss-cp">${cpHtml}</span>` : `<span class="go-loss-sub">${typeof checkpointNoOfferHTML==="function" ? checkpointNoOfferHTML() : "Sin puntos de control: la próxima incursión comienza en el Nivel 1."}</span>`);
+  { const ba = typeof bossAssistDefeatHTML==="function" ? bossAssistDefeatHTML() : null; if(ba) document.getElementById("go-loss").insertAdjacentHTML("beforeend", `<span class="go-loss-assist">${ba}</span>`); } // ayuda del jefe (boss-assist.js)
+  if(cpHtml && !netMatch){
+    retryBtn.textContent = `Reanudar desde el nivel ${CP_LEVEL}`; retryBtn.dataset.cp = "resume";
+    const b1 = document.getElementById("retry-from1-btn"); if(b1) b1.classList.remove("hidden");
+  }
   if(typeof questsOnRunEnd==="function") questsOnRunEnd(false); // después del castigo: lo que dan los desafíos no se descuenta
 }
 // Acceso discreto a las apariencias del guardián (Tienda → Skins, solo las suyas). Solo jugando solo, fuera de la
@@ -77,11 +89,19 @@ document.addEventListener("click", e=>{
 function defeatPenaltyLineHTML(p){
   if(p && p.forgiven){
     const why = p.forgiven==="arena" ? "En la primera arena se aprende sin castigo."
-      : (p.forgivenLeft > 0 ? `Te ${p.forgivenLeft===1?"queda":"quedan"} ${p.forgivenLeft} derrota${p.forgivenLeft===1?"":"s"} sin castigo; después se pierde la mitad de lo ganado en la partida.`
-        : "Fue la última sin castigo: desde ahora perder cuesta la mitad de lo ganado en la partida.");
+      : (p.forgivenLeft > 0 ? `Te ${p.forgivenLeft===1?"queda":"quedan"} ${p.forgivenLeft} derrota${p.forgivenLeft===1?"":"s"} sin castigo en esta arena; después se pierde la mitad de lo ganado en la partida.`
+        : "Fue la última sin castigo en esta arena: desde ahora perder cuesta la mitad de lo ganado en la partida.");
     return `<b class="go-forgiven" style="color:#9fe8a8;">Esta vez la Horda te perdona: no perdiste XP ni oro.</b><br><span style="color:#cfc6b0;">${why}</span>`;
   }
-  return `<b style="color:#ff8a6a;">No terminaste la arena: perdiste el ${p.lostPct}% de lo ganado en esta partida (${p.xpLost} de XP${p.afterLevel<p.beforeLevel?`, volviste a Nv. ${p.afterLevel}`:""} y ${p.goldLost} de oro).</b>`;
+  const what = p.banked ? "desde el punto de control" : "en esta partida";
+  // solo se nombra lo que de verdad se perdió: nada de "perdiste 50 % (0 de XP y 0 de oro)"
+  const lost = [];
+  if(p.xpLost > 0) lost.push(`${p.xpLost} de XP`);
+  if(p.afterLevel < p.beforeLevel) lost.push(`volviste a Nv. ${p.afterLevel}`);
+  if(p.goldLost > 0) lost.push(`${p.goldLost} de oro`);
+  const detail = lost.length > 1 ? lost.slice(0, -1).join(", ") + " y " + lost[lost.length-1] : lost.join("");
+  const head = lost.length ? `No terminaste la arena: perdiste el ${p.lostPct}% de lo ganado ${what} (${detail}).` : `No terminaste la arena: no perdiste nada de lo ganado ${what}.`;
+  return `<b style="color:#ff8a6a;">${head}</b>${p.banked ? `<span class="go-loss-sub">Lo ganado antes del punto de control quedó a salvo.</span>` : ""}`;
 }
 /* ============================================================
    FASE 3 — PANTALLA DE VICTORIA COMPLETA
@@ -138,7 +158,7 @@ function lootCardHTML(item, classKey, idx){
         ${setLine}
         ${passiveTxt?`<div class="item-passives">${passiveTxt}</div>`:""}
         <div class="vic-item-actions">
-          ${canEquipItem(classKey, item) ? `<button class="primary" data-vic-equip="${item.uid}" ${equipped?"disabled":""}>${equipped?"Equipado":"Equipar"}</button>` : `<button disabled>Para ${CLASSES[item.champion].name}</button>`}
+          ${canEquipItem(classKey, item) ? `<button class="primary" data-vic-equip="${item.uid}" ${equipped?"disabled":""}>${equipped?"Equipado":"Equipar"}</button>` : `<button disabled>Para ${itemOnlyLabel(item) || "otro guardián"}</button>`}
           <button data-vic-keep="${item.uid}">Guardar</button>
         </div>
       </div></div>
@@ -213,7 +233,12 @@ const VICTORY_STEPS = [
     const floorNote = fl.length ? `<div class="vic-reward-note">Del piso juntaste lo que quedaba: ${fl.map(it=>`<b style="color:${itemColor(it)};">${it.name}</b>`).join(", ")}</div>` : "";
     return `${summary}${gemNote}${floorNote}${fullNote}<div class="loot-reveal">${cards || '<div class="vic-reward-note">El cofre vino vacío esta vez.</div>'}</div>`;
   },
-  // 3. XP / RECURSOS
+  // 3. EL LIBRO DE LA HORDA: fragmento de la arena (se omite si no hay: ver storyVictoryBookOffer)
+  function(){
+    document.getElementById("victory-step-title").textContent = "Fragmento del Libro";
+    return typeof storyVictoryBookHtml==="function" ? storyVictoryBookHtml(victoryData) : "";
+  },
+  // 4. XP / RECURSOS
   function(){
     document.getElementById("victory-step-title").textContent = "XP y recursos";
     const champ = save.champions[victoryData.classKey];
@@ -264,6 +289,7 @@ function victoryGoNextArena(){
 function renderVictoryStep(){
   const body = document.getElementById("victory-step-body");
   body.innerHTML = VICTORY_STEPS[victoryStep]();
+  if(typeof codexBookPaintArts==="function") codexBookPaintArts(body); // ilustración del fragmento del Libro (si este paso la trae)
   const bindLootButtons = (root)=>{
     root.querySelectorAll("[data-vic-equip]").forEach(btn=> btn.addEventListener("click", ()=>{ equipItem(victoryData.classKey, btn.getAttribute("data-vic-equip")); btn.textContent = "Equipado"; btn.disabled = true; }));
     root.querySelectorAll("[data-vic-keep]").forEach(btn=> btn.addEventListener("click", ()=>{ btn.textContent = "Guardado ✓"; btn.disabled = true; }));
@@ -304,8 +330,14 @@ function showVictoryScreen(){
   if(typeof questsOnRunEnd==="function") questsOnRunEnd(true); // logros, desafíos y XP de cuenta
   if(netMatch) netOnEndScreen(true);
 }
+// pasos que se omiten solos (hoy: el fragmento del Libro en arenas que no lo tienen)
+VICTORY_STEPS[3].skip = ()=>!(typeof storyVictoryBookOffer==="function" && storyVictoryBookOffer(victoryData));
 document.getElementById("victory-next-btn").addEventListener("click", ()=>{
-  if(victoryStep < VICTORY_STEPS.length-1){ victoryStep++; renderVictoryStep(); return; }
+  if(victoryStep < VICTORY_STEPS.length-1){
+    victoryStep++;
+    while(victoryStep < VICTORY_STEPS.length-1 && VICTORY_STEPS[victoryStep].skip && VICTORY_STEPS[victoryStep].skip()) victoryStep++;
+    renderVictoryStep(); return;
+  }
   if(state==="victory" && !victoryIsOnline()){
     // último paso (solo): el Campamento de los Portadores (camp.js) y, con "Seguir", a la Sala con la próxima
     // arena; la primera victoria del perfil nuevo va al hub, con JUGAR resaltado (hub.js: firstRunToHub)

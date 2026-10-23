@@ -258,6 +258,16 @@ Límites a tener en cuenta:
 
 ---
 
+## Cobrar con Mercado Pago y salir al mercado
+
+Cuando el alfa ande, los dos documentos siguientes son los pasos para cobrar y para el lanzamiento (el cobro viene **apagado** hasta que vos cargues tus credenciales):
+
+- **Conectar Mercado Pago, paso a paso**: `docs/commercial/MERCADO_PAGO_PASO_A_PASO.md`
+- **Cómo salir al mercado** (calendario, métricas, riesgos, qué no hacer): `docs/commercial/SALIDA_AL_MERCADO.md`
+- Borradores legales (revisar con abogado antes de publicar): `docs/legal/`
+
+---
+
 ## Referencia técnica (para quien ayude)
 
 - Variables leídas por el servidor: `server/relay.js` (cabecera), `server/accounts.js` (cabecera),

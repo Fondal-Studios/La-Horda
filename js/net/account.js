@@ -31,7 +31,9 @@
 // A pasted matchmaking invite must never redirect an authenticated request.
 const ACCOUNT_API_BASE = (()=>{
   try{
-    const q=new URLSearchParams(location.search).get("api");
+    let q=new URLSearchParams(location.search).get("api");
+    // ?api= apuntando a un host no oficial no se usa hasta que el jugador acepte el aviso (net-core.js netGateServer)
+    if(q && typeof netGateServer==="function"){ try{ if(!netGateServer(new URL(q).href, "api")) q=""; }catch(e){ q=""; } }
     const raw=q || String(typeof netInitialServer==="function"?netInitialServer():NET_CONFIG.serverUrl).replace(/^ws(s?):\/\//i,"http$1://");
     if(!raw) return "";
     const u=new URL(raw);
@@ -81,7 +83,9 @@ function _acctEmit(){
 function accountApiBase(){ return ACCOUNT_API_BASE; }
 function accountEnvironmentHTML(){
   const ws=ACCOUNT_API_BASE.replace(/^http/,"ws"), e=netEnvironment(ws);
-  return `<div class="net-environment"><b>${e.label}</b><span>${_acctEsc(ACCOUNT_API_BASE)}</span>${e.kind!=="primary"?'<span>Cuenta y progreso separados del servidor principal.</span><a class="btn secondary small" href="https://fondalstudios.com/la-horda/jugar/">IR A FONDAL</a>':''}</div>`;
+  // nombre amigable a la vista; la dirección cruda queda en un detalle técnico cerrado
+  const friendly=e.kind==="primary"?"Servidor oficial de La Horda":e.label;
+  return `<div class="net-environment"><b>${friendly}</b>${e.kind!=="primary"?'<span>Cuenta y progreso separados del servidor principal.</span><a class="btn secondary small" href="https://fondalstudios.com/la-horda/jugar/">IR A FONDAL</a>':''}<details class="net-tech"><summary>Detalle técnico</summary><span>${_acctEsc(ACCOUNT_API_BASE)}</span></details></div>`;
 }
 // Apply the server's grant (one cosmetic, a list of cosmetics, and/or champions) without replacing loot earned since the upload.
 function accountApplyEventReward(response){
@@ -561,6 +565,14 @@ function _acctStatus(text, kind){
   s.textContent = text || "";
   s.className = "acc-status" + (kind ? " " + kind : "");
 }
+// Qué da una cuenta de verdad (todo verificado en el código: sync de /api/save, billetera de Brasas, /api/leaderboard).
+function _acctPerksHTML(){
+  return `<ul class="acc-perks" aria-label="Qué ganás con una cuenta">
+    <li><b>Respaldo en la nube:</b> tu progreso se guarda en el servidor y lo seguís en otro dispositivo.</li>
+    <li><b>Brasas ✦:</b> se guardan en tu cuenta (solo compran apariencia, nunca poder).</li>
+    <li><b>Ranking semanal:</b> tu puntaje de la Horda Infinita entra a la tabla.</li>
+  </ul>`;
+}
 function _acctRenderAuth(mode){
   acct.view = mode;
   const el = _acctBuild(), body = el.querySelector(".acc-body");
@@ -569,6 +581,7 @@ function _acctRenderAuth(mode){
   const reg = mode === "register";
   body.innerHTML = `
     ${accountEnvironmentHTML()}
+    ${_acctPerksHTML()}
     <div class="acc-tabs" role="tablist">
       <button type="button" class="acc-tab ${reg ? "" : "on"}" data-acc-tab="login" role="tab" aria-selected="${!reg}">Entrar</button>
       <button type="button" class="acc-tab ${reg ? "on" : ""}" data-acc-tab="register" role="tab" aria-selected="${reg}">Crear cuenta</button>

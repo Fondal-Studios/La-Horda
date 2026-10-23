@@ -30,7 +30,7 @@ function itemDetailHTML(it, classKey, opts){
   const col = itemColor(it), tier = itemTier(it), lv = itemLevel(it);
   const onThis = classKey && itemEquippedBy(it.uid)===classKey;
   const [lo, hi] = itemStatRange(it);
-  const owner = it.designed && it.champion ? `Solo ${CLASSES[it.champion].name}` : "Universal";
+  const onlyLbl = itemOnlyLabel(it), owner = onlyLbl ? `Solo ${onlyLbl}` : "Universal";
   const family = it.family && ITEM_FAMILIES[it.family] ? `<span class="ip-fam" style="color:${ITEM_FAMILIES[it.family].color}">Familia ${ITEM_FAMILIES[it.family].label}</span>` : "";
   // pasivas que NO se van a sumar porque ya hay otra igual equipada (regla de duplicados)
   const dupIds = new Set();
@@ -45,7 +45,7 @@ function itemDetailHTML(it, classKey, opts){
     <div class="ip-top">${itemIconHTML(it, "ip-art")}
       <div class="ip-head"><div class="ip-name" style="color:${col}">${it.name}</div>
         ${it.epithet?`<div class="ip-epi">«${it.epithet}»</div>`:""}
-        <div class="ip-tags"><span class="ip-tier" style="border-color:${col};color:${col}">${itemTierLabel(it)}</span><span>${ITEM_TYPES[it.type].label}</span><span>Nv. ${lv}/${ITEM_MAX_LEVEL}</span>${itemIlvl(it)>1 ? `<span class="ip-ilvl" title="Nivel de objeto: cayó en la arena ${itemIlvl(it)} y todos sus números valen más">Arena ${itemIlvl(it)} · +${Math.round((itemIlvlMult(it)-1)*100)}%</span>` : ""}<span>${owner}</span>${family}</div>
+        <div class="ip-tags"><span class="ip-tier" style="border-color:${col};color:${col}">${itemTierLabel(it)}</span><span>${ITEM_TYPES[it.type].label}</span><span>Nv. ${lv}/${ITEM_MAX_LEVEL}</span>${itemIlvl(it)>1 ? `<span class="ip-ilvl" title="Nivel de objeto ${itemIlvl(it)} (arena y dificultad donde cayó): todos sus números valen más">${itemIlvlLabel(it)} · +${Math.round((itemIlvlMult(it)-1)*100)}%</span>` : ""}<span>${owner}</span>${family}</div>
       </div></div>
     <div class="ip-sec"><div class="ip-h">ESTADÍSTICAS</div>
       <div class="ip-line">+${_pct(itemStat(it))}% ${ITEM_TYPES[it.type].statLabel} <span class="ip-sub">(esta pieza: ${_pct(lo)}–${_pct(hi)}% en Nv.${lv})</span></div></div>

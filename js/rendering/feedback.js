@@ -53,7 +53,7 @@ let _ultImpactDone = false;
 const IMPACT_FLASH_MS = [90, 90, 115, 150, 180];
 const IMPACT_KNOCK = [0, 5, 10, 18, 26];         // retroceso físico (unidades) a un común de peso 1 (se divide por kbMass)
 const IMPACT_STAGGER = [0, 0, 0, 110, 200];      // tambaleo (ms) a comunes/sub-élites; élites la mitad
-const IMPACT_WEIGHT = {tanque:1.5, segador:1.3, libertador:1.35, eren:1.15};
+const IMPACT_WEIGHT = {tanque:1.5, segador:1.3, libertador:1.35, ilkan:1.15};
 function impactPower(e, dmg, crit, opts, src){
   if(opts.impact) return opts.impact;
   if(src && src._castUlt) return 4; // lo marca castAbility mientras dura el lanzamiento de una ulti
@@ -64,7 +64,7 @@ function impactFeedback(e, dmg, crit, opts, pow, src){
   src = src || opts.src || player;
   const big = e.rank==="jefe" || e.rank==="subjefe" || e.rank==="elite";
   const mine = src===player && !src.isRemote;
-  const w = (src && src.classKey && (src.erenTitan ? 1.8 : IMPACT_WEIGHT[src.classKey])) || 1;
+  const w = (src && src.classKey && (src.ilkanColossus ? 1.8 : IMPACT_WEIGHT[src.classKey])) || 1;
   // estrella de impacto (fx-contrast.js): habilidades y golpes fuertes de cualquier héroe
   if(pow >= 2 && src && src.classKey && !opts.fromProc) vfxHitFlash(e.x, e.y - (e.radius||20)*0.7, fxHeroRgb(src), pow);
   // (netQuiet: el temblor/destello/sonido de TUS golpes es tuyo; antes viajaban y a los invitados les
@@ -229,14 +229,14 @@ function drawScreenFeedback(){
       const C = ROLE_CFG[e.role], col = `rgb(${C.rgb})`;
       ctx.globalAlpha = 0.7 + 0.3*Math.sin(now/160 + n);
       _arrow(p.x, p.y, ang, 11, col, "rgba(0,0,0,0.7)");
-      ctx.font = pxFont(11); ctx.textAlign = "center"; ctx.fillStyle = col; ctx.fillText(C.ico, p.x - Math.cos(ang)*20, p.y - Math.sin(ang)*20 + 4);
+      ctx.font = pxFont(11); ctx.textAlign = "center"; ctx.fillStyle = col; drawCanvasIcon(ctx, C.ico, p.x - Math.cos(ang)*20, p.y - Math.sin(ang)*20 + 1, 14, col);
       ctx.globalAlpha = 1; n++; continue;
     }
     const col = e.rank==="jefe" ? "#ffb300" : (e.rank==="subjefe" ? "#ff8a3d" : "#ffe36a");
     const pulse = 0.7 + 0.3*Math.sin(now/180 + n);
     ctx.globalAlpha = pulse;
     _arrow(p.x, p.y, ang, e.rank==="jefe" ? 15 : 11, col, "rgba(0,0,0,0.7)");
-    if(e.rank!=="elite"){ ctx.font = pxFont(11); ctx.textAlign = "center"; ctx.fillStyle = col; ctx.fillText(e.rank==="jefe" ? "☠" : "◆", p.x - Math.cos(ang)*20, p.y - Math.sin(ang)*20 + 4); }
+    if(e.rank!=="elite"){ ctx.font = pxFont(11); ctx.textAlign = "center"; ctx.fillStyle = col; drawCanvasIcon(ctx, e.rank==="jefe" ? "☠" : "◆", p.x - Math.cos(ang)*20, p.y - Math.sin(ang)*20 + 1, 14, col); }
     ctx.globalAlpha = 1; n++;
   }
   pacingDrawWarn(now, _edgePoint, _arrow); // de dónde viene la próxima oleada

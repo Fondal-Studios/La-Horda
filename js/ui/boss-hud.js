@@ -18,7 +18,18 @@ const SUBBOSS_TIPS = {
   demonio_menor:     {epithet:"Guardián de la Horda", tips:["Hace llover fuego sobre tu posición: no te quedes quieto."]},
   golem:             {epithet:"Guardián de la Horda", tips:["Su Pisotón aturde: salí del círculo.", "Lanza rocas a distancia."]}
 };
-let hudBoss = null, _bossChip = 1, _bossHintT = 0, _bossIntroT = 0, _bossIntroDelay = 0, _bossPhaseTxt = "";
+// Guía en pictogramas (celular apaisado): cada consejo = un icono + 2-3 palabras. El texto completo sigue en
+// escritorio, en el atributo title y en el Códice ("Cómo sobrevivir").
+function _bossTipPicto(t){
+  const plain = String(t).replace(/<[^>]*>/g, "").trim();
+  // lo útil de un consejo es la acción: si hay "causa: acción", el pictograma muestra la acción
+  const ci = plain.indexOf(": "), act = ci>0 && ci < plain.length-6 ? plain.slice(ci+2) : plain;
+  const first = act.split(/[.;—]|\s-\s/)[0].replace(/\s*\(.*$/, "").trim();
+  const label = first.length > 30 ? first.slice(0, 29).replace(/\s+\S*$/, "") : first;
+  const ico = /expuest|vulnerab|pegale|contené|contene|derrib/i.test(act) ? "⚔" : /sal[ií]|alejate|movete|moviéndote|moviendo|costado|rodealo|no te quedes|esper|busc/i.test(act) ? "➤" : "⚠";
+  return {ico, label: (label.charAt(0).toUpperCase() + label.slice(1)) || plain.slice(0, 24)};
+}
+let hudBoss = null, _bossChip = 1, _bossHintT = 0, _bossIntroT = 0, _bossIntroDelay = 0, _bossIntroShown = 0, _bossPhaseTxt = "";
 const _bh = {};
 function _bhEl(id){ return _bh[id] || (_bh[id] = document.getElementById(id)); }
 // Ficha de presentación del jefe: la forma ACTUAL manda (e.designKey: el Demonio Mayor que nace del Gólem
@@ -39,6 +50,7 @@ function bossHudShow(e){
   hud.classList.remove("hidden"); hud.classList.toggle("sub", isSub);
   _bhEl("boss-name").textContent = e.name;
   _bhEl("boss-epithet").textContent = d && d.epithet ? d.epithet : (isSub ? "Subjefe" : "Jefe");
+  _bhEl("boss-name").title = e.name + " — " + _bhEl("boss-epithet").textContent; // celular: el epíteto se esconde, el nombre va completo
   // marcas de fase sobre la barra (umbrales de vida del diseño)
   const ticks = _bhEl("boss-ticks"); ticks.innerHTML = "";
   const phases = d && d.phases && !d.byLevPhase ? d.phases : [];
@@ -49,13 +61,13 @@ function bossHudShow(e){
     const intro = _bhEl("boss-intro");
     intro.querySelector(".bi-name").textContent = "CÓMO SOBREVIVIR";
     intro.querySelector(".bi-epithet").textContent = d.epithet || "";
-    intro.querySelector(".bi-tips").innerHTML = d.tips.map(t=>`<li>${t}</li>`).join("");
+    intro.querySelector(".bi-tips").innerHTML = d.tips.slice(0, 3).map(t=>{ const p = _bossTipPicto(t); return `<li title="${String(t).replace(/<[^>]*>/g,"").replace(/"/g,"&quot;")}"><span class="bi-ico" aria-hidden="true">${p.ico}</span><span class="bi-full">${t}</span><span class="bi-short">${p.label}</span></li>`; }).join("");
     intro.classList.add("hidden");
     // el jefe entra con su cartel grande: la guía espera a que termine para no pisarlo
     _bossIntroDelay = isSub ? 300 : 2100;
     // si hay un cartel grande de presentación (arenaTitleCard), la guía espera a que se vaya
     _bossIntroDelay = Math.max(_bossIntroDelay, _arenaTitleUntil - performance.now() + 200);
-    _bossIntroT = isSub ? 4600 : 7500;
+    _bossIntroShown = 0; _bossIntroT = (typeof hudCompact==="function" && hudCompact()) ? 3000 : (isSub ? 4600 : 7500); // celular: pictogramas, 3 s o hasta el primer movimiento
   } else { _bossIntroDelay = 0; _bossIntroT = 0; }
   bossHudHint("", "");
   if(typeof storyBossIntro==="function") storyBossIntro(e); // su presentación (voz del jefe, js/systems/story.js)
@@ -116,5 +128,9 @@ function updateBossHud(dt){
     if(_bossIntroDelay<=0){ const intro = _bhEl("boss-intro"); intro.classList.remove("hidden","fade"); void intro.offsetWidth; }
     return;
   }
-  if(_bossIntroT>0){ _bossIntroT -= dt; if(_bossIntroT<=700) _bhEl("boss-intro").classList.add("fade"); if(_bossIntroT<=0) _bhEl("boss-intro").classList.add("hidden"); }
+  if(_bossIntroT>0){
+    // celular: la guía se va con el primer movimiento (después de 0,5 s para que el jugador llegue a verla)
+    _bossIntroShown += dt;
+    if(_bossIntroShown > 500 && _bossIntroT > 700 && typeof hudCompact==="function" && hudCompact() && typeof joyVec!=="undefined" && joyVec && Math.hypot(joyVec.x||0, joyVec.y||0) > 0.25) _bossIntroT = 700;
+    _bossIntroT -= dt; if(_bossIntroT<=700) _bhEl("boss-intro").classList.add("fade"); if(_bossIntroT<=0) _bhEl("boss-intro").classList.add("hidden"); }
 }

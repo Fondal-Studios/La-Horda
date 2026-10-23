@@ -23,7 +23,6 @@ X.ROOT = os.path.join(REPO, 'art-source', 'skins_sets')
 PANELS = {
     'sylva_flecha_de_fuego': ('manada', (10, 660, 760, 990)),
     'musashi_samurai_legendario': ('errante', (10, 655, 820, 1000)),
-    'eren_titan_bestia': ('legion', (780, 670, 1140, 1000)),
     'axiom_skin_z': ('sistema', (735, 815, 1240, 1010)),
     'profeta_angel_caido': ('profecia', (370, 690, 1000, 990)),
     'mago_angel_arcano': ('convergencia', (80, 600, 610, 1000)),
@@ -105,6 +104,12 @@ if __name__ == '__main__':
             js.append(f'  {key}: {json.dumps({"ground": bool(spec.get("ground")), "srcs": srcs})},')
             manifest += srcs
             print(key, len(srcs))
+    # efectos de la skin procedural de Ilkan (set "legion", tools/art/ilkan/build.py): se conservan tal cual
+    try:
+        old = open(os.path.join(REPO, 'js', 'assets', 'skin-fx-meta.js'), encoding='utf-8').read().split('\n')
+        js.extend(l for l in old if l.startswith('  sk_legion_'))
+    except OSError:
+        pass
     js.append('};')
     open(os.path.join(REPO, 'js', 'assets', 'skin-fx-meta.js'), 'w').write('\n'.join(js) + '\n')
     print('frames', len(manifest))

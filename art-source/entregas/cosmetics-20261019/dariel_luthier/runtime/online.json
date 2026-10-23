@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "scope": "Disposable anonymous local relay, real gold shop in isolated browser saves; no production data",
+  "checks": [
+    {
+      "name": "server catalog recognizes authored cosmetic",
+      "ok": true,
+      "detail": {
+        "id": "dariel_luthier",
+        "name": "Dáriel, Luthier de los Autómatas",
+        "champion": "dariel",
+        "kind": "croma-skin",
+        "tier": "autor",
+        "goldBase": 12000
+      }
+    },
+    {
+      "name": "host cosmetic reaches host renderer",
+      "ok": true,
+      "detail": {
+        "key": "croma_dariel_luthier",
+        "expected": "croma_dariel_luthier",
+        "ready": true,
+        "src": "http://127.0.0.1:8875/assets/sprites/champions/dariel/skins/dariel_luthier/atlas.png"
+      }
+    },
+    {
+      "name": "host cosmetic reaches guest renderer",
+      "ok": true,
+      "detail": {
+        "key": "croma_dariel_luthier",
+        "expected": "croma_dariel_luthier",
+        "ready": true,
+        "src": "http://127.0.0.1:8875/assets/sprites/champions/dariel/skins/dariel_luthier/atlas.png"
+      }
+    },
+    {
+      "name": "host can cast while wearing cosmetic",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "guest cosmetic reaches host renderer",
+      "ok": true,
+      "detail": {
+        "key": "croma_dariel_luthier",
+        "expected": "croma_dariel_luthier",
+        "ready": true,
+        "src": "http://127.0.0.1:8875/assets/sprites/champions/dariel/skins/dariel_luthier/atlas.png"
+      }
+    },
+    {
+      "name": "guest cosmetic reaches guest renderer",
+      "ok": true,
+      "detail": {
+        "key": "croma_dariel_luthier",
+        "expected": "croma_dariel_luthier",
+        "ready": true,
+        "src": "http://127.0.0.1:8875/assets/sprites/champions/dariel/skins/dariel_luthier/atlas.png"
+      }
+    },
+    {
+      "name": "guest can cast while wearing cosmetic",
+      "ok": true,
+      "detail": 1
+    }
+  ],
+  "errors": []
+}

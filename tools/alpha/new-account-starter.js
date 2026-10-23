@@ -1,7 +1,8 @@
 'use strict';
 /* Regresión: un jugador nuevo (guardado local vacío o cuenta recién creada) nunca queda con un guardián
  * bloqueado elegido (antes: el Asesino, clave "guerrero", el valor inicial de selectedClass). Primero recibe
- * su guardián de regalo (por defecto el Mago, ya marcado en "Tu primer guardián") y entra al entrenamiento.
+ * su guardián de regalo (ya NO viene ninguno preseleccionado: hay que tocar uno de los 4 recomendados) y entra al
+ * entrenamiento JUGANDO con el guardián elegido (antes forzaba al Mago).
  * También cubre "Borrar progreso y empezar de cero": vuelve al guardián de regalo, no al menú con uno bloqueado.
  *
  * Uso: NODE_PATH=/opt/node-tools/node_modules node tools/alpha/new-account-starter.js
@@ -20,20 +21,24 @@ async function up(url,ms){const t=Date.now();while(Date.now()-t<ms){try{const r=
 async function look(p){return p.evaluate(()=>{const owned=Object.keys(save.champions).filter(k=>save.champions[k].unlocked);
  return {state,selectedClass,owned,training:ALPHA_TRAINING.active,hub:(document.getElementById('hub-play-champ')||{}).textContent||''};});}
 function assertSane(s,label){
- if(s.training){assert.equal(s.selectedClass,'mago',label+': training uses the mage');return;}
+ if(s.training){assert.ok(s.owned.includes(s.selectedClass),label+': training uses an owned champion (the chosen one)');return;}
  if(s.owned.length) assert.ok(s.owned.includes(s.selectedClass),`${label}: selected ${s.selectedClass} is not owned (${s.owned})`);
  else assert.equal(s.selectedClass,'mago',`${label}: no champion yet, default must be the mage (got ${s.selectedClass})`);
 }
 async function pickStarter(p,champ,label){
  await p.locator('#starter-screen').waitFor({state:'visible'});
- // sin elección explícita: el Mago ya viene marcado y el cartel de confirmar a la vista
- assert.equal(await p.locator('.starter-card.sel').getAttribute('data-champ'),'mago',label+': mage preselected');
- assert.ok(await p.locator('#starter-confirm').isVisible(),label+': confirm visible for the default');
+ // primer minuto: NADA preseleccionado, 4 recomendados visibles y "Ver todos" detrás
+ await p.waitForTimeout(600); // las cartas ignoran toques fantasma justo al abrir la pantalla
+ assert.equal(await p.locator('.starter-card.sel').count(),0,label+': nothing preselected');
+ assert.ok(!(await p.locator('#starter-confirm').isVisible()),label+': no confirm bar before choosing');
+ assert.equal(await p.locator('.starter-card:visible').count(),4,label+': 4 recommended guardians visible');
+ assert.ok(await p.locator('#starter-all-btn').isVisible(),label+': "ver todos" button');
  assertSane(await look(p),label+' starter screen');
- if(champ!=='mago') await p.locator(`.starter-card[data-champ="${champ}"]`).click();
+ await p.locator(`.starter-card[data-champ="${champ}"]`).click();
  await p.locator('#starter-yes-btn').click();
  await p.locator('#alpha-training-panel').waitFor({state:'visible'});
  const s=await look(p);assertSane(s,label+' tutorial');assert.equal(s.training,true,label+': tutorial starts after the gift');
+ assert.equal(s.selectedClass,champ,label+': tutorial is played with the chosen champion');
  await p.getByRole('button',{name:'Saltar tutorial',exact:true}).click();
  await p.waitForFunction(()=>state==='mainmenu');
  const m=await look(p);assertSane(m,label+' menu');
@@ -60,7 +65,7 @@ async function pickStarter(p,champ,label){
    await p.reload();await p.waitForFunction(()=>typeof alphaFirstRunContinue==='function');
    assert.equal(await p.evaluate(()=>selectedClass),champ,'reload keeps the gifted champion');
    assert.deepEqual(errors,[]);await ctx.close();
-   console.log('PASS fresh local save → gift '+champ+' (mage preselected) → tutorial → menu with an owned champion');
+   console.log('PASS fresh local save → gift '+champ+' (nothing preselected) → tutorial with that champion → menu with an owned champion');
   }
   // 2) cuenta nueva en un servidor local (sin base de datos) + "empezar de cero"
   const port=9100+Math.floor(Math.random()*500),data=fs.mkdtempSync(path.join(os.tmpdir(),'horda-starter-'));
@@ -76,6 +81,7 @@ async function pickStarter(p,champ,label){
   await p.locator('#title-continue-btn').click();
   await p.locator('[data-acc-tab="register"]').click();
   await p.fill('#acc-user','n'+Date.now().toString(36).slice(-8));await p.fill('#acc-pass','secret123');await p.fill('#acc-pass2','secret123');
+  await p.check('#legal-consent-cb'); // el registro exige aceptar los términos (js/ui/legal.js)
   await p.locator('#acc-submit').click();
   await pickStarter(p,'soporte','new account');
   await p.waitForFunction(()=>!acct.uploading&&!acct.pulling&&acct.sync&&!acct.sync.dirty,null,{timeout:15000}).catch(()=>{});
@@ -92,6 +98,6 @@ async function pickStarter(p,champ,label){
   assert.equal(after.state,'starter','start fresh goes back to the starter gift, not to the menu');
   await pickStarter(p,'mago','after start fresh');
   assert.deepEqual(errors,[]);await ctx.close();
-  console.log('PASS start fresh → starter gift again (mage default) → tutorial → menu with an owned champion');
+  console.log('PASS start fresh → starter gift again (nothing preselected) → tutorial → menu with an owned champion');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>children.forEach(c=>{try{c.kill();}catch(e){}}));

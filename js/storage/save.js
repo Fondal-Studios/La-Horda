@@ -54,6 +54,7 @@ function defaultSave(){
     micelialMigrated:true,  // idem para el Reino Micelial (4ta arena, antes del Hielo)
     abismoMigrated:true,    // idem para la Arena del Abismo (antes del Laberinto): save.legacyLabOpen
     codex:{seen:{}, kills:{}},  // Códice: criaturas vistas y derrotadas (js/ui/codex/codex-track.js)
+    codexBook:{v:1, introSeen:false, introAt:0, introRead:false, ran:false, offered:false, frag:{}, shortCount:{}, shortOff:false}, // EL LIBRO DE LA HORDA (js/systems/codex-narrative.js): intro vista, fragmentos leídos, cargas cortas
     campaignV2:true,        // ORDEN CANÓNICO de la campaña (ver loadSave: migración de arenas abiertas y cristales)
     ciudadV1:true,          // la Ciudad Maldita (Arena 01) pasó a ser jugable (ver loadSave: nadie pierde la arena que ya tenía abierta)
     talentTreeV2:true,      // bolsa del árbol separada de las mejoras del kit
@@ -83,7 +84,7 @@ function defaultSave(){
     quests:null,            // logros, desafíos, pase de temporada y perfil (js/systems/quests.js: questsNormalize completa los campos)
     // DIFICULTADES (js/systems/difficulty-tiers.js): arenas superadas en Pesadilla / Infierno (Normal es
     // arenasCleared), la elegida en la Sala y las derrotas de la cuenta (las 3 primeras no se castigan)
-    diffCleared:{pesadilla:{}, infierno:{}}, diffSelected:"normal", defeatCount:0,
+    diffCleared:{pesadilla:{}, infierno:{}}, diffSelected:"normal", defeatCount:0, arenaDefeats:{}, bossDefeats:{}, defeatLegacy:0, penaltyWarned:{}, checkpoints:{},
     recycleDust:0           // RECICLAJE (js/systems/ground-loot.js): fracción de Gema juntada al reciclar Comunes/Raros con el inventario lleno
   };
 }
@@ -155,6 +156,19 @@ function applyTestSkins(){
   save.testSkinsV1 = true;
   persist();
 }
+// Los objetos del set del campeón renombrado guardaron el nombre/lore viejos al crearse: se refrescan con el
+// texto vigente (conservan uid, nivel, tirada y valor). Devuelve true si cambió algo.
+let legacyChampionRenamed = false;
+function legacyRefreshSetItem(it){
+  if(!it || !it.designed || typeof it.designId !== "string" || it.designId.indexOf("legion_") !== 0) return false;
+  if(typeof makeDesignedItem !== "function") return false;
+  let fresh = null; try{ fresh = makeDesignedItem(it.designId); }catch(e){ return false; }
+  if(!fresh || (it.name === fresh.name && it.desc === fresh.desc)) return false;
+  const pct = /\+(\d+)%/.exec(it.desc || ""), np = /\+(\d+)%/.exec(fresh.desc || "");
+  it.name = fresh.name;
+  it.desc = (pct && np) ? fresh.desc.replace(np[0], pct[0]) : fresh.desc;
+  return true;
+}
 function loadSave(){
   saveLoadStarted = true;
   try{ _loadSaveInner(); }finally{ applyTestUnlock90(); applyTestSkins();
@@ -167,6 +181,12 @@ function _loadSaveInner(){
     const raw = localStorage.getItem(SAVE_KEY);
     if(raw){
       const parsed = JSON.parse(raw);
+      // Tipos y rangos antes de usar nada (js/storage/save-sanitize.js): NaN/strings/objetos/"__proto__" en lo crítico.
+      // Lanza si el JSON no es un objeto: cae en el catch de abajo (copia _noCargo, no se pisa el guardado).
+      if(typeof saveSanitize==="function") saveSanitize(parsed, {defaults: defaultSave(),
+        arenaKeys: typeof ARENA_ORDER!=="undefined" ? ARENA_ORDER : null, championKeys: typeof CLASSES!=="undefined" ? Object.keys(CLASSES) : null});
+      // Rework del campeón "eren" -> "ilkan" (js/storage/legacy-champion-ids.js): ids, talentos, objetos. Idempotente.
+      if(legacyChampionMigrate(parsed, {refreshItem: legacyRefreshSetItem})) legacyChampionRenamed = true;
       const needsRarityMigration = parsed.itemSchemaV !== ITEM_SCHEMA_VERSION;
       save = Object.assign(defaultSave(), parsed);
       save.itemSchemaV = ITEM_SCHEMA_VERSION;
@@ -252,10 +272,19 @@ function _loadSaveInner(){
       save.diffCleared = {pesadilla:Object.assign({}, dc.pesadilla||{}), infierno:Object.assign({}, dc.infierno||{})};
       if(!["normal","pesadilla","infierno"].includes(save.diffSelected)) save.diffSelected = "normal";
       save.defeatCount = Math.max(0, parsed.defeatCount|0);
+      // perdón de derrotas POR ARENA (progression.js): guardados anteriores congelan su total como punto de partida
+      save.arenaDefeats = {}; if(parsed.arenaDefeats && typeof parsed.arenaDefeats==="object") for(const k in parsed.arenaDefeats) save.arenaDefeats[k] = Math.max(0, parsed.arenaDefeats[k]|0);
+      save.bossDefeats = {}; if(parsed.bossDefeats && typeof parsed.bossDefeats==="object") for(const k in parsed.bossDefeats){ const n = Math.max(0, Math.min(99, parsed.bossDefeats[k]|0)); if(n) save.bossDefeats[k] = n; } // derrotas en el jefe por arena (boss-assist.js); guardados viejos: vacío
+      save.defeatLegacy = ("defeatLegacy" in parsed) ? Math.max(0, parsed.defeatLegacy|0) : (parsed.arenaDefeats ? 0 : save.defeatCount);
+      save.checkpoints = typeof checkpointsNormalize==="function" ? checkpointsNormalize(parsed.checkpoints) : {}; // punto de control del nivel 5 por arena (checkpoint.js); guardados viejos: vacío
+      save.penaltyWarned = {}; if(parsed.penaltyWarned && typeof parsed.penaltyWarned==="object") for(const k in parsed.penaltyWarned) if(parsed.penaltyWarned[k]) save.penaltyWarned[k] = true;
+      // EL LIBRO DE LA HORDA: guardados de antes no lo tienen. Quien ya tiene guardián o ya jugó NO ve la gran introducción
+      // a la fuerza (queda releíble en el Códice) y sus arenas superadas figuran como fragmentos ya leídos. No se pierde nada.
+      if(typeof codexBookMigrate==="function"){ save.codexBook = codexBookMigrate(parsed); if(!parsed.codexBook) persist(); }
       // Si hubo migración de rareza, se escribe de vuelta ya mismo: si no, el localStorage
       // se queda con las claves viejas hasta la próxima mutación (equipar/vender/etc.), y una
       // sesión que solo mira sin tocar nada perdería el arreglo al cerrar el navegador.
-      if(needsRarityMigration) persist();
+      if(needsRarityMigration || legacyChampionRenamed){ legacyChampionRenamed = false; persist(); }
     } else {
       persist(); // perfil nuevo: queda guardado desde ya (el regalo -guardián + skin- se elige al entrar)
     }
@@ -321,6 +350,11 @@ function migrateToAccountStash(parsed){
     delete c._legacyInventory;
   }
   for(const it of stash){
+    // pieza de set entregada por el servidor (compra con Brasas): llega como esbozo {uid, designId, srvGrant}; se completa con el objeto real
+    if(it.srvGrant && typeof it.designId==="string" && typeof makeDesignedItem==="function"){
+      let fresh = null; try{ fresh = makeDesignedItem(it.designId); }catch(e){}
+      if(fresh) Object.assign(it, fresh, {uid:it.uid, bought:true}); delete it.srvGrant;
+    }
     if(!it.designed) it.champion = null;
     if(it.placeholder && it.rarity==="unico"){
       it.rarity = "legendario"; it.placeholder = false; it.value = RARITY_VALUES[it.type].legendario; it.mythicPassive = null;
@@ -438,7 +472,9 @@ function persistNow(){
   if(_persistTimer){ clearTimeout(_persistTimer); _persistTimer = null; }
   // GM / TEST LAB: una sesión de prueba nunca escribe el progreso real (js/systems/test-lab.js).
   if(typeof testLabActive==="function" && testLabActive()) return;
-  if(typeof lanesOn==="function" && lanesOn()) return; // Guerra de Cristales juega con un guardado temporal: nunca se escribe
+  // Guerra de Cristales juega con un guardado temporal: nunca se escribe. ÚNICA excepción: la recompensa final del postgame, que se escribe
+  // sobre el guardado REAL mientras postgame.js lo pone (window.__pgCommit, js/systems/postgame.js).
+  if(typeof lanesOn==="function" && lanesOn() && !window.__pgCommit) return;
   // B1: mientras el anfitrión simula a un invitado, su guardián usa los datos del invitado;
   // netPersistView escribe siempre los datos propios del anfitrión.
   if(saveLoadFailed) return; // el guardado de verdad sigue en localStorage (y copiado en _noCargo)

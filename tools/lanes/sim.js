@@ -1,18 +1,20 @@
 'use strict';
-/* Guerra de Cristales (estilo Wild Rift 2D, 5 contra 5) en el motor real: simulación de partidas completas SIN interfaz (motor real en Chromium,
+const {fetchReadyOk}=require('../lib/http-ready');
+
+/* Guerra de Cristales (MOBA 2D de tres carriles, 5 contra 5) en el motor real: simulación de partidas completas SIN interfaz (motor real en Chromium,
  * reloj virtual). Verifica: nada tira excepciones, sin fuego amigo de la horda, hay combate (bajas de súbditos, PvP), los héroes ganan
  * experiencia y suben de nivel, la selva reaparece y las cartas de horda se ofrecen y se aplican.
  * Uso: node tools/lanes/sim.js [partidas=3] [segundos=300] */
 const {chromium}=require('playwright');const {spawn}=require('node:child_process');const path=require('node:path');const assert=require('node:assert/strict');
 require('./team-card-test.js');
-const N=Number(process.argv[2])||3,SECS=Number(process.argv[3])||300,PORT=8893;
+const N=Number(process.argv[2])||3,SECS=Number(process.argv[3])||300,PORT=+process.env.LH_PORT||8893;
 const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__dirname,'../..'),stdio:'ignore'});
 (async()=>{
- for(let i=0;i<60;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+ for(let i=0;i<60;i++){try{if((await fetchReadyOk(`http://127.0.0.1:${PORT}/index.html`)))break;}catch{}await new Promise(r=>setTimeout(r,100));}
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});const context=await b.newContext();
  for(let g=0;g<N;g++){
   const p=await context.newPage({viewport:{width:844,height:390}}),errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push('console:'+m.text());});
-  await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`);await p.waitForFunction(()=>typeof lanesStart==='function'&&typeof update==='function',null,{timeout:60000});
+  await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});await p.waitForFunction(()=>typeof lanesStart==='function'&&typeof update==='function',null,{timeout:60000});
   const r=await p.evaluate(({secs,seed})=>{
    setState('mainmenu');
    const ok=lanesStart({champ:['mago','tanque','soporte','guerrero'][seed%4],seed:seed+1});

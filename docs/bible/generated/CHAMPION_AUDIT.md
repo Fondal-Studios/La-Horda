@@ -16,7 +16,7 @@
 | Sylva, la Cazadora del Bosque (`cazadora`) | asesino | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Ilvar, el Señor de las Criptas (`nigromante`) | mago | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | San Martín, el Libertador (`libertador`) | asesino | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
-| Eren, el Indómito (`eren`) | asesino | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Ilkan, el Caminante de Dunas (`ilkan`) | asesino | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Ynara, la Médica de los Refugios (`ynara`) | soporte | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Myla, la Niña de la Cuchara (`myla`) | mago | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Brasa, la Mecánica Fugitiva (`brasa`) | mago | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |

@@ -22,6 +22,7 @@ function colStart(opts){
     const pool = roster.filter(k=>!taken.includes(k)); const k = pool[(Math.random()*pool.length)|0]; taken.push(k); return k; };
   const mate = pick(opts.mate), foes = [0, 1, 2, 3, 4, 5].map(i=>pick(opts.rivals && opts.rivals[i]));
   lanesBegin("solo", opts.seed, "coliseo");
+  if(typeof postgameInstall === "function") postgameInstall("coliseo", mine, opts);   // postgame: tu campeón con tope de progresión (o Entrenamiento normalizado)
   LN.setup = {mine, mate, rivals:foes};
   selectedClass = mine; currentArena = "coliseo"; lobbyAllies = [mate, ...foes];
   try{ startRun(LANES.RUNLEVEL); }
@@ -36,7 +37,8 @@ function colRunStart(){
   L.t = 0; L.wave = 0; L.ended = false; L.winner = -1; L.shots = []; L.feed = []; L.spawnCtx = null;
   L.team = colNewTeams(); runLevel = LANES.RUNLEVEL;
   levelDuration = 1e12; levelTimer = 0; midBossSpawned = true;
-  heroes.forEach((h, k)=>{ h.team = h.lane = Math.min(3, (k / 2) | 0); h._lnProxy = null; h._colDead = false; });
+  if(typeof postgameTagHeroes === "function") postgameTagHeroes();
+  heroes.forEach((h, k)=>{ h.team = h.lane = Math.min(3, (k / 2) | 0); h._lnProxy = null; h._colDead = false; if(h._pg) lanesApplyLevel(h, 10, true); });   // con postgame las estadísticas salen del nivel fijo 10 + tope de progresión
   L.col = {round:0, phase:"inter", t0:0, cd:-1, pairs:COL_PAIRINGS[0], res:[null, null], ringR:COL.PIT_R, spec:null, specPit:-1, last:""};
   document.getElementById("hud-arena") && (document.getElementById("hud-arena").textContent = "Coliseo");
   colStartRound();
@@ -91,7 +93,8 @@ function colFight(dt){
   }
   for(const h of heroes){
     if(h.alive || h._colDead) continue;
-    h._colDead = true; const kt = h._lnKiller; h._lnKiller = null;
+    h._colDead = true; const kt = h._lnKiller, kh = h._lnKillerHero; h._lnKiller = null; h._lnKillerHero = null;
+    if(kh && kt != null && kt !== h.team) kh.pgKills = (kh.pgKills || 0) + 1;   // bajas de héroes (recompensa de postgame)
     if(kt != null && kt !== h.team){ L.team[kt].pk++; colFeed(colTeamName(kt) + " derribó a " + heroLabel(h), kt); }
     else colFeed(heroLabel(h) + " cayó", h.team);
   }
@@ -148,6 +151,7 @@ function colSpecPit(){   // salta al otro foso
 
 /* ---------------- geometría ---------------- */
 function colClamp(ent){
+  if(!ent.lanesProxy)aidResolveCircles(ent,1);
   const pit = ent.pit != null ? ent.pit : colPitOf(ent.x), ctr = colPitCenter(pit), R = COL.PIT_R - 16;
   const dx = ent.x - ctr.x, dy = ent.y - ctr.y, d = Math.hypot(dx, dy);
   if(d > R){ ent.x = ctr.x + dx / d * R; ent.y = ctr.y + dy / d * R; }
@@ -170,13 +174,44 @@ function colLeaderFor(h){
 }
 function colBotTarget(h, range){
   let best = null, bs = -1e9;
+  const vic = typeof botVictoryOn==="function" && botVictoryOn(h);
   for(const e of enemies){
     if(!e.alive || !e.lanesProxy || e.kind !== "hero" || e.team === h.team || e.lnRef.pit !== h.pit) continue;
     const d = distance(h, e); if(d > range) continue;
-    const s = 400 - d * 0.4 + (1 - e.lnRef.hp / e.lnRef.maxHp) * 320;
+    let s = 400 - d * 0.4 + (1 - e.lnRef.hp / e.lnRef.maxHp) * 320;
+    if(vic){   // ganar el duelo: rematar al más herido y concentrar el fuego con el compañero
+      const hp = e.lnRef.hp / e.lnRef.maxHp;
+      if(hp < 0.3) s += 160;
+      for(const a of heroes) if(a !== h && a.alive && a.team === h.team && a._tgt === e) s += 90;
+    }
     if(s > bs){ bs = s; best = e; }
   }
   return best;
+}
+// Sobrevivir (cerebro de victoria): con poca vida y el rival encima, se aleja (sin salir del anillo) y deja que el compañero lo remate.
+function colBotState(h, target){
+  const c = LN.col; if(!c || c.phase !== "fight") return null;
+  const ctr = colPitCenter(h.pit), edge = c.ringR - 70;
+  let foe = null, fd = 1e9, foes = 0, mates = 0;
+  for(const o of heroes){
+    if(!o.alive || o === h || o.pit !== h.pit) continue;
+    if(o.team === h.team) mates++;
+    else { foes++; const d = Math.hypot(o.x - h.x, o.y - h.y); if(d < fd){ fd = d; foe = o; } }
+  }
+  const ai = h._ai || (h._ai = {});
+  if(!foe){ ai.state = "win"; return null; }
+  const myHp = h.hp / h.maxHp, foeHp = foe.hp / foe.maxHp;
+  const kite = myHp < 0.38 && fd < 340 && (mates > 0 || foeHp > myHp);
+  ai.state = kite ? "survive" : "fight";
+  if(!kite) return null;
+  // alejarse del rival más cercano, con un giro tangencial (no quedarse en línea de tiro) y empujado al centro si está cerca del borde
+  let dx = h.x - foe.x, dy = h.y - foe.y; const l = Math.hypot(dx, dy) || 1; dx /= l; dy /= l;
+  const side = (h._kiteSide || (h._kiteSide = Math.random() < 0.5 ? 1 : -1));
+  let mx = dx + -dy * 0.45 * side, my = dy + dx * 0.45 * side;
+  const hd = Math.hypot(h.x - ctr.x, h.y - ctr.y);
+  if(hd > edge * 0.8){ const k = (hd - edge * 0.8) / (edge * 0.2 + 1); mx += (ctr.x - h.x) / hd * (1 + 2 * k); my += (ctr.y - h.y) / hd * (1 + 2 * k); }
+  const ml = Math.hypot(mx, my) || 1;
+  return {mx:mx / ml, my:my / ml, target:botRanged(h) ? foe : (fd < 130 ? foe : null), state:"survive", kite:true};
 }
 
 ARENA_DEFS.coliseo = {
@@ -189,6 +224,7 @@ ARENA_DEFS.coliseo = {
   inside:colInside,
   enemyTarget:()=>null,
   botTarget:colBotTarget,
+  botState:lanesBotState,
   heroReachable:()=>false,
   ownSpawns:()=>true,
   holdLevel:()=>true,

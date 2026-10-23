@@ -42,7 +42,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
       out[id] = { owner: canEquipItem(S.champion, it), other: canEquipItem(other, it) };
     }
     const uni = makeDesignedItem(setPieceIds('glaciar')[0]);
-    return { champ: out, universalAll: ['tanque','mago','eren','soporte'].every(c => canEquipItem(c, uni)) };
+    return { champ: out, universalAll: ['tanque','mago','ilkan','soporte'].every(c => canEquipItem(c, uni)) };
   });
   check('REGLA.set_de_campeon_solo_su_dueno', Object.values(eq.champ).every(o => o.owner && !o.other), eq.champ);
   check('REGLA.set_universal_lo_usa_cualquiera', eq.universalAll);
@@ -58,7 +58,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
       out[id] = Math.abs((b - a) - stat[id][1]) < 1e-6;
     }
     __run('segador', 'marea', 2); out.marea = setFuryMult(player) === 1.2;
-    __run('eren', 'legion', 2); out.legion = setFuryMult(player) === 1.15;
+    __run('ilkan', 'legion', 2); out.legion = setFuryMult(player) === 1.15;
     __run('nigromante', 'requiem', 2); out.requiem = champSetExtraSkeletons(player) === 1;
     return out;
   });
@@ -124,9 +124,9 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     while (player.skeletons.length < 5) spawnNigroSkeleton(player, 'warrior', {});
     out.requiem4 = champSetLegion(player) && setDmgTakenMult(player) < 1;
     // Legión 3: gancho que corta a 3+ baja el enfriamiento · 4: titán dura +30% y cura por baja
-    __run('eren', 'legion', 4); player.cds[0] = 4000; champSetOnHookEnd(player, 3); out.legion3 = player.cds[0] === 2000;
-    player.erenTitan = true; player.hp = player.maxHp*0.5; const h1 = player.hp; champSetsOnKill(player, __foe(300));
-    out.legion4 = champSetTitanDurMult(player) === 1.3 && player.hp > h1; player.erenTitan = false;
+    __run('ilkan', 'legion', 4); player.cds[0] = 4000; champSetOnHookEnd(player, 3); out.legion3 = player.cds[0] === 2000;
+    player.ilkanColossus = true; player.hp = player.maxHp*0.5; const h1 = player.hp; champSetsOnKill(player, __foe(300));
+    out.legion4 = champSetColossusDurMult(player) === 1.3 && player.hp > h1; player.ilkanColossus = false;
     return out;
   });
   for (const k in r) check('SET.' + k, r[k] === true, r[k]);

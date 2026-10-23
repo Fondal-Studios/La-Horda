@@ -4,7 +4,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict');
  const p=await b.newPage({viewport:{width:667,height:375},hasTouch:true}),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.goto(process.env.SITE||'http://127.0.0.1:8805');await p.waitForFunction(()=>assetsAllReady());
  const r=await p.evaluate(()=>{
-  save.starterChosen=true;for(const s of Object.values(save.champions)){s.unlocked=true;s.level=20;}selectedClass='mago';save.duoReserve='eren';currentArena='bosque';lobbyAllies=['tanque','soporte','guerrero'];startRun(1);state='paused';
+  save.starterChosen=true;for(const s of Object.values(save.champions)){s.unlocked=true;s.level=20;}selectedClass='mago';save.duoReserve='ilkan';currentArena='bosque';lobbyAllies=['tanque','soporte','guerrero'];startRun(1);state='paused';
   for(const f of floatTexts)f.on=false;
   for(let i=0;i<70;i++)floatText(player.x+(i%7)*8-24,player.y-70+Math.floor(i/7)*4,'143','crit','ice',{});
   floatText(player.x,player.y-60,'¡PELIGRO!','warn');

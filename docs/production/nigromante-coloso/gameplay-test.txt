@@ -1,0 +1,16 @@
+PASS NIGRO.las_muertes_dejan_cadaveres  {"corpses":4,"sk0":0,"sk":2,"max":2,"left":2}
+PASS NIGRO.levanta_esqueletos_de_los_cadaveres_sin_boton  {"corpses":4,"sk0":0,"sk":2,"max":2,"left":2}
+PASS NIGRO.sin_cadaveres_no_hay_ejercito  0
+PASS NIGRO.las_bajas_dan_almas  {"s1":3,"s2":5,"m":1.1}
+PASS NIGRO.almas_guardadas_dan_danio  {"s1":3,"s2":5,"m":1.1}
+PASS NIGRO.pacto_necesita_5_almas  {"noSouls":false,"armed":true}
+PASS NIGRO.cosecha_cono_frontal_ralentiza_y_da_almas  {"n":{"front":true,"back":false,"slow":true,"souls":0.34},"backHit":true,"sk":2,"souls":4.02,"heal":true,"pact":false}
+PASS NIGRO.cosecha_potenciada_nova_esqueletos_y_cura  {"n":{"front":true,"back":false,"slow":true,"souls":0.34},"backHit":true,"sk":2,"souls":4.02,"heal":true,"pact":false}
+PASS NIGRO.golem_se_arma_con_cadaveres  {"c0":5,"used":5,"hp1":377,"golemAt":0,"hit":true,"stun":true}
+PASS NIGRO.golem_existente_salta_y_aplasta  {"c0":5,"used":5,"hp1":377,"golemAt":0,"hit":true,"stun":true}
+PASS NIGRO.mas_cuerpos_mas_vida  {"weak":182,"strong":415.99999999999994}
+PASS NIGRO.plaga_potenciada_cubre_mas  {"normal":false,"pact":true}
+PASS CSET.requiem_esqueleto_extra_cura_y_legion  {"extra":1,"legion":true,"heal":true,"dr":0.85}
+PASS NIGRO.partida_real_ejercito_almas_y_pactos  {"maxSk":6,"souls":10,"pacts":3,"kills":29,"golem":true}
+PASS NIGRO.sin_errores  []
+SUMMARY OK fails=0

@@ -98,18 +98,10 @@ function cromaEquippedId(k){
   return d && d.champ === k ? c.croma : null;
 }
 function cromaIsEquipped(id){ const d = CROMA_SKINS[id]; return !!(d && cromaEquippedId(d.champ) === id); }
+// INOPERANTE a propósito: las cromas/skins se compran solo con Brasas ✦ (premiumBuySkin, validado por el servidor).
+// El oro es del cliente y editable; ver js/systems/premium.js.
 function cromaBuy(id, expectedPrice){
-  const d = CROMA_SKINS[id];
-  if(!d) return {ok:false, reason:"Esa croma no existe"};
-  if(typeof state!=="undefined" && state==="playing") return {ok:false, reason:"La tienda se usa fuera de la partida"};
-  if(cromaOwned(id)) return {ok:false, reason:"Ya es tuya"};
-  const price = cromaPrice(id);
-  if(expectedPrice!=null && expectedPrice!==price) return {ok:false,reason:"El precio cambió. Revisá el nuevo valor y volvé a confirmar."};
-  if((save.gold||0) < price) return {ok:false, reason:`No te alcanza el oro (tenés ${save.gold||0}, cuesta ${price})`};
-  save.gold -= price;
-  save.cromas = Object.assign({}, save.cromas, {[id]:true});
-  persist();
-  return {ok:true};
+  return {ok:false, reason:"Las skins se compran solo con Brasas ✦. Entrá con tu cuenta para usarlas."};
 }
 // Equipa (o saca, con id=null) la croma del guardián `k`. Solo cromas compradas y de ese guardián.
 function cromaEquip(k, id){
@@ -144,7 +136,7 @@ const COSMETIC_SET_STORIES = {
   santa_paciencia:"Ynara conservó las insignias de cada refugio que sostuvo abierto durante el asedio. Unidas, recuerdan las noches en que cocinar también fue una forma de resistir.",
   manada:"En un bosque que aprendió a arder sin morir, Sylva recogió una pluma de fuego. Ahora sus flechas señalan el camino de regreso entre las cenizas.",
   errante:"Musashi dejó su antigua armadura bajo un cerezo sin flores. Esta vestimenta pertenece al viaje que comenzó después de su último duelo.",
-  legion:"Al otro lado del muro, Eren encontró una posibilidad distinta de su transformación. La piel de la bestia conserva las marcas de aquella primera noche.",
+  legion:"Una noche sin luna, Ilkan se unió a una caravana que cruzaba las Dunas Quebradas guiándose por faroles de cristal. El Coloso que lo acompaña guardó, en sus grietas, la luz de aquellos faroles.",
   sistema:"Axiom recompiló su propio cuerpo para cruzar una fractura imposible. Las líneas de esta apariencia son las costuras que le permiten regresar.",
   profecia:"La Profeta vistió los colores de un futuro que consiguió impedir. Cada hilo recuerda una vida que ya no tendrá que perderse.",
   convergencia:"En la noche en que las dos torres ardieron, el mago unió sus insignias. Esta vestidura celebra la tregua entre la llama y el invierno.",

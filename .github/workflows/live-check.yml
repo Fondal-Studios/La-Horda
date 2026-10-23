@@ -1,4 +1,5 @@
 # LA HORDA — verificación del juego PUBLICADO (no del código local):
+#   canonical-art: GET en Fondal y SHA-256 de seis archivos críticos; no certifica despliegue completo.
 #   relay:  el servidor de salas de Render se despierta, A crea una sala y B se une con el código.
 #   phones: dos iPhone emulados abren el juego de GitHub Pages y hacen el flujo real de la Sala
 #           (crear, unirse con código, sala llena, enlace de invitación) contra el relay publicado.
@@ -22,6 +23,20 @@ env:
   SITE: https://drmarianojimenez94-sudo.github.io/La-Horda
   ORIGIN: https://drmarianojimenez94-sudo.github.io
 jobs:
+  canonical-art:
+    name: Fondal canonical files (read-only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python tools/release/check-canonical-publication.py --output docs/art-gate/canonical-publication.json
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fondal-canonical-publication
+          path: docs/art-gate/canonical-publication.json
   relay:
     runs-on: ubuntu-latest
     timeout-minutes: 8

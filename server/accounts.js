@@ -54,6 +54,13 @@ const crypto = require("crypto");
 const adminLevels=require("./admin-levels");
 const gameMaster = require("./game-master");
 const entitlements = require("./entitlements");
+// Rework del campeón "eren" -> "ilkan": ids viejos aceptados y migrados (js/storage/legacy-champion-ids.js, compartido con el cliente).
+const legacyIds = require("../js/storage/legacy-champion-ids.js");
+// Guardado que sale del almacenamiento: si todavía trae ids viejos se devuelve migrado (se persiste en la próxima escritura).
+function migrateSaveData(str){
+  if(typeof str !== "string" || !(str.includes('"eren"') || str.includes('"er_') || str.includes('"maniobras"'))) return str;
+  try{ const d = JSON.parse(str); return legacyIds.legacyChampionMigrate(d) ? JSON.stringify(d) : str; }catch(e){ return str; }
+}
 const rbac = require("./rbac");
 const walletMod = require("./wallet");
 const fs = require("fs");
@@ -236,7 +243,7 @@ function fileStore(dir){
   function lbRows(week, guardian){
     const W = lb.weeks[week] || {}, out = [];
     for(const k in W){
-      const i = k.indexOf("|"), userId = +k.slice(0, i), g = k.slice(i + 1);
+      const i = k.indexOf("|"), userId = +k.slice(0, i), g = legacyIds.legacyChampionId(k.slice(i + 1));
       if(guardian && g !== guardian) continue;
       out.push(Object.assign({ userId, guardian: g }, W[k]));
     }
@@ -297,7 +304,7 @@ function fileStore(dir){
     async getSave(id){
       const meta = await loadMeta(id);
       if(!meta) return null;
-      try{ const j = JSON.parse(await fsp.readFile(saveFile(id), "utf8")); return { data: j.data, version: j.version | 0, updatedAt: +j.updatedAt || 0, summary: j.summary || null }; }
+      try{ const j = JSON.parse(await fsp.readFile(saveFile(id), "utf8")); return { data: migrateSaveData(j.data), version: j.version | 0, updatedAt: +j.updatedAt || 0, summary: j.summary || null }; }
       catch(e){ return null; }
     },
     // control de versión optimista: solo escribe si la versión de la nube es la que el cliente conocía
@@ -316,6 +323,7 @@ function fileStore(dir){
     },
     // ranking: guarda solo si mejora lo de esa cuenta con ese guardián esa semana
     async lbPut(week, userId, guardian, e){
+      guardian = legacyIds.legacyChampionId(guardian);
       const W = lb.weeks[week] || (lb.weeks[week] = {}), k = userId + "|" + guardian, prev = W[k];
       const row = { score: e.score, round: e.round, durationMs: e.durationMs, at: e.at };
       const improved = !prev || lbCmp(row, prev) < 0;
@@ -439,6 +447,14 @@ function pgStore(url){
         score BIGINT NOT NULL, round INTEGER NOT NULL, duration_ms BIGINT NOT NULL, created_at BIGINT NOT NULL,
         PRIMARY KEY (week, user_id, guardian))`);
       await q(`CREATE INDEX IF NOT EXISTS horda_leaderboard_week_score ON horda_leaderboard (week, score DESC)`);
+      // ranking del campeón renombrado (eren -> ilkan): se conserva la mejor fila por semana y cuenta, nunca se pierde un puntaje
+      for(const [oldId, newId] of Object.entries(legacyIds.LEGACY_CHAMPION_IDS)){
+        await q(`INSERT INTO horda_leaderboard (week, user_id, guardian, score, round, duration_ms, created_at)
+          SELECT week, user_id, $2, score, round, duration_ms, created_at FROM horda_leaderboard WHERE guardian=$1
+          ON CONFLICT (week, user_id, guardian) DO UPDATE SET score=EXCLUDED.score, round=EXCLUDED.round, duration_ms=EXCLUDED.duration_ms, created_at=EXCLUDED.created_at
+          WHERE horda_leaderboard.score < EXCLUDED.score`, [oldId, newId]);
+        await q(`DELETE FROM horda_leaderboard WHERE guardian=$1`, [oldId]);
+      }
     },
     async createUser(u){
       try{
@@ -468,7 +484,7 @@ function pgStore(url){
     async getSaveMeta(id){ return rowMeta((await q(`SELECT version, updated_at, summary FROM horda_saves WHERE user_id=$1`, [id])).rows[0]); },
     async getSave(id){
       const r = (await q(`SELECT * FROM horda_saves WHERE user_id=$1`, [id])).rows[0];
-      return r ? Object.assign({ data: r.data }, rowMeta(r)) : null;
+      return r ? Object.assign({ data: migrateSaveData(r.data) }, rowMeta(r)) : null;
     },
     async putSave(id, dataStr, summary, baseVersion, force){
       const now = Date.now(), sum = JSON.stringify(summary);
@@ -490,6 +506,7 @@ function pgStore(url){
     },
     // ranking: UPSERT condicional (mismo orden que lbCmp: puntaje, ronda, el más rápido)
     async lbPut(week, userId, guardian, e){
+      guardian = legacyIds.legacyChampionId(guardian);
       const r = await q(`INSERT INTO horda_leaderboard (week, user_id, guardian, score, round, duration_ms, created_at)
         VALUES ($1,$2,$3,$4,$5,$6,$7)
         ON CONFLICT (week, user_id, guardian) DO UPDATE SET score=EXCLUDED.score, round=EXCLUDED.round,
@@ -589,7 +606,11 @@ function create(opts){
   }
 
   let store = null, status = "starting", lastError = "";
-  try{ store = url ? pgStore(url) : fileStore(dataDir); }
+  try{
+    if(process.env.REQUIRE_PERSISTENT_ACCOUNTS === "1" && !url && !filePersistent())
+      throw new Error("Cuentas temporalmente no disponibles: falta conectar almacenamiento persistente.");
+    store = url ? pgStore(url) : fileStore(dataDir);
+  }
   catch(e){ status = "error"; lastError = String(e.message || e); }
   const fails = new Limiter(), registers = new Limiter(), apiHits = new Limiter(), lbHits = new Limiter();
   const lbLast = new Map();   // cuenta -> último envío al ranking (ms), para el "¿entra en el tiempo que pasó?"
@@ -826,7 +847,8 @@ function create(opts){
       let version = s.version, updatedAt = s.updatedAt, summary = s.summary;
       // A new entitlement (e.g. a founder bound after the save was written) is persisted with a new
       // version so every device converges; a CAS conflict just serves the corrected copy.
-      if(data && entitlements.sanitizeSave(data, await entitledFor(a.user)).changed.length){
+      const sanitized = data ? entitlements.sanitizeSave(data, await entitledFor(a.user)) : null;
+      if(sanitized && (sanitized.changed.length || sanitized.migrated)){
         summary = summarize(data);
         const put = await store.putSave(a.user.id, JSON.stringify(data), summary, s.version, false);
         if(put.ok){ version = put.version; updatedAt = put.updatedAt; }
@@ -862,7 +884,7 @@ function create(opts){
       const current = lbWeekKey(new Date(now));
       const week = qs.get("week") || current;
       if(!WEEK_RE.test(week)) return err(req, res, 400, "BAD_WEEK", "Semana inválida.");
-      const guardian = qs.get("guardian") || "";
+      const guardian = legacyIds.legacyChampionId(qs.get("guardian") || "");
       if(guardian && !GUARDIAN_RE.test(guardian)) return err(req, res, 400, "BAD_GUARDIAN", "Guardián inválido.");
       const limit = Math.max(1, Math.min(LB_TOP, parseInt(qs.get("limit") || String(LB_TOP), 10) || LB_TOP));
       const top = await store.lbTop(week, guardian || null, limit);
@@ -882,7 +904,7 @@ function create(opts){
       const last = Math.max(lbLast.get(uid) || 0, await store.lastSubmitAt(uid));
       if(last && now - last < LB_MIN_GAP_MS) return tooMany(req, res, Math.ceil((LB_MIN_GAP_MS - (now - last)) / 1000));
       lbHits.hit(kU, LB_WINDOW_MS);
-      const e = { score: body.score, round: body.round, durationMs: body.durationMs, guardian: typeof body.guardian === "string" ? body.guardian : "",
+      const e = { score: body.score, round: body.round, durationMs: body.durationMs, guardian: typeof body.guardian === "string" ? legacyIds.legacyChampionId(body.guardian) : "",
         week: typeof body.week === "string" ? body.week : "", at: now };
       let bad = lbCheck(e, now);
       // Rankings competitivos: Fundadores y campeones sin publicar no compiten (taxonomía compartida).

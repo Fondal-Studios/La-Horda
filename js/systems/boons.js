@@ -25,7 +25,7 @@ function boonSkillOf(b){
   return b.skill==="ult" ? cls.ultimate : cls.skills[b.skill];
 }
 function boonsForChamp(k){ return BOONS.filter(b=>b.champ===k); }
-// Refuerzos del héroe que transforman la habilidad sk (por nombre: Eren titán tiene otro kit).
+// Refuerzos del héroe que transforman la habilidad sk (por nombre: Ilkan coloso tiene otro kit).
 function boonsOnSkill(h, sk){
   const out = [], B = heroBoons(h);
   for(const id in B){ const b = BOON_BY_ID[id]; if(!b || b.minion || b.champ!==h.classKey) continue; const s = boonSkillOf(b); if(s && sk && s.name===sk.name) out.push({b, r:B[id]}); }
@@ -96,7 +96,7 @@ function buffOptHTML(opt, h, hint){
     return `<div class="ico">${b.ico}</div><div class="buff-name">${b.name}</div><div class="buff-desc">${b.desc}</div>${hint||""}`;
   }
   const {b, r} = pb, sk = boonSkillOf(b), R = boonRarityOf(r), L = boonLook(b);
-  const img = (typeof SKILL_ICON_IMG!=="undefined" && sk) ? SKILL_ICON_IMG[sk.name] : null;
+  const img = (typeof skillPixelGlyphUri==="function" && sk) ? skillPixelGlyphUri(b.champ, b.skill==="ult" ? 3 : b.skill) : null; // contrato de íconos (pixel-icons.js)
   const ico = img ? `<img class="boon-ico-img" src="${img}" alt="">` : (sk ? sk.ico : "✦");
   const have = boonOwned(h, b.id);
   const tag = b.duo ? "DÚO" : (have>=0 ? `MEJORA ${boonRarityOf(have).name} → ${R.name}` : R.name);

@@ -1,0 +1,4 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');let spoken=[],cancels=0,tick;
+const c={document:{hidden:false},state:'codex',audioEnabled:true,HERO_VOICES:{tanque:{pick:'La puerta resiste.',win:'Seguimos.'}},speechSynthesis:{cancel(){cancels++},getVoices:()=>[{lang:'es-AR'}],speak:u=>spoken.push(u)},SpeechSynthesisUtterance:function(text){this.text=text},setInterval:f=>(tick=f,1),clearInterval(){}};
+vm.createContext(c);vm.runInContext(fs.readFileSync('js/ui/codex/codex.js','utf8').slice(fs.readFileSync('js/ui/codex/codex.js','utf8').indexOf('let codexVoiceWatch')),c);
+c.codexSpeakVoice('tanque','pick');assert.equal(spoken.length,1);const old=spoken[0];c.codexSpeakVoice('tanque','win');assert.equal(old.onend,null);assert.equal(cancels,1);c.document.hidden=true;tick();assert.equal(cancels,2);c.audioEnabled=false;c.codexSpeakVoice('tanque','pick');assert.equal(spoken.length,2);console.log('PASS: Spanish voice, replace/cancel, hidden-page stop, mute');

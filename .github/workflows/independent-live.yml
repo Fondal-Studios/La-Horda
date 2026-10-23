@@ -1,0 +1,33 @@
+name: Independent La Horda live verification
+on:
+  workflow_dispatch:
+  push:
+    branches: [deploy/nano-independent]
+    paths: [.github/workflows/independent-live.yml]
+permissions:
+  contents: read
+jobs:
+  relay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      RELAY: wss://la-horda-nano-relay.onrender.com
+      ORIGIN: https://la-horda-nano.onrender.com
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: npm ci --prefix server --no-audit --no-fund
+      - run: node tools/net-test/live_relay.js
+      - run: node tools/net-test/capacity.js
+        env:
+          PLAYERS: '50'
+          SECONDS: '15'
+          HZ: '10'
+          SNAPSHOT_BYTES: '4096'
+          REPORT: capacity-public.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: independent-relay-evidence
+          path: capacity-public.json

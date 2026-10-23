@@ -11,9 +11,9 @@ function botTryAbilities(h){
   botMaybeEmergency(h); // curación de emergencia por debajo del 30% (pacing.js)
   const passiveCdMult = Math.max(0.4, 1 - passiveSum(h.classKey,"cd_mult"));
   if(PORTADORES[h.classKey] && !divinaMode){ botPortador(h, passiveCdMult); return; }
-  // El Libertador / Eren: IA propia (js/champions/libertador.js, eren.js)
+  // El Libertador / Ilkan: IA propia (js/champions/libertador.js, ilkan.js)
   if(h.classKey==="libertador" && !divinaMode){ botLibertador(h, passiveCdMult); return; }
-  if(h.classKey==="eren" && !divinaMode){ botEren(h, passiveCdMult); return; }
+  if(h.classKey==="ilkan" && !divinaMode){ botIlkan(h, passiveCdMult); return; }
   // Musashi (IA, sección 27): nunca desperdicia Último Duelo sin una Marca válida, y prioriza
   // objetivos valiosos (élite/subjefe/jefe) o una presa ya baja de vida (posibilidad real de
   // ejecución) en vez de tirarlo contra cualquier chusma en cuanto se carga.
@@ -168,7 +168,7 @@ function reviveBusyFor(a, r){
   if(netIsGuest()) return a._reviveT > 0; // el invitado solo ve lo que manda el anfitrión
   return a._reviveBy.alive && runElapsedMs - (a._revTouchAt||0) <= REVIVE_GRACE_MS;
 }
-function reviverCanAct(r){ if(duoEnabled()) return false; return !!(r && r.alive && !r.fused); }
+function reviverCanAct(r){ if(duoEnabled()) return false; if(typeof lanesOn==="function" && lanesOn() && lanesNoRevive(null, r)) return false; return !!(r && r.alive && !r.fused); }
 function cancelRevivesBy(r){ if(!r || !heroes) return; for(const a of heroes){ if(a._reviveBy===r){ a._reviveBy = null; a._reviveT = 0; } } }
 // Un cuadro de progreso de r sobre a. Devuelve true si lo terminó de revivir.
 function reviveStep(a, r, dur, dt){
@@ -383,11 +383,12 @@ function updateAllies(dt){
       const d = distance(h,o);
       if(d < 34 && d > 0.01){ mx += (h.x-o.x)/d*0.6; my += (h.y-o.y)/d*0.6; }
     }
+    if(currentArena==="coliseo" && !bm.kite){const d=colBotMove(h,target,bm.dodging);if(d){mx=d.x;my=d.y;}}
     const ml = Math.hypot(mx,my);
     h.moving = ml > 0.05 && !h.fused;
     if(h.moving){
       mx/=ml; my/=ml;
-      const nd = bm.navd ? null : aidAllyDir(h, mx, my); if(nd){ mx = nd.x; my = nd.y; } // (navd: ya sigue su propio camino, p.ej. a un objetivo contextual)
+      const nd = bm.navd || currentArena==="coliseo" ? null : aidAllyDir(h, mx, my); if(nd){ mx = nd.x; my = nd.y; } // (navd: ya sigue su propio camino, p.ej. a un objetivo contextual)
       const spd = h.baseSpeed * runStats.speedMult * arenaRuleSpeedMult() * setSpeedMult(h) * (1-Math.min(0.8,h.slowAmt||0)) * heroSpeedMult(h);
       h.x += mx*spd*dt/1000; h.y += my*spd*dt/1000;
       if(!target){ h.fx = mx; h.fy = my; }

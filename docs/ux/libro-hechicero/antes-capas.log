@@ -1,0 +1,36 @@
+== TRAMO A: arranque ==
+  0.0s  titulo                     (nada)
+  4.4s  relato                     PRIMER-RELATO
+  7.0s  practica-paso1             TUTORIAL
+  8.7s  practica-completa          (nada)
+ 11.1s  A4_ficha_ciudad_0          HECH-FICHA(historia:TU MISION: SOBREVIVIR)
+ 12.6s  A4_ficha_ciudad_1          HECH-FICHA(historia:COMO SE GANA Y COMO SE PIERDE)
+ 14.0s  A4_ficha_ciudad_2          HECH-FICHA(historia:LA NOCHE EN QUE VOLVIO LA HORDA)
+ 15.3s  A4_ficha_ciudad_3          HECH-FICHA(historia:EL HUMO)
+ 16.7s  A4_ficha_ciudad_4          HECH-FICHA(historia:LA PRIMERA CICATRIZ)
+ 18.1s  A4_ficha_ciudad_5          HECH-FICHA(historia:EL GUIA)
+ 19.5s  A4_ficha_ciudad_6          HECH-FICHA(arena; frase de apertura SI)
+ 22.7s  en-juego                   HECH-PANEL + OBJETIVO
+== TRAMO B: fin de la primera partida -> Libro -> siguiente arena ==
+ 25.3s  vuelta-al-menu             DIALOGO( Confirmar 📖 El Libro de la H)
+ 27.7s  intro-abierta              LIBRO(intro:EL LIBRO DE LA HORDA)
+ 40.0s  intro-pag6                 LIBRO(intro:UN GUÍA CON ALAS DE LUZ)
+ 42.4s  intro-pag7                 LIBRO(intro:SOBREVIVIR)
+ 46.5s  intro-cerrada              (nada)
+ 47.7s  entrada-fortaleza          LIBRO(short:)
+ 48.0s  entrada-fortaleza          LIBRO(short:)
+ 48.4s  entrada-fortaleza          LIBRO(short:)
+ 49.0s  entrada-fortaleza          LIBRO(short:FÁBRICA SIN FIN)
+ 49.4s  entrada-fortaleza          LIBRO(short:FÁBRICA SIN FIN)
+ 49.7s  entrada-fortaleza          LIBRO(short:FÁBRICA SIN FIN)
+ 50.1s  entrada-fortaleza          LIBRO(short:FÁBRICA SIN FIN)
+ 50.5s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura SI)
+ 50.8s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura SI)
+ 51.2s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura SI)
+ 51.8s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura SI)
+ 52.1s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura SI)
+ 52.5s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura SI)
+ 52.9s  entrada-fortaleza          HECH-FICHA(arena; frase de apertura SI)
+ 53.6s  B8_ficha_fortaleza_0       HECH-FICHA(arena; frase de apertura SI)
+ 56.3s  en-juego-2                 HECH-PANEL + OBJETIVO
+errores []

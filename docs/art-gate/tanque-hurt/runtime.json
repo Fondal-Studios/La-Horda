@@ -1,0 +1,943 @@
+{
+  "scope": "Base Caballero hurt, actual renderer and decoded guest snapshots; no real relay",
+  "checks": [
+    {
+      "name": "metadata",
+      "ok": true
+    },
+    {
+      "name": "L1 down hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L1 down gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L1 down hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L1 down gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L1 down hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L1 down gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L1 down hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L1 down gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L1 right hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L1 right gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L1 right hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L1 right gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L1 right hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L1 right gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L1 right hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L1 right gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L1 up hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L1 up gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L1 up hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L1 up gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L1 up hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L1 up gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L1 up hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L1 up gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L1 left hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L1 left gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L1 left hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L1 left gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L1 left hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L1 left gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L1 left hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L1 left gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L39 down hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L39 down gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L39 down hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L39 down gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L39 down hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L39 down gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L39 down hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L39 down gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L39 right hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L39 right gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L39 right hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L39 right gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L39 right hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L39 right gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L39 right hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L39 right gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L39 up hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L39 up gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L39 up hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L39 up gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L39 up hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L39 up gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L39 up hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L39 up gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L39 left hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L39 left gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L39 left hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L39 left gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L39 left hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L39 left gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L39 left hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L39 left gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L40 down hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L40 down gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L40 down hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L40 down gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L40 down hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L40 down gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L40 down hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L40 down gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L40 right hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L40 right gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L40 right hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L40 right gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L40 right hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L40 right gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L40 right hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L40 right gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L40 up hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L40 up gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L40 up hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L40 up gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L40 up hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L40 up gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L40 up hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L40 up gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L40 left hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L40 left gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L40 left hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L40 left gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L40 left hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L40 left gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L40 left hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L40 left gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L60 down hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L60 down gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L60 down hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L60 down gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L60 down hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L60 down gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L60 down hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L60 down gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L60 right hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L60 right gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L60 right hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L60 right gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L60 right hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L60 right gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L60 right hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L60 right gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L60 up hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L60 up gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L60 up hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L60 up gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L60 up hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L60 up gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L60 up hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L60 up gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L60 left hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L60 left gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L60 left hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L60 left gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L60 left hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L60 left gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L60 left hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L60 left gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L90 down hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L90 down gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L90 down hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L90 down gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L90 down hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L90 down gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L90 down hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L90 down gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L90 right hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L90 right gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L90 right hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L90 right gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L90 right hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L90 right gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L90 right hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L90 right gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L90 up hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L90 up gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L90 up hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L90 up gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L90 up hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L90 up gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L90 up hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L90 up gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L90 left hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L90 left gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L90 left hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L90 left gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L90 left hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L90 left gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L90 left hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L90 left gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L99 down hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L99 down gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L99 down hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L99 down gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L99 down hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L99 down gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L99 down hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L99 down gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L99 right hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L99 right gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L99 right hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L99 right gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L99 right hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L99 right gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L99 right hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L99 right gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L99 up hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L99 up gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L99 up hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L99 up gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L99 up hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L99 up gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L99 up hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L99 up gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "L99 left hurt 160",
+      "ok": true
+    },
+    {
+      "name": "L99 left gameplay unchanged 160",
+      "ok": true
+    },
+    {
+      "name": "L99 left hurt 81",
+      "ok": true
+    },
+    {
+      "name": "L99 left gameplay unchanged 81",
+      "ok": true
+    },
+    {
+      "name": "L99 left hurt 80",
+      "ok": true
+    },
+    {
+      "name": "L99 left gameplay unchanged 80",
+      "ok": true
+    },
+    {
+      "name": "L99 left hurt 1",
+      "ok": true
+    },
+    {
+      "name": "L99 left gameplay unchanged 1",
+      "ok": true
+    },
+    {
+      "name": "unhurt renderer identical {\"hurtTimer\":0}",
+      "ok": true
+    },
+    {
+      "name": "unhurt renderer identical {\"hurtTimer\":0,\"moving\":true}",
+      "ok": true
+    },
+    {
+      "name": "unhurt renderer identical {\"hurtTimer\":0,\"moving\":false,\"attackAnim\":200}",
+      "ok": true
+    },
+    {
+      "name": "loading fallback visible",
+      "ok": true
+    },
+    {
+      "name": "skin preserved baluarte",
+      "ok": true
+    },
+    {
+      "name": "skin preserved tanque_ancestral",
+      "ok": true
+    },
+    {
+      "name": "skin preserved tanque_juicio",
+      "ok": true
+    },
+    {
+      "name": "ability visible and retains priority estampida",
+      "ok": true
+    },
+    {
+      "name": "unloaded ability keeps hero visible estampida",
+      "ok": true
+    },
+    {
+      "name": "unloaded ability keeps unhurt hero visible estampida",
+      "ok": true
+    },
+    {
+      "name": "ability visible and retains priority torbellino",
+      "ok": true
+    },
+    {
+      "name": "unloaded ability keeps hero visible torbellino",
+      "ok": true
+    },
+    {
+      "name": "unloaded ability keeps unhurt hero visible torbellino",
+      "ok": true
+    },
+    {
+      "name": "ability visible and retains priority grito",
+      "ok": true
+    },
+    {
+      "name": "unloaded ability keeps hero visible grito",
+      "ok": true
+    },
+    {
+      "name": "unloaded ability keeps unhurt hero visible grito",
+      "ok": true
+    },
+    {
+      "name": "guest L1 down",
+      "ok": true
+    },
+    {
+      "name": "guest L1 right",
+      "ok": true
+    },
+    {
+      "name": "guest L1 up",
+      "ok": true
+    },
+    {
+      "name": "guest L1 left",
+      "ok": true
+    },
+    {
+      "name": "guest L39 down",
+      "ok": true
+    },
+    {
+      "name": "guest L39 right",
+      "ok": true
+    },
+    {
+      "name": "guest L39 up",
+      "ok": true
+    },
+    {
+      "name": "guest L39 left",
+      "ok": true
+    },
+    {
+      "name": "guest L40 down",
+      "ok": true
+    },
+    {
+      "name": "guest L40 right",
+      "ok": true
+    },
+    {
+      "name": "guest L40 up",
+      "ok": true
+    },
+    {
+      "name": "guest L40 left",
+      "ok": true
+    },
+    {
+      "name": "guest L60 down",
+      "ok": true
+    },
+    {
+      "name": "guest L60 right",
+      "ok": true
+    },
+    {
+      "name": "guest L60 up",
+      "ok": true
+    },
+    {
+      "name": "guest L60 left",
+      "ok": true
+    },
+    {
+      "name": "guest L90 down",
+      "ok": true
+    },
+    {
+      "name": "guest L90 right",
+      "ok": true
+    },
+    {
+      "name": "guest L90 up",
+      "ok": true
+    },
+    {
+      "name": "guest L90 left",
+      "ok": true
+    },
+    {
+      "name": "guest L99 down",
+      "ok": true
+    },
+    {
+      "name": "guest L99 right",
+      "ok": true
+    },
+    {
+      "name": "guest L99 up",
+      "ok": true
+    },
+    {
+      "name": "guest L99 left",
+      "ok": true
+    },
+    {
+      "name": "original master preserved",
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "status": "PASS"
+}

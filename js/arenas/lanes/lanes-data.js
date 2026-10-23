@@ -1,7 +1,7 @@
 "use strict";
 /* ============================================================
    js/arenas/lanes/lanes-data.js
-   GUERRA DE CRISTALES en el MOTOR REAL — datos y geometría. Mapa 2D inspirado en Wild Rift:
+   GUERRA DE CRISTALES en el MOTOR REAL — datos y geometría. Mapa 2D de tres carriles:
    tres carriles (arriba, medio, abajo) entre dos bases (Zafiro abajo a la izquierda, Ámbar arriba a la derecha), selva con
    campamentos entre los carriles y un río en diagonal con dos objetivos épicos. Cada equipo tiene 3 torres por carril
    (exterior, interior, inhibidora) y un cristal; el cristal queda expuesto cuando cae la torre inhibidora de cualquier carril.
@@ -25,6 +25,27 @@ const LANES = {
   RECALL_MS:5500,                     // volver a la base: se canaliza y se corta si te golpean o te movés
   ECLIPSE_MS:780000, TIME_LIMIT_MS:1080000,
   START_GOLD:500, GOLD_PASSIVE:1.6, GOLD_MINION:[20, 24, 60], GOLD_HERO_KILL:300, GOLD_ASSIST:110, GOLD_TOWER:130, GOLD_EPIC:170, MAX_GOLD:3500, // oro de cada héroe (se gasta en la base)
+  // POSTGAME: lo que el guardado de campaña aporta a Cristales y Coliseo (SOLO en solitario contra bots, con el postgame abierto).
+  // ÚNICO LUGAR de las perillas: se limita lo que cuenta de la campaña para que el postgame premie a quien progresó sin volverse
+  // inalcanzable (cifras y cuentas en docs/modes/POSTGAME.md). Las salas online siguen usando el guardado normalizado.
+  PROGRESS_CAP:{
+    level:90,            // nivel efectivo máximo: abre el árbol de talentos (nv. 40) y la Maestría de rama (nv. 90); sube de nivel real 1-99
+    levelStatFull:60,    // nivel real con el que el bono de estadísticas por nivel llega a su máximo
+    levelStatPct:0.08,   // bono de vida y daño base al llegar a levelStatFull (lineal desde el nivel 1)
+    talentPoints:12,     // puntos del árbol (incluida la Maestría de rama) que cuentan; la campaña da hasta 30
+    masteryAlloc:1,      // puntos por habilidad (0-10 real); x1,10 de poder y -2 % de recarga por habilidad
+    ultAlloc:1,          // ídem para la definitiva
+    masteryUse:5,        // nivel de uso por habilidad (1-40 real): +1,2 % de poder por nivel
+    itemLevel:3, itemIlvl:3, // nivel y nivel de objeto máximos (1-10 real): recorta el stat de cada pieza
+    relics:6,            // reliquias por tipo (0-30 real; 1,5 % cada una)
+    statMax:{hp:1.20, dmg:1.12, speed:1.06, defAdd:0.05}, // TOPE de la vida y el daño base (nivel x equipo x reliquias), de la velocidad y de la defensa extra, contra el mismo campeón sin progreso
+    shieldMax:0.08,      // el escudo permanente de casco + escudo se recorta a este % de la vida máxima (sin tope llega a +200 %)
+    passiveMax:{         // tope de cada pasiva de equipo/talento (suma de TODAS las fuentes); lo que no está acá no se toca
+      dmg_mult:0.05, skilldmg_mult:0.05, atkspeed_mult:0.06, cd_mult:0.06, lifesteal_add:0.03, heal_mult:0.08, def_add:0.04, hp_mult:0.08,
+      speed_mult:0.05, crit_chance_add:0.03, crit_mult_add:0.10, energy_mult:0.08, res_physical:0.10, res_fire:0.10, res_ice:0.10, res_lightning:0.10
+    },
+    botShare:{cw:0.6, col:0.6}   // los bots llevan esta fracción del bono máximo ((statMax-1) x botShare) en vida y daño
+  },
   SHOP_RADIUS:430,                    // distancia a tu cristal para poder comprar objetos (o estar caído)
   XP_MINION:16, XP_CASTER:20, XP_SIEGE:55, XP_HERO:110, XP_TOWER:140, XP_SHARE_R:900, // experiencia por baja (se reparte entre los héroes cercanos)
   CARD_AUTO_MS:15000, MAX_CARDS:12,   // una carta de horda por cada nuevo nivel máximo del equipo; tiempo para elegir

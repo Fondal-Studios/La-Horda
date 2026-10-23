@@ -20,7 +20,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 const URL = process.env.GAME_URL || 'http://127.0.0.1:8902/index.html';
 const MODE = process.env.MODE || 'god';
 const LEVEL_MIN = +(process.env.LEVEL_MIN || 6), BOSS_MIN = +(process.env.BOSS_MIN || 9);
-const CLASSES = (process.env.CLASSES || 'guerrero,mago,nigromante,eren,profeta').split(',');
+const CLASSES = (process.env.CLASSES || 'guerrero,mago,nigromante,ilkan,profeta').split(',');
 const QUICK = !!process.env.QUICK;
 const LV = Object.assign({ ciudad: 1, fortaleza: 7, bosque: 11, micelial: 15, hielo: 19, acuatica: 23, laberinto: 27, abismo: 30, minas: 33, infernal: 36 },
   process.env.LV ? Object.fromEntries(process.env.LV.split(',').map(p => p.split(':')).map(([k, v]) => [k, +v])) : {});

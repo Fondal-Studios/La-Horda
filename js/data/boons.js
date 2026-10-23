@@ -38,10 +38,10 @@ const BOON_LOOKS = {
   frost:["#7fd4ff","#e8f8ff"], fire:["#ff6a3d","#ffcf5c"], poison:["#3fcf6e","#b6ff6a"],
   holy:["#ffd76a","#fff6d0"], void:["#3ad6c4","#b06cff"], blood:["#b01e1e","#ff5c4a"],
   storm:["#ffe36a","#9fc4ff"], stone:["#9a8262","#d8c8a8"], nature:["#4f8f3e","#c8f0a8"],
-  steel:["#9fc8e8","#ffffff"], steam:["#d8d8d8","#ffb08a"]
+  steel:["#9fc8e8","#ffffff"], steam:["#d8d8d8","#ffb08a"], sand:["#d9b36a","#6fe8d6"]
 };
 // skill: índice 0/1/2 o "ult" del kit BASE del guardián (el refuerzo se ata al NOMBRE de esa
-// habilidad: Eren transformado usa otro kit y no dispara refuerzos de su forma humana).
+// habilidad: Ilkan transformado usa otro kit y no dispara refuerzos de su forma humana).
 const BOONS = [
   /* ---------------- TANQUE ---------------- */
   {id:"tq_vortice", champ:"tanque", skill:0, name:"Torbellino Succionador", look:"stone",
@@ -233,21 +233,21 @@ const BOONS = [
     desc:r=>"Al sonar el clarín, los Granaderos disparan una descarga en redondo.",
     fx:[{t:"shards", at:"caster", n:8, pct:0.65}], test:"dmg"},
 
-  /* ---------------- EREN ---------------- */
-  {id:"er_cuchillas", champ:"eren", skill:0, name:"Cuchillas Giratorias", look:"steel",
-    desc:r=>`Al disparar los ganchos, cortás en redondo (${[80,95,110][r]} px) y dejás sangrando.`,
+  /* ---------------- ILKAN ---------------- */
+  {id:"il_hoces", champ:"ilkan", skill:0, name:"Hoces Giratorias", look:"sand",
+    desc:r=>`Al arrojar la lanza, cortás en redondo (${[80,95,110][r]} px) y dejás sangrando.`,
     fx:[{t:"burst", at:"origin", r:[80,95,110], pct:[0.6,0.85,1.1], status:{bleed:0.3}}], test:"dmg"},
-  {id:"er_vapor", champ:"eren", skill:1, name:"Vapor Hirviente", look:"steam",
-    desc:r=>`El Instinto de Supervivencia suelta vapor hirviente alrededor (${[3,4,5][r]} s).`,
+  {id:"il_arena", champ:"ilkan", skill:1, name:"Arena Ardiente", look:"sand",
+    desc:r=>`La Piel de Duna suelta arena ardiente alrededor (${[3,4,5][r]} s).`,
     fx:[{t:"ground", at:"caster", r:100, dur:[3000,4000,5000], dps:[0.3,0.45,0.6], burn:true}], test:"zone"},
-  {id:"er_grito", champ:"eren", skill:2, name:"Grito Ensordecedor", look:"storm",
-    desc:r=>`¡Avancen! aturde ${[0.4,0.6,0.8][r]} s a los enemigos cercanos.`,
+  {id:"il_silbido", champ:"ilkan", skill:2, name:"Silbido Ensordecedor", look:"storm",
+    desc:r=>`El Grito de Caravana aturde ${[0.4,0.6,0.8][r]} s a los enemigos cercanos.`,
     fx:[{t:"burst", at:"caster", r:[120,140,160], pct:[0.3,0.45,0.6], status:{stun:[400,600,800]}}], test:"stun"},
-  {id:"er_juramento", champ:"eren", skill:2, name:"Juramento", look:"steel",
-    desc:r=>`¡Avancen! da un escudo del ${[6,9,12][r]}% de la vida máxima a los aliados cercanos.`,
+  {id:"il_pacto", champ:"ilkan", skill:2, name:"Pacto de Caravana", look:"sand",
+    desc:r=>`El Grito de Caravana da un escudo del ${[6,9,12][r]}% de la vida máxima a los aliados cercanos.`,
     fx:[{t:"ally", at:"caster", r:260, shield:[0.06,0.09,0.12]}], test:"shield"},
-  {id:"er_duo", champ:"eren", skill:2, name:"Rugido de Vapor", duo:["er_vapor","er_grito"], look:"steam",
-    desc:r=>"El grito deja una nube de vapor que quema y frena alrededor.",
+  {id:"il_duo", champ:"ilkan", skill:2, name:"Simún Rugiente", duo:["il_arena","il_silbido"], look:"sand",
+    desc:r=>"El grito levanta un remolino de arena que quema y frena alrededor.",
     fx:[{t:"ground", at:"caster", r:140, dur:4000, dps:0.5, burn:true, slow:0.3}], test:"zone"}
 ];
 const BOON_BY_ID = {};

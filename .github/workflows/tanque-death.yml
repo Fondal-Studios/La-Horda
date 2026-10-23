@@ -1,0 +1,73 @@
+name: Caballero death component gate
+on:
+  pull_request:
+    paths: ['assets/sprites/champions/tanque/v3/**', 'js/assets/champion-sprites.js', 'js/rendering/champion-sprites.js', 'tools/art/check-tanque-death.js', 'tools/art/check-tanque-hurt.js', 'tools/factory/reproduce-authored-component.py', 'art-source/entregas/bloques/B002_tanque/revision-hurt-*/**', 'tools/art/check-authored-clip-density.js', 'tools/factory/extract-authored-clip.py', 'tools/factory/replace-authored-frame.py', 'art-source/entregas/bloques/B002_tanque/revision-death-v3/**', 'docs/art-gate/tanque-death/**', '.github/workflows/tanque-death.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  component:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pillow numpy scipy opencv-python-headless
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - run: python -m unittest tools/factory/test_authored_clip.py tools/factory/test_authored_frame.py
+      - run: python art-source/entregas/bloques/B002_tanque/revision-death-v3/reproduce.py
+      - name: Exact runtime extraction and existing scanner
+        run: |
+          python - <<'PY'
+          import importlib.util
+          from PIL import Image
+          path='assets/sprites/champions/tanque/v3/death.png'
+          assert Image.open(path).tobytes()==Image.open('art-source/entregas/bloques/B002_tanque/revision-death-v3/death.png').tobytes()
+          spec=importlib.util.spec_from_file_location('scan','tools/art/scan_sprites.py')
+          scan=importlib.util.module_from_spec(spec);spec.loader.exec_module(scan)
+          result=scan.analyze(path)
+          assert result['semi']==result['fragments']==0 and result['halo']<=15, result
+          print(result)
+          PY
+      - run: node tools/art/check-authored-clip-density.js assets/sprites/champions/tanque/v3/death.png docs/art-gate/tanque-death/native.json
+      - name: Family style only, not approval of unchanged candidate frames
+        run: python tools/art/painter/style_gate.py --strict art-source/entregas/bloques/B002_tanque/revision-death-v3/atlas.png
+      - name: Reproduce and validate recoil component
+        run: |
+          python tools/factory/reproduce-authored-component.py art-source/entregas/bloques/B002_tanque/revision-hurt-v1
+          python tools/factory/reproduce-authored-component.py art-source/entregas/bloques/B002_tanque/revision-hurt-v3
+          node tools/art/check-authored-clip-density.js assets/sprites/champions/tanque/v3/hurt.png docs/art-gate/tanque-hurt/native.json 1 6
+          python tools/art/painter/style_gate.py --strict art-source/entregas/bloques/B002_tanque/revision-hurt-v3/atlas.png
+          python - <<'PYCODE'
+          import importlib.util
+          from PIL import Image
+          p='assets/sprites/champions/tanque/v3/hurt.png'
+          assert Image.open(p).tobytes()==Image.open('art-source/entregas/bloques/B002_tanque/revision-hurt-v3/hurt.png').tobytes()
+          s=importlib.util.spec_from_file_location('scan','tools/art/scan_sprites.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+          r=m.analyze(p);assert r['semi']==r['fragments']==0 and r['halo']<=15,r
+          PYCODE
+          node tools/art/check-tanque-hurt.js
+      - name: Incorrect frame counts and empty clips cannot pass
+        run: |
+          if node tools/art/check-authored-clip-density.js assets/sprites/champions/tanque/v3/hurt.png /tmp/wrong.json; then exit 1; fi
+          python -c "from PIL import Image; Image.new('RGBA',(672,112)).save('/tmp/blank6.png')"
+          if node tools/art/check-authored-clip-density.js /tmp/blank6.png /tmp/blank6.json 1 6; then exit 1; fi
+          python -c "import json; r=json.load(open('/tmp/blank6.json')); assert len(r['failedFrames'])==6; assert all('FRAME_VACIO' in x['issues'] for x in r['rows'])"
+      - run: node tools/art/check-tanque-death.js
+      - run: node tools/art/check-libertador-death.js
+      - name: Master reference and all appearances
+        run: |
+          python -m http.server 8750 --bind 127.0.0.1 >/tmp/art-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          ROSTER_BASE_URL=http://127.0.0.1:8750 node tools/art/roster_gate.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: caballero-death-component
+          path: docs/art-gate/
+          retention-days: 30

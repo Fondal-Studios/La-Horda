@@ -87,7 +87,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
           for (let i = 0; i < 10; i++) { const e = spawnEnemy('esqueleto'); Object.assign(e, {x: player.x + 60 + (i % 5) * 26, y: player.y + (Math.floor(i / 5) * 2 - 1) * 24, hp: 1e7, maxHp: 1e7, speed: 0, baseSpeed: 0, dmg: 0}); }
           for (let i = 0; i < allies.length; i++) { allies[i].x = player.x - 35 - i * 24; allies[i].y = player.y + 15; allies[i].hp = allies[i].maxHp * 0.5; }
           player.hp = player.maxHp * 0.6; player.energy = 1e4; player.ultCharge = player.ultMax;
-          if (k === 'eren') player.erenFury = 1e4;
+          if (k === 'ilkan') player.ilkanFury = 1e4;
         }
         // Medición DIFERENCIAL: misma partida, mismo RNG sembrado, con y sin el cast. Lo que cambia es
         // el efecto de la habilidad (los bots, la regeneración y el ambiente se cancelan).

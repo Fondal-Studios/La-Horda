@@ -10,6 +10,7 @@ function drawHero(h){
   const drawScale = (colossal ? h.scale*1.55 : (h.growTimer>0 ? h.scale*(h.growScale||1) : h.scale)) * uniqueScaleMult(h);
   if(h._deadAt) h._deadAt = 0;
   drawUniqueAura(h);
+  if(h._mpRunes || h._mpFase) drawMageKitAura(h); // Kit de Magos: runas que orbitan (mage-passives.js)
   const prof = animProfileOf(h);
   const P = animPose(h, prof, true);
   const lift = P.oy<0 ? Math.min(0.35, -P.oy/60) : 0;
@@ -43,6 +44,8 @@ function drawHero(h){
 // Cuerpo del guardián según su arte real (atlas / poses recortadas / procedural de respaldo).
 // Lo comparten el dibujo normal, el hit flash y la caída al morir.
 function drawHeroBody(h, drawScale, spinning, stealthed){
+  // Ultimate body takes priority over equipped skins and pending base atlases.
+  if(h.classKey === "nigromante" && h.nigroDemonForm && drawNigromanteDemon(h,drawScale,stealthed?0.32:1)) return;
   if(champPackPending(h.classKey)) return; // nunca el arte viejo mientras baja el redibujado
   // SKIN DE SET COMPLETO (única transformación visual completa por equipo). Solo si el arte existe
   // (SET_SKINS en set-effects.js); sin arte, el set completo se ve con su aura completa.
@@ -67,8 +70,8 @@ function drawHeroBody(h, drawScale, spinning, stealthed){
     // Sylva: dibujado con éxito desde sus sprites reales recortados.
   } else if(h.classKey==="libertador" && drawLibertador(h, drawScale, stealthed?0.32:1)){
     // El Libertador: a pie / a caballo (js/champions/libertador.js)
-  } else if(h.classKey==="eren" && drawEren(h, drawScale, stealthed?0.32:1)){
-    // Eren: humano / El Portador (js/champions/eren.js)
+  } else if(h.classKey==="ilkan" && drawIlkan(h, drawScale, stealthed?0.32:1)){
+    // Ilkan: humano / Coloso de Arena (js/champions/ilkan.js)
   } else if(h.classKey==="nigromante" && h.nigroDemonForm && drawNigromanteDemon(h, drawScale, stealthed?0.32:1)){
     // Nigromante transformado (Encarnación del Abismo): Demonio Nigromántico.
   } else if(h.classKey==="nigromante" && drawNigromanteReal(h, drawScale, stealthed?0.32:1)){
@@ -224,7 +227,14 @@ function drawHeroOverlays(h, colossal, spinning){
     ctx.strokeStyle = "rgba(143,208,255,0.75)"; ctx.lineWidth = 3;
     ctx.beginPath(); ctx.arc(h.x, h.y-14, h.radius*(colossal?1.5:1)+10, 0, Math.PI*2); ctx.stroke();
   }
-  if(h === player){
+  const sd = (typeof lanesOn==="function" && lanesOn() && typeof sidesOf==="function") ? sidesOf(h) : null; // Cristales/Coliseo: verde = aliado, rojo = enemigo (lanes-sides.js)
+  if(sd){
+    // Placa de vida: cuadrito de clase + barra del bando + ícono (escudo / espada). El aro bajo los pies lo dibuja lanesDrawTop.
+    const w = h === player ? 40 : 36, top = h.y - 58, x0 = h.x - w/2;
+    sidesBar(ctx, sd, x0, top, w, 6, h.hp/h.maxHp);
+    ctx.fillStyle = h.cls.color; ctx.fillRect(x0-12, top-1, 7, 8); ctx.strokeStyle = "rgba(0,0,0,0.85)"; ctx.lineWidth = 1; ctx.strokeRect(x0-12, top-1, 7, 8);
+    sidesIcon(ctx, sd, x0+w+9, top+3, 10);
+  } else if(h === player){
     // Anillo del jugador para no confundirlo con los aliados
     ctx.strokeStyle = "rgba(255,207,92,0.75)"; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.ellipse(h.x, h.y+5, 20, 8, 0, 0, Math.PI*2); ctx.stroke();
@@ -304,6 +314,7 @@ function drawEnemy(e){
 // Dibujo del cuerpo del enemigo según qué arte real tenga (sin sombra/estado/barras): lo
 // comparten el dibujo normal, el hit flash y la animación de muerte.
 function drawEnemyBody(e){
+  if(battlefieldDrawMonster(e))return;
   if(arenaHas("drawEnemyBody") && arenaHook("drawEnemyBody", e)){
     // cuerpo propio de la arena (El Reino Micelial: núcleos, raíces, la Madre por partes)
   } else if(typeof bodySwapKey==="function" && bodySwapKey(e.type) && drawEnemyAtlasPack(e)){
@@ -458,7 +469,16 @@ function drawEnemyOverlays(e){
   // horda); élites y subjefes siempre, más gruesas y con marco; el jefe usa la barra grande de
   // arriba de la pantalla (ver boss-hud.js).
   const hpPct = Math.max(0, e.hp/e.maxHp);
-  if(e.rank==="jefe" && e===boss){ /* barra grande de jefe en el HUD */ }
+  const sd = (e.team!==undefined && e.team!==null && typeof lanesOn==="function" && lanesOn() && typeof sidesOf==="function") ? sidesOf(e) : null; // súbditos y selva en Cristales/Coliseo
+  if(sd){
+    // Barra del bando (verde aliado / rojo enemigo / ámbar neutral). Las comunes aparecen al recibir daño; élites y mayores, siempre.
+    const big = e.rank==="subjefe" || e.rank==="jefe", strong = big || e.rank==="elite";
+    if(e.epicId==null && (strong || hpPct < 0.999)){ // (los objetivos épicos llevan su barra grande en lanesDrawTop)
+      const bw = strong ? Math.max(e.radius*2.2, big ? 70 : 44) : Math.max(e.radius*1.7, 26), bh = strong ? 7 : 5;
+      sidesBar(ctx, sd, e.x-bw/2, e.y - e.radius - (strong ? 16 : 12), bw, bh, hpPct);
+    }
+  }
+  else if(e.rank==="jefe" && e===boss){ /* barra grande de jefe en el HUD */ }
   else if(e.rank==="elite" || e.rank==="subjefe"){
     const big = e.rank==="subjefe";
     const bw = Math.max(e.radius*2.2, big ? 70 : 44), bh = big ? 8 : 6;
@@ -476,8 +496,10 @@ function drawEnemyOverlays(e){
     const bw = Math.max(e.radius*1.7, 24);
     const by = e.y - e.radius - 12;
     ctx.fillStyle = "rgba(0,0,0,0.6)"; ctx.fillRect(e.x-bw/2, by, bw, 4);
-    ctx.fillStyle = e.rank==="jefe" ? "#ffb300" : "#e04a3a";
+    const cpE = typeof cvdPal==="function" ? cvdPal() : null;
+    ctx.fillStyle = cpE ? cpE.enemyHex : (e.rank==="jefe" ? "#ffb300" : "#e04a3a");
     ctx.fillRect(e.x-bw/2, by, bw*hpPct, 4);
+    if(cpE){ ctx.fillStyle = "rgba(0,0,0,0.65)"; for(let mx=8; mx<bw; mx+=8) ctx.fillRect(e.x-bw/2+mx, by, 1, 4); } // muescas: se lee sin color
   }
   if(e.electrifiedTimer>0){
     // Aura eléctrica real (sprite) de Cadena de Relámpagos mientras dura el efecto

@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "lote": "B002_tanque",
+  "bloque": "B002",
+  "fecha": "2026-10-19",
+  "autor": "ChatGPT; IA autorizada por el dueño",
+  "estado": "EN_CORRECCION",
+  "estado_tecnico": "FIX_NATIVE",
+  "proveniencia": {
+    "original": true,
+    "ia": true,
+    "referencias": [
+      "art-source/entregas/2026-10-19_tanque_revision_02/campeones/tanque/hoja_36poses.png",
+      "docs/art-brief/campeones/tanque.md",
+      "docs/art-brief/ejemplos/tanque/tanque.cuerpo.muerte__ref.webp"
+    ],
+    "herramientas": [
+      "normalize_sprites.py:process",
+      "import-authored-sheet.py",
+      "style_gate.py",
+      "scan_sprites.py:analyze",
+      "gen-referencias.py",
+      "ImageMagick export PSD"
+    ],
+    "fuentesEditables": [
+      "fuentes/hoja_36poses.psd"
+    ],
+    "nota": "PSD raster de una capa. Reutiliza la fuente guardada; no se generaron imágenes adicionales ni se certifica autoría nativa."
+  },
+  "assets": [
+    {
+      "tipo": "campeon",
+      "id": "tanque",
+      "archivo": "campeones/tanque/hoja_36poses.png",
+      "items_manifiesto": [
+        "tanque.cuerpo.muerte"
+      ],
+      "resuelve": false,
+      "celda": [
+        112,
+        112
+      ],
+      "cols": 4,
+      "filas": 9,
+      "cuadros": 36,
+      "refH": 69,
+      "colores_base": [
+        "#14213a",
+        "#103090",
+        "#905030",
+        "#a9b5c2",
+        "#f0ba91",
+        "#dca62d"
+      ],
+      "hoja_contacto": "campeones/tanque/hoja_contacto.png",
+      "chequeos": "campeones/tanque/chequeos.json",
+      "estado": "FIX_NATIVE"
+    }
+  ],
+  "pendientes": [
+    "Corregir señal ILUSTRACION en 19/36 cuadros; índices en revision_nativa. La autorización de trabajo ya está otorgada.",
+    "Revisar/corregir continuidad de espada en cuadros24–26 y29.",
+    "Revisar diferencia de altura entre caminar frontal y espalda; no se certifica fluidez.",
+    "Revisión visual de identidad y animaciones, roster_gate, skin_audit y prueba en juego después de corregir el arte; no es una espera de permiso del dueño."
+  ],
+  "revision_tecnica_previa": {
+    "estado": "EN_CORRECCION",
+    "estado_tecnico": "TECNICO_VERIFICADO",
+    "alcance": "Resultados históricos de importador/scan/Style Gate; no certifican todos los cuadros."
+  },
+  "revision_nativa": {
+    "estado": "FIX",
+    "detector": "tools/art/check-authored-density.js (canónico, escala1)",
+    "git_blob": "dbba1137e2ae11b660862570c3e8ed55cc1acb89",
+    "cuadros_fallidos": [
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      25,
+      32,
+      33,
+      34,
+      35
+    ],
+    "motivo": "ILUSTRACION",
+    "run": 39293150014,
+    "job": 118198719642,
+    "commit": "5feaf4bfb3e62a318aaf469e8bc12df0e92fe524",
+    "evidencia_url": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39293150014",
+    "approvalClaimed": false,
+    "installed": false
+  }
+}

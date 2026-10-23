@@ -22,12 +22,12 @@ const SKILL_TERRAIN = {
   // cargas y artillería
   sm_san_lorenzo:        {dmg:22, r:120, at:"self"},
   sm_andes_ult:          {dmg:36, r:210},
-  // el titán
-  titan_sismo:           {dmg:34, r:170, at:"self"},
-  titan_terremoto:       {dmg:52, r:240, at:"self"},
-  titan_retumbar:        {dmg:28, r:150},
-  eren_rumbling_ult:     {dmg:60, r:270, at:"self"},
-  eren_titan_ult:        {dmg:30, r:170, at:"self"}
+  // el coloso
+  colossus_slam:           {dmg:34, r:170, at:"self"},
+  colossus_sinkhole:       {dmg:52, r:240, at:"self"},
+  colossus_march:        {dmg:28, r:150},
+  ilkan_finale_ult:     {dmg:60, r:270, at:"self"},
+  ilkan_colossus_ult:        {dmg:30, r:170, at:"self"}
 };
 function skillTerrainOf(sk){ return (sk && (sk.terrain || SKILL_TERRAIN[sk.kind])) || null; }
 

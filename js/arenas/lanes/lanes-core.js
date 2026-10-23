@@ -1,7 +1,7 @@
 "use strict";
 /* ============================================================
    js/arenas/lanes/lanes-core.js
-   GUERRA DE CRISTALES en el MOTOR REAL — lógica de la partida (estilo Wild Rift en 2D). Mapa de tres carriles (lanes-data.js).
+   GUERRA DE CRISTALES en el MOTOR REAL — lógica de la partida (MOBA de tres carriles en 2D). Mapa de tres carriles (lanes-data.js).
    Cada equipo tiene 9 torres (3 por carril) y un cristal; se derriban en orden dentro de cada carril y el cristal se expone
    cuando cae la torre inhibidora de cualquiera.
    - PvP: cada héroe tiene un AVATAR dentro de `enemies` (entidad invisible que sigue al héroe). Como todas las habilidades de la
@@ -62,6 +62,7 @@ function lanesStart(opts){
   for(let i = 0; i < size - 1; i++) mates.push(pick(asArr(opts.mate)[i]));
   for(let i = 0; i < size; i++) foes.push(pick(asArr(opts.rivals)[i]));
   lanesBegin("solo", opts.seed);
+  if(typeof postgameInstall === "function") postgameInstall("cw", mine, opts);   // postgame: tu campeón con tope de progresión (o Entrenamiento normalizado)
   LN.size = size; LN.setup = {mine, mate:mates, rivals:foes, size};
   selectedClass = mine; currentArena = "convergencia"; lobbyAllies = [...mates, ...foes];
   try{ startRun(LANES.RUNLEVEL); }
@@ -108,6 +109,7 @@ function lanesRunStart(){
   L.team = [lanesNewTeam(0), lanesNewTeam(1)]; runLevel = LANES.RUNLEVEL;
   levelDuration = 1e12; levelTimer = 0; midBossSpawned = true; // el motor no cierra niveles ni genera jefes
   const half = Math.ceil(heroes.length / 2), slot = [0, 0];
+  if(typeof postgameTagHeroes === "function") postgameTagHeroes();
   heroes.forEach((h, k)=>{
     h.team = h.lane = (L.assignment && L.assignment[k] != null) ? L.assignment[k] : (k < half ? 0 : 1);
     h.ln = LANES_ROLE_LANES[slot[h.team]++ % LANES_ROLE_LANES.length]; h._lnProxy = null; h.dead_t = 0;
@@ -124,6 +126,7 @@ function lanesRunStart(){
 
 /* ---------------- geometría ---------------- */
 function lanesClamp(ent){
+  if(!ent.lanesProxy)aidCollideEnemy(ent);
   const b = laneBox(), r = (ent.radius || 18) * 0.5 + 6;
   ent.x = Math.max(b.x0 + r, Math.min(b.x1 - r, ent.x));
   ent.y = Math.max(b.y0 + r + 30, Math.min(b.y1 - r, ent.y));
@@ -390,7 +393,7 @@ function lanesFinish(winnerTeam, why){
   showBanner(winnerTeam === -1 ? "¡EMPATE!" : (winnerTeam === (player && player.team) ? "¡VICTORIA!" : "CRISTAL CAÍDO"));
   setTimeout(()=>{ if(LN === L && typeof lanesShowResult === "function") lanesShowResult(); }, 1600);
 }
-function lanesNoRevive(a, by){ return !!LN && LN.mode === "coliseo" && !!LN.col && LN.col.phase === "fight"; }
+function lanesNoRevive(a, by){ return !!LN && LN.mode === "coliseo"; } // Coliseo competitivo: en ninguna fase se revive; solo hay reaparición por temporizador (lanesHeroTick)
 function lanesOnPlayerDeath(){ if(LN && LN.mode === "coliseo") return; /* reaparece solo (lanesHeroTick): nunca hay derrota por caer */ showBanner("Caíste · volvés en " + Math.round((LN && player && player._respawnAt ? Math.max(0, player._respawnAt - LN.t) : LANES.RESPAWN_MS) / 1000) + " s"); }
 
 ARENA_DEFS.convergencia = {
@@ -405,6 +408,7 @@ ARENA_DEFS.convergencia = {
   enemyTarget:lanesEnemyTarget,
   enemyKilled:lanesEnemyKilled,
   botTarget:lanesBotTarget,
+  botState:lanesBotState,
   ownSpawns:()=>true,
   holdLevel:()=>true,
   afterEnemies:()=>{ for(const e of enemies) if(e.alive) lanesClamp(e); }

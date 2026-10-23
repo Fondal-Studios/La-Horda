@@ -3578,51 +3578,51 @@
    }
   },
   {
-   "key": "eren",
-   "name": "Eren, el Indómito",
+   "key": "ilkan",
+   "name": "Ilkan, el Caminante de Dunas",
    "role": "asesino",
    "checks": [
     {
      "area": "identity",
      "name": "nombre propio",
      "level": "PASS",
-     "detail": "Eren"
+     "detail": "Ilkan"
     },
     {
      "area": "identity",
      "name": "título",
      "level": "PASS",
-     "detail": "el Indómito"
+     "detail": "el Caminante de Dunas"
     },
     {
      "area": "identity",
      "name": "nombre de menú = \"Nombre, título\"",
      "level": "PASS",
-     "detail": "Eren, el Indómito"
+     "detail": "Ilkan, el Caminante de Dunas"
     },
     {
      "area": "lore",
      "name": "largo de historia",
      "level": "PASS",
-     "detail": "308 caracteres (banda 260-480)"
+     "detail": "434 caracteres (banda 260-480)"
     },
     {
      "area": "lore",
      "name": "origen legible",
      "level": "PASS",
-     "detail": "Detrás de los muros"
+     "detail": "Las Dunas Quebradas"
     },
     {
      "area": "lore",
      "name": "frase de catálogo",
      "level": "PASS",
-     "detail": "92 caracteres"
+     "detail": "101 caracteres"
     },
     {
      "area": "lore",
      "name": "la frase nombra al campeón",
      "level": "PASS",
-     "detail": "Eren"
+     "detail": "Ilkan"
     },
     {
      "area": "role",
@@ -3634,7 +3634,7 @@
      "area": "kit",
      "name": "pasiva",
      "level": "PASS",
-     "detail": "Seguir Adelante"
+     "detail": "Sed de Horizonte"
     },
     {
      "area": "kit",
@@ -3670,125 +3670,125 @@
      "area": "art",
      "name": "sprite visible en partida",
      "level": "PASS",
-     "detail": "411 píxeles"
+     "detail": "260 píxeles"
     },
     {
      "area": "ability",
-     "name": "Hab. 1 Equipo de Maniobras: efecto de juego",
+     "name": "Hab. 1 Lanza-Pendón: efecto de juego",
      "level": "PASS",
      "detail": "daño 483, enemigos con estado 1, aliados 0, propio 12, entidades 0"
     },
     {
      "area": "ability",
-     "name": "Hab. 1 Equipo de Maniobras: VFX",
+     "name": "Hab. 1 Lanza-Pendón: VFX",
      "level": "PASS",
      "detail": "81"
     },
     {
      "area": "ability",
-     "name": "Hab. 1 Equipo de Maniobras: SFX",
+     "name": "Hab. 1 Lanza-Pendón: SFX",
      "level": "PASS",
      "detail": "5"
     },
     {
      "area": "ability",
-     "name": "Hab. 1 Equipo de Maniobras: feedback (números/avisos)",
+     "name": "Hab. 1 Lanza-Pendón: feedback (números/avisos)",
      "level": "PASS",
      "detail": "10"
     },
     {
      "area": "ability",
-     "name": "Hab. 1 Equipo de Maniobras: replicado a invitados",
+     "name": "Hab. 1 Lanza-Pendón: replicado a invitados",
      "level": "PASS",
      "detail": "5 eventos de red"
     },
     {
      "area": "ability",
-     "name": "Hab. 2 Instinto de Supervivencia: efecto de juego",
+     "name": "Hab. 2 Piel de Duna: efecto de juego",
      "level": "PASS",
      "detail": "daño 0, enemigos con estado 0, aliados 0, propio 2, entidades 0"
     },
     {
      "area": "ability",
-     "name": "Hab. 2 Instinto de Supervivencia: VFX",
+     "name": "Hab. 2 Piel de Duna: VFX",
      "level": "PASS",
      "detail": "4"
     },
     {
      "area": "ability",
-     "name": "Hab. 2 Instinto de Supervivencia: SFX",
+     "name": "Hab. 2 Piel de Duna: SFX",
      "level": "PASS",
      "detail": "2"
     },
     {
      "area": "ability",
-     "name": "Hab. 2 Instinto de Supervivencia: feedback (números/avisos)",
+     "name": "Hab. 2 Piel de Duna: feedback (números/avisos)",
      "level": "PASS",
      "detail": "0"
     },
     {
      "area": "ability",
-     "name": "Hab. 2 Instinto de Supervivencia: replicado a invitados",
+     "name": "Hab. 2 Piel de Duna: replicado a invitados",
      "level": "PASS",
      "detail": "6 eventos de red"
     },
     {
      "area": "ability",
-     "name": "Hab. 3 ¡Avancen!: efecto de juego",
+     "name": "Hab. 3 Grito de Caravana: efecto de juego",
      "level": "PASS",
      "detail": "daño 0, enemigos con estado 0, aliados 3, propio 3, entidades 0"
     },
     {
      "area": "ability",
-     "name": "Hab. 3 ¡Avancen!: VFX",
+     "name": "Hab. 3 Grito de Caravana: VFX",
      "level": "PASS",
      "detail": "82"
     },
     {
      "area": "ability",
-     "name": "Hab. 3 ¡Avancen!: SFX",
+     "name": "Hab. 3 Grito de Caravana: SFX",
      "level": "PASS",
      "detail": "2"
     },
     {
      "area": "ability",
-     "name": "Hab. 3 ¡Avancen!: feedback (números/avisos)",
+     "name": "Hab. 3 Grito de Caravana: feedback (números/avisos)",
      "level": "PASS",
      "detail": "0"
     },
     {
      "area": "ability",
-     "name": "Hab. 3 ¡Avancen!: replicado a invitados",
+     "name": "Hab. 3 Grito de Caravana: replicado a invitados",
      "level": "PASS",
      "detail": "7 eventos de red"
     },
     {
      "area": "ability",
-     "name": "Definitiva El Portador: efecto de juego",
+     "name": "Definitiva Coloso de Arena: efecto de juego",
      "level": "PASS",
      "detail": "daño 0, enemigos con estado 0, aliados 0, propio 13, entidades 0"
     },
     {
      "area": "ability",
-     "name": "Definitiva El Portador: VFX",
+     "name": "Definitiva Coloso de Arena: VFX",
      "level": "PASS",
      "detail": "11"
     },
     {
      "area": "ability",
-     "name": "Definitiva El Portador: SFX",
+     "name": "Definitiva Coloso de Arena: SFX",
      "level": "PASS",
      "detail": "4"
     },
     {
      "area": "ability",
-     "name": "Definitiva El Portador: feedback (números/avisos)",
+     "name": "Definitiva Coloso de Arena: feedback (números/avisos)",
      "level": "PASS",
      "detail": "0"
     },
     {
      "area": "ability",
-     "name": "Definitiva El Portador: replicado a invitados",
+     "name": "Definitiva Coloso de Arena: replicado a invitados",
      "level": "PASS",
      "detail": "7 eventos de red"
     }
@@ -3796,23 +3796,23 @@
    "abilities": [
     {
      "slot": 0,
-     "name": "Equipo de Maniobras",
-     "kind": "eren_hook",
+     "name": "Lanza-Pendón",
+     "kind": "ilkan_lance",
      "targeting": "dash",
      "status": [],
      "effect": true,
      "selfKeys": [
-      "erenPhaseTimer",
-      "erenHookDx",
-      "erenHookDy",
-      "erenDashLeft",
-      "erenHookDmg",
-      "erenHookArea",
-      "erenHookRedirects",
-      "erenAnchorX",
-      "erenAnchorY",
-      "erenLaunchT",
-      "erenSlashFxTimer"
+      "ilkanPhaseTimer",
+      "ilkanHookDx",
+      "ilkanHookDy",
+      "ilkanDashLeft",
+      "ilkanHookDmg",
+      "ilkanHookArea",
+      "ilkanHookRedirects",
+      "ilkanAnchorX",
+      "ilkanAnchorY",
+      "ilkanLaunchT",
+      "ilkanSlashFxTimer"
      ],
      "dmg": 483,
      "enemiesAffected": 1,
@@ -3827,16 +3827,16 @@
     },
     {
      "slot": 1,
-     "name": "Instinto de Supervivencia",
-     "kind": "eren_instinct",
+     "name": "Piel de Duna",
+     "kind": "ilkan_temple",
      "targeting": "self",
      "status": [
       "buff"
      ],
      "effect": true,
      "selfKeys": [
-      "erenInstinctTimer",
-      "erenPoseTimer"
+      "ilkanInstinctTimer",
+      "ilkanPoseTimer"
      ],
      "dmg": 0,
      "enemiesAffected": 0,
@@ -3851,17 +3851,17 @@
     },
     {
      "slot": 2,
-     "name": "¡Avancen!",
-     "kind": "eren_advance",
+     "name": "Grito de Caravana",
+     "kind": "ilkan_caravan",
      "targeting": "self_aoe",
      "status": [
       "buff"
      ],
      "effect": true,
      "selfKeys": [
-      "erenAdvanceTimer",
-      "erenAdvancePow",
-      "erenPoseTimer"
+      "ilkanAdvanceTimer",
+      "ilkanAdvancePow",
+      "ilkanPoseTimer"
      ],
      "dmg": 0,
      "enemiesAffected": 0,
@@ -3876,8 +3876,8 @@
     },
     {
      "slot": "ult",
-     "name": "El Portador",
-     "kind": "eren_titan_ult",
+     "name": "Coloso de Arena",
+     "kind": "ilkan_colossus_ult",
      "targeting": "self",
      "status": [
       "buff"
@@ -3888,15 +3888,15 @@
       "maxHp",
       "hp",
       "def",
-      "erenPhaseTimer",
-      "erenTitanDur",
-      "erenHookRedirects",
-      "erenTitan",
-      "erenTitanTimer",
-      "erenTitanMax",
-      "erenRumblingReady",
-      "erenRegenPool",
-      "erenCombo"
+      "ilkanPhaseTimer",
+      "ilkanColossusDur",
+      "ilkanHookRedirects",
+      "ilkanColossus",
+      "ilkanColossusTimer",
+      "ilkanColossusMax",
+      "ilkanFinaleReady",
+      "ilkanRegenPool",
+      "ilkanCombo"
      ],
      "dmg": 0,
      "enemiesAffected": 0,

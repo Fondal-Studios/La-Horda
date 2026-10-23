@@ -1,0 +1,565 @@
+{
+  "scope": "Original Myla four-frame death only; real renderer and decoded guest snapshots",
+  "checks": [
+    {
+      "name": "component metadata",
+      "ok": true
+    },
+    {
+      "name": "original master retained",
+      "ok": true
+    },
+    {
+      "name": "L1 down death 0",
+      "ok": true
+    },
+    {
+      "name": "L1 down death 1",
+      "ok": true
+    },
+    {
+      "name": "L1 down death 2",
+      "ok": true
+    },
+    {
+      "name": "L1 down death 3",
+      "ok": true
+    },
+    {
+      "name": "L1 side death 0",
+      "ok": true
+    },
+    {
+      "name": "L1 side death 1",
+      "ok": true
+    },
+    {
+      "name": "L1 side death 2",
+      "ok": true
+    },
+    {
+      "name": "L1 side death 3",
+      "ok": true
+    },
+    {
+      "name": "L1 up death 0",
+      "ok": true
+    },
+    {
+      "name": "L1 up death 1",
+      "ok": true
+    },
+    {
+      "name": "L1 up death 2",
+      "ok": true
+    },
+    {
+      "name": "L1 up death 3",
+      "ok": true
+    },
+    {
+      "name": "L1 left death 0",
+      "ok": true
+    },
+    {
+      "name": "L1 left death 1",
+      "ok": true
+    },
+    {
+      "name": "L1 left death 2",
+      "ok": true
+    },
+    {
+      "name": "L1 left death 3",
+      "ok": true
+    },
+    {
+      "name": "L1 final pose holds",
+      "ok": true
+    },
+    {
+      "name": "L1 local death clock not serialized",
+      "ok": true
+    },
+    {
+      "name": "L1 revive clears death clock",
+      "ok": true
+    },
+    {
+      "name": "L1 second death restarts",
+      "ok": true
+    },
+    {
+      "name": "L39 down death 0",
+      "ok": true
+    },
+    {
+      "name": "L39 down death 1",
+      "ok": true
+    },
+    {
+      "name": "L39 down death 2",
+      "ok": true
+    },
+    {
+      "name": "L39 down death 3",
+      "ok": true
+    },
+    {
+      "name": "L39 side death 0",
+      "ok": true
+    },
+    {
+      "name": "L39 side death 1",
+      "ok": true
+    },
+    {
+      "name": "L39 side death 2",
+      "ok": true
+    },
+    {
+      "name": "L39 side death 3",
+      "ok": true
+    },
+    {
+      "name": "L39 up death 0",
+      "ok": true
+    },
+    {
+      "name": "L39 up death 1",
+      "ok": true
+    },
+    {
+      "name": "L39 up death 2",
+      "ok": true
+    },
+    {
+      "name": "L39 up death 3",
+      "ok": true
+    },
+    {
+      "name": "L39 left death 0",
+      "ok": true
+    },
+    {
+      "name": "L39 left death 1",
+      "ok": true
+    },
+    {
+      "name": "L39 left death 2",
+      "ok": true
+    },
+    {
+      "name": "L39 left death 3",
+      "ok": true
+    },
+    {
+      "name": "L39 final pose holds",
+      "ok": true
+    },
+    {
+      "name": "L39 local death clock not serialized",
+      "ok": true
+    },
+    {
+      "name": "L39 revive clears death clock",
+      "ok": true
+    },
+    {
+      "name": "L39 second death restarts",
+      "ok": true
+    },
+    {
+      "name": "L40 down death 0",
+      "ok": true
+    },
+    {
+      "name": "L40 down death 1",
+      "ok": true
+    },
+    {
+      "name": "L40 down death 2",
+      "ok": true
+    },
+    {
+      "name": "L40 down death 3",
+      "ok": true
+    },
+    {
+      "name": "L40 side death 0",
+      "ok": true
+    },
+    {
+      "name": "L40 side death 1",
+      "ok": true
+    },
+    {
+      "name": "L40 side death 2",
+      "ok": true
+    },
+    {
+      "name": "L40 side death 3",
+      "ok": true
+    },
+    {
+      "name": "L40 up death 0",
+      "ok": true
+    },
+    {
+      "name": "L40 up death 1",
+      "ok": true
+    },
+    {
+      "name": "L40 up death 2",
+      "ok": true
+    },
+    {
+      "name": "L40 up death 3",
+      "ok": true
+    },
+    {
+      "name": "L40 left death 0",
+      "ok": true
+    },
+    {
+      "name": "L40 left death 1",
+      "ok": true
+    },
+    {
+      "name": "L40 left death 2",
+      "ok": true
+    },
+    {
+      "name": "L40 left death 3",
+      "ok": true
+    },
+    {
+      "name": "L40 final pose holds",
+      "ok": true
+    },
+    {
+      "name": "L40 local death clock not serialized",
+      "ok": true
+    },
+    {
+      "name": "L40 revive clears death clock",
+      "ok": true
+    },
+    {
+      "name": "L40 second death restarts",
+      "ok": true
+    },
+    {
+      "name": "L60 down death 0",
+      "ok": true
+    },
+    {
+      "name": "L60 down death 1",
+      "ok": true
+    },
+    {
+      "name": "L60 down death 2",
+      "ok": true
+    },
+    {
+      "name": "L60 down death 3",
+      "ok": true
+    },
+    {
+      "name": "L60 side death 0",
+      "ok": true
+    },
+    {
+      "name": "L60 side death 1",
+      "ok": true
+    },
+    {
+      "name": "L60 side death 2",
+      "ok": true
+    },
+    {
+      "name": "L60 side death 3",
+      "ok": true
+    },
+    {
+      "name": "L60 up death 0",
+      "ok": true
+    },
+    {
+      "name": "L60 up death 1",
+      "ok": true
+    },
+    {
+      "name": "L60 up death 2",
+      "ok": true
+    },
+    {
+      "name": "L60 up death 3",
+      "ok": true
+    },
+    {
+      "name": "L60 left death 0",
+      "ok": true
+    },
+    {
+      "name": "L60 left death 1",
+      "ok": true
+    },
+    {
+      "name": "L60 left death 2",
+      "ok": true
+    },
+    {
+      "name": "L60 left death 3",
+      "ok": true
+    },
+    {
+      "name": "L60 final pose holds",
+      "ok": true
+    },
+    {
+      "name": "L60 local death clock not serialized",
+      "ok": true
+    },
+    {
+      "name": "L60 revive clears death clock",
+      "ok": true
+    },
+    {
+      "name": "L60 second death restarts",
+      "ok": true
+    },
+    {
+      "name": "L90 down death 0",
+      "ok": true
+    },
+    {
+      "name": "L90 down death 1",
+      "ok": true
+    },
+    {
+      "name": "L90 down death 2",
+      "ok": true
+    },
+    {
+      "name": "L90 down death 3",
+      "ok": true
+    },
+    {
+      "name": "L90 side death 0",
+      "ok": true
+    },
+    {
+      "name": "L90 side death 1",
+      "ok": true
+    },
+    {
+      "name": "L90 side death 2",
+      "ok": true
+    },
+    {
+      "name": "L90 side death 3",
+      "ok": true
+    },
+    {
+      "name": "L90 up death 0",
+      "ok": true
+    },
+    {
+      "name": "L90 up death 1",
+      "ok": true
+    },
+    {
+      "name": "L90 up death 2",
+      "ok": true
+    },
+    {
+      "name": "L90 up death 3",
+      "ok": true
+    },
+    {
+      "name": "L90 left death 0",
+      "ok": true
+    },
+    {
+      "name": "L90 left death 1",
+      "ok": true
+    },
+    {
+      "name": "L90 left death 2",
+      "ok": true
+    },
+    {
+      "name": "L90 left death 3",
+      "ok": true
+    },
+    {
+      "name": "L90 final pose holds",
+      "ok": true
+    },
+    {
+      "name": "L90 local death clock not serialized",
+      "ok": true
+    },
+    {
+      "name": "L90 revive clears death clock",
+      "ok": true
+    },
+    {
+      "name": "L90 second death restarts",
+      "ok": true
+    },
+    {
+      "name": "L99 down death 0",
+      "ok": true
+    },
+    {
+      "name": "L99 down death 1",
+      "ok": true
+    },
+    {
+      "name": "L99 down death 2",
+      "ok": true
+    },
+    {
+      "name": "L99 down death 3",
+      "ok": true
+    },
+    {
+      "name": "L99 side death 0",
+      "ok": true
+    },
+    {
+      "name": "L99 side death 1",
+      "ok": true
+    },
+    {
+      "name": "L99 side death 2",
+      "ok": true
+    },
+    {
+      "name": "L99 side death 3",
+      "ok": true
+    },
+    {
+      "name": "L99 up death 0",
+      "ok": true
+    },
+    {
+      "name": "L99 up death 1",
+      "ok": true
+    },
+    {
+      "name": "L99 up death 2",
+      "ok": true
+    },
+    {
+      "name": "L99 up death 3",
+      "ok": true
+    },
+    {
+      "name": "L99 left death 0",
+      "ok": true
+    },
+    {
+      "name": "L99 left death 1",
+      "ok": true
+    },
+    {
+      "name": "L99 left death 2",
+      "ok": true
+    },
+    {
+      "name": "L99 left death 3",
+      "ok": true
+    },
+    {
+      "name": "L99 final pose holds",
+      "ok": true
+    },
+    {
+      "name": "L99 local death clock not serialized",
+      "ok": true
+    },
+    {
+      "name": "L99 revive clears death clock",
+      "ok": true
+    },
+    {
+      "name": "L99 second death restarts",
+      "ok": true
+    },
+    {
+      "name": "living base remains visible without death pack",
+      "ok": true
+    },
+    {
+      "name": "scale matches master down",
+      "ok": true
+    },
+    {
+      "name": "scale matches master side",
+      "ok": true
+    },
+    {
+      "name": "scale matches master up",
+      "ok": true
+    },
+    {
+      "name": "existing Berrinche retains original pack",
+      "ok": true
+    },
+    {
+      "name": "living master pixels identical with supplement absent",
+      "ok": true
+    },
+    {
+      "name": "unloaded supplement preserves fallback death",
+      "ok": true
+    },
+    {
+      "name": "appearance retains own death merienda_magica",
+      "ok": true
+    },
+    {
+      "name": "appearance retains own death myla_arandanos",
+      "ok": true
+    },
+    {
+      "name": "guest L1",
+      "ok": true
+    },
+    {
+      "name": "guest L39",
+      "ok": true
+    },
+    {
+      "name": "guest L40",
+      "ok": true
+    },
+    {
+      "name": "guest L60",
+      "ok": true
+    },
+    {
+      "name": "guest L90",
+      "ok": true
+    },
+    {
+      "name": "guest L99",
+      "ok": true
+    },
+    {
+      "name": "master atlas bytes unchanged",
+      "ok": true
+    },
+    {
+      "name": "Berrinche bytes unchanged",
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "masterAtlasSha256": "2ce122a36d910b55633ffb44029ecf25d63e0e7bf4326124f2ce44051a78028d",
+  "berrincheSha256": "dc7989629a60c4ddfc4347ffac58e74cc2b7f7d0d9c50ff75fe9ddc7000dcf2a",
+  "status": "PASS"
+}

@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - run: node --test tools/lib/test-http-ready.js
       - run: node --test tools/factory/test.js
       - run: node --test tools/regression/test-aim-hostiles.js
       - run: node tools/factory/boss-cli.js check
@@ -46,6 +47,12 @@ jobs:
       - run: python3 tools/art/painter/forge.py check
       - run: npm install --prefix /tmp/horda-balance --no-audit --no-fund playwright@1.61.1
       - run: /tmp/horda-balance/node_modules/.bin/playwright install --with-deps chromium
+      - run: node --test tools/balance/test-campaign-startup.js
+        env:
+          NODE_PATH: /tmp/horda-balance/node_modules
+      - run: node tools/art/roster-loading-test.js
+        env:
+          NODE_PATH: /tmp/horda-balance/node_modules
       - run: node tools/balance/entry-gate.js
         env:
           NODE_PATH: /tmp/horda-balance/node_modules
@@ -118,6 +125,7 @@ jobs:
           NODE_PATH: /tmp/horda-balance/node_modules
       - run: npm ci --prefix server --no-audit --no-fund
       - run: node server/test-competitive-entitlements.js
+      - run: node server/test-legacy-champion-ids.js
       - run: node tools/crystal-wars/competitive-integration-test.js
         env:
           NODE_PATH: /tmp/horda-balance/node_modules
@@ -145,6 +153,7 @@ jobs:
       - run: node server/test-founders.js
       - run: node server/test-presence.js
       - run: node server/test-wallet.js
+      - run: node server/test-wallet-pieces.js
       - run: node server/test-payments-mp.js
       - run: node server/test-relay.js
       - run: node tools/alpha/gm-users-ui.js
@@ -178,6 +187,9 @@ jobs:
           node tools/alpha/public-onboarding.js
           node tools/collection/shop-pricing-browser.js
           node tools/collection/pricing-sync.js
+          node tools/items/t_piezas_brasas.js
+          node tools/collection/t_shop_rotation.js
+          node tools/items/t_skins_brasas.js
           node tools/factory/event-runtime.js
           node tools/factory/options-layout.js
           node tools/art/alpha_set_skins/browser.js

@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "lote": "B004_libertador",
+  "bloque": "B004",
+  "estado": "EN_CORRECCION",
+  "estado_tecnico": "FIX_NATIVE",
+  "source": "art-source/entregas/2026-10-19_libertador_24poses/campeones/libertador/hoja_36poses.png",
+  "recipe": "fuentes/normalizacion.json",
+  "atlas": "campeones/atlas.png",
+  "scanBefore": {
+    "halo": 266,
+    "islands": 38
+  },
+  "scanAfter": {
+    "halo": 4,
+    "islands": 36,
+    "semiAlpha": 0,
+    "fragments": 0
+  },
+  "resuelve": false,
+  "approvalClaimed": false,
+  "installed": false,
+  "pending": [
+    "Native pixel style in7frames",
+    "Direction frame13",
+    "Consistent head proportions",
+    "Runtime visual and animation gates"
+  ]
+}

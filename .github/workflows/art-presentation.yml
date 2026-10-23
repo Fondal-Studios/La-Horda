@@ -1,0 +1,26 @@
+name: Art presentation verification
+on:
+  push:
+    branches: [codex/arena-codex-art]
+  pull_request:
+    paths: ['js/rendering/arena-props.js', 'js/ui/codex/codex.js', 'css/codex.css', 'tools/art/check-*.js']
+permissions:
+  contents: read
+jobs:
+  presentation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: npm install --prefix /tmp/horda-art-tools playwright@1.58.2 @napi-rs/canvas@0.1.80
+      - run: /tmp/horda-art-tools/node_modules/.bin/playwright install --with-deps chromium
+      - run: node tools/art/check-environment-inlays.js && node tools/art/check-codex-voice.js && node tools/art/check-presentation-browser.js
+        env:
+          NODE_PATH: /tmp/horda-art-tools/node_modules
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: art-presentation-evidence
+          path: docs/art-enrichment/

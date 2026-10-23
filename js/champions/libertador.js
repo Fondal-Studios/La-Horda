@@ -80,7 +80,7 @@ function libertadorBasic(caster, aspd){
   } else {
     p.onHit = ()=>{ if(hits++) return; caster.smShots = (caster.smShots||0)+1;
       if(caster.smShots >= Math.max(2, O.every - everyBonus)){ caster.smOfficerReady = true; caster.smShots = 0;
-        if(caster===player) floatText(caster.x, caster.y-70, "¡DISPARO DE OFICIAL!", "crit"); } };
+        } };
   }
   projectiles.push(p);
   // fogonazo + humo + retroceso
@@ -296,13 +296,21 @@ function drawLibertador(h, drawScale, alpha){
   if(h.basicCd>0 && !h.moving && h.smReloadTotal){
     return _smFrame(P, "reload", 1 - h.basicCd/h.smReloadTotal, flip, h, s, alpha);
   }
+  // Solo locomoción de la apariencia original. Los disparos, recarga, bayoneta,
+  // mando, Cabral, caballo y previews de clips nombrados conservan su atlas.
+  const baseKey = sk ? setSkinPackKey(h, "libertador") : "libertador";
+  if(baseKey === "libertador" && !h._codexPack && !h._codexSet &&
+     !(h.attackAnim > 0) && !(h.hurtTimer > 0) &&
+     CHAMP_PACK.libertador_motion && CHAMP_PACK.libertador_motion.ready){
+    return drawChampPack("libertador_motion", h, drawScale, alpha);
+  }
   return drawChampPack("libertador", h, drawScale, alpha);
 }
 function libertadorDrawBuffIcon(h){
   const img = seFx("buff_icon_0"+(1+((animNow/140|0)%4)));
   if(!img) return;
   const s = 0.55;
-  drawSeImg(img, h.x, h.y - 66*(h.erenTitan ? 2.2 : 1), img.width*s, img.height*s, 0.5, 1, false, 0.75);
+  drawSeImg(img, h.x, h.y - 66*(h.ilkanColossus ? 2.2 : 1), img.width*s, img.height*s, 0.5, 1, false, 0.75);
 }
 function libertadorDrawSpectral(f){
   const a = _fxA(f), prog = 1-a;

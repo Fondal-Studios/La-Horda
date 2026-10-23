@@ -9,25 +9,36 @@ const server=spawn('python3',['-m','http.server',String(PORT),'--bind','127.0.0.
 const SCREENS={
  mainmenu:"setState('mainmenu');renderMainMenu();",
  codex_home:"setState('codex');codexGo('home','home','Códice');",
- codex_champ:"setState('codex');codexGo('champ','eren','Eren');",
+ codex_champ:"setState('codex');codexGo('champ','ilkan','Ilkan');",
  codex_arena:"setState('codex');codexGo('arena','micelial','Reino');",
  codex_set:"setState('codex');codexGo('set',Object.keys(SET_DB)[0],'Set');",
  shop:"setState('shop');renderShop();",
+ shop_skin_hero:"if(!window.__origShowcase){window.__origShowcase=shopDailyShowcase;shopDailyShowcase=function(){return Object.assign({},window.__origShowcase.apply(this,arguments),{featured:{kind:'skin',id:'exp_vesper',price:900,base:900,owned:false}});};}setState('shop');renderShop();",
  prep:"setState('prep');renderPrepSummary();",
  run_intro:"runIntroShow('micelial',()=>{});RUN_INTRO.pages=[];RUN_INTRO.prologue=false;runIntroFill(document.getElementById('run-intro'),'micelial',ARENA_BRIEF.micelial);",
  tactical:"selectedClass='libertador';currentArena='bosque';lobbyAllies=['tanque','soporte','mago'];startRun(3);setState('playing');document.getElementById('pause-btn').click();",
  hud:"selectedClass='nigromante';currentArena='minas';lobbyAllies=['tanque','soporte','mago'];startRun(3);setState('playing');updateHUD();"
 };
+// Espera por CONDICIÓN a que la pantalla asiente (antes eran esperas fijas de 350 ms / 1,5 s y el resultado dependía de la velocidad del equipo):
+// tipografías cargadas y la geometría de los textos visibles igual en dos lecturas seguidas (animaciones de entrada terminadas). Tope 6 s.
+async function settle(page){
+  await page.evaluate(async()=>{
+    try{await document.fonts.ready;}catch(e){}
+    const sig=()=>{let h=0,n=0;for(const el of document.querySelectorAll('body *')){const r=el.getBoundingClientRect();if(r.width<=0||r.height<=0)continue;const cs=getComputedStyle(el);if(cs.display==='none'||cs.visibility==='hidden'||+cs.opacity===0)continue;if(!el.firstChild||el.firstChild.nodeType!==3)continue;n++;h=(h*31+Math.round(r.left)*7+Math.round(r.top)*13+Math.round(r.width)*17+Math.round(r.height)*19+(+cs.opacity*100|0))|0;}return n+':'+h;};
+    const nap=ms=>new Promise(r=>setTimeout(r,ms)), t0=performance.now();let prev='',same=0;
+    while(performance.now()-t0<6000){await new Promise(r=>requestAnimationFrame(()=>r()));const cur=sig();if(cur===prev)same++;else{same=0;prev=cur;}if(same>=3)break;await nap(80);}
+  });
+}
 (async()=>{await new Promise(r=>setTimeout(r,500));
  const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||chromium.executablePath(),args:['--no-sandbox']});
  const found=[];
  try{for(const [width,height] of [[844,390],[667,375]]){
   const page=await browser.newPage({viewport:{width,height}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(`http://127.0.0.1:${PORT}/`,{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>typeof startRun==='function'&&typeof codexGo==='function',null,{timeout:120000});await page.waitForTimeout(1500);
+  await page.goto(`http://127.0.0.1:${PORT}/`,{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>typeof startRun==='function'&&typeof codexGo==='function',null,{timeout:120000});await settle(page);
   await page.evaluate(()=>{for(const c in save.champions){save.champions[c].unlocked=true;save.champions[c].level=20;}save.arenasCleared=Object.fromEntries(ARENA_ORDER.map(a=>[a,true]));save.starterChosen=true;save.tut={training:1,basics:1};});
   for(const [name,js] of Object.entries(SCREENS)){
    try{await page.evaluate(new Function(js));}catch(e){found.push({viewport:`${width}x${height}`,screen:name,error:e.message});continue;}
-   await page.waitForTimeout(350);
+   await settle(page);
    const issues=await page.evaluate(()=>{
     const out=[],vis=el=>{const cs=getComputedStyle(el);if(cs.display==='none'||cs.visibility==='hidden'||+cs.opacity===0)return false;const r=el.getBoundingClientRect();return r.width>0&&r.height>0;};
     const clipped=el=>{for(let a=el;a&&a!==document.body;a=a.parentElement){const cs=getComputedStyle(a);if(/(hidden|auto|scroll|clip)/.test(cs.overflowX+cs.overflow))return a;}return null;};

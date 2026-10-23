@@ -42,6 +42,8 @@ function whenAssetsReady(cb, onProgress){
   ASSET_LOAD.waiters.push(cb); if(onProgress) ASSET_LOAD.progress.push(onProgress);
 }
 let assetsStartGroup = function(){}, assetsStartAllChampions = function(){}, assetsOnState = function(){};
+// Include atlas sources registered after this preloader, even with an older static manifest.
+let assetsRegisterSource = function(){};
 (function(){
   const btn = document.getElementById("title-continue-btn");
   if(typeof ASSET_MANIFEST === "undefined"){ ASSET_LOAD.restStarted = true; return; }
@@ -80,10 +82,29 @@ let assetsStartGroup = function(){}, assetsStartAllChampions = function(){}, ass
       for(const f of w){ try{ f(); }catch(e){ console.error(e); } }
     }
   }
+  const registered = new Set(ASSET_MANIFEST);
+  assetsRegisterSource = function(src){
+    if(!src || registered.has(src) || /^(data:|blob:)/.test(src)) return;
+    registered.add(src);
+    const g = lazy ? LAZY_IMG.groupOf(src) : null;
+    if(!g){
+      ASSET_LOAD.core.total++;
+      load([src], ASSET_LOAD.core, ()=>{ refreshTitle(); if(ASSET_LOAD.core.done >= ASSET_LOAD.core.total) startRest(); });
+      return;
+    }
+    const o = ASSET_LOAD.groups[g] || (ASSET_LOAD.groups[g] = {list:[], done:0, total:0, started:false});
+    o.list.push(src); o.total++; ASSET_LOAD.rest.total++;
+    if(o.started) load([src], o, refreshRest);
+    else if(ASSET_LOAD.restStarted){
+      if(!ASSET_LOAD.bgQueue.includes(g)) ASSET_LOAD.bgQueue.push(g);
+      assetsOnState(typeof state === "undefined" ? "title" : state);
+      pumpBackground();
+    }
+  };
   assetsStartGroup = function(g){
+    if(lazy) LAZY_IMG.releaseGroup(g);
     const o = ASSET_LOAD.groups[g]; if(!o || o.started) return;
     o.started = true;
-    if(lazy) LAZY_IMG.releaseGroup(g);
     load(o.list, o, refreshRest);
   };
   // segundo plano: de a un grupo por vez, solo cuando lo necesario ya está (no le saca ancho de banda a lo que se está esperando)

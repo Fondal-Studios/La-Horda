@@ -1,12 +1,12 @@
 "use strict";
 /* ============================================================
    js/data/champion-tuning.js
-   BALANCE CENTRALIZADO de El Libertador (José de San Martín, clave "libertador") y de Eren
-   (El Portador, clave "eren"). Todo número que define cómo se sienten sus habilidades está acá:
+   BALANCE CENTRALIZADO de El Libertador (José de San Martín, clave "libertador") y de Ilkan
+   (Coloso de Arena, clave "ilkan"). Todo número que define cómo se sienten sus habilidades está acá:
    daño, cooldowns (los de los botones están en CLASSES, js/data/champions.js), alcances,
-   duraciones, velocidades, buffs, Furia, transformación, regeneración, áreas, aturdimientos,
+   duraciones, velocidades, buffs, Tormenta, transformación, regeneración, áreas, aturdimientos,
    empujes, sangrado y daño de las definitivas. La lógica está en js/champions/libertador.js y
-   js/champions/eren.js y nunca repite estos valores.
+   js/champions/ilkan.js y nunca repite estos valores.
    Convenciones: *Ms = milisegundos, *Pct/*Mult = proporción (0.2 = +20%), dmgMult = veces el
    daño base del guardián (ya escalado por nivel, objetos, talentos y maestría de la habilidad).
    ============================================================ */
@@ -30,36 +30,43 @@ const SM_CFG = {
   mounted:  {durationMs:10000, speedPct:0.40, dmgPct:0.25, dmgReduce:0.20, ccResist:0.5,
              sabreRange:98, sabreCdMs:560, sabreDmgMult:1.15, sabreArc:0.2}
 };
-const EREN_CFG = {
+const ILKAN_CFG = {
   // FURIA = la barra de la definitiva (ultCharge 0..ultMax). Además de lo que carga pegando
   // (igual que cualquier guardián), sube al recibir daño y con el 3er golpe del combo.
-  fury:     {perHpPctTaken:0.9, comboThird:5, lowHpBonus:1.0, titanGainMult:0.55},
-  // Doble hoja (básico): combo de 3
+  fury:     {perHpPctTaken:0.9, comboThird:5, lowHpBonus:1.0, colossusGainMult:0.55},
+  // Hoces gemelas (básico): combo de 3
   blades:   {combo:[1.0, 1.0, 1.45], windowMs:900},
-  // Equipo de Maniobras (hab. 1): gancho -> vuelo -> segundo gancho (cambio de dirección)
+  // Lanza-Pendón (hab. 1): lanza -> vuelo -> segunda lanza (cambio de dirección)
   hook:     {dashDist:360, dashSpeed:1150, redirects:1, redirectDist:300, slashRadius:74, slashDmgMult:1.4, landMs:200, prepMs:90},
-  // Instinto de Supervivencia (hab. 2): se expone para cargar Furia
+  // Piel de Duna (hab. 2): se expone para cargar Tormenta
   instinct: {durationMs:3500, dmgReduce:0.35, furyMult:3.0},
-  // ¡Avancen! (hab. 3): grito ofensivo, más fuerte con poca vida
+  // Grito de Caravana (hab. 3): grito ofensivo, más fuerte con poca vida
   advance:  {durationMs:7000, speedPct:0.18, dmgPct:0.18, furyMult:1.5, lowHpScale:0.8, allyRadius:300, allyShare:0.35},
-  // Seguir Adelante (pasiva)
+  // Sed de Horizonte (pasiva)
   passive:  {threshold:0.25, speedPct:0.15, dmgPct:0.15, furyMult:1.5},
-  // El Portador (definitiva 1) y forma monstruosa
-  titan:    {tfMs:1600, biteMs:420, durationMs:22000, hpMult:2.6, dmgMult:1.9, radiusMult:2.2, visualScale:2.7,
+  // Coloso de Arena (definitiva 1) y su forma
+  colossus: {tfMs:1600, invokeMs:420, durationMs:22000, hpMult:2.6, dmgMult:1.9, radiusMult:2.2, visualScale:2.7,
              speedMult:0.82, def:0.25, regenPct:0.30, regenPerSecPct:0.02,
              atkRange:112, atkAoe:72, atkCdMs:950, thirdAoe:150, thirdMult:1.8, knockPx:55, eliteStaggerMs:350},
   sismo:    {radius:230, dmgMult:3.2, falloff:0.45, knockPx:95, eliteStunMs:500},
   terremoto:{pulses:4, intervalMs:500, radius:250, dmgMult:1.25, vulnMult:1.25},
-  retumbar: {steps:6, stepMs:520, radius:160, dmgMult:1.35, speed:95, knockPx:60, eliteStaggerMs:260},
-  // El Retumbar (definitiva 2, secreta): tres pisadas con aviso, control cedido
-  rumbling: {roarMs:1300, telegraphMs:1350, gapMs:650, dist:320, radii:[250, 250, 420], dmgMult:[8, 8, 13],
+  march:    {steps:6, stepMs:520, radius:160, dmgMult:1.35, speed:95, knockPx:60, eliteStaggerMs:260},
+  // Los Tres Pasos (definitiva 2, secreta): tres pasos con aviso, control cedido
+  finale:   {roarMs:1300, telegraphMs:1350, gapMs:650, dist:320, radii:[250, 250, 420], dmgMult:[8, 8, 13],
              knockPx:140, silhouettes:9,
-             // EXCEPCIONAL (BUGFIX 01): como mucho 2 por partida y, además de la Furia llena transformado,
-             // una condición especial que no depende de enfriamientos (ver erenRumblingCondition):
-             //  1ª: pelea contra un JEFE, o Eren al borde (<35% vida) / un aliado caído.
+             // EXCEPCIONAL (BUGFIX 01): como mucho 2 por partida y, además de la Tormenta llena transformado,
+             // una condición especial que no depende de enfriamientos (ver ilkanFinaleCondition):
+             //  1ª: pelea contra un JEFE, o Ilkan al borde (<35% vida) / un aliado caído.
              //  2ª: el JEFE ya debajo del 50% y al menos 90 s desde la primera.
              maxPerRun:2, gapMs2:90000, lowHpPct:0.35, bossHpPct2:0.5},
   exhausted:{durationMs:6000, speedPct:-0.30, noTransformMs:20000}
+};
+// La Cazadora (clave "cazadora"): escalado de sus pasivas Rastreo (por marca sobre la Presa, máx. 5) e Impulso (por punto, máx. 10).
+// Balance de limpieza de horda (2026-10, tools/balance/clear-potential.js; ver BALANCE_CAMPEONES.md): antes: Rastreo cadencia 0,05 y crítico acorralada 0,25; Impulso cadencia 0,02 (velocidades sin cambio).
+const SYLVA_CFG = {
+  basicDmgMult: 0.88, // solo la flecha básica (antes 1,0); las habilidades no cambian
+  track:    {atkSpeedPerStack:0.035, speedPerStack:0.04, corneredCrit:0.18},
+  momentum: {atkSpeedPerPoint:0.014, speedPerPoint:0.01}
 };
 // PASIVAS DE LOS CAMPEONES CLÁSICOS (2026-10, Champion Bible §4): Aldric, Kael, Thalen, Elyra y Axiom no
 // tenían rasgo permanente. Son de IDENTIDAD (refuerzan su verbo), condicionales y chicas: no son DPS plano.

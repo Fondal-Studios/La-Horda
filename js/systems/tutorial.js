@@ -34,10 +34,14 @@ function tutMark(key){ if(key.charAt(0)!=="~" && !tutSeen(key)){ tutFlags()[key]
 // `who` = quién habla, si no es el Hechicero: {name, face} (voces de la historia, story.js). El retrato
 // cambia con data-face (css/story.css).
 function tutSay(key, text, goal, ms, urgent, who){
+  if(typeof narrationBookOpen==="function" && narrationBookOpen()) return false; // con el Libro abierto (su voz escrita) el Hechicero no habla acá
   if(tutSeen(key) || (!urgent && TUT.key && TUT.key!==key && performance.now() < TUT.until - 1500)) return false;
   if(urgent && TUT.key && TUT.key!==key && !TUT.key.startsWith("b_")) tutMark(TUT.key); // el que se tapa se da por visto
   const el = document.getElementById("tut-panel"); if(!el) return false;
-  el.querySelector(".tut-text").textContent = text;
+  const compact = typeof hudCompact==="function" && hudCompact();
+  el.querySelector(".tut-text").textContent = compact ? hudShortText(text, innerWidth < 760 ? 72 : 104) : text; // celular apaisado: 1-2 renglones
+  el.classList.remove("ghost"); clearTimeout(el._ghostT);
+  if(compact) el._ghostT = setTimeout(()=>el.classList.add("ghost"), 5500); // se desvanece solo; el objetivo sigue vigente en el juego
   const wh = el.querySelector(".tut-who"); if(wh) wh.textContent = who && who.name ? who.name : "EL HECHICERO";
   el.dataset.face = who && who.face ? who.face : "hech";
   const g = el.querySelector(".tut-goal"); g.textContent = goal ? "▶ " + goal : ""; g.classList.remove("done");
@@ -102,6 +106,10 @@ function tutTick(){
   }
   const st = player.stats || {};
   // ---- básicos, en orden, en la primera partida ----
+  // Si ya hizo o saltó el entrenamiento (save.tut.training / trainingSkipped, js/systems/alpha-training.js) los básicos no se enseñan
+  // otra vez dentro de la arena (antes: segundo tutorial "movete / atacá / habilidad" + "tu misión es SOBREVIVIR"). Los consejos de
+  // combate de abajo (recarga, vida, energía, élite, jefe…) siguen apareciendo cuando pasa cada cosa. Los guardados viejos quedan igual.
+  if(!tutSeen("basics") && typeof tutorialDone==="function" && tutorialDone()){ const f = tutFlags(); f.basics = f.b_move = f.b_attack = f.b_skill = 1; if(f.training===1) f.cooldown = 1; /* ya lo practicó (paso "Recarga") */ persist(); }
   if(!tutSeen("basics")){
     if(TUT.lx===null){ TUT.lx = player.x; TUT.ly = player.y; TUT.k0 = st.kills||0; }
     TUT.moved += Math.hypot(player.x-TUT.lx, player.y-TUT.ly); TUT.lx = player.x; TUT.ly = player.y;
@@ -122,7 +130,7 @@ function tutTick(){
   // ---- conceptos de combate, cuando aparecen por primera vez (después de los básicos) ----
   if(tutSeen("basics") && !TUT.key){
     const near = (r)=>enemies.some(e=>e.alive && (Array.isArray(r) ? r.includes(e.rank) : e.rank===r) && Math.hypot(e.x-player.x, e.y-player.y) < 520);
-    if(!tutSeen("cooldown")) tutSay("cooldown", "Cada habilidad necesita recargarse: esperá a que el botón se llene otra vez para volver a usarla.", null, 6000);
+    if(!tutSeen("cooldown") && player.cds && player.cds.some(c=>c>0)) tutSay("cooldown", "Cada habilidad necesita recargarse: esperá a que el botón se llene otra vez para volver a usarla.", null, 6000);
     else if(!tutSeen("hurt") && player.alive && player.hp < player.maxHp*0.5) tutSay("hurt", "¡Cuidado! La barra roja es tu vida y se está vaciando: si llega a cero, caés. Alejate de la horda y agarrá las pociones ROJAS. Si hace falta, usá la curación de emergencia (botón verde, 1 por nivel).", null, 7000);
     else if(!tutSeen("energy") && player.energy < player.maxEnergy*0.2) tutSay("energy", "Te quedaste sin energía (barra azul) y sin ella no hay habilidades. Se recarga sola, o más rápido con las pociones AZULES.", null, 7000);
     else if(!tutSeen("elite") && near(["elite","subelite"])) tutSay("elite", "Ese enemigo que brilla es un ÉLITE: tiene más vida y pega más fuerte, pero deja mejor botín.", null, 7000);

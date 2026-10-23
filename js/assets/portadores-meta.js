@@ -23,3 +23,6 @@ champPackLoadAtlas("myla_berrinche","assets/sprites/champions/myla/berrinche.png
 
 champPackCloneAtlas("skin_merienda_magica_berrinche","myla_berrinche","assets/sprites/champions/myla/berrinche.png");
 SET_SKINS.merienda_magica.packs.myla_berrinche="skin_merienda_magica_berrinche";
+
+// B005: independent base death; authored skins and Berrinche retain their packs.
+champPackLoadAtlas("myla_death","assets/sprites/champions/myla/v2/death.png",{w:112,h:112,cols:4,refH:82,anchor:106/112,sets:{death_down:[0,1,2,3]}});

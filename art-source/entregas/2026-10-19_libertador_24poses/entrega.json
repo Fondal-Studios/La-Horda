@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "lote": "2026-10-19_libertador_24poses",
+  "autor": "ChatGPT; IA autorizada por el dueño",
+  "fecha": "2026-10-19",
+  "estado": "FIX_NO_INTEGRAR",
+  "proveniencia": {
+    "original": true,
+    "ia": true,
+    "referencias": [
+      "assets/sprites/champions/libertador/v2/atlas.webp",
+      "art-source/entregas/2026-10-19_libertador_24poses/fuentes/caminatas_reencuadradas.png",
+      "docs/art-brief/ejemplos/libertador/libertador.cuerpo.muerte__ref.webp",
+      "docs/art-brief/campeones/libertador.md"
+    ],
+    "herramientas": [
+      "image_gen: solo12poses nuevas",
+      "Empaquetado con recorte y NEAREST, sin redibujo procedimental",
+      "style_gate.py",
+      "scan_sprites.py:analyze",
+      "gen-referencias.py",
+      "ImageMagick PSD"
+    ],
+    "fuentesEditables": [
+      "fuentes/hoja_36poses.psd"
+    ],
+    "nota": "PSD raster de una capa; no contiene capas originales de pintura."
+  },
+  "assets": [
+    {
+      "tipo": "campeon",
+      "id": "libertador",
+      "archivo": "campeones/libertador/hoja_36poses.png",
+      "items_manifiesto": [
+        "libertador.cuerpo.muerte",
+        "libertador.cuerpo.lanzar"
+      ],
+      "resuelve": false,
+      "celda": [
+        112,
+        112
+      ],
+      "cols": 4,
+      "filas": 9,
+      "cuadros": 36,
+      "refH": 68,
+      "colores_base": [
+        "#0e1c3c",
+        "#2f4f9a",
+        "#f2c14e",
+        "#f4f8ff",
+        "#3c0c24",
+        "#d7a77f"
+      ],
+      "nota_paleta": "Seis familias representativas; variaciones tonales; no cuantización a seis colores totales.",
+      "hoja_contacto": "campeones/libertador/hoja_contacto.png",
+      "chequeos": "campeones/libertador/chequeos.json"
+    }
+  ],
+  "pendientes": [
+    "Escáner señala266px de halo y38componentes para36celdas. Revisar fragmentos y borde claro.",
+    "Cuadro13 de ataque frontal gira de perfil.",
+    "Visual Gate de24poses nuevas y12caminatas reencuadradas.",
+    "Fuente IA de las24poses nuevas reducida NEAREST; autoría nativa no certificada.",
+    "Integración y pruebas a cargo de Claude."
+  ]
+}

@@ -10,8 +10,11 @@ const OUT = process.argv[2];
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL ') + n + (x !== undefined ? '  ' + JSON.stringify(x).slice(0, 400) : '')); if (!ok) fails++; };
 (async () => {
-  const browser = await chromium.launch({ args: ['--no-sandbox'] });
+  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
   const ctx = await browser.newContext({ viewport: { width: 844, height: 390 }, isMobile: true, hasTouch: true });
+  // This suite exercises local quests, not public room discovery. Keep the incidental
+  // hub request deterministic and off the production server; retain console-error checks.
+  await ctx.route('**/api/rooms?*', route => route.fulfill({status:200, contentType:'application/json', headers:{'access-control-allow-origin':'*'}, body:JSON.stringify({rooms:[]})}));
   const page = await ctx.newPage();
   const errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));

@@ -32,7 +32,17 @@ function stashFull(){ return stashUsedSlots() >= INVENTORY_CAPACITY; }
 function canEquipItem(champKey, it){
   if(!it) return false;
   if(it.designed && it.champion && it.champion!==champKey) return false;
+  // Kit de Magos (js/data/mage-kit.js): solo los guardianes de esa categoría de rol
+  const only = typeof itemRoleOnly==="function" ? itemRoleOnly(it) : null;
+  if(only && !(CLASSES[champKey] && CLASSES[champKey].roleCategory===only)) return false;
   return true;
+}
+// A quién está reservado un objeto: nombre del guardián, "magos" (Kit de Magos) o null si es universal.
+function itemOnlyLabel(it){
+  if(!it || !it.designed) return null;
+  if(it.champion && CLASSES[it.champion]) return CLASSES[it.champion].name;
+  const r = typeof itemRoleOnly==="function" ? itemRoleOnly(it) : null;
+  return r ? (ROLE_ONLY_LABEL[r] || r) : null;
 }
 // Bots: solo se ponen, en ranuras vacías, objetos diseñados PARA su guardián que nadie use (el
 // inventario es de la cuenta: nunca le sacan un objeto genérico al jugador).
@@ -90,9 +100,9 @@ function makeDesignedItem(designId){
   const d = DESIGNED_ITEMS[designId];
   if(!d) return null;
   const value = RARITY_VALUES[d.type][d.rarity];
-  const mythicPassive = (d.rarity==="mitico" && !d.mythic) ? instancePassive(rollFrom(PASSIVE_DB_MYTHIC,1)[0]) : null;
+  const mythicPassive = (d.rarity==="mitico" && !d.mythic && !d.magePower) ? instancePassive(rollFrom(PASSIVE_DB_MYTHIC,1)[0]) : null;
   const passives = (d.effectMods||[]).map((m,i)=>({id:d.id+"_eff"+i, name:d.passiveNames[i]||"Pasiva", desc:"", condition:"siempre", effect:m.effect, value:m.value}));
-  const extra = d.set ? ` · Set: ${SET_DB[d.set].name}` : (d.mythic ? ` · ${MYTHIC_POWERS[d.mythic].name}` : (d.unique ? ` · ${UNIQUE_POWERS[d.unique].name}` : (d.buildPower && typeof BUILD_POWERS!=="undefined" ? ` · ${BUILD_POWERS[d.buildPower].name}` : "")));
+  const extra = d.set ? ` · Set: ${SET_DB[d.set].name}` : (d.mythic ? ` · ${MYTHIC_POWERS[d.mythic].name}` : (d.unique ? ` · ${UNIQUE_POWERS[d.unique].name}` : (d.buildPower && typeof BUILD_POWERS!=="undefined" ? ` · ${BUILD_POWERS[d.buildPower].name}` : (d.magePower && typeof MAGE_POWERS!=="undefined" ? ` · ${MAGE_POWERS[d.magePower].name}` : ""))));
   return {
     uid: "it_"+(ITEM_UID_SEQ++)+"_"+Date.now().toString(36),
     level:1, roll:_itemRoll(),
@@ -101,7 +111,7 @@ function makeDesignedItem(designId){
     name:d.name, epithet:d.epithet||null, icon:ITEM_TYPES[d.type].icon, statKey:d.type, value,
     passives, mythicPassive,
     champion:d.champion, set:d.set||null, element:d.element||null,
-    legendProc:d.legendProc||undefined, mythic:d.mythic||null, unique:d.unique||null, buildPower:d.buildPower||null,
+    legendProc:d.legendProc||undefined, mythic:d.mythic||null, unique:d.unique||null, buildPower:d.buildPower||null, magePower:d.magePower||null, roleOnly:d.roleOnly||null,
     skillMods: d.skillMods||null, skillOvercap: d.skillOvercap||null,
     placeholder:false,
     desc: `${d.lore} · +${Math.round(value*100)}% ${ITEM_TYPES[d.type].statLabel}${extra}${(d.skillMods||d.skillOvercap)?" · Modifica una habilidad":""}`
@@ -190,6 +200,8 @@ function itemLevel(it){ return Math.max(1, Math.min(ITEM_MAX_LEVEL, (it && it.le
 // Nivel de OBJETO (arena donde cayó, item-identity.js ITEM_ILVL_*): eje aparte del nivel de Gemas. Sin campo
 // (objetos viejos, tienda, regalo) = 1. Se recorta al leer: un objeto que llega de otro jugador no lo puede inflar.
 function itemIlvl(it){ return Math.max(1, Math.min(ITEM_ILVL_MAX, (it && it.ilvl)|0 || 1)); }
+// Texto del nivel de objeto: arena 1-10 de Normal; más arriba cayó en Pesadilla/Infierno (nivel de objeto 11-30).
+function itemIlvlLabel(it){ const n = itemIlvl(it); return n <= ITEM_ILVL_NORMAL_MAX ? "Arena "+n : "Nivel de objeto "+n; }
 function itemIlvlMult(it){ return 1 + ITEM_ILVL_STEP*(itemIlvl(it)-1); }
 // Multiplicador de TODOS los números del objeto: nivel de Gemas × nivel de objeto.
 function itemLevelMult(it){ return (1 + ITEM_LEVEL_STEP*(itemLevel(it)-1)) * itemIlvlMult(it); }
@@ -248,6 +260,7 @@ function _passiveBucket(champKey){
   // automáticamente respeta también los talentos, sin que esa fórmula se entere de que existen.
   const all = equippedPassives(champKey).concat(talentPassives(champKey));
   for(const p of all) c.sums[p.effect] = (c.sums[p.effect]||0) + p.value;
+  if(typeof postgamePassiveCap==="function") postgamePassiveCap(c.sums, champKey); // postgame: tope de cada pasiva (solo el campeón con progreso de una partida de Cristales/Coliseo)
   return c;
 }
 function passiveSum(champKey, effect){
@@ -259,6 +272,7 @@ function passiveSum(champKey, effect){
 function legendProcOf(it){
   if(!it || it.set || !LEGEND_PROC_POWER[it.rarity]) return null; // las piezas de set valen por el set
   if(typeof itemBuildPower==="function" && itemBuildPower(it)) return null; // su poder es el de build (build-powers.js)
+  if(typeof itemMagePower==="function" && itemMagePower(it)) return null; // su poder es el del Kit de Magos (mage-passives.js)
   if(it.rarity==="muyraro") return it.legendProc && LEGEND_PROCS[it.legendProc] ? it.legendProc : null; // Muy Raro: solo si nació con su mecánica
   if(it.legendProc && LEGEND_PROCS[it.legendProc]) return it.legendProc;
   let h = 0; const s = String(it.uid||it.name||"");
@@ -318,6 +332,8 @@ function itemEffectLines(it){
   if(it.unique && UNIQUE_POWERS[it.unique]) out.push({cls:"item-unique", txt:`◆ ${UNIQUE_POWERS[it.unique].name}: ${UNIQUE_POWERS[it.unique].desc}`});
   const bpw = typeof itemBuildPower==="function" ? itemBuildPower(it) : null;
   if(bpw) out.push({cls:"item-build", txt:`✹ CAMBIA TU BUILD — ${BUILD_POWERS[bpw].name}: ${BUILD_POWERS[bpw].desc}`});
+  const mpw = typeof itemMagePower==="function" ? itemMagePower(it) : null;
+  if(mpw) out.push({cls:"item-mage", txt:`❂ CAMBIA TU PASIVA — ${MAGE_POWERS[mpw].name}: ${MAGE_POWERS[mpw].desc} (solo magos)`});
   if(it.designed && it.rarity==="legendario" && typeof recipesUsing==="function"){
     const r = recipesUsing(it.designId);
     if(r.length) out.push({cls:"item-recipe", txt:`⚗ Parte de la receta de ${DESIGNED_ITEMS[r[0]].name}`});

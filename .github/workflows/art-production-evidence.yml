@@ -1,0 +1,53 @@
+name: Art production evidence
+on:
+  pull_request:
+    paths: ['tools/factory/**', 'tools/release/**', 'tools/art/check-authored-density.js', 'docs/production/art-integrations.json', 'docs/production/authored-candidates.json', 'art-source/entregas/**', '.github/workflows/art-production-evidence.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m pip install numpy pillow scipy
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - run: python -m unittest tools/factory/test_import_authored_sheet.py tools/factory/test_production_guards.py tools/factory/test_candidate_audit.py tools/factory/test_authored_frame.py
+      - run: python -m unittest tools/release/test_canonical_publication.py
+      - run: node --check tools/release/probe-quality-five.js
+      - run: node --test tools/factory/test-animation-contract.js
+      - name: Preserve the Soporte animation contract
+        run: node tools/factory/check-animation-contract.js --key soporte --candidate tools/factory/fixtures/soporte-36-contract.json --output /tmp/art-contract/soporte.json
+      - name: A generic36 atlas must not erase Libertador weapon clips
+        run: |
+          if node tools/factory/check-animation-contract.js --key libertador --candidate tools/factory/fixtures/libertador-generic36-canary.json --runtime js/champions/libertador.js --symbol P --output /tmp/art-contract/libertador-negative.json; then exit 1; fi
+          node -e "const r=require('/tmp/art-contract/libertador-negative.json'),a=require('node:assert/strict');a.equal(r.status,'REJECT');for(const n of ['fire','reload','bayo_emb','ult_cast'])a(r.issues.some(x=>x.code==='MISSING_RUNTIME_CLIP'&&x.clip===n));a.equal(r.approvalClaimed,false);"
+      - run: python tools/factory/reconcile-art-production.py
+      - run: python tools/factory/production-blocks.py
+      - run: node tools/factory/export-runtime-icons.js
+      - run: node tools/art/check-pixel-icons.js
+      - run: node tools/art/emoji-lint.js --strict
+      - name: Empty authored sheets must fail
+        run: |
+          python -c "from PIL import Image; Image.new('RGBA',(448,1008)).save('/tmp/blank.png')"
+          if node tools/art/check-authored-density.js /tmp/blank.png /tmp/blank.json; then exit 1; fi
+          python -c "import json; d=json.load(open('/tmp/blank.json')); assert len(d['failedFrames'])==36; assert all('FRAME_VACIO' in r['issues'] for r in d['rows'])"
+      - name: Audit saved candidates without approving them
+        run: python tools/factory/audit-authored-candidates.py --output /tmp/art-candidate-audit
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: authored-candidate-diagnostics
+          path: |
+            /tmp/art-candidate-audit/
+            /tmp/art-contract/
+          retention-days: 30

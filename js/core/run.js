@@ -85,7 +85,9 @@ function startRun(fromLevel){
   // Campeones sin fila en el guardado (INTERNAL en Test Lab / herramientas): fila temporal en memoria.
   if(CLASSES[selectedClass] && !save.champions[selectedClass]) save.champions[selectedClass] = mkChampion(false);
   resetRunTransients();
-  markRunStartProgress(selectedClass); // base para el castigo de derrota/abandono (solo lo ganado en esta partida)
+  if(!fromLevel || fromLevel===1){ try{ if(typeof penaltyHeadsUp==='function' && !(typeof endlessOn==='function' && endlessOn()) && !divinaMode) setTimeout(penaltyHeadsUp, 1800); }catch(e){} }
+  if(!fromLevel || fromLevel===1 || fromLevel===5){ try{ if(typeof bossAssistEntryNotice==='function') setTimeout(bossAssistEntryNotice, 4400); }catch(e){} } // ayuda del jefe activa: se avisa al entrar (boss-assist.js) // aviso único: desde ahora perder cuesta
+  markRunStartProgress(selectedClass); checkpointOnRunStart(); // base para el castigo de derrota/abandono (solo lo ganado en esta partida)
   clearRunTimers();
   runEnding = false; _arenaExitDone = false;
   crystalReset();
@@ -107,6 +109,7 @@ function startRun(fromLevel){
   vfxResetRun();
   resetFeedback();
   resetMythicPowers(); // suelo consagrado y otros efectos de objetos míticos
+  if(typeof resetMagePassives==="function") resetMagePassives(); // Kit de Magos: estado de pasivas y marcas
   resetEnemyRoles(); // avisos de roles enemigos vistos
   resetBreakables();
   hazardZones = []; arenaRuleTimer = 8000; resetArenaRule();
@@ -139,6 +142,7 @@ function startRun(fromLevel){
   for(const h of heroes) resetSetRunState(h);
   resetPerformanceRun();
   setupRunDifficulty();
+  if(typeof bossAssistReset==="function") bossAssistReset();
   partyBuilt = false;
   if(floorPatterns[currentArena]){ floorPattern = floorPatterns[currentArena]; } else { buildFloorTile(); }
   if(!SPRITES.guerrero){ buildSprites(); }
@@ -251,6 +255,8 @@ function onBossDefeated(){
 let runFirstClear = false;
 function finishBossVictory(){
   if(typeof endlessOn==="function" && endlessOn()){ endlessBossDown(); return; } // Horda Infinita: el jefe es una ronda, no el cierre de la arena
+  if(typeof bossAssistOnVictory==="function") bossAssistOnVictory(currentArena); // ganar la arena borra la ayuda del jefe (boss-assist.js)
+  cpVictory = true; checkpointClear(currentArena); // ganar la arena borra su punto de control (checkpoint.js); la XP/oro de la victoria no se descuentan
   bossActive = false;
   if(typeof setMusicMode==="function") setMusicMode("victory");
   grantGold(Math.round(80*(typeof diffGoldMult==="function" ? diffGoldMult() : 1)));

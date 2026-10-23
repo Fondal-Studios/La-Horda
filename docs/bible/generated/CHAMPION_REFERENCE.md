@@ -167,20 +167,20 @@ Tirador / Guerrero / Soporte ofensivo: disparos lentos y devastadores, bayoneta,
 | H3 | Carga de San Lorenzo | ↝ dash | 12,0 s | ✶ Aturdido, ▽ Debilitado | Monta su caballo blanco y carga en línea |
 | Definitiva | Cruce de los Andes | ◉ self | 45,0 s | ▼ Ralentizado, ✶ Aturdido, ▲ Mejora | Carga con Granaderos espectrales entre nieve y escarcha y queda 10 s a caballo |
 
-## Eren, el Indómito `eren` — asesino
+## Ilkan, el Caminante de Dunas `ilkan` — asesino
 
-*Eren convierte el peligro en furia hasta liberar una fuerza capaz de hacer temblar la arena.* · Origen: Detrás de los muros
+*Ilkan convierte el riesgo en tormenta hasta alzar un coloso de arena capaz de hacer temblar el campo.* · Origen: Las Dunas Quebradas
 
-Guerrero / Berserker: movilidad extrema con ganchos, gana Furia con el riesgo y se transforma en El Portador.
+Guerrero / Berserker: movilidad extrema con lanzas de pendón, gana Tormenta con el riesgo y se transforma en el Coloso de Arena.
 
 | Ranura | Habilidad | Forma | Enfriamiento | Estados | Resumen |
 |---|---|---|---|---|---|
-| Básico | Doble Hoja | △ cone | 0,4 s | — | Combo de tres cortes en arco |
-| Pasiva | Seguir Adelante | ∞ passive | — | — | Con menos de 25% de vida gana velocidad, daño y más Furia |
-| H1 | Equipo de Maniobras | ↝ dash | 7,0 s | — | Mantené para apuntar y soltá |
-| H2 | Instinto de Supervivencia | ◉ self | 14,0 s | ▲ Mejora | Por un momento recibís menos daño y cada golpe que te dan carga MUCHA más Furia |
-| H3 | ¡Avancen! | ◎ self_aoe | 15,0 s | ▲ Mejora | Grito de guerra |
-| Definitiva | El Portador | ◉ self | 40,0 s | ▲ Mejora | Con la Furia llena se transforma en El Portador |
+| Básico | Hoces Gemelas | △ cone | 0,4 s | — | Combo de tres cortes en arco |
+| Pasiva | Sed de Horizonte | ∞ passive | — | — | Con menos de 25% de vida gana velocidad, daño y más Tormenta |
+| H1 | Lanza-Pendón | ↝ dash | 7,0 s | — | Mantené para apuntar y soltá |
+| H2 | Piel de Duna | ◉ self | 14,0 s | ▲ Mejora | Por un momento recibís menos daño y cada golpe que te dan carga MUCHA más Tormenta |
+| H3 | Grito de Caravana | ◎ self_aoe | 15,0 s | ▲ Mejora | Grito de caravana |
+| Definitiva | Coloso de Arena | ◉ self | 40,0 s | ▲ Mejora | Con la Tormenta llena se transforma en el Coloso de Arena |
 
 ## Ynara, la Médica de los Refugios `ynara` — soporte
 

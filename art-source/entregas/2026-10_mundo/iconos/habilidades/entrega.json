@@ -1,0 +1,2340 @@
+{
+  "schema": 1,
+  "status": "EXACT_EXISTING_RUNTIME_EXPORT",
+  "note": "Existing HUD designs, not newly drawn assets. Inventory completion, art approval and public deployment are separate.",
+  "sources": {
+    "js/ui/pixel-icons.js": "b7f8ed4e4de9d72273d1a254e7964cd2ebb875fec180ee1a6cc79cb0c86daf15",
+    "js/ui/skill-glyphs.js": "abeb2647aea6f85544f38644f3b5314f1b47dd3541d17df246784cdcaf36db14",
+    "js/ui/skill-pixel-glyphs.js": "3b61984845023e19cbc7d6e6ecda2be18c34fbdca8d064356c8c11f2ea8f391a",
+    "js/ui/skill-icon-motifs.js": "052cd1673f132e7baf9b9871bb6ba9ba5af82d21f0734a85c409e7f0c0ddde2f"
+  },
+  "icons": [
+    {
+      "task": "B-ICON-tanque-h1",
+      "block": "B269",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/tanque_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Torbellino",
+      "pngSha256": "d2f53cd901900e95abf1cafdd91441096f7e5aa08360ce019e5c69e79cb81d06",
+      "rgbaSha256": "e164255aaabfc72206f29e5f69601a8f70409b2434374613c79d3011998748a1"
+    },
+    {
+      "task": "B-ICON-tanque-h2",
+      "block": "B269",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/tanque_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Embestida",
+      "pngSha256": "ff363e9a0e27395535516a9678ff49361e39ecc42f109890cede942fc6607a95",
+      "rgbaSha256": "bfddedfbc216b72262fa6029c8c948f51feb23ac7f0b849c1555fe42698d55df"
+    },
+    {
+      "task": "B-ICON-tanque-h3",
+      "block": "B269",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/tanque_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Grito de Guerra",
+      "pngSha256": "812e51d3585aeed135fe3193a92782d36211d2f0dc5f014c95244bdf9478fade",
+      "rgbaSha256": "102b08553e4b854616045d584067859a4291b41030a2992c54d97f6721b20970"
+    },
+    {
+      "task": "B-ICON-tanque-ult",
+      "block": "B269",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/tanque_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Grito Provocador",
+      "pngSha256": "f0ee377b2b87ce873db2363fbe85726a990ebb7ad31dacfcfd1be9b524d0ca41",
+      "rgbaSha256": "6a9ed1c30f4a3c40e4d27f2c9967a56ee121eb58ab4acd01e7ce3a9d86628c99"
+    },
+    {
+      "task": "B-ICON-guerrero-h1",
+      "block": "B249",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/guerrero_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Corte Sangrante",
+      "pngSha256": "16aa03dc9ca5ac663cd44d88ed4011e38507a8fcd97593435275494ee83c46a5",
+      "rgbaSha256": "61a20367238f51161c9902e140fabc4d929014eebe9feb4d57d654f4eeaea75f"
+    },
+    {
+      "task": "B-ICON-guerrero-h2",
+      "block": "B249",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/guerrero_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Triple Golpe",
+      "pngSha256": "70212a0300773517a80aa4cb64b145b4597d9010c016da9fc1ff92fcda6dc541",
+      "rgbaSha256": "15486adb98e85d8d4eb7c3bb690dc84bf7419663ff7350f038d85491a6e58b80"
+    },
+    {
+      "task": "B-ICON-guerrero-h3",
+      "block": "B249",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/guerrero_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Trampa de Área",
+      "pngSha256": "143b552e200c279c142aa388244e969dd3081cbc296c2af10a2e985e67aab12d",
+      "rgbaSha256": "b93cbbac5cc754612f90f1f2b90782b0d4820303acdf570b136ac14a8e6fcd7d"
+    },
+    {
+      "task": "B-ICON-guerrero-ult",
+      "block": "B249",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/guerrero_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Pestilencia Sombría",
+      "pngSha256": "d9e27ab237825a384f12d76868d40333844de226659ff61f47913702e760fac5",
+      "rgbaSha256": "0eb644307a60f51aab588aac35035c9bf2c64e4286a1e442d0035726502af91f"
+    },
+    {
+      "task": "B-ICON-mago-h1",
+      "block": "B052",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/mago_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Muro de Fuego",
+      "pngSha256": "9ec0919849a14f058db8369759f2cb0976e3fc6c8a0ae49974c6a7a5dda9754d",
+      "rgbaSha256": "810a8862f75763359a7a63280c6356462cbe9156358c3ef716764777fd28d8d5"
+    },
+    {
+      "task": "B-ICON-mago-h2",
+      "block": "B052",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/mago_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Nova de Escarcha",
+      "pngSha256": "81753bde31df2437861f27f9e023518a5700d14d4b963850a15d00cc63da746e",
+      "rgbaSha256": "99d7e1bdbe5e5d975cc69fe61ac2cdf120866343f90d81ef08fdace7601ade5f"
+    },
+    {
+      "task": "B-ICON-mago-h3",
+      "block": "B052",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/mago_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Cadena de Relámpago",
+      "pngSha256": "b8d225c86e8e78f7994911f39694e36227befaa89d69faf71cf5012e0d41c21d",
+      "rgbaSha256": "7df58f2f49a568b4315fa8ae8c0c627cd6ca71f5699b681728bc7a1d5c973bb5"
+    },
+    {
+      "task": "B-ICON-mago-ult",
+      "block": "B052",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/mago_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Cataclismo Elemental",
+      "pngSha256": "0783407f1c8cbffa8449f29675afd80ffad33640ce8a72b3edcaccbf40fd04d2",
+      "rgbaSha256": "bae0f2f2c69e700dd1bc06a3d6e4752288840d62104721da55185cab8b0c6b0f"
+    },
+    {
+      "task": "B-ICON-soporte-h1",
+      "block": "B268",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/soporte_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Alba Purificadora",
+      "pngSha256": "a3500a739db73dd65df5d308d7f9dcf9808b89fd6165ec73d4535c82b9f8f7f1",
+      "rgbaSha256": "584f0a4a73ac063582fc8b08cda50d36284f9131646f7e09004bc26a08ffb983"
+    },
+    {
+      "task": "B-ICON-soporte-h2",
+      "block": "B268",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/soporte_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Bendición de Guerra",
+      "pngSha256": "1fb942e642c23ef1499b890285c20e5c7fd55cd85f4ccbb0bf95ba3cbbd6cea1",
+      "rgbaSha256": "6903c104d01f549b23b4d08d4e96e642df95b14ccaf5a7124f2656f544ba0f56"
+    },
+    {
+      "task": "B-ICON-soporte-h3",
+      "block": "B268",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/soporte_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Escudo Sagrado",
+      "pngSha256": "cb86c7446a534acaae3d612d7b05c4f5f3127a1bf39705d807958216e5b5d1c9",
+      "rgbaSha256": "5bea0451df31cdf1d91f7ddbd572299921f2f6e2f34c4dabd0f83f52e5e03261"
+    },
+    {
+      "task": "B-ICON-soporte-ult",
+      "block": "B268",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/soporte_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Bendición Suprema",
+      "pngSha256": "d346f59eea8a2811bd17cb09512a9ab4f3611e39fa43e09879840b4ff88fd4af",
+      "rgbaSha256": "e09b1122aeda85105e67664405decc5f9bd06aee6060f1e29a8f86fa035c298f"
+    },
+    {
+      "task": "B-ICON-segador-h1",
+      "block": "B265",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/segador_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Tajo del Segador",
+      "pngSha256": "bb999d48e0c6c1c9ce1129c183d1628b05d0dcabf804428ffa795491f53733fe",
+      "rgbaSha256": "7e5ec55b3d33f90752ed354595c7491cc1910f4fd8da50c01539ad33a138d4be"
+    },
+    {
+      "task": "B-ICON-segador-h2",
+      "block": "B265",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/segador_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Armadura de la Furia",
+      "pngSha256": "6baed2d92c6d54283e372656c1b92e541e60a9601b93381ff639e846b7a879f8",
+      "rgbaSha256": "3539d5c7f5313d2a0f53414ba8366d8f047e4cd50152f68f9a9f1859b494e10c"
+    },
+    {
+      "task": "B-ICON-segador-h3",
+      "block": "B265",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/segador_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Último Aliento",
+      "pngSha256": "4d9304219e28274b5beee47a0ffbaff6d483a2923f2df6f8e3632f15078c9ba0",
+      "rgbaSha256": "7b3d77e5159cfe999167eb8270712bdfc3b5bc192c3ba48d544f150a59b97012"
+    },
+    {
+      "task": "B-ICON-segador-ult",
+      "block": "B265",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/segador_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Segador de Almas",
+      "pngSha256": "239fd17d6d8ec230d8104fe5e40b7df90be254a4f5f1ac718313f5b2f332fa64",
+      "rgbaSha256": "97b1941335e87c7858d691193618cc0f3ccf7037c8123bc14119d4b6fee1cb2d"
+    },
+    {
+      "task": "B-ICON-axiom-h1",
+      "block": "B240",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/axiom_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Error 404",
+      "pngSha256": "56bf92b7147d1b30a180a657187726382faadfb0f37c4959a9511990046b7f98",
+      "rgbaSha256": "e018e8deb82de8312ac5778f539f4b5043a2eb74e293f929c24b0f1f2f87810a"
+    },
+    {
+      "task": "B-ICON-axiom-h2",
+      "block": "B240",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/axiom_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Sobrescribir",
+      "pngSha256": "cbdef0c408cd9d6f59febf08065cc2312bd027d6460f1b15c4b0bf4b3d34f2e3",
+      "rgbaSha256": "8fa9067300e835bab17caa621b19a5ba3407c4f26424df7f235f3489f9f917cb"
+    },
+    {
+      "task": "B-ICON-axiom-h3",
+      "block": "B240",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/axiom_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Teletransporte",
+      "pngSha256": "418b88042871c9327eb5815f458517db437b0982cd513613abb8ac5cc656ff25",
+      "rgbaSha256": "bcbb8a5888eedfa3fecc51e776cac9eb441a0f4814053de3bfdc8f706f2564e9"
+    },
+    {
+      "task": "B-ICON-axiom-ult",
+      "block": "B240",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/axiom_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Force Quit",
+      "pngSha256": "3fb2f333b8a44001abca96068d992c95984067cb20a91e76221e55725e3f1877",
+      "rgbaSha256": "1b351916eb67cf541a259893d9aedf4fbe58aa271df561994721b8d75f69398e"
+    },
+    {
+      "task": "B-ICON-profeta-h1",
+      "block": "B262",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/profeta_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Destino Restaurado",
+      "pngSha256": "2a134d61f9edc6bdc1c03777cd4172cc19531115920ef5b908315daa8c7ffd1d",
+      "rgbaSha256": "23fd0cc8472c4ecae287253108874144f594f0c250cc7aaac12129f3431e5281"
+    },
+    {
+      "task": "B-ICON-profeta-h2",
+      "block": "B262",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/profeta_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Visión del Inmortal",
+      "pngSha256": "d3bc222fb8ac85859f2b9f649df29ca083d5a7a3567177acbaf722c5b5241f20",
+      "rgbaSha256": "2e22f18c08ab4c4e0ce7f69546cdad4d658785b408e31db308dbf5b85b42e6fd"
+    },
+    {
+      "task": "B-ICON-profeta-h3",
+      "block": "B262",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/profeta_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Danza del Augurio",
+      "pngSha256": "66b68ca4f5f288672b6129a2ccb88a0699e73d366a353d93ef8bbe7d01e9ede6",
+      "rgbaSha256": "c2bfe62ca3466582b86f48366478d8054c1cb2602120b1d819a58552e9e0f83f"
+    },
+    {
+      "task": "B-ICON-profeta-ult",
+      "block": "B262",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/profeta_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Ascensión del Elegido",
+      "pngSha256": "827ce0385a99e464de15952220f1a24c591f4442926f76956724d8724fef0624",
+      "rgbaSha256": "9c8eaf58ab5c66857358f8ac944937557761dbf3da791096cc260731141ee279"
+    },
+    {
+      "task": "B-ICON-musashi-h1",
+      "block": "B053",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/musashi_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Corte del Rōnin",
+      "pngSha256": "1aaee1f9da6659345539e9d978ecd55675600ab79bd32dd76753973e23957989",
+      "rgbaSha256": "f4487cb69d9ac6810d8b041a56b44dce9be93bbe5aea6c92118d5ac49e51a9c0"
+    },
+    {
+      "task": "B-ICON-musashi-h2",
+      "block": "B053",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/musashi_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Paso Fantasma",
+      "pngSha256": "beff4659a7d1fb8838c323dd911aaee52e5ab66613e3049ec7f6e700aacc83b1",
+      "rgbaSha256": "84d2fe84813af45474296e66aa3ae99d9c36c057f00152a06fee36615cf5a246"
+    },
+    {
+      "task": "B-ICON-musashi-h3",
+      "block": "B053",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/musashi_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Mil Cortes",
+      "pngSha256": "ef6b8b4177385d0b3b86305264c85dc68e4130584a6038d9d59cf0decfde9bb2",
+      "rgbaSha256": "aaa4be06bbfb6c874b4077764f860d1f15fa7d0d04eef33f49108d658fd1aae1"
+    },
+    {
+      "task": "B-ICON-musashi-ult",
+      "block": "B053",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/musashi_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Último Duelo",
+      "pngSha256": "5c8320a67bf3d39325b6dcfb7702f53f07cd576fade509a89c89645833ba0851",
+      "rgbaSha256": "b3dc8e8f029928910a1a9d3d2bea4b75ea6f5409b71001d21d30566b99fa2184"
+    },
+    {
+      "task": "B-ICON-cazadora-h1",
+      "block": "B050",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/cazadora_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Flecha Perforante",
+      "pngSha256": "57ab66c848e0c0e6e7b4226c9a9c8495375176a068e36149d07acc6821e72d7b",
+      "rgbaSha256": "f2e5fbffb9ecc881f7cf27a5e5518ed8ec1d308f4843ad43f1454c8d44a5d634"
+    },
+    {
+      "task": "B-ICON-cazadora-h2",
+      "block": "B050",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/cazadora_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Trampa del Bosque",
+      "pngSha256": "2e393b21608d5df9ce572e850852ca304f66eda0e708679ee60d8eceea0c97e2",
+      "rgbaSha256": "9e4bdc355b810199f5d7a32d35ebb9ee2714f4895572204abd519ab9a75d9dc7"
+    },
+    {
+      "task": "B-ICON-cazadora-h3",
+      "block": "B050",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/cazadora_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Lluvia de la Cazadora",
+      "pngSha256": "c893affb6178da37f3bd6aedad954a9701cad58c7357bef2ff658b42572dbb54",
+      "rgbaSha256": "7737b240713d393b42ba4c04b0a92d52b9119da938af179691f607b03138f441"
+    },
+    {
+      "task": "B-ICON-cazadora-ult",
+      "block": "B050",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/cazadora_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Cacería Salvaje",
+      "pngSha256": "71593b48cc509fc39754e3e416d1e3d0d525641742752b8ef1637389e20638e4",
+      "rgbaSha256": "1cd28d99e60adf28911e90af397895545c00d85945017f499c3766444c5ca01c"
+    },
+    {
+      "task": "B-ICON-nigromante-h1",
+      "block": "B260",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/nigromante_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Cosecha de Almas",
+      "pngSha256": "bf606f53329cb20f18504c0aa9999ec164c9a17e9089e3c8a980b14d4a8144a0",
+      "rgbaSha256": "3f44cd5ee85fdad3a6187b9fbadef36d542cc166a61967944c279ddf005725c7"
+    },
+    {
+      "task": "B-ICON-nigromante-h2",
+      "block": "B260",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/nigromante_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Gólem de Carne",
+      "pngSha256": "7cab7353fd18b900d7d6a2ebd1bf73a59817cdf3663df1ff859b48df567c2e2c",
+      "rgbaSha256": "f0c1ef9ef08e7a98d509bdd048a84ac803c7e7944bbffdf44213278e5dcbe9db"
+    },
+    {
+      "task": "B-ICON-nigromante-h3",
+      "block": "B260",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/nigromante_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Plaga de los Condenados",
+      "pngSha256": "e075737a6433f2deaec4f6007485005ca32c47009f6ec71d861ea914471ea542",
+      "rgbaSha256": "4cdd603a7b864fe98708c79a6329dcefecd902da628740b1deaf97661a8e1843"
+    },
+    {
+      "task": "B-ICON-nigromante-ult",
+      "block": "B260",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/nigromante_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Encarnación del Abismo",
+      "pngSha256": "90454129cf132744c066318db24daac080a1153e8fdfb53df4c132f214227b24",
+      "rgbaSha256": "e1a9efcd145b87e7309504206892b56dbe8523933f941a9effa87b5432ac7bfd"
+    },
+    {
+      "task": "B-ICON-libertador-h1",
+      "block": "B253",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/libertador_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Bayoneta",
+      "pngSha256": "4623431ae38791c6a8206bcfc5416979e63a75085ac2235bff790f0297a2ef68",
+      "rgbaSha256": "e96407e0bc811c6080c7c82566d029c725f6649424c971095d0df9a4b2f4187f"
+    },
+    {
+      "task": "B-ICON-libertador-h2",
+      "block": "B253",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/libertador_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "¡Granaderos, a la carga!",
+      "pngSha256": "b479a687af54ceb2a8cb16450989120d19157c1b5593abdcf05f12d94d2b1e7f",
+      "rgbaSha256": "31533bb44138436d142045bc9d80e54fef82e4f844c8cf814d3d1ca4d30f31a3"
+    },
+    {
+      "task": "B-ICON-libertador-h3",
+      "block": "B253",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/libertador_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Carga de San Lorenzo",
+      "pngSha256": "31ccb4da39566241cedaeef26dc184bb1bc3209cf24609437a5ecc29aeba1d77",
+      "rgbaSha256": "5b8fe1aec36d8fdef00d98ba5631ca6b542266e1d3f43998b3e9d8ba8da8afce"
+    },
+    {
+      "task": "B-ICON-libertador-ult",
+      "block": "B253",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/libertador_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Cruce de los Andes",
+      "pngSha256": "d2b81542c030fb77ed03668ad268d403dd29d8da3885fc9e00d9b0e252995f1b",
+      "rgbaSha256": "65fd661d2d85caee818bca4ae755a5a713715600d48d9ed84686c40048bd1b5f"
+    },
+    {
+      "task": "B-ICON-ilkan-h1",
+      "block": "B250",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/ilkan_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Lanza-Pendón",
+      "pngSha256": "2d212a108b693d9d304b7dccac0e0a6b9a8ee7fedd6b3c7b9ff2bdfc2fff2aab",
+      "rgbaSha256": "76d4ebe92810f794259d65916899d944997fa9229a738233c9291d4f497410ac"
+    },
+    {
+      "task": "B-ICON-ilkan-h2",
+      "block": "B250",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/ilkan_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Piel de Duna",
+      "pngSha256": "1a7bbb383abfc50295a9f5c03fa89eb82e2fc38d3f60dae43af5d1b8c1262d8d",
+      "rgbaSha256": "e5a838d7913e52b1c405a0de8800a993146f84f270e0e7085fdb81380a12cc65"
+    },
+    {
+      "task": "B-ICON-ilkan-h3",
+      "block": "B250",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/ilkan_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Grito de Caravana",
+      "pngSha256": "bfdfe83bfb144d5e806f3fcd1c9deaafc6808c5fb4a54915c8f83c14e97727ad",
+      "rgbaSha256": "82de212cbda36550d7968a66b13a0e57cbb915fd554d56eca57e96678cef0ac5"
+    },
+    {
+      "task": "B-ICON-ilkan-ult",
+      "block": "B250",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/ilkan_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Coloso de Arena",
+      "pngSha256": "e7c8b64b74d943ca26b3b4bc2561b19f859cd7e53553b610183108ab2b0c15be",
+      "rgbaSha256": "3f6b2f8f38d89a72eed6f399909e81dcbf10b74bf98c8cb35b2df1c0cde206ad"
+    },
+    {
+      "task": "B-ICON-ilkan_colossus-h1",
+      "block": "B051",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/ilkan_colossus_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "ilkan_colossus:h1",
+      "pngSha256": "e2020d891d200a2d9ab0ac53e3264662aa8a3b124146f94b19a30cda7ad03d8f",
+      "rgbaSha256": "4e7e7fd9a231b47fa3748fdac6a3a6b8ef295db2b03ec90dc738528c8cb3c2a3"
+    },
+    {
+      "task": "B-ICON-ilkan_colossus-h2",
+      "block": "B051",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/ilkan_colossus_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "ilkan_colossus:h2",
+      "pngSha256": "53ee7897c3b926eb84050f33078ecf5ab481ed03e86ea848efcca32bb5b3e917",
+      "rgbaSha256": "d287562814cc56b22e699e6c8e1ece760e51a11b7535df5964e26cef52dfb436"
+    },
+    {
+      "task": "B-ICON-ilkan_colossus-h3",
+      "block": "B051",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/ilkan_colossus_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "ilkan_colossus:h3",
+      "pngSha256": "dcaf63a06fea53cddfcbbd5f1139a0ceccef0a0ff1ac0a28d5c39d2df0f4f643",
+      "rgbaSha256": "d865be9c38b4d549ab56ec0252d18c2c051e731c2201c0de8c761ec5b4b86e80"
+    },
+    {
+      "task": "B-ICON-ilkan_colossus-ult",
+      "block": "B051",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/ilkan_colossus_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "ilkan_colossus:ult",
+      "pngSha256": "dc12b73efd90591111d8e0be3f8d4d5332d63ee5d637d5c76496b2c46d21bea0",
+      "rgbaSha256": "652dce320a65403cd195ec1df8a00d0a3c53b7c21f82ffe4a7de245949c977a7"
+    },
+    {
+      "task": "B-ICON-ynara-h1",
+      "block": "B274",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/ynara_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Mirada fulminante",
+      "pngSha256": "5a68efd08e3c6532327a0181829bd5324b3e478d533be39132684de15b9bf3ae",
+      "rgbaSha256": "1815c7366d648e6727ace90514336b10694c69bb994d2dc8df724ac2ff574fcf"
+    },
+    {
+      "task": "B-ICON-ynara-h2",
+      "block": "B274",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/ynara_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Estrogonof reparador",
+      "pngSha256": "b5eadfdd1ca05159cefe5a9391fd118c2e74e97649089e1f0e2eb4d9e338beb7",
+      "rgbaSha256": "c2dc6c69eb5ae9c1a4ca18925b0282054ec1bf7bac6e3d507c68b65b2e63c66e"
+    },
+    {
+      "task": "B-ICON-ynara-h3",
+      "block": "B274",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/ynara_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "No quiero seguir esta conversación",
+      "pngSha256": "63aaf93ab233cf110ae88b8b508b701f0c6776263c86cade1e672a061fcd39ef",
+      "rgbaSha256": "896aedcffde6da39a8b25e9272da4e3d2558b782067cc3671e4f03d5596a98aa"
+    },
+    {
+      "task": "B-ICON-ynara-ult",
+      "block": "B274",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/ynara_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Santa Paciencia",
+      "pngSha256": "c3b66ad23e0b03c1f15f0848fe6f9b022add4c485bfca9990d5612c92e63c578",
+      "rgbaSha256": "17f8507897b92a0f4c7ae593e84478ba40caeadb3c9fef51ae9942df83a78bc0"
+    },
+    {
+      "task": "B-ICON-myla-h1",
+      "block": "B257",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/myla_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Torre de Yogur",
+      "pngSha256": "2ada70caac53cfda3f2e4763e310c8cb3d907f2a6535b952f1df1d3983e4b3a2",
+      "rgbaSha256": "7d654517c33846a5c157aec4cb50f18603006c3f5669ff24c8e6eddd0e4a182b"
+    },
+    {
+      "task": "B-ICON-myla-h2",
+      "block": "B257",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/myla_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Yogurazo",
+      "pngSha256": "20ea8234088f0c91a77b4ab8c148be10317a70d9fca95d8844b53fc9d4d00924",
+      "rgbaSha256": "f5d8e131fcab6bb0848caf434986d9e8ac772386f3fbb0e0ce7407f953979b4f"
+    },
+    {
+      "task": "B-ICON-myla-h3",
+      "block": "B257",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/myla_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Burbuja Cremosa",
+      "pngSha256": "8a38da16c3d3a70f036da212236fd1e1adcc3876e727a28a9bbc82e4e50699a2",
+      "rgbaSha256": "2d541b04eb47c6b6e8aa2666d4f6083262ae85983bb888a095597e3440ad47fa"
+    },
+    {
+      "task": "B-ICON-myla-ult",
+      "block": "B257",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/myla_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "BERRINCHE",
+      "pngSha256": "a1a1c2df350b2c44a778ee4ab96a744df05038d8a729a1e9fb8f9ef6b2acd0fe",
+      "rgbaSha256": "89e4ec7c496671d018a4d976a03ed562f4682ea53ad6718e5c7d5afcf0bf2112"
+    },
+    {
+      "task": "B-ICON-brasa-h1",
+      "block": "B243",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/brasa_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Centinela de Latón",
+      "pngSha256": "ef68f59181489ba895539bd46ed58ba432297c9731753bedf5376292171dd4c7",
+      "rgbaSha256": "081a8b49f0e7d07db046df8a5068f0c0b3d1f7c873699ca7d57d3c78cd8043c0"
+    },
+    {
+      "task": "B-ICON-brasa-h2",
+      "block": "B243",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/brasa_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Purga de Vapor",
+      "pngSha256": "d276183b01f008b3e25784b12c138813f82ca57457eaf86ee56d7edecceacd9c",
+      "rgbaSha256": "3f07a000914ede135495aaa861113f5f9f07a656b5c62d93c8ea2e3e35e3a85e"
+    },
+    {
+      "task": "B-ICON-brasa-h3",
+      "block": "B243",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/brasa_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Desmontaje Rápido",
+      "pngSha256": "9053b4496b10606c2500a6d485357b31af94d2f10f7c4b2ca156fe56923fb547",
+      "rgbaSha256": "27da06e3d8dc7ec56504fb3085855d41de41cf0d2f725757c4c85eb3e92acb6c"
+    },
+    {
+      "task": "B-ICON-brasa-ult",
+      "block": "B243",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/brasa_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Turno de Emergencia",
+      "pngSha256": "11c27b165e638f278e571d230a45243404fbe8ebd2c515a5caa1dab0596da40e",
+      "rgbaSha256": "13ea8cb4769a2f5b995078fac79528b42c362ca43f40040f92c9dda1bcc76417"
+    },
+    {
+      "task": "B-ICON-eslabon-h1",
+      "block": "B246",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/eslabon_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Cadena de Retorno",
+      "pngSha256": "c3120c3283e20b0639f8964a106f477e23b83a6d54e3c4cafec72f12c896995f",
+      "rgbaSha256": "246f3cfdd7276f6359f5c9da997475c8418ea8e366f62ea41e5d378d01145d82"
+    },
+    {
+      "task": "B-ICON-eslabon-h2",
+      "block": "B246",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/eslabon_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Línea Infranqueable",
+      "pngSha256": "149aa0b1239bebf84f1816edd117406a7625a1489d97abcb2d4ac5870df14859",
+      "rgbaSha256": "6db889a9c03baef6a06d27518ee1d60ce2654b346f227d0d75f8ced302913d7f"
+    },
+    {
+      "task": "B-ICON-eslabon-h3",
+      "block": "B246",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/eslabon_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Custodia",
+      "pngSha256": "67d78e8fc1811b1e9940c689a71349cee7297ab1ad2048c512de1d48b207f918",
+      "rgbaSha256": "0ffbaac52e3788411f708e3df5fa23e6681ec418b2da41109ef443fe23fabc21"
+    },
+    {
+      "task": "B-ICON-eslabon-ult",
+      "block": "B246",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/eslabon_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Nadie Queda Atrás",
+      "pngSha256": "233eb319c5eb08a98e1ed4a0cb0303f2b21d76933fa35da9ac74d795df18dbd2",
+      "rgbaSha256": "9cc59f5b53e185b9e26bfa1ac1abcd018be959795ad83a2c1ac9dbef8da983bb"
+    },
+    {
+      "task": "B-ICON-morwen-h1",
+      "block": "B256",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/morwen_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Resina Amarga",
+      "pngSha256": "fb62d3ebaafe0e5fb44b36213349941e1dca0e027a1cc1cf47b0efba0fc77a32",
+      "rgbaSha256": "28fcf83cfdc3cf78c0045a86974b5bcf7e63a29ed7c48e601fa30a3ab09ed1d5"
+    },
+    {
+      "task": "B-ICON-morwen-h2",
+      "block": "B256",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/morwen_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Sal de Ruptura",
+      "pngSha256": "2fc74b6abd648f2be4fe1033904bb6ce65154fcb6d1d272486a6d04359489233",
+      "rgbaSha256": "9ce2fbde06dd9b55f895fb72ca35787c0dbc9fb8f41c0275d2e215408b95bd13"
+    },
+    {
+      "task": "B-ICON-morwen-h3",
+      "block": "B256",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/morwen_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Destilación",
+      "pngSha256": "57686475bba4393942939bbb34c39c8e87ceae8bfa8f0f036b7c44529c459fdb",
+      "rgbaSha256": "96e7cf16f57ae45dafdf6c3b8eb251d27ed9cecc53215127ca04d11e601c7264"
+    },
+    {
+      "task": "B-ICON-morwen-ult",
+      "block": "B256",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/morwen_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Alambique del Silencio",
+      "pngSha256": "50d36139ff4a30e0082b48c4dd3dbdc838eabe24fdc18ce6a77ece6615e98b6e",
+      "rgbaSha256": "1c352bebc3cb114b12281856255014d04aff119f2a1881df3651ace65bb1af65"
+    },
+    {
+      "task": "B-ICON-farolero-h1",
+      "block": "B248",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/farolero_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Farol de Guardia",
+      "pngSha256": "9f0428bc218d44a5da4fc6fdb2ebb0c58c392af98e99be009fa6ed12b356f882",
+      "rgbaSha256": "ccfdeafab10978aadd2116273bbf2b81ced32e6d58f756a68c236e867818dc4a"
+    },
+    {
+      "task": "B-ICON-farolero-h2",
+      "block": "B248",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/farolero_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Destello",
+      "pngSha256": "abfc71ca9442f79b27cbfa304d220c72af5fe798b1d34a5b424fe46c417fe608",
+      "rgbaSha256": "7db3125a214251b36497ee5aa534ff668d9d7b4c5a961c10ad2f647d8a4559d1"
+    },
+    {
+      "task": "B-ICON-farolero-h3",
+      "block": "B248",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/farolero_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Paso Seguro",
+      "pngSha256": "286ffcb32b4a1de4dd86f88187678c7a17e926b62edabf29e228b49a8df7bb14",
+      "rgbaSha256": "3b63d56b00874a73a653aa9766d52ea1cb93fc8c6aa2afdd033beb9de4e91436"
+    },
+    {
+      "task": "B-ICON-farolero-ult",
+      "block": "B248",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/farolero_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Vigilia",
+      "pngSha256": "35e75d766cc857b0a2824c3d130e0bc6c76c02a56c60be1093136c22ae0f9970",
+      "rgbaSha256": "2cdfc510c8d7ee4d70872c7633c43c4ccbc19e6872b0912269294a5a394b2561"
+    },
+    {
+      "task": "B-ICON-iria-h1",
+      "block": "B251",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/iria_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Ancla",
+      "pngSha256": "bd8030dd98486f074f3b7b904882d2a24182ed0097542c3c8ffc5329ac2b177a",
+      "rgbaSha256": "b565aa2f60d23067af66c0665e6246041aa679a773ee6fda8bd4b23b84cc8986"
+    },
+    {
+      "task": "B-ICON-iria-h2",
+      "block": "B251",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/iria_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Tensión",
+      "pngSha256": "cc9e243ae1b8aa909b941301459e8fa46a3692327a89e22238122c9d45fa0dc0",
+      "rgbaSha256": "4a098d22b53d5689789ff6ad71a7bdf59161b57da71cc1fca0bacfb42be8eccd"
+    },
+    {
+      "task": "B-ICON-iria-h3",
+      "block": "B251",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/iria_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Corte de Hilo",
+      "pngSha256": "36d3032975d063cd51f5611627041115c3d5000b371256b50649503782b761b6",
+      "rgbaSha256": "48ad2e5839d21dfa3f527bef826be51c01b7e864e125594ca66e8c070fef2c40"
+    },
+    {
+      "task": "B-ICON-iria-ult",
+      "block": "B251",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/iria_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Sello de los Tres Caminos",
+      "pngSha256": "631baf648fd7fcf978f1cee78c0d03d1f11ded9973df757887a2986c0a69be4a",
+      "rgbaSha256": "4e51c46b491dc44f8c197fc4bf54a3c214c6ed4e76153fa47dc1622a02c260a2"
+    },
+    {
+      "task": "B-ICON-vesper-h1",
+      "block": "B272",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/vesper_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Agujas de penumbra",
+      "pngSha256": "d854c9169b7b495031cf03886a3d7e79a2003a627c73cf9d96c45734d78195ad",
+      "rgbaSha256": "825f7b27e38de5764fbc9ffa960ee1463433e81310df453cb6d8dc39a14ce798"
+    },
+    {
+      "task": "B-ICON-vesper-h2",
+      "block": "B272",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/vesper_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Costura de fuga",
+      "pngSha256": "51e81cb6d9856983acb7de581d62a07e87103f6fe468e2174090e8734e47bd60",
+      "rgbaSha256": "3c61271296489f3f67b6d566ae46b45664cb2e590c95156f58fbe2cccafec0ce"
+    },
+    {
+      "task": "B-ICON-vesper-h3",
+      "block": "B272",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/vesper_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Deshilachar",
+      "pngSha256": "a87b7f52c703d6f308b4430f2c6370b9680445d173f3800d89e2ffb803d00ebe",
+      "rgbaSha256": "14c085bba8361c182288037999724483eaf6fa50477ca8584b40e27972340a08"
+    },
+    {
+      "task": "B-ICON-vesper-ult",
+      "block": "B272",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/vesper_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "La última puntada",
+      "pngSha256": "87eb8dcca05d15f0126d8a7a577cb3246b89b1d27c7c10d5238cdcaecad23367",
+      "rgbaSha256": "690668e05c3256895397ea4b5e6a4ee14885d0faa066216e89c2269f4017f5f0"
+    },
+    {
+      "task": "B-ICON-nahir-h1",
+      "block": "B258",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/nahir_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Astillas errantes",
+      "pngSha256": "abd84177a476b8e8295d43e51713cd0f7c64a54b276e4c2694da1d045f06e840",
+      "rgbaSha256": "468d50a05b13742c0813b72d7e295cde8c5e8865336892410149662b9567d914"
+    },
+    {
+      "task": "B-ICON-nahir-h2",
+      "block": "B258",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/nahir_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Reflejo fugitivo",
+      "pngSha256": "38eee7ae19dac31bc04e0595c12f50d39e0d96caba4c0d26965d71687149c2e5",
+      "rgbaSha256": "2bb58756ef0ea534791773ca744094eafdec0a9df33a3057b4e2ff8cd32050f0"
+    },
+    {
+      "task": "B-ICON-nahir-h3",
+      "block": "B258",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/nahir_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Corte cruzado",
+      "pngSha256": "3742b78114d22b3fbcd04916904c0a7be959c9f9f0cdae918c6ba0d2a3ca804b",
+      "rgbaSha256": "23417f619b887b54ccc7b0b2291fde4614f925d3d4e4b4ebf820749510420069"
+    },
+    {
+      "task": "B-ICON-nahir-ult",
+      "block": "B258",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/nahir_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Galería de nadie",
+      "pngSha256": "34c0ffa5ed2a21c7fb8962c1e7592a7e5e29ac5eba93cdb9332df9b57a28e62e",
+      "rgbaSha256": "67603e7ba2d91100f979634080aed2c969cb4a71e872448ff06762b189d84172"
+    },
+    {
+      "task": "B-ICON-baltra-h1",
+      "block": "B241",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/baltra_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Bronce vivo",
+      "pngSha256": "176be80cda7604c8f55dc4293de0bf23f1e6b30722485a96b84d8c7347645664",
+      "rgbaSha256": "c8eef1d8aa3603ba03f6abb223a27fe410fa4d0b8ce52b2282be51fffe47c5cc"
+    },
+    {
+      "task": "B-ICON-baltra-h2",
+      "block": "B241",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/baltra_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Bajo la campana",
+      "pngSha256": "075cfaa88547ab4be54c4ec4e3f8bef565805bd47f27d5d12cb11890d42b19c2",
+      "rgbaSha256": "460ac9501415112e168b7b10bb3a27c616f8225eac8a8483efbbf9a5f54a7f5f"
+    },
+    {
+      "task": "B-ICON-baltra-h3",
+      "block": "B241",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/baltra_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Badajo de retorno",
+      "pngSha256": "f2d71d7ea86f427a550a86ba4fcea0f9c40c3386e89275e1a1b38a82ab016a5d",
+      "rgbaSha256": "c8dc2b1bbdecab2451a19f771bd1b6fab7beef2bdfd3a0d0b3a9d507bcc848cf"
+    },
+    {
+      "task": "B-ICON-baltra-ult",
+      "block": "B241",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/baltra_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Que todos la escuchen",
+      "pngSha256": "77965753c1224717ef314b6424c67a47db863e03738dbef91ec387a59fbf0afe",
+      "rgbaSha256": "caf3eb527d7b5c1d82273c4550535b12a017189c182f91efe2c1f0106d55f614"
+    },
+    {
+      "task": "B-ICON-maura-h1",
+      "block": "B254",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/maura_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Raíces de paso",
+      "pngSha256": "5fc39c60790511b24a800aa8961cd0a04481f9eddad50229afac478e632c29ed",
+      "rgbaSha256": "6f892a421df92224c5d3be50a6342b1552f7259d0d37581e66b22ae4d48866e8"
+    },
+    {
+      "task": "B-ICON-maura-h2",
+      "block": "B254",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/maura_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Corteza prestada",
+      "pngSha256": "2aee27025249b7ca38cc1847f6fa04048b63a17df94531dedbf121ac0b5612c5",
+      "rgbaSha256": "77e2b7f81add6b36fd31a1f184df524766290e05e14ab0e17d16f25a79f7a574"
+    },
+    {
+      "task": "B-ICON-maura-h3",
+      "block": "B254",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/maura_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Poda necesaria",
+      "pngSha256": "a41f33db331193a89c0b057dcdf5f396200ba8cd8e054f5053d53021354bde3c",
+      "rgbaSha256": "3a6aaf5480c82cfa7ea2d1e9a337b17bbccd1352fb7bfdab41118b33bb398b67"
+    },
+    {
+      "task": "B-ICON-maura-ult",
+      "block": "B254",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/maura_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "El bosque camina",
+      "pngSha256": "9bff7fcb88916a9fe6e5bb2b08e57bf93128cfa809f54cd112554c35a735dbec",
+      "rgbaSha256": "0c00e63c9af578a3c425901957f330f4ab94b489b95efb9566a1c2de2cc195f9"
+    },
+    {
+      "task": "B-ICON-dariel-h1",
+      "block": "B245",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/dariel_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Nota discordante",
+      "pngSha256": "fd12e23a770cc5068c4580af8611e5a84f0d52999e73bfad6d981f647ac709c8",
+      "rgbaSha256": "bbbbc24eef1cccbc6514235cde2212f970334f6c103ef3936815d91521c9f91a"
+    },
+    {
+      "task": "B-ICON-dariel-h2",
+      "block": "B245",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/dariel_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Marcha de salida",
+      "pngSha256": "b2bbb273a6378c898b1ac2d4be8194208b4578c0b343ad4fcf5ee78b5ce31f55",
+      "rgbaSha256": "2878bf0dbb19807ac80c9bd20ea42082b1e667f2ea5c56d898fa138b24e048f5"
+    },
+    {
+      "task": "B-ICON-dariel-h3",
+      "block": "B245",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/dariel_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Volver al estribillo",
+      "pngSha256": "8e961abcf625b230bfd6fb59b75d811a6a09409ee56830b73736d2b3b70dd555",
+      "rgbaSha256": "e35832938dbbce132fde1435e96e9b7f3b933012a03341ff2ae63f53619b8875"
+    },
+    {
+      "task": "B-ICON-dariel-ult",
+      "block": "B245",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/dariel_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Todavía hay una salida",
+      "pngSha256": "c2b9b819e92e2cad2fb68c289277033a60e2fd1694cc2d9b0eb5ff240cf0cff7",
+      "rgbaSha256": "19b1e17f92d2516726d0fb4ecfc780a7ff501abab906b47826b5bb64a124f66b"
+    },
+    {
+      "task": "B-ICON-orsa-h1",
+      "block": "B054",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/orsa_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Perno conductor",
+      "pngSha256": "880d382ec152dd05519998c3bad0af877d53a62e74f2d9ab9d858cab05cd1d74",
+      "rgbaSha256": "01ddadc18fc6fd818a7c50194789c61f3379bbb5c3862a11a4f9e5f06e235883"
+    },
+    {
+      "task": "B-ICON-orsa-h2",
+      "block": "B054",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/orsa_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Apoyar la culata",
+      "pngSha256": "642d2b3f1e335440f51da12f93126fd815615e28762a47e1af8c33c83f6a1741",
+      "rgbaSha256": "b9d79e7f747ef7a728a24574e8a8ced0eb2aff1fc87a4c94a4f45b28b364031d"
+    },
+    {
+      "task": "B-ICON-orsa-h3",
+      "block": "B054",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/orsa_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Cerrar el circuito",
+      "pngSha256": "185117ce0b275e0864f8a1e43b781c1bcab6d9e7622a2212db7ec49779e60367",
+      "rgbaSha256": "899fb7d33d593c171205a357e1320bf6442b6098a323a94b04c93a1b9e27fe81"
+    },
+    {
+      "task": "B-ICON-orsa-ult",
+      "block": "B054",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/orsa_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Tormenta de rescate",
+      "pngSha256": "82e17030cce53f5c7f4ef483f0d6a6e77e3f7a79dc679ca7c6ae7c25fea043c9",
+      "rgbaSha256": "9daeec17881f82e6ccfe0797709618ab8a615d07ae42d82f4417d045786b2589"
+    },
+    {
+      "task": "B-ICON-tibor-h1",
+      "block": "B270",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/tibor_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Nube obrera",
+      "pngSha256": "7525f74028ead190ae02ee465b4fdc49d68b592c1465cb73ad9c670808c684e4",
+      "rgbaSha256": "a280930d85198f507c53607142fb5a764036a178e8bf35ee6c1113e95f6b6be6"
+    },
+    {
+      "task": "B-ICON-tibor-h2",
+      "block": "B270",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/tibor_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Volvé a casa",
+      "pngSha256": "d314a6b49d0fca4b99ba5e2e2c17b196239352c0ab52b4ee17dbe4c9436505bd",
+      "rgbaSha256": "3c2110ce2fe8498d9b341ea4bbe0f0758d975a633f868b4ca01ccc2bf21547bb"
+    },
+    {
+      "task": "B-ICON-tibor-h3",
+      "block": "B270",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/tibor_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Polen de aviso",
+      "pngSha256": "4864876315c39ea5859cc4178ad379d91825983b14ae63f96aaded56d257b390",
+      "rgbaSha256": "bbae578729e428aec5a047454f4dcdb1d0f375c359a51634720caf726484a861"
+    },
+    {
+      "task": "B-ICON-tibor-ult",
+      "block": "B270",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/tibor_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "El cielo zumba",
+      "pngSha256": "9cc108bf25029f7c453d48787b9b087b3b7101b1899d48cbe34a4b5b233a4b19",
+      "rgbaSha256": "92cba5f1256723ca98dda9a79689d1b8263d8cd54fd04ac8574c3cd260dfc9ba"
+    },
+    {
+      "task": "B-ICON-zahra-h1",
+      "block": "B275",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/zahra_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Boca de horno",
+      "pngSha256": "22b3c71bd9787f3cdc80a6e60a67beb04e80029edf4c498ece57eb63334845ba",
+      "rgbaSha256": "3aeadd83e01a8ec940d02f7a6b13c2e12e0f45d6b272e2b47c22ac1553bf7ce1"
+    },
+    {
+      "task": "B-ICON-zahra-h2",
+      "block": "B275",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/zahra_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Enfriar",
+      "pngSha256": "398aef22b7ff6326a671c2bf9a772e234e8522be46e6fc57168b48e014f3f563",
+      "rgbaSha256": "b158e132d191d63e3070b2174ae0d92510b04e720338a2670510436bd73e1fa7"
+    },
+    {
+      "task": "B-ICON-zahra-h3",
+      "block": "B275",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/zahra_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Paso de ceniza",
+      "pngSha256": "be38c98e8435799340c324803d5b7c774cba0a7d6dfc275ca8da90c67fa862e2",
+      "rgbaSha256": "7ac9d53b0daf4dc6439171751b88fe7520660efb37e451f0b05baca51985574c"
+    },
+    {
+      "task": "B-ICON-zahra-ult",
+      "block": "B275",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/zahra_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Abrir todas las válvulas",
+      "pngSha256": "4c3226d8d98da46bf80e82f1f0526cf290e837863ea25ecdb59a566346710314",
+      "rgbaSha256": "fb1552c1e34976e7d635f22b94bb55ed52c91dce3feaf8247a8e1032cb62f8f8"
+    },
+    {
+      "task": "B-ICON-renko-h1",
+      "block": "B263",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/renko_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Surco de contención",
+      "pngSha256": "b117cc286d0ce6de96f5f3f06c0810e87bc1be0cd99e0ad8ec5c678a02f249d8",
+      "rgbaSha256": "6e7b56bc34c6f85ab690e117930748f8db025d795f11db8088b09a5a1ea33464"
+    },
+    {
+      "task": "B-ICON-renko-h2",
+      "block": "B263",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/renko_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Montículo",
+      "pngSha256": "7b615dc75574e06528604e309c878ea2c3da51faac570fb23d6d60ddb9bd65b8",
+      "rgbaSha256": "5e5fe8842f5f0f6635ab0f1557d07054c1c64933e9cfb530efe098612b6759b3"
+    },
+    {
+      "task": "B-ICON-renko-h3",
+      "block": "B263",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/renko_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Devolver a la tierra",
+      "pngSha256": "aa388dea24a326f3e64c915ba3522a91aaba37c67e28cd628a92589d0daf2ebf",
+      "rgbaSha256": "db96c5a1c5f96fb4c37ba44139f90423b95c1b2ff7d099162d9fc2cb7ea05b1f"
+    },
+    {
+      "task": "B-ICON-renko-ult",
+      "block": "B263",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/renko_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Aquí siguen los nombres",
+      "pngSha256": "5bdcf8e7bd4b364adc38b75c8b2c5189bc8097ff547a8b107e379062a866ab80",
+      "rgbaSha256": "a2e9d3a262b0e61498106340d076749809223747bf7e77cb90cbc0d3f6a91e9b"
+    },
+    {
+      "task": "B-ICON-sira-h1",
+      "block": "B266",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/sira_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Línea de tinta",
+      "pngSha256": "5441f8baaac803fb6665a962b7cc4b51dd80a1a91bce4ca9484694dea798f23b",
+      "rgbaSha256": "49a07ea289d7209461b3b708137d3548f35ffb97082bd98dd94bc384bfdeb906"
+    },
+    {
+      "task": "B-ICON-sira-h2",
+      "block": "B266",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/sira_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Volver sobre los pasos",
+      "pngSha256": "785171bce4e9058905e70d37a8efe3bb3bbb08b3951d317334f85d94f0c45496",
+      "rgbaSha256": "b247b90c3e97c769fa5d8bf264db43973bbfc5c4916b9f45275030fe7fb24880"
+    },
+    {
+      "task": "B-ICON-sira-h3",
+      "block": "B266",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/sira_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Borrar el camino",
+      "pngSha256": "0a0d9201f73601848248a8704f4f03a8ef73d9d81708c298820b9004aecde884",
+      "rgbaSha256": "09429dfdea0092d501b126afd3d4082a03c2d1f6a44b89e7ad5bbfba978e2662"
+    },
+    {
+      "task": "B-ICON-sira-ult",
+      "block": "B266",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/sira_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Atlas de los ausentes",
+      "pngSha256": "92a544e4733ee8a4725011d505394a7c23c9598a541096f78e8a89e9ea4560ed",
+      "rgbaSha256": "61a37d19c9575ff39077ba8d97e2323a0555c133e91aa248f7f906066c468be3"
+    },
+    {
+      "task": "B-ICON-nano_gm-h1",
+      "block": "B259",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/nano_gm_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Sentencia Umbría",
+      "pngSha256": "105d4cfdb564f3fd585bf3ae7a87fac0fe62d628072625043af1cbfa9c243881",
+      "rgbaSha256": "d8f5af0f50df345d61b05a77e9c2b5b1d7c9c98c021954c02499057cdf171a96"
+    },
+    {
+      "task": "B-ICON-nano_gm-h2",
+      "block": "B259",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/nano_gm_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Edicto de Luz",
+      "pngSha256": "62898d31e4bbd1301423f21c3048797223f61c830cad43d2fb17540b027382cd",
+      "rgbaSha256": "24566e3689ef850477676953f53136551165ec276f08709241512a59a016b73d"
+    },
+    {
+      "task": "B-ICON-nano_gm-h3",
+      "block": "B259",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/nano_gm_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Inversión",
+      "pngSha256": "a1c96cce388f8269048711d8bb8091f1bfe6ee3ab63c8e8854e2c3cb14a5810e",
+      "rgbaSha256": "5fe5d40455805a81d0d9dd6cb14469dc379197b7deae803071e58432d4d6ffa4"
+    },
+    {
+      "task": "B-ICON-nano_gm-ult",
+      "block": "B259",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/nano_gm_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Juicio del GM",
+      "pngSha256": "f6319de071d5aefb25abf2c68ac7ad6e8234dca88886350c5cedbc430462e0de",
+      "rgbaSha256": "3c6855f407acee9d9794edbfbf9186d17e2b634f8c338a77f6176e2620649288"
+    },
+    {
+      "task": "B-ICON-facu_gm-h1",
+      "block": "B247",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/facu_gm_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Corriente de Resaca",
+      "pngSha256": "5c09e7f7c4f136584fb788955edbd38d3b3bce5c04233ac2e541b2fc89f72bf9",
+      "rgbaSha256": "fb6771d814dcfe844d0bd7b71c8efa1c83bad4e7374a7bbd56e4268a2759003f"
+    },
+    {
+      "task": "B-ICON-facu_gm-h2",
+      "block": "B247",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/facu_gm_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Presión Abisal",
+      "pngSha256": "a65936caaf9ebb8123ffd06647c6dba681000f10235a60cb8e77f010b0d3f4b8",
+      "rgbaSha256": "6030c824efe119fc0f920949e98a70858e1a1e987c05b5656ba4b247c7d3e6aa"
+    },
+    {
+      "task": "B-ICON-facu_gm-h3",
+      "block": "B247",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/facu_gm_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Cabalgar la Ola",
+      "pngSha256": "82b52b15161992542d4ab19b80dab70dabc05127018a6d877d8723f8fbf897cb",
+      "rgbaSha256": "5c7d9d9e6337aef2d287d885c7e5dc63163e7e698345fa0380b1cc6eff3cc52f"
+    },
+    {
+      "task": "B-ICON-facu_gm-ult",
+      "block": "B247",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/facu_gm_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "El Océano Reclama la Arena",
+      "pngSha256": "70a3077fcaf18d1afd06fe2f46341771ea58e80bbe62ac2e074b6e1a09c9eb68",
+      "rgbaSha256": "f822259299f2851b567a97493a380afa3586374228f02e8670322c58b4920ec3"
+    },
+    {
+      "task": "B-ICON-aurelia-h1",
+      "block": "B239",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/aurelia_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Prisma",
+      "pngSha256": "b42984c58932e935ce321339e44ad337db4aeac5918a8d5eb539aab3ca1fef16",
+      "rgbaSha256": "6ae268e97e7ca17c5f4b4671e640b6cd4b25292eee005380bc7faeda5a32a9a0"
+    },
+    {
+      "task": "B-ICON-aurelia-h2",
+      "block": "B239",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/aurelia_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Refracción",
+      "pngSha256": "c91af63ddfe9cecbaafb2f9bc5e5293a2cb3bd5b15c45bd579ce052ec54ad42c",
+      "rgbaSha256": "a586a6793cad75826318d252554e79c8bac4c0c9f82db29d75d808b269606143"
+    },
+    {
+      "task": "B-ICON-aurelia-h3",
+      "block": "B239",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/aurelia_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Paso Luminal",
+      "pngSha256": "3af0cd0e50e8fad92c69388ec31d103f5bc0cdc47f0cc98c5552aeda114b8494",
+      "rgbaSha256": "5f2c0c9d988a572c784f1b485ec6d7a3cae7c0caff21112c09c53fb1069ec790"
+    },
+    {
+      "task": "B-ICON-aurelia-ult",
+      "block": "B239",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/aurelia_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Catedral del Sol",
+      "pngSha256": "44b58223c27eb4f65129166b940cc0d193750947932b5983967aa96c838bac86",
+      "rgbaSha256": "b23cb15bf82fce48d62265abf4e546e2a1090ab9772e557a21c049d7d3dc3cfd"
+    },
+    {
+      "task": "B-ICON-khepri-h1",
+      "block": "B252",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/khepri_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Enjambre",
+      "pngSha256": "1f2a8e3513c974c676b86d4453edb1cfaa53eb8382abfd89dadc0bab74097d1b",
+      "rgbaSha256": "68f88cab78a446f4d8672aa3fac5be007b5e4ae13aa6acd03f0df41512eb08ce"
+    },
+    {
+      "task": "B-ICON-khepri-h2",
+      "block": "B252",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/khepri_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Caparazón Vivo",
+      "pngSha256": "d07d8fb95dd7e7bf12d01d23a3cfc38424fe21ad1c154f278961da7ee4c66c80",
+      "rgbaSha256": "52e415ccc26cd402917111b10fe7656c941bd105d346e7cede51a3ca5ca55a9e"
+    },
+    {
+      "task": "B-ICON-khepri-h3",
+      "block": "B252",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/khepri_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Vuelo de Élitros",
+      "pngSha256": "0b30beb9f128ca8c4d6e754c532842c0151cf59a52118b94295da005c0688f2d",
+      "rgbaSha256": "fc171e56a9c0e11b9818e6c2940f3c65b33ae55df1a131ff1ac0bcafae66db8c"
+    },
+    {
+      "task": "B-ICON-khepri-ult",
+      "block": "B252",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/khepri_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Eclipse de Escarabajos",
+      "pngSha256": "c9931bea17a631c77f08247a747da4076f123bbfcb0585a1ec29bdad9e9e0add",
+      "rgbaSha256": "9fe3006642c5de7267e5dc331b066c8da83aca15c332d7a760db2b1ac6865c5f"
+    },
+    {
+      "task": "B-ICON-velmira-h1",
+      "block": "B271",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/velmira_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Máscara Arrojada",
+      "pngSha256": "6d20f6d995ce3084f6c7430390dd9683a8296e0c48f7ea2455f12985ed53cefb",
+      "rgbaSha256": "74ad57111375599df85896b7fa5c087f987edbb930e33ae340388af8b6ef793f"
+    },
+    {
+      "task": "B-ICON-velmira-h2",
+      "block": "B271",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/velmira_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Coro de Rostros",
+      "pngSha256": "a6f68c97938ce502c1d9d11276708175ab119037f704f50fa79512c320126603",
+      "rgbaSha256": "d19f27981c28073bce91a130dd08c7e1140a5fd60d1407ec0555d8fab8b222d0"
+    },
+    {
+      "task": "B-ICON-velmira-h3",
+      "block": "B271",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/velmira_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Cambio de Rostro",
+      "pngSha256": "0dfb62686595261d307559ccf8887270f74b52cfd3b2a459e1af466b9296d471",
+      "rgbaSha256": "6533abf47a1b94c92edb74fcebdc454a9c306c18614ccae182dc49494f96d163"
+    },
+    {
+      "task": "B-ICON-velmira-ult",
+      "block": "B271",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/velmira_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "El Gran Teatro",
+      "pngSha256": "d9facc5951ddb9030c794e689f72e52e4fa47e97b6a23ac7473b4e479badfb5c",
+      "rgbaSha256": "9ac68443bf37ea3e753f8d6b940b4ae69f69e5449941348fc24e5d01a4a88e7a"
+    },
+    {
+      "task": "B-ICON-vhal-h1",
+      "block": "B055",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/vhal_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Estrella Errante",
+      "pngSha256": "c144734a4d362fe37b0f530922f1f71802ba50953ef4ff56826ef50568970abf",
+      "rgbaSha256": "1666fd90f542a18bad88f57f41b44c810adc02efc821f7a845b515eeb3d875d7"
+    },
+    {
+      "task": "B-ICON-vhal-h2",
+      "block": "B055",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/vhal_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Pozo Gravitatorio",
+      "pngSha256": "bbb9bf6d91673cb9b229adfbced1a65552b9dc27c883e73fc10e2773cc4dd1aa",
+      "rgbaSha256": "c64584dd1962fccec53618a8da899a7b2b1313dc8a5392ef5094efb9cb29f994"
+    },
+    {
+      "task": "B-ICON-vhal-h3",
+      "block": "B055",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/vhal_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Órbita",
+      "pngSha256": "5e4b324d583305257f581e8806b5ab6d5a2f08c90249847ec18eba1c4b80a61b",
+      "rgbaSha256": "7aa4725b56ae655cd53b830c5c66ca45dbace8785b3364bc459740d2a70e525e"
+    },
+    {
+      "task": "B-ICON-vhal-ult",
+      "block": "B055",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/vhal_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Colapso",
+      "pngSha256": "e32e0b76161079f23e4a3532d18ab96df4a8b6b443876cf8a5b2226dcb7d6bb3",
+      "rgbaSha256": "cfc8ea01da45d718136ff09ed26c3d717a77679bc4ee2cd3a9431c4aa884c618"
+    },
+    {
+      "task": "B-ICON-bront-h1",
+      "block": "B244",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/bront_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Placa Arrojada",
+      "pngSha256": "e1028a10d1cb7ac7e598642216d5453a398e0822924268e8ede7b0a4871326aa",
+      "rgbaSha256": "12caed49a6c271e77a6f9055f4359b8cf9cf86b6acd36adf19ffb3d1d21274c1"
+    },
+    {
+      "task": "B-ICON-bront-h2",
+      "block": "B244",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/bront_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Muro de Placas",
+      "pngSha256": "32283524c79082820a3055e73522fd24888881e8637840665236f527c730250f",
+      "rgbaSha256": "29aea4381ebc7419603b67b498ba52339ff5830d060227925902d240a7404272"
+    },
+    {
+      "task": "B-ICON-bront-h3",
+      "block": "B244",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/bront_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Pulso del Cristal",
+      "pngSha256": "9f398fc0871ff23ef99a70ac51f63929b428975a1ddf58e985b0916fcdb2722c",
+      "rgbaSha256": "500a2339858ff4b390408d585e912152008cfe4c9f38efb6315990abcc8d8e2c"
+    },
+    {
+      "task": "B-ICON-bront-ult",
+      "block": "B244",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/bront_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Ciudadela",
+      "pngSha256": "6dcdee923cf637e01907a6b7f4414bff87acf3b3b56e7c5645d12ec470572402",
+      "rgbaSha256": "98b1d1c3422f874870d660ee0f1709068c65f42c72f725e50610e3503d832a6e"
+    },
+    {
+      "task": "B-ICON-oriel-h1",
+      "block": "B261",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/oriel_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Abrir Cicatriz",
+      "pngSha256": "e3e4f08e270e0635b717be36e0d1a4140794c79fddd8060db390337f6bd450bf",
+      "rgbaSha256": "59e5777ff2755091403a6d215b7563c58a897a079f67170afcf5e5cca019cf7a"
+    },
+    {
+      "task": "B-ICON-oriel-h2",
+      "block": "B261",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/oriel_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Eco de la Cicatriz",
+      "pngSha256": "b1b7189fae56ca7d3214abd5cc82296a9cf07c74f64a29e25818c30bfcb7348a",
+      "rgbaSha256": "341a60979338ac512738005a33ee30553672bd0cc42d2b2e480d0e9d5d85644e"
+    },
+    {
+      "task": "B-ICON-oriel-h3",
+      "block": "B261",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/oriel_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Paso entre Mundos",
+      "pngSha256": "5623ac00e8326c4a5a5280377fd730d26941604a6440fa966d62b76882a882e0",
+      "rgbaSha256": "eb3259f6bd9b7fd75bc8e1e1dc050bfac08dafb1cd7033c3f7f2f8660493e4ee"
+    },
+    {
+      "task": "B-ICON-oriel-ult",
+      "block": "B261",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/oriel_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "La Gran Cicatriz",
+      "pngSha256": "6b7fe74310236717b07adcd431c87862d74040f0d8c3f8cb8f98e34fc8a9e9d2",
+      "rgbaSha256": "5976ab07c030cd2b2b9acbc5c5be08c87d9b09200ef21b4e3f8e435054313d0c"
+    },
+    {
+      "task": "B-ICON-saelis-h1",
+      "block": "B264",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/saelis_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Abanico de Plumas",
+      "pngSha256": "62cc917b220eafe0e7340fdf11a18ee3f66cd9bd0bfc764ed41eeac5963a05c7",
+      "rgbaSha256": "229378bc57a637e5ca837c320df724c96b9f77abfb7c08f921a6f9910bc52350"
+    },
+    {
+      "task": "B-ICON-saelis-h2",
+      "block": "B264",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/saelis_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Ráfaga Ascendente",
+      "pngSha256": "c54dcff9f3ebd3669edfc9f8a68ca71b4efe47a427bcafe986ff4ab4bebb3881",
+      "rgbaSha256": "d8db3f9d505c38247faffc46b77a3f618111dd375f194b720d8f15235f84fed4"
+    },
+    {
+      "task": "B-ICON-saelis-h3",
+      "block": "B264",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/saelis_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Llamado del Plumaje",
+      "pngSha256": "ac7a553c2ce43134e5030ecfc4f4a45af847a933220b3493acae6be2f1ee604d",
+      "rgbaSha256": "0f4ac6540d80fb7e62267810118447484d7869a90409f4094e8fe6d4b012eca9"
+    },
+    {
+      "task": "B-ICON-saelis-ult",
+      "block": "B264",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/saelis_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Cielo de Plumas",
+      "pngSha256": "1da5b067159cd860b6c8abdf589144452af68a314eda1d0a92b5462dded1cf42",
+      "rgbaSha256": "1be01612d474fb1cef7e8cbcf251c0b1ecab4543c6369676b5057e061de1ba1a"
+    },
+    {
+      "task": "B-ICON-solciju-h1",
+      "block": "B267",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/solciju_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Vino maldito",
+      "pngSha256": "3369f84894d2e0ae46e2715b90f343b5ccc24b1c2b04c7dadd95b15c36e9f86d",
+      "rgbaSha256": "3ae959510e7d0afce3b54f2d40e98d1e39e8fe8c52c5e194db753a620a14298c"
+    },
+    {
+      "task": "B-ICON-solciju-h2",
+      "block": "B267",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/solciju_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Barrica añeja",
+      "pngSha256": "8be0f7de378640990fb401d34966a0bd450c22d0b0b1989b979528f70e2b1421",
+      "rgbaSha256": "1f220b02969cc027b1901502a1670513a5f5550778f54b1ccb630db43e6b58a2"
+    },
+    {
+      "task": "B-ICON-solciju-h3",
+      "block": "B267",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/solciju_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Brindis a solas",
+      "pngSha256": "d5fc44d13b5fa2dd99c4e354139b8b1ec0a284ef785a912dddc71fdea18e3bd8",
+      "rgbaSha256": "d01213e77ebf0a58ba285f4034e5e43c251308691e31d8f5ef2639833a39f42b"
+    },
+    {
+      "task": "B-ICON-solciju-ult",
+      "block": "B267",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/solciju_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Gran Reserva",
+      "pngSha256": "236c29c59954627480b52a390e63ada7f6f79acd50765105cfc2bf072323338c",
+      "rgbaSha256": "8b9b8f04e85948b2c463f4d33ede0a95993e14aa07e7d9c115639bc7b2ba8513"
+    },
+    {
+      "task": "B-ICON-veyra-h1",
+      "block": "B273",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/veyra_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Abrir la herida",
+      "pngSha256": "d6c70bfa8b84f68906b3334026ac4865ad42e096f3c8d4a243c693ac674f3dcd",
+      "rgbaSha256": "9011e96dab20012dd398da26c83b20b4014ec15b14a1cfc1ac2f809f330e103a"
+    },
+    {
+      "task": "B-ICON-veyra-h2",
+      "block": "B273",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/veyra_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Paso escarlata",
+      "pngSha256": "ddcdfa63243bb4058a85d2dbd4fcb3ca88805df6107f05c8b008314ffd70da3c",
+      "rgbaSha256": "4a8a210fc7e88c0b3657443cba0151fa04a229493fef8a9031c0bb8ee13a0eaa"
+    },
+    {
+      "task": "B-ICON-veyra-h3",
+      "block": "B273",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/veyra_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Pacto de dolor",
+      "pngSha256": "19c2d150bd1d1479a44fe80e8e79f43dcdaeb6113e59000c5a85c45bff276206",
+      "rgbaSha256": "f1b584fb39c31ee4e6cf353587c0d232c42faaccd2c6b40f6f48d1dd8d402ccd"
+    },
+    {
+      "task": "B-ICON-veyra-ult",
+      "block": "B273",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/veyra_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "La última herida",
+      "pngSha256": "1691bbfe649db82b68d1a648436f145dd44fe235bdef89fad2c893a5dd707708",
+      "rgbaSha256": "5a5d027b52ead0a843f8642880682035a70010f1994704b92905be5863d1217a"
+    },
+    {
+      "task": "B-ICON-brakk-h1",
+      "block": "B242",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/brakk_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Muro de asedio",
+      "pngSha256": "ad3478ba89c73a3ecc1350e4b6850e4c7e4d73f38565e7ffa8565669700b3a26",
+      "rgbaSha256": "408110500dfcf5771aa6a22a45d917e7e3cb00c7d5d4d332cd627cd1e2be27d3"
+    },
+    {
+      "task": "B-ICON-brakk-h2",
+      "block": "B242",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/brakk_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Torreta de clavos",
+      "pngSha256": "746adbf14d27ddde8b95659cb0c5ca9fe0a056fbf257f4cfccb9ba1bd3f41a8e",
+      "rgbaSha256": "7d72985ead120fb49854515373482e5b7a2881286aea9eb18cc6a47d490657ac"
+    },
+    {
+      "task": "B-ICON-brakk-h3",
+      "block": "B242",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/brakk_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Apuntalar",
+      "pngSha256": "f181bcc8a327a9f79c13fa454119ca4fcf5e5d81e049fe785a166ece7d0a8cdc",
+      "rgbaSha256": "3ecb94112dc95eb2419bf190d2ce4880194caf3d2cf6ed273f8edad305067c30"
+    },
+    {
+      "task": "B-ICON-brakk-ult",
+      "block": "B242",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/brakk_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Demolición final",
+      "pngSha256": "44e8e081d97f7c82031dcbe00350883a0ee09603722ef1d4e8099261f5f3f62b",
+      "rgbaSha256": "7293a33c54fd99350f07f12eaa82c0e54aaca321f486e9480c776120b905abf3"
+    },
+    {
+      "task": "B-ICON-morveth-h1",
+      "block": "B255",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/morveth_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Huerto maldito",
+      "pngSha256": "eb1940bb9d5c46ef4022ea905f1e2f6bc47b19ba89a8ff128b886ed983ba9b51",
+      "rgbaSha256": "33e1dfa577a02ee55e371450cee2757ada76ccef243a23cb2c1490db772af39a"
+    },
+    {
+      "task": "B-ICON-morveth-h2",
+      "block": "B255",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/morveth_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Exhalación de peste",
+      "pngSha256": "68c1c5b23066e68e3e340525675e81f4ff2ea89cc8332a58a5b61eacdf5ae4eb",
+      "rgbaSha256": "d16af4b7a55e2f18ac7c96ce18d66c8545917601813688db521a2f1148b22d44"
+    },
+    {
+      "task": "B-ICON-morveth-h3",
+      "block": "B255",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/morveth_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Simbiosis",
+      "pngSha256": "5441023709284ba316558a0e466bfe1783845c33a43c33ea570346cadde50456",
+      "rgbaSha256": "12a54115170f20bb504f00c2a89fb8674cd749a4922037db3f154f8d47fbcf5c"
+    },
+    {
+      "task": "B-ICON-morveth-ult",
+      "block": "B255",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/morveth_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "Jardín de la peste",
+      "pngSha256": "04c0f25e2293171c3702a4c21797f64eb2cac041b79dc3e2722adc7ebf175d97",
+      "rgbaSha256": "5cc4d5e7a89589c31372d58a5ce7ee3b550a3125abf6c5095f698b199b95c19b"
+    },
+    {
+      "task": "B-ICON-aelith-h1",
+      "block": "B238",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/aelith_0.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Instante roto",
+      "pngSha256": "c44b33ea48f792991744a52df298a93bb4082056b187ba756c7899f5251746f0",
+      "rgbaSha256": "cdf39bac53d3a4b338366c80a612b8ba05cdc13981247ec60a071861f2f6b3e8"
+    },
+    {
+      "task": "B-ICON-aelith-h2",
+      "block": "B238",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/aelith_1.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Fractura de segundos",
+      "pngSha256": "3dd673745437cc659be069d7657b4a5500cd3e47fac8a0f1653a7b74b98d3cd4",
+      "rgbaSha256": "5f3c284dc7d491f63a2e07d5e6586862a47fb90f5cf2d3cecbd3e2eda6900e0a"
+    },
+    {
+      "task": "B-ICON-aelith-h3",
+      "block": "B238",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/aelith_2.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Tiempo prestado",
+      "pngSha256": "cca769e393d5715af10b5a73af5916506ea87c2beb42c96d84adaa4e0f5ca381",
+      "rgbaSha256": "4d7c8f1fa7842e5be24feea0399114e20aa9d58f8de396e0c564ef958cb24072"
+    },
+    {
+      "task": "B-ICON-aelith-ult",
+      "block": "B238",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/aelith_u.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "ult",
+      "label": "La hora imposible",
+      "pngSha256": "35a9cce72a944ecf19596491f5c1e5af96e17fcd250952823019fe52dcfdedb6",
+      "rgbaSha256": "b94b884c8fb7a2482c51009a7b4cc261a84d08a79a22df04c07003e0851082a1"
+    },
+    {
+      "task": "B-ICON-generico-basic",
+      "block": "B482",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/generico_basic.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "basic",
+      "label": "Ataque",
+      "pngSha256": "66019f5ac025d4de74f8a550c3e2aedc09f4dc418149628280a8e68ac6a4d911",
+      "rgbaSha256": "f18278e8e893d7322ee377cbf415e6af87a471c90f345aea31f3007a1ca700cf"
+    },
+    {
+      "task": "B-ICON-generico-heal",
+      "block": "B482",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/generico_heal.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Cura",
+      "pngSha256": "d20f2b34f2c5e86367f264af57567d671fae6e5c6b533d8a9bf057d5d8c8d091",
+      "rgbaSha256": "25542031e2d337e606be7ed5c3e003d6bc2436798356b4f3db7556f7041f8f58"
+    },
+    {
+      "task": "B-ICON-generico-pact",
+      "block": "B482",
+      "file": "art-source/entregas/2026-10_mundo/iconos/habilidades/generico_pact.png",
+      "size": [
+        16,
+        16
+      ],
+      "category": "skill",
+      "label": "Pacto",
+      "pngSha256": "8683bbbb7400a4d97883b21332e936ebd6372cd00468b25409d949d59a4fa3e4",
+      "rgbaSha256": "dea1fe3dfcfdbc1169a568a367d544e2835053c784b67a2fb4b6de32fdb9d48a"
+    }
+  ]
+}

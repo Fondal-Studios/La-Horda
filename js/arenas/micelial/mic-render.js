@@ -24,8 +24,8 @@ for(const n of MIC_FX_NAMES) _micImg("assets/sprites/arenas/micelial/fx/"+n+".pn
 const MIC_MP = {}, MIC_MP_OK = {};
 for(const n of ["mp_full","mp_cap","mp_arm_l","mp_arm_r"]) _micImg("assets/sprites/arenas/micelial/mother/"+n+".png", n, MIC_MP, MIC_MP_OK);
 const MIC_BG = {}, MIC_BG_OK = {};
-_micImg("assets/sprites/arenas/micelial/map/map_initial.jpg", "a", MIC_BG, MIC_BG_OK);
-_micImg("assets/sprites/arenas/micelial/map/map_mature.jpg", "b", MIC_BG, MIC_BG_OK);
+_micImg("assets/sprites/arenas/micelial/map/map_initial.png", "a", MIC_BG, MIC_BG_OK);
+_micImg("assets/sprites/arenas/micelial/map/map_mature.png", "b", MIC_BG, MIC_BG_OK);
 // claves de vfxSprite (se repiten en red como cualquier efecto)
 const MIC_FX_GROUND = new Set(["leap_splat","spore_pile","root_line"]);
 for(const n of MIC_FX_NAMES) VFX_SPR_EXTRA["mic_"+n] = {imgs:[MIC_FX[n]], ready:()=>!!MIC_FX_OK[n], ground:MIC_FX_GROUND.has(n)};
@@ -136,7 +136,7 @@ function micDrawWorld(now){
   const V = _micView();
   ctx.save();
   ctx.fillStyle = "#07040b"; ctx.fillRect(V.x0 - 50, V.y0 - 50, V.x1 - V.x0 + 100, V.y1 - V.y0 + 100);
-  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingEnabled = false; // suelo a píxel nativo (ART_BIBLE §14): vecino más cercano, sin suavizado
   if(MIC_BG_OK.a && !(MIC_BG_OK.b && _micBlend >= 0.99)) _micDrawBg(MIC_BG.a, 1, V); // si el fondo B ya tapa todo, A no se ve: una pasada de pantalla completa menos
   if(MIC_BG_OK.b) _micDrawBg(MIC_BG.b, _micBlend, V);
   if(micS.dead){ const d = _micDesatCanvas(); if(d) _micDrawBg(d, _micDeadQ, V); }

@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-17T02:19:08.329Z",
+  "kind": "synthetic-relay-only",
+  "relay": "wss://la-horda-nano-relay.onrender.com",
+  "players": 50,
+  "rooms": 13,
+  "seconds": 15,
+  "hz": 10,
+  "snapshotPayloadBytes": 4096,
+  "sent": 7450,
+  "expectedDeliveries": 11026,
+  "received": 11026,
+  "deliveryRatio": 1,
+  "pingSamples": 750,
+  "pingP95Ms": 114.78466899999694,
+  "unexpectedCloses": 0,
+  "errors": [],
+  "pass": true,
+  "workflow": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/38994346442",
+  "limitations": "Short synthetic relay test, not real gameplay/FPS, database load or guaranteed sustained capacity."
+}

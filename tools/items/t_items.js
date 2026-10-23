@@ -69,8 +69,14 @@ async function boot(browser, initSave){
     const { E, errors, page } = await boot(browser, old);
     const r = await E(() => ({ gold: save.gold, lvl: save.champions.mago.level, open: ARENA_ORDER.filter(isArenaUnlocked), flag: save.testStageV1,
       backup: !!localStorage.getItem(SAVE_KEY + '_antesDeEtapaPrueba') }));
-    check('TEST.reinicio_unico_de_la_etapa_de_prueba', r.gold === 0 /* sin el regalo de 10.000 (regalo inicial = guardián + skin) */ && r.lvl === 1 && r.open.join() === 'ciudad' /* orden canónico: la primera jugable es la Ciudad Maldita (01) */ && r.flag === true, r);
-    check('TEST.respaldo_del_guardado_anterior', r.backup, r);
+    // Desde eed0d7a6 («Protect legacy progress»), cargar un guardado SIN la marca testStageV1 ya no lo reinicia: una marca ausente no autoriza
+    // a borrar progreso (save.js). El reinicio de la etapa de prueba quedó como función explícita (testStageReset) con su respaldo.
+    check('TEST.guardado_viejo_sin_marca_conserva_el_progreso', r.gold >= 123456 && r.lvl === 25 && r.open.includes('bosque') && r.open.includes('acuatica') && r.flag === true, r);
+    check('TEST.carga_no_hace_respaldo_de_reinicio', r.backup === false, r);
+    const rs = await E((raw) => { const had = localStorage.getItem(SAVE_KEY + '_antesDeEtapaPrueba'); testStageReset(raw);
+      return { gold: save.gold, lvl: save.champions.mago.level, open: ARENA_ORDER.filter(isArenaUnlocked), flag: save.testStageV1, hadBefore: !!had, backup: !!localStorage.getItem(SAVE_KEY + '_antesDeEtapaPrueba') }; }, JSON.stringify(old));
+    check('TEST.reinicio_explicito_de_la_etapa_de_prueba', rs.gold === 0 && rs.lvl === 1 && rs.open.join() === 'ciudad' && rs.flag === true, rs);
+    check('TEST.respaldo_del_guardado_anterior', rs.backup, rs);
     // volver a cargar el guardado (como al reabrir el juego): el regalo no se repite
     check('TEST.el_regalo_no_se_repite_al_recargar', await E(() => { save.gold = 42; persist(); loadSave(); return save.gold; }) === 42, null);
     check('TEST.sin_errores', errors.length === 0, errors);
@@ -81,13 +87,17 @@ async function boot(browser, initSave){
   // ---------- nombres, botín cruzado y recetas ----------
   const nm = await E(() => { const out = []; for (const r of ['comun','raro','muyraro','legendario']) out.push(makeItem('casco', r).name); return out; });
   check('ITEMS.objetos_procedurales_tienen_nombre', nm.every(n => n && !/cualquier|PLACEHOLDER|Común Casco/.test(n)) && /de /.test(nm[3]), nm);
+  // (muestra grande y azar con semilla: la proporción real de procedurales es ~33,5 % contra el techo de 35 %; con 600 tiradas sin semilla
+  // (desvío ~1,9 puntos) la prueba fallaba ~1 de cada 5 corridas sin que el botín hubiera cambiado)
   const lt = await E(() => { const c = { named:0, champ:0, proc:0, other:0, myth:0, uniq:0, total:0 };
-    for (let i = 0; i < 600; i++){ const it = materializeLoot({ tier:'legendario' }, 'mago', 'hielo'); c.total++;
+    const rand0 = Math.random; let a = 20261021; Math.random = () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+    try {
+    for (let i = 0; i < 12000; i++){ const it = materializeLoot({ tier:'legendario' }, 'mago', 'hielo'); c.total++;
       if (NAMED_LEGENDARIES[it.designId] || (typeof BUILD_LEGENDARIES !== 'undefined' && BUILD_LEGENDARIES[it.designId])) c.named++; else if (it.designed && it.champion) { c.champ++; if (it.champion !== 'mago') c.other++; } else c.proc++; }
     for (let i = 0; i < 100; i++){ const it = materializeLoot({ tier:'mitico' }, 'mago', 'hielo'); if (it.rarity === 'mitico' && it.designed) c.myth++; }
     for (let i = 0; i < 60; i++){ const it = materializeLoot({ tier:'unico' }, 'mago', 'hielo'); if (it.rarity === 'unico' && it.unique) c.uniq++; }
     const hielo = {}; for (let i = 0; i < 800; i++){ const it = materializeLoot({ tier:'legendario' }, 'mago', 'hielo'); if (NAMED_LEGENDARIES[it.designId]) hielo[it.element] = (hielo[it.element]||0) + 1; }
-    return { c, hielo }; });
+    return { c, hielo }; } finally { Math.random = rand0; } });
   check('LOOT.legendarios_mayormente_con_nombre', lt.c.named/lt.c.total > 0.5 && lt.c.proc/lt.c.total < 0.35, lt.c);
   check('LOOT.botin_cruzado_de_otros_campeones', lt.c.other > 0 && lt.c.other < lt.c.champ, lt.c);
   check('LOOT.miticos_y_unicos_siempre_disenados', lt.c.myth === 100 && lt.c.uniq === 60, lt.c);
@@ -171,7 +181,7 @@ async function boot(browser, initSave){
   check('CSET.errante_iaijutsu_tras_pausa', await cs('errante', 'musashi', `()=>{ runElapsedMs += 2000; const a = champSetIaijutsu(player); runElapsedMs += 300; const b = champSetIaijutsu(player); player.cds[0] = 3000; champSetOnPerfectStep(player); return a && !b && player.cds[0] === 0; }`));
   check('CSET.manada_trampa_marca_y_lobo', await cs('manada', 'cazadora', `()=>{ const e = __foe(); champSetOnTrapRoot(player, e); const marked = player.huntTarget === e; sylvaAddTrack(player, e, 5); return marked && !!player.wolf; }`));
   check('CSET.granadero_aturde_y_recarga', await cs('granadero', 'libertador', `()=>{ const e = __foe(); damageEnemy(e, 5, {src:player, fromBasic:true}); const st = e.stunTimer > 0; const k = __foe(); k.hp = 1; player.basicCd = 1400; damageEnemy(k, 50, {src:player, fromBasic:true}); return st && player.basicCd <= 60; }`));
-  check('CSET.legion_furia_y_titan_mas_largo', await cs('legion', 'eren', `()=>setFuryMult(player) === 1.15 && champSetTitanDurMult(player) === 1.3`));
+  check('CSET.legion_furia_y_titan_mas_largo', await cs('legion', 'ilkan', `()=>setFuryMult(player) === 1.15 && champSetColossusDurMult(player) === 1.3`));
   check('ITEMS.sin_errores', errors.length === 0, errors);
   console.log(`SUMMARY ${fails === 0 ? 'OK' : 'FAIL'} fails=${fails}`);
   await browser.close();

@@ -1,0 +1,67 @@
+/* css/accessibility.css — Opciones de accesibilidad (js/core/prefs.js): tamaño y opacidad de los controles
+   táctiles, ataque alternar/automático y paleta para daltonismo. Se carga después de controls.css.
+   Con los valores de fábrica (100%, Mantener, sin paleta) nada de este archivo se activa. */
+
+/* ---------- TAMAÑO Y OPACIDAD DE LOS CONTROLES (prefs.js pone --ctl-sc / --ctl-inv / --ctl-op en <body>) ----------
+   Solo con body.ctl-custom (algún valor distinto de 100%): al 100% no se agrega ni transform ni opacity, así que la
+   experiencia de siempre queda intacta. Las zonas táctiles se agrandan por 1/escala antes de escalarse: ocupan la
+   misma parte de la pantalla y las medidas internas (px) crecen o se achican desde la esquina. */
+body.ctl-custom #joyzone{ transform:scale(var(--ctl-sc,1)); transform-origin:left bottom; width:calc(46% * var(--ctl-inv,1)); height:calc(46% * var(--ctl-inv,1)); opacity:var(--ctl-op,1); }
+body.ctl-custom #skillzone{ transform:scale(var(--ctl-sc,1)); transform-origin:right bottom; width:calc(54% * var(--ctl-inv,1)); height:calc(56% * var(--ctl-inv,1)); opacity:var(--ctl-op,1); }
+body.ctl-custom.lefty #joyzone{ transform-origin:right bottom; }
+body.ctl-custom.lefty #skillzone{ transform-origin:left bottom; }
+
+/* vista previa en Opciones: joystick y botones al tamaño y opacidad elegidos */
+.ctl-preview{ position:relative; height:152px; margin:4px 0 8px; border:2px solid #000; border-radius:6px; overflow:hidden;
+  background:repeating-linear-gradient(45deg,#1b130d 0 10px,#241912 10px 20px); }
+.ctl-preview .cp-cap{ position:absolute; left:6px; top:3px; font-size:.8rem; color:var(--ui-dim,#b89a86); }
+.ctl-preview .cp-joy, .ctl-preview .cp-btns{ position:absolute; bottom:6px; transform:scale(var(--ctl-sc,1)); opacity:var(--ctl-op,1); }
+.ctl-preview .cp-joy{ left:14px; width:76px; height:76px; border-radius:50%; background:rgba(40,20,10,.35); border:2px solid rgba(255,122,46,.55); transform-origin:left bottom; }
+.ctl-preview .cp-joy i{ position:absolute; left:19px; top:19px; width:34px; height:34px; border-radius:50%; background:rgba(255,122,46,.55); border:2px solid rgba(255,207,92,.8); }
+.ctl-preview .cp-btns{ right:14px; width:130px; height:96px; transform-origin:right bottom; }
+.ctl-preview .cp-btns b{ position:absolute; display:flex; align-items:center; justify-content:center; border-radius:50%; background:radial-gradient(circle at 35% 30%,#3a1c10,#170b06 75%); border:2px solid var(--ember1,#ff7a2e); width:36px; height:36px; font-weight:normal; color:#ffe6a8; }
+.ctl-preview .cp-btns .cp-atk{ right:0; bottom:0; width:54px; height:54px; border-color:#e0824a; font-size:1.3rem; }
+.ctl-preview .cp-btns .cp-b1{ right:62px; bottom:0; }
+.ctl-preview .cp-btns .cp-b2{ right:76px; bottom:42px; }
+.ctl-preview .cp-btns .cp-b3{ right:34px; bottom:58px; }
+body.lefty .ctl-preview .cp-joy{ left:auto; right:14px; transform-origin:right bottom; }
+body.lefty .ctl-preview .cp-btns{ right:auto; left:14px; transform-origin:left bottom; }
+
+/* ---------- ATAQUE: alternar / automático ----------
+   encendido = anillo punteado + etiqueta (se ve por la FORMA y el texto, no solo por el color) */
+.ability-btn.basic.atk-on{ outline:3px dashed #ffe6a8; outline-offset:3px; }
+body.atk-auto .ability-btn.basic::after, .ability-btn.basic.atk-on::after{
+  position:absolute; left:50%; top:-9px; transform:translateX(-50%); padding:0 5px; border-radius:6px; background:#0e0906; border:1px solid #ffe6a8;
+  color:#ffe6a8; font-family:var(--font-retro); font-size:.75rem; line-height:1.15; letter-spacing:.04em; pointer-events:none; white-space:nowrap; }
+body.atk-auto .ability-btn.basic::after{ content:"AUTO"; }
+body.atk-toggle .ability-btn.basic.atk-on::after{ content:"ON"; }
+
+/* ---------- PALETA PARA DALTONISMO (Opciones > Colores para daltonismo; prefs.js CVD_PAL) ----------
+   rg = rojo-verde (deuteranopia / protanopia): azul + naranja. by = azul-amarillo (tritanopia): verde + rosa rojizo.
+   Además del color cada barra lleva marcas distintas: vida = muescas verticales, escudo = rayas, energía = línea media. */
+body.cvd-rg{ --cvd-hp:#ffb000; --cvd-hp2:#ffe08a; --cvd-hpdim:#2e2200; --cvd-sh:#bfeaff; --cvd-sh2:#56b4e9; --cvd-en:#8a8cff; --cvd-en2:#d0d0ff; --cvd-good:#7fd0ff; --cvd-bad:#ffb000; }
+body.cvd-by{ --cvd-hp:#ff4d82; --cvd-hp2:#ffb0c8; --cvd-hpdim:#3a0f1c; --cvd-sh:#f2fbff; --cvd-sh2:#9bd9ff; --cvd-en:#2a8cff; --cvd-en2:#a8d2ff; --cvd-good:#5fe590; --cvd-bad:#ff4d82; }
+body.cvd-rg .bar-track, body.cvd-by .bar-track, body.cvd-rg .ally-hp-track, body.cvd-by .ally-hp-track{ background:var(--cvd-hpdim); }
+body.cvd-rg #hud .bar-fill:not(.energy):not(.shield-seg), body.cvd-by #hud .bar-fill:not(.energy):not(.shield-seg),
+body.cvd-rg .ally-hp-fill:not(.shield-seg), body.cvd-by .ally-hp-fill:not(.shield-seg){
+  background:repeating-linear-gradient(90deg, rgba(0,0,0,.7) 0 2px, transparent 2px 10px), linear-gradient(180deg,var(--cvd-hp2),var(--cvd-hp)); }
+body.cvd-rg #hud .bar-fill.shield-seg, body.cvd-by #hud .bar-fill.shield-seg, body.cvd-rg .ally-hp-fill.shield-seg, body.cvd-by .ally-hp-fill.shield-seg{
+  background:repeating-linear-gradient(135deg, rgba(0,0,0,.4) 0 3px, transparent 3px 7px), linear-gradient(180deg,var(--cvd-sh),var(--cvd-sh2)); }
+body.cvd-rg #hud .bar-fill.energy, body.cvd-by #hud .bar-fill.energy{
+  background:linear-gradient(180deg,var(--cvd-en2) 0 48%, rgba(0,0,0,.6) 48% 56%, var(--cvd-en) 56%); }
+body.cvd-rg .float-text.heal, body.cvd-by .float-text.heal{ color:var(--cvd-good); }
+body.cvd-rg .float-text:not(.heal):not(.crit), body.cvd-by .float-text:not(.heal):not(.crit){ color:var(--cvd-bad); }
+body.cvd-rg #downed-overlay .dw-title, body.cvd-by #downed-overlay .dw-title{ color:var(--cvd-bad); }
+body.cvd-rg #downed-overlay .dw-title::before, body.cvd-by #downed-overlay .dw-title::before{ content:"▲ "; }
+
+/* muestra en Opciones: aliado / enemigo / peligro (rayado) / seguro / barra de vida con la paleta elegida */
+.cvd-demo{ display:none; flex-wrap:wrap; gap:6px; align-items:center; margin:2px 0 6px; font-size:.95rem; }
+body.cvd-rg .cvd-demo, body.cvd-by .cvd-demo{ display:flex; }
+.cvd-demo > span{ padding:3px 8px; border:2px solid #000; border-radius:4px; background:#150d08; color:#fff; }
+body.cvd-rg .cvd-demo .cd-ally{ border-color:#56b4e9; } body.cvd-by .cvd-demo .cd-ally{ border-color:#3cdc78; }
+body.cvd-rg .cvd-demo .cd-foe{ border:2px dashed #ffb000; } body.cvd-by .cvd-demo .cd-foe{ border:2px dashed #ff3c6e; }
+body.cvd-rg .cvd-demo .cd-danger{ background:repeating-linear-gradient(135deg,#ffb000 0 5px,#2a1a00 5px 10px); text-shadow:0 0 3px #000,0 0 3px #000; }
+body.cvd-by .cvd-demo .cd-danger{ background:repeating-linear-gradient(135deg,#ff3c6e 0 5px,#2a0010 5px 10px); text-shadow:0 0 3px #000,0 0 3px #000; }
+body.cvd-rg .cvd-demo .cd-safe{ border:3px double #fff; background:#0d2a3a; } body.cvd-by .cvd-demo .cd-safe{ border:3px double #fff; background:#0d3a1c; }
+.cvd-demo .cd-hp{ display:block; width:90px; height:12px; padding:0; border-radius:3px; overflow:hidden; background:var(--cvd-hpdim); }
+.cvd-demo .cd-hp i{ display:block; width:65%; height:100%; background:repeating-linear-gradient(90deg, rgba(0,0,0,.7) 0 2px, transparent 2px 10px), linear-gradient(180deg,var(--cvd-hp2),var(--cvd-hp)); }

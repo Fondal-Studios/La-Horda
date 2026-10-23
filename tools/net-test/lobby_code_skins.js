@@ -160,8 +160,10 @@ const toast = (c) => ev(c, () => (document.getElementById('net-toast') || {}).te
 
   // ================= B compra una skin en la Sala: se autoequipa =================
   check('skin.b_sin_skin_al_inicio', (await ev(B, () => champSkinId('musashi'))) === null);
-  await B.page.evaluate(() => document.querySelector('[data-prep-skin-buy="errante"]').scrollIntoView({ block: 'center' })); await sleep(250);
-  await press(B, '[data-prep-skin-buy="errante"]');
+  // las skins se compran solo con Brasas ✦ (servidor): la Sala muestra el botón ✦ y no hay botón de oro
+  check('skin.sala_sin_boton_de_oro_y_con_Brasas', await ev(B, () => !document.querySelector('[data-prep-skin-buy]') && !!document.querySelector('[data-skin-premium="errante"]')));
+  // entrega de la compra con Brasas (misma ruta que premium.js tras la respuesta del servidor)
+  await ev(B, () => { save.cosmeticUnlocks = Object.assign({}, save.cosmeticUnlocks, { errante: true }); persist(); _shopAfterSkinBuy('errante', 0); });
   await sleep(600);
   const bT = await toast(B);
   const bSkin = await ev(B, () => ({ id: champSkinId('musashi'), chip: (document.querySelector('.prep-skin.on .prep-skin-name') || {}).textContent || '',
@@ -179,7 +181,8 @@ const toast = (c) => ev(c, () => (document.getElementById('net-toast') || {}).te
   await A.page.evaluate(() => document.querySelector('[data-prep-shop]').scrollIntoView({ block: 'center' })); await sleep(200);
   await press(A, '[data-prep-shop]');
   check('pantalla.tienda_desde_sala', await ev(A, () => state === 'shop' && shopTab === 'skins'));
-  await press(A, '[data-skin-buy="convergencia"]');
+  check('skin.tienda_sin_boton_de_oro', await ev(A, () => !document.querySelector('[data-skin-buy="convergencia"]') && !!document.querySelector('[data-skin-premium="convergencia"]')));
+  await ev(A, () => { save.cosmeticUnlocks = Object.assign({}, save.cosmeticUnlocks, { convergencia: true }); persist(); _shopAfterSkinBuy('convergencia', 0); });
   await sleep(500);
   const aT = await toast(A);
   const aSkin = await ev(A, () => champSkinId('mago'));

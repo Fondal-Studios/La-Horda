@@ -197,7 +197,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
               const P2 = CHAMP_PACK[pk.key];
               if (st === 'death') { h._deadAt = animNow - k * 170 - 1; const pick = champPackSet(P2, 'death', 'down', h); champPackDrawFrame(P2, pick.arr[k], 0, 0, champPackScale(P2, h, h.scale || 2), pick.flip, 1); }
               else if (st === 'run' || pk.role !== 'guardian') { champPackDrawFrame(P2, S.arr[k], 0, 0, champPackScale(P2, h, h.scale || 2), S.flip, 1); }
-              else if (st === 'walk' || st === 'idle' || (pk.champ !== 'eren' && pk.champ !== 'libertador')) drawHeroBody(h, h.scale, false, false); // en partida
+              else if (st === 'walk' || st === 'idle' || (pk.champ !== 'ilkan' && pk.champ !== 'libertador')) drawHeroBody(h, h.scale, false, false); // en partida
 
               else champPackDrawFrame(P2, S.arr[k], 0, 0, champPackScale(P2, h, h.scale || 2), S.flip, 1);
             } catch (e) { g.fillStyle = 'red'; g.fillText('ERR ' + e.message.slice(0, 40), -40, -20); }

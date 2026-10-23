@@ -186,7 +186,20 @@ function drawProfetaAtlas(h, drawScale, alpha){
   return drawAnimAtlas(PROFETA_ANIM_ATLAS, profetaResolveClip(h), h, drawScale, alpha);
 }
 
+// Base-only recoil supplement. Abilities retain their existing higher-priority art.
+function drawKnightHurt(h, drawScale, alpha){
+  if(h.classKey!=="tanque" || !(h.hurtTimer>0)) return false;
+  const key=typeof setSkinPackKey==="function" ? setSkinPackKey(h,"tanque") : "tanque";
+  const P=CHAMP_PACK.tanque_hurt;
+  if(key!=="tanque" || !P || !P.ready) return false;
+  const pick=champPackSet(P,"hit",champPackDir(h),h);
+  if(!pick) return false;
+  const n=h.hurtTimer>80 ? 0 : 1;
+  champPackDrawFrame(P,pick.arr[n],h.x,h.y,champPackScale(P,h,drawScale),pick.flip,alpha);
+  return true;
+}
 function drawDirAtlasHero(entry, h, drawScale, alpha){
+  if(drawKnightHurt(h,drawScale,alpha)) return true;
   // croma (js/systems/cromas.js): la misma grilla con la imagen recoloreada, si ya bajó
   const ci = typeof cromaImage==="function" ? cromaImage(h, h.classKey + "_atlas") : null;
   const A = ci ? { img:ci, ready:()=>true, def:entry.animAtlas.def } : entry.animAtlas;
@@ -206,6 +219,12 @@ function _knightCromaSwap(h){
 // Solo dibuja; no toca daño, duración ni ninguna otra regla de combate.
 function drawKnightAbilityFx(h, drawScale, alpha){
   if(typeof CaballeritoHabilidades==="undefined" || h.classKey!=="tanque") return false;
+  const skill=h.dashFxTimer>0 ? "estampida" : h.spinTimer>0 ? "torbellino" : (h.growTimer>0 && h.growMaxTimer>0) ? "grito" : null;
+  if(!skill) return false;
+  const image=(typeof cromaImage==="function" && cromaImage(h,skill)) || CaballeritoHabilidades.images[skill];
+  // Vendor drawFrame silently skips unloaded images. Fall back to the body instead
+  // of reporting success and making the hero invisible on a slow/failed request.
+  if(!image || !image.complete || !image.naturalWidth) return false;
   const size = 120 * (drawScale/2.0);
   ctx.save();
   ctx.globalAlpha = alpha!==undefined ? alpha : 1;
@@ -286,7 +305,7 @@ function champPackCasting(h){
   return animNow < (h._pcuLocal||0);
 }
 function drawChampPack(key, h, drawScale, alpha){
-  const base = h._codexPack || key; // preview del Códice: otro atlas del mismo guardián (a caballo, El Portador)
+  const base = h._codexPack || key; // preview del Códice: otro atlas del mismo guardián (a caballo, el Coloso)
   const P = CHAMP_PACK[typeof setSkinPackKey==="function" ? setSkinPackKey(h, base) : base]; // skin de set completo
 
   if(!P || !P.ready) return false;
@@ -303,7 +322,7 @@ function drawChampPack(key, h, drawScale, alpha){
   h._aPrev = a;
   let st, prog = null;
   if(h.hurtTimer>0){ st = "hit"; prog = 1 - h.hurtTimer/160; }
-  else if(a>0){ st = champPackCasting(h) ? ((h.portCastState==="ultimate" && P.sets.ultimate_down)?"ultimate":"cast") : "attack"; prog = 1 - a/(h._aDur||a); }
+  else if(a>0){ st = champPackCasting(h) ? (((h.portCastState==="ultimate" || h._animCastKind===2) && P.sets.ultimate_down)?"ultimate":"cast") : "attack"; prog = 1 - a/(h._aDur||a); }
   else if(h.sylvaCharging && P.sets.aim) st = "aim";
   else st = h.moving ? "walk" : "idle";
   const pick = champPackSet(P, st, dir, h) || (st==="cast" && champPackSet(P, "attack", dir, h)) || champPackSet(P, "idle", dir, h);
@@ -317,7 +336,10 @@ function drawChampPack(key, h, drawScale, alpha){
 }
 // Muerte con los frames reales (en vez del sprite de pie rotado): queda tendido semitransparente.
 function drawChampPackDeath(h){
-  const P = CHAMP_PACK[typeof setSkinPackKey==="function" ? setSkinPackKey(h, h.classKey) : h.classKey];
+  const key = typeof setSkinPackKey==="function" ? setSkinPackKey(h, h.classKey) : h.classKey;
+  // Supplemental base-only clip: skins/cromas keep their own appearance and fallback.
+  const supplement = key === "libertador" ? CHAMP_PACK.libertador_death : key === "tanque" ? CHAMP_PACK.tanque_death : key === "guerrero" ? CHAMP_PACK.guerrero_death : key === "myla" ? CHAMP_PACK.myla_death : null;
+  const P = supplement && supplement.ready ? supplement : CHAMP_PACK[key];
   if(!P || !P.ready) return false;
   if(!h._deadAt){ h._deadAt = animNow; vfxBurst(h.x, h.y-20, 12, "blood", 120, 420, 3, 2, -30, 0); }
   const pick = champPackSet(P, "death", h._pdir || "down", h);
@@ -489,6 +511,19 @@ function drawNigromanteReal(h, drawScale, alpha){
 // Nigromante transformado — "Demonio Nigromántico" (Encarnación del Abismo). Reemplaza el
 // dibujo normal mientras h.nigroDemonForm esté activo (ver enterAbyssForm/exitAbyssForm).
 function drawNigromanteDemon(h, drawScale, alpha){
+  if(NIGRO_COLOSSUS_READY){
+    const side = Math.abs(h.fx||0) > Math.abs(h.fy||0)*1.3;
+    const row = side ? 1 : ((h.fy||0)<-0.15 ? 2 : 0);
+    const col = h.attackAnim>0 ? 3 : (h.moving ? 1+Math.floor((h.animT||0)/180)%2 : 0);
+    // 132 world units: about twice a normal champion. Only the visual body grows.
+    const growth = 1-0.22*Math.max(0,Math.min(1,(h.nigroTransformTimer||0)/900));
+    const scale = 132/335 * (drawScale/(h.scale||2)) * growth;
+    const clip = {frames:[{x:col*448,y:row*384,w:448,h:384}]};
+    const el = typeof nigromanteGolemSkin === "function" ? nigromanteGolemSkin(h) : "stone";
+    nigroDrawElementAura(h.x,h.y,el,44,animNow/1000);
+    drawAnimFrameSized(NIGRO_COLOSSUS,clip,0,h.x,h.y,448*scale,384*scale,0.5,376/384,side&&(h.fx<0),alpha);
+    return true;
+  }
   if(!NIGRO_DEMON_READY.idle) return false;
   let img;
   if(h.attackAnim>0 && h.nigroCastKind==="demonSlam" && NIGRO_DEMON_READY.slam){
@@ -530,7 +565,7 @@ function drawRealFallen(h, alpha){
 // queda tendido semitransparente, o la pose real de muerte cuando existe arte para eso.
 function drawFallenHero(h){
   const skinPack = typeof setSkinPackKey==="function" && setSkinPackKey(h, h.classKey) !== h.classKey;
-  if((CHAMP_PACK[h.classKey] || skinPack) && drawChampPackDeath(h)) return; // muerte con sus frames reales (o los de su skin de set)
+  if((CHAMP_PACK[h.classKey] || skinPack || h.classKey === "tanque" || h.classKey === "guerrero") && drawChampPackDeath(h)) return; // muerte con sus frames reales (o los de su skin de set)
   if(h.classKey==="mago" && drawMagoFallen(h, 0.5)) return; // el propio arte ya lo muestra boca abajo
   // DEATH del guardián con su propio sprite real: reacción al golpe, caída de costado y
   // queda tendido semitransparente (antes: siempre el sprite procedural, fuera cual fuera el arte).

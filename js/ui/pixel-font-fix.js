@@ -11,7 +11,7 @@
   const RX = /[ÁÉÍÓÚÜ]/, RXG = /[ÁÉÍÓÚÜ]/g;
   const MAP = {"Á":"A", "É":"E", "Í":"I", "Ó":"O", "Ú":"U", "Ü":"U"};
   function isPixel(el){
-    try{ return getComputedStyle(el).fontFamily.indexOf("Press Start") >= 0; }catch(e){ return false; }
+    try{ return !el.closest(".keep-accents") && getComputedStyle(el).fontFamily.indexOf("Press Start") >= 0; }catch(e){ return false; }
   }
   function fixText(t){
     const s = t.nodeValue;

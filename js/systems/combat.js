@@ -35,7 +35,7 @@ function damageEnemy(e, amount, opts){
   // a golpe según Concentración y Senda del Rōnin (ver musashiCombatMods), algo que el sistema
   // genérico runStats.critChance/critMult -fijo para toda la partida- no puede representar.
   // Sin overrides, el comportamiento de siempre queda idéntico.
-  dmg *= heroDmgOutMult(src) * enemyVulnMult(e); // Granaderos/¡Avancen!/forma montada/titán y defensa rota (San Lorenzo, Andes)
+  dmg *= heroDmgOutMult(src) * enemyVulnMult(e); // Granaderos/Grito de Caravana/forma montada/coloso y defensa rota (San Lorenzo, Andes)
   dmg *= setDamageMult(src, e, opts); // bonus de sets (Glaciar, Cazador, Frenesí, Resonancia, Impulso…)
   if(src && src._res) dmg *= resonanceDmgMult(src, e); // don del cristal que lleva (crystal-resonance.js)
   dmg *= itemDamageMult(src, e, opts); // poderes de legendarios/míticos (Avivar las Llamas, Verdugo, Cosecha Roja…)
@@ -106,9 +106,9 @@ function damageEnemy(e, amount, opts){
   // de la partida (con el daño multiplicado varias veces) un solo golpe llenaba casi toda la
   // barra. Ahora se normaliza contra el daño BASE del propio héroe: siempre hacen falta más o
   // menos la misma cantidad de golpes para cargar la ulti, sin importar cuánto haya escalado.
-  if(!(src.classKey==="eren" && src.erenPhase==="rumble")) // El Retumbar no recarga la Furia que lo disparó (termina en 0)
-    if(!(src._ultLockUntil > runElapsedMs)) src.ultCharge = Math.min(src.ultMax, (src.ultCharge||0) + (dmg/Math.max(1,src.baseDmg))*2.6*(runStats.ultChargeMult||1)*buildUltChargeMult(src)*(src.classKey==="eren" ? erenFuryGainMult(src) : 1));
-  if(src.classKey==="eren") erenCheckRumbling(src);
+  if(!(src.classKey==="ilkan" && src.ilkanPhase==="finale")) // Los Tres Pasos no recargan la Tormenta que los disparó (termina en 0)
+    if(!(src._ultLockUntil > runElapsedMs)) src.ultCharge = Math.min(src.ultMax, (src.ultCharge||0) + (dmg/Math.max(1,src.baseDmg))*2.6*(runStats.ultChargeMult||1)*buildUltChargeMult(src)*(src.classKey==="ilkan" ? ilkanFuryGainMult(src) : 1));
+  if(src.classKey==="ilkan") ilkanCheckFinale(src);
   if(opts.burn){ e.burnTimer = Math.max(e.burnTimer||0, 2600*uniqueBurnMult(src)); e.burnDmg = Math.max(e.burnDmg||0, amount*0.12); e.burnSrc = src; if(heroUniqueKey(src)==="uniq_archimago") e.voidFire = true; }
   if(opts.bleed){ e.bleedTimer = opts.bleedDur||3000; e.bleedDmg = amount*0.16; e.bleedSrc = src; }
   if(opts.slow){ e.slowTimer = opts.slowDur||2000; e.slowAmt = opts.slow; e.slowBy = src; }
@@ -246,7 +246,10 @@ function killEnemy(e){
     grantXP(player.classKey, Math.round(e.xp*(runStats.xpMult||1)));
   }
   if(Math.random()<0.6){
-    const g = Math.round(e.gold*(krs.goldMult||1));
+    // oro por baja: refuerzos del que remata x multiplicador de la dificultad de la partida (difficulty-tiers.js, lo que
+    // promete el selector). Normal (x1) queda igual; con x1,5 un enemigo de 1 de oro paga 1,5 de media (redondeo estocástico).
+    const dg = typeof diffGoldMult==="function" ? diffGoldMult() : 1, gRaw = e.gold*(krs.goldMult||1)*dg;
+    const g = dg===1 ? Math.round(gRaw) : Math.floor(gRaw) + (Math.random() < gRaw-Math.floor(gRaw) ? 1 : 0);
     if(killer && killer.isRemote) netEmitTo(killer._netSlot, "gold", [g]); else grantGold(g);
   }
   if(e.dropsItem && Math.random()<0.42){
@@ -304,7 +307,7 @@ function damageHero(h, amount, src, portTransferred){
   if(h.type!==undefined && !h.classKey && h.team!==undefined && typeof lanesMinionHit==="function"){ lanesMinionHit(h, amount, src); return; } // un súbdito golpeando a otro
   if(typeof lanesOn==="function" && lanesOn() && lanesBlocksHeroDamage(h, src)) return; // sin fuego amigo de la horda propia
   if(h.invulnTimer>0) return; // p.ej. la breve transición del Teletransporte de Axiom
-  { const tk = heroDmgTakenMult(h); if(tk<=0) return; amount *= tk; } // montado / Instinto / titán / cinemáticas
+  { const tk = heroDmgTakenMult(h); if(tk<=0) return; amount *= tk; } // montado / Piel de Duna / coloso / cinemáticas
   // Regla de la Arena PvE: sin fuego amigo. Un aliado (héroe, su invocación o su proyectil)
   // nunca daña a otro aliado. Curas/escudos/buffs/revivir no pasan por acá: no se tocan.
   if(!modeRules().friendlyFire && src && src!==h && !src.isPvp){ const atk = allyAttackerOf(src); if(atk && atk!==h) return; }
@@ -345,14 +348,13 @@ function damageHero(h, amount, src, portTransferred){
       h.emergencyShieldUsed = true;
       const absorbed = Math.min(h.itemShield, dmg);
       h.itemShield -= absorbed; dmg -= absorbed;
-      if(h===player) floatText(h.x, h.y-50, "¡ESCUDO DE EMERGENCIA!", "crit");
       vfxShock(h.x, h.y-10, 10, 60, "255,90,90", 420, h===player?2:1); // se ve que fue el objeto mítico
     }
   }
   ynaraOnHit(h, dmgBeforeShields);
   h.hp -= dmg;
   if(src && src.eliteMods && dmg>0) eliteOnHitHero(src, h, dmg); // élite con nombre: vampírico / encantado de fuego
-  if(h.classKey==="eren" && dmg>0) erenOnHurt(h, dmg);
+  if(h.classKey==="ilkan" && dmg>0) ilkanOnHurt(h, dmg);
   const absorbed = Math.max(0, dmgBeforeShields - dmg);
   if(h.stats){ h.stats.mitigated = (h.stats.mitigated||0) + mitigated; h.stats.shieldAbsorbed = (h.stats.shieldAbsorbed||0) + absorbed; }
   if(dmg>0) itemProcsOnHurt(h, dmg, src);
@@ -422,6 +424,9 @@ function nearestHeroTo(x, y){
   return best;
 }
 function nearestEnemyTo(ent, range){
+  // Bots de Guerra de Cristales/Coliseo con cerebro de victoria: atacan lo que importa (héroe débil, estructura, épico con el equipo),
+  // no lo que tengan más cerca (súbditos y criaturas de la selva). Ver js/arenas/lanes/lanes-bot-ai.js.
+  if(ent._bot && ent.alive && typeof lanesOn==="function" && lanesOn() && botVictoryOn(ent) && arenaHas("botTarget")) return arenaHook("botTarget", ent, range || 620) || null;
   let best=null, bestD=Infinity;
   for(const e of enemies){
     if(!e.alive) continue;

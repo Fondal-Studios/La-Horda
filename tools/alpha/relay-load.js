@@ -1,4 +1,6 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 // Loopback transport stress only: excludes browser rendering, Internet RTT and DB load.
 const WebSocket=require('../../server/node_modules/ws'),{spawn}=require('node:child_process'),fs=require('node:fs'),os=require('node:os'),path=require('node:path'),assert=require('node:assert/strict');
 const data=fs.mkdtempSync(path.join(os.tmpdir(),'horda-load-')),port=18991;
@@ -7,7 +9,7 @@ const delay=ms=>new Promise(r=>setTimeout(r,ms));
 async function connect(){const s=new WebSocket('ws://127.0.0.1:'+port);await new Promise((resolve,reject)=>{s.once('open',resolve);s.once('error',reject)});return s;}
 function request(s,m){return new Promise((resolve,reject)=>{const t=setTimeout(()=>{s.off('message',f);reject(Error('timeout'))},5000);const f=raw=>{const j=JSON.parse(raw);if(j.t==='error'){clearTimeout(t);s.off('message',f);reject(Error(j.code));}if(j.t==='joined'){clearTimeout(t);s.off('message',f);resolve(j)}};s.on('message',f);s.send(JSON.stringify(m))})}
 (async()=>{const reports=[];try{
- for(let i=0;i<50;i++){try{if((await fetch('http://127.0.0.1:'+port+'/health')).ok)break}catch{}await delay(100)}
+ for(let i=0;i<50;i++){try{if((await fetchReadyOk('http://127.0.0.1:'+port+'/health')))break}catch{}await delay(100)}
  for(const clients of [12,40]){
   const sockets=[],hosts=[],latencies=[];let received=0,expected=0;
   try{

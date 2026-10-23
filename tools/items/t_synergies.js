@@ -85,7 +85,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   });
 
   // ---------------- 1) SINERGIAS ----------------
-  const data = await E(() => { const out = {}; for (const k of ['tanque','guerrero','mago','soporte','segador','axiom','profeta','musashi','cazadora','nigromante','libertador','eren']){ const L = TALENT_SYNERGIES[k] || []; /* los 12 del árbol con sinergias (los guardianes nuevos de main traen su propio sistema) */
+  const data = await E(() => { const out = {}; for (const k of ['tanque','guerrero','mago','soporte','segador','axiom','profeta','musashi','cazadora','nigromante','libertador','ilkan']){ const L = TALENT_SYNERGIES[k] || []; /* los 12 del árbol con sinergias (los guardianes nuevos de main traen su propio sistema) */
       out[k] = { n: L.length, nodesOk: L.every(s => s.from.every(id => !!talentNodeById(k, id))), skillOk: L.every(s => s.skill === 'ult' || !!CLASSES[k].skills[s.skill]),
         textOk: L.every(s => { const t = talentSynergyText(k, s); return /^\+\d/.test(t) && /por punto en/.test(t) && !/undefined|NaN|\?/.test(t); }),
         crossOk: L.every(s => s.from.some(id => { const n = talentNodeById(k, id); return !(n.mods(1)||[]).some(m => m.targetSkill === s.skill && m.key === s.key); })) }; }
@@ -115,7 +115,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
 
   // Tooltips: nodo del árbol, panel de Habilidades y botón del HUD, con el valor actual
   const tips = await E(() => {
-    const k = 'mago', c = save.champions[k]; c.level = 30; c.talents = mkTalentState(); c.talents.nodes = { mg_tem_c1: 3, mg_tem_c2: 2 }; delete TALENT_MODS_CACHE[k];
+    const k = 'mago', c = save.champions[k]; c.level = TALENT_TREE_MIN_LEVEL; /* Talent Gate 40: bajo ese nivel el árbol no rinde */ c.talents = mkTalentState(); c.talents.nodes = { mg_tem_c1: 3, mg_tem_c2: 2 }; delete TALENT_MODS_CACHE[k];
     const d = document.createElement('div'); document.body.appendChild(d);
     renderTalentTree(d, k, () => {});
     const node = d.querySelector('[data-node="mg_tem_c1"]');
@@ -135,7 +135,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   // ---------------- 2) RESPEC POR ORO ----------------
   const rs = await E(() => {
     state = 'prep'; heroes.length = 0;
-    const k = 'segador', c = save.champions[k]; c.level = 20; c.talents = mkTalentState(); c.talentRespecs = 0; c.treeBonus = 2; save.gold = 5000;
+    const k = 'segador', c = save.champions[k]; c.level = TALENT_TREE_MIN_LEVEL; /* Talent Gate 40 */ c.talents = mkTalentState(); c.talentRespecs = 0; c.treeBonus = 2; save.gold = 5000;
     const tree = talentTreeFor(k), roots = tree.nodes.filter(n => !n.requires);
     const total0 = treePointsAvailable(k);
     for (const r of roots) for (let i = 0; i < 3; i++) buyTalentNode(k, r.id, true);
@@ -148,7 +148,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     for (const r of roots) buyTalentNode(k, r.id, true);
     out.cost2 = talentRespecCost(k); const g2 = save.gold; const r2 = talentRespec(k, true); out.paid2 = g2 - save.gold; out.after2 = treePointsAvailable(k);
     buyTalentNode(k, roots[0].id, true); out.cost3 = talentRespecCost(k);
-    c.level = 40; out.cost3lv40 = talentRespecCost(k); c.level = 20;
+    c.level = TALENT_TREE_MIN_LEVEL + 20; out.cost3lv40 = talentRespecCost(k); c.level = TALENT_TREE_MIN_LEVEL;
     save.gold = 10; out.poor = talentRespecLockReason(k); out.poorTry = talentRespec(k, true).ok;
     save.gold = 99999; state = 'playing'; out.inRun = talentRespecLockReason(k); state = 'prep';
     // UI: botón + confirmación real (diálogo del juego)
@@ -208,7 +208,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     const ally = heroes.find(h => h.classKey === 'mago');
     const guestItems = setPieceIds('convergencia').slice(0, 2).map(p => makeDesignedItem(p));
     const eq = mkEquipment(); guestItems.forEach(it => { eq[it.type] = it.uid; });
-    const L = { champ: 'mago', level: 30, xp: 0, talentPoints: 0, skillMastery: [{alloc:3},{alloc:3},{alloc:3}], ultMastery: {alloc:3},
+    const L = { champ: 'mago', level: TALENT_TREE_MIN_LEVEL, xp: 0, talentPoints: 0, skillMastery: [{alloc:3},{alloc:3},{alloc:3}], ultMastery: {alloc:3},
       talents: { nodes: { mg_tem_c1: 3, mg_tem_c2: 3 }, picks: {}, mastery: null, masteryNodes: {} }, equipment: eq, items: guestItems };
     const backup = save.champions.mago;
     save.champions.mago = netLoadoutRecord(L); delete TALENT_MODS_CACHE.mago; invalidatePassiveCache();

@@ -23,6 +23,7 @@ function itemRelevance(it, classKey){
   let r = 0;
   for(const p of (it.passives||[])) r += (pref[p.effect]||0);
   if(it.designed && it.champion===classKey) r += 8;
+  if(itemMagePower(it)) r += 6; // Kit de Magos: ya pasó el filtro de rol (canEquipItem)
   if(it.set && typeof setChampionAffinity==="function" && setChampionAffinity(it.set)===classKey) r += 8;
   return r + rarityIndex(it.rarity)*0.5;
 }
@@ -35,7 +36,7 @@ function itemCardHTML(it, o){
   const by = itemEquippedBy(it.uid);
   const compat = o.classKey ? canEquipItem(o.classKey, it) : true;
   const onMe = o.classKey && by===o.classKey;
-  const owner = it.designed && it.champion ? `<span class="inv-owner">Solo ${CLASSES[it.champion].name}</span>` : "";
+  const onlyLbl = itemOnlyLabel(it), owner = onlyLbl ? `<span class="inv-owner">Solo ${onlyLbl}</span>` : "";
   const elem = it.element && ITEM_ELEMENT_ICON[it.element] ? `<span class="inv-elem">${ITEM_ELEMENT_ICON[it.element]}</span>` : "";
   const byTxt = by ? `<span class="inv-by ${onMe?"me":""}">${onMe?"Equipado":"Lo usa "+CLASSES[by].name}</span>` : "";
   const passives = itemPassivesHTML(it);
@@ -54,7 +55,7 @@ function itemCardHTML(it, o){
     <div class="item-meta">
       <div class="item-name" style="color:${col};">${elem}${it.name}${it.set?' <span class="set-badge">SET</span>':""}</div>
       ${epithet}
-      <div class="item-stat">${itemTierLabel(it)} · ${ITEM_TYPES[it.type].label} · Nv.${itemLevel(it)}${itemIlvl(it)>1 ? ` · Arena ${itemIlvl(it)}` : ""} · +${Math.round(itemStat(it)*100)}% ${ITEM_TYPES[it.type].statLabel} ${owner} ${byTxt}</div>
+      <div class="item-stat">${itemTierLabel(it)} · ${ITEM_TYPES[it.type].label} · Nv.${itemLevel(it)}${itemIlvl(it)>1 ? ` · ${itemIlvlLabel(it)}` : ""} · +${Math.round(itemStat(it)*100)}% ${ITEM_TYPES[it.type].statLabel} ${owner} ${byTxt}</div>
       ${passives ? `<div class="item-passives">${passives}</div>` : ""}
       ${(o.compare && o.classKey && compat && !onMe) ? compareItemsHTML(o.classKey, it) : ""}
       ${actions}
@@ -150,7 +151,7 @@ function renderMyItemsPanel(panel){
   let list = stashItems().slice();
   if(myInvFilter.rarity!=="todas") list = list.filter(it=> myInvFilter.rarity==="set" ? !!it.set : (it.rarity===myInvFilter.rarity && !it.set));
   if(myInvFilter.type!=="todos") list = list.filter(it=>it.type===myInvFilter.type);
-  if(myInvFilter.champ==="universal") list = list.filter(it=>!(it.designed && it.champion));
+  if(myInvFilter.champ==="universal") list = list.filter(it=>!itemOnlyLabel(it));
   else if(myInvFilter.champ!=="todos") list = list.filter(it=>canEquipItem(myInvFilter.champ, it));
   list.sort((a,b)=> rarityIndex(b.rarity)-rarityIndex(a.rarity) || (b.set?1:0)-(a.set?1:0) || a.type.localeCompare(b.type));
   html += list.length ? '<div class="inv-list tall">' + list.map(it=>itemCardHTML(it, {actions:true})).join("") + '</div>'
@@ -169,9 +170,9 @@ function renderRecipesPanel(panel){
   const recs = sortedRecipes();
   let html = `<div class="lobby-note">Cada Mítico se fabrica con <b>3 Legendarios específicos</b>. Caen con más frecuencia en las arenas de su tema, y los que te faltan para una receta empezada pesan más en el botín.</div>`;
   html += recs.map(r=>{
-    const M = RECIPE_MYTHICS[r.mythicId], P = MYTHIC_POWERS[M.mythic];
+    const M = RECIPE_MYTHICS[r.mythicId] || MAGE_KIT_MYTHICS[r.mythicId], P = M.mythic ? MYTHIC_POWERS[M.mythic] : MAGE_POWERS[M.power];
     const parts = r.parts.map(p=>{
-      const L = NAMED_LEGENDARIES[p.id];
+      const L = NAMED_LEGENDARIES[p.id] || MAGE_KIT_LEGENDARIES[p.id];
       const arenas = Object.keys(L.arenas||{}).sort((a,b)=>L.arenas[b]-L.arenas[a]).slice(0,2).map(a=>(ARENA_MODS[a]||{}).label||a).join(", ");
       return `<div class="rc-part ${p.have?"have":"miss"}"><span class="rc-mark">${p.have?"✓":"?"}</span>
         <span class="rc-name" style="color:${p.have||p.seen?RARITY_META.legendario.color:"#8a8078"}">${p.have||p.seen ? p.name : "??? — "+ITEM_TYPES[p.type].label+" legendario"}</span>
@@ -179,7 +180,7 @@ function renderRecipesPanel(panel){
     }).join("");
     return `<div class="recipe-card ${r.ready?"ready":""}" style="--mc:${RARITY_META.mitico.color}">
       <div class="rc-head"><span class="rc-title">${ITEM_TYPES[M.type].icon} ${M.name}</span><span class="rc-count">${r.n} / ${r.total}</span></div>
-      <div class="rc-power">★ ${P.name}: ${P.desc}</div>
+      <div class="rc-power">${M.mythic ? "★" : "❂"} ${P.name}: ${P.desc}${M.mythic ? "" : " <i>(solo magos)</i>"}</div>
       ${parts}
       ${r.ready ? `<button class="btn rc-craft" data-craft="${r.mythicId}">⚗ Fabricar ${M.name}</button>` : ""}
       ${r.owned ? `<div class="rc-owned">Ya fabricaste o encontraste este Mítico alguna vez.</div>` : ""}
@@ -202,7 +203,8 @@ function renderCollectionPanel(panel){
   const groups = [
     ["Legendarios con nombre", Object.keys(NAMED_LEGENDARIES), RARITY_META.legendario.color],
     ["Legendarios que cambian la build", Object.keys(BUILD_LEGENDARIES), RARITY_META.legendario.color],
-    ["Míticos", Object.keys(DESIGNED_ITEMS).filter(id=>DESIGNED_ITEMS[id].rarity==="mitico"), RARITY_META.mitico.color],
+    ["Míticos", Object.keys(DESIGNED_ITEMS).filter(id=>DESIGNED_ITEMS[id].rarity==="mitico" && !DESIGNED_ITEMS[id].magePower), RARITY_META.mitico.color],
+    ["Kit de Magos — cambian tu pasiva", [...MAGE_KIT_IDS.legendario, ...MAGE_KIT_IDS.mitico, ...MAGE_KIT_IDS.unico], RARITY_META.mitico.color],
     ["Legendarios de guardián", Object.keys(DESIGNED_ITEMS).filter(id=>{ const d = DESIGNED_ITEMS[id]; return d.rarity==="legendario" && d.champion && !d.named && !d.set; }), RARITY_META.legendario.color],
     ["Piezas de set", Object.keys(DESIGNED_ITEMS).filter(id=>DESIGNED_ITEMS[id].set), SET_COLOR],
     ["Únicos", Object.keys(UNIQUE_DESIGNS), RARITY_META.unico.color]
@@ -212,7 +214,7 @@ function renderCollectionPanel(panel){
     const n = ids.filter(collectionHas).length; total += ids.length; seen += n;
     const cells = ids.map(id=>{
       const d = DESIGNED_ITEMS[id], has = collectionHas(id);
-      const hint = d.unique ? "Único · "+CLASSES[d.champion].name : (d.set ? SET_DB[d.set].name : (d.buildPower ? BUILD_POWERS[d.buildPower].name : ITEM_TYPES[d.type].label));
+      const hint = d.unique ? "Único · "+CLASSES[d.champion].name : (d.set ? SET_DB[d.set].name : (d.buildPower ? BUILD_POWERS[d.buildPower].name : (d.magePower ? MAGE_POWERS[d.magePower].name : ITEM_TYPES[d.type].label)));
       return `<div class="col-cell ${has?"have":""}" style="--cc:${col}" title="${has?d.name:"Sin descubrir"}">
         <span class="col-ico">${has ? ITEM_TYPES[d.type].icon : "?"}</span><span class="col-name">${has ? d.name : "???"}</span><span class="col-hint">${hint}</span></div>`;
     }).join("");

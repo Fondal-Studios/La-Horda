@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "note": "Records integration into Git, not publication or a human art approval.",
+  "integrations": [
+    {
+      "item": "brasa.skin.nueva_1",
+      "block": "B635",
+      "champion": "brasa",
+      "skin": "brasa_abisal",
+      "delivery": "art-source/entregas/bloques/B635_brasa_abisal",
+      "checks": "runtime/brasa-checks.json",
+      "pr": 148,
+      "merge": "fa2b5befa9eb57847f4e13dfd6cce7d35b457d35",
+      "atlasSha256": "1b8b89f68328f8fc29ecb4f2578da122e6b3c39761b0b432916b423157f47759"
+    },
+    {
+      "item": "eslabon.skin.nueva_1",
+      "block": "B636",
+      "champion": "eslabon",
+      "skin": "eslabon_porcelana",
+      "delivery": "art-source/entregas/cosmetics-20261019/eslabon_porcelana",
+      "checks": "runtime/eslabon_porcelana-checks.json",
+      "pr": 150,
+      "merge": "a61b02d2e113ea91d03db096aedc52f201d2f0fc",
+      "atlasSha256": "cddf01a1782296cb0ff24fba5bf972e44bdc7e260e88c7c7be780a2ce13c585f"
+    },
+    {
+      "item": "morwen.skin.nueva_1",
+      "block": "B643",
+      "champion": "morwen",
+      "skin": "morwen_escarcha",
+      "delivery": "art-source/entregas/cosmetics-20261019/morwen_escarcha",
+      "checks": "runtime/morwen_escarcha-checks.json",
+      "pr": 150,
+      "merge": "a61b02d2e113ea91d03db096aedc52f201d2f0fc",
+      "atlasSha256": "547ca5efd4b3d725c5aa71cf6a2f3bf4e6dbec26a6f3a269e322ae8aef98a3e8"
+    }
+  ],
+  "runtimeIconExports": [
+    {
+      "pr": 152,
+      "merge": "a055278bc0e3ca3004a2cccf796fe36b8dfd40bc",
+      "receipt": "art-source/entregas/2026-10_mundo/ui/iconos/entrega.json",
+      "items": [
+        {
+          "item": "E-PXI-idolo",
+          "block": "B324"
+        },
+        {
+          "item": "E-PXI-figura",
+          "block": "B324"
+        },
+        {
+          "item": "E-PXI-antena",
+          "block": "B324"
+        },
+        {
+          "item": "E-PXI-cuerno",
+          "block": "B324"
+        },
+        {
+          "item": "E-PXI-caballo",
+          "block": "B325"
+        },
+        {
+          "item": "E-PXI-huellas",
+          "block": "B325"
+        },
+        {
+          "item": "E-PXI-silencio",
+          "block": "B325"
+        },
+        {
+          "item": "E-PXI-enlace",
+          "block": "B554"
+        },
+        {
+          "item": "E-PXI-cadena",
+          "block": "B554"
+        },
+        {
+          "item": "E-PXI-chispa",
+          "block": "B554"
+        },
+        {
+          "item": "E-PXI-estrella",
+          "block": "B554"
+        },
+        {
+          "item": "E-PXI-murcielago",
+          "block": "B555"
+        },
+        {
+          "item": "E-PXI-orbe",
+          "block": "B555"
+        },
+        {
+          "item": "E-PXI-ticket",
+          "block": "B325"
+        },
+        {
+          "item": "E-PXI-agujero",
+          "block": "B326"
+        },
+        {
+          "item": "E-PXI-carrito",
+          "block": "B555"
+        },
+        {
+          "item": "E-PXI-pechera",
+          "block": "B555"
+        },
+        {
+          "item": "E-PXI-vapor",
+          "block": "B556"
+        },
+        {
+          "item": "E-PXI-intercambio",
+          "block": "B556"
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "item": "tanque.cuerpo.muerte",
+      "block": "B002",
+      "pr": 182,
+      "merge": "474838fc62e28fca99509e254fe3f95cfcef6119",
+      "runtime": "assets/sprites/champions/tanque/v3/death.png",
+      "sha256": "8dc632c0afb7d9df1808dfffb873e44584499abed27c84c5f2ddb5e5ad162d78",
+      "report": "docs/art-gate/tanque-death/runtime.json",
+      "reportSha256": "28b18fe50bfbe0452da006cbd52a442aaf5a49feac06b31000a5e568ffc1120a"
+    }
+  ]
+}

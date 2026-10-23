@@ -10,6 +10,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
 (async () => {
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
   const page = await (await browser.newContext({ viewport: { width: 900, height: 506 } })).newPage();
+  // Endless gameplay is a local suite, not a live room-discovery probe.
+  // Use the same narrow room-list fixture as t_quests; keep all console/page-error checks.
+  let roomRequests = 0;
+  await page.route('**/api/rooms?*', route => { roomRequests++; return route.fulfill({status:200,
+    contentType:'application/json', headers:{'access-control-allow-origin':'*'}, body:JSON.stringify({rooms:[]})}); });
   const errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message + ' ' + (e.stack||'').split('\n').slice(0,3).join(' | ')));
   page.on('console', m => { if (m.type() === 'error' && !/ERR_CERT|fonts\.g|net::|404/.test(m.text())) errors.push('console: ' + m.text().slice(0, 300)); });
@@ -17,6 +22,8 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   await page.goto(`${BASE}/index.html`, { waitUntil: 'load', timeout: 240000 });
   for (let k = 0; k < 300; k++) { if (await page.evaluate(() => !document.getElementById('title-continue-btn').disabled)) break; await sleep(100); }
   const E = (fn, a) => page.evaluate(fn, a);
+  const fixture = await E(async () => { const r = await fetch(netRoomsUrl()); return {ok:r.ok, rooms:(await r.json()).rooms}; });
+  check('END.consulta_de_salas_aislada', roomRequests > 0 && fixture.ok && Array.isArray(fixture.rooms) && fixture.rooms.length === 0);
   await E(() => { loop = function(){};
     for (const k of Object.keys(save.champions)) save.champions[k].unlocked = true;
     window.__prep = () => { save.stash = []; for (const k in save.champions) save.champions[k].equipment = mkEquipment(); selectedClass = 'guerrero'; lobbyAllies = ['tanque','soporte','mago']; };
@@ -79,7 +86,13 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   // 5) mutador aplicado (se fuerzan los siete y se mide cada uno)
   const r5 = await E(() => { const out = {}; const keep = EN.mutators.slice();
     EN.mutators = []; const base = { spawn: endlessSpawnIntervalMult(), role: endlessRoleChance(0.1), dur: endlessRoundDuration(EN.round), bossHp: endlessBossHp() };
-    EN.mutators = ['fast_horde']; out.fast = endlessSpawnIntervalMult() < base.spawn; const e1 = spawnEnemy(pickFromPool(spawnPoolFor(runLevel)), false); EN.mutators = []; const e0 = spawnEnemy(e1.type, false); out.fastSpeed = e1.speed > e0.speed*1.15;
+    // Compare equivalent ordinary enemies. A random elite may roll a different
+    // 'rapido' affix on each spawn, masking the weekly +22% speed modifier.
+    EN.mutators = ['fast_horde']; out.fast = endlessSpawnIntervalMult() < base.spawn;
+    const e1 = spawnEnemy('esqueleto', false);
+    EN.mutators = []; const e0 = spawnEnemy('esqueleto', false);
+    out.fastFixture = e1.rank === 'normal' && e0.rank === 'normal' && !e1.eliteMods && !e0.eliteMods && e0.speed > 0;
+    out.fastSpeed = Math.abs(e1.speed / e0.speed - 1.22) < 1e-9;
     EN.mutators = ['elites_x2']; out.elites = endlessRoleChance(0.1) > base.role*1.9;
     EN.mutators = ['dense']; out.dense = endlessRoundDuration(EN.round) < base.dur;
     EN.mutators = ['furious']; out.furious = endlessBossHp() > base.bossHp*1.2;

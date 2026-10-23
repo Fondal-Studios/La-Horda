@@ -1,5 +1,4 @@
-// Apariencias independientes: IDs históricos CROMA_SKINS, ahora con diseños propios, compradas con oro del
-// juego y equipadas por guardián. Verifica: registro completo (cada guardián sin skin tiene al menos
+// Apariencias independientes: IDs históricos CROMA_SKINS, ahora con diseños propios, compradas con Brasas ✦ (ver t_skins_brasas.js) y equipadas por guardián. Verifica: registro completo (cada guardián sin skin tiene al menos
 // una; imágenes según metadata propia o base), compra / equipar / quitar con sus reglas, que la skin de
 // set completo manda sobre la croma, que se DIBUJA con otra paleta (píxeles distintos, silueta propia en skins),
 // que no cambia ninguna estadística, que viaja en el loadout del invitado, guardado y Tienda.
@@ -30,7 +29,10 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   const reg = await E(() => {
     const ids = Object.keys(CROMA_SKINS), bad = [], sizes = [];
     const withSet = new Set(Object.values(SET_SKINS).map(d => d.champ));
-    const noSkin = Object.keys(CLASSES).filter(k => !withSet.has(k));
+    // Los guardianes de Ascensión (y los dos GM) traen sus propias skins en ASCENSION_SKINS (js/champions/ascension/register.js), no en SET_SKINS:
+    // tienen skin, así que la regla «el guardián sin skin tiene al menos una croma» no les corresponde.
+    const withAsc = new Set(typeof ASCENSION_SKINS !== 'undefined' ? Object.keys(ASCENSION_SKINS).filter(k => (ASCENSION_SKINS[k] || []).length) : []);
+    const noSkin = Object.keys(CLASSES).filter(k => !withSet.has(k) && !withAsc.has(k));
     for (const id of ids) {
       const d = CROMA_SKINS[id];
       if (!CLASSES[d.champ] || !CROMA_CRYSTALS[d.crystal] || !(d.price > 0) || !d.name || !d.lore || !d.preview) bad.push(id);
@@ -57,8 +59,9 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     const id = 'nigromante_escarcha', out = {};
     save.gold = 100; out.sinOro = cromaBuy(id).ok === false && !cromaOwned(id);
     out.noEquipaSinComprar = cromaEquip('nigromante', id) === false;
-    save.gold = 5000; const r = cromaBuy(id); out.compra = r.ok && save.gold === 5000 - cromaPrice(id) && cromaOwned(id);
-    out.noDosVeces = cromaBuy(id).ok === false && save.gold === 5000 - cromaPrice(id);
+    save.gold = 5000; const r = cromaBuy(id); out.oroNoCompra = r.ok === false && save.gold === 5000 && !cromaOwned(id);   // solo Brasas (t_skins_brasas.js)
+    save.cromas = { [id]: true }; out.compra = cromaOwned(id);   // la entrega de una compra con Brasas
+    out.noDosVeces = cromaBuy(id).ok === false && save.gold === 5000;
     out.otroGuardianNo = cromaEquip('tanque', id) === false;
     out.equipa = cromaEquip('nigromante', id) && cromaEquippedId('nigromante') === id && champSkinId('nigromante') === id;
     out.quita = cromaEquip('nigromante', null) && cromaEquippedId('nigromante') === null && champSkinId('nigromante') === null;
@@ -161,18 +164,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     save.gold = 20000; save.cromas = {}; for (const k in save.champions) save.champions[k].unlocked = true;
     setState('shop'); shopTab = 'skins'; renderShop();
     const cards = document.querySelectorAll('#shop-panel [data-croma-card]').length;
-    const buy = document.querySelector('#shop-panel [data-croma-buy="tanque_juicio"]');
-    return { cards, total: Object.keys(CROMA_SKINS).length, hayBoton: !!buy, precio: buy ? buy.textContent : '' };
+    const buy = document.querySelector('#shop-panel [data-skin-premium="tanque_juicio"]');
+    return { cards, total: Object.keys(CROMA_SKINS).length, hayBoton: !!buy, precio: buy ? buy.textContent : '', oro: document.querySelectorAll('#shop-panel [data-croma-buy]').length };
   });
-  check('UI.tarjetas_de_cromas_en_la_tienda', ui.cards === ui.total && ui.hayBoton && /1\.?500/.test(ui.precio), ui);
-  await page.click('#shop-panel [data-croma-buy="tanque_juicio"]');
-  await sleep(200);
-  const ok = await page.$('.gd-ok, .game-modal .btn, #game-modal-ok, [data-modal-ok]');
-  if (ok) await ok.click(); else await page.evaluate(() => { const b = [...document.querySelectorAll('button')].find(b => /^Comprar$/.test(b.textContent.trim()) && b.offsetParent); if (b) b.click(); });
-  await sleep(300);
-  const after = await E(() => ({ owned: cromaOwned('tanque_juicio'), eq: cromaEquippedId('tanque'), gold: save.gold,
-    card: !!document.querySelector('#shop-panel [data-croma-card="tanque_juicio"].active') }));
-  check('UI.comprar_desde_la_tienda_equipa', after.owned && after.eq === 'tanque_juicio' && after.gold === 20000 - 1500 && after.card, after);
+  check('UI.tarjetas_de_cromas_en_la_tienda', ui.cards === ui.total && ui.hayBoton && /^✦\s*[\d.]+$/.test(ui.precio.trim()) && ui.oro === 0, ui);
+  // la compra (solo Brasas ✦, servidor) se prueba en tools/items/t_skins_brasas.js
   if (process.env.SHOT) { await page.evaluate(() => { const c = document.querySelector('.shop-croma-box'); if (c) c.scrollIntoView(); }); await sleep(400); await page.screenshot({ path: process.env.SHOT }); }
 
   // ---------- Códice (ficha del guardián): chips de croma y su ficha con comprar / usar ----------
@@ -181,7 +177,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     const html = codexChampSkinsHtml('nigromante'), chips = (html.match(/(?:Skin|Croma) · /g) || []).length;
     const el = document.createElement('div'); el.innerHTML = '<div id="cx-skin-detail"></div>'; document.body.appendChild(el);
     codexSkinDetail(el, 'nigromante', 'nigromante_piedra');
-    const buyBtn = !!el.querySelector('#cx-croma-buy');
+    const buyBtn = !!el.querySelector('[data-skin-premium]') && !el.querySelector('#cx-croma-buy');
     save.cromas.nigromante_piedra = true; codexSkinDetail(el, 'nigromante', 'nigromante_piedra');
     const useBtn = el.querySelector('#cx-croma-on'); const origR = codexRender; codexRender = () => {};
     try { useBtn && useBtn.click(); } finally { codexRender = origR; }

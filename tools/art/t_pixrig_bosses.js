@@ -1,11 +1,12 @@
 // JEFES REDIBUJADOS CON PIXRIG (tools/art/pixrig): cada hoja carga, no queda ningún cuerpo prestado, trae TODOS los
 // estados que pide su código (con cuadros distintos para caminar y atacar), su densidad de píxel queda < ×2,5 la del
-// roster, y en partida (en su arena) se dibuja con SU atlas, ataca y muere sin errores.
-//   node tools/art/t_pixrig_bosses.js [outdir]   (sirve el repo en SE_BASE_URL, default http://127.0.0.1:8771; lo levanta si no hay nada)
-let chromium;
-try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
+// roster, y en partida (en su arena) se dibuja con SU arte, ataca y muere sin errores.
+// Los reemplazos propios de battlefield tienen prioridad desde la unificación de arte:
+// comprobarlos y comprobar además el atlas Pixrig de respaldo, nunca aceptar otro jefe.
+//   node tools/art/t_pixrig_bosses.js [outdir]   (sirve el repo en un puerto libre; SE_BASE_URL para usar otro)
+const H = require('../lib/serve');
 const fs = require('fs'), path = require('path'), http = require('http'), { spawn } = require('child_process');
-const BASE = process.env.SE_BASE_URL || 'http://127.0.0.1:8771';
+let BASE;
 const OUT = process.argv[2] || null; if (OUT) fs.mkdirSync(OUT, { recursive: true });
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL ') + n + (x !== undefined ? '  ' + JSON.stringify(x).slice(0, 300) : '')); if (!ok) fails++; };
@@ -25,22 +26,13 @@ const BOSSES = {
   golem_cuerpos: ['golem_cuerpos', 'infernal', 0, ['idle', 'walk', 'atk', 'hit', 'death', 'slam', 'tf', 'pre']],
 };
 
-function ping(url) { return new Promise(res => { const r = http.get(url, x => { x.resume(); res(x.statusCode < 500); }); r.on('error', () => res(false)); r.setTimeout(1500, () => { r.destroy(); res(false); }); }); }
-async function ensureServer() {
-  if (await ping(BASE + '/index.html')) return null;
-  const u = new URL(BASE);
-  const srv = spawn('python3', ['-m', 'http.server', u.port || '80', '--bind', u.hostname], { cwd: path.resolve(__dirname, '..', '..'), stdio: 'ignore' });
-  for (let i = 0; i < 50 && !(await ping(BASE + '/index.html')); i++) await sleep(100);
-  return srv;
-}
-
 (async () => {
-  const srv = await ensureServer();
-  const browser = await chromium.launch({ args: ['--no-sandbox'] });
+  const site = await H.startSite({ envUrl: ['SE_BASE_URL'] }); BASE = site.url;
+  const browser = await H.launch();
   const page = await (await browser.newContext({ viewport: { width: 1000, height: 600 } })).newPage();
   const errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
-  await page.goto(`${BASE}/index.html?dev=1`, { waitUntil: 'load', timeout: 180000 });
+  await H.goto(page, `${BASE}/index.html?dev=1`, { waitUntil: 'load', timeout: 180000 });
   for (let i = 0; i < 400; i++) { if (await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return b && !b.disabled; })) break; await sleep(100); }
   for (let i = 0; i < 300; i++) { if (await page.evaluate((ks) => ks.every(k => ENEMY_ATLAS_PACK[k] && ENEMY_ATLAS_PACK[k].ready), Object.keys(BOSSES))) break; await sleep(150); }
   const info = await page.evaluate((B) => {
@@ -82,14 +74,39 @@ async function ensureServer() {
         if (k !== t) e.atlasKey = k;
         e.cine = null; e.cineT = 0;
         e.x = player.x - 300 + i * 120; e.y = player.y + 80; e.stunTimer = 1e9; e.abEmerge = 0; e.mnEmerge = 0; e.abRise = 0; e.cmRoof = false;
-        const f0 = window.drawAnimFrameSized, used = [];
-        window.drawAnimFrameSized = function (img) { used.push(img); return f0.apply(this, arguments); };
-        try { drawEnemyBody(e); e.attackAnim = 300; e.stunTimer = 0; drawEnemyBody(e); } finally { window.drawAnimFrameSized = f0; }
-        res[k] = { own: used.includes(ENEMY_ATLAS_PACK[k].atlas), n: used.length };
+        const f0 = window.drawAnimFrameSized;
+        const draw = () => {
+          const used = [];
+          window.drawAnimFrameSized = function (img) { used.push(img); return f0.apply(this, arguments); };
+          try { e.attackAnim = 0; drawEnemyBody(e); e.attackAnim = 300; e.stunTimer = 0; drawEnemyBody(e); }
+          finally { window.drawAnimFrameSized = f0; }
+          return used;
+        };
+        // The expected identity comes from the fixture's enemy type, not the
+        // renderer's selection function (which could itself select a donor).
+        const field = typeof BATTLEFIELD_IMAGES !== 'undefined' && BATTLEFIELD_IMAGES[t];
+        const expected = field || ENEMY_ATLAS_PACK[k].atlas;
+        const used = draw();
+        let fallback = true, rejectsDonor = true;
+        if (field) {
+          try {
+            BATTLEFIELD_IMAGES[t] = null;
+            fallback = draw().includes(ENEMY_ATLAS_PACK[k].atlas);
+            const donor = Object.values(BATTLEFIELD_IMAGES).find(img => img && img !== field && img.complete && img.naturalWidth);
+            BATTLEFIELD_IMAGES[t] = donor;
+            rejectsDonor = !!donor && !draw().includes(expected);
+          } finally { BATTLEFIELD_IMAGES[t] = field; }
+        }
+        res[k] = { own: used.length >= 2 && used.every(img => img === expected), n: used.length,
+          source: field ? 'battlefield/' + t : 'pixrig/' + k, fallback, rejectsDonor };
       });
       return res;
     }, { keys: byArena[a], B: BOSSES });
-    for (const k in r) check(`dibuja_propio.${k}`, r[k].own, r[k]);
+    for (const k in r) {
+      check(`dibuja_propio.${k}`, r[k].own, r[k]);
+      check(`respaldo_propio.${k}`, r[k].fallback);
+      check(`rechaza_prestado.${k}`, r[k].rejectsDonor);
+    }
     if (a === 'ciudad') {  // los espejismos de la Dama: su mismo cuerpo, translúcido (cm-render.js)
       const m = await page.evaluate(() => { const e = spawnEnemy('cm_espejismo', false, false); e.x = player.x; e.y = player.y - 120; e.stunTimer = 1e9;
         const f0 = window.drawAnimFrameSized; let used = null; window.drawAnimFrameSized = function (img) { if (!used) used = img; return f0.apply(this, arguments); };
@@ -103,7 +120,7 @@ async function ensureServer() {
     if (OUT) await page.screenshot({ path: path.join(OUT, `muertes_${a}.png`) });
   }
   check('sin_errores_de_pagina', errors.length === 0, errors.slice(0, 5));
-  await browser.close(); if (srv) srv.kill();
+  await browser.close(); await site.close();
   console.log(`SUMMARY ${fails ? 'FALLAS: ' + fails : 'OK'}`);
   process.exit(fails ? 1 : 0);
 })();

@@ -1,0 +1,42 @@
+name: Myla death component gate
+on:
+  pull_request:
+    paths: ['assets/sprites/champions/myla/v2/**', 'art-source/entregas/bloques/B005_myla/revision-01/**', 'tools/art/check-myla-death.js', 'js/assets/portadores-meta.js', 'js/rendering/champion-sprites.js', '.github/workflows/myla-death.yml']
+permissions:
+  contents: read
+jobs:
+  component:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pillow numpy scipy
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - run: python art-source/entregas/bloques/B005_myla/revision-01/build.py
+      - run: node tools/art/check-authored-clip-density.js assets/sprites/champions/myla/v2/death.png docs/art-gate/myla-death/native.json 0.7902439024390244
+      - name: Exact extraction and scanner
+        run: |
+          python - <<'PY'
+          import importlib.util
+          from PIL import Image
+          p='assets/sprites/champions/myla/v2/death.png'
+          assert Image.open(p).tobytes()==Image.open('art-source/entregas/bloques/B005_myla/revision-01/death.png').tobytes()
+          s=importlib.util.spec_from_file_location('scan','tools/art/scan_sprites.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+          r=m.analyze(p)
+          assert r['semi']==r['fragments']==r['halo']==0,r
+          print(r)
+          PY
+      - run: node tools/art/check-myla-death.js
+      - run: node tools/art/check-guerrero-death.js
+      - run: node tools/art/check-tanque-death.js
+      - run: node tools/art/check-libertador-death.js
+      - run: node tools/lib/with-site.js tools/art/roster_gate.js
+        env: {WITH_SITE_ENV: ROSTER_BASE_URL}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: myla-death-component, path: docs/art-gate/}

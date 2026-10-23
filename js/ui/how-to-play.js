@@ -8,19 +8,19 @@
 const HOWTO_STEPS = {
   campana:[
     {ic:"🎯", t:"Tu objetivo", x:"Sobrevivir a la horda con tu equipo. Cada nivel dura un ratito: aguantá hasta que el reloj llegue a cero. En el nivel 10 aparece un jefe: derrotalo y ganás la arena."},
-    {ic:"🕹️", t:"Moverte y atacar", x:"El joystick de abajo a la izquierda mueve a tu héroe. El botón grande de ATAQUE pega; las habilidades están alrededor y la definitiva (ULT) se carga peleando."},
+    {ic:"↔", t:"Moverte y atacar", x:"El joystick de abajo a la izquierda mueve a tu héroe. El botón grande de ATAQUE pega; las habilidades están alrededor y la definitiva (ULT) se carga peleando."},
     {ic:"✨", t:"Cada nivel, una mejora", x:"Al subir de nivel elegís una carta. Leé el título: te da más daño, vida, velocidad o un poder nuevo. Elegir bien es lo que te hace aguantar más."},
     {ic:"❤️", t:"Cuidate y cuidá a los tuyos", x:"La barra roja es tu vida. Si un compañero cae, mantené ✚ a su lado para levantarlo. Perdés si caen todos a la vez."}
   ],
   cristales:[
     {ic:"🎯", t:"Tu objetivo", x:"Destruí el cristal enemigo antes de que destruyan el tuyo. Para llegar a él tenés que derribar las torres de uno de los tres carriles."},
     {ic:"⚔️", t:"Tu horda pelea por vos", x:"Cada ratito sale una oleada de monstruos de tu base por cada carril. Acompañala, protegela y pegale a los héroes rivales que se acerquen."},
-    {ic:"🃏", t:"Cada nivel, una carta de horda", x:"Cuando sube de nivel el líder de tu equipo se elige una carta que mejora a TU HORDA: más vida, más daño, más monstruos o gigantes."},
+    {ic:"📜", t:"Cada nivel, una carta de horda", x:"Cuando sube de nivel el líder de tu equipo se elige una carta que mejora a TU HORDA: más vida, más daño, más monstruos o gigantes."},
     {ic:"🪙", t:"Oro y tienda", x:"Matar monstruos y torres da oro. Volvé a tu base (botón de volver o tecla B) para comprar objetos. Matar al Dragón o al Rey Coloso da ventajas al equipo."}
   ],
   coliseo:[
     {ic:"🎯", t:"Tu objetivo", x:"Ganá duelos 2 contra 2. El primer equipo que llega a 3 puntos se queda con el torneo."},
-    {ic:"⏱️", t:"Cada ronda", x:"Primero hay unos segundos de preparación. Después se pelea; si pasa mucho tiempo el anillo del suelo se cierra y obliga a pelear."},
+    {ic:"⌛", t:"Cada ronda", x:"Primero hay unos segundos de preparación. Después se pelea; si pasa mucho tiempo el anillo del suelo se cierra y obliga a pelear."},
     {ic:"💀", t:"Si caés", x:"No revivís en la ronda: mirás a tu equipo desde la cámara de espectador hasta que termina."}
   ]
 };

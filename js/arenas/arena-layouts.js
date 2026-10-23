@@ -57,16 +57,48 @@ function mapLayoutOn(){
   return d==="pesadilla" || d==="infierno";
 }
 // Celdas alcanzables desde el centro con los sólidos/muros actuales (bordes inflados `pad`).
+// Se llama una vez por cada pieza que se intenta colocar (bsvTry, aidLayoutBuild: decenas de veces al armar la
+// arena) y cada llamada recorría TODA la grilla contra todos los sólidos y muros. Ahora la grilla de celdas
+// bloqueadas se guarda por estado de sólidos: si los sólidos actuales son los de un estado guardado MÁS algunos
+// agregados al final (el caso normal: push, prueba, pop o conservar), solo se marcan las celdas de los nuevos.
+// El resultado es idéntico al cálculo completo (una celda está bloqueada si cae fuera, dentro de un sólido o de un muro).
+let _layCache = [];
+function _layMarkSolid(blocked, N, C, s, pad){
+  const W = N.W, H = N.H, rr = s.r + pad;
+  const i0 = Math.max(0, Math.floor((s.x - rr - N.x0)/C - 0.5)), i1 = Math.min(W-1, Math.ceil((s.x + rr - N.x0)/C - 0.5));
+  const j0 = Math.max(0, Math.floor((s.y - rr - N.y0)/C - 0.5)), j1 = Math.min(H-1, Math.ceil((s.y + rr - N.y0)/C - 0.5));
+  for(let j=j0;j<=j1;j++) for(let i=i0;i<=i1;i++){
+    const x = N.x0 + (i+0.5)*C, y = N.y0 + (j+0.5)*C;
+    if(Math.hypot(s.x-x, s.y-y) < rr) blocked[j*W+i] = 1;
+  }
+}
 function _layReach(pad){
   // grilla del coliseo (AID_NAV puede tener todavía la de otra arena: se rearma después, en aidNavBuild)
   const N = AID_NAV_DEFAULT, W = N.W, H = N.H, C = AID_NAV.cell, n = W*H;
-  const blocked = new Uint8Array(n);
-  for(let j=0;j<H;j++) for(let i=0;i<W;i++){
-    const x = N.x0 + (i+0.5)*C, y = N.y0 + (j+0.5)*C;
-    let b = !aidInside(x, y, 0);
-    if(!b) for(const s of aidSolids){ if(Math.hypot(s.x-x, s.y-y) < s.r+pad){ b = true; break; } }
-    if(!b) for(const w of labyrinthWalls){ if(aidPointInWall(w, x, y, pad)){ b = true; break; } }
-    blocked[j*W+i] = b ? 1 : 0;
+  const key = [typeof currentArena!=="undefined" ? currentArena : "", pad, N.x0, N.y0, W, H, C, labyrinthWalls.length ? JSON.stringify(labyrinthWalls) : ""].join("|");
+  const nS = aidSolids.length;
+  let best = null;
+  for(const e of _layCache){
+    if(e.key !== key || e.solids.length > nS || (best && e.solids.length <= best.solids.length)) continue;
+    let ok = true;
+    for(let k=0;k<e.solids.length;k++){ const a = e.solids[k], b = aidSolids[k]; if(a.x !== b.x || a.y !== b.y || a.r !== b.r){ ok = false; break; } }
+    if(ok) best = e;
+  }
+  let blocked, from = 0;
+  if(best){ blocked = Uint8Array.from(best.blocked); from = best.solids.length; }
+  else {
+    blocked = new Uint8Array(n);
+    for(let j=0;j<H;j++) for(let i=0;i<W;i++){
+      const x = N.x0 + (i+0.5)*C, y = N.y0 + (j+0.5)*C;
+      let b = !aidInside(x, y, 0);
+      if(!b) for(const w of labyrinthWalls){ if(aidPointInWall(w, x, y, pad)){ b = true; break; } }
+      blocked[j*W+i] = b ? 1 : 0;
+    }
+  }
+  for(let k=from;k<nS;k++) _layMarkSolid(blocked, N, C, aidSolids[k], pad);
+  if(!best || from !== nS){
+    _layCache.push({key, solids: aidSolids.map(s=>({x:s.x, y:s.y, r:s.r})), blocked});
+    if(_layCache.length > 4) _layCache.shift();
   }
   const seen = new Uint8Array(n), q = new Int32Array(n);
   const c0 = Math.floor((0-N.x0)/C) + Math.floor((0-N.y0)/C)*W;
@@ -74,8 +106,11 @@ function _layReach(pad){
   if(!blocked[c0]){ seen[c0] = 1; q[qt++] = c0; }
   while(qh < qt){
     const c = q[qh++], i = c % W, j = (c - i)/W;
-    const nb = [i>0 ? c-1 : -1, i<W-1 ? c+1 : -1, j>0 ? c-W : -1, j<H-1 ? c+W : -1];
-    for(const k of nb) if(k >= 0 && !blocked[k] && !seen[k]){ seen[k] = 1; q[qt++] = k; }
+    let k;
+    if(i>0){ k = c-1; if(!blocked[k] && !seen[k]){ seen[k] = 1; q[qt++] = k; } }
+    if(i<W-1){ k = c+1; if(!blocked[k] && !seen[k]){ seen[k] = 1; q[qt++] = k; } }
+    if(j>0){ k = c-W; if(!blocked[k] && !seen[k]){ seen[k] = 1; q[qt++] = k; } }
+    if(j<H-1){ k = c+W; if(!blocked[k] && !seen[k]){ seen[k] = 1; q[qt++] = k; } }
   }
   return {seen, blocked};
 }

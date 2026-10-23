@@ -46,7 +46,7 @@ con estalactitas, y se prerenderizan una sola vez a media resolución (pixel art
   **como mucho deja CRÍTICA**), Carcelero (pisotón y cadenas rotas), tentáculos y patrones del jefe, y
   **habilidades con metadata `terrain`** (tabla `SKILL_TERRAIN` por tipo: Cataclismo Elemental, Último
   Aliento, Segador de Almas, Embestida, Gólem de Carne, Encarnación del Abismo, Carga de San Lorenzo,
-  Cruce de los Andes, Sismo/Terremoto/Retumbar del titán, El Retumbar…).
+  Cruce de los Andes, Alud/Hundimiento/Marcha de Dunas del Coloso, Los Tres Pasos…).
 - Entre niveles el Abismo **reconstruye** todo lo caído y repara grietas. Durante un nivel, lo caído
   queda caído (en la pelea final vuelve de a poco: 2 plataformas cada 10 s).
 

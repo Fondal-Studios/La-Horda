@@ -40,7 +40,7 @@ no text, no watermark, no UI frame. Same art grammar as LA HORDA (3/4 top-down a
 | CX-VFX-04 | P2 | Segador Olvidado | VFX de 2 habilidades | Aura procedural |
 | CX-VFX-05 | P1 | La Profeta | VFX de 4 habilidades | Formas procedurales |
 | CX-VFX-06 | P2 | Nigromante | VFX de 1 habilidad | Cono procedural |
-| CX-VFX-07 | P2 | Eren | VFX de 2 habilidades | Aura procedural sobre su animación real |
+| CX-VFX-07 | P2 | Ilkan | VFX de 2 habilidades | Aura procedural sobre su animación real |
 | CX-ANI-01 | P1 | Dobladores (4) | Animaciones de habilidad | Solo tienen idle, caminar, ataque, golpe y muerte |
 | CX-HD-01…07 | P2 | Criaturas del Abismo + Carcelero | Atlas en resolución completa | Atlas real con celdas de 44–77 px: se ve borroso ampliado |
 
@@ -114,7 +114,7 @@ Las 9 arenas jugables usan capturas reales del juego (`tools/codex/capture_arena
 
 Las demos de habilidad usan VFX real cuando existe:
 
-- Libertador y Eren: `SE_FX`.
+- Libertador y Ilkan: `SE_FX`.
 - Asesino, Axiom y la Nova del Mago: hojas por celdas.
 - Cazadora: trampa, lluvia y Lobo Espectral.
 - Musashi: Rōnin, fantasma y portal.
@@ -138,7 +138,7 @@ Todas comparten estas especificaciones:
 | CX-VFX-04 | Segador Olvidado | Armadura de la Furia (armadura de sangre que se cierra, 10), Último Aliento (estallido rojo al borde de la muerte, 10) | `blood-red spectral armor plates forming around a body; desperate crimson last-stand burst with ghostly scythe silhouettes` |
 | CX-VFX-05 | La Profeta | Destino Restaurado (reloj de runas que rebobina, 12), Visión del Inmortal (ojo dorado + escudo breve, 10), Danza del Augurio (anillo giratorio aturdidor, loop de 8), Ascensión del Elegido (columna de luz celeste, 12) | `a turquoise rune clock rewinding with healing light; a golden all-seeing eye with a brief protective shell; a spinning ring of prophetic runes that stuns; a pale-cyan pillar of ascension light with feathers` |
 | CX-VFX-06 | Nigromante | Cosecha de Almas (cono de almas verdes aspiradas, 10) | `a cone of green wailing souls being ripped out and pulled toward the caster` |
-| CX-VFX-07 | Eren | Instinto de Supervivencia (aura naranja + vapor, loop de 8), ¡Avancen! (estandarte y onda de avance, 10) | `orange survival-instinct aura with rising steam loop; a charging banner shockwave rallying allies forward` |
+| CX-VFX-07 | Ilkan | Instinto de Supervivencia (aura naranja + vapor, loop de 8), ¡Avancen! (estandarte y onda de avance, 10) | `orange survival-instinct aura with rising steam loop; a charging banner shockwave rallying allies forward` |
 
 ## 4. Dobladores — animaciones de habilidad (CX-ANI-01)
 

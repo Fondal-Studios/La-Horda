@@ -1,0 +1,520 @@
+{
+  "scope": "Base-only supplemental death, six levels, real renderer and guest snapshot, lazy loading and preserved specialized animations",
+  "checks": [
+    {
+      "name": "component metadata",
+      "ok": true
+    },
+    {
+      "name": "Códice exposes actual death clip",
+      "ok": true
+    },
+    {
+      "name": "all original foot frames retained",
+      "ok": true
+    },
+    {
+      "name": "L1 down death 0",
+      "ok": true
+    },
+    {
+      "name": "L1 down death 1",
+      "ok": true
+    },
+    {
+      "name": "L1 down death 2",
+      "ok": true
+    },
+    {
+      "name": "L1 down death 3",
+      "ok": true
+    },
+    {
+      "name": "L1 side death 0",
+      "ok": true
+    },
+    {
+      "name": "L1 side death 1",
+      "ok": true
+    },
+    {
+      "name": "L1 side death 2",
+      "ok": true
+    },
+    {
+      "name": "L1 side death 3",
+      "ok": true
+    },
+    {
+      "name": "L1 up death 0",
+      "ok": true
+    },
+    {
+      "name": "L1 up death 1",
+      "ok": true
+    },
+    {
+      "name": "L1 up death 2",
+      "ok": true
+    },
+    {
+      "name": "L1 up death 3",
+      "ok": true
+    },
+    {
+      "name": "L1 final pose holds",
+      "ok": true
+    },
+    {
+      "name": "L1 death clock is local",
+      "ok": true
+    },
+    {
+      "name": "L1 revival clears local death clock",
+      "ok": true
+    },
+    {
+      "name": "L1 new death restarts",
+      "ok": true
+    },
+    {
+      "name": "L39 down death 0",
+      "ok": true
+    },
+    {
+      "name": "L39 down death 1",
+      "ok": true
+    },
+    {
+      "name": "L39 down death 2",
+      "ok": true
+    },
+    {
+      "name": "L39 down death 3",
+      "ok": true
+    },
+    {
+      "name": "L39 side death 0",
+      "ok": true
+    },
+    {
+      "name": "L39 side death 1",
+      "ok": true
+    },
+    {
+      "name": "L39 side death 2",
+      "ok": true
+    },
+    {
+      "name": "L39 side death 3",
+      "ok": true
+    },
+    {
+      "name": "L39 up death 0",
+      "ok": true
+    },
+    {
+      "name": "L39 up death 1",
+      "ok": true
+    },
+    {
+      "name": "L39 up death 2",
+      "ok": true
+    },
+    {
+      "name": "L39 up death 3",
+      "ok": true
+    },
+    {
+      "name": "L39 final pose holds",
+      "ok": true
+    },
+    {
+      "name": "L39 death clock is local",
+      "ok": true
+    },
+    {
+      "name": "L39 revival clears local death clock",
+      "ok": true
+    },
+    {
+      "name": "L39 new death restarts",
+      "ok": true
+    },
+    {
+      "name": "L40 down death 0",
+      "ok": true
+    },
+    {
+      "name": "L40 down death 1",
+      "ok": true
+    },
+    {
+      "name": "L40 down death 2",
+      "ok": true
+    },
+    {
+      "name": "L40 down death 3",
+      "ok": true
+    },
+    {
+      "name": "L40 side death 0",
+      "ok": true
+    },
+    {
+      "name": "L40 side death 1",
+      "ok": true
+    },
+    {
+      "name": "L40 side death 2",
+      "ok": true
+    },
+    {
+      "name": "L40 side death 3",
+      "ok": true
+    },
+    {
+      "name": "L40 up death 0",
+      "ok": true
+    },
+    {
+      "name": "L40 up death 1",
+      "ok": true
+    },
+    {
+      "name": "L40 up death 2",
+      "ok": true
+    },
+    {
+      "name": "L40 up death 3",
+      "ok": true
+    },
+    {
+      "name": "L40 final pose holds",
+      "ok": true
+    },
+    {
+      "name": "L40 death clock is local",
+      "ok": true
+    },
+    {
+      "name": "L40 revival clears local death clock",
+      "ok": true
+    },
+    {
+      "name": "L40 new death restarts",
+      "ok": true
+    },
+    {
+      "name": "L60 down death 0",
+      "ok": true
+    },
+    {
+      "name": "L60 down death 1",
+      "ok": true
+    },
+    {
+      "name": "L60 down death 2",
+      "ok": true
+    },
+    {
+      "name": "L60 down death 3",
+      "ok": true
+    },
+    {
+      "name": "L60 side death 0",
+      "ok": true
+    },
+    {
+      "name": "L60 side death 1",
+      "ok": true
+    },
+    {
+      "name": "L60 side death 2",
+      "ok": true
+    },
+    {
+      "name": "L60 side death 3",
+      "ok": true
+    },
+    {
+      "name": "L60 up death 0",
+      "ok": true
+    },
+    {
+      "name": "L60 up death 1",
+      "ok": true
+    },
+    {
+      "name": "L60 up death 2",
+      "ok": true
+    },
+    {
+      "name": "L60 up death 3",
+      "ok": true
+    },
+    {
+      "name": "L60 final pose holds",
+      "ok": true
+    },
+    {
+      "name": "L60 death clock is local",
+      "ok": true
+    },
+    {
+      "name": "L60 revival clears local death clock",
+      "ok": true
+    },
+    {
+      "name": "L60 new death restarts",
+      "ok": true
+    },
+    {
+      "name": "L90 down death 0",
+      "ok": true
+    },
+    {
+      "name": "L90 down death 1",
+      "ok": true
+    },
+    {
+      "name": "L90 down death 2",
+      "ok": true
+    },
+    {
+      "name": "L90 down death 3",
+      "ok": true
+    },
+    {
+      "name": "L90 side death 0",
+      "ok": true
+    },
+    {
+      "name": "L90 side death 1",
+      "ok": true
+    },
+    {
+      "name": "L90 side death 2",
+      "ok": true
+    },
+    {
+      "name": "L90 side death 3",
+      "ok": true
+    },
+    {
+      "name": "L90 up death 0",
+      "ok": true
+    },
+    {
+      "name": "L90 up death 1",
+      "ok": true
+    },
+    {
+      "name": "L90 up death 2",
+      "ok": true
+    },
+    {
+      "name": "L90 up death 3",
+      "ok": true
+    },
+    {
+      "name": "L90 final pose holds",
+      "ok": true
+    },
+    {
+      "name": "L90 death clock is local",
+      "ok": true
+    },
+    {
+      "name": "L90 revival clears local death clock",
+      "ok": true
+    },
+    {
+      "name": "L90 new death restarts",
+      "ok": true
+    },
+    {
+      "name": "L99 down death 0",
+      "ok": true
+    },
+    {
+      "name": "L99 down death 1",
+      "ok": true
+    },
+    {
+      "name": "L99 down death 2",
+      "ok": true
+    },
+    {
+      "name": "L99 down death 3",
+      "ok": true
+    },
+    {
+      "name": "L99 side death 0",
+      "ok": true
+    },
+    {
+      "name": "L99 side death 1",
+      "ok": true
+    },
+    {
+      "name": "L99 side death 2",
+      "ok": true
+    },
+    {
+      "name": "L99 side death 3",
+      "ok": true
+    },
+    {
+      "name": "L99 up death 0",
+      "ok": true
+    },
+    {
+      "name": "L99 up death 1",
+      "ok": true
+    },
+    {
+      "name": "L99 up death 2",
+      "ok": true
+    },
+    {
+      "name": "L99 up death 3",
+      "ok": true
+    },
+    {
+      "name": "L99 final pose holds",
+      "ok": true
+    },
+    {
+      "name": "L99 death clock is local",
+      "ok": true
+    },
+    {
+      "name": "L99 revival clears local death clock",
+      "ok": true
+    },
+    {
+      "name": "L99 new death restarts",
+      "ok": true
+    },
+    {
+      "name": "preserved ult_cast",
+      "ok": true
+    },
+    {
+      "name": "preserved bayo_emb",
+      "ok": true
+    },
+    {
+      "name": "preserved bayo_rem",
+      "ok": true
+    },
+    {
+      "name": "preserved bayo_imp",
+      "ok": true
+    },
+    {
+      "name": "preserved cabral",
+      "ok": true
+    },
+    {
+      "name": "preserved command",
+      "ok": true
+    },
+    {
+      "name": "preserved fire",
+      "ok": true
+    },
+    {
+      "name": "preserved reload",
+      "ok": true
+    },
+    {
+      "name": "preserved horse mount",
+      "ok": true
+    },
+    {
+      "name": "preserved horse dismount",
+      "ok": true
+    },
+    {
+      "name": "preserved horse charge",
+      "ok": true
+    },
+    {
+      "name": "preserved horse m_atk",
+      "ok": true
+    },
+    {
+      "name": "preserved horse m_run",
+      "ok": true
+    },
+    {
+      "name": "preserved horse m_idle",
+      "ok": true
+    },
+    {
+      "name": "skin never borrows base death",
+      "ok": true
+    },
+    {
+      "name": "actual appearance retains death granadero",
+      "ok": true
+    },
+    {
+      "name": "actual appearance retains death libertador_escarcha",
+      "ok": true
+    },
+    {
+      "name": "actual appearance retains death libertador_ancestral",
+      "ok": true
+    },
+    {
+      "name": "unloaded supplement retains original fallback",
+      "ok": true
+    },
+    {
+      "name": "Códice renderer selects supplement",
+      "ok": true
+    },
+    {
+      "name": "guest snapshot L1",
+      "ok": true
+    },
+    {
+      "name": "guest snapshot L39",
+      "ok": true
+    },
+    {
+      "name": "guest snapshot L40",
+      "ok": true
+    },
+    {
+      "name": "guest snapshot L60",
+      "ok": true
+    },
+    {
+      "name": "guest snapshot L90",
+      "ok": true
+    },
+    {
+      "name": "guest snapshot L99",
+      "ok": true
+    },
+    {
+      "name": "preserved bytes assets/sprites/champions/libertador/v2/atlas.png",
+      "ok": true
+    },
+    {
+      "name": "preserved bytes assets/sprites/champions/libertador/v2/horse.png",
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "levels": [],
+  "provenance": {
+    "atlasSha256": "3c142180270cbcf3bd4477433bec65204a78e0ee65c4d15aab3efcd3e411dc7a",
+    "rendererSha256": "7f547a8272a1c7b03e2b5a40823308b3493f779520413afa9a654b0f54be18fd"
+  },
+  "status": "PASS"
+}

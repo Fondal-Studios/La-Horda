@@ -37,11 +37,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
       const drop = materializeLoot({ tier: 'raro' }, 'guerrero', 'laberinto');
       const setDrop = materializeLoot({ tier: 'set', designId: setPieceIds(Object.keys(SET_DB)[0])[0] }, 'guerrero', 'infernal');
       return { s1: itemStat(a), s8: itemStat(b), sOld: itemStat(old), sCheat: itemStat(cheat), af1: affixValue(a, a.affixes[0]), af8: affixValue(b, b.affixes[0]),
-        lv, drop: drop.ilvl, setDrop: setDrop.ilvl, gemCostSame: gemUpgradeCost(a) === gemUpgradeCost(b) };
+        lv, maxMult: 1 + ITEM_ILVL_STEP * (ITEM_ILVL_MAX - 1), drop: drop.ilvl, setDrop: setDrop.ilvl, gemCostSame: gemUpgradeCost(a) === gemUpgradeCost(b) };
     });
     check('ILVL.sin_campo_vale_como_nivel_1_(objetos_viejos_y_tienda)', Math.abs(r.sOld - r.s1) < 1e-9, r);
     check('ILVL.arena_8_vale_+35%_en_stat_y_afijos', Math.abs(r.s8 / r.s1 - 1.35) < 1e-6 && Math.abs(r.af8 / r.af1 - 1.35) < 1e-6, r);
-    check('ILVL.se_recorta_al_tope_(no_se_infla_por_intercambio)', Math.abs(r.sCheat / r.s1 - 1.45) < 1e-6, r);
+    check('ILVL.se_recorta_al_tope_(no_se_infla_por_intercambio)', Math.abs(r.sCheat / r.s1 - r.maxMult) < 1e-6, r); // el tope es ITEM_ILVL_MAX (Normal llega a 10 = x1,45; Pesadilla/Infierno suben hasta 28)
     check('ILVL.una_por_arena_en_el_orden_de_la_campania', JSON.stringify(r.lv) === JSON.stringify([1,2,3,4,5,6,7,8,9,10]), r.lv);
     check('ILVL.lo_que_cae_trae_el_nivel_de_su_arena_(tambien_sets)', r.drop === 7 && r.setDrop === 10, r);
     check('ILVL.no_cambia_el_costo_en_Gemas', r.gemCostSame, r);
@@ -144,10 +144,10 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     check('RETENCION.el_pase_paga_Gemas_y_se_ven', r.gotGems === 3 && /3 Gemas/.test(r.txt) && r.passGems >= 4, r);
     check('RETENCION.cofre_lleno_paga_el_valor_de_venta_no_150', r.items === 0 && r.chestGold > 0 && r.chestGold !== 150 && r.chestGold <= 220, r);
   }
-  // ---------- 8) la tienda sigue completa ----------
+  // ---------- 8) la tienda sigue completa (lo comprado por oro es un legendario: las piezas de set se compran con Brasas, t_piezas_brasas.js) ----------
   {
     const r = await E(() => { const c = shopCatalog(); return { sets: c.filter(e => e.cat === 'set').length, leg: c.filter(e => e.cat === 'legendario').length, base: c.filter(e => e.cat === 'base').length, champs: CHAMPION_CATALOG.filter(x => x.priceGold).length,
-      bought: (() => { setState('menu'); save.gold = 1e6; save.stash = []; const e = c.find(x => x.cat === 'set'); const b = shopBuyCatalog(e.key); return b.ok && !b.item.ilvl; })() }; });
+      bought: (() => { setState('menu'); save.gold = 1e6; save.stash = []; const e = c.find(x => x.cat === 'legendario'); const b = shopBuyCatalog(e.key); return b.ok && !b.item.ilvl; })() }; });
     check('TIENDA.sigue_vendiendo_sets_legendarios_basicos_y_guardianes', r.sets > 50 && r.leg >= 20 && r.base > 20 && r.champs >= 10, r);
     check('TIENDA.lo_comprado_nace_con_nivel_de_objeto_1', r.bought, r);
   }

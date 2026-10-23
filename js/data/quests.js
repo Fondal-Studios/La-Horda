@@ -66,7 +66,7 @@ const ACHIEVEMENTS = [
   // ---------------- GUARDIANES (los héroes) ----------------
   {id:"g_own3",   cat:"guardianes", icon:"shield", name:"Hermandad", desc:"Tené 3 guardianes.", goal:3, prog:_qOwned, reward:{gold:100}},
   {id:"g_own6",   cat:"guardianes", icon:"shield", name:"Escuadrón completo", desc:"Tené 6 guardianes.", goal:6, prog:_qOwned, reward:{gold:200}},
-  {id:"g_own_all",cat:"guardianes", icon:"crown",  name:"Todos los guardianes", desc:"Tené a todos los guardianes.", goal:()=>CHAMPION_CATALOG.filter(c=>typeof championInProgression!=="function" || championInProgression(c.id)).length, prog:_qOwned, reward:{gold:250, title:"coleccionista"}},
+  {id:"g_own_all",cat:"guardianes", icon:"crown",  name:"Todos los guardianes", desc:"Tené a todos los guardianes.", goal:()=>typeof championCounts==="function" ? championCounts().obtainable : CHAMPION_CATALOG.length, prog:_qOwned, reward:{gold:250, title:"coleccionista"}},
   {id:"g_lvl20",  cat:"guardianes", icon:"star",   name:"Forjado en batalla", desc:"Llevá un guardián al nivel 20.", goal:20, prog:_qMaxLvl, reward:{gold:100}},
   {id:"g_lvl40",  cat:"guardianes", icon:"star",   name:"Curtido", desc:"Llevá un guardián al nivel 40.", goal:40, prog:_qMaxLvl, reward:{gold:200}},
   {id:"g_lvl60",  cat:"guardianes", icon:"star",   name:"Leyenda viviente", desc:"Llevá un guardián al nivel 60.", goal:60, prog:_qMaxLvl, reward:{gold:250, title:"leyenda"}},

@@ -74,8 +74,8 @@ Archivos: `js/arenas/bosque/bos-ruins.js`, `js/arenas/micelial/mic-guide.js`, `j
 
 | | |
 |---|---|
-| **Solución** | 4 hojas recortadas (`tools/art/skins_sets/extract.py`) a atlas en el formato de `CHAMP_PACK`. La skin **remapea el atlas** del campeón solo con el set COMPLETO, así cada estado (caminar, atacar, habilidades, Retumbar...) sigue su propia lógica. Quedan así: **La Manada → Sylva, Flecha de Fuego · El Rōnin Errante → Musashi, Samurái Legendario · Legión de Reconocimiento → Eren, Titán Bestia** (también con forma titán y transformación propias) **· Acceso Raíz → Axiom, Skin Z**. Tienen retrato para la tienda. |
-| **Archivos** | `js/systems/set-effects.js` (`activeSetSkin`, `setSkinPackKey`), `js/rendering/champion-sprites.js`, `js/champions/eren.js`, `js/assets/set-skins-meta.js`, `assets/sprites/champions/*/skins/` |
+| **Solución** | 4 hojas recortadas (`tools/art/skins_sets/extract.py`) a atlas en el formato de `CHAMP_PACK`. La skin **remapea el atlas** del campeón solo con el set COMPLETO, así cada estado (caminar, atacar, habilidades, Retumbar...) sigue su propia lógica. Quedan así: **La Manada → Sylva, Flecha de Fuego · El Rōnin Errante → Musashi, Samurái Legendario · Legión de Reconocimiento → Ilkan, Titán Bestia** (también con forma titán y transformación propias) **· Acceso Raíz → Axiom, Skin Z**. Tienen retrato para la tienda. |
+| **Archivos** | `js/systems/set-effects.js` (`activeSetSkin`, `setSkinPackKey`), `js/rendering/champion-sprites.js`, `js/champions/ilkan.js`, `js/assets/set-skins-meta.js`, `assets/sprites/champions/*/skins/` |
 | **Pruebas** | `skintest.js`: set 4/4 equipado → skin activa en los 4; capturas idle/caminar/espalda/ataque + titán (`sk_grid.png`). |
 | **Resultado** | ✅ |
 | **Assets faltantes** | Las hojas traen 1 cuadro por celda: la caminata usa 2 (caminata + corrida) y el idle 1. Axiom no trae fila de casteo. El Titán Bestia no trae vistas de frente/espaldas. Las otras 8 skins de campeón siguen pendientes (`docs/assets_faltantes/skins_sets/`). |
@@ -113,18 +113,18 @@ Archivos: `js/arenas/bosque/bos-ruins.js`, `js/arenas/micelial/mic-guide.js`, `j
 | | |
 |---|---|
 | **Bug** | Tres caminos para abusar de la definitiva: (a) la reducción de enfriamiento se apilaba sin piso (maestría × pasivas × arena × reglas × talentos); (b) la **Ascensión** de la Profeta llevaba a 60 ms TODOS los enfriamientos, también el de la definitiva; (c) una ulti de área podía recargar su propia barra. |
-| **Solución** | `ultCooldownFor()` es un solo cálculo para jugador, bots, Eren y San Martín (7 lugares), con **piso de 55% del enfriamiento base**. La Ascensión ya no toca la definitiva. La barra no carga con el daño de la propia ulti durante 4 s. |
-| **Archivos** | `js/skills/abilities.js`, `js/ai/allies.js`, `js/core/update.js`, `js/champions/eren.js`, `js/champions/libertador.js`, `js/systems/combat.js` |
+| **Solución** | `ultCooldownFor()` es un solo cálculo para jugador, bots, Ilkan y San Martín (7 lugares), con **piso de 55% del enfriamiento base**. La Ascensión ya no toca la definitiva. La barra no carga con el daño de la propia ulti durante 4 s. |
+| **Archivos** | `js/skills/abilities.js`, `js/ai/allies.js`, `js/core/update.js`, `js/champions/ilkan.js`, `js/champions/libertador.js`, `js/systems/combat.js` |
 | **Pruebas** | `bf5test.js`: con −90% de enfriamiento de arena la ulti queda en 17,6 s (32 s × 0,55); la Ascensión no la toca; auto-carga bloqueada; 0 lanzamientos extra en 125 intentos. |
 | **Resultado** | ✅ |
 
-## 23 · Eren: El Retumbar excepcional
+## 23 · Ilkan: El Retumbar excepcional
 
 | | |
 |---|---|
 | **Bug** | Se podía lanzar cada vez que la Furia se llenaba en forma titán (cada 22 s), sin límite. |
-| **Solución** | **Máximo 2 por partida.** La 1ª, además de la Furia llena transformado, requiere un **JEFE** en pelea o que Eren esté al borde (<35% vida) o haya un aliado caído. La 2ª requiere el **jefe debajo del 50%** y **90 s** desde la primera. La condición se revalida en el disparo directo (un invitado o un bot no pueden forzarlo). El HUD avisa qué falta ("solo contra un JEFE…", "ya no queda en esta partida", 1/2). |
-| **Archivos** | `js/champions/eren.js`, `js/data/champion-tuning.js` |
+| **Solución** | **Máximo 2 por partida.** La 1ª, además de la Furia llena transformado, requiere un **JEFE** en pelea o que Ilkan esté al borde (<35% vida) o haya un aliado caído. La 2ª requiere el **jefe debajo del 50%** y **90 s** desde la primera. La condición se revalida en el disparo directo (un invitado o un bot no pueden forzarlo). El HUD avisa qué falta ("solo contra un JEFE…", "ya no queda en esta partida", 1/2). |
+| **Archivos** | `js/champions/ilkan.js`, `js/data/champion-tuning.js` |
 | **Pruebas** | `bf5test.js` (intentos de romperlo): sin jefe y con vida llena → no; con jefe → sí (1/2); 2ª antes de tiempo → no; jefe al 45% + 90 s → sí (2/2); 3ª con todo a favor → no; 3ª forzada llamando a la función → no (sigue 2/2). |
 | **Resultado** | ✅ |
 
@@ -132,7 +132,7 @@ Archivos: `js/arenas/bosque/bos-ruins.js`, `js/arenas/micelial/mic-guide.js`, `j
 
 Carteles y colores de estado en las runas, barra de runas y de núcleos, flechas en el borde, banners de runa activa, Oleada de
 Corrupción y "¡Las runas se desbordan!", VULNERABLE / TRANSFORMÁNDOSE / Corrompido en la barra del jefe, tildes en los tutoriales,
-aviso del Retumbar en el HUD de Eren y "¡NUEVA ARENA!".
+aviso del Retumbar en el HUD de Ilkan y "¡NUEVA ARENA!".
 
 ## 25-32 · QA y regresión (resultado final)
 
@@ -142,7 +142,7 @@ aviso del Retumbar en el HUD de Eren y "¡NUEVA ARENA!".
 | Bosque (runas, nivel 10, Guardián) — `runetest.js`, `guardfight.js` | ✅ |
 | Micelial — `mictest.js` | ✅ |
 | Rejugar niveles 1/10/20/30 — `bf5test.js` | ✅ |
-| Jefes (ráfaga, fases, ventanas) y definitivas (Eren incluido) — `bf5test.js` | ✅ |
+| Jefes (ráfaga, fases, ventanas) y definitivas (Ilkan incluido) — `bf5test.js` | ✅ |
 | Humo: las 7 arenas en niveles 3 y 10 con 12 campeones distintos (`smokeall.js`) | ✅ sin errores |
 | `tools/regression/t_func.js` (UI real) | ✅ 92/92 |
 | `tools/items/t_*.js` (14 suites: objetos, itemización, cristales, Hechicero, reacciones, roles, ritmo, colisión…) | ✅ 215/216 en la corrida completa; la que falló (`COL.partida_real_sin_nadie_adentro`, intermitente, con 88 enemigos) pasó 10/10 después (4/4 con la presión del Micelial ya ajustada) |

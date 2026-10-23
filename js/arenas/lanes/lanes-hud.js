@@ -6,15 +6,22 @@
    Todo con letra de 14 px o más y botones de 48 px o más.
    ============================================================ */
 let _lnHud = null;
+// Leyenda del minimapa: mismos colores que LNA_MINI (lanes-art-draw.js)
+function lanesLegendHtml(){
+  const Z = (typeof LNA_MINI !== "undefined") ? LNA_MINI : {zone:["#3c7a40", "#8a3a2c", "#2f7f78", "#5e4b8a"], water:"#3cc4be", plazaB:"#4a80b4", plazaR:"#c24a30", center:"#a070ff", bridge:"#aeb4be", laneM:"#d2c08e"};
+  const row = (c, t)=>'<span><i style="background:' + c + '"></i>' + t + '</span>';
+  return row(Z.plazaB, "Base Zafiro") + row(Z.plazaR, "Base Ámbar") + row(Z.zone[0], "Bosque Ancestral") + row(Z.zone[1], "Jungla Volcánica") + row(Z.zone[2], "Pantano Cristalino") + row(Z.zone[3], "Necrópolis") +
+    row(Z.water, "Agua poco profunda") + row(Z.center, "La Convergencia") + row(Z.bridge, "Puente") + row(Z.laneM, "Carril / sendero") + row("#e8c46a", "Campamento") + row("#d89bff", "Objetivo épico") + row("#70c9ff", "Torres y cristal") ;
+}
 function lanesHudBuild(){
   if(_lnHud) return _lnHud;
   const root = document.body; // fuera de #hud (z-index 10) para quedar sobre los controles táctiles
   const el = document.createElement("div"); el.id = "lanes-hud"; el.className = "lanes-hud hidden";
   el.innerHTML =
     '<div class="ln-score" role="status" aria-live="polite">' +
-      '<div class="ln-team ln-blue"><b>ZAFIRO</b><span class="ln-pips"></span><span class="ln-hp"></span><i class="ln-bar"><u></u></i></div>' +
+      '<div class="ln-team ln-blue"><b class="ln-name"><i class="ln-side"></i>ZAFIRO</b><span class="ln-pips"></span><span class="ln-hp"></span><i class="ln-bar"><u></u></i></div>' +
       '<div class="ln-clock"><strong class="ln-time">18:00</strong><span class="ln-wave"></span><span class="ln-epics"></span></div>' +
-      '<div class="ln-team ln-amber"><b>ÁMBAR</b><span class="ln-pips"></span><span class="ln-hp"></span><i class="ln-bar"><u></u></i></div>' +
+      '<div class="ln-team ln-amber"><b class="ln-name"><i class="ln-side"></i>ÁMBAR</b><span class="ln-pips"></span><span class="ln-hp"></span><i class="ln-bar"><u></u></i></div>' +
     '</div>' +
     '<div class="ln-note" role="status"></div>' +
     '<div class="ln-feed" aria-live="polite"></div>' +
@@ -22,7 +29,7 @@ function lanesHudBuild(){
     '<button type="button" class="ln-chip" aria-expanded="false"><span class="ln-shards">◆ 0</span><span class="ln-phase">Suministros</span></button>' +
     '<button type="button" class="ln-recall" aria-label="Volver a la base (B)"><b>B</b><span>VOLVER</span></button>' +
     '<div class="ln-shop hidden"></div>' +
-    '<div class="ln-rival"><canvas width="240" height="180"></canvas><div class="ln-horde"></div></div>';
+    '<div class="ln-rival"><canvas width="240" height="180"></canvas><div class="ln-horde"></div><button type="button" class="ln-legend-btn" aria-expanded="false" aria-label="Leyenda del mapa">?</button><div class="ln-legend hidden" role="note">' + lanesLegendHtml() + '</div></div>';
   root.appendChild(el);
   const shop = el.querySelector(".ln-shop");
   const hint = document.createElement("div"); hint.className = "ln-shop-hint"; hint.textContent = "OBJETOS: se compran en tu base o estando caído (B vuelve) · PEDIDOS: desde donde estés"; shop.appendChild(hint);
@@ -32,23 +39,27 @@ function lanesHudBuild(){
   for(const [key, it] of Object.entries(LANES.SHOP)) mk(key, it.name, key === "swarm" || key === "brute" ? " ln-send" : "");
   el.querySelector(".ln-recall").addEventListener("click", ()=>{ if(player) lanesRecallRequest(player); });
   if(!window._lnKeyB){ window._lnKeyB = true; addEventListener("keydown", ev=>{ if((ev.key === "b" || ev.key === "B") && LN && LN.mode !== "coliseo" && state === "playing" && player && !ev.repeat) lanesRecallRequest(player); }); }
+  const lb = el.querySelector(".ln-legend-btn"), lg = el.querySelector(".ln-legend");
+  lb.addEventListener("click", ()=>{ const open = lg.classList.toggle("hidden") === false; lb.setAttribute("aria-expanded", String(open)); });
   const chip = el.querySelector(".ln-chip");
   chip.addEventListener("click", ()=>{ const open = shop.classList.toggle("hidden") === false; chip.setAttribute("aria-expanded", String(open)); el.classList.toggle("ln-shop-open", open); });
   _lnHud = el; return el;
 }
 function _lnPill(on){ const lv = document.getElementById("hud-level"), sp = lv && lv.parentElement; if(!sp) return;
   sp.innerHTML = on ? 'Oleada <b id="hud-level">0</b> · Vencidos <b id="hud-kills">0</b>' : 'Nivel <b id="hud-level">1</b>/10 · Vencidos <b id="hud-kills">0</b>'; }
-function lanesHudShow(){ const el = lanesHudBuild(); el.classList.remove("hidden"); document.body.classList.add("lanes-on"); _lnPill(true); }
+function lanesHudShow(){ const el = lanesHudBuild(); el.classList.remove("hidden"); document.body.classList.add("lanes-on"); document.body.dataset.mode = (typeof LN !== "undefined" && LN && LN.mode === "coliseo") ? "coliseo" : "cristales"; _lnPill(true); }
 function lanesHudSync(s){
   if(_lnHud) _lnHud.style.display = (s === "playing" && LN && LN.mode !== "coliseo") ? "" : "none";
   if(typeof colHudSync === "function") colHudSync(s);
   // se fue de la Sala sin jugar (salió de la sala, cerró el menú): se devuelve el guardado real
   if(LN && LN.lobby && s !== "prep" && !(typeof netMatch !== "undefined" && netMatch) && !(typeof netInRoom === "function" && netInRoom())) lanesRestore();
 }
-function lanesHudHide(){ _lnPill(false); if(typeof colHudHide === "function") colHudHide(); if(_lnHud) _lnHud.classList.add("hidden"); document.body.classList.remove("lanes-on"); const r = document.getElementById("lanes-result"); if(r) r.classList.add("hidden"); }
+function lanesHudHide(){ _lnPill(false); if(typeof colHudHide === "function") colHudHide(); if(_lnHud) _lnHud.classList.add("hidden"); document.body.classList.remove("lanes-on"); delete document.body.dataset.mode; const r = document.getElementById("lanes-result"); if(r) r.classList.add("hidden"); }
 function _lnMin(ms){ const t = Math.ceil(ms / 1000); return Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0"); }
 function _lnClock(ms){ const left = Math.max(0, Math.ceil((LANES.TIME_LIMIT_MS - ms) / 1000)); return Math.floor(left / 60) + ":" + String(left % 60).padStart(2, "0"); }
 
+// Color de una línea del registro: verde si el hecho fue de tu bando, rojo si fue del rival (el texto nombra al equipo).
+function sidesFeedColor(team){ const rel = sidesOfTeam(team); return rel ? sidesCol(rel).hi : "#ffffff"; }
 let _lnOfferKey = "";
 function lanesHudTick(){
   if(LN && LN.mode === "coliseo"){ if(typeof colHudTick === "function") colHudTick(); return; }
@@ -56,10 +67,11 @@ function lanesHudTick(){
   const el = _lnHud, q = s=>el.querySelector(s), me = player.team != null ? player.team : 0, T = L.team[me];
   [0, 1].forEach(i=>{
     const c = L.team[i].S[9], t = el.querySelectorAll(".ln-team")[i];
+    const rel = sidesOfTeam(i) || "enemy"; t.dataset.side = rel; t.querySelector(".ln-name").dataset.tag = SIDES_NAME[rel];   // verde = tu equipo, rojo = rival (el color del equipo queda en el nombre)
     t.querySelector(".ln-hp").textContent = Math.ceil(c.hp) + (c.ward > 0 ? " +" + Math.ceil(c.ward) : "");
     t.querySelector(".ln-bar u").style.width = Math.max(0, c.hp / c.maxHp * 100) + "%";
     const ex = L.team[i].S[9], nTw = L.team[i].S.filter(s=>s.kind === "tower" && s.alive).length;
-    t.querySelector(".ln-pips").innerHTML = '<em class="on">▲</em> ' + nTw + '/9 torres' + (ex && lanesExposed(ex) ? ' · <em class="off" style="color:#ff8a7a">¡EXPUESTO!</em>' : '');
+    t.querySelector(".ln-pips").innerHTML = '<em class="on">▲</em> ' + nTw + '/9 torres' + (ex && lanesExposed(ex) ? ' · <em class="off" style="color:var(--enemy-hi)">¡EXPUESTO!</em>' : '');
   });
   q(".ln-time").textContent = _lnClock(L.t);
   q(".ln-wave").textContent = L.t >= LANES.ECLIPSE_MS ? "☀ ECLIPSE" : "Oleada " + L.wave;
@@ -77,7 +89,7 @@ function lanesHudTick(){
   const bf = []; if(T.buffs.dragon > L.t) bf.push("Dragón +10 % daño " + _lnMin(T.buffs.dragon - L.t)); if(T.buffs.rey > L.t) bf.push("Rey Coloso " + _lnMin(T.buffs.rey - L.t)); if(player._lnBuff && player._lnBuff.until > L.t) bf.push("Gigante +12 % " + _lnMin(player._lnBuff.until - L.t));
   q(".ln-note").textContent = L.t >= LANES.ECLIPSE_MS ? "Los dos cristales se apagan cada vez más rápido" : (bf.length ? "★ " + bf.join(" · ") : (L.t < 20000 ? "Tu horda sale sola por los tres carriles. Acompañala y derribá torres." : (player._recall ? "Volviendo a la base… no te muevas" : "")));
   const foes = L.feed.filter(f=>L.t - f.t < 9000).slice(-3);
-  q(".ln-feed").innerHTML = foes.map(f=>'<div style="color:' + lanesTeamColor(f.team) + '">' + f.text + '</div>').join("");
+  q(".ln-feed").innerHTML = foes.map(f=>'<div style="color:' + sidesFeedColor(f.team) + '">' + guideEsc(f.text) + '</div>').join("");
   // carta de horda
   const cards = q(".ln-cards"), key = T.offer ? T.offer.join(",") + "@" + T.offerAt : "";
   if(T.offer){
@@ -100,20 +112,30 @@ function lanesHudTick(){
 function lanesDrawMap(){
   const cv = _lnHud && _lnHud.querySelector(".ln-rival canvas"); if(!cv || !LN) return;
   const g = cv.getContext("2d"), W = cv.width, H = cv.height, sx = W / LANES.W, sy = H / LANES.H;
-  g.clearRect(0, 0, W, H); g.fillStyle = "#12261a"; g.fillRect(0, 0, W, H);
-  g.strokeStyle = "rgba(70,140,205,.55)"; g.lineWidth = 15; g.beginPath(); g.moveTo(0, 0); g.lineTo(W, H); g.stroke();
+  g.clearRect(0, 0, W, H); g.imageSmoothingEnabled = false;
+  const bg = typeof lanesArtMini === "function" ? lanesArtMini() : null;
+  if(bg) g.drawImage(bg, 0, 0, W, H); else { g.fillStyle = "#12261a"; g.fillRect(0, 0, W, H); }
   g.lineCap = "round"; g.lineJoin = "round";
-  for(let l = 0; l < 3; l++){ g.beginPath(); LANES_PATHS[l].pts.forEach((q, i)=>{ if(i) g.lineTo(q[0] * sx, q[1] * sy); else g.moveTo(q[0] * sx, q[1] * sy); }); g.strokeStyle = "#7a8296"; g.lineWidth = 8; g.stroke(); }
   g.strokeStyle = "#5a6b88"; g.lineWidth = 2; g.strokeRect(1, 1, W - 2, H - 2);
-  for(const cd of LANES_CAMPS){ const camp = LN.camps && LN.camps[cd.id], on = camp ? camp.mons.some(m=>m.alive) : (enemies.some(e=>e.alive && e.campId === cd.id)); g.fillStyle = on ? "#e8c46a" : "#5a5030"; g.beginPath(); g.arc(cd.x * sx, cd.y * sy, 3, 0, Math.PI * 2); g.fill(); }
-  for(const ed of LANES_EPICS){ const on = enemies.some(e=>e.alive && e.epicId === ed.id); g.fillStyle = on ? "#d89bff" : "#4a3560"; g.beginPath(); g.moveTo(ed.x * sx, ed.y * sy - 7); g.lineTo(ed.x * sx + 6, ed.y * sy + 5); g.lineTo(ed.x * sx - 6, ed.y * sy + 5); g.closePath(); g.fill(); }
+  const NE = sidesCol("neutral");
+  for(const cd of LANES_CAMPS){ const camp = LN.camps && LN.camps[cd.id], on = camp ? camp.mons.some(m=>m.alive) : (enemies.some(e=>e.alive && e.campId === cd.id)); g.fillStyle = on ? NE.fill : NE.dark; g.beginPath(); g.arc(cd.x * sx, cd.y * sy, 3, 0, Math.PI * 2); g.fill(); }
+  for(const ed of LANES_EPICS){ const on = enemies.some(e=>e.alive && e.epicId === ed.id); g.fillStyle = on ? NE.hi : NE.dark; g.strokeStyle = NE.fill; g.lineWidth = 1.5; g.beginPath(); g.moveTo(ed.x * sx, ed.y * sy - 7); g.lineTo(ed.x * sx + 6, ed.y * sy + 5); g.lineTo(ed.x * sx - 6, ed.y * sy + 5); g.closePath(); g.fill(); g.stroke(); }
+  // estructuras: verde = tuyas, rojo = rivales; cristal = rombo, torre aliada = cuadrado, torre rival = triángulo
   for(const T of LN.team) for(const s of T.S){
-    if(!s.alive) continue; g.fillStyle = lanesTeamColor(s.team);
-    if(s.kind === "crystal"){ const x = s.x * sx, y = s.y * sy; g.beginPath(); g.moveTo(x, y - 9); g.lineTo(x + 7, y); g.lineTo(x, y + 9); g.lineTo(x - 7, y); g.closePath(); g.fill(); }
-    else { g.fillRect(s.x * sx - 3, s.y * sy - 3, 6, 6); }
+    if(!s.alive) continue; const rel = sidesOf(s), c = sidesCol(rel), x = s.x * sx, y = s.y * sy;
+    g.fillStyle = c.fill; g.strokeStyle = "#000"; g.lineWidth = 1.5; g.beginPath();
+    if(s.kind === "crystal"){ g.moveTo(x, y - 9); g.lineTo(x + 7, y); g.lineTo(x, y + 9); g.lineTo(x - 7, y); g.closePath(); }
+    else if(rel === "enemy"){ g.moveTo(x, y - 5); g.lineTo(x + 5, y + 4); g.lineTo(x - 5, y + 4); g.closePath(); }
+    else g.rect(x - 3.5, y - 3.5, 7, 7);
+    g.stroke(); g.fill();
   }
-  for(const e of enemies){ if(!e.alive || e.lanesProxy || e.team == null || e.team === 2) continue; g.fillStyle = lanesTeamColor(e.team); const z = e.isBrute ? 4 : 2; g.fillRect(e.x * sx - z / 2, e.y * sy - z / 2, z, z); }
-  for(const h of heroes){ if(h.team == null) continue; g.fillStyle = h.alive ? "#fff" : "#555"; g.beginPath(); g.arc(h.x * sx, h.y * sy, h === player ? 5 : 4, 0, Math.PI * 2); g.fill(); g.strokeStyle = lanesTeamColor(h.team); g.lineWidth = 2; g.stroke(); }
+  for(const e of enemies){ if(!e.alive || e.lanesProxy || e.team == null || e.team === 2) continue; g.fillStyle = sidesCol(sidesOf(e)).fill; const z = e.isBrute ? 4 : 2; g.fillRect(e.x * sx - z / 2, e.y * sy - z / 2, z, z); }
+  // héroes: aliado = círculo con aro verde, rival = rombo con aro rojo, yo = círculo grande con aro blanco y verde
+  for(const h of heroes){ if(h.team == null) continue; const rel = sidesOf(h), c = sidesCol(rel), x = h.x * sx, y = h.y * sy, r = h === player ? 5 : 4;
+    g.fillStyle = h.alive ? "#fff" : "#555"; g.strokeStyle = c.fill; g.lineWidth = 2; g.beginPath();
+    if(rel === "enemy"){ g.moveTo(x, y - r - 1.5); g.lineTo(x + r + 1.5, y); g.lineTo(x, y + r + 1.5); g.lineTo(x - r - 1.5, y); g.closePath(); } else g.arc(x, y, r, 0, Math.PI * 2);
+    g.fill(); g.stroke();
+    if(rel === "self"){ g.strokeStyle = "#fff"; g.lineWidth = 1.5; g.beginPath(); g.arc(x, y, r + 3, 0, Math.PI * 2); g.stroke(); } }
   if(player){ const vw = (typeof VIEW_WORLD_SHORT !== "undefined" ? VIEW_WORLD_SHORT : 650) * 1.8, vh = vw * 0.56; g.strokeStyle = "rgba(255,255,255,.7)"; g.lineWidth = 1; g.strokeRect((player.x - vw / 2) * sx, (player.y - vh / 2) * sy, vw * sx, vh * sy); }
 }
 
@@ -123,9 +145,11 @@ function lanesShowResult(){
   let r = document.getElementById("lanes-result");
   if(!r){ r = document.createElement("div"); r.id = "lanes-result"; r.className = "lanes-result hidden"; document.body.appendChild(r); }
   const mine = player.team != null ? player.team : 0, won = L.winner === mine, draw = L.winner === -1;
+  const pgRes = typeof postgameSettle === "function" ? postgameSettle(L) : null;   // postgame: recompensas con tope diario (solo en solitario)
   const rows = heroes.map(h=>{ const s = h.stats || {}; return '<tr' + (h === player ? ' class="me"' : '') + '><td>' + heroLabel(h) + '</td><td>' + (h.team ? "Ámbar" : "Zafiro") + '</td><td>' + (h.mlvl || "-") + '</td><td>' + Math.round(s.dmgDealt || s.dmg || 0) + '</td><td>' + (s.kills || 0) + '</td><td>' + Math.round(s.healed || s.heal || 0) + '</td></tr>'; }).join("");
   r.innerHTML = '<div class="ln-res-card"><div class="ln-res-kicker">GUERRA DE CRISTALES</div><h2>' + (draw ? "EMPATE" : won ? "¡VICTORIA!" : "CRISTAL CAÍDO") + '</h2>' +
     '<p>Zafiro ' + Math.ceil(L.team[0].S[9].hp) + ' · Ámbar ' + Math.ceil(L.team[1].S[9].hp) + ' · torres en pie ' + lanesTowersAlive(0) + '–' + lanesTowersAlive(1) + ' · bajas de héroes ' + L.team[0].pk + '–' + L.team[1].pk + ' · ' + (L.why === "tiempo" ? "decidida por tiempo" : "cristal destruido") + '</p>' +
+    postgameResultHtml(pgRes) +
     '<table><thead><tr><th>Jugador</th><th>Equipo</th><th>Nv</th><th>Daño</th><th>Bajas</th><th>Cura</th></tr></thead><tbody>' + rows + '</tbody></table>' +
     '<div class="ln-res-btns"><button type="button" class="ln-again">REVANCHA</button><button type="button" class="ln-exit">VOLVER AL MENÚ</button></div></div>';
   r.classList.remove("hidden");

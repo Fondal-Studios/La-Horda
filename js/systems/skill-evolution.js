@@ -36,7 +36,7 @@ const CHAMP_IDENTITY = {
   cazadora:   {sig:"mark",    proj:"arrow"},
   nigromante: {sig:"wither",  proj:"soul"},
   libertador: {sig:"stagger", proj:"bullet"},
-  eren:       {sig:"bleed",   proj:"dagger"}
+  ilkan:       {sig:"bleed",   proj:"dagger"}
 };
 const EVO_SIG_LABEL = {stagger:"aturde", bleed:"sangrado", burn:"quemadura", chill:"escarcha", shock:"descarga", mark:"marca (+10% daño recibido)", wither:"marchitar (+10% daño recibido)", element:"estado de su elemento"};
 
@@ -139,7 +139,6 @@ function skillEvoOnKill(e){
   if(ev.cdDone || !src.cds || typeof ev.key!=="number") return;
   ev.cdDone = true;
   src.cds[ev.key] = (src.cds[ev.key]||0) * (1 - EVO_CFG.impetuCdCut);
-  if(src===player) floatText(src.x, src.y-48, "ímpetu", null);
 }
 // Texto de los hitos para la UI de habilidades.
 function skillEvoLines(classKey, sk, idx){

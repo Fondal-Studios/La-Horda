@@ -11,13 +11,14 @@ function colDrawWorld(now){
   ctx.fillStyle = "#07090f"; ctx.fillRect(-100, -100, COL.W + 200, COL.H + 200);
   for(let pit = 0; pit < 2; pit++){
     const p = colPitCenter(pit);
-    if(!inView(p.x, p.y, COL.PIT_R + 160)) continue;
+    if(!inView(p.x, p.y, COL.PIT_R + 200)) continue;
+    colDrawStadium(p);
     // base y borde de piedra
-    ctx.fillStyle = "#1a1f2b"; ctx.beginPath(); ctx.arc(p.x, p.y, COL.PIT_R + 46, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = "#3a465d"; ctx.lineWidth = 10; ctx.beginPath(); ctx.arc(p.x, p.y, COL.PIT_R + 38, 0, Math.PI * 2); ctx.stroke();
+    ctx.fillStyle = "#8a7554"; ctx.beginPath(); ctx.arc(p.x, p.y, COL.PIT_R + 46, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = "#c4aa79"; ctx.lineWidth = 10; ctx.beginPath(); ctx.arc(p.x, p.y, COL.PIT_R + 38, 0, Math.PI * 2); ctx.stroke();
     ctx.save(); ctx.beginPath(); ctx.arc(p.x, p.y, COL.PIT_R, 0, Math.PI * 2); ctx.clip();
-    ctx.fillStyle = floorPattern || "#2b3347"; ctx.fillRect(p.x - COL.PIT_R, p.y - COL.PIT_R, COL.PIT_R * 2, COL.PIT_R * 2);
-    ctx.fillStyle = "rgba(8,12,20,.30)"; ctx.fillRect(p.x - COL.PIT_R, p.y - COL.PIT_R, COL.PIT_R * 2, COL.PIT_R * 2);
+    colDrawSand(p);
+    ctx.fillStyle = "rgba(70,46,24,.12)"; ctx.fillRect(p.x - COL.PIT_R, p.y - COL.PIT_R, COL.PIT_R * 2, COL.PIT_R * 2);
     const g = ctx.createRadialGradient(p.x, p.y, COL.PIT_R * 0.3, p.x, p.y, COL.PIT_R); g.addColorStop(0, "rgba(255,255,255,.05)"); g.addColorStop(1, "rgba(0,0,0,.45)");
     ctx.fillStyle = g; ctx.fillRect(p.x - COL.PIT_R, p.y - COL.PIT_R, COL.PIT_R * 2, COL.PIT_R * 2);
     // zona de peligro: fuera del anillo
@@ -33,21 +34,20 @@ function colDrawWorld(now){
     // marcas de inicio de cada equipo del duelo
     const pair = c.pairs[pit];
     [-1, 1].forEach((side, i)=>{
-      const x = p.x + side * COL.START_DIST, col = lanesTeamColor(pair[i]);
-      ctx.strokeStyle = col; ctx.globalAlpha = 0.65; ctx.lineWidth = 4; ctx.beginPath(); ctx.ellipse(x, p.y, 74, 100, 0, 0, Math.PI * 2); ctx.stroke(); ctx.globalAlpha = 1;
-      ctx.font = pxFont(14); ctx.textAlign = "center"; ctx.fillStyle = col; ctx.fillText(pair[i] === 0 ? "TU EQUIPO" : lanesTeamName(pair[i]), x, p.y - 112);
+      const x = p.x + side * COL.START_DIST, rel = sidesOfTeam(pair[i]), col = sidesCol(rel).hi;   // bando (verde / rojo), no color de equipo
+      sidesRing(ctx, rel, x, p.y, 74, 100, {lw:4, alpha:0.65});
+      ctx.font = pxFont(14); ctx.textAlign = "center"; ctx.fillStyle = col; ctx.fillText(pair[i] === sidesViewTeam() ? "TU EQUIPO" : lanesTeamName(pair[i]), x, p.y - 112);
     });
     ctx.font = pxFont(14); ctx.textAlign = "center"; ctx.fillStyle = "rgba(255,255,255,.55)"; ctx.fillText(pit === 0 ? "DUELO A" : "DUELO B", p.x, p.y + COL.PIT_R + 78);
   }
   ctx.restore();
 }
-// Anillo de equipo bajo cada luchador (aliados vs rivales a simple vista).
+// Anillo del bando bajo cada luchador (verde aliado liso · rojo enemigo discontinuo · yo = blanco + verde brillante).
 function colDrawTop(){
   if(!LN) return;
   for(const h of heroes){
     if(!h.alive || h.team == null || !inView(h.x, h.y, 80)) continue;
-    ctx.save(); ctx.strokeStyle = lanesTeamColor(h.team); ctx.globalAlpha = h === player ? 0.95 : 0.75; ctx.lineWidth = h === player ? 4 : 3;
-    ctx.beginPath(); ctx.ellipse(h.x, h.y + 12, 26, 10, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+    sidesRing(ctx, sidesOf(h), h.x, h.y + 12, 26, 10, {lw:h === player ? 3.5 : 3, alpha:h === player ? 0.95 : 0.8});
   }
 }
 Object.assign(ARENA_DEFS.coliseo, {drawWorld:colDrawWorld, drawTop:colDrawTop});

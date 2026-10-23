@@ -73,7 +73,7 @@ function setsOnHit(h, e, dmg, crit, opts){
   // Sombra del Cazador 4: presa marcada + concentración
   if((c.cazador||0) >= 4 && _isPriority(e) && e.alive){
     if(h._mark !== e){ h._focus = Math.floor((h._focus||0)/2); h._mark = e; }
-    else if(_setReady(h, "focus", 120)){ h._focus = Math.min(10, (h._focus||0) + 1); if(h._focus===10 && _setReady(h, "focusMsg", 6000)) _setMsg(h, "¡PRESA ACORRALADA!"); }
+    else if(_setReady(h, "focus", 120)){ h._focus = Math.min(10, (h._focus||0) + 1); }
   }
   // Lucifer 4: los básicos prenden fuego (antes el texto decía Quemadura y daba una descarga eléctrica)
   if((c.lucifer||0) >= 4 && fromBasic && e.alive){
@@ -101,7 +101,6 @@ function setsOnKill(h, e){
   // Sepulturero 4 (sin ejército propio): las bajas de élites levantan un guerrero no-muerto
   if((c.sepulturero||0) >= 4 && _isPriority(e) && e.rank!=="jefe" && h.skeletons && h.skeletons.length < 2 && h.classKey!=="nigromante"){
     spawnNigroSkeleton(h, "warrior", {});
-    _setMsg(h, "¡SE LEVANTA!", "heal");
   }
 }
 function glacialBurst(h, e, power){
@@ -133,13 +132,12 @@ function setsOnCast(h, sk, isUlt){
       hit.push(next); px = next.x; py = next.y - 14;
     }
     vfxShock(h.x, h.y, 12, 90, "150,190,255", 360, h===player?2:1);
-    _setMsg(h, "¡TEMPESTAD!");
   }
   // Ojo del Arcano 4: habilidades distintas seguidas = Resonancia
   if((c.arcano||0) >= 4 && !isUlt){
     if(h._lastSk === sk) h._reso = 1; else h._reso = (h._reso||0) + 1;
     h._lastSk = sk;
-    if(h._reso >= 3){ h._reso = 0; h._arcaneT = 4000; _setMsg(h, "¡RESONANCIA!"); vfxShock(h.x, h.y, 10, 70, "200,140,255", 360, h===player?2:1); }
+    if(h._reso >= 3){ h._reso = 0; h._arcaneT = 4000; vfxShock(h.x, h.y, 10, 70, "200,140,255", 360, h===player?2:1); }
   }
 }
 // dmgFinal = daño que llegó a la vida; mitigated = lo que frenó la defensa; absorbed = escudos
@@ -155,11 +153,11 @@ function setsOnHurt(h, dmgFinal, mitigated, absorbed){
   }
   if((c.berserker||0) >= 4 && h.hp > 0 && h.hp < h.maxHp*0.30 && !(h._berserkCd > 0)){
     h._berserkT = 6000; h._berserkCd = 40000;
-    _setMsg(h, "¡FRENESÍ!"); vfxShock(h.x, h.y, 10, 80, "230,50,40", 420, h===player?2:1);
+    vfxShock(h.x, h.y, 10, 80, "230,50,40", 420, h===player?2:1);
     if(h===player) playSfx("heavy");
   }
   if((c.laberinto||0) >= 4){
-    if(dmgFinal >= h.maxHp*0.08){ if(h._momentum >= 4) _setMsg(h, "Impulso roto", null); h._momentum = 0; }
+    if(dmgFinal >= h.maxHp*0.08){ h._momentum = 0; }
     h._noHitT = 0;
   }
 }
@@ -175,7 +173,6 @@ function colossalWave(h){
     a.shield = Math.min(a.maxHp*0.5, (a.shield||0) + a.maxHp*0.12); a.shieldTimer = Math.max(a.shieldTimer||0, 5000);
   }
   vfxShock(h.x, h.y, 14, R, "230,190,110", 520, h===player?2:1); vfxShake(6);
-  _setMsg(h, "¡ONDA COLOSAL!");
   if(h===player) playSfx("boom");
 }
 function guardianOath(h, add){
@@ -189,7 +186,6 @@ function guardianOath(h, add){
       vfxShock(a.x, a.y-8, 8, 44, "143,208,255", 360, a===player?2:1);
     }
     vfxShock(h.x, h.y, 12, 260, "143,208,255", 520, h===player?2:1);
-    _setMsg(h, "¡JURAMENTO!", "heal");
     if(h===player) playSfx("shield");
   }
 }
@@ -208,7 +204,6 @@ function setsOnHeal(h, effective){
       vfxBurst(a.x, a.y-20, 6, "heal", 80, 400, 3, 0, -40, 0);
     }
     vfxShock(h.x, h.y, 12, 300, "255,230,140", 560, h===player?2:1);
-    _setMsg(h, "¡AMANECER!", "heal");
     if(h===player) playSfx("heal");
     return;
   }
@@ -222,7 +217,7 @@ function setsOnTelegraphEnd(s){
     if(!h.alive || setN(h, "laberinto") < 4) continue;
     const d = Math.hypot(h.x-s.x, h.y-s.y);
     const r = s.shape===3 ? s.r : (s.shape===0 ? s.r : 0);
-    if(r>0 && d > r + 6 && d < r + 140){ h._momentum = Math.min(10, (h._momentum||0) + 2); if(h===player && h._momentum>=10 && _setReady(h, "momMsg", 5000)) _setMsg(h, "¡IMPULSO MÁXIMO!"); }
+    if(r>0 && d > r + 6 && d < r + 140){ h._momentum = Math.min(10, (h._momentum||0) + 2); }
   }
 }
 function updateSets(h, dt){
@@ -252,7 +247,6 @@ function updateSets(h, dt){
         a.elite = true; a.maxHp = a.hp = (a.maxHp + b.maxHp)*1.3; a.dmg *= 2.4; a.scale = 1.35;
         vfxShock(a.x, a.y, 8, 60, "122,212,138", 420, h===player?2:1);
         vfxBurst(a.x, a.y-20, 12, "heal", 110, 420, 3, 0, -40, 0);
-        _setMsg(h, "¡ESQUELETO ÉLITE!", "heal");
       }
     }
   }
@@ -306,7 +300,7 @@ function drawSetAuras(){
 // Registro de arte de skin por set (js/assets/set-skins-meta.js, generado por
 // tools/art/skins_sets/extract.py): SET_SKINS[setId] = {champ, name, preview, packs:{claveBase: claveSkin}}.
 // La skin REMAPEA el atlas del guardián (CHAMP_PACK) solo mientras el set está COMPLETO: cada estado
-// (caminar, atacar, habilidades, forma titán de Eren...) sigue su propia lógica, cambia el dibujo.
+// (caminar, atacar, habilidades, forma de coloso de Ilkan...) sigue su propia lógica, cambia el dibujo.
 // Sets sin arte: el set completo se ve con su aura plena (docs/assets_faltantes/skins_sets/).
 // Formato viejo (una sola imagen, {src}) se sigue aceptando por si llega una pose suelta.
 const SET_SKINS = {};
@@ -371,7 +365,7 @@ function activeSetSkinId(h){
   if(id && setN(h, id) >= setFullCount(id)){ const d = SET_SKINS[id]; if(d && (!d.champ || d.champ === h.classKey)) return id; }
   return typeof cromaEquippedId === "function" ? cromaEquippedId(h.classKey) : null;
 }
-// Clave de atlas a usar para `key` (p.ej. "eren", "eren_titan"): la de la skin si está activa y cargada.
+// Clave de atlas a usar para `key` (p.ej. "ilkan", "ilkan_colossus"): la de la skin si está activa y cargada.
 function setSkinPackKey(h, key){
   const d = activeSetSkin(h); if(!d || !d.packs) return key;
   const k = d.packs[key], P = k && CHAMP_PACK[k];

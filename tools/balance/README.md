@@ -25,3 +25,6 @@ Tablas que se tocan: `js/data/loot.js` (botín), `js/systems/performance.js` (ca
   para medir un árbol viejo extraído de otro commit): qué cae por arena y por fuente, nivel de objeto, primeras
   mejoras de un perfil nuevo (con y sin el set regalado), set regalado vs. botín de 3 arenas, oro de la primera
   partida y de crucero por fuente, y partidas para comprar cada cosa de la tienda. Números: `docs/alfa/q4_economia.md`.
+- `node clear-potential.js [salida.json]` — potencial de limpieza de horda por campeón y por rol (bajas personales, daño y daño de área, mediana de varias semillas
+  con el piloto automático); marca extremos fuera de ±35 % de la mediana de su rol. `SHARD=i/n` para paralelizar, `MERGE=a.json,b.json` para unir. Ver `BALANCE_CAMPEONES.md`.
+- `node coherencia_loot.js` / `node coherencia_show.js loot.json` / `node coherencia_model.js` — coherencia de drops, progresión y dificultad (`docs/economy/COHERENCIA.md`): equipo real que dropea cada arena y dificultad, carrera de un jugador típico y nivel partida a partida. `campaign_runs.js` acepta `TIER=pesadilla|infierno` (con `LVL=...`); `real-loot.js` es el botín de una victoria real (piso + cofre).

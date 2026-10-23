@@ -8,6 +8,11 @@
    entienden a la primera. Se toca en cualquier lado (o el botón) para empezar.
    En cooperativo online no se muestra (bloquearía a los demás): ahí el Hechicero habla en
    el panel del tutorial, como siempre.
+   UN SOLO NARRADOR A LA VEZ (js/systems/codex-narrative.js): el Libro de la Horda es la voz escrita de este mismo Hechicero.
+   Orden de la entrada a una arena: página de carga del Libro (≈3 s, si toca) → ficha. Si la página se leyó, la ficha NO repite
+   la frase de apertura (`say`): queda solo lo que el Libro no dice (qué te mata, qué te ayuda, objetivo y la voz de tu guardián).
+   Si el Libro está abierto, la ficha espera a que cierre. Prólogo, misión y cartel del Acto I no se repiten a quien ya LEYÓ la
+   introducción del Libro (que cuenta lo mismo en su página 4-7); la misión tampoco a quien terminó la práctica.
    Ojo de la historia: acá parece un ángel. En la Arena Infernal se revela (inf-hechicero.js).
    ============================================================ */
 const ARENA_BRIEF = {
@@ -65,9 +70,50 @@ const ARENA_BRIEF = {
 // Aviso (solo texto, sin sistema que adjudique): "completar el juego" = vencer al Rey de la Horda en la Arena Infernal, la misma condición
 // que abre a Aurelia (js/systems/ascension-unlocks.js). Mismo texto que la tarjeta de Campaña (#campaign-first-notice en index.html).
 const FIRST_FINISH_NOTICE = "El primer jugador en completar el juego puede pedir un campeón con diseño propio.";
-const RUN_INTRO = { open:false, raf:0, t0:0, onGo:null, prologue:false, pages:[], arena:null };
+const RUN_INTRO = { open:false, raf:0, t0:0, onGo:null, prologue:false, pages:[], arena:null, bookTold:false, mission:false };
+// ¿El Libro ya contó el prólogo y el Acto I? (leyó la introducción completa): la ficha no los vuelve a pasar.
+function runIntroBookToldIntro(){ return typeof codexBookIntroRead==="function" && codexBookIntroRead(); }
+function runIntroNeedsPrologue(arena){
+  if(typeof save==="undefined" || save.storyPrologueSeen || typeof ARENA_ORDER==="undefined" || arena!==ARENA_ORDER[0] || typeof CAMPAIGN_PROLOGUE!=="string") return false;
+  // hizo o saltó el entrenamiento: el prólogo no frena la entrada a la arena; queda entero en el Libro (Códice › El Libro)
+  if(typeof tutorialDone==="function" && tutorialDone()){ if(typeof storyDeferPrologue==="function") storyDeferPrologue(); else { save.storyPrologueSeen = true; try{ if(typeof persist==="function") persist(); }catch(e){} } return false; }
+  if(runIntroBookToldIntro()){ save.storyPrologueSeen = true; try{ if(typeof persist==="function") persist(); }catch(e){} return false; }
+  return true;
+}
+function runIntroNeedsAct(arena){
+  const act = typeof storyActOf==="function" ? storyActOf(arena) : null;
+  if(!(act && act.arenas[0]===arena && typeof save!=="undefined" && !(save.storyActsSeen && save.storyActsSeen[act.n]))) return null;
+  // Acto I: igual que el prólogo, con el entrenamiento hecho o saltado no frena la entrada (la ficha ya rotula "ACTO I · …")
+  if(act.n==="I" && ((typeof tutorialDone==="function" && tutorialDone()) || runIntroBookToldIntro())){ save.storyActsSeen = save.storyActsSeen || {}; save.storyActsSeen[act.n] = 1; try{ if(typeof persist==="function") persist(); }catch(e){} return null; }
+  return act;
+}
 
-function runIntroShow(arena, onGo){
+// ¿Esta entrada va a mostrar pantallas de historia (prólogo, misión, cartel de acto)? No marca nada como visto, salvo lo que el
+// Libro ya contó (intro leída: prólogo y Acto I quedan como vistos, ver runIntroNeedsPrologue / runIntroNeedsAct).
+function runIntroHasStoryPages(arena){
+  if(typeof save==="undefined") return false;
+  if(runIntroNeedsPrologue(arena)) return true;
+  if(typeof goalNeedsMission==="function" && goalNeedsMission()) return true;
+  return !!runIntroNeedsAct(arena);
+}
+let _riBookGate = false; // true mientras la página corta del Libro está en pantalla (la continuación vuelve a entrar acá)
+let _riBookTold = null;  // arena cuya página de carga se leyó justo antes de esta ficha (la ficha no repite su frase de apertura)
+let _riNoBook = false;   // primera partida en solitario (JUGAR directo): la ficha es la ÚNICA pantalla, sin la página de carga del Libro
+function runIntroShow(arena, onGo, opts){
+  if(opts && opts.first) _riNoBook = true;
+  // un solo narrador a la vez: si el Libro está abierto (por ejemplo, abierto a mano desde otra pantalla), la ficha espera
+  if(typeof narrationBookOpen==="function" && narrationBookOpen() && !_riBookGate){ narrationWhenFree(()=>runIntroShow(arena, onGo)); return; }
+  // EL LIBRO DE LA HORDA: carga corta (una página que se da vuelta, ≈3 s, se saltea con un toque). Solo en solitario (esta
+  // pantalla no se usa en salas), nunca encima de las pantallas de historia y como mucho 3 veces por arena (codex-narrative.js).
+  if(!_riBookGate && !_riNoBook && ARENA_BRIEF[arena] && typeof codexBookShort==="function" && !runIntroHasStoryPages(arena)){
+    _riBookGate = true;
+    let took = false;
+    // si la página estuvo a la vista (≥1,5 s: se leyó entera o casi), la ficha no repite la frase de apertura
+    try{ took = codexBookShort(arena, (reason, ms)=>{ _riBookTold = (reason==="auto" || reason==="end" || (reason==="skip" && ms >= 1500)) ? arena : null; runIntroShow(arena, onGo); }); }catch(err){ console.error("Libro: carga corta", err); took = false; }
+    if(took) return;
+  }
+  _riBookGate = false; _riNoBook = false;
+  RUN_INTRO.bookTold = (_riBookTold === arena); _riBookTold = null;
   const el = document.getElementById("run-intro"); const B = ARENA_BRIEF[arena];
   if(!el || !B){
     // sin ficha: igual se espera a que termine de bajar el arte de las arenas (preload.js)
@@ -79,13 +125,13 @@ function runIntroShow(arena, onGo){
   // pantalla en pleno combate): el PRÓLOGO la primera vez en la primera arena, y el cartel de cada ACTO
   // la primera vez que entrás a la arena que lo abre (STORY_ACTS, js/data/story-text.js).
   const pages = [];
-  if(typeof save!=="undefined" && !save.storyPrologueSeen && typeof ARENA_ORDER!=="undefined" && arena===ARENA_ORDER[0] && typeof CAMPAIGN_PROLOGUE==="string"){
+  if(runIntroNeedsPrologue(arena)){
     save.storyPrologueSeen = true;
     pages.push(...(typeof CAMPAIGN_PROLOGUE_PAGES!=="undefined" ? CAMPAIGN_PROLOGUE_PAGES : [{who:"PRÓLOGO", title:"LA NOCHE EN QUE VOLVIÓ LA HORDA", text:CAMPAIGN_PROLOGUE}]));
   }
   if(typeof goalMissionPages==="function") pages.unshift(...goalMissionPages()); // misión: SOBREVIVIR, antes de la historia
-  const act = typeof storyActOf==="function" ? storyActOf(arena) : null;
-  if(act && act.arenas[0]===arena && typeof save!=="undefined" && !(save.storyActsSeen && save.storyActsSeen[act.n])){
+  const act = runIntroNeedsAct(arena);
+  if(act){
     save.storyActsSeen = save.storyActsSeen || {}; save.storyActsSeen[act.n] = 1;
     pages.push({who:"ACTO " + act.n, title:act.name, text:act.intro});
   }
@@ -118,21 +164,26 @@ function runIntroFill(el, arena, B){
   let skip = el.querySelector(".ri-skip");
   if(!skip){
     skip = document.createElement("button"); skip.type = "button"; skip.className = "btn secondary small ri-skip"; skip.textContent = "Saltar ▸▸";
-    skip.setAttribute("aria-label", "Saltar la historia");
     skip.addEventListener("click", ev=>{
-      ev.stopPropagation(); if(!RUN_INTRO.open || !RUN_INTRO.prologue) return;
-      RUN_INTRO.pages = []; RUN_INTRO.prologue = false; RUN_INTRO.t0 = performance.now();
-      runIntroFill(el, RUN_INTRO.arena, ARENA_BRIEF[RUN_INTRO.arena]);
+      ev.stopPropagation(); if(!RUN_INTRO.open) return;
+      if(RUN_INTRO.prologue){
+        RUN_INTRO.pages = []; RUN_INTRO.prologue = false; RUN_INTRO.t0 = performance.now();
+        runIntroFill(el, RUN_INTRO.arena, ARENA_BRIEF[RUN_INTRO.arena]);
+      } else runIntroGo(true); // en la ficha de la arena, "Saltar" empieza la partida (sin la demora anti-toque apurado)
     });
     el.appendChild(skip);
   }
-  skip.classList.toggle("hidden", !pro);
+  // visible en TODAS las páginas desde el primer toque (antes solo en las de historia y recién cuando terminaba el fundido de entrada)
+  skip.setAttribute("aria-label", pro ? "Saltar la historia" : "Saltar y empezar la partida");
+  skip.classList.remove("hidden");
   const who = el.querySelector(".ri-who"), hero = runIntroHeroEl(el), actEl = el.querySelector(".ri-act");
+  // carteles en mayúsculas CON tilde: la fuente pixel no trae ÁÉÍÓÚ (pixel-font-fix.js las pasaba a "MISION", "PROLOGO")
+  for(const q of [who, actEl, el.querySelector(".ri-arena")]) if(q) q.classList.add("keep-accents");
   if(pro){
     const P = RUN_INTRO.pages[0];
     if(who) who.textContent = P.who;
     el.querySelector(".ri-arena").textContent = P.title;
-    el.querySelector(".ri-say").textContent = P.text;
+    const sayP = el.querySelector(".ri-say"); sayP.textContent = P.text; sayP.style.display = "";
     hero.textContent = ""; hero.style.display = "none"; if(actEl) actEl.textContent = "";
     return;
   }
@@ -145,10 +196,16 @@ function runIntroFill(el, arena, B){
   if(HV && HV.pick && cls){ hero.innerHTML = ""; const b = document.createElement("b"); b.textContent = cls.name; b.style.color = cls.color || ""; hero.appendChild(b); hero.appendChild(document.createTextNode(" «" + HV.pick + "»")); hero.style.display = ""; }
   else { hero.textContent = ""; hero.style.display = "none"; }
   el.querySelector(".ri-arena").textContent = (M.icon ? M.icon + " " : "") + (typeof campaignNumberLabel==="function" && campaignNumberLabel(arena) ? campaignNumberLabel(arena) + " — " : "") + (M.label || arena).toUpperCase();
-  el.querySelector(".ri-say").textContent = "«" + B.say + "»";
+  // la frase de apertura es del Hechicero; si el Libro la acaba de decir en su página de carga, acá no se repite
+  const sayEl = el.querySelector(".ri-say");
+  if(RUN_INTRO.bookTold){ sayEl.textContent = ""; sayEl.style.display = "none"; }
+  else { sayEl.textContent = "«" + B.say + "»"; sayEl.style.display = ""; }
   el.querySelector(".ri-kill").textContent = B.kill;
   el.querySelector(".ri-help").textContent = B.help;
-  el.querySelector(".ri-goal").textContent = (/^Sobreviv/.test(B.goal) ? "" : "SOBREVIVÍ: aguantá 10 niveles con vida. ") + B.goal;
+  // "SOBREVIVÍ…" se explica una sola vez: en el entrenamiento (o, si lo saltó, en esta ficha: queda marcado al empezar la partida)
+  const teach = !(typeof goalMissionTaught==="function" && goalMissionTaught());
+  RUN_INTRO.mission = teach;
+  el.querySelector(".ri-goal").textContent = (teach && !/^Sobreviv/.test(B.goal) ? "SOBREVIVÍ: aguantá 10 niveles con vida. " : "") + B.goal;
   const first = el.querySelector(".ri-first");
   if(first){ first.hidden = arena !== "infernal"; first.textContent = arena === "infernal" ? "🏆 " + FIRST_FINISH_NOTICE : ""; }
   const cr = el.querySelector(".ri-crystals");
@@ -165,9 +222,9 @@ function runIntroHeroEl(el){
   }
   return h;
 }
-function runIntroGo(){
+function runIntroGo(force){
   if(!RUN_INTRO.open) return;
-  if(performance.now() - RUN_INTRO.t0 < 450) return; // un toque apurado del botón "Comenzar" no la saltea
+  if(force!==true && performance.now() - RUN_INTRO.t0 < 450) return; // un toque apurado del botón "Comenzar" no la saltea
   if(RUN_INTRO.prologue){ // pantalla de historia → la siguiente, y al final la ficha de la arena
     RUN_INTRO.pages.shift(); RUN_INTRO.prologue = RUN_INTRO.pages.length > 0; RUN_INTRO.t0 = performance.now();
     runIntroFill(document.getElementById("run-intro"), RUN_INTRO.arena, ARENA_BRIEF[RUN_INTRO.arena]);
@@ -175,6 +232,8 @@ function runIntroGo(){
   }
   if(typeof assetsAllReady==="function" && !assetsAllReady()) return; // "Preparando la arena…"
   RUN_INTRO.open = false; cancelAnimationFrame(RUN_INTRO.raf);
+  if(RUN_INTRO.mission && typeof save!=="undefined" && save){ save.tut = save.tut || {}; save.tut.goalMission = 1; try{ if(typeof persist==="function") persist(); }catch(e){} } // la misión ya se dijo: HUD y Hechicero no la repiten
+  RUN_INTRO.mission = false;
   document.getElementById("run-intro").classList.add("hidden");
   const fn = RUN_INTRO.onGo; RUN_INTRO.onGo = null; if(fn) fn();
 }

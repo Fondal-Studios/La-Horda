@@ -164,7 +164,7 @@ Método: cada habilidad lanzada sola contra 7 enemigos quietos, captura a los ~2
 | Libertador | Buena | Bayoneta | Granaderos (siempre igual) | — |
 | Segador | Media | Tajo | Último Aliento (siempre igual) | — |
 | Profeta | Media | Danza del Augurio | Visión del Inmortal | — |
-| Eren | Media | Equipo de Maniobras | ¡Avancen! | — |
+| Ilkan | Media | Lanza-Pendón | Grito de Caravana | — |
 | Musashi | Media | Paso Fantasma | Último Duelo (sin marca no pasa nada) | — |
 | Axiom | Media | Error 404 | Force Quit (tiñe la pantalla igual en todos los niveles) | — |
 | Cazadora | **Baja** | Lluvia de la Cazadora (crece bien) | Flecha Perforante, Trampa | Ver P10 |

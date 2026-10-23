@@ -11,12 +11,16 @@ function lanesFollowObj(h){
   return c[h.lane + ":" + h.classKey] || (c[h.lane + ":" + h.classKey] = {isRally:true, alive:true, hp:1, maxHp:1, radius:20, x:0, y:0, stunTimer:0, slowTimer:0});
 }
 // Posición del carril `l` a la que debe ir un bot del equipo T: detrás del frente de su horda y fuera del alcance de las torres rivales.
-function lanesLanePost(h, l){
+function lanesLanePost(h, l, group){
   const T = h.team, L = LN, dir = T === 0 ? 1 : -1, foe = 1 - T, P = LANES_PATHS[l];
   let lead = null, ls = T === 0 ? -1 : 1e9;
   for(const e of enemies){ if(!e.alive || e.lanesProxy || e.team !== T || e.ln !== l) continue; const s = laneProject(l, e.x, e.y).s; if(T === 0 ? s > ls : s < ls){ ls = s; lead = e; } }
   const front = lanesFrontIn(foe, l);
   const ownFront = lanesFrontIn(T, l);
+  if(!lead && group && front){   // empuje en grupo (lanes-bot-ai.js): sin horda propia, igual avanza hasta el borde de la torre rival
+    const fs = laneProject(l, front.x, front.y).s;
+    return lanePoint(l, fs - dir * (front.kind === "tower" ? 150 : 90));
+  }
   if(!lead){   // sin horda propia en el carril: defiende su torre más avanzada
     const t = ownFront && ownFront.kind === "tower" ? ownFront : null;
     const base = t ? laneProject(l, t.x, t.y).s : (T === 0 ? 400 : P.len - 400);
@@ -26,7 +30,7 @@ function lanesLanePost(h, l){
   if(front && front.kind === "tower"){
     const fs = front._s != null ? front._s : (front._s = laneProject(l, front.x, front.y).s);
     let near = 0; for(const e of enemies) if(e.alive && !e.lanesProxy && e.team === T && Math.hypot(e.x - front.x, e.y - front.y) < 480) near++;
-    const safe = (near >= 3 ? 150 : LANES.TOWER_RANGE + 40);
+    const safe = (near >= 3 || group ? 150 : LANES.TOWER_RANGE + 40);
     const limit = fs - dir * safe;     // hasta dónde puede avanzar sin entrar al alcance de la torre
     target = T === 0 ? Math.min(target, limit) : Math.max(target, limit);
   }
@@ -43,13 +47,17 @@ function lanesLeaderFor(h){
   if(L.mode === "coliseo") return colLeaderFor(h);
   const o = lanesFollowObj(h), T = h.team, c = laneCrystalPos(T);
   let p = laneRally(T);
+  if(typeof botVictoryOn==="function" && botVictoryOn(h)){   // cerebro orientado a victoria (lanes-bot-ai.js): retirada, defensa, objetivo y empuje en grupo
+    const ai = lanesDecide(h);
+    if(ai.goal){ o.x = ai.goal.x; o.y = ai.goal.y; return o; }
+  }
   const low = h.hp < h.maxHp * 0.35;
   const homeDist = Math.hypot(h.x - c.x, h.y - c.y);
   // con mucho oro y sin enemigos cerca, vuelve a comprar objetos (como haría una persona)
   if(!low && !h._recall && homeDist > 700 && (h.gold || 0) >= 700 && L.t - (h._shopTrip || 0) > 45000 && !heroes.some(o=>o.alive && o.team !== T && Math.hypot(o.x - h.x, o.y - h.y) < 750)){
     h._shopTrip = L.t; lanesRecallStart(h);
   }
-  const epic = low ? null : lanesEpicCall(h);
+  const epic = (low || botVictoryOn(h)) ? null : lanesEpicCall(h);   // (con el cerebro nuevo el épico lo decide lanesPlan)
   if(epic){ p = epic; }
   else if(low){ if(homeDist > 400 && !h._recall && (!h._lastRecallTry || L.t - h._lastRecallTry > 4000)){ h._lastRecallTry = L.t; lanesRecallStart(h); } }   // herido: vuelve a la base
   else if(h.ln === -1){
@@ -78,6 +86,7 @@ function lanesEpicCall(h){
 // Gancho botTarget: héroe rival débil > súbdito/criatura cercana > estructura (solo si la horda propia la acompaña)
 function lanesBotTarget(h, range){
   if(LN.mode === "coliseo") return colBotTarget(h, range);
+  if(botVictoryOn(h)) return lanesBotTargetVictory(h, range);
   let best = null, bs = -1e9;
   for(const e of enemies){
     if(!e.alive || e.team === h.team) continue;

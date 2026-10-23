@@ -9,28 +9,51 @@
 // usage: GAME_URL=http://127.0.0.1:8841/index.html node tools/balance/campaign_runs.js [arenas=todas] [clase=guerrero] > runs.jsonl
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright');
 const path = require('path'); const sleep = ms => new Promise(r => setTimeout(r, ms));
+globalThis.__retried = {};
 (async () => {
   const URL = process.env.GAME_URL || 'http://127.0.0.1:8841/index.html';
   const cls = process.argv[3] || 'guerrero';
-  const browser = await chromium.launch({ args: ['--no-sandbox'] });
+  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH, args: ['--no-sandbox'] });
   let arenas = process.argv[2] && process.argv[2] !== 'todas' ? process.argv[2].split(',') : null;
+  const navigationAttempts = new Map();
+  try {
   for (let ai = 0; ; ai++) {
     const page = await (await browser.newContext({ viewport: { width: 844, height: 390 } })).newPage();
     const errors = []; page.on('pageerror', e => errors.push(e.message));
     await page.addInitScript(() => { window.__campaignMode = true; });
-    await page.goto(URL, { waitUntil: 'load' });
+    page.setDefaultTimeout(240000); // con el host cargado la página (~1.800 archivos) tarda más de los 30 s por defecto
+    try {
+      await page.goto(URL, { waitUntil: 'load', timeout: 240000 });
+      navigationAttempts.delete(ai);
+    } catch (err) {
+      const attempt = (navigationAttempts.get(ai) || 0) + 1;
+      navigationAttempts.set(ai, attempt);
+      await page.context().close().catch(() => {});
+      if (attempt >= 3) throw new Error('Campaign navigation failed after 3 attempts for ' + (arenas ? arenas[ai] : ai), { cause: err });
+      console.error('goto: ' + String(err.message || err).slice(0, 120) + ' (attempt ' + attempt + '/3; retrying)');
+      ai--; await sleep(3000); continue;
+    }
     for (let i = 0; i < 300; i++) { const ok = await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return b && !b.disabled; }); if (ok) break; await sleep(100); }
     if (!arenas) arenas = await page.evaluate(() => CAMPAIGN_ORDER.slice());
     if (ai >= arenas.length) { await page.context().close(); break; }
     const arena = arenas[ai];
     await page.addScriptTag({ path: path.join(__dirname, 'autopilot.js') });
-    let r; try { r = await page.evaluate(([a, cls, lvlTable]) => {
+    let r; try { r = await page.evaluate(([a, cls, lvlTable, tier]) => {
       loop = function () {};
+      // TIER=pesadilla|infierno: abre esa dificultad (y las arenas anteriores a `a` en ella) y la elige, como tools/playtest/campaign.js
+      if (tier && tier !== 'normal') {
+        save.arenasCleared = save.arenasCleared || {}; for (const k of ARENA_ORDER) save.arenasCleared[k] = true;
+        diffSetSelected('normal');
+        const ti = DIFF_TIER_ORDER.indexOf(tier);
+        for (let i = 1; i < ti; i++) for (const k of ARENA_ORDER) save.diffCleared[DIFF_TIER_ORDER[i]][k] = true;
+        for (const k of ARENA_ORDER) { if (k === a) break; save.diffCleared[tier][k] = true; }
+        diffSetSelected(tier);
+      }
       // nivel de ENTRADA de cada arena (LVL=ciudad:1,fortaleza:8,... para cambiarlo); por defecto, la curva buscada
       const LV = Object.assign({ ciudad: 1, fortaleza: 7, bosque: 11, micelial: 15, hielo: 19, acuatica: 23, laberinto: 27, abismo: 30, minas: 33, infernal: 36 }, lvlTable || {});
       const lvl = LV[a] || DIFF.arenaLevel[a] || 1;
       for (const k in save.champions) { const c = save.champions[k]; c.level = lvl; c.xp = 0; c.unlocked = true; const al = Math.min(10, Math.floor(lvl / 4)); c.skillMastery.forEach(m => m.alloc = al); c.ultMastery.alloc = al; }
-      save.stash = []; save.gold = 0; save.defeatCount = 99;
+      save.stash = []; save.gold = 0; save.defeatCount = 99; save.defeatLegacy = 99;
       const kills = {}; let named = 0, killXp = 0, inRun = true;
       const ok = window.killEnemy;
       killEnemy = function (e) { const k = e.eliteName ? 'named' : e.rank; kills[k] = (kills[k] || 0) + 1; return ok.apply(this, arguments); };
@@ -50,12 +73,13 @@ const path = require('path'); const sleep = ms => new Promise(r => setTimeout(r,
       const vd = typeof victoryData !== 'undefined' && victoryData ? victoryData : null;
       if (vd) killXp -= vd.victoryXpBonus; // la de victoria se cuenta aparte
       const goldFight = save.gold;
-      return { arena: a, lvl, state, runLevel, kills, named, killXp, score: vd ? vd.score : null, victoryXp: vd ? vd.victoryXpBonus : null,
-        levelAfter: save.champions[cls].level, goldFight, drops, chest: vd ? vd.rewards.map(it => itemTier(it)) : [], minutes: Math.round(runElapsedMs / 600) / 100 };
-    }, [arena, cls, process.env.LVL ? Object.fromEntries(process.env.LVL.split(',').map(p => p.split(':')).map(([k, v]) => [k, +v])) : null]); } catch (err) { r = { arena, error: String(err.message || err).slice(0, 200) }; }
+      return { arena: a, tier: (typeof diffCurrent === 'function' ? diffCurrent() : 'normal'), lvl, state, runLevel, kills, named, killXp, score: vd ? vd.score : null, victoryXp: vd ? vd.victoryXpBonus : null,
+        levelAfter: save.champions[cls].level, goldFight, drops, chest: vd ? vd.rewards.map(it => itemTier(it)) : [], gearLv: vd ? vd.rewards.map(it => [itemTier(it), itemIlvl(it), itemLevel(it)]) : [], minutes: Math.round(runElapsedMs / 600) / 100 };
+    }, [arena, cls, process.env.LVL ? Object.fromEntries(process.env.LVL.split(',').map(p => p.split(':')).map(([k, v]) => [k, +v])) : null, process.env.TIER || 'normal']); } catch (err) { r = { arena, error: String(err.message || err).slice(0, 200) }; }
+    if (r.error && !globalThis.__retried[ai]) { globalThis.__retried[ai] = 1; console.error('error ' + arena + ': ' + r.error.slice(0, 100) + ' (se reintenta una vez)'); await page.context().close().catch(() => {}); ai--; continue; }
     if (errors.length) r.errors = errors.slice(0, 3);
     console.log(JSON.stringify(r));
     await page.context().close().catch(() => {});
   }
-  await browser.close();
+  } finally { await browser.close(); }
 })();

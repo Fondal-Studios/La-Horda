@@ -12,6 +12,9 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
 (async () => {
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
   const page = await (await browser.newContext({ viewport: { width: 900, height: 506 } })).newPage();
+  // Story gameplay is local; public room discovery is covered by its own suites.
+  await page.route('**/api/rooms?*', route => route.fulfill({status:200, contentType:'application/json',
+    headers:{'access-control-allow-origin':'*'}, body:JSON.stringify({rooms:[]})}));
   const errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
   page.on('console', m => { if (m.type() === 'error' && !/ERR_CERT|fonts\.g|net::|404/.test(m.text())) errors.push('console: ' + m.text().slice(0, 300)); });
@@ -55,7 +58,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('DATOS.cada_jefe_de_campaña_tiene_voz', d.badBoss.length === 0 && d.bossesNoVoice.length === 0 && !d.hordeSpeaks, d);
 
   // ---------------- PRÓLOGO + ACTO I + FICHA ----------------
-  const pro = await E(() => { save.storyPrologueSeen = false; save.storyActsSeen = {}; selectedClass = 'tanque'; state = 'menu';
+  const pro = await E(() => { save.storyPrologueSeen = false; save.storyActsSeen = {}; save.tut = save.tut || {}; save.tut.goalMission = 1; /* la misión (goal-guide.js) va antes y tiene su propia prueba; acá se mide prólogo + Acto I */ selectedClass = 'tanque'; state = 'menu';
     const el = document.getElementById('run-intro'), seen = []; let went = 0;
     runIntroShow('ciudad', () => { went++; });
     for (let i = 0; i < 6 && RUN_INTRO.open; i++){
@@ -78,7 +81,18 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   const v1 = await E(() => { __start('hielo', 10); runLevel = LEVEL_COUNT; levelTimer = levelDuration + 1; __step(64); __quiet();
     const t = boss && boss.type; __step(64); const intro = __tut(); return { t, intro }; });
   check('VOZ.presentacion_del_jefe_con_su_nombre_y_retrato', v1.t === 'mago_hielo_cristal' && v1.intro.who === 'EL MAGO GÉLIDO' && /espero a otro/.test(v1.intro.text) && v1.intro.face === 'guardian', v1);
-  const v2 = await E(() => { __read(); __quiet(); boss.hp = boss.maxHp*0.55; __step(80); __quiet(); __step(64); return __tut(); });
+  await E(() => { __read(); __quiet(); boss.hp = boss.maxHp*0.55; });
+  // The boss director legitimately waits while stunned by an ally. Observe the
+  // actual phase transition instead of assuming 144 simulated ms are sufficient.
+  // Keep the voice gate closed until we inspect the emitted line; do not inject it.
+  await page.waitForFunction(() => {
+    __quiet(); STORY.gateOk = false; STORY.gateT = performance.now() + 200;
+    __step(16); return boss && boss.bd && boss.bd.phase > 0;
+  }, null, {timeout:3000, polling:50});
+  const pendingPhase = await E(() => ({queued:STORY.q.map(x=>x.text), shown:__tut().text}));
+  check('VOZ.fase_emitida', pendingPhase.queued.some(t=>/todavía me obedece/.test(t)) || /todavía me obedece/.test(pendingPhase.shown), pendingPhase);
+  await page.waitForFunction(() => { __quiet(); __step(16); return /todavía me obedece/.test(__tut().text); }, null, {timeout:3000, polling:50});
+  const v2 = await E(() => __tut());
   check('VOZ.frase_al_cambiar_de_fase', /todavía me obedece/.test(v2.text), v2);
   const v3 = await E(() => { __read(); __quiet(); __kill(boss); __step(48); __quiet(); __step(48); return { tut: __tut(), t: boss && boss.type }; });
   check('VOZ.muerte_que_es_transformacion', v3.t === 'angel_caido_hielo' && /por qué no volviste/.test(v3.tut.text), v3);

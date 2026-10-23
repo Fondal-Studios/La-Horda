@@ -1,20 +1,22 @@
 'use strict';
+const {fetchReadyOk}=require('../lib/http-ready');
+
 /* Guerra de Cristales (motor real): humo de los 38 campeones. Cada uno juega 45 s de partida real con todas sus habilidades,
  * definitiva y ataque básico forzados en cada recarga, en el centro del mapa entre las dos hordas y frente a un rival (PvP).
  * Verifica: sin excepciones, sin valores NaN, sin fuego amigo de la horda propia, nadie sale del mapa y el campeón realmente peleó (bajas > 0).
  * Uso: node tools/lanes/kits.js [segundos=45] [campeón...]  (sin campeones = todos los de CLASSES con perfil de bot) */
 const {chromium}=require('playwright');const {spawn}=require('node:child_process');const path=require('node:path');
-const SECS=Number(process.argv[2])||45,ONLY=process.argv.slice(3),PORT=8897;
+const SECS=Number(process.argv[2])||45,ONLY=process.argv.slice(3),PORT=+process.env.LH_PORT||8897;
 const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__dirname,'../..'),stdio:'ignore'});
 (async()=>{
- for(let i=0;i<60;i++){try{if((await fetch(`http://127.0.0.1:${PORT}/index.html`)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+ for(let i=0;i<60;i++){try{if((await fetchReadyOk(`http://127.0.0.1:${PORT}/index.html`)))break;}catch{}await new Promise(r=>setTimeout(r,100));}
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});const context=await b.newContext();
- const page0=await context.newPage();await page0.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`);await page0.waitForFunction(()=>typeof lanesStart==='function');
+ const page0=await context.newPage();await page0.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});await page0.waitForFunction(()=>typeof lanesStart==='function');
  const roster=await page0.evaluate(()=>Object.keys(CLASSES).filter(k=>championBotEligible(k)));await page0.close();
  const list=ONLY.length?ONLY:roster;let bad=0;const rows=[];
  for(const champ of list){
   const p=await context.newPage({viewport:{width:844,height:390}}),errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push('console:'+m.text().slice(0,160));});
-  await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`);await p.waitForFunction(()=>typeof lanesStart==='function',null,{timeout:60000});
+  await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});await p.waitForFunction(()=>typeof lanesStart==='function',null,{timeout:60000});
   const r=await p.evaluate(({champ,secs})=>{
    setState('mainmenu');lanesStart({champ,seed:11});
    const rep={champ,actualChampion:player.classKey,frames:0,nan:0,cross:0,dead:0,friendly:0,pvp:0};const dt=1000/60;let ang=0;

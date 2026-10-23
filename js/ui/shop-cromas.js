@@ -20,7 +20,7 @@ function shopCromaProducts(){
 function _cromaEsc(s){ return String(s==null ? "" : s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 function shopCromaCardHTML(p){
   let action;
-  if(!p.owned) action = `<button class="shop-btn" data-croma-buy="${p.id}" ${save.gold < p.price ? "disabled" : ""}>Comprar · 🪙 ${fmtGold(p.price)}</button>${(typeof premiumSkinButton === "function" ? premiumSkinButton(p.id) : "")}${typeof _shopVoucherBtn==="function" ? _shopVoucherBtn(p.id) : ""}`;
+  if(!p.owned) action = `${(typeof premiumSkinButton === "function" ? premiumSkinButton(p.id) : "")}${typeof _shopVoucherBtn==="function" ? _shopVoucherBtn(p.id) : ""}`;
   else if(!p.champOwned) action = `<div class="shop-item-sub">Comprada: conseguí a <b>${_cromaEsc(p.champName)}</b> en la pestaña Guardianes para usarla.</div>`;
   else if(p.equipped) action = `<button class="shop-btn sec" data-croma-off="${p.id}">Quitar</button>`;
   else action = `<button class="shop-btn" data-croma-on="${p.id}">EQUIPAR</button>`;
@@ -38,7 +38,7 @@ function shopCromaCardHTML(p){
 }
 function shopCromaSectionHTML(){
   const list = shopCromaProducts(); if(!list.length) return "";
-  return `<div class="lobby-note" style="margin-top:10px">🎨 APARIENCIAS · trajes y equipamiento con diseño propio. Se compran sueltas con oro y se equipan por guardián.</div>
+  return `<div class="lobby-note" style="margin-top:10px">🎨 APARIENCIAS · trajes y equipamiento con diseño propio. Se compran sueltas con Brasas ✦ y se equipan por guardián.</div>
     <div class="shop-skin-list shop-croma-list">${list.map(shopCromaCardHTML).join("")}</div>`;
 }
 // Monta el bloque al final del panel de Skins y conecta sus botones.
@@ -47,19 +47,6 @@ function shopCromaMount(panel){
   const html = shopCromaSectionHTML(); if(!html) return;
   const box = document.createElement("div"); box.className = "shop-croma-box"; box.innerHTML = html;
   panel.appendChild(box);
-  box.querySelectorAll("[data-croma-buy]").forEach(b=> b.addEventListener("click", ()=>{
-    const id = b.getAttribute("data-croma-buy"), d = CROMA_SKINS[id];
-    const quotedPrice=cromaPrice(id);
-    gameConfirm(`¿Comprar la ${cosmeticAppearanceLabel(id).toLowerCase()} ${d.name} por ${fmtGold(quotedPrice)} de oro?`, {okText:"Comprar"}).then(ok=>{
-      if(!ok) return;
-      const r = cromaBuy(id, quotedPrice); if(!r.ok){ gameAlert(r.reason); return; }
-      const ch = save.champions[d.champ];
-      if(ch && ch.unlocked) cromaEquip(d.champ, id); // recién comprada: se pone en su guardián
-      if(typeof playSfx==="function") playSfx("levelup");
-      if(typeof showNetToast==="function") showNetToast(`🎨 ${cosmeticAppearanceLabel(id).toUpperCase()} ${d.name}${ch && ch.unlocked ? " · equipada" : " · comprada"} (−${fmtGold(quotedPrice)} de oro)`);
-      _cromaRefresh();
-    });
-  }));
   box.querySelectorAll("[data-croma-on]").forEach(b=> b.addEventListener("click", ()=>{
     const id = b.getAttribute("data-croma-on"), d = CROMA_SKINS[id];
     if(!cromaEquip(d.champ, id)){ gameAlert("No se pudo equipar esa croma."); return; }

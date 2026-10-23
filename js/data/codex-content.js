@@ -94,7 +94,7 @@ const CODEX_CHAMP_LORE = {
   cazadora:{origin:"Los bosques de las Ruinas", history:"Creció entre los menhires de las Ruinas Célticas, antes de que se pudrieran. Conoce cada sendero y cada presa. Volvió a su bosque persiguiendo a la Horda y encontró al Guardián Ancestral convertido en otra cosa: todavía no se lo perdona."},
   nigromante:{origin:"Las criptas bajo la ciudad", history:"Los vivos le tienen miedo; los muertos le obedecen. No pelea solo: levanta a los caídos, cose gólems con lo que queda y, si hace falta, se convierte en un demonio. Dice que la Horda y él hacen lo mismo, pero que él les pide permiso."},
   libertador:{origin:"Del otro lado de la Cordillera", history:"Un comandante legendario que ya cruzó una cordillera entera para liberar a medio continente. Castiga con disparos devastadores y lidera cargas capaces de quebrar ejércitos. Frente a la Horda repite lo que siempre dijo: seamos libres, lo demás no importa nada."},
-  eren:{origin:"Detrás de los muros", history:"Creció encerrado entre muros mientras algo enorme golpeaba del otro lado. Convierte el peligro en furia y la furia en velocidad. Cuando no alcanza, libera algo que no debería llevar adentro: El Portador. No quiere salvar el mundo; quiere que nada vuelva a encerrarlo."}
+  ilkan:{origin:"Las Dunas Quebradas", history:"Nació donde el viento borra los caminos y una caravana solo sobrevive si nunca deja de andar. Convierte el riesgo en tormenta y la tormenta en velocidad. Cuando no alcanza, llama a algo que duerme bajo la arena: el Coloso. Busca el último pozo que no esté maldito, y no piensa cruzar el desierto solo."}
 };
 
 /* Demos de habilidades: qué patrón de efecto usa la preview y qué arte real suma.
@@ -115,12 +115,12 @@ const CODEX_SKILL_FX = {
   cazadora:  [{fx:"proj", set:"aim", color:"190,255,140", extra:{sylvaCastKind:"piercing"}, vfx:"sylvaPiercingCrit"}, {fx:"trap", color:"120,200,80", vfx:"sylvaTrap", vfxH:0.3}, {fx:"rain", color:"200,255,160", vfx:"sylvaRain"}, {fx:"ult", color:"170,255,120", vfx:"sylvaWolf", vfxH:0.3}],
   nigromante:[{fx:"cone", color:"120,255,190"}, {fx:"summon", extra:{nigroCastKind:"golem"}, color:"140,220,170", vfx:"nigroGolemSpawn"}, {fx:"zone", color:"150,255,120", vfx:"nigroPlagueBurst"}, {fx:"ult", set:"ult", color:"90,255,170", vfx:"nigroSoulFireFlare", vfxAt:"self"}],
   libertador:[{fx:"dash", set:"bayo_emb", color:"220,230,255", vfx:"blood_01"}, {fx:"summon", set:"command", color:"170,200,255", vfx:["spectral_01","spectral_03"], vfxAt:"self"}, {fx:"charge", set:"charge", pack:"libertador_horse", color:"230,240,255", vfx:"dust_02"}, {fx:"ult", set:"ult_cast", color:"220,240,255", vfx:"frost_01"}],
-  eren:      [{fx:"dash", set:"hook_fly", color:"220,200,180", vfx:"fx_hook_01"}, {fx:"buff", set:"instinct", color:"255,200,90"}, {fx:"buff", set:"advance", color:"255,120,70"}, {fx:"ult", set:"roar", pack:"eren_titan", color:"255,150,80", vfx:"fx_bolt_01", vfxAt:"self"}]
+  ilkan:      [{fx:"dash", set:"lance_fly", color:"230,190,110", vfx:"fx_lance_01"}, {fx:"buff", set:"instinct", color:"90,220,205"}, {fx:"buff", set:"advance", color:"255,190,90"}, {fx:"ult", set:"roar", pack:"ilkan_colossus", color:"90,225,205", vfx:"fx_pillar_01", vfxAt:"self"}]
 };
 // Animaciones extra con nombre que se ofrecen como botón en la ficha del guardián (si su atlas las tiene).
 const CODEX_CHAMP_EXTRA_ANIMS = {
-  libertador:[{label:"Disparo", set:"fire"}, {label:"A caballo", set:"m_run", pack:"libertador_horse"}],
-  eren:[{label:"Carrera", set:"run"}, {label:"El Portador", set:"walk_side", pack:"eren_titan"}],
+  libertador:[{label:"Disparo", set:"fire"}, {label:"A caballo", set:"m_run", pack:"libertador_horse"}, {label:"Caída", set:"death_down", pack:"libertador_death"}],
+  ilkan:[{label:"Carrera", set:"run"}, {label:"El Coloso", set:"walk_side", pack:"ilkan_colossus"}],
   cazadora:[{label:"Apuntar", set:"aim"}],
   nigromante:[{label:"Encarnación", set:"ult"}]
 };
