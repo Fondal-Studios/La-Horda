@@ -20,3 +20,7 @@ Revisión asistida: siluetas ahora distintas y fuera de nombres/HP; en Infernal 
 2. Usar recipe.json y `tools/vfx/capture-brakk-signatures.js`: investigar14restauraciones de Acuática manteniendo control estricto; no atribuirlas sin prueba al arte o al entorno.
 3. Completar corrección agrupada de composición B118/B119 y contraste integral de firmas con skins/equipo; conservar fuente nativa actual como candidato. No cerrar B117/B118/B119 por estas señales.
 4. Validar rendimiento móvil sostenido, CI exacto y Art Gate antes de separar/integrar componente. Mantener residuales Morveth B168 y Aelith B106/B107; inventario global incompleto.
+
+## Cierre remoto
+
+Producción `6c14300a4f2bcd4d4ee98b3ea161ccb8a6fcc58b`:61archivos cotejados por Git blob remoto. Recuperación `4551c3b68096c365067953903c46b99090f779f2`. Main758aa2f intacto; PR197 sigue borrador. CI de producción consultado por SHA exacto; el cierre requiere nueva consulta de su propio head, sin heredar aprobación.

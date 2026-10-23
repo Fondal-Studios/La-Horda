@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-23",
+  "parent": "2f8baae2c88126e185148d0e4f83b34156157310",
+  "recovery": "4551c3b68096c365067953903c46b99090f779f2",
+  "production": "6c14300a4f2bcd4d4ee98b3ea161ccb8a6fcc58b",
+  "branch": "art/brakk-kit-first-pass-20261022",
+  "pr": 197,
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "draft": true,
+  "publicationVerified": false,
+  "verifiedProductionFiles": 61,
+  "verification": "Git blob SHA against recursive production tree for every uploaded path; final closure commit verified separately after writing",
+  "main": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "runtimeChanged": [
+    "js/skills/champion-signatures.js"
+  ],
+  "tests": {
+    "renderer": 108,
+    "kit": 19,
+    "functional": 81,
+    "relay": 20,
+    "rng": [
+      29232,
+      29232
+    ],
+    "frames": 360,
+    "sameFrameRestores": 130,
+    "totalComparisons": 144,
+    "poolStatesUnchanged": 144
+  },
+  "captureFailures": "14 Acuatica restoration mismatches retained. Do not call full capture PASS or integral Art Gate.",
+  "next": "Read correccion-05 CHECKPOINT/recipe; investigate Acuatica14 restorations then grouped support/brace composition. No redoing first passes,53frames,PR200 or RNG corrections."
+}
