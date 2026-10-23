@@ -17,3 +17,11 @@ Revisión visual inicial: ondas y guardia demasiado finas/poco distintas entre a
 PR91: head0cab425359d7cdac534e69631cf04b493ad36992, pruebasPR verdes salvo safari-engine reintentado (cancelación durante dependencias), aún en curso al preparar este cierre. Livecheck publicado aparte falla en URL antigua; publicación no verificada. PR90/92 conflictos y once talleres previos con FIX siguen bloqueados. No merge nuevo confirmado al crear este checkpoint.
 
 Siguiente: auditar Brasa (B012 y normales) contra main/PR/fuentes/consumidores y producir faltantes reales en bloque; no asumir que cuerpo/UF faltan. Baltra, Bront02 y Brakk11 quedan en lote posterior de corrección. Antes de integrar un componente: corregir, validar visual/renderer/online/arenas y CI exacthead; merge secuencial con expected_head_sha. No repetir primera pasada. Para reproducir Baltra: comandos exactos en recipe.json, empezando OUT=/tmp/baltra-reexport node tools/vfx/verify-baltra-kit.js. El inventario global sigue incompleto.
+
+## Cierre remoto
+
+PR202 borrador. Producción `79619e25084fcdd02502d0bc14d64cabc790249d`:76archivos cotejados contra Git blob local y árbol remoto,0diferencias. REMOTE_CLOSURE.json registra cierre y hashes. Preview diagnóstica20imágenes/4canvases/0errores; primer intento sin CHROMIUM_PATH falló antes de abrir página, segundo pasó.
+
+PR91 no mergeado: retry Safari120586763151 terminó CANCELLED a18:43:34UTC durante descarga APT, antes de pruebas; causa de cancelación no demostrada. Resto de integración aplicable exitoso; Livecheck público mantiene fallos separados. Registro actualizado en cuerpo PR91. Main758aa intacto.
+
+Siguiente kit a auditar: Brasa B012/B120/B121/B122/B433. Conservar Baltra en cola posterior; no corregir repetidamente esta primera pasada. CI del nuevo head de cierre debe consultarse fresco; checks de producción en curso al guardar.
