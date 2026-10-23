@@ -55,3 +55,8 @@ Legibilidad estricta final PASS:seis arenas,4122 mediciones,0 errores, umbrales 
 CI del head de producción:17 checks y siete workflows pendientes/en curso; registro tests/remote-production-audit.json. El cierre cambia el head documental: volver a consultar todo por el SHA vigente, sin heredar aprobaciones. Skins, contraste específico, coste de snapshots/warmup y Art Gate integral pendientes. UF conserva sus fuentes y capturas base; la maestría reprise reutiliza el eco normal, por lo que su combinación necesita revisión antes de integrar.
 
 Próxima acción exacta: leer este cierre remoto y CORRECTION_BATCH.json (19 entradas), cotejar nuevos commits de PR195–199, mantener PR191 aparte y preparar lote grueso de corrección de habilidades recientes. Priorizar enlaces/temporizadores/cancelaciones de los cinco kits antes de una revisión visual conjunta. Conservar fuentes/IDs/hashes y registrar cada componente; no cerrar el juego ni todo un campeón por este lote. Si hay un cierre posterior, ese manda.
+
+
+## Continuación 23/10/2026 — corrección03
+
+Ver `correccion-03/CHECKPOINT.md` y `REMOTE_CLOSURE.json`: arena lenta de B106 enlazada al objetivo real y snapshot existente,12 cuadros nuevos candidatos.33 controles específicos,27 kit,131 funcionales,41 relay PASS; paridad29884/29884. EN_CORRECCION/NO_INTEGRAR; próximo B107/Morveth B168 contacto y gates integrales. RNG compartido ya corregido en PR195/196.

@@ -1,0 +1,15 @@
+[arnés] servidor propio: http://127.0.0.1:34417 (raíz /workspace/scratch/a01f80e6b406/la-horda-aelith)
+page.evaluate: TypeError: heroes is not iterable
+    at vfxResetRun (http://127.0.0.1:34417/js/champions/skill-fx-a/c/aelith.js:200:55)
+    at vfxResetRun (http://127.0.0.1:34417/js/champions/vfx-b/pixfx.js:236:60)
+    at vfxResetRun (http://127.0.0.1:34417/js/champions/vfx-b/hooks.js:156:60)
+    at vfxResetRun (http://127.0.0.1:34417/js/champions/ult-forms/bind.js:121:125)
+    at startRun (http://127.0.0.1:34417/js/core/run.js:109:3)
+    at window.startRun (http://127.0.0.1:34417/js/systems/skin-fx.js:285:21)
+    at startRun (http://127.0.0.1:34417/js/champions/skill-fx-a/bind.js:109:41)
+    at startRun (http://127.0.0.1:34417/js/champions/ult-forms/kit.js:194:39)
+    at window.<computed> (http://127.0.0.1:34417/js/systems/telemetry.js:34:150)
+    at eval (eval at evaluate (:311:30), <anonymous>:3:252)
+    at /workspace/scratch/a01f80e6b406/la-horda-aelith/tools/vfx/verify-aelith-slow.js:6:21 {
+  log: []
+}
