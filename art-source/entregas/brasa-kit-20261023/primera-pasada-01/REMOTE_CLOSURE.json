@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-23",
+  "pr": 203,
+  "branch": "art/brasa-kit-first-pass-20261023",
+  "production": "7db617decd8bdfc9ae0737d1485a4067bf3fa39f",
+  "recovery": "1b127e216d0bed57f661328317aa1d9a4c5a57cb",
+  "productionFilesVerified": 100,
+  "localGitBlobsMatch": true,
+  "remoteTreeMatches": true,
+  "state": "EN_CORRECCION",
+  "mergeAllowed": false,
+  "publicationVerified": false,
+  "separateMergePR91": "817610a78595e894995cec8032dd64149dbfe925",
+  "next": "Fresh heads/checkpoints; audit Cazadora B126/B127/B128 real consumers and sources; no repeat Brasa first pass. Preserve grouped correction queue31.",
+  "resumeCommands": [
+    "node tools/vfx/verify-brasa-kit.js",
+    "node tools/portadores/brasa-firstpass-check.js",
+    "node tools/portadores/brasa-firstpass-online.js (currently expected exit1: vent variant mismatch)"
+  ],
+  "ci": "Read checks/workflows for final closure SHA from PR203; this record cannot certify its own future SHA CI.",
+  "closureVerification": "Final ref and all selected file blobs are checked after this commit; see PR body for result."
+}

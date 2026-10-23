@@ -30,3 +30,6 @@ PR91 (guía Cómo se juega) INTEGRADO_MAIN con head0cab425359d7cdac534e69631cf04
 Leer HEAD fresco, este cierre, manifest/REMOTE_CLOSURE, REVIEW/TEST_ATTEMPTS, CORRECTION_BATCH y PR abiertos. No repetir Brasa/Baltra/Bront/Brakk primeras pasadas. Siguiente candidato: Cazadora B126/B127/B128, auditar consumidores/fuentes existentes antes de producir; UF B014 y básico/cuerpo no son ausentes por conteo documental. El taller Bront mantiene su rediseño separado.
 Comandos exactos en recipe.json. Reproducción mínima: `CHROMIUM_PATH=/ruta/chromium node tools/vfx/verify-brasa-kit.js`; kit `node tools/portadores/brasa-firstpass-check.js`; relay `node tools/portadores/brasa-firstpass-online.js` actualmente debe devolver exit1 por variante. No mergear este borrador; aislar únicamente componentes aprobados tras Art Gate y CI con expected_head_sha.
 Inventario global incompleto. Guardar cierre remoto del siguiente bloque antes de abrir otro.
+
+## Cierre remoto
+PR203 borrador. Producción7db617decd8bdfc9ae0737d1485a4067bf3fa39f;100archivos de producción cotejados con árbol remoto y hashes Git locales. REMOTE_CLOSURE.json registra verificación y pendientes. El commit de cierre contiene este documento y manifiesto actualizado; consultar HEAD fresco, no asumir el SHA de producción como último cierre.
