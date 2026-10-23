@@ -1,0 +1,47 @@
+[
+  {
+    "id": "generation01",
+    "result": "GENERADO, FIX",
+    "scope": "all36 edit from stored source, no blind new concept",
+    "sourceSha256": "9ef650cbc7454b4d4a4100918dd33f718f2481e4c3e61b5c4a2086836623a0ef",
+    "finding": "Helmet/halo improved; hard alpha and broad negative gaps not satisfied."
+  },
+  {
+    "id": "extraction01",
+    "result": "FAIL",
+    "opaqueCutContacts": [
+      0,
+      1,
+      2,
+      3,
+      13,
+      17,
+      18,
+      29
+    ],
+    "preserved": "attempt-01"
+  },
+  {
+    "id": "extraction02",
+    "result": "TECHNICAL_PASS_ONLY",
+    "opaqueCutContacts": [],
+    "nonempty": 36,
+    "uniqueRGBA": 36,
+    "styleMetrics": "4PASS, original15%",
+    "binaryAlpha": "FAIL"
+  },
+  {
+    "id": "preview01",
+    "result": "FAIL",
+    "finding": "Browser net::ERR_CONNECTION_REFUSED to localhost8767. Server process previously yielded still reported running; exact cause not demonstrated. No art/runtime change.",
+    "next": "Self-contained preview test starts server and waits forHTTP readiness."
+  },
+  {
+    "id": "preview02",
+    "result": "PASS_DIAGNOSTIC_ONLY",
+    "images": 4,
+    "checks": 66,
+    "pageErrors": 0,
+    "scope": "Indices of21sets;180ms reviewclock. Not gameplay renderer or timings."
+  }
+]
