@@ -39,7 +39,7 @@ function morvethFxStrip(kind,T,art,size,arc){
      const [x,y]=pts[i-1],[bx,by]=pts[i];hypha(x+sway,y,bx+sway,by);
      hypha(bx+sway,by,bx+side*4,by-3);hypha(bx+side*4,by-3,bx+side*3,by-6);
     }
-    for(const [cx,cy] of [[20+side*14+sway,39],[20+side*15+sway,27]]){
+    for(const [cx,cy] of [[20+side*13+sway,39],[20+side*13+sway,27]]){
      for(let y=-2;y<=1;y++)for(let x=-4;x<=4;x++)if(x*x/16+y*y/6<=1)dot(cx+x,cy+y,y===1?P.o:y<0?P.a:P.e);
      dot(cx-2,cy-1,P.c);line(cx,cy+2,cx+side,cy+5,P.b);
     }

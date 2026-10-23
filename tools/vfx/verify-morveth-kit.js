@@ -42,7 +42,7 @@ const r=await page.evaluate(()=>{
  check('native painting leaves combat RNG unchanged',randomCalls===0);Math.random=rnd;
  const plain=sfaBake('nova','plague',64),legacy=sfaBakeNova(sfaTintTheme(sfaTheme('plague'),sfaArenaKey()),64).toCanvas();check('legacy plague nova unchanged',plain.cv.toDataURL()===legacy.toDataURL());
  const b=sfaBake('nova','morveth_pulse',96),d=b.cv.getContext('2d').getImageData((b.n-1)*b.w,0,b.w,b.h).data;let lastOpaque=0;for(let i=3;i<d.length;i+=4)if(d[i])lastOpaque++;
- observations.push({component:'A-FX-morveth-h1',block:'B166',state:'EN_CORRECCION',frames:[10],finding:'El borde del pulso no se disipa en el atlas final: conserva píxeles aunque las esporas terminan. Evaluar corte al finalizar el evento.',lastOpaque,next:'Lote común: aplicar disolución al borde sin alterar radio ni pulso mecánico; repetir comparación del final.'});
+ check('pulse final frame fully dissolved',lastOpaque===0,{lastOpaque,frame:10});
  for(const lite of [false,true]){JUICE.reduceFx=lite;sfaReset();for(let i=0;i<100;i++)old('burst','morveth_growth',player.x,player.y,42,0,650);check('pool bounded reduceFx='+lite,sfaPool.length<=(lite?16:40),sfaPool.length);}
  return{checks,observations,exports};
 });

@@ -1,0 +1,455 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "state": "EN_CORRECCION",
+  "merge": "NO_INTEGRAR",
+  "generated": true,
+  "validated": false,
+  "integratedMain": false,
+  "publication": "NOT_VERIFIED",
+  "baseMain": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+  "previousHead": "7ddcc511b7554495e933a70aafab94bdc1951c9b",
+  "initialCheckpoint": "5adb0cf117fa8c2a47e1b3447e380d42438b69e9",
+  "components": [
+    {
+      "id": "A-FX-morveth-h1",
+      "block": "B166",
+      "state": "EN_CORRECCION",
+      "local": "Pulse fade technically corrected; full gate pending"
+    },
+    {
+      "id": "A-FX-morveth-h2",
+      "block": "B167",
+      "state": "EN_CORRECCION",
+      "local": "Native spores retain real cone border without generic rays; full gate pending"
+    },
+    {
+      "id": "A-FX-morveth-h3",
+      "block": "B168",
+      "state": "EN_CORRECCION",
+      "local": "Branched mycelium candidate; mobile crowded readability FIX"
+    }
+  ],
+  "files": [
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/CHECKPOINT.md",
+      "bytes": 6753,
+      "sha256": "6d7097425a0ec1c287699684ad6894b01ed9eccc404d91e215519134677dfc27",
+      "gitBlob": "964e74482279f39f8331577687e0d36ea819ddbb"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/CHECKPOINT.md",
+      "bytes": 5332,
+      "sha256": "040aabcc53a168cc97934bd5a639e5e0d7df9e93133186e0b8a0e721c2570ac9",
+      "gitBlob": "be4bc524c5f0fad414b30b4214c8a33b6446fd87"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/TEST_ATTEMPTS.json",
+      "bytes": 786,
+      "sha256": "c8d2d264130111d5c660c0fca6801c3613f90355ac429dd80d3384e13217e6e7",
+      "gitBlob": "8f32edcdf2041824a7e86e5b21c2328af8203219"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/VISUAL_REVIEW.md",
+      "bytes": 934,
+      "sha256": "caa3bd259e684b780b839b00a05c7a2fa7c0be524f79c51a9145aa24dbdd7805",
+      "gitBlob": "4ed364590ecfd0a87ecfad371d0b499187c929db"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/after/capture.json",
+      "bytes": 2513,
+      "sha256": "fdd4aaa4752b0a1ce5fb3195b6655c9e328d52fc4bd311577cb62711cdb19ab0",
+      "gitBlob": "2fb6fa9f1da7332b7ccc0dba2256e451960c106d"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/after/morveth-0.png",
+      "bytes": 177054,
+      "sha256": "56984a5834fd0c173a52aea21b497db9147909b63dd344504bd43b9fcfc1e8e5",
+      "gitBlob": "e9634290ad287b372798c344d24a38c3ac16cca1"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/after/morveth-1.png",
+      "bytes": 184470,
+      "sha256": "b86aa74464b19a580dc0a5ef22333879ddc3563412b025cea7b1a8ce15ac937c",
+      "gitBlob": "1cf4ceec6d477c6d01904593ac094ba25c75ca25"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/after/morveth-2.png",
+      "bytes": 180626,
+      "sha256": "82a79f367c11316da161156f89a970fc496f3ad02c30fe9d0792929ca8324538",
+      "gitBlob": "7591d50cf0cee3ad110186fb340b350b33314772"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/after/morveth-3.png",
+      "bytes": 196991,
+      "sha256": "48738a88a072d17969bf50f4d736d6d09e0e40f1467f73e74a3295b19a870a19",
+      "gitBlob": "2f0d02b791e4b3683637db4a7630666cdbc1c1a2"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/atlas-comparison.png",
+      "bytes": 46848,
+      "sha256": "8cac782269430a946d2addc819d43e0b18b9ad110799d7c26ae2af9a29b2dc6c",
+      "gitBlob": "444e7d4fade008c7d96dac81e8c6c8fd51170426"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/atlases/mushroom-growth.png",
+      "bytes": 4531,
+      "sha256": "dd8ce3d8b8d7c74379d66a525666161426fe3070fc8dd941658334960f54d037",
+      "gitBlob": "47bf8a843a9b517b8bd21987df22a6911ed00a2e"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/atlases/spore-exhalation.png",
+      "bytes": 14810,
+      "sha256": "9d85f6c49ecc55899acfd79b33f57f60791b0c06cfc8cde0949caa33a58c7abd",
+      "gitBlob": "1a7d6eeaeb3771a44a58d94f25f0fd4c3d90be15"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/atlases/spore-pulse.png",
+      "bytes": 8871,
+      "sha256": "37f6a316c2f146ce51b915217fb177e5a0db6c5a11ccd000877a654a30cd25f1",
+      "gitBlob": "503305acc8eccdfe5033489aef9a240816230df8"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/atlases/symbiosis-mycelium.png",
+      "bytes": 7511,
+      "sha256": "ad00f13057acab02a8b9029aaa29f8ad0aebe83252c9adbbc93ce458cb013f8f",
+      "gitBlob": "9095fa095c7fc853228befdb2fa25ab278aea6fb"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/attempt-01/edge-diagnosis.json",
+      "bytes": 373,
+      "sha256": "d48658211b59df970b3087e5cdba3ca74086efa8bfce31569c91883cdcfb278d",
+      "gitBlob": "e7e68e819460d323bc42b1a6136467c66dc44ba4"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/attempt-01/morveth-edge-candidate.js",
+      "bytes": 5135,
+      "sha256": "e9c85903ed768d0fd183bc8669757acb7a0a508f1022099c50ce90448e896662",
+      "gitBlob": "40935aea1a21c23ba069d31e144e2580dc12056d"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/attempt-01/online-results.json",
+      "bytes": 4404,
+      "sha256": "770d23e2f0829a69296b2b479db0c0c8291ba343bc3b4db3de2653f1fd75f98f",
+      "gitBlob": "ca4c82ab04a85edc6b4d0f79943c766f74d6465e"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/attempt-01/online.txt",
+      "bytes": 2083,
+      "sha256": "291918185824fbd05fe2fd7b3237a1ee2a1ad3466ad44cd6923317f71ebff492",
+      "gitBlob": "9ea64627d11d753e1ce0237aa63fbf33989c1c96"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/attempt-01/silhouette-syntax-error.txt",
+      "bytes": 1165,
+      "sha256": "85cafa0f570b72c2d8e245c578a9d3701a6f037c731a36e4cbda49570e39526e",
+      "gitBlob": "cabc3f323d6d07c48d6653267676c3c0d71f81d1"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/attempt-01/symbiosis-edge-candidate.png",
+      "bytes": 7219,
+      "sha256": "ccf08e67e94ae23f97f5d21b2eed4b804a3d4f3e77799f0b7e62a0b92b49cd43",
+      "gitBlob": "3769e252a2679475302899aace54a8494f6986ba"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/before/capture.json",
+      "bytes": 2513,
+      "sha256": "fdd4aaa4752b0a1ce5fb3195b6655c9e328d52fc4bd311577cb62711cdb19ab0",
+      "gitBlob": "2fb6fa9f1da7332b7ccc0dba2256e451960c106d"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/before/morveth-0.png",
+      "bytes": 177054,
+      "sha256": "56984a5834fd0c173a52aea21b497db9147909b63dd344504bd43b9fcfc1e8e5",
+      "gitBlob": "e9634290ad287b372798c344d24a38c3ac16cca1"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/before/morveth-1.png",
+      "bytes": 188310,
+      "sha256": "7a0970f1763c6f179b10229ada99923e821923b37e77e70676374e8f30bbdb51",
+      "gitBlob": "e567f18ef8177b20a519541ba0c33258a1adff00"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/before/morveth-2.png",
+      "bytes": 181055,
+      "sha256": "a452cf47152c5ff01f5b2ffbe83aba37b0a7365c344fbe72f6e2c3ae94cf39e1",
+      "gitBlob": "43acc5cb5597dbb479f8e6355e6614e35e24b555"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/before/morveth-3.png",
+      "bytes": 196991,
+      "sha256": "48738a88a072d17969bf50f4d736d6d09e0e40f1467f73e74a3295b19a870a19",
+      "gitBlob": "2f0d02b791e4b3683637db4a7630666cdbc1c1a2"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/capture-mobile.txt",
+      "bytes": 307,
+      "sha256": "6b1e046eb454ab5c47ac3fa1547c1d43c2d1563fc50b22de8b2d40904d7edd82",
+      "gitBlob": "103808c4ef3dae07c1e88956c6b74c66c46fbfbe"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/capture.txt",
+      "bytes": 307,
+      "sha256": "d401b7f254b41b344be099cab1a9bf24f48f2ddf2a298a3327ea5364ced38a0e",
+      "gitBlob": "d7618adaa7689139e4bcbaeda3c224b64c1a3a83"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/comparison-checks.json",
+      "bytes": 2308,
+      "sha256": "51711ac94c00c92fdb19a9eebd3ce2de52ea6f69f05da4804abef7614e153b12",
+      "gitBlob": "a532556bdb0528e13587d6178ffb9b3c4578bb92"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/comparison.png",
+      "bytes": 1017599,
+      "sha256": "c7c750cfa45a2097bdbffe9541ecc32977172c5f2238cedfc406c3b4815d21f5",
+      "gitBlob": "03bb1cc564f7a9944ce315956545ec4604e2a0c7"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/functional-results.json",
+      "bytes": 10242,
+      "sha256": "5aa92a302e842fd050d88a11dfd41b465937f62fb97dd6d2c1899073ae97ae62",
+      "gitBlob": "d6547c15b887d2d20aa6baeeba4d7d65724dd723"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/functional.txt",
+      "bytes": 55,
+      "sha256": "477a29725728dabc8881ef68164223eaef0b7139e42bc581e744da7357df4eb7",
+      "gitBlob": "214380072787b8bb8a227ea3a590a6d85d6600f9"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/general-online-results.json",
+      "bytes": 3681,
+      "sha256": "787050d2838a524fe5b3616c401ec215d17268c325f6577eb4e6cd992b475236",
+      "gitBlob": "680e0e40f24a073acde69cfc0e4a106722db3424"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/general-online.txt",
+      "bytes": 2231,
+      "sha256": "1f5ce6b6f6a4d8135c4d48296fc9b49a18edcf9ffac45e5c0a9ee9a64f9bb027",
+      "gitBlob": "ea28f4d1833aeca310a0adbf88606e2ae286d1c9"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/kit.txt",
+      "bytes": 179,
+      "sha256": "b22fbfb3ab681ead389b3f669c6d047231bbaf308271bacdcdc64d99a914a466",
+      "gitBlob": "6d29cb886aa521f539ec2f683ba66c2335589517"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/legibility-mobile.txt",
+      "bytes": 1746,
+      "sha256": "5c4954d043a72942ed153be031b1ed6dd059713953b5547e5cc5ddf8d6369c1e",
+      "gitBlob": "1467f0938baf09adcb23a956acf0ee51a2305273"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/legibility.txt",
+      "bytes": 1746,
+      "sha256": "a6df34b3d32b759e3bac637ca42b214132dffe568bd3f183babc6a2c3eeace78",
+      "gitBlob": "fc65a3d224f381a8597ffbf546bb5df006b4211b"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-after/capture.json",
+      "bytes": 2513,
+      "sha256": "04da533ab6446ead6b010e237ef4c3a5ffee82e559a109bd5965c3c0013bbeba",
+      "gitBlob": "77c6cef1f39cc0ba8e568a75fbc9a8b6f1ed53b4"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-after/morveth-0-1500-full.png",
+      "bytes": 459908,
+      "sha256": "f19703bc48527a178882f2630b52f3002b76ade52ddb0ee30e9d73298e237563",
+      "gitBlob": "f52127d66bc2ebfb1bd55d6242b70b49563e43b0"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-after/morveth-0.png",
+      "bytes": 165336,
+      "sha256": "295ed1b1603349437a390ef35956981587774cf485f10353e1c168b6722d2a64",
+      "gitBlob": "7c1038e87ec9e0e9c46cfaf63caa4f0e3f02e2b4"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-after/morveth-1-250-full.png",
+      "bytes": 460311,
+      "sha256": "86055da9f6b7ac1e133c97800da2545567474295fe9dfb23d7414a06f61cac2a",
+      "gitBlob": "2bf14c80035231247d8f976bb44ba447698f77af"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-after/morveth-1.png",
+      "bytes": 172229,
+      "sha256": "54d5f72ad939fc2164092247361db536abc517f7a654132233107e8169de4260",
+      "gitBlob": "bd8bb9c7b8787f809e09dad9a81bb2a73857979d"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-after/morveth-2-500-full.png",
+      "bytes": 456323,
+      "sha256": "63ffd5cd065067602338bce39f134be74479761b772148c2c86a2205040a3b50",
+      "gitBlob": "7719b865518756ae2f07bfa118e183e662deeeef"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-after/morveth-2.png",
+      "bytes": 168620,
+      "sha256": "5e964ee93c052d3b4e39c6a14bb9c42616119c87d79a9beda008bd45baa75cca",
+      "gitBlob": "e07f0967bd39a3fdb5bafb842034262cf08940d3"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-after/morveth-3.png",
+      "bytes": 187070,
+      "sha256": "53eb0bbe0cefbc4935f798a45aa804e3de764eadce9dfa4f7a8a847696935de3",
+      "gitBlob": "918311807a8a4df80f30fa496ca0d5e45322189d"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-before/capture.json",
+      "bytes": 2513,
+      "sha256": "04da533ab6446ead6b010e237ef4c3a5ffee82e559a109bd5965c3c0013bbeba",
+      "gitBlob": "77c6cef1f39cc0ba8e568a75fbc9a8b6f1ed53b4"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-before/morveth-0-1500-full.png",
+      "bytes": 459908,
+      "sha256": "f19703bc48527a178882f2630b52f3002b76ade52ddb0ee30e9d73298e237563",
+      "gitBlob": "f52127d66bc2ebfb1bd55d6242b70b49563e43b0"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-before/morveth-0.png",
+      "bytes": 165336,
+      "sha256": "295ed1b1603349437a390ef35956981587774cf485f10353e1c168b6722d2a64",
+      "gitBlob": "7c1038e87ec9e0e9c46cfaf63caa4f0e3f02e2b4"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-before/morveth-1-250-full.png",
+      "bytes": 465488,
+      "sha256": "b387a49c902d48161e4ad19084be69432231a4ed85acd91b12c8475f4774e30b",
+      "gitBlob": "15391cc88cc48b63a857d0468915813a149eacb1"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-before/morveth-1.png",
+      "bytes": 176512,
+      "sha256": "ff8fb5f6ee11beced5813ddd915d13ceb0d4e261383b022fab4854bb5d81e919",
+      "gitBlob": "38f65b3cf21395156cd7844bda132d5cbd20c5d4"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-before/morveth-2-500-full.png",
+      "bytes": 456631,
+      "sha256": "e1eb6a10783586ed9496fb6de593574d7c71880de8a87409466d99b10b870277",
+      "gitBlob": "8d2a034e9f931c35b4632bf7a213c8e06a74af95"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-before/morveth-2.png",
+      "bytes": 169209,
+      "sha256": "be3701ac58c77c68b208fc4d1814e6221dc10e814e50bbe65be9dcaf529935f8",
+      "gitBlob": "c608677a2e6222038bdc2cedc6200102922a6bfb"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-before/morveth-3.png",
+      "bytes": 187070,
+      "sha256": "53eb0bbe0cefbc4935f798a45aa804e3de764eadce9dfa4f7a8a847696935de3",
+      "gitBlob": "918311807a8a4df80f30fa496ca0d5e45322189d"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/mobile-comparison.png",
+      "bytes": 993237,
+      "sha256": "8d6e0f34204b4801c1dbbefd3df49d6b0b7a5f6c432b480d112a34da538df083",
+      "gitBlob": "9ddaebded70d3305218921b809f8d459e3a88c84"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/online-results.json",
+      "bytes": 4489,
+      "sha256": "05ab1a5cfacb9697d3dd23b39499a5442f6d3cae3e02078192b95779b5ddd692",
+      "gitBlob": "8508315b9c0d5083060070aeef21584541045550"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/online.txt",
+      "bytes": 2148,
+      "sha256": "8af4c527a673bcbe684f3d98821b6adacd5707d573a7dec175d7738c0a01e2ab",
+      "gitBlob": "e08ddb889258d89f6edb848fd3cb60954ebde9c0"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/parity.txt",
+      "bytes": 116,
+      "sha256": "a76ec742adb01a8f0477e4c7fb69146a884f672e85d15ebb11e905e2fd187310",
+      "gitBlob": "69f8ffdc93b3d181376c0a469c911020b581215f"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/recipe.json",
+      "bytes": 1798,
+      "sha256": "a8b6f35ab3c86605bae97c3283938a197cafd87a3f9614405f0dba86489246cd",
+      "gitBlob": "28bc06d158b6d7714a451490819d568ab70a97d5"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/signatures-before.js",
+      "bytes": 6610,
+      "sha256": "2bbe76162cac478de248ebbbfa7ff98e8cda17b672ef1bd9d83f2be46098a3ad",
+      "gitBlob": "972a1db55026f298ebd6c3cc16afec512f557612"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/silhouette-tests.json",
+      "bytes": 7467,
+      "sha256": "57f40aa94ff6decaf0759ceb00329d6c07acbc9d74c436a3b6a32a2affaf67be",
+      "gitBlob": "b315d8f4b27785f91683433dca08d2849cdc5c12"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/silhouette-tests.txt",
+      "bytes": 117,
+      "sha256": "6b71e94d2861563918bc1256cf6372625da5fc9c3ad73a56ececd130ddd5e6d5",
+      "gitBlob": "ce32ecca8322a6403d3026c1d18c64b10cb10988"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/source-before.js",
+      "bytes": 3996,
+      "sha256": "9394db83bae05d5ff924e4731b15b39a3f7e99fdf8af6b09202fdaf240e9f30a",
+      "gitBlob": "adb0dda25b098e4960e5348a3581538823d1c340"
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-01/verification.json",
+      "bytes": 5579,
+      "sha256": "77b45e3fc8738c58a8c913213a5d9fb3c812c7a4797ee7153ae17f91fa4d4c51",
+      "gitBlob": "0ddb3286ab237f4945cd24dcd02639d9408f7c7c"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "bytes": 27531,
+      "sha256": "4d83c1500b436d498e0f920e5816d6d9181f9d07692d68120c3a2f63ad7176fd",
+      "gitBlob": "3fdbad22a258af3d35575091e53df69f1ad115bd"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/morveth.js",
+      "bytes": 5135,
+      "sha256": "0fb59f44b844921aab209d0892db716563077dc6ade606e311c490ddaa23a5e9",
+      "gitBlob": "f172b03d6dbc4f77b2c1dd77cebc4213b0c23947"
+    },
+    {
+      "path": "js/skills/champion-signatures.js",
+      "bytes": 6732,
+      "sha256": "6213416b806b576d81c7494a0a3bd2f6c13ea2143ced05406ec5be71d530a8ed",
+      "gitBlob": "b2c46f3daefd4e59c7b484700d7c12256cd05494"
+    },
+    {
+      "path": "tools/vfx/capture-morveth-silhouette.js",
+      "bytes": 6482,
+      "sha256": "737d394605ef039f55657611f58ed977d2e4b6da3f620b59468e6cabc3d02c92",
+      "gitBlob": "e1540899cc665d64d8713db13cb7f31c1cbc933e"
+    },
+    {
+      "path": "tools/vfx/morveth-silhouette-online.js",
+      "bytes": 9398,
+      "sha256": "ed1ce62ff50aa5bbed557d6e4c258e64c365f292b2f8b8116c7cf2f0607d70f8",
+      "gitBlob": "bfc432bc5cec641db3b6aabddebe246e2e04854a"
+    },
+    {
+      "path": "tools/vfx/test-morveth-legible.js",
+      "bytes": 16369,
+      "sha256": "e0775cbb9f8af917364e9ae8a95f5764de4ba56b29cb1da2fa5f1691388cc97d",
+      "gitBlob": "d2836284930d9387d2c1898c3dc87949b442da48"
+    },
+    {
+      "path": "tools/vfx/verify-morveth-kit.js",
+      "bytes": 6056,
+      "sha256": "5161e7fb9711b62fc15af4757df867aed07373766571532d40100b24b8617cc3",
+      "gitBlob": "db55a08374595acb6ad708e874acb5a689376efb"
+    },
+    {
+      "path": "tools/vfx/verify-morveth-silhouette.js",
+      "bytes": 3812,
+      "sha256": "99e64348b81c86c37f6bf361aa2a1748332101f17fb900b0daab40fdcd07c069",
+      "gitBlob": "9cd355f2c739e5a704669ca438bd205df49d1d28"
+    }
+  ]
+}

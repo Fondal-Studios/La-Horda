@@ -1,3 +1,5 @@
+> Cierre posterior: [correccion-01/CHECKPOINT.md](correccion-01/CHECKPOINT.md), 22/10/2026. Leer antes de continuar; el texto siguiente conserva historial.
+
 # Morveth — primera pasada B166/B167/B168
 
 22/10/2026. Rama art/morveth-kit-first-pass-20261022, base main6334ff40b6514808ef0fe00b50bec15e19f10c25. Retomado el cierre remoto de Brakk PR197 head3b01d7613b6636ce8c717e13b96d0376830ad878. No falta de cierre detectada. No había otro PR abierto de Morveth al auditar ni antes de subir.
