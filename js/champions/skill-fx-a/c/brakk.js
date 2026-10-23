@@ -5,7 +5,7 @@
 function brakkFxStrip(kind,T,art,size){
  const beam=art==='beam',aura=art==='aura';
  if(!((kind==='build'||kind==='nails')&&beam||kind==='deploy'&&art==='burst'||kind==='repair'&&(aura||art==='burst')))return null;
- const W=beam?16:aura?40:size,H=beam?size:aura?56:size,N=kind==='build'?11:kind==='nails'?8:aura?12:kind==='deploy'?12:10;
+ const W=beam?16:aura?48:size,H=beam?size:aura?56:size,N=kind==='build'?11:kind==='nails'?8:aura?12:kind==='deploy'?12:10;
  const S=new SfaStrip(W,H,N),P=T.px;
  for(let f=0;f<N;f++){
   const q=f/(N-1),fade=beam&&kind==='nails'||aura?1:q<.55?1:(1-q)/.45;
@@ -35,8 +35,9 @@ function brakkFxStrip(kind,T,art,size){
     dot(jx,jy,P.e);dot(x,y+1,P.c);
    }
   }else if(aura){
-   const pulse=Math.round(Math.sin(f/N*Math.PI*2)*1.5),left=5-pulse,right=32+pulse;
-   for(const x of [left,right]){bar(x,27,x,47);const sign=x<20?1:-1;bar(x,27,x+sign*5,23);bar(x,47,x+sign*5,49);dot(x+1,33+f%7,P.e);}
+   // Postes fuera del torso; centro abierto. Solo cambia la composición cosmética.
+   const pulse=Math.round(Math.sin(f/N*Math.PI*2)),left=3-pulse,right=42+pulse;
+   for(const x of [left,right]){bar(x,27,x,47);const sign=x<W/2?1:-1;bar(x,27,x+sign*5,23);bar(x,47,x+sign*5,49);dot(x+1,33+f%7,P.e);}
   }else{
    const k=sfaEase(Math.min(1,q/.35)),r=R*k;
    bar(c-r,c-r,c+r,c+r);bar(c-r,c+r,c+r,c-r);

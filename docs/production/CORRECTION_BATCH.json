@@ -361,6 +361,14 @@
             "Exact final head CI and Art Gate before isolating any approved component; PR197 remains draft.",
             "Preserve Morveth B168 and Aelith B106/B107 residuals; global inventory incomplete."
           ]
+        },
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-06",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "eafcdcda620620b7ff0ab598aab47d5f26e13c964b5f429995e111d1b0a3c310",
+          "finding": "A/B/A Acuatica14fails diagnosed as mutable animPose in harness,144/144 exact after pose snapshot restore. Two new horizontal B117 beam~h isolated rows79.886% below80; source/atlas unchanged,root not demonstrated.",
+          "next": "Resolver lote composición/contraste y gates; no integrar taller FIX."
         }
       ]
     },
@@ -445,6 +453,14 @@
             "Exact final head CI and Art Gate before isolating any approved component; PR197 remains draft.",
             "Preserve Morveth B168 and Aelith B106/B107 residuals; global inventory incomplete."
           ]
+        },
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-06",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "eafcdcda620620b7ff0ab598aab47d5f26e13c964b5f429995e111d1b0a3c310",
+          "finding": "Attempt lowering deployment6nativepx fails36rows,min~71%; source/hash/atlas preserved. Returned to previous deployment byteidentical. Dense contact residual remains.",
+          "next": "Resolver lote composición/contraste y gates; no integrar taller FIX."
         }
       ]
     },
@@ -823,6 +839,28 @@
         }
       ],
       "next": "Reconcile shared pixfx patch when isolating approved components; keep full pending gates."
+    },
+    {
+      "block": "B119",
+      "component": "A-FX-brakk-h3",
+      "source": "js/champions/skill-fx-a/c/brakk.js",
+      "sourceSha256": "eafcdcda620620b7ff0ab598aab47d5f26e13c964b5f429995e111d1b0a3c310",
+      "frames": "repair-brace0-11",
+      "state": "EN_CORRECCION",
+      "pr": 197,
+      "evidence": "art-source/entregas/brakk-kit-20261022/correccion-06/REVIEW.json",
+      "defects": [
+        "Aliado y anillos legados/arena/set aún compiten con postes en contacto; contraste compuesto integral no aprobado."
+      ],
+      "correctionHistory": [
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-06",
+          "technical": "Native48x56x12,center empty.112controls,19kit,81functional PASS. B119isolated PASS; full horizontal gate2FAIL B117; relay20/22FAIL.192/192same-frame exact; parity29232/29232.",
+          "atlasSha256": "465fa2e9445c919dd3920d4fefc6da65ee074841d11e9f6322368ab456c68e28"
+        }
+      ],
+      "next": "Evaluar contraste compuesto de Apuntalar con anillos reales y receptores/skins; conservar duraciones y mecánicas."
     }
   ],
   "pendingVerificationNotFailures": [
@@ -834,6 +872,6 @@
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
   "nextProduction": "Brakk grouped composition correction from validacion-04: fallback normal signature and B118 deployment contrast, B119 brace/rings. Preserve UF/IDs/emitters/RNG. PR200 already merged; do not reopen or repeat test fix. Then integral gates, keeping Aelith/Morveth residuals.",
-  "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/correccion-05/CHECKPOINT.md",
-  "next": "Resolve Acuatica14same-frame restoration failures and grouped Brakk B118/B119 composition/normal-signature full contrast; retain other residuals."
+  "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/correccion-06/CHECKPOINT.md",
+  "next": "Brakk composición B118/B119; diagnosticar B117 gate horizontal y relay torreta sin atribuir causa no demostrada. Conservar MorvethB168/AelithB106/B107 y RNG corregido."
 }

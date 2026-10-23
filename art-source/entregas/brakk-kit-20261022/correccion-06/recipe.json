@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-23",
+  "scope": "B118/B119 composition and same-frame diagnostic correction",
+  "source": "js/champions/skill-fx-a/c/brakk.js",
+  "preservedSource": "kit-before.js",
+  "sourceSha256": "eafcdcda620620b7ff0ab598aab47d5f26e13c964b5f429995e111d1b0a3c310",
+  "nativeAura": {
+    "size": [
+      48,
+      56
+    ],
+    "frames": 12,
+    "left": "3-round(sin(f/12*2*pi))",
+    "right": "42+round(sin(f/12*2*pi))",
+    "centerColumnsEmpty": [
+      12,
+      35
+    ],
+    "alpha": "0/255",
+    "event": "aura/brakk_repair~p",
+    "cadenceMs": 100,
+    "radius": 24,
+    "duration": "actual recipient _kitArmorUntil; unchanged",
+    "owner": "existing fi; unchanged",
+    "palette": "existing siege variant and arena tint; unchanged"
+  },
+  "preserved": {
+    "atlases": [
+      "wall-mount",
+      "turret-deploy",
+      "nail-volley",
+      "repair-weld"
+    ],
+    "frames": 41,
+    "normalSignatures": "05 byteidentical",
+    "UF": "unchanged",
+    "engineBind": "unchanged"
+  },
+  "environment": {
+    "NODE_PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "CHROMIUM_PATH": "/tmp/chromium"
+  },
+  "commands": [
+    "DIAG_MODE=same LOOKS=base,set TIMES=80,330 MOBILE=1 OUT=art-source/entregas/brakk-kit-20261022/correccion-06/diagnostic-same node tools/vfx/diagnose-brakk-restoration.js",
+    "DIAG_MODE=same LOOKS=base,set TIMES=80,330 OUT=art-source/entregas/brakk-kit-20261022/correccion-06/diagnostic-same-horizontal node tools/vfx/diagnose-brakk-restoration.js",
+    "DIAG_MODE=pose LOOKS=base,set TIMES=80,330 MOBILE=1 OUT=art-source/entregas/brakk-kit-20261022/correccion-06/diagnostic-pose node tools/vfx/diagnose-brakk-restoration.js",
+    "DIAG_MODE=pose LOOKS=base,set TIMES=80,330 OUT=art-source/entregas/brakk-kit-20261022/correccion-06/diagnostic-pose-horizontal node tools/vfx/diagnose-brakk-restoration.js",
+    "MOBILE=1 CANARY_RESTORE=1 ARENAS=bosque LOOKS=base SLOTS=0 DENSITIES=dense TIMES=330 OUT=art-source/entregas/brakk-kit-20261022/correccion-06/canary-restoration node tools/vfx/capture-brakk-signatures.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/correccion-06 node tools/vfx/verify-brakk-kit.js",
+    "node tools/vfx/verify-brakk-composition.js",
+    "MOBILE=1 OUT=art-source/entregas/brakk-kit-20261022/correccion-06/gate-mobile node tools/vfx/test-brakk-components-legible.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/correccion-06/gate-horizontal node tools/vfx/test-brakk-components-legible.js",
+    "ONLY=brakk FRAMES=360 PORT=8996 node tools/vfx/parity-brakk-composition.js",
+    "node tools/quality-five/brakk-functional.js",
+    "node tools/vfx/brakk-composition-online.js",
+    "LOOKS=base,set SLOTS=1,2 TIMES=80,330,1600 MOBILE=1 OUT=art-source/entregas/brakk-kit-20261022/correccion-06/mobile node tools/vfx/capture-brakk-composition.js",
+    "LOOKS=base,set SLOTS=1,2 TIMES=80,330,1600 OUT=art-source/entregas/brakk-kit-20261022/correccion-06/landscape node tools/vfx/capture-brakk-composition.js",
+    "python tools/vfx/assemble-brakk-composition.py"
+  ],
+  "expectedFailures": [
+    "DIAG_MODE=same: seven per viewport",
+    "CANARY_RESTORE=1: one pixel must fail",
+    "attempt-01 moved deploy:36 gate failures",
+    "horizontal component gate: two B117 beam~h rows below80",
+    "relay first attempt20/22: turret snapshot/nails missing; no demonstrated root cause"
+  ],
+  "capture": "48 scenes/view, two same-frame ABAs/scene; only selected native PNG and12 native-scale sheets published. Every generated PNG indexed; commands reproduce all."
+}

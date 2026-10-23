@@ -1,0 +1,116 @@
+{
+  "results": [
+    {
+      "livePose": false,
+      "canaryRestore": true,
+      "arena": "bosque",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        22,
+        0,
+        0
+      ],
+      "comparison": "candidate / preserved parent / restored candidate",
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "beam|brakk_build": 92
+        },
+        "body": 23
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4164,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 336,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "masonry"
+            }
+          ]
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "identicalRestoration": false,
+          "stateUnchanged": true,
+          "beforeHash": "56f3da01cc38fe4f4425eee317214ff8ed57e4f5747418e034cd968a2fdb6aa1",
+          "withoutHash": "a5705a790b94a9dfa185fde4fdbf98030f64f87af0b763d29a93801a31e8ef6a"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          105,
+          -65,
+          0,
+          0,
+          600,
+          105,
+          65,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 105,
+          "y": 0,
+          "life": 4164
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "1067740bd51873e0ec9d172bc12220bc41f06cb8c005e352a129c2f12b3f00fd"
+    }
+  ],
+  "errors": []
+}

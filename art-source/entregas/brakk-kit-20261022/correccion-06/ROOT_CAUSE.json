@@ -1,0 +1,574 @@
+{
+  "date": "2026-10-23",
+  "scope": "Harness A/B/A, not a change to gameplay renderer",
+  "rootCause": "animPose updates _an.spd and _an.ph on every draw using animDt, even at the same performance.now. Repeated render was not identical input.",
+  "control": "Same renderer A/A/A reproduces14 failures. Restoring pre-draw _an and _animCastKind for each diagnostic draw passes144/144. No RNG calls in failing redraws. Original post-draw pose restored after diagnostics.",
+  "nativePixelThreshold": "exact equality, unchanged",
+  "negativeCanary": "One intentionally changed pixel fails restoration",
+  "cases": [
+    {
+      "view": "mobile",
+      "scene": "acuatica-base-dense-h1",
+      "pixels": 195,
+      "bbox": [
+        232,
+        419,
+        285,
+        469
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              46.792137158412636,
+              32.75449601088884
+            ],
+            "ph": [
+              4.75212602450307,
+              4.839957420511815
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              47.023695161015496,
+              32.916586612710844
+            ],
+            "ph": [
+              11.20896842184846,
+              11.297234464869732
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              47.0236951610155,
+              32.91658661271085
+            ],
+            "ph": [
+              13.469885295717017,
+              13.558151338738288
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              47.056814743842246,
+              32.93977032068957
+            ],
+            "ph": [
+              10.102277901960555,
+              10.190606112246916
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              46.832751144308176,
+              32.78292580101572
+            ],
+            "ph": [
+              6.0143229950358785,
+              6.102230625713422
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              46.832751144308205,
+              32.78292580101574
+            ],
+            "ph": [
+              9.809532003910254,
+              9.897439634587798
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "scene": "acuatica-set-dense-h1",
+      "pixels": 91,
+      "bbox": [
+        149,
+        393,
+        186,
+        418
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "brakk",
+          "fields": {
+            "spd": [
+              77.9868936622096,
+              54.590825563546716
+            ],
+            "ph": [
+              6.530406583018417,
+              6.612578912573528
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              0.3193612952720551,
+              0.22355290669043854
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              0.36884700154484756,
+              0.25819290108139326
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              0.36884700154484756,
+              0.25819290108139326
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "scene": "acuatica-set-dense-h2",
+      "pixels": 91,
+      "bbox": [
+        149,
+        393,
+        186,
+        418
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "brakk",
+          "fields": {
+            "spd": [
+              77.9868936622096,
+              54.590825563546716
+            ],
+            "ph": [
+              6.530406583018417,
+              6.612578912573528
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "scene": "acuatica-set-dense-h3",
+      "pixels": 91,
+      "bbox": [
+        149,
+        393,
+        186,
+        418
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "brakk",
+          "fields": {
+            "spd": [
+              77.9868936622096,
+              54.590825563546716
+            ],
+            "ph": [
+              6.530406583018417,
+              6.612578912573528
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "scene": "acuatica-set-sparse-h1",
+      "pixels": 91,
+      "bbox": [
+        149,
+        393,
+        186,
+        418
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "brakk",
+          "fields": {
+            "spd": [
+              77.9868936622096,
+              54.590825563546716
+            ],
+            "ph": [
+              8.507003781406022,
+              8.589176110961132
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "scene": "acuatica-set-sparse-h2",
+      "pixels": 91,
+      "bbox": [
+        149,
+        393,
+        186,
+        418
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "brakk",
+          "fields": {
+            "spd": [
+              77.9868936622096,
+              54.590825563546716
+            ],
+            "ph": [
+              8.507003781406022,
+              8.589176110961132
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "scene": "acuatica-set-sparse-h3",
+      "pixels": 91,
+      "bbox": [
+        149,
+        393,
+        186,
+        418
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "brakk",
+          "fields": {
+            "spd": [
+              77.9868936622096,
+              54.590825563546716
+            ],
+            "ph": [
+              8.507003781406022,
+              8.589176110961132
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "view": "landscape",
+      "scene": "acuatica-base-dense-h1",
+      "pixels": 195,
+      "bbox": [
+        459,
+        199,
+        512,
+        249
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              46.792137158412636,
+              32.75449601088884
+            ],
+            "ph": [
+              4.75212602450307,
+              4.839957420511815
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              47.023695161015496,
+              32.916586612710844
+            ],
+            "ph": [
+              11.20896842184846,
+              11.297234464869732
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              47.0236951610155,
+              32.91658661271085
+            ],
+            "ph": [
+              13.469885295717017,
+              13.558151338738288
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              47.056814743842246,
+              32.93977032068957
+            ],
+            "ph": [
+              10.102277901960555,
+              10.190606112246916
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              46.832751144308176,
+              32.78292580101572
+            ],
+            "ph": [
+              6.0143229950358785,
+              6.102230625713422
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              46.832751144308205,
+              32.78292580101574
+            ],
+            "ph": [
+              9.809532003910254,
+              9.897439634587798
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "view": "landscape",
+      "scene": "acuatica-set-dense-h1",
+      "pixels": 91,
+      "bbox": [
+        376,
+        173,
+        413,
+        198
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "brakk",
+          "fields": {
+            "spd": [
+              77.9868936622096,
+              54.590825563546716
+            ],
+            "ph": [
+              6.530406583018417,
+              6.612578912573528
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              0.3193612952720551,
+              0.22355290669043854
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              0.36884700154484756,
+              0.25819290108139326
+            ]
+          }
+        },
+        {
+          "entity": "esqueleto",
+          "fields": {
+            "spd": [
+              0.36884700154484756,
+              0.25819290108139326
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "view": "landscape",
+      "scene": "acuatica-set-dense-h2",
+      "pixels": 91,
+      "bbox": [
+        376,
+        173,
+        413,
+        198
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "brakk",
+          "fields": {
+            "spd": [
+              77.9868936622096,
+              54.590825563546716
+            ],
+            "ph": [
+              6.530406583018417,
+              6.612578912573528
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "view": "landscape",
+      "scene": "acuatica-set-dense-h3",
+      "pixels": 91,
+      "bbox": [
+        376,
+        173,
+        413,
+        198
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "brakk",
+          "fields": {
+            "spd": [
+              77.9868936622096,
+              54.590825563546716
+            ],
+            "ph": [
+              6.530406583018417,
+              6.612578912573528
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "view": "landscape",
+      "scene": "acuatica-set-sparse-h1",
+      "pixels": 91,
+      "bbox": [
+        376,
+        173,
+        413,
+        198
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "brakk",
+          "fields": {
+            "spd": [
+              77.9868936622096,
+              54.590825563546716
+            ],
+            "ph": [
+              8.507003781406022,
+              8.589176110961132
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "view": "landscape",
+      "scene": "acuatica-set-sparse-h2",
+      "pixels": 91,
+      "bbox": [
+        376,
+        173,
+        413,
+        198
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "brakk",
+          "fields": {
+            "spd": [
+              77.9868936622096,
+              54.590825563546716
+            ],
+            "ph": [
+              8.507003781406022,
+              8.589176110961132
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "view": "landscape",
+      "scene": "acuatica-set-sparse-h3",
+      "pixels": 90,
+      "bbox": [
+        376,
+        173,
+        413,
+        198
+      ],
+      "randomCalls": 0,
+      "poseChanges": [
+        {
+          "entity": "brakk",
+          "fields": {
+            "spd": [
+              77.9868936622096,
+              54.590825563546716
+            ],
+            "ph": [
+              8.507003781406022,
+              8.589176110961132
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "limits": "Does not prove every renderer subsystem is pure, nor fix gameplay randomness. Applies to these captured scenes. Other branches need the same evidence discipline.",
+  "qualification": "Same scene IDs as05. Fresh same-render controls yield90/91/195 changed pixels; horizontal control was run after the aura candidate, which can cover a previously different pixel. Do not claim all fresh raster deltas are byteidentical to05."
+}
