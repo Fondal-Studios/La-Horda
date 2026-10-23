@@ -25,3 +25,7 @@ Art Gate FIX: B135 corriente fina/eléctrica y flechas/banda legadas dominantes;
 Siguiente producción: auditar Farolero B138/B139/B140 en main y PR frescos, fuentes y consumidores reales de lantern/UF; no presumir ausencia por conteos. Avanzar primera pasada gruesa antes de volver a Facu/Eslabón/Dáriel/Brasa/Baltra/Bront/Brakk. Retomar con `git fetch origin art/facu-gm-kit-first-pass-20261023` y leer este cierre, REMOTE_CLOSURE.json y CORRECTION_BATCH.json. `recipe.json` contiene comandos exactos para reproducir; `NODE_PATH=... CHROMIUM_PATH=/tmp/chromium node tools/vfx/verify-facu_gm-kit.js` exporta las fuentes reales.
 
 Inventario global incompleto. No nuevos merges ni publicación verificada en este bloque.
+
+## Cierre remoto
+
+PR207 borrador. Producción `b5932e678a1383e3185272d9f223a57c845feeb1`, árbol `6bbf769e2c72c6bc0636f6a5fd1b8a62ebde4a45`:111archivos cotejados contra Gitbloblocal/árbol y ref. Este commit de cierre añade REMOTE_CLOSURE y actualiza manifiesto/checkpoint; su SHA final se consulta en PR207. Preview21imágenes/5canvases pintados/0errores PASS, sólo diagnóstico95ms. CI del nuevo head debe consultarse fresco; ningún resultado de un padre aprueba el cierre. Main f62d181 permanece intacto.
