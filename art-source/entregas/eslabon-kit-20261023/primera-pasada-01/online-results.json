@@ -1,0 +1,87 @@
+{
+  "checks": [
+    {
+      "host": "solciju",
+      "guest": "eslabon",
+      "ok": true,
+      "rh": {
+        "draw": {
+          "eslabon_hook:beam": 24,
+          "eslabon_hook:burst": 10,
+          "eslabon_line:beam": 252,
+          "eslabon_line~h:burst": 24,
+          "eslabon_ward~p:aura": 68,
+          "eslabon_ward~p:beam": 20
+        },
+        "k": "eslabon",
+        "casts": 4,
+        "objects": [
+          {
+            "id": 2,
+            "owner": 1,
+            "kind": "chain"
+          }
+        ],
+        "hp": 521.64,
+        "skin": "skin_juramento_roto"
+      },
+      "rg": {
+        "draw": {
+          "eslabon_hook:beam": 62,
+          "eslabon_hook:burst": 27,
+          "eslabon_line:beam": 522,
+          "eslabon_line~h:burst": 54,
+          "eslabon_ward~p:aura": 134,
+          "eslabon_ward~p:beam": 39
+        },
+        "k": "eslabon",
+        "objects": [
+          {
+            "id": 2,
+            "owner": 1,
+            "kind": "chain"
+          }
+        ],
+        "hp": 521.64,
+        "skin": "skin_juramento_roto"
+      }
+    },
+    {
+      "name": "eslabon_hook:beam drawn both peers exact variant",
+      "ok": true,
+      "host": 24,
+      "guest": 62
+    },
+    {
+      "name": "eslabon_hook:burst drawn both peers exact variant",
+      "ok": true,
+      "host": 10,
+      "guest": 27
+    },
+    {
+      "name": "eslabon_line~h:burst drawn both peers exact variant",
+      "ok": true,
+      "host": 24,
+      "guest": 54
+    },
+    {
+      "name": "eslabon_line:beam drawn both peers exact variant",
+      "ok": true,
+      "host": 252,
+      "guest": 522
+    },
+    {
+      "name": "eslabon_ward~p:aura drawn both peers exact variant",
+      "ok": true,
+      "host": 68,
+      "guest": 134
+    },
+    {
+      "name": "eslabon_ward~p:beam drawn both peers exact variant",
+      "ok": true,
+      "host": 20,
+      "guest": 39
+    }
+  ],
+  "errors": []
+}

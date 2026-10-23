@@ -1,0 +1,246 @@
+{
+  "date": "2026-10-23",
+  "expectedHeadSha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+  "result": {
+    "sha": "f62d181477adcb4607cc615411cc51bad769f681",
+    "merged": true,
+    "message": "Pull Request successfully merged"
+  },
+  "verified": {
+    "pr": {
+      "merged": true,
+      "state": "closed",
+      "merge_commit_sha": "f62d181477adcb4607cc615411cc51bad769f681",
+      "merged_at": "2026-10-23T21:47:29Z",
+      "head": "5f51df4999c0c80603faa4113cccdf85c9ab6e84"
+    },
+    "main": "f62d181477adcb4607cc615411cc51bad769f681"
+  },
+  "checks": [
+    {
+      "id": 120669310254,
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412176/job/120669310254"
+    },
+    {
+      "id": 120669309833,
+      "name": "entry-reference",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412176/job/120669309833"
+    },
+    {
+      "id": 120669309209,
+      "name": "safari-engine",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412176/job/120669309209"
+    },
+    {
+      "id": 120669307525,
+      "name": "lanes",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412176/job/120669307525"
+    },
+    {
+      "id": 120653837720,
+      "name": "CodeQL",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/runs/120653837720"
+    },
+    {
+      "id": 120653836704,
+      "name": "VFX de definitivas, decales e íconos de habilidad",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412269/job/120653836704"
+    },
+    {
+      "id": 120653836642,
+      "name": "Identidad de arenas, objetivos y regalo inicial",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412269/job/120653836642"
+    },
+    {
+      "id": 120653836621,
+      "name": "Objetos, economía y tienda (parte A)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412269/job/120653836621"
+    },
+    {
+      "id": 120653836574,
+      "name": "Regresión, UX y carriles",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412269/job/120653836574"
+    },
+    {
+      "id": 120653836332,
+      "name": "Objetos, economía y tienda (pruebas que hoy fallan en la base)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412269/job/120653836332"
+    },
+    {
+      "id": 120653836214,
+      "name": "Arnés y lógica pura (sin navegador)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412269/job/120653836214"
+    },
+    {
+      "id": 120653478835,
+      "name": "emoji-lint",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412354/job/120653478835"
+    },
+    {
+      "id": 120653478366,
+      "name": "evidence",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412204/job/120653478366"
+    },
+    {
+      "id": 120653478323,
+      "name": "readability",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412117/job/120653478323"
+    },
+    {
+      "id": 120653469234,
+      "name": "Analyze (python)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023407735/job/120653469234"
+    },
+    {
+      "id": 120653469122,
+      "name": "Analyze (javascript-typescript)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023407735/job/120653469122"
+    },
+    {
+      "id": 120653468876,
+      "name": "Analyze (actions)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023407735/job/120653468876"
+    },
+    {
+      "id": 120653451709,
+      "name": "emoji-lint",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "details_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023404817/job/120653451709"
+    }
+  ],
+  "workflows": [
+    {
+      "id": 40023412354,
+      "name": "Emoji lint (arte pixel)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412354"
+    },
+    {
+      "id": 40023412204,
+      "name": "Art production evidence",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412204"
+    },
+    {
+      "id": 40023412269,
+      "name": "Integracion pruebas",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412269"
+    },
+    {
+      "id": 40023412117,
+      "name": "VFX readability and combat parity",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412117"
+    },
+    {
+      "id": 40023412176,
+      "name": "Champion entry balance",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "event": "pull_request",
+      "run_attempt": 2,
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412176"
+    },
+    {
+      "id": 40023407735,
+      "name": "PR #204",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "event": "dynamic",
+      "run_attempt": 1,
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023407735"
+    },
+    {
+      "id": 40023404817,
+      "name": "Emoji lint (arte pixel)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+      "event": "push",
+      "run_attempt": 1,
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023404817"
+    }
+  ],
+  "historicalFailure": {
+    "job": 120653479284,
+    "result": "FAIL compra.objeto_del_invitado_en_la_base [0,0]; cause not demonstrated",
+    "retryJob": 120669307525,
+    "retry": "SUCCESS",
+    "note": "Initial failure retained in previous Dáriel checkpoint; no test/runtime change or gate relaxation for retry."
+  },
+  "scope": "Cazadora asset loading only, +16/-8 runtime. PASS_COMPONENT and focused visual/renderer/relay evidence reviewed. No new Cazadora art and no global kit approval.",
+  "publicationVerified": false
+}

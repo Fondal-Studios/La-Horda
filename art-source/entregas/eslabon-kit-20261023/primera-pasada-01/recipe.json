@@ -1,0 +1,152 @@
+{
+  "schema": 1,
+  "base": "817610a78595e894995cec8032dd64149dbfe925",
+  "source": "js/champions/skill-fx-a/c/eslabon.js",
+  "sourceSha256": "4e001f57a1409458b9c551294102f519841c882f9ef2051ab5f5cd4525c8726c",
+  "approach": "Native SfaStrip drawing recipe, no paid API or generated body",
+  "specs": [
+    {
+      "theme": "eslabon_hook",
+      "art": "beam",
+      "size": 12,
+      "arc": 0,
+      "w": 16,
+      "h": 12,
+      "n": 8,
+      "cells": [
+        64,
+        57,
+        57,
+        57,
+        64,
+        64,
+        64,
+        64
+      ]
+    },
+    {
+      "theme": "eslabon_hook",
+      "art": "burst",
+      "size": 64,
+      "arc": 0,
+      "w": 64,
+      "h": 64,
+      "n": 12,
+      "cells": [
+        80,
+        89,
+        99,
+        121,
+        129,
+        140,
+        149,
+        146,
+        108,
+        63,
+        29,
+        0
+      ]
+    },
+    {
+      "theme": "eslabon_line",
+      "art": "beam",
+      "size": 12,
+      "arc": 0,
+      "w": 16,
+      "h": 12,
+      "n": 8,
+      "cells": [
+        66,
+        66,
+        66,
+        66,
+        66,
+        66,
+        66,
+        66
+      ]
+    },
+    {
+      "theme": "eslabon_line",
+      "art": "burst",
+      "size": 64,
+      "arc": 0,
+      "w": 64,
+      "h": 64,
+      "n": 12,
+      "cells": [
+        179,
+        177,
+        176,
+        176,
+        174,
+        174,
+        174,
+        166,
+        120,
+        79,
+        46,
+        0
+      ]
+    },
+    {
+      "theme": "eslabon_ward",
+      "art": "beam",
+      "size": 12,
+      "arc": 0,
+      "w": 16,
+      "h": 12,
+      "n": 8,
+      "cells": [
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60
+      ]
+    },
+    {
+      "theme": "eslabon_ward",
+      "art": "aura",
+      "size": 0,
+      "arc": 0,
+      "w": 48,
+      "h": 56,
+      "n": 12,
+      "cells": [
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272
+      ]
+    }
+  ],
+  "commands": [
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/verify-eslabon-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=/tmp/eslabon-reexport node tools/vfx/verify-eslabon-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=art-source/entregas/eslabon-kit-20261023/primera-pasada-01/after node tools/vfx/capture-eslabon-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium BASELINE=1 OUT=art-source/entregas/eslabon-kit-20261023/primera-pasada-01/before node tools/vfx/capture-eslabon-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium MOBILE=1 OUT=art-source/entregas/eslabon-kit-20261023/primera-pasada-01/after-mobile node tools/vfx/capture-eslabon-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium MOBILE=1 BASELINE=1 OUT=art-source/entregas/eslabon-kit-20261023/primera-pasada-01/before-mobile node tools/vfx/capture-eslabon-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium ONLY=eslabon node tools/vfx/parity-eslabon-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/portadores/eslabon-firstpass-check.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/portadores/eslabon-firstpass-online.js"
+  ],
+  "dependencies": [
+    "playwright",
+    "local Chromium path",
+    "server/package-lock.json for relay"
+  ],
+  "timing": "Beam8 frames loops70ms, aura12 loops100ms in renderer; burst12 mapped to480ms event. Preview95ms fixed diagnostic only. Captures80/250/500/1100/2000 nominal are80/256/512/1104/2000 real."
+}
