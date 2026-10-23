@@ -1,0 +1,611 @@
+{
+  "schema": 1,
+  "date": "2026-10-23",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "branch": "art/brasa-kit-first-pass-20261023",
+  "base": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "components": [
+    "A-FX-brasa-h1",
+    "A-FX-brasa-h2",
+    "A-FX-brasa-h3",
+    "A-PROP-sfa-steam"
+  ],
+  "files": [
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/AUDIT.json",
+      "bytes": 898,
+      "sha256": "30e76bc94f630435aa049d96f788bcae923e3ea6b21f9e60bd7468bf34f02270",
+      "gitBlob": "9721b89dbedd26eb7e2d9849011f86dc148fbb8e"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/COMPARISON.json",
+      "bytes": 1933,
+      "sha256": "bb3004861fb2340174081377af2118d25a62734539918bfdab355098de6f1845",
+      "gitBlob": "81cff5ea548c076d80ccb5e16a8d2bbb11167d68"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/KIT_CHECKS.json",
+      "bytes": 2037,
+      "sha256": "bea4d6fbf06e17c494ae4b8cedff4eb3efc2b7fc2db01dbf1e347b6c59ed7d61",
+      "gitBlob": "522e966708a6eca86ea57941a0a2805fdbc4efef"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/PNG_INDEX.json",
+      "bytes": 14810,
+      "sha256": "c3254d42168bde4735ddafcd724696be0ab98a72b0bd181fddee1cee38fc4f3a",
+      "gitBlob": "3d3b3d0744f1f1e8abc737df8aff9aeb1d1937a1"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/PR91_MERGE.json",
+      "bytes": 507,
+      "sha256": "4b36e5b9efe265349d1df7b27b5e14f249c9f3537c7d0b09ad89491abf8860ee",
+      "gitBlob": "787cf00205eeafd1f900e0da46eab1f0b172ce4c"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/PREVIEW_CHECK.json",
+      "bytes": 124,
+      "sha256": "a950a612da1b66806d792e05196f2fcc19869eafffc58c29ef37c35f8dfd1338",
+      "gitBlob": "0d8fa8f9ddec5f6084e129503f54045460b21334"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/REEXPORT.json",
+      "bytes": 985,
+      "sha256": "90494d4f22e68189992366d73a65b759becbc543a9fe88bfae7d5cf1124e222d",
+      "gitBlob": "b8aeafe3921981cfbf0c87d4b630fd92915b432e"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/REVIEW.json",
+      "bytes": 5890,
+      "sha256": "99c0bfd74aae5207396395a9c0ad00ee3918d12f46f21947f8088825957ad247",
+      "gitBlob": "5f73701ee25073481c93339e3a928c0bda9b6399"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/RUNTIME_DIFF.json",
+      "bytes": 380,
+      "sha256": "0aeea17e5b74394b3749e59a828cac3ea2daf254b92b1d7c82770deecb44db0c",
+      "gitBlob": "589b450eba036c5fedd5b3810397bf8127a7e050"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/SOURCE_REFERENCES.json",
+      "bytes": 4386,
+      "sha256": "67cdacfbc7be69e9e6d950a41adc5fd14c7e016b43bacd82a8272e574197bda7",
+      "gitBlob": "370bfffb1ed499bc5243c9481b696bb3638618d2"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/TEST_ATTEMPTS.json",
+      "bytes": 1159,
+      "sha256": "eee1bddf1219cddb78d0f914d4dda9f06fee3874291353e19621f989b6b0464a",
+      "gitBlob": "b449fd4f060f1ba38d1e97ea2bf37f9cb8d3dec7"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/VERIFICATION.json",
+      "bytes": 5923,
+      "sha256": "5309852cbb13ad902219ec0f3b84af4d4906fc4eaafa72cc8cd344b975dd6030",
+      "gitBlob": "d71564c86b06aaab76911c285a86370c61fb0cab"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-horizontal/brasa-0-native250.png",
+      "bytes": 401499,
+      "sha256": "1c865a1be02f7b3d40b4edd59cbc51d97c8e3eda0a56b37e8b7789806f7397e4",
+      "gitBlob": "86e1b4bdebf70b2af491bae15e0c5d49bd3902ac"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-horizontal/brasa-0.png",
+      "bytes": 117696,
+      "sha256": "a48424aaa998dbc017edb73773d040cf042e1eed6e557b776565f427a94f7112",
+      "gitBlob": "512a5252b70fc70dca783ef269d808e004292723"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-horizontal/brasa-1-native250.png",
+      "bytes": 405246,
+      "sha256": "0da60f462eb42266364d009486f29136b0abe1ee2156d5263fb6aa1d926b4c6f",
+      "gitBlob": "1b5610f49f9ccadb254ac3b23c757659dc593fec"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-horizontal/brasa-1.png",
+      "bytes": 130288,
+      "sha256": "b662300ce2839e6beb36079571c1eccf3fe0f1874b9db167afcc5d7bcae633e9",
+      "gitBlob": "9be6609a5f57856732d62037a1af44f4f142a05f"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-horizontal/brasa-2-native250.png",
+      "bytes": 397655,
+      "sha256": "4e3a799d3b3fb26b3d33b78d55a051da4839a8de94965be7d9a8ea6fff7e40ec",
+      "gitBlob": "dcc8690c106f4874971fc0a7d71785fc48d7cf45"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-horizontal/brasa-2.png",
+      "bytes": 122885,
+      "sha256": "031136f155747654f3e78b4d067831b1732f70b6a1074cc17b9cc3ed76fb3334",
+      "gitBlob": "cacd44fde922e6d64d20897dd5f17cf1a13a31d9"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-horizontal/brasa-3-native250.png",
+      "bytes": 385149,
+      "sha256": "64da87458fe7f94b8eb1ef9335665ec11f9a025d59109ae59459518613a1da1d",
+      "gitBlob": "d69d55a3df8fe96059267464eb360d816c7ed5e4"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-horizontal/brasa-3.png",
+      "bytes": 128605,
+      "sha256": "1bb3d71bc2dee8223820d450c78a2a3101bcaeed813cb8794dc90e792390620a",
+      "gitBlob": "4603705b2ec02ff640734e33c9b247aeb12da1e7"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-horizontal/brasa-4-native250.png",
+      "bytes": 411868,
+      "sha256": "ec9332ba932b765d03d251bc820edb7aca4236ae0ff577c43e88d5c2cab183d0",
+      "gitBlob": "73aa925eae0f44a4fe18038d12c9b26e4d4aa192"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-horizontal/brasa-4.png",
+      "bytes": 137289,
+      "sha256": "8d7e0d135920a6ae32bcf897d873461cb6538808b696ad94fe272797ba0e11c2",
+      "gitBlob": "e734489f578b4298137fc66107f1365e2bc4c1f9"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-horizontal/capture.json",
+      "bytes": 7776,
+      "sha256": "8a1deb0a47ce971d4d88004a4df91c26fd1dd09ff74ed1cdcc8bcd4d72910698",
+      "gitBlob": "6619710bd4a6c3ceacd1cfdf5e7117f69e4e4b11"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-0-native250.png",
+      "bytes": 380512,
+      "sha256": "177f1d8e826c73ffd269be9ffbf0928f8f88fb412155fb67ebcf6209247e4571",
+      "gitBlob": "28cdc596aeff293768d763304a4d5a092a70fd31"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-0-native500.png",
+      "bytes": 378748,
+      "sha256": "75bab2b389c6e70cd05e037e023a45f956fe1b259e3d2cc1c71e3b5d279b1e54",
+      "gitBlob": "3e5000e3b92c9257fa710ca1333f8984e72e053d"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-0.png",
+      "bytes": 113761,
+      "sha256": "808f9d11334371c124a2893be83756d2950440bb5a04c812dd9fee8564430d91",
+      "gitBlob": "f669bca469ec87c7c5ae1ecd75ecb65a185531cd"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-1-native250.png",
+      "bytes": 390481,
+      "sha256": "a873b199ed63188090c5a23c7cc3a16912afa407d6e69a3d4b28cfe70721457e",
+      "gitBlob": "7f616151d398955a3b5b97f3a4c8d2035cecbe1c"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-1-native500.png",
+      "bytes": 380410,
+      "sha256": "6c5fc9ed2294220a59f25cc0c1e7841f9a75551ac0a8c9d95e826c7598a24f30",
+      "gitBlob": "e95666a72da92587bafc488efa67f75508c501e0"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-1.png",
+      "bytes": 127244,
+      "sha256": "847479e7e9ae766b573c05877b9cee0d0616498d1cc339f7ecec84c277694bfc",
+      "gitBlob": "e0f34b1a1117fa1d203896ec52ce5df945a473fd"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-2-native250.png",
+      "bytes": 383381,
+      "sha256": "1c147f922f6e00394f75c6415c6b60719d3db6bd8e764a9c8f56cf804c90a0ae",
+      "gitBlob": "56de1b1804410ce7f1add59632ad26d26a55ed2b"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-2-native500.png",
+      "bytes": 380017,
+      "sha256": "761359ad1b4d9b1ae1754c022f19e55fe433b60c5d1eadced6647996d1fd6fe8",
+      "gitBlob": "de5e7bbb70b8ac3238587d07560f526cbdd0c6d6"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-2.png",
+      "bytes": 119892,
+      "sha256": "93cfa45f62504390ee0bc8424e80bbed30acf45ae8a4355bb13cbf8012ad232a",
+      "gitBlob": "3a1f8aadb1b0a96fa49c1ea51a7b3e14eb0cfcaf"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-3-native250.png",
+      "bytes": 371280,
+      "sha256": "48e304857f327cc4aba71c4de163451dd9d562e4200a02662a1950c3c722dc44",
+      "gitBlob": "5c38755d5640bd775a7803d9a558d8887a3c4116"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-3.png",
+      "bytes": 128780,
+      "sha256": "4c403aa631720ff96213e69780cfa05fd71cb1af7041e0b4ca150e6ae4a4cf43",
+      "gitBlob": "51c57b05696807cb90734b0863a191a4a28b0af3"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-4-native250.png",
+      "bytes": 396509,
+      "sha256": "7a35a0ff1f2957f73064960d001e0d3b42d73af67f529b75ff59914b0633c829",
+      "gitBlob": "032e157175de9d04b56c0cd08fefc80647b16b48"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-4.png",
+      "bytes": 133818,
+      "sha256": "2d59df51136e081569df00517a4ef8882bd8b2821e499d2d8efeec0f5020127d",
+      "gitBlob": "da449f360e79e733ec75967a73fae6b324db29c6"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/capture.json",
+      "bytes": 7776,
+      "sha256": "8e37568448c52cb86bedc7304b0f8249a7c34fad5a5f02ef740efd75b0d32e1d",
+      "gitBlob": "21015feef033004814001eeaa33a5f4c13cde8a9"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/attempt-01/export-size128/VERIFICATION.json",
+      "bytes": 5928,
+      "sha256": "3e11770207dcb8d168a9d8063da076b83bf02e68b4541bbb1a7e9ffc777a4461",
+      "gitBlob": "1e5531a80ac7b939ff6337f4ca7fbb0f959d44da"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/attempt-01/export-size128/brasa_purge-cone.png",
+      "bytes": 14277,
+      "sha256": "7ba9518775ad56b318b939a89a5ed6ba3163dfdf603b0e261ff10aa110cf3b81",
+      "gitBlob": "cc99c9936432046a0ff5f1f8eee79424c04c6acd"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/attempt-01/export-size128/brasa_vent-zone.png",
+      "bytes": 10385,
+      "sha256": "ba90e026377080be9cf986e51b9b84e5e95cc2228da7ca7a83bb636001d520af",
+      "gitBlob": "43998064a8702bdcdbca559b8ac4170b84394f3a"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/attempt-01/online-results.json",
+      "bytes": 1766,
+      "sha256": "60a5e10582a941c8209fb072638b0a23b1132fc94d31d22806c07cb5bb462aac",
+      "gitBlob": "083d7b90d3fa0fd492bf0520ac1d224d0869633c"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/attempt-01/online.log",
+      "bytes": 717,
+      "sha256": "47c090c3c3c699da95e14889f2647642a1972af3a05d515c8455861f59683d17",
+      "gitBlob": "aa3cc2729fc23c558f7e00e525957c2a020a7a1c"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/attempt-01/portadores.log",
+      "bytes": 346,
+      "sha256": "98cb1564e8c4f8f8741bc4afe3e86d3fb67fb543ecba55dd7f1e56dc76938fa6",
+      "gitBlob": "c3a23c4ab2f47eb3dbbc1e79e911dbc2f2bd4bce"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-horizontal/brasa-0-native250.png",
+      "bytes": 402635,
+      "sha256": "df65f4c3dbc6bd2c2e34af293a1b60577370005012b9b73810c5894fc67d26c0",
+      "gitBlob": "203535749e5b4483f823ed95039372cd10ba5941"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-horizontal/brasa-0.png",
+      "bytes": 118302,
+      "sha256": "20219e48cae3c7acb686e1738f0fae3e2792ba7bb3b046064b9d5b6d01b8d81e",
+      "gitBlob": "cf0a315cd84a19cd0295335c496f5cb88e1fcad4"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-horizontal/brasa-1-native250.png",
+      "bytes": 406861,
+      "sha256": "4f0db06d4ee2eae560d7727bb8452ff8e139bb540c60b37ab72059981bf53aee",
+      "gitBlob": "68d50c645ef1319e33e7d998df921c644d8ddedf"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-horizontal/brasa-1.png",
+      "bytes": 130504,
+      "sha256": "c8a46628023af5035f0ccc7a96c84abce43b526e3ed6c44ac374430490300dc6",
+      "gitBlob": "69823ee36c80808340e4da720f9fb46b00f1dd0c"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-horizontal/brasa-2-native250.png",
+      "bytes": 398463,
+      "sha256": "bff4bfdf7cfb902a5f65b2f6db2d8bd9954fb0c7937e838536db9df799cb99b1",
+      "gitBlob": "e815fc6cc78bb4a3debef2b4b52c6f40e46b022e"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-horizontal/brasa-2.png",
+      "bytes": 124222,
+      "sha256": "1d32c3b412b9a1b68b46104099154b29948394de85a776f0964783daf8b1aae1",
+      "gitBlob": "b187fbd9ed94d13e63d3ac548ced05d7e7b56a8c"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-horizontal/brasa-3-native250.png",
+      "bytes": 385149,
+      "sha256": "64da87458fe7f94b8eb1ef9335665ec11f9a025d59109ae59459518613a1da1d",
+      "gitBlob": "d69d55a3df8fe96059267464eb360d816c7ed5e4"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-horizontal/brasa-3.png",
+      "bytes": 128605,
+      "sha256": "1bb3d71bc2dee8223820d450c78a2a3101bcaeed813cb8794dc90e792390620a",
+      "gitBlob": "4603705b2ec02ff640734e33c9b247aeb12da1e7"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-horizontal/brasa-4-native250.png",
+      "bytes": 415759,
+      "sha256": "c3bd71740db2b45c9135d72fd882ec1918bf7c34ff2813c0981dc3038a4c2131",
+      "gitBlob": "7590ab216726b703c0742e957d622a77f396c00b"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-horizontal/brasa-4.png",
+      "bytes": 143942,
+      "sha256": "7a75dd0927cb06849e8f3806c346f98dda5e083f3c546fda192c5b9ee5d750a5",
+      "gitBlob": "43930663a12457b03bdc538d70ce8a4eb132c3b4"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-horizontal/capture.json",
+      "bytes": 8500,
+      "sha256": "74207cbd6d4a58cd6b2fef506403feb08e93f655346eb8ea7cd8a2f18ad05824",
+      "gitBlob": "f9332c199ea986cc25c9c40de166b559537a40f5"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-mobile/brasa-0-native250.png",
+      "bytes": 381367,
+      "sha256": "82a0cbfe285cad87b2b43240688820b4449e055057fcd2ee51c5646de67ff9e5",
+      "gitBlob": "e8d990a0c8bf5f0ad27a16c8b611c657ede6ccf3"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-mobile/brasa-0.png",
+      "bytes": 114475,
+      "sha256": "8bfbcf4da3710f0a56d0167909dc4c30c2f963f622be4c403950d0dba7c81303",
+      "gitBlob": "f5704845ff77aa660c64902cb056cb85a0c0281c"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-mobile/brasa-1-native250.png",
+      "bytes": 392050,
+      "sha256": "c06ef619607c277406db39c397ebcfe033553f83cb051eecf939d946137e15bd",
+      "gitBlob": "ea36b62e7b8e2b58e1dffd54bf4c5485ff69b2a7"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-mobile/brasa-1.png",
+      "bytes": 127457,
+      "sha256": "5c5dc73614ae0c818b53d45709ea347bb9d0909a991ec9ec4e91993dc9f4f332",
+      "gitBlob": "66aed9ddc7a8ee79a65bdcc87959f28338e31f3d"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-mobile/brasa-2-native250.png",
+      "bytes": 383999,
+      "sha256": "7ace6f2dad5989442e423226a0b2672c6dd5ee31e4c7e362ef004c99491531e5",
+      "gitBlob": "d2dcf93ede3c28b042b35cb4a9bf12cac2b7584e"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-mobile/brasa-2.png",
+      "bytes": 121146,
+      "sha256": "e123d7c6233ee964b03b273299475d0e45324c039061799d3ecb043042e52b10",
+      "gitBlob": "57204b01ccbc1b24e3789a54c53ddcdbb75a1439"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-mobile/brasa-3-native250.png",
+      "bytes": 371280,
+      "sha256": "48e304857f327cc4aba71c4de163451dd9d562e4200a02662a1950c3c722dc44",
+      "gitBlob": "5c38755d5640bd775a7803d9a558d8887a3c4116"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-mobile/brasa-3.png",
+      "bytes": 128780,
+      "sha256": "4c403aa631720ff96213e69780cfa05fd71cb1af7041e0b4ca150e6ae4a4cf43",
+      "gitBlob": "51c57b05696807cb90734b0863a191a4a28b0af3"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-mobile/brasa-4-native250.png",
+      "bytes": 400250,
+      "sha256": "3812842a95034f08b12419904e2c2b9713a499f5b9f6ac7f0c014868f9ea58b1",
+      "gitBlob": "bdc43204a3e20843889e00d13e46124e967900dc"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-mobile/brasa-4.png",
+      "bytes": 140321,
+      "sha256": "6a44a2186481f835ab056323e57bc5a840a4e981d4ed535de46c262431b81e9f",
+      "gitBlob": "ffa29a4a7f2a83a6a02498d454f37215b3e5917b"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/before-mobile/capture.json",
+      "bytes": 8500,
+      "sha256": "ec42994eb1d2f4e06b62c18ce8fd78cff0b882b4027c614327d80f1c075025e3",
+      "gitBlob": "7748d458f7de6ce502e802fa6f59632ff4dd0528"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/brasa_dismantle-aura.png",
+      "bytes": 1840,
+      "sha256": "44ef3438c67d9abf7cb08999bfe660fab767136bc928299163974085cfdcd658",
+      "gitBlob": "38108e6059122a57ab6e9ade74cdb8470053f4a0"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/brasa_dismantle-burst.png",
+      "bytes": 3095,
+      "sha256": "3af2d907972dddf0c5924b6e42eec0a8805e65f5dc6a2fc6f70cca41a94b6eff",
+      "gitBlob": "996297eb82fa0c4b0292ef809630ea0d4ef5970c"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/brasa_mount-burst.png",
+      "bytes": 2303,
+      "sha256": "0e6f2b418d98ce8e6e9b7b5f2b9777458274a6122d54cb42ba39cdfb87fba21b",
+      "gitBlob": "da98946be70a6e57f06b3cd18a128fec31f7b5ea"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/brasa_mount-nova.png",
+      "bytes": 3417,
+      "sha256": "7418c6934a0a8c7fbd88f2969d014811001ea02f2421b4cff378fb15b2b5b9fb",
+      "gitBlob": "fbedaa401d44ff746be4ae6f4ce8beaec61dc51c"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/brasa_purge-cone.png",
+      "bytes": 9658,
+      "sha256": "02b604a805f492c1f49f0858f8ecbb6925b6735c039e51860418020546adf001",
+      "gitBlob": "7829334b2ea7ab9e178508fb9a4a246184965f4b"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/brasa_vent-zone.png",
+      "bytes": 6678,
+      "sha256": "f568c2ccc433bf504b143f85bd1314ed338aea6c095e79854204f4d33a2b9452",
+      "gitBlob": "bac6bdd5c988fb6ac389b6dc98cd75cf5243bfaf"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/logs/after-horizontal.log",
+      "bytes": 400,
+      "sha256": "55af3c2c77f10d3102206a074052f8118c94d7214caa2ad5dd514cf483a6b2e8",
+      "gitBlob": "000e5e1c446c90e1d890da0e54feee7d069f2ca2"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/logs/after-mobile.log",
+      "bytes": 400,
+      "sha256": "072c6963e8e4190f2e9e91ceb3f2e28fb8f523ad3d7c943c42126361a77438db",
+      "gitBlob": "187aabe534f98818e82364622a8c47d81d673c5f"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/logs/before-horizontal.log",
+      "bytes": 434,
+      "sha256": "1aeda8e4970f4567156fc842c9b200ddadac83e7f35ccf669acfa8d781eefc5b",
+      "gitBlob": "77ff6964f2153b4a259fa366f73af8e7baed8f35"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/logs/before-mobile.log",
+      "bytes": 434,
+      "sha256": "76d9f5be62444ca3859a6a89047ab0e77984bc5418a182beb775260cc2f439b7",
+      "gitBlob": "9463413aefb7e059412aea93cae469d9ee086221"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/logs/functional.log",
+      "bytes": 143,
+      "sha256": "18741beb052aeb0a0a94e71be16662a2b9dc00e7dec4d5a13baa030cdfc85143",
+      "gitBlob": "c270b7bb07c334cf855128d61eff235a3fff1a26"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/logs/kit.log",
+      "bytes": 142,
+      "sha256": "08535e6dceea85e4f32868c2901f003e110f9928f8d75e003fe23dfe0e803604",
+      "gitBlob": "403a838b4b01a34b9d4c9ff961a4d93aedbcbb07"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/logs/online.log",
+      "bytes": 717,
+      "sha256": "19bea7800031388182329150fd277d2477c21aa4b2937f3c0c1c2953d73605a3",
+      "gitBlob": "6455601f14d6b18ba7377a7060ed25b6c8754ee9"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/logs/parity.log",
+      "bytes": 107,
+      "sha256": "885d949f6c79aaab00e0a1b4043ee6033dc513281379f59a4a6ca71cc9a248fe",
+      "gitBlob": "55d3249b79c2c811f8b223a6f604cceb57db21a2"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/logs/portadores.log",
+      "bytes": 346,
+      "sha256": "98cb1564e8c4f8f8741bc4afe3e86d3fb67fb543ecba55dd7f1e56dc76938fa6",
+      "gitBlob": "c3a23c4ab2f47eb3dbbc1e79e911dbc2f2bd4bce"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/logs/reexport.log",
+      "bytes": 130,
+      "sha256": "10b555496ac428d74836d41d39b56bb98137b3e470d36371b721001669a553dd",
+      "gitBlob": "3eeb83ed30d206edbc7dd6d816ba42385abc613d"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/logs/verify.log",
+      "bytes": 130,
+      "sha256": "4615010af605730dacaef7c33b62fc0dfa03dd40ddd34b64603204e061d00038",
+      "gitBlob": "04a0e77e331fd10d7ca7dc5bf5daf3941b5a9752"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/online-results.json",
+      "bytes": 1895,
+      "sha256": "1a380fc91bd905d7347b0344d6fc30446d93cd0d9d13654147629fd9ab4f528d",
+      "gitBlob": "073a1eef644facda0522056f7531676c55837249"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/parity.json",
+      "bytes": 5964,
+      "sha256": "a3f418228cbb8ec721f00868dbb93ffd7856334e8d13baa81c318311281b5802",
+      "gitBlob": "015267239bdb51cc8d51282012763d610476b696"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/preview.html",
+      "bytes": 5136,
+      "sha256": "0020daea4e0f94490200118e13e52a22b3a744343f2feb7fbefe19d1f2f72461",
+      "gitBlob": "cd0a8896ecb58eb6e0e854d1424b63dfee7441c6"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/recipe.json",
+      "bytes": 3601,
+      "sha256": "4e5ff2ee76616a0e087f87fb46a87c78247cafac5128f38480c6f5655008f9b8",
+      "gitBlob": "9dad6b99513b6b7ec15660700377af7d1d7b0286"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/sources/brasa.js",
+      "bytes": 4415,
+      "sha256": "9e700e8ccc98ebac0352fc826d5eabb740f01907128cd2491ea48a0d7e9dca7f",
+      "gitBlob": "ebfbecddef60ec2fe37ef4cc2236e2c5c5751c64"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/sources/check-preview.js",
+      "bytes": 877,
+      "sha256": "c8219ff820af2ba35e26e75b0aa8dc26f6cdf480553f1caee92adface66f43ba",
+      "gitBlob": "15b318d582c2c5c14c3d70c1902136f1011c9506"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/sources/run-functional.js",
+      "bytes": 313,
+      "sha256": "431e54c98fc7010e73e650a4ba0a0404e2ee2f06e19a6d87b34e1dc19a5fb73c",
+      "gitBlob": "ffcb88c659c5f08ef220ec1ca005f61b5e09d014"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "bytes": 65772,
+      "sha256": "7a5fdff877eae7674925f462d6ba6ecb1a3880ad25a63281d1e95c8af007fde0",
+      "gitBlob": "f219dd0e07e7acaaeda4516b788ab40c19c55684"
+    },
+    {
+      "path": "js/champions/skill-fx-a/bind.js",
+      "bytes": 14385,
+      "sha256": "febce1761294fb2e39ad632387bc0147a8813bc57f32c486ef206e612f0169ff",
+      "gitBlob": "79333aeff3e81042397c8edc4835acd8658a91a5"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/brasa.js",
+      "bytes": 4415,
+      "sha256": "9e700e8ccc98ebac0352fc826d5eabb740f01907128cd2491ea48a0d7e9dca7f",
+      "gitBlob": "ebfbecddef60ec2fe37ef4cc2236e2c5c5751c64"
+    },
+    {
+      "path": "js/champions/skill-fx-a/engine.js",
+      "bytes": 28948,
+      "sha256": "2aa1c15cd9e6ba0567b7870a2d40dbf25a662fa1b58762e2bd8464213dbd4c02",
+      "gitBlob": "f62d52aac23c0cc7695bdf53c0eb36e31e7b45e3"
+    },
+    {
+      "path": "tools/portadores/brasa-firstpass-check.js",
+      "bytes": 4543,
+      "sha256": "be327c091c80368141757db4778ed6ce67442378bf5fab0d93a6aff6f675165f",
+      "gitBlob": "92e1390990e17a8073cb6806d6eb46f0cd2a45f7"
+    },
+    {
+      "path": "tools/portadores/brasa-firstpass-online.js",
+      "bytes": 4997,
+      "sha256": "0ba40e6d946a5379dcd501a38675c3b773bf66144c5c81efa3ad3291f1af0918",
+      "gitBlob": "6d14c9b54ac569613bf7dcc423aa26b2feb9b018"
+    },
+    {
+      "path": "tools/vfx/capture-brasa-kit.js",
+      "bytes": 7132,
+      "sha256": "9fd595487046971b19a05d331344b8ac36b57c9e0912731481fb3694fae4bd15",
+      "gitBlob": "75c649f05d78e338dc2c2dd4b682ffea3a8c6108"
+    },
+    {
+      "path": "tools/vfx/parity-brasa-kit.js",
+      "bytes": 6926,
+      "sha256": "518569c51b98d5ad07c7b32719301539a60b3ff25ba0a337487176183f3df143",
+      "gitBlob": "9e2da52ee35ae7a0421f09b9c61ba41cf0b78df0"
+    },
+    {
+      "path": "tools/vfx/verify-brasa-kit.js",
+      "bytes": 2713,
+      "sha256": "4ce472fc9de060a49c118a31605a1ceccae23c78877ba156f319bd09efddefba",
+      "gitBlob": "3f60214c1deb4c4ffa6153b79daad04f3e2c9267"
+    },
+    {
+      "path": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/CHECKPOINT.md",
+      "bytes": 4806,
+      "sha256": "d118746499d5e615d65f11bee499bd9d0674b164169174e6428a70fac822f506",
+      "gitBlob": "b3916ce5731d75259ff0f9078c7e27ee6cb4030c"
+    }
+  ],
+  "pngPolicy": "All generated raster hashes in PNG_INDEX; selected native500 images omitted from upload, recipe reproduces them; preview references only uploaded native250."
+}
