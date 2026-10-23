@@ -1,3 +1,5 @@
+> Última continuación: [correccion-02/CHECKPOINT.md](correccion-02/CHECKPOINT.md), silueta/contraste B106/B107. EN_CORRECCION / NO_INTEGRAR; no merge ni publicación.
+
 > Cierre posterior: [correccion-01/CHECKPOINT.md](correccion-01/CHECKPOINT.md). Historial de primera pasada debajo; el estado vigente sigue EN_CORRECCION / NO_INTEGRAR.
 
 # Aelith normal — primera pasada B105/B106/B107

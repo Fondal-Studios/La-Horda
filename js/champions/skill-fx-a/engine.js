@@ -347,6 +347,8 @@ const sfaDrawOne = (s, g) => {
     g.save(); g.translate(s.x, s.y); g.rotate(s.ang); g.globalAlpha = .95;
     g.drawImage(b.cv, f * b.w, 0, b.w, b.h, -sc, -b.h / 2 * sc, b.w * sc, b.h * sc); g.restore();
   } else if (s.art === 'beam') {
+    const custom=sfaTheme(s.theme)?.beamDraw;
+    if(typeof custom==='function'){custom(s,g);sfaStats.drawn++;return;}
     const dis = k > .62 ? (k - .62) / .38 : 0;
     sfaBeamTiles(g, s.theme, s.x, s.y, s.bx, s.by, s.w, (k < .18 ? .45 : .95) * (1 - dis * .8), k < .18 ? .3 : 1 - dis * .75, k);
     if (k >= .12 && k < .6 && !calm && s.fi !== -2) { const q = sfaBake('burst', s.theme, 32); if (q) { const fb = Math.min(q.n - 1, (((k - .12) / .48) * q.n) | 0), D = Math.max(40, s.w * 1.8); g.globalAlpha = .95; g.drawImage(q.cv, fb * q.w, 0, q.w, q.h, s.bx - D / 2, s.by - D / 2, D, D); } }

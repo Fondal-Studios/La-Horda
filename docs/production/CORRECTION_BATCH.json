@@ -271,10 +271,28 @@
         "so_pool_idle es fallback cuando UF está apagado; no contar como sustitución de Gran Reserva activa.",
         "CI del head 7b89de24bdea58d5e5e321e18957d3b0c5715f05: test-decal-legible falla 7 incumplimientos; so_splash relleno de impacto 36% >35% y mismo tinte RGB en bosque/infernal. No reducir umbrales."
       ],
-      "next": "En lote agrupado corregir silueta del charco manteniendo radio de premarcado, paleta, alfa y timing. Repetir export y revisión en móvil; no tocar balance.",
+      "next": "Conservar corrección local y completar gates pendientes; no repetir primera pasada ni integrar taller completo.",
       "sourceSha256": "f40019b51b48cdf1956ff7ced323133a171a0553c3370c80848111cedaf372fd",
       "pr": 195,
-      "ciEvidence": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39825077102/job/119986111833"
+      "ciEvidence": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39825077102/job/119986111833",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "delivery": "art-source/entregas/habilidades-recientes-20261022/correccion-01",
+          "sourceSha256": "0627fd7fd76749615aab737a343e68ed39e0f687fe47c63a8ebfce4dbbeaaf47",
+          "status": "CORRECTED_LOCAL_PENDING_FULL_GATE",
+          "changes": [
+            "Sello de cinco puntas reemplazado por ocho curvas asimétricas con gotas irregulares.",
+            "Fill medido36%→24%; copa visible78%→82%; tintes bosque/infernal diferentes."
+          ],
+          "tests": "legibility-after.txt seis arenas PASS; 15 relay; 23 online;132 funcionales;10 sceneHash; UF idéntica.",
+          "pending": [
+            "KVB off/on RNG heredado FAIL",
+            "skins y Art Gate integral",
+            "warmup/performance y CI final"
+          ]
+        }
+      ]
     },
     {
       "block": "B228",
@@ -333,9 +351,26 @@
       "defects": [
         "Los cuatro soportes se leen como flechas diagonales en la revisión de atlas; falta articulación/pie de apoyo que los haga claramente ingeniería de asedio."
       ],
-      "next": "En lote común convertir puntas en pies articulados con remaches; mantener centro abierto, alcance y la torreta existente. Revisar en escenario móvil a escala real.",
+      "next": "Conservar corrección local y completar gates pendientes; no repetir primera pasada ni integrar taller completo.",
       "pr": 197,
-      "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b"
+      "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-02",
+          "sourceSha256": "81be8914332b0e0fa33941c02fd9fb37827f86ce8e1ec8917896c26b0e7c81f9",
+          "status": "CORRECTED_LOCAL_PENDING_FULL_GATE",
+          "changes": [
+            "Flechas reemplazadas por brazos articulados, remaches y pies planos.",
+            "Intento inicial 79% visible falló; brazo afinado supera82% horizontal/móvil sin cambiar umbral80%."
+          ],
+          "tests": "Legibilidad específica burst seis arenas, tres escalas y tres variantes PASS;19 kit;20 fase;14 relay;paridad29232/29232.",
+          "pending": [
+            "skins equipadas y Art Gate integral",
+            "warmup/performance/reentrada y CI final"
+          ]
+        }
+      ]
     },
     {
       "block": "B166",
@@ -358,9 +393,21 @@
         "atlas-preview.png",
         "verification.json"
       ],
-      "next": "Disolver el borde con la receta del pulso; preservar radio85 y los seis pulsos reales; comparar520ms en el lote común.",
+      "next": "Revisión integral y skins/arenas; no cerrar B166 entero.",
       "pr": 198,
-      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5"
+      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 198,
+          "path": "art-source/entregas/morveth-kit-20261022/correccion-01",
+          "sourceSha256": "0fb59f44b844921aab209d0892db716563077dc6ade606e311c490ddaa23a5e9",
+          "state": "EN_CORRECCION",
+          "change": "Pulso: borde usa misma disolución que esporas; cuadro10 pasa152→0 píxeles.",
+          "evidence": "30 silhouette checks;23 kit;131 functional;16 relay;23 general online;SFA RNG30414 identical;legibility six arenas horizontal/mobile PASS",
+          "remaining": "Revisión integral y skins/arenas; no cerrar B166 entero."
+        }
+      ]
     },
     {
       "block": "B167",
@@ -396,9 +443,21 @@
         "atlas-preview.png",
         "verification.json"
       ],
-      "next": "Auditar capas visuales heredadas del cast/infección antes de añadir arte. En lote común ajustar solo VFX, conservar cono210/arc0.85 y contagios.",
+      "next": "Revisar conjunto de impactos/material y contraste de superposiciones en skins/arenas; no afirmar que se retiraron todos los blancos.",
       "pr": 198,
-      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5"
+      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 198,
+          "path": "art-source/entregas/morveth-kit-20261022/correccion-01",
+          "sourceSha256": "0fb59f44b844921aab209d0892db716563077dc6ade606e311c490ddaa23a5e9",
+          "state": "EN_CORRECCION",
+          "change": "Cono específico sin cinco rayos genéricos; conserva alcance210/arc0.85, daño, contagios y partículas del material golpeado. Perfil escalar viaja por evento existente al pool real del invitado.",
+          "evidence": "30 silhouette checks;23 kit;131 functional;16 relay;23 general online;SFA RNG30414 identical;legibility six arenas horizontal/mobile PASS",
+          "remaining": "Revisar conjunto de impactos/material y contraste de superposiciones en skins/arenas; no afirmar que se retiraron todos los blancos."
+        }
+      ]
     },
     {
       "block": "B168",
@@ -438,9 +497,21 @@
         "atlas-preview.png",
         "verification.json"
       ],
-      "next": "En lote común dar ramificación reconocible al micelio y contrastar a escala real sin tapar cuerpo; conservar destinatarios/timer comprobados.",
+      "next": "FIX residual: identificación aún tenue entre cuerpos/escudo genérico en móvil. Revisar silueta a1:1 en escena menos solapada y contacto real; skins/contraste integral pendientes.",
       "pr": 198,
-      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5"
+      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 198,
+          "path": "art-source/entregas/morveth-kit-20261022/correccion-01",
+          "sourceSha256": "0fb59f44b844921aab209d0892db716563077dc6ade606e311c490ddaa23a5e9",
+          "state": "EN_CORRECCION",
+          "change": "Micelio conectado al suelo con bifurcaciones y cuatro sombreros laterales. Centros retraídos para no cortar contorno.",
+          "evidence": "30 silhouette checks;23 kit;131 functional;16 relay;23 general online;SFA RNG30414 identical;legibility six arenas horizontal/mobile PASS",
+          "remaining": "FIX residual: identificación aún tenue entre cuerpos/escudo genérico en móvil. Revisar silueta a1:1 en escena menos solapada y contacto real; skins/contraste integral pendientes."
+        }
+      ]
     },
     {
       "block": "B105",
@@ -509,7 +580,19 @@
       "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
       "next": "Revisar grosor/fragmentos y fase longitudinal en lote común; usar endpoints reales, mantener ancho mecánico52 y no convertirlo en haz liso.",
       "pr": 199,
-      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d"
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-02",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "da501c89333585a1b3bd1e0dfa99a9d0f7b793b452b116db3c85dcf12f288cdf",
+          "technical": "34 silhouette,41 lifecycle,27 kit,11 local variants,132 functional,33 relay,23 general online; SFA RNG29884 identical; final exact CI pending.",
+          "resolved": "Full-length glass/open-close150ms and moderate arena tint",
+          "remaining": "Actual target slow icon1800ms plus integral gate"
+        }
+      ]
     },
     {
       "block": "B107",
@@ -550,7 +633,19 @@
         "sourceSha256": "78d7ebbe0f88ecf2c09e9c3634648a405fd6685e5826fff37ac1ae54d8a6ccee",
         "technical": "41 lifecycle,27 kit,11 variants,31 relay,132 functional,23 general online PASS; SFA RNG29884 identical. TEST_ATTEMPTS preserves failures.",
         "remaining": "Full visual gate, skins/arenas/specific contrast, warmup/performance and saturation/reentry. H3 grey/trail faint in mobile comparison. CI exact head pending."
-      }
+      },
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-02",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "da501c89333585a1b3bd1e0dfa99a9d0f7b793b452b116db3c85dcf12f288cdf",
+          "technical": "34 silhouette,41 lifecycle,27 kit,11 local variants,132 functional,33 relay,23 general online; SFA RNG29884 identical; final exact CI pending.",
+          "resolved": "Two-tone equipped body snapshots at16/28/40%; stronger clock/sand with canon amber/grey palette",
+          "remaining": "Readability in mobile overlap, skins, warmup/performance and integral gate"
+        }
+      ]
     },
     {
       "block": "B228",
@@ -563,6 +658,20 @@
         "KVB.off true/false consumes 29969/28804 Math.random calls. Reproduced identically at previous PR196 head and correction; full on/on and off/off snapshots match before/after. This is not a PASS."
       ],
       "next": "Trace inherited generic VFX Math.random paths with KVB toggled; preserve combat mechanics and thresholds. Keep failing evidence."
+    },
+    {
+      "block": "B208/B209/B210",
+      "component": "A-FX-solciju-kvb-rng-parity",
+      "pr": 195,
+      "source": "js/champions/vfx-b/solciju.js",
+      "sourceSha256": "0627fd7fd76749615aab737a343e68ed39e0f687fe47c63a8ebfce4dbbeaaf47",
+      "state": "EN_CORRECCION",
+      "frames": "runtime completo KVB.off on/off",
+      "defects": [
+        "Math.random31834 sin KVB /26414 con KVB y estados de enemigos diferentes. Reproducido en head anterior7b89de24bdea58d5e5e321e18957d3b0c5715f05 y corrección."
+      ],
+      "evidence": "art-source/entregas/habilidades-recientes-20261022/correccion-01/parity-comparison.json",
+      "next": "Investigar junto al hallazgo heredado de Veyra; mantener azar cosmético independiente y demostrar snapshots completos on/off idénticos sin alterar balance ni bajar gates."
     }
   ],
   "pendingVerificationNotFailures": [
@@ -573,27 +682,13 @@
     "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
-  "nextProduction": "Lote grueso de siluetas/contraste: Solciju, Brakk B118, Morveth B166/B167/B168 y Aelith B106/B107. Conservar correcciones técnicas probadas y fuentes originales; KVB RNG heredado de Veyra pendiente.",
+  "nextProduction": "Investigate shared inherited KVB RNG parity in Solciju/Veyra without altering combat. Then remaining Aelith B106 enemy slow icon, B107/Morveth B168 mobile overlap and integral gates; preserve all first-pass sources and UF/PR191. No global inventory completion.",
   "groupedCorrectionCheckpoint": {
-    "date": "2026-10-22",
-    "productionCommits": {
-      "brakk": "c4b3aaf754a9cd315ae214162a181ee8afa1210c",
-      "veyra": "fbe79306b46cc5829ba5b30ee06581da5cf2c6a5"
-    },
+    "pr": 199,
+    "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-02/CHECKPOINT.md",
     "state": "EN_CORRECCION",
-    "next": "Lote grueso de siluetas/contraste: Solciju, Brakk B118, Morveth B166/B167/B168 y Aelith B106/B107. Conservar correcciones técnicas probadas y fuentes originales; KVB RNG heredado de Veyra pendiente.",
-    "aelith": {
-      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01",
-      "pr": 199,
-      "state": "EN_CORRECCION",
-      "technicalChecks": [
-        41,
-        27,
-        11,
-        31,
-        132,
-        23
-      ]
-    }
+    "gate": "NO_INTEGRAR",
+    "previousLatest": "PR198/20d65cf2c0b11e200aa785c64b6e1b16627810a0",
+    "note": "21 historical entries preserved; no merge/publication."
   }
 }
