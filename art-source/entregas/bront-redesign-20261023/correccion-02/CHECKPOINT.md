@@ -6,7 +6,7 @@ Dirección autorizada por Nano: «Si autorizo. Deben ser claramente diferentes i
 
 ## Continuidad
 
-Main758aa2ffacaae6542d31776e4a66ea7847a73b1b; PR201 borrador, rama art/bront-redesign-first-pass-20261023. Parentfc7d6214e289456f374e9cc555f953cbb64cd80e, recuperacióna186453f2f29691c9c3880b9fac19b8ba62b9b41.26archivos del manifiesto previo cotejados;15referencias canónicas exactas. Sin cierre perdido. Consultar REMOTE_CLOSURE para producción remota.
+Main758aa2ffacaae6542d31776e4a66ea7847a73b1b; PR201 borrador, rama art/bront-redesign-first-pass-20261023. Parentfc7d6214e289456f374e9cc555f953cbb64cd80e, recuperacióna186453f2f29691c9c3880b9fac19b8ba62b9b41.26archivos del manifiesto previo cotejados;15referencias canónicas exactas. Sin cierre perdido. Producción51286908988e89838aa180630dbd5e0f4cb41c7a:28archivos cotejados por Git blob remoto. REMOTE_CLOSURE registra cierre; head final consultar fresco. CI producción10checks/5workflows en curso al consultar; no aprobación de arte.
 
 ## Producción
 
