@@ -29,6 +29,11 @@
       "name": "parity main/candidate360",
       "result": "PASS summarized state and RNG32415",
       "log": "parity.log"
+    },
+    {
+      "name": "upload comparison PNG",
+      "result": "RECOVERED",
+      "reason": "Single base64 tool output truncated; chunked reads reconstructed exact Gitblob a1f9de1ce5d6665f783bbdabeb90e3449fdc79dc before production commit. No artwork change."
     }
   ]
 }

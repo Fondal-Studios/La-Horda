@@ -14,4 +14,10 @@ Intentos: sintaxis inválida del exportador conservada como texto, corregida ant
 
 Siguiente producción: auditar Facu GM B135/B136/B137 en main/PR/fuentes/consumidores frescos. No asumir UF/cuerpo/básico ausentes. No repetir Eslabón ni talleres anteriores mientras falten primeras pasadas. Reanudar receta: ONLY=eslabon node tools/vfx/parity-eslabon-kit.js y comandos completos en recipe.json.
 
-PR204: reintento lanes120669307525 iniciado; consultar resultados exacthead5f51df4999c0c80603faa4113cccdf85c9ab6e84. No merge mientras haya rojo/pendiente. Ver PR204_CI.json para cierre actualizado.
+PR204 Cazadora YA INTEGRADO_MAIN: esperado5f51df4999c0c80603faa4113cccdf85c9ab6e84; merge/main f62d181477adcb4607cc615411cc51bad769f681 a21:47:29UTC. Reintento lanes120669307525SUCCESS,18checks/7workflows aplicables verdes. Diff real3runtime+16/-8 y pruebaCI revisados, merge normal expected_head_sha y PR/ref verificados. Fallo remoto inicial preservado, causa no demostrada; no bypass. PR204_MERGE.json guarda pruebas. Publicación no verificada.
+
+Cierre PR206: producción438afcf14e7c771d65f79129587400ad615de7ec, recuperaciónd969f0dda962845426b82cdcfb8ad2aba97ba197.105 archivos producción coinciden con Gitblob local y árbol remoto. El commit de cierre agrega hashes por cuadro y registro de merge; consultar REMOTE_CLOSURE.json y head remoto fresco.
+
+FRAME_INDEX.json separa60fases/38RGBA distintos dentro de sus atlas:hook beam3/8,hook burst12/12,line beam1/8,line burst10/12,ward beam3/8,ward aura9/12. La línea persistente es estática, no60poses únicas ni aprobación de continuidad.
+
+Subida:comparison.png excedió el límite de salida de una lectura base64 y quedó inicialmente sin blob; se releyó en fragmentos y su Gitblob quedó idéntico antes del commit. No pérdida de fuentes ni arte regenerado.

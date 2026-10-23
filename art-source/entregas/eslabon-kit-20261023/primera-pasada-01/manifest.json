@@ -12,9 +12,9 @@
     },
     {
       "path": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01/CHECKPOINT.md",
-      "sha256": "03037f9537ce799d72aebb4ee3030fae9a252081f45c976575fbde092ed450b5",
-      "gitBlob": "daac027d8c5f0e94d38da6267e066be98747f60c",
-      "bytes": 2599
+      "sha256": "6e6d42c0b3bdde919852d28165293a0745b9cd05345a38c417519b597dceef5d",
+      "gitBlob": "5f3800126be6b9c943bef462e15bf7e40336fc52",
+      "bytes": 3622
     },
     {
       "path": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01/COMPARISON.json",
@@ -23,10 +23,22 @@
       "bytes": 3521
     },
     {
+      "path": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01/FRAME_INDEX.json",
+      "sha256": "b864a0d60963ffa1ff57760d66dad421a9feb24882cc06e38368fd9af104cfb6",
+      "gitBlob": "6a0e44b3f1629816f4d40f8439478436a83e2683",
+      "bytes": 14830
+    },
+    {
       "path": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01/GENERATED_INDEX.json",
       "sha256": "b809a134f67c781a2f0429f2fc0eb996911717ad22c955fde45d4ecda167556c",
       "gitBlob": "e060d8681778f475bb64827dc44bb7781bddd586",
       "bytes": 9056
+    },
+    {
+      "path": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01/PR204_MERGE.json",
+      "sha256": "21f06cf7c6413ac402008344dd8d281d9b3cfd9ed1ac37a2828f0a9f569ed0c7",
+      "gitBlob": "13aaf540e31fb898e06d981f7f579a1f33e40db9",
+      "bytes": 9052
     },
     {
       "path": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01/PREVIEW_CHECK.json",
@@ -42,9 +54,9 @@
     },
     {
       "path": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01/REVIEW.json",
-      "sha256": "b8b8461639e64db7403bfd5b665b44d6f534f227c7cd84b1cbb42d9310b2eb76",
-      "gitBlob": "f137673da73e326950b192aabfbcdb26cdaea1b8",
-      "bytes": 2338
+      "sha256": "27b9cb88e65ff00085c495f9b5beb1f7349bae1349f184c69a8c11641ea9284d",
+      "gitBlob": "ec21805a392ee2037116ddd15633f1a5ef455c75",
+      "bytes": 2411
     },
     {
       "path": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01/RUNTIME_DIFF.json",
@@ -60,9 +72,9 @@
     },
     {
       "path": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01/TEST_ATTEMPTS.json",
-      "sha256": "7bd03c20e089691fbd1975cb30a6593b72d0979907627aa45e4e54bf3cce17cd",
-      "gitBlob": "4f77dcfd3bf84135a03418fcd7581aa7ed63ef7a",
-      "bytes": 1072
+      "sha256": "6d9f7634c7722cdf16c62d952ed550736034faf0ca54b2c75234d6433e5deb9f",
+      "gitBlob": "b8a049d62f5824a981d626178276b9152730d04d",
+      "bytes": 1336
     },
     {
       "path": "art-source/entregas/eslabon-kit-20261023/primera-pasada-01/VERIFICATION.json",
@@ -628,5 +640,7 @@
       "gitBlob": "c1a0939545cfb49d2580f84162514c0b4c59387f",
       "bytes": 2716
     }
-  ]
+  ],
+  "productionCommit": "438afcf14e7c771d65f79129587400ad615de7ec",
+  "closureExcludedToAvoidSelfHash": "manifest.json and REMOTE_CLOSURE.json"
 }
