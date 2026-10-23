@@ -1,0 +1,2 @@
+# Cazadora: recuperación
+Base 817610a78595e894995cec8032dd64149dbfe925. PR abiertos cotejados, sin taller Cazadora activo. B126/B127/B128 poseen consumidores y arte existentes: no regenerar raíces, lluvia, flecha o UF. Trabajo activo: comprobar y corregir carga parcial de PNG de lluvia/trampa; preservar originales y mecánicas. No aprobado hasta revisión/tests/CI. Leer cierre Brasa PR203; cola31 histórica intacta.
