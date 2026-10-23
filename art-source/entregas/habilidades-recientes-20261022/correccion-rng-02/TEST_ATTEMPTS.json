@@ -1,0 +1,17 @@
+{
+  "attempts": [
+    {
+      "id": "trace-01",
+      "result": "Inherited RNG divergence reproduced twice in each mode at frame5/call7224. 50-frame trace saved gzipped; original full360 baseline retained in prior correction."
+    },
+    {
+      "id": "trace-02",
+      "result": "After RNG fix all four snapshots match per mode/on-off. Reporter then threw ReferenceError(errors outside scope); retain attempted JSON.gz and log. Fixed reporter scope; final parity-repeat exits0 and repeats both modes."
+    },
+    {
+      "id": "command-setup",
+      "result": "Initial local harness generation used wrong cwd; no runtime executed, rerun from workspace root. Tree transfer exceeded argv; fixed by selecting runtime entries before shell call. No remote mutation from either failure."
+    }
+  ],
+  "notClaimed": "Full Art Gate, every skin/arena, performance, all global RNG, production deploy."
+}

@@ -37,6 +37,17 @@ function kvbCastGeom(h, sk, isUlt, r, origin, end){
 }
 // Héroe de una clase en una posición (los recetas solo reciben números, que son lo que viaja por la red)
 function kvbHeroAt(x, y, classKey){ let best = null, bd = 1e9; for(const h of heroes){ if(classKey && h.classKey !== classKey) continue; const d = Math.hypot(h.x - x, h.y - y); if(d < bd){ bd = d; best = h; } } return best; }
+// Keep the legacy particle emission and owner budget when replacing Q5 art.
+// Burst/spray consume the simulation RNG and share its bounded particle pool.
+// Skipping them changes later combat rolls; replaying the real emitter also
+// preserves culling, reduced-FX, saturation and network delivery. Only the
+// generic sprite/shock (no RNG) are replaced by the native KVB shapes.
+function kvbKeepQ5Particles(fn){
+  const sprite = window.vfxSprite, shock = window.vfxShock;
+  window.vfxSprite = window.vfxShock = function(){};
+  try{ return fn(); }
+  finally{ window.vfxSprite = sprite; window.vfxShock = shock; }
+}
 (function(){
   function wrap(name, prefix){
     const o = window[name]; if(typeof o !== 'function') return;
@@ -58,8 +69,9 @@ function kvbHeroAt(x, y, classKey){ let best = null, bd = 1e9; for(const h of he
     qualityFiveFx = function(h, draw, ...args){
       if(KVB.off || !h || (h.classKey !== 'solciju' && h.classKey !== 'veyra') || (draw !== kitFx && draw !== kitFxLine)) return oQ.apply(this, arguments);
       const c = KVB.q5, id = c && c.h === h && KVB_Q5[c.sk.action];
-      if(!c || c.h !== h){ return; } // efectos de objetos persistentes: los dibuja la piel del objeto
+      if(!c || c.h !== h){ return kvbKeepQ5Particles(() => oQ.apply(this, arguments)); } // conserva partículas; la piel reemplaza sprite/onda
       if(!id) return oQ.apply(this, arguments);
+      kvbKeepQ5Particles(() => oQ.apply(this, arguments));
       if(draw === kitFxLine){ const [, ax, ay, bx, by, w] = args; kvbFx(id, ax, ay, w, Math.atan2(by - ay, bx - ax), Math.hypot(bx - ax, by - ay), 0); }
       else kvbFx(id, args[1], args[2], args[3], Math.atan2(h.fy || 0, h.fx || 1), .85, 0);
       // Solciju aporta su propio impacto (vino/copa/barrica); el flash circular lo ocultaba.

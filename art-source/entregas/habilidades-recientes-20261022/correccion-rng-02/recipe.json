@@ -1,0 +1,39 @@
+{
+  "medium": "Existing native KVB recipes preserved; runtime integration correction, no new raster/atlas",
+  "recipe": "js/champions/vfx-b/solciju.js",
+  "sourceSha256": "0627fd7fd76749615aab737a343e68ed39e0f687fe47c63a8ebfce4dbbeaaf47",
+  "preservedAtlases": [
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-01/atlases/so_fuse.png",
+      "sha256": "87d0a82a44ac31c8485521ee700ce9f2c3cf4664954f378870e45a468d318f15",
+      "bytes": 7961
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-01/atlases/so_pool_idle.png",
+      "sha256": "fced1b0f4e31018f1bc9a50f2722a7f163c9d1954ad0a50b49cf0c3e61479fc6",
+      "bytes": 9693
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-01/atlases/so_splash.png",
+      "sha256": "676500c4fca9d8d46ceeb42f133f275bf4cec7b6cbecb981908c4e76a5a9524f",
+      "bytes": 6450
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-01/atlases/so_toast.png",
+      "sha256": "e362244761e4ec30d1f44af11b001b252adfc2dc9167bd3b3bc592f3db7a68b8",
+      "bytes": 3233
+    }
+  ],
+  "newFrames": 0,
+  "commands": {
+    "rng": "TRACE=0 PARITY_OUT=/tmp/parity.json node tools/vfx/trace-kvb-rng.js",
+    "trace": "FRAMES=50 TRACE=1 PARITY_OUT=/tmp/trace.json node tools/vfx/trace-kvb-rng.js",
+    "emitters": "OUT=/tmp/emitters.json node tools/vfx/verify-kvb-q5-rng.js",
+    "follow": "OUT=/tmp/follow.json node tools/vfx/verify-kvb-follow-render.js",
+    "functional": "node tools/quality-five/functional.js",
+    "relay": "node tools/vfx/solciju-silhouette-online-rng.js",
+    "visual": "ONLY=solciju MOBILE=1 FULL=1 TIMES=80,250,800 OUT=/tmp/visual node tools/vfx/capture-kvb-rng.js"
+  },
+  "before": "Set HOOKS_FILE=source-before.js and PIXFX_FILE=pixfx-before.js for both parent files; same seed/scene/scale. Trace gzip files contain original JSON (gzip -dc).",
+  "environment": "NODE_PATH runtime Playwright; CHROMIUM_PATH=/tmp/chromium; test-owned local server/relay."
+}

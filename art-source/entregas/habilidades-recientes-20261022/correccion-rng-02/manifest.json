@@ -1,0 +1,447 @@
+{
+  "schema": 1,
+  "pr": 195,
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "publication": "NO_VERIFICADA",
+  "newAssets": 0,
+  "runtime": [
+    "js/champions/vfx-b/hooks.js",
+    "js/champions/vfx-b/pixfx.js"
+  ],
+  "tests": {
+    "emitters": 49,
+    "followerRenderer": 12,
+    "functional": 132,
+    "relay": 15,
+    "generalOnline": 23
+  },
+  "files": [
+    {
+      "path": "js/champions/vfx-b/hooks.js",
+      "bytes": 19791,
+      "sha256": "a2f99d22924d3305c3dd55a0d1ca9d08d25db36d0ba4f9b9e207237490f52442",
+      "gitBlob": "515a3b19fb72be36d65e0ec827dc42131e2487fd"
+    },
+    {
+      "path": "js/champions/vfx-b/pixfx.js",
+      "bytes": 18773,
+      "sha256": "b6723047bc6f0df287dd2cd45940986ca02f223c34214388cee5168bd3381776",
+      "gitBlob": "4d6f7c53b7be971faa6ca73116aaeef890cc2d2f"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "bytes": 30968,
+      "sha256": "c58a1f936ecee65c2929330f3423496b4c7912edaf14093c39803689b58bfdcf",
+      "gitBlob": "d051d5061c6c35c54f508c1652985040dabe28c7"
+    },
+    {
+      "path": "tools/vfx/trace-kvb-rng.js",
+      "bytes": 7577,
+      "sha256": "c8e507f95d1f9096f0a977dcb14cc89f9134f913e0af881fdb5c93c04b863f31",
+      "gitBlob": "5f336d8201281291bc37d2bf386cffc7a457b92c"
+    },
+    {
+      "path": "tools/vfx/verify-kvb-q5-rng.js",
+      "bytes": 4265,
+      "sha256": "8ebc197804640cee30e2525ea12412237cb8d79c62667faabca06d0cfc499148",
+      "gitBlob": "1fccc7322fb0ead79dc715059c5e0eaa006ff9d6"
+    },
+    {
+      "path": "tools/vfx/verify-kvb-follow-render.js",
+      "bytes": 2379,
+      "sha256": "db93bec0aa48a44b74e3f72880d7569b880a0c151ea04ae67e9e42078615422b",
+      "gitBlob": "54e4fadd973d7f9cf4d1ba0fd91a3c52c56e3f98"
+    },
+    {
+      "path": "tools/vfx/capture-kvb-rng.js",
+      "bytes": 6532,
+      "sha256": "ff8c1c278729c4d345a5bd8ff2859c7aebd375d657742a2bae51556405335415",
+      "gitBlob": "814f8040725fa0fd5b29a43b97fea6eacbbb2f81"
+    },
+    {
+      "path": "tools/vfx/solciju-silhouette-online-rng.js",
+      "bytes": 9482,
+      "sha256": "2983129f6c2e9c5bde58315929e414638c4887b72e2afec2e3b45c56e1e009ff",
+      "gitBlob": "4669cd6313fbc4864778dcb0793dc9b246066c3d"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/CHECKPOINT.md",
+      "bytes": 3866,
+      "sha256": "53cb38613fc0f4d0551ec63c7d27ab6486f73a5087de6d3b22d9c308a3ce0e95",
+      "gitBlob": "c5cfdc0f06ca076c47dd1ed79caf2bff6b37f850"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/RECOVERY.md",
+      "bytes": 938,
+      "sha256": "e430f78f9ae615e20432a6b4d19c53a2334a70ef6053b1e5c973819cb09bfe89",
+      "gitBlob": "b92e54fdf3120feaee4d3e4bbaccb9d60063e527"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/TEST_ATTEMPTS.json",
+      "bytes": 895,
+      "sha256": "ca356c9acba9fe4ddf9c043978b8b6a23ee95a033334d066016c1a8f82776a6a",
+      "gitBlob": "71f710dd80aefa445b75403cbdefdbab6be2867b"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/VISUAL_REVIEW.md",
+      "bytes": 1117,
+      "sha256": "c7f8f9824fa58993e9e3714241c21eaea4c4aa38cbb47136b1b74494eb5b896d",
+      "gitBlob": "6c0fb382b29e2454056955f376697bf1ea2c2a82"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/attempt-01/rng-only-mobile/capture.json",
+      "bytes": 1737,
+      "sha256": "a7e0c8df201f7e82d7ff20f6b9a369c982de787d1f2e0be3899cfd84f2d9d674",
+      "gitBlob": "fabb2b43e3bcfaf23073ff079954726841d61f36"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/attempt-01/rng-only-mobile/solciju-0.png",
+      "bytes": 99476,
+      "sha256": "6d45e2f12af8ca87c1757260acb368183fcd562007acc3bc35aac5b901636769",
+      "gitBlob": "2b0917a66693a7373ccef5ddaa9290e23a814372"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/attempt-01/rng-only-mobile/solciju-1.png",
+      "bytes": 100050,
+      "sha256": "82f287a2cebe0acfb5541e5a9c620907ee2e1226deafc5bd21c772f6f2ede4a6",
+      "gitBlob": "54e4d2855784c761f943472add8aa1107446623a"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/attempt-01/rng-only-mobile/solciju-2.png",
+      "bytes": 99111,
+      "sha256": "b7588e36b2a3a7f61e2856541ffc54d72fc76ad22c0375a0baf9db0889b82751",
+      "gitBlob": "d114c290c3e9abb1d4fec739aed962a4f2511c13"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/attempt-01/rng-only-mobile/solciju-3.png",
+      "bytes": 99683,
+      "sha256": "2b2c33d6834c67c25505960451be7c5d169a44777fc063066d91f6a50990bf69",
+      "gitBlob": "79fac58caf2cc0e68c0541511b014af6fb2a8ece"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/attempt-01/trace-after.json.gz",
+      "bytes": 64877,
+      "sha256": "520952acb5fe57e2b9dc9a4e8255daf799008e8532397d0d76cc36620d2abb24",
+      "gitBlob": "4faf623e5f5205534392eb91963171ea6f7b591f"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/attempt-01/trace-after.txt",
+      "bytes": 235,
+      "sha256": "c7bf37b9732d1f5d415498988f838d2462bd22926069acc9e5c408e1a23c7aba",
+      "gitBlob": "117e87ff22e9ae93907c55980f36f50c9d80558c"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/comparison.json",
+      "bytes": 3010,
+      "sha256": "29880ea5d1ba41e3a561ba34f0b1fca2e054091cfbce4b88e36be263313e6dd2",
+      "gitBlob": "5a763332c29995894e2973bb6b4eb9073e51255e"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/emitter-tests.json",
+      "bytes": 8606,
+      "sha256": "be7e5aac318d025ada40836a5f989c4b936b16641eed90cf891262ae844d98d3",
+      "gitBlob": "5397a407501faf8081e1ee070583995d9af0d4ef"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/emitter-tests.txt",
+      "bytes": 5071,
+      "sha256": "2f1133d32370c6b6bfca4e1fca88608d9e8eee692c904a9ac7d0969487cbb0bc",
+      "gitBlob": "063834f7622824cb150e3dbbaa990805fc96e5b3"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/follow-after.json",
+      "bytes": 2896,
+      "sha256": "ed142ddfc3a94b6960d703127f7f1f20e441641459e582daa5fb68c83c35f426",
+      "gitBlob": "3a5d744ce5a546b265862c617b8d7cbae45cd917"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/follow-after.txt",
+      "bytes": 1344,
+      "sha256": "3b256cb45ae46da8f98dca23264333db5e685ab09a7392814f3bd3aa3f16e5de",
+      "gitBlob": "5b58b38427e95e6f423171ed88d4a6e968216c3b"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/functional-results.json",
+      "bytes": 10195,
+      "sha256": "ccf3cdab250a7dcf95213098c71e035a8b0ca44b8624f51c17ecf74c58557b6e",
+      "gitBlob": "8ea7b62ef3f6aa08ca567cc515fe16d07b9fb0e5"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/functional.txt",
+      "bytes": 55,
+      "sha256": "88fa742baa537636206edee0c5304852116e372d6a9f829cd945d8a6ec9b06f8",
+      "gitBlob": "53747cff7e23411eeb4b0eceb35c9b6bb3edb994"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/general-online-results.json",
+      "bytes": 3639,
+      "sha256": "7849bc617b38ec1f5ff3c13e57f87e12cd8f8378a5c2435c2e4e0bc4a65f94a8",
+      "gitBlob": "97ea1868259ce60587877787b04c7d1b2ac1491a"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/general-online.txt",
+      "bytes": 2209,
+      "sha256": "ae67d7938ec24dae4c5eee264aa14769063c937a2ade07ad1bfce63366abb4d9",
+      "gitBlob": "8f9f49ca5624f415f00b0ffed22054b1ef9638b1"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/horizontal-after/capture.json",
+      "bytes": 1737,
+      "sha256": "4107d7d0c91cdf6839d4d554428756253c5a46379d48092f1a32c160c6524acc",
+      "gitBlob": "742e1e051511d73672929efb982c267688b538f5"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/horizontal-after/solciju-0.png",
+      "bytes": 108336,
+      "sha256": "81df45d52038a7042c6afd83c2f0d50bca78e9b10a4e001da8ee1ca3c6f2d319",
+      "gitBlob": "298f8de6cd21a07fb5d38fb4e76b43de02e61420"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/horizontal-after/solciju-1.png",
+      "bytes": 108581,
+      "sha256": "d5529d0cdb075410237e08ad3e375029ca3464c458c4bff713272e431710cf7b",
+      "gitBlob": "ebec2832b3d463ba3919f44fbfcf00b79254189f"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/horizontal-after/solciju-2.png",
+      "bytes": 107702,
+      "sha256": "af230365125d46c2b283923eeac8abde831080a98bd37f63142309e7bea0267d",
+      "gitBlob": "e57cc70ea3936d2ebb2bc3e5929b890247a93b8b"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/horizontal-after/solciju-3.png",
+      "bytes": 108569,
+      "sha256": "abfb2fbf888fd927414beb6e0bb62ef13eae6068df0d9a51f361f08e9cfad0bd",
+      "gitBlob": "bc9da3a99bf18833d5cf4e9a48fa56bf4de7bd26"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/horizontal-before/capture.json",
+      "bytes": 1737,
+      "sha256": "4107d7d0c91cdf6839d4d554428756253c5a46379d48092f1a32c160c6524acc",
+      "gitBlob": "742e1e051511d73672929efb982c267688b538f5"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/horizontal-before/solciju-0.png",
+      "bytes": 108194,
+      "sha256": "47dbea3cef806dbd05b0ab0cb70d23d5369d9dacbfcfd4e9f87b5df609919d4b",
+      "gitBlob": "3fdb7d6b8f4fa0b544566844b37421a5ac08690b"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/horizontal-before/solciju-1.png",
+      "bytes": 108371,
+      "sha256": "3c56ad61ddff3ad1a9d2b3e213c71581fb50d66b28bc7edeb3ecdf066a1241eb",
+      "gitBlob": "3d693dce979e04f1d9d3542b129e22eaba685cb3"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/horizontal-before/solciju-2.png",
+      "bytes": 107583,
+      "sha256": "7f973cd95ec539bc52fc3cfa9bd062711e215f927e574001fd9ea14cd4f0d8be",
+      "gitBlob": "a33ba8563e1cd9d8fa56eed31e4724c3e48ead24"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/horizontal-before/solciju-3.png",
+      "bytes": 108153,
+      "sha256": "f4b4e86b9726de494bfc64638f8a0b08d6ee861d7b3c6d7e5c8ce48a3ddc5e5c",
+      "gitBlob": "86e813d3cf5da40570eacf1c09aad0bab3e9c028"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/horizontal-comparison.png",
+      "bytes": 330183,
+      "sha256": "6a44000ff656839b1bc2090a3e24de54f0f62ffe7aad0418f4108817e408f0ec",
+      "gitBlob": "1cb919eef6ffd9a0d8f6a4153e5c60b00dcaace1"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-after/capture.json",
+      "bytes": 1737,
+      "sha256": "a7e0c8df201f7e82d7ff20f6b9a369c982de787d1f2e0be3899cfd84f2d9d674",
+      "gitBlob": "fabb2b43e3bcfaf23073ff079954726841d61f36"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-after/solciju-0-250-full.png",
+      "bytes": 456718,
+      "sha256": "c103f473de19979e54cc46c2b3de03737f234793ce214e692c144cbdb1b9392f",
+      "gitBlob": "00d142150a9900fec06181e58d8cea6ae6abaf18"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-after/solciju-0.png",
+      "bytes": 99476,
+      "sha256": "6d45e2f12af8ca87c1757260acb368183fcd562007acc3bc35aac5b901636769",
+      "gitBlob": "2b0917a66693a7373ccef5ddaa9290e23a814372"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-after/solciju-1-250-full.png",
+      "bytes": 456295,
+      "sha256": "720f9ef6e8f6c32e6a6014cb738586333c6ffd69064eb8458c94689b32a6babc",
+      "gitBlob": "a09a7be3b6a4450645c261c65d404682585e378e"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-after/solciju-1.png",
+      "bytes": 100050,
+      "sha256": "82f287a2cebe0acfb5541e5a9c620907ee2e1226deafc5bd21c772f6f2ede4a6",
+      "gitBlob": "54e4d2855784c761f943472add8aa1107446623a"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-after/solciju-2-250-full.png",
+      "bytes": 456860,
+      "sha256": "b4e8a3ed04cafef0f3b2b0ab8b4807f65359c01dfb5aed5b83aeb6e92af210fe",
+      "gitBlob": "447ad1034f7ecc9d4f38ec66ccf3fea592ac95bb"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-after/solciju-2.png",
+      "bytes": 99111,
+      "sha256": "b7588e36b2a3a7f61e2856541ffc54d72fc76ad22c0375a0baf9db0889b82751",
+      "gitBlob": "d114c290c3e9abb1d4fec739aed962a4f2511c13"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-after/solciju-3.png",
+      "bytes": 99683,
+      "sha256": "2b2c33d6834c67c25505960451be7c5d169a44777fc063066d91f6a50990bf69",
+      "gitBlob": "79fac58caf2cc0e68c0541511b014af6fb2a8ece"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-before/capture.json",
+      "bytes": 1737,
+      "sha256": "a7e0c8df201f7e82d7ff20f6b9a369c982de787d1f2e0be3899cfd84f2d9d674",
+      "gitBlob": "fabb2b43e3bcfaf23073ff079954726841d61f36"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-before/solciju-0.png",
+      "bytes": 99376,
+      "sha256": "f8629f84341dbe048eb748d4a7029c89ff6c6415700b69eef8d8951b54106275",
+      "gitBlob": "2e7accfdc531cb99a6a05d5a852effd5a3cf845a"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-before/solciju-1.png",
+      "bytes": 99823,
+      "sha256": "cd560d50e85b8e0db71c25107d3757f7aa39d0e1fb4231f987262e445d6b27a4",
+      "gitBlob": "4af968a40104b59de26243bbe2aa24213e8f4169"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-before/solciju-2.png",
+      "bytes": 99042,
+      "sha256": "10320cd578f0bbb5222d47411a078814f00387a81679a2d5dcdcd55020e02778",
+      "gitBlob": "49f4eba7419cb4d28cb63cdcc3ee31ae073d950a"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-before/solciju-3.png",
+      "bytes": 99077,
+      "sha256": "844ab35ae36eb24a8658479202d9be0f065d0b8da9e005c3ac6e572d15b642d4",
+      "gitBlob": "88c20dd697b97464112531ccbb484e11af63ab09"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/mobile-comparison.png",
+      "bytes": 314817,
+      "sha256": "7107f3c6734a8024abace56cf1f3c38457cc6c41476552a74dd5590abbb07310",
+      "gitBlob": "1ba7fc4bd6f489eb42535b39823a9eaf321e5299"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/native-before/capture.json",
+      "bytes": 1223,
+      "sha256": "f4cd53b549094641f3bf853aa7288e96a0669f67fba10042d2d1a7ece4a5ced2",
+      "gitBlob": "7efa01a29115045fd25942e2d500fe115c045cec"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/native-before/solciju-0-250-full.png",
+      "bytes": 456350,
+      "sha256": "aa540728cd7628c2bbfbaee18deb96ac0317ee76867e5bd530e511a30c2fc604",
+      "gitBlob": "57494724f5f53560f81e75a965d6fac29a8d1414"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/native-before/solciju-1-250-full.png",
+      "bytes": 455924,
+      "sha256": "022d809b5af371481cdd798ae9992e0efd03707cac979f064067c5cb54da1687",
+      "gitBlob": "23375a969cadc5169325ff5e406dd339f8db8917"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/native-before/solciju-2-250-full.png",
+      "bytes": 456855,
+      "sha256": "6fbda8ed5f235a021f6931a437c02720001e112a68f4703fcc6a0968b21f3d0f",
+      "gitBlob": "55d6987a4257ddfe777f04c170ff1b759c21d162"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/online-results.json",
+      "bytes": 3517,
+      "sha256": "60704ce814658ec12131a69ab3fa8c922e0cea1dca6c856403d3d19597af7baa",
+      "gitBlob": "f35096d711deae2e2281d45f7e0fdc27b54ef87b"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/parity-after.json",
+      "bytes": 4339,
+      "sha256": "c2c9c4781cc47eb474f6f4a064961bb83006dcb019b9ea9d1ceab7e3e2dc9a21",
+      "gitBlob": "96325f8d536901942afedc2c2847e0a8ae3a1ad0"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/parity-after.txt",
+      "bytes": 116,
+      "sha256": "7d7823d401ce8035c9cdf4d6fcae1224db2744b18e6cb380393e52ecde97f7e5",
+      "gitBlob": "c9480e71d256810a9eb7d2b4eb062bc8a5a37caa"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/parity-comparison.json",
+      "bytes": 974,
+      "sha256": "acbbf8cdb107d37f9979d5565a9cbd369a385604d52997a18627f717b98f32d2",
+      "gitBlob": "43d2947b12e084221117e2dbf001cce6753ed05d"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/parity-repeat.json",
+      "bytes": 8879,
+      "sha256": "69ca04b7f3f701ffb3a12b3fab3244603c79ea60043268593f62fe5b4a55c5a8",
+      "gitBlob": "b989d84f4bd4624d0494fd0c2c2ec15557180a06"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/parity-repeat.txt",
+      "bytes": 116,
+      "sha256": "7d7823d401ce8035c9cdf4d6fcae1224db2744b18e6cb380393e52ecde97f7e5",
+      "gitBlob": "c9480e71d256810a9eb7d2b4eb062bc8a5a37caa"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/pixfx-before.js",
+      "bytes": 18511,
+      "sha256": "2c6881103c672a8c0d97429f12f94b72a2979ccdd2fbc678e2b2e871c2efb437",
+      "gitBlob": "5b7257b14036629d950a82a21fe8288392bd8406"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/recipe.json",
+      "bytes": 2045,
+      "sha256": "18fa7748c633057431027de82e010c3dddda41a70eac424f1ba358e6960fcde8",
+      "gitBlob": "3d88fdf1e8212d03b9b2247df15473b5035e7b69"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/relay.txt",
+      "bytes": 1864,
+      "sha256": "4ddb5b8299aa36575f0136d230a008fec1baab4265ff4eaf6e60638031ba442f",
+      "gitBlob": "cbfac40bd96deb0702b7638823eab731a0209d91"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/runtime-diff.json",
+      "bytes": 667,
+      "sha256": "9b98babd77c0a66e922898a9c8b7537dbcf0c4b94c0a3d1a29fc87fc55d90467",
+      "gitBlob": "bd8d7014ec7bde1fdf7bd2975b4446cfe5e92a4e"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/source-before.js",
+      "bytes": 19075,
+      "sha256": "8e1d3e2c02cb6679f4e08c956a9a00b8f0063cbb375cefdd8adb43f6fa0ac25c",
+      "gitBlob": "c23bd0e21297b37f4a025dddd81a8fc955a6246f"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/trace-before.json.gz",
+      "bytes": 22873,
+      "sha256": "8869632789a88ab15cafc7cc194121403aed97bc7abe253abbcfa8096840ac1f",
+      "gitBlob": "7a67fad582960bfa3ddb06410a50cdd50164df23"
+    },
+    {
+      "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02/trace-before.txt",
+      "bytes": 1322,
+      "sha256": "740a8095629b7d3a5be55799312b26c4c26b77bf203844f377cd66e4875d3e8c",
+      "gitBlob": "d5ef50cae741f10d46dc697b085b91285b2a5117"
+    }
+  ],
+  "remaining": [
+    "skins/arenas/compound contrast",
+    "warmup/performance",
+    "integral Art Gate",
+    "exact final head CI"
+  ]
+}
