@@ -1,0 +1,146 @@
+{
+  "checks": [
+    {
+      "name": "no event keeps armor ring",
+      "pass": true
+    },
+    {
+      "name": "actual mature aura replaces only generic armor ring",
+      "pass": true
+    },
+    {
+      "name": "anticipation crossfade",
+      "pass": true
+    },
+    {
+      "name": "dissipation returns generic ring",
+      "pass": true
+    },
+    {
+      "name": "expired falls back",
+      "pass": true
+    },
+    {
+      "name": "delayed falls back",
+      "pass": true
+    },
+    {
+      "name": "other recipient falls back",
+      "pass": true
+    },
+    {
+      "name": "ownerless falls back",
+      "pass": true
+    },
+    {
+      "name": "other theme falls back",
+      "pass": true
+    },
+    {
+      "name": "other art falls back",
+      "pass": true
+    },
+    {
+      "name": "off falls back",
+      "pass": true
+    },
+    {
+      "name": "cold cache falls back",
+      "pass": true
+    },
+    {
+      "name": "wrong dimensions falls back",
+      "pass": true
+    },
+    {
+      "name": "arena change falls back",
+      "pass": true
+    },
+    {
+      "name": "reset falls back",
+      "pass": true
+    },
+    {
+      "name": "invalid phase falls back",
+      "pass": true
+    },
+    {
+      "name": "reduced effects preserves real aura coverage",
+      "pass": true
+    },
+    {
+      "name": "variant  matches receiver",
+      "pass": true
+    },
+    {
+      "name": "variant ~h matches receiver",
+      "pass": true
+    },
+    {
+      "name": "variant ~p matches receiver",
+      "pass": true
+    },
+    {
+      "name": "variant ~k matches receiver",
+      "pass": true
+    },
+    {
+      "name": "cleansed buff cannot claim coverage",
+      "pass": true
+    },
+    {
+      "name": "cleanse draws no generic ring",
+      "pass": true
+    },
+    {
+      "name": "longer unrelated armor stays visible after brace",
+      "pass": true
+    },
+    {
+      "name": "dead receiver no coverage",
+      "pass": true
+    },
+    {
+      "name": "dead receiver no ring",
+      "pass": true
+    },
+    {
+      "name": "pool eviction restores ring",
+      "pass": true
+    },
+    {
+      "name": "missing hook fails open",
+      "pass": true
+    },
+    {
+      "name": "throwing hook fails open",
+      "pass": true
+    },
+    {
+      "name": "NaN hook fails open",
+      "pass": true
+    },
+    {
+      "name": "too high hook fails open",
+      "pass": true
+    },
+    {
+      "name": "profile does not consume RNG",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "profile leaves pool and mechanical state intact",
+      "pass": true
+    }
+  ],
+  "performance": {
+    "batches": 600,
+    "queriesPerBatch": 40,
+    "p50": 0,
+    "p95": 0.09999999962747097,
+    "max": 0.5,
+    "note": "local browser, not physical mobile or GC certification"
+  },
+  "errors": []
+}

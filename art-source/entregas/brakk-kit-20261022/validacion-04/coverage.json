@@ -1,0 +1,203 @@
+{
+  "checks": [
+    {
+      "name": "mobile scenes=180",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile no browser errors",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile H1 all real casts",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile H1 actual atlas draws",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile H1 equipped body drawn",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile H2 all real casts",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile H2 actual atlas draws",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile H2 equipped body drawn",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile H3 all real casts",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile H3 actual atlas draws",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile H3 equipped body drawn",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile skin equipment resolved",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile repair burst and aura rendered",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile nail volley rendered",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mobile isolated80 gate",
+      "pass": true,
+      "details": 0.8668503213957759
+    },
+    {
+      "name": "landscape scenes=180",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape no browser errors",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape H1 all real casts",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape H1 actual atlas draws",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape H1 equipped body drawn",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape H2 all real casts",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape H2 actual atlas draws",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape H2 equipped body drawn",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape H3 all real casts",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape H3 actual atlas draws",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape H3 equipped body drawn",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape skin equipment resolved",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape repair burst and aura rendered",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape nail volley rendered",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "landscape isolated80 gate",
+      "pass": true,
+      "details": 0.8607361963190184
+    },
+    {
+      "name": "12 same-frame ABA restore",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "12 ABA pool state identical",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "atlas identical repair-brace.png",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "atlas identical nail-volley.png",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "atlas identical wall-mount.png",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "atlas identical repair-weld.png",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "atlas identical turret-deploy.png",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "opaque negative control fails",
+      "pass": true,
+      "details": 21
+    }
+  ],
+  "failed": 0,
+  "independentSessionDiagnostic": {
+    "pairs": 36,
+    "sameInitialScene": 19,
+    "notCausalEvidence": 17,
+    "supersededBy": "12 same-frame ABA restores"
+  },
+  "state": "EN_CORRECCION",
+  "integralArtGate": false
+}

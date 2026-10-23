@@ -1,0 +1,137 @@
+{
+  "method": "Native SFA pixel strips; no donor bodies or image model required for code-native VFX",
+  "source": "js/champions/skill-fx-a/c/brakk.js",
+  "base": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+  "preserve": [
+    "existing wall/turret props",
+    "UF ultimate",
+    "gameplay",
+    "skins"
+  ],
+  "components": [
+    {
+      "id": "A-FX-brakk-h1",
+      "block": "B117",
+      "theme": "brakk_build",
+      "art": "beam",
+      "cell": [
+        16,
+        12
+      ],
+      "frames": 11,
+      "phases": {
+        "anticipation": [
+          0,
+          2
+        ],
+        "impact": [
+          3,
+          5
+        ],
+        "dissipation": [
+          6,
+          10
+        ]
+      },
+      "loop": false,
+      "pivot": "left middle; tiled on actual wall segment",
+      "visual": "riveted scaffold assembled along existing masonry"
+    },
+    {
+      "id": "A-FX-brakk-h2",
+      "block": "B118",
+      "theme": "brakk_deploy",
+      "art": "burst",
+      "cell": [
+        64,
+        64
+      ],
+      "frames": 12,
+      "phases": {
+        "anticipation": [
+          0,
+          3
+        ],
+        "impact": [
+          4,
+          6
+        ],
+        "dissipation": [
+          7,
+          11
+        ]
+      },
+      "loop": false,
+      "pivot": "center",
+      "visual": "four articulated feet and angular mounting brackets"
+    },
+    {
+      "id": "A-FX-brakk-h2",
+      "block": "B118",
+      "theme": "brakk_nails",
+      "art": "beam",
+      "cell": [
+        16,
+        12
+      ],
+      "frames": 8,
+      "phases": {
+        "travel": [
+          0,
+          7
+        ]
+      },
+      "loop": true,
+      "pivot": "left middle; tiled from turret to real target",
+      "visual": "staggered nail shafts with heads and tips"
+    },
+    {
+      "id": "A-FX-brakk-h3",
+      "block": "B119",
+      "theme": "brakk_repair",
+      "art": "burst",
+      "cell": [
+        48,
+        48
+      ],
+      "frames": 10,
+      "phases": {
+        "anticipation": [
+          0,
+          2
+        ],
+        "impact": [
+          3,
+          5
+        ],
+        "dissipation": [
+          6,
+          9
+        ]
+      },
+      "loop": false,
+      "pivot": "center on own repaired structure",
+      "visual": "X braces with welding sparks"
+    },
+    {
+      "id": "A-FX-brakk-h3",
+      "block": "B119",
+      "theme": "brakk_repair",
+      "art": "aura",
+      "cell": [
+        40,
+        56
+      ],
+      "frames": 12,
+      "phases": {
+        "loop": [
+          0,
+          11
+        ]
+      },
+      "loop": true,
+      "pivot": "same SFA aura foot anchor",
+      "visual": "two open side braces, no solid shield over hero"
+    }
+  ]
+}

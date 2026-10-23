@@ -1,0 +1,49 @@
+{
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "generatedNewFrames": 0,
+  "validatedIntegral": false,
+  "integratedMain": false,
+  "publicationVerified": false,
+  "mergedIndependentComponent": {
+    "pr": 200,
+    "state": "INTEGRADO_MAIN",
+    "head": "ae3d384a2117323d7154b30760ad621106dec0c6",
+    "merge": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+    "checks": 12,
+    "workflows": 4,
+    "scope": "Only tools/items/t_story.js; unchanged runtime/visual assets"
+  },
+  "technical": {
+    "matrixScenes": 360,
+    "bodyConsumerCallsPerViewport": 18000,
+    "kitAtlasDrawsPerViewport": 20730,
+    "coverageChecks": 38,
+    "kitChecks": 19,
+    "gateRowsPerViewport": 162,
+    "enemyPlacementsPerViewport": 486,
+    "minimumVisibleMobile": 0.8668503213957759,
+    "minimumVisibleLandscape": 0.8607361963190184,
+    "threshold": 0.8,
+    "rgbDelta": 24,
+    "opaqueCanaryFailures": 21,
+    "runtimeUnchanged": 450,
+    "newMultiplayerTests": 0,
+    "newCombatRngTests": 0,
+    "newPerformanceBenchmark": false
+  },
+  "visualReview": {
+    "scope": "Representative smoke six-scenes; mobile bosque H2 dense/sparse; mobile infernal H3 all5looks; landscape hielo H1 all5looks; same-frame signature ABA in bosque. Remaining matrices generated, not approved.",
+    "B117": "Wall remains distinct and geometry visible. Construction strokes partly blend into persistent wall at330ms; integral Art Gate pending.",
+    "B118": "Sparse330ms shows articulated deployment; dense body overlap conceals most of support. Removing airborne generic signature reduces distraction at caster but does not expose supports at turret.",
+    "B119": "Weld X is visible on repaired wall at330ms; brace around equipped caster remains subordinate to generic armor/team rings.",
+    "signature": "All three normal casts use fallback star for brakk (CHAMPION_SIGNATURES has no brakk key). Actual live pool records shape star. Observational finding, no runtime change; ultimate remains untouched."
+  },
+  "remaining": [
+    "Grouped composition correction: normal Brakk signature and deployment readability, preserve original IDs/UF and all emitter/RNG behavior",
+    "B119 brace vs armor/team rings; full compound contrast across equipped skins/arenas",
+    "Sustained mobile performance and remaining lifecycle cases before integral Art Gate",
+    "Exact new-head CI; prior success does not approve workshop",
+    "Keep Morveth B168 and Aelith B106/B107 residuals; inventory globally incomplete"
+  ]
+}

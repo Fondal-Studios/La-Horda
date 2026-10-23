@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "closed": true,
+  "date": "2026-10-23",
+  "branch": "art/brakk-kit-first-pass-20261022",
+  "pr": 197,
+  "draft": true,
+  "parent": "8d7a69fe654db111e1efcab7e20cb62472869c85",
+  "recovery": "71dea059519d1496ef18a322ead9811c6a44ff65",
+  "productionCommit": "b6455c6f1634b04ab633a9f9b0668935ac5e56f2",
+  "main": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "productionFilesVerifiedByGitBlob": 60,
+  "states": {
+    "GENERADO": "Original53frames retained;0newframes. New diagnostic evidence only.",
+    "EN_CORRECCION": [
+      "B118 dense compound composition",
+      "B119 four-recipient compound composition and first-frame cost"
+    ],
+    "VALIDADO": {
+      "technicalScope": "30local,29relay,48sameframe restorations,48pool/coverage/reset checks PASS",
+      "integralArtGate": false,
+      "mobilePerformance": false
+    },
+    "INTEGRADO_MAIN": false,
+    "publicacionVerificada": false
+  },
+  "runtimeJSCompared": 450,
+  "runtimeChanged": [],
+  "merge": null,
+  "next": "Read current head and recipe; first-frame component profile and grouped crew-safe B118/B119 composition. Preserve mechanics/signals/IDs. Do not repeat solved diagnostics or regenerate53frames.",
+  "remoteVerification": "Production verified against fetched exact commit. Final closure files are verified after upload; final SHA lives in branch ref/PR, not self-referential JSON."
+}

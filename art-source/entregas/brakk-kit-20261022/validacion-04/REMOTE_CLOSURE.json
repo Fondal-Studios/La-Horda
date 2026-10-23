@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-23",
+  "pr": 197,
+  "branch": "art/brakk-kit-first-pass-20261022",
+  "recovery": "4259d309fc7c222d9a836214c0e141a4fe4a08f9",
+  "production": "2de750f64a212bbc8d1f97078e7dc369f9c55957",
+  "productionFilesVerified": 46,
+  "verification": "Git tree path->blob SHA exact for46selected files; all passed before closure. Recovery file inherited. Final closure files verified separately after commit.",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "draft": true,
+  "main": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "mainChange": {
+    "pr": 200,
+    "head": "ae3d384a2117323d7154b30760ad621106dec0c6",
+    "merged": true,
+    "verified": true,
+    "checksAllSuccess": 12,
+    "workflowsAllSuccess": 4,
+    "onlyFile": "tools/items/t_story.js"
+  },
+  "art": {
+    "newFrames": 0,
+    "atlasesReexported": 5,
+    "framesReexported": 53,
+    "runtimeFilesUnchanged": 450,
+    "assetsChanged": 0,
+    "integralArtGate": false,
+    "publicationVerified": false
+  },
+  "tests": {
+    "scenes": 360,
+    "coverage": 38,
+    "kit": 19,
+    "isolatedRows": 324,
+    "isolatedEnemyPlacements": 972,
+    "minimumMobile": 0.8668503213957759,
+    "minimumLandscape": 0.8607361963190184,
+    "threshold": 0.8,
+    "negativeControlFailuresExpected": 21,
+    "abSameFrameIdentical": 12,
+    "abSameFrameCount": 12
+  },
+  "limits": [
+    "No new gameplay/RNG/online/performance run; runtime unchanged",
+    "17of36independent-session initial images differed; only same-frame ABA used causally",
+    "Selected raster evidence uploaded; full capture trace and hash index retained; full matrix reproducible via recipe, no360scene visual approval",
+    "Brakk normal signature fallback-star and deployment/brace compound readability unresolved"
+  ],
+  "next": "Grouped Brakk composition correction from validacion-04: normal signature preserving UF, B118 deployed supports and B119 brace/rings. Preserve IDs and emitters/RNG. Integral equipped/arena/contrast/performance gates before any art merge. Keep Aelith B106/B107 and Morveth B168 queue. PR200 is already integrated; do not repeat."
+}

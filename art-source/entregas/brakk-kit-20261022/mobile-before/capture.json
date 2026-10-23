@@ -1,0 +1,254 @@
+{
+  "results": [
+    {
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "nova",
+          "siege",
+          115,
+          0,
+          65,
+          0,
+          600,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "siege",
+          115,
+          0,
+          44,
+          0,
+          500,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rays",
+          "siege~p",
+          115,
+          0,
+          40,
+          0,
+          380,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rings",
+          "siege~p",
+          115,
+          0,
+          65,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        "brk_wall"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "b729556fe06a3c43d6d3b742dbde3f7609ce1d0393aefdb6d5bc57bf589d2650"
+    },
+    {
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "siege~h",
+          115,
+          0,
+          40,
+          0,
+          500,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "nova",
+          "siege~h",
+          115,
+          0,
+          45,
+          0,
+          520,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rays",
+          "siege~p",
+          115,
+          0,
+          40,
+          0,
+          380,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        "brk_turret"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "757522e8d360dcd28e0c10fa743f4bdf31fb95ec969476258afefad8d5a23638"
+    },
+    {
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "nova",
+          "siege~p",
+          0,
+          0,
+          160,
+          0,
+          640,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "siege~p",
+          0,
+          0,
+          44,
+          0,
+          1600,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "rays",
+          "siege~p",
+          0,
+          0,
+          67.2,
+          0,
+          380,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rings",
+          "siege",
+          0,
+          0,
+          160,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "column",
+          "siege~p",
+          0,
+          4,
+          16,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        "brk_wall"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "ad40addceb16caddb8bacf736e0be5960536394b5d7879a9b8243f199ae85c57"
+    },
+    {
+      "lance": false,
+      "champion": "brakk",
+      "slot": 3,
+      "action": "brk_final",
+      "trace": [],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Demolición final",
+      "sceneHash": "df9b1f1035f47eccbfe8957285e339e781e0ed1a4eb38b355dfdf98eacbfd89c"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,7949 @@
+{
+  "results": [
+    {
+      "recipients": [
+        {
+          "fi": 0,
+          "key": "brakk",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 1,
+          "key": "tanque",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 2,
+          "key": "soporte",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 3,
+          "key": "mago",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        }
+      ],
+      "crew": true,
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "bosque",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        30,
+        30
+      ],
+      "comparison": "complete crew scene / only Brakk SFA draw omitted / restored complete scene; all emitters and mechanical state retained",
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 40,
+          "burst|brakk_repair~p": 84,
+          "aura|brakk_repair~p": 856,
+          "beam|brakk_nails": 144
+        },
+        "body": 229
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 129.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 172.7
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            },
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "cross-brace"
+            }
+          ]
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 108.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 162.2
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3100,
+          "elapsed": 3104,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 1076,
+              "hp": 98.02499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2896,
+              "hp": 141.2
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            },
+            {
+              "art": "beam",
+              "theme": "brakk_nails",
+              "t": 112,
+              "dur": 260,
+              "fi": -2
+            },
+            {
+              "art": "burst",
+              "theme": "siege~h",
+              "t": 112,
+              "dur": 380,
+              "fi": -1
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3600,
+          "elapsed": 3600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 580,
+              "hp": 87.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2400,
+              "hp": 130.7
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 108,
+              "shared": 12,
+              "sharedFraction": 0.1111111111111111
+            },
+            {
+              "fi": 1,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            },
+            {
+              "fi": 2,
+              "opaque": 112,
+              "shared": 12,
+              "sharedFraction": 0.10714285714285714
+            },
+            {
+              "fi": 3,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "74803a2f2c0c4a958876c7e76f12cadd2132aae0fefc8d5fd203fdf2ae86fdc3",
+          "withoutHash": "689b9f77284cd00b9dacbd37caa9af001658c33d1ca2df7d6454b49783d0233c"
+        },
+        {
+          "t": 1600,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 114,
+              "shared": 16,
+              "sharedFraction": 0.14035087719298245
+            },
+            {
+              "fi": 1,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            },
+            {
+              "fi": 2,
+              "opaque": 118,
+              "shared": 16,
+              "sharedFraction": 0.13559322033898305
+            },
+            {
+              "fi": 3,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "a00cae49d08f038bd3f246b070bdbc79e335e6eb9a278a4c3523003e3ef0dfa7",
+          "withoutHash": "916b79f6e8c57e19d1b8adcf221656151daf13a2c2354b9b806eacf02e61e3db"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          105,
+          0,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          -24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 580
+        },
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 2400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330,
+        1600,
+        3100,
+        3600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "67a2f742da27d331fada0ce308623c73d6a95b2995e7ed6b66f95086658876df"
+    },
+    {
+      "recipients": [
+        {
+          "fi": 0,
+          "key": "brakk",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 1,
+          "key": "tanque",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 2,
+          "key": "soporte",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 3,
+          "key": "mago",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        }
+      ],
+      "crew": true,
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "bosque",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        30,
+        30
+      ],
+      "comparison": "complete crew scene / only Brakk SFA draw omitted / restored complete scene; all emitters and mechanical state retained",
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 40,
+          "burst|brakk_repair~p": 84,
+          "aura|brakk_repair~p": 856,
+          "beam|brakk_nails": 144
+        },
+        "body": 229
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 217.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 289.74
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            },
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "cross-brace"
+            }
+          ]
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 196.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 279.24
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3100,
+          "elapsed": 3104,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 1076,
+              "hp": 185.805
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2896,
+              "hp": 258.24
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            },
+            {
+              "art": "beam",
+              "theme": "brakk_nails",
+              "t": 112,
+              "dur": 260,
+              "fi": -2
+            },
+            {
+              "art": "burst",
+              "theme": "siege~h",
+              "t": 112,
+              "dur": 380,
+              "fi": -1
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3600,
+          "elapsed": 3600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 580,
+              "hp": 175.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2400,
+              "hp": 247.74
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 108,
+              "shared": 12,
+              "sharedFraction": 0.1111111111111111
+            },
+            {
+              "fi": 1,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            },
+            {
+              "fi": 2,
+              "opaque": 112,
+              "shared": 12,
+              "sharedFraction": 0.10714285714285714
+            },
+            {
+              "fi": 3,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "fc551b58bac8eab88e64e77cd5735ee11e7cf659068476f0c2601675c01afe44",
+          "withoutHash": "b2c8c05d94f5b7a993ccee7f5ec705e4ffcdb06afc95a1caebd082f6fe36b986"
+        },
+        {
+          "t": 1600,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 114,
+              "shared": 16,
+              "sharedFraction": 0.14035087719298245
+            },
+            {
+              "fi": 1,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            },
+            {
+              "fi": 2,
+              "opaque": 118,
+              "shared": 16,
+              "sharedFraction": 0.13559322033898305
+            },
+            {
+              "fi": 3,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "d39fbcb785d9820cb68742feedee25e6e4dc12d5a98d7b21a76668c667611738",
+          "withoutHash": "cf51c622942015151e4499d828f4f4623760e863102711e9d0d8b8dd4c1a5123"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          105,
+          0,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          -24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 580
+        },
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 2400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330,
+        1600,
+        3100,
+        3600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "7e72634778e8c991a865c4bafd31c73399a6c28143494dd5f9ca49e27cf92478"
+    },
+    {
+      "recipients": [
+        {
+          "fi": 0,
+          "key": "brakk",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 1,
+          "key": "tanque",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 2,
+          "key": "soporte",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 3,
+          "key": "mago",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        }
+      ],
+      "crew": true,
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "hielo",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        30,
+        30
+      ],
+      "comparison": "complete crew scene / only Brakk SFA draw omitted / restored complete scene; all emitters and mechanical state retained",
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 40,
+          "burst|brakk_repair~p": 84,
+          "aura|brakk_repair~p": 856,
+          "beam|brakk_nails": 144
+        },
+        "body": 229
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 129.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 172.7
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            },
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "cross-brace"
+            }
+          ]
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 108.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 162.2
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3100,
+          "elapsed": 3104,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 1076,
+              "hp": 98.02499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2896,
+              "hp": 141.2
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            },
+            {
+              "art": "beam",
+              "theme": "brakk_nails",
+              "t": 112,
+              "dur": 260,
+              "fi": -2
+            },
+            {
+              "art": "burst",
+              "theme": "siege~h",
+              "t": 112,
+              "dur": 380,
+              "fi": -1
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3600,
+          "elapsed": 3600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 580,
+              "hp": 87.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2400,
+              "hp": 130.7
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 108,
+              "shared": 12,
+              "sharedFraction": 0.1111111111111111
+            },
+            {
+              "fi": 1,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            },
+            {
+              "fi": 2,
+              "opaque": 112,
+              "shared": 12,
+              "sharedFraction": 0.10714285714285714
+            },
+            {
+              "fi": 3,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "e15ab4a96984cd0d02817c15414f65d1b31c5d5bb671c89e2e83d207f11b4fa0",
+          "withoutHash": "a445e9e0d201d68d125ee66fd79b4331b3f9e22611b1039f67e3c80605982874"
+        },
+        {
+          "t": 1600,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 114,
+              "shared": 16,
+              "sharedFraction": 0.14035087719298245
+            },
+            {
+              "fi": 1,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            },
+            {
+              "fi": 2,
+              "opaque": 118,
+              "shared": 16,
+              "sharedFraction": 0.13559322033898305
+            },
+            {
+              "fi": 3,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "259a6d6762b2a5016cb57c35705c4bb9006891965693420da6196200550542c4",
+          "withoutHash": "a9c4b520f68456ca1bc42b97a61128e92993c6cff7b3b6dd7ee44f2519803698"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          105,
+          0,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          -24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 580
+        },
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 2400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330,
+        1600,
+        3100,
+        3600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "a9d986452b71299767f7d1fa63be2951fb00a8bbdcb6987702433bcdef6b8f33"
+    },
+    {
+      "recipients": [
+        {
+          "fi": 0,
+          "key": "brakk",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 1,
+          "key": "tanque",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 2,
+          "key": "soporte",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 3,
+          "key": "mago",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        }
+      ],
+      "crew": true,
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "hielo",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        30,
+        30
+      ],
+      "comparison": "complete crew scene / only Brakk SFA draw omitted / restored complete scene; all emitters and mechanical state retained",
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 40,
+          "burst|brakk_repair~p": 84,
+          "aura|brakk_repair~p": 856,
+          "beam|brakk_nails": 144
+        },
+        "body": 229
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 217.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 289.74
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            },
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "cross-brace"
+            }
+          ]
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 196.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 279.24
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3100,
+          "elapsed": 3104,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 1076,
+              "hp": 185.805
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2896,
+              "hp": 258.24
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            },
+            {
+              "art": "beam",
+              "theme": "brakk_nails",
+              "t": 112,
+              "dur": 260,
+              "fi": -2
+            },
+            {
+              "art": "burst",
+              "theme": "siege~h",
+              "t": 112,
+              "dur": 380,
+              "fi": -1
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3600,
+          "elapsed": 3600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 580,
+              "hp": 175.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2400,
+              "hp": 247.74
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 108,
+              "shared": 12,
+              "sharedFraction": 0.1111111111111111
+            },
+            {
+              "fi": 1,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            },
+            {
+              "fi": 2,
+              "opaque": 112,
+              "shared": 12,
+              "sharedFraction": 0.10714285714285714
+            },
+            {
+              "fi": 3,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "7b486e7cf03a659f2ef3822d161e5348eac8d165aa2013e206b87a0052a67716",
+          "withoutHash": "f797f000d57e4d6ac8495ff9e8da19f791effeb49e7556a17c233ad4f6088edd"
+        },
+        {
+          "t": 1600,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 114,
+              "shared": 16,
+              "sharedFraction": 0.14035087719298245
+            },
+            {
+              "fi": 1,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            },
+            {
+              "fi": 2,
+              "opaque": 118,
+              "shared": 16,
+              "sharedFraction": 0.13559322033898305
+            },
+            {
+              "fi": 3,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "76ac330605b2073b11bd820549d6c77a5c3ea2026da800ade15a8984c166a181",
+          "withoutHash": "9af1c57ac69e5862b4e8a4d3c64ba475cd7672bd5249830781db034955d5ef1c"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          105,
+          0,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          -24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 580
+        },
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 2400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330,
+        1600,
+        3100,
+        3600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "c60b26fd52550100cfbd25075ac673eb011e0cb9a6d630cacf95bfc9f78a48c0"
+    },
+    {
+      "recipients": [
+        {
+          "fi": 0,
+          "key": "brakk",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 1,
+          "key": "tanque",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 2,
+          "key": "soporte",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 3,
+          "key": "mago",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        }
+      ],
+      "crew": true,
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "infernal",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        30,
+        30
+      ],
+      "comparison": "complete crew scene / only Brakk SFA draw omitted / restored complete scene; all emitters and mechanical state retained",
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 40,
+          "burst|brakk_repair~p": 84,
+          "aura|brakk_repair~p": 856,
+          "beam|brakk_nails": 144
+        },
+        "body": 229
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 129.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 172.7
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            },
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "cross-brace"
+            }
+          ]
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 108.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 162.2
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3100,
+          "elapsed": 3104,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 1076,
+              "hp": 98.02499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2896,
+              "hp": 141.2
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            },
+            {
+              "art": "beam",
+              "theme": "brakk_nails",
+              "t": 112,
+              "dur": 260,
+              "fi": -2
+            },
+            {
+              "art": "burst",
+              "theme": "siege~h",
+              "t": 112,
+              "dur": 380,
+              "fi": -1
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3600,
+          "elapsed": 3600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 580,
+              "hp": 87.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2400,
+              "hp": 130.7
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 108,
+              "shared": 12,
+              "sharedFraction": 0.1111111111111111
+            },
+            {
+              "fi": 1,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            },
+            {
+              "fi": 2,
+              "opaque": 112,
+              "shared": 12,
+              "sharedFraction": 0.10714285714285714
+            },
+            {
+              "fi": 3,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "70f762a16a4454b0393a3d4505e8114de8e9de0cc2875a5866c5191a6f0daf81",
+          "withoutHash": "7c04b3b27014ba6fad123cfd414ae8e560e54c0e31138b8b3dfd912d16c1ae6a"
+        },
+        {
+          "t": 1600,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 114,
+              "shared": 16,
+              "sharedFraction": 0.14035087719298245
+            },
+            {
+              "fi": 1,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            },
+            {
+              "fi": 2,
+              "opaque": 118,
+              "shared": 16,
+              "sharedFraction": 0.13559322033898305
+            },
+            {
+              "fi": 3,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "1ee6649d795a03a6b1d5419c7f7f2372b3727dd899ec404f1e17edf6ab453efd",
+          "withoutHash": "01704f382d6479ea526e871c5315ed4073806bfa0bf8b3fbf12c3da9c9313499"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          105,
+          0,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          -24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 580
+        },
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 2400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330,
+        1600,
+        3100,
+        3600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "b7053e6f0ef28fab50ee6370fee9c5ac3e30c6f8080063f6c57ccfa6f5885411"
+    },
+    {
+      "recipients": [
+        {
+          "fi": 0,
+          "key": "brakk",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 1,
+          "key": "tanque",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 2,
+          "key": "soporte",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 3,
+          "key": "mago",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        }
+      ],
+      "crew": true,
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "infernal",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        30,
+        30
+      ],
+      "comparison": "complete crew scene / only Brakk SFA draw omitted / restored complete scene; all emitters and mechanical state retained",
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 40,
+          "burst|brakk_repair~p": 84,
+          "aura|brakk_repair~p": 856,
+          "beam|brakk_nails": 144
+        },
+        "body": 229
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 217.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 289.74
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            },
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "cross-brace"
+            }
+          ]
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 196.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 279.24
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3100,
+          "elapsed": 3104,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 1076,
+              "hp": 185.805
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2896,
+              "hp": 258.24
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            },
+            {
+              "art": "beam",
+              "theme": "brakk_nails",
+              "t": 112,
+              "dur": 260,
+              "fi": -2
+            },
+            {
+              "art": "burst",
+              "theme": "siege~h",
+              "t": 112,
+              "dur": 380,
+              "fi": -1
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3600,
+          "elapsed": 3600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 580,
+              "hp": 175.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2400,
+              "hp": 247.74
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 108,
+              "shared": 12,
+              "sharedFraction": 0.1111111111111111
+            },
+            {
+              "fi": 1,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            },
+            {
+              "fi": 2,
+              "opaque": 112,
+              "shared": 12,
+              "sharedFraction": 0.10714285714285714
+            },
+            {
+              "fi": 3,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "4f6f8487306ed9b79dea8d62df056b43ddbfa97941189267c9dc3e64f98ce5a2",
+          "withoutHash": "be42b4ad02b1e841e5be0b8d5d1a0feaf7269268456d4f1df57c27833fcbd19a"
+        },
+        {
+          "t": 1600,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 114,
+              "shared": 16,
+              "sharedFraction": 0.14035087719298245
+            },
+            {
+              "fi": 1,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            },
+            {
+              "fi": 2,
+              "opaque": 118,
+              "shared": 16,
+              "sharedFraction": 0.13559322033898305
+            },
+            {
+              "fi": 3,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "517ba00539de77077c2eeef12784757ecefa4b767de3b9c1b0432222e5d3c8d6",
+          "withoutHash": "d091552d2a3ec3957cee2b6f78d5561f5cf6a79990812317ed103f37de8aa483"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          105,
+          0,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          -24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 580
+        },
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 2400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330,
+        1600,
+        3100,
+        3600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "74378cf2d5964001a9a3886286959e2b2835a2be7a63b3e2b0af0b455a9cd6dc"
+    },
+    {
+      "recipients": [
+        {
+          "fi": 0,
+          "key": "brakk",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 1,
+          "key": "tanque",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 2,
+          "key": "soporte",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 3,
+          "key": "mago",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        }
+      ],
+      "crew": true,
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "laberinto",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        30,
+        30
+      ],
+      "comparison": "complete crew scene / only Brakk SFA draw omitted / restored complete scene; all emitters and mechanical state retained",
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 40,
+          "burst|brakk_repair~p": 84,
+          "aura|brakk_repair~p": 856,
+          "beam|brakk_nails": 144
+        },
+        "body": 229
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 129.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 172.7
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            },
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "cross-brace"
+            }
+          ]
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 108.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 162.2
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3100,
+          "elapsed": 3104,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 1076,
+              "hp": 98.02499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2896,
+              "hp": 141.2
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            },
+            {
+              "art": "beam",
+              "theme": "brakk_nails",
+              "t": 112,
+              "dur": 260,
+              "fi": -2
+            },
+            {
+              "art": "burst",
+              "theme": "siege~h",
+              "t": 112,
+              "dur": 380,
+              "fi": -1
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3600,
+          "elapsed": 3600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 580,
+              "hp": 87.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2400,
+              "hp": 130.7
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 108,
+              "shared": 12,
+              "sharedFraction": 0.1111111111111111
+            },
+            {
+              "fi": 1,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            },
+            {
+              "fi": 2,
+              "opaque": 112,
+              "shared": 12,
+              "sharedFraction": 0.10714285714285714
+            },
+            {
+              "fi": 3,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "c8a54d4e81b159c36b9476c93f588f926ef312ee4a6c769ff4e4bda7396352f4",
+          "withoutHash": "efbddde114570c49608e0b6f3e2ae2d9022796a3cb3c5cd417c756342b8bfcbc"
+        },
+        {
+          "t": 1600,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 114,
+              "shared": 16,
+              "sharedFraction": 0.14035087719298245
+            },
+            {
+              "fi": 1,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            },
+            {
+              "fi": 2,
+              "opaque": 118,
+              "shared": 16,
+              "sharedFraction": 0.13559322033898305
+            },
+            {
+              "fi": 3,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "8a6432f4d0dc07f86893e65600b748e5e69fd0cd793a48fcbf631e07e607ea21",
+          "withoutHash": "72b33bad29332d9b700f7f29f57230093b82d1d60399002dbe15f985ac6b1f61"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          105,
+          0,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          -24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 580
+        },
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 2400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330,
+        1600,
+        3100,
+        3600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "d7bc309e385964cdda8341b1de81e5a4c8b1f4c9cc9106296fd504b9251ac3a8"
+    },
+    {
+      "recipients": [
+        {
+          "fi": 0,
+          "key": "brakk",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 1,
+          "key": "tanque",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 2,
+          "key": "soporte",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 3,
+          "key": "mago",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        }
+      ],
+      "crew": true,
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "laberinto",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        30,
+        30
+      ],
+      "comparison": "complete crew scene / only Brakk SFA draw omitted / restored complete scene; all emitters and mechanical state retained",
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 40,
+          "burst|brakk_repair~p": 84,
+          "aura|brakk_repair~p": 856,
+          "beam|brakk_nails": 144
+        },
+        "body": 229
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 217.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 289.74
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            },
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "cross-brace"
+            }
+          ]
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 196.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 279.24
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3100,
+          "elapsed": 3104,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 1076,
+              "hp": 185.805
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2896,
+              "hp": 258.24
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            },
+            {
+              "art": "beam",
+              "theme": "brakk_nails",
+              "t": 112,
+              "dur": 260,
+              "fi": -2
+            },
+            {
+              "art": "burst",
+              "theme": "siege~h",
+              "t": 112,
+              "dur": 380,
+              "fi": -1
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3600,
+          "elapsed": 3600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 580,
+              "hp": 175.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2400,
+              "hp": 247.74
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 108,
+              "shared": 12,
+              "sharedFraction": 0.1111111111111111
+            },
+            {
+              "fi": 1,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            },
+            {
+              "fi": 2,
+              "opaque": 112,
+              "shared": 12,
+              "sharedFraction": 0.10714285714285714
+            },
+            {
+              "fi": 3,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "9d9c8f7d19751bc1b86519b07b39f3234c940e49278c68f05b043f26b2169081",
+          "withoutHash": "4823d48dd9416a3f34c3958e42adec61126254df683e57305557473483591819"
+        },
+        {
+          "t": 1600,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 114,
+              "shared": 16,
+              "sharedFraction": 0.14035087719298245
+            },
+            {
+              "fi": 1,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            },
+            {
+              "fi": 2,
+              "opaque": 118,
+              "shared": 16,
+              "sharedFraction": 0.13559322033898305
+            },
+            {
+              "fi": 3,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "d62a61838da1a8a0f31bc5699d3c09f90a236d7fa805a34cd2f1d440eb561392",
+          "withoutHash": "893c492269f1a1d38f7be26508ec12d6d857a80b8dfbac7ecb3ca7d68db778ef"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          105,
+          0,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          -24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 580
+        },
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 2400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330,
+        1600,
+        3100,
+        3600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "8920d722f0fa075ee74e3edeb8b0317655135c05d5da771fc8df8e263c87beb1"
+    },
+    {
+      "recipients": [
+        {
+          "fi": 0,
+          "key": "brakk",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 1,
+          "key": "tanque",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 2,
+          "key": "soporte",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 3,
+          "key": "mago",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        }
+      ],
+      "crew": true,
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "acuatica",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        30,
+        30
+      ],
+      "comparison": "complete crew scene / only Brakk SFA draw omitted / restored complete scene; all emitters and mechanical state retained",
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 40,
+          "burst|brakk_repair~p": 84,
+          "aura|brakk_repair~p": 856,
+          "beam|brakk_nails": 144
+        },
+        "body": 229
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 129.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 172.7
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            },
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "cross-brace"
+            }
+          ]
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 108.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 162.2
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3100,
+          "elapsed": 3104,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 1076,
+              "hp": 99.77499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2896,
+              "hp": 155.2
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            },
+            {
+              "art": "beam",
+              "theme": "brakk_nails",
+              "t": 112,
+              "dur": 260,
+              "fi": -2
+            },
+            {
+              "art": "burst",
+              "theme": "siege~h",
+              "t": 112,
+              "dur": 380,
+              "fi": -1
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3600,
+          "elapsed": 3600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 0,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 580,
+              "hp": 98.02499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2400,
+              "hp": 153.45
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 108,
+              "shared": 12,
+              "sharedFraction": 0.1111111111111111
+            },
+            {
+              "fi": 1,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            },
+            {
+              "fi": 2,
+              "opaque": 112,
+              "shared": 12,
+              "sharedFraction": 0.10714285714285714
+            },
+            {
+              "fi": 3,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "e577c5454159cc46707b4743f5fa1da7fe436b4acdf27624e092397b3001a4c4",
+          "withoutHash": "9158f1065be4f203205099dba42f5cee3803b8103b43438e2cc8bf6a488c9729"
+        },
+        {
+          "t": 1600,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 114,
+              "shared": 16,
+              "sharedFraction": 0.14035087719298245
+            },
+            {
+              "fi": 1,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            },
+            {
+              "fi": 2,
+              "opaque": 118,
+              "shared": 16,
+              "sharedFraction": 0.13559322033898305
+            },
+            {
+              "fi": 3,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "b0a21915dddd0fc6830cc1191064f826ea87d9765702a56453662a143e6ed7ca",
+          "withoutHash": "a2519b7d6c2043a3c286cb1178149fa61d411f3dd7c7190cfd5062f8027b8b79"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          105,
+          0,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          -24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0.7477546687787529,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0.7477546687787529,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          43,
+          0.7477546687787529,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 580
+        },
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 2400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330,
+        1600,
+        3100,
+        3600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "7ad5ec4ef1fb3a2c28bdd7677e4e8aacf2e2ed6bac547f42a403b63a7dd77274"
+    },
+    {
+      "recipients": [
+        {
+          "fi": 0,
+          "key": "brakk",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 1,
+          "key": "tanque",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 2,
+          "key": "soporte",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 3,
+          "key": "mago",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        }
+      ],
+      "crew": true,
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "acuatica",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        30,
+        30
+      ],
+      "comparison": "complete crew scene / only Brakk SFA draw omitted / restored complete scene; all emitters and mechanical state retained",
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 40,
+          "burst|brakk_repair~p": 84,
+          "aura|brakk_repair~p": 856,
+          "beam|brakk_nails": 96
+        },
+        "body": 229
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": -45.991947721634,
+              "y": -21.982993218425754,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 120.991947721634,
+              "y": 51.982993218425754,
+              "life": 3844,
+              "hp": 217.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 128.64576568566972,
+              "y": 11.30208074375708,
+              "life": 5664,
+              "hp": 289.74
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": -22.346182035964272,
+              "y": -10.680912474668675,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            },
+            {
+              "on": true,
+              "x": -22.346182035964272,
+              "y": -10.680912474668675,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "cross-brace"
+            }
+          ]
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": -134.94506625343908,
+              "y": -64.50034458779783,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 209.94506625343908,
+              "y": 94.50034458779783,
+              "life": 2580,
+              "hp": 196.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 217.5988842174748,
+              "y": 53.81943211312915,
+              "life": 4400,
+              "hp": 279.24
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3100,
+          "elapsed": 3104,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": -240.78801741786415,
+              "y": -115.0906107741387,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 315.7880174178641,
+              "y": 145.0906107741387,
+              "life": 1076,
+              "hp": 185.805
+            },
+            {
+              "kind": "brk_turret",
+              "x": 323.44183538189986,
+              "y": 104.40969829947002,
+              "life": 2896,
+              "hp": 258.24
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            },
+            {
+              "art": "beam",
+              "theme": "brakk_nails",
+              "t": 112,
+              "dur": 260,
+              "fi": -2
+            },
+            {
+              "art": "burst",
+              "theme": "siege~h",
+              "t": 112,
+              "dur": 380,
+              "fi": -1
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3600,
+          "elapsed": 3600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": -275.69367152528145,
+              "y": -131.77463472920866,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 24,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 350.69367152528145,
+              "y": 161.77463472920866,
+              "life": 580,
+              "hp": 175.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 358.3474894893172,
+              "y": 121.09372225453998,
+              "life": 2400,
+              "hp": 247.74
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 109,
+              "shared": 0,
+              "sharedFraction": 0
+            },
+            {
+              "fi": 1,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            },
+            {
+              "fi": 2,
+              "opaque": 112,
+              "shared": 0,
+              "sharedFraction": 0
+            },
+            {
+              "fi": 3,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "6c2ca1c83009bcea23ba0a9d81fdf4b6f861ff99a9022a5c482cc5d1dea54edb",
+          "withoutHash": "34c93584918a5871dd054e70f6e644bac2ebac7e7a569e9e0f895880e7e5ef7c"
+        },
+        {
+          "t": 1600,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 111,
+              "shared": 0,
+              "sharedFraction": 0
+            },
+            {
+              "fi": 1,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            },
+            {
+              "fi": 2,
+              "opaque": 118,
+              "shared": 0,
+              "sharedFraction": 0
+            },
+            {
+              "fi": 3,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "9100acbf0cc592fee10351c15441af0a70feefb40cab7bf042da73d849813d19",
+          "withoutHash": "da8da32230c20cc16aff47a757780d594ad0b8456e6edec8710ac1d1fcd085a2"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          82.65381796403572,
+          -10.680912474668675,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          82.65381796403572,
+          -10.680912474668675,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          -22.346182035964272,
+          -10.680912474668675,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          -24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24,
+          24,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          82.65381796403572,
+          -10.680912474668675,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          82.65381796403572,
+          -10.680912474668675,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          82.65381796403572,
+          -10.680912474668675,
+          0,
+          0,
+          260,
+          43,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 350.69367152528145,
+          "y": 161.77463472920866,
+          "life": 580
+        },
+        {
+          "kind": "brk_turret",
+          "x": 358.3474894893172,
+          "y": 121.09372225453998,
+          "life": 2400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330,
+        1600,
+        3100,
+        3600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "97d474c5b12de3639b8a41bc822faf97251a80f1020f39aa8edab35ee2af2478"
+    },
+    {
+      "recipients": [
+        {
+          "fi": 0,
+          "key": "brakk",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 1,
+          "key": "tanque",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 2,
+          "key": "soporte",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 3,
+          "key": "mago",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        }
+      ],
+      "crew": true,
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "minas",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        30,
+        30
+      ],
+      "comparison": "complete crew scene / only Brakk SFA draw omitted / restored complete scene; all emitters and mechanical state retained",
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 40,
+          "burst|brakk_repair~p": 84,
+          "aura|brakk_repair~p": 856,
+          "beam|brakk_nails": 144
+        },
+        "body": 229
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 560,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 129.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 172.7
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            },
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "cross-brace"
+            }
+          ]
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 560,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 108.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 162.2
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3100,
+          "elapsed": 3104,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 560,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 1076,
+              "hp": 98.02499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2896,
+              "hp": 141.2
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            },
+            {
+              "art": "beam",
+              "theme": "brakk_nails",
+              "t": 112,
+              "dur": 260,
+              "fi": -2
+            },
+            {
+              "art": "burst",
+              "theme": "siege~h",
+              "t": 112,
+              "dur": 380,
+              "fi": -1
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3600,
+          "elapsed": 3600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 560,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 580,
+              "hp": 87.52499999999998
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2400,
+              "hp": 130.7
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 108,
+              "shared": 12,
+              "sharedFraction": 0.1111111111111111
+            },
+            {
+              "fi": 1,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            },
+            {
+              "fi": 2,
+              "opaque": 112,
+              "shared": 12,
+              "sharedFraction": 0.10714285714285714
+            },
+            {
+              "fi": 3,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "265b3a2ad68a44e3684bd5cc19cb487206039ec8b5e100f490f940a0c388144c",
+          "withoutHash": "d8a7d434000668c945822b0f3b1623f151daa0b364f356fd6bd9b0169e4a03e4"
+        },
+        {
+          "t": 1600,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 114,
+              "shared": 16,
+              "sharedFraction": 0.14035087719298245
+            },
+            {
+              "fi": 1,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            },
+            {
+              "fi": 2,
+              "opaque": 118,
+              "shared": 16,
+              "sharedFraction": 0.13559322033898305
+            },
+            {
+              "fi": 3,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "16ec5c071156dd728df4a6f98cae189f41f25c6ebc0d11e0b379d5b4eeb67acd",
+          "withoutHash": "10154fbfd53b2d010dc7ed5a5f8de58a6ef18592a407972bb1ae37162d4a5077"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          560,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          590,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          105,
+          560,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          560,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          -24,
+          584,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          584,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24,
+          584,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          560,
+          0,
+          0,
+          260,
+          43,
+          560,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          560,
+          0,
+          0,
+          260,
+          43,
+          560,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          560,
+          0,
+          0,
+          260,
+          43,
+          560,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 580
+        },
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 2400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330,
+        1600,
+        3100,
+        3600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "a2d351e39d5caeadbbcff3f1605fbd8161bac5f2075eefeff73204aabb6ef8db"
+    },
+    {
+      "recipients": [
+        {
+          "fi": 0,
+          "key": "brakk",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 1,
+          "key": "tanque",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 2,
+          "key": "soporte",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        },
+        {
+          "fi": 3,
+          "key": "mago",
+          "until": 3680.0000000000005,
+          "pct": 0.15
+        }
+      ],
+      "crew": true,
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "minas",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        30,
+        30
+      ],
+      "comparison": "complete crew scene / only Brakk SFA draw omitted / restored complete scene; all emitters and mechanical state retained",
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 40,
+          "burst|brakk_repair~p": 84,
+          "aura|brakk_repair~p": 856,
+          "beam|brakk_nails": 144
+        },
+        "body": 229
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 560,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 1.1102230246251565e-16
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 217.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 289.74
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            },
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "cross-brace"
+            }
+          ]
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 560,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 0
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 196.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 279.24
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3100,
+          "elapsed": 3104,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 560,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 0.6190476190476182
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 1076,
+              "hp": 185.805
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2896,
+              "hp": 258.24
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 0
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 2
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 3104,
+              "dur": 3360.0000000000005,
+              "fi": 3
+            },
+            {
+              "art": "beam",
+              "theme": "brakk_nails",
+              "t": 112,
+              "dur": 260,
+              "fi": -2
+            },
+            {
+              "art": "burst",
+              "theme": "siege~h",
+              "t": 112,
+              "dur": 380,
+              "fi": -1
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 3600,
+          "elapsed": 3600,
+          "receivers": [
+            {
+              "fi": 0,
+              "alive": true,
+              "x": 0,
+              "y": 560,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 1,
+              "alive": true,
+              "x": -24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 2,
+              "alive": true,
+              "x": 0,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            },
+            {
+              "fi": 3,
+              "alive": true,
+              "x": 24,
+              "y": 584,
+              "until": 3680.0000000000005,
+              "opacity": 1
+            }
+          ],
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 580,
+              "hp": 175.305
+            },
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 2400,
+              "hp": 247.74
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 108,
+              "shared": 12,
+              "sharedFraction": 0.1111111111111111
+            },
+            {
+              "fi": 1,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            },
+            {
+              "fi": 2,
+              "opaque": 112,
+              "shared": 12,
+              "sharedFraction": 0.10714285714285714
+            },
+            {
+              "fi": 3,
+              "opaque": 113,
+              "shared": 34,
+              "sharedFraction": 0.3008849557522124
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "38d8fe8392ace3b0dedaa6a4d5827e8b664f21d4de5c4ab474254a25af2ce960",
+          "withoutHash": "efc711e8d953d647c8f8b69e44c90774a68c83756c854bead8f1c83a0ed1be91"
+        },
+        {
+          "t": 1600,
+          "maskOverlap": [
+            {
+              "fi": 0,
+              "opaque": 114,
+              "shared": 16,
+              "sharedFraction": 0.14035087719298245
+            },
+            {
+              "fi": 1,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            },
+            {
+              "fi": 2,
+              "opaque": 118,
+              "shared": 16,
+              "sharedFraction": 0.13559322033898305
+            },
+            {
+              "fi": 3,
+              "opaque": 129,
+              "shared": 34,
+              "sharedFraction": 0.26356589147286824
+            }
+          ],
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "217665c64ed8dcd3d9298023ca3e8cd7fc9e7134b0856fcbe1cbbba9e0bd6ac2",
+          "withoutHash": "48c79450a597ae250b17b7fc18d7e11a2698c63ae7ba52e99596dd04634c3c02"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          560,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          590,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          105,
+          560,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          560,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          -24,
+          584,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          584,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24,
+          584,
+          24,
+          0,
+          3360.0000000000005,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          560,
+          0,
+          0,
+          260,
+          43,
+          560,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          560,
+          0,
+          0,
+          260,
+          43,
+          560,
+          18,
+          -2
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          560,
+          0,
+          0,
+          260,
+          43,
+          560,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 580
+        },
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 2400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330,
+        1600,
+        3100,
+        3600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "1c049a63685a8f4aae7e126e8698baec9b943bc2772e9ab5b7d6f61990999d87"
+    }
+  ],
+  "errors": []
+}

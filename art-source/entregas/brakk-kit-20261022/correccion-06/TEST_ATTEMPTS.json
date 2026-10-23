@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-23",
+  "attempts": [
+    {
+      "id": "diagnostic-single",
+      "result": "PASS single Acuatica set H2, insufficient to reproduce sequence dependency",
+      "evidence": "diagnostic-trace/capture.json.gz"
+    },
+    {
+      "id": "diagnostic-sequence",
+      "result": "65/72 restoration;7 failures;0 redraw RNG calls in failures",
+      "evidence": "diagnostic-sequence/capture.json.gz"
+    },
+    {
+      "id": "same-render-negative",
+      "result": "130/144 exact.14 FAIL without replacing signature; _an.spd*=.7 and walking phase advances on redraw.",
+      "evidence": [
+        "diagnostic-same/capture.json.gz",
+        "diagnostic-same-horizontal/capture.json.gz"
+      ]
+    },
+    {
+      "id": "pose-restored",
+      "result": "144/144 exact;144 pool/object states unchanged",
+      "evidence": [
+        "diagnostic-pose/capture.json.gz",
+        "diagnostic-pose-horizontal/capture.json.gz"
+      ]
+    },
+    {
+      "id": "pixel-canary",
+      "result": "FAIL expected,1 changed pixel still rejected",
+      "evidence": "canary-restoration/capture.json"
+    },
+    {
+      "id": "composition-attempt01",
+      "result": "Deploy down6px rejected:36 gate failures,min~71%. Preserved source/atlas/log. Aura widened separately accepted as candidate.",
+      "evidence": [
+        "attempt-01/kit-candidate.js",
+        "attempt-01/atlases/turret-deploy.png",
+        "attempt-01/deploy-gate.log"
+      ]
+    },
+    {
+      "id": "final-composition",
+      "result": "112 component controls and19 kit PASS. Four atlases41frames identical to05. One aura12frames revised."
+    },
+    {
+      "id": "legibility",
+      "result": "B119 aura/burst each54rows/view allPASS; aura min96.376% mobile/96.013% horizontal. General horizontal gate FAIL2 B117 beam~h impact rows min79.886%; unchanged source/atlas. Root not demonstrated.",
+      "evidence": [
+        "gate-mobile/component-legibility.json",
+        "gate-horizontal/component-legibility.json"
+      ]
+    },
+    {
+      "id": "same-frame-final",
+      "result": "96scenes;192/192 exact ABA and pool/object states unchanged. Six arenas,base/set,dense/sparse,two viewports,330/1600ms."
+    },
+    {
+      "id": "relay",
+      "result": "20/22 FAIL overall. New atlas actuallydrawn host27/touchguest38. Turret guest missing at observation and no nails events. No demonstrated root cause; do not call relayPASS.",
+      "evidence": "online-results.json"
+    },
+    {
+      "id": "functional",
+      "result": "81 PASS exit0"
+    },
+    {
+      "id": "parity",
+      "result": "360frames parent/candidate exact snapshots,29232/29232 RNG. Not global RNG isolation."
+    }
+  ]
+}

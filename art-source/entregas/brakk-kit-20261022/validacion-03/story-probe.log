@@ -1,0 +1,1007 @@
+[arnés] servidor propio: http://127.0.0.1:41001 (raíz /workspace/scratch/a01f80e6b406/la-horda-brakk)
+PASS DATOS.tres_actos_cubren_las_diez_arenas_en_orden  ["ciudad","fortaleza","bosque","micelial","hielo","acuatica","laberinto","abismo","minas","infernal"]
+PASS DATOS.cronicas_validas  {"acts":["ciudad","fortaleza","bosque","micelial","hielo","acuatica","laberinto","abismo","minas","infernal"],"dup":false,"n":25,"badPages":[],"perArena":{"ciudad":2,"fortaleza":2,"bosque":2,"micelial":2,"hielo":3,"acuatica":2,"laberinto":3,"abismo":2,"minas":3,"infernal":4},"emptyBooks":[],"noVoice":[],"ghostVoice":[],"badBoss":[],"bossesNoVoice":[],"hordeSpeaks":false}
+PASS DATOS.cada_arena_con_al_menos_dos_paginas  {"ciudad":2,"fortaleza":2,"bosque":2,"micelial":2,"hielo":3,"acuatica":2,"laberinto":3,"abismo":2,"minas":3,"infernal":4}
+PASS DATOS.cada_guardian_jugable_con_sus_3_lineas  {"acts":["ciudad","fortaleza","bosque","micelial","hielo","acuatica","laberinto","abismo","minas","infernal"],"dup":false,"n":25,"badPages":[],"perArena":{"ciudad":2,"fortaleza":2,"bosque":2,"micelial":2,"hielo":3,"acuatica":2,"laberinto":3,"abismo":2,"minas":3,"infernal":4},"emptyBooks":[],"noVoice":[],"ghostVoice":[],"badBoss":[],"bossesNoVoice":[],"hordeSpeaks":false}
+PASS DATOS.cada_jefe_de_campaña_tiene_voz  {"acts":["ciudad","fortaleza","bosque","micelial","hielo","acuatica","laberinto","abismo","minas","infernal"],"dup":false,"n":25,"badPages":[],"perArena":{"ciudad":2,"fortaleza":2,"bosque":2,"micelial":2,"hielo":3,"acuatica":2,"laberinto":3,"abismo":2,"minas":3,"infernal":4},"emptyBooks":[],"noVoice":[],"ghostVoice":[],"badBoss":[],"bossesNoVoice":[],"hordeSpeaks":false}
+PASS PROLOGO.tres_pantallas_y_despues_el_acto_I  [{"who":"PRÓLOGO","t":"LA NOCHE EN QUE VOLVIÓ LA HORDA","pro":true},{"who":"PRÓLOGO","t":"EL HUMO","pro":true},{"who":"PRÓLOGO","t":"LA PRIMERA CICATRIZ","pro":true},{"who":"ACTO I","t":"EL GUÍA","pro":true},{"who":"EL HECHICERO SUPREMO","t":"🏚 01 — CIUDAD MALDITA","pro":false}]
+PASS FICHA.dice_el_acto_y_habla_tu_guardian  {"act":"ACTO I · EL GUÍA","hero":"Aldric, el Último Bastión «La puerta norte aguantó tres noches. Esta también va a aguantar.»","say":"«Esta es tu ciudad, guardián, y la Horda volvió. No podés salvarlos a todos, pero vas a intentarlo. Cuando esto termine, te voy a mostrar el camino.»"}
+PASS PROLOGO.una_sola_vez_por_perfil  false
+PASS ACTO_II.cartel_al_entrar_al_Reino_Fungico  {"who":"ACTO II","t":"LOS ECOS","txt":"Con el primer cristal, el mundo empezó a contestar. Las esporas repiten voces de hace siglos, el hielo guarda cartas que nadie respondió y un mar aparece donde nunca hubo agua. Cada eco cuenta la misma historia que el guía. Casi la misma."}
+[
+  {
+    "seed": 1,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 2,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 3,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 4,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.5473656021220159,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 5,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 6,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.5473478989682761,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 7,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 8,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 9,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 10,
+    "pass": false,
+    "before": {
+      "stun": 368,
+      "phase": 0,
+      "hp": 0.993328472906404,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 224,
+      "phase": 0,
+      "hp": 0.5476906252368321,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 11,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 12,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 13,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 14,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 15,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 16,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 17,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 18,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 0.9954525274725275,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 19,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 336,
+      "phase": 1,
+      "hp": 0.5369771791133006,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 20,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 21,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.5411233336263737,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 22,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 23,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 24,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 25,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 26,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 27,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 28,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 29,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.5427240439560439,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 30,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 31,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 32,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 33,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 34,
+    "pass": false,
+    "before": {
+      "stun": 384,
+      "phase": 0,
+      "hp": 0.993328472906404,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 240,
+      "phase": 0,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 35,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.5427240439560439,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 36,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 37,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 0.9954525274725275,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 38,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 39,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  },
+  {
+    "seed": 40,
+    "pass": true,
+    "before": {
+      "stun": 0,
+      "phase": 0,
+      "hp": 1,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    },
+    "after": {
+      "stun": 0,
+      "phase": 1,
+      "hp": 0.55,
+      "queued": [
+        "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+        "El frío es lo único que todavía me obedece."
+      ],
+      "shown": "¿Primero? ¿Sos vos? …No. Hace siglos que espero a otro.",
+      "freeze": 0
+    }
+  }
+]

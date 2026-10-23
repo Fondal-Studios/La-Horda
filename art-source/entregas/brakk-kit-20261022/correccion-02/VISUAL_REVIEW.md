@@ -1,0 +1,1 @@
+Inspección inicial favorable, no Art Gate integral. Revisados atlas-comparison.png y mobile-after/brakk-1-330-full.png: brazos con codo, remache y zapata horizontal; desaparecen puntas de flecha. Cuatro otros atlas y UF idénticos. Faltan skins equipadas en todas las arenas y revisión de superposiciones/contraste a1:1; usar CHECKPOINT y reportes numéricos con sus límites.

@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-23",
+  "attempts": [
+    {
+      "id": "component",
+      "result": "33/33 PASS, original first run. 600 batches of40 profile queries on two pool entries; local p95=0.1ms,max0.5ms. Not full-frame/device benchmark."
+    },
+    {
+      "id": "canary",
+      "result": "Always-zero coverage hook deliberately hides missing indicators;19/33 FAIL expected, exit1 preserved."
+    },
+    {
+      "id": "probe",
+      "result": "8 mobile scenes;16 ABA exact.8 B118 comparisons byte-identical;8 B119 differences."
+    },
+    {
+      "id": "parity",
+      "result": "360 frames exact snapshot parent/candidate;29232 RNG both, exit0."
+    },
+    {
+      "id": "functional",
+      "result": "81PASS exit0."
+    },
+    {
+      "id": "relay",
+      "result": "24PASS +3 bounded state waits; real ring crossfade51host/77touch guest observations; no load emulation this run."
+    },
+    {
+      "id": "matrix",
+      "result": "120scenes,240same-frame ABA exact and pool/objectstate identical;248package controls PASS."
+    },
+    {
+      "id": "exports",
+      "result": "PNG bytes differed from06 in all five exports; decoded RGBA buffers identical in all five. Record both hashes, do not claim PNG byte identity. No candidate or atlas edits."
+    },
+    {
+      "id": "non-test-tools",
+      "result": "Initial requested native06 path absent; inspected published PNG selection instead. File discovery glob for art-production workflow absent; no test outcome inferred. Pillow emitted getdata deprecation warning; packaging exit0."
+    }
+  ]
+}

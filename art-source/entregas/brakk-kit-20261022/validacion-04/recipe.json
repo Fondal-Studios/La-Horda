@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-23",
+  "kind": "validation, no new art or runtime change",
+  "source": "js/champions/skill-fx-a/c/brakk.js",
+  "sourceSha256": "81be8914332b0e0fa33941c02fd9fb37827f86ce8e1ec8917896c26b0e7c81f9",
+  "parent": "26030444fb4966d9ad6e278d1e4f3a37083cc38d",
+  "main": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "environment": {
+    "NODE_PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "CHROMIUM_PATH": "/tmp/chromium"
+  },
+  "commands": [
+    "OUT=art-source/entregas/brakk-kit-20261022/validacion-04 node tools/vfx/verify-brakk-kit.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/validacion-04/mobile MOBILE=1 node tools/vfx/capture-brakk-components.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/validacion-04/landscape node tools/vfx/capture-brakk-components.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/validacion-04/mobile MOBILE=1 node tools/vfx/test-brakk-components-legible.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/validacion-04/landscape node tools/vfx/test-brakk-components-legible.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/validacion-04/negative-control MOBILE=1 ARENAS=bosque CANARY_OPAQUE=1 node tools/vfx/test-brakk-components-legible.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/validacion-04/signature-ab MOBILE=1 ARENAS=bosque,infernal,minas LOOKS=base,set SLOTS=1 AB_SIGNATURE=1 node tools/vfx/capture-brakk-components.js",
+    "python tools/vfx/assemble-brakk-components.py"
+  ],
+  "expectedNegativeExit": 1,
+  "matrix": {
+    "scenes": 360,
+    "arenas": 6,
+    "looks": [
+      "base",
+      "gear",
+      "alt1",
+      "croma",
+      "set"
+    ],
+    "slots": [
+      0,
+      1,
+      2
+    ],
+    "densities": [
+      "dense",
+      "sparse"
+    ],
+    "viewports": [
+      [
+        390,
+        844
+      ],
+      [
+        844,
+        390
+      ]
+    ],
+    "timesMs": [
+      80,
+      330,
+      610,
+      1600
+    ],
+    "allTracesSaved": true,
+    "allRasterOutputsUploaded": false,
+    "remoteImages": "Representative full viewport PNG and 1:1 contact sheets; RAW_CAPTURE_INDEX records hashes for all generated PNG. Reproduce full matrix with commands. No claim of integral visual review."
+  },
+  "sameFrameDiagnostic": {
+    "scenes": 12,
+    "originalRestoredByteIdentical": 12,
+    "poolStateUnchanged": 12,
+    "mechanism": "Execute original drawChampionSignatures on a separate canvas with same world transform; no skipped emitter, update or gameplay."
+  },
+  "independentSessionCaveat": {
+    "pairs": 36,
+    "sameInitialScene": 19,
+    "notCausalEvidence": 17,
+    "supersededBy": "12 same-frame ABA restores"
+  },
+  "atlasUnchanged": 5,
+  "framesReexported": 53,
+  "newFrames": 0
+}
