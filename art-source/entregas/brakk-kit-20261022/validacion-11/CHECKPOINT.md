@@ -1,6 +1,6 @@
 # Brakk — perfil de primer cuadro11 (23/10/2026)
 
-PR197 borrador, rama art/brakk-kit-first-pass-20261022. Parent1329b312d3e1e90bcc99e8109a233ab02f8740da. Recuperaciónad348819f133a7a5c0fbde78e960c8d607f5c4bf. Producción pendiente. Main758aa2ffacaae6542d31776e4a66ea7847a73b1b intacto. Cierre10 recuperado,60entradas de manifiesto verificadas;18checks exactos del head10 SUCCESS. Sin cierre perdido. EN_CORRECCION/NO_INTEGRAR, no merge/publicación.
+PR197 borrador, rama art/brakk-kit-first-pass-20261022. Parent1329b312d3e1e90bcc99e8109a233ab02f8740da. Recuperaciónad348819f133a7a5c0fbde78e960c8d607f5c4bf. Producción2b6cc3b36e87aab6975cb4120da6dec9bbc5439e verificada por Git blob,16archivos. Main758aa2ffacaae6542d31776e4a66ea7847a73b1b intacto. Cierre10 recuperado,60entradas de manifiesto verificadas;18checks exactos del head10 SUCCESS. Sin cierre perdido. EN_CORRECCION/NO_INTEGRAR, no merge/publicación.
 
 450JS runtime y5atlas53cuadros sin cambios,0cuadros nuevos. Este bloque añade un perfil reproducible, no una corrección de renderer. Fuentes/atlas/preview anteriores referidos por commit en SOURCE_REFERENCES.json. Mantener estados y cola23.
 
