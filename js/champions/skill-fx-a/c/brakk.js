@@ -25,9 +25,14 @@ function brakkFxStrip(kind,T,art,size){
   }else if(kind==='deploy'){
    const k=sfaEase(Math.min(1,q/.4)),rr=R*(.35+.65*k);
    for(const [sx,sy] of [[-1,-1],[1,-1],[1,1],[-1,1]]){
-    const x=c+sx*rr,y=c+sy*rr;
-    bar(c+sx*R*.2,c+sy*R*.2,x,y);bar(x,y,x-sx*R*.28,y);bar(x,y,x,y-sy*R*.28);
-    dot(x+1,y+1,P.e);
+    // Rodilla remachada y zapata plana: soporte de asedio, sin punta de flecha.
+    const jx=c+sx*rr*.57,jy=c+sy*rr*.30,x=c+sx*rr*.78,y=c+sy*rr*.78;
+    const arm=(ax,ay,bx,by)=>{line(ax,ay,bx,by,P.o,2);line(ax,ay,bx,by,P.b);};
+    arm(c+sx*R*.18,c+sy*R*.18,jx,jy);arm(jx,jy,x,y);
+    const pw=Math.max(3,Math.round(W*.14)),ph=Math.max(2,Math.round(W*.055));
+    for(let dx=-Math.floor(pw/2);dx<=Math.floor(pw/2);dx++)for(let dy=0;dy<ph;dy++)dot(x+dx,y+dy,dy===0?P.b:dy===ph-1?P.o:P.a);
+    for(let dx=-1;dx<=1;dx++)for(let dy=-1;dy<=1;dy++)dot(jx+dx,jy+dy,P.o);
+    dot(jx,jy,P.e);dot(x,y+1,P.c);
    }
   }else if(aura){
    const pulse=Math.round(Math.sin(f/N*Math.PI*2)*1.5),left=5-pulse,right=32+pulse;

@@ -1,6 +1,6 @@
 'use strict';
 const fs=require('node:fs'),H=require('../lib/serve');
-const OUT='art-source/entregas/brakk-kit-20261022/correccion-01';
+const OUT=process.env.OUT||'art-source/entregas/brakk-kit-20261022/correccion-01';
 (async()=>{const site=await H.startSite(),browser=await H.launch();try{
  const page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await H.goto(page,site.url);await H.waitFor(page,()=>typeof sfaDrawOne==='function'&&assetsAllReady());

@@ -1,3 +1,5 @@
+> Cierre posterior 22/10/2026: [correccion-02/CHECKPOINT.md](correccion-02/CHECKPOINT.md). Leerlo antes de reanudar; conserva este historial.
+
 # Actualización posterior: corrección agrupada01
 
 Leer [correccion-01/CHECKPOINT.md](correccion-01/CHECKPOINT.md) antes de retomar. Primera pasada e historial conservados debajo. Estado EN_CORRECCION/NO_INTEGRAR.
