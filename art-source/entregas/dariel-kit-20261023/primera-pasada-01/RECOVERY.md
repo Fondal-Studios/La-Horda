@@ -1,0 +1,2 @@
+# Dáriel · recuperación
+Base main817610a78595e894995cec8032dd64149dbfe925. Cazadora PR204 cierre5f51df4999c0c80603faa4113cccdf85c9ab6e84 guardado antes de abrir este bloque. Sin PR Dáriel activo al auditar. B129/B130/B131: primeras formas por acción en SFA, luego comparación real; no sustituir cuerpo, skins, básico note ni UFstaff/ex_concert existentes. Pintor/forja de cuerpos no aplica a recetas canvas; conservar canon musical ocre/vino. No arte aprobado por generación. Guardar fuentes/PNG/receta/cola después de clasificación.
