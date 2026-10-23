@@ -26,3 +26,5 @@ Bosque/Hielo/Infernal móvil revisados inicialmente: desaparece el anillo celest
 ## Reanudar
 
 Consultar head remoto y REMOTE_CLOSURE.json. **Siguiente: B118 composición densa**, instrumentar orden real de capas después de SFA con A/B/A de pose idéntica antes de alterar soportes; no repetir diagnósticos07, firmas05, primera pasada ni PR200. Usar `tools/vfx/capture-brakk-composition.js` con receta06/pose corregida y `tools/vfx/brakk-armor-online.js` para regresión. Para B119 usar `tools/vfx/capture-brakk-armor.js` y recipe08, conservando fuentes. Falta composición integral, crew/múltiples receptores, rendimiento móvil sostenido y CI exacto antes de separar componente aprobado. Inventario global incompleto.
+
+Producción remota verificada: 2d48b73bf932b9883a809a536b66b86eb1369ad6. 67 archivos cotejados por Git blob. Consultar REMOTE_CLOSURE.json para cierre. CI del SHA final debe consultarse de nuevo; borrador NO_INTEGRAR.
