@@ -45,6 +45,10 @@ jobs:
         if: ${{ !cancelled() }}
         timeout-minutes: 35
         run: node tools/vfx/test-ult-forms.js
+      - name: "Cazadora: carga parcial de raíces y lluvia"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 10
+        run: node tools/vfx/check-cazadora-loading.js
       - name: "Decales legibles en seis arenas (test-decal-legible)"
         if: ${{ !cancelled() }}
         timeout-minutes: 25

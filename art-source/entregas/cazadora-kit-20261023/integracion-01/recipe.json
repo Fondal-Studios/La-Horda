@@ -1,0 +1,20 @@
+{
+  "base": "817610a78595e894995cec8032dd64149dbfe925",
+  "sources": [
+    "js/assets/vfx-sprites.js",
+    "js/champions/asesino.js",
+    "js/champions/cazadora.js"
+  ],
+  "art": "Siete PNG existentes, hashes y rutas en SOURCE_REFERENCES; no reexportar ni convertir.",
+  "commands": [
+    "NODE_PATH=/ruta/node_modules CHROMIUM_PATH=/ruta/chromium node tools/vfx/check-cazadora-loading.js",
+    "NODE_PATH=/ruta/node_modules CHROMIUM_PATH=/ruta/chromium node tools/vfx/check-cazadora-same-frame.js",
+    "NODE_PATH=/ruta/node_modules CHROMIUM_PATH=/ruta/chromium ONLY=cazadora node tools/vfx/parity-cazadora-loading.js",
+    "NODE_PATH=/ruta/node_modules CHROMIUM_PATH=/ruta/chromium node tools/vfx/cazadora-loading-online.js",
+    "NODE_PATH=/ruta/node_modules CHROMIUM_PATH=/ruta/chromium OUT=/tmp/cazadora-before BASELINE=1 node tools/vfx/capture-cazadora-loading.js",
+    "NODE_PATH=/ruta/node_modules CHROMIUM_PATH=/ruta/chromium OUT=/tmp/cazadora-after node tools/vfx/capture-cazadora-loading.js",
+    "Repetir capturas con MOBILE=1 para390x844."
+  ],
+  "dependencies": "Playwright y Chromium; relay server/node_modules para prueba online. Sin keys/servicios pagos.",
+  "next": "Consultar PR/CI exacthead y merge normal sólo si todo aplicable pasa; después auditar Dariel B129/B130/B131/B015/B436 y ex_concert de B484."
+}

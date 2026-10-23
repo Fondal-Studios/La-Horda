@@ -104,13 +104,12 @@ function performShadowStrike(caster){
 }
 
 function drawTrap(tr){
-  if(tr.kind==="forest_root" && SYLVA_TRAP_READY.f1){
+  const growProgress = Math.max(0, Math.min(0.999, 1 - (tr.armTime||0)/200));
+  const img = tr.kind==="forest_root" ? sylvaVfxFrame(SYLVA_TRAP_IMG, SYLVA_TRAP_READY, 1+Math.floor(growProgress*4)) : null;
+  if(img){
     // Trampa del Bosque con su arte real (antes sin usar): crece en 4 etapas durante el
     // armado (200ms, antes esa ventana era directamente invisible) y queda en la última
     // pose mientras sigue activa, con el mismo fundido de salida que ya tenía el crosshair.
-    const seq = ["f1","f2","f3","f4"];
-    const growProgress = Math.max(0, Math.min(0.999, 1 - (tr.armTime||0)/200));
-    const img = SYLVA_TRAP_IMG[seq[Math.floor(growProgress*seq.length)]];
     const fade = tr.timer < 1200 ? Math.max(0.2, tr.timer/1200) : 1;
     const s = 64/img.height;
     const clip = { frames: [{x:0, y:0, w:img.width, h:img.height}] };

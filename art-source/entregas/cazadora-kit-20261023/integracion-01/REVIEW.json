@@ -1,0 +1,17 @@
+{
+  "status": "PASS_COMPONENT",
+  "scope": "Selección segura de frames de lluvia/trampa; no aprobación retroactiva del kit entero.",
+  "generatedAssets": 0,
+  "originalsModified": 0,
+  "visualReview": [
+    "La fase anterior conserva raíces/flechas originales y evita la desaparición al fallar f2.",
+    "Sin fase anterior queda la señal mecánica existente; nunca muestra anticipadamente una fase futura.",
+    "14 PNG directos con carga completa idénticos.144 comparaciones A/B/A de funciones reales en36 escenas/seis arenas/tres apariencias/dos viewports idénticas.",
+    "Capturas nativas móviles Manada/Escarcha y tira de flecha revisadas. Se conservan capas legadas y sus limitaciones visuales."
+  ],
+  "notApproved": [
+    "Composición integral legacy de B126/B127/B128, no cambiada por este fix.",
+    "Publicación pública no verificada."
+  ],
+  "crossSessionLimit": "69/72 PNG de juego idénticos; tres de Trampa/Manada horizontal difieren, causa exacta no demostrada.24 sceneHash precast iguales. La prueba del cambio usa A/B/A de los consumidores sobre el MISMO canvas/fase,144/144 idénticos; no se declara la matriz entre sesiones perfecta."
+}

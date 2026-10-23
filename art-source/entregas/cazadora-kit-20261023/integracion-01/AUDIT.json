@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-23",
+  "base": "817610a78595e894995cec8032dd64149dbfe925",
+  "notNewProduction": true,
+  "items": [
+    {
+      "block": "B126",
+      "id": "A-FX-cazadora-h1",
+      "actual": "arrow_heavy real projectile, charge tiers and hit source; shared hunt beam overlay",
+      "status": "EXISTE_CONECTADO",
+      "pending": "Revisión integral de composición; no fabricar otra flecha por contador documental."
+    },
+    {
+      "block": "B127",
+      "id": "A-FX-cazadora-h2",
+      "actual": "trap-f1..f4, drawTrap, UF shards on slot1, SFA persistent ground",
+      "status": "EXISTE_CONECTADO",
+      "component": "Carga parcial corregida; arte original conservado."
+    },
+    {
+      "block": "B128",
+      "id": "A-FX-cazadora-h3",
+      "actual": "rain-f1..f3, drawSylvaRainZones, real900ms delay, SFA hunt overlays",
+      "status": "EXISTE_CONECTADO",
+      "pending": "El sello genérico compite visualmente con flechas; revisión posterior, no modificada aquí."
+    },
+    {
+      "block": "B014",
+      "id": "A-FX-cazadora-ult",
+      "actual": "UF volley plus four wolf PNGs and real companion renderer",
+      "status": "EXISTE_CONECTADO",
+      "pending": "No cierre integral por este componente."
+    }
+  ],
+  "pipeline": "Pintor/forja son para cuerpo/accesorios; esta entrega reusa los siete PNG originales. No image_gen ni arte nuevo necesarios.",
+  "openPRsChecked": 15,
+  "duplicateCazadoraWorkshop": false
+}
