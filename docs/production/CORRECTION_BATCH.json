@@ -383,7 +383,7 @@
       "defects": [
         "Los cuatro soportes se leen como flechas diagonales en la revisión de atlas; falta articulación/pie de apoyo que los haga claramente ingeniería de asedio."
       ],
-      "next": "Conservar corrección local y completar gates pendientes; no repetir primera pasada ni integrar taller completo.",
+      "next": "Revisar composición B118/B119 integral y crew/performance; no repetir diagnóstico de capas ni abrir otra primera pasada de estos53cuadros.",
       "pr": 197,
       "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b",
       "correctionHistory": [
@@ -461,6 +461,13 @@
           "sourceSha256": "eafcdcda620620b7ff0ab598aab47d5f26e13c964b5f429995e111d1b0a3c310",
           "finding": "Attempt lowering deployment6nativepx fails36rows,min~71%; source/hash/atlas preserved. Returned to previous deployment byteidentical. Dense contact residual remains.",
           "next": "Resolver lote composición/contraste y gates; no integrar taller FIX."
+        },
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-09",
+          "sourceSha256": "18831420feb6c79603932d1c8e06ade1cf4dafd8e53409200d4e44471175d9aa",
+          "state": "EN_CORRECCION",
+          "finding": "Measured post-body deployment layer; later layers preserve98.198..100% contribution in8parent scenes. Staged lateral feet candidate: candidate01FAIL22 retained; candidate02 isolated82%min both viewports,120same-frame exact comparisons,26relay,29232RNG parity. Compound ArtGate pending."
         }
       ]
     },
@@ -879,7 +886,7 @@
   ],
   "nextProduction": "Brakk grouped composition correction from validacion-04: fallback normal signature and B118 deployment contrast, B119 brace/rings. Preserve UF/IDs/emitters/RNG. PR200 already merged; do not reopen or repeat test fix. Then integral gates, keeping Aelith/Morveth residuals.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/correccion-06/CHECKPOINT.md",
-  "next": "B118/B119 grouped compound composition using06capture and07relay; retain residuals and all23entries.",
+  "next": "Gates integrales por componente de kits recientes; B118/B119 siguen EN_CORRECCION. Mantener residuales MorvethB168/AelithB106/B107 y cola histórica23. No integrar talleres FIX.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",

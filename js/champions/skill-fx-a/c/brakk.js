@@ -25,10 +25,11 @@ function brakkFxStrip(kind,T,art,size){
   }else if(kind==='deploy'){
    const k=sfaEase(Math.min(1,q/.4)),rr=R*(.35+.65*k);
    for(const [sx,sy] of [[-1,-1],[1,-1],[1,1],[-1,1]]){
-    // Rodilla remachada y zapata plana: soporte de asedio, sin punta de flecha.
-    const jx=c+sx*rr*.57,jy=c+sy*rr*.30,x=c+sx*rr*.78,y=c+sy*rr*.78;
+    // Patas laterales desplegadas: centro libre para cuerpo/torreta, rodillas y zapatas planas.
+    const spread=sfaEase(Math.max(0,Math.min(1,(q-.18)/.22)));
+    const jx=c+sx*rr*(.57+.31*spread),jy=c+sy*rr*(.30-.05*spread),x=c+sx*rr*(.78+.27*spread),y=c+sy*rr*(.78-.18*spread);
     const arm=(ax,ay,bx,by)=>{line(ax,ay,bx,by,P.o,2);line(ax,ay,bx,by,P.b);};
-    arm(c+sx*R*.18,c+sy*R*.18,jx,jy);arm(jx,jy,x,y);
+    arm(c+sx*(R*.18+(rr*.67-R*.18)*spread),c+sy*(R*.18+(rr*.16-R*.18)*spread),jx,jy);arm(jx,jy,x,y);
     const pw=Math.max(3,Math.round(W*.14)),ph=Math.max(2,Math.round(W*.055));
     for(let dx=-Math.floor(pw/2);dx<=Math.floor(pw/2);dx++)for(let dy=0;dy<ph;dy++)dot(x+dx,y+dy,dy===0?P.b:dy===ph-1?P.o:P.a);
     for(let dx=-1;dx<=1;dx++)for(let dy=-1;dy<=1;dy++)dot(jx+dx,jy+dy,P.o);

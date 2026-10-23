@@ -1,8 +1,11 @@
 {
   "closed": false,
+  "date": "2026-10-23",
   "parent": "59b8c38fe415a1de2fb958695a53706c55fce930",
-  "main": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
-  "scope": "B118 deployment: measure real draw order and same-frame visibility before changing support composition",
-  "state": "EN_CORRECCION",
-  "next": "Recover latest remote closure; retain B11908, signatures05 and all sources."
+  "recoveryCommit": "d549f20b458c941546d822d9c9b82034f5dcd4a5",
+  "block": "B118",
+  "component": "A-FX-brakk-h2",
+  "scope": "correccion-09",
+  "noLostClosure08": true,
+  "next": "Publish candidate/evidence, verify remote blobs, then close. Never merge draft/FIX."
 }

@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-23",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "publicationVerified": false,
+  "component": "A-FX-brakk-h2",
+  "block": "B118",
+  "findings": [
+    "Patas laterales con centro libre mejoran separación inicialmente; las capturas nativas Bosque/set e Infernal/base densas siguen compitiendo con torreta, cuerpos y señales de arena.",
+    "La apertura conserva cuadros0/1 plegados y cuadro11 vacío; cuadros2..10 revisados. No se alteran evento,620ms,radio45,12cuadros,paleta ni emisores.",
+    "Gate aislado PASS no equivale a contraste compuesto integral ni aprobación visual de120escenas."
+  ],
+  "reviewedNative": [
+    "matrix-mobile/bosque-set-dense-h2-330-ab-before.png",
+    "matrix-mobile/bosque-set-dense-h2-330-ab-without.png",
+    "matrix-mobile/infernal-base-dense-h2-330-ab-before.png"
+  ],
+  "remaining": [
+    "Contraste compuesto integral y reconocimiento B118/B119 en contacto real; no ocultar señales mecánicas ajenas.",
+    "Crew/múltiples receptores B119 y rendimiento móvil físico sostenido/GC.",
+    "Art Gate integral y CI del SHA final antes de separar componentes aprobados.",
+    "MorvethB168 y AelithB106/B107 siguen pendientes; inventario global incompleto."
+  ]
+}
