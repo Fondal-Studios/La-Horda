@@ -1,0 +1,35 @@
+[arnés] servidor propio: http://127.0.0.1:45875 (raíz /workspace/scratch/a01f80e6b406/la-horda-dariel)
+JOINED {
+  code: 'XBFQH8',
+  human: 2,
+  slots: [
+    {
+      slot: 0,
+      name: 'Jugador',
+      champ: 'solciju',
+      level: 20,
+      ready: true,
+      connected: true,
+      host: true,
+      muted: false,
+      founder: null
+    },
+    {
+      slot: 1,
+      name: 'Jugador',
+      champ: 'dariel',
+      level: 20,
+      ready: false,
+      connected: true,
+      host: false,
+      muted: false,
+      founder: null
+    },
+    null,
+    null
+  ]
+}
+HUMANS_READY
+LOADOUT_READY
+START_SENT { state: 'playing', role: 'host' } { state: 'playing', role: 'guest' }
+{"checks":[{"host":"solciju","guest":"dariel","ok":true,"rh":{"draw":{"dariel_discord:cone":14,"dariel_march~h:nova":30,"dariel_march~h:aura":228,"dariel_refrain~p:nova":28,"dariel_refrain~p:aura":176},"k":"dariel","casts":4,"objects":[{"id":1,"owner":2,"kind":"ex_thorns"},{"id":2,"owner":2,"kind":"ex_bark"},{"id":3,"owner":1,"kind":"ex_concert"}],"hp":286.996,"skin":"dariel_set"},"rg":{"draw":{"dariel_discord:cone":32,"dariel_march~h:nova":42,"dariel_march~h:aura":340,"dariel_refrain~p:nova":40,"dariel_refrain~p:aura":272},"k":"dariel","objects":[{"id":1,"owner":2,"kind":"ex_thorns"},{"id":2,"owner":2,"kind":"ex_bark"},{"id":3,"owner":1,"kind":"ex_concert"}],"hp":287,"skin":"dariel_set"}},{"name":"dariel_discord:cone drawn both peers exact variant","ok":true,"host":14,"guest":32},{"name":"dariel_march~h:nova drawn both peers exact variant","ok":true,"host":30,"guest":42},{"name":"dariel_march~h:aura drawn both peers exact variant","ok":true,"host":228,"guest":340},{"name":"dariel_refrain~p:nova drawn both peers exact variant","ok":true,"host":28,"guest":40},{"name":"dariel_refrain~p:aura drawn both peers exact variant","ok":true,"host":176,"guest":272}],"errors":[]}
