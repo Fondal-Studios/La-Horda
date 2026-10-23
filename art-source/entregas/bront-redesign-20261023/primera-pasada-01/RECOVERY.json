@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "status": "EN_PRODUCCION",
+  "closed": false,
+  "champion": "bront",
+  "scope": "Identidad corporal solicitada por Nano; candidato sin reemplazar runtime",
+  "main": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "inference": "Pareja más similar Bront/Baltra, nombres no confirmados por Nano; Brakk distinto",
+  "evidence": "tools/art/painter/specs/bront.json usa body baltra y donante baltra para bront_core",
+  "preserve": [
+    "Baltra",
+    "Brakk PR197",
+    "Bront original y skins",
+    "mecánicas",
+    "IDs"
+  ],
+  "concept": "Propuesta mostrada antes; no aprobación del usuario. Armadura angular vacía, cristal suspendido, hombros almenados. Adaptar chibi.",
+  "next": "Guardar fuente imagegen de 36 poses; clasificar y extraer atlas diagnóstico; NO_INTEGRAR hasta Art Gate integral."
+}
