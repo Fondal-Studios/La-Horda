@@ -1,0 +1,33 @@
+{
+  "attempts": [
+    {
+      "id": "trace-01",
+      "result": "Inherited RNG divergence reproduced twice in each mode at frame5/call7224. 50-frame trace saved gzipped; original full360 baseline retained in prior correction."
+    },
+    {
+      "id": "trace-02",
+      "result": "After RNG fix all four snapshots match per mode/on-off. Reporter then threw ReferenceError(errors outside scope); retain attempted JSON.gz and log. Fixed reporter scope; final parity-repeat exits0 and repeats both modes."
+    },
+    {
+      "id": "command-setup",
+      "result": "Initial local harness generation used wrong cwd; no runtime executed, rerun from workspace root. Tree transfer exceeded argv; fixed by selecting runtime entries before shell call. No remote mutation from either failure."
+    },
+    {
+      "id": "relay-01",
+      "result": "Movement follow failed. Retained full report and log."
+    },
+    {
+      "id": "relay-02",
+      "result": "Instrumented failure: dx=-15 on host. Pool updated before hero movement; draw used stale position. Also wall3000ms wait returned with aura age2741.9<3000; not an expiry failure. Retained report. Added draw-time follow sync; test now waits actual simulation end, distance threshold8 unchanged."
+    },
+    {
+      "id": "follow-before",
+      "result": "10/12 regression checks fail against parent pixfx; includes movement, camera reentry and death between update/draw. Final12/12PASS."
+    },
+    {
+      "id": "relay-final",
+      "result": "21/21 PASS, host and touch guest movement/duration/owner/death. No retry failures discarded."
+    }
+  ],
+  "notClaimed": "Full Art Gate, every skin/arena, performance, all global RNG, production deploy."
+}
