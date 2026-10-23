@@ -1,0 +1,334 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "longitudinal opening/closure t=0",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "full reach trace retained t=0",
+      "pass": true,
+      "detail": {
+        "args": [
+          0,
+          -0.7,
+          260,
+          1.4
+        ],
+        "color": "#574c81"
+      }
+    },
+    {
+      "name": "longitudinal opening/closure t=75",
+      "pass": true,
+      "detail": {
+        "draw": [
+          224,
+          0,
+          112,
+          40,
+          0,
+          -26,
+          130,
+          52
+        ]
+      }
+    },
+    {
+      "name": "full reach trace retained t=75",
+      "pass": true,
+      "detail": {
+        "args": [
+          0,
+          -0.7,
+          260,
+          1.4
+        ],
+        "color": "#574c81"
+      }
+    },
+    {
+      "name": "longitudinal opening/closure t=150",
+      "pass": true,
+      "detail": {
+        "draw": [
+          448,
+          0,
+          224,
+          40,
+          0,
+          -26,
+          260,
+          52
+        ]
+      }
+    },
+    {
+      "name": "full reach trace retained t=150",
+      "pass": true,
+      "detail": {
+        "args": [
+          0,
+          -0.7,
+          260,
+          1.4
+        ],
+        "color": "#574c81"
+      }
+    },
+    {
+      "name": "longitudinal opening/closure t=360",
+      "pass": true,
+      "detail": {
+        "draw": [
+          1344,
+          0,
+          224,
+          40,
+          0,
+          -26,
+          260,
+          52
+        ]
+      }
+    },
+    {
+      "name": "full reach trace retained t=360",
+      "pass": true,
+      "detail": {
+        "args": [
+          0,
+          -0.7,
+          260,
+          1.4
+        ],
+        "color": "#574c81"
+      }
+    },
+    {
+      "name": "longitudinal opening/closure t=570",
+      "pass": true,
+      "detail": {
+        "draw": [
+          2016,
+          0,
+          224,
+          40,
+          0,
+          -26,
+          260,
+          52
+        ]
+      }
+    },
+    {
+      "name": "full reach trace retained t=570",
+      "pass": true,
+      "detail": {
+        "args": [
+          0,
+          -0.7,
+          260,
+          1.4
+        ],
+        "color": "#574c81"
+      }
+    },
+    {
+      "name": "longitudinal opening/closure t=645",
+      "pass": true,
+      "detail": {
+        "draw": [
+          2240,
+          0,
+          112,
+          40,
+          0,
+          -26,
+          130,
+          52
+        ]
+      }
+    },
+    {
+      "name": "full reach trace retained t=645",
+      "pass": true,
+      "detail": {
+        "args": [
+          0,
+          -0.7,
+          260,
+          1.4
+        ],
+        "color": "#574c81"
+      }
+    },
+    {
+      "name": "longitudinal opening/closure t=719",
+      "pass": true,
+      "detail": {
+        "draw": [
+          2464,
+          0,
+          1.4933333333333334,
+          40,
+          0,
+          -26,
+          1.7333333333333334,
+          52
+        ]
+      }
+    },
+    {
+      "name": "full reach trace retained t=719",
+      "pass": true,
+      "detail": {
+        "args": [
+          0,
+          -0.7,
+          260,
+          1.4
+        ],
+        "color": "#574c81"
+      }
+    },
+    {
+      "name": "shared renderer preserved time/beam",
+      "pass": true
+    },
+    {
+      "name": "shared renderer preserved time/nova",
+      "pass": true
+    },
+    {
+      "name": "shared renderer preserved time/aura",
+      "pass": true
+    },
+    {
+      "name": "shared renderer preserved siege/beam",
+      "pass": true
+    },
+    {
+      "name": "shared renderer preserved siege/nova",
+      "pass": true
+    },
+    {
+      "name": "shared renderer preserved siege/aura",
+      "pass": true
+    },
+    {
+      "name": "missing beam theme keeps safe fallback",
+      "pass": true
+    },
+    {
+      "name": "fracture does not use global phase",
+      "pass": true
+    },
+    {
+      "name": "crisp full-length padded atlas bosque",
+      "pass": true,
+      "detail": {
+        "ink": 14824,
+        "soft": 0,
+        "edge": 0
+      }
+    },
+    {
+      "name": "crisp full-length padded atlas hielo",
+      "pass": true,
+      "detail": {
+        "ink": 14824,
+        "soft": 0,
+        "edge": 0
+      }
+    },
+    {
+      "name": "crisp full-length padded atlas infernal",
+      "pass": true,
+      "detail": {
+        "ink": 14824,
+        "soft": 0,
+        "edge": 0
+      }
+    },
+    {
+      "name": "crisp full-length padded atlas laberinto",
+      "pass": true,
+      "detail": {
+        "ink": 14824,
+        "soft": 0,
+        "edge": 0
+      }
+    },
+    {
+      "name": "crisp full-length padded atlas acuatica",
+      "pass": true,
+      "detail": {
+        "ink": 14824,
+        "soft": 0,
+        "edge": 0
+      }
+    },
+    {
+      "name": "crisp full-length padded atlas minas",
+      "pass": true,
+      "detail": {
+        "ink": 14824,
+        "soft": 0,
+        "edge": 0
+      }
+    },
+    {
+      "name": "H2 palette stays lilac white",
+      "pass": true
+    },
+    {
+      "name": "debt recolor preserves equipped-body alpha exactly",
+      "pass": true
+    },
+    {
+      "name": "amber contour distinct from interior",
+      "pass": true,
+      "detail": [
+        "184,120,57",
+        "255,231,181"
+      ]
+    },
+    {
+      "name": "grey contour distinct from interior",
+      "pass": true,
+      "detail": [
+        "119,108,141",
+        "236,227,249"
+      ]
+    },
+    {
+      "name": "trail opacity max40 and collapse ends at220ms",
+      "pass": true
+    },
+    {
+      "name": "painting and drawing consume no combat RNG",
+      "pass": true,
+      "detail": 0
+    }
+  ],
+  "fracture": {
+    "w": 224,
+    "h": 40,
+    "n": 12
+  },
+  "amber": {
+    "colors": [
+      "184,120,57",
+      "255,231,181"
+    ]
+  },
+  "debt": {
+    "colors": [
+      "119,108,141",
+      "236,227,249"
+    ]
+  },
+  "errors": []
+}

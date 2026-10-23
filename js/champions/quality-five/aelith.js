@@ -26,7 +26,7 @@ function aelithCast(h,sk,isUlt,dmg,area,dur){
    h.aelithLastEcho={x:p.x,y:p.y,r,dmg:dmg*.3};
    aelithEcho(h,p,r,dmg*.3,aelithEchoDelay(h,life));break;
   case 'ael_fracture':{
-   const hit=e=>portadorSlow(h,e,.35,life);
+   const hit=e=>{portadorSlow(h,e,.35,life);if(typeof aelithFractureMark==='function')aelithFractureMark(e,life);};
    const d=aimDir(h,sk.range),end={x:h.x+d.x*Math.min(330,sk.range*area),y:h.y+d.y*Math.min(330,sk.range*area)};exLine(h,h,end,r,dmg,hit);qualityFiveFx(h,kitFxLine,'rune',h.x,h.y,end.x,end.y,r);
    if(aelithFlag(h,1,'aftershock'))aelithEcho(h,end,60,dmg*.2,800);break;
   }

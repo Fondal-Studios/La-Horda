@@ -1,0 +1,133 @@
+{
+  "results": [
+    {
+      "lance": false,
+      "champion": "aelith",
+      "slot": 0,
+      "action": "ael_echo",
+      "trace": [
+        [
+          "nova",
+          "aelith_echo",
+          115,
+          0,
+          75,
+          0,
+          520,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Instante roto",
+      "sceneHash": "a4631927686cee92e8a33f450c5e343c0257ccc2ac3f057ef7cb30b78e7c710e"
+    },
+    {
+      "lance": false,
+      "champion": "aelith",
+      "slot": 1,
+      "action": "ael_fracture",
+      "trace": [
+        [
+          "beam",
+          "aelith_fracture~h",
+          0,
+          0,
+          0,
+          0,
+          720,
+          260,
+          0,
+          52,
+          -2
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Fractura de segundos",
+      "sceneHash": "c55956c13ab27a37ef0a63f57f15133cd7d5026dc59589c8a4165a003d6c08f4"
+    },
+    {
+      "lance": false,
+      "champion": "aelith",
+      "slot": 2,
+      "action": "ael_haste",
+      "trace": [
+        [
+          "aura",
+          "aelith_haste~p",
+          0,
+          0,
+          25,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Tiempo prestado",
+      "sceneHash": "93f348b0c928457212178d3b6f51624e594c98f18393336f8ba232be10165aa3"
+    },
+    {
+      "lance": false,
+      "champion": "aelith",
+      "slot": 3,
+      "action": "ael_hour",
+      "trace": [],
+      "objects": [
+        "ael_hour"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "La hora imposible",
+      "sceneHash": "da24d59ea34399f96a9863b3d7c8e0ce7897218071cb3443879c465bf4ab961c"
+    }
+  ],
+  "errors": []
+}

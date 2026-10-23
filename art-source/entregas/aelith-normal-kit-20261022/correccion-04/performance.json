@@ -1,0 +1,42 @@
+{
+  "status": "MEASURED_NOT_DEVICE_GATE",
+  "scope": "headless Chromium on this machine;100 warm stamps/gray recolors plus300 retain/replace steps per version",
+  "results": [
+    {
+      "before": true,
+      "coldStampMs": 23,
+      "stampMs": {
+        "n": 100,
+        "p50": 0.699999988079071,
+        "p95": 1,
+        "max": 2.2000000029802322
+      },
+      "debtMs": {
+        "n": 100,
+        "p50": 0.6000000089406967,
+        "p95": 0.7000000029802322,
+        "max": 1.9000000059604645
+      },
+      "retainedMax": 3,
+      "emptyAfterReset": true
+    },
+    {
+      "before": false,
+      "coldStampMs": 9.100000008940697,
+      "stampMs": {
+        "n": 100,
+        "p50": 0.6000000089406967,
+        "p95": 1.5,
+        "max": 1.7999999970197678
+      },
+      "debtMs": {
+        "n": 100,
+        "p50": 0.10000000894069672,
+        "p95": 0.4000000059604645,
+        "max": 0.5999999940395355
+      },
+      "retainedMax": 3,
+      "emptyAfterReset": true
+    }
+  ]
+}

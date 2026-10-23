@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "real delayed talent retains1600ms",
+      "pass": true
+    },
+    {
+      "name": "delayed talent does not impact at800",
+      "pass": true
+    },
+    {
+      "name": "delayed talent impacts exactly at1600",
+      "pass": true
+    },
+    {
+      "name": "aftershock creates actual endpoint echo",
+      "pass": true
+    },
+    {
+      "name": "aftershock expiry owns one correctly sized impact",
+      "pass": true
+    },
+    {
+      "name": "real reprise mastery active",
+      "pass": true
+    },
+    {
+      "name": "reprise retains remembered geometry",
+      "pass": true
+    },
+    {
+      "name": "reprise impact uses normal echo without replacing UF",
+      "pass": true
+    },
+    {
+      "name": "unrelated slow never creates debt phase",
+      "pass": true
+    },
+    {
+      "name": "shared haste selects only actual nearby recipients",
+      "pass": true,
+      "details": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "shared debt uses same recipient set",
+      "pass": true,
+      "details": [
+        0,
+        1
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,717 @@
+{
+  "status": "PASS",
+  "scope": "Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.",
+  "checks": [
+    {
+      "name": "solciju admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "brakk admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "veyra admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "morveth admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "aelith admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "nano_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "facu_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "real H2 target metadata and sand frame on host",
+      "ok": true,
+      "detail": [
+        {
+          "start": 1551.3999999999996,
+          "end": 3351.3999999999996,
+          "slow": 0.35,
+          "left": 1541.2999999999993,
+          "frame": 1
+        },
+        {
+          "start": 1551.3999999999996,
+          "end": 3351.3999999999996,
+          "slow": 0.35,
+          "left": 1541.2999999999993,
+          "frame": 1
+        },
+        {
+          "start": 1551.3999999999996,
+          "end": 3351.3999999999996,
+          "slow": 0.35,
+          "left": 1541.2999999999993,
+          "frame": 1
+        },
+        {
+          "start": 1551.3999999999996,
+          "end": 3351.3999999999996,
+          "slow": 0.35,
+          "left": 1541.2999999999993,
+          "frame": 1
+        },
+        {
+          "start": 1551.3999999999996,
+          "end": 3351.3999999999996,
+          "slow": 0.35,
+          "left": 1637.2999999999993,
+          "frame": 1
+        }
+      ]
+    },
+    {
+      "name": "real H2 target metadata and sand frame on touch guest",
+      "ok": true,
+      "detail": [
+        {
+          "start": 1551.4,
+          "end": 3351.4,
+          "slow": 0.35,
+          "left": 1421,
+          "frame": 2
+        },
+        {
+          "start": 1551.4,
+          "end": 3351.4,
+          "slow": 0.35,
+          "left": 1421,
+          "frame": 2
+        },
+        {
+          "start": 1551.4,
+          "end": 3351.4,
+          "slow": 0.35,
+          "left": 1421,
+          "frame": 2
+        },
+        {
+          "start": 1551.4,
+          "end": 3351.4,
+          "slow": 0.35,
+          "left": 1421,
+          "frame": 2
+        },
+        {
+          "start": 1551.4,
+          "end": 3351.4,
+          "slow": 0.35,
+          "left": 1570.4000000000005,
+          "frame": 2
+        }
+      ]
+    },
+    {
+      "name": "Actual trail snapshots on host",
+      "ok": true
+    },
+    {
+      "name": "Actual trail snapshots on touch guest",
+      "ok": true
+    },
+    {
+      "name": "render event visible on host and touch guest: aelith_echo",
+      "ok": true,
+      "host": [
+        [
+          "nova",
+          "aelith_echo",
+          115,
+          50,
+          75,
+          0,
+          520,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "nova",
+          "aelith_echo",
+          115,
+          50,
+          75,
+          0,
+          520,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "guest": [
+        [
+          "nova",
+          "aelith_echo",
+          115,
+          50,
+          75,
+          0,
+          520,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "nova",
+          "aelith_echo",
+          115,
+          50,
+          75,
+          0,
+          520,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "render event visible on host and touch guest: aelith_fracture~h",
+      "ok": true,
+      "host": [
+        [
+          "beam",
+          "aelith_fracture~h",
+          49.5,
+          49.5,
+          0,
+          0,
+          720,
+          309.5,
+          49.5,
+          52,
+          -2,
+          null,
+          null
+        ]
+      ],
+      "guest": [
+        [
+          "beam",
+          "aelith_fracture~h",
+          49.5,
+          49.5,
+          0,
+          0,
+          720,
+          309.5,
+          49.5,
+          52,
+          -2,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "render event visible on host and touch guest: aelith_haste~p",
+      "ok": true,
+      "host": [
+        [
+          "aura",
+          "aelith_haste~p",
+          49.5,
+          49.5,
+          25,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      ],
+      "guest": [
+        [
+          "aura",
+          "aelith_haste~p",
+          49.5,
+          49.5,
+          25,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "actual relay fracture uses longitudinal renderer on host",
+      "ok": true,
+      "detail": {
+        "draws": [
+          [
+            224,
+            0,
+            112,
+            40,
+            0,
+            -26,
+            130,
+            52
+          ]
+        ],
+        "palette": "#d9c9f5",
+        "span": 0.5
+      }
+    },
+    {
+      "name": "actual relay fracture uses longitudinal renderer on touch guest",
+      "ok": true,
+      "detail": {
+        "draws": [
+          [
+            224,
+            0,
+            112,
+            40,
+            0,
+            -26,
+            130,
+            52
+          ]
+        ],
+        "palette": "#d9c9f5",
+        "span": 0.5
+      }
+    },
+    {
+      "name": "one initial and one actual echo impact on host",
+      "ok": true
+    },
+    {
+      "name": "one initial and one actual echo impact on touch guest",
+      "ok": true
+    },
+    {
+      "name": "Fractura symbols expire on host",
+      "ok": true
+    },
+    {
+      "name": "Fractura symbols expire on touch guest",
+      "ok": true
+    },
+    {
+      "name": "actual debt delivered as800ms recipient event on host",
+      "ok": true,
+      "details": {
+        "events": [
+          [
+            "aura",
+            "aelith_debt",
+            203.8,
+            49.5,
+            25,
+            0,
+            800,
+            null,
+            null,
+            null,
+            1,
+            null,
+            null
+          ]
+        ],
+        "pool": [
+          {
+            "fi": 1,
+            "dur": 800
+          }
+        ],
+        "timer": 0
+      }
+    },
+    {
+      "name": "actual debt delivered as800ms recipient event on touch guest",
+      "ok": true,
+      "details": {
+        "events": [
+          [
+            "aura",
+            "aelith_debt",
+            203.8,
+            49.5,
+            25,
+            0,
+            800,
+            null,
+            null,
+            null,
+            1,
+            null,
+            null
+          ]
+        ],
+        "pool": [
+          {
+            "fi": 1,
+            "dur": 800
+          }
+        ],
+        "timer": 0
+      }
+    },
+    {
+      "name": "guest debt ends and releases body snapshots",
+      "ok": true
+    },
+    {
+      "name": "cap replacement emits3 initial plus2 actual impacts on host",
+      "ok": true,
+      "count": 5
+    },
+    {
+      "name": "cap replacement emits3 initial plus2 actual impacts on touch guest",
+      "ok": true,
+      "count": 5
+    },
+    {
+      "name": "shared fixture has exactly intended recipients before cast",
+      "ok": true,
+      "recipientFixture": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "shared haste owns two distinct recipients on host",
+      "ok": true,
+      "details": {
+        "events": [
+          [
+            "aura",
+            "aelith_haste~p",
+            183.8,
+            49.5,
+            25,
+            0,
+            3000,
+            null,
+            null,
+            null,
+            0,
+            null,
+            null
+          ],
+          [
+            "aura",
+            "aelith_haste~p",
+            203.8,
+            49.5,
+            25,
+            0,
+            3000,
+            null,
+            null,
+            null,
+            1,
+            null,
+            null
+          ]
+        ],
+        "heroes": [
+          {
+            "key": "morveth",
+            "x": 183.8,
+            "y": 49.5,
+            "debt": 9741.300000000003
+          },
+          {
+            "key": "aelith",
+            "x": 203.8,
+            "y": 49.5,
+            "debt": 9741.300000000003
+          },
+          {
+            "key": "maura",
+            "x": 1203.8,
+            "y": 1049.5
+          },
+          {
+            "key": "guerrero",
+            "x": 1203.8,
+            "y": 1049.5
+          }
+        ],
+        "share": true
+      }
+    },
+    {
+      "name": "shared haste owns two distinct recipients on touch guest",
+      "ok": true,
+      "details": {
+        "events": [
+          [
+            "aura",
+            "aelith_haste~p",
+            183.8,
+            49.5,
+            25,
+            0,
+            3000,
+            null,
+            null,
+            null,
+            0,
+            null,
+            null
+          ],
+          [
+            "aura",
+            "aelith_haste~p",
+            203.8,
+            49.5,
+            25,
+            0,
+            3000,
+            null,
+            null,
+            null,
+            1,
+            null,
+            null
+          ]
+        ],
+        "heroes": [
+          {
+            "key": "morveth",
+            "x": 173.35824370800634,
+            "y": 46.687883914833044,
+            "debt": 9741.3
+          },
+          {
+            "key": "aelith",
+            "x": 203.8067500000002,
+            "y": 49.5,
+            "debt": 9741.3
+          },
+          {
+            "key": "maura",
+            "x": 1203.8,
+            "y": 1049.5
+          },
+          {
+            "key": "guerrero",
+            "x": 1203.8,
+            "y": 1049.5
+          }
+        ],
+        "share": false
+      }
+    },
+    {
+      "name": "shared debt owns two distinct recipients on host",
+      "ok": true,
+      "details": {
+        "events": [
+          [
+            "aura",
+            "aelith_debt",
+            183.8,
+            49.5,
+            25,
+            0,
+            800,
+            null,
+            null,
+            null,
+            0,
+            null,
+            null
+          ],
+          [
+            "aura",
+            "aelith_debt",
+            203.8,
+            49.5,
+            25,
+            0,
+            800,
+            null,
+            null,
+            null,
+            1,
+            null,
+            null
+          ]
+        ],
+        "heroes": [
+          {
+            "key": "morveth",
+            "x": 183.8,
+            "y": 49.5,
+            "debt": 0
+          },
+          {
+            "key": "aelith",
+            "x": 203.8,
+            "y": 49.5,
+            "debt": 0
+          },
+          {
+            "key": "maura",
+            "x": 1203.8,
+            "y": 1049.5
+          },
+          {
+            "key": "guerrero",
+            "x": 1203.8,
+            "y": 1049.5
+          }
+        ],
+        "share": true
+      }
+    },
+    {
+      "name": "shared debt owns two distinct recipients on touch guest",
+      "ok": true,
+      "details": {
+        "events": [
+          [
+            "aura",
+            "aelith_debt",
+            183.8,
+            49.5,
+            25,
+            0,
+            800,
+            null,
+            null,
+            null,
+            0,
+            null,
+            null
+          ],
+          [
+            "aura",
+            "aelith_debt",
+            203.8,
+            49.5,
+            25,
+            0,
+            800,
+            null,
+            null,
+            null,
+            1,
+            null,
+            null
+          ]
+        ],
+        "heroes": [
+          {
+            "key": "morveth",
+            "x": 183.79999999999995,
+            "y": 49.499999999999986,
+            "debt": 0
+          },
+          {
+            "key": "aelith",
+            "x": 203.8067500000002,
+            "y": 49.5,
+            "debt": 0
+          },
+          {
+            "key": "maura",
+            "x": 1203.8,
+            "y": 1049.5
+          },
+          {
+            "key": "guerrero",
+            "x": 1203.8,
+            "y": 1049.5
+          }
+        ],
+        "share": false
+      }
+    },
+    {
+      "name": "preserved UF event reaches host",
+      "ok": true
+    },
+    {
+      "name": "preserved UF event reaches touch guest",
+      "ok": true
+    },
+    {
+      "name": "aelith guest casts simulated by host",
+      "ok": true,
+      "host": {
+        "key": "aelith",
+        "casts": 8,
+        "damage": 344.82525000000004,
+        "bleeds": 0
+      },
+      "guest": {
+        "key": "aelith",
+        "casts": 7,
+        "owned": [
+          "ael_hour"
+        ],
+        "bleeds": 0
+      }
+    },
+    {
+      "name": "aelith ultimate replicates with guest owner",
+      "ok": true
+    },
+    {
+      "name": "new actual cast reaches both identified guest targets",
+      "ok": true
+    },
+    {
+      "name": "early cleanse zero metadata arrives through existing delta",
+      "ok": true
+    },
+    {
+      "name": "unrelated re-slow does not revive Fractura on guest",
+      "ok": true
+    },
+    {
+      "name": "removed target leaves no independent ghost marker",
+      "ok": true
+    },
+    {
+      "name": "death cancellation sends no false echo or debt on host",
+      "ok": true
+    },
+    {
+      "name": "death cancellation sends no false echo or debt on touch guest",
+      "ok": true
+    },
+    {
+      "name": "aelith death removes owned effects",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

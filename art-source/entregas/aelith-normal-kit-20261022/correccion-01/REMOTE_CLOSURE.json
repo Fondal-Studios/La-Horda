@@ -1,0 +1,416 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "state": "EN_CORRECCION",
+  "gate": "NO_INTEGRAR",
+  "repository": "Fondal-Studios/La-Horda",
+  "pr": 199,
+  "branch": "art/aelith-normal-kit-first-pass-20261022",
+  "previousHead": "6ead42f01d0bc272d87d01e373e83d951b7a1de5",
+  "initialRecovery": "6ca8b4e8e306ec8a6bc718ef3b55aae9a79c9ee8",
+  "productionCommit": "143c3c9f7363fb3036259f2cd7ff7a2df9c097dc",
+  "productionTree": "dd74ab7593fd68029ee95a5330b609a6eb75e43f",
+  "remoteVerification": {
+    "truncated": false,
+    "checked": 49,
+    "mismatch": []
+  },
+  "main": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+  "merged": false,
+  "publicationVerified": false,
+  "checksObserved": {
+    "head": "143c3c9f7363fb3036259f2cd7ff7a2df9c097dc",
+    "runs": [
+      {
+        "name": "lanes",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867524894/job/120133363715"
+      },
+      {
+        "name": "entry-reference",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867524894/job/120133363583"
+      },
+      {
+        "name": "postgres",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867524894/job/120133363532"
+      },
+      {
+        "name": "readability",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867524874/job/120133363395"
+      },
+      {
+        "name": "safari-engine",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867524894/job/120133363268"
+      },
+      {
+        "name": "emoji-lint",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867524844/job/120133363202"
+      },
+      {
+        "name": "evidence",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867524784/job/120133362920"
+      },
+      {
+        "name": "Analyze (python)",
+        "status": "in_progress",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867519615/job/120133350699"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867519615/job/120133350635"
+      },
+      {
+        "name": "Analyze (actions)",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867519615/job/120133350446"
+      },
+      {
+        "name": "emoji-lint",
+        "status": "in_progress",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867519032/job/120133343295"
+      }
+    ],
+    "workflows": [
+      {
+        "id": 39867524784,
+        "name": "Art production evidence",
+        "head": "143c3c9f7363fb3036259f2cd7ff7a2df9c097dc",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867524784"
+      },
+      {
+        "id": 39867519032,
+        "name": "Emoji lint (arte pixel)",
+        "head": "143c3c9f7363fb3036259f2cd7ff7a2df9c097dc",
+        "status": "in_progress",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867519032"
+      },
+      {
+        "id": 39867519615,
+        "name": "PR #199",
+        "head": "143c3c9f7363fb3036259f2cd7ff7a2df9c097dc",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39867519615"
+      }
+    ]
+  },
+  "ciMeaning": "Snapshot only; final closure commit triggers a fresh head. No merge permitted; drafts/FIX and full gates remain.",
+  "next": "Grouped silhouette/contrast batch for Solciju, Brakk B118, Morveth B166/B167/B168, Aelith B106/B107; preserve technical lifecycle corrections and PR191. Fetch fresh heads and checkpoints first.",
+  "files": [
+    {
+      "path": "js/champions/skill-fx-a/engine.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "019b40e1f8691f43b86ca5d9f7dda45a09c022d0"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/aelith.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab3798cbca576b284dd3a820282f27e9e8dffcd1"
+    },
+    {
+      "path": "js/champions/vfx-b/pixfx.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5b7257b14036629d950a82a21fe8288392bd8406"
+    },
+    {
+      "path": "tools/vfx/verify-aelith-lifecycle.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b763718795327367f0c368a33f1e1633dac2d022"
+    },
+    {
+      "path": "tools/vfx/verify-aelith-variants.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "45708e4004251204c1aae07ffa0418d9e5ce192a"
+    },
+    {
+      "path": "tools/vfx/verify-aelith-kit.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "975605e9edb30970ab79fe2975d8f74c2d62339e"
+    },
+    {
+      "path": "tools/vfx/aelith-lifecycle-online.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6cbb76576c0b69e591f78a24d064c23de239b4fa"
+    },
+    {
+      "path": "tools/vfx/capture-aelith-lifecycle.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92e3be319ac69298e90a823a2f07168d1145a26f"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c37a22c87897f7e0bee69b3cee39faf3c8aa888"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/CHECKPOINT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "809302385a56f6b404e0b7f751b66178b39b9255"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/CHECKPOINT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "910765721fe02c71416356201627291c0f036099"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/TEST_ATTEMPTS.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aa6f80a7122581f39eddf7d0afc05172f410d6d7"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/VISUAL_REVIEW.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bbde861f5f22f956d2a17a04c2986d33639e631f"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/after/aelith-0.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "01ed7a8a951cc6c6d8d1620fa34f7d099e9774b4"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/after/aelith-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06611014ccd586d0e82685ce957cb7ea34c0619e"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/after/aelith-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a005715aa960fdf9214579d48c1536fa7d91305e"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/after/aelith-3.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dddf3edee7d117a263a3d11e4a5461e60c2572c3"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/after/capture.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d5e53bbfff937cabea55267d21165b12dacccb51"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/before/aelith-0.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "01ed7a8a951cc6c6d8d1620fa34f7d099e9774b4"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/before/aelith-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06611014ccd586d0e82685ce957cb7ea34c0619e"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/before/aelith-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a3994de7bf3a6aedb34baab046c27f0a5ebcf33f"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/before/aelith-3.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dddf3edee7d117a263a3d11e4a5461e60c2572c3"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/before/capture.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "27afb430b16e384f48dd19df8887924de8566568"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/comparison-checks.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4598dc6531d6a5147ea5b3786fff5e79fc5ecba9"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/comparison.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3691506309869edeb54258b82abf0e54b541dce2"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/debt-sand.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d141befc4280b1ea0f0b035914eb4140f1b30c5a"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/functional-results.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8ea7b62ef3f6aa08ca567cc515fe16d07b9fb0e5"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/general-online-results.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b7cbdda53818eada8d8bf500a894cd180c7df239"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/lifecycle-tests.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6fb47bf329c1e4f988026574c9121c3d5d79c66c"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-after/aelith-0.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ef153bf8f37a9f53bc8533255f4d18c96cbcb9aa"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-after/aelith-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f57086fa35a5dd6dc2f934abda15569b255a1d85"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-after/aelith-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bdea723681384903b8e26a63f40a8511942aa537"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-after/aelith-3.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "43223ea55ef71aae692e2bd213257a9ebca18820"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-after/capture.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7dae9b8f5782822c119c278199c9bb460cc92353"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-before/aelith-0.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ef153bf8f37a9f53bc8533255f4d18c96cbcb9aa"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-before/aelith-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f57086fa35a5dd6dc2f934abda15569b255a1d85"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-before/aelith-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fddc3d82de92e5aefc909d2f31242f810240a1a9"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-before/aelith-3.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "43223ea55ef71aae692e2bd213257a9ebca18820"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-before/capture.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f09807734b31478b692fa7f74de4a2d2d73ea569"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-comparison.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "de6684045a3743569b3802e78735618ae66a9d3c"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/online-first-attempt.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "459de8d93ebc89fa58972f7d3082721654534b32"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/online-results.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "470a4b1d3ccbddf56bf163959a71bbf7b47b06f4"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/online-second-attempt.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "701a14dbbbf40aa2814f571053008f08ac0e9914"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/online-third-attempt.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f001152869507a027b1db81414686959a090e806"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/recipe.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "86b27bd15f6f0acde6a3bff867d2ebbf6b7c58d4"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/reexport/verification.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "02fa0cabd175ca0d47b0b1b2c5846093c7136727"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/variant-tests.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "241915ccac686d6cb5f71463edcdf27d69d7e1f2"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/parity.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c94fc5afc6fce65bda5f79ef97faa9db60bb029c"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/manifest.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b8586d4917fbb3d922eea8b3a80043298a179af0"
+    }
+  ]
+}

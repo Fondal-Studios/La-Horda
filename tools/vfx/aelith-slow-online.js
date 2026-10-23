@@ -1,0 +1,151 @@
+'use strict';
+const {chromium}=require('playwright'),{spawn}=require('node:child_process'),fs=require('node:fs'),os=require('node:os'),path=require('node:path');
+const dataDir=fs.mkdtempSync(path.join(os.tmpdir(),'horda-workshop-relay-'));
+// Production taxonomy remains unchanged. Only this disposable local data directory
+// receives test users and explicit grant ledger entries; no production accounts.
+const servers=[];
+async function seedLocalAccounts(){
+ const {create,hashPassword}=require('../../server/accounts');
+ const app=create({dataDir,databaseUrl:'',adminUsers:'',founders:{},log:()=>{}});
+ try{
+  await app.ready;const grants={};
+  for(const user of ['qa_five_host','qa_five_guest']){
+   const u=await app.store.createUser({user,userKey:user,name:user,createdAt:Date.now(),lastLogin:0,passHash:await hashPassword('local-fixture-password')});
+   grants[u.id]={champions:Object.fromEntries(['solciju','brakk','veyra','morveth','aelith'].map(k=>[k,{origin:'ADMIN_GRANT',by:'local-test-fixture',at:Date.now(),reason:'Isolated relay QA'}]))};
+  }
+  await app.store.gmUpdate(state=>({state:{...state,grants},value:true}));
+ }finally{await app.close();}
+}
+const checks=[],errors=[],browsers=[];
+const reportPath='art-source/entregas/aelith-normal-kit-20261022/correccion-03/online-results.json';
+fs.writeFileSync(reportPath,JSON.stringify({status:'RUNNING',scope:'local relay workshop'})+'\n');
+const modules=[];
+(async()=>{try{
+ await seedLocalAccounts();
+ servers.push(spawn('python3',['-m','http.server','8867','--bind','127.0.0.1'],{stdio:'ignore'}),spawn('node',['server/relay.js'],{env:{...process.env,PORT:'8868',DATA_DIR:dataDir,DATABASE_URL:''},stdio:'ignore'}));
+ let ready=false;
+ for(let i=0;i<100;i++){try{const r=await fetch('http://127.0.0.1:8868/api/health');if(r.ok){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,100));}
+ if(!ready)throw Error('Local relay failed to start');
+ // Released standard champions use the normal public roster. Founders remain grant-protected.
+ const WebSocket=require('../../server/node_modules/ws');
+ for(const champ of ['solciju','brakk','veyra','morveth','aelith','nano_gm','facu_gm']){
+  const allowed=await new Promise((resolve,reject)=>{
+   const ws=new WebSocket('ws://127.0.0.1:8868');
+   const timer=setTimeout(()=>{ws.terminate();reject(Error('Anonymous entitlement probe timed out'));},5000);
+   ws.on('error',e=>{clearTimeout(timer);reject(e);});
+   ws.on('open',()=>ws.send(JSON.stringify({t:'create',protocol:1,arena:'bosque',champ,level:20,name:'Anonymous QA'})));
+   ws.on('message',data=>{const m=JSON.parse(data);if(m.t==='joined'){clearTimeout(timer);ws.close();resolve(m.room.slots[0].champ===champ);}});
+  });
+  const founder=champ.endsWith('_gm');checks.push({name:champ+(founder?' rejected without founder entitlement':' admitted as released standard champion'),ok:founder?!allowed:allowed});
+ }
+ const tokens=[];
+ for(const user of ['qa_five_host','qa_five_guest']){const r=await fetch('http://127.0.0.1:8868/api/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({user,pass:'local-fixture-password'})});const j=await r.json();if(!r.ok||!j.token)throw Error('Local QA login failed');tokens.push(j.token);}
+
+ for(const [host,guest] of [['morveth','aelith']]){
+  const launch=()=>chromium.launch({executablePath:process.env.CHROMIUM_PATH||chromium.executablePath(),args:['--no-sandbox']});
+  const ab=await launch(),gb=await launch();browsers.push(ab,gb);
+  const ac=await ab.newContext(),gc=await gb.newContext({viewport:{width:844,height:390},isMobile:true,hasTouch:true});
+  const a=await ac.newPage(),g=await gc.newPage();
+  for(const [p,k] of [[a,host],[g,guest]]){
+   p.on('pageerror',e=>errors.push(e.message));p.setDefaultTimeout(30000);
+   await p.goto('http://127.0.0.1:8867/?lazy=0&server=ws%3A%2F%2F127.0.0.1%3A8868');
+   await p.waitForFunction(()=>typeof CHAMPION_ENTRY_BALANCE!=='undefined');
+   for(const file of modules)await p.addScriptTag({path:file});
+   await p.evaluate(token=>{acct.session={token};},tokens[p===a?0:1]);
+   await p.evaluate(k=>{save.starterChosen=true;for(const c of Object.values(save.champions)){c.unlocked=true;c.level=20;}selectedClass=k;currentArena='bosque';setState('prep');},k);
+  }
+  await a.evaluate(()=>netCreateRoom(currentArena,selectedClass,20));const code=await a.evaluate(()=>net.code);
+  await g.evaluate(code=>netJoinRoom(code,selectedClass,20),code);await a.waitForFunction(()=>netHumanCount()===2);
+  await a.evaluate(()=>netHostStartGame());await g.waitForFunction(()=>netMatch?.role==='guest'&&state==='playing');
+  await a.evaluate(()=>{
+   enemies=[];runLevel=ULT_MIN_ARENA_LEVEL;
+   for(const h of heroes){h.energy=h.maxEnergy;h.ultCharge=h.ultMax;h.ultCd=0;h.cds=[0,0,0];h.invulnTimer=1e9;}
+   for(let i=0;i<5;i++){const e=spawnEnemy('esqueleto');Object.assign(e,{x:heroes[1].x+40+i*8,y:heroes[1].y,hp:1e7,maxHp:1e7,dmg:0,speed:0});}
+   window.workshopTimer=setInterval(()=>{spawnTimer=1e9;levelTimer=0;arenaHazardTimer=1e9;},50);
+  });
+  for(const pg of [a,g])await pg.evaluate(()=>{window.aelithTrace=[];const push=sfaPush;window.sfaPush=function(...args){if(String(args[1]).startsWith('aelith_'))aelithTrace.push(args);return push.apply(this,args);};});
+  await g.waitForTimeout(400);
+  for(let i=0;i<3;i++){await g.evaluate(i=>useSkill(i,{x:player.x+65,y:player.y,dx:1,dy:0}),i);await g.waitForTimeout(i===0?1250:150);}
+  // El H2 del invitado se ejecuta en host; comparar estado real sincronizado.
+  for(const [label,pg] of [['host',a],['touch guest',g]]){
+   const detail=await pg.evaluate(()=>enemies.filter(e=>e.alive&&e.aelithFractureFxEnd>runElapsedMs).map(e=>({start:e.aelithFractureFxStart,end:e.aelithFractureFxEnd,slow:e.slowAmt,left:e.slowTimer,frame:aelithSlowPhase(e)})));
+   checks.push({name:'real H2 target metadata and sand frame on '+label,ok:detail.length===5&&detail.every(e=>e.end-e.start===1800&&e.slow>0&&e.frame>=0),detail});
+  }
+  if(guest==='veyra'){
+   const hostBleeds=await a.evaluate(()=>(heroes[1].veyraBleeds||[]).filter(x=>x.left>0).length),guestBleeds=await g.evaluate(()=>(player.veyraBleeds||[]).length);
+   checks.push({name:'Veyra active bleed state belongs only to host',ok:hostBleeds>0&&guestBleeds===0,hostBleeds,guestBleeds});
+  }
+  if(guest==='morveth'){const hs=await a.evaluate(()=>(heroes[1].morvethInfections||[]).length),gs=await g.evaluate(()=>(player.morvethInfections||[]).length);checks.push({name:'Morveth infections remain host authoritative',ok:hs>0&&gs===0,hs,gs});}
+  if(guest==='brakk'){
+   const builds=await g.evaluate(()=>portadorObjects.filter(o=>o.owner===player&&o.brakk&&o.life>0).map(o=>o.kind));
+   checks.push({name:'Brakk wall and turret replicate with guest owner',ok:builds.includes('brk_wall')&&builds.includes('brk_turret'),builds});
+  }
+  await g.keyboard.down('d');await g.waitForTimeout(800);await g.keyboard.up('d');
+  for(const [label,pg] of [['host',a],['touch guest',g]])checks.push({name:'Actual trail snapshots on '+label,ok:await pg.evaluate(()=>aelithTrailState.size>0&&[...aelithTrailState.values()].some(s=>s.shots.length===3))});
+  const ht=await a.evaluate(()=>aelithTrace),gt=await g.evaluate(()=>aelithTrace);
+  for(const theme of ['aelith_echo','aelith_fracture~h','aelith_haste~p'])checks.push({name:'render event visible on host and touch guest: '+theme,ok:ht.some(x=>x[1]===theme)&&gt.some(x=>x[1]===theme),host:ht.filter(x=>x[1]===theme),guest:gt.filter(x=>x[1]===theme)});
+  for(const [label,pg] of [['host',a],['touch guest',g]]){
+   const detail=await pg.evaluate(()=>{const ev=aelithTrace.find(e=>e[1]==='aelith_fracture~h'),draws=[],cv=document.createElement('canvas');cv.width=cv.height=400;const c=cv.getContext('2d'),draw=c.drawImage.bind(c);c.drawImage=function(...args){draws.push(args.slice(1));return draw(...args);};const [art,theme,x,y,r,ang,dur,bx,by,w,fi]=ev;sfaDrawOne({art,theme,x,y,r,ang,dur,bx,by,w,fi,t:75},c);return {draws,palette:sfaTheme(theme).pal.b,span:aelithFractureSpan(75,dur)};});
+   checks.push({name:'actual relay fracture uses longitudinal renderer on '+label,ok:detail.draws.length===1&&detail.draws[0][2]===112&&detail.palette==='#d9c9f5'&&detail.span===.5,detail});
+  }
+  for(const [label,pg] of [['host',a],['touch guest',g]])checks.push({name:'one initial and one actual echo impact on '+label,ok:await pg.evaluate(()=>aelithTrace.filter(e=>e[0]==='nova'&&e[1]==='aelith_echo').length===2)});
+  await g.waitForFunction(()=>aelithTrace.some(e=>e[1]==='aelith_debt'),null,{timeout:10000});
+  for(const [label,pg] of [['host',a],['touch guest',g]])checks.push({name:'Fractura symbols expire on '+label,ok:await pg.evaluate(()=>enemies.every(e=>aelithSlowPhase(e)===-1))});
+  for(const [label,pg] of [['host',a],['touch guest',g]]){
+   const details=await pg.evaluate(()=>({events:aelithTrace.filter(e=>e[1]==='aelith_debt'),pool:sfaPool.filter(e=>e.theme==='aelith_debt').map(e=>({fi:e.fi,dur:e.dur})),timer:heroes[1].aelithDebtUntil}));
+   checks.push({name:'actual debt delivered as800ms recipient event on '+label,ok:details.events.length===1&&details.events[0][6]===800&&details.events[0][10]===1,details});
+  }
+  await g.waitForFunction(()=>!sfaPool.some(e=>e.theme==='aelith_debt'&&e.t<e.dur),null,{timeout:10000});
+  checks.push({name:'guest debt ends and releases body snapshots',ok:await g.evaluate(()=>!aelithTrailState.has(player))});
+  // Capacity control: three real host casts in a single tick, only the two retained echoes expire.
+  for(const pg of [a,g])await pg.evaluate(()=>{aelithTrace.length=0;});
+  await a.evaluate(()=>{const h=heroes[1];for(let i=0;i<3;i++){h.energy=1e4;h.cds=[0,0,0];h.aim={x:h.x+55+i*10,y:h.y,dx:1,dy:0};castAbility(h,h.cls.skills[0],false,0);}});
+  await g.waitForFunction(()=>aelithTrace.filter(e=>e[0]==='nova'&&e[1]==='aelith_echo').length>=5,null,{timeout:10000});
+  await g.waitForTimeout(150);
+  for(const [label,pg] of [['host',a],['touch guest',g]]){const count=await pg.evaluate(()=>aelithTrace.filter(e=>e[0]==='nova'&&e[1]==='aelith_echo').length);checks.push({name:'cap replacement emits3 initial plus2 actual impacts on '+label,ok:count===5,count});}
+  // Sharing uses the real talent and keeps the recipient index across the relay.
+  await a.evaluate(()=>{const h=heroes[1];save.champions.aelith.level=60;save.champions.aelith.talents.nodes.aelith_t2transform=1;heroes[0].x=h.x-20;heroes[0].y=h.y;for(const extra of heroes.slice(2)){extra.x=h.x+1000;extra.y=h.y+1000;extra.stunTimer=1e9;}h.cds=[0,0,0];h.energy=1e4;});
+  for(const pg of [a,g])await pg.evaluate(()=>{aelithTrace.length=0;});
+  await g.waitForTimeout(200);const recipientFixture=await a.evaluate(()=>aelithAllies(heroes[1],heroes[1],140).map(h=>heroes.indexOf(h)));checks.push({name:'shared fixture has exactly intended recipients before cast',ok:JSON.stringify(recipientFixture)==='[0,1]',recipientFixture});await g.evaluate(()=>useSkill(2));
+  await g.waitForFunction(()=>aelithTrace.filter(e=>e[1]==='aelith_haste~p').length>=2,null,{timeout:10000});
+  for(const [label,pg] of [['host',a],['touch guest',g]]){const details=await pg.evaluate(()=>({events:aelithTrace.filter(e=>e[1]==='aelith_haste~p'),heroes:heroes.map(h=>({key:h.classKey,x:h.x,y:h.y,team:h.team,debt:h.aelithDebtUntil})),share:aelithFlag(heroes[1],2,'share')}));checks.push({name:'shared haste owns two distinct recipients on '+label,ok:JSON.stringify([...new Set(details.events.map(e=>e[10]))].sort())==='[0,1]',details});}
+  await g.waitForFunction(()=>aelithTrace.filter(e=>e[1]==='aelith_debt').length>=2,null,{timeout:10000});
+  for(const [label,pg] of [['host',a],['touch guest',g]]){const details=await pg.evaluate(()=>({events:aelithTrace.filter(e=>e[1]==='aelith_debt'),heroes:heroes.map(h=>({key:h.classKey,x:h.x,y:h.y,team:h.team,debt:h.aelithDebtUntil})),share:aelithFlag(heroes[1],2,'share')}));checks.push({name:'shared debt owns two distinct recipients on '+label,ok:JSON.stringify([...new Set(details.events.map(e=>e[10]))].sort())==='[0,1]',details});}
+  for(const pg of [a,g])await pg.evaluate(()=>{window.ufCount=0;const fx=KVB_FX['uf.aelith'];KVB_FX['uf.aelith']=function(...args){ufCount++;return fx.apply(this,args);};});
+  await a.evaluate(()=>{heroes[1].ultCharge=heroes[1].ultMax;heroes[1].ultCd=0;});await g.waitForTimeout(200);
+  await g.evaluate(()=>useUltimate());await g.waitForTimeout(400);
+  for(const [label,pg] of [['host',a],['touch guest',g]])checks.push({name:'preserved UF event reaches '+label,ok:await pg.evaluate(()=>ufCount===1)});
+
+  const hh=await a.evaluate(()=>({key:heroes[1].classKey,casts:heroes[1].stats.skillCasts,damage:heroes[1].stats.dmgDealt,bleeds:(heroes[1].veyraBleeds||[]).length}));
+  const gg=await g.evaluate(()=>({key:player.classKey,casts:player.stats.skillCasts,owned:portadorObjects.filter(o=>o.owner===player).map(o=>o.kind),bleeds:(player.veyraBleeds||[]).length}));
+  checks.push({name:guest+' guest casts simulated by host',ok:hh.key===guest&&gg.key===guest&&hh.casts>=4&&hh.damage>0,host:hh,guest:gg});
+  if(['morveth','aelith'].includes(guest))checks.push({name:guest+' ultimate replicates with guest owner',ok:gg.owned.includes(guest==='morveth'?'mor_garden':'ael_hour')});
+  if(guest==='solciju')checks.push({name:'Solciju reserve and cask replicate with guest owner',ok:gg.owned.includes('sol_reserve')&&gg.owned.includes('sol_cask')});
+  await a.evaluate(()=>{
+   const h=heroes[1];enemies=[];for(let i=0;i<2;i++){const e=spawnEnemy('esqueleto');Object.assign(e,{qaSlowTarget:i+1,x:h.x+75+i*20,y:h.y,hp:1e7,maxHp:1e7,speed:0,baseSpeed:0,dmg:0});}
+   h.energy=1e4;h.cds=[0,0,0];h.aim={x:h.x+130,y:h.y,dx:1,dy:0};castAbility(h,h.cls.skills[1],false,1);
+  });
+  await g.waitForFunction(()=>enemies.filter(e=>e.qaSlowTarget&&aelithSlowPhase(e)>=0).length===2,null,{timeout:5000});
+  checks.push({name:'new actual cast reaches both identified guest targets',ok:true});
+  await a.evaluate(()=>{const e=enemies.find(e=>e.qaSlowTarget===1);e.slowTimer=0;e.slowAmt=0;render();});
+  await g.waitForFunction(()=>enemies.find(e=>e.qaSlowTarget===1)?.aelithFractureFxEnd===0,null,{timeout:5000});
+  checks.push({name:'early cleanse zero metadata arrives through existing delta',ok:await g.evaluate(()=>aelithSlowPhase(enemies.find(e=>e.qaSlowTarget===1))===-1)});
+  await a.evaluate(()=>portadorSlow(heroes[0],enemies.find(e=>e.qaSlowTarget===1),.35,3000));
+  await g.waitForFunction(()=>enemies.find(e=>e.qaSlowTarget===1)?.slowTimer>2000,null,{timeout:5000});
+  checks.push({name:'unrelated re-slow does not revive Fractura on guest',ok:await g.evaluate(()=>aelithSlowPhase(enemies.find(e=>e.qaSlowTarget===1))===-1)});
+  await a.evaluate(()=>{const e=enemies.find(e=>e.qaSlowTarget===2);e.hp=0;e.alive=false;});
+  await g.waitForFunction(()=>!enemies.some(e=>e.qaSlowTarget===2),null,{timeout:5000});
+  checks.push({name:'removed target leaves no independent ghost marker',ok:await g.evaluate(()=>!enemies.some(e=>e.qaSlowTarget===2))});
+  await a.evaluate(()=>aelithEcho(heroes[1],heroes[1],75,10,1600));
+  await g.waitForFunction(()=>portadorObjects.some(o=>o.kind==='ael_echo'&&o.life>0),null,{timeout:5000});
+  for(const pg of [a,g])await pg.evaluate(()=>{aelithTrace.length=0;});
+  await a.evaluate(()=>{heroes[1].alive=false;heroes[1].hp=0;});await g.waitForTimeout(500);
+  for(const [label,pg] of [['host',a],['touch guest',g]])checks.push({name:'death cancellation sends no false echo or debt on '+label,ok:await pg.evaluate(()=>!aelithTrace.some(e=>e[1]==='aelith_echo'||e[1]==='aelith_debt'))});
+
+  checks.push({name:guest+' death removes owned effects',ok:await a.evaluate(()=>!portadorObjects.some(o=>o.owner===heroes[1]&&o.life>0)&&!(heroes[1].veyraBleeds||[]).length&&!(heroes[1].morvethInfections||[]).length)});
+  await ac.close();await gc.close();await ab.close();await gb.close();
+ }
+ const status=errors.length||checks.some(c=>!c.ok)?'FAIL':'PASS';
+ fs.writeFileSync(reportPath,JSON.stringify({status,scope:'Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.',checks,errors},null,2)+'\n');
+ console.log(JSON.stringify({status,checks,errors}));if(status==='FAIL')process.exitCode=1;
+}finally{for(const b of browsers)await b.close().catch(()=>{});servers.forEach(s=>s.kill());fs.rmSync(dataDir,{recursive:true,force:true});}})().catch(e=>{fs.writeFileSync(reportPath,JSON.stringify({status:'FAIL',checks,errors:[...errors,e.message]},null,2)+'\n');console.error(e);process.exitCode=1;});

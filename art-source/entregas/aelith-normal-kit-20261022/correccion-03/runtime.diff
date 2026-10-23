@@ -1,0 +1,84 @@
+--- cast-before.js
++++ js/champions/quality-five/aelith.js
+@@ -26,7 +26,7 @@
+    h.aelithLastEcho={x:p.x,y:p.y,r,dmg:dmg*.3};
+    aelithEcho(h,p,r,dmg*.3,aelithEchoDelay(h,life));break;
+   case 'ael_fracture':{
+-   const hit=e=>portadorSlow(h,e,.35,life);
++   const hit=e=>{portadorSlow(h,e,.35,life);if(typeof aelithFractureMark==='function')aelithFractureMark(e,life);};
+    const d=aimDir(h,sk.range),end={x:h.x+d.x*Math.min(330,sk.range*area),y:h.y+d.y*Math.min(330,sk.range*area)};exLine(h,h,end,r,dmg,hit);qualityFiveFx(h,kitFxLine,'rune',h.x,h.y,end.x,end.y,r);
+    if(aelithFlag(h,1,'aftershock'))aelithEcho(h,end,60,dmg*.2,800);break;
+   }
+--- source-before.js
++++ js/champions/skill-fx-a/c/aelith.js
+@@ -145,3 +145,70 @@
+   }ctx.restore();
+  }
+ });
++
++// B106: procedencia del impacto real. Solo metadatos cosméticos; los snapshots
++// existentes transportan estos escalares junto al objetivo, sin otro evento ni ID.
++function aelithFractureMark(e,dur){
++ if(window.SFA_OFF || !e?.alive || e.cineT>0 || !(e.slowTimer>0) || !(e.slowAmt>0) || !(dur>0))return;
++ const end=runElapsedMs+dur;
++ // Un recasteo corto no acorta la contribución anterior de Fractura.
++ if(!(e.aelithFractureFxEnd>end)){
++  e.aelithFractureFxStart=runElapsedMs;
++  e.aelithFractureFxEnd=end;
++ }
++}
++function aelithClearSlow(e){
++ // Los deltas existentes no transmiten claves borradas: cero sí invalida al invitado.
++ if(e.aelithFractureFxEnd!==undefined){e.aelithFractureFxStart=0;e.aelithFractureFxEnd=0;}
++}
++function aelithSlowPhase(e){
++ const start=e.aelithFractureFxStart,end=e.aelithFractureFxEnd;
++ if(!e.alive || e.fused || !(e.slowTimer>0) || !(e.slowAmt>0) || runElapsedMs>=end){
++  // La limpieza observada invalida la procedencia; otro slow no revive el icono.
++  aelithClearSlow(e);return -1;
++ }
++ if(!Number.isFinite(start) || !(end>start) || runElapsedMs<start)return -1;
++ return Math.min(11,Math.floor((runElapsedMs-start)/(end-start)*12));
++}
++function aelithSlowStrip(T){
++ const S=new SfaStrip(16,20,12),P=aelithFxPalette('fracture',T);
++ for(let f=0;f<12;f++){
++  const set=(x,y,c)=>S.set(f,x,y,c);
++  // Reloj de arena estrecho, contorno oscuro y vidrio blanco-lila; centro abierto.
++  for(const y of [2,17])for(let x=3;x<=12;x++){set(x,y,P.o);set(x,y+(y===2?1:-1),P.b);}
++  for(let y=4;y<=15;y++){
++   const side=y<=9?4+Math.floor((y-4)*.6):7-Math.floor((y-10)*.6);
++   for(const x of [side,15-side]){set(x,y,P.o);set(x+(x<8?1:-1),y,P.e);}
++  }
++  // Arena de arriba baja y se acumula abajo: fase única de la duración recibida.
++  const top=Math.ceil((11-f)/3),bottom=Math.floor(f/3);
++  for(let y=0;y<top;y++)for(let x=5+y;x<=10-y;x++)set(x,5+y,P.b);
++  for(let y=0;y<bottom;y++)for(let x=5+y;x<=10-y;x++)set(x,15-y,P.b);
++  if(f<11)set(7+(f%2),9+(f%3),P.c);
++ }
++ return S;
++}
++sfaDefineTheme('aelith_slow',{...sfaThemes.aelith_fracture,bake:(T,art)=>art==='aura'?aelithSlowStrip(T):null});
++function aelithDrawSlow(e,g){
++ if(window.SFA_OFF)return false;
++ const f=aelithSlowPhase(e);if(f<0 || !inView(e.x,e.y,70))return false;
++ const b=sfaBake('aura','aelith_slow',0),x=Math.round(e.x+(e.radius||18)*.7),y=Math.round(e.y-(e.radius||18)*1.8-20);
++ g.save();g.imageSmoothingEnabled=false;g.globalAlpha=1;
++ g.drawImage(b.cv,f*b.w,0,b.w,b.h,x,y,b.w,b.h);g.restore();return true;
++}
++(function(){
++ const overlay=drawEnemyOverlays;
++ drawEnemyOverlays=function(e){const r=overlay.apply(this,arguments);aelithDrawSlow(e,ctx);return r;};
++ // En PvP los objetivos son héroes/minions/estructuras, no la lista enemies.
++ const top=drawPortadorTop;
++ drawPortadorTop=function(){const r=top.apply(this,arguments);
++  // También invalida objetivos fuera de cámara; no hornea ni dibuja aquí.
++  for(const e of enemies)if(e.aelithFractureFxEnd>0)aelithSlowPhase(e);
++  if(divinaMode&&!window.SFA_OFF){
++  for(const e of new Set([...heroes,...divinaEnemies,...divinaMinions,...divinaStructures]))aelithDrawSlow(e,ctx);
++ }return r;};
++ const reset=vfxResetRun;
++ vfxResetRun=function(){for(const e of [...(enemies||[]),...(heroes||[]),...(typeof divinaEnemies==='undefined'?[]:(divinaEnemies||[])),...(typeof divinaMinions==='undefined'?[]:(divinaMinions||[])),...(typeof divinaStructures==='undefined'?[]:(divinaStructures||[]))]){
++  aelithClearSlow(e);
++ }return reset.apply(this,arguments);};
++})();
