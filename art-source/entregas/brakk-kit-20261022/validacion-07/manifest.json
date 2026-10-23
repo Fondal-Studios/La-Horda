@@ -9,15 +9,15 @@
   "files": [
     {
       "path": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
-      "bytes": 3394,
-      "sha256": "31518b6d70e65bec66d35c988306d8987e67f2c709c8fab492560819a238ee55",
-      "gitBlob": "f1576257e00cefdc00ff455fb26be64b1db4c0db"
+      "bytes": 3526,
+      "sha256": "ec7f8282c0d2bf07c538f1f87074a754bcab8ac38ce4ef8c582b4fa09227cc1c",
+      "gitBlob": "baa6d86fdd517d2705a851610ae4d0562f0b1f8f"
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/validacion-07/RECOVERY.json",
-      "bytes": 539,
-      "sha256": "01afdc58e96259e66874e553c7ec161f4afb67f86f5c5f2713dd614b02dcb506",
-      "gitBlob": "2ece66ae7327b48d4283abc0ba3cf68de79a8837"
+      "bytes": 598,
+      "sha256": "d5a691c79b8aa82ab6651de94e7945c7496f2271dcfaf557aaf7ed6d3d5e90a1",
+      "gitBlob": "eee4a00c2936b637ba5a1c8e9e459f5de6c3f0a5"
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/validacion-07/REMOTE_AUDIT.json",
@@ -312,7 +312,14 @@
       "bytes": 12106,
       "sha256": "aa6b76d56d651dcf4aac829d67a9d11872d4d77d3ebb3588e7aa6a22ac2bfe3e",
       "gitBlob": "366cdda6b1ea08473fc7bfdc46dcf8ab42b6aeb1"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-07/REMOTE_CLOSURE.json",
+      "bytes": 767,
+      "sha256": "9e55547364453f1b136ee9d193fbd46b456896d06751938014dc2973bcb939f1",
+      "gitBlob": "0561c2380323ef04c91d36dddeff40d48161b8e8"
     }
   ],
-  "note": "No new atlas; prior06 originals unchanged. All18 diagnosticPNG included; lifecycleJSON gzipped deterministically. Manifest excludes itself and finalclosure."
+  "note": "All18 native diagnostic PNG included; no new atlas/runtime. Manifest excludes itself; closed checkpoint independently verified after final commit.",
+  "productionCommit": "79d9a2a1e3a01fd3f009f213aab11c6214f0adc6"
 }
