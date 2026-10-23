@@ -22,4 +22,4 @@ Las patas laterales se separan inicialmente, pero torreta/cuerpos/señales de ar
 
 Siguiente: revisión integral por componentes B118/B119 con crew/múltiples receptores y contraste compuesto; usar `tools/vfx/capture-brakk-deploy09.js`, `tools/vfx/test-brakk-deploy-pose.js` y `tools/vfx/brakk-deploy09-online.js` (comandos en recipe.json). No repetir diagnóstico07/capas09, firmas05, primeras53, PR200 ni RNG Solciju/Veyra. Conservar residuales MorvethB168/AelithB106/B107; separar solo componente con ArtGate y CI exactos aprobados, jamás tallerFIX completo.
 
-Cierre remoto pendiente hasta verificar publicación del commit de producción y registrar REMOTE_CLOSURE.json.
+Producción `a7e4a4fb48ba25f6f39da121945aaa0f4d8a9492` subida y88archivos cotejados por Git blob remoto sin diferencias. Cierre documental en este commit; REMOTE_CLOSURE.json registra la verificación. Main sigue758aa2ffacaae6542d31776e4a66ea7847a73b1b. CI del SHA final debe consultarse en PR197; no se espera ni se interpreta como aprobación artística.

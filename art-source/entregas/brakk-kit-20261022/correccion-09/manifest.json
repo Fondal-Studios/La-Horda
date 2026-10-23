@@ -3,7 +3,7 @@
   "state": "EN_CORRECCION",
   "integration": "NO_INTEGRAR",
   "parent": "59b8c38fe415a1de2fb958695a53706c55fce930",
-  "productionCommit": null,
+  "productionCommit": "a7e4a4fb48ba25f6f39da121945aaa0f4d8a9492",
   "files": [
     {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/ATLAS_COMPARISON.json",
@@ -13,9 +13,9 @@
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/CHECKPOINT.md",
-      "bytes": 3448,
-      "sha256": "0f44a9d1c80bb117fda5aad0dc386e85da1acabe8cf86b315fb2e663221ff3ee",
-      "gitBlobSha": "947aa8f2deebf9bdef29a0e930f775d5a48a8d6a"
+      "bytes": 3693,
+      "sha256": "0ad659f634aea5690c103ab61764197cc7a987e6c89a25437393423d07bf7f29",
+      "gitBlobSha": "2831a6b0e0df2869b9a5a0b59551480607bc1d3f"
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/GENERATED_PNG_INDEX.json",
@@ -31,9 +31,15 @@
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/RECOVERY.json",
-      "bytes": 369,
-      "sha256": "c9051b0538e83d3492f7c6dcf6fc2eff818c09af98f01c1bcd1ac63dc8823942",
-      "gitBlobSha": "3844f5a297a901bf60356221e8d884d1af5a187e"
+      "bytes": 434,
+      "sha256": "028be85974a38315c38d7428e2c5d4e65861550deb0751290bd7680dc21b1938",
+      "gitBlobSha": "f553df154e64bdcb0e1f4cb6c62ca4ca19bf078f"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/REMOTE_CLOSURE.json",
+      "bytes": 1184,
+      "sha256": "a211079251d53aa984a5efcdee1b3ca2044f75d04ae7c324def3a1ba84c41aec",
+      "gitBlobSha": "3f75dc4f5211bf75db121457c25e5587884c067d"
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/REVIEW.json",
@@ -132,16 +138,16 @@
       "gitBlobSha": "077d1f62f02f0bfd6f0b06b0a57571e88115fbd1"
     },
     {
-      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/attempt-01/gate-landscape/component-legibility.json",
-      "bytes": 150391,
-      "sha256": "3fd5affc8a5f8644164420b576f4f1c263856fd2e911457961a2bf743592f1e6",
-      "gitBlobSha": "2fb8aa3c70fba4afb3b84f1d689d97d2677cf46a"
-    },
-    {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/attempt-01/gate-landscape.log",
       "bytes": 2392,
       "sha256": "647b6e4e0be9074bd9a023d265dec5ce6de0212dab6827f38ebcc61ba497b674",
       "gitBlobSha": "0093c3a8840da18d5372ae06668127f44e22a9bb"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/attempt-01/gate-landscape/component-legibility.json",
+      "bytes": 150391,
+      "sha256": "3fd5affc8a5f8644164420b576f4f1c263856fd2e911457961a2bf743592f1e6",
+      "gitBlobSha": "2fb8aa3c70fba4afb3b84f1d689d97d2677cf46a"
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/attempt-01/kit-candidate.js",
@@ -156,16 +162,22 @@
       "gitBlobSha": "b44a527eb89b24d8fc0606ec01a2f45d16089d9c"
     },
     {
+      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/canary-opaque.log",
+      "bytes": 1367,
+      "sha256": "91c4ebdd6fe8dd1ff768b269a1a4395f2c2e04010ccc5a359ed3957f9fc85771",
+      "gitBlobSha": "7435c5aefec0fcf43bc5e8311b558a2ad6122727"
+    },
+    {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/canary-opaque/component-legibility.json",
       "bytes": 25117,
       "sha256": "b0919f2445598744ebab350fdc4afab7f7c9e494e794d25b3715128c1407054b",
       "gitBlobSha": "9bd32afae88477714dfe6e2068d2f3ff1532168e"
     },
     {
-      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/canary-opaque.log",
-      "bytes": 1367,
-      "sha256": "91c4ebdd6fe8dd1ff768b269a1a4395f2c2e04010ccc5a359ed3957f9fc85771",
-      "gitBlobSha": "7435c5aefec0fcf43bc5e8311b558a2ad6122727"
+      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/candidate-probe.log",
+      "bytes": 698,
+      "sha256": "60cbca9b1eb6eae86cb615dcc2be39e47d5f12ad9b8f106487ea9439d7ba9b8b",
+      "gitBlobSha": "dcadb3e1853fe0c30be83e30ee1413648facd870"
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/candidate-probe/bosque-set-dense-h2-330-ab-before.png",
@@ -184,12 +196,6 @@
       "bytes": 29402,
       "sha256": "fac727d1d321065ac1bd788a4a3ca2414db6e6154404f714d5fbf3d3f2b6f9fc",
       "gitBlobSha": "d654ec8413ec89749668bf94de5e6fe78e5a8296"
-    },
-    {
-      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/candidate-probe.log",
-      "bytes": 698,
-      "sha256": "60cbca9b1eb6eae86cb615dcc2be39e47d5f12ad9b8f106487ea9439d7ba9b8b",
-      "gitBlobSha": "dcadb3e1853fe0c30be83e30ee1413648facd870"
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/deploy-online-results.json",
@@ -222,28 +228,28 @@
       "gitBlobSha": "ea57dae67895555917e23864c963277ca88a95f6"
     },
     {
-      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/gate-landscape/component-legibility.json",
-      "bytes": 150237,
-      "sha256": "b92710f2fad224f3a54a9d8f984a4d9547ca4807dda2f5522efb4126c325c18e",
-      "gitBlobSha": "4430bac592dd8c526656fb1be736945e2cb03560"
-    },
-    {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/gate-landscape.log",
       "bytes": 1086,
       "sha256": "e02d8a17152318b28a5c4ce539b3fdd443f2ba4c8c7df99a7b1d4949413d3357",
       "gitBlobSha": "674f0d277999ee143cc70f7b5df1a941d147a422"
     },
     {
-      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/gate-mobile/component-legibility.json",
-      "bytes": 150236,
-      "sha256": "94e408feb800d5b68a96de00c9d9770320b523f314bfabfd1013c136f5b010ae",
-      "gitBlobSha": "70baf6008422871ea89e6c2e6938c08b9087236b"
+      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/gate-landscape/component-legibility.json",
+      "bytes": 150237,
+      "sha256": "b92710f2fad224f3a54a9d8f984a4d9547ca4807dda2f5522efb4126c325c18e",
+      "gitBlobSha": "4430bac592dd8c526656fb1be736945e2cb03560"
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/gate-mobile.log",
       "bytes": 1086,
       "sha256": "5b21f4782a615ecd91cad993eed29f38c9d098a59c6409e27a8a37b2e41bc66a",
       "gitBlobSha": "cc2bca9e935f581bb026854077ac95063d0836c5"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/gate-mobile/component-legibility.json",
+      "bytes": 150236,
+      "sha256": "94e408feb800d5b68a96de00c9d9770320b523f314bfabfd1013c136f5b010ae",
+      "gitBlobSha": "70baf6008422871ea89e6c2e6938c08b9087236b"
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/kit-before.js",
@@ -264,6 +270,12 @@
       "gitBlobSha": "194b56854082e7ab0440f9fd6fc790165cff3cb4"
     },
     {
+      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/layers-probe.log",
+      "bytes": 698,
+      "sha256": "f13e6f45c4c2e03e619878a1c20b21f3b542604b6150518c3a8e1a0fc248d753",
+      "gitBlobSha": "4417ba859943a96235b3c4a589e442b4d02575d8"
+    },
+    {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/layers-probe/bosque-set-dense-h2-330-ab-before.png",
       "bytes": 394500,
       "sha256": "75bbbabe83b9875d571734004a113b44bc68d22177458761e0c59ea5cc41bfdc",
@@ -282,10 +294,10 @@
       "gitBlobSha": "1f234010e92bb850b0be218fb5087ab166d7b600"
     },
     {
-      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/layers-probe.log",
-      "bytes": 698,
-      "sha256": "f13e6f45c4c2e03e619878a1c20b21f3b542604b6150518c3a8e1a0fc248d753",
-      "gitBlobSha": "4417ba859943a96235b3c4a589e442b4d02575d8"
+      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/matrix-landscape.log",
+      "bytes": 4566,
+      "sha256": "5e040dc6e47b52234215e1ac2f941544c6cc446512153a17f52e81e514c8a632",
+      "gitBlobSha": "2de35530a63c5935a17c5c6ad31487bfe79300cd"
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/matrix-landscape/bosque-set-dense-h2-330-ab-before.png",
@@ -318,10 +330,10 @@
       "gitBlobSha": "e97f4097daaa5fcce9894a928cf30adec03358ee"
     },
     {
-      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/matrix-landscape.log",
+      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/matrix-mobile.log",
       "bytes": 4566,
-      "sha256": "5e040dc6e47b52234215e1ac2f941544c6cc446512153a17f52e81e514c8a632",
-      "gitBlobSha": "2de35530a63c5935a17c5c6ad31487bfe79300cd"
+      "sha256": "55ecbd390f43d79496d9217f8128864795f4983a80ea49a85321e98923ca10e9",
+      "gitBlobSha": "376dddb073c5ae36b946b5f3503acca4ce544a9f"
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/matrix-mobile/bosque-set-dense-h2-330-ab-before.png",
@@ -352,12 +364,6 @@
       "bytes": 492927,
       "sha256": "416f0ded1b848b34f207e8a0a14e0c914ffcbee40413d75092130837b83387b4",
       "gitBlobSha": "216a51d5db700f8a6777d93fec5fa5b4b9d3e03a"
-    },
-    {
-      "path": "art-source/entregas/brakk-kit-20261022/correccion-09/matrix-mobile.log",
-      "bytes": 4566,
-      "sha256": "55ecbd390f43d79496d9217f8128864795f4983a80ea49a85321e98923ca10e9",
-      "gitBlobSha": "376dddb073c5ae36b946b5f3503acca4ce544a9f"
     },
     {
       "path": "art-source/entregas/brakk-kit-20261022/correccion-09/online-results.json",
