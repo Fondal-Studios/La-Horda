@@ -1,0 +1,45 @@
+{
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "generatedNewFrames": 0,
+  "validatedIntegral": false,
+  "integratedMain": false,
+  "publicationVerified": false,
+  "visualReview": {
+    "reviewed": "Representative original and final contact sheets: bosque base, hielo alt1, infernal set, minas all5; full 60-scene matrix retained for integral review.",
+    "finding": "B118 articulated support is drawn38 times per scene, but at330ms dense skeletons conceal most of its silhouette; generic caster diamond/rings and equipment hit flashes dominate. A successful isolated occlusion gate does not certify recognizability in this composition.",
+    "locations": [
+      "matrix/mobile-minas.png: all5 appearances, middle column330ms",
+      "matrix/mobile-infernal.png: set row, middle column330ms"
+    ],
+    "next": "Compare dense vs sparse real scene, isolate legacy overlay contribution without changing damage/RNG; decide a bounded silhouette/layer adjustment in grouped correction, then rerun same fixture and full contrast gate."
+  },
+  "technical": {
+    "story": 37,
+    "kit": 19,
+    "buildPhase": 20,
+    "runtime": 11,
+    "matrixScenes": 60,
+    "runtimeUnchanged": 450,
+    "atlasUnchanged": 5,
+    "newMultiplayerTests": 0,
+    "referenceMultiplayer": "correccion-02/online-results.json (14 PASS on previous art, not rerun here)",
+    "note": "No new combat/RNG or protocol change; previous parity not represented as a new run."
+  },
+  "ci": {
+    "failedHead": "d411b331324095b61def28454cf04feb3ac6e441",
+    "failedSyntheticMerge": "8670ba9e2fa0a89b07fa171cf853251423296e93",
+    "job": 120165818911,
+    "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39877153827/job/120165818911",
+    "failure": "VOZ.fase_emitida expected after144 simulated ms while actual phase could still be delayed by ally stun. Reproduced controlled seeds; exact CI stun state was not logged.",
+    "fix": "Wait for boss.bd.phase>0 with existing3000ms bound; preserve queued/shown and eventual display assertions. No game changes.",
+    "finalHead": "PENDING_REMOTE_COMMIT_CHECKS"
+  },
+  "remaining": [
+    "B118 dense-contact recognizability and full compound contrast",
+    "B117/B119 equipped-skin full scene and beam/aura gates",
+    "Sustained physical-device mobile performance",
+    "Exact-head CI and applicable workflow completion",
+    "Shared extension reconciliation when splitting approved components; never import full FIX workshops"
+  ]
+}

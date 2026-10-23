@@ -1,0 +1,70 @@
+[
+  {
+    "id": "original-local",
+    "status": "PASS",
+    "evidence": "story-original.log",
+    "note": "37 assertions passed; intermittent CI failure not dismissed."
+  },
+  {
+    "id": "phase-seeds-original",
+    "status": "FAIL_REPRODUCED",
+    "evidence": "story-probe.log",
+    "failedSeeds": [
+      10,
+      34
+    ],
+    "total": 40,
+    "note": "Both failures still have positive stunTimer and phase zero after fixed 144 ms."
+  },
+  {
+    "id": "phase-seeds-follow",
+    "status": "PASS",
+    "evidence": "story-probe-follow.log",
+    "total": 40,
+    "note": "All 40 emit real phase voice after phase transition; seeds10/34 need32/33 additional16ms updates; do not claim CI job had these exact seeds."
+  },
+  {
+    "id": "story-fixed",
+    "status": "PASS",
+    "checks": 37,
+    "evidence": "story-fixed.log"
+  },
+  {
+    "id": "missing-voice-canary",
+    "status": "EXPECTED_FAIL",
+    "evidence": "story-negative-control.log",
+    "note": "Fixture disables storyBossPhase: VOZ.fase_emitida fails, preserving sensitivity."
+  },
+  {
+    "id": "matrix01",
+    "status": "HARNESS_FAIL",
+    "evidence": "attempt-01",
+    "note": "Assertion omitted ~h theme suffix; Minas fixture advanced arena level unnecessarily and entered descent; aim reapplied immediately before cast. Original sample and full JSON retained; no runtime changed."
+  },
+  {
+    "id": "matrix02",
+    "status": "HARNESS_FAIL",
+    "evidence": "attempt-02",
+    "note": "Direct drawImage(original atlas) does not observe artMipDraw cached mipmaps; final observes real artMipDraw consumer plus actual SFA atlas drawImage. No runtime changed."
+  },
+  {
+    "id": "runtime01",
+    "status": "HARNESS_FAIL",
+    "evidence": "attempt-02/deploy-runtime.json",
+    "note": "First fixture used menu state and vfxUpdate; SFA ages on renderer ground/top passes. Discard its zero render time, preserved result. Final uses playing state and real update/render with separate measurement clock."
+  },
+  {
+    "id": "matrix-final",
+    "status": "PASS",
+    "scenes": 60,
+    "observedDeployDraws": 2280,
+    "observedBodyCalls": 2340,
+    "note": "Not an integral visual approval."
+  },
+  {
+    "id": "runtime-final",
+    "status": "PASS",
+    "checks": 11,
+    "evidence": "deploy-runtime.json"
+  }
+]
