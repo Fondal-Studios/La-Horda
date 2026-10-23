@@ -1,0 +1,135 @@
+{
+  "results": [
+    {
+      "lance": false,
+      "champion": "morveth",
+      "slot": 0,
+      "action": "mor_plant",
+      "trace": [
+        [
+          "burst",
+          "morveth_growth",
+          115,
+          0,
+          42,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        "mor_mushroom"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Huerto maldito",
+      "sceneHash": "abd592dfcc99d3aa432a16c928bd7614bc69d1058df5baebe5e5eb5f2d60dbb2"
+    },
+    {
+      "lance": false,
+      "champion": "morveth",
+      "slot": 1,
+      "action": "mor_spores",
+      "trace": [
+        [
+          "cone",
+          "morveth_spores~h",
+          0,
+          0,
+          210,
+          0,
+          560,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Exhalación de peste",
+      "sceneHash": "cb9f68375cd5cdda23dd7d3ca095550ec1d4788c03636921dc2e9885d8bef00c"
+    },
+    {
+      "lance": false,
+      "champion": "morveth",
+      "slot": 2,
+      "action": "mor_symbiosis",
+      "trace": [
+        [
+          "aura",
+          "morveth_symbiosis~p",
+          0,
+          0,
+          25,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Simbiosis",
+      "sceneHash": "8de45a71624aae4ae8a707b44c71179214974bd20c627a389a86247141b7c3b3"
+    },
+    {
+      "lance": false,
+      "champion": "morveth",
+      "slot": 3,
+      "action": "mor_garden",
+      "trace": [],
+      "objects": [
+        "mor_garden"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Jardín de la peste",
+      "sceneHash": "c78103d053637f3bfd5ea1eef5878ad9a7e65036333195b2c470ceb57de8bfa2"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,114 @@
+{
+  "method": "Native SFA editable pixel recipes; extends existing code-native VFX",
+  "base": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+  "source": "js/champions/skill-fx-a/c/morveth.js",
+  "preserve": [
+    "mushroom prop",
+    "UF garden",
+    "bodies/skins",
+    "gameplay"
+  ],
+  "components": [
+    {
+      "id": "A-FX-morveth-h1",
+      "block": "B166",
+      "theme": "morveth_growth",
+      "art": "burst",
+      "cell": [
+        64,
+        64
+      ],
+      "frames": 12,
+      "phases": {
+        "anticipation": [
+          0,
+          2
+        ],
+        "growth": [
+          3,
+          6
+        ],
+        "dissipation": [
+          7,
+          11
+        ]
+      },
+      "pivot": "center on planted mushroom",
+      "loop": false
+    },
+    {
+      "id": "A-FX-morveth-h1",
+      "block": "B166",
+      "theme": "morveth_pulse",
+      "art": "nova",
+      "cell": [
+        96,
+        96
+      ],
+      "frames": 11,
+      "phases": {
+        "anticipation": [
+          0,
+          2
+        ],
+        "spores": [
+          3,
+          5
+        ],
+        "dissipation": [
+          6,
+          10
+        ]
+      },
+      "pivot": "center on live object; real radius",
+      "loop": false
+    },
+    {
+      "id": "A-FX-morveth-h2",
+      "block": "B167",
+      "theme": "morveth_spores~h",
+      "art": "cone",
+      "cell": [
+        98,
+        151
+      ],
+      "frames": 14,
+      "phases": {
+        "anticipation": [
+          0,
+          2
+        ],
+        "exhalation": [
+          3,
+          6
+        ],
+        "dissipation": [
+          7,
+          13
+        ]
+      },
+      "pivot": "origin (1,height/2), actual recorded cone",
+      "loop": false
+    },
+    {
+      "id": "A-FX-morveth-h3",
+      "block": "B168",
+      "theme": "morveth_symbiosis~p",
+      "art": "aura",
+      "cell": [
+        40,
+        56
+      ],
+      "frames": 18,
+      "phases": {
+        "loop": [
+          0,
+          17
+        ]
+      },
+      "pivot": "SFA aura foot anchor",
+      "loop": true
+    }
+  ],
+  "next": "Classify all frames and runtime independently; production is not approval"
+}

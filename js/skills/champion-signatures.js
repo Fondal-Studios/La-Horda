@@ -27,8 +27,9 @@ function drawChampionSignatures(){
       const q=s.t/s.dur;
       ctx.save();ctx.translate(s.x,s.y);ctx.rotate(s.angle);ctx.globalAlpha=(1-q)*.85;
       ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,s.radius,-s.arc,s.arc);ctx.closePath();
-      ctx.strokeStyle='#141c2c';ctx.lineWidth=7;ctx.stroke();ctx.strokeStyle=s.color;ctx.lineWidth=3;ctx.stroke();
-      for(let i=-2;i<=2;i++){
+      const spores=s.style==='morveth_spores';
+      ctx.strokeStyle='#141c2c';ctx.lineWidth=spores?3:7;ctx.stroke();ctx.strokeStyle=s.color;ctx.lineWidth=spores?1:3;ctx.stroke();
+      for(let i=-2;!spores&&i<=2;i++){
         const a=i*s.arc/3;
         ctx.beginPath();ctx.moveTo(Math.cos(a)*s.radius*.2,Math.sin(a)*s.radius*.2);
         ctx.lineTo(Math.cos(a)*s.radius*.85,Math.sin(a)*s.radius*.85);
@@ -80,8 +81,8 @@ function vfxFrostCrown(x,y,r){
     vfxSprite('fxIceCrystal',0,x+Math.cos(a)*r*.8,y+Math.sin(a)*r*.8,42,650,null,.18,false,.8);
   }
 }
-function vfxSkillCone(x,y,r,angle,arc,color){
+function vfxSkillCone(x,y,r,angle,arc,color,style){
   if(!Number.isFinite(r)||r<=0||!inView(x,y,r+40))return;
   const s=championSignatures.find(s=>!s.on);
-  if(s)Object.assign(s,{on:true,x,y,key:'__cone',radius:r,angle,arc,color,ult:false,t:0,dur:420});
+  if(s)Object.assign(s,{on:true,x,y,key:'__cone',radius:r,angle,arc,color,style:style==='morveth_spores'?style:null,ult:false,t:0,dur:420});
 }
