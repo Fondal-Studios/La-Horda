@@ -1,0 +1,226 @@
+{
+  "date": "2026-10-23",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "generated": true,
+  "validatedIntegral": false,
+  "integratedMain": false,
+  "publicationVerified": false,
+  "scope": "B117/B118/B119 normal cast identifiers only; no supports/brace/world mechanics changed",
+  "sourceSha256": "b8b984b3282974973861c1aff35f1e0b967010a9477e29238852718dd203b784",
+  "visualReview": {
+    "reviewer": "Codex assisted, not owner approval",
+    "classification": "FIX",
+    "observed": "Masonry, side-facing nail turret and riveted X now differ in silhouette. Compact crests sit above name/HP after moving normal-only anchor from62 to82 units. In representative bosque/infernal equipped dense scenes the generic diamond is gone; bronze is still subdued against infernal floor and the small X needs full recognizability review.",
+    "remaining": "B118 supports still concealed at dense330ms; B119 armor/team rings dominate. Signature itself still needs full compound contrast and additional skins/gear validation."
+  },
+  "technical": {
+    "rendererChecks": 108,
+    "kitChecks": 19,
+    "functional": 81,
+    "relay": 20,
+    "combatRngParent": 29232,
+    "combatRngCandidate": 29232,
+    "frames": 360,
+    "runtimeChanged": [
+      "js/skills/champion-signatures.js"
+    ],
+    "runtimeCompared": 450,
+    "atlasKitUnchanged": 5,
+    "originalKitFrames": 53,
+    "newNativeSignatureCells": 12,
+    "temporalPreviewSamples": 36,
+    "captureSummary": {
+      "mobile": {
+        "scenes": 72,
+        "errors": [],
+        "observed": [
+          528,
+          528,
+          528
+        ],
+        "restored": 65,
+        "stateUnchanged": 72,
+        "failed": [
+          {
+            "scene": "acuatica-base-dense-h1-ab-",
+            "bbox": [
+              232,
+              419,
+              286,
+              470
+            ],
+            "pixels": 195
+          },
+          {
+            "scene": "acuatica-set-dense-h1-ab-",
+            "bbox": [
+              149,
+              393,
+              187,
+              419
+            ],
+            "pixels": 91
+          },
+          {
+            "scene": "acuatica-set-dense-h2-ab-",
+            "bbox": [
+              149,
+              393,
+              187,
+              419
+            ],
+            "pixels": 91
+          },
+          {
+            "scene": "acuatica-set-dense-h3-ab-",
+            "bbox": [
+              149,
+              393,
+              187,
+              419
+            ],
+            "pixels": 91
+          },
+          {
+            "scene": "acuatica-set-sparse-h1-ab-",
+            "bbox": [
+              149,
+              393,
+              187,
+              419
+            ],
+            "pixels": 91
+          },
+          {
+            "scene": "acuatica-set-sparse-h2-ab-",
+            "bbox": [
+              149,
+              393,
+              187,
+              419
+            ],
+            "pixels": 91
+          },
+          {
+            "scene": "acuatica-set-sparse-h3-ab-",
+            "bbox": [
+              149,
+              393,
+              187,
+              419
+            ],
+            "pixels": 91
+          }
+        ]
+      },
+      "landscape": {
+        "scenes": 72,
+        "errors": [],
+        "observed": [
+          528,
+          528,
+          528
+        ],
+        "restored": 65,
+        "stateUnchanged": 72,
+        "failed": [
+          {
+            "scene": "acuatica-base-dense-h1-ab-",
+            "bbox": [
+              459,
+              199,
+              513,
+              250
+            ],
+            "pixels": 195
+          },
+          {
+            "scene": "acuatica-set-dense-h1-ab-",
+            "bbox": [
+              376,
+              173,
+              414,
+              199
+            ],
+            "pixels": 91
+          },
+          {
+            "scene": "acuatica-set-dense-h2-ab-",
+            "bbox": [
+              376,
+              173,
+              414,
+              199
+            ],
+            "pixels": 91
+          },
+          {
+            "scene": "acuatica-set-dense-h3-ab-",
+            "bbox": [
+              376,
+              173,
+              414,
+              199
+            ],
+            "pixels": 91
+          },
+          {
+            "scene": "acuatica-set-sparse-h1-ab-",
+            "bbox": [
+              376,
+              173,
+              414,
+              199
+            ],
+            "pixels": 91
+          },
+          {
+            "scene": "acuatica-set-sparse-h2-ab-",
+            "bbox": [
+              376,
+              173,
+              414,
+              199
+            ],
+            "pixels": 91
+          },
+          {
+            "scene": "acuatica-set-sparse-h3-ab-",
+            "bbox": [
+              376,
+              173,
+              414,
+              199
+            ],
+            "pixels": 91
+          }
+        ]
+      }
+    },
+    "localTiming": {
+      "parent": {
+        "p50": 0.09999999403953552,
+        "p95": 0.20000000298023224,
+        "max": 122.29999999701977,
+        "samples": 600,
+        "scope": "32 visible crests, local desktop Chromium, no physical mobile/GC certification"
+      },
+      "candidate": {
+        "p50": 0,
+        "p95": 0.10000000894069672,
+        "max": 62.5,
+        "samples": 600,
+        "scope": "32 visible crests, local desktop Chromium, no physical mobile/GC certification"
+      }
+    }
+  },
+  "remaining": [
+    "Investigate fourteen Acuatica same-frame restoration mismatches before relying on those pairs; other130 restore exactly,144 pool/object states identical. Pixel diff bbox/count recorded, root cause not claimed.",
+    "Grouped B118 support/B119 brace composition; do not regenerate53original frames.",
+    "Full compound contrast with equipped skins/arenas; no new numeric compound gate claimed.",
+    "Sustained mobile performance/GC and cold bake benchmark; local draw benchmark does not certify physical devices.",
+    "Exact final head CI and Art Gate before isolating any approved component; PR197 remains draft.",
+    "Preserve Morveth B168 and Aelith B106/B107 residuals; global inventory incomplete."
+  ]
+}

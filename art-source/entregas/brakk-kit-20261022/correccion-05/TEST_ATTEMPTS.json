@@ -1,0 +1,30 @@
+[
+  {
+    "attempt": 1,
+    "finding": "Duration test mistakenly started event at100ms then advanced459ms. Fixed fixture to start at0ms; runtime460ms unchanged.104/105 then108/108 final.",
+    "evidence": "attempt-01/results.json",
+    "source": "attempt-01/verify.js"
+  },
+  {
+    "attempt": 2,
+    "finding": "Uncached native rectangles redrawn per crest; measured p95 .5ms then4.3ms under concurrent capture load. Preserved source and data. Single immutable192x120 atlas replaces repeated painting; final isolated local p95 .1ms vs parent .2ms,600samples32crests. Comparisons across different machine load not a formal speedup claim.",
+    "evidence": "attempt-01/performance-uncached.json",
+    "source": "attempt-01/source-uncached.js"
+  },
+  {
+    "attempt": 3,
+    "finding": "Anchor62 compact crests competed with name/HP; normal-only anchor82 chosen after visual inspection. Source and contact preserved.",
+    "source": "attempt-02/source-anchor62.js",
+    "evidence": "attempt-02/contact-anchor62.png"
+  },
+  {
+    "attempt": 4,
+    "finding": "Final capture processes exit1:14/144 Acuatica ABA images fail exact restoration. Pool/objects identical144/144;130restorations valid. Mismatches91/195pixels on body/construction bboxes, exact cause not demonstrated. No gate relaxed and no blanket PASS.",
+    "evidence": "capture-summary.json"
+  },
+  {
+    "attempt": 5,
+    "finding": "Earlier functional process polling returned exit1 despite81PASS log; no root cause claimed. Final rerun final source exit0,81PASS.",
+    "evidence": "functional-results.json"
+  }
+]

@@ -338,7 +338,31 @@
         "technical": "20 real draw frame checks PASS; 14 actual relay checks PASS; 132 functional PASS; combat/RNG 29232 identical. Build-only event phase; nails and legacy loops unchanged.",
         "state": "EN_CORRECCION",
         "remaining": "Full skins/arenas/contrast/warmup and visual gate. B118 arrow supports remain FIX; do not merge whole workshop."
-      }
+      },
+      "correctionHistory": [
+        {
+          "date": "2026-10-23",
+          "path": "art-source/entregas/brakk-kit-20261022/correccion-05",
+          "source": "js/skills/champion-signatures.js",
+          "sourceSha256": "b8b984b3282974973861c1aff35f1e0b967010a9477e29238852718dd203b784",
+          "state": "EN_CORRECCION",
+          "components": [
+            "A-FX-brakk-h1",
+            "A-FX-brakk-h2",
+            "A-FX-brakk-h3"
+          ],
+          "change": "Normal-only masonry/turret/cross-brace native crests; cached12cells; key/slot/lifetime/UF unchanged.",
+          "tests": "108renderer,19kit,81functional,20relay PASS; parent/candidate29232 RNG identical360frames.",
+          "remaining": [
+            "Investigate fourteen Acuatica same-frame restoration mismatches before relying on those pairs; other130 restore exactly,144 pool/object states identical. Pixel diff bbox/count recorded, root cause not claimed.",
+            "Grouped B118 support/B119 brace composition; do not regenerate53original frames.",
+            "Full compound contrast with equipped skins/arenas; no new numeric compound gate claimed.",
+            "Sustained mobile performance/GC and cold bake benchmark; local draw benchmark does not certify physical devices.",
+            "Exact final head CI and Art Gate before isolating any approved component; PR197 remains draft.",
+            "Preserve Morveth B168 and Aelith B106/B107 residuals; global inventory incomplete."
+          ]
+        }
+      ]
     },
     {
       "block": "B118",
@@ -398,6 +422,28 @@
             "Sustained mobile performance and remaining lifecycle cases before integral Art Gate",
             "Exact new-head CI; prior success does not approve workshop",
             "Keep Morveth B168 and Aelith B106/B107 residuals; inventory globally incomplete"
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "path": "art-source/entregas/brakk-kit-20261022/correccion-05",
+          "source": "js/skills/champion-signatures.js",
+          "sourceSha256": "b8b984b3282974973861c1aff35f1e0b967010a9477e29238852718dd203b784",
+          "state": "EN_CORRECCION",
+          "components": [
+            "A-FX-brakk-h1",
+            "A-FX-brakk-h2",
+            "A-FX-brakk-h3"
+          ],
+          "change": "Normal-only masonry/turret/cross-brace native crests; cached12cells; key/slot/lifetime/UF unchanged.",
+          "tests": "108renderer,19kit,81functional,20relay PASS; parent/candidate29232 RNG identical360frames.",
+          "remaining": [
+            "Investigate fourteen Acuatica same-frame restoration mismatches before relying on those pairs; other130 restore exactly,144 pool/object states identical. Pixel diff bbox/count recorded, root cause not claimed.",
+            "Grouped B118 support/B119 brace composition; do not regenerate53original frames.",
+            "Full compound contrast with equipped skins/arenas; no new numeric compound gate claimed.",
+            "Sustained mobile performance/GC and cold bake benchmark; local draw benchmark does not certify physical devices.",
+            "Exact final head CI and Art Gate before isolating any approved component; PR197 remains draft.",
+            "Preserve Morveth B168 and Aelith B106/B107 residuals; global inventory incomplete."
           ]
         }
       ]
@@ -788,6 +834,6 @@
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
   "nextProduction": "Brakk grouped composition correction from validacion-04: fallback normal signature and B118 deployment contrast, B119 brace/rings. Preserve UF/IDs/emitters/RNG. PR200 already merged; do not reopen or repeat test fix. Then integral gates, keeping Aelith/Morveth residuals.",
-  "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-04/CHECKPOINT.md",
-  "next": "Brakk grouped composition correction from validacion-04: fallback normal signature and B118 deployment contrast, B119 brace/rings. Preserve UF/IDs/emitters/RNG. PR200 already merged; do not reopen or repeat test fix. Then integral gates, keeping Aelith/Morveth residuals."
+  "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/correccion-05/CHECKPOINT.md",
+  "next": "Resolve Acuatica14same-frame restoration failures and grouped Brakk B118/B119 composition/normal-signature full contrast; retain other residuals."
 }

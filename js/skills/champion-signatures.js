@@ -19,6 +19,54 @@ function vfxChampionSignature(x,y,key,slot,ult,angle){
 }
 function championSignaturesUpdate(dt){for(const s of championSignatures)if(s.on){s.t+=dt;if(s.t>=s.dur)s.on=false;}}
 function championSignaturesReset(){for(const s of championSignatures)s.on=false;}
+// Normal Brakk casts: assembled masonry, nail turret and riveted cross-brace.
+// Pixel-native airborne identifiers; they do not describe a damage footprint.
+// Keep the existing event key/slot/lifetime and the ultimate's original renderer.
+let brakkSignatureAtlas=null;
+function drawBrakkNormalSignature(s){
+  const q=s.t/s.dur,calm=typeof JUICE!=='undefined'&&JUICE.reduceMotion;
+  const gap=calm?0:Math.round(3*(1-Math.min(1,q*5)));
+  if(!brakkSignatureAtlas){
+    const cv=document.createElement('canvas');cv.width=192;cv.height=120;
+    const real=ctx;ctx=cv.getContext('2d');
+    try{for(let slot=0;slot<3;slot++)for(let g=0;g<4;g++){
+      ctx.save();ctx.translate(g*48+24,slot*40+20);drawBrakkSignaturePixels(slot,g);ctx.restore();
+    }}finally{ctx=real;}
+    brakkSignatureAtlas=cv;
+  }
+  ctx.save();ctx.globalAlpha=Math.min(1,(1-q)*3)*.85;
+  ctx.drawImage(brakkSignatureAtlas,gap*48,s.slot*40,48,40,Math.round(s.x)-24,Math.round(s.y-82)-20,48,40);
+  ctx.restore();
+}
+function drawBrakkSignaturePixels(slot,gap){
+  const plate=(x,y,w,h,color)=>{
+    ctx.fillStyle='#171922';ctx.fillRect(x-1,y-1,w+2,h+2);
+    ctx.fillStyle=color;ctx.fillRect(x,y,w,h);
+    ctx.fillStyle='#e3c995';ctx.fillRect(x,y,w,1);
+  };
+  if(slot===0){
+    // Three staggered courses and open crenels, never a radial seal.
+    plate(-15-gap,-10,8,6,'#9a7a4e');plate(-4,-10,8,6,'#b08a54');plate(7+gap,-10,8,6,'#9a7a4e');
+    plate(-15,-3,14,6,'#796042');plate(1,-3,14,6,'#9a7a4e');
+    plate(-15,4,8,6,'#9a7a4e');plate(-6,4,12,6,'#b08a54');plate(7,4,8,6,'#796042');
+  }else if(slot===1){
+    // Side-facing barrel, receiver and split mechanical feet.
+    plate(-3,0,5,9,'#777e83');
+    plate(-12-gap,8,10,3,'#796042');plate(3+gap,8,10,3,'#796042');
+    plate(-9,-9,16,8,'#9a7a4e');plate(7+gap,-7,9,4,'#777e83');
+    plate(15+gap,-8,3,6,'#aeb6b7');plate(-7,-13,7,3,'#504637');
+    ctx.fillStyle='#e3c995';ctx.fillRect(-7,-6,2,2);ctx.fillRect(2,-6,2,2);
+  }else{
+    // Riveted X braces: stepped diagonals, central bolt, no generic shield.
+    for(let i=-3;i<=3;i++){
+      plate(i*3,-i*3,4,4,'#796042');
+    }
+    for(let i=-3;i<=3;i++)plate(i*3,i*3,4,4,'#b08a54');
+    plate(-2-gap,-2,7,7,'#777e83');
+    ctx.fillStyle='#e3c995';ctx.fillRect(0-gap,0,3,3);
+    ctx.fillRect(-9,-9,2,2);ctx.fillRect(10,-9,2,2);ctx.fillRect(-9,10,2,2);ctx.fillRect(10,10,2,2);
+  }
+}
 function drawChampionSignatures(){
   ctx.save();ctx.globalCompositeOperation='source-over';ctx.lineJoin='round';ctx.lineCap='round';
   for(const s of championSignatures){
@@ -42,6 +90,7 @@ function drawChampionSignatures(){
       for(let i=0;i<6;i++){const a=i*Math.PI/3,dx=Math.cos(a),dy=Math.sin(a);ctx.moveTo(dx*r*.18,dy*r*.18);ctx.lineTo(dx*r*.9,dy*r*.9);for(const side of [-1,1]){ctx.moveTo(dx*r*.65,dy*r*.65);ctx.lineTo(dx*r*.48-dy*r*.16*side,dy*r*.48+dx*r*.16*side);}}
       ctx.strokeStyle='#152b45';ctx.lineWidth=7;ctx.stroke();ctx.strokeStyle='#86d9ff';ctx.lineWidth=4;ctx.stroke();ctx.strokeStyle='#efffff';ctx.lineWidth=1;ctx.stroke();ctx.restore();continue;
     }
+    if(s.key==='brakk'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawBrakkNormalSignature(s);continue;}
     const [shape,color]=CHAMPION_SIGNATURES[s.key]||['star','#e6d6ff'];
     const q=s.t/s.dur,calm=typeof JUICE!=='undefined'&&JUICE.reduceMotion;
     const r=(s.ult?48:25)*(calm?1:0.8+0.2*Math.min(1,q*5));

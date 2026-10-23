@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-23",
+  "source": "js/skills/champion-signatures.js",
+  "parentSource": "source-before.js",
+  "nativeRenderer": "drawBrakkSignaturePixels(slot,gap)",
+  "nativeAtlas": {
+    "path": "atlases/signature-native-source.png",
+    "size": [
+      192,
+      120
+    ],
+    "cell": [
+      48,
+      40
+    ],
+    "columns": 4,
+    "rows": 3,
+    "slotRows": [
+      "masonry",
+      "nail turret",
+      "riveted cross brace"
+    ],
+    "gapColumns": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "alpha": "0/255"
+  },
+  "runtime": {
+    "normalOnly": true,
+    "key": "brakk",
+    "slots": [
+      0,
+      1,
+      2
+    ],
+    "durationMs": 460,
+    "anchorY": -82,
+    "assemblyMs": 92,
+    "gap": "round(3*(1-min(1,q*5)))",
+    "opacity": "min(1,(1-q)*3)*.85",
+    "reduceMotion": "gap0",
+    "cache": "one bounded immutable atlas, shared by all casts",
+    "ultimate": "original fallback and rays, unchanged"
+  },
+  "environment": {
+    "NODE_PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "CHROMIUM_PATH": "/tmp/chromium"
+  },
+  "commands": [
+    "node tools/vfx/verify-brakk-signatures.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/correccion-05 node tools/vfx/verify-brakk-kit.js",
+    "ONLY=brakk FRAMES=360 PORT=8996 node tools/vfx/parity-brakk-signatures.js",
+    "node tools/quality-five/brakk-functional.js",
+    "node tools/vfx/brakk-signatures-online.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/correccion-05/mobile MOBILE=1 LOOKS=base,set TIMES=80,330 node tools/vfx/capture-brakk-signatures.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/correccion-05/landscape LOOKS=base,set TIMES=80,330 node tools/vfx/capture-brakk-signatures.js"
+  ],
+  "capture": {
+    "scenes": 144,
+    "sameFrame": "candidate / preserved parent / candidate; field without means parent, not no signature",
+    "exactRestorations": 130,
+    "unresolvedRestorations": 14,
+    "allPoolObjectStatesUnchanged": 144,
+    "expectedCurrentCaptureExit": 1,
+    "selectedRasterOnly": true,
+    "allPngHashes": "CAPTURE_INDEX.json",
+    "allTraces": [
+      "mobile/capture.json",
+      "landscape/capture.json"
+    ],
+    "fullArtApproval": false
+  },
+  "provenance": "Native canvas VFX continuation, not body painting. Painter/forge body recipes not applicable; no imagegen raster generation or paid services. All originals retained."
+}
