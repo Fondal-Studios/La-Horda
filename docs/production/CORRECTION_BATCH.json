@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-10-22",
+  "updated": "2026-10-23",
   "policy": "First-pass champion batches; save failures and move forward. Run a grouped correction pass later; never merge failed or unvalidated assets.",
   "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
   "entries": [
@@ -497,7 +497,7 @@
         "atlas-preview.png",
         "verification.json"
       ],
-      "next": "FIX residual: identificación aún tenue entre cuerpos/escudo genérico en móvil. Revisar silueta a1:1 en escena menos solapada y contacto real; skins/contraste integral pendientes.",
+      "next": "Integral per-component gates, starting Brakk PR197 corrected supports plus exact failing CI investigation. Keep B168 compound rings/skin-equipment review in shared batch, without repeating first pass.",
       "pr": 198,
       "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5",
       "correctionHistory": [
@@ -510,6 +510,17 @@
           "change": "Micelio conectado al suelo con bifurcaciones y cuatro sombreros laterales. Centros retraídos para no cortar contorno.",
           "evidence": "30 silhouette checks;23 kit;131 functional;16 relay;23 general online;SFA RNG30414 identical;legibility six arenas horizontal/mobile PASS",
           "remaining": "FIX residual: identificación aún tenue entre cuerpos/escudo genérico en móvil. Revisar silueta a1:1 en escena menos solapada y contacto real; skins/contraste integral pendientes."
+        },
+        {
+          "date": "2026-10-23",
+          "pr": 198,
+          "path": "art-source/entregas/morveth-kit-20261022/correccion-02",
+          "sourceSha256": "18c4475c2daa309dc9066cda1c1c59f37b993a38faf825d3b8e691d41c0ed1ce",
+          "atlasSha256": "7ffd8daef7ca3d3bbe80e64c682483b74e58701e0699a633550cdf8657aaf697",
+          "state": "EN_CORRECCION",
+          "change": "B168 only: 48x56x18, four lateral violet caps with closed dark contour and light gills, open torso and two lateral spores. Common arena tint retained on roots; cap uses 80% canon violet / 20% tinted accent. Cosmetic width60 world units at radius25; no mechanics radius change.",
+          "evidence": "43 component,23 kit,131 functional,17 relay actual atlas draw;30414 parity;2268 protection placements per viewport >=80%; nine initial scenes equal;UF identical",
+          "remaining": "Compound contact with legacy rings still dominant; full equipped skins/arenas/performance/Art Gate pending."
         }
       ]
     },
@@ -578,9 +589,32 @@
         "La grieta se ve como una línea dentada demasiado fina a escala móvil; aún no tiene apertura/cierre longitudinal de150ms ni estado de arena lenta propio."
       ],
       "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
-      "next": "Revisar grosor/fragmentos y fase longitudinal en lote común; usar endpoints reales, mantener ancho mecánico52 y no convertirlo en haz liso.",
+      "next": "Full B106 gate with skin/arena/contact matrix; do not redo Fractura or slow-sand first pass.",
       "pr": 199,
-      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d"
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-02",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "da501c89333585a1b3bd1e0dfa99a9d0f7b793b452b116db3c85dcf12f288cdf",
+          "technical": "34 silhouette,41 lifecycle,27 kit,11 local variants,132 functional,33 relay,23 general online; SFA RNG29884 identical; final exact CI pending.",
+          "resolved": "Full-length glass/open-close150ms and moderate arena tint",
+          "remaining": "Actual target slow icon1800ms plus integral gate"
+        },
+        {
+          "date": "2026-10-23",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-03",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "dc03e27be526e43ad4c74ebc491f1b6af56291055f85dd3da444c93248b1d75d",
+          "atlasSha256": "7fd600b726be6d509bae71d60ddd1e865cbbd7b0b30310d0c73d5c69f769b10c",
+          "resolved": "Native12-frame slow-sand mark from actual affected target; base1800ms, scaled duration, cleanse/death and existing relay snapshots",
+          "technical": "33 component,27 kit,131 functional and41 real-relay checks PASS; combat/RNG29884/29884;2 initial sceneHashes identical",
+          "remaining": "Equipped skins, compound contrast, six arenas1:1, warmup/performance and full Art Gate. Dense marker overlap needs review."
+        }
+      ]
     },
     {
       "block": "B107",
@@ -621,7 +655,29 @@
         "sourceSha256": "78d7ebbe0f88ecf2c09e9c3634648a405fd6685e5826fff37ac1ae54d8a6ccee",
         "technical": "41 lifecycle,27 kit,11 variants,31 relay,132 functional,23 general online PASS; SFA RNG29884 identical. TEST_ATTEMPTS preserves failures.",
         "remaining": "Full visual gate, skins/arenas/specific contrast, warmup/performance and saturation/reentry. H3 grey/trail faint in mobile comparison. CI exact head pending."
-      }
+      },
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-02",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "da501c89333585a1b3bd1e0dfa99a9d0f7b793b452b116db3c85dcf12f288cdf",
+          "technical": "34 silhouette,41 lifecycle,27 kit,11 local variants,132 functional,33 relay,23 general online; SFA RNG29884 identical; final exact CI pending.",
+          "resolved": "Two-tone equipped body snapshots at16/28/40%; stronger clock/sand with canon amber/grey palette",
+          "remaining": "Readability in mobile overlap, skins, warmup/performance and integral gate"
+        },
+        {
+          "date": "2026-10-23",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-04",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "d3b4c2084c4d289856f383dde4ca805f800c613e831baab92d42b5fcc6db5793",
+          "resolved": "Rear half oldest equipped snapshot on upper layer; cached masks, no debt readback.51component/41lifecycle/33slow/27kit/131functional/43relay PASS;720strict layer rows per viewport minimum83%, unchanged80% threshold. RNG29884 identical.",
+          "remaining": "Integral compound contrast,800ms debt aura after220ms collapse, equipment/arenas/device performance. No merge.",
+          "attempts": "TEST_ATTEMPTS.json preserves full-outline occlusion failure, cold-body readback fixture, binary decimal duration fixture, and performance regression."
+        }
+      ]
     },
     {
       "block": "B228",
@@ -633,7 +689,18 @@
       "defects": [
         "KVB.off true/false consumes 29969/28804 Math.random calls. Reproduced identically at previous PR196 head and correction; full on/on and off/off snapshots match before/after. This is not a PASS."
       ],
-      "next": "Trace inherited generic VFX Math.random paths with KVB toggled; preserve combat mechanics and thresholds. Keep failing evidence."
+      "next": "Complete compound visual/skin/performance gates; reconcile shared hooks without importing other FIX art.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-23 UTC",
+          "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02",
+          "pr": 196,
+          "state": "EN_CORRECCION",
+          "technical": "CORRECTED_LOCAL: repeated complete on/off snapshots equal generic parent baseline; actual legacy particle/budget path restored; no RNG padding or seed changes.49 emission tests and12 follower renderer checks PASS.",
+          "sourceSha256": "98bfb135fde7e185a87ab478f3d2f809275c35435b4077b076cc088cac42bef7",
+          "remaining": "Full compound visual gate/skins/arenas/performance and exact-head CI; not an asset or block closure."
+        }
+      ]
     },
     {
       "block": "B208/B209/B210",
@@ -647,7 +714,39 @@
         "Math.random31834 sin KVB /26414 con KVB y estados de enemigos diferentes. Reproducido en head anterior7b89de24bdea58d5e5e321e18957d3b0c5715f05 y corrección."
       ],
       "evidence": "art-source/entregas/habilidades-recientes-20261022/correccion-01/parity-comparison.json",
-      "next": "Investigar junto al hallazgo heredado de Veyra; mantener azar cosmético independiente y demostrar snapshots completos on/off idénticos sin alterar balance ni bajar gates."
+      "next": "Complete compound visual/skin/performance gates; reconcile shared hooks without importing other FIX art.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-23 UTC",
+          "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02",
+          "pr": 195,
+          "state": "EN_CORRECCION",
+          "technical": "CORRECTED_LOCAL: repeated complete on/off snapshots equal generic parent baseline; actual legacy particle/budget path restored; no RNG padding or seed changes.49 emission tests and12 follower renderer checks PASS.",
+          "sourceSha256": "a2f99d22924d3305c3dd55a0d1ca9d08d25db36d0ba4f9b9e207237490f52442",
+          "remaining": "Full compound visual gate/skins/arenas/performance and exact-head CI; not an asset or block closure."
+        }
+      ]
+    },
+    {
+      "block": "B228",
+      "component": "A-FX-veyra-pact-render-follow",
+      "pr": 196,
+      "state": "EN_CORRECCION",
+      "source": "js/champions/vfx-b/pixfx.js",
+      "frames": "render after hero movement, camera reentry and death",
+      "defects": [
+        "Observed host dx=-15 under real relay: follower coordinates updated before hero motion, not refreshed before drawing/culling. Parent renderer reproduced10 failures/12 checks."
+      ],
+      "correctionHistory": [
+        {
+          "date": "2026-10-23 UTC",
+          "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02",
+          "change": "Resolve live owner+offset before culling/drawing; skip owner killed since last update. No clock/buff/protocol changes.",
+          "technical": "12 renderer checks and21 real relay checks PASS; shared patch also applied PR195.",
+          "remaining": "Full visual/performance/skins gate and exact-head CI."
+        }
+      ],
+      "next": "Reconcile shared pixfx patch when isolating approved components; keep full pending gates."
     }
   ],
   "pendingVerificationNotFailures": [
@@ -658,27 +757,7 @@
     "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
-  "nextProduction": "Aelith B106 fractura/apertura/cierre/slow y B107 contraste de estela/deuda, conservando ciclo de vida de PR199. Después RNG KVB Solciju/Veyra y matriz integral de skins/arenas/rendimiento. Morveth B168 aún requiere lectura móvil; no repetir primeras pasadas ni cerrar inventario global.",
-  "groupedCorrectionCheckpoint": {
-    "date": "2026-10-22",
-    "productionCommits": {
-      "brakk": "c4b3aaf754a9cd315ae214162a181ee8afa1210c",
-      "veyra": "fbe79306b46cc5829ba5b30ee06581da5cf2c6a5"
-    },
-    "state": "EN_CORRECCION",
-    "next": "Lote grueso de siluetas/contraste: Solciju, Brakk B118, Morveth B166/B167/B168 y Aelith B106/B107. Conservar correcciones técnicas probadas y fuentes originales; KVB RNG heredado de Veyra pendiente.",
-    "aelith": {
-      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01",
-      "pr": 199,
-      "state": "EN_CORRECCION",
-      "technicalChecks": [
-        41,
-        27,
-        11,
-        31,
-        132,
-        23
-      ]
-    }
-  }
+  "nextProduction": "Integral per-component gates, starting Brakk PR197 corrected supports plus exact failing CI investigation. Keep B168 compound rings/skin-equipment review in shared batch, without repeating first pass.",
+  "groupedCorrectionCheckpoint": "art-source/entregas/aelith-normal-kit-20261022/correccion-03/CHECKPOINT.md",
+  "next": "Integral per-component gates, starting Brakk PR197 corrected supports plus exact failing CI investigation. Keep B168 compound rings/skin-equipment review in shared batch, without repeating first pass."
 }
