@@ -19,7 +19,7 @@ function morvethFxStrip(kind,T,art,size,arc){
    if(q>.2)for(let i=0;i<5;i++)spore(c+Math.cos(i*2.4)*R*.6*k,top-Math.abs(Math.sin(i*2.4))*R*.35*k,1);
   }else if(kind==='pulse'){
    // Borde del radio real, centro abierto; las esporas avanzan sin tapar el suelo.
-   sfaRing(S,f,c,R,1,T,{shape:'round',dash:{n:24,ph:0,on:.25}});
+   sfaRing(S,f,c,R,1,T,{shape:'round',dash:{n:24,ph:0,on:.25},keep:(x,y)=>sfaDither(x,y,fade)});
    const k=sfaEase(Math.min(1,q/.65));
    for(let i=0;i<13;i++){const a=i*2.39996,rr=R*(.18+.68*k)*( .8+.2*sfaHash(i,3));spore(c+Math.cos(a)*rr,cy+Math.sin(a)*rr,1+(i%3===0?1:0));}
   }else if(cone){
@@ -30,14 +30,22 @@ function morvethFxStrip(kind,T,art,size,arc){
     if(q>.2&&q<.7)line(1+Math.cos(a)*rr,cy+Math.sin(a)*rr,1+Math.cos(a)*Math.max(0,rr-5),cy+Math.sin(a)*Math.max(0,rr-5)+2,P.d);
    }
   }else{
-   // Dos hebras abiertas: se conserva visible el cuerpo entre ellas.
+   // Micelio conectado al suelo: bifurcaciones y pequeños sombreros laterales.
+   // Centro abierto para conservar el cuerpo y su arma, sin antenas verticales.
    for(const side of [-1,1]){
-    let last=null;for(let y=47;y>=15;y--){const x=20+side*(10+Math.sin((47-y)*.15+f/N*Math.PI*2)*3);dot(x,y,P.o);dot(x+side,y,P.b);
-     if(last)line(last[0],last[1],x,y,P.a);last=[x,y];
-     if(y%8===0){line(x,y,x+side*4,y-4,P.a);dot(x+side*4,y-4,P.e);}
+    const sway=Math.round(Math.sin(f/N*Math.PI*2+side)*1),pts=[[20+side*3,50],[20+side*11,46],[20+side*14,39],[20+side*11,33],[20+side*14,27]];
+    const hypha=(x,y,bx,by)=>{line(x,y+1,bx,by+1,P.o);line(x,y,bx,by,P.b);};
+    for(let i=1;i<pts.length;i++){
+     const [x,y]=pts[i-1],[bx,by]=pts[i];hypha(x+sway,y,bx+sway,by);
+     hypha(bx+sway,by,bx+side*4,by-3);hypha(bx+side*4,by-3,bx+side*3,by-6);
     }
+    for(const [cx,cy] of [[20+side*14+sway,39],[20+side*15+sway,27]]){
+     for(let y=-2;y<=1;y++)for(let x=-4;x<=4;x++)if(x*x/16+y*y/6<=1)dot(cx+x,cy+y,y===1?P.o:y<0?P.a:P.e);
+     dot(cx-2,cy-1,P.c);line(cx,cy+2,cx+side,cy+5,P.b);
+    }
+    hypha(20,50,20+side*13,51);hypha(20+side*7,50,20+side*10,47);
    }
-   for(let i=0;i<3;i++){const u=(f/N+i/3)%1;spore(20+(i-1)*8,46-u*31,1);}
+   for(let i=0;i<3;i++){const u=(f/N+i/3)%1;spore(20+(i-1)*13,49-u*12,1);}
   }
  }
  return S;
@@ -53,3 +61,14 @@ SFA_BIND.morveth = {themes: ['plague'],
  }},
  ult:sfaNovaAt('plague')
 };
+// El cono genérico conserva su borde real, pero sus cinco rayos no representan
+// esporas. Perfil escalar opcional: el mismo evento llega por el relay existente.
+(function(){
+ const cast=morvethCast;
+ morvethCast=function(h,sk,...args){
+  if(window.SFA_OFF||sk.action!=='mor_spores')return cast.call(this,h,sk,...args);
+  const cone=window.vfxSkillCone;
+  window.vfxSkillCone=function(x,y,r,angle,arc,color){return cone.call(this,x,y,r,angle,arc,color,'morveth_spores');};
+  try{return cast.call(this,h,sk,...args);}finally{window.vfxSkillCone=cone;}
+ };
+})();
