@@ -12,3 +12,6 @@ Relay real hostSolciju/invitadoCazadora táctil con setManada:7PASS, lluviafase2
 REVIEW PASS sólo para carga/fallback con originales. El kit conserva composición legacy pendiente (haz superpuesto y sello genérico en lluvia); no se importa ningún taller FIX. Cola común31 histórica se referencia en Brasa5f0c1e38453756deb4cd6ca4b17723355f44d3c1 sin alterar estados de arte. Publicación NO verificada.
 
 Reanudar: consultar head/CI/PR frescos, comprobar diff y merge normal con expected_head_sha si todos checks/workflows aplicables pasan. Si no, conservar este checkpoint. Después auditar Dariel B129/B130/B131; B015/UF/cuerpo/básico/B436/ex_concertB484 no son faltantes por conteo. No repetir primeras pasadas Brasa/Baltra/Bront/Brakk; correcciones agrupadas posteriores. Comandos en recipe.json. Inventario global incompleto.
+
+## Cierre remoto
+PR204 listo para revisión. Producción9443f700b2eb0a0504a54a88ecc6b830448fe871;108archivos cotejados por Gitblob local y árbol remoto sin discrepancias. Este cierre agrega REMOTE_CLOSURE.json. Consultar el cuerpo del PR para CI, head definitivo e integración; no asumir que producción equivale a main.
