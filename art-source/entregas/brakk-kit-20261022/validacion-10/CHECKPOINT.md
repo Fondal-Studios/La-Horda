@@ -1,6 +1,6 @@
 # Brakk — validación10 de cuadrilla (23/10/2026)
 
-PR197 borrador; rama `art/brakk-kit-first-pass-20261022`. Parent `8d7a69fe654db111e1efcab7e20cb62472869c85`; recuperación `71dea059519d1496ef18a322ead9811c6a44ff65`. Producción pendiente de subida. Main `758aa2ffacaae6542d31776e4a66ea7847a73b1b` intacto; PR200 ya integrado. Cierre09 completo:88 entradas del manifiesto idénticas,18 checks del head09 exitosos. Sin cierre perdido ni nuevo merge/publicación.
+PR197 borrador; rama `art/brakk-kit-first-pass-20261022`. Parent `8d7a69fe654db111e1efcab7e20cb62472869c85`; recuperación `71dea059519d1496ef18a322ead9811c6a44ff65`. Producción `b6455c6f1634b04ab633a9f9b0668935ac5e56f2` verificada:60archivos por Git blob después de fetch remoto; cierre final incluye este checkpoint, recuperación y manifiesto actualizados. Main `758aa2ffacaae6542d31776e4a66ea7847a73b1b` intacto; PR200 ya integrado. Cierre09 completo:88 entradas del manifiesto idénticas,18 checks del head09 exitosos. Sin cierre perdido ni nuevo merge/publicación.
 
 ## Resultado
 
