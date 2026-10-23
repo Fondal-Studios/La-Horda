@@ -1,0 +1,43 @@
+{
+  "before": {
+    "checks": 56,
+    "failed": 14,
+    "drawExceptions": 4,
+    "file": "before/loading.json"
+  },
+  "after": {
+    "checks": 56,
+    "failed": 0,
+    "drawExceptions": 0,
+    "file": "after/loading.json"
+  },
+  "online": [
+    {
+      "attempt": 1,
+      "pass": 6,
+      "fail": 1,
+      "file": "attempt-online-01/online-results.json",
+      "finding": "stats.skillCasts no llegó al invitado al consultar; stats se envía sólo en keyframes (net-game.js NET_KEYFRAME_ONLY). No se cambió el assert."
+    },
+    {
+      "attempt": 2,
+      "pass": 7,
+      "fail": 0,
+      "file": "online-results.json",
+      "change": "Arnés espera stats.skillCasts>=2. Set Manada real equipado y verificado en trazas. Runtime sin cambios entre intentos."
+    }
+  ],
+  "sameFrame": {
+    "scenes": 36,
+    "comparisons": 144,
+    "pass": 144,
+    "scope": "Sólo drawTrap y drawSylvaRainZones, fondo copiado del mismo render. No prueba pureza global de render."
+  },
+  "parity": {
+    "frames": 360,
+    "rng": 28982,
+    "same": true,
+    "scope": "estado resumido, no snapshot completo/global RNG"
+  },
+  "preview": "HTML de evidencia, no sustituto de las pruebas de juego."
+}

@@ -4,6 +4,16 @@
    Carga de las imágenes de efectos visuales de habilidades y jefes (assets/vfx/).
    ============================================================ */
 
+// Una descarga parcial no debe dibujar imágenes rotas ni adelantar la animación.
+// Usar la fase pedida o la última anterior disponible; sin ninguna, queda el telegraph.
+function sylvaVfxFrame(images, ready, frame){
+  for(let n=frame; n>=1; n--){
+    const key="f"+n, img=images[key];
+    if(ready[key] && img && img.complete && img.naturalWidth>0 && img.naturalHeight>0) return img;
+  }
+  return null;
+}
+
 // Lluvia de la Cazadora: 3 frames reales (flecha subiendo / cayendo en lluvia / impacto en
 // el suelo), del mismo zip -antes solo se veía el círculo punteado del telegraph-.
 const SYLVA_RAIN_IMG = {};

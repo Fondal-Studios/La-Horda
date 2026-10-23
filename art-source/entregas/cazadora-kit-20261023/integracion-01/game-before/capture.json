@@ -1,0 +1,932 @@
+{
+  "results": [
+    {
+      "look": "base",
+      "pack": "cazadora",
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "traps": [],
+          "rain": []
+        }
+      ],
+      "lance": false,
+      "champion": "cazadora",
+      "slot": 0,
+      "trace": [
+        [
+          "beam",
+          "hunt",
+          0,
+          -10,
+          0,
+          0,
+          520,
+          420,
+          -10,
+          30,
+          null
+        ],
+        [
+          "rays",
+          "hunt~p",
+          0,
+          -10,
+          40,
+          0,
+          340,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Flecha Perforante",
+      "sceneHash": "ac9a1c0221da108ab5189973ed40e61426731d09cab88f96e85e68473778e52d"
+    },
+    {
+      "look": "base",
+      "pack": "cazadora",
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "traps": [
+            {
+              "armTime": 120,
+              "timer": 8920,
+              "triggered": false
+            }
+          ],
+          "rain": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "traps": [],
+          "rain": []
+        }
+      ],
+      "lance": false,
+      "champion": "cazadora",
+      "slot": 1,
+      "trace": [],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Trampa del Bosque",
+      "sceneHash": "235f70895b0ad1fcbc2c18ef4b34f528deb574b220d781dca68860200bfd43d1"
+    },
+    {
+      "look": "base",
+      "pack": "cazadora",
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "traps": [],
+          "rain": [
+            {
+              "timer": 820,
+              "exploded": false
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "traps": [],
+          "rain": [
+            {
+              "timer": 644,
+              "exploded": false
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "traps": [],
+          "rain": [
+            {
+              "timer": 388,
+              "exploded": false
+            }
+          ]
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "traps": [],
+          "rain": [
+            {
+              "timer": -204,
+              "exploded": true
+            }
+          ]
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "traps": [],
+          "rain": []
+        }
+      ],
+      "lance": false,
+      "champion": "cazadora",
+      "slot": 2,
+      "trace": [
+        [
+          "nova",
+          "hunt~p",
+          115,
+          0,
+          180,
+          0,
+          600,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rays",
+          "hunt~p",
+          115,
+          0,
+          75.6,
+          0,
+          380,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rings",
+          "hunt",
+          115,
+          0,
+          180,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Lluvia de la Cazadora",
+      "sceneHash": "fcb2fcb4f14e2c93cd6bf00638da7faddf2ba98b9dc49bb8b9807b5dbc39c65e"
+    },
+    {
+      "look": "base",
+      "pack": "cazadora",
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "traps": [],
+          "rain": []
+        }
+      ],
+      "lance": false,
+      "champion": "cazadora",
+      "slot": 3,
+      "trace": [],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Cacería Salvaje",
+      "sceneHash": "2fafdc9d6d9ea29e293e0e5310c2447989ce8e7856e50b5319acff8192ebf5e3"
+    },
+    {
+      "look": "manada",
+      "pack": "skin_manada",
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "traps": [],
+          "rain": []
+        }
+      ],
+      "lance": false,
+      "champion": "cazadora",
+      "slot": 0,
+      "trace": [
+        [
+          "beam",
+          "hunt",
+          0,
+          -10,
+          0,
+          0,
+          520,
+          420,
+          -10,
+          30,
+          null
+        ],
+        [
+          "rays",
+          "hunt~p",
+          0,
+          -10,
+          40,
+          0,
+          340,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Flecha Perforante",
+      "sceneHash": "3e3ef3efc540a14eb1a37fa21e3647b34af14f1943a81b840402722d87ab6270"
+    },
+    {
+      "look": "manada",
+      "pack": "skin_manada",
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "traps": [
+            {
+              "armTime": 120,
+              "timer": 8920,
+              "triggered": false
+            }
+          ],
+          "rain": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "traps": [],
+          "rain": []
+        }
+      ],
+      "lance": false,
+      "champion": "cazadora",
+      "slot": 1,
+      "trace": [],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Trampa del Bosque",
+      "sceneHash": "d840f44c76653d5043da12de615bda7d4341762b95e6052adaaa7692de08a5cb"
+    },
+    {
+      "look": "manada",
+      "pack": "skin_manada",
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "traps": [],
+          "rain": [
+            {
+              "timer": 820,
+              "exploded": false
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "traps": [],
+          "rain": [
+            {
+              "timer": 644,
+              "exploded": false
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "traps": [],
+          "rain": [
+            {
+              "timer": 388,
+              "exploded": false
+            }
+          ]
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "traps": [],
+          "rain": [
+            {
+              "timer": -204,
+              "exploded": true
+            }
+          ]
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "traps": [],
+          "rain": []
+        }
+      ],
+      "lance": false,
+      "champion": "cazadora",
+      "slot": 2,
+      "trace": [
+        [
+          "nova",
+          "hunt~p",
+          115,
+          0,
+          180,
+          0,
+          600,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rays",
+          "hunt~p",
+          115,
+          0,
+          75.6,
+          0,
+          380,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rings",
+          "hunt",
+          115,
+          0,
+          180,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Lluvia de la Cazadora",
+      "sceneHash": "44fcd00febda52744883772e2ee9149875953a6098a3caac58e833d097848048"
+    },
+    {
+      "look": "manada",
+      "pack": "skin_manada",
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "traps": [],
+          "rain": []
+        }
+      ],
+      "lance": false,
+      "champion": "cazadora",
+      "slot": 3,
+      "trace": [],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Cacería Salvaje",
+      "sceneHash": "ca6e747998b3875b048f2a18e08dacd9e4a927ce3344e4220e28136c4e84562f"
+    },
+    {
+      "look": "escarcha",
+      "pack": "croma_cazadora_escarcha",
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "traps": [],
+          "rain": []
+        }
+      ],
+      "lance": false,
+      "champion": "cazadora",
+      "slot": 0,
+      "trace": [
+        [
+          "beam",
+          "hunt",
+          0,
+          -10,
+          0,
+          0,
+          520,
+          420,
+          -10,
+          30,
+          null
+        ],
+        [
+          "rays",
+          "hunt~p",
+          0,
+          -10,
+          40,
+          0,
+          340,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Flecha Perforante",
+      "sceneHash": "5ff5c95eabed0ee6a8090bcb0d867fb1fa697af3af3f05b71db702d87e15758f"
+    },
+    {
+      "look": "escarcha",
+      "pack": "croma_cazadora_escarcha",
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "traps": [
+            {
+              "armTime": 120,
+              "timer": 8920,
+              "triggered": false
+            }
+          ],
+          "rain": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "traps": [],
+          "rain": []
+        }
+      ],
+      "lance": false,
+      "champion": "cazadora",
+      "slot": 1,
+      "trace": [],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Trampa del Bosque",
+      "sceneHash": "af4da2009db0a080bba22b0da45689b11f44eb0b500101498a1d37adf8e95003"
+    },
+    {
+      "look": "escarcha",
+      "pack": "croma_cazadora_escarcha",
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "traps": [],
+          "rain": [
+            {
+              "timer": 820,
+              "exploded": false
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "traps": [],
+          "rain": [
+            {
+              "timer": 644,
+              "exploded": false
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "traps": [],
+          "rain": [
+            {
+              "timer": 388,
+              "exploded": false
+            }
+          ]
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "traps": [],
+          "rain": [
+            {
+              "timer": -204,
+              "exploded": true
+            }
+          ]
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "traps": [],
+          "rain": []
+        }
+      ],
+      "lance": false,
+      "champion": "cazadora",
+      "slot": 2,
+      "trace": [
+        [
+          "nova",
+          "hunt~p",
+          115,
+          0,
+          180,
+          0,
+          600,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rays",
+          "hunt~p",
+          115,
+          0,
+          75.6,
+          0,
+          380,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rings",
+          "hunt",
+          115,
+          0,
+          180,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Lluvia de la Cazadora",
+      "sceneHash": "f373571ee8adfacf96f79f4b8eab88e36ad1a028d280ecf151d59a669fdd350c"
+    },
+    {
+      "look": "escarcha",
+      "pack": "croma_cazadora_escarcha",
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "traps": [],
+          "rain": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "traps": [],
+          "rain": []
+        }
+      ],
+      "lance": false,
+      "champion": "cazadora",
+      "slot": 3,
+      "trace": [],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Cacería Salvaje",
+      "sceneHash": "ec35afb0658553a12549fed5afc730ea9dd667d78ee1d2b75c1573e17b023071"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "name": "host renderer finite",
+      "ok": true
+    },
+    {
+      "name": "host actual casts and owner",
+      "ok": true
+    },
+    {
+      "name": "host rain phase2 source",
+      "ok": true
+    },
+    {
+      "name": "guest renderer finite",
+      "ok": true
+    },
+    {
+      "name": "guest actual casts and owner",
+      "ok": true
+    },
+    {
+      "name": "guest rain phase2 source",
+      "ok": true
+    },
+    {
+      "name": "guest recovered original phase",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

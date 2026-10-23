@@ -1,0 +1,816 @@
+[
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "missing": [],
+    "failedRequests": 0,
+    "checks": [
+      {
+        "kind": "trap",
+        "f": 1,
+        "expected": "trap-f1.png",
+        "actual": [
+          "trap-f1.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 2,
+        "expected": "trap-f2.png",
+        "actual": [
+          "trap-f2.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 3,
+        "expected": "trap-f3.png",
+        "actual": [
+          "trap-f3.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 4,
+        "expected": "trap-f4.png",
+        "actual": [
+          "trap-f4.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 1,
+        "expected": "rain-f1.png",
+        "actual": [
+          "rain-f1.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 2,
+        "expected": "rain-f2.png",
+        "actual": [
+          "rain-f2.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 3,
+        "expected": "rain-f3.png",
+        "actual": [
+          "rain-f3.png"
+        ],
+        "ok": true
+      }
+    ],
+    "errors": [],
+    "renders": [
+      {
+        "kind": "trap",
+        "f": 1
+      },
+      {
+        "kind": "trap",
+        "f": 2
+      },
+      {
+        "kind": "trap",
+        "f": 3
+      },
+      {
+        "kind": "trap",
+        "f": 4
+      },
+      {
+        "kind": "rain",
+        "f": 1
+      },
+      {
+        "kind": "rain",
+        "f": 2
+      },
+      {
+        "kind": "rain",
+        "f": 3
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "missing": [
+      "f2"
+    ],
+    "failedRequests": 4,
+    "checks": [
+      {
+        "kind": "trap",
+        "f": 1,
+        "expected": "trap-f1.png",
+        "actual": [
+          "trap-f1.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 2,
+        "expected": "trap-f1.png",
+        "actual": [
+          "trap-f1.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 3,
+        "expected": "trap-f3.png",
+        "actual": [
+          "trap-f3.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 4,
+        "expected": "trap-f4.png",
+        "actual": [
+          "trap-f4.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 1,
+        "expected": "rain-f1.png",
+        "actual": [
+          "rain-f1.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 2,
+        "expected": "rain-f1.png",
+        "actual": [
+          "rain-f1.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 3,
+        "expected": "rain-f3.png",
+        "actual": [
+          "rain-f3.png"
+        ],
+        "ok": true
+      }
+    ],
+    "errors": [],
+    "renders": [
+      {
+        "kind": "trap",
+        "f": 1
+      },
+      {
+        "kind": "trap",
+        "f": 2
+      },
+      {
+        "kind": "trap",
+        "f": 3
+      },
+      {
+        "kind": "trap",
+        "f": 4
+      },
+      {
+        "kind": "rain",
+        "f": 1
+      },
+      {
+        "kind": "rain",
+        "f": 2
+      },
+      {
+        "kind": "rain",
+        "f": 3
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "missing": [
+      "f1"
+    ],
+    "failedRequests": 4,
+    "checks": [
+      {
+        "kind": "trap",
+        "f": 1,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 2,
+        "expected": "trap-f2.png",
+        "actual": [
+          "trap-f2.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 3,
+        "expected": "trap-f3.png",
+        "actual": [
+          "trap-f3.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 4,
+        "expected": "trap-f4.png",
+        "actual": [
+          "trap-f4.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 1,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 2,
+        "expected": "rain-f2.png",
+        "actual": [
+          "rain-f2.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 3,
+        "expected": "rain-f3.png",
+        "actual": [
+          "rain-f3.png"
+        ],
+        "ok": true
+      }
+    ],
+    "errors": [],
+    "renders": [
+      {
+        "kind": "trap",
+        "f": 1
+      },
+      {
+        "kind": "trap",
+        "f": 2
+      },
+      {
+        "kind": "trap",
+        "f": 3
+      },
+      {
+        "kind": "trap",
+        "f": 4
+      },
+      {
+        "kind": "rain",
+        "f": 1
+      },
+      {
+        "kind": "rain",
+        "f": 2
+      },
+      {
+        "kind": "rain",
+        "f": 3
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "missing": [
+      "f1",
+      "f2",
+      "f3",
+      "f4"
+    ],
+    "failedRequests": 7,
+    "checks": [
+      {
+        "kind": "trap",
+        "f": 1,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 2,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 3,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 4,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 1,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 2,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 3,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      }
+    ],
+    "errors": [],
+    "renders": [
+      {
+        "kind": "trap",
+        "f": 1
+      },
+      {
+        "kind": "trap",
+        "f": 2
+      },
+      {
+        "kind": "trap",
+        "f": 3
+      },
+      {
+        "kind": "trap",
+        "f": 4
+      },
+      {
+        "kind": "rain",
+        "f": 1
+      },
+      {
+        "kind": "rain",
+        "f": 2
+      },
+      {
+        "kind": "rain",
+        "f": 3
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "width": 844,
+      "height": 390
+    },
+    "missing": [],
+    "failedRequests": 0,
+    "checks": [
+      {
+        "kind": "trap",
+        "f": 1,
+        "expected": "trap-f1.png",
+        "actual": [
+          "trap-f1.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 2,
+        "expected": "trap-f2.png",
+        "actual": [
+          "trap-f2.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 3,
+        "expected": "trap-f3.png",
+        "actual": [
+          "trap-f3.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 4,
+        "expected": "trap-f4.png",
+        "actual": [
+          "trap-f4.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 1,
+        "expected": "rain-f1.png",
+        "actual": [
+          "rain-f1.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 2,
+        "expected": "rain-f2.png",
+        "actual": [
+          "rain-f2.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 3,
+        "expected": "rain-f3.png",
+        "actual": [
+          "rain-f3.png"
+        ],
+        "ok": true
+      }
+    ],
+    "errors": [],
+    "renders": [
+      {
+        "kind": "trap",
+        "f": 1
+      },
+      {
+        "kind": "trap",
+        "f": 2
+      },
+      {
+        "kind": "trap",
+        "f": 3
+      },
+      {
+        "kind": "trap",
+        "f": 4
+      },
+      {
+        "kind": "rain",
+        "f": 1
+      },
+      {
+        "kind": "rain",
+        "f": 2
+      },
+      {
+        "kind": "rain",
+        "f": 3
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "width": 844,
+      "height": 390
+    },
+    "missing": [
+      "f2"
+    ],
+    "failedRequests": 4,
+    "checks": [
+      {
+        "kind": "trap",
+        "f": 1,
+        "expected": "trap-f1.png",
+        "actual": [
+          "trap-f1.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 2,
+        "expected": "trap-f1.png",
+        "actual": [
+          "trap-f1.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 3,
+        "expected": "trap-f3.png",
+        "actual": [
+          "trap-f3.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 4,
+        "expected": "trap-f4.png",
+        "actual": [
+          "trap-f4.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 1,
+        "expected": "rain-f1.png",
+        "actual": [
+          "rain-f1.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 2,
+        "expected": "rain-f1.png",
+        "actual": [
+          "rain-f1.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 3,
+        "expected": "rain-f3.png",
+        "actual": [
+          "rain-f3.png"
+        ],
+        "ok": true
+      }
+    ],
+    "errors": [],
+    "renders": [
+      {
+        "kind": "trap",
+        "f": 1
+      },
+      {
+        "kind": "trap",
+        "f": 2
+      },
+      {
+        "kind": "trap",
+        "f": 3
+      },
+      {
+        "kind": "trap",
+        "f": 4
+      },
+      {
+        "kind": "rain",
+        "f": 1
+      },
+      {
+        "kind": "rain",
+        "f": 2
+      },
+      {
+        "kind": "rain",
+        "f": 3
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "width": 844,
+      "height": 390
+    },
+    "missing": [
+      "f1"
+    ],
+    "failedRequests": 4,
+    "checks": [
+      {
+        "kind": "trap",
+        "f": 1,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 2,
+        "expected": "trap-f2.png",
+        "actual": [
+          "trap-f2.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 3,
+        "expected": "trap-f3.png",
+        "actual": [
+          "trap-f3.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 4,
+        "expected": "trap-f4.png",
+        "actual": [
+          "trap-f4.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 1,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 2,
+        "expected": "rain-f2.png",
+        "actual": [
+          "rain-f2.png"
+        ],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 3,
+        "expected": "rain-f3.png",
+        "actual": [
+          "rain-f3.png"
+        ],
+        "ok": true
+      }
+    ],
+    "errors": [],
+    "renders": [
+      {
+        "kind": "trap",
+        "f": 1
+      },
+      {
+        "kind": "trap",
+        "f": 2
+      },
+      {
+        "kind": "trap",
+        "f": 3
+      },
+      {
+        "kind": "trap",
+        "f": 4
+      },
+      {
+        "kind": "rain",
+        "f": 1
+      },
+      {
+        "kind": "rain",
+        "f": 2
+      },
+      {
+        "kind": "rain",
+        "f": 3
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "width": 844,
+      "height": 390
+    },
+    "missing": [
+      "f1",
+      "f2",
+      "f3",
+      "f4"
+    ],
+    "failedRequests": 7,
+    "checks": [
+      {
+        "kind": "trap",
+        "f": 1,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 2,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 3,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "trap",
+        "f": 4,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 1,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 2,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      },
+      {
+        "kind": "rain",
+        "f": 3,
+        "expected": null,
+        "actual": [],
+        "ok": true
+      }
+    ],
+    "errors": [],
+    "renders": [
+      {
+        "kind": "trap",
+        "f": 1
+      },
+      {
+        "kind": "trap",
+        "f": 2
+      },
+      {
+        "kind": "trap",
+        "f": 3
+      },
+      {
+        "kind": "trap",
+        "f": 4
+      },
+      {
+        "kind": "rain",
+        "f": 1
+      },
+      {
+        "kind": "rain",
+        "f": 2
+      },
+      {
+        "kind": "rain",
+        "f": 3
+      }
+    ]
+  }
+]

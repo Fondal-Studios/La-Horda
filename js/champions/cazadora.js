@@ -61,10 +61,9 @@ function drawSylvaRainZones(){
     // Arte real de la Lluvia de la Cazadora (antes sin usar), sumado sobre el telegraph
     // punteado que ya existía: flecha subiendo -> cayendo -> impacto en el suelo, en los
     // mismos 900ms de demora que ya tenía la habilidad (el daño se resuelve igual que antes).
-    if(SYLVA_RAIN_READY.f1){
-      const seq = ["f1","f2","f3"];
-      const progress = Math.max(0, Math.min(0.999, 1 - z.timer/900));
-      const img = SYLVA_RAIN_IMG[seq[Math.floor(progress*seq.length)]];
+    const progress = Math.max(0, Math.min(0.999, 1 - z.timer/900));
+    const img = sylvaVfxFrame(SYLVA_RAIN_IMG, SYLVA_RAIN_READY, 1+Math.floor(progress*3));
+    if(img){
       const s = (z.radius*1.6)/img.height;
       const clip = { frames: [{x:0, y:0, w:img.width, h:img.height}] };
       drawAnimFrameSized(img, clip, 0, z.x, z.y, img.width*s, img.height*s, 0.5, 0.85, false, 0.85);
