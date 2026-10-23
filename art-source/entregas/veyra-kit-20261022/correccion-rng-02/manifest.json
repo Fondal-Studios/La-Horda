@@ -1,0 +1,471 @@
+{
+  "schema": 1,
+  "pr": 196,
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "publication": "NO_VERIFICADA",
+  "newAssets": 0,
+  "runtime": [
+    "js/champions/vfx-b/hooks.js",
+    "js/champions/vfx-b/pixfx.js"
+  ],
+  "tests": {
+    "emitters": 49,
+    "followerRenderer": 12,
+    "functional": 132,
+    "relay": 21,
+    "generalOnline": "not rerun in this branch; specialized relay21"
+  },
+  "files": [
+    {
+      "path": "js/champions/vfx-b/hooks.js",
+      "bytes": 20302,
+      "sha256": "98bfb135fde7e185a87ab478f3d2f809275c35435b4077b076cc088cac42bef7",
+      "gitBlob": "dcaa04ad67505d5cb0b099cb811fb96603bef726"
+    },
+    {
+      "path": "js/champions/vfx-b/pixfx.js",
+      "bytes": 18773,
+      "sha256": "b6723047bc6f0df287dd2cd45940986ca02f223c34214388cee5168bd3381776",
+      "gitBlob": "4d6f7c53b7be971faa6ca73116aaeef890cc2d2f"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "bytes": 30968,
+      "sha256": "c58a1f936ecee65c2929330f3423496b4c7912edaf14093c39803689b58bfdcf",
+      "gitBlob": "d051d5061c6c35c54f508c1652985040dabe28c7"
+    },
+    {
+      "path": "tools/vfx/trace-kvb-rng.js",
+      "bytes": 7569,
+      "sha256": "a88c289c0ec206a31e816f3c2872f9f1b26706ee918319af29fbb060559e3fbd",
+      "gitBlob": "c490dd831fc3c7945df5cc74b2cd40d0930bb7a3"
+    },
+    {
+      "path": "tools/vfx/verify-kvb-q5-rng.js",
+      "bytes": 4265,
+      "sha256": "8ebc197804640cee30e2525ea12412237cb8d79c62667faabca06d0cfc499148",
+      "gitBlob": "1fccc7322fb0ead79dc715059c5e0eaa006ff9d6"
+    },
+    {
+      "path": "tools/vfx/verify-kvb-follow-render.js",
+      "bytes": 2379,
+      "sha256": "db93bec0aa48a44b74e3f72880d7569b880a0c151ea04ae67e9e42078615422b",
+      "gitBlob": "54e4fadd973d7f9cf4d1ba0fd91a3c52c56e3f98"
+    },
+    {
+      "path": "tools/vfx/capture-kvb-rng.js",
+      "bytes": 6532,
+      "sha256": "ff8c1c278729c4d345a5bd8ff2859c7aebd375d657742a2bae51556405335415",
+      "gitBlob": "814f8040725fa0fd5b29a43b97fea6eacbbb2f81"
+    },
+    {
+      "path": "tools/vfx/veyra-pact-online-rng.js",
+      "bytes": 9965,
+      "sha256": "7da8299529155f7a45ff5de4dd51a876f2756527a6ba8596cbbda25223647ad6",
+      "gitBlob": "ebe73469ebe40ada1a2925a1d271104b20f68b96"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/CHECKPOINT.md",
+      "bytes": 3864,
+      "sha256": "14ab7d06d8b19cd4210147b290e544a39d0e697f4f3474b30a1086a1be55557d",
+      "gitBlob": "03f66cc84cd47ba8a16a7a49ae6e5498795b81e4"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/RECOVERY.md",
+      "bytes": 934,
+      "sha256": "75d9ad73bc35c283b7dc92918a3c48df9dc44ad6cdc4f148ed7ebe80ccdad3f8",
+      "gitBlob": "467dd156b2c98206a9d49a641f1a776e788b4ae8"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/TEST_ATTEMPTS.json",
+      "bytes": 1695,
+      "sha256": "7c4a230610644cfd6a0e7f12774fdccad504c5cb18ffc5c8cfeee19dd387d167",
+      "gitBlob": "56f8b93c4a9dfd84d5bdd362ceb2fcf9016bd567"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/VISUAL_REVIEW.md",
+      "bytes": 1117,
+      "sha256": "c7f8f9824fa58993e9e3714241c21eaea4c4aa38cbb47136b1b74494eb5b896d",
+      "gitBlob": "6c0fb382b29e2454056955f376697bf1ea2c2a82"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/attempt-01/relay-follow-diagnostic.json",
+      "bytes": 6478,
+      "sha256": "c68b81565851cffaabb31f6977639ef7db24702c7e84e22cbfc67b8f3e8e963f",
+      "gitBlob": "309a2af34822d3987e6ef1b2ecbfa26bf640eea2"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/attempt-01/relay-follow-diagnostic.txt",
+      "bytes": 4676,
+      "sha256": "6a839086c04cc9a563baec413b8131e4bdd5bee8378b831c0dd8b1aa9871ee65",
+      "gitBlob": "e5229eb80c51900aa0e9f06f2b2d67221d3e9151"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/attempt-01/relay-follow-failure.json",
+      "bytes": 5909,
+      "sha256": "3e135144d0e1e4414137bf739bf77634528da5d94202ca4900551b6126d09bdf",
+      "gitBlob": "3c112728a93bb73c5b6cbe61be949b1fa400ef64"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/attempt-01/relay-follow-failure.txt",
+      "bytes": 4376,
+      "sha256": "16be7f841da319164809e02d78e48b09b53a50240a4d879c7870b67327d5af4b",
+      "gitBlob": "cbe2363746a3847d7fa864409847d2a8e31b449d"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/attempt-01/rng-only-mobile/capture.json",
+      "bytes": 1667,
+      "sha256": "23d67cca4d7a79f7cd262c9a78ff6071c1b98d75f07977d803238e721d629d32",
+      "gitBlob": "3d54f6bd6e31956eab2741e5e78b1f134177f092"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/attempt-01/rng-only-mobile/veyra-0.png",
+      "bytes": 99285,
+      "sha256": "0467c453e419a5c8d399a2d1ca2d67aeb427a48a6f410ca1189d288e3ffc6aaf",
+      "gitBlob": "ff760f76f71709e92b076723d56956208bc9f137"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/attempt-01/rng-only-mobile/veyra-1.png",
+      "bytes": 99475,
+      "sha256": "43f7c7bcbde0966ee7966d8f855b31cfdf095a13006a10575cdc47906cd44b1b",
+      "gitBlob": "69866f0a55f70cef5973f77f4d746936348a2b4e"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/attempt-01/rng-only-mobile/veyra-2.png",
+      "bytes": 98846,
+      "sha256": "8c42cc00c6df6c93ac6c96cd575bea1e07d97ebf8a89e95cebaf2520238a901d",
+      "gitBlob": "de6a79888253acd8877a86b907d78060f10dfdb9"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/attempt-01/rng-only-mobile/veyra-3.png",
+      "bytes": 98268,
+      "sha256": "1891dd6608ffecfe9a1d6924b2c755401be83f4f98376f561bf53fd5b4b19840",
+      "gitBlob": "347b8e3047db1ae4dedc4dc6cfc91dc560a63717"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/attempt-01/trace-after.json.gz",
+      "bytes": 62618,
+      "sha256": "47dd4424a9b9a1ae7d634bf04614d270c1cebe110b265c410f3835b4927c996c",
+      "gitBlob": "bc4fff15a6f0b981de40b1d1c5b1e523f22d6a96"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/attempt-01/trace-after.txt",
+      "bytes": 241,
+      "sha256": "9b0aef46698755898dc2c354fb6c1497169d6d8b5c9bcec46c9f1f86f601afee",
+      "gitBlob": "58a81115f9c14f8a92bfe40a88115a4ea17b6b9c"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/comparison.json",
+      "bytes": 2998,
+      "sha256": "f0c2059b80e15237128485c9461f7625a0d066069215c52968f58374ea30218f",
+      "gitBlob": "1929ed90d2642e043c16c29b8fd51e164c769607"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/emitter-tests.json",
+      "bytes": 8623,
+      "sha256": "4f709152d8633e0515963f16bde9e476c402c66f6afb20b6c4e098a8e80099d7",
+      "gitBlob": "e8c4ddc7af87dcdbde8c7305350472b4aaf4a438"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/emitter-tests.txt",
+      "bytes": 5085,
+      "sha256": "ca55e223a1e89bd71415b019cbf0af4a2e327539e07f5b56b7b482405b1c87c3",
+      "gitBlob": "31a78e0029852d2eca6a703bf9bca04d10e43074"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/follow-after.json",
+      "bytes": 2896,
+      "sha256": "ed142ddfc3a94b6960d703127f7f1f20e441641459e582daa5fb68c83c35f426",
+      "gitBlob": "3a5d744ce5a546b265862c617b8d7cbae45cd917"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/follow-after.txt",
+      "bytes": 1350,
+      "sha256": "657f8620a512adb8b252cc761baae362a6cf5db6bfbfb065f0f4e31b63342963",
+      "gitBlob": "1368a2a5830eac288d6c6e2f7e3144206ef5b787"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/follow-before.json",
+      "bytes": 2971,
+      "sha256": "93cd33d99fb72aeb1d5ebe032f5d11a18fb62cc78006a1e5e5e7731a471f3fdb",
+      "gitBlob": "acf19f3392309ee1c1f031fa861585541eca0bb1"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/follow-before.txt",
+      "bytes": 1364,
+      "sha256": "675495ab991139d6de924ce5523a637d14243a78ac4894852bd075af0ffbfd4f",
+      "gitBlob": "11ad42bd3597c0c76dd9763f1893c2285e1d4082"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/functional-results.json",
+      "bytes": 10195,
+      "sha256": "ccf3cdab250a7dcf95213098c71e035a8b0ca44b8624f51c17ecf74c58557b6e",
+      "gitBlob": "8ea7b62ef3f6aa08ca567cc515fe16d07b9fb0e5"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/functional.txt",
+      "bytes": 55,
+      "sha256": "88fa742baa537636206edee0c5304852116e372d6a9f829cd945d8a6ec9b06f8",
+      "gitBlob": "53747cff7e23411eeb4b0eceb35c9b6bb3edb994"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/horizontal-after/capture.json",
+      "bytes": 1667,
+      "sha256": "c2f63c8fd62068e9a398fc9ecb1da1d9d5615f9ff16fb7f3c14717cc0ab1c2a3",
+      "gitBlob": "b5d33e38a1d095112960216ddd30b05fc7c4a636"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/horizontal-after/veyra-0.png",
+      "bytes": 108149,
+      "sha256": "e9d1546a9a7d78f4961d08c4bc3c998209b8b386be0349c2a8d4a82d7f5cdb9c",
+      "gitBlob": "d0ca42358ee4a57ba895a6cf416cd39866062cbc"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/horizontal-after/veyra-1.png",
+      "bytes": 111945,
+      "sha256": "958ed91e3fe6d12efa92047ecf1a41959f2075189945a712e2e4fb1b8c66f1d8",
+      "gitBlob": "2c12c537edda5198a44bb4c0816e1c94c998f5b6"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/horizontal-after/veyra-2.png",
+      "bytes": 107543,
+      "sha256": "16917c23fd51bd0c05b2e967e78f739009904a751839152470508884d08a1e4e",
+      "gitBlob": "c08ccf5c3f457f5e6ced557ea0062958aba4b07a"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/horizontal-after/veyra-3.png",
+      "bytes": 106931,
+      "sha256": "f92fc53b6175b35aa47f83cfc293966ae0be2bf2b54c6ef64ddb381427414a76",
+      "gitBlob": "64138cbfafee3469f22b38d6d8e87dd7a9d911f1"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/horizontal-before/capture.json",
+      "bytes": 1667,
+      "sha256": "c2f63c8fd62068e9a398fc9ecb1da1d9d5615f9ff16fb7f3c14717cc0ab1c2a3",
+      "gitBlob": "b5d33e38a1d095112960216ddd30b05fc7c4a636"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/horizontal-before/veyra-0.png",
+      "bytes": 108132,
+      "sha256": "7ba6545f6b3a32de6a480798c8ea426b00be9f4b09840fd3d15ae0800de99e15",
+      "gitBlob": "e22f17d3fa6f7abde14c62d71c79c97d389de679"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/horizontal-before/veyra-1.png",
+      "bytes": 111856,
+      "sha256": "84072eb0c6442ab45b2a2a4801d828e519e5172671b99d2097b770ec49032e19",
+      "gitBlob": "4f31deb7e30231c8d3126c794c50499c60c7c244"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/horizontal-before/veyra-2.png",
+      "bytes": 107538,
+      "sha256": "885037c11130600f75546cce7a4dda2398bc3ccfbfc31275b183c61d249bfeda",
+      "gitBlob": "541dcaf3f8a6d7cea8ea2b1562bcda15dd50a9da"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/horizontal-before/veyra-3.png",
+      "bytes": 106306,
+      "sha256": "1f197a3e744c41848a15e89169e932cca017f5160e011f4ecac22107b136fff0",
+      "gitBlob": "9ef4cacbfd13d9f1a261467b8274b81196211390"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/horizontal-comparison.png",
+      "bytes": 328899,
+      "sha256": "0270b4c7774638fc2a484b7ce3496ec40a1a4f487c3ce19c45e1316891a28c53",
+      "gitBlob": "98712ea068638396d4faadb54e186740efa4a5eb"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-after/capture.json",
+      "bytes": 1667,
+      "sha256": "23d67cca4d7a79f7cd262c9a78ff6071c1b98d75f07977d803238e721d629d32",
+      "gitBlob": "3d54f6bd6e31956eab2741e5e78b1f134177f092"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-after/veyra-0-250-full.png",
+      "bytes": 455943,
+      "sha256": "cebca1576bcee91c31fb11c1291709b7d4035bb2b0026981cd35a2be58c7dc27",
+      "gitBlob": "be402e33e786e5d83136fe226363f457b26e9813"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-after/veyra-0.png",
+      "bytes": 99285,
+      "sha256": "0467c453e419a5c8d399a2d1ca2d67aeb427a48a6f410ca1189d288e3ffc6aaf",
+      "gitBlob": "ff760f76f71709e92b076723d56956208bc9f137"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-after/veyra-1-250-full.png",
+      "bytes": 456881,
+      "sha256": "fd7a63c2e5c69073a7152818b1c78d0826eb0413da519af0111f55183736fd91",
+      "gitBlob": "c942794437a6d4d467055d13dd710dee5007541c"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-after/veyra-1.png",
+      "bytes": 99475,
+      "sha256": "43f7c7bcbde0966ee7966d8f855b31cfdf095a13006a10575cdc47906cd44b1b",
+      "gitBlob": "69866f0a55f70cef5973f77f4d746936348a2b4e"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-after/veyra-2-250-full.png",
+      "bytes": 456641,
+      "sha256": "acbee809aad2cae5a7e72674ef4e0b4dddace244132844f115b26a1b6622b371",
+      "gitBlob": "2ccd007f594a2f735537c0e2537e2c16df668b44"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-after/veyra-2.png",
+      "bytes": 98846,
+      "sha256": "8c42cc00c6df6c93ac6c96cd575bea1e07d97ebf8a89e95cebaf2520238a901d",
+      "gitBlob": "de6a79888253acd8877a86b907d78060f10dfdb9"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-after/veyra-3.png",
+      "bytes": 98268,
+      "sha256": "1891dd6608ffecfe9a1d6924b2c755401be83f4f98376f561bf53fd5b4b19840",
+      "gitBlob": "347b8e3047db1ae4dedc4dc6cfc91dc560a63717"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-before/capture.json",
+      "bytes": 1667,
+      "sha256": "23d67cca4d7a79f7cd262c9a78ff6071c1b98d75f07977d803238e721d629d32",
+      "gitBlob": "3d54f6bd6e31956eab2741e5e78b1f134177f092"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-before/veyra-0.png",
+      "bytes": 99186,
+      "sha256": "c95fe204f8f0ae2ab3250e499046c019dd25537f31ee0423e298fd3d8bda32d9",
+      "gitBlob": "2ce8cf745feb9b7a9f730d5b835abcd927b726ba"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-before/veyra-1.png",
+      "bytes": 99318,
+      "sha256": "39fa3cebba46f0e62153e4eb0318cebbf93fafa0f10b6848ce10426ad7c1d786",
+      "gitBlob": "16e159f9e104a22a45e6b557876e2f4b28b670f7"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-before/veyra-2.png",
+      "bytes": 99032,
+      "sha256": "15789e52ae0934ad3092ac12086fe497a81100d32469d25468969bdb3bff180b",
+      "gitBlob": "1408770c5d71fb955c3a24bfbe3cced8755d8286"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-before/veyra-3.png",
+      "bytes": 97672,
+      "sha256": "f7994e799845234604426b4779de601c66de64e48a21d660d98c02711cac302f",
+      "gitBlob": "714ed90f9d3f64fe426ddaf87d4231773312f715"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/mobile-comparison.png",
+      "bytes": 309826,
+      "sha256": "ae83a33d8c16025dd335f5eb3db7396af044d11bb94acd7fb3a0d9f501bc1b46",
+      "gitBlob": "b943dbae4575d4f5a5f62fe2e68cb4685560b9ff"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/native-before/capture.json",
+      "bytes": 1183,
+      "sha256": "d5444870892ad4b415167c1447c7ae975841774c9510f4c3808e7641a8f49ec4",
+      "gitBlob": "137411ce55fb031705c05b789b57bba7ec05f3b1"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/native-before/veyra-0-250-full.png",
+      "bytes": 455744,
+      "sha256": "3865bddf5d7d1caa3a2efa718e63db3c09df32fcdc1c4018594eeb5ad1920bc2",
+      "gitBlob": "ea7297bb4343de72e9b3d4d7c2798b84d4e9171a"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/native-before/veyra-1-250-full.png",
+      "bytes": 456821,
+      "sha256": "e7b21c0649a66a7acb2aa2651c176d4eec4ab155d50078d8785c4a230f0b5701",
+      "gitBlob": "ec4134b2506dcb06907a73c0cb9eb834b8691eb6"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/native-before/veyra-2-250-full.png",
+      "bytes": 456560,
+      "sha256": "a3594b36f94804394e95f3bd29a4aca9b413840dcda607415409ed1873319e27",
+      "gitBlob": "93fb99e26d800d63df3ec77db0a5dbad3175a053"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/online-results.json",
+      "bytes": 6406,
+      "sha256": "4b6118c84ff6731bf03acaab52c6408111b8a62e9cc07bece773dfa393d794c4",
+      "gitBlob": "81f0390bd512d600e690af491508af954c6f5e27"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/parity-after.json",
+      "bytes": 4249,
+      "sha256": "3541ed1f60aa36a0e4e03fda1d5bc1daaa65533f97ed8585260bd6bd8457ee18",
+      "gitBlob": "44b750a3970179e3632c5938f867227b16bde495"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/parity-after.txt",
+      "bytes": 116,
+      "sha256": "13f8a104fe84703792c8ca6e2e096bbe18fd41312884696da1d0805da3469643",
+      "gitBlob": "6b39cbfbade4b78c41279d5a278b678dfc61a01d"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/parity-comparison.json",
+      "bytes": 974,
+      "sha256": "4f2eb11ab2eee47f93a007091ddc254930d7e37dc2ad13c88360c78a9645b1c7",
+      "gitBlob": "ac873e460fc351715d2978f267aed9a6ca164e68"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/parity-repeat.json",
+      "bytes": 8701,
+      "sha256": "02ecb5af08b8b33a04ea02b47e8010ae24c9e47eb50165579cfa3e25cf40755b",
+      "gitBlob": "48e1ba6c3d4c5079e144f79d3f3a2e7ff2dc8dbc"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/parity-repeat.txt",
+      "bytes": 116,
+      "sha256": "13f8a104fe84703792c8ca6e2e096bbe18fd41312884696da1d0805da3469643",
+      "gitBlob": "6b39cbfbade4b78c41279d5a278b678dfc61a01d"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/pixfx-before.js",
+      "bytes": 18511,
+      "sha256": "2c6881103c672a8c0d97429f12f94b72a2979ccdd2fbc678e2b2e871c2efb437",
+      "gitBlob": "5b7257b14036629d950a82a21fe8288392bd8406"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/recipe.json",
+      "bytes": 2317,
+      "sha256": "d4743fcce7aef47a0dab169c88e3dfbf211a2e0703ca304dec4304a45d8f2c5b",
+      "gitBlob": "db6b87c28320d23aaadc4eedb22caa72fad5e2c7"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/relay.txt",
+      "bytes": 4653,
+      "sha256": "2455b3b9c1f8fe71ff9fdaba2eb1832499dabc8bedbdbc913beec4ba4377aa83",
+      "gitBlob": "e56c84c7c1f337d7318b4db1e81408b64761e023"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/runtime-diff.json",
+      "bytes": 667,
+      "sha256": "3576c62561b075772185ae964830e3fb0bd706b81cb02b220cb933718af68b48",
+      "gitBlob": "f142e7734098b4afd925ab61f6f0772defde90f3"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/source-before.js",
+      "bytes": 19586,
+      "sha256": "ea185f0044045416be9d7e8b152b0f06b1ce4b64530bd95762d61f91a5ca113e",
+      "gitBlob": "d919a0d1ad3b2736af7895c4de682b210a552951"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/trace-before.json.gz",
+      "bytes": 23648,
+      "sha256": "3a19e42164edfced5e2da3a352509ba708748f27dca5b6a510d41773ca1bab9f",
+      "gitBlob": "e5a765fbac89c806f5587f5b3ae9fb62f43df06f"
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02/trace-before.txt",
+      "bytes": 1324,
+      "sha256": "d8d9c2a09e9fc4fe2053825cd965790ea60f521f623a8e1a3e236b79a99e34fa",
+      "gitBlob": "b18185590383a659deddc57318249c6bddc11a77"
+    }
+  ],
+  "remaining": [
+    "skins/arenas/compound contrast",
+    "warmup/performance",
+    "integral Art Gate",
+    "exact final head CI"
+  ]
+}

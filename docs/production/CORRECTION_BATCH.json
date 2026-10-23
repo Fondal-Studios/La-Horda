@@ -1,0 +1,742 @@
+{
+  "schema": 1,
+  "updated": "2026-10-23",
+  "policy": "First-pass champion batches; save failures and move forward. Run a grouped correction pass later; never merge failed or unvalidated assets.",
+  "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
+  "entries": [
+    {
+      "block": "B005",
+      "component": "myla.cuerpo.lanzar",
+      "pr": 192,
+      "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-02",
+      "frames": [
+        11
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "ILUSTRACION: suave0.429 ruido75"
+      ],
+      "next": "Redraw only recovery11; preserve0-10 exactly; repeat canonical detector and renderer."
+    },
+    {
+      "block": "B007",
+      "component": "A-FX-aelith-ult",
+      "pr": 191,
+      "source": "art-source/entregas/bloques/B007_aelith/revision-01",
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Dial lacks exactly13 marks",
+        "Pulse effects overlap neighboring cells"
+      ],
+      "next": "Correct dial/spacing in grouped VFX pass, then export and test runtime timing."
+    },
+    {
+      "block": "B108",
+      "component": "A-FX-aurelia-h1",
+      "source": "art-source/entregas/bloques/B008_aurelia/primera-pasada-01",
+      "sheet": "source-prism.png",
+      "sourceSha256": "24c0c0be5f19c62d90b9b453c725b0aa093da0d7be2d6122c80f9b5f0ba6ea4a",
+      "frames": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "CELL_EDGE_CONTACT; node bases too close to source row boundary"
+      ],
+      "next": "Reframe affected source cells without clipping light or individually scaling the animation; preserve original."
+    },
+    {
+      "block": "B008",
+      "component": "A-FX-aurelia-ult",
+      "source": "art-source/entregas/bloques/B008_aurelia/primera-pasada-01",
+      "sheet": "source-cathedral.png",
+      "sourceSha256": "5372060ef473c44ad7ae7302898776dd7b09ca539a34b58d4dbaf43a4b39ab53",
+      "frames": [
+        17,
+        18,
+        19,
+        20,
+        23,
+        24,
+        29
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "EMPTY_FRAME23/24/29",
+        "CELL_EDGE_CONTACT17/18/19/20",
+        "Only two connecting pointed arches clearly visible; third connection must follow three-node geometry",
+        "Loop/dissipation order and footprint need temporal review"
+      ],
+      "next": "Complete missing poses and three-node architecture in grouped correction pass; preserve open center, no destructive crop."
+    },
+    {
+      "block": "B430",
+      "component": "A-FX-axiom-basico",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/kit-primera-pasada-02/packet-source.png",
+      "sourceSha256": "81214f75db108062712baf40a87bb75825fd97f47e01681beb98fc65da9a83f7",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Alfa suave; cubo se lee redondo en2–4, caída8–10 deja trazos alargados. A24px necesita revisar legibilidad y fase de4fragmentos."
+      ],
+      "next": "Corregir cubo cuadrado y disipación, limpiar alfa mediante edición de fuente; comprobar clip24px antes de integrar."
+    },
+    {
+      "block": "B111",
+      "component": "A-FX-axiom-h1",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/kit-primera-pasada-02/error404-source.png",
+      "sourceSha256": "8d239b4cbe27cf9fe6e2fe456942784249245d7ba454749edcd0895f873aa5b8",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Nube coloreada visible por semialfa, contactos de borde0–11; no cumple capa transparente limpia. Geometría se mantiene inclinada y debe verificarse a radio130."
+      ],
+      "next": "Eliminar residuo de fondo y glow en fuente, recuperar margen de0–11, estabilizar bucle6–11."
+    },
+    {
+      "block": "B112",
+      "component": "A-FX-axiom-h2",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/kit-primera-pasada-02/overwrite-source.png",
+      "sourceSha256": "5cd86bbcbf09c2ba1ac2ca1cfc5964d10215f838841a93cf58daf37dac0df4f0",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Semialfa/ruido RGB; cadena no separada de cabeza y motivo infección. Faltan exports independientes del tile16px y cabeza48px."
+      ],
+      "next": "Separar enlace/cabeza/infección, exportar fases y corregir bordes. Revisar cadena multiobjetivo y duración2600ms sin cambiar gameplay."
+    },
+    {
+      "block": "B113",
+      "component": "A-FX-axiom-h3",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/kit-primera-pasada-02/teleport-source.png",
+      "sourceSha256": "a470eda5b49e299dc62278cdaf4e8eebf7fe1199f66402a7260e2998ac2cd42c",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Nube azul visible semitransparente aunque hay alfa0; sin píxeles totalmente opacos. Cambios de anclaje y tamaño entre salida y llegada; trazo188x24 no producido."
+      ],
+      "next": "Editar fuente para transparencia limpia y anclas constantes; producir trazo independiente pendiente. Separar salida0–7 y llegada8–15, validar48px."
+    },
+    {
+      "block": "B009",
+      "component": "A-FX-axiom-ult",
+      "pr": 194,
+      "source": "art-source/entregas/bloques/B009_axiom/primera-pasada-01/source.png",
+      "sourceSha256": "861df4e2f27a6683cf2a281a32a2d818f260812c3f8e57edbb231bbf6b9ee4dc",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Semialfa548169 pixels; loop6–13 scale/anchor inconsistency"
+      ],
+      "next": "Correct original source alpha and stabilize held window; no regeneration before correction batch."
+    },
+    {
+      "block": "B208/B209/B490/B491",
+      "component": "A-FX-solciju-h1;A-FX-solciju-h2;A-PROP-kvb-solciju-sol_reserve",
+      "source": "js/champions/vfx-b/solciju.js",
+      "sourceBase": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+      "evidence": "art-source/entregas/habilidades-recientes-20261022/atlas-preview.png",
+      "frames": {
+        "so_splash": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "so_fuse": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "so_pool_idle": "0-13"
+      },
+      "state": "EN_CORRECCION",
+      "defects": [
+        "La mancha lobulada mejora diferenciación frente al anillo anterior, pero sus cinco puntas se leen como estrella/sello. Redondear asimétricamente en lote de corrección.",
+        "so_pool_idle es fallback cuando UF está apagado; no contar como sustitución de Gran Reserva activa.",
+        "CI del head 7b89de24bdea58d5e5e321e18957d3b0c5715f05: test-decal-legible falla 7 incumplimientos; so_splash relleno de impacto 36% >35% y mismo tinte RGB en bosque/infernal. No reducir umbrales."
+      ],
+      "next": "Conservar corrección local y completar gates pendientes; no repetir primera pasada ni integrar taller completo.",
+      "sourceSha256": "f40019b51b48cdf1956ff7ced323133a171a0553c3370c80848111cedaf372fd",
+      "pr": 195,
+      "ciEvidence": "https://github.com/drmarianojimenez94-sudo/La-Horda/actions/runs/39825077102/job/119986111833",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "delivery": "art-source/entregas/habilidades-recientes-20261022/correccion-01",
+          "sourceSha256": "0627fd7fd76749615aab737a343e68ed39e0f687fe47c63a8ebfce4dbbeaaf47",
+          "status": "CORRECTED_LOCAL_PENDING_FULL_GATE",
+          "changes": [
+            "Sello de cinco puntas reemplazado por ocho curvas asimétricas con gotas irregulares.",
+            "Fill medido36%→24%; copa visible78%→82%; tintes bosque/infernal diferentes."
+          ],
+          "tests": "legibility-after.txt seis arenas PASS; 15 relay; 23 online;132 funcionales;10 sceneHash; UF idéntica.",
+          "pending": [
+            "KVB off/on RNG heredado FAIL",
+            "skins y Art Gate integral",
+            "warmup/performance y CI final"
+          ]
+        }
+      ]
+    },
+    {
+      "block": "B228",
+      "component": "A-FX-veyra-h3",
+      "source": "js/champions/vfx-b/veyra.js",
+      "evidence": "art-source/entregas/veyra-kit-20261022/verification.json#observations",
+      "frames": "vy_pact_idle 0-11 (condición de activación, no defecto de raster)",
+      "state": "EN_CORRECCION",
+      "defects": [
+        "El aura de pacto usa portSpeedTimer/portSpeedBonus compartidos; kitBuff de otro héroe con speed=.3 activa el corazón sin lanzar Pacto. Reproducido con renderer real."
+      ],
+      "next": "En lote común vincular la persistencia visual al pacto propio y a su dueño en host/invitado, sin cambiar duración ni buffs mecánicos. Probar múltiples Veyra, muerte, reset y buffs ajenos.",
+      "sourceSha256": "41ab122f98c6ce7ad90d5b74450d7b1315411b180ac6857c42f5abfdedc2fd75",
+      "pr": 196,
+      "productionCommit": "91735b7b42d75fb48e2e20587877b61bf883362c",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 196,
+        "path": "art-source/entregas/veyra-kit-20261022/correccion-01",
+        "technical": "14 ownership checks PASS; 21 actual relay checks PASS; 132 functional PASS; numeric caster/duration event owns aura; registered KVB network wrapper after late module load.",
+        "state": "EN_CORRECCION",
+        "remaining": "Full skins/arenas/contrast/warmup/re-entry and integral visual gate; inherited KVB on/off RNG mismatch; CI current head."
+      }
+    },
+    {
+      "block": "B117",
+      "component": "A-FX-brakk-h1",
+      "source": "js/champions/skill-fx-a/c/brakk.js",
+      "sourceSha256": "9748b27d05d5dde840ddba9efc89a41359ea31e346663009da877ca0a3227946",
+      "frames": "wall-mount 0-10; enlace de fase",
+      "state": "EN_CORRECCION",
+      "evidence": "art-source/entregas/brakk-kit-20261022/verification.json#observations",
+      "defects": [
+        "La teja de montaje usa animNow global del renderer beam: a t1000 inicia en3 y a t1400 en9, no en anticipación0."
+      ],
+      "next": "En lote común reproducir el montaje según edad del evento, conservando orientación, radio y tiempo mecánico del muro; no cambiar fase global de los proyectiles existentes.",
+      "pr": 197,
+      "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 197,
+        "path": "art-source/entregas/brakk-kit-20261022/correccion-01",
+        "technical": "20 real draw frame checks PASS; 14 actual relay checks PASS; 132 functional PASS; combat/RNG 29232 identical. Build-only event phase; nails and legacy loops unchanged.",
+        "state": "EN_CORRECCION",
+        "remaining": "Full skins/arenas/contrast/warmup and visual gate. B118 arrow supports remain FIX; do not merge whole workshop."
+      }
+    },
+    {
+      "block": "B118",
+      "component": "A-FX-brakk-h2",
+      "source": "js/champions/skill-fx-a/c/brakk.js",
+      "sourceSha256": "9748b27d05d5dde840ddba9efc89a41359ea31e346663009da877ca0a3227946",
+      "frames": "turret-deploy 4-6",
+      "state": "EN_CORRECCION",
+      "evidence": "art-source/entregas/brakk-kit-20261022/atlas-preview.png",
+      "defects": [
+        "Los cuatro soportes se leen como flechas diagonales en la revisión de atlas; falta articulación/pie de apoyo que los haga claramente ingeniería de asedio."
+      ],
+      "next": "Conservar corrección local y completar gates pendientes; no repetir primera pasada ni integrar taller completo.",
+      "pr": 197,
+      "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-02",
+          "sourceSha256": "81be8914332b0e0fa33941c02fd9fb37827f86ce8e1ec8917896c26b0e7c81f9",
+          "status": "CORRECTED_LOCAL_PENDING_FULL_GATE",
+          "changes": [
+            "Flechas reemplazadas por brazos articulados, remaches y pies planos.",
+            "Intento inicial 79% visible falló; brazo afinado supera82% horizontal/móvil sin cambiar umbral80%."
+          ],
+          "tests": "Legibilidad específica burst seis arenas, tres escalas y tres variantes PASS;19 kit;20 fase;14 relay;paridad29232/29232.",
+          "pending": [
+            "skins equipadas y Art Gate integral",
+            "warmup/performance/reentrada y CI final"
+          ]
+        }
+      ]
+    },
+    {
+      "block": "B166",
+      "component": "A-FX-morveth-h1",
+      "source": "art-source/entregas/morveth-kit-20261022",
+      "sheet": "atlases/spore-pulse.png",
+      "sourceFile": "js/champions/skill-fx-a/c/morveth.js",
+      "sourceSha256": "9394db83bae05d5ff924e4731b15b39a3f7e99fdf8af6b09202fdaf240e9f30a",
+      "atlasSha256": "b6e2e5e7ac685d5549ddae885b4e49188f534ea630fbf9cead9ed02cc002945b",
+      "frames": [
+        10
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "El borde conserva152 píxeles al final del atlas y corta de golpe; el renderer de nova no atenúa la fase final."
+      ],
+      "evidence": [
+        "comparison.png",
+        "mobile-comparison.png",
+        "atlas-preview.png",
+        "verification.json"
+      ],
+      "next": "Revisión integral y skins/arenas; no cerrar B166 entero.",
+      "pr": 198,
+      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 198,
+          "path": "art-source/entregas/morveth-kit-20261022/correccion-01",
+          "sourceSha256": "0fb59f44b844921aab209d0892db716563077dc6ade606e311c490ddaa23a5e9",
+          "state": "EN_CORRECCION",
+          "change": "Pulso: borde usa misma disolución que esporas; cuadro10 pasa152→0 píxeles.",
+          "evidence": "30 silhouette checks;23 kit;131 functional;16 relay;23 general online;SFA RNG30414 identical;legibility six arenas horizontal/mobile PASS",
+          "remaining": "Revisión integral y skins/arenas; no cerrar B166 entero."
+        }
+      ]
+    },
+    {
+      "block": "B167",
+      "component": "A-FX-morveth-h2",
+      "source": "art-source/entregas/morveth-kit-20261022",
+      "sheet": "atlases/spore-exhalation.png",
+      "sourceFile": "js/champions/skill-fx-a/c/morveth.js",
+      "sourceSha256": "9394db83bae05d5ff924e4731b15b39a3f7e99fdf8af6b09202fdaf240e9f30a",
+      "atlasSha256": "9d85f6c49ecc55899acfd79b33f57f60791b0c06cfc8cde0949caa33a58c7abd",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Las esporas son distintas, pero en la escena siguen dominando rayos/impactos blancos compartidos con el efecto legado; falta una lectura propia del impacto en el conjunto."
+      ],
+      "evidence": [
+        "comparison.png",
+        "mobile-comparison.png",
+        "atlas-preview.png",
+        "verification.json"
+      ],
+      "next": "Revisar conjunto de impactos/material y contraste de superposiciones en skins/arenas; no afirmar que se retiraron todos los blancos.",
+      "pr": 198,
+      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 198,
+          "path": "art-source/entregas/morveth-kit-20261022/correccion-01",
+          "sourceSha256": "0fb59f44b844921aab209d0892db716563077dc6ade606e311c490ddaa23a5e9",
+          "state": "EN_CORRECCION",
+          "change": "Cono específico sin cinco rayos genéricos; conserva alcance210/arc0.85, daño, contagios y partículas del material golpeado. Perfil escalar viaja por evento existente al pool real del invitado.",
+          "evidence": "30 silhouette checks;23 kit;131 functional;16 relay;23 general online;SFA RNG30414 identical;legibility six arenas horizontal/mobile PASS",
+          "remaining": "Revisar conjunto de impactos/material y contraste de superposiciones en skins/arenas; no afirmar que se retiraron todos los blancos."
+        }
+      ]
+    },
+    {
+      "block": "B168",
+      "component": "A-FX-morveth-h3",
+      "source": "art-source/entregas/morveth-kit-20261022",
+      "sheet": "atlases/symbiosis-mycelium.png",
+      "sourceFile": "js/champions/skill-fx-a/c/morveth.js",
+      "sourceSha256": "9394db83bae05d5ff924e4731b15b39a3f7e99fdf8af6b09202fdaf240e9f30a",
+      "atlasSha256": "11be6bd6010338dcedf0bcc02596d05af9123cf9d3a2a1f30d12b09cf45fa7a6",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Los filamentos se ven como dos ramas/antenas finas; en móvil no se identifica con claridad el micelio alrededor del receptor."
+      ],
+      "evidence": [
+        "comparison.png",
+        "mobile-comparison.png",
+        "atlas-preview.png",
+        "verification.json"
+      ],
+      "next": "FIX residual: identificación aún tenue entre cuerpos/escudo genérico en móvil. Revisar silueta a1:1 en escena menos solapada y contacto real; skins/contraste integral pendientes.",
+      "pr": 198,
+      "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 198,
+          "path": "art-source/entregas/morveth-kit-20261022/correccion-01",
+          "sourceSha256": "0fb59f44b844921aab209d0892db716563077dc6ade606e311c490ddaa23a5e9",
+          "state": "EN_CORRECCION",
+          "change": "Micelio conectado al suelo con bifurcaciones y cuatro sombreros laterales. Centros retraídos para no cortar contorno.",
+          "evidence": "30 silhouette checks;23 kit;131 functional;16 relay;23 general online;SFA RNG30414 identical;legibility six arenas horizontal/mobile PASS",
+          "remaining": "FIX residual: identificación aún tenue entre cuerpos/escudo genérico en móvil. Revisar silueta a1:1 en escena menos solapada y contacto real; skins/contraste integral pendientes."
+        }
+      ]
+    },
+    {
+      "block": "B105",
+      "component": "A-FX-aelith-h1",
+      "source": "js/champions/skill-fx-a/c/aelith.js",
+      "sourceSha256": "36a57bc1da0347999b1f0871457b3e743ca9335cf8bdbea99ce1a81388bf3c80",
+      "atlas": "art-source/entregas/aelith-normal-kit-20261022/atlases/echo-shatter.png",
+      "atlasSha256": "bb04985f01f63e0dc443f1114d1062c9d7aa4993084b63bf735d269daa6ab505",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "El observador end muestra un estallido al cancelar el eco por muerte aunque no hubo segundo daño; reproducido."
+      ],
+      "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
+      "next": "Distinguir expiración con impacto de cancelación en host/invitado; preservar objeto y daño.",
+      "pr": 199,
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 199,
+        "state": "EN_CORRECCION",
+        "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01",
+        "sourceSha256": "78d7ebbe0f88ecf2c09e9c3634648a405fd6685e5826fff37ac1ae54d8a6ccee",
+        "technical": "41 lifecycle,27 kit,11 variants,31 relay,132 functional,23 general online PASS; SFA RNG29884 identical. TEST_ATTEMPTS preserves failures.",
+        "remaining": "Full visual gate, skins/arenas/specific contrast, warmup/performance and saturation/reentry. H3 grey/trail faint in mobile comparison. CI exact head pending."
+      }
+    },
+    {
+      "block": "B106",
+      "component": "A-FX-aelith-h2",
+      "source": "js/champions/skill-fx-a/c/aelith.js",
+      "sourceSha256": "36a57bc1da0347999b1f0871457b3e743ca9335cf8bdbea99ce1a81388bf3c80",
+      "atlas": "art-source/entregas/aelith-normal-kit-20261022/atlases/fracture-glass.png",
+      "atlasSha256": "16bb813121b6088b3f56f2dc47e67b7f3eaac9987a2f35288bc0ced94336bb4a",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "La grieta se ve como una línea dentada demasiado fina a escala móvil; aún no tiene apertura/cierre longitudinal de150ms ni estado de arena lenta propio."
+      ],
+      "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
+      "next": "Revisar grosor/fragmentos y fase longitudinal en lote común; usar endpoints reales, mantener ancho mecánico52 y no convertirlo en haz liso.",
+      "pr": 199,
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d",
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-02",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "da501c89333585a1b3bd1e0dfa99a9d0f7b793b452b116db3c85dcf12f288cdf",
+          "technical": "34 silhouette,41 lifecycle,27 kit,11 local variants,132 functional,33 relay,23 general online; SFA RNG29884 identical; final exact CI pending.",
+          "resolved": "Full-length glass/open-close150ms and moderate arena tint",
+          "remaining": "Actual target slow icon1800ms plus integral gate"
+        }
+      ]
+    },
+    {
+      "block": "B107",
+      "component": "A-FX-aelith-h3",
+      "source": "js/champions/skill-fx-a/c/aelith.js",
+      "sourceSha256": "36a57bc1da0347999b1f0871457b3e743ca9335cf8bdbea99ce1a81388bf3c80",
+      "atlas": "art-source/entregas/aelith-normal-kit-20261022/atlases/borrowed-sand.png",
+      "atlasSha256": "9442036a2e04173ab4cca2eddde115f66d9da5889489cf9974fde467bdf54287",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "state": "EN_CORRECCION",
+      "defects": [
+        "Falta colapso de las post-imágenes y fase gris de800ms de deuda.",
+        "Segundero usa animNow global/12 cuadros a100ms: no recorre una única vuelta en los3000ms reales.",
+        "Estela corta y tenue en comparación móvil; skins y perfiles de movimiento pendientes."
+      ],
+      "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
+      "next": "Lote común: fase visual relativa al buff/deuda real, cierre de siluetas y contraste; validar todos los receptores/skins sin tocar velocidad ni armadura.",
+      "pr": 199,
+      "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d",
+      "correctionAttempt": {
+        "date": "2026-10-22",
+        "pr": 199,
+        "state": "EN_CORRECCION",
+        "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01",
+        "sourceSha256": "78d7ebbe0f88ecf2c09e9c3634648a405fd6685e5826fff37ac1ae54d8a6ccee",
+        "technical": "41 lifecycle,27 kit,11 variants,31 relay,132 functional,23 general online PASS; SFA RNG29884 identical. TEST_ATTEMPTS preserves failures.",
+        "remaining": "Full visual gate, skins/arenas/specific contrast, warmup/performance and saturation/reentry. H3 grey/trail faint in mobile comparison. CI exact head pending."
+      },
+      "correctionHistory": [
+        {
+          "date": "2026-10-22",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-02",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "da501c89333585a1b3bd1e0dfa99a9d0f7b793b452b116db3c85dcf12f288cdf",
+          "technical": "34 silhouette,41 lifecycle,27 kit,11 local variants,132 functional,33 relay,23 general online; SFA RNG29884 identical; final exact CI pending.",
+          "resolved": "Two-tone equipped body snapshots at16/28/40%; stronger clock/sand with canon amber/grey palette",
+          "remaining": "Readability in mobile overlap, skins, warmup/performance and integral gate"
+        }
+      ]
+    },
+    {
+      "block": "B228",
+      "component": "A-FX-veyra-kvb-rng-parity",
+      "pr": 196,
+      "state": "EN_CORRECCION",
+      "source": "art-source/entregas/veyra-kit-20261022/correccion-01",
+      "frames": [],
+      "defects": [
+        "KVB.off true/false consumes 29969/28804 Math.random calls. Reproduced identically at previous PR196 head and correction; full on/on and off/off snapshots match before/after. This is not a PASS."
+      ],
+      "next": "Complete compound visual/skin/performance gates; reconcile shared hooks without importing other FIX art.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-23 UTC",
+          "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02",
+          "pr": 196,
+          "state": "EN_CORRECCION",
+          "technical": "CORRECTED_LOCAL: repeated complete on/off snapshots equal generic parent baseline; actual legacy particle/budget path restored; no RNG padding or seed changes.49 emission tests and12 follower renderer checks PASS.",
+          "sourceSha256": "98bfb135fde7e185a87ab478f3d2f809275c35435b4077b076cc088cac42bef7",
+          "remaining": "Full compound visual gate/skins/arenas/performance and exact-head CI; not an asset or block closure."
+        }
+      ]
+    },
+    {
+      "block": "B208/B209/B210",
+      "component": "A-FX-solciju-kvb-rng-parity",
+      "pr": 195,
+      "source": "js/champions/vfx-b/solciju.js",
+      "sourceSha256": "0627fd7fd76749615aab737a343e68ed39e0f687fe47c63a8ebfce4dbbeaaf47",
+      "state": "EN_CORRECCION",
+      "frames": "runtime completo KVB.off on/off",
+      "defects": [
+        "Math.random31834 sin KVB /26414 con KVB y estados de enemigos diferentes. Reproducido en head anterior7b89de24bdea58d5e5e321e18957d3b0c5715f05 y corrección."
+      ],
+      "evidence": "art-source/entregas/habilidades-recientes-20261022/correccion-01/parity-comparison.json",
+      "next": "Complete compound visual/skin/performance gates; reconcile shared hooks without importing other FIX art.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-23 UTC",
+          "path": "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02",
+          "pr": 195,
+          "state": "EN_CORRECCION",
+          "technical": "CORRECTED_LOCAL: repeated complete on/off snapshots equal generic parent baseline; actual legacy particle/budget path restored; no RNG padding or seed changes.49 emission tests and12 follower renderer checks PASS.",
+          "sourceSha256": "a2f99d22924d3305c3dd55a0d1ca9d08d25db36d0ba4f9b9e207237490f52442",
+          "remaining": "Full compound visual gate/skins/arenas/performance and exact-head CI; not an asset or block closure."
+        }
+      ]
+    },
+    {
+      "block": "B228",
+      "component": "A-FX-veyra-pact-render-follow",
+      "pr": 196,
+      "state": "EN_CORRECCION",
+      "source": "js/champions/vfx-b/pixfx.js",
+      "frames": "render after hero movement, camera reentry and death",
+      "defects": [
+        "Observed host dx=-15 under real relay: follower coordinates updated before hero motion, not refreshed before drawing/culling. Parent renderer reproduced10 failures/12 checks."
+      ],
+      "correctionHistory": [
+        {
+          "date": "2026-10-23 UTC",
+          "path": "art-source/entregas/veyra-kit-20261022/correccion-rng-02",
+          "change": "Resolve live owner+offset before culling/drawing; skip owner killed since last update. No clock/buff/protocol changes.",
+          "technical": "12 renderer checks and21 real relay checks PASS; shared patch also applied PR195.",
+          "remaining": "Full visual/performance/skins gate and exact-head CI."
+        }
+      ],
+      "next": "Reconcile shared pixfx patch when isolating approved components; keep full pending gates."
+    }
+  ],
+  "pendingVerificationNotFailures": [
+    "Aurelia basic/refraction/luminal-step: generated, no empty/edge flags, still need final-scale readability, proper layer split and runtime tests",
+    "Myla hurt: visual continuity review pending",
+    "Libertador PR166: specialized61-frame integration pending, do not use generic36 replacement",
+    "Solciju B210 copa: revisión visual inicial favorable y alpha PASS; pendiente revisión de skins/arenas y CI del head antes de VALIDADO/main.",
+    "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
+    "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
+  ],
+  "nextProduction": "Complete Aelith B106 actual-target slow indicator1800ms and B107/Morveth B168 contact readability; then integral gates for recent kits. RNG Solciju/Veyra technically corrected, not merged.",
+  "groupedCorrectionCheckpoint": {
+    "date": "2026-10-23",
+    "prs": [
+      195,
+      196
+    ],
+    "paths": [
+      "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02",
+      "art-source/entregas/veyra-kit-20261022/correccion-rng-02"
+    ],
+    "status": "EN_CORRECCION / NO_INTEGRAR",
+    "next": "Complete Aelith B106 actual-target slow indicator1800ms and B107/Morveth B168 contact readability; then integral gates for recent kits. RNG Solciju/Veyra technically corrected, not merged."
+  }
+}
