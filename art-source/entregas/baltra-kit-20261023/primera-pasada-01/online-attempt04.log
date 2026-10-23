@@ -1,0 +1,35 @@
+[arnés] servidor propio: http://127.0.0.1:42747 (raíz /workspace/scratch/a01f80e6b406/la-horda-baltra)
+JOINED {
+  code: 'QND6B8',
+  human: 2,
+  slots: [
+    {
+      slot: 0,
+      name: 'Jugador',
+      champ: 'solciju',
+      level: 20,
+      ready: true,
+      connected: true,
+      host: true,
+      muted: false,
+      founder: null
+    },
+    {
+      slot: 1,
+      name: 'Jugador',
+      champ: 'baltra',
+      level: 20,
+      ready: false,
+      connected: true,
+      host: false,
+      muted: false,
+      founder: null
+    },
+    null,
+    null
+  ]
+}
+HUMANS_READY
+LOADOUT_READY
+START_SENT { state: 'playing', role: 'host' } { state: 'playing', role: 'guest' }
+{"host":"solciju","guest":"baltra","ok":true}
