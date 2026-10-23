@@ -1,0 +1,24 @@
+{
+  "status": "CLOSED",
+  "production": "51286908988e89838aa180630dbd5e0f4cb41c7a",
+  "recovery": "a186453f2f29691c9c3880b9fac19b8ba62b9b41",
+  "parent": "fc7d6214e289456f374e9cc555f953cbb64cd80e",
+  "main": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "branch": "art/bront-redesign-first-pass-20261023",
+  "pr": 201,
+  "draft": true,
+  "productionFilesVerifiedByRemoteGitBlob": 28,
+  "generation": "GENERADO",
+  "review": "EN_CORRECCION / FIX / NO_INTEGRAR",
+  "validated": false,
+  "integratedMain": false,
+  "publicGameVerified": false,
+  "scope": "36pose correction; source/atlas/diagnostic preview only; all installed assets/runtime untouched",
+  "ciAtProductionRead": {
+    "checks": 10,
+    "workflows": 5,
+    "status": "in_progress",
+    "note": "Exact productionSHA; final closureSHA must be queried anew. Neither CI nor numeric style is visual approval."
+  },
+  "next": "Native alpha, helmet40\u201345%, transparent gaps/chest void and body anchors across36; then coherent two skins and actualgame renderer gates."
+}

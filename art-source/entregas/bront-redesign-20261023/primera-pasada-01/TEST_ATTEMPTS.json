@@ -1,0 +1,24 @@
+{
+  "attempts": [
+    {
+      "id": "extract-01",
+      "exit": 1,
+      "result": "ModuleNotFoundError: cv2 at style_gate import; atlas/previews were produced, gate not executed. No PASS inferred."
+    },
+    {
+      "id": "extract-02",
+      "exit": 0,
+      "result": "36 nonempty/unique; style metrics PASS. Ten fixed-column cuts touch opaque source; visual stray pixels at frame22. Preserved attempt-01. Binary alpha FAIL."
+    },
+    {
+      "id": "extract-03",
+      "change": "Per-row x cuts selected within alpha>=128 empty gaps; source untouched, same global scale. Re-run verification.",
+      "exit": 0,
+      "result": "36/36 nonempty and unique;0source boundary touches;style4metrics PASS;alphaFAIL. Visual FIX remains."
+    },
+    {
+      "id": "closure-01",
+      "result": "Transient in-memory orchestration keys absent after new message; create_commit lacked parent, update_ref rejected missing sha. Remote ref re-read and unchanged at cb339587. Recovery uses explicit SHA and fetched parent tree. No game files changed."
+    }
+  ]
+}
