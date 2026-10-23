@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "base": "f62d181477adcb4607cc615411cc51bad769f681",
+  "source": "js/champions/skill-fx-a/c/facu_gm.js",
+  "sourceSha256": "45135dcbfae0e703c1d2974fcd04e0c54ac98686f98f4a6563a8e632d8b4f496",
+  "approach": "Native SfaStrip canvas VFX recipe",
+  "specs": [
+    {
+      "theme": "facu_current",
+      "art": "beam",
+      "size": 16,
+      "arc": 0,
+      "w": 16,
+      "h": 16,
+      "n": 8,
+      "cells": [
+        44,
+        45,
+        45,
+        45,
+        45,
+        44,
+        45,
+        45
+      ]
+    },
+    {
+      "theme": "facu_current",
+      "art": "burst",
+      "size": 64,
+      "arc": 0,
+      "w": 64,
+      "h": 64,
+      "n": 12,
+      "cells": [
+        143,
+        176,
+        199,
+        215,
+        256,
+        282,
+        294,
+        287,
+        218,
+        145,
+        76,
+        0
+      ]
+    },
+    {
+      "theme": "facu_pressure",
+      "art": "nova",
+      "size": 128,
+      "arc": 0,
+      "w": 128,
+      "h": 128,
+      "n": 12,
+      "cells": [
+        411,
+        398,
+        385,
+        363,
+        358,
+        324,
+        284,
+        234,
+        168,
+        101,
+        48,
+        0
+      ]
+    },
+    {
+      "theme": "facu_ride",
+      "art": "burst",
+      "size": 64,
+      "arc": 0,
+      "w": 64,
+      "h": 64,
+      "n": 12,
+      "cells": [
+        131,
+        156,
+        180,
+        204,
+        231,
+        259,
+        281,
+        273,
+        206,
+        138,
+        70,
+        0
+      ]
+    },
+    {
+      "theme": "facu_ride",
+      "art": "beam",
+      "size": 16,
+      "arc": 0,
+      "w": 16,
+      "h": 16,
+      "n": 8,
+      "cells": [
+        46,
+        47,
+        46,
+        46,
+        47,
+        45,
+        43,
+        46
+      ]
+    }
+  ],
+  "commands": [
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/verify-facu_gm-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=/tmp/facu-reexport node tools/vfx/verify-facu_gm-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=art-source/entregas/facu-gm-kit-20261023/primera-pasada-01/after node tools/vfx/capture-facu_gm-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium BASELINE=1 OUT=art-source/entregas/facu-gm-kit-20261023/primera-pasada-01/before node tools/vfx/capture-facu_gm-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium MOBILE=1 OUT=art-source/entregas/facu-gm-kit-20261023/primera-pasada-01/after-mobile node tools/vfx/capture-facu_gm-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium MOBILE=1 BASELINE=1 OUT=art-source/entregas/facu-gm-kit-20261023/primera-pasada-01/before-mobile node tools/vfx/capture-facu_gm-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium ONLY=facu_gm node tools/vfx/parity-facu_gm-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/ascension/facu-firstpass-check.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/ascension/facu-firstpass-online.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/ascension/facu-regression.js"
+  ],
+  "dependencies": [
+    "playwright",
+    "local Chromium path",
+    "npm ci --prefix server using existing package-lock.json"
+  ],
+  "timing": "Beam8 phases global70ms, currentburst480ms, pressure nova700ms, ridelaunch460ms; foam exists2000ms per segment. Preview95ms fixed diagnostic only. Captures80/256/512/1104/2000ms real."
+}
