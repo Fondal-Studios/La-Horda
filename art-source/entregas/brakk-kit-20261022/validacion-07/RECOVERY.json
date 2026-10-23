@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-23",
+  "parent": "47812843cdfb4e2002b9b373594ed0988ff2bc6a",
+  "main": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "closed": false,
+  "status": "EN_CORRECCION",
+  "scope": "Diagnose B117 legibility and Brakk relay lifecycle; preserve runtime/art until evidence",
+  "previousClosure": "correccion-06/REMOTE_CLOSURE.json",
+  "ciParent": {
+    "checks": 18,
+    "workflows": 7,
+    "all": "success"
+  },
+  "next": "Recover dependencies; trace identical-pose B117 and turret host/guest. Preserve all failed attempts."
+}
