@@ -1,7 +1,7 @@
 name: VFX readability and combat parity
 on:
   pull_request:
-    paths: ['js/champions/skill-fx-a/**', 'js/champions/vfx-b/**', 'js/rendering/**', 'tools/vfx/**', 'index.html', '.github/workflows/vfx-readability.yml']
+    paths: ['js/champions/asesino.js', 'js/champions/skill-fx-a/**', 'js/champions/vfx-b/**', 'js/rendering/**', 'tools/vfx/**', 'index.html', '.github/workflows/vfx-readability.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -23,6 +23,13 @@ jobs:
           export CHROMIUM_PATH="$(node -p 'require("playwright").chromium.executablePath()')"
           set -o pipefail
           node tools/vfx/test-decal-legible.js | tee /tmp/horda-vfx-results/readability.txt
+      - name: Guerrero persistent trap loading and lifecycle
+        run: |
+          export CHROMIUM_PATH="$(node -p 'require("playwright").chromium.executablePath()')"
+          export OUT=/tmp/horda-vfx-results/guerrero
+          set -o pipefail
+          node tools/vfx/check-guerrero-trap.js | tee /tmp/horda-vfx-results/guerrero-draw.txt
+          node tools/vfx/check-guerrero-lifecycle.js | tee /tmp/horda-vfx-results/guerrero-lifecycle.txt
       - name: Reject original occlusion defect
         run: |
           export CHROMIUM_PATH="$(node -p 'require("playwright").chromium.executablePath()')"

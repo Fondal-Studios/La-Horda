@@ -1,0 +1,9 @@
+{
+  "base": "ee29c489cfec814b81fa63ee08f05a067df8e5bf",
+  "art": "Reutiliza assets/vfx/guerrero/trampa.png (o WebP servido por loader), celda 7 de 84x84; clip armada; tama\u00f1o64x64 ancla0.5/0.5. Sin arte nuevo ni imagen generada. Pintor/forja no aplican a conexi\u00f3n de un atlas existente.",
+  "commands": [
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/check-guerrero-trap.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/guerrero-trap-online.js"
+  ],
+  "scope": "B143 fase persistente; B141/B142 atlas y emisores existentes. No se cierran bloques."
+}

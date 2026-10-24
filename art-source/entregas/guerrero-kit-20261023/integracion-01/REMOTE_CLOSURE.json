@@ -1,0 +1,19 @@
+{
+  "production": "0e41c2d5b7b6f3c8ca8f965706f2039701ee46f0",
+  "tree": "8e2763ec80cae34374655e2205f4479aa3588cf3",
+  "verifiedFiles": 68,
+  "method": "Git blob local == tree remoto completo; no truncado",
+  "pr": 212,
+  "state": "EN_CORRECCION",
+  "merge": false,
+  "publicationVerified": false,
+  "next": "Auditar Ilkan B144/B145/B146 en main y PR actuales; conservar Guerrero B143 para Art Gate compuesto. No duplicar atlas/cuerpo/muerte/UF.",
+  "attempts": "Un error sintáctico de orquestación antes de crear tree/commit fue corregido; no movió refs ni perdió archivos.",
+  "tests": {
+    "drawing": "20/20 PASS",
+    "relay": "4/4 PASS",
+    "combatRng": "No ejecutado",
+    "visualGate": "Pendiente integral",
+    "ci": "Consultar SHA final; no aprobación"
+  }
+}

@@ -116,6 +116,17 @@ function drawTrap(tr){
     drawAnimFrameSized(img, clip, 0, tr.x, tr.y, img.width*s, img.height*s, 0.5, 0.85, false, fade);
     return;
   }
+  // Reuse the authored armed trap cell for Guerrero's persistent object.
+  // Forest roots and unknown owners retain their existing renderer/fallback.
+  if(tr.kind!=="forest_root" && tr.src?.classKey==="guerrero" && !tr.triggered && tr.timer>0 && !(tr.armTime>0)){
+    const atlas = ASESINO_HAB_ANIM_ATLASES.trampa;
+    const clip = atlas?.def.clips.armada;
+    if(atlas?.ready() && clip && atlas.img.complete && atlas.img.naturalWidth>0){
+      const fade = tr.timer < 1200 ? Math.max(0.2, tr.timer/1200) : 1;
+      drawAnimFrameSized(atlas.img, clip, 0, tr.x, tr.y, 64, 64, 0.5, 0.5, false, fade);
+      return;
+    }
+  }
   if(tr.armTime>0) return; // invisible mientras se activa
   const now = performance.now()/1000;
   const pulse = 0.6+0.4*Math.sin(now*5);

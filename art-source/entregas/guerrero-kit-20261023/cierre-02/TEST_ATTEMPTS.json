@@ -1,0 +1,43 @@
+{
+  "attempts": [
+    {
+      "id": "capture01",
+      "result": "ERROR",
+      "cause": "Arnés asumió CHAMP_PACK.guerrero; base usa GUERRERO_IMG legado. Se corrigió observación sin tocar runtime.",
+      "evidence": "attempt-01/"
+    },
+    {
+      "id": "capture02",
+      "result": "FAIL",
+      "counts": "77/144 restauraciones,72/144 estados exactos. Primer render de enemigos recién insertados no preparado.",
+      "resolution": "Se prepararon caches con dos renders antes de comparar.144/144 pasan sin modificar renderer. No se demostró qué cache/subsistema produjo cada diferencia fría.",
+      "evidence": "attempt-02/"
+    },
+    {
+      "id": "life01",
+      "result": "ERROR",
+      "cause": "performance.now invocado sin receptor; bind(performance) en benchmark.",
+      "evidence": "attempt-life/"
+    },
+    {
+      "id": "life02",
+      "result": "10/11",
+      "cause": "resetRunTransients no es reinicio de partida ni vacía traps; run.js:109 lo hace startRun. Prueba final usa reinicio real.",
+      "evidence": "attempt-life-02/"
+    },
+    {
+      "id": "final",
+      "result": "PASS",
+      "draw": 20,
+      "lifecycle": 11,
+      "online": 4,
+      "parity": "360frames26024/26024RNG y estado resumido idéntico",
+      "matrix": "72escenas400ms+72escenas1600ms,288A/B/A+estado exactos,100%retención cuerpos,80%/delta24intactos"
+    },
+    {
+      "id": "negative-control",
+      "result": "EXPECTED_FAIL_EXIT1",
+      "detail": "RGBA candidato sustituido por magenta en control de medición:0%retención en4muestras; restauración/estado siguenexactos."
+    }
+  ]
+}

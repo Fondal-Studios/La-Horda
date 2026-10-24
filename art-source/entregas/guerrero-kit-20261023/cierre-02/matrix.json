@@ -1,0 +1,3395 @@
+{
+  "checks": {
+    "canary": false,
+    "scenes": 72,
+    "restorations": 144,
+    "stateUnchanged": 144,
+    "errors": []
+  },
+  "rows": [
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "bosque",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1247,
+          "enemyRetained": 1247,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "1ec85286f7aee8faacc2ea83153cf5bf38e02e66a740076d1f05f27fec08d617",
+          "afterHash": "2a21009cf33d4393d4e03c9fbf9d960404cc90bc77556a3a1e27656fb2a5c7f3"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1247,
+          "enemyRetained": 1247,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "e2edce2a6d82a2d5eaaa8d829df3bd905978166b312e4461d15840b1a3b4d413",
+          "afterHash": "567f8b57f0a73a58d71be2941532e8de2ee5f8bc4bb6225946e22a7c36986fe7"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-bosque-base-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "bosque",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4914,
+          "enemyRetained": 4914,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "4e549229c5d49a40ef2b706d2516f57bcab1604668f948bced9c8e314587697a",
+          "afterHash": "2280b6254d89b9deabf98c41a71391eb1ef85b4ceacf3a93250c13c32f3a726b"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4914,
+          "enemyRetained": 4914,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "139be8b042a7512d03d6af798daa42080c4b49e999d44ee95c85e94f800cfbad",
+          "afterHash": "86d462ef8c513c73b49cc0e92759651e89eacf549c64f9250be96089283e0709"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-bosque-base-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "bosque",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1275,
+          "enemyRetained": 1275,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "99c5cf17b68630ffd1d4bf4d16a235db6258cc96cac198d21c895430bbddca2e",
+          "afterHash": "91f72b2fdaa9737848b3b45f2d0f59b55bbac46cf2752ffc57b9f6b877aed36b"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1275,
+          "enemyRetained": 1275,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "425c2fee71abccf599e24669f948ec9c34136b0e4d0e5cd6504489ad96bfb971",
+          "afterHash": "86c3c5fcd7d1db42ebac77e1c00a0450ef4378009d3313c3d2fd4a1b459af567"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-bosque-gear-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "bosque",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4916,
+          "enemyRetained": 4916,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "5a7d34897a8f1b0e8d538b6d3edcf957ccbcdcdd3dcedb49d66cb00720053633",
+          "afterHash": "f082c55739e95f622a72d07d8310feb7571cd46cf0afd906f09d9650166e4eae"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4916,
+          "enemyRetained": 4916,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "f42d27bfaa556e1cfa3e90ddeb48b8cd89fe07918b119e55df89da800512633f",
+          "afterHash": "df219650c029bad0af6ddec975375eaabdbc10a9a6301c77619485f661479d0b"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-bosque-gear-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "bosque",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1253,
+          "enemyRetained": 1253,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "16811af6e5339b969ba32616dad67051c9a13d8f6068f56550f4f476cded2037",
+          "afterHash": "b59a3992a08e46ad017193674255ed4aeb131717a01f38f41b7aaeaff8d557c0"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1253,
+          "enemyRetained": 1253,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "5b5febc040aa3c01fb00d98619ff8aca28f9d2e75eab2bc24e5149dfe64c5f29",
+          "afterHash": "1b20ee43175bec6cae4665a66840b529ff99ec6c46fb57373a487021b0c4058c"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-bosque-set-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "bosque",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4888,
+          "enemyRetained": 4888,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "dc0ea701ce9018cc849b8c50c67cc9b759bcb41f2f0dafc46b33688b60e2ed3a",
+          "afterHash": "6d705e4fa27a0da4537f4a198523a5223866b1b8053336c024ddd336a0b65061"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4888,
+          "enemyRetained": 4888,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "8af4c1f14b225d60be347ed5635a4a6f7566953d8bf580b99e598bd9548e62df",
+          "afterHash": "0cf158e501928c79a5a802d78f413711f5d88ca3b323565c268bfc5d8b6a7d00"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-bosque-set-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "hielo",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1264,
+          "enemyRetained": 1264,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "127c0d11e3669f903cecc25d5a1a549b525b8cbc4ffdce7bca87ab35c1fa1586",
+          "afterHash": "737fb853e7272ef4dd6866cb19a7822defa4ba228aa5e817f4f98a0f32b598a9"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1264,
+          "enemyRetained": 1264,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "e61c4d60017c17e7e7feb1761f5527918d80ed34da91ced47b7f67250c8d0f30",
+          "afterHash": "ca4557d3754b59d955a471de8288eb141a0f80b33d1f37c4f171df49f7c2b3c9"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-hielo-base-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "hielo",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4872,
+          "enemyRetained": 4872,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "b46c01f9c1ddebf81db7bc45fcdfea456940423d9af33e73667399c1bb96ecff",
+          "afterHash": "06d5df74308586c8e0aa82cf5c4d4c5c42934d48ec348bf752eb1f425d3f3d9d"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4872,
+          "enemyRetained": 4872,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "612e781928d1a0779504498772661ad8aed277b19e04ee6a58c98f13205e26e4",
+          "afterHash": "3dd94ef6e29d6163c9aa5d7c8529496f1534c9fb1585304f1d8d100ffd1cab68"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-hielo-base-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "hielo",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1267,
+          "enemyRetained": 1267,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "c209cd4b82e64262391a565b16ee4a916dad19e827be839e00ed82478818e3a6",
+          "afterHash": "47f3215ea1034f9d19736232df1c301f2bc62887f2a8dddbfc3fe1facb120582"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1267,
+          "enemyRetained": 1267,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "10ef33fca531fde3f43d7a3adc5ce32a22f41fc5a8eaf89732b14e301ac57517",
+          "afterHash": "c1459cf72c2ea23723b9c9cea15944f557044e13e784a90d0fb3d893424e0147"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-hielo-gear-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "hielo",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4976,
+          "enemyRetained": 4976,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "39b78dfb878390749d0e3f7c2f17e97b7eedb0530479c8e2c4fbbd41733c05e7",
+          "afterHash": "53e1b5062637aac4da33ba3a3d373565610ea4abfcf77d6e05741f7d52215b0c"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4976,
+          "enemyRetained": 4976,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "aee860709c95f5f912b5d44ae95ac7e886ab2e68e9d39c27ac5964263035394e",
+          "afterHash": "f7c9c66b91f0fe96a1b9d0cee893ccca2063a5b8b48fc1c6a6887b8bbf3a349a"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-hielo-gear-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "hielo",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1276,
+          "enemyRetained": 1276,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "40c7df68b658813c6ab60841d53e972a400315c99d12cbc19f5145966c37d628",
+          "afterHash": "db3d25f6be065ffef1293c3ddd6a77bada832382fff4a191add2b762e857acda"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1276,
+          "enemyRetained": 1276,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "5f0d6b60161a78f52d016909b7280b0f131d4fca0c2ee0f9b8272bd16e5935c8",
+          "afterHash": "82b723ef368a448fa1d01ceffd2a9fe96a5144a413c1814f13a2d4fa7bdab7a4"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-hielo-set-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "hielo",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4822,
+          "enemyRetained": 4822,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "104dec4c0e8e9c251327fe1c9c2330af06254fe3921905f7836c54260d16114f",
+          "afterHash": "580e24db2d04b4af8130d9f83af9f75a057da1c0484dc481552a1eb041397749"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4822,
+          "enemyRetained": 4822,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "7f0900a711191f5d47623001c895cc97e3b5be4d4c9758949edd73580ef7457c",
+          "afterHash": "37ea822b63e103a4cb1225169cd10b1ec26a85a6fd0ebcf276d2190992eff5c1"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-hielo-set-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "infernal",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1247,
+          "enemyRetained": 1247,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "7ec2f21768c3ae7b5b346b29368427f843a07e7bb8090438e689e52b8f95efee",
+          "afterHash": "040f50738cae516b5ce33533499559b9970e0967f522259ea9c180abff5fb028"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1247,
+          "enemyRetained": 1247,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "b397d42ed1ba47b33aefb895cac4f2a54e3b2fa6e21ec5a9ba2c2fdbc994bc60",
+          "afterHash": "593bfa713d01862a63188583b6d0dcd80afeb722a80d0dd3e450e65f05a23ba2"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-infernal-base-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "infernal",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4944,
+          "enemyRetained": 4944,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "022514690d804aab9d2d4d4858e0b2a2496b22a78d828b5e25bae901cc798dd2",
+          "afterHash": "47d03db18c8f4e2decbb542e84c2e29c1b6cd91dc004ffa8fa3862665f2f1238"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4944,
+          "enemyRetained": 4944,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "beb33cdd5fd0ff87ae82477e44e26491e8ff4288277f04032c623c76277a8b92",
+          "afterHash": "b1673bd8db7ed2e52a681176cfcb004c223251a5f93919a00821b453f25b1524"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-infernal-base-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "infernal",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1268,
+          "enemyRetained": 1268,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "58a8c969f636306934a4133bef9edf83f9788ea93ddfbc36c9efa6c8e7b6e163",
+          "afterHash": "0ba0bc55bdf8778c81ce195c3f64d9a4aecbb5a2a07395bdad6d436e6c7583e5"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1268,
+          "enemyRetained": 1268,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "a4cfa8e980cbbf923647ed97f4eb08d4048b1834416ba179b00300842f8972b1",
+          "afterHash": "8665441c4bdaeb6c48b37b23c607964dfd10e2276ddc4e2618e85486c5d63e93"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-infernal-gear-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "infernal",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4961,
+          "enemyRetained": 4961,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "0615a31af5e8e8c4941726cea2bddcf7978252a2e71aff8d64defb1cb4c35dbb",
+          "afterHash": "2c7578ad54c14fc612357da682c2a17ba481dd69db599103edb6d0c01600a667"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4961,
+          "enemyRetained": 4961,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "2bbe66c7d257e061aaeef70664768f57bf81654d429b1a5ff05d8068f7a5b27f",
+          "afterHash": "44e70599e8a70ee409efe6e5fd0055f1ee5f1f00d786218eb7fc0da97dfd55f4"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-infernal-gear-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "infernal",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1254,
+          "enemyRetained": 1254,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "be4672dd8620b6bc2f93b2bbe72c6d718802548884742be90f76309668b6493a",
+          "afterHash": "24376a5d1c4aebd124bd9f7dea67c4ab4d59da6a3deb912f22146a5174bb18b3"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1254,
+          "enemyRetained": 1254,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "75388abaccb0576e55b67d2fb17c15d32b4d080d1578bc14ccb2a9c68ab116dd",
+          "afterHash": "8dc8061347fa21acbc0ca6507893b4501905c998614de3a5caac327d34dc0a37"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-infernal-set-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "infernal",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4944,
+          "enemyRetained": 4944,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "2c53a9e9c69ff81b50ed883e605403c1a3ad69112e5e7b15bc688ed3e39c5ee4",
+          "afterHash": "617a944eca2c2a84f7b9f9e428d7662d10d5c4c7a4acbd30b52934b16204fff6"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4944,
+          "enemyRetained": 4944,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "8c166a9436e569b5076d4b1ab1d29bc7c1fd426e16249539593a855f218e2772",
+          "afterHash": "088d78f5f7fb4ac020dbec789fd69ff05a90eed2f9c81bbd6bb07acf1f1e11b6"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-infernal-set-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "laberinto",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1248,
+          "enemyRetained": 1248,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "655cb94810e361e0771d2d388b259a73724b73c118086fffcbc9c810c5ae1dcc",
+          "afterHash": "0f6d63ea6d56b5cf19e59ac05b469800c8eac16633d1f7281bcf72d2bdbe8c58"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1248,
+          "enemyRetained": 1248,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "98bd42d93b0392a4b065e12b992750ae29e8c179bab67139d5481ea059b63f91",
+          "afterHash": "8af45ae9e91e17321cae1dbbda7587d29a6d8e9e87ee96f00cd6d54eae06d2d5"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-laberinto-base-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "laberinto",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4874,
+          "enemyRetained": 4874,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "f0982b8ae898614bbb3aae8b7166eca6a80e566181db74c33c45dcca1d5595be",
+          "afterHash": "0ab3fc4966f739eedba71585ee4a30ba529f69f32e0fb8e743756dc3dfd33988"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4874,
+          "enemyRetained": 4874,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "4423ea7c80d0cda32e71d11d427be2ec80c557f47ccc9f6b1dc50da1f8beb35b",
+          "afterHash": "f6b4fb21fa65801e73e2fb9bd7083c34f008e34ba6e25cbce7789d47f9139b2e"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-laberinto-base-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "laberinto",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1280,
+          "enemyRetained": 1280,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "0ea1ff3d89fceac49b611c35e8f2f0ff993a7e2edb29db73a00845138ae88a13",
+          "afterHash": "fc7b86e7dd9710a772ea1a7126daeee5553b04629f519a2f2886b939417ca10f"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1280,
+          "enemyRetained": 1280,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "6810b3296249b52da38f6c7e3e7f3fdaeaec6b43362966c2ce4cf8ea03312588",
+          "afterHash": "6371c73a3aee74d57e344c07640c98343f0b1848ac09fd6502878422c1f77b43"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-laberinto-gear-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "laberinto",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4842,
+          "enemyRetained": 4842,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "907f93c24c685b1002e1b204363d448d87c122fc47c3353ccc91ac6772d35930",
+          "afterHash": "d541a4d3ca92570fe28c4e29fa37101230319b5464cece246614483ddee42f56"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4842,
+          "enemyRetained": 4842,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "7bf7a7433221aefb5cbbc341862540488d89d1ac15a737dd0d36abc7c0213a53",
+          "afterHash": "3f1ba3b33587660be183372fa958dd26774e5bfeadb5b44b1a45f9f29f8e65eb"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-laberinto-gear-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "laberinto",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1253,
+          "enemyRetained": 1253,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "7a97336c835b1ba4e17006ee07a053efbb707fcb819f115f94faf16a4b37d81e",
+          "afterHash": "2d6f15f046a5fa995e307c4d88b31dddc3e69227a13efaaec8a6ae4cd71a81f7"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1253,
+          "enemyRetained": 1253,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "bfa2f4e3a9d124e295bedabc49847fc267fd41e69a60a6fd7b772f8f41af5ee7",
+          "afterHash": "41bb65bf33317d02e8c063e925931aec03d6af3c77a9876ccfe002f210fbbbae"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-laberinto-set-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "laberinto",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4874,
+          "enemyRetained": 4874,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "46a0a5ae12b9a23c7161c0924f40101d5b5b807370fb6742a736951e68d4dd93",
+          "afterHash": "ed6dd97bb6fcd31b14e6487016ddf76fb58b21535e6438c5511448c61751946b"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4874,
+          "enemyRetained": 4874,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "1e065ae238893936ed015b25ccc7598b81c583ef9df425ed7835c705047f930c",
+          "afterHash": "e5008016409ec572b6aa5f2460673edad00f6449bd30bd40261bd5022a9f5224"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-laberinto-set-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "acuatica",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1261,
+          "enemyRetained": 1261,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "664d3020de2af17c3e26a9720bbc32cd82a021e066d11257d39bc18161d387c4",
+          "afterHash": "253a363ba97deffbe922021d5b9ee75a73d73cdd6ba3c09efae210ff4768c72e"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1261,
+          "enemyRetained": 1261,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "4fce35d43cfceb7dafdea783dd967dec70e34c4ecaed9001f1628e5aa1c18820",
+          "afterHash": "715f8bd38859528d260a32f16345fe187f5fef85a1e52c3121235ff53e5390bb"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-acuatica-base-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "acuatica",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 5060,
+          "enemyRetained": 5060,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "145f162530e14d0ba2a2f743ba6888d5175d609e8b0c422c6cd2cec82db6a778",
+          "afterHash": "5f81d96fb32ea54961100a152c123e667c920e1535396e3ae6fb790124e1f1c4"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 5060,
+          "enemyRetained": 5060,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "e7c4294cd8fe8547386451d9afe80dfcca665da6c5601f38fab11f7a31153401",
+          "afterHash": "a3779716327b65f3197c4cf0ea5adeb4d308e3137c64a06881459c6eeb63942e"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-acuatica-base-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "acuatica",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1268,
+          "enemyRetained": 1268,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "f47850d986f05d3273e9b71a4d3899d4ffa7c4a5be1b804fde6b91384c89f446",
+          "afterHash": "7adfc505e72c9c7faa4bb5d154cb6f38bea7126e695bf7af7d058a857f8f9607"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1268,
+          "enemyRetained": 1268,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "dfe6db571fcf1c9ea642c342ce750fbf7f09a6c32ee8e29da1a4f5317e9c2449",
+          "afterHash": "e3d32f2aa3f96d9bdb34262c8b413dfe3bdb8c19f66f8813b76a97b554928fbd"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-acuatica-gear-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "acuatica",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4969,
+          "enemyRetained": 4969,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "21b7d770f85f0566bb63416b63881eaa32af6e30c3255139a6124b1d3c7d859f",
+          "afterHash": "eaadb9703e74ce9dd727eabbb55fbc8b3eeb227397b84c3d6071460027247479"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4969,
+          "enemyRetained": 4969,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "f87b4817d56e2154d5ebb18778ab77e9fd402c21a6157d91065f7081e8105f03",
+          "afterHash": "7cc8bbed3d5ddc6b5675a8060768b69c7a4ea407f2e7bf76f9710319ff7dca0b"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-acuatica-gear-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "acuatica",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1257,
+          "enemyRetained": 1257,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "a51f1724197b77d27a1851c3e182ee3f33073bf91017742aa20dc4473ad9c6f8",
+          "afterHash": "45fe9252ec9d7e39458c4ddf6e3fc2004a844990a364d49c1716daf3a4ee2393"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1257,
+          "enemyRetained": 1257,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "af6de769ccfc30e4fbaaf28ce2129cd01656492be2c6b08f11a5e9986f933094",
+          "afterHash": "cee61269c8a444e8bd2674f0ce452abb0780f0a6ff5b68c9c8b9e565d956d4cd"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-acuatica-set-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "acuatica",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 5060,
+          "enemyRetained": 5060,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "ebb8b079654fda1a4494b9f39cf4d56ac5e8a1ca255638c0fdc0d3fbe366b8e2",
+          "afterHash": "24081429235fc501dfefeb974c232fe58d7f200c77182d1c3337bb94bac1aa1a"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 5060,
+          "enemyRetained": 5060,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "e6ba350935ceaa076fba8af6f1ac038a4bb92487938c2970301d92b95639b646",
+          "afterHash": "95f4b14769d2472afd0d67c6134be08303c7029c63fe4d69741cc1517d21ac1f"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-acuatica-set-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "minas",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1246,
+          "enemyRetained": 1246,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "da4bbd4ee9108b757db89597078a9c7f9969fe386a1a7e368beb254eae298f4e",
+          "afterHash": "182e8004be87a3b0b2d99fcd02e486fba22578e002580743712f67336dd17cfd"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1246,
+          "enemyRetained": 1246,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "c34ee3a53070686bf9b1f7e286325e7dc3fe46858a1e456677051051517e6c74",
+          "afterHash": "74e26a07844880777af1238d2379b9f0abdeccda876a272a64a4aca85a868a76"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-minas-base-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "minas",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4883,
+          "enemyRetained": 4883,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "913f169a22382835294e6272c32f52effa15d9ac4d4a300117b4d50c6386cea9",
+          "afterHash": "a9e4fb59ded04231cbcd214090f743a1fe2db63d5f43ff9731c4738b048648c9"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4883,
+          "enemyRetained": 4883,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "ecef45afe1586ebf4d9e4aa76dfbe408e862563b3c2026308a777b20f3f32547",
+          "afterHash": "140ec9073cb8f9a8d8896c70ceb28fa96b3edde2c26d3fc1b5577326281b8193"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-minas-base-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "minas",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1252,
+          "enemyRetained": 1252,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "c5bfeee29690864a00131486d20db7487ae462d6c70f8eb29cd34dbda0ed5c0c",
+          "afterHash": "7dfefb1e096eb2a106db9dfed707954c8704f423f518a332ab4ff12ec2873492"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1252,
+          "enemyRetained": 1252,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "164183d4454e0123e4c2c32b32ac85aded52cb1e898ee81916376aec2ea22d49",
+          "afterHash": "e44fbc9f4a12e317dcd7bef295b47f23ffc8635b93a6057d0362a900b12a8da2"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-minas-gear-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "minas",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4857,
+          "enemyRetained": 4857,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "bb131e65dec338a8a961220c40084d75c2b24691951dd072b854c87ccbe322a6",
+          "afterHash": "3a44ec985bdb013bcac84e2197efc04010f76f71e17584c10f85eb8e75b9a51e"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4857,
+          "enemyRetained": 4857,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "35d507b13faa894d3f506db88be4125de99da59a50961e853fbb23d3660283a6",
+          "afterHash": "3a74357f9e2714d09d2df6493e7a2460acfd87549d51640597cd61b52c426482"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-minas-gear-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "minas",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1274,
+          "enemyRetained": 1274,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "de7aebec17d950cb8eb84296aa9f5427ef774e4b491900c81e413effd7be68bb",
+          "afterHash": "41d2e170ef909e4fc8915a16bc2b6e155c9237a2eb1ff8e84b9743661bc13e28"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1274,
+          "enemyRetained": 1274,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "b7c744fbbaa43d7c48b1008868facf3267c3e8b579e49a508f8eb57acec7e1cc",
+          "afterHash": "17ef84796040079d53800140c9419e7cdd06601e5bf250c627d1bf2d73d4f0cc"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-minas-set-sparse",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "minas",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 4996,
+          "enemyRetained": 4996,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "78161f68292ccb2bf2e8a0f6b069d54e9f6b5699ea7d7b5b5700c45a7eb4cb5b",
+          "afterHash": "de5c686ddedd5cbbc2c6ca076e47219c9f15b966d574ce2224364bcc77f0f990"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 4996,
+          "enemyRetained": 4996,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "25d7be46976a4b58a9d4e122b76fddf9f902b177b25051874322d465f10aad7b",
+          "afterHash": "8e1132e8c9b1de5538a2bd0029070f4822c59b1c54dfeb8df9de7e056c7195ed"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-minas-set-dense",
+      "mobile": false
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "bosque",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 348,
+          "enemyRetained": 348,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "a71922c2f07390682489e9c33662c22291f48cead1b2ee1fa47cd5cc2aa64c35",
+          "afterHash": "c7ba1a2dba78c6c5e41b17e0db651772f5eeab32a4a3fc1ebc649aefc6a5ed85"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 348,
+          "enemyRetained": 348,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "06893ab6e35faabe653f473f27aba3f5c97fab9e9f88fbdf81153062fdeadbfe",
+          "afterHash": "f1090012b726b8ad64af5769575076950359281a6f057012e90f536362b47995"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-bosque-base-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "bosque",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1329,
+          "enemyRetained": 1329,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "6a29c2e65c217a6316438eb607f8c2d00306dfa26cdbfd46c6d47a5084fa9903",
+          "afterHash": "da7f7ed7782e32702b1bd32e5f84e84ad4b4444f73283c199493079d64418498"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1329,
+          "enemyRetained": 1329,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "9f117b51188fd8297abcac551ec440bb1ebfb75fd72c702f63d6fec33b11e73d",
+          "afterHash": "4d56c875082cd21ebbf2c97e157c75d656545fd034862761c02dc3d1e2cf3175"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-bosque-base-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "bosque",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 341,
+          "enemyRetained": 341,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "e01570461365d5df333b23a1a58ef737dfcb7bdd16399effaefd1a8731fe3e8b",
+          "afterHash": "6f1df2b0f060e4ed5f81146cff6322632dcb061d6291cfc843dd9e69cee6478f"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 341,
+          "enemyRetained": 341,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "eb05d4b24357f9d29eb10a95d2b20cdc04456a39e50e1e1d20b7ba4fc89a6506",
+          "afterHash": "da782abf351aca929d47877506ce4a8a2f85c47cd3da023b311cbbbf8213a81c"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-bosque-gear-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "bosque",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1325,
+          "enemyRetained": 1325,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "ae49c46fce7f16ac337026c3fbc904d5482fcdcc5a23e7867ee99ec038ae9346",
+          "afterHash": "e202eb6412adf3efbbf6d0e75e9745003d39107b966d3b5762e6a28df6a4dd1f"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1325,
+          "enemyRetained": 1325,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "fa00c4667deffb2c12c483bee2e1570510fb3202915e3c36b748da4d1e5fd8d6",
+          "afterHash": "9a07efcc132fc9cd1ec83eabeb8d2bea2feeb3ddeb20f935b881de378188b539"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-bosque-gear-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "bosque",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 343,
+          "enemyRetained": 343,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "ea1cc0c54756598d16f56afab78a4e0f71a2ce611803e2167f7ab3be310ba726",
+          "afterHash": "85cbb0daee09a3fca3497ae79aaeef5b58f2a3d0a5ba46e4879e2c77a449f2cd"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 343,
+          "enemyRetained": 343,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "81e6aea0d019fd63a710e5a1f76d1c5eb71cc498e6066163201a29cf38631b51",
+          "afterHash": "0b08ea07a1fc747f6974e15118f6191863e31455775ff43b83d67fdbf7811b26"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-bosque-set-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "bosque",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1330,
+          "enemyRetained": 1330,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "0c0be984823d92a84512dfde8d574dc562cdf65ef1405c6e14934842b737cbd3",
+          "afterHash": "481a9cdb75a418a32e9d44de6256fc58416e5496aa41325cca44d54d2cb8e96b"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1330,
+          "enemyRetained": 1330,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "8123358fc56b2d9aa55de65b14432b1b3a26a13c3e45f4bb00c94d7c080485d2",
+          "afterHash": "4f44e44386383a5b34ae586f519903ff7227164158aa8d441f250caf16891596"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-bosque-set-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "hielo",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 335,
+          "enemyRetained": 335,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "60647399a5b76df70bff513b687441474be25d4d4709b6ce47f24e1398868d61",
+          "afterHash": "c6029c2d4d96233b233917088128438872a5c457eb5ec99fef8e5d94a6add659"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 335,
+          "enemyRetained": 335,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "3e2ff5f4eb49849c86f62a1d1b239d1aadb3e17bc8ad6b15b89940ef9b193746",
+          "afterHash": "fa1af1b9eb8c8e899f4cb737dedaaf034d06a351d33102e3ba4beba6bb00bb94"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-hielo-base-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "hielo",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1321,
+          "enemyRetained": 1321,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "1d72739534f4d9a735b9dae017302d5bc315b2c6a5b03b1567798e7aa4c62624",
+          "afterHash": "3d337a97f6652c677b6a1411c3ea56e2840d50425133a9e2a1c0d4ffebf5279a"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1321,
+          "enemyRetained": 1321,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "9dd86512d7ae7537af244f1a9bf669857e31e88645cc015ad9c915769d2cd8b5",
+          "afterHash": "1eecf93a5b4fdd96c514121e8a32e3a2d248c25f5b065922328c7d8af0e45b07"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-hielo-base-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "hielo",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 344,
+          "enemyRetained": 344,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "74cf1fd42d04faa42a5ab9cb39825b7f971821de532920974fd8df7d9d39b378",
+          "afterHash": "384133287e3f58f95d56d91662d7f3aa3e6cb5ea7c2b21726bd0147f132f7632"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 344,
+          "enemyRetained": 344,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "f544ff9d04970da36bc7ec1177bbb20fb52a7e3cc90f38549963d36daef86c72",
+          "afterHash": "7eb42f9cfc2d1ed3d9ba8693728a16fb0e26a3074e9d25f5ab885015a0d001cc"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-hielo-gear-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "hielo",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1354,
+          "enemyRetained": 1354,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "2c72b4a88655930429421be18a8c6ac1dd7c2d4030e968e4d0874fe0e909a8a2",
+          "afterHash": "ea850d51f795e2b4aa217cd3deaf2fc1bd391bd503f7e6a7b84c8dc6083a66d8"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1354,
+          "enemyRetained": 1354,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "8a3779490ba3e3f5bb262f01dae1fe9493129306b0634e498d13e2fed025f066",
+          "afterHash": "6336a4c85818a040fe104ac7630dff4bab257924c57e65d79f307cb8c5df4974"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-hielo-gear-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "hielo",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 352,
+          "enemyRetained": 352,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "a423369e5e519297ec773a8015461319a69f9e4bbfa6d71a1697452a56ce2597",
+          "afterHash": "115475a8480c434a0f3de1e970df547a2d1d733d9bed247a09cb2a8a9f09f6cf"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 352,
+          "enemyRetained": 352,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "960fe0489c05daf705f45b98b47efb0a58476f56d1e8a529c9a804cb8e273d01",
+          "afterHash": "bb910fc03441862041e26991bff1b32ea5bd78004fa3e3909ad6130d2c13738e"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-hielo-set-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "hielo",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1302,
+          "enemyRetained": 1302,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "f18ca859f608efcf5a94112a1bac0aa8150368f581b237ec4fad45a8cd39800c",
+          "afterHash": "5b804c5af12430ce9b7071c8e3798357f8d803629dcacff67512d1959b506819"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1302,
+          "enemyRetained": 1302,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "b22820c922c8f675c232dc9e0a83fc4a4615b4c6391cb357eee1ab04d34d2b73",
+          "afterHash": "728828c46415505dd9dec95a196f43b8b49f8fa49d57ad8c8a0b5000c220975e"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-hielo-set-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "infernal",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 348,
+          "enemyRetained": 348,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "06a2f3c302c2a06fe11521e32bc0dcf3762b4c2c36add4214b79f11a3fdcea30",
+          "afterHash": "e15f16af095151ca430530ec376803d2d5bcbe63cac1c2154b1b0883593f4f4c"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 348,
+          "enemyRetained": 348,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "956d08ffd70353ab516af796cc6a4923a0e5d0043c23620448fbd4a17d37bd25",
+          "afterHash": "be46005b2e5892594851496be7ef757ab370663ff56cd182b4aeed8c1a99c421"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-infernal-base-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "infernal",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1330,
+          "enemyRetained": 1330,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "b5032e622aff1c1f22ed6b6ea36224fbda96c5b350e9b755e0fe6a4471c942e2",
+          "afterHash": "535180a9c7ce86b5f59674df0481c536a960348d0c306121df2b675c7d4ef9ea"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1330,
+          "enemyRetained": 1330,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "41806ee580b6d61feaf1cb02fcaa9d312589c16766897c9c3dcd2985716fba25",
+          "afterHash": "d4d92ce2a807f94df3e17b17937e9f971d5b912064c35ce6c6061ffacb85276a"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-infernal-base-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "infernal",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 341,
+          "enemyRetained": 341,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "fe03830d96701bb2a3073b063a22934fe184990dc0b21e56a456ba9e6de4e1a6",
+          "afterHash": "60a6d1b79939be78214dcd838f31b2aad255e54d357257fc63cef543e6356f95"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 341,
+          "enemyRetained": 341,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "59824295412a59dce5e570daf75b70703fbf1c1810885fc3ffe988ce2e22f666",
+          "afterHash": "75409eb5ebe2cf3eb3c6a95c76fac27f893aac120de32c6916a53c8f0d166554"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-infernal-gear-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "infernal",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1336,
+          "enemyRetained": 1336,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "ab605370e1aba39c886e004853ac0f38d19688dfdfcad66382628348debfae27",
+          "afterHash": "757afd903e48940210629e4801434db1500d35cf4133df3524b328da563df342"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1336,
+          "enemyRetained": 1336,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "cfab3e1524c6bcc32b358af50adff218953e9f860dc4cc80e818a3b9916c880d",
+          "afterHash": "70e8c4a0b4432d8f1e9eb78e8be15a3859bc2b3582660e0110d22ccb16c33c6d"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-infernal-gear-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "infernal",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 345,
+          "enemyRetained": 345,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "5f7c9d42aa61b9ef9507bbc226506a74bfc1f42df7f0284c82fac80fb01d50d3",
+          "afterHash": "238fa6dbcf14e148838a68fb02e525082c6a1c2f8ff9787cfb09f451a3b6dd77"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 345,
+          "enemyRetained": 345,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "0e9c09da5b6caa1ca39d866a353dc53bb3a10f8c4839b133a956c1c2ca899e89",
+          "afterHash": "b4387ef0231cb0f3aba3d9740e4e09b4667e8666735cca700706fd4c3c85b89b"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-infernal-set-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "infernal",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1330,
+          "enemyRetained": 1330,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "f7736628c142b4d579c69f12873228644efe313be0a5558e5e117b185fac30e8",
+          "afterHash": "6701d5c94cc6f3a086324c99ce32296a88f7114d7ede2be00230a8bdd8858384"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1330,
+          "enemyRetained": 1330,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "2481a76fb962e773b362c2be74ab705e9d102ae62f7d5413dc81b9026917b76d",
+          "afterHash": "cf8ffd30f79d3078418f398942dc4e8dee055721e01cfafbb18906b5173901b9"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-infernal-set-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "laberinto",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 345,
+          "enemyRetained": 345,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "daa2b05c411c3e0b9519e71a7d4edbf5a50a5b60de308a78cf44032425a22f65",
+          "afterHash": "3030d3587f323bc7b20afa0009f1875930f9627048912bae5bc185bc9172fe8f"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 345,
+          "enemyRetained": 345,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "efe9fa2021abd26824ad43bb0bbb1abff6ff1b29769993e32d9879d20497bbd0",
+          "afterHash": "cadd9e43163ad89fefeced6075fd7dfd1d23205071dd366c9f86e32814390b7a"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-laberinto-base-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "laberinto",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1315,
+          "enemyRetained": 1315,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "d3cc861b9280eab36ff6383504ec53b931762d32e4b7078ec61757eb93915f29",
+          "afterHash": "01ec4b3eaa667343b24934021d91a4b5699be5ed6e67698dd5585c763f8d96a8"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1315,
+          "enemyRetained": 1315,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "5522431e671339747eae178ff42487281713a1327f7b970ab1269bca1d393826",
+          "afterHash": "3c544c08e44698c847e2ac009aab262a1eb4b590b3d6ee4773023b6f081de506"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-laberinto-base-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "laberinto",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 345,
+          "enemyRetained": 345,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "9e3e549662bb01bf19424d6dbdcaea5c033ca44851f7ad48eee7f67df1765606",
+          "afterHash": "01d2abc5a194ea86240df19354323e9761830e0956e952a47a09097404edb46d"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 345,
+          "enemyRetained": 345,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "fb84b9445e6da6266df9f888a37088d4a139035c65dddfb5fee7127ff41ad5c1",
+          "afterHash": "68c2debee7ed4371f0d634997b144a74d40759c9171e478e0d2f8d8df698f937"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-laberinto-gear-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "laberinto",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1292,
+          "enemyRetained": 1292,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "72fcd3fd0d21d79bb5a4985818a16a9ecd06e790f81d5066cc81cdefaf175d95",
+          "afterHash": "dca2e2b991a5686359fa25d4b4861144a19917c3f3a4510dd2b2aa7dac9e06a7"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1292,
+          "enemyRetained": 1292,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "877a31d3a8c3eeed7316ba304310cdde042e2a2701ccf2ffda7f65053425ad88",
+          "afterHash": "79704a8635f69f5fab441c24f39dc283237e0e2312ebe1eb201231a54924cb0a"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-laberinto-gear-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "laberinto",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 343,
+          "enemyRetained": 343,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "33b28e8dc6e83f309be75a51ed592c1d7b74632b052f7e0c13e633e32d5ea50e",
+          "afterHash": "64805b79c60e75dede78c12946ab3f1a5f4130cb4d4bca0f39480d97eccefa6e"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 343,
+          "enemyRetained": 343,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "cc02e86d81e1d68791e2cbc4e3d88c1a6c12b3fef1379167ec389bf42b9f054e",
+          "afterHash": "b0ea225592f29ee2a64d790208b9caaf554bcd2da1d1d80da34ae8e5b24a1991"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-laberinto-set-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "laberinto",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1315,
+          "enemyRetained": 1315,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "3d12fdd46154d2769eddf5855246125e1413954b1a8c21c46cb17792ff244942",
+          "afterHash": "c22ca6252c35bf3648030f977b4e83e5b3aa1819ab96eaf16247805226849450"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1315,
+          "enemyRetained": 1315,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "2204ea760d72ca40c296cb8ceba9e071279bab19b5254872c50761824da78e3c",
+          "afterHash": "ca839b2ec64fc367cd6c83cde0ebc5644c30bb1cecf4b6c02dcb60e0e346f2d3"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-laberinto-set-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "acuatica",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 340,
+          "enemyRetained": 340,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "f6a70af61f35fa7c261dbb5b5382aba29706519bf359ad6f4351217fd2f52053",
+          "afterHash": "1a181c3eb22742a16c10bbcea131168902cc119a1adbf931ef80245e02580a3e"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 340,
+          "enemyRetained": 340,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "e2dcbc17244859ff33b64931719b02ffa25cb62e4ee6697cd6cfc42e67630470",
+          "afterHash": "507a45a4a2c9925174e6f4e4609cdfd851580ad3e0c54c69e08feba060f44687"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-acuatica-base-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "acuatica",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1356,
+          "enemyRetained": 1356,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "ba11121c4fda97d47fb6f71d8d8b722f7e7dd45dd59c926b39f0d93e6828d97d",
+          "afterHash": "18033cb1388116adc64d07481a1fc27b1fba846f871f815b7e3000383375e3b2"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1356,
+          "enemyRetained": 1356,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "991c2569141fb8861fb2c9b47f46128c1473be4723a8a46624a90a31fab39c1e",
+          "afterHash": "f3b5a8843d019e593335f4487923d6260633d667ecfd4abc222f4172067e0775"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-acuatica-base-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "acuatica",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 341,
+          "enemyRetained": 341,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "dab5964e08da414147bf8f2a837c17b8a0ddd9470a37069d125824d5b0d0c304",
+          "afterHash": "a10febbaba5593ec47fa304750dda50983dade030bcebac846cd2ba2bc5cf660"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 341,
+          "enemyRetained": 341,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "d08b40e6aed4ec5029900307c3bd6b82f2fc41212f9b9abaf053c443ef654e7d",
+          "afterHash": "a7ba7e6b169b2bb05a6e27c8db1fe9eeed9bf608901a45602f993e1701942427"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-acuatica-gear-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "acuatica",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1334,
+          "enemyRetained": 1334,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "3789576f1f7e5add09a9f3c65a8e45fb9a33398366700cbe8ee2bafeb0d58d88",
+          "afterHash": "3f1258e4a2f4ee925098385f16e3e95dad7b483811be93fab9323758bac604d0"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1334,
+          "enemyRetained": 1334,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "c407876045850e61805a79afca131c58d4ad3b833f55819cb0964b7c630536d5",
+          "afterHash": "65d7ed0fd089041ef2eee1fe4189bc18b2971117d6ff5504b08c80b6e282b444"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-acuatica-gear-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "acuatica",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 335,
+          "enemyRetained": 335,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "1850d35b37585039575badf8127346e076f6cef2fb1cfff423a083a5ee352eb5",
+          "afterHash": "b5663f9678ddce0b9ed430e51515cf6a88636552601b0840ee9b2ebafdcc34b3"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 335,
+          "enemyRetained": 335,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "e4464e528f7dbf9d0dac999058833dbd09d900f98e544d6c2d19a5040f9aa9b1",
+          "afterHash": "3660f76288efe9b7fbce4fa36fc9204619bcc74109075212cd7ef120507bc0fc"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-acuatica-set-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "acuatica",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1356,
+          "enemyRetained": 1356,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "440405a917deb29a1b1d84b164be25b3ff9e601a9b8c046d680060270f911bf3",
+          "afterHash": "b9ab3b66da62f3b0322146e94650cc51ffc4b730e59ff2e71823d765fe249ec8"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1356,
+          "enemyRetained": 1356,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "41531e5a022f53a62601a4e19d5e1b60db09b50278edefd29ad032724f858a74",
+          "afterHash": "2bc42598296a3497ce083ea1ca9caa04fa4f95a5e4181d2fd450957118349fba"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-acuatica-set-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "minas",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 347,
+          "enemyRetained": 347,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "57ac29fa41b234b7303bf79fb7b06dc5a7c7861466bd013eacdec3aad3c6332c",
+          "afterHash": "75ab4b35759f9885b80c995346a1b6014b76aca4528934fb3ed5bd66b4f4563f"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 347,
+          "enemyRetained": 347,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "d26eafe315cba04dcc4759eb984dc493247f903ce53ed7eee8a53de1e5c38c25",
+          "afterHash": "0c122eeb935f1921f7806b267655e3f9f7358a28474e5162029fb106f3c1f99d"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-minas-base-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "minas",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1333,
+          "enemyRetained": 1333,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "0ac98ecc3c8130109c0c5caf74fe4ca04f79ad18772ab3cc44671102347167dd",
+          "afterHash": "dc4f1d2a9b5f68edffd27435adca27daceab9675574c0ff884ba44e17cacc8c7"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1333,
+          "enemyRetained": 1333,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "05369ab26cd15e8d2e10cfc1e452841b13b9c3a62e9d0cc2697883a96f7edc62",
+          "afterHash": "62fb3ad40b770fc678354afb1e0501199a9dd6bcbe24284571c44b2baf0b0c1e"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-minas-base-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "minas",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 343,
+          "enemyRetained": 343,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "ce7d4d665e4bb8c7e63c33bbe4429017319cf67c7eff7caf87f884f4189f7905",
+          "afterHash": "4e3773b0fdfcdaa5c1844cd2f37cb362ae7402fa1dede52e2cec7889afa3f3a0"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 343,
+          "enemyRetained": 343,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "61347ea7c030febb2d03e80683823901719a63b154d520dc9ac9f1ff48c95063",
+          "afterHash": "27c65c510f2442bae308292be1b4c32e37cb2b7d15503f91a857904e86b0dbdd"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-minas-gear-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "minas",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1313,
+          "enemyRetained": 1313,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "7ee7eb942497bd33cbc90d9465bc02e8a70e28a4a7cb2ffc3ea3125e5e3a33ca",
+          "afterHash": "d2b3a7118bc842ea13bd36146b6bbc4cac4df04cbecf201337ca6054f28792ec"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1313,
+          "enemyRetained": 1313,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "3c6b4c40115acb20786c1dcf60b7763b2cc2dcbbe20049f25790b5d5aa52fd4c",
+          "afterHash": "624e025436943b4aecb9f666737dc42403496ac4654856ec4adfc9c4e9b452bc"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-minas-gear-dense",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "minas",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 344,
+          "enemyRetained": 344,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "f706a0aa30afc84f831a7afaaaba724cabb8234b2f6584012708b54d5fb1711f",
+          "afterHash": "e95a240d788c0bc6958b49459c2204dad0ff05419e105a7bb1aa2bdf4230b878"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 344,
+          "enemyRetained": 344,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "06699a0ec1c76d7d7b8847677eb3cdfa906a91d64e4e2621796794b0be4d9ff0",
+          "afterHash": "0db9c4ec52be8779ec466ffcdfb5fc612a5de5466d16033201d219be68ff8346"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-minas-set-sparse",
+      "mobile": true
+    },
+    {
+      "elapsedSinceCast": 1600,
+      "arena": "minas",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 4,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1340,
+          "enemyRetained": 1340,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "72c667456f7317e61ff21cca3cdd2a8e15e2ce63d172968143aa4ebe8f09dab7",
+          "afterHash": "acaffd39586031a0014766246cf4066a920a64a0535ee27bde43d0bf09b71335"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1340,
+          "enemyRetained": 1340,
+          "enemyVisible": 1,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "9faa5975bd8c414f262a3843be9c16c93b472ec1e8b18f3de529e6486ccf3657",
+          "afterHash": "0535bd731d6f1b973be410442588107fc4006bab821a0a12ceff4ee5f16d05e5"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-minas-set-dense",
+      "mobile": true
+    }
+  ]
+}

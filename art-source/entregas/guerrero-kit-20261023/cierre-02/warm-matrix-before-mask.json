@@ -1,0 +1,2890 @@
+{
+  "checks": {
+    "scenes": 72,
+    "restorations": 144,
+    "stateUnchanged": 144,
+    "errors": []
+  },
+  "rows": [
+    {
+      "arena": "bosque",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "08599b6e2c702b31f14fc7dabde51eb6d2aaee17e9ca0b544d7c9a75e96b5ba2",
+          "afterHash": "d4ece20cb9f62ca780e39f2a6d456eb53f6627377a660a497b0a7c07dc608456"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "417e57aea6845c7c0db403150cd2bb97afa57ec2c2d2c228babbfd06717e236c",
+          "afterHash": "2b6bd1e607e3f6a4f9cecd46a4f5fc336eb56b46662b214fd8b07f9514a4eafb"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-bosque-base-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "bosque",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "b0fdaec03673456ec6921f42aa061a98de2f329baa0393a6583a81cbb0783e73",
+          "afterHash": "2163988be31bdd51926e3849627742d2ba82a279accbb424f5d16716e7d60612"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "50d44e29063f37f33c9e92e66d6d915ce286b548a676b95ac76f91a286810ea8",
+          "afterHash": "e4115698e3d530d68680e83379598e7871035fd1ffa28732d9d0a3d807b221cc"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-bosque-base-dense",
+      "mobile": false
+    },
+    {
+      "arena": "bosque",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "a82342c6a26c9583ca2303782988191ec9f6e64ce0df9228948fd86e9a3a6ea1",
+          "afterHash": "32c39954e4dc42f3f0a2e8642008854c369ab303561395839be5626d8203a2f5"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "2578af712bd4577d0cca7461d5182a7c4beac81308a11fdbed45b0db9cdde9af",
+          "afterHash": "aadd923ed41279d9aa5cc000f3e6cc13a500a7ba67c7a0e3d8854d84265f622e"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-bosque-gear-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "bosque",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "8e1d3c39bc4cd7453c67d7ccd1d2d78210590b5c528e1fec84e933987f86d255",
+          "afterHash": "0c848286e1b6bf5a373d4113045ae858f770eaa56c7ba5b1de459b1b6661817c"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "35f9eafb07022a60a92bad5a90b4b0624e2f35c99b4862f73899977cd2d87def",
+          "afterHash": "7ad709905b47a83cb4c877b0ad496b570a8ccb7d768195a355f8236ccac23f23"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-bosque-gear-dense",
+      "mobile": false
+    },
+    {
+      "arena": "bosque",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "866d239712b054a5e09cbebe2ecfc971cbc8e4ff49e45ae150b660e903354ad4",
+          "afterHash": "af216c4a07ee3255f7aa9f62c85a7ae68bfb2b58e95fe4591d99bc0b4ad3282e"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "f0a73c745ec340a731ef09bfb457f925d738e54e410b30afba185d29e42f5b96",
+          "afterHash": "ca73a696ca1f6209e837799289b9d3ef9405cf260915459084ca3d34109d069b"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-bosque-set-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "bosque",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "ed664796e5b763b74a7cbb3d597e0474dec885273ac99d7434c0ccaf415bef24",
+          "afterHash": "678191ddc4cec2d12d25b07b5f738a77dc6d7d5af53d5904c24078c19d59c58b"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "a1c37d9987bf73c693d164d253ef6471c8449e485e3bc0a6bb175da9f68969a1",
+          "afterHash": "bf88f52a961cbcfa4cac84088dbb1ff58ebd2c2992c6e70b3f327777725bff4f"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-bosque-set-dense",
+      "mobile": false
+    },
+    {
+      "arena": "hielo",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "b26e7c6ef595840a8c1ebea597930faca02a443c11cc31c8b8fb03033cb12164",
+          "afterHash": "644e8b9e1688f506a8fe1dab0dd8b64b8854860cb689c09e1c91c67b2d995a77"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "9a5f8745b6a9da57f6e9a78865d0db1bdc39e6e7216e6b388b94a6ea84f5a3fe",
+          "afterHash": "65d4cc862fba2193fbe890654a00634fa0723b47666d348e9317667eb08969d8"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-hielo-base-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "hielo",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "54a692e5ccd69301caf9e49df7dafdff7876b0721ceb6ccfb550630aa4a0a7ba",
+          "afterHash": "485ceec42ece282520dc084fd2fd4897692f4b7e805370ec07b27169dfffa4bb"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "985a74dffba43a4f346ad9136d246f595b76ff0e68c63555d2cdb1433042c915",
+          "afterHash": "e2fca8740dc088c6871bb1a7e87e39de57fc506684fcd98f8f391909bca51c34"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-hielo-base-dense",
+      "mobile": false
+    },
+    {
+      "arena": "hielo",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "4a87f8cbfd46810298628fefc3fae80bc6476a3c8bc7cff538dc4aa29cbfb38f",
+          "afterHash": "780cd60341a6e046d4df6c08e241de2598b51dc152de7642aa5f7326e693fbc3"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "782a86c0f4dec24f1a8d6c178b3931365010351fcffc4560df5754c36dcedfbf",
+          "afterHash": "5b60091cbbc69f5a15f5ea47ce2806f12de38b1737da62c3e911852fe73f5d89"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-hielo-gear-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "hielo",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "562708831349b34aa62dd6ed4cfea49cc4ffe50ffe1070fa84760ffa49d2b57b",
+          "afterHash": "c7042b52c4ae6c2b8bcbaad57e3bf9f1c59f83c2df20a41276ffeba8860d44c3"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "23e41fd18aea6bca0bfd97aa19bb49471f5e27d5786a03189188d1619af28ab6",
+          "afterHash": "337cae4ddabd51932df7bdc6434a8dd61532d77bc09b3d37e3cebbda88e91515"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-hielo-gear-dense",
+      "mobile": false
+    },
+    {
+      "arena": "hielo",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "c2f4afe4cb63cbecc535a36667e8d9a2dbd1a918c41d24cbb805c72627c2fe42",
+          "afterHash": "65e756d95378f697de34dda88485ef775cf09c286eee98c984bdb6803c04c7ca"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "5dbb4d3e2bdef1f7f971cbf3dfecc2e68517951b61c1885067296d15b0fc3be6",
+          "afterHash": "4d49844af2e5528378a0261dfe7177f865e13bb10c7fdb9129f5f53d2eace213"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-hielo-set-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "hielo",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "6e8e160a1cb7f29d1de774e3d6b1802b209c259d298df5a2f6c4128fcf225a96",
+          "afterHash": "98a6971c7aa7417282d54da61b9330c087c0075d9861551009a3fe94f9d007ac"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "d039c27684612546112df03bc292bbc41eafb58a8c6620cf9b119e28cbf5292d",
+          "afterHash": "082de30c2d91fc382520ab6ebecdbb881e8c4bf6c951e518bd364078c92cad90"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-hielo-set-dense",
+      "mobile": false
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "2c0941a837153a5e95227f3e4dd80ac6552694429f16b8986a70132cd8c993b0",
+          "afterHash": "1b0fa401ea562ed3e301c547dc1fd3c3649c1c4a7738ad606e48f82a050a2a83"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "31fb9c06f2ae9d16f47534650e010892204a8b7337092f98d0587e4b6619255c",
+          "afterHash": "5602318d6c194ea68ea618acb02f9d11b0841fa0fbddcfdc45002be0b3155f9b"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-infernal-base-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "0dac3a0163935282b9cb5bcf8c1031bc04105b964be7d18c2612c2cef321f9ff",
+          "afterHash": "ce0248d7739f1024a0c3b78b481727534eb7998824d75334b77b552db0f42fae"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "d293043a824967c24feece2cf18e7d7e127547a99d1473d16d8b4828cd8fad71",
+          "afterHash": "732dd02dc4fb727a67bc154396cd655b27c15f2964eeeb2a3410a4b8b7a29208"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-infernal-base-dense",
+      "mobile": false
+    },
+    {
+      "arena": "infernal",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "d9e5034e09b1217a4b19f48dcab874e50931f5e1999b6fc07d4e9dd29ab754fc",
+          "afterHash": "4f056f97ffd6de7301fd06e679439707928fd2b119eda7bdff15a746e07e31ce"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "726bae690e3996fc05ce428dfa508316b486424ab08059450a17831d6eb5b85a",
+          "afterHash": "42202eeba1e8537068940e619c8a335e490c78055d05ef97a35b8f7fc473722c"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-infernal-gear-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "infernal",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "1b31cb00e84d69989791a9bbe1f2423ec91c8faccc7cb96f1cdec4268b78942c",
+          "afterHash": "64da1a6b9d070ff60519f03ef9417f0a0e37c610403aba75a0e984dce9147022"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "eb9cf6751d6d682469ddb0df3f0390d5489653c5513684d055b2c17360ca0891",
+          "afterHash": "aacdd38ae016d7b29f9b6a38a97c932bf9ad2c98ba2e75bcecbf8ca4062d3f4c"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-infernal-gear-dense",
+      "mobile": false
+    },
+    {
+      "arena": "infernal",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "b852ecc85fcf2a8c9987f81e960a77d507947decd147b3eb85732e099bd90c0b",
+          "afterHash": "9545b301127047122c2248d1a89428ae9eb46136be386f31a9261d0aad36fd2e"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "036055cdf836d932991ed70e049749d518433231333e7cd4e2259ed2b8de7032",
+          "afterHash": "eac0965aa84135ba06ff70b9c32372061dff2e1ef2e6eadba9bdc70aed52bf4f"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-infernal-set-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "infernal",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "a91dcc2d82eee435a235ca0ac4c5665966e6c416458efe6422dfc926312f9db0",
+          "afterHash": "26bf2ef252b5af15114f3a84470aa57ab24837025d5ab0449ec9c2e3e659bdfe"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "55aab603cfed914aa4a43906936d8726a2b1990cf9c10419c98655c41c15c532",
+          "afterHash": "b0f05bcf5d0f93e508d5c6fffb4d7d5c951816d40597288ae78c473168608546"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-infernal-set-dense",
+      "mobile": false
+    },
+    {
+      "arena": "laberinto",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "1d2d91fc1ab53f0d9e6c18c9217049d9fef4bbcfd0763d9def2cc2ed7e52b5e3",
+          "afterHash": "231d0de3c5a57efc9403c01e7b8f77e06f46fca99b31b0432d8d8d2641f71fa5"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "5d86653d1ccd8bf0172c105e8d77ba7e87520e49994b1dec3d7c8ae9dca7902c",
+          "afterHash": "9ec7e78a50bbbac94e5b6240d5dab01fec22785592afed912941f34ce6e3beb5"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-laberinto-base-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "laberinto",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "8dc993f15358539611795ed3773e6bab0365b81bb7f37ce6c08abbeb15da8684",
+          "afterHash": "067cdd1c0cac1899b1b15789a1fcf0eaac35d9a76841b632a1364e066bef58a4"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "37e508326f1db5391e3d18150210d7d2fd2a2af4088190bac20ceef347f6a861",
+          "afterHash": "44d32dcbaf1bb5d4586d83f18f7a33224d194493dcac04491ff63ca65d4b1504"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-laberinto-base-dense",
+      "mobile": false
+    },
+    {
+      "arena": "laberinto",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "dc8fc09e95a75aaad9af960047e6214df4a2ddab37a8fca9e8066dac73eefec5",
+          "afterHash": "d78166a4b6b21f10744f36ce02e11d1f11af31f447bf70b97d41f2cb0b491e6d"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "08bc947b2b608e96a366d73722f15875d99b17634921ec182410649c2e34e6cb",
+          "afterHash": "290719580d21abe94f091ec76ef2b4788946d0bba29b001497878723c1725365"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-laberinto-gear-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "laberinto",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "1bed80ebc851ae7cbb1d1b4bc1c7263a695561477298ec207f2bb6856c80df84",
+          "afterHash": "f18386630343586ad5f4d8d68095496face44477232f76a73de061891177de7d"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "d724c360bea29403a71a3f3a7b32b482795778fa98148f17b7cadf42fae7d350",
+          "afterHash": "45961b75aec7d9c1ae2bfd5bb653f0505a188d3347c469c8f0c719e0896014c6"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-laberinto-gear-dense",
+      "mobile": false
+    },
+    {
+      "arena": "laberinto",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "1856372cc5de12b7785e03488c018982dee3e966bba1960ee2c0c6aed42569f6",
+          "afterHash": "46b7b48ceb827aabbcdb5c369db0531d53f190b10bdd758d9162435112ae2c10"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "dace59a6660258e2fda20d41d7af2828f7561d4e4fcf0e7fa1dd21ec8ccf69f7",
+          "afterHash": "b1b53f61df52be3b41ab9b60f3b8398646a8ec64f53623ebb83ebdf02201faf6"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-laberinto-set-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "laberinto",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "9977d73fdf610c803f1562b0f57fb6cd0077529b2deaf353e1531228a7fa5811",
+          "afterHash": "1e5a12d5443182bcac7ff932d1319df75895dfad7b29cc6255f8249abba681c0"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "7d3552b84aebc7044ab8603029ee88838c7140b7b8c98facaf484f1d24d99f14",
+          "afterHash": "9b9e032a3f0a89cf325395f32749ee599b7d75a33435e4ac8b17e6fc305c0fab"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-laberinto-set-dense",
+      "mobile": false
+    },
+    {
+      "arena": "acuatica",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "d7cb409c951e24714f67c9e37ea32b89377242b2e7cfd50dd2b11c0d578359be",
+          "afterHash": "523b5036c31bd07929994942cd6d80ce7ddfc099671f4da5b2f9c5b075bf5ca6"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "87c7e685f87cc87226c6daad543d973e4c23b07040ea29bb4ea82283e1acb13c",
+          "afterHash": "a4f1d406749d7eeb53de046e993cbda9b65313e137c5d343c38291e8d947a5b0"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-acuatica-base-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "acuatica",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "4f05819e740cf45ba90686ca2ad5baf0f1a2b88d645036ed707ee5222b793100",
+          "afterHash": "58baba0f9dad12911bff9c040e5e72cbd524b75adda13b028529a9bef3505a84"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "f0a9fa4eb5cb9641925dfaa4ec73ae6a289a1be4bd2fcb9f762e0cf1301a2e9c",
+          "afterHash": "97500f4ae9276c844097a704e0f3e71016be4f618380d234852e426c5b200801"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-acuatica-base-dense",
+      "mobile": false
+    },
+    {
+      "arena": "acuatica",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "a8c961102009396a81daf251b2616b461922e3114412ee1270444e25d58a8483",
+          "afterHash": "4a7f81fc5437c05f8c339a4379668a3809235fe40fb16f764f8312bef511379c"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "5bd159e3e33ddc831b7fb2cee2a5a2ee7b795f1f73ca5e97f202d6515eef2241",
+          "afterHash": "15aa1ea483bd8fb78f825785093601a51bc5da3d1b2f1bb5aa09b33ab57549f6"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-acuatica-gear-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "acuatica",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "4e95cf4b12649453cc074880f5e5fdf884e4d7970200dfc5811c0c8baaf2561d",
+          "afterHash": "db80ec2e4493d85ab42acf4831048c3d21b83ca2f8d3f3eff93e3a4a661eb7fe"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "d4c2d5035b9a29f9abc90072586a965cc06289bc65c1e33d468431bb84963025",
+          "afterHash": "d32d6c2357cdc7af747ded5c2242fa94172a48015956c15472dd8b1322a52b8f"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-acuatica-gear-dense",
+      "mobile": false
+    },
+    {
+      "arena": "acuatica",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "7be764061ad438a523bd80aae8a4c7fee0e79930531271f2aa33c44f3381bb6b",
+          "afterHash": "33b9bacbefbed67fdbe6358932e4e666e172fcb32db44916b70e08f405eaabc0"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "c83e3b8bdf964c22001859bc517b2a410b4b4c0135a0c664631afb789554d59e",
+          "afterHash": "910f6890946d983bb36fcf93a3ff384ed6a253c86f18f1352e07b038ad75999f"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-acuatica-set-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "acuatica",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "a96a467726a86a91c5f3ca032aae41c72bdea3b7c36eb346b3a8ac0c968e3078",
+          "afterHash": "d8c791b63729efd446b4811d4905dfe5b6341dcaca85aed5b97ae77beda0b975"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "a49ccf679169a784ea486badfeb2714eea0ff46a9e17ec1576af41b163c05e8a",
+          "afterHash": "41fa0f501766dd00cf7185d70cdca473cbfc42c6ca7f32d2db46d267e5f4ee40"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-acuatica-set-dense",
+      "mobile": false
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "444117757c6651306a67348aad20eb53f8da6bef48a9995383e7b4a28eecdd1f",
+          "afterHash": "a30aa98fbff1b00e24f1c62f4b101472f5b3113e8b0c4eca8c776211f09c2ceb"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "be048eda568c04dc85f89c1a4b946209cd9a0a2ee10d8dd3db7edf7bbc198a7c",
+          "afterHash": "274f6ffdf6989cf07cd591c842d4b1702a5cdc34db2f0116807f39dd2cfa93c6"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-minas-base-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "32c36c378003a5b533aba940d2b3d26f632bea57d26452caca68fb54ff443fc0",
+          "afterHash": "416fbf61b66e496f8733a0cd601ab45a739c6858701346b77c1678e5cc66ea8d"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "25adef384e872f7304278ad642ceaed4b4a0f47d94499d0fbac99c6254258d0a",
+          "afterHash": "bf57b0e83833f54e65ce892620a192cc1ab0a905591c024d5b1abcd4eddcc135"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-minas-base-dense",
+      "mobile": false
+    },
+    {
+      "arena": "minas",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "3528612b9bb4b21f250eed3c4fdce6f5f251cbeb9ea731db2cca11b1b90a1287",
+          "afterHash": "21d78cebabd14ad85dee87fbff826bb2b9c43da41ceb22ba3de8241786ef4dc6"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "f837b37e79d0cf3a6e8fbd68f21f1ab319d1d63ecf1e1af9cbd63214f0ce2efa",
+          "afterHash": "5b13da1c4b0f99890366d1c8f361776f826803009becc58f77cbc3f3473c82c0"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-minas-gear-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "minas",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "49f67137611ab51327c85344861533af93bd65d353855028ce43d51760494731",
+          "afterHash": "35bec7231f92d4535ce74736bdf886abec93ca1ccd36f478a83b90077c5f86cc"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "670d7afdbea0e455c4fa5b7f0002c428a7615e6d80d6db017802215f63bf8c5e",
+          "afterHash": "6056d04955478c06e62c1c102fa44c7d0808b6a4fa30be2723f18fe5a103f0e1"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-minas-gear-dense",
+      "mobile": false
+    },
+    {
+      "arena": "minas",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "40ecce269f1e5e5fc2d487953c18354c940d43cd867046046003b4e40a697b86",
+          "afterHash": "095f70c89b8596a135f15cb4f093e636c26e4d14775b989d62e51e55db42eeba"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "0340cc6a5f65fa3e07bf20bbf931f5397b7ebc0a87eb6dadfcff76fc33c668f4",
+          "afterHash": "04ba09e2935de998513115d4f6bec43c579a4e4f8b3a9a3a940892222b6e6753"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-minas-set-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "minas",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "51e55d68e45810b9490b3294f4b1fad1de50716a6fe69663dccdb4625b7aff4d",
+          "afterHash": "c299bdacdafd6ec877e550fd23b0d5e9c84a163d226041c41a78cfa1e941732c"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "58ea6915d8ccd865fdc2072cf53f59185311c3219b4019fc3beba6f45f50a7c3",
+          "afterHash": "1803d588ea300cbc902a995da45b6477146058d51e073b18d08f6fcbada3a5c1"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-minas-set-dense",
+      "mobile": false
+    },
+    {
+      "arena": "bosque",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "e33dc63fd9815276fdc1596e65cd7329bc8ecd401106904114d026562c27413d",
+          "afterHash": "11b3560dcf80a43f91160ba7b8b07e737c4182d8cd23b97f8d943fb331b5eefe"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "1c5b0f413cd634cc3b48687ce28b628a94d2c0a87965d157e7489172057ba70d",
+          "afterHash": "d29835ec05fe848d76d428f8339f0d3d13b2fb58eced4e75314003561600cf8c"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-bosque-base-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "bosque",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "ab9a34cd1cafade7c6cd600590054919917065f50e84f8a853c203bbc8d06a13",
+          "afterHash": "b4b3590bbe476db125cd8ed754f57181837b2e879f6aecd1f5c7ecbbd87e4176"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "2b0cb065215fe8d98f481c2197ce1baa911a97198c6e405d9994289d9b5f0a78",
+          "afterHash": "a15723bd74d29f2c91f2f646710b9c971f39828cdc6fd442585ff1bf8dbf228b"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-bosque-base-dense",
+      "mobile": true
+    },
+    {
+      "arena": "bosque",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "92d408b026e12e3c9ba515691a1dddad8da8faf82137da7ba6203a9b3d4b2e13",
+          "afterHash": "bb07e601ce9c98ace30eebef6b4f5c5823481a7b3bd91c499eae9b2a3f6d4292"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "8744b218b0876d52025fac502c02ac3cbbbde36db81d8ccc480e150520da3dce",
+          "afterHash": "0e8fe906fcd5e77ffbb20f0bed597cb34f49f226feaa7c304216b476c7606135"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-bosque-gear-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "bosque",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "c96ea8fc8d6accf74353b95a63c26da0aec2f866aff9538cbd03c5fb820bea1d",
+          "afterHash": "911708342ff3d23ecfdf793489dcc26e2e34fc4d9bf62233760d3ca10c7bbb0d"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "71f51af2c7c3f7864a699f4c3779e4b161d8e8e44de3e02a05a13fe711342677",
+          "afterHash": "62dbfd2116ef7bb78099f3ffe0cf1eb1e68767a954e370e0beda0375937408b8"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-bosque-gear-dense",
+      "mobile": true
+    },
+    {
+      "arena": "bosque",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "0d92c023c915120b4d65cffd2bf19383b74818e5d77686fe45abb723d71bd84e",
+          "afterHash": "f6d6b5b9307d93140d7bac1e3a6b3c52efcd09905dc87e91ab6c001e6362c073"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "8bd57c352209b40dea280bb8ee21ff487ed097a12d1c06fd7ebb7f20c6c7a81b",
+          "afterHash": "2c1befef5bfa7691f9f56ff0bf293f3f6aabe834bd584ba3cc4c98262ffb077d"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-bosque-set-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "bosque",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "4213c90e335e8b143e9fb0116df383e694748ce3f4883437c230ffb394e8a30f",
+          "afterHash": "72dc5d23db5e23845d830fbf39cf119e8f03b76978d39d40dac6ec7680bd4be7"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "6da78ea201a77fcdad6bd9e959480107a8a0b56bbe0b318f3b77303dfd17ed1e",
+          "afterHash": "ba9a4d0d38fdd0dc89cdf5e93e630aa1b209f6cae681b7228609a29173fbdf50"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-bosque-set-dense",
+      "mobile": true
+    },
+    {
+      "arena": "hielo",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "2f584f77e0928dec4b9f27e917ac43eb934f447c2169df7d2cdffc8057f3231b",
+          "afterHash": "8f4b1bbbecebd07110be4354ee139a24d979351aa8c9640a9278560d3e522d08"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "c146e6c590cfae7a726e4a63c17a0e60be1faa82d8878354bcd67bf1b8c16905",
+          "afterHash": "019bdca9e95bf6a51ecbccc527fcf92e2c491ba00e3e17502c46469818518d00"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-hielo-base-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "hielo",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "795f082cfc165f9e0f3c42e0f2f79459f3e48377997a14cb1a161625052bbc0f",
+          "afterHash": "847e4219a0744e1318d66e7ff8a28f6ed534d84f1d4ab8ff68503ea0c818ab9c"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "a276b08c4fc282ac9fbc962f5a7a4e19ff455394e80eb95b681a9dd46e548e15",
+          "afterHash": "3ef6c5053855b485ddac3fac337da6b6f327daee0c55c66827dbcf7a5abd3a90"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-hielo-base-dense",
+      "mobile": true
+    },
+    {
+      "arena": "hielo",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "958003d9a54ba549dae543743f8edd63bc697d7f8ca1852f5399f1cc6757fcea",
+          "afterHash": "97bf05b9fb81149942be30826f11bc065fef7d0f3f8299b410eeec0baefb14ba"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "30c1352e8080f263d221278175104179fd5da5267d9bdce298a7f3e13d51b0c4",
+          "afterHash": "5ac8968bcc2284996838c2cd6d59d482ab038f26333d71a8ebfc3dc61dac595b"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-hielo-gear-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "hielo",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "df30db6d6a0153aec9912377459cd86399d3676a0952ced82f186c0862b5b7cf",
+          "afterHash": "39c3a70ada976406926414dc071a863cb046443c8cdda46daa3522b053e1b648"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "301311cef95d29ccee74de283ce8475217b441e26ac61e7d69c49f6f968b4ea5",
+          "afterHash": "44872d8a607fb3237bdfba042240026ab8bf0ece14cb05da8214ae97cd33a9bc"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-hielo-gear-dense",
+      "mobile": true
+    },
+    {
+      "arena": "hielo",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "00af9e063710071a5af78ed57e68ad83bde2678cf55e7a0991175b25c4b17efc",
+          "afterHash": "f5f537cf59b3192fbfc408542df5bbfba718f8f3ffd12e328c81b705466119d8"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "8f92303d70aa097162307fddf3e11f834160de847b5a22db14937fad3cb11527",
+          "afterHash": "a0e0b556486309170174f3089e350c8b8deaf45f169e82e692c49dd3154f0f6c"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-hielo-set-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "hielo",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "8f2d24718f278dac04a90884cd441e0fd4133b1f298010fc5f565c0b5889890e",
+          "afterHash": "ea7b5ac36f2825124a5e7a5d8bc69eaadddac75fa9068c9528afdf5ec03e9fcb"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "da2d7cf3b135c28e5a3825eab8172ad3f009816b6ecc8f98a02b3007cdfeccca",
+          "afterHash": "ceb98a5f7848de09cf5fd6fc64aee86ef163ef600edb8f72e3321085d8a2b206"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-hielo-set-dense",
+      "mobile": true
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "523c61f4501591451480d1a7585bce3ee39eb2e4467e973e0789e705a24c3b29",
+          "afterHash": "6a494100cf0ab011d03400e5da729a2e2c453066d03eadf0f2c1486bec4fda37"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "0a1dd6c208f6eb0dc4216fc0ba7ba86561b74bcb91de2f2e5399c1e7ca3753b2",
+          "afterHash": "e0ae87bbcd7f426296d9a06351794c58917e4cf5fe74562b39e576d3d514f3d4"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-infernal-base-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "4413136267b62841001d30083d63ff096e32e90bf72c7be1c064ec8f70ded8de",
+          "afterHash": "a886014459de3af326db29937f60580717726bd00732007c8591979c317c4d9c"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "4bf09f8762427fb47ec31054d2a711d4cb0606c70bdd686a326c1e4fe4f6ec1f",
+          "afterHash": "843768fe2944fcd0f7bc3d9f4b58eb0333b91cb9d0162d7e4b5c4bd0ccc5b38a"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-infernal-base-dense",
+      "mobile": true
+    },
+    {
+      "arena": "infernal",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "bf57828933dc96faf24c35ef74772f78ec0525c8671e4cf4429b52148f283f22",
+          "afterHash": "5d7b90bd9380f012d8a4b0fb7a2dd20b54b67a556638a729b3fc021511bcf123"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "9226c6e906ac24724eb75c84dd547f0a7787aae6f799f06119a65f8e806755f3",
+          "afterHash": "f30ae1c237dd379a632abb761333ca7e2eeaee6a506d080a6e0d6eabc9b4b402"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-infernal-gear-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "infernal",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "b76ac5031c48ce1a43ed19fec3bf26d77ef9245466759f017e82c45ef51d178d",
+          "afterHash": "a3fe4354efcb438ed69bb4abeb524719e95154f8d9d9c0da382c6155c62d5e1a"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "68e3783ebff121be9c0f1d2f78fefe45c93405029f6e7d3a26f568f5ad927e03",
+          "afterHash": "4911e2955a1c3aba71ac2994b4f6827d79cd3079f288e3ddfa1fe08e44dfd471"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-infernal-gear-dense",
+      "mobile": true
+    },
+    {
+      "arena": "infernal",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "e274023212fd335dffe197c546959cb6e60a559322e1d7f93d8feb2f8541e49b",
+          "afterHash": "02f00a1c548417ac1786746540e2efffe206bac95f64045819b5cdbaab6e3640"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "ae3809aac2d1fb151d4a1c998ca68d354707b45ae2bc1467ff0c9dea7bac4d79",
+          "afterHash": "3066b35a8789a6d9ce86ea46d87a0f5f1d67c27578f64409bb6ceb495291791a"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-infernal-set-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "infernal",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "a5a582bdcee5362676d2aa23047f7d260f0b5618c8940bdd888ff281e380518d",
+          "afterHash": "8a91333681c9e410855bc8a89b79cf7a15f2a8923bfc530982596c04d152341d"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "7d991145eadb384b42670684e384d55e6afddded3206c83596c58a2b6a427565",
+          "afterHash": "36aded0ccc7cfecb1526d37ea4c3a0ba26baf4e0d532112e4a48436a9630cb36"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-infernal-set-dense",
+      "mobile": true
+    },
+    {
+      "arena": "laberinto",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "33023abcd8ff6fb7721ff9c7e339b74579bdd95b7cacf7fb8d99cb8be340dd54",
+          "afterHash": "e143676a1cb9bb604077a369ff42229915f04616d48ee07b9454358a1aeb7a95"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "de2bf68d2d118b3edd0a1bfcc13ed2f59cf8bb2fd8e49b2889d13c68ef8aa1fa",
+          "afterHash": "46387d751a5b8c98811cede123875f0a5aef9517b00edf69bbb5dc663c4df0e6"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-laberinto-base-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "laberinto",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "d0bf98597fc9a8ccc5072edb1cb323ac47a3cf7f17b33df43d5fb6d0fe87655e",
+          "afterHash": "9cce6fafac6e71609d24f93fb617e23089ad2daa5ac8bd0d26181184e55046cc"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "29c3c20a433c160c28fe5e7a20fd53efadfb89aa444f85e8806913438f31d50b",
+          "afterHash": "b6e1abe40632cdc0821d9d9f7908c5b96fc9716d3a49669843e04f5e88ef790f"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-laberinto-base-dense",
+      "mobile": true
+    },
+    {
+      "arena": "laberinto",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "34b4d6f5dae5a2c92cd969547e3d11f417f03fb80fbfda822eabc2efa3ba0593",
+          "afterHash": "b011b47e055b59e7d342420f7abbb59fe844574f324e75ba4f5031634d1f1914"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "4bab6e6e259df4757919b44214b410b3113cf7da7625ba35680970c5ce229fc4",
+          "afterHash": "498c1796439f0356454692a077fa10f203d3084d09b9554f816904417f364137"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-laberinto-gear-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "laberinto",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "84c65c799b4da48c908672411b6da14e4bf180359657354aaad37a7b12950352",
+          "afterHash": "798cf276549b4f5dcc20cb63fc317671a9b280a1be04338b4d09e24a7d7029ce"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "39b2a6df36cd41cb10a43d08e0499e889e6350cd650b9f52cab317cb6ac4a0ed",
+          "afterHash": "2ade105b15c657125f85f0838516a874837d22221eac7ed6fc712593966cfca5"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-laberinto-gear-dense",
+      "mobile": true
+    },
+    {
+      "arena": "laberinto",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "612c089fed27545f6234989764f456a46293b6ead20a3aa8c43701733666b2ab",
+          "afterHash": "4b3a5b37f60ac224666529482f0ce7a8bbda21e890f2232d060d7f055aa75bf9"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "51fdc13e16e19e7dfc6afb2cdb2e0139804a00ead692c04c6f634ed3771d4510",
+          "afterHash": "0b569d3eaf068bf7c7b267cc8d007fefb9d5cf190cb5f7dfd7d00bab5b9c07ae"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-laberinto-set-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "laberinto",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "9f8e83c47dd410699be1b00479252da4666cfdd06df8b3ac1e4cb57a19694421",
+          "afterHash": "777fa30d2801912a9a58b7426bcd178486b327fffe16237f5dc12cbd4dc53e32"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "76f5b71769dbad0ef613f52b02e38f9a24b6bd62af3978109be2240f47937709",
+          "afterHash": "11f215d8c0922ab831263045f4265adbdff2d6e4b3f194e9256ebd4c169d6834"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-laberinto-set-dense",
+      "mobile": true
+    },
+    {
+      "arena": "acuatica",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "fcc9252bbb97c3bcbcb79dada33ae8a1b6e2b14f316771272ff9b3da6834f3db",
+          "afterHash": "8cd70d2af34a9b0a820322a9a368b158019a1ed78c244eda2233f76acfa0ab37"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "5ce327bdb4fc4c04bf902d811dc3e833e10f52eccb72e834a1b4ac48749deb14",
+          "afterHash": "7ec4cb8db0532d72732116c8ab3ad7e8432bf9aeb34e062bf5ca4f2f43d3dbe7"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-acuatica-base-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "acuatica",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "576f7a59c430972a00a0eac341445aab79e1b70f1181c95f7e3a998fe4dd32e1",
+          "afterHash": "1d4aceea73ebfcc809a3a59ab7c440cfccee99fcf85659848a178458146c7f1b"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "b977035c804a9eeac7a58478b76b8bb5713f4a19e3f2ce725fc12e4c2e453d8e",
+          "afterHash": "c266f768de38b3d128bfd77a3982aa57ad7922cefd270a959473ff4d0bdf68ad"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-acuatica-base-dense",
+      "mobile": true
+    },
+    {
+      "arena": "acuatica",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "b5c3a49637de222ec0ed6abbde50c5d4fd20b4c6766e08814723b9334d665245",
+          "afterHash": "fd83ba983ec56d22e15d217a4eed1cc8f1420079918a018ba9382e8a4fa0a51e"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "8d2863943478fad88fda2c282af7549652df968451f9f056dab8e771d995d1f9",
+          "afterHash": "7b262b580916ae637da62dedac0aef42d9e3c3391a9559512e48f9354959f9bb"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-acuatica-gear-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "acuatica",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "2e99007d533a67b22634e2a904eeeafc1f7c53779192c6f45145bf887e6ede82",
+          "afterHash": "f34a5a4979f20f26b81e128053dc9b238c2c93d6c0e52c013ecc9ef4bec524d0"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "9f3c807e3ca70f831919ed8744942f87d7d276646cb43f47ca3d0e47a4c3f6db",
+          "afterHash": "4ed5eaaf9c739ee29e88e3518a23161f1fb0d93a43e5320126062681d8ac98df"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-acuatica-gear-dense",
+      "mobile": true
+    },
+    {
+      "arena": "acuatica",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "51628f4974ddc90a4f520a899b70b72f3cd59c1bc96d90c762244dd54cd6be96",
+          "afterHash": "eb9d66f5b16ee5a4424b2558d006d80ab916939f90c7645c010ca6765e2a38aa"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "3423d06ce6b8a4913c2ef4776b02d938a9b649e5db1f5a1b5348d614c30592b0",
+          "afterHash": "2530afcdb5d79fe31e608b062018d1d11f6d16634e3598e1e18a0f62c05f3563"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-acuatica-set-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "acuatica",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "1f7b4dd3fc239ba0479d721f027948144fb7c62b1dd2fe41292683762ece222d",
+          "afterHash": "4201f824ea9c19295bf0300af54e7b4d1543534e2c631c9011b63d514a63acdb"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "b0c37ad4fdd79fff63536c51d1ab79e34cecaf09c52314ce5d66d2bcc3e462c0",
+          "afterHash": "090b458b0b7df62a3ac5fa284dff3d1526dc2049cd58cbb5a6d80723766f3f6c"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-acuatica-set-dense",
+      "mobile": true
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "5182a36cf127a0e0f8714b8dfb7a6910e301e71b345a4f8e7046ee1dca4f4e68",
+          "afterHash": "b9524a31f931b18bb45e7e45ecd8f1dc1bf007c74d1b6d5a828d85cad2339d2a"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "76f85ba537537cfb3b9a7791c4d78d4917430430f53b1478a0c2305249563db1",
+          "afterHash": "dbed3acce75909f7cabe858716822331e2165b2136f2c014bac11a41f3ffe079"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-minas-base-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "be1f3bf1b89225955d3bd34edebb1e9bc0653efab434d8fcc26fa5221e5d0693",
+          "afterHash": "fedd753a3d25836bf390c42a156bdc34f2c456da295b3a860a74839c11c7bc06"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "1cf2da72a5defa1a7b6014108e3fd93dd77f00d671a371e21154aae5fb96571b",
+          "afterHash": "3482af080338405ffaed436b20aea0e80c248edcf65e6a94b7b0d6f5490e532d"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-minas-base-dense",
+      "mobile": true
+    },
+    {
+      "arena": "minas",
+      "look": "gear",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "53f7fd3db3ee6e4d8c99302113e568a0102de6660fd48af4815f71892f82b4db",
+          "afterHash": "75b5ce96f0613f7811b5f7599a52537a8b03e8e763848128eb3ff567da7ec08c"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "24f971876d3e25ccc685ea8cbccaa52f68fd41ed4fa6d9bb75a12f1416be1fbb",
+          "afterHash": "6fe0c59759335b54277f4b4d09a179bbcba4457bb33dac2be50c04f46346fbed"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-minas-gear-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "minas",
+      "look": "gear",
+      "dense": true,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "87cd0a9202961b75ffc13b9d3c0f5ce0bcadaee35f62a43f1da6ee615ae6e3ba",
+          "afterHash": "d90da5e52fae8eb05740ad1078cc2ef81bb4ee75152b19a25a50c9359a8655df"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "08ff115d87496a2aa8e8d82dc8e2ad57941c1a2bd317c2ea9887aa8b65ddafdf",
+          "afterHash": "55bbd19cd73c1a30869d7bd105168474f253f8115a94ba875400556a0157a28c"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-minas-gear-dense",
+      "mobile": true
+    },
+    {
+      "arena": "minas",
+      "look": "set",
+      "dense": false,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "0578d4de3013f408fd6a646558a37db62b7bbb6f5437c94c8775a2acd11279a8",
+          "afterHash": "0f181da92ecef1b085e6d4b8e8f0b6143cd25cc54630b35f15ac385f7cca56e8"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "b1f5553ed0db576b539609ca05b0a0066b2feda5d083d7e168debab7ddcbeac7",
+          "afterHash": "515646d70d9675f034ab316cb4e804e9357b27282b4591775687cc459f61996e"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-minas-set-sparse",
+      "mobile": true
+    },
+    {
+      "arena": "minas",
+      "look": "set",
+      "dense": true,
+      "resolved": {
+        "pack": "skin_nocturno",
+        "skin": "nocturno",
+        "pieces": 4,
+        "equipment": 4
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "86ceaa57a9e46afe8d50d66880b53243d515d9478f087078ef5f5b63c8124023",
+          "afterHash": "075ed6f4dbbd5ec11ae70f539f7a70b96f629f982eb6ada61cc9f990ce7aa6fb"
+        },
+        {
+          "timer": 600,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "e958f7f891de82a3ead46bfa5b02af56c14effe46774032fff1fa5daaa92bf45",
+          "afterHash": "8874c0c395098ea0f63a7adf4d362ad7e3a5e618b5fab089e916b0527da98bce"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-minas-set-dense",
+      "mobile": true
+    }
+  ]
+}

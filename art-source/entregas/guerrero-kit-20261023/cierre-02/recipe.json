@@ -1,0 +1,21 @@
+{
+  "base": "3d25a89ef1765443c464ac25c59018ad7a6a5c8b",
+  "parent": "e692d37f62c9f4fd05ab04fc18540d2ebbacd8c4",
+  "art": "Reutilización exacta assets/vfx/guerrero/trampa.png y alternativaWebP; celda7 cliparmada84x84,64u centro. No nuevo atlas. Pintor/imagegen no aplican a conectar arte existente.",
+  "environment": [
+    "NODE_PATH con playwright",
+    "CHROMIUM_PATH Chromium",
+    "server/node_modules dependencias de relay local; DATA_DIR efímero, DATABASE_URL vacío"
+  ],
+  "commands": [
+    "OUT=art-source/entregas/guerrero-kit-20261023/cierre-02 node tools/vfx/check-guerrero-trap.js",
+    "ONLY=guerrero node tools/vfx/parity-guerrero-trap.js",
+    "OUT=art-source/entregas/guerrero-kit-20261023/cierre-02 node tools/vfx/guerrero-trap-online.js",
+    "node tools/vfx/check-guerrero-lifecycle.js",
+    "STEPS=25 node tools/vfx/capture-guerrero-closure.js # guardar matrix como cast400-matrix.json antes de siguiente",
+    "STEPS=100 node tools/vfx/capture-guerrero-closure.js",
+    "ARENAS=bosque LOOKS=base SPARSE_ONLY=1 CANARY=1 OUT=/tmp/guerrero-canary node tools/vfx/capture-guerrero-closure.js # esperado exit1",
+    "python3 tools/vfx/package-guerrero-closure.py"
+  ],
+  "scope": "Cierre del consumidor armada. No bloquear este componente por arte ajeno FIX. No certificar bloques completos."
+}
