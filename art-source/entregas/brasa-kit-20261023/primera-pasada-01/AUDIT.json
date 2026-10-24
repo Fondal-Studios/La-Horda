@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-23",
+  "base": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "generated": [
+    "B120:A-FX-brasa-h1:mount burst/nova",
+    "B121:A-FX-brasa-h2:purge cone",
+    "B122:A-FX-brasa-h3:dismantle burst/aura",
+    "B484:A-PROP-sfa-steam:conditional steam zone only"
+  ],
+  "existingPreserved": [
+    "Brasa body atlas/set/Abisal skins",
+    "Four skill icons",
+    "Basic nut/pressure",
+    "UF sweep siren",
+    "Turret body and gear signature"
+  ],
+  "actualConsumers": [
+    "SFA_BIND.brasa slots0/1/2",
+    "SFA_OBJ.steam from br_purge mastery and br_dismantle set3",
+    "portadorSpeedTimer for H3 duration",
+    "vfxSfaPlay relay and portadorObjects snapshots"
+  ],
+  "notGenerated": "No body/skin/icon/UF replacement and no new champion. Pintor/forge body recipes do not fit native SFA VFX; uses established Canvas/SfaStrip recipe system instead of raster image generation."
+}

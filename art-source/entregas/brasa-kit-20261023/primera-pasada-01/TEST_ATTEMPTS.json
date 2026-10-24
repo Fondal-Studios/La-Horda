@@ -1,0 +1,27 @@
+{
+  "attempts": [
+    {
+      "name": "Original portadores/simulate.js",
+      "result": "ERROR before completion",
+      "evidence": "attempt-01/portadores.log",
+      "detail": "Cannot read undefined pieces. Old harness waits PORTADORES/CHAMP_PACK, not completion of all data. Root cause not demonstrated; not a PASS; no unrelated test/gameplay edit."
+    },
+    {
+      "name": "Relay first run",
+      "result": "4/5 PASS; variant mismatch FAIL",
+      "evidence": "attempt-01/online-results.json"
+    },
+    {
+      "name": "Relay second run, extra diagnostic base-theme check",
+      "result": "5/6 PASS; exact vent variant still FAIL",
+      "evidence": "online-results.json",
+      "detail": "Added separate native atlas observation by base theme; original failing exact-variant assertion preserved. No gate lowered."
+    },
+    {
+      "name": "Export size reconciliation",
+      "result": "diagnostic128px preserved; final96px matches sfaDrawOne cone and sfaBucket steam zone",
+      "evidence": "attempt-01/export-size128",
+      "detail": "No runtime/art recipe change; export uses actual design bucket for range170 and radius90/100."
+    }
+  ]
+}

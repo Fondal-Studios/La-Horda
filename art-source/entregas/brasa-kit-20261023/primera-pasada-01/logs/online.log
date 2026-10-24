@@ -1,0 +1,35 @@
+[arnés] servidor propio: http://127.0.0.1:46569 (raíz /workspace/scratch/a01f80e6b406/la-horda-brasa)
+JOINED {
+  code: 'EJSYWP',
+  human: 2,
+  slots: [
+    {
+      slot: 0,
+      name: 'Jugador',
+      champ: 'solciju',
+      level: 20,
+      ready: true,
+      connected: true,
+      host: true,
+      muted: false,
+      founder: null
+    },
+    {
+      slot: 1,
+      name: 'Jugador',
+      champ: 'brasa',
+      level: 20,
+      ready: false,
+      connected: true,
+      host: false,
+      muted: false,
+      founder: null
+    },
+    null,
+    null
+  ]
+}
+HUMANS_READY
+LOADOUT_READY
+START_SENT { state: 'playing', role: 'host' } { state: 'playing', role: 'guest' }
+{"host":"solciju","guest":"brasa","ok":true}
