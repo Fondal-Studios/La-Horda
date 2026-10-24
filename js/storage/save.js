@@ -468,7 +468,11 @@ function needsStarterChampion(){
 // localStorage, varias veces por cuadro en las peleas grandes. Fuera de la partida (menús,
 // pausa, fin de partida) se sigue guardando al instante, igual que siempre.
 let _persistTimer = null;
+let _persistBatchDepth = 0;
+let saveLastWriteOK = false;
 function persistNow(){
+  if(_persistBatchDepth) return false;
+  saveLastWriteOK = false;
   if(_persistTimer){ clearTimeout(_persistTimer); _persistTimer = null; }
   // GM / TEST LAB: una sesión de prueba nunca escribe el progreso real (js/systems/test-lab.js).
   if(typeof testLabActive==="function" && testLabActive()) return;
@@ -480,11 +484,13 @@ function persistNow(){
   if(saveLoadFailed) return; // el guardado de verdad sigue en localStorage (y copiado en _noCargo)
   if(!saveLoadStarted){ try{ console.warn("persist antes de cargar el guardado: ignorado"); }catch(e){} return; }
   const data = (typeof netPersistView==="function") ? netPersistView(save) : save;
-  try{ localStorage.setItem(SAVE_KEY, JSON.stringify(data)); }catch(e){ /* storage unavailable, continue in-memory */ }
+  try{ localStorage.setItem(SAVE_KEY, JSON.stringify(data)); saveLastWriteOK = true; }catch(e){ return false; }
   // CUENTAS: avisa que el guardado cambió (se sube a la nube con demora: js/net/account.js)
   if(typeof accountOnPersist==="function"){ try{ accountOnPersist(); }catch(e){} }
+  return true;
 }
 function persist(){
+  if(_persistBatchDepth) return;
   if(typeof invalidatePassiveCache==="function") invalidatePassiveCache();
   if(typeof state!=="undefined" && state==="playing"){
     if(!_persistTimer) _persistTimer = setTimeout(persistNow, 1500);

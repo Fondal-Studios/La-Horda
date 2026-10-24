@@ -327,7 +327,7 @@ function netHostStartGame(){
   });
   if(currentArena==="convergencia" && typeof lanesBegin==="function") lanesBegin("host"); // Guerra de Cristales: guardado temporal normalizado
   const seed = (Math.random()*0x7fffffff)|0 || 7;
-  netMatch = {role:"host", mySlot:0, seed, slots, arena:currentArena, loadouts:(netLobby.loadouts||{}),
+  netMatch = {role:"host", rewardRunId:victoryNewRunId(), mySlot:0, seed, slots, arena:currentArena, loadouts:(netLobby.loadouts||{}),
     diff: typeof diffEffective==="function" ? diffEffective(currentArena) : "normal", // la dificultad la elige el anfitrión
     backups:null, recording:false, lastSnapAt:0, lastKeyAt:0, snapN:0, last:{}, lastG:{}, lastH:[{},{},{},{}], ents:new Map(),
     buffPicks:null, ended:false, startedAt:performance.now()};
@@ -356,7 +356,7 @@ function netHostStartGame(){
 }
 function netStartMessage(){
   // lay: trazado al azar (js/arenas/arena-layouts.js) — lo decide el anfitrión
-  return {k:"start", arena:currentArena, seed:netMatch.seed, diff:netMatch.diff || "normal", lay:(typeof mapLayoutOn==="function" && mapLayoutOn()) ? 1 : 0, slots:netMatch.slots, snap:netBuildSnapshot(true, true)};
+  return {k:"start", rewardRunId:netMatch.rewardRunId, arena:currentArena, seed:netMatch.seed, diff:netMatch.diff || "normal", lay:(typeof mapLayoutOn==="function" && mapLayoutOn()) ? 1 : 0, slots:netMatch.slots, snap:netBuildSnapshot(true, true)};
 }
 // Cada cuadro, en update(): héroes de los invitados.
 function netHostUpdateRemotes(dt){
@@ -634,6 +634,7 @@ function netHostTick(){
    INVITADO
    ===================================================================== */
 function netGuestStartRun(msg){
+  victoryBeginRun(msg.rewardRunId || "legacy:"+net.code+":"+msg.seed);
   // reconexión = misma sala y la partida anterior NO había terminado (si terminó, es una nueva)
   const reconnecting = !!(netMatch && netMatch.role==="guest" && netMatch.code===net.code && !netMatch.ended);
   netMatch = {role:"guest", mySlot:net.slot, seed:msg.seed, slots:msg.slots, arena:msg.arena, code:net.code, diff:msg.diff || "normal", lay:!!msg.lay,
@@ -900,7 +901,6 @@ function netGuestEnd(d){
     }
     // Pesadilla/Infierno: igual, solo si ya la tenía abierta en esta arena (difficulty-tiers.js)
     if(typeof diffMarkCleared==="function") diffMarkCleared(currentArena, netMatch.diff, diffArenaUnlocked(currentArena, netMatch.diff));
-    grantGold(Math.round(80*(typeof diffGoldMult==="function" ? diffGoldMult() : 1)));
     persist();
     if(typeof AlphaServices!=="undefined")AlphaServices.acceptHostEventVictory(d.eventBossDefeated);
     showVictoryScreen();

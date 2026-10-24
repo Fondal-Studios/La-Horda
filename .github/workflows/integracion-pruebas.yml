@@ -30,6 +30,10 @@ jobs:
         if: ${{ !cancelled() }}
         timeout-minutes: 3
         run: node tools/lib/test-serve.js
+      - name: "Vida y recibo de recompensas: regresión crítica"
+        if: ${{ !cancelled() }}
+        timeout-minutes: 3
+        run: node tools/regression/test-critical-rewards.js
       - name: "Libro de la Horda: lógica pura"
         if: ${{ !cancelled() }}
         timeout-minutes: 3

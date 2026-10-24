@@ -526,7 +526,7 @@ document.getElementById("menu-btn-1").addEventListener("click", ()=>{
   }
   go();
 });
-document.getElementById("again-btn").addEventListener("click", ()=>{ if(netBackToRoomIfAny()) return; startRun(1); });
+document.getElementById("again-btn").addEventListener("click", ()=>{ if(!victorySaveReady()) return; if(netBackToRoomIfAny()) return; startRun(1); });
 document.getElementById("menu-btn-2").addEventListener("click", ()=>{
   const go = ()=>{
     if(netLeaveAfterMatch()){ setState("mainmenu"); renderMainMenu(); return; }

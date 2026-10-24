@@ -196,14 +196,14 @@ function groundLootNearest(h, r){
 }
 function groundLootPickNearest(){ const g = groundLootNearest(player); return g ? groundLootPick(g) : false; }
 // Juntar todo lo que quedó en el piso (victoria / cambio de arena). Devuelve lo que entró.
-function groundLootCollectAll(){
+function groundLootCollectAll(earnedReward){
   const got = [];
   for(const g of groundLoot.slice().sort((a,b)=>TIER_ORDER[b.tier]-TIER_ORDER[a.tier])){
-    const room = stashMakeRoomFor(g.item);
+    const room = earnedReward ? {ok:true} : stashMakeRoomFor(g.item);
     if(!room.ok) continue;
     groundLoot.splice(groundLoot.indexOf(g), 1);
     if(room.self) continue; // reciclado en polvo de Gema
-    addItemToInventory(player ? player.classKey : selectedClass, g.item);
+    addItemToInventory(player ? player.classKey : selectedClass, g.item, earnedReward);
     if(typeof endlessOn==="function" && endlessOn() && EN.local && EN.local.loot) EN.local.loot.push(g.item);
     got.push(g.item);
   }
