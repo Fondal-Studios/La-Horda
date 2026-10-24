@@ -1,0 +1,123 @@
+{
+  "checks": [
+    {
+      "name": "current actual object",
+      "ok": true
+    },
+    {
+      "name": "current lifetime3500",
+      "ok": true,
+      "detail": 3500
+    },
+    {
+      "name": "current radius34",
+      "ok": true,
+      "detail": 34
+    },
+    {
+      "name": "current endpoints300",
+      "ok": true
+    },
+    {
+      "name": "current source event",
+      "ok": true
+    },
+    {
+      "name": "current cap2",
+      "ok": true
+    },
+    {
+      "name": "current expires",
+      "ok": true
+    },
+    {
+      "name": "pressure damages real target",
+      "ok": true
+    },
+    {
+      "name": "pressure candidate at cue",
+      "ok": true
+    },
+    {
+      "name": "pressure real radius",
+      "ok": true
+    },
+    {
+      "name": "pressure no SFA extra rays",
+      "ok": true
+    },
+    {
+      "name": "ride movement deferred",
+      "ok": true
+    },
+    {
+      "name": "ride state active",
+      "ok": true
+    },
+    {
+      "name": "ride no fictitious cast beam",
+      "ok": true
+    },
+    {
+      "name": "ride one launch",
+      "ok": true
+    },
+    {
+      "name": "ride moves after updates",
+      "ok": true
+    },
+    {
+      "name": "foam real segments",
+      "ok": true
+    },
+    {
+      "name": "foam actual owner",
+      "ok": true
+    },
+    {
+      "name": "foam real radius26",
+      "ok": true
+    },
+    {
+      "name": "foam recipe registered",
+      "ok": true
+    },
+    {
+      "name": "foam draws actual endpoints",
+      "ok": true
+    },
+    {
+      "name": "ride stops",
+      "ok": true
+    },
+    {
+      "name": "foam cap6",
+      "ok": true
+    },
+    {
+      "name": "foam expires",
+      "ok": true
+    },
+    {
+      "name": "death clears ride and foam",
+      "ok": true
+    },
+    {
+      "name": "pool reset",
+      "ok": true
+    },
+    {
+      "name": "UF remains original",
+      "ok": true
+    },
+    {
+      "name": "basic remains tide",
+      "ok": true
+    }
+  ],
+  "limitations": [
+    "Foam beam phase still follows global animNow; no crest attached to leading hero body.",
+    "Legacy current/foam shapes retained. Composite visual review, skin/equipment and sustained performance pending."
+  ],
+  "errors": []
+}

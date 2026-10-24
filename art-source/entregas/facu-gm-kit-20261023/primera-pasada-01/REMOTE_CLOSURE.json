@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "date": "2026-10-23",
+  "branch": "art/facu-gm-kit-first-pass-20261023",
+  "pr": 207,
+  "state": "EN_CORRECCION",
+  "artGate": "FIX / NO_INTEGRAR",
+  "recovery": "dc84f7dfab8de4f48263b846878718118c2e037a",
+  "production": "b5932e678a1383e3185272d9f223a57c845feeb1",
+  "productionTree": "6bbf769e2c72c6bc0636f6a5fd1b8a62ebde4a45",
+  "verification": {
+    "productionFiles": 111,
+    "remoteTreeTruncated": false,
+    "gitBlobLocalMatches": 111,
+    "refEqualsProduction": true,
+    "closureFiles": [
+      "CHECKPOINT.md",
+      "REMOTE_CLOSURE.json",
+      "manifest.json"
+    ],
+    "closureHead": "Resolve PR207 head; recorded in PR body after post-commit verification"
+  },
+  "main": "f62d181477adcb4607cc615411cc51bad769f681",
+  "states": {
+    "GENERADO": true,
+    "EN_CORRECCION": true,
+    "VALIDADO": false,
+    "INTEGRADO_MAIN": false,
+    "publicationVerified": false
+  },
+  "tests": {
+    "technical": 29,
+    "focused": 28,
+    "ascension": 225,
+    "relay": 6,
+    "RNG": 40680,
+    "parity": "360 frames summarized state equality, not full snapshots/global isolation",
+    "initialSceneHash": 8,
+    "UFpngUnchanged": 6,
+    "atlasReexportExact": 5,
+    "previewImages": 21,
+    "previewCanvases": 5,
+    "previewErrors": 0
+  },
+  "pending": [
+    "Three visual findings, queue40 preserving37",
+    "Moving crest / beam global phase",
+    "Composite contrast and Art Gate",
+    "Skins/equipment/six arenas",
+    "Performance/warmup/saturation/reentry/culling",
+    "Exact-head CI"
+  ],
+  "next": "Audit Farolero B138/B139/B140 against fresh main/PR/files/consumers. Do not repeat Facu first pass or previous FIX workshops. Preserve all original IDs and sources.",
+  "resume": "git fetch origin art/facu-gm-kit-first-pass-20261023; read primera-pasada-01/CHECKPOINT.md, REMOTE_CLOSURE.json, recipe.json and docs/production/CORRECTION_BATCH.json. Verify remote closure before next production."
+}
