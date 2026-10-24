@@ -1,0 +1,16 @@
+{
+  "attempts": [
+    {
+      "id": "01",
+      "technical": "13PASS",
+      "capture": "INVALID: state menu produced HUD without arena",
+      "evidence": "attempt-01/game-mobile.png and game-desktop.png",
+      "resolution": "Separate capture starts actual playing state, steps update/render, hides startup screen; second capture yields same-frame ABA2/2. No runtime changes to fix fixture."
+    },
+    {
+      "id": "02",
+      "capture": "2/2 ABA exact",
+      "parity": "30288/30288 summarized mechanical state,360frames,no errors; not full snapshot/global isolation"
+    }
+  ]
+}
