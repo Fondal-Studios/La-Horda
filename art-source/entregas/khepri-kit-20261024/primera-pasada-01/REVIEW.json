@@ -1,0 +1,36 @@
+{
+  "state": "EN_CORRECCION",
+  "gate": "FIX",
+  "runtimeInstalled": false,
+  "integratedMain": false,
+  "publicationVerified": false,
+  "scope": [
+    "A-FX-khepri-h2/carapace-plates",
+    "A-FX-khepri-h3/elytra-opening"
+  ],
+  "existingPreserved": [
+    "H1 visible swarm",
+    "body/two skins",
+    "UF eclipse",
+    "all runtime"
+  ],
+  "visualInspection": "Native strips inspected: shell plates read as small floating leaves, not yet interlocking carapace; elytra silhouette reads fins/arrow rather than beetle wing covers. Needs form/contrast in actual scene before approval.",
+  "technical": {
+    "frames": 24,
+    "nonempty": 23,
+    "transparentClosures": 1,
+    "distinctRGBAByAtlas": [
+      9,
+      12
+    ],
+    "alpha": "0/255",
+    "edgeContacts": 0
+  },
+  "pending": [
+    "Actual shield ownership/duration and early break lifecycle hook",
+    "Actual dash start/end orientation hook and remote replay",
+    "Before/after game-scale composition, mobile/desktop skins/equipment/six arenas",
+    "Multiplayer and performance, Art Gate and exact CI"
+  ],
+  "noNewCombatParityClaim": true
+}
