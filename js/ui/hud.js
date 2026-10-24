@@ -128,17 +128,15 @@ function updateHUD(){
   if(typeof hudTextTick==="function") hudTextTick(); // cola del cartel central (js/ui/hud-text.js)
   tutTick(); // la voz del Hechicero: cada concepto se enseña una vez, jugando (js/systems/tutorial.js)
   updateDownedOverlay();
-  // Barra de vida con escudo: la capacidad total de referencia es vida máx + escudo máx
-  // de ítems (fijo por equipamiento), así el segmento de escudo nunca se sale de la barra
-  // y, si no hay escudo equipado, se comporta exactamente igual que antes (sin regresión).
-  const pCap = player.maxHp + (player.itemMaxShield||0);
-  const pShieldTotal = (player.shield||0) + (player.itemShield||0);
-  const pShieldPct = Math.max(0, Math.min(100, pShieldTotal/pCap*100));
-  const pHpPct = Math.max(0, Math.min(100-pShieldPct, player.hp/pCap*100));
-  hudCss(document.getElementById("hp-shield-fill"), "width", hudPct(pShieldPct));
+  const vitals = heroVitals(player);
+  hudCss(document.getElementById("hp-shield-fill"), "width", hudPct(vitals.shieldPct));
   const hpFillEl = document.getElementById("hp-fill");
-  hudCss(hpFillEl, "left", hudPct(pShieldPct));
-  hudCss(hpFillEl, "width", hudPct(pHpPct));
+  hudCss(hpFillEl, "left", "0%");
+  hudCss(hpFillEl, "width", hudPct(vitals.hpPct));
+  const healthRow = hpFillEl.closest(".bar-row");
+  if(healthRow) healthRow.title = `Vida ${Math.ceil(vitals.hp)}/${Math.ceil(vitals.maxHp)}`;
+  const shieldRow = document.getElementById("hp-shield-row");
+  if(shieldRow){ shieldRow.title = `Escudo ${Math.ceil(vitals.shield)}`; hudHide(shieldRow, !vitals.shield && !player.itemMaxShield); }
   hudCss(document.getElementById("en-fill"), "width", hudPct05(player.energy/player.maxEnergy*100)); // la energía regenera de a poco: pasos de 0,5 % (<1 px) en vez de reescribir casi cada cuadro
   const plevelEl = document.getElementById("plevel");
   const champMastery = talentState(player.classKey).mastery;
@@ -331,7 +329,7 @@ function renderParty(){
         <div class="ally-badge" style="color:${a.cls.color};background:${a.cls.color}22;">${a.cls.icon}</div>
         <div class="ally-meta">
           <div class="ally-name">${a.netName && a.netName!=="BOT" ? a.netName+" · "+hudClassName(a.cls) : hudClassName(a.cls)}${a.netFounder && typeof founderBadgeHTML==="function" ? founderBadgeHTML(a.netFounder, "sm") : ""}</div>
-          <div class="ally-hp-track"><div class="ally-hp-fill shield-seg" id="ally-shieldbar-${i}"></div><div class="ally-hp-fill" id="ally-hp-${i}"></div></div>
+          <div class="ally-hp-track" title="Vida"><div class="ally-hp-fill" id="ally-hp-${i}"></div></div><div class="ally-hp-track ally-shield-track" title="Escudo"><div class="ally-hp-fill shield-seg" id="ally-shieldbar-${i}"></div></div>
         </div>
         <span class="status-badge atk hidden" id="ally-atk-${i}">⚔</span>
         <span class="status-badge shield hidden" id="ally-shield-${i}">🛡</span>`;
@@ -344,12 +342,10 @@ function renderParty(){
     const fill = document.getElementById("ally-hp-"+i);
     const shieldFill = document.getElementById("ally-shieldbar-"+i);
     const row = document.getElementById("ally-row-"+i);
-    const aCap = a.maxHp + (a.itemMaxShield||0);
-    const aShieldTotal = (a.shield||0) + (a.itemShield||0);
-    const aShieldPct = Math.max(0, Math.min(100, aShieldTotal/aCap*100));
-    const aHpPct = Math.max(0, Math.min(100-aShieldPct, a.hp/aCap*100));
-    hudCss(shieldFill, "width", hudPct(aShieldPct));
-    if(fill){ hudCss(fill, "left", hudPct(aShieldPct)); hudCss(fill, "width", hudPct(aHpPct)); }
+    const vitals = heroVitals(a);
+    hudCss(shieldFill, "width", hudPct(vitals.shieldPct));
+    if(fill){ hudCss(fill, "left", "0%"); hudCss(fill, "width", hudPct(vitals.hpPct)); }
+    if(shieldFill) hudHide(shieldFill.parentElement, !vitals.shield && !a.itemMaxShield);
     if(row) row.classList.toggle("down", !a.alive);
     const atkB = document.getElementById("ally-atk-"+i);
     const shB = document.getElementById("ally-shield-"+i);
