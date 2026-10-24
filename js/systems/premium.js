@@ -35,7 +35,7 @@ function premiumRuleText(){
     : "Las Brasas solo compran apariencia. Nunca poder.";
 }
 const PREMIUM_TIER_LABEL = { set: "Skin de colección", autor: "Skin con diseño propio", croma: "Croma (otra paleta)" };
-function premiumPrice(id){ return pricingBrasas(premiumTier(id)); }   // ✦ (0 = no se vende por Brasas)
+function premiumPrice(id){ if(SET_SKINS[id]?.earnedOnly)return 0; return pricingBrasas(premiumTier(id)); }   // ✦ (0 = no se vende por Brasas)
 function premiumGoldPrice(id){
   const d = typeof CROMA_SKINS !== "undefined" ? CROMA_SKINS[id] : null;
   return pricingCosmeticGold(premiumTier(id), d ? d.price : 0);

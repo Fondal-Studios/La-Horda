@@ -275,7 +275,7 @@ function setDuplicateInfo(classKey, setId){
   for(const id in byId){
     const list = byId[id].slice().sort((a,b)=> (eq.has(a.uid)?1:0) - (eq.has(b.uid)?1:0));
     // conserva una de cada pieza (la equipada si la hay); el resto son duplicados usables
-    list.slice(0, list.length-1).forEach(it=>{ if(!eq.has(it.uid)) dupes.push(it); });
+    list.slice(0, list.length-1).forEach(it=>{ if(!eq.has(it.uid) && !it.favorite && !it._reserved && !it.relicId) dupes.push(it); });
   }
   const missing = setPieceIds(setId).filter(id=>!byId[id]);
   return {dupes, missing};

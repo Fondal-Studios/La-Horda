@@ -636,7 +636,7 @@ function create(opts){
   const sweeper = setInterval(() => {
     fails.sweep(); registers.sweep(); apiHits.sweep(); lbHits.sweep();
     const old = now0() - 24 * 3600 * 1000; for(const [k, t] of lbLast) if(t < old) lbLast.delete(k);
-    if(status === "ready") store.sweepSessions(Date.now()).catch(() => {});
+    if(status === "ready"){store.sweepSessions(Date.now()).catch(() => {});require("./item-economy").tick(store,now0()).catch(e=>log("ECONOMY_SWEEP_ERROR",{error:String(e.message)}));}
   }, 10 * 60 * 1000);
   if(sweeper.unref) sweeper.unref();
 
@@ -749,6 +749,8 @@ function create(opts){
     if(Buffer.byteLength(JSON.stringify(data)) > SAVE_MAX_BYTES) return err(req, res, 413, "SAVE_TOO_BIG", "El guardado es demasiado grande.");
     const enforced = entitlements.sanitizeSave(data, await entitledFor(u)).changed;
     if(enforced.length) log("SAVE_ENTITLEMENT_ENFORCED", { user: u.id, changed: enforced });
+    await require("./item-economy").recordLogin(store,u,now0());
+    require("./item-economy-live").project((await store.gmRead())?.itemEconomy,String(u.id),data);
     const dataStr = JSON.stringify(data);
     const base = Number.isInteger(body.baseVersion) && body.baseVersion >= 0 ? body.baseVersion : -1;
     if(base < 0 && !body.force) return err(req, res, 400, "BAD_VERSION", "Falta la versión base del guardado.");
@@ -826,6 +828,7 @@ function create(opts){
       }
       fails.reset(kU);
       await store.updateUser(u.id, { lastLogin: Date.now() });
+      await require("./item-economy").recordLogin(store,u,now0());
       const s = await newSession(u);
       return send(req, res, 200, Object.assign({ user: publicUser(u) }, s));
     },
@@ -836,6 +839,7 @@ function create(opts){
     },
     "GET /api/me": async (req, res) => {
       const a = await auth(req); if(!a.user) return authFail(req, res, a);
+      await require("./item-economy").recordLogin(store,a.user,now0());
       const meta = await store.getSaveMeta(a.user.id);
       return send(req, res, 200, { user: publicUser(a.user), expiresAt: a.session.expiresAt, save: meta || null });
     },
@@ -853,6 +857,7 @@ function create(opts){
         const put = await store.putSave(a.user.id, JSON.stringify(data), summary, s.version, false);
         if(put.ok){ version = put.version; updatedAt = put.updatedAt; }
       }
+      if(data)require("./item-economy-live").project((await store.gmRead())?.itemEconomy,String(a.user.id),data);
       return send(req, res, 200, { version, updatedAt, summary, data });
     },
     "PUT /api/save": async (req, res) => {
@@ -925,6 +930,7 @@ function create(opts){
   };
 
   Object.assign(routes, gameMaster.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,ownerAccess,founderOf,founders:()=>founderBindings,seenAt}));
+  Object.assign(routes, require("./item-economy").routes({getStore:()=>store,auth,send,err,readBody,now:now0,isOwner}));
   Object.assign(routes, walletMod.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,log}));
 
   // Devuelve true si atendió el pedido (todo lo que empieza con /api/).

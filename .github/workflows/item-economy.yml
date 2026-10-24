@@ -1,0 +1,31 @@
+name: Item economy safety
+on:
+  pull_request:
+    paths: ['server/**', 'js/**', 'css/item-economy.css', 'index.html', 'tools/items/**', '.github/workflows/item-economy.yml']
+  push:
+    branches: ['feat/item-economy-v2']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  transactions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix server
+      - run: node tools/items/test-auto-inventory-unit.js
+      - run: npm run test:item-economy --prefix server
+  mobile-inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - run: npm ci --prefix server
+      - name: Inventory on mobile viewport
+        run: node tools/lib/with-site.js tools/items/t_auto_inventory.js
+      - name: Persistent economy on mobile viewport
+        run: node tools/lib/with-site.js tools/items/t_economy_live.js

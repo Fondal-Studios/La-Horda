@@ -47,15 +47,16 @@ function itemCardHTML(it, o){
     const equipBtn = o.classKey ? (onMe ? `<button data-inv-unequip="${it.type}">Quitar</button>`
       : (compat ? `<button class="primary" data-inv-equip="${it.uid}">${by?"Equipar (sacárselo a "+CLASSES[by].name+")":"Equipar"}</button>` : `<button disabled>No compatible</button>`)) : "";
     actions = `<div class="vic-item-actions">${equipBtn}
-      ${it.rarity!=="unico" ? `<button data-inv-sell="${it.uid}">Vender · +${typeof fmtGold==="function" ? fmtGold(sell) : sell} 🪙</button>` : ""}
-      <button data-inv-discard="${it.uid}">Descartar</button></div>`;
+      <button data-inv-favorite="${it.uid}" aria-pressed="${!!it.favorite}">${it.favorite?"Favorito protegido":"Marcar favorito"}</button>
+      ${!it.favorite && !it.relicId && it.rarity!=="unico" ? `<button data-inv-sell="${it.uid}">Vender · +${typeof fmtGold==="function" ? fmtGold(sell) : sell} 🪙</button>` : ""}
+      ${!it.favorite && !it.relicId ? `<button data-inv-discard="${it.uid}">Descartar</button>` : ""}</div>`;
   }
   return `<div class="inv-card tier-${itemTier(it)} ${it.set?"set-item":""} ${compat?"":"incompat"}" data-inv-card="${it.uid}" style="border-left-color:${col};">
     ${itemIconHTML(it)}${itemLevel(it)>1?`<span class="item-lv">Nv.${itemLevel(it)}</span>`:""}
     <div class="item-meta">
       <div class="item-name" style="color:${col};">${elem}${it.name}${it.set?' <span class="set-badge">SET</span>':""}</div>
       ${epithet}
-      <div class="item-stat">${itemTierLabel(it)} · ${ITEM_TYPES[it.type].label} · Nv.${itemLevel(it)}${itemIlvl(it)>1 ? ` · ${itemIlvlLabel(it)}` : ""} · +${Math.round(itemStat(it)*100)}% ${ITEM_TYPES[it.type].statLabel} ${owner} ${byTxt}</div>
+      <div class="item-stat">${itemTierLabel(it)} · ${ITEM_TYPES[it.type].label} · Nv.${itemLevel(it)}${itemIlvl(it)>1 ? ` · ${itemIlvlLabel(it)}` : ""} · +${Math.round(itemStat(it)*100)}% ${ITEM_TYPES[it.type].statLabel} ${owner} ${byTxt} ${it.overflow?" · Reserva de botín":""}</div>
       ${passives ? `<div class="item-passives">${passives}</div>` : ""}
       ${(o.compare && o.classKey && compat && !onMe) ? compareItemsHTML(o.classKey, it) : ""}
       ${actions}
@@ -63,6 +64,7 @@ function itemCardHTML(it, o){
   </div>`;
 }
 function _bindItemActions(panel, classKey, rerender){
+  panel.querySelectorAll("[data-inv-favorite]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();toggleItemFavorite(b.getAttribute("data-inv-favorite"));rerender();}));
   panel.querySelectorAll("[data-inv-equip]").forEach(b=> b.addEventListener("click", ev=>{ ev.stopPropagation(); equipItem(classKey, b.getAttribute("data-inv-equip")); prepCompareOpenUid = null; rerender(); }));
   panel.querySelectorAll("[data-inv-unequip]").forEach(b=> b.addEventListener("click", ev=>{ ev.stopPropagation(); unequipItem(classKey, b.getAttribute("data-inv-unequip")); rerender(); }));
   panel.querySelectorAll("[data-inv-sell]").forEach(b=> b.addEventListener("click", ev=>{
@@ -93,7 +95,7 @@ function renderChampInventory(panel, classKey, rerender){
   let html = renderEquipmentGridHTML(classKey, "prep-unequip");
   html += renderSetPanelHTML(classKey);
   const used = stashUsedSlots();
-  html += `<div class="inv-capacity">Inventario de la cuenta: ${used}/${INVENTORY_CAPACITY}${used>=INVENTORY_CAPACITY?" — lleno: los Comunes y Raros que levantes se reciclan solos en Gemas":""} · <a href="#" data-open-myinv>abrir Mi Inventario</a></div>`;
+  html += `<div class="inv-capacity">Inventario de la cuenta: ${used}/${INVENTORY_CAPACITY}${used>=INVENTORY_CAPACITY?" — se conservará el botín en la reserva si la gestión automática está activa":""} · <a href="#" data-open-myinv>abrir Mi Inventario</a></div>`;
   html += renderFusionHTML(classKey, "prep-fuse");
   const chips = [["compatibles","Compatibles"],["recomendados","Recomendados"],["todos","Todos"]];
   html += `<div class="inv-filters">${chips.map(([k,l])=>`<button class="inv-chip ${champInvFilter===k?"on":""}" data-champ-filter="${k}">${l}</button>`).join("")}</div>`;
@@ -134,7 +136,7 @@ const myInvFilter = {rarity:"todas", type:"todos", champ:"todos"};
 function openMyInventory(tab){ myInvTab = tab || myInvTab; setState("inventory"); renderMyInventory(); }
 function renderMyInventory(){
   const used = stashUsedSlots();
-  document.getElementById("myinv-sub").textContent = `${used}/${INVENTORY_CAPACITY} espacios · ${stashItems().length} objetos en total (lo equipado no ocupa espacio) · compartido por todos tus guardianes` + (used >= INVENTORY_CAPACITY ? " · LLENO: los Comunes y Raros que levantes se reciclan solos en Gemas" : "");
+  document.getElementById("myinv-sub").textContent = `${used}/${INVENTORY_CAPACITY} espacios · ${stashItems().length} objetos en total (lo equipado no ocupa espacio) · compartido por todos tus guardianes` + (used >= INVENTORY_CAPACITY ? " · Reserva de botín disponible con gestión automática" : "");
   setHubTabs("myinv-tabs", myInvTab);
   const panel = document.getElementById("myinv-panel");
   if(myInvTab==="recetas") renderRecipesPanel(panel);
@@ -156,7 +158,13 @@ function renderMyItemsPanel(panel){
   list.sort((a,b)=> rarityIndex(b.rarity)-rarityIndex(a.rarity) || (b.set?1:0)-(a.set?1:0) || a.type.localeCompare(b.type));
   html += list.length ? '<div class="inv-list tall">' + list.map(it=>itemCardHTML(it, {actions:true})).join("") + '</div>'
     : '<div class="inv-empty">No hay objetos con este filtro.</div>';
+  const prefs=lootManagement();
+  html = `<details><summary>Gestión automática del botín</summary>
+    <p>La reserva conserva el botín cuando no hay espacio, hasta 150 objetos totales. Equipalos o vendelos desde esta lista. Los favoritos nunca se consumen.</p>
+    ${[["enabled","Gestión automática y reserva"],["autoFuse","Fusionar tres duplicados exactamente idénticos"],["recycleDuplicates","Reciclar duplicados comunes o raros al llenar el inventario (solo con autofusión desactivada)"]].map(([key,label])=>`<label style="display:block;padding:10px"><input type="checkbox" data-loot-setting="${key}" ${prefs[key]?"checked":""}> ${label}</label>`).join("")}
+    <p>Materiales: ${save.gems||0} gemas · Fusiones automáticas: ${save.autoLootSummary?.fusions||0}</p></details>` + html;
   panel.innerHTML = html;
+  panel.querySelectorAll("[data-loot-setting]").forEach(el=>el.addEventListener("change",()=>{save.lootManagement={...lootManagement(),[el.dataset.lootSetting]:el.checked};persist();renderMyInventory();}));
   panel.querySelectorAll("[data-f-rar]").forEach(b=> b.addEventListener("click", ()=>{ myInvFilter.rarity = b.getAttribute("data-f-rar"); renderMyInventory(); }));
   panel.querySelectorAll("[data-f-type]").forEach(b=> b.addEventListener("click", ()=>{ myInvFilter.type = b.getAttribute("data-f-type"); renderMyInventory(); }));
   const sel = panel.querySelector("#myinv-champ"); if(sel) sel.addEventListener("change", ()=>{ myInvFilter.champ = sel.value; renderMyInventory(); });
