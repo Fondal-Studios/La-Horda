@@ -1,0 +1,46 @@
+[
+  {
+    "key": "packet",
+    "cols": 4,
+    "rows": 3,
+    "n": 11,
+    "block": "B430",
+    "item": "A-FX-axiom-basico",
+    "cell": 24,
+    "prompt": "Use case: stylized-concept. Original sprite animation sheet for La Horda Axiom, reality rewriter. Transparent background, no background paint, no character or body, no floor. Pixel-art VFX only, deliberately sharp square pixels and orthogonal strokes, no curves, glow, blur, labels, numbers outside sprites or grid lines. Palette navy #06161a, dark #24243c, turquoise #3ad6c4, pale cyan #9df5ea, magenta #ff4fd8 and white. Perfect equal rectangular grid, row-major ordering, each frame centered on same anchor with generous empty margin, never overlap neighbouring cells. 12 cells in 4 columns by 3 rows. Frames0-10 occupied, final bottom-right cell completely blank. Paquete Corrupto: tiny cyan data cube, magenta displaced pixels. Frames0-1 cursor anticipation; frames2-4 looping cube with two trailing square pixels, constant scale; frames5-7 impact splits cube into four square fragments; frames8-10 fragments descend and vanish in hard scanlines, still visible last frame. No UI window. This will be exported at24x24 per frame, keep extremely simple.",
+    "source_sha256": "81214f75db108062712baf40a87bb75825fd97f47e01681beb98fc65da9a83f7"
+  },
+  {
+    "key": "error404",
+    "cols": 6,
+    "rows": 4,
+    "n": 22,
+    "block": "B111",
+    "item": "A-FX-axiom-h1",
+    "cell": 176,
+    "prompt": "Use case: stylized-concept. Original sprite animation sheet for La Horda Axiom, reality rewriter. Transparent background, no background paint, no character or body, no floor. Pixel-art VFX only, deliberately sharp square pixels and orthogonal strokes, no curves, glow, blur, labels, numbers outside sprites or grid lines. Palette navy #06161a, dark #24243c, turquoise #3ad6c4, pale cyan #9df5ea, magenta #ff4fd8 and white. Perfect equal rectangular grid, row-major ordering, each frame centered on same anchor with generous empty margin, never overlap neighbouring cells. 24 cells in6 columns by4 rows. First22 occupied, final2 bottom-right cells blank. Error404 ground telegraph: turquoise rectangular system window lying in slight top-down perspective, title bar and large pixel exclamation mark; small 404 inside window. Frames0-5 window assembles, frames6-11 held fixed-size window flickers with cyan/magenta edge offsets; frames12-16 collapses inward then square shockwave; frames17-21 square fragments disperse then vanish, last frame still visible. Not an upright full-screen dialog. Ground silhouette clear, no circular ring.",
+    "source_sha256": "8d239b4cbe27cf9fe6e2fe456942784249245d7ba454749edcd0895f873aa5b8"
+  },
+  {
+    "key": "overwrite",
+    "cols": 4,
+    "rows": 4,
+    "n": 15,
+    "block": "B112",
+    "item": "A-FX-axiom-h2",
+    "cell": 148,
+    "prompt": "Use case: stylized-concept. Original sprite animation sheet for La Horda Axiom, reality rewriter. Transparent background, no background paint, no character or body, no floor. Pixel-art VFX only, deliberately sharp square pixels and orthogonal strokes, no curves, glow, blur, labels, numbers outside sprites or grid lines. Palette navy #06161a, dark #24243c, turquoise #3ad6c4, pale cyan #9df5ea, magenta #ff4fd8 and white. Perfect equal rectangular grid, row-major ordering, each frame centered on same anchor with generous empty margin, never overlap neighbouring cells. 16 cells in4 columns by4 rows. First15 occupied, last cell blank. Sobrescribir: magenta orthogonal chain of code with arrow cursor head pointing right, NOT lightning bolt. Frames0-2 cursor appears; frames3-6 square chain grows horizontally in right-angle steps and reaches cursor endpoint; frames7-10 infection emblem curly braces with descending tiny cyan code squares, looping constant size; frames11-14 emblem and pixels dissolve. Do not draw humanoids, targets or enemies. Reusable link and infection graphics, compositing handled later.",
+    "source_sha256": "5cd86bbcbf09c2ba1ac2ca1cfc5964d10215f838841a93cf58daf37dac0df4f0"
+  },
+  {
+    "key": "teleport",
+    "cols": 4,
+    "rows": 4,
+    "n": 16,
+    "block": "B113",
+    "item": "A-FX-axiom-h3",
+    "cell": 48,
+    "prompt": "Use case: stylized-concept. Original sprite animation sheet for La Horda Axiom, reality rewriter. Transparent background, no background paint, no character or body, no floor. Pixel-art VFX only, deliberately sharp square pixels and orthogonal strokes, no curves, glow, blur, labels, numbers outside sprites or grid lines. Palette navy #06161a, dark #24243c, turquoise #3ad6c4, pale cyan #9df5ea, magenta #ff4fd8 and white. Perfect equal rectangular grid, row-major ordering, each frame centered on same anchor with generous empty margin, never overlap neighbouring cells. 16 occupied cells in4 columns by4 rows. Add electric blue #4f8cff as dominant hue. Teleport VFX WITHOUT body. First8 frames departure: 0-1 narrow scanline column builds,2-4 column separates into rising blue squares,5-7 residual squares die away. Last8 frames arrival:8-9 descending squares,10-12 horizontal scanlines stack from bottom to top into angular open portal,13-15 residual blue squares scatter and fade. Same anchor and footprint for both sequences, no circular ring, no character silhouettes, no connecting trail inside sheet. Each frame visible, bounded, clean.",
+    "source_sha256": "a470eda5b49e299dc62278cdaf4e8eebf7fe1199f66402a7260e2998ac2cd42c"
+  }
+]

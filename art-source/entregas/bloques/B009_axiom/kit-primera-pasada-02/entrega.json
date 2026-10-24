@@ -1,0 +1,229 @@
+{
+  "date": "2026-10-22",
+  "group": "Axiom kit first-pass",
+  "base_main": "80683b03de58286398ef47de828c39196542c14d",
+  "existing_pr": 194,
+  "generator": "image_gen built-in; exact prompts in recipe.json",
+  "status": "EN_CORRECCION",
+  "visual_gate": "FIX_NO_INTEGRAR",
+  "integrated_main": false,
+  "publication_verified": false,
+  "intended_candidates": 64,
+  "approved_frames": 0,
+  "sources_preserved": true,
+  "reproducible_export": "python art-source/entregas/bloques/B009_axiom/kit-primera-pasada-02/build.py",
+  "components": [
+    {
+      "key": "packet",
+      "block": "B430",
+      "item": "A-FX-axiom-basico",
+      "source": "packet-source.png",
+      "sha256": "81214f75db108062712baf40a87bb75825fd97f47e01681beb98fc65da9a83f7",
+      "atlas": "packet-diagnostic.png",
+      "preview": "packet-preview.png",
+      "frames": 11,
+      "phases_zero_based": {
+        "anticipation": [
+          0,
+          1
+        ],
+        "loop": [
+          2,
+          4
+        ],
+        "impact": [
+          5,
+          7
+        ],
+        "dissipation": [
+          8,
+          10
+        ]
+      },
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "status": "EN_CORRECCION",
+      "findings": {
+        "frames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "reason": "Alfa suave; cubo se lee redondo en2–4, caída8–10 deja trazos alargados. A24px necesita revisar legibilidad y fase de4fragmentos.",
+        "next": "Corregir cubo cuadrado y disipación, limpiar alfa mediante edición de fuente; comprobar clip24px antes de integrar."
+      }
+    },
+    {
+      "key": "error404",
+      "block": "B111",
+      "item": "A-FX-axiom-h1",
+      "source": "error404-source.png",
+      "sha256": "8d239b4cbe27cf9fe6e2fe456942784249245d7ba454749edcd0895f873aa5b8",
+      "atlas": "error404-diagnostic.png",
+      "preview": "error404-preview.png",
+      "frames": 22,
+      "phases_zero_based": {
+        "anticipation": [
+          0,
+          5
+        ],
+        "loop": [
+          6,
+          11
+        ],
+        "impact": [
+          12,
+          16
+        ],
+        "dissipation": [
+          17,
+          21
+        ]
+      },
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "status": "EN_CORRECCION",
+      "findings": {
+        "frames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "reason": "Nube coloreada visible por semialfa, contactos de borde0–11; no cumple capa transparente limpia. Geometría se mantiene inclinada y debe verificarse a radio130.",
+        "next": "Eliminar residuo de fondo y glow en fuente, recuperar margen de0–11, estabilizar bucle6–11."
+      }
+    },
+    {
+      "key": "overwrite",
+      "block": "B112",
+      "item": "A-FX-axiom-h2",
+      "source": "overwrite-source.png",
+      "sha256": "5cd86bbcbf09c2ba1ac2ca1cfc5964d10215f838841a93cf58daf37dac0df4f0",
+      "atlas": "overwrite-diagnostic.png",
+      "preview": "overwrite-preview.png",
+      "frames": 15,
+      "phases_zero_based": {
+        "anticipation": [
+          0,
+          2
+        ],
+        "impact": [
+          3,
+          6
+        ],
+        "loop": [
+          7,
+          10
+        ],
+        "dissipation": [
+          11,
+          14
+        ]
+      },
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "status": "EN_CORRECCION",
+      "findings": {
+        "frames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "reason": "Semialfa/ruido RGB; cadena no separada de cabeza y motivo infección. Faltan exports independientes del tile16px y cabeza48px.",
+        "next": "Separar enlace/cabeza/infección, exportar fases y corregir bordes. Revisar cadena multiobjetivo y duración2600ms sin cambiar gameplay."
+      }
+    },
+    {
+      "key": "teleport",
+      "block": "B113",
+      "item": "A-FX-axiom-h3",
+      "source": "teleport-source.png",
+      "sha256": "a470eda5b49e299dc62278cdaf4e8eebf7fe1199f66402a7260e2998ac2cd42c",
+      "atlas": "teleport-diagnostic.png",
+      "preview": "teleport-preview.png",
+      "frames": 16,
+      "phases_zero_based": {
+        "departure": [
+          0,
+          7
+        ],
+        "arrival": [
+          8,
+          15
+        ]
+      },
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "status": "EN_CORRECCION",
+      "findings": {
+        "frames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "reason": "Nube azul visible semitransparente aunque hay alfa0; sin píxeles totalmente opacos. Cambios de anclaje y tamaño entre salida y llegada; trazo188x24 no producido.",
+        "next": "Editar fuente para transparencia limpia y anclas constantes; producir trazo independiente pendiente. Separar salida0–7 y llegada8–15, validar48px."
+      }
+    }
+  ]
+}
