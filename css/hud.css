@@ -459,3 +459,7 @@ body.reduce-motion .ability-btn.ult.ready{animation:none;}
 .ab-chip b{font-size:12px;}
 .ab-hint{margin-top:4px; text-align:center; font-family:var(--font-body); font-size:12px; color:#bfa08a; background:rgba(0,0,0,.55); border-radius:6px; padding:2px 6px;}
 @media (max-height:420px){ .ab-card{font-size:13px; padding:7px 9px;} .ab-name{font-size:17px;} .ab-facts{font-size:12px;} }
+
+/* Shields have a separate track; losing them never shortens the HP bar. */
+.ally-shield-track{margin-top:2px;}
+#hp-shield-row .bar-track{height:4px;}

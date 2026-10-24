@@ -21,7 +21,7 @@ function dropPotion(x, y, type){
 // Una poción solo se consume si al que la pisa le hace falta (vida/maná no llenos): así no se
 // desperdicia. Para que no parezca un error, si el jugador la pisa con la barra llena se le
 // avisa ("Vida llena") y la poción queda esperando.
-function potionUseful(h, p){ return p.type==="mana" ? h.energy < h.maxEnergy : h.hp < h.maxHp; }
+function potionUseful(h, p){ return p.type==="mana" ? h.energy < h.maxEnergy : heroVitals(h).missingHp > 0; }
 function updatePotions(dt){
   for(const p of potions){
     p.life -= dt;
@@ -43,7 +43,7 @@ function updatePotions(dt){
           if(h===player) playSfx("potion");
           break;
         }
-      } else if(Math.hypot(h.x-p.x, h.y-p.y) < POTION_PICK_R && h.hp < h.maxHp){
+      } else if(Math.hypot(h.x-p.x, h.y-p.y) < POTION_PICK_R && heroVitals(h).missingHp > 0){
         const amt = h.maxHp*0.28*arenaRuleHealMult();
         h.hp = Math.min(h.maxHp, h.hp + amt);
         floatText(h.x, h.y-34, "+"+Math.round(amt), "heal");
