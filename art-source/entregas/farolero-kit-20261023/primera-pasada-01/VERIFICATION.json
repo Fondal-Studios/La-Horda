@@ -1,0 +1,254 @@
+{
+  "checks": [
+    {
+      "name": "farolero_kindlingnova binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "farolero_kindlingnova clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "farolero_kindlingnova active cells",
+      "ok": true,
+      "detail": [
+        104,
+        100,
+        101,
+        111,
+        107,
+        107,
+        112,
+        109,
+        85,
+        50,
+        27,
+        0
+      ]
+    },
+    {
+      "name": "farolero_kindlingnova final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "farolero_kindlingnova cache reuse",
+      "ok": true
+    },
+    {
+      "name": "farolero_flashcone binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "farolero_flashcone clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "farolero_flashcone active cells",
+      "ok": true,
+      "detail": [
+        71,
+        141,
+        212,
+        220,
+        215,
+        220,
+        223,
+        221,
+        166,
+        110,
+        56,
+        0
+      ]
+    },
+    {
+      "name": "farolero_flashcone final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "farolero_flashcone cache reuse",
+      "ok": true
+    },
+    {
+      "name": "farolero_flashburst binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "farolero_flashburst clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "farolero_flashburst active cells",
+      "ok": true,
+      "detail": [
+        147,
+        151,
+        151,
+        151,
+        151,
+        151,
+        151,
+        151,
+        107,
+        75,
+        43,
+        0
+      ]
+    },
+    {
+      "name": "farolero_flashburst final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "farolero_flashburst cache reuse",
+      "ok": true
+    },
+    {
+      "name": "farolero_pathbeam binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "farolero_pathbeam clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "farolero_pathbeam active cells",
+      "ok": true,
+      "detail": [
+        101,
+        101,
+        98,
+        98,
+        101,
+        101,
+        98,
+        98
+      ]
+    },
+    {
+      "name": "farolero_pathbeam final phase",
+      "ok": true,
+      "detail": 98
+    },
+    {
+      "name": "farolero_pathbeam cache reuse",
+      "ok": true
+    },
+    {
+      "name": "lantern fallback nova",
+      "ok": true
+    },
+    {
+      "name": "lantern fallback cone",
+      "ok": true
+    },
+    {
+      "name": "lantern fallback aura",
+      "ok": true
+    },
+    {
+      "name": "original basic theme",
+      "ok": true
+    }
+  ],
+  "sources": [
+    {
+      "theme": "farolero_kindling",
+      "art": "nova",
+      "size": 128,
+      "arc": 0,
+      "w": 128,
+      "h": 128,
+      "n": 12,
+      "cells": [
+        104,
+        100,
+        101,
+        111,
+        107,
+        107,
+        112,
+        109,
+        85,
+        50,
+        27,
+        0
+      ]
+    },
+    {
+      "theme": "farolero_flash",
+      "art": "cone",
+      "size": 96,
+      "arc": 0.85,
+      "w": 98,
+      "h": 151,
+      "n": 12,
+      "cells": [
+        71,
+        141,
+        212,
+        220,
+        215,
+        220,
+        223,
+        221,
+        166,
+        110,
+        56,
+        0
+      ]
+    },
+    {
+      "theme": "farolero_flash",
+      "art": "burst",
+      "size": 80,
+      "arc": 0,
+      "w": 80,
+      "h": 80,
+      "n": 12,
+      "cells": [
+        147,
+        151,
+        151,
+        151,
+        151,
+        151,
+        151,
+        151,
+        107,
+        75,
+        43,
+        0
+      ]
+    },
+    {
+      "theme": "farolero_path",
+      "art": "beam",
+      "size": 24,
+      "arc": 0,
+      "w": 16,
+      "h": 24,
+      "n": 8,
+      "cells": [
+        101,
+        101,
+        98,
+        98,
+        101,
+        101,
+        98,
+        98
+      ]
+    }
+  ]
+}
