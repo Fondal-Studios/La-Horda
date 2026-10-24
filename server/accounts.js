@@ -826,6 +826,7 @@ function create(opts){
       }
       fails.reset(kU);
       await store.updateUser(u.id, { lastLogin: Date.now() });
+      await require("./item-economy").recordLogin(store,u,now0());
       const s = await newSession(u);
       return send(req, res, 200, Object.assign({ user: publicUser(u) }, s));
     },
@@ -836,6 +837,7 @@ function create(opts){
     },
     "GET /api/me": async (req, res) => {
       const a = await auth(req); if(!a.user) return authFail(req, res, a);
+      await require("./item-economy").recordLogin(store,a.user,now0());
       const meta = await store.getSaveMeta(a.user.id);
       return send(req, res, 200, { user: publicUser(a.user), expiresAt: a.session.expiresAt, save: meta || null });
     },
@@ -925,6 +927,7 @@ function create(opts){
   };
 
   Object.assign(routes, gameMaster.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,ownerAccess,founderOf,founders:()=>founderBindings,seenAt}));
+  Object.assign(routes, require("./item-economy").routes({getStore:()=>store,auth,send,err,readBody,now:now0,isOwner}));
   Object.assign(routes, walletMod.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,log}));
 
   // Devuelve true si atendió el pedido (todo lo que empieza con /api/).

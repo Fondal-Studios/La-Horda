@@ -6,7 +6,8 @@
   "main": "relay.js",
   "scripts": {
     "start": "node relay.js",
-    "test": "node test-relay.js && node test-accounts.js && node test-trades.js && node test-game-master.js && node test-owner-policy.js && node test-founders.js && node test-presence.js && node test-wallet.js && node test-wallet-pieces.js && node test-payments-mp.js && node test-legacy-champion-ids.js && node test-origins-strict.js"
+    "test": "node test-relay.js && node test-accounts.js && node test-trades.js && node test-game-master.js && node test-owner-policy.js && node test-founders.js && node test-presence.js && node test-wallet.js && node test-wallet-pieces.js && node test-payments-mp.js && node test-legacy-champion-ids.js && node test-origins-strict.js",
+    "test:item-economy": "node test-item-economy.js"
   },
   "engines": {
     "node": ">=18"
