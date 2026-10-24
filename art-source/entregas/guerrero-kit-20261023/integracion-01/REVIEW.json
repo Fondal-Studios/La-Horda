@@ -1,0 +1,26 @@
+{
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "generatedAtlases": 0,
+  "component": "A-FX-guerrero-h3 / armada",
+  "finding": "Clip armada disponible pero drawTrap no lo consumía. Ahora usa celda7 para Guerrero vivo/no activado, timer>0, armTime<=0, dueño exacto. Raíces y resto mantienen renderer.",
+  "visual": "Pose verde con puntas visible en prueba aislada; captura online bosque revisada, composición con círculos/objetos no aprobada integralmente. Tamaño64u no comunica radio65u; SFA y mecánicas no cambiados.",
+  "pending": [
+    "Art Gate compuesto seis arenas/skins/equipo",
+    "Contraste móvil denso y significado del alcance",
+    "Rendimiento sostenido y CI exacthead",
+    "Auditar fases activar/atrapado y otras subcapas antes de cerrar B143"
+  ],
+  "tests": {
+    "draw": 20,
+    "drawPass": 20,
+    "relay": 4,
+    "relayPass": 4,
+    "errors": 0,
+    "combatParity": "No ejecutada; sólo dibujo modificado, no declarar paridad global."
+  },
+  "attempts": [
+    "Detector inicial sólo PNG omitía WebP:6 falsos negativos conservados en attempt-01. Detector final acepta misma ruta con ambas extensiones.",
+    "Relay inicial3/4: invitado ya dibujaba trap con dueño1, stats.skillCasts aún ausente. Repetición espera snapshot de stats sin cambiar aserciones:4/4."
+  ]
+}
