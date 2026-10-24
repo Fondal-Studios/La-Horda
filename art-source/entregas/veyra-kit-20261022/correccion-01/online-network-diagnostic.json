@@ -1,0 +1,151 @@
+{
+  "status": "FAIL",
+  "scope": "Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.",
+  "checks": [
+    {
+      "name": "solciju admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "brakk admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "veyra admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "morveth admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "aelith admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "nano_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "facu_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "foreign buff never starts pact on host",
+      "ok": true
+    },
+    {
+      "name": "foreign buff never starts pact on touch guest",
+      "ok": true
+    },
+    {
+      "name": "cast owned pact with duration reaches host",
+      "ok": true,
+      "details": {
+        "events": [
+          [
+            194.5,
+            49.5,
+            80,
+            0,
+            3000,
+            1
+          ]
+        ],
+        "diagnostic": {
+          "state": "playing",
+          "runElapsedMs": 902.5000000000018,
+          "kvbHook": false,
+          "update": "function(dt){\n    const r = ou.apply(this, arguments), Q = UF.quiet;\n    if(Q.length){\n      for(let i = Q.length - 1; i >= 0; i--){ Q[i].ttl -= dt; if(Q[i].ttl <= 0) Q.splice(i, 1); }\n      for(const z of Q){\n        if(typeof particles !== 'undefined') for(let i = particles.length - 1; i >= 0; i--){ const p = particles[i]; if(p && (p.ring || p.warnRing) && Math.hypot(p.x - z.x, p.y - z.y) < 60 && (p.maxR || 0) <= z.r) particles.splice(i, 1); }\n        if(typeof vfxShocks !== 'undefined') for(c",
+          "clock": 8283.89999999851
+        },
+        "auras": [
+          {
+            "owner": 1,
+            "duration": 3000,
+            "age": 133.30000000000018
+          }
+        ]
+      }
+    },
+    {
+      "name": "cast owned pact with duration reaches touch guest",
+      "ok": false,
+      "details": {
+        "events": [],
+        "diagnostic": {
+          "state": "playing",
+          "runElapsedMs": 919.2999999999998,
+          "kvbHook": false,
+          "update": "function(dt){\n    const r = ou.apply(this, arguments), Q = UF.quiet;\n    if(Q.length){\n      for(let i = Q.length - 1; i >= 0; i--){ Q[i].ttl -= dt; if(Q[i].ttl <= 0) Q.splice(i, 1); }\n      for(const z of Q){\n        if(typeof particles !== 'undefined') for(let i = particles.length - 1; i >= 0; i--){ const p = particles[i]; if(p && (p.ring || p.warnRing) && Math.hypot(p.x - z.x, p.y - z.y) < 60 && (p.maxR || 0) <= z.r) particles.splice(i, 1); }\n        if(typeof vfxShocks !== 'undefined') for(c",
+          "clock": 4929.70000000298
+        },
+        "auras": []
+      }
+    },
+    {
+      "name": "pact follows movement on host",
+      "ok": true
+    },
+    {
+      "name": "pact follows movement on touch guest"
+    },
+    {
+      "name": "pact ends despite longer foreign speed buff on host",
+      "ok": true,
+      "details": {
+        "time": 4171.9000000000015,
+        "state": "playing",
+        "auras": [],
+        "update": "function(dt){\n    const r = ou.apply(this, arguments), Q = UF.quiet;\n    if(Q.length){\n      for(let i = Q.length - 1; i >= 0; i--){ Q[i].ttl -= dt; if(Q[i].ttl <= 0) Q.splice(i, 1); }\n      for(const z of Q){\n        if(typeof particles !== 'undefined') for(let i = particles.length - 1; i >= 0; i--){ const p = particles[i]; if(p && (p.ring || p.warnRing) && Math.hypot(p.x - z.x, p.y - z.y) < 60 && (p.maxR || 0) <= z.r) particles.splice(i, 1); }\n        if(typeof vfxShocks !== 'undefined') for(const s of vfxShocks) if(s.on && Math.hypot(s.x - z.x, s.y - z.y) < 60 && s.r1 <= z.r) s.on = false;\n      }\n    }\n    return r;\n  }"
+      }
+    },
+    {
+      "name": "pact ends despite longer foreign speed buff on touch guest",
+      "ok": true,
+      "details": {
+        "time": 4188.500000000001,
+        "state": "playing",
+        "auras": [],
+        "update": "function(dt){\n    const r = ou.apply(this, arguments), Q = UF.quiet;\n    if(Q.length){\n      for(let i = Q.length - 1; i >= 0; i--){ Q[i].ttl -= dt; if(Q[i].ttl <= 0) Q.splice(i, 1); }\n      for(const z of Q){\n        if(typeof particles !== 'undefined') for(let i = particles.length - 1; i >= 0; i--){ const p = particles[i]; if(p && (p.ring || p.warnRing) && Math.hypot(p.x - z.x, p.y - z.y) < 60 && (p.maxR || 0) <= z.r) particles.splice(i, 1); }\n        if(typeof vfxShocks !== 'undefined') for(const s of vfxShocks) if(s.on && Math.hypot(s.x - z.x, s.y - z.y) < 60 && s.r1 <= z.r) s.on = false;\n      }\n    }\n    return r;\n  }"
+      }
+    },
+    {
+      "name": "second cast starts one new aura on host",
+      "ok": true
+    },
+    {
+      "name": "second cast starts one new aura on touch guest",
+      "ok": false
+    },
+    {
+      "name": "veyra guest casts simulated by host",
+      "ok": true,
+      "host": {
+        "key": "veyra",
+        "casts": 5,
+        "damage": 574.87045,
+        "bleeds": 0
+      },
+      "guest": {
+        "key": "veyra",
+        "casts": 3,
+        "owned": [],
+        "bleeds": 0
+      }
+    },
+    {
+      "name": "veyra death removes owned effects",
+      "ok": true
+    },
+    {
+      "name": "death clears pact on host",
+      "ok": true
+    },
+    {
+      "name": "death clears pact on touch guest",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

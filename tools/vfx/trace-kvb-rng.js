@@ -1,10 +1,10 @@
 'use strict';
-/* Paridad mecánica de los efectos de habilidad (KVB Solciju): con la misma semilla, las tres habilidades y la definitiva
+/* Paridad mecánica de los efectos de habilidad (KVB Solciju y Veyra): con la misma semilla, las tres habilidades y la definitiva
    lanzadas con y sin sprites (KVB.off) tienen que dejar EXACTAMENTE el mismo estado (vida, posición, escudo y estados de
    enemigos y héroes, reloj de la partida) y haber consumido la misma cantidad de Math.random. Si un efecto cosmético
    moviera el azar, cambiaría el resultado de la partida. Los efectos genéricos del kit se siguen ejecutando (sin sus
    sprites) justamente para no alterar ese consumo.
-   Uso: [ONLY=a,b] [FRAMES=360] node tools/vfx/parity-solciju-visual.js   (sale 1 si algún campeón difiere) */
+   Uso: [ONLY=a,b] [FRAMES=360] node tools/vfx/parity-solciju-visual.js / parity-veyra-pact.js   (sale 1 si algún campeón difiere) */
 const path = require('node:path'), {spawn} = require('node:child_process');
 let chromium; try { ({chromium} = require('playwright')); } catch (e) { ({chromium} = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
 const ROOT = path.resolve(__dirname, '../..'), PORT = +(process.env.PORT || 8995);
@@ -22,7 +22,7 @@ process.on('exit', () => server && server.kill());
       for (let t = 0; ; t++) { try { await pg.goto(BASE, {waitUntil: 'domcontentloaded', timeout: 120000}); break; } catch (e) { if (t > 2 || process.env.BASE_URL) throw e; server = spawn('python3', ['-m', 'http.server', String(PORT), '--bind', '127.0.0.1'], {cwd: ROOT, stdio: 'ignore'}); await new Promise(r => setTimeout(r, 900)); } }
       await pg.waitForFunction(() => typeof startRun === 'function' && typeof sfaPush === 'function' && assetsAllReady(), null, {timeout: 120000}); await pg.waitForTimeout(800); return pg; };
     let page = await fresh();
-    let keys = await page.evaluate(() => ['solciju']);
+    let keys = await page.evaluate(() => ['solciju', 'veyra']);
     await page.close();
     if (process.env.ONLY) keys = keys.filter(k => process.env.ONLY.split(',').includes(k));
     const frames = +(process.env.FRAMES || 360);
