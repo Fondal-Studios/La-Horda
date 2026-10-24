@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "champion": "aurelia",
+  "productionMode": "FIRST_PASS_CHAMPION_BATCH",
+  "requestedSlots": 90,
+  "nonemptySlots": 87,
+  "components": [
+    {
+      "id": "A-FX-aurelia-basico",
+      "block": "B429",
+      "state": "GENERADO",
+      "sheet": "source-prism.png",
+      "sourceSha256": "24c0c0be5f19c62d90b9b453c725b0aa093da0d7be2d6122c80f9b5f0ba6ea4a",
+      "candidate": "basic-diagnostic.png",
+      "slots": 12,
+      "nonempty": 12,
+      "emptyFrames": [],
+      "edgeFrames": [],
+      "visualGate": "PENDING",
+      "renderer": "NOT_INTEGRATED",
+      "integratedMain": false,
+      "publicationVerified": false
+    },
+    {
+      "id": "A-FX-aurelia-h1",
+      "block": "B108",
+      "state": "EN_CORRECCION",
+      "sheet": "source-prism.png",
+      "sourceSha256": "24c0c0be5f19c62d90b9b453c725b0aa093da0d7be2d6122c80f9b5f0ba6ea4a",
+      "candidate": "node-diagnostic.png",
+      "slots": 18,
+      "nonempty": 18,
+      "emptyFrames": [],
+      "edgeFrames": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "visualGate": "PENDING",
+      "renderer": "NOT_INTEGRATED",
+      "integratedMain": false,
+      "publicationVerified": false
+    },
+    {
+      "id": "A-FX-aurelia-h2",
+      "block": "B109",
+      "state": "GENERADO",
+      "sheet": "source-refraction-step.png",
+      "sourceSha256": "4587b0781c7861fcd60cbd13a534bde915a0d3a2913186994f1b0929d92dde20",
+      "candidate": "refraction-diagnostic.png",
+      "slots": 12,
+      "nonempty": 12,
+      "emptyFrames": [],
+      "edgeFrames": [],
+      "visualGate": "PENDING",
+      "renderer": "NOT_INTEGRATED",
+      "integratedMain": false,
+      "publicationVerified": false
+    },
+    {
+      "id": "A-FX-aurelia-h3",
+      "block": "B110",
+      "state": "GENERADO",
+      "sheet": "source-refraction-step.png",
+      "sourceSha256": "4587b0781c7861fcd60cbd13a534bde915a0d3a2913186994f1b0929d92dde20",
+      "candidate": "luminal-step-diagnostic.png",
+      "slots": 18,
+      "nonempty": 18,
+      "emptyFrames": [],
+      "edgeFrames": [],
+      "visualGate": "PENDING",
+      "renderer": "NOT_INTEGRATED",
+      "integratedMain": false,
+      "publicationVerified": false
+    },
+    {
+      "id": "A-FX-aurelia-ult",
+      "block": "B008",
+      "state": "EN_CORRECCION",
+      "sheet": "source-cathedral.png",
+      "sourceSha256": "5372060ef473c44ad7ae7302898776dd7b09ca539a34b58d4dbaf43a4b39ab53",
+      "candidate": "cathedral-diagnostic.png",
+      "slots": 30,
+      "nonempty": 27,
+      "emptyFrames": [
+        23,
+        24,
+        29
+      ],
+      "edgeFrames": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "visualGate": "PENDING",
+      "renderer": "NOT_INTEGRATED",
+      "integratedMain": false,
+      "publicationVerified": false
+    }
+  ],
+  "sourceGenerator": "image_gen built-in",
+  "unchanged": [
+    "champion atlas",
+    "two authored skins",
+    "existing four skill icons",
+    "procedural prism/laser/dash/cathedral",
+    "gameplay"
+  ],
+  "notMissing": "Existing cathedral already has own procedural 3-pillar renderer; this batch provides original raster sources, not a claim that the ability was absent.",
+  "diagnosticOnly": "Exports use232px diagnostic cells; target sizes/phases in recipe require separate final export and renderer/occlusion tests. Empty or edge-contact frames are preserved and reported, never silently dropped.",
+  "nextChampion": "axiom B009, after auditing current sources and actual missing assets",
+  "correctionsQueue": "docs/production/CORRECTION_BATCH.json"
+}
