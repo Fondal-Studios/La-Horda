@@ -76,7 +76,7 @@ function defaultSave(){
     playtestV1Bonus:true,   // el bono de 2.000 de oro del playtest anterior ya no se da en la campaña
     relics:{hp:0,dmg:0,def:0,vel:0}, // permanent small stat items found from élite+ enemies
     lootPity:{legendario:0, set:0, mitico:0, unico:0}, // protección suave contra la mala suerte (oculta), ver js/data/loot.js
-    stash:[], stashV1:true, affixV1:true, // inventario de la CUENTA (30 espacios, compartido por los guardianes): ver js/systems/items.js
+    stash:[], rewardOverflow:[], stashV1:true, affixV1:true, // inventario de la CUENTA (30 espacios, compartido por los guardianes): ver js/systems/items.js
     crystals:{ancestral:false, escarcha:false, piedra:false}, // cristales de los Guardianes (js/systems/crystals.js)
     collection:{},          // objetos con nombre propio / sets / míticos / únicos descubiertos alguna vez (catálogo)
     cromas:{},              // cromas compradas (cosméticas, oro del juego): {id:true}; la equipada va en champions[k].croma (js/systems/cromas.js)

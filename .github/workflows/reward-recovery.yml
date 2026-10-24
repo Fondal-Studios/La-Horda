@@ -16,6 +16,7 @@ jobs:
       - run: node server/test-campaign-inbox.js
       - run: node server/test-campaign-relay.js
       - run: node tools/regression/test-critical-rewards.js
+      - run: WITH_SITE_ENV=SITE node tools/lib/with-site.js tools/alpha/navigation-profiles.js
       - run: node tools/net-test/reward-recovery.js
       - uses: actions/upload-artifact@v4
         if: always()
