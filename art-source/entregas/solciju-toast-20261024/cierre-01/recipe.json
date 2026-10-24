@@ -1,0 +1,31 @@
+{
+  "medium": "native KVB canvas recipe; no new imagegen source needed",
+  "base": "e3495de28b760425f26be9041b8b4fcbafcc9094",
+  "workshopSource": "0c51a940ddc726c0d045d72d66d819cc557fab6c:js/champions/vfx-b/solciju.js",
+  "runtime": [
+    "js/champions/vfx-b/solciju.js",
+    "js/champions/vfx-b/pixfx.js"
+  ],
+  "changes": "Only toast recipe/event and existing late network hook registration; no hooks.js/punch/RNG/follower/SFA changes. Same event IDs and mechanical timers.",
+  "atlas": {
+    "S": 24,
+    "frames": 10,
+    "path": "so_toast-bosque.png",
+    "runtimeSize": 56,
+    "eventMs": 900,
+    "yOffset": -90,
+    "uniqueRGBA": 10
+  },
+  "commands": [
+    "node tools/vfx/verify-solciju-toast.js",
+    "MOBILE=1 OUT=/tmp/sol-matrix-mobile node tools/vfx/close-solciju-toast.js",
+    "OUT=/tmp/sol-matrix-desktop node tools/vfx/close-solciju-toast.js",
+    "python tools/vfx/package-solciju-toast.py",
+    "node tools/vfx/parity-solciju-toast.js",
+    "node tools/vfx/solciju-toast-online.js",
+    "node tools/quality-five/functional.js",
+    "node tools/quality-five/online.js",
+    "node tools/vfx/test-decal-legible.js"
+  ],
+  "environment": "NODE_PATH configured for Playwright; CHROMIUM_PATH valid installed Chromium. server npm ci. Test-owned loopback relay/disposable accounts only."
+}

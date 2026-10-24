@@ -1,0 +1,10 @@
+page.evaluate: TypeError: Cannot set property sol_reserve of #<Object> which has only a getter
+    at kvbBindQ5 (http://127.0.0.1:8995/js/champions/vfx-b/hooks.js:17:48)
+    at eval (eval at <anonymous> (eval at evaluate (:311:30)), <anonymous>:28:122)
+    at eval (eval at evaluate (:311:30), <anonymous>:2:18)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at once (/workspace/scratch/a01f80e6b406/la-horda/tools/vfx/parity-solciju-toast.js:34:83)
+    at async /workspace/scratch/a01f80e6b406/la-horda/tools/vfx/parity-solciju-toast.js:60:17 {
+  log: []
+}
