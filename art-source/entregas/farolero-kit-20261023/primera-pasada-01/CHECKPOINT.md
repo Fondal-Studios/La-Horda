@@ -30,3 +30,9 @@ Pendientes: Art Gate compuesto, skins/equipo/seis arenas, contrastes, extremos d
 Consultar head/PR/cierre frescos. Auditar **Guerrero B141/B142/B143**, preservar muerte PR187 ya integrada, cuerpo/UF/básico y cualquier arte existente. No repetir Farolero/Facu/Eslabón ni dedicar otro ciclo a un cuadro. Primero cobertura amplia, luego lote de corrección.
 
 Comandos exactos en `recipe.json`; reproducción: `NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/verify-farolero-kit.js`. Sólo aislar/mergear un componente tras Art Gate y CI aplicables verdes, expected_head_sha y verificación main. Inventario global incompleto.
+
+## Cierre remoto
+
+PR209 borrador: https://github.com/Fondal-Studios/La-Horda/pull/209
+
+Producción `18ff9cfadde6eabb1f792d71fb8b385c472d61b0`: 102 archivos verificados contra Git blob local, árbol remoto completo, ref y head del PR. Main continúa `f62d181477adcb4607cc615411cc51bad769f681`. Este commit de cierre agrega REMOTE_CLOSURE.json y actualiza checkpoint/manifiesto; el SHA final se registra en el cuerpo del PR después de cotejar el árbol. CI final pendiente, nunca aprobación por resultados de otro SHA. Sin merge ni publicación.
