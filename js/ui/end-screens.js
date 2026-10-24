@@ -52,7 +52,7 @@ function showGameOverScreen(divinaOutcome){
   // Derrota: la performance igual se muestra, y a veces hay un objeto de consuelo (ver DEFEAT_LOOT)
   const perf = computePerformance(player);
   const loot = grantEndOfRunLoot(player.classKey, perf, false);
-  const lootLine = loot.items.length ? loot.items.map(it=>{ const tm = LOOT_TIER_META[itemTier(it)]; return `<b style="color:${tm.color};">${it.name}</b>`; }).join(", ") : (runLevel>=DEFEAT_LOOT.minLevel ? "inventario lleno" : `sin botín (desde el nivel ${DEFEAT_LOOT.minLevel} te llevás un objeto aunque pierdas)`);
+  const lootLine = loot.pending ? "Guardando recompensa en el servidor…" : loot.items.length ? loot.items.map(it=>{ const tm = LOOT_TIER_META[itemTier(it)]; return `<b style="color:${tm.color};">${it.name}</b>`; }).join(", ") : (runLevel>=DEFEAT_LOOT.minLevel ? "inventario lleno" : `sin botín (desde el nivel ${DEFEAT_LOOT.minLevel} te llevás un objeto aunque pierdas)`);
   document.getElementById("go-stats").innerHTML = `Nivel ${runLevel} · ${kills} enemigos vencidos · Calificación <b style="color:${perf.color};">${perf.grade}</b>`;
   const arenaRows = arenaHas("resultsHTML") ? (arenaHook("resultsHTML", false)||"") : "";   // p.ej. civiles rescatados (Ciudad Maldita)
   document.getElementById("go-progress").innerHTML = (typeof goalDefeatHtml==="function" ? goalDefeatHtml(runLevel) : "") + (typeof storyDefeatHtml==="function" ? storyDefeatHtml(player.classKey) : "") +
@@ -132,7 +132,7 @@ function buildVictoryDataInner(){
   const victoryXpBonus = victoryXpFor(currentArena, perf.score, save.champions[classKey].level, typeof diffCurrent==="function" ? diffCurrent() : "normal");
   grantXP(classKey, victoryXpBonus);
   return {
-    classKey, perf, score:perf.score, rewards:loot.items, floorLoot, gems:loot.gems||0, partyScores, inventoryFull:loot.inventoryFull, victoryXpBonus, arena: currentArena,
+    classKey, perf, score:perf.score, rewards:loot.items, floorLoot, gems:loot.gems||0, partyScores, inventoryFull:loot.inventoryFull, economyPending:loot.pending===true, victoryXpBonus, arena: currentArena,
     kills, gold: save.gold, subjefes: subjefesDefeated, firstClear: typeof runFirstClear!=="undefined" && runFirstClear,
     arenaRows: arenaHas("resultsHTML") ? (arenaHook("resultsHTML", true)||"") : "",   // p.ej. civiles rescatados (Ciudad Maldita)
     level: save.champions[classKey].level,
@@ -273,7 +273,10 @@ const VICTORY_STEPS = [
         <span style="color:${bonusPct>=0?"#ffcf5c":"#b8a898"};">${bonusPct>=0?"+":""}${bonusPct}% rarezas altas${victoryData.subjefes?` · +${victoryData.subjefes*10}% objeto extra`:""}</span>
         <div class="loot-summary-note">La calificación mejora las probabilidades, nunca garantiza.</div></div>`;
     const gemNote = victoryData.gems ? `<div class="vic-reward-note gem-note">◆ +${victoryData.gems} Gema${victoryData.gems>1?"s":""} (total ${save.gems}) — sirven para subir el nivel de tus objetos</div>` : "";
+    // Economía V2 activa: el servidor guarda todo en el ledger (sin tope de inventario) y inventoryFull llega en false.
+    // Sin cuenta, offline o con HORDA_ITEM_ECONOMY=0: el excedente queda en "Recompensas pendientes" (reward-mailbox.js).
     const fullNote = victoryData.inventoryFull ? `<div class="vic-reward-note" style="color:#ff9a7a;">Tu inventario está lleno: el excedente se conservó en Recompensas pendientes, en el menú principal.</div>` : "";
+    if(victoryData.economyPending)return `${summary}<p role="status">Guardando recompensa en el servidor…</p>`;
     if(!victoryData._revealed) return `${summary}${fullNote}<div class="chest-host"></div>`; // la ceremonia del cofre (js/ui/loot-ceremony.js)
     const cards = victoryData.rewards.slice().sort((a,b)=>TIER_ORDER[itemTier(a)]-TIER_ORDER[itemTier(b)]).map((item, i)=>lootCardHTML(item, victoryData.classKey, i)).join("");
     // lo que quedó tirado en el piso al ganar se juntó solo (ground-loot.js): se nombra acá, sin ceremonia

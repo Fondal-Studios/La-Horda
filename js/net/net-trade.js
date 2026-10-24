@@ -46,6 +46,7 @@ function tradePendingCount(){ const t = save.trades; if(!t || typeof t!=="object
 // Motivo por el que el objeto queda ligado a la cuenta (o null). Mismas reglas que el relay.
 function tradeBoundOf(it){
   if(!it) return "No existe";
+  if(it.favorite || it._reserved || it.relicId) return "Objeto protegido: quitá el favorito o la reserva antes de intercambiar";
   if(it.rarity==="unico" || it.unique) return "Único: ligado a tu cuenta";
   if(it.set) return "Pieza de set (skin): ligada a tu cuenta";
   if(typeof it.rerollIdx==="number" || (it.rerolls|0) > 0) return "Re-tirado con la Mística: ligado a tu cuenta";

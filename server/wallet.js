@@ -60,13 +60,13 @@ function skinCatalog(){
   const root = path.join(__dirname, "..");
   for(const f of ["js/assets/croma-skins-meta.js", "js/assets/set-skins-meta.js", "js/assets/portadores-meta.js", "js/assets/ynara-meta.js",
                   "js/assets/complete-set-skins-meta.js", "js/assets/alpha-set-skins-meta.js", "js/assets/unique-skins-meta.js", "js/assets/quality-five-skins-meta.js", "js/assets/quality-five-collection-meta.js",
-                  "js/assets/extra-skins-meta.js", "js/champions/expedition/catalog.js", "js/champions/expedition/art.js", "js/champions/expedition/cosmetics.js"]){
+                  "js/assets/mythic-collection-meta.js", "js/assets/extra-skins-meta.js", "js/champions/expedition/catalog.js", "js/champions/expedition/art.js", "js/champions/expedition/cosmetics.js"]){
     const file = path.join(root, f); if(!fs.existsSync(file)) continue;
     try{ vm.runInContext(fs.readFileSync(file, "utf8"), c, { timeout: 1000, filename: f }); }catch(e){ /* un archivo que no es solo metadata no rompe el catálogo */ }
   }
   const out = {};
   const P = pricing();
-  for(const [id, v] of Object.entries(c.SET_SKINS)) out[id] = { id, name: v.name, champion: v.champ || null, kind: "set", tier: P.pricingCosmeticTier(true, null) };
+  for(const [id, v] of Object.entries(c.SET_SKINS)) out[id] = { id, name: v.name, champion: v.champ || null, kind: "set", earnedOnly:v.earnedOnly===true, requiresSet:v.requiresSet||null, tier: P.pricingCosmeticTier(true, null) };
   // escalón por apariencia: skin independiente ("autor") o cambio de paleta ("croma"); precio en pricing.js
   for(const [id, v] of Object.entries(c.CROMA_SKINS)) out[id] = { id, name: v.name, champion: v.champ || null, kind: v.appearanceType === "skin" || v.authoredPacks ? "croma-skin" : "croma",
     tier: P.pricingCosmeticTier(false, v), goldBase: Number.isSafeInteger(v.price) ? v.price : 0 };
@@ -147,12 +147,14 @@ function routes(ctx){
     const claimed = entitled ? (await store().walletLedger(userId, 5000)).filter(e => typeof e.reason === "string" && e.reason.startsWith("welcome_pick:")).map(e => legacyIds.legacyChampionId(e.reason.slice(13))) : [];
     const out = { entitled, claimed: [...new Set(claimed)].reverse(), remaining: 0, eligible: [] };
     out.remaining = Math.max(0, entitled - out.claimed.length);
-    if(out.remaining && d){ const has = (id) => !!(d.champions && d.champions[id] && d.champions[id].unlocked); out.eligible = welcomeEligibleIds().filter(id => !has(id)); }
+    if(out.remaining && d){ const economic=(await store().gmRead())?.itemEconomy?.accounts?.[String(userId)];const has = (id) => economic?.unlocked?economic.unlocked.includes(id):!!(d.champions && d.champions[id] && d.champions[id].unlocked); out.eligible = welcomeEligibleIds().filter(id => !has(id)); }
     return out;
   }
   // completa la entrega de elecciones ya registradas que no llegaron al guardado (nunca quita nada)
   async function welcomeReconcile(userId, claimed){
     if(!claimed.length) return null;
+    // Preserve previously purchased rights in the authoritative equipment account as well.
+    await store().gmUpdate(raw=>{const a=raw?.itemEconomy?.accounts?.[String(userId)];if(a){a.unlocked=a.unlocked||[];for(const id of claimed)if(!a.unlocked.includes(id))a.unlocked.push(id);}return {state:raw||require('./game-master').stateOf(null),value:null};});
     const saved = await store().getSave(userId); if(!saved) return null;
     const d = JSON.parse(saved.data);
     const missing = claimed.filter(id => !(d.champions && d.champions[id] && d.champions[id].unlocked));
@@ -186,6 +188,8 @@ function routes(ctx){
   route("POST", "/api/wallet/buy", "user", async ({ user, body }) => withLock("buy:" + user.id, async () => {   // un candado por cuenta: dos compras simultáneas no cobran dos veces
     const ref = refOf(body.ref); if(!ref) fail("BAD_REF");
     const sku = Object.hasOwn(skinCatalog(), body.sku) ? skinCatalog()[body.sku] : null; if(!sku) fail("BAD_SKU");
+    if(sku.earnedOnly)fail("BAD_SKU");
+    if(sku.requiresSet&&!((await store().gmRead())?.itemEconomy?.accounts?.[String(user.id)]?.cosmetics||[]).includes(sku.requiresSet))fail("SET_REQUIRED",403);
     const price = brasasOf(sku); if(!(price > 0)) fail("BAD_SKU");
     if(body.expectedPrice !== price) fail("PRICE_CHANGED", 409);
     const debitRef = "buy:" + user.id + ":" + ref;
@@ -202,6 +206,7 @@ function routes(ctx){
       await store().walletApply({ userId: user.id, delta: price, reason: "refund:" + sku.id + ":" + g.reason, ref: "refund:" + debitRef, actor: user.id, at: now() });
       fail(g.reason === "NO_SAVE" ? "NO_CLOUD_SAVE" : "CONFLICT", 409);
     }
+    if(/^(lucifer|glaciar|coloso|tempestad|alba)_/.test(sku.id))await store().gmUpdate(raw=>{const a=raw?.itemEconomy?.accounts?.[String(user.id)];if(a&&!a.cosmetics.includes(sku.id))a.cosmetics.push(sku.id);return {state:raw,value:null};});
     log("WALLET_BUY", { user: user.id, sku: sku.id, price, premium: debit.premium });
     // mismo formato que los premios de evento: el cliente lo aplica con accountApplyEventReward (avanza la versión sin conflicto)
     return { ok: true, sku: sku.id, kind: sku.kind, price, cosmetic: sku.id, cosmeticType: isCromaKind(sku) ? "croma" : "skin", cosmetics: [cosmeticOut(sku)],
@@ -315,11 +320,13 @@ function routes(ctx){
     }
     if(!st.remaining) fail("NO_PICKS_LEFT", 409);
     const have = JSON.parse(saved.data).champions;
-    if(have && have[champ] && have[champ].unlocked) fail("OWNED", 409);
+    const economic=(await store().gmRead())?.itemEconomy?.accounts?.[String(user.id)];
+    if(economic?.unlocked?economic.unlocked.includes(champ):have && have[champ] && have[champ].unlocked) fail("OWNED", 409);
     const w = await store().walletApply({ userId: user.id, delta: 0, reason: "welcome_pick:" + champ, ref: welcomeRef(user.id, champ), actor: user.id, at: now() });
     log("WELCOME_PICK", { user: user.id, champion: champ, duplicate: !!w.duplicate });
     const g = await mutateSave(user.id, x => { x.champions = Object.assign({}, x.champions); x.champions[champ] = Object.assign({}, x.champions[champ], { unlocked: true }); x.starterChosen = true; });
     st = { ...st, claimed: [...st.claimed, champ], remaining: st.remaining - 1 };
+    if(g.ok)await welcomeReconcile(user.id,st.claimed);
     if(!g.ok) fail("CONFLICT", 409);   // la elección quedó registrada: reintentar completa la entrega
     return done({ champions: [champ], saveVersion: g.saveVersion, baseVersion: g.baseVersion });
   }));

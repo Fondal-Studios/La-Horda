@@ -125,7 +125,7 @@ for(const id in NEW_SETS){
   });
 }
 // Piezas de set (ids de DESIGNED_ITEMS) por set, para el loot y la UI.
-function setPieceIds(setId){ return Object.keys(SET_DB[setId].pieces).map(t=>setId+"_"+t); }
-function setPieceCount(setId){ return Object.keys(SET_DB[setId].pieces).length; }
+function setPieceIds(setId){ return Object.keys(SET_DB[setId]?.pieces||{}).map(t=>setId+"_"+t); }
+function setPieceCount(setId){ return Object.keys(SET_DB[setId]?.pieces||{}).length; }
 // Umbral del bonus completo (la última entrada de thresholds).
-function setFullCount(setId){ const th = SET_DB[setId].thresholds; return th[th.length-1].count; }
+function setFullCount(setId){ const th = SET_DB[setId]?.thresholds||[]; return th.length?th[th.length-1].count:Infinity; }

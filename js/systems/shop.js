@@ -210,7 +210,7 @@ function skinCompatibleChamps(setId){
   const c = skinSetChamp(setId);
   return Object.keys(save.champions).filter(k=>save.champions[k].unlocked!==false && CLASSES[k] && (!c || c===k));
 }
-function skinOwnedFull(setId){ return !!(save.cosmeticUnlocks && save.cosmeticUnlocks[setId]) || (typeof cosmeticSetCollected==="function" && cosmeticSetCollected(setId)) || shopSetMissing(setId).length === 0; }
+function skinOwnedFull(setId){ if(SET_SKINS[setId]?.manifest)return !!save.cosmeticUnlocks?.[setId]; return !!(save.cosmeticUnlocks && save.cosmeticUnlocks[setId]) || (typeof cosmeticSetCollected==="function" && cosmeticSetCollected(setId)) || shopSetMissing(setId).length === 0; }
 function skinIsActiveOn(setId, k){ return typeof champSkinId==="function" ? champSkinId(k) === setId : false; }
 // Selecciona la apariencia sin equipar piezas ni alterar estadísticas.
 function skinEquipOn(setId, k){

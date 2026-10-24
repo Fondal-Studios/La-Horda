@@ -29,7 +29,7 @@ function recipeProgress(mythicId){
   const ids = MYTHIC_RECIPES[mythicId] || [];
   const inv = stashItems();
   const parts = ids.map(id=>{
-    const have = inv.find(it=>it.designId===id && !it._reserved) || null;
+    const have = inv.find(it=>it.designId===id && !it._reserved && !it.favorite && !it.relicId) || null;
     return {id, name:DESIGNED_ITEMS[id].name, type:DESIGNED_ITEMS[id].type, have:!!have, uid:have ? have.uid : null,
       equippedBy: have ? itemEquippedBy(have.uid) : null, seen: collectionHas(id)};
   });

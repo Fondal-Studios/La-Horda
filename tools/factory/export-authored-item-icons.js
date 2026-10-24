@@ -52,7 +52,7 @@ const ROOT=path.resolve(__dirname,'../..'),DIR='art-source/entregas/quality-item
   const report={schema:1,status:'PASS',scope:'19 original item icons; no champion/skin/progression changes; publication unverified',source:'js/ui/quality-five-item-icons.js',sourceSha256:sha(fs.readFileSync(path.join(ROOT,'js/ui/quality-five-item-icons.js'))),total:result.total,beforeUnique:result.beforeUnique,afterUnique:result.afterUnique,preserved:result.preserved,icons:exported,checks:result.checks,errors};
   const receipt=path.join(ROOT,DIR,'receipt.json');
   if(write){fs.mkdirSync(path.dirname(receipt),{recursive:true});for(const row of result.rows)if(!saved[row.id])fs.writeFileSync(path.join(ROOT,DIR,row.id+'.png'),Buffer.from(row.url.split(',')[1],'base64'));fs.writeFileSync(receipt,JSON.stringify(report,null,2)+'\n');fs.writeFileSync(path.join(ROOT,DIR,'preview.png'),Buffer.from(result.preview.split(',')[1],'base64'));}
-  else if(JSON.stringify(JSON.parse(fs.readFileSync(receipt)))!==JSON.stringify(report))throw Error('Stale authored icon evidence');
+  else if(JSON.stringify(JSON.parse(fs.readFileSync(receipt)))!==JSON.stringify(report)){console.error('Current icon counts',JSON.stringify({total:report.total,beforeUnique:report.beforeUnique,afterUnique:report.afterUnique,preserved:report.preserved}));throw Error('Stale authored icon evidence');}
   console.log(JSON.stringify({status:'PASS',checks:result.checks.length,total:result.total,unique:result.afterUnique,previousUnique:result.beforeUnique,exports:exported.length,preserved:result.preserved,mode:write?'write':'verify'}));
  }finally{if(browser)await browser.close();await site.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
