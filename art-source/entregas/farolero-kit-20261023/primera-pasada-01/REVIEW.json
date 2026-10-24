@@ -1,0 +1,70 @@
+{
+  "status": "FIX",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "visualScope": "Inspección canónica preview base, hoja contacto nativa, tres habilidades móvil256/512ms y Destello horizontal256ms. No revisión integral de todas las capturas.",
+  "findings": [
+    {
+      "block": "B138",
+      "component": "A-FX-farolero-h1",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/farolero.js",
+      "sourceSha256": "0bfa3fc55c642bef5f8bc38b5dffdae9b180009df92eae8a46a9442d3caa3503",
+      "atlas": "farolero_kindling-nova.png",
+      "atlasSha256": "d7645bd030be46388019fb5ca40681ecfb9ff8f57547cb8aa5deac769d594c13",
+      "frames": "0..10 (11 cierre transparente)",
+      "phase": "Revisión nativa 256/512ms y hoja de contacto; diagnóstico agrupado, no fallo individual de todas las fases.",
+      "diagnosis": "Polillas y llama de encendido demasiado pequeñas a escala móvil; el aro y cruces legados del objeto dominan. Las alas se leen como pequeñas cruces. No se reemplaza el farol persistente existente ni su cierre.",
+      "defects": [
+        "Polillas y llama de encendido demasiado pequeñas a escala móvil; el aro y cruces legados del objeto dominan. Las alas se leen como pequeñas cruces. No se reemplaza el farol persistente existente ni su cierre."
+      ],
+      "evidence": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-0-native250.png",
+      "sourceDelivery": "art-source/entregas/farolero-kit-20261023/primera-pasada-01",
+      "next": "Lote posterior de silueta/contraste/temporización con IDs originales. Skins/equipo/seis arenas, composición, lifecycle completo, performance y Art Gate antes de integrar."
+    },
+    {
+      "block": "B139",
+      "component": "A-FX-farolero-h2",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/farolero.js",
+      "sourceSha256": "0bfa3fc55c642bef5f8bc38b5dffdae9b180009df92eae8a46a9442d3caa3503",
+      "atlas": "farolero_flash-cone.png",
+      "atlasSha256": "2d0a726bd7af0211a60986666eeb4b2a947d1c48e189314f01d9c4e1987c87e5",
+      "frames": "cone0..10 y burst0..10 (11 cierres transparentes)",
+      "phase": "Revisión nativa 256/512ms y hoja de contacto; diagnóstico agrupado, no fallo individual de todas las fases.",
+      "diagnosis": "Tres franjas finas y tapas pequeñas. Rayos/impactos blancos legados y firma solar dominan la composición; falta lectura clara de apertura, frente e impacto en móvil. No se produjeron indicadores nuevos de aturdimiento.",
+      "defects": [
+        "Tres franjas finas y tapas pequeñas. Rayos/impactos blancos legados y firma solar dominan la composición; falta lectura clara de apertura, frente e impacto en móvil. No se produjeron indicadores nuevos de aturdimiento."
+      ],
+      "evidence": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-1-native250.png",
+      "sourceDelivery": "art-source/entregas/farolero-kit-20261023/primera-pasada-01",
+      "next": "Lote posterior de silueta/contraste/temporización con IDs originales. Skins/equipo/seis arenas, composición, lifecycle completo, performance y Art Gate antes de integrar."
+    },
+    {
+      "block": "B140",
+      "component": "A-FX-farolero-h3",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/farolero.js",
+      "sourceSha256": "0bfa3fc55c642bef5f8bc38b5dffdae9b180009df92eae8a46a9442d3caa3503",
+      "atlas": "farolero_path-beam.png",
+      "atlasSha256": "8cd8bc9021f59846066a483e687ea201564329629b2e5c7d476c7d2a501ed528",
+      "frames": "0..7; fase global heredada",
+      "phase": "Revisión nativa 256/512ms y hoja de contacto; diagnóstico agrupado, no fallo individual de todas las fases.",
+      "diagnosis": "La senda se lee como riel segmentado y bloques brillantes; farolitos poco reconocibles entre cuerpos/anillos. Beam usa reloj global70ms; cierre burst heredado genérico. Requiere revisión agrupada de silueta y composición; no ocultar señales mecánicas.",
+      "defects": [
+        "La senda se lee como riel segmentado y bloques brillantes; farolitos poco reconocibles entre cuerpos/anillos. Beam usa reloj global70ms; cierre burst heredado genérico. Requiere revisión agrupada de silueta y composición; no ocultar señales mecánicas."
+      ],
+      "evidence": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-2-native500.png",
+      "sourceDelivery": "art-source/entregas/farolero-kit-20261023/primera-pasada-01",
+      "next": "Lote posterior de silueta/contraste/temporización con IDs originales. Skins/equipo/seis arenas, composición, lifecycle completo, performance y Art Gate antes de integrar."
+    }
+  ],
+  "pending": [
+    "Art Gate integral por componente",
+    "Guardavía, equipo, seis arenas y combinación de efectos",
+    "Señales de aturdimiento y cierre de farol no producidas ni aprobadas",
+    "Warmup, saturación/reentrada/culling y performance sostenida móvil físico",
+    "CI del head final exacto"
+  ],
+  "noGateLowered": true
+}

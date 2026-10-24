@@ -1,0 +1,312 @@
+{
+  "results": [
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "lantern",
+              "life": 8920,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": [
+            {
+              "kind": "lantern",
+              "life": 8744,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": [
+            {
+              "kind": "lantern",
+              "life": 8488,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": [
+            {
+              "kind": "lantern",
+              "life": 7896,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": [
+            {
+              "kind": "lantern",
+              "life": 7000,
+              "owner": 0
+            }
+          ]
+        }
+      ],
+      "lance": false,
+      "champion": "farolero",
+      "slot": 0,
+      "trace": [
+        [
+          "nova",
+          "farolero_kindling",
+          115,
+          0,
+          120,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        "lantern"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Farol de Guardia",
+      "sceneHash": "c772e44b71a788eee34d80545ce8f310a0b905c8358cf42096699b9fbbefa801"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": []
+        }
+      ],
+      "lance": false,
+      "champion": "farolero",
+      "slot": 1,
+      "trace": [
+        [
+          "cone",
+          "farolero_flash~h",
+          0,
+          0,
+          180,
+          0,
+          560,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "farolero_flash~h",
+          0,
+          0,
+          60,
+          0,
+          480,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Destello",
+      "sceneHash": "b1ce57f19a90d3f48e023f68f62403ac8554f952a055c11cfb17185b7ffba572"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "path",
+              "life": 4420,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": [
+            {
+              "kind": "path",
+              "life": 4244,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": [
+            {
+              "kind": "path",
+              "life": 3988,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": [
+            {
+              "kind": "path",
+              "life": 3396,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": [
+            {
+              "kind": "path",
+              "life": 2500,
+              "owner": 0
+            }
+          ]
+        }
+      ],
+      "lance": false,
+      "champion": "farolero",
+      "slot": 2,
+      "trace": [
+        [
+          "beam",
+          "farolero_path~p",
+          0,
+          0,
+          0,
+          0,
+          700,
+          115,
+          0,
+          67.2,
+          null
+        ]
+      ],
+      "objects": [
+        "path"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Paso Seguro",
+      "sceneHash": "de55e3b6a9e7feb5e41327d2bd29416a627142fa37701b776291a9c3779b090a"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": []
+        }
+      ],
+      "lance": false,
+      "champion": "farolero",
+      "slot": 3,
+      "trace": [],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Vigilia",
+      "sceneHash": "4492015ae182723b2e841396b02af577bab4cd42eb62e06d0106892236f65ed9"
+    }
+  ],
+  "errors": []
+}
