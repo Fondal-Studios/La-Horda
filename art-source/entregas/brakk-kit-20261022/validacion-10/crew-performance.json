@@ -1,0 +1,522 @@
+{
+  "scope": "Headless Chromium local full update+render, real cooldowns, 32 fixture enemies, 4 heroes. No physical mobile/thermal/GC guarantee; heap snapshots do not prove leak freedom.",
+  "results": [
+    {
+      "mobile": true,
+      "arena": "bosque",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "all": {
+        "samples": 1200,
+        "p50": 1.800000000745058,
+        "p95": 3.399999998509884,
+        "max": 165.90000000223517
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 2,
+        "p95": 3.899999998509884,
+        "max": 165.90000000223517
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.699999999254942,
+        "p95": 2.899999998509884,
+        "max": 23.5
+      },
+      "peakPool": 7,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 37300000,
+      "heapAfter": 37300000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    },
+    {
+      "mobile": true,
+      "arena": "hielo",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "all": {
+        "samples": 1200,
+        "p50": 1.800000000745058,
+        "p95": 3,
+        "max": 16.300000000745058
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 1.8999999985098839,
+        "p95": 3.100000001490116,
+        "max": 15.699999999254942
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.800000000745058,
+        "p95": 2.900000002235174,
+        "max": 16.300000000745058
+      },
+      "peakPool": 7,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 37300000,
+      "heapAfter": 37300000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    },
+    {
+      "mobile": true,
+      "arena": "infernal",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "all": {
+        "samples": 1200,
+        "p50": 1.6000000014901161,
+        "p95": 2.300000000745058,
+        "max": 39.900000002235174
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 1.699999999254942,
+        "p95": 2.399999998509884,
+        "max": 39.900000002235174
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.6000000014901161,
+        "p95": 2.300000000745058,
+        "max": 10.800000000745058
+      },
+      "peakPool": 7,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 37300000,
+      "heapAfter": 37300000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    },
+    {
+      "mobile": true,
+      "arena": "laberinto",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "all": {
+        "samples": 1200,
+        "p50": 1.6000000014901161,
+        "p95": 2.5,
+        "max": 21.100000001490116
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 1.699999999254942,
+        "p95": 2.5,
+        "max": 21.100000001490116
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.6000000014901161,
+        "p95": 2.399999998509884,
+        "max": 7.899999998509884
+      },
+      "peakPool": 7,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 37300000,
+      "heapAfter": 37300000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    },
+    {
+      "mobile": true,
+      "arena": "acuatica",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "all": {
+        "samples": 1200,
+        "p50": 1.4000000022351742,
+        "p95": 2.099999997764826,
+        "max": 22.5
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 1.5,
+        "p95": 2.199999999254942,
+        "max": 22.5
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.3999999985098839,
+        "p95": 2,
+        "max": 10.699999999254942
+      },
+      "peakPool": 6,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 37300000,
+      "heapAfter": 37300000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    },
+    {
+      "mobile": true,
+      "arena": "minas",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "all": {
+        "samples": 1200,
+        "p50": 1.300000000745058,
+        "p95": 2.099999997764826,
+        "max": 22.800000000745058
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 1.3999999985098839,
+        "p95": 2.199999999254942,
+        "max": 22.800000000745058
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.2000000029802322,
+        "p95": 2,
+        "max": 8
+      },
+      "peakPool": 7,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 37300000,
+      "heapAfter": 37300000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    },
+    {
+      "mobile": false,
+      "arena": "bosque",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "all": {
+        "samples": 1200,
+        "p50": 1.7000000029802322,
+        "p95": 2.900000002235174,
+        "max": 161.5
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 2,
+        "p95": 3.800000000745058,
+        "max": 161.5
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.699999999254942,
+        "p95": 2.400000002235174,
+        "max": 4.899999998509884
+      },
+      "peakPool": 7,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 33100000,
+      "heapAfter": 33100000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    },
+    {
+      "mobile": false,
+      "arena": "hielo",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "all": {
+        "samples": 1200,
+        "p50": 1.800000000745058,
+        "p95": 2.800000000745058,
+        "max": 18.100000001490116
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 2,
+        "p95": 3,
+        "max": 18.100000001490116
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.7000000029802322,
+        "p95": 2.5,
+        "max": 7.899999998509884
+      },
+      "peakPool": 7,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 33100000,
+      "heapAfter": 33100000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    },
+    {
+      "mobile": false,
+      "arena": "infernal",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "all": {
+        "samples": 1200,
+        "p50": 1.8999999985098839,
+        "p95": 2.800000000745058,
+        "max": 31.699999999254942
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 2,
+        "p95": 2.899999998509884,
+        "max": 31.699999999254942
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.800000000745058,
+        "p95": 2.600000001490116,
+        "max": 11
+      },
+      "peakPool": 7,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 33100000,
+      "heapAfter": 33100000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    },
+    {
+      "mobile": false,
+      "arena": "laberinto",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "all": {
+        "samples": 1200,
+        "p50": 1.7000000029802322,
+        "p95": 2.600000001490116,
+        "max": 27.399999998509884
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 1.800000000745058,
+        "p95": 2.600000001490116,
+        "max": 27.399999998509884
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.699999999254942,
+        "p95": 2.5,
+        "max": 8.5
+      },
+      "peakPool": 7,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 33100000,
+      "heapAfter": 33100000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    },
+    {
+      "mobile": false,
+      "arena": "acuatica",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "all": {
+        "samples": 1200,
+        "p50": 1.300000000745058,
+        "p95": 2.099999997764826,
+        "max": 23.5
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 1.3999999985098839,
+        "p95": 2.199999999254942,
+        "max": 23.5
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.300000000745058,
+        "p95": 2,
+        "max": 9.599999997764826
+      },
+      "peakPool": 7,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 33100000,
+      "heapAfter": 33100000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    },
+    {
+      "mobile": false,
+      "arena": "minas",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "all": {
+        "samples": 1200,
+        "p50": 1.300000000745058,
+        "p95": 2.199999999254942,
+        "max": 25.300000000745058
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 1.4000000022351742,
+        "p95": 2.399999998509884,
+        "max": 25.300000000745058
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.2000000029802322,
+        "p95": 2,
+        "max": 9.400000002235174
+      },
+      "peakPool": 7,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 33100000,
+      "heapAfter": 33100000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    }
+  ],
+  "errors": []
+}

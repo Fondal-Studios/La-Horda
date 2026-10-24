@@ -1,0 +1,6544 @@
+{
+  "minimum": 0.8,
+  "delta": 24,
+  "fullMinimum": 0.4,
+  "scope": "isolated B117/B119 SFA only, not compound contrast",
+  "measurements": [
+    {
+      "arena": "bosque",
+      "rows": [
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "mask": 1096,
+          "min": 0.9607664233576643,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "mask": 1095,
+          "min": 0.9835616438356164,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "mask": 1095,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "mask": 373,
+          "min": 0.7158176943699732,
+          "dec": [
+            0.98,
+            0.72,
+            0.88
+          ],
+          "all": [
+            0.98,
+            0.72,
+            0.88
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "mask": 377,
+          "min": 0.8961397058823529,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "mask": 377,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "mask": 370,
+          "min": 0.8027027027027027,
+          "dec": [
+            0.8,
+            0.8,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.8,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.9682631275245239,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "mask": 1088,
+          "min": 0.9595588235294118,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "mask": 1088,
+          "min": 0.9834558823529411,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "mask": 1088,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "mask": 376,
+          "min": 0.7180851063829787,
+          "dec": [
+            0.98,
+            0.72,
+            0.88
+          ],
+          "all": [
+            0.98,
+            0.72,
+            0.88
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "mask": 376,
+          "min": 0.8964252978918423,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "mask": 376,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "mask": 366,
+          "min": 0.8005464480874317,
+          "dec": [
+            0.8,
+            0.8,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.8,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.9682814302191465,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "mask": 1087,
+          "min": 0.9595216191352346,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "mask": 1096,
+          "min": 0.9836214740673339,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "mask": 1099,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "mask": 371,
+          "min": 0.7169811320754716,
+          "dec": [
+            0.98,
+            0.72,
+            0.88
+          ],
+          "all": [
+            0.98,
+            0.72,
+            0.88
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "mask": 373,
+          "min": 0.8959484346224678,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "mask": 367,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "mask": 370,
+          "min": 0.8016453382084096,
+          "dec": [
+            0.8,
+            0.8,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.8,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.968372627947096,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "diagnostics": [
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        }
+      ],
+      "previews": [],
+      "err": null
+    },
+    {
+      "arena": "hielo",
+      "rows": [
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "mask": 1096,
+          "min": 0.958941605839416,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "mask": 1095,
+          "min": 0.9844748858447488,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "mask": 1095,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "mask": 373,
+          "min": 0.710455764075067,
+          "dec": [
+            0.97,
+            0.71,
+            0.88
+          ],
+          "all": [
+            0.97,
+            0.71,
+            0.88
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "mask": 377,
+          "min": 0.8961397058823529,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "mask": 377,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "mask": 370,
+          "min": 0.8054054054054054,
+          "dec": [
+            0.81,
+            0.81,
+            0.83
+          ],
+          "all": [
+            0.81,
+            0.81,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.9682631275245239,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "mask": 1088,
+          "min": 0.9595588235294118,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "mask": 1088,
+          "min": 0.984375,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "mask": 1088,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "mask": 376,
+          "min": 0.7101063829787234,
+          "dec": [
+            0.97,
+            0.71,
+            0.87
+          ],
+          "all": [
+            0.97,
+            0.71,
+            0.87
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "mask": 376,
+          "min": 0.8964252978918423,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "mask": 376,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "mask": 366,
+          "min": 0.8032786885245902,
+          "dec": [
+            0.8,
+            0.8,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.8,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.9682814302191465,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "mask": 1087,
+          "min": 0.9595216191352346,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "mask": 1096,
+          "min": 0.9845313921747043,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "mask": 1099,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "mask": 371,
+          "min": 0.7088948787061995,
+          "dec": [
+            0.97,
+            0.71,
+            0.88
+          ],
+          "all": [
+            0.97,
+            0.71,
+            0.88
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "mask": 373,
+          "min": 0.8959484346224678,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "mask": 367,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "mask": 370,
+          "min": 0.8027027027027027,
+          "dec": [
+            0.8,
+            0.8,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.8,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.968372627947096,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "diagnostics": [
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        }
+      ],
+      "previews": [],
+      "err": null
+    },
+    {
+      "arena": "infernal",
+      "rows": [
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "mask": 1096,
+          "min": 0.9598540145985401,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "mask": 1095,
+          "min": 0.9835616438356164,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "mask": 1095,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "mask": 373,
+          "min": 0.710455764075067,
+          "dec": [
+            0.98,
+            0.71,
+            0.88
+          ],
+          "all": [
+            0.98,
+            0.71,
+            0.88
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "mask": 377,
+          "min": 0.8961397058823529,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "mask": 377,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "mask": 370,
+          "min": 0.8,
+          "dec": [
+            0.8,
+            0.8,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.8,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.9682631275245239,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "mask": 1088,
+          "min": 0.9595588235294118,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "mask": 1088,
+          "min": 0.9834558823529411,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "mask": 1088,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "mask": 376,
+          "min": 0.7180851063829787,
+          "dec": [
+            0.98,
+            0.72,
+            0.87
+          ],
+          "all": [
+            0.98,
+            0.72,
+            0.87
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "mask": 376,
+          "min": 0.8964252978918423,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "mask": 376,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "mask": 366,
+          "min": 0.8005464480874317,
+          "dec": [
+            0.8,
+            0.8,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.8,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.9682814302191465,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "mask": 1087,
+          "min": 0.9595216191352346,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "mask": 1096,
+          "min": 0.9836214740673339,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "mask": 1099,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "mask": 371,
+          "min": 0.7088948787061995,
+          "dec": [
+            0.98,
+            0.71,
+            0.88
+          ],
+          "all": [
+            0.98,
+            0.71,
+            0.88
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "mask": 373,
+          "min": 0.8959484346224678,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "mask": 367,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "mask": 370,
+          "min": 0.8016453382084096,
+          "dec": [
+            0.8,
+            0.81,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.81,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.968372627947096,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "diagnostics": [
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        }
+      ],
+      "previews": [],
+      "err": null
+    },
+    {
+      "arena": "laberinto",
+      "rows": [
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "mask": 1096,
+          "min": 0.958029197080292,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "mask": 1095,
+          "min": 0.9844748858447488,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "mask": 1095,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "mask": 373,
+          "min": 0.7131367292225201,
+          "dec": [
+            0.98,
+            0.71,
+            0.88
+          ],
+          "all": [
+            0.98,
+            0.71,
+            0.88
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "mask": 377,
+          "min": 0.8952205882352942,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "mask": 377,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "mask": 370,
+          "min": 0.8027027027027027,
+          "dec": [
+            0.8,
+            0.8,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.8,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.9682631275245239,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "mask": 1088,
+          "min": 0.9586397058823529,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "mask": 1088,
+          "min": 0.984375,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "mask": 1088,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "mask": 376,
+          "min": 0.7154255319148937,
+          "dec": [
+            0.98,
+            0.72,
+            0.87
+          ],
+          "all": [
+            0.98,
+            0.72,
+            0.87
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "mask": 376,
+          "min": 0.8955087076076994,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "mask": 376,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "mask": 366,
+          "min": 0.8005464480874317,
+          "dec": [
+            0.8,
+            0.8,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.8,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.9682814302191465,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "mask": 1087,
+          "min": 0.9586016559337627,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "mask": 1096,
+          "min": 0.9845313921747043,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "mask": 1099,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "mask": 371,
+          "min": 0.7169811320754716,
+          "dec": [
+            0.98,
+            0.72,
+            0.88
+          ],
+          "all": [
+            0.98,
+            0.72,
+            0.88
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "mask": 373,
+          "min": 0.8950276243093923,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "mask": 367,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "mask": 370,
+          "min": 0.8016453382084096,
+          "dec": [
+            0.8,
+            0.8,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.8,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.968372627947096,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "diagnostics": [
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        }
+      ],
+      "previews": [],
+      "err": null
+    },
+    {
+      "arena": "acuatica",
+      "rows": [
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "mask": 1096,
+          "min": 0.958941605839416,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "mask": 1095,
+          "min": 0.9844748858447488,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "mask": 1095,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "mask": 373,
+          "min": 0.7131367292225201,
+          "dec": [
+            0.98,
+            0.71,
+            0.88
+          ],
+          "all": [
+            0.98,
+            0.71,
+            0.88
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "mask": 377,
+          "min": 0.8961397058823529,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "mask": 377,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "mask": 370,
+          "min": 0.8,
+          "dec": [
+            0.8,
+            0.8,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.8,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.9682631275245239,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "mask": 1088,
+          "min": 0.9595588235294118,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "mask": 1088,
+          "min": 0.984375,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "mask": 1088,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "mask": 376,
+          "min": 0.7154255319148937,
+          "dec": [
+            0.98,
+            0.72,
+            0.87
+          ],
+          "all": [
+            0.98,
+            0.72,
+            0.87
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "mask": 376,
+          "min": 0.8964252978918423,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "mask": 376,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "mask": 366,
+          "min": 0.7978142076502732,
+          "dec": [
+            0.8,
+            0.8,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.8,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.9682814302191465,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "mask": 1087,
+          "min": 0.9595216191352346,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "mask": 1096,
+          "min": 0.9845313921747043,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "mask": 1099,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "mask": 371,
+          "min": 0.7115902964959568,
+          "dec": [
+            0.98,
+            0.71,
+            0.88
+          ],
+          "all": [
+            0.98,
+            0.71,
+            0.88
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "mask": 373,
+          "min": 0.8959484346224678,
+          "dec": [
+            0.9,
+            0.99,
+            0.9
+          ],
+          "all": [
+            0.9,
+            0.99,
+            0.9
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "mask": 367,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "mask": 370,
+          "min": 0.8,
+          "dec": [
+            0.8,
+            0.8,
+            0.83
+          ],
+          "all": [
+            0.8,
+            0.8,
+            0.83
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.968372627947096,
+          "dec": [
+            1,
+            1,
+            0.97
+          ],
+          "all": [
+            1,
+            1,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "diagnostics": [
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        }
+      ],
+      "previews": [],
+      "err": null
+    },
+    {
+      "arena": "minas",
+      "rows": [
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "mask": 1631,
+          "min": 0.9730226854690374,
+          "dec": [
+            1,
+            0.97,
+            0.98
+          ],
+          "all": [
+            1,
+            0.97,
+            0.98
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "mask": 1618,
+          "min": 0.9888751545117429,
+          "dec": [
+            1,
+            0.99,
+            0.99
+          ],
+          "all": [
+            1,
+            0.99,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "mask": 1618,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "mask": 373,
+          "min": 0.710455764075067,
+          "dec": [
+            0.98,
+            0.71,
+            0.91
+          ],
+          "all": [
+            0.98,
+            0.71,
+            0.91
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "mask": 377,
+          "min": 0.9075108628181254,
+          "dec": [
+            0.91,
+            0.99,
+            0.91
+          ],
+          "all": [
+            0.91,
+            0.99,
+            0.91
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "mask": 377,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "mask": 370,
+          "min": 0.7805054151624549,
+          "dec": [
+            0.8,
+            0.79,
+            0.78
+          ],
+          "all": [
+            0.8,
+            0.79,
+            0.78
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "mask": 1623,
+          "min": 0.9722735674676525,
+          "dec": [
+            1,
+            0.97,
+            0.97
+          ],
+          "all": [
+            1,
+            0.97,
+            0.97
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "mask": 1611,
+          "min": 0.9888268156424581,
+          "dec": [
+            1,
+            0.99,
+            0.99
+          ],
+          "all": [
+            1,
+            0.99,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "mask": 1611,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "mask": 376,
+          "min": 0.7154255319148937,
+          "dec": [
+            0.98,
+            0.72,
+            0.91
+          ],
+          "all": [
+            0.98,
+            0.72,
+            0.91
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "mask": 376,
+          "min": 0.9076827757125155,
+          "dec": [
+            0.91,
+            0.99,
+            0.91
+          ],
+          "all": [
+            0.91,
+            0.99,
+            0.91
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "mask": 376,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "mask": 366,
+          "min": 0.7811594202898551,
+          "dec": [
+            0.8,
+            0.78,
+            0.78
+          ],
+          "all": [
+            0.8,
+            0.78,
+            0.78
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "mask": 1622,
+          "min": 0.9728729963008631,
+          "dec": [
+            1,
+            0.97,
+            0.98
+          ],
+          "all": [
+            1,
+            0.97,
+            0.98
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "mask": 1631,
+          "min": 0.988984088127295,
+          "dec": [
+            1,
+            0.99,
+            0.99
+          ],
+          "all": [
+            1,
+            0.99,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "mask": 1622,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "mask": 371,
+          "min": 0.7088948787061995,
+          "dec": [
+            0.98,
+            0.71,
+            0.91
+          ],
+          "all": [
+            0.98,
+            0.71,
+            0.91
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "mask": 373,
+          "min": 0.9073958980733374,
+          "dec": [
+            0.91,
+            0.99,
+            0.91
+          ],
+          "all": [
+            0.91,
+            0.99,
+            0.91
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "mask": 367,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "mask": 370,
+          "min": 0.7764876632801161,
+          "dec": [
+            0.8,
+            0.79,
+            0.78
+          ],
+          "all": [
+            0.8,
+            0.79,
+            0.78
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "mask": 370,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "diagnostics": [
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~h:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:45",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:90",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_deploy~p:220",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        }
+      ],
+      "previews": [],
+      "err": null
+    }
+  ],
+  "errors": [],
+  "bad": 22
+}

@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-23",
+  "decision": "FIX / NO_INTEGRAR",
+  "state": "EN_CORRECCION",
+  "reviewed": [
+    "previews/mobile-bosque-crew.png",
+    "previews/mobile-infernal-crew.png",
+    "mobile/bosque-base-dense-h3-1600-native.png"
+  ],
+  "coverage": "24 scenes generated, 12 native-scale contact sheets; selected visual review, not all-scene approval.",
+  "findings": [
+    "Correct exact crew receiver and cleanup behavior in tested paths.",
+    "Up to30.0885% geometric overlap between actual aura masks; does not by itself measure human recognition.",
+    "Crew at dense contact loses individual armor motif separation. Preserve genuine arena/set/buff signals.",
+    "Full-step performance first run max165.9/161.5ms Bosque; traced repeat first frame234.8/258.6ms. Root subsystem unproven."
+  ],
+  "remaining": [
+    "Compound art approval for B118/B119; crew members with independent equipment/skins beyond current Brakk base/set matrix.",
+    "First-frame CPU breakdown and sustained mobile/thermal/GC measurements; no physical device certification.",
+    "Reconcile only approved components with main; do not import FIX workshops."
+  ]
+}

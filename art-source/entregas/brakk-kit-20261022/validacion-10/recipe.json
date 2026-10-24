@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "parent": "8d7a69fe654db111e1efcab7e20cb62472869c85",
+  "scope": "Validation only: actual crew recipients + B118/B119 combined scene. No new art.",
+  "dependencies": "Existing tools/lib/serve.js + Playwright + Chromium138; server/node_modules available locally. No added paid service/API key.",
+  "commands": [
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/verify-brakk-crew.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/brakk-crew-online.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium MOBILE=1 OUT=art-source/entregas/brakk-kit-20261022/validacion-10/mobile node tools/vfx/capture-brakk-crew.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=art-source/entregas/brakk-kit-20261022/validacion-10/landscape node tools/vfx/capture-brakk-crew.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/benchmark-brakk-crew.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium ARENAS=bosque OUT=art-source/entregas/brakk-kit-20261022/validacion-10/performance-trace node tools/vfx/benchmark-brakk-crew.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium CANARY=1 OUT=art-source/entregas/brakk-kit-20261022/validacion-10/canary node tools/vfx/verify-brakk-crew.js"
+  ],
+  "preview": "Each capture tool writes native300x240 crops in4-time strip; stack base/set strips at native scale with labels. Twelve sheets supplied.",
+  "nextCommand": "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium ARENAS=bosque OUT=/tmp/brakk-crew-cold-profile node tools/vfx/benchmark-brakk-crew.js",
+  "nextAction": "Add non-mutating full-step component timers (update/render and cold atlas/body bake) before next focused first-frame measurement; preserve this original trace. Group a crew-safe composition candidate for B118/B119, keep IDs/53 sources and no mechanical signal hiding. Do not repeat solved layer/relay diagnostics."
+}

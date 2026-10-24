@@ -1,0 +1,20 @@
+{
+  "environment": {
+    "NODE_PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "CHROMIUM_PATH": "/tmp/chromium",
+    "browser": "Chromium138.0.7204.0 @sparticuz/chromium138.0.2"
+  },
+  "commands": [
+    "OUT=art-source/entregas/brakk-kit-20261022/validacion-07/baseline-horizontal node tools/vfx/test-brakk-components-legible.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/validacion-07/pose-horizontal node tools/vfx/diagnose-brakk-component-pose.js",
+    "MOBILE=1 OUT=art-source/entregas/brakk-kit-20261022/validacion-07/pose-mobile node tools/vfx/diagnose-brakk-component-pose.js",
+    "ARENAS=bosque CANARY_RESTORE=1 OUT=art-source/entregas/brakk-kit-20261022/validacion-07/canary-pose node tools/vfx/diagnose-brakk-component-pose.js",
+    "ARENAS=bosque,hielo CAPTURE_PROBE=1 OUT=art-source/entregas/brakk-kit-20261022/validacion-07/probe-native node tools/vfx/diagnose-brakk-component-pose.js",
+    "REPORT=art-source/entregas/brakk-kit-20261022/validacion-07/relay-trace.json node tools/vfx/diagnose-brakk-relay-lifecycle.js",
+    "CPU_RATE=6 REPORT=art-source/entregas/brakk-kit-20261022/validacion-07/relay-throttled-original.json node tools/vfx/diagnose-brakk-relay-lifecycle.js",
+    "CPU_RATE=6 OBSERVE_STATE=1 REPORT=art-source/entregas/brakk-kit-20261022/validacion-07/relay-throttled-state.json node tools/vfx/diagnose-brakk-relay-lifecycle.js",
+    "OBSERVE_STATE=1 CANARY_NAILS=1 REPORT=art-source/entregas/brakk-kit-20261022/validacion-07/relay-canary.json node tools/vfx/diagnose-brakk-relay-lifecycle.js",
+    "node tools/vfx/brakk-composition-online.js"
+  ],
+  "note": "gzip lifecycle JSON after run using mtime0; first original traces predate observation-field instrumentation. Reports are evidence of those executions, not overwritten. Reusecorreccion06 sources/atlases, no newlygeneratedart."
+}

@@ -1,0 +1,1141 @@
+{
+  "results": [
+    {
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "bosque",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        24,
+        0
+      ],
+      "comparison": "actual support / support draw omitted only / restored same-frame support",
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 24
+        },
+        "body": 24
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            }
+          ]
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "exactReplay": true,
+          "layerOrder": [
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawPortadorTop:begin",
+            "DEPLOY",
+            "drawPortadorTop:end",
+            "drawChampionSignatures:begin",
+            "drawChampionSignatures:end",
+            "vfxDrawParticles:begin",
+            "vfxDrawParticles:end",
+            "aidAmbDraw:begin",
+            "aidAmbDraw:end",
+            "aidGrade:begin",
+            "aidGrade:end"
+          ],
+          "immediate": 222,
+          "surviving": 218,
+          "finalChanged": 218,
+          "survival": 0.9819819819819819,
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "58840c5cb3413cb9715d87e58c01d09b0c4aad48ac16f6fffaa19ab4905be8e6",
+          "withoutHash": "e28226250a94d5bd3be34466e6d4cc6602890e427dcf8ad33074454327cd760a"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 5664
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "795bd1c7054568686aa13ff5fa3ea6a1f82979bac010dd3bbc8670b52479bf77"
+    },
+    {
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "bosque",
+      "look": "base",
+      "density": "sparse",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        24,
+        0
+      ],
+      "comparison": "actual support / support draw omitted only / restored same-frame support",
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 24
+        },
+        "body": 24
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            }
+          ]
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "exactReplay": true,
+          "layerOrder": [
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawPortadorTop:begin",
+            "DEPLOY",
+            "drawPortadorTop:end",
+            "drawChampionSignatures:begin",
+            "drawChampionSignatures:end",
+            "vfxDrawParticles:begin",
+            "vfxDrawParticles:end",
+            "aidAmbDraw:begin",
+            "aidAmbDraw:end",
+            "aidGrade:begin",
+            "aidGrade:end"
+          ],
+          "immediate": 238,
+          "surviving": 237,
+          "finalChanged": 237,
+          "survival": 0.9957983193277311,
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "f6d212cb634856137fd997c4e136526ff4a337b25932444406701c6804266aca",
+          "withoutHash": "601cd437defd3b16820008860817340f125b659e2aceac17fe52f181f91048d4"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 5664
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "1e321236d3d0c344c4726501b5b120b6e3393f1efd30e56f88387e61fc5904e1"
+    },
+    {
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "bosque",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        24,
+        0
+      ],
+      "comparison": "actual support / support draw omitted only / restored same-frame support",
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 24
+        },
+        "body": 24
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            }
+          ]
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "exactReplay": true,
+          "layerOrder": [
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawPortadorTop:begin",
+            "DEPLOY",
+            "drawPortadorTop:end",
+            "drawChampionSignatures:begin",
+            "drawChampionSignatures:end",
+            "vfxDrawParticles:begin",
+            "vfxDrawParticles:end",
+            "aidAmbDraw:begin",
+            "aidAmbDraw:end",
+            "aidGrade:begin",
+            "aidGrade:end"
+          ],
+          "immediate": 228,
+          "surviving": 225,
+          "finalChanged": 225,
+          "survival": 0.9868421052631579,
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "8583fb0eaa62957f3bfd727c5d9abc95711179c6890c222dfa4191da93ab7c41",
+          "withoutHash": "2074ef0f531a5b689138d7724b945f4d043cc4872feb3896c619e311acd7b7a6"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 5664
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "ba46a723aebba055da90dc29b7c73ece9597d21348bd8887b8aee85c3a063923"
+    },
+    {
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "bosque",
+      "look": "set",
+      "density": "sparse",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        24,
+        0
+      ],
+      "comparison": "actual support / support draw omitted only / restored same-frame support",
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 24
+        },
+        "body": 24
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            }
+          ]
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "exactReplay": true,
+          "layerOrder": [
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawPortadorTop:begin",
+            "DEPLOY",
+            "drawPortadorTop:end",
+            "drawChampionSignatures:begin",
+            "drawChampionSignatures:end",
+            "vfxDrawParticles:begin",
+            "vfxDrawParticles:end",
+            "aidAmbDraw:begin",
+            "aidAmbDraw:end",
+            "aidGrade:begin",
+            "aidGrade:end"
+          ],
+          "immediate": 241,
+          "surviving": 241,
+          "finalChanged": 241,
+          "survival": 1,
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "c39cf2457d1b9ab6cc528d860289cd5e87d0570425c963654e016de8d56a7ad6",
+          "withoutHash": "a7b39e32c6295ce33d2373e80dd2b49b296d3a28ba128154307e090e54310011"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 5664
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "44580fb0d55ee7f86ac3de4f90f93a11c176315944fb8289308cfdc2ff6f76fa"
+    },
+    {
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "infernal",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        24,
+        0
+      ],
+      "comparison": "actual support / support draw omitted only / restored same-frame support",
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 24
+        },
+        "body": 24
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            }
+          ]
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "exactReplay": true,
+          "layerOrder": [
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawPortadorTop:begin",
+            "DEPLOY",
+            "drawPortadorTop:end",
+            "drawChampionSignatures:begin",
+            "drawChampionSignatures:end",
+            "vfxDrawParticles:begin",
+            "vfxDrawParticles:end",
+            "aidAmbDraw:begin",
+            "aidAmbDraw:end",
+            "aidGrade:begin",
+            "aidGrade:end"
+          ],
+          "immediate": 224,
+          "surviving": 223,
+          "finalChanged": 223,
+          "survival": 0.9955357142857143,
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "040f571f1e2806ac7a3dee3e559cd3917a097f44f20de9d71408dd92ca79cf46",
+          "withoutHash": "0622c5442cc7e5db474f0b5ad66dcf9d6d4fa995fbf784e459f2e4fb2aaca094"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 5664
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "0b1f1661e503e8a3632c5ef188b96f160a2b99ccfe3c73d26e68061d4103cc63"
+    },
+    {
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "infernal",
+      "look": "base",
+      "density": "sparse",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        24,
+        0
+      ],
+      "comparison": "actual support / support draw omitted only / restored same-frame support",
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 24
+        },
+        "body": 24
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            }
+          ]
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "exactReplay": true,
+          "layerOrder": [
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawPortadorTop:begin",
+            "DEPLOY",
+            "drawPortadorTop:end",
+            "drawChampionSignatures:begin",
+            "drawChampionSignatures:end",
+            "vfxDrawParticles:begin",
+            "vfxDrawParticles:end",
+            "aidAmbDraw:begin",
+            "aidAmbDraw:end",
+            "aidGrade:begin",
+            "aidGrade:end"
+          ],
+          "immediate": 234,
+          "surviving": 233,
+          "finalChanged": 233,
+          "survival": 0.9957264957264957,
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "37e1ff610401aec5d7036892f080c1315a3b6fcc19a5866d0b21c48df3b78803",
+          "withoutHash": "bc8c5b1dde570c97ed01ace1388a260020fb962ee8e00cda2c2d166e32d69366"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 5664
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "34763806e2f7ed079fa387efe500442a92e01c990aedca874c2ad73262209b2f"
+    },
+    {
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "infernal",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        24,
+        0
+      ],
+      "comparison": "actual support / support draw omitted only / restored same-frame support",
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 24
+        },
+        "body": 24
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            }
+          ]
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "exactReplay": true,
+          "layerOrder": [
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawPortadorTop:begin",
+            "DEPLOY",
+            "drawPortadorTop:end",
+            "drawChampionSignatures:begin",
+            "drawChampionSignatures:end",
+            "vfxDrawParticles:begin",
+            "vfxDrawParticles:end",
+            "aidAmbDraw:begin",
+            "aidAmbDraw:end",
+            "aidGrade:begin",
+            "aidGrade:end"
+          ],
+          "immediate": 225,
+          "surviving": 225,
+          "finalChanged": 225,
+          "survival": 1,
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "4389e4881293283e582a85f4fa96b6590cef75b85bcc3caa8fb35ba4043dbb1d",
+          "withoutHash": "071ea7f4ef39175d6e9c9a5afc4a4d7478c9ed2cf504a033c262e49406262618"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 5664
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "e18dd840979418c2143a98645da953cb8f55fb3ec9c5cf3ca939c83ed93c88ac"
+    },
+    {
+      "livePose": false,
+      "canaryRestore": false,
+      "arena": "infernal",
+      "look": "set",
+      "density": "sparse",
+      "omitSignature": false,
+      "signatureDraws": [
+        0,
+        24,
+        0
+      ],
+      "comparison": "actual support / support draw omitted only / restored same-frame support",
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 24
+        },
+        "body": 24
+      },
+      "samples": [
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "nail-turret"
+            }
+          ]
+        }
+      ],
+      "ab": [
+        {
+          "t": 330,
+          "exactReplay": true,
+          "layerOrder": [
+            "drawEnemy:begin",
+            "drawEnemy:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawHero:begin",
+            "drawHero:end",
+            "drawPortadorTop:begin",
+            "DEPLOY",
+            "drawPortadorTop:end",
+            "drawChampionSignatures:begin",
+            "drawChampionSignatures:end",
+            "vfxDrawParticles:begin",
+            "vfxDrawParticles:end",
+            "aidAmbDraw:begin",
+            "aidAmbDraw:end",
+            "aidGrade:begin",
+            "aidGrade:end"
+          ],
+          "immediate": 238,
+          "surviving": 234,
+          "finalChanged": 234,
+          "survival": 0.9831932773109243,
+          "identicalRestoration": true,
+          "stateUnchanged": true,
+          "beforeHash": "f693d8c77da783271a759b0f35d77737512f7d150d650ed2dfae074c741505d8",
+          "withoutHash": "be20ebcf12df2d70c814ba30610d56ef1950be5992ec9a4bdf279abb9093d351"
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 5664
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        330
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "b23440ad7b8c98a8a24bd71ff45259ef059bcac69915007942ab4dfbb87129c5"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,21 @@
+{
+  "closed": true,
+  "productionCommit": "2b6cc3b36e87aab6975cb4120da6dec9bbc5439e",
+  "parent": "1329b312d3e1e90bcc99e8109a233ab02f8740da",
+  "pr": 197,
+  "draft": true,
+  "main": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "productionFilesVerified": 16,
+  "states": {
+    "GENERADO": "diagnostic profile only;0frames",
+    "EN_CORRECCION": [
+      "B118/B119 crew composition",
+      "startup latency"
+    ],
+    "VALIDADO": "8 coverage/pool/reset checks, not ArtGate or performance approval",
+    "INTEGRADO_MAIN": false,
+    "publicationVerified": false
+  },
+  "runtimeChanged": [],
+  "next": "Bounded actual-load cache experiment separately scoped; preserve Brakk FIX. Archive Bront concept on separate main-based branch before adapting original sprite sheet."
+}

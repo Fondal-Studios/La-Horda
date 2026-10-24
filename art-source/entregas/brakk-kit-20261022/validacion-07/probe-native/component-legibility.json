@@ -1,0 +1,2226 @@
+{
+  "minimum": 0.8,
+  "delta": 24,
+  "fullMinimum": 0.4,
+  "scope": "isolated B117/B119 SFA only, not compound contrast",
+  "measurements": [
+    {
+      "arena": "bosque",
+      "rows": [
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "ant",
+          "mask": 371,
+          "min": 0.984573502722323,
+          "dec": [
+            0.98,
+            1,
+            1
+          ],
+          "all": [
+            0.98,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.8763636363636363,
+          "dec": [
+            0.88,
+            1,
+            0.95
+          ],
+          "all": [
+            0.88,
+            1,
+            0.95
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "disipa",
+          "mask": 371,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "ant",
+          "mask": 1090,
+          "min": 0.9623853211009175,
+          "dec": [
+            1,
+            0.97,
+            0.96
+          ],
+          "all": [
+            1,
+            0.97,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "impacto",
+          "mask": 1084,
+          "min": 0.9381918819188192,
+          "dec": [
+            1,
+            0.95,
+            0.94
+          ],
+          "all": [
+            1,
+            0.95,
+            0.94
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "disipa",
+          "mask": 1085,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "ant",
+          "mask": 1083,
+          "min": 0.9686057248384118,
+          "dec": [
+            0.99,
+            0.97,
+            0.98
+          ],
+          "all": [
+            0.99,
+            0.97,
+            0.98
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "impacto",
+          "mask": 1083,
+          "min": 0.9686057248384118,
+          "dec": [
+            0.99,
+            0.97,
+            0.98
+          ],
+          "all": [
+            0.99,
+            0.97,
+            0.98
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "disipa",
+          "mask": 1077,
+          "min": 0.9702878365831012,
+          "dec": [
+            1,
+            0.97,
+            0.98
+          ],
+          "all": [
+            1,
+            0.97,
+            0.98
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "ant",
+          "mask": 369,
+          "min": 0.9825528007346189,
+          "dec": [
+            0.98,
+            1,
+            1
+          ],
+          "all": [
+            0.98,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "impacto",
+          "mask": 369,
+          "min": 0.8732782369146006,
+          "dec": [
+            0.87,
+            1,
+            0.95
+          ],
+          "all": [
+            0.87,
+            1,
+            0.95
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "disipa",
+          "mask": 369,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "ant",
+          "mask": 1089,
+          "min": 0.9614325068870524,
+          "dec": [
+            1,
+            0.96,
+            0.96
+          ],
+          "all": [
+            1,
+            0.96,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "impacto",
+          "mask": 1089,
+          "min": 0.9375573921028466,
+          "dec": [
+            1,
+            0.95,
+            0.94
+          ],
+          "all": [
+            1,
+            0.95,
+            0.94
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "disipa",
+          "mask": 1081,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "ant",
+          "mask": 1077,
+          "min": 0.968430826369545,
+          "dec": [
+            0.99,
+            0.97,
+            0.98
+          ],
+          "all": [
+            0.99,
+            0.97,
+            0.98
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "impacto",
+          "mask": 1078,
+          "min": 0.9703153988868275,
+          "dec": [
+            0.99,
+            0.97,
+            0.99
+          ],
+          "all": [
+            0.99,
+            0.97,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "disipa",
+          "mask": 1078,
+          "min": 0.9730983302411874,
+          "dec": [
+            1,
+            0.97,
+            0.99
+          ],
+          "all": [
+            1,
+            0.97,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "ant",
+          "mask": 369,
+          "min": 0.9825688073394495,
+          "dec": [
+            0.98,
+            1,
+            1
+          ],
+          "all": [
+            0.98,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "impacto",
+          "mask": 362,
+          "min": 0.8763636363636363,
+          "dec": [
+            0.88,
+            1,
+            0.95
+          ],
+          "all": [
+            0.88,
+            1,
+            0.95
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "disipa",
+          "mask": 363,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "ant",
+          "mask": 1092,
+          "min": 0.9624542124542125,
+          "dec": [
+            1,
+            0.97,
+            0.96
+          ],
+          "all": [
+            1,
+            0.97,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "impacto",
+          "mask": 1090,
+          "min": 0.9422018348623853,
+          "dec": [
+            1,
+            0.95,
+            0.94
+          ],
+          "all": [
+            1,
+            0.95,
+            0.94
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "disipa",
+          "mask": 1088,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "ant",
+          "mask": 1086,
+          "min": 0.9760589318600368,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "impacto",
+          "mask": 1086,
+          "min": 0.9760589318600368,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "disipa",
+          "mask": 1089,
+          "min": 0.9788797061524335,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        }
+      ],
+      "diagnostics": [
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        }
+      ],
+      "previews": [
+        {
+          "key": "bosque-beam-h-impact-0",
+          "effect": "bosque-beam-h-impact-0-effect.png",
+          "baseline": "bosque-beam-h-impact-0-baseline.png",
+          "restored": "bosque-beam-h-impact-0-restored.png"
+        },
+        {
+          "key": "bosque-beam-h-impact-1",
+          "effect": "bosque-beam-h-impact-1-effect.png",
+          "baseline": "bosque-beam-h-impact-1-baseline.png",
+          "restored": "bosque-beam-h-impact-1-restored.png"
+        },
+        {
+          "key": "bosque-beam-h-impact-2",
+          "effect": "bosque-beam-h-impact-2-effect.png",
+          "baseline": "bosque-beam-h-impact-2-baseline.png",
+          "restored": "bosque-beam-h-impact-2-restored.png"
+        }
+      ],
+      "err": null
+    },
+    {
+      "arena": "hielo",
+      "rows": [
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "ant",
+          "mask": 371,
+          "min": 0.9809437386569873,
+          "dec": [
+            0.98,
+            1,
+            1
+          ],
+          "all": [
+            0.98,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "impacto",
+          "mask": 370,
+          "min": 0.8690909090909091,
+          "dec": [
+            0.87,
+            1,
+            0.95
+          ],
+          "all": [
+            0.87,
+            1,
+            0.95
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "disipa",
+          "mask": 371,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "ant",
+          "mask": 1090,
+          "min": 0.9623853211009175,
+          "dec": [
+            1,
+            0.97,
+            0.96
+          ],
+          "all": [
+            1,
+            0.97,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "impacto",
+          "mask": 1084,
+          "min": 0.940959409594096,
+          "dec": [
+            1,
+            0.95,
+            0.94
+          ],
+          "all": [
+            1,
+            0.95,
+            0.94
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "disipa",
+          "mask": 1085,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "ant",
+          "mask": 1083,
+          "min": 0.9658356417359187,
+          "dec": [
+            0.99,
+            0.97,
+            0.98
+          ],
+          "all": [
+            0.99,
+            0.97,
+            0.98
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "impacto",
+          "mask": 1083,
+          "min": 0.9658356417359187,
+          "dec": [
+            0.99,
+            0.97,
+            0.98
+          ],
+          "all": [
+            0.99,
+            0.97,
+            0.98
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "disipa",
+          "mask": 1077,
+          "min": 0.9702878365831012,
+          "dec": [
+            1,
+            0.97,
+            0.98
+          ],
+          "all": [
+            1,
+            0.97,
+            0.98
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "ant",
+          "mask": 369,
+          "min": 0.9807162534435262,
+          "dec": [
+            0.98,
+            1,
+            1
+          ],
+          "all": [
+            0.98,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "impacto",
+          "mask": 369,
+          "min": 0.8668503213957759,
+          "dec": [
+            0.87,
+            1,
+            0.95
+          ],
+          "all": [
+            0.87,
+            1,
+            0.95
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "disipa",
+          "mask": 369,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "ant",
+          "mask": 1089,
+          "min": 0.960514233241506,
+          "dec": [
+            1,
+            0.97,
+            0.96
+          ],
+          "all": [
+            1,
+            0.97,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "impacto",
+          "mask": 1089,
+          "min": 0.9393939393939394,
+          "dec": [
+            1,
+            0.95,
+            0.94
+          ],
+          "all": [
+            1,
+            0.95,
+            0.94
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "disipa",
+          "mask": 1081,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "ant",
+          "mask": 1077,
+          "min": 0.9656453110492108,
+          "dec": [
+            0.99,
+            0.97,
+            0.98
+          ],
+          "all": [
+            0.99,
+            0.97,
+            0.98
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "impacto",
+          "mask": 1078,
+          "min": 0.9684601113172542,
+          "dec": [
+            0.99,
+            0.97,
+            0.99
+          ],
+          "all": [
+            0.99,
+            0.97,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "disipa",
+          "mask": 1078,
+          "min": 0.9758812615955473,
+          "dec": [
+            1,
+            0.98,
+            0.99
+          ],
+          "all": [
+            1,
+            0.98,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "ant",
+          "mask": 369,
+          "min": 0.9807339449541285,
+          "dec": [
+            0.98,
+            1,
+            1
+          ],
+          "all": [
+            0.98,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "impacto",
+          "mask": 362,
+          "min": 0.8672727272727273,
+          "dec": [
+            0.87,
+            1,
+            0.95
+          ],
+          "all": [
+            0.87,
+            1,
+            0.95
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "disipa",
+          "mask": 363,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "ant",
+          "mask": 1092,
+          "min": 0.9633699633699634,
+          "dec": [
+            1,
+            0.97,
+            0.96
+          ],
+          "all": [
+            1,
+            0.97,
+            0.96
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "impacto",
+          "mask": 1090,
+          "min": 0.9458715596330275,
+          "dec": [
+            1,
+            0.95,
+            0.95
+          ],
+          "all": [
+            1,
+            0.95,
+            0.95
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "disipa",
+          "mask": 1088,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "ant",
+          "mask": 1086,
+          "min": 0.9742173112338858,
+          "dec": [
+            1,
+            0.97,
+            0.99
+          ],
+          "all": [
+            1,
+            0.97,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "impacto",
+          "mask": 1086,
+          "min": 0.9742173112338858,
+          "dec": [
+            1,
+            0.97,
+            0.99
+          ],
+          "all": [
+            1,
+            0.97,
+            0.99
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "disipa",
+          "mask": 1089,
+          "min": 0.977961432506887,
+          "dec": [
+            1,
+            0.98,
+            1
+          ],
+          "all": [
+            1,
+            0.98,
+            1
+          ]
+        }
+      ],
+      "diagnostics": [
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "ant",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "ant",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "ant",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "impacto",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "impacto",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "impacto",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "disipa",
+          "k": 0,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "disipa",
+          "k": 1,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "disipa",
+          "k": 2,
+          "baselineDelta": 0,
+          "restorationDelta": 0,
+          "poseChanged": true
+        }
+      ],
+      "previews": [
+        {
+          "key": "hielo-beam-h-impact-0",
+          "effect": "hielo-beam-h-impact-0-effect.png",
+          "baseline": "hielo-beam-h-impact-0-baseline.png",
+          "restored": "hielo-beam-h-impact-0-restored.png"
+        },
+        {
+          "key": "hielo-beam-h-impact-1",
+          "effect": "hielo-beam-h-impact-1-effect.png",
+          "baseline": "hielo-beam-h-impact-1-baseline.png",
+          "restored": "hielo-beam-h-impact-1-restored.png"
+        },
+        {
+          "key": "hielo-beam-h-impact-2",
+          "effect": "hielo-beam-h-impact-2-effect.png",
+          "baseline": "hielo-beam-h-impact-2-baseline.png",
+          "restored": "hielo-beam-h-impact-2-restored.png"
+        }
+      ],
+      "err": null
+    }
+  ],
+  "errors": [],
+  "bad": 0
+}

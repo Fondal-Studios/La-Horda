@@ -1,0 +1,556 @@
+{
+  "status": "PASS",
+  "waits": [
+    {
+      "label": "guest receives both live builds",
+      "ok": true,
+      "wallMs": 7
+    },
+    {
+      "label": "host turret completes first real interval",
+      "ok": true,
+      "wallMs": 21
+    },
+    {
+      "label": "guest receives nails event",
+      "ok": true,
+      "wallMs": 15
+    }
+  ],
+  "scope": "Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.",
+  "checks": [
+    {
+      "name": "solciju admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "brakk admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "veyra admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "morveth admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "aelith admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "nano_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "facu_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "host resolves transmitted crew talent and multiple real recipients",
+      "ok": true,
+      "crewExpected": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "Brakk wall and turret replicate with guest owner",
+      "ok": true,
+      "builds": [
+        "brk_wall",
+        "brk_turret"
+      ]
+    },
+    {
+      "name": "host renders own signature slot 0",
+      "ok": true,
+      "draws": 17
+    },
+    {
+      "name": "host renders own signature slot 1",
+      "ok": true,
+      "draws": 18
+    },
+    {
+      "name": "host renders own signature slot 2",
+      "ok": true,
+      "draws": 21
+    },
+    {
+      "name": "touch guest renders own signature slot 0",
+      "ok": true,
+      "draws": 27
+    },
+    {
+      "name": "touch guest renders own signature slot 1",
+      "ok": true,
+      "draws": 27
+    },
+    {
+      "name": "touch guest renders own signature slot 2",
+      "ok": true,
+      "draws": 27
+    },
+    {
+      "name": "host draws new 48x56 brace atlas in real renderer",
+      "ok": true,
+      "draws": 240
+    },
+    {
+      "name": "touch guest draws new 48x56 brace atlas in real renderer",
+      "ok": true,
+      "draws": 316
+    },
+    {
+      "name": "host crossfades generic ring for exact crew recipients",
+      "ok": true,
+      "draws": 240,
+      "sample": [
+        {
+          "key": "solciju",
+          "fi": 0,
+          "a": 0.8547619047596874
+        },
+        {
+          "key": "brakk",
+          "fi": 1,
+          "a": 0.8547619047596874
+        },
+        {
+          "key": "musashi",
+          "fi": 2,
+          "a": 0.8547619047596874
+        },
+        {
+          "key": "ynara",
+          "fi": 3,
+          "a": 0.8547619047596874
+        },
+        {
+          "key": "solciju",
+          "fi": 0,
+          "a": 0.7684523809501635
+        },
+        {
+          "key": "brakk",
+          "fi": 1,
+          "a": 0.7684523809501635
+        },
+        {
+          "key": "musashi",
+          "fi": 2,
+          "a": 0.7684523809501635
+        },
+        {
+          "key": "ynara",
+          "fi": 3,
+          "a": 0.7684523809501635
+        }
+      ]
+    },
+    {
+      "name": "touch guest crossfades generic ring for exact crew recipients",
+      "ok": true,
+      "draws": 320,
+      "sample": [
+        {
+          "key": "solciju",
+          "fi": 0,
+          "a": 0.9029761904772992
+        },
+        {
+          "key": "brakk",
+          "fi": 1,
+          "a": 0.9029761904772992
+        },
+        {
+          "key": "musashi",
+          "fi": 2,
+          "a": 0.9029761904772992
+        },
+        {
+          "key": "ynara",
+          "fi": 3,
+          "a": 0.9029761904772992
+        },
+        {
+          "key": "solciju",
+          "fi": 0,
+          "a": 0.8523809523820611
+        },
+        {
+          "key": "brakk",
+          "fi": 1,
+          "a": 0.8523809523820611
+        },
+        {
+          "key": "musashi",
+          "fi": 2,
+          "a": 0.8523809523820611
+        },
+        {
+          "key": "ynara",
+          "fi": 3,
+          "a": 0.8523809523820611
+        }
+      ]
+    },
+    {
+      "name": "host draws current deployment atlas in real renderer",
+      "ok": true,
+      "draws": 25
+    },
+    {
+      "name": "touch guest draws current deployment atlas in real renderer",
+      "ok": true,
+      "draws": 37
+    },
+    {
+      "name": "host draws actual aura for every crew recipient",
+      "ok": true,
+      "counts": {
+        "0": 64,
+        "1": 64,
+        "2": 64,
+        "3": 64
+      }
+    },
+    {
+      "name": "touch guest draws actual aura for every crew recipient",
+      "ok": true,
+      "counts": {
+        "0": 85,
+        "1": 85,
+        "2": 85,
+        "3": 85
+      }
+    },
+    {
+      "name": "host event reaches touch guest: brakk_build",
+      "ok": true,
+      "host": [
+        [
+          "beam",
+          "brakk_build",
+          115,
+          -15,
+          0,
+          0,
+          600,
+          115,
+          115,
+          28,
+          -2,
+          null,
+          null
+        ]
+      ],
+      "guest": [
+        [
+          "beam",
+          "brakk_build",
+          115,
+          -15,
+          0,
+          0,
+          600,
+          115,
+          115,
+          28,
+          -2,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "host event reaches touch guest: brakk_deploy~h",
+      "ok": true,
+      "host": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          115,
+          50,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "guest": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          115,
+          50,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "host event reaches touch guest: brakk_repair~p",
+      "ok": true,
+      "host": [
+        [
+          "burst",
+          "brakk_repair~p",
+          115,
+          50,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          115,
+          50,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24.49747468305833,
+          49.49747468305832,
+          24,
+          0,
+          3360.000000000001,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          49.5,
+          49.5,
+          24,
+          0,
+          3360.000000000001,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          74.49747468305833,
+          49.49747468305832,
+          24,
+          0,
+          3360.000000000001,
+          null,
+          null,
+          null,
+          2,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          99.49747468305833,
+          49.49747468305832,
+          24,
+          0,
+          3360.000000000001,
+          null,
+          null,
+          null,
+          3,
+          null,
+          null
+        ]
+      ],
+      "guest": [
+        [
+          "burst",
+          "brakk_repair~p",
+          115,
+          50,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "brakk_repair~p",
+          115,
+          50,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          24.5,
+          49.5,
+          24,
+          0,
+          3360,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          49.5,
+          49.5,
+          24,
+          0,
+          3360,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          74.5,
+          49.5,
+          24,
+          0,
+          3360,
+          null,
+          null,
+          null,
+          2,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          99.5,
+          49.5,
+          24,
+          0,
+          3360,
+          null,
+          null,
+          null,
+          3,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "host event reaches touch guest: brakk_nails",
+      "ok": true,
+      "host": [
+        [
+          "beam",
+          "brakk_nails",
+          115,
+          50,
+          0,
+          0,
+          260,
+          89.49747468305833,
+          49.49747468305832,
+          18,
+          -2,
+          null,
+          null
+        ]
+      ],
+      "guest": [
+        [
+          "beam",
+          "brakk_nails",
+          115,
+          50,
+          0,
+          0,
+          260,
+          89.5,
+          49.5,
+          18,
+          -2,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "brakk guest casts simulated by host",
+      "ok": true,
+      "host": {
+        "key": "brakk",
+        "casts": 4,
+        "damage": 689.9596,
+        "bleeds": 0
+      },
+      "guest": {
+        "key": "brakk",
+        "casts": 3,
+        "owned": [],
+        "bleeds": 0
+      }
+    },
+    {
+      "name": "brakk death removes owned effects",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

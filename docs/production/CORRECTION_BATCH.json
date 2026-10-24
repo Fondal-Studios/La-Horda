@@ -11,21 +11,9 @@
     "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
-  "nextProduction": "Complete Aelith B106 actual-target slow indicator1800ms and B107/Morveth B168 contact readability; then integral gates for recent kits. RNG Solciju/Veyra technically corrected, not merged.",
-  "groupedCorrectionCheckpoint": {
-    "date": "2026-10-23",
-    "prs": [
-      195,
-      196
-    ],
-    "paths": [
-      "art-source/entregas/habilidades-recientes-20261022/correccion-rng-02",
-      "art-source/entregas/veyra-kit-20261022/correccion-rng-02"
-    ],
-    "status": "EN_CORRECCION / NO_INTEGRAR",
-    "next": "Complete Aelith B106 actual-target slow indicator1800ms and B107/Morveth B168 contact readability; then integral gates for recent kits. RNG Solciju/Veyra technically corrected, not merged."
-  },
-  "next": "Finish this cup closure: exact-head CI, normal merge with expected_head_sha, verify main/publication. Then production of next audited genuinely missing kit; no new workshop before closure.",
+  "nextProduction": "Archive and prepare Bront redesign concept per direct request; retain B118/B119 crew FIX. Distributed cold cache finding11 supports separately scoped load-time investigation, not atlas regeneration.",
+  "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
+  "next": "Gates integrales por componente de kits recientes; B118/B119 siguen EN_CORRECCION. Mantener residuales MorvethB168/AelithB106/B107 y cola histórica23. No integrar talleres FIX.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -386,7 +374,39 @@
         "technical": "20 real draw frame checks PASS; 14 actual relay checks PASS; 132 functional PASS; combat/RNG 29232 identical. Build-only event phase; nails and legacy loops unchanged.",
         "state": "EN_CORRECCION",
         "remaining": "Full skins/arenas/contrast/warmup and visual gate. B118 arrow supports remain FIX; do not merge whole workshop."
-      }
+      },
+      "correctionHistory": [
+        {
+          "date": "2026-10-23",
+          "path": "art-source/entregas/brakk-kit-20261022/correccion-05",
+          "source": "js/skills/champion-signatures.js",
+          "sourceSha256": "b8b984b3282974973861c1aff35f1e0b967010a9477e29238852718dd203b784",
+          "state": "EN_CORRECCION",
+          "components": [
+            "A-FX-brakk-h1",
+            "A-FX-brakk-h2",
+            "A-FX-brakk-h3"
+          ],
+          "change": "Normal-only masonry/turret/cross-brace native crests; cached12cells; key/slot/lifetime/UF unchanged.",
+          "tests": "108renderer,19kit,81functional,20relay PASS; parent/candidate29232 RNG identical360frames.",
+          "remaining": [
+            "Investigate fourteen Acuatica same-frame restoration mismatches before relying on those pairs; other130 restore exactly,144 pool/object states identical. Pixel diff bbox/count recorded, root cause not claimed.",
+            "Grouped B118 support/B119 brace composition; do not regenerate53original frames.",
+            "Full compound contrast with equipped skins/arenas; no new numeric compound gate claimed.",
+            "Sustained mobile performance/GC and cold bake benchmark; local draw benchmark does not certify physical devices.",
+            "Exact final head CI and Art Gate before isolating any approved component; PR197 remains draft.",
+            "Preserve Morveth B168 and Aelith B106/B107 residuals; global inventory incomplete."
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-06",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "eafcdcda620620b7ff0ab598aab47d5f26e13c964b5f429995e111d1b0a3c310",
+          "finding": "A/B/A Acuatica14fails diagnosed as mutable animPose in harness,144/144 exact after pose snapshot restore. Two new horizontal B117 beam~h isolated rows79.886% below80; source/atlas unchanged,root not demonstrated.",
+          "next": "Resolver lote composición/contraste y gates; no integrar taller FIX."
+        }
+      ]
     },
     {
       "block": "B118",
@@ -399,7 +419,7 @@
       "defects": [
         "Los cuatro soportes se leen como flechas diagonales en la revisión de atlas; falta articulación/pie de apoyo que los haga claramente ingeniería de asedio."
       ],
-      "next": "Conservar corrección local y completar gates pendientes; no repetir primera pasada ni integrar taller completo.",
+      "next": "Revisar composición B118/B119 integral y crew/performance; no repetir diagnóstico de capas ni abrir otra primera pasada de estos53cuadros.",
       "pr": 197,
       "productionCommit": "a7ed39fae2db8d8ceb4b784bd129bcd54a50bb5b",
       "correctionHistory": [
@@ -417,6 +437,73 @@
             "skins equipadas y Art Gate integral",
             "warmup/performance/reentrada y CI final"
           ]
+        },
+        {
+          "date": "2026-10-23",
+          "path": "art-source/entregas/brakk-kit-20261022/validacion-03",
+          "change": "No new pixels. 60 real scenes verify five equipped appearances in six arenas and two viewports; 11 lifecycle/cache checks; test-only CI race correction.",
+          "sourceSha256": "81be8914332b0e0fa33941c02fd9fb37827f86ce8e1ec8917896c26b0e7c81f9",
+          "frame": "330ms (frame6 of12 at620ms), dense contact",
+          "finding": "B118 articulated support is drawn38 times per scene, but at330ms dense skeletons conceal most of its silhouette; generic caster diamond/rings and equipment hit flashes dominate. A successful isolated occlusion gate does not certify recognizability in this composition.",
+          "remaining": [
+            "B118 dense-contact recognizability and full compound contrast",
+            "B117/B119 equipped-skin full scene and beam/aura gates",
+            "Sustained physical-device mobile performance",
+            "Exact-head CI and applicable workflow completion",
+            "Shared extension reconciliation when splitting approved components; never import full FIX workshops"
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "path": "art-source/entregas/brakk-kit-20261022/validacion-04",
+          "change": "Validation04, no new pixels:360 real equipped scenes, B117/B119 isolated gate,12same-frame signature ablations. Independent test fixPR200 merged.",
+          "sourceSha256": "81be8914332b0e0fa33941c02fd9fb37827f86ce8e1ec8917896c26b0e7c81f9",
+          "frame": "B118 330ms, dense/sparse; same-frame ABA12/12",
+          "finding": "Sparse330ms shows articulated deployment; dense body overlap conceals most of support. Removing airborne generic signature reduces distraction at caster but does not expose supports at turret. All three normal casts use fallback star for brakk (CHAMPION_SIGNATURES has no brakk key). Actual live pool records shape star. Observational finding, no runtime change; ultimate remains untouched.",
+          "remaining": [
+            "Grouped composition correction: normal Brakk signature and deployment readability, preserve original IDs/UF and all emitter/RNG behavior",
+            "B119 brace vs armor/team rings; full compound contrast across equipped skins/arenas",
+            "Sustained mobile performance and remaining lifecycle cases before integral Art Gate",
+            "Exact new-head CI; prior success does not approve workshop",
+            "Keep Morveth B168 and Aelith B106/B107 residuals; inventory globally incomplete"
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "path": "art-source/entregas/brakk-kit-20261022/correccion-05",
+          "source": "js/skills/champion-signatures.js",
+          "sourceSha256": "b8b984b3282974973861c1aff35f1e0b967010a9477e29238852718dd203b784",
+          "state": "EN_CORRECCION",
+          "components": [
+            "A-FX-brakk-h1",
+            "A-FX-brakk-h2",
+            "A-FX-brakk-h3"
+          ],
+          "change": "Normal-only masonry/turret/cross-brace native crests; cached12cells; key/slot/lifetime/UF unchanged.",
+          "tests": "108renderer,19kit,81functional,20relay PASS; parent/candidate29232 RNG identical360frames.",
+          "remaining": [
+            "Investigate fourteen Acuatica same-frame restoration mismatches before relying on those pairs; other130 restore exactly,144 pool/object states identical. Pixel diff bbox/count recorded, root cause not claimed.",
+            "Grouped B118 support/B119 brace composition; do not regenerate53original frames.",
+            "Full compound contrast with equipped skins/arenas; no new numeric compound gate claimed.",
+            "Sustained mobile performance/GC and cold bake benchmark; local draw benchmark does not certify physical devices.",
+            "Exact final head CI and Art Gate before isolating any approved component; PR197 remains draft.",
+            "Preserve Morveth B168 and Aelith B106/B107 residuals; global inventory incomplete."
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-06",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "eafcdcda620620b7ff0ab598aab47d5f26e13c964b5f429995e111d1b0a3c310",
+          "finding": "Attempt lowering deployment6nativepx fails36rows,min~71%; source/hash/atlas preserved. Returned to previous deployment byteidentical. Dense contact residual remains.",
+          "next": "Resolver lote composición/contraste y gates; no integrar taller FIX."
+        },
+        {
+          "date": "2026-10-23",
+          "delivery": "art-source/entregas/brakk-kit-20261022/correccion-09",
+          "sourceSha256": "18831420feb6c79603932d1c8e06ade1cf4dafd8e53409200d4e44471175d9aa",
+          "state": "EN_CORRECCION",
+          "finding": "Measured post-body deployment layer; later layers preserve98.198..100% contribution in8parent scenes. Staged lateral feet candidate: candidate01FAIL22 retained; candidate02 isolated82%min both viewports,120same-frame exact comparisons,26relay,29232RNG parity. Compound ArtGate pending."
         }
       ]
     },
@@ -545,7 +632,7 @@
         "atlas-preview.png",
         "verification.json"
       ],
-      "next": "FIX residual: identificación aún tenue entre cuerpos/escudo genérico en móvil. Revisar silueta a1:1 en escena menos solapada y contacto real; skins/contraste integral pendientes.",
+      "next": "Integral per-component gates, starting Brakk PR197 corrected supports plus exact failing CI investigation. Keep B168 compound rings/skin-equipment review in shared batch, without repeating first pass.",
       "pr": 198,
       "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5",
       "correctionHistory": [
@@ -558,6 +645,17 @@
           "change": "Micelio conectado al suelo con bifurcaciones y cuatro sombreros laterales. Centros retraídos para no cortar contorno.",
           "evidence": "30 silhouette checks;23 kit;131 functional;16 relay;23 general online;SFA RNG30414 identical;legibility six arenas horizontal/mobile PASS",
           "remaining": "FIX residual: identificación aún tenue entre cuerpos/escudo genérico en móvil. Revisar silueta a1:1 en escena menos solapada y contacto real; skins/contraste integral pendientes."
+        },
+        {
+          "date": "2026-10-23",
+          "pr": 198,
+          "path": "art-source/entregas/morveth-kit-20261022/correccion-02",
+          "sourceSha256": "18c4475c2daa309dc9066cda1c1c59f37b993a38faf825d3b8e691d41c0ed1ce",
+          "atlasSha256": "7ffd8daef7ca3d3bbe80e64c682483b74e58701e0699a633550cdf8657aaf697",
+          "state": "EN_CORRECCION",
+          "change": "B168 only: 48x56x18, four lateral violet caps with closed dark contour and light gills, open torso and two lateral spores. Common arena tint retained on roots; cap uses 80% canon violet / 20% tinted accent. Cosmetic width60 world units at radius25; no mechanics radius change.",
+          "evidence": "43 component,23 kit,131 functional,17 relay actual atlas draw;30414 parity;2268 protection placements per viewport >=80%; nine initial scenes equal;UF identical",
+          "remaining": "Compound contact with legacy rings still dominant; full equipped skins/arenas/performance/Art Gate pending."
         }
       ]
     },
@@ -626,7 +724,7 @@
         "La grieta se ve como una línea dentada demasiado fina a escala móvil; aún no tiene apertura/cierre longitudinal de150ms ni estado de arena lenta propio."
       ],
       "evidence": "art-source/entregas/aelith-normal-kit-20261022/VISUAL_REVIEW.md",
-      "next": "Revisar grosor/fragmentos y fase longitudinal en lote común; usar endpoints reales, mantener ancho mecánico52 y no convertirlo en haz liso.",
+      "next": "Full B106 gate with skin/arena/contact matrix; do not redo Fractura or slow-sand first pass.",
       "pr": 199,
       "productionCommit": "0d6dee95e7e84335fe6b9a04e9ee9ad56bfcfd3d",
       "correctionHistory": [
@@ -639,6 +737,17 @@
           "technical": "34 silhouette,41 lifecycle,27 kit,11 local variants,132 functional,33 relay,23 general online; SFA RNG29884 identical; final exact CI pending.",
           "resolved": "Full-length glass/open-close150ms and moderate arena tint",
           "remaining": "Actual target slow icon1800ms plus integral gate"
+        },
+        {
+          "date": "2026-10-23",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-03",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "dc03e27be526e43ad4c74ebc491f1b6af56291055f85dd3da444c93248b1d75d",
+          "atlasSha256": "7fd600b726be6d509bae71d60ddd1e865cbbd7b0b30310d0c73d5c69f769b10c",
+          "resolved": "Native12-frame slow-sand mark from actual affected target; base1800ms, scaled duration, cleanse/death and existing relay snapshots",
+          "technical": "33 component,27 kit,131 functional and41 real-relay checks PASS; combat/RNG29884/29884;2 initial sceneHashes identical",
+          "remaining": "Equipped skins, compound contrast, six arenas1:1, warmup/performance and full Art Gate. Dense marker overlap needs review."
         }
       ]
     },
@@ -692,6 +801,16 @@
           "technical": "34 silhouette,41 lifecycle,27 kit,11 local variants,132 functional,33 relay,23 general online; SFA RNG29884 identical; final exact CI pending.",
           "resolved": "Two-tone equipped body snapshots at16/28/40%; stronger clock/sand with canon amber/grey palette",
           "remaining": "Readability in mobile overlap, skins, warmup/performance and integral gate"
+        },
+        {
+          "date": "2026-10-23",
+          "pr": 199,
+          "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-04",
+          "state": "EN_CORRECCION",
+          "sourceSha256": "d3b4c2084c4d289856f383dde4ca805f800c613e831baab92d42b5fcc6db5793",
+          "resolved": "Rear half oldest equipped snapshot on upper layer; cached masks, no debt readback.51component/41lifecycle/33slow/27kit/131functional/43relay PASS;720strict layer rows per viewport minimum83%, unchanged80% threshold. RNG29884 identical.",
+          "remaining": "Integral compound contrast,800ms debt aura after220ms collapse, equipment/arenas/device performance. No merge.",
+          "attempts": "TEST_ATTEMPTS.json preserves full-outline occlusion failure, cold-body readback fixture, binary decimal duration fixture, and performance regression."
         }
       ]
     },
@@ -800,14 +919,6 @@
           "delivery": "art-source/entregas/brakk-kit-20261022/validacion-11",
           "technical": "450JS unchanged. First-frame actual crew-ready profile165.3/190.6ms, distributed arena/mips/feet/update; SFA3.7/3.4ms. No runtime optimization.",
           "remaining": "Crew composition and full mobile performance approval remain. Do not attribute startup entirely to53Brakkframes."
-        },
-        {
-          "date": "2026-10-24",
-          "path": "art-source/entregas/brakk-signatures-20261024/cierre-01",
-          "componentScope": "normal cast signature only",
-          "state": "EN_CORRECCION",
-          "sourceSha256": "fb099d653d4446769fdb25cd2537b7287695f982f89dd4240a5e79a376b13bdb",
-          "note": "Numeric visibility passes but X obscured by legacy columns/rings. Excluded from isolated runtime. Original main fallback kept; retain source in attempt-04/source.js for grouped composition."
         }
       ],
       "next": "Group crew-safe B118/B119 composition correction and first-frame component profile; preserve genuine mechanical signals; do not repeat solved recipient/relay tests as new work."

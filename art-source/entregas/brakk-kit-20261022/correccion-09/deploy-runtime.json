@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "saturated cap false",
+      "pass": true,
+      "details": 40
+    },
+    {
+      "name": "saturated events expire false",
+      "pass": true,
+      "details": 0
+    },
+    {
+      "name": "saturated cap true",
+      "pass": true,
+      "details": 16
+    },
+    {
+      "name": "saturated events expire true",
+      "pass": true,
+      "details": 0
+    },
+    {
+      "name": "outside view never allocates",
+      "pass": true
+    },
+    {
+      "name": "new visible event after outside-view rejection",
+      "pass": true
+    },
+    {
+      "name": "run reset clears pool",
+      "pass": true
+    },
+    {
+      "name": "12-frame authored deploy",
+      "pass": true,
+      "details": {
+        "w": 64,
+        "h": 64,
+        "n": 12
+      }
+    },
+    {
+      "name": "cache reused",
+      "pass": true
+    },
+    {
+      "name": "repeated events bounded",
+      "pass": true,
+      "details": 3
+    },
+    {
+      "name": "post benchmark reset",
+      "pass": true
+    }
+  ],
+  "coldBakeMs": 0.599999999627471,
+  "warmBakeMs": {
+    "samples": 500,
+    "p50": 0,
+    "p95": 0,
+    "max": 0.19999999925494194
+  },
+  "renderMs": {
+    "samples": 600,
+    "p50": 1.099999999627471,
+    "p95": 1.700000001117587,
+    "max": 8.099999999627471
+  },
+  "retained": 3,
+  "cache": 1,
+  "limitation": "Headless local, no device/GC/thermal certification; render includes the scene, update is outside the measurement.",
+  "errors": []
+}
