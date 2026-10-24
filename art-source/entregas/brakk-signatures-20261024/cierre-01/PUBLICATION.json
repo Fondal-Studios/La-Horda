@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-24T08:19:30.069493+00:00",
+  "baseUrl": "https://fondalstudios.com/la-horda/jugar/",
+  "scope": "Selected file bytes only; not gameplay, accounts, ownership, live multiplayer or full release certification",
+  "status": "NOT_CONFIRMED",
+  "checks": [
+    {
+      "path": "js/skills/champion-signatures.js",
+      "expectedSha256": "4e2f310e0f5169504f7bb4442da26eb4fbd6fd434588cc8559322e3ca136e604",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/skills/champion-signatures.js",
+      "bytes": 6610,
+      "publicSha256": "2bbe76162cac478de248ebbbfa7ff98e8cda17b672ef1bd9d83f2be46098a3ad",
+      "status": "DIFFERENT"
+    }
+  ],
+  "indexLoadsConsumer": true,
+  "stage": "POST_MERGE",
+  "head": "5c6c583900aad4865643dbc0e1a7d79c5d8bd904",
+  "merge": "e3495de28b760425f26be9041b8b4fcbafcc9094",
+  "blocker": "Canonical hosting deployment connection unavailable in documented setup; no infrastructure changed."
+}

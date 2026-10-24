@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "component": "Brakk normal cast signatures H1/H2",
+  "state": "INTEGRADO_MAIN",
+  "scope": [
+    "A-FX-brakk-h1/normal-cast-signature",
+    "A-FX-brakk-h2/normal-cast-signature"
+  ],
+  "wholeBlocksComplete": false,
+  "productionHead": "5c6c583900aad4865643dbc0e1a7d79c5d8bd904",
+  "productionTree": "03aa84413bd7ed141cc808c22ae9cdad4fdb3d40",
+  "mergeCommit": "e3495de28b760425f26be9041b8b4fcbafcc9094",
+  "mergedAt": "2026-10-24T08:19:17Z",
+  "pr": "https://github.com/Fondal-Studios/La-Horda/pull/216",
+  "branch": "art/brakk-normal-signatures-close-20261024",
+  "approvedHeadExact": true,
+  "mainVerified": true,
+  "productionFilesVerified": 129,
+  "productionManifestScope": "manifest.json hashes describe immutable production commit5c6c; this later evidence-only closure updates CHECKPOINT and adds closure documents, no runtime/atlas change.",
+  "runtime": {
+    "path": "js/skills/champion-signatures.js",
+    "added": 41,
+    "removed": 0,
+    "sha256": "4e2f310e0f5169504f7bb4442da26eb4fbd6fd434588cc8559322e3ca136e604"
+  },
+  "artGate": "PASS_COMPONENT H1/H2 only",
+  "ci": {
+    "checks": 19,
+    "workflows": 8,
+    "result": "SUCCESS"
+  },
+  "newLocalTests": {
+    "renderer": 107,
+    "relay": 14,
+    "parity": {
+      "frames": 360,
+      "rng": [
+        29232,
+        29232
+      ],
+      "state": "summarized, not full snapshot"
+    }
+  },
+  "historicalWithinRunTests": "81 functional checks occurred before palette/negative-space edits; not claimed as rerun after final extraction.",
+  "matrix": {
+    "normalScenes": 240,
+    "contactScenes": 240,
+    "ABAExactPerMatrix": 480,
+    "arenas": 6,
+    "appearances": 5,
+    "densities": 2,
+    "viewports": 2,
+    "minRetentionMobile": 0.8293333333333334,
+    "minRetentionDesktop": 0.8245192307692307,
+    "threshold": 0.8,
+    "delta": 24
+  },
+  "visualEvidence": "12 native arena/viewport sheets plus temporal sheet and atlas reviewed; selected raster stored, full traces and raster hashes compressed; not all generated raster uploaded.",
+  "excluded": [
+    "H3 X failed visual review; original fallback preserved in runtime, candidate in attempt04",
+    "PR197 SFA and crew composition FIX",
+    "Bront PR201 rejected source"
+  ],
+  "queueEntries": 49,
+  "publicationVerified": false,
+  "publication": {
+    "schema": 1,
+    "checkedAt": "2026-10-24T08:19:30.069493+00:00",
+    "baseUrl": "https://fondalstudios.com/la-horda/jugar/",
+    "scope": "Selected file bytes only; not gameplay, accounts, ownership, live multiplayer or full release certification",
+    "status": "NOT_CONFIRMED",
+    "checks": [
+      {
+        "path": "js/skills/champion-signatures.js",
+        "expectedSha256": "4e2f310e0f5169504f7bb4442da26eb4fbd6fd434588cc8559322e3ca136e604",
+        "httpStatus": 200,
+        "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/skills/champion-signatures.js",
+        "bytes": 6610,
+        "publicSha256": "2bbe76162cac478de248ebbbfa7ff98e8cda17b672ef1bd9d83f2be46098a3ad",
+        "status": "DIFFERENT"
+      }
+    ],
+    "indexLoadsConsumer": true,
+    "stage": "POST_MERGE",
+    "head": "5c6c583900aad4865643dbc0e1a7d79c5d8bd904",
+    "merge": "e3495de28b760425f26be9041b8b4fcbafcc9094",
+    "blocker": "Canonical hosting deployment connection unavailable in documented setup; no infrastructure changed."
+  },
+  "next": "PRODUCCIÓN Khepri B154/B155/B156 after fresh main/PR/object/consumer audit (NEXT_KHEPRI_AUDIT.json), then another CIERRE. Do not redo PR216/212 or import PR197 whole FIX; preserve approved H1/H2 if reconciling workshop.",
+  "limitations": [
+    "No physical mobile/thermal/GC certification",
+    "No full kit approval",
+    "No global RNG isolation proof"
+  ],
+  "sourcesPreserved": true
+}

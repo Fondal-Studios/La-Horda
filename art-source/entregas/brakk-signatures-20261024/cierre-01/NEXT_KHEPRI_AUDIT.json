@@ -1,0 +1,144 @@
+{
+  "status": "READ_ONLY_PRELIMINARY_AUDIT",
+  "base": "51c9d4584d45e8c19c4d237a64e8033a6b845bb1",
+  "champion": "khepri",
+  "blocks": [
+    "B154",
+    "B155",
+    "B156"
+  ],
+  "createdAt": "2026-10-24T07:58:40.952567+00:00",
+  "existing": [
+    "body atlas and two skin atlases loaded by ascension/art.js",
+    "basic projectile scarab",
+    "ascSwarmDraw existing swarm consumer follows actual as_swarm object, then eclipse or hero",
+    "SFA scarab beam/nova/aura/dash bindings",
+    "UF eclipse code-native own silhouette, binding follows actual as_eclipse; four source icons and painter recipes/accessories already exist"
+  ],
+  "observedCode": [
+    "H1 as_swarm go/hold/back, moving target, back when life<700ms; existing consumer visible swarm pool capped60",
+    "H2 carapace consumes up to15 swarm and gives actual exShield for skill life; ascCue carapace emitted",
+    "H3 elytra uses synchronous exDash, ascLine damage; SFA sfaDash exists, need inspect actual pre/post positions and rendering",
+    "ascSwarmDraw mutates WeakMap pool and uses Math.random during pool growth; freeze pose alone cannot guarantee identical replay"
+  ],
+  "next": [
+    "Refresh main/open PRs; verify no active Khepri production",
+    "Audit existing assets and UF consumer before declaring missing",
+    "Capture actual H1 go/hold/back, H2 shield onset/end and unrelated shield, H3 pre/post dash in same scene",
+    "Preserve gameplay/RNG and swarm pool lifecycle; compare full relevant state and restore observation fixture correctly",
+    "Produce only confirmed missing visual components, then alternate another closure"
+  ],
+  "productionCreated": false,
+  "visualApproval": false,
+  "newTests": [],
+  "references": [
+    {
+      "path": "js/champions/ascension/catalog.js",
+      "sha256": "4eb79495b4bcf1da8e9464fac5fd06595c87585674f98d1acbb92fd04661b4c2"
+    },
+    {
+      "path": "js/champions/ascension/runtime.js",
+      "sha256": "a7e103014f783eda23dbdde21e1c8953ed8de517a0b5975050538308b0956aeb"
+    },
+    {
+      "path": "js/champions/ascension/render.js",
+      "sha256": "5b532d20ecada999c55ca55d6c53d1a47fe1d0a17257c9ff73a3ab8b73762aa9"
+    },
+    {
+      "path": "js/champions/ascension/art.js",
+      "sha256": "4c6c2cce51fc0ea2394beae56d882bbc639a2384c17a3ad9fa7f1eeb51853f2d"
+    },
+    {
+      "path": "js/champions/ascension/register.js",
+      "sha256": "b18abaa2fd928e594974934e59d607244a9b96c94a214c3e733a8d4c0f466e18"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/khepri.js",
+      "sha256": "dde8f762501444c0e3f5fbca8e2c4af1bba4c097d73238789956bb8709dcf21c"
+    },
+    {
+      "path": "assets/sprites/champions/khepri/atlas.png",
+      "sha256": "1b3f062c858af3197a3071ed13807ea522dfb51a9f41a4f42c779cdd9f7c8782"
+    },
+    {
+      "path": "assets/sprites/champions/khepri/preview.png",
+      "sha256": "56a60b51febf8fee13c28922e8b123b06885c459286065548a9107daf8bc38a2"
+    },
+    {
+      "path": "assets/sprites/champions/khepri/skins/khepri_alt1/atlas.png",
+      "sha256": "28bfef958f142b9fae9b086ca79631a034ffd07d0284286c1de4e5bb35dc9ce8"
+    },
+    {
+      "path": "assets/sprites/champions/khepri/skins/khepri_alt1/preview.png",
+      "sha256": "38243ad631ef15f30f04f963cc805c763c11dc47bcf27e7529429fa407576a49"
+    },
+    {
+      "path": "assets/sprites/champions/khepri/skins/khepri_alt2/atlas.png",
+      "sha256": "74d15bec6e0cad4fba6788044e87745d124b9beb54a7baaf06a01c199b52f5b4"
+    },
+    {
+      "path": "assets/sprites/champions/khepri/skins/khepri_alt2/preview.png",
+      "sha256": "09ad6d85101887233553dbafa69f52a07cc65fc683420d4cf9ac6f01dd51841d"
+    },
+    {
+      "path": "tools/art/painter/specs/khepri_alt1.json",
+      "sha256": "d02045c5b42dc72e582456e9f38942417bb81ef18191e17eb4396b122c006516"
+    },
+    {
+      "path": "tools/art/painter/specs/khepri_alt2.json",
+      "sha256": "2e66b7bef8637a86b9410b710d1b0a74bf4e94c98c5c795e9d7029dd54fffbcc"
+    },
+    {
+      "path": "tools/art/painter/specs/khepri.json",
+      "sha256": "1908eb9458e006b53affe7b42b307e82b8b75f2820b3b59258a00204db2f6418"
+    },
+    {
+      "path": "tools/art/painter/accessories/khepri_disc.py",
+      "sha256": "f15e0a18302a7c016a60ae818557fa2914e87f46bde55e0f2109bdf9c78278e0"
+    },
+    {
+      "path": "tools/art/painter/accessories/khepri_elytra.py",
+      "sha256": "21b791639da604820fe78136737dab41962f6a79b2717daeb0b8eae9a6670b39"
+    },
+    {
+      "path": "tools/art/painter/accessories/khepri_lib.py",
+      "sha256": "d0941dc2ec592de68b2df27bd00cd421549bc89fd5082005da36a13ffaafb06e"
+    },
+    {
+      "path": "tools/art/painter/accessories/khepri_moths.py",
+      "sha256": "db4c46b05c64c15031cf9d469e2ae35f8af924fe084fc35500fdddc38686770d"
+    },
+    {
+      "path": "tools/art/painter/accessories/khepri_base.py",
+      "sha256": "e74500c4db88626b1c007d3bbbe344468c1c4810ada0fa8724f1fcbc6756b6db"
+    },
+    {
+      "path": "art-source/entregas/2026-10_mundo/iconos/habilidades/khepri_u.png",
+      "sha256": "c9931bea17a631c77f08247a747da4076f123bbfcb0585a1ec29bdad9e9e0add"
+    },
+    {
+      "path": "art-source/entregas/2026-10_mundo/iconos/habilidades/khepri_0.png",
+      "sha256": "1f2a8e3513c974c676b86d4453edb1cfaa53eb8382abfd89dadc0bab74097d1b"
+    },
+    {
+      "path": "art-source/entregas/2026-10_mundo/iconos/habilidades/khepri_2.png",
+      "sha256": "0b30beb9f128ca8c4d6e754c532842c0151cf59a52118b94295da005c0688f2d"
+    },
+    {
+      "path": "art-source/entregas/2026-10_mundo/iconos/habilidades/khepri_1.png",
+      "sha256": "d07d8fb95dd7e7bf12d01d23a3cfc38424fe21ad1c154f278961da7ee4c66c80"
+    },
+    {
+      "path": "js/champions/ult-forms/bind-2a.js",
+      "sha256": "26c8b92621475179daa45239c626b0bb350a9d2c7443de65f7e9b63bd3f73727"
+    },
+    {
+      "path": "js/champions/ult-forms/forms-2a-2.js",
+      "sha256": "36b043d84f3a56f21ca6169c3f3d0d43383e0497db52e1caaee8e35e9285aa98"
+    }
+  ],
+  "lookupAttempts": [
+    "Two guessed paths skills.js and c/khepri.js absent; used rg --files and actual runtime.js/catalog.js instead; no code mutation",
+    "Guessed ult-fx directory absent; broad rg resolved actual ult-forms/bind-2a.js and forms-2a-2.js"
+  ]
+}
