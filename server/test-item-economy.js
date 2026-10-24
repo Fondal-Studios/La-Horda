@@ -68,9 +68,9 @@ let seq=0;const action=(token,op,args,status=200,requestId='test_'+(++seq),gm=fa
  for(const id of E.catalog().sets[0].pieces){E.admin(s,actor,'grant',{userId:1,blueprint:id},now);E.command(s,actor,'craft',{recipe:id,attributes:['hp_mult','speed_mult']},now,()=>0.5);}
  assert.deepEqual(s.accounts['1'].cosmetics,['lucifer']);
  const it=Object.values(s.items)[0];it.level=4;const result=E.command(s,actor,'upgrade',{item:it.uid},now,()=>0.999);assert.equal(result.success,false);assert.equal(it.level,4);
- assert.ok(it.affixes.every(x=>x.value<=0.03));assert.ok(it.creator==='smith');
+ assert.ok(it.affixes.every(x=>x.v<=0.03));assert.ok(it.creator==='smith');
  s.accounts['1'].rank=3;s.accounts['1'].xp=12000;s.accounts['1'].challenges=['forge_4'];E.command(s,actor,'rank',{},now);assert.equal(s.accounts['1'].rank,4);
  E.invariant(s);
- delete process.env.HORDA_ITEM_ECONOMY;await api('GET','/api/economy',undefined,one.token,503);
+ process.env.HORDA_ITEM_ECONOMY='0';await api('GET','/api/economy',undefined,one.token,503);
  await stop();fs.rmSync(dir,{recursive:true,force:true});console.log(`PASS item economy: ${count} HTTP assertions + domain invariants`);
 })().catch(async e=>{console.error(e);if(server?.listening)await stop();process.exitCode=1;});

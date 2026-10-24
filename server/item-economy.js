@@ -1,6 +1,5 @@
 'use strict';
-/* Authoritative economic ledger. Deliberately opt-in until campaign reward attestation
- * and legacy-save migration are implemented. Never imports a client inventory or gold. */
+/* Authoritative economic ledger; legacy migration is performed once from the stored save. */
 const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -16,7 +15,7 @@ const RELICS = [
   ['corona_abismo','Corona del Abismo','abismo','casco','skill_nova','Una corona que recuerda a quienes miraron hacia abajo.'],
   ['ascua_cerbero','Ascua de Cerbero','minas','guantes','kill_explode','Tres guardianes custodiaron una única chispa.'],
   ['ultimo_juramento','Último Juramento','infernal','arma','kill_heal','El juramento sobrevivió incluso a quien lo pronunció.']
-].map(([id,name,arena,type,legendProc,lore])=>({id,name,arena,type,legendProc,lore,method:'Recompensa de jefe validada por el servidor; emisión única.',image:null}));
+].map(([id,name,arena,type,legendProc,lore])=>({id,name,arena,type,legendProc,lore,method:'Recompensa de jefe validada por el servidor; emisión única.',image:'assets/ui/skill-icons/nova-de-escarcha.png'}));
 const copy = x => JSON.parse(JSON.stringify(x));
 function fail(code,status=400){const e=new Error(code);e.status=status;throw e;}
 function integer(v,min=0,max=1000000000){if(!Number.isSafeInteger(v)||v<min||v>max)fail('INVALID_INTEGER');return v;}
@@ -26,7 +25,7 @@ let catalogCache;
 function catalog(){
   if(catalogCache)return catalogCache;
   const ctx=vm.createContext({});
-  for(const name of ['items','sets'])vm.runInContext(fs.readFileSync(path.join(__dirname,`../js/data/${name}.js`),'utf8'),ctx,{timeout:1000});
+  for(const name of ['items','sets','mythic-sets-v2'])vm.runInContext(fs.readFileSync(path.join(__dirname,`../js/data/${name}.js`),'utf8'),ctx,{timeout:1000});
   const source=vm.runInContext('({sets:SET_DB,items:DESIGNED_ITEMS,values:RARITY_VALUES})',ctx);
   const recipes={};
   for(const type of SLOTS)recipes[`basic_${type}`]={id:`basic_${type}`,name:`${type} de aprendiz`,type,rarity:'comun',rank:0,gold:300,material:4,xp:10,blueprint:false,value:source.values[type].comun};
@@ -37,7 +36,7 @@ function catalog(){
   catalogCache={recipes,sets:SETS.map(id=>({id,name:source.sets[id].name,lore:source.sets[id].lore,pieces:SLOTS.map(type=>`${id}_${type}`)}))};
   return catalogCache;
 }
-function initial(){return {schema:1,version:0,accounts:{},items:{},listings:{},relics:Object.fromEntries(RELICS.map(r=>[r.id,{...r,image:null,uid:`relic_${r.id}`,owner:null,status:'undiscovered',history:[],originalWinner:null}])),seasons:{},receipts:{},audit:[],config:{inactiveDays:14,warnDays:10,feeBps:500,forgeCostScale:1,vendorsEnabled:false},vendorDay:{}};}
+function initial(){return {schema:1,version:0,accounts:{},items:{},listings:{},relics:Object.fromEntries(RELICS.map(r=>[r.id,{...r,image:'assets/ui/skill-icons/nova-de-escarcha.png',uid:`relic_${r.id}`,owner:null,status:'undiscovered',history:[],originalWinner:null}])),seasons:{},receipts:{},audit:[],config:{inactiveDays:14,warnDays:10,feeBps:500,forgeCostScale:1,vendorsEnabled:false},vendorDay:{}};}
 function account(s,id,now){
   const k=String(integer(Number(id),1));
   if(!own(s.accounts,k))s.accounts[k]={gold:0,materials:0,rank:0,xp:0,challenges:[],blueprints:[],cosmetics:[],lastSeen:now};
@@ -51,13 +50,15 @@ function collection(s,owner){const a=s.accounts[owner];for(const set of catalog(
 function transfer(s,it,to,reason,now){
   it.owner=to; delete it.listing; it.equipped=false; it.favorite=false;
   if(it.relicId){const r=s.relics[it.relicId];r.owner=to;r.acquiredAt=now;r.status=to===null?'vault':'owned';r.history.push({owner:to,reason,at:now});}
-  if(to!==null)collection(s,to);
+  if(to!==null){collection(s,to);require('./item-economy-live').unlock(s,to);}
 }
 function sweep(s,now){
   for(const r of Object.values(s.relics)){
     if(r.owner===null)continue;
     const a=s.accounts[r.owner];if(!a)fail('CORRUPT_OWNER',500);
-    if(now-Math.max(a.lastSeen,r.acquiredAt||0)<s.config.inactiveDays*DAY)continue;
+    const away=now-Math.max(a.lastSeen,r.acquiredAt||0);
+    if(away>=s.config.warnDays*DAY){a.notices=a.notices||[];const key=r.id+':'+a.lastSeen;if(!a.notices.some(n=>n.key===key))a.notices.push({key,at:now,text:`Ausencia de ${s.config.warnDays} días: ${r.name} se recupera a los ${s.config.inactiveDays} días. Iniciar sesión renueva el plazo.`});}
+    if(away<s.config.inactiveDays*DAY)continue;
     const it=s.items[r.uid];if(!it)fail('CORRUPT_RELIC',500);
     if(it.listing){const listing=s.listings[it.listing];if(listing?.state==='open')listing.state='reclaimed';}
     transfer(s,it,null,'inactivity',now);audit(s,'server','relic.reclaimed',{relic:r.id},now);
@@ -76,6 +77,8 @@ function invariant(s){
 }
 function command(s,actor,op,b,now,rng=()=>crypto.randomInt(1000000)/1000000){
   const owner=String(actor.id),a=account(s,owner,now);
+  const live=require('./item-economy-live');const handled=live.command(s,actor,op,b,now);if(handled!==undefined)return handled;
+  if(['craft','upgrade','refine','rank','list'].includes(op)&&live.active(s,owner,now))fail('RUN_ACTIVE',409);
   if(op==='presence'){a.lastSeen=now;return {ok:true};}
   if(op==='favorite'){const it=itemOf(s,b.item,owner);if(it.listing)fail('IN_ESCROW');it.favorite=b.value===true;return {item:it};}
   if(op==='craft'){
@@ -83,13 +86,13 @@ function command(s,actor,op,b,now,rng=()=>crypto.randomInt(1000000)/1000000){
     if(a.rank<r.rank||r.blueprint&&!a.blueprints.includes(r.id))fail('RECIPE_LOCKED',403);
     spend(a,Math.ceil(r.gold*s.config.forgeCostScale),r.material);
     const uid=crypto.randomUUID();const value=r.value*(0.95+0.05*rng());
-    const it={uid,designId:r.id,name:r.name,type:r.type,rarity:r.rarity,set:r.set||null,value,level:1,owner,creator:actor.user,crafted:true,favorite:false,affixes:[]};
+    const it={uid,designId:r.id,name:r.name,type:r.type,rarity:r.rarity,set:r.set||null,value,level:1,passives:[],roll:1,mythicPassive:null,owner,creator:actor.user,crafted:true,favorite:false,affixes:[]};
     // Master selects at most two attributes; the third remains random. Caps are server constants.
     const effects=['dmg_mult','hp_mult','speed_mult','heal_mult','cd_mult'];
     const choices=b.attributes===undefined?[]:b.attributes;
     if(!Array.isArray(choices)||choices.length>2||new Set(choices).size!==choices.length||choices.some(x=>!effects.includes(x))||choices.length&&a.rank!==4)fail('INVALID_ATTRIBUTES');
-    it.affixes=[...choices,effects[Math.floor(rng()*effects.length)]].map(effect=>({effect,value:0.01+0.02*rng()}));
-    s.items[uid]=it;a.xp=integer(a.xp+r.xp);collection(s,owner);return {item:it};
+    it.affixes=[...choices,effects[Math.floor(rng()*effects.length)]].map(effect=>({id:({dmg_mult:'afx_dmg',hp_mult:'afx_hp',speed_mult:'afx_speed',heal_mult:'afx_heal',cd_mult:'afx_cdr'})[effect],v:0.01+0.02*rng()}));
+    s.items[uid]=it;a.xp=integer(a.xp+r.xp);collection(s,owner);live.unlock(s,owner);return {item:it};
   }
   if(op==='upgrade'){
     const it=itemOf(s,b.item,owner);if(it.listing||it.favorite||it.relicId)fail('PROTECTED_ITEM');
@@ -102,7 +105,7 @@ function command(s,actor,op,b,now,rng=()=>crypto.randomInt(1000000)/1000000){
   if(op==='refine'){
     const it=itemOf(s,b.item,owner);if(it.listing||it.favorite||it.relicId)fail('PROTECTED_ITEM');
     if(a.rank<2)fail('RANK_LOCKED');integer(b.index,0,it.affixes.length-1);
-    spend(a,Math.ceil(2500*s.config.forgeCostScale),20);it.affixes[b.index].value=0.01+0.02*rng();return {item:it};
+    spend(a,Math.ceil(2500*s.config.forgeCostScale),20);it.affixes[b.index].v=0.01+0.02*rng();return {item:it};
   }
   if(op==='rank'){
     if(a.rank>=4)fail('MAX_RANK');const next=a.rank+1;
@@ -110,7 +113,7 @@ function command(s,actor,op,b,now,rng=()=>crypto.randomInt(1000000)/1000000){
     spend(a,[0,2000,10000,40000,100000][next],next*25);a.rank=next;return {rank:a.rank};
   }
   if(op==='list'){
-    const it=itemOf(s,b.item,owner);if(it.favorite||it.equipped||it.listing)fail('PROTECTED_ITEM');integer(b.price,1,100000000);
+    const it=itemOf(s,b.item,owner);if(it.favorite||require('./item-economy-live').isEquipped(a,it.uid)||it.listing)fail('PROTECTED_ITEM');if(it.legacy)fail('LEGACY_NOT_TRADABLE',403);integer(b.price,1,100000000);
     if(Object.values(s.listings).filter(l=>l.seller===owner&&l.state==='open').length>=20)fail('LISTING_LIMIT');
     const id=crypto.randomUUID();s.listings[id]={id,item:it.uid,seller:owner,price:b.price,feeBps:s.config.feeBps,state:'open',at:now};it.listing=id;return {listing:s.listings[id]};
   }
@@ -129,9 +132,9 @@ function command(s,actor,op,b,now,rng=()=>crypto.randomInt(1000000)/1000000){
 function admin(s,actor,op,b,now){
   if(op==='config'){
     if(!b.config||typeof b.config!=='object'||Array.isArray(b.config))fail('BAD_CONFIG');
-    for(const k of Object.keys(b.config))if(!['inactiveDays','warnDays','feeBps','forgeCostScale'].includes(k))fail('BAD_CONFIG');
+    for(const k of Object.keys(b.config))if(!['inactiveDays','warnDays','feeBps','forgeCostScale','dropTables','rewardGold'].includes(k))fail('BAD_CONFIG');
     const c={...s.config,...b.config};integer(c.inactiveDays,2,365);integer(c.warnDays,1,c.inactiveDays-1);integer(c.feeBps,0,3000);
-    if(!Number.isFinite(c.forgeCostScale)||c.forgeCostScale<0.1||c.forgeCostScale>100)fail('BAD_CONFIG');s.config=c;return {config:c};
+    if(!Number.isFinite(c.forgeCostScale)||c.forgeCostScale<0.1||c.forgeCostScale>100)fail('BAD_CONFIG');require('./item-economy-live').validateConfig(c);s.config=c;return {config:c};
   }
   if(op==='grant'){
     const target=String(integer(b.userId,1)),a=account(s,target,now);
@@ -146,7 +149,7 @@ function admin(s,actor,op,b,now){
     if(!['undiscovered','vault'].includes(r.status))fail('RELIC_ALREADY_OWNED',409);
     if(Object.values(s.seasons).some(season=>season.relic===r.id&&!season.closed))fail('SEASON_RESERVED',409);
     const target=String(integer(b.userId,1));account(s,target,now);
-    if(!s.items[r.uid])s.items[r.uid]={uid:r.uid,relicId:r.id,name:r.name,type:r.type,rarity:'unico',legendProc:r.legendProc,level:1,owner:null,affixes:[],value:0.5};
+    if(!s.items[r.uid])s.items[r.uid]={uid:r.uid,relicId:r.id,name:r.name,type:r.type,rarity:'unico',legendProc:r.legendProc,level:1,owner:null,affixes:[],value:require('./item-economy-live').generated(r.type,'mitico',null).value};
     transfer(s,s.items[r.uid],target,'gm.release',now);return {relic:r};
   }
   if(op==='season'){
@@ -165,41 +168,51 @@ function view(s,owner,now){
     listings:Object.values(s.listings).filter(l=>l.state==='open').map(l=>({...l,item:s.items[l.item]})),
     relics:Object.values(s.relics),seasons:Object.values(s.seasons),config:s.config,
     warning:a&&now-a.lastSeen>=s.config.warnDays*DAY?'Tus reliquias pasarán a la Bóveda al cumplir el plazo de inactividad.':null,
-    readiness:{campaignRewards:false,combatEquipment:false,monthlyAwards:false,legacyMigration:false,vendors:false}};
+    readiness:{campaignRewards:true,combatEquipment:true,monthlyAwards:true,legacyMigration:true,vendors:false},projection:require('./item-economy-live').project(s,owner,{champions:Object.fromEntries(Object.keys(a?.equipment||{}).map(k=>[k,{}]))}),champions:s.champions||[]};
 }
 function routes(ctx){
   const {getStore,auth,send,err,readBody,now,isOwner}=ctx,result={};
   function route(method,url,ownerOnly,fn){result[method+' '+url]=async(req,res)=>{
     try{
-      if(process.env.HORDA_ITEM_ECONOMY!=='1')fail('ECONOMY_NOT_ENABLED',503);
+      if(process.env.HORDA_ITEM_ECONOMY==='0')fail('ECONOMY_NOT_ENABLED',503);
       const a=await auth(req);if(!a.user)fail('NO_SESSION',401);if(ownerOnly&&!isOwner(a.user))fail('FORBIDDEN',403);
       const store=getStore();if(!store?.persistent)fail('PERSISTENT_STORAGE_REQUIRED',503);
       const body=method==='GET'?{}:await readBody(req,16384);
       const value=await store.gmUpdate(async raw=>{
         const root=raw||require('./game-master').stateOf(null);const s=root.itemEconomy||initial();root.itemEconomy=s;
-        const stamp=now();sweep(s,stamp);
-        const value=await fn(s,a.user,body,stamp);invariant(s);return {state:root,value};
+        const stamp=now();const live=require('./item-economy-live');live.seasons(s,stamp);sweep(s,stamp);await live.migrate(s,a.user,store,stamp);
+        const value=await fn(s,a.user,body,stamp);invariant(s);return {state:root,value:{...value,snapshot:view(s,String(a.user.id),stamp)}};
       });send(req,res,200,value);
     }catch(e){if(e.status)return err(req,res,e.status,e.message,e.message);throw e;}
   };}
   route('GET','/api/economy',false,(s,u,b,t)=>view(s,String(u.id),t));
   for(const [url,isAdmin] of [['/api/economy/action',false],['/api/gm/economy/action',true]])route('POST',url,isAdmin,(s,u,b,t)=>{
-    key(b.requestId);key(b.op);const ref=`${u.id}:${b.requestId}`,fingerprint=JSON.stringify({admin:isAdmin,op:b.op,args:b.args||{}});
+    key(b.requestId);if(typeof b.op!=='string'||! /^[a-z]+(?:\.[a-z]+)?$/.test(b.op))fail('INVALID_OPERATION');const ref=`${u.id}:${b.requestId}`,fingerprint=JSON.stringify({admin:isAdmin,op:b.op,args:b.args||{}});
     if(own(s.receipts,ref)){const old=s.receipts[ref];if(old.fingerprint!==fingerprint)fail('IDEMPOTENCY_CONFLICT',409);return old.value;}
     if(Object.keys(s.receipts).length>=100000)fail('LEDGER_CAPACITY',503);
     const value=(isAdmin?admin:command)(s,u,b.op,b.args||{},t);
     audit(s,u.id,(isAdmin?'gm.':'')+b.op,{requestId:b.requestId},t);s.receipts[ref]={fingerprint,value:copy(value)};return value;
   });
   route('GET','/api/gm/economy',true,s=>({audit:s.audit,config:s.config,accounts:s.accounts,items:s.items,listings:s.listings,relics:s.relics,seasons:s.seasons}));
+  if(process.env.HORDA_ITEM_ECONOMY!=='0'){
+  result['GET /api/leaderboard']=async(req,res)=>{
+    try{
+    const store=getStore();if(!store?.persistent)return err(req,res,503,'PERSISTENT_STORAGE_REQUIRED','El ranking requiere almacenamiento persistente.');
+    const a=req.headers.authorization?await auth(req):{};
+    const value=await store.gmUpdate(async raw=>{const root=raw||require('./game-master').stateOf(null),s=root.itemEconomy||(root.itemEconomy=initial()),live=require('./item-economy-live');live.seasons(s,now());sweep(s,now());const qs=new URL(req.url,'http://x').searchParams,k=qs.get('week')||live.month(now());if(!/^\d{4}-(0[1-9]|1[0-2])$/.test(k))fail('BAD_MONTH');return {state:root,value:live.ranking(s,k,String(a.user?.id||''),qs.get('guardian'))};});send(req,res,200,value);
+    }catch(e){if(e.status)return err(req,res,e.status,e.message,e.message);throw e;}
+  };
+  result['POST /api/leaderboard/submit']=async(req,res)=>{req.resume();err(req,res,409,'RUN_RECEIPT_REQUIRED','El puntaje se registra al cerrar una partida verificada por el servidor.');};
+  }
   return result;
 }
+async function tick(store,now){if(process.env.HORDA_ITEM_ECONOMY==='0'||!store?.persistent)return;await store.gmUpdate(raw=>{const root=raw||require('./game-master').stateOf(null),s=root.itemEconomy||(root.itemEconomy=initial());require('./item-economy-live').seasons(s,now);sweep(s,now);invariant(s);return {state:root,value:null};});}
 async function recordLogin(store,user,now){
-  if(process.env.HORDA_ITEM_ECONOMY!=='1'||!store?.persistent)return;
+  if(process.env.HORDA_ITEM_ECONOMY==='0'||!store?.persistent)return;
   await store.gmUpdate(async raw=>{
     const root=raw||require('./game-master').stateOf(null);
-    if(!root.itemEconomy)return {state:root,value:null};
-    const s=root.itemEconomy;sweep(s,now);account(s,user.id,now).lastSeen=now;
+    const s=root.itemEconomy||(root.itemEconomy=initial());require('./item-economy-live').seasons(s,now);sweep(s,now);await require('./item-economy-live').migrate(s,user,store,now);account(s,user.id,now).lastSeen=now;
     invariant(s);return {state:root,value:null};
   });
 }
-module.exports={routes,initial,command,admin,sweep,invariant,catalog,view,recordLogin,RARITIES,SLOTS,RANKS,SETS,RELICS};
+module.exports={tick,routes,initial,command,admin,sweep,invariant,catalog,view,recordLogin,audit,transfer,RARITIES,SLOTS,RANKS,SETS,RELICS};
