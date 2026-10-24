@@ -36,11 +36,6 @@ const ref = () => crypto.randomUUID();
   check('precio de pieza en pricing.js: ✦200; 4 piezas = skin de set (ningún camino abarata la skin)', PRICE === 200 && P.pricingBrasas('set') <= PRICE * 4, { PRICE });
   check('manifiesto: 4+ piezas por set con skin y la rotación cubre las piezas de set', !!setId && ids.every(id => db.pool.some(e => e.key === 'd:' + id && e.cat === 'set')), setId);
   check('anónimo: 401', (await api('POST', '/api/wallet/buy-piece', expected(ids[0]))).status === 401);
-  const production = (await api('GET', '/api/wallet', undefined, UT)).j;
-  const blocked = await buy(ids[0]);
-  check('política actual: equipo por Brasas desactivado en servidor', production.pieces.enabled === false && blocked.status === 403 && blocked.j.error === 'PIECES_OFF');
-  // Retain the historical delivery/refund regression coverage without enabling sales in production.
-  wallet.setTestFlags({ PIECES_FOR_BRASAS: true });
   const w0 = (await api('GET', '/api/wallet', undefined, UT)).j;
   check('GET /api/wallet informa el interruptor y el precio de pieza', w0.pieces && w0.pieces.enabled === true && w0.pieces.price === 200 && w0.prices.brasas.pieza === 200, w0.pieces);
   check('sin saldo: 402 y nada se entrega', (await buy(ids[0])).status === 402 && (await api('GET', '/api/save', undefined, UT)).j.data.stash.length === 0);
@@ -100,7 +95,7 @@ const ref = () => crypto.randomUUID();
 
   // modo live: solo lo que sale hoy
   const today = Math.floor(Date.now() / 86400000), onSale = wallet.rotationKeys(today).filter(k => db.pieces[k.slice(2)]).map(k => k.slice(2));
-  wallet.setTestFlags({ SHOP_MODE: 'live', PIECES_FOR_BRASAS: true });
+  wallet.setTestFlags({ SHOP_MODE: 'live' });
   const notToday = Object.keys(db.pieces).find(id => !wallet.rotationKeys(today).includes('d:' + id) );
   await api('PUT', '/api/save', { data: baseSave(), baseVersion: (await api('GET', '/api/save', undefined, NT)).j.version || 0 }, NT);
   const wlive = (await api('GET', '/api/wallet', undefined, UT)).j;
@@ -120,7 +115,7 @@ const ref = () => crypto.randomUUID();
   check('PIECES_FOR_BRASAS=false: 403 PIECES_OFF y el GET lo informa', off.status === 403 && off.j.error === 'PIECES_OFF' && woff.pieces.enabled === false, { off: off.j, p: woff.pieces });
   check('apagado: las skins y cromas se siguen vendiendo', (await api('POST', '/api/wallet/buy', { sku: Object.values(cat).find(s => s.kind === 'set' && s.id !== setId).id, ref: ref(), expectedPrice: 800 }, UT)).status === 200);
   wallet.setTestFlags(null);
-  check('sin override de prueba: permanece bloqueada la compra de equipo', (await buy(ids[0], FT)).status === 403);
+  check('encendido de nuevo: vuelve a vender', (await buy(ids[0], FT)).status !== 403);
 
   fs.mkdirSync(path.join(__dirname, '../docs/ux'), { recursive: true });
   const bad = results.filter(r => !r.ok);
