@@ -1,11 +1,9 @@
-# Sistema de ítems V2 — entrega parcial verificable
+# Economía e ítems V2 — estado real de integración
 
-Fecha de trabajo: 23 de octubre de 2026 (Argentina).
-Repositorio: Fondal-Studios/La-Horda. Base: `f62d181477adcb4607cc615411cc51bad769f681`.
+Repositorio: `Fondal-Studios/La-Horda`. PR #211, rama `feat/item-economy-v2`.
+Actualizado: 24 de octubre de 2026 (UTC).
 
-**No cumple todavía los criterios de aceptación integrales. No desplegar la economía V2 en producción.**
-La rama contiene mejoras integradas de inventario, desactivación de equipo por Brasas y una API económica optativa.
-La API aún no abastece el inventario usado durante la partida. No se migraron saldos ni se emitieron reliquias en producción.
+**No apto todavía para fusionar o activar en producción.** Se implementó el circuito principal y se probó por HTTP y navegador, pero la compatibilidad con fuentes económicas antiguas aún no está completa. La solicitud de fusionar a main está autorizada; no requiere otra confirmación. La fusión queda pendiente por defectos de integración, no por falta de permiso.
 
 ## Auditoría inicial
 
@@ -29,120 +27,122 @@ Se inventarió el árbol completo del repositorio (6.967 archivos versionados en
 - Game Master ya dispone de autenticación, permisos y almacenamiento de operaciones. `gmUpdate` serializa escrituras en archivo y usa transacción con bloqueo de fila en PostgreSQL.
 - Las últimas cinco arenas canónicas son Acuática, Laberinto, Abismo, Minas e Infernal.
 
-## Cambios integrados en el cliente
+## Arquitectura implementada
 
-- Gestión de botín activada por defecto; preferencias en Mi Inventario.
-- Favoritos visibles; venta, descarte, fusión, recetas, reforja y transferencias antiguas respetan la protección.
-- Autofusión solo de tres copias exactamente idénticas: se comparan todos los campos salvo UID, fecha de obtención y marcas de favorito/reserva. Excluye equipo en uso, comprado, mejorado, reservado, diseñado y de conjunto.
-- Común → Raro; Raro → Muy raro. No genera legendarios, míticos ni únicos.
-- Reserva visible y equipable cuando la bolsa está llena, con tope defensivo de 150 objetos totales. No es almacenamiento ilimitado. Al alcanzar ese tope sigue siendo necesaria la gestión del jugador.
-- Reciclaje automático conservador de duplicados idénticos comunes/raros cuando está habilitado y la autofusión está deshabilitada. Conserva las gemas existentes como material; no añade una moneda.
-- Mensajes de reciclaje limitados en frecuencia; contador de fusiones en las preferencias.
-- Validación adicional contra fusionar el mismo UID tres veces.
-- Brasas ya no compran piezas de set por la configuración compartida cliente/servidor. Las skins siguen vendiéndose.
+El motor sigue siendo JavaScript/Canvas, con scripts globales. El relay Node.js mantiene la simulación del anfitrión. El registro económico vive en `operations.itemEconomy`; reutiliza la cola y escritura atómica del adaptador de archivos y la transacción con bloqueo de fila de PostgreSQL.
 
-## API económica implementada, desactivada por defecto
+- `server/item-economy.js`: propiedad, saldos, recetas, subastas, reliquias, idempotencia, auditoría y permisos owner.
+- `server/item-economy-live.js`: migración, proyección al formato de guardado existente, sesiones de combate, botín, reglas automáticas y temporadas.
+- `js/net/item-economy.js`: conecta entradas/salidas reales de campaña y Horda Infinita, eventos de botín del anfitrión/invitado y operaciones de inventario.
+- `js/ui/item-economy-ui.js`: Arsenal, Forja, Subastas, Colección, Reliquias y Temporada; extensión del panel Game Master.
+- `js/data/mythic-sets-v2.js`: cinco conjuntos universales de seis ranuras, usando los efectos existentes.
+- `js/assets/mythic-collection-meta.js`: manifestaciones cosméticas que reutilizan arte y VFX existentes.
 
-`server/item-economy.js`, integrada en las rutas de cuentas, requiere `HORDA_ITEM_ECONOMY=1` **y almacenamiento persistente**.
+No se añadió dependencia de ejecución. No se implementó metamorfosis. No se eliminaron sprites ni conjuntos anteriores.
 
-El estado vive en `operations.itemEconomy`. Se reutiliza `gmUpdate`; cada operación comprende saldo, propiedad, custodia de subasta, historial e idempotencia dentro de una misma escritura/transacción. No se importa oro ni inventario procedentes del cliente.
+## Migración y propiedad
 
-- `/api/economy`: cuenta, catálogo, objetos propios, anuncios abiertos, reliquias y estado real de preparación.
-- `/api/economy/action`: fabricación, mejora, refinado, ascenso, favorito, publicación, compra, cancelación y presencia.
-- `/api/gm/economy`: auditoría, cuentas, anuncios y reliquias; acceso exclusivo de owner.
-- `/api/gm/economy/action`: configuración, otorgamientos administrativos auditados, liberación de reliquias y reserva de premios para meses futuros.
-- Mutaciones con `requestId`; repetir la misma solicitud devuelve el resultado original. Reutilizarla con otro contenido devuelve conflicto.
-- Objetos publicados quedan en custodia; no se pueden mejorar ni vender dos veces. Comisión congelada al publicar.
-- Registro de cinco reliquias, un UID fijo por reliquia, propietario e historial, recuperación y reintroducción de la misma instancia.
-- El inicio de sesión y la renovación de sesión mediante `/api/me` cuentan como actividad; no hace falta jugar. La recuperación se evalúa al acceder a la API y en esos eventos, **no mediante un proceso programado autónomo**.
-- Aviso a los diez días disponible en la respuesta de la API; **no hay envío de email ni notificación fuera del juego**.
-- Rango y planos pertenecen a la cuenta. Mejoras básicas garantizadas; avanzadas fallan sin destruir ni bajar nivel. Refinado acotado y dos elecciones de atributos al llegar a Maestro, con un componente aleatorio adicional.
-- No hay endpoint que acepte resultados de combate, oro ganado, planos obtenidos o puntuaciones enviados libremente por el cliente.
+La migración se realiza una sola vez desde el guardado ya almacenado en el servidor. Conserva una copia íntegra en `migrations[account].backup`, con fecha y versión. Cada UID anterior se transforma en un identificador determinístico por cuenta; se remapean las seis ranuras, favoritos, oro y materiales. Se conserva además una copia del estado local antes de aplicar la primera proyección, cuando localStorage lo permite.
 
-El libro de operaciones es una solución de alfa para un volumen reducido, no una arquitectura de mercado masivo: fila JSON compartida, máximo 100.000 recibos, lectura completa de anuncios y auditoría creciente. El adaptador de archivos requiere un solo proceso escritor. Para escalar deben separarse tablas/índices, paginación y archivado sin perder idempotencia.
+Las piezas anteriores quedan marcadas `legacy`: se pueden usar, mejorar y vender al sistema, pero no publicar en subastas. Es una cuarentena necesaria porque su procedencia era editable en el navegador. Los únicos anteriores no se registran como las nuevas reliquias irrepetibles. Esta restricción comercial debe comunicarse antes de una migración pública.
 
-## Catálogo nuevo de la API
+Los PUT de guardado no pueden reemplazar el saldo o inventario autoritativo después de migrar. Un primer guardado de una cuenta nueva no puede inyectar oro o desbloqueos arbitrarios. El primer campeón se selecciona mediante una operación del servidor. Las compras anteriores de campeones del pack de bienvenida se reconcilian con el libro económico para conservar esos derechos.
 
-Cinco conjuntos seleccionados: Lucifer, Pacto del Glaciar, Corazón del Coloso, Tempestad Eterna y Profecía del Alba. Cada uno tiene seis recetas míticas universales en el catálogo del servidor. Se reutilizan los nombres, historias y valores base existentes.
+**Límite:** no se importa automáticamente un inventario que solo exista offline. La copia local evita perder su evidencia, pero no constituye una conciliación aprobada de ese inventario con la cuenta.
 
-**Pendiente:** trasladar esos diseños al catálogo activo de combate, completar sus iconos faltantes, adaptar bonus a seis piezas, balancear contra builds mixtas y conectar los desbloqueos cosméticos. No se han eliminado otros conjuntos ni sobrescrito sprites. No se produjeron ilustraciones nuevas.
+## Combates y botín
 
-Reliquias registradas:
+`run.start`, `run.pulse`, `run.loot`, `run.finish` y `run.abandon` identifican una sesión y su propietario. El servidor elige el objeto, acredita recursos y registra el resultado una sola vez. Comprueba tiempos, pulsos, progresión de rondas y un límite de puntuación; rechaza reutilizaciones inconsistentes. No acepta un importe de oro ni una rareza elegidos por el cliente.
 
-| Reliquia | Arena | Ranura | Efecto existente propuesto |
-|---|---|---|---|
-| Corazón de la Marea | Acuática | Escudo | Égida |
-| Hilo sin Fin | Laberinto | Botas | Furia Creciente |
-| Corona del Abismo | Abismo | Casco | Resonancia Arcana |
-| Ascua de Cerbero | Minas | Guantes | Estallido Ígneo |
-| Último Juramento | Infernal | Arma | Festín de Almas |
+Los eventos de botín se recogen automáticamente. El límite defensivo es un objeto por cada veinte segundos transcurridos, máximo 120 por sesión. Se usa el multiplicador de rareza alta de la fuente normal ya existente. El cofre final usa la tabla de arena. Estos límites son provisionales y requieren medir partidas reales antes de activar la economía pública.
 
-Son entradas del registro, no reliquias que ya caen en partidas. Ilustraciones ausentes (`image:null`), efectos exclusivos y balance de combate pendientes. No se reutilizan los antiguos objetos de rareza Único como si fueran exclusivos del servidor.
+No hay interrupción por capacidad del inventario de cuenta: los objetos se conservan en el registro. Los materiales están fuera de las ranuras. La gestión automática, activada por defecto, solo fusiona tres duplicados idénticos comunes/raros; excluye favoritos, equipo usado, piezas diseñadas, fabricadas, antiguas y reliquias. El desmantelamiento adicional de duplicados requiere activación explícita. Nunca automatiza la destrucción de rarezas altas.
 
-## Economía y balance
+Durante una sesión se bloquean cambios de equipo, venta, fabricación y publicación. Las actualizaciones de cuenta respetan `loadoutItems`, el equipo temporal de los invitados. Pausa y selección de mejoras no abandonan la sesión. Los modos con equipamiento normalizado o exploración no se migraron al circuito de premios.
 
-Se inspeccionaron tablas actuales y el informe previo de economía. Ese informe describe un orden antiguo de arenas y no reemplaza una nueva medición. **No se cambiaron probabilidades de drop ni se afirman probabilidades definitivas.**
+**Seguridad real:** el anfitrión todavía simula el combate. Los filtros de plausibilidad NO demuestran que una victoria o puntuación sea legítima. Falta una fuente autoritativa de resultados; por ello no se debe activar la entrega competitiva de reliquias en un servidor público con este estado.
 
-Los costes de la API son valores de ensayo: básico 300 oro/4 materiales; pieza mítica 25.000 oro/150 materiales; ascensos 2.000/10.000/40.000/100.000 oro; comisión 5 %. El coste de forja tiene multiplicador administrativo y la comisión/plazos son configurables. Requieren simulación de ingresos y duración actual antes de activación. Los nombres de rango son Aprendiz, Oficial, Artesano, Experto y Maestro Forjador.
+## Forja, subastas y economía
 
-No existe conexión todavía entre recompensas verificadas de partida y estos recursos. Los otorgamientos de pruebas son administrativos, auditados e idempotentes. No son una fuente jugable ni un sistema de drops terminado.
+Cinco rangos: Aprendiz, Oficial, Artesano, Experto y Maestro Forjador. Hay seis recetas básicas y treinta piezas míticas. Los planos raros se aprenden sin ocupar inventario; las victorias habilitan desafíos de herrería. Mejorar hasta nivel 4 es seguro; los intentos avanzados pueden fallar, conservando objeto y mejoras. Maestro permite elegir hasta dos atributos y mantiene un atributo aleatorio. Los afijos usan el formato real del motor y valores acotados.
 
-## Pruebas y evidencia
+Subastas de compra inmediata: publicar, comprar, cancelar, filtrar por rareza/ranura/afijo, inspeccionar atributos y creador. Depósito de objetos publicados, cobro y transferencia atómicos, comisión congelada al publicar. Reintentos devuelven el mismo resultado. Se probaron seis compras simultáneas: una venta y cinco conflictos.
 
-- `node tools/items/test-auto-inventory-unit.js`: 16 comprobaciones de lógica, más protección de tres tipos de objeto en intercambios antiguos. Usa los módulos reales y el normalizador de guardado.
-- `node server/test-item-economy.js`: 49 comprobaciones HTTP más invariantes de dominio. Incluye seis compras concurrentes con una sola venta, permisos, saldo, reintentos, rollback, aislamiento frente a guardados manipulados, desbloqueo de conjunto, fallo de mejora, recuperación/reentrega y reinicio de almacenamiento de archivo.
-- `node server/test-wallet-pieces.js`: 31/31 comprobaciones tras apagar la venta de equipo. Conserva cobertura histórica con override exclusivo de prueba; al retirarlo la venta sigue bloqueada.
-- `npm test --prefix server`: suite completa aprobada antes de los últimos cambios en la política premium y la protección de intercambios; esas áreas se vuelven a ejecutar individualmente después.
-- `tools/items/t_auto_inventory.js`: prueba de navegador preparada, **no validada**. Chromium headless sufrió SIGSEGV; el ejecutable completo falló al crear sockets con `Operation not permitted`. Hubo una desconexión temporal del entorno, recuperada posteriormente. No hay captura móvil aprobada ni verificación real de esta nueva interfaz.
-- PostgreSQL: se reutiliza el adaptador existente, pero no se levantó una base PostgreSQL para probar esta nueva API. Concurrencia de varios procesos no verificada.
-- Las pruebas de relay/intercambios existentes no equivalen a una partida cooperativa real ni a validar el equipamiento V2 en red.
+Parámetros iniciales de ensayo, no balance definitivo:
 
-## Estado de aceptación
-
-| Requisito | Estado real |
+| Regla | Valor de ensayo |
 |---|---|
-| Seis ranuras y seis rarezas base | Existentes; conservadas |
-| Botín automático/favoritos/fusión/reserva | Implementado; lógica probada; navegador pendiente |
-| Builds y combate V2 | No integrado |
-| Cinco conjuntos de seis piezas | Catálogo de API; combate/arte/balance pendientes |
-| Variantes premium y prestigio jugable | Pendientes |
-| Forja de cinco rangos | API probada; UI y obtención jugable de recursos/planos pendientes |
-| Subastas | API persistente probada en archivo; UI, filtros, migración y circuito jugable pendientes |
-| Vendedores automáticos | No implementados; desactivados |
-| Brasas sin compra directa de equipo | Desactivado y probado; revisar pack de campeones |
-| Reliquias exclusivas | Registro transaccional probado; drops/efectos/arte no integrados |
-| Códice de reliquias | Datos API; sección visual pendiente |
-| Inactividad | Recuperación por actividad de API probada; proceso programado y avisos proactivos pendientes |
-| Temporadas mensuales | Reserva de premio futuro; ranking actual sigue semanal; cierre y entrega no implementados |
-| Game Master | API owner; interfaz de gestión pendiente |
-| Persistencia y antidupe V2 | Probadas en archivo; juego sigue usando el guardado anterior |
-| Validación antitrampa de resultados | Pendiente; no hay simulación autoritativa en el relay |
-| QA móvil/multijugador de los cambios | Pendiente |
+| Oro de victoria | 1.200 + 40 por minuto, máximo 10.000 por sesión |
+| Materiales de victoria | 3 |
+| Receta básica | 300 oro / 4 materiales |
+| Pieza mítica | 25.000 oro / 150 materiales |
+| Ascensos | 2.000 / 10.000 / 40.000 / 100.000 oro |
+| Comisión | 5 % |
+| Plano especial | 5 % en victorias desde Acuática |
 
-## Bloqueos y siguiente integración necesaria
+Se conservaron los pesos existentes por arena; el peso de conjunto se incorpora a Mítico. El Game Master puede editar tablas, costes y plazos. No se añadió una moneda: Gemas se reutilizan como materiales y Brasas permanecen en su billetera premium. La compra de equipo por Brasas está desactivada y probada. Los vendedores automáticos no están implementados y permanecen desactivados.
 
-Los pendientes principales son trabajo de implementación, no permisos faltantes:
+El libro JSON es una solución de alfa: lectura completa, auditoría creciente y máximo 100.000 recibos. Los pulsos no llenan el libro de recibos. El adaptador de archivos exige un único escritor. PostgreSQL, paginación y comportamiento a escala todavía necesitan pruebas específicas.
 
-1. Definir y ejecutar la migración no destructiva desde el guardado editable al inventario autoritativo. No confiar automáticamente en los saldos y únicos del navegador.
-2. Implementar una fuente de resultados/recompensas verificable por servidor. Un token de partida o filtros de plausibilidad solos no prueban que se ganaron oro, planos o puntuaciones.
-3. Conectar equipamiento, combate, recetas, progresión y todos los modos al mismo registro, eliminando la doble autoridad sin perder los objetos antiguos.
-4. Integrar UI de forja/subastas/Códice/GM, bonus de conjuntos, arte reutilizable y variantes.
-5. Sustituir el ranking semanal por mensual, reservar premios, cerrar temporadas una sola vez y preservar ganador original e historial. No premiar automáticamente resultados cliente actuales.
-6. Completar pruebas PostgreSQL, pruebas de navegador móvil y partidas multijugador.
+## Conjuntos, cosméticos y assets
 
-## Despliegue y recuperación
+| Conjunto | Piezas | Orientación / mecánica reutilizada | Arte y VFX reutilizados |
+|---|---:|---|---|
+| Lucifer | 6 | Ofensiva, quemadura, baja vida | Manada |
+| Pacto del Glaciar | 6 | Ralentización y fragmentos | Convergencia |
+| Corazón del Coloso | 6 | Mitigación, onda y escudos | Marea |
+| Tempestad Eterna | 6 | Golpes y descarga encadenada | Sistema |
+| Profecía del Alba | 6 | Curación y amanecer | Custodio |
 
-- Mantener `HORDA_ITEM_ECONOMY` sin definir en producción. Las rutas V2 responderán 503 y no modificarán cuentas existentes.
-- Para QA aislado: `npm ci --prefix server`, almacenamiento persistente (`DATABASE_URL` o volumen real con `DATA_DIR` y `DATA_PERSISTENT=1`), `HORDA_ITEM_ECONOMY=1`, y el mecanismo OWNER ya existente. Nunca marcar como persistente un directorio efímero.
-- No habilitar en el servicio público mientras no se conecten las recompensas y el equipamiento autoritativos.
-- Respaldar la base/volumen antes del despliegue. La API guarda su ledger dentro de operaciones; ese archivo/tabla debe formar parte del backup.
-- Apagar el flag detiene las rutas V2; conserva el registro. No borrar operaciones ni restaurar solamente una parte de una venta.
-- La interfaz de inventario y la política de Brasas son cambios independientes del flag; requieren despliegue del cliente y servidor coherentes y prueba de navegador antes de integrar.
+Se redistribuyeron los umbrales de los antiguos conjuntos de cuatro piezas a 2/4/6; Lucifer conserva sus umbrales existentes. Las nuevas piezas utilizan las siluetas de ítems existentes con un sello de identidad propio. Se preservó el arte original de los demás objetos.
 
-## Archivos
+Completar la colección libera permanentemente la manifestación base, que no se vende por Brasas ni se entrega como regalo inicial. Hay una variante Astral general y una Consagrada que exige completar el conjunto; ambas cuestan el escalón cosmético existente. La base es una recompensa exclusiva de juego. Cambian los efectos visuales de habilidades, no las estadísticas ni el equipo. **No son treinta sprites nuevos ni nuevas animaciones:** las manifestaciones usan los VFX y las ilustraciones indicadas. Falta validar artísticamente su resultado en todos los campeones y medir el balance de builds mixtas frente a conjuntos completos.
 
-Cliente: `js/data/pricing.js`, `js/systems/items.js`, `js/systems/ground-loot.js`, `js/systems/loot.js`, `js/systems/recipes.js`, `js/ui/inventory-ui.js`, `js/net/net-trade.js`.
-Servidor: `server/item-economy.js`, `server/accounts.js`, `server/trades.js`, `server/package.json`.
-Pruebas: `server/test-item-economy.js`, `server/test-wallet-pieces.js`, `tools/items/test-auto-inventory-unit.js`, `tools/items/t_auto_inventory.js`, `.github/workflows/item-economy.yml`.
+## Reliquias, Códice y temporada mensual
 
-No se fusionó en main ni se modificó Render. Esta entrega debe permanecer como PR en borrador.
+Cinco reliquias iniciales: Corazón de la Marea (Acuática), Hilo sin Fin (Laberinto), Corona del Abismo (Abismo), Ascua de Cerbero (Minas) y Último Juramento (Infernal). Cada una tiene UID fijo, estado, propietario e historial. Los drops de victoria usan la probabilidad única ya existente y comprueban disponibilidad. No se pueden fabricar. Los efectos reutilizan procs existentes; no se afirma que sean cinco mecánicas exclusivas nuevas ni que su balance esté aprobado.
+
+El Códice/Arsenal muestra estados, método de obtención, arena e historial. La ilustración actual de reliquias reutiliza un icono de habilidad: faltan cinco ilustraciones diferenciadas aprobadas.
+
+La recuperación usa 14 días, con aviso almacenado desde el día 10; iniciar sesión basta. Hay barrido periódico cada diez minutos, además de comprobación al acceder. El aviso es dentro del juego, no email. La Bóveda reintroduce la misma instancia y conserva el historial. No se permite entregarla a una cuenta inexistente.
+
+Las temporadas usan meses calendario UTC. Cada mes reserva una corona irrepetible; una configuración administrativa puede reservar otra reliquia para un mes futuro. El cierre ordena resultados, transfiere una única instancia y conserva el nombre del ganador original aunque se venda. Los campeones mensuales anteriores se muestran sin ranking acumulativo. Se rechazó la antigua ruta de envío directo de puntuaciones. Las pruebas cubren cambio de mes, doble cierre, venta y reinicio.
+
+## Interfaces
+
+Arsenal accesible desde Opciones; accesos desde Inventario a Forja/Subastas y desde Códice a Reliquias Únicas. Navegación por pestañas, controles táctiles, cierre por Escape, foco contenido en el modal y etiquetas accesibles. La UI usa respuestas reales de la API, no datos de demostración.
+
+Game Master incluye configuración económica, tablas, Bóveda, reserva de premios, totales y registro. Las rutas nuevas restringen las operaciones a owner. No se implementaron dashboards de cohortes de retención ni detección automática de anomalías.
+
+## Pruebas verificadas
+
+- API: 49 comprobaciones HTTP de `test-item-economy.js`, más invariantes de dominio.
+- Integración: 51 comprobaciones HTTP de `test-item-economy-live.js`: migración, snapshot, rechazo de guardado manipulado, sesiones, botín, equipamiento, subasta, premio mensual, historial, reinicio, compra cosmética restringida y autofusión protegida.
+- Inventario: 16 comprobaciones de dominio más protección de intercambios antiguos.
+- Billetera: 65/65 con V2 activado, después de reconciliar derechos de campeones. Venta premium de piezas: 31/31.
+- Regresión histórica del servidor: `HORDA_ITEM_ECONOMY=0 npm test --prefix server`, completada. Esto prueba el contrato anterior desactivando V2; **no equivale a aprobar todos los flujos antiguos con V2 activado**.
+- Análisis sintáctico: 454 scripts referenciados por index existen y compilan.
+- GitHub Actions sobre `ebb2df5b`: `Item economy safety` aprobado, incluyendo inventario móvil y UI persistente con API real (fabricar, favorito, equipar, pestañas, ancho móvil y preservación de equipo invitado). `Health HUD visual regression` aprobado.
+- La prueba de identidad de iconos pasó las comprobaciones de dibujo. La evidencia se actualizó con los conteos emitidos por GitHub en el run 40051508019: 289 objetos, 274 iconos distintos antes, 289 después y 270 preservados. La verificación final del recibo actualizado queda pendiente.
+- Chromium local no pudo arrancar por restricciones del entorno. Las comprobaciones de navegador citadas fueron ejecutadas por GitHub Actions.
+- No se validó una instancia PostgreSQL ni una partida completa con dos dispositivos humanos.
+
+## Defectos de integración que bloquean main
+
+1. **Misiones, pase y cofres antiguos:** todavía modifican `save.gold`, `save.gems` o agregan ítems localmente. La proyección del servidor puede reemplazar esas recompensas. Hace falta un adaptador que emita recibos validados, sin aceptar importes elegidos por el cliente. No se debe eliminar la funcionalidad ni simular que el premio se conservó.
+2. **Game Master anterior y progresión especial:** algunos otorgamientos, ajustes de moneda y desbloqueos siguen escribiendo en el guardado antiguo. Deben integrarse con el registro y probarse con V2 activo. La pestaña económica nueva sí opera sobre el registro correcto.
+3. **Resultados de combate:** la validación temporal no impide que un anfitrión modificado fabrique un resultado plausible. No es suficiente para premiar reliquias competitivas en producción.
+4. **Conectividad y cuentas offline:** falta completar la conciliación de partidas iniciadas antes de cargar la economía y de inventarios que nunca se subieron a la nube.
+5. **Regresión completa y balance:** falta cerrar toda la matriz de modos, PostgreSQL, balance y evidencia gráfica actualizada. Los checks de lógica/API aprobados no sustituyen esos controles.
+
+Estos son pendientes de implementación y validación, no limitaciones inventadas de permisos. **No se ha fusionado a main ni desplegado en Render.**
+
+## Despliegue de QA y recuperación
+
+Solo en un entorno aislado con copia de los datos: `npm ci --prefix server`; configurar `DATABASE_URL` o un volumen persistente real con `DATA_DIR` y `DATA_PERSISTENT=1`; habilitar `HORDA_ITEM_ECONOMY=1`. En esta rama el valor por defecto también activa V2; usar `0` solo para probar el contrato anterior del servidor. No publicar esta rama con datos reales mientras existan los defectos anteriores.
+
+Respaldar conjuntamente cuentas, guardados y operaciones antes de migrar. Las copias de migración están en el registro. Una recuperación debe restaurar cliente y servidor compatibles junto con el snapshot completo; no restaurar aisladamente el objeto, saldo o una sola parte de una venta. Apagar una bandera no sustituye una recuperación coordinada.
+
+## Archivos y commits
+
+Los cambios están organizados en commits de base económica, migración/combate/temporadas, UI/cosméticos, pruebas y correcciones. El diff de PR #211 enumera todos los archivos. Las incorporaciones principales son los seis módulos descritos en Arquitectura, `css/item-economy.css`, `server/test-item-economy-live.js` y `tools/items/t_economy_live.js`; también cambian los puntos de integración de cuentas, billetera, inventario, fin de combate, conjuntos y ranking.
