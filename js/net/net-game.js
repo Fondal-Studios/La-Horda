@@ -917,7 +917,10 @@ function netHostAnnounceEnd(victory){
   if(!netIsHost() || netMatch.ended) return;
   netMatch.ended = true;
   const snap = netBuildSnapshot(true);
-  netBroadcast({k:"end", victory:!!victory, snap, lanes:(typeof lanesOn==="function" && lanesOn()) ? {winner:LN.winner, why:LN.why||""} : undefined, eventBossDefeated:victory&&typeof AlphaServices!=="undefined"?AlphaServices.confirmedBosses():[]});
+  const endMessage={k:"end", victory:!!victory, snap, lanes:(typeof lanesOn==="function" && lanesOn()) ? {winner:LN.winner, why:LN.why||""} : undefined, eventBossDefeated:victory&&typeof AlphaServices!=="undefined"?AlphaServices.confirmedBosses():[]};
+  netMatch.rewardPending=!!(victory && typeof CampaignInbox!=="undefined" && CampaignInbox.protocol);
+  netMatch.rewardEndMessage=endMessage;
+  netBroadcast(endMessage);
   netLog(victory ? "GAME_VICTORY" : "GAME_DEFEAT");
 }
 // Después de cerrar las pantallas de fin: se restauran los datos del anfitrión y la sala vuelve

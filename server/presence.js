@@ -8,7 +8,7 @@ function create({resolve, requiresGrant, broadcast, groupMs = GROUP_MS, setTimer
   async function identify(ws, token){
     let id = null;
     try{ id = await resolve(token); }catch(e){ id = null; }
-    ws._identity = id ? {name:id.name, founder:id.founder ? id.founder.key : null, grantOnly:id.grantOnly || []} : null;
+    ws._identity = id ? {userId:id.userId, name:id.name, founder:id.founder ? id.founder.key : null, grantOnly:id.grantOnly || []} : null;
     return ws._identity;
   }
   // Grant-only champions (FOUNDER / unreleased) are accepted only from a verified entitled account.

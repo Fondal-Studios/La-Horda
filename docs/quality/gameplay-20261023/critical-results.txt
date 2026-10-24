@@ -4,3 +4,4 @@ PASS duplicate close and reload/reconnect identity: no duplicate rewards
 PASS failed storage and retry: no reroll, no partial disk state, no false cloud success
 PASS generation failure rolls back progression and releases batch guard
 PASS actual potion update heals HP only and preserves unused potions
+PASS 6500 earned items survive JSON + sanitizer; claiming honors capacity and never duplicates; legacy overflow preserved

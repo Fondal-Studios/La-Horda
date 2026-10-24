@@ -371,7 +371,7 @@ function unequipItem(champKey, type){
 function addItemToInventory(champKey, item, earnedReward){
   if(!item) return null;
   if(stashFull() && !earnedReward) return null; // rewards already earned may overflow; new pickups still respect capacity
-  stashItems().push(item);
+  if(earnedReward && stashFull()) rewardOverflowPush(item); else stashItems().push(item);
   if(typeof collectionRegister==="function") collectionRegister(item);
   persist();
   return item;

@@ -20,7 +20,7 @@ ev('h.hp=0;h.alive=false');assert.equal(ev('heroVitals(h).hpPct'),0);
 ev('h.hp=80;h.alive=true');assert.equal(ev('heroVitals(h).hpPct'),40);
 ev('h.maxHp=0');assert.equal(ev('heroVitals(h).hpPct'),0);
 console.log('PASS HP, shields, healing eligibility, max-HP changes, death/revive');
-load('js/systems/items.js');load('js/systems/loot.js');load('js/ui/end-screens.js');
+load('js/systems/reward-mailbox.js');load('js/systems/items.js');load('js/systems/loot.js');load('js/ui/end-screens.js');
 // Full production grant function, controlled loot generator and external gameplay services.
 ev(`var INVENTORY_CAPACITY=1,currentArena='bosque',runLevel=10,subjefesDefeated=0,kills=12;
 var CLASSES={mago:{name:'Mago',icon:'M',color:'#fff'}};
@@ -41,9 +41,9 @@ function questsOnRunEnd(){quests++;}
 save.stash=[{uid:'old',type:'arma',rarity:'mitico'}];
 victoryBeginRun('run-a');writes=[];
 var result=buildVictoryData();`);
-assert.equal(ev('save.stash.length'),3);assert.equal(ev('save.gold'),80);assert.equal(ev('save.champions.mago.xp'),10);assert.equal(ev('save.gems'),2);
+assert.equal(ev('save.stash.length'),1);assert.equal(ev('rewardOverflowCount()'),2);assert.equal(ev('save.gold'),80);assert.equal(ev('save.champions.mago.xp'),10);assert.equal(ev('save.gems'),2);
 assert.equal(ev('writes.length'),1);assert.equal(ev('writes[0].lastVictoryReward.data.rewards.length'),2);
-ev('buildVictoryData();buildVictoryData()');assert.equal(ev('rolls'),1);assert.equal(ev('save.stash.length'),3);assert.equal(ev('quests'),1);
+ev('buildVictoryData();buildVictoryData()');assert.equal(ev('rolls'),1);assert.equal(ev('save.stash.length'),1);assert.equal(ev('rewardOverflowCount()'),2);assert.equal(ev('quests'),1);
 console.log('PASS full inventory: all earned items; one atomic write includes receipt, gold, XP, gems');
 // Reload of persisted save and same remote run identity cannot reroll or repay.
 ev('save=JSON.parse(disk);victoryBeginRun("run-a");buildVictoryData()');assert.equal(ev('rolls'),1);assert.equal(ev('save.gold'),80);
@@ -66,3 +66,14 @@ updatePotions(16);`);
 assert.equal(ev('player.hp'),78);assert.equal(ev('player.itemShield'),0);assert.equal(ev('potions.length'),0);
 ev('player.hp=100;potions=[{x:0,y:0,type:"heal",life:10000,phase:0}];updatePotions(16)');assert.equal(ev('potions.length'),1);
 console.log('PASS actual potion update heals HP only and preserves unused potions');
+load('js/storage/save-sanitize.js');
+ev(`save.stash=[];save.rewardOverflow=[];
+for(let i=0;i<6500;i++)rewardOverflowPush({uid:'overflow-'+i,name:'Objeto '+i,type:'arma',rarity:'raro'});
+var reloaded=JSON.parse(JSON.stringify(save));saveSanitize(reloaded);save=reloaded;`);
+assert.equal(ev('rewardOverflowCount()'),6500);
+ev('rewardOverflowClaim()');assert.equal(ev('save.stash.length'),1);assert.equal(ev('rewardOverflowCount()'),6499);
+ev('rewardOverflowClaim()');assert.equal(ev('rewardOverflowCount()'),6499);
+ev('save.stash=[];rewardOverflowClaim()');assert.equal(ev('save.stash[0].uid'),'overflow-1');
+ev(`var legacy={stash:Array.from({length:6500},(_,i)=>({uid:'legacy-'+i,type:'arma'}))};saveSanitize(legacy);`);
+assert.equal(ev('legacy.stash.length+legacy.rewardOverflow.flat().length'),6500);
+console.log('PASS 6500 earned items survive JSON + sanitizer; claiming honors capacity and never duplicates; legacy overflow preserved');

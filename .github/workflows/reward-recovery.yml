@@ -1,0 +1,23 @@
+name: Campaign reward recovery
+on:
+  pull_request:
+    paths: ['js/**', 'server/**', 'tools/net-test/reward-recovery.js', 'tools/regression/test-critical-rewards.js', '.github/workflows/reward-recovery.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - run: npm ci --prefix server --no-audit --no-fund
+      - run: node server/test-campaign-inbox.js
+      - run: node tools/regression/test-critical-rewards.js
+      - run: node tools/net-test/reward-recovery.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reward-recovery
+          path: docs/quality/reward-recovery/

@@ -77,3 +77,14 @@ Validado en VM, con funciones reales de persistencia, inventario, entrega y cons
 3. Completar los seis límites de A2, especialmente recuperación del invitado y buzón de excedentes; añadir pruebas de pérdida del mensaje final, host caído y cuentas distintas.
 4. Sólo después de validación completa integrar. No hay publicación en esta entrega.
 5. Continuar B/C, D, E, F1 en el orden pedido; F2 espera prompt independiente. No declarar alfa humana simulada como test real.
+
+## Continuación — 23/10, revisión solicitada por Nano
+
+- A1 separado en PR210. Prueba de navegador real `Health HUD visual regression` PASS en 844×390 y 1280×720. Capturas de artifact12541244548 revisadas: barras separadas, vida completa consistente, sin solapamiento. Workflow40046910510, head638218ad955a93e4f00a20a692df0e107901a1d3. Resto de checks aún en curso al escribir este checkpoint.
+- CI de PR208 encontró una regresión real: resumen de desafíos vacío. Corregida guardando el resumen en el recibo y renderizándolo después de abrir la pantalla final.
+- Buzón de overflow en bloques de100, separado de stash. Sanitizador valida los bloques sin truncar el total y conserva excesos de guardados anteriores. Prueba con6500objetos PASS tras JSON/sanitización/reclamación sin duplicados. No equivale a almacenamiento infinito: una cuota de navegador o límite de nube debe mostrar error y conservar pendientes, nunca afirmar éxito.
+- Recibos históricos conservan marcadores idempotentes al confirmar. El menú permite consultar el botín pendiente y pasar objetos al inventario cuando hay lugar.
+- Servidor: journal durable por cuenta autenticada (o capacidad privada aleatoria para anónimos), escrito antes de reenviar victoria. Persistencia usa el adaptador existente de cuentas (PostgreSQL o archivos atómicos). Un invitado puede recuperar por WebSocket sin sala ni host; acuses repetidos no destruyen el archivo. Máximo20sin reclamar bloquea nuevas rondas sin borrar resultados anteriores.
+- Pruebas servidor PASS: desconexión previa al final, doble mensaje, reinicio real del adaptador, otro dispositivo autenticado, aislamiento de cuentas y backpressure. `npm test --prefix server` también PASS.
+- Nueva prueba CI `Campaign reward recovery`: dos navegadores y relay real, invitado cerrado antes de ganar, host cerrado, relay reiniciado, recuperación a inventario lleno, recarga y revisión visual. Pendiente ejecución al subir este checkpoint.
+- Despliegue del servidor todavía no realizado. Estas capacidades no están activas en producción sólo por subir la rama. Revisar resultado de CI y rama principal antes de integrar/desplegar.

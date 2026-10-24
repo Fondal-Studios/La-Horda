@@ -151,18 +151,27 @@ function victoryBeginRun(id){
 function buildVictoryData(){
   if(!victoryRunId) victoryBeginRun();
   const id = victoryRunId+":"+currentArena+":"+player.classKey;
-  const old = save.lastVictoryReward;
-  if(old && old.id===id){ persistNow(); return old.data; }
+  save.victoryReceipts = save.victoryReceipts || {};
+  const old = save.victoryReceipts[id] || (save.lastVictoryReward && save.lastVictoryReward.id===id ? save.lastVictoryReward : null);
+  if(old && old.id===id){
+    const view=old.data?old:(save.lastVictoryReward?.id===id?save.lastVictoryReward:null);
+    if(view){save.lastVictoryReward=view;persistNow();return view.data;}
+    // An archived receipt remains an idempotency marker after its presentation is discarded.
+    return {classKey:player.classKey,arena:currentArena,perf:computePerformance(player),rewards:[],floorLoot:[],partyScores:[],stats:{},gold:save.gold,level:save.champions[player.classKey].level,victoryXpBonus:0,gems:0,_revealed:true};
+  }
   // Rollback only on generation errors; no partially generated save reaches storage.
   const before = JSON.parse(JSON.stringify(save));
+  const questsBefore = typeof QST!=="undefined" ? JSON.parse(JSON.stringify(QST)) : null;
   const floorBefore = typeof groundLoot!=="undefined" ? groundLoot.slice() : null;
   _persistBatchDepth++;
   try{
     const data = buildVictoryDataInner();
-    if(typeof questsOnRunEnd==="function") questsOnRunEnd(true);
+    data.questSummary = typeof questsOnRunEnd==="function" ? questsOnRunEnd(true) : null;
     save.lastVictoryReward = {id, data:JSON.parse(JSON.stringify(data)), reviewed:false};
+    save.victoryReceipts[id] = save.lastVictoryReward;
   }catch(e){
     save = before;
+    if(questsBefore){for(const k of Object.keys(QST))delete QST[k];Object.assign(QST,questsBefore);}
     if(floorBefore) groundLoot = floorBefore;
     throw e;
   }finally{ _persistBatchDepth--; }
@@ -170,6 +179,7 @@ function buildVictoryData(){
   return save.lastVictoryReward.data;
 }
 function victorySaveReady(){
+  if(netMatch && netMatch.rewardPending){netBroadcast(netMatch.rewardEndMessage);gameAlert("El servidor todavía está guardando las recompensas del equipo. Volvé a intentar en unos segundos.");return false;}
   if(persistNow()) return true;
   // Test Lab deliberately does not write real progress.
   if(typeof testLabActive==="function" && testLabActive()) return true;
@@ -196,7 +206,7 @@ function lootCardHTML(item, classKey, idx){
         ${setLine}
         ${passiveTxt?`<div class="item-passives">${passiveTxt}</div>`:""}
         <div class="vic-item-actions">
-          ${canEquipItem(classKey, item) ? `<button class="primary" data-vic-equip="${item.uid}" ${equipped?"disabled":""}>${equipped?"Equipado":"Equipar"}</button>` : `<button disabled>Para ${itemOnlyLabel(item) || "otro guardián"}</button>`}
+          ${canEquipItem(classKey, item) && findStashItem(item.uid) ? `<button class="primary" data-vic-equip="${item.uid}" ${equipped?"disabled":""}>${equipped?"Equipado":"Equipar"}</button>` : `<button disabled>Para ${itemOnlyLabel(item) || "otro guardián"}</button>`}
           <button data-vic-keep="${item.uid}">Guardar</button>
         </div>
       </div></div>
@@ -263,7 +273,7 @@ const VICTORY_STEPS = [
         <span style="color:${bonusPct>=0?"#ffcf5c":"#b8a898"};">${bonusPct>=0?"+":""}${bonusPct}% rarezas altas${victoryData.subjefes?` · +${victoryData.subjefes*10}% objeto extra`:""}</span>
         <div class="loot-summary-note">La calificación mejora las probabilidades, nunca garantiza.</div></div>`;
     const gemNote = victoryData.gems ? `<div class="vic-reward-note gem-note">◆ +${victoryData.gems} Gema${victoryData.gems>1?"s":""} (total ${save.gems}) — sirven para subir el nivel de tus objetos</div>` : "";
-    const fullNote = victoryData.inventoryFull ? `<div class="vic-reward-note" style="color:#ff9a7a;">Tu inventario superó los ${INVENTORY_CAPACITY} espacios: todo el botín ganado se conservó. Organizalo antes de recoger más objetos.</div>` : "";
+    const fullNote = victoryData.inventoryFull ? `<div class="vic-reward-note" style="color:#ff9a7a;">Tu inventario está lleno: el excedente se conservó en Recompensas pendientes, en el menú principal.</div>` : "";
     if(!victoryData._revealed) return `${summary}${fullNote}<div class="chest-host"></div>`; // la ceremonia del cofre (js/ui/loot-ceremony.js)
     const cards = victoryData.rewards.slice().sort((a,b)=>TIER_ORDER[itemTier(a)]-TIER_ORDER[itemTier(b)]).map((item, i)=>lootCardHTML(item, victoryData.classKey, i)).join("");
     // lo que quedó tirado en el piso al ganar se juntó solo (ground-loot.js): se nombra acá, sin ceremonia
@@ -365,6 +375,7 @@ function showVictoryScreen(){
   victoryData = buildVictoryData();
   victoryStep = 0;
   renderVictoryStep();
+  if(victoryData.questSummary && typeof questsShowRunSummary==="function") questsShowRunSummary(victoryData.questSummary);
   if(netMatch) netOnEndScreen(true);
 }
 // pasos que se omiten solos (hoy: el fragmento del Libro en arenas que no lo tienen)
@@ -375,7 +386,7 @@ document.getElementById("victory-next-btn").addEventListener("click", ()=>{
     if(typeof _ceremony!=="undefined" && _ceremony) _ceremony.done = true;
     victoryData._revealed = true; renderVictoryStep(); return;
   }
-  if(victoryStep===2 && save.lastVictoryReward){ save.lastVictoryReward.reviewed = true; if(!victorySaveReady()) return; }
+  if(victoryStep===2 && save.lastVictoryReward){ save.lastVictoryReward.reviewed = true; save.victoryReceipts[save.lastVictoryReward.id]={id:save.lastVictoryReward.id,reviewed:true}; if(!victorySaveReady()) return; }
   if(victoryStep < VICTORY_STEPS.length-1){
     victoryStep++;
     while(victoryStep < VICTORY_STEPS.length-1 && VICTORY_STEPS[victoryStep].skip && VICTORY_STEPS[victoryStep].skip()) victoryStep++;
