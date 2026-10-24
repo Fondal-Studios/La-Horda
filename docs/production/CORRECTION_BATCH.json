@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-10-23",
+  "updated": "2026-10-24T00:35:00Z",
   "policy": "First-pass champion batches; save failures and move forward. Run a grouped correction pass later; never merge failed or unvalidated assets.",
   "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
   "pendingVerificationNotFailures": [
@@ -11,9 +11,9 @@
     "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
-  "nextProduction": "Audit Farolero B138/B139/B140 in fresh main/PR/real consumers; preserve body/UF/basic/lantern if already present. Broad first passes before correcting Facu/Eslabón/Dáriel/older workshops.",
+  "nextProduction": "Auditar Guerrero B141/B142/B143 en main/PR/fuentes/consumidores frescos antes de producir; preservar muerte PR187, cuerpo, UF, básicos y arte existente. No repetir primeras pasadas ni arreglar Farolero/Facu/Eslabón mientras falten kits.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "Audit Farolero B138/B139/B140 in fresh main/PR/real consumers; preserve body/UF/basic/lantern if already present. Broad first passes before correcting Facu/Eslabón/Dáriel/older workshops.",
+  "next": "Auditar Guerrero B141/B142/B143 en main/PR/fuentes/consumidores frescos antes de producir; preservar muerte PR187, cuerpo, UF, básicos y arte existente. No repetir primeras pasadas ni arreglar Farolero/Facu/Eslabón mientras falten kits.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -22,9 +22,9 @@
     "preservesEntries": 23
   },
   "queueSnapshotOrigin": {
-    "branch": "art/eslabon-kit-first-pass-20261023",
-    "sha": "a9c2f653d9f4cc608bce8b62bf039683bfa1a477",
-    "preservedHistoricalEntries": 37
+    "branch": "art/facu-gm-kit-first-pass-20261023",
+    "sha": "7aefceeb522025ba6da9abf390e1c5676ac17041",
+    "preservedHistoricalEntries": 40
   },
   "componentClosures": [
     {

@@ -1,0 +1,35 @@
+[arnés] servidor propio: http://127.0.0.1:44943 (raíz /workspace/scratch/a01f80e6b406/la-horda-farolero)
+JOINED {
+  code: '3R3CLW',
+  human: 2,
+  slots: [
+    {
+      slot: 0,
+      name: 'Jugador',
+      champ: 'solciju',
+      level: 20,
+      ready: true,
+      connected: true,
+      host: true,
+      muted: false,
+      founder: null
+    },
+    {
+      slot: 1,
+      name: 'Jugador',
+      champ: 'farolero',
+      level: 20,
+      ready: false,
+      connected: true,
+      host: false,
+      muted: false,
+      founder: null
+    },
+    null,
+    null
+  ]
+}
+HUMANS_READY
+LOADOUT_READY
+START_SENT { state: 'playing', role: 'host' } { state: 'playing', role: 'guest' }
+{"checks":[{"host":"solciju","guest":"farolero","ok":true,"rh":{"draw":{"farolero_kindling:nova":18,"farolero_flash~h:cone":16,"farolero_flash~h:burst":14,"farolero_path~p:beam":122,"farolero_path~p:burst":11},"k":"farolero","casts":4,"objects":[{"id":1,"owner":1,"kind":"lantern"},{"id":2,"owner":1,"kind":"path"}],"hp":293.4,"skin":"skin_lumbre_persistente"},"rg":{"draw":{"farolero_kindling:nova":41,"farolero_flash~h:cone":29,"farolero_flash~h:burst":26,"farolero_path~p:beam":200,"farolero_path~p:burst":20},"k":"farolero","objects":[{"id":1,"owner":1,"kind":"lantern"},{"id":2,"owner":1,"kind":"path"}],"hp":293.4,"skin":"skin_lumbre_persistente"}},{"name":"farolero_kindling:nova drawn both peers exact variant","ok":true,"host":18,"guest":41},{"name":"farolero_flash~h:cone drawn both peers exact variant","ok":true,"host":16,"guest":29},{"name":"farolero_flash~h:burst drawn both peers exact variant","ok":true,"host":14,"guest":26},{"name":"farolero_path~p:beam drawn both peers exact variant","ok":true,"host":122,"guest":200}],"errors":[]}

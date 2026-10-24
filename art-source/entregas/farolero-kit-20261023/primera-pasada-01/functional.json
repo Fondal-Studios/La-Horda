@@ -1,0 +1,127 @@
+{
+  "checks": [
+    {
+      "name": "lantern original radius and duration",
+      "ok": true,
+      "detail": {
+        "r": 120,
+        "life": 9000
+      }
+    },
+    {
+      "name": "placement candidate actual center",
+      "ok": true
+    },
+    {
+      "name": "existing prop retained",
+      "ok": true
+    },
+    {
+      "name": "existing expiration retained",
+      "ok": true
+    },
+    {
+      "name": "lantern shields actual nearby ally",
+      "ok": true
+    },
+    {
+      "name": "light local and weak",
+      "ok": true
+    },
+    {
+      "name": "one living lamp after recast",
+      "ok": true
+    },
+    {
+      "name": "lamp expires",
+      "ok": true
+    },
+    {
+      "name": "flash actual damage",
+      "ok": true
+    },
+    {
+      "name": "common flash stun",
+      "ok": true
+    },
+    {
+      "name": "common flash slow",
+      "ok": true
+    },
+    {
+      "name": "cone original geometry",
+      "ok": true,
+      "detail": {
+        "r": 180,
+        "arc": 0.85,
+        "angle": 0
+      }
+    },
+    {
+      "name": "cone original duration",
+      "ok": true
+    },
+    {
+      "name": "shutter burst original radius and duration",
+      "ok": true
+    },
+    {
+      "name": "boss control caps retained",
+      "ok": true
+    },
+    {
+      "name": "path duration radius unchanged",
+      "ok": true
+    },
+    {
+      "name": "path endpoints actual cast",
+      "ok": true
+    },
+    {
+      "name": "path actual event endpoints",
+      "ok": true
+    },
+    {
+      "name": "explicit replicated path variant",
+      "ok": true
+    },
+    {
+      "name": "path actual object renderer draws",
+      "ok": true,
+      "detail": 3
+    },
+    {
+      "name": "one living path after recast",
+      "ok": true
+    },
+    {
+      "name": "expired path removed without lingering draw",
+      "ok": true
+    },
+    {
+      "name": "dead owner removes path",
+      "ok": true
+    },
+    {
+      "name": "UF mechanics retained",
+      "ok": true
+    },
+    {
+      "name": "UF form retained",
+      "ok": true
+    },
+    {
+      "name": "basic theme retained",
+      "ok": true
+    },
+    {
+      "name": "pool resets",
+      "ok": true
+    }
+  ],
+  "limitations": [
+    "Beam uses global animation phase; no event-relative first loop certification.",
+    "No dense composition, six-arena matrix, all skins, sustained performance or full Art Gate."
+  ],
+  "errors": []
+}

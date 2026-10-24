@@ -1,0 +1,428 @@
+{
+  "schema": 1,
+  "closedAtUTC": "2026-10-24T00:40:00Z",
+  "pr": 209,
+  "branch": "art/farolero-kit-first-pass-20261023",
+  "productionCommit": "18ff9cfadde6eabb1f792d71fb8b385c472d61b0",
+  "recoveryCommit": "1fff15958d84d0280bacd116b0fd553a9ec6df47",
+  "baseMain": "f62d181477adcb4607cc615411cc51bad769f681",
+  "productionTree": "a44243f210c0032ae066b64ff643415ac47948b5",
+  "productionVerifiedFiles": 102,
+  "verification": "All 102 production paths matched local git blob, remote recursive tree (not truncated), branch ref and PR head. Closing commit adds this record and updates checkpoint/manifest; exact final head is recorded in PR body after final verification.",
+  "productionFiles": [
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/COMPARISON.json",
+      "gitBlob": "9eadad043db137e6944ded5643fa8d11a29d9f07"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/CHECKPOINT.md",
+      "gitBlob": "a1c2d73d207d185d89d4491ec447a7d4e2a3924d"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/AUDIT.json",
+      "gitBlob": "d92bfc5993158c8782ec17dc8c870723d9ec8684"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/GENERATED_INDEX.json",
+      "gitBlob": "821efbb70db7264e48419df5238b6d8b3e882102"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/FRAME_INDEX.json",
+      "gitBlob": "0cfed7aa576274bc14857a435c7c5055dfbb9b29"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/PREVIEW_CHECK.json",
+      "gitBlob": "979af8a0b23f84aa0e92febca5e5548f60d1f1f1"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/RECOVERY.md",
+      "gitBlob": "71912ecccc458ea67b0db4f2909543e767bed846"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/REEXPORT.json",
+      "gitBlob": "11f5f6082410e320871c6cfd2a7c3bc4db127a26"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/REVIEW.json",
+      "gitBlob": "4a8fbe13eace3240043fcb4a1f8602e0a912ef09"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/RUNTIME_DIFF.json",
+      "gitBlob": "f5fe0325d74f1a22be83fbff28b7451fb655545b"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/TEST_ATTEMPTS.json",
+      "gitBlob": "96556819c9554150e0bc9ff4b225b90ae9765069"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/SOURCE_REFERENCES.json",
+      "gitBlob": "33734c313a6814d5ebf817f1daaea44b21c75f0a"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/VERIFICATION.json",
+      "gitBlob": "e453c30ca51d02a7f8dd04963dd563f01bc56277"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal/farolero-0-native250.png",
+      "gitBlob": "5cb505be5837c89cc3cc65a47d15f1a52b8bd950"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal/capture.json",
+      "gitBlob": "f44f2d291ecfeefc68ffb7079e28c00280da0161"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal/farolero-0.png",
+      "gitBlob": "5eed390100ae9a3249d3dbaf8e6790080fe5b598"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal/farolero-1.png",
+      "gitBlob": "099c89f997956ede02dbb912f21414e886a34473"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal/farolero-1-native500.png",
+      "gitBlob": "7ce7ac89a2901d87c4dfff46a73fd0937fbf84c2"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal/farolero-0-native500.png",
+      "gitBlob": "f4ffa6e1b18c347eb9606f13cec2dfecdf6aef6e"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal/farolero-1-native250.png",
+      "gitBlob": "6a8ff42cf0e9fd8a28235f83587e12b6fc76222b"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal/farolero-2.png",
+      "gitBlob": "8196fb200d9238dbe6ef0803482cdad80168144b"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal/farolero-2-native500.png",
+      "gitBlob": "82caf08efb43ea60aaff17f20a8301585424aa0e"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal/farolero-3-native250.png",
+      "gitBlob": "09f2b12c4e86b415c538f7d4586cf007720355cc"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal/farolero-3-native500.png",
+      "gitBlob": "36f7562faa52c94ed83b01da2aa4dcaa8184bc11"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal/farolero-2-native250.png",
+      "gitBlob": "48aacb57843aa5cd84d6c4e44c02271a0b05f6fe"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/capture.json",
+      "gitBlob": "a30c3ee186f6489736fb0a8909b100d7815020eb"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal/farolero-3.png",
+      "gitBlob": "8bfcd5dc06ab957f260c825b1411a6063021f732"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-0.png",
+      "gitBlob": "77e4bb15ab16cb40d7677afaf7ed95f9f92159ca"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-0-native250.png",
+      "gitBlob": "46d5b9f2c89e5c0ee739909805bdf9b94d2de1bb"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-0-native500.png",
+      "gitBlob": "120b7924e3fa30b1003254e417ccd694fa9effd2"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-1.png",
+      "gitBlob": "6efecbd42bfdf9a07dda97833f336ab9a9076137"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-1-native500.png",
+      "gitBlob": "b38fc43105e16af53b88727b4967ba4d9390b576"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-2-native250.png",
+      "gitBlob": "be980689fea602ad18c8de5723c457ddda8f4de1"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-2-native500.png",
+      "gitBlob": "3146deb42d9fad8948c16bf66642948a673794d4"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-1-native250.png",
+      "gitBlob": "9c3421f2f303629535557f3066c5c185568aec9e"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal/capture.json",
+      "gitBlob": "a17b314ab06e25c2d135ebfb012fceedff8625f7"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-3.png",
+      "gitBlob": "221868bb7de6724a98492c7f0ca3510e1fc4b10f"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-2.png",
+      "gitBlob": "dea52da0e78fbe880c438d62b1a50e0ca5273dae"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-3-native250.png",
+      "gitBlob": "e6218221adc9604a5a2c709126511e4c00270d1a"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile/farolero-3-native500.png",
+      "gitBlob": "f516c483b9eeeddeac593aac58095697df085ac5"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal/farolero-0.png",
+      "gitBlob": "3c970961a9bb6caa4420c185079016eab74612b4"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal/farolero-1-native250.png",
+      "gitBlob": "109b6a401322eef7508124085fc31b7b2f14cfa7"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal/farolero-0-native250.png",
+      "gitBlob": "ca13d3719b322a1511faa3b5104e3eae86984b35"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal/farolero-0-native500.png",
+      "gitBlob": "b7572a9ecac221384fd6588f48cec6cb4fbdf7e7"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal/farolero-1-native500.png",
+      "gitBlob": "09878e1ad23cec33e63eead8f28e32f6c0617db6"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal/farolero-2.png",
+      "gitBlob": "be3a886df9e830e0ae766f49e1d63cbc7abee6b4"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal/farolero-1.png",
+      "gitBlob": "482807436d5a27460518d95792ddfe25fcb3e903"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal/farolero-3-native250.png",
+      "gitBlob": "09f2b12c4e86b415c538f7d4586cf007720355cc"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal/farolero-2-native250.png",
+      "gitBlob": "c6969f15d475aca79c5b9fb2c3ef042e50aa70e6"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal/farolero-2-native500.png",
+      "gitBlob": "ab1812f92d3633732102d21d15731ed3e820674f"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal/farolero-3.png",
+      "gitBlob": "8bfcd5dc06ab957f260c825b1411a6063021f732"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile/capture.json",
+      "gitBlob": "5f9bda831e5b980f8b8c1766e18cec58b399bcd5"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal/farolero-3-native500.png",
+      "gitBlob": "36f7562faa52c94ed83b01da2aa4dcaa8184bc11"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile/farolero-0-native500.png",
+      "gitBlob": "de0128fa64111a4743e434d2d7333a0202301188"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile/farolero-0-native250.png",
+      "gitBlob": "003c9baa15868a0e1454cbb7d6d716bad2aa10c3"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile/farolero-0.png",
+      "gitBlob": "b70dda473b84907947b11fc898b0ff28bea3a384"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile/farolero-1.png",
+      "gitBlob": "69b391c32304a150316032f29dc4b783a1c345d9"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile/farolero-1-native250.png",
+      "gitBlob": "1030025f0fdeaf93a9d002928256aa7cce1ca830"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile/farolero-1-native500.png",
+      "gitBlob": "be0125d02348d7fd14ab29930cd2da5a6d0babca"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile/farolero-2-native250.png",
+      "gitBlob": "7e10e5c62eb3247df517c87d1586fe4cf52ab0e1"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile/farolero-2.png",
+      "gitBlob": "bc66b8859e3ccb22d7bf8312d7513fcfb4e36379"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile/farolero-3.png",
+      "gitBlob": "221868bb7de6724a98492c7f0ca3510e1fc4b10f"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile/farolero-2-native500.png",
+      "gitBlob": "5be143ab4f252a09b8dd2ced9fd2139826a8e50a"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile/farolero-3-native250.png",
+      "gitBlob": "e6218221adc9604a5a2c709126511e4c00270d1a"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile/farolero-3-native500.png",
+      "gitBlob": "f516c483b9eeeddeac593aac58095697df085ac5"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/farolero_flash-cone.png",
+      "gitBlob": "f9e57cd44d23bd165d82ba791fbd79e986c73899"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/farolero_flash-burst.png",
+      "gitBlob": "8bb549c112d020adef58b42b31757322a13c9435"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/contact-sheet.png",
+      "gitBlob": "d33c2fcd45966e5e24846e3fd9e950d7abf44d52"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/comparison-native-mobile.png",
+      "gitBlob": "4cba41e54191764ff7b6b901af9e32d1ce82e01d"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/comparison-native-horizontal.png",
+      "gitBlob": "2fb72946f53ac33c6bd8c5dfb2bb8ded161c8275"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/functional.json",
+      "gitBlob": "b1b094a8bf5c70f0d4aba3308a2495d8432a89b0"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/logs/after-mobile.log",
+      "gitBlob": "566d9e4f7575c87a690fa5b4b423bbb4da885e7f"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/farolero_path-beam.png",
+      "gitBlob": "dfe149421a799482f43b6d3412d59fe420193e2f"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/farolero_kindling-nova.png",
+      "gitBlob": "c2749c5a1565daa5c54b08c5f0d408f4e5766305"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/logs/after-horizontal.log",
+      "gitBlob": "451e85d8e2786c558191599b769a51fe6436669c"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/logs/before-horizontal.log",
+      "gitBlob": "68fa0c708c367d44e085a52c0143610bfbd1941a"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/logs/before-mobile.log",
+      "gitBlob": "6d4b80bec6bd9a1b4828e8e555b8cfbd5c1863f1"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/logs/functional.log",
+      "gitBlob": "0fbc9a92354175a7366c781c0bfff7536f88f5c2"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/logs/parity.log",
+      "gitBlob": "8aa67237af76585113fd25b7a726e5205a72a336"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/logs/online.log",
+      "gitBlob": "4f8ab01c6ad9ee468ac8741b25cd69da465d9d25"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/logs/preview.log",
+      "gitBlob": "13ee1d26ebfad2b8b98aefc533be54dc5b59ac01"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/parity.json",
+      "gitBlob": "5ccadd61361becbc00e9878ca26d9a80d2c2f6a5"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/online-results.json",
+      "gitBlob": "2332e594de55b3bdf32b743469a4b2653f934ce6"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/logs/regression.log",
+      "gitBlob": "3d9a99afa416d8ff4560e7d1f2367996b12c9a37"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/logs/reexport.log",
+      "gitBlob": "f86bcd99097208c3348a029c786716b4320c53c6"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/preview.html",
+      "gitBlob": "32ba6484536c6d93d1ed07a5ccff5c0e6026c411"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/sources/farolero-native.js",
+      "gitBlob": "2b0a3f520b1ce15bbbc85c6c3613f49a062bf2e9"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/recipe.json",
+      "gitBlob": "85eaafb9d4b17b8a709fda1a4d29b8332678a70d"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/regression.json",
+      "gitBlob": "c29a791bbd9dcf7d5119c7cdbe32cb7a9481c13d"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "gitBlob": "455d0dabb396210bd7d4f701840f64606674526d"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/farolero.js",
+      "gitBlob": "2b0a3f520b1ce15bbbc85c6c3613f49a062bf2e9"
+    },
+    {
+      "path": "js/champions/skill-fx-a/bind.js",
+      "gitBlob": "79333aeff3e81042397c8edc4835acd8658a91a5"
+    },
+    {
+      "path": "tools/portadores/farolero-firstpass-online.js",
+      "gitBlob": "66cb05f7d028f28aedec7705b36f5ec9dba7f7ad"
+    },
+    {
+      "path": "tools/portadores/farolero-firstpass-check.js",
+      "gitBlob": "d639beec06ba36a33441f28959d51a69473d3696"
+    },
+    {
+      "path": "js/champions/skill-fx-a/engine.js",
+      "gitBlob": "f62d52aac23c0cc7695bdf53c0eb36e31e7b45e3"
+    },
+    {
+      "path": "tools/vfx/check-farolero-preview.js",
+      "gitBlob": "fa83087d4ad8d2847b63db3c77aa0a4893a86eaf"
+    },
+    {
+      "path": "tools/vfx/parity-farolero-kit.js",
+      "gitBlob": "7f06b70d89e1abc4153c85760d8234f22a1e3aa1"
+    },
+    {
+      "path": "tools/portadores/farolero-regression.js",
+      "gitBlob": "1047b7db1588b4e04a1c6424364ea901161a1897"
+    },
+    {
+      "path": "tools/vfx/package-farolero.py",
+      "gitBlob": "caf454a9dbe7dab97d7e4951736abbfbf46a1c94"
+    },
+    {
+      "path": "tools/vfx/capture-farolero-kit.js",
+      "gitBlob": "b0abd7db52949593ddab3d5dcf719b17a9baa5b8"
+    },
+    {
+      "path": "tools/vfx/verify-farolero-kit.js",
+      "gitBlob": "32cdef1e5f871a8bb4eb8e30b4c1cd8a8b03b0e6"
+    },
+    {
+      "path": "art-source/entregas/farolero-kit-20261023/primera-pasada-01/manifest.json",
+      "gitBlob": "6adb45ec96427c2d6881ef89e1c65ad0920eb081"
+    }
+  ],
+  "state": "EN_CORRECCION",
+  "integratedMain": false,
+  "publicationVerified": false,
+  "artGate": "FIX / NO_INTEGRAR",
+  "ci": "Exact final head pending; consult fresh checks and workflows. No merge authorized until Art Gate and all applicable CI pass.",
+  "next": "Audit Guerrero B141/B142/B143 from fresh main/PR; preserve death PR187 and existing body/UF/basic. Broad first passes; Farolero correction batch deferred."
+}

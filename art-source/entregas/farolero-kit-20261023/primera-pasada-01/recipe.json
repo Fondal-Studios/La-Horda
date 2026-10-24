@@ -1,0 +1,218 @@
+{
+  "schema": 1,
+  "base": "f62d181477adcb4607cc615411cc51bad769f681",
+  "source": "js/champions/skill-fx-a/c/farolero.js",
+  "sourceSha256": "0bfa3fc55c642bef5f8bc38b5dffdae9b180009df92eae8a46a9442d3caa3503",
+  "approach": "Native SfaStrip pixel recipe; Painter body/donor forge not applicable to these geometric VFX. No new body, no imagegen source or third-party service required.",
+  "specs": [
+    {
+      "theme": "farolero_kindling",
+      "art": "nova",
+      "size": 128,
+      "arc": 0,
+      "w": 128,
+      "h": 128,
+      "n": 12,
+      "cells": [
+        104,
+        100,
+        101,
+        111,
+        107,
+        107,
+        112,
+        109,
+        85,
+        50,
+        27,
+        0
+      ],
+      "distinctRgbaFrames": 12,
+      "pngSha256": "d7645bd030be46388019fb5ca40681ecfb9ff8f57547cb8aa5deac769d594c13",
+      "rgbaSha256": "2eed294bd808ce900757e48089dee81e82159866e2b053386ae724abb98e487f",
+      "pivot": [
+        64.0,
+        64.0
+      ],
+      "phases": {
+        "anticipation": [
+          0,
+          1
+        ],
+        "impact": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "dissipation": [
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    },
+    {
+      "theme": "farolero_flash",
+      "art": "cone",
+      "size": 96,
+      "arc": 0.85,
+      "w": 98,
+      "h": 151,
+      "n": 12,
+      "cells": [
+        71,
+        141,
+        212,
+        220,
+        215,
+        220,
+        223,
+        221,
+        166,
+        110,
+        56,
+        0
+      ],
+      "distinctRgbaFrames": 12,
+      "pngSha256": "2d0a726bd7af0211a60986666eeb4b2a947d1c48e189314f01d9c4e1987c87e5",
+      "rgbaSha256": "0c75cce8a7b4622a3f4884aabe779ec76bcaeb72496487026b50a0b6797706d5",
+      "pivot": [
+        1,
+        75.5
+      ],
+      "phases": {
+        "anticipation": [
+          0,
+          1
+        ],
+        "impact": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "dissipation": [
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    },
+    {
+      "theme": "farolero_flash",
+      "art": "burst",
+      "size": 80,
+      "arc": 0,
+      "w": 80,
+      "h": 80,
+      "n": 12,
+      "cells": [
+        147,
+        151,
+        151,
+        151,
+        151,
+        151,
+        151,
+        151,
+        107,
+        75,
+        43,
+        0
+      ],
+      "distinctRgbaFrames": 10,
+      "pngSha256": "1a52113f4796e76ae849cf85b0e69f507073174982ffd3d59dc147fb32735795",
+      "rgbaSha256": "17d8ec19d919c79786a0adf2d5f938731ddf9c15efe2d7100664d7183172f70e",
+      "pivot": [
+        40.0,
+        40.0
+      ],
+      "phases": {
+        "anticipation": [
+          0,
+          1
+        ],
+        "impact": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "dissipation": [
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    },
+    {
+      "theme": "farolero_path",
+      "art": "beam",
+      "size": 24,
+      "arc": 0,
+      "w": 16,
+      "h": 24,
+      "n": 8,
+      "cells": [
+        101,
+        101,
+        98,
+        98,
+        101,
+        101,
+        98,
+        98
+      ],
+      "distinctRgbaFrames": 4,
+      "pngSha256": "8cd8bc9021f59846066a483e687ea201564329629b2e5c7d476c7d2a501ed528",
+      "rgbaSha256": "92f2858d439f0219cc083e5bc80b4c6f7ea5348802d1d9a3dbd8697f6c16cf80",
+      "pivot": [
+        8.0,
+        12.0
+      ],
+      "phases": {
+        "loop": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    }
+  ],
+  "commands": [
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/verify-farolero-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=/tmp/farolero-reexport node tools/vfx/verify-farolero-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-horizontal node tools/vfx/capture-farolero-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium BASELINE=1 OUT=art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-horizontal node tools/vfx/capture-farolero-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium MOBILE=1 OUT=art-source/entregas/farolero-kit-20261023/primera-pasada-01/after-mobile node tools/vfx/capture-farolero-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium MOBILE=1 BASELINE=1 OUT=art-source/entregas/farolero-kit-20261023/primera-pasada-01/before-mobile node tools/vfx/capture-farolero-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium ONLY=farolero node tools/vfx/parity-farolero-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/portadores/farolero-firstpass-check.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/portadores/farolero-firstpass-online.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/portadores/farolero-regression.js",
+    "python3 tools/vfx/package-farolero.py",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/check-farolero-preview.js"
+  ],
+  "dependencies": [
+    "playwright",
+    "Chromium",
+    "Pillow",
+    "server dependencies using existing lockfile"
+  ],
+  "timing": "Placement700ms, flash cone560ms/shutter480ms, path cast700ms; object path4500ms, beam8 phases global70ms inherited. Preview95ms diagnostic only. Captures80/256/512/1104/2000ms."
+}
