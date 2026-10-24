@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "component": "A-FX-aelith-h2",
+  "block": "B106",
+  "state": "EN_CORRECCION",
+  "method": "Existing native SFA recipe, hand-authored pixel hourglass; no external bitmap generation or paid service",
+  "source": "js/champions/skill-fx-a/c/aelith.js",
+  "sourceSha256": "dc03e27be526e43ad4c74ebc491f1b6af56291055f85dd3da444c93248b1d75d",
+  "hook": "js/champions/quality-five/aelith.js actual exLine hit callback after portadorSlow",
+  "atlas": {
+    "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-03/slow-sand-16x20x12.png",
+    "sha256": "7fd600b726be6d509bae71d60ddd1e865cbbd7b0b30310d0c73d5c69f769b10c",
+    "cell": [
+      16,
+      20
+    ],
+    "frames": 12,
+    "layout": "horizontal",
+    "phase": "single traversal from actual contribution start to end;1800ms base, respects duration scaling",
+    "loop": false,
+    "anchor": "right of target head: x+radius*.7, y-radius*1.8-20, rounded world pixels"
+  },
+  "preserved": [
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-03/reexport/atlases/borrowed-sand.png",
+      "parentPath": "art-source/entregas/aelith-normal-kit-20261022/correccion-02/reexport/atlases/borrowed-sand.png",
+      "sha256": "e80dcce910f740c9966a62f3c7b9c10aa7e1192a6a863005033fed6a3c57219d",
+      "identical": true
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-03/reexport/atlases/echo-countdown.png",
+      "parentPath": "art-source/entregas/aelith-normal-kit-20261022/correccion-02/reexport/atlases/echo-countdown.png",
+      "sha256": "85f29aa6f0a871ed3a6cc1d0911a8b03a9c7e67d20082339e1a672a9d86a9e40",
+      "identical": true
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-03/reexport/atlases/echo-shatter.png",
+      "parentPath": "art-source/entregas/aelith-normal-kit-20261022/correccion-02/reexport/atlases/echo-shatter.png",
+      "sha256": "bb04985f01f63e0dc443f1114d1062c9d7aa4993084b63bf735d269daa6ab505",
+      "identical": true
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-03/reexport/atlases/fracture-glass.png",
+      "parentPath": "art-source/entregas/aelith-normal-kit-20261022/correccion-02/reexport/atlases/fracture-glass.png",
+      "sha256": "a9cc7d6a86915a5751f095ff1e203eae9fa1053a5dd809c1348c3c28bdeba3fe",
+      "identical": true
+    }
+  ],
+  "commands": [
+    "node tools/vfx/verify-aelith-slow.js",
+    "node tools/quality-five/temporal-plague-functional.js",
+    "ONLY=aelith node tools/vfx/parity-skill-fx.js",
+    "OUT=art-source/entregas/aelith-normal-kit-20261022/correccion-03/reexport node tools/vfx/verify-aelith-kit.js",
+    "node tools/vfx/aelith-slow-online.js",
+    "FULL=1 OUT=art-source/entregas/aelith-normal-kit-20261022/correccion-03/after node tools/vfx/capture-aelith-slow.js",
+    "BEFORE=1 FULL=1 OUT=art-source/entregas/aelith-normal-kit-20261022/correccion-03/before node tools/vfx/capture-aelith-slow.js",
+    "MOBILE=1 FULL=1 OUT=art-source/entregas/aelith-normal-kit-20261022/correccion-03/mobile-after node tools/vfx/capture-aelith-slow.js",
+    "MOBILE=1 BEFORE=1 FULL=1 OUT=art-source/entregas/aelith-normal-kit-20261022/correccion-03/mobile-before node tools/vfx/capture-aelith-slow.js"
+  ],
+  "environment": "NODE_PATH points to Playwright dependencies; CHROMIUM_PATH to installed browser",
+  "limitations": [
+    "Full visual gate pending",
+    "PvP renderer supported but no live PvP relay test in this delivery",
+    "Cleanup recognizes an observed cleared slow state; simultaneous cleanse/reapply within a single update without an observable cleared state remains unverified",
+    "No claim that all visual RNG in game is independent"
+  ]
+}

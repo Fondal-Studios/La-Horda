@@ -1,0 +1,307 @@
+{
+  "status": "FAIL",
+  "checks": [
+    {
+      "name": "equipped skin resolved null/front",
+      "pass": true
+    },
+    {
+      "name": "one readback per stamp null/front",
+      "pass": false,
+      "detail": 2
+    },
+    {
+      "name": "outline stays within one pixel null/front",
+      "pass": true,
+      "detail": {
+        "outside": 197,
+        "invalid": 0,
+        "clip": 0
+      }
+    },
+    {
+      "name": "debt recolor needs no second readback null/front",
+      "pass": true
+    },
+    {
+      "name": "debt preserves exact body alpha null/front",
+      "pass": true
+    },
+    {
+      "name": "debt changes RGB and retains outline null/front",
+      "pass": true
+    },
+    {
+      "name": "equipped skin resolved null/side",
+      "pass": true
+    },
+    {
+      "name": "one readback per stamp null/side",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "outline stays within one pixel null/side",
+      "pass": true,
+      "detail": {
+        "outside": 217,
+        "invalid": 0,
+        "clip": 0
+      }
+    },
+    {
+      "name": "debt recolor needs no second readback null/side",
+      "pass": true
+    },
+    {
+      "name": "debt preserves exact body alpha null/side",
+      "pass": true
+    },
+    {
+      "name": "debt changes RGB and retains outline null/side",
+      "pass": true
+    },
+    {
+      "name": "equipped skin resolved null/back",
+      "pass": true
+    },
+    {
+      "name": "one readback per stamp null/back",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "outline stays within one pixel null/back",
+      "pass": true,
+      "detail": {
+        "outside": 204,
+        "invalid": 0,
+        "clip": 0
+      }
+    },
+    {
+      "name": "debt recolor needs no second readback null/back",
+      "pass": true
+    },
+    {
+      "name": "debt preserves exact body alpha null/back",
+      "pass": true
+    },
+    {
+      "name": "debt changes RGB and retains outline null/back",
+      "pass": true
+    },
+    {
+      "name": "equipped skin resolved aelith_alt1/front",
+      "pass": true
+    },
+    {
+      "name": "one readback per stamp aelith_alt1/front",
+      "pass": false,
+      "detail": 2
+    },
+    {
+      "name": "outline stays within one pixel aelith_alt1/front",
+      "pass": true,
+      "detail": {
+        "outside": 222,
+        "invalid": 0,
+        "clip": 0
+      }
+    },
+    {
+      "name": "debt recolor needs no second readback aelith_alt1/front",
+      "pass": true
+    },
+    {
+      "name": "debt preserves exact body alpha aelith_alt1/front",
+      "pass": true
+    },
+    {
+      "name": "debt changes RGB and retains outline aelith_alt1/front",
+      "pass": true
+    },
+    {
+      "name": "equipped skin resolved aelith_alt1/side",
+      "pass": true
+    },
+    {
+      "name": "one readback per stamp aelith_alt1/side",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "outline stays within one pixel aelith_alt1/side",
+      "pass": true,
+      "detail": {
+        "outside": 226,
+        "invalid": 0,
+        "clip": 0
+      }
+    },
+    {
+      "name": "debt recolor needs no second readback aelith_alt1/side",
+      "pass": true
+    },
+    {
+      "name": "debt preserves exact body alpha aelith_alt1/side",
+      "pass": true
+    },
+    {
+      "name": "debt changes RGB and retains outline aelith_alt1/side",
+      "pass": true
+    },
+    {
+      "name": "equipped skin resolved aelith_alt1/back",
+      "pass": true
+    },
+    {
+      "name": "one readback per stamp aelith_alt1/back",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "outline stays within one pixel aelith_alt1/back",
+      "pass": true,
+      "detail": {
+        "outside": 230,
+        "invalid": 0,
+        "clip": 0
+      }
+    },
+    {
+      "name": "debt recolor needs no second readback aelith_alt1/back",
+      "pass": true
+    },
+    {
+      "name": "debt preserves exact body alpha aelith_alt1/back",
+      "pass": true
+    },
+    {
+      "name": "debt changes RGB and retains outline aelith_alt1/back",
+      "pass": true
+    },
+    {
+      "name": "only three equipped pose snapshots retained",
+      "pass": true
+    },
+    {
+      "name": "upper contour consumes no readback",
+      "pass": true
+    },
+    {
+      "name": "upper contour actually draws previous poses",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "pixel snapped upper positions",
+      "pass": true
+    },
+    {
+      "name": "real top renderer invokes contour",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "death between ground and top hides contour",
+      "pass": true
+    },
+    {
+      "name": "offscreen contour culled",
+      "pass": true
+    },
+    {
+      "name": "reentry draws same saved poses",
+      "pass": true
+    },
+    {
+      "name": "off mode skips upper contour",
+      "pass": true
+    },
+    {
+      "name": "actual debt timer remains800ms",
+      "pass": true
+    },
+    {
+      "name": "outline collapses continuously at110ms",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "upper contour disappears at220ms",
+      "pass": true
+    },
+    {
+      "name": "debt aura still alive after contour collapse",
+      "pass": true
+    },
+    {
+      "name": "no retained state after800ms",
+      "pass": true
+    },
+    {
+      "name": "reset clears snapshot state",
+      "pass": true
+    }
+  ],
+  "exports": [
+    {
+      "name": "base-front"
+    },
+    {
+      "name": "base-side"
+    },
+    {
+      "name": "base-back"
+    },
+    {
+      "name": "aelith_alt1-front"
+    },
+    {
+      "name": "aelith_alt1-side"
+    },
+    {
+      "name": "aelith_alt1-back"
+    }
+  ],
+  "metrics": [
+    {
+      "skin": null,
+      "view": "front",
+      "ms": 24.900000005960464,
+      "readbacks": 2
+    },
+    {
+      "skin": null,
+      "view": "side",
+      "ms": 23.299999997019768,
+      "readbacks": 1
+    },
+    {
+      "skin": null,
+      "view": "back",
+      "ms": 14.099999994039536,
+      "readbacks": 1
+    },
+    {
+      "skin": "aelith_alt1",
+      "view": "front",
+      "ms": 20.600000008940697,
+      "readbacks": 2
+    },
+    {
+      "skin": "aelith_alt1",
+      "view": "side",
+      "ms": 14.299999997019768,
+      "readbacks": 1
+    },
+    {
+      "skin": "aelith_alt1",
+      "view": "back",
+      "ms": 12.200000002980232,
+      "readbacks": 1
+    }
+  ],
+  "errors": []
+}

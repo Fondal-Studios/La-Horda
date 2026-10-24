@@ -11,9 +11,9 @@
     "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
-  "nextProduction": "Integral per-component gates, starting Brakk PR197 corrected supports plus exact failing CI investigation. Keep B168 compound rings/skin-equipment review in shared batch, without repeating first pass.",
+  "nextProduction": "Aelith B107 and Morveth B168 crowded contact/contrast, then integral gates. RNG PR195/196 already corrected; preserve22 historical entries. Inventory incomplete.",
   "groupedCorrectionCheckpoint": "art-source/entregas/aelith-normal-kit-20261022/correccion-03/CHECKPOINT.md",
-  "next": "Integral per-component gates, starting Brakk PR197 corrected supports plus exact failing CI investigation. Keep B168 compound rings/skin-equipment review in shared batch, without repeating first pass.",
+  "next": "Morveth B168 crowded contrast, then integral per-component gates including B107 residual. Preserve sources, timers,22 historical entries; inventory incomplete.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -533,7 +533,7 @@
         "atlas-preview.png",
         "verification.json"
       ],
-      "next": "Integral per-component gates, starting Brakk PR197 corrected supports plus exact failing CI investigation. Keep B168 compound rings/skin-equipment review in shared batch, without repeating first pass.",
+      "next": "FIX residual: identificación aún tenue entre cuerpos/escudo genérico en móvil. Revisar silueta a1:1 en escena menos solapada y contacto real; skins/contraste integral pendientes.",
       "pr": 198,
       "productionCommit": "49dfb32611f58a8b4367fa39f3e890c9f85494c5",
       "correctionHistory": [
@@ -546,17 +546,6 @@
           "change": "Micelio conectado al suelo con bifurcaciones y cuatro sombreros laterales. Centros retraídos para no cortar contorno.",
           "evidence": "30 silhouette checks;23 kit;131 functional;16 relay;23 general online;SFA RNG30414 identical;legibility six arenas horizontal/mobile PASS",
           "remaining": "FIX residual: identificación aún tenue entre cuerpos/escudo genérico en móvil. Revisar silueta a1:1 en escena menos solapada y contacto real; skins/contraste integral pendientes."
-        },
-        {
-          "date": "2026-10-23",
-          "pr": 198,
-          "path": "art-source/entregas/morveth-kit-20261022/correccion-02",
-          "sourceSha256": "18c4475c2daa309dc9066cda1c1c59f37b993a38faf825d3b8e691d41c0ed1ce",
-          "atlasSha256": "7ffd8daef7ca3d3bbe80e64c682483b74e58701e0699a633550cdf8657aaf697",
-          "state": "EN_CORRECCION",
-          "change": "B168 only: 48x56x18, four lateral violet caps with closed dark contour and light gills, open torso and two lateral spores. Common arena tint retained on roots; cap uses 80% canon violet / 20% tinted accent. Cosmetic width60 world units at radius25; no mechanics radius change.",
-          "evidence": "43 component,23 kit,131 functional,17 relay actual atlas draw;30414 parity;2268 protection placements per viewport >=80%; nine initial scenes equal;UF identical",
-          "remaining": "Compound contact with legacy rings still dominant; full equipped skins/arenas/performance/Art Gate pending."
         }
       ]
     },

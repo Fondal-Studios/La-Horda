@@ -1,0 +1,31 @@
+{
+  "state": "EN_CORRECCION",
+  "merge": "NO_INTEGRAR",
+  "attempts": [
+    {
+      "file": "online-first-attempt.json",
+      "result": "FAIL/timeout",
+      "diagnosis": "Fixture de compartir estaba a nivel20: talento requiere40. Se ajustó fixture a60, sin cambios runtime."
+    },
+    {
+      "file": "online-second-attempt.json",
+      "result": "FAIL 4 controles de destinatarios",
+      "diagnosis": "El arnés asumía dos receptores pero había dos aliados IA móviles; no se guardó el detalle de receptores de este intento, por lo que no se adjudica causa raíz demostrada."
+    },
+    {
+      "file": "online-third-attempt.json",
+      "result": "PASS 30",
+      "diagnosis": "Mismo runtime, añadida instrumentación; muestra cuatro héroes totales y destinatarios0/1 en este intento. No borra el fallo anterior."
+    },
+    {
+      "file": "online-results.json",
+      "result": "PASS 31",
+      "diagnosis": "Fixture final aleja e inmoviliza aliados IA extra y comprueba antes del cast exactamente0/1; comprueba conjuntos exactos en host/guest. No se rebajó la aserción."
+    },
+    {
+      "tool": "verify-aelith-variants.js",
+      "result": "Initial fixture exception, final11 PASS",
+      "diagnosis": "Primer fixture nivel60 no habilitaba maestría requiere90: reprise no creaba eco; finalnivel100. No cambio gameplay. No se publicó reporte JSON del intento fallido; se conserva esta nota, no se inventa ejecución."
+    }
+  ]
+}
