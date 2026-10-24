@@ -1,0 +1,78 @@
+{
+  "base": "51c9d4584d45e8c19c4d237a64e8033a6b845bb1",
+  "source": "js/champions/skill-fx-a/c/iria.js",
+  "method": "SfaStrip native integer raster, binary alpha, authored three-tone palette. No image generator needed for native code VFX. Pintor is for body donor recipes; body unchanged.",
+  "commands": [
+    "node tools/vfx/produce-iria-first-pass.js",
+    "node tools/vfx/capture-iria-first-pass.js",
+    "ONLY=iria node tools/vfx/parity-iria-first-pass.js"
+  ],
+  "environment": [
+    "NODE_PATH with playwright",
+    "CHROMIUM_PATH Chromium"
+  ],
+  "layers": [
+    {
+      "id": "A-FX-iria-h1",
+      "block": "B151",
+      "kind": "anchor",
+      "cell": [
+        32,
+        48
+      ],
+      "n": 18,
+      "phases": [
+        3,
+        3,
+        4,
+        8
+      ],
+      "pivot": [
+        16,
+        35
+      ],
+      "consumer": "SFA_OBJ.anchor.draw; initial10 phases70ms, loop8 phases100ms; fade by real life"
+    },
+    {
+      "id": "A-FX-iria-h2",
+      "block": "B152",
+      "kind": "tension",
+      "cell": [
+        200,
+        24
+      ],
+      "n": 16,
+      "phases": [
+        3,
+        3,
+        4,
+        6
+      ],
+      "pivot": [
+        0,
+        12
+      ],
+      "consumer": "SFA_POLL real portadorLinks; currently loop10..15 only, remaining timer modulo; stretched to actual endpoints"
+    },
+    {
+      "id": "A-FX-iria-h3",
+      "block": "B153",
+      "kind": "cut",
+      "cell": [
+        104,
+        104
+      ],
+      "n": 10,
+      "phases": [
+        3,
+        3,
+        4
+      ],
+      "pivot": [
+        52,
+        52
+      ],
+      "consumer": "NOT CONNECTED; source candidate only. Must capture removed node and actual adjacent segments, preserve no-anchor fallback."
+    }
+  ]
+}

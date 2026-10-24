@@ -1,0 +1,134 @@
+{
+  "rows": [
+    {
+      "name": "anchor alpha binary",
+      "ok": true,
+      "partial": 0
+    },
+    {
+      "name": "anchor cache stable",
+      "ok": true
+    },
+    {
+      "name": "tension alpha binary",
+      "ok": true,
+      "partial": 0
+    },
+    {
+      "name": "tension cache stable",
+      "ok": true
+    },
+    {
+      "name": "cut alpha binary",
+      "ok": true,
+      "partial": 0
+    },
+    {
+      "name": "cut cache stable",
+      "ok": true
+    },
+    {
+      "name": "unknown recipe returns null",
+      "ok": true
+    },
+    {
+      "name": "tension without anchors creates no false links",
+      "ok": true
+    },
+    {
+      "name": "three anchors produce two actual links",
+      "ok": true
+    },
+    {
+      "name": "real object renderer consumes new anchor",
+      "ok": true,
+      "draws": {
+        "anchor": 3,
+        "tension": 2
+      }
+    },
+    {
+      "name": "real poll consumes tension strip",
+      "ok": true
+    },
+    {
+      "name": "draw preserves object state",
+      "ok": true
+    },
+    {
+      "name": "draw consumes zero RNG",
+      "ok": true
+    }
+  ],
+  "atlases": [
+    {
+      "kind": "anchor",
+      "w": 32,
+      "h": 48,
+      "n": 18,
+      "counts": [
+        237,
+        226,
+        224,
+        229,
+        232,
+        241,
+        224,
+        227,
+        228,
+        226,
+        224,
+        222,
+        219,
+        222,
+        224,
+        227,
+        229,
+        227
+      ]
+    },
+    {
+      "kind": "tension",
+      "w": 200,
+      "h": 24,
+      "n": 16,
+      "counts": [
+        1783,
+        1779,
+        1776,
+        1777,
+        1779,
+        1778,
+        1777,
+        1784,
+        1775,
+        1775,
+        1776,
+        1777,
+        1777,
+        1774,
+        1787,
+        1778
+      ]
+    },
+    {
+      "kind": "cut",
+      "w": 104,
+      "h": 104,
+      "n": 10,
+      "counts": [
+        698,
+        696,
+        716,
+        736,
+        718,
+        700,
+        493,
+        303,
+        157,
+        0
+      ]
+    }
+  ],
+  "errors": []
+}
