@@ -1,0 +1,51 @@
+{
+  "strips": {
+    "so_splash": {
+      "frames": 10,
+      "cell": 40,
+      "radius": 85,
+      "soft": 0
+    },
+    "so_fuse": {
+      "frames": 10,
+      "cell": 44,
+      "radius": 100,
+      "soft": 0
+    },
+    "so_pool_idle": {
+      "frames": 14,
+      "cell": 72,
+      "radius": 160,
+      "soft": 0
+    },
+    "so_toast": {
+      "frames": 10,
+      "cell": 24,
+      "radius": 38,
+      "soft": 0
+    }
+  },
+  "checks": [
+    {
+      "name": "four thematic recipes recorded and replayed",
+      "pass": true,
+      "events": [
+        "solciju.wine",
+        "solciju.cask",
+        "solciju.toast",
+        "solciju.reserve"
+      ]
+    },
+    {
+      "name": "pool and renderer reduceFx=false",
+      "pass": true,
+      "size": 128
+    },
+    {
+      "name": "pool and renderer reduceFx=true",
+      "pass": true,
+      "size": 64
+    }
+  ],
+  "errors": []
+}
