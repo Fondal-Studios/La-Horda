@@ -1,0 +1,261 @@
+{
+  "status": "PASS",
+  "scope": "Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.",
+  "checks": [
+    {
+      "name": "solciju admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "brakk admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "veyra admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "morveth admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "aelith admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "nano_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "facu_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "Morveth infections remain host authoritative",
+      "ok": true,
+      "hs": 5,
+      "gs": 0
+    },
+    {
+      "name": "render event visible on host and touch guest: morveth_growth",
+      "ok": true,
+      "host": [
+        [
+          "burst",
+          "morveth_growth",
+          115,
+          50,
+          42,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "guest": [
+        [
+          "burst",
+          "morveth_growth",
+          115,
+          50,
+          42,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "render event visible on host and touch guest: morveth_spores~h",
+      "ok": true,
+      "host": [
+        [
+          "cone",
+          "morveth_spores~h",
+          49.5,
+          49.5,
+          210,
+          0,
+          560,
+          null,
+          null,
+          null,
+          null,
+          0.85,
+          null
+        ]
+      ],
+      "guest": [
+        [
+          "cone",
+          "morveth_spores~h",
+          49.5,
+          49.5,
+          210,
+          0,
+          560,
+          null,
+          null,
+          null,
+          null,
+          0.85,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "render event visible on host and touch guest: morveth_symbiosis~p",
+      "ok": true,
+      "host": [
+        [
+          "aura",
+          "morveth_symbiosis~p",
+          49.5,
+          49.5,
+          25,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      ],
+      "guest": [
+        [
+          "aura",
+          "morveth_symbiosis~p",
+          49.5,
+          49.5,
+          25,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "render event visible on host and touch guest: morveth_pulse",
+      "ok": true,
+      "host": [
+        [
+          "nova",
+          "morveth_pulse",
+          115,
+          50,
+          85,
+          0,
+          520
+        ],
+        [
+          "nova",
+          "morveth_pulse",
+          115,
+          50,
+          85,
+          0,
+          520
+        ]
+      ],
+      "guest": [
+        [
+          "nova",
+          "morveth_pulse",
+          115,
+          50,
+          85,
+          0,
+          520
+        ],
+        [
+          "nova",
+          "morveth_pulse",
+          115,
+          50,
+          85,
+          0,
+          520
+        ]
+      ]
+    },
+    {
+      "name": "spore cone scalar profile reaches actual signature pool on host and touch guest",
+      "ok": true,
+      "host": [
+        {
+          "r": 210,
+          "arc": 0.85,
+          "style": "morveth_spores"
+        },
+        {
+          "r": 180,
+          "arc": 0.85,
+          "style": null
+        }
+      ],
+      "guest": [
+        {
+          "r": 210,
+          "arc": 0.85,
+          "style": "morveth_spores"
+        },
+        {
+          "r": 180,
+          "arc": 0.85,
+          "style": null
+        }
+      ]
+    },
+    {
+      "name": "corrected B168 atlas actually drawn on host and touch guest",
+      "ok": true,
+      "actualDraws": [
+        39,
+        81
+      ]
+    },
+    {
+      "name": "morveth guest casts simulated by host",
+      "ok": true,
+      "host": {
+        "key": "morveth",
+        "casts": 4,
+        "damage": 179.53251800000012,
+        "bleeds": 0
+      },
+      "guest": {
+        "key": "morveth",
+        "casts": 3,
+        "owned": [
+          "mor_garden"
+        ],
+        "bleeds": 0
+      }
+    },
+    {
+      "name": "morveth ultimate replicates with guest owner",
+      "ok": true
+    },
+    {
+      "name": "morveth death removes owned effects",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,23 @@
+{
+  "attempts": [
+    {
+      "id": 1,
+      "status": "FAIL",
+      "test": "open torso",
+      "result": "18 arena/variant checks failed:21 central opaque pixels over18frames from pre-existing central spore, no clipping/soft alpha.",
+      "source": "attempt-01/morveth.js",
+      "sourceSha256": "da9d082ce94ee8b62ae09e1855562d732dda6269f6e79b28de85152eab76ae2a",
+      "atlas": "attempt-01/atlas.png",
+      "atlasSha256": "d56755cfcc002de4cf2846711677113ec54d4492c843c486b20b80a99e9cf5b0",
+      "evidence": "attempt-01/contact-tests.json",
+      "otherResults": "Initial all18frame protection gates PASS;17relay PASS. Preserved in attempt-01.",
+      "correction": "Replace central spore with two lateral spores; did not relax zero central pixels or80% threshold."
+    },
+    {
+      "id": 2,
+      "status": "PASS_TECHNICAL_NOT_ART_APPROVAL",
+      "result": "43 components,23 kit,131 functional,17 real relay,2268 placements each viewport; parity30414 identical.",
+      "note": "All final gates/captures repeated after lateral-spore change; later9x6->9x5 comment correction only, no executable diff."
+    }
+  ]
+}
