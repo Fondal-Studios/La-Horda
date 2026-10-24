@@ -1,0 +1,14 @@
+Use case: stylized-concept. Asset type: first-pass game sprite pose source sheet for Bront, La Horda.
+Reference image 1 is Bront's proposed identity: empty angular fortress armor, floating crenellated shoulder plates, recessed dark visor, suspended pale cyan crystal in an OPEN chest. Preserve this identity but simplify drastically for small sprites. Reference image 2 is ONLY the game's chibi proportions and compact hand-painted pixel style, NOT its human face, sword, shield, brown background, or character.
+Create ONE transparent sprite sheet exactly FOUR COLUMNS and NINE ROWS, 36 complete isolated poses in equal rectangular cells, portrait canvas approximately 1024x2304. No text, labels, borders or grid lines. Every cell generous transparent padding; no effects bleed into neighboring cells.
+Design: head/helmet 40 percent of standing height, squat guardian, dark slate and desaturated stone-gray angular plates, 2-3 shading tones per material, one crisp dark outline, small pale cyan chest crystal; large readable shapes, very sparse details. Helmet is a squared stepped bastion, NOT a round diving helmet. No porthole, breathing hose, scuba suit, human face, sword, shield or wood. Shoulder plates visibly float slightly apart from body. Consistent identical equipment, proportions and palette across ALL cells. Orthographic slightly elevated RPG view. Deliberate crisp pixel clusters rather than painterly rendering, no gradient glow, no ground shadows. True transparent background.
+Row 1 cells 0-3: four successive FRONT walk cycle poses with alternating feet.
+Row 2 cells 4-7: four successive RIGHT PROFILE walk cycle poses.
+Row 3 cells 8-11: four successive BACK walk cycle poses; closed angular back armor, no chest crystal visible through back.
+Row 4 cells 12-15: FRONT attack cycle: windup, thrust detached forearm plate, followthrough, recover.
+Row 5 cells 16-19: RIGHT PROFILE attack cycle, same stages.
+Row 6 cells 20-23: BACK attack cycle, same stages, no frontal visor or chest visible.
+Row 7 cells 24-27: FRONT cast cycle: prepare, separate shoulder plates, cyan crystal pulse with restrained hard-edged pixel rays, recover.
+Row 8 cells 28-31: FRONT ultimate cycle: brace, widen floating shoulders like battlements, fully brace fortress stance, recover. Same body size, no extra buildings.
+Row 9 cells 32-35: FRONT death cycle: kneel, collapse armor, disconnected grounded plates, completely inert heap with crystal dimmed. Clear death progression, do not merely repeat standing pose.
+Standing feet share baseline at 90 percent of cell height. Do not draw multiple characters per cell. This is a draft source for review, not a poster.

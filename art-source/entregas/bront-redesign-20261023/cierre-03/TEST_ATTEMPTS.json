@@ -1,0 +1,31 @@
+{
+  "attempts": [
+    {
+      "id": "image-edit03",
+      "result": "FAIL source gate",
+      "tool": "built-in imagegen",
+      "observed": "880333 source/126954 atlas partial alpha; cut contact13; cavity unresolved"
+    },
+    {
+      "id": "extract01",
+      "result": "36nonempty/unique;4Painter metricsPASS15%; source gateFAIL"
+    },
+    {
+      "id": "repeat01",
+      "result": "ERROR cv2 missing",
+      "cause": "Invocation omitted PYTHONPATH for installed temporary deps; no source change"
+    },
+    {
+      "id": "repeat02",
+      "result": "5outputs exact",
+      "fix": "Set PYTHONPATH=/tmp/la-horda-python-deps"
+    }
+  ],
+  "notRun": [
+    "game renderer",
+    "skins",
+    "multiplayer",
+    "Art Gate integral"
+  ],
+  "reason": "Necessary source gate fails; no runtime changed."
+}

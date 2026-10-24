@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "champion": "bront",
+  "block": "B410",
+  "status": "EN_CORRECCION",
+  "generation": {
+    "tool": "image_gen.imagegen built-in",
+    "prompt": "prompt.txt",
+    "references": [
+      "../primera-pasada-01/sources/pose-sheet-raw.png",
+      "assets/sprites/champions/tanque/atlas.png@758aa2ffacaae6542d31776e4a66ea7847a73b1b"
+    ],
+    "transparent_background": true,
+    "output": "sources/pose-sheet-raw.png",
+    "deterministic": false,
+    "note": "Regenerar no garantiza los mismos píxeles. Fuente original conservada; no API key ni servicio extra.",
+    "mode": "edit existing saved36-pose sheet; full batch"
+  },
+  "extraction": {
+    "command": "PYTHONPATH=/tmp/la-horda-python-deps python art-source/entregas/bront-redesign-20261023/correccion-02/extract.py",
+    "deterministic": true,
+    "inputs": [
+      "sources/pose-sheet-raw.png"
+    ],
+    "outputs": [
+      "atlas-diagnostic.png",
+      "preview.png",
+      "contact-36.png",
+      "comparison-native.png",
+      "VERIFICATION.json"
+    ],
+    "sourceGrid": "Explicit row and per-row column cuts; attempt01 preserved; zero opaque cut contacts final",
+    "scale": 0.3855421686746988,
+    "sampling": "NEAREST diagnostic only",
+    "alpha": "Preservada; umbral128 sólo determina límites. No endurecida.",
+    "warning": "Reducción diagnóstica no se declara pixel-art nativo aprobado."
+  },
+  "painter": {
+    "sourceRecipe": "tools/art/painter/specs/bront.json",
+    "finding": "body baltra y accesorio bront_core donor baltra explican reutilización de cuerpo.",
+    "use": "Gate estadístico original style_gate.py sin modificar tolerancia. No repintar el mismo donante como solución de identidad.",
+    "forge": "Accesorios existentes no bastan para cambiar cuerpo/casco. Nueva fuente original imagegen; futura receta de anclaje por pose pendiente."
+  },
+  "dependencies": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pillow": "12.3.0",
+    "opencv": "opencv-python-headless==5.0.0.93 instalado temporalmente fuera del repo"
+  },
+  "validation": "Estadísticas estilo PASS; Art Gate FIX; no instalación.",
+  "next": "Finish native alpha/proportion/negative-space in full base batch; then two skins and actual renderer. Do not install partial atlas.",
+  "preview": {
+    "file": "preview.html",
+    "command": "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules node art-source/entregas/bront-redesign-20261023/correccion-02/check-preview.js",
+    "browser": "/tmp/chromium",
+    "scope": "Diagnostic only, four images,66indices,180ms review clock"
+  }
+}

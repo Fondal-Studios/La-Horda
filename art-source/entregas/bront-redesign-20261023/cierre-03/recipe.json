@@ -1,0 +1,24 @@
+{
+  "parent": "ff1c635318079d7cc97e9b9a9a4be2136e4c0ed0",
+  "mainObserved": "51c9d4584d45e8c19c4d237a64e8033a6b845bb1",
+  "mode": "built-in imagegen edit source02",
+  "input": "../correccion-02/sources/pose-sheet-raw.png",
+  "inputSha256": "9ef650cbc7454b4d4a4100918dd33f718f2481e4c3e61b5c4a2086836623a0ef",
+  "prompt": "prompt.txt",
+  "output": "sources/pose-sheet-raw.png",
+  "sourceSha256": "4167703df506a8242775bc8a8296f852465f8468017825066698e132ce146d58",
+  "generationDeterministic": false,
+  "extractionDeterministic": true,
+  "commands": [
+    "PYTHONPATH=/tmp/la-horda-python-deps python3 art-source/entregas/bront-redesign-20261023/cierre-03/extract.py",
+    "python3 art-source/entregas/bront-redesign-20261023/cierre-03/check_source_gate.py # preserved expected exit1"
+  ],
+  "dependencies": [
+    "numpy",
+    "Pillow",
+    "opencv-python-headless for Painter style gate"
+  ],
+  "alpha": "preserved; no hardening",
+  "scale": "64/166 nearest diagnostic only, not native pixel art approval",
+  "skins": "Not generated: base failed. Installed originals unchanged."
+}
