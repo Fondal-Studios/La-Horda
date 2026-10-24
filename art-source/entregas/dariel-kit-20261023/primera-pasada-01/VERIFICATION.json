@@ -1,0 +1,322 @@
+{
+  "checks": [
+    {
+      "name": "dariel_discordcone binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "dariel_discordcone clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "dariel_discordcone active cells",
+      "ok": true,
+      "detail": [
+        112,
+        159,
+        258,
+        300,
+        341,
+        375,
+        416,
+        459,
+        320,
+        217,
+        97,
+        0
+      ]
+    },
+    {
+      "name": "dariel_discordcone final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "dariel_discordcone cache reuse",
+      "ok": true
+    },
+    {
+      "name": "dariel_marchnova binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "dariel_marchnova clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "dariel_marchnova active cells",
+      "ok": true,
+      "detail": [
+        338,
+        335,
+        338,
+        340,
+        330,
+        335,
+        332,
+        331,
+        236,
+        160,
+        83,
+        0
+      ]
+    },
+    {
+      "name": "dariel_marchnova final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "dariel_marchnova cache reuse",
+      "ok": true
+    },
+    {
+      "name": "dariel_marchaura binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "dariel_marchaura clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "dariel_marchaura active cells",
+      "ok": true,
+      "detail": [
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134
+      ]
+    },
+    {
+      "name": "dariel_marchaura final phase",
+      "ok": true,
+      "detail": 134
+    },
+    {
+      "name": "dariel_marchaura cache reuse",
+      "ok": true
+    },
+    {
+      "name": "dariel_refrainnova binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "dariel_refrainnova clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "dariel_refrainnova active cells",
+      "ok": true,
+      "detail": [
+        272,
+        280,
+        332,
+        324,
+        332,
+        324,
+        332,
+        324,
+        241,
+        136,
+        70,
+        0
+      ]
+    },
+    {
+      "name": "dariel_refrainnova final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "dariel_refrainnova cache reuse",
+      "ok": true
+    },
+    {
+      "name": "dariel_refrainaura binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "dariel_refrainaura clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "dariel_refrainaura active cells",
+      "ok": true,
+      "detail": [
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58
+      ]
+    },
+    {
+      "name": "dariel_refrainaura final phase",
+      "ok": true,
+      "detail": 58
+    },
+    {
+      "name": "dariel_refrainaura cache reuse",
+      "ok": true
+    },
+    {
+      "name": "music fallback nova",
+      "ok": true
+    },
+    {
+      "name": "music fallback cone",
+      "ok": true
+    },
+    {
+      "name": "music fallback aura",
+      "ok": true
+    },
+    {
+      "name": "original basic theme",
+      "ok": true
+    }
+  ],
+  "sources": [
+    {
+      "theme": "dariel_discord",
+      "art": "cone",
+      "size": 96,
+      "arc": 0.85,
+      "w": 98,
+      "h": 151,
+      "n": 12,
+      "cells": [
+        112,
+        159,
+        258,
+        300,
+        341,
+        375,
+        416,
+        459,
+        320,
+        217,
+        97,
+        0
+      ]
+    },
+    {
+      "theme": "dariel_march",
+      "art": "nova",
+      "size": 128,
+      "arc": 0,
+      "w": 128,
+      "h": 128,
+      "n": 12,
+      "cells": [
+        338,
+        335,
+        338,
+        340,
+        330,
+        335,
+        332,
+        331,
+        236,
+        160,
+        83,
+        0
+      ]
+    },
+    {
+      "theme": "dariel_march",
+      "art": "aura",
+      "size": 0,
+      "arc": 0,
+      "w": 48,
+      "h": 56,
+      "n": 12,
+      "cells": [
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134
+      ]
+    },
+    {
+      "theme": "dariel_refrain",
+      "art": "nova",
+      "size": 128,
+      "arc": 0,
+      "w": 128,
+      "h": 128,
+      "n": 12,
+      "cells": [
+        272,
+        280,
+        332,
+        324,
+        332,
+        324,
+        332,
+        324,
+        241,
+        136,
+        70,
+        0
+      ]
+    },
+    {
+      "theme": "dariel_refrain",
+      "art": "aura",
+      "size": 0,
+      "arc": 0,
+      "w": 48,
+      "h": 56,
+      "n": 12,
+      "cells": [
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58
+      ]
+    }
+  ]
+}

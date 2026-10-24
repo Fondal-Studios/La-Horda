@@ -1,0 +1,26 @@
+{
+  "pr": 204,
+  "head": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+  "state": "NOT_MERGED",
+  "remoteJob": 120653479284,
+  "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40023412176/job/120653479284",
+  "failedAssertion": "compra.objeto_del_invitado_en_la_base",
+  "values": [
+    0,
+    0
+  ],
+  "otherAssertions": 18,
+  "pageErrors": [],
+  "localMain": {
+    "sha": "817610a78595e894995cec8032dd64149dbfe925",
+    "pass": 19
+  },
+  "localCandidate": {
+    "head": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+    "pass": 19
+  },
+  "rootCause": "NOT_DEMONSTRATED; local reruns passing do not prove CI cause",
+  "rerunAttempt": "API403 workflow containing job is still running; retry after workflow completion",
+  "unchanged": "No test/runtime/gameplay modifications for lanes",
+  "next": "Inspect fresh exact-head jobs; rerun failed lanes once workflow finishes; normal merge only when all applicable checks/workflows pass and head remains exact."
+}
