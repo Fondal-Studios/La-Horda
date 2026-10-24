@@ -20,3 +20,7 @@ vm.runInContext(fs.readFileSync('js/storage/save-sanitize.js','utf8'),c);
 run(`var roundtrip=JSON.parse(JSON.stringify({stash:[{...dup('persist'),favorite:true,overflow:true}],lootManagement:{enabled:true,autoFuse:false}}));saveSanitize(roundtrip,{});`);
 check(`roundtrip.stash[0].favorite===true && roundtrip.stash[0].overflow===true && roundtrip.lootManagement.autoFuse===false`);
 console.log('PASS auto inventory: '+count+' domain assertions');
+
+const {boundReason}=require('../../server/trades');
+for(const field of ['favorite','_reserved','relicId'])assert.equal(boundReason({uid:'protected',type:'arma',rarity:'raro',[field]:true}),'BOUND_PROTECTED');
+console.log('PASS protected inventory cannot enter legacy trades');
