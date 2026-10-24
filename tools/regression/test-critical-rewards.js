@@ -77,3 +77,13 @@ ev('save.stash=[];rewardOverflowClaim()');assert.equal(ev('save.stash[0].uid'),'
 ev(`var legacy={stash:Array.from({length:6500},(_,i)=>({uid:'legacy-'+i,type:'arma'}))};saveSanitize(legacy);`);
 assert.equal(ev('legacy.stash.length+legacy.rewardOverflow.flat().length'),6500);
 console.log('PASS 6500 earned items survive JSON + sanitizer; claiming honors capacity and never duplicates; legacy overflow preserved');
+
+// Reforging is not an arena reward: it must keep its original inventory path.
+ev(`INVENTORY_CAPACITY=3;save.stash=[{uid:'duplicate-a'},{uid:'duplicate-b'}];
+function setDuplicateInfo(){return {dupes:save.stash.slice(),missing:['set-missing']};}
+function removeItemFromInventory(k,id){save.stash=save.stash.filter(i=>i.uid!==id);}
+function makeDesignedItem(id){return {uid:id,type:'arma'};}
+function itemIlvl(){return 1;}
+var forged=reforgeSetDuplicates('mago','set');`);
+assert.equal(ev('forged.ok'),true);assert.equal(ev('save.stash.length'),1);assert.equal(ev('save.stash[0].uid'),'set-missing');
+console.log('PASS set reforging consumes duplicates and retains its ordinary inventory path');

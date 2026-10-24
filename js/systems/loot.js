@@ -291,8 +291,7 @@ function reforgeSetDuplicates(classKey, setId){
   const it = makeDesignedItem(id); it.lootTier = "set";
   const il = Math.min(...used.map(itemIlvl)); if(il > 1) it.ilvl = il; // conserva el nivel de objeto (el menor de las dos)
   if(typeof rollItemAffixes==="function") rollItemAffixes(it);
-  if(victory && stashFull()) inventoryFull = true;
-    addItemToInventory(classKey, it, victory);
+  addItemToInventory(classKey, it);
   persist();
   return {ok:true, item:it};
 }

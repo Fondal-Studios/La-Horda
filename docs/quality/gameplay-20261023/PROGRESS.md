@@ -1,6 +1,6 @@
 # La Horda — auditoría de jugabilidad, bloque crítico
 
-Fecha del pedido: 23/10/2026 (Argentina). Estado: **PARCIAL / NO MERGEAR TODAVÍA**.
+Fecha del pedido: 23/10/2026 (Argentina). Estado vigente al 24/10/2026: **implementado y en validación final de CI**. Las secciones iniciales conservan el diagnóstico; el checkpoint final reemplaza sus bloqueos anteriores.
 
 ## Punto de partida y continuidad
 
@@ -88,3 +88,13 @@ Validado en VM, con funciones reales de persistencia, inventario, entrega y cons
 - Pruebas servidor PASS: desconexión previa al final, doble mensaje, reinicio real del adaptador, otro dispositivo autenticado, aislamiento de cuentas y backpressure. `npm test --prefix server` también PASS.
 - Nueva prueba CI `Campaign reward recovery`: dos navegadores y relay real, invitado cerrado antes de ganar, host cerrado, relay reiniciado, recuperación a inventario lleno, recarga y revisión visual. Pendiente ejecución al subir este checkpoint.
 - Despliegue del servidor todavía no realizado. Estas capacidades no están activas en producción sólo por subir la rama. Revisar resultado de CI y rama principal antes de integrar/desplegar.
+
+## Checkpoint vigente — 24/10/2026
+
+- PR210: A1 aislado. Health HUD PASS (run40046910510), capturas 844×390/1280×720 revisadas. Las demás regresiones están en curso; Safari se canceló instalando dependencias, no ejecutando juego. Safari sí pasó en la rama completa de recompensas (mismo código de vida).
+- PR208, head0fc7f18: recuperación completa Chromium PASS en run40048224066, artifact12542715111. Dos contextos reales, relay real; invitado ausente al ganar, host cerrado, relay reiniciado, inventario lleno, recuperación a buzón, recarga sin duplicar oro/XP/objetos. Captura mailbox-mobile.png revisada.
+- Excedentes: prueba6500 PASS. El límite5000 del sanitizador ya no descarta los excedentes válidos; se conservan en bloques fuera de stash. Las cuotas finitas de localStorage y el límite512KB del guardado de cuenta no se eliminaron. No confundir esta prueba local con sincronización nube de6500objetos.
+- npm test --prefix server PASS tras los últimos cambios. Test de WebSockets reales PASS; control de20resultados pendientes y aislamiento de cuentas PASS.
+- CI detectó scroll adicional del hub móvil por el botón de buzón: corregido integrándolo en la barra superior. Revisión final detectó además una modificación accidental en reforgeSetDuplicates: se restaura su ruta original y se añade una prueba de consumo de duplicados. No cambia ninguna regla de forja.
+- Health público https://fondalstudios.com/la-horda/red/health comprobado: informa ARCHIVO EN DISCO sin DATABASE_URL y advierte pérdida en redeploy/reinicio. No se reinició producción ni se afirma recuperación durable allí. Se necesita almacenamiento persistente y respaldo comprobado antes de desplegar.
+- PR208 ya está lista para revisión, no draft. Antes del merge revisar checks del head final, no sólo los del head0fc7f18. Después integrar PR210 y PR208 si pasan; actualizar aquí los SHAs de merge. B–F siguen pendientes según la matriz; el segundo prompt de ítems sigue ausente.
