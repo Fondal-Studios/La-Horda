@@ -6,6 +6,7 @@ function economyApply(d){
  if(!d)return;ECON.data=d;const p=d.projection;if(!p?.economyV2)return;
  if(!save.economyV2){try{localStorage.setItem('horda_legacy_backup_'+ECON.user,JSON.stringify(save));}catch{economyNotify('No se pudo guardar la copia local. La copia del servidor se conserva.');}}
  save.gold=p.gold;save.gems=p.gems;save.stash=p.stash;
+ if(typeof collectionRegister==='function'){save.collection=save.collection||{};for(const it of p.stash)if(it.designId&&!save.collection[it.designId])try{collectionRegister(it,true);}catch{}}
  for(const [k,c] of Object.entries(save.champions||{})){if(c.loadoutItems)continue;c.equipment=p.champions?.[k]?.equipment||{};if(d.account?.unlocked?.includes(k))c.unlocked=true;}
  save.cosmeticUnlocks={...save.cosmeticUnlocks,...p.cosmeticUnlocks};save.economyV2=true;
  if(d.account?.titles?.length&&save.quests){save.quests.titles=save.quests.titles||[];if(!save.quests.titles.includes('lb_campeon'))save.quests.titles.push('lb_campeon');}
@@ -18,6 +19,8 @@ async function economyRefresh(){
  ECON.user=who.user;
  return ECON.busy=(async()=>{const r=await accountFetch('GET','/api/economy');if(r.status!==200)throw Error(r.j.msg||'Economía no disponible');if(accountState().user===who.user)economyApply(r.j.snapshot||r.j);return ECON.data;})().finally(()=>ECON.busy=null);
 }
+// Recarga el inventario autoritativo (tras una compra/regalo hecho por el servidor fuera de /api/economy/action, p. ej. Brasas→pieza).
+function economyReload(){ECON.busy=null;return economyRefresh().catch(()=>null);}
 function economyAction(op,args={},options={}){
  const user=accountState().user,requestId=options.requestId||crypto.randomUUID();
  const job=ECON.chain.catch(()=>{}).then(async()=>{

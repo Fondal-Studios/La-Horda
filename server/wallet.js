@@ -17,6 +17,7 @@ const legacyIds = require("../js/storage/legacy-champion-ids.js");
 const path = require("path");
 const vm = require("vm");
 const payments = require("./payments");
+const compat = require("./item-economy-compat");
 
 const CURRENCY = Object.freeze({ id: "brasas", name: "Brasas", icon: "✦" });
 const entitlements = require("./entitlements");
@@ -234,6 +235,30 @@ function routes(ctx){
     if(body.expectedPrice !== price) fail("PRICE_CHANGED", 409);
     const debitRef = "buyp:" + user.id + ":" + ref, uid = pieceUid(debitRef);
     const prev = (await store().walletLedger(user.id, 200)).find(e => e.ref === debitRef);
+    // Economía V2: con la cuenta migrada, el inventario es el LEDGER (server/item-economy*.js). La pieza se entrega ahí (idempotente por
+    // la misma referencia de compra) y aparece en el Arsenal; los PUT de guardado ya no pueden reemplazar el inventario.
+    const ledger = await compat.active(store(), user.id);
+    if(ledger){
+      if(prev){   // reintento de una compra ya cobrada: se completa la entrega si faltaba (mismo uid, no duplica)
+        const g = await ledgerDeliver(user, id, piece, uid, debitRef);
+        if(!g.ok) fail("CONFLICT", 409);
+        return { ok: true, repeated: true, piece: { uid, designId: id }, ledger: true, cosmetics: g.setCompleted ? [{ id: g.setCompleted, type: "skin" }] : [], premium: (await store().walletGet(user.id)).premium };
+      }
+      if(flags().SHOP_MODE === "live" && !rotationKeys(Math.floor(now() / 86400000)).includes("d:" + id)) fail("NOT_ON_SALE", 409);
+      if(await compat.ownsDesign(store(), user.id, id)) fail("OWNED", 409);
+      const debit = await store().walletApply({ userId: user.id, delta: -price, reason: "buyp:" + id, ref: debitRef, actor: user.id, at: now() });
+      if(debit.insufficient) fail("INSUFFICIENT", 402);
+      let g;
+      try{ g = await ledgerDeliver(user, id, piece, uid, debitRef); }catch(e){ g = { ok: false, reason: "LEDGER_ERROR" }; }
+      if(!g.ok){
+        await store().walletApply({ userId: user.id, delta: price, reason: "refund:" + id + ":" + g.reason, ref: "refund:" + debitRef, actor: user.id, at: now() });
+        fail("CONFLICT", 409);
+      }
+      log("WALLET_BUY_PIECE", { user: user.id, piece: id, price, premium: debit.premium, setCompleted: g.setCompleted || null, ledger: true });
+      return { ok: true, piece: { uid, designId: id }, ledger: true, set: piece.set, price, setCompleted: g.setCompleted || null,
+        cosmetics: g.setCompleted ? [{ id: g.setCompleted, type: "skin" }] : [],
+        premium: (await store().walletGet(user.id)).premium, saveVersion: g.saveVersion, baseVersion: g.baseVersion };
+    }
     const saved = await store().getSave(user.id); if(!saved) fail("NO_CLOUD_SAVE", 409);
     const d0 = JSON.parse(saved.data);
     if(prev){   // reintento de una compra ya cobrada: se completa la entrega si faltaba
@@ -259,6 +284,18 @@ function routes(ctx){
       cosmetics: g.setCompleted ? [{ id: g.setCompleted, type: "skin" }] : [],
       premium: (await store().walletGet(user.id)).premium, saveVersion: g.saveVersion, baseVersion: g.baseVersion };
   }));
+  // Entrega por el ledger V2 + skin del set completo (cosmética: queda en el guardado como siempre; los conjuntos míticos V2 la dan el ledger).
+  async function ledgerDeliver(user, id, piece, uid, debitRef){
+    await compat.grantPurchasedPiece(store(), user, { ref: debitRef, uid, designId: id });
+    const have = await compat.designIdsOwned(store(), user.id), ids = pieceDb().sets[piece.set] || [];
+    let completed = null, out = { ok: true };
+    if(skinCatalog()[piece.set] && skinCatalog()[piece.set].kind === "set" && ids.length && ids.every(k => have.has(k))){
+      const r = await mutateSave(user.id, d => { d.cosmeticUnlocks = Object.assign({}, d.cosmeticUnlocks, { [piece.set]: true }); });
+      if(r.ok){ completed = piece.set; out = { ok: true, saveVersion: r.saveVersion, baseVersion: r.baseVersion }; }
+      else if(r.reason !== "NO_SAVE") return { ok: false, reason: r.reason };   // sin guardado en la nube la skin se completará en la próxima compra/consulta
+    }
+    return Object.assign(out, { setCompleted: completed });
+  }
   async function grantPiece(userId, id, piece, uid){
     let completed = null;
     const r = await mutateSave(userId, d => {

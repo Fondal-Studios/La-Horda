@@ -144,7 +144,9 @@ function premiumApplyPiece(j){
   PREMIUM.premium = j.premium; PREMIUM.at = Date.now();
   const p = j.piece || {};
   if(typeof acct !== "undefined" && acct.sync && Number.isInteger(j.baseVersion) && j.baseVersion === acct.sync.version && Number.isInteger(j.saveVersion)) acct.sync.version = j.saveVersion;   // misma regla de versión que accountApplyEventReward
-  if(p.uid && p.designId && !stashItems().some(it => it.uid === p.uid)){
+  // Economía V2: la pieza ya está en el ledger del servidor; se recarga el inventario autoritativo (no se escribe en save.stash)
+  if(j.ledger && typeof economyReload === "function"){ economyReload(); }
+  else if(p.uid && p.designId && !stashItems().some(it => it.uid === p.uid)){
     const it = makeDesignedItem(p.designId);
     if(it){ it.uid = p.uid; it.bought = true; stashItems().push(it); if(typeof collectionRegister === "function") collectionRegister(it); }
   }
