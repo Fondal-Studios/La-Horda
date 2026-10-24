@@ -1,0 +1,26 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "result": "FAIL",
+      "evidence": "attempt-01/startup.txt",
+      "source": "attempt-01/source-reset.js",
+      "diagnosis": "vfxResetRun runs before heroes is initialized; spreading null raised TypeError.",
+      "correction": "Guard nullable collections;33 final controls and131 functional checks pass."
+    },
+    {
+      "attempt": 2,
+      "result": "PASS",
+      "evidence": "attempt-01/relay-initial-pass.json",
+      "note": "37 checks before adding early-cleanse relay cases. Final41 checks include zeros delivered through existing snapshot deltas."
+    },
+    {
+      "audit": "_netDeltaOf does not transmit deleted keys",
+      "correction": "Use zero scalar metadata to invalidate guest. Unit delta test and real relay early-cleanse/re-slow pass. No protocol changes."
+    },
+    {
+      "setup": "Oversized local verification command rejected by operating system argv limit",
+      "correction": "Filtered to450 runtime files and verified before editing; no mutation from failed command."
+    }
+  ]
+}

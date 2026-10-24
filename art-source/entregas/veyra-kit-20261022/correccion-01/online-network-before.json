@@ -1,0 +1,124 @@
+{
+  "status": "FAIL",
+  "scope": "Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.",
+  "checks": [
+    {
+      "name": "solciju admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "brakk admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "veyra admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "morveth admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "aelith admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "nano_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "facu_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "foreign buff never starts pact on host",
+      "ok": true
+    },
+    {
+      "name": "foreign buff never starts pact on touch guest",
+      "ok": true
+    },
+    {
+      "name": "cast owned pact with duration reaches host",
+      "ok": true,
+      "details": {
+        "events": [
+          [
+            194.5,
+            49.5,
+            80,
+            0,
+            3000,
+            1
+          ]
+        ],
+        "auras": [
+          {
+            "owner": 1,
+            "duration": 3000,
+            "age": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "cast owned pact with duration reaches touch guest",
+      "ok": false,
+      "details": {
+        "events": [],
+        "auras": []
+      }
+    },
+    {
+      "name": "pact follows movement on host",
+      "ok": true
+    },
+    {
+      "name": "pact follows movement on touch guest"
+    },
+    {
+      "name": "pact ends despite longer foreign speed buff on host",
+      "ok": false
+    },
+    {
+      "name": "pact ends despite longer foreign speed buff on touch guest",
+      "ok": true
+    },
+    {
+      "name": "second cast starts one new aura on host",
+      "ok": true
+    },
+    {
+      "name": "second cast starts one new aura on touch guest",
+      "ok": false
+    },
+    {
+      "name": "veyra guest casts simulated by host",
+      "ok": true,
+      "host": {
+        "key": "veyra",
+        "casts": 5,
+        "damage": 505.89877800000005,
+        "bleeds": 0
+      },
+      "guest": {
+        "key": "veyra",
+        "owned": [],
+        "bleeds": 0
+      }
+    },
+    {
+      "name": "veyra death removes owned effects",
+      "ok": true
+    },
+    {
+      "name": "death clears pact on host",
+      "ok": true
+    },
+    {
+      "name": "death clears pact on touch guest",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

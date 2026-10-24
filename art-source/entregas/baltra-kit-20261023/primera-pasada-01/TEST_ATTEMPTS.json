@@ -1,0 +1,63 @@
+{
+  "attempts": [
+    {
+      "test": "nativeExport",
+      "result": "24/24 PASS;4/4byte identical reexport",
+      "limitation": "technical only"
+    },
+    {
+      "test": "functional",
+      "result": "254PASS0FAIL",
+      "evidence": "functional-results.json"
+    },
+    {
+      "test": "parity-attempt01",
+      "result": "INVALID_FIXTURE",
+      "reason": "Old champion file injected after load overwrote UF binding; not accepted as parity evidence.",
+      "evidence": "parity-attempt01.log"
+    },
+    {
+      "test": "parity-final",
+      "result": "PASS main/candidate32003 RNG calls,360frames, compared summary JSON identical",
+      "limitation": "SFA active both; summarized combat state, not complete network snapshot or global RNG isolation. Log labels sin/con sprites inherited; corrected script labels main/candidato."
+    },
+    {
+      "test": "online-attempt01",
+      "result": "ERROR",
+      "reason": "ERR_CONNECTION_REFUSED localhost HTTP",
+      "evidence": "online-attempt01.log"
+    },
+    {
+      "test": "online-attempt02",
+      "result": "ERROR",
+      "reason": "waitForFunction30000ms timeout during room start. No relay PASS.",
+      "evidence": "online-attempt02.log"
+    },
+    {
+      "test": "online-attempt03",
+      "result": "ERROR",
+      "reason": "Instrumentación: ambos jugadores Baltra; humanos/loadout listos, netHostStartGame rechaza duplicados y permanece prep. Regla encontrada en js/net/net-game.js316.",
+      "evidence": "online-attempt03.log"
+    },
+    {
+      "test": "online-attempt04",
+      "result": "4/4 PASS 0pageerrors exit0",
+      "change": "Sólo fixture: anfitrión Solciju, invitado Baltra con skin; sin cambios runtime.",
+      "draws": {
+        "wave": [
+          13,
+          39
+        ],
+        "guard": [
+          46,
+          105
+        ],
+        "clapper": [
+          12,
+          33
+        ]
+      },
+      "evidence": "online-results.json"
+    }
+  ]
+}

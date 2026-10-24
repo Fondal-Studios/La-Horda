@@ -1,0 +1,336 @@
+{
+  "date": "2026-10-23",
+  "pr": 202,
+  "branch": "art/baltra-kit-first-pass-20261023",
+  "base": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "recovery": "8c323740a2b4921dc6f999a7316c51cd40ddc7a4",
+  "production": "79619e25084fcdd02502d0bc14d64cabc790249d",
+  "verifiedProductionFiles": 76,
+  "verification": "All 76 local Git blob hashes equal uploaded blob hashes and remote recursive production tree; zero mismatches.",
+  "state": "EN_CORRECCION",
+  "mergeDecision": "NO_INTEGRAR",
+  "integratedMain": false,
+  "publicationVerified": false,
+  "preview": {
+    "images": 20,
+    "canvases": 4,
+    "pageErrors": 0,
+    "attempt1": "CHROMIUM_PATH omitted; browser executable not found. No page validation.",
+    "attempt2": "CHROMIUM_PATH=/tmp/chromium,20images loaded and4canvases,0pageerrors. Diagnostic only."
+  },
+  "pr91": {
+    "head": "0cab425359d7cdac534e69631cf04b493ad36992",
+    "merged": false,
+    "retryJob": 120586763151,
+    "conclusion": "cancelled",
+    "observation": "18:43:34Z during APT dependency download, before game tests. Reason for cancellation not demonstrated. No protection bypass or disabled check. PR body updated.",
+    "publicLivecheck": "canonical/phones/android fail on published old URL; publication not verified"
+  },
+  "next": "Audit Brasa B012/B120/B121/B122/B433 actual files/consumers/open PRs before producing a first-pass kit. Keep Baltra/Bront/Brakk in grouped correction queue. Do not repeat this48phase pass. Recheck PR91 exacthead/Safari and all applicable workflows before normal expected_head_sha merge.",
+  "files": [
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/baltra_clapper-cone.png",
+      "sha": "147827ff314fd9c997ab97453a852927855d8f95"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/functional-results.json",
+      "sha": "c29a791bbd9dcf7d5119c7cdbe32cb7a9481c13d"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/VERIFICATION.json",
+      "sha": "6cfb56eb25ac5f429f898e932ff14c39673997e0"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/SOURCE_REFERENCES.json",
+      "sha": "c8c6d2d844f1fea8cdd9c7e0c8f873bd4443dcb3"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/recipe.json",
+      "sha": "c616664da6de29ed9c0eae26dedaf8f201d48495"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/baltra_wave-nova.png",
+      "sha": "3e4b5407b00f4c1f1ce599a21df5f0c8024df90f"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/functional.log",
+      "sha": "5ed5eceb3e8c92cc06ae538a77f6aba0716b6eb9"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/COMPARISON.json",
+      "sha": "3eacc8621bdce17d0cdee8c98d7718993de71023"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/preview.html",
+      "sha": "0fbb495811980803237e161b2a2a4c56051b5a81"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/RUNTIME_DIFF.json",
+      "sha": "c99aa46b6eb3d520def54e1820e6266d7c3f619d"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/online-attempt01.log",
+      "sha": "aca0b5a066d4d5f5001cd3d20186368d3a6b314e"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/baltra_guard-cone.png",
+      "sha": "2533d97f8e84f8de54d88d61df592b2ce2b1928b"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/CHECKPOINT.md",
+      "sha": "51cdba6279df76d225a2145f42e6098cc3229760"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/parity.json",
+      "sha": "04127b97e82698630bcba5fc8ed1e46a07818028"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/REVIEW.json",
+      "sha": "f26924c75bc76ef5dc56bda2f4afb18d53d47de2"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/online-attempt03.log",
+      "sha": "0b47dc1fb53cc3fdf86ec601e087250fc450fbd5"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/REEXPORT.json",
+      "sha": "d0577fedec441c19c3c10ef88e16e63a97f9d6a0"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/TEST_ATTEMPTS.json",
+      "sha": "663246bb889547bf1077c6f2458c39e65c234a53"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/online-results.json",
+      "sha": "7024a3f3e9502480cb883bcdcf318c89e6b4222f"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/parity.log",
+      "sha": "dcc1fff6e6fb0f105fffd9122237b6100fd796c8"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/baltra_guard-aura.png",
+      "sha": "693f25dd3f2a6816abad2c623df66211d1954e44"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/online-attempt04.log",
+      "sha": "fb470b8fdf07fbfe1ccc335271140d91b633e58f"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/online-attempt02.log",
+      "sha": "e23c2c417ed9a85da0468fcf17f87e221b45a23d"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/parity-attempt01.log",
+      "sha": "dcc1fff6e6fb0f105fffd9122237b6100fd796c8"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/originals/engine.js",
+      "sha": "ddde362461734022e16db37fb7e02e0a64f78260"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/originals/baltra.js",
+      "sha": "95b954df071774b1697e71b06943a6734a942f24"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/originals/bind.js",
+      "sha": "4a3cd8c0efd669d031766832be4770436cca8aa1"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-mobile/baltra-2-native500.png",
+      "sha": "9637b8458dac4b383993237fe4d829cef5832f78"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-mobile/capture.json",
+      "sha": "0ad99992257cf8b9d9ef96de657181a3ac6efdb1"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-mobile/baltra-2.png",
+      "sha": "473297c701b08bf101bc8b9b104311669edd3197"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-mobile/baltra-0.png",
+      "sha": "abe044ef0fbb53dd0a9c3322c2de722d3a09e359"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-mobile/baltra-3.png",
+      "sha": "9aec24527d6bbbb9530e9c62a8cb636859ce812d"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-mobile/baltra-0-native500.png",
+      "sha": "0137611c5cbcad15ab4bc34ef9d04b45e250c672"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-mobile/baltra-1.png",
+      "sha": "5e2ad59d73a8b6e38e5309507e1a65ea4a0e7580"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-mobile/baltra-1-native500.png",
+      "sha": "d55592dac28d8695e693e58e3f2282e3f96e6e8e"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-mobile/baltra-3-native500.png",
+      "sha": "1b82b28eb190f71bfebe18ebc716fb56be28b0df"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-horizontal/baltra-2-native500.png",
+      "sha": "315022d23621b0a665337d3aa671f833325227a7"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-horizontal/capture.json",
+      "sha": "6945d905b0499ee283c2d532dfcf99033ef52eb9"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-horizontal/baltra-2.png",
+      "sha": "af8e58e00f8af02b603664d3afd315272e1d06f9"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-horizontal/baltra-0.png",
+      "sha": "956aeeea13dcbeac3f18a9310ccbfa007872726c"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-horizontal/baltra-3.png",
+      "sha": "32814239fa5666f973913045c7b3f28bfed55fc6"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-horizontal/baltra-0-native500.png",
+      "sha": "1e96916201e796a5c42e8722a109c5e6b66e2a44"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-horizontal/baltra-1.png",
+      "sha": "765b6b5cf9feb7d154e444550224713639bc6485"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-horizontal/baltra-1-native500.png",
+      "sha": "c6e6e6bc6782121857330d3cd7b768cfe90453b3"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-horizontal/baltra-3-native500.png",
+      "sha": "17f3bed255c22f57511ef1cf5ae80b6a215ce816"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-mobile/baltra-2-native500.png",
+      "sha": "6c73c83d4f324f6b06912ce0b34bc66371fe93a7"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-mobile/capture.json",
+      "sha": "2b5acb38d2401f8d2586847b6649cd77e01ec43d"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-mobile/baltra-2.png",
+      "sha": "ecd29f55d4ef3e89f770cc728c1f645318e64a13"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-mobile/baltra-0.png",
+      "sha": "73007cba3d2ae46ad4c368cb9a014601a8f35821"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-mobile/baltra-3.png",
+      "sha": "9aec24527d6bbbb9530e9c62a8cb636859ce812d"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-mobile/baltra-0-native500.png",
+      "sha": "53ef7298e77aaf0bd8d88dc6af6f1e8170f10618"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-mobile/baltra-1.png",
+      "sha": "0417b48628e1a0941e6dce6b96db5bba5a239431"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-mobile/baltra-1-native500.png",
+      "sha": "f87107c7ff86b797012b071ab264a2be565f651e"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/before-mobile/baltra-3-native500.png",
+      "sha": "1b82b28eb190f71bfebe18ebc716fb56be28b0df"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-horizontal/baltra-2-native500.png",
+      "sha": "68cdcd7b75674e38d50d6fb9a20cc28a926024a1"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-horizontal/capture.json",
+      "sha": "90c326b81290d5621d05987ecadc53447249d574"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-horizontal/baltra-2.png",
+      "sha": "41aec3bac0e8f57cb7170b6cb2bb459e822f9e87"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-horizontal/baltra-0.png",
+      "sha": "1da612688209c8ec9ecc696a7780f36e9106e9ad"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-horizontal/baltra-3.png",
+      "sha": "32814239fa5666f973913045c7b3f28bfed55fc6"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-horizontal/baltra-0-native500.png",
+      "sha": "f67769d3d0375c0feed7e4cf68c1cb582e692b7e"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-horizontal/baltra-1.png",
+      "sha": "4f8dccf4829d88a1a8821f8549b674d5008deb62"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-horizontal/baltra-1-native500.png",
+      "sha": "d8c5bec9e499eadcbfdce5dac865ad809d37ad1c"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/after-horizontal/baltra-3-native500.png",
+      "sha": "17f3bed255c22f57511ef1cf5ae80b6a215ce816"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/sources/engine.js",
+      "sha": "f62d52aac23c0cc7695bdf53c0eb36e31e7b45e3"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/sources/baltra.js",
+      "sha": "b4ccd097befae63356e193841b4130e7e93cf076"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/sources/run-functional.js",
+      "sha": "ffcb88c659c5f08ef220ec1ca005f61b5e09d014"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/sources/bind.js",
+      "sha": "79333aeff3e81042397c8edc4835acd8658a91a5"
+    },
+    {
+      "path": "art-source/entregas/baltra-kit-20261023/primera-pasada-01/manifest.json",
+      "sha": "b24eda7d97abe5bda12f5775d54bf136e409ff7f"
+    },
+    {
+      "path": "js/champions/skill-fx-a/bind.js",
+      "sha": "79333aeff3e81042397c8edc4835acd8658a91a5"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/baltra.js",
+      "sha": "b4ccd097befae63356e193841b4130e7e93cf076"
+    },
+    {
+      "path": "js/champions/skill-fx-a/engine.js",
+      "sha": "f62d52aac23c0cc7695bdf53c0eb36e31e7b45e3"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "sha": "e11f3388f48bea4c873e4641a982f9920e67eca8"
+    },
+    {
+      "path": "tools/vfx/capture-baltra-kit.js",
+      "sha": "d2d2bd30e41c4c3dc73b898d77e129d611498bc5"
+    },
+    {
+      "path": "tools/vfx/parity-baltra-kit.js",
+      "sha": "9bdf8681cb5b02d8a8d23ef5159d2bfece50b27a"
+    },
+    {
+      "path": "tools/vfx/verify-baltra-kit.js",
+      "sha": "11c6576f63c52a608e2fa4c6e7cf2fa84a3bcdb5"
+    },
+    {
+      "path": "tools/expedition/baltra-firstpass-online.js",
+      "sha": "c903079d61794a30a8806995ec00cf447fdb1cb3"
+    }
+  ]
+}

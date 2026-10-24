@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "method": "Existing SFA native recipe correction; no raster AI generation needed. Original body masks reused, not newly painted characters.",
+  "source": "js/champions/skill-fx-a/c/aelith.js",
+  "sourceSha256": "da501c89333585a1b3bd1e0dfa99a9d0f7b793b452b116db3c85dcf12f288cdf",
+  "engine": "js/champions/skill-fx-a/engine.js",
+  "engineSha256": "fe98b1bc320918dc93c389df4bae41abaec7a14858408b6c60f31b4e51e580be",
+  "components": [
+    {
+      "block": "B106",
+      "id": "A-FX-aelith-h2",
+      "atlas": "fracture-glass.png",
+      "cell": [
+        224,
+        40
+      ],
+      "frames": 12,
+      "pivot": "left center",
+      "time": {
+        "durationMs": 720,
+        "openMs": 150,
+        "closeMs": 150
+      },
+      "drawing": "Complete faint trace from cast; native one-piece serrated glass cropped to a growing/retracting span; actual event endpoints/width preserved. H2 white lilac palette and18% blend with arena-tinted palette. No gameplay anticipation delay added.",
+      "remaining": "Own slow-sand icon on actual affected enemies1800ms is NOT implemented; do not infer from generic slow."
+    },
+    {
+      "block": "B107",
+      "id": "A-FX-aelith-h3",
+      "atlases": [
+        "reexport/atlases/borrowed-sand.png",
+        "debt-sand.png"
+      ],
+      "cell": [
+        40,
+        56
+      ],
+      "framesEach": 12,
+      "pivot": "engine aura feet",
+      "timer": "Actual buff duration; grey debt800ms; snapshot return220ms preserved.",
+      "trail": "Three actual equipped-body masks sampled60ms; alpha16/28/40%, bright1px boundary and darker interior; debt keeps exact alpha mask and greys both tones.",
+      "remaining": "Crowded mobile overlap, equipped skins, warmup/performance, culling/reentry."
+    }
+  ],
+  "reexport": {
+    "atlases": 5,
+    "frames": 60,
+    "changedAtlases": 3,
+    "changedFrames": 36,
+    "unchangedEchoFrames": 24
+  },
+  "reproduce": [
+    "OUT=art-source/entregas/aelith-normal-kit-20261022/correccion-02/reexport node tools/vfx/verify-aelith-kit.js",
+    "node tools/vfx/verify-aelith-silhouette-lifecycle.js",
+    "node tools/vfx/verify-aelith-silhouette.js",
+    "node tools/vfx/verify-aelith-silhouette-variants.js",
+    "node tools/vfx/test-aelith-silhouette-legible.js",
+    "MOBILE=1 node tools/vfx/test-aelith-silhouette-legible.js",
+    "node tools/vfx/aelith-silhouette-online.js",
+    "ONLY=aelith node tools/vfx/parity-skill-fx.js",
+    "FULL=1 MOVE=1 MOBILE=1 TIMES=80,250,650,3050,3150,3500 OUT=/tmp/ael-review node tools/vfx/capture-aelith-silhouette.js"
+  ]
+}

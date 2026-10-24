@@ -1,0 +1,90 @@
+{
+  "views": {
+    "mobile": [
+      {
+        "slot": 0,
+        "sceneHashBefore": "1a563460a42e9c3f3ffd3b7644532e31ee0d781b5f7861c762c1700419f1add2",
+        "sceneHashAfter": "1a563460a42e9c3f3ffd3b7644532e31ee0d781b5f7861c762c1700419f1add2",
+        "sameInitialScene": true
+      },
+      {
+        "slot": 1,
+        "sceneHashBefore": "032b8cbdfa323378b438a0f648a0127f5907ed7dc2040bbc7c09953de5cb7b50",
+        "sceneHashAfter": "032b8cbdfa323378b438a0f648a0127f5907ed7dc2040bbc7c09953de5cb7b50",
+        "sameInitialScene": true
+      },
+      {
+        "slot": 2,
+        "sceneHashBefore": "afbebbc58f09d2201e30372e9c50ad3383637803ebf24664e0195da1219ea4fd",
+        "sceneHashAfter": "afbebbc58f09d2201e30372e9c50ad3383637803ebf24664e0195da1219ea4fd",
+        "sameInitialScene": true
+      },
+      {
+        "slot": 3,
+        "sceneHashBefore": "dcc6945949d997d04c6ff1beeea264c65d87831cd47cd8c2495af150e64547f8",
+        "sceneHashAfter": "dcc6945949d997d04c6ff1beeea264c65d87831cd47cd8c2495af150e64547f8",
+        "sameInitialScene": true
+      }
+    ],
+    "horizontal": [
+      {
+        "slot": 0,
+        "sceneHashBefore": "86420df551b81a2fb6d921ae4373b3b01dc26a2a84fe4a6f41756c2cebf853a8",
+        "sceneHashAfter": "86420df551b81a2fb6d921ae4373b3b01dc26a2a84fe4a6f41756c2cebf853a8",
+        "sameInitialScene": true
+      },
+      {
+        "slot": 1,
+        "sceneHashBefore": "024167dbfec79cda96d53a31e32d6398a5e1387b16e04ca28194d59c0d326db8",
+        "sceneHashAfter": "024167dbfec79cda96d53a31e32d6398a5e1387b16e04ca28194d59c0d326db8",
+        "sameInitialScene": true
+      },
+      {
+        "slot": 2,
+        "sceneHashBefore": "9eb01a68e3c83f87b129260437e20d41fce99c9325abe4d1f35d51ecb71a1d6d",
+        "sceneHashAfter": "9eb01a68e3c83f87b129260437e20d41fce99c9325abe4d1f35d51ecb71a1d6d",
+        "sameInitialScene": true
+      },
+      {
+        "slot": 3,
+        "sceneHashBefore": "bc7675c10e8ede1260bdf56b7647b8f4f4c7e4ec3ebbc176ea2a5bd566d5a413",
+        "sceneHashAfter": "bc7675c10e8ede1260bdf56b7647b8f4f4c7e4ec3ebbc176ea2a5bd566d5a413",
+        "sameInitialScene": true
+      }
+    ]
+  },
+  "native": {
+    "0": {
+      "before": "native-before/veyra-0-250-full.png",
+      "after": "mobile-after/veyra-0-250-full.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "sameRequestedTimeMs": 250
+    },
+    "1": {
+      "before": "native-before/veyra-1-250-full.png",
+      "after": "mobile-after/veyra-1-250-full.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "sameRequestedTimeMs": 250
+    },
+    "2": {
+      "before": "native-before/veyra-2-250-full.png",
+      "after": "mobile-after/veyra-2-250-full.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "sameRequestedTimeMs": 250
+    }
+  },
+  "ufSceneByteIdentical": {
+    "mobile": false,
+    "horizontal": false
+  },
+  "note": "UF recipes/source unchanged; whole-scene pixels may differ after restoring RNG/particles. No whole-scene UF equality claim."
+}

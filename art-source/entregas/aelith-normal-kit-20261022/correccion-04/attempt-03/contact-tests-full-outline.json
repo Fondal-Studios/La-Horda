@@ -1,0 +1,387 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "equipped skin resolved null/front",
+      "pass": true
+    },
+    {
+      "name": "one snapshot readback null/front",
+      "pass": true,
+      "detail": {
+        "ownReads": 1,
+        "totalIncludingBodyWarmup": 2
+      }
+    },
+    {
+      "name": "outline stays within one pixel null/front",
+      "pass": true,
+      "detail": {
+        "outside": 197,
+        "invalid": 0,
+        "clip": 0
+      }
+    },
+    {
+      "name": "debt recolor needs no second readback null/front",
+      "pass": true
+    },
+    {
+      "name": "debt preserves exact body alpha null/front",
+      "pass": true
+    },
+    {
+      "name": "debt changes RGB and retains outline null/front",
+      "pass": true
+    },
+    {
+      "name": "equipped skin resolved null/side",
+      "pass": true
+    },
+    {
+      "name": "one snapshot readback null/side",
+      "pass": true,
+      "detail": {
+        "ownReads": 1,
+        "totalIncludingBodyWarmup": 1
+      }
+    },
+    {
+      "name": "outline stays within one pixel null/side",
+      "pass": true,
+      "detail": {
+        "outside": 217,
+        "invalid": 0,
+        "clip": 0
+      }
+    },
+    {
+      "name": "debt recolor needs no second readback null/side",
+      "pass": true
+    },
+    {
+      "name": "debt preserves exact body alpha null/side",
+      "pass": true
+    },
+    {
+      "name": "debt changes RGB and retains outline null/side",
+      "pass": true
+    },
+    {
+      "name": "equipped skin resolved null/back",
+      "pass": true
+    },
+    {
+      "name": "one snapshot readback null/back",
+      "pass": true,
+      "detail": {
+        "ownReads": 1,
+        "totalIncludingBodyWarmup": 1
+      }
+    },
+    {
+      "name": "outline stays within one pixel null/back",
+      "pass": true,
+      "detail": {
+        "outside": 204,
+        "invalid": 0,
+        "clip": 0
+      }
+    },
+    {
+      "name": "debt recolor needs no second readback null/back",
+      "pass": true
+    },
+    {
+      "name": "debt preserves exact body alpha null/back",
+      "pass": true
+    },
+    {
+      "name": "debt changes RGB and retains outline null/back",
+      "pass": true
+    },
+    {
+      "name": "equipped skin resolved aelith_alt1/front",
+      "pass": true
+    },
+    {
+      "name": "one snapshot readback aelith_alt1/front",
+      "pass": true,
+      "detail": {
+        "ownReads": 1,
+        "totalIncludingBodyWarmup": 2
+      }
+    },
+    {
+      "name": "outline stays within one pixel aelith_alt1/front",
+      "pass": true,
+      "detail": {
+        "outside": 222,
+        "invalid": 0,
+        "clip": 0
+      }
+    },
+    {
+      "name": "debt recolor needs no second readback aelith_alt1/front",
+      "pass": true
+    },
+    {
+      "name": "debt preserves exact body alpha aelith_alt1/front",
+      "pass": true
+    },
+    {
+      "name": "debt changes RGB and retains outline aelith_alt1/front",
+      "pass": true
+    },
+    {
+      "name": "equipped skin resolved aelith_alt1/side",
+      "pass": true
+    },
+    {
+      "name": "one snapshot readback aelith_alt1/side",
+      "pass": true,
+      "detail": {
+        "ownReads": 1,
+        "totalIncludingBodyWarmup": 1
+      }
+    },
+    {
+      "name": "outline stays within one pixel aelith_alt1/side",
+      "pass": true,
+      "detail": {
+        "outside": 226,
+        "invalid": 0,
+        "clip": 0
+      }
+    },
+    {
+      "name": "debt recolor needs no second readback aelith_alt1/side",
+      "pass": true
+    },
+    {
+      "name": "debt preserves exact body alpha aelith_alt1/side",
+      "pass": true
+    },
+    {
+      "name": "debt changes RGB and retains outline aelith_alt1/side",
+      "pass": true
+    },
+    {
+      "name": "equipped skin resolved aelith_alt1/back",
+      "pass": true
+    },
+    {
+      "name": "one snapshot readback aelith_alt1/back",
+      "pass": true,
+      "detail": {
+        "ownReads": 1,
+        "totalIncludingBodyWarmup": 1
+      }
+    },
+    {
+      "name": "outline stays within one pixel aelith_alt1/back",
+      "pass": true,
+      "detail": {
+        "outside": 230,
+        "invalid": 0,
+        "clip": 0
+      }
+    },
+    {
+      "name": "debt recolor needs no second readback aelith_alt1/back",
+      "pass": true
+    },
+    {
+      "name": "debt preserves exact body alpha aelith_alt1/back",
+      "pass": true
+    },
+    {
+      "name": "debt changes RGB and retains outline aelith_alt1/back",
+      "pass": true
+    },
+    {
+      "name": "only three equipped pose snapshots retained",
+      "pass": true
+    },
+    {
+      "name": "upper contour consumes no readback",
+      "pass": true
+    },
+    {
+      "name": "upper contour actually draws previous poses",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "pixel snapped upper positions",
+      "pass": true
+    },
+    {
+      "name": "real top renderer invokes contour",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "death between ground and top hides contour",
+      "pass": true
+    },
+    {
+      "name": "offscreen contour culled",
+      "pass": true
+    },
+    {
+      "name": "reentry draws same saved poses",
+      "pass": true
+    },
+    {
+      "name": "off mode skips upper contour",
+      "pass": true
+    },
+    {
+      "name": "actual debt timer remains800ms",
+      "pass": true
+    },
+    {
+      "name": "outline collapses continuously at110ms",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "upper contour disappears at220ms",
+      "pass": true
+    },
+    {
+      "name": "debt aura still alive after contour collapse",
+      "pass": true
+    },
+    {
+      "name": "no retained state after800ms",
+      "pass": true
+    },
+    {
+      "name": "reset clears snapshot state",
+      "pass": true
+    }
+  ],
+  "exports": [
+    {
+      "name": "base-front"
+    },
+    {
+      "name": "base-side"
+    },
+    {
+      "name": "base-back"
+    },
+    {
+      "name": "aelith_alt1-front"
+    },
+    {
+      "name": "aelith_alt1-side"
+    },
+    {
+      "name": "aelith_alt1-back"
+    }
+  ],
+  "metrics": [
+    {
+      "skin": null,
+      "view": "front",
+      "ms": 25.700000002980232,
+      "readbacks": 2
+    },
+    {
+      "skin": null,
+      "view": "side",
+      "ms": 20.099999994039536,
+      "readbacks": 1
+    },
+    {
+      "skin": null,
+      "view": "back",
+      "ms": 13.299999997019768,
+      "readbacks": 1
+    },
+    {
+      "skin": "aelith_alt1",
+      "view": "front",
+      "ms": 18.299999997019768,
+      "readbacks": 2
+    },
+    {
+      "skin": "aelith_alt1",
+      "view": "side",
+      "ms": 10.599999994039536,
+      "readbacks": 1
+    },
+    {
+      "skin": "aelith_alt1",
+      "view": "back",
+      "ms": 9.600000008940697,
+      "readbacks": 1
+    }
+  ],
+  "readTrace": [
+    {
+      "width": 448,
+      "height": 1008,
+      "stack": "Error\n    at proto.getImageData (eval at evaluate (:311:30), <anonymous>:4:190)\n    at champPackFeet (http://127.0.0.1:46215/js/assets/champion-sprites.js:359:17)\n    at champPackDrawFrame (http://127.0.0.1:46215/js/rendering/champion-sprites.js:290:29)\n    at drawChampPack (http://127.0.0.1:46215/js/rendering/champion-sprites.js:334:3)\n    at drawPortador (http://127.0.0.1:46215/js/rendering/portadores.js:7:9)\n    at drawPortador (http://127.0.0.1:46215/js/champions/ascension/render.js:122:29)\n    at drawHeroBody (http://127.0.0.1:46215/js/rendering/entities.js:53:32)\n    at drawHeroBody (http://127.0.0.1:46215/js/champions/ascension/render.js:51:65)\n    at drawHeroBody (http://127.0.0.1:46215/js/rendering/champion-art-normalize.js:41:26)\n    at aelithTrailStamp (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:140:6)"
+    },
+    {
+      "width": 160,
+      "height": 160,
+      "stack": "Error\n    at proto.getImageData (eval at evaluate (:311:30), <anonymous>:4:190)\n    at aelithTrailPaint (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:113:14)\n    at aelithTrailStamp (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:141:30)\n    at eval (eval at evaluate (:311:30), <anonymous>:9:45)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "width": 160,
+      "height": 160,
+      "stack": "Error\n    at proto.getImageData (eval at evaluate (:311:30), <anonymous>:4:190)\n    at aelithTrailPaint (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:113:14)\n    at aelithTrailStamp (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:141:30)\n    at eval (eval at evaluate (:311:30), <anonymous>:9:45)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "width": 160,
+      "height": 160,
+      "stack": "Error\n    at proto.getImageData (eval at evaluate (:311:30), <anonymous>:4:190)\n    at aelithTrailPaint (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:113:14)\n    at aelithTrailStamp (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:141:30)\n    at eval (eval at evaluate (:311:30), <anonymous>:9:45)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "width": 448,
+      "height": 1008,
+      "stack": "Error\n    at proto.getImageData (eval at evaluate (:311:30), <anonymous>:4:190)\n    at champPackFeet (http://127.0.0.1:46215/js/assets/champion-sprites.js:359:17)\n    at champPackDrawFrame (http://127.0.0.1:46215/js/rendering/champion-sprites.js:290:29)\n    at drawChampPack (http://127.0.0.1:46215/js/rendering/champion-sprites.js:334:3)\n    at drawPortador (http://127.0.0.1:46215/js/rendering/portadores.js:7:9)\n    at drawPortador (http://127.0.0.1:46215/js/champions/ascension/render.js:122:29)\n    at drawHeroBody (http://127.0.0.1:46215/js/rendering/entities.js:53:32)\n    at drawHeroBody (http://127.0.0.1:46215/js/champions/ascension/render.js:51:65)\n    at drawHeroBody (http://127.0.0.1:46215/js/rendering/champion-art-normalize.js:41:26)\n    at aelithTrailStamp (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:140:6)"
+    },
+    {
+      "width": 160,
+      "height": 160,
+      "stack": "Error\n    at proto.getImageData (eval at evaluate (:311:30), <anonymous>:4:190)\n    at aelithTrailPaint (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:113:14)\n    at aelithTrailStamp (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:141:30)\n    at eval (eval at evaluate (:311:30), <anonymous>:9:45)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "width": 160,
+      "height": 160,
+      "stack": "Error\n    at proto.getImageData (eval at evaluate (:311:30), <anonymous>:4:190)\n    at aelithTrailPaint (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:113:14)\n    at aelithTrailStamp (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:141:30)\n    at eval (eval at evaluate (:311:30), <anonymous>:9:45)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "width": 160,
+      "height": 160,
+      "stack": "Error\n    at proto.getImageData (eval at evaluate (:311:30), <anonymous>:4:190)\n    at aelithTrailPaint (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:113:14)\n    at aelithTrailStamp (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:141:30)\n    at eval (eval at evaluate (:311:30), <anonymous>:9:45)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "width": 160,
+      "height": 160,
+      "stack": "Error\n    at proto.getImageData (eval at evaluate (:311:30), <anonymous>:4:190)\n    at aelithTrailPaint (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:113:14)\n    at aelithTrailStamp (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:141:30)\n    at http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:152:69\n    at sfaObjectsFrame (http://127.0.0.1:46215/js/champions/skill-fx-a/bind.js:91:38)\n    at eval (eval at evaluate (:311:30), <anonymous>:22:56)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "width": 160,
+      "height": 160,
+      "stack": "Error\n    at proto.getImageData (eval at evaluate (:311:30), <anonymous>:4:190)\n    at aelithTrailPaint (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:113:14)\n    at aelithTrailStamp (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:141:30)\n    at http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:152:69\n    at sfaObjectsFrame (http://127.0.0.1:46215/js/champions/skill-fx-a/bind.js:91:38)\n    at eval (eval at evaluate (:311:30), <anonymous>:22:56)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "width": 160,
+      "height": 160,
+      "stack": "Error\n    at proto.getImageData (eval at evaluate (:311:30), <anonymous>:4:190)\n    at aelithTrailPaint (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:113:14)\n    at aelithTrailStamp (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:141:30)\n    at http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:152:69\n    at sfaObjectsFrame (http://127.0.0.1:46215/js/champions/skill-fx-a/bind.js:91:38)\n    at eval (eval at evaluate (:311:30), <anonymous>:22:56)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "width": 160,
+      "height": 160,
+      "stack": "Error\n    at proto.getImageData (eval at evaluate (:311:30), <anonymous>:4:190)\n    at aelithTrailPaint (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:113:14)\n    at aelithTrailStamp (http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:141:30)\n    at http://127.0.0.1:46215/js/champions/skill-fx-a/c/aelith.js:152:69\n    at sfaObjectsFrame (http://127.0.0.1:46215/js/champions/skill-fx-a/bind.js:91:38)\n    at eval (eval at evaluate (:311:30), <anonymous>:22:56)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    }
+  ],
+  "errors": []
+}

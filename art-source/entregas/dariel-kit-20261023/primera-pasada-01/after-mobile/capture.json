@@ -1,0 +1,349 @@
+{
+  "results": [
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": []
+        }
+      ],
+      "lance": false,
+      "champion": "dariel",
+      "slot": 0,
+      "action": "discord",
+      "trace": [
+        [
+          "cone",
+          "dariel_discord",
+          0,
+          0,
+          205,
+          0,
+          560,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Nota discordante",
+      "sceneHash": "526fd9ec0cf603e2e63a449073e13fbb1fc3882ac484ec0af97a5a17be9d6757"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": []
+        }
+      ],
+      "lance": false,
+      "champion": "dariel",
+      "slot": 1,
+      "action": "march",
+      "trace": [
+        [
+          "nova",
+          "dariel_march~h",
+          0,
+          0,
+          150,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "dariel_march~h",
+          0,
+          0,
+          44,
+          0,
+          1600,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "dariel_march~h",
+          -40,
+          14,
+          44,
+          0,
+          1600,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "dariel_march~h",
+          -40,
+          14,
+          44,
+          0,
+          1600,
+          null,
+          null,
+          null,
+          2
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Marcha de salida",
+      "sceneHash": "605966a1731c5fcb44aaa3432c99ad32f887cd405a7027970540a9b8b75771aa"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": []
+        }
+      ],
+      "lance": false,
+      "champion": "dariel",
+      "slot": 2,
+      "action": "refrain",
+      "trace": [
+        [
+          "nova",
+          "dariel_refrain~p",
+          0,
+          0,
+          130,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "dariel_refrain~p",
+          0,
+          0,
+          44,
+          0,
+          1600,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "dariel_refrain~p",
+          -40,
+          14,
+          44,
+          0,
+          1600,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "aura",
+          "dariel_refrain~p",
+          -40,
+          14,
+          44,
+          0,
+          1600,
+          null,
+          null,
+          null,
+          2
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Volver al estribillo",
+      "sceneHash": "58e1c09eeba73c80c02444e38ae6c7c05116d65c0d829b0b69272da10830beb7"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "ex_concert",
+              "life": 4720,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": [
+            {
+              "kind": "ex_concert",
+              "life": 4544,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": [
+            {
+              "kind": "ex_concert",
+              "life": 4288,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": [
+            {
+              "kind": "ex_concert",
+              "life": 3696,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": [
+            {
+              "kind": "ex_concert",
+              "life": 2800,
+              "owner": 0
+            }
+          ]
+        }
+      ],
+      "lance": false,
+      "champion": "dariel",
+      "slot": 3,
+      "action": "concert",
+      "trace": [],
+      "objects": [
+        "ex_concert"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Todavía hay una salida",
+      "sceneHash": "c60090d9b6855014b3d4240cc28bba8f1e43c20aa005fe2e7993c4600842ced8"
+    }
+  ],
+  "errors": []
+}

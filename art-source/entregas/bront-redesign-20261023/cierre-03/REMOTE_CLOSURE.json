@@ -1,0 +1,133 @@
+{
+  "state": "EN_CORRECCION",
+  "gate": "FIX / NO_INTEGRAR",
+  "pr": 201,
+  "parent": "ff1c635318079d7cc97e9b9a9a4be2136e4c0ed0",
+  "production": "0cdbea932c6a5e1579b7e2453a2b8eaa6ecb013e",
+  "tree": "ee0c827e0ca5cf037275324f2812f2bc15a6dc50",
+  "mainObserved": "51c9d4584d45e8c19c4d237a64e8033a6b845bb1",
+  "verifiedFiles": [
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "bytes": 88439,
+      "blob": "fbda78d83987d53d7d9054bd8890ed4a57eb01c6"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/VERIFICATION.json",
+      "bytes": 22490,
+      "blob": "4a274c6bf2b7febebfc6d3a7a11a27b2178631c3"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/check_source_gate.py",
+      "bytes": 900,
+      "blob": "3ea79b799a651fca248c4446163720bfb287ee37"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/recipe.json",
+      "bytes": 1079,
+      "blob": "ffa3fa082773c642c4480bf2b07bcadc12659fd7"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/prompt.txt",
+      "bytes": 1259,
+      "blob": "07faa95c73e2dd4260cdc5b70115534f2f519ec0"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/preview.png",
+      "bytes": 10114,
+      "blob": "04164dc5add0c9e211549704cca46d3a63ddd0f2"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/preview.html",
+      "bytes": 319,
+      "blob": "f8f196ba5c828938af26d6418d65663586483cb1"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/atlas-diagnostic.png",
+      "bytes": 368231,
+      "blob": "87f846f2212833d237b7570839b5458b78f1b010"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/contact-36.png",
+      "bytes": 324526,
+      "blob": "cb6797f08e219bd25695883638fc9f44d7d3facd"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/CHECKPOINT.md",
+      "bytes": 1055,
+      "blob": "a2bb7b50f90d6a1c2f234f04b12bfbc138e76640"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/comparison-native.png",
+      "bytes": 40817,
+      "blob": "277ef775ef17d2bc63e3ea59dcca415040c9a40f"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/REVIEW.json",
+      "bytes": 744,
+      "blob": "66e9b4c44844cb85da6fabf90a1a1581bb51d7e4"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/TEST_ATTEMPTS.json",
+      "bytes": 800,
+      "blob": "2153cc361196a478e74d56bb40ea478cd5fa1ba1"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/REPRODUCTION.json",
+      "bytes": 981,
+      "blob": "fbe9af686076649938974e5a3e5ce101e7910ed6"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/SOURCE_GATE.json",
+      "bytes": 429,
+      "blob": "0da6bee9891be2420a27de70e15be87fa181d690"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/extract.log",
+      "bytes": 690,
+      "blob": "962da433e7336a3946bbaafd5a85f77b34646c83"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/extract.py",
+      "bytes": 4360,
+      "blob": "5d90d9d79ad1a2fb0c7ba2c0a7d5dee0ad9ec8b2"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/sources/pose-sheet-raw.png",
+      "bytes": 1992904,
+      "blob": "0d80e5010a72b4f536ad395cff795441b7bb137e"
+    },
+    {
+      "path": "art-source/entregas/bront-redesign-20261023/cierre-03/manifest.json",
+      "bytes": 3695,
+      "blob": "80fe30d4d27f07b9efe795007e24439dbd4e8635"
+    }
+  ],
+  "runtimeChanged": 0,
+  "installedAssetsChanged": 0,
+  "originalSourcesPreserved": true,
+  "publicationVerified": false,
+  "merge": null,
+  "sourceGate": {
+    "sourcePartialAlpha": 880333,
+    "atlasPartialAlpha": 126954,
+    "cutContactFrames": [
+      13
+    ],
+    "pass": false
+  },
+  "reproduction": "5 outputs identical; necessary source gate expected exit1; style metrics PASS do not approve art",
+  "newArt": "One full36-pose edit of source02 using built-in imagegen, preserved but NOT a validated improvement",
+  "skins": "Not generated on rejected geometry",
+  "attempts": "TEST_ATTEMPTS.json includes missing cv2 dependency-path invocation and corrected repeat",
+  "queueEntries": 49,
+  "next": {
+    "mode": "CIERRE",
+    "pr": 197,
+    "head": "9ca6215bd259a79fd8cef842874feb9c9ccc519c",
+    "component": "Brakk normal cast signatures only",
+    "file": "js/skills/champion-signatures.js",
+    "finding": "Diff against current main is separable +49 lines in this file. No new candidate branch or approval yet.",
+    "action": "Read correccion05/06/07 and validacion11; isolate only this source from main, complete contrast/skins/arenas/runtime/relay/CI exact-head. Never import B118/B119 FIX. Preserve Bront03 and do not repeat same generator prompt."
+  }
+}

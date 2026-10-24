@@ -1,0 +1,285 @@
+{
+  "schema": 1,
+  "status": "FIX",
+  "approvalClaimed": false,
+  "installed": false,
+  "commit": "25fb5681e680abca7e3fc9d683676e0bfcf65a28",
+  "frames": [
+    8,
+    9,
+    10,
+    11,
+    20,
+    21,
+    22,
+    23
+  ],
+  "assemblies": [
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 8,
+      "retainedFrames": 35,
+      "height": 73,
+      "width": 67,
+      "resampling": "NEAREST",
+      "atlasSha256": "f0d004ae2b6152593995547376d73b2f1f2eb202304b4fa75c4f60c703b1988e"
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 9,
+      "retainedFrames": 35,
+      "height": 73,
+      "width": 57,
+      "resampling": "NEAREST",
+      "atlasSha256": "82661108046617a4f0491e9814caa64e325c7ed61d53696066a24f8b94c987fb"
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 10,
+      "retainedFrames": 35,
+      "height": 73,
+      "width": 56,
+      "resampling": "NEAREST",
+      "atlasSha256": "73e1e42906fd322ba05d29ec51a4f72de83aed9f65aab5a3935c7bd1a6716c56"
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 11,
+      "retainedFrames": 35,
+      "height": 72,
+      "width": 55,
+      "resampling": "NEAREST",
+      "atlasSha256": "1952947aeb4fec08418be68509f3cebd4faed9e5e5f92c0f1795b51d59951141"
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 20,
+      "retainedFrames": 35,
+      "height": 65,
+      "width": 51,
+      "resampling": "NEAREST",
+      "atlasSha256": "e46a8c9cae1367d99ed82d3254b0770ffcedeeacf1fbd8203c99d5ecda64e38a"
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 21,
+      "retainedFrames": 35,
+      "height": 64,
+      "width": 83,
+      "resampling": "NEAREST",
+      "atlasSha256": "8cc578b54f3831d53643aa76da939d329bbebe8ca066278b81607010c8d949c9"
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 22,
+      "retainedFrames": 35,
+      "height": 65,
+      "width": 94,
+      "resampling": "NEAREST",
+      "atlasSha256": "ea09db926f777b60346c8dd785b488bb14d864e357acc1ae70c6e32043800cb1"
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 23,
+      "retainedFrames": 35,
+      "height": 65,
+      "width": 59,
+      "resampling": "NEAREST",
+      "atlasSha256": "4434400928c54416573ccdb7a1f4bbee861f274e88f6b04caa00ee8261c6aba0"
+    }
+  ],
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "sourceCells": [
+    {
+      "frame": 8,
+      "rect": [
+        0,
+        0,
+        444,
+        444
+      ]
+    },
+    {
+      "frame": 9,
+      "rect": [
+        444,
+        0,
+        887,
+        444
+      ]
+    },
+    {
+      "frame": 10,
+      "rect": [
+        887,
+        0,
+        1330,
+        444
+      ]
+    },
+    {
+      "frame": 11,
+      "rect": [
+        1330,
+        0,
+        1774,
+        444
+      ]
+    },
+    {
+      "frame": 20,
+      "rect": [
+        0,
+        444,
+        444,
+        887
+      ]
+    },
+    {
+      "frame": 21,
+      "rect": [
+        444,
+        444,
+        887,
+        887
+      ]
+    },
+    {
+      "frame": 22,
+      "rect": [
+        887,
+        444,
+        1390,
+        887
+      ]
+    },
+    {
+      "frame": 23,
+      "rect": [
+        1390,
+        444,
+        1774,
+        887
+      ]
+    }
+  ],
+  "bodyComparison": [
+    {
+      "frame": 8,
+      "before": {
+        "body": 71,
+        "full": 73,
+        "foot": 106
+      },
+      "after": {
+        "body": 67,
+        "full": 73,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 9,
+      "before": {
+        "body": 69,
+        "full": 73,
+        "foot": 106
+      },
+      "after": {
+        "body": 70,
+        "full": 73,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 10,
+      "before": {
+        "body": 71,
+        "full": 73,
+        "foot": 106
+      },
+      "after": {
+        "body": 67,
+        "full": 73,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 11,
+      "before": {
+        "body": 71,
+        "full": 72,
+        "foot": 106
+      },
+      "after": {
+        "body": 69,
+        "full": 72,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 20,
+      "before": {
+        "body": 63,
+        "full": 65,
+        "foot": 106
+      },
+      "after": {
+        "body": 54,
+        "full": 65,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 21,
+      "before": {
+        "body": 63,
+        "full": 64,
+        "foot": 106
+      },
+      "after": {
+        "body": 62,
+        "full": 64,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 22,
+      "before": {
+        "body": 62,
+        "full": 65,
+        "foot": 106
+      },
+      "after": {
+        "body": 61,
+        "full": 65,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 23,
+      "before": {
+        "body": 63,
+        "full": 65,
+        "foot": 106
+      },
+      "after": {
+        "body": 63,
+        "full": 65,
+        "foot": 106
+      }
+    }
+  ],
+  "failedFrames": [
+    8,
+    10,
+    11,
+    22,
+    23
+  ],
+  "retainedFrames": 28,
+  "styleGate": "PASS",
+  "atlasSha256": "4434400928c54416573ccdb7a1f4bbee861f274e88f6b04caa00ee8261c6aba0"
+}

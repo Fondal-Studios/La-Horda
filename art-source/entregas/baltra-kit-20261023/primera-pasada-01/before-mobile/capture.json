@@ -1,0 +1,211 @@
+{
+  "results": [
+    {
+      "lance": false,
+      "champion": "baltra",
+      "slot": 0,
+      "action": "bell",
+      "trace": [
+        [
+          "nova",
+          "bell",
+          0,
+          0,
+          125,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rays",
+          "bell~p",
+          0,
+          0,
+          52.5,
+          0,
+          380,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rings",
+          "bell~p",
+          0,
+          0,
+          125,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Bronce vivo",
+      "sceneHash": "277877f9008226fa53b3c398f3309ec14e628491d17ccb715bd681513b9fc796"
+    },
+    {
+      "lance": false,
+      "champion": "baltra",
+      "slot": 1,
+      "action": "guard",
+      "trace": [
+        [
+          "cone",
+          "bell~h",
+          0,
+          0,
+          120,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "bell~h",
+          0,
+          0,
+          44,
+          0,
+          1600,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "rays",
+          "bell~p",
+          0,
+          0,
+          44,
+          0,
+          340,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "column",
+          "bell~p",
+          0,
+          4,
+          16,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Bajo la campana",
+      "sceneHash": "0647bf720a85643413f498e3c4ed50ad61e71165f97c6588106e43db6fb6f4f6"
+    },
+    {
+      "lance": false,
+      "champion": "baltra",
+      "slot": 2,
+      "action": "counter",
+      "trace": [
+        [
+          "cone",
+          "bell~p",
+          0,
+          0,
+          180,
+          0,
+          560,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rays",
+          "bell~p",
+          0,
+          0,
+          44,
+          0,
+          340,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Badajo de retorno",
+      "sceneHash": "5c33cff156a89344b3a3dae4c23e2f7c7ea2acc98a8e4c99b4178fe34950aad9"
+    },
+    {
+      "lance": false,
+      "champion": "baltra",
+      "slot": 3,
+      "action": "toll",
+      "trace": [],
+      "objects": [
+        "ex_toll"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Que todos la escuchen",
+      "sceneHash": "814dd878b35cd92e8e12a2f92697c7e1ce231b977207d940bc77a2d1c374bdf9"
+    }
+  ],
+  "errors": []
+}

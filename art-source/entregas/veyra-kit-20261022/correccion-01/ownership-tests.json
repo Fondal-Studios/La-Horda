@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "foreign speed and armor do not start pact",
+      "pass": true
+    },
+    {
+      "name": "real cast owns numeric duration and recipient",
+      "pass": true,
+      "details": [
+        "veyra.pact",
+        0,
+        0,
+        80,
+        0,
+        3000,
+        0
+      ]
+    },
+    {
+      "name": "cast starts a single following aura",
+      "pass": true
+    },
+    {
+      "name": "aura follows movement at foot offset",
+      "pass": true
+    },
+    {
+      "name": "aura alive before actual end",
+      "pass": true
+    },
+    {
+      "name": "foreign longer buff cannot prolong pact",
+      "pass": true
+    },
+    {
+      "name": "duration modifiers respect original five second cap",
+      "pass": true
+    },
+    {
+      "name": "recast replaces rather than stacks aura",
+      "pass": true
+    },
+    {
+      "name": "death removes aura and resurrection does not restore it",
+      "pass": true
+    },
+    {
+      "name": "reset removes all cast owned aura state",
+      "pass": true
+    },
+    {
+      "name": "overlapping same class heroes preserve exact owner",
+      "pass": true
+    },
+    {
+      "name": "numeric replay restores original recipient",
+      "pass": true
+    },
+    {
+      "name": "invalid owner does not guess nearest hero",
+      "pass": true
+    },
+    {
+      "name": "blocked cast creates no aura or event",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

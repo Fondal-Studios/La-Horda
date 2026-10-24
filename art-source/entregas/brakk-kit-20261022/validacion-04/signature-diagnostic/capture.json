@@ -1,0 +1,6689 @@
+{
+  "results": [
+    {
+      "arena": "bosque",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "beam|brakk_build": 148
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4420,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 80,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4164,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 336,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 3876,
+              "hp": 80.3
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 2900,
+              "hp": 69.8
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          105,
+          -65,
+          0,
+          0,
+          600,
+          105,
+          65,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 105,
+          "y": 0,
+          "life": 2900
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "1067740bd51873e0ec9d172bc12220bc41f06cb8c005e352a129c2f12b3f00fd"
+    },
+    {
+      "arena": "bosque",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 38,
+          "beam|brakk_nails": 26
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5920,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 80,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5376,
+              "hp": 80.3
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 69.8
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          72,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 4400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "8740be1af30a326907b0ffb94915b5ef9c69843e973cd835095cf6bbd1a1728c"
+    },
+    {
+      "arena": "bosque",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_repair~p": 40,
+          "aura|brakk_repair~p": 100
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 4100,
+              "hp": 60.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 60.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3556,
+              "hp": 49.724999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 39.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 2580
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "cdd4cfb2f1708b9ab0f59c1336f2621eddbcacd08141cb3a308dfe263c24f891"
+    },
+    {
+      "arena": "bosque",
+      "look": "base",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "beam|brakk_build": 148
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4420,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 80,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4164,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 336,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 3876,
+              "hp": 80.3
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 2900,
+              "hp": 78.55
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          105,
+          -65,
+          0,
+          0,
+          600,
+          105,
+          65,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 105,
+          "y": 0,
+          "life": 2900
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "9e55f692a0beae955e6926b3f103edd1498a76862d02b786686952d22df7bc9d"
+    },
+    {
+      "arena": "bosque",
+      "look": "base",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 38,
+          "beam|brakk_nails": 13
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5920,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 80,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5376,
+              "hp": 80.3
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 78.55
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          115,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 4400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "999e168f9b44c781401433db7e858c7c8f5672d0f7ba1e3c63d8db1e783edd4c"
+    },
+    {
+      "arena": "bosque",
+      "look": "base",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_repair~p": 40,
+          "aura|brakk_repair~p": 100
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 4100,
+              "hp": 60.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 60.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3556,
+              "hp": 58.474999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 56.724999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 2580
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "3a2b6864e4078baa4c05a3f98c097ac6a5fbf8a41d428d2ad558ea94a2b7bcf4"
+    },
+    {
+      "arena": "bosque",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "beam|brakk_build": 148
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4420,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 80,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4164,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 336,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 3876,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 2900,
+              "hp": 124.14000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          105,
+          -65,
+          0,
+          0,
+          600,
+          105,
+          65,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 105,
+          "y": 0,
+          "life": 2900
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "afbf66121f9f0d3c12a66d747d969ec0d42411961c6a12a5066966eee035dbf0"
+    },
+    {
+      "arena": "bosque",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 38,
+          "beam|brakk_nails": 26
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5920,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 80,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5376,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 124.14000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          72,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 4400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "2edd6654997735c998394ed815c2428c77d2f5a2a5166d3695669a293b89db1c"
+    },
+    {
+      "arena": "bosque",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_repair~p": 40,
+          "aura|brakk_repair~p": 100
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 4100,
+              "hp": 100.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 100.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3556,
+              "hp": 90.48000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 79.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 2580
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "efc7473b82209a3bcb99f869dd5ab18e9345fd2e51e437b0733c4300ad3ddcd3"
+    },
+    {
+      "arena": "bosque",
+      "look": "set",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "beam|brakk_build": 148
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4420,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 80,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4164,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 336,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 3876,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 2900,
+              "hp": 132.89000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          105,
+          -65,
+          0,
+          0,
+          600,
+          105,
+          65,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 105,
+          "y": 0,
+          "life": 2900
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "eb9e8f9c49915a22a1f97e21e88d678056a8dff1bfb0e49c15c98261b9d94e62"
+    },
+    {
+      "arena": "bosque",
+      "look": "set",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 38,
+          "beam|brakk_nails": 13
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5920,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 80,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5376,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 132.89000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          115,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 4400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "a416fe830f7d1f167caee90d9a7608bca2ec76ffc6e74aa2c5e2189b338cbc9f"
+    },
+    {
+      "arena": "bosque",
+      "look": "set",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_repair~p": 40,
+          "aura|brakk_repair~p": 100
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 4100,
+              "hp": 100.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 100.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3556,
+              "hp": 99.23000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 97.48000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 2580
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "698028c5eac57364aca9723ffad8d936ef8e3fe78bd3c28ff2d98a579bc30bab"
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "beam|brakk_build": 148
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4420,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 80,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4164,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 336,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 3876,
+              "hp": 80.3
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 2900,
+              "hp": 69.8
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          105,
+          -65,
+          0,
+          0,
+          600,
+          105,
+          65,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 105,
+          "y": 0,
+          "life": 2900
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "9de254b2f8164b23456df91cb96f458474ff35772a0f74d79da661b5e1ce291b"
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 38,
+          "beam|brakk_nails": 26
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5920,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 80,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5376,
+              "hp": 80.3
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 69.8
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          72,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 4400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "27280fa2697a36660e5971aa06e94b0a53fffa7021d6166f087fb16c656c4b97"
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_repair~p": 40,
+          "aura|brakk_repair~p": 100
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 4100,
+              "hp": 60.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 60.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3556,
+              "hp": 49.724999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 39.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 2580
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "6f9e6ea5045ba849fc6f7c82618ed27f1ad970ef4e00fd33aa2e05024cca7155"
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "beam|brakk_build": 148
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4420,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 80,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4164,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 336,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 3876,
+              "hp": 80.3
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 2900,
+              "hp": 78.55
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          105,
+          -65,
+          0,
+          0,
+          600,
+          105,
+          65,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 105,
+          "y": 0,
+          "life": 2900
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "e63de726b08a6209a36abdae369b16bb8e42da033c8e7042acca919275b7bbd2"
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 38,
+          "beam|brakk_nails": 13
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5920,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 80,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5376,
+              "hp": 80.3
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 78.55
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          115,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 4400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "a1a27554d9bed6b858c8cc141890130f3da9de95788be252b81e9f9ca5d3fbc5"
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_repair~p": 40,
+          "aura|brakk_repair~p": 100
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 4100,
+              "hp": 60.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 60.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3556,
+              "hp": 58.474999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 56.724999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 2580
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "e1567b3078fc2b11a38c6c0c0272962328702b8a8fd5b596bf41817a4180f16f"
+    },
+    {
+      "arena": "infernal",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "beam|brakk_build": 148
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4420,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 80,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4164,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 336,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 3876,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 2900,
+              "hp": 124.14000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          105,
+          -65,
+          0,
+          0,
+          600,
+          105,
+          65,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 105,
+          "y": 0,
+          "life": 2900
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "11b95e95828f16b25a816381afa273305a2b540148f89a4c295182d60a1e1194"
+    },
+    {
+      "arena": "infernal",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 38,
+          "beam|brakk_nails": 26
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5920,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 80,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5376,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 124.14000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          72,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 4400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "42cc6b12c0a82d7dccea08268c6d8033f4c828567fcea07d67256b2e106e28e3"
+    },
+    {
+      "arena": "infernal",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_repair~p": 40,
+          "aura|brakk_repair~p": 100
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 4100,
+              "hp": 100.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 100.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3556,
+              "hp": 90.48000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 79.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 2580
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "969a02bfba7701a2c8e49cbb4cc2cd3dbb6c9c2adf6a3ef9d4b44b83b83929b0"
+    },
+    {
+      "arena": "infernal",
+      "look": "set",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "beam|brakk_build": 148
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4420,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 80,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4164,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 336,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 3876,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 2900,
+              "hp": 132.89000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          105,
+          -65,
+          0,
+          0,
+          600,
+          105,
+          65,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 105,
+          "y": 0,
+          "life": 2900
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "99ae062a1684d5776fde9324f98a2bf9b4328436e764aca0b69ae4337d01749b"
+    },
+    {
+      "arena": "infernal",
+      "look": "set",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 38,
+          "beam|brakk_nails": 13
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5920,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 80,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5376,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 132.89000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          0,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          0,
+          0,
+          0,
+          260,
+          115,
+          0,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 4400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "ebd60d47182c312bd3b33f017b0a758af3a69836d4e1f2c2781f9bba830ecd8e"
+    },
+    {
+      "arena": "infernal",
+      "look": "set",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_repair~p": 40,
+          "aura|brakk_repair~p": 100
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 4100,
+              "hp": 100.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 100.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 0,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3556,
+              "hp": 99.23000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 97.48000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          30,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 2580
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "0fb8a1d0a618a5f390f6296085f8656ef9b097d1d9877c7eed2111cf9866287a"
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "beam|brakk_build": 148
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4420,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 80,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4164,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 336,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 3876,
+              "hp": 80.3
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 2900,
+              "hp": 69.8
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          105,
+          495,
+          0,
+          0,
+          600,
+          105,
+          625,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 105,
+          "y": 0,
+          "life": 2900
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "4e3c8ce04d93f5853c758b44aa58f8eb894f8802527377175d8dc249858471ba"
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 38,
+          "beam|brakk_nails": 26
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5920,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 80,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5376,
+              "hp": 80.3
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 69.8
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          560,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          560,
+          0,
+          0,
+          260,
+          72,
+          560,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 4400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "c66cb9ec7e88f6c0a81c0e7b2eae1bbfefd6abac02db6beecb0bf995ed634d77"
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_repair~p": 40,
+          "aura|brakk_repair~p": 100
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 4100,
+              "hp": 60.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 60.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3556,
+              "hp": 49.724999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 39.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          590,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          560,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 2580
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "cc11ec392fa244f8bebc0566af90926feaae71600daa56d19736245b45fbc118"
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "beam|brakk_build": 148
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4420,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 80,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4164,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 336,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 3876,
+              "hp": 80.3
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 2900,
+              "hp": 78.55
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          105,
+          495,
+          0,
+          0,
+          600,
+          105,
+          625,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 105,
+          "y": 0,
+          "life": 2900
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "28039d114df98103972210f1a851ba53453d2d2f52fc531970e792e12a56c667"
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 38,
+          "beam|brakk_nails": 13
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5920,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 80,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 80.3
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5376,
+              "hp": 80.3
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 78.55
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          560,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          560,
+          0,
+          0,
+          260,
+          115,
+          560,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 4400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "28039d114df98103972210f1a851ba53453d2d2f52fc531970e792e12a56c667"
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": null,
+        "pack": "brakk",
+        "equipment": 0,
+        "set": null,
+        "setPieces": 0
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_repair~p": 40,
+          "aura|brakk_repair~p": 100
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 4100,
+              "hp": 60.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 60.224999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3556,
+              "hp": 58.474999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 56.724999999999994
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          590,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          560,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 2580
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "f6530d52d7c5fee76f173a1975c6dd255ce8991a8b596ee65974c0dbabe8c2e5"
+    },
+    {
+      "arena": "minas",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "beam|brakk_build": 148
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4420,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 80,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4164,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 336,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 3876,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 2900,
+              "hp": 124.14000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          105,
+          495,
+          0,
+          0,
+          600,
+          105,
+          625,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 105,
+          "y": 0,
+          "life": 2900
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "9cc9178962bbfdc3b6e8f128d463d940a2f00f7b01f76283262bbc195e77b985"
+    },
+    {
+      "arena": "minas",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 38,
+          "beam|brakk_nails": 26
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5920,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 80,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5376,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 124.14000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          560,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          560,
+          0,
+          0,
+          260,
+          72,
+          560,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 4400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "9cc9178962bbfdc3b6e8f128d463d940a2f00f7b01f76283262bbc195e77b985"
+    },
+    {
+      "arena": "minas",
+      "look": "set",
+      "density": "dense",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_repair~p": 40,
+          "aura|brakk_repair~p": 100
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 4100,
+              "hp": 100.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 100.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3556,
+              "hp": 90.48000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 79.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          590,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          560,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 2580
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "a1f0979d11afba0aa0652a6f456be6a93dd39049919315295be26956d2285be8"
+    },
+    {
+      "arena": "minas",
+      "look": "set",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "beam|brakk_build": 148
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4420,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 80,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 4164,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "beam",
+              "theme": "brakk_build",
+              "t": 336,
+              "dur": 600,
+              "fi": -2
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 0,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 3876,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 105,
+              "y": 0,
+              "life": 2900,
+              "hp": 132.89000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 0,
+      "action": "brk_wall",
+      "trace": [
+        [
+          "beam",
+          "brakk_build",
+          105,
+          495,
+          0,
+          0,
+          600,
+          105,
+          625,
+          28,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 105,
+          "y": 0,
+          "life": 2900
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Muro de asedio",
+      "sceneHash": "f0c54a16f5914be890335b00db5b5fd6b795bf9cacd0167ef43d73f764a584c4"
+    },
+    {
+      "arena": "minas",
+      "look": "set",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_deploy~h": 38,
+          "beam|brakk_nails": 13
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5920,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 80,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5664,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_deploy~h",
+              "t": 336,
+              "dur": 620,
+              "fi": -1
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 1,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 5376,
+              "hp": 134.64000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_turret",
+              "x": 105,
+              "y": 0,
+              "life": 4400,
+              "hp": 132.89000000000001
+            }
+          ],
+          "pool": [],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 1,
+      "action": "brk_turret",
+      "trace": [
+        [
+          "burst",
+          "brakk_deploy~h",
+          105,
+          560,
+          45,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "beam",
+          "brakk_nails",
+          105,
+          560,
+          0,
+          0,
+          260,
+          115,
+          560,
+          18,
+          -2
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_turret",
+          "x": 105,
+          "y": 0,
+          "life": 4400
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Torreta de clavos",
+      "sceneHash": "f0c54a16f5914be890335b00db5b5fd6b795bf9cacd0167ef43d73f764a584c4"
+    },
+    {
+      "arena": "minas",
+      "look": "set",
+      "density": "sparse",
+      "omitSignature": true,
+      "resolved": {
+        "skin": "quality_brakk",
+        "pack": "skin_quality_brakk",
+        "equipment": 4,
+        "set": "quality_brakk",
+        "setPieces": 4
+      },
+      "draws": {
+        "kit": {
+          "burst|brakk_repair~p": 40,
+          "aura|brakk_repair~p": 100
+        },
+        "body": 100
+      },
+      "samples": [
+        {
+          "t": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 4100,
+              "hp": 100.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 80,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 80,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 330,
+          "elapsed": 336,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3844,
+              "hp": 100.98000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 336,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": [
+            {
+              "on": true,
+              "x": 0,
+              "y": 560,
+              "key": "brakk",
+              "slot": 2,
+              "radius": 0,
+              "ult": false,
+              "angle": 0,
+              "t": 336,
+              "dur": 460,
+              "shape": "star"
+            }
+          ]
+        },
+        {
+          "t": 610,
+          "elapsed": 624,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 3556,
+              "hp": 99.23000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "burst",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 650,
+              "fi": -1
+            },
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 624,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        },
+        {
+          "t": 1600,
+          "elapsed": 1600,
+          "objects": [
+            {
+              "kind": "brk_wall",
+              "x": 75,
+              "y": 30,
+              "life": 2580,
+              "hp": 97.48000000000002
+            }
+          ],
+          "pool": [
+            {
+              "art": "aura",
+              "theme": "brakk_repair~p",
+              "t": 1600,
+              "dur": 3000,
+              "fi": 0
+            }
+          ],
+          "signatures": []
+        }
+      ],
+      "lance": false,
+      "champion": "brakk",
+      "slot": 2,
+      "action": "brk_repair",
+      "trace": [
+        [
+          "burst",
+          "brakk_repair~p",
+          75,
+          590,
+          30,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "brakk_repair~p",
+          0,
+          560,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0
+        ]
+      ],
+      "objects": [
+        {
+          "kind": "brk_wall",
+          "x": 75,
+          "y": 30,
+          "life": 2580
+        }
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        330,
+        610,
+        1600
+      ],
+      "name": "Apuntalar",
+      "sceneHash": "72c4097d423364f21c3d1039b4a01f95ae30b627f8faa392be6a38298cca2bd5"
+    }
+  ],
+  "errors": []
+}

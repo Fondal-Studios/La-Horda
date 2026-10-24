@@ -1,0 +1,49 @@
+{
+  "medium": "Existing native KVB recipes preserved; runtime integration correction, no new raster/atlas",
+  "recipe": "js/champions/vfx-b/veyra.js",
+  "sourceSha256": "46000a043e81ddf5e3dbc9a50a95482769eb938aab561c69aac967ae46ce1270",
+  "preservedAtlases": [
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/atlases/vy_dash.png",
+      "sha256": "33d3a90eba3a345f26f5146d9a97ae645515303532afccf3d2c9d2f3d8fc771d",
+      "bytes": 1124
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/atlases/vy_dash_end.png",
+      "sha256": "9f30bb114c47a79cec4e4ef8bfc9f5f61ff311b6e1b220e2ac94258d9616cb64",
+      "bytes": 2035
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/atlases/vy_lance.png",
+      "sha256": "7e05e514b2e1cdc4147031bc10bac678ee02b4ef28a43c94444f92e8b724c636",
+      "bytes": 514
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/atlases/vy_pact.png",
+      "sha256": "d4775e1f327bd42d392323624fcd42be8d02914d6215e833410a589846401c68",
+      "bytes": 3480
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/atlases/vy_pact_idle.png",
+      "sha256": "70dd5d94a395e8166a99cc54e5dd60f906e4d1e83239f25560d92bf8fa5a0aaf",
+      "bytes": 2793
+    },
+    {
+      "path": "art-source/entregas/veyra-kit-20261022/atlases/vy_slash.png",
+      "sha256": "6e68004605e8fd238260ddf06977108e7dcd6e33163df1d92b1b1f585af3af76",
+      "bytes": 8726
+    }
+  ],
+  "newFrames": 0,
+  "commands": {
+    "rng": "TRACE=0 PARITY_OUT=/tmp/parity.json node tools/vfx/trace-kvb-rng.js",
+    "trace": "FRAMES=50 TRACE=1 PARITY_OUT=/tmp/trace.json node tools/vfx/trace-kvb-rng.js",
+    "emitters": "OUT=/tmp/emitters.json node tools/vfx/verify-kvb-q5-rng.js",
+    "follow": "OUT=/tmp/follow.json node tools/vfx/verify-kvb-follow-render.js",
+    "functional": "node tools/quality-five/functional.js",
+    "relay": "node tools/vfx/veyra-pact-online-rng.js",
+    "visual": "ONLY=veyra MOBILE=1 FULL=1 TIMES=80,250,800 OUT=/tmp/visual node tools/vfx/capture-kvb-rng.js"
+  },
+  "before": "Set HOOKS_FILE=source-before.js and PIXFX_FILE=pixfx-before.js for both parent files; same seed/scene/scale. Trace gzip files contain original JSON (gzip -dc).",
+  "environment": "NODE_PATH runtime Playwright; CHROMIUM_PATH=/tmp/chromium; test-owned local server/relay."
+}

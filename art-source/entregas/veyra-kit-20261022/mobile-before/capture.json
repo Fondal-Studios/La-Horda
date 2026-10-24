@@ -1,0 +1,100 @@
+{
+  "results": [
+    {
+      "lance": false,
+      "champion": "veyra",
+      "slot": 0,
+      "action": "vey_cut",
+      "trace": [
+        "veyra.cut",
+        "punch"
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        800,
+        1200
+      ],
+      "name": "Abrir la herida",
+      "sceneHash": "1a563460a42e9c3f3ffd3b7644532e31ee0d781b5f7861c762c1700419f1add2"
+    },
+    {
+      "lance": false,
+      "champion": "veyra",
+      "slot": 1,
+      "action": "vey_dash",
+      "trace": [
+        "veyra.dash",
+        "punch"
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        800,
+        1200
+      ],
+      "name": "Paso escarlata",
+      "sceneHash": "032b8cbdfa323378b438a0f648a0127f5907ed7dc2040bbc7c09953de5cb7b50"
+    },
+    {
+      "lance": false,
+      "champion": "veyra",
+      "slot": 2,
+      "action": "vey_pact",
+      "trace": [
+        "veyra.pact",
+        "punch"
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        800,
+        1200
+      ],
+      "name": "Pacto de dolor",
+      "sceneHash": "afbebbc58f09d2201e30372e9c50ad3383637803ebf24664e0195da1219ea4fd"
+    },
+    {
+      "lance": false,
+      "champion": "veyra",
+      "slot": 3,
+      "action": "vey_final",
+      "trace": [
+        "uf.veyra"
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        800,
+        1200
+      ],
+      "name": "La última herida",
+      "sceneHash": "dcc6945949d997d04c6ff1beeea264c65d87831cd47cd8c2495af150e64547f8"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,41 @@
+{
+  "base": "f62d181477adcb4607cc615411cc51bad769f681",
+  "previousCheckpoint": "PR207 head7aefceeb522025ba6da9abf390e1c5676ac17041/primera-pasada-01",
+  "recovery": "1fff15958d84d0280bacd116b0fd553a9ec6df47",
+  "previousClosureRead": true,
+  "lostClosureDetected": false,
+  "openPRsObserved": 19,
+  "unrelatedNewWorkshop": "PR208 a2e08292bb87a25154982dcf13edff6c13efcf3a gameplay QA pending: untouched",
+  "duplicateFaroleroWorkshopFound": false,
+  "actualMissingScope": [
+    "B138 distinct initial ignition with moths",
+    "B139 distinct directional flash and opening shutter",
+    "B140 distinct path beam; also A-PROP-sfa-path only within B486"
+  ],
+  "existingPreserved": [
+    "Base atlas and previews",
+    "Lumbre Persistente set atlas",
+    "Guardavía cosmetic atlas",
+    "4 ability icons and pixel glyph consumers",
+    "Piqueta basic lantern theme",
+    "SFA lantern motif prop and legacy prop/zone, expiration nova",
+    "UF lanterns, hero timer and zone suppression",
+    "Legacy path ground, skill signature and generic hit particles"
+  ],
+  "notClosed": [
+    "B018",
+    "B414",
+    "B439",
+    "B248",
+    "B638",
+    "B485",
+    "B486 entire",
+    "S035",
+    "S036"
+  ],
+  "route": "SFA_BIND.farolero -> native theme callback -> sfaBake cache -> renderer drawImage; object path from replicated portadorObjects. No external PNG loading added; exported PNGs are exact snapshots of baked runtime source. Runtime connected only in workshop.",
+  "noBalanceChange": true,
+  "artApproach": "Native SfaStrip authoring appropriate for code-native VFX. Read Painter/forge instructions; no body donor or concept required, no imagegen call or paid service claimed.",
+  "variants": "Path explicit ~p for actual object on host/guest; flash ~h per original slot; original basic/UF themes unchanged. Generic terminal path burst remains fallback.",
+  "next": "Auditar Guerrero B141/B142/B143 en main/PR/fuentes/consumidores frescos antes de producir; preservar muerte PR187, cuerpo, UF, básicos y arte existente. No repetir primeras pasadas ni arreglar Farolero/Facu/Eslabón mientras falten kits."
+}

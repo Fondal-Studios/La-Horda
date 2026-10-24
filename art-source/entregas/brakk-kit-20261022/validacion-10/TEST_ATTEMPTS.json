@@ -1,0 +1,69 @@
+{
+  "attempts": [
+    {
+      "id": "online-01",
+      "result": "HARNESS_ERROR",
+      "evidence": "attempt-01/crew-online-results.json",
+      "reason": "Assignment to constant variable: sfaDrawOne is const. Observe actual Canvas drawImage coordinates instead; runtime unchanged."
+    },
+    {
+      "id": "capture-01",
+      "result": "HARNESS_ERROR",
+      "evidence": "attempt-01/mobile.log",
+      "reason": "Same constant reassignment; hung catch process terminated. No result counted PASS."
+    },
+    {
+      "id": "benchmark-01",
+      "result": "SYNTAX_ERROR",
+      "evidence": "attempt-01/performance-syntax.log",
+      "reason": "Missing arrow-body brace, arena appeared redeclared. Corrected fixture."
+    },
+    {
+      "id": "trace-counter-01",
+      "result": "INVALID_CACHE_COUNT",
+      "evidence": "attempt-01/performance-trace-map-counter/crew-performance.json",
+      "reason": "Object.keys(Map) always0; use Map.size. Also overlapped local verification; not a formal performance comparison."
+    },
+    {
+      "id": "crew-local-final",
+      "result": "30/30 PASS",
+      "evidence": "crew-verification.json"
+    },
+    {
+      "id": "crew-canary",
+      "result": "29/30; expected receiver2 draw failure",
+      "evidence": "canary/crew-verification.json",
+      "reason": "Fixture suppresses target2 real atlas draw, catches missing follower."
+    },
+    {
+      "id": "crew-relay-final",
+      "result": "29/29 PASS +3 state waits",
+      "evidence": "crew-online-results.json"
+    },
+    {
+      "id": "capture-final",
+      "result": "24 scenes,48/48 same-frame restoration/state",
+      "evidence": [
+        "mobile/capture.json",
+        "landscape/capture.json"
+      ]
+    },
+    {
+      "id": "performance-12cases",
+      "result": "48 coverage/pool/reset controls PASS; latency NOT approved",
+      "evidence": "crew-performance.json"
+    },
+    {
+      "id": "performance-trace-final",
+      "result": "2 Bosque cases, spikes localized at frame0; subsystem unproven",
+      "evidence": "performance-trace/crew-performance.json"
+    }
+  ],
+  "notRerun": [
+    "CPU6 relay",
+    "functional81",
+    "combat RNG29232 parity",
+    "isolated legibility gate09"
+  ],
+  "reason": "Runtime unchanged; historical results not represented as new executions."
+}

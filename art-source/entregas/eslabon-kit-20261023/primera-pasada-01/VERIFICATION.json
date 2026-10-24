@@ -1,0 +1,358 @@
+{
+  "checks": [
+    {
+      "name": "eslabon_hookbeam binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_hookbeam clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_hookbeam active cells",
+      "ok": true,
+      "detail": [
+        64,
+        57,
+        57,
+        57,
+        64,
+        64,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "eslabon_hookbeam final phase",
+      "ok": true,
+      "detail": 64
+    },
+    {
+      "name": "eslabon_hookbeam cache reuse",
+      "ok": true
+    },
+    {
+      "name": "eslabon_hookburst binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_hookburst clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_hookburst active cells",
+      "ok": true,
+      "detail": [
+        80,
+        89,
+        99,
+        121,
+        129,
+        140,
+        149,
+        146,
+        108,
+        63,
+        29,
+        0
+      ]
+    },
+    {
+      "name": "eslabon_hookburst final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_hookburst cache reuse",
+      "ok": true
+    },
+    {
+      "name": "eslabon_linebeam binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_linebeam clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_linebeam active cells",
+      "ok": true,
+      "detail": [
+        66,
+        66,
+        66,
+        66,
+        66,
+        66,
+        66,
+        66
+      ]
+    },
+    {
+      "name": "eslabon_linebeam final phase",
+      "ok": true,
+      "detail": 66
+    },
+    {
+      "name": "eslabon_linebeam cache reuse",
+      "ok": true
+    },
+    {
+      "name": "eslabon_lineburst binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_lineburst clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_lineburst active cells",
+      "ok": true,
+      "detail": [
+        179,
+        177,
+        176,
+        176,
+        174,
+        174,
+        174,
+        166,
+        120,
+        79,
+        46,
+        0
+      ]
+    },
+    {
+      "name": "eslabon_lineburst final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_lineburst cache reuse",
+      "ok": true
+    },
+    {
+      "name": "eslabon_wardbeam binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_wardbeam clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_wardbeam active cells",
+      "ok": true,
+      "detail": [
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60
+      ]
+    },
+    {
+      "name": "eslabon_wardbeam final phase",
+      "ok": true,
+      "detail": 60
+    },
+    {
+      "name": "eslabon_wardbeam cache reuse",
+      "ok": true
+    },
+    {
+      "name": "eslabon_wardaura binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_wardaura clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "eslabon_wardaura active cells",
+      "ok": true,
+      "detail": [
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272
+      ]
+    },
+    {
+      "name": "eslabon_wardaura final phase",
+      "ok": true,
+      "detail": 272
+    },
+    {
+      "name": "eslabon_wardaura cache reuse",
+      "ok": true
+    },
+    {
+      "name": "chain fallback nova",
+      "ok": true
+    },
+    {
+      "name": "chain fallback cone",
+      "ok": true
+    },
+    {
+      "name": "chain fallback aura",
+      "ok": true
+    },
+    {
+      "name": "original basic theme",
+      "ok": true
+    }
+  ],
+  "sources": [
+    {
+      "theme": "eslabon_hook",
+      "art": "beam",
+      "size": 12,
+      "arc": 0,
+      "w": 16,
+      "h": 12,
+      "n": 8,
+      "cells": [
+        64,
+        57,
+        57,
+        57,
+        64,
+        64,
+        64,
+        64
+      ]
+    },
+    {
+      "theme": "eslabon_hook",
+      "art": "burst",
+      "size": 64,
+      "arc": 0,
+      "w": 64,
+      "h": 64,
+      "n": 12,
+      "cells": [
+        80,
+        89,
+        99,
+        121,
+        129,
+        140,
+        149,
+        146,
+        108,
+        63,
+        29,
+        0
+      ]
+    },
+    {
+      "theme": "eslabon_line",
+      "art": "beam",
+      "size": 12,
+      "arc": 0,
+      "w": 16,
+      "h": 12,
+      "n": 8,
+      "cells": [
+        66,
+        66,
+        66,
+        66,
+        66,
+        66,
+        66,
+        66
+      ]
+    },
+    {
+      "theme": "eslabon_line",
+      "art": "burst",
+      "size": 64,
+      "arc": 0,
+      "w": 64,
+      "h": 64,
+      "n": 12,
+      "cells": [
+        179,
+        177,
+        176,
+        176,
+        174,
+        174,
+        174,
+        166,
+        120,
+        79,
+        46,
+        0
+      ]
+    },
+    {
+      "theme": "eslabon_ward",
+      "art": "beam",
+      "size": 12,
+      "arc": 0,
+      "w": 16,
+      "h": 12,
+      "n": 8,
+      "cells": [
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60
+      ]
+    },
+    {
+      "theme": "eslabon_ward",
+      "art": "aura",
+      "size": 0,
+      "arc": 0,
+      "w": 48,
+      "h": 56,
+      "n": 12,
+      "cells": [
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272,
+        272
+      ]
+    }
+  ]
+}

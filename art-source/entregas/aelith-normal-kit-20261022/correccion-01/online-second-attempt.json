@@ -1,0 +1,327 @@
+{
+  "status": "FAIL",
+  "scope": "Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.",
+  "checks": [
+    {
+      "name": "solciju admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "brakk admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "veyra admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "morveth admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "aelith admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "nano_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "facu_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "Actual trail snapshots on host",
+      "ok": true
+    },
+    {
+      "name": "Actual trail snapshots on touch guest",
+      "ok": true
+    },
+    {
+      "name": "render event visible on host and touch guest: aelith_echo",
+      "ok": true,
+      "host": [
+        [
+          "nova",
+          "aelith_echo",
+          115,
+          50,
+          75,
+          0,
+          520,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "nova",
+          "aelith_echo",
+          115,
+          50,
+          75,
+          0,
+          520,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "guest": [
+        [
+          "nova",
+          "aelith_echo",
+          115,
+          50,
+          75,
+          0,
+          520,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "nova",
+          "aelith_echo",
+          115,
+          50,
+          75,
+          0,
+          520,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "render event visible on host and touch guest: aelith_fracture~h",
+      "ok": true,
+      "host": [
+        [
+          "beam",
+          "aelith_fracture~h",
+          49.5,
+          49.5,
+          0,
+          0,
+          720,
+          309.5,
+          49.5,
+          52,
+          -2,
+          null,
+          null
+        ]
+      ],
+      "guest": [
+        [
+          "beam",
+          "aelith_fracture~h",
+          49.5,
+          49.5,
+          0,
+          0,
+          720,
+          309.5,
+          49.5,
+          52,
+          -2,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "render event visible on host and touch guest: aelith_haste~p",
+      "ok": true,
+      "host": [
+        [
+          "aura",
+          "aelith_haste~p",
+          49.5,
+          49.5,
+          25,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      ],
+      "guest": [
+        [
+          "aura",
+          "aelith_haste~p",
+          49.5,
+          49.5,
+          25,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "one initial and one actual echo impact on host",
+      "ok": true
+    },
+    {
+      "name": "one initial and one actual echo impact on touch guest",
+      "ok": true
+    },
+    {
+      "name": "actual debt delivered as800ms recipient event on host",
+      "ok": true,
+      "details": {
+        "events": [
+          [
+            "aura",
+            "aelith_debt",
+            217.4,
+            49.5,
+            25,
+            0,
+            800,
+            null,
+            null,
+            null,
+            1,
+            null,
+            null
+          ]
+        ],
+        "pool": [
+          {
+            "fi": 1,
+            "dur": 800
+          }
+        ],
+        "timer": 0
+      }
+    },
+    {
+      "name": "actual debt delivered as800ms recipient event on touch guest",
+      "ok": true,
+      "details": {
+        "events": [
+          [
+            "aura",
+            "aelith_debt",
+            217.4,
+            49.5,
+            25,
+            0,
+            800,
+            null,
+            null,
+            null,
+            1,
+            null,
+            null
+          ]
+        ],
+        "pool": [
+          {
+            "fi": 1,
+            "dur": 800
+          }
+        ],
+        "timer": 0
+      }
+    },
+    {
+      "name": "guest debt ends and releases body snapshots",
+      "ok": true
+    },
+    {
+      "name": "cap replacement emits3 initial plus2 actual impacts on host",
+      "ok": true,
+      "count": 5
+    },
+    {
+      "name": "cap replacement emits3 initial plus2 actual impacts on touch guest",
+      "ok": true,
+      "count": 5
+    },
+    {
+      "name": "shared haste owns two distinct recipients on host",
+      "ok": false
+    },
+    {
+      "name": "shared haste owns two distinct recipients on touch guest",
+      "ok": false
+    },
+    {
+      "name": "shared debt owns two distinct recipients on host",
+      "ok": false
+    },
+    {
+      "name": "shared debt owns two distinct recipients on touch guest",
+      "ok": false
+    },
+    {
+      "name": "preserved UF event reaches host",
+      "ok": true
+    },
+    {
+      "name": "preserved UF event reaches touch guest",
+      "ok": true
+    },
+    {
+      "name": "aelith guest casts simulated by host",
+      "ok": true,
+      "host": {
+        "key": "aelith",
+        "casts": 8,
+        "damage": 365.84317000000004,
+        "bleeds": 0
+      },
+      "guest": {
+        "key": "aelith",
+        "casts": 7,
+        "owned": [
+          "ael_hour"
+        ],
+        "bleeds": 0
+      }
+    },
+    {
+      "name": "aelith ultimate replicates with guest owner",
+      "ok": true
+    },
+    {
+      "name": "death cancellation sends no false echo or debt on host",
+      "ok": true
+    },
+    {
+      "name": "death cancellation sends no false echo or debt on touch guest",
+      "ok": true
+    },
+    {
+      "name": "aelith death removes owned effects",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

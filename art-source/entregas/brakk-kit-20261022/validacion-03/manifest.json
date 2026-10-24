@@ -1,0 +1,401 @@
+{
+  "schema": 1,
+  "date": "2026-10-23",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "generated": false,
+  "validated": false,
+  "integratedMain": false,
+  "publicationVerified": false,
+  "parent": "d411b331324095b61def28454cf04feb3ac6e441",
+  "recovery": "b9575f76cd2db2e18d7499bd2e76428db3e4992c",
+  "pr": 197,
+  "files": [
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/CHECKPOINT.md",
+      "bytes": 4979,
+      "sha256": "03bcd81f6c8ea8496898453a1beff622f4f552aae1a0da7dd468ec292a95eb8a",
+      "gitBlob": "e1265f47cb52024d77237492ce4734c75fe6c632"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/REMOTE_CLOSURE.json",
+      "bytes": 12499,
+      "sha256": "6a076504c2c73aa17d7865d5eebfedea49df006a3852f37f7fb40a69ba0487f1",
+      "gitBlob": "c9468224100733591981f88659f51818b039cbfd"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/REVIEW.json",
+      "bytes": 2654,
+      "sha256": "9071c5530d73c5d28aff33dc2605458f997412111b444f3b9c91725ed814d49e",
+      "gitBlob": "a3a227bb9a27dbb38a5170babae6512d450d0d68"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/TEST_ATTEMPTS.json",
+      "bytes": 2490,
+      "sha256": "03f7e6799193a8ab84ddd68dcf306cb069eb31b09638f1046bfa2e1da4aa5143",
+      "gitBlob": "f11515493c332e89172d69defbc01937b174d138"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/atlases/nail-volley.png",
+      "bytes": 407,
+      "sha256": "76cf91e7128b7c2244802b1471e6b2c7a348e6160c7d3f09ad435f9e2189a2a2",
+      "gitBlob": "0f6d77a7de44fb1e775f02924f3c7c462eb54d23"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/atlases/repair-brace.png",
+      "bytes": 2432,
+      "sha256": "c4819ef7d859756b9f6a94db7c3be504c9beaa281021e03cdc609a605d128356",
+      "gitBlob": "efedb3c898dc12f9592b227bd34dab7eebb84365"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/atlases/repair-weld.png",
+      "bytes": 4298,
+      "sha256": "c8915d6c61bf57b1d67b1d82f06d1af8dfe6a4568b63e38edef5dc3453efa1a1",
+      "gitBlob": "efc569981c32754ac68e9cd5dff829e0b20d5c40"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/atlases/turret-deploy.png",
+      "bytes": 5662,
+      "sha256": "a877ab6984ec7e31e0ba70f8ace6bc220050ace38d54bdc3bcc4034216109522",
+      "gitBlob": "845de1106364783fbefc997d93ed827c5a1a78ff"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/atlases/wall-mount.png",
+      "bytes": 897,
+      "sha256": "c4c0b263c32205fc0e5997dfea218562701e94239fc75adb0453c3b143375778",
+      "gitBlob": "1691c692dc4efc1a1e8ecb60945388ca6bd15203"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-01/capture-source.js",
+      "bytes": 7828,
+      "sha256": "0bd8292591d0c914f11d4e3404daef26e7d0fa561d028b7f3c6a5304c49f266f",
+      "gitBlob": "7a1b70c20763178d6f128bb2b91130d81cb3129c"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-01/landscape/capture.json",
+      "bytes": 25483,
+      "sha256": "da8b65236648b82d775df703837afcfac0be5b21fce6ed805586df1af2d0167b",
+      "gitBlob": "a9ac16c97d6106e949d5a98d2a4d7f5428e34b5f"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-01/matrix-landscape.log",
+      "bytes": 2139,
+      "sha256": "82e33e747e83746c84ec4e9e3ae892b34c5e578e829af2913a907a61216f05c3",
+      "gitBlob": "aacb30b7fd472cdcc175eaa0eff49184b0bab7e9"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-01/matrix-mobile.log",
+      "bytes": 2139,
+      "sha256": "1d19283378b524dd5de3544fa06f18299d14f6dfcc2a4b939d7c51177e3de294",
+      "gitBlob": "56b01841c9f6a938261df1a26e4e001a3462e467"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-01/mobile/capture.json",
+      "bytes": 25483,
+      "sha256": "7362f6bf661be872c80700df020af058310af651bd0cc7e294065abb2c29e8e8",
+      "gitBlob": "9231e6530e74e5818a1a98a74c23e93913671fee"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-01/mobile/minas-croma-330-native.png",
+      "bytes": 478243,
+      "sha256": "1c7413e97fe9997f91e8dd76f1283bc6956548987241e741bab89935cd3b24aa",
+      "gitBlob": "fa1b5b9def45768fb013f72f873c8c0bee768ad5"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-02/capture-source.js",
+      "bytes": 8500,
+      "sha256": "56c636f92a4c16da7ec4bc02a9e0d97ab7c67867f81b7dac8d8ca621001dfd1b",
+      "gitBlob": "9bd731024945087abe3df21876ed7ee562d8e8b3"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-02/deploy-runtime.json",
+      "bytes": 1463,
+      "sha256": "bd712b7cfc1d0ebe91a83d20817642b7c483dae072e20a008dc01a1f780bec86",
+      "gitBlob": "2606680c6ad318a06217937b8eceafed0256616d"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-02/deploy-runtime.log",
+      "bytes": 1102,
+      "sha256": "945c7c49b563253473d6b7356857a3e3b2ae97ae3ddc134980acd03e79a6fc46",
+      "gitBlob": "d6e1efbb153cb7438cfaecfc9b2fb1f2f2d882d4"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-02/landscape-capture.json",
+      "bytes": 30285,
+      "sha256": "90bebe1dfc0e34ee82c70bf23db217c2d1f31a79819aa306e8b76ca14aaa91bb",
+      "gitBlob": "91872d8265888053dac06b06da8c996e2ae5c628"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-02/mobile-capture.json",
+      "bytes": 30285,
+      "sha256": "f7f66275ae9ec9bba7e03220655910d62baa87482f88eb933f9b45f683a652b0",
+      "gitBlob": "b8003e27460704bac80520be8c46e99c94f9d080"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-02/runtime-source.js",
+      "bytes": 2826,
+      "sha256": "716e0830eb1d4cfdfb5120c82e0465187173b76f1867744743c6d403730f1119",
+      "gitBlob": "48f0771a1bc3cbd19bcf0820b131ba5047ec353a"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/ci-failed-excerpt.log",
+      "bytes": 4033,
+      "sha256": "1f2813080a63f728af439042af20c2910e83f1c8edeaef838cea197dd704f264",
+      "gitBlob": "aab78a913ad2326ec6b5a393713d3ad91474112f"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/deploy-runtime.json",
+      "bytes": 1490,
+      "sha256": "9852efa473219b182ca299311cc60be5ca7513d0cc897cb50297d1db2ad487c5",
+      "gitBlob": "a72b4dba1d27977538d25176dd623964e7c3fcfb"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/deploy-runtime.log",
+      "bytes": 1129,
+      "sha256": "0fb8a9ac0116d3a040b0dca55abda1ad2230692770275b6b7777207468854f22",
+      "gitBlob": "1668fe535761f09d09a88d76960916a27d5d0259"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/kit.log",
+      "bytes": 530,
+      "sha256": "92fef2f3e9a42e48c42aea78f223012d79879285db5202cab054f616c81b9f2b",
+      "gitBlob": "ae5cd22ab9344fbf8420d825186ef4cfe5d12029"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/landscape/capture.json",
+      "bytes": 30315,
+      "sha256": "564dec0ea1d1ab97eb9eb991cf3a08c6a62ea34814c774bff8828ee13a4fe37f",
+      "gitBlob": "5651d5cd5377e0def85eaa5d902be8cc050e56b5"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/landscape/hielo-alt1-330-native.png",
+      "bytes": 672588,
+      "sha256": "5bed1c4fceec95458e73d8067409c6ceb4248411c61b8413af6c56a0594236df",
+      "gitBlob": "201b1627c9afc3a9ff3a0a02bec9d6bf71e72f13"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/landscape/minas-set-330-native.png",
+      "bytes": 625269,
+      "sha256": "e639d1c14726066ac59ce0aa700e52906c39b51370e697e1a417bebee860bbce",
+      "gitBlob": "bb574e0be864be7c905b16f938df4cd3bae75ade"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix-landscape.log",
+      "bytes": 2139,
+      "sha256": "545cb9920dd7c5c287a7ec7433f93d845039e5cbf646f1d1e7b9554481ea0feb",
+      "gitBlob": "f298363c2ad3e3c6fa172b3cf583e5cbb0f197e4"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix-mobile.log",
+      "bytes": 2139,
+      "sha256": "03307ff2933deabbb2acf1b08df00900c34aa0b3f88b8001ebdf685978b04c0e",
+      "gitBlob": "a29a933c8dd9f5f8cf052c7f1c83c178311fb8b2"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/landscape-acuatica.png",
+      "bytes": 962127,
+      "sha256": "981ff45d08eec103f87dde778097bacb5c7d755b05c604ffa76d0bb6f583a332",
+      "gitBlob": "b02185e824bf4c824ddbce86413f882b8f0a63b5"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/landscape-bosque.png",
+      "bytes": 816222,
+      "sha256": "6da9c132693cd3c81eaaa179dab92546babe2b1ff0ffaea72a8874b98a37e3ea",
+      "gitBlob": "e611bd0c293b91917d65f062d362accdf5056833"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/landscape-hielo.png",
+      "bytes": 1317984,
+      "sha256": "827e0111b01edcff35130c4ddd9a35720e12f556dae8c65e0945bf48dd90ee5e",
+      "gitBlob": "ae2d648be21c4a5ac6337fff2226324a4ff3fc7f"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/landscape-infernal.png",
+      "bytes": 1081414,
+      "sha256": "b535522c88b74f3f2e06a88923c903eced853482dc5786843f0e937ea4ced8e5",
+      "gitBlob": "d79d3294bd7ba86de8d965d12b178ad26648d958"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/landscape-laberinto.png",
+      "bytes": 977641,
+      "sha256": "8d796992ade16ceedf2d811a4a85df3b79c336b9e67e23c6e481130a8d61995e",
+      "gitBlob": "96cda2b8b1d2d8141c0c8c6549aa182ed9ea2829"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/landscape-minas.png",
+      "bytes": 1434972,
+      "sha256": "60d9c97fa10edfb9ba68fb69fe2c02c07f607b500e9983bbd21e72604f65c550",
+      "gitBlob": "0a0e8eafc481ad8f41f2e1384e5a0e612195f571"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/mobile-acuatica.png",
+      "bytes": 721057,
+      "sha256": "80abd610aab00091da9457e63f29b8fc456fac2f472618e176eae671339e3403",
+      "gitBlob": "b87d9366b99f6d4deca36362897ed1f3e1ba0248"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/mobile-bosque.png",
+      "bytes": 847267,
+      "sha256": "387dc095bdbd9f5c6e62a37361d96a42a3a1176f1c4e2edebdbeca95561b735b",
+      "gitBlob": "5b1421a50f8fa219b875ccb0c22d9d2056a86026"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/mobile-hielo.png",
+      "bytes": 1416092,
+      "sha256": "caba2b9e89032266c4f8caebafc0439d07847d402633e4b8ef808d922d019c78",
+      "gitBlob": "ffb5ba744888e5254adfdb411b46c88a5b518e52"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/mobile-infernal.png",
+      "bytes": 1071335,
+      "sha256": "0ab243fe3a2f021e22757cad21b47e48c121797fbd2d61c130c636ba3ca6b9c7",
+      "gitBlob": "f6c3921b1cf7442f469bcb9e06f5bd3840decbea"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/mobile-laberinto.png",
+      "bytes": 906674,
+      "sha256": "6dbdbce6552b84743c651e1eef13dbabdd2a2e5695afcad9b8407a4c4b6aaeb6",
+      "gitBlob": "5670ad082a8e653d8286d2dee7b71f585539331d"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/mobile-minas.png",
+      "bytes": 1450620,
+      "sha256": "9eca38038fafd7846eabf457d98bbb2f25066a5f8c30efe55cc57a68070a34b8",
+      "gitBlob": "ddcb442679e12aa0036745c280320240daea2d35"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/mobile/capture.json",
+      "bytes": 30315,
+      "sha256": "332c817a80a9de9eeb1fdad1c7aea8010a681207c4eab82552e04c8dba94157f",
+      "gitBlob": "0503fcc10e1ead1e2233cbbf57642ad05dd987d5"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/mobile/hielo-alt1-330-native.png",
+      "bytes": 666163,
+      "sha256": "9b8f670d5fe0bcdcc2e05183c4ba8035d29c0b6b4cdeb71eacaa4b86660bffe0",
+      "gitBlob": "068719b8914c94aa75053094b9c13975bcabda75"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/mobile/minas-set-330-native.png",
+      "bytes": 599642,
+      "sha256": "3f3f4e2042f87b108fd70ee4c2fa5205d63f8ed8e9860234c45ef232b65fa55b",
+      "gitBlob": "459c9ace518bc4ade2a2b376f98c57d01d792917"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/phase-tests.json",
+      "bytes": 2758,
+      "sha256": "a54a00847e2e197e279333ca91ad648f93b81e4a7f19beec0a0d43c03e4ef948",
+      "gitBlob": "b6864e0f5614cfc253b2abe8c68c3dd4aa28ba91"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/phase.log",
+      "bytes": 1786,
+      "sha256": "8066a214f3d6502372acf294fa8199c3907d30ee28cb451117a7a490a80c3dc3",
+      "gitBlob": "0f13927f3a13f73fafe7e9ec403d0e45ec49ec42"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/recipe.json",
+      "bytes": 3557,
+      "sha256": "d4d174631bf700da524fc2d1b3f460796f4cf049cb7135bf8a02447faf8003cd",
+      "gitBlob": "bf27324cc3f019cb71312ae62efb834710c8b766"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/runtime-verification.json",
+      "bytes": 98,
+      "sha256": "54197f8b4305245b74f40e04334ec22bbb8b2081b429cb62cce6261b181bfbec",
+      "gitBlob": "3fc54780906ff0224ceb2238a5f04a8f6a97f298"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/source.js",
+      "bytes": 4697,
+      "sha256": "81be8914332b0e0fa33941c02fd9fb37827f86ce8e1ec8917896c26b0e7c81f9",
+      "gitBlob": "57575ecf8d8def331a1ad86a18e26b0b0a5cff46"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/story-before.js",
+      "bytes": 19335,
+      "sha256": "924319b04410e144244f9a2b45ea94f28ac55685e1d5898ab2d7a3209e04de42",
+      "gitBlob": "f4097855c1292e30be730a7dcdcb7ba2eddd699f"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/story-fixed.log",
+      "bytes": 9020,
+      "sha256": "e547707ababfad1720a991f998bfb224a317ae061a199dd1fec2252b9c07e607",
+      "gitBlob": "7303869d0c2700cd918505e647534590c0eb3f97"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/story-main-fixed.log",
+      "bytes": 9023,
+      "sha256": "bd597d5b8b690cd4d60e2f7b03405bd57fd825ecb67e47c2639b1aa283a8021a",
+      "gitBlob": "5524481f054fdc3d647f4c676d9bb7872447f54a"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/story-negative-control.log",
+      "bytes": 3058,
+      "sha256": "a1ffabdbfa02d5a1dfee24b6611e52951fd489d6be103b8e528c6d5a2b3df2e8",
+      "gitBlob": "ce240680e775d2cb5062bef82d17f93be1178168"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/story-original.log",
+      "bytes": 9020,
+      "sha256": "4d76f9c891749008c64b951a9058466dd14ffd79a98378cc3848e268f5b57a93",
+      "gitBlob": "6d792871f7894840949c7148431e4c29a2bc2a7b"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/story-probe-follow.log",
+      "bytes": 58776,
+      "sha256": "9a6b7fbc99f77682d53034e2f561f33798629918de961cc6840e4d89b04917b9",
+      "gitBlob": "e4e125e905bdf4d911f9fdd76f08e7a0ace2f54f"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/story-probe.log",
+      "bytes": 28002,
+      "sha256": "e6310e85f92710fad43ec141c0ff810de24eeb9733a10d762d58b7b8f1745cac",
+      "gitBlob": "900dc81e05d71c9684440b7acf16e93d7b20b4b5"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/verification.json",
+      "bytes": 5608,
+      "sha256": "81be4cdafae6ad649b5ae95d70a76fcd9523f22686a40f51e4f76d1cc1ef557c",
+      "gitBlob": "bd8234738ccdceecce970eb6f48fd1e2ae20b999"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "bytes": 34649,
+      "sha256": "f17933258f2a0479d186d91a2580585be1e567ad069cbccc99c1cc96f5832a04",
+      "gitBlob": "1053bf0b9298f8672f1a9efeae0b2023a93c5d3d"
+    },
+    {
+      "path": "tools/items/probe-story-no-phase-voice.js",
+      "bytes": 9314,
+      "sha256": "1a4b61c807b2f98283d17ed2ea0b3308e3bd92e203acfd995c06e3769bedc276",
+      "gitBlob": "3bacb04bc63670e45a314fe5c3d99ed15358d7c6"
+    },
+    {
+      "path": "tools/items/probe-story-phase.js",
+      "bytes": 9299,
+      "sha256": "52d1dfb8f116ef82fd36dabb1f297283cd5120dc10c2ba3cb8074b2a5068a5d4",
+      "gitBlob": "a4e053492dac431e1084c1bb9b06d192a95deebc"
+    },
+    {
+      "path": "tools/items/t_story.js",
+      "bytes": 19535,
+      "sha256": "6bc7d8e176b05a9c869842d3acf21183eefca3627d56a8a014fcc4e9dd522ebd",
+      "gitBlob": "1bfb97977132d72221c16c5dd34097052bb7c4e5"
+    },
+    {
+      "path": "tools/vfx/capture-brakk-integral.js",
+      "bytes": 8590,
+      "sha256": "d1452906d83ba3943308ee953d0a1b8be07162a893fd5e9423df1dc594c91489",
+      "gitBlob": "ecaf7d57ddc9092bb345defa1b6aa929e9f5e778"
+    },
+    {
+      "path": "tools/vfx/verify-brakk-deploy-runtime.js",
+      "bytes": 2898,
+      "sha256": "cc7f1d2198276d9fcb6c53a14d2f77195fe9b81e2aa2ba281d4114680d8cdbbd",
+      "gitBlob": "dc7407ae2262777ecc1fef8edbeb3c0277e209cd"
+    }
+  ],
+  "productionCommit": "49af00d3b9b02d639945bc03f1bc676970b2678c",
+  "isolatedTestPR": 200
+}

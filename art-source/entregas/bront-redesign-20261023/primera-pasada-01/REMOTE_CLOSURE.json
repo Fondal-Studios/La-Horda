@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "closed": true,
+  "branch": "art/bront-redesign-first-pass-20261023",
+  "pr": 201,
+  "production": "cb339587b24412cfcaf45c2ab34c23c5af682074",
+  "productionFilesVerified": 26,
+  "verification": "Fetched branch commit and compared each Git blob SHA with local metadata.",
+  "main": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "status": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integratedMain": false,
+  "publishedInGame": false,
+  "userDirectionAuthorized": true,
+  "reproduction": {
+    "outputs": 5,
+    "identical": 5
+  },
+  "ci": "Consultar checks del SHA de cierre; no aprobación de merge. Draft y Art Gate FIX prevalecen.",
+  "next": "Corregir en lote geometría chibi/placas flotantes/pecho vacío/alpha y anclajes; fuente36conservada; luego skins y renderer. Mantener identidad distinguible como silueta."
+}

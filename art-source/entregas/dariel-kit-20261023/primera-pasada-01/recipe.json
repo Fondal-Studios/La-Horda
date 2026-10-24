@@ -1,0 +1,140 @@
+{
+  "schema": 1,
+  "base": "817610a78595e894995cec8032dd64149dbfe925",
+  "source": "js/champions/skill-fx-a/c/dariel.js",
+  "sourceSha256": "1d2b35cc7f04b2d905cee31b5d1a09858ba19b7ff2d26bbf3eeed112c0fedd62",
+  "approach": "Native SfaStrip recipe; no external paid service or illustration resampling",
+  "specs": [
+    {
+      "theme": "dariel_discord",
+      "art": "cone",
+      "size": 96,
+      "arc": 0.85,
+      "w": 98,
+      "h": 151,
+      "n": 12,
+      "cells": [
+        112,
+        159,
+        258,
+        300,
+        341,
+        375,
+        416,
+        459,
+        320,
+        217,
+        97,
+        0
+      ]
+    },
+    {
+      "theme": "dariel_march",
+      "art": "nova",
+      "size": 128,
+      "arc": 0,
+      "w": 128,
+      "h": 128,
+      "n": 12,
+      "cells": [
+        338,
+        335,
+        338,
+        340,
+        330,
+        335,
+        332,
+        331,
+        236,
+        160,
+        83,
+        0
+      ]
+    },
+    {
+      "theme": "dariel_march",
+      "art": "aura",
+      "size": 0,
+      "arc": 0,
+      "w": 48,
+      "h": 56,
+      "n": 12,
+      "cells": [
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134,
+        134
+      ]
+    },
+    {
+      "theme": "dariel_refrain",
+      "art": "nova",
+      "size": 128,
+      "arc": 0,
+      "w": 128,
+      "h": 128,
+      "n": 12,
+      "cells": [
+        272,
+        280,
+        332,
+        324,
+        332,
+        324,
+        332,
+        324,
+        241,
+        136,
+        70,
+        0
+      ]
+    },
+    {
+      "theme": "dariel_refrain",
+      "art": "aura",
+      "size": 0,
+      "arc": 0,
+      "w": 48,
+      "h": 56,
+      "n": 12,
+      "cells": [
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58,
+        58
+      ]
+    }
+  ],
+  "commands": [
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/verify-dariel-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=art-source/entregas/dariel-kit-20261023/primera-pasada-01/after node tools/vfx/capture-dariel-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium BASELINE=1 OUT=art-source/entregas/dariel-kit-20261023/primera-pasada-01/before node tools/vfx/capture-dariel-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium MOBILE=1 OUT=art-source/entregas/dariel-kit-20261023/primera-pasada-01/after-mobile node tools/vfx/capture-dariel-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium MOBILE=1 BASELINE=1 OUT=art-source/entregas/dariel-kit-20261023/primera-pasada-01/before-mobile node tools/vfx/capture-dariel-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium ONLY=dariel node tools/vfx/parity-dariel-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/portadores/dariel-firstpass-online.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node art-source/entregas/dariel-kit-20261023/primera-pasada-01/sources/run-functional.js"
+  ],
+  "dependencies": [
+    "playwright",
+    "local Chromium path",
+    "server/package-lock.json dependencies for relay"
+  ],
+  "timing": "Capture80/250/500/1100/2000 nominal becomes80/256/512/1104/2000ms. Preview95ms fixed is diagnostic only."
+}

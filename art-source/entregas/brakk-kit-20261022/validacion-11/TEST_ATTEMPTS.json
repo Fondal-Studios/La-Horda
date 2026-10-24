@@ -1,0 +1,21 @@
+{
+  "attempts": [
+    {
+      "path": "attempt-01",
+      "status": "DIAGNOSTIC_WITH_LIMITATION",
+      "note": "Default-selected asset wait preceded changing crew. Recorded first-frame210.1/207.6ms. No failed assertions, but not representative of actual crew-ready loading path."
+    },
+    {
+      "path": "cold-profile.json",
+      "status": "8 coverage/pool/reset checks PASS, latency NOT approved",
+      "note": "Await actual selected Brakk/Tanque/Soporte/Mago groups first. Native timers, all originals restored in finally. 2viewports120steps; coldframe165.3/190.6ms; mip10/11misses."
+    }
+  ],
+  "historicalTestsNotRepeated": [
+    "crew30",
+    "relay29",
+    "RNG29232",
+    "isolated09gate",
+    "CPU6"
+  ]
+}

@@ -1,0 +1,14 @@
+[arnés] servidor propio: http://127.0.0.1:45019 (raíz /workspace/scratch/a01f80e6b406/la-horda-brakk)
+{
+  "checks": 19,
+  "failed": [],
+  "observations": [
+    {
+      "component": "A-FX-brakk-h1",
+      "state": "EN_CORRECCION",
+      "finding": "La fase se verifica sobre sfaDrawOne real con tools/vfx/verify-brakk-build-phase.js; el cálculo histórico animNow/70 ya no representa este tema.",
+      "next": "Completar gate visual/skins/contraste específico y CI antes de aprobar el componente."
+    }
+  ],
+  "errors": []
+}

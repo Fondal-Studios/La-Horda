@@ -1,0 +1,28 @@
+{
+  "branch": "art/eslabon-kit-first-pass-20261023",
+  "pr": 206,
+  "productionCommit": "438afcf14e7c771d65f79129587400ad615de7ec",
+  "productionTree": "7a4f8015fba20e4229cb7d2b7d3dd7bd5e4a1ee5",
+  "recoveryCommit": "d969f0dda962845426b82cdcfb8ad2aba97ba197",
+  "baseMain": "817610a78595e894995cec8032dd64149dbfe925",
+  "currentMain": "f62d181477adcb4607cc615411cc51bad769f681",
+  "verifiedProductionFiles": 105,
+  "verifiedMethod": "All uploaded blobs matched local Git blob SHA; recursive remote tree verified105/105; final closure checked separately after commit.",
+  "state": "EN_CORRECCION",
+  "artGate": "FIX / NO_INTEGRAR",
+  "validated": false,
+  "integratedMain": false,
+  "publicationVerified": false,
+  "next": "Audit Facu GM B135/B136/B137 fresh main/openPR/canon/actual consumers. Preserve Eslabon and all prior workshops for grouped correction.",
+  "cazadora": {
+    "pr": {
+      "merged": true,
+      "state": "closed",
+      "merge_commit_sha": "f62d181477adcb4607cc615411cc51bad769f681",
+      "merged_at": "2026-10-23T21:47:29Z",
+      "head": "5f51df4999c0c80603faa4113cccdf85c9ab6e84"
+    },
+    "main": "f62d181477adcb4607cc615411cc51bad769f681"
+  },
+  "ci": "Query exact final branch head; no CI approval or integration inferred."
+}

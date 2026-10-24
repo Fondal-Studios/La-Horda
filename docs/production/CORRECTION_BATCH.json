@@ -1,8 +1,44 @@
 {
   "schema": 1,
   "updated": "2026-10-24",
-  "policy": "Alternar PRODUCCION con CIERRE (corregir, validar, integrar, verificar publicación). Conservar historial, fuentes e IDs. No integrar FIX ni rebajar gates.",
+  "policy": "First-pass champion batches; save failures and move forward. Run a grouped correction pass later; never merge failed or unvalidated assets.",
   "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
+  "pendingVerificationNotFailures": [
+    "Aurelia basic/refraction/luminal-step: generated, no empty/edge flags, still need final-scale readability, proper layer split and runtime tests",
+    "Myla hurt: visual continuity review pending",
+    "Libertador PR166: specialized61-frame integration pending, do not use generic36 replacement",
+    "Solciju B210 copa: revisión visual inicial favorable y alpha PASS; pendiente revisión de skins/arenas y CI del head antes de VALIDADO/main.",
+    "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
+    "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
+  ],
+  "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
+  "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
+  "next": "CIERRE del acumulado tras producción Khepri; no otra primera pasada. Khepri no instalado; conservar H1/UF. Brakk H1/H2 PR216 ya integrado.",
+  "validation07": {
+    "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
+    "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
+    "B117": "fresh strictsamepose PASS, historical2FAIL notrootresolved",
+    "state": "EN_CORRECCION",
+    "preservesEntries": 23
+  },
+  "queueSnapshotOrigin": {
+    "sha": "e692d37f62c9f4fd05ab04fc18540d2ebbacd8c4",
+    "preservedHistoricalEntries": 44
+  },
+  "componentClosures": [
+    {
+      "block": "B210",
+      "component": "A-FX-solciju-h3/launch-cup",
+      "state": "VALIDADO",
+      "integration": "PENDING_CI",
+      "publication": "NOT_CONFIRMED",
+      "source": "js/champions/vfx-b/solciju.js",
+      "sourceSha256": "58ccac05ca26680d3a9ab6fb3df1643d258a09ca1d055ad8e95be84e246079c2",
+      "evidence": "art-source/entregas/solciju-toast-20261024/cierre-01",
+      "scope": "Only launch cup900ms. Buff timer, other effects, PR195 RNG fixes and whole kit remain separate.",
+      "previousAttempt": "attempt-01 source/occlusion preserved; current24px thin rim, raised90u, radius28u."
+    }
+  ],
   "entries": [
     {
       "block": "B005",
@@ -369,14 +405,6 @@
           "sourceSha256": "eafcdcda620620b7ff0ab598aab47d5f26e13c964b5f429995e111d1b0a3c310",
           "finding": "A/B/A Acuatica14fails diagnosed as mutable animPose in harness,144/144 exact after pose snapshot restore. Two new horizontal B117 beam~h isolated rows79.886% below80; source/atlas unchanged,root not demonstrated.",
           "next": "Resolver lote composición/contraste y gates; no integrar taller FIX."
-        },
-        {
-          "date": "2026-10-24",
-          "path": "art-source/entregas/brakk-signatures-20261024/cierre-01",
-          "componentScope": "normal cast signature only",
-          "state": "VALIDADO",
-          "sourceSha256": "4e2f310e0f5169504f7bb4442da26eb4fbd6fd434588cc8559322e3ca136e604",
-          "note": "Parent block remains EN_CORRECCION. Independent closure from main, excludes all SFA workshop FIX; see REMOTE_CLOSURE for eventual merge/publication."
         }
       ]
     },
@@ -476,14 +504,6 @@
           "sourceSha256": "18831420feb6c79603932d1c8e06ade1cf4dafd8e53409200d4e44471175d9aa",
           "state": "EN_CORRECCION",
           "finding": "Measured post-body deployment layer; later layers preserve98.198..100% contribution in8parent scenes. Staged lateral feet candidate: candidate01FAIL22 retained; candidate02 isolated82%min both viewports,120same-frame exact comparisons,26relay,29232RNG parity. Compound ArtGate pending."
-        },
-        {
-          "date": "2026-10-24",
-          "path": "art-source/entregas/brakk-signatures-20261024/cierre-01",
-          "componentScope": "normal cast signature only",
-          "state": "VALIDADO",
-          "sourceSha256": "4e2f310e0f5169504f7bb4442da26eb4fbd6fd434588cc8559322e3ca136e604",
-          "note": "Parent block remains EN_CORRECCION. Independent closure from main, excludes all SFA workshop FIX; see REMOTE_CLOSURE for eventual merge/publication."
         }
       ]
     },
@@ -899,14 +919,6 @@
           "delivery": "art-source/entregas/brakk-kit-20261022/validacion-11",
           "technical": "450JS unchanged. First-frame actual crew-ready profile165.3/190.6ms, distributed arena/mips/feet/update; SFA3.7/3.4ms. No runtime optimization.",
           "remaining": "Crew composition and full mobile performance approval remain. Do not attribute startup entirely to53Brakkframes."
-        },
-        {
-          "date": "2026-10-24",
-          "path": "art-source/entregas/brakk-signatures-20261024/cierre-01",
-          "componentScope": "normal cast signature only",
-          "state": "EN_CORRECCION",
-          "sourceSha256": "fb099d653d4446769fdb25cd2537b7287695f982f89dd4240a5e79a376b13bdb",
-          "note": "Numeric visibility passes but X obscured by legacy columns/rings. Excluded from isolated runtime. Original main fallback kept; retain source in attempt-04/source.js for grouped composition."
         }
       ],
       "next": "Group crew-safe B118/B119 composition correction and first-frame component profile; preserve genuine mechanical signals; do not repeat solved recipient/relay tests as new work."
@@ -1340,16 +1352,6 @@
           ],
           "next": "Finish native alpha/proportion/negative-space in full base batch; then two skins and actual renderer. Do not install partial atlas."
         }
-      ],
-      "history": [
-        {
-          "source": "art-source/entregas/bront-redesign-20261023/cierre-03",
-          "state": "EN_CORRECCION",
-          "sourceSha256": "4167703df506a8242775bc8a8296f852465f8468017825066698e132ce146d58",
-          "atlasSha256": "6e86e9fe0e2214b5102a8b9c5244160c2c76d2b466e13322bf3bf75988191ead",
-          "diagnosis": "Edit03 did not meet alpha or cavity/separation requirements. Source880333 partial, atlas126954; cut contact13.",
-          "next": "Preserve sources01/02/03; no repeat prompt or skins on rejected base. Close another separable component."
-        }
       ]
     },
     {
@@ -1697,7 +1699,7 @@
     {
       "block": "B143",
       "component": "A-FX-guerrero-h3 / armada",
-      "state": "VALIDADO",
+      "state": "EN_CORRECCION",
       "source": "art-source/entregas/guerrero-kit-20261023/integracion-01",
       "frames": [
         7
@@ -1705,18 +1707,7 @@
       "defects": [
         "Conexión restaurada; contraste compuesto/alcance visual/skins/arenas/performance sin aprobación integral."
       ],
-      "next": "CI exacthead, merge normal con expected_head_sha y verificar publicación; B143 completo sigue sin cerrar.",
-      "history": [
-        {
-          "state": "EN_CORRECCION",
-          "defects": [
-            "Conexión restaurada; contraste compuesto/alcance visual/skins/arenas/performance sin aprobación integral."
-          ],
-          "source": "art-source/entregas/guerrero-kit-20261023/integracion-01"
-        }
-      ],
-      "review": "art-source/entregas/guerrero-kit-20261023/cierre-02/REVIEW.json",
-      "currentDefects": []
+      "next": "Validar componente aislado, conservar atlas original. No cerrar B143 completo."
     },
     {
       "block": "B145",
@@ -1884,42 +1875,6 @@
       ],
       "diagnosis": "Wing covers read fins/arrow; no actual dash hookup",
       "next": "Grouped kit correction then event-specific hookup, native composition, relay and ArtGate; preserve existing runtime until approved."
-    }
-  ],
-  "pendingVerificationNotFailures": [
-    "Aurelia basic/refraction/luminal-step: generated, no empty/edge flags, still need final-scale readability, proper layer split and runtime tests",
-    "Myla hurt: visual continuity review pending",
-    "Libertador PR166: specialized61-frame integration pending, do not use generic36 replacement",
-    "Solciju B210 copa: revisión visual inicial favorable y alpha PASS; pendiente revisión de skins/arenas y CI del head antes de VALIDADO/main.",
-    "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
-    "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
-  ],
-  "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
-  "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "Finish this cup closure: exact-head CI, normal merge with expected_head_sha, verify main/publication. Then production of next audited genuinely missing kit; no new workshop before closure.",
-  "validation07": {
-    "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
-    "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
-    "B117": "fresh strictsamepose PASS, historical2FAIL notrootresolved",
-    "state": "EN_CORRECCION",
-    "preservesEntries": 23
-  },
-  "queueSnapshotOrigin": {
-    "sha": "b0e03bd88d3624e3d4f1771737c3804ad2b13b85",
-    "preservedHistoricalEntries": 46
-  },
-  "componentClosures": [
-    {
-      "block": "B210",
-      "component": "A-FX-solciju-h3/launch-cup",
-      "state": "VALIDADO",
-      "integration": "PENDING_CI",
-      "publication": "NOT_CONFIRMED",
-      "source": "js/champions/vfx-b/solciju.js",
-      "sourceSha256": "58ccac05ca26680d3a9ab6fb3df1643d258a09ca1d055ad8e95be84e246079c2",
-      "evidence": "art-source/entregas/solciju-toast-20261024/cierre-01",
-      "scope": "Only launch cup900ms. Buff timer, other effects, PR195 RNG fixes and whole kit remain separate.",
-      "previousAttempt": "attempt-01 source/occlusion preserved; current24px thin rim, raised90u, radius28u."
     }
   ]
 }

@@ -1,0 +1,326 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "state": "EN_CORRECCION",
+  "gate": "NO_INTEGRAR",
+  "generated": true,
+  "validated": false,
+  "integratedMain": false,
+  "publicationVerified": false,
+  "components": {
+    "B105": "technical correction tested; full gate pending",
+    "B106": "unchanged FIX",
+    "B107": "technical correction tested; grey/trail contrast FIX"
+  },
+  "baseMain": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+  "previousHead": "6ead42f01d0bc272d87d01e373e83d951b7a1de5",
+  "initialCheckpoint": "6ca8b4e8e306ec8a6bc718ef3b55aae9a79c9ee8",
+  "files": [
+    {
+      "path": "js/champions/skill-fx-a/engine.js",
+      "bytes": 29623,
+      "sha256": "810397eb19b78c049ab008ff8e17dda886bff955563c3125780fa70641d090b9",
+      "gitBlobSha": "019b40e1f8691f43b86ca5d9f7dda45a09c022d0"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/aelith.js",
+      "bytes": 7106,
+      "sha256": "78d7ebbe0f88ecf2c09e9c3634648a405fd6685e5826fff37ac1ae54d8a6ccee",
+      "gitBlobSha": "ab3798cbca576b284dd3a820282f27e9e8dffcd1"
+    },
+    {
+      "path": "js/champions/vfx-b/pixfx.js",
+      "bytes": 18511,
+      "sha256": "2c6881103c672a8c0d97429f12f94b72a2979ccdd2fbc678e2b2e871c2efb437",
+      "gitBlobSha": "5b7257b14036629d950a82a21fe8288392bd8406"
+    },
+    {
+      "path": "tools/vfx/verify-aelith-lifecycle.js",
+      "bytes": 7338,
+      "sha256": "583a9d78c7fdd751eca6bbcb809494a2403f7fac6cb84d11b286d3230b75ba5e",
+      "gitBlobSha": "b763718795327367f0c368a33f1e1633dac2d022"
+    },
+    {
+      "path": "tools/vfx/verify-aelith-variants.js",
+      "bytes": 5067,
+      "sha256": "f1ebef3eb865a1660f191925a4bffa8a46f73919e9a39ab9d4c3f52fdd276496",
+      "gitBlobSha": "45708e4004251204c1aae07ffa0418d9e5ce192a"
+    },
+    {
+      "path": "tools/vfx/verify-aelith-kit.js",
+      "bytes": 7489,
+      "sha256": "aa03c8b15741cfdc24f279edf2ad27545409e98c6ba267e8eca9e402055a096f",
+      "gitBlobSha": "975605e9edb30970ab79fe2975d8f74c2d62339e"
+    },
+    {
+      "path": "tools/vfx/aelith-lifecycle-online.js",
+      "bytes": 13452,
+      "sha256": "cfb1bc68b0fe2241d3eab84c5d85def0c6726e326b45027bc2734b4a8a71594e",
+      "gitBlobSha": "6cbb76576c0b69e591f78a24d064c23de239b4fa"
+    },
+    {
+      "path": "tools/vfx/capture-aelith-lifecycle.js",
+      "bytes": 6230,
+      "sha256": "e24efe9b6bfad0a593e7be6625d5a22f54abdcc721a6bac5b630701f81435c72",
+      "gitBlobSha": "92e3be319ac69298e90a823a2f07168d1145a26f"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "bytes": 22705,
+      "sha256": "efc3e70e54ecf37f338582b6e8951b03b1f75d5f135f85b9b157a59ecaa06430",
+      "gitBlobSha": "1c37a22c87897f7e0bee69b3cee39faf3c8aa888"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/CHECKPOINT.md",
+      "bytes": 8001,
+      "sha256": "eb957b021b2cc9d9028d146e6bfc656f549e3173153ac66818d83858626baaa7",
+      "gitBlobSha": "809302385a56f6b404e0b7f751b66178b39b9255"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/CHECKPOINT.md",
+      "bytes": 3969,
+      "sha256": "c1743273bbc93701b856ea8b37513096623958bbf7f3e643df32acba4ba8f912",
+      "gitBlobSha": "910765721fe02c71416356201627291c0f036099"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/TEST_ATTEMPTS.json",
+      "bytes": 1451,
+      "sha256": "0deb0336363c30cce7b154a3f4b0069fc25f976195e010dd4078f76a8d88b8c7",
+      "gitBlobSha": "aa6f80a7122581f39eddf7d0afc05172f410d6d7"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/VISUAL_REVIEW.md",
+      "bytes": 1553,
+      "sha256": "b0312155409bace535cefe13c1923fd8538fa7fcb08fdc321b5a62fb4d5f523c",
+      "gitBlobSha": "bbde861f5f22f956d2a17a04c2986d33639e631f"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/after/aelith-0.png",
+      "bytes": 178985,
+      "sha256": "8bf605bdd73b899470ce3c45e0a2463e2b18b0ac08f7f29d96bdaddc0d255e61",
+      "gitBlobSha": "01ed7a8a951cc6c6d8d1620fa34f7d099e9774b4"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/after/aelith-1.png",
+      "bytes": 181214,
+      "sha256": "0429ef4a7274a769c2b4a1777abbf08bbc329d7cb0d15033c203dd8b8b27cf90",
+      "gitBlobSha": "06611014ccd586d0e82685ce957cb7ea34c0619e"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/after/aelith-2.png",
+      "bytes": 179676,
+      "sha256": "92fe3d833ee7ab03b62fa28340f747bd276827291ce5456ebe1f942d27af29c3",
+      "gitBlobSha": "a005715aa960fdf9214579d48c1536fa7d91305e"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/after/aelith-3.png",
+      "bytes": 212283,
+      "sha256": "c38f86644ab7be011807f9dcfbb8fcdf424741e9fc067b389379b8b1b74a7b29",
+      "gitBlobSha": "dddf3edee7d117a263a3d11e4a5461e60c2572c3"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/after/capture.json",
+      "bytes": 2912,
+      "sha256": "0108d62bc3c44414696368f658772fef228c4739a12d948d91cf54a51a3d0010",
+      "gitBlobSha": "d5e53bbfff937cabea55267d21165b12dacccb51"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/before/aelith-0.png",
+      "bytes": 178985,
+      "sha256": "8bf605bdd73b899470ce3c45e0a2463e2b18b0ac08f7f29d96bdaddc0d255e61",
+      "gitBlobSha": "01ed7a8a951cc6c6d8d1620fa34f7d099e9774b4"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/before/aelith-1.png",
+      "bytes": 181214,
+      "sha256": "0429ef4a7274a769c2b4a1777abbf08bbc329d7cb0d15033c203dd8b8b27cf90",
+      "gitBlobSha": "06611014ccd586d0e82685ce957cb7ea34c0619e"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/before/aelith-2.png",
+      "bytes": 179660,
+      "sha256": "6094be522a06d8db4db1be33a99db550dd06638440375160638635aa5bd6a25d",
+      "gitBlobSha": "a3994de7bf3a6aedb34baab046c27f0a5ebcf33f"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/before/aelith-3.png",
+      "bytes": 212283,
+      "sha256": "c38f86644ab7be011807f9dcfbb8fcdf424741e9fc067b389379b8b1b74a7b29",
+      "gitBlobSha": "dddf3edee7d117a263a3d11e4a5461e60c2572c3"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/before/capture.json",
+      "bytes": 2523,
+      "sha256": "ea3c547c64e863b517e2ecca05de21a5fbc6d53bacbbb844b17bf4444bde9d68",
+      "gitBlobSha": "27afb430b16e384f48dd19df8887924de8566568"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/comparison-checks.json",
+      "bytes": 2639,
+      "sha256": "f10375cc87a5edb7b7c891601cfe826bcc76a30937a404c17adc2f79555600a7",
+      "gitBlobSha": "4598dc6531d6a5147ea5b3786fff5e79fc5ecba9"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/comparison.png",
+      "bytes": 1026564,
+      "sha256": "e9238558597ca58900c6422da5a1cb74823a6b8b6efd0bbe4b5951a18384eebe",
+      "gitBlobSha": "3691506309869edeb54258b82abf0e54b541dce2"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/debt-sand.png",
+      "bytes": 2506,
+      "sha256": "8f0dc08f50f101b9e935444d6c3696532f711781b5d59cc9e634c4424728cfd8",
+      "gitBlobSha": "d141befc4280b1ea0f0b035914eb4140f1b30c5a"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/functional-results.json",
+      "bytes": 10195,
+      "sha256": "ccf3cdab250a7dcf95213098c71e035a8b0ca44b8624f51c17ecf74c58557b6e",
+      "gitBlobSha": "8ea7b62ef3f6aa08ca567cc515fe16d07b9fb0e5"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/general-online-results.json",
+      "bytes": 3706,
+      "sha256": "3c4645fbff707bfc3612a8932a62ab893008a9f6f96073d7ea7b670704f8e976",
+      "gitBlobSha": "b7cbdda53818eada8d8bf500a894cd180c7df239"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/lifecycle-tests.json",
+      "bytes": 5181,
+      "sha256": "e05bd4ed54b69e85efcf15f6f1cebe921b2dd399668d4859eb0b121ee0f53e7a",
+      "gitBlobSha": "6fb47bf329c1e4f988026574c9121c3d5d79c66c"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-after/aelith-0.png",
+      "bytes": 163968,
+      "sha256": "3e8810b334354539db9c82f7c401b17d8b4cba226b4b99055e062526858ce512",
+      "gitBlobSha": "ef153bf8f37a9f53bc8533255f4d18c96cbcb9aa"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-after/aelith-1.png",
+      "bytes": 169330,
+      "sha256": "c0d2841aed55597775228b21b1906cbe7cf6894d8dfa6e13d54f6aa619c9680f",
+      "gitBlobSha": "f57086fa35a5dd6dc2f934abda15569b255a1d85"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-after/aelith-2.png",
+      "bytes": 178579,
+      "sha256": "2d451c4da6463f9723a4d91463fa03734ffb526ddba0ed2b8a3894279bb2302e",
+      "gitBlobSha": "bdea723681384903b8e26a63f40a8511942aa537"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-after/aelith-3.png",
+      "bytes": 199590,
+      "sha256": "2904a47a315e0208bca474cb043318f53e07186533b4d8e6519b296d73d2aca6",
+      "gitBlobSha": "43223ea55ef71aae692e2bd213257a9ebca18820"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-after/capture.json",
+      "bytes": 2924,
+      "sha256": "590fb781f659989fbd6bf778f1183e0e392fc1bfcd1a697181b8e4911effb703",
+      "gitBlobSha": "7dae9b8f5782822c119c278199c9bb460cc92353"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-before/aelith-0.png",
+      "bytes": 163968,
+      "sha256": "3e8810b334354539db9c82f7c401b17d8b4cba226b4b99055e062526858ce512",
+      "gitBlobSha": "ef153bf8f37a9f53bc8533255f4d18c96cbcb9aa"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-before/aelith-1.png",
+      "bytes": 169330,
+      "sha256": "c0d2841aed55597775228b21b1906cbe7cf6894d8dfa6e13d54f6aa619c9680f",
+      "gitBlobSha": "f57086fa35a5dd6dc2f934abda15569b255a1d85"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-before/aelith-2.png",
+      "bytes": 178222,
+      "sha256": "18ba1652149232a92afafbd15f837fa05569fc71aacd61ff33e4515ec796e95a",
+      "gitBlobSha": "fddc3d82de92e5aefc909d2f31242f810240a1a9"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-before/aelith-3.png",
+      "bytes": 199590,
+      "sha256": "2904a47a315e0208bca474cb043318f53e07186533b4d8e6519b296d73d2aca6",
+      "gitBlobSha": "43223ea55ef71aae692e2bd213257a9ebca18820"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-before/capture.json",
+      "bytes": 2519,
+      "sha256": "b16b1b140f30d74f5cd770123027b9f4f8cebfdcbc512820fe05e8ae13f45d03",
+      "gitBlobSha": "f09807734b31478b692fa7f74de4a2d2d73ea569"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/mobile-comparison.png",
+      "bytes": 1012074,
+      "sha256": "e9a98b9a9228b5bfee1a5debb0eb8b609ceeb8df0e2a789731f4de98f483fe55",
+      "gitBlobSha": "de6684045a3743569b3802e78735618ae66a9d3c"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/online-first-attempt.json",
+      "bytes": 4877,
+      "sha256": "1ee133d6a863d1b787c2dabd88089c2511f3c6fc817bdd41c462e4dafa73c41d",
+      "gitBlobSha": "459de8d93ebc89fa58972f7d3082721654534b32"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/online-results.json",
+      "bytes": 10913,
+      "sha256": "80a9da9240d2acc79e4a97b372ffb7f17245a653076170d80943297cd2ce72b4",
+      "gitBlobSha": "470a4b1d3ccbddf56bf163959a71bbf7b47b06f4"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/online-second-attempt.json",
+      "bytes": 6296,
+      "sha256": "544c0500de2ed0a9bade233cf7da2cfadaed42bf24c560a08d66b9beb98a075b",
+      "gitBlobSha": "701a14dbbbf40aa2814f571053008f08ac0e9914"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/online-third-attempt.json",
+      "bytes": 10959,
+      "sha256": "86ca74215e99b580ca7b73dbd0c2005832aab32f9df861cff35469d7c5ad6d02",
+      "gitBlobSha": "f001152869507a027b1db81414686959a090e806"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/recipe.json",
+      "bytes": 652,
+      "sha256": "078d7c87a317107ed663420ccbe7792fccf5afcf02a02f8be9c787a8b2c7eb10",
+      "gitBlobSha": "86b27bd15f6f0acde6a3bff867d2ebbf6b7c58d4"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/reexport/verification.json",
+      "bytes": 5358,
+      "sha256": "86c9e951d26f0376139255cb09631710bf4e48e921821b79b7fe48cd3c9f148e",
+      "gitBlobSha": "02fa0cabd175ca0d47b0b1b2c5846093c7136727"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/variant-tests.json",
+      "bytes": 1137,
+      "sha256": "14270228c65e56cb104df9cbcd5a7e6ce6eb9ce238dabca7117c266e76c1a178",
+      "gitBlobSha": "241915ccac686d6cb5f71463edcdf27d69d7e1f2"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-01/parity.txt",
+      "bytes": 116,
+      "sha256": "9bbe3ab9389e9e4ebfa664ec8edca39112083055cc75d9dc27f52c2fdc3d874e",
+      "gitBlobSha": "c94fc5afc6fce65bda5f79ef97faa9db60bb029c"
+    }
+  ],
+  "originalAtlasPreservation": "comparison-checks.json",
+  "tests": {
+    "lifecycle": 41,
+    "kit": 27,
+    "variants": 11,
+    "relay": 31,
+    "functional": 132,
+    "generalOnline": 23,
+    "rngBoth": 29884
+  },
+  "fullGatesPending": [
+    "visual all skins/arenas at1:1",
+    "specific aura/beam contrast",
+    "warmup/performance snapshots",
+    "saturation/reentry/culling transitions",
+    "CI exact head"
+  ],
+  "history": "TEST_ATTEMPTS.json"
+}

@@ -1,0 +1,197 @@
+[
+  {
+    "name": "dune dimensions/alpha/margins/cache",
+    "ok": true,
+    "partial": 0,
+    "border": 0
+  },
+  {
+    "name": "caravan dimensions/alpha/margins/cache",
+    "ok": true,
+    "partial": 0,
+    "border": 0
+  },
+  {
+    "name": "invalid family preserves cache",
+    "ok": true
+  },
+  {
+    "name": "none",
+    "ok": true,
+    "calls": []
+  },
+  {
+    "name": "dune",
+    "ok": true,
+    "calls": [
+      {
+        "kind": "dune",
+        "args": [
+          704,
+          0,
+          64,
+          72,
+          68,
+          36,
+          64,
+          72
+        ],
+        "alpha": 1
+      }
+    ]
+  },
+  {
+    "name": "advance",
+    "ok": true,
+    "calls": [
+      {
+        "kind": "caravan",
+        "args": [
+          256,
+          0,
+          64,
+          72,
+          68,
+          36,
+          64,
+          72
+        ],
+        "alpha": 1
+      }
+    ]
+  },
+  {
+    "name": "both",
+    "ok": true,
+    "calls": [
+      {
+        "kind": "dune",
+        "args": [
+          704,
+          0,
+          64,
+          72,
+          68,
+          36,
+          64,
+          72
+        ],
+        "alpha": 1
+      },
+      {
+        "kind": "caravan",
+        "args": [
+          256,
+          0,
+          64,
+          72,
+          68,
+          36,
+          64,
+          72
+        ],
+        "alpha": 1
+      }
+    ]
+  },
+  {
+    "name": "ally",
+    "ok": true,
+    "calls": [
+      {
+        "kind": "caravan",
+        "args": [
+          256,
+          0,
+          64,
+          72,
+          68,
+          36,
+          64,
+          72
+        ],
+        "alpha": 1
+      }
+    ]
+  },
+  {
+    "name": "alien instinct",
+    "ok": true,
+    "calls": []
+  },
+  {
+    "name": "alien advance",
+    "ok": true,
+    "calls": []
+  },
+  {
+    "name": "unrelated speed",
+    "ok": true,
+    "calls": []
+  },
+  {
+    "name": "expired",
+    "ok": true,
+    "calls": []
+  },
+  {
+    "name": "dead",
+    "ok": true,
+    "calls": []
+  },
+  {
+    "name": "colossus",
+    "ok": true,
+    "calls": []
+  },
+  {
+    "name": "fade",
+    "ok": true,
+    "calls": [
+      {
+        "kind": "dune",
+        "args": [
+          64,
+          0,
+          64,
+          72,
+          68,
+          36,
+          64,
+          72
+        ],
+        "alpha": 0.5
+      }
+    ]
+  },
+  {
+    "name": "moved",
+    "ok": true,
+    "calls": [
+      {
+        "kind": "dune",
+        "args": [
+          320,
+          0,
+          64,
+          72,
+          169,
+          116,
+          64,
+          72
+        ],
+        "alpha": 1
+      }
+    ]
+  },
+  {
+    "name": "culled",
+    "ok": true,
+    "calls": []
+  },
+  {
+    "name": "draw has zero RNG calls",
+    "ok": true,
+    "calls": 0
+  }
+]

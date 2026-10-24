@@ -1,0 +1,21 @@
+{
+  "state": "GENERADO",
+  "component": "A-FX-aelith-h3",
+  "block": "B107",
+  "source": "js/champions/skill-fx-a/c/aelith.js",
+  "function": "aelithFxStrip",
+  "newAtlas": {
+    "file": "debt-sand.png",
+    "theme": "aelith_debt",
+    "art": "aura",
+    "cell": [
+      40,
+      56
+    ],
+    "frames": 12,
+    "durationMs": 800,
+    "loop": false
+  },
+  "trail": "Three existing equipped-body snapshots; grey source-in recolor on debt; interpolate world positions to receiver over220ms. No new body assets.",
+  "preservation": "Original48-frame sources/atlases and UF remain unchanged; source recipe produces12 new grey palette candidate frames."
+}

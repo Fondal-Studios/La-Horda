@@ -1,0 +1,220 @@
+{
+  "schema": 1,
+  "observedAt": "2026-10-23T02:56:40Z",
+  "pr": 195,
+  "branch": "art/recent-abilities-solciju-20261022",
+  "previousHead": "4349b54f8f686a5a2b99a935f151c767753fe290",
+  "recoveryCommit": "02850ffc0b2ebe286c2f1f813243e502472725a3",
+  "productionCommit": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+  "productionTree": "55d3fa42aaebd57167ebf2433a6ca52d4a87564e",
+  "verifiedRemoteFiles": 71,
+  "allManifestBlobsMatchRemote": true,
+  "companionProduction": {
+    "195": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+    "196": "fb21d5e084f5da3c1ef84143f6c707a537d19889"
+  },
+  "main": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "publication": "NO_VERIFICADA",
+  "draft": true,
+  "merged": false,
+  "runtimeChanges": [
+    "js/champions/vfx-b/hooks.js",
+    "js/champions/vfx-b/pixfx.js"
+  ],
+  "checks": [
+    {
+      "name": "CodeQL",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/runs/120214179183"
+    },
+    {
+      "name": "safari-engine",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075130/job/120213930136"
+    },
+    {
+      "name": "VFX de definitivas, decales e íconos de habilidad",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075135/job/120213930101"
+    },
+    {
+      "name": "lanes",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075130/job/120213930093"
+    },
+    {
+      "name": "Objetos, economía y tienda (pruebas que hoy fallan en la base)",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075135/job/120213930085"
+    },
+    {
+      "name": "Arnés y lógica pura (sin navegador)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075135/job/120213930081"
+    },
+    {
+      "name": "Identidad de arenas, objetivos y regalo inicial",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075135/job/120213930058"
+    },
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075130/job/120213930054"
+    },
+    {
+      "name": "Regresión, UX y carriles",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075135/job/120213930024"
+    },
+    {
+      "name": "entry-reference",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075130/job/120213929885"
+    },
+    {
+      "name": "Objetos, economía y tienda (parte A)",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075135/job/120213929815"
+    },
+    {
+      "name": "evidence",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075148/job/120213929779"
+    },
+    {
+      "name": "emoji-lint",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075125/job/120213929677"
+    },
+    {
+      "name": "readability",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075094/job/120213929578"
+    },
+    {
+      "name": "Analyze (javascript-typescript)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892070612/job/120213917330"
+    },
+    {
+      "name": "Analyze (python)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892070612/job/120213917278"
+    },
+    {
+      "name": "Analyze (actions)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892070612/job/120213917067"
+    },
+    {
+      "name": "emoji-lint",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892069667/job/120213911223"
+    }
+  ],
+  "workflows": [
+    {
+      "name": "VFX readability and combat parity",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075094"
+    },
+    {
+      "name": "Champion entry balance",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075130"
+    },
+    {
+      "name": "Integracion pruebas",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075135"
+    },
+    {
+      "name": "Emoji lint (arte pixel)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075125"
+    },
+    {
+      "name": "Art production evidence",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892075148"
+    },
+    {
+      "name": "Emoji lint (arte pixel)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892069667"
+    },
+    {
+      "name": "PR #195",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "7156e6b63884f7ac6d082424cd128d2931f58cab",
+      "url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/39892070612"
+    }
+  ],
+  "ciNote": "Observed production SHA only; closure commit starts new checks. Re-read final PR head before any merge. No integral visual approval.",
+  "tests": {
+    "emitter": 49,
+    "followRenderer": 12,
+    "functional": 132,
+    "relay": 15,
+    "parity": {
+      "on": 31834,
+      "off": 31834,
+      "repeatedEachMode": true,
+      "equalToPreviousGenericOffSnapshot": true
+    },
+    "generalOnline": 23
+  },
+  "next": "Aelith B106 actual slow-target indicator1800ms; B107/Morveth B168 compound contact readability. Then integral skin/arena/performance gates, reconciling shared hooks/pixfx without importing workshops with FIX. Global inventory incomplete."
+}

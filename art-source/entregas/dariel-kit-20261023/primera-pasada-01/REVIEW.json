@@ -1,0 +1,53 @@
+{
+  "status": "EN_CORRECCION",
+  "artGate": "FIX / NO_INTEGRAR",
+  "generated": {
+    "atlas": 5,
+    "phases": 60,
+    "nonempty": 57,
+    "intentionalTransparentClosures": 3
+  },
+  "validatedTechnicalOnly": {
+    "atlasChecks": 29,
+    "functional": 254,
+    "online": 6,
+    "precastMatches": 8,
+    "UFpngSame": 6,
+    "RNG": 27927,
+    "parityScope": "360 frames; summarized combat state, not complete snapshot/global RNG isolation",
+    "reexport": 5
+  },
+  "visualInspection": [
+    "Native mobile H1 256ms, H2 512ms, H3 256ms and discord atlas inspected.",
+    "Distinct directions initially; still thin/overlaid. No integral skin/arena/crew approval."
+  ],
+  "findings": [
+    {
+      "block": "B129",
+      "id": "A-FX-dariel-h1",
+      "diagnosis": "Three angular waves are distinct from music star, but read as chevrons/arrows; thin notes and inherited white rays dominate mobile contact.",
+      "evidence": "after-mobile/dariel-0-native250.png"
+    },
+    {
+      "block": "B130",
+      "id": "A-FX-dariel-h2",
+      "diagnosis": "Staff/barlines are small over bodies and shared rings. Inherited SFA aura defaults1600ms versus march2400ms before modifiers, hardcoded150 and generic shield filter; actual buff recipient/lifecycle coupling remains pending.",
+      "evidence": "after-mobile/dariel-1-native500.png"
+    },
+    {
+      "block": "B131",
+      "id": "A-FX-dariel-h3",
+      "diagnosis": "Repeat brackets distinguish trajectory but remain thin; rising notes overlap bodies. Inherited post-heal hp<max selection can omit fully healed allies and hardcoded140 can differ from modified actual radius; scope remains visual workshop.",
+      "evidence": "after-mobile/dariel-2-native250.png"
+    }
+  ],
+  "pending": [
+    "Composite contrast and integral Art Gate",
+    "Six arenas, all skins/equipment at1:1",
+    "Real march lifetime and actual recipients after healing/shield",
+    "Cold/warm performance, saturation/reset/culling",
+    "Exact-head CI before any integration"
+  ],
+  "integratedMain": false,
+  "publicationVerified": false
+}

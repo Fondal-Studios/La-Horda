@@ -1,0 +1,53 @@
+{
+  "block": "B009",
+  "component": "A-FX-axiom-ult",
+  "state": "EN_CORRECCION",
+  "status": "FIX_NO_INTEGRAR",
+  "generator": "image_gen built-in",
+  "source": "source.png",
+  "source_sha256": "861df4e2f27a6683cf2a281a32a2d818f260812c3f8e57edbb231bbf6b9ee4dc",
+  "prompt": "PROMPT.md",
+  "recipe": "build.py",
+  "atlas": "forcequit-diagnostic.png",
+  "preview": "preview.png",
+  "frames": 28,
+  "phases_zero_based": {
+    "anticipation": [
+      0,
+      5
+    ],
+    "loop": [
+      6,
+      13
+    ],
+    "impact": [
+      14,
+      21
+    ],
+    "dissipation": [
+      22,
+      27
+    ]
+  },
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "target_cell": [
+    232,
+    232
+  ],
+  "runtime_integration": false,
+  "public_deployment_verified": false,
+  "visual_findings": [
+    "548169 source pixels have intermediate alpha; retain original, correct in grouped batch",
+    "Loop 6-13 changes window scale/position: stabilize anchors before runtime",
+    "Soft noisy RGB fringe conflicts with requested hard pixel blocks",
+    "Verify outer effect footprint against real radius230 in renderer; not tested"
+  ],
+  "preserved_existing": [
+    "assets/vfx/axiom/forcequit.png",
+    "js/champions/ult-forms/forms-2a-1.js:window N44"
+  ],
+  "next": "Audit and reconcile other Axiom skill strips against briefs before generating more; then next champion. Defer correction to shared batch."
+}

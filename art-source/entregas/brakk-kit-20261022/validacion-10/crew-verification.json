@@ -1,0 +1,289 @@
+{
+  "checks": [
+    {
+      "name": "four real heroes",
+      "pass": true,
+      "detail": [
+        "brakk",
+        "tanque",
+        "soporte",
+        "mago"
+      ]
+    },
+    {
+      "name": "crew talent resolves",
+      "pass": true
+    },
+    {
+      "name": "all mechanics select recipients",
+      "pass": true,
+      "detail": {
+        "buff": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "want": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "all visual recipients match mechanics",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "out of range mechanics select recipients",
+      "pass": true,
+      "detail": {
+        "buff": [
+          0,
+          1,
+          2
+        ],
+        "want": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "name": "out of range visual recipients match mechanics",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "dead mechanics select recipients",
+      "pass": true,
+      "detail": {
+        "buff": [
+          0,
+          1,
+          2
+        ],
+        "want": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "name": "dead visual recipients match mechanics",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "fused mechanics select recipients",
+      "pass": true,
+      "detail": {
+        "buff": [
+          0,
+          1,
+          2
+        ],
+        "want": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "name": "fused visual recipients match mechanics",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "opposing team mechanics select recipients",
+      "pass": true,
+      "detail": {
+        "buff": [
+          0,
+          1,
+          2
+        ],
+        "want": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "name": "opposing team visual recipients match mechanics",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "receiver 0 duration",
+      "pass": true,
+      "detail": {
+        "event": 3000,
+        "buff": 3000
+      }
+    },
+    {
+      "name": "receiver 0 renderer follows current position",
+      "pass": true,
+      "detail": {
+        "calls": 1,
+        "xy": [
+          8.200000000000003,
+          -76.60000000000001
+        ],
+        "hero": [
+          37,
+          -19
+        ]
+      }
+    },
+    {
+      "name": "receiver 0 own ring crossfade",
+      "pass": true
+    },
+    {
+      "name": "receiver 1 duration",
+      "pass": true,
+      "detail": {
+        "event": 3000,
+        "buff": 3000
+      }
+    },
+    {
+      "name": "receiver 1 renderer follows current position",
+      "pass": true,
+      "detail": {
+        "calls": 1,
+        "xy": [
+          32.2,
+          -76.60000000000001
+        ],
+        "hero": [
+          61,
+          -19
+        ]
+      }
+    },
+    {
+      "name": "receiver 1 own ring crossfade",
+      "pass": true
+    },
+    {
+      "name": "receiver 2 duration",
+      "pass": true,
+      "detail": {
+        "event": 3000,
+        "buff": 3000
+      }
+    },
+    {
+      "name": "receiver 2 renderer follows current position",
+      "pass": true,
+      "detail": {
+        "calls": 1,
+        "xy": [
+          56.2,
+          -76.60000000000001
+        ],
+        "hero": [
+          85,
+          -19
+        ]
+      }
+    },
+    {
+      "name": "receiver 2 own ring crossfade",
+      "pass": true
+    },
+    {
+      "name": "receiver 3 duration",
+      "pass": true,
+      "detail": {
+        "event": 3000,
+        "buff": 3000
+      }
+    },
+    {
+      "name": "receiver 3 renderer follows current position",
+      "pass": true,
+      "detail": {
+        "calls": 1,
+        "xy": [
+          80.2,
+          -76.60000000000001
+        ],
+        "hero": [
+          109,
+          -19
+        ]
+      }
+    },
+    {
+      "name": "receiver 3 own ring crossfade",
+      "pass": true
+    },
+    {
+      "name": "missing one event restores only that receiver ring",
+      "pass": true
+    },
+    {
+      "name": "dead receiver stops atlas draw",
+      "pass": true
+    },
+    {
+      "name": "recast retains original IDs and bounded recipient indices",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "crew opacity query consumes no RNG",
+      "pass": true
+    },
+    {
+      "name": "crew opacity query leaves pool/buffs unchanged",
+      "pass": true
+    },
+    {
+      "name": "reset removes all crew events",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

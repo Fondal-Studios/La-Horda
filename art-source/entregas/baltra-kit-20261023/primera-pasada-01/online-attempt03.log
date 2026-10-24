@@ -1,0 +1,39 @@
+[arnés] servidor propio: http://127.0.0.1:35385 (raíz /workspace/scratch/a01f80e6b406/la-horda-baltra)
+JOINED {
+  code: '7V62X7',
+  human: 2,
+  slots: [
+    {
+      slot: 0,
+      name: 'Jugador',
+      champ: 'baltra',
+      level: 20,
+      ready: true,
+      connected: true,
+      host: true,
+      muted: false,
+      founder: null
+    },
+    {
+      slot: 1,
+      name: 'Jugador',
+      champ: 'baltra',
+      level: 20,
+      ready: false,
+      connected: true,
+      host: false,
+      muted: false,
+      founder: null
+    },
+    null,
+    null
+  ]
+}
+HUMANS_READY
+LOADOUT_READY
+START_SENT { state: 'prep', role: undefined } { state: 'prep', role: undefined }
+page.waitForFunction: Timeout 30000ms exceeded.
+    at /workspace/scratch/a01f80e6b406/la-horda-baltra/tools/expedition/baltra-firstpass-online.js:7:672 {
+  log: [],
+  name: 'TimeoutError'
+}

@@ -1,0 +1,68 @@
+{
+  "state": "EN_CORRECCION",
+  "gate": "FIX / NO_INTEGRAR",
+  "scope": "Three normal-ability layer candidates, not full kit",
+  "findings": [
+    {
+      "block": "B151",
+      "frames": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "diagnosis": "Needle/hook thin and small among generic rings; persistent original portador body still overlaps. Readable shape in atlas does not establish combat readability."
+    },
+    {
+      "block": "B152",
+      "frames": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "diagnosis": "Parallel threads and ties at 18world height remain fine/ladder-like; stretching changes pixel density; anticipation/discharge frames not consumed, remaining-time phase can jump on recast."
+    },
+    {
+      "block": "B153",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "diagnosis": "Thin scissors with tiny handles, needs scale/readability review and exact actual cut-node event hook; no game integration yet."
+    }
+  ],
+  "visualEvidence": [
+    "mobile-before.png",
+    "mobile-after.png",
+    "desktop-before.png",
+    "desktop-after.png"
+  ],
+  "validated": [
+    "13 local technical/state/draw checks",
+    "2 same-scene A/B/A restorations desktop/mobile",
+    "360 frames summarized combat/RNG main=candidate30288; zero page errors"
+  ],
+  "notValidated": [
+    "multiplayer",
+    "skins/equipment/six arenas/dense contact",
+    "full lifecycle/performance",
+    "full Art Gate",
+    "public deployment"
+  ],
+  "preserved": "Only iria SFA file changes; body/skins/UF/portadores combat unchanged."
+}

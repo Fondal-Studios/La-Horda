@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "component": "A-FX-aelith-h3",
+  "block": "B107",
+  "method": "Existing native renderer snapshots, no external image generation, no new body asset",
+  "source": "js/champions/skill-fx-a/c/aelith.js",
+  "sourceSha256": "d3b4c2084c4d289856f383dde4ca805f800c613e831baab92d42b5fcc6db5793",
+  "parent": "ffd81f91920d2f809449c68b75b0840f83bf3fa6",
+  "parameters": {
+    "shots": 3,
+    "sampleMs": 60,
+    "fillAlpha": [
+      0.16,
+      0.28,
+      0.4
+    ],
+    "topContour": "oldest shot, rear half split at occupied-body midpoint, dominant displacement axis",
+    "topAlpha": 0.55,
+    "rimPixels": 1,
+    "collapseMs": 220,
+    "debtMs": 800
+  },
+  "exports": "snapshot-diagnostic-atlas.png has6columns(base/skin x3views),3rows(amber/debt/full edge); source masks derived from actual equipped body. Runtime clips rear half; not installed PNG assets.",
+  "newAuthoredFrames": 0,
+  "unchangedAtlases": [
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-04/reexport/atlases/borrowed-sand.png",
+      "parent": "art-source/entregas/aelith-normal-kit-20261022/correccion-03/reexport/atlases/borrowed-sand.png",
+      "sha256": "e80dcce910f740c9966a62f3c7b9c10aa7e1192a6a863005033fed6a3c57219d"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-04/reexport/atlases/echo-countdown.png",
+      "parent": "art-source/entregas/aelith-normal-kit-20261022/correccion-03/reexport/atlases/echo-countdown.png",
+      "sha256": "85f29aa6f0a871ed3a6cc1d0911a8b03a9c7e67d20082339e1a672a9d86a9e40"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-04/reexport/atlases/echo-shatter.png",
+      "parent": "art-source/entregas/aelith-normal-kit-20261022/correccion-03/reexport/atlases/echo-shatter.png",
+      "sha256": "bb04985f01f63e0dc443f1114d1062c9d7aa4993084b63bf735d269daa6ab505"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-04/reexport/atlases/fracture-glass.png",
+      "parent": "art-source/entregas/aelith-normal-kit-20261022/correccion-03/reexport/atlases/fracture-glass.png",
+      "sha256": "a9cc7d6a86915a5751f095ff1e203eae9fa1053a5dd809c1348c3c28bdeba3fe"
+    },
+    {
+      "path": "art-source/entregas/aelith-normal-kit-20261022/correccion-04/slow-sand-16x20x12.png",
+      "parent": "art-source/entregas/aelith-normal-kit-20261022/correccion-03/slow-sand-16x20x12.png",
+      "sha256": "7fd600b726be6d509bae71d60ddd1e865cbbd7b0b30310d0c73d5c69f769b10c"
+    }
+  ],
+  "commands": [
+    "node tools/vfx/verify-aelith-contact.js",
+    "node tools/vfx/verify-aelith-contact-lifecycle.js",
+    "OUT=art-source/entregas/aelith-normal-kit-20261022/correccion-04 node tools/vfx/verify-aelith-slow.js",
+    "OUT=art-source/entregas/aelith-normal-kit-20261022/correccion-04/reexport node tools/vfx/verify-aelith-kit.js",
+    "node tools/quality-five/temporal-plague-functional.js",
+    "ONLY=aelith node tools/vfx/parity-skill-fx.js",
+    "node tools/vfx/aelith-contact-online.js",
+    "node tools/vfx/test-aelith-contact-legible.js",
+    "MOBILE=1 node tools/vfx/test-aelith-contact-legible.js",
+    "node tools/vfx/benchmark-aelith-contact.js",
+    "MOVE=1 FULL=1 OUT=art-source/entregas/aelith-normal-kit-20261022/correccion-04/after node tools/vfx/capture-aelith-contact.js",
+    "BEFORE=1 MOVE=1 FULL=1 OUT=art-source/entregas/aelith-normal-kit-20261022/correccion-04/before node tools/vfx/capture-aelith-contact.js",
+    "MOBILE=1 MOVE=1 FULL=1 OUT=art-source/entregas/aelith-normal-kit-20261022/correccion-04/mobile-after node tools/vfx/capture-aelith-contact.js",
+    "MOBILE=1 BEFORE=1 MOVE=1 FULL=1 OUT=art-source/entregas/aelith-normal-kit-20261022/correccion-04/mobile-before node tools/vfx/capture-aelith-contact.js"
+  ],
+  "environment": "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium",
+  "gate": "EN_CORRECCION/NO_INTEGRAR"
+}

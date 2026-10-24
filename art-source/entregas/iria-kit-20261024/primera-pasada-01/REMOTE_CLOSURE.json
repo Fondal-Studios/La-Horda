@@ -1,0 +1,189 @@
+{
+  "state": "EN_CORRECCION",
+  "gate": "NO_INTEGRAR",
+  "pr": 215,
+  "branch": "art/iria-kit-first-pass-20261024",
+  "production": "ea15f5843d8a7dd6bcce4bb26b55fd6224010616",
+  "tree": "59afab859b08fc5e6090a72af922f5df66785037",
+  "base": "51c9d4584d45e8c19c4d237a64e8033a6b845bb1",
+  "verifiedFiles": [
+    {
+      "path": "js/champions/skill-fx-a/c/iria.js",
+      "bytes": 5018,
+      "blob": "073a877ad55feeb21a4493c0fc20f9f929ba932b"
+    },
+    {
+      "path": "tools/vfx/parity-iria-first-pass.js",
+      "bytes": 6899,
+      "blob": "7bc92eff5d7cd308e32724b6f0315e0a9ab8e3bf"
+    },
+    {
+      "path": "tools/vfx/capture-iria-first-pass.js",
+      "bytes": 2613,
+      "blob": "f2e67d7767993bda72e1b290f8f75a5a2167a7a2"
+    },
+    {
+      "path": "tools/vfx/produce-iria-first-pass.js",
+      "bytes": 3256,
+      "blob": "4b6e35e6430bd15d15bcc93bf29d0ee49d6e213a"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "bytes": 87841,
+      "blob": "30753eba5507592297141d0faae9a08821cca47b"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/SOURCE_REFERENCES.json",
+      "bytes": 2261,
+      "blob": "c6f6af2f0366871dcedb2df79693c476a35aa735"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/recipe.json",
+      "bytes": 1745,
+      "blob": "685c2ef6d7e8321817ea28c749148b18532bfa4c"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/manifest.json",
+      "bytes": 4834,
+      "blob": "0663b5a90e847a557478a0127fcd31cf293d1f56"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/anchor.png",
+      "bytes": 2510,
+      "blob": "1635a81155c2b06e0222f335a4511dc444650704"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/desktop-after.png",
+      "bytes": 768052,
+      "blob": "978c35f6e81eac40be1f80a0ef13dc054b533e09"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/preview.html",
+      "bytes": 920,
+      "blob": "f13f97d044df5a22464427600e894c5cb90b3884"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/mobile-before.png",
+      "bytes": 390353,
+      "blob": "003a268e8d5e6e5be97d1748c50c6d4e218d6e4c"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/CHECKPOINT.md",
+      "bytes": 1463,
+      "blob": "cc5474c124f8abd05e3e14ea3fd84a935dcfd3a1"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/parity.json",
+      "bytes": 5959,
+      "blob": "6c3f294fb6d4b9570ec0ee6830c2d3788f49a974"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/REVIEW.json",
+      "bytes": 1734,
+      "blob": "a2a3f99159383707406f5d5ff5cfbff5558b9940"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/FRAME_INDEX.json",
+      "bytes": 6936,
+      "blob": "a50a2b5b5830c1366d9110025fa9e7c5669214db"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/comparison.json",
+      "bytes": 171,
+      "blob": "4832204c28977b2ba777019a87e7869062e54c62"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/TEST_ATTEMPTS.json",
+      "bytes": 585,
+      "blob": "0827c7be087f5b134a58fdb54369b7b503ea90be"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/tension.png",
+      "bytes": 9960,
+      "blob": "ec96ffceb3b860a019bcd4317fd1ba9abcba5973"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/mobile-after.png",
+      "bytes": 390258,
+      "blob": "f59a816e37f151d46c5bfc5f6745683789a781a1"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/cut.png",
+      "bytes": 6817,
+      "blob": "5138eeceaf6128310a70344236af748a3fa72ef0"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/desktop-before.png",
+      "bytes": 767646,
+      "blob": "52987aa5dde129625d8898d28215c45dab0e300f"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/verification.json",
+      "bytes": 2055,
+      "blob": "a85d3fd50bbdbaeb6c1b527186b491bc98a8ac93"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/attempt-01/game-desktop.png",
+      "bytes": 280067,
+      "blob": "d33f96509799474098579932279f29238cea0347"
+    },
+    {
+      "path": "art-source/entregas/iria-kit-20261024/primera-pasada-01/attempt-01/game-mobile.png",
+      "bytes": 136665,
+      "blob": "b4bf7eb5ce1a902075ef0770532e139cf512e18e"
+    }
+  ],
+  "frames": {
+    "phases": 44,
+    "nonempty": 43,
+    "distinctPerAtlas": [
+      12,
+      16,
+      10
+    ]
+  },
+  "runtime": {
+    "files": [
+      "js/champions/skill-fx-a/c/iria.js"
+    ],
+    "connected": [
+      "anchor",
+      "tension"
+    ],
+    "notConnected": [
+      "cut"
+    ]
+  },
+  "newTests": {
+    "technical": 13,
+    "comparisonABA": 2,
+    "parity": {
+      "frames": 360,
+      "mainRNG": 30288,
+      "candidateRNG": 30288,
+      "summarizedStateEqual": true
+    },
+    "preview": {
+      "canvasesPainted": 3,
+      "imagesLoaded": 2
+    }
+  },
+  "additionalAttempts": [
+    {
+      "id": "preview01",
+      "result": "ERROR before page load",
+      "cause": "Missing slash constructing local URL: port concatenated with art-source",
+      "resolution": "Added slash in invocation; preview02 successful. No source/runtime change."
+    }
+  ],
+  "notRun": [
+    "multiplayer",
+    "skins/equipment/six arenas",
+    "full Art Gate",
+    "physical device performance"
+  ],
+  "merge": null,
+  "publication": "NOT_VERIFIED; no merge",
+  "queueEntries": 49,
+  "next": "CIERRE Bront complete body/skins from preserved source02 and latest PR201; no blind regeneration or partial replacement. Preserve this first pass for grouped corrections. Fetch fresh heads."
+}

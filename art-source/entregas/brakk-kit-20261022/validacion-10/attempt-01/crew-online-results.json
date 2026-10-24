@@ -1,0 +1,47 @@
+{
+  "status": "FAIL",
+  "waits": [],
+  "checks": [
+    {
+      "name": "solciju admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "brakk admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "veyra admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "morveth admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "aelith admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "nano_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "facu_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "host resolves transmitted crew talent and multiple real recipients",
+      "ok": true,
+      "crewExpected": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "errors": [
+    "page.evaluate: TypeError: Assignment to constant variable.\n    at eval (eval at evaluate (:311:30), <anonymous>:1:233)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+  ]
+}

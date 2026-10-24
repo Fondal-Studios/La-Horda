@@ -1,0 +1,21 @@
+{
+  "baselineParent": "4349b54f8f686a5a2b99a935f151c767753fe290",
+  "firstDivergence": {
+    "call": 7224,
+    "offPhase": "frame:5",
+    "onPhase": "frame:5",
+    "offStack": "    at vfxBurst (ROOT/js/rendering/vfx.js:42:20)\n    at window.<computed> (ROOT/js/net/net-game.js:162:24)\n    at window.vfxBurst (ROOT/js/systems/skin-fx.js:137:18)",
+    "onStack": "    at aidAmbUpdate (ROOT/js/rendering/arena-ambience.js:44:37)\n    at update (ROOT/js/core/update.js:39:21)\n    at update (ROOT/js/systems/alpha-training.js:225:175)"
+  },
+  "traceFrames": 50,
+  "traceRepeatedDeterministic": true,
+  "fullFrames": 360,
+  "finalRepeatedDeterministic": true,
+  "onOffSame": true,
+  "callsOff": 31834,
+  "callsOn": 31834,
+  "newOffEqualsOldOff": true,
+  "newOnEqualsOldOff": true,
+  "oldOnSameAsNewOn": false,
+  "scope": "Restore generic baseline; no damage/radius/buffs/AI/seed/formula modifications. This does not isolate all global visual RNG or certify every seed/arena."
+}

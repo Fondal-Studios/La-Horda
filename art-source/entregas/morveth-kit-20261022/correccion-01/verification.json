@@ -1,0 +1,319 @@
+{
+  "checks": [
+    {
+      "name": "growth anchored to actual planted object",
+      "pass": true,
+      "details": {
+        "growth": [
+          "burst",
+          "morveth_growth",
+          100,
+          0,
+          42,
+          0,
+          650,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "name": "pulse follows real object tick",
+      "pass": true
+    },
+    {
+      "name": "dead mushroom removed from visual observer",
+      "pass": true
+    },
+    {
+      "name": "cone matches real aim 1,0",
+      "pass": true,
+      "details": {
+        "event": [
+          "cone",
+          "morveth_spores~h",
+          0,
+          0,
+          210,
+          0,
+          560,
+          null,
+          null,
+          null,
+          null,
+          0.85,
+          null
+        ]
+      }
+    },
+    {
+      "name": "cone matches real aim 0,-1",
+      "pass": true,
+      "details": {
+        "event": [
+          "cone",
+          "morveth_spores~h",
+          0,
+          0,
+          210,
+          -1.5707963267948966,
+          560,
+          null,
+          null,
+          null,
+          null,
+          0.85,
+          null
+        ]
+      }
+    },
+    {
+      "name": "cone matches real aim -1,0",
+      "pass": true,
+      "details": {
+        "event": [
+          "cone",
+          "morveth_spores~h",
+          0,
+          0,
+          210,
+          3.141592653589793,
+          560,
+          null,
+          null,
+          null,
+          null,
+          0.85,
+          null
+        ]
+      }
+    },
+    {
+      "name": "cone matches real aim 0,1",
+      "pass": true,
+      "details": {
+        "event": [
+          "cone",
+          "morveth_spores~h",
+          0,
+          0,
+          210,
+          1.5707963267948966,
+          560,
+          null,
+          null,
+          null,
+          null,
+          0.85,
+          null
+        ]
+      }
+    },
+    {
+      "name": "without share only caster receives aura",
+      "pass": true,
+      "details": [
+        [
+          "aura",
+          "morveth_symbiosis~p",
+          0,
+          0,
+          25,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "aura duration follows actual armor timer",
+      "pass": true
+    },
+    {
+      "name": "symbiosis consumes own nearby mushroom",
+      "pass": true
+    },
+    {
+      "name": "share talent is active in fixture",
+      "pass": true
+    },
+    {
+      "name": "share aura follows actual eligible allies",
+      "pass": true,
+      "details": [
+        [
+          "aura",
+          "morveth_symbiosis~p",
+          0,
+          0,
+          25,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "morveth_symbiosis~p",
+          30,
+          20,
+          25,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ],
+        [
+          "aura",
+          "morveth_symbiosis~p",
+          30,
+          20,
+          25,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          2,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "name": "cooldown rejects cast without new visual",
+      "pass": true
+    },
+    {
+      "name": "scalar events replay after transport",
+      "pass": true
+    },
+    {
+      "name": "crisp alpha mushroom-growth",
+      "pass": true,
+      "details": {
+        "soft": 0,
+        "opaque": 3457
+      }
+    },
+    {
+      "name": "crisp alpha spore-pulse",
+      "pass": true,
+      "details": {
+        "soft": 0,
+        "opaque": 2182
+      }
+    },
+    {
+      "name": "crisp alpha spore-exhalation",
+      "pass": true,
+      "details": {
+        "soft": 0,
+        "opaque": 3293
+      }
+    },
+    {
+      "name": "crisp alpha symbiosis-mycelium",
+      "pass": true,
+      "details": {
+        "soft": 0,
+        "opaque": 5688
+      }
+    },
+    {
+      "name": "native painting leaves combat RNG unchanged",
+      "pass": true
+    },
+    {
+      "name": "legacy plague nova unchanged",
+      "pass": true
+    },
+    {
+      "name": "pulse final frame fully dissolved",
+      "pass": true,
+      "details": {
+        "lastOpaque": 0,
+        "frame": 10
+      }
+    },
+    {
+      "name": "pool bounded reduceFx=false",
+      "pass": true,
+      "details": 40
+    },
+    {
+      "name": "pool bounded reduceFx=true",
+      "pass": true,
+      "details": 16
+    }
+  ],
+  "observations": [],
+  "exports": [
+    {
+      "name": "mushroom-growth",
+      "art": "burst",
+      "theme": "morveth_growth",
+      "size": 64,
+      "arc": 0.85,
+      "cell": [
+        64,
+        64
+      ],
+      "frames": 12
+    },
+    {
+      "name": "spore-pulse",
+      "art": "nova",
+      "theme": "morveth_pulse",
+      "size": 96,
+      "arc": 0.85,
+      "cell": [
+        96,
+        96
+      ],
+      "frames": 11
+    },
+    {
+      "name": "spore-exhalation",
+      "art": "cone",
+      "theme": "morveth_spores~h",
+      "size": 96,
+      "arc": 0.85,
+      "cell": [
+        98,
+        151
+      ],
+      "frames": 14
+    },
+    {
+      "name": "symbiosis-mycelium",
+      "art": "aura",
+      "theme": "morveth_symbiosis~p",
+      "size": 0,
+      "arc": 0.85,
+      "cell": [
+        40,
+        56
+      ],
+      "frames": 18
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,382 @@
+{
+  "checks": [
+    {
+      "name": "brasa_mountburst binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_mountburst clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_mountburst active cells",
+      "ok": true,
+      "detail": [
+        86,
+        86,
+        86,
+        85,
+        84,
+        86,
+        85,
+        81,
+        57,
+        45,
+        25,
+        0
+      ]
+    },
+    {
+      "name": "brasa_mountburst final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_mountburst cache reuse",
+      "ok": true
+    },
+    {
+      "name": "brasa_mountnova binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_mountnova clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_mountnova active cells",
+      "ok": true,
+      "detail": [
+        139,
+        147,
+        147,
+        151,
+        159,
+        172,
+        171,
+        169,
+        112,
+        106,
+        52,
+        0
+      ]
+    },
+    {
+      "name": "brasa_mountnova final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_mountnova cache reuse",
+      "ok": true
+    },
+    {
+      "name": "brasa_purgecone binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_purgecone clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_purgecone active cells",
+      "ok": true,
+      "detail": [
+        306,
+        344,
+        420,
+        444,
+        460,
+        499,
+        527,
+        511,
+        398,
+        305,
+        157,
+        0
+      ]
+    },
+    {
+      "name": "brasa_purgecone final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_purgecone cache reuse",
+      "ok": true
+    },
+    {
+      "name": "brasa_dismantleburst binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_dismantleburst clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_dismantleburst active cells",
+      "ok": true,
+      "detail": [
+        96,
+        96,
+        96,
+        92,
+        88,
+        84,
+        84,
+        82,
+        45,
+        32,
+        16,
+        0
+      ]
+    },
+    {
+      "name": "brasa_dismantleburst final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_dismantleburst cache reuse",
+      "ok": true
+    },
+    {
+      "name": "brasa_dismantleaura binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_dismantleaura clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_dismantleaura active cells",
+      "ok": true,
+      "detail": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ]
+    },
+    {
+      "name": "brasa_dismantleaura final phase",
+      "ok": true,
+      "detail": 80
+    },
+    {
+      "name": "brasa_dismantleaura cache reuse",
+      "ok": true
+    },
+    {
+      "name": "brasa_ventzone binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_ventzone clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "brasa_ventzone active cells",
+      "ok": true,
+      "detail": [
+        363,
+        370,
+        385,
+        361,
+        367,
+        386,
+        355,
+        372,
+        378,
+        364,
+        369,
+        387
+      ]
+    },
+    {
+      "name": "brasa_ventzone final phase",
+      "ok": true,
+      "detail": 387
+    },
+    {
+      "name": "brasa_ventzone cache reuse",
+      "ok": true
+    },
+    {
+      "name": "steam fallback nova",
+      "ok": true
+    },
+    {
+      "name": "steam fallback cone",
+      "ok": true
+    },
+    {
+      "name": "steam fallback aura",
+      "ok": true
+    },
+    {
+      "name": "original basic theme",
+      "ok": true
+    }
+  ],
+  "sources": [
+    {
+      "theme": "brasa_mount",
+      "art": "burst",
+      "size": 64,
+      "arc": 0,
+      "w": 64,
+      "h": 64,
+      "n": 12,
+      "cells": [
+        86,
+        86,
+        86,
+        85,
+        84,
+        86,
+        85,
+        81,
+        57,
+        45,
+        25,
+        0
+      ]
+    },
+    {
+      "theme": "brasa_mount",
+      "art": "nova",
+      "size": 64,
+      "arc": 0,
+      "w": 64,
+      "h": 64,
+      "n": 12,
+      "cells": [
+        139,
+        147,
+        147,
+        151,
+        159,
+        172,
+        171,
+        169,
+        112,
+        106,
+        52,
+        0
+      ]
+    },
+    {
+      "theme": "brasa_purge",
+      "art": "cone",
+      "size": 128,
+      "arc": 0.85,
+      "w": 130,
+      "h": 199,
+      "n": 12,
+      "cells": [
+        306,
+        344,
+        420,
+        444,
+        460,
+        499,
+        527,
+        511,
+        398,
+        305,
+        157,
+        0
+      ]
+    },
+    {
+      "theme": "brasa_dismantle",
+      "art": "burst",
+      "size": 80,
+      "arc": 0,
+      "w": 80,
+      "h": 80,
+      "n": 12,
+      "cells": [
+        96,
+        96,
+        96,
+        92,
+        88,
+        84,
+        84,
+        82,
+        45,
+        32,
+        16,
+        0
+      ]
+    },
+    {
+      "theme": "brasa_dismantle",
+      "art": "aura",
+      "size": 0,
+      "arc": 0,
+      "w": 48,
+      "h": 56,
+      "n": 12,
+      "cells": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ]
+    },
+    {
+      "theme": "brasa_vent",
+      "art": "zone",
+      "size": 128,
+      "arc": 0,
+      "w": 128,
+      "h": 128,
+      "n": 12,
+      "cells": [
+        363,
+        370,
+        385,
+        361,
+        367,
+        386,
+        355,
+        372,
+        378,
+        364,
+        369,
+        387
+      ]
+    }
+  ]
+}

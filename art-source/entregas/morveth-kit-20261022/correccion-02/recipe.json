@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "date": "2026-10-23",
+  "medium": "native SFA canvas recipe; no external image generation",
+  "source": "js/champions/skill-fx-a/c/morveth.js",
+  "sourceSha256": "18c4475c2daa309dc9066cda1c1c59f37b993a38faf825d3b8e691d41c0ed1ce",
+  "parentSource": "source-before/morveth.js",
+  "exports": [
+    {
+      "name": "mushroom-growth",
+      "art": "burst",
+      "theme": "morveth_growth",
+      "size": 64,
+      "arc": 0.85,
+      "cell": [
+        64,
+        64
+      ],
+      "frames": 12
+    },
+    {
+      "name": "spore-pulse",
+      "art": "nova",
+      "theme": "morveth_pulse",
+      "size": 96,
+      "arc": 0.85,
+      "cell": [
+        96,
+        96
+      ],
+      "frames": 11
+    },
+    {
+      "name": "spore-exhalation",
+      "art": "cone",
+      "theme": "morveth_spores~h",
+      "size": 96,
+      "arc": 0.85,
+      "cell": [
+        98,
+        151
+      ],
+      "frames": 14
+    },
+    {
+      "name": "symbiosis-mycelium",
+      "art": "aura",
+      "theme": "morveth_symbiosis~p",
+      "size": 0,
+      "arc": 0.85,
+      "cell": [
+        48,
+        56
+      ],
+      "frames": 18
+    }
+  ],
+  "change": "B168 only: 48x56x18, four lateral violet caps with closed dark contour and light gills, open torso and two lateral spores. Common arena tint retained on roots; cap uses 80% canon violet / 20% tinted accent. Cosmetic width60 world units at radius25; no mechanics radius change.",
+  "preserved": "100ms animation cadence, owner index, actual armor duration, event protocol, engine/bind/signatures, UF and B166/B167",
+  "commands": [
+    "OUT=art-source/entregas/morveth-kit-20261022/correccion-02 node tools/vfx/verify-morveth-kit.js",
+    "node tools/vfx/verify-morveth-contact.js",
+    "node tools/vfx/export-morveth-contact-matrix.js",
+    "node tools/vfx/test-morveth-contact-legible.js",
+    "MOBILE=1 node tools/vfx/test-morveth-contact-legible.js",
+    "node tools/vfx/morveth-contact-online.js",
+    "ONLY=morveth node tools/vfx/parity-skill-fx.js",
+    "node tools/quality-five/temporal-plague-functional.js",
+    "FULL=1 TIMES=250,500,1100,2000 OUT=/tmp/mor-after node tools/vfx/capture-morveth-contact.js",
+    "BEFORE=1 FULL=1 TIMES=250,500,1100,2000 OUT=/tmp/mor-before node tools/vfx/capture-morveth-contact.js"
+  ],
+  "captureOptions": "MOBILE=1 native390x844; default844x390. SKIN=1 SLOT=2 loads morveth_alt1. ARENA defaults bosque. BEFORE routes source-before/morveth.js. PNG contact sheets contain four timings; selected native frames500ms retained remotely.",
+  "dependencies": {
+    "NODE_PATH": "installed Playwright modules",
+    "CHROMIUM_PATH": "installed Chromium binary",
+    "preview": "python tools/vfx/preview-morveth-contact.py (Pillow)"
+  }
+}

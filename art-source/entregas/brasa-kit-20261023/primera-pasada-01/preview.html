@@ -1,0 +1,48 @@
+<!doctype html><meta charset="utf-8"><title>Brasa · primera pasada · NO INTEGRAR</title><style>body{background:#162028;color:#eee;font:15px system-ui;margin:24px}section{margin:24px 0;overflow:auto}img,canvas{image-rendering:pixelated} .pair{display:flex;gap:12px;align-items:start}figure{margin:0}figcaption{margin:8px 0}canvas{background:#344336;border:1px solid #888}</style><h1>Brasa · primera pasada</h1><p>GENERADO / EN_CORRECCION — NO INTEGRAR. Animación de atlas diagnóstica a 95ms; no sustituye el timing del juego. Capturas reales antes/después a igual escala. Los cuadros finales vacíos son disipación intencional.</p>
+<section><h2>brasa_mount · burst</h2><canvas width="64" height="64" data-src="brasa_mount-burst.png"></canvas><p>12 fases nativas</p><img src="brasa_mount-burst.png"></section>
+<section><h2>brasa_mount · nova</h2><canvas width="64" height="64" data-src="brasa_mount-nova.png"></canvas><p>12 fases nativas</p><img src="brasa_mount-nova.png"></section>
+<section><h2>brasa_purge · cone</h2><canvas width="98" height="151" data-src="brasa_purge-cone.png"></canvas><p>12 fases nativas</p><img src="brasa_purge-cone.png"></section>
+<section><h2>brasa_dismantle · burst</h2><canvas width="80" height="80" data-src="brasa_dismantle-burst.png"></canvas><p>12 fases nativas</p><img src="brasa_dismantle-burst.png"></section>
+<section><h2>brasa_dismantle · aura</h2><canvas width="48" height="56" data-src="brasa_dismantle-aura.png"></canvas><p>12 fases nativas</p><img src="brasa_dismantle-aura.png"></section>
+<section><h2>brasa_vent · zone</h2><canvas width="96" height="96" data-src="brasa_vent-zone.png"></canvas><p>12 fases nativas</p><img src="brasa_vent-zone.png"></section>
+<section><h2>mobile · acción 0 (4 = purga con maestría)</h2><div class="pair">
+<figure><figcaption>before · 256ms</figcaption><img src="before-mobile/brasa-0-native250.png"></figure>
+<figure><figcaption>after · 256ms</figcaption><img src="after-mobile/brasa-0-native250.png"></figure>
+</div></section>
+<section><h2>mobile · acción 1 (4 = purga con maestría)</h2><div class="pair">
+<figure><figcaption>before · 256ms</figcaption><img src="before-mobile/brasa-1-native250.png"></figure>
+<figure><figcaption>after · 256ms</figcaption><img src="after-mobile/brasa-1-native250.png"></figure>
+</div></section>
+<section><h2>mobile · acción 2 (4 = purga con maestría)</h2><div class="pair">
+<figure><figcaption>before · 256ms</figcaption><img src="before-mobile/brasa-2-native250.png"></figure>
+<figure><figcaption>after · 256ms</figcaption><img src="after-mobile/brasa-2-native250.png"></figure>
+</div></section>
+<section><h2>mobile · acción 3 (4 = purga con maestría)</h2><div class="pair">
+<figure><figcaption>before · 256ms</figcaption><img src="before-mobile/brasa-3-native250.png"></figure>
+<figure><figcaption>after · 256ms</figcaption><img src="after-mobile/brasa-3-native250.png"></figure>
+</div></section>
+<section><h2>mobile · acción 4 (4 = purga con maestría)</h2><div class="pair">
+<figure><figcaption>before · 256ms</figcaption><img src="before-mobile/brasa-4-native250.png"></figure>
+<figure><figcaption>after · 256ms</figcaption><img src="after-mobile/brasa-4-native250.png"></figure>
+</div></section>
+<section><h2>horizontal · acción 0 (4 = purga con maestría)</h2><div class="pair">
+<figure><figcaption>before · 256ms</figcaption><img src="before-horizontal/brasa-0-native250.png"></figure>
+<figure><figcaption>after · 256ms</figcaption><img src="after-horizontal/brasa-0-native250.png"></figure>
+</div></section>
+<section><h2>horizontal · acción 1 (4 = purga con maestría)</h2><div class="pair">
+<figure><figcaption>before · 256ms</figcaption><img src="before-horizontal/brasa-1-native250.png"></figure>
+<figure><figcaption>after · 256ms</figcaption><img src="after-horizontal/brasa-1-native250.png"></figure>
+</div></section>
+<section><h2>horizontal · acción 2 (4 = purga con maestría)</h2><div class="pair">
+<figure><figcaption>before · 256ms</figcaption><img src="before-horizontal/brasa-2-native250.png"></figure>
+<figure><figcaption>after · 256ms</figcaption><img src="after-horizontal/brasa-2-native250.png"></figure>
+</div></section>
+<section><h2>horizontal · acción 3 (4 = purga con maestría)</h2><div class="pair">
+<figure><figcaption>before · 256ms</figcaption><img src="before-horizontal/brasa-3-native250.png"></figure>
+<figure><figcaption>after · 256ms</figcaption><img src="after-horizontal/brasa-3-native250.png"></figure>
+</div></section>
+<section><h2>horizontal · acción 4 (4 = purga con maestría)</h2><div class="pair">
+<figure><figcaption>before · 256ms</figcaption><img src="before-horizontal/brasa-4-native250.png"></figure>
+<figure><figcaption>after · 256ms</figcaption><img src="after-horizontal/brasa-4-native250.png"></figure>
+</div></section>
+<script>for(const c of document.querySelectorAll("canvas")){const im=new Image;im.src=c.dataset.src;let f=0;im.onload=()=>setInterval(()=>{const g=c.getContext("2d");g.clearRect(0,0,c.width,c.height);g.drawImage(im,(f++%12)*c.width,0,c.width,c.height,0,0,c.width,c.height)},95);}</script>
