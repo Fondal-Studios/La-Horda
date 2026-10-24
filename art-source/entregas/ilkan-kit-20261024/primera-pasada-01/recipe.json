@@ -1,0 +1,45 @@
+{
+  "base": "3d25a89ef1765443c464ac25c59018ad7a6a5c8b",
+  "source": "js/champions/skill-fx-a/c/ilkan.js functions ilkanBuffSignAtlas/ilkanDrawBuffSigns",
+  "hook": "js/champions/champ-shared.js drawChampFxTop",
+  "method": "Code-native cached canvas VFX, not imagegen or modified imported art. Painter/forge body pipeline not applicable. Original body assets preserved. PNGs are exact exports of runtime canvas.",
+  "cell": [
+    64,
+    72
+  ],
+  "frames": 12,
+  "atlas": [
+    768,
+    72
+  ],
+  "families": [
+    "dune",
+    "caravan"
+  ],
+  "anchor": [
+    32,
+    64
+  ],
+  "cadence": "100ms from remaining actual buff timer, periodic 12-phase loop, last200ms fade; not one revolution per full buff",
+  "palette": [
+    "#293136",
+    "#92703d",
+    "#d9b567",
+    "#fff0c0",
+    "#217f7a",
+    "#64daca"
+  ],
+  "environment": "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium",
+  "commands": [
+    "node tools/vfx/check-ilkan-buffs.js",
+    "OUT=/tmp/ilkan-reexport node tools/vfx/check-ilkan-buffs.js",
+    "ONLY=ilkan node tools/vfx/parity-ilkan-kit.js",
+    "node tools/vfx/ilkan-regression.js",
+    "node tools/vfx/ilkan-buffs-online.js",
+    "BASELINE=1 OUT=art-source/entregas/ilkan-kit-20261024/primera-pasada-01/before-h node tools/vfx/capture-ilkan-kit.js",
+    "OUT=art-source/entregas/ilkan-kit-20261024/primera-pasada-01/after-h node tools/vfx/capture-ilkan-kit.js",
+    "Repeat capture pair with MOBILE=1 and before-m/after-m",
+    "python3 tools/vfx/package-ilkan.py"
+  ],
+  "safety": "No mechanics/RNG/emitter/protocol edits; original generic signals retained; only draft integration."
+}

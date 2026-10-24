@@ -1,0 +1,50 @@
+from pathlib import Path
+import hashlib,json,subprocess,gzip
+ROOT=Path(__file__).resolve().parents[2]
+P=ROOT/'art-source/entregas/ilkan-kit-20261024/primera-pasada-01'
+BASE='3d25a89ef1765443c464ac25c59018ad7a6a5c8b'
+def sha(b):return hashlib.sha256(b).hexdigest()
+def dump(n,d):(P/n).write_text(json.dumps(d,indent=2,ensure_ascii=False)+'\n')
+refs=[]
+for p in sorted((ROOT/'assets/sprites/champions/ilkan').rglob('*')):
+ if p.is_file():
+  rel=str(p.relative_to(ROOT));b=p.read_bytes();old=subprocess.check_output(['git','show',BASE+':'+rel],cwd=ROOT);assert old==b;refs.append({'path':rel,'sha256':sha(b),'unchanged':True})
+dump('SOURCE_REFERENCES.json',{'base':BASE,'files':refs,'canon':['docs/ART_BIBLE.md §§7/8','tools/art/ilkan/fx.py palettes SAND/TEAL','js/champions/ilkan.js timer and pennant consumers'],'scope':'Existing bodies/skin/colossus/FX retained. No re-generation.'})
+dump('AUDIT.json',{'base':BASE,'openPRs':'No Ilkan workshop at start; PR212 draft preserved; PR213 already merged externally. Other gameplay/economy PRs excluded.','B144':{'id':'A-FX-ilkan-h1','exists':['fx_lance_01.png/WebP','ilkanDrawPennant','hookPrep/hook overlays'],'action':'preserve, no new lance; not whole-block approval'},'B145':{'id':'A-FX-ilkan-h2','before':'instinct pose + teal particles + generic sand SFA','candidate':'lamellar dune plates native atlas, only living Ilkan with positive ilkanInstinctTimer'},'B146':{'id':'A-FX-ilkan-h3','before':'advance pose + gold ellipse + generic sand SFA','candidate':'paired forked pennants for caster ilkanAdvanceTimer and real recipients advAllyTimer'},'colossus':'B147/B148/B149/B150 already emit crack/ring/sandPuff/finaleStep/finaleScreen and existing foot/silhouettes textures. No replacement and no whole-block approval.','notCompleted':['human poses/skins','colossus poses/skins','H1 full visual gate','all sublayers of H2/H3','global inventory']})
+reexport=[]
+for k in ['dune','caravan']:
+ a=(P/(k+'-atlas.png')).read_bytes();b=Path('/tmp/ilkan-reexport',k+'-atlas.png').read_bytes();assert a==b;reexport.append({'kind':k,'sha256':sha(a),'byteIdentical':True})
+dump('REEXPORT.json',reexport)
+dump('REVIEW.json',{'status':'FIX','state':'EN_CORRECCION','integration':'NO_INTEGRAR','reviewed':['two native 768x72 atlases','after-m H2/H3 native500','final landscape touch online guest'],'findings':[{'block':'B145','frames':list(range(12)),'diagnosis':'Separated plates read as small ornaments; dense local mobile contact and legacy green rings/particles dominate. Continuous marker only, dedicated activation/discharge layers pending.'},{'block':'B146','frames':list(range(12)),'diagnosis':'Paired pennants are visible in sparse landscape relay, but local dense mobile bodies/generic sand nova dominate; overlapping recipients require composite gate.'}],'pending':['Six arenas at 1:1, equipped Legion skin, all directions, low quality/culling/reentry','Contrast thresholds and complete Art Gate','Cold bake and sustained performance','Colossus buff signs intentionally omitted to preserve form; further art coverage pending','Intermittent relay missing ally timer/draw; cause not proven by failed traces'],'merge':False,'publicationVerified':False})
+dump('TEST_ATTEMPTS.json',{'local':'18/18 first attempt; both atlas reexports exact','capture':'four runs exit0; 8 precast scene hashes equal; H1 and UF 12 PNG files byte-identical in total','regression':'254 expedition checks PASS; not Ilkan-specific balance approval','parity':'360 frames summarized mechanical state and RNG 30070/30070 identical; not complete snapshots/global isolation','relay':[{'attempt':1,'result':'TIMEOUT at aggregate condition, no terminal trace; preserved log/source'},{'attempt':2,'result':'8/8 PASS; portrait screenshot blocked by rotate overlay, not visual evidence for gameplay'},{'attempt':3,'result':'TIMEOUT, both peers drew caster dune/caravan but not recipient0; recorded timer fields absent for allies. No cast-time trace, root cause unresolved.'},{'attempt':4,'result':'8/8 PASS landscape touch; added cast trace only, no runtime fix. Actual cast area/dur 1/1, ally timers 7000. Host/guest dune154/185, caravan caster150/177, recipient0 150/177 draws.'}],'limitations':'Successful repeats do not erase intermittent failures or certify all edge cases.'})
+dump('recipe.json',{'base':BASE,'source':'js/champions/skill-fx-a/c/ilkan.js functions ilkanBuffSignAtlas/ilkanDrawBuffSigns','hook':'js/champions/champ-shared.js drawChampFxTop','method':'Code-native cached canvas VFX, not imagegen or modified imported art. Painter/forge body pipeline not applicable. Original body assets preserved. PNGs are exact exports of runtime canvas.','cell':[64,72],'frames':12,'atlas':[768,72],'families':['dune','caravan'],'anchor':[32,64],'cadence':'100ms from remaining actual buff timer, periodic 12-phase loop, last200ms fade; not one revolution per full buff','palette':['#293136','#92703d','#d9b567','#fff0c0','#217f7a','#64daca'],'environment':'NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium','commands':['node tools/vfx/check-ilkan-buffs.js','OUT=/tmp/ilkan-reexport node tools/vfx/check-ilkan-buffs.js','ONLY=ilkan node tools/vfx/parity-ilkan-kit.js','node tools/vfx/ilkan-regression.js','node tools/vfx/ilkan-buffs-online.js','BASELINE=1 OUT='+str(P.relative_to(ROOT))+'/before-h node tools/vfx/capture-ilkan-kit.js','OUT='+str(P.relative_to(ROOT))+'/after-h node tools/vfx/capture-ilkan-kit.js','Repeat capture pair with MOBILE=1 and before-m/after-m','python3 tools/vfx/package-ilkan.py'],'safety':'No mechanics/RNG/emitter/protocol edits; original generic signals retained; only draft integration.'})
+(P/'CHECKPOINT.md').write_text('''# Ilkan — primera pasada B145/B146
+
+Base `3d25a89ef1765443c464ac25c59018ad7a6a5c8b`. Cierre remoto Guerrero PR212 leído y verificado; sin cierre perdido. PR213 ya estaba integrado por otro trabajo.
+
+**GENERADO: dos atlas nativos, 24 fases no vacías/distintas (12 por atlas). EN_CORRECCION / NO_INTEGRAR.** Placas separadas para Piel de Duna y pendones para Caravana, ligada a los temporizadores reales de caster y aliados. Dos fuentes runtime cambian (+71 líneas). Atlas PNG son exportaciones exactas del caché canvas; no se generaron cuerpos ni se duplicaron lanza/coloso/skin/UF existentes. B144 ya tiene lanza y pendón en uso; no cerrar todo B144/B145/B146 ni Ilkan por esta entrega.
+
+18 controles técnicos PASS; 254 regresiones Expedición PASS. Comparación 360 frames: RNG 30070/30070 y estado mecánico RESUMIDO iguales; no snapshots completos ni aislamiento global. Ocho escenas precast idénticas; H1 y UF: 12 PNG idénticos en total. Dos atlas reexportados byte-idénticos.
+
+Relay final horizontal táctil 8/8 PASS: dos casts reales, placas del dueño1 y pendones en caster1/receptor0 llegan a ambos clientes. Host/invitado placas154/185, pendones por receptor150/177. Dos timeouts previos conservados, raíz no demostrada; uno registra ausencia de timer aliado y dibujo aliado. Repetición vertical8/8 no evidencia visual: pantalla de rotación; conservada. No ocultar estos límites.
+
+FIX: placas pequeñas/ornamentales y pendones dominados por cuerpos/nova/anillos en contacto denso. Sin aprobación Art Gate integral. Pendientes skins/equipo/seis arenas/contraste compuesto/performance/culling/reentrada y casos extremos de receptores. No se dibujan estos marcadores en coloso, que conserva originales. Sin merge, sin publicación verificada. Cola histórica44 se conserva y añade B145/B146.
+
+Siguiente primera pasada: auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos. Coloso Ilkan B147..B150 ya emite grietas/pisadas/pilares/siluetas: conservar, no asumir faltantes por conteos; no aprobado globalmente. No repetir Ilkan mientras falten primeras pasadas. Para correcciones futuras usar recipe.json, completar Art Gate y CI exacthead antes de separar componente aprobado. Inventario global incompleto.
+''')
+html='''<!doctype html><meta charset="utf-8"><title>Ilkan — candidato NO INTEGRAR</title><style>body{background:#172027;color:#f2dfb0;font:16px sans-serif}img,canvas{image-rendering:pixelated;max-width:100%}section{display:flex;gap:20px;flex-wrap:wrap}article{max-width:46%}canvas{background:#263b30}</style><h1>Ilkan: primera pasada — NO INTEGRAR</h1><p>Dos marcadores persistentes candidatos. Diagnóstico a 100 ms; el juego toma fase del temporizador restante. Sin aprobación integral.</p><section>'''
+for k in ['dune','caravan']:html+=f'<article><h2>{k}</h2><img id="{k}" src="{k}-atlas.png"><canvas width="64" height="72" data-kind="{k}"></canvas></article>'
+html+='</section><h2>Mismo escenario y escala</h2><section>'
+for slot in [1,2]:
+ for phase in ['before','after']:html+=f'<article><h3>H{slot+1} {phase}</h3><img src="{phase}-m/ilkan-{slot}-native500.png"></article>'
+html+='</section><h2>Relay real horizontal táctil</h2><img src="online-guest.png"><script>let f=0;setInterval(()=>{for(const c of document.querySelectorAll("canvas")){const im=document.getElementById(c.dataset.kind),g=c.getContext("2d");if(im.complete&&im.naturalWidth){g.clearRect(0,0,64,72);g.drawImage(im,f*64,0,64,72,0,0,64,72);}}f=(f+1)%12},100);</script>'
+(P/'preview.html').write_text(html)
+for f in P.rglob('*.json'):
+ if f.stat().st_size>100000:
+  with gzip.GzipFile(str(f)+'.gz','wb',mtime=0) as z:z.write(f.read_bytes())
+  f.unlink()
+files=[ROOT/'js/champions/champ-shared.js',ROOT/'js/champions/skill-fx-a/c/ilkan.js']+list((ROOT/'tools/vfx').glob('*ilkan*'))+[ROOT/'docs/production/CORRECTION_BATCH.json']
+files+=list(P.rglob('*'));files=sorted(set(f for f in files if f.is_file() and f.name!='manifest.json'))
+rows=[{'path':str(f.relative_to(ROOT)),'bytes':f.stat().st_size,'sha256':sha(f.read_bytes()),'gitBlob':hashlib.sha1(b'blob '+str(f.stat().st_size).encode()+b'\0'+f.read_bytes()).hexdigest()} for f in files]
+dump('manifest.json',{'state':'EN_CORRECCION','integratedMain':False,'publicationVerified':False,'files':rows})
+print(len(rows),'manifest entries',sum(x['bytes'] for x in rows))

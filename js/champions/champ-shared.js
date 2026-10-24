@@ -206,6 +206,7 @@ function drawChampFxTop(){
     if(!h.alive) continue;
     if(h.granTimer>0) libertadorDrawBuffIcon(h);
     if(h.classKey==="ilkan") ilkanDrawOverlays(h);
+    if(typeof ilkanDrawBuffSigns === "function") ilkanDrawBuffSigns(h);
   }
 }
 // Capa de pantalla (encima de todo el mundo): Cordillera y nieve del Cruce, siluetas de Los Tres Pasos.
