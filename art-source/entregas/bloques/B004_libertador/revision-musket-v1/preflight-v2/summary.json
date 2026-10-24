@@ -1,0 +1,522 @@
+{
+  "schema": 1,
+  "status": "FIX",
+  "approvalClaimed": false,
+  "installed": false,
+  "commit": "bda8d3b117bc32fb0734edfa77fcca91d74099f3",
+  "frames": [
+    8,
+    9,
+    10,
+    11,
+    13,
+    20,
+    21,
+    23
+  ],
+  "assemblies": [
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 8,
+      "retainedFrames": 35,
+      "height": 81,
+      "width": 52,
+      "resampling": "NEAREST",
+      "atlasSha256": "9cb453853f6b0f5f8d0be4b21d22c69f587f4b5c00dd1c3af0a60e0e8cbf25fd",
+      "requestedHeight": 81
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 9,
+      "retainedFrames": 35,
+      "height": 81,
+      "width": 57,
+      "resampling": "NEAREST",
+      "atlasSha256": "48335a4520f87b91ee58cc8cdfe4ea10445b7acc13d8db62e783d5093b875e9d",
+      "requestedHeight": 81
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 10,
+      "retainedFrames": 35,
+      "height": 81,
+      "width": 52,
+      "resampling": "NEAREST",
+      "atlasSha256": "424afe311bacd822b517d497d8a7157aa296ec71d8c568071d4f746538c4ff29",
+      "requestedHeight": 81
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 11,
+      "retainedFrames": 35,
+      "height": 86,
+      "width": 52,
+      "resampling": "NEAREST",
+      "atlasSha256": "ca20fe3002a6a1d64074ade51ab5bfd05a26b4932f0fd1a3771c33995a734819",
+      "requestedHeight": 86
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 13,
+      "retainedFrames": 35,
+      "height": 70,
+      "width": 92,
+      "resampling": "NEAREST",
+      "atlasSha256": "4003dbc27113859aec47b0dee861f3d351fd98a01a827fad58ac6c4ffa880447",
+      "requestedHeight": 70
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 20,
+      "retainedFrames": 35,
+      "height": 66,
+      "width": 86,
+      "resampling": "NEAREST",
+      "atlasSha256": "68df47dcbfe81ef9b299102e765607d7adb710ace75ba43062c0364483bf4c89",
+      "requestedHeight": 66
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 21,
+      "retainedFrames": 35,
+      "height": 66,
+      "width": 88,
+      "resampling": "NEAREST",
+      "atlasSha256": "ed362acb9a86e84ac1ad81aa620b72f9ffec2f42a712e5f86ada1aeb2db598f8",
+      "requestedHeight": 66
+    },
+    {
+      "status": "ASSEMBLED_NOT_APPROVED",
+      "frame": 23,
+      "retainedFrames": 35,
+      "height": 66,
+      "width": 87,
+      "resampling": "NEAREST",
+      "atlasSha256": "bd1b20afa8a8a255bb74d78c21430990911dbcfdebec020cd21d042d70e8bcf9",
+      "requestedHeight": 66
+    }
+  ],
+  "sourceCells": [
+    {
+      "frame": 8,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/source.png",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "rect": [
+        0,
+        0,
+        444,
+        444
+      ]
+    },
+    {
+      "frame": 9,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/source.png",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "rect": [
+        444,
+        0,
+        887,
+        444
+      ]
+    },
+    {
+      "frame": 10,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/source.png",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "rect": [
+        887,
+        0,
+        1331,
+        444
+      ]
+    },
+    {
+      "frame": 11,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/source.png",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "rect": [
+        1331,
+        0,
+        1774,
+        444
+      ]
+    },
+    {
+      "frame": 13,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/source.png",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "rect": [
+        0,
+        444,
+        444,
+        887
+      ]
+    },
+    {
+      "frame": 20,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/attacks-source.png",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "rect": [
+        0,
+        0,
+        724,
+        724
+      ]
+    },
+    {
+      "frame": 21,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/attacks-source.png",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "rect": [
+        724,
+        0,
+        1448,
+        724
+      ]
+    },
+    {
+      "frame": 23,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/attacks-source.png",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "rect": [
+        1448,
+        0,
+        2172,
+        724
+      ]
+    }
+  ],
+  "bodyComparison": [
+    {
+      "frame": 8,
+      "before": {
+        "body": 71,
+        "full": 73,
+        "foot": 106
+      },
+      "after": {
+        "body": 71,
+        "full": 81,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 9,
+      "before": {
+        "body": 69,
+        "full": 73,
+        "foot": 106
+      },
+      "after": {
+        "body": 70,
+        "full": 81,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 10,
+      "before": {
+        "body": 71,
+        "full": 73,
+        "foot": 106
+      },
+      "after": {
+        "body": 69,
+        "full": 81,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 11,
+      "before": {
+        "body": 71,
+        "full": 72,
+        "foot": 106
+      },
+      "after": {
+        "body": 71,
+        "full": 86,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 13,
+      "before": {
+        "body": 67,
+        "full": 69,
+        "foot": 106
+      },
+      "after": {
+        "body": 67,
+        "full": 70,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 20,
+      "before": {
+        "body": 63,
+        "full": 65,
+        "foot": 106
+      },
+      "after": {
+        "body": 64,
+        "full": 66,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 21,
+      "before": {
+        "body": 63,
+        "full": 64,
+        "foot": 106
+      },
+      "after": {
+        "body": 63,
+        "full": 66,
+        "foot": 106
+      }
+    },
+    {
+      "frame": 23,
+      "before": {
+        "body": 63,
+        "full": 65,
+        "foot": 106
+      },
+      "after": {
+        "body": 63,
+        "full": 66,
+        "foot": 106
+      }
+    }
+  ],
+  "failedFrames": [
+    8,
+    10,
+    20,
+    21,
+    23
+  ],
+  "retainedFrames": 28,
+  "styleGate": "PASS",
+  "atlasSha256": "bd1b20afa8a8a255bb74d78c21430990911dbcfdebec020cd21d042d70e8bcf9",
+  "sourceBodyGate": {
+    "coverage": "SOURCE_PIXEL_MASS_NOT_RUNTIME_NORMALIZATION",
+    "status": "PASS",
+    "rows": [
+      {
+        "frame": 8,
+        "expected": 71,
+        "actual": 71,
+        "foot": 106,
+        "relativeDeviation": 0.0
+      },
+      {
+        "frame": 9,
+        "expected": 69,
+        "actual": 70,
+        "foot": 106,
+        "relativeDeviation": 0.014492753623188406
+      },
+      {
+        "frame": 10,
+        "expected": 71,
+        "actual": 69,
+        "foot": 106,
+        "relativeDeviation": 0.028169014084507043
+      },
+      {
+        "frame": 11,
+        "expected": 71,
+        "actual": 71,
+        "foot": 106,
+        "relativeDeviation": 0.0
+      },
+      {
+        "frame": 13,
+        "expected": 67,
+        "actual": 67,
+        "foot": 106,
+        "relativeDeviation": 0.0
+      },
+      {
+        "frame": 20,
+        "expected": 63,
+        "actual": 64,
+        "foot": 106,
+        "relativeDeviation": 0.015873015873015872
+      },
+      {
+        "frame": 21,
+        "expected": 63,
+        "actual": 63,
+        "foot": 106,
+        "relativeDeviation": 0.0
+      },
+      {
+        "frame": 23,
+        "expected": 63,
+        "actual": 63,
+        "foot": 106,
+        "relativeDeviation": 0.0
+      }
+    ]
+  },
+  "runtimeContract": {
+    "coverage": "STATIC_REAL_CALLERS_NOT_RUNTIME_APPROVAL",
+    "source": "js/champions/libertador.js",
+    "sourceGitBlobSha": "6a5ef0224c856c53aa5acd2c6a6b8b0bdfb690e4",
+    "requiredByCurrentRenderer": {
+      "libertador": [
+        "bayo_emb",
+        "bayo_imp",
+        "bayo_rem",
+        "cabral",
+        "command",
+        "fire",
+        "reload",
+        "ult_cast"
+      ],
+      "libertador_horse": [
+        "charge",
+        "dismount",
+        "m_atk",
+        "m_idle",
+        "m_run",
+        "mount"
+      ]
+    },
+    "missingFromGeneric36PoseFootPack": [
+      "bayo_emb",
+      "bayo_imp",
+      "bayo_rem",
+      "cabral",
+      "command",
+      "fire",
+      "reload",
+      "ult_cast"
+    ],
+    "preserveMountedPack": true,
+    "status": "REJECT_FULL_PACK_REPLACEMENT"
+  },
+  "integrationStatus": "FIX_RUNTIME_CONTRACT_AND_PENDING_VISUAL_REVIEW",
+  "visualReview": {
+    "status": "PENDING_ASSEMBLED_PIXEL_COMPARISON",
+    "reviewer": "ChatGPT (AI); no owner approval claimed",
+    "reason": "New raw source restores musket/bayonet. Review actual assembled atlas against original identity after native/style tests; keep specialized61-frame and mounted runtime."
+  },
+  "factoryRuntimeContract": {
+    "status": "REJECT",
+    "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+    "approvalClaimed": false,
+    "installed": false,
+    "frames": 36,
+    "requiredClips": [
+      "aim",
+      "attack_side",
+      "bayo_emb",
+      "bayo_imp",
+      "bayo_pre",
+      "bayo_rem",
+      "cabral",
+      "cast_side",
+      "command",
+      "fire",
+      "idle_down",
+      "idle_left",
+      "idle_side",
+      "idle_up",
+      "reload",
+      "ult_cast",
+      "walk_down",
+      "walk_left",
+      "walk_side",
+      "walk_up"
+    ],
+    "issues": [
+      {
+        "code": "SHORTENED_RUNTIME_CLIP",
+        "clip": "idle_down",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "idle_left"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "walk_left"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "aim"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "fire"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "reload"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "bayo_pre"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "bayo_emb"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "bayo_imp"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "bayo_rem"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "command"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "cabral"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "ult_cast"
+      }
+    ],
+    "key": "libertador",
+    "baselineImage": "assets/sprites/champions/libertador/v2/atlas.png",
+    "candidateImage": "/tmp/libertador-musket-v1/atlas.png"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "status": "SOURCE_ONLY_NOT_APPROVED",
+  "approvalClaimed": false,
+  "installed": false,
+  "atlas": "art-source/entregas/bloques/B004_libertador/campeones/atlas.png",
+  "atlasGitBlobSha": "5ba98ab90d0678814f042e9db47a5f9dca74f7ef",
+  "frames": [
+    8,
+    9,
+    10,
+    11,
+    13,
+    20,
+    21,
+    23
+  ],
+  "runtimeContractPolicy": "PRESERVE61_FRAME_FOOT_AND_MOUNTED_PACK",
+  "rawDimensions": [
+    1774,
+    887
+  ],
+  "replacements": [
+    {
+      "frame": 8,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/source.png",
+      "sourceGitBlobSha": "c65819275ee12a41313debe8bfb2986f9db18c6a",
+      "rect": [
+        0,
+        0,
+        444,
+        444
+      ],
+      "targetHeight": 81
+    },
+    {
+      "frame": 9,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/source.png",
+      "sourceGitBlobSha": "c65819275ee12a41313debe8bfb2986f9db18c6a",
+      "rect": [
+        444,
+        0,
+        887,
+        444
+      ],
+      "targetHeight": 81
+    },
+    {
+      "frame": 10,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/source.png",
+      "sourceGitBlobSha": "c65819275ee12a41313debe8bfb2986f9db18c6a",
+      "rect": [
+        887,
+        0,
+        1331,
+        444
+      ],
+      "targetHeight": 81
+    },
+    {
+      "frame": 11,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/source.png",
+      "sourceGitBlobSha": "c65819275ee12a41313debe8bfb2986f9db18c6a",
+      "rect": [
+        1331,
+        0,
+        1774,
+        444
+      ],
+      "targetHeight": 86
+    },
+    {
+      "frame": 13,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/source.png",
+      "sourceGitBlobSha": "c65819275ee12a41313debe8bfb2986f9db18c6a",
+      "rect": [
+        0,
+        444,
+        444,
+        887
+      ],
+      "targetHeight": 70
+    },
+    {
+      "frame": 20,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/attacks-source.png",
+      "sourceGitBlobSha": "01e8aa98fc7dccbf113683159c2a35866bb35a46",
+      "rect": [
+        0,
+        0,
+        724,
+        724
+      ],
+      "targetHeight": 66
+    },
+    {
+      "frame": 21,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/attacks-source.png",
+      "sourceGitBlobSha": "01e8aa98fc7dccbf113683159c2a35866bb35a46",
+      "rect": [
+        724,
+        0,
+        1448,
+        724
+      ],
+      "targetHeight": 66
+    },
+    {
+      "frame": 23,
+      "source": "art-source/entregas/bloques/B004_libertador/revision-musket-v1/attacks-source.png",
+      "sourceGitBlobSha": "01e8aa98fc7dccbf113683159c2a35866bb35a46",
+      "rect": [
+        1448,
+        0,
+        2172,
+        724
+      ],
+      "targetHeight": 66
+    }
+  ],
+  "revision": "GEOMETRY2_AND_NATIVE_REDRAW3",
+  "previousEvidence": "preflight-v1/"
+}
