@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated": "2026-10-24",
-  "policy": "Alternar PRODUCCION con CIERRE (corregir, validar, integrar, verificar publicación). Conservar historial, fuentes e IDs. No integrar FIX ni rebajar gates.",
+  "updated": "2026-10-23",
+  "policy": "First-pass champion batches; save failures and move forward. Run a grouped correction pass later; never merge failed or unvalidated assets.",
   "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
   "pendingVerificationNotFailures": [
     "Aurelia basic/refraction/luminal-step: generated, no empty/edge flags, still need final-scale readability, proper layer split and runtime tests",
@@ -11,9 +11,9 @@
     "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
-  "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
+  "nextProduction": "Primera pasada siguiente kit sin producción: auditar Brasa (B012 y normales) contra main/PR/consumidores. No asumir que UF/cuerpo faltan. Baltra, Bront y Brakk pasan a lote de corrección.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "CIERRE Brakk normal signatures from PR197, without importing B118/B119 FIX. Bront03 rejected.",
+  "next": "Primera pasada siguiente kit sin producción: auditar Brasa (B012 y normales) contra main/PR/consumidores. No asumir que UF/cuerpo faltan. Baltra, Bront y Brakk pasan a lote de corrección.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -22,8 +22,9 @@
     "preservesEntries": 23
   },
   "queueSnapshotOrigin": {
-    "sha": "b0e03bd88d3624e3d4f1771737c3804ad2b13b85",
-    "preservedHistoricalEntries": 46
+    "branch": "art/bront-redesign-first-pass-20261023",
+    "sha": "ff1c635318079d7cc97e9b9a9a4be2136e4c0ed0",
+    "preservedHistoricalEntries": 24
   },
   "componentClosures": [
     {
@@ -1351,16 +1352,6 @@
             }
           ],
           "next": "Finish native alpha/proportion/negative-space in full base batch; then two skins and actual renderer. Do not install partial atlas."
-        }
-      ],
-      "history": [
-        {
-          "source": "art-source/entregas/bront-redesign-20261023/cierre-03",
-          "state": "EN_CORRECCION",
-          "sourceSha256": "4167703df506a8242775bc8a8296f852465f8468017825066698e132ce146d58",
-          "atlasSha256": "6e86e9fe0e2214b5102a8b9c5244160c2c76d2b466e13322bf3bf75988191ead",
-          "diagnosis": "Edit03 did not meet alpha or cavity/separation requirements. Source880333 partial, atlas126954; cut contact13.",
-          "next": "Preserve sources01/02/03; no repeat prompt or skins on rejected base. Close another separable component."
         }
       ]
     },

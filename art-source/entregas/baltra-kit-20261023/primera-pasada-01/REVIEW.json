@@ -1,0 +1,55 @@
+{
+  "state": "EN_CORRECCION",
+  "decision": "NO_INTEGRAR",
+  "findings": [
+    {
+      "block": "B114",
+      "component": "A-FX-baltra-h1",
+      "source": "js/champions/skill-fx-a/c/baltra.js",
+      "sourceSha256": "1de844cb268b8139118037585ba839ed010751c452c00f35a1975231542da275",
+      "atlas": "baltra_wave-nova.png",
+      "atlasSha256": "893f5f66d462e30d0087c264479b8f4ccfff90f064100a09a6b9fc752166bd8e",
+      "phase": "contacto500ms; tira80/250/500/1100/2000ms",
+      "frames": "0..11 (revisión de conjunto, no defecto de todos los cuadros)",
+      "diagnosis": "Ondas muy finas y campana central poco evidente en contacto móvil; anillos de aliados dominan a500ms.",
+      "evidence": "after-mobile/baltra-0-native500.png",
+      "next": "Lote posterior: composición/silueta a escala real; conservar geometría y señales mecánicas, validar arenas/skins/relay antes de integrar."
+    },
+    {
+      "block": "B115",
+      "component": "A-FX-baltra-h2",
+      "source": "js/champions/skill-fx-a/c/baltra.js",
+      "sourceSha256": "1de844cb268b8139118037585ba839ed010751c452c00f35a1975231542da275",
+      "atlas": "baltra_guard-aura.png",
+      "atlasSha256": "4effbf2579181fd74768d159d1b1d2a5e3c3896b2f8f4bb6506863d49ed08f49",
+      "phase": "contacto500ms; tira80/250/500/1100/2000ms",
+      "frames": "0..11 (revisión de conjunto, no defecto de todos los cuadros)",
+      "diagnosis": "Guardia se lee como arco fino y las placas votivas son pequeñas; continuidad/recast/muerte y contraste compuesto pendientes.",
+      "evidence": "after-mobile/baltra-1-native500.png",
+      "next": "Lote posterior: composición/silueta a escala real; conservar geometría y señales mecánicas, validar arenas/skins/relay antes de integrar."
+    },
+    {
+      "block": "B116",
+      "component": "A-FX-baltra-h3",
+      "source": "js/champions/skill-fx-a/c/baltra.js",
+      "sourceSha256": "1de844cb268b8139118037585ba839ed010751c452c00f35a1975231542da275",
+      "atlas": "baltra_clapper-cone.png",
+      "atlasSha256": "8b6088e5fdfa08e9af7a4c6efde901f1dfa6615c426ebb113509e4c82f586cc5",
+      "phase": "contacto500ms; tira80/250/500/1100/2000ms",
+      "frames": "0..11 (revisión de conjunto, no defecto de todos los cuadros)",
+      "diagnosis": "Rayos blancos y cono legados dominan la composición; badajo poco reconocible dentro del conjunto.",
+      "evidence": "after-horizontal/baltra-2.png",
+      "next": "Lote posterior: composición/silueta a escala real; conservar geometría y señales mecánicas, validar arenas/skins/relay antes de integrar."
+    }
+  ],
+  "pending": [
+    "Art Gate visual integral",
+    "gate estricto seis arenas y contraste compuesto",
+    "skins/equipo/varios receptores",
+    "caché fría/fallback/performance móvil sostenida",
+    "lifecycle guardia/recast/reset/muerte",
+    "CI exacthead"
+  ],
+  "notApproved": "24checks técnicos no certifican legibilidad ni reconocimiento.",
+  "online": "4/4 checks PASS; skin/objetos/owner y tres temas reales dibujados en host e invitado táctil. No certifica ciclo de vida completo."
+}
