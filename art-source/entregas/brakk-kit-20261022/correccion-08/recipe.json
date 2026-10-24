@@ -1,0 +1,33 @@
+{
+  "environment": {
+    "NODE_PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "CHROMIUM_PATH": "/tmp/chromium",
+    "browser": "Chromium138.0.7204.0"
+  },
+  "commands": [
+    "node tools/vfx/verify-brakk-armor.js",
+    "CANARY=1 OUT=art-source/entregas/brakk-kit-20261022/correccion-08/canary node tools/vfx/verify-brakk-armor.js",
+    "ONLY=brakk node tools/vfx/parity-brakk-armor.js",
+    "node tools/quality-five/brakk-functional.js",
+    "node tools/vfx/brakk-armor-online.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/correccion-08/kit node tools/vfx/verify-brakk-kit.js",
+    "ARENAS=bosque LOOKS=base,set SLOTS=1,2 DENSITIES=dense,sparse TIMES=330,1600 MOBILE=1 OUT=art-source/entregas/brakk-kit-20261022/correccion-08/probe node tools/vfx/capture-brakk-armor.js",
+    "SLOTS=2 TIMES=80,330,610,1600 OUT=art-source/entregas/brakk-kit-20261022/correccion-08/landscape node tools/vfx/capture-brakk-armor.js",
+    "SLOTS=2 TIMES=80,330,610,1600 MOBILE=1 OUT=art-source/entregas/brakk-kit-20261022/correccion-08/mobile node tools/vfx/capture-brakk-armor.js",
+    "python3 tools/vfx/package-brakk-armor.py"
+  ],
+  "design": "Reuse all53native frames and three05signatures. Crossfade generic armor ring against actual Brakk aura phase from pool; cold/missing/evicted/off/dead/expired event returns full generic opacity. No new emitter or RNG.",
+  "states": {
+    "generated": "Code-native candidate",
+    "validated": false,
+    "integratedMain": false,
+    "publicationVerified": false
+  },
+  "sources": [
+    "shared-before.js",
+    "shared-candidate.js",
+    "kit-before.js",
+    "kit-candidate.js"
+  ],
+  "notes": "Same-pose harness restores _an/_animCastKind. Restore candidate cache pre-bakes its live aura to match original warm render. PNG_INDEX lists all generated raster, not all uploaded. Selected 12sheets and native images are packaged; regenerate full matrix with commands. Existing generic indicator is preserved for other armor sources without a Brakk event. Crew recipient multi-owner compositions remain pending."
+}

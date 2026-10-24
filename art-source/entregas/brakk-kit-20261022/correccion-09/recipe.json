@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "source": "js/champions/skill-fx-a/c/brakk.js",
+  "sourceSha256": "18831420feb6c79603932d1c8e06ade1cf4dafd8e53409200d4e44471175d9aa",
+  "method": "Existing native SFA procedural recipe; original bitmap/image_gen not needed for this correction. No keys/external paid service.",
+  "identity": "B118 / A-FX-brakk-h2 / brakk_deploy~h preserved",
+  "changes": "Only support geometry and staged unfolding; current B11908 optional crossfade retained.",
+  "preserved": {
+    "durationMs": 620,
+    "radius": 45,
+    "frames": 12,
+    "cell": [
+      64,
+      64
+    ],
+    "combat": "unchanged",
+    "UF": "unchanged",
+    "signatures05": "unchanged"
+  },
+  "commands": [
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=art-source/entregas/brakk-kit-20261022/correccion-09 node tools/vfx/verify-brakk-kit.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=art-source/entregas/brakk-kit-20261022/correccion-09/gate-landscape node tools/vfx/test-brakk-deploy-pose.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium MOBILE=1 OUT=art-source/entregas/brakk-kit-20261022/correccion-09/gate-mobile node tools/vfx/test-brakk-deploy-pose.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium CANARY_OPAQUE=1 ARENAS=bosque OUT=art-source/entregas/brakk-kit-20261022/correccion-09/canary-opaque node tools/vfx/test-brakk-deploy-pose.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium TIMES=80,330,610 OUT=art-source/entregas/brakk-kit-20261022/correccion-09/matrix-landscape node tools/vfx/capture-brakk-deploy09.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium TIMES=80,330,610 MOBILE=1 OUT=art-source/entregas/brakk-kit-20261022/correccion-09/matrix-mobile node tools/vfx/capture-brakk-deploy09.js",
+    "python3 tools/vfx/preview-brakk-deploy09.py",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium ONLY=brakk node tools/vfx/parity-brakk-deploy09.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/brakk-deploy09-online.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=art-source/entregas/brakk-kit-20261022/correccion-09 node tools/vfx/verify-brakk-deploy-runtime.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=art-source/entregas/brakk-kit-20261022/correccion-09 node tools/vfx/verify-brakk-armor.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/quality-five/brakk-functional.js"
+  ],
+  "parentLayerDiagnostic": {
+    "requiredSource": "59b8c38fe415a1de2fb958695a53706c55fce930",
+    "command": "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium ARENAS=bosque,infernal LOOKS=base,set MOBILE=1 OUT=art-source/entregas/brakk-kit-20261022/correccion-09/layers-probe node tools/vfx/diagnose-brakk-deploy-layers.js",
+    "note": "Run from an isolated parent08 checkout with diagnostic tool copied; running on candidate measures candidate instead."
+  },
+  "exportNote": "Four other atlas RGBA identical; hashes separately record PNG bytes. Existing sources and attempts retained."
+}

@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-22",
+  "attempts": [
+    {
+      "name": "initial full-length fracture",
+      "state": "FIX",
+      "evidence": [
+        "attempt-01/source-green-variant.js",
+        "attempt-01/fracture-green.png",
+        "attempt-01/mobile-green.png"
+      ],
+      "finding": "Generic H2 hue rotation plus heavy arena tint made glass green. Preserve source/atlas; final explicit lilac palette +18% arena blend. Packed native color was also incorrectly assigned to canvas fillStyle; final converts it to CSS rgb and tests actual full trace."
+    },
+    {
+      "name": "missing theme fallback",
+      "state": "FAIL_CORRECTED",
+      "evidence": "attempt-01/invalid-theme.txt",
+      "finding": "New optional renderer dereferenced missing theme in negative fixture. Fixed with optional chaining; final negative control and six unmodified time/siege raster comparisons PASS."
+    },
+    {
+      "name": "lifecycle expectation adapted to intentional opacity",
+      "state": "PASS",
+      "finding": "Original collapse test assumed max30% and <=15% at halfway. New canonical max40% is checked as <=20% halfway with same220ms return, plus exact alpha function boundaries; no legibility gate threshold changed."
+    }
+  ],
+  "history": "Previous correction-01 attempts retained unchanged. No new relay failure in this pass; final report is33 checks."
+}

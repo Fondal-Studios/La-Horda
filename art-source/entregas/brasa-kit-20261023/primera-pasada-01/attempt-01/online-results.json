@@ -1,0 +1,91 @@
+{
+  "checks": [
+    {
+      "host": "solciju",
+      "guest": "brasa",
+      "ok": true,
+      "rh": {
+        "draw": {
+          "brasa_mount": 33,
+          "brasa_purge~h": 17,
+          "brasa_vent~p": 40,
+          "brasa_dismantle~p": 54
+        },
+        "k": "brasa",
+        "casts": 4,
+        "objects": [
+          {
+            "id": 2,
+            "owner": 3,
+            "kind": "ex_reflection"
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "kind": "steam"
+          },
+          {
+            "id": 4,
+            "owner": 1,
+            "kind": "turret"
+          }
+        ],
+        "hp": 397,
+        "skin": "skin_ultimo_turno"
+      },
+      "rg": {
+        "draw": {
+          "brasa_mount": 66,
+          "brasa_purge~h": 31,
+          "brasa_vent": 57,
+          "brasa_dismantle~p": 83
+        },
+        "k": "brasa",
+        "objects": [
+          {
+            "id": 2,
+            "owner": 3,
+            "kind": "ex_reflection"
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "kind": "steam"
+          },
+          {
+            "id": 4,
+            "owner": 1,
+            "kind": "turret"
+          }
+        ],
+        "hp": 397,
+        "skin": "skin_ultimo_turno"
+      }
+    },
+    {
+      "name": "brasa_mount drawn both peers",
+      "ok": true,
+      "host": 33,
+      "guest": 66
+    },
+    {
+      "name": "brasa_purge~h drawn both peers",
+      "ok": true,
+      "host": 17,
+      "guest": 31
+    },
+    {
+      "name": "brasa_dismantle~p drawn both peers",
+      "ok": true,
+      "host": 54,
+      "guest": 83
+    },
+    {
+      "name": "brasa_vent drawn both peers",
+      "ok": false,
+      "host": 0,
+      "guest": 57
+    }
+  ],
+  "errors": []
+}

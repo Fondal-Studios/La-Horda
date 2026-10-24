@@ -1,0 +1,226 @@
+{
+  "schema": 1,
+  "generator": "image_gen built-in",
+  "grid": [
+    6,
+    5
+  ],
+  "sourceCell": 229,
+  "diagnosticCell": 232,
+  "alphaThreshold": 128,
+  "sheets": [
+    {
+      "name": "prism",
+      "clips": [
+        {
+          "id": "A-FX-aurelia-basico",
+          "block": "B429",
+          "name": "basic",
+          "start": 0,
+          "count": 12,
+          "phases": {
+            "anticipation": [
+              0,
+              1
+            ],
+            "loop": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "impact": [
+              6,
+              7,
+              8
+            ],
+            "dissipation": [
+              9,
+              10,
+              11
+            ]
+          },
+          "targetCell": [
+            24,
+            24
+          ]
+        },
+        {
+          "id": "A-FX-aurelia-h1",
+          "block": "B108",
+          "name": "node",
+          "start": 12,
+          "count": 18,
+          "phases": {
+            "anticipation": [
+              0,
+              1,
+              2
+            ],
+            "impact": [
+              3,
+              4,
+              5
+            ],
+            "loop": [
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            "dissipation": [
+              14,
+              15,
+              16,
+              17
+            ]
+          },
+          "targetCell": [
+            32,
+            48
+          ]
+        }
+      ],
+      "source": "source-prism.png",
+      "sha256": "24c0c0be5f19c62d90b9b453c725b0aa093da0d7be2d6122c80f9b5f0ba6ea4a"
+    },
+    {
+      "name": "refraction-step",
+      "clips": [
+        {
+          "id": "A-FX-aurelia-h2",
+          "block": "B109",
+          "name": "refraction",
+          "start": 0,
+          "count": 12,
+          "phases": {
+            "anticipation": [
+              0,
+              1
+            ],
+            "impact": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "dissipation": [
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ]
+          },
+          "targetCell": [
+            232,
+            32
+          ]
+        },
+        {
+          "id": "A-FX-aurelia-h3",
+          "block": "B110",
+          "name": "luminal-step",
+          "start": 12,
+          "count": 18,
+          "phases": {
+            "anticipation": [
+              0,
+              1,
+              2
+            ],
+            "impact": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "dissipation": [
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "loop": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              17
+            ]
+          },
+          "targetCell": "split trajectory216x40, arrival120x120, halo64x64 before integration"
+        }
+      ],
+      "source": "source-refraction-step.png",
+      "sha256": "4587b0781c7861fcd60cbd13a534bde915a0d3a2913186994f1b0929d92dde20"
+    },
+    {
+      "name": "cathedral",
+      "clips": [
+        {
+          "id": "A-FX-aurelia-ult",
+          "block": "B008",
+          "name": "cathedral",
+          "start": 0,
+          "count": 30,
+          "phases": {
+            "anticipation": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "impact": [
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            "loop": [
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21
+            ],
+            "dissipation": [
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29
+            ]
+          },
+          "targetCell": [
+            232,
+            232
+          ]
+        }
+      ],
+      "source": "source-cathedral.png",
+      "sha256": "5372060ef473c44ad7ae7302898776dd7b09ca539a34b58d4dbaf43a4b39ab53"
+    }
+  ],
+  "purpose": "First-pass diagnostic exports only; preserve every source; no automatic art approval",
+  "normalization": "fixed grid crop; NEAREST232; alpha0/255; no painting, cleanup or per-frame resizing"
+}

@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "medium": "native SFA canvas recipes",
+  "source": "js/champions/skill-fx-a/c/morveth.js",
+  "sourceSha256": "0fb59f44b844921aab209d0892db716563077dc6ade606e311c490ddaa23a5e9",
+  "previousSource": "source-before.js",
+  "previousSignatures": "signatures-before.js",
+  "exports": [
+    {
+      "name": "mushroom-growth",
+      "art": "burst",
+      "theme": "morveth_growth",
+      "size": 64,
+      "arc": 0.85,
+      "cell": [
+        64,
+        64
+      ],
+      "frames": 12
+    },
+    {
+      "name": "spore-pulse",
+      "art": "nova",
+      "theme": "morveth_pulse",
+      "size": 96,
+      "arc": 0.85,
+      "cell": [
+        96,
+        96
+      ],
+      "frames": 11
+    },
+    {
+      "name": "spore-exhalation",
+      "art": "cone",
+      "theme": "morveth_spores~h",
+      "size": 96,
+      "arc": 0.85,
+      "cell": [
+        98,
+        151
+      ],
+      "frames": 14
+    },
+    {
+      "name": "symbiosis-mycelium",
+      "art": "aura",
+      "theme": "morveth_symbiosis~p",
+      "size": 0,
+      "arc": 0.85,
+      "cell": [
+        40,
+        56
+      ],
+      "frames": 18
+    }
+  ],
+  "phases": {
+    "growth": "existing12frames/650ms",
+    "pulse": "11frames/520ms, fade after55%, empty final",
+    "spores": "existing14frames; cone210/arc0.85; generic border420ms profile only",
+    "symbiosis": "18frames40x56, loop existing100ms cadence; actual armor duration, receptor index retained"
+  },
+  "pivot": "engine existing centers; aura feet anchored at+8*scale",
+  "preservation": "IDs, times, targets, combat RNG, UF and props unchanged; before sources in parent7ddcc and this folder.",
+  "reproduction": "Commands in CHECKPOINT.md. Native recipe source is authoritative; PNGs are exact runtime exports, not new asset loader."
+}

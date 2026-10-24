@@ -1,0 +1,31 @@
+{
+  "base": "3d25a89ef1765443c464ac25c59018ad7a6a5c8b",
+  "openPRs": "No Ilkan workshop at start; PR212 draft preserved; PR213 already merged externally. Other gameplay/economy PRs excluded.",
+  "B144": {
+    "id": "A-FX-ilkan-h1",
+    "exists": [
+      "fx_lance_01.png/WebP",
+      "ilkanDrawPennant",
+      "hookPrep/hook overlays"
+    ],
+    "action": "preserve, no new lance; not whole-block approval"
+  },
+  "B145": {
+    "id": "A-FX-ilkan-h2",
+    "before": "instinct pose + teal particles + generic sand SFA",
+    "candidate": "lamellar dune plates native atlas, only living Ilkan with positive ilkanInstinctTimer"
+  },
+  "B146": {
+    "id": "A-FX-ilkan-h3",
+    "before": "advance pose + gold ellipse + generic sand SFA",
+    "candidate": "paired forked pennants for caster ilkanAdvanceTimer and real recipients advAllyTimer"
+  },
+  "colossus": "B147/B148/B149/B150 already emit crack/ring/sandPuff/finaleStep/finaleScreen and existing foot/silhouettes textures. No replacement and no whole-block approval.",
+  "notCompleted": [
+    "human poses/skins",
+    "colossus poses/skins",
+    "H1 full visual gate",
+    "all sublayers of H2/H3",
+    "global inventory"
+  ]
+}

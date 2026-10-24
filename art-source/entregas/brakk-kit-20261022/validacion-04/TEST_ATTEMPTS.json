@@ -1,0 +1,28 @@
+{
+  "attempts": [
+    {
+      "id": "matrix-smoke",
+      "result": "6 scenes PASS",
+      "scope": "Smoke before360matrix; no runtime changes"
+    },
+    {
+      "id": "opaque-canary-initial",
+      "result": "INVALID_CANARY",
+      "diagnosis": "Passed RGBA array to SfaStrip.set, which stores Uint32. Array became0 and rendered transparent; bad0 is not gate certification. Preserved source/log/result in attempt-01. Corrected to sfaCol(#ffffff).",
+      "final": "21 failures expected, gate unchanged"
+    },
+    {
+      "id": "independent-session-ablation",
+      "result": "19/36 same initial scene hashes;17 unmatched",
+      "diagnosis": "Different background pixels between independent scenario sequences. Exact root cause not established; do not use unmatched pairs to attribute visual changes.",
+      "final": "Replaced causal evidence with12 same-frame A/B/A trials, restored PNG and tracked effect/object state identical"
+    },
+    {
+      "id": "exec-session-poll",
+      "result": "transport disconnected during session poll",
+      "diagnosis": "Completed output files remained available; replayed assertions against saved actual-consumer traces using assembly script:38PASS. No claim that missing process response was observed as exit0."
+    }
+  ],
+  "runtimeFailuresIntroduced": false,
+  "thresholdsLowered": false
+}

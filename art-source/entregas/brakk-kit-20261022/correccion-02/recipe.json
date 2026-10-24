@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "medium": "native canvas pixel recipe; no raster image generation",
+  "source": "js/champions/skill-fx-a/c/brakk.js",
+  "sourceSha256": "81be8914332b0e0fa33941c02fd9fb37827f86ce8e1ec8917896c26b0e7c81f9",
+  "previousSource": "source-before.js",
+  "previousSourceSha256": "e3c244092f62018744bd7cf6ed5f4c343f8fa478b4abae1850558eb2ae994696",
+  "framesAndCells": [
+    {
+      "name": "wall-mount",
+      "art": "beam",
+      "theme": "brakk_build",
+      "size": 12,
+      "cell": [
+        16,
+        12
+      ],
+      "frames": 11
+    },
+    {
+      "name": "turret-deploy",
+      "art": "burst",
+      "theme": "brakk_deploy~h",
+      "size": 64,
+      "cell": [
+        64,
+        64
+      ],
+      "frames": 12
+    },
+    {
+      "name": "nail-volley",
+      "art": "beam",
+      "theme": "brakk_nails",
+      "size": 12,
+      "cell": [
+        16,
+        12
+      ],
+      "frames": 8
+    },
+    {
+      "name": "repair-weld",
+      "art": "burst",
+      "theme": "brakk_repair~p",
+      "size": 48,
+      "cell": [
+        48,
+        48
+      ],
+      "frames": 10
+    },
+    {
+      "name": "repair-brace",
+      "art": "aura",
+      "theme": "brakk_repair~p",
+      "size": 0,
+      "cell": [
+        40,
+        56
+      ],
+      "frames": 12
+    }
+  ],
+  "preserved": "Original sources in parent commit and source-before.js. IDs, gameplay times, radii, UF and props unchanged.",
+  "commands": {
+    "export": "OUT=art-source/entregas/brakk-kit-20261022/correccion-02 node tools/vfx/verify-brakk-kit.js",
+    "capture": "ONLY=brakk SLOTS=1,3 TIMES=80,160,330,500,800 MOBILE=1 FULL=1 OUT=/tmp/review node tools/vfx/capture-silhouette-kit.js",
+    "legibility": "MOBILE=1 node tools/vfx/test-brakk-deploy-legible.js"
+  },
+  "environment": "Node; playwright available via NODE_PATH; CHROMIUM_PATH executable. Start own root server for vfx-b-engine via tools/lib/serve. No external paid service."
+}

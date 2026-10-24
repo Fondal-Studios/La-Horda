@@ -1,0 +1,342 @@
+{
+  "schema": 1,
+  "date": "2026-10-23",
+  "pr": 197,
+  "branch": "art/brakk-kit-first-pass-20261022",
+  "productionCommit": "49af00d3b9b02d639945bc03f1bc676970b2678c",
+  "recoveryCommit": "b9575f76cd2db2e18d7499bd2e76428db3e4992c",
+  "mainObserved": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+  "verifiedProductionFiles": [
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/CHECKPOINT.md",
+      "bytes": 4133,
+      "sha": "4d9a22156283cae64efa7ecab5d965e5455f5085"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/REVIEW.json",
+      "bytes": 2475,
+      "sha": "cc275f4e84c3d4f7dc805313eb0eef4a111861db"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/TEST_ATTEMPTS.json",
+      "bytes": 2267,
+      "sha": "18715c1c2b245b01e59b1b12fc519a6cf64c7492"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/atlases/nail-volley.png",
+      "bytes": 407,
+      "sha": "0f6d77a7de44fb1e775f02924f3c7c462eb54d23"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/atlases/repair-brace.png",
+      "bytes": 2432,
+      "sha": "efedb3c898dc12f9592b227bd34dab7eebb84365"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/atlases/repair-weld.png",
+      "bytes": 4298,
+      "sha": "efc569981c32754ac68e9cd5dff829e0b20d5c40"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/atlases/turret-deploy.png",
+      "bytes": 5662,
+      "sha": "845de1106364783fbefc997d93ed827c5a1a78ff"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/atlases/wall-mount.png",
+      "bytes": 897,
+      "sha": "1691c692dc4efc1a1e8ecb60945388ca6bd15203"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-01/capture-source.js",
+      "bytes": 7828,
+      "sha": "7a1b70c20763178d6f128bb2b91130d81cb3129c"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-01/landscape/capture.json",
+      "bytes": 25483,
+      "sha": "a9ac16c97d6106e949d5a98d2a4d7f5428e34b5f"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-01/matrix-landscape.log",
+      "bytes": 2139,
+      "sha": "aacb30b7fd472cdcc175eaa0eff49184b0bab7e9"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-01/matrix-mobile.log",
+      "bytes": 2139,
+      "sha": "56b01841c9f6a938261df1a26e4e001a3462e467"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-01/mobile/capture.json",
+      "bytes": 25483,
+      "sha": "9231e6530e74e5818a1a98a74c23e93913671fee"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-01/mobile/minas-croma-330-native.png",
+      "bytes": 478243,
+      "sha": "fa1b5b9def45768fb013f72f873c8c0bee768ad5"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-02/capture-source.js",
+      "bytes": 8500,
+      "sha": "9bd731024945087abe3df21876ed7ee562d8e8b3"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-02/deploy-runtime.json",
+      "bytes": 1463,
+      "sha": "2606680c6ad318a06217937b8eceafed0256616d"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-02/deploy-runtime.log",
+      "bytes": 1102,
+      "sha": "d6e1efbb153cb7438cfaecfc9b2fb1f2f2d882d4"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-02/landscape-capture.json",
+      "bytes": 30285,
+      "sha": "91872d8265888053dac06b06da8c996e2ae5c628"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-02/mobile-capture.json",
+      "bytes": 30285,
+      "sha": "b8003e27460704bac80520be8c46e99c94f9d080"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/attempt-02/runtime-source.js",
+      "bytes": 2826,
+      "sha": "48f0771a1bc3cbd19bcf0820b131ba5047ec353a"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/ci-failed-excerpt.log",
+      "bytes": 4033,
+      "sha": "aab78a913ad2326ec6b5a393713d3ad91474112f"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/deploy-runtime.json",
+      "bytes": 1490,
+      "sha": "a72b4dba1d27977538d25176dd623964e7c3fcfb"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/deploy-runtime.log",
+      "bytes": 1129,
+      "sha": "1668fe535761f09d09a88d76960916a27d5d0259"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/kit.log",
+      "bytes": 530,
+      "sha": "ae5cd22ab9344fbf8420d825186ef4cfe5d12029"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/landscape/capture.json",
+      "bytes": 30315,
+      "sha": "5651d5cd5377e0def85eaa5d902be8cc050e56b5"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/landscape/hielo-alt1-330-native.png",
+      "bytes": 672588,
+      "sha": "201b1627c9afc3a9ff3a0a02bec9d6bf71e72f13"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/landscape/minas-set-330-native.png",
+      "bytes": 625269,
+      "sha": "bb574e0be864be7c905b16f938df4cd3bae75ade"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/landscape-acuatica.png",
+      "bytes": 962127,
+      "sha": "b02185e824bf4c824ddbce86413f882b8f0a63b5"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/landscape-bosque.png",
+      "bytes": 816222,
+      "sha": "e611bd0c293b91917d65f062d362accdf5056833"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/landscape-hielo.png",
+      "bytes": 1317984,
+      "sha": "ae2d648be21c4a5ac6337fff2226324a4ff3fc7f"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/landscape-infernal.png",
+      "bytes": 1081414,
+      "sha": "d79d3294bd7ba86de8d965d12b178ad26648d958"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/landscape-laberinto.png",
+      "bytes": 977641,
+      "sha": "96cda2b8b1d2d8141c0c8c6549aa182ed9ea2829"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/landscape-minas.png",
+      "bytes": 1434972,
+      "sha": "0a0e8eafc481ad8f41f2e1384e5a0e612195f571"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/mobile-acuatica.png",
+      "bytes": 721057,
+      "sha": "b87d9366b99f6d4deca36362897ed1f3e1ba0248"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/mobile-bosque.png",
+      "bytes": 847267,
+      "sha": "5b1421a50f8fa219b875ccb0c22d9d2056a86026"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/mobile-hielo.png",
+      "bytes": 1416092,
+      "sha": "ffb5ba744888e5254adfdb411b46c88a5b518e52"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/mobile-infernal.png",
+      "bytes": 1071335,
+      "sha": "f6c3921b1cf7442f469bcb9e06f5bd3840decbea"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/mobile-laberinto.png",
+      "bytes": 906674,
+      "sha": "5670ad082a8e653d8286d2dee7b71f585539331d"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix/mobile-minas.png",
+      "bytes": 1450620,
+      "sha": "ddcb442679e12aa0036745c280320240daea2d35"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix-landscape.log",
+      "bytes": 2139,
+      "sha": "f298363c2ad3e3c6fa172b3cf583e5cbb0f197e4"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/matrix-mobile.log",
+      "bytes": 2139,
+      "sha": "a29a933c8dd9f5f8cf052c7f1c83c178311fb8b2"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/mobile/capture.json",
+      "bytes": 30315,
+      "sha": "0503fcc10e1ead1e2233cbbf57642ad05dd987d5"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/mobile/hielo-alt1-330-native.png",
+      "bytes": 666163,
+      "sha": "068719b8914c94aa75053094b9c13975bcabda75"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/mobile/minas-set-330-native.png",
+      "bytes": 599642,
+      "sha": "459c9ace518bc4ade2a2b376f98c57d01d792917"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/phase-tests.json",
+      "bytes": 2758,
+      "sha": "b6864e0f5614cfc253b2abe8c68c3dd4aa28ba91"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/phase.log",
+      "bytes": 1786,
+      "sha": "0f13927f3a13f73fafe7e9ec403d0e45ec49ec42"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/recipe.json",
+      "bytes": 3557,
+      "sha": "bf27324cc3f019cb71312ae62efb834710c8b766"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/runtime-verification.json",
+      "bytes": 98,
+      "sha": "3fc54780906ff0224ceb2238a5f04a8f6a97f298"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/source.js",
+      "bytes": 4697,
+      "sha": "57575ecf8d8def331a1ad86a18e26b0b0a5cff46"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/story-before.js",
+      "bytes": 19335,
+      "sha": "f4097855c1292e30be730a7dcdcb7ba2eddd699f"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/story-fixed.log",
+      "bytes": 9020,
+      "sha": "7303869d0c2700cd918505e647534590c0eb3f97"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/story-negative-control.log",
+      "bytes": 3058,
+      "sha": "ce240680e775d2cb5062bef82d17f93be1178168"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/story-original.log",
+      "bytes": 9020,
+      "sha": "6d792871f7894840949c7148431e4c29a2bc2a7b"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/story-probe-follow.log",
+      "bytes": 58776,
+      "sha": "e4e125e905bdf4d911f9fdd76f08e7a0ace2f54f"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/story-probe.log",
+      "bytes": 28002,
+      "sha": "900dc81e05d71c9684440b7acf16e93d7b20b4b5"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/verification.json",
+      "bytes": 5608,
+      "sha": "bd8234738ccdceecce970eb6f48fd1e2ae20b999"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "bytes": 34649,
+      "sha": "1053bf0b9298f8672f1a9efeae0b2023a93c5d3d"
+    },
+    {
+      "path": "tools/items/probe-story-no-phase-voice.js",
+      "bytes": 9314,
+      "sha": "3bacb04bc63670e45a314fe5c3d99ed15358d7c6"
+    },
+    {
+      "path": "tools/items/probe-story-phase.js",
+      "bytes": 9299,
+      "sha": "a4e053492dac431e1084c1bb9b06d192a95deebc"
+    },
+    {
+      "path": "tools/items/t_story.js",
+      "bytes": 19535,
+      "sha": "1bfb97977132d72221c16c5dd34097052bb7c4e5"
+    },
+    {
+      "path": "tools/vfx/capture-brakk-integral.js",
+      "bytes": 8590,
+      "sha": "ecaf7d57ddc9092bb345defa1b6aa929e9f5e778"
+    },
+    {
+      "path": "tools/vfx/verify-brakk-deploy-runtime.js",
+      "bytes": 2898,
+      "sha": "dc7407ae2262777ecc1fef8edbeb3c0277e209cd"
+    },
+    {
+      "path": "art-source/entregas/brakk-kit-20261022/validacion-03/manifest.json",
+      "bytes": 17042,
+      "sha": "cf0c0b6f5849e13ff6fc88570dda6f5f20d21ea0"
+    }
+  ],
+  "verificationMethod": "Every selected path compared with recursive remote tree Git blob SHA",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "publicationVerified": false,
+  "mergePerformed": false,
+  "isolatedTestFix": {
+    "pr": 200,
+    "sha": "ae3d384a2117323d7154b30760ad621106dec0c6",
+    "tree": "ce7848dcc719cdb11b02cbfac307a69857414376",
+    "branch": "fix/story-phase-observation-20261023",
+    "changedFiles": [
+      "tools/items/t_story.js"
+    ],
+    "checks": "pending exact head; no merge"
+  },
+  "next": "Check PR200 exact workflows and merge only green with expected_head_sha. Continue Brakk compound dense-contact gates and B117/B119 equipped scenes; preserve all other workshop FIX queues. No first-pass duplication."
+}

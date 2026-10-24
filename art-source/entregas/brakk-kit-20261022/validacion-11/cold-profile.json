@@ -1,0 +1,1665 @@
+{
+  "scope": "Diagnostic inclusive component timers (nested values are not additive); Headless Chromium local full update+render, real cooldowns, 32 fixture enemies, 4 heroes. No physical mobile/thermal/GC guarantee; heap snapshots do not prove leak freedom.",
+  "results": [
+    {
+      "mobile": true,
+      "arena": "bosque",
+      "frames": 120,
+      "simulatedMs": 1920,
+      "profileFrames": [
+        {
+          "frame": 0,
+          "ms": 165.29999999701977,
+          "updateMs": 37.599999997764826,
+          "renderMs": 127.69999999925494,
+          "metrics": {
+            "drawImage": {
+              "calls": 317,
+              "ms": 45.099999971687794,
+              "max": 33.69999999925494
+            },
+            "drawArena": {
+              "calls": 1,
+              "ms": 38.600000001490116,
+              "max": 38.600000001490116
+            },
+            "aidDrawInlays": {
+              "calls": 1,
+              "ms": 1,
+              "max": 1
+            },
+            "drawArenaLight": {
+              "calls": 1,
+              "ms": 1,
+              "max": 1
+            },
+            "drawSetAuras": {
+              "calls": 1,
+              "ms": 0.09999999776482582,
+              "max": 0.09999999776482582
+            },
+            "drawPortadorGround": {
+              "calls": 1,
+              "ms": 2.399999998509884,
+              "max": 2.399999998509884
+            },
+            "getImageData": {
+              "calls": 19,
+              "ms": 33.100000001490116,
+              "max": 6.400000002235174
+            },
+            "_mipLevel": {
+              "calls": 56,
+              "ms": 38.899999994784594,
+              "max": 12.199999999254942,
+              "misses": 10
+            },
+            "artMipDraw": {
+              "calls": 56,
+              "ms": 40.49999999627471,
+              "max": 12.300000000745058
+            },
+            "drawEnemy": {
+              "calls": 32,
+              "ms": 10.300000004470348,
+              "max": 6.800000000745058
+            },
+            "champPackFeet": {
+              "calls": 1,
+              "ms": 10.699999999254942,
+              "max": 10.699999999254942
+            },
+            "champPackDrawFrame": {
+              "calls": 2,
+              "ms": 14.199999999254942,
+              "max": 12.199999999254942
+            },
+            "drawHero": {
+              "calls": 4,
+              "ms": 37.900000002235174,
+              "max": 13.699999999254942
+            },
+            "brakkFxStrip": {
+              "calls": 3,
+              "ms": 2.400000002235174,
+              "max": 1.699999999254942
+            },
+            "sfaBake": {
+              "calls": 6,
+              "ms": 3.699999999254942,
+              "max": 2.300000000745058
+            },
+            "drawPortadorTop": {
+              "calls": 1,
+              "ms": 6.300000000745058,
+              "max": 6.300000000745058
+            },
+            "drawChampionSignatures": {
+              "calls": 1,
+              "ms": 1.300000000745058,
+              "max": 1.300000000745058
+            }
+          },
+          "callTrace": [
+            {
+              "name": "drawImage",
+              "ms": 33.69999999925494,
+              "args": [
+                1340,
+                487.5,
+                80.83333333333331
+              ]
+            },
+            {
+              "name": "drawArena",
+              "ms": 38.600000001490116,
+              "args": []
+            },
+            {
+              "name": "aidDrawInlays",
+              "ms": 1,
+              "args": []
+            },
+            {
+              "name": "drawArenaLight",
+              "ms": 1,
+              "args": []
+            },
+            {
+              "name": "drawPortadorGround",
+              "ms": 2.399999998509884,
+              "args": []
+            },
+            {
+              "name": "getImageData",
+              "ms": 1.5,
+              "args": [
+                0,
+                0,
+                117
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 2.199999999254942,
+              "args": [
+                "assets/sprites/battlefield/pine.webp",
+                1
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 2.400000002235174,
+              "args": [
+                "assets/sprites/battlefield/pine.webp",
+                0,
+                0
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 1,
+              "args": [
+                0,
+                0,
+                115
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 1.3999999985098839,
+              "args": [
+                "assets/sprites/battlefield/mushrooms.webp",
+                3
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 1.3999999985098839,
+              "args": [
+                "assets/sprites/battlefield/mushrooms.webp",
+                0,
+                0
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 1.4000000022351742,
+              "args": [
+                0,
+                0,
+                144
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 2.199999999254942,
+              "args": [
+                "assets/sprites/battlefield/fern.webp",
+                3
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 2.199999999254942,
+              "args": [
+                "assets/sprites/battlefield/fern.webp",
+                0,
+                0
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 4.399999998509884,
+              "args": [
+                0,
+                0,
+                238
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 4.800000000745058,
+              "args": [
+                "enemies/infernal/esqueleto/atlas.webp",
+                1
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 4.800000000745058,
+              "args": [
+                "enemies/infernal/esqueleto/atlas.webp",
+                119,
+                0
+              ]
+            },
+            {
+              "name": "drawEnemy",
+              "ms": 6.800000000745058,
+              "args": [
+                "esqueleto"
+              ]
+            },
+            {
+              "name": "drawEnemy",
+              "ms": 1.1000000014901161,
+              "args": [
+                "esqueleto"
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 6.400000002235174,
+              "args": [
+                0,
+                0,
+                448
+              ]
+            },
+            {
+              "name": "champPackFeet",
+              "ms": 10.699999999254942,
+              "args": [
+                "sprites/champions/brakk/atlas.png"
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 1.5,
+              "args": [
+                "sprites/champions/brakk/atlas.png",
+                1
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 1.5,
+              "args": [
+                "sprites/champions/brakk/atlas.png",
+                0,
+                672
+              ]
+            },
+            {
+              "name": "champPackDrawFrame",
+              "ms": 12.199999999254942,
+              "args": [
+                "sprites/champions/brakk/atlas.png",
+                24,
+                -20
+              ]
+            },
+            {
+              "name": "drawHero",
+              "ms": 13.699999999254942,
+              "args": [
+                "brakk"
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 6,
+              "args": [
+                0,
+                0,
+                512
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 2.2000000029802322,
+              "args": [
+                0,
+                0,
+                256
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 12.199999999254942,
+              "args": [
+                "sprites/champions/tanque/atlas.webp",
+                2
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 12.300000000745058,
+              "args": [
+                "sprites/champions/tanque/atlas.webp",
+                32,
+                43
+              ]
+            },
+            {
+              "name": "drawHero",
+              "ms": 12.700000002980232,
+              "args": [
+                "tanque"
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 2,
+              "args": [
+                "champions/soporte/v3/atlas.png",
+                1
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 2,
+              "args": [
+                "champions/soporte/v3/atlas.png",
+                0,
+                0
+              ]
+            },
+            {
+              "name": "champPackDrawFrame",
+              "ms": 2,
+              "args": [
+                "champions/soporte/v3/atlas.png",
+                0,
+                20
+              ]
+            },
+            {
+              "name": "drawHero",
+              "ms": 2.2999999970197678,
+              "args": [
+                "soporte"
+              ]
+            },
+            {
+              "name": "drawImage",
+              "ms": 2.300000000745058,
+              "args": [
+                "sprites/champions/mago/atlas.webp",
+                0,
+                0
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 2.899999998509884,
+              "args": [
+                0,
+                0,
+                627
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 1.699999999254942,
+              "args": [
+                0,
+                0,
+                314
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 8.899999998509884,
+              "args": [
+                "sprites/champions/mago/atlas.webp",
+                3
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 8.899999998509884,
+              "args": [
+                "sprites/champions/mago/atlas.webp",
+                54,
+                32
+              ]
+            },
+            {
+              "name": "drawHero",
+              "ms": 9.200000002980232,
+              "args": [
+                "mago"
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 3,
+              "args": [
+                0,
+                0,
+                175
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 3.5,
+              "args": [
+                "assets/sprites/battlefield/oak.webp",
+                2
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 3.5,
+              "args": [
+                "assets/sprites/battlefield/oak.webp",
+                0,
+                0
+              ]
+            },
+            {
+              "name": "brakkFxStrip",
+              "ms": 1.699999999254942,
+              "args": [
+                "deploy",
+                null,
+                "burst"
+              ]
+            },
+            {
+              "name": "sfaBake",
+              "ms": 2.300000000745058,
+              "args": [
+                "burst",
+                "brakk_deploy~h",
+                64
+              ]
+            },
+            {
+              "name": "drawPortadorTop",
+              "ms": 6.300000000745058,
+              "args": []
+            },
+            {
+              "name": "drawChampionSignatures",
+              "ms": 1.300000000745058,
+              "args": []
+            }
+          ]
+        },
+        {
+          "frame": 1,
+          "ms": 13.100000001490116,
+          "updateMs": 4.800000000745058,
+          "renderMs": 8.300000000745058,
+          "metrics": {
+            "drawImage": {
+              "calls": 298,
+              "ms": 1.2999999970197678,
+              "max": 0.6000000014901161
+            },
+            "drawArena": {
+              "calls": 1,
+              "ms": 0.6999999992549419,
+              "max": 0.6999999992549419
+            },
+            "aidDrawInlays": {
+              "calls": 1,
+              "ms": 0.10000000149011612,
+              "max": 0.10000000149011612
+            },
+            "drawArenaLight": {
+              "calls": 1,
+              "ms": 1,
+              "max": 1
+            },
+            "drawSetAuras": {
+              "calls": 1,
+              "ms": 0,
+              "max": 0
+            },
+            "drawPortadorGround": {
+              "calls": 1,
+              "ms": 0.5,
+              "max": 0.5
+            },
+            "_mipLevel": {
+              "calls": 56,
+              "ms": 0,
+              "max": 0,
+              "misses": 0
+            },
+            "artMipDraw": {
+              "calls": 56,
+              "ms": 0.09999999776482582,
+              "max": 0.09999999776482582
+            },
+            "drawEnemy": {
+              "calls": 32,
+              "ms": 1,
+              "max": 0.10000000149011612
+            },
+            "champPackDrawFrame": {
+              "calls": 2,
+              "ms": 0,
+              "max": 0
+            },
+            "drawHero": {
+              "calls": 4,
+              "ms": 0.8000000007450581,
+              "max": 0.30000000074505806
+            },
+            "sfaBake": {
+              "calls": 6,
+              "ms": 0,
+              "max": 0
+            },
+            "drawPortadorTop": {
+              "calls": 1,
+              "ms": 0.4000000022351742,
+              "max": 0.4000000022351742
+            },
+            "drawChampionSignatures": {
+              "calls": 1,
+              "ms": 0.09999999776482582,
+              "max": 0.09999999776482582
+            }
+          },
+          "callTrace": [
+            {
+              "name": "drawArenaLight",
+              "ms": 1,
+              "args": []
+            }
+          ]
+        },
+        {
+          "frame": 2,
+          "ms": 7.800000000745058,
+          "updateMs": 2.899999998509884,
+          "renderMs": 4.900000002235174,
+          "metrics": {
+            "drawImage": {
+              "calls": 298,
+              "ms": 0.7000000029802322,
+              "max": 0.4000000022351742
+            },
+            "drawArena": {
+              "calls": 1,
+              "ms": 0.29999999701976776,
+              "max": 0.29999999701976776
+            },
+            "aidDrawInlays": {
+              "calls": 1,
+              "ms": 0.20000000298023224,
+              "max": 0.20000000298023224
+            },
+            "drawArenaLight": {
+              "calls": 1,
+              "ms": 0.5999999977648258,
+              "max": 0.5999999977648258
+            },
+            "drawSetAuras": {
+              "calls": 1,
+              "ms": 0,
+              "max": 0
+            },
+            "drawPortadorGround": {
+              "calls": 1,
+              "ms": 0.29999999701976776,
+              "max": 0.29999999701976776
+            },
+            "_mipLevel": {
+              "calls": 56,
+              "ms": 0,
+              "max": 0,
+              "misses": 0
+            },
+            "artMipDraw": {
+              "calls": 56,
+              "ms": 0,
+              "max": 0
+            },
+            "drawEnemy": {
+              "calls": 32,
+              "ms": 1,
+              "max": 0.10000000149011612
+            },
+            "champPackDrawFrame": {
+              "calls": 2,
+              "ms": 0,
+              "max": 0
+            },
+            "drawHero": {
+              "calls": 4,
+              "ms": 0.5,
+              "max": 0.19999999925494194
+            },
+            "sfaBake": {
+              "calls": 6,
+              "ms": 0,
+              "max": 0
+            },
+            "drawPortadorTop": {
+              "calls": 1,
+              "ms": 0.19999999925494194,
+              "max": 0.19999999925494194
+            },
+            "drawChampionSignatures": {
+              "calls": 1,
+              "ms": 0.10000000149011612,
+              "max": 0.10000000149011612
+            }
+          },
+          "callTrace": []
+        }
+      ],
+      "totals": {
+        "drawImage": {
+          "calls": 34633,
+          "ms": 133.5999999307096,
+          "max": 33.69999999925494
+        },
+        "drawArena": {
+          "calls": 120,
+          "ms": 68.39999997988343,
+          "max": 38.600000001490116
+        },
+        "aidDrawInlays": {
+          "calls": 120,
+          "ms": 12.69999998435378,
+          "max": 3.199999999254942
+        },
+        "drawArenaLight": {
+          "calls": 120,
+          "ms": 51.400000017136335,
+          "max": 1
+        },
+        "drawSetAuras": {
+          "calls": 120,
+          "ms": 0.3999999985098839,
+          "max": 0.10000000149011612
+        },
+        "drawPortadorGround": {
+          "calls": 120,
+          "ms": 11.899999987334013,
+          "max": 2.399999998509884
+        },
+        "getImageData": {
+          "calls": 19,
+          "ms": 33.100000001490116,
+          "max": 6.400000002235174
+        },
+        "_mipLevel": {
+          "calls": 6720,
+          "ms": 39.599999997764826,
+          "max": 12.199999999254942
+        },
+        "artMipDraw": {
+          "calls": 6720,
+          "ms": 58.49999997392297,
+          "max": 12.300000000745058
+        },
+        "drawEnemy": {
+          "calls": 3840,
+          "ms": 56.2999999858439,
+          "max": 6.800000000745058
+        },
+        "champPackFeet": {
+          "calls": 1,
+          "ms": 10.699999999254942,
+          "max": 10.699999999254942
+        },
+        "champPackDrawFrame": {
+          "calls": 240,
+          "ms": 16.299999997019768,
+          "max": 12.199999999254942
+        },
+        "drawHero": {
+          "calls": 480,
+          "ms": 58.80000000819564,
+          "max": 13.699999999254942
+        },
+        "brakkFxStrip": {
+          "calls": 4,
+          "ms": 2.5,
+          "max": 1.699999999254942
+        },
+        "sfaBake": {
+          "calls": 597,
+          "ms": 6.199999999254942,
+          "max": 2.300000000745058
+        },
+        "drawPortadorTop": {
+          "calls": 120,
+          "ms": 18.599999975413084,
+          "max": 6.300000000745058
+        },
+        "drawChampionSignatures": {
+          "calls": 120,
+          "ms": 2.7999999970197678,
+          "max": 1.300000000745058
+        },
+        "sfaBakeBurst": {
+          "calls": 1,
+          "ms": 1.8999999985098839,
+          "max": 1.8999999985098839
+        }
+      },
+      "assetReady": true,
+      "heroPacks": [
+        {
+          "key": "brakk",
+          "ready": true
+        },
+        {
+          "key": "tanque"
+        },
+        {
+          "key": "soporte",
+          "ready": true
+        },
+        {
+          "key": "mago"
+        }
+      ],
+      "casts": 1,
+      "coveredFrames": 120,
+      "spikes": [
+        {
+          "frame": 0,
+          "ms": 165.29999999701977,
+          "recipients": 4,
+          "pool": 6,
+          "cacheKeys": 5
+        }
+      ],
+      "all": {
+        "samples": 120,
+        "p50": 2.699999999254942,
+        "p95": 5.899999998509884,
+        "max": 165.29999999701977
+      },
+      "fourRecipients": {
+        "samples": 120,
+        "p50": 2.699999999254942,
+        "p95": 5.899999998509884,
+        "max": 165.29999999701977
+      },
+      "otherFrames": {
+        "samples": 0
+      },
+      "peakPool": 6,
+      "retained": 4,
+      "poolAfterReset": 0,
+      "heapBefore": 31200000,
+      "heapAfter": 31200000,
+      "buffs": [
+        1440.0000000000005,
+        1440.0000000000005,
+        1440.0000000000005,
+        1440.0000000000005
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    },
+    {
+      "mobile": false,
+      "arena": "bosque",
+      "frames": 120,
+      "simulatedMs": 1920,
+      "profileFrames": [
+        {
+          "frame": 0,
+          "ms": 190.59999999776483,
+          "updateMs": 39.599999997764826,
+          "renderMs": 151,
+          "metrics": {
+            "drawImage": {
+              "calls": 350,
+              "ms": 44.8999999910593,
+              "max": 35.69999999925494
+            },
+            "drawArena": {
+              "calls": 1,
+              "ms": 41.400000002235174,
+              "max": 41.400000002235174
+            },
+            "aidDrawInlays": {
+              "calls": 1,
+              "ms": 1.699999999254942,
+              "max": 1.699999999254942
+            },
+            "drawArenaLight": {
+              "calls": 1,
+              "ms": 1.3999999985098839,
+              "max": 1.3999999985098839
+            },
+            "drawSetAuras": {
+              "calls": 1,
+              "ms": 0.19999999925494194,
+              "max": 0.19999999925494194
+            },
+            "drawPortadorGround": {
+              "calls": 1,
+              "ms": 2.699999999254942,
+              "max": 2.699999999254942
+            },
+            "getImageData": {
+              "calls": 21,
+              "ms": 45.70000000298023,
+              "max": 9.800000000745058
+            },
+            "_mipLevel": {
+              "calls": 60,
+              "ms": 51.19999999925494,
+              "max": 15.800000000745058,
+              "misses": 11
+            },
+            "artMipDraw": {
+              "calls": 60,
+              "ms": 52,
+              "max": 15.800000000745058
+            },
+            "drawEnemy": {
+              "calls": 32,
+              "ms": 10.300000000745058,
+              "max": 7
+            },
+            "champPackFeet": {
+              "calls": 1,
+              "ms": 17.199999999254942,
+              "max": 17.199999999254942
+            },
+            "champPackDrawFrame": {
+              "calls": 2,
+              "ms": 21.400000002235174,
+              "max": 19.5
+            },
+            "drawHero": {
+              "calls": 4,
+              "ms": 50.600000001490116,
+              "max": 21.400000002235174
+            },
+            "brakkFxStrip": {
+              "calls": 3,
+              "ms": 2.100000001490116,
+              "max": 1.3999999985098839
+            },
+            "sfaBake": {
+              "calls": 6,
+              "ms": 3.400000002235174,
+              "max": 1.9000000022351742
+            },
+            "drawPortadorTop": {
+              "calls": 1,
+              "ms": 4.899999998509884,
+              "max": 4.899999998509884
+            },
+            "drawChampionSignatures": {
+              "calls": 1,
+              "ms": 1.300000000745058,
+              "max": 1.300000000745058
+            }
+          },
+          "callTrace": [
+            {
+              "name": "drawImage",
+              "ms": 35.69999999925494,
+              "args": [
+                1340,
+                298.3333333333333,
+                264.16666666666663
+              ]
+            },
+            {
+              "name": "drawArena",
+              "ms": 41.400000002235174,
+              "args": []
+            },
+            {
+              "name": "aidDrawInlays",
+              "ms": 1.699999999254942,
+              "args": []
+            },
+            {
+              "name": "drawArenaLight",
+              "ms": 1.3999999985098839,
+              "args": []
+            },
+            {
+              "name": "drawPortadorGround",
+              "ms": 2.699999999254942,
+              "args": []
+            },
+            {
+              "name": "getImageData",
+              "ms": 3,
+              "args": [
+                0,
+                0,
+                175
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 4.699999999254942,
+              "args": [
+                "assets/sprites/battlefield/oak.webp",
+                2
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 5.100000001490116,
+              "args": [
+                "assets/sprites/battlefield/oak.webp",
+                0,
+                0
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 1.800000000745058,
+              "args": [
+                0,
+                0,
+                149
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 2.800000000745058,
+              "args": [
+                "assets/sprites/battlefield/dead-tree.webp",
+                1
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 2.800000000745058,
+              "args": [
+                "assets/sprites/battlefield/dead-tree.webp",
+                0,
+                0
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 1.699999999254942,
+              "args": [
+                0,
+                0,
+                144
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 2.899999998509884,
+              "args": [
+                "assets/sprites/battlefield/fern.webp",
+                4
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 2.899999998509884,
+              "args": [
+                "assets/sprites/battlefield/fern.webp",
+                0,
+                0
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 1.300000000745058,
+              "args": [
+                0,
+                0,
+                115
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 2.099999997764826,
+              "args": [
+                "assets/sprites/battlefield/mushrooms.webp",
+                3
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 2.099999997764826,
+              "args": [
+                "assets/sprites/battlefield/mushrooms.webp",
+                0,
+                0
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 2.5,
+              "args": [
+                0,
+                0,
+                149
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 2.800000000745058,
+              "args": [
+                "assets/sprites/battlefield/arch.webp",
+                1
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 2.800000000745058,
+              "args": [
+                "assets/sprites/battlefield/arch.webp",
+                0,
+                0
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 4.399999998509884,
+              "args": [
+                0,
+                0,
+                238
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 4.600000001490116,
+              "args": [
+                "enemies/infernal/esqueleto/atlas.webp",
+                1
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 4.699999999254942,
+              "args": [
+                "enemies/infernal/esqueleto/atlas.webp",
+                119,
+                0
+              ]
+            },
+            {
+              "name": "drawEnemy",
+              "ms": 7,
+              "args": [
+                "esqueleto"
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 7.200000002980232,
+              "args": [
+                0,
+                0,
+                448
+              ]
+            },
+            {
+              "name": "champPackFeet",
+              "ms": 17.199999999254942,
+              "args": [
+                "sprites/champions/brakk/atlas.png"
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 1.3999999985098839,
+              "args": [
+                0,
+                0,
+                224
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 2.100000001490116,
+              "args": [
+                "sprites/champions/brakk/atlas.png",
+                1
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 2.2000000029802322,
+              "args": [
+                "sprites/champions/brakk/atlas.png",
+                0,
+                672
+              ]
+            },
+            {
+              "name": "champPackDrawFrame",
+              "ms": 19.5,
+              "args": [
+                "sprites/champions/brakk/atlas.png",
+                24,
+                -20
+              ]
+            },
+            {
+              "name": "drawHero",
+              "ms": 21.400000002235174,
+              "args": [
+                "brakk"
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 9.800000000745058,
+              "args": [
+                0,
+                0,
+                512
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 1.800000000745058,
+              "args": [
+                0,
+                0,
+                256
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 15.800000000745058,
+              "args": [
+                "sprites/champions/tanque/atlas.webp",
+                2
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 15.800000000745058,
+              "args": [
+                "sprites/champions/tanque/atlas.webp",
+                32,
+                43
+              ]
+            },
+            {
+              "name": "drawHero",
+              "ms": 16.400000002235174,
+              "args": [
+                "tanque"
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 1,
+              "args": [
+                0,
+                0,
+                224
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 1.9000000022351742,
+              "args": [
+                "champions/soporte/v3/atlas.png",
+                1
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 1.9000000022351742,
+              "args": [
+                "champions/soporte/v3/atlas.png",
+                0,
+                0
+              ]
+            },
+            {
+              "name": "champPackDrawFrame",
+              "ms": 1.9000000022351742,
+              "args": [
+                "champions/soporte/v3/atlas.png",
+                0,
+                20
+              ]
+            },
+            {
+              "name": "drawHero",
+              "ms": 2.399999998509884,
+              "args": [
+                "soporte"
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 5.199999999254942,
+              "args": [
+                0,
+                0,
+                627
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 1.800000000745058,
+              "args": [
+                0,
+                0,
+                314
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 9.899999998509884,
+              "args": [
+                "sprites/champions/mago/atlas.webp",
+                3
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 9.899999998509884,
+              "args": [
+                "sprites/champions/mago/atlas.webp",
+                54,
+                32
+              ]
+            },
+            {
+              "name": "drawHero",
+              "ms": 10.399999998509884,
+              "args": [
+                "mago"
+              ]
+            },
+            {
+              "name": "getImageData",
+              "ms": 1.5,
+              "args": [
+                0,
+                0,
+                117
+              ]
+            },
+            {
+              "name": "_mipLevel",
+              "ms": 1.5999999977648258,
+              "args": [
+                "assets/sprites/battlefield/pine.webp",
+                1
+              ]
+            },
+            {
+              "name": "artMipDraw",
+              "ms": 1.699999999254942,
+              "args": [
+                "assets/sprites/battlefield/pine.webp",
+                0,
+                0
+              ]
+            },
+            {
+              "name": "brakkFxStrip",
+              "ms": 1.3999999985098839,
+              "args": [
+                "deploy",
+                null,
+                "burst"
+              ]
+            },
+            {
+              "name": "sfaBake",
+              "ms": 1.9000000022351742,
+              "args": [
+                "burst",
+                "brakk_deploy~h",
+                64
+              ]
+            },
+            {
+              "name": "drawPortadorTop",
+              "ms": 4.899999998509884,
+              "args": []
+            },
+            {
+              "name": "drawChampionSignatures",
+              "ms": 1.300000000745058,
+              "args": []
+            }
+          ]
+        },
+        {
+          "frame": 1,
+          "ms": 16,
+          "updateMs": 5.299999997019768,
+          "renderMs": 10.700000002980232,
+          "metrics": {
+            "drawImage": {
+              "calls": 329,
+              "ms": 1.7000000029802322,
+              "max": 1
+            },
+            "drawArena": {
+              "calls": 1,
+              "ms": 0.8999999985098839,
+              "max": 0.8999999985098839
+            },
+            "aidDrawInlays": {
+              "calls": 1,
+              "ms": 0.30000000074505806,
+              "max": 0.30000000074505806
+            },
+            "drawArenaLight": {
+              "calls": 1,
+              "ms": 1.300000000745058,
+              "max": 1.300000000745058
+            },
+            "drawSetAuras": {
+              "calls": 1,
+              "ms": 0,
+              "max": 0
+            },
+            "drawPortadorGround": {
+              "calls": 1,
+              "ms": 0.5,
+              "max": 0.5
+            },
+            "_mipLevel": {
+              "calls": 60,
+              "ms": 0,
+              "max": 0,
+              "misses": 0
+            },
+            "artMipDraw": {
+              "calls": 60,
+              "ms": 0.20000000298023224,
+              "max": 0.10000000149011612
+            },
+            "drawEnemy": {
+              "calls": 32,
+              "ms": 1.1000000052154064,
+              "max": 0.30000000074505806
+            },
+            "champPackDrawFrame": {
+              "calls": 2,
+              "ms": 0,
+              "max": 0
+            },
+            "drawHero": {
+              "calls": 4,
+              "ms": 1,
+              "max": 0.3999999985098839
+            },
+            "sfaBake": {
+              "calls": 6,
+              "ms": 0,
+              "max": 0
+            },
+            "drawPortadorTop": {
+              "calls": 1,
+              "ms": 0.4000000022351742,
+              "max": 0.4000000022351742
+            },
+            "drawChampionSignatures": {
+              "calls": 1,
+              "ms": 0.09999999776482582,
+              "max": 0.09999999776482582
+            }
+          },
+          "callTrace": [
+            {
+              "name": "drawImage",
+              "ms": 1,
+              "args": [
+                374,
+                -743.3333333333334,
+                -411.6666666666667
+              ]
+            },
+            {
+              "name": "drawArenaLight",
+              "ms": 1.300000000745058,
+              "args": []
+            }
+          ]
+        },
+        {
+          "frame": 2,
+          "ms": 8.699999999254942,
+          "updateMs": 2.600000001490116,
+          "renderMs": 6.099999997764826,
+          "metrics": {
+            "drawImage": {
+              "calls": 329,
+              "ms": 1.0000000037252903,
+              "max": 0.4000000022351742
+            },
+            "drawArena": {
+              "calls": 1,
+              "ms": 0.4000000022351742,
+              "max": 0.4000000022351742
+            },
+            "aidDrawInlays": {
+              "calls": 1,
+              "ms": 0,
+              "max": 0
+            },
+            "drawArenaLight": {
+              "calls": 1,
+              "ms": 0.8000000007450581,
+              "max": 0.8000000007450581
+            },
+            "drawSetAuras": {
+              "calls": 1,
+              "ms": 0,
+              "max": 0
+            },
+            "drawPortadorGround": {
+              "calls": 1,
+              "ms": 0.3999999985098839,
+              "max": 0.3999999985098839
+            },
+            "_mipLevel": {
+              "calls": 60,
+              "ms": 0,
+              "max": 0,
+              "misses": 0
+            },
+            "artMipDraw": {
+              "calls": 60,
+              "ms": 0.09999999776482582,
+              "max": 0.09999999776482582
+            },
+            "drawEnemy": {
+              "calls": 32,
+              "ms": 1.0999999977648258,
+              "max": 0.10000000149011612
+            },
+            "champPackDrawFrame": {
+              "calls": 2,
+              "ms": 0,
+              "max": 0
+            },
+            "drawHero": {
+              "calls": 4,
+              "ms": 0.7000000029802322,
+              "max": 0.30000000074505806
+            },
+            "sfaBake": {
+              "calls": 6,
+              "ms": 0,
+              "max": 0
+            },
+            "drawPortadorTop": {
+              "calls": 1,
+              "ms": 0.19999999925494194,
+              "max": 0.19999999925494194
+            },
+            "drawChampionSignatures": {
+              "calls": 1,
+              "ms": 0.19999999925494194,
+              "max": 0.19999999925494194
+            }
+          },
+          "callTrace": []
+        }
+      ],
+      "totals": {
+        "drawImage": {
+          "calls": 38355,
+          "ms": 146.9000000320375,
+          "max": 35.69999999925494
+        },
+        "drawArena": {
+          "calls": 120,
+          "ms": 67.49999999254942,
+          "max": 41.400000002235174
+        },
+        "aidDrawInlays": {
+          "calls": 120,
+          "ms": 11.999999988824129,
+          "max": 1.699999999254942
+        },
+        "drawArenaLight": {
+          "calls": 120,
+          "ms": 57.60000002756715,
+          "max": 1.3999999985098839
+        },
+        "drawSetAuras": {
+          "calls": 120,
+          "ms": 0.8000000007450581,
+          "max": 0.19999999925494194
+        },
+        "drawPortadorGround": {
+          "calls": 120,
+          "ms": 12.19999998435378,
+          "max": 2.699999999254942
+        },
+        "getImageData": {
+          "calls": 21,
+          "ms": 45.70000000298023,
+          "max": 9.800000000745058
+        },
+        "_mipLevel": {
+          "calls": 7200,
+          "ms": 52.099999997764826,
+          "max": 15.800000000745058
+        },
+        "artMipDraw": {
+          "calls": 7200,
+          "ms": 75.5,
+          "max": 15.800000000745058
+        },
+        "drawEnemy": {
+          "calls": 3840,
+          "ms": 64.19999999552965,
+          "max": 7
+        },
+        "champPackFeet": {
+          "calls": 1,
+          "ms": 17.199999999254942,
+          "max": 17.199999999254942
+        },
+        "champPackDrawFrame": {
+          "calls": 240,
+          "ms": 22.799999997019768,
+          "max": 19.5
+        },
+        "drawHero": {
+          "calls": 480,
+          "ms": 70.2999999858439,
+          "max": 21.400000002235174
+        },
+        "brakkFxStrip": {
+          "calls": 4,
+          "ms": 2.100000001490116,
+          "max": 1.3999999985098839
+        },
+        "sfaBake": {
+          "calls": 597,
+          "ms": 6.199999999254942,
+          "max": 2.100000001490116
+        },
+        "drawPortadorTop": {
+          "calls": 120,
+          "ms": 17.299999967217445,
+          "max": 4.899999998509884
+        },
+        "drawChampionSignatures": {
+          "calls": 120,
+          "ms": 2.800000000745058,
+          "max": 1.300000000745058
+        },
+        "sfaBakeBurst": {
+          "calls": 1,
+          "ms": 1.800000000745058,
+          "max": 1.800000000745058
+        }
+      },
+      "assetReady": true,
+      "heroPacks": [
+        {
+          "key": "brakk",
+          "ready": true
+        },
+        {
+          "key": "tanque"
+        },
+        {
+          "key": "soporte",
+          "ready": true
+        },
+        {
+          "key": "mago"
+        }
+      ],
+      "casts": 1,
+      "coveredFrames": 120,
+      "spikes": [
+        {
+          "frame": 0,
+          "ms": 190.59999999776483,
+          "recipients": 4,
+          "pool": 6,
+          "cacheKeys": 5
+        }
+      ],
+      "all": {
+        "samples": 120,
+        "p50": 3,
+        "p95": 6.300000000745058,
+        "max": 190.59999999776483
+      },
+      "fourRecipients": {
+        "samples": 120,
+        "p50": 3,
+        "p95": 6.300000000745058,
+        "max": 190.59999999776483
+      },
+      "otherFrames": {
+        "samples": 0
+      },
+      "peakPool": 6,
+      "retained": 4,
+      "poolAfterReset": 0,
+      "heapBefore": 33100000,
+      "heapAfter": 33100000,
+      "buffs": [
+        1440.0000000000005,
+        1440.0000000000005,
+        1440.0000000000005,
+        1440.0000000000005
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    }
+  ],
+  "errors": []
+}

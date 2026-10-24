@@ -1,0 +1,118 @@
+{
+  "checks": [
+    {
+      "name": "one real turret",
+      "ok": true
+    },
+    {
+      "name": "mount emits native burst and nova",
+      "ok": true
+    },
+    {
+      "name": "turret cap preserved",
+      "ok": true
+    },
+    {
+      "name": "purge damages target",
+      "ok": true
+    },
+    {
+      "name": "purge actual cone",
+      "ok": true
+    },
+    {
+      "name": "base purge no false steam",
+      "ok": true
+    },
+    {
+      "name": "dismantle without turret buffs",
+      "ok": true
+    },
+    {
+      "name": "aura real owner",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "aura real duration",
+      "ok": true,
+      "detail": {
+        "aura": 2200,
+        "buff": 2200
+      }
+    },
+    {
+      "name": "no false steam without set",
+      "ok": true
+    },
+    {
+      "name": "native dismantle burst",
+      "ok": true
+    },
+    {
+      "name": "dismantle expires actual turret",
+      "ok": true
+    },
+    {
+      "name": "purge mastery active",
+      "ok": true
+    },
+    {
+      "name": "mastery real steam created",
+      "ok": true
+    },
+    {
+      "name": "mastery steam radius/time preserved",
+      "ok": true,
+      "detail": {
+        "r": 100,
+        "life": 2000
+      }
+    },
+    {
+      "name": "native steam baked from actual object",
+      "ok": true
+    },
+    {
+      "name": "mastery steam expires",
+      "ok": true
+    },
+    {
+      "name": "real four-piece set",
+      "ok": true
+    },
+    {
+      "name": "set dismantle steam",
+      "ok": true,
+      "detail": {
+        "r": 90,
+        "life": 2200
+      }
+    },
+    {
+      "name": "set steam native atlas",
+      "ok": true
+    },
+    {
+      "name": "dead owner removes constructs",
+      "ok": true
+    },
+    {
+      "name": "reset objects",
+      "ok": true
+    },
+    {
+      "name": "reset native pool",
+      "ok": true
+    },
+    {
+      "name": "basic projectile nut preserved",
+      "ok": true
+    },
+    {
+      "name": "basic theme preserved",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

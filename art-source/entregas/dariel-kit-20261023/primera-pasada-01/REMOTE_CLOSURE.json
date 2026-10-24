@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "state": "EN_CORRECCION",
+  "artGate": "FIX / NO_INTEGRAR",
+  "branch": "art/dariel-kit-first-pass-20261023",
+  "pr": 205,
+  "baseMain": "817610a78595e894995cec8032dd64149dbfe925",
+  "recovery": "a5cffabc9d8830f876d9762c48369d528e8f1c08",
+  "production": "47ba48e44f11ebc40e61e7d0d768c7316c8a578e",
+  "productionFilesVerified": 101,
+  "verification": "Every uploaded blob matched local Git SHA; recursive production tree untruncated and branch ref equal production. Final head must be obtained from PR205/ref, no self-referential hash.",
+  "runtimeChanged": [
+    "js/champions/skill-fx-a/engine.js",
+    "js/champions/skill-fx-a/bind.js",
+    "js/champions/skill-fx-a/c/dariel.js"
+  ],
+  "generated": {
+    "atlases": 5,
+    "phases": 60,
+    "nonempty": 57,
+    "transparentClosures": 3
+  },
+  "tests": {
+    "atlas": 29,
+    "functional": 254,
+    "relay": 6,
+    "precastEqual": 8,
+    "UFpngEqual": 6,
+    "reexportExact": 5,
+    "RNG": 27927,
+    "scope": "Technical checks, not integral Art Gate; summarized parity only"
+  },
+  "queueEntries": 34,
+  "integratedMain": false,
+  "publicationVerified": false,
+  "next": "Audit Eslabon B132/B133/B134 fresh main/PR/consumers, preserve originals. Do not repeat Dariel first pass. Separately finish exact-head CI PR204 and normal merge expected_head_sha only if all applicable checks/workflows pass."
+}

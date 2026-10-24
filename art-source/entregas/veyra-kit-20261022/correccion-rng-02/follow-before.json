@@ -1,0 +1,186 @@
+{
+  "status": "FAIL",
+  "checks": [
+    {
+      "name": "plain:-60",
+      "pass": false,
+      "detail": {
+        "draws": 1,
+        "x": 2,
+        "y": 4,
+        "expectedX": -58,
+        "seen": [
+          [
+            2,
+            4,
+            114
+          ]
+        ]
+      }
+    },
+    {
+      "name": "flipped:-60",
+      "pass": false,
+      "detail": {
+        "draws": 1,
+        "x": 2,
+        "y": 4,
+        "expectedX": -58,
+        "seen": [
+          [
+            2,
+            4,
+            114
+          ]
+        ]
+      }
+    },
+    {
+      "name": "off-camera-to-camera:-60",
+      "pass": false,
+      "detail": {
+        "draws": 0,
+        "x": 10000002,
+        "y": 4,
+        "expectedX": -58,
+        "seen": [
+          [
+            10000002,
+            4,
+            114
+          ]
+        ]
+      }
+    },
+    {
+      "name": "plain:15",
+      "pass": false,
+      "detail": {
+        "draws": 1,
+        "x": 2,
+        "y": 4,
+        "expectedX": 17,
+        "seen": [
+          [
+            2,
+            4,
+            114
+          ]
+        ]
+      }
+    },
+    {
+      "name": "flipped:15",
+      "pass": false,
+      "detail": {
+        "draws": 1,
+        "x": 2,
+        "y": 4,
+        "expectedX": 17,
+        "seen": [
+          [
+            2,
+            4,
+            114
+          ]
+        ]
+      }
+    },
+    {
+      "name": "off-camera-to-camera:15",
+      "pass": false,
+      "detail": {
+        "draws": 0,
+        "x": 10000002,
+        "y": 4,
+        "expectedX": 17,
+        "seen": [
+          [
+            10000002,
+            4,
+            114
+          ]
+        ]
+      }
+    },
+    {
+      "name": "plain:120",
+      "pass": false,
+      "detail": {
+        "draws": 1,
+        "x": 2,
+        "y": 4,
+        "expectedX": 122,
+        "seen": [
+          [
+            2,
+            4,
+            114
+          ]
+        ]
+      }
+    },
+    {
+      "name": "flipped:120",
+      "pass": false,
+      "detail": {
+        "draws": 1,
+        "x": 2,
+        "y": 4,
+        "expectedX": 122,
+        "seen": [
+          [
+            2,
+            4,
+            114
+          ]
+        ]
+      }
+    },
+    {
+      "name": "off-camera-to-camera:120",
+      "pass": false,
+      "detail": {
+        "draws": 0,
+        "x": 10000002,
+        "y": 4,
+        "expectedX": 122,
+        "seen": [
+          [
+            10000002,
+            4,
+            114
+          ],
+          [
+            0,
+            4,
+            114
+          ],
+          [
+            18,
+            22,
+            114
+          ]
+        ]
+      }
+    },
+    {
+      "name": "death-after-update-not-drawn",
+      "pass": false,
+      "detail": {
+        "deadDraws": 1
+      }
+    },
+    {
+      "name": "unattached-position-preserved",
+      "pass": true
+    },
+    {
+      "name": "render-does-not-use-combat-rng",
+      "pass": true,
+      "detail": {
+        "rng": 0
+      }
+    }
+  ]
+}

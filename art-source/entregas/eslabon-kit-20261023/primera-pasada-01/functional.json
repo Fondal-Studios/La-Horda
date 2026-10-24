@@ -1,0 +1,111 @@
+{
+  "checks": [
+    {
+      "name": "hook without target has no candidate event",
+      "ok": true
+    },
+    {
+      "name": "hook deals damage",
+      "ok": true
+    },
+    {
+      "name": "hook pulls common",
+      "ok": true
+    },
+    {
+      "name": "hook actual origin retained",
+      "ok": true
+    },
+    {
+      "name": "hook candidate emitted",
+      "ok": true
+    },
+    {
+      "name": "hook endpoints finite",
+      "ok": true
+    },
+    {
+      "name": "hook object expires",
+      "ok": true
+    },
+    {
+      "name": "boss remains in place",
+      "ok": true
+    },
+    {
+      "name": "boss slow cap intact",
+      "ok": true
+    },
+    {
+      "name": "line exists",
+      "ok": true
+    },
+    {
+      "name": "line original radius",
+      "ok": true
+    },
+    {
+      "name": "line actual endpoints",
+      "ok": true
+    },
+    {
+      "name": "line duration",
+      "ok": true
+    },
+    {
+      "name": "line replacement cap",
+      "ok": true
+    },
+    {
+      "name": "line recipe bound to object",
+      "ok": true
+    },
+    {
+      "name": "line expiration",
+      "ok": true
+    },
+    {
+      "name": "ward actual recipient",
+      "ok": true
+    },
+    {
+      "name": "ward mechanical duration",
+      "ok": true
+    },
+    {
+      "name": "ward candidate recipients",
+      "ok": true
+    },
+    {
+      "name": "ward transfers bounded damage",
+      "ok": true
+    },
+    {
+      "name": "immune guard cannot absorb freely",
+      "ok": true
+    },
+    {
+      "name": "death clears mechanical guard",
+      "ok": true
+    },
+    {
+      "name": "pool reset",
+      "ok": true
+    },
+    {
+      "name": "UF remains chain",
+      "ok": true
+    },
+    {
+      "name": "basic theme preserved",
+      "ok": true
+    }
+  ],
+  "limitations": {
+    "guardAuraMs": 2200,
+    "guardMechanicMs": 5000,
+    "guardBeamTracksEndpoints": false,
+    "scope": "Inherited visual lifetime and stationary cast endpoints require correction; not approved by these tests."
+  },
+  "errors": []
+}

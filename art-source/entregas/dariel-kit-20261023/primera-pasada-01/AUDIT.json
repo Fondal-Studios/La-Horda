@@ -1,0 +1,41 @@
+{
+  "base": "817610a78595e894995cec8032dd64149dbfe925",
+  "openPRs": "Fresh inventory at start had no Dariel workshop; recovery branch created before edits. Existing corrections untouched.",
+  "blocks": [
+    {
+      "block": "B129",
+      "id": "A-FX-dariel-h1",
+      "generated": [
+        "dariel_discord-cone.png"
+      ],
+      "before": "Actual SFA generic music cone/nova/aura + legacy overlay; capture before retained.",
+      "after": "New shapes connected in workshop only; event helpers/mechanics unchanged."
+    },
+    {
+      "block": "B130",
+      "id": "A-FX-dariel-h2",
+      "generated": [
+        "dariel_march-nova.png",
+        "dariel_march-aura.png"
+      ],
+      "before": "Actual SFA generic music cone/nova/aura + legacy overlay; capture before retained.",
+      "after": "New shapes connected in workshop only; event helpers/mechanics unchanged."
+    },
+    {
+      "block": "B131",
+      "id": "A-FX-dariel-h3",
+      "generated": [
+        "dariel_refrain-nova.png",
+        "dariel_refrain-aura.png"
+      ],
+      "before": "Actual SFA generic music cone/nova/aura + legacy overlay; capture before retained.",
+      "after": "New shapes connected in workshop only; event helpers/mechanics unchanged."
+    }
+  ],
+  "preserved": "Body and three skin packs, basic note, UF staff, ex_concert object and identifiers. No body/UF/basic regeneration.",
+  "inheritedPending": [
+    "Three angular waves are distinct from music star, but read as chevrons/arrows; thin notes and inherited white rays dominate mobile contact.",
+    "Staff/barlines are small over bodies and shared rings. Inherited SFA aura defaults1600ms versus march2400ms before modifiers, hardcoded150 and generic shield filter; actual buff recipient/lifecycle coupling remains pending.",
+    "Repeat brackets distinguish trajectory but remain thin; rising notes overlap bodies. Inherited post-heal hp<max selection can omit fully healed allies and hardcoded140 can differ from modified actual radius; scope remains visual workshop."
+  ]
+}

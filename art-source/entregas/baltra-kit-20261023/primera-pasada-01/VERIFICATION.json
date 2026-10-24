@@ -1,0 +1,262 @@
+{
+  "checks": [
+    {
+      "name": "baltra_wavenova binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "baltra_wavenova clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "baltra_wavenova active cells",
+      "ok": true,
+      "detail": [
+        152,
+        290,
+        441,
+        578,
+        795,
+        988,
+        1203,
+        1150,
+        695,
+        343,
+        187,
+        0
+      ]
+    },
+    {
+      "name": "baltra_wavenova final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "baltra_wavenova cache reuse",
+      "ok": true
+    },
+    {
+      "name": "baltra_guardcone binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "baltra_guardcone clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "baltra_guardcone active cells",
+      "ok": true,
+      "detail": [
+        201,
+        215,
+        233,
+        247,
+        250,
+        250,
+        250,
+        234,
+        174,
+        111,
+        63,
+        0
+      ]
+    },
+    {
+      "name": "baltra_guardcone final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "baltra_guardcone cache reuse",
+      "ok": true
+    },
+    {
+      "name": "baltra_guardaura binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "baltra_guardaura clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "baltra_guardaura active cells",
+      "ok": true,
+      "detail": [
+        84,
+        86,
+        88,
+        88,
+        88,
+        86,
+        84,
+        82,
+        80,
+        80,
+        80,
+        82
+      ]
+    },
+    {
+      "name": "baltra_guardaura final phase",
+      "ok": true,
+      "detail": 82
+    },
+    {
+      "name": "baltra_guardaura cache reuse",
+      "ok": true
+    },
+    {
+      "name": "baltra_clappercone binary alpha",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "baltra_clappercone clear border",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "baltra_clappercone active cells",
+      "ok": true,
+      "detail": [
+        139,
+        153,
+        178,
+        187,
+        188,
+        180,
+        170,
+        152,
+        113,
+        72,
+        42,
+        0
+      ]
+    },
+    {
+      "name": "baltra_clappercone final phase",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "baltra_clappercone cache reuse",
+      "ok": true
+    },
+    {
+      "name": "bell fallback nova",
+      "ok": true
+    },
+    {
+      "name": "bell fallback cone",
+      "ok": true
+    },
+    {
+      "name": "bell fallback aura",
+      "ok": true
+    },
+    {
+      "name": "original ultimate theme",
+      "ok": true
+    }
+  ],
+  "sources": [
+    {
+      "theme": "baltra_wave",
+      "art": "nova",
+      "size": 128,
+      "arc": 0,
+      "w": 128,
+      "h": 128,
+      "n": 12,
+      "cells": [
+        152,
+        290,
+        441,
+        578,
+        795,
+        988,
+        1203,
+        1150,
+        695,
+        343,
+        187,
+        0
+      ]
+    },
+    {
+      "theme": "baltra_guard",
+      "art": "cone",
+      "size": 64,
+      "arc": 0.95,
+      "w": 66,
+      "h": 111,
+      "n": 12,
+      "cells": [
+        201,
+        215,
+        233,
+        247,
+        250,
+        250,
+        250,
+        234,
+        174,
+        111,
+        63,
+        0
+      ]
+    },
+    {
+      "theme": "baltra_guard",
+      "art": "aura",
+      "size": 0,
+      "arc": 0,
+      "w": 48,
+      "h": 56,
+      "n": 12,
+      "cells": [
+        84,
+        86,
+        88,
+        88,
+        88,
+        86,
+        84,
+        82,
+        80,
+        80,
+        80,
+        82
+      ]
+    },
+    {
+      "theme": "baltra_clapper",
+      "art": "cone",
+      "size": 96,
+      "arc": 0.85,
+      "w": 98,
+      "h": 151,
+      "n": 12,
+      "cells": [
+        139,
+        153,
+        178,
+        187,
+        188,
+        180,
+        170,
+        152,
+        113,
+        72,
+        42,
+        0
+      ]
+    }
+  ]
+}

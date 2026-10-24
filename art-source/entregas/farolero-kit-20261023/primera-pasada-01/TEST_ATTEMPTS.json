@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "attempts": [
+    {
+      "name": "export",
+      "result": "24 PASS",
+      "log": "VERIFICATION.json",
+      "attempt": 1
+    },
+    {
+      "name": "focused kit/lifecycle",
+      "result": "27 PASS / 0 page errors",
+      "log": "logs/functional.log",
+      "attempt": 1
+    },
+    {
+      "name": "Expedition regression",
+      "result": "254 PASS / 0 page errors",
+      "log": "logs/regression.log",
+      "attempt": 1
+    },
+    {
+      "name": "relay real host Solciju / touch guest Farolero set4",
+      "result": "5 PASS / 0 page errors",
+      "log": "logs/online.log",
+      "attempt": 1
+    },
+    {
+      "name": "parent/candidate360 frames",
+      "result": "27925 RNG calls each, summarized state identical",
+      "log": "logs/parity.log",
+      "attempt": 1
+    },
+    {
+      "name": "four captures baseline/candidate horizontal/mobile",
+      "result": "8 precast hashes equal; 6 UF PNGs identical",
+      "log": "COMPARISON.json",
+      "attempt": 1
+    },
+    {
+      "name": "reexport",
+      "result": "4 PNGs byte identical",
+      "log": "REEXPORT.json",
+      "attempt": 1
+    },
+    {
+      "name": "preview",
+      "result": "20 images / 4 painted canvases / 0 errors",
+      "log": "logs/preview.log",
+      "attempt": 1
+    }
+  ],
+  "failedAttempts": [],
+  "limits": "No preceding-run result claimed as newly tested. Technical PASS does not approve art. No full snapshot/RNG isolation/performance certification."
+}

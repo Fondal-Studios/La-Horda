@@ -1,0 +1,263 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "real line hit receives exact1800ms source",
+      "pass": true,
+      "detail": 2800
+    },
+    {
+      "name": "outside line not marked",
+      "pass": true
+    },
+    {
+      "name": "cinematic immunity not marked",
+      "pass": true
+    },
+    {
+      "name": "lethal hit not marked",
+      "pass": true
+    },
+    {
+      "name": "boss keeps actual capped slow with same visual duration",
+      "pass": true,
+      "detail": {
+        "slow": 0.12,
+        "end": 2800
+      }
+    },
+    {
+      "name": "unrelated slow does not create Fractura symbol",
+      "pass": true
+    },
+    {
+      "name": "single sand sequence time=1000",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "single sand sequence time=1149",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "single sand sequence time=1150",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "single sand sequence time=1900",
+      "pass": true,
+      "detail": 6
+    },
+    {
+      "name": "single sand sequence time=2799",
+      "pass": true,
+      "detail": 11
+    },
+    {
+      "name": "single sand sequence time=2800",
+      "pass": true,
+      "detail": -1
+    },
+    {
+      "name": "short recast cannot shorten previous contribution",
+      "pass": true
+    },
+    {
+      "name": "long recast restarts using actual scaled duration",
+      "pass": true
+    },
+    {
+      "name": "longer unrelated slow cannot extend own symbol",
+      "pass": true
+    },
+    {
+      "name": "cleanse hides symbol immediately",
+      "pass": true
+    },
+    {
+      "name": "unrelated re-slow cannot revive cleared symbol",
+      "pass": true
+    },
+    {
+      "name": "cleared slow strength hides symbol",
+      "pass": true
+    },
+    {
+      "name": "death hides symbol",
+      "pass": true
+    },
+    {
+      "name": "native padded12 frames bosque",
+      "pass": true,
+      "detail": {
+        "ink": [
+          90,
+          90,
+          90,
+          94,
+          94,
+          92,
+          94,
+          94,
+          92,
+          92,
+          92,
+          88
+        ],
+        "soft": 0,
+        "edge": 0
+      }
+    },
+    {
+      "name": "native padded12 frames hielo",
+      "pass": true,
+      "detail": {
+        "ink": [
+          90,
+          90,
+          90,
+          94,
+          94,
+          92,
+          94,
+          94,
+          92,
+          92,
+          92,
+          88
+        ],
+        "soft": 0,
+        "edge": 0
+      }
+    },
+    {
+      "name": "native padded12 frames infernal",
+      "pass": true,
+      "detail": {
+        "ink": [
+          90,
+          90,
+          90,
+          94,
+          94,
+          92,
+          94,
+          94,
+          92,
+          92,
+          92,
+          88
+        ],
+        "soft": 0,
+        "edge": 0
+      }
+    },
+    {
+      "name": "native padded12 frames laberinto",
+      "pass": true,
+      "detail": {
+        "ink": [
+          90,
+          90,
+          90,
+          94,
+          94,
+          92,
+          94,
+          94,
+          92,
+          92,
+          92,
+          88
+        ],
+        "soft": 0,
+        "edge": 0
+      }
+    },
+    {
+      "name": "native padded12 frames acuatica",
+      "pass": true,
+      "detail": {
+        "ink": [
+          90,
+          90,
+          90,
+          94,
+          94,
+          92,
+          94,
+          94,
+          92,
+          92,
+          92,
+          88
+        ],
+        "soft": 0,
+        "edge": 0
+      }
+    },
+    {
+      "name": "native padded12 frames minas",
+      "pass": true,
+      "detail": {
+        "ink": [
+          90,
+          90,
+          90,
+          94,
+          94,
+          92,
+          94,
+          94,
+          92,
+          92,
+          92,
+          88
+        ],
+        "soft": 0,
+        "edge": 0
+      }
+    },
+    {
+      "name": "renderer follows actual moving target",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "culling skips offscreen drawing",
+      "pass": true
+    },
+    {
+      "name": "reentry keeps original phase",
+      "pass": true
+    },
+    {
+      "name": "SFA off hides mark without touching slow",
+      "pass": true
+    },
+    {
+      "name": "existing snapshot serializes exact cosmetic provenance",
+      "pass": true
+    },
+    {
+      "name": "renderer and baking consume no combat RNG",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "cleanup uses zero fields delivered by existing delta",
+      "pass": true,
+      "detail": {
+        "aelithFractureFxStart": 0,
+        "aelithFractureFxEnd": 0
+      }
+    },
+    {
+      "name": "reset clears metadata without changing slow",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,506 @@
+{
+  "schema": 1,
+  "date": "2026-10-23",
+  "pr": 198,
+  "branch": "art/morveth-kit-first-pass-20261022",
+  "parent": "20d65cf2c0b11e200aa785c64b6e1b16627810a0",
+  "recovery": {
+    "sha": "2608745aee1be1a2231973da1fd14c6cccbaccd6",
+    "tree": "df953840d9f4ec5fcd5a2385e7e9915e612cfdcf"
+  },
+  "production": {
+    "sha": "9e890385431ca7ea275e014fb574c8b328709a2b",
+    "tree": "0e140c2fa2085dd8d0713a2c2d9edae2b9ece152"
+  },
+  "verifiedFileCount": 85,
+  "verifiedFiles": [
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/CHECKPOINT.md",
+      "gitBlob": "9cf44f5de46cfd2945efa320475f928fc9f75d90",
+      "bytes": 4040
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/RECOVERY.json",
+      "gitBlob": "7cb9e95fefbf513936214247c29382cace6ef404",
+      "bytes": 382
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/TEST_ATTEMPTS.json",
+      "gitBlob": "42dcca759da87f6e102892e8d723e1a98a0d37ae",
+      "bytes": 1122
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/VISUAL_REVIEW.json",
+      "gitBlob": "540e5f424c9e93a454af3591361463d5c07b9578",
+      "bytes": 1105
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/after/capture.json",
+      "gitBlob": "5102ecf48691462f8315804edcbbf8e10a127fbd",
+      "bytes": 2409
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/after/morveth-0.png",
+      "gitBlob": "6e5e7e24928920a4007af70b2452906073092795",
+      "bytes": 118750
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/after/morveth-1.png",
+      "gitBlob": "fb8ed139a04fe68f40c68b8b7bcb025e93703a52",
+      "bytes": 121420
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/after/morveth-2-500-full.png",
+      "gitBlob": "85c52cff2703c9b2837b6aab7cad609732f23110",
+      "bytes": 473809
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/after/morveth-2.png",
+      "gitBlob": "5cc805bb7ab834fa329badc8b15c23ad6b963d44",
+      "bytes": 119748
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/after/morveth-3.png",
+      "gitBlob": "e07e073646e693715b3cd20c3bbb8a8ab1f4abe3",
+      "bytes": 133700
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/after.log",
+      "gitBlob": "1c01f7d4f2b99817f8c7a4f3c6dc3a71a4bf5afe",
+      "bytes": 307
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/atlas-preview.png",
+      "gitBlob": "94000ffd023af36e83dd821fd2bfab889b046e83",
+      "bytes": 30726
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/atlases/mushroom-growth.png",
+      "gitBlob": "47bf8a843a9b517b8bd21987df22a6911ed00a2e",
+      "bytes": 4531
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/atlases/mycelium-arena-variants.png",
+      "gitBlob": "38b10dc29421cf4d341de404fa1d5a0cb506d692",
+      "bytes": 141894
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/atlases/spore-exhalation.png",
+      "gitBlob": "1a7d6eeaeb3771a44a58d94f25f0fd4c3d90be15",
+      "bytes": 14810
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/atlases/spore-pulse.png",
+      "gitBlob": "503305acc8eccdfe5033489aef9a240816230df8",
+      "bytes": 8871
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/atlases/symbiosis-mycelium.png",
+      "gitBlob": "f16b6ef47e77c12794fc23f86f779432eb5d9d12",
+      "bytes": 8005
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/attempt-01/atlas.png",
+      "gitBlob": "605128ab853551539ab75a75f1d548f1a7ae32f6",
+      "bytes": 8181
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/attempt-01/contact-tests.json",
+      "gitBlob": "29125445a7a4d72d214ed5fbd252a6a57c884c2f",
+      "bytes": 16952
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/attempt-01/legible-horizontal.json",
+      "gitBlob": "ec9134d2ec51c72b465317e2f1de80f0feb0d608",
+      "bytes": 381125
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/attempt-01/legible-mobile.json",
+      "gitBlob": "12926cb4a4edd8bab5cdfa8929c413d38bc794a2",
+      "bytes": 381170
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/attempt-01/morveth.js",
+      "gitBlob": "7b68d56e565617e8a450f9ff15ccaaf3f17cba96",
+      "bytes": 5415
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/attempt-01/online-results.json",
+      "gitBlob": "df1cb8dcc2de71b2f3585622285827c38bdf46e9",
+      "bytes": 4847
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/before/capture.json",
+      "gitBlob": "5102ecf48691462f8315804edcbbf8e10a127fbd",
+      "bytes": 2409
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/before/morveth-0.png",
+      "gitBlob": "6e5e7e24928920a4007af70b2452906073092795",
+      "bytes": 118750
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/before/morveth-1.png",
+      "gitBlob": "fb8ed139a04fe68f40c68b8b7bcb025e93703a52",
+      "bytes": 121420
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/before/morveth-2-500-full.png",
+      "gitBlob": "47091d2e1138b5db46f242013ae085bd231aa1fd",
+      "bytes": 473895
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/before/morveth-2.png",
+      "gitBlob": "5f69b57524fed6699bcfafbda8783ea0f2680d49",
+      "bytes": 119736
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/before/morveth-3.png",
+      "gitBlob": "e07e073646e693715b3cd20c3bbb8a8ab1f4abe3",
+      "bytes": 133700
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/before.log",
+      "gitBlob": "0a7d26ee0cbbb082f125f16e3934c1e1a5be08e1",
+      "bytes": 307
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/comparison-checks.json",
+      "gitBlob": "5fcea2c0b3f99b2799048efd68f8094fbc54f764",
+      "bytes": 2688
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/contact-tests.json",
+      "gitBlob": "eec4d591a0f017894b4cce28d8c614659391b8a8",
+      "bytes": 16916
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/functional-results.json",
+      "gitBlob": "d6547c15b887d2d20aa6baeeba4d7d65724dd723",
+      "bytes": 10242
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/functional.log",
+      "gitBlob": "214380072787b8bb8a227ea3a590a6d85d6600f9",
+      "bytes": 55
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/gate-horizontal.log",
+      "gitBlob": "de96d3c2d7236180e343fcd98d0b6d07f22417de",
+      "bytes": 184
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/gate-mobile.log",
+      "gitBlob": "156b79049d62070c435aae505936f08c352337b4",
+      "bytes": 184
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/horizontal-comparison.png",
+      "gitBlob": "de0a485c0a007a7e8c5a34150855c95f66717078",
+      "bytes": 331919
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/kit.log",
+      "gitBlob": "e8326dcaddd64ae76a852bf180d62e88a5ff917c",
+      "bytes": 179
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/legible-horizontal.json",
+      "gitBlob": "22e0282eec172a0353dd4872f0dd8bfe031cdb55",
+      "bytes": 381122
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/legible-horizontal.log",
+      "gitBlob": "52780f3c4a125a822e29903a318b674c7dc47b50",
+      "bytes": 183
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/legible-mobile.json",
+      "gitBlob": "215afab915b9af34dba57ea8e5cceda4b22b8abb",
+      "bytes": 381091
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/manifest.json",
+      "gitBlob": "3c875049da026f43556de1332dcd3c41af156b18",
+      "bytes": 22925
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/matrix.json",
+      "gitBlob": "c9a7373d357c74136f9fb789d9242ae501d57464",
+      "bytes": 1937
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-after/capture.json",
+      "gitBlob": "1748bdf2aa63366e193a503daa7787e8e64e52b7",
+      "bytes": 2409
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-after/morveth-0.png",
+      "gitBlob": "124d0e3a4e51cc978c760f6757fa2a97bb837e3d",
+      "bytes": 109605
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-after/morveth-1.png",
+      "gitBlob": "20d1db45836206d95a6e64cd17d0b1da570ef1cc",
+      "bytes": 112643
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-after/morveth-2-500-full.png",
+      "gitBlob": "2b416e184c7648982772d6910b579884cc88a7f2",
+      "bytes": 453292
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-after/morveth-2.png",
+      "gitBlob": "5dcc185a340a9494e9a07cb81d9c8e28adcc9d62",
+      "bytes": 111820
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-after/morveth-3.png",
+      "gitBlob": "2c8cc35f5ca9b34bd01c8977ece16506a229cef0",
+      "bytes": 126863
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-after.log",
+      "gitBlob": "d4651922dfe9ad1e2ccdc31b770a18d57500b991",
+      "bytes": 307
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-before/capture.json",
+      "gitBlob": "1748bdf2aa63366e193a503daa7787e8e64e52b7",
+      "bytes": 2409
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-before/morveth-0.png",
+      "gitBlob": "124d0e3a4e51cc978c760f6757fa2a97bb837e3d",
+      "bytes": 109605
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-before/morveth-1.png",
+      "gitBlob": "20d1db45836206d95a6e64cd17d0b1da570ef1cc",
+      "bytes": 112643
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-before/morveth-2-500-full.png",
+      "gitBlob": "a204386ce750c5cce96029eeafb4afed8d0b7b6a",
+      "bytes": 453343
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-before/morveth-2.png",
+      "gitBlob": "cbd4e57b095b0201dd2289a30d445702d397addb",
+      "bytes": 111815
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-before/morveth-3.png",
+      "gitBlob": "2c8cc35f5ca9b34bd01c8977ece16506a229cef0",
+      "bytes": 126863
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-before.log",
+      "gitBlob": "c596e5ba3461400abef7f5dde7f261e338af4a49",
+      "bytes": 307
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/mobile-comparison.png",
+      "gitBlob": "00de5351b425ef050be2f1a5b34fbd63749a2e96",
+      "bytes": 321002
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/online-results.json",
+      "gitBlob": "818b26f322ccd237b6a1a2e8b882e55a5441acd9",
+      "bytes": 4671
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/online.log",
+      "gitBlob": "2cdc10e8763194879f17fd8ccae94d2293440c0a",
+      "bytes": 2329
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/parity.log",
+      "gitBlob": "69f8ffdc93b3d181376c0a469c911020b581215f",
+      "bytes": 116
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/recipe.json",
+      "gitBlob": "3ed67f948670fda68ddf604fcf6f83e2724aa931",
+      "bytes": 2722
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/relay-final.log",
+      "gitBlob": "a75066e4de4f3a9fb569c74fd1939834f687d37d",
+      "bytes": 2261
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/runtime-diff.json",
+      "gitBlob": "c7f0d25c02a01e2ce4886104840a4f3f6b4e4d42",
+      "bytes": 85
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/runtime.diff",
+      "gitBlob": "8fb6d91092a229000477d8eb127fad755657b657",
+      "bytes": 3095
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/skin-mobile-after/capture.json",
+      "gitBlob": "a34ac977561391b64744c75a266684c7762c1f4b",
+      "bytes": 664
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/skin-mobile-after/morveth-2-500-full.png",
+      "gitBlob": "178a3fac5c1d75277d48aeca48ef8299ea256ec6",
+      "bytes": 454359
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/skin-mobile-after/morveth-2.png",
+      "gitBlob": "0ab2e5d070f57c667708d01667a1dd1075bbbeef",
+      "bytes": 107220
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/skin-mobile-after.log",
+      "gitBlob": "0f8ad77453d0c52e1091ff34aa248b9464072fe6",
+      "bytes": 159
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/skin-mobile-before/capture.json",
+      "gitBlob": "a34ac977561391b64744c75a266684c7762c1f4b",
+      "bytes": 664
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/skin-mobile-before/morveth-2-500-full.png",
+      "gitBlob": "df9670138b338639a3f26abb9824fe0e99c1593c",
+      "bytes": 454385
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/skin-mobile-before/morveth-2.png",
+      "gitBlob": "933de23663ddff9ae5787c9abe2bbe4cf49ba763",
+      "bytes": 107110
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/skin-mobile-before.log",
+      "gitBlob": "b2fb955fb1f9bcc7426e58a45aa51aac3ba26a7e",
+      "bytes": 159
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/skin-mobile-comparison.png",
+      "gitBlob": "75fe2a4382f3d8c466a60f3392b7e9e5e5d9b4c4",
+      "bytes": 320835
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/source-before/morveth.js",
+      "gitBlob": "f172b03d6dbc4f77b2c1dd77cebc4213b0c23947",
+      "bytes": 5135
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/sources/morveth.js",
+      "gitBlob": "51b98f229b5fa33706d3a3b04914d500233c10b9",
+      "bytes": 5426
+    },
+    {
+      "path": "art-source/entregas/morveth-kit-20261022/correccion-02/verification.json",
+      "gitBlob": "14d3ac60aff413f09323ad460c207ad44c300f0a",
+      "bytes": 5579
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "gitBlob": "379a151940c643da792944374ffd3a7c9146ab28",
+      "bytes": 33432
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/morveth.js",
+      "gitBlob": "51b98f229b5fa33706d3a3b04914d500233c10b9",
+      "bytes": 5426
+    },
+    {
+      "path": "tools/vfx/capture-morveth-contact.js",
+      "gitBlob": "4d59c70db93844e645aa221fcfde75e43934a20e",
+      "bytes": 7091
+    },
+    {
+      "path": "tools/vfx/export-morveth-contact-matrix.js",
+      "gitBlob": "2428a791e794f6ea45535ac4181137ffb7c64bc4",
+      "bytes": 1525
+    },
+    {
+      "path": "tools/vfx/morveth-contact-online.js",
+      "gitBlob": "8d9eef208cdfb738baac562bb16e396907d4fd98",
+      "bytes": 9992
+    },
+    {
+      "path": "tools/vfx/preview-morveth-contact.py",
+      "gitBlob": "36ef6fdc75ec5552eb99058a785e29dfee3cc3c8",
+      "bytes": 1115
+    },
+    {
+      "path": "tools/vfx/test-morveth-contact-legible.js",
+      "gitBlob": "680f8777c7300b95be97ac6865827604fdb4a314",
+      "bytes": 3712
+    },
+    {
+      "path": "tools/vfx/verify-morveth-contact.js",
+      "gitBlob": "cc1467b36724cd7dd52bbf27cec7c7a0f1b500a5",
+      "bytes": 3354
+    }
+  ],
+  "mainVerified": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+  "state": "EN_CORRECCION",
+  "merge": "NO_INTEGRAR",
+  "publication": "NO_VERIFICADA",
+  "ciProduction": [
+    {
+      "name": "entry-reference",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "name": "readability",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "name": "lanes",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "name": "postgres",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "name": "safari-engine",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "name": "emoji-lint",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "name": "evidence",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "name": "Analyze (python)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "name": "Analyze (javascript-typescript)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "name": "Analyze (actions)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "name": "emoji-lint",
+      "status": "in_progress",
+      "conclusion": null
+    }
+  ],
+  "ciFinal": "Fetch exact final commit checks: closure commit changes head; no inherited CI approval.",
+  "next": "Integral gates by component starting Brakk PR197: inspect exact failing objects Part A, then equipped skins/six arenas/performance for corrected supports. Preserve B168 compound contrast and Aelith B106/B107 pending work, shared22entry history and RNG fixes. Do not merge draft/FIX workshop."
+}

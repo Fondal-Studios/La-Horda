@@ -1,0 +1,317 @@
+{
+  "checks": [
+    {
+      "name": "wall geometry 1,0",
+      "pass": true,
+      "details": {
+        "event": [
+          "beam",
+          "brakk_build",
+          120,
+          -65,
+          0,
+          0,
+          600,
+          120,
+          65,
+          28,
+          -2,
+          null,
+          null
+        ],
+        "wall": {
+          "x": 120,
+          "y": 0,
+          "dx": 0,
+          "dy": 1,
+          "r": 65
+        }
+      }
+    },
+    {
+      "name": "wall geometry 0,-1",
+      "pass": true,
+      "details": {
+        "event": [
+          "beam",
+          "brakk_build",
+          -65,
+          -120,
+          0,
+          0,
+          600,
+          65,
+          -120,
+          28,
+          -2,
+          null,
+          null
+        ],
+        "wall": {
+          "x": 0,
+          "y": -120,
+          "dx": 1,
+          "dy": 0,
+          "r": 65
+        }
+      }
+    },
+    {
+      "name": "wall geometry -1,0",
+      "pass": true,
+      "details": {
+        "event": [
+          "beam",
+          "brakk_build",
+          -120,
+          65,
+          0,
+          0,
+          600,
+          -120,
+          -65,
+          28,
+          -2,
+          null,
+          null
+        ],
+        "wall": {
+          "x": -120,
+          "y": 0,
+          "dx": 0,
+          "dy": -1,
+          "r": 65
+        }
+      }
+    },
+    {
+      "name": "wall geometry 0,1",
+      "pass": true,
+      "details": {
+        "event": [
+          "beam",
+          "brakk_build",
+          65,
+          120,
+          0,
+          0,
+          600,
+          -65,
+          120,
+          28,
+          -2,
+          null,
+          null
+        ],
+        "wall": {
+          "x": 0,
+          "y": 120,
+          "dx": -1,
+          "dy": 0,
+          "r": 65
+        }
+      }
+    },
+    {
+      "name": "turret deployment at actual object",
+      "pass": true
+    },
+    {
+      "name": "real turret shot emits nail trajectory",
+      "pass": true,
+      "details": {
+        "event": [
+          "beam",
+          "brakk_nails",
+          80,
+          0,
+          0,
+          0,
+          260,
+          130,
+          0,
+          18,
+          -2,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "name": "repair marks only own repaired construction",
+      "pass": true,
+      "details": {
+        "weld": [
+          [
+            "burst",
+            "brakk_repair~p",
+            60,
+            0,
+            30,
+            0,
+            650,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        ]
+      }
+    },
+    {
+      "name": "armor aura follows actual recipient and duration",
+      "pass": true,
+      "details": {
+        "event": [
+          "aura",
+          "brakk_repair~p",
+          0,
+          0,
+          24,
+          0,
+          3000,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "name": "failed cooldown cast emits no new kit VFX",
+      "pass": true
+    },
+    {
+      "name": "events replay without hero object arguments",
+      "pass": true
+    },
+    {
+      "name": "crisp alpha wall-mount",
+      "pass": true,
+      "details": {
+        "soft": 0,
+        "opaque": 692
+      }
+    },
+    {
+      "name": "crisp alpha turret-deploy",
+      "pass": true,
+      "details": {
+        "soft": 0,
+        "opaque": 4178
+      }
+    },
+    {
+      "name": "crisp alpha nail-volley",
+      "pass": true,
+      "details": {
+        "soft": 0,
+        "opaque": 280
+      }
+    },
+    {
+      "name": "crisp alpha repair-weld",
+      "pass": true,
+      "details": {
+        "soft": 0,
+        "opaque": 2164
+      }
+    },
+    {
+      "name": "crisp alpha repair-brace",
+      "pass": true,
+      "details": {
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "native painting leaves combat RNG unchanged",
+      "pass": true
+    },
+    {
+      "name": "legacy siege nova pixels unchanged",
+      "pass": true
+    },
+    {
+      "name": "pool bounded reduceFx=false",
+      "pass": true,
+      "details": 40
+    },
+    {
+      "name": "pool bounded reduceFx=true",
+      "pass": true,
+      "details": 16
+    }
+  ],
+  "observations": [
+    {
+      "component": "A-FX-brakk-h1",
+      "state": "EN_CORRECCION",
+      "finding": "La fase se verifica sobre sfaDrawOne real con tools/vfx/verify-brakk-build-phase.js; el cálculo histórico animNow/70 ya no representa este tema.",
+      "next": "Completar gate visual/skins/contraste específico y CI antes de aprobar el componente."
+    }
+  ],
+  "exports": [
+    {
+      "name": "wall-mount",
+      "art": "beam",
+      "theme": "brakk_build",
+      "size": 12,
+      "cell": [
+        16,
+        12
+      ],
+      "frames": 11
+    },
+    {
+      "name": "turret-deploy",
+      "art": "burst",
+      "theme": "brakk_deploy~h",
+      "size": 64,
+      "cell": [
+        64,
+        64
+      ],
+      "frames": 12
+    },
+    {
+      "name": "nail-volley",
+      "art": "beam",
+      "theme": "brakk_nails",
+      "size": 12,
+      "cell": [
+        16,
+        12
+      ],
+      "frames": 8
+    },
+    {
+      "name": "repair-weld",
+      "art": "burst",
+      "theme": "brakk_repair~p",
+      "size": 48,
+      "cell": [
+        48,
+        48
+      ],
+      "frames": 10
+    },
+    {
+      "name": "repair-brace",
+      "art": "aura",
+      "theme": "brakk_repair~p",
+      "size": 0,
+      "cell": [
+        40,
+        56
+      ],
+      "frames": 12
+    }
+  ],
+  "errors": []
+}

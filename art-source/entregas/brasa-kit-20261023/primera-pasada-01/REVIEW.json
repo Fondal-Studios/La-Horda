@@ -1,0 +1,96 @@
+{
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "GENERADO": true,
+  "VALIDADO": false,
+  "INTEGRADO_MAIN": false,
+  "publicacionVerificada": false,
+  "initialVisualReview": "Native atlas and mobile captures inspected; no integral Art Gate approval. Mount fasteners, purge and dismantle remain low-readability in composition.",
+  "findings": [
+    {
+      "block": "B120",
+      "component": "A-FX-brasa-h1",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/brasa.js",
+      "sourceSha256": "9e700e8ccc98ebac0352fc826d5eabb740f01907128cd2491ea48a0d7e9dca7f",
+      "atlas": "brasa_mount-burst.png",
+      "atlasSha256": "0e6f2b418d98ce8e6e9b7b5f2b9777458274a6122d54cb42ba39cdfb87fba21b",
+      "frames": "0..11, kit-level diagnosis; not a defect attributed to every frame",
+      "phase": "80/256/512/1104/2000ms captures; online set dismantle",
+      "diagnosis": "Clamps/bolts are too small at mobile contact scale; construction reads as sparks, not mechanical assembly.",
+      "defects": [
+        "Clamps/bolts are too small at mobile contact scale; construction reads as sparks, not mechanical assembly."
+      ],
+      "evidence": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-0-native250.png",
+      "sourceDelivery": "art-source/entregas/brasa-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes. Preserve IDs, mechanics, sources and diagnostic failures; validate composite contrast/skins/arenas/lifecycle/performance/relay before integration."
+    },
+    {
+      "block": "B121",
+      "component": "A-FX-brasa-h2",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/brasa.js",
+      "sourceSha256": "9e700e8ccc98ebac0352fc826d5eabb740f01907128cd2491ea48a0d7e9dca7f",
+      "atlas": "brasa_purge-cone.png",
+      "atlasSha256": "02b604a805f492c1f49f0858f8ecbb6925b6735c039e51860418020546adf001",
+      "frames": "0..11, kit-level diagnosis; not a defect attributed to every frame",
+      "phase": "80/256/512/1104/2000ms captures; online set dismantle",
+      "diagnosis": "Three hollow plumes are distinct in atlas but legacy radial pressure rays dominate the real cast; plume tips read as outlines.",
+      "defects": [
+        "Three hollow plumes are distinct in atlas but legacy radial pressure rays dominate the real cast; plume tips read as outlines."
+      ],
+      "evidence": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-1.png",
+      "sourceDelivery": "art-source/entregas/brasa-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes. Preserve IDs, mechanics, sources and diagnostic failures; validate composite contrast/skins/arenas/lifecycle/performance/relay before integration."
+    },
+    {
+      "block": "B122",
+      "component": "A-FX-brasa-h3",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/brasa.js",
+      "sourceSha256": "9e700e8ccc98ebac0352fc826d5eabb740f01907128cd2491ea48a0d7e9dca7f",
+      "atlas": "brasa_dismantle-aura.png",
+      "atlasSha256": "44ef3438c67d9abf7cb08999bfe660fab767136bc928299163974085cfdcd658",
+      "frames": "0..11, kit-level diagnosis; not a defect attributed to every frame",
+      "phase": "80/256/512/1104/2000ms captures; online set dismantle",
+      "diagnosis": "Wrench/fastener marks are thin and hidden by allied bodies and rings in mobile contact. Lifecycle recast/death/pool saturation still needs integral testing.",
+      "defects": [
+        "Wrench/fastener marks are thin and hidden by allied bodies and rings in mobile contact. Lifecycle recast/death/pool saturation still needs integral testing."
+      ],
+      "evidence": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/after-mobile/brasa-2-native500.png",
+      "sourceDelivery": "art-source/entregas/brasa-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes. Preserve IDs, mechanics, sources and diagnostic failures; validate composite contrast/skins/arenas/lifecycle/performance/relay before integration."
+    },
+    {
+      "block": "B484",
+      "component": "A-PROP-sfa-steam",
+      "state": "EN_CORRECCION",
+      "source": "js/champions/skill-fx-a/c/brasa.js",
+      "sourceSha256": "9e700e8ccc98ebac0352fc826d5eabb740f01907128cd2491ea48a0d7e9dca7f",
+      "atlas": "brasa_vent-zone.png",
+      "atlasSha256": "f568c2ccc433bf504b143f85bd1314ed338aea6c095e79854204f4d33a2b9452",
+      "frames": "0..11, kit-level diagnosis; not a defect attributed to every frame",
+      "phase": "80/256/512/1104/2000ms captures; online set dismantle",
+      "diagnosis": "Actual steam renders on both peers, but host uses brasa_vent~p while guest uses brasa_vent. Variant parity FAIL; no protocol/runtime fix included.",
+      "defects": [
+        "Actual steam renders on both peers, but host uses brasa_vent~p while guest uses brasa_vent. Variant parity FAIL; no protocol/runtime fix included."
+      ],
+      "evidence": "art-source/entregas/brasa-kit-20261023/primera-pasada-01/online-results.json",
+      "sourceDelivery": "art-source/entregas/brasa-kit-20261023/primera-pasada-01",
+      "next": "Grouped correction after broad first passes. Preserve IDs, mechanics, sources and diagnostic failures; validate composite contrast/skins/arenas/lifecycle/performance/relay before integration."
+    }
+  ],
+  "pending": [
+    "All skins/equipment/six-arena composite contrast",
+    "Aura recast/death/eviction/reset/culling integrated lifecycle",
+    "Variant parity on real relay",
+    "Sustained mobile performance/warmup/cache/GC",
+    "Art Gate and exact-head CI"
+  ],
+  "notComplete": [
+    "B012 ultimate exists unchanged",
+    "B433 basic nut/pressure exists unchanged",
+    "B484 other props as_keep/as_wall/ex_concert untouched",
+    "Global inventory incomplete"
+  ]
+}

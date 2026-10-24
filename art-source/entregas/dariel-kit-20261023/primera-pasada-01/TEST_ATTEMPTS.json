@@ -1,0 +1,30 @@
+{
+  "attempts": [
+    {
+      "name": "parity unfiltered",
+      "result": "INTERRUPTED",
+      "reason": "First command omitted ONLY=dariel and began unrelated champions. Stopped explicitly; log preserved, no PASS claimed.",
+      "log": "attempt-parity-all-interrupted.log"
+    },
+    {
+      "name": "parity Dariel360",
+      "result": "PASS",
+      "log": "parity.log"
+    },
+    {
+      "name": "native export",
+      "result": "29PASS",
+      "log": "verification.log"
+    },
+    {
+      "name": "functional Expedition",
+      "result": "254PASS",
+      "log": "functional.log"
+    },
+    {
+      "name": "relay real exact variants",
+      "result": "6PASS",
+      "log": "online.log"
+    }
+  ]
+}

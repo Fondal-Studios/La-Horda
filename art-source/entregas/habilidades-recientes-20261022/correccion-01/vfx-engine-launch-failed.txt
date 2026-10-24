@@ -1,0 +1,10 @@
+page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8961/
+Call log:
+[2m  - navigating to "http://127.0.0.1:8961/", waiting until "domcontentloaded"[22m
+
+    at /workspace/scratch/a01f80e6b406/la-horda/tools/vfx/test-vfx-b.js:17:14 {
+  log: [
+    '  - navigating to "http://127.0.0.1:8961/", waiting until "domcontentloaded"'
+  ],
+  name: 'Error'
+}

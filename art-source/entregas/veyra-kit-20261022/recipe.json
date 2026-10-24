@@ -1,0 +1,77 @@
+{
+  "method": "Native KVB canvas; export exact runtime frames",
+  "originalBase": "6334ff40b6514808ef0fe00b50bec15e19f10c25",
+  "source": "js/champions/vfx-b/veyra.js",
+  "integration": "js/champions/vfx-b/hooks.js",
+  "palette": [
+    "#2a0612",
+    "#7a1d38",
+    "#ab3459",
+    "#ff7d8e",
+    "#ffd6dc"
+  ],
+  "exports": {
+    "vy_slash": {
+      "frames": 10,
+      "cell": [
+        60,
+        60
+      ],
+      "radius": 130,
+      "soft": 0
+    },
+    "vy_dash_end": {
+      "frames": 8,
+      "cell": [
+        24,
+        24
+      ],
+      "radius": 42,
+      "soft": 0
+    },
+    "vy_pact": {
+      "frames": 10,
+      "cell": [
+        24,
+        24
+      ],
+      "radius": 38,
+      "soft": 0
+    },
+    "vy_pact_idle": {
+      "frames": 12,
+      "cell": [
+        24,
+        24
+      ],
+      "radius": 30,
+      "soft": 0
+    },
+    "vy_dash": {
+      "frames": 8,
+      "cell": [
+        24,
+        16
+      ],
+      "radius": 0,
+      "soft": 0
+    },
+    "vy_lance": {
+      "frames": 8,
+      "cell": [
+        24,
+        16
+      ],
+      "radius": 0,
+      "soft": 0
+    }
+  },
+  "reproduce": "node tools/vfx/verify-veyra-kit.js",
+  "alpha": "0/255; existing KVB crisp + ordered dither",
+  "sourceScale": "Original KVB bucket scale, free VFX density per Art Bible section 7",
+  "pivot": "decal center; beam start follows actual cast origin/end",
+  "newImagegenSource": false,
+  "reexportByteIdentical": true,
+  "preserved": "UF ultimate and its fallback vy_wound; hero bodies, skins, combat and progression",
+  "partialGate": "H1/H2 base visuals favorable; H3 persistence FIX; skins matrix and final review pending"
+}

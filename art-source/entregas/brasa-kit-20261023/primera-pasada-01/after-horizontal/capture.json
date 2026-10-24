@@ -1,0 +1,415 @@
+{
+  "results": [
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "turret",
+              "life": 14920,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": [
+            {
+              "kind": "turret",
+              "life": 14744,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": [
+            {
+              "kind": "turret",
+              "life": 14488,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": [
+            {
+              "kind": "turret",
+              "life": 13896,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": [
+            {
+              "kind": "turret",
+              "life": 13000,
+              "owner": 0
+            }
+          ]
+        }
+      ],
+      "lance": false,
+      "champion": "brasa",
+      "slot": 0,
+      "trace": [
+        [
+          "burst",
+          "brasa_mount",
+          115,
+          0,
+          44,
+          0,
+          520,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "nova",
+          "brasa_mount",
+          115,
+          0,
+          40,
+          0,
+          620,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        "turret"
+      ],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Centinela de Latón",
+      "sceneHash": "6311dafc627a61b0cef213dfacd66f23a540854a3446cf328e1063091328f50c"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": []
+        }
+      ],
+      "lance": false,
+      "champion": "brasa",
+      "slot": 1,
+      "trace": [
+        [
+          "cone",
+          "brasa_purge~h",
+          0,
+          0,
+          170,
+          0,
+          560,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Purga de Vapor",
+      "sceneHash": "a4c5aacd0282ce6be8bcfc3108e0dc022048e272b32af2cc8080c8a35d56e2f3"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "speed": 2120,
+          "objects": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "speed": 1944,
+          "objects": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "speed": 1688,
+          "objects": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "speed": 1096,
+          "objects": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "speed": 200,
+          "objects": []
+        }
+      ],
+      "lance": false,
+      "champion": "brasa",
+      "slot": 2,
+      "trace": [
+        [
+          "aura",
+          "brasa_dismantle~p",
+          0,
+          0,
+          24,
+          0,
+          2200,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "burst",
+          "brasa_dismantle~p",
+          0,
+          0,
+          50,
+          0,
+          480,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Desmontaje Rápido",
+      "sceneHash": "9e5f3a785ac076e40681010e2976d0407e7ce512722a3d1164f79c0289f9aab5"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "turret",
+              "life": 9920,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": [
+            {
+              "kind": "turret",
+              "life": 9744,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": [
+            {
+              "kind": "turret",
+              "life": 9488,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": [
+            {
+              "kind": "turret",
+              "life": 8896,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": [
+            {
+              "kind": "turret",
+              "life": 8000,
+              "owner": 0
+            }
+          ]
+        }
+      ],
+      "lance": false,
+      "champion": "brasa",
+      "slot": 3,
+      "trace": [],
+      "objects": [
+        "turret"
+      ],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Turno de Emergencia",
+      "sceneHash": "a56aeeb3846e5defaea9f9f50f2789fc0e4550faf6f335a3d8c3cd526f638d8c"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "steam",
+              "life": 1920,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": [
+            {
+              "kind": "steam",
+              "life": 1744,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": [
+            {
+              "kind": "steam",
+              "life": 1488,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": [
+            {
+              "kind": "steam",
+              "life": 896,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": []
+        }
+      ],
+      "lance": false,
+      "champion": "brasa",
+      "slot": 4,
+      "trace": [
+        [
+          "cone",
+          "brasa_purge~h",
+          0,
+          0,
+          187.00000000000003,
+          0,
+          560,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Purga de Vapor",
+      "sceneHash": "c0352ec8540c9aa2e4dac32e94ebbce5a9f76a29b17636c58e32665ae3fe0615"
+    }
+  ],
+  "errors": []
+}

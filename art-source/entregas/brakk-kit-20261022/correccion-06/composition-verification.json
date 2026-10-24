@@ -1,0 +1,884 @@
+{
+  "checks": [
+    {
+      "name": "open silhouette bosque",
+      "pass": true,
+      "detail": {
+        "arena": "bosque",
+        "variant": "",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged bosque beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged bosque burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged bosque beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged bosque burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged bosque nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette bosque~h",
+      "pass": true,
+      "detail": {
+        "arena": "bosque",
+        "variant": "~h",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged bosque~h beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged bosque~h burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged bosque~h beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged bosque~h burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged bosque~h nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette bosque~p",
+      "pass": true,
+      "detail": {
+        "arena": "bosque",
+        "variant": "~p",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged bosque~p beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged bosque~p burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged bosque~p beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged bosque~p burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged bosque~p nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette hielo",
+      "pass": true,
+      "detail": {
+        "arena": "hielo",
+        "variant": "",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged hielo beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged hielo burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged hielo beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged hielo burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged hielo nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette hielo~h",
+      "pass": true,
+      "detail": {
+        "arena": "hielo",
+        "variant": "~h",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged hielo~h beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged hielo~h burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged hielo~h beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged hielo~h burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged hielo~h nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette hielo~p",
+      "pass": true,
+      "detail": {
+        "arena": "hielo",
+        "variant": "~p",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged hielo~p beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged hielo~p burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged hielo~p beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged hielo~p burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged hielo~p nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette infernal",
+      "pass": true,
+      "detail": {
+        "arena": "infernal",
+        "variant": "",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged infernal beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged infernal burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged infernal beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged infernal burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged infernal nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette infernal~h",
+      "pass": true,
+      "detail": {
+        "arena": "infernal",
+        "variant": "~h",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged infernal~h beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged infernal~h burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged infernal~h beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged infernal~h burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged infernal~h nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette infernal~p",
+      "pass": true,
+      "detail": {
+        "arena": "infernal",
+        "variant": "~p",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged infernal~p beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged infernal~p burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged infernal~p beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged infernal~p burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged infernal~p nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette laberinto",
+      "pass": true,
+      "detail": {
+        "arena": "laberinto",
+        "variant": "",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged laberinto beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged laberinto burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged laberinto beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged laberinto burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged laberinto nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette laberinto~h",
+      "pass": true,
+      "detail": {
+        "arena": "laberinto",
+        "variant": "~h",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged laberinto~h beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged laberinto~h burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged laberinto~h beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged laberinto~h burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged laberinto~h nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette laberinto~p",
+      "pass": true,
+      "detail": {
+        "arena": "laberinto",
+        "variant": "~p",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged laberinto~p beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged laberinto~p burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged laberinto~p beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged laberinto~p burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged laberinto~p nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette acuatica",
+      "pass": true,
+      "detail": {
+        "arena": "acuatica",
+        "variant": "",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged acuatica beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged acuatica burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged acuatica beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged acuatica burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged acuatica nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette acuatica~h",
+      "pass": true,
+      "detail": {
+        "arena": "acuatica",
+        "variant": "~h",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged acuatica~h beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged acuatica~h burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged acuatica~h beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged acuatica~h burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged acuatica~h nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette acuatica~p",
+      "pass": true,
+      "detail": {
+        "arena": "acuatica",
+        "variant": "~p",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged acuatica~p beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged acuatica~p burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged acuatica~p beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged acuatica~p burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged acuatica~p nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette minas",
+      "pass": true,
+      "detail": {
+        "arena": "minas",
+        "variant": "",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged minas beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged minas burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged minas beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged minas burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged minas nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette minas~h",
+      "pass": true,
+      "detail": {
+        "arena": "minas",
+        "variant": "~h",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged minas~h beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged minas~h burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged minas~h beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged minas~h burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged minas~h nova/siege",
+      "pass": true
+    },
+    {
+      "name": "open silhouette minas~p",
+      "pass": true,
+      "detail": {
+        "arena": "minas",
+        "variant": "~p",
+        "width": 48,
+        "height": 56,
+        "frames": 12,
+        "clipped": 0,
+        "center": 0,
+        "soft": 0,
+        "opaque": 2664
+      }
+    },
+    {
+      "name": "unchanged minas~p beam/brakk_build",
+      "pass": true
+    },
+    {
+      "name": "unchanged minas~p burst/brakk_deploy",
+      "pass": true
+    },
+    {
+      "name": "unchanged minas~p beam/brakk_nails",
+      "pass": true
+    },
+    {
+      "name": "unchanged minas~p burst/brakk_repair",
+      "pass": true
+    },
+    {
+      "name": "unchanged minas~p nova/siege",
+      "pass": true
+    },
+    {
+      "name": "baking consumes zero combat RNG",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "real draw uses native 48x56 source",
+      "pass": true,
+      "detail": [
+        144,
+        0,
+        48,
+        56,
+        -28.799999999999997,
+        -57.6,
+        57.599999999999994,
+        67.2
+      ]
+    },
+    {
+      "name": "real draw follows moved owner",
+      "pass": true,
+      "detail": {
+        "first": [
+          144,
+          0,
+          48,
+          56,
+          -28.799999999999997,
+          -57.6,
+          57.599999999999994,
+          67.2
+        ],
+        "second": [
+          144,
+          0,
+          48,
+          56,
+          -13.799999999999997,
+          -66.60000000000001,
+          57.599999999999994,
+          67.2
+        ]
+      }
+    },
+    {
+      "name": "dead owner stops draw without extending duration",
+      "pass": true
+    }
+  ],
+  "rows": [
+    {
+      "arena": "bosque",
+      "variant": "",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "bosque",
+      "variant": "~h",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "bosque",
+      "variant": "~p",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "hielo",
+      "variant": "",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "hielo",
+      "variant": "~h",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "hielo",
+      "variant": "~p",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "infernal",
+      "variant": "",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "infernal",
+      "variant": "~h",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "infernal",
+      "variant": "~p",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "laberinto",
+      "variant": "",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "laberinto",
+      "variant": "~h",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "laberinto",
+      "variant": "~p",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "acuatica",
+      "variant": "",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "acuatica",
+      "variant": "~h",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "acuatica",
+      "variant": "~p",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "minas",
+      "variant": "",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "minas",
+      "variant": "~h",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    },
+    {
+      "arena": "minas",
+      "variant": "~p",
+      "width": 48,
+      "height": 56,
+      "frames": 12,
+      "clipped": 0,
+      "center": 0,
+      "soft": 0,
+      "opaque": 2664
+    }
+  ],
+  "errors": []
+}

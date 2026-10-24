@@ -1,0 +1,86 @@
+{
+  "main": "80683b03de58286398ef47de828c39196542c14d",
+  "pngs": [
+    {
+      "path": "assets/vfx/axiom/err404.png",
+      "sha256": "452c92cea132ca3115f06545c3223fa8f3f61078bb1f92b609b1d8251734a6e2",
+      "size": [
+        1560,
+        160
+      ],
+      "renderer_frames": 13,
+      "cell": [
+        120,
+        160
+      ],
+      "dimensions_match": true,
+      "preserved": true
+    },
+    {
+      "path": "assets/vfx/axiom/overwrite.png",
+      "sha256": "d46af98666119119d001d20b81310db6a740ab5fa8481cb9d15bdeb3406b01f9",
+      "size": [
+        1625,
+        140
+      ],
+      "renderer_frames": 13,
+      "cell": [
+        125,
+        140
+      ],
+      "dimensions_match": true,
+      "preserved": true
+    },
+    {
+      "path": "assets/vfx/axiom/teleport_out.png",
+      "sha256": "7d7f353f63a892031fbf94db22308e4b02a6c7cfb40acce44a3a81dceb8a6105",
+      "size": [
+        720,
+        135
+      ],
+      "renderer_frames": 6,
+      "cell": [
+        120,
+        135
+      ],
+      "dimensions_match": true,
+      "preserved": true
+    },
+    {
+      "path": "assets/vfx/axiom/teleport_in.png",
+      "sha256": "0a5b4785a3c3dc112cbd38f25bf202ce664b94444fbc4d084ac022366ba067be",
+      "size": [
+        822,
+        135
+      ],
+      "renderer_frames": 6,
+      "cell": [
+        137,
+        135
+      ],
+      "dimensions_match": true,
+      "preserved": true
+    },
+    {
+      "path": "assets/vfx/axiom/forcequit.png",
+      "sha256": "715de9810dc3ba296a01b6b34c85647d07f78f80eb98ba19ec35930fce99c835",
+      "size": [
+        1560,
+        145
+      ],
+      "renderer_frames": 13,
+      "cell": [
+        120,
+        145
+      ],
+      "dimensions_match": true,
+      "preserved": true
+    }
+  ],
+  "renderer": "js/rendering/effect-atlases.js:AXIOM_VFX_DEF 18fps; effect height90u grows25%; not radius-aware",
+  "call_sites": "js/skills/abilities.js:err404,overwrite_nova,teleport,force_quit",
+  "basic": "js/systems/skill-evolution.js:CHAMP_IDENTITY.axiom proj glyph; procedural rotating square",
+  "ultimate_additional": "js/champions/ult-forms/forms-2a-1.js:window N44, duration4400ms",
+  "visual_review": "err404/overwrite source strips inspected: body and text baked in. New sources request FX-only. Runtime masking not revalidated, no claim of visible body duplication.",
+  "rationale": "Requested staged FX-only sources are absent; existing effects are present and preserved. Frame-count difference alone does not mean missing gameplay."
+}

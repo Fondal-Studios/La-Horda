@@ -1,0 +1,32 @@
+{
+  "relay": {
+    "demonstratedIn": "CPU_RATE=6 reproduced20/22, same two assertions as06",
+    "originalObservation": "guest only wall at early assertion; later lifecycle has turret with owner1. At final host trace turret life5616,tick616,left6,hp80.3: first1000ms interval had not elapsed.",
+    "wallVsSimulation": {
+      "hostWallSpanMs": 4842.2,
+      "hostSimulationSpanMs": 480
+    },
+    "correction": "Wait bounded30s for guest two live owned objects, host turret left<6, guest nails event; retain22 assertions and fail on timeout. No mechanical duration changed.",
+    "correctedThrottled": {
+      "checksPassed": 22,
+      "checksTotal": 22,
+      "waitsPassed": 3,
+      "firstIntervalAdditionalWallMs": 4842
+    },
+    "finalUnthrottled": {
+      "checksPassed": 22,
+      "checksTotal": 22,
+      "atlasDrawsHost": 53,
+      "atlasDrawsTouchGuest": 77
+    },
+    "negativeControl": "CANARY_NAILS suppresses local host sfaPush. Host-event assertion fails; guest still receives network-hook event. This is a host-emission negative control, not a network delivery blackout.",
+    "historicalLimit": "06 lacks lifecycle trace; same symptom reproduced with demonstrated cause here, cannot assign exact historical machine timing."
+  },
+  "B117": {
+    "historicalFailures": "06 bosque/hielo beam~h impact minimum79.886%; remain recorded",
+    "freshOriginalGate": "162rows PASS, min86.685%; prior failure not reproduced",
+    "identicalPoseGate": "162rows/486placements each viewport, all baseline and restoration deltas0; minimum86.685% each. Every placement mutates pose in live render; harness restores it only between diagnostic images.",
+    "canary": "one changed channel at one pixel fails all81 placements in one arena",
+    "limits": "Does not establish root of historical2FAIL, nor compound contrast/Art Gate. No thresholds relaxed."
+  }
+}

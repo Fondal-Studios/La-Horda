@@ -1,0 +1,383 @@
+{
+  "results": [
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "hook",
+              "life": 270,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": [
+            {
+              "kind": "hook",
+              "life": 94,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": []
+        }
+      ],
+      "lance": false,
+      "champion": "eslabon",
+      "slot": 0,
+      "trace": [
+        [
+          "beam",
+          "chain",
+          0,
+          -12,
+          0,
+          0,
+          560,
+          100,
+          -12,
+          24,
+          -2
+        ],
+        [
+          "burst",
+          "chain",
+          100,
+          0,
+          44,
+          0,
+          480,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rays",
+          "chain~p",
+          0,
+          -12,
+          40,
+          0,
+          340,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Cadena de Retorno",
+      "sceneHash": "02a05b429e900398882326552582dbb720274c6b170abb936f2c04e9e601561b"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": [
+            {
+              "kind": "chain",
+              "life": 5920,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": [
+            {
+              "kind": "chain",
+              "life": 5744,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": [
+            {
+              "kind": "chain",
+              "life": 5488,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": [
+            {
+              "kind": "chain",
+              "life": 4896,
+              "owner": 0
+            }
+          ]
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": [
+            {
+              "kind": "chain",
+              "life": 4000,
+              "owner": 0
+            }
+          ]
+        }
+      ],
+      "lance": false,
+      "champion": "eslabon",
+      "slot": 1,
+      "trace": [
+        [
+          "burst",
+          "chain~h",
+          115,
+          100,
+          40,
+          0,
+          480,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "burst",
+          "chain~h",
+          115,
+          -100,
+          40,
+          0,
+          480,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [
+        "chain"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Línea Infranqueable",
+      "sceneHash": "bd74755840cfca5fe5fe370a2cff2fbd3a226f6d347f1da9b43a4e8ed7c3f065"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": []
+        }
+      ],
+      "lance": false,
+      "champion": "eslabon",
+      "slot": 2,
+      "trace": [
+        [
+          "aura",
+          "chain~p",
+          0,
+          0,
+          44,
+          0,
+          2200,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          "aura",
+          "chain~p",
+          -40,
+          14,
+          44,
+          0,
+          2200,
+          null,
+          null,
+          null,
+          1
+        ],
+        [
+          "beam",
+          "chain~p",
+          0,
+          -12,
+          0,
+          0,
+          700,
+          -40,
+          2,
+          18,
+          -2
+        ],
+        [
+          "rays",
+          "chain~p",
+          0,
+          -12,
+          40,
+          0,
+          340,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "column",
+          "chain~p",
+          0,
+          4,
+          16,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "column",
+          "chain~p",
+          -40,
+          18,
+          16,
+          0,
+          700,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Custodia",
+      "sceneHash": "d0318fba100598e9c93ff5f9910bfe067dcac334f8ac317be13278344d7d3a61"
+    },
+    {
+      "lifecycle": [
+        {
+          "nominal": 80,
+          "elapsed": 80,
+          "objects": []
+        },
+        {
+          "nominal": 250,
+          "elapsed": 256,
+          "objects": []
+        },
+        {
+          "nominal": 500,
+          "elapsed": 512,
+          "objects": []
+        },
+        {
+          "nominal": 1100,
+          "elapsed": 1104,
+          "objects": []
+        },
+        {
+          "nominal": 2000,
+          "elapsed": 2000,
+          "objects": []
+        }
+      ],
+      "lance": false,
+      "champion": "eslabon",
+      "slot": 3,
+      "trace": [],
+      "objects": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "times": [
+        80,
+        250,
+        500,
+        1100,
+        2000
+      ],
+      "name": "Nadie Queda Atrás",
+      "sceneHash": "6aaa1f2019a63bc465bb20737907208df895c10a5fd399a42bb584614c08547a"
+    }
+  ],
+  "errors": []
+}

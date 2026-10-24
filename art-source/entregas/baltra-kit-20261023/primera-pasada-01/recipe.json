@@ -1,0 +1,121 @@
+{
+  "base": "758aa2ffacaae6542d31776e4a66ea7847a73b1b",
+  "source": "js/champions/skill-fx-a/c/baltra.js",
+  "generator": "Recetas nativas SFA JavaScript, alfa0/255, sin imagen generativa ni filtros de edición; no se necesita image_gen para extensión de sistema Canvas existente.",
+  "sourceHistory": "Callback T.bake y extras:false optativos reconciliados de talleres SFA existentes; ningún arte FIX de otros campeones importado.",
+  "runtimeFiles": [
+    "js/champions/skill-fx-a/engine.js",
+    "js/champions/skill-fx-a/bind.js",
+    "js/champions/skill-fx-a/c/baltra.js"
+  ],
+  "commands": {
+    "export": "OUT=/tmp/baltra-reexport node tools/vfx/verify-baltra-kit.js",
+    "captureAfter": "OUT=/tmp/baltra-after MOBILE=1 node tools/vfx/capture-baltra-kit.js",
+    "captureBefore": "OUT=/tmp/baltra-before BASELINE=1 MOBILE=1 node tools/vfx/capture-baltra-kit.js",
+    "parity": "ONLY=baltra FRAMES=360 node tools/vfx/parity-baltra-kit.js",
+    "online": "node tools/expedition/baltra-firstpass-online.js",
+    "functional": "node art-source/entregas/baltra-kit-20261023/primera-pasada-01/sources/run-functional.js"
+  },
+  "environment": "Node + playwright; CHROMIUM_PATH apunta a Chromium disponible. NODE_PATH según instalación local. Capturas horizontal omiten MOBILE. No API keys adicionales.",
+  "atlases": [
+    {
+      "theme": "baltra_wave",
+      "art": "nova",
+      "size": 128,
+      "arc": 0,
+      "w": 128,
+      "h": 128,
+      "n": 12,
+      "cells": [
+        152,
+        290,
+        441,
+        578,
+        795,
+        988,
+        1203,
+        1150,
+        695,
+        343,
+        187,
+        0
+      ]
+    },
+    {
+      "theme": "baltra_guard",
+      "art": "cone",
+      "size": 64,
+      "arc": 0.95,
+      "w": 66,
+      "h": 111,
+      "n": 12,
+      "cells": [
+        201,
+        215,
+        233,
+        247,
+        250,
+        250,
+        250,
+        234,
+        174,
+        111,
+        63,
+        0
+      ]
+    },
+    {
+      "theme": "baltra_guard",
+      "art": "aura",
+      "size": 0,
+      "arc": 0,
+      "w": 48,
+      "h": 56,
+      "n": 12,
+      "cells": [
+        84,
+        86,
+        88,
+        88,
+        88,
+        86,
+        84,
+        82,
+        80,
+        80,
+        80,
+        82
+      ]
+    },
+    {
+      "theme": "baltra_clapper",
+      "art": "cone",
+      "size": 96,
+      "arc": 0.85,
+      "w": 98,
+      "h": 151,
+      "n": 12,
+      "cells": [
+        139,
+        153,
+        178,
+        187,
+        188,
+        180,
+        170,
+        152,
+        113,
+        72,
+        42,
+        0
+      ]
+    }
+  ],
+  "statuses": {
+    "GENERADO": true,
+    "VALIDADO": false,
+    "INTEGRADO_MAIN": false,
+    "publicacionVerificada": false
+  },
+  "intentionalEmptyCells": "frame11 de wave/cone guard/cone clapper es disipación completa:45/48 no vacíos,48 fases intencionales."
+}

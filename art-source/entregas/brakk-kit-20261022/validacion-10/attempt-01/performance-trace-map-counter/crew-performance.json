@@ -1,0 +1,110 @@
+{
+  "scope": "Headless Chromium local full update+render, real cooldowns, 32 fixture enemies, 4 heroes. No physical mobile/thermal/GC guarantee; heap snapshots do not prove leak freedom.",
+  "results": [
+    {
+      "mobile": true,
+      "arena": "bosque",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "spikes": [
+        {
+          "frame": 0,
+          "ms": 268.29999999701977,
+          "recipients": 4,
+          "pool": 6,
+          "cacheKeys": 0
+        }
+      ],
+      "all": {
+        "samples": 1200,
+        "p50": 2,
+        "p95": 4,
+        "max": 268.29999999701977
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 2.600000001490116,
+        "p95": 4.899999998509884,
+        "max": 268.29999999701977
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.8999999985098839,
+        "p95": 3.699999999254942,
+        "max": 6.600000001490116
+      },
+      "peakPool": 7,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 33100000,
+      "heapAfter": 33100000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    },
+    {
+      "mobile": false,
+      "arena": "bosque",
+      "frames": 1200,
+      "simulatedMs": 19200,
+      "casts": 2,
+      "coveredFrames": 419,
+      "spikes": [
+        {
+          "frame": 0,
+          "ms": 235.10000000149012,
+          "recipients": 4,
+          "pool": 6,
+          "cacheKeys": 0
+        }
+      ],
+      "all": {
+        "samples": 1200,
+        "p50": 1.800000000745058,
+        "p95": 3.100000001490116,
+        "max": 235.10000000149012
+      },
+      "fourRecipients": {
+        "samples": 419,
+        "p50": 2.100000001490116,
+        "p95": 3.7999999970197678,
+        "max": 235.10000000149012
+      },
+      "otherFrames": {
+        "samples": 781,
+        "p50": 1.699999999254942,
+        "p95": 2.399999998509884,
+        "max": 3.900000002235174
+      },
+      "peakPool": 7,
+      "retained": 0,
+      "poolAfterReset": 0,
+      "heapBefore": 31200000,
+      "heapAfter": 31200000,
+      "buffs": [
+        -3840,
+        -3840,
+        -3840,
+        -3840
+      ],
+      "checks": {
+        "crewFlag": true,
+        "fourRecipientsObserved": true,
+        "poolBounded": true,
+        "resetEmpty": true
+      }
+    }
+  ],
+  "errors": []
+}

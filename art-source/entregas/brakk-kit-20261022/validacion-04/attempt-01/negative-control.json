@@ -1,0 +1,448 @@
+{
+  "minimum": 0.8,
+  "delta": 24,
+  "fullMinimum": 0.4,
+  "scope": "isolated B117/B119 SFA only, not compound contrast",
+  "measurements": [
+    {
+      "arena": "bosque",
+      "rows": [
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "ant",
+          "mask": 866,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "impacto",
+          "mask": 901,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build:65",
+          "tag": "disipa",
+          "mask": 902,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "ant",
+          "mask": 1580,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "impacto",
+          "mask": 1569,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair:30",
+          "tag": "disipa",
+          "mask": 1557,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "ant",
+          "mask": 1578,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "impacto",
+          "mask": 1572,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair:24",
+          "tag": "disipa",
+          "mask": 1574,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "ant",
+          "mask": 889,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "impacto",
+          "mask": 847,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~h:65",
+          "tag": "disipa",
+          "mask": 842,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "ant",
+          "mask": 1521,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "impacto",
+          "mask": 1523,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~h:30",
+          "tag": "disipa",
+          "mask": 1515,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "ant",
+          "mask": 1553,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "impacto",
+          "mask": 1554,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~h:24",
+          "tag": "disipa",
+          "mask": 1550,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "ant",
+          "mask": 862,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "impacto",
+          "mask": 857,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:beam:brakk_build~p:65",
+          "tag": "disipa",
+          "mask": 882,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "ant",
+          "mask": 1571,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "impacto",
+          "mask": 1569,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:burst:brakk_repair~p:30",
+          "tag": "disipa",
+          "mask": 1566,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "ant",
+          "mask": 1577,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "impacto",
+          "mask": 1577,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "sfa:aura:brakk_repair~p:24",
+          "tag": "disipa",
+          "mask": 1579,
+          "min": 1,
+          "dec": [
+            1,
+            1,
+            1
+          ],
+          "all": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "err": null
+    }
+  ],
+  "errors": [],
+  "bad": 0
+}

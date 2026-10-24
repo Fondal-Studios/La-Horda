@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "date": "2026-10-23",
+  "medium": "native canvas pixel recipe; no raster image generation",
+  "source": "source.js",
+  "sourceSha256": "81be8914332b0e0fa33941c02fd9fb37827f86ce8e1ec8917896c26b0e7c81f9",
+  "previousSource": "../correccion-02/source.js",
+  "previousSourceSha256": "e3c244092f62018744bd7cf6ed5f4c343f8fa478b4abae1850558eb2ae994696",
+  "framesAndCells": [
+    {
+      "name": "wall-mount",
+      "art": "beam",
+      "theme": "brakk_build",
+      "size": 12,
+      "cell": [
+        16,
+        12
+      ],
+      "frames": 11
+    },
+    {
+      "name": "turret-deploy",
+      "art": "burst",
+      "theme": "brakk_deploy~h",
+      "size": 64,
+      "cell": [
+        64,
+        64
+      ],
+      "frames": 12
+    },
+    {
+      "name": "nail-volley",
+      "art": "beam",
+      "theme": "brakk_nails",
+      "size": 12,
+      "cell": [
+        16,
+        12
+      ],
+      "frames": 8
+    },
+    {
+      "name": "repair-weld",
+      "art": "burst",
+      "theme": "brakk_repair~p",
+      "size": 48,
+      "cell": [
+        48,
+        48
+      ],
+      "frames": 10
+    },
+    {
+      "name": "repair-brace",
+      "art": "aura",
+      "theme": "brakk_repair~p",
+      "size": 0,
+      "cell": [
+        40,
+        56
+      ],
+      "frames": 12
+    }
+  ],
+  "preserved": "Original sources in parent commit and source-before.js. IDs, gameplay times, radii, UF and props unchanged.",
+  "commands": [
+    "OUT=art-source/entregas/brakk-kit-20261022/validacion-03 node tools/vfx/verify-brakk-kit.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/validacion-03/mobile MOBILE=1 node tools/vfx/capture-brakk-integral.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/validacion-03/landscape node tools/vfx/capture-brakk-integral.js",
+    "OUT=art-source/entregas/brakk-kit-20261022/validacion-03 node tools/vfx/verify-brakk-deploy-runtime.js",
+    "node tools/lib/with-site.js tools/items/t_story.js"
+  ],
+  "environment": {
+    "NODE_PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "CHROMIUM_PATH": "/tmp/chromium"
+  },
+  "purpose": "Validation of existing B118; zero new art frames",
+  "runtimeSource": "js/champions/skill-fx-a/c/brakk.js",
+  "capture": "tools/vfx/capture-brakk-integral.js",
+  "scenarios": {
+    "arenas": [
+      "bosque",
+      "hielo",
+      "infernal",
+      "laberinto",
+      "acuatica",
+      "minas"
+    ],
+    "looks": [
+      "base",
+      "gear",
+      "alt1",
+      "croma",
+      "set"
+    ],
+    "viewports": [
+      [
+        390,
+        844
+      ],
+      [
+        844,
+        390
+      ]
+    ],
+    "timesMs": [
+      80,
+      330,
+      610
+    ],
+    "enemies": 6,
+    "gear": "Four real legendary equipment items; set uses four quality_brakk pieces via equipItem."
+  },
+  "atlasIdentity": {
+    "repair-brace.png": {
+      "sha256": "c4819ef7d859756b9f6a94db7c3be504c9beaa281021e03cdc609a605d128356",
+      "identicalPrevious": true
+    },
+    "nail-volley.png": {
+      "sha256": "76cf91e7128b7c2244802b1471e6b2c7a348e6160c7d3f09ad435f9e2189a2a2",
+      "identicalPrevious": true
+    },
+    "wall-mount.png": {
+      "sha256": "c4c0b263c32205fc0e5997dfea218562701e94239fc75adb0453c3b143375778",
+      "identicalPrevious": true
+    },
+    "repair-weld.png": {
+      "sha256": "c8915d6c61bf57b1d67b1d82f06d1af8dfe6a4568b63e38edef5dc3453efa1a1",
+      "identicalPrevious": true
+    },
+    "turret-deploy.png": {
+      "sha256": "a877ab6984ec7e31e0ba70f8ace6bc220050ace38d54bdc3bcc4034216109522",
+      "identicalPrevious": true
+    }
+  }
+}

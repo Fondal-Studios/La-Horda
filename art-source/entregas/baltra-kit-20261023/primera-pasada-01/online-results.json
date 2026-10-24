@@ -1,0 +1,63 @@
+{
+  "checks": [
+    {
+      "host": "solciju",
+      "guest": "baltra",
+      "ok": true,
+      "rh": {
+        "draw": {
+          "baltra_wave": 13,
+          "baltra_guard~h": 46,
+          "baltra_clapper~p": 12
+        },
+        "k": "baltra",
+        "casts": 4,
+        "objects": [
+          {
+            "id": 1,
+            "owner": 1,
+            "kind": "ex_toll"
+          }
+        ],
+        "hp": 366,
+        "skin": "baltra_skin"
+      },
+      "rg": {
+        "draw": {
+          "baltra_wave": 39,
+          "baltra_guard~h": 105,
+          "baltra_clapper~p": 33
+        },
+        "k": "baltra",
+        "objects": [
+          {
+            "id": 1,
+            "owner": 1,
+            "kind": "ex_toll"
+          }
+        ],
+        "hp": 366,
+        "skin": "baltra_skin"
+      }
+    },
+    {
+      "name": "baltra_wave drawn both peers",
+      "ok": true,
+      "host": 13,
+      "guest": 39
+    },
+    {
+      "name": "baltra_guard~h drawn both peers",
+      "ok": true,
+      "host": 46,
+      "guest": 105
+    },
+    {
+      "name": "baltra_clapper~p drawn both peers",
+      "ok": true,
+      "host": 12,
+      "guest": 33
+    }
+  ],
+  "errors": []
+}

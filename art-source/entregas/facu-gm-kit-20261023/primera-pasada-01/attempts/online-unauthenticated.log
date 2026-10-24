@@ -1,0 +1,37 @@
+[arnés] servidor propio: http://127.0.0.1:40853 (raíz /workspace/scratch/a01f80e6b406/la-horda-facu)
+JOINED {
+  code: 'BE3X96',
+  human: 2,
+  slots: [
+    {
+      slot: 0,
+      name: 'Jugador',
+      champ: 'solciju',
+      level: 20,
+      ready: true,
+      connected: true,
+      host: true,
+      muted: false,
+      founder: null
+    },
+    {
+      slot: 1,
+      name: 'Jugador',
+      champ: '',
+      level: 20,
+      ready: false,
+      connected: true,
+      host: false,
+      muted: false,
+      founder: null
+    },
+    null,
+    null
+  ]
+}
+HUMANS_READY
+page.waitForFunction: Timeout 30000ms exceeded.
+    at /workspace/scratch/a01f80e6b406/la-horda-facu/tools/ascension/facu-firstpass-online.js:7:421 {
+  log: [],
+  name: 'TimeoutError'
+}

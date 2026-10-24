@@ -1,0 +1,19 @@
+{
+  "state": "EN_CORRECCION",
+  "gate": "FIX / NO_INTEGRAR",
+  "generated": true,
+  "validated": false,
+  "integratedMain": false,
+  "publicationVerified": false,
+  "reviewed": [
+    "sources/pose-sheet-raw.png",
+    "comparison-native.png"
+  ],
+  "findings": [
+    "Fortress identity retained, but chest cavity/floating plate separation unresolved.",
+    "Helmet dominates native-scale silhouette; no measured anatomical ratio claimed.",
+    "Source880333 partial alpha vs860617 previous; atlas126954 vs123423.",
+    "Old crop boundaries contact opaque pixels in frame13; no installation."
+  ],
+  "decision": "No skins on rejected geometry, no identical prompt retry. Preserve installed originals. Close independently approvable component."
+}

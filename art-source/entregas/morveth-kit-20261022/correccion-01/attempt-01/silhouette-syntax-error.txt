@@ -1,0 +1,15 @@
+/workspace/scratch/a01f80e6b406/la-horda-morveth/tools/vfx/verify-morveth-silhouette.js:8
+  selectedClass='morveth';currentArena='bosque';lobbyAllies=[];save.stash=[];for(const c of Object.values(save.champions))Object.assign(c,{unlocked:true,level:60,equipment:{},inventory:[],talents:{nodes:{},mastery:null,masteryNodes:{}});startRun(3);state='menu';enemies=[];
+                                                                                                                                                                                                                                           ^
+
+SyntaxError: Unexpected token ')'
+    at wrapSafe (node:internal/modules/cjs/loader:1804:18)
+    at Module._compile (node:internal/modules/cjs/loader:1846:20)
+    at Object..js (node:internal/modules/cjs/loader:2003:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.19.0

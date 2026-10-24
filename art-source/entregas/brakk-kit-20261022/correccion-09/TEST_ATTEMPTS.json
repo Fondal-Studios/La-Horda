@@ -1,0 +1,44 @@
+{
+  "attempts": [
+    {
+      "id": "layers-parent08",
+      "result": "PASS8",
+      "note": "Same-frame support draw ablation, no runtime change; bounded causal finding."
+    },
+    {
+      "id": "candidate01",
+      "result": "FAIL22",
+      "minimum": 0.7088948787061995,
+      "source": "attempt-01/kit-candidate.js",
+      "sourceSha256": "585e3156f11f71a62af24fac26a52172f1abfc5f2a3a66b31944113501656755",
+      "note": "Lateral extension too early; full source, five atlas exports and gate retained. Eight probe scenes are diagnostics, not approval."
+    },
+    {
+      "id": "candidate02",
+      "result": "PASS",
+      "note": "Folded anticipation then staged unfolding .18→.4; thresholds unchanged. 162rows/486placements per viewport, min82%."
+    },
+    {
+      "id": "opaque-canary",
+      "result": "EXPECTED_FAIL33",
+      "note": "27rows fail visibility plus6 fill errors; no gate weakening."
+    },
+    {
+      "id": "online-original08",
+      "result": "PASS24",
+      "note": "Existing armor regression; actual deployment draw observation added afterward."
+    },
+    {
+      "id": "online-deploy09",
+      "result": "PASS26",
+      "note": "24 prior assertions retained + two actual deployment renderer checks; host21/touchguest36 draws. Three state waits retained."
+    },
+    {
+      "id": "atlas-comparison-path",
+      "result": "SCRIPT_ERROR",
+      "note": "First analysis used missing08/atlases path; corrected to08/kit/atlases. No production/test outcome inferred from failed analysis."
+    }
+  ],
+  "noNewCpu6Run": true,
+  "noPhysicalMobileRun": true
+}
