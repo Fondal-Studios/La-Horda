@@ -39,3 +39,13 @@ function computePlayerStats(classKey, levelOverride){
   const speedFinal = speed * (1 + passiveSum(classKey,"speed_mult"));
   return {hp:hpFinal, dmg, def, speed:speedFinal, shieldPct};
 }
+
+// One read model for HUD and potion eligibility. Shields are not missing HP.
+function heroVitals(h){
+  const positive = v => Number.isFinite(v) ? Math.max(0, v) : 0;
+  const maxHp = positive(h.maxHp), hp = Math.min(maxHp, positive(h.hp));
+  const shield = positive(h.shield) + positive(h.itemShield);
+  const shieldCapacity = Math.max(positive(h.itemMaxShield), shield, 1);
+  return {hp, maxHp, missingHp:Math.max(0, maxHp-hp), shield,
+    hpPct:maxHp ? hp/maxHp*100 : 0, shieldPct:shield/shieldCapacity*100};
+}
