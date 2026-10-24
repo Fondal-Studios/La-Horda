@@ -57,6 +57,7 @@ function starterSkinOptions(k){
 // Da la skin `id` (de set o croma) y la deja equipada en `k`, sin cobrar. Lo usan el regalo y el vale.
 // {ok, kind, equipped, reason}
 function _giftSkin(k, id){
+  if(SET_SKINS[id]?.manifest)return {ok:false,reason:"Esta manifestación se obtiene en Colección."};
   if(typeof state !== "undefined" && state === "playing") return {ok:false, reason:"Se elige fuera de la partida"};
   if(typeof CROMA_SKINS !== "undefined" && CROMA_SKINS[id]){
     const d = CROMA_SKINS[id];

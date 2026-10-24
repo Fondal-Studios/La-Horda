@@ -7,7 +7,7 @@ for(const id of MYTHIC_SET_IDS){
  for(const type of EQUIP_SLOT_TYPES){
   const key=id+'_'+type;
   set.pieces[type]=set.pieces[type]||ITEM_TYPES[type].label+' · '+set.name;
-  if(!DESIGNED_ITEMS[key])DESIGNED_ITEMS[key]={id:key,champion:null,type,set:id,name:set.pieces[type],lore:set.lore,passiveNames:[]};
+  if(!DESIGNED_ITEMS[key])DESIGNED_ITEMS[key]={id:key,collectionExtension:true,champion:null,type,set:id,name:set.pieces[type],lore:set.lore,passiveNames:[]};
   DESIGNED_ITEMS[key].rarity='mitico';DESIGNED_ITEMS[key].champion=null;
  }
  // Keep the same total bonuses, spreading their acquisition across six slots.

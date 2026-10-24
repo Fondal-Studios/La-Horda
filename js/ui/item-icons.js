@@ -140,6 +140,12 @@ function _paintPixelArt(P, it){
   P.g.imageSmoothingEnabled = false; P.g.drawImage(cv, 0, 0, 16, 16, 0, 0, 32, 32);
   return true;
 }
+// Collection extensions retain the slot silhouette and carry a small, stable forge seal.
+function _paintCollectionSeal(P,it){
+ if(!DESIGNED_ITEMS[it.designId]?.collectionExtension)return;
+ const h=_iconHash(it.designId),M=itemIconMaterial(it);P.r(23,22,7,7,'#0c0a0e');
+ for(let y=0;y<3;y++)for(let x=0;x<3;x++)if(h&(1<<(y*3+x)))P.r(24+x*2,23+y*2,1,1,M[2]);
+}
 function itemIconURL(it){
   if(!it) return "";
   if(it.designId && ITEM_ICON_ART[it.designId]) return ITEM_ICON_ART[it.designId];
@@ -148,7 +154,7 @@ function itemIconURL(it){
   try{
     const P = _painter(), M = itemIconMaterial(it), v = _iconHash(key) & 255;
     const gem = it.set ? "#9dffb0" : (it.unique ? "#e0b0ff" : (it.element==="fire" ? "#ffd06a" : ICON_GEM_COLORS[v % ICON_GEM_COLORS.length]));
-    if(!_paintPixelArt(P, it)){ (ICON_SHAPES[itemIconShape(it)] || ICON_SHAPES.sword)(P, M, v, gem); _finish(P, "#0c0a0e"); }
+    if(!_paintPixelArt(P, it)){ (ICON_SHAPES[itemIconShape(it)] || ICON_SHAPES.sword)(P, M, v, gem); _finish(P, "#0c0a0e"); _paintCollectionSeal(P,it); }
     // lienzo final 64x64: fondo por categoría + ícono ×2 + marco
     const c = document.createElement("canvas"); c.width = c.height = 64;
     const g = c.getContext("2d"); g.imageSmoothingEnabled = false;
@@ -174,7 +180,7 @@ function itemIconCanvas(it){
   try{
     const P = _painter(), M = itemIconMaterial(it), v = _iconHash(key) & 255;
     const gem = it.set ? "#9dffb0" : (it.unique ? "#e0b0ff" : (it.element==="fire" ? "#ffd06a" : ICON_GEM_COLORS[v % ICON_GEM_COLORS.length]));
-    if(!_paintPixelArt(P, it)){ (ICON_SHAPES[itemIconShape(it)] || ICON_SHAPES.sword)(P, M, v, gem); _finish(P, "#0c0a0e"); }
+    if(!_paintPixelArt(P, it)){ (ICON_SHAPES[itemIconShape(it)] || ICON_SHAPES.sword)(P, M, v, gem); _finish(P, "#0c0a0e"); _paintCollectionSeal(P,it); }
     const c = document.createElement("canvas"); c.width = c.height = 32;
     c.getContext("2d").drawImage(P.c, 0, 0, 32, 32, 0, 0, 32, 32);
     return (_ICON_CV[key] = c);

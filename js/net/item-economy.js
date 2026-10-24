@@ -4,6 +4,7 @@ const ECON={data:null,user:'',busy:null,chain:Promise.resolve(),run:null,start:n
 function economyActive(){return !!(ECON.data?.projection?.economyV2&&accountState().logged&&ECON.user===accountState().user);}
 function economyApply(d){
  if(!d)return;ECON.data=d;const p=d.projection;if(!p?.economyV2)return;
+ if(!save.economyV2){try{localStorage.setItem('horda_legacy_backup_'+ECON.user,JSON.stringify(save));}catch{economyNotify('No se pudo guardar la copia local. La copia del servidor se conserva.');}}
  save.gold=p.gold;save.gems=p.gems;save.stash=p.stash;
  for(const [k,c] of Object.entries(save.champions||{})){if(c.loadoutItems)continue;c.equipment=p.champions?.[k]?.equipment||{};if(d.account?.unlocked?.includes(k))c.unlocked=true;}
  save.cosmeticUnlocks={...save.cosmeticUnlocks,...p.cosmeticUnlocks};save.economyV2=true;
