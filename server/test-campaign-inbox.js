@@ -20,6 +20,8 @@ const {create}=require('./accounts'),{create:inbox}=require('./campaign-inbox');
  await box.handle(returning,{t:'reward-get',id:ids[0]});assert.equal(messages.at(-1)[1].result.slot,1);assert.equal(messages.at(-1)[1].result.end.snap.h[1].hp,25);
  await box.handle(returning,{t:'reward-ack',id:ids[0]});await box.handle(returning,{t:'reward-ack',id:ids[0]});
  await box.handle(returning,{t:'reward-get',id:ids[0]});assert.equal(messages.at(-1)[1].result.acknowledged,true);
+ await box.handle(returning,{t:'reward-ack',id:'__proto__'});assert.equal(Object.prototype.acknowledged,undefined);
+ await box.handle(returning,{t:'reward-get',id:'constructor'});assert.equal(messages.at(-1)[1].t,'reward-list');
  console.log('PASS durable outcome: guest offline, host gone, store restart, duplicate end/ack, private inbox isolation');
  // Authenticated users use verified identity, not a caller-supplied account id or capability.
  const accountGuest={_identity:{userId:'verified-7'}};await box.handle(accountGuest,{t:'reward-open',key:'c'.repeat(64)});

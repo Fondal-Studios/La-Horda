@@ -637,7 +637,7 @@ function netGuestStartRun(msg){
   victoryBeginRun(msg.rewardRunId || "legacy:"+net.code+":"+msg.seed);
   // reconexión = misma sala y la partida anterior NO había terminado (si terminó, es una nueva)
   const reconnecting = !!(netMatch && netMatch.role==="guest" && netMatch.code===net.code && !netMatch.ended);
-  netMatch = {role:"guest", mySlot:net.slot, seed:msg.seed, slots:msg.slots, arena:msg.arena, code:net.code, diff:msg.diff || "normal", lay:!!msg.lay,
+  netMatch = {role:"guest", rewardRunId:msg.rewardRunId, mySlot:net.slot, seed:msg.seed, slots:msg.slots, arena:msg.arena, code:net.code, diff:msg.diff || "normal", lay:!!msg.lay,
     ents:new Map(), colls:{}, lastInAt:0, posAuth:-1, pendingFull:false, started:true, ended:false,
     runStartMarked: reconnecting ? true : false};
   currentArena = msg.arena;
@@ -904,6 +904,7 @@ function netGuestEnd(d){
     persist();
     if(typeof AlphaServices!=="undefined")AlphaServices.acceptHostEventVictory(d.eventBossDefeated);
     showVictoryScreen();
+    if(saveLastWriteOK && netMatch.rewardRunId)netSend({t:"reward-ack",id:netMatch.rewardRunId});
   } else {
     showGameOverScreen();
   }

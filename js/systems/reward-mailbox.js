@@ -40,10 +40,10 @@ function rewardReview(){
  };overlay.append(close);document.body.append(overlay);
 }
 function campaignMailboxButton(){
- const host=document.getElementById('mainmenu-screen');if(!host)return;
+ const host=document.querySelector('#mainmenu-screen .hub-top');if(!host)return;
  let b=document.getElementById('reward-mailbox-btn');
- if(!b){b=document.createElement('button');b.id='reward-mailbox-btn';b.className='btn';b.onclick=rewardReview;host.append(b);}
- b.textContent=`Recompensas pendientes (${rewardOverflowCount()})`;
+ if(!b){b=document.createElement('button');b.id='reward-mailbox-btn';b.className='ui-icon-btn';b.onclick=rewardReview;b.style.cssText='font-size:14px;min-width:44px;width:auto;padding:4px';host.insertBefore(b,document.getElementById('hub-howto-btn'));}
+ b.textContent="Botín";b.title=`Recompensas pendientes (${rewardOverflowCount()})`;b.setAttribute("aria-label",b.title);
 }
 const CampaignInbox={ids:[],show:null,protocol:false};
 function campaignInboxOpen(){

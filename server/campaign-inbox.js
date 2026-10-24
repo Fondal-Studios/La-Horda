@@ -16,8 +16,8 @@ function create({getStore,ready,send}){
   const k=key(ws);if(!k)return true;
   const result=await mutate(db=>{
    const box=db[k]||{};
-   if(m.t==='reward-ack'){if(box[m.id])box[m.id].acknowledged=true;return {t:'reward-list',ids:Object.keys(box)};}
-   if(m.t==='reward-get')return box[m.id]?{t:'reward-result',result:box[m.id]}:{t:'reward-list',ids:Object.keys(box)};
+   if(m.t==='reward-ack'){if(Object.hasOwn(box,m.id))box[m.id].acknowledged=true;return {t:'reward-list',ids:Object.keys(box)};}
+   if(m.t==='reward-get')return Object.hasOwn(box,m.id)?{t:'reward-result',result:box[m.id]}:{t:'reward-list',ids:Object.keys(box)};
    return {t:'reward-list',ids:Object.keys(box)};
   });send(ws,result);return true;
  }

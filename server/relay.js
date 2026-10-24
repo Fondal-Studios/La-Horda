@@ -268,7 +268,11 @@ async function handle(ws, msg){
       if(ws._slot !== 0) return send(ws, { t: "error", code: "NOT_HOST" });
       // quienes perdieron la conexión antes de comenzar no ocupan un lugar en la partida
       room.slots.forEach((m, i) => { if(i > 0 && m && !m.ws) room.slots[i] = null; });
-      if(!await campaignInbox.start(room)) return send(ws,{t:"error",code:"REWARDS_PENDING",msg:"Recuperá tus recompensas pendientes antes de iniciar otra partida."});
+      room.campaignStartRejected=true;
+      try{
+        if(!await campaignInbox.start(room)) return send(ws,{t:"error",code:"REWARDS_PENDING",msg:"Recuperá tus recompensas pendientes antes de iniciar otra partida."});
+      }catch(e){ return send(ws,{t:"error",code:"REWARDS_STORAGE",msg:"No se pudo preparar el guardado de recompensas. Reintentá antes de iniciar."}); }
+      room.campaignStartRejected=false;
       room.state = "playing";
       trades.roomEvent(room.code); // en partida no se intercambia: las ofertas abiertas se anulan
       log("GAME_START", { code: room.code, humans: humanCount(room) });
@@ -289,6 +293,7 @@ async function handle(ws, msg){
     }
     case "msg": {
       // relay: los invitados solo le hablan al anfitrión; el anfitrión a uno o a todos
+      if(ws._slot===0 && room.campaignStartRejected) return;
       if(ws._slot===0){ campaignInbox.capture(room,msg.d); await campaignInbox.finish(room,msg.d); if(msg.d?.k==="end")send(ws,{t:"reward-committed"}); }
       const str = JSON.stringify({ t: "msg", from: ws._slot, d: msg.d });
       if(ws._slot !== 0){ const h = room.slots[0]; if(h && h.ws) sendRaw(h.ws, str); return; }

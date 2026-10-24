@@ -290,6 +290,7 @@ function finishBossVictory(){
     crystalAward(ck, boss ? boss.x : player.x, boss ? boss.y : player.y); wait = 3400;
   }
   buildVictoryData(); // durable loot before the victory delay, even if the page closes now
+  if(netIsHost()) netHostAnnounceEnd(true); // journal the team outcome before the presentation delay
   runLaterFlow(wait, ()=>{ if(state==="playing") showVictoryScreen(); });
 }
 

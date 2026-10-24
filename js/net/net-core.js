@@ -296,6 +296,13 @@ function _netHandle(m){
       _netEmit("closed", m.reason, role);
       return;
     case "error":
+      if(m.code==="REWARDS_PENDING" || m.code==="REWARDS_STORAGE"){
+        if(typeof netFinishMatch==="function")netFinishMatch();
+        setState("prep");
+        if(typeof netRefreshLobby==="function")netRefreshLobby();
+        if(typeof gameAlert==="function")gameAlert(m.msg);
+        return;
+      }
       // NO_ROOM: un relay viejo no conoce "identify", o el invitado mandó su movimiento al reconectarse antes
       // del "joined": no es un motivo para el jugador ni la respuesta al "join"
       if(m.code==="NO_ROOM"){ netLog("NETWORK_ERROR", {code:m.code}); return; }

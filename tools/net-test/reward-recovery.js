@@ -28,7 +28,7 @@ async function stop(){if(cp){const p=cp;cp=null;await new Promise(r=>{p.once('ex
   await host.waitForFunction(()=>typeof assetsAllReady!=='function'||assetsAllReady());
   assert.equal(await host.evaluate(()=>netHostStartGame()),true);
   await guest.waitForFunction(()=>state==='playing' && CampaignInbox.protocol);
-  await host.evaluate(()=>{spawnTimer=1e12;update=()=>{};});
+  await host.evaluate(()=>{spawnTimer=1e12;update=dt=>updateRunTimers(dt);});
   await guest.close(); // no client exists to receive the end message
   await host.evaluate(()=>finishBossVictory());
   await host.waitForFunction(()=>state==='victory' && !netMatch.rewardPending);
