@@ -1735,6 +1735,69 @@
         "Pendones visibles aislados pero pierden separación en contacto denso y entre receptores; timeouts relay intermitentes conservados, causa no demostrada."
       ],
       "next": "Lote de corrección posterior: seis arenas/skins/contraste/performance y relay con trazas. No integrar taller FIX."
+    },
+    {
+      "block": "B151",
+      "component": "A-FX-iria-h1",
+      "state": "EN_CORRECCION",
+      "source": "art-source/entregas/iria-kit-20261024/primera-pasada-01/anchor.png",
+      "sha256": "a2723c558d0e93976c3215e5c41f024c6929835acb18d71f4e654a3e5cac61e1",
+      "frames": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "defects": [
+        "Needle/hook thin and small among generic rings; persistent original portador body still overlaps. Readable shape in atlas does not establish combat readability."
+      ],
+      "next": "Grouped correction and closure with real consumers, full visual gate and applicable relay/CI; preserve candidate and original references."
+    },
+    {
+      "block": "B152",
+      "component": "A-FX-iria-h2",
+      "state": "EN_CORRECCION",
+      "source": "art-source/entregas/iria-kit-20261024/primera-pasada-01/tension.png",
+      "sha256": "858a51df7a219b89e60c8a7a33f249c0b28cd5f73ed43652fc903c1eecccbb73",
+      "frames": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "defects": [
+        "Parallel threads and ties at 18world height remain fine/ladder-like; stretching changes pixel density; anticipation/discharge frames not consumed, remaining-time phase can jump on recast."
+      ],
+      "next": "Grouped correction and closure with real consumers, full visual gate and applicable relay/CI; preserve candidate and original references."
+    },
+    {
+      "block": "B153",
+      "component": "A-FX-iria-h3",
+      "state": "EN_CORRECCION",
+      "source": "art-source/entregas/iria-kit-20261024/primera-pasada-01/cut.png",
+      "sha256": "163203d33e50372c4bf276f6bee0027604d035ceefdc742d7ca130496974a874",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "defects": [
+        "Thin scissors with tiny handles, needs scale/readability review and exact actual cut-node event hook; no game integration yet."
+      ],
+      "next": "Grouped correction and closure with real consumers, full visual gate and applicable relay/CI; preserve candidate and original references."
     }
   ],
   "pendingVerificationNotFailures": [
@@ -1747,7 +1810,7 @@
   ],
   "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "Cerrar PR212 con CI exacthead y merge verificado; después producción Iria y otro cierre. Alternancia ordenada por Nano.",
+  "next": "CIERRE taller acumulado: Bront whole body/skins, preserve source02. Iria first-pass saved, do not repeat.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
