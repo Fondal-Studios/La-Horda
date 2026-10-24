@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "component": "A-FX-guerrero-h3 / armada",
+  "block": "B143",
+  "frame": 7,
+  "state": "INTEGRADO_MAIN",
+  "productionHead": "80f46178efdaa63f79922d0d5bdfd165083dbe8e",
+  "productionTree": "d1f4e670829e34bf1af29c7827e6f0c97c306b1d",
+  "mergeSha": "51c9d4584d45e8c19c4d237a64e8033a6b845bb1",
+  "mergedAt": "2026-10-24T03:58:42Z",
+  "publication": "NOT_CONFIRMED",
+  "publicationReason": "Canonical assets PNG/WebP match, but asesino.js still serves the old consumer. Main is not proof of canonical deployment.",
+  "validation": {
+    "visual": "PASS_COMPONENT",
+    "draw": 20,
+    "lifecycle": 11,
+    "relay": 4,
+    "scenes": 144,
+    "restorations": 288,
+    "checks": 19,
+    "workflows": 8,
+    "scope": "Only armed trap existing clip; not whole B143 or champion kit"
+  },
+  "queue": {
+    "historicalEntries": 46,
+    "note": "Queue snapshot state VALIDADO at production commit is superseded for this single component by this remote closure. All histories and other workshops remain intact."
+  },
+  "next": {
+    "mode": "PRODUCCION",
+    "champion": "Iria",
+    "blocks": [
+      "B151",
+      "B152",
+      "B153"
+    ],
+    "action": "Read fresh main/open PRs and Iria audit; produce only missing normal-ability layers. Preserve body/skins/UF. Then CIERRE of accumulated workshop, prioritize complete Bront redesign when feasible.",
+    "publication": "Recheck canonical consumer bytes independently; no access to canonical hosting available, do not change infrastructure."
+  },
+  "newSinceProduction": [
+    "All19 checks and8 workflows exact-head SUCCESS",
+    "Draft marked ready and normal expected-head merge, PR/main verified",
+    "Canonical publication checked after merge",
+    "Eight read-only Iria cast/anchor cases observed; no production/approval"
+  ],
+  "limits": [
+    "No physical-device certification",
+    "Parity is summarized mechanical state, not global RNG isolation",
+    "Canonical game not updated merely by merge"
+  ],
+  "files": [
+    "CHECKPOINT.md",
+    "REVIEW.json",
+    "recipe.json",
+    "manifest.json",
+    "TEST_ATTEMPTS.json",
+    "CI_FINAL.json",
+    "PR212_MERGE.json",
+    "PUBLICATION.json",
+    "NEXT_IRIA_AUDIT.json"
+  ]
+}

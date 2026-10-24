@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-24T03:58:55.735131+00:00",
+  "baseUrl": "https://fondalstudios.com/la-horda/jugar/",
+  "scope": "Selected file bytes only; not gameplay, accounts, ownership, live multiplayer or full release certification",
+  "status": "NOT_CONFIRMED",
+  "checks": [
+    {
+      "path": "js/champions/asesino.js",
+      "expectedSha256": "d88071bf2ef5b94deba6ef40bc885d7a2e544f72cc6073358301d2fb65ca0e1c",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/champions/asesino.js",
+      "bytes": 6462,
+      "publicSha256": "de21315becd32ac0d7bd5797d94fed01dccde00d6e8aaed849a4d36cadcbedcc",
+      "status": "DIFFERENT"
+    },
+    {
+      "path": "assets/vfx/guerrero/trampa.png",
+      "expectedSha256": "348aad02077a7ad17e15dbadb2a72433b1ed2f889127b5caf6d3cc4802e58269",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/assets/vfx/guerrero/trampa.png",
+      "bytes": 128408,
+      "publicSha256": "348aad02077a7ad17e15dbadb2a72433b1ed2f889127b5caf6d3cc4802e58269",
+      "status": "MATCH"
+    },
+    {
+      "path": "assets/vfx/guerrero/trampa.webp",
+      "expectedSha256": "fe114ec07dfe3cffcc26afc1897ac5df67bfc2eed8749a793303809a84878f60",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/assets/vfx/guerrero/trampa.webp",
+      "bytes": 108648,
+      "publicSha256": "fe114ec07dfe3cffcc26afc1897ac5df67bfc2eed8749a793303809a84878f60",
+      "status": "MATCH"
+    }
+  ]
+}
