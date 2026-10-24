@@ -528,6 +528,7 @@ document.getElementById("menu-btn-1").addEventListener("click", ()=>{
 });
 document.getElementById("again-btn").addEventListener("click", ()=>{ if(!victorySaveReady()) return; if(netBackToRoomIfAny()) return; startRun(1); });
 document.getElementById("menu-btn-2").addEventListener("click", ()=>{
+  if(!victorySaveReady()) return;
   const go = ()=>{
     if(netLeaveAfterMatch()){ setState("mainmenu"); renderMainMenu(); return; }
     if(typeof firstRunToHub==="function" && firstRunToHub()) return; // primera partida: al hub (js/ui/hub.js)

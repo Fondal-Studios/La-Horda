@@ -38,6 +38,13 @@ async function stop(){if(cp){const p=cp;cp=null;await new Promise(r=>{p.once('ex
   await returning.waitForFunction(()=>CampaignInbox.ids.length===1);
   await returning.evaluate(()=>netSend({t:'reward-get',id:CampaignInbox.ids[0]}));
   await returning.waitForFunction(()=>state==='victory' && save.lastVictoryReward && saveLastWriteOK);
+  const blocked=await returning.evaluate(()=>{
+   const write=Storage.prototype.setItem,alert=gameAlert;let warnings=0;
+   try{Storage.prototype.setItem=()=>{throw Error('quota test');};gameAlert=()=>{warnings++;};
+    for(const id of ['menu-btn-2','again-btn','victory-next-btn'])document.getElementById(id).click();
+    return {state,warnings};
+   }finally{Storage.prototype.setItem=write;gameAlert=alert;persistNow();}
+  });assert.deepEqual(blocked,{state:'victory',warnings:3});
   const before=await returning.evaluate(()=>({n:rewardOverflowCount(),gold:save.gold,xp:save.champions.mago.xp,id:save.lastVictoryReward.id,stash:save.stash.length}));
   assert.ok(before.n>0);assert.equal(before.stash,await returning.evaluate(()=>INVENTORY_CAPACITY));
   await returning.evaluate(()=>{netSend({t:'reward-open',key:localStorage.getItem(Object.keys(localStorage).find(k=>k.startsWith('horda_reward_key:')))});});
