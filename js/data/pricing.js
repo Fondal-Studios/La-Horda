@@ -6,9 +6,8 @@
    servidor DECIDE, y tools/collection/pricing-sync.js verifica que coinciden.
    Política (docs/economy/PRECIOS.md):
      · CAMPEONES: siempre se compran con ORO (nunca con Brasas). Ascensión: precio de oro propio por campeón.
-     · BRASAS ✦: apariencia (skins, cromas y paquetes de apariencia) y, por decisión del dueño, las PIEZAS DE SET (equipo,
-       con estadísticas). Es una excepción a "nunca poder": se puede apagar con PIECES_FOR_BRASAS (docs/economy/PRECIOS.md,
-       apartado "Riesgo: poder por dinero"). Los modos competitivos recortan el equipo (LANES.PROGRESS_CAP).
+     · BRASAS ✦: exclusivamente apariencia (skins, cromas y paquetes cosméticos).
+       La venta de equipo está desactivada; se conserva el código histórico para sus pruebas y registros.
      · Un precio global del juego que no está acá (equipo, talentos, Mística) sigue en su sistema, siempre en oro.
    Los precios del Game Master (cosmeticPrices / championPrices, ver docs/production/operations.md) siguen pudiendo
    cambiar el ORO; las Brasas las fija únicamente este archivo.
@@ -38,12 +37,12 @@ var PRICING = {
 
 /* ============================================================
    INTERRUPTOR DE LAS PIEZAS DE SET POR BRASAS ✦ — un único lugar (docs/economy/PRECIOS.md, "Riesgo: poder por dinero")
-     true  (POR DEFECTO, decisión del dueño): las piezas de set se compran con Brasas, validado por el servidor.
-     false : no se venden piezas de set por ningún medio (el cliente no muestra el botón y el servidor rechaza /api/wallet/buy-piece).
+     true  (solo pruebas históricas): las piezas de set se compran con Brasas, validado por el servidor.
+     false (POR DEFECTO): no se venden piezas de set por ningún medio (el cliente no muestra el botón y el servidor rechaza /api/wallet/buy-piece).
    Las piezas NUNCA se compran con oro (el oro es del cliente y editable: regalaría la skin que da el set completo). Las piezas que
    se ganan jugando (drops) no dependen de esto.
    ============================================================ */
-var PIECES_FOR_BRASAS = true;
+var PIECES_FOR_BRASAS = false; // Política 2026-10-23: Brasas exclusivamente cosméticas.
 
 /* ============================================================
    INTERRUPTOR DE LA TIENDA DE OBJETOS — un único lugar (docs/economy/TIENDA_ROTACION.md)
