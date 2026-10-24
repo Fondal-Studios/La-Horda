@@ -1,7 +1,7 @@
 name: Item economy safety
 on:
   pull_request:
-    paths: ['server/**', 'js/systems/items.js', 'js/systems/ground-loot.js', 'js/systems/loot.js', 'js/systems/recipes.js', 'js/ui/inventory-ui.js', 'tools/items/*inventory*', '.github/workflows/item-economy.yml']
+    paths: ['server/**', 'js/**', 'css/item-economy.css', 'index.html', 'tools/items/**', '.github/workflows/item-economy.yml']
   push:
     branches: ['feat/item-economy-v2']
   workflow_dispatch:
@@ -24,5 +24,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-playwright
+      - run: npm ci --prefix server
       - name: Inventory on mobile viewport
         run: node tools/lib/with-site.js tools/items/t_auto_inventory.js
+      - name: Persistent economy on mobile viewport
+        run: node tools/lib/with-site.js tools/items/t_economy_live.js
