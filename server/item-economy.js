@@ -49,7 +49,7 @@ function credit(a,amount){a.gold=integer(a.gold+integer(amount));}
 function collection(s,owner){const a=s.accounts[owner];for(const set of catalog().sets){if(set.pieces.every(id=>Object.values(s.items).some(it=>it.owner===owner&&it.designId===id))&&!a.cosmetics.includes(set.id))a.cosmetics.push(set.id);}}
 function transfer(s,it,to,reason,now){
   it.owner=to; delete it.listing; it.equipped=false; it.favorite=false;
-  if(it.relicId){const r=s.relics[it.relicId];r.owner=to;r.acquiredAt=now;r.status=to===null?'vault':'owned';r.history.push({owner:to,reason,at:now});}
+  if(it.relicId){const r=s.relics[it.relicId];r.owner=to;r.acquiredAt=now;r.status=to===null?'vault':'owned';r.history.push({owner:to,name:to===null?'Bóveda':s.accounts[to]?.names||to,reason,at:now});}
   if(to!==null){collection(s,to);require('./item-economy-live').unlock(s,to);}
 }
 function sweep(s,now){
@@ -166,9 +166,9 @@ function view(s,owner,now){
   const a=s.accounts[owner]||null;
   return {version:s.version,account:a,items:Object.values(s.items).filter(it=>it.owner===owner),catalog:catalog(),ranks:RANKS,
     listings:Object.values(s.listings).filter(l=>l.state==='open').map(l=>({...l,item:s.items[l.item]})),
-    relics:Object.values(s.relics),seasons:Object.values(s.seasons),config:s.config,
+    relics:Object.values(s.relics).map(r=>({...r,ownerName:r.owner?s.accounts[r.owner]?.names||r.owner:null})),seasons:Object.values(s.seasons),config:s.config,
     warning:a&&now-a.lastSeen>=s.config.warnDays*DAY?'Tus reliquias pasarán a la Bóveda al cumplir el plazo de inactividad.':null,
-    readiness:{campaignRewards:true,combatEquipment:true,monthlyAwards:true,legacyMigration:true,vendors:false},projection:require('./item-economy-live').project(s,owner,{champions:Object.fromEntries(Object.keys(a?.equipment||{}).map(k=>[k,{}]))}),champions:s.champions||[]};
+    readiness:{campaignRewards:true,combatEquipment:true,monthlyAwards:true,legacyMigration:true,vendors:false,legacyQuestRewards:false,authoritativeCombatSimulation:false},projection:require('./item-economy-live').project(s,owner,{champions:Object.fromEntries(Object.keys(a?.equipment||{}).map(k=>[k,{}]))}),champions:s.champions||[]};
 }
 function routes(ctx){
   const {getStore,auth,send,err,readBody,now,isOwner}=ctx,result={};
@@ -186,10 +186,11 @@ function routes(ctx){
     }catch(e){if(e.status)return err(req,res,e.status,e.message,e.message);throw e;}
   };}
   route('GET','/api/economy',false,(s,u,b,t)=>view(s,String(u.id),t));
-  for(const [url,isAdmin] of [['/api/economy/action',false],['/api/gm/economy/action',true]])route('POST',url,isAdmin,(s,u,b,t)=>{
+  for(const [url,isAdmin] of [['/api/economy/action',false],['/api/gm/economy/action',true]])route('POST',url,isAdmin,async(s,u,b,t)=>{
     key(b.requestId);if(typeof b.op!=='string'||! /^[a-z]+(?:\.[a-z]+)?$/.test(b.op))fail('INVALID_OPERATION');if(!isAdmin&&b.op==='run.pulse')return command(s,u,b.op,b.args||{},t);const ref=`${u.id}:${b.requestId}`,fingerprint=JSON.stringify({admin:isAdmin,op:b.op,args:b.args||{}});
     if(own(s.receipts,ref)){const old=s.receipts[ref];if(old.fingerprint!==fingerprint)fail('IDEMPOTENCY_CONFLICT',409);return old.value;}
     if(Object.keys(s.receipts).length>=100000)fail('LEDGER_CAPACITY',503);
+    if(isAdmin&&['grant','relic'].includes(b.op)&&!await getStore().getUser(integer(b.args?.userId,1)))fail('USER_NOT_FOUND',404);
     const value=(isAdmin?admin:command)(s,u,b.op,b.args||{},t);
     audit(s,u.id,(isAdmin?'gm.':'')+b.op,{requestId:b.requestId},t);s.receipts[ref]={fingerprint,value:copy(value)};return value;
   });

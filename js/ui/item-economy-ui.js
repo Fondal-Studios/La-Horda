@@ -69,7 +69,7 @@
    }
   }else if(tab==='Reliquias'){
    card('Códice · Reliquias Únicas',`Una sola copia por servidor. Iniciá sesión al menos cada ${d.config.inactiveDays} días para conservarla. Aviso desde el día ${d.config.warnDays}. La Bóveda conserva el historial.`);
-   for(const r of d.relics){const c=card(r.name,r.lore);c.append(el('p',`${r.arena} · ${r.method} · Efecto: ${r.legendProc}`),el('p',r.status==='undiscovered'?'No descubierta':r.status==='vault'?'En la Bóveda del Game Master':'Propietario: '+r.owner),el('small','Identificador: '+r.uid));for(const h of r.history)c.append(el('p',new Date(h.at).toLocaleDateString()+' · '+(h.owner||'Bóveda')+' · '+h.reason));}
+   for(const r of d.relics){const c=card(r.name,r.lore);c.append(el('p',`${r.arena} · ${r.method} · Efecto: ${r.legendProc}`),el('p',r.status==='undiscovered'?'No descubierta':r.status==='vault'?'En la Bóveda del Game Master':'Propietario: '+(r.ownerName||r.owner)),el('small','Identificador: '+r.uid));for(const h of r.history)c.append(el('p',new Date(h.at).toLocaleDateString()+' · '+(h.name||h.owner||'Bóveda')+' · '+h.reason));}
   }else{
    button(body,'Ver ranking mensual y premio',()=>lbOpen());
    for(const s of d.seasons){const r=d.relics.find(r=>r.id===s.relic),c=card('Temporada '+s.month,r?.name);c.append(el('p',s.closed?'Cerrada · '+(s.winner?.name||'Sin ganador'):'Cierre: '+new Date(s.end).toLocaleString()));}
