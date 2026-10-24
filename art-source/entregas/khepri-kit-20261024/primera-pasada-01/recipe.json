@@ -1,0 +1,27 @@
+{
+  "source": "art-source/entregas/khepri-kit-20261024/primera-pasada-01/source.js",
+  "command": "NODE_PATH=<playwright modules> CHROMIUM_PATH=<chromium> node tools/vfx/produce-khepri-first-pass.js",
+  "native": [
+    {
+      "name": "carapace",
+      "w": 80,
+      "h": 72,
+      "frames": 12
+    },
+    {
+      "name": "elytra",
+      "w": 96,
+      "h": 48,
+      "frames": 12
+    }
+  ],
+  "palette": [
+    "#091b18",
+    "#194f45",
+    "#329a74",
+    "#90d49b",
+    "#e9efbb",
+    "#c99d48"
+  ],
+  "usage": "Diagnostic candidate only; do not register before event/lifecycle and ArtGate validation. H1 uses existing swarm, do not duplicate."
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "attempt": 1,
+    "exitCode": 1,
+    "reason": "Native edges clipped",
+    "affectedFrames": {
+      "carapace": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "elytra": [
+        0
+      ]
+    },
+    "preserved": "attempt-01/"
+  },
+  {
+    "attempt": 2,
+    "exitCode": 0,
+    "change": "Expand shell cell to80px and center40; move elytra origin inward. No gate threshold change.",
+    "technical": "24 frames,0partial alpha,0edge contact; three actual main casts,0pageerrors",
+    "limits": "No candidate gameplay integration, relay, parity, performance or composite ArtGate tested"
+  }
+]

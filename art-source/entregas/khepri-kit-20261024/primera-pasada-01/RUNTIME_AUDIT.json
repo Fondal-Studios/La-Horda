@@ -1,0 +1,84 @@
+{
+  "cases": [
+    {
+      "slot": 0,
+      "before": {
+        "x": 0,
+        "y": 800,
+        "shield": 0,
+        "swarm": 20
+      },
+      "after": {
+        "x": 0,
+        "y": 800,
+        "shield": 0,
+        "swarm": 20
+      },
+      "objects": [
+        {
+          "kind": "as_swarm",
+          "life": 3700,
+          "phase": "go",
+          "x": 0,
+          "y": 800,
+          "tx": 150,
+          "ty": 800
+        }
+      ]
+    },
+    {
+      "slot": 1,
+      "before": {
+        "x": 0,
+        "y": 800,
+        "shield": 0,
+        "swarm": 20
+      },
+      "after": {
+        "x": 0,
+        "y": 800,
+        "shield": 27.24,
+        "swarm": 5
+      },
+      "objects": [
+        {
+          "kind": "as_swarm",
+          "life": 3700,
+          "phase": "go",
+          "x": 0,
+          "y": 800,
+          "tx": 150,
+          "ty": 800
+        }
+      ]
+    },
+    {
+      "slot": 2,
+      "before": {
+        "x": 0,
+        "y": 800,
+        "shield": 27.24,
+        "swarm": 5
+      },
+      "after": {
+        "x": 180,
+        "y": 800,
+        "shield": 27.24,
+        "swarm": 5
+      },
+      "objects": [
+        {
+          "kind": "as_swarm",
+          "life": 3700,
+          "phase": "go",
+          "x": 0,
+          "y": 800,
+          "tx": 150,
+          "ty": 800
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "note": "Actual main casts, no candidate installed; not a visual gate or multiplayer test."
+}
