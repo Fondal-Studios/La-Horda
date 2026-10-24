@@ -24,7 +24,7 @@ const action=(t,op,args={},status=200,id='live_'+(++seq),gm=false)=>api('POST',g
  await action(owner.token,'run.pulse',{run:r.id},404);
  for(let i=0;i<3;i++){now+=50000;await action(user.token,'run.pulse',{run:r.id,round:1});}
  const loot=await action(user.token,'run.loot',{run:r.id},200,'floor_once');assert.equal(loot.items.length,1);assert.equal((await action(user.token,'run.loot',{run:r.id},200,'floor_once')).items[0].uid,loot.items[0].uid);
- const end=await action(user.token,'run.finish',{run:r.id,durationMs:150000,victory:true},200,'finish_once');assert.equal(end.gold,1280);assert.equal(end.materials,3);assert.equal(end.items.length,1);
+ const end=await action(user.token,'run.finish',{run:r.id,durationMs:150000,victory:true},200,'finish_once');assert.equal(end.gold,1280);assert.equal(end.materials,3);assert.ok(end.items.length>=1&&end.items.length<=3); // el cofre usa rollLoot real: 1 a 3 objetos (LOOT_MAX_ITEMS)
  const end2=await action(user.token,'run.finish',{run:r.id,durationMs:150000,victory:true},200,'finish_twice');assert.equal(end2.items[0].uid,end.items[0].uid);
  assert.equal((await api('GET','/api/economy',undefined,user.token)).account.gold,10280);
  await action(user.token,'equip',{champion:'tanque',item:end.items[0].uid});

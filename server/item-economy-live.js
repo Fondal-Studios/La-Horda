@@ -27,7 +27,7 @@ async function migrate(s,u,store,now){
  s.migrations[id]={at:now,sourceVersion:saved?.version||0,backup:clone(old)};
  a.gold=Math.max(a.gold,Math.min(1e9,Math.max(0,Math.floor(Number(old.gold)||0))));
  a.materials=Math.max(a.materials,Math.min(1e9,Math.max(0,Math.floor(Number(old.gems)||0))));
- a.equipment={};a.autoLoot={enabled:true,fuse:true,recycle:false};a.unlocked=Object.keys(old.champions||{}).filter(k=>old.champions[k]?.unlocked);a.names=u.name||u.user;a.collection={};
+ a.firstWinLoot=!!old.firstWinLoot||Object.values(old.arenasCleared||{}).some(Boolean);a.lootPity=old.lootPity&&typeof old.lootPity==='object'?{legendario:+old.lootPity.legendario||0,set:+old.lootPity.set||0,mitico:+old.lootPity.mitico||0,unico:+old.lootPity.unico||0}:undefined;a.equipment={};a.autoLoot={enabled:true,fuse:true,recycle:false};a.unlocked=Object.keys(old.champions||{}).filter(k=>old.champions[k]?.unlocked);a.names=u.name||u.user;a.collection={};
  for(const it of (Array.isArray(old.stash)?old.stash:[])){
   if(!it||typeof it.uid!=='string'||!E().SLOTS.includes(it.type)||!E().RARITIES.includes(it.rarity)||!Number.isFinite(it.value))continue;
   const uid=crypto.createHash('sha256').update(id+':legacy:'+it.uid).digest('hex').slice(0,40);
@@ -77,8 +77,9 @@ function liveCommand(s,u,op,b,now){
   const elapsed=now-r.start;if(elapsed<0||elapsed>6*3600000)fail('RUN_EXPIRED',409);
   if(op==='run.loot'){
    if(elapsed<10000||r.pulses<1)return {items:[]};
-   const cap=Math.min(120,Math.floor(elapsed/20000));if((r.lootCount||0)>=cap)return {items:[]};
-   r.lootCount=(r.lootCount||0)+1;const item=rollLoot(s,r,id,true);s.items[item.uid]=item;unlock(s,id);const automatic=autoLoot(s,id);return {items:[item],automatic};
+   const big=['jefe','subjefe'].includes(b.rank)&&((r.rankCount||{})[b.rank]||0)<RANK_CAP[b.rank]; // jefes y subjefes: tope propio, no consumen el cupo por tiempo
+   const cap=Math.min(120,Math.floor(elapsed/20000));if(!big&&(r.lootCount||0)>=cap)return {items:[]};
+   if(!big)r.lootCount=(r.lootCount||0)+1;const item=rollGround(s,r,id,b.rank,b.build===true);if(!item)return {items:[]};s.items[item.uid]=item;unlock(s,id);const automatic=autoLoot(s,id);return {items:[item],automatic};
   }
   const round=int(b.round||1,1,400);if(round<r.round||round>Math.floor(elapsed/10000)+2)fail('IMPLAUSIBLE_PROGRESS',422);
   if(op==='run.pulse'){if(now-r.last<5000)return {ok:true};r.last=now;r.round=round;r.pulses++;return {ok:true};}
@@ -88,7 +89,9 @@ function liveCommand(s,u,op,b,now){
   a.gold=Math.min(1e9,a.gold+gold);const materials=win?3:Math.floor(capped/180000);a.materials=Math.min(1e9,a.materials+materials);
   const loot=[];
   if(win||capped>=120000){
-   const it=rollLoot(s,r,id,false);s.items[it.uid]=it;loot.push(it);
+   const got=rollChest(s,r,id,win,capped);
+   if(win){const gift=firstWin(s,r,id);if(gift){if(got.length)got[0]=gift;else got.push(gift);}}
+   for(const it of got){s.items[it.uid]=it;loot.push(it);}
   }
   if(win){
    const unique=Object.values(s.relics).find(x=>x.arena===r.arena&&E().RELICS.some(def=>def.id===x.id)&&['undiscovered','vault'].includes(x.status)&&!Object.values(s.seasons).some(season=>!season.closed&&season.relic===x.id));
@@ -117,7 +120,7 @@ function liveCommand(s,u,op,b,now){
    const item=generated(first.type,first.rarity==='comun'?'raro':'muyraro',id);item.level=Math.max(...items.map(x=>x.level));item.legacy=items.some(x=>x.legacy);items.forEach(x=>delete s.items[x.uid]);s.items[item.uid]=item;return {item};
   }
   const it=mine(s,id,b.item);if(it.listing)fail('IN_ESCROW');
-  if(op==='equip'){if(!a.unlocked.includes(b.champion))fail('CHAMPION_LOCKED');if(it.champion&&it.champion!==b.champion)fail('INCOMPATIBLE_ITEM');removeEquipment(a,it.uid);(a.equipment[b.champion]||(a.equipment[b.champion]={}))[it.type]=it.uid;it.equipped=true;return {ok:true};}
+  if(op==='equip'){if(!a.unlocked.includes(b.champion))fail('CHAMPION_LOCKED');if(it.champion&&it.champion!==b.champion||!require('./item-economy-loot').canEquip(it,b.champion))fail('INCOMPATIBLE_ITEM');removeEquipment(a,it.uid);(a.equipment[b.champion]||(a.equipment[b.champion]={}))[it.type]=it.uid;it.equipped=true;return {ok:true};}
   if(it.favorite||it.relicId||isEquipped(a,it.uid))fail('PROTECTED_ITEM');
   const value=data().sell[it.rarity]||0;if(op==='sell')a.gold=Math.min(1e9,a.gold+value);if(op==='dismantle')a.materials+=Math.max(1,E().RARITIES.indexOf(it.rarity));delete s.items[it.uid];return {ok:true};
  }
@@ -144,16 +147,30 @@ function seasons(s,now){
  }
 }
 function ranking(s,k,id,guardian){const season=s.seasons[k];const rows=(season?.results||[]).filter(r=>!guardian||r.guardian===guardian).sort(compare);const me=rows.find(r=>r.userId===id);return {week:k,month:k,current:month(Date.now()),endsAt:season?.end||bounds(k).end,total:rows.length,entries:rows.slice(0,50).map((r,i)=>({...r,rank:i+1,me:r.userId===id})),me:{...me,rank:rows.findIndex(r=>r.userId===id)+1},prize:season?s.relics[season.relic]:null,champions:Object.values(s.seasons).filter(x=>x.closed&&x.winner).map(x=>({month:x.month,...x.winner}))};}
-function rollLoot(s,r,id,ground){
- const row=s.config.dropTables[r.arena]||s.config.dropTables.ciudad,weights={};
- for(const rarity of E().RARITIES.filter(k=>k!=='unico'))weights[rarity]=Number(row[rarity])||0;
- weights.mitico+=Number(row.set)||0;
- // Floor drops use the existing normal-source high-tier multiplier; boss chests use the arena row.
- if(ground){weights.legendario*=.05;weights.mitico*=.05;}
- let roll=crypto.randomInt(1e6)/1e6*Object.values(weights).reduce((x,y)=>x+y,0),rarity='comun';
- for(const [k,v] of Object.entries(weights)){roll-=v;if(roll<=0){rarity=k;break;}}
- const type=E().SLOTS[crypto.randomInt(6)];let design;if(rarity==='mitico'&&crypto.randomInt(2)===0)design=E().SETS[crypto.randomInt(5)]+'_'+type;
- return generated(type,rarity,id,design);
+// Botín: mismo catálogo y reglas que el cliente (server/item-economy-loot.js ejecuta js/systems/loot.js y ground-loot.js reales).
+const GROUND_RANKS=['normal','subelite','elite','named','subjefe','jefe'];
+const RANK_CAP={normal:120,subelite:120,elite:120,named:60,subjefe:24,jefe:12};
+function fromGame(raw,id){const it=normalizeItem({...raw,uid:crypto.randomUUID(),owner:id});delete it.overflow;it.favorite=false;return it;}
+function ownedDesigns(s,id){const set=new Set();for(const it of Object.values(s.items))if(it.owner===id&&it.designId)set.add(it.designId);return set;}
+function lootCtx(s,r,id){const a=s.accounts[id];a.lootPity=Object.assign({legendario:0,set:0,mitico:0,unico:0},a.lootPity||{});return {arena:r.arena==='divina'?'divina':r.arena,champion:r.champion,endless:r.mode==='endless',owned:ownedDesigns(s,id),pity:a.lootPity};}
+function rollGround(s,r,id,rank,build){
+ const L=require('./item-economy-loot'),cfg=L.groundCfg(),rk=GROUND_RANKS.includes(rank)?rank:'normal',o=lootCtx(s,r,id);
+ r.rankCount=r.rankCount||{};
+ const used=r.rankCount[rk]||0,eff=used>=RANK_CAP[rk]?'normal':rk; // un rango alto declarado de más baja a "normal": no se acumula legendario por pedir "jefe"
+ r.rankCount[rk]=used+1;
+ const out=L.rollOne({...o,source:'ground',grade:cfg.grade[eff],highMult:cfg.highMult[eff],floor:r.rankCount[eff]===1||eff!==rk?(cfg.floor[eff]||null):null,build:build===true&&eff!=='normal'&&Math.random()<1});
+ if(!out.item)return null;const a=s.accounts[id];if(a.lootPity[out.tier]!==undefined&&out.tier!=='comun')a.lootPity[out.tier]=0;
+ return fromGame(out.item,id);
+}
+function rollChest(s,r,id,victory,capped){
+ const L=require('./item-economy-loot'),o=lootCtx(s,r,id),a=s.accounts[id];
+ const res=L.rollChest({...o,victory,grade:victory?'A':'B',runLevel:victory?0:(capped>=120000?6:0),subjefes:0});
+ if(victory)a.lootPity=res.pity;
+ return res.items.map(x=>fromGame(x,id));
+}
+function firstWin(s,r,id){
+ const a=s.accounts[id];if(a.firstWinLoot||r.mode!=='campaign'||!ARENAS.includes(r.arena))return null;a.firstWinLoot=true;
+ const L=require('./item-economy-loot');return fromGame(L.firstWinItem(r.champion,r.arena,a.equipment?.[r.champion]||{}),id);
 }
 function validateConfig(c){
  if(c.rewardGold){int(c.rewardGold.victory,0,10000);int(c.rewardGold.minute,0,1000);}

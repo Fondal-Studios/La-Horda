@@ -88,7 +88,8 @@ const _ecoSkinOwned=skinOwnedFull;skinOwnedFull=function(id){if(economyActive()&
 // Auto-collect host/guest drop events. The server chooses the item and caps the rate.
 const _ecoDrop=groundLootDrop;groundLootDrop=function(...args){
  if(!economyActive())return _ecoDrop(...args);if(!ECON.run)return null;
- economyAction('run.loot',{run:ECON.run.id}).then(r=>{for(const it of r.items){groundLootToast(it);if(EN?.local?.loot)EN.local.loot.push(it);}if(r.automatic?.fused||r.automatic?.materials)economyNotify('Botín organizado: '+(r.automatic.fused||0)+' fusiones · '+(r.automatic.materials||0)+' materiales');}).catch(()=>{});return null;
+ // x,y,grade,hm,arena,rk,build: el servidor elige el objeto con el catálogo del juego; el cliente solo declara la fuente (acotada por el servidor)
+ economyAction('run.loot',{run:ECON.run.id,rank:args[5]||'normal',build:args[6]===1||args[6]===true}).then(r=>{for(const it of r.items){groundLootToast(it);if(EN?.local?.loot)EN.local.loot.push(it);}if(r.automatic?.fused||r.automatic?.materials)economyNotify('Botín organizado: '+(r.automatic.fused||0)+' fusiones · '+(r.automatic.materials||0)+' materiales');}).catch(()=>{});return null;
 };
 const _ecoGuestStart=netGuestStartRun;netGuestStartRun=function(msg){const same=ECON.run&&netMatch&&!netMatch.ended;const result=_ecoGuestStart(msg);if(!same)economyStart();return result;};
 // Leaving an unfinished match releases its equipment lock, without issuing a reward.
