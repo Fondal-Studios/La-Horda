@@ -147,12 +147,14 @@ function routes(ctx){
     const claimed = entitled ? (await store().walletLedger(userId, 5000)).filter(e => typeof e.reason === "string" && e.reason.startsWith("welcome_pick:")).map(e => legacyIds.legacyChampionId(e.reason.slice(13))) : [];
     const out = { entitled, claimed: [...new Set(claimed)].reverse(), remaining: 0, eligible: [] };
     out.remaining = Math.max(0, entitled - out.claimed.length);
-    if(out.remaining && d){ const has = (id) => !!(d.champions && d.champions[id] && d.champions[id].unlocked); out.eligible = welcomeEligibleIds().filter(id => !has(id)); }
+    if(out.remaining && d){ const economic=(await store().gmRead())?.itemEconomy?.accounts?.[String(userId)];const has = (id) => economic?.unlocked?economic.unlocked.includes(id):!!(d.champions && d.champions[id] && d.champions[id].unlocked); out.eligible = welcomeEligibleIds().filter(id => !has(id)); }
     return out;
   }
   // completa la entrega de elecciones ya registradas que no llegaron al guardado (nunca quita nada)
   async function welcomeReconcile(userId, claimed){
     if(!claimed.length) return null;
+    // Preserve previously purchased rights in the authoritative equipment account as well.
+    await store().gmUpdate(raw=>{const a=raw?.itemEconomy?.accounts?.[String(userId)];if(a){a.unlocked=a.unlocked||[];for(const id of claimed)if(!a.unlocked.includes(id))a.unlocked.push(id);}return {state:raw||require('./game-master').stateOf(null),value:null};});
     const saved = await store().getSave(userId); if(!saved) return null;
     const d = JSON.parse(saved.data);
     const missing = claimed.filter(id => !(d.champions && d.champions[id] && d.champions[id].unlocked));
@@ -318,11 +320,13 @@ function routes(ctx){
     }
     if(!st.remaining) fail("NO_PICKS_LEFT", 409);
     const have = JSON.parse(saved.data).champions;
-    if(have && have[champ] && have[champ].unlocked) fail("OWNED", 409);
+    const economic=(await store().gmRead())?.itemEconomy?.accounts?.[String(user.id)];
+    if(economic?.unlocked?economic.unlocked.includes(champ):have && have[champ] && have[champ].unlocked) fail("OWNED", 409);
     const w = await store().walletApply({ userId: user.id, delta: 0, reason: "welcome_pick:" + champ, ref: welcomeRef(user.id, champ), actor: user.id, at: now() });
     log("WELCOME_PICK", { user: user.id, champion: champ, duplicate: !!w.duplicate });
     const g = await mutateSave(user.id, x => { x.champions = Object.assign({}, x.champions); x.champions[champ] = Object.assign({}, x.champions[champ], { unlocked: true }); x.starterChosen = true; });
     st = { ...st, claimed: [...st.claimed, champ], remaining: st.remaining - 1 };
+    if(g.ok)await welcomeReconcile(user.id,st.claimed);
     if(!g.ok) fail("CONFLICT", 409);   // la elección quedó registrada: reintentar completa la entrega
     return done({ champions: [champ], saveVersion: g.saveVersion, baseVersion: g.baseVersion });
   }));

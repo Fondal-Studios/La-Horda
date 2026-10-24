@@ -80,6 +80,8 @@
   draw();say('Actualizando…');try{await economyRefresh();draw();say('');}catch(e){say(e.message);}
  };
  document.addEventListener('keydown',e=>{if(!root)return;if(e.key==='Escape'){e.stopImmediatePropagation();close();}if(e.key==='Tab'){const all=[...root.querySelectorAll('button,input,select')].filter(n=>!n.disabled),first=all[0],last=all[all.length-1];if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault();}else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault();}}},true);
+ const codex=document.getElementById('codex-crumbs')?.parentElement;if(codex)button(codex,'Reliquias Únicas',()=>economyOpen('Reliquias'));
+ const inv=document.getElementById('myinv-tabs');if(inv){button(inv,'Forja de cuenta',()=>economyOpen('Forja'));button(inv,'Subastas',()=>economyOpen('Subastas'));}
  const hub=document.getElementById('hub-options');if(hub)button(hub,'Arsenal · Forja · Subastas',()=>economyOpen());
  window.addEventListener('economy-change',()=>{if(root&&state!=='playing')draw();});
  window.GMExt=window.GMExt||{};

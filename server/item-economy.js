@@ -133,7 +133,7 @@ function admin(s,actor,op,b,now){
   if(op==='config'){
     if(!b.config||typeof b.config!=='object'||Array.isArray(b.config))fail('BAD_CONFIG');
     for(const k of Object.keys(b.config))if(!['inactiveDays','warnDays','feeBps','forgeCostScale','dropTables','rewardGold'].includes(k))fail('BAD_CONFIG');
-    const c={...s.config,...b.config};integer(c.inactiveDays,2,365);integer(c.warnDays,1,c.inactiveDays-1);integer(c.feeBps,0,3000);
+    const c={...s.config,...b.config};if(b.config.dropTables)c.dropTables={...s.config.dropTables,...b.config.dropTables};integer(c.inactiveDays,2,365);integer(c.warnDays,1,c.inactiveDays-1);integer(c.feeBps,0,3000);
     if(!Number.isFinite(c.forgeCostScale)||c.forgeCostScale<0.1||c.forgeCostScale>100)fail('BAD_CONFIG');require('./item-economy-live').validateConfig(c);s.config=c;return {config:c};
   }
   if(op==='grant'){
@@ -187,7 +187,7 @@ function routes(ctx){
   };}
   route('GET','/api/economy',false,(s,u,b,t)=>view(s,String(u.id),t));
   for(const [url,isAdmin] of [['/api/economy/action',false],['/api/gm/economy/action',true]])route('POST',url,isAdmin,(s,u,b,t)=>{
-    key(b.requestId);if(typeof b.op!=='string'||! /^[a-z]+(?:\.[a-z]+)?$/.test(b.op))fail('INVALID_OPERATION');const ref=`${u.id}:${b.requestId}`,fingerprint=JSON.stringify({admin:isAdmin,op:b.op,args:b.args||{}});
+    key(b.requestId);if(typeof b.op!=='string'||! /^[a-z]+(?:\.[a-z]+)?$/.test(b.op))fail('INVALID_OPERATION');if(!isAdmin&&b.op==='run.pulse')return command(s,u,b.op,b.args||{},t);const ref=`${u.id}:${b.requestId}`,fingerprint=JSON.stringify({admin:isAdmin,op:b.op,args:b.args||{}});
     if(own(s.receipts,ref)){const old=s.receipts[ref];if(old.fingerprint!==fingerprint)fail('IDEMPOTENCY_CONFLICT',409);return old.value;}
     if(Object.keys(s.receipts).length>=100000)fail('LEDGER_CAPACITY',503);
     const value=(isAdmin?admin:command)(s,u,b.op,b.args||{},t);
