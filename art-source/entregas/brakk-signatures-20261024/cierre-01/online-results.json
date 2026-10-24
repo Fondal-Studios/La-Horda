@@ -1,0 +1,82 @@
+{
+  "status": "PASS",
+  "scope": "Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.",
+  "checks": [
+    {
+      "name": "solciju admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "brakk admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "veyra admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "morveth admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "aelith admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "nano_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "facu_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "Brakk wall and turret replicate with guest owner",
+      "ok": true,
+      "builds": [
+        "brk_wall",
+        "brk_turret"
+      ]
+    },
+    {
+      "name": "host renders own signature slot 0",
+      "ok": true,
+      "draws": 13
+    },
+    {
+      "name": "host renders own signature slot 1",
+      "ok": true,
+      "draws": 18
+    },
+    {
+      "name": "touch guest renders own signature slot 0",
+      "ok": true,
+      "draws": 22
+    },
+    {
+      "name": "touch guest renders own signature slot 1",
+      "ok": true,
+      "draws": 24
+    },
+    {
+      "name": "brakk guest casts simulated by host",
+      "ok": true,
+      "host": {
+        "key": "brakk",
+        "casts": 4,
+        "damage": 300.3836,
+        "bleeds": 0
+      },
+      "guest": {
+        "key": "brakk",
+        "owned": [],
+        "bleeds": 0
+      }
+    },
+    {
+      "name": "brakk death removes owned effects",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

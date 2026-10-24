@@ -1,0 +1,19 @@
+{
+  "approvedSlots": [
+    0,
+    1
+  ],
+  "rejectedSlot": 2,
+  "sameApprovedPixelsAsMatrix": true,
+  "oldAtlas": [
+    192,
+    120
+  ],
+  "approvedAtlas": [
+    192,
+    80
+  ],
+  "wholeKitApproved": false,
+  "state": "PASS_COMPONENT",
+  "note": "All H1/H2 pixels and drawing code unchanged by extraction; H3 candidate removed, original fallback raster covered by final renderer tests. Matrix reports filtered to slots0,1; raw traces retain rejected H3."
+}

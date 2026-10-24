@@ -1,0 +1,648 @@
+{
+  "state": "VALIDADO",
+  "gate": "PASS_COMPONENT_H1_H2_ONLY",
+  "sourceCommit": "9ca6215bd259a79fd8cef842874feb9c9ccc519c",
+  "main": "51c9d4584d45e8c19c4d237a64e8033a6b845bb1",
+  "files": [
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/AUDIT.json",
+      "bytes": 1921,
+      "sha256": "317e14e5268ce7cab3aeea573386042a4c6d1d519f0055cbc7b0829fb7d79c70"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/CHECKPOINT.md",
+      "bytes": 1759,
+      "sha256": "21c8e6bc018f50bae008715a9d6f8ede9a97fda87e07587bed7097522231cf89"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/FRAME_INDEX.json",
+      "bytes": 1280,
+      "sha256": "62448f0c8001e4b01ce789432455c6fb6ac94f87f7bfe337ff00346c04e86dab"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/MATRIX_SUMMARY.json",
+      "bytes": 875,
+      "sha256": "8de7e5613170e1d81d7b368ee233b4d118101f3d665161f82849d82cbbfacc79"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/REVIEW.json",
+      "bytes": 12637,
+      "sha256": "061f99ef9eb16b31d98daeab6a457e64565fa356d75fbe22f18ae8b963bcfed5"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/SCOPE_EXTRACTION.json",
+      "bytes": 459,
+      "sha256": "edcb34038141acd5b7eed92eeb759198ae0de636631211329d0bb7edadbcc21b"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/TEST_ATTEMPTS.json",
+      "bytes": 2503,
+      "sha256": "a8935b8f7da5be419cf1ac1a22830551ed07e838bd248cbd4fd6090e07e7083e"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/atlases/signature-masonry.png",
+      "bytes": 2732,
+      "sha256": "587a1d9dd667bf6c3c764e9b613fde7ed253f6d88efb5b63e72718531384d563"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/atlases/signature-nail-turret.png",
+      "bytes": 3211,
+      "sha256": "b3de318537422873588175bc07f69a0d2be85663113582e233315394792733e0"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/atlases/signature-native-source.png",
+      "bytes": 1718,
+      "sha256": "36fac86cefee4b29f3a89178db29a46c052994ae7c6d91b03bb404a284072499"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-01/atlases/signature-cross-brace.png",
+      "bytes": 3377,
+      "sha256": "7ee63fa8e7c3ed20e25476536305212cbe93b955c8dc8cae8cb78590c6a50f86"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-01/atlases/signature-masonry.png",
+      "bytes": 2572,
+      "sha256": "203060906ee73c4d919602456a7864fbf44e67e9d78076bd48668faefa48b461"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-01/atlases/signature-nail-turret.png",
+      "bytes": 2964,
+      "sha256": "e7e1a9f4d69bb5c2dbd739f96717a10b649d13943fb95535fc2a7d4a2069f900"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-01/atlases/signature-native-source.png",
+      "bytes": 2506,
+      "sha256": "d9b4aae63492a66e7f8092151fff7af3a69deea931f6e90c24282ad5792ffec6"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-01/occlusion-harness.js.txt",
+      "bytes": 8022,
+      "sha256": "01ef80fa896229f831d7ffab76a596cbacb9ee9e75fd8f737fdddc4d767b822b"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-01/occlusion-seed-only.js.txt",
+      "bytes": 8429,
+      "sha256": "f6aec860845373e9b12c0174452c87fe87b8a84a279d691fa6f2ac2a51e0de39"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-01/online-results.json",
+      "bytes": 2054,
+      "sha256": "4eb0886e15d06124fc27c21883fc5df7f6312a90a04e23e700b4e39d29062585"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-01/parity.json",
+      "bytes": 5901,
+      "sha256": "03fcab835ca8c6a3877ec86c5231196b2773c843b10d4d3e2d03949bb461da24"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-01/renderer.log",
+      "bytes": 533,
+      "sha256": "dbc0ccbf7891ecf9b9e68e6856f198d5c11a50026c37cf41947fbdb8690a7730"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-01/signature-checks.json",
+      "bytes": 15146,
+      "sha256": "56649d4e67aea56b44c38e02246fe0667a1af6df2865c19be85f3c68a918f4d8"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-01/source.js",
+      "bytes": 9072,
+      "sha256": "b8b984b3282974973861c1aff35f1e0b967010a9477e29238852718dd203b784"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-02/atlases/signature-cross-brace.png",
+      "bytes": 3399,
+      "sha256": "e7b5974c5a802e832abda002a90c306c5e360a65f5474ed49ddeba51bd7912f0"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-02/atlases/signature-masonry.png",
+      "bytes": 2581,
+      "sha256": "9f8a475d46f79a6e85dbff1bbf4ac48719a84ac32b33e354d555111946944f50"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-02/atlases/signature-nail-turret.png",
+      "bytes": 3016,
+      "sha256": "1c7961b9edafbadad77c8e50e5c359789a32a0fb151e6ba40540110c8c107797"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-02/atlases/signature-native-source.png",
+      "bytes": 2505,
+      "sha256": "5fff04b5d35779a49ed181616471fd5a5556043acfb4812e3a52c2a0a57bb5c8"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-02/mobile/review.png",
+      "bytes": 416116,
+      "sha256": "e7dde10648a81f67be301bba7531f15c38862aeb135e090e8bd2f35a8fabbc8c"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-02/renderer.log",
+      "bytes": 550,
+      "sha256": "1ddb3a555846925b9cc534d4cdeedac20dac3d9c23454ae3cbd376ffa5511627"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-02/signature-checks.json",
+      "bytes": 15163,
+      "sha256": "182deeedabe7ed9d6792f3511306fddf3fdf3f764eb04c1e6c4b4037c8660f17"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-02/source.js",
+      "bytes": 9072,
+      "sha256": "78a9c0c986cc526619745d1ae01deb1e87f39e8f387eec49e2d2e0ba640e4235"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-03/atlases/signature-cross-brace.png",
+      "bytes": 3640,
+      "sha256": "ebfd41dc4c035b35c4db50c5e1f05d208fe488d4f0b7c5154d377e3b6cd98719"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-03/atlases/signature-masonry.png",
+      "bytes": 3004,
+      "sha256": "041b4c7bf0ce68fe9d4db31795b78e936c9fc9d46aa7f6ca558de1a4fd16c4b4"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-03/atlases/signature-nail-turret.png",
+      "bytes": 3328,
+      "sha256": "072dda8cfbbc90619ad5668637e21b12c864d5cef7f1a1b12c0d4b26709d5f69"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-03/atlases/signature-native-source.png",
+      "bytes": 2692,
+      "sha256": "7fb6e9ffccdf760536da8fec4e0b9c89c6e2a19e7ea89f70b0ee7ad44f79d2a4"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-03/renderer.log",
+      "bytes": 516,
+      "sha256": "d8fd96473272b094a6cdcd205c2e85f9f299dc2894b7f058c1c24e99ea5f96b3"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-03/signature-checks.json",
+      "bytes": 15129,
+      "sha256": "e1919e8a4a1d7d7654f41f9316aa2590415bec5c52633f2844b1917e8c222071"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-03/source.js",
+      "bytes": 9152,
+      "sha256": "3cf9ba1f67e9b2c32aa093d7de3016613ca3bf719a8088c6045040401caccfd9"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-04/atlases/signature-cross-brace.png",
+      "bytes": 3544,
+      "sha256": "98cc32212e276613891997e111fda5d2c2c228842df578e6c8d1b93169702c47"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-04/atlases/signature-masonry.png",
+      "bytes": 2732,
+      "sha256": "587a1d9dd667bf6c3c764e9b613fde7ed253f6d88efb5b63e72718531384d563"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-04/atlases/signature-nail-turret.png",
+      "bytes": 3211,
+      "sha256": "b3de318537422873588175bc07f69a0d2be85663113582e233315394792733e0"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-04/atlases/signature-native-source.png",
+      "bytes": 2578,
+      "sha256": "ed570feddf04efe93448fb4c91e68c5ec0ae704f2ed162a0f99c59938cff7cb8"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-04/online-results.json",
+      "bytes": 2052,
+      "sha256": "a62c59d27296504608ea15c0880e76f06dd89fed908f1647d3ed3883fa18314e"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-04/parity.json",
+      "bytes": 5901,
+      "sha256": "03fcab835ca8c6a3877ec86c5231196b2773c843b10d4d3e2d03949bb461da24"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-04/signature-checks.json",
+      "bytes": 15130,
+      "sha256": "798ef3c8a4b47f1646af195fd74ca61d1ccf9db97c1dfe680c395209e7d18e19"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/attempt-04/source.js",
+      "bytes": 9126,
+      "sha256": "fb099d653d4446769fdb25cd2537b7287695f982f89dd4240a5e79a376b13bdb"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/canary-pixels.log",
+      "bytes": 233,
+      "sha256": "6f1e73ec5dfc838f632693d0c685a98f61b18bf176b2ff06cd2faf09b8eec425"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/canary.log",
+      "bytes": 233,
+      "sha256": "667a0de0c73a4b942763b680f8f71808e8f83421c17ad442aa17f493bd8bac13"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/competitive.log",
+      "bytes": 707,
+      "sha256": "058e70c1df56a7571363edc884c02b9f9495a09bab1251dd4ab7f2b1abb2eb91"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/composite-desktop.log",
+      "bytes": 21655,
+      "sha256": "cc0f9ff28be3c91c906c9a337e756da2aa0a89a230e724b69deba3164b076108"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/composite-desktop04.log",
+      "bytes": 21655,
+      "sha256": "1857c5cc524f921c41a24caa2702c1fd63fe4c3171e745457d23f828c9a29c09"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/composite-edge-probe.log",
+      "bytes": 840,
+      "sha256": "5370fc59342d856ba8764bb0e67a0a09946c76cd64c34d172cc9014781cac639"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/composite-mobile.log",
+      "bytes": 21655,
+      "sha256": "ad26fd747f0e20de0b0ef248400a336dd9bc117a56a4eff32ba099b7f98cbbec"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/composite-mobile04.log",
+      "bytes": 21655,
+      "sha256": "24ac21d8b511614e756659b6c45b7505604efbead1632a304c0fd406f5fb36ee"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/composite-probe.log",
+      "bytes": 828,
+      "sha256": "ab2d8aafa22c47a08a06fad9470912faffacfd8240a83baa753f0186ef3f6380"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/composite-replay-probe.log",
+      "bytes": 828,
+      "sha256": "ebdb00a3ffeff1e70cfb7cfab8aef0034c01db1f5a42f518bbbf1b11386a7bd1"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/desktop-final.log",
+      "bytes": 21655,
+      "sha256": "b70edf8a7da688392ad33a2046c303bdc897b28e7a9bb209cde07028c8e70e58"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/desktop-final04.log",
+      "bytes": 21655,
+      "sha256": "ef6eef78712a124c6cf0b15343def295982f9ee331da366e757d7514e216bb9a"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/desktop.log",
+      "bytes": 21655,
+      "sha256": "ba72381f5188d04025ea58578e1d00447b2715307ee845ff908b6172e024b4b4"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/CAPTURE_INDEX.json.gz",
+      "bytes": 467564,
+      "sha256": "2e1dd05cd3223622a1ce93058742102e0e287215c494acf9f0d84dfdae80f39d"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/attempt-02-desktop-capture.json.gz",
+      "bytes": 35855,
+      "sha256": "f4d3852cff8cb71b28e3113f3c349a2807308dab99a141b7b013b7b9306db5c0"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/attempt-02-mobile-capture.json.gz",
+      "bytes": 35823,
+      "sha256": "cbc1026385c4694b98282b5010b4a1057b66cdb96812989a9927245ea8100501"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/attempt-03-composite-desktop-capture.json.gz",
+      "bytes": 51119,
+      "sha256": "6d9c173b6d921c308ac328670d9cc9ee1bc1a67210a304af80499526baa943f0"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/attempt-03-composite-mobile-capture.json.gz",
+      "bytes": 50723,
+      "sha256": "2f5d5b493e043010ef145a06a604e03ae707d078540bf1dc9e66fe697d485c32"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/attempt-03-desktop-capture.json.gz",
+      "bytes": 50440,
+      "sha256": "4040517ac17e202d8fbf08afef4a29482d612f7b9d92965677d82718961bfb1f"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/attempt-03-mobile-capture.json.gz",
+      "bytes": 50410,
+      "sha256": "8352c9508698bed24070dad3b338e5a939a7f61df361b23c723b859c6a86850a"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/canary-capture.json.gz",
+      "bytes": 1099,
+      "sha256": "68f522d2f5e013cc225beceee75976ac1625c325face301faecce2167587b713"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/canary-pixels-capture.json.gz",
+      "bytes": 1106,
+      "sha256": "ad853aa16a0d83b2a0eca234d1020443c2fe7a3c428e67addb07791a3e65f5c8"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/composite-desktop-capture.json.gz",
+      "bytes": 51120,
+      "sha256": "6d1f307bfc85eed64572416b87084b1e706959ea512d891cef938ef86a2d4c12"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/composite-edge-probe-capture.json.gz",
+      "bytes": 2877,
+      "sha256": "c831c424d6c572d1b46e849e7262c6a7a6e4fb886d62de58619c7b0b94800128"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/composite-mobile-capture.json.gz",
+      "bytes": 50629,
+      "sha256": "e4fc232355d4041b7b8c90c124bd64025b6fdc0ad92eff8019d8d28ee6684b18"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/composite-probe-capture.json.gz",
+      "bytes": 2920,
+      "sha256": "b616f60ca9bd441715dcdb9cc2e53d5838b07b2e699b4b60852223cffc66290c"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/composite-replay-probe-capture.json.gz",
+      "bytes": 2901,
+      "sha256": "05683644bad5afcc49f7824c15eb6aa56bb550c06626cbd5cbbb4f614f4915b4"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/desktop-capture.json.gz",
+      "bytes": 50420,
+      "sha256": "e414b869c3fc08d6770a0484d36b9cec5ebf54277880b62895045f2a6edd8329"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/mobile-capture.json.gz",
+      "bytes": 50374,
+      "sha256": "66350519c33300624f059e93381900d8670aa025ef6acad174a1443cc2ed162f"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/occlusion-fixed-probe-matrix.json.gz",
+      "bytes": 1818,
+      "sha256": "c26c9a9884c9a5d5cf15d18b59b65053b38b40674673bb96773da2750af7942a"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/occlusion-hollow-probe-matrix.json.gz",
+      "bytes": 1802,
+      "sha256": "51e1be2ab63f659e7720963a07aa28d36048b71540a03cd9250c474c88aa5dc0"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/occlusion-matrix.json.gz",
+      "bytes": 30515,
+      "sha256": "992ab3123a6ed9734ff18dc72e3938000b91c7d4d8f0ccd2fa826e3e9807b1af"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/occlusion-probe-matrix.json.gz",
+      "bytes": 1778,
+      "sha256": "8a00c62ebaaca905924df3f1c1b7a734b11051b5bde8ac662d340f35d6345ecb"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/evidence/probe-capture.json.gz",
+      "bytes": 5566,
+      "sha256": "5d5cd0682916d5025283c6ebc485932c6d79dc04aeb82845c40ba7b671ca57be"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/functional.log",
+      "bytes": 54,
+      "sha256": "448d550eb2ea11f6c9c89a5bc612971e2796e7305cd26df9de07d826656a6242"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/mobile-final.log",
+      "bytes": 21655,
+      "sha256": "6c9878eca0dfc164a30a97b69a6a92b7dddd8e1d47d370ec951048191fe00f35"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/mobile-final04.log",
+      "bytes": 21655,
+      "sha256": "70564e993da6fe9b19c5c717930754b508d6b181db375b04f4fec877a00d7eb8"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/mobile.log",
+      "bytes": 21522,
+      "sha256": "135874dc65f890d256866488121183a79a2b5b016f4c66d4f6cf0c0627a9afd6"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/occlusion-fixed-probe.log",
+      "bytes": 436,
+      "sha256": "84b30ff10205f7dbcd1ab5fc433bafaad044a587d372b5a2e1dede2455c23ad2"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/occlusion-hollow-probe.log",
+      "bytes": 436,
+      "sha256": "e7b6dbca25c2beb4960add00d4ee16dbfffe78ccd85aabbe5b84db6ac304d6da"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/occlusion-probe.log",
+      "bytes": 437,
+      "sha256": "d0719bb3f2762e07ea49a0029ae5d4d123c3ab09a07121878154f76b2b626954"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/occlusion.log",
+      "bytes": 7010,
+      "sha256": "c5c7eaef14db07be098646ac1c84ad7a891ff3beb5444f8dd6217e04a00a10b5"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/online-results.json",
+      "bytes": 1825,
+      "sha256": "69bf8249f6add8e6b335afb579c89f04bb405575bd1229d7d7e04271a32a487d"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/package-approved.log",
+      "bytes": 740,
+      "sha256": "eb8a990f82ffab6ccbe63227169511333ed4e243fe29a24ec9425e2f0bda5f7b"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/package.log",
+      "bytes": 740,
+      "sha256": "106f89ce7a6234f0c1ed2b2c476252d6cac5ca532732625980ba08c38f616914"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/parity-approved.log",
+      "bytes": 109,
+      "sha256": "b882326c01819e7219b7a26ed398eb1f065d037fa5a8158cdf7eef0845e977fa"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/parity-final.log",
+      "bytes": 109,
+      "sha256": "b882326c01819e7219b7a26ed398eb1f065d037fa5a8158cdf7eef0845e977fa"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/parity.json",
+      "bytes": 5901,
+      "sha256": "03fcab835ca8c6a3877ec86c5231196b2773c843b10d4d3e2d03949bb461da24"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/parity.log",
+      "bytes": 109,
+      "sha256": "b882326c01819e7219b7a26ed398eb1f065d037fa5a8158cdf7eef0845e977fa"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/preview-check.json",
+      "bytes": 114,
+      "sha256": "35cd337d056ad0649cb1b2cb92f3e6be2b11b82a5d482bf59c7c2ceb9eb5a943"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/preview.html",
+      "bytes": 991,
+      "sha256": "ecbc2ea3391ac577efd8ecc30c6ff1020afe545b9d0f3f57391a5a548b4e81cf"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/probe/contact.png",
+      "bytes": 431936,
+      "sha256": "73647ac60044bebdb85950d4c79f697aa2735e30a1fcb779418e3fbcb6478e05"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/probe.log",
+      "bytes": 2979,
+      "sha256": "75b6d0cb3354a905e5a8354020b977bd89dd79e57450d18f4ccc4383b6a61026"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/recipe.json",
+      "bytes": 2115,
+      "sha256": "8de7a25a2a0682c7998b61d14fb68d59a1f2c6ef7814833f6ac67eabd0dfe475"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/relay-approved.log",
+      "bytes": 1111,
+      "sha256": "ebf9112d2852fdbc1d372e18c688ac5736b513657f42eefc726eedc61f84ab81"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/relay-final.log",
+      "bytes": 1260,
+      "sha256": "335d526c2c2fff030aab630d298ccc99c24ad82628f20057f127ef6a5d52383a"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/relay.log",
+      "bytes": 1262,
+      "sha256": "04b059f061ec06f7c2d3076e3eb64264116f756641da31bd2d29a5252ed41b3a"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/renderer-approved.log",
+      "bytes": 551,
+      "sha256": "7be51d53a2b1b0bb35023236c58ffddf600322f9fd8d542945124888872a7eb4"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/renderer-final.log",
+      "bytes": 517,
+      "sha256": "f76d62b7fe2de9bfa27b6fd1ad0af1815b1cf5f4f97c5df82612ad6ddf474a88"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/renderer.log",
+      "bytes": 516,
+      "sha256": "d8fd96473272b094a6cdcd205c2e85f9f299dc2894b7f058c1c24e99ea5f96b3"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/desktop-acuatica.png",
+      "bytes": 465770,
+      "sha256": "9f56a8a9ccac25451a57e17bce7ae31193d7f888d252aca1f13ca9495c914510"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/desktop-bosque.png",
+      "bytes": 411145,
+      "sha256": "b35a1bd1336e5ffef7c412d663751f097fa5d41a82aeb95b586624cb18c87184"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/desktop-hielo.png",
+      "bytes": 508776,
+      "sha256": "3540473c8e0cb0f2851b9ceafc40345754b876e2562f78ecaf0099ff069ce02b"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/desktop-infernal.png",
+      "bytes": 587812,
+      "sha256": "7d1a0cbfa0d71053d8ce7f7a915b7d0f40cf3562934a8daa2a02a319b7918461"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/desktop-laberinto.png",
+      "bytes": 437332,
+      "sha256": "7c90b553b163c2a4853297fe04d2272c42f6272eb8fc2be11fab990e0fe5a850"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/desktop-minas.png",
+      "bytes": 563184,
+      "sha256": "3ac455ca00a7a00d3698fcca67c7f658f0bc315056791bc60c42494c90397582"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/desktop-temporal.png",
+      "bytes": 388239,
+      "sha256": "4b06565882c81d52e4d59b8769456a0081acf95f66f555c0122b7e7f90dd79fd"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/mobile-acuatica.png",
+      "bytes": 508494,
+      "sha256": "6a46ddf05af3a5ca22c6c8de363388bf0fd30d03b511476873608b0778ba1e75"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/mobile-bosque.png",
+      "bytes": 433757,
+      "sha256": "74add48df037fdc44ec992accd393a5e9f4c3088f6f9c0d4685bca1edf01122b"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/mobile-hielo.png",
+      "bytes": 616561,
+      "sha256": "37ce4837166047a36e8b890cd9ee7ad991305cb001f7504e487580099ec6af7f"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/mobile-infernal.png",
+      "bytes": 594639,
+      "sha256": "792cf64a78e6c4a7f2d2a841b080426a93b8c667a4cfb1353a5eb9e68b9ee92c"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/mobile-laberinto.png",
+      "bytes": 523203,
+      "sha256": "dbd27dcd41a65274078546a373c6df915f53bdace72065294fdc6c9f6b7d1640"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/mobile-minas.png",
+      "bytes": 646112,
+      "sha256": "201b699d7bb43d0f1c55965dddb71d126f9b897c46528713d06ade771b99db48"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/sheets/mobile-temporal.png",
+      "bytes": 412624,
+      "sha256": "94eeb81f5487f49922a1605f0f666059a8863fec505d17cd146e21974516fb04"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/signature-checks.json",
+      "bytes": 13248,
+      "sha256": "ff6c210a3cd8404a88c3aa1b2292881f4714309884cec9412424865fd2f8f37e"
+    },
+    {
+      "path": "art-source/entregas/brakk-signatures-20261024/cierre-01/source-before.js",
+      "bytes": 6610,
+      "sha256": "2bbe76162cac478de248ebbbfa7ff98e8cda17b672ef1bd9d83f2be46098a3ad"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "bytes": 89987,
+      "sha256": "96a7b016cb0861f05d9727ef0751d3968da319d63310e8bd0b19314d2c35918b"
+    },
+    {
+      "path": "js/skills/champion-signatures.js",
+      "bytes": 8699,
+      "sha256": "4e2f310e0f5169504f7bb4442da26eb4fbd6fd434588cc8559322e3ca136e604"
+    },
+    {
+      "path": "tools/vfx/brakk-signatures-online-closure.js",
+      "bytes": 9144,
+      "sha256": "7bcfe6feef732cf276aab50d89f7468d48f6d594cdc39c4f8e3fb4ef348ade26"
+    },
+    {
+      "path": "tools/vfx/capture-brakk-signatures-closure.js",
+      "bytes": 13229,
+      "sha256": "2d6c6d2fbfe93e753475a3da5ef6dab147dcf84bc27c95801e942c6f30d5b64c"
+    },
+    {
+      "path": "tools/vfx/check-brakk-signature-composite.js",
+      "bytes": 14617,
+      "sha256": "935bcc955e7dab775dea659cbac9797b50f3332d2af6506879c82d3f656d2831"
+    },
+    {
+      "path": "tools/vfx/package-brakk-signature-closure.py",
+      "bytes": 2859,
+      "sha256": "80398f52aab6ceeb084f643702a4956840ee5b0a99fcbf1ffdd01d13674cdeda"
+    },
+    {
+      "path": "tools/vfx/parity-brakk-signatures-closure.js",
+      "bytes": 7274,
+      "sha256": "382849eb8bf67cc92f5c0861bd62ae32b5271d88704b225d7dbd578873de7295"
+    },
+    {
+      "path": "tools/vfx/verify-brakk-signatures-closure.js",
+      "bytes": 5986,
+      "sha256": "f312693bd11cdcd4eac583d89c3ae821cd0fd32013bbbf06915d1bab898a2d0e"
+    }
+  ]
+}

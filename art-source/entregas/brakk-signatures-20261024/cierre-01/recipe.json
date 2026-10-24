@@ -1,0 +1,58 @@
+{
+  "source": "js/skills/champion-signatures.js",
+  "sha256": "4e2f310e0f5169504f7bb4442da26eb4fbd6fd434588cc8559322e3ca136e604",
+  "main": "51c9d4584d45e8c19c4d237a64e8033a6b845bb1",
+  "workshop": "9ca6215bd259a79fd8cef842874feb9c9ccc519c",
+  "nativeRenderer": "drawBrakkSignaturePixels(slot,gap)",
+  "atlas": {
+    "size": [
+      192,
+      80
+    ],
+    "cell": [
+      48,
+      40
+    ],
+    "slots": [
+      "masonry",
+      "nail turret"
+    ],
+    "gaps": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "alpha": "0/255"
+  },
+  "runtime": {
+    "durationMs": 460,
+    "normalOnly": true,
+    "anchorY": -82,
+    "assemblyMs": 92,
+    "gap": "round(3*(1-min(1,q*5)))",
+    "reduceMotion": "gap0",
+    "cache": "one immutable atlas, no runtime image download",
+    "approvedSlots": [
+      0,
+      1
+    ]
+  },
+  "commands": [
+    "node tools/vfx/verify-brakk-signatures-closure.js",
+    "ONLY=brakk PORT=8998 node tools/vfx/parity-brakk-signatures-closure.js",
+    "node tools/vfx/brakk-signatures-online-closure.js",
+    "node tools/quality-five/brakk-functional.js",
+    "node tests/competitive-signatures.test.js",
+    "OUT=art-source/entregas/brakk-signatures-20261024/cierre-01/mobile MOBILE=1 SLOTS=0,1 TIMES=80,330,480 node tools/vfx/capture-brakk-signatures-closure.js",
+    "OUT=art-source/entregas/brakk-signatures-20261024/cierre-01/desktop SLOTS=0,1 TIMES=80,330,480 node tools/vfx/capture-brakk-signatures-closure.js",
+    "OUT=art-source/entregas/brakk-signatures-20261024/cierre-01/composite-mobile MOBILE=1 SLOTS=0,1 TIMES=80,330 node tools/vfx/check-brakk-signature-composite.js",
+    "OUT=art-source/entregas/brakk-signatures-20261024/cierre-01/composite-desktop SLOTS=0,1 TIMES=80,330 node tools/vfx/check-brakk-signature-composite.js",
+    "python tools/vfx/package-brakk-signature-closure.py"
+  ],
+  "environment": {
+    "NODE_PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "CHROMIUM_PATH": "/tmp/chromium"
+  },
+  "scope": "Only H1/H2 normal-cast signatures. H3 candidate rejected visually and removed from runtime. Original H3/UF preserved."
+}
