@@ -125,7 +125,7 @@ let SKIN_TINT = null;   // activo solo mientras dura un lanzamiento con skin
 function skinFxOf(h){
   if(!h || !h.classKey || typeof activeSetSkin !== "function") return null;
   const d = activeSetSkin(h); if(!d) return null;
-  for(const setId in SET_SKINS){ if(SET_SKINS[setId] === d){ const P = SKIN_FX_PLAN[setId]; return P ? {setId, P} : null; } }
+  for(const setId in SET_SKINS){ if(SET_SKINS[setId] === d){ const source=d.fxSource||setId,base=SKIN_FX_PLAN[source],P=base&&d.fxTint?{...base,tint:d.fxTint}:base; return P ? {setId:source, P} : null; } }
   return null;
 }
 

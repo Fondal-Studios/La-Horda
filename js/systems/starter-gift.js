@@ -44,7 +44,7 @@ function starterSkinOptions(k){
   }
   if(typeof SET_SKINS !== "undefined" && typeof SET_DB !== "undefined"){
     for(const id of Object.keys(SET_SKINS)){
-      if(!SET_DB[id]) continue;
+      if(!SET_DB[id] || SET_SKINS[id]?.manifest) continue;
       const c = skinSetChamp(id); if(c && c !== k) continue;
       const miss = shopSetMissing(id); if(!miss.length) continue;
       const sk = SET_SKINS[id], n = setPieceIds(id).length;

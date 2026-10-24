@@ -8,7 +8,7 @@
        con el JEFE de la arena (tramos impares: rondas 10, 20, 30...). Al cerrar el tramo, la
        Cicatriz te lleva a la próxima arena.
      - La dificultad sube SIN TECHO por ronda y por minuto (vida, daño, cantidad y élites).
-     - Mutadores SEMANALES determinísticos por fecha (semana ISO, UTC): todos juegan lo mismo.
+     - Mutadores MENSUALES determinísticos por fecha (mes calendario, UTC): todos juegan lo mismo.
      - Botín: el sistema de siempre (rarezas, familias por arena, protección contra la mala
        suerte) en cofres de jefe/subjefe, en rescates y al final según la ronda alcanzada.
    >>> Todo el balance del modo se toca acá.
@@ -58,7 +58,7 @@ const ENDLESS_SUB_LEVEL = {ciudad:9, fortaleza:6, bosque:9, micelial:6, hielo:6,
 // sin depender de recorrer el mapa entero). Las demás aportan su subjefe.
 const ENDLESS_BOSS_ARENAS = ["fortaleza","bosque","hielo","acuatica","laberinto","infernal"];
 
-// MUTADORES SEMANALES: cada semana salen 2 (determinístico por la semana ISO en UTC).
+// MUTADORES MENSUALES: cada mes salen 2 (determinístico por la mes calendario en UTC).
 // scoreMult: cuánto multiplica el puntaje (lo difícil paga más).
 const ENDLESS_MUTATORS = {
   elites_x2:   {name:"Élites dobles",     icon:"👑", desc:"El doble de élites con rol (Comandante, Cazador, Sanador...).", scoreMult:1.20},
@@ -110,7 +110,7 @@ function endlessGradeForRound(r){ return r >= 25 ? "S+" : r >= 18 ? "S" : r >= 1
 window.GAME_MODE_REGISTRY = window.GAME_MODE_REGISTRY || {};
 window.GAME_MODE_REGISTRY.endless = {
   id:"endless", name:"Horda Infinita", icon:"∞",
-  desc:"Supervivencia sin fin: rondas que no paran, la Cicatriz te lleva de arena en arena, jefes cada 5 rondas y mutadores de la semana. Botín según cuánto aguantes.",
+  desc:"Supervivencia sin fin: rondas que no paran, la Cicatriz te lleva de arena en arena, jefes cada 5 rondas y mutadores del mes. Botín según cuánto aguantes.",
   unlock:()=> typeof endlessUnlocked==="function" ? endlessUnlocked() : false,
   lockedDesc:"🔒 Completá la Arena 02 (Fábrica Sin Fin) para desbloquearla.",
   open:()=> window.endlessOpen && window.endlessOpen(),
