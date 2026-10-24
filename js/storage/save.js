@@ -76,7 +76,7 @@ function defaultSave(){
     playtestV1Bonus:true,   // el bono de 2.000 de oro del playtest anterior ya no se da en la campaña
     relics:{hp:0,dmg:0,def:0,vel:0}, // permanent small stat items found from élite+ enemies
     lootPity:{legendario:0, set:0, mitico:0, unico:0}, // protección suave contra la mala suerte (oculta), ver js/data/loot.js
-    stash:[], stashV1:true, affixV1:true, // inventario de la CUENTA (30 espacios, compartido por los guardianes): ver js/systems/items.js
+    stash:[], rewardOverflow:[], stashV1:true, affixV1:true, // inventario de la CUENTA (30 espacios, compartido por los guardianes): ver js/systems/items.js
     crystals:{ancestral:false, escarcha:false, piedra:false}, // cristales de los Guardianes (js/systems/crystals.js)
     collection:{},          // objetos con nombre propio / sets / míticos / únicos descubiertos alguna vez (catálogo)
     cromas:{},              // cromas compradas (cosméticas, oro del juego): {id:true}; la equipada va en champions[k].croma (js/systems/cromas.js)
@@ -468,7 +468,11 @@ function needsStarterChampion(){
 // localStorage, varias veces por cuadro en las peleas grandes. Fuera de la partida (menús,
 // pausa, fin de partida) se sigue guardando al instante, igual que siempre.
 let _persistTimer = null;
+let _persistBatchDepth = 0;
+let saveLastWriteOK = false;
 function persistNow(){
+  if(_persistBatchDepth) return false;
+  saveLastWriteOK = false;
   if(_persistTimer){ clearTimeout(_persistTimer); _persistTimer = null; }
   // GM / TEST LAB: una sesión de prueba nunca escribe el progreso real (js/systems/test-lab.js).
   if(typeof testLabActive==="function" && testLabActive()) return;
@@ -480,11 +484,13 @@ function persistNow(){
   if(saveLoadFailed) return; // el guardado de verdad sigue en localStorage (y copiado en _noCargo)
   if(!saveLoadStarted){ try{ console.warn("persist antes de cargar el guardado: ignorado"); }catch(e){} return; }
   const data = (typeof netPersistView==="function") ? netPersistView(save) : save;
-  try{ localStorage.setItem(SAVE_KEY, JSON.stringify(data)); }catch(e){ /* storage unavailable, continue in-memory */ }
+  try{ localStorage.setItem(SAVE_KEY, JSON.stringify(data)); saveLastWriteOK = true; }catch(e){ return false; }
   // CUENTAS: avisa que el guardado cambió (se sube a la nube con demora: js/net/account.js)
   if(typeof accountOnPersist==="function"){ try{ accountOnPersist(); }catch(e){} }
+  return true;
 }
 function persist(){
+  if(_persistBatchDepth) return;
   if(typeof invalidatePassiveCache==="function") invalidatePassiveCache();
   if(typeof state!=="undefined" && state==="playing"){
     if(!_persistTimer) _persistTimer = setTimeout(persistNow, 1500);

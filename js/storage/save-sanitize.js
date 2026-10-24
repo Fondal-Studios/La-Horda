@@ -242,6 +242,15 @@ function saveSanitize(parsed, ctx){
     }
     return out;
   };
+  // Preserve valid legacy overflow before the stash safety limit, rather than truncating earned loot.
+  if(!Array.isArray(parsed.rewardOverflow)) parsed.rewardOverflow=[];
+  if(Array.isArray(parsed.stash) && parsed.stash.length>SAVE_LIMITS.stash){
+    const excess=parsed.stash.splice(SAVE_LIMITS.stash);
+    for(let i=0;i<excess.length;i+=100)parsed.rewardOverflow.push(excess.slice(i,i+100));
+  }
+  parsed.rewardOverflow=parsed.rewardOverflow.filter(Array.isArray).flatMap((chunk)=>{
+    const out=[];for(let i=0;i<chunk.length;i+=100)out.push(cleanItems(chunk.slice(i,i+100),"save.rewardOverflow"));return out;
+  }).filter(c=>c.length);
   if(Array.isArray(parsed.stash)) parsed.stash = cleanItems(parsed.stash, "save.stash");
   if(_ssIsObj(parsed.champions)) for(const id of Object.keys(parsed.champions)){
     const c = parsed.champions[id]; if(Array.isArray(c.inventory)) c.inventory = cleanItems(c.inventory, "save.champions." + id.slice(0, 24) + ".inventory");

@@ -1,0 +1,32 @@
+{
+  "status": "PASS_COMPONENT",
+  "state": "VALIDADO",
+  "component": "A-FX-guerrero-h3 / armada",
+  "block": "B143",
+  "frames": [
+    7
+  ],
+  "scope": "Conectar el clip armada existente a drawTrap; no aprobación del kit ni cierre de B143 completo.",
+  "visual": "Revisadas siete hojas nativas antes/después de seis arenas, base/equipo/Nocturno, escritorio y táctil horizontal, densidad escasa/densa y fade. Motivo verde del atlas existente visible y distinto de la cruz anterior; bordes limpios, escala coherente, ancla estable, sin cambios de cuerpos/skins. En contacto el cuerpo tapa naturalmente el marcador de suelo; no se sube sobre los enemigos para volverlo visible.",
+  "range": "Glifo de ubicación, no límite mecánico. El fallback anterior tampoco dibuja el radio65: cruz14 y rombo10. Mecánica65u, premarcado y SFA intactos. La prueba del borde65/66 confirma activación original.",
+  "matrix": {
+    "scenes400ms": 72,
+    "scenes1600ms": 72,
+    "restorations": 288,
+    "stateRestorations": 288,
+    "minimumEnemyPixelRetention": 1.0,
+    "threshold": 0.8,
+    "RGBDelta": 24,
+    "negativeControlFailures": 4,
+    "nativeSheets": 7
+  },
+  "limits": [
+    "Contacto denso es una composición congelada tras insertar enemigos; en simulación la trampa se dispara al entrar un enemigo.",
+    "Máscara de cuerpo enemigo alfa>=250; métrica de retención no mide reconocimiento semántico. Revisión visual separada.",
+    "Performance local del consumidor con atlas cargado, no certificación térmica/GC de dispositivo físico.",
+    "El resultado a400ms se conserva por hashes y JSON; las hojas finales son1600ms. PNG completos seleccionados, resto reproducible.",
+    "Otros clips/subcapas B141/B142/B143/UF no quedan aprobados por esta conexión.",
+    "CI exacto del nuevo commit pendiente; no integrado ni publicación verificada todavía."
+  ],
+  "preserved": "Todos los assets originales, muerte PR187, Cazadora PR204, temporizadores, daño y estados. Sólo11 líneas runtime frente main3d25."
+}

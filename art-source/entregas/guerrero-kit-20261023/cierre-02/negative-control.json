@@ -1,0 +1,103 @@
+{
+  "checks": {
+    "canary": true,
+    "scenes": 2,
+    "restorations": 4,
+    "stateUnchanged": 4,
+    "errors": []
+  },
+  "rows": [
+    {
+      "arena": "bosque",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 1253,
+          "enemyRetained": 0,
+          "enemyVisible": 0,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "08599b6e2c702b31f14fc7dabde51eb6d2aaee17e9ca0b544d7c9a75e96b5ba2",
+          "afterHash": "d4ece20cb9f62ca780e39f2a6d456eb53f6627377a660a497b0a7c07dc608456"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 1253,
+          "enemyRetained": 0,
+          "enemyVisible": 0,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 761.8461538461538,
+          "y": 387,
+          "width": 1280,
+          "height": 720,
+          "beforeHash": "417e57aea6845c7c0db403150cd2bb97afa57ec2c2d2c228babbfd06717e236c",
+          "afterHash": "2b6bd1e607e3f6a4f9cecd46a4f5fc336eb56b46662b214fd8b07f9514a4eafb"
+        }
+      ],
+      "castRadius": 65,
+      "id": "desktop-bosque-base-sparse",
+      "mobile": false
+    },
+    {
+      "arena": "bosque",
+      "look": "base",
+      "dense": false,
+      "resolved": {
+        "pack": "guerrero",
+        "skin": null,
+        "pieces": 0,
+        "equipment": 0
+      },
+      "atlasDraws": 10,
+      "bodyDraws": 6,
+      "samples": [
+        {
+          "timer": 5000,
+          "enemyOpaque": 345,
+          "enemyRetained": 0,
+          "enemyVisible": 0,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "e33dc63fd9815276fdc1596e65cd7329bc8ecd401106904114d026562c27413d",
+          "afterHash": "11b3560dcf80a43f91160ba7b8b07e737c4182d8cd23b97f8d943fb331b5eefe"
+        },
+        {
+          "timer": 600,
+          "enemyOpaque": 345,
+          "enemyRetained": 0,
+          "enemyVisible": 0,
+          "restored": true,
+          "stateUnchanged": true,
+          "x": 396.96153846153845,
+          "y": 215.5,
+          "width": 667,
+          "height": 375,
+          "beforeHash": "1c5b0f413cd634cc3b48687ce28b628a94d2c0a87965d157e7489172057ba70d",
+          "afterHash": "d29835ec05fe848d76d428f8339f0d3d13b2fb58eced4e75314003561600cf8c"
+        }
+      ],
+      "castRadius": 65,
+      "id": "touch-bosque-base-sparse",
+      "mobile": true
+    }
+  ]
+}

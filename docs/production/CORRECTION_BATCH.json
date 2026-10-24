@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "updated": "2026-10-24",
-  "policy": "First-pass champion batches; save failures and move forward. Run a grouped correction pass later; never merge failed or unvalidated assets.",
+  "policy": "Alternar PRODUCCION con CIERRE (corregir, validar, integrar, verificar publicación). Conservar historial, fuentes e IDs. No integrar FIX ni rebajar gates.",
   "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
   "entries": [
     {
@@ -1663,7 +1663,7 @@
     {
       "block": "B143",
       "component": "A-FX-guerrero-h3 / armada",
-      "state": "EN_CORRECCION",
+      "state": "VALIDADO",
       "source": "art-source/entregas/guerrero-kit-20261023/integracion-01",
       "frames": [
         7
@@ -1671,7 +1671,70 @@
       "defects": [
         "Conexión restaurada; contraste compuesto/alcance visual/skins/arenas/performance sin aprobación integral."
       ],
-      "next": "Validar componente aislado, conservar atlas original. No cerrar B143 completo."
+      "next": "CI exacthead, merge normal con expected_head_sha y verificar publicación; B143 completo sigue sin cerrar.",
+      "history": [
+        {
+          "state": "EN_CORRECCION",
+          "defects": [
+            "Conexión restaurada; contraste compuesto/alcance visual/skins/arenas/performance sin aprobación integral."
+          ],
+          "source": "art-source/entregas/guerrero-kit-20261023/integracion-01"
+        }
+      ],
+      "review": "art-source/entregas/guerrero-kit-20261023/cierre-02/REVIEW.json",
+      "currentDefects": []
+    },
+    {
+      "block": "B145",
+      "component": "A-FX-ilkan-h2",
+      "state": "EN_CORRECCION",
+      "source": "art-source/entregas/ilkan-kit-20261024/primera-pasada-01",
+      "atlas": "dune-atlas.png",
+      "hashIndex": "FRAME_INDEX.json",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "defects": [
+        "Placas pequeñas/ornamentales bajo anillos y partículas legados; subcapa persistente, faltan activación/disipación específicas y gate compuesto."
+      ],
+      "next": "Lote de corrección posterior: seis arenas/skins/contraste/performance y relay con trazas. No integrar taller FIX."
+    },
+    {
+      "block": "B146",
+      "component": "A-FX-ilkan-h3",
+      "state": "EN_CORRECCION",
+      "source": "art-source/entregas/ilkan-kit-20261024/primera-pasada-01",
+      "atlas": "caravan-atlas.png",
+      "hashIndex": "FRAME_INDEX.json",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "defects": [
+        "Pendones visibles aislados pero pierden separación en contacto denso y entre receptores; timeouts relay intermitentes conservados, causa no demostrada."
+      ],
+      "next": "Lote de corrección posterior: seis arenas/skins/contraste/performance y relay con trazas. No integrar taller FIX."
     }
   ],
   "pendingVerificationNotFailures": [
@@ -1682,9 +1745,9 @@
     "Veyra B226/B227 y lanzamiento B228: primera pasada nativa con prueba de línea/ángulo vertical y recorrido real; pendiente matriz de skins/arenas y revisión final. No confundir GENERADO con VALIDADO.",
     "Brakk B119 y disparo B118: fuentes GENERADO; comprobar todas las skins, contraste de vigas finas móvil y warmup de temas nuevos antes de aprobación visual. Gates locales no equivalen a VALIDADO."
   ],
-  "nextProduction": "Auditar Guerrero B141/B142/B143 en main/PR/fuentes/consumidores frescos antes de producir; preservar muerte PR187, cuerpo, UF, básicos y arte existente. No repetir primeras pasadas ni arreglar Farolero/Facu/Eslabón mientras falten kits.",
+  "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "Auditar Guerrero B141/B142/B143 en main/PR/fuentes/consumidores frescos antes de producir; preservar muerte PR187, cuerpo, UF, básicos y arte existente. No repetir primeras pasadas ni arreglar Farolero/Facu/Eslabón mientras falten kits.",
+  "next": "Cerrar PR212 con CI exacthead y merge verificado; después producción Iria y otro cierre. Alternancia ordenada por Nano.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -1693,8 +1756,7 @@
     "preservesEntries": 23
   },
   "queueSnapshotOrigin": {
-    "branch": "art/facu-gm-kit-first-pass-20261023",
-    "sha": "7aefceeb522025ba6da9abf390e1c5676ac17041",
-    "preservedHistoricalEntries": 40
+    "sha": "b0e03bd88d3624e3d4f1771737c3804ad2b13b85",
+    "preservedHistoricalEntries": 46
   }
 }

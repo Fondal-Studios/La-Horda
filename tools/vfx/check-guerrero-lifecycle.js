@@ -1,0 +1,20 @@
+'use strict';
+const fs=require('node:fs'),H=require('../lib/serve');
+const OUT=process.env.OUT||'art-source/entregas/guerrero-kit-20261023/cierre-02';
+fs.mkdirSync(OUT,{recursive:true});
+(async()=>{const site=await H.startSite(),b=await H.launch(),p=await b.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));try{await H.goto(p,site.url);await p.waitForFunction(()=>assetsAllReady()&&ASESINO_HAB_READY.trampa);const r=await p.evaluate(()=>{
+ let time=1000;const now=performance.now.bind(performance);performance.now=()=>time;const rows=[],check=(name,ok,data)=>rows.push({name,ok,data});
+ save.stash=[];for(const k in save.champions)Object.assign(save.champions[k],{unlocked:true,level:20,equipment:{},inventory:[],talents:{nodes:{},mastery:null,masteryNodes:{}}});selectedClass='guerrero';currentArena='bosque';lobbyAllies=['tanque','soporte'];startRun(1);state='menu';enemies=[];
+ const d=drawAnimFrameSized;let draws=0;drawAnimFrameSized=function(im,...a){if(im===ASESINO_HAB_ANIM_ATLASES.trampa.img)draws++;return d.call(this,im,...a);};
+ const cast=()=>{player.energy=1e4;player.cds=[0,0,0];player.aim={x:player.x+110,y:player.y,dx:1,dy:0};castAbility(player,player.cls.skills[2],false,2);return traps[traps.length-1];};
+ let tr=cast();check('actual cast creates owned untriggered object',tr?.src===player&&!tr.triggered,{radius:tr.radius,timer:tr.timer,armTime:tr.armTime});draws=0;drawTrap(tr);check('no armed cell during preparation',draws===0);
+ updateTraps(280);draws=0;drawTrap(tr);check('actual update arms authored cell',draws===1&&tr.armTime<=0);
+ const e=spawnEnemy('esqueleto');Object.assign(e,{x:tr.x+tr.radius+1,y:tr.y,hp:1e7,maxHp:1e7,speed:0,dmg:0});updateTraps(1);check('outside mechanical radius does not trigger',traps.includes(tr));e.x=tr.x+tr.radius;const hp=e.hp;updateTraps(1);check('inside mechanical boundary triggers and damages',!traps.includes(tr)&&tr.triggered&&e.hp<hp);draws=0;for(const t of traps)drawTrap(t);check('triggered object removed from rendered pool',draws===0);
+ enemies=[];tr=cast();updateTraps(280);tr.timer=1;updateTraps(2);check('expiry removes object',!traps.includes(tr));
+ tr=cast();updateTraps(280);const before=JSON.stringify({...tr,src:0});let randomCalls=0;const random=Math.random;Math.random=()=>{randomCalls++;return random();};const perf=[];performance.now=now;
+ const coldStart=now();drawTrap(tr);const firstDrawMs=now()-coldStart;
+ for(let i=0;i<600;i++){const t=now();for(let j=0;j<32;j++)drawTrap(tr);perf.push(now()-t);}
+ Math.random=random;perf.sort((a,b)=>a-b);check('19201 draws preserve trap state',before===JSON.stringify({...tr,src:0}));check('drawing consumes no combat RNG',randomCalls===0,randomCalls);check('drawing does not create traps',traps.length===1,traps.length);
+ startRun(1);state='menu';check('new run empties trap pool',traps.length===0);
+ drawAnimFrameSized=d;performance.now=now;return{rows,performance:{samples:600,drawsPerSample:32,firstDrawMs,p50:perf[300],p95:perf[570],max:perf[599],scope:'local trap renderer only; existing atlas loaded; not full frame, cold page or physical phone'}};
+});fs.writeFileSync(OUT+'/lifecycle.json',JSON.stringify({...r,errors},null,2));console.log(JSON.stringify({...r,errors}));if(errors.length||r.rows.some(x=>!x.ok))process.exitCode=1;}finally{await b.close();await site.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

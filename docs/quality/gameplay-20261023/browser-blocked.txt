@@ -1,0 +1,21 @@
+[arnés] servidor propio: http://127.0.0.1:38731 (raíz /workspace/scratch/ee42443e7f24/La-Horda)
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     npx playwright install                                 ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+    at Object.launch (/workspace/scratch/ee42443e7f24/La-Horda/tools/lib/serve.js:67:37)
+    at /workspace/scratch/ee42443e7f24/La-Horda/tools/regression/t_checkpoint.js:12:33 {
+  log: [],
+  name: 'Error'
+}
+
+Node.js v24.19.0

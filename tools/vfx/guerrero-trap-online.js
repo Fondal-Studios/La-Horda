@@ -1,7 +1,7 @@
 'use strict';
 const {spawn}=require('node:child_process'),fs=require('node:fs'),H=require('../lib/serve');
-const OUT='art-source/entregas/guerrero-kit-20261023/integracion-01';
-const relay=spawn('node',['server/relay.js'],{env:{...process.env,PORT:'8894',DATA_DIR:'/tmp/guerrero-trap-relay',ALLOWED_ORIGINS:'*'},stdio:'ignore'});
+const OUT=process.env.OUT||'art-source/entregas/guerrero-kit-20261023/integracion-01';
+const relay=spawn('node',['server/relay.js'],{env:{...process.env,PORT:'8894',DATA_DIR:fs.mkdtempSync('/tmp/guerrero-trap-relay-'),DATABASE_URL:'',ALLOWED_ORIGINS:'*'},stdio:'ignore'});
 (async()=>{const site=await H.startSite();let b;try{
  b=await H.launch();const a=await b.newPage(),g=await b.newPage({viewport:{width:844,height:390},isMobile:true,hasTouch:true}),errors=[],checks=[];
  for(const [p,k]of[[a,'solciju'],[g,'guerrero']]){p.on('pageerror',e=>errors.push(e.message));await H.goto(p,site.url+'/?server=ws%3A%2F%2F127.0.0.1%3A8894');await p.waitForFunction(()=>typeof netCreateRoom==='function'&&ASESINO_HAB_READY.trampa);await p.evaluate(k=>{save.starterChosen=true;for(const c in save.champions){save.champions[c].unlocked=true;save.champions[c].level=20;}selectedClass=k;currentArena='bosque';setState('prep');},k);}

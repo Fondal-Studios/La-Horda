@@ -204,6 +204,7 @@ function _netConnectOnce(url, maxMs){
       // Identidad de cuenta (Fundador): el relay la verifica con el servidor de cuentas; opcional.
       const tok = typeof accountPresenceToken==="function" ? accountPresenceToken(url) : null;
       if(tok){ try{ ws.send(JSON.stringify({t:"identify", token:tok})); }catch(e){} }
+      if(typeof campaignInboxOpen==="function") campaignInboxOpen();
       resolve();
       _netEmit("open"); }; // p.ej. terminar un intercambio que quedó a mitad (js/net/net-trade.js)
     ws.onerror = ()=>{ netLog("NETWORK_ERROR", {where:"socket"}); };
@@ -253,6 +254,7 @@ function netConnectLabel(secs){
   return secs < 4 ? "Conectando…" : `Despertando el servidor… ${secs} s (puede tardar hasta 1 minuto)`;
 }
 function _netHandle(m){
+  if(typeof campaignInboxMessage==="function" && campaignInboxMessage(m)) return;
   switch(m.t){
     case "pong": net.ping = Math.round(performance.now() - m.c); net.lastPongAt = performance.now(); if(typeof netDebugRefresh==="function") netDebugRefresh(); return;
     case "joined":
@@ -294,6 +296,13 @@ function _netHandle(m){
       _netEmit("closed", m.reason, role);
       return;
     case "error":
+      if(m.code==="REWARDS_PENDING" || m.code==="REWARDS_STORAGE"){
+        if(typeof netFinishMatch==="function")netFinishMatch();
+        setState("prep");
+        if(typeof netRefreshLobby==="function")netRefreshLobby();
+        if(typeof gameAlert==="function")gameAlert(m.msg);
+        return;
+      }
       // NO_ROOM: un relay viejo no conoce "identify", o el invitado mandó su movimiento al reconectarse antes
       // del "joined": no es un motivo para el jugador ni la respuesta al "join"
       if(m.code==="NO_ROOM"){ netLog("NETWORK_ERROR", {code:m.code}); return; }

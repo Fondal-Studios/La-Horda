@@ -80,6 +80,8 @@ function resetRunTransients(){
   if(typeof groundLootReset==="function") groundLootReset(); // botín del piso: se junta si la partida sigue (cambio de arena)
 }
 function startRun(fromLevel){
+  victoryBeginRun(netMatch && netMatch.rewardRunId);
+  _bossVictoryDone = false;
   if(["gameover","victory"].includes(state)) duoRestoreLead();
   runLevel = fromLevel || 1;
   // Campeones sin fila en el guardado (INTERNAL en Test Lab / herramientas): fila temporal en memoria.
@@ -253,13 +255,15 @@ function onBossDefeated(){
 // Cierre de la victoria (arena superada, desbloqueos, pantalla final). Lo llama onBossDefeated o,
 // si la arena tiene su propia secuencia de muerte del jefe, la arena cuando esa secuencia termina.
 let runFirstClear = false;
+let _bossVictoryDone = false;
 function finishBossVictory(){
   if(typeof endlessOn==="function" && endlessOn()){ endlessBossDown(); return; } // Horda Infinita: el jefe es una ronda, no el cierre de la arena
+  if(_bossVictoryDone) return;
+  _bossVictoryDone = true;
   if(typeof bossAssistOnVictory==="function") bossAssistOnVictory(currentArena); // ganar la arena borra la ayuda del jefe (boss-assist.js)
   cpVictory = true; checkpointClear(currentArena); // ganar la arena borra su punto de control (checkpoint.js); la XP/oro de la victoria no se descuentan
   bossActive = false;
   if(typeof setMusicMode==="function") setMusicMode("victory");
-  grantGold(Math.round(80*(typeof diffGoldMult==="function" ? diffGoldMult() : 1)));
   const pesOpen0 = typeof diffTierOpen==="function" && diffTierOpen("pesadilla");
   // ORDEN CANÓNICO (CAMPAIGN_ORDER): la campaña es secuencial -la primera victoria en una arena abre la
   // siguiente arena jugable (la frontera, ver campaignFrontier)-. Completar la Arena Infernal abre la
@@ -285,6 +289,8 @@ function finishBossVictory(){
   if(ck){
     crystalAward(ck, boss ? boss.x : player.x, boss ? boss.y : player.y); wait = 3400;
   }
+  buildVictoryData(); // durable loot before the victory delay, even if the page closes now
+  if(netIsHost()) netHostAnnounceEnd(true); // journal the team outcome before the presentation delay
   runLaterFlow(wait, ()=>{ if(state==="playing") showVictoryScreen(); });
 }
 

@@ -1,0 +1,58 @@
+'use strict';
+// Real renderer, same-frame A/B/A; restores animation pose between draws.
+// This validates only the persistent armed-trap consumer, not the whole kit.
+const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process'),crypto=require('node:crypto'),H=require('../lib/serve');
+const OUT=path.resolve(process.env.OUT||'art-source/entregas/guerrero-kit-20261023/cierre-02');
+const base=cp.execFileSync('git',['show','3d25a89e:js/champions/asesino.js'],{encoding:'utf8'});
+const oldDraw=base.slice(base.indexOf('function drawTrap(tr){')).trim();
+(async()=>{fs.mkdirSync(OUT,{recursive:true});const site=await H.startSite(),browser=await H.launch(),rows=[],errors=[];
+try{
+for(const mobile of [false,true]){
+ const p=await browser.newPage({viewport:mobile?{width:667,height:375}:{width:1280,height:720},isMobile:mobile,hasTouch:mobile,deviceScaleFactor:1});
+ p.on('pageerror',e=>errors.push(e.message));await H.goto(p,site.url);await p.waitForFunction(()=>assetsAllReady()&&ASESINO_HAB_READY.trampa&&CHAMP_PACK.skin_nocturno?.ready);
+ for(const arena of (process.env.ARENAS||'bosque,hielo,infernal,laberinto,acuatica,minas').split(','))for(const look of (process.env.LOOKS||'base,gear,set').split(','))for(const dense of (process.env.SPARSE_ONLY?[false]:[false,true])){
+  const r=await p.evaluate(({arena,look,dense,oldDraw,canary,steps})=>{
+   let vt=1000,sd=777,calls=0;const pn=performance.now,rnd=Math.random;performance.now=()=>vt;Math.random=()=>{calls++;sd=(Math.imul(sd,1664525)+1013904223)>>>0;return sd/4294967296;};
+   netMatch=null;save.stash=[];for(const k in save.champions)Object.assign(save.champions[k],{unlocked:true,level:20,xp:0,equipment:{},inventory:[],croma:null,cosmeticSkin:'',talents:{nodes:{},mastery:null,masteryNodes:{}}});
+   if(look==='set'){for(const id of setPieceIds('nocturno')){const it=makeDesignedItem(id);stashItems().push(it);equipItem('guerrero',it.uid);}delete save.champions.guerrero.cosmeticSkin;}
+   if(look==='gear')for(const type of ['arma','casco','pechera','botas']){const it=makeItem(type,'legendario');stashItems().push(it);equipItem('guerrero',it.uid);}
+   invalidatePassiveCache();selectedClass='guerrero';currentArena=arena;lobbyAllies=['tanque','soporte'];startRun(1);document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));
+   enemies=[];spawnTimer=arenaHazardTimer=1e9;player.fx=1;player.fy=0;state='playing';player.energy=1e4;player.cds=[0,0,0];
+   const oldCam=CAM_SUBJECT;CAM_SUBJECT={x:player.x,y:player.y};CAM_LEAD_X=CAM_LEAD_Y=0;
+   for(const a of allies){a.x=player.x-40;a.y=player.y+14;a.stunTimer=1e9;}
+   const step=()=>{vt+=16;spawnTimer=arenaHazardTimer=1e9;update(16);render();};for(let i=0;i<20;i++)step();
+   player.aim={x:player.x+110,y:player.y,dx:1,dy:0};castAbility(player,player.cls.skills[2],false,2);for(let i=0;i<steps;i++)step();
+   const tr=traps.find(t=>t.src===player);if(!tr)throw Error('actual cast created no persistent trap');
+   // Enemies are inserted after arming for a frozen contact-composition frame. No claim that an armed trap stays untriggered under them during simulation.
+   for(const [dx,dy]of(dense?[[-28,4],[28,4],[0,30],[46,-25]]:[[90,0]])){const e=spawnEnemy('esqueleto');Object.assign(e,{x:tr.x+dx,y:tr.y+dy,hp:1e7,maxHp:1e7,speed:0,baseSpeed:0,dmg:0});}
+   _arenaTitleUntil=0;document.getElementById('center-banner').classList.remove('show');
+   // Prime newly spawned body/mipmap caches before repeated-frame comparison. Cold rendering is outside this A/B/A test.
+   render();render();
+   const cv=document.getElementById('game'),candidate=drawTrap,parent=eval('('+oldDraw+')'),samples=[];
+   const snap=()=>[...heroes,...enemies].map(e=>({e,an:e._an?JSON.parse(JSON.stringify(e._an)):null,cast:e._animCastKind}));
+   const restore=ss=>{for(const s of ss){if(s.an)s.e._an=JSON.parse(JSON.stringify(s.an));else delete s.e._an;if(s.cast===undefined)delete s.e._animCastKind;else s.e._animCastKind=s.cast;}};
+   const stateSnap=()=>JSON.stringify({traps:traps.map(t=>({...t,src:heroes.indexOf(t.src)})),enemies:enemies.map(e=>[e.x,e.y,e.hp,e.alive]),heroes:heroes.map(h=>[h.x,h.y,h.hp]),calls});
+   const mask=document.createElement('canvas');mask.width=cv.width;mask.height=cv.height;const mg=mask.getContext('2d'),di=CanvasRenderingContext2D.prototype.drawImage,eb=drawEnemyBody;let recording=false;
+   drawEnemyBody=function(e){recording=true;try{return eb(e);}finally{recording=false;}};
+   CanvasRenderingContext2D.prototype.drawImage=function(im,...a){if(recording&&this===ctx){mg.setTransform(this.getTransform());mg.globalAlpha=this.globalAlpha;mg.imageSmoothingEnabled=false;di.call(mg,im,...a);}return di.call(this,im,...a);};
+   let atlasDraws=0,bodyDraws=0;const d=drawAnimFrameSized,mip=artMipDraw,pack=setSkinPackKey(player,'guerrero'),body=CHAMP_PACK[pack]?.atlas||GUERRERO_IMG;
+   drawAnimFrameSized=function(img,...args){if(img===ASESINO_HAB_ANIM_ATLASES.trampa.img)atlasDraws++;return d.call(this,img,...args);};artMipDraw=function(img,...args){if(img===body)bodyDraws++;return mip.call(this,img,...args);};
+   for(const timer of [5000,600]){
+    tr.timer=timer;const pose=snap(),state0=stateSnap();mg.setTransform(1,0,0,1,0,0);mg.clearRect(0,0,cv.width,cv.height);restore(pose);render();const pixels=ctx.getImageData(0,0,cv.width,cv.height).data,maskPixels=mg.getImageData(0,0,cv.width,cv.height).data;const after=cv.toDataURL(),post=snap();drawTrap=parent;restore(pose);render();const before=cv.toDataURL(),basePixels=ctx.getImageData(0,0,cv.width,cv.height).data;if(canary)for(let i=0;i<pixels.length;i+=4){pixels[i]=255;pixels[i+1]=0;pixels[i+2]=255;}let opaque=0,retained=0;for(let i=0;i<maskPixels.length;i+=4)if(maskPixels[i+3]>=250){opaque++;if(Math.max(Math.abs(pixels[i]-basePixels[i]),Math.abs(pixels[i+1]-basePixels[i+1]),Math.abs(pixels[i+2]-basePixels[i+2]))<=24)retained++;}drawTrap=candidate;restore(pose);render();const restored=cv.toDataURL();restore(post);
+    samples.push({timer,enemyOpaque:opaque,enemyRetained:retained,enemyVisible:opaque?retained/opaque:0,restored:after===restored,stateUnchanged:state0===stateSnap(),before,after,x:(tr.x-CAM_SUBJECT.x)*CAM_ZOOM+VW/2,y:(tr.y-CAM_SUBJECT.y+CAM_LIFT)*CAM_ZOOM+VH/2-CAM_Y_ANCHOR,width:cv.width,height:cv.height});
+   }
+   const resolved={pack,skin:activeSetSkinId(player),pieces:setN(player,'nocturno'),equipment:Object.values(save.champions.guerrero.equipment).filter(Boolean).length};
+   drawEnemyBody=eb;CanvasRenderingContext2D.prototype.drawImage=di;drawTrap=candidate;drawAnimFrameSized=d;artMipDraw=mip;CAM_SUBJECT=oldCam;state='menu';performance.now=pn;Math.random=rnd;
+   return{elapsedSinceCast:steps*16,arena,look,dense,resolved,atlasDraws,bodyDraws,samples,castRadius:tr.radius};
+  },{arena,look,dense,oldDraw,canary:!!process.env.CANARY,steps:+(process.env.STEPS||100)});
+  const id=`${mobile?'touch':'desktop'}-${arena}-${look}-${dense?'dense':'sparse'}`;
+  for(const s of r.samples){for(const k of ['before','after']){const buf=Buffer.from(s[k].split(',')[1],'base64');fs.writeFileSync(path.join(OUT,id+'-'+s.timer+'-'+k+'.png'),buf);s[k+'Hash']=crypto.createHash('sha256').update(buf).digest('hex');delete s[k];}}
+  rows.push({...r,id,mobile});console.log(id,r.samples.every(s=>s.restored&&s.stateUnchanged),r.resolved.pack);
+ }
+ await p.close();
+}
+const checks={canary:!!process.env.CANARY,scenes:rows.length,restorations:rows.flatMap(r=>r.samples).filter(s=>s.restored).length,stateUnchanged:rows.flatMap(r=>r.samples).filter(s=>s.stateUnchanged).length,errors};
+fs.writeFileSync(path.join(OUT,'matrix.json'),JSON.stringify({checks,rows},null,2));
+if(errors.length||rows.some(r=>!r.atlasDraws||!r.bodyDraws||r.samples.some(s=>!s.restored||!s.stateUnchanged||s.enemyVisible<0.8)||(r.look==='set'&&r.resolved.pack!=='skin_nocturno')||(r.look!=='base'&&r.resolved.equipment!==4)))process.exitCode=1;
+console.log(JSON.stringify(checks));
+}finally{await browser.close();await site.close();}})().catch(e=>{console.error(e);process.exitCode=1;});
