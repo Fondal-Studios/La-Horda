@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "scope": "SOURCE_ONLY_NOT_APPROVED",
+  "atlas": "art-source/entregas/bloques/B004_libertador/campeones/atlas.png",
+  "atlasGitBlobSha": "5ba98ab90d0678814f042e9db47a5f9dca74f7ef",
+  "replacement": "art-source/entregas/bloques/B004_libertador/revision-back-v1/source.png",
+  "replacementGitBlobSha": "c86cf2c9a2cc2d96a0cd9b1e5144f52f31e5c2b5",
+  "grid": [
+    4,
+    2
+  ],
+  "frames": [
+    8,
+    9,
+    10,
+    11,
+    20,
+    21,
+    22,
+    23
+  ],
+  "knownOriginalFailures": [
+    8,
+    9,
+    10,
+    11,
+    20,
+    21,
+    23
+  ],
+  "additionalFrame22": "Continuidad de la secuencia de ataque de espalda; no era fallo nativo.",
+  "approvalClaimed": false,
+  "installed": false,
+  "cellRects": [
+    [
+      0,
+      0,
+      444,
+      444
+    ],
+    [
+      444,
+      0,
+      887,
+      444
+    ],
+    [
+      887,
+      0,
+      1330,
+      444
+    ],
+    [
+      1330,
+      0,
+      1774,
+      444
+    ],
+    [
+      0,
+      444,
+      444,
+      887
+    ],
+    [
+      444,
+      444,
+      887,
+      887
+    ],
+    [
+      887,
+      444,
+      1390,
+      887
+    ],
+    [
+      1390,
+      444,
+      1774,
+      887
+    ]
+  ],
+  "note": "Source1774x887; third attack saber extends beyond nominal equal cell. Explicit transparent-gutter rectangles preserve full blade and do not filter/repaint pixels."
+}

@@ -1,0 +1,88 @@
+{
+  "status": "REJECT",
+  "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+  "approvalClaimed": false,
+  "installed": false,
+  "frames": 36,
+  "requiredClips": [
+    "aim",
+    "attack_side",
+    "bayo_emb",
+    "bayo_imp",
+    "bayo_pre",
+    "bayo_rem",
+    "cabral",
+    "cast_side",
+    "command",
+    "fire",
+    "idle_down",
+    "idle_left",
+    "idle_side",
+    "idle_up",
+    "reload",
+    "ult_cast",
+    "walk_down",
+    "walk_left",
+    "walk_side",
+    "walk_up"
+  ],
+  "issues": [
+    {
+      "code": "SHORTENED_RUNTIME_CLIP",
+      "clip": "idle_down",
+      "before": 4,
+      "after": 1
+    },
+    {
+      "code": "MISSING_RUNTIME_CLIP",
+      "clip": "idle_left"
+    },
+    {
+      "code": "MISSING_RUNTIME_CLIP",
+      "clip": "walk_left"
+    },
+    {
+      "code": "MISSING_RUNTIME_CLIP",
+      "clip": "aim"
+    },
+    {
+      "code": "MISSING_RUNTIME_CLIP",
+      "clip": "fire"
+    },
+    {
+      "code": "MISSING_RUNTIME_CLIP",
+      "clip": "reload"
+    },
+    {
+      "code": "MISSING_RUNTIME_CLIP",
+      "clip": "bayo_pre"
+    },
+    {
+      "code": "MISSING_RUNTIME_CLIP",
+      "clip": "bayo_emb"
+    },
+    {
+      "code": "MISSING_RUNTIME_CLIP",
+      "clip": "bayo_imp"
+    },
+    {
+      "code": "MISSING_RUNTIME_CLIP",
+      "clip": "bayo_rem"
+    },
+    {
+      "code": "MISSING_RUNTIME_CLIP",
+      "clip": "command"
+    },
+    {
+      "code": "MISSING_RUNTIME_CLIP",
+      "clip": "cabral"
+    },
+    {
+      "code": "MISSING_RUNTIME_CLIP",
+      "clip": "ult_cast"
+    }
+  ],
+  "key": "libertador",
+  "baselineImage": "assets/sprites/champions/libertador/v2/atlas.png",
+  "candidateImage": "/tmp/libertador-musket-v1/atlas.png"
+}

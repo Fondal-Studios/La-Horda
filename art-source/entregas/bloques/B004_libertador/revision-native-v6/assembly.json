@@ -1,0 +1,26 @@
+{
+  "baseline": "art-source/entregas/bloques/B004_libertador/revision-native-v4/atlas.png",
+  "sources": {
+    "recovery-source.png": "66f4c4e9d6d92bff8a43c79b58be9e5aaf981a089924eea5822d97f77bd332a6",
+    "aim-source.png": "60f80c7cda00cd9e971632dbfd68b86008dec61c0c3deafca065b9a880950a23"
+  },
+  "replacements": [
+    {
+      "frame": 23,
+      "source": "recovery-source.png",
+      "rect": [
+        1051,
+        0,
+        2103,
+        748
+      ]
+    },
+    {
+      "frame": 20,
+      "source": "aim-source.png"
+    }
+  ],
+  "targetHeight": 66,
+  "retainedFramesFromV4": 34,
+  "retainedFramesFromOriginalV2": 33
+}
