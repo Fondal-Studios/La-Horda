@@ -1,0 +1,170 @@
+{
+  "status": "FAIL",
+  "checks": [
+    {
+      "name": "solciju admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "brakk admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "veyra admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "morveth admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "aelith admitted as released standard champion",
+      "ok": true
+    },
+    {
+      "name": "nano_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "facu_gm rejected without founder entitlement",
+      "ok": true
+    },
+    {
+      "name": "solciju guest casts simulated by host",
+      "ok": true,
+      "host": {
+        "key": "solciju",
+        "casts": 4,
+        "damage": 506.17627500000015,
+        "bleeds": 0
+      },
+      "guest": {
+        "key": "solciju",
+        "casts": 4,
+        "owned": [
+          "sol_reserve"
+        ],
+        "bleeds": 0
+      }
+    },
+    {
+      "name": "Solciju reserve and cask replicate with guest owner",
+      "ok": false
+    },
+    {
+      "name": "all three casts and preserved UF reach host",
+      "ok": true,
+      "events": [
+        [
+          "solciju.wine",
+          115,
+          50,
+          85,
+          0.00763343951749307,
+          0.85,
+          0
+        ],
+        [
+          "solciju.cask",
+          115,
+          50,
+          100,
+          0.00763343951749307,
+          0.85,
+          0
+        ],
+        [
+          "solciju.toast",
+          49.5,
+          49.5,
+          120,
+          0.00763343951749307,
+          0.85,
+          0
+        ],
+        [
+          "uf.solciju",
+          105.49747468305831,
+          49.49747468305832,
+          160,
+          -0.0000450969790023521,
+          0.85,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "all three casts and preserved UF reach touch guest",
+      "ok": true,
+      "events": [
+        [
+          "solciju.wine",
+          115,
+          50,
+          85,
+          0.01,
+          0.85,
+          0
+        ],
+        [
+          "solciju.cask",
+          115,
+          50,
+          100,
+          0.01,
+          0.85,
+          0
+        ],
+        [
+          "solciju.toast",
+          49.5,
+          49.5,
+          120,
+          0.01,
+          0.85,
+          0
+        ],
+        [
+          "uf.solciju",
+          105.5,
+          49.5,
+          160,
+          0,
+          0.85,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "host draws actual cup atlas",
+      "ok": true,
+      "draws": 30
+    },
+    {
+      "name": "touch guest draws actual cup atlas",
+      "ok": true,
+      "draws": 51
+    },
+    {
+      "name": "all four runtime atlas signatures match host and touch guest",
+      "ok": true,
+      "signatures": [
+        {
+          "so_splash": 2065610895,
+          "so_fuse": 3429295359,
+          "so_pool_idle": 2007346755,
+          "so_toast": 882974974
+        },
+        {
+          "so_splash": 2065610895,
+          "so_fuse": 3429295359,
+          "so_pool_idle": 2007346755,
+          "so_toast": 882974974
+        }
+      ]
+    }
+  ],
+  "errors": [
+    "page.waitForFunction: Timeout 30000ms exceeded."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "status": "PASS_COMPONENT",
+  "component": "A-FX-solciju-h3/launch-cup",
+  "block": "B210",
+  "scope": "Launch cup only, not full H3/kit",
+  "visualReview": "12 native comparative sheets across six arenas and five equipped appearances plus two temporal sheets reviewed at native scale. Raised bowl/stem/foot read as a goblet above heads rather than a floor ring. Pale gold rim remains visible on Infernal and Hielo. Three sample times of rise/fade and absence at950ms inspected. Existing generic diamond/armor rings remain dominant lower down but do not hide the raised cup; their redesign is not approved by this review.",
+  "technical": {
+    "checks": 34,
+    "functional": 132,
+    "relay": 17,
+    "generalOnline": 23,
+    "parity": {
+      "frames": 360,
+      "parentCalls": 26414,
+      "candidateCalls": 26414,
+      "summaryEqual": true,
+      "fullSnapshot": false
+    }
+  },
+  "matrix": {
+    "scenes": 120,
+    "ABA": 480,
+    "arenas": 6,
+    "looks": 5,
+    "densities": 2,
+    "viewports": 2,
+    "minMobile": 0.904,
+    "minDesktop": 0.9027450980392157,
+    "threshold": 0.8,
+    "delta": 24
+  },
+  "notClaimed": [
+    "full kit or buff lifecycle redesign",
+    "physical mobile/GC/thermal performance",
+    "KVB off/on parity or global RNG isolation: existing main consumer is unchanged; fix remains in PR195/196",
+    "all generated raster uploaded: full hash index and native selection retained",
+    "public deployment"
+  ]
+}

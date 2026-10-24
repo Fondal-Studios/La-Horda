@@ -237,4 +237,6 @@ function kvbFx(id, x, y, r, ang, a, b){
   const oGround = vfxDrawGround; vfxDrawGround = function(){ oGround.apply(this, arguments); kvbDrawLayer('g'); };
   const oSig = drawChampionSignatures; drawChampionSignatures = function(){ kvbDrawLayer('t'); oSig.apply(this, arguments); };
   if(typeof NET_EVENT_FNS !== 'undefined' && !NET_EVENT_FNS.includes('kvbFx')) NET_EVENT_FNS.push('kvbFx');
+  // KVB loads after the initial network hooks; wrap its newly registered event.
+  if(typeof netHookEvents === 'function') netHookEvents();
 })();

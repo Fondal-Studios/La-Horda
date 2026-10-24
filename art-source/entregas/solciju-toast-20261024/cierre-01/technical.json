@@ -1,0 +1,296 @@
+{
+  "checks": [
+    {
+      "name": "actual runtime bucket is 24",
+      "ok": true
+    },
+    {
+      "name": "bosque ten frames",
+      "ok": true
+    },
+    {
+      "name": "bosque cache reference reused",
+      "ok": true
+    },
+    {
+      "name": "bosque sharp alpha and clear border",
+      "ok": true,
+      "detail": {
+        "partial": 0,
+        "border": 0
+      }
+    },
+    {
+      "name": "hielo ten frames",
+      "ok": true
+    },
+    {
+      "name": "hielo cache reference reused",
+      "ok": true
+    },
+    {
+      "name": "hielo sharp alpha and clear border",
+      "ok": true,
+      "detail": {
+        "partial": 0,
+        "border": 0
+      }
+    },
+    {
+      "name": "infernal ten frames",
+      "ok": true
+    },
+    {
+      "name": "infernal cache reference reused",
+      "ok": true
+    },
+    {
+      "name": "infernal sharp alpha and clear border",
+      "ok": true,
+      "detail": {
+        "partial": 0,
+        "border": 0
+      }
+    },
+    {
+      "name": "laberinto ten frames",
+      "ok": true
+    },
+    {
+      "name": "laberinto cache reference reused",
+      "ok": true
+    },
+    {
+      "name": "laberinto sharp alpha and clear border",
+      "ok": true,
+      "detail": {
+        "partial": 0,
+        "border": 0
+      }
+    },
+    {
+      "name": "acuatica ten frames",
+      "ok": true
+    },
+    {
+      "name": "acuatica cache reference reused",
+      "ok": true
+    },
+    {
+      "name": "acuatica sharp alpha and clear border",
+      "ok": true,
+      "detail": {
+        "partial": 0,
+        "border": 0
+      }
+    },
+    {
+      "name": "minas ten frames",
+      "ok": true
+    },
+    {
+      "name": "minas cache reference reused",
+      "ok": true
+    },
+    {
+      "name": "minas sharp alpha and clear border",
+      "ok": true,
+      "detail": {
+        "partial": 0,
+        "border": 0
+      }
+    },
+    {
+      "name": "all non-toast Solciju decals pixel identical to main",
+      "ok": true
+    },
+    {
+      "name": "cast has raised top-layer cup at real origin",
+      "ok": true
+    },
+    {
+      "name": "old small goblet removed",
+      "ok": true
+    },
+    {
+      "name": "launch event lives until 900ms",
+      "ok": true
+    },
+    {
+      "name": "launch expires at 900ms",
+      "ok": true
+    },
+    {
+      "name": "off adds no custom visual",
+      "ok": true
+    },
+    {
+      "name": "bounded pool reduced=false",
+      "ok": true
+    },
+    {
+      "name": "priority cup survives saturated pool reduced=false",
+      "ok": true
+    },
+    {
+      "name": "reset clears pool reduced=false",
+      "ok": true
+    },
+    {
+      "name": "bounded pool reduced=true",
+      "ok": true
+    },
+    {
+      "name": "priority cup survives saturated pool reduced=true",
+      "ok": true
+    },
+    {
+      "name": "reset clears pool reduced=true",
+      "ok": true
+    },
+    {
+      "name": "recipe/export/pool never consumes Math.random",
+      "ok": true,
+      "detail": {
+        "calls": 0
+      }
+    },
+    {
+      "name": "600 renders draw 32 cup entries",
+      "ok": true,
+      "detail": {
+        "draws": 19200
+      }
+    },
+    {
+      "name": "offscreen cups culled",
+      "ok": true
+    }
+  ],
+  "frames": [
+    {
+      "arena": "bosque",
+      "hashes": [
+        "054ba1e247cde355d83bd2df7ce9a85b4b5bbecde4bb5e5ecf9580efa8d5fb04",
+        "2445edcb866f411a1c0b045664729ad670ef41049b7205f8bced731859a052a1",
+        "7590064ed57a918a48af15b74d8a6d610c047c8856fe5c19bad72e1eae998e48",
+        "a90be58d20aa8fbdb2136fd3b15028338bb1db41b77fad3ab91185c02efad9e9",
+        "ad00b53a082ed7a5bca30fed09c6eb26234860ad6108318f49106abbf42d8e3e",
+        "5dbb891f743b3f8c82af7aeb0f1c549b1b3bbf159d7b0d16617a0c009500ce01",
+        "0c8e6a7d4cf345759d9bf4fd21a10a675028fa6280731075730de561290b7650",
+        "4f4f34a039f06381aa721b20ddfa14d4dc509bf7d01e77610ea8ef4b9253a6f5",
+        "fea83fe02cfaa709d896a6bcdcc2c0735fc7bc14a4b83134a6186aff069a7bbe",
+        "cfc335996cfae29fdf14fd2db7ea853366d350a5d387aa3c322616e81dacd56b"
+      ]
+    },
+    {
+      "arena": "hielo",
+      "hashes": [
+        "79a17abb0996bbf8759cfe813300262e620eb1913b13967ba5078f392a482578",
+        "560be9eb1f5fa39f4d342aced93f4daaaa764b6ed1760b497fc6da070c88a198",
+        "b6e200a531da23c54d26917c7e0f8d3a5cbcf03bf42c862d2d1a39c4f9dc3dc0",
+        "0751627d1872db3511cfb3d2e108ae13f52339ad78380de1e0fc5be350c3d84c",
+        "e28ebafdeed788ee2024b595eeede4cfeccac2e2d2f5facb4839a4b53750e385",
+        "9552ca3bfeb214ffc830ae35e7ba6a9287f1d95e0c0811b5e988509231fc4211",
+        "e149a12d742b2509671ff1ccc43bdaa5576724b2b2486c007780ac26434ccb4a",
+        "ef1d3f1bba1210819b88fe5f0a38fa62aaa49c1403f4849680a7c6fbd0ee934d",
+        "66ca90f78f377c9723c906e2ac7fef08227653437991064c5c3aacce32bd526f",
+        "cfc335996cfae29fdf14fd2db7ea853366d350a5d387aa3c322616e81dacd56b"
+      ]
+    },
+    {
+      "arena": "infernal",
+      "hashes": [
+        "e8f66ecc1eda32dee9f7d514c39b09c6814d38493282c5d26558e57fe6f370e9",
+        "27f9c6f08a247c355ea12c76d30e69ac8155b46caf4807675c912add0a68eb5e",
+        "e29d1c82fbc83aaa730fe768290da26358a8072795f68aa72b2e5a10942965e3",
+        "b4e12b6e880de63498e23df4674b22041c31f7eb095d3c616e356b1f3ba70fe5",
+        "d636ab9539c471de8ea0946eaf12866f60adaf4c154b773e29fe65740a8a5e95",
+        "75f8c1e07549d734f240425fdba1b49628bfba9bdeed47cbc4f2527a1270ecf0",
+        "64f4a773f2accf4d7a617f546a67863f3f419281cd7f8da31e8317eb5d7d67db",
+        "354062aa2a545fa7169469db5357b80291ee5383c418011a855b17d5a014d2d9",
+        "8ddd74df1afc25572b18a102de6eb0ea49e6b9e16e28229004d25f822563102c",
+        "cfc335996cfae29fdf14fd2db7ea853366d350a5d387aa3c322616e81dacd56b"
+      ]
+    },
+    {
+      "arena": "laberinto",
+      "hashes": [
+        "49cb9da83c2f12e481ad6cc014f3d9b76f5a46498d53db742d3e43dfc004679d",
+        "689d397bc051b3d9a7ce7bd145508e44a098ec1f8c7af94930b207541d6d59df",
+        "c4aa38c6cb471f79c0a205cc5001938c8b5930ce9ada9c59db7b92ee3ef0c6c0",
+        "aedfec657418519ebe3861c189d9e9115151d6fc30f4551d3a14c6ec836c8a1c",
+        "0c0b8384f4de82f694ab4af6d441c8f1012b41fb709c8bc3bc16ac9f8fdbdce9",
+        "813d501ad78f66f00453cb207aff4f1f1e96f42af1e3c9754c87d6be6cd951f9",
+        "5771f4a70211e1d916320cbffd154320d4904228e8c2f350fe09755131679429",
+        "5daa27889cc72e70f84317355ba14ae139b86f519cff87f114805daff8648d7d",
+        "2fe93b2948926d3fa7b2b8ea6d9d69a2e9ef3035ef2febae6e9ac165b6782b89",
+        "cfc335996cfae29fdf14fd2db7ea853366d350a5d387aa3c322616e81dacd56b"
+      ]
+    },
+    {
+      "arena": "acuatica",
+      "hashes": [
+        "1d6c28bbc8e60e564c51cc70e02c8e70029c9fbf00dd550ba7c1d0696831a4a8",
+        "5d3fff740c0fa8f6015efda7d1848f7af819e4ed1766a081fdc507db4a343b3e",
+        "2f0617270fa5aad508998a5b6dd842cb8250a97238c107901a05928f7cd8555d",
+        "69b4a835e0e40fb8ce1ad9ae75c3fcf9c8a4c71fb4961d51d474639420ebfe16",
+        "2bde63ddf527d708f83d71a5913cca043de4a309fb84c1faa4b84e308fc0d93b",
+        "012b0023557b7a69a60b73dad4f34489aeaf375b58d650637c650e1e3e7ab39c",
+        "9e2201e281d39ae8baabb30474943ce7ec01140f3cf36a18d8f6bfb29fa023d3",
+        "a89a88f67ba86b416ead18815abf4c2a5605bcac1d4e4312c7673f836d811c33",
+        "3ac0ee3c5f174e630c30727657c9ca006e15b662be9a9b61205cf8b41b6cb5b0",
+        "cfc335996cfae29fdf14fd2db7ea853366d350a5d387aa3c322616e81dacd56b"
+      ]
+    },
+    {
+      "arena": "minas",
+      "hashes": [
+        "8fdb8a247720856a77553ed82468b20621221d237af7f146244eb2b41cce83ae",
+        "238d05bef16cfb7c6146682eb8010ab5d6974684d1d916ff2cd576be72daa0c6",
+        "d54b2261adfd3fff1d6d497243ab392a6dfefea35c061d92b9dc771e35b95375",
+        "cf74aabe2cc83792735e7ad944b6b9faa8f12ea39f43ff3fc8c86a552b573888",
+        "c72350ce11b05521bbf932e2ecdfc71a9afc5eb02081a262de679a88815e76eb",
+        "86463a82859ab0975f13d3c26d4b93f329fd390c362169c6be4e8fc2a35c01e1",
+        "bde20fc45cfdb97997c9481ebe4f3eb1bee53042b6c670bcad3bcd6ca0ec6916",
+        "19a87fc8719ba2756493848089c40a4514c33b5097aa8180780218da9886a524",
+        "b6a37353c14eaba751fb10084303594aa3e44042e6f1f146011738820946e265",
+        "cfc335996cfae29fdf14fd2db7ea853366d350a5d387aa3c322616e81dacd56b"
+      ]
+    }
+  ],
+  "cold": [
+    {
+      "arena": "bosque",
+      "ms": 4.2999999998137355
+    },
+    {
+      "arena": "hielo",
+      "ms": 2.3000000002793968
+    },
+    {
+      "arena": "infernal",
+      "ms": 2
+    },
+    {
+      "arena": "laberinto",
+      "ms": 2.1000000000931323
+    },
+    {
+      "arena": "acuatica",
+      "ms": 1.8999999999068677
+    },
+    {
+      "arena": "minas",
+      "ms": 1.6999999997206032
+    }
+  ],
+  "performance": {
+    "samples": 600,
+    "entries": 32,
+    "p50": 0,
+    "p95": 0.10000000009313226,
+    "max": 18.100000000093132
+  },
+  "size": 24
+}

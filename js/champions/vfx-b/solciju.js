@@ -18,12 +18,28 @@
   kvbDefDecal('so_splash', 10, kvbRingPaint(SO, {fillCol: '#6b1f38', core: '#923951', fill: .42, details: splashDetails, flash: '#d46a86'}));
   kvbDefDecal('so_pool_idle', 14, kvbIdlePaint(SO, {fill: .3, fillCol: '#6b1f38', dash: [8, 5], details: (lg, c, R, rad, pal, q) => { for(let i = 0; i < 3; i++){ const a = q * 6.2832 + i * 2.0944; kvbArcLine(lg, c, c, R * (.35 + i * .2), a, a + 1.4, pal[3], 1.6); } for(let i = 0; i < 5; i++){ const a = i * 1.2566 - q * 6.2832, d = R * .55; kvbDisc(lg, c + Math.cos(a) * d, c + Math.sin(a) * d, 2, pal[4]); } }}));
   kvbDefDecal('so_fuse', 10, kvbRingPaint(SO, {fillCol: '#6b1f38', fill: .5, details: splashDetails, flash: '#ffd2dc', rimThick: 4}));
-  kvbDefDecal('so_toast', 10, kvbRingPaint(['#3a2a08', '#8a6d1c', '#e8c76a', '#fff0b8', '#ffffff'], {fillCol: '#8a6d1c', fill: .3, details: (lg, c, R, rad, pal, q) => { for(let i = 0; i < 8; i++){ const a = i * .7854, x = c + Math.cos(a) * rad * .8, y = c + Math.sin(a) * rad * .8; kvbLine(lg, x - 3, y, x + 3, y, pal[4], 1.2); kvbLine(lg, x, y - 3, x, y + 3, pal[4], 1.2); } }, flash: '#fff0b8'}));
+  // Copa grande que se alza: silueta vertical, no sello circular de potenciación.
+  kvbDefDecal('so_toast', 10, (g, q, S) => {
+    const c = S / 2, u = S / 24, lift = Math.sin(Math.min(1, q / .65) * Math.PI / 2) * 3;
+    const y = c - lift * u, fade = q < .65 ? 1 : (1 - q) / .35;
+    const cup = [[c-6*u,y-6*u],[c+6*u,y-6*u],[c+4*u,y],[c,y+2*u],[c-4*u,y]];
+    // Vidrio abierto y vino trameado: la copa no oculta al enemigo bajo el brindis.
+    kvbLayer(g,S,.18*fade,lg=>kvbPoly(lg,cup,kvbTintCol('#923951',.30)));
+    kvbLayer(g, S, fade, lg => {
+      kvbPoly(lg, cup, null, '#2a0814', 1.5*u);
+      kvbPoly(lg, cup, null, '#e8c76a', u);
+      kvbLine(lg,c-4*u,y-4*u,c+4*u,y-4*u,'#ffd2dc',u);
+      kvbLine(lg,c,y+2*u,c,y+6*u,'#2a0814',1.5*u);
+      kvbLine(lg,c,y+2*u,c,y+6*u,'#e8c76a',u);
+      kvbLine(lg,c-4*u,y+7*u,c+4*u,y+7*u,'#2a0814',1.5*u);
+      kvbLine(lg,c-4*u,y+7*u,c+4*u,y+7*u,'#e8c76a',u);
+    });
+  });
 
   const toward = (from, to, n, mot, sc) => { const a = Math.atan2(to.y - from.y, to.x - from.x), L = Math.hypot(to.x - from.x, to.y - from.y); for(let i = 0; i < kvbBudget(n); i++){ const sp = L / .42; kvbPart(mot, from.x + kvbRR(-6, 6), from.y - 10 + kvbRR(-6, 6), {vx: Math.cos(a) * sp * kvbRR(.75, 1.05), vy: Math.sin(a) * sp * kvbRR(.75, 1.05) - 80, grav: 330, dur: 480, scale: sc || 1.3, layer: 't', shrink: true}); } };
   KVB_FX['solciju.wine'] = (x, y, r) => { const h = kvbHeroAt(x, y, 'solciju'); if(h) toward(h, {x, y}, 6, 'so_drop'); kvbDecal('so_splash', x, y, r, 780, {layer: 'g'}); kvbEmit('so_drop', 8, x, y, {ring: r * .5, v0: 30, v1: 110, up: 80, grav: 330, l0: 380, l1: 620, scale: 1.4, flat: .6}); };
   KVB_FX['solciju.cask'] = (x, y, r) => { kvbDecal('so_splash', x, y, 22, 520, {layer: 'g', alpha: .7}); };
-  KVB_FX['solciju.toast'] = (x, y, r) => { kvbDecal('so_toast', x, y, 40, 760, {layer: 'g'}); kvbPart('so_goblet', x, y - 56, {dur: 900, scale: 1.7, layer: 't', vy: -18, fadeAt: .6}); kvbEmit('so_spark', 9, x, y - 30, {ring: 22, v0: 15, v1: 55, up: 40, l0: 420, l1: 700, scale: 1.2}); };
+  KVB_FX['solciju.toast'] = (x, y, r) => { kvbDecal('so_toast', x, y - 90, 28, 900, {layer: 't', prio: true}); kvbEmit('so_spark', 9, x, y - 30, {ring: 22, v0: 15, v1: 55, up: 40, l0: 420, l1: 700, scale: 1.2}); };
   KVB_FX['solciju.reserve'] = (x, y, r) => { const h = kvbHeroAt(x, y, 'solciju'); if(h) toward(h, {x, y}, 10, 'so_drop'); kvbDecal('so_splash', x, y, r, 960, {layer: 'g'}); kvbEmit('so_grape', 6, x, y, {ring: r * .5, v0: 30, v1: 90, up: 100, grav: 300, l0: 480, l1: 760, scale: 1.4, flat: .6, spin: 5}); };
   kvbBindQ5('sol_wine', 'solciju.wine'); kvbBindQ5('sol_cask', 'solciju.cask'); kvbBindQ5('sol_toast', 'solciju.toast'); kvbBindQ5('sol_reserve', 'solciju.reserve');
 
