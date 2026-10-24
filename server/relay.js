@@ -163,7 +163,8 @@ function closeRoom(room, reason){
 }
 function humanCount(room){ return room.slots.filter(Boolean).length; }
 
-function handle(ws, msg){
+async function handle(ws, msg){
+  if(await campaignInbox.handle(ws,msg)) return;
   const room = ws._room ? rooms.get(ws._room) : null;
   const me = room ? room.slots[ws._slot] : null;
   switch(msg.t){
@@ -267,6 +268,11 @@ function handle(ws, msg){
       if(ws._slot !== 0) return send(ws, { t: "error", code: "NOT_HOST" });
       // quienes perdieron la conexión antes de comenzar no ocupan un lugar en la partida
       room.slots.forEach((m, i) => { if(i > 0 && m && !m.ws) room.slots[i] = null; });
+      room.campaignStartRejected=true;
+      try{
+        if(!await campaignInbox.start(room)) return send(ws,{t:"error",code:"REWARDS_PENDING",msg:"Recuperá tus recompensas pendientes antes de iniciar otra partida."});
+      }catch(e){ return send(ws,{t:"error",code:"REWARDS_STORAGE",msg:"No se pudo preparar el guardado de recompensas. Reintentá antes de iniciar."}); }
+      room.campaignStartRejected=false;
       room.state = "playing";
       trades.roomEvent(room.code); // en partida no se intercambia: las ofertas abiertas se anulan
       log("GAME_START", { code: room.code, humans: humanCount(room) });
@@ -287,6 +293,8 @@ function handle(ws, msg){
     }
     case "msg": {
       // relay: los invitados solo le hablan al anfitrión; el anfitrión a uno o a todos
+      if(ws._slot===0 && room.campaignStartRejected) return;
+      if(ws._slot===0){ campaignInbox.capture(room,msg.d); await campaignInbox.finish(room,msg.d); if(msg.d?.k==="end")send(ws,{t:"reward-committed"}); }
       const str = JSON.stringify({ t: "msg", from: ws._slot, d: msg.d });
       if(ws._slot !== 0){ const h = room.slots[0]; if(h && h.ws) sendRaw(h.ws, str); return; }
       if(typeof msg.to === "number"){ const m = room.slots[msg.to]; if(m && m.ws) sendRaw(m.ws, str); return; }
@@ -344,6 +352,7 @@ function leave(ws, why){
 // "founders" de operator-config.json, igual que ADMIN_USERS para el owner (pruebas o despliegue).
 let foundersOverride; try{ if(process.env.FOUNDERS_JSON) foundersOverride = JSON.parse(process.env.FOUNDERS_JSON); }catch(e){ log("FOUNDER_POLICY", { error: "FOUNDERS_JSON inválido" }); }
 const accounts = require("./accounts.js").create({ log, originAllowed, founders: foundersOverride });
+const campaignInbox = require("./campaign-inbox").create({getStore:()=>accounts.store,ready:accounts.ready,send});
 const presence = require("./presence.js").create({
   resolve: token => accounts.presence(token),
   requiresGrant: champ => require("./entitlements.js").isChampion(champ) && require("./entitlements.js").taxonomy().requiresGrant(champ),
@@ -403,7 +412,7 @@ wss.on("connection", (ws, req) => {
         if(me && me.ws === ws){ const had = me.founder; me.founder = presence.memberFounder(ws); if(!presence.champAllowed(ws, me.champ)) me.champ = ""; broadcastRoom(room); if(me.founder && !had && room.state === "lobby") presence.joined(room, me); }
         return;
       }
-      handle(ws, msg);
+      await handle(ws, msg);
     }).catch(e => log("NETWORK_ERROR", { err: String(e && e.message || e) }));
   });
   ws.on("close", () => leave(ws, "closed"));

@@ -55,6 +55,7 @@ function setState(s){
   if(s==="prep" && prev!=="prep" && typeof prepSecOnEnter==="function") prepSecOnEnter(prev); // pestaña de la Sala (prep-sections.js)
   if(document.getElementById("toast-stack")) toastStackHost(); // la columna de avisos se acomoda a la pantalla nueva
   if(typeof accountOnState==="function"){ try{ accountOnState(s); }catch(e){} } // CUENTAS: sincronizar al terminar la partida
+  if(s==="mainmenu" && typeof campaignMailboxButton==="function") campaignMailboxButton();
   if(typeof campOnState==="function"){ try{ campOnState(s); }catch(e){} } // CAMPAMENTO entre arenas (camp.js): cooperativo, al volver a la Sala
 }
 

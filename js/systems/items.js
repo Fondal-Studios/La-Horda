@@ -368,10 +368,10 @@ function unequipItem(champKey, type){
 }
 // Guarda un objeto en el inventario de la cuenta (NO lo equipa). champKey queda por compatibilidad
 // con el código que ya lo pasaba; el objeto es de la cuenta, no de ese guardián.
-function addItemToInventory(champKey, item){
+function addItemToInventory(champKey, item, earnedReward){
   if(!item) return null;
-  if(stashFull()) return null; // inventario lleno
-  stashItems().push(item);
+  if(stashFull() && !earnedReward) return null; // rewards already earned may overflow; new pickups still respect capacity
+  if(earnedReward && stashFull()) rewardOverflowPush(item); else stashItems().push(item);
   if(typeof collectionRegister==="function") collectionRegister(item);
   persist();
   return item;

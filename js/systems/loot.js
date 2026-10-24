@@ -224,14 +224,15 @@ function grantEndOfRunLoot(classKey, perf, victory){
   for(const spec of res.items){
     const it = materializeLoot(spec, classKey, currentArena);
     // inventario lleno: la regla del reciclaje (ground-loot.js) — un Común/Raro se recicla en polvo de Gema
-    const room = typeof stashMakeRoomFor==="function" ? stashMakeRoomFor(it) : {ok:!stashFull()};
+    const room = victory ? {ok:true} : typeof stashMakeRoomFor==="function" ? stashMakeRoomFor(it) : {ok:!stashFull()};
     if(!room.ok){ inventoryFull = true; break; }
     if(room.self){ inventoryFull = true; continue; }
     it.lootTier = spec.tier;
     // Pesadilla/Infierno: el objeto cae con nivel (lo mismo que subirlo con Gemas)
     const lb = typeof diffItemLevelBonus==="function" ? diffItemLevelBonus() : 0;
     if(lb > 0) it.level = Math.min(ITEM_MAX_LEVEL, itemLevel(it) + lb);
-    addItemToInventory(classKey, it);
+    if(victory && stashFull()) inventoryFull = true;
+    addItemToInventory(classKey, it, victory);
     items.push(it);
   }
   const gems = grantRunGems(currentArena, res.grade, victory, runLevel); // Gemas: solo para mejorar objetos

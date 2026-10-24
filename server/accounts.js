@@ -956,7 +956,7 @@ function create(opts){
     if(status !== "ready" || typeof token !== "string" || !/^[a-f0-9]{64}$/i.test(token)) return null;
     const a = await auth({ headers: {} }, token); if(!a.user) return null;
     const ent = await entitledFor(a.user);
-    return { name: a.user.name || a.user.user, founder: founderOf(a.user), grantOnly: Object.keys(ent) };
+    return { userId:a.user.id, name: a.user.name || a.user.user, founder: founderOf(a.user), grantOnly: Object.keys(ent) };
   }
   return { handle, healthLine, info, ready, presence, clientIp, get store(){ return store; },
     async close(){ clearInterval(sweeper); if(store && store.close) await store.close(); } };

@@ -1,0 +1,3 @@
+PASS durable outcome: guest offline, host gone, store restart, duplicate end/ack, private inbox isolation
+PASS authenticated account recovery on another capability and cross-user access denied
+PASS backlog backpressure preserves all 20 outcomes, no silent eviction
