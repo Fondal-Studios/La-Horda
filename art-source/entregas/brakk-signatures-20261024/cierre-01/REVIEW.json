@@ -1,0 +1,583 @@
+{
+  "state": "VALIDADO",
+  "gate": "PASS_COMPONENT",
+  "integratedMain": false,
+  "publicationVerified": false,
+  "scope": [
+    "A-FX-brakk-h1/normal-cast-signature",
+    "A-FX-brakk-h2/normal-cast-signature"
+  ],
+  "sourceSha256": "4e2f310e0f5169504f7bb4442da26eb4fbd6fd434588cc8559322e3ca136e604",
+  "visualReview": {
+    "reviewer": "Codex visual inspection",
+    "status": "PASS_COMPONENT_H1_H2",
+    "sheets": "sheets/*.png; native crops, six arenas, five appearances, mobile/desktop; temporal pairs80/330ms",
+    "limits": "A signal above the caster, not a range marker. Legacy construction/rings unchanged; this does not approve B117/B118/B119 as complete.",
+    "observed": "H1 open masonry courses and H2 side-facing barrel/receiver with feet differ clearly from generic star and from each other. Assembly and fade preserved. Bright top edges and dark borders remain readable in native six-arena equipped sheets. H3 riveted X remains obscured by legacy columns/rings and is NOT approved; removed from runtime.",
+    "reviewed": [
+      "sheets/mobile-bosque.png",
+      "sheets/mobile-hielo.png",
+      "sheets/mobile-infernal.png",
+      "sheets/mobile-laberinto.png",
+      "sheets/mobile-acuatica.png",
+      "sheets/mobile-minas.png",
+      "sheets/desktop-bosque.png",
+      "sheets/desktop-hielo.png",
+      "sheets/desktop-infernal.png",
+      "sheets/desktop-laberinto.png",
+      "sheets/desktop-acuatica.png",
+      "sheets/desktop-minas.png",
+      "sheets/mobile-temporal.png",
+      "atlases/signature-native-source.png"
+    ]
+  },
+  "matrix": {
+    "mobile": {
+      "scenes": 120,
+      "samples": 240,
+      "restored": 240,
+      "stateUnchanged": 240,
+      "minimumEnemyVisibility": 1,
+      "failures": 0,
+      "errors": [],
+      "signaturesDrawn": 3600
+    },
+    "desktop": {
+      "scenes": 120,
+      "samples": 240,
+      "restored": 240,
+      "stateUnchanged": 240,
+      "minimumEnemyVisibility": 1,
+      "failures": 0,
+      "errors": [],
+      "signaturesDrawn": 3600
+    },
+    "composite-mobile": {
+      "scenes": 120,
+      "samples": 240,
+      "restored": 240,
+      "stateUnchanged": 240,
+      "minimumEnemyVisibility": 0.8293333333333334,
+      "failures": 0,
+      "errors": [],
+      "signaturesDrawn": 2760
+    },
+    "composite-desktop": {
+      "scenes": 120,
+      "samples": 240,
+      "restored": 240,
+      "stateUnchanged": 240,
+      "minimumEnemyVisibility": 0.8245192307692307,
+      "failures": 0,
+      "errors": [],
+      "signaturesDrawn": 2760
+    }
+  },
+  "renderer": {
+    "checks": 107,
+    "failed": 0,
+    "boundedCache": true,
+    "alpha": "0/255",
+    "ultimateAndOtherChampions": "raster equality checked"
+  },
+  "functional": {
+    "checks": 81,
+    "scope": "before palette/negative-space edits within this closure"
+  },
+  "relay": {
+    "status": "PASS",
+    "scope": "Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.",
+    "checks": [
+      {
+        "name": "solciju admitted as released standard champion",
+        "ok": true
+      },
+      {
+        "name": "brakk admitted as released standard champion",
+        "ok": true
+      },
+      {
+        "name": "veyra admitted as released standard champion",
+        "ok": true
+      },
+      {
+        "name": "morveth admitted as released standard champion",
+        "ok": true
+      },
+      {
+        "name": "aelith admitted as released standard champion",
+        "ok": true
+      },
+      {
+        "name": "nano_gm rejected without founder entitlement",
+        "ok": true
+      },
+      {
+        "name": "facu_gm rejected without founder entitlement",
+        "ok": true
+      },
+      {
+        "name": "Brakk wall and turret replicate with guest owner",
+        "ok": true,
+        "builds": [
+          "brk_wall",
+          "brk_turret"
+        ]
+      },
+      {
+        "name": "host renders own signature slot 0",
+        "ok": true,
+        "draws": 13
+      },
+      {
+        "name": "host renders own signature slot 1",
+        "ok": true,
+        "draws": 18
+      },
+      {
+        "name": "touch guest renders own signature slot 0",
+        "ok": true,
+        "draws": 22
+      },
+      {
+        "name": "touch guest renders own signature slot 1",
+        "ok": true,
+        "draws": 24
+      },
+      {
+        "name": "brakk guest casts simulated by host",
+        "ok": true,
+        "host": {
+          "key": "brakk",
+          "casts": 4,
+          "damage": 300.3836,
+          "bleeds": 0
+        },
+        "guest": {
+          "key": "brakk",
+          "owned": [],
+          "bleeds": 0
+        }
+      },
+      {
+        "name": "brakk death removes owned effects",
+        "ok": true
+      }
+    ],
+    "errors": []
+  },
+  "parity": {
+    "frames": 360,
+    "results": [
+      {
+        "champion": "brakk",
+        "parent": {
+          "t": 5760,
+          "calls": 29232,
+          "p": [
+            0,
+            0,
+            365,
+            37
+          ],
+          "e": [
+            [
+              7000,
+              -3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              7800,
+              -3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              14200,
+              -3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              14200,
+              -3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              15800,
+              -3000,
+              1000000,
+              0,
+              0,
+              0
+            ],
+            [
+              18000,
+              -3000,
+              1000000,
+              0,
+              0,
+              0
+            ],
+            [
+              7000,
+              0,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              7800,
+              0,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              14200,
+              0,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              14200,
+              0,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              15800,
+              0,
+              1000000,
+              0,
+              0,
+              0
+            ],
+            [
+              18000,
+              0,
+              1000000,
+              0,
+              0,
+              0
+            ],
+            [
+              7000,
+              3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              7800,
+              3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              14200,
+              3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              14200,
+              3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              15800,
+              3000,
+              1000000,
+              0,
+              0,
+              0
+            ],
+            [
+              18000,
+              3000,
+              1000000,
+              0,
+              0,
+              0
+            ]
+          ],
+          "h": [
+            [
+              0,
+              365,
+              37
+            ],
+            [
+              4950,
+              411,
+              0
+            ],
+            [
+              -6761,
+              317,
+              0
+            ],
+            [
+              1812,
+              224,
+              0
+            ]
+          ],
+          "objs": [
+            [
+              "brk_wall",
+              3940
+            ]
+          ]
+        },
+        "candidate": {
+          "t": 5760,
+          "calls": 29232,
+          "p": [
+            0,
+            0,
+            365,
+            37
+          ],
+          "e": [
+            [
+              7000,
+              -3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              7800,
+              -3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              14200,
+              -3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              14200,
+              -3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              15800,
+              -3000,
+              1000000,
+              0,
+              0,
+              0
+            ],
+            [
+              18000,
+              -3000,
+              1000000,
+              0,
+              0,
+              0
+            ],
+            [
+              7000,
+              0,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              7800,
+              0,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              14200,
+              0,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              14200,
+              0,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              15800,
+              0,
+              1000000,
+              0,
+              0,
+              0
+            ],
+            [
+              18000,
+              0,
+              1000000,
+              0,
+              0,
+              0
+            ],
+            [
+              7000,
+              3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              7800,
+              3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              14200,
+              3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              14200,
+              3000,
+              1000000,
+              808,
+              -8,
+              0
+            ],
+            [
+              15800,
+              3000,
+              1000000,
+              0,
+              0,
+              0
+            ],
+            [
+              18000,
+              3000,
+              1000000,
+              0,
+              0,
+              0
+            ]
+          ],
+          "h": [
+            [
+              0,
+              365,
+              37
+            ],
+            [
+              4950,
+              411,
+              0
+            ],
+            [
+              -6761,
+              317,
+              0
+            ],
+            [
+              1812,
+              224,
+              0
+            ]
+          ],
+          "objs": [
+            [
+              "brk_wall",
+              3940
+            ]
+          ]
+        },
+        "same": true
+      }
+    ],
+    "errors": []
+  },
+  "performance": {
+    "parent": {
+      "p50": 0.09999999403953552,
+      "p95": 0.20000000298023224,
+      "max": 163.40000000596046,
+      "samples": 600,
+      "scope": "32 visible crests, local desktop Chromium, no physical mobile/GC certification"
+    },
+    "candidate": {
+      "p50": 0.09999999403953552,
+      "p95": 0.20000000298023224,
+      "max": 111.59999999403954,
+      "samples": 600,
+      "scope": "32 visible crests, local desktop Chromium, no physical mobile/GC certification"
+    }
+  },
+  "next": "Exact-head CI, review diff, normal merge expected_head_sha, verify main and canonical publication separately. Preserve workshop FIX.",
+  "extraction": {
+    "approvedSlots": [
+      0,
+      1
+    ],
+    "rejectedSlot": 2,
+    "sameApprovedPixelsAsMatrix": true,
+    "oldAtlas": [
+      192,
+      120
+    ],
+    "approvedAtlas": [
+      192,
+      80
+    ],
+    "wholeKitApproved": false,
+    "state": "PASS_COMPONENT",
+    "note": "All H1/H2 pixels and drawing code unchanged by extraction; H3 candidate removed, original fallback raster covered by final renderer tests. Matrix reports filtered to slots0,1; raw traces retain rejected H3."
+  }
+}
