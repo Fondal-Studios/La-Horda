@@ -3,6 +3,8 @@ const crypto=require('node:crypto'),fs=require('node:fs'),vm=require('node:vm'),
 const E=()=>require('./item-economy');
 const DAY=86400000,ARENAS=['ciudad','fortaleza','bosque','micelial','hielo','acuatica','laberinto','abismo','minas','infernal'];
 const clone=x=>JSON.parse(JSON.stringify(x));
+const DAILY_CLAIM={gold:60000,gems:60,chests:20};
+const QUEST_CHESTS={1:{grade:'B',items:1,gems:0},2:{grade:'A',items:1,gems:1},3:{grade:'S',items:1,gems:2},4:{grade:'S+',items:2,gems:4}}; // espejo de js/data/quests.js (lo verifica server/test-item-economy-compat.js)
 function fail(m,status=400){throw Object.assign(new Error(m),{status});}
 function int(v,min,max){if(!Number.isSafeInteger(v)||v<min||v>max)fail('INVALID_VALUE');return v;}
 function month(t){return new Date(t).toISOString().slice(0,7);}
@@ -86,12 +88,18 @@ function liveCommand(s,u,op,b,now){
   const duration=int(b.durationMs,0,6*3600000);if(duration>elapsed+5000||duration>=10000&&r.pulses<1)fail('IMPLAUSIBLE_DURATION',422);
   const win=b.victory===true;if(win&&(duration<120000||r.pulses<3))fail('IMPLAUSIBLE_VICTORY',422);
   const capped=Math.min(duration,elapsed);const gold=Math.min(10000,Math.floor(capped/60000)*s.config.rewardGold.minute+(win?s.config.rewardGold.victory:0));
-  a.gold=Math.min(1e9,a.gold+gold);const materials=win?3:Math.floor(capped/180000);a.materials=Math.min(1e9,a.materials+materials);
+  a.gold=Math.min(1e9,a.gold+gold);const baseMaterials=win?3:Math.floor(capped/180000);let materials=baseMaterials;a.materials=Math.min(1e9,a.materials+materials);
   const loot=[];
   if(win||capped>=120000){
    const got=rollChest(s,r,id,win,capped);
    if(win){const gift=firstWin(s,r,id);if(gift){if(got.length)got[0]=gift;else got.push(gift);}}
    for(const it of got){s.items[it.uid]=it;loot.push(it);}
+  }
+  let extraMaterials=0;
+  if(r.mode==='endless'){ // cofre final de la Horda Infinita (js/data/endless.js): un objeto por umbral de ronda y gemas desde la ronda 8
+   const end=require('./item-economy-loot').endlessEnd(round);
+   for(let i=0;i<end.items;i++){const o=lootCtx(s,r,id),res=require('./item-economy-loot').rollOne({...o,source:'chest',grade:end.grade,floor:i===0?'raro':null});if(res.item){const it=fromGame(res.item,id);s.items[it.uid]=it;loot.push(it);}}
+   extraMaterials=end.gems;
   }
   if(win){
    const unique=Object.values(s.relics).find(x=>x.arena===r.arena&&E().RELICS.some(def=>def.id===x.id)&&['undiscovered','vault'].includes(x.status)&&!Object.values(s.seasons).some(season=>!season.closed&&season.relic===x.id));
@@ -100,7 +108,8 @@ function liveCommand(s,u,op,b,now){
    a.wins=(a.wins||0)+1;for(let n=1;n<=4;n++)if(a.wins>=[3,12,30,75][n-1]&&!a.challenges.includes('forge_'+n))a.challenges.push('forge_'+n);
    if(ARENAS.indexOf(r.arena)>=5&&crypto.randomInt(100)<5){const recipes=Object.keys(E().catalog().recipes).filter(k=>E().catalog().recipes[k].blueprint&&!a.blueprints.includes(k));if(recipes.length)a.blueprints.push(recipes[crypto.randomInt(recipes.length)]);}
   }
-  unlock(s,id);const automatic=autoLoot(s,id);r.done=true;r.round=round;
+  unlock(s,id);const automatic=autoLoot(s,id);if(extraMaterials){a.materials=Math.min(1e9,a.materials+extraMaterials);materials+=extraMaterials;}
+  r.done=true;r.round=round;
   let ranking=null;
   if(r.mode==='endless'){
    const meta=require('./entitlements').taxonomy().meta(r.champion);if(meta.competitiveAllowed&&meta.releaseState==='RELEASED'){
@@ -123,6 +132,38 @@ function liveCommand(s,u,op,b,now){
   if(op==='equip'){if(!a.unlocked.includes(b.champion))fail('CHAMPION_LOCKED');if(it.champion&&it.champion!==b.champion||!require('./item-economy-loot').canEquip(it,b.champion))fail('INCOMPATIBLE_ITEM');removeEquipment(a,it.uid);(a.equipment[b.champion]||(a.equipment[b.champion]={}))[it.type]=it.uid;it.equipped=true;return {ok:true};}
   if(it.favorite||it.relicId||isEquipped(a,it.uid))fail('PROTECTED_ITEM');
   const value=data().sell[it.rarity]||0;if(op==='sell')a.gold=Math.min(1e9,a.gold+value);if(op==='dismantle')a.materials+=Math.max(1,E().RARITIES.indexOf(it.rarity));delete s.items[it.uid];return {ok:true};
+ }
+ // ---- Fuentes viejas del cliente (misiones, pase, cofres de misión, regalos, reinicio de talentos) ----
+ // Acotadas y registradas: el cliente declara el EVENTO (no el botín). Montos con tope por operación y por día UTC; los objetos los elige el servidor.
+ if(op==='reward.claim'){
+  if(!['quest','achievement','pass','challenge'].includes(b.source))fail('BAD_SOURCE');
+  const gold=int(b.gold||0,0,5000),gems=int(b.gems||0,0,10);if(!gold&&!gems)fail('EMPTY_REWARD');
+  const day=new Date(now).toISOString().slice(0,10),c=a.claimDay&&a.claimDay.day===day?a.claimDay:(a.claimDay={day,gold:0,gems:0});
+  if(c.gold+gold>DAILY_CLAIM.gold||c.gems+gems>DAILY_CLAIM.gems)fail('DAILY_REWARD_CAP',409);
+  c.gold+=gold;c.gems+=gems;a.gold=Math.min(1e9,a.gold+gold);a.materials=Math.min(1e9,a.materials+gems);return {ok:true,gold,gems};
+ }
+ if(op==='chest.open'){
+  const cfg=QUEST_CHESTS[int(b.variant,1,4)];if(!ARENAS.includes(b.arena))fail('BAD_ARENA');if(!a.unlocked?.includes(b.champion))fail('CHAMPION_LOCKED',403);
+  const day=new Date(now).toISOString().slice(0,10),c=a.chestDay&&a.chestDay.day===day?a.chestDay:(a.chestDay={day,n:0});if(c.n>=DAILY_CLAIM.chests)fail('DAILY_CHEST_CAP',409);c.n++;
+  const fake={arena:b.arena,champion:b.champion,mode:'campaign'},items=[];let guard=0;
+  while(items.length<cfg.items&&guard++<6)for(const it of rollChest(s,fake,id,true,0,cfg.grade)){if(items.length>=cfg.items)break;s.items[it.uid]=it;items.push(it);}
+  a.materials=Math.min(1e9,a.materials+cfg.gems);unlock(s,id);return {ok:true,items,gems:cfg.gems,grade:cfg.grade,variant:b.variant};
+ }
+ if(op==='gift.set'){ // regalo de skin de set (regalo inicial / vale): las piezas que faltan, máximo 2 regalos por cuenta
+  const L=require('./item-economy-loot'),pieces=L.setPieces(String(b.set||''));if(!pieces.length)fail('BAD_SET');
+  if((a.setGifts||0)>=2)fail('GIFT_LIMIT',409);
+  const owned=ownedDesigns(s,id),missing=pieces.filter(p=>!owned.has(p));if(!missing.length)fail('ALREADY_OWNED',409);
+  a.setGifts=(a.setGifts||0)+1;const items=[];
+  for(const d of missing){const raw=L.designedItem(d);if(!raw)continue;const it=fromGame({...raw,bought:true,gift:true},id);s.items[it.uid]=it;items.push(it);}
+  unlock(s,id);return {ok:true,items};
+ }
+ if(op==='spend'){ // sumidero de oro iniciado por el cliente (solo resta: no puede crear valor)
+  if(!['talent.respec'].includes(b.reason))fail('BAD_REASON');spend(a,int(b.amount,1,1e7));return {ok:true};
+ }
+ if(op==='ascension.unlock'){ // campeón de Ascensión ganado por logro (el logro lo declara el cliente, como antes; el servidor solo admite la categoría)
+  const tax=require('./entitlements').taxonomy(),m=tax.ids.includes(b.champion)?tax.meta(b.champion):null;
+  if(!m||m.category!=='ASCENSION'||m.releaseState!=='RELEASED')fail('NOT_ASCENSION',403);
+  a.unlocked=a.unlocked||[];if(!a.unlocked.includes(b.champion))a.unlocked.push(b.champion);return {ok:true};
  }
  if(op==='champion.buy'){
   const tax=require('./entitlements').taxonomy(),meta=tax.meta(b.champion),p=require('./wallet').pricing().PRICING;
@@ -162,10 +203,10 @@ function rollGround(s,r,id,rank,build){
  if(!out.item)return null;const a=s.accounts[id];if(a.lootPity[out.tier]!==undefined&&out.tier!=='comun')a.lootPity[out.tier]=0;
  return fromGame(out.item,id);
 }
-function rollChest(s,r,id,victory,capped){
+function rollChest(s,r,id,victory,capped,grade){
  const L=require('./item-economy-loot'),o=lootCtx(s,r,id),a=s.accounts[id];
- const res=L.rollChest({...o,victory,grade:victory?'A':'B',runLevel:victory?0:(capped>=120000?6:0),subjefes:0});
- if(victory)a.lootPity=res.pity;
+ const res=L.rollChest({...o,pity:grade?{}:o.pity,victory,grade:grade||(victory?'A':'B'),runLevel:victory?0:(capped>=120000?6:0),subjefes:0});
+ if(victory&&!grade)a.lootPity=res.pity; // los cofres de misión no tocan la protección (loot.js questsOpenChest)
  return res.items.map(x=>fromGame(x,id));
 }
 function firstWin(s,r,id){

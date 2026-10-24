@@ -98,3 +98,79 @@ const _ecoGuestStart=netGuestStartRun;netGuestStartRun=function(msg){const same=
 // Leaving an unfinished match releases its equipment lock, without issuing a reward.
 let _ecoWasPlaying=false;
 setInterval(()=>{const playing=['playing','paused','buff'].includes(state);if(_ecoWasPlaying&&!playing&&ECON.run&&!ECON.finishing){const run=ECON.run;setTimeout(()=>{if(ECON.run===run&&!ECON.finishing&&!['playing','paused','buff'].includes(state)){ECON.run=null;economyAction('run.abandon',{run:run.id}).catch(()=>{});}},2000);}_ecoWasPlaying=playing;},1000);
+
+/* ---------------------------------------------------------------------------------------------------------------
+   Fuentes VIEJAS de recompensas (docs/economy/ITEM_ECONOMY_V2_INTEGRACION.md). Con la economía V2 activa y sesión iniciada, oro, gemas
+   y objetos son del servidor: lo que estas rutas escribían en el guardado local se pisaba en la próxima proyección. Cada una pasa ahora
+   por una operación idempotente del servidor (requestId persistido y reintentado) o queda bloqueada con un mensaje. Sin sesión,
+   sin servidor persistente o con HORDA_ITEM_ECONOMY=0 NADA de esto actúa (economyActive() = false): se conserva el comportamiento anterior.
+--------------------------------------------------------------------------------------------------------------- */
+// Cola persistente de reclamos de oro/gemas (misiones, logros, pase): sobrevive a recargas y reintenta con el MISMO requestId.
+const ECON_CLAIMS_KEY='horda_economy_claims';
+function _ecoClaims(){try{return JSON.parse(localStorage.getItem(ECON_CLAIMS_KEY)||'[]').filter(c=>c&&c.requestId&&c.args);}catch{return [];}}
+function _ecoClaimsSave(list){try{localStorage.setItem(ECON_CLAIMS_KEY,JSON.stringify(list.slice(-200)));}catch{}}
+let _ecoClaimsBusy=false;
+async function economyFlushClaims(){
+ if(_ecoClaimsBusy||!economyActive())return;_ecoClaimsBusy=true;
+ try{for(const c of _ecoClaims()){
+  if(c.user!==accountState().user)continue;
+  try{await economyAction('reward.claim',c.args,{requestId:c.requestId});_ecoClaimsSave(_ecoClaims().filter(x=>x.requestId!==c.requestId));}
+  catch(e){if(e.status>=400&&e.status<500&&e.status!==401&&e.status!==429){_ecoClaimsSave(_ecoClaims().filter(x=>x.requestId!==c.requestId));economyNotify('Recompensa rechazada: '+e.message);}else break;}
+ }}finally{_ecoClaimsBusy=false;}
+}
+function economyQueueClaim(source,gold,gems){
+ const list=_ecoClaims();list.push({requestId:'claim_'+crypto.randomUUID().replace(/-/g,''),user:accountState().user,args:{source,gold:gold|0,gems:gems|0}});_ecoClaimsSave(list);economyFlushClaims();
+}
+// Misiones / desafíos / logros / pase: el oro y las gemas se reclaman al servidor; títulos, marcos y XP siguen locales.
+const _ecoQGrant=questsGrant;questsGrant=function(r,silent){
+ if(!economyActive()||!r||(!r.gold&&!r.gems))return _ecoQGrant(r,silent);
+ const rest={...r};delete rest.gold;delete rest.gems;_ecoQGrant(rest,silent);
+ economyQueueClaim('quest',r.gold,r.gems);
+};
+// Cofres de misión: el servidor tira el botín con el catálogo real (sin tope de inventario); el cofre solo se consume si respondió.
+const _ecoChestUI=questsOpenChestUI;questsOpenChestUI=function(){
+ if(!economyActive())return _ecoChestUI();
+ const q=questsState();if(!q.chests.length)return;
+ const variant=q.chests[0];save.economyChestSalt=save.economyChestSalt||crypto.randomUUID().replace(/-/g,'').slice(0,16);
+ const requestId=`chest_${(q.counts.chests|0)}_${variant}_${save.economyChestSalt}`;
+ economyAction('chest.open',{variant,arena:_qChestArena(),champion:_qChestChamp()},{requestId}).then(r=>{
+  if(q.chests[0]===variant){q.chests.shift();q.counts.chests++;persist();}
+  const orig=questsOpenChest;questsOpenChest=()=>({variant,items:r.items,gold:0,gems:r.gems,grade:r.grade});
+  try{_ecoChestUI();}finally{questsOpenChest=orig;}
+ }).catch(e=>economyNotify('No se pudo abrir el cofre: '+e.message));
+};
+// Regalo de skin de set (regalo inicial / vale): las piezas que faltan las entrega el servidor (máximo 2 regalos por cuenta).
+const _ecoGiftSkin=_giftSkin;_giftSkin=function(k,id){
+ if(!economyActive()||!(typeof SET_DB!=='undefined'&&SET_DB[id]&&typeof SET_SKINS!=='undefined'&&SET_SKINS[id]&&!(typeof CROMA_SKINS!=='undefined'&&CROMA_SKINS[id])))return _ecoGiftSkin(k,id);
+ if(SET_SKINS[id]?.manifest)return {ok:false,reason:'Esta manifestación se obtiene en Colección.'};
+ if(typeof state!=='undefined'&&state==='playing')return {ok:false,reason:'Se elige fuera de la partida'};
+ const c=(typeof skinSetChamp==='function'&&skinSetChamp(id))||k;
+ economyAction('gift.set',{set:id}).then(()=>{if(c&&save.champions[c]?.unlocked&&typeof skinEquipOn==='function')skinEquipOn(id,c);economyNotify('Regalo entregado: piezas del set en tu Arsenal');})
+  .catch(e=>{save.skinVoucher=(save.skinVoucher|0)+1;persist();economyNotify('No se pudo entregar el regalo ('+e.message+'). Quedó como vale.');});
+ return {ok:true,kind:'set',equipped:false,champ:c,n:(typeof shopSetMissing==='function'?shopSetMissing(id).length:0),pending:true};
+};
+// Reinicio de talentos con oro: el servidor descuenta primero; el árbol solo se reinicia si cobró.
+let _ecoTalentRerender=null;
+const _ecoRenderTree=renderTalentTree;renderTalentTree=function(panel,classKey,rerender){_ecoTalentRerender=rerender;return _ecoRenderTree(panel,classKey,rerender);};
+const _ecoRespec=talentRespec;talentRespec=function(classKey,confirmed){
+ if(!economyActive()||!confirmed)return _ecoRespec(classKey,confirmed);
+ const cost=talentRespecCost(classKey);if(cost<=0)return _ecoRespec(classKey,true);
+ const reason=talentRespecLockReason(classKey);if(reason)return {ok:false,reason};
+ economyAction('spend',{amount:cost,reason:'talent.respec'}).then(()=>{save.gold+=cost;_ecoRespec(classKey,true);if(_ecoTalentRerender)_ecoTalentRerender();economyNotify('Talentos reiniciados');}).catch(e=>economyNotify('No se pudo reiniciar: '+e.message));
+ return {ok:true,pending:true};
+};
+// Bonus histórico de playtest v1 (+2000 oro locales una vez): con la economía V2 no se otorga (el oro es del servidor); si se otorgó antes de migrar, la migración lo importó.
+const _ecoPlaytest=grantPlaytestV1Bonus;grantPlaytestV1Bonus=function(){if(economyActive())return;return _ecoPlaytest();};
+// Reintentos al volver la sesión / la red
+window.addEventListener('economy-change',()=>{economyFlushClaims();});
+setInterval(()=>{economyFlushClaims();},15000);
+
+// Campeones de Ascensión ganados por logro (ascension-unlocks.js): se registran en el ledger o la proyección los revertiría.
+function economySyncAscension(){
+ if(!economyActive()||typeof ASCENSION_UNLOCKS==='undefined')return;
+ for(const u of ASCENSION_UNLOCKS)if(save.champions[u.id]?.unlocked&&!ECON.data.account.unlocked.includes(u.id)){
+  const id=u.id;economyAction('ascension.unlock',{champion:id},{requestId:'asc_'+id}).catch(e=>{if(e.status===403&&save.champions[id])save.champions[id].unlocked=false;});
+ }
+}
+window.addEventListener('economy-change',()=>setTimeout(economySyncAscension,300));
+if(typeof ascensionCheckUnlocks==='function'){const _ecoAsc=ascensionCheckUnlocks;ascensionCheckUnlocks=function(silent){const r=_ecoAsc(silent);if(r.length)setTimeout(economySyncAscension,100);return r;};}

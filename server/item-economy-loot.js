@@ -10,7 +10,7 @@ const fs = require('node:fs'), vm = require('node:vm'), path = require('node:pat
 const ROOT = path.join(__dirname, '..');
 const FILES = ['js/data/champion-tuning.js', 'js/data/combat-language.js', 'js/data/pricing.js', 'js/data/champions.js', 'js/data/champion-taxonomy.js',
   'js/data/talent-trees.js', 'js/data/items.js', 'js/data/sets.js', 'js/data/loot.js', 'js/data/mythic-sets-v2.js', 'js/data/legendaries.js', 'js/data/mage-kit.js',
-  'js/data/champion-sets.js', 'js/data/item-identity.js', 'js/data/rewards.js', 'js/data/portadores.js', 'js/data/affixes.js', 'js/data/ground-loot.js',
+  'js/data/champion-sets.js', 'js/data/item-identity.js', 'js/data/rewards.js', 'js/data/portadores.js', 'js/data/affixes.js', 'js/data/ground-loot.js', 'js/data/endless.js',
   'js/systems/items.js', 'js/systems/champion-sets.js', 'js/systems/loot.js', 'js/systems/rewards.js', 'js/systems/affixes.js', 'js/systems/mage-passives.js', 'js/systems/ground-loot.js'];
 let CTX = null;
 function ctx() {
@@ -91,5 +91,13 @@ function firstWinItem(champion, arena, equipment) {
   return a.run(`(function(){ const order = FIRST_WIN_LOOT.slotOrder.filter(t=>ITEM_TYPES[t]); const type = order.find(t=>!__eq[t]) || order[0];
     const it = makeItem(type, FIRST_WIN_LOOT.tier, __ch, {arena:__ar}); it.ilvl = lootItemLevelFor(__ar); it.lootTier = FIRST_WIN_LOOT.tier; return JSON.parse(JSON.stringify(it)); })()`);
 }
+function setPieces(setId) { const a = api(); a.c.__s = setId; return a.run('typeof SET_DB!=="undefined" && SET_DB[__s] ? setPieceIds(__s) : []'); }
+// Arquetipo procedural de la tienda ("a:<ranura>:<sustantivo>") como Legendario, igual que admin-mailbox.js.
+function archetypeItem(type, noun) { const a = api(); a.c.__t = type; a.c.__n = noun; return a.run('(function(){ if(!ITEM_TYPES[__t] || !(ITEM_NOUNS[__t]||[]).includes(__n)) return null; return JSON.parse(JSON.stringify(makeItem(__t,"legendario",null,{noun:__n}))); })()'); }
+// Cofre final de la Horda Infinita (js/data/endless.js): un objeto por umbral alcanzado, calificación según la ronda; gemas desde la ronda 8.
+function endlessEnd(round) {
+  const a = api(); a.c.__r = round;
+  return a.run('({items: ENDLESS_CFG.endChestItems.filter(r=>__r>=r).length, grade: endlessGradeForRound(__r), gems: __r>=10 ? 3 : (__r>=ENDLESS_CFG.endChestMinRound ? 1 : 0)})');
+}
 function groundCfg() { return api().run('JSON.parse(JSON.stringify(GROUND_LOOT_CFG))'); }
-module.exports = { rollOne, rollChest, canEquip, designedItem, designed, firstWinItem, groundCfg, SLOT_TYPES, ctx };
+module.exports = { rollOne, rollChest, canEquip, designedItem, designed, setPieces, archetypeItem, firstWinItem, endlessEnd, groundCfg, SLOT_TYPES, ctx };

@@ -92,6 +92,22 @@ async function grantDesigns(store, user, designIds, ref, flags) {
     return { uids };
   }));
 }
+/* GM (buzón): clave de catálogo de la Tienda ("d:<designId>", "a:<ranura>:<sustantivo>") o set completo. Idempotente por ref. */
+async function grantMailbox(store, user, kind, key, ref) {
+  return mutate(store, user, (s) => receiptOnce(s, ref, kind + ':' + key, () => {
+    const out = [];
+    if (kind === 'set') { for (const id of LOOT().setPieces(key)) out.push(addDesigned(s, user.id, id, { gift: 'ADMIN_GRANT' }).uid); }
+    else if (key.startsWith('d:')) out.push(addDesigned(s, user.id, key.slice(2), { gift: 'ADMIN_GRANT' }).uid);
+    else if (key.startsWith('a:')) {
+      const [, type, noun] = key.split(':'), raw = LOOT().archetypeItem(type, noun);
+      if (!raw) { const e = new Error('BAD_ITEM'); e.status = 400; throw e; }
+      const it = L().normalizeItem({ ...raw, uid: crypto.randomUUID(), owner: String(user.id), gift: 'ADMIN_GRANT' }); s.items[it.uid] = it; out.push(it.uid);
+    }
+    if (!out.length) { const e = new Error('BAD_ITEM'); e.status = 400; throw e; }
+    E().audit(s, 'server', 'compat.mailbox', { target: user.id, kind, key, count: out.length }, Date.now());
+    return { uids: out };
+  }));
+}
 /* GM: borrar el inventario (reset). Los reliquias vuelven a la Bóveda; nada se destruye con listado abierto. */
 async function wipeInventory(store, user, ref) {
   return mutate(store, user, (s, a) => receiptOnce(s, ref, 'wipe', () => {
@@ -107,4 +123,4 @@ async function wipeInventory(store, user, ref) {
 }
 async function wipeGold(store, user, ref) { return setCurrency(store, user, 'gold', 0, ref); }
 /* Recompensas del cliente que el servidor puede acotar y registrar (misiones, cofres, eventos): ver item-economy-live.js ('reward.*'). */
-module.exports = { enabled, active, mutate, grantPurchasedPiece, ownsDesign, designIdsOwned, grantChampion, revokeChampion, setCurrency, readCurrency, grantDesigns, wipeInventory, wipeGold };
+module.exports = { enabled, active, mutate, grantPurchasedPiece, ownsDesign, designIdsOwned, grantChampion, revokeChampion, setCurrency, readCurrency, grantDesigns, grantMailbox, wipeInventory, wipeGold };
