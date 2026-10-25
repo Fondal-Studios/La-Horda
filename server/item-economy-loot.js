@@ -9,7 +9,7 @@
 const fs = require('node:fs'), vm = require('node:vm'), path = require('node:path'), crypto = require('node:crypto');
 const ROOT = path.join(__dirname, '..');
 const FILES = ['js/data/champion-tuning.js', 'js/data/combat-language.js', 'js/data/pricing.js', 'js/data/champions.js', 'js/data/champion-taxonomy.js',
-  'js/data/talent-trees.js', 'js/data/items.js', 'js/data/sets.js', 'js/data/loot.js', 'js/data/mythic-sets-v2.js', 'js/data/legendaries.js', 'js/data/mage-kit.js',
+  'js/data/talent-trees.js', 'js/data/arenas.js', 'js/data/items.js', 'js/data/sets.js', 'js/data/loot.js', 'js/data/mythic-sets-v2.js', 'js/data/legendaries.js', 'js/data/mage-kit.js',
   'js/data/champion-sets.js', 'js/data/item-identity.js', 'js/data/rewards.js', 'js/data/portadores.js', 'js/data/affixes.js', 'js/data/ground-loot.js', 'js/data/endless.js',
   'js/systems/items.js', 'js/systems/champion-sets.js', 'js/systems/loot.js', 'js/systems/rewards.js', 'js/systems/affixes.js', 'js/systems/mage-passives.js', 'js/systems/ground-loot.js'];
 let CTX = null;

@@ -234,4 +234,4 @@ function autoLoot(s,id){
   if(cfg.recycle)while(group.length>1){delete s.items[group.pop().uid];a.materials++;out.materials++;}
  }return out;
 }
-module.exports={validateConfig,autoLoot,migrate,prepare,project,normalizeItem,generated,command:liveCommand,seasons,ranking,month,bounds,isEquipped,active,unlock};
+module.exports={QUEST_CHESTS,validateConfig,autoLoot,migrate,prepare,project,normalizeItem,generated,command:liveCommand,seasons,ranking,month,bounds,isEquipped,active,unlock};
