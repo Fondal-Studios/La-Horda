@@ -49,9 +49,9 @@ function drawFireWall(fw){
     ctx.strokeStyle=fw.voidFire?"#c292ff":"#ffb34e";ctx.lineWidth=3;ctx.stroke();
   }
   const n = 12 + tier*4;
-  // Bound each tile to its chord spacing: adjacent wall sprites must not stack.
+  // Tangent-aligned segments join along the ring instead of stacking upright walls.
   const spacing = 2*mid*Math.sin(Math.PI/n);
-  const flameSize = Math.min(thick*0.75, spacing*0.9);
+  const flameSize = Math.min(thick, spacing*1.35);
   const animName = dying ? "extincion" : (spawnProg<1 ? "formacion" : "activo");
   for(let i=0;i<n;i++){
     const a = (i/n)*Math.PI*2 + (dying?0:now*0.12);
@@ -59,7 +59,11 @@ function drawFireWall(fw){
     // Fit the authored formation sequence into the existing 300 ms visual phase.
     const formation = MuroFuego.animations.formacion;
     const t = animName==="formacion" ? spawnProg*formation.frames.length/formation.fps : (now + i*0.11);
-    MuroFuego.draw(ctx, animName, t, fx, fy, flameSize);
+    ctx.save();
+    ctx.translate(fx, fy);
+    ctx.rotate(a + Math.PI/2);
+    MuroFuego.draw(ctx, animName, t, 0, 0, flameSize);
+    ctx.restore();
   }
   ctx.filter = "none";
   if(fw.voidFire && !dying){

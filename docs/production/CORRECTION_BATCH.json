@@ -1989,20 +1989,27 @@
         6,
         7
       ],
-      "source": "art-source/entregas/mago-kit-20261025/cierre-02/source-candidate.js",
-      "sourceSha256": "57f8c711e9a4f12d49adccc5c9337912930c6ad88fd40d6675a6da1effc1b1cd",
+      "source": "art-source/entregas/mago-kit-20261025/cierre-03/source-candidate.js",
+      "sourceSha256": "3a14a3e9361457d86c7b71394ceb2807f0f7a1fa237ac9ee738acc43332f99ba",
       "atlas": "assets/vfx/vendor/muro-fuego.png",
       "atlasSha256": "b4019ff9c890c7c8a817d8479c38e081b442108406b482a3bdb8e5a73f28e72b",
       "defects": [
-        "Overlap removed, disconnected small flame tiles lose corona continuity. Composite gate pending."
+        "Continuity improved; full composite contact/skins/relay/lifecycle gates pending."
       ],
-      "next": "Close grouped continuity/contact and restore runtime assets before full game gates.",
+      "next": "Complete grouped closure gates on tangent candidate; no new first pass.",
       "history": [
         {
           "source": "art-source/entregas/mago-kit-20261025/integracion-01/source-candidate.js",
           "sourceSha256": "a7012f8c6fcd4e5b811e84c6783027e1a56c7d76800cb3fa8603009457f21185",
           "defects": [
             "Authored fourth formation frame previously skipped; candidate consumes it but dense tiled flame mass obscures contact."
+          ]
+        },
+        {
+          "source": "art-source/entregas/mago-kit-20261025/cierre-02/source-candidate.js",
+          "sourceSha256": "57f8c711e9a4f12d49adccc5c9337912930c6ad88fd40d6675a6da1effc1b1cd",
+          "defects": [
+            "Overlap removed, disconnected small flame tiles lose corona continuity. Composite gate pending."
           ]
         }
       ]
