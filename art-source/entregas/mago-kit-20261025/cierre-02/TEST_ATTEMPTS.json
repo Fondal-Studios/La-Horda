@@ -1,0 +1,26 @@
+{
+  "attempts": [
+    {
+      "id": 1,
+      "status": "FAIL_BEFORE_BROWSER",
+      "cause": "wrong cwd module path; reran from mago root"
+    },
+    {
+      "id": 2,
+      "status": "TIMEOUT",
+      "cause": "missing atlas due dangling assets symlink",
+      "timeoutMs": 30000
+    },
+    {
+      "id": 3,
+      "status": "INVALID_VISUAL",
+      "files": "INVALID_MISSING_ASSETS-*",
+      "reason": "two actual casts reached helper240calls each but absent textures; not visual evidence"
+    },
+    {
+      "id": 4,
+      "status": "PASS_TECHNICAL_ONLY",
+      "scope": "exact vendor PNG restored,12checks72samples isolated real renderer; zero errors/RNG; not full game gate"
+    }
+  ]
+}

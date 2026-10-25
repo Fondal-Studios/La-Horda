@@ -40,8 +40,8 @@ function drawFireWall(fw){
   ctx.globalAlpha = alpha;
   if(fw.voidFire) ctx.filter = "hue-rotate(245deg) saturate(1.4)"; // Único "Fuego del Vacío" (donde el navegador lo soporte)
   // Sprites reales del paquete "Muro de Fuego": se reparten llamas individuales a lo largo de
-  // la circunferencia del anillo (la habilidad es un aro, no un muro recto). Más llamas y más
-  // grandes cuanto mayor el talento invertido — así se nota mucho más al subir de nivel.
+  // la circunferencia del anillo (la habilidad es un aro, no un muro recto).
+  // El talento aumenta la cantidad; el tamaño respeta la separación entre muestras.
   // Visible damage annulus, matching the Euclidean collision test exactly.
   for(const radius of [fw.innerR,fw.outerR]){
     ctx.beginPath();ctx.arc(fw.x,fw.y,radius,0,Math.PI*2);
@@ -49,7 +49,9 @@ function drawFireWall(fw){
     ctx.strokeStyle=fw.voidFire?"#c292ff":"#ffb34e";ctx.lineWidth=3;ctx.stroke();
   }
   const n = 12 + tier*4;
-  const flameSize = (thick*1.1 + 12 + tier*5);
+  // Bound each tile to its chord spacing: adjacent wall sprites must not stack.
+  const spacing = 2*mid*Math.sin(Math.PI/n);
+  const flameSize = Math.min(thick*0.75, spacing*0.9);
   const animName = dying ? "extincion" : (spawnProg<1 ? "formacion" : "activo");
   for(let i=0;i<n;i++){
     const a = (i/n)*Math.PI*2 + (dying?0:now*0.12);
