@@ -1,0 +1,37 @@
+[arnés] servidor propio: http://127.0.0.1:39773 (raíz /workspace/scratch/27dc1a293731/mago)
+PASS SAVE.objetos_viejos_quedan_validos  {"n":4,"names":["Hacha Vieja o1","Hacha Vieja o2","Hacha Vieja o3","Escudo del Juggernaut"],"lv":[3,3,3,3],"aff":[3,2,4,1],"eq":"o1,o2","flag":true,"persistedAff":true,"rar":"raro,comun,muyraro,legendario"}
+PASS SAVE.reciben_afijos_por_rareza  {"n":4,"names":["Hacha Vieja o1","Hacha Vieja o2","Hacha Vieja o3","Escudo del Juggernaut"],"lv":[3,3,3,3],"aff":[3,2,4,1],"eq":"o1,o2","flag":true,"persistedAff":true,"rar":"raro,comun,muyraro,legendario"}
+PASS SAVE.migracion_guardada_una_vez  {"n":4,"names":["Hacha Vieja o1","Hacha Vieja o2","Hacha Vieja o3","Escudo del Juggernaut"],"lv":[3,3,3,3],"aff":[3,2,4,1],"eq":"o1,o2","flag":true,"persistedAff":true,"rar":"raro,comun,muyraro,legendario"}
+PASS SAVE.no_se_vuelve_a_tirar_al_recargar
+PASS SAVE.sin_errores  []
+PASS AFX.comun_2_raro_2a3_muyraro_3a4  {"comun":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],"raro":[2,2,3,2,2,2,2,2,2,3,2,2,3,2,2,2,2,2,2,2,2,3,2,2,2,3,2,2,3,3,3,3,3,2,2,3,2,2,3,2,2,3,2,3,2,3,2,3,3,2,3,3,3,2,2,3,2,3,3,2],"muyraro":[4,3,3,4,3,4,3,4,4,4,3,4,4,4,3,4,4,4,4,4,4,3,4,4,4,3,4,3,4,3,3,4,3,4,3,4,3,3,4,4,4,4,3,4,4,4,3,3,4,4,3,4,3,4,4,3,4,4,4,3]}
+PASS AFX.legendarios_y_sets_suman_1a2_sin_perder_identidad  {"leg":[{"n":1,"designed":true,"name":"Yelmo de Brasa Viva"},{"n":2,"designed":true,"name":"Filo de Medianoche"},{"n":1,"designed":true,"name":"Filo de Medianoche"},{"n":1,"designed":false,"name":"Grebas de Obrecht, de la Represalia"}],"sets":[{"n":2,"name":"Espada de Lucifer","set":"lucifer"},{"n":2,"name":"Espada de Lucifer","set":"lucifer"}]}
+PASS AFX.nombre_d2_prefijo_y_sufijo  ["Filo Bendito","Colmillo de la Tormenta","Hoja Cruel","Hoja Certera de la Vigilia","Filo Cruel","Filo Bendito de la Tormenta","Colmillo Certero de la Presteza","Espada Despiadada de la Vigilia"]
+PASS AFX.solo_en_su_ranura_y_sin_repetir_efecto  0
+PASS AFX.rango_visible_en_el_tooltip  "+10% daño <span class=\"afx-range\">[5-10]</span>"
+PASS AFX.compara_con_lo_equipado  ["up","new","lost"]
+PASS STAT.afijo_de_danio_suma_en_passiveSum  {"base":{"dmg":0,"hp":120,"fire":0},"after":{"dmg":0.1,"hp":182,"fire":0.15,"dmgNoAffix":0},"v":0.1,"t":"fire","m1":0.85,"d0":100.10000000000127,"d1":110.10999999999694}
+PASS STAT.afijo_de_vida_sube_la_vida_maxima  {"base":{"dmg":0,"hp":120,"fire":0},"after":{"dmg":0.1,"hp":182,"fire":0.15,"dmgNoAffix":0},"v":0.1,"t":"fire","m1":0.85,"d0":100.10000000000127,"d1":110.10999999999694}
+PASS STAT.afijo_de_resistencia_suma  {"base":{"dmg":0,"hp":120,"fire":0},"after":{"dmg":0.1,"hp":182,"fire":0.15,"dmgNoAffix":0},"v":0.1,"t":"fire","m1":0.85,"d0":100.10000000000127,"d1":110.10999999999694}
+PASS COMBAT.afijo_de_danio_pega_mas_fuerte  {"d0":100.10000000000127,"d1":110.10999999999694,"ratio":1.0999999999999555}
+PASS COMBAT.resistencia_del_afijo_reduce_el_golpe  {"t":"fire","m0":1,"m2":0.85}
+PASS DROP.subjefe_suelta_siempre  {"afterSub":2,"commonDrops":3,"first":{"tier":"raro","name":"Yelmo Encantado del Invierno","beam":"79,168,240","x":192,"y":28,"aff":2},"allBeams":true}
+PASS DROP.comunes_casi_nunca  3
+PASS DROP.haz_y_sonido_por_rareza  {"tier":"raro","name":"Yelmo Encantado del Invierno","beam":"79,168,240","x":192,"y":28,"aff":2}
+PASS DROP.haz_de_luz_visible  {"before":5745,"after":10180}
+PASS PICK.cae_y_espera_en_el_piso  {"onFloor":true,"inStash0":0,"still":true,"picked":true,"toast":"Cetro Sísmico de la Tormenta","toastColor":"rgb(255, 225, 74)","color":"#ffe14a","btnLabel":"Levantar","btnPicked":true}
+PASS PICK.se_levanta_al_pasar_por_encima  {"onFloor":true,"inStash0":0,"still":true,"picked":true,"toast":"Cetro Sísmico de la Tormenta","toastColor":"rgb(255, 225, 74)","color":"#ffe14a","btnLabel":"Levantar","btnPicked":true}
+PASS PICK.toast_con_nombre_coloreado  {"onFloor":true,"inStash0":0,"still":true,"picked":true,"toast":"Cetro Sísmico de la Tormenta","toastColor":"rgb(255, 225, 74)","color":"#ffe14a","btnLabel":"Levantar","btnPicked":true}
+PASS PICK.boton_contextual_levantar  {"onFloor":true,"inStash0":0,"still":true,"picked":true,"toast":"Cetro Sísmico de la Tormenta","toastColor":"rgb(255, 225, 74)","color":"#ffe14a","btnLabel":"Levantar","btnPicked":true}
+PASS PICK.inventario_lleno_queda_en_el_piso  {"stays":true,"pickedLater":true}
+PASS PITY.legendario_del_piso_reinicia_su_proteccion  {"got":true,"setDrop":false,"pity":{"legendario":0,"set":3,"mitico":2,"unico":1}}
+PASS PICK.al_ganar_se_junta_lo_que_quedo  {"got":2,"stash":2,"floor":0}
+PASS ENDLESS.la_ronda_mejora_el_botin_del_piso  {"eliteGrade":"S","subGrade":"S","eliteChance":0.13799999999999998,"inResults":1}
+PASS ENDLESS.lo_levantado_entra_en_los_resultados  {"eliteGrade":"S","subGrade":"S","eliteChance":0.13799999999999998,"inResults":1}
+PASS MISTICA.cobra_oro_y_el_costo_crece  {"c0":120,"paid":120,"c1":175,"changed":true,"noDupEffect":true,"other":false,"kept":true,"s2":true,"leg":{"same":true,"rerolls":10},"poor":false,"name":"Hacha Ávida de la Presteza","uniq":false}
+PASS MISTICA.cambia_solo_ese_afijo_sin_repetir_efecto  {"c0":120,"paid":120,"c1":175,"changed":true,"noDupEffect":true,"other":false,"kept":true,"s2":true,"leg":{"same":true,"rerolls":10},"poor":false,"name":"Hacha Ávida de la Presteza","uniq":false}
+PASS MISTICA.queda_atada_a_ese_afijo  {"c0":120,"paid":120,"c1":175,"changed":true,"noDupEffect":true,"other":false,"kept":true,"s2":true,"leg":{"same":true,"rerolls":10},"poor":false,"name":"Hacha Ávida de la Presteza","uniq":false}
+PASS MISTICA.se_puede_conservar_el_original  {"c0":120,"paid":120,"c1":175,"changed":true,"noDupEffect":true,"other":false,"kept":true,"s2":true,"leg":{"same":true,"rerolls":10},"poor":false,"name":"Hacha Ávida de la Presteza","uniq":false}
+PASS MISTICA.no_cambia_la_identidad_ni_crea_unicos  {"same":true,"rerolls":10}
+PASS MISTICA.sin_oro_no_se_puede  {"c0":120,"paid":120,"c1":175,"changed":true,"noDupEffect":true,"other":false,"kept":true,"s2":true,"leg":{"same":true,"rerolls":10},"poor":false,"name":"Hacha Ávida de la Presteza","uniq":false}
+PASS MISTICA.ui_desde_la_ficha  {"btn":true,"opts":3,"paid":120,"rerolls":1,"hidden":true}

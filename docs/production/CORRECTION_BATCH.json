@@ -1976,24 +1976,64 @@
         "Small bright hoof marks read sparkles at actual mobile scale; instantaneous removal when phase ends; interrupted/mounted/recast cases need grouped lifecycle review."
       ],
       "next": "Grouped kit correction, complete real-scale/skins/arenas/lifecycle/performance gates; preserve existing sources and mechanics."
+    },
+    {
+      "id": "mago.fire-wall.formation-20261025",
+      "block": "B160",
+      "component": "A-FX-mago-h1/formation",
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
+      "frames": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "source": "art-source/entregas/mago-kit-20261025/cierre-04/source-wall.js",
+      "sourceSha256": "3a14a3e9361457d86c7b71394ceb2807f0f7a1fa237ac9ee738acc43332f99ba",
+      "atlas": "assets/vfx/vendor/muro-fuego.png",
+      "atlasSha256": "b4019ff9c890c7c8a817d8479c38e081b442108406b482a3bdb8e5a73f28e72b",
+      "defects": [],
+      "next": "Exact-head CI then normal merge; scope only formation/wall/UF H1 launch, not whole B160/kit.",
+      "history": [
+        {
+          "source": "art-source/entregas/mago-kit-20261025/integracion-01/source-candidate.js",
+          "sourceSha256": "a7012f8c6fcd4e5b811e84c6783027e1a56c7d76800cb3fa8603009457f21185",
+          "defects": [
+            "Authored fourth formation frame previously skipped; candidate consumes it but dense tiled flame mass obscures contact."
+          ]
+        },
+        {
+          "source": "art-source/entregas/mago-kit-20261025/cierre-02/source-candidate.js",
+          "sourceSha256": "57f8c711e9a4f12d49adccc5c9337912930c6ad88fd40d6675a6da1effc1b1cd",
+          "defects": [
+            "Overlap removed, disconnected small flame tiles lose corona continuity. Composite gate pending."
+          ]
+        },
+        {
+          "source": "art-source/entregas/mago-kit-20261025/cierre-03/source-candidate.js",
+          "sourceSha256": "3a14a3e9361457d86c7b71394ceb2807f0f7a1fa237ac9ee738acc43332f99ba",
+          "defects": [
+            "Continuity improved; full composite contact/skins/relay/lifecycle gates pending."
+          ]
+        }
+      ]
     }
   ],
   "latestProduction": {
-    "base": "9c0ac434b2cb80ae16e7220371f59944ac3e9613",
     "block": [
-      "B157",
-      "B158",
-      "B159"
+      "B160"
     ],
-    "path": "art-source/entregas/libertador-kit-20261025/primera-pasada-01",
+    "path": "art-source/entregas/mago-kit-20261025/integracion-01",
     "state": "EN_CORRECCION",
-    "entriesPreserved": 51
+    "newAtlas": 0,
+    "entriesPreserved": 54
   },
   "latestClosure": {
-    "component": "A-FX-veyra-h3/launch-heart",
+    "component": "A-FX-mago-h1/formation",
     "state": "VALIDADO",
-    "integration": "PENDING_CI",
-    "path": "art-source/entregas/veyra-pact-20261025/cierre-01",
-    "queueEntries": 54
+    "integration": "PENDING_EXACT_HEAD_CI",
+    "path": "art-source/entregas/mago-kit-20261025/cierre-04",
+    "queueEntries": 55
   }
 }

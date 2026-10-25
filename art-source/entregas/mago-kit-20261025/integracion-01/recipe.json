@@ -1,0 +1,19 @@
+{
+  "source": "js/champions/mago.js",
+  "existingAtlas": "assets/vfx/vendor/muro-fuego.png",
+  "component": "A-FX-mago-h1/formation",
+  "block": "B160",
+  "frameIDs": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "newRasterAssets": 0,
+  "method": "Map spawnProg to authored animation frames.length/fps within unchanged300ms formation; active/extinction clock unchanged.",
+  "commands": [
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/mago-formation-coverage.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node art-source/entregas/mago-kit-20261025/integracion-01/arena-capture.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node art-source/entregas/mago-kit-20261025/integracion-01/arena-mobile.js"
+  ]
+}

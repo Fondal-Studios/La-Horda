@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-25",
+  "pr": 222,
+  "branch": "art/mago-formation-integration-20261025",
+  "base": "4476bae0591ec3e58bf02a9a0d338a4e91b04bef",
+  "production": "f3b3125cde5c4e31d94a05eb7bee18794354f3f8",
+  "productionTree": "1618283be8e7f386508cb928e4be27b084d93f8c",
+  "verifiedProductionFiles": 38,
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "publication": "NOT_CHECKED_THIS_RUN",
+  "scope": "A-FX-mago-h1/formation B160 only; zero new atlas assets; four existing frames consumed within same300ms",
+  "tests": {
+    "newTechnical": 12,
+    "rendererSamples": 72,
+    "realCasts": 2,
+    "realDrawCallsPerCast": 240,
+    "pageErrors": 0,
+    "combatParity": "NOT_RUN",
+    "relay": "NOT_RUN",
+    "wholeKitArtGate": "NOT_APPROVED",
+    "preview": "3imagesready/0errors after readiness wait; initial900ms sample false preserved"
+  },
+  "defect": "Dense tiled flame mass at fourth formation frame; grouped composition/contrast pending.",
+  "preserved": "54 prior queue entries, now55; body/H2/H3/UF and original vendor atlas untouched;453 runtime/plan files matched main before edit.",
+  "attempts": [
+    "update_ref for nonexistent branch returned422; created branch from existing verified production commit, no file loss.",
+    "Initial preview900ms sampled ready=false, zeroerrors; repetition with actual image readiness passed, original JSON preserved.",
+    "Copied arena audit labels corrected to candidate/main4476; no test assertion changed."
+  ],
+  "next": "Close this component as grouped fire-wall composition: retain actual damage annulus and timing; inspect contact/skins/six arenas, relay/cold recovery/lifecycle/performance; merge only after Art Gate and exact-head applicableCI. No repeat initial production/no whole kit closure.",
+  "manifest": "Describes immutable production files; post-production closure adds evidence only."
+}

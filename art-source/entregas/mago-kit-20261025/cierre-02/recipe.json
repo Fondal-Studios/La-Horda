@@ -1,0 +1,9 @@
+{
+  "source": "js/champions/mago.js",
+  "atlas": "assets/vfx/vendor/muro-fuego.png",
+  "atlasGitblob": "196351134e57dea5ad0c4986b07c08322a13a25a",
+  "newAtlas": 0,
+  "formula": "n=12+tier*4; spacing=2*mid*sin(pi/n); size=min(thickness*.75,spacing*.9)",
+  "preserved": "Formation300ms mapping4frames; active/extinction clocks; collision/damage/lifetime unchanged",
+  "command": "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/mago-wall-composition.js"
+}
