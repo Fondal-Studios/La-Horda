@@ -116,6 +116,10 @@ function envSection(){
       chk(local || /sslmode=(require|verify)/.test(u.search) || env.PGSSL === "1" || /\.(render|neon|supabase)\./.test(u.hostname) || /\.internal$/.test(u.hostname), "La conexión a la base va cifrada (o es local)", { ifNot: "warn", hint: "una base remota debería llevar ?sslmode=require" });
       chk(!!u.password || local, "DATABASE_URL incluye contraseña (o es una base local sin clave)", { ifNot: "warn", hint: "una base sin clave solo es aceptable en 127.0.0.1" }); }
   }
+  // Economía de ítems V2 (server/item-economy*.js): ENCENDIDA por omisión SOLO con almacenamiento persistente; HORDA_ITEM_ECONOMY=0 la apaga.
+  const persistentStore = has("DATABASE_URL") || (has("DATA_DIR") && env.DATA_PERSISTENT === "1");
+  const ecoOff = env.HORDA_ITEM_ECONOMY === "0";
+  add("ok", "Economía de ítems V2 (HORDA_ITEM_ECONOMY)", ecoOff ? "APAGADA (=0): contrato anterior, cuentas y guardado como siempre" : persistentStore ? "ENCENDIDA (por omisión con base persistente): el servidor es dueño de oro, gemas y objetos de las cuentas" : "sin base persistente: no actúa (comportamiento anterior)", persistentStore && !ecoOff ? "primero un respaldo de cuentas+guardados+operaciones y la prueba en un entorno aislado (docs/economy/ITEM_ECONOMY_V2_INTEGRACION.md); para apagarla: HORDA_ITEM_ECONOMY=0" : "");
   const origins = (env.ALLOWED_ORIGINS || "").split(",").map(s => s.trim()).filter(Boolean);
   chk(origins.length > 0, "ALLOWED_ORIGINS definido", { ifNot: BLOCK, hint: "sin lista el servidor acepta pedidos de CUALQUIER página" });
   chk(origins.every(o => /^https:\/\/[^/]+$/.test(o) || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(o)), "ALLOWED_ORIGINS: solo orígenes https sin barra final", { ifNot: "warn", detail: "hay entradas raras", hint: "ej. https://fondalstudios.com" });

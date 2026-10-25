@@ -173,7 +173,13 @@ async function boot(browser, initSave, vp){
     const full = await E(() => { groundLoot.length = 0; save.stash = []; for (let i = 0; i < INVENTORY_CAPACITY; i++) stashItems().push(makeItem('arma','muyraro')); // sin Comunes/Raros que reciclar (t_build_uniques: reciclaje)
       const g = groundLootDrop(player.x, player.y, 'A', 1, 'infernal', 'elite', 1); __step(50); const stays = groundLoot.includes(g); save.stash = []; __step(50);
       return { stays, pickedLater: !groundLoot.includes(g) }; });
-    check('PICK.inventario_lleno_queda_en_el_piso', full.stays && full.pickedLater, full);
+    // Economía V2: con la bolsa llena lo levantado entra a la reserva visible (hasta 150) en vez de quedar en el piso; con la Gestión de
+    // botín apagada vuelve a quedar en el piso (comportamiento anterior).
+    check('PICK.inventario_lleno_entra_a_la_reserva_v2', full.stays === false, full);
+    const off = await E(() => { groundLoot.length = 0; save.stash = []; save.lootManagement = {enabled:false}; for (let i = 0; i < INVENTORY_CAPACITY; i++) stashItems().push(makeItem('arma','muyraro'));
+      const g = groundLootDrop(player.x, player.y, 'A', 1, 'infernal', 'elite', 1); __step(50); const stays = groundLoot.includes(g); save.stash = []; __step(50); save.lootManagement = {};
+      return { stays, pickedLater: !groundLoot.includes(g) }; });
+    check('PICK.inventario_lleno_queda_en_el_piso_con_gestion_apagada', off.stays && off.pickedLater, off);
     // pity: si cae un Legendario en el piso, su protección vuelve a cero
     const pity = await E(() => { save.lootPity = {legendario:9, set:3, mitico:2, unico:1}; let got = null, setDrop = false;
       for (let i = 0; i < 400 && !got; i++){ const g = groundLootDrop(player.x+500, player.y, 'S', 1, 'infernal', 'jefe'); if (g && g.item.lootTier === 'legendario') got = g; if (g && g.item.lootTier === 'set') setDrop = true; }

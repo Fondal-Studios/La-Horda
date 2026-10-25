@@ -388,6 +388,7 @@ function _shopSetBlock(setId){
   const skin = (typeof SET_SKINS!=="undefined" && SET_SKINS[setId]) ? '<span class="shop-set-skin">🎨 Skin al completarlo</span>' : "";
   const missing = shopSetMissing(setId);
   const entries = ids.map(id=>shopCatalog().find(e=>e.kind==="designed" && e.id===id));
+  if(entries.some(e=>!e)) return ""; // conjuntos Míticos V2 (mythic-sets-v2.js): se fabrican en la Forja o caen; la Tienda (oro/Brasas) no los vende
   return `<div class="shop-set" data-set="${setId}">
     <div class="shop-set-head"><span class="shop-set-name">${S.name}</span> <span class="shop-set-theme">${S.theme||""}${champ?` · Solo ${CLASSES[champ].name}`:" · Universal"}</span> ${skin}
       <span class="shop-set-count">${have}/${ids.length} piezas · ${eq} equipadas</span></div>
@@ -397,7 +398,7 @@ function _shopSetBlock(setId){
   </div>`;
 }
 function renderShopObjects(panel){
-  const cats = `<div class="inv-filters">${SHOP_CATS.map(([k, l])=>`<button class="inv-chip ${shopCat===k?"on":""}" data-shop-cat="${k}">${l} (${k==="set" ? Object.keys(SET_DB).length : shopCatalog().filter(e=>e.cat===k).length})</button>`).join("")}</div>`;
+  const cats = `<div class="inv-filters">${SHOP_CATS.map(([k, l])=>`<button class="inv-chip ${shopCat===k?"on":""}" data-shop-cat="${k}">${l} (${k==="set" ? Object.keys(SET_DB).filter(id=>setPieceIds(id).every(p=>shopCatalog().some(e=>e.kind==="designed" && e.id===p))).length : shopCatalog().filter(e=>e.cat===k).length})</button>`).join("")}</div>`;
   let body;
   if(shopCat==="set") body = Object.keys(SET_DB).map(_shopSetBlock).join("");
   else body = '<div class="shop-item-list">' + shopCatalog().filter(e=>e.cat===shopCat).map(e=>_shopItemCard(e, e.kind==="archetype" ? (shopTier[e.key]||"raro") : undefined)).join("") + '</div>';

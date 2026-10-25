@@ -210,10 +210,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
       const okFull = groundLootPick(g2);
       return { okCommon, afterCommon, okLeg, afterLeg, toast, okFull, stillOnFloor: groundLoot.includes(g2) };
     });
-    check('FULL.comun_levantado_se_recicla_en_polvo_de_gema', r.okCommon && r.afterCommon.n === 30 && !r.afterCommon.has && Math.abs(r.afterCommon.dust - 0.25) < 1e-6, r);
-    check('FULL.lo_bueno_hace_lugar_reciclando_un_comun', r.okLeg && r.afterLeg.has && r.afterLeg.n === 30 && r.afterLeg.commons === 2 && Math.abs(r.afterLeg.dust - 0.5) < 1e-6, r.afterLeg);
-    check('FULL.se_avisa_en_pantalla', /se recicló/.test(r.toast) && /polvo de Gema/.test(r.toast), r.toast);
-    check('FULL.sin_comunes_lo_bueno_queda_en_el_piso', r.okFull === false && r.stillOnFloor, r);
+    // Economía V2 (decisión del dueño: V2 manda): con la bolsa llena lo levantado entra a la RESERVA visible (hasta 150), nunca se
+    // sacrifica otro objeto; solo se recicla un duplicado idéntico con la autofusión apagada (tools/items/test-auto-inventory-unit.js).
+    check('FULL.comun_levantado_entra_a_la_reserva', r.okCommon && r.afterCommon.n === 31 && r.afterCommon.has, r.afterCommon);
+    check('FULL.lo_bueno_entra_sin_sacrificar_otro_objeto', r.okLeg && r.afterLeg.has && r.afterLeg.n === 32 && r.afterLeg.commons >= 3, r.afterLeg);
+    check('FULL.lleno_de_muy_raros_el_legendario_tambien_entra', r.okFull === true && !r.stillOnFloor, r);
     const g = await E(() => { save.recycleDust = 0.75; save.gems = 0; const got = recycleItemValue({ rarity: 'comun' }); return { got, gems: save.gems, dust: save.recycleDust }; });
     check('FULL.cuatro_comunes_son_una_gema', g.got === 1 && g.gems === 1 && g.dust < 1e-6, g);
   }
