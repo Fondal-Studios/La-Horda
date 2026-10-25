@@ -1,0 +1,72 @@
+{
+  "new": [
+    {
+      "test": "export",
+      "result": "42frames/39nonempty/3transparentcloses,0partial alpha,0border,RNG0"
+    },
+    {
+      "test": "lifecycle",
+      "result": "18/18 PASS, includes damageHero consuming shield, expiry,recast,death,movement,0/5seeds,failed public useSkill,empty native cache recovery"
+    },
+    {
+      "test": "relay",
+      "result": "11/11 PASS hostTanque/guestMaura touch; actual3native draw paths,zero shield,recast,expiry. Before final root pixels; hooks unchanged."
+    },
+    {
+      "test": "functional",
+      "result": "254/254 PASS before final root geometry; no mechanics changes since."
+    },
+    {
+      "test": "parity",
+      "result": "on/off and parent/candidate/parent360frames each32292RNG,state summary identical. Before final root geometry; not full snapshot/global certification."
+    },
+    {
+      "test": "composite",
+      "result": "360final scenes/1440ABA state summaries exact,100% body retention; H2/H3 recipes unchanged across final root edits. Art remains FIX."
+    },
+    {
+      "test": "parent comparison",
+      "result": "Initial48rows includes3failed HieloDesktop cases. Seeded isolated reruns H2/H3/UF pass; finalH1 all12parent/candidate cases pass. Does not prove original mismatch cause."
+    },
+    {
+      "test": "performance",
+      "result": "See PERFORMANCE and ATTEMPT01, local isolated only. Large maximum retained, no physical mobile/GPU/GC claim."
+    }
+  ],
+  "failed": [
+    {
+      "test": "diagnostic clock01",
+      "reason": "Updated224ms but only renderedonce; pool t16. Initial screenshots are not224ms temporal evidence. Fixed virtualclock +rendersteps; preserved attempt01-diagnostic-clock."
+    },
+    {
+      "test": "parity01",
+      "reason": "Harness attempted assignment to const sfaDrawOne; failed before run. Changed to canvas draw suppression."
+    },
+    {
+      "test": "lifecycle01",
+      "reason": "Harness used castAbility directly to test energy guard; guard belongs to useSkill. Two failures preserved; public entry rerun passed."
+    },
+    {
+      "test": "relay01",
+      "reason": "Timeout30s before first draw observed. Cause not established; second attempt pass, no claiming timing cause."
+    },
+    {
+      "test": "functional01",
+      "reason": "Result write failed ENOENT docs/expedition/functional-results.json. Created output directory; rerun254PASS. No prior pass claimed."
+    },
+    {
+      "test": "root top composition",
+      "reason": "Retention min77.5055%desktop/77.2879%mobile; moved root render to ground. Logs/JSON and source-top-roots retained."
+    },
+    {
+      "test": "parent comparison01",
+      "reason": "Hielo desktop3pre-image mismatches, H3state summary mismatch. Seeded isolated reruns pass, original cause not established."
+    },
+    {
+      "test": "performance01",
+      "reason": "Max427.1ms outlier under concurrent work, cause not demonstrated; isolated follow-up retained separately."
+    }
+  ],
+  "historical": "First-pass proofs remain only in primera-pasada-01; not counted as new installed-hook validations.",
+  "missing": "Visual PASS; complete review of all generated sheets; later CI exact-head approval; publication."
+}
