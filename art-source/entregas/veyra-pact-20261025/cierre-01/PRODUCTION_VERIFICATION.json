@@ -1,0 +1,20 @@
+{
+  "productionHead": "8d24d394ad5a34a1ce963f4dffd3acedcaab93f1",
+  "productionTree": "bf24bb3dc688491d276d403ba2509c5ef3504755",
+  "files": 83,
+  "verifiedBeforePR": {
+    "localGitBlobEqualsUploadedBlob": true,
+    "remoteRecursiveTreeEntries": 11141,
+    "remoteTreeTruncated": false,
+    "all83EntriesMatch": true
+  },
+  "postProduction": [
+    "Six arena PNG Git blobs reexported exactly, REEXPORT.json",
+    "Preview six painted canvases, zero errors, diagnostic76ms; PREVIEW_CHECK.json"
+  ],
+  "attemptsAfterProduction": [
+    "Initial upload bridge stdout truncated at524288chars before blob creation; retried196608byte chunks and verified all83blobs.",
+    "Preliminary Mago PNG-only cold fixture did not reach cold state; saved INVALID_FIXTURE. PNG+WebP route reached both naturalWidth=0, no page errors."
+  ],
+  "note": "No candidate runtime edits after production commit. This evidence does not alter production manifest."
+}

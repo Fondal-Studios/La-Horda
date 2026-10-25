@@ -1,0 +1,119 @@
+{
+  "scope": "Preliminary actual main Mago casts, mobile viewport, no new assets and no visual approval",
+  "base": "9c0ac434b2cb80ae16e7220371f59944ac3e9613",
+  "rows": [
+    {
+      "index": 0,
+      "skill": {
+        "name": "Muro de Fuego",
+        "ico": "🔥",
+        "cost": 42,
+        "cd": 9000,
+        "kind": "fire_wall",
+        "range": 190,
+        "innerR": 38,
+        "outerR": 82,
+        "duration": 4500,
+        "tick": 450,
+        "dmgMult": 0.42,
+        "element": "fire",
+        "desc": "Crea un anillo de fuego que quema al pisarlo"
+      },
+      "after": {
+        "fireWalls": [
+          {
+            "innerR": 38,
+            "outerR": 82,
+            "timer": 4500
+          }
+        ],
+        "chains": [],
+        "sparks": 0,
+        "particles": 1
+      },
+      "draws": {
+        "fire": 160,
+        "chain": 0,
+        "spark": 0
+      }
+    },
+    {
+      "index": 1,
+      "skill": {
+        "name": "Nova de Escarcha",
+        "ico": "❄",
+        "cost": 40,
+        "cd": 8200,
+        "kind": "frost_nova",
+        "radius": 125,
+        "dmgMult": 1.05,
+        "freeze": 0.92,
+        "freezeDur": 1900,
+        "element": "ice",
+        "desc": "Congela a los enemigos cercanos"
+      },
+      "after": {
+        "fireWalls": [],
+        "chains": [],
+        "sparks": 0,
+        "particles": 14
+      },
+      "draws": {
+        "fire": 0,
+        "chain": 0,
+        "spark": 0
+      }
+    },
+    {
+      "index": 2,
+      "skill": {
+        "name": "Cadena de Relámpago",
+        "ico": "⚡",
+        "cost": 42,
+        "cd": 5800,
+        "kind": "chain",
+        "dmgMult": 1.45,
+        "jumps": 4,
+        "jumpRange": 190,
+        "falloff": 0.78,
+        "element": "lightning",
+        "desc": "Salta entre enemigos"
+      },
+      "after": {
+        "fireWalls": [],
+        "chains": [
+          {
+            "x1": 0,
+            "y1": -14,
+            "x2": 90,
+            "y2": 0,
+            "duration": 420
+          },
+          {
+            "x1": 90,
+            "y1": 0,
+            "x2": 160,
+            "y2": 0,
+            "duration": 420
+          },
+          {
+            "x1": 160,
+            "y1": 0,
+            "x2": 230,
+            "y2": 0,
+            "duration": 420
+          }
+        ],
+        "sparks": 3,
+        "particles": 0
+      },
+      "draws": {
+        "fire": 0,
+        "chain": 30,
+        "spark": 60
+      }
+    }
+  ],
+  "errors": [],
+  "executedTree": "PR221 candidate differs from base only in Veyra; all 16 Mago references match main."
+}

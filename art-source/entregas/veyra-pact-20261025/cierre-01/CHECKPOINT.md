@@ -11,3 +11,14 @@ Primer conjunto75.51% y candidato anterior con fallos bajo80% conservados. Canar
 CI exacthead pendiente; no merge/publicación todavía. Consultar REMOTE_CLOSURE posterior y PR. Publicación actual de Veyra difiere de main, documentada en PUBLICATION_PRE. No tocar infraestructura.
 
 SIGUIENTE: seguir este cierre hasta CI aplicable verde, revisar diff/head frescos, listo→merge normal expected_head_sha y verificar PR/main/publicación. No abrir producción para evitar el cierre. Tras completar, alternar producción auditada del siguiente kit realmente faltante; la cola54 y los FIX de PR219 se conservan. Comandos en recipe.json.
+
+
+## Cierre verificado — 25/10/2026
+
+INTEGRADO_MAIN sólo A-FX-veyra-h3/launch-heart. PR221 listo y mergeado normalmente con expected_head_sha8d24d394ad5a34a1ce963f4dffd3acedcaab93f1. Merge/main4476bae0591ec3e58bf02a9a0d338a4e91b04bef,09:28:05UTC;19checks/8workflows exacthead SUCCESS. Árbolbf24bb3dc688491d276d403ba2509c5ef3504755 y ambos padres verificados. CI_FINAL y PR221_MERGE guardan evidencia. No remergear; este cierre posterior sólo documenta resultados.
+
+Seis exportaciones PNG byteidénticas a producción y preview6canvases/0errores,76msdiagnóstico.83archivos producción ya cotejados Gitbloblocal/árbol remoto completo. manifest permanece ligado a producción; REMOTE_CLOSURE supersede el estado anterior sólo del lanzamiento. Cola54 histórica intacta; latido persistente, restoH3 y kit NO quedan aprobados. Intentos fallidos conservados.
+
+Publicación09:28:13UTC HTTP200 pero Veyra sigue hash87518ecbf261f8844b9c39217c0f699fbddb10728ede2bb6589efb7911e50a70 frente esperado9b142e32564a4a0f864e4a31f3bcad1ce2b3f05c6442017d2f166976c2946d01:NOT_CONFIRMED, sin cambios de infraestructura.
+
+SIGUIENTE: PRODUCCIÓN auditada MagoB160/B161/B162. NEXT_MAGO_AUDIT guarda16referencias exactas y comandos; muro/relámpagos/coronaescarcha/cuerpo/skin/UF ya existen. Tres casts reales y prueba con PNG+WebPbloqueados sin errores, no ArtGate ni arte nuevo. IntentoPNGsolo inválido preservado. Revisar composición, talentos, recuperación de carga y caso sinobjetivo antes de decidir faltantes; luego otro CIERRE deFIX integradosPR219. PR220 terminó19checks/8workflowsSUCCESS pero sigueFIX y conserva dosfalloslocalesIlkan sin causa demostrada. Inventario global incompleto.

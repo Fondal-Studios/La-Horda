@@ -1,0 +1,108 @@
+{
+  "status": "AUDIT_ONLY",
+  "base": "9c0ac434b2cb80ae16e7220371f59944ac3e9613",
+  "blocks": [
+    "B160",
+    "B161",
+    "B162"
+  ],
+  "noNewAssets": true,
+  "references": [
+    {
+      "path": "js/champions/mago.js",
+      "bytes": 4122,
+      "sha256": "5d5f55311593e83f8810a679d062412d98c44810072a60c4bb332ff7edd0bc0d"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/mago.js",
+      "bytes": 857,
+      "sha256": "7a68d2e9c4db8ebb6f2ebef6fcca987fdf1a27c4864dd0b7a73d733766129449"
+    },
+    {
+      "path": "js/skills/abilities.js",
+      "bytes": 87227,
+      "sha256": "9ee6ca9de63c85807b9a65dffcd1161ac774750af2387b62c48abddb6bd549b6"
+    },
+    {
+      "path": "js/skills/ability-vfx.js",
+      "bytes": 6609,
+      "sha256": "059a9d91523c1a27f8a7754b2e1432709e960ddcb99cb575300b6b8a22b1c0ef"
+    },
+    {
+      "path": "js/rendering/effects.js",
+      "bytes": 25663,
+      "sha256": "e544c6f8e9157a77f905d28b24371c4c8a2cf6413af5686263596d014d4257a0"
+    },
+    {
+      "path": "js/vendor/muro-fuego.js",
+      "bytes": 1478,
+      "sha256": "52e7846dc60ce412e28c3bf246e012a4c741bdb3571445a764e9feafa42a49f2"
+    },
+    {
+      "path": "js/vendor/cadena-relampagos.js",
+      "bytes": 1417,
+      "sha256": "983ba55a48244c46f5a975c7ccce3d23bff485ea8310dd9e4f6bc1803f1df96b"
+    },
+    {
+      "path": "js/assets/vfx-sprites.js",
+      "bytes": 11113,
+      "sha256": "6664bb64806c0680867e265db40a7c3b0b333c0bc8c02e18bb3da31b40b3c175"
+    },
+    {
+      "path": "assets/vfx/vendor/muro-fuego.png",
+      "bytes": 987539,
+      "sha256": "b4019ff9c890c7c8a817d8479c38e081b442108406b482a3bdb8e5a73f28e72b"
+    },
+    {
+      "path": "assets/vfx/vendor/muro-fuego.webp",
+      "bytes": 858452,
+      "sha256": "f1f40cacf5e153e5ad53d309ecdaddfafbd55c0cdac862d40695802fb902e10d"
+    },
+    {
+      "path": "assets/vfx/vendor/cadena-relampagos.png",
+      "bytes": 504584,
+      "sha256": "04f0be848240a36454ec9aaafc708c2c0a2c2f8843785346d4804ec71971bd0d"
+    },
+    {
+      "path": "assets/vfx/vendor/cadena-relampagos.webp",
+      "bytes": 422844,
+      "sha256": "a656f494786830b7e3bb335651da26b97e13e716d40d3a6f53fca5ecd513454e"
+    },
+    {
+      "path": "assets/vfx/skills/nova_escarcha.png",
+      "bytes": 90713,
+      "sha256": "d855336c88b4d6baf5e829849dd8b5f350035f69c4573ec2f2718f904bac493e"
+    },
+    {
+      "path": "assets/vfx/skills/nova_escarcha.webp",
+      "bytes": 54908,
+      "sha256": "a3be5c88598ce76423c3d1a0e2b3aa39343582fc80a42137b4cc5e5dbf071f7b"
+    },
+    {
+      "path": "assets/sprites/champions/mago/atlas.png",
+      "bytes": 1248766,
+      "sha256": "01d2d8aafed4ed23f177c902c3018795a031f9c84bbb4733b2d5ff36f1fd699a"
+    },
+    {
+      "path": "assets/sprites/champions/mago/atlas.webp",
+      "bytes": 974926,
+      "sha256": "4b0eb67e46e589b897fb3b1bb7add4636b9dfbc5b89ddfc5694e6effbd6973da"
+    }
+  ],
+  "observations": [
+    "H1 already has MuroFuego vendor PNG/WebP, formation/active/extinction on the real damage annulus; preserve inner and outer radii.",
+    "H2 uses frostNovaVFX and vfxFrostCrown plus real slow/freeze state. nova_escarcha asset exists but its separate enemy consumer does not prove player-nova usage.",
+    "H3 draws CadenaRelampagos on actual chain endpoints and spark/electrified targets, with deterministic backbone fallback.",
+    "Three actual casts audited in NEXT_MAGO_CASTS: firewall 4500ms inner38/outer82, frost radius125/14 particles, three chain links420ms. Mobile viewport, no new art or Art Gate approval.",
+    "Cold-loading audit reached naturalWidth=0 for both PNG/WebP vendor atlases, three casts and160ms rendering with zero page errors. First PNG-only routing attempt remained ready and is INVALID_FIXTURE, preserved. Consumer calls do not prove successful raster drawing."
+  ],
+  "next": "Audit cold/partial loading, zero targets, talent stages, skins and actual composed frames before deciding any missing component. Reuse existing body/skins/UF and vendor sources; no new workshop to avoid outstanding closure.",
+  "resumeCommands": [
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node art-source/entregas/veyra-pact-20261025/cierre-01/audit-mago.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node art-source/entregas/veyra-pact-20261025/cierre-01/audit-mago-cold.js"
+  ],
+  "sourceLevelOnlyNotMissingAssets": [
+    "MuroFuego.launch and burn cells exist but drawFireWall uses formation/active/extinction; unused cells alone do not establish missing art.",
+    "CadenaRelampagos.launch and charge cells exist; preserve currently drawn real-link and impact shapes."
+  ]
+}

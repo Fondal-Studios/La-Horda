@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-25",
+  "component": "A-FX-veyra-h3/launch-heart",
+  "block": "B228",
+  "pr": 221,
+  "branch": "art/veyra-pact-launch-close-20261025",
+  "productionHead": "8d24d394ad5a34a1ce963f4dffd3acedcaab93f1",
+  "productionTree": "bf24bb3dc688491d276d403ba2509c5ef3504755",
+  "merge": {
+    "pr": 221,
+    "url": "https://github.com/Fondal-Studios/La-Horda/pull/221",
+    "head": "8d24d394ad5a34a1ce963f4dffd3acedcaab93f1",
+    "expected_head_sha": "8d24d394ad5a34a1ce963f4dffd3acedcaab93f1",
+    "base": "9c0ac434b2cb80ae16e7220371f59944ac3e9613",
+    "merged": true,
+    "mergedAt": "2026-10-25T09:28:05Z",
+    "mergeCommit": "4476bae0591ec3e58bf02a9a0d338a4e91b04bef",
+    "mainVerified": "4476bae0591ec3e58bf02a9a0d338a4e91b04bef",
+    "tree": "bf24bb3dc688491d276d403ba2509c5ef3504755",
+    "parents": [
+      "9c0ac434b2cb80ae16e7220371f59944ac3e9613",
+      "8d24d394ad5a34a1ce963f4dffd3acedcaab93f1"
+    ],
+    "normalMerge": true,
+    "draft": false,
+    "scope": "A-FX-veyra-h3/launch-heart only; B228 is not entirely closed."
+  },
+  "status": "INTEGRADO_MAIN",
+  "visualGate": "PASS_COMPONENT",
+  "publication": {
+    "checkedAt": "2026-10-25T09:28:13.091372+00:00",
+    "url": "https://fondalstudios.com/la-horda/jugar/js/champions/vfx-b/veyra.js",
+    "expectedSha256": "9b142e32564a4a0f864e4a31f3bcad1ce2b3f05c6442017d2f166976c2946d01",
+    "httpStatus": 200,
+    "bytes": 5811,
+    "publicSha256": "87518ecbf261f8844b9c39217c0f699fbddb10728ede2bb6589efb7911e50a70",
+    "status": "NOT_CONFIRMED",
+    "infrastructureChanged": false,
+    "scope": "Runtime consumer bytes only; repository merge and public deployment are separate."
+  },
+  "scope": {
+    "runtimeFiles": [
+      "js/champions/vfx-b/veyra.js"
+    ],
+    "diff": "+13/-2",
+    "atlas": "24x24x10, six arena exports",
+    "event": "760ms; cosmetic radius22 y-126",
+    "excluded": [
+      "persistent vy_pact_idle ground heartbeat remains EN_CORRECCION",
+      "whole H3/B228 and kit not closed",
+      "body/skins/H1/H2/UF/owner/follow/RNG hooks unchanged"
+    ]
+  },
+  "validation": {
+    "ownerLifecycle": 14,
+    "follow": 12,
+    "technical": 34,
+    "relayFinal": 23,
+    "functional": 132,
+    "functionalTiming": "After painter change, before final cosmetic radius/offset only",
+    "parity": "360frames KVBoff/on29969/29969 repeated twice; summarized state only, not full snapshot/global isolation",
+    "visual": "120 scenes, six arenas/five appearances/two densities/two viewports,480ABA/state restores exact; minimum100% retained bodies, threshold80/delta24 unchanged",
+    "performance": "600x32 isolated renderer, p95~0.1ms,max20.4ms local under concurrent load; no physical phone/GC/whole-frame assertion",
+    "ci": "19check-runs and8workflows exact-head SUCCESS; CI_FINAL.json",
+    "reexport": "Six frame hash arrays AND PNG Git blobs match production",
+    "preview": "Six canvases painted, zero errors; diagnostic76ms"
+  },
+  "preservation": {
+    "queueEntries": 54,
+    "productionFilesVerified": 83,
+    "manifest": "Immutable production at8d24d394; closure supersedes VALIDADO/PENDING_CI only for launch-heart",
+    "failedAttempts": "Original75.51% and prior candidate<80% preserved; opaque canary rejects; no threshold change",
+    "additionalAttempts": "Upload truncation before blob creation fixed with196608byte chunks; all83 verified. Mago PNG-only cold fixture invalid/preserved; PNG+WebP fixture reached cold state."
+  },
+  "next": {
+    "phase": "PRODUCCION auditada",
+    "candidate": "Mago B160/B161/B162",
+    "read": [
+      "NEXT_MAGO_AUDIT.json",
+      "NEXT_MAGO_CASTS.json",
+      "NEXT_MAGO_COLD.json"
+    ],
+    "action": "Fetch fresh main/openPRs; audit real composed frames, cold/recovery, zero targets and talent stages before producing only verified missing components. Reuse existing wall/chain/frost crown/body/skins/UF. Then another closure of accumulated FIX. Do not repeat PR221/218/216/212 or treat PR219 closure as visual approval."
+  },
+  "notes": [
+    "This post-merge branch commit contains evidence only; do not merge PR221 again.",
+    "No lost prior closure detected this run. Global inventory remains incomplete.",
+    "PR220 CI19/8SUCCESS freshly observed; its visualFIX and two earlier localIlkan failures remain unresolved."
+  ]
+}
