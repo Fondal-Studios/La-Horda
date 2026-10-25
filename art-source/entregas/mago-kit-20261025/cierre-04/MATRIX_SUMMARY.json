@@ -1,0 +1,44 @@
+{
+  "scenes": 120,
+  "comparisons": 480,
+  "arenas": [
+    "bosque",
+    "hielo",
+    "infernal",
+    "laberinto",
+    "acuatica",
+    "minas"
+  ],
+  "looks": [
+    "base",
+    "gear",
+    "set Convergencia",
+    "unique Fuego del Vacío",
+    "mastery tier4"
+  ],
+  "densities": [
+    1,
+    4
+  ],
+  "viewports": [
+    "1280x720",
+    "844x390"
+  ],
+  "times": [
+    "225ms sampled240",
+    "700ms sampled704",
+    "2600ms sampled2608",
+    "expiry minus200ms"
+  ],
+  "threshold": 0.8,
+  "channelDelta": 24,
+  "minimum": {
+    "desktop": 0.9280503647446787,
+    "mobile": 0.9286708420320111
+  },
+  "allABARestored": true,
+  "errors": [],
+  "scope": "Body draw masks (hero and enemies), compare candidate wall + UF launch versus same renderer omitting only those two components. Pose/RNG/particle arrays restored between renders. Summarized state fingerprint, not global snapshot. Other legacy effects remain in both samples.",
+  "negative": "Full-screen magenta canary fails: retention0 and restoration false.",
+  "before": "Main six mobile/base/dense presets retain about35-37%; source replay only, no live main mutation."
+}

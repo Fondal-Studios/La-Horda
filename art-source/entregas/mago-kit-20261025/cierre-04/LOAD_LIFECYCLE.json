@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "name": "cold PNG and WebP blocked, zero-target cast survives",
+      "ok": true,
+      "details": {
+        "width": 0,
+        "walls": 1
+      }
+    },
+    {
+      "name": "recovered atlas actually draws",
+      "ok": true
+    },
+    {
+      "name": "renderer object unchanged",
+      "ok": true
+    },
+    {
+      "name": "renderer consumes no RNG",
+      "ok": true
+    },
+    {
+      "name": "expiry clears wall",
+      "ok": true
+    },
+    {
+      "name": "recast creates wall",
+      "ok": true
+    },
+    {
+      "name": "run reset clears wall",
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "detail": {
+    "draws": 16,
+    "same": true,
+    "rng": 0,
+    "expired": true,
+    "recast": true,
+    "reset": true,
+    "duration": 4500,
+    "perf": {
+      "samples": 600,
+      "wallsPerSample": 32,
+      "p95": 63.899999998509884,
+      "max": 158.79999999701977
+    }
+  },
+  "limits": "Isolated performance on local Chromium, not physical mobile/GC. Lifecycle exercises existing mechanics, not complete net-state snapshot."
+}

@@ -1981,22 +1981,20 @@
       "id": "mago.fire-wall.formation-20261025",
       "block": "B160",
       "component": "A-FX-mago-h1/formation",
-      "state": "EN_CORRECCION",
-      "integration": "NO_INTEGRAR",
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
       "frames": [
         4,
         5,
         6,
         7
       ],
-      "source": "art-source/entregas/mago-kit-20261025/cierre-03/source-candidate.js",
+      "source": "art-source/entregas/mago-kit-20261025/cierre-04/source-wall.js",
       "sourceSha256": "3a14a3e9361457d86c7b71394ceb2807f0f7a1fa237ac9ee738acc43332f99ba",
       "atlas": "assets/vfx/vendor/muro-fuego.png",
       "atlasSha256": "b4019ff9c890c7c8a817d8479c38e081b442108406b482a3bdb8e5a73f28e72b",
-      "defects": [
-        "Continuity improved; full composite contact/skins/relay/lifecycle gates pending."
-      ],
-      "next": "Complete grouped closure gates on tangent candidate; no new first pass.",
+      "defects": [],
+      "next": "Exact-head CI then normal merge; scope only formation/wall/UF H1 launch, not whole B160/kit.",
       "history": [
         {
           "source": "art-source/entregas/mago-kit-20261025/integracion-01/source-candidate.js",
@@ -2010,6 +2008,13 @@
           "sourceSha256": "57f8c711e9a4f12d49adccc5c9337912930c6ad88fd40d6675a6da1effc1b1cd",
           "defects": [
             "Overlap removed, disconnected small flame tiles lose corona continuity. Composite gate pending."
+          ]
+        },
+        {
+          "source": "art-source/entregas/mago-kit-20261025/cierre-03/source-candidate.js",
+          "sourceSha256": "3a14a3e9361457d86c7b71394ceb2807f0f7a1fa237ac9ee738acc43332f99ba",
+          "defects": [
+            "Continuity improved; full composite contact/skins/relay/lifecycle gates pending."
           ]
         }
       ]
@@ -2025,10 +2030,10 @@
     "entriesPreserved": 54
   },
   "latestClosure": {
-    "component": "A-FX-veyra-h3/launch-heart",
+    "component": "A-FX-mago-h1/formation",
     "state": "VALIDADO",
-    "integration": "PENDING_CI",
-    "path": "art-source/entregas/veyra-pact-20261025/cierre-01",
-    "queueEntries": 54
+    "integration": "PENDING_EXACT_HEAD_CI",
+    "path": "art-source/entregas/mago-kit-20261025/cierre-04",
+    "queueEntries": 55
   }
 }

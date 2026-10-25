@@ -64,7 +64,7 @@ const UF_PAL_SK = {
   thorn:  {o: '#12220c', d: '#3f7a22', a: '#8fd646', b: '#d8f59a', c: '#ffffff', e: '#d86a8a'}
 };
 const UF_SK = [   // [campeón, casilla, forma, paleta, duración, geometría(c) -> {x, y, r} | null, add]
-  ['mago', 0, 'column', 'fire', 1000, c => { const p = c.rec.pts[0]; return p && {x: p.x, y: p.y, r: Math.max(60, p.r || 90)}; }],
+  ['mago', 0, 'column', 'fire', 1000, c => { const p = c.rec.pts[0]; return p && {x: p.x, y: p.y - 100, r: 24}; }],
   ['mago', 1, 'shards', 'ice', 1000, c => { const f = c.rec.frost[0]; return f && {x: f.x, y: f.y, r: f.r}; }],
   ['mago', 2, 'lightning', 'storm', 1100, c => { const b = c.rec.bolts[0]; return b && {x: b.x2, y: b.y2, r: 80}; }],
   ['musashi', 0, 'claws', 'ink', 700, c => { const t = c.rec.tgts[0] || c.h; return {x: t.x, y: t.y, r: 80}; }, true],
@@ -74,7 +74,7 @@ const UF_SK = [   // [campeón, casilla, forma, paleta, duración, geometría(c)
 ];
 for(const [k, slot, form, pal, dur, geom, add] of UF_SK){
   const id = k + '.' + slot, B = SFA_BIND[k], old = B && B[slot]; if(!old) continue;
-  ufChamp(id, {form, pal: UF_PAL_SK[pal], dur, gdur: Math.round(dur * 1.4), minR: 40}); UF.register(id);
+  ufChamp(id, {form, pal: UF_PAL_SK[pal], dur, gdur: Math.round(dur * 1.4), minR: id === 'mago.0' ? 24 : 40}); UF.register(id);
   B[slot] = function(c){ if(!ufHas(id)) return (old.run || old)(c); if(add) (old.run || old)(c); const g = geom(c); if(!g){ if(!add) return (old.run || old)(c); return; } kvbFx('uf.' + id, g.x, g.y, Math.min(300, g.r), Math.atan2(c.h.fy || 0, c.h.fx || 1)); };
 }
 /* ---------------- enganche mitad B (vfx-b): sin tocar sus archivos ----------------
