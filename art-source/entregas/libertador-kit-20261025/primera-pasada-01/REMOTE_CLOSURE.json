@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "date": "2026-10-25",
+  "pr": 220,
+  "branch": "art/libertador-kit-first-pass-20261025",
+  "base": "9c0ac434b2cb80ae16e7220371f59944ac3e9613",
+  "production": "9b2ce9b4f3e457e1536d6a6b67b8203f7c455a1f",
+  "productionTree": "91b8a11e1372c2b94f1c3521c64ef4a8035532c6",
+  "productionFiles": 53,
+  "verification": {
+    "allLocalGitBlobsMatch": true,
+    "allRemoteTreeEntriesMatch": true,
+    "treeTruncated": false,
+    "priorClosure": "9d98fa602039a9f972f9b167dafaf16165bd46cd",
+    "newLostClosureDetected": false
+  },
+  "state": "EN_CORRECCION",
+  "generated": true,
+  "validated": false,
+  "integratedMain": false,
+  "publication": "NOT_APPLICABLE_UNMERGED",
+  "components": [
+    "A-FX-libertador-h1",
+    "A-FX-libertador-h2",
+    "A-FX-libertador-h3"
+  ],
+  "wholeBlocksClosed": false,
+  "frames": {
+    "total": 36,
+    "nonempty": 33,
+    "transparentEnd": 3,
+    "uniqueRGBAByAtlas": [
+      12,
+      12,
+      7
+    ]
+  },
+  "runtime": {
+    "files": [
+      "js/champions/skill-fx-a/c/libertador.js"
+    ],
+    "added": 67,
+    "removed": 6,
+    "mechanicsChanged": false,
+    "referencesUnchanged": 65
+  },
+  "newTests": {
+    "technical": 25,
+    "relay": 11,
+    "parity": {
+      "frames": 360,
+      "rng": [
+        27434,
+        27434
+      ],
+      "summaryEqual": true,
+      "fullSnapshot": false,
+      "globalIsolation": false
+    },
+    "captures": {
+      "scenes": 16,
+      "frames": 64,
+      "precastEqual": 8,
+      "UFEqual": 8,
+      "scope": "Bosque/base/mobile+desktop"
+    },
+    "reexportExact": 3,
+    "preview": {
+      "paintedCanvases": 3,
+      "errors": 0,
+      "diagnosticOnly": true
+    },
+    "regression": {
+      "passed": 40,
+      "total": 42,
+      "failed": [
+        "E17.tres_pisadas",
+        "E19.agotamiento"
+      ],
+      "cause": "NOT_DEMONSTRATED",
+      "baseline": "NOT_RUN",
+      "pageErrors": 0
+    }
+  },
+  "ciAtProductionObservation": {
+    "checks": 18,
+    "workflows": 8,
+    "status": "IN_PROGRESS",
+    "approval": false,
+    "exactSha": "9b2ce9b4f3e457e1536d6a6b67b8203f7c455a1f"
+  },
+  "queue": {
+    "preserved": 51,
+    "now": 54
+  },
+  "next": "CIERRE Veyra B228 sobre main fresco; leer correccion-rng-02 y cola54 de esta rama, reconciliar Pacto/seguimiento/RNG incorporados por PR219, revisar composición/skins/seisarenas/lifecycle/performance. No reabrir PR196 ni repetir Libertador; merge sólo cambio aprobado con exacthead CI verde.",
+  "commands": [
+    "node tools/vfx/libertador-kit-online.js",
+    "node tools/vfx/produce-libertador-kit.js",
+    "node tools/vfx/parity-libertador-kit.js"
+  ],
+  "limitations": [
+    "FIX visual en tres atlas; no Art Gate integral",
+    "capturas seleccionadas y índice completo; no todos los raster subidos",
+    "escala/alcance con equipo, impactos/cancelaciones/recasteo y móvil sostenido pendientes",
+    "fin de fase real puede cortar cuadros finales del atlas",
+    "CI final posterior debe consultarse fresco"
+  ]
+}
