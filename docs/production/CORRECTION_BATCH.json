@@ -2039,14 +2039,14 @@
         10,
         11
       ],
-      "source": "art-source/entregas/maura-kit-20261025/cierre-01/source-native.js",
-      "sourceSha256": "3be567a772f400c40855f7162d5ef41d397dfde11e316f61051f90ce2784d8e8",
-      "atlas": "art-source/entregas/maura-kit-20261025/cierre-01/roots.png",
-      "atlasSha256": "a4d8ea2b1a3ca4301b8cc1415d22e6efe085f7fe81143999258f10b17c5408bb",
+      "source": "art-source/entregas/maura-kit-20261025/cierre-03/source-candidate.js",
+      "sourceSha256": "02e2c1ca6cabc3e4958dff948bb6ad81e6f9a9e0db50cac5901321a215903656",
+      "atlas": "art-source/entregas/maura-kit-20261025/cierre-03/roots.png",
+      "atlasSha256": "7a247455bce9a98bca075074cfdcb6e5c389d72527618361690b9afea112dd55",
       "defects": [
         "Curved unequal forks replace repeated spear/barbed cable. Ground layer fixes contact, but thin path still competes with existing bright cast rings and endpoint zone."
       ],
-      "next": "Continue grouped Maura visibility closure from cierre-01; preserve real hooks/UF/mechanics and prior failures. No new kit; no merge until visual PASS and all exact-head checks.",
+      "next": "Continue grouped closure from cierre-03; no merge before visualPASS and current gates.",
       "history": [
         {
           "attempt": "attempt-01",
@@ -2064,6 +2064,14 @@
           "priorAtlasSha256": "e04a83e39095df3f2d5eb9cbfe12c714729b6d6572aba9791131cfb5ff4de128",
           "diagnosis": "Real hooks and grouped source/anchor/layer corrections; technical gates pass, dense visual visibility still FIX.",
           "evidence": "art-source/entregas/maura-kit-20261025/cierre-01"
+        },
+        {
+          "attempt": "cierre-03",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-01/source-native.js",
+          "priorSourceSha256": "3be567a772f400c40855f7162d5ef41d397dfde11e316f61051f90ce2784d8e8",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-01/roots.png",
+          "priorAtlasSha256": "a4d8ea2b1a3ca4301b8cc1415d22e6efe085f7fe81143999258f10b17c5408bb",
+          "diagnosis": "Grouped contrast/anchor/bucket correction;24scenes contactPASS, artFIX."
         }
       ]
     },
@@ -2093,14 +2101,14 @@
         16,
         17
       ],
-      "source": "art-source/entregas/maura-kit-20261025/cierre-01/source-native.js",
-      "sourceSha256": "3be567a772f400c40855f7162d5ef41d397dfde11e316f61051f90ce2784d8e8",
-      "atlas": "art-source/entregas/maura-kit-20261025/cierre-01/bark.png",
-      "atlasSha256": "bcb633ab95b22e1f00a43fcb95e193b08cf3584038ced10223d3f95eddf67e2e",
+      "source": "art-source/entregas/maura-kit-20261025/cierre-03/source-candidate.js",
+      "sourceSha256": "02e2c1ca6cabc3e4958dff948bb6ad81e6f9a9e0db50cac5901321a215903656",
+      "atlas": "art-source/entregas/maura-kit-20261025/cierre-03/bark.png",
+      "atlasSha256": "4638c4833a898635c76e6ef5910f704d136c445cdff8137d91d3c968002ca9e7",
       "defects": [
         "Larger112x112 wood plates, open torso and real shield condition. In dense scenes plates remain partially hidden among bodies; generic shield/ring indicators dominate."
       ],
-      "next": "Continue grouped Maura visibility closure from cierre-01; preserve real hooks/UF/mechanics and prior failures. No new kit; no merge until visual PASS and all exact-head checks.",
+      "next": "Continue grouped closure from cierre-03; no merge before visualPASS and current gates.",
       "history": [
         {
           "attempt": "attempt-01",
@@ -2118,6 +2126,14 @@
           "priorAtlasSha256": "bcb633ab95b22e1f00a43fcb95e193b08cf3584038ced10223d3f95eddf67e2e",
           "diagnosis": "Real hooks and grouped source/anchor/layer corrections; technical gates pass, dense visual visibility still FIX.",
           "evidence": "art-source/entregas/maura-kit-20261025/cierre-01"
+        },
+        {
+          "attempt": "cierre-03",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-01/source-native.js",
+          "priorSourceSha256": "3be567a772f400c40855f7162d5ef41d397dfde11e316f61051f90ce2784d8e8",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-01/bark.png",
+          "priorAtlasSha256": "bcb633ab95b22e1f00a43fcb95e193b08cf3584038ced10223d3f95eddf67e2e",
+          "diagnosis": "Grouped contrast/anchor/bucket correction;24scenes contactPASS, artFIX."
         }
       ]
     },
@@ -2141,14 +2157,14 @@
         10,
         11
       ],
-      "source": "art-source/entregas/maura-kit-20261025/cierre-01/source-native.js",
-      "sourceSha256": "3be567a772f400c40855f7162d5ef41d397dfde11e316f61051f90ce2784d8e8",
-      "atlas": "art-source/entregas/maura-kit-20261025/cierre-01/shears.png",
+      "source": "art-source/entregas/maura-kit-20261025/cierre-03/source-candidate.js",
+      "sourceSha256": "02e2c1ca6cabc3e4958dff948bb6ad81e6f9a9e0db50cac5901321a215903656",
+      "atlas": "art-source/entregas/maura-kit-20261025/cierre-03/shears.png",
       "atlasSha256": "d0191240223d3db3dcec505625b6b40cdb2bee8da94ecdeee94ab5fa03668330",
       "defects": [
         "Larger handles/blades and real700ms circular cast. Native sheet identifies scissors, but dense game scene hides much of orbit behind actors; impact is not sufficiently readable."
       ],
-      "next": "Continue grouped Maura visibility closure from cierre-01; preserve real hooks/UF/mechanics and prior failures. No new kit; no merge until visual PASS and all exact-head checks.",
+      "next": "Continue grouped closure from cierre-03; no merge before visualPASS and current gates.",
       "history": [
         {
           "attempt": "attempt-01",
@@ -2166,6 +2182,14 @@
           "priorAtlasSha256": "cef86000782435a5e5256e20a66fd60a71f686b09b7fdd46822899ad0cfcca5c",
           "diagnosis": "Real hooks and grouped source/anchor/layer corrections; technical gates pass, dense visual visibility still FIX.",
           "evidence": "art-source/entregas/maura-kit-20261025/cierre-01"
+        },
+        {
+          "attempt": "cierre-03",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-01/source-native.js",
+          "priorSourceSha256": "3be567a772f400c40855f7162d5ef41d397dfde11e316f61051f90ce2784d8e8",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-01/shears.png",
+          "priorAtlasSha256": "d0191240223d3db3dcec505625b6b40cdb2bee8da94ecdeee94ab5fa03668330",
+          "diagnosis": "Grouped contrast/anchor/bucket correction;24scenes contactPASS, artFIX."
         }
       ]
     }
@@ -2183,15 +2207,8 @@
     "totalEntries": 58
   },
   "latestClosure": {
-    "checkpoint": "art-source/entregas/maura-kit-20261025/cierre-01/CHECKPOINT.md",
-    "scope": [
-      "B163/root-path",
-      "B164/bark-shell",
-      "B165/pruning-shears"
-    ],
+    "path": "art-source/entregas/maura-kit-20261025/cierre-03",
     "state": "EN_CORRECCION",
-    "integration": "NO_INTEGRAR",
-    "entries": 58,
-    "preservedHistoricalPrefix": 55
+    "scope": "Maura grouped native contrast/anchors/buckets"
   }
 }

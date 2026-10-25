@@ -1,6 +1,6 @@
 'use strict';
 const fs=require('fs'),path=require('path'),crypto=require('crypto'),H=require('../lib/serve');
-const OUT='art-source/entregas/maura-kit-20261025/cierre-01';
+const OUT=process.env.OUT||'art-source/entregas/maura-kit-20261025/cierre-01';
 (async()=>{const s=await H.startSite(),b=await H.launch();try{const p=await b.newPage();await p.goto(s.url+'/');await p.waitForFunction(()=>typeof SfaStrip==='function');await p.evaluate(()=>{loop=()=>{};});
  const results=await p.evaluate(()=>{const random=Math.random;let rng=0;Math.random=()=>{rng++;return random()};const before=performance.now(),kit=mauraCandidateKit(),elapsed=performance.now()-before;Math.random=random;
   const rows=[];for(const key of ['roots','bark','shears']){const S=kit[key],cv=S.toCanvas(),frames=[];for(let f=0;f<S.n;f++){const out=document.createElement('canvas');out.width=S.w;out.height=S.h;const g=out.getContext('2d');g.drawImage(cv,f*S.w,0,S.w,S.h,0,0,S.w,S.h);const d=g.getImageData(0,0,S.w,S.h).data;let opaque=0,partial=0,border=0;for(let y=0;y<S.h;y++)for(let x=0;x<S.w;x++){const a=d[(y*S.w+x)*4+3];if(a){opaque++;if(a!==255)partial++;if(x===0||y===0||x===S.w-1||y===S.h-1)border++;}}frames.push({f,opaque,partial,border,png:out.toDataURL()});}rows.push({key,w:S.w,h:S.h,n:S.n,png:cv.toDataURL(),frames});}return{rows,rng,bakeMs:elapsed};});
