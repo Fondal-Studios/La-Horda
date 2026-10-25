@@ -1,0 +1,48 @@
+{
+  "medium": "Native SfaStrip code; Pintor/forja/imagegen not used for code-native VFX",
+  "source": "source.js",
+  "base": "9c0ac434b2cb80ae16e7220371f59944ac3e9613",
+  "original": "source-before.js",
+  "atlas": [
+    {
+      "kind": "bayonet",
+      "theme": "libertador_bayonet",
+      "art": "beam",
+      "w": 128,
+      "h": 32,
+      "n": 12,
+      "sha256": "d674cd5b6d450945aaf20176f0f7d86e12634bc0465bb081efb12b6025aaad7b",
+      "uniqueRGBA": 12
+    },
+    {
+      "kind": "command",
+      "theme": "libertador_command~h",
+      "art": "nova",
+      "w": 192,
+      "h": 192,
+      "n": 12,
+      "sha256": "11a1046d295acc1fbeb5c2448ff5c8507da243d7d5e584cb9768805c77f4421c",
+      "uniqueRGBA": 12
+    },
+    {
+      "kind": "charge",
+      "theme": "libertador_charge~p",
+      "art": "beam",
+      "w": 128,
+      "h": 32,
+      "n": 12,
+      "sha256": "8225c4d88e0702f7a793d0346239eb23f659dc4fda81dc4f8416c2c9e98123d5",
+      "uniqueRGBA": 7
+    }
+  ],
+  "renderer": "Only champion SFA module changes. Existing beamDraw callback; actual hero index and projection; mount/death/dismount return without pixels. H2 nova reuses existing spectral body; normal SFA extras opt-out; basic/UF use patria unchanged. No gameplay/protocol fields written.",
+  "commands": [
+    "node tools/vfx/produce-libertador-kit.js",
+    "EXPORT_ONLY=1 OUT=/tmp/libertador-reexport node tools/vfx/produce-libertador-kit.js",
+    "node tools/vfx/parity-libertador-kit.js",
+    "node tools/vfx/libertador-kit-online.js",
+    "SE_BASE_URL=<local server> node tools/regression/t_champs_se.js art-source/entregas/libertador-kit-20261025/primera-pasada-01/regression",
+    "python tools/vfx/package-libertador-kit.py"
+  ],
+  "environment": "Playwright via NODE_PATH, CHROMIUM_PATH valid Chromium138, npm ci server; disposable loopback relay only."
+}

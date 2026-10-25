@@ -1,0 +1,4 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><title>Libertador · candidatos</title><style>body{background:#18202c;color:#ede3cb;font:16px monospace}canvas{image-rendering:pixelated;border:1px solid #788}section{padding:14px}b{color:#ffcc70}</style><h1>Libertador · primera pasada</h1><b>EN_CORRECCION — NO_INTEGRAR</b><p>Vista diagnóstica 90 ms/cuadro. No representa duración real ni aprobación del renderer.</p><div id="rows"></div><script>
+const defs=[['Bayoneta','bayonet',128,32],['Mando','command',192,192],['Carga','charge',128,32]];let tick=0;
+for(const [name,id,w,h]of defs){const s=document.createElement('section');s.innerHTML='<h2>'+name+'</h2>';const c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d'),im=new Image();im.src=id+'.png';s.append(c);rows.append(s);setInterval(()=>{g.clearRect(0,0,w,h);if(im.complete&&im.naturalWidth)g.drawImage(im,(Math.floor(performance.now()/90)%12)*w,0,w,h,0,0,w,h);},30);}
+</script>
