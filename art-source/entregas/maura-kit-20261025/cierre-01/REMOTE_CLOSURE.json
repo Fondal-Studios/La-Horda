@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-25T16:22:44.433Z",
+  "status": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "pr": 223,
+  "branch": "art/maura-kit-first-pass-20261025",
+  "productionCommit": "2f5c8c37ea63c4cf67f020314efe6fe77d8c8ea7",
+  "productionTree": "2f8569fbe8bfb461e5ccda3a7c3e2359b40c372f",
+  "parent": "47c1a30cb95527693c4d93e75ca691ae05fbcacd",
+  "main": "7e4e653e83b958bb63534ea90cfc77400bf93545",
+  "productionFilesVerified": 118,
+  "verification": "Full remote tree not truncated; every local Git blob matched; PR/ref exact. Production manifest immutable.",
+  "newEvidence": {
+    "lifecycle": 18,
+    "relay": 11,
+    "functional": 254,
+    "compositeScenes": 360,
+    "aba": 1440,
+    "bodyRetention": 1,
+    "threshold": 0.8,
+    "delta": 24,
+    "exportFrames": 42,
+    "nonempty": 39,
+    "reexportsExact": 3
+  },
+  "limits": [
+    "Relay/functional/parity preceded final root-only pixel edit; hooks unchanged.",
+    "32292 RNG calls matched per 360-frame run; summarized state, not global snapshot.",
+    "Body retention does not certify effect legibility.",
+    "Only two native mobile review sheets and temporal plus earlier individual images reviewed, not all 12 sheets.",
+    "Performance outliers 427.1ms and 313.9ms unresolved.",
+    "Original three Hielo desktop parent comparison failures retained; isolated seeded reruns pass, original cause unproved."
+  ],
+  "diagnostic": "EFFECT_VISIBILITY_DIAGNOSTIC.json is descriptive sparse/dense comparison, not an acceptance threshold; scene actors/background/RNG differ.",
+  "pending": [
+    "Dense effect identity/visibility across kit layers, anchors and contours",
+    "Complete visual approval across skins/equipment/six arenas",
+    "Explain or resolve performance outliers",
+    "Art Gate PASS then all applicable checks/workflows exact final head before normal merge"
+  ],
+  "next": "Continue grouped Maura PR223 closure from these final native sources; do not open another kit or repeat first pass. Preserve mechanics/UF/queue58 and originals.",
+  "merge": false,
+  "publication": "NOT_CHECKED_THIS_DELIVERY",
+  "lostClosureDetected": false
+}
