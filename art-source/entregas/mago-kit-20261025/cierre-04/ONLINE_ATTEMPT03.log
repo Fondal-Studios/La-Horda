@@ -1,0 +1,6 @@
+2026-10-25T13:33:44.515Z RELAY_LISTENING {"host":"*","port":8868,"protocol":1,"allowed":[]}
+2026-10-25T13:33:44.518Z OWNER_POLICY {"bound":false}
+2026-10-25T13:33:44.520Z ACCOUNTS_ERROR {"store":"file","err":"ENOENT: no such file or directory, open '/workspace/scratch/27dc1a293731/mago/docs/production/shop-catalog.json'"}
+Error: Local QA login failed 503 {"error":"ACCOUNTS_DOWN","msg":"Las cuentas no están disponibles ahora (problema con la base de datos)."}
+    at /workspace/scratch/27dc1a293731/mago/tools/vfx/mago-wall-online.js:30:275
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)

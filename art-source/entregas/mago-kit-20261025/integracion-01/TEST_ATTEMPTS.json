@@ -1,0 +1,15 @@
+{
+  "attempts": [
+    {
+      "id": 1,
+      "result": "12technicalPASS",
+      "command": "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium node tools/vfx/mago-formation-coverage.js"
+    },
+    {
+      "id": 2,
+      "result": "actualH1desktop/mobile0pageerrors; visualFIX",
+      "metadataCorrection": "Copied audit label described old base/mobile for desktop. Corrected metadata only; no assertion changed."
+    }
+  ],
+  "historicalColdAttempt": "Prior Veyra NEXT_MAGO_COLD_ATTEMPT01 invalidPNG-only fixture remains preserved there; not rerun/claimed new."
+}

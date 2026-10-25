@@ -1,0 +1,33 @@
+{
+  "scope": "Paired alternating local renderer calls; no physical-mobile or GPU/GC certification.",
+  "result": {
+    "1": {
+      "parent": {
+        "p50": 0,
+        "p95": 0.10000000149011612,
+        "max": 1,
+        "samples": 200
+      },
+      "candidate": {
+        "p50": 0.09999999776482582,
+        "p95": 0.19999999925494194,
+        "max": 109.70000000298023,
+        "samples": 200
+      }
+    },
+    "32": {
+      "parent": {
+        "p50": 0.8000000007450581,
+        "p95": 81.09999999776483,
+        "max": 132.90000000223517,
+        "samples": 200
+      },
+      "candidate": {
+        "p50": 1.2000000029802322,
+        "p95": 76.69999999925494,
+        "max": 93,
+        "samples": 200
+      }
+    }
+  }
+}
