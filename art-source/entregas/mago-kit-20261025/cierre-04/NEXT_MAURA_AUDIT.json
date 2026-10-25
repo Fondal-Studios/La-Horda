@@ -1,0 +1,138 @@
+{
+  "asOf": "2026-10-25",
+  "baseMain": "4476bae0591ec3e58bf02a9a0d338a4e91b04bef",
+  "scope": [
+    "B163",
+    "B164",
+    "B165"
+  ],
+  "status": "AUDITED_PRELIMINARY_NOT_PRODUCED",
+  "references": [
+    {
+      "path": "art-source/entregas/2026-10_mundo/iconos/habilidades/maura_0.png",
+      "gitblob": "29e3e6f15fa1a74bafe27d330e2ac5b5211339cb"
+    },
+    {
+      "path": "art-source/entregas/2026-10_mundo/iconos/habilidades/maura_1.png",
+      "gitblob": "d233fb7a1c5e348cdb2e9971a277e8767b34b4eb"
+    },
+    {
+      "path": "art-source/entregas/2026-10_mundo/iconos/habilidades/maura_2.png",
+      "gitblob": "00972cf15fe0dffe087342617f2f74c4862ef691"
+    },
+    {
+      "path": "art-source/entregas/2026-10_mundo/iconos/habilidades/maura_u.png",
+      "gitblob": "e1e94aadb0d7d79e080425f6c8421ecd5e9e8d36"
+    },
+    {
+      "path": "assets/sprites/champions/maura/atlas.png",
+      "gitblob": "97e1bc68cf4c2041481560e5dfa065299a3f1472"
+    },
+    {
+      "path": "assets/sprites/champions/maura/croma-preview.png",
+      "gitblob": "d26d4c7483cb5d3d986f45665f14f500b8d6eea7"
+    },
+    {
+      "path": "assets/sprites/champions/maura/preview.png",
+      "gitblob": "caebf4630126147e690ceee9fbfb6d7281ce949f"
+    },
+    {
+      "path": "assets/sprites/champions/maura/skins/maura_set/atlas.png",
+      "gitblob": "a5f27acf70c9bdd78f3840c924ed2ea273f74083"
+    },
+    {
+      "path": "assets/sprites/champions/maura/skins/maura_set/preview.png",
+      "gitblob": "98987eaca4d024fd07e2d84fc9ebd8df8b3dc4c8"
+    },
+    {
+      "path": "assets/sprites/champions/maura/skins/maura_skin/atlas.png",
+      "gitblob": "95059fce19ae85d708ebf5bcb16ca117b3b6e6c9"
+    },
+    {
+      "path": "assets/sprites/champions/maura/skins/maura_skin/preview.png",
+      "gitblob": "7706e7e66f5c0591b8d7d48cbf8a93c71615fdb6"
+    },
+    {
+      "path": "docs/art-brief/campeones/maura.md",
+      "gitblob": "19174ecc83e812aa7c27ed9b10784283b3fe7cc8"
+    },
+    {
+      "path": "docs/art-brief/ejemplos/maura/00_actual_maura.webp",
+      "gitblob": "04d4fccaa96b5a5e5066d3982b32d782a06e2822"
+    },
+    {
+      "path": "docs/expedition/manifests/maura.json",
+      "gitblob": "97dee3b243e88338dfbf97770f620dc6ea418973"
+    },
+    {
+      "path": "docs/ux/iconos-contrato/antes/maura.png",
+      "gitblob": "d273406ff21bd6780b76c4d48b6948b04aea764e"
+    },
+    {
+      "path": "docs/ux/iconos-contrato/despues/maura.png",
+      "gitblob": "9b1de59c84991e38047d3544654c3e142e9fdb3d"
+    },
+    {
+      "path": "docs/vfx/sheets/antes/maura.jpg",
+      "gitblob": "c667755f99137e6a976adc4ee1546255b184cf24"
+    },
+    {
+      "path": "docs/vfx/sheets/despues/maura.jpg",
+      "gitblob": "1604d34a447c222df5dec43f8367b9ac2834dccc"
+    },
+    {
+      "path": "docs/vfx/ultis-distintas-2/antes/maura-mascara.png",
+      "gitblob": "84aa2b09ab1ca38e2975ce3b134afd9d2fdfad08"
+    },
+    {
+      "path": "docs/vfx/ultis-distintas-2/antes/maura.png",
+      "gitblob": "20db786991a9ec12d826860cac0d90c9de22faf9"
+    },
+    {
+      "path": "docs/vfx/ultis-distintas-2/despues/maura-mascara.png",
+      "gitblob": "89bd8bb9f57b6b4743f609bf50bea0f77f879484"
+    },
+    {
+      "path": "docs/vfx/ultis-distintas-2/despues/maura.png",
+      "gitblob": "425b180361434d212ff3620bafc511af07503628"
+    },
+    {
+      "path": "index.html",
+      "gitblob": "34607c421ac511e522fabb87711e04099dd9b88f"
+    },
+    {
+      "path": "js/champions/expedition/art.js",
+      "gitblob": "576baf156068d1d6ddc3ac78b5c6f1717f61c50c"
+    },
+    {
+      "path": "js/champions/expedition/catalog.js",
+      "gitblob": "a824bf3bb28694a9dd3ab9ba0c23bc6b636a8672"
+    },
+    {
+      "path": "js/champions/expedition/render.js",
+      "gitblob": "379cc50f8546227c62f5cdd424bd8f85d925d41e"
+    },
+    {
+      "path": "js/champions/expedition/runtime.js",
+      "gitblob": "efc5c2e71bebe3104baeb2d436fc5712ac4f7c10"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/maura.js",
+      "gitblob": "76a2e735c6424acac53b7dc0e985440bb33d5997"
+    }
+  ],
+  "findings": [
+    "Cuerpo, dos skins, croma-preview, iconos y VFX thorn ya existen. No inferir faltantes del plan documental.",
+    "H1 roots: l\u00ednea real245/r26 y ex_thorns r70 en punto; duraci\u00f3n derivada2400ms con catalog.duration0/fallback, no asumir3000 exactos.",
+    "H2 bark: escudo real10% HP, objeto4000ms sigue al due\u00f1o; descarga \u00fanica al expirar si vivo. Auditar ruptura temprana del escudo, muerte, recast y sincronizaci\u00f3n antes de cambiar dibujo.",
+    "H3 shear: corte realr110, consume hasta5semillas y cura1% cadauna; sfaNova existente. Distinguir0semillas y5, sin inventar proyectiles ni retrasar da\u00f1o.",
+    "SFA zones se dibujan desde objetos sincronizados con endnova; exGlyph y per\u00edmetro legados siguen presentes. Revisar composici\u00f3n conjunta.",
+    "UF walking_forest ya existe6pulsos4800ms; preservar cuerpo/locomoci\u00f3n/skins/UF."
+  ],
+  "next": "Main y PR frescos; revisar visual a escala real y carga de las capas existentes antes de producir candidatos de ra\u00edces/corteza/poda. Mantener receta nativa SFA. No cerrar bloques por conteos ni modificar mec\u00e1nicas.",
+  "newTests": "NEXT_MAURA_CASTS.json: tres casts reales sin objetivos en m\u00f3vil,0pageerrors. S\u00f3lo estado preliminar, no revisi\u00f3n visual ni relay ni gate del kit.",
+  "reproduction": "NODE_PATH=<playwright> CHROMIUM_PATH=<chromium> node tools/vfx/audit-maura-next.js",
+  "runtimeTestCommit": "f22df6c55542d2e089d86b928b0d2b55a9a5c7a7",
+  "runtimeScope": "Pruebas preliminares ejecutadas en el candidato Mago; fuentes espec\u00edficas de Maura id\u00e9nticas a main4476. No certifica main global.",
+  "visualEvidence": "NEXT_MAURA_VISUAL.json y tres PNG nativos a256ms; bodyImages cuenta dibujos de todos los h\u00e9roes, no es por s\u00ed solo prueba exclusiva del atlas Maura. Pack Maura listo; inspecci\u00f3n visual preliminar sin gate."
+}

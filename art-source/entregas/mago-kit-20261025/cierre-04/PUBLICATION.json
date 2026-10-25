@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-10-25T14:11:26.456640+00:00",
+  "canonical": "https://fondalstudios.com/la-horda/jugar/",
+  "approvedHead": "f22df6c55542d2e089d86b928b0d2b55a9a5c7a7",
+  "files": [
+    {
+      "path": "",
+      "url": "https://fondalstudios.com/la-horda/jugar/",
+      "checkedAt": "2026-10-25T14:11:21.640914+00:00",
+      "status": 200,
+      "lastModified": "Thu, 22 Oct 2026 19:26:24 GMT",
+      "sha256": "02802491fb636eea94e5deb7102bc0b17ee770f9f17a233184fec1b19fa2f538",
+      "bytes": 67504,
+      "consumerTags": [
+        "<script src=\"js/champions/mago.js\"></script>",
+        "<script src=\"js/champions/ult-forms/bind.js\"></script>"
+      ]
+    },
+    {
+      "path": "js/champions/mago.js",
+      "url": "https://fondalstudios.com/la-horda/jugar/js/champions/mago.js",
+      "checkedAt": "2026-10-25T14:11:21.642045+00:00",
+      "status": 200,
+      "lastModified": "Thu, 22 Oct 2026 19:26:24 GMT",
+      "sha256": "5d5f55311593e83f8810a679d062412d98c44810072a60c4bb332ff7edd0bc0d",
+      "bytes": 4122,
+      "expectedSha256": "3a14a3e9361457d86c7b71394ceb2807f0f7a1fa237ac9ee738acc43332f99ba",
+      "matchesApproved": false
+    },
+    {
+      "path": "js/champions/ult-forms/bind.js",
+      "url": "https://fondalstudios.com/la-horda/jugar/js/champions/ult-forms/bind.js",
+      "checkedAt": "2026-10-25T14:11:21.642871+00:00",
+      "status": 200,
+      "lastModified": "Thu, 22 Oct 2026 19:26:24 GMT",
+      "sha256": "24c159def604c9ad9a8886599503c89600fcf37ab68ab37a5d444b53f85b0381",
+      "bytes": 12967,
+      "expectedSha256": "88c78c22af61a5ffd8cffdcade5ccfbc4a4030b52a4a1815c43aadee889e4861",
+      "matchesApproved": false
+    },
+    {
+      "path": "assets/vfx/vendor/muro-fuego.png",
+      "url": "https://fondalstudios.com/la-horda/jugar/assets/vfx/vendor/muro-fuego.png",
+      "checkedAt": "2026-10-25T14:11:21.643908+00:00",
+      "status": 200,
+      "lastModified": "Thu, 22 Oct 2026 19:26:24 GMT",
+      "sha256": "b4019ff9c890c7c8a817d8479c38e081b442108406b482a3bdb8e5a73f28e72b",
+      "bytes": 987539,
+      "expectedSha256": "b4019ff9c890c7c8a817d8479c38e081b442108406b482a3bdb8e5a73f28e72b",
+      "matchesApproved": true
+    }
+  ],
+  "state": "NOT_CONFIRMED",
+  "limits": "Repository merge is separate from canonical hosting. No infrastructure, accounts or deployment credentials changed."
+}

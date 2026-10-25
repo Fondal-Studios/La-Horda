@@ -1,0 +1,125 @@
+{
+  "casts": [
+    {
+      "slot": 0,
+      "action": "roots",
+      "before": {
+        "hp": 352,
+        "shield": 0,
+        "seeds": 0
+      },
+      "after": {
+        "hp": 352,
+        "shield": 0,
+        "seeds": 0,
+        "cue": {
+          "action": "roots",
+          "x": 0,
+          "y": 0,
+          "bx": 245,
+          "by": 0,
+          "r": 26,
+          "range": 245,
+          "angle": 0,
+          "until": 350,
+          "ult": false
+        }
+      },
+      "objects": [
+        {
+          "kind": "ex_thorns",
+          "x": 180,
+          "y": 0,
+          "r": 70,
+          "life": 2384
+        }
+      ]
+    },
+    {
+      "slot": 1,
+      "action": "bark",
+      "before": {
+        "hp": 352,
+        "shield": 0,
+        "seeds": 0
+      },
+      "after": {
+        "hp": 352,
+        "shield": 35.2,
+        "seeds": 0,
+        "cue": {
+          "action": "bark",
+          "x": 0,
+          "y": 0,
+          "bx": 100,
+          "by": 0,
+          "r": 95,
+          "range": 100,
+          "angle": 0,
+          "until": 366,
+          "ult": false
+        }
+      },
+      "objects": [
+        {
+          "kind": "ex_thorns",
+          "x": 180,
+          "y": 0,
+          "r": 70,
+          "life": 2368
+        },
+        {
+          "kind": "ex_bark",
+          "x": 0,
+          "y": 0,
+          "r": 95,
+          "life": 3984
+        }
+      ]
+    },
+    {
+      "slot": 2,
+      "action": "shear",
+      "before": {
+        "hp": 176,
+        "shield": 35.2,
+        "seeds": 5
+      },
+      "after": {
+        "hp": 193.6,
+        "shield": 35.2,
+        "seeds": 0,
+        "cue": {
+          "action": "shear",
+          "x": 0,
+          "y": 0,
+          "bx": 110,
+          "by": 0,
+          "r": 110,
+          "range": 110,
+          "angle": 0,
+          "until": 382,
+          "ult": false
+        }
+      },
+      "objects": [
+        {
+          "kind": "ex_thorns",
+          "x": 180,
+          "y": 0,
+          "r": 70,
+          "life": 2352
+        },
+        {
+          "kind": "ex_bark",
+          "x": 0,
+          "y": 0,
+          "r": 95,
+          "life": 3968
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "limits": "Preliminary zero-target mobile state audit; not art production, visual approval, relay or comprehensive lifecycle validation."
+}

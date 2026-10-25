@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-25",
+  "state": "INTEGRADO_MAIN",
+  "component": "A-FX-mago-h1/formation + wall composition + compact existing UF H1 launch",
+  "block": "B160",
+  "wholeBlockClosed": false,
+  "wholeKitClosed": false,
+  "pr": 222,
+  "prUrl": "https://github.com/Fondal-Studios/La-Horda/pull/222",
+  "branch": "art/mago-formation-integration-20261025",
+  "productionHead": "f22df6c55542d2e089d86b928b0d2b55a9a5c7a7",
+  "productionTree": "56bc94ad8dd9360b69af800311e1b557c72c491d",
+  "merge": {
+    "sha": "7e4e653e83b958bb63534ea90cfc77400bf93545",
+    "merged": true,
+    "message": "Pull Request successfully merged",
+    "pr": 222,
+    "url": "https://github.com/Fondal-Studios/La-Horda/pull/222",
+    "approvedHead": "f22df6c55542d2e089d86b928b0d2b55a9a5c7a7",
+    "mergedAt": "2026-10-25T14:11:13Z",
+    "mainVerified": "7e4e653e83b958bb63534ea90cfc77400bf93545",
+    "parents": [
+      "4476bae0591ec3e58bf02a9a0d338a4e91b04bef",
+      "f22df6c55542d2e089d86b928b0d2b55a9a5c7a7"
+    ],
+    "tree": "56bc94ad8dd9360b69af800311e1b557c72c491d",
+    "branchHeadAtMerge": "f22df6c55542d2e089d86b928b0d2b55a9a5c7a7",
+    "method": "normal merge with expected_head_sha; draft marked ready after all19checks/8workflows succeeded"
+  },
+  "ci": {
+    "head": "f22df6c55542d2e089d86b928b0d2b55a9a5c7a7",
+    "checks": 19,
+    "workflows": 8,
+    "allSuccess": true,
+    "file": "CI_FINAL.json"
+  },
+  "productionVerification": {
+    "files": 43,
+    "mismatches": 0,
+    "completeRemoteTree": true,
+    "file": "PRODUCTION_VERIFICATION.json"
+  },
+  "publication": {
+    "state": "NOT_CONFIRMED",
+    "checkedAt": "2026-10-25T14:11:26.456640+00:00",
+    "file": "PUBLICATION.json",
+    "detail": "Index consumes both scripts; both JS differ from approved bytes, vendor PNG exact. No deployment changes."
+  },
+  "newEvidence": {
+    "scenes": 120,
+    "aba": 480,
+    "minBodyRetentionDesktop": 0.9280503647446787,
+    "minBodyRetentionMobile": 0.9286708420320111,
+    "threshold": 0.8,
+    "channelDelta": 24,
+    "relay": 5,
+    "loadLifecycle": 7,
+    "parityFrames": 360,
+    "rngOnOff": [
+      46445,
+      46445
+    ],
+    "stateScope": "summarized, not global snapshot",
+    "visual": "60 dense views +8 temporal views +native before/after",
+    "performance": "Paired local Chromium; outliers recorded; no physical mobile/GPU/GC certification"
+  },
+  "historical": "12 isolated renderer controls72samples from cierre03, wall JS unchanged; not rerun. Prior CI does not substitute final19/8.",
+  "failureHistory": "Cold invalid matcher, relay setup/login errors, missing catalog recovered by exact Gitblob, previous wall-only comparisons, parent35-37%/canary0%, performance outliers preserved. Earlier DROP failure cause not proven.",
+  "queue": {
+    "entries": 55,
+    "preserved": true,
+    "supersedes": "VALIDADO for this Mago component only; other FIX states unchanged"
+  },
+  "checkpointSemantics": "This later evidence-only branch commit does not require a second merge. manifest.json remains immutable production f22df6c; closed PR head remains approved production, branch ref may point to this closure.",
+  "next": "PRODUCCIÓN auditada MauraB163/B164/B165 after fresh main/PR and actual consumers review. See NEXT_MAURA_AUDIT/CASTS/VISUAL and scripts. Existing body, skins, icons, thorn effects and UF preserved; no Maura art produced or approved. Then another accumulated FIX closure. Global inventory incomplete.",
+  "closureFiles": [
+    "art-source/entregas/mago-kit-20261025/cierre-04/PRODUCTION_VERIFICATION.json",
+    "art-source/entregas/mago-kit-20261025/cierre-04/NEXT_MAURA_AUDIT.json",
+    "art-source/entregas/mago-kit-20261025/cierre-04/NEXT_MAURA_CASTS.json",
+    "art-source/entregas/mago-kit-20261025/cierre-04/NEXT_MAURA_H1.png",
+    "art-source/entregas/mago-kit-20261025/cierre-04/NEXT_MAURA_H2.png",
+    "art-source/entregas/mago-kit-20261025/cierre-04/NEXT_MAURA_H3.png",
+    "art-source/entregas/mago-kit-20261025/cierre-04/NEXT_MAURA_VISUAL.json",
+    "tools/vfx/audit-maura-next.js",
+    "tools/vfx/audit-maura-visual-next.js",
+    "art-source/entregas/mago-kit-20261025/cierre-04/RUNTIME_DIFF.json",
+    "art-source/entregas/mago-kit-20261025/cierre-04/CI_FINAL.json",
+    "art-source/entregas/mago-kit-20261025/cierre-04/PR222_MERGE.json",
+    "art-source/entregas/mago-kit-20261025/cierre-04/PUBLICATION.json",
+    "art-source/entregas/mago-kit-20261025/cierre-04/REMOTE_CLOSURE.json",
+    "art-source/entregas/mago-kit-20261025/cierre-04/CHECKPOINT.md"
+  ]
+}
