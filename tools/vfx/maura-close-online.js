@@ -17,7 +17,7 @@ async function seedLocalAccounts(){
  }finally{await app.close();}
 }
 const checks=[],errors=[],browsers=[];
-const reportPath='art-source/entregas/maura-kit-20261025/cierre-01/ONLINE.json';
+const reportPath=process.env.REPORT_PATH||'art-source/entregas/maura-kit-20261025/cierre-01/ONLINE.json';
 fs.writeFileSync(reportPath,JSON.stringify({status:'RUNNING',scope:'local relay workshop'})+'\n');
 const modules=[];
 (async()=>{try{

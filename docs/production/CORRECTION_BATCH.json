@@ -2039,14 +2039,14 @@
         10,
         11
       ],
-      "source": "art-source/entregas/maura-kit-20261025/cierre-03/source-candidate.js",
-      "sourceSha256": "02e2c1ca6cabc3e4958dff948bb6ad81e6f9a9e0db50cac5901321a215903656",
-      "atlas": "art-source/entregas/maura-kit-20261025/cierre-03/roots.png",
+      "source": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
+      "sourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
+      "atlas": "art-source/entregas/maura-kit-20261025/cierre-05/roots.png",
       "atlasSha256": "7a247455bce9a98bca075074cfdcb6e5c389d72527618361690b9afea112dd55",
       "defects": [
         "Curved unequal forks replace repeated spear/barbed cable. Ground layer fixes contact, but thin path still competes with existing bright cast rings and endpoint zone."
       ],
-      "next": "Continue grouped closure from cierre-03; no merge before visualPASS and current gates.",
+      "next": "Continue grouped closure: bark material identity, pruning contrast, sparse/temporal looks, performance/full renderer and current gates. NO_INTEGRAR.",
       "history": [
         {
           "attempt": "attempt-01",
@@ -2072,6 +2072,15 @@
           "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-01/roots.png",
           "priorAtlasSha256": "a4d8ea2b1a3ca4301b8cc1415d22e6efe085f7fe81143999258f10b17c5408bb",
           "diagnosis": "Grouped contrast/anchor/bucket correction;24scenes contactPASS, artFIX."
+        },
+        {
+          "attempt": "cierre-05",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-03/source-candidate.js",
+          "priorSourceSha256": "02e2c1ca6cabc3e4958dff948bb6ad81e6f9a9e0db50cac5901321a215903656",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-03/roots.png",
+          "priorAtlasSha256": "7a247455bce9a98bca075074cfdcb6e5c389d72527618361690b9afea112dd55",
+          "diagnosis": "Grouped open bark grain / thin pruning blades and top layer; contact passes dense matrix, art FIX. Roots unchanged. Culling corrected separately.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-05"
         }
       ]
     },
@@ -2101,14 +2110,14 @@
         16,
         17
       ],
-      "source": "art-source/entregas/maura-kit-20261025/cierre-03/source-candidate.js",
-      "sourceSha256": "02e2c1ca6cabc3e4958dff948bb6ad81e6f9a9e0db50cac5901321a215903656",
-      "atlas": "art-source/entregas/maura-kit-20261025/cierre-03/bark.png",
-      "atlasSha256": "4638c4833a898635c76e6ef5910f704d136c445cdff8137d91d3c968002ca9e7",
+      "source": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
+      "sourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
+      "atlas": "art-source/entregas/maura-kit-20261025/cierre-05/bark.png",
+      "atlasSha256": "59703b5b67d4e2ce936833c074261b021046df28bac16342dda2b40900b75ab9",
       "defects": [
         "Larger112x112 wood plates, open torso and real shield condition. In dense scenes plates remain partially hidden among bodies; generic shield/ring indicators dominate."
       ],
-      "next": "Continue grouped closure from cierre-03; no merge before visualPASS and current gates.",
+      "next": "Continue grouped closure: bark material identity, pruning contrast, sparse/temporal looks, performance/full renderer and current gates. NO_INTEGRAR.",
       "history": [
         {
           "attempt": "attempt-01",
@@ -2134,6 +2143,15 @@
           "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-01/bark.png",
           "priorAtlasSha256": "bcb633ab95b22e1f00a43fcb95e193b08cf3584038ced10223d3f95eddf67e2e",
           "diagnosis": "Grouped contrast/anchor/bucket correction;24scenes contactPASS, artFIX."
+        },
+        {
+          "attempt": "cierre-05",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-03/source-candidate.js",
+          "priorSourceSha256": "02e2c1ca6cabc3e4958dff948bb6ad81e6f9a9e0db50cac5901321a215903656",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-03/bark.png",
+          "priorAtlasSha256": "4638c4833a898635c76e6ef5910f704d136c445cdff8137d91d3c968002ca9e7",
+          "diagnosis": "Grouped open bark grain / thin pruning blades and top layer; contact passes dense matrix, art FIX. Roots unchanged. Culling corrected separately.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-05"
         }
       ]
     },
@@ -2157,14 +2175,14 @@
         10,
         11
       ],
-      "source": "art-source/entregas/maura-kit-20261025/cierre-03/source-candidate.js",
-      "sourceSha256": "02e2c1ca6cabc3e4958dff948bb6ad81e6f9a9e0db50cac5901321a215903656",
-      "atlas": "art-source/entregas/maura-kit-20261025/cierre-03/shears.png",
-      "atlasSha256": "d0191240223d3db3dcec505625b6b40cdb2bee8da94ecdeee94ab5fa03668330",
+      "source": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
+      "sourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
+      "atlas": "art-source/entregas/maura-kit-20261025/cierre-05/shears.png",
+      "atlasSha256": "d8981c1d15782ef304c5d99edf624518210b701eb13e7bbded20de41cf481090",
       "defects": [
         "Larger handles/blades and real700ms circular cast. Native sheet identifies scissors, but dense game scene hides much of orbit behind actors; impact is not sufficiently readable."
       ],
-      "next": "Continue grouped closure from cierre-03; no merge before visualPASS and current gates.",
+      "next": "Continue grouped closure: bark material identity, pruning contrast, sparse/temporal looks, performance/full renderer and current gates. NO_INTEGRAR.",
       "history": [
         {
           "attempt": "attempt-01",
@@ -2190,6 +2208,15 @@
           "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-01/shears.png",
           "priorAtlasSha256": "d0191240223d3db3dcec505625b6b40cdb2bee8da94ecdeee94ab5fa03668330",
           "diagnosis": "Grouped contrast/anchor/bucket correction;24scenes contactPASS, artFIX."
+        },
+        {
+          "attempt": "cierre-05",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-03/source-candidate.js",
+          "priorSourceSha256": "02e2c1ca6cabc3e4958dff948bb6ad81e6f9a9e0db50cac5901321a215903656",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-03/shears.png",
+          "priorAtlasSha256": "d0191240223d3db3dcec505625b6b40cdb2bee8da94ecdeee94ab5fa03668330",
+          "diagnosis": "Grouped open bark grain / thin pruning blades and top layer; contact passes dense matrix, art FIX. Roots unchanged. Culling corrected separately.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-05"
         }
       ]
     }
@@ -2206,9 +2233,5 @@
     "preservedEntries": 55,
     "totalEntries": 58
   },
-  "latestClosure": {
-    "path": "art-source/entregas/maura-kit-20261025/cierre-03",
-    "state": "EN_CORRECCION",
-    "scope": "Maura grouped native contrast/anchors/buckets"
-  }
+  "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-05"
 }

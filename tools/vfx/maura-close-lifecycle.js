@@ -1,5 +1,5 @@
 'use strict';
-const fs=require('fs'),H=require('../lib/serve'),D='art-source/entregas/maura-kit-20261025/cierre-01';
+const fs=require('fs'),H=require('../lib/serve'),D=process.env.OUT||'art-source/entregas/maura-kit-20261025/cierre-01';
 (async()=>{const site=await H.startSite(),b=await H.launch(),errors=[];try{const p=await b.newPage({viewport:{width:844,height:390}});p.on('pageerror',e=>errors.push(e.message));await p.goto(site.url+'/?lazy=0');await p.waitForFunction(()=>typeof mauraNativeStrip==='function'&&assetsAllReady());const detail=await p.evaluate(()=>{loop=()=>{};const checks=[];let vt=1000;performance.now=()=>vt;const check=(name,ok,details)=>checks.push({name,ok,details});function setup(){for(const s of Object.values(save.champions)){s.unlocked=true;s.level=20;s.equipment={};s.croma=null;s.cosmeticSkin='';}selectedClass='maura';currentArena='bosque';lobbyAllies=[];startRun(1);state='playing';enemies=[];heroes=[player];spawnTimer=arenaHazardTimer=1e9;for(let i=0;i<20;i++){vt+=16;update(16);}player.aim={x:player.x+180,y:player.y,dx:1,dy:0};}
 function cast(i){player.cds=[0,0,0];player.energy=1e4;castAbility(player,player.cls.skills[i],false,i)}
 function barkDraws(){let n=0;const di=ctx.drawImage;ctx.drawImage=function(im,...a){if(im===mauraNativeStrip('bark').cv)n++;return di.call(this,im,...a)};try{render();return n}finally{ctx.drawImage=di}}

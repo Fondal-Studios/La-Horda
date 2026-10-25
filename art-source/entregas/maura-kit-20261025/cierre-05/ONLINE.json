@@ -1,0 +1,352 @@
+{
+  "status": "PASS",
+  "scope": "Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.",
+  "checks": [
+    {
+      "name": "roots actual draw on host",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 1,
+          "bark": 0,
+          "shears": 0
+        },
+        "objects": [
+          {
+            "kind": "ex_thorns",
+            "life": 2352,
+            "owner": "maura",
+            "shield": 0
+          }
+        ],
+        "pool": [
+          {
+            "art": "nova",
+            "theme": "patria~h",
+            "t": 240
+          },
+          {
+            "art": "rays",
+            "theme": "patria~p",
+            "t": 240
+          },
+          {
+            "art": "rings",
+            "theme": "patria~p",
+            "t": 120
+          },
+          {
+            "art": "beam",
+            "theme": "maura_roots",
+            "t": 60
+          }
+        ]
+      }
+    },
+    {
+      "name": "roots actual draw on touch guest",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 4,
+          "bark": 0,
+          "shears": 0
+        },
+        "objects": [
+          {
+            "kind": "ex_thorns",
+            "life": 2254.0999999999995,
+            "owner": "maura",
+            "shield": 0
+          },
+          {
+            "kind": "mor_garden",
+            "life": 3983.3999999999996,
+            "owner": "morveth",
+            "shield": 0
+          }
+        ],
+        "pool": [
+          {
+            "art": "nova",
+            "theme": "patria~h",
+            "t": 486.29999999701977
+          },
+          {
+            "art": "rings",
+            "theme": "patria~p",
+            "t": 366.29999999701977
+          },
+          {
+            "art": "beam",
+            "theme": "maura_roots",
+            "t": 132.10000000149012
+          }
+        ]
+      }
+    },
+    {
+      "name": "bark actual draw on host",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 11,
+          "bark": 2,
+          "shears": 0
+        },
+        "objects": [
+          {
+            "kind": "ex_thorns",
+            "life": 1901.2000000000007,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "mor_garden",
+            "life": 3597.2000000000007,
+            "owner": "morveth",
+            "shield": 0
+          },
+          {
+            "kind": "mor_mushroom",
+            "life": 5645.200000000001,
+            "owner": "morveth",
+            "shield": 0
+          },
+          {
+            "kind": "ex_bark",
+            "life": 3918.6000000000004,
+            "owner": "maura",
+            "shield": 35.2
+          }
+        ],
+        "pool": [
+          {
+            "art": "nova",
+            "theme": "patria~h",
+            "t": 735
+          },
+          {
+            "art": "rings",
+            "theme": "patria~p",
+            "t": 615
+          },
+          {
+            "art": "beam",
+            "theme": "maura_roots",
+            "t": 555
+          },
+          {
+            "art": "burst",
+            "theme": "morveth_growth",
+            "t": 435
+          },
+          {
+            "art": "nova",
+            "theme": "patria~h",
+            "t": 393.30000000447035
+          }
+        ]
+      }
+    },
+    {
+      "name": "bark actual draw on touch guest",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 32,
+          "bark": 5,
+          "shears": 0
+        },
+        "objects": [
+          {
+            "kind": "ex_thorns",
+            "life": 1722.6999999999998,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "mor_garden",
+            "life": 3452,
+            "owner": "morveth",
+            "shield": 0
+          },
+          {
+            "kind": "mor_mushroom",
+            "life": 5535.3,
+            "owner": "morveth",
+            "shield": 0
+          },
+          {
+            "kind": "ex_bark",
+            "life": 3867,
+            "owner": "maura",
+            "shield": 35.2
+          }
+        ],
+        "pool": [
+          {
+            "art": "nova",
+            "theme": "patria~h",
+            "t": 986
+          },
+          {
+            "art": "beam",
+            "theme": "maura_roots",
+            "t": 631.8000000044703
+          },
+          {
+            "art": "burst",
+            "theme": "morveth_growth",
+            "t": 416.20000000298023
+          },
+          {
+            "art": "nova",
+            "theme": "patria~h",
+            "t": 416.20000000298023
+          },
+          {
+            "art": "rings",
+            "theme": "patria~p",
+            "t": 296.20000000298023
+          },
+          {
+            "art": "burst",
+            "theme": "plague~p",
+            "t": 208.30000000447035
+          }
+        ]
+      }
+    },
+    {
+      "name": "shears actual draw on host",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 15,
+          "bark": 13,
+          "shears": 2
+        },
+        "objects": [
+          {
+            "kind": "ex_thorns",
+            "life": 1448.6000000000022,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "mor_garden",
+            "life": 3144.600000000002,
+            "owner": "morveth",
+            "shield": 0
+          },
+          {
+            "kind": "mor_mushroom",
+            "life": 5192.600000000002,
+            "owner": "morveth",
+            "shield": 0
+          },
+          {
+            "kind": "ex_bark",
+            "life": 3466.000000000002,
+            "owner": "maura",
+            "shield": 35.2
+          }
+        ],
+        "pool": [
+          {
+            "art": "nova",
+            "theme": "patria~h",
+            "t": 868.6000000014901
+          },
+          {
+            "art": "beam",
+            "theme": "maura_shears~p",
+            "t": 102
+          }
+        ]
+      }
+    },
+    {
+      "name": "shears actual draw on touch guest",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 36,
+          "bark": 34,
+          "shears": 2
+        },
+        "objects": [
+          {
+            "kind": "ex_thorns",
+            "life": 1415.5999999999985,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "mor_garden",
+            "life": 2968.699999999999,
+            "owner": "morveth",
+            "shield": 0
+          },
+          {
+            "kind": "mor_mushroom",
+            "life": 5051.999999999999,
+            "owner": "morveth",
+            "shield": 0
+          },
+          {
+            "kind": "ex_bark",
+            "life": 3383.699999999999,
+            "owner": "maura",
+            "shield": 35.2
+          }
+        ],
+        "pool": [
+          {
+            "art": "nova",
+            "theme": "patria~h",
+            "t": 911.3999999985099
+          },
+          {
+            "art": "beam",
+            "theme": "maura_shears~p",
+            "t": 42.899999998509884
+          },
+          {
+            "art": "burst",
+            "theme": "plague~p",
+            "t": 42.899999998509884
+          }
+        ]
+      }
+    },
+    {
+      "name": "zero-shield bark stops on host",
+      "ok": true,
+      "before": 15,
+      "after": 15,
+      "method": "Host zero-shield fixture replicated; real damage tested separately"
+    },
+    {
+      "name": "zero-shield bark stops on touch guest",
+      "ok": true,
+      "before": 39,
+      "after": 39,
+      "method": "Host zero-shield fixture replicated; real damage tested separately"
+    },
+    {
+      "name": "recast bark resumes host",
+      "ok": true
+    },
+    {
+      "name": "recast bark resumes touch guest",
+      "ok": true
+    },
+    {
+      "name": "bark expiry replicated",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

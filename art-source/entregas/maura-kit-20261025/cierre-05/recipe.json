@@ -1,0 +1,21 @@
+{
+  "source": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
+  "kind": "native SfaStrip",
+  "roots": "unchanged",
+  "bark": "open internal grain channels before outline; top draw owned by live shield object",
+  "shears": "narrower blades, glyphScale min(1,64/size), same orbit; beam top dispatcher uses 2*r for original visibility extent and r/2 for original nova renderer",
+  "commands": [
+    "OUT=<directory> node tools/vfx/export-maura-close.js",
+    "OUT=<directory> node tools/vfx/maura-bucket-check.js",
+    "OUT=<directory> node tools/vfx/maura-close-lifecycle.js",
+    "REPORT_PATH=<file> node tools/vfx/maura-close-online.js",
+    "PARITY_OUT=<file> node tools/vfx/parity-maura-close.js",
+    "OUT=<directory> node tools/vfx/maura-culling-audit.js",
+    "LOOKS=base,tier4 DENSITIES=dense SLOTS=1,2 ALL_PHASES=1 OUT=<directory> node tools/vfx/capture-maura-contact.js; repeat MOBILE=1; repeat LOOKS=gear,set,skin without ALL_PHASES"
+  ],
+  "environment": {
+    "NODE_PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "CHROMIUM_PATH": "/tmp/chromium"
+  },
+  "assetsInstalled": false
+}
