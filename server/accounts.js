@@ -134,7 +134,10 @@ const LB_GRACE_MS = 6 * 3600 * 1000;              // una partida que cruzó el c
 const LB_WINDOW_MS = 10 * 60 * 1000, LB_MAX_SUBMITS = 10, LB_MIN_GAP_MS = 8000;
 const LB_ROUND_MIN_MS = 10000;                    // una ronda dura 26 s (20,8 s con "Sin respiro"): 10 s es holgado
 const LB_MAX_ROUND = 400, LB_MAX_MS = 12 * 3600 * 1000;
-const WEEK_RE = /^\d{4}-W\d{2}$/;
+// Acepta la clave semanal ("2026-W40") y la mensual de la temporada V2 ("2026-10"): el cliente V2 usa meses aunque el servidor no tenga economía persistente.
+const WEEK_RE = /^\d{4}-(W\d{2}|(0[1-9]|1[0-2]))$/;
+const lbMonthKey = (ms) => new Date(ms).toISOString().slice(0, 7);
+const lbMonthStart = (ms) => { const d = new Date(ms); return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1); };
 const GUARDIAN_RE = /^[a-z][a-z0-9_]{1,23}$/;
 // Semana ISO en UTC ("2026-W40"): la misma cuenta que endlessWeekKey del cliente.
 function lbWeekKey(date){
@@ -165,7 +168,9 @@ function lbCheck(e, now){
   if(!Number.isInteger(e.durationMs) || e.durationMs < 0 || e.durationMs > LB_MAX_MS) return { error: "BAD_DURATION", msg: "Duración inválida." };
   if(!GUARDIAN_RE.test(e.guardian)) return { error: "BAD_GUARDIAN", msg: "Guardián inválido." };
   const cur = lbWeekKey(new Date(now)), prev = lbWeekKey(new Date(now - 7 * 86400000));
-  if(e.week !== cur && !(e.week === prev && now - lbWeekStart(now) < LB_GRACE_MS)) return { error: "WEEK_CLOSED", msg: "Esa semana del ranking ya cerró." };
+  const mCur = lbMonthKey(now), mPrev = lbMonthKey(lbMonthStart(now) - 1);
+  const openKey = e.week === cur || e.week === mCur || (e.week === prev && now - lbWeekStart(now) < LB_GRACE_MS) || (e.week === mPrev && now - lbMonthStart(now) < LB_GRACE_MS);
+  if(!openKey) return { error: "WEEK_CLOSED", msg: "Esa semana del ranking ya cerró." };
   if(e.durationMs < (e.round - 1) * LB_ROUND_MIN_MS) return { error: "IMPLAUSIBLE", msg: "Demasiadas rondas para tan poco tiempo." };
   if(e.score > lbMaxScore(e.round, e.durationMs)) return { error: "IMPLAUSIBLE", msg: "Ese puntaje no es posible para esa ronda y ese tiempo." };
   return null;
@@ -899,7 +904,8 @@ function create(opts){
       total = rk.total;
       if(uid) me = rk.row ? { rank: rk.rank, name: rk.row.name, guardian: rk.row.guardian, score: rk.row.score, round: rk.row.round, durationMs: rk.row.durationMs } : { rank: 0 };
       const entries = top.map((r, i) => ({ rank: i + 1, name: r.name, guardian: r.guardian, score: r.score, round: r.round, durationMs: r.durationMs, at: r.at, me: !!uid && r.userId === uid }));
-      return send(req, res, 200, { week, current, guardian: guardian || null, total, entries, me, endsAt: lbWeekStart(now) + 7 * 86400000 });
+      const monthly = /^\d{4}-\d{2}$/.test(week), endsAt = monthly ? Date.UTC(+week.slice(0, 4), +week.slice(5, 7), 1) : lbWeekStart(now) + 7 * 86400000;
+      return send(req, res, 200, { week, current: monthly ? lbMonthKey(now) : current, guardian: guardian || null, total, entries, me, endsAt });
     },
     // Con sesión: {score, round, guardian, week, durationMs}. Los invitados no entran (su récord queda local).
     "POST /api/leaderboard/submit": async (req, res) => {
@@ -930,7 +936,7 @@ function create(opts){
   };
 
   Object.assign(routes, gameMaster.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,ownerAccess,founderOf,founders:()=>founderBindings,seenAt}));
-  Object.assign(routes, require("./item-economy").routes({getStore:()=>store,auth,send,err,readBody,now:now0,isOwner}));
+  Object.assign(routes, require("./item-economy").routes({getStore:()=>store,auth,send,err,readBody,now:now0,isOwner,fallback:{"GET /api/leaderboard":routes["GET /api/leaderboard"],"POST /api/leaderboard/submit":routes["POST /api/leaderboard/submit"]}}));
   Object.assign(routes, walletMod.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,log}));
 
   // Devuelve true si atendió el pedido (todo lo que empieza con /api/).

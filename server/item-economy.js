@@ -171,7 +171,7 @@ function view(s,owner,now){
     readiness:{campaignRewards:true,combatEquipment:true,monthlyAwards:true,legacyMigration:true,vendors:false,legacyQuestRewards:false,authoritativeCombatSimulation:false},projection:require('./item-economy-live').project(s,owner,{champions:Object.fromEntries(Object.keys(a?.equipment||{}).map(k=>[k,{}]))}),champions:s.champions||[]};
 }
 function routes(ctx){
-  const {getStore,auth,send,err,readBody,now,isOwner}=ctx,result={};
+  const {getStore,auth,send,err,readBody,now,isOwner}=ctx,result={},fallback=ctx.fallback||{};
   function route(method,url,ownerOnly,fn){result[method+' '+url]=async(req,res)=>{
     try{
       if(process.env.HORDA_ITEM_ECONOMY==='0')fail('ECONOMY_NOT_ENABLED',503);
@@ -196,14 +196,14 @@ function routes(ctx){
   });
   route('GET','/api/gm/economy',true,s=>({audit:s.audit,config:s.config,accounts:s.accounts,items:s.items,listings:s.listings,relics:s.relics,seasons:s.seasons}));
   if(process.env.HORDA_ITEM_ECONOMY!=='0'){
-  result['GET /api/leaderboard']=async(req,res)=>{
+  result['GET /api/leaderboard']=async(req,res,...rest)=>{
     try{
-    const store=getStore();if(!store?.persistent)return err(req,res,503,'PERSISTENT_STORAGE_REQUIRED','El ranking requiere almacenamiento persistente.');
+    const store=getStore();if(!store?.persistent){if(fallback['GET /api/leaderboard'])return fallback['GET /api/leaderboard'](req,res,...rest);return err(req,res,503,'PERSISTENT_STORAGE_REQUIRED','El ranking requiere almacenamiento persistente.');} // sin almacenamiento persistente: ranking anterior, sin cambios
     const a=req.headers.authorization?await auth(req):{};
     const value=await store.gmUpdate(async raw=>{const root=raw||require('./game-master').stateOf(null),s=root.itemEconomy||(root.itemEconomy=initial()),live=require('./item-economy-live');live.seasons(s,now());sweep(s,now());const qs=new URL(req.url,'http://x').searchParams,k=qs.get('week')||live.month(now());if(!/^\d{4}-(0[1-9]|1[0-2])$/.test(k))fail('BAD_MONTH');return {state:root,value:live.ranking(s,k,String(a.user?.id||''),qs.get('guardian'))};});send(req,res,200,value);
     }catch(e){if(e.status)return err(req,res,e.status,e.message,e.message);throw e;}
   };
-  result['POST /api/leaderboard/submit']=async(req,res)=>{req.resume();err(req,res,409,'RUN_RECEIPT_REQUIRED','El puntaje se registra al cerrar una partida verificada por el servidor.');};
+  result['POST /api/leaderboard/submit']=async(req,res,...rest)=>{if(!getStore()?.persistent&&fallback['POST /api/leaderboard/submit'])return fallback['POST /api/leaderboard/submit'](req,res,...rest);req.resume();err(req,res,409,'RUN_RECEIPT_REQUIRED','El puntaje se registra al cerrar una partida verificada por el servidor.');};
   }
   return result;
 }
