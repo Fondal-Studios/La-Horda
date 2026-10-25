@@ -1,0 +1,110 @@
+{
+  "schema": 1,
+  "recoveredOn": "2026-10-25",
+  "interruptionDetected": true,
+  "reason": "Production merged but branch remained at production; REMOTE_CLOSURE not saved; local scratch absent.",
+  "state": "INTEGRADO_MAIN",
+  "component": "A-FX-solciju-h3/launch-cup",
+  "wholeBlockClosed": false,
+  "production": "52b7be342a45b2a885d97df5467cf873fa55c07f",
+  "merge": "9b585d916cc0109bc5bcbfd06a8ca32f837d9e91",
+  "mergedAt": "2026-10-24T10:46:55Z",
+  "productionTree": "9a2c0b17e69036545486a8041a957e290d89a1ed",
+  "productionFilesPreviouslyVerified": 76,
+  "recoveredBlobs": [
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/NEXT_LIBERTADOR_AUDIT.json",
+      "sha": "45799266bb3ddf524a84abc77626326f563f3eed",
+      "type": "blob",
+      "mode": "100644"
+    },
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/REEXPORT.json",
+      "sha": "939bc4183c2873acb09214d35e7a214c28ffabd0",
+      "type": "blob",
+      "mode": "100644"
+    },
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/next-libertador/capture.js.txt",
+      "sha": "5f2ed38689dd9117086960c8d83f0de6f5d2d56b",
+      "type": "blob",
+      "mode": "100644"
+    },
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/next-libertador/capture.json",
+      "sha": "e81378a1980f3ecc86664fa2377b8248128e23bc",
+      "type": "blob",
+      "mode": "100644"
+    },
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/next-libertador/capture.log",
+      "sha": "2264dcc0cfba8355d719292f4f6ed6ccea6a7afe",
+      "type": "blob",
+      "mode": "100644"
+    },
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/next-libertador/desktop-h3-480.png",
+      "sha": "5f4a30806182c8ba859b7465ca87d5640694011f",
+      "type": "blob",
+      "mode": "100644"
+    },
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/next-libertador/mobile-h2-160.png",
+      "sha": "37d13ab1bf74a167f2b321e681c7043f91972103",
+      "type": "blob",
+      "mode": "100644"
+    },
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/next-libertador/mobile-h3-160.png",
+      "sha": "72799c7fe27951cf48b672c30d60e9052e5241ff",
+      "type": "blob",
+      "mode": "100644"
+    },
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/next-libertador/mobile-h3-480.png",
+      "sha": "3bb4f1517b7add98211e227e19bcbebc6cbf0f39",
+      "type": "blob",
+      "mode": "100644"
+    },
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/next-libertador-audit.js.txt",
+      "sha": "9a2ad430a3fde7e6be84ea82e19e7d4562694e86",
+      "type": "blob",
+      "mode": "100644"
+    },
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/next-libertador-audit.log",
+      "sha": "70f45d107b4a6f166afab593e433c4d56d95fe6e",
+      "type": "blob",
+      "mode": "100644"
+    },
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/reexport.log",
+      "sha": "c89230b6abd7800bb80f8fce87b43fbc17250f0f",
+      "type": "blob",
+      "mode": "100644"
+    },
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/strict-legibility.log",
+      "sha": "1ca5706435a6d3f0fd555a05ffd573d22e05c382",
+      "type": "blob",
+      "mode": "100644"
+    },
+    {
+      "path": "art-source/entregas/solciju-toast-20261024/cierre-01/technical-reexport.json",
+      "sha": "e32f36b7c4278feea034fa5253b31455ac682fbd",
+      "type": "blob",
+      "mode": "100644"
+    }
+  ],
+  "ciCounts": {
+    "checks": 19,
+    "workflows": 8,
+    "allSuccess": true
+  },
+  "publication": "NOT_CONFIRMED",
+  "observedMain": "9c0ac434b2cb80ae16e7220371f59944ac3e9613",
+  "newRuntimeChanges": 0,
+  "newGameplayTests": 0,
+  "next": "Before production Libertador, audit current main and PR166 replacement status; preserve existing assets. Next closure must validate integrated FIX components on current main, not assume closed PR means approval."
+}

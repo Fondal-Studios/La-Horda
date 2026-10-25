@@ -1,0 +1,368 @@
+{
+  "scope": "Preproduction observation, no candidate or visual approval",
+  "rows": [
+    {
+      "mobile": false,
+      "slot": 0,
+      "clips": {
+        "bayo_emb": 12,
+        "fire": 2
+      },
+      "images": {},
+      "frames": [
+        {
+          "t": 160,
+          "phase": "bayo",
+          "pool": [
+            {
+              "theme": "patria",
+              "t": 160,
+              "dur": 560,
+              "x": 0,
+              "y": 0,
+              "bx": 190,
+              "by": 0
+            },
+            {
+              "theme": "patria~p",
+              "t": 160,
+              "dur": 340,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            }
+          ],
+          "file": "desktop-h1-160.png"
+        },
+        {
+          "t": 480,
+          "phase": null,
+          "pool": [
+            {
+              "theme": "patria",
+              "t": 480,
+              "dur": 560,
+              "x": 0,
+              "y": 0,
+              "bx": 190,
+              "by": 0
+            }
+          ],
+          "file": "desktop-h1-480.png"
+        }
+      ]
+    },
+    {
+      "mobile": false,
+      "slot": 1,
+      "clips": {
+        "command": 30
+      },
+      "images": {
+        "spectral_01.webp": 30,
+        "spectral_02.webp": 30,
+        "spectral_03.webp": 30,
+        "spectral_04.webp": 30,
+        "spectral_05.webp": 30,
+        "buff_icon_01.webp": 18,
+        "buff_icon_02.webp": 24,
+        "buff_icon_03.webp": 27,
+        "buff_icon_04.webp": 21
+      },
+      "frames": [
+        {
+          "t": 160,
+          "pool": [
+            {
+              "theme": "patria~h",
+              "t": 160,
+              "dur": 1000,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            },
+            {
+              "theme": "patria~p",
+              "t": 160,
+              "dur": 380,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            },
+            {
+              "theme": "patria~p",
+              "t": 40,
+              "dur": 700,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            }
+          ],
+          "file": "desktop-h2-160.png"
+        },
+        {
+          "t": 480,
+          "pool": [
+            {
+              "theme": "patria~h",
+              "t": 480,
+              "dur": 1000,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            },
+            {
+              "theme": "patria~p",
+              "t": 360,
+              "dur": 700,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            }
+          ],
+          "file": "desktop-h2-480.png"
+        }
+      ]
+    },
+    {
+      "mobile": false,
+      "slot": 2,
+      "clips": {
+        "mount": 16,
+        "charge": 14
+      },
+      "images": {},
+      "frames": [
+        {
+          "t": 160,
+          "phase": "mount",
+          "pool": [
+            {
+              "theme": "patria~p",
+              "t": 160,
+              "dur": 720,
+              "x": 0,
+              "y": 0,
+              "bx": 430,
+              "by": 0
+            },
+            {
+              "theme": "patria~p",
+              "t": 160,
+              "dur": 340,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            }
+          ],
+          "file": "desktop-h3-160.png"
+        },
+        {
+          "t": 480,
+          "phase": "charge",
+          "pool": [
+            {
+              "theme": "patria~p",
+              "t": 480,
+              "dur": 720,
+              "x": 0,
+              "y": 0,
+              "bx": 430,
+              "by": 0
+            }
+          ],
+          "file": "desktop-h3-480.png"
+        }
+      ]
+    },
+    {
+      "mobile": true,
+      "slot": 0,
+      "clips": {
+        "bayo_emb": 12,
+        "fire": 2
+      },
+      "images": {},
+      "frames": [
+        {
+          "t": 160,
+          "phase": "bayo",
+          "pool": [
+            {
+              "theme": "patria",
+              "t": 160,
+              "dur": 560,
+              "x": 0,
+              "y": 0,
+              "bx": 190,
+              "by": 0
+            },
+            {
+              "theme": "patria~p",
+              "t": 160,
+              "dur": 340,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            }
+          ],
+          "file": "mobile-h1-160.png"
+        },
+        {
+          "t": 480,
+          "phase": null,
+          "pool": [
+            {
+              "theme": "patria",
+              "t": 480,
+              "dur": 560,
+              "x": 0,
+              "y": 0,
+              "bx": 190,
+              "by": 0
+            }
+          ],
+          "file": "mobile-h1-480.png"
+        }
+      ]
+    },
+    {
+      "mobile": true,
+      "slot": 1,
+      "clips": {
+        "command": 30
+      },
+      "images": {
+        "spectral_01.webp": 30,
+        "spectral_02.webp": 30,
+        "spectral_03.webp": 30,
+        "spectral_04.webp": 30,
+        "spectral_05.webp": 30,
+        "buff_icon_01.webp": 18,
+        "buff_icon_02.webp": 24,
+        "buff_icon_03.webp": 27,
+        "buff_icon_04.webp": 21
+      },
+      "frames": [
+        {
+          "t": 160,
+          "pool": [
+            {
+              "theme": "patria~h",
+              "t": 160,
+              "dur": 1000,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            },
+            {
+              "theme": "patria~p",
+              "t": 160,
+              "dur": 380,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            },
+            {
+              "theme": "patria~p",
+              "t": 40,
+              "dur": 700,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            }
+          ],
+          "file": "mobile-h2-160.png"
+        },
+        {
+          "t": 480,
+          "pool": [
+            {
+              "theme": "patria~h",
+              "t": 480,
+              "dur": 1000,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            },
+            {
+              "theme": "patria~p",
+              "t": 360,
+              "dur": 700,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            }
+          ],
+          "file": "mobile-h2-480.png"
+        }
+      ]
+    },
+    {
+      "mobile": true,
+      "slot": 2,
+      "clips": {
+        "mount": 16,
+        "charge": 14
+      },
+      "images": {},
+      "frames": [
+        {
+          "t": 160,
+          "phase": "mount",
+          "pool": [
+            {
+              "theme": "patria~p",
+              "t": 160,
+              "dur": 720,
+              "x": 0,
+              "y": 0,
+              "bx": 430,
+              "by": 0
+            },
+            {
+              "theme": "patria~p",
+              "t": 160,
+              "dur": 340,
+              "x": 0,
+              "y": 0,
+              "bx": 0,
+              "by": 0
+            }
+          ],
+          "file": "mobile-h3-160.png"
+        },
+        {
+          "t": 480,
+          "phase": "charge",
+          "pool": [
+            {
+              "theme": "patria~p",
+              "t": 480,
+              "dur": 720,
+              "x": 0,
+              "y": 0,
+              "bx": 430,
+              "by": 0
+            }
+          ],
+          "file": "mobile-h3-480.png"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

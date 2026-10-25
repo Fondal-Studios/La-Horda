@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-25T07:07:19.430265+00:00",
+  "scope": "Selected public bytes versus approved PR218, not all of current main or full release",
+  "checks": [
+    {
+      "path": "js/champions/vfx-b/solciju.js",
+      "expectedPR218Sha256": "58ccac05ca26680d3a9ab6fb3df1643d258a09ca1d055ad8e95be84e246079c2",
+      "http": 200,
+      "sha256": "7637f8399fdf855a7c1019f9d3598d3cb586ab0d33ac953f445df0a147eb6d3a",
+      "bytes": 7004,
+      "status": "DIFFERENT"
+    },
+    {
+      "path": "js/champions/vfx-b/pixfx.js",
+      "expectedPR218Sha256": "586fee7020014170f88cef883d5517db7b96ef927e16405fb1b1a098c2ccb4e9",
+      "http": 200,
+      "sha256": "2e40fe19b8c884ba01ade3b847e7d6ff23e420d757692b4ee725f39123dbaef0",
+      "bytes": 18362,
+      "status": "DIFFERENT"
+    }
+  ],
+  "status": "NOT_CONFIRMED"
+}
