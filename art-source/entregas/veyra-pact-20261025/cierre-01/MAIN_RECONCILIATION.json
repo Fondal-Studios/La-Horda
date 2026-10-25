@@ -1,0 +1,23 @@
+{
+  "main": "9c0ac434b2cb80ae16e7220371f59944ac3e9613",
+  "references": [
+    {
+      "path": "js/champions/vfx-b/hooks.js",
+      "historical": "98bfb135fde7e185a87ab478f3d2f809275c35435b4077b076cc088cac42bef7",
+      "main": "f9066bc851c1fcfed19e3147735eaefcb141ae70997c338c5eefad6e30e26cfa",
+      "equal": false
+    },
+    {
+      "path": "js/champions/vfx-b/pixfx.js",
+      "historical": "b6723047bc6f0df287dd2cd45940986ca02f223c34214388cee5168bd3381776",
+      "main": "80c3d40abb0058806b6f45e553ef8246fbee78dcf591fc8596ac6bd3a6ac2810",
+      "equal": false
+    },
+    {
+      "path": "js/champions/vfx-b/veyra.js",
+      "mainSha256": "46000a043e81ddf5e3dbc9a50a95482769eb938aab561c69aac967ae46ce1270",
+      "candidateSha256": "9b142e32564a4a0f864e4a31f3bcad1ce2b3f05c6442017d2f166976c2946d01"
+    }
+  ],
+  "freshTests": "ownership14/follow12/relay21 baseline PASS; current on-off parity29969 each; no inference from PR219 status"
+}

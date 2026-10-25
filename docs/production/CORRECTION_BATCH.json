@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated": "2026-10-24",
-  "policy": "First-pass champion batches; save failures and move forward. Run a grouped correction pass later; never merge failed or unvalidated assets.",
+  "updated": "2026-10-25",
+  "policy": "Alternate production batches and complete closures; current-main integration is not visual approval.",
   "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
   "pendingVerificationNotFailures": [
     "Aurelia basic/refraction/luminal-step: generated, no empty/edge flags, still need final-scale readability, proper layer split and runtime tests",
@@ -13,7 +13,7 @@
   ],
   "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "CIERRE del acumulado tras producción Khepri; no otra primera pasada. Khepri no instalado; conservar H1/UF. Brakk H1/H2 PR216 ya integrado.",
+  "next": "CIERRE Veyra launch-heart: exacthead CI, normal merge, remote closure; persistent heartbeat excluded.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -351,7 +351,18 @@
         "technical": "14 ownership checks PASS; 21 actual relay checks PASS; 132 functional PASS; numeric caster/duration event owns aura; registered KVB network wrapper after late module load.",
         "state": "EN_CORRECCION",
         "remaining": "Full skins/arenas/contrast/warmup/re-entry and integral visual gate; inherited KVB on/off RNG mismatch; CI current head."
-      }
+      },
+      "correctionHistory": [
+        {
+          "date": "2026-10-25",
+          "path": "art-source/entregas/veyra-pact-20261025/cierre-01",
+          "scope": "launch-heart only",
+          "status": "VALIDADO_PENDING_CI",
+          "change": "open lobes and split seam; radius22/y-126;760ms preserved",
+          "technical": "14 owner/12 follow/34 renderer/23 relay/132 functional;120scenes480ABA exact100% retained",
+          "remaining": "Persistent ground heartbeat obscured in contact. Entire H3 remains EN_CORRECCION; no other kit approval."
+        }
+      ]
     },
     {
       "block": "B117",
@@ -1875,6 +1886,114 @@
       ],
       "diagnosis": "Wing covers read fins/arrow; no actual dash hookup",
       "next": "Grouped kit correction then event-specific hookup, native composition, relay and ArtGate; preserve existing runtime until approved."
+    },
+    {
+      "id": "libertador.bayonet.first-pass-20261025",
+      "block": "B157",
+      "component": "A-FX-libertador-h1",
+      "state": "EN_CORRECCION",
+      "integration": "NO_INTEGRAR",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source": "art-source/entregas/libertador-kit-20261025/primera-pasada-01/source.js",
+      "sourceSha256": "df41364b355dd270b803b19b87d9494034e3956488736ccf8b0835ec9245855d",
+      "atlas": "art-source/entregas/libertador-kit-20261025/primera-pasada-01/bayonet.png",
+      "atlasSha256": "d674cd5b6d450945aaf20176f0f7d86e12634bc0465bb081efb12b6025aaad7b",
+      "frameHashes": "art-source/entregas/libertador-kit-20261025/primera-pasada-01/FRAME_INDEX.json",
+      "defects": [
+        "Thin two-edged trace reads arrow near feet; hand/weapon anchoring and contact hierarchy unresolved; last phases can be skipped on impact stop."
+      ],
+      "next": "Grouped kit correction, complete real-scale/skins/arenas/lifecycle/performance gates; preserve existing sources and mechanics."
+    },
+    {
+      "id": "libertador.command.first-pass-20261025",
+      "block": "B158",
+      "component": "A-FX-libertador-h2",
+      "state": "EN_CORRECCION",
+      "integration": "NO_INTEGRAR",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source": "art-source/entregas/libertador-kit-20261025/primera-pasada-01/source.js",
+      "sourceSha256": "df41364b355dd270b803b19b87d9494034e3956488736ccf8b0835ec9245855d",
+      "atlas": "art-source/entregas/libertador-kit-20261025/primera-pasada-01/command.png",
+      "atlasSha256": "11a1046d295acc1fbeb5c2448ff5c8507da243d7d5e584cb9768805c77f4421c",
+      "frameHashes": "art-source/entregas/libertador-kit-20261025/primera-pasada-01/FRAME_INDEX.json",
+      "defects": [
+        "Five open command arcs preserve spectral images, but become tiny ticks over arena; inherited radius430 not verified for modified area."
+      ],
+      "next": "Grouped kit correction, complete real-scale/skins/arenas/lifecycle/performance gates; preserve existing sources and mechanics."
+    },
+    {
+      "id": "libertador.charge.first-pass-20261025",
+      "block": "B159",
+      "component": "A-FX-libertador-h3",
+      "state": "EN_CORRECCION",
+      "integration": "NO_INTEGRAR",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source": "art-source/entregas/libertador-kit-20261025/primera-pasada-01/source.js",
+      "sourceSha256": "df41364b355dd270b803b19b87d9494034e3956488736ccf8b0835ec9245855d",
+      "atlas": "art-source/entregas/libertador-kit-20261025/primera-pasada-01/charge.png",
+      "atlasSha256": "8225c4d88e0702f7a793d0346239eb23f659dc4fda81dc4f8416c2c9e98123d5",
+      "frameHashes": "art-source/entregas/libertador-kit-20261025/primera-pasada-01/FRAME_INDEX.json",
+      "defects": [
+        "Small bright hoof marks read sparkles at actual mobile scale; instantaneous removal when phase ends; interrupted/mounted/recast cases need grouped lifecycle review."
+      ],
+      "next": "Grouped kit correction, complete real-scale/skins/arenas/lifecycle/performance gates; preserve existing sources and mechanics."
     }
-  ]
+  ],
+  "latestProduction": {
+    "base": "9c0ac434b2cb80ae16e7220371f59944ac3e9613",
+    "block": [
+      "B157",
+      "B158",
+      "B159"
+    ],
+    "path": "art-source/entregas/libertador-kit-20261025/primera-pasada-01",
+    "state": "EN_CORRECCION",
+    "entriesPreserved": 51
+  },
+  "latestClosure": {
+    "component": "A-FX-veyra-h3/launch-heart",
+    "state": "VALIDADO",
+    "integration": "PENDING_CI",
+    "path": "art-source/entregas/veyra-pact-20261025/cierre-01",
+    "queueEntries": 54
+  }
 }
