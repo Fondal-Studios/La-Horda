@@ -65,11 +65,12 @@ function mauraCandidateKit() {
     for(let y=2;y<bark.h-2;y++)for(let x=2;x<bark.w-2;x++){
       if(!bark.get(f,x,y))continue;
       const interior=[[-2,0],[2,0],[0,-2],[0,2]].every(([dx,dy])=>bark.get(f,x+dx,y+dy));
-      if(interior)holes.push([x,y]);
+      if(interior && (x + Math.floor(y/9)) % 5 !== 0)holes.push([x,y]);
     }
     for(const [x,y] of holes)bark.set(f,x,y,0);
     edge(bark,f);if(f>=14)dissolve(bark,f,(f-13)/4);
   }
+  const steel=sfaCol('#f3e8bb'),steelShade=sfaCol('#acb9a4');
   const shears=new SfaStrip(152,152,12);
   for(let f=0;f<11;f++){
     const spin=(f<3?-.8:-.8+(Math.min(f,7)-2)*Math.PI*2/5),open=f<3?.38+f*.08:Math.max(.03,.56-(f-2)*.15);
@@ -77,8 +78,8 @@ function mauraCandidateKit() {
     function pt(x,y,angle){return[centre[0]+x*Math.cos(angle)-y*Math.sin(angle),centre[1]+x*Math.sin(angle)+y*Math.cos(angle)];}
     for(const side of [-1,1]){
       const angle=spin+Math.PI/2+side*open;
-      polygon(shears,f,[[0,-3],[29,-4],[42,-1],[30,2],[3,3]].map(([x,y])=>pt(x,y,angle)),P.b);
-      const a=pt(3,-2,angle),b=pt(36,-1,angle);stroke(shears,f,...a,...b,1,P.c);
+      polygon(shears,f,[[0,-3],[29,-4],[42,-1],[30,2],[3,3]].map(([x,y])=>pt(x,y,angle)),steelShade);
+      const a=pt(3,-2,angle),b=pt(36,-1,angle);stroke(shears,f,...a,...b,2,steel);
       const h=pt(-17,side*2,angle);stroke(shears,f,...centre,...h,4,P.a);
       for(let t=0;t<24;t++){const theta=t*Math.PI*2/24;const q=pt(-22+Math.cos(theta)*7,side*2+Math.sin(theta)*4,angle);stroke(shears,f,Math.round(q[0]),Math.round(q[1]),Math.round(q[0]),Math.round(q[1]),3,P.a);}
     }
@@ -125,7 +126,7 @@ function mauraDrawBark(o) {
   const b=mauraNativeStrip('bark'),age=Math.max(0,(o.maxLife||4000)-o.life);
   const f=age<300?Math.min(5,Math.floor(age/50)):o.life<300?Math.min(16,14+Math.floor((300-o.life)/100)):6+Math.floor((age-300)/100)%8;
   ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=.95;
-  ctx.drawImage(b.cv,f*b.w,0,b.w,b.h,h.x-56,h.y-107,112,112);ctx.restore();
+  ctx.drawImage(b.cv,f*b.w,0,b.w,b.h,h.x-56,h.y-123,112,112);ctx.restore();
 }
 sfaDefineTheme('maura_roots',{...sfaTheme('thorn'),beamDraw:()=>{}});
 sfaDefineTheme('maura_shears',{...sfaTheme('thorn'),bake:mauraBakeShears,beamDraw:(s,g)=>sfaDrawOne({...s,art:'nova',r:s.r/2},g)});
