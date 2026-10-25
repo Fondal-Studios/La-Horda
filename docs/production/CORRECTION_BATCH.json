@@ -13,7 +13,7 @@
   ],
   "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "CIERRE Veyra launch-heart: exacthead CI, normal merge, remote closure; persistent heartbeat excluded.",
+  "next": "CIERRE agrupado Maura: fuentes actuales, composición/capas y enganches reales antes de gates. No otra primera pasada para evitar este cierre.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -2018,16 +2018,142 @@
           ]
         }
       ]
+    },
+    {
+      "id": "maura.roots.first-pass-20261025",
+      "block": "B163",
+      "component": "A-FX-maura-h1/root-path",
+      "state": "EN_CORRECCION",
+      "integration": "NO_INTEGRAR",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source": "art-source/entregas/maura-kit-20261025/primera-pasada-01/source-native.js",
+      "sourceSha256": "30eb4cbafe7a028b20217378ad18d232c39d518c4190b8657ac67d4565e5b4b2",
+      "atlas": "art-source/entregas/maura-kit-20261025/primera-pasada-01/roots.png",
+      "atlasSha256": "e04a83e39095df3f2d5eb9cbfe12c714729b6d6572aba9791131cfb5ff4de128",
+      "defects": [
+        "Root path remains too regular, close to a barbed cable; legacy beam overlaps it. Needs organic stagger and reconciliation of the same line layer."
+      ],
+      "next": "Grouped Maura closure: identity/layers and real event-state hooks, then full applicable gates. Preserve original fallback/UF and failed attempts.",
+      "history": [
+        {
+          "attempt": "attempt-01",
+          "reason": "Bark edge clipping"
+        },
+        {
+          "attempt": "attempt-02",
+          "reason": "Kit silhouette readability correction"
+        }
+      ]
+    },
+    {
+      "id": "maura.bark.first-pass-20261025",
+      "block": "B164",
+      "component": "A-FX-maura-h2/bark-shell",
+      "state": "EN_CORRECCION",
+      "integration": "NO_INTEGRAR",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "source": "art-source/entregas/maura-kit-20261025/primera-pasada-01/source-native.js",
+      "sourceSha256": "30eb4cbafe7a028b20217378ad18d232c39d518c4190b8657ac67d4565e5b4b2",
+      "atlas": "art-source/entregas/maura-kit-20261025/primera-pasada-01/bark.png",
+      "atlasSha256": "bcb633ab95b22e1f00a43fcb95e193b08cf3584038ced10223d3f95eddf67e2e",
+      "defects": [
+        "Wood plates remain small and compete with class emblem, shield indicator and thorn aura; motion has repeated loop frames. Need attachment to torso across skins and shield/object lifecycle split."
+      ],
+      "next": "Grouped Maura closure: identity/layers and real event-state hooks, then full applicable gates. Preserve original fallback/UF and failed attempts.",
+      "history": [
+        {
+          "attempt": "attempt-01",
+          "reason": "Bark edge clipping"
+        },
+        {
+          "attempt": "attempt-02",
+          "reason": "Kit silhouette readability correction"
+        }
+      ]
+    },
+    {
+      "id": "maura.shears.first-pass-20261025",
+      "block": "B165",
+      "component": "A-FX-maura-h3/pruning-shears",
+      "state": "EN_CORRECCION",
+      "integration": "NO_INTEGRAR",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source": "art-source/entregas/maura-kit-20261025/primera-pasada-01/source-native.js",
+      "sourceSha256": "30eb4cbafe7a028b20217378ad18d232c39d518c4190b8657ac67d4565e5b4b2",
+      "atlas": "art-source/entregas/maura-kit-20261025/primera-pasada-01/shears.png",
+      "atlasSha256": "cef86000782435a5e5256e20a66fd60a71f686b09b7fdd46822899ad0cfcca5c",
+      "defects": [
+        "Pruning silhouette is recognizable in isolation but reads as a small tool beside the feet in composition; circular trajectory and impact need temporal review, seed transfer still absent."
+      ],
+      "next": "Grouped Maura closure: identity/layers and real event-state hooks, then full applicable gates. Preserve original fallback/UF and failed attempts.",
+      "history": [
+        {
+          "attempt": "attempt-01",
+          "reason": "Bark edge clipping"
+        },
+        {
+          "attempt": "attempt-02",
+          "reason": "Kit silhouette readability correction"
+        }
+      ]
     }
   ],
   "latestProduction": {
-    "block": [
-      "B160"
+    "date": "2026-10-25",
+    "scope": [
+      "B163/root-path",
+      "B164/bark-shell",
+      "B165/pruning-shears"
     ],
-    "path": "art-source/entregas/mago-kit-20261025/integracion-01",
+    "checkpoint": "art-source/entregas/maura-kit-20261025/primera-pasada-01/CHECKPOINT.md",
     "state": "EN_CORRECCION",
-    "newAtlas": 0,
-    "entriesPreserved": 54
+    "preservedEntries": 55,
+    "totalEntries": 58
   },
   "latestClosure": {
     "component": "A-FX-mago-h1/formation",
