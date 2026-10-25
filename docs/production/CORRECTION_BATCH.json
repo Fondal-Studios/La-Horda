@@ -2117,10 +2117,10 @@
         16,
         17
       ],
-      "source": "art-source/entregas/maura-kit-20261025/cierre-07/source-candidate.js",
-      "sourceSha256": "deec3bdfa53bcc74812f51083597ed45f18a4731e2558b8f537f565e3e4cb989",
-      "atlas": "art-source/entregas/maura-kit-20261025/cierre-07/bark.png",
-      "atlasSha256": "4f8f73c0d12fde4faaac79ea7f795e4ec83ca9e903fdaf57c01252e2baec9858",
+      "source": "art-source/entregas/maura-kit-20261025/cierre-08/source-candidate.js",
+      "sourceSha256": "f433bce1aa6c8f6f1ab13ff4e35eea37abd91a691147fb4d261964de92302bc6",
+      "atlas": "art-source/entregas/maura-kit-20261025/cierre-08/bark.png",
+      "atlasSha256": "ad7ba59349d44da6240716045d6ad8422d8a1306e74ccd1ded6b7c0b78a3e205",
       "defects": [
         "Larger112x112 wood plates, open torso and real shield condition. In dense scenes plates remain partially hidden among bodies; generic shield/ring indicators dominate."
       ],
@@ -2171,9 +2171,15 @@
           "previousSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
           "previousSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
           "diagnosis": "Grouped geometry correction: irregular solid bark / shorter blades with open handles and pivot.96scenes contactPASS; protective bark silhouette remains visualFIX."
+        },
+        {
+          "closure": "art-source/entregas/maura-kit-20261025/cierre-08",
+          "previousSource": "art-source/entregas/maura-kit-20261025/cierre-07/source-candidate.js",
+          "previousSourceSha256": "deec3bdfa53bcc74812f51083597ed45f18a4731e2558b8f537f565e3e4cb989",
+          "diagnosis": "Connected curved bark flanks,96x96 anchored y-90.120scenes contactPASS; launch indicator competition remains."
         }
       ],
-      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-07"
+      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-08"
     },
     {
       "id": "maura.shears.first-pass-20261025",
@@ -2266,5 +2272,5 @@
     "preservedEntries": 55,
     "totalEntries": 58
   },
-  "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-07"
+  "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-08"
 }

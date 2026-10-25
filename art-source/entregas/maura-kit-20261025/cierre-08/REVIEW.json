@@ -1,0 +1,51 @@
+{
+  "state": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "reviewed": [
+    "pilot-review.png:4dense desktop views",
+    "mobile-review.png:30dense views,6arenas5looks",
+    "desktop-review.png:30dense views,6arenas5looks",
+    "shears-desktop-review.png:18dense views,6arenas gear/set/skin",
+    "temporal-mobile.png:4sparse Infernal bark phases"
+  ],
+  "finding": "Connected irregular bark flanks now track the body, preserving open chest. Launch still competes with legacy indicators, especially tier4. Shears recognisable across three additional looks. No integral kit approval; complete temporal reviews, H1 legibility and compose launch layers before final gates.",
+  "historicalOnly": [
+    "cierre05relay/parity",
+    "cierre07fullrendererperformance"
+  ],
+  "new": {
+    "pilot": {
+      "scenes": 4,
+      "comparisons": 16,
+      "minRetention": 0.9203333741880132,
+      "ABA": true,
+      "failures": 0,
+      "errors": []
+    },
+    "desktop": {
+      "scenes": 60,
+      "comparisons": 240,
+      "minRetention": 0.8842911877394636,
+      "ABA": true,
+      "failures": 0,
+      "errors": []
+    },
+    "mobile": {
+      "scenes": 60,
+      "comparisons": 240,
+      "minRetention": 0.8867719107240065,
+      "ABA": true,
+      "failures": 0,
+      "errors": []
+    },
+    "shears-desktop": {
+      "scenes": 18,
+      "comparisons": 72,
+      "minRetention": 0.8985010706638116,
+      "ABA": true,
+      "failures": 0,
+      "errors": []
+    }
+  }
+}
