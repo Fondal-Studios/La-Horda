@@ -2117,14 +2117,14 @@
         16,
         17
       ],
-      "source": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
-      "sourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
-      "atlas": "art-source/entregas/maura-kit-20261025/cierre-05/bark.png",
-      "atlasSha256": "59703b5b67d4e2ce936833c074261b021046df28bac16342dda2b40900b75ab9",
+      "source": "art-source/entregas/maura-kit-20261025/cierre-07/source-candidate.js",
+      "sourceSha256": "deec3bdfa53bcc74812f51083597ed45f18a4731e2558b8f537f565e3e4cb989",
+      "atlas": "art-source/entregas/maura-kit-20261025/cierre-07/bark.png",
+      "atlasSha256": "4f8f73c0d12fde4faaac79ea7f795e4ec83ca9e903fdaf57c01252e2baec9858",
       "defects": [
         "Larger112x112 wood plates, open torso and real shield condition. In dense scenes plates remain partially hidden among bodies; generic shield/ring indicators dominate."
       ],
-      "next": "Continue grouped closure: bark material identity, pruning contrast, sparse/temporal looks, performance/full renderer and current gates. NO_INTEGRAR.",
+      "next": "Resolve protective bark grouping and review all equipment/skin sequences; retain80%/delta24 and mechanics. NO_INTEGRAR.",
       "history": [
         {
           "attempt": "attempt-01",
@@ -2165,9 +2165,15 @@
           "diagnosis": "Grouped material attempt,14contactFAIL corrected by bark anchor -123; final48scenesPASS contact,visualFIX (slats/shear joint)",
           "previousSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
           "previousSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27"
+        },
+        {
+          "closure": "art-source/entregas/maura-kit-20261025/cierre-07",
+          "previousSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
+          "previousSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
+          "diagnosis": "Grouped geometry correction: irregular solid bark / shorter blades with open handles and pivot.96scenes contactPASS; protective bark silhouette remains visualFIX."
         }
       ],
-      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-06"
+      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-07"
     },
     {
       "id": "maura.shears.first-pass-20261025",
@@ -2189,14 +2195,14 @@
         10,
         11
       ],
-      "source": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
-      "sourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
-      "atlas": "art-source/entregas/maura-kit-20261025/cierre-05/shears.png",
-      "atlasSha256": "d8981c1d15782ef304c5d99edf624518210b701eb13e7bbded20de41cf481090",
+      "source": "art-source/entregas/maura-kit-20261025/cierre-07/source-candidate.js",
+      "sourceSha256": "deec3bdfa53bcc74812f51083597ed45f18a4731e2558b8f537f565e3e4cb989",
+      "atlas": "art-source/entregas/maura-kit-20261025/cierre-07/shears.png",
+      "atlasSha256": "5c3e32b6f398add74355ca1e674dbeb7f77c8c4cfab88dd378f5bf5a54128420",
       "defects": [
         "Larger handles/blades and real700ms circular cast. Native sheet identifies scissors, but dense game scene hides much of orbit behind actors; impact is not sufficiently readable."
       ],
-      "next": "Continue grouped closure: bark material identity, pruning contrast, sparse/temporal looks, performance/full renderer and current gates. NO_INTEGRAR.",
+      "next": "Resolve protective bark grouping and review all equipment/skin sequences; retain80%/delta24 and mechanics. NO_INTEGRAR.",
       "history": [
         {
           "attempt": "attempt-01",
@@ -2237,9 +2243,15 @@
           "diagnosis": "Grouped material attempt,14contactFAIL corrected by bark anchor -123; final48scenesPASS contact,visualFIX (slats/shear joint)",
           "previousSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
           "previousSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27"
+        },
+        {
+          "closure": "art-source/entregas/maura-kit-20261025/cierre-07",
+          "previousSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
+          "previousSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
+          "diagnosis": "Grouped geometry correction: irregular solid bark / shorter blades with open handles and pivot.96scenes contactPASS; protective bark silhouette remains visualFIX."
         }
       ],
-      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-06"
+      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-07"
     }
   ],
   "latestProduction": {
@@ -2254,5 +2266,5 @@
     "preservedEntries": 55,
     "totalEntries": 58
   },
-  "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-05"
+  "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-07"
 }

@@ -1,0 +1,25 @@
+{
+  "source": "art-source/entregas/maura-kit-20261025/cierre-07/source-candidate.js",
+  "native": "SfaStrip",
+  "bark": "Four smaller solid chipped irregular polygons, grain and knots. Same18phase clock, anchor-123, shield predicate.",
+  "shears": "Shorter blades, open loops and visible pivot; glyph cap80; orbit/culling preserved.",
+  "preserved": [
+    "roots",
+    "UF",
+    "body/skins",
+    "combat mechanics",
+    "shared engine/bind/hooks"
+  ],
+  "commands": [
+    "OUT=<dir> node tools/vfx/export-maura-close.js",
+    "OUT=<dir> node tools/vfx/maura-bucket-check.js",
+    "LOOKS=base,tier4 DENSITIES=sparse,dense SLOTS=1,2 ALL_PHASES=1 OUT=<dir>/desktop node tools/vfx/capture-maura-contact.js",
+    "MOBILE=1 LOOKS=base,tier4 DENSITIES=sparse,dense SLOTS=1,2 ALL_PHASES=1 OUT=<dir>/mobile node tools/vfx/capture-maura-contact.js",
+    "OUT=<dir> node tools/vfx/maura-full-render-perf.js"
+  ],
+  "environment": {
+    "NODE_PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "CHROMIUM_PATH": "/tmp/chromium"
+  },
+  "installedPNG": 0
+}
