@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "at": "2026-10-25 15:43:32 UTC",
+  "componentStates": {
+    "B163/A-FX-maura-h1/root-path": "EN_CORRECCION",
+    "B164/A-FX-maura-h2/bark-shell": "EN_CORRECCION",
+    "B165/A-FX-maura-h3/pruning-shears": "EN_CORRECCION"
+  },
+  "integration": "NO_INTEGRAR",
+  "pr": 223,
+  "url": "https://github.com/Fondal-Studios/La-Horda/pull/223",
+  "branch": "art/maura-kit-first-pass-20261025",
+  "baseMain": "7e4e653e83b958bb63534ea90cfc77400bf93545",
+  "productionCommit": "05efa80979e7f6c606bb4d2032ebefd7208feaf5",
+  "productionTree": "7acf1fa3697d91b448ce40d66e837b48a06c1156",
+  "verifiedProductionFiles": 46,
+  "queue": {
+    "entries": 58,
+    "previousEntries": 55,
+    "unchangedPrefix": true
+  },
+  "runtimeChanges": 0,
+  "installedAssetChanges": 0,
+  "newEvidence": [
+    "3 native atlas alpha/border checks,42 frames/39 nonempty/3 transparent closes",
+    "6 actual renderer scenes,6 candidate drawImage +6 Maura body drawImage,0 errors; fixed-phase workshop harness only",
+    "7 current-main zero-target lifecycle cases; shield-zero fixture is not damage absorption",
+    "3 PNG byte-identical reexports; preview3canvases/0errors"
+  ],
+  "limits": [
+    "No actual candidate hooks installed",
+    "No complete ABA/skins/equipment/six-arena/relay/global parity/performance/Art Gate",
+    "CI started; observed snapshot is not complete exact-head approval",
+    "No merge or canonical publication check"
+  ],
+  "previousClosure": {
+    "branchHead": "d731b5ee8398e854eb17282d4c2e1ac4986f0667",
+    "pr222Merged": true,
+    "newLostClosureDetected": false
+  },
+  "next": "CIERRE agrupado Maura desde fuentes finales. Corregir regularidad/superposición de raíz, presencia y anclaje de corteza/tijeras; integrar hooks de cast y escudo/objeto separados, conservar UF y comportamiento real. Completar gates sin rebajar 80%/delta24, sólo después CI exacto y merge normal. No producir otro kit para evitar cierre.",
+  "commands": [
+    "node tools/vfx/export-maura-candidates.js",
+    "node tools/vfx/preview-maura-candidates.js",
+    "node tools/vfx/audit-maura-candidates.js"
+  ],
+  "closureNote": "This evidence commit follows production; its SHA is the branch ref. Manifest describes immutable production files, not this later closure."
+}
