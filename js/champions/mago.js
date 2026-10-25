@@ -35,7 +35,6 @@ function drawFireWall(fw){
   const thick = fw.outerR - fw.innerR;
   const now = performance.now()/1000;
   const tier = fw.tier || 1; // escala visual según el talento invertido en Muro de Fuego
-  const ageSec = (fw.maxTimer-fw.timer)/1000;
   const dying = fw.timer < 350;
   ctx.save();
   ctx.globalAlpha = alpha;
@@ -55,7 +54,9 @@ function drawFireWall(fw){
   for(let i=0;i<n;i++){
     const a = (i/n)*Math.PI*2 + (dying?0:now*0.12);
     const fx = fw.x + Math.cos(a)*mid, fy = fw.y + Math.sin(a)*mid;
-    const t = animName==="formacion" ? ageSec : (now + i*0.11);
+    // Fit the authored formation sequence into the existing 300 ms visual phase.
+    const formation = MuroFuego.animations.formacion;
+    const t = animName==="formacion" ? spawnProg*formation.frames.length/formation.fps : (now + i*0.11);
     MuroFuego.draw(ctx, animName, t, fx, fy, flameSize);
   }
   ctx.filter = "none";

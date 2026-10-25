@@ -1,0 +1,897 @@
+{
+  "scope": "Actual vendor raster calls in isolated real renderer; not full arena/relay gate",
+  "checks": [
+    {
+      "name": "formation-1-false",
+      "pass": true
+    },
+    {
+      "name": "unchanged-active-death-1-false",
+      "pass": true
+    },
+    {
+      "name": "formation-1-true",
+      "pass": true
+    },
+    {
+      "name": "unchanged-active-death-1-true",
+      "pass": true
+    },
+    {
+      "name": "formation-4-false",
+      "pass": true
+    },
+    {
+      "name": "unchanged-active-death-4-false",
+      "pass": true
+    },
+    {
+      "name": "formation-4-true",
+      "pass": true
+    },
+    {
+      "name": "unchanged-active-death-4-true",
+      "pass": true
+    },
+    {
+      "name": "object-state",
+      "pass": true
+    },
+    {
+      "name": "renderer-RNG",
+      "pass": true
+    },
+    {
+      "name": "actual-atlas-consumed",
+      "pass": true
+    },
+    {
+      "name": "page-errors",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "rows": [
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": false,
+      "age": 0,
+      "frames": [
+        4
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": false,
+      "age": 75,
+      "frames": [
+        4
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": false,
+      "age": 150,
+      "frames": [
+        5
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": false,
+      "age": 225,
+      "frames": [
+        5
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": false,
+      "age": 299,
+      "frames": [
+        6
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": false,
+      "age": 300,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": false,
+      "age": 700,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": false,
+      "age": 4200,
+      "frames": [
+        12
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": false,
+      "age": 4490,
+      "frames": [
+        12
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": true,
+      "age": 0,
+      "frames": [
+        4
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": true,
+      "age": 75,
+      "frames": [
+        4
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": true,
+      "age": 150,
+      "frames": [
+        5
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": true,
+      "age": 225,
+      "frames": [
+        5
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": true,
+      "age": 299,
+      "frames": [
+        6
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": true,
+      "age": 300,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": true,
+      "age": 700,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": true,
+      "age": 4200,
+      "frames": [
+        12
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 1,
+      "voidFire": true,
+      "age": 4490,
+      "frames": [
+        12
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": false,
+      "age": 0,
+      "frames": [
+        4
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": false,
+      "age": 75,
+      "frames": [
+        4
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": false,
+      "age": 150,
+      "frames": [
+        5
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": false,
+      "age": 225,
+      "frames": [
+        5
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": false,
+      "age": 299,
+      "frames": [
+        6
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": false,
+      "age": 300,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": false,
+      "age": 700,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": false,
+      "age": 4200,
+      "frames": [
+        12
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": false,
+      "age": 4490,
+      "frames": [
+        12
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": true,
+      "age": 0,
+      "frames": [
+        4
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": true,
+      "age": 75,
+      "frames": [
+        4
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": true,
+      "age": 150,
+      "frames": [
+        5
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": true,
+      "age": 225,
+      "frames": [
+        5
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": true,
+      "age": 299,
+      "frames": [
+        6
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": true,
+      "age": 300,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": true,
+      "age": 700,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": true,
+      "age": 4200,
+      "frames": [
+        12
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "before",
+      "tier": 4,
+      "voidFire": true,
+      "age": 4490,
+      "frames": [
+        12
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": false,
+      "age": 0,
+      "frames": [
+        4
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": false,
+      "age": 75,
+      "frames": [
+        5
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": false,
+      "age": 150,
+      "frames": [
+        6
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": false,
+      "age": 225,
+      "frames": [
+        7
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": false,
+      "age": 299,
+      "frames": [
+        7
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": false,
+      "age": 300,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": false,
+      "age": 700,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": false,
+      "age": 4200,
+      "frames": [
+        12
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": false,
+      "age": 4490,
+      "frames": [
+        12
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": true,
+      "age": 0,
+      "frames": [
+        4
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": true,
+      "age": 75,
+      "frames": [
+        5
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": true,
+      "age": 150,
+      "frames": [
+        6
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": true,
+      "age": 225,
+      "frames": [
+        7
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": true,
+      "age": 299,
+      "frames": [
+        7
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": true,
+      "age": 300,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": true,
+      "age": 700,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": true,
+      "age": 4200,
+      "frames": [
+        12
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 1,
+      "voidFire": true,
+      "age": 4490,
+      "frames": [
+        12
+      ],
+      "calls": 16,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": false,
+      "age": 0,
+      "frames": [
+        4
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": false,
+      "age": 75,
+      "frames": [
+        5
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": false,
+      "age": 150,
+      "frames": [
+        6
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": false,
+      "age": 225,
+      "frames": [
+        7
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": false,
+      "age": 299,
+      "frames": [
+        7
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": false,
+      "age": 300,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": false,
+      "age": 700,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": false,
+      "age": 4200,
+      "frames": [
+        12
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": false,
+      "age": 4490,
+      "frames": [
+        12
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": true,
+      "age": 0,
+      "frames": [
+        4
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": true,
+      "age": 75,
+      "frames": [
+        5
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": true,
+      "age": 150,
+      "frames": [
+        6
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": true,
+      "age": 225,
+      "frames": [
+        7
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": true,
+      "age": 299,
+      "frames": [
+        7
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": true,
+      "age": 300,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": true,
+      "age": 700,
+      "frames": [
+        10,
+        11,
+        8,
+        9
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": true,
+      "age": 4200,
+      "frames": [
+        12
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    },
+    {
+      "variant": "after",
+      "tier": 4,
+      "voidFire": true,
+      "age": 4490,
+      "frames": [
+        12
+      ],
+      "calls": 28,
+      "stateUnchanged": true
+    }
+  ],
+  "rng": 0
+}
