@@ -209,7 +209,6 @@ function codexBind(body, cur){
     nav.addEventListener("touchend", e=>{ if(sx===null) return; const t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy; sx = null;
       if(Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy)*1.6 && !e.target.closest(".cx-scroll-x")) codexStep(dx < 0 ? 1 : -1); }, {passive:true});
   }
-  body.querySelectorAll("[data-replay-tut]").forEach(b=>b.addEventListener("click", ev=>{ ev.stopPropagation(); if(typeof arenaTutorialReplay==="function"){ arenaTutorialReplay(b.dataset.replayTut); b.textContent = "✓ La próxima vez que entres, el Hechicero te la vuelve a enseñar"; b.disabled = true; } }));
   const guide = body.querySelector("#codex-guide-btn");
   if(guide) guide.addEventListener("click", ()=>{ if(typeof alphaGuideOpen==="function") alphaGuideOpen(); });
   const inv = body.querySelector("#codex-inv-btn");
@@ -768,12 +767,10 @@ function codexArenaHtml(a){
   // Reglas de la arena desde la Arena Factory (decisión propia, mecánica, aviso del peligro, qué examina el jefe)
   const BP = typeof arenaBlueprint==="function" ? arenaBlueprint(a) : null;
   if(BP){
-    const canReplay = typeof ARENA_TUT_DRIVERS!=="undefined" && ARENA_TUT_DRIVERS[a] && typeof arenaTutorialSeen==="function" && arenaTutorialSeen(a);
     panel += _sec("Reglas de la arena", `<div class="cx-mech">✦ <b>${_cxEsc(BP.primary.name)}:</b> ${_cxEsc(BP.primary.rule)}</div>
       <div class="cx-mech">◎ <b>La decisión:</b> ${_cxEsc(BP.decision)}</div>
       <div class="cx-mech">⚠ <b>${_cxEsc(BP.hazard.name)}</b> — aviso: ${_cxEsc(BP.hazard.telegraph)}</div>
-      ${BP.boss && BP.boss.name ? `<div class="cx-mech">♛ <b>${_cxEsc(BP.boss.name)}</b> pone a prueba: ${_cxEsc(BP.boss.teaches)}</div>` : ""}
-      ${canReplay ? `<button class="cx-link" data-replay-tut="${_cxEsc(a)}">↺ Repetir la lección de esta arena</button>` : ""}`, "combat");
+      ${BP.boss && BP.boss.name ? `<div class="cx-mech">♛ <b>${_cxEsc(BP.boss.name)}</b> pone a prueba: ${_cxEsc(BP.boss.teaches)}</div>` : ""}`, "combat");
   }
   if(brief) panel += _sec("Peligros", `<div class="cx-mech">☠ ${_cxEsc(brief.kill)}</div><div class="cx-mech ok">✚ ${_cxEsc(brief.help)}</div>${L.hazards ? `<div class="cx-hazards">${L.hazards.map(h=>`<span class="cx-chip static">${_cxEsc(h)}</span>`).join("")}</div>` : ""}`, "combat");
   if(typeof CHRONICLE_PAGES!=="undefined"){

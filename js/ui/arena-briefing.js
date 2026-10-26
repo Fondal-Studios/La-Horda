@@ -1,8 +1,8 @@
 "use strict";
 /* ============================================================
    js/ui/arena-briefing.js
-   BRIEFING PRE-ARENA (UX Bible §Briefing, Arena Bible §7). Completa la ficha del Hechicero
-   (js/ui/run-intro.js: lore, lo que te mata / ayuda, objetivo) con los datos de la Arena Factory
+   BRIEFING PRE-ARENA (UX Bible §Briefing, Arena Bible §7). Completa la ficha de arena
+   (js/ui/run-intro.js: objetivo, lo que amenaza / ayuda) con los datos de la Arena Factory
    (js/arenas/common/arena-blueprints.js): imagen de la arena, MECÁNICA ESPECIAL, PELIGRO con su aviso,
    JEFE y BOTÍN DESTACADO (set de afinidad con piezas ✓ / ? y dónde caen las que faltan; si el set se
    puede comprar, la ruta gratuita se nombra primero). Máximo de información con mínimo texto.
@@ -41,7 +41,7 @@ function arenaBriefingHTML(arena){
   }
   const seen = typeof arenaTutorialSeen==="function" && arenaTutorialSeen(arena);
   const tut = B.tutorial && B.tutorial.steps && B.tutorial.steps.length && !seen && typeof ARENA_TUT_DRIVERS!=="undefined" && ARENA_TUT_DRIVERS[arena]
-    ? `<div class="abr-tut">▶ Primera vez: el Hechicero te enseña la regla de esta arena jugando.</div>` : "";
+    ? "" : "";
   return `<div class="abr-grid">${cells.join("")}</div>${tut}`;
 }
 function arenaBriefingDecorate(el, arena){

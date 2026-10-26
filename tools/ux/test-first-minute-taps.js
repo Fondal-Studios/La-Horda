@@ -111,7 +111,7 @@ async function playFromJugar(B) {
       await sleep(400); await B.tap('#hub-play-btn');
       check(`SALA.${mode}.desde_la_segunda_partida_JUGAR_abre_la_Sala_(equipo)`, await B.vis('#prep-screen'));
       // el Libro conserva el prólogo entero (no el resumen) y dice cómo se gana y se pierde
-      const lib = await B.E(() => { const pg = codexBookIntroPages(); return { pro: pg[3].text.length > (BOOK_INTRO_PAGES[3].recap || '').length, lose: /caen todos/.test((pg.find(p => p.kicker === 'TU MISIÓN') || {}).text || '') }; });
+      const lib = await B.E(() => { const pg = codexBookIntroPages(); return { pro: pg[3].text.length > (BOOK_INTRO_PAGES[3].recap || '').length, lose: /compañero cae/.test((pg.find(p => p.kicker === 'TU MISIÓN') || {}).text || '') }; });
       check(`LIBRO.${mode}.prologo_completo_y_como_se_pierde_siguen_en_Codice_El_Libro`, lib.pro && lib.lose, lib);
       check(`ERRORES.${mode}.sin_errores_de_pagina`, B.errors.length === 0, B.errors);
       await B.ctx.close();

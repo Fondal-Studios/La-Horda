@@ -11,9 +11,9 @@
 const GOAL_LEVELS = 10;
 // Páginas de la tarjeta de misión (la primera vez que se entra a una arena de campaña).
 const GOAL_MISSION_PAGES = [
-  {who:"EL HECHICERO", title:"TU MISIÓN: SOBREVIVIR",
+  {who:"MISIÓN", title:"TU MISIÓN: SOBREVIVIR",
    text:"Vas a pelear contra una horda de monstruos. Tu único trabajo es seguir con vida. Cada nivel dura un ratito: aguantá hasta que el reloj llegue a cero y los monstruos caen solos."},
-  {who:"EL HECHICERO", title:"CÓMO SE GANA Y CÓMO SE PIERDE",
+  {who:"MISIÓN", title:"CÓMO SE GANA Y CÓMO SE PIERDE",
    text:"Se gana aguantando 10 niveles; en el último aparece un jefe: derrotalo y ganás la arena. Se pierde si caen todos los guardianes de tu equipo. Si un compañero cae, mantené ✚ a su lado para levantarlo."}
 ];
 // PRIMER MINUTO LIMPIO: ¿ya hizo o saltó el entrenamiento? (mismas marcas que HordaOnboarding, js/systems/onboarding-access.js:

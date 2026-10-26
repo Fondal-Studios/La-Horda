@@ -5,7 +5,9 @@
    SUS REGLAS la primera vez: BRIEFING → ENTRADA → MICRO-TUTORIAL JUGABLE → PARTIDA REAL.
    Los pasos y textos viven en la ficha (ARENA_BLUEPRINTS[a].tutorial.steps); acá vive el DRIVER que
    prepara la situación y detecta que el jugador lo hizo (ENSEÑAR → HACER → CONFIRMAR → CONTINUAR).
-   Habla con la voz del Hechicero (tutSay / tutDone, js/systems/tutorial.js).
+   APAGADO (ARENA_TUT_ON = false): el Hechicero ya no enseña en la partida (su voz es solo el Libro) y tutSay descarta estos
+   pasos; sin texto, la fisura/núcleo de práctica no tendrían sentido. Las reglas de cada arena se consultan a pedido en
+   Códice › Arenas. El código queda para no perder los drivers si se vuelve a hacer una práctica jugable con otra voz.
    Estado persistido: save.tut.arena[clave] = 1 (no se repite). "Saltar": el botón del cuadro del Hechicero
    o simplemente jugar: cada paso tiene un tope de tiempo y nunca bloquea la partida.
    Multijugador: el anfitrión (o la partida sola) prepara la situación (p.ej. el núcleo de práctica); cada
@@ -15,6 +17,7 @@
    primera partida.
    ============================================================ */
 const ARENA_TUT = {arena:null, step:-1, t:0, stepT:0, data:null, run:null};
+const ARENA_TUT_ON = false;
 const ARENA_TUT_STEP_MAX_MS = 30000; // nadie queda atascado en un paso
 function _arenaTutFlags(){ const f = tutFlags(); if(!f.arena) f.arena = {}; return f.arena; }
 function arenaTutorialSeen(a){ try{ return !!_arenaTutFlags()[a]; }catch(e){ return false; } }
@@ -113,6 +116,7 @@ const ARENA_TUT_DRIVERS = {
   }
 };
 function arenaTutTick(dt){
+  if(!ARENA_TUT_ON) return;
   if(state!=="playing" || !player || !player.alive) return;
   if(typeof divinaMode!=="undefined" && divinaMode) return;
   if(typeof ALPHA_TRAINING!=="undefined" && ALPHA_TRAINING.active) return;

@@ -16,6 +16,9 @@ const SCREENS={
  shop_skin_hero:"if(!window.__origShowcase){window.__origShowcase=shopDailyShowcase;shopDailyShowcase=function(){return Object.assign({},window.__origShowcase.apply(this,arguments),{featured:{kind:'skin',id:'exp_vesper',price:900,base:900,owned:false}});};}setState('shop');renderShop();",
  prep:"setState('prep');renderPrepSummary();",
  run_intro:"runIntroShow('micelial',()=>{});RUN_INTRO.pages=[];RUN_INTRO.prologue=false;runIntroFill(document.getElementById('run-intro'),'micelial',ARENA_BRIEF.micelial);",
+ libro_carga:"codexBookPlay('revisit',codexBookShortPages('micelial'),{});",
+ libro_fragmento:"codexBookPlay('revisit',codexBookFragmentPages('infernal'),{});",
+ libro_intro:"codexBookPlay('revisit',codexBookIntroPages(),{});",
  tactical:"selectedClass='libertador';currentArena='bosque';lobbyAllies=['tanque','soporte','mago'];startRun(3);setState('playing');document.getElementById('pause-btn').click();",
  hud:"selectedClass='nigromante';currentArena='minas';lobbyAllies=['tanque','soporte','mago'];startRun(3);setState('playing');updateHUD();"
 };
@@ -61,7 +64,7 @@ async function settle(page){
     return out.slice(0,12);
    });
    for(const i of issues)found.push({viewport:`${width}x${height}`,screen:name,...i});
-   await page.evaluate(()=>{try{if(typeof RUN_INTRO!=='undefined'&&RUN_INTRO.open){RUN_INTRO.open=false;document.getElementById('run-intro').classList.add('hidden');}document.getElementById('pause-screen').classList.add('hidden');}catch(e){}});
+   await page.evaluate(()=>{try{if(typeof BOOK!=='undefined'&&BOOK.open)bookClose('x');if(typeof RUN_INTRO!=='undefined'&&RUN_INTRO.open){RUN_INTRO.open=false;document.getElementById('run-intro').classList.add('hidden');}document.getElementById('pause-screen').classList.add('hidden');}catch(e){}});
   }
   await page.close();
  }}finally{await browser.close();server.kill();}

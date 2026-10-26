@@ -126,7 +126,7 @@ function updateDownedOverlay(){
 function updateHUD(){
   updateReviveBtn(); // antes nunca se llamaba: el botón quedaba inactivo para siempre
   if(typeof hudTextTick==="function") hudTextTick(); // cola del cartel central (js/ui/hud-text.js)
-  tutTick(); // la voz del Hechicero: cada concepto se enseña una vez, jugando (js/systems/tutorial.js)
+  tutTick(); // indicaciones neutras de controles y voces de jefes (js/systems/tutorial.js)
   updateDownedOverlay();
   const vitals = heroVitals(player);
   hudCss(document.getElementById("hp-shield-fill"), "width", hudPct(vitals.shieldPct));

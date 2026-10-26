@@ -172,7 +172,7 @@ async function boot(browser, opts) {
     const r = await E(async () => {
       __start('ciudad', 'segador', 1); loop = function(){};
       render(); updateHUD();
-      tutSay('~t_hit', 'Cada habilidad necesita recargarse: esperá a que el botón se llene otra vez para volver a usarla.', null, 60000, true);
+      TUT_NEUTRAL['~t_hit'] = 1; tutSay('~t_hit', 'Cada habilidad necesita recargarse: esperá a que el botón se llene otra vez para volver a usarla.', null, 60000, true);
       _arenaTitleUntil = 0; showBanner('RUNA ACTIVA: ¡CORRÉ!');
       await new Promise(r => setTimeout(r, 450));
       const s = worldToScreen(player.x, player.y), head = s.y - 64 * CAM_ZOOM;
@@ -202,7 +202,7 @@ async function boot(browser, opts) {
     check(`CAM.${v.name}.cartel_central_no_tapa_al_heroe`, !overlap(r.ban, heroBox) && !overlap(r.banLow, heroBox) && !overlap(r.banLow, r.tut), { ban: r.ban, banLow: r.banLow, heroBox });
     check(`CAM.${v.name}.hechicero_se_agacha_al_recibir_danio_y_vuelve`, r.ducked && Number(r.op) < 0.2 && r.keyKept && r.sameText && r.extended && r.back, r);
     check(`HUD.${v.name}.nombre_corto_en_una_linea`, /^Segador · Nv\./.test(r.plevel) && r.oneLine && r.full === 'Segador, el Olvidado', { plevel: r.plevel, oneLine: r.oneLine });
-    if (OUT) { await page.evaluate(() => { tutSay('~t_hit2', 'Cada habilidad necesita recargarse: esperá a que el botón se llene otra vez para volver a usarla.', null, 60000, true); render(); }); await sleep(400); await page.screenshot({ path: `${OUT}/hit_react_${v.name}.png` }); }
+    if (OUT) { await page.evaluate(() => { TUT_NEUTRAL['~t_hit2'] = 1; tutSay('~t_hit2', 'Cada habilidad necesita recargarse: esperá a que el botón se llene otra vez para volver a usarla.', null, 60000, true); render(); }); await sleep(400); await page.screenshot({ path: `${OUT}/hit_react_${v.name}.png` }); }
     check(`CAM.${v.name}.sin_errores`, errors.length === 0, errors.slice(0, 3));
     await ctx.close();
   }
