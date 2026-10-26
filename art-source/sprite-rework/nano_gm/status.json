@@ -1,0 +1,80 @@
+{
+  "hero": "nano_gm",
+  "status": "source_generated_requires_cleanup",
+  "sourceSheets": [
+    {
+      "path": "art-source/sprite-rework/nano_gm/cast-directions-source.png",
+      "size": 2433314,
+      "dimensions": [
+        1323,
+        1189
+      ]
+    },
+    {
+      "path": "art-source/sprite-rework/nano_gm/hurt-directions-source.png",
+      "size": 2749768,
+      "dimensions": [
+        1261,
+        1247
+      ]
+    },
+    {
+      "path": "art-source/sprite-rework/nano_gm/idle-directions-source.png",
+      "size": 2444350,
+      "dimensions": [
+        1263,
+        1246
+      ]
+    },
+    {
+      "path": "art-source/sprite-rework/nano_gm/death-directions-source.png",
+      "size": 2079652,
+      "dimensions": [
+        1262,
+        1246
+      ]
+    },
+    {
+      "path": "art-source/sprite-rework/nano_gm/ultimate-directions-source.png",
+      "size": 2561499,
+      "dimensions": [
+        1261,
+        1247
+      ]
+    },
+    {
+      "path": "art-source/sprite-rework/nano_gm/attack-directions-source.png",
+      "size": 2973241,
+      "dimensions": [
+        1277,
+        1231
+      ]
+    },
+    {
+      "path": "art-source/sprite-rework/nano_gm/walk-directions-source.png",
+      "size": 2218823,
+      "dimensions": [
+        1278,
+        1230
+      ]
+    }
+  ],
+  "generatedSheetsThisDelivery": 6,
+  "totalSourceSheets": 7,
+  "nominalCells": 112,
+  "validatedUniqueFrames": 0,
+  "integratedCombatAssets": 0,
+  "issues": [
+    "Cell overlap especially ultimate; regular grid not validated",
+    "Some poses reach sheet edge",
+    "Direction and wing consistency needs per-frame review",
+    "Existing runtime mirrors left and adds procedural wings"
+  ],
+  "next": [
+    "Correct spacing and margins",
+    "Pack and validate transparent frames and pivots",
+    "Integrate explicit left direction and prevent duplicate wings",
+    "Visual gameplay tests"
+  ],
+  "globalMissingCount": null
+}
