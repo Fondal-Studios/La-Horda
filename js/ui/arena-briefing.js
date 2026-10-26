@@ -36,8 +36,8 @@ function arenaBriefingHTML(arena){
   const F = arenaFeaturedSet(arena);
   if(F){
     const chips = F.pieces.map(p=>`<span class="abr-piece ${p.owned ? "own" : "miss"}" title="${_abrEsc(p.name)}">${p.owned ? "✓" : "?"} ${_abrEsc(p.slot)}</span>`).join("");
-    cells.push(cell("loot", "◆ BOTÍN DESTACADO", F.name + " · " + F.owned + "/" + F.pieces.length,
-      "Cae acá" + (F.also.length ? " y en " + F.also.slice(0, 2).join(", ") : ""), `<div class="abr-pieces">${chips}</div>`));
+    cells.push(cell("loot", "◆ BOTÍN", F.name + " · " + F.owned + "/" + F.pieces.length,
+      "Cae acá" + (F.also.length ? " y en " + F.also.slice(0, 1).join(", ") : ""), `<div class="abr-pieces">${chips}</div>`));
   }
   const seen = typeof arenaTutorialSeen==="function" && arenaTutorialSeen(arena);
   const tut = B.tutorial && B.tutorial.steps && B.tutorial.steps.length && !seen && typeof ARENA_TUT_DRIVERS!=="undefined" && ARENA_TUT_DRIVERS[arena]
@@ -50,7 +50,7 @@ function arenaBriefingDecorate(el, arena){
   if(!box){
     box = document.createElement("div"); box.className = "abr";
     const anchor = el.querySelector(".ri-crystals") ? el.querySelector(".ri-help").closest(".ri-row") : null;
-    if(anchor && anchor.nextSibling) card.insertBefore(box, anchor.nextSibling); else card.appendChild(box);
+    if(anchor && anchor.nextSibling) anchor.parentNode.insertBefore(box, anchor.nextSibling); else (card.querySelector(".ri-body") || card).appendChild(box);
   }
   box.innerHTML = arenaBriefingHTML(arena);
   let img = card.querySelector(".abr-img");

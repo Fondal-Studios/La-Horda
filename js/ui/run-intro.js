@@ -115,7 +115,7 @@ function runIntroFill(el, arena, B){
         runIntroFill(el, RUN_INTRO.arena, ARENA_BRIEF[RUN_INTRO.arena]);
       } else runIntroGo(true); // en la ficha de la arena, "Saltar" empieza la partida (sin la demora anti-toque apurado)
     });
-    el.appendChild(skip);
+    (el.querySelector(".ri-card") || el).appendChild(skip); // dentro de la tarjeta (arriba a la derecha): no pisa el texto en celular apaisado
   }
   // visible en TODAS las páginas desde el primer toque (antes solo en las de historia y recién cuando terminaba el fundido de entrada)
   skip.setAttribute("aria-label", pro ? "Saltar la historia" : "Saltar y empezar la partida");
