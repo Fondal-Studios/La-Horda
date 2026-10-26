@@ -123,7 +123,8 @@ async function boot(browser, opts) {
   // un guardado a medio camino (sin campeón) sí ve la intro
   await E(() => { const raw = JSON.parse(localStorage.getItem(SAVE_KEY)); delete raw.codexBook; for (const k of Object.keys(raw.champions)) raw.champions[k].unlocked = false; raw.arenasCleared = {}; raw.starterChosen = false; localStorage.setItem(SAVE_KEY, JSON.stringify(raw)); });
   await page.reload({ waitUntil: 'load', timeout: 180000 }); for (let k = 0; k < 300; k++) { if (await E(() => !document.getElementById('title-continue-btn').disabled)) break; await sleep(100); } await sleep(500);
-  check('MIGRACION.guardado_sin_campeon_ve_la_intro_al_elegir_el_primero', (await E(() => save.codexBook.introSeen)) === false && (await E(() => needsStarterChampion())) === true);
+  check('MIGRACION.guardado_sin_campeon_ve_la_intro_al_abrir_el_juego_(pantalla_de_carga)', (await E(() => BOOK.open && BOOK.boot)) === true && (await E(() => needsStarterChampion())) === true);
+  await E(() => { if (BOOK.open) bookClose('skip'); });
   await E(() => { loop = function () {}; window.__draws = 0; const o = bookArtDraw; bookArtDraw = function () { window.__draws++; return o.apply(this, arguments); };
     for (const k of Object.keys(save.champions)) save.champions[k].unlocked = true; save.codexBook.introSeen = true; save.tut = save.tut || {};
     ['basics','b_move','b_attack','b_skill','b_end','cooldown','hurt','energy','elite','boss','levelup','skillup','revive'].forEach(k => save.tut[k] = 1);
@@ -265,7 +266,7 @@ async function boot(browser, opts) {
   await E(() => { if (typeof campClose === 'function' && CAMP.open) campClose(true); setState('mainmenu'); renderMainMenu(); });
 
   /* ================= 6. CÓDICE › EL LIBRO ================= */
-  await E(() => { save.codexBook.introSeen = false; save.arenasCleared.ciudad = true; save.arenasCleared.bosque = true; delete save.codexBook.frag.ciudad; openCodex(); });
+  await E(() => { save.codexBook.introSeen = false; save.arenasCleared = { ciudad: true, bosque: true }; delete save.codexBook.frag.ciudad; openCodex(); });
   await sleep(500); await shot('30_codice_home');
   const home = await E(() => { const e = document.querySelector('.cx-home-book'); return e ? { txt: e.textContent, nw: !!e.querySelector('.cxb-new') } : null; });
   check('CODICE.la_home_tiene_la_franja_El_Libro_con_aviso_NUEVO', home && /EL LIBRO/.test(home.txt) && home.nw, home);

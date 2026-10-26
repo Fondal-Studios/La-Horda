@@ -9,7 +9,7 @@ Lámina: verde = caminable y alcanzable · rojo = caminable pero inalcanzable (b
 |---|---|---|---|---|---|---|---|---|
 | 1 | Ciudad Maldita (`ciudad`) | **PASS** | 0 | 0 | PASS | 9585 | 0 | ![ciudad](arenas/ciudad.webp) |
 | 2 | Fábrica Sin Fin (`fortaleza`) | **WARNING** | 0 | 1 | PASS | 12822 | 7 | ![fortaleza](arenas/fortaleza.webp) |
-| 3 | Ruinas Célticas / Élficas (`bosque`) | **PASS** | 0 | 0 | PASS | 4335 | 0 | ![bosque](arenas/bosque.webp) |
+| 3 | Ruinas Célticas / Élficas (`bosque`) | **PASS** | 0 | 0 | PASS | 4056 | 0 | ![bosque](arenas/bosque.webp) |
 | 4 | Reino Fúngico (`micelial`) | **PASS** | 0 | 0 | PASS | 2567 | 0 | ![micelial](arenas/micelial.webp) |
 | 5 | Arena Gélida (`hielo`) | **PASS** | 0 | 0 | FIX | 4308 | 0 | ![hielo](arenas/hielo.webp) |
 | 6 | Arena Acuática (`acuatica`) | **PASS** | 0 | 0 | PASS | 4319 | 0 | ![acuatica](arenas/acuatica.webp) |
@@ -42,8 +42,8 @@ Lámina: verde = caminable y alcanzable · rojo = caminable pero inalcanzable (b
 
 ### Ruinas Célticas / Élficas — PASS
 - ✔ **PASS** [blueprint] ficha completa
-- ✔ **PASS** [geometry] área caminable conexa — 4335 celdas; 0 bolsillos inalcanzables
-- ✔ **PASS** [geometry] si se ve sólido, es sólido — 10 sólidos pintados con colisión
+- ✔ **PASS** [geometry] área caminable conexa — 4056 celdas; 0 bolsillos inalcanzables
+- ✔ **PASS** [geometry] si se ve sólido, es sólido — 21 sólidos pintados con colisión
 - ✔ **PASS** [variants] variantes por semilla sin bolsillos — 8 semillas, 4 trazados distintos
 - ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión, 0 inalcanzables
 - ✔ **PASS** [explore] sin NaN — 0
@@ -101,7 +101,7 @@ Lámina: verde = caminable y alcanzable · rojo = caminable pero inalcanzable (b
 - ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión, 0 inalcanzables
 - ✔ **PASS** [explore] sin NaN — 0
 - ✔ **PASS** [explore] nadie fuera del mapa — 0
-- ⚠ **WARNING** [explore] héroes siempre en zona caminable — 113 cuadros-héroe dentro de colisión (> 4 u) [["tanque",324,616,597,""],["tanque",325,623,598,""],["tanque",325,629,599,""],["tanque",321,637,600,"abHang"],["tanque",321,637,601,"abHang"]] (arena con caídas: colgado del borde)
+- ⚠ **WARNING** [explore] héroes siempre en zona caminable — 105 cuadros-héroe dentro de colisión (> 4 u) [["tanque",218,650,1124,""],["tanque",216,653,1125,""],["tanque",213,657,1126,""],["tanque",227,548,1359,""],["tanque",225,543,1360,""]] (arena con caídas: colgado del borde)
 - ✔ **PASS** [explore] nunca atrapado — 1800 cuadros de exploración
 
 ### Minas Profundas — PASS

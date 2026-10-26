@@ -93,7 +93,7 @@ const BOOK_FRAGMENTS = {
     lore:"Cuando el segundo cristal salió de su sitio apareció agua donde nunca hubo. Una farera llamada Maren llevaba el cuaderno del faro: anotó la hora de la marea y siguió anotando hasta que se le mojó la tinta. Las páginas que se leen dicen que el agua subió sin ruido. Queda la lámpara, encendida. De los cristales no se mojó ninguno.",
     lesson:"Al terminar la campaña en Normal se abre Pesadilla, y al terminarla en Pesadilla, Infierno. La historia es la misma con una Horda más fuerte; a cambio, mejor botín y más experiencia y oro. Nunca es obligatorio."},
   laberinto: {title:"EL TERCERO LEVANTÓ MUROS", topic:"cooperativo", topicTitle:"NADIE PELEA SOLO", topicArt:"cooperativo",
-    lore:"Con sus propias manos levantó el Tercero este laberinto, para esconderse de la Horda y de otros. Durante años la piedra le fue subiendo por las piernas, y hacia el final solo hablaba con los muros. Cuentan que antes de caer quiso advertir algo. Los que se están volviendo piedra dicen muchas cosas. No lo anoto. Ya tenés tres cristales.",
+    lore:"Con sus propias manos levantó el Tercero este laberinto, para esconderse de la Horda y de otros. La piedra le fue subiendo por las piernas, y al final solo hablaba con los muros. Cuentan que antes de caer quiso advertir algo. Los que se vuelven piedra dicen muchas cosas. No lo anoto. Ya tenés tres cristales.",
     lesson:"Podés armar una sala con un código o entrar a una abierta: equipos de cuatro, y los lugares vacíos los ocupan bots, siempre marcados como tales. Si alguien cae, ayudalo a levantarse. Al final, la calificación mide lo que aportó cada rol."},
   abismo: {title:"EL PUNTO DE NO RETORNO", topic:"tienda", topicTitle:"EL ORO Y LA TIENDA", topicArt:"tienda",
     lore:"Con tres cristales encima, el suelo cedió. La grieta se abrió bajo el último campamento y se llevó las tiendas, las mulas y una campana que nadie había tocado. Ahora hay ruinas colgando sobre el vacío, y abajo vive algo que no tiene apuro en subir. Se mueve lo que llevaba siglos quieto, y pasa esto. Seguimos hacia donde se abre.",
@@ -105,7 +105,7 @@ const BOOK_FRAGMENTS = {
     lore:"Te mentí en lo que importaba. Fui el Primero de los Cuatro, y me quedé con la Horda porque quise: iba a fundir los cristales para ser la Horda. Cuando caí dije que alguien tenía que sostenerla, y lo creí, que es lo peor. Este libro lo escribí yo, con tinta de hollín. Los cristales necesitan portadores. Ahora son ustedes.",
     lesson:"Ganaste la campaña. Quedan la Arena Divina (las Cinco Pruebas), la Horda Infinita, las dificultades Pesadilla e Infierno, la Convergencia y el Coliseo. Tu guardián y tu equipo siguen creciendo en todos. El Códice guarda todo lo que viste.",
     extra:[{kicker:"RESUMEN DEL LIBRO", title:"LO QUE SABÉS AHORA", art:"recap",
-      text:"HISTORIA: cuatro Guardianes, cuatro cristales, y una Horda que no muere.\nMODOS: campaña, cooperativo, Convergencia, Coliseo, Horda Infinita y Divina.\nPROGRESIÓN: experiencia y nivel, oro y Tienda, equipo y Gemas, maestría, talentos, dificultades. Las Brasas ✦ son solo apariencia."}]}
+      text:"HISTORIA: cuatro Guardianes, cuatro cristales, y una Horda que no muere.\nMODOS: campaña, cooperativo, Convergencia, Coliseo, Infinita y Divina.\nPROGRESIÓN: nivel, oro y Tienda, equipo, maestría, talentos, dificultades. Las Brasas ✦ son solo apariencia."}]}
 };
 
 // Temas que el recorrido completo de la campaña tiene que cubrir (el test falla si falta alguno).
