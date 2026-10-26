@@ -3,7 +3,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),os=require('nod
 process.env.HORDA_ITEM_ECONOMY='1';process.env.DATA_PERSISTENT='1';process.env.ADMIN_USERS='liveowner';
 const {create}=require('./accounts'),E=require('./item-economy'),L=require('./item-economy-live');
 const dir=fs.mkdtempSync(path.join(os.tmpdir(),'horda-live-'));let now=Date.parse('2026-10-15T12:00:00Z'),app,server,url,seq=0,checks=0;
-async function start(){app=create({dataDir:dir,databaseUrl:'',now:()=>now,log:()=>{},originAllowed:()=>true});await app.ready;server=http.createServer((q,s)=>app.handle(q,s)||s.end());await new Promise(r=>server.listen(0,'127.0.0.1',r));url='http://127.0.0.1:'+server.address().port;}
+async function start(){app=create({dataDir:dir,databaseUrl:process.env.HORDA_TEST_PG_URL||'',now:()=>now,log:()=>{},originAllowed:()=>true});await app.ready;server=http.createServer((q,s)=>app.handle(q,s)||s.end());await new Promise(r=>server.listen(0,'127.0.0.1',r));url='http://127.0.0.1:'+server.address().port;}
 async function stop(){await new Promise(r=>server.close(r));await app.close();}
 async function api(method,p,body,t,status=200){const r=await fetch(url+p,{method,headers:{'content-type':'application/json',...(t?{authorization:'Bearer '+t}:{})},body:body===undefined?undefined:JSON.stringify(body)}),j=await r.json();assert.equal(r.status,status,p+' '+JSON.stringify(j));checks++;return j;}
 const action=(t,op,args={},status=200,id='live_'+(++seq),gm=false)=>api('POST',gm?'/api/gm/economy/action':'/api/economy/action',{op,args,requestId:id},t,status);
