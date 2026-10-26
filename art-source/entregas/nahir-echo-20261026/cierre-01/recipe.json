@@ -1,0 +1,18 @@
+{
+  "component": "A-FX-nahir-h3/long-echo",
+  "block": "B180 (partial)",
+  "source": "js/champions/vfx-b/nahir.js",
+  "sourceSha256": "b3fa8b5091b0bb23c11082b63850011128c1ae9c6ea18d35681e8b39db77fc62",
+  "nativeExisting": "nh_cut;8x16x16 phases,480ms echo,alpha .7; existing native PNG in ../produccion-01/native-reference.png",
+  "nativePNGsha256": "70f8c9b6a599f9b69adb868079e711800cb1621c6b846adbf21f103f6c05f2d1",
+  "geometry": "Echo len = finite real reflection-to-impact distance; width=min(12,r*.4)/live owner reflection count (engine min2 remains); actual primary width2r and520ms unchanged. exCastFx local Nahir wrapper sends conservative cast bounds in r and original width in b, callback decodes width. Existing kvbFx/network/sharedculling untouched.",
+  "reproduce": [
+    "NODE_PATH=<playwright> CHROMIUM_PATH=<chromium> FREEZE_BOOT=1 [MOBILE=1] node tools/vfx/capture-nahir-contact.js",
+    "NODE_PATH=<playwright> CHROMIUM_PATH=<chromium> FREEZE_BOOT=1 DENSITIES=dense [MOBILE=1] node tools/vfx/capture-nahir-three-echoes.js",
+    "NODE_PATH=<playwright>:<server node_modules> CHROMIUM_PATH=<chromium> node tools/vfx/nahir-three-echoes-online.js",
+    "NODE_PATH=<playwright> CHROMIUM_PATH=<chromium> node tools/vfx/nahir-full-render-perf.js"
+  ],
+  "installedPNG": 0,
+  "preview": "preview.html",
+  "preserved": "source-before.js and attempt source files; H1/H2/body/skins/UF/mechanics/shared engine unchanged"
+}

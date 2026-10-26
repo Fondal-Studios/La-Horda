@@ -1,0 +1,160 @@
+{
+  "checks": [
+    {
+      "name": "host owner outside ordinary cast culling",
+      "ok": true
+    },
+    {
+      "name": "host real echo created",
+      "ok": true
+    },
+    {
+      "name": "host real echo endpoint exact",
+      "ok": true
+    },
+    {
+      "name": "host native texture drawn",
+      "ok": true
+    },
+    {
+      "name": "host long echo reached",
+      "ok": true
+    },
+    {
+      "name": "touch-guest owner outside ordinary cast culling",
+      "ok": true
+    },
+    {
+      "name": "touch-guest real echo created",
+      "ok": true
+    },
+    {
+      "name": "touch-guest real echo endpoint exact",
+      "ok": true
+    },
+    {
+      "name": "touch-guest native texture drawn",
+      "ok": true
+    },
+    {
+      "name": "touch-guest long echo reached",
+      "ok": true
+    },
+    {
+      "name": "both peers same cast geometry",
+      "ok": true
+    }
+  ],
+  "rows": [
+    {
+      "role": "host",
+      "events": [
+        {
+          "args": [
+            649.4,
+            556.9,
+            785.7065419098914,
+            0,
+            240,
+            24
+          ],
+          "ownerVisible": false,
+          "end": {
+            "x": 889.4,
+            "y": 556.9
+          },
+          "beams": [
+            {
+              "x": 649.4,
+              "y": 556.9,
+              "len": 240,
+              "rot": 0,
+              "dur": 520,
+              "w": 48,
+              "requested": 240
+            },
+            {
+              "x": 49.5,
+              "y": 49.5,
+              "len": 981.2679399633923,
+              "rot": 0.5434430679657312,
+              "dur": 480,
+              "w": 26.400000000000002,
+              "requested": 981.2679399633923
+            }
+          ],
+          "refs": [
+            {
+              "x": 49.5,
+              "y": 49.5,
+              "life": 1242.4999999999982,
+              "owner": true
+            }
+          ]
+        }
+      ],
+      "draws": 152,
+      "duo": false,
+      "position": {
+        "x": 655.8,
+        "y": 563.3
+      }
+    },
+    {
+      "role": "touch-guest",
+      "events": [
+        {
+          "args": [
+            649.4,
+            556.9,
+            785.71,
+            0,
+            240,
+            24
+          ],
+          "ownerVisible": false,
+          "end": {
+            "x": 889.4,
+            "y": 556.9
+          },
+          "beams": [
+            {
+              "x": 649.4,
+              "y": 556.9,
+              "len": 240,
+              "rot": 0,
+              "dur": 520,
+              "w": 48,
+              "requested": 240
+            },
+            {
+              "x": 49.5,
+              "y": 49.5,
+              "len": 981.2679399633923,
+              "rot": 0.5434430679657312,
+              "dur": 480,
+              "w": 26.400000000000002,
+              "requested": 981.2679399633923
+            }
+          ],
+          "refs": [
+            {
+              "x": 49.5,
+              "y": 49.5,
+              "life": 1167.500000000001,
+              "owner": true
+            }
+          ]
+        }
+      ],
+      "draws": 114,
+      "duo": false,
+      "position": {
+        "x": 655.8055898620909,
+        "y": 563.2589971767623
+      }
+    }
+  ],
+  "errors": [],
+  "scope": "Real local relay host Tanque, tactile Nahir guest. Base no gear/talents/mastery, H2 then live joystick3900ms then H3. No teleports; not composite ArtGate or ordered-snapshot proof."
+}

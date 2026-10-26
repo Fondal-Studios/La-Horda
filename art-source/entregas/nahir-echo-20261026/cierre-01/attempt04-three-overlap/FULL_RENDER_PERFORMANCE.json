@@ -1,0 +1,57 @@
+{
+  "rows": [
+    {
+      "mobile": false,
+      "enabled": false,
+      "skin": null,
+      "samples": 340,
+      "p50": 2.6999999955296516,
+      "p95": 4.300000004470348,
+      "max": 11.100000001490116,
+      "drawAttempts": 1179,
+      "clears": 361,
+      "heroHP": 9465790.079999875,
+      "errors": []
+    },
+    {
+      "mobile": false,
+      "enabled": true,
+      "skin": null,
+      "samples": 340,
+      "p50": 2.5,
+      "p95": 4.299999997019768,
+      "max": 34,
+      "drawAttempts": 18621,
+      "clears": 361,
+      "heroHP": 9420929.919999951,
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "enabled": false,
+      "skin": null,
+      "samples": 340,
+      "p50": 2.5,
+      "p95": 4.300000004470348,
+      "max": 51.100000001490116,
+      "drawAttempts": 1179,
+      "clears": 361,
+      "heroHP": 9420929.919999951,
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "enabled": true,
+      "skin": null,
+      "samples": 340,
+      "p50": 2.7999999970197678,
+      "p95": 4.799999997019768,
+      "max": 11.200000002980232,
+      "drawAttempts": 18621,
+      "clears": 361,
+      "heroHP": 9783424,
+      "errors": []
+    }
+  ],
+  "scope": "Independent seeded runs, 12 enemies + 2 allies, 360 update/render frames each with RAF; first20 excluded. Actual render() clear cycle. Disabled mode suppresses echo alpha only; each60frames three real H2 casts plus220movement updates before H3, setup excluded from timings; measures JS submission time, not GPU completion, physical mobile or global-state parity. No new performance threshold introduced."
+}

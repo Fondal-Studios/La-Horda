@@ -1,0 +1,64 @@
+'use strict';
+// Myla bubble lifetime: actual casts, aggregate shield, composite A/B/A with family-render state restored.
+// AB samples restore body pose, simulation RNG, particles and the original pool.
+const fs=require('fs'),path=require('path'),crypto=require('crypto'),H=require('../lib/serve');
+const ROOT=path.resolve(__dirname,'../..'),D='art-source/entregas/nahir-echo-20261026/cierre-01';
+const out=process.env.OUT||D+'/composite-'+(process.env.MOBILE?'mobile':'desktop');fs.mkdirSync(out,{recursive:true});
+(async()=>{const site=await H.startSite(),browser=await H.launch();const errors=[],rows=[];
+try{const vp=process.env.MOBILE?{width:844,height:390}:{width:1280,height:720},p=await browser.newPage({viewport:vp});p.on('pageerror',e=>errors.push(e.message));
+ if(process.env.FREEZE_BOOT){const wf=p.waitForFunction.bind(p);p.waitForFunction=(fn,arg,o)=>wf(fn,arg,{polling:100,...o});}
+ if(process.env.FREEZE_BOOT)await p.addInitScript(()=>{requestAnimationFrame=()=>0;performance.now=()=>1000;});
+ await p.addInitScript(()=>{let s=123456;Math.random=()=>((s=(Math.imul(s,1664525)+1013904223)>>>0)/4294967296);Date.now=()=>1792684800000;});
+ if(process.env.NAHIR_SOURCE)await p.route('**/js/champions/vfx-b/nahir.js*',r=>r.fulfill({contentType:'text/javascript',body:fs.readFileSync(process.env.NAHIR_SOURCE,'utf8')}));
+ await p.goto(site.url+'/?lazy=0');await p.waitForFunction(()=>typeof startRun==='function'&&assetsAllReady());await p.waitForTimeout(1000);
+ await p.evaluate(()=>{loop=()=>{};});
+ await p.evaluate(()=>cromaEnsureLoaded('nahir_skin'));await p.waitForFunction(()=>CHAMP_PACK.nahir?.ready&&CHAMP_PACK.nahir_set?.ready&&Object.values(CROMA_SKINS.nahir_skin.packs||{}).every(k=>CHAMP_PACK[k]?.ready));
+ for(const arena of (process.env.ARENAS||'bosque,hielo,infernal,laberinto,acuatica,minas').split(','))for(const look of (process.env.LOOKS||'base,gear,set,skin,tier4').split(','))for(const density of (process.env.DENSITIES||'dense,sparse').split(','))for(const slot of (process.env.SLOTS||'2').split(',').map(Number)){
+ if(process.env.SKIP_TRIPLE_PRIOR&&['laberinto','minas'].includes(arena)&&['base','tier4'].includes(look))continue;
+ const r=await p.evaluate(({arena,look,density,slot,canary,times,lifecycle})=>{
+ let vt=1000,seed=777;const pn=performance.now,rnd=Math.random;performance.now=()=>vt;Math.random=()=>{seed^=seed<<13;seed>>>=0;seed^=seed>>17;seed^=seed<<5;seed>>>=0;return seed/4294967296;};
+ const k='nahir';netMatch=null;save.stash=[];for(const s of Object.values(save.champions)){s.unlocked=true;s.level=20;s.xp=0;s.equipment={};s.croma=null;s.cosmeticSkin='';s.inventory=[];s.talents={nodes:{},mastery:null,masteryNodes:{}};}
+ if(look!=='base'){const ids=look==='set'?setPieceIds('exp_nahir'):[];if(ids.length)for(const id of ids){const it=makeDesignedItem(id);stashItems().push(it);equipItem(k,it.uid);}else for(const type of ['arma','casco','pechera','botas']){const it=makeItem(type,'legendario');stashItems().push(it);equipItem(k,it.uid);}}
+ for(const m of save.champions[k].skillMastery)m.alloc=look==='tier4'?7:0;
+ if(look==='skin'){save.champions[k].croma='nahir_skin';cromaAfterEquip(k);}
+ if(look==='set')save.champions[k].cosmeticSkin='exp_nahir';invalidatePassiveCache();
+ selectedClass=k;currentArena=arena;lobbyAllies=['tanque','soporte'];startRun(1);document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));state='playing';enemies=[];spawnTimer=arenaHazardTimer=1e9;
+ for(const [dx,dy]of(density==='dense'?[[60,0],[-60,0],[0,60],[0,-60]]:[[60,0]])){const e=spawnEnemy('esqueleto');Object.assign(e,{x:player.x+dx,y:player.y+dy,hp:1e7,maxHp:1e7,speed:0,baseSpeed:0,dmg:0});}
+ for(const a of allies){a.x=player.x-40;a.y=player.y+14;a.stunTimer=1e9;}player.energy=1e4;player.cds=[0,0,0];player.fx=1;player.fy=0;
+ const shake=vfxShake,float=floatText,cam=CAM_SUBJECT;vfxShake=()=>{};floatText=()=>{};CAM_SUBJECT={x:player.x,y:player.y};
+ let signaturePasses=1,signatureEvents=[];const drawSig=drawChampionSignatures;
+ let bodyDraws=0;const origMip=artMipDraw,bodyAtlas=CHAMP_PACK[setSkinPackKey(player,k)]?.atlas;artMipDraw=function(im,...args){if(im===bodyAtlas)bodyDraws++;return origMip(im,...args);};
+ const cv=document.getElementById('game'),render0=render,arr=[vX,vY,vVX,vVY,vLife,vMax,vSize,vGrav,vKind,vPrio];let last;
+ const snap=()=>({pose:[...heroes,...enemies].map(e=>({e,an:e._an?JSON.parse(JSON.stringify(e._an)):null,cast:e._animCastKind})),family:{pool:famPool.map(x=>({...x})),rings:famRings.map(x=>({...x})),seen:[...famSeen].map(([k,v])=>[k,{...v}]),lastT:famLastT,objectTimes:portadorObjects.map(o=>[o,o._famT])},seed,count:vCount,particles:arr.map(a=>a.slice()),colors:vCol.slice(),sf:sfaPool.map(x=>({...x})),lastT:sfaLastT,seen:[...sfaSeen].map(([k,v])=>[k,{...v}])});
+ const restore=s=>{famPool.forEach((x,i)=>{for(const k of Object.keys(x))delete x[k];Object.assign(x,s.family.pool[i]);});famRings.splice(0,famRings.length,...s.family.rings.map(x=>({...x})));famSeen.clear();for(const [k,v]of s.family.seen)famSeen.set(k,{...v});famLastT=s.family.lastT;for(const [o,t]of s.family.objectTimes){if(t===undefined)delete o._famT;else o._famT=t;}sfaPool.splice(0,sfaPool.length,...s.sf.map(x=>({...x})));sfaLastT=s.lastT;sfaSeen.clear();for(const [k,v]of s.seen)sfaSeen.set(k,{...v});seed=s.seed;vCount=s.count;arr.forEach((a,i)=>a.set(s.particles[i]));for(let i=0;i<vCol.length;i++)vCol[i]=s.colors[i];for(const t of s.pose){if(t.an)t.e._an=JSON.parse(JSON.stringify(t.an));else delete t.e._an;if(t.cast===undefined)delete t.e._animCastKind;else t.e._animCastKind=t.cast;}};
+ const mask=document.createElement('canvas');mask.width=cv.width;mask.height=cv.height;const mg=mask.getContext('2d'),origEnemy=drawEnemyBody,origHero=drawHeroBody,di=CanvasRenderingContext2D.prototype.drawImage;let recording=false,heroRecording=false,cupDraws=0;
+ drawHeroBody=function(...a){recording=true;heroRecording=true;try{return origHero(...a);}finally{recording=false;heroRecording=false;}};
+ drawEnemyBody=function(e){recording=true;try{return origEnemy(e);}finally{recording=false;}};
+ CanvasRenderingContext2D.prototype.drawImage=function(im,...a){if(this===ctx){if(heroRecording)bodyDraws++;if(recording){mg.setTransform(ctx.getTransform());mg.globalAlpha=ctx.globalAlpha;mg.imageSmoothingEnabled=false;di.call(mg,im,...a);}if(KVB.pool.some(e=>e.beam&&e.alpha===.7&&e.frames.includes(im)))cupDraws++;}return di.call(this,im,...a);};
+ render=function(){last=snap();mg.setTransform(1,0,0,1,0,0);mg.clearRect(0,0,cv.width,cv.height);return render0();};
+ const step=()=>{vt+=16;CAM_LEAD_X=CAM_LEAD_Y=0;update(16);};for(let i=0;i<20;i++)step();_arenaTitleUntil=0;render();const scene=cv.toDataURL();
+ player.energy=1e5;player.cds=[0,0,0];for(let j=0;j<3;j++){player.cds=[0,0,0];player.energy=1e5;useSkill(1,{x:player.x+180,y:player.y,dx:1,dy:0});}
+ joyActive=true;joyVec={x:Math.SQRT1_2,y:Math.SQRT1_2};for(let i=0;i<250;i++)step();joyActive=false;joyVec={x:0,y:0};
+ const ref=portadorObjects.find(o=>o.kind==='ex_reflection'&&o.owner===player);CAM_SUBJECT={x:player.x,y:player.y};
+ for(const a of allies){a.x=player.x-40;a.y=player.y-40;}
+ const end={x:player.x+240,y:player.y},dist=Math.hypot(end.x-ref.x,end.y-ref.y);for(const [i,e]of [...enemies,...allies].entries()){const d=80+i*55;e.x=end.x+(ref.x-end.x)*d/dist;e.y=end.y+(ref.y-end.y)*d/dist;}
+ const start=vt;player.energy=1e5;player.cds=[0,0,0];useSkill(2,{x:player.x+240,y:player.y,dx:1,dy:0});
+ const echoes=KVB.pool.filter(e=>e.beam&&e.alpha===.7&&e.frames===kvbBeamFrames('nh_cut'));
+ const ab=[],samples=[];
+ const stateFingerprint=()=>JSON.stringify({pool:sfaPool.map(e=>[e.art,e.theme,e.x,e.y,e.t,e.dur]),objects:portadorObjects.map(o=>[o.kind,o.id,o.x,o.y,o.life]),heroes:heroes.map(h=>[h.x,h.y,h.hp,h.shield,h.buffs]),signatures:championSignatures});
+ for(const t of times){while(vt-start<t){step();render();}render();const elapsed=vt-start,before=cv.toDataURL(),pix=ctx.getImageData(0,0,cv.width,cv.height).data,mp=mg.getImageData(0,0,cv.width,cv.height).data,pre=last,post=snap(),s0=stateFingerprint(),active=KVB.pool;
+ let parent=null,parentState=null;const lengths=echoes.map(e=>e.len);echoes.forEach(e=>{e.len=Math.min(900,e.len);});restore(pre);render();parent=cv.toDataURL();parentState=s0===stateFingerprint();echoes.forEach((e,i)=>{e.len=lengths[i];});
+ const alphas=echoes.map(e=>e.alpha);echoes.forEach(e=>e.alpha=0);restore(pre);render();const absent=cv.toDataURL(),base=ctx.getImageData(0,0,cv.width,cv.height).data;
+ echoes.forEach((e,i)=>{e.alpha=alphas[i];});restore(pre);render();if(canary){ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle='#ff00ff';ctx.fillRect(0,0,cv.width,cv.height);ctx.restore();}
+ const restored=cv.toDataURL();let opaque=0,retained=0;const final=canary?ctx.getImageData(0,0,cv.width,cv.height).data:pix;for(let z=0;z<mp.length;z+=4)if(mp[z+3]>=250){opaque++;if(Math.max(Math.abs(final[z]-base[z]),Math.abs(final[z+1]-base[z+1]),Math.abs(final[z+2]-base[z+2]))<=24)retained++;}
+ ab.push({t,elapsed,before,absent,parent,parentState,restored,restore:before===restored,state:s0===stateFingerprint(),opaque,retained,visible:opaque?retained/opaque:0});restore(post);samples.push({elapsed,shield:player.shield,echo:echoes.map(e=>({alpha:e.alpha,t:e.t,dur:e.dur,len:e.len,active:KVB.pool.includes(e)})),pool:sfaPool.map(s=>({theme:s.theme,t:s.t,dur:s.dur,r:s.r,fi:s.fi})),phase:player.smPhase,dashLeft:player.smDashLeft,x:player.x,y:player.y,objects:portadorObjects.map(o=>({kind:o.kind,life:o.life}))});}
+ drawChampionSignatures=drawSig;artMipDraw=origMip;drawEnemyBody=origEnemy;drawHeroBody=origHero;CanvasRenderingContext2D.prototype.drawImage=di;render=render0;performance.now=pn;Math.random=rnd;vfxShake=shake;floatText=float;CAM_SUBJECT=cam;window.state='menu';
+ return{echoLengths:echoes.map(e=>e.len),signaturePasses,signatureEvents,arena,look,density,slot,scene,ab,samples,cupDraws,bodyDraws,resolved:{skin:activeSetSkinId(player),pack:setSkinPackKey(player,k),equipment:Object.values(save.champions[k].equipment).filter(Boolean).length,setPieces:setN(player,'exp_nahir'),croma:save.champions[k].croma,tier:save.champions[k].skillMastery[slot].alloc}};
+ },{arena,look,density,slot,canary:!!process.env.CANARY,lifecycle:!process.env.NO_DAMAGE,times:(process.env.TIMES||"64,128,256,416,480,528").split(",").map(Number)});
+ const hash=s=>crypto.createHash('sha256').update(Buffer.from(s.split(',')[1],'base64')).digest('hex');
+ fs.writeFileSync(out+'/progress.json',JSON.stringify({completed:rows.length,errors}));
+ for(const a of r.ab.filter(a=>process.env.ALL_PHASES||a.t===128))for(const key of ['before','absent',...(a.parent?['parent']:[])])fs.writeFileSync(`${out}/${arena}-${look}-${density}-h${slot}-${a.t}-${key}.png`,Buffer.from(a[key].split(',')[1],'base64'));
+ rows.push({...r,scene:undefined,sceneHash:hash(r.scene),ab:r.ab.map(a=>({...a,before:undefined,parent:undefined,absent:undefined,restored:undefined,parentHash:a.parent?hash(a.parent):null,beforeHash:hash(a.before),restoredHash:hash(a.restored)}))});console.log(arena,look,density,slot,r.cupDraws,Math.min(...r.ab.map(a=>a.visible)),r.ab.every(a=>a.restore&&a.state));
+ }
+ fs.writeFileSync(out+'/capture.json',JSON.stringify({rows,errors},null,2));if(errors.length||rows.some(r=>!r.signaturePasses||(!process.env.BASELINE_MAIN&&!r.cupDraws)||!r.bodyDraws||(r.look==='set'&&!r.resolved.pack.includes('nahir_set'))||(r.look==='skin'&&!r.resolved.pack.includes('nahir_skin'))||(r.look==='tier4'&&r.resolved.tier!==7)||r.ab.some(a=>!a.restore||!a.state||a.visible<.8)))process.exitCode=1;
+}finally{await browser.close();await site.close();}})().catch(e=>{console.error(e);process.exitCode=1;});
