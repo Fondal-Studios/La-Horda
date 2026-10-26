@@ -86,3 +86,18 @@ Estado: **Conectada** = pasa por una operación idempotente del servidor; **Reem
 
 - `server/test-item-economy-compat.js`: Brasas→pieza por ledger (idempotente, sin duplicar, un `PUT` no la borra, saldo insuficiente no entrega), botín (arena 1 sin Kit de Magos/build; infernal en Horda Infinita sí; `roleOnly` no se equipa fuera de magos), `reward.claim`, `chest.open`, `gift.set`, `spend`, `ascension.unlock`, GM (moneda, buzón de set, campeón) y reinicio del servidor. Verifica que el espejo `QUEST_CHESTS` coincide con `js/data/quests.js`.
 - `tools/items/t_item_economy_compat.js`: navegador (desborde en ambos modos, fuente vieja conciliada).
+
+## 8. Resultados de pruebas (26/10/2026, Chromium + Node 22 locales)
+
+Servidor (`server/`, `npm ci`): `npm test` con `HORDA_ITEM_ECONOMY=1` y con `=0`: **ambos verdes** (incluye test-wallet 65/65, test-wallet-pieces 30/30, test-payments-mp, test-item-economy 49, test-item-economy-live 51, test-item-economy-compat 62). `tools/release/mp-flow-test.js`: 27 comprobaciones OK. PostgreSQL 16 local (puerto propio): `test-postgres.js`, `test-item-economy-live.js` y `test-item-economy-compat.js` pasan contra una base real.
+
+Navegador: `t_piezas_brasas`, `t_skins_brasas`, `t_mage_kit`, `t_build_uniques`, `t_ground_loot`, `t_item_economy_compat` (nueva), `tools/alpha/new-account-starter.js`, `tools/release/legal-test.js`, `tools/collection/welcome-picks.js`, `pricing-sync.js`, `tools/net-test/reward-recovery.js` (relay real): pasan.
+
+Contratos de pruebas viejas que se cambiaron **a propósito** (la V2 manda):
+- Bolsa llena: la recogida nueva entra a la reserva visible (hasta 150) y nada se sacrifica (`t_build_uniques` FULL.*, `t_ground_loot`, `t_items` STASH, `t_q4_economia`). Con Gestión de botín apagada rige el tope de 30.
+- `t_skins_brasas`/`pricing-sync`: las manifestaciones base de los 5 conjuntos Míticos son recompensa de juego (`earnedOnly`), sin precio.
+- `t_sets`: se ignoran las manifestaciones de colección V2. `test-item-economy-live`: el cofre da 1 a 3 objetos. `welcome-picks`: el campeón inicial se fija con la operación `starter`; el oro del guardado es el del ledger.
+- `docs/production/shop-catalog.json` y `server/shop-pieces.json` regenerados (los 5 conjuntos Míticos ya no se listan en la Tienda). La rotación diaria (`pricing.js`) ahora recorta el resto del pozo si no es múltiplo de piezas/día (212 → 210): 2 piezas no rotan en modo `live`.
+
+Batería `node tools/quality/run-all.js --fast --jobs 2` (116 pruebas): fallas finales **preexistentes en main**: `t_evolution` (conocida) y `t_save_sanitize` (3 fixtures; reproducida también con un checkout parcial de `origin/main`). El resto de las fallas que apareció en la corrida (shop-catalog, welcome-picks, t_items, t_q4_economia, t_sets, t_shop_rotation) eran de la V2 y quedaron corregidas y vueltas a correr una por una. Algunas fallas intermitentes (`training-player`, `t_bestias`, `t_champs_se`) pasaron en el reintento automático; una coincidió con un llenado de disco local.
+No se volvió a correr la batería completa después de los últimos arreglos.
