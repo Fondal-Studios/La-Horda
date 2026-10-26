@@ -1,0 +1,46 @@
+{
+  "attempts": [
+    {
+      "id": "input-read-01",
+      "result": "FAIL_READ",
+      "reason": "Local technical spec absent; remote fetch recovered exact source. Large plan fetch returned empty content; local plan Gitblob matched fresh remote tree and was read locally."
+    },
+    {
+      "id": "native-01",
+      "result": "FIX",
+      "reason": "Bark release spread reached atlas border. Source/atlas/frame metrics preserved in attempt-01."
+    },
+    {
+      "id": "native-02",
+      "result": "TECHNICAL_PASS_VISUAL_FIX",
+      "reason": "Reduced release spread; root rails, medallion-like bark and fine shear handles rejected. All three grouped corrections in native-03. Source/atlases/sheet preserved in attempt-02."
+    },
+    {
+      "id": "native-03",
+      "result": "TECHNICAL_PASS",
+      "tests": "Three atlases binary alpha, zero border pixels, 42 frames, 39 nonempty, three transparent closes; zero RNG during bake. Final visual still FIX."
+    },
+    {
+      "id": "composition-01",
+      "result": "PASS_DIAGNOSTIC_NOT_GATE",
+      "tests": "6 real renderer scenes, base/Bosque mobile+desktop; each 1 candidate drawImage and 1 Maura body drawImage, loaded pack; 0 errors; candidate-only draw 0 RNG and summarized state unchanged."
+    },
+    {
+      "id": "lifecycle-main-01",
+      "result": "PASS_7_CASES",
+      "tests": "roots cap2, bark shield-zero persistence, one expiry discharge, recast singleton, death removal, shear zero/five seed healing. Zero-target, direct shield-zero fixture; no absorption or candidate hook test."
+    },
+    {
+      "id": "preview-01",
+      "result": "PASS",
+      "tests": "3 canvases/3 PNG images,0 errors."
+    },
+    {
+      "id": "reexport-01",
+      "result": "PASS",
+      "tests": "All 3 PNGs byte identical from fresh native bake."
+    }
+  ],
+  "noNewRelayOrGlobalParity": true,
+  "performance": "Bake ~50–59ms diagnostic local only; no gameplay/frame performance gate."
+}

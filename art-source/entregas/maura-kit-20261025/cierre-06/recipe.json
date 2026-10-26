@@ -1,0 +1,16 @@
+{
+  "source": "art-source/entregas/maura-kit-20261025/cierre-06/source-candidate.js",
+  "native": "SfaStrip",
+  "bark": "preserve one interior grain column in5 shifted every9rows; y anchor -123 (was -107)",
+  "shears": "steel #f3e8bb / #acb9a4, highlight2px; silhouette/orbit64cap unchanged",
+  "commands": [
+    "OUT=<directory> node tools/vfx/export-maura-close.js",
+    "OUT=<directory> node tools/vfx/maura-bucket-check.js",
+    "ARENAS=bosque,infernal,hielo LOOKS=base,tier4 DENSITIES=sparse,dense SLOTS=1,2 ALL_PHASES=1 OUT=<directory> node tools/vfx/capture-maura-contact.js; repeat MOBILE=1"
+  ],
+  "environment": {
+    "NODE_PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "CHROMIUM_PATH": "/tmp/chromium"
+  },
+  "installedPNG": 0
+}

@@ -1,0 +1,122 @@
+{
+  "rows": [
+    {
+      "art": "nova",
+      "r": 40,
+      "inView": [
+        100,
+        200,
+        90
+      ]
+    },
+    {
+      "art": "beam",
+      "r": 40,
+      "inView": [
+        100,
+        200,
+        90
+      ]
+    },
+    {
+      "art": "nova",
+      "r": 80,
+      "inView": [
+        100,
+        200,
+        110
+      ]
+    },
+    {
+      "art": "beam",
+      "r": 80,
+      "inView": [
+        100,
+        200,
+        110
+      ]
+    },
+    {
+      "art": "nova",
+      "r": 160,
+      "inView": [
+        100,
+        200,
+        190
+      ]
+    },
+    {
+      "art": "beam",
+      "r": 160,
+      "inView": [
+        100,
+        200,
+        190
+      ]
+    }
+  ],
+  "drawChecks": [
+    {
+      "r": 40,
+      "t": 80,
+      "same": true
+    },
+    {
+      "r": 40,
+      "t": 300,
+      "same": true
+    },
+    {
+      "r": 40,
+      "t": 500,
+      "same": true
+    },
+    {
+      "r": 40,
+      "t": 699,
+      "same": true
+    },
+    {
+      "r": 80,
+      "t": 80,
+      "same": true
+    },
+    {
+      "r": 80,
+      "t": 300,
+      "same": true
+    },
+    {
+      "r": 80,
+      "t": 500,
+      "same": true
+    },
+    {
+      "r": 80,
+      "t": 699,
+      "same": true
+    },
+    {
+      "r": 160,
+      "t": 80,
+      "same": true
+    },
+    {
+      "r": 160,
+      "t": 300,
+      "same": true
+    },
+    {
+      "r": 160,
+      "t": 500,
+      "same": true
+    },
+    {
+      "r": 160,
+      "t": 699,
+      "same": true
+    }
+  ],
+  "equivalent": true,
+  "scope": "Actual sfaPush culling arguments with rejected visibility; not a complete viewport rendering test"
+}

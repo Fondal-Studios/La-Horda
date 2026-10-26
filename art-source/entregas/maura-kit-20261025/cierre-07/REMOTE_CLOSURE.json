@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "date": "2026-10-25",
+  "pr": 223,
+  "branch": "art/maura-kit-first-pass-20261025",
+  "parent": "5d4b96c3146ef7ff90b42868ceb4071b6293aeb1",
+  "mainObserved": "7e4e653e83b958bb63534ea90cfc77400bf93545",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "artGate": "FIX",
+  "publication": "NOT_CHECKED_THIS_CLOSURE",
+  "checkpoint": "art-source/entregas/maura-kit-20261025/cierre-07/CHECKPOINT.md",
+  "sourceSha256": "deec3bdfa53bcc74812f51083597ed45f18a4731e2558b8f537f565e3e4cb989",
+  "newTests": [
+    "native42phases",
+    "8buckets",
+    "96scenes384ABA",
+    "fullrenderer800timings"
+  ],
+  "historicalNotRerun": [
+    "lifecycle",
+    "relay",
+    "globalparity",
+    "254functional"
+  ],
+  "remoteVerification": "Verify every entry in manifest against committed Git tree after upload; this file does not self-certify a future commit.",
+  "next": "Grouped protective bark composition, all looks/sequences; gates before merge."
+}

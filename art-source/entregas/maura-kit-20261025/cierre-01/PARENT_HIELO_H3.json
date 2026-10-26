@@ -1,0 +1,38 @@
+{
+  "rows": [
+    {
+      "view": "desktop",
+      "arena": "hielo",
+      "slot": 2,
+      "preEqual": true,
+      "stateEqual": true,
+      "imageEqual": false,
+      "parent": {
+        "slot": 2,
+        "pre": "e2f37aa01b155cde144d51b7c113ed37cb19c0c191c051ffba0b7b5dfe4f6f7e",
+        "image": "bb6e24a7b40bcf4ec3c747350b93786b85633b75f0f54cff38fbadad80657f71",
+        "state": {
+          "hp": 352,
+          "shield": 0,
+          "objects": [],
+          "seeds": 0,
+          "seed": 2815542527
+        }
+      },
+      "candidate": {
+        "slot": 2,
+        "pre": "e2f37aa01b155cde144d51b7c113ed37cb19c0c191c051ffba0b7b5dfe4f6f7e",
+        "image": "be5d3c46c1305dc0ae110a2065337962b6084eab489c68a6182e91dbbe423ccc",
+        "state": {
+          "hp": 352,
+          "shield": 0,
+          "objects": [],
+          "seeds": 0,
+          "seed": 2815542527
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "limits": "Same seeded scenario/virtual time and full renderer. UF image parity sampled at352ms, not all4800ms/pulses."
+}

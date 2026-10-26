@@ -1,0 +1,7 @@
+# Maura cierre-09 — 26/10/2026 UTC
+
+PR223, parent345efaee7aaaa478af5857eaba086e1c46b106b8. Main7e4e653 unchanged at start. VALIDADO/PASS_COMPONENT for native H1 root-path, H2 bark-shell, H3 shears and normal launch glyphs; not entire B163/B164/B165. Pending exact-head CI and normal merge. Publication not checked here.
+
+New runtime change: champion-signatures.js adds three native24x24 launch identities, same460ms event/culling/network. Maura native runtime unchanged from08; originals/UF/body/skins preserved. 0installedPNG. Complete before/after vs main:12matched pre-cast hashes across two arenas/both viewports. All360current scenes/1440ABA PASS; min85.13%,80%/delta24 untouched.17relayPASS;360frames32292RNG and summarized state equal, not global snapshot.132unchanged other/UF signature comparisons;12newcells alpha0/255,borders0,RNG0; cold/reducedmotion/reexport/previewPASS. FullUF4960ms6pulses; fullrenderer800timings with actual clearing. See REVIEW/TEST_ATTEMPTS for visual scope, failed harness attempts and historical checks. No blanket physical-mobile/GPU/GC certification.
+
+28previousmanifestentries verified, no remote closure loss. Queue58 retains first55/history. Reproduction commands in recipe.json. Next: inspect ALL applicable checks/workflows on committed SHA; if green mark ready and normal merge with expected_head_sha, verify PR/ref/main and public bytes, then remote postmerge closure. Do not import other FIX kits or remerge earlier PRs. Global inventory remains incomplete.

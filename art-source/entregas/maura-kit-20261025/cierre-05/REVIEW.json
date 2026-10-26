@@ -1,0 +1,20 @@
+{
+  "status": "FIX",
+  "state": "EN_CORRECCION",
+  "reviewed": [
+    "mobile-six-arenas.png",
+    "desktop-six-arenas.png",
+    "mobile/infernal-base-dense-h2-300-before.png"
+  ],
+  "findings": [
+    "Open bark preserves contact but reads as hollow frames rather than sufficiently material bark plates.",
+    "Pruning reduced and identifiable in foreground; pale thin blades lose contrast in Infernal and require temporal/sparse review.",
+    "Roots unchanged from cierre03; no new global approval."
+  ],
+  "missing": [
+    "sparse matrix and full temporal skins review",
+    "full renderer performance with clear cycle",
+    "ArtGatePASS",
+    "all exacthead checks/workflows"
+  ]
+}

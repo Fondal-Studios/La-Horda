@@ -1,0 +1,12 @@
+{
+  "base": "159fdd0131a9b12e4be22bd850f62f2b867bb339",
+  "candidate": "source-attempt02.js",
+  "steps": [
+    "Temporarily copy source-attempt02.js to js/champions/skill-fx-a/c/maura.js",
+    "Run existing tools/vfx/capture-maura-contact.js with ARENAS=bosque,infernal,hielo LOOKS=base,tier4 DENSITIES=dense SLOTS=1,2 ALL_PHASES=1 OUT=<directory>, once MOBILE=1 and once unset",
+    "Restore source-before.js to runtime"
+  ],
+  "changes": "Move bark draw to local top wrapper; pruning uses top beam dispatcher with nova draw and cast-origin endpoint; atlas and geometry unchanged.",
+  "assets": "Exact existing native strips from cierre03; no new atlas",
+  "warning": "NO_INTEGRAR: contact failure. Network/culling parity not certified; attempted beam event changes require testing before adoption."
+}

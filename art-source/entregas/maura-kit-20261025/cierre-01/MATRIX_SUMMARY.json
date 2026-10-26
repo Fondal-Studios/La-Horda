@@ -1,0 +1,65 @@
+{
+  "scenes": 360,
+  "samples": 1440,
+  "rows": [
+    {
+      "view": "desktop",
+      "source": "composite-desktop",
+      "slots": [
+        1,
+        2
+      ],
+      "scenes": 120,
+      "samples": 480,
+      "minBodyRetention": 1,
+      "allABA": true,
+      "errors": []
+    },
+    {
+      "view": "desktop",
+      "source": "roots-final-desktop",
+      "slots": [
+        0
+      ],
+      "scenes": 60,
+      "samples": 240,
+      "minBodyRetention": 1,
+      "allABA": true,
+      "errors": []
+    },
+    {
+      "view": "mobile",
+      "source": "composite-mobile",
+      "slots": [
+        1,
+        2
+      ],
+      "scenes": 120,
+      "samples": 480,
+      "minBodyRetention": 1,
+      "allABA": true,
+      "errors": []
+    },
+    {
+      "view": "mobile",
+      "source": "roots-final-mobile",
+      "slots": [
+        0
+      ],
+      "scenes": 60,
+      "samples": 240,
+      "minBodyRetention": 1,
+      "allABA": true,
+      "errors": []
+    }
+  ],
+  "threshold": 0.8,
+  "delta": 24,
+  "baseline": "Only new native canvases suppressed; all existing visual layers remain. This measures body retention, NOT candidate legibility.",
+  "visualGate": "FIX",
+  "previousRootsTopMin": {
+    "desktop": 0.7750552108528762,
+    "mobile": 0.7728788440163024
+  },
+  "canary": "Magenta full-canvas control fails 0%; exact ABA also intentionally fails."
+}

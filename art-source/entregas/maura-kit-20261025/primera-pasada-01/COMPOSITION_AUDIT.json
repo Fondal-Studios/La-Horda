@@ -1,0 +1,90 @@
+{
+  "scenes": [
+    {
+      "viewport": "mobile",
+      "slot": 0,
+      "key": "roots",
+      "frame": 5,
+      "age": 224,
+      "candidateCalls": 1,
+      "mauraBodyCalls": 1,
+      "packReady": true,
+      "pure": {
+        "rng": 0,
+        "stateEqual": true
+      }
+    },
+    {
+      "viewport": "mobile",
+      "slot": 1,
+      "key": "bark",
+      "frame": 6,
+      "age": 224,
+      "candidateCalls": 1,
+      "mauraBodyCalls": 1,
+      "packReady": true,
+      "pure": {
+        "rng": 0,
+        "stateEqual": true
+      }
+    },
+    {
+      "viewport": "mobile",
+      "slot": 2,
+      "key": "shears",
+      "frame": 5,
+      "age": 224,
+      "candidateCalls": 1,
+      "mauraBodyCalls": 1,
+      "packReady": true,
+      "pure": {
+        "rng": 0,
+        "stateEqual": true
+      }
+    },
+    {
+      "viewport": "desktop",
+      "slot": 0,
+      "key": "roots",
+      "frame": 5,
+      "age": 224,
+      "candidateCalls": 1,
+      "mauraBodyCalls": 1,
+      "packReady": true,
+      "pure": {
+        "rng": 0,
+        "stateEqual": true
+      }
+    },
+    {
+      "viewport": "desktop",
+      "slot": 1,
+      "key": "bark",
+      "frame": 6,
+      "age": 224,
+      "candidateCalls": 1,
+      "mauraBodyCalls": 1,
+      "packReady": true,
+      "pure": {
+        "rng": 0,
+        "stateEqual": true
+      }
+    },
+    {
+      "viewport": "desktop",
+      "slot": 2,
+      "key": "shears",
+      "frame": 5,
+      "age": 224,
+      "candidateCalls": 1,
+      "mauraBodyCalls": 1,
+      "packReady": true,
+      "pure": {
+        "rng": 0,
+        "stateEqual": true
+      }
+    }
+  ],
+  "errors": [],
+  "limits": "Workshop-only draw harness adds candidate over existing layers. Paired renders are diagnostic, not A/B/A exact-state gate. Six base/Bosque scenes; no skins/equipment/six-arena/relay acceptance."
+}

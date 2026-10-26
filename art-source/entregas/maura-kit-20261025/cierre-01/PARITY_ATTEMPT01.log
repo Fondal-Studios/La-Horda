@@ -1,0 +1,9 @@
+page.evaluate: TypeError: Assignment to constant variable.
+    at run (eval at evaluate (:311:30), <anonymous>:3:23)
+    at eval (eval at evaluate (:311:30), <anonymous>:24:18)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at once (/workspace/scratch/27dc1a293731/mago/tools/vfx/parity-maura-close.js:32:83)
+    at async /workspace/scratch/27dc1a293731/mago/tools/vfx/parity-maura-close.js:57:17 {
+  log: []
+}

@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "case": "roots-recast-cap",
+      "count": 2,
+      "pass": true
+    },
+    {
+      "case": "bark-shield-zero-object-persists",
+      "life": 3984,
+      "shield": 0,
+      "pass": true,
+      "method": "Explicit fixture sets shield to zero; does not certify damage absorption."
+    },
+    {
+      "case": "bark-expiry-once",
+      "discharges": 1,
+      "pass": true
+    },
+    {
+      "case": "bark-recast-single",
+      "count": 1,
+      "pass": true
+    },
+    {
+      "case": "bark-death-removal",
+      "count": 0,
+      "pass": true
+    },
+    {
+      "case": "shear-seeds-0",
+      "gain": 0,
+      "remaining": 0,
+      "pass": true
+    },
+    {
+      "case": "shear-seeds-5",
+      "gain": 17.599999999999994,
+      "remaining": 0,
+      "pass": true
+    }
+  ],
+  "limits": "Current main zero-target lifecycle observations, no candidate hook installed; direct shield-zero fixture, no damage/relay test."
+}

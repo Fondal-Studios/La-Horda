@@ -1,0 +1,34 @@
+{
+  "newPassed": [
+    "Matrix desktop180+mobile180,1440ABA,0errors,minimum85.13119533527697%",
+    "17relaychecks",
+    "132unchangedother/UFsignaturecomparisons",
+    "12newnativecells binaryalpha/bounds/RNG0",
+    "reexportbyteidentical/reducedmotion3slots/6previewcanvases",
+    "360frames RNG32292 off/on/repeat,summarizedstateequal",
+    "UF4960ms6pulsesfollow/expiry",
+    "800fullrendertimings actualclearcycle",
+    "mainbefore/after12matchedprecasthashes",
+    "signatureonlysame-state24parentcomparisons,12postexpiryPNGexact"
+  ],
+  "failedPreserved": [
+    {
+      "file": "ONLINE_ATTEMPT01.log",
+      "reason": "Local relay dependency ws absent; npm ci --ignore-scripts using existing lockfile restored it; final17PASS; lockfile unchanged."
+    },
+    {
+      "file": "PARENT_UNPAIRED_DIAGNOSTIC.json",
+      "reason": "Separate boot/scenario order produced different pre-cast hashes. Not accepted as exact before/after; source and UNPAIRED_NOT_EXACT.png preserved. Exact same-state signature swap and frozen-boot main pairs replace comparison."
+    },
+    {
+      "file": "MAIN_PAIR_ATTEMPT01.log",
+      "reason": "requestAnimationFrame freeze also blocked Playwright default RAF polling; both pages timed out waiting. Final fixture uses polling100ms; runtime unchanged."
+    },
+    {
+      "file": "canary-CAPTURE.json",
+      "reason": "Expected negative control: opaque magenta replacement yields0%retention and fails4samples; threshold80%/delta24 unchanged."
+    }
+  ],
+  "historical": "All earlier failed variants preserved. Parent345efaee19checks/8workflowsSUCCESS does not explain historicalDROP failure of0fd12d. Native kit lifecycle18 from08 remains applicable to byte-identical runtime; no new254functional rerun.",
+  "lookupErrors": "Exploratory rg against nonexistent hooks/objects paths; no runtime impact."
+}
