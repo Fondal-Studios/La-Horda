@@ -1,0 +1,30 @@
+{
+  "additionalReferences": [
+    {
+      "path": "js/rendering/portadores.js",
+      "gitBlob": "c86995811b61aaa210f90da15f132cd6a604d617",
+      "mainBlob": "c86995811b61aaa210f90da15f132cd6a604d617",
+      "exactMain": true
+    },
+    {
+      "path": "js/rendering/family-vfx.js",
+      "gitBlob": "0ff243f08c1f0ff5d756288b9cea04860bfe1ae2",
+      "mainBlob": "0ff243f08c1f0ff5d756288b9cea04860bfe1ae2",
+      "exactMain": true
+    },
+    {
+      "path": "js/champions/vfx-b/hooks.js",
+      "gitBlob": "6da650ef0a16074d70cdb1b32ab96cd163bad83f",
+      "mainBlob": "6da650ef0a16074d70cdb1b32ab96cd163bad83f",
+      "exactMain": true
+    }
+  ],
+  "existingRenderers": {
+    "H1": "drawPortadorTop has dedicated Myla yogurt tower with health bar; actual turret object12s already observed.",
+    "H2": "Existing yogurt object3.6s/r95; KVB my_puddle_idle plus family splash/drop and generic ring consumers.",
+    "H3": "family-vfx ring already checks h.shield>0; KVB my_bubble_idle does not. Target candidate lifecycle must scope KVB bubble, not remove all layers blindly.",
+    "UF": "bind-2a disables legacy my_cry_idle when UF tears is available; current Berrinche body preserved."
+  },
+  "caution": "family-vfx draws mutate famSeen/famPool/famRings/famLastT and call Math.random for yogurt. A/B/A cannot restore pose only. Do not claim global RNG fix or change shared engine on source observation alone.",
+  "scope": "Source audit, no new runtime or candidate art."
+}

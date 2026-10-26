@@ -1,0 +1,68 @@
+{
+  "checkedAtUTC": "2026-10-26T16:32:44.437909+00:00",
+  "production": "514ca9b9ec475429965c27c6f389b26e2cbc710c",
+  "canonical": "https://fondalstudios.com/la-horda/jugar/",
+  "state": "NOT_CONFIRMED",
+  "rows": [
+    {
+      "path": "index.html",
+      "url": "https://fondalstudios.com/la-horda/jugar/",
+      "queriedAtUTC": "2026-10-26T16:32:24.811485+00:00",
+      "expectedSHA256": "bcdd451f46dca6ddcda8cdff20db849197922c6343bc6e62def534df3a687b8a",
+      "status": 200,
+      "finalURL": "https://fondalstudios.com/la-horda/jugar/",
+      "bytes": 67504,
+      "publicSHA256": "02802491fb636eea94e5deb7102bc0b17ee770f9f17a233184fec1b19fa2f538",
+      "exact": false
+    },
+    {
+      "path": "js/skills/abilities.js",
+      "url": "https://fondalstudios.com/la-horda/jugar/js/skills/abilities.js",
+      "queriedAtUTC": "2026-10-26T16:32:30.681508+00:00",
+      "expectedSHA256": "4aa84dbb4d42cafca4036c16d3ef222699df6008d694a2db8d0d64316a2ae6b9",
+      "status": 200,
+      "finalURL": "https://fondalstudios.com/la-horda/jugar/js/skills/abilities.js",
+      "bytes": 87227,
+      "publicSHA256": "9ee6ca9de63c85807b9a65dffcd1161ac774750af2387b62c48abddb6bd549b6",
+      "exact": false,
+      "consumerInPublicIndex": true
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/musashi.js",
+      "url": "https://fondalstudios.com/la-horda/jugar/js/champions/skill-fx-a/c/musashi.js",
+      "queriedAtUTC": "2026-10-26T16:32:34.212929+00:00",
+      "expectedSHA256": "9770b40e170c9871ac607bf26d9ca7872e113f6541f0da65226c8b8d1b149f2b",
+      "status": 200,
+      "finalURL": "https://fondalstudios.com/la-horda/jugar/js/champions/skill-fx-a/c/musashi.js",
+      "bytes": 445,
+      "publicSHA256": "0c066b71ba023be53e7862fb34868e4c1f029e6fe914def12117f4cfa8ec9707",
+      "exact": false,
+      "consumerInPublicIndex": true
+    },
+    {
+      "path": "js/champions/ult-forms/bind.js",
+      "url": "https://fondalstudios.com/la-horda/jugar/js/champions/ult-forms/bind.js",
+      "queriedAtUTC": "2026-10-26T16:32:37.540523+00:00",
+      "expectedSHA256": "f84cc903db1a8e62c120f6171f25efb5dc613a4009c0448fbe1ea739a1bc37d1",
+      "status": 200,
+      "finalURL": "https://fondalstudios.com/la-horda/jugar/js/champions/ult-forms/bind.js",
+      "bytes": 12967,
+      "publicSHA256": "24c159def604c9ad9a8886599503c89600fcf37ab68ab37a5d444b53f85b0381",
+      "exact": false,
+      "consumerInPublicIndex": true
+    },
+    {
+      "path": "js/systems/skin-fx.js",
+      "url": "https://fondalstudios.com/la-horda/jugar/js/systems/skin-fx.js",
+      "queriedAtUTC": "2026-10-26T16:32:41.016884+00:00",
+      "expectedSHA256": "e2087ac95acad43c09309ceda3146bf2551ae4b4f610e09c2df3374cc66bcde1",
+      "status": 200,
+      "finalURL": "https://fondalstudios.com/la-horda/jugar/js/systems/skin-fx.js",
+      "bytes": 16460,
+      "publicSHA256": "366a41e2bb4b3ff96ac5c9058de1e49b926d06283e6c10c8b7b53b6daf6a0e1c",
+      "exact": false,
+      "consumerInPublicIndex": true
+    }
+  ],
+  "scope": "Read-only GET of index and four runtime consumers, normal system TLS. No infrastructure, relay, accounts or hosting changes. Canonical publication distinct from main integration."
+}

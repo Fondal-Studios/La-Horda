@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-26",
+  "component": "A-FX-musashi-h3/thousand-cuts",
+  "state": "INTEGRADO_MAIN",
+  "artGate": "PASS_COMPONENT",
+  "production": "514ca9b9ec475429965c27c6f389b26e2cbc710c",
+  "productionTree": "f1bf056729aa3d9a124c086af35ca565c5fad546",
+  "pr": 227,
+  "merge": "9709434da727b0c504f021b023de3f0eabe4a93d",
+  "mergedAt": "2026-10-26T16:32:15Z",
+  "exactHeadCI": {
+    "checks": 22,
+    "workflows": 10,
+    "conclusion": "SUCCESS"
+  },
+  "productionVerifiedFiles": 86,
+  "closure": "Evidence-only post-merge commit on original branch; do not merge PR227 again. This file does not self-reference its containing commit.",
+  "scope": "Four runtime files, zero installed PNG. Actual H3 area through local visual adapter, native three-wave cuts, only two Errante H3 dimensions. Shared engine, combat, H1/H2, body, skins and UF mechanics preserved.",
+  "supersedes": "VALIDADO and prior FIX only for A-FX-musashi-h3/thousand-cuts; does not close B172/B173/B174 or entire kit.",
+  "newVerification": {
+    "matrix": {
+      "scenes": 120,
+      "ABA": 768,
+      "minBodyRetentionPct": 85.9760257,
+      "thresholdPct": 80,
+      "delta": 24,
+      "composition": "96 unchanged non-Errante scenes + 24 rerun final texture-ready Errante scenes; not one full rerun"
+    },
+    "additionalEvolved": {
+      "radius": 536.76,
+      "scenes": 8,
+      "ABA": 48,
+      "minBodyRetentionPct": 94.7524021,
+      "reviewed": "two sheets plus mobile/desktop fullframes; supersedes production REVIEW limitation on 536.76 fullframe"
+    },
+    "reachableCasts": [
+      447.3,
+      447.3,
+      536.76
+    ],
+    "relay": "six checks, three real casts, host Tanque/guest tactile Musashi, exact rectangles and texture draws",
+    "viewportEdgeChecks": 80,
+    "lifecycleChecks": 21,
+    "UFTestGroups": 8,
+    "parity": "360 frames main/candidate/repeat, 15216 RNG and summarized state equal; no full global snapshot",
+    "exports": "four native exports/reexports byte-identical, binary alpha/borders zero/RNG zero; three buckets",
+    "performance": "1360 base + 1360 Errante full-render timings with actual clears; independent runs, no speedup/GPU/GC/physical-mobile claim"
+  },
+  "historical": "Earlier failed attempts remain preserved; earlier relay/parity/source tests are not substituted for the current named results. Old material/cap420 attempts are superseded only within this component.",
+  "publication": {
+    "state": "NOT_CONFIRMED",
+    "checked": "2026-10-26T16:32:24Z–16:32:44Z",
+    "result": "Public index consumes all four runtime JS; HTTP200 but all hashes differ from approved source. No infrastructure changes.",
+    "evidence": "PUBLICATION.json"
+  },
+  "queue": "62 entries preserved, first61 unchanged; closure supersedes only named final entry state.",
+  "next": "PRODUCCIÓN auditada Myla B175/B176/B177 on fresh main/PR. Read NEXT_MYLA_AUDIT/CASTS/RENDERERS and tools/vfx/audit-myla-next.js. Existing tower, puddle, bubble, body/skins/UF must be reused. Actual damage depleted shield while KVB bubble remained; legacy family ring already checks shield>0. Audit owner/red/lifecycle before local visual correction. No new art or visual gate certified by preliminary audit.",
+  "globalInventory": "INCOMPLETE; keep task active",
+  "lostRemoteClosure": false
+}
