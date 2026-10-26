@@ -1,0 +1,23 @@
+{
+  "native": "Canvas pixel atlas 96x72; 3rows x4frames24x24. Runtime cache, no PNG loader. Roots/bark/shears reuse exact cierre08 source and evidence PNG.",
+  "source": "signatures-candidate.js",
+  "scope": "Normal Maura slots0..2 only; same event key, culling140 and duration460ms; UF and other champions unchanged.",
+  "commands": [
+    "OUT=<dir> node tools/vfx/maura-signature-check.js",
+    "OUT=<dir> node tools/vfx/maura-signature-extra-check.js",
+    "[MOBILE=1] LOOKS=base,tier4,gear,set,skin DENSITIES=sparse,dense SLOTS=0,1,2 ALL_PHASES=1 OUT=<dir>/<viewport> node tools/vfx/capture-maura-kit-close.js",
+    "[MOBILE=1] FREEZE_BOOT=1 [BASELINE_MAIN=<dir>/main-maura.js PARENT_SIGNATURE=<dir>/signatures-before.js] ARENAS=bosque,infernal LOOKS=base DENSITIES=dense SLOTS=0,1,2 ALL_PHASES=1 OUT=<dir>/<main-or-candidate> node tools/vfx/capture-maura-kit-close.js",
+    "PAIR_SIGNATURE=<dir>/signatures-before.js ARENAS=bosque,infernal LOOKS=base DENSITIES=dense SLOTS=0,1,2 OUT=<dir>/paired-exact node tools/vfx/capture-maura-kit-close.js",
+    "REPORT_PATH=<dir>/ONLINE.json node tools/vfx/maura-kit-close-online.js",
+    "PARITY_OUT=<dir>/PARITY.json node tools/vfx/parity-maura-kit-close.js",
+    "OUT=<dir> node tools/vfx/maura-forest-complete.js",
+    "OUT=<dir> node tools/vfx/maura-root-geometry.js",
+    "OUT=<dir> node tools/vfx/maura-kit-full-render-perf.js",
+    "python <dir>/make-review.py"
+  ],
+  "environment": {
+    "NODE_PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "CHROMIUM_PATH": "/tmp/chromium"
+  },
+  "installedPNG": 0
+}

@@ -2023,8 +2023,8 @@
       "id": "maura.roots.first-pass-20261025",
       "block": "B163",
       "component": "A-FX-maura-h1/root-path",
-      "state": "EN_CORRECCION",
-      "integration": "NO_INTEGRAR",
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
       "frames": [
         0,
         1,
@@ -2039,14 +2039,12 @@
         10,
         11
       ],
-      "source": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
-      "sourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
+      "source": "art-source/entregas/maura-kit-20261025/cierre-09/source-maura.js",
+      "sourceSha256": "f433bce1aa6c8f6f1ab13ff4e35eea37abd91a691147fb4d261964de92302bc6",
       "atlas": "art-source/entregas/maura-kit-20261025/cierre-05/roots.png",
       "atlasSha256": "7a247455bce9a98bca075074cfdcb6e5c389d72527618361690b9afea112dd55",
-      "defects": [
-        "Curved unequal forks replace repeated spear/barbed cable. Ground layer fixes contact, but thin path still competes with existing bright cast rings and endpoint zone."
-      ],
-      "next": "Continue grouped closure: bark material identity, pruning contrast, sparse/temporal looks, performance/full renderer and current gates. NO_INTEGRAR.",
+      "defects": [],
+      "next": "Normal merge only after all applicable checks/workflows on exact head; verify canonical publication separately. Does not close entire block.",
       "history": [
         {
           "attempt": "attempt-01",
@@ -2087,16 +2085,29 @@
           "diagnosis": "Grouped material attempt,14contactFAIL corrected by bark anchor -123; final48scenesPASS contact,visualFIX (slats/shear joint)",
           "previousSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
           "previousSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27"
+        },
+        {
+          "attempt": "cierre-09",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
+          "priorSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
+          "priorDefects": [
+            "Curved unequal forks replace repeated spear/barbed cable. Ground layer fixes contact, but thin path still competes with existing bright cast rings and endpoint zone."
+          ],
+          "diagnosis": "Grouped launch composition removes generic star; six-arena/five-look/contact and temporal visual review PASS for named native layers. Earlier failures retained.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-09"
         }
       ],
-      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-06"
+      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-06",
+      "launchSource": "art-source/entregas/maura-kit-20261025/cierre-09/signatures-candidate.js",
+      "launchSourceSha256": "ac226503c72cd5c8bb315313f9dbf2210e6dce2196488a8616160556fc242f03",
+      "review": "art-source/entregas/maura-kit-20261025/cierre-09/REVIEW.json"
     },
     {
       "id": "maura.bark.first-pass-20261025",
       "block": "B164",
       "component": "A-FX-maura-h2/bark-shell",
-      "state": "EN_CORRECCION",
-      "integration": "NO_INTEGRAR",
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
       "frames": [
         0,
         1,
@@ -2117,14 +2128,12 @@
         16,
         17
       ],
-      "source": "art-source/entregas/maura-kit-20261025/cierre-08/source-candidate.js",
+      "source": "art-source/entregas/maura-kit-20261025/cierre-09/source-maura.js",
       "sourceSha256": "f433bce1aa6c8f6f1ab13ff4e35eea37abd91a691147fb4d261964de92302bc6",
       "atlas": "art-source/entregas/maura-kit-20261025/cierre-08/bark.png",
       "atlasSha256": "ad7ba59349d44da6240716045d6ad8422d8a1306e74ccd1ded6b7c0b78a3e205",
-      "defects": [
-        "Larger112x112 wood plates, open torso and real shield condition. In dense scenes plates remain partially hidden among bodies; generic shield/ring indicators dominate."
-      ],
-      "next": "Resolve protective bark grouping and review all equipment/skin sequences; retain80%/delta24 and mechanics. NO_INTEGRAR.",
+      "defects": [],
+      "next": "Normal merge only after all applicable checks/workflows on exact head; verify canonical publication separately. Does not close entire block.",
       "history": [
         {
           "attempt": "attempt-01",
@@ -2177,16 +2186,29 @@
           "previousSource": "art-source/entregas/maura-kit-20261025/cierre-07/source-candidate.js",
           "previousSourceSha256": "deec3bdfa53bcc74812f51083597ed45f18a4731e2558b8f537f565e3e4cb989",
           "diagnosis": "Connected curved bark flanks,96x96 anchored y-90.120scenes contactPASS; launch indicator competition remains."
+        },
+        {
+          "attempt": "cierre-09",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-08/source-candidate.js",
+          "priorSourceSha256": "f433bce1aa6c8f6f1ab13ff4e35eea37abd91a691147fb4d261964de92302bc6",
+          "priorDefects": [
+            "Larger112x112 wood plates, open torso and real shield condition. In dense scenes plates remain partially hidden among bodies; generic shield/ring indicators dominate."
+          ],
+          "diagnosis": "Grouped launch composition removes generic star; six-arena/five-look/contact and temporal visual review PASS for named native layers. Earlier failures retained.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-09"
         }
       ],
-      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-08"
+      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-08",
+      "launchSource": "art-source/entregas/maura-kit-20261025/cierre-09/signatures-candidate.js",
+      "launchSourceSha256": "ac226503c72cd5c8bb315313f9dbf2210e6dce2196488a8616160556fc242f03",
+      "review": "art-source/entregas/maura-kit-20261025/cierre-09/REVIEW.json"
     },
     {
       "id": "maura.shears.first-pass-20261025",
       "block": "B165",
       "component": "A-FX-maura-h3/pruning-shears",
-      "state": "EN_CORRECCION",
-      "integration": "NO_INTEGRAR",
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
       "frames": [
         0,
         1,
@@ -2201,14 +2223,12 @@
         10,
         11
       ],
-      "source": "art-source/entregas/maura-kit-20261025/cierre-07/source-candidate.js",
-      "sourceSha256": "deec3bdfa53bcc74812f51083597ed45f18a4731e2558b8f537f565e3e4cb989",
+      "source": "art-source/entregas/maura-kit-20261025/cierre-09/source-maura.js",
+      "sourceSha256": "f433bce1aa6c8f6f1ab13ff4e35eea37abd91a691147fb4d261964de92302bc6",
       "atlas": "art-source/entregas/maura-kit-20261025/cierre-07/shears.png",
       "atlasSha256": "5c3e32b6f398add74355ca1e674dbeb7f77c8c4cfab88dd378f5bf5a54128420",
-      "defects": [
-        "Larger handles/blades and real700ms circular cast. Native sheet identifies scissors, but dense game scene hides much of orbit behind actors; impact is not sufficiently readable."
-      ],
-      "next": "Resolve protective bark grouping and review all equipment/skin sequences; retain80%/delta24 and mechanics. NO_INTEGRAR.",
+      "defects": [],
+      "next": "Normal merge only after all applicable checks/workflows on exact head; verify canonical publication separately. Does not close entire block.",
       "history": [
         {
           "attempt": "attempt-01",
@@ -2255,9 +2275,22 @@
           "previousSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
           "previousSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
           "diagnosis": "Grouped geometry correction: irregular solid bark / shorter blades with open handles and pivot.96scenes contactPASS; protective bark silhouette remains visualFIX."
+        },
+        {
+          "attempt": "cierre-09",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-07/source-candidate.js",
+          "priorSourceSha256": "deec3bdfa53bcc74812f51083597ed45f18a4731e2558b8f537f565e3e4cb989",
+          "priorDefects": [
+            "Larger handles/blades and real700ms circular cast. Native sheet identifies scissors, but dense game scene hides much of orbit behind actors; impact is not sufficiently readable."
+          ],
+          "diagnosis": "Grouped launch composition removes generic star; six-arena/five-look/contact and temporal visual review PASS for named native layers. Earlier failures retained.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-09"
         }
       ],
-      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-07"
+      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-07",
+      "launchSource": "art-source/entregas/maura-kit-20261025/cierre-09/signatures-candidate.js",
+      "launchSourceSha256": "ac226503c72cd5c8bb315313f9dbf2210e6dce2196488a8616160556fc242f03",
+      "review": "art-source/entregas/maura-kit-20261025/cierre-09/REVIEW.json"
     }
   ],
   "latestProduction": {

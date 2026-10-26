@@ -1,0 +1,86 @@
+{
+  "state": "VALIDADO",
+  "artGate": "PASS_COMPONENT",
+  "scope": [
+    "A-FX-maura-h1/root-path and normal launch",
+    "A-FX-maura-h2/bark-shell and normal launch",
+    "A-FX-maura-h3/shears and normal launch"
+  ],
+  "notWholeBlocks": true,
+  "integration": "PENDING_EXACT_HEAD_CI",
+  "finding": "Native root forks travel on the recorded damage line; irregular wooden flanks retain open chest/face and disappear with the real shield; pivot, open handles and short metal blades communicate rotating pruning shears. Three compact airborne launch glyphs replace the generic star without obscuring the owner. Native palette and hard pixels match the game. Tier4 legacy cast flashes remain visible in early frames and unchanged; this approval covers the named new layers, not all legacy effects or entire B163/B164/B165.",
+  "reviewed": {
+    "dense": {
+      "sheets": 12,
+      "views": 180,
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "arenas": [
+        "bosque",
+        "hielo",
+        "infernal",
+        "laberinto",
+        "acuatica",
+        "minas"
+      ],
+      "looks": [
+        "base",
+        "tier4",
+        "gear",
+        "set",
+        "skin"
+      ]
+    },
+    "temporal": {
+      "sheets": 4,
+      "views": 96,
+      "cases": [
+        "mobile bosque base",
+        "desktop infernal tier4",
+        "mobile hielo skin",
+        "desktop minas gear"
+      ],
+      "densities": [
+        "sparse",
+        "dense"
+      ],
+      "times": "H1/H3 120,300,500,650; H2 120,350,1500,3750ms"
+    },
+    "mainPairs": {
+      "sheets": 2,
+      "views": 24,
+      "matchedPrecastHashes": 12,
+      "cases": "Bosque/Infernal three skills both viewports"
+    },
+    "additional": [
+      "pilot-review.png 24 native views",
+      "H1-full-desktop.png",
+      "H1-full-mobile.png",
+      "launch-atlas.png"
+    ]
+  },
+  "currentTests": [
+    "360scenes/1440ABA contact>=80%,delta24 unchanged",
+    "17 relay checks including six signature consumers",
+    "360frames off/on/repeat equal RNG32292 and summarized state",
+    "132 unchanged signature comparisons (other keys and Maura UF)",
+    "12 native launch cells alpha0/255 borders0 RNG0",
+    "cold cache/reduced motion/reexport exact/preview6canvases",
+    "UF4960ms six pulses follow/expire",
+    "fullrenderer800timings actual clear cycle",
+    "6actual damage-line geometry comparisons including tier4 range400 vs aimed persistent zone"
+  ],
+  "historicalValidUnchanged": [
+    "cierre08 18 lifecycle checks: native kit runtime remains byte-identical",
+    "cierre08 native42phases39nonempty alpha0/255/borders0",
+    "cierre05 culling equivalence, source unchanged since then"
+  ],
+  "limits": [
+    "No physical mobile/GPU/GC certification",
+    "Parity is summarized simulation, not complete global snapshot",
+    "CI for new commit must pass before ready/merge",
+    "Publication separate"
+  ]
+}
