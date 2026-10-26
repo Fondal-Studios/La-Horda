@@ -307,7 +307,8 @@ function _bkArena(c, W, H, t, u, id){
   const im = bookArtImage(id), tint = BOOK_ARENA_TINT[id] || "#e0b060";
   if(im){
     const s = Math.max(W/im.width, H/im.height)*1.3, dw = im.width*s, dh = im.height*s, pan = Math.sin(t*0.2)*(dw - W)*0.12, fx = BOOK_ARENA_FOCUS[id] || 0.5;
-    c.save(); c.filter = "grayscale(0.85) sepia(0.6) contrast(1.4) brightness(0.78)"; // lavado de tinta: casi monocromo, negros cerrados c.drawImage(im, -(dw - W)*fx + pan, (H - dh)/2, dw, dh); c.restore();
+    c.save(); c.filter = "grayscale(0.85) sepia(0.6) contrast(1.4) brightness(0.78)"; // lavado de tinta: casi monocromo, negros cerrados
+    c.drawImage(im, -(dw - W)*fx + pan, (H - dh)/2, dw, dh); c.restore();
   } else { _bkBg(c, W, H, "#2a1c10", "#0a0704"); }
   c.globalCompositeOperation = "multiply"; c.fillStyle = "rgba(196,168,112,0.4)"; c.fillRect(0, 0, W, H); c.globalCompositeOperation = "source-over";
   const g = c.createRadialGradient(W/2, H/2, Math.min(W, H)*0.3, W/2, H/2, Math.max(W, H)*0.75); g.addColorStop(0, "rgba(0,0,0,0)"); g.addColorStop(1, "rgba(8,4,1,0.82)"); c.fillStyle = g; c.fillRect(0, 0, W, H);

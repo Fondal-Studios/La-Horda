@@ -393,6 +393,18 @@ function codexBindAnimChips(body){
 function _statRow(k, v){ return `<div class="cx-stat"><span>${k}</span><b>${v}</b></div>`; }
 
 /* ---------------- GUARDIÁN ---------------- */
+// Only register sheets that are present in the repository.
+const CODEX_CHAMP_SHEETS = Object.freeze({
+  ilkan: "assets/ui/codex/champions/ilkan.png"
+});
+function codexChampSheetHtml(key){
+  const src = CODEX_CHAMP_SHEETS[key];
+  if(!src) return "";
+  const name = _cxEsc(championShortName(key));
+  return _sec("Hoja del códice", `<figure class="cx-art-sheet"><a href="${src}" target="_blank" rel="noopener" aria-label="Ampliar hoja de ${name}"><img src="${src}" alt="Ilustración de ${name}, vistas de frente, perfil y espalda y paleta de colores" loading="lazy" decoding="async"></a><figcaption>${name} · Ilustración y estudio del personaje. Tocá la lámina para ampliarla.</figcaption></figure>`, "lore");
+}
+
+
 function codexChampHtml(key){
   const cls = CLASSES[key], cat = CHAMPION_CATALOG.find(c=>c.id===key), ch = save.champions[key];
   const own = ch && ch.unlocked, L = CODEX_CHAMP_LORE[key] || {};
@@ -413,6 +425,7 @@ function codexChampHtml(key){
   let panel = head;
   if(codexChampTab === "ficha" || !own){
     const sk = [...cls.skills, cls.ultimate];
+    panel += codexChampSheetHtml(key);
     panel += _sec("¿Quién es?", `<blockquote class="cx-quote">«${_cxEsc(cat.lore)}»</blockquote>${L.origin ? `<div class="cx-origin">Origen: <b>${_cxEsc(L.origin)}</b></div>` : ""}${codexDistinctHistory(cat.lore, L.history)}`, "lore");
     if(cls.passive) panel += _sec("Pasiva · "+cls.passive.ico+" "+cls.passive.name,_p(cls.passive.desc),"combat");
     if(typeof mageKitCodexHtml==="function" && isMageClass(key)) panel += _sec("❂ Kit de Magos · cambia tu pasiva", mageKitCodexHtml(key), "combat");
