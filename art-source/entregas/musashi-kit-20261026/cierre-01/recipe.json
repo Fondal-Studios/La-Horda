@@ -1,0 +1,17 @@
+{
+  "source": "source-sfa.js::musashiThousandForm",
+  "binding": "source-bind.js normal Musashi H3 duration460ms",
+  "frames": 24,
+  "nonemptyPerBucket": 16,
+  "buckets": [
+    32,
+    56,
+    72
+  ],
+  "exports": 4,
+  "installedPNG": 0,
+  "base": "738203e6df609ae0ec0184a3adfcabeb7c98af79",
+  "reproduce": "CHROMIUM_PATH=/tmp/chromium NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules OUT=art-source/entregas/musashi-kit-20261026/cierre-01 node tools/vfx/export-musashi-area.js",
+  "matrix": "ARENAS=bosque,infernal,hielo LOOKS=base,tier4 ALL_PHASES=1 OUT=<dir>/mobile MOBILE=1 node tools/vfx/capture-musashi-area.js; desktop without MOBILE",
+  "preserved": "Successful-cast geometry,420cap,network,abilities.js,H1/H2/UF/body/skins unchanged"
+}

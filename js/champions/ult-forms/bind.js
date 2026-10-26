@@ -70,7 +70,7 @@ const UF_SK = [   // [campeón, casilla, forma, paleta, duración, geometría(c)
   ['mago', 2, 'lightning', 'storm', 1100, c => { const b = c.rec.bolts[0]; return b && {x: b.x2, y: b.y2, r: 80}; }],
   ['musashi', 0, 'claws', 'ink', 700, c => { const t = c.rec.tgts[0] || c.h; return {x: t.x, y: t.y, r: 80}; }, true],
   ['musashi', 1, 'bloom', 'sakura', 1200, c => ({x: c.to.x, y: c.to.y, r: 80}), true],
-  ['musashi', 2, 'musashiCuts', 'blade', 1200, musashiThousandGeometry],
+  ['musashi', 2, 'musashiCuts', 'blade', 460, musashiThousandGeometry],
   ['cazadora', 1, 'shards', 'thorn', 900, c => { const p = c.rec.pts[0]; return p && {x: p.x, y: p.y, r: Math.max(50, p.r || 60)}; }]
 ];
 for(const [k, slot, form, pal, dur, geom, add] of UF_SK){
