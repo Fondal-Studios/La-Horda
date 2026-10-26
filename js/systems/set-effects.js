@@ -228,6 +228,7 @@ function updateSets(h, dt){
   if(h._albaDmgT > 0) h._albaDmgT -= dt;
   if(h._guardDRT > 0) h._guardDRT -= dt;
   updateChampionSets(h, dt);
+  if(typeof updateSetVisuals === "function") updateSetVisuals(h, dt);
   if(h._mark && !h._mark.alive){ h._mark = null; }
   if(!h.alive) return;
   const c = heroSetCounts(h); if(!c) return;
