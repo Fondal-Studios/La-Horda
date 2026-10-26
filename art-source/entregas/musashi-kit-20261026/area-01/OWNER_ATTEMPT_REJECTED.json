@@ -1,0 +1,10 @@
+{
+  "state": "REJECTED_NOT_INSTALLED",
+  "reason": "heroes.find produces wrong atlas in synthetic two-Musashi fixture, but normal online netHostStartGame rejects duplicate champions and duo handoff is disabled. No reachable normal-match ownership failure demonstrated; do not call this a missing production asset. Preserve audit, no merge.",
+  "restoredMain": [
+    "js/champions/musashi.js",
+    "js/rendering/champion-sprites.js"
+  ],
+  "evidence": "../integracion-01/owner-audit-rejected/",
+  "interpretation": "No claim44checks or owner performance certify current H3."
+}

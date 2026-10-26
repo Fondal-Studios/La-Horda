@@ -1,0 +1,8 @@
+{
+  "source": "source-candidate.js::musashiThousandForm/vfxMusashiThousandPlay",
+  "sha256": "9770b40e170c9871ac607bf26d9ca7872e113f6541f0da65226c8b8d1b149f2b",
+  "native": "24frames18nonempty,3buckets32/56/72,three nonoverlapping waves, interior opening and single lateral edge;4PNG evidence exports",
+  "geometry": "Forward full real radius over existing KVB event. Bake at min420 with existing UF API, multiply only returned H3 entity w/h by r/bakedRadius. No shared engine change, no larger atlas allocation.",
+  "skin": "Existing sk_errante_cuts h86→48 and sk_errante_burst h70→32; all frames/durations/FPS/tint/otherplans identical.",
+  "reproduce": "CHROMIUM_PATH=/tmp/chromium NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules OUT=<dir> node tools/vfx/export-musashi-area.js; capture-musashi-area.js per checkpoint; no new installed PNG"
+}

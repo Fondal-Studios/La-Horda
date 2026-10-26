@@ -52,7 +52,7 @@ const SKIN_FX_PLAN = {
     basic:[{c:"slash", m:"front", h:52, d:220}],
     0:[{c:"bigslash", m:"front", h:78, d:320}],
     1:[{c:"petals", m:"origin", h:34, d:700, fps:8}, {c:"petals", m:"dest", h:34, d:700, fps:8}],
-    2:[{c:"cuts", m:"aim", h:86, d:700, fps:9}, {c:"burst", m:"aim", h:70, d:500}],
+    2:[{c:"cuts", m:"aim", h:48, d:700, fps:9}, {c:"burst", m:"aim", h:32, d:500}],
     ult:[{c:"ring", m:"feet", h:60, d:1200}, {c:"pillar", m:"self", h:150, d:1000}] },
   legion: { tint:"#5fd8e8",                               // Ilkan, Caravana de Medianoche
     0:[{c:"streak", m:"front", h:18, d:300}],

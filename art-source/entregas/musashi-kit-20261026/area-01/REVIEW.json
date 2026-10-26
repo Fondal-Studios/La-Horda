@@ -1,0 +1,25 @@
+{
+  "state": "EN_CORRECCION",
+  "gate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "scope": [
+    "A-FX-musashi-h3/thousand-cuts",
+    "real area and successful cast visual hook"
+  ],
+  "reviewed": [
+    "final-review-desktop-{0,1}.png:30 dense native views",
+    "final-review-mobile-{0,1}.png:30 dense native views",
+    "final-temporal-review-{desktop,mobile}.png:32 sparse temporal views",
+    "final-paired-{desktop,mobile}.png:16 main/candidate views",
+    "CUTS_PILOT_REVIEW.png:16 rejected early radial-cut views",
+    "orbit-attempt01 review/temporal:68 native views"
+  ],
+  "assessment": "Massive orbit spheres replaced by open tangential strokes, body contact improves. However at mobile scale the small arcs still read as a segmented ring rather than decisive blade cuts; tier4 spreads identity far from owner. Errante red legacy FX dominates several arenas. Initial launch generic blades/impact and delayed1200ms visual persistence still need grouped hierarchy/phase review. Contact PASS is not Art PASS.",
+  "pending": [
+    "Grouped cut silhouette/phase/material correction at native scale, not only palette or anchor",
+    "Full talent/recast/fused/frozen/culling/uf=0 lifecycle; >420 range semantics",
+    "Performance of final full renderer with cleanup",
+    "Exact head Art Gate and all applicable CI before ready/merge"
+  ],
+  "preserved": "H1/H2/ultimate/body/skins/normal signatures and combat mechanics unchanged; rejected owner attempt restored byte-identical to main."
+}

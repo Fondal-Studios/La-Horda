@@ -1,0 +1,11 @@
+{
+  "source": "source-candidate.js::musashiThousandForm",
+  "sha256": "bb539f443a69a1720b386eb83feaf4bb3f9ea8cfd0ac90b49eb4c706a68e0acb",
+  "engine": "Existing UF native painter; use soft layer for local outline budget; shared engine unchanged",
+  "duration": 460,
+  "phases": 24,
+  "waves": "3 waves, start q=0/.31/.62, local duration .30;3 parallel lanes; shadow one nativepixel; skip isolated terminal slivers",
+  "reproduce": "CHROMIUM_PATH=/tmp/chromium NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules OUT=<dir> node tools/vfx/export-musashi-area.js",
+  "matrix": "MOBILE=1 ALL_PHASES=1 TIMES=64,128,224,320,416,480 OUT=<dir>/mobile node tools/vfx/capture-musashi-area.js; desktop without MOBILE; OUT=<dir> python tools/vfx/review-musashi-area.py",
+  "rejected": "attempt01-overlap/source-candidate.js; same material but waves overlapped, V remained. Preserve attempts."
+}

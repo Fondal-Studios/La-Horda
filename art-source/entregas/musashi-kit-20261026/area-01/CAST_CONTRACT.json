@@ -1,0 +1,945 @@
+{
+  "scope": "18 actual H3 casts: no target/target; mastery0/7/10 and three evolution positions. Candidate native shape reused, no visual approval or global parity.",
+  "rows": [
+    {
+      "scenario": {
+        "tier": 0,
+        "slot": 2,
+        "target": false,
+        "cast": 0
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [],
+        "spinRadii": [],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "concentration": 0,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "evolution": false
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 0
+      }
+    },
+    {
+      "scenario": {
+        "tier": 0,
+        "slot": 2,
+        "target": false,
+        "cast": 1
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [],
+        "spinRadii": [],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "concentration": 0,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "evolution": false
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 0
+      }
+    },
+    {
+      "scenario": {
+        "tier": 0,
+        "slot": 2,
+        "target": false,
+        "cast": 2
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [],
+        "spinRadii": [],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "concentration": 0,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "evolution": false
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 0
+      }
+    },
+    {
+      "scenario": {
+        "tier": 0,
+        "slot": 2,
+        "target": true,
+        "cast": 0
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [
+          [
+            "uf.musashi.2",
+            0,
+            0,
+            150,
+            0
+          ]
+        ],
+        "spinRadii": [
+          135
+        ],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "hp": 999869.2817200003,
+        "concentration": 1,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "geometry": {
+          "fn": "musashi-thousand",
+          "x": 0,
+          "y": 0,
+          "r": 150
+        },
+        "evolution": false,
+        "pose": "thousand"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 30
+      }
+    },
+    {
+      "scenario": {
+        "tier": 0,
+        "slot": 2,
+        "target": true,
+        "cast": 1
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [
+          [
+            "uf.musashi.2",
+            0,
+            0,
+            150,
+            0
+          ]
+        ],
+        "spinRadii": [
+          135
+        ],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "hp": 999861.8121040002,
+        "concentration": 1,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "geometry": {
+          "fn": "musashi-thousand",
+          "x": 0,
+          "y": 0,
+          "r": 150
+        },
+        "evolution": false,
+        "pose": "thousand"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 30
+      }
+    },
+    {
+      "scenario": {
+        "tier": 0,
+        "slot": 2,
+        "target": true,
+        "cast": 2
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [
+          [
+            "uf.musashi.2",
+            0,
+            0,
+            150,
+            0
+          ]
+        ],
+        "spinRadii": [
+          135
+        ],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "hp": 999869.2817200003,
+        "concentration": 1,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "geometry": {
+          "fn": "musashi-thousand",
+          "x": 0,
+          "y": 0,
+          "r": 150
+        },
+        "evolution": false,
+        "pose": "thousand"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 30
+      },
+      "capture": "geometry-T0_H3.png"
+    },
+    {
+      "scenario": {
+        "tier": 7,
+        "slot": 2,
+        "target": false,
+        "cast": 0
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [],
+        "spinRadii": [],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "concentration": 0,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "evolution": false
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 0
+      }
+    },
+    {
+      "scenario": {
+        "tier": 7,
+        "slot": 2,
+        "target": false,
+        "cast": 1
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [],
+        "spinRadii": [],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "concentration": 0,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "evolution": false
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 0
+      }
+    },
+    {
+      "scenario": {
+        "tier": 7,
+        "slot": 2,
+        "target": false,
+        "cast": 2
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [],
+        "spinRadii": [],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "concentration": 0,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "evolution": false
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 0
+      }
+    },
+    {
+      "scenario": {
+        "tier": 7,
+        "slot": 2,
+        "target": true,
+        "cast": 0
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [
+          [
+            "uf.musashi.2",
+            0,
+            0,
+            246.60000000000002,
+            0
+          ]
+        ],
+        "spinRadii": [
+          221.94000000000003
+        ],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "hp": 999684.5817315108,
+        "concentration": 1,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "geometry": {
+          "fn": "musashi-thousand",
+          "x": 0,
+          "y": 0,
+          "r": 246.60000000000002
+        },
+        "evolution": false,
+        "pose": "thousand"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 30
+      }
+    },
+    {
+      "scenario": {
+        "tier": 7,
+        "slot": 2,
+        "target": true,
+        "cast": 1
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [
+          [
+            "uf.musashi.2",
+            0,
+            0,
+            246.60000000000002,
+            0
+          ]
+        ],
+        "spinRadii": [
+          221.94000000000003
+        ],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "hp": 999697.1565462013,
+        "concentration": 1,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "geometry": {
+          "fn": "musashi-thousand",
+          "x": 0,
+          "y": 0,
+          "r": 246.60000000000002
+        },
+        "evolution": false,
+        "pose": "thousand"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 30
+      }
+    },
+    {
+      "scenario": {
+        "tier": 7,
+        "slot": 2,
+        "target": true,
+        "cast": 2
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [
+          [
+            "uf.musashi.2",
+            0,
+            0,
+            246.60000000000002,
+            0
+          ]
+        ],
+        "spinRadii": [
+          221.94000000000003
+        ],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "hp": 999684.5817315108,
+        "concentration": 1,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "geometry": {
+          "fn": "musashi-thousand",
+          "x": 0,
+          "y": 0,
+          "r": 246.60000000000002
+        },
+        "evolution": false,
+        "pose": "thousand"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 30
+      },
+      "capture": "geometry-T7_H3.png"
+    },
+    {
+      "scenario": {
+        "tier": 10,
+        "slot": 2,
+        "target": false,
+        "cast": 0
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [],
+        "spinRadii": [],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "concentration": 0,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "evolution": false
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 0
+      }
+    },
+    {
+      "scenario": {
+        "tier": 10,
+        "slot": 2,
+        "target": false,
+        "cast": 1
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [],
+        "spinRadii": [],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "concentration": 0,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "evolution": false
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 0
+      }
+    },
+    {
+      "scenario": {
+        "tier": 10,
+        "slot": 2,
+        "target": false,
+        "cast": 2
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [],
+        "spinRadii": [],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "concentration": 0,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "evolution": true
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 0
+      }
+    },
+    {
+      "scenario": {
+        "tier": 10,
+        "slot": 2,
+        "target": true,
+        "cast": 0
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [
+          [
+            "uf.musashi.2",
+            0,
+            0,
+            315,
+            0
+          ]
+        ],
+        "spinRadii": [
+          283.5
+        ],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "hp": 999582.5875871986,
+        "concentration": 1,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "geometry": {
+          "fn": "musashi-thousand",
+          "x": 0,
+          "y": 0,
+          "r": 315
+        },
+        "evolution": false,
+        "pose": "thousand"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 999944.2885145005
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 30
+      }
+    },
+    {
+      "scenario": {
+        "tier": 10,
+        "slot": 2,
+        "target": true,
+        "cast": 1
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [
+          [
+            "uf.musashi.2",
+            0,
+            0,
+            315,
+            0
+          ]
+        ],
+        "spinRadii": [
+          283.5
+        ],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "hp": 999559.1539078833,
+        "concentration": 1,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "geometry": {
+          "fn": "musashi-thousand",
+          "x": 0,
+          "y": 0,
+          "r": 315
+        },
+        "evolution": false,
+        "pose": "thousand"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 30
+      }
+    },
+    {
+      "scenario": {
+        "tier": 10,
+        "slot": 2,
+        "target": true,
+        "cast": 2
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [
+          [
+            "uf.musashi.2",
+            0,
+            0,
+            378,
+            0
+          ]
+        ],
+        "spinRadii": [
+          340.2
+        ],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:43253/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "hp": 999338.7308618242,
+        "concentration": 1,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "geometry": {
+          "fn": "musashi-thousand",
+          "x": 0,
+          "y": 0,
+          "r": 378
+        },
+        "evolution": true,
+        "pose": "thousand"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 30
+      },
+      "capture": "geometry-T10_H3.png"
+    }
+  ],
+  "errors": []
+}

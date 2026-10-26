@@ -1,0 +1,209 @@
+{
+  "date": "2026-10-26",
+  "state": "EN_CORRECCION",
+  "ArtGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "publication": "NOT_QUERIED",
+  "PR": 227,
+  "branch": "art/musashi-thousand-cuts-first-pass-20261026",
+  "production": "e450b62a9bed694f0932d5e843a1530c81ab927e",
+  "productionTree": "f4c0ed4d49c6f3bea6c690d54f9939726b776995",
+  "verification": {
+    "tree": "f4c0ed4d49c6f3bea6c690d54f9939726b776995",
+    "entries": 12394,
+    "truncated": false,
+    "files": 52,
+    "mismatches": 0,
+    "PRhead": "e450b62a9bed694f0932d5e843a1530c81ab927e",
+    "main": "20afebd4ccefaf6fa11ce30ab096c2535d341640"
+  },
+  "runtime": "Only js/champions/skill-fx-a/c/musashi.js changed versus parent;458JS compared",
+  "newFinal": {
+    "matrix": "120scenes720ABA exact; summarized state equal; min85.099939%;80%/delta24 unchanged",
+    "visual": "8sheets84views and2fullframes reviewed; separated waves remove V in reviewed sequence; Errante red composition unresolved",
+    "native": "4exports/reexports PNG byte-identical;3buckets24frames18nonempty each;alpha0/255,edges0,RNG0;preview4canvases0errors",
+    "camera": "48checks actual inView/kvbDrawLayer with game camera dimensions; injected ink-boundary positions, isolated layer; not gameplay movement",
+    "reachable": "12 local validated talent purchases,17/30 points level99;3actualuseSkill radii447.3/447.3/536.76 versus visual420. No synthetic skill radius. Unresolved contract.",
+    "performance": "1360timings,361clears/run; enabled desktop p954.6/max15ms,mobileviewport p954.4/max21.8ms; independent runs, not speedup/GPU/GC/physicalmobile"
+  },
+  "attempts": "Overlapping-wave variant matrix120/720 preserved;6invalid initial viewport assumptions; mixed/unpinned performance excluded; corrupt review PNG preserved and recomposed",
+  "historical": "cierre02relay6 at460ms;cierre01parity360/15216 summarized;cierre03lifecycle21 unchanged bindings. No new relay/globalparity/main pair.",
+  "CI": {
+    "parent": "b36f7a1c238a61a57cfa317dd05fbc111845962f",
+    "parentChecks": "21success1cancelledSafari",
+    "parentWorkflows": "9success1cancelled",
+    "productionObserved": {
+      "checks": [
+        {
+          "name": "readability",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "entry-reference",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "lanes",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "safari-engine",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "Objetos, economía y tienda (parte A)",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "postgres",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "Regresión, UX y carriles",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "Objetos, economía y tienda (pruebas que hoy fallan en la base)",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "Identidad de arenas, objetivos y regalo inicial",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "mobile-inventory",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "Arnés y lógica pura (sin navegador)",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "transactions",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "VFX de definitivas, decales e íconos de habilidad",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "recovery",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "evidence",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "emoji-lint",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "workshop",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "Analyze (javascript-typescript)",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "Analyze (python)",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "Analyze (actions)",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "emoji-lint",
+          "status": "in_progress",
+          "conclusion": null
+        }
+      ],
+      "runs": [
+        {
+          "id": 40347230877,
+          "name": "Integracion pruebas",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 40347230923,
+          "name": "Item economy safety",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 40347230983,
+          "name": "Champion entry balance",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 40347231230,
+          "name": "VFX readability and combat parity",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 40347230697,
+          "name": "Campaign reward recovery",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 40347230807,
+          "name": "Expedition champions",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 40347230753,
+          "name": "Emoji lint (arte pixel)",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 40347230774,
+          "name": "Art production evidence",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 40347223981,
+          "name": "PR #227",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 40347221076,
+          "name": "Emoji lint (arte pixel)",
+          "status": "in_progress",
+          "conclusion": null
+        }
+      ]
+    },
+    "approval": false
+  },
+  "next": "CIERRE Musashi from source-candidate04: prioritize reachable radius447.3/536.76 versus visual420 and Errante composition together. Do not change mechanics/shared engine or blindly raise cap; design proper local visual representation, validate real casts/red/camera and ArtGate/exacthead checks before merge. No new kit. Global inventory incomplete."
+}

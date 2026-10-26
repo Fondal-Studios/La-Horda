@@ -1,0 +1,112 @@
+{
+  "checks": [
+    {
+      "name": "host exact reachable area",
+      "ok": true
+    },
+    {
+      "name": "host actual native texture draws",
+      "ok": true
+    },
+    {
+      "name": "host owner class and host cast",
+      "ok": true
+    },
+    {
+      "name": "touch-guest exact reachable area",
+      "ok": true
+    },
+    {
+      "name": "touch-guest actual native texture draws",
+      "ok": true
+    },
+    {
+      "name": "touch-guest owner class and host cast",
+      "ok": true
+    }
+  ],
+  "rows": [
+    {
+      "observer": "host",
+      "role": "host",
+      "forms": [
+        [
+          "uf.musashi.2",
+          49.5,
+          49.5,
+          447.29999999999995,
+          0.7853981633974483,
+          null,
+          null
+        ],
+        [
+          "uf.musashi.2",
+          49.5,
+          49.5,
+          447.29999999999995,
+          0.7853981633974483,
+          null,
+          null
+        ],
+        [
+          "uf.musashi.2",
+          49.5,
+          49.5,
+          536.76,
+          0.7853981633974483,
+          null,
+          null
+        ]
+      ],
+      "geometry": [
+        447.2999999999999,
+        447.2999999999999,
+        536.76
+      ],
+      "draws": 23,
+      "casts": 3,
+      "owner": "musashi"
+    },
+    {
+      "observer": "touch-guest",
+      "role": "guest",
+      "forms": [
+        [
+          "uf.musashi.2",
+          49.5,
+          49.5,
+          447.3,
+          0.79,
+          null,
+          null
+        ],
+        [
+          "uf.musashi.2",
+          49.5,
+          49.5,
+          447.3,
+          0.79,
+          null,
+          null
+        ],
+        [
+          "uf.musashi.2",
+          49.5,
+          49.5,
+          536.76,
+          0.79,
+          null,
+          null
+        ]
+      ],
+      "geometry": [
+        447.2999999999999,
+        447.2999999999999,
+        536.76
+      ],
+      "draws": 35,
+      "owner": "musashi"
+    }
+  ],
+  "errors": []
+}

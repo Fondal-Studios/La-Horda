@@ -1,0 +1,17 @@
+{
+  "source": "source-candidate.js::musashiThousandForm",
+  "sourceSha256": "1c16a64acf83ab18fc0f6cf534a4aebc6fe0e3606afc8490fcdd78510bf605cc",
+  "engine": "js/champions/ult-forms/kit.js native UF; automatic hard outline remains",
+  "duration": 460,
+  "phases": 24,
+  "nonemptyPerBucket": 22,
+  "buckets": [
+    32,
+    56,
+    72
+  ],
+  "reproduce": "CHROMIUM_PATH=/tmp/chromium NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules OUT=<dir> node tools/vfx/export-musashi-area.js",
+  "matrix": "TIMES=64,128,224,320,416,480 ALL_PHASES=1 MOBILE=1 OUT=<dir>/mobile node tools/vfx/capture-musashi-area.js; desktop without MOBILE; defaults6arenas5looks2densities",
+  "review": "OUT=<dir> python tools/vfx/review-musashi-area.py",
+  "attempt01": "Use source-attempt01.js via PARENT_SFA=<path>; export requires its source in runtime. Restore source-candidate after reproduction."
+}

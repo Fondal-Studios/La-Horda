@@ -1,0 +1,165 @@
+{
+  "scope": "Actual useSkill rejection/recast; synthetic copied skill radii419..600 and forced inView predicates are explicit boundary probes, not reachable build or actual screen-edge certification.",
+  "rows": [
+    {
+      "off": false,
+      "name": "actual cast dispatch",
+      "ok": true,
+      "events": [
+        [
+          "uf.musashi.2",
+          0,
+          0,
+          150
+        ]
+      ],
+      "fallback": []
+    },
+    {
+      "off": false,
+      "name": "fused rejected no extra H3 event",
+      "ok": true
+    },
+    {
+      "off": false,
+      "name": "frozen rejected no extra H3 event",
+      "ok": true
+    },
+    {
+      "off": false,
+      "name": "no live target no extra H3 event",
+      "ok": true
+    },
+    {
+      "off": false,
+      "name": "dead useSkill rejected",
+      "ok": true
+    },
+    {
+      "off": false,
+      "name": "recast two independent bounded events",
+      "ok": true
+    },
+    {
+      "off": false,
+      "name": "first expires at 460 while second remains",
+      "ok": true
+    },
+    {
+      "off": false,
+      "name": "second expires at 460 despite owner death/movement",
+      "ok": true
+    },
+    {
+      "off": false,
+      "name": "synthetic radius 419",
+      "ok": true,
+      "geometry": {
+        "fn": "musashi-thousand",
+        "x": 100,
+        "y": 0,
+        "r": 419
+      },
+      "visualRadius": 419
+    },
+    {
+      "off": false,
+      "name": "synthetic radius 420",
+      "ok": true,
+      "geometry": {
+        "fn": "musashi-thousand",
+        "x": 100,
+        "y": 0,
+        "r": 420
+      },
+      "visualRadius": 420
+    },
+    {
+      "off": false,
+      "name": "synthetic radius 421",
+      "ok": true,
+      "geometry": {
+        "fn": "musashi-thousand",
+        "x": 100,
+        "y": 0,
+        "r": 421
+      },
+      "visualRadius": 421
+    },
+    {
+      "off": false,
+      "name": "synthetic radius 600",
+      "ok": true,
+      "geometry": {
+        "fn": "musashi-thousand",
+        "x": 100,
+        "y": 0,
+        "r": 600
+      },
+      "visualRadius": 600
+    },
+    {
+      "off": false,
+      "name": "renderer culls rejected viewport",
+      "ok": true
+    },
+    {
+      "off": false,
+      "name": "renderer accepts visible viewport",
+      "ok": true
+    },
+    {
+      "off": false,
+      "name": "warm cache does not rebake",
+      "ok": true
+    },
+    {
+      "off": false,
+      "name": "72 native frames binary alpha and clear edges",
+      "ok": true,
+      "partial": 0,
+      "edge": 0
+    },
+    {
+      "off": true,
+      "name": "actual cast dispatch",
+      "ok": true,
+      "events": [],
+      "fallback": [
+        {
+          "theme": "ink~p",
+          "r": 150
+        },
+        {
+          "theme": "ink~p",
+          "r": 63
+        },
+        {
+          "theme": "ink",
+          "r": 150
+        }
+      ]
+    },
+    {
+      "off": true,
+      "name": "fused rejected no extra H3 event",
+      "ok": true
+    },
+    {
+      "off": true,
+      "name": "frozen rejected no extra H3 event",
+      "ok": true
+    },
+    {
+      "off": true,
+      "name": "no live target no extra H3 event",
+      "ok": true
+    },
+    {
+      "off": true,
+      "name": "dead useSkill rejected",
+      "ok": true
+    }
+  ],
+  "errors": []
+}
