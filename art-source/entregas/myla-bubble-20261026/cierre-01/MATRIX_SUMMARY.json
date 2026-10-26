@@ -1,0 +1,118 @@
+{
+  "mobile": {
+    "scenes": 60,
+    "samples": 360,
+    "minimumRetention": 0.7681992337164751,
+    "contactFailures": 21,
+    "exactABA": 360,
+    "parentStateEqual": 360,
+    "errors": [],
+    "looks": [
+      "base",
+      "gear",
+      "set",
+      "skin",
+      "tier4"
+    ]
+  },
+  "desktop": {
+    "scenes": 60,
+    "samples": 360,
+    "minimumRetention": 0.768450184501845,
+    "contactFailures": 25,
+    "exactABA": 360,
+    "parentStateEqual": 360,
+    "errors": [],
+    "looks": [
+      "base",
+      "gear",
+      "set",
+      "skin",
+      "tier4"
+    ]
+  },
+  "final-mobile": {
+    "scenes": 60,
+    "samples": 360,
+    "minimumRetention": 0.8007662835249042,
+    "contactFailures": 0,
+    "exactABA": 360,
+    "parentStateEqual": 360,
+    "errors": [],
+    "looks": [
+      "base",
+      "gear",
+      "set",
+      "skin",
+      "tier4"
+    ]
+  },
+  "final-desktop": {
+    "scenes": 60,
+    "samples": 360,
+    "minimumRetention": 0.8105166051660516,
+    "contactFailures": 0,
+    "exactABA": 360,
+    "parentStateEqual": 360,
+    "errors": [],
+    "looks": [
+      "base",
+      "gear",
+      "set",
+      "skin",
+      "tier4"
+    ]
+  },
+  "temporal-mobile": {
+    "scenes": 2,
+    "samples": 24,
+    "minimumRetention": 0.8257032542746828,
+    "contactFailures": 0,
+    "exactABA": 24,
+    "parentStateEqual": 24,
+    "errors": [],
+    "looks": [
+      "base",
+      "skin"
+    ]
+  },
+  "temporal-desktop": {
+    "scenes": 2,
+    "samples": 24,
+    "minimumRetention": 0.8202318564395744,
+    "contactFailures": 0,
+    "exactABA": 24,
+    "parentStateEqual": 24,
+    "errors": [],
+    "looks": [
+      "base",
+      "skin"
+    ]
+  },
+  "canary": {
+    "scenes": 1,
+    "samples": 1,
+    "minimumRetention": 0,
+    "contactFailures": 1,
+    "exactABA": 0,
+    "parentStateEqual": 1,
+    "errors": [],
+    "looks": [
+      "base"
+    ]
+  },
+  "open-pilot": {
+    "scenes": 2,
+    "samples": 6,
+    "minimumRetention": 0.8213288665549973,
+    "contactFailures": 0,
+    "exactABA": 6,
+    "parentStateEqual": 6,
+    "errors": [],
+    "looks": [
+      "set",
+      "skin"
+    ]
+  },
+  "scope": "80% bodies/delta24 unchanged. A/B/A restores body poses, RNG, particles, SFA and family pools/rings/seen/lastT and per-object _famT. Parent uses exact original my_bubble_idle native recipe and alpha.8 while keeping same scenario, other runtime identical; no whole-main renderer swap. Parent/candidate actor state identical. Damage800ms, aggregate refill1200ms; temporal runs no damage. No global-state certification."
+}

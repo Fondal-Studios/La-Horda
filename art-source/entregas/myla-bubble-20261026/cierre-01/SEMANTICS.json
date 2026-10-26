@@ -1,0 +1,6 @@
+{
+  "aggregate": "portadorShield stores single h.shield sum with maxHP*.3 cap and max shieldTimer. No per-source balance. family-vfx.js already renders Myla ring whenever shield>0. Candidate follows same aggregate meaning within its own original castTTL; replenishment after expiry does not resurrect an entity.",
+  "owner": "kvbHeroAt inherited nearest Myla mapping; normal roster uniqueness prevents duplicate Myla. Test actual Tanque host/Myla guest owner references. heroes.includes/classKey prevents stale removed/replaced owners.",
+  "duo": "js/systems/duo-roster.js duoEnabled returnsfalse and duoHandoff false; actual relay confirms. Class replacement is a defensive local probe, not reachable duo feature certification.",
+  "ordering": "ordered relay holds only shield/shieldTimer from genuinely received snapshots in guest harness, applies other fields and events, then releases via original netApplySnapshot. Result alpha0 before positive snapshot, drawing after release. No runtime/network engine changes."
+}

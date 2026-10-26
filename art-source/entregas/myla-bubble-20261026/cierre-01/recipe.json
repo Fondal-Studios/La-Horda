@@ -1,0 +1,18 @@
+{
+  "source": "js/champions/vfx-b/myla.js",
+  "native": "my_bubble_idle,12 phases,kvbS(34)=24,8fps,68x68world,follow owner y-12,normalTTL4500 scaled by skill DUR",
+  "changes": [
+    "Local WeakMap newest bubble per owner; alpha reads same current aggregate shield as family ring, alive/current class/current roster; no mechanical writes",
+    "Native kvbLayer rim and specular arcs retained; no interior stippling. Original source-before and state-only attempt preserved."
+  ],
+  "installedPNG": 0,
+  "reproduce": [
+    "CHROMIUM_PATH=/tmp/chromium NODE_PATH=<playwright modules> OUT=<dir> node tools/vfx/export-myla-bubble.js",
+    "OUT=<dir> MOBILE=1 node tools/vfx/capture-myla-bubble.js; repeat without MOBILE",
+    "OUT=<dir> node tools/vfx/myla-bubble-online.js",
+    "OUT=<dir> node tools/vfx/test-myla-bubble-state.js",
+    "OUT=<dir> node tools/vfx/myla-full-render-perf.js"
+  ],
+  "preview": "preview.html",
+  "unchanged": "Main combat, timing, radius, pools/shared engine/network, H1/H2/UF, body and skins."
+}

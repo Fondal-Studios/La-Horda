@@ -1,0 +1,74 @@
+{
+  "result": {
+    "checks": [
+      {
+        "name": "cast alive shield",
+        "ok": true,
+        "data": {
+          "shield": 123.83999999999999
+        }
+      },
+      {
+        "name": "drawing reads only state no RNG",
+        "ok": true,
+        "data": {
+          "rng": 0
+        }
+      },
+      {
+        "name": "same-frame actual shield exhaustion",
+        "ok": true,
+        "data": {
+          "hp": 549.2991999999999,
+          "shield": 0,
+          "alpha": 0
+        }
+      },
+      {
+        "name": "after update still hidden",
+        "ok": true
+      },
+      {
+        "name": "real aggregate shield replenishment within cast TTL",
+        "ok": true,
+        "data": {
+          "shield": 34.4
+        }
+      },
+      {
+        "name": "zero snapshot probe",
+        "ok": true
+      },
+      {
+        "name": "dead hidden",
+        "ok": true
+      },
+      {
+        "name": "class replacement shield hidden",
+        "ok": true
+      },
+      {
+        "name": "removed owner hidden",
+        "ok": true
+      },
+      {
+        "name": "recast observed",
+        "ok": true,
+        "data": {
+          "count": 2
+        }
+      },
+      {
+        "name": "existing raster preserved",
+        "ok": true
+      },
+      {
+        "name": "TTL removes both even with replenished shield",
+        "ok": true
+      }
+    ],
+    "pass": true,
+    "limits": "Snapshot probes assign owner fields locally, not relay. Recast older entities stay pooled until normal TTL, only latest is visible. No six-arena or full combat parity claim."
+  },
+  "errors": []
+}

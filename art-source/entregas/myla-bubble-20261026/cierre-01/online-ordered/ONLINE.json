@@ -1,0 +1,424 @@
+{
+  "checks": [
+    {
+      "name": "event before held real positive snapshot remains hidden",
+      "ok": true,
+      "data": {
+        "shield": 0,
+        "alpha": 0,
+        "held": {
+          "shield": 38.52,
+          "shieldTimer": 4467
+        }
+      }
+    },
+    {
+      "name": "host cast exact owner and actual PNG",
+      "ok": true
+    },
+    {
+      "name": "host depleted snapshot hides",
+      "ok": true
+    },
+    {
+      "name": "host aggregate replenishment reappears inside TTL",
+      "ok": true
+    },
+    {
+      "name": "host recast only latest visible",
+      "ok": true
+    },
+    {
+      "name": "host original TTL expires",
+      "ok": true
+    },
+    {
+      "name": "host duo handoff disabled in current game",
+      "ok": true
+    },
+    {
+      "name": "touch-guest cast exact owner and actual PNG",
+      "ok": true
+    },
+    {
+      "name": "touch-guest depleted snapshot hides",
+      "ok": true
+    },
+    {
+      "name": "touch-guest aggregate replenishment reappears inside TTL",
+      "ok": true
+    },
+    {
+      "name": "touch-guest recast only latest visible",
+      "ok": true
+    },
+    {
+      "name": "touch-guest original TTL expires",
+      "ok": true
+    },
+    {
+      "name": "touch-guest duo handoff disabled in current game",
+      "ok": true
+    }
+  ],
+  "rows": [
+    {
+      "label": "cast",
+      "role": "host",
+      "shield": 38.519999999999996,
+      "alive": true,
+      "classKey": "myla",
+      "bubbles": [
+        {
+          "alpha": 0.8,
+          "t": 162.70000000000073,
+          "dur": 4500,
+          "owner": true
+        }
+      ],
+      "draws": 1,
+      "events": [
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 38.519999999999996,
+          "owner": "myla"
+        }
+      ],
+      "duoEnabled": false
+    },
+    {
+      "label": "cast",
+      "role": "touch-guest",
+      "shield": 38.52,
+      "alive": true,
+      "classKey": "myla",
+      "bubbles": [
+        {
+          "alpha": 0.8,
+          "t": 250,
+          "dur": 4500,
+          "owner": true
+        }
+      ],
+      "draws": 1,
+      "events": [
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 0,
+          "owner": "myla"
+        }
+      ],
+      "duoEnabled": false
+    },
+    {
+      "label": "depleted",
+      "role": "host",
+      "shield": 0,
+      "alive": true,
+      "classKey": "myla",
+      "bubbles": [
+        {
+          "alpha": 0,
+          "t": 306.7000000000007,
+          "dur": 4500,
+          "owner": true
+        }
+      ],
+      "draws": 0,
+      "events": [
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 38.519999999999996,
+          "owner": "myla"
+        }
+      ],
+      "duoEnabled": false
+    },
+    {
+      "label": "depleted",
+      "role": "touch-guest",
+      "shield": 0,
+      "alive": true,
+      "classKey": "myla",
+      "bubbles": [
+        {
+          "alpha": 0,
+          "t": 433.3000000000002,
+          "dur": 4500,
+          "owner": true
+        }
+      ],
+      "draws": 0,
+      "events": [
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 0,
+          "owner": "myla"
+        }
+      ],
+      "duoEnabled": false
+    },
+    {
+      "label": "replenished-by-other-owner",
+      "role": "host",
+      "shield": 10.700000000000001,
+      "alive": true,
+      "classKey": "myla",
+      "bubbles": [
+        {
+          "alpha": 0.8,
+          "t": 436,
+          "dur": 4500,
+          "owner": true
+        }
+      ],
+      "draws": 1,
+      "events": [
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 38.519999999999996,
+          "owner": "myla"
+        }
+      ],
+      "duoEnabled": false
+    },
+    {
+      "label": "replenished-by-other-owner",
+      "role": "touch-guest",
+      "shield": 10.7,
+      "alive": true,
+      "classKey": "myla",
+      "bubbles": [
+        {
+          "alpha": 0.8,
+          "t": 564.7000000000007,
+          "dur": 4500,
+          "owner": true
+        }
+      ],
+      "draws": 1,
+      "events": [
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 0,
+          "owner": "myla"
+        }
+      ],
+      "duoEnabled": false
+    },
+    {
+      "label": "recast",
+      "role": "host",
+      "shield": 49.22,
+      "alive": true,
+      "classKey": "myla",
+      "bubbles": [
+        {
+          "alpha": 0,
+          "t": 700.6000000000004,
+          "dur": 4500,
+          "owner": true
+        },
+        {
+          "alpha": 0.8,
+          "t": 66.60000000000036,
+          "dur": 4500,
+          "owner": true
+        }
+      ],
+      "draws": 1,
+      "events": [
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 38.519999999999996,
+          "owner": "myla"
+        },
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 49.22,
+          "owner": "myla"
+        }
+      ],
+      "duoEnabled": false
+    },
+    {
+      "label": "recast",
+      "role": "touch-guest",
+      "shield": 49.22,
+      "alive": true,
+      "classKey": "myla",
+      "bubbles": [
+        {
+          "alpha": 0,
+          "t": 814.7000000000007,
+          "dur": 4500,
+          "owner": true
+        },
+        {
+          "alpha": 0.8,
+          "t": 33.400000000000546,
+          "dur": 4500,
+          "owner": true
+        }
+      ],
+      "draws": 1,
+      "events": [
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 0,
+          "owner": "myla"
+        },
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 49.22,
+          "owner": "myla"
+        }
+      ],
+      "duoEnabled": false
+    },
+    {
+      "label": "expired",
+      "role": "host",
+      "shield": 0,
+      "alive": true,
+      "classKey": "myla",
+      "bubbles": [],
+      "draws": 0,
+      "events": [
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 38.519999999999996,
+          "owner": "myla"
+        },
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 49.22,
+          "owner": "myla"
+        }
+      ],
+      "duoEnabled": false
+    },
+    {
+      "label": "expired",
+      "role": "touch-guest",
+      "shield": 49.22,
+      "alive": true,
+      "classKey": "myla",
+      "bubbles": [],
+      "draws": 0,
+      "events": [
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 0,
+          "owner": "myla"
+        },
+        {
+          "args": [
+            49.5,
+            49.5,
+            34,
+            0,
+            4500,
+            0
+          ],
+          "shield": 49.22,
+          "owner": "myla"
+        }
+      ],
+      "duoEnabled": false
+    }
+  ],
+  "errors": [],
+  "scope": "Real relay host Tanque and tactile Myla guest. Snapshot ordering observed in events; no injected packets. Class replacement handled by local defensive probes; duo handoff currently disabled."
+}
