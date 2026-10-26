@@ -21,10 +21,10 @@
   kvbDefDecal('ng_verdict', 10, kvbRingPaint(NG, {fillCol: '#7a6420', fill: .5, details: splitDetails, flash: '#fff4d6', rimThick: 3}));
   kvbDefDecal('ng_burst_d', 10, kvbRingPaint(SH, {fillCol: '#2a2a3a', core: '#05030a', fill: .5, details: (lg, c, R, rad, pal, q) => { for(let i = 0; i < 10; i++){ const a = i * .628, L = rad * .9, nx = -Math.sin(a), ny = Math.cos(a); kvbPoly(lg, [[c + Math.cos(a) * rad * .2, c + Math.sin(a) * rad * .2], [c + Math.cos(a) * L + nx * 2.5, c + Math.sin(a) * L + ny * 2.5], [c + Math.cos(a) * L - nx * 2.5, c + Math.sin(a) * L - ny * 2.5]], i & 1 ? '#f4f4f4' : '#5a5a74'); } }, flash: '#a6a6c0', rimThick: 3}));
 
-  KVB_FX['nano.sentence'] = (x, y, r, ang, len) => {
+  KVB_FX['nano.sentence'] = (x, y, r, ang, len, impactRadius) => {
     const ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len;
     kvbBeam('ng_decree', x, y, ex, ey, Math.max(24, r * 1.7), 640, {layer: 't'});
-    kvbDecal('ng_burst_d', ex, ey, Math.max(40, r * 2.3), 700, {layer: 'g'}); // explosión final: 70 u × área
+    kvbDecal('ng_burst_d', ex, ey, Number.isFinite(impactRadius) && impactRadius > 0 ? impactRadius : Math.max(40, r * 2.3), 700, {layer: 'g'}); // explosión final: 70 u × área
     kvbEmit('ng_shard_d', 8, ex, ey, {ring: r, v0: 40, v1: 130, up: 60, grav: 240, l0: 380, l1: 620, scale: 1.4, spin: 6});
     kvbEmit('ng_shard_l', 5, x, y, {ang, spread: .6, v0: 30, v1: 100, l0: 300, l1: 460, scale: 1.2, shrink: true});
   };
@@ -33,10 +33,10 @@
     kvbEmit('ng_mote', 12, x, y, {ring: r * .8, v0: 4, v1: 18, up: 80, l0: 600, l1: 1000, scale: 1.3, flat: .7});
     kvbPart('ng_scroll', x, y - 24, {dur: 800, scale: 1.8, layer: 't', vy: -14, fadeAt: .5});
   };
-  KVB_FX['nano.invert'] = (x, y, r, ang, len) => {
+  KVB_FX['nano.invert'] = (x, y, r, ang, len, impactRadius) => {
     const ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len;
     kvbBeam('ng_decree', x, y, ex, ey, 14, 420, {layer: 'g', alpha: .8});
-    kvbDecal('ng_verdict', ex, ey, Math.max(40, r * 1.3), 760, {layer: 'g'}); // estallido de llegada: 1,3 × radio de la runa
+    kvbDecal('ng_verdict', ex, ey, Number.isFinite(impactRadius) && impactRadius > 0 ? impactRadius : Math.max(40, r * 1.3), 760, {layer: 'g'}); // estallido de llegada: 1,3 × radio de la runa
     kvbEmit('ng_shard_d', 5, ex, ey, {v0: 40, v1: 120, up: 40, grav: 200, l0: 340, l1: 560, scale: 1.3, spin: 6}); kvbEmit('ng_shard_l', 5, ex, ey, {v0: 40, v1: 120, up: 40, grav: 200, l0: 340, l1: 560, scale: 1.3, spin: 6});
   };
   KVB_FX['nano.judgement'] = (x, y, r) => { // la mitad blanca / negra y la costura las dibuja el objeto del Juicio (radio real); aquí las esquirlas y la ley que cae
@@ -44,5 +44,26 @@
     kvbPart('ng_scroll', x, y - 46, {dur: 1200, scale: 3, layer: 't', vy: -10, fadeAt: .55});
   };
   kvbBind('asc:sentence', 'nano.sentence'); kvbBind('asc:edict', 'nano.edict'); kvbBind('asc:invert', 'nano.invert'); kvbBind('asc:judgement', 'nano.judgement');
+  // Capture the actual cast's area before the shared kit adjusts its visual r.
+  // Numeric impact geometry travels through the existing optional event argument.
+  let nanoVisualCast = null;
+  const castNanoBase = ascensionCast, drawNanoBase = ascCastFx;
+  ascensionCast = function(h, sk, isUlt, dmg, area, dur, power){
+    const previous = nanoVisualCast;
+    nanoVisualCast = h && h.classKey === 'nano_gm' && sk &&
+      (sk.action === 'sentence' || sk.action === 'invert') ?
+      {h, sk, area: area * (ascState(h).monsterUntil > ascNow() ? 1.4 : 1)} : null;
+    try { return castNanoBase.apply(this, arguments); }
+    finally { nanoVisualCast = previous; }
+  };
+  ascCastFx = function(h, sk, isUlt, r, origin, end){
+    const c = nanoVisualCast;
+    if(KVB.off || !c || c.h !== h || c.sk !== sk) return drawNanoBase.apply(this, arguments);
+    const g = kvbCastGeom(h, sk, isUlt, r, origin, end);
+    const impact = (sk.action === 'sentence' ? 70 : sk.radius * 1.3) * c.area;
+    if(sk.action === 'invert') g[3] = Math.atan2(h.y - origin.y, h.x - origin.x);
+    kvbFx('nano.' + sk.action, g[0], g[1], g[2], g[3], g[4], impact);
+    kvbPunch(h, g[0], g[1], g[2], isUlt ? 2 : 1);
+  };
   kvbBasic('nano_gm', NG, 'ng_mote');
 }
