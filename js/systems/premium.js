@@ -35,7 +35,7 @@ function premiumRuleText(){
     : "Las Brasas solo compran apariencia. Nunca poder.";
 }
 const PREMIUM_TIER_LABEL = { set: "Skin de colección", autor: "Skin con diseño propio", croma: "Croma (otra paleta)" };
-function premiumPrice(id){ return pricingBrasas(premiumTier(id)); }   // ✦ (0 = no se vende por Brasas)
+function premiumPrice(id){ if(SET_SKINS[id]?.earnedOnly)return 0; return pricingBrasas(premiumTier(id)); }   // ✦ (0 = no se vende por Brasas)
 function premiumGoldPrice(id){
   const d = typeof CROMA_SKINS !== "undefined" ? CROMA_SKINS[id] : null;
   return pricingCosmeticGold(premiumTier(id), d ? d.price : 0);
@@ -144,7 +144,9 @@ function premiumApplyPiece(j){
   PREMIUM.premium = j.premium; PREMIUM.at = Date.now();
   const p = j.piece || {};
   if(typeof acct !== "undefined" && acct.sync && Number.isInteger(j.baseVersion) && j.baseVersion === acct.sync.version && Number.isInteger(j.saveVersion)) acct.sync.version = j.saveVersion;   // misma regla de versión que accountApplyEventReward
-  if(p.uid && p.designId && !stashItems().some(it => it.uid === p.uid)){
+  // Economía V2: la pieza ya está en el ledger del servidor; se recarga el inventario autoritativo (no se escribe en save.stash)
+  if(j.ledger && typeof economyReload === "function"){ economyReload(); }
+  else if(p.uid && p.designId && !stashItems().some(it => it.uid === p.uid)){
     const it = makeDesignedItem(p.designId);
     if(it){ it.uid = p.uid; it.bought = true; stashItems().push(it); if(typeof collectionRegister === "function") collectionRegister(it); }
   }

@@ -134,21 +134,21 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   // ---------- universales (4 piezas) ----------
   const u = await E(() => {
     const out = {};
-    __run('guerrero', 'glaciar', 4); let e = __foe(40);
+    __run('guerrero', 'glaciar', 6); let e = __foe(40);
     setsOnHit(player, e, 10, false, {}); out.glaciar2 = e.slowTimer > 0; out.glaciar3 = setDamageMult(player, e, {}) >= 1.12;
     let hp0 = e.hp; for (let i = 0; i < 6; i++){ runElapsedMs += 200; setsOnHit(player, e, 10, false, {}); } out.glaciar4 = e.hp < hp0;
-    __run('tanque', 'coloso', 4); player.hp = player.maxHp; e = __foe(60); hp0 = e.hp;
+    __run('tanque', 'coloso', 6); player.hp = player.maxHp; e = __foe(60); hp0 = e.hp;
     setsOnHurt(player, 1, player.maxHp*0.35, 0); out.coloso4 = e.hp < hp0;
-    __run('mago', 'tempestad', 4); for (let i = 0; i < 30; i++) setsOnHit(player, __foe(500), 1, false, {}); out.tempestad4 = player._stormReady === true;
+    __run('mago', 'tempestad', 6); for (let i = 0; i < 30; i++) setsOnHit(player, __foe(500), 1, false, {}); out.tempestad4 = player._stormReady === true;
     __run('guerrero', 'berserker', 4); player.hp = player.maxHp*0.25; setsOnHurt(player, 1, 0, 0); out.berserker4 = player._berserkT > 0 && setAtkSpeedMult(player) > 1;
     __run('tanque', 'guardian', 4); out.guardian3 = setReviveHpPct(player) === 0.6;
-    __run('soporte', 'alba', 4); setsOnHeal(player, player.maxHp); out.alba4 = player._albaReady === true;
+    __run('soporte', 'alba', 6); setsOnHeal(player, player.maxHp); out.alba4 = player._albaReady === true;
     __run('guerrero', 'cazador', 4); e = __foe(40, 0, 'elite'); out.cazador2 = setDamageMult(player, e, {}) >= 1.1;
     setsOnHit(player, e, 1, false, {}); for (let i = 0; i < 5; i++){ runElapsedMs += 200; setsOnHit(player, e, 1, false, {}); } out.cazador4 = player._focus >= 4;
     __run('mago', 'arcano', 4); const sk = player.cls.skills; setsOnCast(player, sk[0], false); setsOnCast(player, sk[1], false); setsOnCast(player, sk[2], false); out.arcano4 = player._arcaneT > 0;
     __run('guerrero', 'laberinto', 4); __tick(3200); out.laberinto4 = (player._momentum||0) >= 1;
     __run('nigromante', 'sepulturero', 4); out.sepulturero2 = setSummonMult(player) === 1.2;
-    __run('mago', 'tempestad', 3); out.tempestad3 = Math.abs(passiveSum('mago', 'onhit_proc') - 0.10) < 1e-6;
+    __run('mago', 'tempestad', 4); out.tempestad3 = Math.abs(passiveSum('mago', 'onhit_proc') - 0.10) < 1e-6;
     // Lucifer (6 piezas): 4 = los básicos queman (y nada más: sin descarga eléctrica escondida) · 6 = infierno
     const L = setPieceIds('lucifer'); __clear(); L.forEach(p => { const it = makeDesignedItem(p); stashItems().push(it); equipItem('guerrero', it.uid); }); invalidatePassiveCache();
     selectedClass = 'guerrero'; lobbyAllies = []; startRun(1); enemies.length = 0; runElapsedMs = 100000; _passiveFrame++;
@@ -164,6 +164,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     const out = {};
     for (const id in SET_SKINS) {
       const c = SET_SKINS[id].champ;
+      if(!c || SET_SKINS[id].manifest || !SET_DB[id]) continue; // manifestaciones de colección V2 (Astral/Consagrada): se obtienen en Colección, no por piezas de un guardián
       __run(c, id, 3); const three = !!activeSetSkin(player);
       __run(c, id, 4); const four = activeSetSkin(player) === SET_SKINS[id];
       updateSets(player, 16);

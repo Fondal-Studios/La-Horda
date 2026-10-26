@@ -2,6 +2,7 @@
 // Admin: real user list, user sheet, content grants/revokes, currency, progress, roles, audit query.
 // Every route checks an RBAC permission server-side; hiding a button in the client is never relied on.
 // Save writes use CAS (baseVersion) and every mutation is recorded in the GM audit log.
+const compat = require("./item-economy-compat");
 const rbac = require("./rbac");
 const ent = require("./entitlements");
 const adminLevels = require("./admin-levels");
@@ -102,6 +103,8 @@ function routes(ctx){
       });
       before = r.result; version = r.version;
     }
+    // Economía V2: los campeones de la cuenta migrada viven en el ledger (si no, la próxima proyección revertiría la concesión)
+    if(await compat.active(store(), u.id)) await (grant ? compat.grantChampion : compat.revokeChampion)(store(), u, champion, "gm:champion:" + u.id + ":" + champion + ":" + now());
     await mutate(s => {
       const g = ((s.grants = s.grants || {})[u.id] = s.grants[u.id] || {champions:{}}).champions;
       if(grant) g[champion] = {origin, by:user.id, at:now(), reason};
@@ -134,6 +137,7 @@ function routes(ctx){
         version = r.version;
       }
     }else granted = members.filter(id => !(ledger[id] && !ledger[id].revokedAt));
+    if(granted.length && await compat.active(store(), u.id)) for(const id of granted) await compat.grantChampion(store(), u, id, "gm:category:" + u.id + ":" + id + ":" + now());
     if(granted.length) await mutate(s => {
       const g = ((s.grants = s.grants || {})[u.id] = s.grants[u.id] || {champions:{}}).champions;
       for(const id of granted){
@@ -181,9 +185,11 @@ function routes(ctx){
     const u = await target(body.id), field = body.field === "gems" ? "gems" : "gold", value = body.value;
     if(!Number.isSafeInteger(value) || value < 0 || value > 10000000) fail("BAD_VALUE");
     const saved = await store().getSave(u.id); if(!saved) fail("NO_SAVE", 404);
-    const current = Math.max(0, Math.floor(+JSON.parse(saved.data)[field] || 0));
+    const ledger = await compat.active(store(), u.id);   // economía V2: oro y gemas (materiales) son del ledger
+    const current = ledger ? await compat.readCurrency(store(), u, field) : Math.max(0, Math.floor(+JSON.parse(saved.data)[field] || 0));
     needConfirm(body, value < current);
-    const r = await editSave(u, body.baseVersion, d => { const before = Math.max(0, Math.floor(+d[field] || 0)); d[field] = value; return before; });
+    if(ledger) await compat.setCurrency(store(), u, field, value, "gm:currency:" + u.id + ":" + field + ":" + now());
+    const r = await editSave(u, body.baseVersion, d => { const before = Math.max(0, Math.floor(+d[field] || 0)); d[field] = value; return ledger ? current : before; });
     await mutate(s => { audit(s, user, "currency.set", {target:u.id, type:field, reason:reasonOf(body), before:r.result, after:value}, now()); return null; });
     return {ok:true, version:r.version, [field]:value};
   });
@@ -220,6 +226,12 @@ function routes(ctx){
     else if(kind === "set"){ if(!shopCatalog().sets.includes(ref)) fail("BAD_SET"); }
     else fail("BAD_KIND");
     const entry = {id:require("crypto").randomUUID(), kind, ref, at:now(), by:user.id, origin:"ADMIN_GRANT", reason:reasonOf(body)};
+    // Economía V2: el servidor entrega por el ledger (sin buzón de cliente ni tope de inventario); el cliente solo recarga.
+    if(await compat.active(store(), u.id)){
+      await compat.grantMailbox(store(), u, kind, ref, "gm:mailbox:" + entry.id);
+      await mutate(s => { audit(s, user, "mailbox.grant", {target:u.id, type:kind, content:ref, origin:"ADMIN_GRANT", reason:entry.reason, ledger:true}, now()); return null; });
+      return {ok:true, ledger:true, entry};
+    }
     const r = await editSave(u, body.baseVersion, d => { d.adminMailbox = (Array.isArray(d.adminMailbox) ? d.adminMailbox : []).slice(-49); d.adminMailbox.push(entry); return null; });
     await mutate(s => { audit(s, user, "mailbox.grant", {target:u.id, type:kind, content:ref, origin:"ADMIN_GRANT", reason:entry.reason}, now()); return null; });
     return {ok:true, version:r.version, entry};

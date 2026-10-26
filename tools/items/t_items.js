@@ -46,8 +46,8 @@ async function boot(browser, initSave){
     check('STASH.equipar_en_otro_campeon_lo_mueve', mv.r && mv.mago === null && mv.tanq === 'a1' && mv.by === 'tanque', mv);
     const cp = await E(() => { const t = makeDesignedItem('tanque_leg'); stashItems().push(t); const r1 = equipItem('mago', t.uid); const r2 = equipItem('tanque', t.uid); return { r1, r2 }; });
     check('STASH.objeto_de_campeon_solo_para_ese_campeon', cp.r1 === false && cp.r2 === true, cp);
-    const cap = await E(() => { save.stash = []; for (let i = 0; i < 30; i++) addItemToInventory('mago', makeItem('arma','comun')); const full = stashFull(); const r = addItemToInventory('mago', makeItem('arma','comun'));
-      equipItem('mago', save.stash[0].uid); const after = stashFull(); return { full, rejected: r === null, used: stashUsedSlots(), after }; });
+    const cap = await E(() => { save.stash = []; save.lootManagement = {enabled:false}; /* V2: con la Gestión de botín activa lo nuevo entra a la reserva (hasta 150); apagada rige el tope de 30 */ for (let i = 0; i < 30; i++) addItemToInventory('mago', makeItem('arma','comun')); const full = stashFull(); const r = addItemToInventory('mago', makeItem('arma','comun'));
+      equipItem('mago', save.stash[0].uid); const after = stashFull(); save.lootManagement = {}; return { full, rejected: r === null, used: stashUsedSlots(), after }; });
     check('STASH.30_espacios_y_lo_equipado_no_ocupa', cap.full && cap.rejected && cap.used === 29 && !cap.after, cap);
     const sell = await E(() => { save.stash = []; save.gold = 0; const c = makeItem('arma','comun'), l = makeItem('arma','legendario'); addItemToInventory(null, c); addItemToInventory(null, l);
       sellItem(null, c.uid); const g1 = save.gold; sellItem(null, l.uid); const u = makeDesignedItem('uniq_yelmo_coloso'); stashItems().push(u); const su = sellItem(null, u.uid);

@@ -26,11 +26,13 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
 
   // ---------- 1) catálogo: todo tiene precio en Brasas; ninguna ruta de oro otorga ----------
   const cat = await E(() => {
-    const sets = Object.keys(SET_SKINS).filter(id => SET_DB[id]), cromas = Object.keys(CROMA_SKINS);
+    // Economía V2: las manifestaciones base de los 5 conjuntos Míticos son recompensa de juego (earnedOnly), nunca se venden
+    const earned = Object.keys(SET_SKINS).filter(id => SET_SKINS[id].earnedOnly), sets = Object.keys(SET_SKINS).filter(id => SET_DB[id] && !SET_SKINS[id].earnedOnly), cromas = Object.keys(CROMA_SKINS);
     const sinPrecio = sets.concat(cromas).filter(id => !(premiumPrice(id) > 0));
-    return { sets: sets.length, cromas: cromas.length, sinPrecio, tiers: Object.fromEntries(sets.concat(cromas).map(id => [id, premiumPrice(id)])) };
+    return { earned: earned.map(id => [id, premiumPrice(id)]), sets: sets.length, cromas: cromas.length, sinPrecio, tiers: Object.fromEntries(sets.concat(cromas).map(id => [id, premiumPrice(id)])) };
   });
   check('CATALOGO.hay_skins_y_cromas', cat.sets > 0 && cat.cromas > 0, { sets: cat.sets, cromas: cat.cromas });
+  check('CATALOGO.exclusivas_de_juego_no_se_venden', cat.earned.every(([, p]) => p === 0), cat.earned);
   check('CATALOGO.todas_tienen_precio_en_Brasas', cat.sinPrecio.length === 0, cat.sinPrecio);
   check('CATALOGO.escalera_300_800_1200', Object.values(cat.tiers).every(p => [300, 800, 1200].includes(p)), [...new Set(Object.values(cat.tiers))]);
 

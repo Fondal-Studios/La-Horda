@@ -34,7 +34,7 @@ function setDamageMult(h, e, opts){
   if(!h || !h.classKey) return 1;
   const c = heroSetCounts(h); if(!c) return 1;
   let m = 1;
-  if((c.glaciar||0) >= 3 && (e.slowTimer>0 || e.stunTimer>0)) m *= 1.12;
+  if((c.glaciar||0) >= 4 && (e.slowTimer>0 || e.stunTimer>0)) m *= 1.12;
   if((c.cazador||0) >= 2 && _isPriority(e)) m *= 1.10;
   if(h._berserkT > 0) m *= 1.20;
   if(h._arcaneT > 0 && !opts.fromBasic) m *= 1.45;
@@ -61,12 +61,12 @@ function setsOnHit(h, e, dmg, crit, opts){
   // Glaciar 2: las habilidades ralentizan
   if((c.glaciar||0) >= 2 && !fromBasic && e.alive){ e.slowAmt = Math.max(e.slowAmt||0, 0.2); e.slowTimer = Math.max(e.slowTimer||0, 1650); }
   // Glaciar 4: fragmentos sobre enemigos ralentizados/congelados
-  if((c.glaciar||0) >= 4 && e.alive && (e.slowTimer>0 || e.stunTimer>0) && (runElapsedMs - (e._fragAt||0)) > 160){
+  if((c.glaciar||0) >= 6 && e.alive && (e.slowTimer>0 || e.stunTimer>0) && (runElapsedMs - (e._fragAt||0)) > 160){
     e._fragAt = runElapsedMs; e._frag = (e._frag||0) + 1; e._fragBy = h;
     if(e._frag >= 5){ e._frag = 0; glacialBurst(h, e, 1); }
   }
   // Tempestad 4: cada golpe carga la tormenta
-  if((c.tempestad||0) >= 4 && !h._stormReady){
+  if((c.tempestad||0) >= 6 && !h._stormReady){
     h._storm = (h._storm||0) + 1;
     if(h._storm >= 30){ h._storm = 30; h._stormReady = true; _setMsg(h, "¡TEMPESTAD LISTA!"); }
   }
@@ -91,7 +91,7 @@ function setsOnHit(h, e, dmg, crit, opts){
 function setsOnKill(h, e){
   const c = heroSetCounts(h); if(!c) return;
   champSetsOnKill(h, e);
-  if((c.glaciar||0) >= 4 && e._frag >= 2 && e._fragBy === h){ glacialBurst(h, e, e._frag/5); e._frag = 0; }
+  if((c.glaciar||0) >= 6 && e._frag >= 2 && e._fragBy === h){ glacialBurst(h, e, e._frag/5); e._frag = 0; }
   if((c.lucifer||0) >= 6 && h.hp < h.maxHp*0.5 && _setReady(h, "lucBoom", 500)){
     const R = 95, d = _setBase(h)*0.9;
     for(const o of enemies){ if(o.alive && Math.hypot(o.x-e.x, o.y-e.y) <= R) damageEnemy(o, d, {src:h, fromProc:true, burn:true}); }
@@ -120,7 +120,7 @@ function setsOnCast(h, sk, isUlt){
   const c = heroSetCounts(h); if(!c) return;
   champSetsOnCast(h, sk, isUlt);
   // Tempestad 4: la tormenta sale con la siguiente habilidad
-  if((c.tempestad||0) >= 4 && h._stormReady){
+  if((c.tempestad||0) >= 6 && h._stormReady){
     h._stormReady = false; h._storm = 0;
     const hit = []; let px = h.x, py = h.y - 20;
     for(let i=0;i<6;i++){
@@ -144,7 +144,7 @@ function setsOnCast(h, sk, isUlt){
 function setsOnHurt(h, dmgFinal, mitigated, absorbed){
   champSetsOnHurt(h, dmgFinal); // Ángel Guardián: depende del set de OTRO héroe (el soporte)
   const c = heroSetCounts(h); if(!c) return;
-  if((c.coloso||0) >= 4){
+  if((c.coloso||0) >= 6){
     h._colossus = (h._colossus||0) + mitigated + absorbed;
     if(h._colossus >= h.maxHp*0.30 && _setReady(h, "colossus", 3000)){ h._colossus = 0; colossalWave(h); }
   }
@@ -194,7 +194,7 @@ function setsOnSupport(h, n){ if(setN(h, "guardian") >= 4) guardianOath(h, 3*n);
 function setsOnRevive(by){ if(by && setN(by, "guardian") >= 4) guardianOath(by, 10); }
 // Curación EFECTIVA (sin lo que sobra) -> Profecía del Alba
 function setsOnHeal(h, effective){
-  if(!h || effective <= 0 || setN(h, "alba") < 4) return;
+  if(!h || effective <= 0 || setN(h, "alba") < 6) return;
   if(h._albaReady){
     h._albaReady = false;
     for(const a of heroes){

@@ -85,8 +85,11 @@ function pricingRotationContext(pool, cfg){
   const G = pricingShuffle(legends, pricingRng(cfg.seed+"|legend")), T = S.length + G.length, A = new Array(T), at = {};
   G.forEach((k, i)=>{ at[Math.floor((i + 0.5) * T / G.length)] = k; });
   for(let p=0, si=0; p<T; p++) A[p] = at[p] !== undefined ? at[p] : S[si++];
-  const L = Math.max(1, Math.ceil(T / cfg.n));
-  return {cfg, A, T, L, maxGap:L + Math.min(cfg.w, L) - 1, minGap:Math.max(1, L - Math.min(cfg.w, L) + 1)};
+  // Si el pozo no es múltiplo de n, el último día del ciclo quedaría corto (ej. al retirar los conjuntos Míticos V2 de la Tienda: 212 piezas).
+  // Se recorta el resto del final del orden: cada día hay SIEMPRE n piezas y las cotas de reaparición se mantienen.
+  const used = Math.floor(T / cfg.n) * cfg.n; if(used > 0 && used < T){ A.length = used; }
+  const T2 = used > 0 ? used : T, L = Math.max(1, Math.ceil(T2 / cfg.n));
+  return {cfg, A, T: T2, L, maxGap:L + Math.min(cfg.w, L) - 1, minGap:Math.max(1, L - Math.min(cfg.w, L) + 1)};
 }
 function pricingRotationKeys(c, D){
   const {n, w, seed} = c.cfg;

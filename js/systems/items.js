@@ -26,7 +26,7 @@ function itemEquippedBy(uid){
   for(const k in save.champions){ const eq = save.champions[k].equipment; if(eq && Object.values(eq).includes(uid)) return k; }
   return null;
 }
-function stashUsedSlots(){ return stashItems().filter(it=>!itemEquippedBy(it.uid)).length; }
+function stashUsedSlots(){ return stashItems().filter(it=>!it.overflow && !itemEquippedBy(it.uid)).length; }
 function stashFull(){ return stashUsedSlots() >= INVENTORY_CAPACITY; }
 // ¿Este guardián puede usar este objeto? Genéricos y sets: todos. Diseñados de guardián: solo él.
 function canEquipItem(champKey, it){
@@ -370,9 +370,22 @@ function unequipItem(champKey, type){
 // con el código que ya lo pasaba; el objeto es de la cuenta, no de ese guardián.
 function addItemToInventory(champKey, item, earnedReward){
   if(!item) return null;
-  if(stashFull() && !earnedReward) return null; // rewards already earned may overflow; new pickups still respect capacity
-  if(earnedReward && stashFull()) rewardOverflowPush(item); else stashItems().push(item);
+  if(stashItems().some(it=>it.uid===item.uid)) return null;
+  if(stashFull()){
+    if(earnedReward){
+      // Premio ya ganado (fin de partida, misiones, cofres): nunca se pierde. Con la economía V2 activa el
+      // servidor lo guarda en el ledger (sin tope de inventario); sin cuenta/offline o con HORDA_ITEM_ECONOMY=0
+      // va al buzón "Recompensas pendientes" (reward-mailbox.js) hasta que haya lugar.
+      rewardOverflowPush(item);
+    }else{
+      // Recogida nueva: reserva visible y equipable (hasta 150), nunca destruir una build
+      if(!lootManagement().enabled || stashItems().length >= 150) return null;
+      item.overflow = true;
+      stashItems().push(item);
+    }
+  }else stashItems().push(item);
   if(typeof collectionRegister==="function") collectionRegister(item);
+  autoFuseIdenticalItems(champKey);
   persist();
   return item;
 }
@@ -384,6 +397,7 @@ function removeItemFromInventory(champKey, uid, grantGoldReward){
   const idx = inv.findIndex(it=>it.uid===uid);
   if(idx===-1) return null;
   const item = inv[idx];
+  if(item.favorite || item._reserved || item.relicId) return null;
   for(const k in save.champions){ const eq = save.champions[k].equipment; if(!eq) continue; for(const sl in eq) if(eq[sl]===uid) eq[sl] = null; }
   inv.splice(idx,1);
   if(grantGoldReward){ save.gold += sellValueOf(item); }
@@ -406,9 +420,11 @@ function canFuseGroup(items){
   if(items.length!==3) return {ok:false, reason:"Elegí exactamente 3 objetos"};
   const [a,b,c] = items;
   if(!a || !b || !c) return {ok:false, reason:"Objeto inexistente"};
+  if(new Set(items.map(it=>it.uid)).size!==3) return {ok:false, reason:"Se necesitan tres objetos distintos"};
+  if(items.some(it=>it.favorite || it._reserved || it.relicId || it.set || itemEquippedBy(it.uid))) return {ok:false, reason:"Objeto protegido, equipado o de conjunto"};
   if(a.type!==b.type || b.type!==c.type) return {ok:false, reason:"Deben ser del mismo tipo de equipamiento"};
   if(a.rarity!==b.rarity || b.rarity!==c.rarity) return {ok:false, reason:"Deben ser de la misma rareza"};
-  if(rarityIndex(a.rarity) > rarityIndex(FUSE_MAX_INPUT_RARITY)) return {ok:false, reason:"Solo se fusionan Comunes y Raros"};
+  if(!["comun","raro"].includes(a.rarity) || rarityIndex(a.rarity) > rarityIndex(FUSE_MAX_INPUT_RARITY)) return {ok:false, reason:"Solo se fusionan Comunes y Raros"};
   if(a.designed || b.designed || c.designed) return {ok:false, reason:"Los objetos con nombre propio no se fusionan"};
   const nextRarity = RARITIES[rarityIndex(a.rarity)+1];
   return {ok:true, nextRarity, type:a.type};
@@ -430,7 +446,7 @@ function fuseItems(classKey, uids){
 function fusableGroups(classKey){
   const groups = {};
   stashItems().forEach(it=>{
-    if(it.designed || rarityIndex(it.rarity) > rarityIndex(FUSE_MAX_INPUT_RARITY) || itemEquippedBy(it.uid)) return;
+    if(it.favorite || it._reserved || it.relicId || it.set || it.designed || rarityIndex(it.rarity) > rarityIndex(FUSE_MAX_INPUT_RARITY) || itemEquippedBy(it.uid)) return;
     const key = it.type+"|"+it.rarity;
     (groups[key] = groups[key]||[]).push(it);
   });
@@ -460,4 +476,41 @@ function refreshEquippedStats(){
   const diff = newItemMaxShield - (player.itemMaxShield||0);
   player.itemMaxShield = newItemMaxShield;
   player.itemShield = Math.max(0, Math.min(newItemMaxShield, (player.itemShield||0) + Math.max(0,diff)));
+}
+
+// Gestión conservadora: la identidad incluye TODOS los atributos salvo metadatos de instancia.
+function lootManagement(){
+  const p = save.lootManagement || {};
+  return {enabled:p.enabled!==false, autoFuse:p.autoFuse!==false, recycleDuplicates:p.recycleDuplicates!==false};
+}
+function itemIdentity(it){
+  const ignored = new Set(["uid", "favorite", "overflow", "obtainedAt"]);
+  function canonical(v){
+    if(Array.isArray(v)) return v.map(canonical);
+    if(v && typeof v === "object") return Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])]));
+    return v;
+  }
+  return JSON.stringify(canonical(Object.fromEntries(Object.entries(it).filter(([k])=>!ignored.has(k)))));
+}
+function toggleItemFavorite(uid){
+  const it=findStashItem(uid); if(!it)return false;
+  it.favorite=!it.favorite; persist(); return it.favorite;
+}
+let _autoFusingItems = false;
+function autoFuseIdenticalItems(classKey){
+  const p=lootManagement(); if(!p.enabled || !p.autoFuse || _autoFusingItems)return 0;
+  _autoFusingItems=true; let count=0;
+  try{
+    const groups=new Map();
+    for(const it of stashItems()){
+      if(it.favorite || it._reserved || it.relicId || it.designed || it.set || it.bought || it.rerolls || itemLevel(it)>1 || itemEquippedBy(it.uid) || !["comun","raro"].includes(it.rarity))continue;
+      const key=itemIdentity(it); if(!groups.has(key))groups.set(key,[]); groups.get(key).push(it);
+    }
+    for(const group of groups.values())while(group.length>=3){
+      const batch=group.splice(0,3); const result=fuseItems(classKey,batch.map(it=>it.uid));
+      if(result.ok)count++;
+    }
+    if(count)save.autoLootSummary=Object.assign({},save.autoLootSummary,{fusions:(save.autoLootSummary?.fusions||0)+count});
+  }finally{_autoFusingItems=false;}
+  return count;
 }

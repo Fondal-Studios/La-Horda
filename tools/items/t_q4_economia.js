@@ -123,12 +123,12 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
       const bought = makeItem('casco', 'comun'); bought.bought = true; stashItems().push(bought);
       const mist = makeItem('casco', 'comun'); mist.rerolls = 1; stashItems().push(mist);
       while (stashItems().length < INVENTORY_CAPACITY) stashItems().push(makeItem('arma', 'muyraro'));
-      const room1 = stashMakeRoomFor(makeItem('botas', 'muyraro')); // nada reciclable: no entra
+      const room1 = stashMakeRoomFor(makeItem('botas', 'muyraro')); // V2: nada se sacrifica; entra a la reserva visible
       const junk = makeItem('casco', 'comun'); stashItems().pop(); stashItems().push(junk);
       const room2 = stashMakeRoomFor(makeItem('botas', 'muyraro'));
-      return { room1: room1.ok, room2: room2.ok && room2.recycled && room2.recycled.uid === junk.uid, kept: !!findStashItem(bought.uid) && !!findStashItem(mist.uid) };
+      return { room1: room1.ok && room1.overflow === true, room2: room2.ok && !room2.recycled, kept: !!findStashItem(bought.uid) && !!findStashItem(mist.uid) };
     });
-    check('RECICLADO.no_recicla_lo_comprado_ni_lo_pasado_por_la_Mistica', r.room1 === false && r.room2 && r.kept, r);
+    check('RECICLADO.no_recicla_lo_comprado_ni_lo_pasado_por_la_Mistica', r.room1 === true && r.room2 && r.kept, r);
   }
   // ---------- 7) retención: Gemas en el pase y cofre con inventario lleno a precio de venta ----------
   {

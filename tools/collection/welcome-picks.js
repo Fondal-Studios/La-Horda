@@ -24,6 +24,8 @@ process.env.DATA_PERSISTENT='1'; // Isolated temporary fixture, matching brasas-
  async function account(name){
   const reg=await request('POST','/api/register',{user:name,pass:'player-password'});assert.equal(reg.status,201,JSON.stringify(reg.j));const token=reg.j.token;
   await request('PUT','/api/save',{data:{gold:500,champions:{tanque:{unlocked:true,level:3}},arenasCleared:{},stash:[],cromas:{},cosmeticUnlocks:{},firstRun:null,starterChosen:true,starterGiftV1:true,starterSkin:'vale',playtestV1Bonus:true,campaignResetV1:true,campaignResetV2:true,campaignResetV3:true,testStageV1:true},baseVersion:0},token);
+  // Economía V2: el campeón inicial de una cuenta nueva lo fija el servidor (un PUT de guardado no puede regalar desbloqueos)
+  if(process.env.HORDA_ITEM_ECONOMY!=='0')await request('POST','/api/economy/action',{op:'starter',args:{champion:'tanque'},requestId:'wp_starter_'+name},token);
   return {token,id:(await app.store.getUserByKey(name.toLowerCase())).id,name};
  }
  const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox','--disable-dev-shm-usage']});let checks=0;const ok=(c,m)=>{assert(c,m);checks++;};
@@ -79,7 +81,7 @@ process.env.DATA_PERSISTENT='1'; // Isolated temporary fixture, matching brasas-
   ok(await page.evaluate(()=>PREMIUM.welcome.remaining===0&&PREMIUM.welcome.claimed.length===3&&!document.querySelector('.wp-banner')),'sin elecciones pendientes ni cartel');
   const sv=(await request('GET','/api/save',undefined,A.token)).j.data;
   ok(chosen.every(k=>sv.champions[k]&&sv.champions[k].unlocked),'los 3 están en el guardado del servidor');
-  ok(sv.gold===500,'el oro no se tocó (regalo, no compra)');
+  ok(sv.gold===(process.env.HORDA_ITEM_ECONOMY==='0'?500:0),'el oro no se tocó (regalo, no compra)');
   const wal=(await request('GET','/api/wallet',undefined,A.token)).j;
   ok(wal.premium===700&&wal.welcome.claimed.length===3&&wal.welcome.eligible.length===0&&wal.ledger.filter(e=>/^welcome_pick:/.test(e.reason)).length===3,'libro mayor: 700 ✦ y 3 elecciones '+JSON.stringify(wal.welcome));
   // un cuarto pedido directo a la API: rechazado

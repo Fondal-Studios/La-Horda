@@ -218,7 +218,8 @@ function routes(ctx){
   const results=[];
   for(const p of prepared.loaded){
    let row;
-   try{const data=resetData(JSON.parse(p.data),prepared.fields),put=await getStore().putSave(p.target,JSON.stringify(data),summarize(data),p.version,false);row={user:p.user,target:p.target,status:put.ok?'completed':'conflict',version:put.version||null,snapshot:p.snapshot};}
+   try{const data=resetData(JSON.parse(p.data),prepared.fields),put=await getStore().putSave(p.target,JSON.stringify(data),summarize(data),p.version,false);if(put.ok&&(prepared.fields.includes('inventory')||prepared.fields.includes('gold'))){const compat=require('./item-economy-compat');if(await compat.active(getStore(),p.target)){const tu=await getStore().getUser(p.target);if(tu){if(prepared.fields.includes('inventory'))await compat.wipeInventory(getStore(),tu,'gm:reset:'+prepared.batchId+':'+p.target+':inv');if(prepared.fields.includes('gold'))await compat.wipeGold(getStore(),tu,'gm:reset:'+prepared.batchId+':'+p.target+':gold');}}} // economía V2: el reinicio también alcanza al ledger
+   row={user:p.user,target:p.target,status:put.ok?'completed':'conflict',version:put.version||null,snapshot:p.snapshot};}
    catch{row={user:p.user,target:p.target,status:'failed',version:null,snapshot:p.snapshot};}
    results.push(row);
    await mutate(s=>{const batch=s.resetBatches[prepared.batchId];const i=batch.results.findIndex(r=>r.target===p.target);batch.results[i]=row;return null;});
