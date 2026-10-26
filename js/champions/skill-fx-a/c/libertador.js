@@ -20,11 +20,11 @@ function libertadorFxStrip(kind,T,art,size){
    line(base-6,12,base+8,12,P.d);line(base-3,21,base+15,21,P.e);
   }else if(kind==='charge'){
    // Pares de cascos, abiertos hacia delante; suelo visible entre ambas ramas.
-   for(let j=0;j<4;j++)for(const side of [-1,1]){
-    const x=12+j*30+(side>0?8:0),y=16+side*8;
-    for(let dx=-4;dx<=3;dx++)for(let dy=-5;dy<=5;dy++){
-     const outer=dx*dx/25+dy*dy/36<=1,inner=dx*dx/9+dy*dy/12<=1;
-     if(outer&&!inner&&!(dx>=1&&Math.abs(dy)<4))dot(x+dx,y+dy,(dx===-4||Math.abs(dy)>=4)?P.o:dy<0?P.b:P.a);
+   for(let j=0;j<2;j++)for(const side of [-1,1]){
+    const x=22+j*62+(side>0?16:0),y=16+side*8;
+    for(let dx=-6;dx<=5;dx++)for(let dy=-6;dy<=6;dy++){
+     const outer=dx*dx/49+dy*dy/49<=1,inner=dx*dx/16+dy*dy/16<=1;
+     if(outer&&!inner&&!(dx>=2&&Math.abs(dy)<4))dot(x+dx,y+dy,(dx===-6||Math.abs(dy)>=5)?P.o:dy<0?P.b:P.a);
     }
     dot(x-2,y-3,P.c);dot(x-2,y+3,P.e);
    }

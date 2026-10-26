@@ -1,0 +1,36 @@
+{
+  "state": "VALIDADO",
+  "gate": "PASS_COMPONENT",
+  "scope": [
+    "A-FX-libertador-h1/bayonet-travel",
+    "A-FX-libertador-h2/command-cue",
+    "A-FX-libertador-h3/hoof-travel",
+    "normal launch crests H1/H2/H3"
+  ],
+  "blocksRemainOpen": [
+    "B157",
+    "B158",
+    "B159",
+    "specialized body61 and all unrelated backlog"
+  ],
+  "reviewed": [
+    "review-{desktop,mobile}-{bosque,hielo,infernal,laberinto,acuatica,minas}.png:180 dense native crops",
+    "temporal-{desktop,mobile}-{bosque,infernal}.png:96 sparse native crops",
+    "paired-review-{desktop,mobile}.png:24 main/candidate native crops",
+    "launch-atlas.png and pilot-review.png"
+  ],
+  "assessment": {
+    "H1": "Single steel blade launch separates initiation from the existing white hit silhouette. Narrow steel travel stays secondary to impact; no broad future-path beam beyond real observed travel.",
+    "H2": "Bugle above the spectral group identifies command without the previous radial star/burst. Existing soldiers and buff remain the principal persistent cue; small open ground calls are secondary, not a replacement for spectral bodies. Exact combat AREA and circle retained.",
+    "H3": "Open U launch identifies mount; sparse larger paired hoof prints differentiate travelled ground from small particles. Travel frames begin only after actual charge, end when it stops. On Hielo/Minas bright particles temporarily compete, but separated open marks and actual horse/trajectory remain legible in sequence.",
+    "contact": "Minimum99.0015% desktop and99.0800% mobile, 80%/delta24 unchanged; no claim that contact alone is art approval."
+  },
+  "limitations": [
+    "This approves named cosmetic components, not every legacy VFX or entire skill kit.",
+    "Offscreen later travel may extend outside review crops; full scene PNGs reproducible with ALL_PHASES.",
+    "Viewport emulation is not physical mobile certification.",
+    "Ilkan E19 known historical baseline failure remains unrelated/unresolved; no combat test threshold changed."
+  ],
+  "integration": "CI exact final production SHA pending; keep draft until every applicable check/workflow success.",
+  "publication": "NOT_CHECKED_THIS_CLOSURE; integration and public hosting separately verified after merge."
+}

@@ -22,6 +22,7 @@ process.on('exit', () => server && server.kill());
     // cada corrida en una página nueva: el estado que deja una partida (cachés, contadores) no debe contaminar la siguiente
     const fresh = async (parent = false) => { for (let tries = 0; ; tries++) { try { return await fresh1(parent); } catch (e) { if (tries >= 3) throw e; await new Promise(r => setTimeout(r, 3000)); } } };
     const fresh1 = async (parent) => { const pg = await browser.newPage({viewport: {width: 844, height: 390}}); pg.on('pageerror', e => errors.push(e.message));
+      if(parent&&fs.existsSync(OUT+'/signatures-before.js'))await pg.route('**/js/skills/champion-signatures.js*',r=>r.fulfill({contentType:'text/javascript',body:fs.readFileSync(OUT+'/signatures-before.js','utf8')}));
       if(parent)await pg.route('**/js/champions/skill-fx-a/c/libertador.js*',r=>r.fulfill({contentType:'text/javascript',body:parentSource}));
       for (let t = 0; ; t++) { try { await pg.goto(BASE, {waitUntil: 'domcontentloaded', timeout: 120000}); break; } catch (e) { if (t > 2 || process.env.BASE_URL) throw e; server = spawn('python3', ['-m', 'http.server', String(PORT), '--bind', '127.0.0.1'], {cwd: ROOT, stdio: 'ignore'}); await new Promise(r => setTimeout(r, 900)); } }
       await pg.waitForFunction(() => typeof startRun === 'function' && typeof sfaPush === 'function' && assetsAllReady(), null, {timeout: 120000}); await pg.waitForTimeout(800); return pg; };

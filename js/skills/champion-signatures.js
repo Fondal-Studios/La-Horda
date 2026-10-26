@@ -151,6 +151,48 @@ function drawMorwenNormalSignature(s){
   ctx.restore();
 }
 
+// Libertador: bayonet, bugle and open horseshoe. Normal casts only; existing event,
+// culling, network payload and 460ms lifetime remain shared with the other crests.
+let libertadorSignatureAtlas=null;
+function drawLibertadorNormalSignature(s){
+  const q=s.t/s.dur,calm=typeof JUICE!=='undefined'&&JUICE.reduceMotion;
+  const frame=calm?3:Math.min(3,Math.floor(q*12));
+  if(!libertadorSignatureAtlas){
+    const cv=document.createElement('canvas');cv.width=128;cv.height=96;
+    const g=cv.getContext('2d'),O='#1c202b',B='#e9dca8',A='#b88c51',C='#e1f0f3',D='#668194';
+    for(let slot=0;slot<3;slot++)for(let f=0;f<4;f++){
+      const pixels=new Map(),put=(x,y,c)=>pixels.set(x+','+y,{x,y,c});
+      const line=(x,y,bx,by,c)=>{let dx=Math.abs(bx-x),dy=-Math.abs(by-y),sx=x<bx?1:-1,sy=y<by?1:-1,e=dx+dy;
+        for(;;){put(x,y,c);if(x===bx&&y===by)break;const z=2*e;if(z>=dy){e+=dy;x+=sx;}if(z<=dx){e+=dx;y+=sy;}}};
+      const lift=3-f;
+      if(slot===0){
+        // Long single steel blade and crossguard; open space around the grip.
+        line(7,25,11,21,A);line(8,26,12,22,B);line(8,18,16,26,A);
+        line(12,20,25,5+lift,C);line(14,21,25,5+lift,D);line(12,20,14,21,C);
+        line(9,18,16,25,B);
+      }else if(slot===1){
+        // Turned tube, handle and flared bell, without a radial burst.
+        line(6,14,16,14,B);line(6,16,17,16,A);line(4,13,4,17,A);line(5,13,5,17,B);
+        line(10,17,8,21,A);line(8,21,10,25,A);line(10,25,18,25,B);line(18,25,20,21,B);line(20,21,17,17,A);
+        line(11,18,10,21,B);line(10,21,12,23,B);line(12,23,16,23,A);
+        line(17,14,25,8+lift,B);line(17,17,25,21-lift,A);line(25,8+lift,25,21-lift,B);line(26,8+lift,26,21-lift,C);
+      }else{
+        // One unmistakably open U, with separate ends and three nail heads per side.
+        for(const side of [-1,1]){const x=16+side*9;
+          line(x,6+lift,x,18,B);line(x,18,16+side*6,24,B);line(16+side*6,24,16,27,A);
+          line(x-side*3,7+lift,x-side*3,17,A);line(x-side*3,17,16+side*4,21,A);line(16+side*4,21,16,23,B);
+          line(x,6+lift,x-side*3,6+lift,C);for(const y of [10,14,18])put(x-side,y,O);}
+        line(10,24,22,24,B);line(12,25,20,25,A);line(14,26,18,26,A);
+      }
+      g.fillStyle=O;for(const {x,y}of pixels.values())for(const [dx,dy]of [[-1,0],[1,0],[0,-1],[0,1]])g.fillRect(f*32+x+dx,slot*32+y+dy,1,1);
+      for(const {x,y,c}of pixels.values()){g.fillStyle=c;g.fillRect(f*32+x,slot*32+y,1,1);}
+    }
+    libertadorSignatureAtlas=cv;
+  }
+  ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=Math.min(1,(1-q)*3)*.85;
+  const size=s.slot===1?40:32,top=s.slot===1?146:112;
+  ctx.drawImage(libertadorSignatureAtlas,frame*32,s.slot*32,32,32,Math.round(s.x)-size/2,Math.round(s.y)-top,size,size);ctx.restore();
+}
 function drawChampionSignatures(){
   ctx.save();ctx.globalCompositeOperation='source-over';ctx.lineJoin='round';ctx.lineCap='round';
   for(const s of championSignatures){
@@ -178,6 +220,7 @@ function drawChampionSignatures(){
     if(s.key==='brakk'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=1){drawBrakkNormalSignature(s);continue;}
     if(s.key==='maura'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawMauraNormalSignature(s);continue;}
     if(s.key==='morwen'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawMorwenNormalSignature(s);continue;}
+    if(s.key==='libertador'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawLibertadorNormalSignature(s);continue;}
     const [shape,color]=CHAMPION_SIGNATURES[s.key]||['star','#e6d6ff'];
     const q=s.t/s.dur,calm=typeof JUICE!=='undefined'&&JUICE.reduceMotion;
     const r=(s.ult?48:25)*(calm?1:0.8+0.2*Math.min(1,q*5));

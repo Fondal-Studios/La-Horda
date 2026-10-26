@@ -13,7 +13,7 @@
   ],
   "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "CIERRE Maura visibilidad compuesta desde cierre-01. No nueva primera pasada.",
+  "next": "CIERRE Libertador PR220: exact final head CI and merge if all success; no new workshop.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -1891,8 +1891,8 @@
       "id": "libertador.bayonet.first-pass-20261025",
       "block": "B157",
       "component": "A-FX-libertador-h1",
-      "state": "EN_CORRECCION",
-      "integration": "NO_INTEGRAR",
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
       "frames": [
         0,
         1,
@@ -1915,7 +1915,7 @@
       "defects": [
         "Thin two-edged trace reads arrow near feet; hand/weapon anchoring and contact hierarchy unresolved; last phases can be skipped on impact stop."
       ],
-      "next": "Grouped kit correction, complete real-scale/skins/arenas/lifecycle/performance gates; preserve existing sources and mechanics.",
+      "next": "Check all exact-head CI, normal merge only after success, then verify canonical publication separately. Named component only; blocks remain open.",
       "history": [
         {
           "date": "2026-10-26",
@@ -1941,6 +1941,17 @@
           "sourceSha256": "e14064b6304cba117b029cd6e7bf0f896c7045822998a3408ddc5a077cdd98a7",
           "diagnosis": "Travel-driven animation consumes0..10 after mount;96scenes contactPASS but hierarchy stillFIX.",
           "action": "Continue grouped visual closure, not another palette/anchor-only pass."
+        },
+        {
+          "checkpoint": "art-source/entregas/libertador-kit-20261025/cierre-04",
+          "state": "VALIDADO",
+          "gate": "PASS_COMPONENT",
+          "source": "art-source/entregas/libertador-kit-20261025/cierre-04/source-candidate.js",
+          "sourceSha256": "9947788b5c21896496da02d43ea8d402e1aae5d13b29c0bd70113022ad7c9725",
+          "launchSource": "art-source/entregas/libertador-kit-20261025/cierre-04/signatures-candidate.js",
+          "launchSourceSha256": "e128b2dafdb35b7b8c82ddebc079080eb3f2b4b88233540edcad968c839ad7b7",
+          "diagnosis": "Grouped launch hierarchy and spaced open hoof prints. Real-scale review180dense+96temporal+24mainpair views; contact, relay, parity, full renderer checks pass.",
+          "action": "Pending exact-head CI and normal merge; publication separate."
         }
       ]
     },
@@ -1948,8 +1959,8 @@
       "id": "libertador.command.first-pass-20261025",
       "block": "B158",
       "component": "A-FX-libertador-h2",
-      "state": "EN_CORRECCION",
-      "integration": "NO_INTEGRAR",
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
       "frames": [
         0,
         1,
@@ -1972,7 +1983,7 @@
       "defects": [
         "Five open command arcs preserve spectral images, but become tiny ticks over arena; inherited radius430 not verified for modified area."
       ],
-      "next": "Grouped kit correction, complete real-scale/skins/arenas/lifecycle/performance gates; preserve existing sources and mechanics.",
+      "next": "Check all exact-head CI, normal merge only after success, then verify canonical publication separately. Named component only; blocks remain open.",
       "history": [
         {
           "date": "2026-10-26",
@@ -1989,6 +2000,17 @@
           "sourceSha256": "482bd83881e831d6f76eceb65bfe63ec050b42fa08aca5b55e84a621f0e89347",
           "diagnosis": "Grouped silhouette correction; 24 scenes contact PASS but command/hoof reading still competes with legacy layers.",
           "action": "Continue grouped visual/lifecycle closure, six arenas/looks, launch layers; no merge."
+        },
+        {
+          "checkpoint": "art-source/entregas/libertador-kit-20261025/cierre-04",
+          "state": "VALIDADO",
+          "gate": "PASS_COMPONENT",
+          "source": "art-source/entregas/libertador-kit-20261025/cierre-04/source-candidate.js",
+          "sourceSha256": "9947788b5c21896496da02d43ea8d402e1aae5d13b29c0bd70113022ad7c9725",
+          "launchSource": "art-source/entregas/libertador-kit-20261025/cierre-04/signatures-candidate.js",
+          "launchSourceSha256": "e128b2dafdb35b7b8c82ddebc079080eb3f2b4b88233540edcad968c839ad7b7",
+          "diagnosis": "Grouped launch hierarchy and spaced open hoof prints. Real-scale review180dense+96temporal+24mainpair views; contact, relay, parity, full renderer checks pass.",
+          "action": "Pending exact-head CI and normal merge; publication separate."
         }
       ]
     },
@@ -1996,8 +2018,8 @@
       "id": "libertador.charge.first-pass-20261025",
       "block": "B159",
       "component": "A-FX-libertador-h3",
-      "state": "EN_CORRECCION",
-      "integration": "NO_INTEGRAR",
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
       "frames": [
         0,
         1,
@@ -2020,7 +2042,7 @@
       "defects": [
         "Small bright hoof marks read sparkles at actual mobile scale; instantaneous removal when phase ends; interrupted/mounted/recast cases need grouped lifecycle review."
       ],
-      "next": "Grouped kit correction, complete real-scale/skins/arenas/lifecycle/performance gates; preserve existing sources and mechanics.",
+      "next": "Check all exact-head CI, normal merge only after success, then verify canonical publication separately. Named component only; blocks remain open.",
       "history": [
         {
           "date": "2026-10-26",
@@ -2046,6 +2068,17 @@
           "sourceSha256": "e14064b6304cba117b029cd6e7bf0f896c7045822998a3408ddc5a077cdd98a7",
           "diagnosis": "Travel-driven animation consumes0..10 after mount;96scenes contactPASS but hierarchy stillFIX.",
           "action": "Continue grouped visual closure, not another palette/anchor-only pass."
+        },
+        {
+          "checkpoint": "art-source/entregas/libertador-kit-20261025/cierre-04",
+          "state": "VALIDADO",
+          "gate": "PASS_COMPONENT",
+          "source": "art-source/entregas/libertador-kit-20261025/cierre-04/source-candidate.js",
+          "sourceSha256": "9947788b5c21896496da02d43ea8d402e1aae5d13b29c0bd70113022ad7c9725",
+          "launchSource": "art-source/entregas/libertador-kit-20261025/cierre-04/signatures-candidate.js",
+          "launchSourceSha256": "e128b2dafdb35b7b8c82ddebc079080eb3f2b4b88233540edcad968c839ad7b7",
+          "diagnosis": "Grouped launch hierarchy and spaced open hoof prints. Real-scale review180dense+96temporal+24mainpair views; contact, relay, parity, full renderer checks pass.",
+          "action": "Pending exact-head CI and normal merge; publication separate."
         }
       ]
     },
@@ -2457,9 +2490,9 @@
     "checkpoint": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/CHECKPOINT.md"
   },
   "latestClosure": {
-    "path": "art-source/entregas/libertador-kit-20261025/cierre-03",
-    "state": "EN_CORRECCION",
-    "pr": 220,
-    "main": "78039728e737bfc7683fe487c1c281698aa6dd71"
+    "checkpoint": "art-source/entregas/libertador-kit-20261025/cierre-04",
+    "state": "VALIDADO",
+    "scope": "Only Libertador three native cues and normal launches; not complete B157/B158/B159",
+    "next": "Complete exact-head CI before normal sequential merge."
   }
 }
