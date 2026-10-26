@@ -1,0 +1,12 @@
+{
+  "additional": [
+    {
+      "id": "packaging01",
+      "result": "KeyError id on legacy queue entry before any queue write; corrected get(id,'');61entries/histories verified and only2 append operations."
+    },
+    {
+      "id": "local-diff01",
+      "result": "Local HEAD remains main with untracked prior harness; git diff FETCH_HEAD vs worktree reported deletion despite file present. Actual commit-to-commit diff verified one mkdirSync addition; no deleted harness remotely."
+    }
+  ]
+}

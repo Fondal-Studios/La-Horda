@@ -1,0 +1,34 @@
+{
+  "state": "EN_CORRECCION",
+  "gate": "FIX/NO_INTEGRAR",
+  "scope": "Grouped cast-origin correctness for all three cues; actual AREA for command; no new art pixels",
+  "newTests": {
+    "realCastChecks": 60,
+    "scenes": 12,
+    "viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "looks": [
+      "base",
+      "tier4"
+    ],
+    "arena": "bosque",
+    "pageErrors": 0,
+    "technical": 25,
+    "atlasesByteIdenticalToPrior": {
+      "bayonet": true,
+      "command": true,
+      "charge": true
+    }
+  },
+  "visual": "Three full captures reviewed: mobile tier4 command224ms, desktop base bayonet80ms, mobile tier4 charge480ms. Command remains dominated by legacy rings/spectrals; travel traces remain thin near feet. No final Art Gate approval.",
+  "notRun": [
+    "relay for changed event emission",
+    "full simulation parity",
+    "contact ABA80%/delta24",
+    "six arenas/skins/equipment",
+    "sustained performance"
+  ],
+  "historical": "PR220 initial 11relay/360frame parity not reused as approval of new wrapper; baseline Ilkan41/42 from Morwen remains historical and unrelated."
+}

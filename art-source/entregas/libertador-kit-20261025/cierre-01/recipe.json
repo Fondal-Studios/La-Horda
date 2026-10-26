@@ -1,0 +1,17 @@
+{
+  "source": "source-candidate.js",
+  "original": "source-before.js",
+  "medium": "existing native SfaStrip reused, zero regenerated art",
+  "atlasExact": {
+    "bayonet": true,
+    "command": true,
+    "charge": true
+  },
+  "runtime": "js/champions/skill-fx-a/c/libertador.js",
+  "baseTested": "78039728e737bfc7683fe487c1c281698aa6dd71",
+  "commands": [
+    "EXPORT_ONLY=1 OUT=art-source/entregas/libertador-kit-20261025/cierre-01 CHROMIUM_PATH=/tmp/chromium node tools/vfx/produce-libertador-kit.js",
+    "CHROMIUM_PATH=/tmp/chromium node tools/vfx/libertador-cast-contract.js"
+  ],
+  "dependency": "Playwright via NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules"
+}

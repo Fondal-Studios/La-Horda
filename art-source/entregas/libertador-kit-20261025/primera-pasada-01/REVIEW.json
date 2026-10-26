@@ -1,0 +1,95 @@
+{
+  "state": "EN_CORRECCION",
+  "gate": "FIX/NO_INTEGRAR",
+  "integration": "WORKSHOP_ONLY",
+  "publication": "NOT_APPLICABLE_UNMERGED",
+  "visual": "Inspected native mobile H1 80ms, H2 480ms, H3 480ms and atlas contact. Travel tracks actual displacement and excludes mount; H2 exposes existing spectral sprites. Shapes still too thin for approval.",
+  "components": [
+    {
+      "block": "B157",
+      "component": "A-FX-libertador-h1",
+      "kind": "bayonet",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "diagnosis": "Thin two-edged trace reads arrow near feet; hand/weapon anchoring and contact hierarchy unresolved; last phases can be skipped on impact stop."
+    },
+    {
+      "block": "B158",
+      "component": "A-FX-libertador-h2",
+      "kind": "command",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "diagnosis": "Five open command arcs preserve spectral images, but become tiny ticks over arena; inherited radius430 not verified for modified area."
+    },
+    {
+      "block": "B159",
+      "component": "A-FX-libertador-h3",
+      "kind": "charge",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "diagnosis": "Small bright hoof marks read sparkles at actual mobile scale; instantaneous removal when phase ends; interrupted/mounted/recast cases need grouped lifecycle review."
+    }
+  ],
+  "tests": {
+    "technical": 25,
+    "relay": 11,
+    "parityFrames": 360,
+    "rng": [
+      27434,
+      27434
+    ],
+    "summaryEqual": true,
+    "fullSnapshot": false,
+    "capturePrecastEqual": 8,
+    "UFPNGEqual": 8,
+    "reexportPNGExact": 3,
+    "previewCanvases": 3,
+    "regression": "40/42; E17.tres_pisadas and E19.agotamiento FAIL, no root cause or main baseline established"
+  },
+  "pending": [
+    "six arenas",
+    "equipped skins/set",
+    "compound contrast",
+    "impacts/walls/knockback/recasteo",
+    "multiple recipients/casters",
+    "sustained mobile performance",
+    "final Art Gate",
+    "exact-head CI"
+  ]
+}

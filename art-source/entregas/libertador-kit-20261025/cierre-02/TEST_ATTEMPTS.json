@@ -1,0 +1,41 @@
+{
+  "preserved_prior": "cierre-01/TEST_ATTEMPTS.json and primera-pasada-01 failures remain unchanged",
+  "new": [
+    {
+      "id": "browser-install01",
+      "result": "Playwright Chromium v1234 download failed: truncated/not-zip archive. No game test started."
+    },
+    {
+      "id": "browser-install02",
+      "result": "npm @sparticuz/chromium153 succeeded; absolute directory require failed (ESM exports); executablePath failed chown EINVAL, then Python extraction failed missing brotli. Preserved ONLINE.log failure. Extracted npm-owned binary with Node builtin zlib and tar --no-same-owner, no repo dependency/lock changes."
+    },
+    {
+      "id": "parity-harness-correction",
+      "result": "Removed eval(parentSource) layered over candidate. Route parent before script load; independent candidate repeat; no nondeterminism PASS shortcut. Previous artifacts retained, no retroactive invalidation of numbers."
+    },
+    {
+      "id": "relay-before-art",
+      "result": "11 PASS,0page errors; final rerun justified by changed raster/anchor."
+    },
+    {
+      "id": "technical-final",
+      "result": "25 PASS,0errors"
+    },
+    {
+      "id": "contact-final",
+      "result": "24 scenes96 ABA exact,0errors,min99.3496%; visual FIX despite contact PASS"
+    },
+    {
+      "id": "casts-final",
+      "result": "60 checks PASS,12 casts,0errors"
+    },
+    {
+      "id": "relay-final",
+      "result": "11 PASS,0errors,host/touchguest exact RGBA variants"
+    },
+    {
+      "id": "parity-final",
+      "result": "360frames parent/candidate/repeat27434 RNG equal/summary equal,0errors"
+    }
+  ]
+}

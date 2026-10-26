@@ -1,0 +1,18 @@
+{
+  "state": "EN_CORRECCION",
+  "gate": "FIX/NO_INTEGRAR",
+  "reviewed": [
+    "review-mobile.png:24 native crops six arenas",
+    "review-desktop.png:24 native crops six arenas",
+    "temporal-mobile.png:16 native crops Bosque sparse",
+    "temporal-desktop.png:16 native crops Bosque sparse"
+  ],
+  "finding": "Motion phases now start after mount and consume visible0..10 for full base/tier4 travel. Generic launch star and legacy impact layers still dominate H1; hoof tracks remain visually close to particle trail. H2 unchanged and previous mando/spectral FIX remains. Not Art PASS. Some late movement extends beyond review crops; full canvases reproducible from recipe.",
+  "not_new": "No new raster, body, horse, skins, UF, mechanics, shared hooks or installed PNG. Previous closure02 technical25/cast60 are historical.",
+  "pending": [
+    "Grouped launch/impact hierarchy and command/hoof readability",
+    "all skins/equipment and full temporal visual gate",
+    "full renderer performance",
+    "Art Gate PASS and ALL exact-head CI before merge"
+  ]
+}

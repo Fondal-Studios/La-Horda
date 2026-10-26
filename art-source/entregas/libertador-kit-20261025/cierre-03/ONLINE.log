@@ -1,0 +1,9 @@
+[arnés] servidor propio: http://127.0.0.1:40695 (raíz /workspace/scratch/27dc1a293731/la-horda)
+Error: ENOENT: no such file or directory, open 'art-source/entregas/libertador-kit-20261025/cierre-03/online/online-failure.json'
+    at Object.writeFileSync (node:fs:2482:20)
+    at /workspace/scratch/27dc1a293731/la-horda/tools/vfx/libertador-kit-online.js:25:15 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'art-source/entregas/libertador-kit-20261025/cierre-03/online/online-failure.json'
+}

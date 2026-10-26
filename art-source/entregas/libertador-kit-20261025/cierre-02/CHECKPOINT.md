@@ -1,0 +1,11 @@
+# Libertador — cierre02, 26/10/2026
+
+EN_CORRECCION / FIX / NO_INTEGRAR. Continúa PR220 borrador. Padre93d8760b10d8601dfa1e04df386dc9a21cdfa5a4; main78039728e737bfc7683fe487c1c281698aa6dd71. Reconciliar la rama con árbol main más únicamente las75 rutas propias de PR220 y esta entrega, con ambos padres, conserva los cambios externos de Libro/economía y todos los cierres integrados. Sólo un runtime, c/libertador.js, difiere de main. Cola61 preservada e historia añadida a los tres IDs existentes. Sin cierre remoto perdido: copia local eliminada, repositorio restaurado desde GitHub.
+
+Corrección agrupada de las tres siluetas: estela de acero más corta a altura de arma(-18), cinco llamadas con asta/paño abierto, cuatro pares de cascos abiertos. Enganche real y radio exacto de cierre01 preservados; no mecánicas/cuerpo/caballo/UF ni engine/bind/hooks compartidos. Tres PNG de evidencia, cero PNG instalados. Fuentes anteriores conservadas.
+
+NUEVO:25técnicos PASS;60checks/12casts finales PASS;24escenas Bosque base/tier4×sparse/dense×3skills×2viewports,96ABAexactos/estadoRESUMIDOigual,0errores,min99.3496% cuerpos,80%delta24 intactos. Dos hojas nativas24vistas revisadas. ArtGateFIX: mando dominado por espectrales, cascos aún semejan partículas y estela secundaria junto al impacto. Sin6arenas/todaslooks/performance/consumo íntegrofases. Baseline sólo quita canvas candidatos, no aprueba legibilidad de efectos.
+
+11relay antes y11final hostSolciju/invitadoLibertador táctil PASS, variantesRGBAexactas, cerocharge durante mount. Paridad corregida: padre sustituido antes de cargar, no eval sobre wrapper candidato;360frames main/candidato/repetición27434RNG y estadoRESUMIDOiguales,0errores. No snapshotglobal. Intentos de instalación de navegador y evidencia histórica preservados; no cambio de locks. IlkanE19histórico sigue sin causa demostrada.
+
+Siguiente sigue CIERRE de Libertador: resolver jerarquía de lanzamiento/impacto junto con mando/cascos y transiciones al terminar recorrido, no otro ajuste sólo tonal. Revisión temporal conjunta y seisarenas/skins/equipo, frío/recuperación, lifecycle, renderer limpio, ArtGatePASS y TODOSloschecks/workflows delSHAexacto antes de ready/merge normal. No abrir otrokit. No merge ni publicación. Comandos recipe.json; fuentes source-parent/source-candidate; pruebas previas permanecen históricas.

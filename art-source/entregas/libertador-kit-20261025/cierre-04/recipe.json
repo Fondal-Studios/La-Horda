@@ -1,0 +1,26 @@
+{
+  "parent": "61087de38b2e9c6a4ef807ed9c72f5de9f48aeea",
+  "main": "78039728e737bfc7683fe487c1c281698aa6dd71",
+  "runtime": [
+    "js/champions/skill-fx-a/c/libertador.js",
+    "js/skills/champion-signatures.js"
+  ],
+  "sources": [
+    "source-candidate.js",
+    "signatures-candidate.js"
+  ],
+  "native": "Existing SfaStrip recipe (12 frames each) plus original Canvas integer raster launch atlas128x96 / 3x4cells32px. No installed PNG. H1/H2 raster unchanged03; H3 pair spacing/shape only.",
+  "env": "CHROMIUM_PATH=/tmp/chromium NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+  "commands": [
+    "EXPORT_ONLY=1 OUT=art-source/entregas/libertador-kit-20261025/cierre-04 node tools/vfx/produce-libertador-kit.js",
+    "OUT=art-source/entregas/libertador-kit-20261025/cierre-04 node tools/vfx/libertador-signature-check.js",
+    "ALL_PHASES=1 OUT=art-source/entregas/libertador-kit-20261025/cierre-04/contact-desktop node tools/vfx/capture-libertador-contact.js",
+    "MOBILE=1 ALL_PHASES=1 OUT=art-source/entregas/libertador-kit-20261025/cierre-04/contact-mobile node tools/vfx/capture-libertador-contact.js",
+    "OUT=art-source/entregas/libertador-kit-20261025/cierre-04 node tools/vfx/libertador-kit-online.js",
+    "OUT=art-source/entregas/libertador-kit-20261025/cierre-04/parity node tools/vfx/parity-libertador-kit.js",
+    "OUT=art-source/entregas/libertador-kit-20261025/cierre-04 node tools/vfx/libertador-full-render-perf.js",
+    "python3 tools/vfx/libertador-review-close04.py"
+  ],
+  "pairing": "FREEZE_BOOT=1 ARENAS=bosque LOOKS=base,tier4 DENSITIES=dense; main routes BASELINE_MAIN=cierre03/source-main.js PARENT_SIGNATURE=cierre04/signatures-before.js before load; repeat with MOBILE=1.",
+  "images": "Full capture PNGs reproducible rather than all installed; hashes in CAPTURE_INDEX.json.gz; full capture JSON compressed losslessly."
+}

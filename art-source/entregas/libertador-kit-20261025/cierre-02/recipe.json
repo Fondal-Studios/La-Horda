@@ -1,0 +1,18 @@
+{
+  "runtime": "js/champions/skill-fx-a/c/libertador.js",
+  "source": "source-candidate.js",
+  "parent": "source-parent.js",
+  "main": "source-before.js",
+  "native": "SfaStrip12 frames;128x32 bayonet/charge;192x192 command diagnostic; no installed PNG",
+  "base": "78039728e737bfc7683fe487c1c281698aa6dd71",
+  "env": "CHROMIUM_PATH=/tmp/chromium NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+  "commands": [
+    "EXPORT_ONLY=1 OUT=art-source/entregas/libertador-kit-20261025/cierre-02 node tools/vfx/produce-libertador-kit.js",
+    "OUT=art-source/entregas/libertador-kit-20261025/cierre-02/final node tools/vfx/libertador-cast-contract.js",
+    "OUT=art-source/entregas/libertador-kit-20261025/cierre-02/final node tools/vfx/libertador-kit-online.js",
+    "OUT=art-source/entregas/libertador-kit-20261025/cierre-02/final node tools/vfx/parity-libertador-kit.js",
+    "ARENAS=bosque LOOKS=base,tier4 DENSITIES=sparse,dense OUT=art-source/entregas/libertador-kit-20261025/cierre-02/contact-desktop node tools/vfx/capture-libertador-contact.js",
+    "MOBILE=1 ARENAS=bosque LOOKS=base,tier4 DENSITIES=sparse,dense OUT=art-source/entregas/libertador-kit-20261025/cierre-02/contact-mobile node tools/vfx/capture-libertador-contact.js"
+  ],
+  "parity": "Place source-before.js in OUT before parity. Browser deployed via npm @sparticuz/chromium153; no game dependencies changed."
+}

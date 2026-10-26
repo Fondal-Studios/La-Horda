@@ -1,0 +1,28 @@
+{
+  "rows": [
+    {
+      "viewport": "desktop",
+      "scenes": 180,
+      "samples": 720,
+      "allABA": true,
+      "allSummarizedState": true,
+      "minBodyRetention": 0.9900151555674422,
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "scenes": 180,
+      "samples": 720,
+      "allABA": true,
+      "allSummarizedState": true,
+      "minBodyRetention": 0.9908003679852806,
+      "errors": []
+    }
+  ],
+  "thresholds": {
+    "bodyRetention": 0.8,
+    "delta": 24
+  },
+  "baseline": "Suppress only candidate native atlases AND new launch atlas; restores poses/RNG/particles/pools for A/B/A. Not a global snapshot.",
+  "visual": "12 native sheets / 180 dense views; 4 temporal sheets / 96 sparse views; six arenas, 5 looks, 2 densities and 2 viewports sampled in matrix. Temporal visual review is Bosque/Infernal base/tier4, not every Cartesian sequence."
+}

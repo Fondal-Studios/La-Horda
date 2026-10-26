@@ -1,0 +1,11 @@
+# Libertador — cierre01 26/10/2026
+
+EN_CORRECCION / FIX / NO_INTEGRAR. PR220 continúa borrador. Padre remoto171f23cdf0e8c8ebfdb123fa5711d72b7ebde1b5. Pruebas locales sobre main fresco78039728e737bfc7683fe487c1c281698aa6dd71 más únicamente SFA Libertador candidato. Main incluye cambios externos del Libro/economía; no se revierten. No equivalencia global con el árbol viejo de PR220 ni aprobación de merge.
+
+Corrección agrupada de enganche H1/H2/H3: wrapper local de libertadorCast emite sólo después del cast real bajo SFA_REC, evita duplicar efectos en cast rechazado por fused. Mando recibe AREA exacta de combate (430 base,706.92 tier4); no recalcula talento/evolución ni cambia mecánicas. Variantes explícitas h/p, protocolo/evento SFA existente. No archivos engine/bind/hooks compartidos cambiados. Fuentes/atlas anteriores preservados, tres PNG byteidénticos, cero nueva producción raster/PNG instalado.
+
+Nuevos25 controles técnicos PASS;60checks en12casts reales Bosque base/tier4 móvil/escritorio PASS,0errores. Cada cast prueba un único cue, geometría real, variante, rechazo fused sin duplicación y SFA_OFF.36capturas diagnósticas generadas,3seleccionadas revisadas/persistidas; resto reproducible. No equivalen a contraste/contacto A/B/A, red, paridad o ArtGate integral. Revisión mantieneFIX: bayoneta/huellas finas y mando dominado por capas legadas. No nueva certificación de escudo/UF/cuerpo.
+
+Cola61 actual preservada, historia añadida a3IDs existentes. 46 artefactos art-source del manifiesto previo intactos; runtime y cola cambian intencionalmente. Scratch faltaba por mantenimiento, reclonado10580archivos main; cierres remotos Morwen y Libertador presentes, sin cierre remoto perdido detectado.
+
+Siguiente SIGUE CIERRE agrupado Libertador: corregir lectura/anclajes/fases de bayoneta+mando+huellas desde estas fuentes; validar red del nuevo punto de emisión y paridad sobre main fresco, seisarenas/skins/equipo/contacto80%delta24/performance. Reconciliar PR220 con main por diff sin restaurar versiones viejas de Mago/Maura/Veyra/bind/firmas ni trabajo externo. IlkanE19baselinehistórico41/42 permanece sin causa probada; no alterar balance ni bajar gates. No nuevo kit ni primera pasada. Consultar CI exacthead; aunque verde, este componente no tiene ArtGatePASS. No merge/publicación. Comandos en recipe.json.

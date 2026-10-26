@@ -1,0 +1,21 @@
+node:fs:483
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open 'art-source/entregas/solciju-toast-20261024/cierre-01/source-before.js'
+    at Object.readFileSync (node:fs:483:20)
+    at Object.<anonymous> (/workspace/scratch/a01f80e6b406/libertador-production/tools/vfx/parity-libertador-kit.js:11:23)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'art-source/entregas/solciju-toast-20261024/cierre-01/source-before.js'
+}
+
+Node.js v24.22.1
