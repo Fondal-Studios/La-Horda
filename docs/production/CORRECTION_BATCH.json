@@ -2567,6 +2567,26 @@
           "action": "Reachable radius fixed and composition corrected together;120scenes768ABA,80edges,realrelay3casts; priorFIX superseded only namedcomponent."
         }
       ]
+    },
+    {
+      "component": "A-FX-myla-h3/bubble-state",
+      "block": "B177",
+      "frame": "existing my_bubble_idle 12 phases",
+      "source": "js/champions/vfx-b/myla.js",
+      "sha256": "98a206fcd423f09ef213a3cf9dccf798d22aecaca37cd8074ea8144b21f583ce",
+      "state": "VALIDADO",
+      "diagnosis": "Fixed shield0 phantom and recast overlap locally; relay/full visual gates pending",
+      "action": "Await all exact-head checks/workflows; normal expected-head merge then verify main and canonical bytes; do not close whole B177.",
+      "checkpoint": "art-source/entregas/myla-bubble-20261026/cierre-01/CHECKPOINT.md",
+      "history": [
+        {
+          "date": "2026-10-26",
+          "checkpoint": "art-source/entregas/myla-bubble-20261026/cierre-01/CHECKPOINT.md",
+          "state": "VALIDADO",
+          "diagnosis": "Aggregate shield/owner/order validated, open shell clears inherited contact failures. PASS_COMPONENT only; exact-head CI pending.",
+          "sourceSha256": "98a206fcd423f09ef213a3cf9dccf798d22aecaca37cd8074ea8144b21f583ce"
+        }
+      ]
     }
   ],
   "latestProduction": {
@@ -2576,10 +2596,5 @@
     "totalEntries": 62,
     "checkpoint": "art-source/entregas/musashi-kit-20261026/area-01/CHECKPOINT.md"
   },
-  "latestClosure": {
-    "checkpoint": "art-source/entregas/libertador-kit-20261025/cierre-04",
-    "state": "VALIDADO",
-    "scope": "Only Libertador three native cues and normal launches; not complete B157/B158/B159",
-    "next": "Complete exact-head CI before normal sequential merge."
-  }
+  "latestClosure": "art-source/entregas/myla-bubble-20261026/cierre-01/CHECKPOINT.md"
 }

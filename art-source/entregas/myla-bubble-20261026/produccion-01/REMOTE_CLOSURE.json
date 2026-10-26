@@ -1,0 +1,131 @@
+{
+  "date": "2026-10-26",
+  "component": "A-FX-myla-h3/bubble-state",
+  "block": "B177",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "pr": 229,
+  "branch": "art/myla-bubble-state-20261026",
+  "production": "9fd9b718ed6fc1a13f6b57e9848497ece7e20681",
+  "tree": "237121d6fb89a3c657d77ae57ec7034ef94faf46",
+  "verification": {
+    "files": 20,
+    "treeEntries": 12498,
+    "head": "9fd9b718ed6fc1a13f6b57e9848497ece7e20681",
+    "main": "9709434da727b0c504f021b023de3f0eabe4a93d",
+    "checks": [
+      {
+        "name": "mobile-inventory",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "entry-reference",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "postgres",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Identidad de arenas, objetivos y regalo inicial",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Objetos, economía y tienda (pruebas que hoy fallan en la base)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "safari-engine",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "name": "Regresión, UX y carriles",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "transactions",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Arnés y lógica pura (sin navegador)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "VFX de definitivas, decales e íconos de habilidad",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "lanes",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Objetos, economía y tienda (parte A)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "readability",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "emoji-lint",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "recovery",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "evidence",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Analyze (actions)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Analyze (python)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "emoji-lint",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ],
+    "observed": "2026-10-26T16:48:43.291Z"
+  },
+  "source": "source-candidate.js",
+  "queue": {
+    "preserved": 62,
+    "total": 63
+  },
+  "newTests": "10 local state/render tests PASS; actual useSkill+damageHero baseline draw1 at shield0, candidate0. Node syntax/diff check PASS. Two mobile diagnostic screenshots inspected, unseeded actors/scenery differ: not paired visual gate. Native frames unchanged by source; within-candidate recast raster equality tested.",
+  "attempts": "TDZ state local shadow caused test failure before casts; source preserved test-attempt01.js, fixed observedState. Early recast observation2 visible corrected latest WeakMap; final test passes old alpha0/newalpha.8.",
+  "limits": "Snapshot probes directly assign hero fields, not real relay. Shared shield replenishment can re-show latest entity within original TTL; semantics need review. No complete visual gate, six arenas/skins/desktop, combat parity, performance or publication tests. CI production20checks ongoing/queued, not approval.",
+  "next": "CIERRE of this Myla component from current candidate: validate actual relay, owner replacement/duo, snapshot order and replenished shield semantics, paired visual sequence and complete applicable gates. Reuse existing H1 tower/H2 puddle/H3 native12frames/body/skins/Berrinche; no duplicate production or other kit before closure.",
+  "remoteRecovery": "Musashi previous closure read and confirmed; no lost remote closure detected. Main9709434 unchanged.",
+  "closure": "Separate evidence-only checkpoint commit; production manifest remains immutable."
+}

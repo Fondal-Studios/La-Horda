@@ -1,0 +1,57 @@
+{
+  "rows": [
+    {
+      "mobile": false,
+      "enabled": false,
+      "skin": null,
+      "samples": 340,
+      "p50": 2.600000001490116,
+      "p95": 4.300000004470348,
+      "max": 15.200000002980232,
+      "drawAttempts": 361,
+      "clears": 361,
+      "heroHP": 10000000,
+      "errors": []
+    },
+    {
+      "mobile": false,
+      "enabled": true,
+      "skin": null,
+      "samples": 340,
+      "p50": 2.8000000044703484,
+      "p95": 5.100000001490116,
+      "max": 23.200000002980232,
+      "drawAttempts": 361,
+      "clears": 361,
+      "heroHP": 10000000,
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "enabled": false,
+      "skin": null,
+      "samples": 340,
+      "p50": 3,
+      "p95": 5.699999995529652,
+      "max": 42.599999994039536,
+      "drawAttempts": 361,
+      "clears": 361,
+      "heroHP": 10000000,
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "enabled": true,
+      "skin": null,
+      "samples": 340,
+      "p50": 2.899999998509884,
+      "p95": 5.600000001490116,
+      "max": 16.200000002980232,
+      "drawAttempts": 361,
+      "clears": 361,
+      "heroHP": 10000000,
+      "errors": []
+    }
+  ],
+  "scope": "Independent seeded runs, 12 enemies + 2 allies, 360 update/render frames each with RAF; first20 excluded. Actual render() clear cycle. Disabled mode suppresses only candidate canvas draws; measures JS submission time, not GPU completion, physical mobile or global-state parity. No new performance threshold introduced."
+}

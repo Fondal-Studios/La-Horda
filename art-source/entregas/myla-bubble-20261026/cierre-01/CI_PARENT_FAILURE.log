@@ -1,0 +1,18 @@
+Run node tools/collection/brasas-store.js
+2026-10-26T17:17:25.8981808Z [36;1mnode tools/collection/brasas-store.js[0m
+2026-10-26T17:17:25.9043244Z shell: /usr/bin/bash -e {0}
+2026-10-26T17:17:25.9043497Z env:
+2026-10-26T17:17:25.9043722Z   NODE_PATH: /tmp/horda-balance/node_modules
+2026-10-26T17:17:25.9044023Z ##[endgroup]
+2026-10-26T17:17:35.1560527Z AssertionError [ERR_ASSERTION]: chip visible con sesión
+2026-10-26T17:17:35.1561821Z     at ok (/home/runner/work/La-Horda/La-Horda/tools/collection/brasas-store.js:30:171)
+2026-10-26T17:17:35.1563047Z     at /home/runner/work/La-Horda/La-Horda/tools/collection/brasas-store.js:59:3 {
+2026-10-26T17:17:35.1564034Z   generatedMessage: false,
+2026-10-26T17:17:35.1564609Z   code: 'ERR_ASSERTION',
+2026-10-26T17:17:35.1565015Z   actual: false,
+2026-10-26T17:17:35.1565370Z   expected: true,
+2026-10-26T17:17:35.1565723Z   operator: '==',
+2026-10-26T17:17:35.1566064Z   diff: 'simple'
+2026-10-26T17:17:35.1566388Z }
+2026-10-26T17:17:35.1895123Z ##[error]Process completed with exit code 1.
+2026-10-26T17:17:35.1998646Z ##[group]

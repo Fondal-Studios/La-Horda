@@ -1,0 +1,6 @@
+{
+  "source": "js/champions/vfx-b/myla.js",
+  "reuse": "my_bubble_idle native kvbIdlePaint, 12 phases at radius34, existing frames/caching/TTL",
+  "change": "Local alpha accessor reads owner alive and current shield; WeakMap selects newest bubble per owner. No new atlas or installed PNG. Old entities expire through existing pool TTL.",
+  "reproduce": "CHROMIUM_PATH=/tmp/chromium NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules OUT=<dir> node tools/vfx/test-myla-bubble-state.js"
+}

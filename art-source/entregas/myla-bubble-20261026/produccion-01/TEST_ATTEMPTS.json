@@ -1,0 +1,22 @@
+[
+  {
+    "attempt": "baseline",
+    "result": "main9709434 real useSkill/damageHero: shield0 but bubble draws1"
+  },
+  {
+    "attempt": "candidate01",
+    "result": "same damage case bubble draws0; mobile screenshot diagnostic only, no paired seed"
+  },
+  {
+    "attempt": "state01",
+    "result": "ReferenceError state TDZ before casts; source test-attempt01.js preserved; renamed local observedState"
+  },
+  {
+    "attempt": "state02",
+    "result": "10PASS, observed recast2 visible pooled entities; source then corrected using local WeakMap"
+  },
+  {
+    "attempt": "state03-final",
+    "result": "10PASS, only newest recast visible; old entity normalTTL,0pageerrors. Snapshot values are local probes not relay."
+  }
+]
