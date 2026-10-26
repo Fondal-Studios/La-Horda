@@ -1,0 +1,10 @@
+page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8807/index.html
+Call log:
+[2m  - navigating to "http://127.0.0.1:8807/index.html", waiting until "load"[22m
+
+    at /workspace/scratch/27dc1a293731/la-horda/tools/regression/t_champs_se.js:84:14 {
+  log: [
+    '  - navigating to "http://127.0.0.1:8807/index.html", waiting until "load"'
+  ],
+  name: 'Error'
+}

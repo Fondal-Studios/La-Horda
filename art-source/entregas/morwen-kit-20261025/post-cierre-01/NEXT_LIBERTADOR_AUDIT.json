@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-26T01:47:50.759Z",
+  "pr": 220,
+  "url": "https://github.com/Fondal-Studios/La-Horda/pull/220",
+  "state": "open",
+  "draft": true,
+  "head": "171f23cdf0e8c8ebfdb123fa5711d72b7ebde1b5",
+  "base": "9c0ac434b2cb80ae16e7220371f59944ac3e9613",
+  "currentMain": "fd10c68b4ff8140481237de3cc885b8635e4710e",
+  "runtimeChangesAgainstCurrentMain": [
+    {
+      "path": "js/champions/mago.js",
+      "branch": "5f603309ab748077ade0d404bdd6240a40113c1a",
+      "main": "aad245c1d699b3cc372afb4a3cdc64286143fe6c"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/libertador.js",
+      "branch": "cc3f4056baf57478bb7232953a146bcfd00a0513",
+      "main": "6f9fcf097c62531653aac1859bd5719d56138ad5"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/maura.js",
+      "branch": "76a2e735c6424acac53b7dc0e985440bb33d5997",
+      "main": "05be04d46b7262222652851f7c13e4abf5a1959b"
+    },
+    {
+      "path": "js/champions/ult-forms/bind.js",
+      "branch": "715ee8d9e6118cd0edf12f6d89b3fd7c72e6a8a1",
+      "main": "c9398fccaddcd60c5a6eba131e12e4ff824eb2c4"
+    },
+    {
+      "path": "js/champions/vfx-b/veyra.js",
+      "branch": "d0bbc0f2482e27725b01e76ba46cbab446bd94d4",
+      "main": "33be00eebda9a4403064a212b099d3a6a49149e7"
+    },
+    {
+      "path": "js/skills/champion-signatures.js",
+      "branch": "bd8c4d814bcfa398a1678b0709c839167a4496c1",
+      "main": "2c17f221f85547f6e12e3599d1f610a171427050"
+    }
+  ],
+  "finding": "PR220 still draft/FIX, no closure after first pass. Only Libertador SFA candidate should be reconciled into current main; never restore old Mago/Maura/Veyra/signatures/bind files. All19 head checks SUCCESS does not supersede visual defects or unexplained local Ilkan failures.",
+  "next": "CIERRE grouped Libertador geometry/material: bayonet vs arrow, command visibility, recognizable hoofprints along actual displacement; preserve mounted body61/horse/UF and failed sources. Read current PR220 REVIEW/manifest/recipe/TEST_ATTEMPTS before editing. Baseline test evidence is separate; no gameplay changes.",
+  "newBaseline": {
+    "result": "41/42; only E19.agotamiento FAIL with fury6, E17 PASS,0pageErrors",
+    "source": "BASELINE_RESULT.json",
+    "limitation": "Main baseline only; no explanation of earlier E17 and no new PR220 validation."
+  }
+}

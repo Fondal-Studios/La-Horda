@@ -1,0 +1,120 @@
+{
+  "scope": "Twelve within-scene parent/candidate pairs with corrected KVB wrapper. Same summarized state, expired pixels exact; contact and A/B/A evaluated independently in full matrix.",
+  "scenes": 12,
+  "samples": 48,
+  "withinSceneParentStateEqual": true,
+  "expiredPixelsEqual": true,
+  "crossRunPrecastEqualCount": 6,
+  "crossRunPrecastTotal": 12,
+  "limitation": "Six Infernal precast hashes differ between separate full-matrix and paired sessions (different case sequence); do not claim cross-run pixel identity or a proven cause. These sessions are not used as A/B pairs. Failed assertion preserved. No runtime edits or gate weakening.",
+  "rows": [
+    {
+      "view": "desktop",
+      "arena": "bosque",
+      "slot": 0,
+      "crossRunPrecastEqual": true,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "desktop",
+      "arena": "bosque",
+      "slot": 1,
+      "crossRunPrecastEqual": true,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "desktop",
+      "arena": "bosque",
+      "slot": 2,
+      "crossRunPrecastEqual": true,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "desktop",
+      "arena": "infernal",
+      "slot": 0,
+      "crossRunPrecastEqual": false,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "desktop",
+      "arena": "infernal",
+      "slot": 1,
+      "crossRunPrecastEqual": false,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "desktop",
+      "arena": "infernal",
+      "slot": 2,
+      "crossRunPrecastEqual": false,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "mobile",
+      "arena": "bosque",
+      "slot": 0,
+      "crossRunPrecastEqual": true,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "mobile",
+      "arena": "bosque",
+      "slot": 1,
+      "crossRunPrecastEqual": true,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "mobile",
+      "arena": "bosque",
+      "slot": 2,
+      "crossRunPrecastEqual": true,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "mobile",
+      "arena": "infernal",
+      "slot": 0,
+      "crossRunPrecastEqual": false,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "mobile",
+      "arena": "infernal",
+      "slot": 1,
+      "crossRunPrecastEqual": false,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "mobile",
+      "arena": "infernal",
+      "slot": 2,
+      "crossRunPrecastEqual": false,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    }
+  ]
+}

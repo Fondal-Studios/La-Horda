@@ -1,0 +1,114 @@
+{
+  "rows": [
+    {
+      "view": "desktop",
+      "arena": "bosque",
+      "slot": 0,
+      "crossRunPrecastEqual": true,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "desktop",
+      "arena": "bosque",
+      "slot": 1,
+      "crossRunPrecastEqual": true,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "desktop",
+      "arena": "bosque",
+      "slot": 2,
+      "crossRunPrecastEqual": true,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "desktop",
+      "arena": "infernal",
+      "slot": 0,
+      "crossRunPrecastEqual": false,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "desktop",
+      "arena": "infernal",
+      "slot": 1,
+      "crossRunPrecastEqual": false,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "desktop",
+      "arena": "infernal",
+      "slot": 2,
+      "crossRunPrecastEqual": false,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "mobile",
+      "arena": "bosque",
+      "slot": 0,
+      "crossRunPrecastEqual": true,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "mobile",
+      "arena": "bosque",
+      "slot": 1,
+      "crossRunPrecastEqual": true,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "mobile",
+      "arena": "bosque",
+      "slot": 2,
+      "crossRunPrecastEqual": true,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "mobile",
+      "arena": "infernal",
+      "slot": 0,
+      "crossRunPrecastEqual": false,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "mobile",
+      "arena": "infernal",
+      "slot": 1,
+      "crossRunPrecastEqual": false,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    },
+    {
+      "view": "mobile",
+      "arena": "infernal",
+      "slot": 2,
+      "crossRunPrecastEqual": false,
+      "parentStateEqual": true,
+      "expiredPixelsEqual": true,
+      "samples": 4
+    }
+  ],
+  "attempt": "Cross-run precast equality assertion failed. Separate full matrix and paired browser sessions; not used for within-scene parent/candidate comparison. No cause attributed.",
+  "source": "Existing saved captures only, no test rerun"
+}

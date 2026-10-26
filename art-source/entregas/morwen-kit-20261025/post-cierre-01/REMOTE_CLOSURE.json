@@ -1,0 +1,42 @@
+{
+  "recordedAt": "2026-10-26T02:15:39.078Z",
+  "pr": 224,
+  "url": "https://github.com/Fondal-Studios/La-Horda/pull/224",
+  "branch": "art/morwen-normal-casts-20261025",
+  "productionCommit": "63b051f30f6dbc4861b6a1c5a243e40a62e2d0de",
+  "productionTree": "0b12b9055c48c3c6c7761521f301a00a0d393a4a",
+  "mergeCommit": "fda6b2433d726f44080c91557fe2d27a0e218ed1",
+  "mergedAt": "2026-10-26T02:11:24Z",
+  "status": "INTEGRADO_MAIN",
+  "components": [
+    "A-FX-morwen-h1/normal-launch",
+    "A-FX-morwen-h2/normal-launch",
+    "A-FX-morwen-h3/normal-launch"
+  ],
+  "supersedes": "Only these three components' VALIDADO state in immutable production manifest/checkpoint; no entire ability/block/kit closure.",
+  "checks": {
+    "exactHead": "63b051f30f6dbc4861b6a1c5a243e40a62e2d0de",
+    "checks": 19,
+    "workflows": 8,
+    "all": "SUCCESS"
+  },
+  "publication": {
+    "state": "NOT_CONFIRMED",
+    "checkedAt": "2026-10-26T02:14:16.252933+00:00",
+    "reason": "Canonical index consumes champion-signatures.js but serves older exact hash, without Morwen native consumer; see PUBLICATION.json."
+  },
+  "evidenceCommitPolicy": "This post-merge directory is evidence only on the same branch; not a second integration/merge.",
+  "productionFilesVerified": 81,
+  "queue": {
+    "count": 61,
+    "preservedPrevious": 58
+  },
+  "next": "CIERRE Libertador PR220 from fresh main; reconcile only its SFA file, do not restore 5 older unrelated runtime files. Actual command radius430/706.92 versus candidate fixed430. Baseline Ilkan E19 still fails; do not change mechanics or relax gate.",
+  "limitations": [
+    "Parity and relay predate destination-only 32 to 48 change; no final rerun claimed.",
+    "Full matrix contact/candidate ABA valid; original parent comparisons invalid. Only corrected paired runs certify within-scene parent comparison.",
+    "Cross-session precast matching failed six Infernal samples; not a claim of 12 exact cross-session precasts.",
+    "Ilkan baseline41/42 is independent next-work audit, not a Morwen regression PASS; E19 fury6 cause not proven.",
+    "Local performance viewports, no physical mobile/GPU/GC certification."
+  ]
+}

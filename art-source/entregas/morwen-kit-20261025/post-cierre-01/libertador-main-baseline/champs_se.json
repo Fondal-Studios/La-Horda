@@ -1,0 +1,708 @@
+{
+ "checks": [
+  {
+   "id": "SM1.humano",
+   "ok": true,
+   "detail": {
+    "k": "libertador",
+    "moved": 90,
+    "hud": true,
+    "cls": "San Martín, el Libertador"
+   }
+  },
+  {
+   "id": "SM2.disparo_normal",
+   "ok": true,
+   "detail": {
+    "reloadMs": 1085,
+    "enemyHp": 4944,
+    "proj": 0
+   }
+  },
+  {
+   "id": "SM2b.recarga_no_se_cancela",
+   "ok": true,
+   "detail": {
+    "basicCdAfterSkill": 1135
+   }
+  },
+  {
+   "id": "SM3.disparo_oficial",
+   "ok": true,
+   "detail": {
+    "readyAfter4Hits": true,
+    "dmgLine": [
+     332,
+     147,
+     0
+    ]
+   }
+  },
+  {
+   "id": "SM4.bayoneta",
+   "ok": true,
+   "detail": {
+    "phase": "bayo",
+    "dashPx": 95,
+    "enemyDmg": 167,
+    "bleed": 2350,
+    "stun": 0,
+    "enemyDx": 55
+   }
+  },
+  {
+   "id": "SM5.granaderos_buff",
+   "ok": true,
+   "detail": {
+    "me": 7904,
+    "allies": [
+     7904,
+     7904,
+     7904
+    ],
+    "enemyBuffed": false,
+    "spd": 1.2,
+    "atk": 1.15,
+    "dmg": 1.15,
+    "cc": 0.4
+   }
+  },
+  {
+   "id": "SM6.cabral",
+   "ok": true,
+   "detail": {
+    "x": 185,
+    "y": 0,
+    "hp": 1,
+    "maxHp": 338,
+    "alive": true,
+    "downed": false,
+    "sm": null,
+    "mounted": false,
+    "cabral": true,
+    "officer": false,
+    "shots": 0,
+    "er": null,
+    "titan": false,
+    "ready": false,
+    "exhaust": 0,
+    "notf": 0,
+    "fury": 37,
+    "furyMax": 100,
+    "combo": 0,
+    "cls": "San Martín, el Libertador",
+    "radius": 24,
+    "invuln": 1999,
+    "speed": 1.56,
+    "dmgOut": 1.15,
+    "taken": 1,
+    "cds": [
+     0,
+     15589,
+     0
+    ],
+    "state": "playing",
+    "hudC": "Oficial ○○○○\nCabral ✗"
+   }
+  },
+  {
+   "id": "SM7.san_lorenzo",
+   "ok": true,
+   "detail": {
+    "seq": [
+     "mount",
+     "charge",
+     "dismount"
+    ],
+    "c1": {
+     "hp": 99993,
+     "dmg": 132,
+     "bossKnocks": 0,
+     "maxHp": 99999,
+     "x": -262,
+     "y": 64,
+     "alive": true,
+     "stun": 0,
+     "bleed": 0,
+     "vuln": false,
+     "rank": "normal"
+    },
+    "el": {
+     "hp": 99999,
+     "dmg": 119,
+     "bossKnocks": 0,
+     "maxHp": 99999,
+     "x": -150,
+     "y": -10,
+     "alive": true,
+     "stun": 0,
+     "bleed": 0,
+     "vuln": false,
+     "rank": "elite"
+    },
+    "boss": {
+     "hp": 99880,
+     "dmg": 119,
+     "bossKnocks": 0,
+     "maxHp": 99999,
+     "x": -50,
+     "y": 0,
+     "alive": true,
+     "stun": 0,
+     "bleed": 0,
+     "vuln": true,
+     "rank": "jefe"
+    },
+    "bossAbs": {
+     "x": 565,
+     "y": 0
+    }
+   }
+  },
+  {
+   "id": "SM8.cruce_de_los_andes",
+   "ok": true,
+   "detail": {
+    "seq8": [
+     "ultcast",
+     "andes"
+    ],
+    "fx": [
+     "andes"
+    ],
+    "hit": "8/8"
+   }
+  },
+  {
+   "id": "SM9.forma_montada",
+   "ok": true,
+   "detail": {
+    "mounted": true,
+    "speed": 1.4,
+    "dmgOut": 1.25,
+    "taken": 0.8,
+    "sabreHit": 167,
+    "musketShots": 0
+   }
+  },
+  {
+   "id": "SM10.desmontaje",
+   "ok": true,
+   "detail": {
+    "x": 1076,
+    "y": 0,
+    "hp": 338,
+    "maxHp": 338,
+    "alive": true,
+    "downed": false,
+    "sm": null,
+    "mounted": false,
+    "cabral": true,
+    "officer": false,
+    "shots": 0,
+    "er": null,
+    "titan": false,
+    "ready": false,
+    "exhaust": 0,
+    "notf": 0,
+    "fury": 0,
+    "furyMax": 100,
+    "combo": 0,
+    "cls": "San Martín, el Libertador",
+    "radius": 24,
+    "invuln": 0,
+    "speed": 1,
+    "dmgOut": 1,
+    "taken": 1,
+    "cds": [
+     0,
+     0,
+     5117
+    ],
+    "state": "playing"
+   }
+  },
+  {
+   "id": "SM11.muerte_montado",
+   "ok": true,
+   "detail": {
+    "x": 1076,
+    "y": 0,
+    "hp": 0,
+    "maxHp": 338,
+    "alive": false,
+    "downed": false,
+    "sm": null,
+    "mounted": false,
+    "cabral": true,
+    "officer": false,
+    "shots": 0,
+    "er": null,
+    "titan": false,
+    "ready": false,
+    "exhaust": 0,
+    "notf": 0,
+    "fury": 0,
+    "furyMax": 100,
+    "combo": 0,
+    "cls": "San Martín, el Libertador",
+    "radius": 24,
+    "invuln": 0,
+    "speed": 1,
+    "dmgOut": 1,
+    "taken": 1,
+    "cds": [
+     0,
+     0,
+     5117
+    ],
+    "state": "playing"
+   }
+  },
+  {
+   "id": "SM12.jefe",
+   "ok": true,
+   "detail": {
+    "dmg": 802,
+    "knocks": 0,
+    "vulnSeen": true,
+    "seKnockOnBoss": "none"
+   }
+  },
+  {
+   "id": "SM13.oleadas_densas",
+   "ok": true,
+   "detail": {
+    "fps": 52.2,
+    "worstFrameMs": 62,
+    "fx": 0,
+    "parts": 8,
+    "enemiesAlive": 1,
+    "kills": 59,
+    "errors": []
+   }
+  },
+  {
+   "id": "E1.movimiento_humano",
+   "ok": true,
+   "detail": {
+    "moved": 113,
+    "cls": "Ilkan, el Caminante de Dunas"
+   }
+  },
+  {
+   "id": "E2.combo",
+   "ok": true,
+   "detail": {
+    "comboLog": [
+     1,
+     2,
+     3
+    ],
+    "furyLog": [
+     3,
+     6,
+     16
+    ]
+   }
+  },
+  {
+   "id": "E3.primer_gancho",
+   "ok": true,
+   "detail": {
+    "phase": "hook",
+    "dx": 115
+   }
+  },
+  {
+   "id": "E4.segundo_gancho",
+   "ok": true,
+   "detail": {
+    "canRedirect": true,
+    "phase": "hook"
+   }
+  },
+  {
+   "id": "E5.cambio_direccion",
+   "ok": true,
+   "detail": {
+    "firstLegDx": 153,
+    "secondLegDy": 195,
+    "secondLegDx": 17,
+    "log": [
+     "||",
+     "|hookPrep|",
+     "|hook|",
+     "|land|",
+     "||"
+    ]
+   }
+  },
+  {
+   "id": "E5b.sin_gancho_infinito",
+   "ok": true,
+   "detail": {
+    "canRedirectAfterSecond": false
+   }
+  },
+  {
+   "id": "E6.limites_arena",
+   "ok": true,
+   "detail": [
+    {
+     "x": 1076,
+     "y": 269,
+     "inside": true,
+     "finite": true
+    },
+    {
+     "x": -841,
+     "y": 288,
+     "inside": true,
+     "finite": true
+    },
+    {
+     "x": -212,
+     "y": 748,
+     "inside": true,
+     "finite": true
+    },
+    {
+     "x": -214,
+     "y": -748,
+     "inside": true,
+     "finite": true
+    }
+   ]
+  },
+  {
+   "id": "E7.furia",
+   "ok": true,
+   "detail": {
+    "furyNormal": 9,
+    "furyInstinct": 16,
+    "furyPerHpNormal": 0.29,
+    "furyPerHpInstinct": 0.8,
+    "hpLost": 20,
+    "takenMult": 0.65
+   }
+  },
+  {
+   "id": "E8.hp_bajo",
+   "ok": true,
+   "detail": {
+    "speed": [
+     1,
+     1.15
+    ],
+    "dmg": [
+     1,
+     1.15
+    ],
+    "furyMult": [
+     1,
+     2.7
+    ]
+   }
+  },
+  {
+   "id": "E9.transformacion",
+   "ok": true,
+   "detail": {
+    "radius": [
+     24,
+     53
+    ],
+    "maxHp": [
+     356,
+     926
+    ],
+    "log": [
+     "||",
+     "|tf|",
+     "||T"
+    ]
+   }
+  },
+  {
+   "id": "E10.ataque_monstruoso",
+   "ok": true,
+   "detail": {
+    "steps": [
+     0,
+     1,
+     2
+    ],
+    "commonPushed": 105,
+    "bossDmg": 284,
+    "bossKnocks": 0
+   }
+  },
+  {
+   "id": "E11.sismo",
+   "ok": true,
+   "detail": {
+    "dmgNear": 254,
+    "dmgFar": 161,
+    "dmgOut": 0
+   }
+  },
+  {
+   "id": "E12.terremoto",
+   "ok": true,
+   "detail": {
+    "phase": "quake",
+    "takenMult": 1.25,
+    "hpSeries": [
+     158,
+     172,
+     193,
+     218,
+     235
+    ],
+    "pulsesSeen": 5,
+    "dmgSeries": [
+     158,
+     172,
+     193,
+     218,
+     235
+    ]
+   }
+  },
+  {
+   "id": "E13.retumbar",
+   "ok": true,
+   "detail": {
+    "advancedPx": 273,
+    "enemyDmg": 851,
+    "phaseMid": "stomp",
+    "phaseEnd": null
+   }
+  },
+  {
+   "id": "E14.regeneracion",
+   "ok": true,
+   "detail": {
+    "hpAfterHit": 625,
+    "hpAfter2s": 649,
+    "max": 926
+   }
+  },
+  {
+   "id": "E15.furia_llena_transformado",
+   "ok": true,
+   "detail": {
+    "ready": true,
+    "bannerOrHud": true,
+    "notShownBefore": true
+   }
+  },
+  {
+   "id": "E16.ultimate_II",
+   "ok": true,
+   "detail": {
+    "phase": "finale",
+    "playerMovedWhileRumble": 0
+   }
+  },
+  {
+   "id": "E17.tres_pisadas",
+   "ok": true,
+   "detail": {
+    "steps": [
+     {
+      "idx": 0,
+      "dx": -320,
+      "dy": -80,
+      "r": 250,
+      "delay": 1300
+     },
+     {
+      "idx": 1,
+      "dx": 320,
+      "dy": 80,
+      "r": 250,
+      "delay": 3300
+     },
+     {
+      "idx": 2,
+      "dx": 0,
+      "dy": 0,
+      "r": 420,
+      "delay": 5300
+     }
+    ],
+    "enemyDmg": [
+     1445,
+     1445,
+     1617,
+     1167
+    ],
+    "allyHp": [
+     [
+      173,
+      121,
+      109
+     ],
+     [
+      271,
+      121,
+      109
+     ]
+    ]
+   }
+  },
+  {
+   "id": "E18.retorno_humano",
+   "ok": true,
+   "detail": {
+    "titan": false,
+    "cls": "Ilkan, el Caminante de Dunas",
+    "radius": 24
+   }
+  },
+  {
+   "id": "E19.agotamiento",
+   "ok": false,
+   "detail": {
+    "fury": 6,
+    "exhaustMs": 4100,
+    "noTransformMs": 18100,
+    "speed": 0.7,
+    "ultBlocked": true
+   }
+  },
+  {
+   "id": "E20.muerte_estados",
+   "ok": true,
+   "detail": {
+    "hook": {
+     "alive": false,
+     "titan": false,
+     "er": null,
+     "r": 24,
+     "cls": "Ilkan, el Caminante de Dunas"
+    },
+    "tf": {
+     "alive": false,
+     "titan": false,
+     "er": null,
+     "r": 24,
+     "cls": "Ilkan, el Caminante de Dunas"
+    },
+    "titan": {
+     "alive": false,
+     "titan": false,
+     "er": null,
+     "r": 24,
+     "cls": "Ilkan, el Caminante de Dunas"
+    },
+    "quake": {
+     "alive": false,
+     "titan": false,
+     "er": null,
+     "r": 24,
+     "cls": "Ilkan, el Caminante de Dunas"
+    }
+   }
+  },
+  {
+   "id": "E20b.cinematica_protegida",
+   "ok": true,
+   "detail": {
+    "phase": "tf",
+    "noDamage": true
+   }
+  },
+  {
+   "id": "ILKAN.sin_errores",
+   "ok": true,
+   "detail": []
+  },
+  {
+   "id": "TEAM.sm_ilkan_2bots",
+   "ok": true,
+   "detail": {
+    "team": [
+     "libertador",
+     "ilkan",
+     "soporte",
+     "mago"
+    ],
+    "granAllies": 3,
+    "ilkanColossus": true,
+    "ilkanHook": true,
+    "smMounted": true,
+    "rumble": false,
+    "maxFx": 21,
+    "maxParts": 19,
+    "fps": 51.8,
+    "worstFrameMs": 105,
+    "boss": {
+     "boss": true,
+     "bossHp": 9077,
+     "bossMax": 9091,
+     "state": "playing"
+    },
+    "errors": []
+   }
+  },
+  {
+   "id": "TEAM.boss",
+   "ok": true,
+   "detail": {
+    "boss": true,
+    "bossHp": 9077,
+    "bossMax": 9091,
+    "state": "playing"
+   }
+  },
+  {
+   "id": "BOTS.libertador",
+   "ok": true,
+   "detail": {
+    "smShots": 4,
+    "smSkills": [
+     0,
+     1,
+     2
+    ],
+    "smUlt": true,
+    "erSkills": [
+     2,
+     0,
+     1
+    ],
+    "erTitan": true,
+    "erHook": true
+   }
+  },
+  {
+   "id": "BOTS.ilkan",
+   "ok": true,
+   "detail": {
+    "smShots": 4,
+    "smSkills": [
+     0,
+     1,
+     2
+    ],
+    "smUlt": true,
+    "erSkills": [
+     2,
+     0,
+     1
+    ],
+    "erTitan": true,
+    "erHook": true
+   }
+  },
+  {
+   "id": "BOTS.sin_errores",
+   "ok": true,
+   "detail": []
+  }
+ ],
+ "errors": []
+}

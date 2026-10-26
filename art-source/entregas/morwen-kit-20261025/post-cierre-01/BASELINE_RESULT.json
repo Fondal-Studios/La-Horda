@@ -1,0 +1,72 @@
+{
+  "baseMain": "fd10c68b4ff8140481237de3cc885b8635e4710e",
+  "runtime": "460 runtime/docs files verified against fresh main before Morwen edit; server replaces only modified signatures with exact before source. No candidate Morwen served.",
+  "checks": 42,
+  "passed": 41,
+  "failed": [
+    {
+      "id": "E19.agotamiento",
+      "ok": false,
+      "detail": {
+        "fury": 6,
+        "exhaustMs": 4100,
+        "noTransformMs": 18100,
+        "speed": 0.7,
+        "ultBlocked": true
+      }
+    }
+  ],
+  "pageErrors": [],
+  "E17": {
+    "id": "E17.tres_pisadas",
+    "ok": true,
+    "detail": {
+      "steps": [
+        {
+          "idx": 0,
+          "dx": -320,
+          "dy": -80,
+          "r": 250,
+          "delay": 1300
+        },
+        {
+          "idx": 1,
+          "dx": 320,
+          "dy": 80,
+          "r": 250,
+          "delay": 3300
+        },
+        {
+          "idx": 2,
+          "dx": 0,
+          "dy": 0,
+          "r": 420,
+          "delay": 5300
+        }
+      ],
+      "enemyDmg": [
+        1445,
+        1445,
+        1617,
+        1167
+      ],
+      "allyHp": [
+        [
+          173,
+          121,
+          109
+        ],
+        [
+          271,
+          121,
+          109
+        ]
+      ]
+    }
+  },
+  "IlkanSourceSha256": "9b0783c3b660e5b07e05b809e543eb1201212712fe25454bcca4cbb539e3c6a3",
+  "harnessSha256": "0f820d5ff5893cb54331ec611f122cffaa4bc810de82cb1477184fc7799be91f",
+  "sourceReading": "ilkanAddFury blocks only finale; finale completion resets ultCharge to0 and enters exhaustFall. This suggests subsequent fury gain is possible, but no event instrumentation yet proves the observed6 origin. Do not change mechanics or relax assertion.",
+  "limits": "Current main baseline reproduces E19; it does not establish equivalence to the older PR220 run or explain historical E17. Does not certify candidate Libertador.",
+  "attempt01": "Separate exec server inaccessible: connection refused before page. Preserved log; final server and test run in same process network context."
+}

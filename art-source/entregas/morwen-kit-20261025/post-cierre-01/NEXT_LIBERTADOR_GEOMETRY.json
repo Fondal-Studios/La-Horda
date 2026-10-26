@@ -1,0 +1,26 @@
+{
+  "sourceEquality": [
+    {
+      "path": "js/champions/ilkan.js",
+      "main": "24bdc51c9ae6e44d83cfaddcee874b02861a948b",
+      "pr220": "24bdc51c9ae6e44d83cfaddcee874b02861a948b"
+    },
+    {
+      "path": "tools/regression/t_champs_se.js",
+      "main": "a38e1afe49e119ad1a3443677a544708cf8ce647",
+      "pr220": "a38e1afe49e119ad1a3443677a544708cf8ce647"
+    },
+    {
+      "path": "js/champions/libertador.js",
+      "main": "3bba166f901c2b40500c2214be8d23cc8dbfb644",
+      "pr220": "3bba166f901c2b40500c2214be8d23cc8dbfb644"
+    }
+  ],
+  "sourceAudit": {
+    "realCommandRadius": "libertadorCast: G.radius * AREA; recipient granTimer checked against R; same R passed to existing ring FX.",
+    "workshopCommandRadius": "PR220 SFA nova uses SM_CFG.granaderos.radius||430 directly; discrepancy under modified AREA remains a closure item.",
+    "travel": "PR220 reads real smDashLeft/direction and projected hero displacement, excludes mount. Do not replace with animation-only travel.",
+    "next": "Instrument actual cast AREA and emitted ring/recipient extent before correcting native command composition. Preserve gameplay; adjust visual consumer only."
+  },
+  "limits": "Source audit, not new in-game gate or proof of historical E17 cause."
+}
