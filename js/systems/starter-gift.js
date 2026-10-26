@@ -11,11 +11,14 @@
    Si cerrás el juego entre 1 y 2, al volver a entrar vas directo a la skin (needsStarterSkin).
    VALE DE SKIN (save.skinVoucher): se canjea UNA vez en la Tienda por cualquier skin o croma (el precio
    queda cubierto). Lo reciben también los guardados de antes del regalo (starterGiftMigrate, save.js).
-   Reglas: todo es del juego (nunca plata real). Una skin de set se ve con su set COMPLETO (regla canónica),
-   así que regalarla es regalar las piezas que faltan de ese set; la croma es cosmética pura.
+   Reglas: todo es del juego (nunca plata real). MODELO B (docs/economy/BRASAS_REDEFINICION.md): las skins de set son PREMIUM
+   (solo Brasas ✦): el regalo y el vale ya NO las dan (setSkinsGiftable() = SET_SKINS_FROM_SETS, js/data/pricing.js); solo cromas,
+   que son cosmética pura. Los vales ya emitidos se siguen canjeando por cromas.
    Las pruebas automáticas viejas (webdriver) siguen el camino de antes (guardián solo), como el primer
    arranque corto: las que miden el camino nuevo definen window.__starterGift, window.__firstRun o ?primera=1.
    ============================================================ */
+// ¿Se pueden regalar skins de set (regalo inicial / vale)? Modelo B: no (son premium). Bandera SET_SKINS_FROM_SETS para reactivarlo.
+function setSkinsGiftable(){ return typeof SET_SKINS_FROM_SETS !== "undefined" && !!SET_SKINS_FROM_SETS; }
 function starterGiftEnabled(){
   try{
     if(window.__starterGift === false) return false;
@@ -42,7 +45,7 @@ function starterSkinOptions(k){
       out.push({id, kind:"croma", name:d.name, lore:d.lore || "", preview:d.preview, color:C.color || "#ccc", tag:`${cosmeticAppearanceLabel(id)} · ${C.short || d.crystal} · solo cosmética`, pieces:0});
     }
   }
-  if(typeof SET_SKINS !== "undefined" && typeof SET_DB !== "undefined"){
+  if(setSkinsGiftable() && typeof SET_SKINS !== "undefined" && typeof SET_DB !== "undefined"){
     for(const id of Object.keys(SET_SKINS)){
       if(!SET_DB[id] || SET_SKINS[id]?.manifest) continue;
       const c = skinSetChamp(id); if(c && c !== k) continue;
@@ -69,6 +72,7 @@ function _giftSkin(k, id){
     return {ok:true, kind:"croma", equipped, champ:d.champ};
   }
   if(typeof SET_SKINS !== "undefined" && SET_SKINS[id] && typeof SET_DB !== "undefined" && SET_DB[id]){
+    if(!setSkinsGiftable()) return {ok:false, reason:"Las skins de set son Premium ✦: se compran con Brasas"};
     const miss = shopSetMissing(id);
     if(!miss.length) return {ok:false, reason:"Ya tenés esa skin"};
     if(stashUsedSlots() + miss.length > INVENTORY_CAPACITY) return {ok:false, reason:`No entran las ${miss.length} piezas en tu inventario (${stashUsedSlots()}/${INVENTORY_CAPACITY}): vendé o descartá algo`};
@@ -82,6 +86,7 @@ function _giftSkin(k, id){
 }
 // Regalo inicial: la skin elegida para el guardián de regalo `k`.
 function starterSkinGrant(k, id){
+  if(SET_SKINS[id] && !setSkinsGiftable()) return {ok:false, reason:"Las skins de set son Premium ✦: se compran con Brasas"};   // antes de _giftSkin: la economía V2 lo envuelve
   if(!starterSkinOptions(k).some(o=>o.id === id)) return {ok:false, reason:"Esa skin no es de este guardián"};
   const r = _giftSkin(k, id);
   if(!r.ok) return r;
@@ -101,13 +106,13 @@ function skinVoucherCount(){ return Math.max(0, save.skinVoucher|0); }
 function skinVoucherCanRedeem(id){
   if(!skinVoucherCount()) return false;
   if(typeof CROMA_SKINS !== "undefined" && CROMA_SKINS[id]) return !cromaOwned(id);
-  if(typeof SET_SKINS !== "undefined" && SET_SKINS[id] && typeof SET_DB !== "undefined" && SET_DB[id]) return shopSetMissing(id).length > 0;
+  if(setSkinsGiftable() && typeof SET_SKINS !== "undefined" && SET_SKINS[id] && typeof SET_DB !== "undefined" && SET_DB[id]) return shopSetMissing(id).length > 0;
   return false;
 }
 // Canjea un vale por la skin/croma `id` (el precio queda cubierto). Se equipa si el guardián es tuyo.
 function skinVoucherRedeem(id){
   if(!skinVoucherCount()) return {ok:false, reason:"No tenés vales de skin"};
-  if(!skinVoucherCanRedeem(id)) return {ok:false, reason:"Esa ya es tuya"};
+  if(!skinVoucherCanRedeem(id)) return {ok:false, reason:SET_SKINS[id] && !setSkinsGiftable() ? "Las skins de set son Premium ✦: el vale se canjea por cromas" : "Esa ya es tuya"};
   const d = (typeof CROMA_SKINS !== "undefined" && CROMA_SKINS[id]) || null;
   const k = d ? d.champ : (skinSetChamp(id) || (typeof selectedClass !== "undefined" ? selectedClass : null));
   const r = _giftSkin(k, id);

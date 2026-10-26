@@ -7,7 +7,7 @@
    - Objetos y sets: TODO el catálogo (shopCatalog en js/systems/shop.js) por categoría; los sets se
      muestran como conjunto (piezas que tenés / que faltan, bonus y cuáles tenés activos).
    - Skins: las skins de set que existen (SET_SKINS). Cada apariencia cuesta Brasas ✦ o su precio en oro (escalones en js/data/pricing.js) y da SOLO la
-     apariencia (js/systems/premium.js); completar el set la sigue regalando. Las piezas se compran aparte.
+     apariencia (js/systems/premium.js). Son skins PREMIUM ✦: completar el set NO las regala (modelo B); el set da bono + efectos visuales. Las piezas se compran aparte (oro).
    - ✦ Brasas: saldo, paquetes con precio en moneda real (los manda el servidor), Pack de bienvenida mientras no
      se haya comprado y tres skins de tus guardianes como ejemplo. Las Brasas compran apariencia y, con el interruptor PIECES_FOR_BRASAS, piezas de set;
      sin pasarela conectada el botón dice "Muy pronto" (no hay compras de mentira).
@@ -38,7 +38,7 @@ function renderShop(){
 }
 /* ---------------- Vale de skin (regalo inicial, js/systems/starter-gift.js) ----------------
    Mientras tengas un vale sin canjear: un cartel arriba de la vitrina y de Skins, y cada skin o croma
-   que no tenés suma "🎟 Canjear vale" (la skin queda tuya y equipada, sin cobrar oro). */
+   que no tenés suma "🎟 Canjear vale" (la croma queda tuya y equipada). Modelo B: el vale ya no cubre skins de set (Premium ✦). */
 function _shopVoucherBtn(id){
   if(typeof skinVoucherCanRedeem!=="function" || !skinVoucherCanRedeem(id)) return "";
   return `<button class="shop-btn hot shop-vale-btn" data-voucher="${id}">🎟 Canjear vale</button>`;
@@ -47,7 +47,7 @@ function _shopVoucherMount(panel){
   const n = typeof skinVoucherCount==="function" ? skinVoucherCount() : 0;
   if(!n || (shopTab!=="destacados" && shopTab!=="skins")) return;
   const box = document.createElement("div"); box.className = "shop-vale-banner";
-  box.innerHTML = `🎁 <b>Tenés una skin de regalo: elegila.</b> Tocá <b>🎟 Canjear vale</b> en la skin o croma que quieras: el precio queda cubierto.${n>1 ? ` (${n} vales)` : ""}${shopTab==="destacados" ? ' <button class="shop-btn hot" id="shop-vale-go">Ver las skins ▸</button>' : ""}`;
+  box.innerHTML = `🎁 <b>Tenés un vale de croma: elegila.</b> Tocá <b>🎟 Canjear vale</b> en la croma que quieras: el precio queda cubierto. Las skins de set son Premium ✦ (Brasas).${n>1 ? ` (${n} vales)` : ""}${shopTab==="destacados" ? ' <button class="shop-btn hot" id="shop-vale-go">Ver las skins ▸</button>' : ""}`;
   panel.insertBefore(box, panel.firstChild);
   const go = box.querySelector("#shop-vale-go");
   if(go) go.addEventListener("click", ()=>{ shopTab = "skins"; renderShop(); const p = document.getElementById("shop-screen"); if(p) p.scrollTop = 0; });
@@ -130,7 +130,7 @@ function shopRotationRowHTML(){
   const list = shopRotationToday(), info = shopRotationInfo(), gold = save.gold || 0;
   const cards = list.map(e=>{
     const it = shopPreviewItem(e), col = itemColor(it), price = shopPriceOf(e), n = shopOwnedCount(e), miss = Math.max(0, price - gold);
-    if(e.cat==="set") return `<div class="shop-rot-card" data-rot="${e.key}" style="--ic:${col}">
+    if(e.cat==="set" && shopPiecesForBrasas()) return `<div class="shop-rot-card" data-rot="${e.key}" style="--ic:${col}">
       <div class="shop-rot-top">${itemIconHTML(it)}<div class="shop-rot-meta"><div class="shop-rot-name" style="color:${col}">${it.name}</div><div class="shop-item-sub">${_shopRotLabel(e)} · ${ITEM_TYPES[it.type].label}</div></div></div>
       <div class="shop-rot-price">${n ? `<span class="shop-st own">Tenés ${n}</span>` : ""}</div>
       ${typeof premiumPieceButton==="function" ? premiumPieceButton(e.id) : ""}</div>`;
@@ -173,7 +173,7 @@ function shopNowRowHTML(sc){
   }).filter(Boolean);
   const champs = CHAMPION_CATALOG.filter(c=>!(save.champions[c.id]||{}).unlocked && shopChampionPurchasable(c.id)).map(c=>({g:1, price:shopChampionPrice(c.id), name:CLASSES[c.id].name, sub:"Guardián nuevo", btn:`data-champ-buy="${c.id}"`}));
   // las skins y cromas ya no se compran con oro (solo Brasas ✦): no entran en "lo que podés comprar ya"
-  const rots = shopIsLive() ? shopRotationToday().filter(e=>e.cat!=="set").map(e=>({g:0, price:shopPriceOf(e), name:shopPreviewItem(e).name, sub:`A la venta hoy · ${_shopRotLabel(e)}`, btn:`data-rot-buy="${e.key}" data-gold-price="${shopPriceOf(e)}"`})) : [];
+  const rots = shopIsLive() ? shopRotationToday().filter(e=>!(e.cat==="set" && shopPiecesForBrasas())).map(e=>({g:0, price:shopPriceOf(e), name:shopPreviewItem(e).name, sub:`A la venta hoy · ${_shopRotLabel(e)}`, btn:`data-rot-buy="${e.key}" data-gold-price="${shopPriceOf(e)}"`})) : [];
   const basics = basicCommon!=null && gold >= basicCommon ? [{g:2, price:basicCommon, name:"Equipo Básico Común", sub:"Desde acá se empieza a armar la build", go:"basics"}] : [];
   const can = deals.concat(rots, champs, basics).filter(x=>x.price <= gold);
   can.sort((a,b)=>(a.g-b.g) || (b.price-a.price));
@@ -374,7 +374,7 @@ function _shopItemCard(entry, tier){
       ${lines}${tiers}
     </div>
     <div class="shop-item-buy">
-      ${entry.cat==="set" ? _shopPieceBuyHTML(entry, n, rotLine) : `<div class="shop-price">🪙 ${fmtGold(shopPriceOf(entry, tier))}</div>
+      ${entry.cat==="set" && shopPiecesForBrasas() ? _shopPieceBuyHTML(entry, n, rotLine) : `<div class="shop-price">🪙 ${fmtGold(shopPriceOf(entry, tier))}</div>
       ${n ? `<div class="shop-st own">Tenés ${n}</div>` : '<div class="shop-st">No comprado</div>'}${rotLine}
       <button class="shop-btn" data-buy-item="${entry.key}" data-gold-price="${shopPriceOf(entry, tier)}" ${save.gold < shopPriceOf(entry, tier) || !today ? "disabled" : ""}>Comprar</button>`}
     </div>
@@ -394,7 +394,8 @@ function _shopSetBlock(setId){
       <span class="shop-set-count">${have}/${ids.length} piezas · ${eq} equipadas</span></div>
     <div class="shop-set-bonus">${bon}</div>
     <div class="shop-set-pieces">${entries.map(e=>_shopItemCard(e)).join("")}</div>
-    ${missing.length && shopIsLive() ? `<div class="shop-item-sub shop-set-live" data-set-live>Hoy a la venta: ${entries.filter(e=>missing.includes(e.id) && shopRotationHas(e.key)).length} de las ${missing.length} que te faltan. Las piezas se compran de a una, cuando salen (no hay paquete).</div>` : missing.length ? `<div class="shop-item-sub shop-set-ember" data-set-ember>Las piezas se compran de a una con Brasas ✦ (no hay paquete) o se consiguen jugando.${typeof SET_SKINS!=="undefined" && SET_SKINS[setId] ? " Reunir el set completo regala su skin." : ""}</div>`: '<div class="shop-st own">✔ Tenés el set completo</div>'}
+    ${missing.length && shopIsLive() ? `<div class="shop-item-sub shop-set-live" data-set-live>Hoy a la venta: ${entries.filter(e=>missing.includes(e.id) && shopRotationHas(e.key)).length} de las ${missing.length} que te faltan. Las piezas se compran de a una, cuando salen (no hay paquete).</div>` : missing.length ? (shopPiecesForBrasas() ? `<div class="shop-item-sub shop-set-ember" data-set-ember>Las piezas se compran de a una con Brasas ✦ (no hay paquete) o se consiguen jugando.</div>` : `<button class="shop-btn sec shop-set-buyall" data-buy-set="${setId}" ${save.gold < shopSetPrice(setId) ? "disabled" : ""}>Comprar las ${missing.length} que faltan · 🪙 ${fmtGold(shopSetPrice(setId))}</button>`) : '<div class="shop-st own">✔ Tenés el set completo</div>'}
+    <div class="shop-item-sub shop-set-fx" data-set-fx>${typeof setVisualBlurb==="function" ? setVisualBlurb(setId) : ""}</div>
   </div>`;
 }
 function renderShopObjects(panel){
@@ -412,6 +413,16 @@ function renderShopObjects(panel){
     _shopAfterBuy(`🛒 ${r.item.name} va a tu inventario (−${fmtGold(r.price)} de oro)`, r.item.set || r.item.rarity==="legendario" ? "lootLegend" : "ready");
     _shopFlash(document.querySelector(`.shop-item[data-item="${CSS.escape(key)}"]`));
   }));
+  panel.querySelectorAll("[data-buy-set]").forEach(b=> b.addEventListener("click", ()=>{
+    const setId = b.getAttribute("data-buy-set"), miss = shopSetMissing(setId), quotedPrice=shopSetPrice(setId);
+    gameConfirm(`¿Comprar las ${miss.length} piezas que te faltan de ${SET_DB[setId].name} por ${fmtGold(quotedPrice)} de oro?`, {okText:"Comprar"}).then(ok=>{
+      if(!ok) return;
+      const result = shopBuySetBundle(setId, false, null, quotedPrice);
+      if(!result.ok){ gameAlert(result.reason); return; }
+      const n = result.n;
+      _shopAfterBuy(`🛒 ${n} pieza${n>1?"s":""} de ${SET_DB[setId].name} en tu inventario`, "lootLegend");
+    });
+  }));
   panel.querySelectorAll(".shop-item").forEach(card=> card.addEventListener("click", ev=>{
     if(ev.target.closest("button")) return;
     const key = card.getAttribute("data-item"), entry = shopCatalog().find(e=>e.key===key);
@@ -425,7 +436,7 @@ function openShopItemPreview(entry, tier){
   let el = document.getElementById("item-preview");
   if(!el){ el = document.createElement("div"); el.id = "item-preview"; document.body.appendChild(el); }
   el.innerHTML = `<div class="ip-backdrop" data-ip-close></div><div class="ip-panel">${itemDetailHTML(it, null, {shop:true})}
-    <div class="ip-actions">${entry.cat==="set" ? (typeof premiumPieceButton==="function" ? premiumPieceButton(entry.id, "primary") : "") || '<span class="shop-item-sub">Se consigue jugando</span>'
+    <div class="ip-actions">${entry.cat==="set" && shopPiecesForBrasas() ? (typeof premiumPieceButton==="function" ? premiumPieceButton(entry.id, "primary") : "") || '<span class="shop-item-sub">Se consigue jugando</span>'
       : `<button class="primary" data-ip-buy ${save.gold < shopPriceOf(entry, tier) || !shopRotationAllows(entry) ? "disabled" : ""}>${shopRotationAllows(entry) ? "Comprar" : "No está hoy"} · 🪙 ${fmtGold(shopPriceOf(entry, tier))}</button>`}<button data-ip-close>Cerrar</button></div></div>`;
   el.classList.remove("hidden");
   const close = ()=>{ el.classList.add("hidden"); el.innerHTML = ""; };
@@ -460,17 +471,17 @@ function renderShopSkins(panel){
       ${previewKey ? `<canvas class="champ-anim shop-skin-anim" width="84" height="84" data-class-key="${previewKey}" data-skin="${id}" data-idle="1"></canvas>` : ""}
       <div class="shop-skin-info">
         <div class="shop-skin-name">${sk.name || "Skin de " + S.name}${typeof cosmeticArtPending==="function" && cosmeticArtPending(sk) ? " · croma de set" : ""}</div>
-        <div class="shop-item-sub">${champ ? CLASSES[champ].name : "Universal"} · colección <b>${S.name}</b> · apariencia sin cambios de poder</div>
-        <div class="shop-st ${active?"own":""}">${active ? "✔ EQUIPADA en " + activeOn.map(k=>CLASSES[k].name).join(", ") : (!skinOwnedFull(id) ? `${have}/${ids.length} piezas · ${eq} equipadas` : "🔓 Desbloqueada")}</div>
+        <div class="shop-item-sub"><b class="shop-prem-tag">Premium ✦</b> · ${champ ? CLASSES[champ].name : "Universal"} · colección <b>${S.name}</b> · solo apariencia: no cambia estadísticas</div>
+        <div class="shop-st ${active?"own":""}">${active ? "✔ EQUIPADA en " + activeOn.map(k=>CLASSES[k].name).join(", ") : (!skinOwnedFull(id) ? "Skin Premium ✦ · se compra con Brasas" : "🔓 Desbloqueada")}</div>
         ${action}
       </div></div>`;
   }).join("");
   const pending = Object.keys(SET_DB).filter(id=>!withSkin.includes(id)).map(id=>SET_DB[id].name);
   const focusBar = focus ? `<div class="shop-skin-focus" data-skin-focus="${focus}"><span>Apariencias de <b style="color:${CLASSES[focus].color}">${CLASSES[focus].name}</b></span><button class="shop-btn sec" type="button" id="shop-skin-focus-clear">Ver todas</button></div>` : "";
-  panel.innerHTML = `${focusBar}<div class="lobby-note">Reunir un set o recibir un regalo desbloquea su apariencia. Usarla no cambia tus objetos ni estadísticas. Cada apariencia se paga con Brasas o con oro: el precio de las dos está a la vista.</div>
+  panel.innerHTML = `${focusBar}<div class="lobby-note">Las skins de set son <b>Premium ✦</b>: se compran con Brasas. Los sets te dan bono de estadísticas y efectos visuales (partículas y color de habilidades), no la skin. Usar una apariencia no cambia tus objetos ni estadísticas.</div>
     ${_shopCollectionsHTML({champ:focus})}
     ${cards || !focus ? `<div class="shop-skin-list">${cards || '<div class="inv-empty">Todavía no hay skins.</div>'}</div>` : ""}
-    ${focus ? "" : `<div class="shop-soon-box shop-soon-small">Sets sin skin todavía (arte pendiente, ver docs/assets_faltantes/skins_sets/): ${pending.join(" · ")}. Con el set completo se ve su aura plena.</div>`}`;
+    ${focus ? "" : `<div class="shop-soon-box shop-soon-small">Sets sin skin todavía (arte pendiente, ver docs/assets_faltantes/skins_sets/): ${pending.join(" · ")}. Igual cada set da su aura y el color de sus habilidades.</div>`}`;
   const fc = panel.querySelector("#shop-skin-focus-clear");
   if(fc) fc.addEventListener("click", ()=>{ shopSkinFocus = null; renderShop(); });
   _bindSkinBuy(panel);

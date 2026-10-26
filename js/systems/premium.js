@@ -3,7 +3,8 @@
    js/systems/premium.js — PRECIOS DE APARIENCIAS y MONEDA PREMIUM ("Brasas" ✦)
    · Toda APARIENCIA (skin de set, skin independiente, croma) se paga SOLO con Brasas ✦ (nunca con oro: el oro es editable), según su escalón
      (js/data/pricing.js, la misma fuente que ejecuta el servidor). Comprarla da SOLO la apariencia: nunca poder.
-     Las piezas de set (equipo) también se compran con Brasas (ver PIEZAS DE SET más abajo), y completar el set sigue regalando su skin.
+     MODELO B (docs/economy/BRASAS_REDEFINICION.md): las skins de set son PREMIUM ✦ (completar el set NO las regala) y las piezas de set ya no
+     se venden por Brasas (PIECES_FOR_BRASAS = false). El set aporta bono de estadísticas + efectos visuales (js/systems/set-visuals.js).
    · Los CAMPEONES no se compran con Brasas: se compran con oro (shop.js). Las únicas elecciones de campeón "gratis" son las 3 del
      Pack de bienvenida (regalo del servidor, js/ui/welcome-picks.js).
    · Las Brasas viven en el SERVIDOR (server/wallet.js): este archivo solo las muestra y pide compras; el saldo, el precio
@@ -28,7 +29,7 @@ function premiumTier(id){
   const d = typeof CROMA_SKINS !== "undefined" ? CROMA_SKINS[id] : null;
   return d ? pricingCosmeticTier(false, d) : null;
 }
-// Texto público sobre qué compran las Brasas: depende del interruptor (si las piezas se venden, no se puede decir "nunca poder").
+// Texto público sobre qué compran las Brasas: depende del interruptor (si se vuelven a vender piezas, no se puede decir "nunca poder").
 function premiumRuleText(){
   return (typeof PIECES_FOR_BRASAS !== "undefined" && PIECES_FOR_BRASAS)
     ? "Las Brasas compran apariencia y piezas de set (equipo). Las piezas también se consiguen jugando."
@@ -54,8 +55,8 @@ cromaPrice = function(id){ return shopConfiguredPrice("cosmetic", id, premiumGol
 // POLÍTICA: las apariencias (skins de set, de autor y cromas) se compran SOLO con Brasas ✦, que valida el servidor.
 // El oro vive en el guardado del cliente (editable): una ruta oro -> skin regalaría skins a quien edite el guardado.
 // Estas funciones quedan como puntos de entrada INOPERANTES (nunca descuentan oro ni otorgan nada) para que una llamada
-// directa desde la consola o un código viejo no abra una puerta trasera. Las skins que se ganan jugando (set completo,
-// vale de regalo, eventos) usan otros caminos y no pasan por acá.
+// directa desde la consola o un código viejo no abra una puerta trasera. Las skins que se ganaban jugando (set completo,
+// vale de regalo, eventos) usan otros caminos y no pasan por acá (modelo B: las skins de set ya no se ganan así; las que se tenían, se conservan).
 const PREMIUM_NO_GOLD_SKINS = "Las skins se compran solo con Brasas ✦. Entrá con tu cuenta para usarlas.";
 function shopBuySkinGold(setId, expectedPrice){ return { ok: false, reason: PREMIUM_NO_GOLD_SKINS }; }
 const _premiumSetBundle = shopBuySetBundle;
@@ -130,7 +131,8 @@ async function premiumBuySkin(id){
 }
 
 /* ---------- PIEZAS DE SET (equipo) por Brasas ✦ ----------
-   Decisión del dueño: las piezas se compran con Brasas, nunca con oro (shop.js: SHOP_NO_GOLD_PIECES). El servidor cobra, decide si la
+   APAGADO por defecto (modelo B: PIECES_FOR_BRASAS = false; las piezas vuelven a oro / rotación / drops). El camino queda detrás de la bandera. Con la bandera
+   prendida: las piezas se compran con Brasas, nunca con oro (shop.js: SHOP_NO_GOLD_PIECES). El servidor cobra, decide si la
    pieza está a la venta (en "live", la rotación diaria) y la ENTREGA en save.stash de la nube (server/wallet.js: /api/wallet/buy-piece);
    si con esa pieza se completa el set, también entrega su skin. Interruptor único: PIECES_FOR_BRASAS (js/data/pricing.js).
    Es la única compra con Brasas que da poder: docs/economy/PRECIOS.md, "Riesgo: poder por dinero". */
@@ -186,7 +188,7 @@ if(typeof document !== "undefined") document.addEventListener("click", e => {
     const r = await premiumBuyPiece(id);
     if(!r.ok){ b.disabled = false; gameAlert(r.reason); return; }
     if(typeof playSfx === "function") playSfx("lootLegend");
-    if(typeof showNetToast === "function") showNetToast(`🛒 ${premiumPieceName(id)} va a tu inventario (comprada con Brasas)${r.setCompleted ? " · ¡set completo! Skin desbloqueada" : ""}`);
+    if(typeof showNetToast === "function") showNetToast(`🛒 ${premiumPieceName(id)} va a tu inventario (comprada con Brasas)${r.setCompleted && typeof skinsFromSets==="function" && skinsFromSets() ? " · ¡set completo! Skin desbloqueada" : ""}`);
     const ip = document.getElementById("item-preview"); if(ip){ ip.classList.add("hidden"); ip.innerHTML = ""; }
     if(typeof state !== "undefined" && state === "shop" && typeof renderShop === "function") renderShop();
     if(typeof state !== "undefined" && state === "codex" && typeof codexRender === "function") codexRender();

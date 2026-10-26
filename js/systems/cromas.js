@@ -13,7 +13,7 @@
    Reglas:
    - Guardado: save.cromas = {id:true} (compradas, de la cuenta) y save.champions[k].croma = id|null
      (la equipada en ese guardián).
-   - La skin de set COMPLETO manda: si el set con arte está completo se ve la skin; si no, la croma.
+   - Una sola apariencia a la vez, la que el jugador elige (skin premium de set o croma). Llevar piezas de set NO la cambia (modelo B).
    - Se dibuja por el mismo camino que las skins de set (activeSetSkin / setSkinPackKey en
      set-effects.js): guardianes con atlas propio (CHAMP_PACK) -> atlas clonado con otra imagen;
      guardianes de atlas viejo (Tanque) -> la imagen recoloreada reemplaza a la base (cromaImage).
@@ -122,7 +122,7 @@ function cromaAfterEquip(k){
     else if(net.role==="host" && typeof netHostBroadcastCos==="function") netHostBroadcastCos(false);
   }
 }
-// Una skin de set completo tapa a la croma: se avisa en la tarjeta.
+// ¿La apariencia elegida es una skin de set (no una croma)? Se avisa en la tarjeta. Elegir una u otra es excluyente (cromaEquip / skinCosmeticEquip).
 function cromaHiddenBySet(k){
   if(typeof activeSetSkinId!=="function") return false;
   const id = activeSetSkinId({classKey:k});

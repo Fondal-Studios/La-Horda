@@ -68,7 +68,7 @@ function renderHub(){
   if(bo){ let deals = 0; try{ deals = typeof shopDailyShowcase==="function" ? shopDailyShowcase().deals.length : 0; }catch(e){} bo.classList.toggle("hidden", !deals); }
   if(typeof premiumRender==="function") premiumRender(); // chip ✦: siempre visible ("✦ —" sin sesión)
   const tsub = document.querySelector("#mainmenu-tienda-btn .hub-tile-sub");
-  if(tsub) tsub.textContent = vale ? "Tenés una skin de regalo: elegila" : "Ofertas del día · skins";
+  if(tsub) tsub.textContent = vale ? "Tenés un vale de croma: elegila" : "Ofertas del día · skins";
   renderEndlessCards();
   renderPostgameTiles();
   const q = document.getElementById("mainmenu-quests-btn");

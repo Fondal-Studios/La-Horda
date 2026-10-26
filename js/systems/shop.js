@@ -121,11 +121,31 @@ function shopSkinPrice(setId){
   const configured = shopConfiguredPrice("cosmetic", setId, full);
   return configured===full ? shopSetPrice(setId) : Math.round(configured*missing.length/all.length);
 }
-// Mensaje de las rutas de oro cerradas para las piezas de set (js/systems/premium.js: se compran con Brasas ✦, validado por el servidor).
+// Mensaje de las rutas de oro cerradas para las piezas de set. SOLO existe con PIECES_FOR_BRASAS = true (js/systems/premium.js: se compran con Brasas ✦,
+// validado por el servidor). Modelo B (por defecto): las piezas se compran con ORO (según SHOP_MODE) o se consiguen jugando.
 const SHOP_NO_GOLD_PIECES = "Las piezas de set se compran con Brasas ✦ (entrá con tu cuenta) o se consiguen jugando. No se venden por oro.";
+function shopPiecesForBrasas(){ return typeof PIECES_FOR_BRASAS !== "undefined" && !!PIECES_FOR_BRASAS; }
 function shopBuySetBundle(setId, appearance, discount, expectedPrice){
-  // POLÍTICA: ni el paquete de piezas ni la apariencia se pagan con oro. El oro es del cliente (editable) y completar el set regala la skin.
-  return {ok:false, reason: appearance ? "Las skins se compran solo con Brasas ✦. Entrá con tu cuenta para usarlas." : SHOP_NO_GOLD_PIECES};
+  // La apariencia (skin premium) nunca se paga con oro: el oro es del cliente y editable. Solo Brasas ✦ (premium.js).
+  if(appearance) return {ok:false, reason:"Las skins se compran solo con Brasas ✦. Entrá con tu cuenta para usarlas."};
+  // Con las piezas por Brasas (bandera prendida), tampoco el paquete de piezas se paga con oro.
+  if(shopPiecesForBrasas()) return {ok:false, reason:SHOP_NO_GOLD_PIECES};
+  if(typeof state!=="undefined" && state==="playing") return {ok:false, reason:"La tienda se usa fuera de la partida"};
+  // modo live: el paquete de set completo saltearía la rotación diaria; las piezas se compran de a una cuando salen
+  if(shopIsLive()) return {ok:false, reason:"En esta modalidad las piezas del set se compran de a una, cuando están a la venta"};
+  if(!Object.prototype.hasOwnProperty.call(SET_DB,setId)) return {ok:false,reason:"Ese set no existe"};
+  const missing=shopSetMissing(setId);
+  if(!missing.length) return {ok:false,reason:"Ya es tuyo"};
+  let price=shopSetPrice(setId);
+  if(discount!=null){ if(!SHOP_DEAL_OFF.includes(discount)) return {ok:false,reason:"Descuento inválido"}; price=_shopDisc(price,discount); }
+  if(expectedPrice!=null && expectedPrice!==price) return {ok:false,reason:"El precio cambió. Revisá el nuevo valor y volvé a confirmar."};
+  if(!Number.isSafeInteger(price) || price<0 || (save.gold||0)<price) return {ok:false,reason:"No te alcanza el oro"};
+  if(stashUsedSlots()+missing.length>INVENTORY_CAPACITY) return {ok:false,reason:"No hay espacio para el paquete completo: vendé o descartá objetos"};
+  const items=missing.map(id=>makeDesignedItem(id));
+  if(items.some(it=>!it)) return {ok:false,reason:"El paquete contiene una pieza no disponible"};
+  for(const item of items){ item.bought=true; addItemToInventory(null,item); }
+  save.gold-=price; persist();
+  return {ok:true,id:setId,n:items.length,price};
 }
 // Categoría de tienda de un objeto diseñado (una sola por objeto: no hay dos definiciones)
 function shopCategoryOf(d){
@@ -165,7 +185,7 @@ function shopBuyCatalog(key, tier, priceOverride, expectedPrice){
   if(typeof state!=="undefined" && state==="playing") return {ok:false, reason:"La tienda se usa fuera de la partida"};
   const entry = shopCatalog().find(e=>e.key===key);
   if(!entry) return {ok:false, reason:"Ese objeto no existe"};
-  if(entry.cat==="set") return {ok:false, reason:SHOP_NO_GOLD_PIECES};   // las piezas de set NO se compran con oro (ver SHOP_NO_GOLD_PIECES)
+  if(entry.cat==="set" && shopPiecesForBrasas()) return {ok:false, reason:SHOP_NO_GOLD_PIECES};   // con la bandera prendida las piezas de set NO se compran con oro
   if(entry.kind==="archetype" && !SHOP_ARCHETYPE_TIERS.includes(tier)) return {ok:false, reason:"Categoría inválida"};
   if(!shopRotationAllows(entry)) return {ok:false, reason:shopRotationWhyNot(entry)};
   const price = priceOverride!=null ? priceOverride : shopPriceOf(entry, tier);
@@ -196,11 +216,11 @@ function shopBuyChampion(id, priceOverride, expectedPrice){
 // Piezas de un set que el jugador todavía no tiene (para "comprar lo que falta")
 function shopSetMissing(setId){ const owned = ownedDesignIds(); return setPieceIds(setId).filter(id=>!owned.has(id)); }
 
-/* ---------------- Apariencias de colección ----------------
-   Reunir el set o recibir un regalo desbloquea su apariencia. Elegirla cambia
-   exclusivamente el aspecto: las piezas y bonificaciones se gestionan en Equipo.
-   Los perfiles antiguos conservan la apariencia automática del set equipado
-   hasta que el jugador elige una apariencia explícita. */
+/* ---------------- Apariencias de colección (skins premium de set) ----------------
+   Modelo B: la skin de un set se compra SOLO con Brasas ✦; reunir el set da su bono y sus efectos visuales
+   (js/systems/set-visuals.js), nunca la skin. Elegir una apariencia cambia exclusivamente el aspecto, y llevar
+   piezas de set no cambia la apariencia (son cosas independientes). Los perfiles antiguos conservaron lo que ya
+   tenían (setSkinsPremiumMigrate, js/systems/set-effects.js). */
 function skinSetChamp(setId){
   const sk = typeof SET_SKINS!=="undefined" && SET_SKINS[setId]; if(!sk) return null;
   return sk.champ || setPieceIds(setId).map(p=>(DESIGNED_ITEMS[p]||{}).champion).find(Boolean) || null;
@@ -210,7 +230,14 @@ function skinCompatibleChamps(setId){
   const c = skinSetChamp(setId);
   return Object.keys(save.champions).filter(k=>save.champions[k].unlocked!==false && CLASSES[k] && (!c || c===k));
 }
-function skinOwnedFull(setId){ if(SET_SKINS[setId]?.manifest)return !!save.cosmeticUnlocks?.[setId]; return !!(save.cosmeticUnlocks && save.cosmeticUnlocks[setId]) || (typeof cosmeticSetCollected==="function" && cosmeticSetCollected(setId)) || shopSetMissing(setId).length === 0; }
+// Modelo B (docs/economy/BRASAS_REDEFINICION.md): la skin de set es PREMIUM. Se posee solo si fue comprada con Brasas (o conservada de antes:
+// setSkinsPremiumMigrate la marca en save.cosmeticUnlocks). Juntar las piezas ya NO la da, salvo que se reactive SET_SKINS_FROM_SETS (pricing.js).
+function skinOwnedFull(setId){
+  if(SET_SKINS[setId]?.manifest)return !!save.cosmeticUnlocks?.[setId];
+  if(save.cosmeticUnlocks && save.cosmeticUnlocks[setId]) return true;
+  return skinsFromSets() && ((typeof cosmeticSetCollected==="function" && cosmeticSetCollected(setId)) || shopSetMissing(setId).length === 0);
+}
+function skinsFromSets(){ return typeof SET_SKINS_FROM_SETS !== "undefined" && !!SET_SKINS_FROM_SETS; }
 function skinIsActiveOn(setId, k){ return typeof champSkinId==="function" ? champSkinId(k) === setId : false; }
 // Selecciona la apariencia sin equipar piezas ni alterar estadísticas.
 function skinEquipOn(setId, k){

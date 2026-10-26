@@ -73,7 +73,7 @@ function grantPlaytestV1Bonus(){
 function renderMainMenu(){
   if(playtestBonusJustGranted && typeof showNetToast==="function"){ playtestBonusJustGranted = false; showNetToast("🎁 Playtest V1: recibiste 2.000 de oro"); }
   // REGALO INICIAL: aviso único del vale de skin (guardados de antes del regalo guardián + skin)
-  if(save.skinVoucherNotice && (save.skinVoucher|0) > 0 && typeof showNetToast==="function"){ save.skinVoucherNotice = false; persist(); showNetToast("🎁 Tenés una skin de regalo: elegila en la Tienda."); }
+  if(save.skinVoucherNotice && (save.skinVoucher|0) > 0 && typeof showNetToast==="function"){ save.skinVoucherNotice = false; persist(); showNetToast("🎁 Tenés un vale de croma: elegila en la Tienda."); }
   const el = document.getElementById("mainmenu-gold-line");
   if(el) el.innerHTML = `Oro: <b>${save.gold}</b> &nbsp;·&nbsp; Gemas: <b>${save.gems||0}</b>`;
   if(typeof renderHub==="function") renderHub(); // el hub (js/ui/hub.js)

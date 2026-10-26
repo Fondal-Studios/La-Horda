@@ -252,7 +252,8 @@ function updateSets(h, dt){
   }
 }
 // AURA DE SET: aparece con 2 piezas y se intensifica con cada pieza; con el set completo es el aura
-// plena (con su carga/estado). AURA ≠ SKIN: la skin solo llega con el set completo y si existe su arte.
+// plena (con su carga/estado). AURA ≠ SKIN: la skin es una compra premium independiente (modelo B); los sets solo suman
+// bono + efectos visuales (partículas y color de habilidades: js/systems/set-visuals.js).
 function heroMainSet(h){
   const c = heroSetCounts(h); if(!c) return null;
   let best = null, bq = 0;
@@ -332,6 +333,8 @@ function cosmeticSetCollected(id){
   return ids.length > 0 && ids.every(key=>save.collection && save.collection[key] && Number(save.collection[key].n)>0);
 }
 function cosmeticUnlockCompletedSet(id){
+  // Modelo B: completar el set NO regala la skin (es premium). Solo con la bandera SET_SKINS_FROM_SETS (pricing.js).
+  if(typeof SET_SKINS_FROM_SETS === "undefined" || !SET_SKINS_FROM_SETS) return false;
   if(!SET_SKINS[id] || !cosmeticSetCollected(id)) return false;
   save.cosmeticUnlocks = Object.assign({}, save.cosmeticUnlocks, {[id]:true});
   return true;
@@ -355,15 +358,34 @@ function skinCosmeticEquip(k, id){
   if(typeof AlphaServices!=="undefined") AlphaServices.emit("skin", {champion:k, cosmetic:id || "original"});
   return true;
 }
+// Skin equipada del héroe: SOLO la que el jugador eligió (o su croma). Llevar piezas de set no la cambia nunca (modelo B).
 function activeSetSkinId(h){
   if(!h || !h.classKey) return null;
   const explicit = cosmeticSkinEquippedId(h.classKey);
   if(explicit) return explicit;
-  const rec = save.champions[h.classKey];
-  if(rec && rec.cosmeticSkin === "") return typeof cromaEquippedId === "function" ? cromaEquippedId(h.classKey) : null;
-  const id = heroMainSet(h);
-  if(id && setN(h, id) >= setFullCount(id)){ const d = SET_SKINS[id]; if(d && (!d.champ || d.champ === h.classKey)) return id; }
   return typeof cromaEquippedId === "function" ? cromaEquippedId(h.classKey) : null;
+}
+// MIGRACIÓN (una vez por guardado, save.setSkinsPremiumV1): quien ya tenía una skin de set, por haber reunido el set o por regalo/vale, la CONSERVA
+// (queda marcada en save.cosmeticUnlocks) y, si la veía puesta automáticamente por llevar el set completo, queda elegida de forma explícita.
+// No quita nada. Desde ahí, juntar piezas ya no regala skins.
+function setSkinsPremiumMigrate(){
+  save.setSkinsPremiumV1 = true;
+  if(typeof SET_SKINS === "undefined" || typeof SET_DB === "undefined") return;
+  const un = Object.assign({}, save.cosmeticUnlocks);
+  for(const id in SET_SKINS){
+    const d = SET_SKINS[id]; if(!d || d.manifest || !SET_DB[id]) continue;
+    if(un[id]) continue;
+    if(cosmeticSetCollected(id) || (typeof shopSetMissing === "function" && shopSetMissing(id).length === 0)) un[id] = true;
+  }
+  save.cosmeticUnlocks = un;
+  for(const k in save.champions){
+    const rec = save.champions[k]; if(!rec || typeof rec.cosmeticSkin === "string") continue;
+    if(typeof rec.croma === "string" && rec.croma) continue;   // ya tenía una croma elegida
+    for(const id in SET_SKINS){
+      const d = SET_SKINS[id]; if(!d || d.manifest || !SET_DB[id] || (d.champ && d.champ !== k) || !un[id]) continue;
+      if(typeof equippedSetCount === "function" && equippedSetCount(k, id) >= setFullCount(id)){ rec.cosmeticSkin = id; break; }
+    }
+  }
 }
 // Clave de atlas a usar para `key` (p.ej. "ilkan", "ilkan_colossus"): la de la skin si está activa y cargada.
 function setSkinPackKey(h, key){

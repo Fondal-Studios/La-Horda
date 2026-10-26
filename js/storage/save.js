@@ -67,6 +67,7 @@ function defaultSave(){
     testStageV1:true,       // BUGFIX 01: reinicio de la etapa de prueba (nivel 1, bloqueados, solo la Arena 1) UNA vez
     starterChosen:false,    // todavía no eligió su guardián de regalo (pantalla "Tu primer guardián")
     // REGALO INICIAL (js/systems/starter-gift.js): un guardián + UNA skin para ese guardián (nada de oro)
+    setSkinsPremiumV1:true, // marca de la migración del modelo B: las skins de set son premium y las que ya tenías se conservan (ver setSkinsPremiumMigrate)
     starterGiftV1:true,     // marca de la migración: los guardados de antes reciben un vale de skin (ver starterGiftMigrate)
     starterSkinPending:false, // eligió el guardián de regalo y le falta elegir la skin de regalo
     starterSkin:null,       // la skin de regalo que eligió (id de set o de croma; "vale" si se llevó el vale)
@@ -239,6 +240,8 @@ function _loadSaveInner(){
       // REGALO INICIAL: guardados de antes del guardián + skin de regalo (después de los reinicios: quien
       // quedó sin guardián lo elige ahora con su skin; quien ya tenía uno recibe un vale de skin)
       if(!parsed.starterGiftV1){ starterGiftMigrate(); }
+      // MODELO B (skins de set premium): conserva lo que ya tenías; juntar piezas ya no regala skins (setSkinsPremiumMigrate, set-effects.js)
+      if(!parsed.setSkinsPremiumV1 && typeof setSkinsPremiumMigrate === "function"){ setSkinsPremiumMigrate(); persist(); }
       delete save.startGoldNotice; // aviso del regalo de 10.000 de oro (ya no existe)
       if(!parsed.fortalezaMigrated){ save.fortalezaMigrated = true; if(save.arenasCleared.acuatica && !save.arenasCleared.fortaleza) save.legacyHieloOpen = true; }
       // El Reino Micelial llegó como 4ta arena (entre la Fortaleza y el Hielo): quien ya había superado
