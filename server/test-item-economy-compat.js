@@ -13,8 +13,11 @@ async function api(method, p, body, t, status = 200) { const r = await fetch(url
 const action = (t, op, args = {}, status = 200, id = 'cmp_' + (++seq)) => api('POST', '/api/economy/action', { op, args, requestId: id }, t, status);
 const premium = async (id) => (await app.store.walletGet(id)).premium;
 (async () => {
-  assert.equal(wallet.pricing().__flags().PIECES_FOR_BRASAS, true, 'PIECES_FOR_BRASAS sigue en true (decisión del dueño)');
-  wallet.setTestFlags({ SHOP_MODE: 'demo' });
+  // Modelo B (docs/economy/BRASAS_REDEFINICION.md): por defecto las piezas ya no se venden por Brasas y el set completo / gift.set no regalan skin.
+  assert.equal(wallet.pricing().__flags().PIECES_FOR_BRASAS, false, 'PIECES_FOR_BRASAS apagado (modelo B)');
+  assert.equal(wallet.pricing().__flags().SET_SKINS_FROM_SETS, false, 'SET_SKINS_FROM_SETS apagado (modelo B)');
+  // La compra de piezas por el ledger V2 sigue intacta DETRÁS de la bandera: se prende solo para probarla.
+  wallet.setTestFlags({ SHOP_MODE: 'demo', PIECES_FOR_BRASAS: true });
   await start();
   const owner = await api('POST', '/api/register', { user: 'compatowner', pass: 'test-long-password' }, null, 201), user = await api('POST', '/api/register', { user: 'compatplayer', pass: 'test-long-password' }, null, 201);
   const uid = (await app.store.getUserByKey('compatplayer')).id, id = String(uid);
@@ -93,9 +96,14 @@ const premium = async (id) => (await app.store.walletGet(id)).premium;
   assert.deepEqual(chestAgain.items.map(x => x.uid), chest.items.map(x => x.uid));                               // idempotente
   await action(user.token, 'chest.open', { variant: 9, arena: 'ciudad', champion: 'tanque' }, 400);
   await action(user.token, 'chest.open', { variant: 1, arena: 'ciudad', champion: 'mago' }, 403);              // campeón no desbloqueado
-  const set = db.pieces[pieceId].set, gift = await action(user.token, 'gift.set', { set }, 200, 'gift_1');
+  const set = db.pieces[pieceId].set;
+  await action(user.token, 'gift.set', { set }, 403, 'gift_off_1');                      // modelo B: sin regalo de skin de set (GIFT_OFF)
+  await action(user.token, 'gift.set', { set: 'no_existe' }, 403, 'gift_off_2');
+  wallet.setTestFlags({ SHOP_MODE: 'demo', PIECES_FOR_BRASAS: true, SET_SKINS_FROM_SETS: true });   // la ruta sigue funcionando detrás de la bandera
+  const gift = await action(user.token, 'gift.set', { set }, 200, 'gift_1');
   assert.ok(gift.items.length >= 1); assert.ok(!gift.items.some(it => it.designId === pieceId), 'no duplica la pieza que ya tenía');
   await action(user.token, 'gift.set', { set: 'no_existe' }, 400);
+  wallet.setTestFlags({ SHOP_MODE: 'demo', PIECES_FOR_BRASAS: true });
   const before = await goldOf(); await action(user.token, 'spend', { amount: 500, reason: 'talent.respec' }); assert.equal(await goldOf(), before - 500);
   await action(user.token, 'spend', { amount: 1e7, reason: 'talent.respec' }, 409); await action(user.token, 'spend', { amount: 5, reason: 'otra' }, 400);
   await action(user.token, 'ascension.unlock', { champion: 'aurelia' }); assert.ok((await api('GET', '/api/economy', undefined, user.token)).account.unlocked.includes('aurelia'));

@@ -6,9 +6,10 @@
    servidor DECIDE, y tools/collection/pricing-sync.js verifica que coinciden.
    Política (docs/economy/PRECIOS.md):
      · CAMPEONES: siempre se compran con ORO (nunca con Brasas). Ascensión: precio de oro propio por campeón.
-     · BRASAS ✦: apariencia (skins, cromas y paquetes de apariencia) y, por decisión del dueño, las PIEZAS DE SET (equipo,
-       con estadísticas). Es una excepción a "nunca poder": se puede apagar con PIECES_FOR_BRASAS (docs/economy/PRECIOS.md,
-       apartado "Riesgo: poder por dinero"). Los modos competitivos recortan el equipo (LANES.PROGRESS_CAP).
+     · BRASAS ✦: SOLO apariencia (skins, cromas y paquetes de apariencia). Las skins de set son SKINS PREMIUM: se compran
+       únicamente con Brasas y completar el set NO las regala (SET_SKINS_FROM_SETS = false). Las PIEZAS DE SET (equipo) volvieron
+       a oro / rotación / drops (PIECES_FOR_BRASAS = false; modelo B, docs/economy/BRASAS_REDEFINICION.md). Los modos
+       competitivos recortan el equipo (LANES.PROGRESS_CAP).
      · Un precio global del juego que no está acá (equipo, talentos, Mística) sigue en su sistema, siempre en oro.
    Los precios del Game Master (cosmeticPrices / championPrices, ver docs/production/operations.md) siguen pudiendo
    cambiar el ORO; las Brasas las fija únicamente este archivo.
@@ -22,9 +23,9 @@ var PRICING = {
     ascensionDefault: 9000,          // una Ascensión nueva sin fila propia
     cosmetic: { set: 9000, autor: 12000 }   // el croma (paleta) conserva su precio propio en oro (CROMA_SKINS[id].price)
   },
-  // Brasas ✦ por escalón. "croma": cambio de paleta · "set": skin de una colección (también se gana reuniendo el set)
-  // · "autor": skin independiente con diseño propio (solo se compra).
-  // "pieza": una pieza de set (equipo). 4 piezas = 800 = la skin de set: ningún camino abarata la skin; los sets de 5-6 piezas valen más.
+  // Brasas ✦ por escalón. "croma": cambio de paleta · "set": SKIN PREMIUM de una colección (solo se compra; el set da bono + efectos
+  // visuales, no la skin) · "autor": skin independiente con diseño propio (solo se compra).
+  // "pieza": precio de una pieza de set SOLO si PIECES_FOR_BRASAS se vuelve a prender (hoy apagado: las piezas son oro / drops).
   brasas: { croma: 300, set: 800, autor: 1200, pieza: 200 },  // ✦ (1 ✦ ≈ US$ 0,01 en el pack base: ver server/premium-packs.json)
   // Colección de un guardián: todas sus apariencias que todavía no tenés, con descuento por cantidad (ahorro calculado
   // contra la suma de los precios sueltos de ESAS piezas; no hay precio "tachado" inventado).
@@ -32,18 +33,25 @@ var PRICING = {
   // Pack de bienvenida: además de las Brasas, regala 3 elecciones de campeón STANDARD (se compran con oro: 3 × 2500).
   // Elegibles: solo categoría STANDARD publicada (nunca Ascensión, Fundadores, Evento ni Familia). Los decide el servidor.
   welcome: { pack: "brasas_bienvenida", champions: 3, category: "STANDARD" },
-  // Piezas de set por Brasas: la entrega la hace el servidor en save.stash. inventoryCapacity = INVENTORY_CAPACITY (items.js; lo verifica pricing-sync).
+  // Piezas de set por Brasas (apagado, PIECES_FOR_BRASAS): la entrega la hace el servidor. inventoryCapacity = INVENTORY_CAPACITY (items.js; lo verifica pricing-sync).
   pieces: { inventoryCapacity: 30 }
 };
 
 /* ============================================================
-   INTERRUPTOR DE LAS PIEZAS DE SET POR BRASAS ✦ — un único lugar (docs/economy/PRECIOS.md, "Riesgo: poder por dinero")
-     true  (POR DEFECTO, decisión del dueño): las piezas de set se compran con Brasas, validado por el servidor.
-     false : no se venden piezas de set por ningún medio (el cliente no muestra el botón y el servidor rechaza /api/wallet/buy-piece).
-   Las piezas NUNCA se compran con oro (el oro es del cliente y editable: regalaría la skin que da el set completo). Las piezas que
-   se ganan jugando (drops) no dependen de esto.
+   INTERRUPTORES DEL MODELO B (docs/economy/BRASAS_REDEFINICION.md) — un único lugar
+   PIECES_FOR_BRASAS:
+     false (POR DEFECTO, modelo B): no se venden piezas de set por Brasas (el cliente no muestra el botón ✦ y el servidor rechaza
+            /api/wallet/buy-piece con PIECES_OFF). Las piezas vuelven a oro (según SHOP_MODE) y a los drops. Las piezas ya compradas
+            con Brasas se conservan.
+     true  : comportamiento anterior (pieza = ✦200 validada por el servidor). Solo tiene sentido si SET_SKINS_FROM_SETS también es false.
+   SET_SKINS_FROM_SETS:
+     false (POR DEFECTO, modelo B): completar un set, un vale o un regalo NO entregan la skin del set (es una skin premium: solo Brasas).
+            Las skins ya poseídas se conservan (grandfathering). Los sets dan bono de estadísticas + efectos visuales (js/systems/set-visuals.js).
+     true  : comportamiento anterior (set completo / vale / regalo = skin). Reactivarlo con las piezas por Brasas encendidas regalaría
+            la skin a cambio de ✦800 de piezas: no combinar con PIECES_FOR_BRASAS = true.
    ============================================================ */
-var PIECES_FOR_BRASAS = true;
+var PIECES_FOR_BRASAS = false;
+var SET_SKINS_FROM_SETS = false;
 
 /* ============================================================
    INTERRUPTOR DE LA TIENDA DE OBJETOS — un único lugar (docs/economy/TIENDA_ROTACION.md)
@@ -54,7 +62,7 @@ var PIECES_FOR_BRASAS = true;
                            a salir dentro de un plazo máximo conocido; (2) cuestan mucho más (SHOP_LIVE.priceScale);
                            (3) "comprar las que faltan" del set se desactiva (saltearía la rotación).
                            Guardianes, equipo Básico, objetos de guardián, skins y cromas no cambian.
-   Para cambiar de modo basta editar la línea de abajo. Las Brasas siguen siendo solo apariencia.
+   Para cambiar de modo basta editar la línea de abajo. Las Brasas son solo apariencia: nunca poder.
    OJO: el oro es del cliente (editable): sin servidor autoritativo la rotación es solo de presentación.
    ============================================================ */
 var SHOP_MODE = "demo";   // "demo" | "live"

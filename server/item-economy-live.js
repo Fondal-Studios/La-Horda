@@ -150,6 +150,8 @@ function liveCommand(s,u,op,b,now){
   a.materials=Math.min(1e9,a.materials+cfg.gems);unlock(s,id);return {ok:true,items,gems:cfg.gems,grade:cfg.grade,variant:b.variant};
  }
  if(op==='gift.set'){ // regalo de skin de set (regalo inicial / vale): las piezas que faltan, máximo 2 regalos por cuenta
+  // Modelo B (docs/economy/BRASAS_REDEFINICION.md): las skins de set son premium (solo Brasas). Sin la bandera SET_SKINS_FROM_SETS (js/data/pricing.js) no hay regalo.
+  if(!require('./wallet').currentFlags().SET_SKINS_FROM_SETS)fail('GIFT_OFF',403);
   const L=require('./item-economy-loot'),pieces=L.setPieces(String(b.set||''));if(!pieces.length)fail('BAD_SET');
   if((a.setGifts||0)>=2)fail('GIFT_LIMIT',409);
   const owned=ownedDesigns(s,id),missing=pieces.filter(p=>!owned.has(p));if(!missing.length)fail('ALREADY_OWNED',409);

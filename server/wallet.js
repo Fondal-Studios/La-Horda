@@ -5,7 +5,7 @@
 //   · Comprar con Brasas: el precio lo pone el servidor, se debita, se entrega la skin en el guardado (con control de
 //     versión, igual que los regalos del Game Master) y, si no se pudo entregar, se reintegra.
 //   · Cosméticos (skins, cromas y colecciones de apariencias) y, por decisión del dueño, PIEZAS DE SET (equipo): /api/wallet/buy-piece.
-//     Es la única compra que da poder; se apaga con PIECES_FOR_BRASAS (js/data/pricing.js; ver docs/economy/PRECIOS.md, "Riesgo:
+//     Es la única compra que da poder; hoy está APAGADA (PIECES_FOR_BRASAS = false, modelo B); se enciende con PIECES_FOR_BRASAS (js/data/pricing.js; ver docs/economy/PRECIOS.md, "Riesgo:
 //     poder por dinero"). Los CAMPEONES no se compran con Brasas: se compran con oro. Única excepción: las 3 elecciones del Pack de
 //     bienvenida (regalo, no compra).
 //   · Precios: UNA fuente (js/data/pricing.js, la misma que carga el cliente). Este módulo la ejecuta en un contexto aislado.
@@ -27,13 +27,14 @@ let PRICING_MOD = null;
 function pricing(){
   if(PRICING_MOD) return PRICING_MOD;
   const c = {}; vm.createContext(c);
-  vm.runInContext(fs.readFileSync(path.join(__dirname, "../js/data/pricing.js"), "utf8") + "\n;this.__P = PRICING; this.__fn = { pricingCosmeticTier, pricingBrasas, pricingCosmeticGold, pricingChampionGold, pricingCollection, pricingRotationConfig, pricingRotationContext, pricingRotationKeys }; this.__flags = () => ({ SHOP_MODE: SHOP_MODE, PIECES_FOR_BRASAS: PIECES_FOR_BRASAS });", c, { timeout: 1000, filename: "pricing.js" });
+  vm.runInContext(fs.readFileSync(path.join(__dirname, "../js/data/pricing.js"), "utf8") + "\n;this.__P = PRICING; this.__fn = { pricingCosmeticTier, pricingBrasas, pricingCosmeticGold, pricingChampionGold, pricingCollection, pricingRotationConfig, pricingRotationContext, pricingRotationKeys }; this.__flags = () => ({ SHOP_MODE: SHOP_MODE, PIECES_FOR_BRASAS: PIECES_FOR_BRASAS, SET_SKINS_FROM_SETS: SET_SKINS_FROM_SETS });", c, { timeout: 1000, filename: "pricing.js" });
   return (PRICING_MOD = Object.assign({ PRICING: c.__P, __flags: c.__flags }, c.__fn));
 }
-// Interruptores (js/data/pricing.js: SHOP_MODE, PIECES_FOR_BRASAS). Las pruebas pueden pisarlos con setTestFlags (nunca en producción).
+// Interruptores (js/data/pricing.js: SHOP_MODE, PIECES_FOR_BRASAS, SET_SKINS_FROM_SETS). Las pruebas pueden pisarlos con setTestFlags (nunca en producción).
 let FLAG_OVERRIDE = null;
 const flags = () => Object.assign(pricing().__flags(), FLAG_OVERRIDE || {});
 function setTestFlags(o){ FLAG_OVERRIDE = o; }
+function currentFlags(){ return flags(); }   // lo usa server/item-economy-live.js (gift.set) para respetar SET_SKINS_FROM_SETS
 // Piezas de set a la venta: server/shop-pieces.json lo genera tools/items/gen_shop_pieces.js desde la tienda real del cliente y
 // tools/collection/pricing-sync.js verifica que coincide (piezas, sets y rotación diaria).
 let PIECE_DB = null;
@@ -178,6 +179,7 @@ function routes(ctx){
     }
     return { currency: CURRENCY, premium: w.premium,
       pieces: { enabled: !!flags().PIECES_FOR_BRASAS, price: P.brasas.pieza, mode: flags().SHOP_MODE },
+      setSkinsFromSets: !!flags().SET_SKINS_FROM_SETS,   // modelo B: false = las skins de set son premium (solo Brasas)
       prices: { brasas: P.brasas, goldCosmetic: P.gold.cosmetic, collection: P.collection, skinPremium: P.brasas.set, skinGold: P.gold.cosmetic.set },
       welcome: { pack: P.welcome.pack, champions: P.welcome.champions, entitled: welcome.entitled, claimed: welcome.claimed, remaining: welcome.remaining, eligible: welcome.eligible },
       ledger: (await store().walletLedger(user.id, 20)).map(e => ({ delta: e.delta, balanceAfter: e.balanceAfter, reason: e.reason, at: e.at })),
@@ -289,7 +291,7 @@ function routes(ctx){
     await compat.grantPurchasedPiece(store(), user, { ref: debitRef, uid, designId: id });
     const have = await compat.designIdsOwned(store(), user.id), ids = pieceDb().sets[piece.set] || [];
     let completed = null, out = { ok: true };
-    if(skinCatalog()[piece.set] && skinCatalog()[piece.set].kind === "set" && ids.length && ids.every(k => have.has(k))){
+    if(flags().SET_SKINS_FROM_SETS && skinCatalog()[piece.set] && skinCatalog()[piece.set].kind === "set" && ids.length && ids.every(k => have.has(k))){
       const r = await mutateSave(user.id, d => { d.cosmeticUnlocks = Object.assign({}, d.cosmeticUnlocks, { [piece.set]: true }); });
       if(r.ok){ completed = piece.set; out = { ok: true, saveVersion: r.saveVersion, baseVersion: r.baseVersion }; }
       else if(r.reason !== "NO_SAVE") return { ok: false, reason: r.reason };   // sin guardado en la nube la skin se completará en la próxima compra/consulta
@@ -309,7 +311,7 @@ function routes(ctx){
       d.collection = col;
       // el set completo (todas las piezas registradas en la colección) regala su skin, igual que cosmeticUnlockCompletedSet en el cliente
       const ids = pieceDb().sets[piece.set] || [];
-      if(skinCatalog()[piece.set] && skinCatalog()[piece.set].kind === "set" && ids.length && ids.every(k => col[k] && Number(col[k].n) > 0)){
+      if(flags().SET_SKINS_FROM_SETS && skinCatalog()[piece.set] && skinCatalog()[piece.set].kind === "set" && ids.length && ids.every(k => col[k] && Number(col[k].n) > 0)){
         d.cosmeticUnlocks = Object.assign({}, d.cosmeticUnlocks, { [piece.set]: true }); completed = piece.set;
       }
     });
@@ -415,4 +417,4 @@ function routes(ctx){
   return result;
 }
 
-module.exports = { routes, CURRENCY, skinCatalog, pricing, pieceDb, rotationKeys, setTestFlags };
+module.exports = { routes, CURRENCY, skinCatalog, pricing, pieceDb, rotationKeys, setTestFlags, currentFlags };
