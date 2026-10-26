@@ -10,26 +10,23 @@ function musashiThousandForm(){ return {N:24, tall:1, dur:460, gdur:0, shake:2,
   paint(L,o){
     const {P,R,cx,cy,q,f}=o,S=L.soft,H=L.hard;
     if(f===23)return;
-    // Posiciones irregulares reproducibles; el radio recibido sigue delimitando el alcance.
-    for(let j=0;j<9;j++){
-      const phase=(q-(j%3)*.22)/.52;
+    // Tres barridos paralelos por tanda: sus puntas nunca convergen en una V.
+    for(let wave=0;wave<3;wave++)for(let lane=0;lane<3;lane++){
+      const phase=(q-wave*.31)/.30;
       if(phase<=0||phase>=1)continue;
-      const origins=[[-.38,-.32],[.12,.13],[.43,.38],[.33,-.40],[-.40,.15],[.05,.46],[-.10,-.50],[.45,-.04],[-.36,.43]];
-      const x=cx+origins[j][0]*R,y=cy+origins[j][1]*R;
-      // Barridos diagonales cruzados, sin tangentes que reconstruyan un anillo.
-      const angle=j%2?-.72:.62,len=R*.65;
-      const head=Math.min(1,phase*2.8),tail=Math.max(0,(phase-.28)/.72);
-      if(tail>=head)continue;
-      const dx=Math.cos(angle)*len,dy=Math.sin(angle)*len;
-      // Curva corta y afilada: la punta avanza, la cola se recoge sin dejar una hoja rígida.
-      const point=t=>{const bend=Math.sin(t*Math.PI)*R*.05*(j%2?1:-1);
-        return [x+dx*(t-.5)-dy/len*bend,y+dy*(t-.5)+dx/len*bend];};
-      for(let k=0;k<5;k++){
-        const t0=tail+(head-tail)*k/5,t1=tail+(head-tail)*(k+1)/5;
+      const angle=[.35,-.58,.85][wave],dx=Math.cos(angle),dy=Math.sin(angle);
+      const offset=(lane-1)*R*.36,shift=[-.12,.08,-.04][wave]*R;
+      const x=cx-dy*offset+dx*shift,y=cy+dx*offset+dy*shift;
+      const head=Math.min(1,phase*2.8),tail=Math.max(0,(phase-.30)/.70),len=R*.82;
+      if(head-tail<.18)continue;
+      const point=t=>{const bend=Math.sin(t*Math.PI)*R*.045;
+        return [x+dx*len*(t-.5)-dy*bend,y+dy*len*(t-.5)+dx*bend];};
+      // Material local en soft: una sombra lateral, sin el segundo contorno de ufStep.
+      for(let k=0;k<6;k++){
+        const t0=tail+(head-tail)*k/6,t1=tail+(head-tail)*(k+1)/6;
         const a0=point(t0),a1=point(t1);
-        // Un píxel nativo de filo; la sombra lateral no engrosa ambas orillas.
-        ufLine(S,a0[0]+1,a0[1]+1,a1[0]+1,a1[1]+1,1,P.o);
-        ufLine(H,...a0,...a1,1,k>1?P.c:P.b);
+        ufLine(S,a0[0]-dy,a0[1]+dx,a1[0]-dy,a1[1]+dx,1,P.o);
+        ufLine(S,...a0,...a1,1,k>1?P.c:P.b);
       }
     }
   }

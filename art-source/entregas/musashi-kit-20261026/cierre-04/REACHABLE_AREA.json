@@ -1,0 +1,129 @@
+{
+  "result": {
+    "purchases": [
+      {
+        "id": "ms_mil_c1",
+        "result": {
+          "ok": true
+        }
+      },
+      {
+        "id": "ms_mil_c1",
+        "result": {
+          "ok": true
+        }
+      },
+      {
+        "id": "ms_mil_c1",
+        "result": {
+          "ok": true
+        }
+      },
+      {
+        "id": "ms_mil_c2",
+        "result": {
+          "ok": true
+        }
+      },
+      {
+        "id": "ms_mil_c2",
+        "result": {
+          "ok": true
+        }
+      },
+      {
+        "id": "ms_mil_c2",
+        "result": {
+          "ok": true
+        }
+      },
+      {
+        "id": "ms_mil_c3",
+        "result": {
+          "ok": true
+        }
+      },
+      {
+        "id": "ms_mil_c3",
+        "result": {
+          "ok": true
+        }
+      },
+      {
+        "id": "ms_mil_c3",
+        "result": {
+          "ok": true
+        }
+      },
+      {
+        "id": "mil_cortes",
+        "result": {
+          "ok": true
+        }
+      },
+      {
+        "id": "ms_m_mil_2",
+        "result": {
+          "ok": true
+        }
+      },
+      {
+        "id": "ms_m_mil_2",
+        "result": {
+          "ok": true
+        }
+      }
+    ],
+    "spent": 17,
+    "earned": 30,
+    "talents": {
+      "nodes": {
+        "ms_mil_c1": 3,
+        "ms_mil_c2": 3,
+        "ms_mil_c3": 3
+      },
+      "mastery": "mil_cortes",
+      "masteryNodes": {
+        "ms_m_mil_2": 2
+      }
+    },
+    "skillRadius": 150,
+    "skillArea": 0.42,
+    "mastery": 2.1,
+    "casts": [
+      {
+        "geometry": {
+          "fn": "musashi-thousand",
+          "x": 0,
+          "y": 0,
+          "r": 447.29999999999995
+        },
+        "eventRadius": 420,
+        "evolution": false
+      },
+      {
+        "geometry": {
+          "fn": "musashi-thousand",
+          "x": 0,
+          "y": 0,
+          "r": 447.29999999999995
+        },
+        "eventRadius": 420,
+        "evolution": false
+      },
+      {
+        "geometry": {
+          "fn": "musashi-thousand",
+          "x": 0,
+          "y": 0,
+          "r": 536.76
+        },
+        "eventRadius": 420,
+        "evolution": true
+      }
+    ],
+    "validPurchases": true,
+    "scope": "Fresh local browser save only; purchases through talent validators, no edited skill radius, 3 real useSkill casts. Not all possible builds."
+  },
+  "errors": []
+}
