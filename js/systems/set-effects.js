@@ -380,7 +380,7 @@ function setSkinsPremiumMigrate(){
   }
   save.cosmeticUnlocks = un;
   for(const k in save.champions){
-    const rec = save.champions[k]; if(!rec || typeof rec.cosmeticSkin === "string") continue;
+    const rec = save.champions[k]; if(!rec || rec.cosmeticSkin) continue;
     if(typeof rec.croma === "string" && rec.croma) continue;   // ya tenía una croma elegida
     for(const id in SET_SKINS){
       const d = SET_SKINS[id]; if(!d || d.manifest || !SET_DB[id] || (d.champ && d.champ !== k) || !un[id]) continue;
