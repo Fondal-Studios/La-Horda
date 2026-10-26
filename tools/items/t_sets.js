@@ -1,6 +1,6 @@
 // Auditoría de SETS: cada umbral (2 / 3 / 4 piezas) de cada set de campeón y de los universales se
 // dispara de verdad (no solo figura en el texto), el set de campeón solo lo equipa su dueño, la
-// skin solo aparece con el set COMPLETO del dueño y el color de la skin viaja a los invitados.
+// skin (premium) no la da el set ni cambia al equipar piezas, y el color de la skin viaja a los invitados.
 //   (python3 -m http.server 8771 &) ; node tools/items/t_sets.js
 let chromium;
 try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
@@ -159,23 +159,31 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   });
   for (const k in u) check('UNI.' + k, u[k] === true, u[k]);
 
-  // ---------- skins: solo el dueño con el set completo; con 3 piezas no hay skin ----------
+  // ---------- skins (modelo B): premium, NO las da el set; la elegida no depende de las piezas ----------
   const sk = await E(() => {
     const out = {};
     for (const id in SET_SKINS) {
       const c = SET_SKINS[id].champ;
       if(!c || SET_SKINS[id].manifest || !SET_DB[id]) continue; // manifestaciones de colección V2 (Astral/Consagrada): se obtienen en Colección, no por piezas de un guardián
-      __run(c, id, 3); const three = !!activeSetSkin(player);
-      __run(c, id, 4); const four = activeSetSkin(player) === SET_SKINS[id];
-      updateSets(player, 16);
-      out[id] = !three && four && player.skinSet === id;
+      save.cosmeticUnlocks = {}; save.champions[c].cosmeticSkin = ""; save.champions[c].croma = null;
+      __run(c, id, 4); updateSets(player, 16);
+      const noGift = !activeSetSkin(player) && !skinOwnedFull(id) && !player.skinSet;   // set completo: sin skin
+      if(state === 'playing') state = 'menu';
+      save.cosmeticUnlocks = {[id]: true};                                              // comprada con Brasas
+      const eqd = skinCosmeticEquip(c, id);
+      __run(c, id, 0); updateSets(player, 16); const zero = activeSetSkin(player) === SET_SKINS[id] && player.skinSet === id;
+      __run(c, id, 3); updateSets(player, 16); const three = activeSetSkin(player) === SET_SKINS[id];
+      __run(c, id, 4); updateSets(player, 16); const four = activeSetSkin(player) === SET_SKINS[id];
+      state = 'menu'; save.champions[c].cosmeticSkin = ""; save.cosmeticUnlocks = {};
+      out[id] = noGift && eqd && zero && three && four;
     }
     return out;
   });
-  check('SKIN.solo_con_set_completo_y_sincronizada', Object.values(sk).every(Boolean), sk);
+  check('SKIN.premium_no_la_da_el_set_y_no_depende_de_las_piezas', Object.values(sk).length > 0 && Object.values(sk).every(Boolean), sk);
 
   // ---------- color de la skin en los efectos (viaja en los argumentos) ----------
   const tint = await E(() => {
+    save.cosmeticUnlocks = {marea:true}; state = 'menu'; skinCosmeticEquip('segador', 'marea');
     __run('segador', 'marea', 4); for (let i = 0; i < 4; i++) __foe(50 + i*20, i*10 - 15);
     const rec = []; const orig = NET_ORIG.vfxBurst || vfxBurst;
     const save0 = netMatch; netMatch = {role:'host', recording:true};
