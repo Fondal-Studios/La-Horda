@@ -91,6 +91,14 @@ function alphaGuideOpen(){
 // Punto de salida temprana: con lo básico ya se puede jugar; lo demás se consulta en la Guía y en Códice › Arenas.
 function alphaTrainingPlayNow(){ if(!ALPHA_TRAINING.active)return; alphaTrainingEmit('tutorial_checkpoint_play',{step:'checkpoint'}); alphaTrainingExit(true); }
 function alphaTrainingStayOn(){ if(ALPHA_TRAINING.active)ALPHA_TRAINING.choice='stay'; }
+// Celular apaisado (hudCompact, js/ui/hud-text.js): el panel es una tarjeta baja (css/first-minute.css), así que el párrafo se acorta a
+// las primeras oraciones (el texto entero queda en title) y el panel se atenúa solo a los pocos segundos, salvo en el paso de decisión.
+function alphaTrainingSetText(el,text,stepId){
+  const p=el.querySelector('p'),compact=typeof hudCompact==='function'&&hudCompact();
+  p.textContent=compact&&typeof hudShortText==='function'?hudShortText(text,innerWidth<760?92:130):text;p.title=compact?text:'';
+  clearTimeout(el._dimT);el.classList.remove('dim');
+  if(compact&&stepId!=='checkpoint')el._dimT=setTimeout(()=>{if(!el.classList.contains('hidden'))el.classList.add('dim');},7000);
+}
 function alphaTrainingPanel(){
   let el=document.getElementById('alpha-training-panel'); if(el) return el;
   el=document.createElement('aside');el.id='alpha-training-panel';el.className='alpha-training-panel hidden';
@@ -119,7 +127,7 @@ function alphaTrainingEnterStep(){
   if(s.id==='danger')alphaTrainingDanger();
   if(s.id==='revive')alphaTrainingDowned();
   const arenaLabel=document.getElementById('hud-arena');if(arenaLabel)arenaLabel.textContent='Entrenamiento';
-  const el=alphaTrainingPanel();t.choice=null;el.classList.remove('hidden');el.querySelector('.alpha-cp').classList.toggle('hidden',s.id!=='checkpoint');el.querySelector('strong').textContent=s.title;el.querySelector('p').textContent=alphaTrainingText(s);el.querySelector('.alpha-training-goal').textContent='▶ '+s.target;
+  const el=alphaTrainingPanel();t.choice=null;el.classList.remove('hidden');el.querySelector('.alpha-cp').classList.toggle('hidden',s.id!=='checkpoint');el.querySelector('strong').textContent=s.title;alphaTrainingSetText(el,alphaTrainingText(s),s.id);el.querySelector('.alpha-training-goal').textContent='▶ '+s.target;
   alphaTrainingEmit('tutorial_step',{step:s.id});
 }
 // Peligro: un golpe marcado en el piso (vfxTelegraph real) sobre el jugador; si al llenarse ya salió, aprendió.
