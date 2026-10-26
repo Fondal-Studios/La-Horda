@@ -327,7 +327,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     await waitTip(() => { enemies.length = 0; const e = spawnEnemy('bestia_bosque', false); e.rank = 'subjefe'; e.x = player.x + 200; e.y = player.y; e.speed = 0; e.dmg = 0; }, 'boss');
     await waitTip(() => { enemies.length = 0; activeChampion = null; runLevel = 2; }, 'levelup');
     const again2 = await E(() => { const s = Object.keys(save.tut).filter(k => ['cooldown','hurt','energy','elite','boss','levelup'].includes(k)).length; return s; });
-    check('TUT.conceptos_de_combate_cuando_aparecen', combat.join(',') === 'cooldown,hurt,energy,elite,boss,levelup' && again2 === 6 && cdSinUso, { combat, again2, cdSinUso });
+    check('TUT.sin_consejos_de_combate_del_Hechicero_(libro_unico:_recarga,_vida,_energia,_elite,_jefe,_refuerzo_ya_no_se_dicen)', combat.length === 0 && cdSinUso, { combat, again2, cdSinUso });
     check('TUT.recarga_no_aparece_sin_haber_usado_una_habilidad', cdSinUso);
     // escritorio (teclado): objetivo con WASD -> Espacio -> 1, 2 o 3, en ese orden
     check('TUT.empieza_con_moverse', /WASD/.test(t.first) && /^▶/.test(t.first) && t.vis && t.keys[0] === 'b_move', t);

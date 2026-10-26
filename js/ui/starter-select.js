@@ -53,8 +53,8 @@ function _starterShowStep(step){
 function _starterFinish(){
   const next = _starterDone; _starterDone = null;
   const go = next || (()=>{ setState("mainmenu"); renderMainMenu(); });
-  // EL LIBRO DE LA HORDA ya no se abre acá (eran 8 páginas antes de jugar): se OFRECE al volver de la primera arena
-  // (codexBookOffer, js/ui/codex/codex-book.js) y queda siempre en Códice › El Libro.
+  // EL LIBRO DE LA HORDA ya no se abre acá (eran 8 páginas antes de jugar): se lee sobre la pantalla de carga al abrir el juego
+  // (codexBookBoot, js/ui/codex/codex-book.js) y queda siempre en Códice › El Libro.
   if(typeof firstMinuteMark==="function" && !_starterJoins) firstMinuteMark(); // recién eligió guardián: toca la historia corta antes del tutorial
   go();
 }

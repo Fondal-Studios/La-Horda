@@ -85,10 +85,10 @@ function alphaGuideHTML(){ return '<div class="alpha-guide-list">'+ALPHA_GUIDE.m
 function alphaGuideOpen(){
   if(ALPHA_TRAINING.active) return;
   let el=document.getElementById('alpha-guide');
-  if(!el){el=document.createElement('dialog');el.id='alpha-guide';el.className='alpha-guide';el.innerHTML='<header><h2>CÓDICE · GUÍA DEL HECHICERO</h2><button type="button" data-close>Cerrar</button></header>'+alphaGuideHTML()+'<button type="button" data-train>ARENA DE ENTRENAMIENTO · 3 minutos</button>';document.body.appendChild(el);el.querySelector('[data-close]').onclick=()=>el.close();el.querySelector('[data-train]').onclick=()=>{el.close();alphaTrainingStart();};}
+  if(!el){el=document.createElement('dialog');el.id='alpha-guide';el.className='alpha-guide';el.innerHTML='<header><h2>CÓDICE · GUÍA DE JUEGO</h2><button type="button" data-close>Cerrar</button></header>'+alphaGuideHTML()+'<button type="button" data-train>ARENA DE ENTRENAMIENTO · 3 minutos</button>';document.body.appendChild(el);el.querySelector('[data-close]').onclick=()=>el.close();el.querySelector('[data-train]').onclick=()=>{el.close();alphaTrainingStart();};}
   if(!el.open) el.showModal();
 }
-// Punto de salida temprana: con lo básico ya se puede jugar; lo demás lo enseña el Hechicero mientras se juega (tutorial.js).
+// Punto de salida temprana: con lo básico ya se puede jugar; lo demás se consulta en la Guía y en Códice › Arenas.
 function alphaTrainingPlayNow(){ if(!ALPHA_TRAINING.active)return; alphaTrainingEmit('tutorial_checkpoint_play',{step:'checkpoint'}); alphaTrainingExit(true); }
 function alphaTrainingStayOn(){ if(ALPHA_TRAINING.active)ALPHA_TRAINING.choice='stay'; }
 function alphaTrainingPanel(){
@@ -210,7 +210,7 @@ function alphaOnboardingMenu(){
   }
   const c=save.champions[selectedClass]||{},level=Math.max(1,Math.min(10,c.level||1)),seen=(save.tut&&save.tut.onboarding)||{},g=alphaOnboardingLesson(level,seen);
   card.dataset.lesson=g?String(g.level):'';
-  card.querySelector('summary').textContent=g?`El Hechicero · Nivel ${g.level}: ${g.title}`:'El Hechicero · Guía al día';
+  card.querySelector('summary').textContent=g?`Guía · Nivel ${g.level}: ${g.title}`:'Guía · al día';
   card.querySelector('p').textContent=g?g.text:'Ya revisaste los consejos disponibles para este campeón. Podés volver a consultar la Guía cuando quieras.';
   card.querySelector('[data-understood]').hidden=!g;
   card.querySelector('[data-train]').textContent=save.tut&&save.tut.training?'REPETIR TUTORIAL · 3 min':'ARENA DE ENTRENAMIENTO · 3 min';

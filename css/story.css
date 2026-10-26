@@ -37,12 +37,6 @@
 #tut-panel[data-face="chron"] .tut-who{ color:#ffd98a; }
 
 /* ---------- ficha previa: acto y voz del guardián ---------- */
-#run-intro .ri-act{ font-family:'Press Start 2P',monospace; font-size:0.45rem; letter-spacing:2px; color:#b89a6a; margin-top:4px; }
-#run-intro .ri-act:empty{ display:none; }
-#run-intro .ri-hero{ font-family:'VT323',monospace; font-size:1.05rem; line-height:1.05; color:#d8cbb4; margin:-4px 0 6px; padding-left:8px; border-left:2px solid rgba(255,217,138,0.35); }
-#run-intro .ri-hero b{ font-style:normal; margin-right:4px; }
-#run-intro.ri-prologue .ri-hero, #run-intro.ri-prologue .ri-act{ display:none; }
-@media (max-height:500px){ #run-intro .ri-hero{ font-size:0.92rem; margin:-2px 0 4px; } #run-intro .ri-act{ font-size:0.38rem; } }
 
 /* ---------- pantallas de fin de partida ---------- */
 .story-vic{ margin:10px auto 0; max-width:560px; text-align:left; padding:8px 12px; border:1px solid rgba(176,128,64,0.45);
@@ -120,3 +114,9 @@
 .cx-voice{ font-family:var(--font-retro); font-size:1.05rem; line-height:1.1; color:var(--cx-ink); margin:3px 0; }
 .cx-voice i{ color:var(--cx-dim); font-style:normal; margin-right:6px; }
 @media (max-height:480px) and (orientation:landscape){ .cx-parchment{ padding:12px 14px 14px; } .cx-parchment p{ font-size:0.95rem; line-height:1.18; } }
+
+/* ---------- indicaciones neutras de interfaz (tutorial.js › tutSay con data-face="none"): sin retrato ni nombre ----------
+   Solo los controles (moverse, atacar, habilidad, +, revivir). El Hechicero no habla en la partida: su voz es el Libro. */
+#tut-panel[data-face="none"] .tut-face, #tut-panel[data-face="none"] .tut-who{ display:none !important; }
+#tut-panel[data-face="none"]{ border-color:#7a6a52; box-shadow:0 0 10px rgba(0,0,0,0.55); background:linear-gradient(180deg, rgba(24,18,12,0.92), rgba(12,9,6,0.92)); }
+#tut-panel[data-face="none"] .tut-text{ color:#eadcc6; font-style:normal; }

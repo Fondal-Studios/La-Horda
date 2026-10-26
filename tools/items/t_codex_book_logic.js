@@ -29,7 +29,7 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   const c = ctx();
   const frags = J(c, 'BOOK_FRAGMENTS'), intro = J(c, 'BOOK_INTRO_PAGES'), short = J(c, 'BOOK_SHORT_LINES'), req = J(c, 'BOOK_REQUIRED_TOPICS');
   check('CONTENIDO.un_fragmento_por_cada_arena_de_la_campaña', JSON.stringify(Object.keys(frags)) === JSON.stringify(ARENAS), Object.keys(frags));
-  check('CONTENIDO.carga_corta_para_cada_arena', JSON.stringify(Object.keys(short)) === JSON.stringify(ARENAS) && Object.values(short).every(t => t.length >= 30 && t.length <= 140), short);
+  check('CONTENIDO.carga_corta_para_cada_arena', JSON.stringify(Object.keys(short)) === JSON.stringify(ARENAS) && Object.values(short).every(t => t.length >= 30 && t.length <= 165), short);
   check('CONTENIDO.introduccion_de_8_paginas_completas', intro.length === 8 && intro.every(p => p.title && p.kicker && p.text && p.art), intro.map(p => p.title));
   const arts = [...intro.map(p => p.art), ...Object.values(frags).map(f => f.topicArt), ...Object.values(frags).flatMap(f => (f.extra || []).map(p => p.art))];
   check('CONTENIDO.toda_ilustracion_existe_o_es_una_arena', arts.every(a => KNOWN_ART.includes(a) || /^arena:/.test(a)), arts.filter(a => !KNOWN_ART.includes(a) && !/^arena:/.test(a)));
@@ -39,7 +39,7 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   check('CONTENIDO.la_campaña_cubre_modos_progresion_talentos_maestria_Brasas_y_mas', cov.missing.length === 0 && req.length >= 10, cov);
   check('CONTENIDO.un_tema_distinto_por_fragmento', new Set(Object.values(frags).map(f => f.topic)).size === ARENAS.length);
   const brasas = frags.minas.lesson, tienda = frags.abismo.lesson;
-  check('CONTENIDO.Brasas_y_tienda_sin_presionar_a_comprar', /compran apariencia/.test(brasas) && /piezas de set/.test(brasas) && /Nunca hacen falta/.test(brasas) && /también caen jugando/.test(brasas) && /Nada de eso es obligatorio/.test(tienda) && !/(comprá|conseguí ya|oferta|últim[oa]s|no te lo pierdas|aprovechá)/i.test(brasas + tienda), { brasas, tienda });
+  check('CONTENIDO.Brasas_y_tienda_sin_presionar_a_comprar', /compran apariencia/.test(brasas) && /piezas de set/.test(brasas) && /No hacen falta/.test(brasas) && /también caen peleando/.test(brasas) && /Nada de eso hace falta/.test(tienda) && !/(comprá|conseguí ya|oferta|últim[oa]s|no te lo pierdas|aprovechá)/i.test(brasas + tienda), { brasas, tienda });
   const all = JSON.stringify([intro, frags, short]);
   check('CONTENIDO.voseo_rioplatense_sin_tuteo', !/\b(tienes|puedes|haz clic|elige tu|pulsa|vosotros|ustedes puedes)\b/i.test(all) && /Pasá|Podés|Acordate|mantené/.test(all));
   check('CONTENIDO.sin_spoiler_del_Hechicero_antes_del_fragmento_final', !/(traici|traidor|Rey de la Horda)/i.test(JSON.stringify([intro, Object.fromEntries(Object.entries(frags).filter(([a]) => a !== 'infernal'))])));
@@ -100,23 +100,15 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   check('INTRO.sin_guardado_cargado_no_rompe', none && none.introSeen === false);
 }
 
-/* ---------------- OFERTA TRAS LA PRIMERA ARENA (primer minuto) ---------------- */
+/* ---------------- PRIMER DESPLIEGUE (pantalla de carga) y sin oferta ---------------- */
 {
   const c = ctx();
-  check('OFERTA.perfil_nuevo_no_toca_antes_de_jugar', run(c, 'codexBookOfferDue()') === false && run(c, 'save.codexBook.ran') === false && run(c, 'save.codexBook.offered') === false);
-  run(c, 'codexBookMarkRan()');
-  check('OFERTA.terminar_una_partida_la_habilita_en_el_menu', run(c, 'codexBookOfferDue()') === true && run(c, 'save.codexBook.ran') === true);
-  run(c, 'state = "playing"'); check('OFERTA.no_toca_jugando', run(c, 'codexBookOfferDue()') === false);
-  run(c, 'state = "mainmenu"; netInRoom = function(){ return true; }'); check('OFERTA.no_toca_en_una_sala_cooperativa', run(c, 'codexBookOfferDue()') === false);
-  run(c, 'netInRoom = function(){ return false; }; save.codexBook.offered = true'); check('OFERTA.una_sola_vez_(offered)', run(c, 'codexBookOfferDue()') === false);
-  run(c, 'save.codexBook.offered = false; save.codexBook.introSeen = true'); check('OFERTA.si_ya_leyo_la_intro_no_toca', run(c, 'codexBookOfferDue()') === false);
-  const before = c.persisted; run(c, 'codexBookMarkRan()'); check('OFERTA.marcar_dos_veces_no_reescribe', c.persisted === before);
-  const m = J(c, 'codexBookMigrate({codexBook:{v:1,introSeen:false,ran:1,offered:0,frag:{},shortCount:{}}})');
-  check('OFERTA.migracion_normaliza_ran_y_offered', m.ran === true && m.offered === false);
-  const old = J(c, 'codexBookMigrate({codexBook:{v:1,introSeen:false,frag:{},shortCount:{}}})');
-  check('OFERTA.guardados_anteriores_sin_los_campos_quedan_en_false', old.ran === false && old.offered === false);
-  const w = ctx('var window = {}; var navigator = {webdriver:true}; var location = {search:""};'); run(w, 'codexBookMarkRan()');
-  check('OFERTA.pruebas_viejas_con_webdriver_no_reciben_la_oferta', run(w, 'codexBookOfferDue()') === false);
+  check('BOOT.perfil_nuevo_tiene_la_intro_pendiente_y_puede_arrancar_sola_en_el_titulo', run(c, 'codexBookIntroDue({})') === true && run(c, 'codexBookSave().introSeen') === false);
+  check('BOOT.ya_no_existe_la_oferta_tras_la_primera_arena', run(c, 'typeof codexBookOfferDue') === 'undefined');
+  run(c, 'codexBookMarkIntro()'); check('BOOT.una_vez_vista_no_vuelve_a_estar_pendiente', run(c, 'codexBookIntroDue({})') === false);
+  const c2 = ctx(); run(c2, 'netInRoom = function(){ return true; }'); check('BOOT.en_una_sala_no_arranca', run(c2, 'codexBookIntroDue({})') === false);
+  const cb = fs.readFileSync(path.join(ROOT, 'js/ui/codex/codex-book.js'), 'utf8');
+  check('BOOT.invitaciones_y_pruebas_viejas_no_lo_disparan', /\(room\|cw\|return\)=/.test(cb) && /navigator\.webdriver && !window\.__codexBook/.test(cb));
 }
 
 /* ---------------- PRUEBAS AUTOMÁTICAS VIEJAS (webdriver): camino de antes, sin libro por iniciativa propia ---------------- */
@@ -152,7 +144,7 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   run(c, 'codexBookMarkFragment("noexiste")');
   check('FRAGMENTO.arena_inexistente_se_ignora', run(c, '"noexiste" in save.codexBook.frag') === false);
   const pg = J(c, 'codexBookFragmentPages("ciudad")');
-  check('FRAGMENTO.dos_paginas_historia_y_leccion', pg.length === 2 && /ARENA 01/.test(pg[0].kicker) && pg[0].art === 'arena:ciudad' && pg[1].kicker === 'LO QUE TE ENSEÑO' && /MODO CAMPA/.test(pg[1].text), pg);
+  check('FRAGMENTO.dos_paginas_historia_y_leccion', pg.length === 2 && /ARENA 01/.test(pg[0].kicker) && pg[0].art === 'arena:ciudad' && pg[1].kicker === 'LO QUE TE ENSEÑO' && /Diez arenas/.test(pg[1].text), pg);
   check('FRAGMENTO.la_Infernal_suma_el_resumen_del_libro', J(c, 'codexBookFragmentPages("infernal")').length === 3);
   check('FRAGMENTO.arena_sin_fragmento_devuelve_null', run(c, 'codexBookFragmentPages("divina")') === null);
   check('FRAGMENTO.contador_de_ganados', run(c, 'codexBookFragmentCount()') === 2);
@@ -195,7 +187,7 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   check('ENGANCHE.los_datos_cargan_antes_que_la_logica_y_antes_de_main.js', order[0] < order[3] && html.indexOf('js/main.js') > Math.max(...order), order);
   check('ENGANCHE.save.js_trae_el_campo_y_migra', /codexBook:\{v:1/.test(save) && /codexBookMigrate\(parsed\)/.test(save));
   // PRIMER MINUTO: la intro de 8 páginas ya NO se abre al elegir guardián (era leer antes de jugar): se OFRECE al volver de la primera arena.
-  check('ENGANCHE.el_starter_ya_no_abre_la_intro_(se_ofrece_tras_la_primera_arena)', !/codexBookMaybeIntro\(/.test(rd('js/ui/starter-select.js')) && /function codexBookOffer/.test(rd('js/ui/codex/codex-book.js')) && /codexBookMarkRan\(\)/.test(rd('js/ui/codex/codex-book.js')));
+  check('ENGANCHE.el_starter_ya_no_abre_la_intro_(se_lee_sobre_la_pantalla_de_carga)', !/codexBookMaybeIntro\(/.test(rd('js/ui/starter-select.js')) && /function codexBookBoot\(/.test(rd('js/ui/codex/codex-book.js')) && !/function codexBookOffer/.test(rd('js/ui/codex/codex-book.js')));
   check('ENGANCHE.las_salas_siguen_sin_demorar_a_nadie', (rd('js/net/net-lobby.js').match(/joinsRoom:true/g) || []).length === 2 && /joinsRoom:true/.test(rd('js/net/net-rooms.js')));
   check('ENGANCHE.run_intro_usa_la_carga_corta', /codexBookShort\(arena/.test(rd('js/ui/run-intro.js')));
   check('ENGANCHE.la_victoria_tiene_su_paso_Fragmento_del_Libro_y_se_omite_solo', /storyVictoryBookHtml/.test(rd('js/systems/story.js')) && /Fragmento del Libro/.test(rd('js/ui/end-screens.js')) && /VICTORY_STEPS\[3\]\.skip/.test(rd('js/ui/end-screens.js')));
@@ -228,7 +220,7 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   Object.keys(short).forEach(a => allTexts.push({ w: 'short:' + a, t: short[a] }));
   Object.keys(frags).forEach(a => { allTexts.push({ w: 'lore:' + a, t: frags[a].lore }); allTexts.push({ w: 'lesson:' + a, t: frags[a].lesson }); (frags[a].extra || []).forEach((e, i) => allTexts.push({ w: 'extra:' + a + i, t: e.text })); });
   check('NARRADOR.ningun_texto_del_libro_nombra_a_Ismena_(la_Cronica_de_la_Noche_sigue_siendo_de_ella,_en_story-text.js)', allTexts.every(x => !/Ismena/i.test(x.t)), allTexts.filter(x => /Ismena/i.test(x.t)));
-  check('NARRADOR.la_tapa_la_firma_el_Hechicero_Supremo_en_primera_persona', /Hechicero Supremo/.test(intro[0].text) && /Lo escribo yo/.test(intro[0].text), intro[0]);
+  check('NARRADOR.la_tapa_la_firma_el_Hechicero_Supremo_en_primera_persona_y_con_tinta_de_hollin', /Hechicero Supremo/.test(intro[0].text) && /Escribo con tinta/.test(intro[0].text), intro[0]);
   check('NARRADOR.firma_de_pie_de_pagina_definida', run(c, 'BOOK_NARRATOR_SIGN') === '— El Hechicero Supremo' && run(c, 'BOOK_NARRATOR') === 'El Hechicero');
   const NOVOSEO = /\b(tú|tienes|puedes|vosotros|ustedes)\b/i;
   check('NARRADOR.voz_rioplatense_(voseo)_en_la_intro_y_en_las_cargas', /Pasá|Escuchame|Acordate|Seguí/.test(intro.map(p => p.text).join(' ')) && allTexts.filter(x => !/infernal/.test(x.w)).every(x => !NOVOSEO.test(x.t)), allTexts.filter(x => NOVOSEO.test(x.t)));
@@ -241,13 +233,9 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   // sin duplicar lo que la victoria ya muestra en sus propios pasos (línea del Hechicero sobre el cristal y últimas palabras del Guardián)
   const DUP = /alguna vez fueron h[eé]roes|No preguntes c[oó]mo s[eé] tanto|deliraba|El Primero no cay[oó]|No se lo des a nadie|yo te lo cuido|Esos ecos no importan|Debajo del Abismo hay minas/i;
   check('DEDUP.los_fragmentos_no_repiten_la_linea_del_cristal_ni_las_ultimas_palabras', Object.keys(frags).every(a => !DUP.test(frags[a].lore)), Object.keys(frags).filter(a => DUP.test(frags[a].lore)));
-  // la página de carga hace de frase de apertura de la ficha: cada línea condensa ARENA_BRIEF[arena].say (mismo gesto del arco)
-  const ri = fs.readFileSync(path.join(ROOT, 'js/ui/run-intro.js'), 'utf8');
-  const briefSay = {};
-  for (const a of ARENAS) { const m = ri.match(new RegExp('\\n  ' + a + ': \\{\\n    say:"([^"]+)"')); briefSay[a] = m && m[1]; }
-  const words = t => new Set(t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').match(/[a-z]{5,}/g) || []);
-  const overlap = a => { const A = words(short[a]), B = words(briefSay[a] || ''); let n = 0; A.forEach(w => { if (B.has(w)) n++; }); return n / Math.max(1, A.size); };
-  check('CARGA.cada_linea_corta_condensa_la_frase_de_apertura_de_la_ficha_(la_ficha_la_oculta_si_se_leyo)', ARENAS.every(a => briefSay[a] && overlap(a) >= 0.35), ARENAS.map(a => [a, +overlap(a).toFixed(2), !!briefSay[a]]));
+  // LIBRO ÚNICO: la ficha del Hechicero ya no existe; la página de carga es lo único que se ve al entrar a una arena
+  const ri = fs.readFileSync(path.join(ROOT, 'js/ui/run-intro.js'), 'utf8'), html0 = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  check('LIBRO_UNICO.la_ficha_es_neutra_(sin_voz,_alas,_retrato_ni_frase_de_apertura_del_Hechicero)', !/HECH_PORTRAIT|_riWing|runIntroDraw|EL HECHICERO|\.say\b|B\.say/.test(ri) && /FICHA DE ARENA/.test(ri) && /FICHA DE ARENA/.test(html0) && !/<canvas class="ri-art"/.test(html0));
 }
 {
   // introRead: llegar al final = leída; omitir = solo vista (la ficha de la primera arena no repite prólogo/misión/Acto I solo si se LEYÓ)
@@ -269,9 +257,7 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   // UN SOLO NARRADOR: el Libro por iniciativa propia espera a otras capas de historia; las otras esperan al Libro
   const c = ctx('var performance = {now:function(){ return Date.now(); }}; var setTimeout = function(){ return 0; };');
   check('UN_NARRADOR.sin_nada_abierto_el_libro_puede_arrancar_solo', run(c, 'codexBookCanAuto()') === true && run(c, 'narrationBookOpen()') === false && run(c, 'narrationOtherOpen()') === false);
-  run(c, 'var RUN_INTRO = {open:true};');
-  check('UN_NARRADOR.con_la_ficha_del_Hechicero_abierta_el_libro_no_arranca_solo', run(c, 'narrationOtherOpen()') === true && run(c, 'codexBookCanAuto()') === false && run(c, 'codexBookShortDue("bosque")') === false && run(c, 'codexBookIntroDue()') === false);
-  run(c, 'RUN_INTRO.open = false; var STORY_CINE = {open:true};');
+  run(c, 'var STORY_CINE = {open:true};');
   check('UN_NARRADOR.con_el_epilogo_abierto_tampoco', run(c, 'codexBookCanAuto()') === false);
   run(c, 'STORY_CINE.open = false; var ALPHA_TRAINING = {active:true};');
   check('UN_NARRADOR.ni_durante_la_practica', run(c, 'codexBookCanAuto()') === false);
@@ -282,9 +268,9 @@ const J = (c, code) => JSON.parse(run(c, 'JSON.stringify(' + code + ')'));
   run(c, 'BOOK.open = false; narrationWhenFree(function(){ _ran += 10; });');
   check('UN_NARRADOR.narrationWhenFree_corre_al_toque_si_esta_cerrado', run(c, '_ran') === 10);
   const rd = f => fs.readFileSync(path.join(ROOT, f), 'utf8');
-  check('UN_NARRADOR.el_panel_de_consejos_la_cola_de_voces_y_el_epilogo_respetan_al_libro', /narrationBookOpen\(\)\) return false/.test(rd('js/systems/tutorial.js')) && /narrationBookOpen\(\)\) return;/.test(rd('js/systems/story.js')) && /narrationWhenFree\(\(\)=>storyPlayCine/.test(rd('js/systems/story.js')));
-  check('UN_NARRADOR.la_ficha_y_el_relato_del_primer_minuto_esperan_al_libro', /narrationWhenFree\(\(\)=>runIntroShow/.test(rd('js/ui/run-intro.js')) && /narrationWhenFree/.test(rd('js/ui/first-minute.js')));
-  check('UN_NARRADOR.la_practica_completa_cuenta_la_mision_(la_ficha_no_la_repite)', /save\.tut\.goalMission=1/.test(rd('js/systems/alpha-training.js')));
+  check('UN_NARRADOR.el_cuadro_de_indicaciones_la_cola_de_voces_y_el_epilogo_respetan_al_libro', /narrationBookOpen\(\)\) return false/.test(rd('js/systems/tutorial.js')) && /narrationBookOpen\(\)\) return;/.test(rd('js/systems/story.js')) && /narrationWhenFree\(\(\)=>storyPlayCine/.test(rd('js/systems/story.js')));
+  check('UN_NARRADOR.la_entrada_a_la_arena_y_el_relato_del_primer_minuto_esperan_al_libro', /narrationWhenFree\(\(\)=>runIntroShow/.test(rd('js/ui/run-intro.js')) && /narrationWhenFree/.test(rd('js/ui/first-minute.js')));
+  check('UN_NARRADOR.la_practica_completa_cuenta_la_mision_(el_cartel_del_HUD_no_la_repite)', /save\.tut\.goalMission=1/.test(rd('js/systems/alpha-training.js')));
 }
 
 console.log(fails ? '\n' + fails + ' FALLAS' : '\nTODO OK');

@@ -19,7 +19,7 @@
     {
      "id": "cm_presentador.estructura",
      "mode": "auto",
-     "n": 2
+     "n": 3
     },
     {
      "id": "cm_presentador.publico",
@@ -66,7 +66,7 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "9 avisos, 0 golpes diferidos en la pelea"
+     "detail": "5 avisos, 0 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
@@ -76,17 +76,17 @@
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 54.2%"
+     "detail": "vida mínima 35.1%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 54.2%"
+     "detail": "queda 35.1%"
     },
     {
      "name": "gancho de arena: cm_presentador.estructura",
      "level": "PASS",
-     "detail": "2 vez/veces"
+     "detail": "3 vez/veces"
     },
     {
      "name": "botín relacionado",
@@ -95,7 +95,7 @@
     }
    ],
    "status": "PASS*",
-   "tele": 9,
+   "tele": 5,
    "strikes": 0,
    "kinds": 2
   },
@@ -115,12 +115,12 @@
     {
      "id": "cm_maestro.escena",
      "mode": "auto",
-     "n": 6
+     "n": 5
     },
     {
      "id": "cm_maestro.refugio",
      "mode": "player",
-     "n": 2
+     "n": 1
     }
    ],
    "checks": [
@@ -142,7 +142,7 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "30 avisos, 0 golpes diferidos en la pelea"
+     "detail": "27 avisos, 0 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
@@ -152,21 +152,21 @@
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 88.5%"
+     "detail": "vida mínima 81.4%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 88.5%"
+     "detail": "queda 81.4%"
     },
     {
      "name": "gancho de arena: cm_maestro.escena",
      "level": "PASS",
-     "detail": "6 vez/veces"
+     "detail": "5 vez/veces"
     }
    ],
    "status": "PASS",
-   "tele": 30,
+   "tele": 27,
    "strikes": 0,
    "kinds": 5
   },
@@ -186,7 +186,7 @@
     {
      "id": "cm_tramoyista.estructura",
      "mode": "auto",
-     "n": 5
+     "n": 6
     }
    ],
    "checks": [
@@ -208,7 +208,7 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "30 avisos, 0 golpes diferidos en la pelea"
+     "detail": "27 avisos, 0 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
@@ -218,21 +218,21 @@
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 66.7%"
+     "detail": "vida mínima 59.1%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 66.7%"
+     "detail": "queda 59.1%"
     },
     {
      "name": "gancho de arena: cm_tramoyista.estructura",
      "level": "PASS",
-     "detail": "5 vez/veces"
+     "detail": "6 vez/veces"
     }
    ],
    "status": "PASS",
-   "tele": 30,
+   "tele": 27,
    "strikes": 0,
    "kinds": 5
   },
@@ -273,7 +273,7 @@
     }
    ],
    "status": "PASS*",
-   "tele": 30,
+   "tele": 27,
    "strikes": 0,
    "kinds": 5
   },
@@ -315,22 +315,22 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "65 avisos, 22 golpes diferidos en la pelea"
+     "detail": "34 avisos, 19 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
      "level": "PASS",
-     "detail": "12 tipos de aviso/golpe"
+     "detail": "10 tipos de aviso/golpe"
     },
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 85.7%"
+     "detail": "vida mínima 69.5%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 85.7%"
+     "detail": "queda 69.5%"
     },
     {
      "name": "gancho de arena: dragon_forja.horno",
@@ -339,9 +339,9 @@
     }
    ],
    "status": "PASS",
-   "tele": 65,
-   "strikes": 22,
-   "kinds": 12
+   "tele": 34,
+   "strikes": 19,
+   "kinds": 10
   },
   {
    "type": "caballero",
@@ -406,12 +406,12 @@
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 96.7%"
+     "detail": "vida mínima 96.1%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 96.7%"
+     "detail": "queda 96.1%"
     },
     {
      "name": "gancho de arena: caballero.camara",
@@ -467,27 +467,27 @@
     {
      "name": "aparece en la simulación",
      "level": "PASS",
-     "detail": "31 s en pelea"
+     "detail": "32 s en pelea"
     },
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "61 avisos, 27 golpes diferidos en la pelea"
+     "detail": "58 avisos, 26 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
      "level": "PASS",
-     "detail": "10 tipos de aviso/golpe"
+     "detail": "9 tipos de aviso/golpe"
     },
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 4.6%"
+     "detail": "vida mínima 1.6%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 4.6%"
+     "detail": "queda 1.6%"
     },
     {
      "name": "gancho de arena: doblador_guerrero.runas",
@@ -496,9 +496,9 @@
     }
    ],
    "status": "PASS",
-   "tele": 61,
-   "strikes": 27,
-   "kinds": 10
+   "tele": 58,
+   "strikes": 26,
+   "kinds": 9
   },
   {
    "type": "guardian_ancestral",
@@ -526,7 +526,7 @@
     {
      "id": "guardian_ancestral.purifica",
      "mode": "player",
-     "n": 4
+     "n": 5
     }
    ],
    "checks": [
@@ -543,32 +543,32 @@
     {
      "name": "sin errores en la pelea",
      "level": "PASS",
-     "detail": "4400 cuadros"
+     "detail": "4355 cuadros"
     },
     {
      "name": "aparece en la simulación",
      "level": "PASS",
-     "detail": "66 s en pelea"
+     "detail": "62 s en pelea"
     },
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "199 avisos, 184 golpes diferidos en la pelea"
+     "detail": "216 avisos, 197 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
      "level": "PASS",
-     "detail": "9 tipos de aviso/golpe"
+     "detail": "10 tipos de aviso/golpe"
     },
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 5.2%"
+     "detail": "vida mínima 0.2%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 5.2%"
+     "detail": "queda 0.2%"
     },
     {
      "name": "gancho de arena: guardian_ancestral.rearma",
@@ -587,9 +587,9 @@
     }
    ],
    "status": "PASS",
-   "tele": 199,
-   "strikes": 184,
-   "kinds": 9
+   "tele": 216,
+   "strikes": 197,
+   "kinds": 10
   },
   {
    "type": "micelio",
@@ -639,7 +639,7 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "38 avisos, 18 golpes diferidos en la pelea"
+     "detail": "34 avisos, 15 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
@@ -649,12 +649,12 @@
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 49.0%"
+     "detail": "vida mínima 52.5%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 49.0%"
+     "detail": "queda 52.5%"
     },
     {
      "name": "gancho de arena: micelio.cadaveres",
@@ -668,8 +668,8 @@
     }
    ],
    "status": "PASS",
-   "tele": 38,
-   "strikes": 18,
+   "tele": 34,
+   "strikes": 15,
    "kinds": 5
   },
   {
@@ -806,17 +806,17 @@
     {
      "name": "patrones distintos",
      "level": "PASS",
-     "detail": "7 tipos de aviso/golpe"
+     "detail": "6 tipos de aviso/golpe"
     },
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 18.5%"
+     "detail": "vida mínima 24.3%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 18.5%"
+     "detail": "queda 24.3%"
     },
     {
      "name": "gancho de arena: mago_hielo_cristal.brasero",
@@ -832,7 +832,7 @@
    "status": "PASS",
    "tele": 87,
    "strikes": 56,
-   "kinds": 7
+   "kinds": 6
   },
   {
    "type": "angel_caido_hielo",
@@ -888,7 +888,7 @@
    "status": "PASS*",
    "tele": 87,
    "strikes": 56,
-   "kinds": 7
+   "kinds": 6
   },
   {
    "type": "dragon_hielo",
@@ -916,7 +916,7 @@
     {
      "id": "dragon_hielo.fuego",
      "mode": "player",
-     "n": 0
+     "n": 2
     }
    ],
    "checks": [
@@ -938,22 +938,22 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "33 avisos, 0 golpes diferidos en la pelea"
+     "detail": "32 avisos, 0 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
      "level": "PASS",
-     "detail": "4 tipos de aviso/golpe"
+     "detail": "3 tipos de aviso/golpe"
     },
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 63.0%"
+     "detail": "vida mínima 24.2%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 63.0%"
+     "detail": "queda 24.2%"
     },
     {
      "name": "gancho de arena: dragon_hielo.frio",
@@ -962,9 +962,9 @@
     }
    ],
    "status": "PASS",
-   "tele": 33,
+   "tele": 32,
    "strikes": 0,
-   "kinds": 4
+   "kinds": 3
   },
   {
    "type": "kraken_joven",
@@ -1009,7 +1009,7 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "39 avisos, 0 golpes diferidos en la pelea"
+     "detail": "38 avisos, 0 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
@@ -1019,12 +1019,12 @@
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 0.2%"
+     "detail": "vida mínima 13.2%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 0.2%"
+     "detail": "queda 13.2%"
     },
     {
      "name": "gancho de arena: kraken_joven.corriente",
@@ -1033,7 +1033,7 @@
     }
    ],
    "status": "PASS",
-   "tele": 39,
+   "tele": 38,
    "strikes": 0,
    "kinds": 6
   },
@@ -1100,12 +1100,12 @@
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 76.4%"
+     "detail": "vida mínima 76.5%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 76.4%"
+     "detail": "queda 76.5%"
     },
     {
      "name": "gancho de arena: leviatan.charco",
@@ -1161,12 +1161,12 @@
     {
      "name": "aparece en la simulación",
      "level": "PASS",
-     "detail": "24 s en pelea"
+     "detail": "26 s en pelea"
     },
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "83 avisos, 22 golpes diferidos en la pelea"
+     "detail": "86 avisos, 22 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
@@ -1176,12 +1176,12 @@
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 1.8%"
+     "detail": "vida mínima 1.4%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 1.8%"
+     "detail": "queda 1.4%"
     },
     {
      "name": "gancho de arena: guardian_laberinto.muro",
@@ -1190,7 +1190,7 @@
     }
    ],
    "status": "PASS",
-   "tele": 83,
+   "tele": 86,
    "strikes": 22,
    "kinds": 5
   },
@@ -1242,7 +1242,7 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "224 avisos, 196 golpes diferidos en la pelea"
+     "detail": "216 avisos, 188 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
@@ -1252,12 +1252,12 @@
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 44.1%"
+     "detail": "vida mínima 44.4%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 44.1%"
+     "detail": "queda 44.4%"
     },
     {
      "name": "botín relacionado",
@@ -1266,8 +1266,8 @@
     }
    ],
    "status": "PASS*",
-   "tele": 224,
-   "strikes": 196,
+   "tele": 216,
+   "strikes": 188,
    "kinds": 6
   },
   {
@@ -1286,12 +1286,12 @@
     {
      "id": "ab_carcelero.gancho",
      "mode": "auto",
-     "n": 2
+     "n": 1
     },
     {
      "id": "ab_carcelero.plataformas",
      "mode": "auto",
-     "n": 3
+     "n": 2
     }
    ],
    "checks": [
@@ -1313,7 +1313,7 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "22 avisos, 0 golpes diferidos en la pelea"
+     "detail": "21 avisos, 0 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
@@ -1323,26 +1323,26 @@
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 64.7%"
+     "detail": "vida mínima 66.3%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 64.7%"
+     "detail": "queda 66.3%"
     },
     {
      "name": "gancho de arena: ab_carcelero.gancho",
      "level": "PASS",
-     "detail": "2 vez/veces"
+     "detail": "1 vez/veces"
     },
     {
      "name": "gancho de arena: ab_carcelero.plataformas",
      "level": "PASS",
-     "detail": "3 vez/veces"
+     "detail": "2 vez/veces"
     }
    ],
    "status": "PASS",
-   "tele": 22,
+   "tele": 21,
    "strikes": 0,
    "kinds": 4
   },
@@ -1362,7 +1362,7 @@
     {
      "id": "ab_morador.plataformas",
      "mode": "auto",
-     "n": 12
+     "n": 14
     },
     {
      "id": "ab_morador.jinete",
@@ -1372,7 +1372,7 @@
     {
      "id": "ab_morador.tentaculo",
      "mode": "player",
-     "n": 6
+     "n": 3
     }
    ],
    "checks": [
@@ -1399,27 +1399,27 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "42 avisos, 6 golpes diferidos en la pelea"
+     "detail": "35 avisos, 0 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
      "level": "PASS",
-     "detail": "9 tipos de aviso/golpe"
+     "detail": "7 tipos de aviso/golpe"
     },
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 55.8%"
+     "detail": "vida mínima 76.7%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 55.8%"
+     "detail": "queda 76.7%"
     },
     {
      "name": "gancho de arena: ab_morador.plataformas",
      "level": "PASS",
-     "detail": "12 vez/veces"
+     "detail": "14 vez/veces"
     },
     {
      "name": "botín relacionado",
@@ -1428,9 +1428,9 @@
     }
    ],
    "status": "PASS",
-   "tele": 42,
-   "strikes": 6,
-   "kinds": 9
+   "tele": 35,
+   "strikes": 0,
+   "kinds": 7
   },
   {
    "type": "mn_titan",
@@ -1475,7 +1475,7 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "0 avisos, 138 golpes diferidos en la pelea"
+     "detail": "0 avisos, 147 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
@@ -1485,12 +1485,12 @@
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 97.6%"
+     "detail": "vida mínima 97.1%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 97.6%"
+     "detail": "queda 97.1%"
     },
     {
      "name": "gancho de arena: mn_titan.luces",
@@ -1500,7 +1500,7 @@
    ],
    "status": "PASS",
    "tele": 0,
-   "strikes": 138,
+   "strikes": 147,
    "kinds": 10
   },
   {
@@ -1519,7 +1519,7 @@
     {
      "id": "mn_cerbero.oscuridad",
      "mode": "auto",
-     "n": 5
+     "n": 6
     },
     {
      "id": "mn_cerbero.luz",
@@ -1551,7 +1551,7 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "0 avisos, 49 golpes diferidos en la pelea"
+     "detail": "0 avisos, 47 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
@@ -1561,17 +1561,17 @@
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 98.9%"
+     "detail": "vida mínima 99.0%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 98.9%"
+     "detail": "queda 99.0%"
     },
     {
      "name": "gancho de arena: mn_cerbero.oscuridad",
      "level": "PASS",
-     "detail": "5 vez/veces"
+     "detail": "6 vez/veces"
     },
     {
      "name": "botín relacionado",
@@ -1581,7 +1581,7 @@
    ],
    "status": "PASS",
    "tele": 0,
-   "strikes": 49,
+   "strikes": 47,
    "kinds": 4
   },
   {
@@ -1622,27 +1622,27 @@
     {
      "name": "aparece en la simulación",
      "level": "PASS",
-     "detail": "13 s en pelea"
+     "detail": "16 s en pelea"
     },
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "11 avisos, 1 golpes diferidos en la pelea"
+     "detail": "16 avisos, 0 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
      "level": "PASS",
-     "detail": "4 tipos de aviso/golpe"
+     "detail": "5 tipos de aviso/golpe"
     },
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 0.0%"
+     "detail": "vida mínima 0.5%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 0.0%"
+     "detail": "queda 0.5%"
     },
     {
      "name": "gancho de arena: esqueleto_h.fisura",
@@ -1651,9 +1651,9 @@
     }
    ],
    "status": "PASS",
-   "tele": 11,
-   "strikes": 1,
-   "kinds": 4
+   "tele": 16,
+   "strikes": 0,
+   "kinds": 5
   },
   {
    "type": "demonio_menor",
@@ -1671,12 +1671,12 @@
     {
      "id": "demonio_menor.fisura",
      "mode": "auto",
-     "n": 2
+     "n": 3
     },
     {
      "id": "demonio_menor.sello",
      "mode": "player",
-     "n": 1
+     "n": 3
     }
    ],
    "checks": [
@@ -1693,38 +1693,38 @@
     {
      "name": "aparece en la simulación",
      "level": "PASS",
-     "detail": "21 s en pelea"
+     "detail": "29 s en pelea"
     },
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "33 avisos, 10 golpes diferidos en la pelea"
+     "detail": "48 avisos, 25 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
      "level": "PASS",
-     "detail": "6 tipos de aviso/golpe"
+     "detail": "5 tipos de aviso/golpe"
     },
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 0.0%"
+     "detail": "vida mínima 0.7%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 0.0%"
+     "detail": "queda 0.7%"
     },
     {
      "name": "gancho de arena: demonio_menor.fisura",
      "level": "PASS",
-     "detail": "2 vez/veces"
+     "detail": "3 vez/veces"
     }
    ],
    "status": "PASS",
-   "tele": 33,
-   "strikes": 10,
-   "kinds": 6
+   "tele": 48,
+   "strikes": 25,
+   "kinds": 5
   },
   {
    "type": "hechicero_supremo",
@@ -1769,7 +1769,7 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "79 avisos, 46 golpes diferidos en la pelea"
+     "detail": "81 avisos, 45 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
@@ -1779,12 +1779,12 @@
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 77.5%"
+     "detail": "vida mínima 78.3%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 77.5%"
+     "detail": "queda 78.3%"
     },
     {
      "name": "gancho de arena: hechicero_supremo.fisura",
@@ -1793,8 +1793,8 @@
     }
    ],
    "status": "PASS",
-   "tele": 79,
-   "strikes": 46,
+   "tele": 81,
+   "strikes": 45,
    "kinds": 6
   },
   {
@@ -1845,22 +1845,22 @@
     {
      "name": "telegraphs (avisos antes del golpe)",
      "level": "PASS",
-     "detail": "292 avisos, 139 golpes diferidos en la pelea"
+     "detail": "292 avisos, 134 golpes diferidos en la pelea"
     },
     {
      "name": "patrones distintos",
      "level": "PASS",
-     "detail": "18 tipos de aviso/golpe"
+     "detail": "15 tipos de aviso/golpe"
     },
     {
      "name": "el equipo puede dañarlo",
      "level": "PASS",
-     "detail": "vida mínima 32.9%"
+     "detail": "vida mínima 44.3%"
     },
     {
      "name": "no es trivial",
      "level": "PASS",
-     "detail": "queda 32.9%"
+     "detail": "queda 44.3%"
     },
     {
      "name": "gancho de arena: angel_corrompido.convergencia",
@@ -1875,8 +1875,8 @@
    ],
    "status": "PASS",
    "tele": 292,
-   "strikes": 139,
-   "kinds": 18
+   "strikes": 134,
+   "kinds": 15
   },
   {
    "type": "golem_cuerpos",
@@ -1936,8 +1936,8 @@
    ],
    "status": "PASS*",
    "tele": 292,
-   "strikes": 139,
-   "kinds": 18
+   "strikes": 134,
+   "kinds": 15
   },
   {
    "type": "demonio_mayor",
@@ -1992,8 +1992,8 @@
    ],
    "status": "PASS*",
    "tele": 292,
-   "strikes": 139,
-   "kinds": 18
+   "strikes": 134,
+   "kinds": 15
   },
   {
    "type": "jinete_sin_cabeza",
