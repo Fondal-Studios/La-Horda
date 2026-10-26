@@ -12,19 +12,24 @@ function musashiThousandForm(){ return {N:24, tall:1, dur:460, gdur:0, shake:2,
     if(f===23)return;
     // Posiciones irregulares reproducibles; el radio recibido sigue delimitando el alcance.
     for(let j=0;j<9;j++){
-      const phase=q*3-(j%3)*.52;
-      if(phase<0||phase>1.15)continue;
+      const phase=(q-(j%3)*.22)/.52;
+      if(phase<=0||phase>=1)continue;
       const a=j*2.399963,rad=R*(.45+(j%3)*.13);
       const x=cx+Math.cos(a)*rad,y=cy+Math.sin(a)*rad;
       const angle=a+(j%2?-.65:.85),len=R*.38;
-      const head=Math.min(1,phase*2.8),tail=Math.max(0,(phase-.3)*1.3);
+      const head=Math.min(1,phase*2.8),tail=Math.max(0,(phase-.28)/.72);
       if(tail>=head)continue;
       const dx=Math.cos(angle)*len,dy=Math.sin(angle)*len;
-      const ax=x+dx*(tail-.5),ay=y+dy*(tail-.5);
-      const bx=x+dx*(head-.5),by=y+dy*(head-.5);
-      ufLine(S,ax,ay,bx,by,3,P.o);
-      ufLine(H,ax,ay,bx,by,2,P.a);
-      ufLine(H,ax+dy/len,ay-dx/len,bx,by,1,P.c);
+      // Curva corta y afilada: la punta avanza, la cola se recoge sin dejar una hoja rígida.
+      const point=t=>{const bend=Math.sin(t*Math.PI)*R*.07*(j%2?1:-1);
+        return [x+dx*(t-.5)-dy/len*bend,y+dy*(t-.5)+dx/len*bend];};
+      for(let k=0;k<5;k++){
+        const t0=tail+(head-tail)*k/5,t1=tail+(head-tail)*(k+1)/5;
+        const a0=point(t0),a1=point(t1),w=k===4?1:2;
+        ufLine(S,...a0,...a1,w+1,P.o);
+        ufLine(H,...a0,...a1,w,P.a);
+        if(k>1)ufLine(H,...a0,...a1,1,P.c);
+      }
     }
   }
 }; }

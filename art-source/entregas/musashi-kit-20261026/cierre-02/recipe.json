@@ -1,0 +1,13 @@
+{
+  "source": "source-candidate.js::musashiThousandForm",
+  "duration": 460,
+  "phases": 24,
+  "nonempty": 22,
+  "buckets": [
+    32,
+    56,
+    72
+  ],
+  "reproduce": "CHROMIUM_PATH=/tmp/chromium NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules OUT=<dir> node tools/vfx/export-musashi-area.js",
+  "matrix": "ARENAS=bosque,infernal LOOKS=base,tier4 ALL_PHASES=1 MOBILE=1 OUT=<dir>/mobile node tools/vfx/capture-musashi-area.js; desktop without MOBILE"
+}
