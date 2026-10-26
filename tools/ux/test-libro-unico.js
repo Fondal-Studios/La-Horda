@@ -179,6 +179,7 @@ async function boot(browser, viewport, base) {
         const t0 = Date.now(); await page.goto(base + '/index.html' + cfg.qs, { waitUntil: 'load', timeout: 180000 });
         for (let k = 0; k < 600; k++) { if (await page.evaluate(() => { const b = document.getElementById('title-continue-btn'); return !!b && !b.disabled; })) break; await sleep(50); }
         const ms = Date.now() - t0;
+        await page.waitForFunction(() => !BOOK.open || /ya carg/.test((document.querySelector('#codex-book .bk-load') || {}).textContent || ''), null, { timeout: 5000 }).catch(() => {});
         const st = await page.evaluate(() => ({ open: BOOK.open, kind: BOOK.kind, boot: BOOK.boot, i: BOOK.i, n: BOOK.pages.length, seen: save.codexBook.introSeen, read: save.codexBook.introRead, state, load: (document.querySelector('#codex-book .bk-load') || {}).textContent }));
         return { ctx, page, ms, st, errors };
       };
