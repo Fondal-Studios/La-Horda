@@ -29,7 +29,7 @@ const OUT=process.env.OUT||'art-source/entregas/musashi-kit-20261026/cierre-03';
     for(const radius of [419,420,421,600]){
      kvbReset();events.length=0;const sk={...player.cls.skills[2],radius};castAbility(player,sk,false,2);
      const g=musashiThousandGeometry({rec:SFA_REC}),v=events[0];
-     check('synthetic radius '+radius,!!g&&Math.abs(g.r-radius)<1e-8&&v?.[3]===Math.min(420,radius)&&count()===1,{geometry:g,visualRadius:v?.[3]});
+     check('synthetic radius '+radius,!!g&&Math.abs(g.r-radius)<1e-8&&v?.[3]===radius&&count()===1,{geometry:g,visualRadius:v?.[3]});
     }
     kvbReset();const ent=ufPlay('musashi.2',player.x,player.y,420,0)[0];ent.t=128;
     const di=ctx.drawImage,view=inView;let draws=0;ctx.drawImage=function(...a){draws++;return di.apply(this,a);};

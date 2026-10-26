@@ -1,0 +1,30 @@
+{
+  "pairs": [
+    {
+      "viewport": "mobile",
+      "arena": "bosque",
+      "look": "set",
+      "precastExact": true
+    },
+    {
+      "viewport": "mobile",
+      "arena": "infernal",
+      "look": "set",
+      "precastExact": true
+    },
+    {
+      "viewport": "desktop",
+      "arena": "bosque",
+      "look": "set",
+      "precastExact": true
+    },
+    {
+      "viewport": "desktop",
+      "arena": "infernal",
+      "look": "set",
+      "precastExact": true
+    }
+  ],
+  "allPrecastExact": true,
+  "scope": "Current ready Errante pairs; previous four base pairs also exact. Main comparator fails contact ~67% and is preserved, not a candidate failure."
+}

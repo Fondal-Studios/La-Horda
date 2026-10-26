@@ -2511,14 +2511,14 @@
         22,
         23
       ],
-      "state": "EN_CORRECCION",
-      "integration": "NO_INTEGRAR",
-      "source": "art-source/entregas/musashi-kit-20261026/area-01/source-sfa-musashi.js",
-      "sourceSha256": "a66eab7e51bd102ee34cf6aacbf6e17ad55d7cc2716f88bcacbf7d5ef31c286b",
-      "atlas": "art-source/entregas/musashi-kit-20261026/area-01/musashi-cuts-r150.png",
-      "atlasSha256": "740c9d019f117f2312ed2130ff48d0bb9ac53abf1a091b11ccc25f95517fc4b4",
-      "diagnosis": "Correct real area/successful cast; current tangential arcs still read as segmented ring, weak mobile identity, legacy set competes. Contact PASS not Art PASS.",
-      "action": "Close grouped silhouette/phase/impact at native scale; lifecycle >420/talents/culling/fallback and full-render performance/gates before merge.",
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
+      "source": "art-source/entregas/musashi-kit-20261026/cierre-05/source-candidate.js",
+      "sourceSha256": "9770b40e170c9871ac607bf26d9ca7872e113f6541f0da65226c8b8d1b149f2b",
+      "atlas": "art-source/entregas/musashi-kit-20261026/cierre-05/musashi-cuts-r150.png",
+      "atlasSha256": "e0bbfe1aebcefcc3875b1dc98c4f27129b9ec09c1c0eadfb24008fd073b883d4",
+      "diagnosis": "PASS_COMPONENT: bounded bake/full real radius; open-core sweeps; compact existing Errante H3 clips; all prior failed sources preserved.",
+      "action": "Verify every exact-head check/workflow and actual PR scope before ready/normal merge; publication separate.",
       "history": [
         {
           "attempt": "orbit01",
@@ -2559,6 +2559,12 @@
           "diagnosis": "V corrected by separated waves; Errante hierarchy and reachable447.3/536.76 vs420 visual unresolved",
           "action": "Resolve reachable radius contract and composition together; no tonal-only pass.",
           "tests": "120/720 min85.099939%;48viewport;12purchases3casts;native/perf final"
+        },
+        {
+          "date": "2026-10-26",
+          "checkpoint": "art-source/entregas/musashi-kit-20261026/cierre-05/CHECKPOINT.md",
+          "state": "VALIDADO",
+          "action": "Reachable radius fixed and composition corrected together;120scenes768ABA,80edges,realrelay3casts; priorFIX superseded only namedcomponent."
         }
       ]
     }

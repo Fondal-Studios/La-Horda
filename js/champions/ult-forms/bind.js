@@ -76,7 +76,8 @@ const UF_SK = [   // [campeón, casilla, forma, paleta, duración, geometría(c)
 for(const [k, slot, form, pal, dur, geom, add] of UF_SK){
   const id = k + '.' + slot, B = SFA_BIND[k], old = B && B[slot]; if(!old) continue;
   ufChamp(id, {form, pal: UF_PAL_SK[pal], dur, gdur: Math.round(dur * 1.4), minR: id === 'mago.0' ? 24 : 40}); UF.register(id);
-  B[slot] = function(c){ if(!ufHas(id)) return (old.run || old)(c); if(add) (old.run || old)(c); const g = geom(c); if(!g){ if(!add) return (old.run || old)(c); return; } kvbFx('uf.' + id, g.x, g.y, Math.min(id === 'musashi.2' ? 420 : 300, g.r), Math.atan2(c.h.fy || 0, c.h.fx || 1)); };
+  if(id === 'musashi.2') KVB_FX['uf.' + id] = vfxMusashiThousandPlay;
+  B[slot] = function(c){ if(!ufHas(id)) return (old.run || old)(c); if(add) (old.run || old)(c); const g = geom(c); if(!g){ if(!add) return (old.run || old)(c); return; } kvbFx('uf.' + id, g.x, g.y, id === 'musashi.2' ? g.r : Math.min(300, g.r), Math.atan2(c.h.fy || 0, c.h.fx || 1)); };
 }
 /* ---------------- enganche mitad B (vfx-b): sin tocar sus archivos ----------------
    · Expedición / Ascensión (acción ligada con kvbBind): el id pasa a ser 'uf.<clave>' mientras la forma esté activa (getter sobre KVB_ACT).

@@ -23,8 +23,9 @@ process.on('exit', () => server && server.kill());
     const fresh = async (parent = false) => { for (let tries = 0; ; tries++) { try { return await fresh1(parent); } catch (e) { if (tries >= 3) throw e; await new Promise(r => setTimeout(r, 3000)); } } };
     const fresh1 = async (parent) => { const pg = await browser.newPage({viewport: {width: 844, height: 390}}); pg.on('pageerror', e => errors.push(e.message));
       if(parent)for(const [url,file]of [['js/skills/abilities.js','before-abilities.js'],['js/champions/skill-fx-a/c/musashi.js','before-sfa-musashi.js'],['js/champions/ult-forms/bind.js','before-uf-bind.js']])await pg.route('**/'+url+'*',r=>r.fulfill({contentType:'text/javascript',body:fs.readFileSync(OUT+'/'+file,'utf8')}));
+      if(parent&&process.env.ERRANTE)await pg.route('**/js/systems/skin-fx.js*',r=>r.fulfill({contentType:'text/javascript',body:fs.readFileSync(OUT+'/skin-fx-before.js','utf8')}));
       for (let t = 0; ; t++) { try { await pg.goto(BASE, {waitUntil: 'domcontentloaded', timeout: 120000}); break; } catch (e) { if (t > 2 || process.env.BASE_URL) throw e; server = spawn('python3', ['-m', 'http.server', String(PORT), '--bind', '127.0.0.1'], {cwd: ROOT, stdio: 'ignore'}); await new Promise(r => setTimeout(r, 900)); } }
-      await pg.waitForFunction(() => typeof startRun === 'function' && typeof sfaPush === 'function' && assetsAllReady(), null, {timeout: 120000}); await pg.waitForTimeout(800); return pg; };
+      await pg.waitForFunction(() => typeof startRun === 'function' && typeof sfaPush === 'function' && assetsAllReady(), null, {timeout: 120000}); await pg.waitForTimeout(800);if(process.env.ERRANTE){await pg.evaluate(()=>skinFxLoadSet('errante'));await pg.waitForFunction(()=>vfxSprReady('sk_errante_cuts')&&vfxSprReady('sk_errante_burst'));} return pg; };
     let page = await fresh();
     let keys = ['musashi'];
     await page.close();
@@ -32,7 +33,7 @@ process.on('exit', () => server && server.kill());
     const frames = +(process.env.FRAMES || 360);
     for (const k of keys) {
       // cada corrida en una página nueva (el estado que deja una partida contamina la siguiente aunque el reloj sea virtual)
-      const once = async off => { const pg = await fresh(off); try { return await pg.evaluate(([k, frames, off, parentSource]) => {
+      const once = async off => { const pg = await fresh(off); try { return await pg.evaluate(([k, frames, off, parentSource, errante]) => {
           // Parent runtime replaced before script evaluation: no layered candidate wrapper.
           const run = off => {
             window.SFA_OFF = false;
@@ -41,6 +42,7 @@ process.on('exit', () => server && server.kill());
             try {
               netMatch = null; save.stash = []; save.relics = {hp: 0, dmg: 0, def: 0, vel: 0};
               for (const c in save.champions) { const s = save.champions[c]; s.unlocked = true; s.level = 20; s.xp = 0; s.equipment = {}; s.inventory = []; s.talents = {nodes: {}, mastery: null, masteryNodes: {}}; }
+              if(errante){save.cosmeticUnlocks={...save.cosmeticUnlocks,errante:true};save.champions[k].cosmeticSkin='errante';}
               selectedClass = k; currentArena = 'bosque'; lobbyAllies = ['tanque', 'soporte', 'mago'].filter(x => x !== k); startRun(3);
               enemies = []; spawnTimer = 1e9; arenaHazardTimer = 1e9; player.fx = 1; player.fy = 0; state = 'playing';
               runLevel = Math.max(runLevel || 1, typeof ULT_MIN_ARENA_LEVEL !== 'undefined' ? ULT_MIN_ARENA_LEVEL : 1);
@@ -51,13 +53,13 @@ process.on('exit', () => server && server.kill());
                 if (f % 40 === 5) { player.cds = [0, 0, 0]; player.energy = 1e4; player.ultCharge = player.ultMax; player.ultCd = 0; const i = ((f / 40) | 0) % 4; if (i < 3) castAbility(player, player.cls.skills[i], false, i); else castAbility(player, player.cls.ultimate, true); }
                 vt += 16; update(16); if (f % 3 === 0) render();
               }
-              const snap = {t: Math.round(runElapsedMs), calls, p: [Math.round(player.x * 100), Math.round(player.y * 100), Math.round(player.hp), Math.round(player.shield || 0)],
+              const snap = {skin:activeSetSkinId(player),t: Math.round(runElapsedMs), calls, p: [Math.round(player.x * 100), Math.round(player.y * 100), Math.round(player.hp), Math.round(player.shield || 0)],
                 e: enemies.map(e => [Math.round(e.x * 100), Math.round(e.y * 100), Math.round(e.hp), e.slowTimer | 0, e.stunTimer | 0, e.bleedTimer | 0]), h: heroes.map(h => [Math.round(h.x * 100), Math.round(h.hp), Math.round(h.shield || 0)]), objs: (typeof portadorObjects !== 'undefined' ? portadorObjects : []).map(o => [o.kind, Math.round(o.life)])};
               state = 'menu'; return JSON.stringify(snap);
             } finally { Math.random = rnd; performance.now = pn; window.SFA_OFF = false; }
           };
           return run(off);
-        }, [k, frames, off, parentSource]); } finally { await pg.close(); } };
+        }, [k, frames, off, parentSource, !!process.env.ERRANTE]); } finally { await pg.close(); } };
       const a = await once(true), b = await once(false), repeat = await once(false), determ = b === repeat;results.push({champion:k,parent:JSON.parse(a),candidate:JSON.parse(b),same:a===b,repeat:JSON.parse(repeat),deterministic:determ});
       const res = {same: a === b, determ, callsOff: JSON.parse(a).calls, callsOn: JSON.parse(b).calls, a: a.slice(0, 600), b: b.slice(0, 600)};
       if (!res.determ) { bad++; console.log('INCONCLUSO ' + k.padEnd(11) + ' (dos corridas del candidato ya difieren: el escenario no es determinista)'); continue; }
