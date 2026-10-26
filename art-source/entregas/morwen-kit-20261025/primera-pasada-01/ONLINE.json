@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "scope": "Eight actual local relay checks, host Tanque and touch guest Morwen using isolated fixture accounts; no founder-negative-controls claim. Executed before final destination-rectangle-only size adjustment, with identical network and event code.",
+  "checks": [
+    {
+      "name": "host normal signature 0",
+      "ok": true,
+      "draws": 2
+    },
+    {
+      "name": "touch guest normal signature 0",
+      "ok": true,
+      "draws": 3
+    },
+    {
+      "name": "host normal signature 1",
+      "ok": true,
+      "draws": 2
+    },
+    {
+      "name": "touch guest normal signature 1",
+      "ok": true,
+      "draws": 3
+    },
+    {
+      "name": "host normal signature 2",
+      "ok": true,
+      "draws": 2
+    },
+    {
+      "name": "touch guest normal signature 2",
+      "ok": true,
+      "draws": 3
+    },
+    {
+      "name": "host signatures expire",
+      "ok": true
+    },
+    {
+      "name": "touch guest signatures expire",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

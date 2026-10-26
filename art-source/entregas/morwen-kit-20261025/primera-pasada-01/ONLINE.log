@@ -1,0 +1,11 @@
+2026-10-26T01:28:30.260Z RELAY_LISTENING {"host":"*","port":8868,"protocol":1,"allowed":[]}
+2026-10-26T01:28:30.263Z OWNER_POLICY {"bound":false}
+2026-10-26T01:28:30.265Z FOUNDER_POLICY {"founder":"nano","bound":false,"reason":"ACCOUNT_NOT_FOUND"}
+2026-10-26T01:28:30.265Z FOUNDER_POLICY {"founder":"facu","bound":false,"reason":"ACCOUNT_NOT_FOUND"}
+2026-10-26T01:28:30.265Z ROLE_POLICY {"roles":["ADMIN"],"bound":false}
+2026-10-26T01:28:30.265Z ACCOUNTS_READY {"store":"file","dir":"/tmp/horda-workshop-relay-xhCR9Z","warning":"SIN BASE DE DATOS: las cuentas se guardan en el disco del servidor. En el plan gratuito de Render se BORRAN en cada redeploy, reinicio o cuando el servicio se duerme. Configurá DATABASE_URL (ver docs/ACCOUNTS_DEPLOY.md)."}
+2026-10-26T01:28:41.457Z ROOM_CREATED {"code":"9HTNF4","arena":"bosque","pub":false}
+2026-10-26T01:28:41.576Z ROOM_JOINED {"code":"9HTNF4","slot":1}
+2026-10-26T01:28:41.727Z GAME_START {"code":"9HTNF4","humans":2}
+2026-10-26T01:28:44.761Z ROOM_CLOSED {"code":"9HTNF4","reason":"host_left"}
+{"status":"PASS","checks":[{"name":"host normal signature 0","ok":true,"draws":2},{"name":"touch guest normal signature 0","ok":true,"draws":3},{"name":"host normal signature 1","ok":true,"draws":2},{"name":"touch guest normal signature 1","ok":true,"draws":3},{"name":"host normal signature 2","ok":true,"draws":2},{"name":"touch guest normal signature 2","ok":true,"draws":3},{"name":"host signatures expire","ok":true},{"name":"touch guest signatures expire","ok":true}],"errors":[]}

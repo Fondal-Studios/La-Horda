@@ -1,0 +1,53 @@
+{
+  "rows": [
+    {
+      "mobile": false,
+      "enabled": false,
+      "samples": 200,
+      "p50": 3.5999999940395355,
+      "p95": 6.299999997019768,
+      "max": 52.899999998509884,
+      "drawAttempts": 423,
+      "clears": 221,
+      "heroHP": 10000000,
+      "errors": []
+    },
+    {
+      "mobile": false,
+      "enabled": true,
+      "samples": 200,
+      "p50": 3.2999999970197678,
+      "p95": 5.5,
+      "max": 81.20000000298023,
+      "drawAttempts": 423,
+      "clears": 221,
+      "heroHP": 10000000,
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "enabled": false,
+      "samples": 200,
+      "p50": 3.600000001490116,
+      "p95": 7.5,
+      "max": 45.399999998509884,
+      "drawAttempts": 423,
+      "clears": 221,
+      "heroHP": 10000000,
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "enabled": true,
+      "samples": 200,
+      "p50": 3.600000001490116,
+      "p95": 7.899999998509884,
+      "max": 23,
+      "drawAttempts": 423,
+      "clears": 221,
+      "heroHP": 10000000,
+      "errors": []
+    }
+  ],
+  "scope": "Independent seeded runs, 12 enemies + 2 allies, 220 update/render frames each with RAF; first20 excluded. Actual render() clear cycle. Disabled mode suppresses only candidate canvas draws; measures JS submission time, not GPU completion, physical mobile or global-state parity. No new performance threshold introduced."
+}

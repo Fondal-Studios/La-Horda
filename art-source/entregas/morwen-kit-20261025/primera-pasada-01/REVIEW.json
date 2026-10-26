@@ -1,0 +1,54 @@
+{
+  "state": "VALIDADO",
+  "artGate": "PASS_COMPONENT",
+  "integration": "PENDING_EXACT_HEAD_CI",
+  "scope": [
+    "A-FX-morwen-h1/normal-launch",
+    "A-FX-morwen-h2/normal-launch",
+    "A-FX-morwen-h3/normal-launch"
+  ],
+  "notWholeBlocks": true,
+  "finding": "Compact native resin flask, faceted salt and angled retort replace identical drops at normal cast launch. Dark contour and three-tone material separate silhouettes across six arenas; placement above the owner preserves actor readability. Six-frame rise/settle/fade follows unchanged 460ms event; no persistent-shield promise. Existing large H2/H3 flashes, marks, alchemy layers and UF remain outside approval scope.",
+  "reviewed": {
+    "denseSheets": 12,
+    "denseViews": 180,
+    "temporalSheets": 4,
+    "temporalViews": 96,
+    "pairedSheets": 2,
+    "pairedViews": 24,
+    "nativeAtlasCells": 18,
+    "fullMobileScenes": 3,
+    "arenas": [
+      "bosque",
+      "hielo",
+      "infernal",
+      "laberinto",
+      "acuatica",
+      "minas"
+    ],
+    "looks": [
+      "base",
+      "tier4",
+      "gear",
+      "set",
+      "skin"
+    ],
+    "viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "timesMs": [
+      80,
+      160,
+      300,
+      480
+    ]
+  },
+  "tests": "MATRIX_SUMMARY, SIGNATURE_CHECK, EXTRA_CHECK, ONLINE, PARITY, FULL_RENDER_PERFORMANCE. Relay/parity preceded destination-rectangle-only adjustment; event/hook/source pixels unchanged.",
+  "limits": [
+    "No full kit or B169/B170/B171 closure",
+    "No full global state snapshot",
+    "No physical mobile/GPU/GC certification",
+    "Exact-head CI and canonical publication pending"
+  ]
+}

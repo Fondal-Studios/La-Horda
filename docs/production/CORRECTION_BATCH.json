@@ -2291,19 +2291,98 @@
       "launchSource": "art-source/entregas/maura-kit-20261025/cierre-09/signatures-candidate.js",
       "launchSourceSha256": "ac226503c72cd5c8bb315313f9dbf2210e6dce2196488a8616160556fc242f03",
       "review": "art-source/entregas/maura-kit-20261025/cierre-09/REVIEW.json"
+    },
+    {
+      "id": "morwen.normal-launch.h1.20261025",
+      "block": "B169",
+      "component": "A-FX-morwen-h1/normal-launch",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
+      "source": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/signatures-candidate.js",
+      "sourceSha256": "fa38468dfa5d614abc8502899a649819e1713843fe2e5eac8c86a73105ea0ae2",
+      "atlas": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/launch-atlas.png",
+      "atlasSha256": "0495bd0b8496558b151920c968ac989e8b464d5640ba49207b9fad13aad60a7e",
+      "defects": [],
+      "history": [
+        {
+          "attempt": "01",
+          "diagnosis": "Native silhouettes too small at32px destination;48px final passes review/contact.",
+          "source": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/attempt01/signatures-candidate.js"
+        }
+      ],
+      "next": "Verify all exact-head CI, merge normally, then canonical publication separately; does not close entire block."
+    },
+    {
+      "id": "morwen.normal-launch.h2.20261025",
+      "block": "B170",
+      "component": "A-FX-morwen-h2/normal-launch",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
+      "source": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/signatures-candidate.js",
+      "sourceSha256": "fa38468dfa5d614abc8502899a649819e1713843fe2e5eac8c86a73105ea0ae2",
+      "atlas": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/launch-atlas.png",
+      "atlasSha256": "0495bd0b8496558b151920c968ac989e8b464d5640ba49207b9fad13aad60a7e",
+      "defects": [],
+      "history": [
+        {
+          "attempt": "01",
+          "diagnosis": "Native silhouettes too small at32px destination;48px final passes review/contact.",
+          "source": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/attempt01/signatures-candidate.js"
+        }
+      ],
+      "next": "Verify all exact-head CI, merge normally, then canonical publication separately; does not close entire block."
+    },
+    {
+      "id": "morwen.normal-launch.h3.20261025",
+      "block": "B171",
+      "component": "A-FX-morwen-h3/normal-launch",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
+      "source": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/signatures-candidate.js",
+      "sourceSha256": "fa38468dfa5d614abc8502899a649819e1713843fe2e5eac8c86a73105ea0ae2",
+      "atlas": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/launch-atlas.png",
+      "atlasSha256": "0495bd0b8496558b151920c968ac989e8b464d5640ba49207b9fad13aad60a7e",
+      "defects": [],
+      "history": [
+        {
+          "attempt": "01",
+          "diagnosis": "Native silhouettes too small at32px destination;48px final passes review/contact.",
+          "source": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/attempt01/signatures-candidate.js"
+        }
+      ],
+      "next": "Verify all exact-head CI, merge normally, then canonical publication separately; does not close entire block."
     }
   ],
   "latestProduction": {
-    "date": "2026-10-25",
-    "scope": [
-      "B163/root-path",
-      "B164/bark-shell",
-      "B165/pruning-shears"
-    ],
-    "checkpoint": "art-source/entregas/maura-kit-20261025/primera-pasada-01/CHECKPOINT.md",
-    "state": "EN_CORRECCION",
-    "preservedEntries": 55,
-    "totalEntries": 58
+    "scope": "Morwen three normal launch signatures only",
+    "state": "VALIDADO",
+    "preservedEntries": 58,
+    "totalEntries": 61,
+    "checkpoint": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/CHECKPOINT.md"
   },
   "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-08"
 }
