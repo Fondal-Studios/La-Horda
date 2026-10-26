@@ -1,0 +1,756 @@
+{
+  "result": {
+    "casts": [
+      {
+        "label": "H1 no targets",
+        "slot": 0,
+        "origin": {
+          "x": 0,
+          "y": 0
+        },
+        "to": {
+          "x": 0,
+          "y": 0
+        },
+        "cue": {
+          "action": "shards",
+          "x": 0,
+          "y": 0,
+          "bx": 240,
+          "by": 0,
+          "r": 90,
+          "range": 240,
+          "angle": 0,
+          "until": 670,
+          "ult": false
+        },
+        "refs": [],
+        "events": [
+          [
+            "nahir.shards",
+            0,
+            0,
+            240,
+            0,
+            0.85,
+            null
+          ],
+          [
+            "punch",
+            0,
+            0,
+            240,
+            0,
+            1,
+            6866626
+          ]
+        ]
+      },
+      {
+        "label": "H3 no reflections/no targets",
+        "slot": 2,
+        "origin": {
+          "x": 0,
+          "y": 0
+        },
+        "to": {
+          "x": 0,
+          "y": 0
+        },
+        "cue": {
+          "action": "cross",
+          "x": 0,
+          "y": 0,
+          "bx": 240,
+          "by": 0,
+          "r": 24,
+          "range": 240,
+          "angle": 0,
+          "until": 798,
+          "ult": false
+        },
+        "refs": [],
+        "events": [
+          [
+            "nahir.cross",
+            0,
+            0,
+            24,
+            0,
+            240,
+            null
+          ],
+          [
+            "punch",
+            0,
+            0,
+            24,
+            0,
+            1,
+            6866626
+          ]
+        ]
+      },
+      {
+        "label": "H2 reflection 1",
+        "slot": 1,
+        "origin": {
+          "x": 0,
+          "y": 0
+        },
+        "to": {
+          "x": 110,
+          "y": 0
+        },
+        "cue": {
+          "action": "reflect",
+          "x": 0,
+          "y": 0,
+          "bx": 110,
+          "by": 0,
+          "r": 25,
+          "range": 110,
+          "angle": 0,
+          "until": 926,
+          "ult": false
+        },
+        "refs": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "life": 5000,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          }
+        ],
+        "events": [
+          [
+            "nahir.reflect",
+            0,
+            0,
+            25,
+            0,
+            110,
+            null
+          ],
+          [
+            "punch",
+            0,
+            0,
+            25,
+            0,
+            1,
+            6866626
+          ]
+        ]
+      },
+      {
+        "label": "H3 with 1 reflections",
+        "slot": 2,
+        "origin": {
+          "x": 110,
+          "y": 0
+        },
+        "to": {
+          "x": 110,
+          "y": 0
+        },
+        "cue": {
+          "action": "cross",
+          "x": 110,
+          "y": 0,
+          "bx": 350,
+          "by": 0,
+          "r": 24,
+          "range": 240,
+          "angle": 0,
+          "until": 1054,
+          "ult": false
+        },
+        "refs": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "life": 4872,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          }
+        ],
+        "events": [
+          [
+            "nahir.cross",
+            110,
+            0,
+            24,
+            0,
+            240,
+            null
+          ],
+          [
+            "punch",
+            110,
+            0,
+            24,
+            0,
+            1,
+            6866626
+          ]
+        ]
+      },
+      {
+        "label": "H2 reflection 2",
+        "slot": 1,
+        "origin": {
+          "x": 110,
+          "y": 0
+        },
+        "to": {
+          "x": 220,
+          "y": 0
+        },
+        "cue": {
+          "action": "reflect",
+          "x": 110,
+          "y": 0,
+          "bx": 220,
+          "by": 0,
+          "r": 25,
+          "range": 110,
+          "angle": 0,
+          "until": 1182,
+          "ult": false
+        },
+        "refs": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "life": 4744,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          },
+          {
+            "id": 3,
+            "x": 110,
+            "y": 0,
+            "life": 5000,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          }
+        ],
+        "events": [
+          [
+            "nahir.reflect",
+            110,
+            0,
+            25,
+            0,
+            110,
+            null
+          ],
+          [
+            "punch",
+            110,
+            0,
+            25,
+            0,
+            1,
+            6866626
+          ]
+        ]
+      },
+      {
+        "label": "H3 with 2 reflections",
+        "slot": 2,
+        "origin": {
+          "x": 220,
+          "y": 0
+        },
+        "to": {
+          "x": 220,
+          "y": 0
+        },
+        "cue": {
+          "action": "cross",
+          "x": 220,
+          "y": 0,
+          "bx": 460,
+          "by": 0,
+          "r": 24,
+          "range": 240,
+          "angle": 0,
+          "until": 1310,
+          "ult": false
+        },
+        "refs": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "life": 4616,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          },
+          {
+            "id": 3,
+            "x": 110,
+            "y": 0,
+            "life": 4872,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          }
+        ],
+        "events": [
+          [
+            "nahir.cross",
+            220,
+            0,
+            24,
+            0,
+            240,
+            null
+          ],
+          [
+            "punch",
+            220,
+            0,
+            24,
+            0,
+            1,
+            6866626
+          ]
+        ]
+      },
+      {
+        "label": "H2 reflection 3",
+        "slot": 1,
+        "origin": {
+          "x": 220,
+          "y": 0
+        },
+        "to": {
+          "x": 330,
+          "y": 0
+        },
+        "cue": {
+          "action": "reflect",
+          "x": 220,
+          "y": 0,
+          "bx": 330,
+          "by": 0,
+          "r": 25,
+          "range": 110,
+          "angle": 0,
+          "until": 1438,
+          "ult": false
+        },
+        "refs": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "life": 4488,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          },
+          {
+            "id": 3,
+            "x": 110,
+            "y": 0,
+            "life": 4744,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          },
+          {
+            "id": 4,
+            "x": 220,
+            "y": 0,
+            "life": 5000,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          }
+        ],
+        "events": [
+          [
+            "nahir.reflect",
+            220,
+            0,
+            25,
+            0,
+            110,
+            null
+          ],
+          [
+            "punch",
+            220,
+            0,
+            25,
+            0,
+            1,
+            6866626
+          ]
+        ]
+      },
+      {
+        "label": "H3 with 3 reflections",
+        "slot": 2,
+        "origin": {
+          "x": 330,
+          "y": 0
+        },
+        "to": {
+          "x": 330,
+          "y": 0
+        },
+        "cue": {
+          "action": "cross",
+          "x": 330,
+          "y": 0,
+          "bx": 570,
+          "by": 0,
+          "r": 24,
+          "range": 240,
+          "angle": 0,
+          "until": 1566,
+          "ult": false
+        },
+        "refs": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "life": 4360,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          },
+          {
+            "id": 3,
+            "x": 110,
+            "y": 0,
+            "life": 4616,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          },
+          {
+            "id": 4,
+            "x": 220,
+            "y": 0,
+            "life": 4872,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          }
+        ],
+        "events": [
+          [
+            "nahir.cross",
+            330,
+            0,
+            24,
+            0,
+            240,
+            null
+          ],
+          [
+            "punch",
+            330,
+            0,
+            24,
+            0,
+            1,
+            6866626
+          ]
+        ]
+      },
+      {
+        "label": "H2 reflection 4",
+        "slot": 1,
+        "origin": {
+          "x": 330,
+          "y": 0
+        },
+        "to": {
+          "x": 440,
+          "y": 0
+        },
+        "cue": {
+          "action": "reflect",
+          "x": 330,
+          "y": 0,
+          "bx": 440,
+          "by": 0,
+          "r": 25,
+          "range": 110,
+          "angle": 0,
+          "until": 1694,
+          "ult": false
+        },
+        "refs": [
+          {
+            "id": 3,
+            "x": 110,
+            "y": 0,
+            "life": 4488,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          },
+          {
+            "id": 4,
+            "x": 220,
+            "y": 0,
+            "life": 4744,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          },
+          {
+            "id": 7,
+            "x": 330,
+            "y": 0,
+            "life": 5000,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          }
+        ],
+        "events": [
+          [
+            "nahir.reflect",
+            330,
+            0,
+            25,
+            0,
+            110,
+            null
+          ],
+          [
+            "punch",
+            330,
+            0,
+            25,
+            0,
+            1,
+            6866626
+          ]
+        ]
+      },
+      {
+        "label": "H3 with 3 reflections",
+        "slot": 2,
+        "origin": {
+          "x": 440,
+          "y": 0
+        },
+        "to": {
+          "x": 440,
+          "y": 0
+        },
+        "cue": {
+          "action": "cross",
+          "x": 440,
+          "y": 0,
+          "bx": 680,
+          "by": 0,
+          "r": 24,
+          "range": 240,
+          "angle": 0,
+          "until": 1822,
+          "ult": false
+        },
+        "refs": [
+          {
+            "id": 3,
+            "x": 110,
+            "y": 0,
+            "life": 4360,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          },
+          {
+            "id": 4,
+            "x": 220,
+            "y": 0,
+            "life": 4616,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          },
+          {
+            "id": 7,
+            "x": 330,
+            "y": 0,
+            "life": 4872,
+            "r": 25,
+            "owner": true,
+            "pack": "nahir"
+          }
+        ],
+        "events": [
+          [
+            "nahir.cross",
+            440,
+            0,
+            24,
+            0,
+            240,
+            null
+          ],
+          [
+            "punch",
+            440,
+            0,
+            24,
+            0,
+            1,
+            6866626
+          ]
+        ]
+      }
+    ],
+    "ult": {
+      "refs": [
+        {
+          "id": 8,
+          "x": 540,
+          "y": 0,
+          "life": 6000,
+          "r": 25,
+          "owner": true,
+          "pack": "nahir"
+        },
+        {
+          "id": 9,
+          "x": 390,
+          "y": 86.60254037844388,
+          "life": 6000,
+          "r": 25,
+          "owner": true,
+          "pack": "nahir"
+        },
+        {
+          "id": 10,
+          "x": 389.99999999999994,
+          "y": -86.60254037844383,
+          "life": 6000,
+          "r": 25,
+          "owner": true,
+          "pack": "nahir"
+        }
+      ],
+      "events": [
+        [
+          "uf.nahir",
+          440,
+          0,
+          70,
+          0,
+          440,
+          0
+        ]
+      ],
+      "cue": {
+        "action": "gallery",
+        "x": 440,
+        "y": 0,
+        "bx": 570,
+        "by": 0,
+        "r": 70,
+        "range": 130,
+        "angle": 0,
+        "until": 2250,
+        "ult": true
+      },
+      "after6336ms": []
+    },
+    "ufEvents": [
+      [
+        "nahir",
+        440,
+        0,
+        70,
+        0
+      ]
+    ],
+    "textureDraws": {
+      "nh_fan": 38,
+      "nh_shatter": 2824
+    },
+    "reflectionBodyDraws": 1266,
+    "reflectionPackSamples": [
+      {
+        "key": "nahir",
+        "pack": "nahir",
+        "okay": true,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "key": "nahir",
+        "pack": "nahir",
+        "okay": true,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "key": "nahir",
+        "pack": "nahir",
+        "okay": true,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "key": "nahir",
+        "pack": "nahir",
+        "okay": true,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "key": "nahir",
+        "pack": "nahir",
+        "okay": true,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "key": "nahir",
+        "pack": "nahir",
+        "okay": true,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "key": "nahir",
+        "pack": "nahir",
+        "okay": true,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "key": "nahir",
+        "pack": "nahir",
+        "okay": true,
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "KVBerror": null,
+    "scope": "Main Nahir consumers unchanged by Myla candidate; actual useSkill/useUltimate. Diagnostic only: no new art, candidate, ArtGate, multiplayer, full inventory or balance certification."
+  },
+  "errors": []
+}

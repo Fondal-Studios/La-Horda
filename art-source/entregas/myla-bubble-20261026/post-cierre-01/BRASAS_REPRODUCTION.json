@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-26",
+  "command": "CHROMIUM_PATH=/tmp/chromium NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules node tools/collection/brasas-store.js",
+  "runtime": "current Myla production 8d29c13",
+  "checks": 55,
+  "result": "PASS",
+  "limitation": "Does not establish cause of parent CI failure; no gate or store runtime changes. Generated store screenshots excluded from PR."
+}

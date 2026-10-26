@@ -1,0 +1,51 @@
+{
+  "result": {
+    "origin": {
+      "x": 150,
+      "y": 0
+    },
+    "afterWalk": {
+      "x": 873.9999999999956,
+      "y": 0,
+      "life": 4640,
+      "alive": true
+    },
+    "reference": {
+      "x": 0,
+      "y": 0,
+      "life": 4512
+    },
+    "geometry": [
+      {
+        "name": "nh_cut",
+        "ax": 873.9999999999956,
+        "ay": 0,
+        "bx": 1268.5599999999956,
+        "by": 0,
+        "requested": 394.56000000000006,
+        "created": true,
+        "renderedLength": 394.56000000000006,
+        "actualEnd": {
+          "x": 1268.5599999999956,
+          "y": 0
+        }
+      },
+      {
+        "name": "nh_cut",
+        "ax": 0,
+        "ay": 0,
+        "bx": 1268.5599999999956,
+        "by": 0,
+        "requested": 1268.5599999999956,
+        "created": true,
+        "renderedLength": 900,
+        "actualEnd": {
+          "x": 900,
+          "y": 0
+        }
+      }
+    ],
+    "scope": "Actual input joyVec +250 update(16) steps, existing speed/arena collision and real useSkill; no position teleport, skill radius override, new art or candidate. Single desktop Bosque diagnostic, not multiplayer/ArtGate."
+  },
+  "errors": []
+}

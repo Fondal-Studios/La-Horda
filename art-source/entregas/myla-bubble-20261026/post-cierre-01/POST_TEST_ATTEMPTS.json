@@ -1,0 +1,25 @@
+{
+  "attempts": [
+    {
+      "stage": "GitHub job inspection",
+      "status": "INVALID_ENDPOINT",
+      "detail": "Generic fetch actions/jobs endpoint returned400. Switched to fetch_workflow_job_steps, successful. No workflow change."
+    },
+    {
+      "stage": "local production hash recheck01",
+      "status": "FAIL_HARNESS",
+      "detail": "Upload path list contained strings, not metadata objects; TypeError before checking."
+    },
+    {
+      "stage": "local production hash recheck02",
+      "status": "INVALID_MEASUREMENT",
+      "detail": "Skipped string entries, so claimed83 was not a real check. Excluded."
+    },
+    {
+      "stage": "local production hash recheck03",
+      "status": "PASS",
+      "detail": "Loaded verified Gitblob metadata /tmp/myla-production-hashes.json and computed83 actual local Gitblob hashes, zero mismatches. Remote tree83entries verified separately."
+    }
+  ],
+  "source": "No runtime changes after production8d29c13."
+}

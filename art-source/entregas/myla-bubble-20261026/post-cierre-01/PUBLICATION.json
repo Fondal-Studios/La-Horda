@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-26T18:45:22.211344+00:00",
+  "baseUrl": "https://fondalstudios.com/la-horda/jugar/",
+  "scope": "Selected file bytes only; not gameplay, accounts, ownership, live multiplayer or full release certification",
+  "status": "NOT_CONFIRMED",
+  "checks": [
+    {
+      "path": "js/champions/vfx-b/myla.js",
+      "expectedSha256": "98a206fcd423f09ef213a3cf9dccf798d22aecaca37cd8074ea8144b21f583ce",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/champions/vfx-b/myla.js",
+      "bytes": 3485,
+      "publicSha256": "68ba190c3f24aa565e76fd3bf18329bb997ca0cd67dc29d6e55985a1b837a8e0",
+      "status": "DIFFERENT"
+    }
+  ],
+  "approvedHead": "8d29c13b21234992ffad5e91c6cb185d7aa5c69e",
+  "index": {
+    "httpStatus": 200,
+    "checkedAt": "2026-10-26T18:45:27.070329+00:00",
+    "sha256": "02802491fb636eea94e5deb7102bc0b17ee770f9f17a233184fec1b19fa2f538",
+    "consumesMyla": true
+  },
+  "limitation": "Selected bytes and index consumer only. No infrastructure changed; repository integration does not prove canonical publication."
+}

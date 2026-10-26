@@ -1,0 +1,1104 @@
+{
+  "rows": [
+    {
+      "look": "base",
+      "tier4": false,
+      "selectedPack": "nahir",
+      "casts": [
+        {
+          "slot": 0,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "to": {
+            "x": 0,
+            "y": 0
+          },
+          "cue": {
+            "action": "shards",
+            "x": 0,
+            "y": 0,
+            "bx": 240,
+            "by": 0,
+            "r": 90,
+            "range": 240,
+            "angle": 0,
+            "until": 670,
+            "ult": false
+          },
+          "refs": []
+        },
+        {
+          "slot": 1,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "to": {
+            "x": 110,
+            "y": 0
+          },
+          "cue": {
+            "action": "reflect",
+            "x": 0,
+            "y": 0,
+            "bx": 110,
+            "by": 0,
+            "r": 25,
+            "range": 110,
+            "angle": 0,
+            "until": 798,
+            "ult": false
+          },
+          "refs": [
+            {
+              "id": 1,
+              "x": 0,
+              "y": 0,
+              "owner": true,
+              "pack": "nahir"
+            }
+          ]
+        },
+        {
+          "slot": 2,
+          "origin": {
+            "x": 110,
+            "y": 0
+          },
+          "to": {
+            "x": 110,
+            "y": 0
+          },
+          "cue": {
+            "action": "cross",
+            "x": 110,
+            "y": 0,
+            "bx": 350,
+            "by": 0,
+            "r": 24,
+            "range": 240,
+            "angle": 0,
+            "until": 926,
+            "ult": false
+          },
+          "refs": [
+            {
+              "id": 1,
+              "x": 0,
+              "y": 0,
+              "owner": true,
+              "pack": "nahir"
+            }
+          ]
+        }
+      ],
+      "gallery": [
+        {
+          "id": 2,
+          "x": 210,
+          "y": 0,
+          "owner": true,
+          "pack": "nahir"
+        },
+        {
+          "id": 3,
+          "x": 60.00000000000002,
+          "y": 86.60254037844388,
+          "owner": true,
+          "pack": "nahir"
+        },
+        {
+          "id": 4,
+          "x": 59.99999999999996,
+          "y": -86.60254037844383,
+          "owner": true,
+          "pack": "nahir"
+        }
+      ],
+      "beamGeometry": [
+        {
+          "name": "nh_streak",
+          "ax": 0,
+          "ay": 0,
+          "bx": 110,
+          "by": 0,
+          "w": 18,
+          "dur": 460,
+          "created": true,
+          "len": 110
+        },
+        {
+          "name": "nh_cut",
+          "ax": 110,
+          "ay": 0,
+          "bx": 350,
+          "by": 0,
+          "w": 48,
+          "dur": 520,
+          "created": true,
+          "len": 240
+        },
+        {
+          "name": "nh_cut",
+          "ax": 0,
+          "ay": 0,
+          "bx": 350,
+          "by": 0,
+          "w": 26.400000000000002,
+          "dur": 480,
+          "created": true,
+          "len": 350
+        }
+      ],
+      "beamDraws": {
+        "nh_cut": 456,
+        "nh_streak": 196
+      },
+      "mirrorDraws": 64,
+      "reflectionDrawCalls": 64,
+      "reflectionPacks": [
+        "nahir"
+      ],
+      "ufReturnedEntities": 2,
+      "ufEntityKeys": [
+        [
+          "frames",
+          "x",
+          "y",
+          "w",
+          "h",
+          "rot",
+          "dur",
+          "layer",
+          "ax",
+          "ay",
+          "alpha",
+          "fadeAt",
+          "prio",
+          "t"
+        ]
+      ],
+      "ufTextureDraws": 32,
+      "error": null
+    },
+    {
+      "look": "base",
+      "tier4": true,
+      "selectedPack": "nahir",
+      "casts": [
+        {
+          "slot": 0,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "to": {
+            "x": 0,
+            "y": 0
+          },
+          "cue": {
+            "action": "shards",
+            "x": 0,
+            "y": 0,
+            "bx": 394.56000000000006,
+            "by": 0,
+            "r": 147.96,
+            "range": 394.56000000000006,
+            "angle": 0,
+            "until": 670,
+            "ult": false
+          },
+          "refs": []
+        },
+        {
+          "slot": 1,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "to": {
+            "x": 150,
+            "y": 0
+          },
+          "cue": {
+            "action": "reflect",
+            "x": 0,
+            "y": 0,
+            "bx": 180.84,
+            "by": 0,
+            "r": 41.1,
+            "range": 180.84,
+            "angle": 0,
+            "until": 798,
+            "ult": false
+          },
+          "refs": [
+            {
+              "id": 1,
+              "x": 0,
+              "y": 0,
+              "owner": true,
+              "pack": "nahir"
+            }
+          ]
+        },
+        {
+          "slot": 2,
+          "origin": {
+            "x": 150,
+            "y": 0
+          },
+          "to": {
+            "x": 150,
+            "y": 0
+          },
+          "cue": {
+            "action": "cross",
+            "x": 150,
+            "y": 0,
+            "bx": 544.5600000000001,
+            "by": 0,
+            "r": 39.456,
+            "range": 394.56000000000006,
+            "angle": 0,
+            "until": 926,
+            "ult": false
+          },
+          "refs": [
+            {
+              "id": 1,
+              "x": 0,
+              "y": 0,
+              "owner": true,
+              "pack": "nahir"
+            }
+          ]
+        }
+      ],
+      "gallery": [
+        {
+          "id": 2,
+          "x": 250,
+          "y": 0,
+          "owner": true,
+          "pack": "nahir"
+        },
+        {
+          "id": 3,
+          "x": 100.00000000000003,
+          "y": 86.60254037844388,
+          "owner": true,
+          "pack": "nahir"
+        },
+        {
+          "id": 4,
+          "x": 99.99999999999996,
+          "y": -86.60254037844383,
+          "owner": true,
+          "pack": "nahir"
+        }
+      ],
+      "beamGeometry": [
+        {
+          "name": "nh_streak",
+          "ax": 0,
+          "ay": 0,
+          "bx": 150,
+          "by": 0,
+          "w": 18,
+          "dur": 460,
+          "created": true,
+          "len": 150
+        },
+        {
+          "name": "nh_cut",
+          "ax": 150,
+          "ay": 0,
+          "bx": 544.5600000000001,
+          "by": 0,
+          "w": 78.912,
+          "dur": 520,
+          "created": true,
+          "len": 394.56000000000006
+        },
+        {
+          "name": "nh_cut",
+          "ax": 0,
+          "ay": 0,
+          "bx": 544.5600000000001,
+          "by": 0,
+          "w": 43.40160000000001,
+          "dur": 480,
+          "created": true,
+          "len": 544.5600000000001
+        }
+      ],
+      "beamDraws": {
+        "nh_cut": 432,
+        "nh_streak": 252
+      },
+      "mirrorDraws": 64,
+      "reflectionDrawCalls": 64,
+      "reflectionPacks": [
+        "nahir"
+      ],
+      "ufReturnedEntities": 2,
+      "ufEntityKeys": [
+        [
+          "frames",
+          "x",
+          "y",
+          "w",
+          "h",
+          "rot",
+          "dur",
+          "layer",
+          "ax",
+          "ay",
+          "alpha",
+          "fadeAt",
+          "prio",
+          "t"
+        ]
+      ],
+      "ufTextureDraws": 32,
+      "error": null
+    },
+    {
+      "look": "set",
+      "tier4": false,
+      "selectedPack": "nahir_set",
+      "casts": [
+        {
+          "slot": 0,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "to": {
+            "x": 0,
+            "y": 0
+          },
+          "cue": {
+            "action": "shards",
+            "x": 0,
+            "y": 0,
+            "bx": 240,
+            "by": 0,
+            "r": 90,
+            "range": 240,
+            "angle": 0,
+            "until": 670,
+            "ult": false
+          },
+          "refs": []
+        },
+        {
+          "slot": 1,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "to": {
+            "x": 110,
+            "y": 0
+          },
+          "cue": {
+            "action": "reflect",
+            "x": 0,
+            "y": 0,
+            "bx": 110,
+            "by": 0,
+            "r": 25,
+            "range": 110,
+            "angle": 0,
+            "until": 798,
+            "ult": false
+          },
+          "refs": [
+            {
+              "id": 1,
+              "x": 0,
+              "y": 0,
+              "owner": true,
+              "pack": "nahir_set"
+            }
+          ]
+        },
+        {
+          "slot": 2,
+          "origin": {
+            "x": 110,
+            "y": 0
+          },
+          "to": {
+            "x": 110,
+            "y": 0
+          },
+          "cue": {
+            "action": "cross",
+            "x": 110,
+            "y": 0,
+            "bx": 350,
+            "by": 0,
+            "r": 24,
+            "range": 240,
+            "angle": 0,
+            "until": 926,
+            "ult": false
+          },
+          "refs": [
+            {
+              "id": 1,
+              "x": 0,
+              "y": 0,
+              "owner": true,
+              "pack": "nahir_set"
+            }
+          ]
+        }
+      ],
+      "gallery": [
+        {
+          "id": 2,
+          "x": 210,
+          "y": 0,
+          "owner": true,
+          "pack": "nahir_set"
+        },
+        {
+          "id": 3,
+          "x": 60.00000000000002,
+          "y": 86.60254037844388,
+          "owner": true,
+          "pack": "nahir_set"
+        },
+        {
+          "id": 4,
+          "x": 59.99999999999996,
+          "y": -86.60254037844383,
+          "owner": true,
+          "pack": "nahir_set"
+        }
+      ],
+      "beamGeometry": [
+        {
+          "name": "nh_streak",
+          "ax": 0,
+          "ay": 0,
+          "bx": 110,
+          "by": 0,
+          "w": 18,
+          "dur": 460,
+          "created": true,
+          "len": 110
+        },
+        {
+          "name": "nh_cut",
+          "ax": 110,
+          "ay": 0,
+          "bx": 350,
+          "by": 0,
+          "w": 48,
+          "dur": 520,
+          "created": true,
+          "len": 240
+        },
+        {
+          "name": "nh_cut",
+          "ax": 0,
+          "ay": 0,
+          "bx": 350,
+          "by": 0,
+          "w": 26.400000000000002,
+          "dur": 480,
+          "created": true,
+          "len": 350
+        }
+      ],
+      "beamDraws": {
+        "nh_cut": 456,
+        "nh_streak": 196
+      },
+      "mirrorDraws": 64,
+      "reflectionDrawCalls": 64,
+      "reflectionPacks": [
+        "nahir_set"
+      ],
+      "ufReturnedEntities": 2,
+      "ufEntityKeys": [
+        [
+          "frames",
+          "x",
+          "y",
+          "w",
+          "h",
+          "rot",
+          "dur",
+          "layer",
+          "ax",
+          "ay",
+          "alpha",
+          "fadeAt",
+          "prio",
+          "t"
+        ]
+      ],
+      "ufTextureDraws": 32,
+      "error": null
+    },
+    {
+      "look": "set",
+      "tier4": true,
+      "selectedPack": "nahir_set",
+      "casts": [
+        {
+          "slot": 0,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "to": {
+            "x": 0,
+            "y": 0
+          },
+          "cue": {
+            "action": "shards",
+            "x": 0,
+            "y": 0,
+            "bx": 394.56000000000006,
+            "by": 0,
+            "r": 147.96,
+            "range": 394.56000000000006,
+            "angle": 0,
+            "until": 670,
+            "ult": false
+          },
+          "refs": []
+        },
+        {
+          "slot": 1,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "to": {
+            "x": 150,
+            "y": 0
+          },
+          "cue": {
+            "action": "reflect",
+            "x": 0,
+            "y": 0,
+            "bx": 180.84,
+            "by": 0,
+            "r": 41.1,
+            "range": 180.84,
+            "angle": 0,
+            "until": 798,
+            "ult": false
+          },
+          "refs": [
+            {
+              "id": 1,
+              "x": 0,
+              "y": 0,
+              "owner": true,
+              "pack": "nahir_set"
+            }
+          ]
+        },
+        {
+          "slot": 2,
+          "origin": {
+            "x": 150,
+            "y": 0
+          },
+          "to": {
+            "x": 150,
+            "y": 0
+          },
+          "cue": {
+            "action": "cross",
+            "x": 150,
+            "y": 0,
+            "bx": 544.5600000000001,
+            "by": 0,
+            "r": 39.456,
+            "range": 394.56000000000006,
+            "angle": 0,
+            "until": 926,
+            "ult": false
+          },
+          "refs": [
+            {
+              "id": 1,
+              "x": 0,
+              "y": 0,
+              "owner": true,
+              "pack": "nahir_set"
+            }
+          ]
+        }
+      ],
+      "gallery": [
+        {
+          "id": 2,
+          "x": 250,
+          "y": 0,
+          "owner": true,
+          "pack": "nahir_set"
+        },
+        {
+          "id": 3,
+          "x": 100.00000000000003,
+          "y": 86.60254037844388,
+          "owner": true,
+          "pack": "nahir_set"
+        },
+        {
+          "id": 4,
+          "x": 99.99999999999996,
+          "y": -86.60254037844383,
+          "owner": true,
+          "pack": "nahir_set"
+        }
+      ],
+      "beamGeometry": [
+        {
+          "name": "nh_streak",
+          "ax": 0,
+          "ay": 0,
+          "bx": 150,
+          "by": 0,
+          "w": 18,
+          "dur": 460,
+          "created": true,
+          "len": 150
+        },
+        {
+          "name": "nh_cut",
+          "ax": 150,
+          "ay": 0,
+          "bx": 544.5600000000001,
+          "by": 0,
+          "w": 78.912,
+          "dur": 520,
+          "created": true,
+          "len": 394.56000000000006
+        },
+        {
+          "name": "nh_cut",
+          "ax": 0,
+          "ay": 0,
+          "bx": 544.5600000000001,
+          "by": 0,
+          "w": 43.40160000000001,
+          "dur": 480,
+          "created": true,
+          "len": 544.5600000000001
+        }
+      ],
+      "beamDraws": {
+        "nh_cut": 432,
+        "nh_streak": 252
+      },
+      "mirrorDraws": 64,
+      "reflectionDrawCalls": 64,
+      "reflectionPacks": [
+        "nahir_set"
+      ],
+      "ufReturnedEntities": 2,
+      "ufEntityKeys": [
+        [
+          "frames",
+          "x",
+          "y",
+          "w",
+          "h",
+          "rot",
+          "dur",
+          "layer",
+          "ax",
+          "ay",
+          "alpha",
+          "fadeAt",
+          "prio",
+          "t"
+        ]
+      ],
+      "ufTextureDraws": 32,
+      "error": null
+    },
+    {
+      "look": "skin",
+      "tier4": false,
+      "selectedPack": "croma_nahir_skin",
+      "casts": [
+        {
+          "slot": 0,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "to": {
+            "x": 0,
+            "y": 0
+          },
+          "cue": {
+            "action": "shards",
+            "x": 0,
+            "y": 0,
+            "bx": 240,
+            "by": 0,
+            "r": 90,
+            "range": 240,
+            "angle": 0,
+            "until": 670,
+            "ult": false
+          },
+          "refs": []
+        },
+        {
+          "slot": 1,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "to": {
+            "x": 110,
+            "y": 0
+          },
+          "cue": {
+            "action": "reflect",
+            "x": 0,
+            "y": 0,
+            "bx": 110,
+            "by": 0,
+            "r": 25,
+            "range": 110,
+            "angle": 0,
+            "until": 798,
+            "ult": false
+          },
+          "refs": [
+            {
+              "id": 1,
+              "x": 0,
+              "y": 0,
+              "owner": true,
+              "pack": "croma_nahir_skin"
+            }
+          ]
+        },
+        {
+          "slot": 2,
+          "origin": {
+            "x": 110,
+            "y": 0
+          },
+          "to": {
+            "x": 110,
+            "y": 0
+          },
+          "cue": {
+            "action": "cross",
+            "x": 110,
+            "y": 0,
+            "bx": 350,
+            "by": 0,
+            "r": 24,
+            "range": 240,
+            "angle": 0,
+            "until": 926,
+            "ult": false
+          },
+          "refs": [
+            {
+              "id": 1,
+              "x": 0,
+              "y": 0,
+              "owner": true,
+              "pack": "croma_nahir_skin"
+            }
+          ]
+        }
+      ],
+      "gallery": [
+        {
+          "id": 2,
+          "x": 210,
+          "y": 0,
+          "owner": true,
+          "pack": "croma_nahir_skin"
+        },
+        {
+          "id": 3,
+          "x": 60.00000000000002,
+          "y": 86.60254037844388,
+          "owner": true,
+          "pack": "croma_nahir_skin"
+        },
+        {
+          "id": 4,
+          "x": 59.99999999999996,
+          "y": -86.60254037844383,
+          "owner": true,
+          "pack": "croma_nahir_skin"
+        }
+      ],
+      "beamGeometry": [
+        {
+          "name": "nh_streak",
+          "ax": 0,
+          "ay": 0,
+          "bx": 110,
+          "by": 0,
+          "w": 18,
+          "dur": 460,
+          "created": true,
+          "len": 110
+        },
+        {
+          "name": "nh_cut",
+          "ax": 110,
+          "ay": 0,
+          "bx": 350,
+          "by": 0,
+          "w": 48,
+          "dur": 520,
+          "created": true,
+          "len": 240
+        },
+        {
+          "name": "nh_cut",
+          "ax": 0,
+          "ay": 0,
+          "bx": 350,
+          "by": 0,
+          "w": 26.400000000000002,
+          "dur": 480,
+          "created": true,
+          "len": 350
+        }
+      ],
+      "beamDraws": {
+        "nh_cut": 456,
+        "nh_streak": 196
+      },
+      "mirrorDraws": 64,
+      "reflectionDrawCalls": 64,
+      "reflectionPacks": [
+        "croma_nahir_skin"
+      ],
+      "ufReturnedEntities": 2,
+      "ufEntityKeys": [
+        [
+          "frames",
+          "x",
+          "y",
+          "w",
+          "h",
+          "rot",
+          "dur",
+          "layer",
+          "ax",
+          "ay",
+          "alpha",
+          "fadeAt",
+          "prio",
+          "t"
+        ]
+      ],
+      "ufTextureDraws": 32,
+      "error": null
+    },
+    {
+      "look": "skin",
+      "tier4": true,
+      "selectedPack": "croma_nahir_skin",
+      "casts": [
+        {
+          "slot": 0,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "to": {
+            "x": 0,
+            "y": 0
+          },
+          "cue": {
+            "action": "shards",
+            "x": 0,
+            "y": 0,
+            "bx": 394.56000000000006,
+            "by": 0,
+            "r": 147.96,
+            "range": 394.56000000000006,
+            "angle": 0,
+            "until": 670,
+            "ult": false
+          },
+          "refs": []
+        },
+        {
+          "slot": 1,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "to": {
+            "x": 150,
+            "y": 0
+          },
+          "cue": {
+            "action": "reflect",
+            "x": 0,
+            "y": 0,
+            "bx": 180.84,
+            "by": 0,
+            "r": 41.1,
+            "range": 180.84,
+            "angle": 0,
+            "until": 798,
+            "ult": false
+          },
+          "refs": [
+            {
+              "id": 1,
+              "x": 0,
+              "y": 0,
+              "owner": true,
+              "pack": "croma_nahir_skin"
+            }
+          ]
+        },
+        {
+          "slot": 2,
+          "origin": {
+            "x": 150,
+            "y": 0
+          },
+          "to": {
+            "x": 150,
+            "y": 0
+          },
+          "cue": {
+            "action": "cross",
+            "x": 150,
+            "y": 0,
+            "bx": 544.5600000000001,
+            "by": 0,
+            "r": 39.456,
+            "range": 394.56000000000006,
+            "angle": 0,
+            "until": 926,
+            "ult": false
+          },
+          "refs": [
+            {
+              "id": 1,
+              "x": 0,
+              "y": 0,
+              "owner": true,
+              "pack": "croma_nahir_skin"
+            }
+          ]
+        }
+      ],
+      "gallery": [
+        {
+          "id": 2,
+          "x": 250,
+          "y": 0,
+          "owner": true,
+          "pack": "croma_nahir_skin"
+        },
+        {
+          "id": 3,
+          "x": 100.00000000000003,
+          "y": 86.60254037844388,
+          "owner": true,
+          "pack": "croma_nahir_skin"
+        },
+        {
+          "id": 4,
+          "x": 99.99999999999996,
+          "y": -86.60254037844383,
+          "owner": true,
+          "pack": "croma_nahir_skin"
+        }
+      ],
+      "beamGeometry": [
+        {
+          "name": "nh_streak",
+          "ax": 0,
+          "ay": 0,
+          "bx": 150,
+          "by": 0,
+          "w": 18,
+          "dur": 460,
+          "created": true,
+          "len": 150
+        },
+        {
+          "name": "nh_cut",
+          "ax": 150,
+          "ay": 0,
+          "bx": 544.5600000000001,
+          "by": 0,
+          "w": 78.912,
+          "dur": 520,
+          "created": true,
+          "len": 394.56000000000006
+        },
+        {
+          "name": "nh_cut",
+          "ax": 0,
+          "ay": 0,
+          "bx": 544.5600000000001,
+          "by": 0,
+          "w": 43.40160000000001,
+          "dur": 480,
+          "created": true,
+          "len": 544.5600000000001
+        }
+      ],
+      "beamDraws": {
+        "nh_cut": 432,
+        "nh_streak": 252
+      },
+      "mirrorDraws": 64,
+      "reflectionDrawCalls": 64,
+      "reflectionPacks": [
+        "croma_nahir_skin"
+      ],
+      "ufReturnedEntities": 2,
+      "ufEntityKeys": [
+        [
+          "frames",
+          "x",
+          "y",
+          "w",
+          "h",
+          "rot",
+          "dur",
+          "layer",
+          "ax",
+          "ay",
+          "alpha",
+          "fadeAt",
+          "prio",
+          "t"
+        ]
+      ],
+      "ufTextureDraws": 32,
+      "error": null
+    }
+  ],
+  "errors": [],
+  "scope": "18 normal casts +6 ultimates with existing sources only. Pack selection/actual beam textures, no new assets, full visual approval, online or simulation parity."
+}

@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "closedAt": "2026-10-26T18:45:43.941775+00:00",
+  "state": "INTEGRADO_MAIN",
+  "component": "A-FX-myla-h3/bubble-state",
+  "partOfBlock": "B177",
+  "notWholeKit": true,
+  "approvedHead": "8d29c13b21234992ffad5e91c6cb185d7aa5c69e",
+  "productionTree": "7bdeb87684df7f892fa91628b4fffd283ffffffc",
+  "merge": "82720de7644ee7ab3033e9d2f8b57d19b61ea3a7",
+  "mergedAt": "2026-10-26T18:45:02Z",
+  "branch": "art/myla-bubble-state-20261026",
+  "pr": 229,
+  "productionFilesVerified": 83,
+  "productionManifest": "../cierre-01/manifest.json",
+  "ciCounts": {
+    "checks": 21,
+    "workflows": 9
+  },
+  "runtime": "js/champions/vfx-b/myla.js",
+  "runtimeGitBlob": "24d1119a7bc8bb979278de4d25a6347d4990a1a5",
+  "newInstalledPngs": 0,
+  "publication": "NOT_CONFIRMED",
+  "supersedes": "Prior FIX/VALIDADO states only for this component. Production manifest immutable; post-merge evidence is not a second integration. Queue63 preserves first62 historical entries.",
+  "newEvidence": "120 scenes/720 exact ABA plus48 temporal ABA,12 state checks,13 ordered real-relay checks,66 native/cache checks,6 PNG reexports exact,222 other decal frames unchanged;16 sheets+2 fullframes reviewed;1360 full-render timings with361 clears/run.",
+  "historicalEvidence": "360 frames main/candidate/repeat42667 RNG and summarized state equality before final painter-only change, not global snapshot. Prior failed sources/tests retained.",
+  "next": "PRODUCCION auditada Nahir B178/B179/B180 from fresh main/PR. Read NEXT_NAHIR_AUDIT and distance probes: legal base build echo1002.515694 capped900, tier4 straight1268.56 and diagonal1172.2882 also900. Reuse existing native beam; design local geometry/endpoint representation without changing shared cap or mechanics blindly, then real relay/camera/visual gates. No new art or certification claimed by this audit.",
+  "globalInventory": "INCOMPLETE; continue alternating production and closure."
+}
