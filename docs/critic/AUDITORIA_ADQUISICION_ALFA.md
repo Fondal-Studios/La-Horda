@@ -17,7 +17,7 @@ Fecha: 26/10/2026. Base medida: `origin/main` `78039728` (incluye economía V2 #
 7. **Conflicto de política sin resolver (HECHO):** `PIECES_FOR_BRASAS = true`; la tienda dice en pantalla «Las Brasas compran apariencia y piezas de set (equipo)». Eso es dinero por poder. Un comprador lo trata como riesgo de reputación y de tiendas.
 8. **Balance de entrada, MEDIDO (21 corridas, sin equipo):** 11 victorias, 8 derrotas, 2 partidas que no terminan en 22 min. Arena 1: 7/9; Fortaleza: 3/6; Infernal: 1/6. El primer jefe (Presentador) mató 2 veces a magos al borde de la victoria.
 9. **Sin audio real:** cero archivos mp3/ogg/wav en el repo; todo sintetizado (HECHO). El Libro y el arte suben la identidad; el sonido la baja.
-10. **Calidad de pruebas:** 116 pruebas en la batería rápida; ver la sección 7 para el resultado sobre este main (en el main de ayer: 109 verdes, 4 intermitentes, 3 rojas).
+10. **Calidad de pruebas:** 117 pruebas en la batería rápida sobre este main: 115 verdes y 2 rojas conocidas (`t_evolution`, `t_save_sanitize`), 2.318 comprobaciones en verde.
 11. **Cinco puntos a mejorar, por impacto/esfuerzo:** (1) decidir y cerrar "Brasas = solo cosmético"; (2) infraestructura persistente + soporte + legal + Mercado Pago sandbox; (3) embudo de datos y alfa cerrada con humanos; (4) los primeros 10 minutos y la pared de jefes; (5) audio real y cierre de arte.
 12. **Lo que no se pudo medir:** retención, conversión, FPS en teléfono, red mala real, partidas con humanos. Todo eso es el contenido de los puntos 2 y 3.
 
@@ -29,7 +29,7 @@ Cinco miembros de un comité de due diligence de un publisher mediano. Cada uno 
 
 | Miembro | Tesis | Puntaje | Dealbreakers |
 |---|---|---|---|
-| **Dirección de desarrollo** (calidad técnica, escala) | Un motor JS propio de ~94.000 líneas en 452 archivos, con una batería de 116 pruebas y gates automáticos poco comunes para una alfa. Se puede heredar y mantener. Lo que preocupa es la arquitectura multijugador: **el anfitrión simula la partida**, el servidor no es autoritativo (HECHO, `ITEM_ECONOMY_V2_INTEGRACION.md` §6.1), y todos los scripts son globales (`index.html` carga ~450). | **6,5** | (a) Resultados competitivos sin servidor autoritativo: no se puede abrir ranking con premios. (b) Carga sin empaquetar: 451 JS y 812 pedidos en frío; el empaquetado existe (`tools/perf/bundle.js`) pero no se midió en producción. |
+| **Dirección de desarrollo** (calidad técnica, escala) | Un motor JS propio de ~94.000 líneas en 452 archivos, con una batería de 117 pruebas y gates automáticos poco comunes para una alfa. Se puede heredar y mantener. Lo que preocupa es la arquitectura multijugador: **el anfitrión simula la partida**, el servidor no es autoritativo (HECHO, `ITEM_ECONOMY_V2_INTEGRACION.md` §6.1), y todos los scripts son globales (`index.html` carga ~450). | **6,5** | (a) Resultados competitivos sin servidor autoritativo: no se puede abrir ranking con premios. (b) Carga sin empaquetar: 451 JS y 812 pedidos en frío; el empaquetado existe (`tools/perf/bundle.js`) pero no se midió en producción. |
 | **Producto y monetización** | Modelo cosmético sano por diseño (servidor decide precios, sin cajas, sin oro por dinero real). Pero **hoy no se puede cobrar**, hay una excepción de poder por dinero (piezas de set por Brasas) y no hay embudo medible. | **4,0** | (a) `PIECES_FOR_BRASAS = true`. (b) Pagos apagados y sin prueba contra Mercado Pago real. (c) Cero telemetría de tienda y de retención. |
 | **Dirección creativa** (arte, identidad) | Identidad fuerte y reconocible: pixel art cuidado, título, hub, el Libro de tinta china con tono propio. Pero el arte es de resolución mezclada, hay 1.217 registros de producción abiertos y varios candidatos del último lote de 20 PRs quedaron NO_INTEGRAR. El sonido es sintético. | **7,0** | (a) Audio. (b) Cerrar la línea de arte con un criterio de "congelado". |
 | **Live-ops** | El juego tiene lo que una operación necesita en piezas (panel de Game Master, eventos, rotación diaria de tienda, temporadas en V2) pero **ninguna se probó con jugadores ni con base persistente**. | **3,0** | (a) Sin base persistente no hay cuentas, ni ranking, ni V2. (b) Sin respaldo probado (el preflight lo marca amarillo). (c) Chat libre sin lista de palabras ni reporte. |
@@ -136,7 +136,7 @@ Guiones aprendiz / ocasional / habitual (habilidad 0,45 / 0,7 / 0,9; reacción 6
 | Onboarding y primer minuto | 10 % | **7,0** | 6 toques a jugar, ~12 s; el Libro cubre la carga; regalo de guardián claro. Resta: panel de misión que tapa un tercio de pantalla, ficha que corta su última fila en 844x390, primera arena con jefe-pared. |
 | Social y multijugador | 10 % | **5,0** | Relay probado (192 comprobaciones, 50 conexiones, 100 % de entrega); salas, bots. Resta: sin humanos medidos, anfitrión-simula, Cristales y Coliseo solo contra bots, chat libre sin lista de palabras. |
 | Economía y monetización | 10 % | **4,0** | Diseño correcto: servidor decide, sin cajas, reversión por reembolso y contracargo (27 comprobaciones contra Mercado Pago falso). Resta: pagos apagados, `PIECES_FOR_BRASAS = true`, `SHOP_MODE = "demo"`, sin telemetría de embudo. |
-| Calidad técnica y performance | 5 % | **6,5** | Batería de 116 pruebas y gates; 0 errores de página. Resta: carga sin empaquetar 451 JS, FPS no medido en dispositivo, 19 % de cuadros lentos en Micelial. |
+| Calidad técnica y performance | 5 % | **6,5** | Batería de 117 pruebas (115 verdes) y gates; 0 errores de página. Resta: carga sin empaquetar 451 JS, FPS no medido en dispositivo, 19 % de cuadros lentos en Micelial. |
 | Operación, legal, escalabilidad | 5 % | **3,0** | Preflight: **0 rojos, 27 amarillos, 31 verdes** (con `ws` instalado). Resta: sin base persistente, textos en borrador, correo de soporte vacío, sin borrar cuenta, respaldo sin probar. |
 | **Global ponderado** | 100 % | **6,2 / 10** | 0,20·7,0 + 0,15·6,5 + 0,10·8,0 + 0,15·6,5 + 0,10·7,0 + 0,10·5,0 + 0,10·4,0 + 0,05·6,5 + 0,05·3,0 = **6,225** |
 
@@ -224,7 +224,14 @@ Contraste con el informe de críticos del 20/10 (`origin/claude/critica-monetiza
 
 ## 7. Estado de pruebas (batería `run-all --fast --jobs 2`)
 
-<!-- QUALITY2 -->
+MEDIDO sobre `78039728`, una sola corrida: **117 pruebas, 115 PASS, 2 FAIL, 0 intermitentes; 2.318 comprobaciones individuales en verde; 5.698 s de suma de pruebas** (con 2 en paralelo). Las dos rojas son las conocidas:
+
+- `tools/items/t_evolution.js` (`EVO.todos_los_campeones_dejan_su_firma`): rojo ya en el main de ayer.
+- `tools/regression/t_save_sanitize.js`: 3 guardados de ejemplo (`save_2026-10-10`, `-10-17`, `-10-19`) en los que "el normalizador no ajusta nada (guardado legítimo)"; rojo ya en el main de ayer.
+
+`t_champs_se` pasó esta vez (en la corrida del main de ayer falló: es intermitente, como avisó el equipo). Antes (main `7e4e653e`): 116 pruebas, 109 PASS, 4 intermitentes, 3 FAIL, 2.115 comprobaciones.
+Además, fuera de la batería: `server` `npm test` 192 PASS / 0 FAIL, `test-item-economy` 49, `test-item-economy-live` 51, preflight `--offline` 0 rojos / 27 amarillos / 31 verdes, `mp-readiness` 27 comprobaciones.
+**Qué no dice esta batería:** no corre relay con humanos, pagos reales, dispositivos ni revisión de arte o audio (lo advierte `tools/quality/run-all.js`).
 
 ## Apéndice: comandos reproducibles
 
