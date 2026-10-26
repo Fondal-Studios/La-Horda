@@ -50,7 +50,9 @@ function libertadorDrawTravel(s,g){
  const dx=s.bx-s.x,dy=s.by-s.y,L=Math.hypot(dx,dy);if(L<1)return;
  const travel=Math.max(0,Math.min(L,((h.x-s.x)*dx+(h.y-s.y)*dy)/L));if(travel<2)return;
  const b=sfaBake('beam',s.theme,16);if(!b)return;
- const f=Math.min(b.n-1,Math.max(0,Math.floor(s.t/s.dur*b.n)));
+ // El montaje no consume la animación del recorrido. La fase sigue la distancia
+ // observada; al impacto manda el renderer existente y no se prolonga la estela.
+ const f=Math.min(b.n-1,Math.max(0,Math.floor(travel/L*(b.n-1))));
  g.save();g.translate(s.x,s.y-(charge?0:18));g.rotate(Math.atan2(dy,dx));g.globalAlpha=.85;g.imageSmoothingEnabled=false;
  if(charge){
   // Recorta la última celda al recorrido observado, sin estirar cascos.

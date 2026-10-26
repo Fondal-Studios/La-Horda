@@ -1,0 +1,18 @@
+{
+  "runtime": "js/champions/skill-fx-a/c/libertador.js",
+  "source": "source-candidate.js",
+  "parent": "523f1968598723bdb138a4e06741789ddd25f207",
+  "main": "78039728e737bfc7683fe487c1c281698aa6dd71",
+  "native": "Existing SfaStrip atlas, selected frame=floor(observedTravel/plannedLength*(N-1)); no bitmap edits",
+  "env": "CHROMIUM_PATH=/tmp/chromium NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+  "commands": [
+    "OUT=art-source/entregas/libertador-kit-20261025/cierre-03/final node tools/vfx/libertador-lifecycle-close.js",
+    "OUT=art-source/entregas/libertador-kit-20261025/cierre-03 node tools/vfx/libertador-catalog-baseline.js",
+    "OUT=art-source/entregas/libertador-kit-20261025/cierre-03/parity node tools/vfx/parity-libertador-kit.js (source-before.js copied from cierre02 clean main)",
+    "OUT=art-source/entregas/libertador-kit-20261025/cierre-03/online node tools/vfx/libertador-kit-online.js",
+    "ARENAS=bosque,hielo,infernal,laberinto,acuatica,minas LOOKS=base,tier4 DENSITIES=dense,sparse SLOTS=0,2 ALL_PHASES=1 OUT=art-source/entregas/libertador-kit-20261025/cierre-03/contact-desktop node tools/vfx/capture-libertador-contact.js",
+    "same contact command with MOBILE=1 and OUT contact-mobile",
+    "python tools/vfx/libertador-review-close03.py",
+    "SE_BASE_URL=<H.startSite().url> PLAYWRIGHT_EXECUTABLE_PATH=/tmp/chromium SKIN_AUDIT_OUT=<out> node tools/art/unique_skins/check.js"
+  ]
+}

@@ -18,7 +18,11 @@ const OUT=process.env.SKIN_AUDIT_OUT || '/tmp/horda-skins/check';
    const extraIds=['brasa_abisal','eslabon_porcelana','morwen_escarcha','dariel_luthier','farolero_guardavia'];
    for(const [id,champ] of [['eslabon_porcelana','eslabon'],['morwen_escarcha','morwen'],['dariel_luthier','dariel'],['farolero_guardavia','farolero']])check(id+' belongs to its existing champion',CROMA_SKINS[id]?.champ===champ&&CROMA_SKINS[id].appearanceType==='skin');
    check('additional authored skin belongs to existing Brasa',CROMA_SKINS.brasa_abisal?.champ==='brasa'&&CROMA_SKINS.brasa_abisal.appearanceType==='skin');
-   check('legacy, expedition, quality-five and additional catalog entries',cosmeticCatalog().length===32+added*3+qualityIds.length*3+extraIds.length);
+   const manifestIds=['lucifer','glaciar','coloso','tempestad','alba'].flatMap(id=>[id,id+'_astral',id+'_consagrada']);
+   const catalogIds=cosmeticCatalog().map(d=>d.id),manifestCatalogIds=catalogIds.filter(id=>SET_SKINS[id]?.manifest);
+   check('legacy, expedition, quality-five and additional catalog entries',catalogIds.filter(id=>!manifestIds.includes(id)).length===32+added*3+qualityIds.length*3+extraIds.length);
+   check('fifteen distinct manifestation catalog entries',manifestCatalogIds.length===15&&new Set(manifestCatalogIds).size===15&&manifestIds.every(id=>manifestCatalogIds.includes(id)));
+   check('manifestations retain cosmetic source without remapping champion rigs',manifestIds.every(id=>SET_SKINS[id]?.manifest===true&&SET_SKINS[id].champ===null&&Object.keys(SET_SKINS[id].packs).length===0&&!!SET_SKINS[SET_SKINS[id].fxSource]));
    check('legacy, expedition, quality-five and additional authored designs',Object.values(CROMA_SKINS).filter(d=>d.appearanceType==='skin').length===13+added+qualityIds.length+extraIds.length);
    for(const id of qualityIds){check(id+' owns three distinct cosmetics',!!CROMA_SKINS[id+'_alt1']&&!!CROMA_SKINS[id+'_croma']&&!!SET_SKINS['quality_'+id]);}
    check('all set skins retain source art',Object.values(SET_SKINS).every(d=>Object.values(d.packs).every(k=>!CHAMP_PACK[k].cosmeticApplied)));

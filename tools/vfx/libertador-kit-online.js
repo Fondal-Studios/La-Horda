@@ -1,6 +1,7 @@
 'use strict';
 const {spawn}=require('node:child_process'),fs=require('node:fs'),H=require('../lib/serve');
 const OUT=process.env.OUT||'art-source/entregas/libertador-kit-20261025/primera-pasada-01';
+fs.mkdirSync(OUT,{recursive:true});
 const relay=spawn('node',['server/relay.js'],{env:{...process.env,PORT:'8894',DATA_DIR:fs.mkdtempSync('/tmp/libertador-kit-relay-'),DATABASE_URL:'',ALLOWED_ORIGINS:'*'},stdio:'ignore'});
 (async()=>{const site=await H.startSite();let b;const errors=[],checks=[];try{
  for(let n=0;n<100;n++){try{if((await fetch('http://127.0.0.1:8894/api/health')).ok)break;}catch{}if(n===99)throw Error('relay not ready');await new Promise(r=>setTimeout(r,100));}

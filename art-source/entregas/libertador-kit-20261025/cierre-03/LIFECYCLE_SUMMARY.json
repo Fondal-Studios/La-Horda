@@ -1,0 +1,265 @@
+{
+  "errors": [],
+  "rows": [
+    {
+      "tier": 0,
+      "slot": 0,
+      "mode": "free",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "lastDrawMs": 192
+    },
+    {
+      "tier": 0,
+      "slot": 0,
+      "mode": "hit",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [
+        0,
+        1
+      ],
+      "lastDrawMs": 32
+    },
+    {
+      "tier": 0,
+      "slot": 0,
+      "mode": "death",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "lastDrawMs": 160
+    },
+    {
+      "tier": 0,
+      "slot": 2,
+      "mode": "free",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "lastDrawMs": 752
+    },
+    {
+      "tier": 0,
+      "slot": 2,
+      "mode": "hit",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "lastDrawMs": 752
+    },
+    {
+      "tier": 0,
+      "slot": 2,
+      "mode": "death",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [],
+      "lastDrawMs": 0
+    },
+    {
+      "tier": 0,
+      "slot": 2,
+      "mode": "mounted",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "lastDrawMs": 480
+    },
+    {
+      "tier": 7,
+      "slot": 0,
+      "mode": "free",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "lastDrawMs": 320
+    },
+    {
+      "tier": 7,
+      "slot": 0,
+      "mode": "hit",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [
+        0,
+        1
+      ],
+      "lastDrawMs": 32
+    },
+    {
+      "tier": 7,
+      "slot": 0,
+      "mode": "death",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "lastDrawMs": 160
+    },
+    {
+      "tier": 7,
+      "slot": 2,
+      "mode": "free",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "lastDrawMs": 1072
+    },
+    {
+      "tier": 7,
+      "slot": 2,
+      "mode": "hit",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "lastDrawMs": 1072
+    },
+    {
+      "tier": 7,
+      "slot": 2,
+      "mode": "death",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [],
+      "lastDrawMs": 0
+    },
+    {
+      "tier": 7,
+      "slot": 2,
+      "mode": "mounted",
+      "accepted": true,
+      "rejected": false,
+      "duplicate": false,
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "lastDrawMs": 800
+    }
+  ],
+  "limitations": "Death flag is fixture, not actual damage absorption. 14 scenarios100frames each. Transparent terminal frame11 is not drawn after movement ends. No global lifecycle certification."
+}
