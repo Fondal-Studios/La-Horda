@@ -1,0 +1,26 @@
+{
+  "main": "31ce7e7c4cb31989823607510e23b1515828ddcc",
+  "external": true,
+  "references": [
+    {
+      "path": "assets/ui/codex/champions/nahir.png",
+      "gitblob": "397ac56c09539a18de708dac30a1022d3417282d",
+      "sha256": "f28a5109450f7d030e83f058abbcd61615b2c49da647f93562c36aa51cadd128"
+    },
+    {
+      "path": "assets/ui/codex/champions/nano_gm.png",
+      "gitblob": "7c4f9b4c5df8a36d6c14ce7d825e284c11464505",
+      "sha256": "eae9191fd58d5d88a2a511897c59ea1d59c4e29f379f9fdb8e25ba9f93cb1200"
+    },
+    {
+      "path": "assets/ui/codex/champions/bront.png",
+      "gitblob": "9c7374c2f8bd784f5ba2eb7b117785a90e96ef99",
+      "sha256": "ac55dc02e7271942dcd8761ae3e1f709c788d380dcb0e00e8cac0115e33c2380"
+    }
+  ],
+  "reviewed": true,
+  "scope": "Reference sheet visual review only, not sprite/animation Art Gate. No new images produced or copied into runtime assets.",
+  "nahir": "Cyan/white mirror blades and dark armor; reused native cyan-white echo remains compatible with this selected reference. No body or animation replacement.",
+  "nano": "Dark/violet and gold split wings/materials, existing code-native dark/gold motif. Read exact sheet before new production; preserve body/skin/UF.",
+  "bront": "New external sheet depicts a rounded diving-style helmet, visibly different from the explicit authorized angular empty-fortress direction recorded in Bront01/02/03. Preserve both sources; this external reference does not silently supersede the user instruction. Do not regenerate or install a partial replacement during Nahir closure."
+}

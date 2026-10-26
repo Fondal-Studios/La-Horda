@@ -1,0 +1,86 @@
+{
+  "rows": [
+    {
+      "slot": 3,
+      "before": {
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "shield": 0,
+          "alive": true
+        },
+        "objects": [],
+        "pool": []
+      },
+      "cast": {
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "shield": 0,
+          "alive": true
+        },
+        "objects": [
+          {
+            "kind": "as_judgement",
+            "x": 0,
+            "y": 0,
+            "r": 440,
+            "life": 2600
+          }
+        ],
+        "pool": []
+      },
+      "after256": {
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "shield": 0,
+          "alive": true
+        },
+        "objects": [
+          {
+            "kind": "as_judgement",
+            "x": 0,
+            "y": 0,
+            "r": 440,
+            "life": 2344
+          }
+        ],
+        "pool": []
+      },
+      "after5536": {
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "shield": 115.35,
+          "alive": true
+        },
+        "objects": [],
+        "pool": []
+      },
+      "calls": [
+        [
+          "uf.nano_gm",
+          0,
+          0,
+          440,
+          0.7853981633974483,
+          0,
+          0
+        ]
+      ],
+      "uf": [
+        [
+          "nano_gm",
+          0,
+          0,
+          440
+        ]
+      ],
+      "draws": {},
+      "packReady": true,
+      "scope": "Actual useSkill base/no talents/no equipment. Empty targets. Mobile viewport. Existing consumers only; no relay, contact matrix or ArtGate."
+    }
+  ],
+  "errors": []
+}

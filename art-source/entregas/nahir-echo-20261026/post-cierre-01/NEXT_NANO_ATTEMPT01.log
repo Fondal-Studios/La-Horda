@@ -1,0 +1,12 @@
+[arnés] servidor propio: http://127.0.0.1:44179 (raíz /workspace/scratch/27dc1a293731/nahir-work)
+page.evaluate: TypeError: Cannot read properties of undefined (reading 'cost')
+    at useSkill (http://127.0.0.1:44179/js/skills/abilities.js:246:46)
+    at useSkill (http://127.0.0.1:44179/js/systems/terrain-tags.js:48:102)
+    at useSkill (http://127.0.0.1:44179/js/champions/expedition/runtime.js:132:157)
+    at useSkill (http://127.0.0.1:44179/js/systems/alpha-training.js:230:116)
+    at eval (eval at evaluate (:311:30), <anonymous>:6:95)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at /workspace/scratch/27dc1a293731/nahir-work/tools/vfx/audit-nano-next.js:10:23 {
+  log: []
+}

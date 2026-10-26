@@ -1,0 +1,340 @@
+{
+  "rows": [
+    {
+      "slot": 0,
+      "before": {
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "shield": 0,
+          "alive": true
+        },
+        "objects": [],
+        "pool": []
+      },
+      "cast": {
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "shield": 0,
+          "alive": true
+        },
+        "objects": [],
+        "pool": [
+          {
+            "name": "ng_decree",
+            "x": 0,
+            "y": 0,
+            "len": 330,
+            "w": 51,
+            "dur": 640,
+            "t": 0
+          },
+          {
+            "name": "ng_burst_d",
+            "x": 330,
+            "y": 0,
+            "w": 138,
+            "dur": 700,
+            "t": 0
+          }
+        ]
+      },
+      "after256": {
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "shield": 0,
+          "alive": true
+        },
+        "objects": [],
+        "pool": [
+          {
+            "name": "ng_decree",
+            "x": 0,
+            "y": 0,
+            "len": 330,
+            "w": 51,
+            "dur": 640,
+            "t": 256
+          },
+          {
+            "name": "ng_burst_d",
+            "x": 330,
+            "y": 0,
+            "w": 138,
+            "dur": 700,
+            "t": 256
+          }
+        ]
+      },
+      "after5536": {
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "shield": 0,
+          "alive": true
+        },
+        "objects": [],
+        "pool": []
+      },
+      "calls": [
+        [
+          "nano.sentence",
+          0,
+          0,
+          30,
+          0,
+          330,
+          null
+        ],
+        [
+          "punch",
+          0,
+          0,
+          30,
+          0,
+          1,
+          16774358
+        ]
+      ],
+      "uf": [],
+      "draws": {
+        "ng_burst_d": 16,
+        "ng_decree": 96
+      },
+      "packReady": true,
+      "scope": "Actual useSkill base/no talents/no equipment. Empty targets. Mobile viewport. Existing consumers only; no relay, contact matrix or ArtGate."
+    },
+    {
+      "slot": 1,
+      "before": {
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "shield": 0,
+          "alive": true
+        },
+        "objects": [],
+        "pool": []
+      },
+      "cast": {
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "shield": 0,
+          "alive": true
+        },
+        "objects": [
+          {
+            "kind": "as_edict",
+            "x": 180,
+            "y": 0,
+            "r": 135,
+            "life": 5000,
+            "both": false
+          }
+        ],
+        "pool": [
+          {
+            "name": "ng_law",
+            "x": 180,
+            "y": 0,
+            "w": 270,
+            "dur": 840,
+            "t": 0
+          }
+        ]
+      },
+      "after256": {
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "shield": 0,
+          "alive": true
+        },
+        "objects": [
+          {
+            "kind": "as_edict",
+            "x": 180,
+            "y": 0,
+            "r": 135,
+            "life": 4744,
+            "both": false
+          }
+        ],
+        "pool": [
+          {
+            "name": "ng_law",
+            "x": 180,
+            "y": 0,
+            "w": 270,
+            "dur": 840,
+            "t": 256
+          }
+        ]
+      },
+      "after5536": {
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "shield": 0,
+          "alive": true
+        },
+        "objects": [],
+        "pool": []
+      },
+      "calls": [
+        [
+          "nano.edict",
+          180,
+          0,
+          135,
+          0,
+          0,
+          0
+        ],
+        [
+          "punch",
+          180,
+          0,
+          135,
+          0,
+          1,
+          16774358
+        ]
+      ],
+      "uf": [],
+      "draws": {
+        "ng_law": 16
+      },
+      "packReady": true,
+      "scope": "Actual useSkill base/no talents/no equipment. Empty targets. Mobile viewport. Existing consumers only; no relay, contact matrix or ArtGate."
+    },
+    {
+      "slot": 2,
+      "before": {
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "shield": 0,
+          "alive": true
+        },
+        "objects": [],
+        "pool": []
+      },
+      "cast": {
+        "hero": {
+          "x": 180,
+          "y": 0,
+          "shield": 30.76,
+          "alive": true
+        },
+        "objects": [
+          {
+            "kind": "as_rune",
+            "x": 0,
+            "y": 0,
+            "r": 110,
+            "life": 700,
+            "eff": "light"
+          }
+        ],
+        "pool": [
+          {
+            "name": "ng_decree",
+            "x": 0,
+            "y": 0,
+            "len": 180,
+            "w": 14,
+            "dur": 420,
+            "t": 0
+          },
+          {
+            "name": "ng_verdict",
+            "x": 180,
+            "y": 0,
+            "w": 286,
+            "dur": 760,
+            "t": 0
+          }
+        ]
+      },
+      "after256": {
+        "hero": {
+          "x": 180,
+          "y": 0,
+          "shield": 30.76,
+          "alive": true
+        },
+        "objects": [
+          {
+            "kind": "as_rune",
+            "x": 0,
+            "y": 0,
+            "r": 110,
+            "life": 444,
+            "eff": "light"
+          }
+        ],
+        "pool": [
+          {
+            "name": "ng_decree",
+            "x": 0,
+            "y": 0,
+            "len": 180,
+            "w": 14,
+            "dur": 420,
+            "t": 256
+          },
+          {
+            "name": "ng_verdict",
+            "x": 180,
+            "y": 0,
+            "w": 286,
+            "dur": 760,
+            "t": 256
+          }
+        ]
+      },
+      "after5536": {
+        "hero": {
+          "x": 180,
+          "y": 0,
+          "shield": 0,
+          "alive": true
+        },
+        "objects": [],
+        "pool": []
+      },
+      "calls": [
+        [
+          "nano.invert",
+          0,
+          0,
+          110,
+          0,
+          180,
+          null
+        ],
+        [
+          "punch",
+          0,
+          0,
+          110,
+          0,
+          1,
+          16774358
+        ]
+      ],
+      "uf": [],
+      "draws": {
+        "ng_decree": 192,
+        "ng_verdict": 16
+      },
+      "packReady": true,
+      "scope": "Actual useSkill base/no talents/no equipment. Empty targets. Mobile viewport. Existing consumers only; no relay, contact matrix or ArtGate."
+    }
+  ],
+  "errors": []
+}

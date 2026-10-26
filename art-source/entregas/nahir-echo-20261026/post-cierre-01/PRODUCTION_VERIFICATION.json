@@ -1,0 +1,707 @@
+{
+  "date": "2026-10-26T20:15:05.501Z",
+  "productionCommit": "b06f05d5f407cd4b28a5c07a2834572683f01648",
+  "productionTree": "b8e9785077ad11b1479aef38becd18be7d290d6e",
+  "remoteTreeEntries": 12759,
+  "truncated": false,
+  "files": [
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/CANARY.log",
+      "expected": "eb23b0abf14418f0ceb17d0cd588c9a086617d82",
+      "observed": "eb23b0abf14418f0ceb17d0cd588c9a086617d82",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/CAST_COMPARISON.json",
+      "expected": "855d3a6d0a80e8098e7b1041b41aabae56cd32c6",
+      "observed": "855d3a6d0a80e8098e7b1041b41aabae56cd32c6",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/CHECKPOINT.md",
+      "expected": "7ea52c6190c9e8837e7bccc5a7a9643dc2642a8d",
+      "observed": "7ea52c6190c9e8837e7bccc5a7a9643dc2642a8d",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/CI_LOCAL_BASELINE.log",
+      "expected": "9850710986d938ac4b07ebddaa200de903aae4d9",
+      "observed": "9850710986d938ac4b07ebddaa200de903aae4d9",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/CI_LOCAL_FIXED.log",
+      "expected": "05265b61394877a10c071b45d91f21d66e644fd1",
+      "observed": "05265b61394877a10c071b45d91f21d66e644fd1",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/CI_PARENT.json",
+      "expected": "5a4273a57b91fa0b6a1a0a6cf0686a74ae172584",
+      "observed": "5a4273a57b91fa0b6a1a0a6cf0686a74ae172584",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/CONTACT_PILOT.log",
+      "expected": "dc2de7efad22e08da68f192b673b380e56430477",
+      "observed": "dc2de7efad22e08da68f192b673b380e56430477",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/DESKTOP.log",
+      "expected": "07607ac2f0a873ee69692c46eeba3705d71a1a83",
+      "observed": "07607ac2f0a873ee69692c46eeba3705d71a1a83",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/FULL_RENDER_PERFORMANCE.json",
+      "expected": "a9544d317aff21b1ecfe33ecfdc99e2b5eb4c312",
+      "observed": "a9544d317aff21b1ecfe33ecfdc99e2b5eb4c312",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/MAIN_PAIRS.log",
+      "expected": "39864b9f07ef1333e70b4b2d3eb9062c7dfcfb56",
+      "observed": "39864b9f07ef1333e70b4b2d3eb9062c7dfcfb56",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/MATRIX_SUMMARY.json",
+      "expected": "d131541bde73b737b09b49de76caf1fbc7dd2213",
+      "observed": "d131541bde73b737b09b49de76caf1fbc7dd2213",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/MINAS_PILOT.log",
+      "expected": "2fbf0f89360f477034d8f86a9dcb4d70169aa68e",
+      "observed": "2fbf0f89360f477034d8f86a9dcb4d70169aa68e",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/MOBILE.log",
+      "expected": "6aaa8573ffc9a511cd9581778891ee496754b601",
+      "observed": "6aaa8573ffc9a511cd9581778891ee496754b601",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/NATIVE.log",
+      "expected": "a5e4e60383fd44987dd08e8408975ed09de83f9d",
+      "observed": "a5e4e60383fd44987dd08e8408975ed09de83f9d",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/NATIVE_CONTRACT.json",
+      "expected": "788be49ae5b5b073913963c1ebca39626dc65300",
+      "observed": "788be49ae5b5b073913963c1ebca39626dc65300",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/NATIVE_SINGLE_BEFORE_COUNT.json",
+      "expected": "788be49ae5b5b073913963c1ebca39626dc65300",
+      "observed": "788be49ae5b5b073913963c1ebca39626dc65300",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/OFFSCREEN.log",
+      "expected": "53967b5347aa9cad6f36288119b2bbd06aa7231b",
+      "observed": "53967b5347aa9cad6f36288119b2bbd06aa7231b",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/ONLINE.json",
+      "expected": "12ba84a8d33cc6d04e3abb4a3bf16623893c688c",
+      "observed": "12ba84a8d33cc6d04e3abb4a3bf16623893c688c",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/ONLINE.log",
+      "expected": "e55d1ad6398145019494f04ecb3785fdec800ed2",
+      "observed": "e55d1ad6398145019494f04ecb3785fdec800ed2",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/ONLINE_THREE.json",
+      "expected": "1e24ea10eb5297b9f368a261bac0690660855899",
+      "observed": "1e24ea10eb5297b9f368a261bac0690660855899",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/ONLINE_THREE.log",
+      "expected": "bbdc8153f83310aa59d237e8741c9610e4f45a3e",
+      "observed": "bbdc8153f83310aa59d237e8741c9610e4f45a3e",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/PARITY.log",
+      "expected": "3349f5bf133c384657a09f2a6aa8cf85234bb5ad",
+      "observed": "3349f5bf133c384657a09f2a6aa8cf85234bb5ad",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/PERFORMANCE.log",
+      "expected": "1aa301bd68dfad6ab50fb718cf07dbb8c259ac69",
+      "observed": "1aa301bd68dfad6ab50fb718cf07dbb8c259ac69",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/PILOT.log",
+      "expected": "26bf727c8f698d50d3e99fd60d5e3a31eaf5f81a",
+      "observed": "26bf727c8f698d50d3e99fd60d5e3a31eaf5f81a",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/PREVIEW_CHECK.json",
+      "expected": "4d4a86112be659ceed97b9acbe98483f6db55a96",
+      "observed": "4d4a86112be659ceed97b9acbe98483f6db55a96",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/QUEUE_VERIFICATION.json",
+      "expected": "370198594aacc4ff706501b0c854376e731f0773",
+      "observed": "370198594aacc4ff706501b0c854376e731f0773",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/REVIEW.json",
+      "expected": "d944a4e053bcefc82ad9f4c273865820f2e73805",
+      "observed": "d944a4e053bcefc82ad9f4c273865820f2e73805",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/REVIEW_desktop_bosque.png",
+      "expected": "e88a2a7554395a649fd1fa43f8566b9b71e9a43e",
+      "observed": "e88a2a7554395a649fd1fa43f8566b9b71e9a43e",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/REVIEW_desktop_laberinto.png",
+      "expected": "765e52c1097baf35b7d9c89a11ef13244bf02bc6",
+      "observed": "765e52c1097baf35b7d9c89a11ef13244bf02bc6",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/REVIEW_mobile_bosque.png",
+      "expected": "1fb2f9b0425ed884e5a55c45d23eed3667fdcbb3",
+      "observed": "1fb2f9b0425ed884e5a55c45d23eed3667fdcbb3",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/REVIEW_mobile_laberinto.png",
+      "expected": "633aa63c9ec9db011500ca423b6d4946274eca74",
+      "observed": "633aa63c9ec9db011500ca423b6d4946274eca74",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/SCOPE.json",
+      "expected": "34ed41303d56cfb374a0f2c9d76637178b695d65",
+      "observed": "34ed41303d56cfb374a0f2c9d76637178b695d65",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/SINGLE_INVARIANCE.json",
+      "expected": "05a6b6a81093ef4d9f63c1c2007df74ffecabc5c",
+      "observed": "05a6b6a81093ef4d9f63c1c2007df74ffecabc5c",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/TEMPORAL_DESKTOP.log",
+      "expected": "df55ceffcaf37ea2c792eb58c0dd71d651e3bac8",
+      "observed": "df55ceffcaf37ea2c792eb58c0dd71d651e3bac8",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/TEMPORAL_MOBILE.log",
+      "expected": "ef33920245cd9d71424f7b22b76c8e26dcf93e64",
+      "observed": "ef33920245cd9d71424f7b22b76c8e26dcf93e64",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/TEMPORAL_desktop_infernal.png",
+      "expected": "7c4c5de254a16c421856924bd99493b8a1720ec5",
+      "observed": "7c4c5de254a16c421856924bd99493b8a1720ec5",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/TEMPORAL_desktop_minas.png",
+      "expected": "dfd75598c545b518d8619e0275781f9fa9a46157",
+      "observed": "dfd75598c545b518d8619e0275781f9fa9a46157",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/TEMPORAL_mobile_infernal.png",
+      "expected": "6b07934c87aefc301956f9e4e47b42cdd26d57e5",
+      "observed": "6b07934c87aefc301956f9e4e47b42cdd26d57e5",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/TEMPORAL_mobile_minas.png",
+      "expected": "e20f50e53061d6d74326e726fe653ce563af9846",
+      "observed": "e20f50e53061d6d74326e726fe653ce563af9846",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/TEST_ATTEMPTS.json",
+      "expected": "a13fd31978f3bac1f5cacac0304006c8d6ad5a30",
+      "observed": "a13fd31978f3bac1f5cacac0304006c8d6ad5a30",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/THREE_DESKTOP.log",
+      "expected": "a88d0ec1e89419f5d7e4c75f8e59cb3c4f24bd98",
+      "observed": "a88d0ec1e89419f5d7e4c75f8e59cb3c4f24bd98",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/THREE_DESKTOP_REST.log",
+      "expected": "78f6b00235da63413b6b22352c5fc356418409fd",
+      "observed": "78f6b00235da63413b6b22352c5fc356418409fd",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/THREE_MOBILE.log",
+      "expected": "8b8876f034e41ef3447eaa29d33e9ad08240d24b",
+      "observed": "8b8876f034e41ef3447eaa29d33e9ad08240d24b",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/THREE_MOBILE_REST.log",
+      "expected": "80d434a4fda0a124a68b0e9c581d5c8c1f9d0d87",
+      "observed": "80d434a4fda0a124a68b0e9c581d5c8c1f9d0d87",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/THREE_desktop.png",
+      "expected": "a2986b6c7007ee40eebf4d86cf968b3a7a87b9a8",
+      "observed": "a2986b6c7007ee40eebf4d86cf968b3a7a87b9a8",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/THREE_mobile.png",
+      "expected": "76cb26ae2c15e46f0c3e88c524131c250f1f5333",
+      "observed": "76cb26ae2c15e46f0c3e88c524131c250f1f5333",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/TRIPLE_desktop_bosque.png",
+      "expected": "8fd33b96511d637b9cc8f998fa9eeaff95c3d3b1",
+      "observed": "8fd33b96511d637b9cc8f998fa9eeaff95c3d3b1",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/TRIPLE_desktop_laberinto.png",
+      "expected": "adbe534f7b1023abf5c50aed94df14a0138fc682",
+      "observed": "adbe534f7b1023abf5c50aed94df14a0138fc682",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/TRIPLE_mobile_bosque.png",
+      "expected": "692a097a42eed82f9fe79da4b22a5e5aee0fd374",
+      "observed": "692a097a42eed82f9fe79da4b22a5e5aee0fd374",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/TRIPLE_mobile_laberinto.png",
+      "expected": "87380e6188a002bb1382b6a0f5ed456014c94ecd",
+      "observed": "87380e6188a002bb1382b6a0f5ed456014c94ecd",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt01-camera-not-outside/CAST_COMPARISON.json",
+      "expected": "e2774f28d7c90bd01e040a5b19b3c924a4122be3",
+      "observed": "e2774f28d7c90bd01e040a5b19b3c924a4122be3",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt01-camera-not-outside/OFFSCREEN.log",
+      "expected": "4b8c919abd1e5d54c1e5f5ee6072e344cd3cda52",
+      "observed": "4b8c919abd1e5d54c1e5f5ee6072e344cd3cda52",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt01-camera-not-outside/harness.js",
+      "expected": "45427e4bc402273c095083626fa1f210cc3663e9",
+      "observed": "45427e4bc402273c095083626fa1f210cc3663e9",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt02-review-desktop.png",
+      "expected": "022476d3444182db2f7553be524e89cfcb73953b",
+      "observed": "022476d3444182db2f7553be524e89cfcb73953b",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt02-review-mobile.png",
+      "expected": "4ba39891e106a4d1ae6ea7471a94af6bc81ccaf7",
+      "observed": "4ba39891e106a4d1ae6ea7471a94af6bc81ccaf7",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt02-wide-contact/DESKTOP.log",
+      "expected": "6615784edac6aa11a74a9c57c65238e165933d9d",
+      "observed": "6615784edac6aa11a74a9c57c65238e165933d9d",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt02-wide-contact/MOBILE.log",
+      "expected": "cefb75b36e7ec71d0ef91112090c3ed0d0248dc4",
+      "observed": "cefb75b36e7ec71d0ef91112090c3ed0d0248dc4",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt02-wide-contact/source.js",
+      "expected": "52798027bef3f3791d8abddcc8a5fc6c7b035712",
+      "observed": "52798027bef3f3791d8abddcc8a5fc6c7b035712",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt02-wide-contact-desktop.json.gz",
+      "expected": "09b82a64e0a13fd6ab75a84515bdecd3d6cbc4a7",
+      "observed": "09b82a64e0a13fd6ab75a84515bdecd3d6cbc4a7",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt02-wide-contact-mobile.json.gz",
+      "expected": "855e1408bcce032682a9acd895bf2fd15f284e03",
+      "observed": "855e1408bcce032682a9acd895bf2fd15f284e03",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt03-half-width/DESKTOP.log",
+      "expected": "294ee3e44d4ba0e1e36954d14dac41b67d62d4b3",
+      "observed": "294ee3e44d4ba0e1e36954d14dac41b67d62d4b3",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt03-half-width/MOBILE.log",
+      "expected": "cc5973a94fa3d10c5cc6894432c8ce4275dac13a",
+      "observed": "cc5973a94fa3d10c5cc6894432c8ce4275dac13a",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt03-half-width/NATIVE.log",
+      "expected": "1ad6fe72afc4fae39d6c41913b2b637bd4b56410",
+      "observed": "1ad6fe72afc4fae39d6c41913b2b637bd4b56410",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt03-half-width/NATIVE_CONTRACT.json",
+      "expected": "7cf9f71329f6730abd4a45e5a039d0c9fa418ef0",
+      "observed": "7cf9f71329f6730abd4a45e5a039d0c9fa418ef0",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt03-half-width/ONLINE.json",
+      "expected": "8267cc8142beacc2b120d0e07f804ae042e5e206",
+      "observed": "8267cc8142beacc2b120d0e07f804ae042e5e206",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt03-half-width/ONLINE.log",
+      "expected": "2fb35e610f3030274494c5d10e9dddf09fd80e6d",
+      "observed": "2fb35e610f3030274494c5d10e9dddf09fd80e6d",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt03-half-width/source.js",
+      "expected": "db1a1360cc26d91717966a65cf94b4fbe5c95ca8",
+      "observed": "db1a1360cc26d91717966a65cf94b4fbe5c95ca8",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt03-half-width-desktop.json.gz",
+      "expected": "61ca30a62c1684b803de2b3a7bb6377d8220b99b",
+      "observed": "61ca30a62c1684b803de2b3a7bb6377d8220b99b",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt03-half-width-mobile.json.gz",
+      "expected": "ae9d5bbe1e3917affb2864b0d3d33a9cf5452c69",
+      "observed": "ae9d5bbe1e3917affb2864b0d3d33a9cf5452c69",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt04-contact-fail.png",
+      "expected": "d4f50846be1d060dd007c18c2f69cb174d10a3c3",
+      "observed": "d4f50846be1d060dd007c18c2f69cb174d10a3c3",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt04-three-overlap/FULL_RENDER_PERFORMANCE.json",
+      "expected": "5c4dbd20efecf4a3e1b90c5a3e9043b0c77266d0",
+      "observed": "5c4dbd20efecf4a3e1b90c5a3e9043b0c77266d0",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt04-three-overlap/PERFORMANCE.log",
+      "expected": "991fd877bccda2c6c7b70b7630a734454fa14722",
+      "observed": "991fd877bccda2c6c7b70b7630a734454fa14722",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt04-three-overlap/THREE_DESKTOP.log",
+      "expected": "95725e30cab038b61eba9fb8c65c1717e16cea35",
+      "observed": "95725e30cab038b61eba9fb8c65c1717e16cea35",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt04-three-overlap/THREE_MOBILE.log",
+      "expected": "e89462c4872b8419da85d328d1531f98ff71d229",
+      "observed": "e89462c4872b8419da85d328d1531f98ff71d229",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt04-three-overlap/source.js",
+      "expected": "757dee4e1969408f44c065f3ce130eb50347fd14",
+      "observed": "757dee4e1969408f44c065f3ce130eb50347fd14",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt04-three-overlap-three-desktop.json.gz",
+      "expected": "945f7aac507333ee30d1c0631264fd53f98b9507",
+      "observed": "945f7aac507333ee30d1c0631264fd53f98b9507",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/attempt04-three-overlap-three-mobile.json.gz",
+      "expected": "cd3f8b0cdc15ba5642bcab25ee3fb55a50f0e67c",
+      "observed": "cd3f8b0cdc15ba5642bcab25ee3fb55a50f0e67c",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/canary.json.gz",
+      "expected": "e6ff3ca84ba2e55c9c9d4525571c623335113ee7",
+      "observed": "e6ff3ca84ba2e55c9c9d4525571c623335113ee7",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/contact-pilot.json.gz",
+      "expected": "f334139e1482e0a5622239c35405d2cc51dcf90e",
+      "observed": "f334139e1482e0a5622239c35405d2cc51dcf90e",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/desktop.json.gz",
+      "expected": "67f52524a23289a4fe56db9382e6d8b7f03c5f19",
+      "observed": "67f52524a23289a4fe56db9382e6d8b7f03c5f19",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/fullframe-desktop-minas.png",
+      "expected": "f5fd0e4da685046f958e940f4ca31499f054b5ba",
+      "observed": "f5fd0e4da685046f958e940f4ca31499f054b5ba",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/fullframe-mobile-minas.png",
+      "expected": "c1ffb757acb0b924c4d9c02510c9046e35205cf4",
+      "observed": "c1ffb757acb0b924c4d9c02510c9046e35205cf4",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/main-after.png",
+      "expected": "aec8e09bf18e62380ee36b51b6812b93a9e7c5cc",
+      "observed": "aec8e09bf18e62380ee36b51b6812b93a9e7c5cc",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/main-before.png",
+      "expected": "e38de0054c3275bf3ffdbbaa6dbfdfe979aaa7ce",
+      "observed": "e38de0054c3275bf3ffdbbaa6dbfdfe979aaa7ce",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/main-pairs.json.gz",
+      "expected": "93531c806c7b6e1b5d8e1314b7025c63a38033cc",
+      "observed": "93531c806c7b6e1b5d8e1314b7025c63a38033cc",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/minas-pilot.json.gz",
+      "expected": "545c4133a7037aec8618bf640cc36a8e058647ab",
+      "observed": "545c4133a7037aec8618bf640cc36a8e058647ab",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/mobile.json.gz",
+      "expected": "f4c3bed4bf5a50ed32bc0c3781adf4d3808c5812",
+      "observed": "f4c3bed4bf5a50ed32bc0c3781adf4d3808c5812",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/parity.json",
+      "expected": "4f10360fb2b31c66c69b8949bc69f1fd54566742",
+      "observed": "4f10360fb2b31c66c69b8949bc69f1fd54566742",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/pilot.json.gz",
+      "expected": "125829253245a1458e8382a3a27fc637083c261d",
+      "observed": "125829253245a1458e8382a3a27fc637083c261d",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/preview.html",
+      "expected": "6a678365a137808f59416b30235dcdafda8cb6fa",
+      "observed": "6a678365a137808f59416b30235dcdafda8cb6fa",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/recipe.json",
+      "expected": "db552128dbfdce6e9c8ec9a64b799d5ebf4934a5",
+      "observed": "db552128dbfdce6e9c8ec9a64b799d5ebf4934a5",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/relay-before-width/ONLINE.json",
+      "expected": "7ca6be3c81851428ea03aaedf869962393ebd030",
+      "observed": "7ca6be3c81851428ea03aaedf869962393ebd030",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/relay-before-width/ONLINE.log",
+      "expected": "d502f735ae03eeccd73dc1f62204f5934cee64be",
+      "observed": "d502f735ae03eeccd73dc1f62204f5934cee64be",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/source-before.js",
+      "expected": "74b563571a9d51ba73dacfdbe48e8326c47b9ae4",
+      "observed": "74b563571a9d51ba73dacfdbe48e8326c47b9ae4",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/source-candidate.js",
+      "expected": "fd66239606d0b03f08541a75aac58c4fa47dfcc6",
+      "observed": "fd66239606d0b03f08541a75aac58c4fa47dfcc6",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/temporal-desktop.json.gz",
+      "expected": "94c1c3db3dc58a6ee249c2e50a073a42c6ffc82a",
+      "observed": "94c1c3db3dc58a6ee249c2e50a073a42c6ffc82a",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/temporal-mobile.json.gz",
+      "expected": "5a3084b67e327e93655cada26e35ca4e2c394317",
+      "observed": "5a3084b67e327e93655cada26e35ca4e2c394317",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/three-desktop-rest.json.gz",
+      "expected": "8da5b7d68a647ef285a8640587b96389a947471a",
+      "observed": "8da5b7d68a647ef285a8640587b96389a947471a",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/three-desktop.json.gz",
+      "expected": "349adecc7c7dd522b774763355a7cba08a652fd3",
+      "observed": "349adecc7c7dd522b774763355a7cba08a652fd3",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/three-mobile-rest.json.gz",
+      "expected": "2d25287d50721bc366349013e6e1164de2eadbb1",
+      "observed": "2d25287d50721bc366349013e6e1164de2eadbb1",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/three-mobile.json.gz",
+      "expected": "6134bba2e5b7bdfcbe62dc91d55a0149a90ea136",
+      "observed": "6134bba2e5b7bdfcbe62dc91d55a0149a90ea136",
+      "pass": true
+    },
+    {
+      "path": "css/codex.css",
+      "expected": "2a5a868b5ac9346876f2b0ad99baabd380099aa8",
+      "observed": "2a5a868b5ac9346876f2b0ad99baabd380099aa8",
+      "pass": true
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "expected": "d21deb17d816b9b482e98fad2cced3bdc2268b21",
+      "observed": "d21deb17d816b9b482e98fad2cced3bdc2268b21",
+      "pass": true
+    },
+    {
+      "path": "js/champions/vfx-b/nahir.js",
+      "expected": "fd66239606d0b03f08541a75aac58c4fa47dfcc6",
+      "observed": "fd66239606d0b03f08541a75aac58c4fa47dfcc6",
+      "pass": true
+    },
+    {
+      "path": "tools/vfx/capture-nahir-contact.js",
+      "expected": "54dfd994392b57c4f6a15a5240cc1f2bbba2174e",
+      "observed": "54dfd994392b57c4f6a15a5240cc1f2bbba2174e",
+      "pass": true
+    },
+    {
+      "path": "tools/vfx/capture-nahir-echo.js",
+      "expected": "12077da295b3984e3435dd2185850d5638f30580",
+      "observed": "12077da295b3984e3435dd2185850d5638f30580",
+      "pass": true
+    },
+    {
+      "path": "tools/vfx/capture-nahir-three-echoes.js",
+      "expected": "e581509cb19dfdf84cffc17b0d74765a4bc83a6a",
+      "observed": "e581509cb19dfdf84cffc17b0d74765a4bc83a6a",
+      "pass": true
+    },
+    {
+      "path": "tools/vfx/check-nahir-preview.js",
+      "expected": "ebc2b057d754448d5ea88071f06c4f1e96115094",
+      "observed": "ebc2b057d754448d5ea88071f06c4f1e96115094",
+      "pass": true
+    },
+    {
+      "path": "tools/vfx/nahir-echo-main-pairs.js",
+      "expected": "e4a0642422282b4a0966e79a48d6829e2541477b",
+      "observed": "e4a0642422282b4a0966e79a48d6829e2541477b",
+      "pass": true
+    },
+    {
+      "path": "tools/vfx/nahir-echo-native-close.js",
+      "expected": "e29b7b77b4c767f73eb94369ece95a839d15c8ce",
+      "observed": "e29b7b77b4c767f73eb94369ece95a839d15c8ce",
+      "pass": true
+    },
+    {
+      "path": "tools/vfx/nahir-echo-offscreen-online.js",
+      "expected": "c62a10fcb3c56a2b24650cfb662409190df3aa64",
+      "observed": "c62a10fcb3c56a2b24650cfb662409190df3aa64",
+      "pass": true
+    },
+    {
+      "path": "tools/vfx/nahir-echo-offscreen.js",
+      "expected": "85ea750aaf64abc2c578ba7800da23d5900edd7d",
+      "observed": "85ea750aaf64abc2c578ba7800da23d5900edd7d",
+      "pass": true
+    },
+    {
+      "path": "tools/vfx/nahir-full-render-perf.js",
+      "expected": "bd1a4d061aad8b33b01ca85b225d7f3f4ac6ed94",
+      "observed": "bd1a4d061aad8b33b01ca85b225d7f3f4ac6ed94",
+      "pass": true
+    },
+    {
+      "path": "tools/vfx/nahir-three-echoes-online.js",
+      "expected": "7f5bdf71b6c75ed668096d6f6fdeb958f97393d6",
+      "observed": "7f5bdf71b6c75ed668096d6f6fdeb958f97393d6",
+      "pass": true
+    },
+    {
+      "path": "tools/vfx/parity-nahir-echo.js",
+      "expected": "1e01387c4b8e165d2060c73e5b59126184b15efe",
+      "observed": "1e01387c4b8e165d2060c73e5b59126184b15efe",
+      "pass": true
+    },
+    {
+      "path": "art-source/entregas/nahir-echo-20261026/cierre-01/manifest.json",
+      "expected": "201349a11b36e3f0f943c7ac986e761ea54066c2",
+      "observed": "201349a11b36e3f0f943c7ac986e761ea54066c2",
+      "pass": true
+    }
+  ],
+  "main": "a88d32ae8e686fafd08ce61d47661741dfdece7c",
+  "scope": "116 uploaded production paths checked by Git blob against full remote tree. Fresh PRhead/ref confirmed. Immutable source manifest. Remote CHECKPOINT/manifest fetched separately."
+}

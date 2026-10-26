@@ -1,0 +1,54 @@
+{
+  "canonical": "https://fondalstudios.com/la-horda/jugar/",
+  "index": {
+    "url": "https://fondalstudios.com/la-horda/jugar/",
+    "status": 200,
+    "checkedAt": "2026-10-26T20:44:26.284098+00:00",
+    "bytes": 67504,
+    "sha256": "02802491fb636eea94e5deb7102bc0b17ee770f9f17a233184fec1b19fa2f538",
+    "headers": {
+      "Content-Type": "text/html; charset=utf-8",
+      "Last-Modified": "Thu, 22 Oct 2026 19:26:24 GMT",
+      "ETag": null,
+      "Cache-Control": "no-cache"
+    }
+  },
+  "files": [
+    {
+      "url": "https://fondalstudios.com/la-horda/jugar/js/champions/vfx-b/nahir.js",
+      "status": 200,
+      "checkedAt": "2026-10-26T20:44:31.412959+00:00",
+      "bytes": 6831,
+      "sha256": "55cc06f19c822009c515b7a1ab7ddd7c1e2a7d4926b1694eee84def29ca2cb9f",
+      "headers": {
+        "Content-Type": "text/javascript; charset=utf-8",
+        "Last-Modified": "Thu, 22 Oct 2026 19:26:24 GMT",
+        "ETag": null,
+        "Cache-Control": "no-cache"
+      },
+      "path": "js/champions/vfx-b/nahir.js",
+      "expectedSha256": "b3fa8b5091b0bb23c11082b63850011128c1ae9c6ea18d35681e8b39db77fc62",
+      "exact": false,
+      "indexConsumes": true
+    },
+    {
+      "url": "https://fondalstudios.com/la-horda/jugar/css/codex.css",
+      "status": 200,
+      "checkedAt": "2026-10-26T20:44:34.921078+00:00",
+      "bytes": 25679,
+      "sha256": "cf7a443ea49af0ba5b3cf81fad2f76ecd436c560d80f3531f506e21eee4ab754",
+      "headers": {
+        "Content-Type": "text/css; charset=utf-8",
+        "Last-Modified": "Thu, 22 Oct 2026 19:26:24 GMT",
+        "ETag": null,
+        "Cache-Control": "no-cache"
+      },
+      "path": "css/codex.css",
+      "expectedSha256": "de197899d7dfb676155538239ef3a5d2c2a5f94547e6ffe1e7cc3557028a6844",
+      "exact": false,
+      "indexConsumes": true
+    }
+  ],
+  "status": "NOT_CONFIRMED",
+  "scope": "Public GET with normal system TLS verification. Selected runtime/CSS bytes and index consumer only; no infrastructure, accounts or payments changed. Main integration is separate from canonical publication."
+}

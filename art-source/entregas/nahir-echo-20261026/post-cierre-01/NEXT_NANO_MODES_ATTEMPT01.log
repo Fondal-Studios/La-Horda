@@ -1,0 +1,15 @@
+/workspace/scratch/27dc1a293731/nahir-work/tools/vfx/audit-nano-modes-next.js:15
+ player.energy=1e5;player.cds=[0,0,0];player.ultCd=0;player.ultCharge=player.ultMax;runLevel=ULT_MIN_ARENA_LEVEL;const before=snap();if(slot===3)useUltimate();else useSkill(slot,{x:player.x+180,y:player.y,dx:1,dy:0});const cast=snap();kvbFx=oldFx;ufPlay=oldUf;ascArea=oldArea;
+                                                                                                                                                                                                                               ^
+
+SyntaxError: Identifier 'cast' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1861:18)
+    at Module._compile (node:internal/modules/cjs/loader:1903:20)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.22.1
