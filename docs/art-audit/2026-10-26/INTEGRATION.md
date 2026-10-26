@@ -1,23 +1,51 @@
-# Integración del códice — 26 de octubre de 2026
+# Bases artísticas del códice
 
-## Entregado
-- Hoja ilustrada de Ilkan en su ficha, con enlace para ampliar y dimensiones adaptables.
-- Registro explícito CODEX_CHAMP_SHEETS: solo contiene archivos presentes; no solicita imágenes inexistentes.
-- Las demos de movimiento, habilidades y apariencias siguen usando los sprites reales.
-- Corregida la llamada drawImage de las panorámicas del libro: estaba dentro de un comentario, junto con restore(), por lo que ni pintaba la imagen ni equilibraba el estado del canvas.
+43 héroes con hoja ilustrada, incluida Ynara. Las hojas se muestran en Códice → Guardianes → Ficha → Hoja del códice, y se pueden ampliar.
 
-## Verificación
-- Sintaxis JavaScript de los dos archivos modificados: correcta.
-- Render del registro: Ilkan muestra la hoja; un héroe sin hoja no genera imagen rota; el nombre se escapa.
-- Dibujo de panorama con imagen simulada: una llamada drawImage, save/restore equilibrados.
-- Panorama sin imagen: fallback correcto.
-- No se ejecutaron pruebas visuales ni gameplay: el entorno de ejecución se desconectó.
+Estas ilustraciones son las referencias de identidad, silueta, vestuario, armas y paleta para producir los sprites de combate. No son atlas de animación: la producción de sprites debe conservar esa identidad y cumplir docs/ART_BIBLE.md (grilla, pivotes, cuatro direcciones, transparencia y animaciones verificadas). El gameplay mantiene sus animaciones actuales.
 
-## Pendiente real
-La colección llegó a 32 conceptos generados de 43 héroes. Solo el blob de Ilkan había sido transferido a GitHub cuando se perdió el entorno. Las otras 31 hojas requieren recuperar los archivos de la sesión; no están publicadas por este commit.
+- [aelith](/assets/ui/codex/champions/aelith.png)
+- [aurelia](/assets/ui/codex/champions/aurelia.png)
+- [axiom](/assets/ui/codex/champions/axiom.png)
+- [baltra](/assets/ui/codex/champions/baltra.png)
+- [brakk](/assets/ui/codex/champions/brakk.png)
+- [brasa](/assets/ui/codex/champions/brasa.png)
+- [bront](/assets/ui/codex/champions/bront.png)
+- [cazadora](/assets/ui/codex/champions/cazadora.png)
+- [dariel](/assets/ui/codex/champions/dariel.png)
+- [eslabon](/assets/ui/codex/champions/eslabon.png)
+- [facu_gm](/assets/ui/codex/champions/facu_gm.png)
+- [farolero](/assets/ui/codex/champions/farolero.png)
+- [guerrero](/assets/ui/codex/champions/guerrero.png)
+- [ilkan](/assets/ui/codex/champions/ilkan.png)
+- [iria](/assets/ui/codex/champions/iria.png)
+- [khepri](/assets/ui/codex/champions/khepri.png)
+- [libertador](/assets/ui/codex/champions/libertador.png)
+- [mago](/assets/ui/codex/champions/mago.png)
+- [maura](/assets/ui/codex/champions/maura.png)
+- [morveth](/assets/ui/codex/champions/morveth.png)
+- [morwen](/assets/ui/codex/champions/morwen.png)
+- [musashi](/assets/ui/codex/champions/musashi.png)
+- [myla](/assets/ui/codex/champions/myla.png)
+- [nahir](/assets/ui/codex/champions/nahir.png)
+- [nano_gm](/assets/ui/codex/champions/nano_gm.png)
+- [nigromante](/assets/ui/codex/champions/nigromante.png)
+- [oriel](/assets/ui/codex/champions/oriel.png)
+- [orsa](/assets/ui/codex/champions/orsa.png)
+- [profeta](/assets/ui/codex/champions/profeta.png)
+- [renko](/assets/ui/codex/champions/renko.png)
+- [saelis](/assets/ui/codex/champions/saelis.png)
+- [segador](/assets/ui/codex/champions/segador.png)
+- [sira](/assets/ui/codex/champions/sira.png)
+- [solciju](/assets/ui/codex/champions/solciju.png)
+- [soporte](/assets/ui/codex/champions/soporte.png)
+- [tanque](/assets/ui/codex/champions/tanque.png)
+- [tibor](/assets/ui/codex/champions/tibor.png)
+- [velmira](/assets/ui/codex/champions/velmira.png)
+- [vesper](/assets/ui/codex/champions/vesper.png)
+- [veyra](/assets/ui/codex/champions/veyra.png)
+- [vhal](/assets/ui/codex/champions/vhal.png)
+- [ynara](/assets/ui/codex/champions/ynara.png)
+- [zahra](/assets/ui/codex/champions/zahra.png)
 
-Restan por generar: Axiom, Sylva, Kael, San Martín, Thalen, Musashi, Ilvar, Ismara, Segador, Elyra y Aldric. Corregir además la espalda de Brakk antes de publicar su hoja.
-
-Las vistas de una hoja de concepto NO son atlas de animación listos para combate. No se reemplazaron sprites de gameplay. La producción pendiente necesita grilla, transparencia, direcciones, cuadros, pivotes y verificación visual contra ART_BIBLE.md.
-
-Los inventarios históricos LA_HORDA_CODEX_MISSING_ASSETS.md y LA_HORDA_COMBAT_MISSING_ASSETS.md no son una lista verificada del estado actual: por ejemplo las panorámicas de Ciudad y Minas ya existen. Reconciliar referencias de código con los archivos actuales antes de producir reemplazos.
+Pendiente de revisión artística: corregir la vista posterior de Brakk antes de derivar sus sprites. Integración verificada por registro completo, archivos PNG legibles y sintaxis JavaScript; no se ha completado una prueba visual de navegador de esta entrega.
