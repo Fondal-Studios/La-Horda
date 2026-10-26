@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-26",
+  "state": "EN_CORRECCION",
+  "gate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "pr": 227,
+  "branch": "art/musashi-thousand-cuts-first-pass-20261026",
+  "productionCommit": "5251d974906d97582f7defa941478b6a32ee8939",
+  "productionTree": "1ae9eeac2d86f18df09fb08555951b3175460098",
+  "baseMain": "20afebd4ccefaf6fa11ce30ab096c2535d341640",
+  "productionVerified": 114,
+  "totalTreeEntries": 12217,
+  "truncated": false,
+  "scope": [
+    "A-FX-musashi-h3/thousand-cuts"
+  ],
+  "runtimeFiles": [
+    "js/skills/abilities.js",
+    "js/champions/skill-fx-a/c/musashi.js",
+    "js/champions/ult-forms/bind.js"
+  ],
+  "pngInstalled": 0,
+  "queue": {
+    "entries": 62,
+    "first61Preserved": true
+  },
+  "testsNew": {
+    "matrixScenes": 120,
+    "abaExact": 480,
+    "minBodyRetention": 0.9386792452830188,
+    "temporalScenes": 8,
+    "temporalABA": 32,
+    "precastPairsExact": 8,
+    "relayChecks": 6,
+    "parityFrames": 360,
+    "rngCallsEach": 15216,
+    "parityScope": "RESUMIDO only; not global complete state",
+    "nativeBuckets": 3,
+    "phases": 72,
+    "nonemptyPhases": 66,
+    "pngExports": 4,
+    "reexportsByteEqual": 4,
+    "previewCanvases": 4,
+    "previewImages": 4
+  },
+  "historicalWithinRun": [
+    "18 cast checks before final painter; geometry unchanged",
+    "Rejected afterimage owner checks/performance do not certify H3 candidate"
+  ],
+  "visualReview": {
+    "denseViews": 60,
+    "temporalViews": 32,
+    "pairedViews": 16,
+    "result": "FIX: segmented ring, tier4 distant, Errante red FX competition"
+  },
+  "publication": {
+    "state": "NOT_CHECKED_THIS_DRAFT",
+    "merged": false,
+    "priorCanonicalStatus": "NOT_CONFIRMED; Libertador check 2026-10-26 10:45 UTC, separate"
+  },
+  "ci": {
+    "approval": false,
+    "observation": "CI_OBSERVED.json applies to production SHA, not future documentary closure SHA"
+  },
+  "next": "CIERRE grouped H3 silhouette/phase/launch-impact-persistence; preserve rejected sources. Complete extreme radius >420, lifecycle/fused/frozen/recast/culling/uf=0 and clean full renderer performance. Art PASS and all exact head checks before merge. No new kit.",
+  "reproduction": "See ../area-01/recipe.json and tools/vfx/{capture-musashi-area,musashi-area-contract,musashi-area-online,parity-musashi-area,export-musashi-area}.js; CHROMIUM_PATH=/tmp/chromium; use fresh full runtime.",
+  "globalInventory": "INCOMPLETE"
+}
