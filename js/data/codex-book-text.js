@@ -105,7 +105,7 @@ const BOOK_FRAGMENTS = {
     lore:"Te mentí en lo que importaba. Fui el Primero de los Cuatro, y me quedé con la Horda porque quise: iba a fundir los cristales para ser la Horda. Cuando caí dije que alguien tenía que sostenerla, y lo creí, que es lo peor. Este libro lo escribí yo, con tinta de hollín. Los cristales necesitan portadores. Ahora son ustedes.",
     lesson:"Ganaste la campaña. Quedan la Arena Divina (las Cinco Pruebas), la Horda Infinita, las dificultades Pesadilla e Infierno, la Convergencia y el Coliseo. Tu guardián y tu equipo siguen creciendo en todos. El Códice guarda todo lo que viste.",
     extra:[{kicker:"RESUMEN DEL LIBRO", title:"LO QUE SABÉS AHORA", art:"recap",
-      text:"HISTORIA: cuatro Guardianes, cuatro cristales, y una Horda que no muere.\nMODOS: campaña, cooperativo, Convergencia, Coliseo, Infinita y Divina.\nPROGRESIÓN: nivel, oro y Tienda, equipo, maestría, talentos, dificultades. Las Brasas ✦ son solo apariencia."}]}
+      text:"HISTORIA: cuatro Guardianes, cuatro cristales y una Horda que no muere.\nMODOS: campaña, cooperativo, Convergencia, Coliseo, Infinita y Divina.\nPROGRESIÓN: nivel, oro, equipo, maestría, talentos, dificultades. Brasas ✦: solo apariencia."}]}
 };
 
 // Temas que el recorrido completo de la campaña tiene que cubrir (el test falla si falta alguno).
