@@ -1,0 +1,34 @@
+{
+  "status": "INTEGRADO_MAIN",
+  "productionHead": "868644f68a15558675ef62bceaac9b01947b909a",
+  "productionTree": "c6e48abf0210bb7ebff094090d04fa3e943c1a80",
+  "mergeSHA": "20afebd4ccefaf6fa11ce30ab096c2535d341640",
+  "mergedAt": "2026-10-26T10:45:30Z",
+  "pr": "https://github.com/Fondal-Studios/La-Horda/pull/220",
+  "branch": "art/libertador-kit-first-pass-20261025",
+  "approvedComponents": [
+    "A-FX-libertador-h1/bayonet-travel",
+    "A-FX-libertador-h2/command-cue",
+    "A-FX-libertador-h3/hoof-travel",
+    "three normal launch crests"
+  ],
+  "blocksRemainOpen": [
+    "B157",
+    "B158",
+    "B159"
+  ],
+  "productionManifest": "../cierre-04/manifest.json",
+  "exactHeadChecks": 23,
+  "exactHeadWorkflows": 11,
+  "publicationStatus": "NOT_CONFIRMED",
+  "supersedes": "VALIDADO only for named components; historical FIX sources and failures remain immutable; no approval for complete kit, body or other workshops",
+  "remoteClosureCommit": "Commit containing this file; evidence only, not another merge",
+  "next": "PRODUCCION auditada Musashi B172/B173/B174 from fresh main and PRs; read NEXT_MUSASHI_* including UF renderer resolution before claiming absences. Then close accumulated FIX. Global inventory incomplete, keep task active.",
+  "runtimeChanges": 2,
+  "installedNewPNGs": 0,
+  "queueEntries": 61,
+  "newValidation": "360 scenes/1440 exact ABA; body minimum99.0015%;18relay;360frames27434RNG equal summarized state (not full/global);180other/UFsignature images exact;12native cells;25technical;1360 full-render timings;reexport/preview/cold/reduced-motion/culling PASS;180dense+96temporal+24mainpair views reviewed",
+  "historicalNotRerun": "14lifecycle03,60castchecks01/02 and6443catalog controls03 source unchanged for respective predicates. IlkanE19 historical baseline unresolved.",
+  "limitations": "No physical mobile/GPU/GC certification or global combat snapshot. No claim entire B157/B158/B159 or public delivery from main.",
+  "noLostClosureDetected": true
+}

@@ -1,0 +1,163 @@
+[arnés] servidor propio: http://127.0.0.1:41083 (raíz /workspace/scratch/27dc1a293731/la-horda)
+[
+  {
+    scenario: { slot: 0, target: false },
+    before: { x: 0, y: 0, hp: undefined, concentration: 0 },
+    immediate: {
+      classKey: 'musashi',
+      bound: true,
+      off: false,
+      canvasSrc: 'http://127.0.0.1:41083/assets/sprites/champions/musashi/v2/a',
+      x: 0,
+      y: 0,
+      hp: undefined,
+      concentration: 0,
+      critTimer: 0,
+      afterimages: [],
+      secondCuts: [],
+      sfa: [Array],
+      pose: undefined
+    },
+    draws: { bodies: 30, bodyAttempts: 30, ink: 54 }
+  },
+  {
+    scenario: { slot: 0, target: true },
+    before: { x: 0, y: 0, hp: 1000000, concentration: 0 },
+    immediate: {
+      classKey: 'musashi',
+      bound: true,
+      off: false,
+      canvasSrc: 'http://127.0.0.1:41083/assets/sprites/champions/musashi/v2/a',
+      x: 60,
+      y: 0,
+      hp: 999926.081925,
+      concentration: 2,
+      critTimer: 0,
+      afterimages: [],
+      secondCuts: [],
+      sfa: [Array],
+      pose: 'ronin'
+    },
+    draws: { bodies: 30, bodyAttempts: 30, ink: 163 }
+  },
+  {
+    scenario: { slot: 0, target: true, perfect: true },
+    before: { x: 0, y: 0, hp: 1000000, concentration: 10 },
+    immediate: {
+      classKey: 'musashi',
+      bound: true,
+      off: false,
+      canvasSrc: 'http://127.0.0.1:41083/assets/sprites/champions/musashi/v2/a',
+      x: 60,
+      y: 0,
+      hp: 999919.42929825,
+      concentration: 10,
+      critTimer: 0,
+      afterimages: [],
+      secondCuts: [Array],
+      sfa: [Array],
+      pose: 'ronin'
+    },
+    draws: { bodies: 30, bodyAttempts: 30, ink: 163 }
+  },
+  {
+    scenario: { slot: 1, target: false },
+    before: { x: 0, y: 0, hp: undefined, concentration: 0 },
+    immediate: {
+      classKey: 'musashi',
+      bound: true,
+      off: false,
+      canvasSrc: 'http://127.0.0.1:41083/assets/sprites/champions/musashi/v2/a',
+      x: 114,
+      y: 0,
+      hp: undefined,
+      concentration: 0,
+      critTimer: 3200,
+      afterimages: [Array],
+      secondCuts: [],
+      sfa: [Array],
+      pose: undefined
+    },
+    draws: { bodies: 58, bodyAttempts: 58, ink: 165 }
+  },
+  {
+    scenario: { slot: 1, target: true },
+    before: { x: 0, y: 0, hp: 1000000, concentration: 0 },
+    immediate: {
+      classKey: 'musashi',
+      bound: true,
+      off: false,
+      canvasSrc: 'http://127.0.0.1:41083/assets/sprites/champions/musashi/v2/a',
+      x: 60,
+      y: 0,
+      hp: 1000000,
+      concentration: 0,
+      critTimer: 3200,
+      afterimages: [Array],
+      secondCuts: [],
+      sfa: [Array],
+      pose: undefined
+    },
+    draws: { bodies: 58, bodyAttempts: 58, ink: 163 }
+  },
+  {
+    scenario: { slot: 1, target: true, perfect: true },
+    before: { x: 0, y: 0, hp: 1000000, concentration: 0 },
+    immediate: {
+      classKey: 'musashi',
+      bound: true,
+      off: false,
+      canvasSrc: 'http://127.0.0.1:41083/assets/sprites/champions/musashi/v2/a',
+      x: 0,
+      y: 0,
+      hp: 1000000,
+      concentration: 3,
+      critTimer: 3200,
+      afterimages: [Array],
+      secondCuts: [],
+      sfa: [Array],
+      pose: undefined
+    },
+    draws: { bodies: 58, bodyAttempts: 58, ink: 82 }
+  },
+  {
+    scenario: { slot: 2, target: false },
+    before: { x: 0, y: 0, hp: undefined, concentration: 0 },
+    immediate: {
+      classKey: 'musashi',
+      bound: true,
+      off: false,
+      canvasSrc: 'http://127.0.0.1:41083/assets/sprites/champions/musashi/v2/a',
+      x: 0,
+      y: 0,
+      hp: undefined,
+      concentration: 0,
+      critTimer: 0,
+      afterimages: [],
+      secondCuts: [],
+      sfa: [],
+      pose: undefined
+    },
+    draws: { bodies: 30, bodyAttempts: 30, ink: 0 }
+  },
+  {
+    scenario: { slot: 2, target: true },
+    before: { x: 0, y: 0, hp: 1000000, concentration: 0 },
+    immediate: {
+      classKey: 'musashi',
+      bound: true,
+      off: false,
+      canvasSrc: 'http://127.0.0.1:41083/assets/sprites/champions/musashi/v2/a',
+      x: 0,
+      y: 0,
+      hp: 999869.2817200003,
+      concentration: 1,
+      critTimer: 0,
+      afterimages: [],
+      secondCuts: [],
+      sfa: [],
+      pose: 'thousand'
+    },
+    draws: { bodies: 30, bodyAttempts: 30, ink: 0 }
+  }
+]

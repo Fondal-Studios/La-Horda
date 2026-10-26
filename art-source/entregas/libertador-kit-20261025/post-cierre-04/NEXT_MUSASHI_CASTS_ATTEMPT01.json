@@ -1,0 +1,544 @@
+{
+  "scope": "Read-only preliminary audit on current main champion paths; no new art, no visual gate, no relay/global parity; 8 actual useSkill casts; mobile viewport only",
+  "rows": [
+    {
+      "scenario": {
+        "slot": 0,
+        "target": false
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0
+      },
+      "immediate": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [
+          {
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 30,
+            "dur": 420
+          },
+          {
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 38,
+            "dur": 460
+          }
+        ]
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0
+      },
+      "draws": {
+        "bodies": 0,
+        "ink": 54
+      }
+    },
+    {
+      "scenario": {
+        "slot": 0,
+        "target": true
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "x": 60,
+        "y": 0,
+        "hp": 999926.081925,
+        "concentration": 2,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [
+          {
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "bx": 60,
+            "by": 0,
+            "r": 60,
+            "dur": 520
+          },
+          {
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 30,
+            "dur": 420
+          },
+          {
+            "theme": "ink",
+            "x": 60,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 38,
+            "dur": 460
+          },
+          {
+            "theme": "ink",
+            "x": 100,
+            "y": -8,
+            "bx": 0,
+            "by": 0,
+            "r": 54,
+            "dur": 460
+          },
+          {
+            "theme": "ink~p",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 40,
+            "dur": 340
+          }
+        ],
+        "pose": "ronin"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 0,
+        "ink": 163
+      },
+      "capture": "NEXT_MUSASHI_H1.png"
+    },
+    {
+      "scenario": {
+        "slot": 0,
+        "target": true,
+        "perfect": true
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 10
+      },
+      "immediate": {
+        "x": 60,
+        "y": 0,
+        "hp": 999919.42929825,
+        "concentration": 10,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [
+          {
+            "timer": 220
+          }
+        ],
+        "sfa": [
+          {
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "bx": 60,
+            "by": 0,
+            "r": 60,
+            "dur": 520
+          },
+          {
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 30,
+            "dur": 420
+          },
+          {
+            "theme": "ink",
+            "x": 60,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 38,
+            "dur": 460
+          },
+          {
+            "theme": "ink",
+            "x": 100,
+            "y": -8,
+            "bx": 0,
+            "by": 0,
+            "r": 54,
+            "dur": 460
+          },
+          {
+            "theme": "ink~p",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 40,
+            "dur": 340
+          }
+        ],
+        "pose": "ronin"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 0,
+        "ink": 163
+      }
+    },
+    {
+      "scenario": {
+        "slot": 1,
+        "target": false
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0
+      },
+      "immediate": {
+        "x": 114,
+        "y": 0,
+        "concentration": 0,
+        "critTimer": 3200,
+        "afterimages": [
+          {
+            "x": 0,
+            "y": 0,
+            "fx": 1,
+            "fy": 0,
+            "classKey": "musashi",
+            "life": 240,
+            "maxLife": 240
+          },
+          {
+            "x": 114,
+            "y": 0,
+            "fx": 1,
+            "fy": 0,
+            "classKey": "musashi",
+            "life": 240,
+            "maxLife": 240
+          }
+        ],
+        "secondCuts": [],
+        "sfa": [
+          {
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "bx": 114,
+            "by": 0,
+            "r": 60,
+            "dur": 520
+          },
+          {
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 30,
+            "dur": 420
+          },
+          {
+            "theme": "ink~h",
+            "x": 114,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 38,
+            "dur": 460
+          },
+          {
+            "theme": "ink~p",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 40,
+            "dur": 340
+          }
+        ]
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 2720
+      },
+      "draws": {
+        "bodies": 0,
+        "ink": 165
+      }
+    },
+    {
+      "scenario": {
+        "slot": 1,
+        "target": true
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "x": 60,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0,
+        "critTimer": 3200,
+        "afterimages": [
+          {
+            "x": 0,
+            "y": 0,
+            "fx": 1,
+            "fy": 0,
+            "classKey": "musashi",
+            "life": 240,
+            "maxLife": 240
+          },
+          {
+            "x": 60,
+            "y": 0,
+            "fx": 1,
+            "fy": 0,
+            "classKey": "musashi",
+            "life": 240,
+            "maxLife": 240
+          }
+        ],
+        "secondCuts": [],
+        "sfa": [
+          {
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "bx": 60,
+            "by": 0,
+            "r": 60,
+            "dur": 520
+          },
+          {
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 30,
+            "dur": 420
+          },
+          {
+            "theme": "ink~h",
+            "x": 60,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 38,
+            "dur": 460
+          },
+          {
+            "theme": "ink~h",
+            "x": 100,
+            "y": -8,
+            "bx": 0,
+            "by": 0,
+            "r": 46,
+            "dur": 460
+          },
+          {
+            "theme": "ink~p",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 40,
+            "dur": 340
+          }
+        ]
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 2720,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 0,
+        "ink": 163
+      },
+      "capture": "NEXT_MUSASHI_H2.png"
+    },
+    {
+      "scenario": {
+        "slot": 1,
+        "target": true,
+        "perfect": true
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 3,
+        "critTimer": 3200,
+        "afterimages": [
+          {
+            "x": 0,
+            "y": 0,
+            "fx": 1,
+            "fy": 0,
+            "classKey": "musashi",
+            "life": 240,
+            "maxLife": 240
+          },
+          {
+            "x": 0,
+            "y": 0,
+            "fx": 1,
+            "fy": 0,
+            "classKey": "musashi",
+            "life": 240,
+            "maxLife": 240
+          }
+        ],
+        "secondCuts": [],
+        "sfa": [
+          {
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 30,
+            "dur": 420
+          },
+          {
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 38,
+            "dur": 460
+          },
+          {
+            "theme": "ink~h",
+            "x": 40,
+            "y": -8,
+            "bx": 0,
+            "by": 0,
+            "r": 46,
+            "dur": 460
+          }
+        ]
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 2720,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 0,
+        "ink": 82
+      }
+    },
+    {
+      "scenario": {
+        "slot": 2,
+        "target": false
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0
+      },
+      "immediate": {
+        "x": 0,
+        "y": 0,
+        "concentration": 0,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": []
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0
+      },
+      "draws": {
+        "bodies": 0,
+        "ink": 0
+      }
+    },
+    {
+      "scenario": {
+        "slot": 2,
+        "target": true
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "x": 0,
+        "y": 0,
+        "hp": 999861.8121040002,
+        "concentration": 1,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "pose": "thousand"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 0,
+        "ink": 0
+      },
+      "capture": "NEXT_MUSASHI_H3.png"
+    }
+  ],
+  "errors": []
+}

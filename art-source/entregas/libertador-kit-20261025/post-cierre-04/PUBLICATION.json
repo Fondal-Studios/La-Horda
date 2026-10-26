@@ -1,0 +1,42 @@
+{
+  "canonical": "https://fondalstudios.com/la-horda/jugar/",
+  "approvedHead": "868644f68a15558675ef62bceaac9b01947b909a",
+  "status": "NOT_CONFIRMED",
+  "rows": [
+    {
+      "url": "https://fondalstudios.com/la-horda/jugar/",
+      "path": "",
+      "checkedAt": "2026-10-26T10:45:42.367185+00:00",
+      "http": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/",
+      "bytes": 67504,
+      "sha256": "02802491fb636eea94e5deb7102bc0b17ee770f9f17a233184fec1b19fa2f538"
+    },
+    {
+      "url": "https://fondalstudios.com/la-horda/jugar/js/champions/skill-fx-a/c/libertador.js",
+      "path": "js/champions/skill-fx-a/c/libertador.js",
+      "checkedAt": "2026-10-26T10:45:48.885380+00:00",
+      "http": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/champions/skill-fx-a/c/libertador.js",
+      "bytes": 536,
+      "sha256": "f2b32e426ffb63d0f655e5640153139558600ca88a3110652092209dbf514daa",
+      "expectedSHA256": "9947788b5c21896496da02d43ea8d402e1aae5d13b29c0bd70113022ad7c9725",
+      "exact": false,
+      "indexReferencesPath": true
+    },
+    {
+      "url": "https://fondalstudios.com/la-horda/jugar/js/skills/champion-signatures.js",
+      "path": "js/skills/champion-signatures.js",
+      "checkedAt": "2026-10-26T10:45:53.284091+00:00",
+      "http": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/skills/champion-signatures.js",
+      "bytes": 6610,
+      "sha256": "2bbe76162cac478de248ebbbfa7ff98e8cda17b672ef1bd9d83f2be46098a3ad",
+      "expectedSHA256": "e128b2dafdb35b7b8c82ddebc079080eb3f2b4b88233540edcad968c839ad7b7",
+      "exact": false,
+      "indexReferencesPath": true
+    }
+  ],
+  "infrastructureChanged": false,
+  "note": "Main integration and public delivery are separate. No hosting, relay, accounts or billing changes."
+}

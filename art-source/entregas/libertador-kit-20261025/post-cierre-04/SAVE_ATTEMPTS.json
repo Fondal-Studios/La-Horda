@@ -1,0 +1,19 @@
+{
+  "attempts": [
+    {
+      "action": "read git diff of orphan production SHA before asynchronous fetch completed",
+      "result": "bad object; no mutation",
+      "resolution": "awaited fetch completion; exact commit-to-commit scope reviewed"
+    },
+    {
+      "action": "full PR git diff --check",
+      "result": "historical regression.log trailing whitespace at truncated class label, preserved original failure log",
+      "resolution": "new production delta and runtime/tools/queue diff --check PASS; no log rewriting"
+    },
+    {
+      "action": "read logs of still-running entry-reference job121516903318",
+      "result": "GitHub BlobNotFound404 while steps progressing",
+      "resolution": "continued observing step/check status; did not classify as test failure or rerun job"
+    }
+  ]
+}

@@ -1,0 +1,520 @@
+{
+  "commit": "868644f68a15558675ef62bceaac9b01947b909a",
+  "tree": "c6e48abf0210bb7ebff094090d04fa3e943c1a80",
+  "remoteTreeEntries": 12101,
+  "truncated": false,
+  "verified": 85,
+  "bad": [],
+  "files": [
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/CANARY.log",
+      "bytes": 129,
+      "sha256": "67f04780d614578bd481496a9f63be7b076026ff2f1fbcc4082cc0986e74a1d5",
+      "sha": "f53b74e4ad949712c2592bea84ce06958710892a"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/CAPTURE_INDEX.json.gz",
+      "bytes": 157287,
+      "sha256": "515f7336b5234955fce9e71939071a5cd50ab96d50558d25a9abd976e0e62cf2",
+      "sha": "373ab5eee8b49438950f4ae6e7ec1ac5361d5e24"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/CHECKPOINT.md",
+      "bytes": 1595,
+      "sha256": "cabe338a9329bd9b28bec17d0bd664fe715dffce18601ef65d0d3e802047af31",
+      "sha": "5da6298d08ae35ea7ec63749d8a5d3c88d285d15"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/CONTACT_DESKTOP.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/CONTACT_MOBILE.log",
+      "bytes": 7421,
+      "sha256": "7e37476a2783b939a4133dbd216836c9bc21ee2e2380b0b4bd79967df86a02d7",
+      "sha": "8f08274df7a52426220872f61c336f75d7c5a9f3"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/FRAME_INDEX.json",
+      "bytes": 3929,
+      "sha256": "81121d6e4a98e80f624345ce883c270417b43c8797cb9f734ca8d0388d3c2f17",
+      "sha": "4e463ec916b6e4388eac5847b19d29f265139742"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/FULL_DIFF_SCOPE.json",
+      "bytes": 15642,
+      "sha256": "70710119c496631a347051577d374ebb5d922152e7d2a31c7603e733d249eb35",
+      "sha": "0146d4117f50f41402c3017bce120224926e92d1"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/FULL_RENDER_PERFORMANCE.json",
+      "bytes": 1391,
+      "sha256": "b17dee4d312f7eecf3eea668db474e9c8c28cbeb99abe07100f6ebb4d188a944",
+      "sha": "fd4f237fc7aa6b06dc529e7bd2c210c167ddfdcc"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/MAIN_COMPARISON.json",
+      "bytes": 3828,
+      "sha256": "407cc9f42af4e83618f03054d1c183729f6925f667cb6036ee871830a1cae2f9",
+      "sha": "42eacb6cca66b69baec5329d07d1e5c32ac51e57"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/MATRIX_SUMMARY.json",
+      "bytes": 882,
+      "sha256": "8695b42ef94235829846d3b40a2f776bd74731303a67c5addf90a7d91ffdfb3f",
+      "sha": "cee87fe9eb8e7ba2fb950ca987e1dfea28f5fcf9"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/ONLINE.log",
+      "bytes": 1184,
+      "sha256": "e40ed9f1d8f5a0b064e639a068c5901797d2e90b127eadaf326ba9880270b079",
+      "sha": "4683b4a06d3b73903a55c0901a5279222b758ecb"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/PAIR_CANDIDATE.log",
+      "bytes": 349,
+      "sha256": "0f47278d2e228627ff045b728c180aa77b35121c30907bc5e59bf45685109d0a",
+      "sha": "d87dab60868fbd990ba04d8996c98ed836ca6667"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/PAIR_CANDIDATE_MOBILE.log",
+      "bytes": 349,
+      "sha256": "b9febcec15574b8a7cf8a72c74645b2421f29b6e831fda622cf922a9f30e2c24",
+      "sha": "81e160ba884f3d2ff9c26607582f827ddd983e8a"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/PAIR_MAIN.log",
+      "bytes": 275,
+      "sha256": "77fcec14da004c7292ad3d75a0aa6c433e2d230d6c5843d2d1058c5bbafd5932",
+      "sha": "5b9e8ab9d4af5cef166d51ef1c068175eec5ff30"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/PAIR_MAIN_MOBILE.log",
+      "bytes": 245,
+      "sha256": "838c8f07089c1c12599b94743616e8efd1ca2daa5bb040d484928b4f0a551969",
+      "sha": "f3f717fa7f51eb327aa09d2eab774f08faaea800"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/PARITY.log",
+      "bytes": 109,
+      "sha256": "2e792d9959a82f607c8e96ddcd47b77f976e6a68633f4176bba9784ccc21efaa",
+      "sha": "2fa920c46df9c3b3db6a13aea9351a369ae5331a"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/PERFORMANCE.log",
+      "bytes": 965,
+      "sha256": "96fc80e5633737c45e2b218846898086a292fcd13dca64be5a17542aab6ca708",
+      "sha": "3f532a78bb0ee13f53062723b3e8d33fea9cf94b"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/PILOT.log",
+      "bytes": 1191,
+      "sha256": "a9596bbafc3bd698b5576f993eb7117accdb585a83549e98966ad8a9a59fff5b",
+      "sha": "a3c50b3af154c2995f799140f674d6afbd241185"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/PREVIEW_CHECK.json",
+      "bytes": 328,
+      "sha256": "866650196679f85d18fc49c55c90665e245c084df5f732cb4c418ee815c58e9a",
+      "sha": "bd1827b714b247970ac2b353fac5150f7b73a9a4"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/REEXPORT.json",
+      "bytes": 398,
+      "sha256": "f6fba3337b17cd66785b62c9c2732fb945425b37f44129402c94477ccc22dee7",
+      "sha": "05a85111f478dbdadffdd2d25fc70a93a2e22f55"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/REEXPORT.log",
+      "bytes": 136,
+      "sha256": "8a4f65b88da089d9646f2f3a34e1ce7adb756d6653020d533bd77ed1db698bcb",
+      "sha": "76abf9a8dc14ba010c592fefdefcf11bf1119a00"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/REVIEW.json",
+      "bytes": 2260,
+      "sha256": "4bc599e2f576c2ed41d0a45f8a2d74e3afecf1053aadb3c8c0a0c29a3622fbc4",
+      "sha": "ef7ebe40af768761ff819d048ec7d70e6f16d376"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/REVIEW_IMAGE_ATTEMPT01.json",
+      "bytes": 298,
+      "sha256": "05d27a3ffd2c7119e9999a31d0c0b843b51cd1d897b32b08aa3406b6634e1bad",
+      "sha": "d691546836a630b83138dd561bc1655765ef7091"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/SIGNATURE.log",
+      "bytes": 798,
+      "sha256": "2ebd19a9ab31a6c513e440ae7a7aa86680ae6eb83924c6929e938e9a573387ee",
+      "sha": "74a55ebc28940b8cddc2bd93acaccd91ece4dfe0"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/SIGNATURE_CHECK.json",
+      "bytes": 108022,
+      "sha256": "40d5531b669ef9536e9bacac673f83d77f6a8020bdeb3e2cc9631c556bf71ce2",
+      "sha": "147fc04ffd801cbb58c5fb246abc99cd4c3410d9"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/SIGNATURE_FINAL.log",
+      "bytes": 798,
+      "sha256": "0f6423283cbbb6e964a878f566c9f9bc13215a887c9ae6df708cf92803a8a0e9",
+      "sha": "b1541663e340c0b320e214e117b2c905529ce8db"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/TECHNICAL.log",
+      "bytes": 136,
+      "sha256": "15182eecdc15c95e7559ee2725493da11d14f3a4554d3b214a2fcbc56822d90a",
+      "sha": "93023a221725e16c3269c72a57b1c0c6f05d1405"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/TEST_ATTEMPTS.json",
+      "bytes": 1855,
+      "sha256": "06a970c7fa7cddd543ba56ff6545d45931ba508f2522ed1cdcb7a66e24a5f7fe",
+      "sha": "22ccf60b791ea40f6f846c9e138d3be2420fe531"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/bayonet.png",
+      "bytes": 2325,
+      "sha256": "7211ad7c5f564b6885864e01dffb45a373de9769406042ae22a71996a40edf15",
+      "sha": "15f0fe73f970ee985140f73d95c4e9d61d9fe5fd"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/canary/capture.json.gz",
+      "bytes": 808,
+      "sha256": "48d3d6fd6eced006f4ab89efab397fd10f2c60e73c1a43fbea4b4142db3cdc01",
+      "sha": "a8b42dabdde6f63725c62e57a7624e1e815e21b4"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/charge.png",
+      "bytes": 4023,
+      "sha256": "4c19de9de71805288f2b6c5b7c4282dcd301a11cceb6d2ee85ce706c908915a9",
+      "sha": "9e84d7a893e3eb0744544d20eb7c2173ed7ad825"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/command.png",
+      "bytes": 18967,
+      "sha256": "ec04bc64beecaf0535e60fbfc4d57bdc6e460f27e021755195eadaa56a22da9b",
+      "sha": "a7047de15af2e2ab47800bdaef2335bd540be131"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/contact-desktop/capture.json.gz",
+      "bytes": 57597,
+      "sha256": "387fcbf01cd9748571227abd0bc8973a2ed65a41887eb929a00b3443c7edfe8f",
+      "sha": "04f7aebe04360688b9035269f6e61c32ee65834f"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/contact-mobile/capture.json.gz",
+      "bytes": 56899,
+      "sha256": "1c15ab36ec3a2a50365fff01670e4fb59186dd1d821f753e99f890b372b31686",
+      "sha": "a56d0565d1561972e169f8bd821c6846fce53134"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/launch-atlas.png",
+      "bytes": 2591,
+      "sha256": "ed7e9eca0e5aeb24e0c7c93afc3ae8cc86be0172df45bcfd914a561a09ef4552",
+      "sha": "e791d34be87a5d5d3d7bddd78c321eaa2bb193e9"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/online-host.json",
+      "bytes": 22635,
+      "sha256": "2032544ab4c2d0a7ef71cb7fbb815f5a66e61faea2170b9a4430025c153a39e2",
+      "sha": "836cfbc762f4641225c23808fbbedabd4a291192"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/online-host.png",
+      "bytes": 625228,
+      "sha256": "c79d28076d8d787c7e843760b04f95469024986c47c80d205a335d6500519752",
+      "sha": "14010834eb95801f17a97c43ec3496d8eb223dfc"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/online-results.json",
+      "bytes": 2060,
+      "sha256": "9970d75c5d14198779154f540702abb484737d917e9e0e8613fe53937cb22725",
+      "sha": "80431d1f241551407a93c3cd90f88bc436942d67"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/online-touch-guest.json",
+      "bytes": 50008,
+      "sha256": "850d2a5518ba84f04f6925c17cd10c4a7a530c00cace176ed0f055a14609c03e",
+      "sha": "a95311baba05df45e82eaa26151f1ec516d0ed08"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/online-touch-guest.png",
+      "bytes": 302854,
+      "sha256": "ce290e28bb6c20aebd177f7099ea1b43fff7ffd2f7b3f165039e7f070c68c5cf",
+      "sha": "335b1c4751ae18fbbb531ba01c54ee7008882e28"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/paired-candidate-desktop/capture.json.gz",
+      "bytes": 2835,
+      "sha256": "d06dac28f6448c1588b601d2da3750909ac475d97aea82bc77afa334372bb233",
+      "sha": "39f99254ca2b602b33306f967419e38f605ce722"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/paired-candidate-mobile/capture.json.gz",
+      "bytes": 2825,
+      "sha256": "a7ddf1872c6e3425bc912b8b7e8959668ee2f20c0ae1bb084b2e8ebe465b0ea0",
+      "sha": "ba40e9fc239dd673ca6d393b76602eb2d7b541ba"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/paired-main-desktop/capture.json.gz",
+      "bytes": 2811,
+      "sha256": "64ec1a08b8429b4a89a5c1abbfd13688111ff8224e2c4775dfccbcd68892e4ab",
+      "sha": "825bd3e034edcfdfacfccea2454fbe982c6bbf5a"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/paired-main-mobile/capture.json.gz",
+      "bytes": 2808,
+      "sha256": "4ff1d79a0b5ac6246ff23a199d6f7b26005bf7e10e61e759055fe47cbcba51cf",
+      "sha": "99745c5187f2ba776e7165fecb9d0273848366a9"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/paired-review-desktop.png",
+      "bytes": 539898,
+      "sha256": "0d1ee6a97ae3ce0e0f8afe08217909ca779e2aa28c4559510d8b495f51024017",
+      "sha": "e917f9e0ca98908d0e691cfce679c8572269f013"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/paired-review-mobile.png",
+      "bytes": 516176,
+      "sha256": "99e249b656a8edfd99c30457998f9d452733f2e69a6336b942332d4916c2dea2",
+      "sha": "ac2bc77b6dfad81abc524ea07e5de35b403c39d5"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/parity/parity.json",
+      "bytes": 8599,
+      "sha256": "fa9d569168ca5ac553fb25a6d7e089c68ae8ebd27c961f63c9249ab1dbb58c9d",
+      "sha": "eda4a673a64154e66ec35259d8f55002375d5fb0"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/parity/signatures-before.js",
+      "bytes": 14706,
+      "sha256": "fa38468dfa5d614abc8502899a649819e1713843fe2e5eac8c86a73105ea0ae2",
+      "sha": "019ea65fabf98276a05d2450ccd9300d166f8e9b"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/parity/source-before.js",
+      "bytes": 536,
+      "sha256": "f2b32e426ffb63d0f655e5640153139558600ca88a3110652092209dbf514daa",
+      "sha": "6f9fcf097c62531653aac1859bd5719d56138ad5"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/pilot-mobile/capture.json.gz",
+      "bytes": 8671,
+      "sha256": "6bb41868c6a32c7a0a5429cab791739747ac07ef3bcde7a0c7167a28b7a2ca0a",
+      "sha": "cdc2d81ab1fc21391cae4c158c82c14704f5e806"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/pilot-review.png",
+      "bytes": 869712,
+      "sha256": "d5017d0017cef453322fa9212905026bcbdf23e9e89642a2d3f5c670b3a62ec7",
+      "sha": "f802aa527914569fc4998227f30481c30a1fc1f3"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/preview.html",
+      "bytes": 513,
+      "sha256": "f009e93951e61e40df3fac77e5529f56e8a8e0520e9d1f4d87ecf129243c8323",
+      "sha": "26f99071e8366e42a1f615e70023c1e826678520"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/recipe.json",
+      "bytes": 1894,
+      "sha256": "b74f241e0f5f23615e1a0f35a0a6fc792cc8f3016d9bf2dbc1e54a3b6e46ed24",
+      "sha": "522e202a31af96d2c8aa5c28fb5881b9989219a7"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/review-desktop-acuatica.png",
+      "bytes": 1060849,
+      "sha256": "a872e7b7318c2d62b53bb0ea4cb59c7f632d6e8e91b2b868bbc24beec2aea4b2",
+      "sha": "4ce180fb45101f3cd72602f52b10c1859d4b2993"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/review-desktop-bosque.png",
+      "bytes": 966058,
+      "sha256": "c2ab15a767dd288f3b6b0c5590da41f3c281954727ead1d824f70090974cc4bc",
+      "sha": "e3f6970b56b0aafaa2b4312726f07bf570bab138"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/review-desktop-hielo.png",
+      "bytes": 1068908,
+      "sha256": "71d50fbf2b3c3823d9486d347cfa417011dae6c59c65ef2b43990a88e1a9f963",
+      "sha": "6ef0ce7e45a1cd2b42ff50014dd5383a94f9705b"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/review-desktop-infernal.png",
+      "bytes": 1227990,
+      "sha256": "e3b432df8c5f617893545c240c7f12cacb0399ee731ea3cf9dcbcc5ea04deede",
+      "sha": "3015f8513498f0e74f69db38c1915557cffe865f"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/review-desktop-laberinto.png",
+      "bytes": 1085758,
+      "sha256": "0c4fd5f1da66e498dd3199d13888e4fe17a4bf12b94bca4963bd4947952b4488",
+      "sha": "f3e3bfaf9adee532f12467cd67f5fe6950b3bf86"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/review-desktop-minas.png",
+      "bytes": 1304000,
+      "sha256": "7d5b9f5c23276bfdfadec40cecc7c7db6937f3a87ed79bbfe1f8dc852aff491f",
+      "sha": "aebe68720d23611adb48c570cbbeed120cdc05d9"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/review-mobile-acuatica.png",
+      "bytes": 1054786,
+      "sha256": "b3ce279b3d4fd0b38e59649c6fe6386759bdcd6d0850c341587d58e7ce8cc870",
+      "sha": "2d2322379571da535f137c4e5d764f8f16a92611"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/review-mobile-bosque.png",
+      "bytes": 948131,
+      "sha256": "88f147736ebdd3efc17c4b565e74ba17019abc20b41a4891c46a5e43a866bf72",
+      "sha": "06fa2a21e2c265ab5687c4f2486e1fdfe565b77f"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/review-mobile-hielo.png",
+      "bytes": 1336107,
+      "sha256": "eb92e44850e7a58da9b8e1b5a5484591cc5ffeff1cf2dcef470a8a4760a2871d",
+      "sha": "aa6e4799f023da39e00e45f9190533a98361956b"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/review-mobile-infernal.png",
+      "bytes": 1245806,
+      "sha256": "1aea09f0ca4d84e1da0a367c1ac5b78b676aada4330bd59b188c1edfa95c69c8",
+      "sha": "b1470a77be5ae64b16e5075871de0be401a3bb19"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/review-mobile-laberinto.png",
+      "bytes": 1110496,
+      "sha256": "fb51c141c00a72b8b97001564559d6a6b0f116b6ad7acea2f7866f024536ad20",
+      "sha": "80e89a2513cecb303608672f9d4c4ffd8d0337bf"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/review-mobile-minas.png",
+      "bytes": 1380752,
+      "sha256": "9d7a8b63b1b6f204c7b3419e420fc7dac37847e36072d59c3294f1bfc9913c06",
+      "sha": "e9a7e73d66736290ef4d473cb82f6c88d2c99879"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/signatures-attempt01.js",
+      "bytes": 17519,
+      "sha256": "77555a820fe8b08a3bf427a67fe4063fcbcc4e526b4d7773c649cae78adf4456",
+      "sha": "02fdccf2f99e160d044c417bbbc3990c45147c0a"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/signatures-before.js",
+      "bytes": 14706,
+      "sha256": "fa38468dfa5d614abc8502899a649819e1713843fe2e5eac8c86a73105ea0ae2",
+      "sha": "019ea65fabf98276a05d2450ccd9300d166f8e9b"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/signatures-candidate.js",
+      "bytes": 17581,
+      "sha256": "e128b2dafdb35b7b8c82ddebc079080eb3f2b4b88233540edcad968c839ad7b7",
+      "sha": "81cc741b27bf73bc91ec6e17aa084cf144b5b486"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/source-before.js",
+      "bytes": 5082,
+      "sha256": "e14064b6304cba117b029cd6e7bf0f896c7045822998a3408ddc5a077cdd98a7",
+      "sha": "2e728c96ed98ca0d99d2a43b4afd47e64652b67b"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/source-candidate.js",
+      "bytes": 5084,
+      "sha256": "9947788b5c21896496da02d43ea8d402e1aae5d13b29c0bd70113022ad7c9725",
+      "sha": "839f2e32456070e4d79d62d34bbc0b8d7c5010a7"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/technical.json",
+      "bytes": 1802,
+      "sha256": "d12653b7b3b3cdea6337af9db6ef617a39517fbd34c335d916ff68922b064624",
+      "sha": "89a3252e5eb3bb52aac10c04aac3c602aed8ad99"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/temporal-desktop-bosque.png",
+      "bytes": 1311851,
+      "sha256": "6adae7cd25b9e51e9bbf991f0850edbbfa6253aee846ae646ec99b29619afb3a",
+      "sha": "9ecec34c52e7ec320197c00cf5e403e6af8aa96b"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/temporal-desktop-infernal.png",
+      "bytes": 1672548,
+      "sha256": "0b2f959156ff6fcde3a07e43eea2d0d63f7a0b5050572b9dd2b91e39ef6ade18",
+      "sha": "150ee83a95880c539c90045f5a5c0c6db80db0d1"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/temporal-mobile-bosque.png",
+      "bytes": 1359986,
+      "sha256": "7e4e444c8479ee592234a93b4d7c30d43b3609d991fec2f72019dff978ec73f6",
+      "sha": "24823cb7d821105140ec9a96e074a44e2f2ba787"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/temporal-mobile-infernal.png",
+      "bytes": 1690895,
+      "sha256": "5df43d3525a91b2f4109a2c884f052eb004f1cfbf3ee48a83fb5e0f455e8ca03",
+      "sha": "a26997b1b00eaeca7e2230f58ac1bf5d98c5c528"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "bytes": 121583,
+      "sha256": "df65406bae7ad3d4c2815d8d3bf7e7bf6a44c4ef7b0c84b6e3373f754f0ecd9a",
+      "sha": "b8fc0ccaf336edb0bb83ca387e813c9fbdba9c68"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/libertador.js",
+      "bytes": 5084,
+      "sha256": "9947788b5c21896496da02d43ea8d402e1aae5d13b29c0bd70113022ad7c9725",
+      "sha": "839f2e32456070e4d79d62d34bbc0b8d7c5010a7"
+    },
+    {
+      "path": "js/skills/champion-signatures.js",
+      "bytes": 17581,
+      "sha256": "e128b2dafdb35b7b8c82ddebc079080eb3f2b4b88233540edcad968c839ad7b7",
+      "sha": "81cc741b27bf73bc91ec6e17aa084cf144b5b486"
+    },
+    {
+      "path": "tools/vfx/capture-libertador-contact.js",
+      "bytes": 11616,
+      "sha256": "ae51e9718e83eeb847300ad0d278ede0740d64655db957ab3fd68ff932e11d24",
+      "sha": "98c273a32e46414e904150c75503b21f5e66a35f"
+    },
+    {
+      "path": "tools/vfx/libertador-full-render-perf.js",
+      "bytes": 3047,
+      "sha256": "68c5254cc0c85e45eb03f705e05fc49ae03c810569b3682002faf8a5a3f2ca89",
+      "sha": "63d978a4e657a2524b4760048b0db4aaf566678e"
+    },
+    {
+      "path": "tools/vfx/libertador-kit-online.js",
+      "bytes": 5053,
+      "sha256": "abb9815d28a331f1930090d880e777298650d683a64178e1f60db7d113e225e9",
+      "sha": "ee4e29c6a872d7db22456572901887edb4acf267"
+    },
+    {
+      "path": "tools/vfx/libertador-review-close04.py",
+      "bytes": 1147,
+      "sha256": "d9846c2fb230aace0bf33d56a33801e3c47fd6fd1f81a3e24eadfe21b0217978",
+      "sha": "d854d4854b829a3274faa456d6f38618a738dc7d"
+    },
+    {
+      "path": "tools/vfx/libertador-signature-check.js",
+      "bytes": 4471,
+      "sha256": "98371e5fdbf0041c9093fe11f6f3a06ca603ff2b72a03fa6b6bca9d5e388acab",
+      "sha": "0f201ceb8aad222c4a5f8135121e7cc6e37fb7d8"
+    },
+    {
+      "path": "tools/vfx/parity-libertador-kit.js",
+      "bytes": 7677,
+      "sha256": "6cda9a9062c82f04920ca3f3c093b29ad31e5eb2b1dd60ba6b6262764459bd72",
+      "sha": "fb4fcc2b7c4eefbc2e72de16b005cd5859a980c5"
+    },
+    {
+      "path": "art-source/entregas/libertador-kit-20261025/cierre-04/manifest.json",
+      "bytes": 22283,
+      "sha256": "bbe186763d6a3997984aff8226ff1ab813cdf0cbc14fb8086188405184f9fc6e",
+      "sha": "b0242c0b43eb30eef079cb86e501e9ecd713240a"
+    }
+  ]
+}

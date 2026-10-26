@@ -1,0 +1,748 @@
+{
+  "scope": "Read-only preliminary audit on current main champion paths; no new art, no visual gate, no relay/global parity; 6 actual useSkill casts, base and mastery tier4; mobile viewport only",
+  "rows": [
+    {
+      "scenario": {
+        "tier": 0,
+        "slot": 0,
+        "target": true
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [
+          {
+            "art": "beam",
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "r": 0,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "burst",
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "r": 30,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "burst",
+            "theme": "ink",
+            "x": 60,
+            "y": 0,
+            "r": 38,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "burst",
+            "theme": "ink",
+            "x": 100,
+            "y": -8,
+            "r": 54,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "rays",
+            "theme": "ink~p",
+            "x": 0,
+            "y": 0,
+            "r": 40,
+            "accepted": true,
+            "view": true
+          }
+        ],
+        "formEvents": [
+          [
+            "uf.musashi.0",
+            100,
+            0,
+            80,
+            0
+          ]
+        ],
+        "spinRadii": [],
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:34663/assets/sprites/champions/musashi/v2/a",
+        "x": 60,
+        "y": 0,
+        "hp": 999926.081925,
+        "concentration": 2,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [
+          {
+            "art": "beam",
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "bx": 60,
+            "by": 0,
+            "r": 60,
+            "dur": 520
+          },
+          {
+            "art": "burst",
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 30,
+            "dur": 420
+          },
+          {
+            "art": "burst",
+            "theme": "ink",
+            "x": 60,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 38,
+            "dur": 460
+          },
+          {
+            "art": "burst",
+            "theme": "ink",
+            "x": 100,
+            "y": -8,
+            "bx": 0,
+            "by": 0,
+            "r": 54,
+            "dur": 460
+          },
+          {
+            "art": "rays",
+            "theme": "ink~p",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 40,
+            "dur": 340
+          }
+        ],
+        "pose": "ronin"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 163,
+        "formDraws": 30
+      },
+      "capture": "NEXT_MUSASHI_GEOMETRY_T0_H1.png"
+    },
+    {
+      "scenario": {
+        "tier": 0,
+        "slot": 1,
+        "target": true
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [
+          {
+            "art": "beam",
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "r": 0,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "burst",
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "r": 30,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "burst",
+            "theme": "ink~h",
+            "x": 60,
+            "y": 0,
+            "r": 38,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "burst",
+            "theme": "ink~h",
+            "x": 100,
+            "y": -8,
+            "r": 46,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "rays",
+            "theme": "ink~p",
+            "x": 0,
+            "y": 0,
+            "r": 40,
+            "accepted": true,
+            "view": true
+          }
+        ],
+        "formEvents": [
+          [
+            "uf.musashi.1",
+            60,
+            0,
+            80,
+            0
+          ]
+        ],
+        "spinRadii": [],
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:34663/assets/sprites/champions/musashi/v2/a",
+        "x": 60,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0,
+        "critTimer": 3200,
+        "afterimages": [
+          {
+            "x": 0,
+            "y": 0,
+            "fx": 1,
+            "fy": 0,
+            "classKey": "musashi",
+            "life": 240,
+            "maxLife": 240
+          },
+          {
+            "x": 60,
+            "y": 0,
+            "fx": 1,
+            "fy": 0,
+            "classKey": "musashi",
+            "life": 240,
+            "maxLife": 240
+          }
+        ],
+        "secondCuts": [],
+        "sfa": [
+          {
+            "art": "beam",
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "bx": 60,
+            "by": 0,
+            "r": 60,
+            "dur": 520
+          },
+          {
+            "art": "burst",
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 30,
+            "dur": 420
+          },
+          {
+            "art": "burst",
+            "theme": "ink~h",
+            "x": 60,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 38,
+            "dur": 460
+          },
+          {
+            "art": "burst",
+            "theme": "ink~h",
+            "x": 100,
+            "y": -8,
+            "bx": 0,
+            "by": 0,
+            "r": 46,
+            "dur": 460
+          },
+          {
+            "art": "rays",
+            "theme": "ink~p",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 40,
+            "dur": 340
+          }
+        ]
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 2720,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 58,
+        "bodyAttempts": 58,
+        "ink": 163,
+        "formDraws": 30
+      },
+      "capture": "NEXT_MUSASHI_GEOMETRY_T0_H2.png"
+    },
+    {
+      "scenario": {
+        "tier": 0,
+        "slot": 2,
+        "target": true
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [
+          [
+            "uf.musashi.2",
+            0,
+            0,
+            150,
+            0
+          ]
+        ],
+        "spinRadii": [
+          135
+        ],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:34663/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "hp": 999869.2817200003,
+        "concentration": 1,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "pose": "thousand"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 30
+      },
+      "capture": "NEXT_MUSASHI_GEOMETRY_T0_H3.png"
+    },
+    {
+      "scenario": {
+        "tier": 7,
+        "slot": 0,
+        "target": true
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [
+          {
+            "art": "beam",
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "r": 0,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "burst",
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "r": 30,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "burst",
+            "theme": "ink",
+            "x": 60,
+            "y": 0,
+            "r": 38,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "burst",
+            "theme": "ink",
+            "x": 100,
+            "y": -8,
+            "r": 54,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "rays",
+            "theme": "ink~p",
+            "x": 0,
+            "y": 0,
+            "r": 40,
+            "accepted": true,
+            "view": true
+          }
+        ],
+        "formEvents": [
+          [
+            "uf.musashi.0",
+            100,
+            0,
+            80,
+            0
+          ]
+        ],
+        "spinRadii": [],
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:34663/assets/sprites/champions/musashi/v2/a",
+        "x": 60,
+        "y": 0,
+        "hp": 999836.04970965,
+        "concentration": 2,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [
+          {
+            "art": "beam",
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "bx": 60,
+            "by": 0,
+            "r": 60,
+            "dur": 520
+          },
+          {
+            "art": "burst",
+            "theme": "ink",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 30,
+            "dur": 420
+          },
+          {
+            "art": "burst",
+            "theme": "ink",
+            "x": 60,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 38,
+            "dur": 460
+          },
+          {
+            "art": "burst",
+            "theme": "ink",
+            "x": 100,
+            "y": -8,
+            "bx": 0,
+            "by": 0,
+            "r": 54,
+            "dur": 460
+          },
+          {
+            "art": "rays",
+            "theme": "ink~p",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 40,
+            "dur": 340
+          }
+        ],
+        "pose": "ronin"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 163,
+        "formDraws": 30
+      },
+      "capture": "NEXT_MUSASHI_GEOMETRY_T7_H1.png"
+    },
+    {
+      "scenario": {
+        "tier": 7,
+        "slot": 1,
+        "target": true
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [
+          {
+            "art": "beam",
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "r": 0,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "burst",
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "r": 30,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "burst",
+            "theme": "ink~h",
+            "x": 60,
+            "y": 0,
+            "r": 38,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "burst",
+            "theme": "ink~h",
+            "x": 100,
+            "y": -8,
+            "r": 46,
+            "accepted": true,
+            "view": true
+          },
+          {
+            "art": "rays",
+            "theme": "ink~p",
+            "x": 0,
+            "y": 0,
+            "r": 40,
+            "accepted": true,
+            "view": true
+          }
+        ],
+        "formEvents": [
+          [
+            "uf.musashi.1",
+            60,
+            0,
+            80,
+            0
+          ]
+        ],
+        "spinRadii": [],
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:34663/assets/sprites/champions/musashi/v2/a",
+        "x": 60,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0,
+        "critTimer": 3200,
+        "afterimages": [
+          {
+            "x": 0,
+            "y": 0,
+            "fx": 1,
+            "fy": 0,
+            "classKey": "musashi",
+            "life": 240,
+            "maxLife": 240
+          },
+          {
+            "x": 60,
+            "y": 0,
+            "fx": 1,
+            "fy": 0,
+            "classKey": "musashi",
+            "life": 240,
+            "maxLife": 240
+          }
+        ],
+        "secondCuts": [],
+        "sfa": [
+          {
+            "art": "beam",
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "bx": 60,
+            "by": 0,
+            "r": 60,
+            "dur": 520
+          },
+          {
+            "art": "burst",
+            "theme": "ink~h",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 30,
+            "dur": 420
+          },
+          {
+            "art": "burst",
+            "theme": "ink~h",
+            "x": 60,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 38,
+            "dur": 460
+          },
+          {
+            "art": "burst",
+            "theme": "ink~h",
+            "x": 100,
+            "y": -8,
+            "bx": 0,
+            "by": 0,
+            "r": 46,
+            "dur": 460
+          },
+          {
+            "art": "rays",
+            "theme": "ink~p",
+            "x": 0,
+            "y": 0,
+            "bx": 0,
+            "by": 0,
+            "r": 40,
+            "dur": 340
+          }
+        ]
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 2720,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 58,
+        "bodyAttempts": 58,
+        "ink": 163,
+        "formDraws": 30
+      },
+      "capture": "NEXT_MUSASHI_GEOMETRY_T7_H2.png"
+    },
+    {
+      "scenario": {
+        "tier": 7,
+        "slot": 2,
+        "target": true
+      },
+      "before": {
+        "x": 0,
+        "y": 0,
+        "hp": 1000000,
+        "concentration": 0
+      },
+      "immediate": {
+        "trace": [],
+        "formEvents": [
+          [
+            "uf.musashi.2",
+            0,
+            0,
+            150,
+            0
+          ]
+        ],
+        "spinRadii": [
+          221.94000000000003
+        ],
+        "skillRadius": 150,
+        "classKey": "musashi",
+        "bound": true,
+        "off": false,
+        "canvasSrc": "http://127.0.0.1:34663/assets/sprites/champions/musashi/v2/a",
+        "x": 0,
+        "y": 0,
+        "hp": 999704.8894773696,
+        "concentration": 1,
+        "critTimer": 0,
+        "afterimages": [],
+        "secondCuts": [],
+        "sfa": [],
+        "pose": "thousand"
+      },
+      "final": {
+        "afterimages": 0,
+        "secondCuts": 0,
+        "critTimer": 0,
+        "hp": 1000000
+      },
+      "draws": {
+        "bodies": 30,
+        "bodyAttempts": 30,
+        "ink": 0,
+        "formDraws": 30
+      },
+      "capture": "NEXT_MUSASHI_GEOMETRY_T7_H3.png"
+    }
+  ],
+  "errors": []
+}
