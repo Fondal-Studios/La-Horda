@@ -2,20 +2,19 @@
 /* ============================================================
    js/systems/codex-narrative.js
    EL CÓDICE COMO EJE NARRATIVO — lógica de disparo, omisión y persistencia del Libro de la Horda.
-   NARRADOR: el Hechicero Supremo (el Libro es su voz escrita). Mientras el Libro está abierto, él no habla en ningún otro
-   lado (panel de consejos, voces de la historia, ficha previa, relato del primer minuto): ver "UN SOLO NARRADOR A LA VEZ" abajo.
+   NARRADOR: el Hechicero Supremo, y su ÚNICA voz es el Libro: ya no hay ficha previa a la arena ni consejos suyos en la partida
+   (js/ui/run-intro.js, js/systems/tutorial.js). Ver "UN SOLO NARRADOR" abajo.
    Sin DOM: solo lee/escribe save.codexBook y decide cuándo toca mostrar algo. Los textos están en
    js/data/codex-book-text.js y el visor animado en js/ui/codex/codex-book.js.
 
    Qué se muestra y cuándo (todo es local, nunca viaja por la red):
-     1. INTRODUCCIÓN grande (8 páginas): ya NO se abre antes de jugar. Se OFRECE una sola vez al volver al menú después de la
-        primera arena (victoria o derrota): "Leer el Libro" o "Después" (codexBookOffer, js/ui/codex/codex-book.js). Si dice
-        "Después" queda siempre en Códice › El Libro. Antes (PR "primer minuto") se abría tras elegir guardián, o sea
-        8 páginas de lectura antes de tocar un botón de juego.
+     1. INTRODUCCIÓN grande (8 páginas): la primera vez que se abre el juego se lee SOBRE LA PANTALLA DE CARGA del título
+        (codexBookBoot, js/ui/codex/codex-book.js), desde la tapa, mientras el juego carga. Saltable siempre, nunca demora la
+        carga. Después queda en Códice › El Libro; ya no hay oferta al volver de la primera arena.
      2. FRAGMENTOS: uno por arena de la campaña, se ganan al completarla y aparecen en la pantalla de
         victoria (story.js); quedan siempre releíbles en Códice › El Libro.
      3. CARGA CORTA: una página de libro antes de entrar a una arena de campaña en solitario
-        (run-intro.js), como mucho BOOK_SHORT_MAX veces por arena, apagable.
+        (run-intro.js), como mucho BOOK_SHORT_MAX veces por arena, apagable. Es lo único que se ve al entrar: después, la partida.
    Reglas que no se rompen:
      - NUNCA bloquea: siempre hay "Saltar", Esc o tocar; omitir cuenta como visto.
      - Nunca arranca por sí sola dentro de una sala/partida online ni jugando (no frena a nadie).
@@ -88,16 +87,15 @@ function codexBookCanAuto(){
   return true;
 }
 
-/* ---------------- UN SOLO NARRADOR A LA VEZ ---------------- */
-// El Hechicero habla por varias capas: el Libro (escrito), la ficha previa de cada arena y sus pantallas de historia
-// (run-intro.js), el relato del primer minuto (first-minute.js), el cuadro de consejos y voces (tutorial.js / story.js),
-// el epílogo (story.js) y el tutorial de práctica (alpha-training.js). Regla: nunca dos a la vez.
+/* ---------------- UN SOLO NARRADOR ---------------- */
+// El Hechicero habla por el Libro (escrito). Quedan otras capas a pantalla completa que no son consejos suyos: el relato del
+// primer minuto (first-minute.js), el epílogo (story.js) y el tutorial de práctica (alpha-training.js). Regla: nunca dos a la vez.
 //   - Con el Libro abierto, las demás no abren: esperan a que cierre (narrationWhenFree) o se descartan si son efímeras.
 //   - Con otra capa de historia a pantalla completa, el Libro por iniciativa propia (intro, carga corta, oferta) espera.
-//   - Lo que el Libro ya contó no se repite en las otras (ver run-intro.js y goal-guide.js).
+//   - Lo que el Libro ya contó no se repite en las otras (ver goal-guide.js).
 // Solo lee estado; sin DOM propio. En cooperativo el Libro nunca abre, así que ninguna de estas esperas aplica ahí.
 function narrationBookOpen(){ return typeof BOOK!=="undefined" && !!BOOK.open; }
-// ¿Hay una capa de historia a pantalla completa distinta del Libro? (la ficha previa, el epílogo, el relato del primer minuto o el tutorial)
+// ¿Hay una capa de historia a pantalla completa distinta del Libro? (la ficha de arena, el epílogo, el relato del primer minuto o el tutorial)
 function narrationOtherOpen(){
   try{
     if(typeof RUN_INTRO!=="undefined" && RUN_INTRO.open) return true;
@@ -126,13 +124,6 @@ function codexBookIntroPages(){
 function codexBookIntroDue(opts){
   if(codexBookSave().introSeen) return false;
   if(opts && opts.joinsRoom) return false;
-  return codexBookCanAuto();
-}
-// OFERTA tras la primera arena: toca si no vio la intro, no se le ofreció todavía y ya terminó una partida.
-function codexBookOfferDue(){
-  const cb = codexBookSave();
-  if(cb.introSeen || cb.offered || !cb.ran) return false;
-  if(typeof state!=="undefined" && state!=="mainmenu") return false;
   return codexBookCanAuto();
 }
 function codexBookMarkRan(){ const cb = codexBookSave(); if(cb.ran) return; cb.ran = true; _cbPersist(); }

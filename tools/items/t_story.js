@@ -70,7 +70,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     RUN_INTRO.t0 = 0; runIntroGo();
     return { seen, ficha, went, again: (() => { runIntroShow('ciudad', () => {}); const p = el.classList.contains('ri-prologue'); RUN_INTRO.t0 = 0; runIntroGo(); return p; })() }; });
   check('PROLOGO.tres_pantallas_y_despues_el_acto_I', pro.seen.length === 5 && pro.seen.slice(0, 3).every(s => s.who === 'PRÓLOGO' && s.pro) && pro.seen[3].who === 'ACTO I' && /GUÍA/.test(pro.seen[3].t) && !pro.seen[4].pro, pro.seen);
-  check('FICHA.dice_el_acto_y_habla_tu_guardian', /ACTO I/.test(pro.ficha.act) && /puerta norte/.test(pro.ficha.hero) && /Esta es tu ciudad/.test(pro.ficha.say), pro.ficha);
+  check('FICHA.dice_el_acto_y_habla_tu_guardian_(sin_frase_de_apertura_del_Hechicero)', /ACTO I/.test(pro.ficha.act) && /puerta norte/.test(pro.ficha.hero) && pro.ficha.say === '', pro.ficha);
   check('PROLOGO.una_sola_vez_por_perfil', pro.again === false, pro.again);
   const act2 = await E(() => { state = 'menu'; runIntroShow('micelial', () => {}); const el = document.getElementById('run-intro');
     const r = { who: el.querySelector('.ri-who').textContent, t: el.querySelector('.ri-arena').textContent, txt: el.querySelector('.ri-say').textContent };
@@ -101,12 +101,12 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   // regla: no más de 2 textos a la vez (cartel grande + cartel del centro ya en pantalla → la voz espera)
   const g = await E(() => { __read(); __step(16); STORY.q.length = 0;
     arenaTitleCard('PRUEBA', 'TÍTULO', 'sub', 3000); showBanner('CARTEL', 2); // (urgente: con el cartel de arena arriba sale igual, debajo — hud-text.js)
-    const n = storyOtherTexts(); storySay('hech', 'Línea de prueba que tiene que esperar su turno.'); STORY.gateT = 0; __step(32);
+    const n = storyOtherTexts(); storySay('chron', 'Línea de prueba que tiene que esperar su turno.'); STORY.gateT = 0; __step(32);
     const blocked = __tut().text !== 'Línea de prueba que tiene que esperar su turno.';
     _arenaTitleUntil = 0; STORY.gateT = 0; __step(32);
     return { n, blocked, after: __tut().text }; });
   check('REGLA.no_mas_de_2_textos_a_la_vez', g.n === 2 && g.blocked && /Línea de prueba/.test(g.after), g);
-  const vOld = await E(() => { __read(); __quiet(); STORY.q.length = 0; storySay('hech', 'Línea vieja', {wait:1}); const t0 = performance.now(); while (performance.now() - t0 < 5); __step(32); return __tut().text; });
+  const vOld = await E(() => { __read(); __quiet(); STORY.q.length = 0; storySay('chron', 'Línea vieja', {wait:1}); const t0 = performance.now(); while (performance.now() - t0 < 5); __step(32); return __tut().text; });
   check('REGLA.una_linea_vieja_no_aparece_tarde', vOld !== 'Línea vieja', vOld);
 
   // ---------------- SUBJEFE: advertencia + página ----------------

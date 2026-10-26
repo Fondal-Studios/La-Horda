@@ -4,7 +4,7 @@
    EL LIBRO DE LA HORDA — narrado por el Hechicero Supremo (firma "— El Hechicero Supremo" al pie de cada página).
    Visor de libro animado (pasa páginas en 3D con CSS, ilustraciones en canvas:
    js/ui/codex/codex-book-art.js). Cuatro usos, todos con el mismo visor:
-     "intro"     gran introducción, una vez, OFRECIDA al volver de la primera arena (codexBookOffer → codexBookMaybeIntro)
+     "intro"     gran introducción, una vez, al abrir el juego por primera vez (sobre la pantalla de carga: codexBookBoot)
      "fragment"  fragmento de una arena ganada (botón en la victoria y lista del Códice)
      "short"     carga corta antes de entrar a una arena de campaña en solitario (codexBookShort)
      "revisit"   lo que se vuelve a abrir desde Códice › El Libro
@@ -12,10 +12,10 @@
    la intro y la carga corta se cierran solas si el jugador entra a una sala o empieza una partida, así que
    nunca frenan a nadie; prefers-reduced-motion = sin giro de página, cambio instantáneo.
    Un solo narrador a la vez (js/systems/codex-narrative.js): con el Libro abierto el Hechicero no habla en ningún otro lado, y la
-   página de carga reemplaza la frase de apertura de su ficha (run-intro.js) en vez de sumarse a ella.
+   página de carga es lo único que se muestra al entrar a una arena (run-intro.js: ya no hay ficha del Hechicero).
    Es 100% local: no manda nada por la red.
    ============================================================ */
-const BOOK = {open:false, kind:"", pages:[], i:0, t0:0, raf:0, flipping:false, onEnd:null, shownAt:0, auto:[], prevFocus:null};
+const BOOK = {open:false, boot:false, kind:"", pages:[], i:0, t0:0, raf:0, flipping:false, onEnd:null, shownAt:0, auto:[], prevFocus:null};
 
 function _bkEsc(s){ return String(s==null ? "" : s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
 function bookReducedMotion(){ try{ return !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches); }catch(e){ return false; } }
@@ -34,7 +34,8 @@ function bookEl(){
   let el = document.getElementById("codex-book");
   if(el) return el;
   el = document.createElement("div"); el.id = "codex-book"; el.className = "hidden"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-label", "El Libro de la Horda, escrito por el Hechicero Supremo");
-  el.innerHTML = `<div class="bk-veil"></div>
+  el.innerHTML = `<svg class="bk-defs" width="0" height="0" aria-hidden="true" focusable="false"><filter id="bk-ink" x="-2%" y="-6%" width="104%" height="112%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="11" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+    <div class="bk-veil"></div>
     <div class="bk-stage"><div class="bk-book">
       <div class="bk-left"><canvas class="bk-art" aria-hidden="true"></canvas><div class="bk-pg bk-pgl"></div></div>
       <div class="bk-right"><div class="bk-text"></div><div class="bk-sign" aria-hidden="true"></div><div class="bk-pg bk-pgr"></div></div>
@@ -42,7 +43,7 @@ function bookEl(){
       <div class="bk-spine"></div></div>
       <div class="bk-bar"><button type="button" class="bk-nav bk-prev" aria-label="Página anterior">‹</button><div class="bk-dots" aria-hidden="true"></div><button type="button" class="bk-nav bk-next" aria-label="Página siguiente">›</button></div>
     </div>
-    <button type="button" class="bk-skip">Saltar ▸▸</button><div class="bk-timer" aria-hidden="true"><i></i></div>`;
+    <button type="button" class="bk-skip">Saltar ▸▸</button><div class="bk-load" aria-live="polite"></div><div class="bk-timer" aria-hidden="true"><i></i></div>`;
   document.body.appendChild(el);
   el.addEventListener("click", ev=>{
     if(ev.target.closest(".bk-skip")){ bookClose("skip"); return; }
@@ -83,6 +84,13 @@ function bookDrawCanvas(cv, art, t){
   c.setTransform(dpr, 0, 0, dpr, 0, 0);
   bookArtDraw(c, art, cv.clientWidth, cv.clientHeight, t);
 }
+// Pantalla de carga: estado del juego mientras se lee (ASSET_LOAD, js/assets/preload.js).
+function bookLoadStatus(el){
+  const L = el.querySelector(".bk-load"); if(!L) return;
+  let txt = "";
+  try{ const c = ASSET_LOAD.core; txt = c.done >= c.total ? "El juego ya cargó. Seguí leyendo o saltá." : "Cargando el juego… " + Math.floor(c.done*100/Math.max(1, c.total)) + "%"; }catch(e){}
+  if(L.textContent !== txt) L.textContent = txt;
+}
 function bookFrame(){
   if(!BOOK.open) return;
   const el = bookEl(), now = performance.now(), t = (now - BOOK.t0)/1000;
@@ -92,6 +100,7 @@ function bookFrame(){
   const P = BOOK.pages[BOOK.i];
   bookDrawCanvas(el.querySelector(".bk-art"), P.art, t);
   if(BOOK.flipping) bookDrawCanvas(el.querySelector(".bk-art2"), BOOK.backArt, (now - BOOK.flipT0)/1000);
+  if(BOOK.boot) bookLoadStatus(el);
   const tm = el.querySelector(".bk-timer i"); if(tm && BOOK.kind==="short" && BOOK.dur) tm.style.width = Math.min(100, (now - BOOK.openedAt)/BOOK.dur*100) + "%";
   BOOK.raf = requestAnimationFrame(bookFrame);
 }
@@ -142,7 +151,7 @@ function bookGo(delta, force){
 }
 function bookClose(reason){
   if(!BOOK.open) return;
-  BOOK.open = false; cancelAnimationFrame(BOOK.raf); BOOK.auto.forEach(a=>{ a.done = true; });
+  BOOK.open = false; BOOK.boot = false; cancelAnimationFrame(BOOK.raf); BOOK.auto.forEach(a=>{ a.done = true; });
   clearTimeout(BOOK.flipTimer); BOOK.flipping = false;
   const el = bookEl(); el.classList.add("hidden"); el.querySelector(".bk-leaf").classList.remove("on", "flip", "flipped", "notrans");
   document.body.classList.remove("book-open");
@@ -158,7 +167,7 @@ function codexBookPlay(kind, pages, opts){
   if(BOOK.open || !pages || !pages.length) return false; // quien llama sigue su camino por su cuenta (nunca se llama dos veces a onEnd)
   const el = bookEl();
   try{ const g = document.getElementById("alpha-guide"); if(g && g.open) g.close(); }catch(e){} // la Guía del Hechicero (diálogo) no queda encima del Libro
-  BOOK.open = true; BOOK.kind = kind; BOOK.pages = pages; BOOK.i = opts.startAt|0; BOOK.flipping = false; BOOK.onEnd = opts.onEnd || null; BOOK.dur = opts.dur || 0;
+  BOOK.open = true; BOOK.kind = kind; BOOK.pages = pages; BOOK.i = opts.startAt|0; BOOK.flipping = false; BOOK.onEnd = opts.onEnd || null; BOOK.dur = opts.dur || 0; BOOK.boot = !!opts.boot;
   BOOK.prevFocus = document.activeElement; BOOK.t0 = BOOK.openedAt = performance.now();
   const now = performance.now(); BOOK.auto = (opts.auto || []).map(a=>({at:now + a.at, fn:a.fn, done:false}));
   document.body.classList.add("book-open");
@@ -179,45 +188,31 @@ function codexBookMaybeIntro(next, opts){
   try{ ok = codexBookPlay("intro", codexBookIntroPages(), {onEnd:()=>{ if(next) next(); }}); }catch(err){ console.error("No se pudo abrir el Libro:", err); ok = false; }
   return ok;
 }
-// OFERTA (no obliga): al volver al menú tras la primera arena, un cartel "Leer el Libro / Después". Una sola vez.
-// Si en ese momento hay otra capa de historia en pantalla (ficha, relato, tutorial) no se ofrece encima: se reintenta unos segundos
-// y, si no hubo hueco, queda para la próxima vez que se llegue al menú (offered solo se marca cuando el cartel de verdad se muestra).
-function codexBookOffer(){
-  if(typeof codexBookOfferDue!=="function" || !codexBookOfferDue() || BOOK.open) return false;
-  if(typeof gameDialogIsOpen==="function" && gameDialogIsOpen()) return false;
-  codexBookSave().offered = true; if(typeof persist==="function") persist();
-  const msg = "📖 El Libro de la Horda\nPasaste tu primera arena, guardián. Escribí para vos cómo empezó todo: son 8 páginas y podés saltarlas cuando quieras. Queda siempre en Códice › El Libro.\n— El Hechicero";
-  gameConfirm(msg, {okText:"Leer el Libro", cancelText:"Después"}).then(ok=>{
-    if(ok && typeof state!=="undefined" && state==="mainmenu") codexBookMaybeIntro(null, {});
-  });
+// PRIMER DESPLIEGUE: la primera vez que se abre el juego (instalación nueva: save.codexBook.introSeen falso) el Libro se lee sobre la
+// pantalla de carga del título, desde la tapa, mientras bajan los scripts y el arte. No bloquea ni demora la carga: se saltea
+// con Saltar/toque/Esc y, si la carga termina antes que la lectura, sigue abierto con el aviso "El juego ya cargó" (no se corta solo).
+// Saltarlo = vista; llegar a la última página = leída (codexBookMarkIntroRead). Las veces siguientes no se repite: queda en
+// Códice › El Libro. Ya no hay oferta "Leer el Libro / Después" al volver de la primera arena.
+function codexBookBootDue(){
+  try{
+    if(typeof codexBookIntroDue!=="function" || !codexBookIntroDue({})) return false;
+    if(typeof state!=="undefined" && state!=="title") return false;
+    if(/[?&](room|cw|return)=/.test(location.search)) return false;                  // invitaciones y vueltas al hub: no se demora a nadie
+    if(typeof navigator!=="undefined" && navigator.webdriver && !window.__codexBook) return false; // pruebas automáticas viejas: camino de siempre
+  }catch(e){ return false; }
   return true;
 }
-let _cbOfferTries = 0;
-function codexBookOfferSoon(){
-  if(_cbOfferTries >= 8) return;
-  _cbOfferTries++;
-  setTimeout(()=>{
-    try{
-      if(typeof state!=="undefined" && state!=="mainmenu"){ _cbOfferTries = 0; return; }   // se fue del menú: se reintenta la próxima vez que vuelva
-      if(narrationOtherOpen() || narrationBookOpen()){ codexBookOfferSoon(); return; }        // otra capa de historia en pantalla: espera su turno
-      if(typeof codexBookOfferDue!=="function" || !codexBookOfferDue()) return;
-      _cbOfferTries = 0; codexBookOffer();
-    }catch(e){}
-  }, _cbOfferTries===1 ? 900 : 1500);
+let _cbBootTries = 0, _cbBooted = false;
+function codexBookBoot(){
+  if(_cbBooted || BOOK.open) return;
+  // espera al guardado REAL (main.js → loadSave): antes `save` es el de fábrica y marcar la intro vista se perdería
+  if(typeof state==="undefined" || typeof save==="undefined" || !save || typeof saveLoadStarted==="undefined" || !saveLoadStarted){ if(++_cbBootTries < 200) setTimeout(codexBookBoot, 50); return; }
+  if(!codexBookBootDue()) return;
+  _cbBooted = true;
+  codexBookMarkIntro(); // omitir también cuenta como visto: si cierran el juego a mitad, no vuelve a aparecer sola
+  try{ if(!codexBookPlay("intro", codexBookIntroPages(), {boot:true})) _cbBooted = false; }catch(err){ console.error("No se pudo abrir el Libro:", err); }
 }
-// Gancho de estados: terminar una partida marca "ya jugó"; al llegar al menú se ofrece el Libro (después de que el hub dibuje).
-(function(){
-  if(typeof setState!=="function") return;
-  const base = setState;
-  setState = function(s){
-    const r = base.apply(this, arguments);
-    try{
-      if(s==="victory" || s==="gameover") codexBookMarkRan();
-      if(s==="mainmenu"){ _cbOfferTries = 0; codexBookOfferSoon(); }
-    }catch(e){}
-    return r;
-  };
-})();
+setTimeout(codexBookBoot, 0);
 // Releer la introducción desde el Códice (siempre disponible).
 function codexBookOpenIntro(onEnd){ return codexBookPlay("revisit", codexBookIntroPages(), {onEnd}); }
 // 2. Fragmento de una arena (solo si la ganaste).
@@ -228,15 +223,17 @@ function codexBookOpenFragment(arena, onEnd, opts){
   return codexBookPlay("fragment", pages, {onEnd});
 }
 // 3. Carga corta: una página que se da vuelta sola (≈2,8 s). Devuelve true si se hizo cargo de seguir con `next(reason, ms)`:
-// run-intro.js usa cuánto estuvo a la vista para decidir si la ficha del Hechicero repite o no su frase de apertura.
+// run-intro.js sigue con la partida al terminar (reason: auto | end | skip | esc).
 function codexBookShort(arena, next){
   if(typeof codexBookShortDue!=="function" || !codexBookShortDue(arena)) return false;
   const one = codexBookShortPages(arena); if(!one) return false;
   codexBookShortMark(arena);
   const reduced = bookReducedMotion();
   const pages = reduced ? one : [{kicker:"LA HORDA", title:"", text:"", art:"tapa"}].concat(one);
-  const ok = codexBookPlay("short", pages, {dur:reduced ? 2200 : 3000, onEnd:(reason, kind, shownMs)=>{ if(next) next(reason, shownMs); },
-    auto:(reduced ? [] : [{at:380, fn:()=>bookGo(1, true)}]).concat([{at:reduced ? 2200 : 3000, fn:()=>bookClose("auto")}])});
+  // ≈3 s; un texto más largo se queda un poco más (hasta 4,2 s). Siempre se saltea con un toque o Esc.
+  const len = String((one[0] && one[0].text) || "").length, dur = (reduced ? 2200 : 3000) + Math.round(Math.max(0, Math.min(80, len - 90))*15);
+  const ok = codexBookPlay("short", pages, {dur, onEnd:(reason, kind, shownMs)=>{ if(next) next(reason, shownMs); },
+    auto:(reduced ? [] : [{at:380, fn:()=>bookGo(1, true)}]).concat([{at:dur, fn:()=>bookClose("auto")}])});
   return ok;
 }
 // Desde la victoria: botón [data-book-frag="arena"].
@@ -253,7 +250,7 @@ document.addEventListener("click", ev=>{
 function codexBookBadgeSync(){
   const tile = document.getElementById("mainmenu-codex-btn"); if(!tile) return;
   let b = tile.querySelector(".cxb-new");
-  const pending = typeof codexBookSave==="function" && ((!codexBookSave().introSeen && (codexBookSave().ran || codexBookSave().offered)) || codexBookUnread().length > 0) && !(typeof needsStarterChampion==="function" && needsStarterChampion());
+  const pending = typeof codexBookSave==="function" && codexBookUnread().length > 0 && !(typeof needsStarterChampion==="function" && needsStarterChampion());
   if(pending && !b){ b = document.createElement("span"); b.className = "cxb-new"; b.textContent = "NUEVO"; b.setAttribute("aria-label", "Libro nuevo en el Códice"); tile.appendChild(b); }
   else if(!pending && b) b.remove();
 }
@@ -272,7 +269,7 @@ function codexBookListHtml(){
   const off = !!cb.shortOff;
   return `<div class="cx-list-head"><div class="cx-list-title">EL LIBRO · ${codexBookFragmentCount()} / ${Object.keys(BOOK_FRAGMENTS).length} fragmentos</div></div>
     <div class="cxb-grid">${intro}${cards}</div>
-    <div class="cx-sec cxb-opts"><h3>Cargas</h3><div class="cx-dim">Antes de entrar a una arena de la campaña (en solitario) el Hechicero da vuelta una página corta. Se puede saltear con un toque y no aparece en salas con amigos.</div>
+    <div class="cx-sec cxb-opts"><h3>Cargas</h3><div class="cx-dim">Antes de entrar a una arena de la campaña (en solitario) se da vuelta una página corta del Libro. Se puede saltear con un toque y no aparece en salas con amigos.</div>
       <button class="cx-btn" data-book-short>${off ? "Activar las páginas de carga" : "Desactivar las páginas de carga"}</button>
       <button class="cx-btn" data-book-reset>Que el Hechicero me vuelva a ofrecer la introducción</button></div>`;
 }

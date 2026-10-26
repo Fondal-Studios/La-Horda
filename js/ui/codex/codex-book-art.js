@@ -6,7 +6,7 @@
    panorámica real de esa arena (assets/ui/codex/arenas/<id>.jpg, la misma del Códice) teñida de tinta y
    pergamino. Todo se anima con `t` (segundos) y se recorta a un marco grabado. Si no hay imagen todavía, se
    dibuja un fondo de la paleta de la arena: el libro nunca queda vacío ni espera una descarga.
-   Paleta: tinta #2b1a0e, pergamino #e9d7ad, oro #e0b060, brasa #ff9a4a.
+   Paleta: tinta #120c07, pergamino #bfa56f, oro #e0b060 (solo en las escenas), brasa #ff9a4a.
    ============================================================ */
 const BOOK_ART_NAMES = ["tapa", "guardianes", "horda", "cicatriz", "hechicero", "mision", "libro", "modos", "progreso",
   "equipo", "maestria", "talentos", "dificultad", "cooperativo", "tienda", "brasas", "postgame", "recap"];
@@ -307,12 +307,12 @@ function _bkArena(c, W, H, t, u, id){
   const im = bookArtImage(id), tint = BOOK_ARENA_TINT[id] || "#e0b060";
   if(im){
     const s = Math.max(W/im.width, H/im.height)*1.3, dw = im.width*s, dh = im.height*s, pan = Math.sin(t*0.2)*(dw - W)*0.12, fx = BOOK_ARENA_FOCUS[id] || 0.5;
-    c.save(); c.filter = "sepia(0.75) contrast(1.08) brightness(0.92) saturate(1.2)"; c.drawImage(im, -(dw - W)*fx + pan, (H - dh)/2, dw, dh); c.restore();
+    c.save(); c.filter = "grayscale(0.85) sepia(0.6) contrast(1.4) brightness(0.78)"; // lavado de tinta: casi monocromo, negros cerrados c.drawImage(im, -(dw - W)*fx + pan, (H - dh)/2, dw, dh); c.restore();
   } else { _bkBg(c, W, H, "#2a1c10", "#0a0704"); }
-  c.globalCompositeOperation = "multiply"; c.fillStyle = "rgba(214,189,134,0.35)"; c.fillRect(0, 0, W, H); c.globalCompositeOperation = "source-over";
-  const g = c.createRadialGradient(W/2, H/2, Math.min(W, H)*0.3, W/2, H/2, Math.max(W, H)*0.75); g.addColorStop(0, "rgba(0,0,0,0)"); g.addColorStop(1, "rgba(12,6,2,0.72)"); c.fillStyle = g; c.fillRect(0, 0, W, H);
-  _bkGlow(c, W*0.5, H*0.9, W*0.5, tint.replace("#", "").match(/../g).map(h=>parseInt(h, 16)).join(","), 0.18);
-  _bkEmbers(c, W, H, t, "255,200,120", 16);
+  c.globalCompositeOperation = "multiply"; c.fillStyle = "rgba(196,168,112,0.4)"; c.fillRect(0, 0, W, H); c.globalCompositeOperation = "source-over";
+  const g = c.createRadialGradient(W/2, H/2, Math.min(W, H)*0.3, W/2, H/2, Math.max(W, H)*0.75); g.addColorStop(0, "rgba(0,0,0,0)"); g.addColorStop(1, "rgba(8,4,1,0.82)"); c.fillStyle = g; c.fillRect(0, 0, W, H);
+  _bkGlow(c, W*0.5, H*0.9, W*0.5, tint.replace("#", "").match(/../g).map(h=>parseInt(h, 16)).join(","), 0.1);
+  _bkEmbers(c, W, H, t, "255,200,120", 10); // brasas sueltas, pocas: es tinta, no fuego
 }
 
 // Dibuja una ilustración completa (fondo + escena + marco grabado) dentro de un canvas de W×H píxeles CSS.
@@ -328,7 +328,7 @@ function bookArtDraw(c, art, W, H, t){
   c.restore();
   // marco grabado de tinta, con esquinas
   c.save(); c.strokeStyle = "#2b1a0e"; c.lineWidth = 3; c.strokeRect(m, m, W - 2*m, H - 2*m);
-  c.strokeStyle = "rgba(224,176,96,0.8)"; c.lineWidth = 1; c.strokeRect(m + 3, m + 3, W - 2*m - 6, H - 2*m - 6);
+  c.strokeStyle = "rgba(24,14,6,0.75)"; c.lineWidth = 1; c.strokeRect(m + 3, m + 3, W - 2*m - 6, H - 2*m - 6);
   c.fillStyle = "#2b1a0e"; for(const [x, y] of [[m, m], [W - m, m], [m, H - m], [W - m, H - m]]){ c.beginPath(); c.arc(x, y, 4, 0, 7); c.fill(); }
   c.restore();
 }
