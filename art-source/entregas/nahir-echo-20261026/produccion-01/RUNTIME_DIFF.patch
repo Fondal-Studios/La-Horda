@@ -1,0 +1,20 @@
+diff --git a/art-source/entregas/nahir-echo-20261026/produccion-01/source-before.js b/js/champions/vfx-b/nahir.js
+index bb13cb71..74b56357 100644
+--- a/art-source/entregas/nahir-echo-20261026/produccion-01/source-before.js
++++ b/js/champions/vfx-b/nahir.js
+@@ -44,7 +44,14 @@
+     const ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len, h = kvbHeroAt(x, y, 'nahir');
+     kvbBeam('nh_cut', x, y, ex, ey, r * 2, 520, {layer: 't'});
+     kvbDecal('nh_shatter', ex, ey, Math.max(30, r * 1.8), 480, {layer: 'g'});
+-    if(h) for(const o of portadorObjects){ if(o.kind === 'ex_reflection' && o.owner === h && o.life > 0){ kvbBeam('nh_cut', o.x, o.y, ex, ey, r * 1.1, 480, {layer: 't', alpha: .7}); kvbEmit('nh_glint', 2, o.x, o.y, {v0: 10, v1: 40, l0: 260, l1: 420, scale: 1.2}); } }
++    if(h) for(const o of portadorObjects){ if(o.kind === 'ex_reflection' && o.owner === h && o.life > 0){
++      const echo = kvbBeam('nh_cut', o.x, o.y, ex, ey, r * 1.1, 480, {layer: 't', alpha: .7});
++      // A live reflection can be farther than the shared beam's 900-unit budget.
++      // Extend only this echo; the native tiled renderer preserves its pixel pitch.
++      const echoLength = Math.hypot(ex - o.x, ey - o.y);
++      if(echo && Number.isFinite(echoLength) && echoLength > echo.len) echo.len = echoLength;
++      kvbEmit('nh_glint', 2, o.x, o.y, {v0: 10, v1: 40, l0: 260, l1: 420, scale: 1.2});
++    } }
+     kvbEmit('nh_shard', 5, ex, ey, {v0: 50, v1: 120, up: 30, grav: 140, l0: 300, l1: 480, scale: 1.3, spin: 6, shrink: true});
+   };
+   KVB_FX['nahir.gallery'] = (x, y, r, ang, ox, oy) => { // tres espejos a 100 u en 0°, 120° y 240°; cada uno estalla en 80 u

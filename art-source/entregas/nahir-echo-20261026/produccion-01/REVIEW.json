@@ -1,0 +1,41 @@
+{
+  "component": "A-FX-nahir-h3/long-echo",
+  "block": "B180",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "visualReview": {
+    "reviewed": [
+      "REVIEW_mobile.png",
+      "REVIEW_desktop.png",
+      "desktop-base-diagonal-parent-128.png",
+      "desktop-base-diagonal-candidate-128.png",
+      "mobile-tier4-diagonal-parent-128.png",
+      "mobile-tier4-diagonal-candidate-128.png"
+    ],
+    "observations": [
+      "El eco largo llega al mismo impacto que el corte principal; desaparece el corte abrupto intermedio.",
+      "Se conserva el material aguamarina y el tamaño de tesela; no se estira el raster.",
+      "El trazo diagonal heredado cruza compañeros y el impacto denso sigue dominando el extremo. Falta medir contacto compuesto en seis arenas y densidad alta antes de aprobar la extensión.",
+      "Los recortes desktop tier4 no contienen el impacto completo; la vista móvil completa sí. No se declara revisión temporal integral."
+    ]
+  },
+  "newTests": {
+    "actualH3Casts": 24,
+    "pairs": 12,
+    "precastExactPairs": 12,
+    "summarizedStateExactPairs": 12,
+    "shortAllPixelsExactPairs": 2,
+    "nativeChecks": 136,
+    "cameraProbes": 64,
+    "relayChecks": 9,
+    "relayEchoLength": 990.8093257534468,
+    "errors": 0
+  },
+  "limits": [
+    "Bosque, base/set/croma y alloc7 tier4 de fixture; no compra de talentos validada para tier4.",
+    "Sin matriz seis arenas/equipo/densidades/contacto80%delta24, performance completa ni paridad combate360frames.",
+    "Controles nativos sintéticos separados de casts alcanzables; cámara de endpoints de capa aislada, no partida multijugador de borde.",
+    "Relay real con duo deshabilitado; no certifica snapshots reordenados o dueño fuera de cámara.",
+    "No ArtGate PASS, merge ni publicación."
+  ]
+}

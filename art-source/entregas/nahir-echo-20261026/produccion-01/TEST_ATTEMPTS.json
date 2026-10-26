@@ -1,0 +1,33 @@
+{
+  "attempts": [
+    {
+      "id": "environment-worktree-01",
+      "outcome": "invalid reference before fetch completed",
+      "action": "Created isolated worktree from9709434 then copied101 paths only after exact freshmain Gitblob comparison;12587 main tree entries checked,0mismatch. Original dirty worktrees preserved."
+    },
+    {
+      "id": "cast-01",
+      "outcome": "Timeout waiting skin readiness after ten successful scene captures; no final result JSON, not approved",
+      "cause": "Harness treated CROMA_SKINS.nahir_skin.packs values as objects; actual values are CHAMP_PACK keys.",
+      "preserved": "attempt01-croma-wait/harness.js and CAST_COMPARISON.log; two representative PNG; all other captures reproducible with script",
+      "action": "Wait CHAMP_PACK[key].ready and persist progress per case;24casts finalPASS."
+    },
+    {
+      "id": "native-01",
+      "outcome": "136PASS/0errors",
+      "file": "NATIVE_CONTRACT.json"
+    },
+    {
+      "id": "relay-01",
+      "outcome": "relay not ready",
+      "cause": "Missing ws module in isolated worktree, confirmed separate server startup MODULE_NOT_FOUND.",
+      "preserved": "attempt02-relay-environment",
+      "action": "NODE_PATH points to existing locked local server dependencies; no lock/dependency/runtime mutation."
+    },
+    {
+      "id": "relay-02",
+      "outcome": "9PASS/0errors, actual990.8093 units both peers",
+      "file": "ONLINE.json"
+    }
+  ]
+}
