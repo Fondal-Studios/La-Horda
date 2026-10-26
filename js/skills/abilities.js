@@ -494,6 +494,7 @@ function castAbility(caster, sk, isUlt, idx){
       if(focusTarget) musashiAddConcentration(caster, focusTarget, 3);
       else if(firstMark) musashiAddConcentration(caster, firstMark, 1);
       particles.push({x:caster.x,y:caster.y, life:380, maxLife:380, spin:true, radius:sk.radius*AREA*0.9, color:"#bfe4ff"});
+      if(typeof vfxMusashiThousand === "function") vfxMusashiThousand(caster.x, caster.y, sk.radius*AREA);
       // Pose real del remolino de cortes (reemplaza el cuerpo de Musashi durante la animación,
       // igual criterio que "ronin" arriba), sobre el anillo procedural que ya existía.
       caster.musashiCastKind = "thousand"; caster.musashiCastDur = 380; caster.attackAnim = Math.max(caster.attackAnim, 380);

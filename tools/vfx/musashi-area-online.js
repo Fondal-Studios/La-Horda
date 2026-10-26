@@ -1,0 +1,18 @@
+'use strict';
+const fs=require('fs'),{spawn}=require('child_process'),H=require('../lib/serve');
+const D=process.env.OUT||'art-source/entregas/musashi-kit-20261026/area-01';fs.mkdirSync(D,{recursive:true});
+const relay=spawn('node',['server/relay.js'],{env:{...process.env,PORT:'8897',DATA_DIR:fs.mkdtempSync('/tmp/musashi-relay-'),DATABASE_URL:'',ALLOWED_ORIGINS:'*'},stdio:'ignore'});
+(async()=>{let b;const site=await H.startSite(),checks=[],errors=[],rows=[];try{
+ for(let n=0;n<100;n++){try{if((await fetch('http://127.0.0.1:8897/api/health')).ok)break;}catch{}if(n===99)throw Error('relay not ready');await new Promise(r=>setTimeout(r,100));}
+ b=await H.launch();const host=await b.newPage(),guest=await b.newPage({viewport:{width:844,height:390},isMobile:true,hasTouch:true});
+ for(const [p,skin]of[[host,''],[guest,'errante']]){
+  p.on('pageerror',e=>errors.push(e.message));await p.goto(site.url+'/?lazy=0&server=ws%3A%2F%2F127.0.0.1%3A8897');await p.waitForFunction(()=>assetsAllReady()&&typeof netCreateRoom==='function');
+  await p.evaluate(skin=>{save.starterChosen=true;for(const c of Object.values(save.champions))Object.assign(c,{unlocked:true,level:20});save.cosmeticUnlocks={...save.cosmeticUnlocks,errante:true};save.champions.musashi.cosmeticSkin=skin;save.champions.musashi.croma=null;for(const m of save.champions.musashi.skillMastery)m.alloc=7;selectedClass=skin?'musashi':'tanque';currentArena='bosque';setState('prep');},skin);
+ }
+ await host.evaluate(()=>netCreateRoom(currentArena,selectedClass,20));const code=await host.evaluate(()=>net.code);await guest.evaluate(code=>netJoinRoom(code,selectedClass,20),code);await host.waitForFunction(()=>netHumanCount()===2&&netDuoLoadoutValid(1));await host.evaluate(()=>netHostStartGame());await guest.waitForFunction(()=>netMatch?.role==='guest'&&state==='playing');
+ for(const p of[host,guest])await p.evaluate(()=>{window.__forms=[];window.__formDraws=0;const fx=ufPlay,di=CanvasRenderingContext2D.prototype.drawImage;ufPlay=function(...a){if(a[0]==='musashi.2')__forms.push(['uf.'+a[0],...a.slice(1)]);return fx(...a);};CanvasRenderingContext2D.prototype.drawImage=function(im,...a){if(this===ctx&&[...UF.cache.entries()].some(([k,v])=>k.startsWith('musashi.2')&&v.frames.includes(im)))__formDraws++;return di.call(this,im,...a);};});
+ await host.evaluate(()=>{enemies=[];for(const h of heroes){h.invulnTimer=1e9;h.energy=1e4;h.cds=[0,0,0];}const h=heroes[1],e=spawnEnemy('esqueleto');Object.assign(e,{x:h.x+100,y:h.y,hp:1e7,maxHp:1e7,speed:0,baseSpeed:0,dmg:0});setInterval(()=>{spawnTimer=arenaHazardTimer=1e9;levelTimer=0;},40);});
+ await guest.evaluate(()=>useSkill(2,{x:player.x+100,y:player.y,dx:1,dy:0}));
+ for(const [role,p]of[['host',host],['touch-guest',guest]]){await p.waitForFunction(()=>__forms.length&&__formDraws>0);const r=await p.evaluate(()=>({role:netMatch.role,forms:__forms,draws:__formDraws,casts:heroes[1].stats.skillCasts,owner:heroes[1].classKey}));rows.push({observer:role,...r});checks.push({name:role+' exact tier4 area',ok:r.forms.length===1&&Math.abs(r.forms[0][3]-246.6)<.01});checks.push({name:role+' actual native texture draws',ok:r.draws>0});checks.push({name:role+' owner class and host cast',ok:r.owner==='musashi'&&(role!=='host'||r.casts>=1)});}
+ fs.writeFileSync(D+'/ONLINE.json',JSON.stringify({checks,rows,errors},null,2));console.log(JSON.stringify({checks,errors}));if(errors.length||checks.some(c=>!c.ok))process.exitCode=1;
+}catch(e){fs.writeFileSync(D+'/ONLINE_FAILURE.json',JSON.stringify({error:String(e),checks,rows,errors},null,2));throw e;}finally{if(b)await b.close();relay.kill();await site.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

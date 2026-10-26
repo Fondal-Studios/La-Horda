@@ -1,0 +1,32 @@
+{
+  "component": "A-FX-musashi-h3/thousand-cuts",
+  "block": "B174",
+  "state": "EN_CORRECCION",
+  "engine": "UF native pixel painter",
+  "source": "source-sfa-musashi.js::musashiThousandForm",
+  "identity": "Open enso and fourteen staggered short tangential cuts, blade palette; original orbit retained in main and before sources",
+  "frames": 24,
+  "durationMS": 1200,
+  "buckets": [
+    32,
+    56,
+    72
+  ],
+  "worldRadiiTested": [
+    150,
+    246.6,
+    315,
+    378
+  ],
+  "limits": "UF engine420 world-radius cap retained; full talent/equipment extremes beyond420 are NOT certified. Other normal forms retain300 cap. Actual damage/targets/timers unchanged. No-target H3 emits no candidate, because no successful geometry record.",
+  "hook": "Successful abilities.js musashi_thousand pushes exact sk.radius*AREA through optional vfxMusashiThousand into SFA_REC; SFA and UF consume it; existing kvbFx relay reused.",
+  "reproduce": [
+    "CHROMIUM_PATH=/tmp/chromium NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules node tools/vfx/export-musashi-area.js",
+    "node tools/vfx/musashi-area-contract.js",
+    "node tools/vfx/capture-musashi-area.js",
+    "MOBILE=1 node tools/vfx/capture-musashi-area.js",
+    "node tools/vfx/musashi-area-online.js",
+    "node tools/vfx/parity-musashi-area.js"
+  ],
+  "preview": "preview.html"
+}

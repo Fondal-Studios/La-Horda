@@ -1,0 +1,36 @@
+{
+  "error": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded.",
+  "checks": [
+    {
+      "name": "host exact tier4 area",
+      "ok": true
+    },
+    {
+      "name": "host actual native texture draws",
+      "ok": true
+    },
+    {
+      "name": "host actual cast owner",
+      "ok": true
+    }
+  ],
+  "rows": [
+    {
+      "observer": "host",
+      "role": "host",
+      "forms": [
+        [
+          "uf.musashi.2",
+          49.5,
+          49.5,
+          246.60000000000002,
+          0.7853981633974483
+        ]
+      ],
+      "draws": 3,
+      "casts": 1,
+      "owner": "musashi"
+    }
+  ],
+  "errors": []
+}

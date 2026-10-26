@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-10-25T16:10:15.176462+00:00",
+  "updated": "2026-10-26T11:17:05.255660+00:00",
   "policy": "Alternate production batches and complete closures; current-main integration is not visual approval.",
   "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
   "pendingVerificationNotFailures": [
@@ -13,7 +13,7 @@
   ],
   "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "CIERRE Libertador PR220: exact final head CI and merge if all success; no new workshop.",
+  "next": "CIERRE agrupado Musashi H3; no nuevo kit antes de cerrar componente/gates.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -2480,14 +2480,67 @@
         }
       ],
       "next": "Verify all exact-head CI, merge normally, then canonical publication separately; does not close entire block."
+    },
+    {
+      "id": "musashi.h3.thousand-cuts.20261026",
+      "block": "B174",
+      "component": "A-FX-musashi-h3/thousand-cuts",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "state": "EN_CORRECCION",
+      "integration": "NO_INTEGRAR",
+      "source": "art-source/entregas/musashi-kit-20261026/area-01/source-sfa-musashi.js",
+      "sourceSha256": "a66eab7e51bd102ee34cf6aacbf6e17ad55d7cc2716f88bcacbf7d5ef31c286b",
+      "atlas": "art-source/entregas/musashi-kit-20261026/area-01/musashi-cuts-r150.png",
+      "atlasSha256": "740c9d019f117f2312ed2130ff48d0bb9ac53abf1a091b11ccc25f95517fc4b4",
+      "diagnosis": "Correct real area/successful cast; current tangential arcs still read as segmented ring, weak mobile identity, legacy set competes. Contact PASS not Art PASS.",
+      "action": "Close grouped silhouette/phase/impact at native scale; lifecycle >420/talents/culling/fallback and full-render performance/gates before merge.",
+      "history": [
+        {
+          "attempt": "orbit01",
+          "diagnosis": "Reused orbit enlarged to real radius;96body-contact failures/min52.5689%; balls obscure bodies."
+        },
+        {
+          "attempt": "cuts01",
+          "diagnosis": "Radial lines read clock ticks; preserved source and pilot."
+        },
+        {
+          "attempt": "cuts02",
+          "diagnosis": "Tangential staggered14cuts;120scenes480ABA/min93.8679%; still ArtFIX."
+        }
+      ]
     }
   ],
   "latestProduction": {
-    "scope": "Morwen three normal launch signatures only",
-    "state": "VALIDADO",
-    "preservedEntries": 58,
-    "totalEntries": 61,
-    "checkpoint": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/CHECKPOINT.md"
+    "scope": "Musashi H3 thousand-cuts only",
+    "state": "EN_CORRECCION",
+    "preservedEntries": 61,
+    "totalEntries": 62,
+    "checkpoint": "art-source/entregas/musashi-kit-20261026/area-01/CHECKPOINT.md"
   },
   "latestClosure": {
     "checkpoint": "art-source/entregas/libertador-kit-20261025/cierre-04",

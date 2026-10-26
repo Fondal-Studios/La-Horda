@@ -63,19 +63,20 @@ const UF_PAL_SK = {
   ink:    {o: '#0a0a14', d: '#3a3a5c', a: '#e8e8f4', b: '#ffffff', c: '#ffffff', e: '#e23c55'},
   thorn:  {o: '#12220c', d: '#3f7a22', a: '#8fd646', b: '#d8f59a', c: '#ffffff', e: '#d86a8a'}
 };
+ufDefForm('musashiCuts', musashiThousandForm());
 const UF_SK = [   // [campeón, casilla, forma, paleta, duración, geometría(c) -> {x, y, r} | null, add]
   ['mago', 0, 'column', 'fire', 1000, c => { const p = c.rec.pts[0]; return p && {x: p.x, y: p.y - 100, r: 24}; }],
   ['mago', 1, 'shards', 'ice', 1000, c => { const f = c.rec.frost[0]; return f && {x: f.x, y: f.y, r: f.r}; }],
   ['mago', 2, 'lightning', 'storm', 1100, c => { const b = c.rec.bolts[0]; return b && {x: b.x2, y: b.y2, r: 80}; }],
   ['musashi', 0, 'claws', 'ink', 700, c => { const t = c.rec.tgts[0] || c.h; return {x: t.x, y: t.y, r: 80}; }, true],
   ['musashi', 1, 'bloom', 'sakura', 1200, c => ({x: c.to.x, y: c.to.y, r: 80}), true],
-  ['musashi', 2, 'orbit', 'blade', 1200, c => ({x: c.h.x, y: c.h.y, r: 150})],
+  ['musashi', 2, 'musashiCuts', 'blade', 1200, musashiThousandGeometry],
   ['cazadora', 1, 'shards', 'thorn', 900, c => { const p = c.rec.pts[0]; return p && {x: p.x, y: p.y, r: Math.max(50, p.r || 60)}; }]
 ];
 for(const [k, slot, form, pal, dur, geom, add] of UF_SK){
   const id = k + '.' + slot, B = SFA_BIND[k], old = B && B[slot]; if(!old) continue;
   ufChamp(id, {form, pal: UF_PAL_SK[pal], dur, gdur: Math.round(dur * 1.4), minR: id === 'mago.0' ? 24 : 40}); UF.register(id);
-  B[slot] = function(c){ if(!ufHas(id)) return (old.run || old)(c); if(add) (old.run || old)(c); const g = geom(c); if(!g){ if(!add) return (old.run || old)(c); return; } kvbFx('uf.' + id, g.x, g.y, Math.min(300, g.r), Math.atan2(c.h.fy || 0, c.h.fx || 1)); };
+  B[slot] = function(c){ if(!ufHas(id)) return (old.run || old)(c); if(add) (old.run || old)(c); const g = geom(c); if(!g){ if(!add) return (old.run || old)(c); return; } kvbFx('uf.' + id, g.x, g.y, Math.min(id === 'musashi.2' ? 420 : 300, g.r), Math.atan2(c.h.fy || 0, c.h.fx || 1)); };
 }
 /* ---------------- enganche mitad B (vfx-b): sin tocar sus archivos ----------------
    · Expedición / Ascensión (acción ligada con kvbBind): el id pasa a ser 'uf.<clave>' mientras la forma esté activa (getter sobre KVB_ACT).
