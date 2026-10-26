@@ -1,0 +1,93 @@
+{
+  "result": {
+    "casts": [
+      {
+        "slot": 0,
+        "shield": 0,
+        "shieldTimer": 0,
+        "pool": [],
+        "objects": [
+          {
+            "kind": "turret",
+            "life": 12000
+          }
+        ]
+      },
+      {
+        "slot": 1,
+        "shield": 0,
+        "shieldTimer": 0,
+        "pool": [],
+        "objects": [
+          {
+            "kind": "turret",
+            "life": 12000
+          },
+          {
+            "kind": "yogurt",
+            "life": 3600,
+            "r": 95
+          }
+        ]
+      },
+      {
+        "slot": 2,
+        "shield": 123.83999999999999,
+        "shieldTimer": 4500,
+        "pool": [
+          {
+            "name": "my_pop",
+            "dur": 640,
+            "follow": false
+          },
+          {
+            "name": "my_bubble_idle",
+            "dur": 4500,
+            "follow": true
+          },
+          {
+            "name": "pn_floor_fff1e1",
+            "dur": 340,
+            "follow": false
+          },
+          {
+            "name": "pn_flash_fff1e1",
+            "dur": 340,
+            "follow": false
+          }
+        ],
+        "objects": [
+          {
+            "kind": "turret",
+            "life": 12000
+          },
+          {
+            "kind": "yogurt",
+            "life": 3600,
+            "r": 95
+          }
+        ]
+      }
+    ],
+    "before": {
+      "shield": 123.83999999999999,
+      "hp": 688,
+      "bubble": 1
+    },
+    "after": {
+      "shield": 0,
+      "hp": 549.2991999999999,
+      "alive": true,
+      "bubble": [
+        {
+          "t": 16,
+          "dur": 4500,
+          "follow": true
+        }
+      ]
+    },
+    "bubbleTextureDrawsAfterDamage": 0,
+    "scope": "Read-only gameplay audit using existing art, actual useSkill and damageHero. Not candidate production, ArtGate or multiplayer."
+  },
+  "errors": []
+}

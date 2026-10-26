@@ -2567,6 +2567,17 @@
           "action": "Reachable radius fixed and composition corrected together;120scenes768ABA,80edges,realrelay3casts; priorFIX superseded only namedcomponent."
         }
       ]
+    },
+    {
+      "component": "A-FX-myla-h3/bubble-state",
+      "block": "B177",
+      "frame": "existing my_bubble_idle 12 phases",
+      "source": "js/champions/vfx-b/myla.js",
+      "sha256": "04357ecd8b90c22e6b491ad5c17c61da955813a88bfd8408fa121dfd1ec4cdc3",
+      "state": "EN_CORRECCION",
+      "diagnosis": "Fixed shield0 phantom and recast overlap locally; relay/full visual gates pending",
+      "action": "Complete closure from candidate, preserve source; do not generate duplicate atlas",
+      "checkpoint": "art-source/entregas/myla-bubble-20261026/produccion-01/CHECKPOINT.md"
     }
   ],
   "latestProduction": {

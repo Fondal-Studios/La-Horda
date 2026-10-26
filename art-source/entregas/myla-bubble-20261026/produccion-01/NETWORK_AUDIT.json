@@ -1,0 +1,5 @@
+{
+  "source": "js/net/net-game.js::netSer/netApplySnapshot",
+  "finding": "Generic hero fields serialize numeric shield and snapshot application assigns decoded fields to same hero. Current candidate reads live shield, tolerates event before positive shield snapshot.",
+  "limitations": "Source audit only; no actual relay yet; nearest-class owner resolution inherited kvbHeroAt not changed. Snapshot class replacement/duo and shared shield require further proof."
+}
