@@ -1,0 +1,218 @@
+{
+  "date": "2026-10-26",
+  "component": "A-FX-nahir-h3/long-echo",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "PR": 230,
+  "url": "https://github.com/Fondal-Studios/La-Horda/pull/230",
+  "branch": "art/nahir-long-echo-20261026",
+  "productionCommit": "84133c4c83917517b966da0697fd28a510fc62e7",
+  "productionTree": "c9bd0bcd65ec31a82f42e9708b0e5bc3033714f6",
+  "base": "a88d32ae8e686fafd08ce61d47661741dfdece7c",
+  "verifiedProductionFiles": 44,
+  "treeEntries": 12638,
+  "treeTruncated": false,
+  "allLocalGitblobAndRemoteTreeExact": true,
+  "externalMainChangesPreserved": [
+    {
+      "path": "assets/ui/codex/champions/ilkan.png",
+      "sha": "eec73c4f1faebe1dc8364ebb11578baaa5bc4b91",
+      "pass": true
+    },
+    {
+      "path": "css/codex.css",
+      "sha": "2393a57b692c423ff32d7e008f399a185f2af660",
+      "pass": true
+    },
+    {
+      "path": "docs/art-audit/2026-10-26/INTEGRATION.md",
+      "sha": "ad33cb497aebbbdc0f9a149643f238b1d14fc559",
+      "pass": true
+    },
+    {
+      "path": "js/ui/codex/codex-book-art.js",
+      "sha": "1fd877c2538131a519d19500c3a835f95654985c",
+      "pass": true
+    },
+    {
+      "path": "js/ui/codex/codex.js",
+      "sha": "bfbb5862da44aa66c69252501d8473e046031563",
+      "pass": true
+    }
+  ],
+  "CI_observed": {
+    "sha": "84133c4c83917517b966da0697fd28a510fc62e7",
+    "checks": [
+      {
+        "name": "Regresión, UX y carriles",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Objetos, economía y tienda (pruebas que hoy fallan en la base)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Objetos, economía y tienda (parte A)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Identidad de arenas, objetivos y regalo inicial",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "VFX de definitivas, decales e íconos de habilidad",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "lanes",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "entry-reference",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Arnés y lógica pura (sin navegador)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "safari-engine",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "name": "transactions",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "postgres",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "mobile-inventory",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "evidence",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "emoji-lint",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "readability",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "recovery",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Analyze (python)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Analyze (actions)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "emoji-lint",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ],
+    "workflows": [
+      {
+        "name": "Art production evidence",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Emoji lint (arte pixel)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Champion entry balance",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "name": "Campaign reward recovery",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "VFX readability and combat parity",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Item economy safety",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Integracion pruebas",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "PR #230",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "name": "Emoji lint (arte pixel)",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ],
+    "approval": false
+  },
+  "newTests": {
+    "pairedH3casts": 24,
+    "pairs": 12,
+    "summarizedStateExact": 12,
+    "nativeChecks": 136,
+    "actualCameraLayerProbes": 64,
+    "relayChecks": 9,
+    "relayLength": 990.8093257534468,
+    "nativeAtlas24ExportsExact": true,
+    "previewImages": 3,
+    "errors": 0
+  },
+  "visualReviewed": "Two native crop sheets16views +4fullframes; not integral ArtGate.",
+  "failedAttempts": "Croma wait incorrectly dereferenced pack keys; final24castsPASS. Relay ws absent; NODE_PATH reuse locked local deps, final9PASS. Original scripts/logs preserved. Root ONLINE_FAILURE.json duplicates retained first environment failure, not a new final failure.",
+  "publication": {
+    "status": "NOT_CHECKED_THIS_COMPONENT",
+    "merge": false,
+    "latestCanonicalObservation": "Myla22918:45UTCNOT_CONFIRMED is historical; no Nahir deployed claim."
+  },
+  "next": "CIERRE Nahir230: full composite6arenas/looks/gear/densities,contact80%delta24,sequence/fullrendererperformance/parity; inspect offscreen-owner event culling and replay/network geometry, then ArtGate/all exacthead CI before ready/normalexpectedSHAmerge. Reuse native/relay tests by scope. No new kit.",
+  "local": "nahir-work isolated; HEAD9709434 with exact82720 gameplay+candidate; branch basea88 preserves external5codexfiles. Original dirty myla-work and la-horda untouched.",
+  "lostClosure": false
+}
