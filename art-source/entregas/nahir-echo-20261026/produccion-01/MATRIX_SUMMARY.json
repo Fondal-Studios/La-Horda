@@ -1,0 +1,149 @@
+{
+  "pairs": [
+    {
+      "mobile": false,
+      "mode": "base-short",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": true,
+      "candidateEndExact": true,
+      "expired480": true
+    },
+    {
+      "mobile": false,
+      "mode": "base-diagonal",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    },
+    {
+      "mobile": false,
+      "mode": "tier4-straight",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    },
+    {
+      "mobile": false,
+      "mode": "tier4-diagonal",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    },
+    {
+      "mobile": false,
+      "mode": "set-diagonal",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    },
+    {
+      "mobile": false,
+      "mode": "skin-diagonal",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    },
+    {
+      "mobile": true,
+      "mode": "base-short",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": true,
+      "candidateEndExact": true,
+      "expired480": true
+    },
+    {
+      "mobile": true,
+      "mode": "base-diagonal",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    },
+    {
+      "mobile": true,
+      "mode": "tier4-straight",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    },
+    {
+      "mobile": true,
+      "mode": "tier4-diagonal",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    },
+    {
+      "mobile": true,
+      "mode": "set-diagonal",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    },
+    {
+      "mobile": true,
+      "mode": "skin-diagonal",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    }
+  ],
+  "scope": "24 paired actual casts: 12 parent/12 candidate. Bosque only. Base builds without gear/talents/mastery; tier4 alloc7 fixture, not validated purchase. Summarized state, not global snapshot or combat parity. No contact/ArtGate/relay approval.",
+  "allNativeSourceExportsHash": [
+    "70f8c9b6a599f9b69adb868079e711800cb1621c6b846adbf21f103f6c05f2d1"
+  ],
+  "captureTimesMs": [
+    64,
+    128,
+    256,
+    416,
+    480,
+    528
+  ],
+  "pngPolicy": "All capture hashes in CAST_COMPARISON; selected fullframes and native crop review sheets committed. Other generated PNGs stay local and are reproducible with harness. No claim all144frames visually reviewed."
+}

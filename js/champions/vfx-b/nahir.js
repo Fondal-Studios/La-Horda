@@ -40,11 +40,23 @@
     kvbEmit('nh_shard', 6, x, y, {v0: 40, v1: 110, up: 30, grav: 120, l0: 380, l1: 560, scale: 1.3, spin: 6, shrink: true});
     kvbEmit('nh_glint', 3, ex, ey, {v0: 10, v1: 50, l0: 300, l1: 480, scale: 1.3, jx: 10, jy: 14});
   };
-  KVB_FX['nahir.cross'] = (x, y, r, ang, len) => {
+  KVB_FX['nahir.cross'] = (x, y, r, ang, len, width) => {
+    // New casts carry a conservative visibility radius separately from stroke width.
+    // Legacy/replayed events without the extra number retain their original geometry.
+    if(Number.isFinite(width) && width > 0) r = width;
     const ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len, h = kvbHeroAt(x, y, 'nahir');
     kvbBeam('nh_cut', x, y, ex, ey, r * 2, 520, {layer: 't'});
     kvbDecal('nh_shatter', ex, ey, Math.max(30, r * 1.8), 480, {layer: 'g'});
-    if(h) for(const o of portadorObjects){ if(o.kind === 'ex_reflection' && o.owner === h && o.life > 0){ kvbBeam('nh_cut', o.x, o.y, ex, ey, r * 1.1, 480, {layer: 't', alpha: .7}); kvbEmit('nh_glint', 2, o.x, o.y, {v0: 10, v1: 40, l0: 260, l1: 420, scale: 1.2}); } }
+    const refs = h ? portadorObjects.filter(o => o.kind === 'ex_reflection' && o.owner === h && o.life > 0) : [];
+    for(const o of refs){
+      // Share the secondary stroke budget across live echoes; keep all real paths.
+      const echo = kvbBeam('nh_cut', o.x, o.y, ex, ey, Math.min(12, r * .4) / refs.length, 480, {layer: 't', alpha: .7});
+      // A live reflection can be farther than the shared beam's 900-unit budget.
+      // Extend only this echo; the native tiled renderer preserves its pixel pitch.
+      const echoLength = Math.hypot(ex - o.x, ey - o.y);
+      if(echo && Number.isFinite(echoLength) && echoLength > echo.len) echo.len = echoLength;
+      kvbEmit('nh_glint', 2, o.x, o.y, {v0: 10, v1: 40, l0: 260, l1: 420, scale: 1.2});
+    }
     kvbEmit('nh_shard', 5, ex, ey, {v0: 50, v1: 120, up: 30, grav: 140, l0: 300, l1: 480, scale: 1.3, spin: 6, shrink: true});
   };
   KVB_FX['nahir.gallery'] = (x, y, r, ang, ox, oy) => { // tres espejos a 100 u en 0°, 120° y 240°; cada uno estalla en 80 u
@@ -53,6 +65,23 @@
     for(let i = 0; i < 3; i++){ const a = pts[i], b = pts[(i + 1) % 3]; kvbBeam('nh_streak', a[0], a[1], b[0], b[1], 8, 700, {layer: 'g', alpha: .8}); }
   };
   kvbBind('ex:shards', 'nahir.shards'); kvbBind('ex:reflect', 'nahir.reflect'); kvbBind('ex:cross', 'nahir.cross'); kvbBind('ex:gallery', 'nahir.gallery');
+
+  const castFx = exCastFx;
+  exCastFx = function(h, sk, isUlt, r, origin, end){
+    if(KVB.off || !h || h.classKey !== 'nahir' || !sk || sk.action !== 'cross') return castFx.apply(this, arguments);
+    const g = kvbCastGeom(h, sk, isUlt, r, origin, end);
+    // The caster may be offscreen while a live reflection and its cut are visible.
+    // Keep the normal network event and culling; supply the bounds of this cast.
+    let bounds = Math.max(r, Math.hypot(end.x - origin.x, end.y - origin.y));
+    for(const o of portadorObjects){
+      if(o.kind === 'ex_reflection' && o.owner === h && o.life > 0){
+        const d = Math.hypot(o.x - origin.x, o.y - origin.y);
+        if(Number.isFinite(d)) bounds = Math.max(bounds, d);
+      }
+    }
+    kvbFx('nahir.cross', g[0], g[1], bounds, g[3], g[4], r);
+    kvbPunch(h, g[0], g[1], r, isUlt ? 2 : 1);
+  };
 
   // el reflejo en pie: espejo oval con brillo + copia tenue de Nahir (igual que el dibujo original)
   kvbSkin('ex_reflection', {R: o => o.r, loop: 'nh_mirror_idle', period: 1600, born: o => kvbDecal('nh_shatter', o.x, o.y, 34, 520, {layer: 'g'}),

@@ -1,0 +1,25 @@
+{
+  "base": "9709434da727b0c504f021b023de3f0eabe4a93d",
+  "date": "2026-10-26",
+  "blocks": [
+    "B178",
+    "B179",
+    "B180"
+  ],
+  "state": "AUDIT_ONLY",
+  "references": "NEXT_NAHIR_SOURCE_REFERENCES.json (25 exact main files, selected not exhaustive)",
+  "existing": "Body, two skins, croma, icons, shards fan, dash streak, native reflection with skinned body, crossing beams, UF portal. No production or ArtGate approval.",
+  "casts": "10 normal useSkill plus useUltimate: zero/one/two/three reflections, fourth replaces oldest; origin retained and owner exact. H2 base110; gallery3 real reflections6000ms, all removed by6336ms.",
+  "consumers": "Additional18 normal casts +6ultimates, base/set/skin x base/tier4. Actual beam canvas draws,64mirror motif draws per run,32UFtexture draws per run. Reflection body chooses nahir/nahir_set/croma_nahir_skin matching owner. No duplicate-body bug demonstrated.",
+  "geometry": "Base H1/H3 range240; tier4 alloc7 range394.56. H2 actual movement110/150 respected even when nominal tier4range180.84. Existing cross echo starts at real reflection and points at owner cast endpoint.",
+  "newGap": {
+    "cause": "kvbBeam clips length at900 in shared pixfx.js",
+    "actualMovement": "Actual joyVec input for250 update(16) steps, ordinary current speed and collision, not teleport or skill-radius edit. Mastery alloc7 fixture, no purchase-validation audit.",
+    "straight": "Owner from150,0 to874,0; reference0,0 life4640ms; H3 endpoint1268.56,0. Primary394.56 exact, echo requested1268.56 rendered900.",
+    "diagonal": "Owner659.2435,513.5735; echo requested1172.2882, rendered900 and ends809.0358,394.2855 instead of1053.8035,513.5735. Actual fullframe reviewed: diagonal echo ends before target.",
+    "limits": "Two Bosque desktop diagnostics; no candidate, physical mobile, multiplayer, contrast, all-build or parity certification.",
+    "baseBuild": "Also reproduced with all mastery allocations0, no equipment/talents: actual diagonal movement4000ms leaves reflection1000ms alive, echo1002.515694 truncated900. No talent purchase assumption needed for this base case."
+  },
+  "visualReview": "Six diagnostics actually inspected: initial gallery mobile, set tier4 mobile, skin base mobile, straight and diagonal long-echo desktop, plus base-build diagonal desktop. Other four skin/base captures generated locally, reproducible script; not claimed reviewed.",
+  "next": "After Myla closes, audit main/PR fresh and fix only Nahir long-echo representation locally using existing beam art. Do not raise shared engine cap blindly or alter combat. Preserve original sources; validate segment endpoint, culling, relay, six arenas/looks/sequences/contact and CI before merge. Existing H1/H2/body/skins/UF are not missing."
+}

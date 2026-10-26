@@ -1,0 +1,380 @@
+{
+  "rows": [
+    {
+      "mobile": false,
+      "variant": "parent",
+      "mode": "base-diagonal",
+      "ownerVisible": false,
+      "refVisible": true,
+      "origin": {
+        "x": 110,
+        "y": 0
+      },
+      "afterWalk": {
+        "x": 609.7051839080357,
+        "y": 412.38269190006633,
+        "life": 1000,
+        "alive": true
+      },
+      "reference": {
+        "x": 0,
+        "y": 0,
+        "life": 472,
+        "owner": true
+      },
+      "geometry": [],
+      "beforeState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,5500,0],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[2724175504,21037]}",
+      "castState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,99970,[0,0,8000],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[2724175504,21037]}",
+      "endState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,0,7472],null],\"objects\":[[\"ex_reflection\",1,0,0,472]],\"rng\":[1598916235,24170]}",
+      "textureDraws": 0,
+      "captures": [
+        {
+          "age": 64,
+          "activeEchoes": 0,
+          "hash": "f0482eee2f3a37c612ffca4596dee4888556f80b1ce33c9fe8bc6df8867fb994"
+        },
+        {
+          "age": 128,
+          "activeEchoes": 0,
+          "hash": "50cabcef90ea4ee9c4a4dd2a2a6ff15e494f472e84b16940d162c69d6e821eb9"
+        },
+        {
+          "age": 256,
+          "activeEchoes": 0,
+          "hash": "2b765cda569fb4136643786a5dd6f2496d2204032dd71a8451f632963f58cd6a"
+        },
+        {
+          "age": 416,
+          "activeEchoes": 0,
+          "hash": "69ba348d47d2803574fee15c5fc939218a1ac5c1242e1914973c9393a3fb0b57"
+        },
+        {
+          "age": 480,
+          "activeEchoes": 0,
+          "hash": "354e2b29baaf87d90363b87bec66e1a0754f6d7c4746aae84c95819169a6dc70"
+        },
+        {
+          "age": 528,
+          "activeEchoes": 0,
+          "hash": "496c181b23ba42034016b5126b120bc9e2a5d670bd56b90ad9098a44c7b0f231"
+        }
+      ],
+      "pack": "nahir",
+      "rngCalls": 24170,
+      "precastHash": "1ae39197015369f46d23c0e313ee89d56d7f73039a40c62011501202d74e4609",
+      "atlasHash": "70f8c9b6a599f9b69adb868079e711800cb1621c6b846adbf21f103f6c05f2d1",
+      "errors": []
+    },
+    {
+      "mobile": false,
+      "variant": "candidate",
+      "mode": "base-diagonal",
+      "ownerVisible": false,
+      "refVisible": true,
+      "origin": {
+        "x": 110,
+        "y": 0
+      },
+      "afterWalk": {
+        "x": 609.7051839080357,
+        "y": 412.38269190006633,
+        "life": 1000,
+        "alive": true
+      },
+      "reference": {
+        "x": 0,
+        "y": 0,
+        "life": 472,
+        "owner": true
+      },
+      "geometry": [
+        {
+          "name": "nh_cut",
+          "ax": 609.7051839080357,
+          "ay": 412.38269190006633,
+          "bx": 849.7051839080357,
+          "by": 412.38269190006633,
+          "width": 48,
+          "dur": 520,
+          "requested": 240,
+          "created": true,
+          "renderedLength": 240,
+          "actualEnd": {
+            "x": 849.7051839080357,
+            "y": 412.38269190006633
+          },
+          "frameCount": 8,
+          "frameSize": [
+            16,
+            16
+          ],
+          "alpha": 1
+        },
+        {
+          "name": "nh_cut",
+          "ax": 0,
+          "ay": 0,
+          "bx": 849.7051839080357,
+          "by": 412.38269190006633,
+          "width": 26.400000000000002,
+          "dur": 480,
+          "requested": 944.4884245658778,
+          "created": true,
+          "renderedLength": 944.4884245658778,
+          "actualEnd": {
+            "x": 849.7051839080357,
+            "y": 412.3826919000664
+          },
+          "frameCount": 8,
+          "frameSize": [
+            16,
+            16
+          ],
+          "alpha": 0.7
+        }
+      ],
+      "beforeState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,5500,0],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[2724175504,21037]}",
+      "castState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,99970,[0,0,8000],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[2724175504,21037]}",
+      "endState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,0,7472],null],\"objects\":[[\"ex_reflection\",1,0,0,472]],\"rng\":[1598916235,24170]}",
+      "textureDraws": 144,
+      "captures": [
+        {
+          "age": 64,
+          "activeEchoes": 1,
+          "hash": "d019c7139ea77e2188445d92566e1c72c6c30c3e4e652c72a8707d0b64b0f2cd"
+        },
+        {
+          "age": 128,
+          "activeEchoes": 1,
+          "hash": "98056a18506a537de471cc72bb0cc10c23cef02c8819739a7504f9d636df78e8"
+        },
+        {
+          "age": 256,
+          "activeEchoes": 1,
+          "hash": "1ab18683944eaeceef99dc4fff62ef28b94ee5d2b208ffe6fb4a300dc7b8035b"
+        },
+        {
+          "age": 416,
+          "activeEchoes": 1,
+          "hash": "f4969cd68c79fe7f3c4ed96f902a564d4ca1fcb73905d0293c8dd2c92196a893"
+        },
+        {
+          "age": 480,
+          "activeEchoes": 0,
+          "hash": "354e2b29baaf87d90363b87bec66e1a0754f6d7c4746aae84c95819169a6dc70"
+        },
+        {
+          "age": 528,
+          "activeEchoes": 0,
+          "hash": "496c181b23ba42034016b5126b120bc9e2a5d670bd56b90ad9098a44c7b0f231"
+        }
+      ],
+      "pack": "nahir",
+      "rngCalls": 24170,
+      "precastHash": "1ae39197015369f46d23c0e313ee89d56d7f73039a40c62011501202d74e4609",
+      "atlasHash": "70f8c9b6a599f9b69adb868079e711800cb1621c6b846adbf21f103f6c05f2d1",
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "variant": "parent",
+      "mode": "base-diagonal",
+      "ownerVisible": false,
+      "refVisible": true,
+      "origin": {
+        "x": 110,
+        "y": 0
+      },
+      "afterWalk": {
+        "x": 609.7051839080357,
+        "y": 412.38269190006633,
+        "life": 1000,
+        "alive": true
+      },
+      "reference": {
+        "x": 0,
+        "y": 0,
+        "life": 472,
+        "owner": true
+      },
+      "geometry": [],
+      "beforeState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,5500,0],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[3220770879,21950]}",
+      "castState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,99970,[0,0,8000],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[3220770879,21950]}",
+      "endState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,0,7472],null],\"objects\":[[\"ex_reflection\",1,0,0,472]],\"rng\":[3768112459,24874]}",
+      "textureDraws": 0,
+      "captures": [
+        {
+          "age": 64,
+          "activeEchoes": 0,
+          "hash": "675b597d70888f1565a961006557f1cb3ab1769e95df7222b23abae5438dd7ee"
+        },
+        {
+          "age": 128,
+          "activeEchoes": 0,
+          "hash": "07c560a210c7670050077dc79ab7af179166a352c9d38993d875a25af489b097"
+        },
+        {
+          "age": 256,
+          "activeEchoes": 0,
+          "hash": "dd3a4f833739f86bc3652cfc6711d198b8c497d906e2c9928425dd3bad5d25c8"
+        },
+        {
+          "age": 416,
+          "activeEchoes": 0,
+          "hash": "1fba6e8c29d735ab266a869447d68ccd3b4155bd99e16e03f699367ee00cbe53"
+        },
+        {
+          "age": 480,
+          "activeEchoes": 0,
+          "hash": "00684ce137cb16542fd211374a6927ac4b5ece592589e3e97bf846c0ed539520"
+        },
+        {
+          "age": 528,
+          "activeEchoes": 0,
+          "hash": "7de1ca38022821d9fc6372a24ada5f1026f0dbbef5a2c2bd9001710039a16582"
+        }
+      ],
+      "pack": "nahir",
+      "rngCalls": 24874,
+      "precastHash": "e3e754595c6429b1ace8aab42cce41412cdf525f1bb898d4f19fb82357ce0125",
+      "atlasHash": "70f8c9b6a599f9b69adb868079e711800cb1621c6b846adbf21f103f6c05f2d1",
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "variant": "candidate",
+      "mode": "base-diagonal",
+      "ownerVisible": false,
+      "refVisible": true,
+      "origin": {
+        "x": 110,
+        "y": 0
+      },
+      "afterWalk": {
+        "x": 609.7051839080357,
+        "y": 412.38269190006633,
+        "life": 1000,
+        "alive": true
+      },
+      "reference": {
+        "x": 0,
+        "y": 0,
+        "life": 472,
+        "owner": true
+      },
+      "geometry": [
+        {
+          "name": "nh_cut",
+          "ax": 609.7051839080357,
+          "ay": 412.38269190006633,
+          "bx": 849.7051839080357,
+          "by": 412.38269190006633,
+          "width": 48,
+          "dur": 520,
+          "requested": 240,
+          "created": true,
+          "renderedLength": 240,
+          "actualEnd": {
+            "x": 849.7051839080357,
+            "y": 412.38269190006633
+          },
+          "frameCount": 8,
+          "frameSize": [
+            16,
+            16
+          ],
+          "alpha": 1
+        },
+        {
+          "name": "nh_cut",
+          "ax": 0,
+          "ay": 0,
+          "bx": 849.7051839080357,
+          "by": 412.38269190006633,
+          "width": 26.400000000000002,
+          "dur": 480,
+          "requested": 944.4884245658778,
+          "created": true,
+          "renderedLength": 944.4884245658778,
+          "actualEnd": {
+            "x": 849.7051839080357,
+            "y": 412.3826919000664
+          },
+          "frameCount": 8,
+          "frameSize": [
+            16,
+            16
+          ],
+          "alpha": 0.7
+        }
+      ],
+      "beforeState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,5500,0],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[3220770879,21950]}",
+      "castState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,99970,[0,0,8000],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[3220770879,21950]}",
+      "endState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,0,7472],null],\"objects\":[[\"ex_reflection\",1,0,0,472]],\"rng\":[3768112459,24874]}",
+      "textureDraws": 144,
+      "captures": [
+        {
+          "age": 64,
+          "activeEchoes": 1,
+          "hash": "3e4fd3a648ff9bf77ce1a646fc21dd7da3c4b69b6709a1ff865ccef31a54bf95"
+        },
+        {
+          "age": 128,
+          "activeEchoes": 1,
+          "hash": "5396720457ed66818fb64441ead031f2967c2394a5ff717e7625cfb5d512b3fd"
+        },
+        {
+          "age": 256,
+          "activeEchoes": 1,
+          "hash": "036935258448b4ba3df47d48b321dd70fccf94a062a39a6f7f6da30dd123435d"
+        },
+        {
+          "age": 416,
+          "activeEchoes": 1,
+          "hash": "c110733ce656a8771bf26d70f87da23c9fa8b13e6ba5ffc97057001a7e09ddde"
+        },
+        {
+          "age": 480,
+          "activeEchoes": 0,
+          "hash": "00684ce137cb16542fd211374a6927ac4b5ece592589e3e97bf846c0ed539520"
+        },
+        {
+          "age": 528,
+          "activeEchoes": 0,
+          "hash": "7de1ca38022821d9fc6372a24ada5f1026f0dbbef5a2c2bd9001710039a16582"
+        }
+      ],
+      "pack": "nahir",
+      "rngCalls": 24874,
+      "precastHash": "e3e754595c6429b1ace8aab42cce41412cdf525f1bb898d4f19fb82357ce0125",
+      "atlasHash": "70f8c9b6a599f9b69adb868079e711800cb1621c6b846adbf21f103f6c05f2d1",
+      "errors": []
+    }
+  ],
+  "pairs": [
+    {
+      "mobile": false,
+      "mode": "base-diagonal",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    },
+    {
+      "mobile": true,
+      "mode": "base-diagonal",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    }
+  ],
+  "errors": [],
+  "scope": "4 actual H3 casts / 2 paired scenes. Summarized state not complete global parity. Camera/geometry is recorded per row; contact/relay saved separately."
+}

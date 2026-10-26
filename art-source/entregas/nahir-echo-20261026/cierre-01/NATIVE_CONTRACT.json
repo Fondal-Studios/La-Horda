@@ -1,0 +1,1649 @@
+{
+  "rows": [
+    {
+      "mobile": false,
+      "checks": [
+        {
+          "name": "echo endpoint 350/0",
+          "pass": true,
+          "data": {
+            "length": 350
+          }
+        },
+        {
+          "name": "primary unchanged 350/0",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 350/0",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 350/0.7",
+          "pass": true,
+          "data": {
+            "length": 350
+          }
+        },
+        {
+          "name": "primary unchanged 350/0.7",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 350/0.7",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 899/0",
+          "pass": true,
+          "data": {
+            "length": 899
+          }
+        },
+        {
+          "name": "primary unchanged 899/0",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 899/0",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 899/0.7",
+          "pass": true,
+          "data": {
+            "length": 899
+          }
+        },
+        {
+          "name": "primary unchanged 899/0.7",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 899/0.7",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 900/0",
+          "pass": true,
+          "data": {
+            "length": 900
+          }
+        },
+        {
+          "name": "primary unchanged 900/0",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 900/0",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 900/0.7",
+          "pass": true,
+          "data": {
+            "length": 900.0000000000001
+          }
+        },
+        {
+          "name": "primary unchanged 900/0.7",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 900/0.7",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 901/0",
+          "pass": true,
+          "data": {
+            "length": 901
+          }
+        },
+        {
+          "name": "primary unchanged 901/0",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 901/0",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 901/0.7",
+          "pass": true,
+          "data": {
+            "length": 901
+          }
+        },
+        {
+          "name": "primary unchanged 901/0.7",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 901/0.7",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 1268.56/0",
+          "pass": true,
+          "data": {
+            "length": 1268.56
+          }
+        },
+        {
+          "name": "primary unchanged 1268.56/0",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 1268.56/0",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 1268.56/0.7",
+          "pass": true,
+          "data": {
+            "length": 1268.56
+          }
+        },
+        {
+          "name": "primary unchanged 1268.56/0.7",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 1268.56/0.7",
+          "pass": true
+        },
+        {
+          "name": "camera native 30/left",
+          "pass": true,
+          "data": {
+            "age": 30,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 42,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 30/right",
+          "pass": true,
+          "data": {
+            "age": 30,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 742,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 30/top",
+          "pass": true,
+          "data": {
+            "age": 30,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 50,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 30/bottom",
+          "pass": true,
+          "data": {
+            "age": 30,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 1112,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 90/left",
+          "pass": true,
+          "data": {
+            "age": 90,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 64,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 90/right",
+          "pass": true,
+          "data": {
+            "age": 90,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 1115,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 90/top",
+          "pass": true,
+          "data": {
+            "age": 90,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 76,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 90/bottom",
+          "pass": true,
+          "data": {
+            "age": 90,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 1671,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 150/left",
+          "pass": true,
+          "data": {
+            "age": 150,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 128,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 150/right",
+          "pass": true,
+          "data": {
+            "age": 150,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 2230,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 150/top",
+          "pass": true,
+          "data": {
+            "age": 150,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 151,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 150/bottom",
+          "pass": true,
+          "data": {
+            "age": 150,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 3339,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 210/left",
+          "pass": true,
+          "data": {
+            "age": 210,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 128,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 210/right",
+          "pass": true,
+          "data": {
+            "age": 210,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 2230,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 210/top",
+          "pass": true,
+          "data": {
+            "age": 210,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 151,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 210/bottom",
+          "pass": true,
+          "data": {
+            "age": 210,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 3339,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 270/left",
+          "pass": true,
+          "data": {
+            "age": 270,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 105,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 270/right",
+          "pass": true,
+          "data": {
+            "age": 270,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 1858,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 270/top",
+          "pass": true,
+          "data": {
+            "age": 270,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 125,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 270/bottom",
+          "pass": true,
+          "data": {
+            "age": 270,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 2780,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 330/left",
+          "pass": true,
+          "data": {
+            "age": 330,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 105,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 330/right",
+          "pass": true,
+          "data": {
+            "age": 330,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 1858,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 330/top",
+          "pass": true,
+          "data": {
+            "age": 330,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 125,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 330/bottom",
+          "pass": true,
+          "data": {
+            "age": 330,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 2780,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 390/left",
+          "pass": true,
+          "data": {
+            "age": 390,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 85,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 390/right",
+          "pass": true,
+          "data": {
+            "age": 390,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 1487,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 390/top",
+          "pass": true,
+          "data": {
+            "age": 390,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 100,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 390/bottom",
+          "pass": true,
+          "data": {
+            "age": 390,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 2226,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 450/left",
+          "pass": true,
+          "data": {
+            "age": 450,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 64,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 450/right",
+          "pass": true,
+          "data": {
+            "age": 450,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 1115,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 450/top",
+          "pass": true,
+          "data": {
+            "age": 450,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 76,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 450/bottom",
+          "pass": true,
+          "data": {
+            "age": 450,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 1671,
+            "visible": true
+          }
+        },
+        {
+          "name": "exists479",
+          "pass": true
+        },
+        {
+          "name": "expires480",
+          "pass": true
+        },
+        {
+          "name": "disabled no allocations",
+          "pass": true
+        },
+        {
+          "name": "full pool respected",
+          "pass": true
+        },
+        {
+          "name": "no reflection primary only",
+          "pass": true
+        },
+        {
+          "name": "wrong owner and expired excluded",
+          "pass": true
+        }
+      ],
+      "edges": [
+        {
+          "age": 30,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 42,
+          "visible": true
+        },
+        {
+          "age": 30,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 742,
+          "visible": true
+        },
+        {
+          "age": 30,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 50,
+          "visible": true
+        },
+        {
+          "age": 30,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 1112,
+          "visible": true
+        },
+        {
+          "age": 90,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 64,
+          "visible": true
+        },
+        {
+          "age": 90,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 1115,
+          "visible": true
+        },
+        {
+          "age": 90,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 76,
+          "visible": true
+        },
+        {
+          "age": 90,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 1671,
+          "visible": true
+        },
+        {
+          "age": 150,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 128,
+          "visible": true
+        },
+        {
+          "age": 150,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 2230,
+          "visible": true
+        },
+        {
+          "age": 150,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 151,
+          "visible": true
+        },
+        {
+          "age": 150,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 3339,
+          "visible": true
+        },
+        {
+          "age": 210,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 128,
+          "visible": true
+        },
+        {
+          "age": 210,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 2230,
+          "visible": true
+        },
+        {
+          "age": 210,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 151,
+          "visible": true
+        },
+        {
+          "age": 210,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 3339,
+          "visible": true
+        },
+        {
+          "age": 270,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 105,
+          "visible": true
+        },
+        {
+          "age": 270,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 1858,
+          "visible": true
+        },
+        {
+          "age": 270,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 125,
+          "visible": true
+        },
+        {
+          "age": 270,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 2780,
+          "visible": true
+        },
+        {
+          "age": 330,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 105,
+          "visible": true
+        },
+        {
+          "age": 330,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 1858,
+          "visible": true
+        },
+        {
+          "age": 330,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 125,
+          "visible": true
+        },
+        {
+          "age": 330,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 2780,
+          "visible": true
+        },
+        {
+          "age": 390,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 85,
+          "visible": true
+        },
+        {
+          "age": 390,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 1487,
+          "visible": true
+        },
+        {
+          "age": 390,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 100,
+          "visible": true
+        },
+        {
+          "age": 390,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 2226,
+          "visible": true
+        },
+        {
+          "age": 450,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 64,
+          "visible": true
+        },
+        {
+          "age": 450,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 1115,
+          "visible": true
+        },
+        {
+          "age": 450,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 76,
+          "visible": true
+        },
+        {
+          "age": 450,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 1671,
+          "visible": true
+        }
+      ],
+      "scope": "Synthetic geometry and pool fixtures call the actual Nahir callback/native renderer. Camera positions target endpoints at each screen edge; no inView override. Not reachable builds, multiplayer or full composite contact."
+    },
+    {
+      "mobile": true,
+      "checks": [
+        {
+          "name": "echo endpoint 350/0",
+          "pass": true,
+          "data": {
+            "length": 350
+          }
+        },
+        {
+          "name": "primary unchanged 350/0",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 350/0",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 350/0.7",
+          "pass": true,
+          "data": {
+            "length": 350
+          }
+        },
+        {
+          "name": "primary unchanged 350/0.7",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 350/0.7",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 899/0",
+          "pass": true,
+          "data": {
+            "length": 899
+          }
+        },
+        {
+          "name": "primary unchanged 899/0",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 899/0",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 899/0.7",
+          "pass": true,
+          "data": {
+            "length": 899
+          }
+        },
+        {
+          "name": "primary unchanged 899/0.7",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 899/0.7",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 900/0",
+          "pass": true,
+          "data": {
+            "length": 900
+          }
+        },
+        {
+          "name": "primary unchanged 900/0",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 900/0",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 900/0.7",
+          "pass": true,
+          "data": {
+            "length": 900.0000000000001
+          }
+        },
+        {
+          "name": "primary unchanged 900/0.7",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 900/0.7",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 901/0",
+          "pass": true,
+          "data": {
+            "length": 901
+          }
+        },
+        {
+          "name": "primary unchanged 901/0",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 901/0",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 901/0.7",
+          "pass": true,
+          "data": {
+            "length": 901
+          }
+        },
+        {
+          "name": "primary unchanged 901/0.7",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 901/0.7",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 1268.56/0",
+          "pass": true,
+          "data": {
+            "length": 1268.56
+          }
+        },
+        {
+          "name": "primary unchanged 1268.56/0",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 1268.56/0",
+          "pass": true
+        },
+        {
+          "name": "echo endpoint 1268.56/0.7",
+          "pass": true,
+          "data": {
+            "length": 1268.56
+          }
+        },
+        {
+          "name": "primary unchanged 1268.56/0.7",
+          "pass": true
+        },
+        {
+          "name": "native echo properties 1268.56/0.7",
+          "pass": true
+        },
+        {
+          "name": "camera native 30/left",
+          "pass": true,
+          "data": {
+            "age": 30,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 23,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 30/right",
+          "pass": true,
+          "data": {
+            "age": 30,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 218,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 30/top",
+          "pass": true,
+          "data": {
+            "age": 30,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 27,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 30/bottom",
+          "pass": true,
+          "data": {
+            "age": 30,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 397,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 90/left",
+          "pass": true,
+          "data": {
+            "age": 90,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 33,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 90/right",
+          "pass": true,
+          "data": {
+            "age": 90,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 327,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 90/top",
+          "pass": true,
+          "data": {
+            "age": 90,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 39,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 90/bottom",
+          "pass": true,
+          "data": {
+            "age": 90,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 596,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 150/left",
+          "pass": true,
+          "data": {
+            "age": 150,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 69,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 150/right",
+          "pass": true,
+          "data": {
+            "age": 150,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 654,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 150/top",
+          "pass": true,
+          "data": {
+            "age": 150,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 82,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 150/bottom",
+          "pass": true,
+          "data": {
+            "age": 150,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 1193,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 210/left",
+          "pass": true,
+          "data": {
+            "age": 210,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 69,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 210/right",
+          "pass": true,
+          "data": {
+            "age": 210,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 654,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 210/top",
+          "pass": true,
+          "data": {
+            "age": 210,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 82,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 210/bottom",
+          "pass": true,
+          "data": {
+            "age": 210,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 1193,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 270/left",
+          "pass": true,
+          "data": {
+            "age": 270,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 56,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 270/right",
+          "pass": true,
+          "data": {
+            "age": 270,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 547,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 270/top",
+          "pass": true,
+          "data": {
+            "age": 270,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 67,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 270/bottom",
+          "pass": true,
+          "data": {
+            "age": 270,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 994,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 330/left",
+          "pass": true,
+          "data": {
+            "age": 330,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 56,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 330/right",
+          "pass": true,
+          "data": {
+            "age": 330,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 547,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 330/top",
+          "pass": true,
+          "data": {
+            "age": 330,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 67,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 330/bottom",
+          "pass": true,
+          "data": {
+            "age": 330,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 994,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 390/left",
+          "pass": true,
+          "data": {
+            "age": 390,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 47,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 390/right",
+          "pass": true,
+          "data": {
+            "age": 390,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 436,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 390/top",
+          "pass": true,
+          "data": {
+            "age": 390,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 55,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 390/bottom",
+          "pass": true,
+          "data": {
+            "age": 390,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 796,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 450/left",
+          "pass": true,
+          "data": {
+            "age": 450,
+            "edge": "left",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 33,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 450/right",
+          "pass": true,
+          "data": {
+            "age": 450,
+            "edge": "right",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 327,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 450/top",
+          "pass": true,
+          "data": {
+            "age": 450,
+            "edge": "top",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 39,
+            "visible": true
+          }
+        },
+        {
+          "name": "camera native 450/bottom",
+          "pass": true,
+          "data": {
+            "age": 450,
+            "edge": "bottom",
+            "drawCalls": 265,
+            "last": 1268.56,
+            "ink": 596,
+            "visible": true
+          }
+        },
+        {
+          "name": "exists479",
+          "pass": true
+        },
+        {
+          "name": "expires480",
+          "pass": true
+        },
+        {
+          "name": "disabled no allocations",
+          "pass": true
+        },
+        {
+          "name": "full pool respected",
+          "pass": true
+        },
+        {
+          "name": "no reflection primary only",
+          "pass": true
+        },
+        {
+          "name": "wrong owner and expired excluded",
+          "pass": true
+        }
+      ],
+      "edges": [
+        {
+          "age": 30,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 23,
+          "visible": true
+        },
+        {
+          "age": 30,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 218,
+          "visible": true
+        },
+        {
+          "age": 30,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 27,
+          "visible": true
+        },
+        {
+          "age": 30,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 397,
+          "visible": true
+        },
+        {
+          "age": 90,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 33,
+          "visible": true
+        },
+        {
+          "age": 90,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 327,
+          "visible": true
+        },
+        {
+          "age": 90,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 39,
+          "visible": true
+        },
+        {
+          "age": 90,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 596,
+          "visible": true
+        },
+        {
+          "age": 150,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 69,
+          "visible": true
+        },
+        {
+          "age": 150,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 654,
+          "visible": true
+        },
+        {
+          "age": 150,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 82,
+          "visible": true
+        },
+        {
+          "age": 150,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 1193,
+          "visible": true
+        },
+        {
+          "age": 210,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 69,
+          "visible": true
+        },
+        {
+          "age": 210,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 654,
+          "visible": true
+        },
+        {
+          "age": 210,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 82,
+          "visible": true
+        },
+        {
+          "age": 210,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 1193,
+          "visible": true
+        },
+        {
+          "age": 270,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 56,
+          "visible": true
+        },
+        {
+          "age": 270,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 547,
+          "visible": true
+        },
+        {
+          "age": 270,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 67,
+          "visible": true
+        },
+        {
+          "age": 270,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 994,
+          "visible": true
+        },
+        {
+          "age": 330,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 56,
+          "visible": true
+        },
+        {
+          "age": 330,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 547,
+          "visible": true
+        },
+        {
+          "age": 330,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 67,
+          "visible": true
+        },
+        {
+          "age": 330,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 994,
+          "visible": true
+        },
+        {
+          "age": 390,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 47,
+          "visible": true
+        },
+        {
+          "age": 390,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 436,
+          "visible": true
+        },
+        {
+          "age": 390,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 55,
+          "visible": true
+        },
+        {
+          "age": 390,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 796,
+          "visible": true
+        },
+        {
+          "age": 450,
+          "edge": "left",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 33,
+          "visible": true
+        },
+        {
+          "age": 450,
+          "edge": "right",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 327,
+          "visible": true
+        },
+        {
+          "age": 450,
+          "edge": "top",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 39,
+          "visible": true
+        },
+        {
+          "age": 450,
+          "edge": "bottom",
+          "drawCalls": 265,
+          "last": 1268.56,
+          "ink": 596,
+          "visible": true
+        }
+      ],
+      "scope": "Synthetic geometry and pool fixtures call the actual Nahir callback/native renderer. Camera positions target endpoints at each screen edge; no inView override. Not reachable builds, multiplayer or full composite contact."
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,56 @@
+{
+  "component": "A-FX-nahir-h3/long-echo",
+  "block": "B180 partial",
+  "state": "VALIDADO",
+  "visualGate": "PASS_COMPONENT",
+  "integration": "PENDING_EXACT_HEAD_CI",
+  "reviewed": [
+    "REVIEW_desktop_bosque.png",
+    "REVIEW_desktop_laberinto.png",
+    "REVIEW_mobile_bosque.png",
+    "REVIEW_mobile_laberinto.png",
+    "TEMPORAL_mobile_infernal.png",
+    "TEMPORAL_desktop_minas.png",
+    "TEMPORAL_mobile_minas.png",
+    "TEMPORAL_desktop_infernal.png",
+    "TRIPLE_desktop_bosque.png",
+    "TRIPLE_desktop_laberinto.png",
+    "TRIPLE_mobile_bosque.png",
+    "TRIPLE_mobile_laberinto.png",
+    "THREE_mobile.png",
+    "THREE_desktop.png",
+    "main-before.png",
+    "main-after.png",
+    "fullframe-mobile-minas.png",
+    "fullframe-desktop-minas.png"
+  ],
+  "judgement": [
+    "Native aquamarine/glass identity preserved; the secondary echo is narrower than the primary cut and reaches the shared impact.",
+    "Each of three simultaneous paths remains individually visible; total stroke budget avoids obscuring actors. Single-echo matrix minimum85.216%,three-echo87.978%,80%/delta24 unchanged.",
+    "Same phase sequence,480ms expiry and original impact/primary520ms retained. Thin fade at416ms is terminal dissipation, not an interrupted path.",
+    "Offscreen caster event is retained when a reflection path is visible; original shared culling and network delivery remain enabled.",
+    "No new body/skin/UF art; original nh_cut eight native frames reused byte-identically. Whole H3/kit/B178-180 not certified closed."
+  ],
+  "newEvidence": {
+    "singleScenes": 120,
+    "singleABA": 720,
+    "tripleScenes": 60,
+    "tripleABA": 360,
+    "extraTemporalABA": 56,
+    "nativeChecks": 136,
+    "realRelayChecks": 11,
+    "realThreeRelayChecks": 11,
+    "beforeAfterMainPairs": 6,
+    "mainActualCasts": 12,
+    "previewImages": 15,
+    "rendererTimings": 1360
+  },
+  "limits": [
+    "120 single matrix and56 temporal samples precede count division; exact136 native report comparison proves single-reflection output invariant. Not a fabricated all-in-one final rerun.",
+    "360frame30908RNG parity precedes final width/count-only adjustments; summarized snapshot, not complete global isolation.",
+    "Tier4 alloc7 fixture, not a validated talent purchase. Base long echo is reachable by actual joystick movement.",
+    "Relay local real hostTanque/touchNahir,duo disabled; no packet-reordering or physical mobile/GPU/GC claim.",
+    "Independent performance runs; p95on desktop6.2ms/mobileviewport4.1ms, max34.4/11.7; no speedup claim.",
+    "Historic visual/CI failures kept; CI of production head not yet known. Publication is separate."
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "matrices": [
+    {
+      "folder": "mobile",
+      "scenes": 60,
+      "samples": 360,
+      "min": 0.8521613832853026,
+      "abaExact": true,
+      "errors": [],
+      "contactFails": 0
+    },
+    {
+      "folder": "desktop",
+      "scenes": 60,
+      "samples": 360,
+      "min": 0.8540875309661436,
+      "abaExact": true,
+      "errors": [],
+      "contactFails": 0
+    },
+    {
+      "folder": "temporal-mobile",
+      "scenes": 4,
+      "samples": 28,
+      "min": 0.9110481586402266,
+      "abaExact": true,
+      "errors": [],
+      "contactFails": 0
+    },
+    {
+      "folder": "temporal-desktop",
+      "scenes": 4,
+      "samples": 28,
+      "min": 0.9134142341751393,
+      "abaExact": true,
+      "errors": [],
+      "contactFails": 0
+    },
+    {
+      "folder": "three-mobile",
+      "scenes": 4,
+      "samples": 24,
+      "min": 0.8819226750261233,
+      "abaExact": true,
+      "errors": [],
+      "contactFails": 0
+    },
+    {
+      "folder": "three-desktop",
+      "scenes": 4,
+      "samples": 24,
+      "min": 0.8797792272955344,
+      "abaExact": true,
+      "errors": [],
+      "contactFails": 0
+    },
+    {
+      "folder": "three-mobile-rest",
+      "scenes": 26,
+      "samples": 156,
+      "min": 0.9030837004405287,
+      "abaExact": true,
+      "errors": [],
+      "contactFails": 0
+    },
+    {
+      "folder": "three-desktop-rest",
+      "scenes": 26,
+      "samples": 156,
+      "min": 0.9030534351145039,
+      "abaExact": true,
+      "errors": [],
+      "contactFails": 0
+    }
+  ],
+  "threshold": 0.8,
+  "delta": 24,
+  "scope": "120 one-echo scenes source-equivalent (NATIVE_SINGLE_BEFORE_COUNT exact136 proof),60 three-echo dense scenes split8+52 final,56 extra temporal samples. ABA restores body pose/RNG/particles/SFA/family draw caches; summarized state only. Artificial enemy/ally positions deliberately contact beam; H2, joystick movement, H3 real. tier4 alloc7 fixture not a validated purchase."
+}

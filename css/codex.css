@@ -265,6 +265,6 @@ button.cx-card:hover, button.cx-home-card:hover, button.cx-chapter:hover, button
 
 /* Full codex sheets use their natural aspect ratio and remain zoomable on mobile. */
 .cx-art-sheet{margin:0;min-width:0}
-.cx-art-sheet a{display:block;border:1px solid #806342;border-radius:8px;overflow:hidden;background:#211f1c}
+.cx-art-sheet a{display:block;color:inherit;border:1px solid #806342;border-radius:8px;overflow:hidden;background:#211f1c}
 .cx-art-sheet img{display:block;width:100%;max-width:100%;height:auto;object-fit:contain}
 .cx-art-sheet figcaption{margin-top:8px;color:#c7b494;font-size:12px;line-height:1.5}

@@ -1,0 +1,15 @@
+{
+  "component": "A-FX-nahir-h3/long-echo",
+  "source": "js/champions/vfx-b/nahir.js",
+  "nativeExisting": "nh_cut: 8 phases,16x16 tile;480ms echo,alpha.7,width r*1.1; primary520ms unchanged",
+  "adapter": "Only extend returned echo entity.len to finite actual reflection-to-impact distance when larger than shared900 result. No new entity/engine cap/texture/mechanics.",
+  "reproduce": [
+    "NODE_PATH=<playwright modules> CHROMIUM_PATH=<chromium> node tools/vfx/nahir-echo-production.js",
+    "NODE_PATH=<playwright modules> CHROMIUM_PATH=<chromium> node tools/vfx/nahir-echo-native.js",
+    "NODE_PATH=<playwright modules>:<server node_modules> CHROMIUM_PATH=<chromium> node tools/vfx/nahir-echo-online.js"
+  ],
+  "preview": "preview.html",
+  "installedPNG": 0,
+  "sourceBefore": "source-before.js",
+  "sourceCandidate": "source-candidate.js"
+}

@@ -1,0 +1,29 @@
+[arnés] servidor propio: http://127.0.0.1:38579 (raíz /workspace/scratch/27dc1a293731/nahir-work)
+desktop-base-short-parent [ [ 240, 240 ], [ 350, 350 ] ] []
+desktop-base-short-candidate [ [ 240, 240 ], [ 350, 350 ] ] []
+desktop-base-diagonal-parent [ [ 240, 240 ], [ 944.4884245658778, 900 ] ] []
+desktop-base-diagonal-candidate [ [ 240, 240 ], [ 944.4884245658778, 944.4884245658778 ] ] []
+desktop-tier4-straight-parent [
+  [ 394.56000000000006, 394.56000000000006 ],
+  [ 1268.5599999999956, 900 ]
+] []
+desktop-tier4-straight-candidate [
+  [ 394.56000000000006, 394.56000000000006 ],
+  [ 1268.5599999999956, 1268.5599999999956 ]
+] []
+desktop-tier4-diagonal-parent [
+  [ 394.55999999999995, 394.55999999999995 ],
+  [ 1142.427312916578, 900 ]
+] []
+desktop-tier4-diagonal-candidate [
+  [ 394.55999999999995, 394.55999999999995 ],
+  [ 1142.427312916578, 1142.427312916578 ]
+] []
+desktop-set-diagonal-parent [ [ 240, 240 ], [ 944.4884245658778, 900 ] ] []
+desktop-set-diagonal-candidate [ [ 240, 240 ], [ 944.4884245658778, 944.4884245658778 ] ] []
+page.waitForFunction: Timeout 30000ms exceeded.
+    at page.waitForFunction (/workspace/scratch/27dc1a293731/nahir-work/tools/lib/serve.js:43:42)
+    at /workspace/scratch/27dc1a293731/nahir-work/tools/vfx/nahir-echo-production.js:10:92 {
+  log: [],
+  name: 'TimeoutError'
+}

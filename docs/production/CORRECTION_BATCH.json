@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-10-26T11:17:05.255660+00:00",
+  "updated": "2026-10-26",
   "policy": "Alternate production batches and complete closures; current-main integration is not visual approval.",
   "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
   "pendingVerificationNotFailures": [
@@ -13,7 +13,7 @@
   ],
   "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "CIERRE agrupado Musashi H3; no nuevo kit antes de cerrar componente/gates.",
+  "next": "CIERRE Nahir: six arenas/all looks/densities,80%delta24,real full renderer/performance/parity; inspect remote-origin visibility before ArtGate and exactSHA CI. No new kit.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -2587,6 +2587,33 @@
           "sourceSha256": "98a206fcd423f09ef213a3cf9dccf798d22aecaca37cd8074ea8144b21f583ce"
         }
       ]
+    },
+    {
+      "component": "A-FX-nahir-h3/long-echo",
+      "block": "B180",
+      "frame": "nh_cut8 native phases; 1..3 real echoes",
+      "source": "js/champions/vfx-b/nahir.js",
+      "sha256": "b3fa8b5091b0bb23c11082b63850011128c1ae9c6ea18d35681e8b39db77fc62",
+      "state": "VALIDADO",
+      "diagnosis": "Local range and offscreen visibility fixed; composed1/3echoes body contact PASS; source/raster reuse. Exact-head CI pending.",
+      "action": "Finish exactSHA CI then normal merge; verify canonical publication separately. No whole B180 closure.",
+      "checkpoint": "art-source/entregas/nahir-echo-20261026/cierre-01/CHECKPOINT.md",
+      "history": [
+        {
+          "date": "2026-10-26",
+          "state": "EN_CORRECCION",
+          "checkpoint": "art-source/entregas/nahir-echo-20261026/produccion-01/CHECKPOINT.md",
+          "sourceSha256": "65aee82096b63daca57fbd51845ddea6b9c2f9e00b29efb70026e2f10b422c45",
+          "diagnosis": "24pairedcasts/136native/9relayPASS;notArtGate."
+        },
+        {
+          "date": "2026-10-26",
+          "state": "VALIDADO",
+          "checkpoint": "art-source/entregas/nahir-echo-20261026/cierre-01/CHECKPOINT.md",
+          "sourceSha256": "b3fa8b5091b0bb23c11082b63850011128c1ae9c6ea18d35681e8b39db77fc62",
+          "diagnosis": "Grouped closure: culling bounds, shared stroke budget per live reflection, full6arena contact/relay/renderer; pendingexactCI."
+        }
+      ]
     }
   ],
   "latestProduction": {
@@ -2596,5 +2623,10 @@
     "totalEntries": 62,
     "checkpoint": "art-source/entregas/musashi-kit-20261026/area-01/CHECKPOINT.md"
   },
-  "latestClosure": "art-source/entregas/myla-bubble-20261026/cierre-01/CHECKPOINT.md"
+  "latestClosure": {
+    "component": "A-FX-nahir-h3/long-echo",
+    "state": "VALIDADO",
+    "checkpoint": "art-source/entregas/nahir-echo-20261026/cierre-01/CHECKPOINT.md",
+    "pending": "exactSHA CI and merge/publication"
+  }
 }

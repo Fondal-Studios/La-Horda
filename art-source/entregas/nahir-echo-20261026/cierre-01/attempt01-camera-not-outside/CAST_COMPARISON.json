@@ -1,0 +1,470 @@
+{
+  "rows": [
+    {
+      "mobile": false,
+      "variant": "parent",
+      "mode": "base-diagonal",
+      "ownerVisible": true,
+      "refVisible": true,
+      "origin": {
+        "x": 110,
+        "y": 0
+      },
+      "afterWalk": {
+        "x": 609.7051839080357,
+        "y": 412.38269190006633,
+        "life": 1000,
+        "alive": true
+      },
+      "reference": {
+        "x": 0,
+        "y": 0,
+        "life": 472,
+        "owner": true
+      },
+      "geometry": [
+        {
+          "name": "nh_cut",
+          "ax": 609.7051839080357,
+          "ay": 412.38269190006633,
+          "bx": 849.7051839080357,
+          "by": 412.38269190006633,
+          "width": 48,
+          "dur": 520,
+          "requested": 240,
+          "created": true,
+          "renderedLength": 240,
+          "actualEnd": {
+            "x": 849.7051839080357,
+            "y": 412.38269190006633
+          },
+          "frameCount": 8,
+          "frameSize": [
+            16,
+            16
+          ],
+          "alpha": 1
+        },
+        {
+          "name": "nh_cut",
+          "ax": 0,
+          "ay": 0,
+          "bx": 849.7051839080357,
+          "by": 412.38269190006633,
+          "width": 26.400000000000002,
+          "dur": 480,
+          "requested": 944.4884245658778,
+          "created": true,
+          "renderedLength": 944.4884245658778,
+          "actualEnd": {
+            "x": 849.7051839080357,
+            "y": 412.3826919000664
+          },
+          "frameCount": 8,
+          "frameSize": [
+            16,
+            16
+          ],
+          "alpha": 0.7
+        }
+      ],
+      "beforeState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,5500,0],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[2724175504,21037]}",
+      "castState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,99970,[0,0,8000],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[2724175504,21037]}",
+      "endState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,0,7472],null],\"objects\":[[\"ex_reflection\",1,0,0,472]],\"rng\":[2802171675,23546]}",
+      "textureDraws": 169,
+      "captures": [
+        {
+          "age": 64,
+          "activeEchoes": 1,
+          "hash": "438fc17e71766a2f6417d88a075e76224b96fa7c362b14f291b65adfe957c661"
+        },
+        {
+          "age": 128,
+          "activeEchoes": 1,
+          "hash": "24d0d91d8ac6c1fe4353e6bf7e31142a57c7fc95a9ec779ef8fb34f85f632493"
+        },
+        {
+          "age": 256,
+          "activeEchoes": 1,
+          "hash": "14c5a77570746aeb6b659a8942992c778c3a33ee34ef18f901be43a904b8b83d"
+        },
+        {
+          "age": 416,
+          "activeEchoes": 1,
+          "hash": "7c40931500861761a138612c806c19f17ecd50ddf69a5384a736a3496d1ea360"
+        },
+        {
+          "age": 480,
+          "activeEchoes": 0,
+          "hash": "712c338dbd84b1d1d8ab83fa4a99bfd472b04df69029c8717662e6d6ffd7b5f1"
+        },
+        {
+          "age": 528,
+          "activeEchoes": 0,
+          "hash": "e9097c9033744eae0366f7d9328d6b1698026c817c4c370c1413a49f2225c4f2"
+        }
+      ],
+      "pack": "nahir",
+      "rngCalls": 23546,
+      "precastHash": "f2e36ce10f5906b659c2927d68f1584273ead69fc0c1b566d510d2ff1ec24c9c",
+      "atlasHash": "70f8c9b6a599f9b69adb868079e711800cb1621c6b846adbf21f103f6c05f2d1",
+      "errors": []
+    },
+    {
+      "mobile": false,
+      "variant": "candidate",
+      "mode": "base-diagonal",
+      "ownerVisible": true,
+      "refVisible": true,
+      "origin": {
+        "x": 110,
+        "y": 0
+      },
+      "afterWalk": {
+        "x": 609.7051839080357,
+        "y": 412.38269190006633,
+        "life": 1000,
+        "alive": true
+      },
+      "reference": {
+        "x": 0,
+        "y": 0,
+        "life": 472,
+        "owner": true
+      },
+      "geometry": [
+        {
+          "name": "nh_cut",
+          "ax": 609.7051839080357,
+          "ay": 412.38269190006633,
+          "bx": 849.7051839080357,
+          "by": 412.38269190006633,
+          "width": 48,
+          "dur": 520,
+          "requested": 240,
+          "created": true,
+          "renderedLength": 240,
+          "actualEnd": {
+            "x": 849.7051839080357,
+            "y": 412.38269190006633
+          },
+          "frameCount": 8,
+          "frameSize": [
+            16,
+            16
+          ],
+          "alpha": 1
+        },
+        {
+          "name": "nh_cut",
+          "ax": 0,
+          "ay": 0,
+          "bx": 849.7051839080357,
+          "by": 412.38269190006633,
+          "width": 26.400000000000002,
+          "dur": 480,
+          "requested": 944.4884245658778,
+          "created": true,
+          "renderedLength": 944.4884245658778,
+          "actualEnd": {
+            "x": 849.7051839080357,
+            "y": 412.3826919000664
+          },
+          "frameCount": 8,
+          "frameSize": [
+            16,
+            16
+          ],
+          "alpha": 0.7
+        }
+      ],
+      "beforeState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,5500,0],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[2724175504,21037]}",
+      "castState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,99970,[0,0,8000],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[2724175504,21037]}",
+      "endState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,0,7472],null],\"objects\":[[\"ex_reflection\",1,0,0,472]],\"rng\":[2802171675,23546]}",
+      "textureDraws": 169,
+      "captures": [
+        {
+          "age": 64,
+          "activeEchoes": 1,
+          "hash": "438fc17e71766a2f6417d88a075e76224b96fa7c362b14f291b65adfe957c661"
+        },
+        {
+          "age": 128,
+          "activeEchoes": 1,
+          "hash": "24d0d91d8ac6c1fe4353e6bf7e31142a57c7fc95a9ec779ef8fb34f85f632493"
+        },
+        {
+          "age": 256,
+          "activeEchoes": 1,
+          "hash": "14c5a77570746aeb6b659a8942992c778c3a33ee34ef18f901be43a904b8b83d"
+        },
+        {
+          "age": 416,
+          "activeEchoes": 1,
+          "hash": "7c40931500861761a138612c806c19f17ecd50ddf69a5384a736a3496d1ea360"
+        },
+        {
+          "age": 480,
+          "activeEchoes": 0,
+          "hash": "712c338dbd84b1d1d8ab83fa4a99bfd472b04df69029c8717662e6d6ffd7b5f1"
+        },
+        {
+          "age": 528,
+          "activeEchoes": 0,
+          "hash": "e9097c9033744eae0366f7d9328d6b1698026c817c4c370c1413a49f2225c4f2"
+        }
+      ],
+      "pack": "nahir",
+      "rngCalls": 23546,
+      "precastHash": "f2e36ce10f5906b659c2927d68f1584273ead69fc0c1b566d510d2ff1ec24c9c",
+      "atlasHash": "70f8c9b6a599f9b69adb868079e711800cb1621c6b846adbf21f103f6c05f2d1",
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "variant": "parent",
+      "mode": "base-diagonal",
+      "ownerVisible": true,
+      "refVisible": true,
+      "origin": {
+        "x": 110,
+        "y": 0
+      },
+      "afterWalk": {
+        "x": 609.7051839080357,
+        "y": 412.38269190006633,
+        "life": 1000,
+        "alive": true
+      },
+      "reference": {
+        "x": 0,
+        "y": 0,
+        "life": 472,
+        "owner": true
+      },
+      "geometry": [
+        {
+          "name": "nh_cut",
+          "ax": 609.7051839080357,
+          "ay": 412.38269190006633,
+          "bx": 849.7051839080357,
+          "by": 412.38269190006633,
+          "width": 48,
+          "dur": 520,
+          "requested": 240,
+          "created": true,
+          "renderedLength": 240,
+          "actualEnd": {
+            "x": 849.7051839080357,
+            "y": 412.38269190006633
+          },
+          "frameCount": 8,
+          "frameSize": [
+            16,
+            16
+          ],
+          "alpha": 1
+        },
+        {
+          "name": "nh_cut",
+          "ax": 0,
+          "ay": 0,
+          "bx": 849.7051839080357,
+          "by": 412.38269190006633,
+          "width": 26.400000000000002,
+          "dur": 480,
+          "requested": 944.4884245658778,
+          "created": true,
+          "renderedLength": 944.4884245658778,
+          "actualEnd": {
+            "x": 849.7051839080357,
+            "y": 412.3826919000664
+          },
+          "frameCount": 8,
+          "frameSize": [
+            16,
+            16
+          ],
+          "alpha": 0.7
+        }
+      ],
+      "beforeState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,5500,0],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[3220770879,21950]}",
+      "castState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,99970,[0,0,8000],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[3220770879,21950]}",
+      "endState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,0,7472],null],\"objects\":[[\"ex_reflection\",1,0,0,472]],\"rng\":[2668369886,24731]}",
+      "textureDraws": 169,
+      "captures": [
+        {
+          "age": 64,
+          "activeEchoes": 1,
+          "hash": "fad1cfb71c84bbde7d6d8f4aef14cbbfe9c5782da22cc5b520e1120ed943f0c8"
+        },
+        {
+          "age": 128,
+          "activeEchoes": 1,
+          "hash": "f3aa19b05e6d30020658c83e0d5a31aebed5f93d9b50edf6da208a64ba84d02d"
+        },
+        {
+          "age": 256,
+          "activeEchoes": 1,
+          "hash": "22d3a6dbad71c76e3567e5b24ff2d34a0d8054a67a66003e971ab0466446235d"
+        },
+        {
+          "age": 416,
+          "activeEchoes": 1,
+          "hash": "f471a35af9ee80b87f378d7e3d0b43ef98703ee42783dc5e55e44bbf11984d4f"
+        },
+        {
+          "age": 480,
+          "activeEchoes": 0,
+          "hash": "5e3c5228006b1126fabf81bb0bd25ad57b52bf725a2d9cfb9b767f19d21d0055"
+        },
+        {
+          "age": 528,
+          "activeEchoes": 0,
+          "hash": "40bc9bf23d82e2fc7660f128ff13179fbf3600488e4df46c5fddf25309dc688f"
+        }
+      ],
+      "pack": "nahir",
+      "rngCalls": 24731,
+      "precastHash": "1eb2ab2be0da2d29ad9bd4d29981a2554f90d7c2671cb52edaf76aa49a438e4e",
+      "atlasHash": "70f8c9b6a599f9b69adb868079e711800cb1621c6b846adbf21f103f6c05f2d1",
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "variant": "candidate",
+      "mode": "base-diagonal",
+      "ownerVisible": true,
+      "refVisible": true,
+      "origin": {
+        "x": 110,
+        "y": 0
+      },
+      "afterWalk": {
+        "x": 609.7051839080357,
+        "y": 412.38269190006633,
+        "life": 1000,
+        "alive": true
+      },
+      "reference": {
+        "x": 0,
+        "y": 0,
+        "life": 472,
+        "owner": true
+      },
+      "geometry": [
+        {
+          "name": "nh_cut",
+          "ax": 609.7051839080357,
+          "ay": 412.38269190006633,
+          "bx": 849.7051839080357,
+          "by": 412.38269190006633,
+          "width": 48,
+          "dur": 520,
+          "requested": 240,
+          "created": true,
+          "renderedLength": 240,
+          "actualEnd": {
+            "x": 849.7051839080357,
+            "y": 412.38269190006633
+          },
+          "frameCount": 8,
+          "frameSize": [
+            16,
+            16
+          ],
+          "alpha": 1
+        },
+        {
+          "name": "nh_cut",
+          "ax": 0,
+          "ay": 0,
+          "bx": 849.7051839080357,
+          "by": 412.38269190006633,
+          "width": 26.400000000000002,
+          "dur": 480,
+          "requested": 944.4884245658778,
+          "created": true,
+          "renderedLength": 944.4884245658778,
+          "actualEnd": {
+            "x": 849.7051839080357,
+            "y": 412.3826919000664
+          },
+          "frameCount": 8,
+          "frameSize": [
+            16,
+            16
+          ],
+          "alpha": 0.7
+        }
+      ],
+      "beforeState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,5500,0],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[3220770879,21950]}",
+      "castState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,99970,[0,0,8000],null],\"objects\":[[\"ex_reflection\",1,0,0,1000]],\"rng\":[3220770879,21950]}",
+      "endState": "{\"hero\":[609.7051839080357,412.38269190006633,689,0,110,[0,0,7472],null],\"objects\":[[\"ex_reflection\",1,0,0,472]],\"rng\":[2668369886,24731]}",
+      "textureDraws": 169,
+      "captures": [
+        {
+          "age": 64,
+          "activeEchoes": 1,
+          "hash": "fad1cfb71c84bbde7d6d8f4aef14cbbfe9c5782da22cc5b520e1120ed943f0c8"
+        },
+        {
+          "age": 128,
+          "activeEchoes": 1,
+          "hash": "f3aa19b05e6d30020658c83e0d5a31aebed5f93d9b50edf6da208a64ba84d02d"
+        },
+        {
+          "age": 256,
+          "activeEchoes": 1,
+          "hash": "22d3a6dbad71c76e3567e5b24ff2d34a0d8054a67a66003e971ab0466446235d"
+        },
+        {
+          "age": 416,
+          "activeEchoes": 1,
+          "hash": "f471a35af9ee80b87f378d7e3d0b43ef98703ee42783dc5e55e44bbf11984d4f"
+        },
+        {
+          "age": 480,
+          "activeEchoes": 0,
+          "hash": "5e3c5228006b1126fabf81bb0bd25ad57b52bf725a2d9cfb9b767f19d21d0055"
+        },
+        {
+          "age": 528,
+          "activeEchoes": 0,
+          "hash": "40bc9bf23d82e2fc7660f128ff13179fbf3600488e4df46c5fddf25309dc688f"
+        }
+      ],
+      "pack": "nahir",
+      "rngCalls": 24731,
+      "precastHash": "1eb2ab2be0da2d29ad9bd4d29981a2554f90d7c2671cb52edaf76aa49a438e4e",
+      "atlasHash": "70f8c9b6a599f9b69adb868079e711800cb1621c6b846adbf21f103f6c05f2d1",
+      "errors": []
+    }
+  ],
+  "pairs": [
+    {
+      "mobile": false,
+      "mode": "base-diagonal",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    },
+    {
+      "mobile": true,
+      "mode": "base-diagonal",
+      "precastExact": true,
+      "castStateExact": true,
+      "endStateExact": true,
+      "atlasExact": true,
+      "shortAllPixelsExact": null,
+      "candidateEndExact": true,
+      "expired480": true
+    }
+  ],
+  "errors": [],
+  "scope": "24 paired actual casts: 12 parent/12 candidate. Bosque only. Base builds without gear/talents/mastery; tier4 alloc7 fixture, not validated purchase. Summarized state, not global snapshot or combat parity. No contact/ArtGate/relay approval."
+}
