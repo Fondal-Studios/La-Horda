@@ -926,7 +926,7 @@ function _schedTick(){
     }
     // durante el cruce no se programan notas del modo viejo (sus colas se apagan en el otro bus);
     // en silencio (🔇) no se crean nodos
-    if(!M.pending && audioEnabled && S){ try{ _playStep(M.step, M.next); }catch(e){ if(!M.err) M.err = String(e && e.stack || e); } }
+    if(!M.pending && audioEnabled && S && !AU.fileActive){ try{ _playStep(M.step, M.next); }catch(e){ if(!M.err) M.err = String(e && e.stack || e); } }
     M.next += _stepDur();
     if(++M.step >= (M.sec ? M.sec.steps : 16)){
       M.step = 0; M.bar++;
@@ -990,6 +990,8 @@ function setMusicMode(mode, level){
   if((mode==="menu" || mode==="title") && _introOpen()) mode = "intro"; // con la pantalla previa abierta manda el Hechicero
   if(M.auto && mode!=="boss") M.auto = null;
   _setMode(mode, level);
+  // Música por archivos (js/audio/music-files.js): opcional y perezosa; sin pistas sigue la procedural.
+  if(typeof MusicFiles!=="undefined" && MusicFiles) MusicFiles.onMode(mode, level, _musicArenaFor(mode));
 }
 
 // Pausa: la música baja; al volver, sube.
