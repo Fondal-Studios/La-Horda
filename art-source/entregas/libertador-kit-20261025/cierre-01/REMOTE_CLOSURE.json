@@ -1,0 +1,22 @@
+{
+  "state": "EN_CORRECCION",
+  "gate": "FIX/NO_INTEGRAR",
+  "pr": 220,
+  "branch": "art/libertador-kit-first-pass-20261025",
+  "parent": "171f23cdf0e8c8ebfdb123fa5711d72b7ebde1b5",
+  "testedMain": "78039728e737bfc7683fe487c1c281698aa6dd71",
+  "runtimeFiles": [
+    "js/champions/skill-fx-a/c/libertador.js"
+  ],
+  "newChecks": {
+    "technical": 25,
+    "realCast": 60,
+    "scenes": 12,
+    "errors": 0
+  },
+  "atlasExactPrior": true,
+  "integrated": false,
+  "publication": "NOT_APPLICABLE_UNMERGED",
+  "next": "Continue grouped visual closure; network/parity validation justified by moved event emission; reconcile PR220 with main before approval.",
+  "noRemoteClosureLost": true
+}

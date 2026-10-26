@@ -59,11 +59,26 @@ function libertadorTravelCue(c,kind){
  const h=c.h,charge=kind==='charge';if(h.smPhase!==(charge?'mount':'bayo')&&!(charge&&h.smPhase==='charge'))return;
  const L=Math.max(0,h.smDashLeft||0);if(!L)return;
  const dx=h.smDashDx,dy=h.smDashDy,dur=(charge&&h.smPhase==='mount'?Math.max(0,h.smPhaseTimer||0):0)+L/Math.max(1,h.smDashSpeed)*1000+100;
- sfaP('beam','libertador_'+kind,c.from.x,c.from.y,0,{bx:c.from.x+dx*L,by:c.from.y+dy*L,w:charge?64:44,dur,fi:sfaHeroIdx(h)});
+ sfaP('beam','libertador_'+kind+(charge?'~p':''),c.from.x,c.from.y,0,{bx:c.from.x+dx*L,by:c.from.y+dy*L,w:charge?64:44,dur,fi:sfaHeroIdx(h)});
 }
+// Emit only after the real cast executes, with the exact AREA passed by combat.
+// This also avoids replaying an old active cue when a fused/frozen cast is rejected.
+(function(){
+ const cast=libertadorCast;
+ libertadorCast=function(h,sk,isUlt,dmg,AREA,DUR){
+  const from={x:h.x,y:h.y},out=cast.apply(this,arguments);
+  if(!SFA_REC.on||window.SFA_OFF||isUlt)return out;
+  const c={h,from};
+  if(sk.kind==='sm_bayonet')libertadorTravelCue(c,'bayonet');
+  else if(sk.kind==='sm_san_lorenzo')libertadorTravelCue(c,'charge');
+  else if(sk.kind==='sm_granaderos'&&h.smCmdTimer>0)
+   sfaP('nova','libertador_command~h',h.x,h.y,SM_CFG.granaderos.radius*AREA,{dur:1000});
+  return out;
+ };
+})();
 SFA_BIND.libertador={themes:['patria','libertador_bayonet','libertador_command','libertador_charge'],
- 0:{extras:false,run:c=>libertadorTravelCue(c,'bayonet')},
- 1:{extras:false,run:c=>{if(c.h.smCmdTimer>0)sfaP('nova','libertador_command',c.h.x,c.h.y,SM_CFG.granaderos.radius||430,{dur:1000});}},
- 2:{extras:false,run:c=>libertadorTravelCue(c,'charge')},
+ 0:{extras:false,run:()=>{}},
+ 1:{extras:false,run:()=>{}},
+ 2:{extras:false,run:()=>{}},
  ult:c=>sfaP('nova','patria',c.h.x,c.h.y,210,{dur:1000})
 };

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-10-25",
+  "updated": "2026-10-25T16:10:15.176462+00:00",
   "policy": "Alternate production batches and complete closures; current-main integration is not visual approval.",
   "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
   "pendingVerificationNotFailures": [
@@ -13,7 +13,7 @@
   ],
   "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "CIERRE Veyra B228 on current main: reconcile own Pacto/follower/RNG patches from PR219, then compound skins/arenas/lifecycle/performance Art Gate. Do not repeat Libertador production or reopen merged workshops.",
+  "next": "CIERRE Maura visibilidad compuesta desde cierre-01. No nueva primera pasada.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -351,7 +351,18 @@
         "technical": "14 ownership checks PASS; 21 actual relay checks PASS; 132 functional PASS; numeric caster/duration event owns aura; registered KVB network wrapper after late module load.",
         "state": "EN_CORRECCION",
         "remaining": "Full skins/arenas/contrast/warmup/re-entry and integral visual gate; inherited KVB on/off RNG mismatch; CI current head."
-      }
+      },
+      "correctionHistory": [
+        {
+          "date": "2026-10-25",
+          "path": "art-source/entregas/veyra-pact-20261025/cierre-01",
+          "scope": "launch-heart only",
+          "status": "VALIDADO_PENDING_CI",
+          "change": "open lobes and split seam; radius22/y-126;760ms preserved",
+          "technical": "14 owner/12 follow/34 renderer/23 relay/132 functional;120scenes480ABA exact100% retained",
+          "remaining": "Persistent ground heartbeat obscured in contact. Entire H3 remains EN_CORRECCION; no other kit approval."
+        }
+      ]
     },
     {
       "block": "B117",
@@ -1904,7 +1915,16 @@
       "defects": [
         "Thin two-edged trace reads arrow near feet; hand/weapon anchoring and contact hierarchy unresolved; last phases can be skipped on impact stop."
       ],
-      "next": "Grouped kit correction, complete real-scale/skins/arenas/lifecycle/performance gates; preserve existing sources and mechanics."
+      "next": "Grouped kit correction, complete real-scale/skins/arenas/lifecycle/performance gates; preserve existing sources and mechanics.",
+      "history": [
+        {
+          "date": "2026-10-26",
+          "source": "art-source/entregas/libertador-kit-20261025/cierre-01/source-candidate.js",
+          "sha256": "3a44e58a03b2cc24255d51acd54c15418c0cdd475f9acebf7168d28e24064d65",
+          "diagnosis": "Only emit after real cast; command uses exact combat AREA. Visual thinness/layers remain FIX.",
+          "action": "Complete grouped visual/lifecycle/red/parity/contact gates before integration."
+        }
+      ]
     },
     {
       "id": "libertador.command.first-pass-20261025",
@@ -1934,7 +1954,16 @@
       "defects": [
         "Five open command arcs preserve spectral images, but become tiny ticks over arena; inherited radius430 not verified for modified area."
       ],
-      "next": "Grouped kit correction, complete real-scale/skins/arenas/lifecycle/performance gates; preserve existing sources and mechanics."
+      "next": "Grouped kit correction, complete real-scale/skins/arenas/lifecycle/performance gates; preserve existing sources and mechanics.",
+      "history": [
+        {
+          "date": "2026-10-26",
+          "source": "art-source/entregas/libertador-kit-20261025/cierre-01/source-candidate.js",
+          "sha256": "3a44e58a03b2cc24255d51acd54c15418c0cdd475f9acebf7168d28e24064d65",
+          "diagnosis": "Only emit after real cast; command uses exact combat AREA. Visual thinness/layers remain FIX.",
+          "action": "Complete grouped visual/lifecycle/red/parity/contact gates before integration."
+        }
+      ]
     },
     {
       "id": "libertador.charge.first-pass-20261025",
@@ -1964,18 +1993,423 @@
       "defects": [
         "Small bright hoof marks read sparkles at actual mobile scale; instantaneous removal when phase ends; interrupted/mounted/recast cases need grouped lifecycle review."
       ],
-      "next": "Grouped kit correction, complete real-scale/skins/arenas/lifecycle/performance gates; preserve existing sources and mechanics."
+      "next": "Grouped kit correction, complete real-scale/skins/arenas/lifecycle/performance gates; preserve existing sources and mechanics.",
+      "history": [
+        {
+          "date": "2026-10-26",
+          "source": "art-source/entregas/libertador-kit-20261025/cierre-01/source-candidate.js",
+          "sha256": "3a44e58a03b2cc24255d51acd54c15418c0cdd475f9acebf7168d28e24064d65",
+          "diagnosis": "Only emit after real cast; command uses exact combat AREA. Visual thinness/layers remain FIX.",
+          "action": "Complete grouped visual/lifecycle/red/parity/contact gates before integration."
+        }
+      ]
+    },
+    {
+      "id": "mago.fire-wall.formation-20261025",
+      "block": "B160",
+      "component": "A-FX-mago-h1/formation",
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
+      "frames": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "source": "art-source/entregas/mago-kit-20261025/cierre-04/source-wall.js",
+      "sourceSha256": "3a14a3e9361457d86c7b71394ceb2807f0f7a1fa237ac9ee738acc43332f99ba",
+      "atlas": "assets/vfx/vendor/muro-fuego.png",
+      "atlasSha256": "b4019ff9c890c7c8a817d8479c38e081b442108406b482a3bdb8e5a73f28e72b",
+      "defects": [],
+      "next": "Exact-head CI then normal merge; scope only formation/wall/UF H1 launch, not whole B160/kit.",
+      "history": [
+        {
+          "source": "art-source/entregas/mago-kit-20261025/integracion-01/source-candidate.js",
+          "sourceSha256": "a7012f8c6fcd4e5b811e84c6783027e1a56c7d76800cb3fa8603009457f21185",
+          "defects": [
+            "Authored fourth formation frame previously skipped; candidate consumes it but dense tiled flame mass obscures contact."
+          ]
+        },
+        {
+          "source": "art-source/entregas/mago-kit-20261025/cierre-02/source-candidate.js",
+          "sourceSha256": "57f8c711e9a4f12d49adccc5c9337912930c6ad88fd40d6675a6da1effc1b1cd",
+          "defects": [
+            "Overlap removed, disconnected small flame tiles lose corona continuity. Composite gate pending."
+          ]
+        },
+        {
+          "source": "art-source/entregas/mago-kit-20261025/cierre-03/source-candidate.js",
+          "sourceSha256": "3a14a3e9361457d86c7b71394ceb2807f0f7a1fa237ac9ee738acc43332f99ba",
+          "defects": [
+            "Continuity improved; full composite contact/skins/relay/lifecycle gates pending."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "maura.roots.first-pass-20261025",
+      "block": "B163",
+      "component": "A-FX-maura-h1/root-path",
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source": "art-source/entregas/maura-kit-20261025/cierre-09/source-maura.js",
+      "sourceSha256": "f433bce1aa6c8f6f1ab13ff4e35eea37abd91a691147fb4d261964de92302bc6",
+      "atlas": "art-source/entregas/maura-kit-20261025/cierre-05/roots.png",
+      "atlasSha256": "7a247455bce9a98bca075074cfdcb6e5c389d72527618361690b9afea112dd55",
+      "defects": [],
+      "next": "Normal merge only after all applicable checks/workflows on exact head; verify canonical publication separately. Does not close entire block.",
+      "history": [
+        {
+          "attempt": "attempt-01",
+          "reason": "Bark edge clipping"
+        },
+        {
+          "attempt": "attempt-02",
+          "reason": "Kit silhouette readability correction"
+        },
+        {
+          "attempt": "cierre-01",
+          "priorSource": "art-source/entregas/maura-kit-20261025/primera-pasada-01/source-native.js",
+          "priorSourceSha256": "30eb4cbafe7a028b20217378ad18d232c39d518c4190b8657ac67d4565e5b4b2",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/primera-pasada-01/roots.png",
+          "priorAtlasSha256": "e04a83e39095df3f2d5eb9cbfe12c714729b6d6572aba9791131cfb5ff4de128",
+          "diagnosis": "Real hooks and grouped source/anchor/layer corrections; technical gates pass, dense visual visibility still FIX.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-01"
+        },
+        {
+          "attempt": "cierre-03",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-01/source-native.js",
+          "priorSourceSha256": "3be567a772f400c40855f7162d5ef41d397dfde11e316f61051f90ce2784d8e8",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-01/roots.png",
+          "priorAtlasSha256": "a4d8ea2b1a3ca4301b8cc1415d22e6efe085f7fe81143999258f10b17c5408bb",
+          "diagnosis": "Grouped contrast/anchor/bucket correction;24scenes contactPASS, artFIX."
+        },
+        {
+          "attempt": "cierre-05",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-03/source-candidate.js",
+          "priorSourceSha256": "02e2c1ca6cabc3e4958dff948bb6ad81e6f9a9e0db50cac5901321a215903656",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-03/roots.png",
+          "priorAtlasSha256": "7a247455bce9a98bca075074cfdcb6e5c389d72527618361690b9afea112dd55",
+          "diagnosis": "Grouped open bark grain / thin pruning blades and top layer; contact passes dense matrix, art FIX. Roots unchanged. Culling corrected separately.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-05"
+        },
+        {
+          "closure": "art-source/entregas/maura-kit-20261025/cierre-06",
+          "diagnosis": "Grouped material attempt,14contactFAIL corrected by bark anchor -123; final48scenesPASS contact,visualFIX (slats/shear joint)",
+          "previousSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
+          "previousSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27"
+        },
+        {
+          "attempt": "cierre-09",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
+          "priorSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
+          "priorDefects": [
+            "Curved unequal forks replace repeated spear/barbed cable. Ground layer fixes contact, but thin path still competes with existing bright cast rings and endpoint zone."
+          ],
+          "diagnosis": "Grouped launch composition removes generic star; six-arena/five-look/contact and temporal visual review PASS for named native layers. Earlier failures retained.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-09"
+        }
+      ],
+      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-06",
+      "launchSource": "art-source/entregas/maura-kit-20261025/cierre-09/signatures-candidate.js",
+      "launchSourceSha256": "ac226503c72cd5c8bb315313f9dbf2210e6dce2196488a8616160556fc242f03",
+      "review": "art-source/entregas/maura-kit-20261025/cierre-09/REVIEW.json"
+    },
+    {
+      "id": "maura.bark.first-pass-20261025",
+      "block": "B164",
+      "component": "A-FX-maura-h2/bark-shell",
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "source": "art-source/entregas/maura-kit-20261025/cierre-09/source-maura.js",
+      "sourceSha256": "f433bce1aa6c8f6f1ab13ff4e35eea37abd91a691147fb4d261964de92302bc6",
+      "atlas": "art-source/entregas/maura-kit-20261025/cierre-08/bark.png",
+      "atlasSha256": "ad7ba59349d44da6240716045d6ad8422d8a1306e74ccd1ded6b7c0b78a3e205",
+      "defects": [],
+      "next": "Normal merge only after all applicable checks/workflows on exact head; verify canonical publication separately. Does not close entire block.",
+      "history": [
+        {
+          "attempt": "attempt-01",
+          "reason": "Bark edge clipping"
+        },
+        {
+          "attempt": "attempt-02",
+          "reason": "Kit silhouette readability correction"
+        },
+        {
+          "attempt": "cierre-01",
+          "priorSource": "art-source/entregas/maura-kit-20261025/primera-pasada-01/source-native.js",
+          "priorSourceSha256": "30eb4cbafe7a028b20217378ad18d232c39d518c4190b8657ac67d4565e5b4b2",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/primera-pasada-01/bark.png",
+          "priorAtlasSha256": "bcb633ab95b22e1f00a43fcb95e193b08cf3584038ced10223d3f95eddf67e2e",
+          "diagnosis": "Real hooks and grouped source/anchor/layer corrections; technical gates pass, dense visual visibility still FIX.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-01"
+        },
+        {
+          "attempt": "cierre-03",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-01/source-native.js",
+          "priorSourceSha256": "3be567a772f400c40855f7162d5ef41d397dfde11e316f61051f90ce2784d8e8",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-01/bark.png",
+          "priorAtlasSha256": "bcb633ab95b22e1f00a43fcb95e193b08cf3584038ced10223d3f95eddf67e2e",
+          "diagnosis": "Grouped contrast/anchor/bucket correction;24scenes contactPASS, artFIX."
+        },
+        {
+          "attempt": "cierre-05",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-03/source-candidate.js",
+          "priorSourceSha256": "02e2c1ca6cabc3e4958dff948bb6ad81e6f9a9e0db50cac5901321a215903656",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-03/bark.png",
+          "priorAtlasSha256": "4638c4833a898635c76e6ef5910f704d136c445cdff8137d91d3c968002ca9e7",
+          "diagnosis": "Grouped open bark grain / thin pruning blades and top layer; contact passes dense matrix, art FIX. Roots unchanged. Culling corrected separately.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-05"
+        },
+        {
+          "closure": "art-source/entregas/maura-kit-20261025/cierre-06",
+          "diagnosis": "Grouped material attempt,14contactFAIL corrected by bark anchor -123; final48scenesPASS contact,visualFIX (slats/shear joint)",
+          "previousSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
+          "previousSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27"
+        },
+        {
+          "closure": "art-source/entregas/maura-kit-20261025/cierre-07",
+          "previousSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
+          "previousSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
+          "diagnosis": "Grouped geometry correction: irregular solid bark / shorter blades with open handles and pivot.96scenes contactPASS; protective bark silhouette remains visualFIX."
+        },
+        {
+          "closure": "art-source/entregas/maura-kit-20261025/cierre-08",
+          "previousSource": "art-source/entregas/maura-kit-20261025/cierre-07/source-candidate.js",
+          "previousSourceSha256": "deec3bdfa53bcc74812f51083597ed45f18a4731e2558b8f537f565e3e4cb989",
+          "diagnosis": "Connected curved bark flanks,96x96 anchored y-90.120scenes contactPASS; launch indicator competition remains."
+        },
+        {
+          "attempt": "cierre-09",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-08/source-candidate.js",
+          "priorSourceSha256": "f433bce1aa6c8f6f1ab13ff4e35eea37abd91a691147fb4d261964de92302bc6",
+          "priorDefects": [
+            "Larger112x112 wood plates, open torso and real shield condition. In dense scenes plates remain partially hidden among bodies; generic shield/ring indicators dominate."
+          ],
+          "diagnosis": "Grouped launch composition removes generic star; six-arena/five-look/contact and temporal visual review PASS for named native layers. Earlier failures retained.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-09"
+        }
+      ],
+      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-08",
+      "launchSource": "art-source/entregas/maura-kit-20261025/cierre-09/signatures-candidate.js",
+      "launchSourceSha256": "ac226503c72cd5c8bb315313f9dbf2210e6dce2196488a8616160556fc242f03",
+      "review": "art-source/entregas/maura-kit-20261025/cierre-09/REVIEW.json"
+    },
+    {
+      "id": "maura.shears.first-pass-20261025",
+      "block": "B165",
+      "component": "A-FX-maura-h3/pruning-shears",
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source": "art-source/entregas/maura-kit-20261025/cierre-09/source-maura.js",
+      "sourceSha256": "f433bce1aa6c8f6f1ab13ff4e35eea37abd91a691147fb4d261964de92302bc6",
+      "atlas": "art-source/entregas/maura-kit-20261025/cierre-07/shears.png",
+      "atlasSha256": "5c3e32b6f398add74355ca1e674dbeb7f77c8c4cfab88dd378f5bf5a54128420",
+      "defects": [],
+      "next": "Normal merge only after all applicable checks/workflows on exact head; verify canonical publication separately. Does not close entire block.",
+      "history": [
+        {
+          "attempt": "attempt-01",
+          "reason": "Bark edge clipping"
+        },
+        {
+          "attempt": "attempt-02",
+          "reason": "Kit silhouette readability correction"
+        },
+        {
+          "attempt": "cierre-01",
+          "priorSource": "art-source/entregas/maura-kit-20261025/primera-pasada-01/source-native.js",
+          "priorSourceSha256": "30eb4cbafe7a028b20217378ad18d232c39d518c4190b8657ac67d4565e5b4b2",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/primera-pasada-01/shears.png",
+          "priorAtlasSha256": "cef86000782435a5e5256e20a66fd60a71f686b09b7fdd46822899ad0cfcca5c",
+          "diagnosis": "Real hooks and grouped source/anchor/layer corrections; technical gates pass, dense visual visibility still FIX.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-01"
+        },
+        {
+          "attempt": "cierre-03",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-01/source-native.js",
+          "priorSourceSha256": "3be567a772f400c40855f7162d5ef41d397dfde11e316f61051f90ce2784d8e8",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-01/shears.png",
+          "priorAtlasSha256": "d0191240223d3db3dcec505625b6b40cdb2bee8da94ecdeee94ab5fa03668330",
+          "diagnosis": "Grouped contrast/anchor/bucket correction;24scenes contactPASS, artFIX."
+        },
+        {
+          "attempt": "cierre-05",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-03/source-candidate.js",
+          "priorSourceSha256": "02e2c1ca6cabc3e4958dff948bb6ad81e6f9a9e0db50cac5901321a215903656",
+          "priorAtlas": "art-source/entregas/maura-kit-20261025/cierre-03/shears.png",
+          "priorAtlasSha256": "d0191240223d3db3dcec505625b6b40cdb2bee8da94ecdeee94ab5fa03668330",
+          "diagnosis": "Grouped open bark grain / thin pruning blades and top layer; contact passes dense matrix, art FIX. Roots unchanged. Culling corrected separately.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-05"
+        },
+        {
+          "closure": "art-source/entregas/maura-kit-20261025/cierre-06",
+          "diagnosis": "Grouped material attempt,14contactFAIL corrected by bark anchor -123; final48scenesPASS contact,visualFIX (slats/shear joint)",
+          "previousSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
+          "previousSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27"
+        },
+        {
+          "closure": "art-source/entregas/maura-kit-20261025/cierre-07",
+          "previousSource": "art-source/entregas/maura-kit-20261025/cierre-05/source-candidate.js",
+          "previousSourceSha256": "0bbed40b365beaf331b6a7b47cf56703b62a08ad9b604e54ec8013813129ca27",
+          "diagnosis": "Grouped geometry correction: irregular solid bark / shorter blades with open handles and pivot.96scenes contactPASS; protective bark silhouette remains visualFIX."
+        },
+        {
+          "attempt": "cierre-09",
+          "priorSource": "art-source/entregas/maura-kit-20261025/cierre-07/source-candidate.js",
+          "priorSourceSha256": "deec3bdfa53bcc74812f51083597ed45f18a4731e2558b8f537f565e3e4cb989",
+          "priorDefects": [
+            "Larger handles/blades and real700ms circular cast. Native sheet identifies scissors, but dense game scene hides much of orbit behind actors; impact is not sufficiently readable."
+          ],
+          "diagnosis": "Grouped launch composition removes generic star; six-arena/five-look/contact and temporal visual review PASS for named native layers. Earlier failures retained.",
+          "evidence": "art-source/entregas/maura-kit-20261025/cierre-09"
+        }
+      ],
+      "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-07",
+      "launchSource": "art-source/entregas/maura-kit-20261025/cierre-09/signatures-candidate.js",
+      "launchSourceSha256": "ac226503c72cd5c8bb315313f9dbf2210e6dce2196488a8616160556fc242f03",
+      "review": "art-source/entregas/maura-kit-20261025/cierre-09/REVIEW.json"
+    },
+    {
+      "id": "morwen.normal-launch.h1.20261025",
+      "block": "B169",
+      "component": "A-FX-morwen-h1/normal-launch",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
+      "source": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/signatures-candidate.js",
+      "sourceSha256": "fa38468dfa5d614abc8502899a649819e1713843fe2e5eac8c86a73105ea0ae2",
+      "atlas": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/launch-atlas.png",
+      "atlasSha256": "0495bd0b8496558b151920c968ac989e8b464d5640ba49207b9fad13aad60a7e",
+      "defects": [],
+      "history": [
+        {
+          "attempt": "01",
+          "diagnosis": "Native silhouettes too small at32px destination;48px final passes review/contact.",
+          "source": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/attempt01/signatures-candidate.js"
+        }
+      ],
+      "next": "Verify all exact-head CI, merge normally, then canonical publication separately; does not close entire block."
+    },
+    {
+      "id": "morwen.normal-launch.h2.20261025",
+      "block": "B170",
+      "component": "A-FX-morwen-h2/normal-launch",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
+      "source": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/signatures-candidate.js",
+      "sourceSha256": "fa38468dfa5d614abc8502899a649819e1713843fe2e5eac8c86a73105ea0ae2",
+      "atlas": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/launch-atlas.png",
+      "atlasSha256": "0495bd0b8496558b151920c968ac989e8b464d5640ba49207b9fad13aad60a7e",
+      "defects": [],
+      "history": [
+        {
+          "attempt": "01",
+          "diagnosis": "Native silhouettes too small at32px destination;48px final passes review/contact.",
+          "source": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/attempt01/signatures-candidate.js"
+        }
+      ],
+      "next": "Verify all exact-head CI, merge normally, then canonical publication separately; does not close entire block."
+    },
+    {
+      "id": "morwen.normal-launch.h3.20261025",
+      "block": "B171",
+      "component": "A-FX-morwen-h3/normal-launch",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "state": "VALIDADO",
+      "integration": "PENDING_EXACT_HEAD_CI",
+      "source": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/signatures-candidate.js",
+      "sourceSha256": "fa38468dfa5d614abc8502899a649819e1713843fe2e5eac8c86a73105ea0ae2",
+      "atlas": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/launch-atlas.png",
+      "atlasSha256": "0495bd0b8496558b151920c968ac989e8b464d5640ba49207b9fad13aad60a7e",
+      "defects": [],
+      "history": [
+        {
+          "attempt": "01",
+          "diagnosis": "Native silhouettes too small at32px destination;48px final passes review/contact.",
+          "source": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/attempt01/signatures-candidate.js"
+        }
+      ],
+      "next": "Verify all exact-head CI, merge normally, then canonical publication separately; does not close entire block."
     }
   ],
   "latestProduction": {
-    "base": "9c0ac434b2cb80ae16e7220371f59944ac3e9613",
-    "block": [
-      "B157",
-      "B158",
-      "B159"
-    ],
-    "path": "art-source/entregas/libertador-kit-20261025/primera-pasada-01",
-    "state": "EN_CORRECCION",
-    "entriesPreserved": 51
-  }
+    "scope": "Morwen three normal launch signatures only",
+    "state": "VALIDADO",
+    "preservedEntries": 58,
+    "totalEntries": 61,
+    "checkpoint": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/CHECKPOINT.md"
+  },
+  "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-08"
 }
