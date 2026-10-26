@@ -1,0 +1,57 @@
+{
+  "final-desktop": {
+    "scenes": 180,
+    "samples": 720,
+    "minBodyRetention": 0.9936043855641845,
+    "ABAExact": true,
+    "summarizedStateEqual": true,
+    "errors": [],
+    "parentComparisonValid": false,
+    "expiryParentEqualsCandidate": null
+  },
+  "final-mobile": {
+    "scenes": 180,
+    "samples": 720,
+    "minBodyRetention": 0.9933359466875735,
+    "ABAExact": true,
+    "summarizedStateEqual": true,
+    "errors": [],
+    "parentComparisonValid": false,
+    "expiryParentEqualsCandidate": null
+  },
+  "paired-desktop": {
+    "scenes": 6,
+    "samples": 24,
+    "minBodyRetention": 0.9985019589767228,
+    "ABAExact": true,
+    "summarizedStateEqual": true,
+    "errors": [],
+    "parentComparisonValid": true,
+    "expiryParentEqualsCandidate": true
+  },
+  "paired-mobile": {
+    "scenes": 6,
+    "samples": 24,
+    "minBodyRetention": 0.998812821527503,
+    "ABAExact": true,
+    "summarizedStateEqual": true,
+    "errors": [],
+    "parentComparisonValid": true,
+    "expiryParentEqualsCandidate": true
+  },
+  "canary": {
+    "scenes": 1,
+    "samples": 4,
+    "minBodyRetention": 0,
+    "ABAExact": false,
+    "summarizedStateEqual": true,
+    "errors": [],
+    "parentComparisonValid": false,
+    "expiryParentEqualsCandidate": null
+  },
+  "thresholds": {
+    "bodyRetention": 0.8,
+    "channelDelta": 24
+  },
+  "limitation": "Full-matrix parent PNGs omitted the KVB wrapper and are invalid as exact-main comparisons. Contact and A/B/A remain valid; separate paired-* reruns include wrapper. State is summarized, not global."
+}

@@ -1,0 +1,41 @@
+{
+  "attempts": [
+    {
+      "id": "01",
+      "status": "VISUAL_FIX",
+      "evidence": "attempt01",
+      "reason": "32-world-pixel destination too small on mobile; source and sheets preserved. Final uses48, same native atlas."
+    },
+    {
+      "id": "perf-syntax",
+      "status": "FAIL_BEFORE_BROWSER",
+      "evidence": "attempt01/perf-harness-syntax-invalid.txt",
+      "reason": "Adapted harness extra closing parenthesis; corrected then800 renderer timings completed."
+    },
+    {
+      "id": "parent-without-wrapper",
+      "status": "INVALID_MAIN_COMPARISON",
+      "evidence": "attempt01/capture-parent-without-kvb-wrapper.js",
+      "reason": "Raw parent drawer omitted existing KVB top wrapper. Initial and full-matrix parent PNGs excluded from main-comparison claims. Corrected12scene paired run exact at expiration."
+    },
+    {
+      "id": "canary",
+      "status": "EXPECTED_FAIL",
+      "evidence": "canary/capture.json",
+      "reason": "Opaque overlay gives0% retention; original80%/delta24 gates reject."
+    },
+    {
+      "id": "final",
+      "status": "PASS_COMPONENT",
+      "evidence": [
+        "MATRIX_SUMMARY.json",
+        "SIGNATURE_CHECK.json",
+        "EXTRA_CHECK.json",
+        "ONLINE.json",
+        "PARITY.json",
+        "FULL_RENDER_PERFORMANCE.json"
+      ],
+      "limits": "Relay/parity before final destination-only32-to48 adjustment; no global state or physical-mobile certification."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "main": "fd10c68b4ff8140481237de3cc885b8635e4710e",
+  "openPRs": [
+    90,
+    92,
+    211,
+    220
+  ],
+  "previousClosure": "e2111b1554f24ee55159302fb0472b6fa3f8c35d",
+  "lostClosure": false,
+  "filesComparedBeforeEdits": 460,
+  "mismatches": 0,
+  "referencesVerified": 59,
+  "finding": "All three normal Morwen casts use the same drops silhouette; only pips encode skill slot. Existing nova/cone/aura, marks, passive residue counter and real alchemic UF are already present. This delivery only adds distinct normal cast identifiers, not new damage footprints or shield persistence.",
+  "consumerChain": [
+    "abilities.js:344 -> vfxChampionSignature",
+    "net-game.js event allowlist -> same key/slot/duration",
+    "vfx.js:240 -> championSignaturesUpdate",
+    "renderer.js:267 -> drawChampionSignatures",
+    "new Morwen normal-only branch -> cached native atlas"
+  ],
+  "unchanged": [
+    "SFA alchemy nova/cone/aura and alembic prop",
+    "reaction/marks/residue/shield mechanics",
+    "body/set/2 skins/basic/UF",
+    "network/pool/culling and460ms lifetime"
+  ],
+  "historicalAudit": "post-cierre-09 NEXT_MORWEN_CASTS/PROP: 7casts and8032ms UF, no new art. Reuse data; no repetition claimed."
+}
