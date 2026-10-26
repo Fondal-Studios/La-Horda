@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-26T14:05:10Z",
+  "state": "EN_CORRECCION",
+  "ArtGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "publication": "NOT_QUERIED",
+  "PR": 227,
+  "branch": "art/musashi-thousand-cuts-first-pass-20261026",
+  "production": "83ca4482111a3c95ccac0211ffbe7b982583ed3a",
+  "productionTree": "587d149da4e43f128fba7b7ae653927ddd68faa3",
+  "verification": {
+    "tree": "587d149da4e43f128fba7b7ae653927ddd68faa3",
+    "entries": 12340,
+    "truncated": false,
+    "verified": 62,
+    "mismatches": 0,
+    "PRhead": "83ca4482111a3c95ccac0211ffbe7b982583ed3a",
+    "main": "20afebd4ccefaf6fa11ce30ab096c2535d341640"
+  },
+  "runtime": "js/champions/skill-fx-a/c/musashi.js only",
+  "newFinal": {
+    "matrix": "120scenes/720ABA exact, summarizedstate equal, min80.893592%, threshold80%/delta24",
+    "mainPairs": "12precast exact after equal-order pairing; original8/12difference preserved",
+    "native": "4exports,3buckets24frames22nonempty each,alpha0/255,edges0,RNG0,byte-identical reexport;preview4canvases0errors",
+    "visual": "10sheets92views +4fullframes reviewed;V/boomerang finalwave and Errante red competition remain FIX",
+    "performance": "1360 full-render timings,361clears per run; enabled desktopp953.7/max10ms/mobileviewportp953.6/max26.5ms; independent runs,not GPU/GC/physicalmobile/speedup"
+  },
+  "attempt01": "120scenes720ABA radial variant rejected;21lifecyclePASS before final painter only; hooks/timing unchanged; synthetic radii419..600 and forced culling predicates explicitly limited",
+  "historical": "cierre02relay6 current460ms; cierre01parity360/15216 summarized only; not rerun",
+  "priorClosure": "cierre02 complete;22manifest entries SHA256 verified; no lost remote closure",
+  "CI": {
+    "productionObservedChecks": 21,
+    "productionObservedWorkflows": 10,
+    "status": "all in progress; no approval",
+    "parent": "2436459033ca1f8aac5bfdc6d65cd088f399bea8",
+    "parentChecks": 22,
+    "parentWorkflows": 10,
+    "parentStatus": "SUCCESS"
+  },
+  "next": "Continue grouped Musashi closure from source-candidate.js; resolve V junctions/terminal fragments and Errante launch hierarchy. Inspect automatic ufOutline on hard layer; preserve shared engine,real area460ms,H1/H2/UF/body/skins. Complete reachable extreme builds/real viewport-edge checks and exact-head gates before merge. No new kit; global inventory incomplete."
+}
