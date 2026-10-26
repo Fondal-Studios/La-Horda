@@ -164,6 +164,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     const out = {};
     for (const id in SET_SKINS) {
       const c = SET_SKINS[id].champ;
+      if(!c || SET_SKINS[id].manifest || !SET_DB[id]) continue; // manifestaciones de colección V2 (Astral/Consagrada): se obtienen en Colección, no por piezas de un guardián
       __run(c, id, 3); const three = !!activeSetSkin(player);
       __run(c, id, 4); const four = activeSetSkin(player) === SET_SKINS[id];
       updateSets(player, 16);
