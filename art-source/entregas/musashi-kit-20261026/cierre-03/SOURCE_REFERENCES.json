@@ -1,0 +1,24 @@
+{
+  "main": "20afebd4ccefaf6fa11ce30ab096c2535d341640",
+  "parent": "2436459033ca1f8aac5bfdc6d65cd088f399bea8",
+  "changedRuntime": [
+    "js/champions/skill-fx-a/c/musashi.js"
+  ],
+  "unchanged": [
+    "js/skills/abilities.js",
+    "js/champions/ult-forms/bind.js",
+    "js/champions/musashi.js",
+    "js/rendering/champion-sprites.js",
+    "js/skills/champion-signatures.js"
+  ],
+  "nativeOutline": {
+    "file": "js/champions/ult-forms/kit.js",
+    "operation": "ufStep unconditionally calls ufOutline(L.hard,job.P.o) before combining soft/hard; source observation, not new test"
+  },
+  "priorManifestVerified": {
+    "entries": 22,
+    "sha256Mismatches": 0
+  },
+  "externalPR228": "Factory process-exit checks; untouched; fresh main unchanged",
+  "restoration": "Fresh shallow clone exact243645 after scratch maintenance; remote closure complete, no lost remote closure."
+}
