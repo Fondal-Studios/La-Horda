@@ -1,0 +1,52 @@
+{
+  "kind": "native SfaStrip",
+  "source": "art-source/entregas/maura-kit-20261025/cierre-01/source-native.js",
+  "runtime": "js/champions/skill-fx-a/c/maura.js",
+  "baseMain": "7e4e653e83b958bb63534ea90cfc77400bf93545",
+  "dimensions": {
+    "roots": [
+      168,
+      40,
+      12
+    ],
+    "bark": [
+      64,
+      80,
+      18
+    ],
+    "shears": [
+      152,
+      152,
+      12
+    ]
+  },
+  "sourceSha256": "3be567a772f400c40855f7162d5ef41d397dfde11e316f61051f90ce2784d8e8",
+  "runtimeSha256": "950f81bc5c1dd322f6dc84ab9fcbb157aaf272a6e6b72ac21b38918d7046c839",
+  "commands": [
+    "node tools/vfx/export-maura-close.js",
+    "node tools/vfx/preview-maura-close.js",
+    "node tools/vfx/maura-close-lifecycle.js",
+    "node tools/vfx/maura-close-online.js",
+    "node tools/vfx/parity-maura-close.js",
+    "node tools/vfx/parity-maura-parent.js",
+    "node tools/vfx/capture-maura-contact.js",
+    "MOBILE=1 node tools/vfx/capture-maura-contact.js"
+  ],
+  "nativeDependencies": [
+    "SfaStrip",
+    "sfaCol",
+    "sfaHash",
+    "sfaBake",
+    "sfaP/vfxSfaPlay",
+    "SFA_OBJ.ex_bark",
+    "drawPortadorGround"
+  ],
+  "env": {
+    "NODE_PATH": "installed Playwright dependencies",
+    "CHROMIUM_PATH": "local Chromium executable"
+  },
+  "installedAssetChanges": 0,
+  "rng": "No random in source bake or native draw; deterministic sfaHash only.",
+  "hooks": "Actual roots new ex_thorns object and real line; pruning rec.fx plus shear action; bark owner alive/notfused/shield>0/life>0. Ground root wrapper preserves beam pool/network clock; no shared engine changes.",
+  "limits": "Total shield is the existing shared shield value; no separate source attribution invented. Public publication not checked in this closure."
+}

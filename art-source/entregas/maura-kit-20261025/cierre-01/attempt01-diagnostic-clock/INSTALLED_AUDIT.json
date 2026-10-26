@@ -1,0 +1,143 @@
+{
+  "rows": [
+    {
+      "view": "desktop",
+      "slot": 0,
+      "draws": {
+        "roots": 1,
+        "bark": 0,
+        "shears": 0,
+        "body": 1
+      },
+      "objects": [
+        {
+          "kind": "ex_thorns",
+          "life": 2176,
+          "shield": 0
+        }
+      ],
+      "pool": [
+        {
+          "art": "beam",
+          "theme": "maura_roots",
+          "t": 16,
+          "dur": 720,
+          "r": 60,
+          "w": 52
+        }
+      ],
+      "pack": true
+    },
+    {
+      "view": "desktop",
+      "slot": 1,
+      "draws": {
+        "roots": 0,
+        "bark": 1,
+        "shears": 0,
+        "body": 1
+      },
+      "objects": [
+        {
+          "kind": "ex_bark",
+          "life": 3776,
+          "shield": 35.2
+        }
+      ],
+      "pool": [],
+      "pack": true
+    },
+    {
+      "view": "desktop",
+      "slot": 2,
+      "draws": {
+        "roots": 0,
+        "bark": 0,
+        "shears": 0,
+        "body": 1
+      },
+      "objects": [],
+      "pool": [
+        {
+          "art": "nova",
+          "theme": "maura_shears~p",
+          "t": 16,
+          "dur": 700,
+          "r": 110,
+          "w": 24
+        }
+      ],
+      "pack": true
+    },
+    {
+      "view": "mobile",
+      "slot": 0,
+      "draws": {
+        "roots": 1,
+        "bark": 0,
+        "shears": 0,
+        "body": 1
+      },
+      "objects": [
+        {
+          "kind": "ex_thorns",
+          "life": 2176,
+          "shield": 0
+        }
+      ],
+      "pool": [
+        {
+          "art": "beam",
+          "theme": "maura_roots",
+          "t": 16,
+          "dur": 720,
+          "r": 60,
+          "w": 52
+        }
+      ],
+      "pack": true
+    },
+    {
+      "view": "mobile",
+      "slot": 1,
+      "draws": {
+        "roots": 0,
+        "bark": 1,
+        "shears": 0,
+        "body": 1
+      },
+      "objects": [
+        {
+          "kind": "ex_bark",
+          "life": 3776,
+          "shield": 35.2
+        }
+      ],
+      "pool": [],
+      "pack": true
+    },
+    {
+      "view": "mobile",
+      "slot": 2,
+      "draws": {
+        "roots": 0,
+        "bark": 0,
+        "shears": 0,
+        "body": 1
+      },
+      "objects": [],
+      "pool": [
+        {
+          "art": "nova",
+          "theme": "maura_shears~p",
+          "t": 16,
+          "dur": 700,
+          "r": 110,
+          "w": 24
+        }
+      ],
+      "pack": true
+    }
+  ],
+  "errors": []
+}

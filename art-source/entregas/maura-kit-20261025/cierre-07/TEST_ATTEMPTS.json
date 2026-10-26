@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-25",
+  "new": [
+    {
+      "test": "native42frames/8buckets",
+      "result": "PASS",
+      "scope": "39nonempty,alpha0/255,borders0,RNG0;8sizesx12frames"
+    },
+    {
+      "test": "contact96scenes/384ABA",
+      "result": "PASS",
+      "scope": "6arenas,base/tier4,sparse/dense,H2/H3,mobile/desktop; summarizedstate only"
+    },
+    {
+      "test": "full renderer800timings",
+      "result": "MEASURED",
+      "scope": "Independent seeded runs with actualclear,12enemies+2allies; no errors. p95 on6.3/7.3ms desktop/mobileviewport; maxima37.1/28.9. Off p957.5/7.6,max72.9/52.4. Concurrent matrix work; no speedup claim, GPU/GC or physicalmobile certification."
+    },
+    {
+      "test": "visual64views",
+      "result": "FIX",
+      "scope": "Bark detached protective silhouette; broader look sequences pending."
+    }
+  ],
+  "failedTechnicalNew": [],
+  "failedVisualNew": [
+    "Bark protective silhouette remains unapproved"
+  ],
+  "historical": "All previous failed attempts preserved in cierre-01..06; no new relay/lifecycle/globalparity/254functional rerun."
+}

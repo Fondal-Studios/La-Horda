@@ -121,7 +121,7 @@ function _glOverflow(){
 }
 /* ---------------- reciclaje con el inventario lleno (regla: js/data/ground-loot.js, RECYCLE_GEM) ---------------- */
 // Lo pagado con oro (tienda: it.bought; Mística: it.rerolls) nunca se recicla solo (reseña de economía, bug B2).
-function recyclable(it){ return !!(it && !it.designed && !it.bought && !(it.rerolls > 0) && RECYCLE_GEM[it.rarity] !== undefined && !itemEquippedBy(it.uid)); }
+function recyclable(it){ return !!(it && !it.favorite && !it._reserved && !it.relicId && !it.set && itemLevel(it)<=1 && !it.designed && !it.bought && !(it.rerolls > 0) && RECYCLE_GEM[it.rarity] !== undefined && !itemEquippedBy(it.uid)); }
 // Suma el polvo de Gema del objeto; devuelve cuántas Gemas enteras se completaron.
 function recycleItemValue(it){
   const v = RECYCLE_GEM[it && it.rarity] || 0;
@@ -130,19 +130,22 @@ function recycleItemValue(it){
   save.recycleDust = Math.max(0, dust); if(gems) save.gems = (save.gems||0) + gems;
   return gems;
 }
-// ¿Entra `it`? Si el inventario está lleno, aplica la regla: se recicla él mismo (Común/Raro) o el Común/Raro
-// guardado de menor nivel. Devuelve {ok, self, recycled, gems} (ok=false: no entra, queda en el piso).
+// Con bolsa llena: conservar en reserva o reciclar solo duplicados idénticos según preferencias.
+// Nunca sacrificar otro objeto para hacer espacio. Límite defensivo: 150 objetos totales.
 function stashMakeRoomFor(it){
   if(!stashFull()) return {ok:true};
-  if(recyclable(it)) return {ok:true, self:true, gems:recycleItemValue(it)};
-  const rank = {comun:0, raro:1};
-  const cand = stashItems().filter(recyclable).sort((a,b)=> (rank[a.rarity]-rank[b.rarity]) || (itemLevel(a)-itemLevel(b)));
-  if(!cand.length) return {ok:false};
-  const old = cand[0];
-  removeItemFromInventory(player ? player.classKey : selectedClass, old.uid, false);
-  return {ok:true, recycled:old, gems:recycleItemValue(old)};
+  const prefs=lootManagement();
+  // Reciclar solo un duplicado idéntico que no se está reservando para autofusión.
+  if(prefs.enabled && prefs.recycleDuplicates && !prefs.autoFuse && recyclable(it) &&
+     stashItems().some(other=>other.uid!==it.uid && itemIdentity(other)===itemIdentity(it))){
+    return {ok:true, self:true, gems:recycleItemValue(it)};
+  }
+  if(prefs.enabled && stashItems().length<150){it.overflow=true;return {ok:true, overflow:true};}
+  return {ok:false};
 }
 function _recycleToast(r, it){
+  if(performance.now()-(_recycleToast.lastAt||-Infinity)<3000)return;
+  _recycleToast.lastAt=performance.now();
   const dust = Math.round((save.recycleDust||0)*4);
   const tail = r.gems ? `+${r.gems} Gema${r.gems>1?"s":""}` : `polvo de Gema ${dust}/4`;
   if(r.self) groundLootToast(null, `Inventario lleno: ${it.name} se recicló (${tail})`);

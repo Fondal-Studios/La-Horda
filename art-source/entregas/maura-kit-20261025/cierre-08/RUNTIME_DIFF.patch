@@ -1,0 +1,28 @@
+diff --git a/js/champions/skill-fx-a/c/maura.js b/js/champions/skill-fx-a/c/maura.js
+index 0ac8383..05be04d 100644
+--- a/js/champions/skill-fx-a/c/maura.js
++++ b/js/champions/skill-fx-a/c/maura.js
+@@ -64,6 +64,14 @@ function mauraCandidateKit() {
+       for(let j=0;j<12;j++){const t=j*Math.PI/6;bark.set(f,Math.round(cx+Math.cos(t)*2),Math.round(top+5+Math.sin(t)*3),P.o);}
+       bark.set(f,cx,top+5,P.e);
+     }
++    // Bent living seams connect the two splinters into each protective flank.
++    // Keep the face/chest and the centre of the shield completely open.
++    if(count===4)for(const side of [-1,1]){
++      const x=32+side*(18+spread);
++      stroke(bark,f,x,35,x-side*2,43,2,P.a);
++      stroke(bark,f,x-side*2,43,x,49,2,P.d);
++      stroke(bark,f,x,40,x+side*4,37,1,P.c);
++    }
+     edge(bark,f);if(f>=14)dissolve(bark,f,(f-13)/4);
+   }
+   const steel=sfaCol('#f3e8bb'),steelShade=sfaCol('#acb9a4');
+@@ -123,7 +131,7 @@ function mauraDrawBark(o) {
+   const b=mauraNativeStrip('bark'),age=Math.max(0,(o.maxLife||4000)-o.life);
+   const f=age<300?Math.min(5,Math.floor(age/50)):o.life<300?Math.min(16,14+Math.floor((300-o.life)/100)):6+Math.floor((age-300)/100)%8;
+   ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=.95;
+-  ctx.drawImage(b.cv,f*b.w,0,b.w,b.h,h.x-56,h.y-123,112,112);ctx.restore();
++  ctx.drawImage(b.cv,f*b.w,0,b.w,b.h,h.x-48,h.y-90,96,96);ctx.restore();
+ }
+ sfaDefineTheme('maura_roots',{...sfaTheme('thorn'),beamDraw:()=>{}});
+ sfaDefineTheme('maura_shears',{...sfaTheme('thorn'),bake:mauraBakeShears,beamDraw:(s,g)=>sfaDrawOne({...s,art:'nova',r:s.r/2},g)});

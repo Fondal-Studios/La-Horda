@@ -1,0 +1,309 @@
+{
+  "status": "PASS",
+  "scope": "Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.",
+  "checks": [
+    {
+      "name": "roots actual draw on host",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 1,
+          "bark": 0,
+          "shears": 0
+        },
+        "objects": [
+          {
+            "kind": "ex_swarm",
+            "life": 4752,
+            "owner": "tibor",
+            "shield": 0
+          },
+          {
+            "kind": "ex_thorns",
+            "life": 2352,
+            "owner": "maura",
+            "shield": 0
+          }
+        ],
+        "pool": [
+          {
+            "art": "beam",
+            "theme": "maura_roots",
+            "t": 60
+          }
+        ]
+      }
+    },
+    {
+      "name": "roots actual draw on touch guest",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 1,
+          "bark": 0,
+          "shears": 0
+        },
+        "objects": [
+          {
+            "kind": "ex_swarm",
+            "life": 4650.1,
+            "owner": "tibor",
+            "shield": 0
+          },
+          {
+            "kind": "ex_thorns",
+            "life": 2287.3999999999996,
+            "owner": "maura",
+            "shield": 0
+          }
+        ],
+        "pool": [
+          {
+            "art": "beam",
+            "theme": "maura_roots",
+            "t": 60
+          }
+        ]
+      }
+    },
+    {
+      "name": "bark actual draw on host",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 13,
+          "bark": 2,
+          "shears": 0
+        },
+        "objects": [
+          {
+            "kind": "ex_swarm",
+            "life": 4278.799999999999,
+            "owner": "tibor",
+            "shield": 0
+          },
+          {
+            "kind": "ex_thorns",
+            "life": 1878.7999999999993,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "ex_bark",
+            "life": 3933.4000000000015,
+            "owner": "maura",
+            "shield": 35.2
+          }
+        ],
+        "pool": [
+          {
+            "art": "beam",
+            "theme": "maura_roots",
+            "t": 601.3999999985099
+          },
+          {
+            "art": "nova",
+            "theme": "patria~h",
+            "t": 481.3999999985099
+          }
+        ]
+      }
+    },
+    {
+      "name": "bark actual draw on touch guest",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 21,
+          "bark": 4,
+          "shears": 0
+        },
+        "objects": [
+          {
+            "kind": "ex_swarm",
+            "life": 4206,
+            "owner": "tibor",
+            "shield": 0
+          },
+          {
+            "kind": "ex_thorns",
+            "life": 1843.2999999999993,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "ex_bark",
+            "life": 3866.3999999999996,
+            "owner": "maura",
+            "shield": 35.2
+          }
+        ],
+        "pool": [
+          {
+            "art": "beam",
+            "theme": "maura_roots",
+            "t": 508.20000000298023
+          },
+          {
+            "art": "nova",
+            "theme": "patria~h",
+            "t": 332.30000000447035
+          },
+          {
+            "art": "rays",
+            "theme": "patria~p",
+            "t": 332.30000000447035
+          },
+          {
+            "art": "rings",
+            "theme": "patria~p",
+            "t": 212.30000000447035
+          }
+        ]
+      }
+    },
+    {
+      "name": "shears actual draw on host",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 15,
+          "bark": 15,
+          "shears": 2
+        },
+        "objects": [
+          {
+            "kind": "ex_swarm",
+            "life": 3805.5,
+            "owner": "tibor",
+            "shield": 0
+          },
+          {
+            "kind": "ex_thorns",
+            "life": 1405.5,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "ex_bark",
+            "life": 3460.100000000002,
+            "owner": "maura",
+            "shield": 35.2
+          }
+        ],
+        "pool": [
+          {
+            "art": "nova",
+            "theme": "patria~h",
+            "t": 980.5
+          },
+          {
+            "art": "beam",
+            "theme": "maura_shears~p",
+            "t": 90.29999999701977
+          }
+        ]
+      }
+    },
+    {
+      "name": "shears actual draw on touch guest",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 33,
+          "bark": 37,
+          "shears": 3
+        },
+        "objects": [
+          {
+            "kind": "ex_swarm",
+            "life": 3756,
+            "owner": "tibor",
+            "shield": 0
+          },
+          {
+            "kind": "ex_thorns",
+            "life": 1356,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "ex_bark",
+            "life": 3316.3999999999996,
+            "owner": "maura",
+            "shield": 35.2
+          }
+        ],
+        "pool": [
+          {
+            "art": "nova",
+            "theme": "patria~h",
+            "t": 880.7000000029802
+          },
+          {
+            "art": "beam",
+            "theme": "maura_shears~p",
+            "t": 51
+          }
+        ]
+      }
+    },
+    {
+      "name": "host normal signature 0",
+      "ok": true,
+      "draws": 11
+    },
+    {
+      "name": "host normal signature 1",
+      "ok": true,
+      "draws": 12
+    },
+    {
+      "name": "host normal signature 2",
+      "ok": true,
+      "draws": 3
+    },
+    {
+      "name": "touch guest normal signature 0",
+      "ok": true,
+      "draws": 20
+    },
+    {
+      "name": "touch guest normal signature 1",
+      "ok": true,
+      "draws": 27
+    },
+    {
+      "name": "touch guest normal signature 2",
+      "ok": true,
+      "draws": 5
+    },
+    {
+      "name": "zero-shield bark stops on host",
+      "ok": true,
+      "before": 17,
+      "after": 17,
+      "method": "Host zero-shield fixture replicated; real damage tested separately"
+    },
+    {
+      "name": "zero-shield bark stops on touch guest",
+      "ok": true,
+      "before": 43,
+      "after": 43,
+      "method": "Host zero-shield fixture replicated; real damage tested separately"
+    },
+    {
+      "name": "recast bark resumes host",
+      "ok": true
+    },
+    {
+      "name": "recast bark resumes touch guest",
+      "ok": true
+    },
+    {
+      "name": "bark expiry replicated",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

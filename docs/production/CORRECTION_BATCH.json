@@ -1923,6 +1923,15 @@
           "sha256": "3a44e58a03b2cc24255d51acd54c15418c0cdd475f9acebf7168d28e24064d65",
           "diagnosis": "Only emit after real cast; command uses exact combat AREA. Visual thinness/layers remain FIX.",
           "action": "Complete grouped visual/lifecycle/red/parity/contact gates before integration."
+        },
+        {
+          "checkpoint": "art-source/entregas/libertador-kit-20261025/cierre-02",
+          "state": "EN_CORRECCION",
+          "gate": "FIX/NO_INTEGRAR",
+          "source": "art-source/entregas/libertador-kit-20261025/cierre-02/source-candidate.js",
+          "sourceSha256": "482bd83881e831d6f76eceb65bfe63ec050b42fa08aca5b55e84a621f0e89347",
+          "diagnosis": "Grouped silhouette correction; 24 scenes contact PASS but command/hoof reading still competes with legacy layers.",
+          "action": "Continue grouped visual/lifecycle closure, six arenas/looks, launch layers; no merge."
         }
       ]
     },
@@ -1962,6 +1971,15 @@
           "sha256": "3a44e58a03b2cc24255d51acd54c15418c0cdd475f9acebf7168d28e24064d65",
           "diagnosis": "Only emit after real cast; command uses exact combat AREA. Visual thinness/layers remain FIX.",
           "action": "Complete grouped visual/lifecycle/red/parity/contact gates before integration."
+        },
+        {
+          "checkpoint": "art-source/entregas/libertador-kit-20261025/cierre-02",
+          "state": "EN_CORRECCION",
+          "gate": "FIX/NO_INTEGRAR",
+          "source": "art-source/entregas/libertador-kit-20261025/cierre-02/source-candidate.js",
+          "sourceSha256": "482bd83881e831d6f76eceb65bfe63ec050b42fa08aca5b55e84a621f0e89347",
+          "diagnosis": "Grouped silhouette correction; 24 scenes contact PASS but command/hoof reading still competes with legacy layers.",
+          "action": "Continue grouped visual/lifecycle closure, six arenas/looks, launch layers; no merge."
         }
       ]
     },
@@ -2001,6 +2019,15 @@
           "sha256": "3a44e58a03b2cc24255d51acd54c15418c0cdd475f9acebf7168d28e24064d65",
           "diagnosis": "Only emit after real cast; command uses exact combat AREA. Visual thinness/layers remain FIX.",
           "action": "Complete grouped visual/lifecycle/red/parity/contact gates before integration."
+        },
+        {
+          "checkpoint": "art-source/entregas/libertador-kit-20261025/cierre-02",
+          "state": "EN_CORRECCION",
+          "gate": "FIX/NO_INTEGRAR",
+          "source": "art-source/entregas/libertador-kit-20261025/cierre-02/source-candidate.js",
+          "sourceSha256": "482bd83881e831d6f76eceb65bfe63ec050b42fa08aca5b55e84a621f0e89347",
+          "diagnosis": "Grouped silhouette correction; 24 scenes contact PASS but command/hoof reading still competes with legacy layers.",
+          "action": "Continue grouped visual/lifecycle closure, six arenas/looks, launch layers; no merge."
         }
       ]
     },
@@ -2411,5 +2438,10 @@
     "totalEntries": 61,
     "checkpoint": "art-source/entregas/morwen-kit-20261025/primera-pasada-01/CHECKPOINT.md"
   },
-  "latestClosure": "art-source/entregas/maura-kit-20261025/cierre-08"
+  "latestClosure": {
+    "path": "art-source/entregas/libertador-kit-20261025/cierre-02",
+    "state": "EN_CORRECCION",
+    "pr": 220,
+    "main": "78039728e737bfc7683fe487c1c281698aa6dd71"
+  }
 }

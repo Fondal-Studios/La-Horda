@@ -60,18 +60,16 @@ const CAMPAIGN_ENDING = "El Rey de la Horda cayó y su plan de fundir los crista
 // Cartel de título al entrar a una arena (nivel 1). Las arenas con cartel propio lo muestran ellas.
 const CAMPAIGN_OWN_TITLE = {fortaleza:1, micelial:1, abismo:1, ciudad:1, minas:1};
 function campaignTitleCard(){
-  if(typeof currentArena!=="undefined") campaignCoopEntryScene();
   if(typeof currentArena==="undefined" || (typeof divinaMode!=="undefined" && divinaMode) || CAMPAIGN_OWN_TITLE[currentArena]) return;
   const S = CAMPAIGN_STORY[currentArena]; if(!S || typeof arenaTitleCard!=="function") return;
   // un tick después: en cooperativo el anfitrión empieza a transmitir eventos recién al terminar startRun
   const arena = currentArena;
   setTimeout(()=>{ if(currentArena===arena && typeof state!=="undefined" && state==="playing") arenaTitleCard("ARENA " + campaignNumberLabel(arena), S.title, S.sub, 4800); }, 0);
 }
-// (la escena de entrada en cooperativo también arranca en el nivel 1: waves.js → campaignTitleCard)
 function campaignArenaKicker(key){ return "ARENA " + campaignNumberLabel(key); }
 // Prólogo (Ciudad Maldita): una vez por perfil, al entrar por primera vez a la primera arena jugable.
-// En partida solo lo muestra antes, la ficha del Hechicero (run-intro.js). En cooperativo online no hay
-// ficha (bloquearía a los demás): el prólogo espera a la primera pantalla de refuerzos, con el juego
+// En partida sola ya no se muestra antes (queda pospuesto y el Libro lo cuenta entero: run-intro.js). En cooperativo online
+// el prólogo espera a la primera pantalla de refuerzos, con el juego
 // quieto, en vez de taparte media pantalla en pleno combate.
 let _campaignPendingPrologue = false;
 // Con el entrenamiento hecho o saltado el prólogo no frena la partida (ni en la ficha ni en el refuerzo): queda marcado como
@@ -105,11 +103,4 @@ function campaignOnVictory(arena, firstClear){ /* la escena de salida vive en la
 // (BOSS_VOICES.guardian_laberinto, en el cuadro de voz); el cartel deja claro que fue una advertencia.
 function campaignLabyrinthWarning(x, y){
   if(typeof showBanner==="function") setTimeout(()=>showBanner("El Guardián del Laberinto intentó advertirte algo antes de caer", 2), 900); // urgente: no la tapa el cartel de nivel
-}
-// Cooperativo online: no hay ficha previa (bloquearía a los demás), así que la escena de entrada de cada
-// arena la dice el Hechicero en el cuadro de voz, una vez por perfil, cuando se va el cartel de título.
-function campaignCoopEntryScene(){
-  if(typeof netMatch==="undefined" || !netMatch || typeof ARENA_BRIEF==="undefined" || typeof storySay!=="function") return;
-  if(typeof divinaMode!=="undefined" && divinaMode) return;
-  const B = ARENA_BRIEF[currentArena]; if(B && B.say) storySay("hech", B.say, {key:"story_in_" + currentArena, wait:16000});
 }

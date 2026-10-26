@@ -49,11 +49,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('END.tarjeta_en_el_selector_de_modos', rCard.card && !rCard.locked && /Horda Infinita/.test(rCard.txt), rCard);
 
   // 1) mutadores semanales determinísticos
-  const r1 = await E(() => { const a = endlessWeeklyMutators(new Date('2026-09-28T10:00:00Z')), b = endlessWeeklyMutators(new Date('2026-10-03T23:00:00Z')), c = endlessWeeklyMutators(new Date('2026-10-06T10:00:00Z'));
-    const weeks = new Set(); for (let i = 0; i < 20; i++) weeks.add(endlessWeeklyMutators(new Date(Date.UTC(2026, 0, 5 + 7*i))).ids.join('+'));
+  const r1 = await E(() => { const a = endlessWeeklyMutators(new Date('2026-10-01T10:00:00Z')), b = endlessWeeklyMutators(new Date('2026-10-03T23:00:00Z')), c = endlessWeeklyMutators(new Date('2026-11-01T10:00:00Z'));
+    const weeks = new Set(); for (let i = 0; i < 20; i++) weeks.add(endlessWeeklyMutators(new Date(Date.UTC(2026, i, 1))).ids.join('+'));
     return { a, b, c, distinct: weeks.size, key: endlessWeekKey(new Date('2026-01-01T00:00:00Z')) }; });
-  check('END.mutadores_misma_semana_iguales', r1.a.key === r1.b.key && r1.a.ids.join() === r1.b.ids.join() && r1.a.ids.length === 2 && r1.a.ids[0] !== r1.a.ids[1], r1);
-  check('END.mutadores_cambian_entre_semanas', r1.c.key !== r1.a.key && r1.distinct >= 6 && r1.key === '2026-W01', r1);
+  check('END.mutadores_mismo_mes_iguales', r1.a.key === r1.b.key && r1.a.ids.join() === r1.b.ids.join() && r1.a.ids.length === 2 && r1.a.ids[0] !== r1.a.ids[1], r1);
+  check('END.mutadores_cambian_entre_meses', r1.c.key !== r1.a.key && r1.distinct >= 6 && r1.key === '2026-01', r1);
 
   // 2) arranque desde la Sala (flujo real de menús): Horda Infinita -> guardián -> Sala -> Comenzar
   const r2 = await E(() => { __prep(); window.endlessOpen(); const pend = endlessPending; document.getElementById('start-btn').click(); const st1 = state;

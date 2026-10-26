@@ -76,6 +76,7 @@ const TESTS = [
   T('tools/ux/test-skill-glyphs.js', 'site', 600),
   T('tools/ux/test-ability-inspector.js', 'own', 600),
   T('tools/ux/test-arena-briefing-tutorial.js', 'own', 600),
+  T('tools/ux/test-libro-unico.js', 'site', 900),
   T('tools/ux/test-hub-legibility.js', 'own', 600),
   T('tools/ux/test-tactical-panel.js', 'own', 600),
   T('tools/ux/test-text-overflow.js', 'own', 900),

@@ -1,0 +1,17 @@
+{
+  "kind": "native SfaStrip",
+  "source": "art-source/entregas/maura-kit-20261025/cierre-03/source-candidate.js",
+  "runtime": "js/champions/skill-fx-a/c/maura.js",
+  "runtimeSha256": "02e2c1ca6cabc3e4958dff948bb6ad81e6f9a9e0db50cac5901321a215903656",
+  "commands": [
+    "OUT=art-source/entregas/maura-kit-20261025/cierre-03 node tools/vfx/export-maura-close.js",
+    "node tools/vfx/maura-bucket-check.js",
+    "ARENAS=bosque LOOKS=base,tier4 DENSITIES=dense,sparse OUT=art-source/entregas/maura-kit-20261025/cierre-03/desktop node tools/vfx/capture-maura-contact.js",
+    "MOBILE=1 ARENAS=bosque LOOKS=base,tier4 DENSITIES=dense,sparse OUT=art-source/entregas/maura-kit-20261025/cierre-03/mobile node tools/vfx/capture-maura-contact.js"
+  ],
+  "env": {
+    "NODE_PATH": "Playwright installed modules",
+    "CHROMIUM_PATH": "Chromium executable"
+  },
+  "installation": "Native runtime only; no PNG installed; preserves actual event geometry and mechanics."
+}

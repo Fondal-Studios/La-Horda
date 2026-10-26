@@ -14,8 +14,8 @@
    - PANTALLAS: la victoria muestra las últimas palabras del jefe y la voz de tu guardián (paso 1) y la
      Cicatriz hacia la próxima arena (último paso); la derrota, la voz de tu guardián al caer. Al completar
      la Arena Infernal por primera vez, el EPÍLOGO por pantallas y un post-créditos (se repite desde el Códice).
-   Un solo narrador a la vez: con el Libro de la Horda abierto (la voz escrita del Hechicero) el cuadro de voz no abre y el
-   epílogo espera (narrationBookOpen, js/systems/codex-narrative.js). Las líneas viejas de la cola se descartan igual.
+   El Hechicero-comentarista no habla en la partida (storySay lo descarta): su voz es solo el Libro de la Horda. Con el Libro
+   abierto el cuadro de voz no abre y el epílogo espera (narrationBookOpen, js/systems/codex-narrative.js). Las líneas viejas de la cola se descartan igual.
    Red: la simulación decide (un jugador o el anfitrión). storyVoice y storyPageDrop se repiten en los
    invitados como el resto de los efectos (NET_EVENT_FNS); cada uno junta SUS páginas en SU guardado.
    ============================================================ */
@@ -46,6 +46,9 @@ function storyReadMs(t){ return Math.max(3600, Math.min(9500, 2200 + String(t).l
 // o.wait: cuánto puede esperar su turno antes de descartarse.
 function storySay(who, text, o){
   o = o || {}; storyEnsureRun();
+  // el Hechicero-comentarista ("EL HECHICERO") ya no habla en la partida: es la voz del Libro. Siguen los jefes, los Guardianes,
+  // las Crónicas y el propio Hechicero Supremo como jefe de la Arena Infernal (otro nombre: "EL HECHICERO SUPREMO").
+  const w = storyWho(who); if(w && w.face==="hech" && w.name===STORY_WHO.hech.name) return false;
   if(!text || (o.key && typeof tutSeen==="function" && tutSeen(o.key))) return false;
   if(STORY.q.some(x=>x.text===text)) return false;
   const L = {who:storyWho(who), text, key:o.key || null, ms:o.ms || storyReadMs(text), exp:performance.now() + (o.wait || 9000)};

@@ -1,0 +1,15 @@
+2026-10-25T15:55:30.209Z RELAY_LISTENING {"host":"*","port":8868,"protocol":1,"allowed":[]}
+2026-10-25T15:55:30.215Z OWNER_POLICY {"bound":false}
+2026-10-25T15:55:30.218Z FOUNDER_POLICY {"founder":"nano","bound":false,"reason":"ACCOUNT_NOT_FOUND"}
+2026-10-25T15:55:30.218Z FOUNDER_POLICY {"founder":"facu","bound":false,"reason":"ACCOUNT_NOT_FOUND"}
+2026-10-25T15:55:30.218Z ROLE_POLICY {"roles":["ADMIN"],"bound":false}
+2026-10-25T15:55:30.218Z ACCOUNTS_READY {"store":"file","dir":"/tmp/horda-workshop-relay-6xqpIN","warning":"SIN BASE DE DATOS: las cuentas se guardan en el disco del servidor. En el plan gratuito de Render se BORRAN en cada redeploy, reinicio o cuando el servicio se duerme. Configurá DATABASE_URL (ver docs/ACCOUNTS_DEPLOY.md)."}
+2026-10-25T15:55:41.914Z ROOM_CREATED {"code":"5KJJ5K","arena":"bosque","pub":false}
+2026-10-25T15:55:42.035Z ROOM_JOINED {"code":"5KJJ5K","slot":1}
+2026-10-25T15:55:42.175Z GAME_START {"code":"5KJJ5K","humans":2}
+2026-10-25T15:56:13.699Z ROOM_CLOSED {"code":"5KJJ5K","reason":"host_left"}
+page.waitForFunction: Timeout 30000ms exceeded.
+    at /workspace/scratch/27dc1a293731/mago/tools/vfx/maura-close-online.js:59:68 {
+  log: [],
+  name: 'TimeoutError'
+}

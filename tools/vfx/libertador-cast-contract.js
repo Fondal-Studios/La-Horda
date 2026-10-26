@@ -1,6 +1,6 @@
 'use strict';
 const fs=require('fs'),H=require('../lib/serve');
-const D='art-source/entregas/libertador-kit-20261025/cierre-01';
+const D=process.env.OUT||'art-source/entregas/libertador-kit-20261025/cierre-01';fs.mkdirSync(D,{recursive:true});
 (async()=>{const site=await H.startSite(),b=await H.launch(),errors=[],rows=[];try{
 for(const mobile of [false,true]){const p=await b.newPage({viewport:mobile?{width:844,height:390}:{width:1280,height:720}});p.on('pageerror',e=>errors.push(e.message));await p.goto(site.url+'/?lazy=0');await p.waitForFunction(()=>assetsAllReady()&&typeof libertadorFxStrip==='function');
 for(const tier of [0,7])for(const slot of [0,1,2]){

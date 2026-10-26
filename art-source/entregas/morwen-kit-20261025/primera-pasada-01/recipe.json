@@ -1,0 +1,42 @@
+{
+  "engine": "Repository native Canvas2D pixel-map baking and championSignatures pool",
+  "source": "signatures-candidate.js",
+  "runtime": "js/skills/champion-signatures.js",
+  "atlas": {
+    "path": "launch-atlas.png",
+    "width": 192,
+    "height": 96,
+    "cell": [
+      32,
+      32
+    ],
+    "rows": 3,
+    "framesPerRow": 6,
+    "installedPNG": false
+  },
+  "destination": [
+    48,
+    48
+  ],
+  "offset": [
+    -24,
+    -124
+  ],
+  "durationMs": 460,
+  "palette": [
+    "#24101e",
+    "#6e3a60",
+    "#a46191",
+    "#edd0a5",
+    "#f9eee0",
+    "#c9a0bd"
+  ],
+  "reproduction": [
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=art-source/entregas/morwen-kit-20261025/primera-pasada-01 node tools/vfx/morwen-signature-check.js",
+    "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium OUT=art-source/entregas/morwen-kit-20261025/primera-pasada-01 node tools/vfx/morwen-signature-extra-check.js",
+    "For each viewport: ALL_PHASES=1 PAIR_SIGNATURE=art-source/entregas/morwen-kit-20261025/primera-pasada-01/signatures-before.js OUT=<directory> [MOBILE=1] node tools/vfx/capture-morwen-signatures.js",
+    "python art-source/entregas/morwen-kit-20261025/primera-pasada-01/make-review.py"
+  ],
+  "preview": "preview.html",
+  "preserved": "59 exact references in SOURCE_REFERENCES; no gameplay, UF, body, skin, shared engine/bind/hooks or network change."
+}

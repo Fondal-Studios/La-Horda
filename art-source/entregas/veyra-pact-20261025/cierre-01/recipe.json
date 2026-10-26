@@ -1,0 +1,39 @@
+{
+  "medium": "Native KVB code; no raster illustration or imagegen needed",
+  "source": "js/champions/vfx-b/veyra.js",
+  "component": "A-FX-veyra-h3/launch-heart",
+  "frames": 10,
+  "size": [
+    24,
+    24
+  ],
+  "eventMs": 760,
+  "radius": 22,
+  "offsetY": -126,
+  "arenas": [
+    "bosque",
+    "hielo",
+    "infernal",
+    "laberinto",
+    "acuatica",
+    "minas"
+  ],
+  "env": {
+    "NODE_PATH": "runtime Playwright",
+    "CHROMIUM_PATH": "/tmp/chromium"
+  },
+  "commands": {
+    "exportTechnical": "node tools/vfx/verify-veyra-pact-launch.js",
+    "owner": "node tools/vfx/verify-veyra-pact-current.js",
+    "follow": "OUT=/tmp/follow.json node tools/vfx/verify-kvb-follow-render.js",
+    "matrixDesktop": "OUT=/tmp/matrix-desktop node tools/vfx/capture-veyra-pact-closure.js",
+    "matrixMobile": "MOBILE=1 OUT=/tmp/matrix-mobile node tools/vfx/capture-veyra-pact-closure.js",
+    "negative": "MOBILE=1 ARENAS=bosque LOOKS=base DENSITIES=dense CANARY=1 OUT=/tmp/negative node tools/vfx/capture-veyra-pact-closure.js",
+    "relay": "node tools/vfx/veyra-pact-current-online.js",
+    "parity": "ONLY=veyra TRACE=0 PARITY_OUT=/tmp/parity.json node tools/vfx/trace-kvb-rng.js",
+    "functional": "node tools/quality-five/functional.js",
+    "legibility": "ONLY=veyra.pact node tools/vfx/test-decal-legible.js",
+    "package": "python tools/vfx/package-veyra-pact-closure.py"
+  },
+  "preview": "76ms diagnostic frames; renderer uses actual760ms event plus fade, preview is not gameplay test"
+}

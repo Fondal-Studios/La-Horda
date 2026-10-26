@@ -2,34 +2,6 @@
  "_comment": "GENERADO por tools/items/gen_shop_pieces.js desde la tienda del cliente. No editar a mano.",
  "version": 1,
  "pieces": {
-  "alba_arma": {
-   "set": "alba",
-   "type": "arma",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Báculo del Alba"
-  },
-  "alba_botas": {
-   "set": "alba",
-   "type": "botas",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Sandalias de Luz"
-  },
-  "alba_casco": {
-   "set": "alba",
-   "type": "casco",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Aureola Profética"
-  },
-  "alba_pechera": {
-   "set": "alba",
-   "type": "pechera",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Túnica del Amanecer"
-  },
   "arcano_arma": {
    "set": "arcano",
    "type": "arma",
@@ -337,34 +309,6 @@
    "rarity": "legendario",
    "champion": null,
    "name": "Guantes Silenciosos"
-  },
-  "coloso_botas": {
-   "set": "coloso",
-   "type": "botas",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Pisada del Coloso"
-  },
-  "coloso_casco": {
-   "set": "coloso",
-   "type": "casco",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Yelmo del Coloso"
-  },
-  "coloso_escudo": {
-   "set": "coloso",
-   "type": "escudo",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Bastión del Coloso"
-  },
-  "coloso_pechera": {
-   "set": "coloso",
-   "type": "pechera",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Corazón de Piedra"
   },
   "convergencia_arma": {
    "set": "convergencia",
@@ -730,34 +674,6 @@
    "champion": "zahra",
    "name": "Vestidura de Zahra"
   },
-  "glaciar_arma": {
-   "set": "glaciar",
-   "type": "arma",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Colmillo del Glaciar"
-  },
-  "glaciar_casco": {
-   "set": "glaciar",
-   "type": "casco",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Diadema de Escarcha"
-  },
-  "glaciar_guantes": {
-   "set": "glaciar",
-   "type": "guantes",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Garras Gélidas"
-  },
-  "glaciar_pechera": {
-   "set": "glaciar",
-   "type": "pechera",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Coraza del Invierno"
-  },
   "granadero_arma": {
    "set": "granadero",
    "type": "arma",
@@ -925,48 +841,6 @@
    "rarity": "legendario",
    "champion": "ilkan",
    "name": "Arnés de Faroles"
-  },
-  "lucifer_arma": {
-   "set": "lucifer",
-   "type": "arma",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Espada de Lucifer"
-  },
-  "lucifer_botas": {
-   "set": "lucifer",
-   "type": "botas",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Botas de Lucifer"
-  },
-  "lucifer_casco": {
-   "set": "lucifer",
-   "type": "casco",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Casco de Lucifer"
-  },
-  "lucifer_escudo": {
-   "set": "lucifer",
-   "type": "escudo",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Escudo de Lucifer"
-  },
-  "lucifer_guantes": {
-   "set": "lucifer",
-   "type": "guantes",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Guantes de Lucifer"
-  },
-  "lucifer_pechera": {
-   "set": "lucifer",
-   "type": "pechera",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Pechera de Lucifer"
   },
   "lumbre_persistente_arma": {
    "set": "lumbre_persistente",
@@ -1388,34 +1262,6 @@
    "champion": "axiom",
    "name": "Guantes de Compilación"
   },
-  "tempestad_arma": {
-   "set": "tempestad",
-   "type": "arma",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Cetro del Relámpago"
-  },
-  "tempestad_botas": {
-   "set": "tempestad",
-   "type": "botas",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Botas del Rayo"
-  },
-  "tempestad_casco": {
-   "set": "tempestad",
-   "type": "casco",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Corona de Nubes"
-  },
-  "tempestad_guantes": {
-   "set": "tempestad",
-   "type": "guantes",
-   "rarity": "legendario",
-   "champion": null,
-   "name": "Guantes de Descarga"
-  },
   "ultimo_turno_arma": {
    "set": "ultimo_turno",
    "type": "arma",
@@ -1486,13 +1332,17 @@
    "glaciar_arma",
    "glaciar_casco",
    "glaciar_pechera",
-   "glaciar_guantes"
+   "glaciar_guantes",
+   "glaciar_escudo",
+   "glaciar_botas"
   ],
   "coloso": [
    "coloso_escudo",
    "coloso_casco",
    "coloso_pechera",
-   "coloso_botas"
+   "coloso_botas",
+   "coloso_arma",
+   "coloso_guantes"
   ],
   "sepulturero": [
    "sepulturero_arma",
@@ -1504,7 +1354,9 @@
    "tempestad_arma",
    "tempestad_casco",
    "tempestad_guantes",
-   "tempestad_botas"
+   "tempestad_botas",
+   "tempestad_escudo",
+   "tempestad_pechera"
   ],
   "berserker": [
    "berserker_arma",
@@ -1522,7 +1374,9 @@
    "alba_arma",
    "alba_casco",
    "alba_pechera",
-   "alba_botas"
+   "alba_botas",
+   "alba_escudo",
+   "alba_guantes"
   ],
   "cazador": [
    "cazador_arma",
@@ -1791,26 +1645,6 @@
  },
  "pool": [
   {
-   "key": "d:alba_arma",
-   "cat": "set",
-   "group": "alba"
-  },
-  {
-   "key": "d:alba_botas",
-   "cat": "set",
-   "group": "alba"
-  },
-  {
-   "key": "d:alba_casco",
-   "cat": "set",
-   "group": "alba"
-  },
-  {
-   "key": "d:alba_pechera",
-   "cat": "set",
-   "group": "alba"
-  },
-  {
    "key": "d:arcano_arma",
    "cat": "set",
    "group": "arcano"
@@ -2029,26 +1863,6 @@
    "key": "d:cazador_guantes",
    "cat": "set",
    "group": "cazador"
-  },
-  {
-   "key": "d:coloso_botas",
-   "cat": "set",
-   "group": "coloso"
-  },
-  {
-   "key": "d:coloso_casco",
-   "cat": "set",
-   "group": "coloso"
-  },
-  {
-   "key": "d:coloso_escudo",
-   "cat": "set",
-   "group": "coloso"
-  },
-  {
-   "key": "d:coloso_pechera",
-   "cat": "set",
-   "group": "coloso"
   },
   {
    "key": "d:convergencia_arma",
@@ -2311,26 +2125,6 @@
    "group": "exp_zahra"
   },
   {
-   "key": "d:glaciar_arma",
-   "cat": "set",
-   "group": "glaciar"
-  },
-  {
-   "key": "d:glaciar_casco",
-   "cat": "set",
-   "group": "glaciar"
-  },
-  {
-   "key": "d:glaciar_guantes",
-   "cat": "set",
-   "group": "glaciar"
-  },
-  {
-   "key": "d:glaciar_pechera",
-   "cat": "set",
-   "group": "glaciar"
-  },
-  {
    "key": "d:granadero_arma",
    "cat": "set",
    "group": "granadero"
@@ -2569,36 +2363,6 @@
    "key": "d:legion_pechera",
    "cat": "set",
    "group": "legion"
-  },
-  {
-   "key": "d:lucifer_arma",
-   "cat": "set",
-   "group": "lucifer"
-  },
-  {
-   "key": "d:lucifer_botas",
-   "cat": "set",
-   "group": "lucifer"
-  },
-  {
-   "key": "d:lucifer_casco",
-   "cat": "set",
-   "group": "lucifer"
-  },
-  {
-   "key": "d:lucifer_escudo",
-   "cat": "set",
-   "group": "lucifer"
-  },
-  {
-   "key": "d:lucifer_guantes",
-   "cat": "set",
-   "group": "lucifer"
-  },
-  {
-   "key": "d:lucifer_pechera",
-   "cat": "set",
-   "group": "lucifer"
   },
   {
    "key": "d:lumbre_persistente_arma",
@@ -2899,26 +2663,6 @@
    "key": "d:sistema_guantes",
    "cat": "set",
    "group": "sistema"
-  },
-  {
-   "key": "d:tempestad_arma",
-   "cat": "set",
-   "group": "tempestad"
-  },
-  {
-   "key": "d:tempestad_botas",
-   "cat": "set",
-   "group": "tempestad"
-  },
-  {
-   "key": "d:tempestad_casco",
-   "cat": "set",
-   "group": "tempestad"
-  },
-  {
-   "key": "d:tempestad_guantes",
-   "cat": "set",
-   "group": "tempestad"
   },
   {
    "key": "d:ultimo_turno_arma",

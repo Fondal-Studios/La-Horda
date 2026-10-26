@@ -1,0 +1,58 @@
+diff --git a/js/champions/skill-fx-a/c/maura.js b/js/champions/skill-fx-a/c/maura.js
+index de59c40..1cea1d6 100644
+--- a/js/champions/skill-fx-a/c/maura.js
++++ b/js/champions/skill-fx-a/c/maura.js
+@@ -30,7 +30,7 @@ function mauraCandidateKit() {
+     const trunkY=x=>20+Math.sin(x*.065)*3+Math.sin(x*.137)*1.5;
+     let px=5,py=trunkY(5);
+     for(let x=7;x<=end;x+=2){const y=trunkY(x),w=4.8-x/65;
+-      stroke(roots,f,px,py,x,y,w,P.a);stroke(roots,f,px,py-1,x,y-1,1,P.b);px=x;py=y;
++      stroke(roots,f,px,py,x,y,w,P.a);stroke(roots,f,px,py-1,x,y-1,2,P.c);px=x;py=y;
+     }
+     // Unequal curved forks taper into the soil; no repeated spear/leaf silhouette.
+     const forks=[[18,-1,20,10],[39,1,23,11],[68,-1,17,13],[84,1,31,9],[117,-1,24,10],[135,1,21,12]];
+@@ -40,7 +40,7 @@ function mauraCandidateKit() {
+       for(let j=1;j<=12*growth;j++){
+         const t=j/12,bx=x+len*t,by=sy+side*reach*Math.sin(t*Math.PI*.5);
+         stroke(roots,f,ax,ay,bx,by,Math.max(1,3.4*(1-t)),P.a);
+-        if(j<8)stroke(roots,f,ax,ay-side,bx,by-side,1,P.b);
++        if(j<8)stroke(roots,f,ax,ay-side,bx,by-side,2,P.b);
+         if(j===6){const tx=bx+len*.3,ty=by+side*4;stroke(roots,f,bx,by,tx,ty,1,P.a);}
+         ax=bx;ay=by;
+       }
+@@ -56,7 +56,7 @@ function mauraCandidateKit() {
+       const shift=(i%2?1:-1)*spread,dy=f<4?(3-f)*2:0,pts=plates[i].map(([x,y])=>[x+shift,y+dy]);
+       polygon(bark,f,pts,P.a);
+       const cx=(i%2?49:15)+shift,top=(i<2?22:45)+dy;
+-      stroke(bark,f,cx-2,top,cx-3,top+12,2,P.b);stroke(bark,f,cx-3,top+12,cx,top+19,1,P.d);
++      stroke(bark,f,cx-2,top,cx-3,top+12,3,P.c);stroke(bark,f,cx-3,top+12,cx,top+19,1,P.d);
+       stroke(bark,f,cx+3,top+3,cx+1,top+9,1,P.e);stroke(bark,f,cx+1,top+9,cx+4,top+14,1,(f%4===2)?P.c:P.e);
+       polygon(bark,f,[[cx-2,top+7],[cx-7,top+1],[cx-4,top+11]],P.d);
+     }edge(bark,f);if(f>=14)dissolve(bark,f,(f-13)/4);
+@@ -99,7 +99,16 @@ function mauraBakeShears(T,art,size) {
+   if(art!=='nova')return null;
+   const b=mauraNativeStrip('shears'),out=new SfaStrip(size,size,b.n);
+   // Bake into the engine bucket; nearest-neighbor and alpha remain binary.
+-  for(let f=0;f<b.n;f++)for(let y=0;y<size;y++)for(let x=0;x<size;x++)out.set(f,x,y,b.S.get(f,Math.min(b.w-1,Math.floor(x*b.w/size)),Math.min(b.h-1,Math.floor(y*b.h/size))));
++  for(let f=0;f<b.n;f++) {
++    const spin=f<3?-.8:-.8+(Math.min(f,7)-2)*Math.PI*2/5;
++    const cx=76+Math.cos(spin)*38,cy=76+Math.sin(spin)*38;
++    // Keep the orbit in the real area; cap the tool silhouette within large buckets.
++    const glyphScale=Math.min(1,96/size);
++    for(let y=0;y<size;y++)for(let x=0;x<size;x++) {
++      const sx=Math.floor(cx+(x*b.w/size-cx)/glyphScale),sy=Math.floor(cy+(y*b.h/size-cy)/glyphScale);
++      if(sx>=0&&sx<b.w&&sy>=0&&sy<b.h)out.set(f,x,y,b.S.get(f,sx,sy));
++    }
++  }
+   return out;
+ }
+ function mauraDrawBark(o) {
+@@ -107,7 +116,7 @@ function mauraDrawBark(o) {
+   const b=mauraNativeStrip('bark'),age=Math.max(0,(o.maxLife||4000)-o.life);
+   const f=age<300?Math.min(5,Math.floor(age/50)):o.life<300?Math.min(16,14+Math.floor((300-o.life)/100)):6+Math.floor((age-300)/100)%8;
+   ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=.95;
+-  ctx.drawImage(b.cv,f*b.w,0,b.w,b.h,h.x-56,h.y-95,112,112);ctx.restore();
++  ctx.drawImage(b.cv,f*b.w,0,b.w,b.h,h.x-56,h.y-107,112,112);ctx.restore();
+ }
+ sfaDefineTheme('maura_roots',{...sfaTheme('thorn'),beamDraw:()=>{}});
+ sfaDefineTheme('maura_shears',{...sfaTheme('thorn'),bake:mauraBakeShears});

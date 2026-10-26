@@ -93,24 +93,20 @@ function renderTacticalPanel(){
     <div class="tp-section"><div class="tp-h">Equipo y sets</div>${_tpGearHTML(h)}</div>
     <div class="tp-section tp-help"><div class="tp-h">Ayuda</div>${_tpHelpHTML()}</div>`;
 }
-// Volver a consultar: la Guía del Hechicero y la lección de la arena actual (si ya se vio).
+// Ayuda a pedido (sin voz del Hechicero): objetivo, regla propia, peligro y qué ayuda en esta arena, y la guía de juego.
 function _tpHelpHTML(){
   const a = typeof currentArena!=="undefined" ? currentArena : null;
   const B = a && typeof arenaBlueprint==="function" ? arenaBlueprint(a) : null;
-  const canReplay = B && typeof ARENA_TUT_DRIVERS!=="undefined" && ARENA_TUT_DRIVERS[a] && typeof arenaTutorialSeen==="function" && arenaTutorialSeen(a);
-  return `${B ? `<div class="tp-rule">✦ <b>${_tpEsc(B.primary.name)}:</b> ${_tpEsc(B.primary.rule)}</div><div class="tp-rule">⚠ <b>${_tpEsc(B.hazard.name)}</b> — aviso: ${_tpEsc(B.hazard.telegraph)}</div>` : ""}
-    <div class="tp-actions">${typeof alphaGuideOpen==="function" ? `<button type="button" class="btn secondary small" data-tp="guide">📖 Guía del Hechicero</button>` : ""}
-    ${canReplay ? `<button type="button" class="btn secondary small" data-tp="replay">↺ Repetir la lección de la arena</button>` : ""}</div>`;
+  const F = a && typeof ARENA_BRIEF!=="undefined" ? ARENA_BRIEF[a] : null;
+  return `${F ? `<div class="tp-rule">🎯 <b>Objetivo:</b> ${_tpEsc(F.goal)}</div>` : ""}
+    ${B ? `<div class="tp-rule">✦ <b>${_tpEsc(B.primary.name)}:</b> ${_tpEsc(B.primary.rule)}</div><div class="tp-rule">⚠ <b>${_tpEsc(B.hazard.name)}</b> — aviso: ${_tpEsc(B.hazard.telegraph)}</div>` : ""}
+    ${F ? `<div class="tp-rule">☠ ${_tpEsc(F.kill)}</div><div class="tp-rule">✚ ${_tpEsc(F.help)}</div>` : ""}
+    <div class="tp-actions">${typeof alphaGuideOpen==="function" ? `<button type="button" class="btn secondary small" data-tp="guide">📖 Guía de juego</button>` : ""}</div>`;
 }
 // delegación: el panel se redibuja cada 0,4 s
 document.addEventListener("click", ev=>{
   const b = ev.target && ev.target.closest && ev.target.closest("#tactical-panel [data-tp]"); if(!b) return;
   if(b.dataset.tp==="guide" && typeof alphaGuideOpen==="function") alphaGuideOpen();
-  if(b.dataset.tp==="replay" && typeof arenaTutorialReplay==="function"){
-    arenaTutorialReplay(currentArena);
-    if(typeof ARENA_TUT!=="undefined"){ ARENA_TUT.run = null; ARENA_TUT.t = 1800; } // arranca al volver a la partida
-    if(typeof showNetToast==="function") showNetToast("El Hechicero repite la lección al volver a la partida.");
-  }
 });
 function tacticalPanelOpen(){
   renderTacticalPanel();

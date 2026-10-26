@@ -1,0 +1,23 @@
+{
+  "runtime": [
+    "js/champions/mago.js",
+    "js/champions/ult-forms/bind.js"
+  ],
+  "source": "existing vendor atlas + existing UF column recipe; no image generation",
+  "atlas": "assets/vfx/vendor/muro-fuego.png",
+  "atlasGitblob": "196351134e57dea5ad0c4986b07c08322a13a25a",
+  "wall": "tangent segments size=min(thickness,chord*1.35), formation4frames over300ms",
+  "launch": "Mago H1 only radius24/minR24, y=target.y-100; duration1000 unchanged. No combat/simulation edits.",
+  "commands": [
+    "node tools/vfx/capture-mago-contact.js",
+    "MOBILE=1 node tools/vfx/capture-mago-contact.js",
+    "PARENT=1 MOBILE=1 LOOKS=base DENSITIES=dense OUT=<path> node tools/vfx/capture-mago-contact.js",
+    "CANARY=1 ARENAS=bosque LOOKS=base DENSITIES=dense OUT=<path> node tools/vfx/capture-mago-contact.js",
+    "node tools/vfx/parity-mago-wall.js",
+    "node tools/vfx/mago-wall-load-lifecycle.js",
+    "node tools/vfx/mago-wall-online.js",
+    "node tools/vfx/mago-wall-perf.js"
+  ],
+  "env": "CHROMIUM_PATH=/tmp/chromium NODE_PATH=<playwright and ws/pg modules>; ws8.18.0 pg8.23.0 installed only /tmp/mago-relaydeps. Test accounts temporary/local, no production accounts.",
+  "captures": "All PNGs generated locally; two full dense sheets, temporal sheet and selected native before/after preserved remote. Other raw scenes reproducible via scripts and JSON hashes."
+}

@@ -1,0 +1,296 @@
+{
+  "status": "PASS",
+  "scope": "Unmodified local relay and RELEASED standard taxonomy, founder negative controls, two authenticated fixture accounts. No production accounts or cosmetics.",
+  "checks": [
+    {
+      "name": "roots actual draw on host",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 1,
+          "bark": 0,
+          "shears": 0
+        },
+        "objects": [
+          {
+            "kind": "triangle",
+            "life": 6308,
+            "owner": "iria",
+            "shield": 0
+          },
+          {
+            "kind": "ex_thorns",
+            "life": 2352,
+            "owner": "maura",
+            "shield": 0
+          }
+        ],
+        "pool": [
+          {
+            "art": "beam",
+            "theme": "maura_roots",
+            "t": 60
+          }
+        ]
+      }
+    },
+    {
+      "name": "roots actual draw on touch guest",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 4,
+          "bark": 0,
+          "shears": 0
+        },
+        "objects": [
+          {
+            "kind": "triangle",
+            "life": 6226.699999999999,
+            "owner": "iria",
+            "shield": 0
+          },
+          {
+            "kind": "ex_thorns",
+            "life": 2254,
+            "owner": "maura",
+            "shield": 0
+          }
+        ],
+        "pool": [
+          {
+            "art": "beam",
+            "theme": "maura_roots",
+            "t": 156
+          }
+        ]
+      }
+    },
+    {
+      "name": "bark actual draw on host",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 13,
+          "bark": 2,
+          "shears": 0
+        },
+        "objects": [
+          {
+            "kind": "triangle",
+            "life": 5868.1,
+            "owner": "iria",
+            "shield": 0
+          },
+          {
+            "kind": "ex_thorns",
+            "life": 1912.1000000000004,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "ex_bark",
+            "life": 3918.699999999999,
+            "owner": "maura",
+            "shield": 35.2
+          }
+        ],
+        "pool": [
+          {
+            "art": "beam",
+            "theme": "maura_roots",
+            "t": 514.6000000014901
+          }
+        ]
+      }
+    },
+    {
+      "name": "bark actual draw on touch guest",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 31,
+          "bark": 7,
+          "shears": 0
+        },
+        "objects": [
+          {
+            "kind": "triangle",
+            "life": 5760.0999999999985,
+            "owner": "iria",
+            "shield": 0
+          },
+          {
+            "kind": "ex_thorns",
+            "life": 1787.3999999999996,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "ex_bark",
+            "life": 3833.7999999999993,
+            "owner": "maura",
+            "shield": 35.2
+          }
+        ],
+        "pool": [
+          {
+            "art": "beam",
+            "theme": "maura_roots",
+            "t": 617.9000000059605
+          },
+          {
+            "art": "cone",
+            "theme": "ink~p",
+            "t": 137.30000000447035
+          }
+        ]
+      }
+    },
+    {
+      "name": "shears actual draw on host",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 17,
+          "bark": 14,
+          "shears": 2
+        },
+        "objects": [
+          {
+            "kind": "triangle",
+            "life": 5394.800000000001,
+            "owner": "iria",
+            "shield": 0
+          },
+          {
+            "kind": "ex_thorns",
+            "life": 1438.800000000001,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "ex_bark",
+            "life": 3445.3999999999996,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "anchor",
+            "life": 15741.3,
+            "owner": "iria",
+            "shield": 0
+          }
+        ],
+        "pool": [
+          {
+            "art": "burst",
+            "theme": "thread",
+            "t": 341.6000000014901
+          },
+          {
+            "art": "nova",
+            "theme": "thread",
+            "t": 341.6000000014901
+          },
+          {
+            "art": "beam",
+            "theme": "maura_shears~p",
+            "t": 111.10000000149012
+          }
+        ]
+      }
+    },
+    {
+      "name": "shears actual draw on touch guest",
+      "ok": true,
+      "detail": {
+        "draws": {
+          "roots": 37,
+          "bark": 38,
+          "shears": 7
+        },
+        "objects": [
+          {
+            "kind": "triangle",
+            "life": 5292.9000000000015,
+            "owner": "iria",
+            "shield": 0
+          },
+          {
+            "kind": "ex_thorns",
+            "life": 1253.2000000000007,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "ex_bark",
+            "life": 3342.9000000000015,
+            "owner": "maura",
+            "shield": 35.2
+          },
+          {
+            "kind": "anchor",
+            "life": 15674.6,
+            "owner": "iria",
+            "shield": 0
+          }
+        ],
+        "pool": [
+          {
+            "art": "burst",
+            "theme": "thread",
+            "t": 378
+          },
+          {
+            "art": "nova",
+            "theme": "thread",
+            "t": 378
+          },
+          {
+            "art": "rays",
+            "theme": "thread~p",
+            "t": 378
+          },
+          {
+            "art": "beam",
+            "theme": "maura_shears~p",
+            "t": 153.60000000149012
+          },
+          {
+            "art": "burst",
+            "theme": "thread~p",
+            "t": 153.60000000149012
+          }
+        ]
+      }
+    },
+    {
+      "name": "zero-shield bark stops on host",
+      "ok": true,
+      "before": 16,
+      "after": 16,
+      "method": "Host zero-shield fixture replicated; real damage tested separately"
+    },
+    {
+      "name": "zero-shield bark stops on touch guest",
+      "ok": true,
+      "before": 41,
+      "after": 41,
+      "method": "Host zero-shield fixture replicated; real damage tested separately"
+    },
+    {
+      "name": "recast bark resumes host",
+      "ok": true
+    },
+    {
+      "name": "recast bark resumes touch guest",
+      "ok": true
+    },
+    {
+      "name": "bark expiry replicated",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

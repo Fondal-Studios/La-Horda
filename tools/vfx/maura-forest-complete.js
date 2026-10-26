@@ -1,0 +1,10 @@
+'use strict';
+const fs=require('fs'),H=require('../lib/serve');
+(async()=>{const site=await H.startSite(),b=await H.launch();try{const p=await b.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(site.url+'/?lazy=0');await p.waitForFunction(()=>assetsAllReady()&&typeof exPulse==='function');
+ const result=await p.evaluate(()=>{loop=()=>{};let vt=1000;performance.now=()=>vt;for(const s of Object.values(save.champions)){s.unlocked=true;s.level=20;s.equipment={};s.croma=null;s.cosmeticSkin='';s.talents={nodes:{},mastery:null,masteryNodes:{}};}selectedClass='maura';currentArena='bosque';lobbyAllies=[];startRun(1);state='playing';enemies=[];heroes=[player];spawnTimer=arenaHazardTimer=1e9;for(const m of save.champions.maura.skillMastery)m.alloc=0;
+  player.ultCharge=player.ultMax;player.ultCd=0;runLevel=ULT_MIN_ARENA_LEVEL;player.energy=1e4;const pulses=[],area=exArea;exArea=function(h,o,...args){if(h===player&&portadorObjects.some(o=>o.kind==='ex_forest'))pulses.push({t:vt-1000,x:o.x,y:o.y});return area(h,o,...args);};
+  castAbility(player,player.cls.ultimate,true);const first=portadorObjects.find(o=>o.kind==='ex_forest'),initial=first?{life:first.life,total:first.total,interval:first.interval}:null;let followed=true;
+  for(let i=0;i<310;i++){if(i===90){player.x+=55;player.y+=30;}vt+=16;update(16);render();const o=portadorObjects.find(o=>o.kind==='ex_forest');if(o)followed=followed&&o.x===player.x&&o.y===player.y;}
+  exArea=area;return{initial,pulses,followed,elapsed:4960,removed:!portadorObjects.some(o=>o.kind==='ex_forest')};});
+ const ok=errors.length===0&&result.initial?.life===4800&&result.pulses.length===6&&result.followed&&result.removed;fs.writeFileSync(process.env.OUT+'/FOREST_COMPLETE.json',JSON.stringify({ok,...result,errors,scope:'Full 4960ms actual UF cycle, six pulses and owner movement; not global-state parity.'},null,2));console.log({ok,...result,errors});if(!ok)process.exitCode=1;
+}finally{await b.close();await site.close();}})().catch(e=>{console.error(e);process.exitCode=1});

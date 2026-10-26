@@ -1,0 +1,13 @@
+{
+  "atlas": "assets/vfx/vendor/muro-fuego.png",
+  "atlasGitblob": "196351134e57dea5ad0c4986b07c08322a13a25a",
+  "method": "size=min(thickness,chordSpacing*1.35); translate to midpoint; rotate tangent angle+pi/2; preserve all phase clocks/counts",
+  "newAtlas": 0,
+  "commands": [
+    "node tools/vfx/mago-wall-continuity.js",
+    "node art-source/entregas/mago-kit-20261025/cierre-03/matrix.js"
+  ],
+  "runtime": "js/champions/mago.js",
+  "environment": "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium",
+  "screenshots": "12scene diagnostics generated; selected mobile0/desktop5 plus isolated225/700 kept in remote checkpoint; reproduce remaining with matrix.js"
+}

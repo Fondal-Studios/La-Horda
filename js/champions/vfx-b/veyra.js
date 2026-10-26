@@ -42,7 +42,18 @@
       for(let i=1;i<seam.length;i++)kvbLine(lg,...seam[i-1],...seam[i],VY[4],1);
     });
   };
-  kvbDefDecal('vy_pact',10,pactPaint(false));
+  // Launch badge only: open lobes and a split seam above the combat bodies.
+  // Persistent ground heartbeat keeps its original recipe and lifecycle.
+  kvbDefDecal('vy_pact',10,(g,q,S)=>{
+    const u=S/24,beat=Math.sin(Math.min(1,q/.35)*Math.PI/2),fade=q<.6?1:(1-q)/.4;
+    const pts=[[12,19],[4,11],[3,7],[5,4],[8,4],[12,8],[16,4],[19,4],[21,7],[20,11]];
+    const points=pts.map(([x,y])=>[(12+(x-12)*(.85+.15*beat))*u,y*u]);
+    kvbLayer(g,S,fade,lg=>{
+      kvbPoly(lg,points,null,VY[0],3*u);kvbPoly(lg,points,null,VY[3],u);
+      const seam=[[12,8],[10,11],[13,13],[11,16],[12,19]];
+      for(let i=1;i<seam.length;i++)kvbLine(lg,seam[i-1][0]*u,seam[i-1][1]*u,seam[i][0]*u,seam[i][1]*u,VY[4],u);
+    });
+  });
   kvbDefDecal('vy_pact_idle',12,pactPaint(true));
   // Dos bordes rasgados dejan el centro de la trayectoria visible.
   kvbDefBeam('vy_dash',8,24,16,(g,q,W,H)=>{
@@ -86,7 +97,7 @@
     kvbPart('vy_claw', ex, ey, {rot: ang + .2, dur: 360, scale: 2.2, layer: 't', fadeAt: .4}); kvbDecal('vy_dash_end', ex, ey, Math.max(28, r * 1.5), 520, {layer: 'g', alpha: .8});
   };
   KVB_FX['veyra.pact'] = (x, y, r, ang, duration, ownerIndex) => {
-    kvbDecal('vy_pact', x, y - 42, 38, 760, {layer: 't', prio: true});
+    kvbDecal('vy_pact', x, y - 126, 22, 760, {layer: 't', prio: true});
     kvbEmit('vy_wisp', 7, x, y, {ring: 20, v0: 5, v1: 25, up: 70, l0: 520, l1: 800, scale: 1.3, flat: .6});
     const h = Number.isInteger(ownerIndex) ? heroes[ownerIndex] : null;
     if(!h || h.classKey !== 'veyra' || !h.alive || !(duration > 0)) return;

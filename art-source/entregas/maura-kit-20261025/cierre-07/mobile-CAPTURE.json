@@ -1,0 +1,5333 @@
+{
+  "rows": [
+    {
+      "arena": "bosque",
+      "look": "base",
+      "density": "sparse",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1968,
+          "retained": 1890,
+          "visible": 0.9603658536585366,
+          "beforeHash": "dfaead53523c0a87e80ba34eac485d9a2fc67e82a9871c07c3f8a0f66f580ad0",
+          "restoredHash": "dfaead53523c0a87e80ba34eac485d9a2fc67e82a9871c07c3f8a0f66f580ad0"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 1758,
+          "retained": 1654,
+          "visible": 0.9408418657565415,
+          "beforeHash": "043d15fda64c1f6e9303f610c5841d19afd94664e72447fc81f696876fa5b47a",
+          "restoredHash": "043d15fda64c1f6e9303f610c5841d19afd94664e72447fc81f696876fa5b47a"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 1793,
+          "retained": 1693,
+          "visible": 0.9442275515895148,
+          "beforeHash": "5b0a2e7b97e5e51cde51f882d5facd7bb45f75ca31400c1f3e45a9e594baa8bb",
+          "restoredHash": "5b0a2e7b97e5e51cde51f882d5facd7bb45f75ca31400c1f3e45a9e594baa8bb"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 1837,
+          "retained": 1748,
+          "visible": 0.9515514425694066,
+          "beforeHash": "95aca7cbd848f27483e0c35e517fddc72e5ee93e3f8ef7a25c42702f80e04dc8",
+          "restoredHash": "95aca7cbd848f27483e0c35e517fddc72e5ee93e3f8ef7a25c42702f80e04dc8"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "b48e61dd3de554d372d99622d5abcb405d01395a4b6b17daba18290ad03d55be"
+    },
+    {
+      "arena": "bosque",
+      "look": "base",
+      "density": "sparse",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1976,
+          "retained": 1729,
+          "visible": 0.875,
+          "beforeHash": "4507d49b3948225f50303d3af1252e315dbd8ad777eeaa1247ee7b4ef66da583",
+          "restoredHash": "4507d49b3948225f50303d3af1252e315dbd8ad777eeaa1247ee7b4ef66da583"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 1774,
+          "retained": 1641,
+          "visible": 0.9250281848928974,
+          "beforeHash": "e430f9321ae1d9b0b73ae8a046d66f9c184bdc1776d99c091054a199fabfdb09",
+          "restoredHash": "e430f9321ae1d9b0b73ae8a046d66f9c184bdc1776d99c091054a199fabfdb09"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 1810,
+          "retained": 1705,
+          "visible": 0.9419889502762431,
+          "beforeHash": "8041a324f3b0ff648340586b0b6ce3db1b55894ae9a95f63f81591374df76260",
+          "restoredHash": "8041a324f3b0ff648340586b0b6ce3db1b55894ae9a95f63f81591374df76260"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 1790,
+          "retained": 1790,
+          "visible": 1,
+          "beforeHash": "f5b78f6027a7bdb1d88d9183a5dd701536db807907df459e72370d350b75db6e",
+          "restoredHash": "f5b78f6027a7bdb1d88d9183a5dd701536db807907df459e72370d350b75db6e"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "b2aacafc5037b554a33028fa995d24cfe0c06676ee76e6c18aba3aacfe61c868"
+    },
+    {
+      "arena": "bosque",
+      "look": "base",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2542,
+          "retained": 2460,
+          "visible": 0.967741935483871,
+          "beforeHash": "8b08199e1336e00374a85a1cf1c1d09255b62c1e29c19611c667fc07ce04d83c",
+          "restoredHash": "8b08199e1336e00374a85a1cf1c1d09255b62c1e29c19611c667fc07ce04d83c"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 2343,
+          "retained": 2238,
+          "visible": 0.9551856594110115,
+          "beforeHash": "e6a698bbeacc50c468e423dfc4dd3c0ac31825edda12c93f634c977841a10664",
+          "restoredHash": "e6a698bbeacc50c468e423dfc4dd3c0ac31825edda12c93f634c977841a10664"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 2394,
+          "retained": 2315,
+          "visible": 0.9670008354218881,
+          "beforeHash": "0f4dc593e8e9456b51de02afe2d671263c5450667258ebdbbe59b485ac840223",
+          "restoredHash": "0f4dc593e8e9456b51de02afe2d671263c5450667258ebdbbe59b485ac840223"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 2463,
+          "retained": 2378,
+          "visible": 0.9654892407632968,
+          "beforeHash": "acf591fcc56964d8ed7deacfa771c46f3abef38f7fcf2fc2647e483b70c25e44",
+          "restoredHash": "acf591fcc56964d8ed7deacfa771c46f3abef38f7fcf2fc2647e483b70c25e44"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "0c4cbc2d7dd83a6219dd55eb4f4006ce302db9fc78e8150de96eecf853699399"
+    },
+    {
+      "arena": "bosque",
+      "look": "base",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2542,
+          "retained": 2296,
+          "visible": 0.9032258064516129,
+          "beforeHash": "bddf343b6ac26b80e5daecd27084c63d2a5f2e7206e77037536c251f881aa876",
+          "restoredHash": "bddf343b6ac26b80e5daecd27084c63d2a5f2e7206e77037536c251f881aa876"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 2345,
+          "retained": 2211,
+          "visible": 0.9428571428571428,
+          "beforeHash": "81aef17e8c702b93987a7fc257b4f14993ef120a3f5700a7dd0745df1472142a",
+          "restoredHash": "81aef17e8c702b93987a7fc257b4f14993ef120a3f5700a7dd0745df1472142a"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 2392,
+          "retained": 2265,
+          "visible": 0.9469063545150501,
+          "beforeHash": "5db7c2bef1bc8f50e8ebc06a1281cea934bc7aa6302b32fab5e261a8f32bf867",
+          "restoredHash": "5db7c2bef1bc8f50e8ebc06a1281cea934bc7aa6302b32fab5e261a8f32bf867"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 2227,
+          "retained": 2227,
+          "visible": 1,
+          "beforeHash": "c322ef8eefa4796c0a781421016a1afa63e0c4a5e55faad625418c1b080d39e4",
+          "restoredHash": "c322ef8eefa4796c0a781421016a1afa63e0c4a5e55faad625418c1b080d39e4"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "f0a69729d668e067fca69ff185987bbdbfa3fa684f295fa14da51a33e81824bc"
+    },
+    {
+      "arena": "bosque",
+      "look": "tier4",
+      "density": "sparse",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1977,
+          "retained": 1891,
+          "visible": 0.9564997470915528,
+          "beforeHash": "848cb79c8ac51f9e9047d83ec7df596de2a1e89edcfce1e471a527ad3c490cb5",
+          "restoredHash": "848cb79c8ac51f9e9047d83ec7df596de2a1e89edcfce1e471a527ad3c490cb5"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 1790,
+          "retained": 1688,
+          "visible": 0.9430167597765363,
+          "beforeHash": "a0b7c3f1df47bd812d6ab77918ac840e1fd07389890a7e8e130eec1a5d462c03",
+          "restoredHash": "a0b7c3f1df47bd812d6ab77918ac840e1fd07389890a7e8e130eec1a5d462c03"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 1806,
+          "retained": 1726,
+          "visible": 0.955703211517165,
+          "beforeHash": "7c1c5f18020de0fd1372cae77c7573d00b77a0e1634d8841c73417ae087e22c1",
+          "restoredHash": "7c1c5f18020de0fd1372cae77c7573d00b77a0e1634d8841c73417ae087e22c1"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 1846,
+          "retained": 1724,
+          "visible": 0.933911159263272,
+          "beforeHash": "0c861651e1e8dde427df4f45a69a9908c229906137559c444729b5e2d655d3c3",
+          "restoredHash": "0c861651e1e8dde427df4f45a69a9908c229906137559c444729b5e2d655d3c3"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6784
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6560
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 5408
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3152
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "22ed4770b72be8eaecf004aa2ff8bc638a3a976879da719168a646ca2a361894"
+    },
+    {
+      "arena": "bosque",
+      "look": "tier4",
+      "density": "sparse",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1987,
+          "retained": 1977,
+          "visible": 0.9949672873678913,
+          "beforeHash": "5ec885da405bca1e233053e89b2ff5f0b9dae07a2a39e2f3d04977d7f2e11614",
+          "restoredHash": "5ec885da405bca1e233053e89b2ff5f0b9dae07a2a39e2f3d04977d7f2e11614"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 1822,
+          "retained": 1822,
+          "visible": 1,
+          "beforeHash": "401420cb97de6dbe38a1777861f14a8a6ed19821e329a564e7e246ab48bae012",
+          "restoredHash": "401420cb97de6dbe38a1777861f14a8a6ed19821e329a564e7e246ab48bae012"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 1788,
+          "retained": 1788,
+          "visible": 1,
+          "beforeHash": "b86bb6b9cce2eaa3826afb1ed2ce88d2f2f263f83dbf87400aa89e3f55be49f2",
+          "restoredHash": "b86bb6b9cce2eaa3826afb1ed2ce88d2f2f263f83dbf87400aa89e3f55be49f2"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 1797,
+          "retained": 1797,
+          "visible": 1,
+          "beforeHash": "ade6b669efe9dcb82e1deaf80160990024f9397c50fcbdc7bffcbf8d3f5897bc",
+          "restoredHash": "ade6b669efe9dcb82e1deaf80160990024f9397c50fcbdc7bffcbf8d3f5897bc"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "c1deaccd6131a16cd8e6656578aadb4c0c86675638e89a65e2adb04b8d8e4030"
+    },
+    {
+      "arena": "bosque",
+      "look": "tier4",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2522,
+          "retained": 2432,
+          "visible": 0.964314036478985,
+          "beforeHash": "56448248762f4d6e30d6ff33b5a1324838ba659a4279f11717e471570f259f13",
+          "restoredHash": "56448248762f4d6e30d6ff33b5a1324838ba659a4279f11717e471570f259f13"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 2369,
+          "retained": 2271,
+          "visible": 0.9586323343182778,
+          "beforeHash": "26df7e067e91c02591287f2a4486a47824d8ac0658b15913f0de91e28aeb6608",
+          "restoredHash": "26df7e067e91c02591287f2a4486a47824d8ac0658b15913f0de91e28aeb6608"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 2387,
+          "retained": 2306,
+          "visible": 0.9660661918726435,
+          "beforeHash": "d0e88777a332aa049a3774d8f45290be2281163be85b0188a87422ea9570e43f",
+          "restoredHash": "d0e88777a332aa049a3774d8f45290be2281163be85b0188a87422ea9570e43f"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 2461,
+          "retained": 2343,
+          "visible": 0.9520520113774888,
+          "beforeHash": "5bc49581afc7b08c345116ccff101208874ff64e3a9641f9ec16ffa94f84d69e",
+          "restoredHash": "5bc49581afc7b08c345116ccff101208874ff64e3a9641f9ec16ffa94f84d69e"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6784
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6560
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 5408
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3152
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "639394a797f4cb017018f19400d81c71fa7d674ead5749c700a65b2b32cc7b7e"
+    },
+    {
+      "arena": "bosque",
+      "look": "tier4",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2557,
+          "retained": 2557,
+          "visible": 1,
+          "beforeHash": "cc100e51b0c4a339dd3139d9700d924be01d5e4f29ba2f6f96e78803ebad281e",
+          "restoredHash": "cc100e51b0c4a339dd3139d9700d924be01d5e4f29ba2f6f96e78803ebad281e"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 2345,
+          "retained": 2345,
+          "visible": 1,
+          "beforeHash": "41db2b4a04c7dd2b888377b6305124b4a078174bfeaa38baf32783cc05fad01e",
+          "restoredHash": "41db2b4a04c7dd2b888377b6305124b4a078174bfeaa38baf32783cc05fad01e"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 2404,
+          "retained": 2404,
+          "visible": 1,
+          "beforeHash": "41d982e38641e11e03ee1c0674e2a60599472a0bb8bacf4220afcf0ab61356f3",
+          "restoredHash": "41d982e38641e11e03ee1c0674e2a60599472a0bb8bacf4220afcf0ab61356f3"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 2344,
+          "retained": 2344,
+          "visible": 1,
+          "beforeHash": "6120043ef563dc0aab770e473d791f556a089de57752af2076b17ad0160acfe3",
+          "restoredHash": "6120043ef563dc0aab770e473d791f556a089de57752af2076b17ad0160acfe3"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "53ba897c31d681ad03b4e9a49188c1767d1a76ac8e3bf1d186252f784ad20c78"
+    },
+    {
+      "arena": "hielo",
+      "look": "base",
+      "density": "sparse",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1972,
+          "retained": 1894,
+          "visible": 0.960446247464503,
+          "beforeHash": "1f3f55ac3c82ba1a527a9e16a17d2987f88fd2013d5c9616e4b215d11a523b82",
+          "restoredHash": "1f3f55ac3c82ba1a527a9e16a17d2987f88fd2013d5c9616e4b215d11a523b82"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 1795,
+          "retained": 1690,
+          "visible": 0.9415041782729805,
+          "beforeHash": "5c0f6023df7ebdde68c8b97ed9f9ed29c0dc8c249da9afc9b05107ad0edd89e7",
+          "restoredHash": "5c0f6023df7ebdde68c8b97ed9f9ed29c0dc8c249da9afc9b05107ad0edd89e7"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 1800,
+          "retained": 1719,
+          "visible": 0.955,
+          "beforeHash": "037994aa4f6a695d987c24f52758b5c1b87c20a8e4f8c9251583ec21f2e65d88",
+          "restoredHash": "037994aa4f6a695d987c24f52758b5c1b87c20a8e4f8c9251583ec21f2e65d88"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 1824,
+          "retained": 1736,
+          "visible": 0.9517543859649122,
+          "beforeHash": "9c2c899139bc440f25602ec9a5bc6ada05bb8d7968e9fe26397848f2db607a39",
+          "restoredHash": "9c2c899139bc440f25602ec9a5bc6ada05bb8d7968e9fe26397848f2db607a39"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "86c9d392bc646ad41ca666cb47fe4831da3aeae131b0e8c3212267cf75300a2a"
+    },
+    {
+      "arena": "hielo",
+      "look": "base",
+      "density": "sparse",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1972,
+          "retained": 1724,
+          "visible": 0.8742393509127789,
+          "beforeHash": "0503ed4d73e005131a76b33419896523bab3ab54740a49e78d344935902f581a",
+          "restoredHash": "0503ed4d73e005131a76b33419896523bab3ab54740a49e78d344935902f581a"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 1807,
+          "retained": 1674,
+          "visible": 0.9263973436635307,
+          "beforeHash": "1805b74076c3970732c58e495013c30aa2d9d61b882e71d352be4dd418a16d4f",
+          "restoredHash": "1805b74076c3970732c58e495013c30aa2d9d61b882e71d352be4dd418a16d4f"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 1782,
+          "retained": 1714,
+          "visible": 0.9618406285072951,
+          "beforeHash": "1c47ecc5770b89e16e4673cf7b05e66f4a9411b27a74e74669343837b6c0ee77",
+          "restoredHash": "1c47ecc5770b89e16e4673cf7b05e66f4a9411b27a74e74669343837b6c0ee77"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 1794,
+          "retained": 1794,
+          "visible": 1,
+          "beforeHash": "cf7a563c71962f5b3e2a6495686c884612e87f04b017c896a7576c79a2fadc60",
+          "restoredHash": "cf7a563c71962f5b3e2a6495686c884612e87f04b017c896a7576c79a2fadc60"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "cfe4eef10d18aa53f202888d95292519659f585d03113a60bf1ec6e06611a419"
+    },
+    {
+      "arena": "hielo",
+      "look": "base",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2534,
+          "retained": 2452,
+          "visible": 0.9676400947119179,
+          "beforeHash": "ac9b9e430e822e970403252afc90de02824919323692883cb777d238915e6b04",
+          "restoredHash": "ac9b9e430e822e970403252afc90de02824919323692883cb777d238915e6b04"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 2373,
+          "retained": 2291,
+          "visible": 0.9654445849136115,
+          "beforeHash": "2731680b92228ae5c4d539f9472b7e79d6775cc1832e3180be7067502d5bb93c",
+          "restoredHash": "2731680b92228ae5c4d539f9472b7e79d6775cc1832e3180be7067502d5bb93c"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 2371,
+          "retained": 2244,
+          "visible": 0.9464361029101644,
+          "beforeHash": "9f8b0163eac9bb7569bf0276c9744d4302dc92e840a59e1e624b12a1e29aa7e9",
+          "restoredHash": "9f8b0163eac9bb7569bf0276c9744d4302dc92e840a59e1e624b12a1e29aa7e9"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 2455,
+          "retained": 2364,
+          "visible": 0.9629327902240326,
+          "beforeHash": "2261a3445f93479c8df76c3d30b8b18b49b5beb45767aba686f88842180b4416",
+          "restoredHash": "2261a3445f93479c8df76c3d30b8b18b49b5beb45767aba686f88842180b4416"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "4b4a1c8468a5c3c3ce7df14c1cf5c3adee85abf9c50947a456d35eb8f97dcf2e"
+    },
+    {
+      "arena": "hielo",
+      "look": "base",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2534,
+          "retained": 2288,
+          "visible": 0.9029202841357538,
+          "beforeHash": "6eb78c4daff55983f2542db3cece9faeb927c594175604b0ff3d2e973f6c4786",
+          "restoredHash": "6eb78c4daff55983f2542db3cece9faeb927c594175604b0ff3d2e973f6c4786"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 2363,
+          "retained": 2230,
+          "visible": 0.9437156157426999,
+          "beforeHash": "d158ae954431b571a3c1e6f351f6da98da3db33946fb51164e2a9063905a49bf",
+          "restoredHash": "d158ae954431b571a3c1e6f351f6da98da3db33946fb51164e2a9063905a49bf"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 2359,
+          "retained": 2267,
+          "visible": 0.9610004239084358,
+          "beforeHash": "89e5151506592ffb718ec8c578693176201bc1262b9820219c70a2c145372fcc",
+          "restoredHash": "89e5151506592ffb718ec8c578693176201bc1262b9820219c70a2c145372fcc"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 2249,
+          "retained": 2249,
+          "visible": 1,
+          "beforeHash": "884ff93c27afc65e060afb1f0b56ee9608334f5d5955182104063ca40f44893f",
+          "restoredHash": "884ff93c27afc65e060afb1f0b56ee9608334f5d5955182104063ca40f44893f"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "7887b67ad3388b402e961cde9deabea07092b9c2479d670a0da0281d3d7edb12"
+    },
+    {
+      "arena": "hielo",
+      "look": "tier4",
+      "density": "sparse",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1974,
+          "retained": 1890,
+          "visible": 0.9574468085106383,
+          "beforeHash": "fa5019e11521ab110155308843a265b59ea3097e868216e9403aafb3ff94cf8d",
+          "restoredHash": "fa5019e11521ab110155308843a265b59ea3097e868216e9403aafb3ff94cf8d"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 1788,
+          "retained": 1687,
+          "visible": 0.9435123042505593,
+          "beforeHash": "2d09afba9294cf14c683dfbb574ead911946ff9741c1f6c546fb7100f115cc19",
+          "restoredHash": "2d09afba9294cf14c683dfbb574ead911946ff9741c1f6c546fb7100f115cc19"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 1788,
+          "retained": 1708,
+          "visible": 0.9552572706935123,
+          "beforeHash": "fe1bd0aaa124e6a638c993adef6be4683a033bd4266ac69ca30bbbce62e7fd1c",
+          "restoredHash": "fe1bd0aaa124e6a638c993adef6be4683a033bd4266ac69ca30bbbce62e7fd1c"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 1820,
+          "retained": 1705,
+          "visible": 0.9368131868131868,
+          "beforeHash": "ad67aa42d2fb4acbb4e0f60b5faef2740a35c3ee0f819f9a21586a9a7107e27a",
+          "restoredHash": "ad67aa42d2fb4acbb4e0f60b5faef2740a35c3ee0f819f9a21586a9a7107e27a"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6784
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6560
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 5408
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3152
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "619de4d135a6be10fae1e8849176b46f39ce2f47a2ec6ed754980d8633b66d09"
+    },
+    {
+      "arena": "hielo",
+      "look": "tier4",
+      "density": "sparse",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1974,
+          "retained": 1974,
+          "visible": 1,
+          "beforeHash": "ac3cd2dc2f29e969362558184c33266b5363e33c36e682aeb362f596a4872be5",
+          "restoredHash": "ac3cd2dc2f29e969362558184c33266b5363e33c36e682aeb362f596a4872be5"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 1792,
+          "retained": 1792,
+          "visible": 1,
+          "beforeHash": "2cde88f9e79f95bd2de1827dacdb2e51e24bb29c915445fc639f670da8c51076",
+          "restoredHash": "2cde88f9e79f95bd2de1827dacdb2e51e24bb29c915445fc639f670da8c51076"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 1806,
+          "retained": 1806,
+          "visible": 1,
+          "beforeHash": "dc7d38439ede1891d43e28946e7c36c25bc10389894094ffcfcd48ef578cee61",
+          "restoredHash": "dc7d38439ede1891d43e28946e7c36c25bc10389894094ffcfcd48ef578cee61"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 1789,
+          "retained": 1789,
+          "visible": 1,
+          "beforeHash": "95f206457b859d39f76a5c758f4de5a1e8e8921e358a0e66f6b57bd4ef67333b",
+          "restoredHash": "95f206457b859d39f76a5c758f4de5a1e8e8921e358a0e66f6b57bd4ef67333b"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "559e4fd6d9649dcace8000dd49bad7c9da7afc67a9f62563fd5bdfdd835f2ee5"
+    },
+    {
+      "arena": "hielo",
+      "look": "tier4",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2525,
+          "retained": 2437,
+          "visible": 0.9651485148514851,
+          "beforeHash": "374d2031fa2dd8a26cc040f2b12c028d71e5adcd57a5e14e230a2b5da1df2cd7",
+          "restoredHash": "374d2031fa2dd8a26cc040f2b12c028d71e5adcd57a5e14e230a2b5da1df2cd7"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 2358,
+          "retained": 2260,
+          "visible": 0.9584393553859203,
+          "beforeHash": "7b0e23937027e332f8c7170903ce05f60655cf7820cc948ab898ed717f550407",
+          "restoredHash": "7b0e23937027e332f8c7170903ce05f60655cf7820cc948ab898ed717f550407"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 2379,
+          "retained": 2298,
+          "visible": 0.9659520807061791,
+          "beforeHash": "f3ba9edae06d0d524195de0affcac9c1f406ca3057b74e376da2297415acb700",
+          "restoredHash": "f3ba9edae06d0d524195de0affcac9c1f406ca3057b74e376da2297415acb700"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 2464,
+          "retained": 2342,
+          "visible": 0.950487012987013,
+          "beforeHash": "4cb1f6d1e835616faa6355cd54931d1b33b9b995c73014508c7bcdeb17c97ac6",
+          "restoredHash": "4cb1f6d1e835616faa6355cd54931d1b33b9b995c73014508c7bcdeb17c97ac6"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6784
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6560
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 5408
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3152
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "c080c5d52bacc074f898603eb8acef5948f4e250168797b4b16e05170219909c"
+    },
+    {
+      "arena": "hielo",
+      "look": "tier4",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2525,
+          "retained": 2525,
+          "visible": 1,
+          "beforeHash": "8b76d858b141950c8a5f482f56b640641ebdd563075d9c98d972612adb96c71c",
+          "restoredHash": "8b76d858b141950c8a5f482f56b640641ebdd563075d9c98d972612adb96c71c"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 2356,
+          "retained": 2356,
+          "visible": 1,
+          "beforeHash": "72cc1534de0524ebe677cb2d37747abf485595b4cd8e6afeb4c7026ab60f5da7",
+          "restoredHash": "72cc1534de0524ebe677cb2d37747abf485595b4cd8e6afeb4c7026ab60f5da7"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 2378,
+          "retained": 2378,
+          "visible": 1,
+          "beforeHash": "64fb5d0d1f8ff5d538269b05957d2b0dcc82ee1de1cc9e5d771d9df10b5341b2",
+          "restoredHash": "64fb5d0d1f8ff5d538269b05957d2b0dcc82ee1de1cc9e5d771d9df10b5341b2"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 2235,
+          "retained": 2235,
+          "visible": 1,
+          "beforeHash": "815f5e54d72e318a982258d42d39ef85bb2b69b913f4d61e0c77a76c15f96a9e",
+          "restoredHash": "815f5e54d72e318a982258d42d39ef85bb2b69b913f4d61e0c77a76c15f96a9e"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "4f5e9de5d679bacf9518da335a16e5a22bbb3b67c3f1860fd621d344197ff0c3"
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "density": "sparse",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1963,
+          "retained": 1885,
+          "visible": 0.9602649006622517,
+          "beforeHash": "c4d25b2f8783fceb5be3cc175f7df95845f2cc6ffa1bbe2ca472bd4f76a04f11",
+          "restoredHash": "c4d25b2f8783fceb5be3cc175f7df95845f2cc6ffa1bbe2ca472bd4f76a04f11"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 1772,
+          "retained": 1646,
+          "visible": 0.9288939051918735,
+          "beforeHash": "32190b548486536ac7d8361abbf4d9b920d0c9343ac46c81791286f8274d6cdf",
+          "restoredHash": "32190b548486536ac7d8361abbf4d9b920d0c9343ac46c81791286f8274d6cdf"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 1775,
+          "retained": 1671,
+          "visible": 0.9414084507042253,
+          "beforeHash": "6397efdf4dbac35a45849132fe84fe51fc13e85c80e9675f111783411de1108c",
+          "restoredHash": "6397efdf4dbac35a45849132fe84fe51fc13e85c80e9675f111783411de1108c"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 1837,
+          "retained": 1748,
+          "visible": 0.9515514425694066,
+          "beforeHash": "bd0fd432f7c79937ae5b536c0c48879f24ee442003dd58756ab34b622f5fee19",
+          "restoredHash": "bd0fd432f7c79937ae5b536c0c48879f24ee442003dd58756ab34b622f5fee19"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "144b2d5afdd5a6605e6dba7ceb0d7f5e981d02b54195353a4e5eb0567b3a121b"
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "density": "sparse",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1980,
+          "retained": 1733,
+          "visible": 0.8752525252525253,
+          "beforeHash": "6ecf1ee5450536e0ec1b36aec8b17eb9678c16416798f79cd7da8453538cc88e",
+          "restoredHash": "6ecf1ee5450536e0ec1b36aec8b17eb9678c16416798f79cd7da8453538cc88e"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 1796,
+          "retained": 1664,
+          "visible": 0.9265033407572383,
+          "beforeHash": "9a9ee96befed433df1052ec1769f99ad95f060da77fa19c03541a6118dcbd293",
+          "restoredHash": "9a9ee96befed433df1052ec1769f99ad95f060da77fa19c03541a6118dcbd293"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 1766,
+          "retained": 1701,
+          "visible": 0.9631936579841449,
+          "beforeHash": "4d033fc61d38521f0ebdca701dcb374e98288eb444cefdbee2c6381763e4dbd8",
+          "restoredHash": "4d033fc61d38521f0ebdca701dcb374e98288eb444cefdbee2c6381763e4dbd8"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 1778,
+          "retained": 1778,
+          "visible": 1,
+          "beforeHash": "e3175d54e3ddbadb9fe1d0ba65aec5e1ab6816aa08e8127a5fee3033bc25a4ba",
+          "restoredHash": "e3175d54e3ddbadb9fe1d0ba65aec5e1ab6816aa08e8127a5fee3033bc25a4ba"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "1fd9833a6bbea6d987aa7c63fc32253477acae79ac2e5fbe8a1418ad894b58f3"
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2529,
+          "retained": 2447,
+          "visible": 0.9675761170423092,
+          "beforeHash": "ae3ebb99093c563805e4747032ed63245c42ea0f4e454f79e01bf05a662286b5",
+          "restoredHash": "ae3ebb99093c563805e4747032ed63245c42ea0f4e454f79e01bf05a662286b5"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 2386,
+          "retained": 2301,
+          "visible": 0.9643755238893545,
+          "beforeHash": "64d45f52f0956faffc0da2d9608661fa6f955e3e535fc5361dbf4dba0330a65a",
+          "restoredHash": "64d45f52f0956faffc0da2d9608661fa6f955e3e535fc5361dbf4dba0330a65a"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 2372,
+          "retained": 2244,
+          "visible": 0.9460370994940978,
+          "beforeHash": "92b7dbbaa5719b2115b9dd542690104d9bf159b1bdbc7b9afae2f736b7f5b570",
+          "restoredHash": "92b7dbbaa5719b2115b9dd542690104d9bf159b1bdbc7b9afae2f736b7f5b570"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 2465,
+          "retained": 2375,
+          "visible": 0.9634888438133874,
+          "beforeHash": "17c15d487d278a05cfef87f51808f433932add90a9c885f33078ac5a3c507789",
+          "restoredHash": "17c15d487d278a05cfef87f51808f433932add90a9c885f33078ac5a3c507789"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "bc19e30b7a3bafbd702373660105f0a4ef85bb2b80eacdfc7846be810ee3d415"
+    },
+    {
+      "arena": "infernal",
+      "look": "base",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2529,
+          "retained": 2282,
+          "visible": 0.9023329379201266,
+          "beforeHash": "7bf2842a24df356da259f25451c0cca77f95405ccdb3d20651b81261c9d3f533",
+          "restoredHash": "7bf2842a24df356da259f25451c0cca77f95405ccdb3d20651b81261c9d3f533"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 2370,
+          "retained": 2238,
+          "visible": 0.9443037974683545,
+          "beforeHash": "c0469cd6dbb10c68f0ea1af346544e71cfb6ede47b08344f1825442b1cc12c47",
+          "restoredHash": "c0469cd6dbb10c68f0ea1af346544e71cfb6ede47b08344f1825442b1cc12c47"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 2376,
+          "retained": 2283,
+          "visible": 0.9608585858585859,
+          "beforeHash": "7a3e161c93738782f79e4392ac387062adeb3619372a0ab0a089fcf556a6cc4a",
+          "restoredHash": "7a3e161c93738782f79e4392ac387062adeb3619372a0ab0a089fcf556a6cc4a"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 2242,
+          "retained": 2242,
+          "visible": 1,
+          "beforeHash": "4542865105b7c84062a61a53afd3cc51c3a17290f55e35a6e30616c5c3b1d1d5",
+          "restoredHash": "4542865105b7c84062a61a53afd3cc51c3a17290f55e35a6e30616c5c3b1d1d5"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "8ab1a556cc11186a26fb8064ba7426d5c548c441370e48cad0e0e4b63162f836"
+    },
+    {
+      "arena": "infernal",
+      "look": "tier4",
+      "density": "sparse",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1975,
+          "retained": 1892,
+          "visible": 0.9579746835443038,
+          "beforeHash": "9ae286b67dcc5751ea8b7786c98a64363e8ed4cc8b77c00977946f28c009ad27",
+          "restoredHash": "9ae286b67dcc5751ea8b7786c98a64363e8ed4cc8b77c00977946f28c009ad27"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 1809,
+          "retained": 1726,
+          "visible": 0.9541182974018795,
+          "beforeHash": "e3fdfc1f395ca09617e687355d1a80b1fcba44f8e33ab7c5c27f0805233b9852",
+          "restoredHash": "e3fdfc1f395ca09617e687355d1a80b1fcba44f8e33ab7c5c27f0805233b9852"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 1766,
+          "retained": 1639,
+          "visible": 0.9280860702151755,
+          "beforeHash": "80e825bbdc33c69265ffb67ebc236425d6235c98a55b0166819f1432d4938d7a",
+          "restoredHash": "80e825bbdc33c69265ffb67ebc236425d6235c98a55b0166819f1432d4938d7a"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 1819,
+          "retained": 1702,
+          "visible": 0.9356789444749862,
+          "beforeHash": "a7bd5b607abbc9db4c89f51c9de65c09ebce1168833dc9bb0a8f10906e3a65fa",
+          "restoredHash": "a7bd5b607abbc9db4c89f51c9de65c09ebce1168833dc9bb0a8f10906e3a65fa"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6784
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6560
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 5408
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3152
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "0c8fd2adc1d405b9300b54aa263436fc00b622a0017981fb8fe56e8b75f113cb"
+    },
+    {
+      "arena": "infernal",
+      "look": "tier4",
+      "density": "sparse",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1975,
+          "retained": 1975,
+          "visible": 1,
+          "beforeHash": "ec01d2692d07768b464d441401b6f0c9072a95344a11a44c54de7e07f26dc413",
+          "restoredHash": "ec01d2692d07768b464d441401b6f0c9072a95344a11a44c54de7e07f26dc413"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 1807,
+          "retained": 1807,
+          "visible": 1,
+          "beforeHash": "786a3c98e19cb5e466a633d164ce2c1ebe171ac04b9d0e980ebe3180d82c5af6",
+          "restoredHash": "786a3c98e19cb5e466a633d164ce2c1ebe171ac04b9d0e980ebe3180d82c5af6"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 1774,
+          "retained": 1774,
+          "visible": 1,
+          "beforeHash": "376e5da4fdbd6834aab3c11e043c69477b65564dba250d56a929a1b4f6961f4e",
+          "restoredHash": "376e5da4fdbd6834aab3c11e043c69477b65564dba250d56a929a1b4f6961f4e"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 1796,
+          "retained": 1796,
+          "visible": 1,
+          "beforeHash": "b78d0c868600737169e6e0e652dc0edabe1abdec9d302c781fafd8e913d41e77",
+          "restoredHash": "b78d0c868600737169e6e0e652dc0edabe1abdec9d302c781fafd8e913d41e77"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "b16299c541165d406f6cd607769bd3b997ab0c98c7f872c2e2dae61bdaecd2bc"
+    },
+    {
+      "arena": "infernal",
+      "look": "tier4",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2534,
+          "retained": 2447,
+          "visible": 0.9656669297553275,
+          "beforeHash": "5772b02dc6d33d82ec390b92085edeae08eae1a462baeb85dc30c54d04d56bcb",
+          "restoredHash": "5772b02dc6d33d82ec390b92085edeae08eae1a462baeb85dc30c54d04d56bcb"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 2357,
+          "retained": 2279,
+          "visible": 0.9669070852778956,
+          "beforeHash": "35c21555c141eb79aca52edd857e3f36620f096818e731c666357f3bcd907819",
+          "restoredHash": "35c21555c141eb79aca52edd857e3f36620f096818e731c666357f3bcd907819"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 2368,
+          "retained": 2240,
+          "visible": 0.9459459459459459,
+          "beforeHash": "2e1a33a95cc1a9b30f28a56d3d767a83c540be8780a9c57f3b6b962bb7154725",
+          "restoredHash": "2e1a33a95cc1a9b30f28a56d3d767a83c540be8780a9c57f3b6b962bb7154725"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 2462,
+          "retained": 2343,
+          "visible": 0.9516653127538587,
+          "beforeHash": "212f3f4a0bbaa14017a024be642a5f184229a5ad04f3edaaba0083e99707d725",
+          "restoredHash": "212f3f4a0bbaa14017a024be642a5f184229a5ad04f3edaaba0083e99707d725"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6784
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6560
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 5408
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3152
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "51565c93e17fdb482568728d3694287bf5038ecf41cef96c9e0ae749a998effe"
+    },
+    {
+      "arena": "infernal",
+      "look": "tier4",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2634,
+          "retained": 2634,
+          "visible": 1,
+          "beforeHash": "4afd907102a1abc5b91a9ac86010765a18c2801c11977d10640d6c0f59e53222",
+          "restoredHash": "4afd907102a1abc5b91a9ac86010765a18c2801c11977d10640d6c0f59e53222"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 2390,
+          "retained": 2390,
+          "visible": 1,
+          "beforeHash": "679c6623880b7054fd5d7f570efc65637d7b82ccdf3c39b1f1b75e72aa95d837",
+          "restoredHash": "679c6623880b7054fd5d7f570efc65637d7b82ccdf3c39b1f1b75e72aa95d837"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 2336,
+          "retained": 2336,
+          "visible": 1,
+          "beforeHash": "260641528314ba943fe23b9fc3947af7635f302eea70223a3f18d1ba3cc96b64",
+          "restoredHash": "260641528314ba943fe23b9fc3947af7635f302eea70223a3f18d1ba3cc96b64"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 2242,
+          "retained": 2242,
+          "visible": 1,
+          "beforeHash": "df1e9c9388cc0293b6e96b1e52f92b946df5182039cbe69b4f6cab14296c7485",
+          "restoredHash": "df1e9c9388cc0293b6e96b1e52f92b946df5182039cbe69b4f6cab14296c7485"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "ac6af47dfeb2146aa93cd9ad1878cce5fa8fd190fded2c44e04e9a4d65490fde"
+    },
+    {
+      "arena": "laberinto",
+      "look": "base",
+      "density": "sparse",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1967,
+          "retained": 1889,
+          "visible": 0.9603457041179461,
+          "beforeHash": "68cc2e25ea28a277bc88b335734891819b18afbd0d65c9aac87f71846f7b0597",
+          "restoredHash": "68cc2e25ea28a277bc88b335734891819b18afbd0d65c9aac87f71846f7b0597"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 1757,
+          "retained": 1654,
+          "visible": 0.9413773477518498,
+          "beforeHash": "dc2b3e1f7d915ff4ca40bd36b9d6430b7fa08c6e40893e68aeee367aef6626a3",
+          "restoredHash": "dc2b3e1f7d915ff4ca40bd36b9d6430b7fa08c6e40893e68aeee367aef6626a3"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 1795,
+          "retained": 1693,
+          "visible": 0.9431754874651811,
+          "beforeHash": "735a5ead5fc4935af6659bb92f43e61304343625120b6ad4522cd14f0c0b0de2",
+          "restoredHash": "735a5ead5fc4935af6659bb92f43e61304343625120b6ad4522cd14f0c0b0de2"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 1844,
+          "retained": 1754,
+          "visible": 0.9511930585683297,
+          "beforeHash": "b38874de0098f530dafd19e73c69c989cae0fc3c7a10a58e69658af18fb60902",
+          "restoredHash": "b38874de0098f530dafd19e73c69c989cae0fc3c7a10a58e69658af18fb60902"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "8dcfb9f4d93a5afe3ead84b2ef58ea8bf068b977f8ba15ffa525672058d3bbc6"
+    },
+    {
+      "arena": "laberinto",
+      "look": "base",
+      "density": "sparse",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1982,
+          "retained": 1735,
+          "visible": 0.8753784056508577,
+          "beforeHash": "95dc186dc86805ce4f00e77a8c8289414ffca2a9fa6a21fa9ea6ee30b08de210",
+          "restoredHash": "95dc186dc86805ce4f00e77a8c8289414ffca2a9fa6a21fa9ea6ee30b08de210"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 1786,
+          "retained": 1652,
+          "visible": 0.9249720044792833,
+          "beforeHash": "202e04cddc4b1b3c0b705795e117be6b9c857cc9e67bd5a3c14f265a4c768f59",
+          "restoredHash": "202e04cddc4b1b3c0b705795e117be6b9c857cc9e67bd5a3c14f265a4c768f59"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 1792,
+          "retained": 1677,
+          "visible": 0.9358258928571429,
+          "beforeHash": "1155f6a9cb220cf57429ff6157c33d0acd980834553b9fc5f3b10887fb3885c3",
+          "restoredHash": "1155f6a9cb220cf57429ff6157c33d0acd980834553b9fc5f3b10887fb3885c3"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 1797,
+          "retained": 1797,
+          "visible": 1,
+          "beforeHash": "e8dd3d0c7f7e539ad229b96668363de423015fbd80c896be10059764cc8acdd8",
+          "restoredHash": "e8dd3d0c7f7e539ad229b96668363de423015fbd80c896be10059764cc8acdd8"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "1f7ecdf82c7c54232b74356ae7f1e9801b3ffb693455933bdda3b8a4f4fce98d"
+    },
+    {
+      "arena": "laberinto",
+      "look": "base",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2530,
+          "retained": 2448,
+          "visible": 0.9675889328063241,
+          "beforeHash": "f32f950a281ef1eadcfdfb1f6c272fd82e919672808e1ef6ae331bb97b08f031",
+          "restoredHash": "f32f950a281ef1eadcfdfb1f6c272fd82e919672808e1ef6ae331bb97b08f031"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 2352,
+          "retained": 2223,
+          "visible": 0.9451530612244898,
+          "beforeHash": "563184521d8e279c170019f9abd9df4f96a12bc0751c6ce60c2ea00cb8d59754",
+          "restoredHash": "563184521d8e279c170019f9abd9df4f96a12bc0751c6ce60c2ea00cb8d59754"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 2356,
+          "retained": 2253,
+          "visible": 0.9562818336162988,
+          "beforeHash": "602998e0447afd0b2a3d8e4afba3b3a44588ecf26badafb77406f2fcb7923400",
+          "restoredHash": "602998e0447afd0b2a3d8e4afba3b3a44588ecf26badafb77406f2fcb7923400"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 2457,
+          "retained": 2368,
+          "visible": 0.9637769637769638,
+          "beforeHash": "1a87d43665050a1a4a1f0ce5356f4f34b8526fea854809aa00ae414ef8106514",
+          "restoredHash": "1a87d43665050a1a4a1f0ce5356f4f34b8526fea854809aa00ae414ef8106514"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "24727227a73225e9efaede74f5dc9a6ce5d0cbf73030f5752931be20a268efe1"
+    },
+    {
+      "arena": "laberinto",
+      "look": "base",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2530,
+          "retained": 2282,
+          "visible": 0.9019762845849802,
+          "beforeHash": "ff34f07a1026cb8810115608f3f80f24d972c8b14d485c6c2171cc2830900fa4",
+          "restoredHash": "ff34f07a1026cb8810115608f3f80f24d972c8b14d485c6c2171cc2830900fa4"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 2355,
+          "retained": 2221,
+          "visible": 0.943099787685775,
+          "beforeHash": "33f028aa250aa30c3d282e6089cd8d76113668a9c32b9e377a5c07956ebbc89d",
+          "restoredHash": "33f028aa250aa30c3d282e6089cd8d76113668a9c32b9e377a5c07956ebbc89d"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 2352,
+          "retained": 2237,
+          "visible": 0.9511054421768708,
+          "beforeHash": "97fd11a433623a969e379934ad03ba4e1919b166ddda6d70f853efa61a2ac3a4",
+          "restoredHash": "97fd11a433623a969e379934ad03ba4e1919b166ddda6d70f853efa61a2ac3a4"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 2265,
+          "retained": 2265,
+          "visible": 1,
+          "beforeHash": "1ec6309a4ed1a195bd5a956199719425770c0b5822e062da33f9b2137483ddfa",
+          "restoredHash": "1ec6309a4ed1a195bd5a956199719425770c0b5822e062da33f9b2137483ddfa"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "baa47e7f17d6b5afcae9f1927e4dd7318d2213d1043407fa1084cdfbaafa43c2"
+    },
+    {
+      "arena": "laberinto",
+      "look": "tier4",
+      "density": "sparse",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1964,
+          "retained": 1878,
+          "visible": 0.9562118126272913,
+          "beforeHash": "3b9988c6253fcd86bca07695b765488d2b0c89b662b54c11a5525eb1e9f32ad5",
+          "restoredHash": "3b9988c6253fcd86bca07695b765488d2b0c89b662b54c11a5525eb1e9f32ad5"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 1766,
+          "retained": 1643,
+          "visible": 0.9303510758776897,
+          "beforeHash": "daac5c8961daaf89e8a12fa46e01b22366b31dfa03e84f44077e7d26741ac207",
+          "restoredHash": "daac5c8961daaf89e8a12fa46e01b22366b31dfa03e84f44077e7d26741ac207"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 1792,
+          "retained": 1691,
+          "visible": 0.9436383928571429,
+          "beforeHash": "bfbe564dbd4c1bf938e5b7eb21ca3f8af3fb2723eb054d57dd31049b94be54ee",
+          "restoredHash": "bfbe564dbd4c1bf938e5b7eb21ca3f8af3fb2723eb054d57dd31049b94be54ee"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 1840,
+          "retained": 1724,
+          "visible": 0.9369565217391305,
+          "beforeHash": "027c4da970d480cc3e0c01db835ecf096ea90fbdb04a02441bbb2c67c7c2aba5",
+          "restoredHash": "027c4da970d480cc3e0c01db835ecf096ea90fbdb04a02441bbb2c67c7c2aba5"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6784
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6560
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 5408
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3152
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "94a3c4faa601511bfd78aefaed5805f399ae9e32294b2996194c19786bc48958"
+    },
+    {
+      "arena": "laberinto",
+      "look": "tier4",
+      "density": "sparse",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1964,
+          "retained": 1964,
+          "visible": 1,
+          "beforeHash": "aa9367633dc69ddc8cfb39d62dff7a04efb287804774429dc35f47d4fba1c0f7",
+          "restoredHash": "aa9367633dc69ddc8cfb39d62dff7a04efb287804774429dc35f47d4fba1c0f7"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 1768,
+          "retained": 1768,
+          "visible": 1,
+          "beforeHash": "497ed6d11d13be2ea14cd1575fb40626bcdb6cfc33655f85264a2591bcd0657d",
+          "restoredHash": "497ed6d11d13be2ea14cd1575fb40626bcdb6cfc33655f85264a2591bcd0657d"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 1776,
+          "retained": 1776,
+          "visible": 1,
+          "beforeHash": "fa72131a119efa627bedd928b09ac8aeb384c4997d521b7e928cb170ecab0007",
+          "restoredHash": "fa72131a119efa627bedd928b09ac8aeb384c4997d521b7e928cb170ecab0007"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 1796,
+          "retained": 1796,
+          "visible": 1,
+          "beforeHash": "f8aaedb1a541b41d92f609217f7f7e19d110ba2709176762ddafe966e861f028",
+          "restoredHash": "f8aaedb1a541b41d92f609217f7f7e19d110ba2709176762ddafe966e861f028"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "244e7c2c85a6083f026fa120ce68f725d10266e2ed961b74b768ce8f6af7068f"
+    },
+    {
+      "arena": "laberinto",
+      "look": "tier4",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2835,
+          "retained": 2720,
+          "visible": 0.9594356261022927,
+          "beforeHash": "8b433f02f0a26ed8553a3e14dae8f06127405e6c4aa4c1ea6da2690d02e767c9",
+          "restoredHash": "8b433f02f0a26ed8553a3e14dae8f06127405e6c4aa4c1ea6da2690d02e767c9"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 2438,
+          "retained": 2332,
+          "visible": 0.9565217391304348,
+          "beforeHash": "cac0b68849bd3b16d9f881443ddce85b8f76a61669f4da65dfabe2b7ddea4d14",
+          "restoredHash": "cac0b68849bd3b16d9f881443ddce85b8f76a61669f4da65dfabe2b7ddea4d14"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 2350,
+          "retained": 2245,
+          "visible": 0.9553191489361702,
+          "beforeHash": "16c516b709d0d169473b392a13270d2dec4d20f897e8c04b6f853ea98b237884",
+          "restoredHash": "16c516b709d0d169473b392a13270d2dec4d20f897e8c04b6f853ea98b237884"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 2370,
+          "retained": 2289,
+          "visible": 0.9658227848101266,
+          "beforeHash": "28a72d2ebbba58d0b2add5dd3e2e75240bd75b09fef8730e04e65fec2ec55113",
+          "restoredHash": "28a72d2ebbba58d0b2add5dd3e2e75240bd75b09fef8730e04e65fec2ec55113"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6784
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6560
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 5408
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3152
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "26e3f9ea4da07ef2f54e0ff19a6f7ac9361d4eea7d630f78ea2abe26e809056f"
+    },
+    {
+      "arena": "laberinto",
+      "look": "tier4",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2744,
+          "retained": 2734,
+          "visible": 0.9963556851311953,
+          "beforeHash": "fa32d6e01eda8e6ee54088b3daea228e4413ee791e812442431616ab0f527ab2",
+          "restoredHash": "fa32d6e01eda8e6ee54088b3daea228e4413ee791e812442431616ab0f527ab2"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 2430,
+          "retained": 2430,
+          "visible": 1,
+          "beforeHash": "a692ca2d8a452544a5517ac077d620c98dbaab746e3103022f1a95cf80773153",
+          "restoredHash": "a692ca2d8a452544a5517ac077d620c98dbaab746e3103022f1a95cf80773153"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 2352,
+          "retained": 2352,
+          "visible": 1,
+          "beforeHash": "d24fdc17ee7f41536348a8363a46d6b70a26bf44cc041d20dcc791bee85814cd",
+          "restoredHash": "d24fdc17ee7f41536348a8363a46d6b70a26bf44cc041d20dcc791bee85814cd"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 2262,
+          "retained": 2262,
+          "visible": 1,
+          "beforeHash": "dd3d7df5f08999176ca06a9200599624d3a10e351df24fa6c703f60fed2ef7bd",
+          "restoredHash": "dd3d7df5f08999176ca06a9200599624d3a10e351df24fa6c703f60fed2ef7bd"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "0447710e181de22728e840c373e6f28387e35a548b140f2f7cdf011626b9046d"
+    },
+    {
+      "arena": "acuatica",
+      "look": "base",
+      "density": "sparse",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1958,
+          "retained": 1880,
+          "visible": 0.9601634320735445,
+          "beforeHash": "8312e14efea81e32e5659cfe892d689db9570ac0a7577fb8b70a33ee19365c65",
+          "restoredHash": "8312e14efea81e32e5659cfe892d689db9570ac0a7577fb8b70a33ee19365c65"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 1775,
+          "retained": 1676,
+          "visible": 0.9442253521126761,
+          "beforeHash": "4feb38a6030f0f4b039aef97b890af13d1df20aa6d13be029e1a75f677218899",
+          "restoredHash": "4feb38a6030f0f4b039aef97b890af13d1df20aa6d13be029e1a75f677218899"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 1808,
+          "retained": 1726,
+          "visible": 0.9546460176991151,
+          "beforeHash": "a726a19ed937454d72f231883308dacb2c48f819d7f888984a6fb28446fed4b7",
+          "restoredHash": "a726a19ed937454d72f231883308dacb2c48f819d7f888984a6fb28446fed4b7"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 1838,
+          "retained": 1750,
+          "visible": 0.9521218715995647,
+          "beforeHash": "3533b369dfb344c249157fb18e7dc4934d6fdf2fcd2550a6c72c11a871dfc16d",
+          "restoredHash": "3533b369dfb344c249157fb18e7dc4934d6fdf2fcd2550a6c72c11a871dfc16d"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "dc0fe4992b13b7beb214cb8b0ed48a59fdde531a2d190d4ce86df19b340366f7"
+    },
+    {
+      "arena": "acuatica",
+      "look": "base",
+      "density": "sparse",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1975,
+          "retained": 1730,
+          "visible": 0.8759493670886076,
+          "beforeHash": "fe9e5f5f0c38e07d4080c8ad09c34f0496922b24f537c285c58554a160bd6a3b",
+          "restoredHash": "fe9e5f5f0c38e07d4080c8ad09c34f0496922b24f537c285c58554a160bd6a3b"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 1793,
+          "retained": 1660,
+          "visible": 0.9258226436140546,
+          "beforeHash": "2c33c95762b173a006baca2e9ed7eb9dcbb44bdc3c49b531324075ff4040a913",
+          "restoredHash": "2c33c95762b173a006baca2e9ed7eb9dcbb44bdc3c49b531324075ff4040a913"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 1806,
+          "retained": 1702,
+          "visible": 0.9424141749723145,
+          "beforeHash": "e416f6bf2b7c54e2be1a4f460ffe8d84f48de594b3a10787b8ad532f1ebea4a5",
+          "restoredHash": "e416f6bf2b7c54e2be1a4f460ffe8d84f48de594b3a10787b8ad532f1ebea4a5"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 1785,
+          "retained": 1785,
+          "visible": 1,
+          "beforeHash": "cb345d202911a88a34199b7410b7cf875be70b3bf4c8d7ab1ed79a085be910c6",
+          "restoredHash": "cb345d202911a88a34199b7410b7cf875be70b3bf4c8d7ab1ed79a085be910c6"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "4af6c6f5eb9eb06238ff73853f4651b70ac2a3b8aa0697a4b8d4a0d829bd0d16"
+    },
+    {
+      "arena": "acuatica",
+      "look": "base",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2543,
+          "retained": 2461,
+          "visible": 0.9677546205269367,
+          "beforeHash": "03692b2f5073979aeca0f9119d0a3ddf9f8e3d893aac4896985c27689995a414",
+          "restoredHash": "03692b2f5073979aeca0f9119d0a3ddf9f8e3d893aac4896985c27689995a414"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 2375,
+          "retained": 2275,
+          "visible": 0.9578947368421052,
+          "beforeHash": "d30b5cbda7f233143bc9f43a1cf51e29c32157f476747f9ed642decf82a67482",
+          "restoredHash": "d30b5cbda7f233143bc9f43a1cf51e29c32157f476747f9ed642decf82a67482"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 2372,
+          "retained": 2291,
+          "visible": 0.9658516020236088,
+          "beforeHash": "5987d86bb57ee61144d4303bb59bd38fb74f7ff1be9ae8cc07267d1708789e72",
+          "restoredHash": "5987d86bb57ee61144d4303bb59bd38fb74f7ff1be9ae8cc07267d1708789e72"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 2466,
+          "retained": 2379,
+          "visible": 0.9647201946472019,
+          "beforeHash": "bdcadb39d84f66adde09848e084d5f452ec8463f8a419491f9e8c09dbb9addb0",
+          "restoredHash": "bdcadb39d84f66adde09848e084d5f452ec8463f8a419491f9e8c09dbb9addb0"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "694bd19699a428b7c512f468828ca4e51eb1954bdc980e0c7167b29d37c40049"
+    },
+    {
+      "arena": "acuatica",
+      "look": "base",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2543,
+          "retained": 2302,
+          "visible": 0.9052300432559969,
+          "beforeHash": "3f00106f9c8da6a277796c775ebe1c69436fc40b882e1aa0573d12f4130c918a",
+          "restoredHash": "3f00106f9c8da6a277796c775ebe1c69436fc40b882e1aa0573d12f4130c918a"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 2377,
+          "retained": 2244,
+          "visible": 0.944047118216239,
+          "beforeHash": "6a74b965d7724ce79d0a13268ccc0305c8e166a3ea9068e22a46179e423ba2f4",
+          "restoredHash": "6a74b965d7724ce79d0a13268ccc0305c8e166a3ea9068e22a46179e423ba2f4"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 2361,
+          "retained": 2248,
+          "visible": 0.9521389241846675,
+          "beforeHash": "cd95265e78d5f1e28f5aed1e118715478e97e7883c17d13c7d256738ef92e1a6",
+          "restoredHash": "cd95265e78d5f1e28f5aed1e118715478e97e7883c17d13c7d256738ef92e1a6"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 2241,
+          "retained": 2241,
+          "visible": 1,
+          "beforeHash": "7ffd57614ac1d72d668190c1652cc6b27df32af71dd943a2acd4801ac55c6936",
+          "restoredHash": "7ffd57614ac1d72d668190c1652cc6b27df32af71dd943a2acd4801ac55c6936"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "df1ddb7e2cd451d0d3eaf56e246e585d41f75c87fc0edf89aac037b3ce5df039"
+    },
+    {
+      "arena": "acuatica",
+      "look": "tier4",
+      "density": "sparse",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1961,
+          "retained": 1878,
+          "visible": 0.9576746557878634,
+          "beforeHash": "4ddc9db19bb38bab162d97b5a2111a8bab9b5ba64db16f2a2c969b9ae0bfc11f",
+          "restoredHash": "4ddc9db19bb38bab162d97b5a2111a8bab9b5ba64db16f2a2c969b9ae0bfc11f"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 1783,
+          "retained": 1707,
+          "visible": 0.957375210319686,
+          "beforeHash": "07c148ab5d42e14fe0f0c295a9d169d13cc2903a7937e26a5df43c129323df1d",
+          "restoredHash": "07c148ab5d42e14fe0f0c295a9d169d13cc2903a7937e26a5df43c129323df1d"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 1792,
+          "retained": 1661,
+          "visible": 0.9268973214285714,
+          "beforeHash": "da245aea40338061efc2ab7a1a62e3e622c240a8764bfd103a1efa4f9e5e0f0a",
+          "restoredHash": "da245aea40338061efc2ab7a1a62e3e622c240a8764bfd103a1efa4f9e5e0f0a"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 1843,
+          "retained": 1724,
+          "visible": 0.9354313619099295,
+          "beforeHash": "0d4bc0fc2199df29427f0bd52d833c61b2db68cf7ff03d5501e87d09d07b6bb7",
+          "restoredHash": "0d4bc0fc2199df29427f0bd52d833c61b2db68cf7ff03d5501e87d09d07b6bb7"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6784
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6560
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 5408
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3152
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "2e4a8dd86cc17063f882db7d09d51ef91960b2d1d489871eb7877dbd3634f3ca"
+    },
+    {
+      "arena": "acuatica",
+      "look": "tier4",
+      "density": "sparse",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1971,
+          "retained": 1961,
+          "visible": 0.9949264332825977,
+          "beforeHash": "981213e39be4747a0b2c62240558956425a620e5c7d4f0d78a5c2cd0b1c858bb",
+          "restoredHash": "981213e39be4747a0b2c62240558956425a620e5c7d4f0d78a5c2cd0b1c858bb"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 1805,
+          "retained": 1805,
+          "visible": 1,
+          "beforeHash": "45af914ad175adb388769792400cafa34c61035d4b7a7e844e10a339c7089204",
+          "restoredHash": "45af914ad175adb388769792400cafa34c61035d4b7a7e844e10a339c7089204"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 1793,
+          "retained": 1793,
+          "visible": 1,
+          "beforeHash": "f845ceb319210ea959ea27b78f8421e0c47eacba6f3653cc1897557228b0511f",
+          "restoredHash": "f845ceb319210ea959ea27b78f8421e0c47eacba6f3653cc1897557228b0511f"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 1774,
+          "retained": 1774,
+          "visible": 1,
+          "beforeHash": "01196c8a88d8ebe305fb4d25155d441358eb0fca0726d5d766428e68cb2d722d",
+          "restoredHash": "01196c8a88d8ebe305fb4d25155d441358eb0fca0726d5d766428e68cb2d722d"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "9a81a7595f9b4e862f7a2dfe5c10cfc03921aeb78b9709761bc0846694396ef8"
+    },
+    {
+      "arena": "acuatica",
+      "look": "tier4",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2532,
+          "retained": 2446,
+          "visible": 0.9660347551342812,
+          "beforeHash": "76f6edf07a4ded98a1917ed3e2b4334ee3e879686fdb57084a7ec5d4563ca790",
+          "restoredHash": "76f6edf07a4ded98a1917ed3e2b4334ee3e879686fdb57084a7ec5d4563ca790"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 2371,
+          "retained": 2294,
+          "visible": 0.9675242513707296,
+          "beforeHash": "89bc39daef25b5594aed6dad4f3c4ab0c00552cc049c24148e8f7d965c67f832",
+          "restoredHash": "89bc39daef25b5594aed6dad4f3c4ab0c00552cc049c24148e8f7d965c67f832"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 2347,
+          "retained": 2218,
+          "visible": 0.9450362164465275,
+          "beforeHash": "c27804ca2ccf59e40b9fdd33a796bcad3976ecb152e2079eb4b6821b75114e89",
+          "restoredHash": "c27804ca2ccf59e40b9fdd33a796bcad3976ecb152e2079eb4b6821b75114e89"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 2477,
+          "retained": 2357,
+          "visible": 0.9515542995559144,
+          "beforeHash": "bb3cd0d19f4bea76eac404cc831d39d90b4c3cbbdb77089adbac106ddf87fb1e",
+          "restoredHash": "bb3cd0d19f4bea76eac404cc831d39d90b4c3cbbdb77089adbac106ddf87fb1e"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6784
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6560
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 5408
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3152
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "a8a9199d2ddaf74288cd259969b878a60e39bbda0822cbabab3cc68dcd9f82f8"
+    },
+    {
+      "arena": "acuatica",
+      "look": "tier4",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2542,
+          "retained": 2532,
+          "visible": 0.996066089693155,
+          "beforeHash": "f6649de6c87ed93a2aa3b9523adf545e08409cf9d90b1e0dbb1a6e1725219a40",
+          "restoredHash": "f6649de6c87ed93a2aa3b9523adf545e08409cf9d90b1e0dbb1a6e1725219a40"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 2391,
+          "retained": 2391,
+          "visible": 1,
+          "beforeHash": "77cfa3c5d66bb33a0d1d6a059926e074957555bde1603a4036113d2f603d3cbe",
+          "restoredHash": "77cfa3c5d66bb33a0d1d6a059926e074957555bde1603a4036113d2f603d3cbe"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 2365,
+          "retained": 2365,
+          "visible": 1,
+          "beforeHash": "e9c246ebc9fd33a4dec3db65c22fe542792be25e155f800985ca734d7758e90f",
+          "restoredHash": "e9c246ebc9fd33a4dec3db65c22fe542792be25e155f800985ca734d7758e90f"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 2227,
+          "retained": 2227,
+          "visible": 1,
+          "beforeHash": "94f2645a5e281112c2daa016fcb3b92c5619416b1d8fa13d57f65b9fa4059e78",
+          "restoredHash": "94f2645a5e281112c2daa016fcb3b92c5619416b1d8fa13d57f65b9fa4059e78"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "5336f7c9c0c6f1671da2679edf8e2fe7dbb21b64f963c810fdcb528b62f9bd35"
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "density": "sparse",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1975,
+          "retained": 1896,
+          "visible": 0.96,
+          "beforeHash": "43bfd02af8d1797b8f78bcd3408794bf150227b44d4111664293bc4441781a10",
+          "restoredHash": "43bfd02af8d1797b8f78bcd3408794bf150227b44d4111664293bc4441781a10"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 1785,
+          "retained": 1658,
+          "visible": 0.9288515406162465,
+          "beforeHash": "63e7182eef49f8b529fd89670e0fe2f5ff5c8576406d88bc0b692c4573978233",
+          "restoredHash": "63e7182eef49f8b529fd89670e0fe2f5ff5c8576406d88bc0b692c4573978233"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 1794,
+          "retained": 1690,
+          "visible": 0.9420289855072463,
+          "beforeHash": "a3215e60ab153611662d0225d97556a4950e40b9f14d596df457e77d32b48eb0",
+          "restoredHash": "a3215e60ab153611662d0225d97556a4950e40b9f14d596df457e77d32b48eb0"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 1838,
+          "retained": 1747,
+          "visible": 0.9504896626768227,
+          "beforeHash": "4db774e0f1b25d9f92dfeca76f047df33089ab7f7af776e8077806807293f176",
+          "restoredHash": "4db774e0f1b25d9f92dfeca76f047df33089ab7f7af776e8077806807293f176"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "e283aa3be0d178b231ce498ddb35d14365ad325a7f479f834ab8ef5e21dc0495"
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "density": "sparse",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1959,
+          "retained": 1713,
+          "visible": 0.8744257274119449,
+          "beforeHash": "2171e87114e467ef664d4e262c86bc8fb30aa09241ed7ddf4246b856514b66b7",
+          "restoredHash": "2171e87114e467ef664d4e262c86bc8fb30aa09241ed7ddf4246b856514b66b7"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 1763,
+          "retained": 1630,
+          "visible": 0.9245604083947816,
+          "beforeHash": "610da55ec931955b62cc9196097c194c6f073fec4156959c1de71275230f823c",
+          "restoredHash": "610da55ec931955b62cc9196097c194c6f073fec4156959c1de71275230f823c"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 1784,
+          "retained": 1672,
+          "visible": 0.9372197309417041,
+          "beforeHash": "7403fc92d2396439d4b88c4cbddbf7bb603e5f00a27d2356abb5fb003f0a4998",
+          "restoredHash": "7403fc92d2396439d4b88c4cbddbf7bb603e5f00a27d2356abb5fb003f0a4998"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 1811,
+          "retained": 1811,
+          "visible": 1,
+          "beforeHash": "614e02a123686165e4a79d31b83a9dfbf4814c082f2a749e5b46cd52d8edaf14",
+          "restoredHash": "614e02a123686165e4a79d31b83a9dfbf4814c082f2a749e5b46cd52d8edaf14"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "ed677c0fe148f705d58b8a8f1763fb7685ed195798616d9208611bef6ddc07e6"
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2542,
+          "retained": 2459,
+          "visible": 0.9673485444531865,
+          "beforeHash": "7e6c3e99c700c039386e1e2eacb3e7b43c7d1b5452c3f4ee63ba9860101b822e",
+          "restoredHash": "7e6c3e99c700c039386e1e2eacb3e7b43c7d1b5452c3f4ee63ba9860101b822e"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 2370,
+          "retained": 2239,
+          "visible": 0.9447257383966244,
+          "beforeHash": "6a42d96d949c8631287c1f47faba2fd6bbe8cde97e3c887ec992262e76103243",
+          "restoredHash": "6a42d96d949c8631287c1f47faba2fd6bbe8cde97e3c887ec992262e76103243"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 2373,
+          "retained": 2270,
+          "visible": 0.9565950273914876,
+          "beforeHash": "91ff96f2b522ffc03fc0c7ada5763f0cd11461447eeb338adb8a5421a3954679",
+          "restoredHash": "91ff96f2b522ffc03fc0c7ada5763f0cd11461447eeb338adb8a5421a3954679"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 2458,
+          "retained": 2371,
+          "visible": 0.9646053702196908,
+          "beforeHash": "23d49575eb9dfb1771375cd723ec697616e9f9ba94ddc7a226fcd90081076aee",
+          "restoredHash": "23d49575eb9dfb1771375cd723ec697616e9f9ba94ddc7a226fcd90081076aee"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "fdc8425e7e93fbbfac9fe37a77beb10db249c6a70b63e53ae9f0bf408de84618"
+    },
+    {
+      "arena": "minas",
+      "look": "base",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2542,
+          "retained": 2297,
+          "visible": 0.9036191974822974,
+          "beforeHash": "996cdd28895cdd3fbf803eca964d582e8bb9fd2a406714ae1cba6d6acfd0d450",
+          "restoredHash": "996cdd28895cdd3fbf803eca964d582e8bb9fd2a406714ae1cba6d6acfd0d450"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 2362,
+          "retained": 2227,
+          "visible": 0.9428450465707028,
+          "beforeHash": "703977353de1ad042611d3bcbb2558c525045f5f1d36af81d353dd1a681f454f",
+          "restoredHash": "703977353de1ad042611d3bcbb2558c525045f5f1d36af81d353dd1a681f454f"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 2377,
+          "retained": 2238,
+          "visible": 0.9415229280605806,
+          "beforeHash": "8cbb4e26c73b1707b0724e4a43c5d57ffcb6d572db0efac37251ea0ae3f44a73",
+          "restoredHash": "8cbb4e26c73b1707b0724e4a43c5d57ffcb6d572db0efac37251ea0ae3f44a73"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 2261,
+          "retained": 2261,
+          "visible": 1,
+          "beforeHash": "725e6775752d15a11cbf2c494ca29bdcce6de379ddedc881dfda2515c404e34f",
+          "restoredHash": "725e6775752d15a11cbf2c494ca29bdcce6de379ddedc881dfda2515c404e34f"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "fdc8425e7e93fbbfac9fe37a77beb10db249c6a70b63e53ae9f0bf408de84618"
+    },
+    {
+      "arena": "minas",
+      "look": "tier4",
+      "density": "sparse",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1963,
+          "retained": 1877,
+          "visible": 0.95618950585838,
+          "beforeHash": "9477e487d0d75ebc742fbeac61597283261359156479b6334bd7d70e610a502d",
+          "restoredHash": "9477e487d0d75ebc742fbeac61597283261359156479b6334bd7d70e610a502d"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 1763,
+          "retained": 1638,
+          "visible": 0.9290981281905842,
+          "beforeHash": "fdd0c5adf0eb671812cba04bc46f9fcae2ae301d087c243705ab9b05fe9c98bc",
+          "restoredHash": "fdd0c5adf0eb671812cba04bc46f9fcae2ae301d087c243705ab9b05fe9c98bc"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 1776,
+          "retained": 1669,
+          "visible": 0.9397522522522522,
+          "beforeHash": "dc99a56330a4212ff7e2b8605314b28789221944348b67d9483bac6fef38e06a",
+          "restoredHash": "dc99a56330a4212ff7e2b8605314b28789221944348b67d9483bac6fef38e06a"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 1844,
+          "retained": 1722,
+          "visible": 0.9338394793926247,
+          "beforeHash": "2a695a1c6ac4fea907b23c85d53a0706c13fcb4c3cf15c655c17ee05dad6371a",
+          "restoredHash": "2a695a1c6ac4fea907b23c85d53a0706c13fcb4c3cf15c655c17ee05dad6371a"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6784
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6560
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 5408
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3152
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "673dc70e59a1790f2bd38a02860004a834ef68faa9600ef41887407e1414f4b0"
+    },
+    {
+      "arena": "minas",
+      "look": "tier4",
+      "density": "sparse",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 1973,
+          "retained": 1963,
+          "visible": 0.994931576279777,
+          "beforeHash": "222a80ade4a7ffe52a8abaf9b90917b7435082e15e93e5823c8341476affd684",
+          "restoredHash": "222a80ade4a7ffe52a8abaf9b90917b7435082e15e93e5823c8341476affd684"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 1807,
+          "retained": 1807,
+          "visible": 1,
+          "beforeHash": "5883adb3957dc4be034f89542aa4a1cb4f84df70a1d4555db335ade486ab6bde",
+          "restoredHash": "5883adb3957dc4be034f89542aa4a1cb4f84df70a1d4555db335ade486ab6bde"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 1763,
+          "retained": 1763,
+          "visible": 1,
+          "beforeHash": "f4dc19d285b70b6e7f029d4a41b266db7ad95c0514eec83441c6b4d06345f155",
+          "restoredHash": "f4dc19d285b70b6e7f029d4a41b266db7ad95c0514eec83441c6b4d06345f155"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 1767,
+          "retained": 1767,
+          "visible": 1,
+          "beforeHash": "4799a216dc7cb4ec58a4129e88e68109fb791febd780a7773d7bece65fc6820c",
+          "restoredHash": "4799a216dc7cb4ec58a4129e88e68109fb791febd780a7773d7bece65fc6820c"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "673dc70e59a1790f2bd38a02860004a834ef68faa9600ef41887407e1414f4b0"
+    },
+    {
+      "arena": "minas",
+      "look": "tier4",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2651,
+          "retained": 2535,
+          "visible": 0.9562429271972841,
+          "beforeHash": "927e62d50b579ded232d0af47d63bf8116ad5abb72af9ba0facb58c4974b8f5e",
+          "restoredHash": "927e62d50b579ded232d0af47d63bf8116ad5abb72af9ba0facb58c4974b8f5e"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "restore": true,
+          "state": true,
+          "opaque": 2437,
+          "retained": 2327,
+          "visible": 0.954862535904801,
+          "beforeHash": "7123b5cf067e458ea087b705881f76b499d1a916cef4b685133b382a32a1a8b0",
+          "restoredHash": "7123b5cf067e458ea087b705881f76b499d1a916cef4b685133b382a32a1a8b0"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "restore": true,
+          "state": true,
+          "opaque": 2367,
+          "retained": 2233,
+          "visible": 0.9433882551753274,
+          "beforeHash": "c6a666dc3c57c8709f6c72515b5132d58eda8bb28b2e87cde7753fe9b749fb31",
+          "restoredHash": "c6a666dc3c57c8709f6c72515b5132d58eda8bb28b2e87cde7753fe9b749fb31"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "restore": true,
+          "state": true,
+          "opaque": 2390,
+          "retained": 2283,
+          "visible": 0.9552301255230126,
+          "beforeHash": "c28d5b05b54de7849fae9a92d82cb98e53d852a2619e3795b9d0d80d8b49a12a",
+          "restoredHash": "c28d5b05b54de7849fae9a92d82cb98e53d852a2619e3795b9d0d80d8b49a12a"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6784
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 6560
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 5408
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 90.45,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3152
+            }
+          ]
+        }
+      ],
+      "cupDraws": 243,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "b5a3e771f1add2bf0657b1a7064f8d258ba5c1ee8b2f5349371a56ab60e6a660"
+    },
+    {
+      "arena": "minas",
+      "look": "tier4",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "restore": true,
+          "state": true,
+          "opaque": 2648,
+          "retained": 2648,
+          "visible": 1,
+          "beforeHash": "ece175853213c0f5564c162fec660036d7a29e8c4862712d8a26480c2fd7c6b7",
+          "restoredHash": "ece175853213c0f5564c162fec660036d7a29e8c4862712d8a26480c2fd7c6b7"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "restore": true,
+          "state": true,
+          "opaque": 2422,
+          "retained": 2422,
+          "visible": 1,
+          "beforeHash": "5421a5a115b889e4cc26af1ef15c53411d3fd577e7182f8a045c8a9138f4cf4b",
+          "restoredHash": "5421a5a115b889e4cc26af1ef15c53411d3fd577e7182f8a045c8a9138f4cf4b"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "restore": true,
+          "state": true,
+          "opaque": 2350,
+          "retained": 2350,
+          "visible": 1,
+          "beforeHash": "e8d3a8e023ceddc00f84f750b110e9aa08977e1060ddba5ce1838652840e0293",
+          "restoredHash": "e8d3a8e023ceddc00f84f750b110e9aa08977e1060ddba5ce1838652840e0293"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "restore": true,
+          "state": true,
+          "opaque": 2222,
+          "retained": 2222,
+          "visible": 1,
+          "beforeHash": "dc382340fa513b32b52c7070aae64baedcbb937f760387f1f2a3b076189b8ef8",
+          "restoredHash": "dc382340fa513b32b52c7070aae64baedcbb937f760387f1f2a3b076189b8ef8"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 304,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 512,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "maura_shears~p",
+              "t": 656,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 49,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 4,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 7
+      },
+      "sceneHash": "b5a3e771f1add2bf0657b1a7064f8d258ba5c1ee8b2f5349371a56ab60e6a660"
+    }
+  ],
+  "errors": []
+}

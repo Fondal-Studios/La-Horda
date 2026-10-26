@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "state": "EN_CORRECCION",
+  "method": "Original deterministic native SfaStrip integer geometry. No imagegen or external paid service.",
+  "source": "art-source/entregas/maura-kit-20261025/primera-pasada-01/source-native.js",
+  "sourceSha256": "30eb4cbafe7a028b20217378ad18d232c39d518c4190b8657ac67d4565e5b4b2",
+  "engine": "js/champions/skill-fx-a/engine.js",
+  "exportCommand": "node tools/vfx/export-maura-candidates.js",
+  "previewCommand": "node tools/vfx/preview-maura-candidates.js",
+  "compositionCommand": "node tools/vfx/audit-maura-candidates.js",
+  "environment": {
+    "NODE_PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "CHROMIUM_PATH": "/tmp/chromium"
+  },
+  "art": {
+    "roots": {
+      "block": "B163",
+      "component": "A-FX-maura-h1/root-path",
+      "cell": [
+        168,
+        40
+      ],
+      "frames": 12,
+      "phases": {
+        "anticipation": [
+          0,
+          2
+        ],
+        "impact": [
+          3,
+          6
+        ],
+        "dissipation": [
+          7,
+          10
+        ],
+        "transparentClose": [
+          11,
+          11
+        ]
+      },
+      "pivot": [
+        0,
+        20
+      ],
+      "proposedWorld": [
+        245,
+        52
+      ],
+      "loop": false
+    },
+    "bark": {
+      "block": "B164",
+      "component": "A-FX-maura-h2/bark-shell",
+      "cell": [
+        64,
+        80
+      ],
+      "frames": 18,
+      "phases": {
+        "growth": [
+          0,
+          3
+        ],
+        "closed": [
+          4,
+          5
+        ],
+        "loop": [
+          6,
+          13
+        ],
+        "release": [
+          14,
+          16
+        ],
+        "transparentClose": [
+          17,
+          17
+        ]
+      },
+      "pivot": [
+        32,
+        75
+      ],
+      "proposedWorld": [
+        64,
+        80
+      ],
+      "loop": [
+        6,
+        13
+      ]
+    },
+    "shears": {
+      "block": "B165",
+      "component": "A-FX-maura-h3/pruning-shears",
+      "cell": [
+        152,
+        152
+      ],
+      "frames": 12,
+      "phases": {
+        "anticipation": [
+          0,
+          2
+        ],
+        "impact": [
+          3,
+          6
+        ],
+        "dissipation": [
+          7,
+          10
+        ],
+        "transparentClose": [
+          11,
+          11
+        ]
+      },
+      "pivot": [
+        76,
+        76
+      ],
+      "proposedWorld": [
+        220,
+        220
+      ],
+      "loop": false
+    }
+  },
+  "timingWarning": "Preview 100ms/frame and fixed composition samples are diagnostic only, not cast timing contracts. Hook durations must use actual cast/object state and preserve gameplay."
+}

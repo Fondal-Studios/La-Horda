@@ -1,0 +1,1381 @@
+{
+  "rows": [
+    {
+      "signaturePasses": 32,
+      "signatureEvents": [
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 16,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 32,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 48,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 64,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 80,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 96,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 112,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 128,
+            "dur": 460
+          }
+        ]
+      ],
+      "arena": "bosque",
+      "look": "base",
+      "density": "dense",
+      "slot": 0,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2871,
+          "retained": 2723,
+          "visible": 0.9484500174155347,
+          "parentHash": null,
+          "beforeHash": "3432782ac0a3dc4551d855cb2d96ddbf7a729fe5ab6439d0f8b88d5be075d188",
+          "restoredHash": "3432782ac0a3dc4551d855cb2d96ddbf7a729fe5ab6439d0f8b88d5be075d188"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2704,
+          "retained": 2597,
+          "visible": 0.9604289940828402,
+          "parentHash": null,
+          "beforeHash": "b3b2e76f284cfd36bb7db7a42ebec548f3e306d9703e98e2741349769496912d",
+          "restoredHash": "b3b2e76f284cfd36bb7db7a42ebec548f3e306d9703e98e2741349769496912d"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2766,
+          "retained": 2766,
+          "visible": 1,
+          "parentHash": null,
+          "beforeHash": "97f2c8d453816aea27cc3acc0b00d99eaace76ecd72d4e1c1fc2dcb0081e5903",
+          "restoredHash": "97f2c8d453816aea27cc3acc0b00d99eaace76ecd72d4e1c1fc2dcb0081e5903"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2745,
+          "retained": 2745,
+          "visible": 1,
+          "parentHash": null,
+          "beforeHash": "75d4f93f8bd08643f2ecc9da5c9b52cb7945d8f4d19d7ece5cf7dceba0c9c8d9",
+          "restoredHash": "75d4f93f8bd08643f2ecc9da5c9b52cb7945d8f4d19d7ece5cf7dceba0c9c8d9"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn",
+              "t": 128,
+              "dur": 720
+            },
+            {
+              "theme": "thorn",
+              "t": 128,
+              "dur": 420
+            },
+            {
+              "theme": "thorn~p",
+              "t": 128,
+              "dur": 340
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_thorns",
+              "life": 2272
+            }
+          ]
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn",
+              "t": 304,
+              "dur": 720
+            },
+            {
+              "theme": "thorn",
+              "t": 304,
+              "dur": 420
+            },
+            {
+              "theme": "thorn~p",
+              "t": 304,
+              "dur": 340
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_thorns",
+              "life": 2096
+            }
+          ]
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn",
+              "t": 512,
+              "dur": 720
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_thorns",
+              "life": 1888
+            }
+          ]
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn",
+              "t": 656,
+              "dur": 720
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_thorns",
+              "life": 1744
+            }
+          ]
+        }
+      ],
+      "cupDraws": 0,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "9d898d407142d8ed54bd9f93f9f03f5d70412c5f117d256ef7d8075a7217f7e2"
+    },
+    {
+      "signaturePasses": 32,
+      "signatureEvents": [
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 16,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 32,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 48,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 64,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 80,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 96,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 112,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 128,
+            "dur": 460
+          }
+        ]
+      ],
+      "arena": "bosque",
+      "look": "base",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2542,
+          "retained": 2293,
+          "visible": 0.9020456333595595,
+          "parentHash": null,
+          "beforeHash": "892e5223a845f5e7e5732b24325a2afe7dd29c6b6f2970f3a39c90f9b091a01a",
+          "restoredHash": "892e5223a845f5e7e5732b24325a2afe7dd29c6b6f2970f3a39c90f9b091a01a"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2343,
+          "retained": 2149,
+          "visible": 0.9172001707212974,
+          "parentHash": null,
+          "beforeHash": "7d311fd8dfc4cb8eccaa6f877a23195360dff9aa18eeefe34e81559c07c5e2cf",
+          "restoredHash": "7d311fd8dfc4cb8eccaa6f877a23195360dff9aa18eeefe34e81559c07c5e2cf"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2394,
+          "retained": 2394,
+          "visible": 1,
+          "parentHash": null,
+          "beforeHash": "2a52357e59a9507adecf6d9327e65948ef0847f7c9e0b20cd21a78b4bd30c98a",
+          "restoredHash": "2a52357e59a9507adecf6d9327e65948ef0847f7c9e0b20cd21a78b4bd30c98a"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2463,
+          "retained": 2463,
+          "visible": 1,
+          "parentHash": null,
+          "beforeHash": "130da1be58847f3f950ab638fe47593efa4201d1b9179c7a32694839c4eb9a0d",
+          "restoredHash": "130da1be58847f3f950ab638fe47593efa4201d1b9179c7a32694839c4eb9a0d"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [
+            {
+              "theme": "thorn~h",
+              "t": 128,
+              "dur": 640
+            },
+            {
+              "theme": "thorn~h",
+              "t": 128,
+              "dur": 1600
+            },
+            {
+              "theme": "thorn~p",
+              "t": 128,
+              "dur": 380
+            },
+            {
+              "theme": "thorn~p",
+              "t": 8,
+              "dur": 700
+            },
+            {
+              "theme": "thorn~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [
+            {
+              "theme": "thorn~h",
+              "t": 352,
+              "dur": 640
+            },
+            {
+              "theme": "thorn~h",
+              "t": 352,
+              "dur": 1600
+            },
+            {
+              "theme": "thorn~p",
+              "t": 352,
+              "dur": 380
+            },
+            {
+              "theme": "thorn~p",
+              "t": 232,
+              "dur": 700
+            },
+            {
+              "theme": "thorn~p",
+              "t": 352,
+              "dur": 700
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [
+            {
+              "theme": "thorn~h",
+              "t": 1504,
+              "dur": 1600
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 0,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "790594f4b363cb150f952105f5ce1c787609b59eb88639a000f2cc471f474ed9"
+    },
+    {
+      "signaturePasses": 32,
+      "signatureEvents": [
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 16,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 32,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 48,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 64,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 80,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 96,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 112,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 128,
+            "dur": 460
+          }
+        ]
+      ],
+      "arena": "bosque",
+      "look": "base",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2542,
+          "retained": 2283,
+          "visible": 0.8981117230527144,
+          "parentHash": null,
+          "beforeHash": "20657e6349cef724ea9ef477110a456be47c83fc5ee12f97f38455b67ff9048e",
+          "restoredHash": "20657e6349cef724ea9ef477110a456be47c83fc5ee12f97f38455b67ff9048e"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2345,
+          "retained": 2134,
+          "visible": 0.9100213219616204,
+          "parentHash": null,
+          "beforeHash": "a7b54cb61d809d3785716c4f90b7efa17a604c47e87fe3fc022957907b77c4ee",
+          "restoredHash": "a7b54cb61d809d3785716c4f90b7efa17a604c47e87fe3fc022957907b77c4ee"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2392,
+          "retained": 2392,
+          "visible": 1,
+          "parentHash": null,
+          "beforeHash": "0c99dd348a1d1376d6228f82f1ce5815748db30d85c656ad8fb12f7d736a7f88",
+          "restoredHash": "0c99dd348a1d1376d6228f82f1ce5815748db30d85c656ad8fb12f7d736a7f88"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2227,
+          "retained": 2227,
+          "visible": 1,
+          "parentHash": null,
+          "beforeHash": "0ccaaf6c9ec6c3986c9827d83bd01593c7535fd83e92c91c59ac0f2df64ffe97",
+          "restoredHash": "0ccaaf6c9ec6c3986c9827d83bd01593c7535fd83e92c91c59ac0f2df64ffe97"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn~p",
+              "t": 128,
+              "dur": 700
+            },
+            {
+              "theme": "thorn~p",
+              "t": 128,
+              "dur": 380
+            },
+            {
+              "theme": "thorn",
+              "t": 8,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn~p",
+              "t": 304,
+              "dur": 700
+            },
+            {
+              "theme": "thorn~p",
+              "t": 304,
+              "dur": 380
+            },
+            {
+              "theme": "thorn",
+              "t": 184,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn~p",
+              "t": 512,
+              "dur": 700
+            },
+            {
+              "theme": "thorn",
+              "t": 392,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn~p",
+              "t": 656,
+              "dur": 700
+            },
+            {
+              "theme": "thorn",
+              "t": 536,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 0,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "0c4cbc2d7dd83a6219dd55eb4f4006ce302db9fc78e8150de96eecf853699399"
+    },
+    {
+      "signaturePasses": 32,
+      "signatureEvents": [
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 16,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 32,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 48,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 64,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 80,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 96,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 112,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 0,
+            "t": 128,
+            "dur": 460
+          }
+        ]
+      ],
+      "arena": "infernal",
+      "look": "base",
+      "density": "dense",
+      "slot": 0,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2912,
+          "retained": 2768,
+          "visible": 0.9505494505494505,
+          "parentHash": null,
+          "beforeHash": "c4f59f709f4896338e1448a8c87595f67a0434092d47c01d21af90a1c0caa280",
+          "restoredHash": "c4f59f709f4896338e1448a8c87595f67a0434092d47c01d21af90a1c0caa280"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2751,
+          "retained": 2639,
+          "visible": 0.9592875318066157,
+          "parentHash": null,
+          "beforeHash": "5e015096d735a5d5c844b0f9d43b04b9e61cb63b26cb28a2f56f3dc233944d43",
+          "restoredHash": "5e015096d735a5d5c844b0f9d43b04b9e61cb63b26cb28a2f56f3dc233944d43"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2715,
+          "retained": 2715,
+          "visible": 1,
+          "parentHash": null,
+          "beforeHash": "67ab3bba3dbe91ab09f5236fa6e34f5b763a554384ba92f260487fb5926bfc59",
+          "restoredHash": "67ab3bba3dbe91ab09f5236fa6e34f5b763a554384ba92f260487fb5926bfc59"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2774,
+          "retained": 2774,
+          "visible": 1,
+          "parentHash": null,
+          "beforeHash": "998df640fef1fa37b94f2c5fad4c8854e5e1e3e415aa89343d8bf0e10deab703",
+          "restoredHash": "998df640fef1fa37b94f2c5fad4c8854e5e1e3e415aa89343d8bf0e10deab703"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn",
+              "t": 128,
+              "dur": 720
+            },
+            {
+              "theme": "thorn",
+              "t": 128,
+              "dur": 420
+            },
+            {
+              "theme": "thorn~p",
+              "t": 128,
+              "dur": 340
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_thorns",
+              "life": 2272
+            }
+          ]
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn",
+              "t": 304,
+              "dur": 720
+            },
+            {
+              "theme": "thorn",
+              "t": 304,
+              "dur": 420
+            },
+            {
+              "theme": "thorn~p",
+              "t": 304,
+              "dur": 340
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_thorns",
+              "life": 2096
+            }
+          ]
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn",
+              "t": 512,
+              "dur": 720
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_thorns",
+              "life": 1888
+            }
+          ]
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn",
+              "t": 656,
+              "dur": 720
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_thorns",
+              "life": 1744
+            }
+          ]
+        }
+      ],
+      "cupDraws": 0,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "dabba328651d11b59370e5ffd29d965bec9ca69cbd26db211896d215554f4af8"
+    },
+    {
+      "signaturePasses": 32,
+      "signatureEvents": [
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 16,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 32,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 48,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 64,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 80,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 96,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 112,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 1,
+            "t": 128,
+            "dur": 460
+          }
+        ]
+      ],
+      "arena": "infernal",
+      "look": "base",
+      "density": "dense",
+      "slot": 1,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2529,
+          "retained": 2282,
+          "visible": 0.9023329379201266,
+          "parentHash": null,
+          "beforeHash": "f929542d3c2ef5d8b96dae9b20a68a5473e78f88ccd50fb40dd774583fef1d9c",
+          "restoredHash": "f929542d3c2ef5d8b96dae9b20a68a5473e78f88ccd50fb40dd774583fef1d9c"
+        },
+        {
+          "t": 350,
+          "elapsed": 352,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2386,
+          "retained": 2190,
+          "visible": 0.9178541492036881,
+          "parentHash": null,
+          "beforeHash": "5e9767f2610eb6e43e4a7db7417c50850b0ce6c3eaaf4d43ad237b794e2bc253",
+          "restoredHash": "5e9767f2610eb6e43e4a7db7417c50850b0ce6c3eaaf4d43ad237b794e2bc253"
+        },
+        {
+          "t": 1500,
+          "elapsed": 1504,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2372,
+          "retained": 2372,
+          "visible": 1,
+          "parentHash": null,
+          "beforeHash": "f44c813a9c8ce3ba6ef42f92e53304dbac0a658afccfe5646df3c31e053f6f53",
+          "restoredHash": "f44c813a9c8ce3ba6ef42f92e53304dbac0a658afccfe5646df3c31e053f6f53"
+        },
+        {
+          "t": 3750,
+          "elapsed": 3760,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2465,
+          "retained": 2465,
+          "visible": 1,
+          "parentHash": null,
+          "beforeHash": "4ef148e5814646944ee816da38a6a490756fb3329bcdc31ed5d085e9150e3935",
+          "restoredHash": "4ef148e5814646944ee816da38a6a490756fb3329bcdc31ed5d085e9150e3935"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 35.2,
+          "pool": [
+            {
+              "theme": "thorn~h",
+              "t": 128,
+              "dur": 640
+            },
+            {
+              "theme": "thorn~h",
+              "t": 128,
+              "dur": 1600
+            },
+            {
+              "theme": "thorn~p",
+              "t": 128,
+              "dur": 380
+            },
+            {
+              "theme": "thorn~p",
+              "t": 8,
+              "dur": 700
+            },
+            {
+              "theme": "thorn~p",
+              "t": 128,
+              "dur": 700
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3872
+            }
+          ]
+        },
+        {
+          "elapsed": 352,
+          "shield": 35.2,
+          "pool": [
+            {
+              "theme": "thorn~h",
+              "t": 352,
+              "dur": 640
+            },
+            {
+              "theme": "thorn~h",
+              "t": 352,
+              "dur": 1600
+            },
+            {
+              "theme": "thorn~p",
+              "t": 352,
+              "dur": 380
+            },
+            {
+              "theme": "thorn~p",
+              "t": 232,
+              "dur": 700
+            },
+            {
+              "theme": "thorn~p",
+              "t": 352,
+              "dur": 700
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 3648
+            }
+          ]
+        },
+        {
+          "elapsed": 1504,
+          "shield": 35.2,
+          "pool": [
+            {
+              "theme": "thorn~h",
+              "t": 1504,
+              "dur": 1600
+            }
+          ],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 2496
+            }
+          ]
+        },
+        {
+          "elapsed": 3760,
+          "shield": 35.2,
+          "pool": [],
+          "objects": [
+            {
+              "kind": "ex_bark",
+              "life": 240
+            }
+          ]
+        }
+      ],
+      "cupDraws": 0,
+      "bodyDraws": 992,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "dfff05ed0b836ff08698256cb312419cf916151dbd693d461ee387fb042840cf"
+    },
+    {
+      "signaturePasses": 32,
+      "signatureEvents": [
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 16,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 32,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 48,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 64,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 80,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 96,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 112,
+            "dur": 460
+          }
+        ],
+        [
+          {
+            "key": "maura",
+            "slot": 2,
+            "t": 128,
+            "dur": 460
+          }
+        ]
+      ],
+      "arena": "infernal",
+      "look": "base",
+      "density": "dense",
+      "slot": 2,
+      "ab": [
+        {
+          "t": 120,
+          "elapsed": 128,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2529,
+          "retained": 2272,
+          "visible": 0.8983788058521155,
+          "parentHash": null,
+          "beforeHash": "a8e7913b535c9fdf18c85ff54c70d66651117d095cc63aa2510f45cfc61a1781",
+          "restoredHash": "a8e7913b535c9fdf18c85ff54c70d66651117d095cc63aa2510f45cfc61a1781"
+        },
+        {
+          "t": 300,
+          "elapsed": 304,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2370,
+          "retained": 2157,
+          "visible": 0.910126582278481,
+          "parentHash": null,
+          "beforeHash": "d37e1f85451ddefb8f9a478aee1fa2a9b2254880ff08a427f9cb021ae946479d",
+          "restoredHash": "d37e1f85451ddefb8f9a478aee1fa2a9b2254880ff08a427f9cb021ae946479d"
+        },
+        {
+          "t": 500,
+          "elapsed": 512,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2376,
+          "retained": 2376,
+          "visible": 1,
+          "parentHash": null,
+          "beforeHash": "48cce8c660e0dcee548cf71f12aae5129de41725255243184be82a84fc81f5a9",
+          "restoredHash": "48cce8c660e0dcee548cf71f12aae5129de41725255243184be82a84fc81f5a9"
+        },
+        {
+          "t": 650,
+          "elapsed": 656,
+          "parentState": null,
+          "restore": true,
+          "state": true,
+          "opaque": 2242,
+          "retained": 2242,
+          "visible": 1,
+          "parentHash": null,
+          "beforeHash": "531551ae1673f0c1023811955e97e613e3ba18557f87113a7d591fb7dbb09b8b",
+          "restoredHash": "531551ae1673f0c1023811955e97e613e3ba18557f87113a7d591fb7dbb09b8b"
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 128,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn~p",
+              "t": 128,
+              "dur": 700
+            },
+            {
+              "theme": "thorn~p",
+              "t": 128,
+              "dur": 380
+            },
+            {
+              "theme": "thorn",
+              "t": 8,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 304,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn~p",
+              "t": 304,
+              "dur": 700
+            },
+            {
+              "theme": "thorn~p",
+              "t": 304,
+              "dur": 380
+            },
+            {
+              "theme": "thorn",
+              "t": 184,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 512,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn~p",
+              "t": 512,
+              "dur": 700
+            },
+            {
+              "theme": "thorn",
+              "t": 392,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        },
+        {
+          "elapsed": 656,
+          "shield": 0,
+          "pool": [
+            {
+              "theme": "thorn~p",
+              "t": 656,
+              "dur": 700
+            },
+            {
+              "theme": "thorn",
+              "t": 536,
+              "dur": 700
+            }
+          ],
+          "objects": []
+        }
+      ],
+      "cupDraws": 0,
+      "bodyDraws": 216,
+      "resolved": {
+        "skin": null,
+        "pack": "maura",
+        "equipment": 0,
+        "setPieces": 0,
+        "croma": null,
+        "tier": 0
+      },
+      "sceneHash": "6df87531b08785a2e67c0a32642a2e498f7c2e1202063f22cbe96afad1750c1d"
+    }
+  ],
+  "errors": []
+}

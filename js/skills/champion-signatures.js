@@ -59,6 +59,98 @@ function drawBrakkSignaturePixels(slot,gap){
     ctx.fillStyle='#f4e5ba';ctx.fillRect(-7,-6,2,2);ctx.fillRect(2,-6,2,2);
   }
 }
+// Maura normal casts: root fork, split bark and pruning shears above the canopy.
+// Same event, pool and 460ms lifetime; no owner state or gameplay footprint.
+let mauraSignatureAtlas=null;
+function drawMauraNormalSignature(s){
+  const q=s.t/s.dur,calm=typeof JUICE!=='undefined'&&JUICE.reduceMotion;
+  const frame=calm?3:Math.min(3,Math.floor(q*12));
+  if(!mauraSignatureAtlas){
+    const cv=document.createElement('canvas');cv.width=96;cv.height=72;
+    const g=cv.getContext('2d');
+    for(let slot=0;slot<3;slot++)for(let f=0;f<4;f++){
+      const pixels=new Map(),put=(x,y,c)=>pixels.set(x+','+y,{x,y,c});
+      const line=(x,y,bx,by,c)=>{const dx=Math.abs(bx-x),dy=-Math.abs(by-y),sx=x<bx?1:-1,sy=y<by?1:-1;let e=dx+dy;
+        for(;;){put(x,y,c);if(x===bx&&y===by)break;const z=2*e;if(z>=dy){e+=dy;x+=sx;}if(z<=dx){e+=dx;y+=sy;}}};
+      const leaf=(x,y)=>{line(x-2,y,x+2,y,'#879c60');line(x-1,y-1,x+1,y-1,'#cfe0a0');put(x,y+1,'#4a5a30');};
+      const gap=3-f;
+      if(slot===0){
+        line(12,5,12,13,'#cfe0a0');line(12,12,8-gap,18,'#bba375');line(12,12,16+gap,18,'#bba375');line(12,13,12,20,'#6c5424');
+        leaf(8,7);leaf(16,5);line(8-gap,18,5-gap,17,'#879c60');line(16+gap,18,18+gap,16,'#879c60');
+      }else if(slot===1){
+        for(const side of [-1,1]){const x=12+side*(5+gap);
+          line(x,5,x-side,15,'#6c5424');line(x-side,15,x-side*3,18,'#bba375');
+          line(x-side,6,x-side*2,13,'#cfe0a0');line(x,8,x+side,10,'#879c60');}
+        leaf(12,4);
+      }else{
+        const open=3-Math.min(2,f);
+        for(const side of [-1,1]){line(12,12,12+side*(5+open),4,'#acb9a4');line(12+side,11,12+side*(5+open),3,'#f3e8bb');
+          const x=12-side*5;line(12,12,x,16,'#8b3a2a');line(x-2,16,x+2,16,'#8b3a2a');line(x-3,17,x-3,19,'#8b3a2a');line(x+3,17,x+3,19,'#8b3a2a');line(x-2,20,x+2,20,'#8b3a2a');}
+        put(12,12,'#f3e8bb');
+      }
+      g.fillStyle='#1a2010';for(const {x,y}of pixels.values())for(const [dx,dy]of [[-1,0],[1,0],[0,-1],[0,1]])g.fillRect(f*24+x+dx,slot*24+y+dy,1,1);
+      for(const {x,y,c}of pixels.values()){g.fillStyle=c;g.fillRect(f*24+x,slot*24+y,1,1);}
+    }
+    mauraSignatureAtlas=cv;
+  }
+  ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=Math.min(1,(1-q)*3)*.85;
+  ctx.drawImage(mauraSignatureAtlas,frame*24,s.slot*24,24,24,Math.round(s.x)-12,Math.round(s.y)-112,24,24);
+  ctx.restore();
+}
+// Morwen's normal cast identifiers: resin flask, salt crystals and a distilling retort.
+// Cached native pixels; the crest is not a projectile, damage area or shield timer.
+let morwenSignatureAtlas=null;
+function drawMorwenNormalSignature(s){
+  const q=s.t/s.dur,calm=typeof JUICE!=='undefined'&&JUICE.reduceMotion;
+  const frame=calm?3:Math.min(5,Math.floor(q*6));
+  if(!morwenSignatureAtlas){
+    const cv=document.createElement('canvas');cv.width=192;cv.height=96;
+    const g=cv.getContext('2d'),O='#24101e',D='#6e3a60',A='#a46191',B='#edd0a5',C='#f9eee0',E='#c9a0bd';
+    for(let slot=0;slot<3;slot++)for(let f=0;f<6;f++){
+      const pixels=new Map(),put=(x,y,c)=>pixels.set(x+','+y,{x,y,c});
+      const line=(x,y,bx,by,c)=>{let dx=Math.abs(bx-x),dy=-Math.abs(by-y),sx=x<bx?1:-1,sy=y<by?1:-1,e=dx+dy;
+        for(;;){put(x,y,c);if(x===bx&&y===by)break;const z=2*e;if(z>=dy){e+=dy;x+=sx;}if(z<=dx){e+=dx;y+=sy;}}};
+      const drop=(x,y)=>{put(x,y,A);line(x-1,y+1,x+1,y+1,A);line(x-1,y+2,x+1,y+2,D);put(x-1,y+1,E);};
+      if(slot===0){
+        // Narrow neck and broad stoppered flask, liquid and two separating resin drops.
+        const lift=f<2?2-f:0;
+        line(12,5+lift,19,5+lift,B);line(13,6+lift,18,6+lift,D);
+        line(14,7+lift,14,11+lift,E);line(17,7+lift,17,11+lift,B);
+        line(14,11+lift,9,16+lift,E);line(17,11+lift,22,16+lift,B);
+        line(9,16+lift,9,23+lift,E);line(22,16+lift,22,23+lift,B);
+        line(10,24+lift,21,24+lift,B);line(12,13+lift,11,16+lift,C);
+        for(let y=19;y<24;y++)line(10,y+lift,21,y+lift,y===19?A:D);
+        put(12,20+lift,E);if(f>=2){drop(5,17+(f-2));drop(26,13+(f-2));}
+      }else if(slot===1){
+        // Three irregular salt grains, with facets; no snowflake or circular ice nova.
+        const gap=f<2?2-f:0;
+        for(const [cx,cy,h,w]of [[9-gap,20,5,3],[17,13,8,4],[25+gap,22,4,2]]){
+          for(let y=-h;y<=h;y++){const ww=Math.max(0,Math.round(w*(1-Math.abs(y)/h)));line(cx-ww,cy+y,cx+ww,cy+y,y<0?B:E);}
+          line(cx,cy-h,cx-w,cy,C);line(cx,cy-h,cx,cy+h,B);
+        }
+        if(f>=2){put(6,8+f,B);put(25,8+f,E);put(19,25,B);}
+      }else{
+        // Round retort, angled neck, descending condensate. No persistent shield claim.
+        const lift=f<2?2-f:0;
+        line(11,8+lift,16,8+lift,B);line(10,9+lift,8,12+lift,E);
+        line(8,12+lift,8,19+lift,E);line(8,19+lift,11,22+lift,B);
+        line(11,22+lift,17,22+lift,B);line(17,22+lift,20,19+lift,B);
+        line(20,19+lift,20,13+lift,B);line(17,9+lift,20,12+lift,B);
+        line(16,8+lift,23,5+lift,B);line(18,11+lift,24,8+lift,E);
+        line(23,5+lift,27,10+lift,B);line(24,8+lift,27,12+lift,C);
+        for(let y=17;y<21;y++)line(10,y+lift,18,y+lift,y===17?A:D);
+        line(10,12+lift,10,15+lift,C);if(f>=2)drop(26,16+Math.min(5,f*2-4));
+      }
+      g.fillStyle=O;for(const {x,y}of pixels.values())for(const [dx,dy]of [[-1,0],[1,0],[0,-1],[0,1]])g.fillRect(f*32+x+dx,slot*32+y+dy,1,1);
+      for(const {x,y,c}of pixels.values()){g.fillStyle=c;g.fillRect(f*32+x,slot*32+y,1,1);}
+    }
+    morwenSignatureAtlas=cv;
+  }
+  ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=Math.min(1,(1-q)*3)*.85;
+  ctx.drawImage(morwenSignatureAtlas,frame*32,s.slot*32,32,32,Math.round(s.x)-24,Math.round(s.y)-124,48,48);
+  ctx.restore();
+}
+
 function drawChampionSignatures(){
   ctx.save();ctx.globalCompositeOperation='source-over';ctx.lineJoin='round';ctx.lineCap='round';
   for(const s of championSignatures){
@@ -84,6 +176,8 @@ function drawChampionSignatures(){
       ctx.strokeStyle='#152b45';ctx.lineWidth=7;ctx.stroke();ctx.strokeStyle='#86d9ff';ctx.lineWidth=4;ctx.stroke();ctx.strokeStyle='#efffff';ctx.lineWidth=1;ctx.stroke();ctx.restore();continue;
     }
     if(s.key==='brakk'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=1){drawBrakkNormalSignature(s);continue;}
+    if(s.key==='maura'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawMauraNormalSignature(s);continue;}
+    if(s.key==='morwen'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawMorwenNormalSignature(s);continue;}
     const [shape,color]=CHAMPION_SIGNATURES[s.key]||['star','#e6d6ff'];
     const q=s.t/s.dur,calm=typeof JUICE!=='undefined'&&JUICE.reduceMotion;
     const r=(s.ult?48:25)*(calm?1:0.8+0.2*Math.min(1,q*5));

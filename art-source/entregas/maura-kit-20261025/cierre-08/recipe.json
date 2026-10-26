@@ -1,0 +1,18 @@
+{
+  "source": "art-source/entregas/maura-kit-20261025/cierre-08/source-candidate.js",
+  "native": "SfaStrip",
+  "change": "Bent 2px living seams connect bark pairs; output96x96 at owner.x-48,y-90. Source material,clock,shield predicate,roots/shears/UF/mechanics preserved.",
+  "commands": [
+    "OUT=<dir> node tools/vfx/export-maura-close.js",
+    "LOOKS=base,tier4,gear,set,skin DENSITIES=sparse,dense SLOTS=1 ALL_PHASES=1 OUT=<dir>/desktop node tools/vfx/capture-maura-contact.js",
+    "MOBILE=1 LOOKS=base,tier4,gear,set,skin DENSITIES=sparse,dense SLOTS=1 ALL_PHASES=1 OUT=<dir>/mobile node tools/vfx/capture-maura-contact.js",
+    "LOOKS=gear,set,skin DENSITIES=dense SLOTS=2 ALL_PHASES=1 OUT=<dir>/shears-desktop node tools/vfx/capture-maura-contact.js",
+    "OUT=<dir> node tools/vfx/maura-close-lifecycle.js",
+    "python <dir>/make-review.py"
+  ],
+  "environment": {
+    "NODE_PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "CHROMIUM_PATH": "/tmp/chromium"
+  },
+  "installedPNG": 0
+}

@@ -1,0 +1,17 @@
+{
+  "main": "9c0ac434b2cb80ae16e7220371f59944ac3e9613",
+  "runtime": [
+    "js/champions/vfx-b/veyra.js"
+  ],
+  "diff": "+13/-2",
+  "changed": "Only vy_pact painter and launch radius/offset. Existing event760ms, priority/layer/owner/pact duration/particles unchanged.",
+  "preserved": [
+    "vy_pact_idle recipe/raster/lifecycle",
+    "H1/H2/UF",
+    "body/skins/sets",
+    "hooks.js",
+    "pixfx.js",
+    "combat/balance/network protocol"
+  ],
+  "historicalTestsNotReusedAsCurrent": true
+}

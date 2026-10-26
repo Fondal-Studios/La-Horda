@@ -1,0 +1,71 @@
+--- main/js/skills/champion-signatures.js
++++ candidate/js/skills/champion-signatures.js
+@@ -97,6 +97,60 @@
+   ctx.drawImage(mauraSignatureAtlas,frame*24,s.slot*24,24,24,Math.round(s.x)-12,Math.round(s.y)-112,24,24);
+   ctx.restore();
+ }
++// Morwen's normal cast identifiers: resin flask, salt crystals and a distilling retort.
++// Cached native pixels; the crest is not a projectile, damage area or shield timer.
++let morwenSignatureAtlas=null;
++function drawMorwenNormalSignature(s){
++  const q=s.t/s.dur,calm=typeof JUICE!=='undefined'&&JUICE.reduceMotion;
++  const frame=calm?3:Math.min(5,Math.floor(q*6));
++  if(!morwenSignatureAtlas){
++    const cv=document.createElement('canvas');cv.width=192;cv.height=96;
++    const g=cv.getContext('2d'),O='#24101e',D='#6e3a60',A='#a46191',B='#edd0a5',C='#f9eee0',E='#c9a0bd';
++    for(let slot=0;slot<3;slot++)for(let f=0;f<6;f++){
++      const pixels=new Map(),put=(x,y,c)=>pixels.set(x+','+y,{x,y,c});
++      const line=(x,y,bx,by,c)=>{let dx=Math.abs(bx-x),dy=-Math.abs(by-y),sx=x<bx?1:-1,sy=y<by?1:-1,e=dx+dy;
++        for(;;){put(x,y,c);if(x===bx&&y===by)break;const z=2*e;if(z>=dy){e+=dy;x+=sx;}if(z<=dx){e+=dx;y+=sy;}}};
++      const drop=(x,y)=>{put(x,y,A);line(x-1,y+1,x+1,y+1,A);line(x-1,y+2,x+1,y+2,D);put(x-1,y+1,E);};
++      if(slot===0){
++        // Narrow neck and broad stoppered flask, liquid and two separating resin drops.
++        const lift=f<2?2-f:0;
++        line(12,5+lift,19,5+lift,B);line(13,6+lift,18,6+lift,D);
++        line(14,7+lift,14,11+lift,E);line(17,7+lift,17,11+lift,B);
++        line(14,11+lift,9,16+lift,E);line(17,11+lift,22,16+lift,B);
++        line(9,16+lift,9,23+lift,E);line(22,16+lift,22,23+lift,B);
++        line(10,24+lift,21,24+lift,B);line(12,13+lift,11,16+lift,C);
++        for(let y=19;y<24;y++)line(10,y+lift,21,y+lift,y===19?A:D);
++        put(12,20+lift,E);if(f>=2){drop(5,17+(f-2));drop(26,13+(f-2));}
++      }else if(slot===1){
++        // Three irregular salt grains, with facets; no snowflake or circular ice nova.
++        const gap=f<2?2-f:0;
++        for(const [cx,cy,h,w]of [[9-gap,20,5,3],[17,13,8,4],[25+gap,22,4,2]]){
++          for(let y=-h;y<=h;y++){const ww=Math.max(0,Math.round(w*(1-Math.abs(y)/h)));line(cx-ww,cy+y,cx+ww,cy+y,y<0?B:E);}
++          line(cx,cy-h,cx-w,cy,C);line(cx,cy-h,cx,cy+h,B);
++        }
++        if(f>=2){put(6,8+f,B);put(25,8+f,E);put(19,25,B);}
++      }else{
++        // Round retort, angled neck, descending condensate. No persistent shield claim.
++        const lift=f<2?2-f:0;
++        line(11,8+lift,16,8+lift,B);line(10,9+lift,8,12+lift,E);
++        line(8,12+lift,8,19+lift,E);line(8,19+lift,11,22+lift,B);
++        line(11,22+lift,17,22+lift,B);line(17,22+lift,20,19+lift,B);
++        line(20,19+lift,20,13+lift,B);line(17,9+lift,20,12+lift,B);
++        line(16,8+lift,23,5+lift,B);line(18,11+lift,24,8+lift,E);
++        line(23,5+lift,27,10+lift,B);line(24,8+lift,27,12+lift,C);
++        for(let y=17;y<21;y++)line(10,y+lift,18,y+lift,y===17?A:D);
++        line(10,12+lift,10,15+lift,C);if(f>=2)drop(26,16+Math.min(5,f*2-4));
++      }
++      g.fillStyle=O;for(const {x,y}of pixels.values())for(const [dx,dy]of [[-1,0],[1,0],[0,-1],[0,1]])g.fillRect(f*32+x+dx,slot*32+y+dy,1,1);
++      for(const {x,y,c}of pixels.values()){g.fillStyle=c;g.fillRect(f*32+x,slot*32+y,1,1);}
++    }
++    morwenSignatureAtlas=cv;
++  }
++  ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=Math.min(1,(1-q)*3)*.85;
++  ctx.drawImage(morwenSignatureAtlas,frame*32,s.slot*32,32,32,Math.round(s.x)-24,Math.round(s.y)-124,48,48);
++  ctx.restore();
++}
++
+ function drawChampionSignatures(){
+   ctx.save();ctx.globalCompositeOperation='source-over';ctx.lineJoin='round';ctx.lineCap='round';
+   for(const s of championSignatures){
+@@ -123,6 +177,7 @@
+     }
+     if(s.key==='brakk'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=1){drawBrakkNormalSignature(s);continue;}
+     if(s.key==='maura'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawMauraNormalSignature(s);continue;}
++    if(s.key==='morwen'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawMorwenNormalSignature(s);continue;}
+     const [shape,color]=CHAMPION_SIGNATURES[s.key]||['star','#e6d6ff'];
+     const q=s.t/s.dur,calm=typeof JUICE!=='undefined'&&JUICE.reduceMotion;
+     const r=(s.ult?48:25)*(calm?1:0.8+0.2*Math.min(1,q*5));

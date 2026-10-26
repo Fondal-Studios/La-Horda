@@ -20,8 +20,9 @@ process.on('exit', () => server && server.kill());
   try {
     const errors = [],results=[];
     // cada corrida en una página nueva: el estado que deja una partida (cachés, contadores) no debe contaminar la siguiente
-    const fresh = async () => { for (let tries = 0; ; tries++) { try { return await fresh1(); } catch (e) { if (tries >= 3) throw e; await new Promise(r => setTimeout(r, 3000)); } } };
-    const fresh1 = async () => { const pg = await browser.newPage({viewport: {width: 844, height: 390}}); pg.on('pageerror', e => errors.push(e.message));
+    const fresh = async (parent = false) => { for (let tries = 0; ; tries++) { try { return await fresh1(parent); } catch (e) { if (tries >= 3) throw e; await new Promise(r => setTimeout(r, 3000)); } } };
+    const fresh1 = async (parent) => { const pg = await browser.newPage({viewport: {width: 844, height: 390}}); pg.on('pageerror', e => errors.push(e.message));
+      if(parent)await pg.route('**/js/champions/skill-fx-a/c/libertador.js*',r=>r.fulfill({contentType:'text/javascript',body:parentSource}));
       for (let t = 0; ; t++) { try { await pg.goto(BASE, {waitUntil: 'domcontentloaded', timeout: 120000}); break; } catch (e) { if (t > 2 || process.env.BASE_URL) throw e; server = spawn('python3', ['-m', 'http.server', String(PORT), '--bind', '127.0.0.1'], {cwd: ROOT, stdio: 'ignore'}); await new Promise(r => setTimeout(r, 900)); } }
       await pg.waitForFunction(() => typeof startRun === 'function' && typeof sfaPush === 'function' && assetsAllReady(), null, {timeout: 120000}); await pg.waitForTimeout(800); return pg; };
     let page = await fresh();
@@ -31,8 +32,8 @@ process.on('exit', () => server && server.kill());
     const frames = +(process.env.FRAMES || 360);
     for (const k of keys) {
       // cada corrida en una página nueva (el estado que deja una partida contamina la siguiente aunque el reloj sea virtual)
-      const once = async off => { const pg = await fresh(); try { return await pg.evaluate(([k, frames, off, parentSource]) => {
-          if(off)eval(parentSource);
+      const once = async off => { const pg = await fresh(off); try { return await pg.evaluate(([k, frames, off, parentSource]) => {
+          // Parent runtime replaced before script evaluation: no layered candidate wrapper.
           const run = off => {
             window.SFA_OFF = false;
             let seedv = 987654321, calls = 0, vt = 1000; const rnd = Math.random, pn = performance.now; performance.now = () => vt;   // reloj virtual: el azar no debe depender del tiempo real
@@ -57,13 +58,14 @@ process.on('exit', () => server && server.kill());
           };
           return run(off);
         }, [k, frames, off, parentSource]); } finally { await pg.close(); } };
-      const a = await once(true), b = await once(false), determ = true;results.push({champion:k,parent:JSON.parse(a),candidate:JSON.parse(b),same:a===b});
+      const a = await once(true), b = await once(false), repeat = await once(false), determ = b === repeat;results.push({champion:k,parent:JSON.parse(a),candidate:JSON.parse(b),same:a===b,repeat:JSON.parse(repeat),deterministic:determ});
       const res = {same: a === b, determ, callsOff: JSON.parse(a).calls, callsOn: JSON.parse(b).calls, a: a.slice(0, 600), b: b.slice(0, 600)};
-      if (!res.determ) { console.log('INCONCLUSO ' + k.padEnd(11) + ' (dos corridas sin sprites ya difieren: el escenario no es determinista)'); continue; }
+      if (!res.determ) { bad++; console.log('INCONCLUSO ' + k.padEnd(11) + ' (dos corridas del candidato ya difieren: el escenario no es determinista)'); continue; }
       if (!res.same) bad++;
       console.log((res.same ? 'IGUAL ' : 'DIFIERE ') + k.padEnd(11) + ` Math.random parent=${res.callsOff} candidate=${res.callsOn}`);
       if (!res.same) console.log('  ' + res.a + '\n  ' + res.b);
     }
+    if(errors.length)bad++;
     console.log(`${keys.length} campeones, ${bad} difieren, errores de página: ${errors.length}`, errors.slice(0, 3));
     fs.writeFileSync(OUT+'/parity.json',JSON.stringify({frames,results,errors},null,2)+'\n');
   } finally { await browser.close(); if (server) server.kill(); }

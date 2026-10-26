@@ -60,6 +60,7 @@
 <link rel="stylesheet" href="css/hud-mobile.css">
 <link rel="stylesheet" href="css/first-minute.css">
 <link rel="stylesheet" href="css/legal.css">
+<link rel="stylesheet" href="css/item-economy.css">
 </head>
 <body>
 
@@ -118,7 +119,7 @@
       <div id="boss-hint"></div>
     </div>
     <div id="arena-title-card" class="hidden"><div class="atc-kicker"></div><div class="atc-title"></div><div class="atc-sub"></div></div>
-    <div id="tut-panel" class="hidden"><div class="tut-face" aria-hidden="true"></div><div class="tut-body"><div class="tut-who">EL HECHICERO</div><div class="tut-text"></div><div class="tut-goal"></div></div></div>
+    <div id="tut-panel" class="hidden"><div class="tut-face" aria-hidden="true"></div><div class="tut-body"><div class="tut-who"></div><div class="tut-text"></div><div class="tut-goal"></div></div></div>
     <div id="boss-intro" class="hidden"><div class="bi-name"></div><div class="bi-epithet"></div><ul class="bi-tips"></ul></div>
     <div id="floaters"></div>
     <div id="center-banner"></div>
@@ -568,10 +569,9 @@
   </div>
 </div>
 
-<div id="run-intro" class="hidden" role="dialog" aria-label="El Hechicero">
-      <canvas class="ri-art"></canvas>
+<div id="run-intro" class="hidden" role="dialog" aria-label="Ficha de arena">
       <div class="ri-card">
-        <div class="ri-who">EL HECHICERO SUPREMO</div>
+        <div class="ri-who">FICHA DE ARENA</div>
         <div class="ri-arena"></div>
         <div class="ri-say"></div>
         <div class="ri-row ri-goalrow"><b class="ri-k goal">🎯 Objetivo</b><span class="ri-goal"></span></div>
@@ -601,6 +601,7 @@
 <script src="js/data/items.js"></script>
 <script src="js/data/sets.js"></script>
 <script src="js/data/loot.js"></script>
+<script src="js/data/mythic-sets-v2.js"></script>
 <script src="js/data/legendaries.js"></script>
 <script src="js/data/mage-kit.js"></script>
 <script src="js/data/champion-sets.js"></script>
@@ -882,6 +883,7 @@
 <script src="js/data/codex-content.js"></script>
 <script src="js/data/story-text.js"></script>
 <script src="js/data/codex-book-text.js"></script>
+<script src="js/data/arena-brief.js"></script>
 <script src="js/data/portadores-lore.js"></script>
 <script src="js/data/body-swaps.js"></script>
 <script src="js/ui/codex/codex-track.js"></script>
@@ -1031,6 +1033,9 @@
 <script src="js/arenas/coliseum/coliseum-cover.js"></script>
 <script src="js/data/legal-config.js"></script>
 <script src="js/ui/legal.js"></script>
+<script src="js/assets/mythic-collection-meta.js"></script>
+<script src="js/net/item-economy.js"></script>
+<script src="js/ui/item-economy-ui.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

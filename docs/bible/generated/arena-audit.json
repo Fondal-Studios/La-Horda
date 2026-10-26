@@ -82,7 +82,7 @@
    "summary": {
     "fail": 0,
     "warning": 0,
-    "seconds": 2
+    "seconds": 4
    },
    "status": "PASS"
   },
@@ -165,7 +165,7 @@
    "summary": {
     "fail": 0,
     "warning": 1,
-    "seconds": 2
+    "seconds": 4
    },
    "status": "WARNING"
   },
@@ -184,13 +184,13 @@
      "area": "geometry",
      "name": "área caminable conexa",
      "level": "PASS",
-     "detail": "4335 celdas; 0 bolsillos inalcanzables"
+     "detail": "4056 celdas; 0 bolsillos inalcanzables"
     },
     {
      "area": "geometry",
      "name": "si se ve sólido, es sólido",
      "level": "PASS",
-     "detail": "10 sólidos pintados con colisión"
+     "detail": "21 sólidos pintados con colisión"
     },
     {
      "area": "variants",
@@ -233,7 +233,7 @@
     "W": 112,
     "H": 79,
     "cell": 24,
-    "walkCells": 4335,
+    "walkCells": 4056,
     "pockets": 0
    },
    "explore": {
@@ -254,7 +254,7 @@
    "summary": {
     "fail": 0,
     "warning": 0,
-    "seconds": 1
+    "seconds": 5
    },
    "status": "PASS"
   },
@@ -337,7 +337,7 @@
    "summary": {
     "fail": 0,
     "warning": 0,
-    "seconds": 1
+    "seconds": 3
    },
    "status": "PASS"
   },
@@ -426,7 +426,7 @@
    "summary": {
     "fail": 0,
     "warning": 0,
-    "seconds": 1
+    "seconds": 5
    },
    "status": "PASS"
   },
@@ -515,7 +515,7 @@
    "summary": {
     "fail": 0,
     "warning": 0,
-    "seconds": 1
+    "seconds": 4
    },
    "status": "PASS"
   },
@@ -604,7 +604,7 @@
    "summary": {
     "fail": 0,
     "warning": 0,
-    "seconds": 1
+    "seconds": 3
    },
    "status": "PASS"
   },
@@ -653,7 +653,7 @@
      "area": "explore",
      "name": "héroes siempre en zona caminable",
      "level": "WARNING",
-     "detail": "113 cuadros-héroe dentro de colisión (> 4 u) [[\"tanque\",324,616,597,\"\"],[\"tanque\",325,623,598,\"\"],[\"tanque\",325,629,599,\"\"],[\"tanque\",321,637,600,\"abHang\"],[\"tanque\",321,637,601,\"abHang\"]] (arena con caídas: colgado del borde)"
+     "detail": "105 cuadros-héroe dentro de colisión (> 4 u) [[\"tanque\",218,650,1124,\"\"],[\"tanque\",216,653,1125,\"\"],[\"tanque\",213,657,1126,\"\"],[\"tanque\",227,548,1359,\"\"],[\"tanque\",225,543,1360,\"\"]] (arena con caídas: colgado del borde)"
     },
     {
      "area": "explore",
@@ -672,7 +672,7 @@
    "explore": {
     "frames": 1800,
     "nan": 0,
-    "outside": 113,
+    "outside": 105,
     "oob": 0,
     "trapped": 0,
     "trappedAt": [],
@@ -680,38 +680,38 @@
     "outsideAt": [
      [
       "tanque",
-      324,
-      616,
-      597,
+      218,
+      650,
+      1124,
       ""
      ],
      [
       "tanque",
-      325,
-      623,
-      598,
+      216,
+      653,
+      1125,
       ""
      ],
      [
       "tanque",
-      325,
-      629,
-      599,
+      213,
+      657,
+      1126,
       ""
      ],
      [
       "tanque",
-      321,
-      637,
-      600,
-      "abHang"
+      227,
+      548,
+      1359,
+      ""
      ],
      [
       "tanque",
-      321,
-      637,
-      601,
-      "abHang"
+      225,
+      543,
+      1360,
+      ""
      ]
     ]
    },
@@ -723,7 +723,7 @@
    "summary": {
     "fail": 0,
     "warning": 1,
-    "seconds": 1
+    "seconds": 3
    },
    "status": "WARNING"
   },
@@ -806,7 +806,7 @@
    "summary": {
     "fail": 0,
     "warning": 0,
-    "seconds": 1
+    "seconds": 2
    },
    "status": "PASS"
   },
@@ -895,7 +895,7 @@
    "summary": {
     "fail": 0,
     "warning": 0,
-    "seconds": 1
+    "seconds": 4
    },
    "status": "PASS"
   }

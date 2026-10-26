@@ -141,6 +141,19 @@ Cada variable está explicada adentro del archivo. Reglas:
 - `TRUST_PROXY=1` es obligatorio detrás de nginx/Apache (sin eso, todos los jugadores comparten una IP y se bloquean entre sí).
 - **No definas** `ADMIN_USERS` ni `FOUNDERS_JSON` (ver `docs/quality/SEGURIDAD_PRELANZAMIENTO.md`, hallazgo B).
 
+### Economía de ítems V2 (`HORDA_ITEM_ECONOMY`)
+
+La economía de ítems V2 (inventario, oro y gemas de la cuenta en el servidor) se controla con **una sola variable**:
+
+| Situación | Qué pasa |
+|---|---|
+| Sin `HORDA_ITEM_ECONOMY` y **con base persistente** (`DATABASE_URL`, o `DATA_DIR` + `DATA_PERSISTENT=1`) | **Encendida.** La primera vez que cada cuenta entra se migra su guardado al libro del servidor (con copia íntegra). |
+| Sin `HORDA_ITEM_ECONOMY` y **sin base persistente** (servidor gratuito de hoy) | **No actúa.** Todo igual que antes: guardado en el cliente, ranking anterior, Recompensas pendientes. |
+| `HORDA_ITEM_ECONOMY=0` | **Apagada** siempre. Contrato anterior. No deshace lo ya migrado: antes de apagarla con cuentas migradas, respaldá cuentas + guardados + operaciones. |
+| `HORDA_ITEM_ECONOMY=1` | Igual que sin definir (solo actúa con base persistente). |
+
+Antes del primer encendido con datos reales: respaldo completo (sección 10), prueba en un entorno aislado con una copia, y leer `docs/economy/ITEM_ECONOMY_V2_INTEGRACION.md`. El preflight (`node tools/release/preflight.js`) informa en qué estado queda.
+
 ## 6. El servicio (para que arranque solo y se reinicie si se cae)
 
 ```bash

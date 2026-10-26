@@ -39,15 +39,9 @@ const EN = {
 /* ---------------- utilidades ---------------- */
 function _enMulberry(seed){ let a = seed>>>0; return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a>>>15, 1 | a); t = t + Math.imul(t ^ t>>>7, 61 | t) ^ t; return ((t ^ t>>>14)>>>0)/4294967296; }; }
 function _enHash(str){ let h = 2166136261; for(let i=0;i<str.length;i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h>>>0; }
-// Semana ISO (UTC) de una fecha: "2026-W40".
-function endlessWeekKey(date){
-  const d = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
-  const day = d.getUTCDay() || 7; d.setUTCDate(d.getUTCDate() + 4 - day);
-  const y0 = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-  const wk = Math.ceil(((d - y0)/86400000 + 1)/7);
-  return d.getUTCFullYear() + "-W" + String(wk).padStart(2, "0");
-}
-// Mutadores de la semana: 2 distintos, determinísticos (todos juegan la misma semana).
+// Temporada ISO (UTC) de una fecha: "2026-W40".
+function endlessWeekKey(date){ return date.toISOString().slice(0,7); }
+// Mutadores de la temporada: 2 distintos, determinísticos (todos juegan la misma temporada).
 function endlessWeeklyMutators(date){
   const key = endlessWeekKey(date || new Date());
   const rng = _enMulberry(_enHash("horda-infinita/" + key));
@@ -122,7 +116,7 @@ function endlessArenaCard(first){
   const A = ARENA_MODS[currentArena]||{};
   const muts = EN.mutators.map(m=>ENDLESS_MUTATORS[m].icon + " " + ENDLESS_MUTATORS[m].name).join(" · ");
   if(typeof arenaTitleCard==="function")
-    arenaTitleCard(first ? "HORDA INFINITA" : "LA CICATRIZ TE LLEVA", `${A.icon||""} ${A.label||currentArena}`, first ? `Semana ${EN.week.split("-W")[1]} · ${muts}` : `Ronda ${EN.round} · ${EN.stintKind==="boss" ? "el jefe de la arena espera" : "contené a la Horda"}`, 3600);
+    arenaTitleCard(first ? "HORDA INFINITA" : "LA CICATRIZ TE LLEVA", `${A.icon||""} ${A.label||currentArena}`, first ? `Temporada ${EN.week.split("-W")[1]} · ${muts}` : `Ronda ${EN.round} · ${EN.stintKind==="boss" ? "el jefe de la arena espera" : "contené a la Horda"}`, 3600);
 }
 
 /* ---------------- rondas ---------------- */
@@ -586,7 +580,7 @@ function endlessEndRun(reason){
     if(typeof questsOnRunEnd==="function"){ try{ L.questSum = questsOnRunEnd(false, {abandon:EN.endReason==="quit", endless:true}) || L.questSum; }catch(e){ console.error(e); } }
     endlessStat("endless_score", EN.score);
     endlessStat("endless_end", round);
-    // ranking semanal (js/net/leaderboard.js): con cuenta se manda; sin cuenta queda local con aviso
+    // ranking mensual (js/net/leaderboard.js): con cuenta se manda; sin cuenta queda local con aviso
     if(typeof lbAfterRun==="function"){ try{ lbAfterRun(L); }catch(e){ console.error(e); } }
   }
   endlessRescues = [];
@@ -618,7 +612,7 @@ function endlessShowResults(){
     <div class="en-res-kicker">HORDA INFINITA · SEMANA ${(EN.week||"").split("-W")[1]||""}</div>
     <div class="en-res-title">${EN.endReason==="quit" ? "Contención abandonada" : "La Horda siguió avanzando"}</div>
     <div class="en-res-big"><div><span>Ronda</span><b>${EN.round}</b></div><div><span>Puntaje</span><b>${_enFmt(EN.score)}</b></div></div>
-    <div class="en-res-badges">${badge(L.newGlobal, "¡NUEVO RÉCORD GLOBAL!")}${badge(L.newGuardian && !L.newGlobal, `¡Récord de ${(CLASSES[cls]||{}).name||cls}!`)}${badge(L.newWeek && !L.newGlobal && !L.newGuardian, "¡Mejor de la semana!")}</div>
+    <div class="en-res-badges">${badge(L.newGlobal, "¡NUEVO RÉCORD GLOBAL!")}${badge(L.newGuardian && !L.newGlobal, `¡Récord de ${(CLASSES[cls]||{}).name||cls}!`)}${badge(L.newWeek && !L.newGlobal && !L.newGuardian, "¡Mejor de la temporada!")}</div>
     <div class="en-lb-line hidden" id="en-lb-line"></div>
     ${L.questSum ? `<div class="qs-run-sum"><b>🏆 DESAFÍOS</b><span>+${L.questSum.xp} XP de cuenta</span>${L.questSum.pass ? `<span>Pase Nv. ${L.questSum.pass.level}${L.questSum.passUp > 0 ? " ▲" : ""}</span>` : ""}${L.questSum.chal > 0 ? `<span>${L.questSum.chal} desafío${L.questSum.chal>1?"s":""} ✔</span>` : ""}${L.questSum.ach > 0 ? `<span>${L.questSum.ach} logro${L.questSum.ach>1?"s":""} ✔</span>` : ""}</div>` : ""}
     <div class="en-res-btns">
@@ -643,7 +637,7 @@ function endlessShowResults(){
     </div>
     <div class="en-res-sub">Arenas recorridas</div><div class="en-res-arenas">${arenas}</div>
 </div>`;
-  if(typeof _lbRenderRunLine==="function") _lbRenderRunLine(); // "Puesto #N esta semana" (o el aviso para invitados)
+  if(typeof _lbRenderRunLine==="function") _lbRenderRunLine(); // "Puesto #N esta temporada" (o el aviso para invitados)
   const again = document.getElementById("en-again-btn");
   if(again) again.addEventListener("click", endlessOneMore);
   document.getElementById("en-back-btn").addEventListener("click", ()=>{
@@ -719,9 +713,9 @@ function endlessRefreshModeCard(){
   card.classList.toggle("locked", !open);
   const rec = S.best && S.best.score ? ` · Récord: ${_enFmt(S.best.score)} (ronda ${S.best.round})` : "";
   card.innerHTML = `<div class="mode-card-icon">${open ? "∞" : "🔒"}</div><div class="mode-card-title">Horda Infinita</div>
-    <div class="mode-card-desc">${open ? (M ? M.desc : "") + `<br><span class="en-card-week">Esta semana: ${wk.ids.map(m=>ENDLESS_MUTATORS[m].icon + " " + ENDLESS_MUTATORS[m].name).join(" · ")}${rec}</span>` : (M ? M.lockedDesc : "")}</div>`;
+    <div class="mode-card-desc">${open ? (M ? M.desc : "") + `<br><span class="en-card-week">Esta temporada: ${wk.ids.map(m=>ENDLESS_MUTATORS[m].icon + " " + ENDLESS_MUTATORS[m].name).join(" · ")}${rec}</span>` : (M ? M.lockedDesc : "")}</div>`;
 }
-// Sala en modo infinito: el lugar de la arena muestra la semana (las arenas las elige la Cicatriz).
+// Sala en modo infinito: el lugar de la arena muestra la temporada (las arenas las elige la Cicatriz).
 function endlessDecoratePrep(){
   if(!endlessPending) return;
   const t = document.getElementById("lobby-title"); if(t) t.textContent = "Sala · Horda Infinita";
@@ -730,7 +724,7 @@ function endlessDecoratePrep(){
   const guest = typeof netInRoom==="function" && netInRoom() && net.role==="guest";
   box.classList.remove("hidden");
   box.innerHTML = `<div class="la-head">HORDA INFINITA <span class="la-by">· ${guest ? "la arranca el anfitrión" : "la Cicatriz elige las arenas"}</span></div>
-    <div class="la-desc">∞ Rondas sin fin: cada 5, un jefe o subjefe y la Cicatriz te lleva a otra arena. Semana ${wk.key.split("-W")[1]}: ${wk.ids.map(m=>`<b title="${ENDLESS_MUTATORS[m].desc}">${ENDLESS_MUTATORS[m].icon} ${ENDLESS_MUTATORS[m].name}</b>`).join(" · ")}.</div>
+    <div class="la-desc">∞ Rondas sin fin: cada 5, un jefe o subjefe y la Cicatriz te lleva a otra arena. Temporada ${wk.key.split("-W")[1]}: ${wk.ids.map(m=>`<b title="${ENDLESS_MUTATORS[m].desc}">${ENDLESS_MUTATORS[m].icon} ${ENDLESS_MUTATORS[m].name}</b>`).join(" · ")}.</div>
     <div class="la-desc">Récord con ${(CLASSES[selectedClass]||{}).name||""}: <b>${_enFmt(G.score)}</b> (ronda ${G.round||0}) · Global: <b>${_enFmt(S.best.score)}</b> (ronda ${S.best.round||0})${typeof lbOpen==="function" ? ` <button type="button" class="btn secondary small lb-open-btn" id="en-prep-rank">🏆 Ranking</button>` : ""}</div>`;
   box._html = "endless";
   const rk = document.getElementById("en-prep-rank"); if(rk) rk.addEventListener("click", ev=>{ ev.stopPropagation(); lbOpen({guardian:""}); });

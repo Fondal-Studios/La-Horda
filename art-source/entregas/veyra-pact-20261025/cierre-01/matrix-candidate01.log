@@ -1,0 +1,10 @@
+[arnés] servidor propio: http://127.0.0.1:36669 (raíz /workspace/scratch/a01f80e6b406/veyra-close)
+page.evaluate: TypeError: Cannot set property vey_final of #<Object> which has only a getter
+    at kvbBindQ5 (http://127.0.0.1:36669/js/champions/vfx-b/hooks.js:17:48)
+    at eval (eval at <anonymous> (eval at evaluate (:311:30)), <anonymous>:98:112)
+    at eval (eval at evaluate (:311:30), <anonymous>:1:58)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at /workspace/scratch/a01f80e6b406/veyra-close/tools/vfx/capture-veyra-pact-closure.js:11:10 {
+  log: []
+}

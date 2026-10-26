@@ -1,0 +1,12 @@
+{
+  "status": "FIX",
+  "integration": "NO_INTEGRAR",
+  "runtimeChanged": false,
+  "newReviewedExistingSheets": [
+    "cierre-01/review-sheets/mobile-infernal.png",
+    "cierre-01/review-sheets/desktop-minas.png"
+  ],
+  "finding": "Dense occlusion persists; tier4 shears scale dominates while normal shears lose identity. Preserve area geometry, correct grouped composition next.",
+  "performance": "No-clear accumulation reproduced large spikes in both kit and blit control, in both orders; clearing matches real renderer lifecycle. Not global performance certification."
+}
+

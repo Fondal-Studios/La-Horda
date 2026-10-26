@@ -27,7 +27,7 @@ const wallet=require('../../server/wallet');
  assert.deepEqual(c.pricing,JSON.parse(JSON.stringify(P.PRICING)),'PRICING idéntico en cliente y servidor');n++;
  // cada apariencia que vende el servidor se cotiza igual en el cliente (si el cliente la conoce)
  let compared=0;
- for(const [id,s] of Object.entries(cat)){const k=c.skins[id];if(!k)continue;compared++;
+ for(const [id,s] of Object.entries(cat)){const k=c.skins[id];if(!k)continue;if(s.earnedOnly){assert.equal(k.brasas,0,'recompensa de juego (V2) sin precio: '+id);n++;continue;}compared++;
   assert.equal(k.tier,s.tier,'tier '+id);assert.equal(k.brasas,P.pricingBrasas(s.tier),'brasas '+id);assert.equal(k.gold,P.pricingCosmeticGold(s.tier,s.goldBase),'oro '+id);n+=3;}
  ok(compared>=30,'se compararon las apariencias del juego: '+compared);
  // lo que el cliente ofrece por Brasas, el servidor lo vende (y al mismo precio)

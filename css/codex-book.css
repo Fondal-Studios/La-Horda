@@ -72,6 +72,48 @@
 @media (prefers-reduced-motion:reduce){ #codex-book{ animation:none; } .bk-leaf{ transition:none; } }
 body.book-open{ overflow:hidden; }
 
+/* ---------- TINTA CHINA (Diablo 2/3): pergamino oscuro, hollín, capitular, manchas en los bordes ----------
+   Solo color y capas estáticas: sin animaciones nuevas ni fuentes externas. Paleta del libro: tinta #120c07, sepia #4a2a12,
+   pergamino viejo #bfa56f, sangre seca #7a1710 (docs/ART_BIBLE.md: paleta corta, sin suavizado en el arte). */
+#codex-book{ color:#120c07; }
+.bk-left, .bk-right{
+  background:
+    radial-gradient(ellipse at 50% 46%, rgba(226,205,150,0.55), rgba(226,205,150,0) 68%),
+    repeating-linear-gradient(0deg, rgba(60,36,14,0.06) 0 2px, transparent 2px 5px),
+    linear-gradient(180deg, #b49a63, #8f7547); }
+/* manchas de tinta y ceniza en los bordes (por encima de la ilustración y por debajo del texto) */
+.bk-left::after, .bk-right::after{ content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background:
+    radial-gradient(ellipse 34% 20% at 6% 4%, rgba(16,9,4,0.55), rgba(16,9,4,0) 70%),
+    radial-gradient(ellipse 22% 30% at 98% 22%, rgba(16,9,4,0.38), rgba(16,9,4,0) 70%),
+    radial-gradient(ellipse 40% 16% at 70% 100%, rgba(16,9,4,0.5), rgba(16,9,4,0) 72%),
+    radial-gradient(ellipse 14% 12% at 3% 78%, rgba(16,9,4,0.42), rgba(16,9,4,0) 70%),
+    radial-gradient(circle at 18% 90%, rgba(30,20,12,0.34) 0 2%, transparent 2.4%),
+    radial-gradient(circle at 83% 8%, rgba(30,20,12,0.3) 0 1.6%, transparent 2%); }
+.bk-right::after{ background:
+    radial-gradient(ellipse 30% 22% at 96% 3%, rgba(16,9,4,0.55), rgba(16,9,4,0) 70%),
+    radial-gradient(ellipse 18% 34% at 1% 40%, rgba(16,9,4,0.3), rgba(16,9,4,0) 70%),
+    radial-gradient(ellipse 44% 16% at 28% 100%, rgba(16,9,4,0.5), rgba(16,9,4,0) 72%),
+    radial-gradient(ellipse 12% 14% at 99% 82%, rgba(16,9,4,0.42), rgba(16,9,4,0) 70%),
+    radial-gradient(circle at 74% 92%, rgba(30,20,12,0.32) 0 1.8%, transparent 2.2%),
+    radial-gradient(circle at 12% 6%, rgba(30,20,12,0.28) 0 1.4%, transparent 1.8%); }
+.bk-text{ z-index:2; }
+.bk-kicker{ color:#4a2a12; }
+.bk-title{ color:#0c0704; text-shadow:0 0 1px rgba(12,7,4,0.6); filter:url(#bk-ink); }
+.bk-body p{ color:#120c07; }
+/* capitular: la primera letra, grande, en sangre seca */
+.bk-body p:first-child::first-letter{ float:left; font-size:2em; line-height:0.74; padding:0.02em 0.08em 0 0; color:#7a1710; text-shadow:1px 1px 0 rgba(12,7,4,0.55); }
+.bk-sign{ color:#5a1410; }
+.bk-pg{ color:#4a2a12; }
+.bk-face{ background:radial-gradient(ellipse at 50% 46%, rgba(226,205,150,0.55), rgba(226,205,150,0) 68%), linear-gradient(180deg, #b49a63, #8f7547); }
+.bk-defs{ position:absolute; width:0; height:0; overflow:hidden; }
+#codex-book .bk-book{ box-shadow:0 0 0 5px #3a2212, 0 0 0 7px #0c0704, 0 0 0 8px rgba(150,112,60,0.5), 0 18px 46px rgba(0,0,0,0.8); }
+.vic-book{ background:radial-gradient(ellipse at 50% 46%, rgba(226,205,150,0.5), rgba(226,205,150,0) 68%), linear-gradient(180deg, #b49a63, #8f7547); color:#120c07; }
+.vic-book .vb-k{ color:#4a2a12; } .vic-book .vb-title{ color:#0c0704; } .vic-book .vb-sign{ color:#5a1410; }
+
+/* pantalla de carga: estado del juego mientras se lee la introducción */
+.bk-load{ position:fixed; left:calc(10px + env(safe-area-inset-left, 0px)); bottom:calc(8px + env(safe-area-inset-bottom, 0px)); z-index:5; font-family:'VT323',monospace; font-size:1.15rem; color:#d9c08a; text-shadow:0 1px 0 #000; pointer-events:none; }
+.bk-load:empty{ display:none; }
 /* ---------- Códice › El Libro ---------- */
 .cx-home-book{ font:inherit; color:inherit; cursor:pointer; display:flex; align-items:center; gap:12px; width:100%; margin-top:12px; padding:10px 14px; text-align:left !important; }
 .cx-home-book .cxc-ico{ flex:0 0 auto; width:34px; height:42px; position:relative; border:2px solid #2a170a; box-shadow:0 0 10px rgba(255,150,70,0.45); background:linear-gradient(135deg, #7a3a1e, #3a1a0c); }

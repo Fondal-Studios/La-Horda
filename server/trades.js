@@ -46,6 +46,7 @@ function boundReason(it){
   if(!it || typeof it !== "object" || Array.isArray(it)) return "BAD_ITEM";
   if(typeof it.uid !== "string" || !it.uid || it.uid.length > 64) return "BAD_ITEM";
   if(typeof it.type !== "string" || typeof it.rarity !== "string") return "BAD_ITEM";
+  if(it.favorite || it._reserved || it.relicId) return "BOUND_PROTECTED";
   if(it.rarity === "unico" || it.unique) return "BOUND_UNIQUE";
   if(it.set) return "BOUND_SET";
   if(typeof it.rerollIdx === "number" || (it.rerolls | 0) > 0) return "BOUND_MYSTIC";

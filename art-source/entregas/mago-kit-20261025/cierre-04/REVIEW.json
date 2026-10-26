@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-25",
+  "state": "VALIDADO",
+  "visualGate": "PASS_COMPONENT",
+  "component": "A-FX-mago-h1/formation + wall composition and compact UF H1 launch",
+  "integration": "PENDING_EXACT_HEAD_CI",
+  "newAtlas": 0,
+  "visual": "Reviewed60 dense views in two contact sheets,8phase views in temporal sheet, native mobile before/after. Continuous fire annulus, visible center and contact, distinguishable violet unique. Launch column retained as compact marker above target. Formation4frames/300ms; active/disappearance retain phase clocks. Existing star signature and Convergencia decorations not redesigned or certified as a whole kit.",
+  "tests": {
+    "scenes": 120,
+    "comparisons": 480,
+    "arenas": [
+      "bosque",
+      "hielo",
+      "infernal",
+      "laberinto",
+      "acuatica",
+      "minas"
+    ],
+    "looks": [
+      "base",
+      "gear",
+      "set Convergencia",
+      "unique Fuego del Vacío",
+      "mastery tier4"
+    ],
+    "densities": [
+      1,
+      4
+    ],
+    "viewports": [
+      "1280x720",
+      "844x390"
+    ],
+    "times": [
+      "225ms sampled240",
+      "700ms sampled704",
+      "2600ms sampled2608",
+      "expiry minus200ms"
+    ],
+    "threshold": 0.8,
+    "channelDelta": 24,
+    "minimum": {
+      "desktop": 0.9280503647446787,
+      "mobile": 0.9286708420320111
+    },
+    "allABARestored": true,
+    "errors": [],
+    "scope": "Body draw masks (hero and enemies), compare candidate wall + UF launch versus same renderer omitting only those two components. Pose/RNG/particle arrays restored between renders. Summarized state fingerprint, not global snapshot. Other legacy effects remain in both samples.",
+    "negative": "Full-screen magenta canary fails: retention0 and restoration false.",
+    "before": "Main six mobile/base/dense presets retain about35-37%; source replay only, no live main mutation."
+  },
+  "newTests": [
+    "5 relay checks: actual vendor draw and radius24 launch on host/touch guest; expiry and recast",
+    "7 cold-load/recovery/zero-target/lifecycle/render-RNG checks",
+    "360frames wall+UF launch on/off:46445/46445 RNG and equal summarized combat state",
+    "Mago ability gate informational classic result, zero page errors; missing buff category pre-existing/classic, not new champion approval",
+    "Paired local performance200 samples each1/32walls, see PERFORMANCE.json. Not physical mobile, GPU or GC certification."
+  ],
+  "historical": [
+    "12 isolated renderer checks72samples from cierre03 apply to unchanged mago.js; not rerun.",
+    "Wall-only120scenes480samples preceded new UF launch correction; retained separately.",
+    "Incoming ee0be1 head19checks/8workflows SUCCESS; not approval of new commit."
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "desktop": {
+    "scenes": 180,
+    "comparisons": 720,
+    "minRetention": 0.8537549407114624,
+    "ABA": true,
+    "errors": [],
+    "signaturePasses": 5760
+  },
+  "mobile": {
+    "scenes": 180,
+    "comparisons": 720,
+    "minRetention": 0.8513119533527697,
+    "ABA": true,
+    "errors": [],
+    "signaturePasses": 5760
+  },
+  "pilot": {
+    "scenes": 24,
+    "comparisons": 96,
+    "minRetention": 0.8574332171893148,
+    "ABA": true,
+    "errors": [],
+    "signaturePasses": 768
+  },
+  "parent": {
+    "scenes": 6,
+    "comparisons": 24,
+    "minRetention": 0.8078597616865261,
+    "ABA": true,
+    "errors": [],
+    "signaturePasses": 192
+  },
+  "paired-exact": {
+    "scenes": 6,
+    "comparisons": 24,
+    "minRetention": 0.8879468377635197,
+    "ABA": true,
+    "errors": [],
+    "signaturePasses": 192
+  },
+  "main-exact": {
+    "scenes": 6,
+    "comparisons": 24,
+    "minRetention": 0.9036434463794684,
+    "ABA": true,
+    "errors": [],
+    "signaturePasses": 192
+  },
+  "candidate-exact": {
+    "scenes": 6,
+    "comparisons": 24,
+    "minRetention": 0.8879468377635197,
+    "ABA": true,
+    "errors": [],
+    "signaturePasses": 192
+  },
+  "main-mobile": {
+    "scenes": 6,
+    "comparisons": 24,
+    "minRetention": 0.8981117230527144,
+    "ABA": true,
+    "errors": [],
+    "signaturePasses": 192
+  },
+  "candidate-mobile": {
+    "scenes": 6,
+    "comparisons": 24,
+    "minRetention": 0.8873072360616845,
+    "ABA": true,
+    "errors": [],
+    "signaturePasses": 192
+  },
+  "canary": {
+    "scenes": 1,
+    "comparisons": 4,
+    "minRetention": 0,
+    "ABA": false,
+    "errors": [],
+    "signaturePasses": 32
+  }
+}

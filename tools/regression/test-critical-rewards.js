@@ -25,7 +25,7 @@ load('js/systems/reward-mailbox.js');load('js/systems/items.js');load('js/system
 ev(`var INVENTORY_CAPACITY=1,currentArena='bosque',runLevel=10,subjefesDefeated=0,kills=12;
 var CLASSES={mago:{name:'Mago',icon:'M',color:'#fff'}};
 var player={classKey:'mago',stats:{}},heroes=[player],groundLoot=[],rolls=0,quests=0;
-var LOOT_VICTORY_FLOOR='raro';
+var LOOT_VICTORY_FLOOR='raro',ITEM_MAX_LEVEL=10;
 function computePerformance(){return {score:50,grade:'A'};}
 function ownedDesignIds(){return new Set();}
 function firstWinLootDue(){return false;}

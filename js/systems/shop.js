@@ -210,7 +210,7 @@ function skinCompatibleChamps(setId){
   const c = skinSetChamp(setId);
   return Object.keys(save.champions).filter(k=>save.champions[k].unlocked!==false && CLASSES[k] && (!c || c===k));
 }
-function skinOwnedFull(setId){ return !!(save.cosmeticUnlocks && save.cosmeticUnlocks[setId]) || (typeof cosmeticSetCollected==="function" && cosmeticSetCollected(setId)) || shopSetMissing(setId).length === 0; }
+function skinOwnedFull(setId){ if(SET_SKINS[setId]?.manifest)return !!save.cosmeticUnlocks?.[setId]; return !!(save.cosmeticUnlocks && save.cosmeticUnlocks[setId]) || (typeof cosmeticSetCollected==="function" && cosmeticSetCollected(setId)) || shopSetMissing(setId).length === 0; }
 function skinIsActiveOn(setId, k){ return typeof champSkinId==="function" ? champSkinId(k) === setId : false; }
 // Selecciona la apariencia sin equipar piezas ni alterar estadísticas.
 function skinEquipOn(setId, k){
@@ -332,7 +332,8 @@ function shopRotationContext(){
   const cfg = _shopRotCfg(), pool = shopRotationPoolEntries(), sig = cfg.n+"|"+cfg.w+"|"+cfg.seed+"|"+pool.map(e=>e.key).join(",");
   if(_shopRotCtx && _shopRotCtx.sig === sig) return _shopRotCtx;
   const core = pricingRotationContext(pool.map(e=>({key:e.key, cat:e.cat, group:e.cat==="legendario" ? "" : ((DESIGNED_ITEMS[e.id] && DESIGNED_ITEMS[e.id].set) || e.id)})), cfg);
-  return (_shopRotCtx = Object.assign({sig, entries:Object.fromEntries(pool.map(e=>[e.key, e]))}, core));
+  const inRot = new Set(core.A); // el núcleo recorta el resto del pozo si no es múltiplo de piezas/día (pricing.js): esas piezas no rotan
+  return (_shopRotCtx = Object.assign({sig, entries:Object.fromEntries(pool.filter(e=>inRot.has(e.key)).map(e=>[e.key, e]))}, core));
 }
 // Claves de las piezas a la venta el día UTC número `dayNum` (por defecto, hoy).
 function shopRotationKeys(dayNum){

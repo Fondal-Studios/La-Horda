@@ -78,7 +78,7 @@ function renderHub(){
   startChampAnimLoop();
 }
 /* ---------------- PRIMER ARRANQUE CORTO ----------------
-   Perfil nuevo: título → guardián de regalo → directo a la Ciudad (Arena 01) jugando, con el Hechicero y
+   Perfil nuevo: título → guardián de regalo → directo a la Ciudad (Arena 01) jugando, con el Libro y
    los bots de siempre, sin pasar por el hub, Modos, Arenas ni la Sala (antes eran 8 pantallas).
    save.firstRun: "jugando" durante esa primera partida (reintentar la deja igual); al terminarla (victoria,
    derrota o abandono) se vuelve al HUB en vez de a elegir guardián, y queda "hub": JUGAR se resalta con

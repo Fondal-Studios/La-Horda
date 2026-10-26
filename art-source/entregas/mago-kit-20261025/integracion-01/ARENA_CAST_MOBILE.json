@@ -1,0 +1,42 @@
+{
+  "scope": "Candidate real cast/render, mobile844x390; no comparison parity or whole-kit gate",
+  "base": "4476bae0591ec3e58bf02a9a0d338a4e91b04bef",
+  "rows": [
+    {
+      "index": 0,
+      "skill": {
+        "name": "Muro de Fuego",
+        "ico": "\ud83d\udd25",
+        "cost": 42,
+        "cd": 9000,
+        "kind": "fire_wall",
+        "range": 190,
+        "innerR": 38,
+        "outerR": 82,
+        "duration": 4500,
+        "tick": 450,
+        "dmgMult": 0.42,
+        "element": "fire",
+        "desc": "Crea un anillo de fuego que quema al pisarlo"
+      },
+      "after": {
+        "fireWalls": [
+          {
+            "innerR": 38,
+            "outerR": 82,
+            "timer": 4500
+          }
+        ],
+        "chains": [],
+        "sparks": 0,
+        "particles": 1
+      },
+      "draws": {
+        "fire": 240,
+        "chain": 0,
+        "spark": 0
+      }
+    }
+  ],
+  "errors": []
+}
