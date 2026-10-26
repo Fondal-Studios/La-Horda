@@ -7,6 +7,10 @@
     {
       "id": "casts01",
       "result": "60PASS/12scenes/36diagnostic screenshots; three reviewed and persisted, rest reproducible"
+    },
+    {
+      "id": "remote-verification01",
+      "result": "Overbroad comparison expected old runtime blob unchanged and failed there. Corrected scope verifies23newfiles plus46immutable art-source artifacts; runtime and queue intentionally changed. Full remote tree11126entries untruncated, PR/ref/main verified. CI observed4checks:3in_progress/1success, not approval."
     }
   ],
   "prior": "Preserve primera-pasada-01/TEST_ATTEMPTS.json and Morwen post-cierre-01 baseline failures; no new failed execution hidden. Initial read of nonexistent skill-fx-a/hooks.js failed; correct file bind.js read before implementation."
