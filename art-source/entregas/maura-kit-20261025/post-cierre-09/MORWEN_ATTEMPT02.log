@@ -1,0 +1,15 @@
+[arnés] servidor propio: http://127.0.0.1:40031 (raíz /workspace/scratch/27dc1a293731/la-horda)
+browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     npx playwright install                                 ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+    at Object.launch (/workspace/scratch/27dc1a293731/la-horda/tools/lib/serve.js:67:37)
+    at /workspace/scratch/27dc1a293731/la-horda/art-source/entregas/maura-kit-20261025/post-cierre-09/audit-morwen-next.js:4:53 {
+  log: [],
+  name: 'Error'
+}

@@ -1,0 +1,81 @@
+{
+  "atCast": [
+    {
+      "kind": "alembic",
+      "life": 8000,
+      "maxLife": 8000,
+      "r": 170,
+      "x": 100,
+      "y": 0
+    }
+  ],
+  "samples": [
+    {
+      "age": 96,
+      "calls": 6,
+      "draws": 6,
+      "objects": [
+        {
+          "life": 7904,
+          "r": 170
+        }
+      ],
+      "pool": []
+    },
+    {
+      "age": 256,
+      "calls": 16,
+      "draws": 16,
+      "objects": [
+        {
+          "life": 7744,
+          "r": 170
+        }
+      ],
+      "pool": []
+    },
+    {
+      "age": 4000,
+      "calls": 250,
+      "draws": 250,
+      "objects": [
+        {
+          "life": 4000,
+          "r": 170
+        }
+      ],
+      "pool": []
+    },
+    {
+      "age": 7904,
+      "calls": 494,
+      "draws": 494,
+      "objects": [
+        {
+          "life": 96,
+          "r": 170
+        }
+      ],
+      "pool": []
+    },
+    {
+      "age": 8032,
+      "calls": 499,
+      "draws": 499,
+      "objects": [],
+      "pool": [
+        {
+          "art": "nova",
+          "t": 48,
+          "dur": 640
+        }
+      ]
+    }
+  ],
+  "propCache": [
+    "m|alchemy|flask|3"
+  ],
+  "packReady": true,
+  "errors": [],
+  "scope": "Read-only real renderer audit of existing alembic, separate motif cache; no art produced or approved."
+}

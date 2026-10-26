@@ -1,0 +1,35 @@
+{
+  "pr": 223,
+  "branch": "art/maura-kit-first-pass-20261025",
+  "approvedHead": "3e49e1c21fdcd1491d5a12b5dd985ad06bd3eccd",
+  "productionTree": "a1d770f61c8d189fcead339a969584340d0c1cf1",
+  "mergeMain": "fd10c68b4ff8140481237de3cc885b8635e4710e",
+  "mergedAt": "2026-10-26T00:49:52Z",
+  "state": "INTEGRADO_MAIN",
+  "artGate": "PASS_COMPONENT",
+  "scope": [
+    "A-FX-maura-h1/root-path and normal launch",
+    "A-FX-maura-h2/bark-shell and normal launch",
+    "A-FX-maura-h3/shears and normal launch"
+  ],
+  "wholeBlocksClosed": false,
+  "ci": {
+    "checks": 19,
+    "workflows": 8,
+    "all": "SUCCESS",
+    "exactHead": "3e49e1c21fdcd1491d5a12b5dd985ad06bd3eccd"
+  },
+  "publication": "NOT_CONFIRMED",
+  "publicCheckUTC": "2026-10-26T00:50:11Z–00:50:18Z",
+  "productionFilesVerified": 76,
+  "queueEntries": 58,
+  "queueFirst55Preserved": true,
+  "supersedes": "cierre-09 pending-integration fields and the VALIDADO state of these three queue entries only; historical FIX attempts retained, no global completion claim",
+  "postCommit": "Evidence only on same branch after merge; do not merge PR223 again. Closed PR head stays approvedHead; branch ref may advance to this closure.",
+  "next": "PRODUCCION auditada Morwen B169/B170/B171: fresh main/PR and exact consumers first; existing body/skins/icons/alchemy/motif/UF retained. Then another closure of accumulated FIX. Global inventory incomplete; keep task active.",
+  "sourceHashes": {
+    "maura": "f433bce1aa6c8f6f1ab13ff4e35eea37abd91a691147fb4d261964de92302bc6",
+    "signatures": "ac226503c72cd5c8bb315313f9dbf2210e6dce2196488a8616160556fc242f03"
+  }
+}
+

@@ -1,0 +1,349 @@
+{
+  "rows": [
+    {
+      "mode": "resin-empty",
+      "before": {
+        "shield": 0,
+        "residue": 0,
+        "marks": []
+      },
+      "afterCast": {
+        "shield": 0,
+        "residue": 0,
+        "slow": 1000,
+        "burn": 1000,
+        "marks": [],
+        "objects": []
+      },
+      "draws": 41,
+      "packReady": true,
+      "pool": [
+        {
+          "art": "nova",
+          "theme": "alchemy",
+          "r": 100,
+          "t": 256,
+          "dur": 680
+        },
+        {
+          "art": "rays",
+          "theme": "alchemy~p",
+          "r": 42,
+          "t": 256,
+          "dur": 380
+        },
+        {
+          "art": "rings",
+          "theme": "alchemy~p",
+          "r": 100,
+          "t": 136,
+          "dur": 700
+        }
+      ]
+    },
+    {
+      "mode": "resin-hit",
+      "before": {
+        "shield": 0,
+        "residue": 0,
+        "marks": [
+          null
+        ]
+      },
+      "afterCast": {
+        "shield": 0,
+        "residue": 0,
+        "slow": 1000,
+        "burn": 1000,
+        "marks": [
+          {
+            "0": {
+              "resin": 5320,
+              "salt": 0
+            }
+          }
+        ],
+        "objects": []
+      },
+      "draws": 41,
+      "packReady": true,
+      "pool": [
+        {
+          "art": "nova",
+          "theme": "alchemy",
+          "r": 100,
+          "t": 256,
+          "dur": 680
+        },
+        {
+          "art": "rays",
+          "theme": "alchemy~p",
+          "r": 42,
+          "t": 256,
+          "dur": 380
+        },
+        {
+          "art": "rings",
+          "theme": "alchemy~p",
+          "r": 100,
+          "t": 136,
+          "dur": 700
+        },
+        {
+          "art": "cone",
+          "theme": "chain~p",
+          "r": 103,
+          "t": 256,
+          "dur": 260
+        },
+        {
+          "art": "beam",
+          "theme": "eslabon_hook",
+          "r": 60,
+          "t": 256,
+          "dur": 560
+        },
+        {
+          "art": "burst",
+          "theme": "eslabon_hook",
+          "r": 44,
+          "t": 256,
+          "dur": 480
+        }
+      ]
+    },
+    {
+      "mode": "salt-empty",
+      "before": {
+        "shield": 0,
+        "residue": 0,
+        "marks": []
+      },
+      "afterCast": {
+        "shield": 0,
+        "residue": 0,
+        "slow": 1000,
+        "burn": 1000,
+        "marks": [],
+        "objects": []
+      },
+      "draws": 32,
+      "packReady": true,
+      "pool": [
+        {
+          "art": "cone",
+          "theme": "alchemy~h",
+          "r": 200,
+          "t": 256,
+          "dur": 560
+        },
+        {
+          "art": "rays",
+          "theme": "alchemy~p",
+          "r": 44,
+          "t": 256,
+          "dur": 340
+        }
+      ]
+    },
+    {
+      "mode": "reaction",
+      "before": {
+        "shield": 0,
+        "residue": 0,
+        "marks": [
+          {
+            "0": {
+              "resin": 0,
+              "salt": 0
+            }
+          }
+        ]
+      },
+      "afterCast": {
+        "shield": 0,
+        "residue": 1,
+        "slow": 1000,
+        "burn": 1000,
+        "marks": [
+          {
+            "0": {
+              "resin": 0,
+              "salt": 0
+            }
+          }
+        ],
+        "objects": []
+      },
+      "draws": 73,
+      "packReady": true,
+      "pool": [
+        {
+          "art": "nova",
+          "theme": "alchemy",
+          "r": 100,
+          "t": 256,
+          "dur": 680
+        },
+        {
+          "art": "rays",
+          "theme": "alchemy~p",
+          "r": 42,
+          "t": 256,
+          "dur": 380
+        },
+        {
+          "art": "rings",
+          "theme": "alchemy~p",
+          "r": 100,
+          "t": 136,
+          "dur": 700
+        },
+        {
+          "art": "cone",
+          "theme": "alchemy~h",
+          "r": 200,
+          "t": 256,
+          "dur": 560
+        },
+        {
+          "art": "rays",
+          "theme": "alchemy~p",
+          "r": 44,
+          "t": 256,
+          "dur": 340
+        },
+        {
+          "art": "cone",
+          "theme": "siege~p",
+          "r": 93,
+          "t": 256,
+          "dur": 260
+        },
+        {
+          "art": "burst",
+          "theme": "hunt~p",
+          "r": 24,
+          "t": 256,
+          "dur": 280
+        },
+        {
+          "art": "burst",
+          "theme": "music~p",
+          "r": 24,
+          "t": 256,
+          "dur": 280
+        }
+      ]
+    },
+    {
+      "mode": "distill-zero",
+      "before": {
+        "shield": 0,
+        "residue": 0,
+        "marks": []
+      },
+      "afterCast": {
+        "shield": 12.6,
+        "residue": 0,
+        "slow": 0,
+        "burn": 0,
+        "marks": [],
+        "objects": []
+      },
+      "draws": 48,
+      "packReady": true,
+      "pool": [
+        {
+          "art": "aura",
+          "theme": "alchemy~p",
+          "r": 44,
+          "t": 256,
+          "dur": 1600
+        },
+        {
+          "art": "burst",
+          "theme": "alchemy~p",
+          "r": 50,
+          "t": 256,
+          "dur": 480
+        },
+        {
+          "art": "column",
+          "theme": "alchemy~p",
+          "r": 16,
+          "t": 256,
+          "dur": 700
+        }
+      ]
+    },
+    {
+      "mode": "distill-five",
+      "before": {
+        "shield": 0,
+        "residue": 5,
+        "marks": []
+      },
+      "afterCast": {
+        "shield": 38.85,
+        "residue": 0,
+        "slow": 0,
+        "burn": 0,
+        "marks": [],
+        "objects": []
+      },
+      "draws": 48,
+      "packReady": true,
+      "pool": [
+        {
+          "art": "aura",
+          "theme": "alchemy~p",
+          "r": 44,
+          "t": 256,
+          "dur": 1600
+        },
+        {
+          "art": "burst",
+          "theme": "alchemy~p",
+          "r": 50,
+          "t": 256,
+          "dur": 480
+        },
+        {
+          "art": "column",
+          "theme": "alchemy~p",
+          "r": 16,
+          "t": 256,
+          "dur": 700
+        }
+      ]
+    },
+    {
+      "mode": "alembic",
+      "before": {
+        "shield": 0,
+        "residue": 0,
+        "marks": []
+      },
+      "afterCast": {
+        "shield": 0,
+        "residue": 0,
+        "slow": 1000,
+        "burn": 1000,
+        "marks": [],
+        "objects": [
+          {
+            "kind": "alembic",
+            "life": 8000,
+            "r": 170
+          }
+        ]
+      },
+      "draws": 0,
+      "packReady": true,
+      "pool": []
+    }
+  ],
+  "errors": [],
+  "scope": "Read-only runtime audit before production; no new art, no visual gate approval. Current Maura candidate; Morwen files unchanged from main."
+}

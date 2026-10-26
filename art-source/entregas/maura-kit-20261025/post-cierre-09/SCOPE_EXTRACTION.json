@@ -1,0 +1,175 @@
+{
+  "main": "7e4e653e83b958bb63534ea90cfc77400bf93545",
+  "head": "3e49e1c21fdcd1491d5a12b5dd985ad06bd3eccd",
+  "headTree": "3e49e1c21fdcd1491d5a12b5dd985ad06bd3eccd",
+  "totalFiles": 401,
+  "nonArt": [
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "before": "8db65727d6766b692784300efb13c1f1cb6ccdb7",
+      "after": "ca255fd6c5b422049faaf4afc9945e817d3d9f36"
+    },
+    {
+      "path": "js/champions/skill-fx-a/c/maura.js",
+      "before": "76a2e735c6424acac53b7dc0e985440bb33d5997",
+      "after": "05be04d46b7262222652851f7c13e4abf5a1959b"
+    },
+    {
+      "path": "js/skills/champion-signatures.js",
+      "before": "bd8c4d814bcfa398a1678b0709c839167a4496c1",
+      "after": "2c17f221f85547f6e12e3599d1f610a171427050"
+    },
+    {
+      "path": "tools/vfx/audit-maura-candidates.js",
+      "before": null,
+      "after": "5d8364f4381df036a4a8c3ab4dc62e8e9a04f233"
+    },
+    {
+      "path": "tools/vfx/audit-maura-installed.js",
+      "before": null,
+      "after": "9aca160da19b0732043cca2bd5db14c9ce3074d1"
+    },
+    {
+      "path": "tools/vfx/capture-maura-contact.js",
+      "before": null,
+      "after": "b7c579dd925994f8a6820d29871856c7cd7e4444"
+    },
+    {
+      "path": "tools/vfx/capture-maura-kit-close.js",
+      "before": null,
+      "after": "e4bbe1a2235e55d5ece47a6b1d959f0da2bb29ee"
+    },
+    {
+      "path": "tools/vfx/export-maura-candidates.js",
+      "before": null,
+      "after": "977b898b1d6824986f371b809354485868acb54f"
+    },
+    {
+      "path": "tools/vfx/export-maura-close.js",
+      "before": null,
+      "after": "319e3628a495aa38cceeb583489cf23260028613"
+    },
+    {
+      "path": "tools/vfx/maura-before-after.js",
+      "before": null,
+      "after": "40d6f6c7b871d83a117d868df86568820b908c9a"
+    },
+    {
+      "path": "tools/vfx/maura-bucket-check.js",
+      "before": null,
+      "after": "6774f4286d63c951fb58bde934c4dbe837c602d0"
+    },
+    {
+      "path": "tools/vfx/maura-close-lifecycle.js",
+      "before": null,
+      "after": "ca7623c032b0b4aa9a60ac488de4eac3fdb504f5"
+    },
+    {
+      "path": "tools/vfx/maura-close-online.js",
+      "before": null,
+      "after": "2d1309283893fb7c2c876c88805a5228100738f0"
+    },
+    {
+      "path": "tools/vfx/maura-close-perf.js",
+      "before": null,
+      "after": "e93b3e851b98e8b80537ea7da35b846a68e8f667"
+    },
+    {
+      "path": "tools/vfx/maura-culling-audit.js",
+      "before": null,
+      "after": "ea43d7863467767d53f64d90a5577954cb1bb389"
+    },
+    {
+      "path": "tools/vfx/maura-effect-visibility.py",
+      "before": null,
+      "after": "11ca4003ff9a9b5de135a5b88493fcb9ea5f2ff4"
+    },
+    {
+      "path": "tools/vfx/maura-forest-complete.js",
+      "before": null,
+      "after": "ba23361321d787c07d98b80cf6325084cbef5f74"
+    },
+    {
+      "path": "tools/vfx/maura-full-render-perf.js",
+      "before": null,
+      "after": "243332a64f09d7f5791ae40def4f5ed71fb5dfe1"
+    },
+    {
+      "path": "tools/vfx/maura-kit-close-online.js",
+      "before": null,
+      "after": "1e485649ee7f5a38e45d9bb95cd4a3134a8ef877"
+    },
+    {
+      "path": "tools/vfx/maura-kit-full-render-perf.js",
+      "before": null,
+      "after": "6149040bba0ca043985279df07c16638a7949543"
+    },
+    {
+      "path": "tools/vfx/maura-perf-diagnosis.js",
+      "before": null,
+      "after": "85552c6a0f25d891383b6e41c424ca66e7c602f5"
+    },
+    {
+      "path": "tools/vfx/maura-review-sheets.py",
+      "before": null,
+      "after": "36ac45ec37ce3937bfed7a4da2eff40b1adef1f3"
+    },
+    {
+      "path": "tools/vfx/maura-root-geometry.js",
+      "before": null,
+      "after": "54257cd7a6a5141b643891b4c2102bc7eed09efa"
+    },
+    {
+      "path": "tools/vfx/maura-signature-check.js",
+      "before": null,
+      "after": "279e71f85d4a068e1a5e5dba684aadbafadab0fc"
+    },
+    {
+      "path": "tools/vfx/maura-signature-extra-check.js",
+      "before": null,
+      "after": "b050c7cc3555285542a5f1f1af0c1a56993b35e5"
+    },
+    {
+      "path": "tools/vfx/parity-maura-close.js",
+      "before": null,
+      "after": "34ba6158c571dc7040820a52cad344173d0821db"
+    },
+    {
+      "path": "tools/vfx/parity-maura-kit-close.js",
+      "before": null,
+      "after": "05ff9076cdf9862314c3f68f08348dd4b1bb950d"
+    },
+    {
+      "path": "tools/vfx/parity-maura-parent.js",
+      "before": null,
+      "after": "6c14d778e8829b6688386445dd4f7451303a3776"
+    },
+    {
+      "path": "tools/vfx/preview-maura-candidates.js",
+      "before": null,
+      "after": "26fa7119d3e1fbe0352e2daa9be16f7095e23235"
+    },
+    {
+      "path": "tools/vfx/preview-maura-close.js",
+      "before": null,
+      "after": "2327431c8fb7a8022da72ebb5fc0cd0ee5c3aee4"
+    }
+  ],
+  "artifactRoots": [
+    "art-source/entregas/maura-kit-20261025"
+  ],
+  "noOtherKitImported": true,
+  "runtime": [
+    {
+      "path": "js/champions/skill-fx-a/c/maura.js",
+      "before": "76a2e735c6424acac53b7dc0e985440bb33d5997",
+      "after": "05be04d46b7262222652851f7c13e4abf5a1959b"
+    },
+    {
+      "path": "js/skills/champion-signatures.js",
+      "before": "bd8c4d814bcfa398a1678b0709c839167a4496c1",
+      "after": "2c17f221f85547f6e12e3599d1f610a171427050"
+    }
+  ],
+  "note": "Full recursive trees, not capped compare API. Archived FIX attempts remain evidence; approved runtime is the two files listed."
+}

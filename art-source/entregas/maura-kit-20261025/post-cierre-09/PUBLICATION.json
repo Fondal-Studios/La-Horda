@@ -1,0 +1,35 @@
+{
+  "index": {
+    "url": "https://fondalstudios.com/la-horda/jugar/",
+    "status": 200,
+    "utc": "2026-10-26T00:50:11.891959+00:00",
+    "bytes": 67504,
+    "sha256": "02802491fb636eea94e5deb7102bc0b17ee770f9f17a233184fec1b19fa2f538"
+  },
+  "runtime": [
+    {
+      "url": "https://fondalstudios.com/la-horda/jugar/js/champions/skill-fx-a/c/maura.js",
+      "status": 200,
+      "utc": "2026-10-26T00:50:15.215989+00:00",
+      "bytes": 478,
+      "sha256": "b92a2013b6d7b91314153112708833080bdfc26b9a78de9ee200b5a13a039ea0",
+      "path": "js/champions/skill-fx-a/c/maura.js",
+      "expectedSha256": "f433bce1aa6c8f6f1ab13ff4e35eea37abd91a691147fb4d261964de92302bc6",
+      "exactBytes": false,
+      "indexConsumes": true
+    },
+    {
+      "url": "https://fondalstudios.com/la-horda/jugar/js/skills/champion-signatures.js",
+      "status": 200,
+      "utc": "2026-10-26T00:50:18.891023+00:00",
+      "bytes": 6610,
+      "sha256": "2bbe76162cac478de248ebbbfa7ff98e8cda17b672ef1bd9d83f2be46098a3ad",
+      "path": "js/skills/champion-signatures.js",
+      "expectedSha256": "ac226503c72cd5c8bb315313f9dbf2210e6dce2196488a8616160556fc242f03",
+      "exactBytes": false,
+      "indexConsumes": true
+    }
+  ],
+  "publication": "NOT_CONFIRMED",
+  "note": "Canonical hosting only. Repository integration is independent. No infrastructure changes."
+}

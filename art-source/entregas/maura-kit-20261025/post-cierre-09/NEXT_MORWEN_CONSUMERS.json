@@ -1,0 +1,28 @@
+{
+  "scope": "Read-only continuation; no new art or approval",
+  "references": [
+    {
+      "path": "js/champions/skill-fx-a/props.js",
+      "gitBlob": "6a5e7d41e7ef960093cff695945911e1ee7fd8c1",
+      "sha256": "24f6d54b5fc2750cd073eff13db419743ac0193ab3bd593da1d660089b3d14a1"
+    },
+    {
+      "path": "js/champions/skill-fx-a/bind.js",
+      "gitBlob": "fe797518265d0c4e2094faac171caaa070acf966",
+      "sha256": "23926b18ea65dbd57b3fd885d4912bc167903a1a556ff89f8bf069609485a019"
+    },
+    {
+      "path": "js/rendering/portadores.js",
+      "gitBlob": "c86995811b61aaa210f90da15f132cd6a604d617",
+      "sha256": "27d44bda0a0b71038719756237100fec7f61efa5d2fbff726b5ffe67147b2c64"
+    },
+    {
+      "path": "js/rendering/renderer.js",
+      "gitBlob": "1134bf5c0d1eab4c645238b295de548753938f87",
+      "sha256": "1e1c33c7009d34970f7c93a11b2985de3e1f267362be8c580b333530f0aa45fd"
+    }
+  ],
+  "finding": "sfaObjectsFrame calls SFA_OBJ.alembic.draw. sfaDrawMotifObj uses sfaMotifCv, a separate motif cache from the instrumented sfaCache. Legacy portadores renderer also draws alembic vessel and rings; enemy marks and residues have current consumers. Therefore zero cached-atlas draws in the preliminary UF case is not proof of absence.",
+  "next": "Before production, instrument both motif and atlas consumers and their actual visibility; preserve existing alchemy and alembic paths. Audit real missing reaction/mark lifecycle details rather than duplicate the vessel.",
+  "localVsMain": "4/4 exact"
+}
