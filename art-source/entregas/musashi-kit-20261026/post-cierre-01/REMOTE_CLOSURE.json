@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-26",
+  "status": "EN_CORRECCION",
+  "art_gate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "pr": 227,
+  "url": "https://github.com/Fondal-Studios/La-Horda/pull/227",
+  "branch": "art/musashi-thousand-cuts-first-pass-20261026",
+  "production_commit": "6034a8873ea2ab352b7b62a314ed2b3104be0291",
+  "production_tree": "702b55f6196c97aa936a5a1f3d5823a6d970499b",
+  "main_unchanged": "20afebd4ccefaf6fa11ce30ab096c2535d341640",
+  "verified_production_files": 30,
+  "remote_closure_lost": false,
+  "scope": [
+    "A-FX-musashi-h3/thousand-cuts"
+  ],
+  "changes": "Nine oblique cuts in three staggered groups; native recipe and normal H3 visual event duration 1200→460ms. Combat, geometry/cap420, H1/H2/body/skins/ultimate unchanged.",
+  "new_tests": {
+    "scenes": 24,
+    "arenas": 3,
+    "looks": 2,
+    "viewports": 2,
+    "densities": 2,
+    "aba_exact": 96,
+    "body_min_percent": 95.96330275229359,
+    "threshold": 0.8,
+    "delta": 24,
+    "parity_frames": 360,
+    "rng_main_candidate_repeat": 15216,
+    "state": "RESUMIDO, not global snapshot",
+    "reviewed": "2 sheets / 24 sparse temporal crops; desktop crops clip tier4 outer area, not full-frame approval",
+    "native_exports": 4,
+    "buckets": 3,
+    "phases_per_bucket": 24,
+    "nonempty_per_bucket": 16,
+    "alpha": "0/255",
+    "rng_paint": 0,
+    "syntax_diff_check": "PASS"
+  },
+  "historical": "area-01 full matrix, relay6, contracts18 are historical; not rerun or certification of current timing.",
+  "failures_preserved": [
+    "Parity initial ENOENT before browser; corrected with three exact-main baselines",
+    "Parent738 CI:21success1FAIL Objetos,economía y tienda(parte A); cause not demonstrated",
+    "Annotations fetch400 unsupported"
+  ],
+  "pending": [
+    "Rigid shard silhouette and early blank tail: improve grouped sequence/material",
+    "Other arenas and appearances; full-frame visual review",
+    "Extreme radii>420, fused/frozen/recast/culling/uf=0/lifecycle",
+    "New relay after timing change; clean full-render performance",
+    "Art Gate PASS and all exact-head checks/workflows before ready/merge"
+  ],
+  "next_action": "Continue grouped Musashi closure from cierre-01/source-sfa.js and source-bind.js. No new kit. Preserve queue62 and prior sources/failures.",
+  "publication": "No new query; NOT_CONFIRMED historical separate. No merge.",
+  "inventory": "Incomplete; keep task active"
+}
