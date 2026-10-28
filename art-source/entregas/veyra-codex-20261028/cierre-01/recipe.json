@@ -1,0 +1,16 @@
+{
+  "generator": "built-in image_gen",
+  "mode": "edit identity-preserve",
+  "inputs": [
+    "../produccion-01/source-left.png",
+    "../produccion-01/source-up.png",
+    "../../../../assets/ui/codex/champions/veyra.png"
+  ],
+  "referenceRepoPath": "assets/ui/codex/champions/veyra.png",
+  "referenceSha256": "d89d8328b31d3bfa57b42a7a8a4f3c7c06d9446f122d38f4f7a59c9a7c9b76ed",
+  "prompts": [
+    "left-prompt.txt",
+    "up-prompt.txt"
+  ],
+  "reproduction": "Generation stochastic; originals and exact prompts retained. Run python tools/art/audit-veyra-repair01.py for read-only measurements."
+}

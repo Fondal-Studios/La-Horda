@@ -1,0 +1,27 @@
+{
+  "new": [
+    "Read-only diagnostics on two new sources:56 nominal cells,0 approved; no image mutation.",
+    "24 prior manifest entries local SHA256 exact; remote prior REMOTE_CLOSURE read.",
+    "Fresh main df7fe4b includes external NanoGM atlas integration; untouched.",
+    "PR232 f4b7c109:125 file paths, no Veyra paths; main/ref rechecked before checkpoint."
+  ],
+  "failed": [
+    "git show origin/main failed because fetch populated FETCH_HEAD only; corrected to FETCH_HEAD.",
+    "Left source edit did not remove red surround or enforce profile; rejected.",
+    "Up edit did not resolve alpha or uniform cell separation; FIX.",
+    "Pillow getdata deprecation warning, diagnostic completed successfully."
+  ],
+  "historical": [
+    "224 baseline renderer samples and preview5 from production01 not rerun; no candidate renderer.",
+    "Parent52eba check-runs17success; no workflow completeness or newhead approval claim."
+  ],
+  "notRun": [
+    "atlas extraction",
+    "candidate renderer",
+    "relay",
+    "skins/arenas",
+    "performance",
+    "ArtPASS",
+    "publication"
+  ]
+}
