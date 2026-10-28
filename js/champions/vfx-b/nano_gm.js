@@ -9,22 +9,47 @@
   kvbDefMotif('ng_scroll', 9, 9, kvbBmp(['.eeeeeee.', 'eWWWWWWWe', 'eWkkWkkWe', 'eWWWWWWWe', 'eWkkkWkWe', 'eWWWWWWWe', '.eeeeeee.'], {e: '#e8c56a', W: '#fff4d6', k: '#7a6420'}));
   kvbDefMotif('ng_mote', 3, 3, kvbBmp(['.y.', 'yWy', '.y.'], {y: '#e8c56a', W: '#fff4d6'}));
   kvbDefBeam('ng_decree', 8, 20, 18, (g, q, W, H, f) => {
-    const m = H / 2, post = q < .5 ? 0 : (q - .5) / .5, half = Math.max(1, Math.round(m * (q < .18 ? .3 + 3.8 * q : .82 - .5 * post)));
-    g.fillStyle = NG[2]; g.fillRect(0, m - half - 2, W, half * 2 + 4); g.fillStyle = SH[0]; g.fillRect(0, m - half, W, half * 2);
-    g.fillStyle = SH[1]; g.fillRect(0, m - half + 1, W, 2); g.fillRect(0, m + half - 3, W, 2); g.fillStyle = NG[3]; for(let x = (f * 4) % 10; x < W; x += 10) g.fillRect(x, m - 1, 4, 2);
-    g.fillStyle = '#ffffff'; for(let x = 3; x < W; x += 9){ if(kvbHash(x + f, 6) > .5) g.fillRect(x, m - half + 2 + (x & 3), 1, 1); }
+    // A narrow decree with open shoulders, rather than a filled ribbon.
+    const m = H / 2, half = q < .22 ? 1 : q < .5 ? 2 : 1;
+    if(q >= 1) return;
+    g.fillStyle = SH[0]; g.fillRect(0, m - half, W, half * 2 + 1);
+    g.fillStyle = NG[2]; g.fillRect(0, m, W, 1);
+    g.fillStyle = NG[3];
+    for(let x = (f * 3) % 12; x < W; x += 12) g.fillRect(x, m - 1, 3, 1);
   });
   const lawDetails = (lg, c, R, rad, pal, q) => { lg.save(); lg.translate(c, c); lg.rotate(q * .9); const s = rad * .45; kvbPoly(lg, [[-s, -s], [s, -s], [s, s], [-s, s]], null, pal[3], 1.6); lg.rotate(.7854); kvbPoly(lg, [[-s * .7, -s * .7], [s * .7, -s * .7], [s * .7, s * .7], [-s * .7, s * .7]], null, pal[4], 1.2); lg.restore();
     for(let i = 0; i < 8; i++){ const a = i * .7854, x = c + Math.cos(a) * rad * .82, y = c + Math.sin(a) * rad * .82; kvbLine(lg, x, y - 3, x, y + 3, pal[3], 1.4); kvbLine(lg, x - 2, y, x + 2, y, pal[3], 1.2); } kvbCircle(lg, c, c, rad * .62, pal[2], 1); };
   kvbDefDecal('ng_law', 10, kvbRingPaint(NG, {fillCol: '#7a6420', core: '#e8c56a', fill: .36, details: lawDetails, flash: '#fff4d6', rimThick: 3}));
-  const splitDetails = (lg, c, R, rad, pal, q) => { lg.beginPath(); lg.arc(c, c, rad - 2, Math.PI / 2, Math.PI * 1.5); lg.closePath(); lg.fillStyle = '#fff4d6'; lg.fill(); lg.beginPath(); lg.arc(c, c, rad - 2, -Math.PI / 2, Math.PI / 2); lg.closePath(); lg.fillStyle = '#14121c'; lg.fill(); kvbLine(lg, c, c - rad, c, c + rad, NG[2], 2); kvbDisc(lg, c - rad * .5, c, 2.4, '#14121c'); kvbDisc(lg, c + rad * .5, c, 2.4, '#fff4d6'); };
-  kvbDefDecal('ng_verdict', 10, kvbRingPaint(NG, {fillCol: '#7a6420', fill: .5, details: splitDetails, flash: '#fff4d6', rimThick: 3}));
-  kvbDefDecal('ng_burst_d', 10, kvbRingPaint(SH, {fillCol: '#2a2a3a', core: '#05030a', fill: .5, details: (lg, c, R, rad, pal, q) => { for(let i = 0; i < 10; i++){ const a = i * .628, L = rad * .9, nx = -Math.sin(a), ny = Math.cos(a); kvbPoly(lg, [[c + Math.cos(a) * rad * .2, c + Math.sin(a) * rad * .2], [c + Math.cos(a) * L + nx * 2.5, c + Math.sin(a) * L + ny * 2.5], [c + Math.cos(a) * L - nx * 2.5, c + Math.sin(a) * L - ny * 2.5]], i & 1 ? '#f4f4f4' : '#5a5a74'); } }, flash: '#a6a6c0', rimThick: 3}));
+  const splitDetails = (lg, c, R, rad, pal, q) => {
+    // Two opposed judgements remain distinct without filling either hemisphere.
+    for(let side = 0; side < 2; side++){
+      const a = side * Math.PI, col = side ? '#fff4d6' : '#5a5a74';
+      lg.beginPath(); lg.arc(c, c, rad * .78, a - .75, a + .75);
+      lg.strokeStyle = col; lg.lineWidth = 2; lg.stroke();
+      const x = c + Math.cos(a) * rad * .78;
+      kvbLine(lg, x, c - 2, x, c + 2, NG[2], 1);
+    }
+  };
+  kvbDefDecal('ng_verdict', 10, kvbRingPaint(NG, {fill: 0, details: splitDetails, rimThick: 1}));
+  kvbDefDecal('ng_burst_d', 10, kvbRingPaint(SH, {fill: 0, details: (lg, c, R, rad) => {
+    for(let i = 0; i < 6; i++){
+      const a = i * Math.PI / 3, inner = rad * .72, outer = rad * .9;
+      kvbLine(lg, c + Math.cos(a) * inner, c + Math.sin(a) * inner,
+        c + Math.cos(a) * outer, c + Math.sin(a) * outer, i & 1 ? '#f4f4f4' : '#5a5a74', 1);
+    }
+  }, rimThick: 1}));
 
+  // Keep the bounded shared bake; only Nano's returned impact uses its full area.
+  // Evolved Monster H3 can reach 580.1796 without changing the skill's radius.
+  function nanoImpactDecal(name, x, y, radius, duration){
+    const e = kvbDecal(name, x, y, radius, duration, {layer: 'g'});
+    if(e && Number.isFinite(radius) && radius > 520) e.w = e.h = radius * 2;
+    return e;
+  }
   KVB_FX['nano.sentence'] = (x, y, r, ang, len, impactRadius) => {
     const ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len;
     kvbBeam('ng_decree', x, y, ex, ey, Math.max(24, r * 1.7), 640, {layer: 't'});
-    kvbDecal('ng_burst_d', ex, ey, Number.isFinite(impactRadius) && impactRadius > 0 ? impactRadius : Math.max(40, r * 2.3), 700, {layer: 'g'}); // explosión final: 70 u × área
+    nanoImpactDecal('ng_burst_d', ex, ey, Number.isFinite(impactRadius) && impactRadius > 0 ? impactRadius : Math.max(40, r * 2.3), 700); // explosión final: 70 u × área
     kvbEmit('ng_shard_d', 8, ex, ey, {ring: r, v0: 40, v1: 130, up: 60, grav: 240, l0: 380, l1: 620, scale: 1.4, spin: 6});
     kvbEmit('ng_shard_l', 5, x, y, {ang, spread: .6, v0: 30, v1: 100, l0: 300, l1: 460, scale: 1.2, shrink: true});
   };
@@ -36,7 +61,7 @@
   KVB_FX['nano.invert'] = (x, y, r, ang, len, impactRadius) => {
     const ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len;
     kvbBeam('ng_decree', x, y, ex, ey, 14, 420, {layer: 'g', alpha: .8});
-    kvbDecal('ng_verdict', ex, ey, Number.isFinite(impactRadius) && impactRadius > 0 ? impactRadius : Math.max(40, r * 1.3), 760, {layer: 'g'}); // estallido de llegada: 1,3 × radio de la runa
+    nanoImpactDecal('ng_verdict', ex, ey, Number.isFinite(impactRadius) && impactRadius > 0 ? impactRadius : Math.max(40, r * 1.3), 760); // estallido de llegada: 1,3 × radio de la runa
     kvbEmit('ng_shard_d', 5, ex, ey, {v0: 40, v1: 120, up: 40, grav: 200, l0: 340, l1: 560, scale: 1.3, spin: 6}); kvbEmit('ng_shard_l', 5, ex, ey, {v0: 40, v1: 120, up: 40, grav: 200, l0: 340, l1: 560, scale: 1.3, spin: 6});
   };
   KVB_FX['nano.judgement'] = (x, y, r) => { // la mitad blanca / negra y la costura las dibuja el objeto del Juicio (radio real); aquí las esquirlas y la ley que cae
@@ -47,7 +72,13 @@
   // Capture the actual cast's area before the shared kit adjusts its visual r.
   // Numeric impact geometry travels through the existing optional event argument.
   let nanoVisualCast = null;
-  const castNanoBase = ascensionCast, drawNanoBase = ascCastFx;
+  const castNanoBase = ascensionCast, drawNanoBase = ascCastFx, teleportNanoBase = ascTeleport;
+  ascTeleport = function(h, destination){
+    const moved = teleportNanoBase.apply(this, arguments);
+    if(nanoVisualCast && nanoVisualCast.h === h && nanoVisualCast.sk.action === 'invert')
+      nanoVisualCast.moved = moved;
+    return moved;
+  };
   ascensionCast = function(h, sk, isUlt, dmg, area, dur, power){
     const previous = nanoVisualCast;
     nanoVisualCast = h && h.classKey === 'nano_gm' && sk &&
@@ -59,6 +90,8 @@
   ascCastFx = function(h, sk, isUlt, r, origin, end){
     const c = nanoVisualCast;
     if(KVB.off || !c || c.h !== h || c.sk !== sk) return drawNanoBase.apply(this, arguments);
+    // A rejected teleport has no arrival damage. Its existing origin rune remains.
+    if(sk.action === 'invert' && c.moved === false) return;
     const g = kvbCastGeom(h, sk, isUlt, r, origin, end);
     const impact = (sk.action === 'sentence' ? 70 : sk.radius * 1.3) * c.area;
     if(sk.action === 'invert') g[3] = Math.atan2(h.y - origin.y, h.x - origin.x);

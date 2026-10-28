@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-10-26",
+  "updated": "2026-10-28",
   "policy": "Alternate production batches and complete closures; current-main integration is not visual approval.",
   "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
   "pendingVerificationNotFailures": [
@@ -13,7 +13,7 @@
   ],
   "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "CIERRE Nahir: six arenas/all looks/densities,80%delta24,real full renderer/performance/parity; inspect remote-origin visibility before ArtGate and exactSHA CI. No new kit.",
+  "next": "CIERRE NanoGM PR231; no newkit.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -2620,22 +2620,42 @@
       "block": "B181",
       "frame": "existing native beam8/decal10 phases",
       "source": "js/champions/vfx-b/nano_gm.js",
-      "sha256": "1cd444db02ea2fb9efc15503bdcc589161fed6a2b611c06ebe10588a4ff507e1",
+      "sha256": "52b5a828a2d81be38f40f6ce503fb74a5883e771dc6955b96167c78838f429b5",
       "state": "EN_CORRECCION",
-      "diagnosis": "Actual impact radius now matches base/Regent/Monster cast; composed masses still obstruct reading. No new atlas.",
-      "action": "Close grouped composition, teleport/camera/relay/lifecycle/6arena looks contact/parity/performance and exactCI before merge.",
-      "checkpoint": "art-source/entregas/nano-gm-kit-20261026/produccion-01/CHECKPOINT.md"
+      "diagnosis": "El cuerpo ya queda visible. H1 aún lee como barra rígida; H3 tiene una media luna clara dominante sobre arco oscuro discreto y firma genérica. Monstruo añade alas legadas dominantes. No ArtPASS por contacto numérico.",
+      "action": "Resolver silueta y jerarquía H1/H3 junto a firma, no sólo color/ancla.",
+      "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-01/CHECKPOINT.md",
+      "history": [
+        {
+          "date": "2026-10-28",
+          "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-01/CHECKPOINT.md",
+          "sourceSha256": "52b5a828a2d81be38f40f6ce503fb74a5883e771dc6955b96167c78838f429b5",
+          "state": "EN_CORRECCION",
+          "diagnosis": "El cuerpo ya queda visible. H1 aún lee como barra rígida; H3 tiene una media luna clara dominante sobre arco oscuro discreto y firma genérica. Monstruo añade alas legadas dominantes. No ArtPASS por contacto numérico.",
+          "action": "Grouped composition, real rejected teleport and radius>520 adapter; continue full580 composition/relay/lifecycle/ArtGate/exactCI."
+        }
+      ]
     },
     {
       "component": "A-FX-nano_gm-h3/impact-contract",
       "block": "B183",
       "frame": "existing native beam8/decal10 phases",
       "source": "js/champions/vfx-b/nano_gm.js",
-      "sha256": "1cd444db02ea2fb9efc15503bdcc589161fed6a2b611c06ebe10588a4ff507e1",
+      "sha256": "52b5a828a2d81be38f40f6ce503fb74a5883e771dc6955b96167c78838f429b5",
       "state": "EN_CORRECCION",
-      "diagnosis": "Actual impact radius now matches base/Regent/Monster cast; composed masses still obstruct reading. No new atlas.",
-      "action": "Close grouped composition, teleport/camera/relay/lifecycle/6arena looks contact/parity/performance and exactCI before merge.",
-      "checkpoint": "art-source/entregas/nano-gm-kit-20261026/produccion-01/CHECKPOINT.md"
+      "diagnosis": "El cuerpo ya queda visible. H1 aún lee como barra rígida; H3 tiene una media luna clara dominante sobre arco oscuro discreto y firma genérica. Monstruo añade alas legadas dominantes. No ArtPASS por contacto numérico.",
+      "action": "Resolver silueta y jerarquía H1/H3 junto a firma, no sólo color/ancla.",
+      "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-01/CHECKPOINT.md",
+      "history": [
+        {
+          "date": "2026-10-28",
+          "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-01/CHECKPOINT.md",
+          "sourceSha256": "52b5a828a2d81be38f40f6ce503fb74a5883e771dc6955b96167c78838f429b5",
+          "state": "EN_CORRECCION",
+          "diagnosis": "El cuerpo ya queda visible. H1 aún lee como barra rígida; H3 tiene una media luna clara dominante sobre arco oscuro discreto y firma genérica. Monstruo añade alas legadas dominantes. No ArtPASS por contacto numérico.",
+          "action": "Grouped composition, real rejected teleport and radius>520 adapter; continue full580 composition/relay/lifecycle/ArtGate/exactCI."
+        }
+      ]
     }
   ],
   "latestProduction": {
@@ -2644,9 +2664,14 @@
     "state": "EN_CORRECCION"
   },
   "latestClosure": {
-    "component": "A-FX-nahir-h3/long-echo",
-    "state": "VALIDADO",
-    "checkpoint": "art-source/entregas/nahir-echo-20261026/cierre-01/CHECKPOINT.md",
-    "pending": "exactSHA CI and merge/publication"
+    "component": "NanoGM H1/H3 impact-contract",
+    "state": "EN_CORRECCION",
+    "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-01/CHECKPOINT.md",
+    "pending": [
+      "Resolver silueta y jerarquía H1/H3 junto a firma, no sólo color/ancla.",
+      "Composición completa del radio580.1796 y relay del extremo/teletransporte rechazado.",
+      "Lifecycle owner/fused/frozen/dead/recast, UF/H2 preservación integral, más buckets/reexport, ArtGate y todos los checks/workflows del SHA final.",
+      "Reconciliar main fresco preservando8rutas externas de hojas Nano; no aprobarlas por existencia."
+    ]
   }
 }

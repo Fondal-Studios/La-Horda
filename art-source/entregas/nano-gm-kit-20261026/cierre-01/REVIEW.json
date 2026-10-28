@@ -1,0 +1,37 @@
+{
+  "state": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "components": [
+    "A-FX-nano_gm-h1/impact-contract",
+    "A-FX-nano_gm-h3/impact-contract"
+  ],
+  "blocks": [
+    "B181",
+    "B183"
+  ],
+  "sourceSha256": "52b5a828a2d81be38f40f6ce503fb74a5883e771dc6955b96167c78838f429b5",
+  "newInstalledPNG": 0,
+  "newBodySprites": 0,
+  "changes": [
+    "Material agrupado H1/H3: franja estrecha, impactos de centro abierto, mismas 8/10 fases y tiempos.",
+    "Teletransporte rechazado real no emite impacto de llegada; obstáculos usan destino final.",
+    "Sólo el decal devuelto a Nano se escala a radio real cuando supera520; bake compartido sigue acotado."
+  ],
+  "visualReviewed": [
+    "coverage/mobile-base-2.webp",
+    "coverage/desktop-base-0.webp",
+    "review-temporal-mobile-h2.webp",
+    "review-mobile-monster.webp",
+    "review-desktop-skin.webp",
+    "review-temporal-desktop-h0.webp"
+  ],
+  "visualFinding": "El cuerpo ya queda visible. H1 aún lee como barra rígida; H3 tiene una media luna clara dominante sobre arco oscuro discreto y firma genérica. Monstruo añade alas legadas dominantes. No ArtPASS por contacto numérico.",
+  "remaining": [
+    "Resolver silueta y jerarquía H1/H3 junto a firma, no sólo color/ancla.",
+    "Composición completa del radio580.1796 y relay del extremo/teletransporte rechazado.",
+    "Lifecycle owner/fused/frozen/dead/recast, UF/H2 preservación integral, más buckets/reexport, ArtGate y todos los checks/workflows del SHA final.",
+    "Reconciliar main fresco preservando8rutas externas de hojas Nano; no aprobarlas por existencia."
+  ],
+  "publication": "No nuevo GET ni merge; pendiente histórica independiente."
+}

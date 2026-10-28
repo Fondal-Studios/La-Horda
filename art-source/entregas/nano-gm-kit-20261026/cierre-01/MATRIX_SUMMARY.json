@@ -1,0 +1,25 @@
+{
+  "matrices": [
+    {
+      "side": "mobile",
+      "scenes": 120,
+      "samples": 720,
+      "minBodyRetention": 0.9745331069609507,
+      "allABAExact": true,
+      "errors": []
+    },
+    {
+      "side": "desktop",
+      "scenes": 120,
+      "samples": 720,
+      "minBodyRetention": 0.9740689827543114,
+      "allABAExact": true,
+      "errors": []
+    }
+  ],
+  "scenes": 240,
+  "samples": 1440,
+  "threshold": 0.8,
+  "delta": 24,
+  "scope": "192 non-skin rows from full matrix +48 corrected ascSkin rows. Not single final rerun. Runtime before final radius>520 adapter; all these radii<=520, source paint/timing same. Does not certify580 composition. Rejected skin rows retained, not counted."
+}

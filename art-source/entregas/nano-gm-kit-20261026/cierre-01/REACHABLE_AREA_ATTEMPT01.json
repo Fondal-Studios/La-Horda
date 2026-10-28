@@ -1,0 +1,198 @@
+{
+  "result": {
+    "purchases": [
+      {
+        "id": "nano_gm_t0a",
+        "result": {
+          "ok": true
+        }
+      },
+      {
+        "id": "nano_gm_t0b",
+        "result": {
+          "ok": false,
+          "reason": "Requiere \"Sentencia Umbría · Técnica\" al máximo"
+        }
+      },
+      {
+        "id": "nano_gm_t0b",
+        "result": {
+          "ok": false,
+          "reason": "Requiere \"Sentencia Umbría · Técnica\" al máximo"
+        }
+      },
+      {
+        "id": "nano_gm_t0b",
+        "result": {
+          "ok": false,
+          "reason": "Requiere \"Sentencia Umbría · Técnica\" al máximo"
+        }
+      },
+      {
+        "id": "nano_gm_t2a",
+        "result": {
+          "ok": true
+        }
+      },
+      {
+        "id": "nano_gm_t2b",
+        "result": {
+          "ok": false,
+          "reason": "Requiere \"Inversión · Técnica\" al máximo"
+        }
+      },
+      {
+        "id": "nano_gm_t2b",
+        "result": {
+          "ok": false,
+          "reason": "Requiere \"Inversión · Técnica\" al máximo"
+        }
+      },
+      {
+        "id": "nano_gm_t2b",
+        "result": {
+          "ok": false,
+          "reason": "Requiere \"Inversión · Técnica\" al máximo"
+        }
+      }
+    ],
+    "spent": 2,
+    "earned": 30,
+    "talents": {
+      "nodes": {
+        "nano_gm_t0a": 1,
+        "nano_gm_t2a": 1
+      },
+      "mastery": null,
+      "masteryNodes": {}
+    },
+    "rows": [
+      {
+        "mode": "base",
+        "slot": 0,
+        "areas": [
+          147
+        ],
+        "calls": [
+          [
+            "nano.sentence",
+            0,
+            0,
+            63,
+            0,
+            420,
+            147
+          ]
+        ],
+        "renderRadius": 147,
+        "exact": true
+      },
+      {
+        "mode": "base",
+        "slot": 2,
+        "areas": [
+          300.3,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440,
+          440
+        ],
+        "calls": [
+          [
+            "nano.invert",
+            0,
+            0,
+            231,
+            0,
+            180,
+            300.3
+          ]
+        ],
+        "renderRadius": 300.3,
+        "exact": true
+      },
+      {
+        "mode": "monster",
+        "slot": 0,
+        "areas": [
+          205.79999999999998
+        ],
+        "calls": [
+          [
+            "nano.sentence",
+            180,
+            0,
+            101.42999999999998,
+            0,
+            420,
+            205.79999999999998
+          ]
+        ],
+        "renderRadius": 205.79999999999998,
+        "exact": true
+      },
+      {
+        "mode": "monster",
+        "slot": 2,
+        "areas": [
+          420.41999999999996
+        ],
+        "calls": [
+          [
+            "nano.invert",
+            180,
+            0,
+            371.90999999999997,
+            0,
+            180,
+            420.42
+          ]
+        ],
+        "renderRadius": 420.42,
+        "exact": false
+      }
+    ],
+    "scope": "8 actual validated talent purchases; mastery alloc10 local fixture, not purchases. Four useSkill casts no gear; not exhaustive maximal builds/evolutions."
+  },
+  "errors": []
+}

@@ -1,0 +1,126 @@
+{
+  "checks": [
+    {
+      "name": "host real H1 H3",
+      "ok": true
+    },
+    {
+      "name": "host optional impact transmitted",
+      "ok": true
+    },
+    {
+      "name": "host real native textures",
+      "ok": true
+    },
+    {
+      "name": "touch-guest real H1 H3",
+      "ok": true
+    },
+    {
+      "name": "touch-guest optional impact transmitted",
+      "ok": true
+    },
+    {
+      "name": "touch-guest real native textures",
+      "ok": true
+    },
+    {
+      "name": "both peers same geometry",
+      "ok": false
+    }
+  ],
+  "rows": [
+    {
+      "role": "host",
+      "events": [
+        {
+          "name": "sentence",
+          "args": [
+            49.5,
+            49.5,
+            30,
+            0.32175055439664213,
+            330,
+            70
+          ],
+          "decals": [
+            {
+              "x": 362.56548835666956,
+              "y": 153.8551627855565,
+              "r": 70,
+              "dur": 700
+            }
+          ]
+        },
+        {
+          "name": "invert",
+          "args": [
+            49.5,
+            49.5,
+            110,
+            0.32341168243687096,
+            190.36937778960143,
+            143
+          ],
+          "decals": [
+            {
+              "x": 230,
+              "y": 110,
+              "r": 143,
+              "dur": 760
+            }
+          ]
+        }
+      ],
+      "draws": 10,
+      "duo": false
+    },
+    {
+      "role": "touch-guest",
+      "events": [
+        {
+          "name": "sentence",
+          "args": [
+            49.5,
+            49.5,
+            30,
+            0.32,
+            330,
+            70
+          ],
+          "decals": [
+            {
+              "x": 362.7476879672055,
+              "y": 153.30696500331885,
+              "r": 70,
+              "dur": 700
+            }
+          ]
+        },
+        {
+          "name": "invert",
+          "args": [
+            49.5,
+            49.5,
+            110,
+            0.32,
+            190.37,
+            143
+          ],
+          "decals": [
+            {
+              "x": 230.20594654035426,
+              "y": 109.38403614449034,
+              "r": 143,
+              "dur": 760
+            }
+          ]
+        }
+      ],
+      "draws": 17,
+      "duo": false
+    }
+  ],
+  "errors": [],
+  "scope": "Ephemeral localhost founder fixture only (no production account changes). Actual local relay: Tanque host/NanoGM tactile guest, base H1/H3 no gear/talents. No rejected teleport or reordered snapshot certification."
+}
