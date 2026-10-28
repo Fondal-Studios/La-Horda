@@ -1,0 +1,34 @@
+{
+  "state": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "components": [
+    "A-FX-nano_gm-h1/impact-contract",
+    "A-FX-nano_gm-h3/impact-contract"
+  ],
+  "newNormalSignatures": [
+    "H1 Sentencia/decree",
+    "H3 Inversion/opposed thresholds"
+  ],
+  "runtime": {
+    "js/champions/vfx-b/nano_gm.js": "39d022e12f3b4ce75a4cac6023a6ccc6ec8b5f6c08de70fe1b7f63419275d775",
+    "js/skills/champion-signatures.js": "05a3c5439fa8b48a1a508f127e5f0f8946a9cfeea7eaabdeebfab079aa2b2c70"
+  },
+  "installedPNG": 0,
+  "newBodySprites": 0,
+  "reviewed": [
+    "review-mobile-h0.webp",
+    "review-mobile-h2.webp",
+    "review-desktop-h0.webp",
+    "review-desktop-h2.webp",
+    "review-temporal-mobile.webp",
+    "review-temporal-desktop.webp",
+    "signature-atlas.png",
+    "fullframe-extreme-desktop.webp",
+    "fullframe-h3-mobile.webp",
+    "fullframe-base-mobile.webp"
+  ],
+  "finding": "Firmas de Sentencia/Inversión distinguidas; desaparecen baldosas repetidas con franja completa. H1 normal aún lee rígido y en evolución amplifica píxel vertical18px a cinta gruesa; ArtFIX. H3 y firmas tienen pruebas técnicas pero no aprobación independiente separada. H2/UF/alas legadas conservadas.",
+  "reviewScope": "4 dense sheets120 native-scale crops +2 temporal sheets24 crops, atlas and selected fullframes. Desktop temporal crop cuts outer area; fullframe extreme separately reviewed. No fullmain before/after claim.",
+  "next": "CIERRE Nano: resolver densidad vertical y material H1 en build evolucionado sin limitar alcance/daño ni cambiar engine compartido; usar source-candidate y firmas actuales, no volver a producir otro kit. Evaluar resolución/caché local por ancho real y separación de H3/firmas si un componente consigue ArtPASS. Reusar hooks/lifecycle/relay por alcance; revalidar composición afectada y exactCI antes merge."
+}

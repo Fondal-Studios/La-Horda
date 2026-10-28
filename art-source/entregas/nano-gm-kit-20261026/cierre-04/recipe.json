@@ -1,0 +1,22 @@
+{
+  "sources": [
+    "js/champions/vfx-b/nano_gm.js",
+    "js/skills/champion-signatures.js"
+  ],
+  "nativeBeam": "128x18x8, local returned beam spec tileW=len,H=worldWidth gives sc1 and exactly one full-length blit. Same pool/lifetime/angle/length/width/culling. FIX at extreme width.",
+  "nativeSignatures": "32x32x4 per H1/H3,128x64 cache. Existing normal460ms event; H2/UF untouched.",
+  "environment": "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/nano-chromium",
+  "commands": [
+    "FREEZE_BOOT=1 PARENT_MATERIAL=1 PARENT_SOURCE=art-source/entregas/nano-gm-kit-20261026/cierre-04/source-reference.js PARENT_SIGNATURE=art-source/entregas/nano-gm-kit-20261026/cierre-04/signatures-before.js MOBILE=1 OUT=art-source/entregas/nano-gm-kit-20261026/cierre-04/final-mobile node tools/vfx/capture-nano-signatures.js",
+    "Repeat without MOBILE, OUT final-desktop",
+    "EVOLVED=1 ARENAS=bosque,infernal LOOKS=monster DENSITIES=sparse,dense SLOTS=0,2 ALL_PHASES=1 with same capture flags, each viewport, OUT temporal-mobile/desktop",
+    "OUT=art-source/entregas/nano-gm-kit-20261026/cierre-04 node tools/vfx/nano-signature-gate.js",
+    "OUT=art-source/entregas/nano-gm-kit-20261026/cierre-04 node tools/vfx/nano-route-gate.js",
+    "OUT=art-source/entregas/nano-gm-kit-20261026/cierre-04 node tools/vfx/nano-signature-camera.js",
+    "OUT=art-source/entregas/nano-gm-kit-20261026/cierre-04/online-final node tools/vfx/nano-signature-online.js",
+    "OUT=art-source/entregas/nano-gm-kit-20261026/cierre-04 node tools/vfx/parity-nano-signatures.js",
+    "OUT=art-source/entregas/nano-gm-kit-20261026/cierre-04 node tools/vfx/nano-signature-full-render-perf.js",
+    "OUT=art-source/entregas/nano-gm-kit-20261026/cierre-04/native-final node tools/vfx/nano-close-native.js",
+    "python tools/vfx/nano-signature-review.py"
+  ]
+}

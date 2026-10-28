@@ -1,0 +1,272 @@
+{
+  "rows": [
+    {
+      "mobile": false,
+      "checks": [
+        {
+          "kind": "signature",
+          "slot": 0,
+          "edge": "left",
+          "calls": 1,
+          "ink": 295,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 0,
+          "edge": "right",
+          "calls": 1,
+          "ink": 328,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 0,
+          "edge": "top",
+          "calls": 1,
+          "ink": 298,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 0,
+          "edge": "bottom",
+          "calls": 1,
+          "ink": 300,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 2,
+          "edge": "left",
+          "calls": 1,
+          "ink": 220,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 2,
+          "edge": "right",
+          "calls": 1,
+          "ink": 217,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 2,
+          "edge": "top",
+          "calls": 1,
+          "ink": 200,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 2,
+          "edge": "bottom",
+          "calls": 1,
+          "ink": 200,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 0,
+          "edge": "left",
+          "calls": 1,
+          "ink": 3910,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 0,
+          "edge": "right",
+          "calls": 1,
+          "ink": 4568,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 0,
+          "edge": "top",
+          "calls": 1,
+          "ink": 5312,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 0,
+          "edge": "bottom",
+          "calls": 1,
+          "ink": 4620,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 2,
+          "edge": "left",
+          "calls": 1,
+          "ink": 629,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 2,
+          "edge": "right",
+          "calls": 1,
+          "ink": 755,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 2,
+          "edge": "top",
+          "calls": 1,
+          "ink": 1352,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 2,
+          "edge": "bottom",
+          "calls": 1,
+          "ink": 1352,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "mobile": true,
+      "checks": [
+        {
+          "kind": "signature",
+          "slot": 0,
+          "edge": "left",
+          "calls": 1,
+          "ink": 120,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 0,
+          "edge": "right",
+          "calls": 1,
+          "ink": 120,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 0,
+          "edge": "top",
+          "calls": 1,
+          "ink": 120,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 0,
+          "edge": "bottom",
+          "calls": 1,
+          "ink": 120,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 2,
+          "edge": "left",
+          "calls": 1,
+          "ink": 84,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 2,
+          "edge": "right",
+          "calls": 1,
+          "ink": 84,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 2,
+          "edge": "top",
+          "calls": 1,
+          "ink": 83,
+          "pass": true
+        },
+        {
+          "kind": "signature",
+          "slot": 2,
+          "edge": "bottom",
+          "calls": 1,
+          "ink": 83,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 0,
+          "edge": "left",
+          "calls": 1,
+          "ink": 1193,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 0,
+          "edge": "right",
+          "calls": 1,
+          "ink": 1376,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 0,
+          "edge": "top",
+          "calls": 1,
+          "ink": 1828,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 0,
+          "edge": "bottom",
+          "calls": 1,
+          "ink": 1740,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 2,
+          "edge": "left",
+          "calls": 1,
+          "ink": 214,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 2,
+          "edge": "right",
+          "calls": 1,
+          "ink": 217,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 2,
+          "edge": "top",
+          "calls": 1,
+          "ink": 405,
+          "pass": true
+        },
+        {
+          "kind": "beam",
+          "slot": 2,
+          "edge": "bottom",
+          "calls": 1,
+          "ink": 405,
+          "pass": true
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "32 real inView/renderer isolated edge probes. Camera positioned from signature centre or current native beam ink. Not a moving gameplay/camera sequence."
+}

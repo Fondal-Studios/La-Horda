@@ -13,7 +13,7 @@
   ],
   "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "CIERRE NanoGM PR231; no newkit.",
+  "next": "CIERRE Nano: resolver densidad vertical y material H1 en build evolucionado sin limitar alcance/daño ni cambiar engine compartido; usar source-candidate y firmas actuales, no volver a producir otro kit. Evaluar resolución/caché local por ancho real y separación de H3/firmas si un componente consigue ArtPASS. Reusar hooks/lifecycle/relay por alcance; revalidar composición afectada y exactCI antes merge.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -2620,11 +2620,11 @@
       "block": "B181",
       "frame": "existing native beam8/decal10 phases",
       "source": "js/champions/vfx-b/nano_gm.js",
-      "sha256": "7ad5802bc3ccc3dfba8da0bf81ddb7c59849eed0d066516a2f549ab4e0875506",
+      "sha256": "39d022e12f3b4ce75a4cac6023a6ccc6ec8b5f6c08de70fe1b7f63419275d775",
       "state": "EN_CORRECCION",
-      "diagnosis": "Cable continuo eliminado; ahora trazos separados aún repetitivos/discretos. Impacto H1 mantiene centro abierto. Jerarquía de lanzamiento con estrella y alas legadas no resuelta; no ArtPASS. Dos hojas12vistas +2fullframes revisados; no revisión desktop completa/todaslooks/seisarenas.",
-      "action": "Resolver composición local de firma normal Nano H1/H3 junto trayectoria, preservar H2/UF/alas existentes. No nuevo kit. Gates visuales/bordes y CIexacto antes merge.",
-      "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-03/CHECKPOINT.md",
+      "diagnosis": "Firmas de Sentencia/Inversión distinguidas; desaparecen baldosas repetidas con franja completa. H1 normal aún lee rígido y en evolución amplifica píxel vertical18px a cinta gruesa; ArtFIX. H3 y firmas tienen pruebas técnicas pero no aprobación independiente separada. H2/UF/alas legadas conservadas.",
+      "action": "CIERRE Nano: resolver densidad vertical y material H1 en build evolucionado sin limitar alcance/daño ni cambiar engine compartido; usar source-candidate y firmas actuales, no volver a producir otro kit. Evaluar resolución/caché local por ancho real y separación de H3/firmas si un componente consigue ArtPASS. Reusar hooks/lifecycle/relay por alcance; revalidar composición afectada y exactCI antes merge.",
+      "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-04/CHECKPOINT.md",
       "history": [
         {
           "date": "2026-10-28",
@@ -2649,6 +2649,14 @@
           "state": "EN_CORRECCION",
           "diagnosis": "Cable continuo eliminado; ahora trazos separados aún repetitivos/discretos. Impacto H1 mantiene centro abierto. Jerarquía de lanzamiento con estrella y alas legadas no resuelta; no ArtPASS. Dos hojas12vistas +2fullframes revisados; no revisión desktop completa/todaslooks/seisarenas.",
           "action": "Resolver composición local de firma normal Nano H1/H3 junto trayectoria, preservar H2/UF/alas existentes. No nuevo kit. Gates visuales/bordes y CIexacto antes merge."
+        },
+        {
+          "date": "2026-10-28",
+          "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-04/CHECKPOINT.md",
+          "sourceSha256": "39d022e12f3b4ce75a4cac6023a6ccc6ec8b5f6c08de70fe1b7f63419275d775",
+          "state": "EN_CORRECCION",
+          "diagnosis": "Firmas de Sentencia/Inversión distinguidas; desaparecen baldosas repetidas con franja completa. H1 normal aún lee rígido y en evolución amplifica píxel vertical18px a cinta gruesa; ArtFIX. H3 y firmas tienen pruebas técnicas pero no aprobación independiente separada. H2/UF/alas legadas conservadas.",
+          "action": "CIERRE Nano: resolver densidad vertical y material H1 en build evolucionado sin limitar alcance/daño ni cambiar engine compartido; usar source-candidate y firmas actuales, no volver a producir otro kit. Evaluar resolución/caché local por ancho real y separación de H3/firmas si un componente consigue ArtPASS. Reusar hooks/lifecycle/relay por alcance; revalidar composición afectada y exactCI antes merge."
         }
       ]
     },
@@ -2657,11 +2665,11 @@
       "block": "B183",
       "frame": "existing native beam8/decal10 phases",
       "source": "js/champions/vfx-b/nano_gm.js",
-      "sha256": "7ad5802bc3ccc3dfba8da0bf81ddb7c59849eed0d066516a2f549ab4e0875506",
+      "sha256": "39d022e12f3b4ce75a4cac6023a6ccc6ec8b5f6c08de70fe1b7f63419275d775",
       "state": "EN_CORRECCION",
-      "diagnosis": "Cable continuo eliminado; ahora trazos separados aún repetitivos/discretos. Impacto H1 mantiene centro abierto. Jerarquía de lanzamiento con estrella y alas legadas no resuelta; no ArtPASS. Dos hojas12vistas +2fullframes revisados; no revisión desktop completa/todaslooks/seisarenas.",
-      "action": "Resolver composición local de firma normal Nano H1/H3 junto trayectoria, preservar H2/UF/alas existentes. No nuevo kit. Gates visuales/bordes y CIexacto antes merge.",
-      "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-03/CHECKPOINT.md",
+      "diagnosis": "Firmas de Sentencia/Inversión distinguidas; desaparecen baldosas repetidas con franja completa. H1 normal aún lee rígido y en evolución amplifica píxel vertical18px a cinta gruesa; ArtFIX. H3 y firmas tienen pruebas técnicas pero no aprobación independiente separada. H2/UF/alas legadas conservadas.",
+      "action": "CIERRE Nano: resolver densidad vertical y material H1 en build evolucionado sin limitar alcance/daño ni cambiar engine compartido; usar source-candidate y firmas actuales, no volver a producir otro kit. Evaluar resolución/caché local por ancho real y separación de H3/firmas si un componente consigue ArtPASS. Reusar hooks/lifecycle/relay por alcance; revalidar composición afectada y exactCI antes merge.",
+      "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-04/CHECKPOINT.md",
       "history": [
         {
           "date": "2026-10-28",
@@ -2686,6 +2694,14 @@
           "state": "EN_CORRECCION",
           "diagnosis": "Cable continuo eliminado; ahora trazos separados aún repetitivos/discretos. Impacto H1 mantiene centro abierto. Jerarquía de lanzamiento con estrella y alas legadas no resuelta; no ArtPASS. Dos hojas12vistas +2fullframes revisados; no revisión desktop completa/todaslooks/seisarenas.",
           "action": "Resolver composición local de firma normal Nano H1/H3 junto trayectoria, preservar H2/UF/alas existentes. No nuevo kit. Gates visuales/bordes y CIexacto antes merge."
+        },
+        {
+          "date": "2026-10-28",
+          "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-04/CHECKPOINT.md",
+          "sourceSha256": "39d022e12f3b4ce75a4cac6023a6ccc6ec8b5f6c08de70fe1b7f63419275d775",
+          "state": "EN_CORRECCION",
+          "diagnosis": "Firmas de Sentencia/Inversión distinguidas; desaparecen baldosas repetidas con franja completa. H1 normal aún lee rígido y en evolución amplifica píxel vertical18px a cinta gruesa; ArtFIX. H3 y firmas tienen pruebas técnicas pero no aprobación independiente separada. H2/UF/alas legadas conservadas.",
+          "action": "CIERRE Nano: resolver densidad vertical y material H1 en build evolucionado sin limitar alcance/daño ni cambiar engine compartido; usar source-candidate y firmas actuales, no volver a producir otro kit. Evaluar resolución/caché local por ancho real y separación de H3/firmas si un componente consigue ArtPASS. Reusar hooks/lifecycle/relay por alcance; revalidar composición afectada y exactCI antes merge."
         }
       ]
     }
@@ -2695,13 +2711,5 @@
     "checkpoint": "art-source/entregas/nano-gm-kit-20261026/produccion-01/CHECKPOINT.md",
     "state": "EN_CORRECCION"
   },
-  "latestClosure": {
-    "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-03/CHECKPOINT.md",
-    "state": "EN_CORRECCION",
-    "artGate": "FIX",
-    "components": [
-      "A-FX-nano_gm-h1/impact-contract",
-      "A-FX-nano_gm-h3/impact-contract"
-    ]
-  }
+  "latestClosure": "art-source/entregas/nano-gm-kit-20261026/cierre-04/CHECKPOINT.md"
 }

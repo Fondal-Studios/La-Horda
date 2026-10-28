@@ -8,21 +8,21 @@
   kvbDefMotif('ng_shard_l', 7, 9, kvbBmp(['...e...', '..eWe..', '..eWW..', '.eWWWW.', '.eWWWW.', 'eWWWWW.', '.WWWW..', '..WW...', '...W..'], {e: '#e8c56a', W: '#fff4d6'}));
   kvbDefMotif('ng_scroll', 9, 9, kvbBmp(['.eeeeeee.', 'eWWWWWWWe', 'eWkkWkkWe', 'eWWWWWWWe', 'eWkkkWkWe', 'eWWWWWWWe', '.eeeeeee.'], {e: '#e8c56a', W: '#fff4d6', k: '#7a6420'}));
   kvbDefMotif('ng_mote', 3, 3, kvbBmp(['.y.', 'yWy', '.y.'], {y: '#e8c56a', W: '#fff4d6'}));
-  kvbDefBeam('ng_decree', 8, 20, 18, (g, q, W, H, f) => {
-    // Separated ink slashes with a travelling gold edge: no continuous cable.
+  kvbDefBeam('ng_decree', 8, 128, 18, (g, q, W, H, f) => {
+    // One full-route ink stroke with three unequal brush loads, not repeated tiles.
     if(q >= 1) return;
-    const head = 4 + (f * 2) % 10;
-    for(let x = 2; x < W - 2; x++){
-      const u = (x - 2) / (W - 4);
-      if(x > head + 4 || x < head - 6) continue;
-      const y = Math.round(H * .65 - u * H * .3);
-      const thick = Math.max(1, Math.round(7 * Math.sin(u * Math.PI) * (1 - q * .5)));
-      g.fillStyle = SH[0]; g.fillRect(x, y - Math.floor(thick / 2), 1, thick);
-      g.fillStyle = SH[2]; g.fillRect(x, y, 1, Math.max(1, Math.floor(thick / 2)));
-      if(x >= head - 2){g.fillStyle = x > head ? NG[3] : NG[2];g.fillRect(x, y, 1, 1);}
+    for(let x=3;x<W-3;x++){
+      const u=(x-3)/(W-6),taper=Math.sin(Math.PI*u);
+      const y=Math.round(H*.5+Math.sin(u*5.4+.4)*4);
+      const load=1.5+2.3*Math.exp(-Math.pow((u-.25)/.16,2))+1.4*Math.exp(-Math.pow((u-.72)/.12,2));
+      const half=Math.min(y-1,H-2-y,Math.max(0,Math.round(taper*load*(1-q*.65))));
+      g.fillStyle=SH[0];g.fillRect(x,y-half,1,half*2+1);
+      if(half>0){g.fillStyle=SH[1];g.fillRect(x,y,1,half);}
+      if(u>.24&&u<.76&&half>1){g.fillStyle=SH[2];g.fillRect(x,y,1,Math.max(1,half-1));}
+      if(u>.83&&u<.96&&f<4){g.fillStyle=NG[2];g.fillRect(x,y,1,1);}
+      // A short broken glint follows the changing curve, never parallel rails.
+      if(u>.66&&u<.82&&half>0){g.fillStyle=NG[2];g.fillRect(x,y-half,1,1);}
     }
-    if(f < 5){g.fillStyle = SH[3];g.fillRect(3 + f, 5, 2, 1);}
-
   });
   const lawDetails = (lg, c, R, rad, pal, q) => { lg.save(); lg.translate(c, c); lg.rotate(q * .9); const s = rad * .45; kvbPoly(lg, [[-s, -s], [s, -s], [s, s], [-s, s]], null, pal[3], 1.6); lg.rotate(.7854); kvbPoly(lg, [[-s * .7, -s * .7], [s * .7, -s * .7], [s * .7, s * .7], [-s * .7, s * .7]], null, pal[4], 1.2); lg.restore();
     for(let i = 0; i < 8; i++){ const a = i * .7854, x = c + Math.cos(a) * rad * .82, y = c + Math.sin(a) * rad * .82; kvbLine(lg, x, y - 3, x, y + 3, pal[3], 1.4); kvbLine(lg, x - 2, y, x + 2, y, pal[3], 1.2); } kvbCircle(lg, c, c, rad * .62, pal[2], 1); };
@@ -57,9 +57,16 @@
     if(e && Number.isFinite(radius) && radius > 520) e.w = e.h = radius * 2;
     return e;
   }
+  // Local entity adapter: render the whole native route exactly once. The shared
+  // beam pool, angle, length, width, culling and update/lifetime remain unchanged.
+  function nanoRoute(ax, ay, bx, by, width, duration, options){
+    const e=kvbBeam('ng_decree',ax,ay,bx,by,width,duration,options);
+    if(e){e.name='ng_decree';e.spec={...e.spec,tileW:e.len,H:e.w};}
+    return e;
+  }
   KVB_FX['nano.sentence'] = (x, y, r, ang, len, impactRadius) => {
     const ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len;
-    kvbBeam('ng_decree', x, y, ex, ey, Math.max(24, r * 1.7), 640, {layer: 't'});
+    nanoRoute(x, y, ex, ey, Math.max(24, r * 1.7), 640, {layer: 't'});
     nanoImpactDecal('ng_burst_d', ex, ey, Number.isFinite(impactRadius) && impactRadius > 0 ? impactRadius : Math.max(40, r * 2.3), 700); // explosión final: 70 u × área
     kvbEmit('ng_shard_d', 8, ex, ey, {ring: r, v0: 40, v1: 130, up: 60, grav: 240, l0: 380, l1: 620, scale: 1.4, spin: 6});
     kvbEmit('ng_shard_l', 5, x, y, {ang, spread: .6, v0: 30, v1: 100, l0: 300, l1: 460, scale: 1.2, shrink: true});
@@ -71,7 +78,7 @@
   };
   KVB_FX['nano.invert'] = (x, y, r, ang, len, impactRadius) => {
     const ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len;
-    kvbBeam('ng_decree', x, y, ex, ey, 14, 420, {layer: 'g', alpha: .8});
+    nanoRoute(x, y, ex, ey, 14, 420, {layer: 'g', alpha: .8});
     nanoImpactDecal('ng_verdict', ex, ey, Number.isFinite(impactRadius) && impactRadius > 0 ? impactRadius : Math.max(40, r * 1.3), 760); // estallido de llegada: 1,3 × radio de la runa
     kvbEmit('ng_shard_d', 5, ex, ey, {v0: 40, v1: 120, up: 40, grav: 200, l0: 340, l1: 560, scale: 1.3, spin: 6}); kvbEmit('ng_shard_l', 5, ex, ey, {v0: 40, v1: 120, up: 40, grav: 200, l0: 340, l1: 560, scale: 1.3, spin: 6});
   };
