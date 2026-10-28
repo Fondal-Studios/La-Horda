@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "component": "veyra.cuerpo.codex",
+  "date": "2026-10-28",
+  "productionCommit": "f766a83257dbeef79818353df4c6a30d467af153",
+  "productionTree": "6f07182c63031caef522d24a9b91f6ea4caf3c6e",
+  "parent": "a4c6a95b477df4bc123f3ecddcf6bd13d1c1b98c",
+  "branch": "art/veyra-codex-body-20261028",
+  "pr": 233,
+  "mainObserved": "df7fe4b891c440a6fd31675a2c65434d77912628",
+  "ownerPR232Head": "f4b7c109b105bfc955f676c53f569f12abfbc783",
+  "state": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "publication": {
+    "state": "NOT_APPLICABLE_CANDIDATE",
+    "queriedThisClosure": false,
+    "installed": false
+  },
+  "remoteVerification": {
+    "files": 41,
+    "allGitBlobsExact": true,
+    "recursiveTreeEntries": 12913,
+    "truncated": false,
+    "actualChangedBlobPaths": 41,
+    "deleted": 0,
+    "runtimeChanged": 0,
+    "installedPNG": 0
+  },
+  "new": {
+    "sources": 3,
+    "selectedActionPhases": 16,
+    "extractedCandidateFrames": 112,
+    "uniqueRGBA": 112,
+    "alphaBinary": true,
+    "paddingAtLeast4": true,
+    "reexportPNGsByteIdentical": 5,
+    "rendererSamplesMain": 224,
+    "rendererSamplesCandidate": 224,
+    "realUseSkillAccepted": 12,
+    "ultimateInvocations": 4,
+    "viewports": 2,
+    "errors": 0
+  },
+  "limitations": [
+    "No Art PASS, 0 approved frames.",
+    "Synthetic isolated animation states plus independently started Bosque/base combat; no paired scene/ABA/global parity/skins/six arenas/relay/performance.",
+    "Left action proportions differ from locomotion; native style/density and temporal pivots remain unapproved.",
+    "Small disconnected source details excluded by technical extraction are quantified, not automatically approved as debris."
+  ],
+  "historical": {
+    "priorManifestEntriesVerified": 12,
+    "queueEntries": 67,
+    "first66Preserved": true,
+    "parentCI": {
+      "checks": 17,
+      "workflows": 6,
+      "result": "SUCCESS",
+      "scope": "parent only, not art approval"
+    }
+  },
+  "diagnosticCorrection": "Raw RGB red surround is mostly under zero alpha; original left and new sources composited in browser do not render that background. Supersedes prior visual-background rejection only. Partial alpha is real and technically normalized in workshop candidate without recoloring.",
+  "ciProductionObserved": [
+    {
+      "name": "VFX de definitivas, decales e íconos de habilidad",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723607354/job/122940842138"
+    },
+    {
+      "name": "Objetos, economía y tienda (parte A)",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723607354/job/122940842082"
+    },
+    {
+      "name": "Identidad de arenas, objetivos y regalo inicial",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723607354/job/122940842036"
+    },
+    {
+      "name": "Regresión, UX y carriles",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723607354/job/122940841902"
+    },
+    {
+      "name": "Arnés y lógica pura (sin navegador)",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723607354/job/122940841844"
+    },
+    {
+      "name": "Objetos, economía y tienda (pruebas que hoy fallan en la base)",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723607354/job/122940841660"
+    },
+    {
+      "name": "evidence",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723607470/job/122940841408"
+    },
+    {
+      "name": "safari-engine",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723607366/job/122940840775"
+    },
+    {
+      "name": "entry-reference",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723607366/job/122940840737"
+    },
+    {
+      "name": "presentation",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723607444/job/122940840691"
+    },
+    {
+      "name": "postgres",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723607366/job/122940840684"
+    },
+    {
+      "name": "emoji-lint",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723607358/job/122940840454"
+    },
+    {
+      "name": "lanes",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723607366/job/122940840254"
+    },
+    {
+      "name": "Analyze (actions)",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723596245/job/122940809214"
+    },
+    {
+      "name": "Analyze (python)",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723596245/job/122940809159"
+    },
+    {
+      "name": "Analyze (javascript-typescript)",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723596245/job/122940808742"
+    },
+    {
+      "name": "emoji-lint",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "f766a83257dbeef79818353df4c6a30d467af153",
+      "html_url": "https://github.com/Fondal-Studios/La-Horda/actions/runs/40723594129/job/122940792539"
+    }
+  ],
+  "finalHeadCIApproved": false,
+  "lostClosureDetected": false,
+  "next": "Continue grouped Veyra body/action continuity from candidate-atlas and FRAME_INDEX; no new kit or repeated full-sheet/background prompt. Recheck owner PR/main before edits/publishing. Complete gates and exact CI before installing/merging whole body.",
+  "commands": [
+    "python tools/art/pack-veyra-candidate.py",
+    "CHROMIUM_PATH=/tmp/chromium node tools/art/check-veyra-candidate.js (fresh main worktree + copied candidates)"
+  ],
+  "checkpoint": "art-source/entregas/veyra-codex-20261028/cierre-02/CHECKPOINT.md"
+}
