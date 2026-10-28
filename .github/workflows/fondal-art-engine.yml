@@ -1,7 +1,7 @@
 name: Fondal Art Engine validation
 on:
   pull_request:
-    paths: ['tools/fondal-art-engine/**', 'tools/art/pixrig/**', 'tools/factory/import-authored-sheet.py', 'art-source/fondal/**', 'assets/sprites/champions/**/codex-v1/**', 'js/assets/codex-champion-meta.js', 'js/rendering/codex-champions.js', 'js/rendering/entities.js', 'js/rendering/champion-sprites.js', 'index.html', 'docs/fondal-art-engine/**', 'docs/art-brief/manifiestos/mundo_faltantes.json', '.github/workflows/fondal-art-engine.yml']
+    paths: ['tools/fondal-art-engine/**', 'server/art-factory.js', 'server/test-art-factory.js', 'server/accounts.js', 'js/ui/art-factory.js', 'js/ui/admin.js', 'deploy/art-factory/**', 'tools/art/pixrig/**', 'tools/factory/import-authored-sheet.py', 'art-source/fondal/**', 'assets/sprites/champions/**/codex-v1/**', 'js/assets/codex-champion-meta.js', 'js/rendering/codex-champions.js', 'js/rendering/entities.js', 'js/rendering/champion-sprites.js', 'index.html', 'docs/fondal-art-engine/**', 'docs/art-brief/manifiestos/mundo_faltantes.json', '.github/workflows/fondal-art-engine.yml']
   workflow_dispatch:
     inputs:
       production:
@@ -36,6 +36,10 @@ jobs:
           node tools/balance/check-entry-reference.js
           node tools/factory/test-animation-contract.js
           node --test tests/*.test.js
+      - name: Persistent command queue and independent real-image worker
+        run: |
+          node server/test-art-factory.js
+          node server/test-game-master.js
       - name: Inventory and consumer audit
         run: |
           node tools/fondal-art-engine/inventory.js --out "$RUNNER_TEMP/fondal-inventory"
@@ -50,6 +54,10 @@ jobs:
           /tmp/fondal-browser/node_modules/.bin/playwright install --with-deps chromium
       - name: Real game loading, every registered atlas frame and render timing
         run: node tools/fondal-art-engine/runtime-check.js "$RUNNER_TEMP/fondal-runtime"
+        env:
+          NODE_PATH: /tmp/fondal-browser/node_modules
+      - name: Art command UI and retry safety
+        run: node tools/fondal-art-engine/ui-runtime.js
         env:
           NODE_PATH: /tmp/fondal-browser/node_modules
       - name: Codex champions in the actual game renderer
