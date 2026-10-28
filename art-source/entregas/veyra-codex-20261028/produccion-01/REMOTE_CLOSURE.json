@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "productionCommit": "cefe551f469e01e5b18a089d4b79cf1c61b6ee20",
+  "productionTree": "34dfec3bfa8548662b11188747c3b65938c2b122",
+  "baseMain": "769ee72c47eeadc05e8729a69388e1bc8c3c6c2a",
+  "pr": 233,
+  "branch": "art/veyra-codex-body-20261028",
+  "verification": {
+    "productionFiles": 25,
+    "remoteTreeEntries": 12857,
+    "truncated": false,
+    "allGitBlobsExact": true,
+    "refAndPRExact": true,
+    "queue": {
+      "previousBlob": "6c56dccf5cb29cef65ba2aae361e89775b20d777",
+      "previousEntries": 66,
+      "preserved": true,
+      "newEntries": 67
+    }
+  },
+  "scope": {
+    "component": "veyra.cuerpo.codex",
+    "sourceSheets": 4,
+    "nominalCells": 112,
+    "approvedFrames": 0,
+    "installedPNGs": 0,
+    "runtimeChanges": 0,
+    "reference": "assets/ui/codex/champions/veyra.png"
+  },
+  "newTests": {
+    "baselineRenderer": {
+      "samples": 224,
+      "pageErrors": 0,
+      "scope": "Existing atlas only; synthetic seven states, four directions, four times, two viewports; isolated drawHeroBody/drawFallenHero canvas, not candidate gameplay"
+    },
+    "sourceGate": "Four original sources inspected; all FIX for partial alpha/directional or grid continuity",
+    "preview": {
+      "http": 200,
+      "loadedImages": 5,
+      "errors": 0
+    },
+    "syntax": "PASS",
+    "diffCheck": "PASS"
+  },
+  "failedAttempts": [
+    "Requested right view initially generated frontal sheet; preserved rejected source.",
+    "CSS stretched baseline captures; preserved.",
+    "Viewport clipping and overlapping death poses corrected in harness by native canvas export, clearing each sample and retaining sample 1."
+  ],
+  "visualPending": [
+    "Partial alpha in all four sources",
+    "Down swords cross nominal cell boundaries",
+    "Right/up/left direction, margins, weapon continuity and ultimate frontal turns",
+    "Left soft red surround"
+  ],
+  "concurrency": {
+    "pr232Head": "f8abf22abe7e4897a9985c5ecec17a78becba420",
+    "filesChecked": 118,
+    "veyraOrSolcijuPaths": 0,
+    "skipped": [
+      "Aelith",
+      "Morveth",
+      "Brakk"
+    ],
+    "nanoPR231": "Preserved"
+  },
+  "ciObserved": {
+    "sha": "cefe551f469e01e5b18a089d4b79cf1c61b6ee20",
+    "checks": 16,
+    "workflows": 6,
+    "status": "all observed in progress; not approval; closure SHA requires separate checking"
+  },
+  "merge": false,
+  "publication": "NOT_CHECKED_NO_INSTALLATION",
+  "next": "CIERRE agrupado Veyra: corregir conjunto de cuatro vistas desde originales y plantilla Códice, extraer atlas sólo tras aprobar fuentes; validar direcciones, continuidad, renderer real, skins/arenas/red y gates. Reconsultar main/PR232 antes de editar. No abrir otro kit para evitar este cierre."
+}
