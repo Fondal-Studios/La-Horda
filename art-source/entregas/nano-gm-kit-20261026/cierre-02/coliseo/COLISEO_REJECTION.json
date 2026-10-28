@@ -1,0 +1,53 @@
+{
+  "r": {
+    "started": true,
+    "mode": "coliseo",
+    "phase": "fight",
+    "roster": [
+      "nano_gm",
+      "tanque",
+      "mago",
+      "guerrero",
+      "soporte",
+      "segador",
+      "musashi",
+      "cazadora"
+    ],
+    "before": {
+      "x": 650,
+      "y": 488
+    },
+    "after": {
+      "x": 650,
+      "y": 488
+    },
+    "returned": true,
+    "traces": [
+      {
+        "classKey": "nano_gm",
+        "moved": false,
+        "dest": {
+          "x": 650,
+          "y": 488
+        },
+        "after": {
+          "x": 650,
+          "y": 488
+        }
+      }
+    ],
+    "areas": [],
+    "events": [],
+    "runes": [
+      {
+        "owner": "nano_gm",
+        "x": 650,
+        "y": 488,
+        "life": 700
+      }
+    ],
+    "pass": true
+  },
+  "errors": [],
+  "scope": "Real colStart training tournament and fight phase against bots, actual useSkill/heroReachable hook. Coliseo real-engine online unavailable by product code; no relay certification claimed for that mode."
+}

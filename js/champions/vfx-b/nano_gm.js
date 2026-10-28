@@ -9,25 +9,30 @@
   kvbDefMotif('ng_scroll', 9, 9, kvbBmp(['.eeeeeee.', 'eWWWWWWWe', 'eWkkWkkWe', 'eWWWWWWWe', 'eWkkkWkWe', 'eWWWWWWWe', '.eeeeeee.'], {e: '#e8c56a', W: '#fff4d6', k: '#7a6420'}));
   kvbDefMotif('ng_mote', 3, 3, kvbBmp(['.y.', 'yWy', '.y.'], {y: '#e8c56a', W: '#fff4d6'}));
   kvbDefBeam('ng_decree', 8, 20, 18, (g, q, W, H, f) => {
-    // A narrow decree with open shoulders, rather than a filled ribbon.
-    const m = H / 2, half = q < .22 ? 1 : q < .5 ? 2 : 1;
+    // Flowing paired ink strokes; tile endpoints share the same tangent.
     if(q >= 1) return;
-    g.fillStyle = SH[0]; g.fillRect(0, m - half, W, half * 2 + 1);
-    g.fillStyle = NG[2]; g.fillRect(0, m, W, 1);
-    g.fillStyle = NG[3];
-    for(let x = (f * 3) % 12; x < W; x += 12) g.fillRect(x, m - 1, 3, 1);
+    for(let x = 0; x < W; x++){
+      const wave = Math.round(Math.sin(x / W * Math.PI * 2) * 2);
+      const y = Math.floor(H / 2) + wave;
+      const pulse = (x + f * 3) % W;
+      g.fillStyle = SH[0]; g.fillRect(x, y - 1, 1, 3);
+      if(pulse < W * (1 - q * .65)){
+        g.fillStyle = pulse < 4 ? NG[3] : NG[2]; g.fillRect(x, y, 1, 1);
+      }
+    }
   });
   const lawDetails = (lg, c, R, rad, pal, q) => { lg.save(); lg.translate(c, c); lg.rotate(q * .9); const s = rad * .45; kvbPoly(lg, [[-s, -s], [s, -s], [s, s], [-s, s]], null, pal[3], 1.6); lg.rotate(.7854); kvbPoly(lg, [[-s * .7, -s * .7], [s * .7, -s * .7], [s * .7, s * .7], [-s * .7, s * .7]], null, pal[4], 1.2); lg.restore();
     for(let i = 0; i < 8; i++){ const a = i * .7854, x = c + Math.cos(a) * rad * .82, y = c + Math.sin(a) * rad * .82; kvbLine(lg, x, y - 3, x, y + 3, pal[3], 1.4); kvbLine(lg, x - 2, y, x + 2, y, pal[3], 1.2); } kvbCircle(lg, c, c, rad * .62, pal[2], 1); };
   kvbDefDecal('ng_law', 10, kvbRingPaint(NG, {fillCol: '#7a6420', core: '#e8c56a', fill: .36, details: lawDetails, flash: '#fff4d6', rimThick: 3}));
   const splitDetails = (lg, c, R, rad, pal, q) => {
-    // Two opposed judgements remain distinct without filling either hemisphere.
-    for(let side = 0; side < 2; side++){
-      const a = side * Math.PI, col = side ? '#fff4d6' : '#5a5a74';
-      lg.beginPath(); lg.arc(c, c, rad * .78, a - .75, a + .75);
-      lg.strokeStyle = col; lg.lineWidth = 2; lg.stroke();
-      const x = c + Math.cos(a) * rad * .78;
-      kvbLine(lg, x, c - 2, x, c + 2, NG[2], 1);
+    // Four short paired seals release outward; no dominant half-disc.
+    for(let i = 0; i < 4; i++){
+      const a = i * Math.PI / 2 + Math.PI / 4;
+      const r = rad * (.64 + q * .2), span = .22 * (1 - q * .5);
+      lg.beginPath(); lg.arc(c, c, r, a - span, a + span);
+      lg.strokeStyle = i & 1 ? NG[3] : SH[3]; lg.lineWidth = 1; lg.stroke();
+      const x = c + Math.cos(a) * r, y = c + Math.sin(a) * r;
+      kvbLine(lg, x, y, c + Math.cos(a) * (r + 2), c + Math.sin(a) * (r + 2), NG[2], 1);
     }
   };
   kvbDefDecal('ng_verdict', 10, kvbRingPaint(NG, {fill: 0, details: splitDetails, rimThick: 1}));

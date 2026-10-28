@@ -1,0 +1,42 @@
+{
+  "state": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "components": [
+    "A-FX-nano_gm-h1/impact-contract",
+    "A-FX-nano_gm-h3/impact-contract"
+  ],
+  "blocks": [
+    "B181",
+    "B183"
+  ],
+  "sourceSha256": "9b59de03d5df41edecaba9c096bec5ca8541dc47cdcd428d9858d29cc2e09f07",
+  "newInstalledPNG": 0,
+  "newBodySprites": 0,
+  "changes": [
+    "H1: trazo sinuoso nativo y pulsos discretos en8fases; H3: cuatro sellos cortos en vez de media luna dominante. Misma geometría/eventos/8-10fases/tiempos.",
+    "Ningún cambio nuevo de hook, adapter>520, H2, UF, cuerpo, skins, combate ni motor compartido."
+  ],
+  "visualReviewed": [
+    "review-evolved-mobile-h2.webp",
+    "review-mobile-1.webp",
+    "review-temporal-mobile-h0.webp",
+    "review-desktop-1.webp",
+    "review-desktop-0.webp",
+    "review-pair-evolved-desktop-h2.webp",
+    "review-pair-temporal-mobile-h0.webp",
+    "review-temporal-mobile-h2.webp",
+    "review-mobile-0.webp",
+    "fullframe-coliseo-local.webp",
+    "fullframe-infernal-monster-dense-h2-256-evolved.webp",
+    "ng_decree-atlas.png",
+    "ng_verdict-atlas.png"
+  ],
+  "visualFinding": "H3 elimina la media luna dominante; los sellos abiertos dejan leer dueño y destino. H1 todavía parece cable regular y en Regente queda entre capas legadas de H2. H3 comparte esa receta de trayectoria: no hay variante aislada aprobada. En580 el efecto es visible pero el extremo del cuadro puede quedar fuera de cámara al encadenar saltos. No aprobar el conjunto por contacto numérico.",
+  "remaining": [
+    "Resolver material y jerarquía de trayectoria/lanzamiento H1/H3 en conjunto, sin otro cambio sólo tonal/ancla. H2 y alas Monstruo existentes no se eliminan a ciegas.",
+    "Revisar bordes reales con nueva tinta si cambia composición;32probes anteriores sólo certifican bounds anteriores, no tinta nueva.",
+    "ArtGate PASS y todos los checks/workflows exactSHA antes ready/merge. No abrir kit nuevo."
+  ],
+  "publication": "Sin merge ni nueva consulta canónica; NOT_CONFIRMED histórica separada."
+}
