@@ -1,0 +1,246 @@
+{
+  "schema": 1,
+  "component": "veyra.cuerpo.codex",
+  "state": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "productionCommit": "f34475265b88790f9d2021b4ce2b4856c3cde622",
+  "productionTree": "217191e953eeb8b6eac451e86318621601fd1ac2",
+  "parent": "48da55ee8679943718f008c1e1cf332227fe9ff3",
+  "branch": "art/veyra-codex-body-20261028",
+  "pr": 233,
+  "reference": {
+    "path": "assets/ui/codex/champions/veyra.png",
+    "gitBlob": "95e8c87e3877e0607dbee3b9dd5a5d5f770f142d",
+    "sha256": "d89d8328b31d3bfa57b42a7a8a4f3c7c06d9446f122d38f4f7a59c9a7c9b76ed"
+  },
+  "productionVerification": {
+    "files": 46,
+    "manifestEntries": 45,
+    "remoteTreeEntries": 12961,
+    "truncated": false,
+    "localGitBlobMatches": 46,
+    "createdBlobVerified": 46,
+    "diffPaths": 46,
+    "runtimePaths": 0,
+    "installedAssetPaths": 0
+  },
+  "newTests": {
+    "sequenceCases": 64,
+    "exactABA": 64,
+    "errors": 0,
+    "canonicalNativePassed": 106,
+    "canonicalNativeFailed": 6,
+    "failures": [
+      91,
+      93,
+      105,
+      106,
+      108,
+      109
+    ],
+    "changedCandidateFrames": 28,
+    "unchangedCandidateFrames": 84,
+    "uniqueRGBA": 112,
+    "binaryAlpha": true,
+    "paddingAtLeast4": true,
+    "reexportPNGByteIdentical": 5,
+    "previewCanvases": 4,
+    "previewErrors": 0
+  },
+  "limits": [
+    "drawHeroBody/drawFallenHero body-only canvas with synthetic states, not full game scene or global combat parity",
+    "No new six-arena/looks/equipment matrix, roster gate, relay or performance",
+    "Native failures are blocking, no threshold changes; 0 approved frames",
+    "Parent18checksSUCCESS historical; current production CI still in progress; no exact-final-head approval"
+  ],
+  "attempts": "TEST_ATTEMPTS.json; attempt01 artifacts and rejected rear source preserved",
+  "queue": {
+    "entries": 67,
+    "first66Preserved": true
+  },
+  "audit": {
+    "main": "df7fe4b891c440a6fd31675a2c65434d77912628",
+    "ownerPR232": "e00ba6b0854ae6ca8871da24c84c7206d7c3f23a",
+    "ownerDiffPaths": 131,
+    "ownerVeyraBodyOverlap": false,
+    "nanoPR231": "be8a00eef0d3f8f86eb773a86711293037320c1d",
+    "lostRemoteClosure": false
+  },
+  "ciObserved": {
+    "sha": "f34475265b88790f9d2021b4ce2b4856c3cde622",
+    "checks": [
+      {
+        "name": "safari-engine",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967673424
+      },
+      {
+        "name": "postgres",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967673405
+      },
+      {
+        "name": "entry-reference",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967673388
+      },
+      {
+        "name": "Objetos, economía y tienda (parte A)",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967673294
+      },
+      {
+        "name": "Arnés y lógica pura (sin navegador)",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967673265
+      },
+      {
+        "name": "Identidad de arenas, objetivos y regalo inicial",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967673206
+      },
+      {
+        "name": "Regresión, UX y carriles",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967673114
+      },
+      {
+        "name": "VFX de definitivas, decales e íconos de habilidad",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967673062
+      },
+      {
+        "name": "lanes",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967672803
+      },
+      {
+        "name": "Objetos, economía y tienda (pruebas que hoy fallan en la base)",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967672613
+      },
+      {
+        "name": "presentation",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967672069
+      },
+      {
+        "name": "evidence",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967670834
+      },
+      {
+        "name": "emoji-lint",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967668978
+      },
+      {
+        "name": "Analyze (actions)",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967652514
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967652323
+      },
+      {
+        "name": "Analyze (python)",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967652228
+      },
+      {
+        "name": "emoji-lint",
+        "status": "in_progress",
+        "conclusion": null,
+        "id": 122967630926
+      }
+    ],
+    "workflows": [
+      {
+        "id": 40731198252,
+        "name": "Integracion pruebas",
+        "status": "in_progress",
+        "conclusion": null,
+        "event": "pull_request",
+        "head_sha": "f34475265b88790f9d2021b4ce2b4856c3cde622"
+      },
+      {
+        "id": 40731197686,
+        "name": "Art production evidence",
+        "status": "in_progress",
+        "conclusion": null,
+        "event": "pull_request",
+        "head_sha": "f34475265b88790f9d2021b4ce2b4856c3cde622"
+      },
+      {
+        "id": 40731197671,
+        "name": "Emoji lint (arte pixel)",
+        "status": "in_progress",
+        "conclusion": null,
+        "event": "pull_request",
+        "head_sha": "f34475265b88790f9d2021b4ce2b4856c3cde622"
+      },
+      {
+        "id": 40731198257,
+        "name": "Art presentation verification",
+        "status": "in_progress",
+        "conclusion": null,
+        "event": "pull_request",
+        "head_sha": "f34475265b88790f9d2021b4ce2b4856c3cde622"
+      },
+      {
+        "id": 40731198146,
+        "name": "Champion entry balance",
+        "status": "in_progress",
+        "conclusion": null,
+        "event": "pull_request",
+        "head_sha": "f34475265b88790f9d2021b4ce2b4856c3cde622"
+      },
+      {
+        "id": 40731190934,
+        "name": "PR #233",
+        "status": "in_progress",
+        "conclusion": null,
+        "event": "dynamic",
+        "head_sha": "f34475265b88790f9d2021b4ce2b4856c3cde622"
+      },
+      {
+        "id": 40731187252,
+        "name": "Emoji lint (arte pixel)",
+        "status": "in_progress",
+        "conclusion": null,
+        "event": "push",
+        "head_sha": "f34475265b88790f9d2021b4ce2b4856c3cde622"
+      }
+    ]
+  },
+  "merged": false,
+  "publication": {
+    "state": "NOT_APPLICABLE_CANDIDATE_NOT_INSTALLED",
+    "queriedThisClosure": false,
+    "historicalCanonicalLag": "Historical only; no current public byte claim."
+  },
+  "next": "Continue grouped Veyra closure: fix native material for left walk/attack/hit/death, verify full temporal transitions and Codex head/body/arm identity. Then roster, paired real scenes all looks/arenas, cold/fallback, relay/performance, ArtGate and every exact-head check before normal expected-SHA merge. No new kit or partial body installation.",
+  "commands": [
+    "python tools/art/pack-veyra-closure03.py",
+    "CHROMIUM_PATH=/tmp/chromium node tools/art/check-veyra-closure03.js"
+  ]
+}
