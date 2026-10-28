@@ -61,6 +61,7 @@ async function produce(jobs,out,{root=ROOT}={}){
    console.log('Generating '+job.id+' ('+job.provider+')');
    await provider.generate(job,{out:dir});summary.generated++;
    item=validateCandidate(dir,root);item.id=job.id;
+   if(item.gate.ok&&item.geometryPreservedOverscan)summary.corrected++;
    if(item.status==='REUSED')summary.reused++;
    else if(item.status==='REJECTED')summary.rejected++;
    else summary.pending++;

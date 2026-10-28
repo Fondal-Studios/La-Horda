@@ -35,6 +35,6 @@ Revalida los archivos, preserva atlas idénticos sin escribir, rechaza cambios a
 
 ## Automatización y límites
 
-Workflow `Fondal Art Engine validation`: push/PR, ejecución manual y horario diario 09:30 UTC (06:30 Argentina) **que GitHub solo activa al llegar el workflow a main**. En `workflow_dispatch`, `production: true` regenera las 14 recetas y guarda artefactos 14 días. Sin secretos ni APIs pagas; GitHub Actions puede consumir la cuota de infraestructura de la cuenta. No se habilitan compras ni runners de pago.
+Workflow `Fondal Art Engine validation`: PR, ejecución manual y horario diario 09:30 UTC (06:30 Argentina) **que GitHub solo activa al llegar el workflow a main**. En `workflow_dispatch`, `production: true` regenera las 14 recetas y guarda artefactos 14 días. Sin secretos ni APIs pagas; GitHub Actions puede consumir la cuota de infraestructura de la cuenta. No se habilitan compras ni runners de pago.
 
 El job de validación incluye un canario real rechazado; comprobar que el gate rechaza ese arte es PASS del software, **no PASS del asset**. El job de producción falla si algún candidato falla y siempre sube los reportes. No instala, crea merges ni despliega automáticamente. Ampliar la publicación automática exige completar cobertura, gates y evidencias de cada renderer; no desactivar guardas para obtener un pipeline verde.
