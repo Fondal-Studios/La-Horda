@@ -1,0 +1,23 @@
+name: Fondal visual test browser
+on:
+  push:
+    branches: [feature/fondal-art-engine]
+    paths: [.github/workflows/fondal-browser.yml]
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install playwright@1.58.2
+      - run: npx playwright install chromium --only-shell
+      - run: tar -czf browser.tar.gz -C "$HOME/.cache/ms-playwright" chromium_headless_shell-1208
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fondal-visual-browser
+          path: browser.tar.gz
+          retention-days: 1
