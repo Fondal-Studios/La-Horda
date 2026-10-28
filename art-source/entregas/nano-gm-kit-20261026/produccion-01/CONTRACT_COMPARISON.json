@@ -1,0 +1,106 @@
+{
+  "checks": [
+    {
+      "case": [
+        "base",
+        0
+      ],
+      "stateEqual": true,
+      "damageAreaEqual": true,
+      "actualImpact": 70,
+      "visualRadius": 70.0,
+      "oldVisualRadius": 69.0,
+      "radiusExact": true
+    },
+    {
+      "case": [
+        "base",
+        1
+      ],
+      "stateEqual": true,
+      "damageAreaEqual": true,
+      "h2PoolEqual": true
+    },
+    {
+      "case": [
+        "base",
+        2
+      ],
+      "stateEqual": true,
+      "damageAreaEqual": true,
+      "actualImpact": 143,
+      "visualRadius": 143.0,
+      "oldVisualRadius": 143.0,
+      "radiusExact": true
+    },
+    {
+      "case": [
+        "regent",
+        0
+      ],
+      "stateEqual": true,
+      "damageAreaEqual": true,
+      "actualImpact": 70,
+      "visualRadius": 70.0,
+      "oldVisualRadius": 79.35,
+      "radiusExact": true
+    },
+    {
+      "case": [
+        "regent",
+        1
+      ],
+      "stateEqual": true,
+      "damageAreaEqual": true,
+      "h2PoolEqual": true
+    },
+    {
+      "case": [
+        "regent",
+        2
+      ],
+      "stateEqual": true,
+      "damageAreaEqual": true,
+      "actualImpact": 143,
+      "visualRadius": 143.0,
+      "oldVisualRadius": 164.45,
+      "radiusExact": true
+    },
+    {
+      "case": [
+        "monster",
+        0
+      ],
+      "stateEqual": true,
+      "damageAreaEqual": true,
+      "actualImpact": 98,
+      "visualRadius": 98.0,
+      "oldVisualRadius": 111.08999999999999,
+      "radiusExact": true
+    },
+    {
+      "case": [
+        "monster",
+        1
+      ],
+      "stateEqual": true,
+      "damageAreaEqual": true,
+      "h2PoolEqual": true
+    },
+    {
+      "case": [
+        "monster",
+        2
+      ],
+      "stateEqual": true,
+      "damageAreaEqual": true,
+      "actualImpact": 200.20000000000002,
+      "visualRadius": 200.2,
+      "oldVisualRadius": 230.22999999999996,
+      "radiusExact": true
+    }
+  ],
+  "errors": [],
+  "scope": "9paired casts; summarized hero and owned objects only, no globalRNG/fullsnapshot/relay/artgate.",
+  "attemptCorrection": "First H2 comparator included prior H1 casts used to enter Regent. H1 widths intentionally differ; corrected comparison scopes ng_law. Original false result preserved."
+}

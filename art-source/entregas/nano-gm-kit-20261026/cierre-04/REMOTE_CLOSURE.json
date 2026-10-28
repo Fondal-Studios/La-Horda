@@ -1,0 +1,625 @@
+{
+  "schema": 1,
+  "date": "2026-10-28",
+  "component": "NanoGM H1/H3 normal signatures and impact contract",
+  "status": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "pr": "https://github.com/Fondal-Studios/La-Horda/pull/231",
+  "branch": "art/nano-impact-contract-20261026",
+  "parent": "0f53509b5db12504861264a002d05095ab6a0ec1",
+  "productionCommit": "e8065ca37c267afe6d69ea9906dbde237bcef132",
+  "productionTree": "c0f9eaf07cae06771a3e419788860f2b95ab7708",
+  "mainVerified": "63cd6a3377cd5c55bf099d65e3d61400469dea76",
+  "verification": {
+    "entries": 13116,
+    "truncated": false,
+    "verifiedFiles": 65,
+    "tree": "c0f9eaf07cae06771a3e419788860f2b95ab7708"
+  },
+  "files": [
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/CAMERA.json",
+      "sha": "9e15276ed67416f882d3262e558dc8bd6253ad48",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/CHECKPOINT.md",
+      "sha": "5b41bb1d03f46ddb7606ffbc49f0e148b367ec3d",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/CI_PARENT.json",
+      "sha": "90e49431c0ff2a35e0c535641a9d33bf3671023b",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/FULL_RENDER_PERFORMANCE.json",
+      "sha": "24041a6b063318c724131a4c385d795f10fb0116",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/MATRIX_SUMMARY.json",
+      "sha": "1e6ff729b34615078877d063338e0ddf68abee76",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/NATIVE.json.gz",
+      "sha": "8373345f62b121f54eeaf29d0ffcb1038654d4a2",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/PREVIEW_CHECK.json",
+      "sha": "c310f4f9a2cd5c6ed64d44da2a0a3bff2c3d92a0",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/REEXPORT.json",
+      "sha": "0c77339714ad5a39e9f283f45dfdcc94c1799862",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/REVIEW.json",
+      "sha": "6f555a20a0aad1157ed7e6fd02a902564724ad4b",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/ROUTE_GATE.json",
+      "sha": "77287bc123eafd8be96bc1dc18627a43f3a3272f",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/ROUTE_GATE_ATTEMPT01.log",
+      "sha": "2c1d306c0d09342b47bc6f97dbcf4618eb6a36d1",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/RUNTIME_DIFF.patch",
+      "sha": "827b33e5d748e12ad057444f6d4c5f4bdb078a02",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/SIGNATURE_GATE.json",
+      "sha": "01652f53834a7cd2b948ac407907437f83d3074b",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/TEST_ATTEMPTS.json",
+      "sha": "9321e533379c9aab6064a304e5645490c9d115f7",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/VIEWPORT_EDGES.json",
+      "sha": "2794473f5b09b6fcdacffaaa82771e97ffe851c6",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/desktop.json.gz",
+      "sha": "3b1773e20f050b12e85c1298c2a736b8639b57ff",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/evolved-desktop.json.gz",
+      "sha": "043d21e60f24302c498f2606c792a50e26042bf3",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/evolved-mobile.json.gz",
+      "sha": "d0b78d6b6d87206c52744104064cd0162f95eebd",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/final-desktop.json.gz",
+      "sha": "031e3f8da78889576f424ab69b2c8b88c96bc585",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/final-mobile.json.gz",
+      "sha": "a9c2dca036c1025cb0dcc55489b3ebffd0397a7b",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/fullframe-base-mobile.webp",
+      "sha": "629a477e2dbd751f8c2bd8415b12bfc2f758631c",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/fullframe-extreme-desktop.webp",
+      "sha": "8a128ce29b54cb9f1a5b1846d8538da62a99ead7",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/fullframe-extreme-parent.webp",
+      "sha": "667b13d98379f27298021aec4bab58ef516dc680",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/fullframe-h3-mobile.webp",
+      "sha": "afca35b2cd5a2f64fa5518d947cdbb36a89854f9",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/mobile.json.gz",
+      "sha": "388bfb3b94149cad0b8589a5378fcc1766e20320",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/ng_burst_d-atlas.png",
+      "sha": "fe9e9776f72725fbb3ae171810dafc3b3658527b",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/ng_decree-atlas.png",
+      "sha": "517ee4938db85de3f76d27c902a22f457f824d13",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/ng_law-atlas.png",
+      "sha": "8d0debfdf6b73094f83ac2f16fc5883b4773f28a",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/ng_verdict-atlas.png",
+      "sha": "6cb60ff2a44115c9ac6ea4a638a76185e21383c9",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/online-final/ONLINE.json",
+      "sha": "243925928fc2006a3e72b75d9caa61a288cd2d91",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/parity.json",
+      "sha": "25b87113a15bd6e43b294fa773a26c7fbb6e8c14",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/pilot-mobile.json.gz",
+      "sha": "253862f36bd28d69f577679cd8ee78ce9f85b215",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/preview.html",
+      "sha": "02f70fbfafab94ae065f17c89e821dd338d156ff",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/recipe.json",
+      "sha": "7f48311930c7991d436c24f1b65ef462af19de8b",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/review-desktop-h0.webp",
+      "sha": "f34060b0c186a83e08885bd6ad461c7c2001d6d3",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/review-desktop-h2.webp",
+      "sha": "5ce7935419d45afee51944445e199621d9d1a19e",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/review-mobile-h0.webp",
+      "sha": "4bfa0ff7163ff0860c94ecd10d5b8166d33a8fdd",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/review-mobile-h2.webp",
+      "sha": "b85bd4995fa9fadafef9fb027f0ca06c632bcb5a",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/review-temporal-desktop.webp",
+      "sha": "3d44afc48a59da608a933e83529e4b16470565c5",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/review-temporal-mobile.webp",
+      "sha": "962ce72f49e020dc3b6c6236a339bb7256c68035",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/route-final-pilot.json.gz",
+      "sha": "965c6d5c2a0552d2c0c0e5eecc30d032e0135b5e",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/route-gate-attempt01.js",
+      "sha": "89cf9ac096f407c5fa479957ac7390a207879f3a",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/route-pilot.json.gz",
+      "sha": "63076cfc426e17eae592c3fe886ff02d7f172b35",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/signature-atlas.png",
+      "sha": "ef523d960cea0192381d30eff0cd9cbfb593ecd9",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/signatures-before.js",
+      "sha": "81cc741b27bf73bc91ec6e17aa084cf144b5b486",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/source-reference.js",
+      "sha": "0e76d638e842eb33f9d25a4d51d08d57a5d9b3e6",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/signatures-candidate.js",
+      "sha": "b2cd79cd8bff88f0318779b16b550f5a55a4de19",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/source-candidate.js",
+      "sha": "9a835c44e5d5a2eef8b2f4e48a6bddef4529dff5",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/source-route-attempt01.js",
+      "sha": "8195f15a46eb6cb75efc425e66ce060a0dd588d6",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/temporal-desktop.json.gz",
+      "sha": "e83f50ecc0950f929bd8d4f415fdc2b8ca7eb88d",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/temporal-mobile.json.gz",
+      "sha": "0198bfd39478879d14d35ac098e56ca89e850abb",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "sha": "6c56dccf5cb29cef65ba2aae361e89775b20d777",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "js/champions/vfx-b/nano_gm.js",
+      "sha": "9a835c44e5d5a2eef8b2f4e48a6bddef4529dff5",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "js/skills/champion-signatures.js",
+      "sha": "b2cd79cd8bff88f0318779b16b550f5a55a4de19",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "tools/vfx/capture-nano-signatures.js",
+      "sha": "a626591d2295cb485bc3ee38f2f894e82880e043",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "tools/vfx/nano-route-gate.js",
+      "sha": "60de5b44c3cf036f4705ccf452944c68148a11fd",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "tools/vfx/nano-signature-camera.js",
+      "sha": "a714d48065800059352ead3a8d88c0134c54ed24",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "tools/vfx/nano-signature-full-render-perf.js",
+      "sha": "708d8f34c42965761d456f94d44e56838acee67b",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "tools/vfx/nano-signature-gate.js",
+      "sha": "bf385989322a781183cbcb2871b5d94d6f3371bb",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "tools/vfx/nano-signature-impact-edges.js",
+      "sha": "ced4342373861aa1f9f23d6da8295da7c3f8dbca",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "tools/vfx/nano-signature-online.js",
+      "sha": "d7db4916dc6ca04a90a9faa2e27d71a3fad2a318",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "tools/vfx/nano-signature-preview.js",
+      "sha": "27bbe82c423f06f0369a17373e15f70a1cad3671",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "tools/vfx/nano-signature-review.py",
+      "sha": "627cbb48769ed0757e9e8ed3b412959414dc4e8c",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "tools/vfx/parity-nano-signatures.js",
+      "sha": "48a6e6ec30d980e3a75cae4f73f8424ae2f20f12",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "art-source/entregas/nano-gm-kit-20261026/cierre-04/manifest.json",
+      "sha": "81f15102fa06d76f857dcea79ab111436bb38ab4",
+      "mode": "100644",
+      "type": "blob"
+    }
+  ],
+  "newTests": {
+    "normalScenes": 240,
+    "normalABA": 1440,
+    "evolvedScenes": 16,
+    "evolvedABA": 96,
+    "bodyRetentionMinNormal": 0.9461467648605997,
+    "bodyRetentionMinEvolved": 0.8655595996360328,
+    "unaffectedSignatureSamples": 372,
+    "signatureChecks": 9,
+    "routeChecks": 30,
+    "cameraIsolatedProbes": 32,
+    "relayChecks": 11,
+    "relayRealCasts": 6,
+    "nativeFrames": 228,
+    "reexportPNGExact": 38,
+    "parityFrames": 360,
+    "parityRNG": 37643,
+    "parityScope": "summarized state only; no global snapshot",
+    "performanceTimings": 1360,
+    "previewImagesLoaded": 10
+  },
+  "historical": "22 lifecycle/local real Coliseo rejection from cierre02, unchanged cast predicates. Not rerun. Parent03 CI21checks/9workflows SUCCESS; not approval of production04.",
+  "ciObserved": {
+    "sha": "e8065ca37c267afe6d69ea9906dbde237bcef132",
+    "checks": [
+      {
+        "id": 122832275438,
+        "name": "Objetos, economía y tienda (pruebas que hoy fallan en la base)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832275437,
+        "name": "Arnés y lógica pura (sin navegador)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832275164,
+        "name": "VFX de definitivas, decales e íconos de habilidad",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832275044,
+        "name": "Identidad de arenas, objetivos y regalo inicial",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832275000,
+        "name": "Regresión, UX y carriles",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832274903,
+        "name": "recovery",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832274666,
+        "name": "Objetos, economía y tienda (parte A)",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 122832274546,
+        "name": "readability",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832274421,
+        "name": "postgres",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832274338,
+        "name": "entry-reference",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832274195,
+        "name": "lanes",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832273852,
+        "name": "safari-engine",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832273693,
+        "name": "mobile-inventory",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832273408,
+        "name": "transactions",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832273272,
+        "name": "emoji-lint",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832273107,
+        "name": "evidence",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832246224,
+        "name": "Analyze (javascript-typescript)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832246128,
+        "name": "Analyze (python)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832245648,
+        "name": "Analyze (actions)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 122832233695,
+        "name": "emoji-lint",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ],
+    "workflows": [
+      {
+        "id": 40692977860,
+        "name": "VFX readability and combat parity",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 40692977693,
+        "name": "Item economy safety",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 40692977728,
+        "name": "Emoji lint (arte pixel)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 40692977763,
+        "name": "Integracion pruebas",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 40692977765,
+        "name": "Champion entry balance",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 40692977776,
+        "name": "Campaign reward recovery",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 40692977757,
+        "name": "Art production evidence",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 40692968014,
+        "name": "PR #231",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 40692966251,
+        "name": "Emoji lint (arte pixel)",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ],
+    "approval": false
+  },
+  "uploadRecovery": "Initial upload stopped after no observable progress; GitHub blob reads found46/65 present; only19 missing entries uploaded, every SHA checked. Final tree65/65 exact,13116 entries not truncated. No remote closure loss.",
+  "preserved": "0 PNG installed, 0 body sprites. H2/UF/body/skins/shared engine/combat unchanged. Queue66 retains first64 exactly.",
+  "visualFinding": "New signatures distinguish H1 decree/H3 opposed thresholds. Full-route brush removes repeated tiles; H1 remains rigid and evolved width amplifies native18px into coarse large ribbon. No ArtPASS, no separately approved component.",
+  "publication": {
+    "queriedThisRun": false,
+    "status": "NOT_CONFIRMED_HISTORICAL",
+    "merge": false
+  },
+  "next": "Continue CIERRE Nano from cierre04 source-candidate.js and signatures-candidate.js. Resolve H1 vertical density/material at real evolved width without reducing gameplay area or editing shared engine. Evaluate local resolution/cache by actual width and independently separate H3/signatures only after ArtPASS. Revalidate affected composition, exact-head CI and workflows before ready/merge; preserve rejected sources. No new kit."
+}

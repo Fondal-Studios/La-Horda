@@ -1,0 +1,32 @@
+{
+  "references": [
+    {
+      "path": "js/skills/champion-signatures.js",
+      "sha256": "e128b2dafdb35b7b8c82ddebc079080eb3f2b4b88233540edcad968c839ad7b7"
+    },
+    {
+      "path": "js/champions/vfx-b/pixfx.js",
+      "sha256": "80c3d40abb0058806b6f45e553ef8246fbee78dcf591fc8596ac6bd3a6ac2810"
+    },
+    {
+      "path": "js/champions/ascension/render.js",
+      "sha256": "5b532d20ecada999c55ca55d6c53d1a47fe1d0a17257c9ff73a3ab8b73762aa9"
+    },
+    {
+      "path": "js/champions/ascension/runtime.js",
+      "sha256": "a7e103014f783eda23dbdde21e1c8953ed8de517a0b5975050538308b0956aeb"
+    },
+    {
+      "path": "js/modes/crystal-wars/client.js",
+      "sha256": "38eed14a5db83aa5415994e676623f5879b8aff71b85d12f0c03315e2f53b270"
+    }
+  ],
+  "auditOnly": true,
+  "findings": [
+    "Nano absent from CHAMPION_SIGNATURES; existing fallback star normal y-62/radius25/duration460 remains. Sharing fallback alone is not missing-art proof. Current visual hierarchy still competes; audit local signature alongside H1 material before editing.",
+    "KVB beam repeats tileW20 with sc=e.w/spec.H; regular waveform repeats at scales depending cast r. This is the observed cable repetition, not absent textures. No shared engine edit justified.",
+    "Regent fixtures use actual0/1/0 casts with cooldown reset; oldH1 beams and H2 launch are still present in sampled256ms. Do not mistake composition stress fixture for a unique new H2 regression.",
+    "ActualColiseo colStart/fight passed rejection. ARENA_DEFS.coliseo.heroReachable is alwaysfalse. Old directstartRunColiseo test was hook probe, not initialized tournament. Real-engine Coliseo online disabled in product lines83/84."
+  ],
+  "next": "Continue grouped Nano closure, no new kit. Reuse actual580 relay/lifecycle when their hooks remain identical; new material or signature needs composed before/after, edge ink, pixel/RNG/isolation checks, not repeated whole simulations without cause."
+}

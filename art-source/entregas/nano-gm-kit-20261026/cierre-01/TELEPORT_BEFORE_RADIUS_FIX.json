@@ -1,0 +1,460 @@
+{
+  "rows": [
+    {
+      "arena": "bosque",
+      "wall": {
+        "x": -550,
+        "y": -240,
+        "len": 180,
+        "thick": 30,
+        "rot": 0,
+        "axis": "h"
+      },
+      "target": {
+        "x": -520,
+        "y": -240
+      },
+      "before": {
+        "x": -550,
+        "y": -125
+      },
+      "after": {
+        "x": -520,
+        "y": -279
+      },
+      "areas": [
+        {
+          "x": -520,
+          "y": -279,
+          "r": 143
+        }
+      ],
+      "teleports": [
+        {
+          "dest": {
+            "x": -520,
+            "y": -273
+          },
+          "moved": true,
+          "after": {
+            "x": -520,
+            "y": -279
+          }
+        }
+      ],
+      "call": [
+        "nano.invert",
+        -550,
+        -125,
+        110,
+        -1.3784007252789743,
+        156.89486925964152,
+        143
+      ],
+      "endpoint": {
+        "x": -520,
+        "y": -279
+      },
+      "displacedFromAim": 39
+    },
+    {
+      "arena": "laberinto",
+      "wall": {
+        "x": -275,
+        "y": -310,
+        "len": 310,
+        "thick": 30,
+        "rot": 0,
+        "axis": "h",
+        "torch": {
+          "x": -430,
+          "y": -328
+        }
+      },
+      "target": {
+        "x": -245,
+        "y": -310
+      },
+      "before": {
+        "x": -275,
+        "y": -195
+      },
+      "after": {
+        "x": -245,
+        "y": -349
+      },
+      "areas": [
+        {
+          "x": -245,
+          "y": -349,
+          "r": 143
+        }
+      ],
+      "teleports": [
+        {
+          "dest": {
+            "x": -245,
+            "y": -343
+          },
+          "moved": true,
+          "after": {
+            "x": -245,
+            "y": -349
+          }
+        }
+      ],
+      "call": [
+        "nano.invert",
+        -275,
+        -195,
+        110,
+        -1.3784007252789743,
+        156.89486925964152,
+        143
+      ],
+      "endpoint": {
+        "x": -245,
+        "y": -349
+      },
+      "displacedFromAim": 39
+    },
+    {
+      "arena": "coliseo",
+      "wall": null,
+      "target": {
+        "x": 180,
+        "y": 100
+      },
+      "before": {
+        "x": 0,
+        "y": 0
+      },
+      "after": {
+        "x": 0,
+        "y": 0
+      },
+      "areas": [],
+      "teleports": [
+        {
+          "dest": {
+            "x": 0,
+            "y": 0
+          },
+          "moved": false,
+          "after": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "endpoint": null,
+      "displacedFromAim": 205.91260281974002
+    }
+  ],
+  "checks": [
+    {
+      "name": "endpoint actual or rejected bosque",
+      "pass": true,
+      "data": {
+        "arena": "bosque",
+        "wall": {
+          "x": -550,
+          "y": -240,
+          "len": 180,
+          "thick": 30,
+          "rot": 0,
+          "axis": "h"
+        },
+        "target": {
+          "x": -520,
+          "y": -240
+        },
+        "before": {
+          "x": -550,
+          "y": -125
+        },
+        "after": {
+          "x": -520,
+          "y": -279
+        },
+        "areas": [
+          {
+            "x": -520,
+            "y": -279,
+            "r": 143
+          }
+        ],
+        "teleports": [
+          {
+            "dest": {
+              "x": -520,
+              "y": -273
+            },
+            "moved": true,
+            "after": {
+              "x": -520,
+              "y": -279
+            }
+          }
+        ],
+        "call": [
+          "nano.invert",
+          -550,
+          -125,
+          110,
+          -1.3784007252789743,
+          156.89486925964152,
+          143
+        ],
+        "endpoint": {
+          "x": -520,
+          "y": -279
+        },
+        "displacedFromAim": 39
+      }
+    },
+    {
+      "name": "endpoint actual or rejected laberinto",
+      "pass": true,
+      "data": {
+        "arena": "laberinto",
+        "wall": {
+          "x": -275,
+          "y": -310,
+          "len": 310,
+          "thick": 30,
+          "rot": 0,
+          "axis": "h",
+          "torch": {
+            "x": -430,
+            "y": -328
+          }
+        },
+        "target": {
+          "x": -245,
+          "y": -310
+        },
+        "before": {
+          "x": -275,
+          "y": -195
+        },
+        "after": {
+          "x": -245,
+          "y": -349
+        },
+        "areas": [
+          {
+            "x": -245,
+            "y": -349,
+            "r": 143
+          }
+        ],
+        "teleports": [
+          {
+            "dest": {
+              "x": -245,
+              "y": -343
+            },
+            "moved": true,
+            "after": {
+              "x": -245,
+              "y": -349
+            }
+          }
+        ],
+        "call": [
+          "nano.invert",
+          -275,
+          -195,
+          110,
+          -1.3784007252789743,
+          156.89486925964152,
+          143
+        ],
+        "endpoint": {
+          "x": -245,
+          "y": -349
+        },
+        "displacedFromAim": 39
+      }
+    },
+    {
+      "name": "endpoint actual or rejected coliseo",
+      "pass": true,
+      "data": {
+        "arena": "coliseo",
+        "wall": null,
+        "target": {
+          "x": 180,
+          "y": 100
+        },
+        "before": {
+          "x": 0,
+          "y": 0
+        },
+        "after": {
+          "x": 0,
+          "y": 0
+        },
+        "areas": [],
+        "teleports": [
+          {
+            "dest": {
+              "x": 0,
+              "y": 0
+            },
+            "moved": false,
+            "after": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "endpoint": null,
+        "displacedFromAim": 205.91260281974002
+      }
+    },
+    {
+      "name": "legacy or numeric sentence/undefined",
+      "pass": true,
+      "data": {
+        "optional": "undefined",
+        "actual": 69,
+        "expected": 69,
+        "scope": "synthetic callback, records shared520 cap; not all reachable builds"
+      }
+    },
+    {
+      "name": "expires sentence/undefined",
+      "pass": true
+    },
+    {
+      "name": "legacy or numeric sentence/0",
+      "pass": true,
+      "data": {
+        "optional": "0",
+        "actual": 69,
+        "expected": 69,
+        "scope": "synthetic callback, records shared520 cap; not all reachable builds"
+      }
+    },
+    {
+      "name": "expires sentence/0",
+      "pass": true
+    },
+    {
+      "name": "legacy or numeric sentence/NaN",
+      "pass": true,
+      "data": {
+        "optional": "NaN",
+        "actual": 69,
+        "expected": 69,
+        "scope": "synthetic callback, records shared520 cap; not all reachable builds"
+      }
+    },
+    {
+      "name": "expires sentence/NaN",
+      "pass": true
+    },
+    {
+      "name": "legacy or numeric sentence/70",
+      "pass": true,
+      "data": {
+        "optional": "70",
+        "actual": 70,
+        "expected": 70,
+        "scope": "synthetic callback, records shared520 cap; not all reachable builds"
+      }
+    },
+    {
+      "name": "expires sentence/70",
+      "pass": true
+    },
+    {
+      "name": "legacy or numeric sentence/536.76",
+      "pass": true,
+      "data": {
+        "optional": "536.76",
+        "actual": 520,
+        "expected": 520,
+        "scope": "synthetic callback, records shared520 cap; not all reachable builds"
+      }
+    },
+    {
+      "name": "expires sentence/536.76",
+      "pass": true
+    },
+    {
+      "name": "legacy or numeric invert/undefined",
+      "pass": true,
+      "data": {
+        "optional": "undefined",
+        "actual": 40,
+        "expected": 40,
+        "scope": "synthetic callback, records shared520 cap; not all reachable builds"
+      }
+    },
+    {
+      "name": "expires invert/undefined",
+      "pass": true
+    },
+    {
+      "name": "legacy or numeric invert/0",
+      "pass": true,
+      "data": {
+        "optional": "0",
+        "actual": 40,
+        "expected": 40,
+        "scope": "synthetic callback, records shared520 cap; not all reachable builds"
+      }
+    },
+    {
+      "name": "expires invert/0",
+      "pass": true
+    },
+    {
+      "name": "legacy or numeric invert/NaN",
+      "pass": true,
+      "data": {
+        "optional": "NaN",
+        "actual": 40,
+        "expected": 40,
+        "scope": "synthetic callback, records shared520 cap; not all reachable builds"
+      }
+    },
+    {
+      "name": "expires invert/NaN",
+      "pass": true
+    },
+    {
+      "name": "legacy or numeric invert/70",
+      "pass": true,
+      "data": {
+        "optional": "70",
+        "actual": 70,
+        "expected": 70,
+        "scope": "synthetic callback, records shared520 cap; not all reachable builds"
+      }
+    },
+    {
+      "name": "expires invert/70",
+      "pass": true
+    },
+    {
+      "name": "legacy or numeric invert/536.76",
+      "pass": true,
+      "data": {
+        "optional": "536.76",
+        "actual": 520,
+        "expected": 520,
+        "scope": "synthetic callback, records shared520 cap; not all reachable builds"
+      }
+    },
+    {
+      "name": "expires invert/536.76",
+      "pass": true
+    }
+  ],
+  "scope": "Actual useSkill and actual wall/collision/reachability implementations, fixture positions near existing wall. No collision override. Callback fallback/extreme probes synthetic, not reachable-build certification.",
+  "errors": []
+}

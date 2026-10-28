@@ -193,6 +193,46 @@ function drawLibertadorNormalSignature(s){
   const size=s.slot===1?40:32,top=s.slot===1?146:112;
   ctx.drawImage(libertadorSignatureAtlas,frame*32,s.slot*32,32,32,Math.round(s.x)-size/2,Math.round(s.y)-top,size,size);ctx.restore();
 }
+// Nano's normal Sentencia/Inversión: an unrolling decree and opposed threshold arms.
+// Airborne cast identifiers only. H2, ultimate, event payload and lifetime stay unchanged.
+let nanoSignatureAtlas=null;
+function drawNanoNormalSignature(s){
+  const q=s.t/s.dur,calm=typeof JUICE!=='undefined'&&JUICE.reduceMotion;
+  const frame=calm?2:Math.min(3,Math.floor(q*8));
+  if(!nanoSignatureAtlas){
+    const cv=document.createElement('canvas');cv.width=128;cv.height=64;
+    const g=cv.getContext('2d'),O='#1b1124',D='#52405e',A='#b99553',B='#e8c56a',C='#fff4d6';
+    for(let row=0;row<2;row++)for(let f=0;f<4;f++){
+      const pixels=new Map(),put=(x,y,c)=>pixels.set(x+','+y,{x,y,c});
+      const line=(x,y,bx,by,c)=>{let dx=Math.abs(bx-x),dy=-Math.abs(by-y),sx=x<bx?1:-1,sy=y<by?1:-1,e=dx+dy;
+        for(;;){put(x,y,c);if(x===bx&&y===by)break;const z=2*e;if(z>=dy){e+=dy;x+=sx;}if(z<=dx){e+=dx;y+=sy;}}};
+      if(row===0){
+        const gap=[3,1,0,0][f],left=7+gap,right=24-gap;
+        // Open parchment outline, dark writing and broken lower edge: no filled plaque.
+        line(left,6,right-2,6,B);line(left,7,left,23,A);line(right-2,7,right-2,23,D);
+        line(left,23,left+5,25,A);line(left+5,25,right-2,23,B);
+        line(left-2,5,left+1,5,C);line(left-2,5,left-2,9,A);line(left-2,9,left,9,B);
+        line(right-2,23,right+1,23,C);line(right+1,23,right+1,27,A);line(right-2,27,right+1,27,B);
+        line(left+3,11,right-5,11,C);line(left+3,15,right-6,15,B);line(left+3,19,left+5,19,D);
+        if(f>=2){line(18,18,20,20,B);line(20,20,24,16,C);}
+      }else{
+        const gap=[3,1,0,2][f];
+        // Opposing L-shaped thresholds rotate the visual emphasis across the open centre.
+        line(6-gap,18,6-gap,10,B);line(6-gap,10,11-gap,5,C);line(11-gap,5,19-gap,5,B);
+        line(19-gap,5,16-gap,2,C);line(19-gap,5,16-gap,8,A);
+        line(25+gap,13,25+gap,21,D);line(25+gap,21,20+gap,26,A);line(20+gap,26,12+gap,26,B);
+        line(12+gap,26,15+gap,23,C);line(12+gap,26,15+gap,29,A);
+        line(10,16,13,13,D);line(13,13,16,16,A);line(16,16,13,19,D);
+        line(17,16,20,13,B);line(20,13,23,16,C);line(23,16,20,19,B);
+      }
+      g.fillStyle=O;for(const {x,y}of pixels.values())for(const [dx,dy]of [[-1,0],[1,0],[0,-1],[0,1]])g.fillRect(f*32+x+dx,row*32+y+dy,1,1);
+      for(const {x,y,c}of pixels.values()){g.fillStyle=c;g.fillRect(f*32+x,row*32+y,1,1);}
+    }
+    nanoSignatureAtlas=cv;
+  }
+  ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=Math.min(1,(1-q)*3)*.85;
+  ctx.drawImage(nanoSignatureAtlas,frame*32,s.slot===0?0:32,32,32,Math.round(s.x)-16,Math.round(s.y)-106,32,32);ctx.restore();
+}
 function drawChampionSignatures(){
   ctx.save();ctx.globalCompositeOperation='source-over';ctx.lineJoin='round';ctx.lineCap='round';
   for(const s of championSignatures){
@@ -221,6 +261,7 @@ function drawChampionSignatures(){
     if(s.key==='maura'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawMauraNormalSignature(s);continue;}
     if(s.key==='morwen'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawMorwenNormalSignature(s);continue;}
     if(s.key==='libertador'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawLibertadorNormalSignature(s);continue;}
+    if(s.key==='nano_gm'&&!s.ult&&(s.slot===0||s.slot===2)){drawNanoNormalSignature(s);continue;}
     const [shape,color]=CHAMPION_SIGNATURES[s.key]||['star','#e6d6ff'];
     const q=s.t/s.dur,calm=typeof JUICE!=='undefined'&&JUICE.reduceMotion;
     const r=(s.ult?48:25)*(calm?1:0.8+0.2*Math.min(1,q*5));

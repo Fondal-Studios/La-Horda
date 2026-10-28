@@ -1,0 +1,350 @@
+{
+  "checks": [
+    {
+      "name": "0/normal emit count",
+      "ok": true,
+      "data": {
+        "returned": true,
+        "events": [
+          {
+            "name": "ng_burst_d",
+            "x": 330,
+            "y": 0,
+            "r": 70,
+            "dur": 700
+          }
+        ]
+      }
+    },
+    {
+      "name": "0/normal impact stays at cast destination",
+      "ok": true,
+      "data": {
+        "point": {
+          "x": 330,
+          "y": 0
+        },
+        "now": {
+          "x": 330,
+          "y": 0
+        }
+      }
+    },
+    {
+      "name": "0/normal transient expires after owner loss",
+      "ok": true
+    },
+    {
+      "name": "0/fused emit count",
+      "ok": true,
+      "data": {
+        "returned": true,
+        "events": []
+      }
+    },
+    {
+      "name": "0/frozen emit count",
+      "ok": true,
+      "data": {
+        "returned": true,
+        "events": []
+      }
+    },
+    {
+      "name": "0/dead emit count",
+      "ok": true,
+      "data": {
+        "returned": false,
+        "events": []
+      }
+    },
+    {
+      "name": "0/recast emit count",
+      "ok": true,
+      "data": {
+        "returned": true,
+        "events": [
+          {
+            "name": "ng_burst_d",
+            "x": 330,
+            "y": 0,
+            "r": 70,
+            "dur": 700
+          },
+          {
+            "name": "ng_burst_d",
+            "x": 330,
+            "y": 0,
+            "r": 70,
+            "dur": 700
+          }
+        ]
+      }
+    },
+    {
+      "name": "0/recast impact stays at cast destination",
+      "ok": true,
+      "data": {
+        "point": {
+          "x": 330,
+          "y": 0
+        },
+        "now": {
+          "x": 330,
+          "y": 0
+        }
+      }
+    },
+    {
+      "name": "0/recast transient expires after owner loss",
+      "ok": true
+    },
+    {
+      "name": "2/normal emit count",
+      "ok": true,
+      "data": {
+        "returned": true,
+        "events": [
+          {
+            "name": "ng_verdict",
+            "x": 179.99999999999997,
+            "y": 29.999999999999993,
+            "r": 143,
+            "dur": 760
+          }
+        ]
+      }
+    },
+    {
+      "name": "2/normal impact stays at cast destination",
+      "ok": true,
+      "data": {
+        "point": {
+          "x": 179.99999999999997,
+          "y": 29.999999999999993
+        },
+        "now": {
+          "x": 179.99999999999997,
+          "y": 29.999999999999993
+        }
+      }
+    },
+    {
+      "name": "2/normal transient expires after owner loss",
+      "ok": true
+    },
+    {
+      "name": "2/fused emit count",
+      "ok": true,
+      "data": {
+        "returned": true,
+        "events": []
+      }
+    },
+    {
+      "name": "2/frozen emit count",
+      "ok": true,
+      "data": {
+        "returned": true,
+        "events": []
+      }
+    },
+    {
+      "name": "2/dead emit count",
+      "ok": true,
+      "data": {
+        "returned": false,
+        "events": []
+      }
+    },
+    {
+      "name": "2/recast emit count",
+      "ok": true,
+      "data": {
+        "returned": true,
+        "events": [
+          {
+            "name": "ng_verdict",
+            "x": 179.99999999999997,
+            "y": 29.999999999999993,
+            "r": 143,
+            "dur": 760
+          },
+          {
+            "name": "ng_verdict",
+            "x": 360,
+            "y": 59.99999999999999,
+            "r": 143,
+            "dur": 760
+          }
+        ]
+      }
+    },
+    {
+      "name": "2/recast impact stays at cast destination",
+      "ok": true,
+      "data": {
+        "point": {
+          "x": 179.99999999999997,
+          "y": 29.999999999999993
+        },
+        "now": {
+          "x": 179.99999999999997,
+          "y": 29.999999999999993
+        }
+      }
+    },
+    {
+      "name": "2/recast transient expires after owner loss",
+      "ok": true
+    },
+    {
+      "name": "H2 real edict under KVB.off=false",
+      "ok": true,
+      "data": {
+        "objects": [
+          {
+            "kind": "as_edict",
+            "life": 5000,
+            "r": 135
+          }
+        ]
+      }
+    },
+    {
+      "name": "H2 real edict under KVB.off=true",
+      "ok": true,
+      "data": {
+        "objects": [
+          {
+            "kind": "as_edict",
+            "life": 5000,
+            "r": 135
+          }
+        ]
+      }
+    },
+    {
+      "name": "UF actual judgement object",
+      "ok": true,
+      "data": {
+        "initial": [
+          {
+            "kind": "as_judgement",
+            "life": 2600,
+            "r": 440
+          }
+        ]
+      }
+    },
+    {
+      "name": "UF and delayed Monster expire after11520ms",
+      "ok": true,
+      "data": {
+        "elapsed": 11520,
+        "objects": [],
+        "monsterUntil": 8704
+      }
+    }
+  ],
+  "rows": [
+    {
+      "slot": 0,
+      "mode": "normal",
+      "events": [
+        {
+          "name": "ng_burst_d",
+          "x": 330,
+          "y": 0,
+          "r": 70,
+          "dur": 700
+        }
+      ]
+    },
+    {
+      "slot": 0,
+      "mode": "fused",
+      "events": []
+    },
+    {
+      "slot": 0,
+      "mode": "frozen",
+      "events": []
+    },
+    {
+      "slot": 0,
+      "mode": "dead",
+      "events": []
+    },
+    {
+      "slot": 0,
+      "mode": "recast",
+      "events": [
+        {
+          "name": "ng_burst_d",
+          "x": 330,
+          "y": 0,
+          "r": 70,
+          "dur": 700
+        },
+        {
+          "name": "ng_burst_d",
+          "x": 330,
+          "y": 0,
+          "r": 70,
+          "dur": 700
+        }
+      ]
+    },
+    {
+      "slot": 2,
+      "mode": "normal",
+      "events": [
+        {
+          "name": "ng_verdict",
+          "x": 179.99999999999997,
+          "y": 29.999999999999993,
+          "r": 143,
+          "dur": 760
+        }
+      ]
+    },
+    {
+      "slot": 2,
+      "mode": "fused",
+      "events": []
+    },
+    {
+      "slot": 2,
+      "mode": "frozen",
+      "events": []
+    },
+    {
+      "slot": 2,
+      "mode": "dead",
+      "events": []
+    },
+    {
+      "slot": 2,
+      "mode": "recast",
+      "events": [
+        {
+          "name": "ng_verdict",
+          "x": 179.99999999999997,
+          "y": 29.999999999999993,
+          "r": 143,
+          "dur": 760
+        },
+        {
+          "name": "ng_verdict",
+          "x": 360,
+          "y": 59.99999999999999,
+          "r": 143,
+          "dur": 760
+        }
+      ]
+    }
+  ],
+  "scope": "Local actual useSkill/useUltimate calls; fused/frozen/dead are defensive state probes. Impact remains at cast destination after owner loss until original TTL. No global simulation certification.",
+  "errors": []
+}

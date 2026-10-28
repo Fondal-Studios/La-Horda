@@ -1,0 +1,47 @@
+{
+  "new": [
+    {
+      "run": "attempt01-mobile",
+      "scenes": 16,
+      "samples": 96,
+      "minimum": 0.9790766431657949,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "attempt01-desktop",
+      "scenes": 16,
+      "samples": 96,
+      "minimum": 0.9803660565723794,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "mobile",
+      "scenes": 16,
+      "samples": 96,
+      "minimum": 0.9720263816238345,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "desktop",
+      "scenes": 16,
+      "samples": 96,
+      "minimum": 0.9735108153078204,
+      "exact": true,
+      "errors": []
+    }
+  ],
+  "native": "24groups228frames alpha0/255 RNG0 final; no fresh reexport/borders claim",
+  "historical": "closure02 relay580/22lifecycle unchanged hooks; closure01 parity37643 summarized only. Not rerun.",
+  "failed": [
+    "Attempt01 too faint; source and32scene192ABA preserved.",
+    "review-h2.webp invalid encoding rejected by viewer/PIL, preserved CORRUPT. Rebuilt final sheets from sourcePNG; lossless equality checked."
+  ],
+  "remaining": [
+    "Sixarenas/alllooks/fullsequence/launchhierarchy",
+    "new ink cameraedges",
+    "ArtGatePASS/full exactCI"
+  ]
+}

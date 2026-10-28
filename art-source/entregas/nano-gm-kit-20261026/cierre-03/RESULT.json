@@ -1,0 +1,40 @@
+{
+  "sourceSha256": "7ad5802bc3ccc3dfba8da0bf81ddb7c59849eed0d066516a2f549ab4e0875506",
+  "runs": [
+    {
+      "run": "attempt01-mobile",
+      "scenes": 16,
+      "samples": 96,
+      "minimum": 0.9790766431657949,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "attempt01-desktop",
+      "scenes": 16,
+      "samples": 96,
+      "minimum": 0.9803660565723794,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "mobile",
+      "scenes": 16,
+      "samples": 96,
+      "minimum": 0.9720263816238345,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "desktop",
+      "scenes": 16,
+      "samples": 96,
+      "minimum": 0.9735108153078204,
+      "exact": true,
+      "errors": []
+    }
+  ],
+  "threshold": 0.8,
+  "delta": 24,
+  "scope": "Final32scenes192ABA, twoarenas base/monster sparse/dense H1/H3 two viewports. Parent material in same event geometry, not full main. Attempts32/192 separate."
+}

@@ -1,0 +1,296 @@
+{
+  "checks": [
+    {
+      "name": "host real H1 H3",
+      "ok": true
+    },
+    {
+      "name": "host optional impact transmitted",
+      "ok": true
+    },
+    {
+      "name": "host real native textures",
+      "ok": true
+    },
+    {
+      "name": "host Nano normal signature renderer",
+      "ok": true
+    },
+    {
+      "name": "touch-guest real H1 H3",
+      "ok": true
+    },
+    {
+      "name": "touch-guest optional impact transmitted",
+      "ok": true
+    },
+    {
+      "name": "touch-guest real native textures",
+      "ok": true
+    },
+    {
+      "name": "touch-guest Nano normal signature renderer",
+      "ok": true
+    },
+    {
+      "name": "actual evolved Monster H3 beyond520 host and guest",
+      "ok": true
+    },
+    {
+      "name": "guest args equal actual host netSer",
+      "ok": true
+    },
+    {
+      "name": "guest geometry equals decoded event",
+      "ok": true
+    }
+  ],
+  "rows": [
+    {
+      "role": "host",
+      "events": [
+        {
+          "name": "sentence",
+          "args": [
+            49.5,
+            49.5,
+            116.64449999999998,
+            0.3217505543966422,
+            420,
+            236.67
+          ],
+          "decals": [
+            {
+              "x": 447.9469851812158,
+              "y": 182.31566172707193,
+              "r": 236.67,
+              "dur": 700
+            }
+          ]
+        },
+        {
+          "name": "sentence",
+          "args": [
+            49.5,
+            49.5,
+            116.64449999999998,
+            0.3217505543966422,
+            420,
+            236.67
+          ],
+          "decals": [
+            {
+              "x": 447.9469851812158,
+              "y": 182.31566172707193,
+              "r": 236.67,
+              "dur": 700
+            }
+          ]
+        },
+        {
+          "name": "sentence",
+          "args": [
+            49.5,
+            49.5,
+            139.97339999999997,
+            0.3217505543966422,
+            420,
+            284.004
+          ],
+          "decals": [
+            {
+              "x": 447.9469851812158,
+              "y": 182.31566172707193,
+              "r": 284.004,
+              "dur": 700
+            }
+          ]
+        },
+        {
+          "name": "invert",
+          "args": [
+            49.5,
+            49.5,
+            386.4,
+            0.32341168243687096,
+            190.36937778960143,
+            483.48299999999995
+          ],
+          "decals": [
+            {
+              "x": 230,
+              "y": 110,
+              "r": 483.48299999999995,
+              "dur": 760
+            }
+          ]
+        },
+        {
+          "name": "invert",
+          "args": [
+            230,
+            110,
+            386.4,
+            0.3217505543966422,
+            189.73665961010278,
+            483.48299999999995
+          ],
+          "decals": [
+            {
+              "x": 410,
+              "y": 170,
+              "r": 483.48299999999995,
+              "dur": 760
+            }
+          ]
+        },
+        {
+          "name": "invert",
+          "args": [
+            410,
+            170,
+            386.4,
+            0.3073974731228215,
+            198.2952344359289,
+            580.1795999999999
+          ],
+          "decals": [
+            {
+              "x": 599,
+              "y": 230,
+              "r": 580.1795999999999,
+              "dur": 760
+            }
+          ]
+        }
+      ],
+      "draws": 68,
+      "signatureDraws": 47,
+      "duo": false
+    },
+    {
+      "role": "touch-guest",
+      "events": [
+        {
+          "name": "sentence",
+          "args": [
+            49.5,
+            49.5,
+            116.64,
+            0.32,
+            420,
+            236.67
+          ],
+          "decals": [
+            {
+              "x": 448.17887559462514,
+              "y": 181.61795545876947,
+              "r": 236.67,
+              "dur": 700
+            }
+          ]
+        },
+        {
+          "name": "sentence",
+          "args": [
+            49.5,
+            49.5,
+            116.64,
+            0.32,
+            420,
+            236.67
+          ],
+          "decals": [
+            {
+              "x": 448.17887559462514,
+              "y": 181.61795545876947,
+              "r": 236.67,
+              "dur": 700
+            }
+          ]
+        },
+        {
+          "name": "sentence",
+          "args": [
+            49.5,
+            49.5,
+            139.97,
+            0.32,
+            420,
+            284
+          ],
+          "decals": [
+            {
+              "x": 448.17887559462514,
+              "y": 181.61795545876947,
+              "r": 284,
+              "dur": 700
+            }
+          ]
+        },
+        {
+          "name": "invert",
+          "args": [
+            49.5,
+            49.5,
+            386.4,
+            0.32,
+            190.37,
+            483.48
+          ],
+          "decals": [
+            {
+              "x": 230.20594654035426,
+              "y": 109.38403614449034,
+              "r": 483.48,
+              "dur": 760
+            }
+          ]
+        },
+        {
+          "name": "invert",
+          "args": [
+            230,
+            110,
+            386.4,
+            0.32,
+            189.74,
+            483.48
+          ],
+          "decals": [
+            {
+              "x": 410.1079282269624,
+              "y": 169.6858592113022,
+              "r": 483.48,
+              "dur": 760
+            }
+          ]
+        },
+        {
+          "name": "invert",
+          "args": [
+            410,
+            170,
+            386.4,
+            0.31,
+            198.3,
+            580.18
+          ],
+          "decals": [
+            {
+              "x": 598.847746908337,
+              "y": 230.49312760673484,
+              "r": 580.18,
+              "dur": 760
+            }
+          ]
+        }
+      ],
+      "draws": 109,
+      "signatureDraws": 75,
+      "duo": false
+    }
+  ],
+  "errors": [],
+  "scope": "Ephemeral localhost founder fixture only (no production account changes). Actual local relay: Tanque host/NanoGM tactile guest, Six actual guest casts H1/H3 in Monster including third-cast evolution; twelve validated talent purchases, mastery alloc10 fixture. Host loadout transmitted normally. No rejected teleport or reordered snapshot certification."
+}

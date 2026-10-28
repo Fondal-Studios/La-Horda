@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-26",
+  "pr": 231,
+  "url": "https://github.com/Fondal-Studios/La-Horda/pull/231",
+  "branch": "art/nano-impact-contract-20261026",
+  "productionCommit": "11196e3bf915ebd3b8790f1a3f5532a01dd42acc",
+  "productionTree": "d09e9f9f158d03569e7164fd5599efc5dfeded2f",
+  "base": "468ee9322383e72e696777563b4e0d616d8c80b8",
+  "state": "EN_CORRECCION",
+  "gate": "FIX / NO_INTEGRAR",
+  "scope": [
+    "A-FX-nano_gm-h1/impact-contract",
+    "A-FX-nano_gm-h3/impact-contract"
+  ],
+  "newInstalledPng": 0,
+  "newSprites": 0,
+  "verification": {
+    "entries": 12829,
+    "truncated": false,
+    "files": 25,
+    "mismatches": []
+  },
+  "testsNew": {
+    "pairedCasts": 9,
+    "totalCastsPaired": 18,
+    "exactImpactRadii": 6,
+    "h2Identical": 3,
+    "summarizedStatesEqual": 9,
+    "pageErrors": 0,
+    "previewCasts": 3,
+    "imagesReviewed": 2,
+    "nodeCheck": "PASS",
+    "diffCheck": "PASS"
+  },
+  "limits": [
+    "No ArtPASS, relay, six-arena contact matrix, lifecycle, full parity or performance certification",
+    "H3 displaced teleport direction is source-derived hypothesis, not reproduced obstacle proof",
+    "No new public deployment query; no integration"
+  ],
+  "attempts": [
+    {
+      "stage": "git push",
+      "result": "FAILED_NO_LOCAL_AUTH",
+      "detail": "fatal: could not read Username for https://github.com: terminal prompts disabled. Recovered using authorized GitHub connector; all25 blobs and tree exact. Local commit9af05be2b1787e98653c1e1873eba3915b2e6f77 has identical tree to remoteproduction."
+    },
+    {
+      "stage": "comparison",
+      "file": "COMPARISON_ATTEMPT01.json",
+      "result": "preserved; H2 scope corrected to ng_law only"
+    }
+  ],
+  "ci": {
+    "sha": "11196e3bf915ebd3b8790f1a3f5532a01dd42acc",
+    "checksObserved": 20,
+    "workflowsObserved": 9,
+    "approved": false,
+    "evidence": "CI_OBSERVED.json"
+  },
+  "next": "CIERRE agrupado H1/H3: composición; teleport impedido/desviado real; owner/red/old event fallback/cámara; lifecycle; seis arenas/looks/equipo/contacto80%delta24; paridad/performance/ArtGate y todos checks SHAexacto. No nuevo kit.",
+  "queue": {
+    "count": 66,
+    "preservedPrior": 64
+  },
+  "mainUnchanged": true,
+  "lostRemoteClosure": false,
+  "globalInventoryComplete": false
+}

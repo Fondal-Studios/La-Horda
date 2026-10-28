@@ -1,0 +1,176 @@
+{
+  "checks": [
+    {
+      "name": "host real H1 H3",
+      "ok": true
+    },
+    {
+      "name": "host optional impact transmitted",
+      "ok": true
+    },
+    {
+      "name": "host real native textures",
+      "ok": true
+    },
+    {
+      "name": "touch-guest real H1 H3",
+      "ok": true
+    },
+    {
+      "name": "touch-guest optional impact transmitted",
+      "ok": true
+    },
+    {
+      "name": "touch-guest real native textures",
+      "ok": true
+    },
+    {
+      "name": "sentence guest equals existing netSer numeric encoding",
+      "ok": true,
+      "expected": [
+        49.5,
+        49.5,
+        30.0,
+        0.32,
+        330.0,
+        70.0
+      ],
+      "actual": [
+        49.5,
+        49.5,
+        30,
+        0.32,
+        330,
+        70
+      ]
+    },
+    {
+      "name": "sentence guest decal equals decoded event",
+      "ok": true,
+      "endpointDeltaFromHost": 0.5776828771304536
+    },
+    {
+      "name": "invert guest equals existing netSer numeric encoding",
+      "ok": true,
+      "expected": [
+        49.5,
+        49.5,
+        110.0,
+        0.32,
+        190.37,
+        143.0
+      ],
+      "actual": [
+        49.5,
+        49.5,
+        110,
+        0.32,
+        190.37,
+        143
+      ]
+    },
+    {
+      "name": "invert guest decal equals decoded event",
+      "ok": true,
+      "endpointDeltaFromHost": 0.6494809071698855
+    }
+  ],
+  "rows": [
+    {
+      "role": "host",
+      "events": [
+        {
+          "name": "sentence",
+          "args": [
+            49.5,
+            49.5,
+            30,
+            0.32175055439664213,
+            330,
+            70
+          ],
+          "decals": [
+            {
+              "x": 362.56548835666956,
+              "y": 153.8551627855565,
+              "r": 70,
+              "dur": 700
+            }
+          ]
+        },
+        {
+          "name": "invert",
+          "args": [
+            49.5,
+            49.5,
+            110,
+            0.32341168243687096,
+            190.36937778960143,
+            143
+          ],
+          "decals": [
+            {
+              "x": 230,
+              "y": 110,
+              "r": 143,
+              "dur": 760
+            }
+          ]
+        }
+      ],
+      "draws": 10,
+      "duo": false
+    },
+    {
+      "role": "touch-guest",
+      "events": [
+        {
+          "name": "sentence",
+          "args": [
+            49.5,
+            49.5,
+            30,
+            0.32,
+            330,
+            70
+          ],
+          "decals": [
+            {
+              "x": 362.7476879672055,
+              "y": 153.30696500331885,
+              "r": 70,
+              "dur": 700
+            }
+          ]
+        },
+        {
+          "name": "invert",
+          "args": [
+            49.5,
+            49.5,
+            110,
+            0.32,
+            190.37,
+            143
+          ],
+          "decals": [
+            {
+              "x": 230.20594654035426,
+              "y": 109.38403614449034,
+              "r": 143,
+              "dur": 760
+            }
+          ]
+        }
+      ],
+      "draws": 17,
+      "duo": false
+    }
+  ],
+  "errors": [],
+  "scope": "Ephemeral localhost founder fixture only (no production account changes). Actual local relay: Tanque host/NanoGM tactile guest, base H1/H3 no gear/talents. No rejected teleport or reordered snapshot certification. Exact host-float equality assertion was incorrect: existing netSer rounds numbers to2 decimals. Corrected comparator checks captured guest against that encoding, not a new tolerance. No relay rerun.",
+  "encodingSource": {
+    "path": "js/net/net-game.js",
+    "sha256": "b4250d94aac323999cd474847784467e2d240fd6be9441ff5e5c8b1fe4e8a7f2"
+  }
+}

@@ -1,0 +1,125 @@
+diff --git a/js/champions/vfx-b/nano_gm.js b/js/champions/vfx-b/nano_gm.js
+index 0e76d63..9a835c4 100644
+--- a/js/champions/vfx-b/nano_gm.js
++++ b/js/champions/vfx-b/nano_gm.js
+@@ -8,21 +8,21 @@
+   kvbDefMotif('ng_shard_l', 7, 9, kvbBmp(['...e...', '..eWe..', '..eWW..', '.eWWWW.', '.eWWWW.', 'eWWWWW.', '.WWWW..', '..WW...', '...W..'], {e: '#e8c56a', W: '#fff4d6'}));
+   kvbDefMotif('ng_scroll', 9, 9, kvbBmp(['.eeeeeee.', 'eWWWWWWWe', 'eWkkWkkWe', 'eWWWWWWWe', 'eWkkkWkWe', 'eWWWWWWWe', '.eeeeeee.'], {e: '#e8c56a', W: '#fff4d6', k: '#7a6420'}));
+   kvbDefMotif('ng_mote', 3, 3, kvbBmp(['.y.', 'yWy', '.y.'], {y: '#e8c56a', W: '#fff4d6'}));
+-  kvbDefBeam('ng_decree', 8, 20, 18, (g, q, W, H, f) => {
+-    // Separated ink slashes with a travelling gold edge: no continuous cable.
++  kvbDefBeam('ng_decree', 8, 128, 18, (g, q, W, H, f) => {
++    // One full-route ink stroke with three unequal brush loads, not repeated tiles.
+     if(q >= 1) return;
+-    const head = 4 + (f * 2) % 10;
+-    for(let x = 2; x < W - 2; x++){
+-      const u = (x - 2) / (W - 4);
+-      if(x > head + 4 || x < head - 6) continue;
+-      const y = Math.round(H * .65 - u * H * .3);
+-      const thick = Math.max(1, Math.round(7 * Math.sin(u * Math.PI) * (1 - q * .5)));
+-      g.fillStyle = SH[0]; g.fillRect(x, y - Math.floor(thick / 2), 1, thick);
+-      g.fillStyle = SH[2]; g.fillRect(x, y, 1, Math.max(1, Math.floor(thick / 2)));
+-      if(x >= head - 2){g.fillStyle = x > head ? NG[3] : NG[2];g.fillRect(x, y, 1, 1);}
++    for(let x=3;x<W-3;x++){
++      const u=(x-3)/(W-6),taper=Math.sin(Math.PI*u);
++      const y=Math.round(H*.5+Math.sin(u*5.4+.4)*4);
++      const load=1.5+2.3*Math.exp(-Math.pow((u-.25)/.16,2))+1.4*Math.exp(-Math.pow((u-.72)/.12,2));
++      const half=Math.min(y-1,H-2-y,Math.max(0,Math.round(taper*load*(1-q*.65))));
++      g.fillStyle=SH[0];g.fillRect(x,y-half,1,half*2+1);
++      if(half>0){g.fillStyle=SH[1];g.fillRect(x,y,1,half);}
++      if(u>.24&&u<.76&&half>1){g.fillStyle=SH[2];g.fillRect(x,y,1,Math.max(1,half-1));}
++      if(u>.83&&u<.96&&f<4){g.fillStyle=NG[2];g.fillRect(x,y,1,1);}
++      // A short broken glint follows the changing curve, never parallel rails.
++      if(u>.66&&u<.82&&half>0){g.fillStyle=NG[2];g.fillRect(x,y-half,1,1);}
+     }
+-    if(f < 5){g.fillStyle = SH[3];g.fillRect(3 + f, 5, 2, 1);}
+-
+   });
+   const lawDetails = (lg, c, R, rad, pal, q) => { lg.save(); lg.translate(c, c); lg.rotate(q * .9); const s = rad * .45; kvbPoly(lg, [[-s, -s], [s, -s], [s, s], [-s, s]], null, pal[3], 1.6); lg.rotate(.7854); kvbPoly(lg, [[-s * .7, -s * .7], [s * .7, -s * .7], [s * .7, s * .7], [-s * .7, s * .7]], null, pal[4], 1.2); lg.restore();
+     for(let i = 0; i < 8; i++){ const a = i * .7854, x = c + Math.cos(a) * rad * .82, y = c + Math.sin(a) * rad * .82; kvbLine(lg, x, y - 3, x, y + 3, pal[3], 1.4); kvbLine(lg, x - 2, y, x + 2, y, pal[3], 1.2); } kvbCircle(lg, c, c, rad * .62, pal[2], 1); };
+@@ -57,9 +57,16 @@
+     if(e && Number.isFinite(radius) && radius > 520) e.w = e.h = radius * 2;
+     return e;
+   }
++  // Local entity adapter: render the whole native route exactly once. The shared
++  // beam pool, angle, length, width, culling and update/lifetime remain unchanged.
++  function nanoRoute(ax, ay, bx, by, width, duration, options){
++    const e=kvbBeam('ng_decree',ax,ay,bx,by,width,duration,options);
++    if(e){e.name='ng_decree';e.spec={...e.spec,tileW:e.len,H:e.w};}
++    return e;
++  }
+   KVB_FX['nano.sentence'] = (x, y, r, ang, len, impactRadius) => {
+     const ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len;
+-    kvbBeam('ng_decree', x, y, ex, ey, Math.max(24, r * 1.7), 640, {layer: 't'});
++    nanoRoute(x, y, ex, ey, Math.max(24, r * 1.7), 640, {layer: 't'});
+     nanoImpactDecal('ng_burst_d', ex, ey, Number.isFinite(impactRadius) && impactRadius > 0 ? impactRadius : Math.max(40, r * 2.3), 700); // explosión final: 70 u × área
+     kvbEmit('ng_shard_d', 8, ex, ey, {ring: r, v0: 40, v1: 130, up: 60, grav: 240, l0: 380, l1: 620, scale: 1.4, spin: 6});
+     kvbEmit('ng_shard_l', 5, x, y, {ang, spread: .6, v0: 30, v1: 100, l0: 300, l1: 460, scale: 1.2, shrink: true});
+@@ -71,7 +78,7 @@
+   };
+   KVB_FX['nano.invert'] = (x, y, r, ang, len, impactRadius) => {
+     const ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len;
+-    kvbBeam('ng_decree', x, y, ex, ey, 14, 420, {layer: 'g', alpha: .8});
++    nanoRoute(x, y, ex, ey, 14, 420, {layer: 'g', alpha: .8});
+     nanoImpactDecal('ng_verdict', ex, ey, Number.isFinite(impactRadius) && impactRadius > 0 ? impactRadius : Math.max(40, r * 1.3), 760); // estallido de llegada: 1,3 × radio de la runa
+     kvbEmit('ng_shard_d', 5, ex, ey, {v0: 40, v1: 120, up: 40, grav: 200, l0: 340, l1: 560, scale: 1.3, spin: 6}); kvbEmit('ng_shard_l', 5, ex, ey, {v0: 40, v1: 120, up: 40, grav: 200, l0: 340, l1: 560, scale: 1.3, spin: 6});
+   };
+diff --git a/js/skills/champion-signatures.js b/js/skills/champion-signatures.js
+index 81cc741..b2cd79c 100644
+--- a/js/skills/champion-signatures.js
++++ b/js/skills/champion-signatures.js
+@@ -193,6 +193,46 @@ function drawLibertadorNormalSignature(s){
+   const size=s.slot===1?40:32,top=s.slot===1?146:112;
+   ctx.drawImage(libertadorSignatureAtlas,frame*32,s.slot*32,32,32,Math.round(s.x)-size/2,Math.round(s.y)-top,size,size);ctx.restore();
+ }
++// Nano's normal Sentencia/Inversión: an unrolling decree and opposed threshold arms.
++// Airborne cast identifiers only. H2, ultimate, event payload and lifetime stay unchanged.
++let nanoSignatureAtlas=null;
++function drawNanoNormalSignature(s){
++  const q=s.t/s.dur,calm=typeof JUICE!=='undefined'&&JUICE.reduceMotion;
++  const frame=calm?2:Math.min(3,Math.floor(q*8));
++  if(!nanoSignatureAtlas){
++    const cv=document.createElement('canvas');cv.width=128;cv.height=64;
++    const g=cv.getContext('2d'),O='#1b1124',D='#52405e',A='#b99553',B='#e8c56a',C='#fff4d6';
++    for(let row=0;row<2;row++)for(let f=0;f<4;f++){
++      const pixels=new Map(),put=(x,y,c)=>pixels.set(x+','+y,{x,y,c});
++      const line=(x,y,bx,by,c)=>{let dx=Math.abs(bx-x),dy=-Math.abs(by-y),sx=x<bx?1:-1,sy=y<by?1:-1,e=dx+dy;
++        for(;;){put(x,y,c);if(x===bx&&y===by)break;const z=2*e;if(z>=dy){e+=dy;x+=sx;}if(z<=dx){e+=dx;y+=sy;}}};
++      if(row===0){
++        const gap=[3,1,0,0][f],left=7+gap,right=24-gap;
++        // Open parchment outline, dark writing and broken lower edge: no filled plaque.
++        line(left,6,right-2,6,B);line(left,7,left,23,A);line(right-2,7,right-2,23,D);
++        line(left,23,left+5,25,A);line(left+5,25,right-2,23,B);
++        line(left-2,5,left+1,5,C);line(left-2,5,left-2,9,A);line(left-2,9,left,9,B);
++        line(right-2,23,right+1,23,C);line(right+1,23,right+1,27,A);line(right-2,27,right+1,27,B);
++        line(left+3,11,right-5,11,C);line(left+3,15,right-6,15,B);line(left+3,19,left+5,19,D);
++        if(f>=2){line(18,18,20,20,B);line(20,20,24,16,C);}
++      }else{
++        const gap=[3,1,0,2][f];
++        // Opposing L-shaped thresholds rotate the visual emphasis across the open centre.
++        line(6-gap,18,6-gap,10,B);line(6-gap,10,11-gap,5,C);line(11-gap,5,19-gap,5,B);
++        line(19-gap,5,16-gap,2,C);line(19-gap,5,16-gap,8,A);
++        line(25+gap,13,25+gap,21,D);line(25+gap,21,20+gap,26,A);line(20+gap,26,12+gap,26,B);
++        line(12+gap,26,15+gap,23,C);line(12+gap,26,15+gap,29,A);
++        line(10,16,13,13,D);line(13,13,16,16,A);line(16,16,13,19,D);
++        line(17,16,20,13,B);line(20,13,23,16,C);line(23,16,20,19,B);
++      }
++      g.fillStyle=O;for(const {x,y}of pixels.values())for(const [dx,dy]of [[-1,0],[1,0],[0,-1],[0,1]])g.fillRect(f*32+x+dx,row*32+y+dy,1,1);
++      for(const {x,y,c}of pixels.values()){g.fillStyle=c;g.fillRect(f*32+x,row*32+y,1,1);}
++    }
++    nanoSignatureAtlas=cv;
++  }
++  ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=Math.min(1,(1-q)*3)*.85;
++  ctx.drawImage(nanoSignatureAtlas,frame*32,s.slot===0?0:32,32,32,Math.round(s.x)-16,Math.round(s.y)-106,32,32);ctx.restore();
++}
+ function drawChampionSignatures(){
+   ctx.save();ctx.globalCompositeOperation='source-over';ctx.lineJoin='round';ctx.lineCap='round';
+   for(const s of championSignatures){
+@@ -221,6 +261,7 @@ function drawChampionSignatures(){
+     if(s.key==='maura'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawMauraNormalSignature(s);continue;}
+     if(s.key==='morwen'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawMorwenNormalSignature(s);continue;}
+     if(s.key==='libertador'&&!s.ult&&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=2){drawLibertadorNormalSignature(s);continue;}
++    if(s.key==='nano_gm'&&!s.ult&&(s.slot===0||s.slot===2)){drawNanoNormalSignature(s);continue;}
+     const [shape,color]=CHAMPION_SIGNATURES[s.key]||['star','#e6d6ff'];
+     const q=s.t/s.dur,calm=typeof JUICE!=='undefined'&&JUICE.reduceMotion;
+     const r=(s.ult?48:25)*(calm?1:0.8+0.2*Math.min(1,q*5));

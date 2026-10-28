@@ -1,0 +1,103 @@
+{
+  "runs": [
+    {
+      "run": "pilot-mobile",
+      "scenes": 16,
+      "samples": 96,
+      "minimum": 0.9620109190172884,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "mobile",
+      "scenes": 120,
+      "samples": 720,
+      "minimum": 0.9582577132486388,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "desktop",
+      "scenes": 120,
+      "samples": 720,
+      "minimum": 0.9556812204103103,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "evolved-mobile",
+      "scenes": 4,
+      "samples": 24,
+      "minimum": 1,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "evolved-desktop",
+      "scenes": 4,
+      "samples": 24,
+      "minimum": 1,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "route-pilot",
+      "scenes": 4,
+      "samples": 24,
+      "minimum": 0.9508644222020018,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "route-final-pilot",
+      "scenes": 4,
+      "samples": 24,
+      "minimum": 0.9556414922656961,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "final-mobile",
+      "scenes": 120,
+      "samples": 720,
+      "minimum": 0.948502722323049,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "final-desktop",
+      "scenes": 120,
+      "samples": 720,
+      "minimum": 0.9461467648605997,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "temporal-mobile",
+      "scenes": 8,
+      "samples": 48,
+      "minimum": 0.8655595996360328,
+      "exact": true,
+      "errors": []
+    },
+    {
+      "run": "temporal-desktop",
+      "scenes": 8,
+      "samples": 48,
+      "minimum": 0.8668219633943428,
+      "exact": true,
+      "errors": []
+    }
+  ],
+  "final": [
+    "final-mobile",
+    "final-desktop",
+    "temporal-mobile",
+    "temporal-desktop"
+  ],
+  "baseline": "Suppresses candidate Nano H1/H3 KVB beam/impact AND only Nano normal H1/H3 signature. Retains H2/UF/wings/all other layers. Parent pixels use closure03 materials and original signature under same candidate events, not fullmain comparison.",
+  "threshold": 0.8,
+  "delta": 24,
+  "state": "Summarized fingerprint and restored family/SFA/pose/RNG/particles; not global snapshot",
+  "extreme": "12 talent purchases validated, mastery allocations10 fixture. Real third-cast H1 impact284.004/H3 580.1796. Tests pass contact, ART FIX."
+}

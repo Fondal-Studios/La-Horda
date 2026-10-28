@@ -1,0 +1,25 @@
+{
+  "matrices": [
+    {
+      "viewport": "mobile",
+      "scenes": 120,
+      "samples": 720,
+      "minimumRetention": 0.9687939274669666,
+      "ABAexact": true,
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "scenes": 120,
+      "samples": 720,
+      "minimumRetention": 0.9684633027522935,
+      "ABAexact": true,
+      "errors": []
+    }
+  ],
+  "scenes": 240,
+  "ABA": 1440,
+  "threshold": 0.8,
+  "delta": 24,
+  "scope": "Disjoint72+120+48 scene runs, same source. Six arenas, five looks, two densities, H1/H3, two viewports. Summarized state equality, not global snapshot."
+}
