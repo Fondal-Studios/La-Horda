@@ -1,0 +1,51 @@
+{
+  "base": "769ee72c47eeadc05e8729a69388e1bc8c3c6c2a",
+  "order": "Newest group introduced together 1c54126bda669dd02f90cba5b374d966452a57ea; reverse register order Aelith/Morveth/Brakk/Veyra/Solciju; first three reserved by PR232",
+  "overlapAvoided": {
+    "pr": 232,
+    "head": "9b2a73794ba97b942743a11542474cd099d6ce4f",
+    "champions": [
+      "aelith",
+      "morveth",
+      "brakk",
+      "tanque",
+      "guerrero"
+    ]
+  },
+  "selected": "veyra",
+  "existingPreserved": true,
+  "observedDefects": [
+    "hit reuses attack frames",
+    "cast/ultimate/death directions reuse frontal clips",
+    "left mirror reverses asymmetric bandage/armor",
+    "codex dual curved blades not consistently present in existing poses"
+  ],
+  "references": [
+    {
+      "path": "assets/ui/codex/champions/veyra.png",
+      "sha256": "d89d8328b31d3bfa57b42a7a8a4f3c7c06d9446f122d38f4f7a59c9a7c9b76ed"
+    },
+    {
+      "path": "assets/sprites/champions/veyra/atlas.png",
+      "sha256": "5a2db8a7b217ac2c157e9f2dab1712e659ca38a89a96a7b873a871bb1363ce0c"
+    },
+    {
+      "path": "js/champions/ascension/art.js",
+      "sha256": "4c6c2cce51fc0ea2394beae56d882bbc639a2384c17a3ad9fa7f1eeb51853f2d"
+    },
+    {
+      "path": "js/champions/quality-five/register.js",
+      "sha256": "965a065ea71210ca24ceb2a0c7fa255460284e6eb7cf3cfa236b719127c6517a"
+    },
+    {
+      "path": "docs/art-audit/combat-inventory/hero-runtime.json",
+      "sha256": "b9a16b55e7b47d7b381305ae838538f60cd5c1e75f87c2260e8c5daab5fab9f0"
+    }
+  ],
+  "overlapRecheck": {
+    "pr232Head": "f8abf22abe7e4897a9985c5ecec17a78becba420",
+    "files": 118,
+    "veyraOrSolcijuPaths": 0,
+    "main": "769ee72c47eeadc05e8729a69388e1bc8c3c6c2a"
+  }
+}

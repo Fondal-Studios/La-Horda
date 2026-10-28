@@ -1,0 +1,19 @@
+{
+  "state": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "component": "veyra.cuerpo.codex",
+  "nominalSourceCells": 112,
+  "approvedFrames": 0,
+  "installedPNG": 0,
+  "runtimeChanged": false,
+  "reference": "assets/ui/codex/champions/veyra.png",
+  "visualReview": {
+    "down": "Canon hair/dual blades recognizable, but attack/cast swords invade adjacent nominal cells; idle subtle, ultimate order differs request.",
+    "right": "Second attempt truly profile in most rows; ultimate turns frontal, blades partly occluded/disappear in cast. First right attempt actually frontal: rejected.",
+    "up": "Rear recognizable, braid/swords retained in many poses; irregular layout, margins/clipping and altered stance require review.",
+    "left": "Left-oriented sheet has visible red soft surround and inconsistent frontal ultimate. Must remove residue with source edit, not threshold blindly.",
+    "all": "Partial alpha in all four sources, nonuniform grids/pivots and native density unapproved. No animation, renderer candidate, arena/skins/relay/ArtPASS claim."
+  },
+  "next": "Correct whole Veyra direction/state set from preserved sources: consistent anatomy/blades, genuine profile ultimate, clean alpha and cell gutters; extract only verified cells, retain original atlases. Then native-scale temporal/renderer/skins/arenas/relay/gates. No next new champion to avoid closing this block."
+}

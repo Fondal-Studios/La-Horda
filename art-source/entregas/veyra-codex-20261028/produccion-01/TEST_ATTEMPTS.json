@@ -1,0 +1,24 @@
+{
+  "new": [
+    "Final224 baseline drawHeroBody/drawFallenHero samples across2viewports,7states,4directions,4times;0pageerrors. Each sample clears its cell and draws with actual alpha; native contact sheets retain only sample1 via canvas image data. No candidate injected, no real arena/relay claim.",
+    "SOURCE_GATE reads4sources/112nominalcells; partialalphaFAIL for all,0approvedframes."
+  ],
+  "rejected": [
+    "Right attempt01 produced front view, preserved.",
+    "Baseline initial screenshots stretched by global canvas CSS; kept attempt-before-*-css-stretch.png, not native-scale evidence. Inline canvas pixel dimensions corrected and rerun.",
+    "Left sheet visible soft red surround despite transparent request, preserved as source-left.png FIX.",
+    "Second locator screenshot retained native dimensions but viewport clipping hid bottom rows; final contact sheets exported directly from actual renderer canvas (no pixel editing), not screenshots of live combat.",
+    "Hidden probe alpha was overridden by drawFallenHero, causing superposed death phases; final harness clears each sample and retains sample1 explicitly."
+  ],
+  "historical": [
+    "HISTORICAL_RUNTIME copied exact prior main audit base63cd; not new tests."
+  ],
+  "notRun": [
+    "Candidate renderer",
+    "atlas extraction",
+    "candidate relay",
+    "candidate skins/arena/contact",
+    "ArtPASS",
+    "publication"
+  ]
+}

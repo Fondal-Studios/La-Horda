@@ -1,0 +1,29 @@
+{
+  "priorityFromUser": "2026-10-28 immediate: sprites at Codex quality, newest champions first, avoid concurrent owner work",
+  "confirmedNewestGroupCommit": "1c54126bda669dd02f90cba5b374d966452a57ea",
+  "tieBreak": "reverse registration order (same introduction commit)",
+  "queue": [
+    {
+      "champion": "aelith",
+      "action": "skip active PR232 body work"
+    },
+    {
+      "champion": "morveth",
+      "action": "skip active PR232 body work"
+    },
+    {
+      "champion": "brakk",
+      "action": "skip active PR232 body work"
+    },
+    {
+      "champion": "veyra",
+      "action": "current production"
+    },
+    {
+      "champion": "solciju",
+      "action": "audit next after closing Veyra"
+    }
+  ],
+  "olderRoster": "Chronology and actual gaps remain to audit; no global completion claim.",
+  "nano": "User concurrently producing body sources; existing PR231 VFX preserved, current body priority supersedes previous next-Nano instruction."
+}

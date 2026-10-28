@@ -1,0 +1,40 @@
+{
+  "generator": "built-in image_gen",
+  "referenceSha256": "d89d8328b31d3bfa57b42a7a8a4f3c7c06d9446f122d38f4f7a59c9a7c9b76ed",
+  "prompts": "prompts.json",
+  "reproduction": "Prompts preserve generation intent, not deterministic rerender. Original PNGs are immutable source; analysis reproducible via python tools/art/audit-veyra-sources.py; baseline via node tools/art/audit-veyra-codex.js. No atlas installed.",
+  "layoutRequested": {
+    "directions": [
+      "down",
+      "right",
+      "up",
+      "left"
+    ],
+    "states": [
+      "idle",
+      "walk",
+      "attack",
+      "cast",
+      "ultimate",
+      "hit",
+      "death"
+    ],
+    "phasesPerState": 4,
+    "perSheet": [
+      4,
+      7
+    ]
+  },
+  "nominalLayoutNotCertified": true,
+  "originalRuntime": "assets/sprites/champions/veyra/atlas.png",
+  "sourceFiles": [
+    "source-down.png",
+    "source-right.png",
+    "source-up.png",
+    "source-left.png"
+  ],
+  "attempts": [
+    "attempt-right-rejected-front.png"
+  ],
+  "leftBackgroundAttempt": "source-left.png (same original bytes; no duplicate required)"
+}

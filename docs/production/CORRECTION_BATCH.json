@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-10-26",
+  "updated": "2026-10-28",
   "policy": "Alternate production batches and complete closures; current-main integration is not visual approval.",
   "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
   "pendingVerificationNotFailures": [
@@ -13,7 +13,7 @@
   ],
   "nextProduction": "Auditar Iria B151/B152/B153 en main/PR/fuentes/consumidores frescos; preservar coloso Ilkan B147..B150 existente, no declarar aprobación integral. No repetir Ilkan ni talleres anteriores mientras falten primeras pasadas.",
   "groupedCorrectionCheckpoint": "art-source/entregas/brakk-kit-20261022/validacion-11/CHECKPOINT.md",
-  "next": "CIERRE Nahir: six arenas/all looks/densities,80%delta24,real full renderer/performance/parity; inspect remote-origin visibility before ArtGate and exactSHA CI. No new kit.",
+  "next": "CIERRE Nano: resolver densidad vertical y material H1 en build evolucionado sin limitar alcance/daño ni cambiar engine compartido; usar source-candidate y firmas actuales, no volver a producir otro kit. Evaluar resolución/caché local por ancho real y separación de H3/firmas si un componente consigue ArtPASS. Reusar hooks/lifecycle/relay por alcance; revalidar composición afectada y exactCI antes merge.",
   "validation07": {
     "checkpoint": "art-source/entregas/brakk-kit-20261022/validacion-07/CHECKPOINT.md",
     "relay": "20/22 reproduced under CPU6; state-observation fixture corrected22/22; no runtimechanges",
@@ -2614,19 +2614,138 @@
           "diagnosis": "Grouped closure: culling bounds, shared stroke budget per live reflection, full6arena contact/relay/renderer; pendingexactCI."
         }
       ]
+    },
+    {
+      "component": "A-FX-nano_gm-h1/impact-contract",
+      "block": "B181",
+      "frame": "existing native beam8/decal10 phases",
+      "source": "js/champions/vfx-b/nano_gm.js",
+      "sha256": "39d022e12f3b4ce75a4cac6023a6ccc6ec8b5f6c08de70fe1b7f63419275d775",
+      "state": "EN_CORRECCION",
+      "diagnosis": "Firmas de Sentencia/Inversión distinguidas; desaparecen baldosas repetidas con franja completa. H1 normal aún lee rígido y en evolución amplifica píxel vertical18px a cinta gruesa; ArtFIX. H3 y firmas tienen pruebas técnicas pero no aprobación independiente separada. H2/UF/alas legadas conservadas.",
+      "action": "CIERRE Nano: resolver densidad vertical y material H1 en build evolucionado sin limitar alcance/daño ni cambiar engine compartido; usar source-candidate y firmas actuales, no volver a producir otro kit. Evaluar resolución/caché local por ancho real y separación de H3/firmas si un componente consigue ArtPASS. Reusar hooks/lifecycle/relay por alcance; revalidar composición afectada y exactCI antes merge.",
+      "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-04/CHECKPOINT.md",
+      "history": [
+        {
+          "date": "2026-10-28",
+          "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-01/CHECKPOINT.md",
+          "sourceSha256": "52b5a828a2d81be38f40f6ce503fb74a5883e771dc6955b96167c78838f429b5",
+          "state": "EN_CORRECCION",
+          "diagnosis": "El cuerpo ya queda visible. H1 aún lee como barra rígida; H3 tiene una media luna clara dominante sobre arco oscuro discreto y firma genérica. Monstruo añade alas legadas dominantes. No ArtPASS por contacto numérico.",
+          "action": "Grouped composition, real rejected teleport and radius>520 adapter; continue full580 composition/relay/lifecycle/ArtGate/exactCI."
+        },
+        {
+          "date": "2026-10-28",
+          "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-02/CHECKPOINT.md",
+          "sourceSha256": "9b59de03d5df41edecaba9c096bec5ca8541dc47cdcd428d9858d29cc2e09f07",
+          "state": "EN_CORRECCION",
+          "diagnosis": "H3 elimina la media luna dominante; los sellos abiertos dejan leer dueño y destino. H1 todavía parece cable regular y en Regente queda entre capas legadas de H2. H3 comparte esa receta de trayectoria: no hay variante aislada aprobada. En580 el efecto es visible pero el extremo del cuadro puede quedar fuera de cámara al encadenar saltos. No aprobar el conjunto por contacto numérico.",
+          "action": "Material H1/H3 grouping remains FIX; extreme composition/relay and lifecycle completed. Do not repeat those without relevant source change."
+        },
+        {
+          "date": "2026-10-28",
+          "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-03/CHECKPOINT.md",
+          "sourceSha256": "7ad5802bc3ccc3dfba8da0bf81ddb7c59849eed0d066516a2f549ab4e0875506",
+          "state": "EN_CORRECCION",
+          "diagnosis": "Cable continuo eliminado; ahora trazos separados aún repetitivos/discretos. Impacto H1 mantiene centro abierto. Jerarquía de lanzamiento con estrella y alas legadas no resuelta; no ArtPASS. Dos hojas12vistas +2fullframes revisados; no revisión desktop completa/todaslooks/seisarenas.",
+          "action": "Resolver composición local de firma normal Nano H1/H3 junto trayectoria, preservar H2/UF/alas existentes. No nuevo kit. Gates visuales/bordes y CIexacto antes merge."
+        },
+        {
+          "date": "2026-10-28",
+          "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-04/CHECKPOINT.md",
+          "sourceSha256": "39d022e12f3b4ce75a4cac6023a6ccc6ec8b5f6c08de70fe1b7f63419275d775",
+          "state": "EN_CORRECCION",
+          "diagnosis": "Firmas de Sentencia/Inversión distinguidas; desaparecen baldosas repetidas con franja completa. H1 normal aún lee rígido y en evolución amplifica píxel vertical18px a cinta gruesa; ArtFIX. H3 y firmas tienen pruebas técnicas pero no aprobación independiente separada. H2/UF/alas legadas conservadas.",
+          "action": "CIERRE Nano: resolver densidad vertical y material H1 en build evolucionado sin limitar alcance/daño ni cambiar engine compartido; usar source-candidate y firmas actuales, no volver a producir otro kit. Evaluar resolución/caché local por ancho real y separación de H3/firmas si un componente consigue ArtPASS. Reusar hooks/lifecycle/relay por alcance; revalidar composición afectada y exactCI antes merge."
+        }
+      ]
+    },
+    {
+      "component": "A-FX-nano_gm-h3/impact-contract",
+      "block": "B183",
+      "frame": "existing native beam8/decal10 phases",
+      "source": "js/champions/vfx-b/nano_gm.js",
+      "sha256": "39d022e12f3b4ce75a4cac6023a6ccc6ec8b5f6c08de70fe1b7f63419275d775",
+      "state": "EN_CORRECCION",
+      "diagnosis": "Firmas de Sentencia/Inversión distinguidas; desaparecen baldosas repetidas con franja completa. H1 normal aún lee rígido y en evolución amplifica píxel vertical18px a cinta gruesa; ArtFIX. H3 y firmas tienen pruebas técnicas pero no aprobación independiente separada. H2/UF/alas legadas conservadas.",
+      "action": "CIERRE Nano: resolver densidad vertical y material H1 en build evolucionado sin limitar alcance/daño ni cambiar engine compartido; usar source-candidate y firmas actuales, no volver a producir otro kit. Evaluar resolución/caché local por ancho real y separación de H3/firmas si un componente consigue ArtPASS. Reusar hooks/lifecycle/relay por alcance; revalidar composición afectada y exactCI antes merge.",
+      "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-04/CHECKPOINT.md",
+      "history": [
+        {
+          "date": "2026-10-28",
+          "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-01/CHECKPOINT.md",
+          "sourceSha256": "52b5a828a2d81be38f40f6ce503fb74a5883e771dc6955b96167c78838f429b5",
+          "state": "EN_CORRECCION",
+          "diagnosis": "El cuerpo ya queda visible. H1 aún lee como barra rígida; H3 tiene una media luna clara dominante sobre arco oscuro discreto y firma genérica. Monstruo añade alas legadas dominantes. No ArtPASS por contacto numérico.",
+          "action": "Grouped composition, real rejected teleport and radius>520 adapter; continue full580 composition/relay/lifecycle/ArtGate/exactCI."
+        },
+        {
+          "date": "2026-10-28",
+          "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-02/CHECKPOINT.md",
+          "sourceSha256": "9b59de03d5df41edecaba9c096bec5ca8541dc47cdcd428d9858d29cc2e09f07",
+          "state": "EN_CORRECCION",
+          "diagnosis": "H3 elimina la media luna dominante; los sellos abiertos dejan leer dueño y destino. H1 todavía parece cable regular y en Regente queda entre capas legadas de H2. H3 comparte esa receta de trayectoria: no hay variante aislada aprobada. En580 el efecto es visible pero el extremo del cuadro puede quedar fuera de cámara al encadenar saltos. No aprobar el conjunto por contacto numérico.",
+          "action": "Material H1/H3 grouping remains FIX; extreme composition/relay and lifecycle completed. Do not repeat those without relevant source change."
+        },
+        {
+          "date": "2026-10-28",
+          "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-03/CHECKPOINT.md",
+          "sourceSha256": "7ad5802bc3ccc3dfba8da0bf81ddb7c59849eed0d066516a2f549ab4e0875506",
+          "state": "EN_CORRECCION",
+          "diagnosis": "Cable continuo eliminado; ahora trazos separados aún repetitivos/discretos. Impacto H1 mantiene centro abierto. Jerarquía de lanzamiento con estrella y alas legadas no resuelta; no ArtPASS. Dos hojas12vistas +2fullframes revisados; no revisión desktop completa/todaslooks/seisarenas.",
+          "action": "Resolver composición local de firma normal Nano H1/H3 junto trayectoria, preservar H2/UF/alas existentes. No nuevo kit. Gates visuales/bordes y CIexacto antes merge."
+        },
+        {
+          "date": "2026-10-28",
+          "checkpoint": "art-source/entregas/nano-gm-kit-20261026/cierre-04/CHECKPOINT.md",
+          "sourceSha256": "39d022e12f3b4ce75a4cac6023a6ccc6ec8b5f6c08de70fe1b7f63419275d775",
+          "state": "EN_CORRECCION",
+          "diagnosis": "Firmas de Sentencia/Inversión distinguidas; desaparecen baldosas repetidas con franja completa. H1 normal aún lee rígido y en evolución amplifica píxel vertical18px a cinta gruesa; ArtFIX. H3 y firmas tienen pruebas técnicas pero no aprobación independiente separada. H2/UF/alas legadas conservadas.",
+          "action": "CIERRE Nano: resolver densidad vertical y material H1 en build evolucionado sin limitar alcance/daño ni cambiar engine compartido; usar source-candidate y firmas actuales, no volver a producir otro kit. Evaluar resolución/caché local por ancho real y separación de H3/firmas si un componente consigue ArtPASS. Reusar hooks/lifecycle/relay por alcance; revalidar composición afectada y exactCI antes merge."
+        }
+      ]
+    },
+    {
+      "component": "veyra.cuerpo.codex",
+      "block": null,
+      "blockReason": "New explicit Codex body direction; old plan only contains Veyra VFX/icon followups S079/S080, which remain untouched.",
+      "frame": "4directions ×7states ×4nominal phases",
+      "source": "art-source/entregas/veyra-codex-20261028/produccion-01/source-down.png",
+      "sha256": "34880a12169a95a8dd657c4ec4431422bc79c97f8d0ef30caa750b86a8c52228",
+      "state": "EN_CORRECCION",
+      "diagnosis": {
+        "down": "Canon hair/dual blades recognizable, but attack/cast swords invade adjacent nominal cells; idle subtle, ultimate order differs request.",
+        "right": "Second attempt truly profile in most rows; ultimate turns frontal, blades partly occluded/disappear in cast. First right attempt actually frontal: rejected.",
+        "up": "Rear recognizable, braid/swords retained in many poses; irregular layout, margins/clipping and altered stance require review.",
+        "left": "Left-oriented sheet has visible red soft surround and inconsistent frontal ultimate. Must remove residue with source edit, not threshold blindly.",
+        "all": "Partial alpha in all four sources, nonuniform grids/pivots and native density unapproved. No animation, renderer candidate, arena/skins/relay/ArtPASS claim."
+      },
+      "action": "Correct whole Veyra direction/state set from preserved sources: consistent anatomy/blades, genuine profile ultimate, clean alpha and cell gutters; extract only verified cells, retain original atlases. Then native-scale temporal/renderer/skins/arenas/relay/gates. No next new champion to avoid closing this block.",
+      "checkpoint": "art-source/entregas/veyra-codex-20261028/produccion-01/CHECKPOINT.md",
+      "sources": [
+        {
+          "path": "art-source/entregas/veyra-codex-20261028/produccion-01/source-down.png",
+          "sha256": "34880a12169a95a8dd657c4ec4431422bc79c97f8d0ef30caa750b86a8c52228"
+        },
+        {
+          "path": "art-source/entregas/veyra-codex-20261028/produccion-01/source-right.png",
+          "sha256": "ccb4d756559b3731b7322b4cc6ce2499c205fda6c5356bdc3259a679676b614a"
+        },
+        {
+          "path": "art-source/entregas/veyra-codex-20261028/produccion-01/source-up.png",
+          "sha256": "c69471da8f74aa3232c56b66ef73fe9777ea9a39cc5be48eb26ea7a674a2177c"
+        },
+        {
+          "path": "art-source/entregas/veyra-codex-20261028/produccion-01/source-left.png",
+          "sha256": "77163c7d0e3ab6d36ae077561a6d1c2367c593cfd456432be031c0b4c6278bf3"
+        }
+      ]
     }
   ],
   "latestProduction": {
-    "scope": "Musashi H3 thousand-cuts only",
-    "state": "EN_CORRECCION",
-    "preservedEntries": 61,
-    "totalEntries": 62,
-    "checkpoint": "art-source/entregas/musashi-kit-20261026/area-01/CHECKPOINT.md"
+    "component": "veyra.cuerpo.codex",
+    "checkpoint": "art-source/entregas/veyra-codex-20261028/produccion-01/CHECKPOINT.md",
+    "state": "EN_CORRECCION"
   },
-  "latestClosure": {
-    "component": "A-FX-nahir-h3/long-echo",
-    "state": "VALIDADO",
-    "checkpoint": "art-source/entregas/nahir-echo-20261026/cierre-01/CHECKPOINT.md",
-    "pending": "exactSHA CI and merge/publication"
-  }
+  "latestClosure": "art-source/entregas/nano-gm-kit-20261026/cierre-04/CHECKPOINT.md"
 }
