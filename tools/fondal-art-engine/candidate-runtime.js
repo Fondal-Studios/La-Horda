@@ -25,7 +25,7 @@ async function main(){
     for(const ext of ['png','webp'])await page.route(url=>url.pathname.endsWith('/'+target.png.replace(/\.png$/,'.'+ext)),route=>route.fulfill({contentType:'image/'+ext,body:fs.readFileSync(path.join(dir,'atlas.'+ext))}));
    }
    await H.goto(page,site.url+'/index.html?lazy=0');
-   await page.waitForFunction(()=>typeof ENEMY_ATLAS_PACK!=='undefined'&&ENEMY_ATLAS_PACK.angel_corrompido?.ready&&typeof startRun==='function',null,{timeout:120000});
+   await page.waitForFunction(()=>typeof ENEMY_ATLAS_PACK!=='undefined'&&ENEMY_ATLAS_PACK.angel_corrompido?.ready&&typeof DIR_ATLASES!=='undefined'&&DIR_ATLASES.tanque?.animAtlas.ready()&&typeof startRun==='function',null,{timeout:120000});
    const result=await page.evaluate(()=>{
     buildSprites();selectedClass='tanque';currentArena='infernal';startRun(1);state='paused';
     const key='angel_corrompido',P=ENEMY_ATLAS_PACK[key],e=spawnEnemy(key,false,false);enemies=enemies.filter(x=>x!==e);
@@ -44,7 +44,7 @@ async function main(){
       const x=(index%cols)*cell,y=Math.floor(index/cols)*cell;g.fillStyle='#302c36';g.fillRect(x,y,cell,cell);g.drawImage(scratch,x,y);
       g.fillStyle='#fff';g.font='14px monospace';g.fillText(clip+' '+n,x+8,y+18);
       // Caballero at the same world scale, not resized to fit the boss cell.
-      ctx=g;const hero=makeHero('tanque',true,x+45,y+cell-25);hero.fx=1;hero.fy=0;drawHeroBody(hero,hero.scale,false,false);
+      ctx=g;g.save();g.translate(x+65,y+cell-25);g.imageSmoothingEnabled=false;const hero=makeHero('tanque',true,0,0);hero.fx=1;hero.fy=0;hero.moving=false;hero.animT=0;hero._codexSkin='';drawHeroBody(hero,hero.scale,false,false);g.restore();
       index++;
      }
     }finally{ctx=saved;}

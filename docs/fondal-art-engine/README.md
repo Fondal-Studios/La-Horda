@@ -2,7 +2,7 @@
 
 **Proyecto incompleto. No fusionar como fábrica terminada ni desplegar los candidatos sin gate visual/runtime.**
 
-El PR #232 incorpora producción real con el motor nativo `pixrig`, un adaptador HTTP para ComfyUI **local**, validación PNG y por fotograma, conservación de contratos de animación, promoción con recibos ligados a hashes y producción aislada en Actions. El proveedor ComfyUI tiene pruebas de protocolo con un servidor de prueba; **no se ha ejecutado un modelo de IA real**. El generador nativo sí se ejecutó: 14 atlas / 656 cuadros reproducidos, idénticos en píxeles al juego actual. Un candidato adicional del Ángel Corrompido recupera geometría cortada mediante overscan y pasa el gate técnico; todavía no está instalado.
+El PR #232 incorpora producción real con el motor nativo `pixrig`, un adaptador HTTP para ComfyUI **local**, validación PNG y por fotograma, conservación de contratos de animación, promoción con recibos ligados a hashes y producción aislada en Actions. El proveedor ComfyUI tiene pruebas de protocolo con un servidor de prueba; **no se ha ejecutado un modelo de IA real**. El generador nativo sí se ejecutó: 14 atlas / 656 cuadros reproducidos, idénticos en píxeles al juego actual. Un candidato adicional del Ángel Corrompido recupera geometría cortada mediante overscan y pasa el gate técnico; se integró en la rama del PR con PNG/WebP, metadatos y rollback tras revisión visual y prueba del renderer real. No está desplegado en main.
 
 ## Uso
 

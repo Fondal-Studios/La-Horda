@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "candidate_sha256": "6fad6808022a2c6f88052ed15b7f53db1259546f3bd3b650bb9c9d7c79b8ccc0",
+  "baseline_sha256": "53eec6180a1faf6da623e9359b96c3b56a58ef856efc5558acff5f8e885c4db2",
+  "registry_sha256": "dcd6434f28649094a403e85a45cbd84d97da7f895130b1c1944fb832d8f16a15",
+  "errors": [],
+  "scope": "real enemy renderer with candidate HTTP overlay; not deployed, not full encounter or device certification",
+  "baseline": {
+    "checks": 41,
+    "issues": [],
+    "mechanicsUnchanged": true,
+    "mechanical": "{\"hp\":1800,\"maxHp\":1800,\"radius\":46,\"dmg\":25,\"speed\":58,\"base\":{\"name\":\"Ángel Corrompido\",\"rank\":\"jefe\",\"hp\":2000,\"dmg\":30,\"speed\":58,\"radius\":46,\"xp\":0,\"gold\":0,\"scale\":6.4,\"color\":\"#8a1a2a\",\"ranged\":true,\"range\":340,\"projSpeed\":300,\"dropsItem\":false,\"visualAlias\":\"mago_hielo_cristal\"}}",
+    "meta": {
+      "w": 128,
+      "h": 128,
+      "refH": 113,
+      "anchor": 0.9766,
+      "hMul": 4.4
+    },
+    "image": [
+      1024,
+      640
+    ],
+    "p95DrawMs": 0.19999999995343387
+  },
+  "candidate": {
+    "checks": 41,
+    "issues": [],
+    "mechanicsUnchanged": true,
+    "mechanical": "{\"hp\":1800,\"maxHp\":1800,\"radius\":46,\"dmg\":25,\"speed\":58,\"base\":{\"name\":\"Ángel Corrompido\",\"rank\":\"jefe\",\"hp\":2000,\"dmg\":30,\"speed\":58,\"radius\":46,\"xp\":0,\"gold\":0,\"scale\":6.4,\"color\":\"#8a1a2a\",\"ranged\":true,\"range\":340,\"projSpeed\":300,\"dropsItem\":false,\"visualAlias\":\"mago_hielo_cristal\"}}",
+    "meta": {
+      "w": 192,
+      "h": 192,
+      "refH": 113,
+      "anchor": 0.8177333333333333,
+      "hMul": 4.4
+    },
+    "image": [
+      1536,
+      960
+    ],
+    "p95DrawMs": 0.10000000009313226
+  }
+}

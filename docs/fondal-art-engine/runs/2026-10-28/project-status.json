@@ -1,0 +1,23 @@
+{
+  "schema": "fondal-art-engine.project-status.v1",
+  "date": "2026-10-28",
+  "project_status": "IN_PROGRESS",
+  "api_cost_usd": 0,
+  "native_atlases_regenerated": 14,
+  "native_frames_regenerated": 656,
+  "additional_corrected_atlases": 1,
+  "additional_corrected_frames": 36,
+  "integrated_in_feature_branch": 1,
+  "integrated_in_main": 0,
+  "deployed": 0,
+  "native_recipes_still_needing_border_review": 13,
+  "historical_rows": 1061,
+  "historical_counts": {
+    "PATH_EXISTS": 141,
+    "PATH_MISSING": 478,
+    "UNVERIFIED": 442
+  },
+  "scope_warning": "Historical counts are not a reconciled production backlog; missing designs across all families remain unquantified",
+  "ai_model_executed": false,
+  "scheduled_production_active_on_default_branch": false
+}

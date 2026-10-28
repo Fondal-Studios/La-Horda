@@ -94,3 +94,24 @@ test('promotion requires current evidence and publishes PNG/WebP as a pair, keep
  assert.equal(JSON.parse(fs.readFileSync(path.join(dir,'rollback/manifest.json'))).length,2);
  assert(!fs.existsSync(path.join(root,'.fondal-promotion.lock')));
 });
+test('qualified overscan promotion changes only target grid and publishes matching companion',t=>{
+ const repo=path.resolve(__dirname,'../..'),source=path.join(repo,'docs/fondal-art-engine/runs/2026-10-28/angel-overscan');
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'fondal-overscan-promotion-'));t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
+ const provider=JSON.parse(fs.readFileSync(path.join(source,'provider.json'))),target=provider.target;
+ for(const [i,f] of [target.png,target.png.replace(/\.png$/,'.webp'),target.meta_file].entries()){fs.mkdirSync(path.dirname(path.join(root,f)),{recursive:true});const historical=path.join(source,'rollback',String(i));fs.copyFileSync(fs.existsSync(historical)?historical:path.join(repo,f),path.join(root,f));}
+ const dir=path.join(root,'candidate');fs.mkdirSync(dir);for(const file of ['atlas.png','atlas.webp','provider.json'])fs.copyFileSync(path.join(source,file),path.join(dir,file));
+ const before=fs.readFileSync(path.join(root,target.meta_file),'utf8');const original=JSON.parse(before.match(/const PIXRIG_ATLAS = (\{.*\});/s)[1]);
+ const d=validateCandidate(dir,root);assert(d.geometryPreservedOverscan);assert(d.gate.ok);
+ fs.writeFileSync(path.join(root,'visual.txt'),'unit-test fixture, not production approval');
+ fs.writeFileSync(path.join(root,'runtime.json'),JSON.stringify({status:'PASS',candidate_sha256:d.candidate_sha256}));
+ const review={status:'PASS',reviewed_by:'unit-test',candidate_sha256:d.candidate_sha256,baseline_sha256:d.baseline_sha256,registry_sha256:d.registry_sha256};
+ for(const [field,file] of [['visual_evidence','visual.txt'],['runtime_evidence','runtime.json']])review[field]={path:file,sha256:sha(fs.readFileSync(path.join(root,file)))};
+ const reviewFile=path.join(root,'review.json');fs.writeFileSync(reviewFile,JSON.stringify(review));
+ assert.equal(promote(dir,reviewFile,{root}).status,'INTEGRATED');
+ const after=JSON.parse(fs.readFileSync(path.join(root,target.meta_file),'utf8').match(/const PIXRIG_ATLAS = (\{.*\});/s)[1]);
+ assert.deepEqual(after[target.key].meta,provider.meta);
+ for(const key of Object.keys(original))if(key!==target.key)assert.deepEqual(after[key],original[key]);
+ assert.equal(after[target.key].meta.refH,original[target.key].meta.refH);
+ assert.equal(after[target.key].meta.hMul,original[target.key].meta.hMul);
+ assert.equal(JSON.parse(fs.readFileSync(path.join(dir,'rollback/manifest.json'))).length,3);
+});

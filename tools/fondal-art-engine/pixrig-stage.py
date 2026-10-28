@@ -68,7 +68,7 @@ def main():
         text = (ROOT / target['meta_file']).read_text()
         baseline = json.loads(re.search(r'const\s+' + target['const'] + r'\s*=\s*(\{.*?\});', text, re.S)[1])[target['key']]['meta']
         meta['refH'] = baseline['refH']
-        meta['anchor'] = (baseline['anchor'] * baseline['h'] + a.padding) / h
+        meta['anchor'] = (info['anchor'] * mod.R.H + a.padding) / h
     sources = {str(f.relative_to(ROOT)): hashlib.sha256(f.read_bytes()).hexdigest()
                for f in sorted(RIGS.glob('*.py'))}
     receipt = dict(provider='pixrig', recipe=a.recipe, frame_count=len(frames),

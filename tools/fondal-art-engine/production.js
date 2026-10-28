@@ -122,7 +122,7 @@ function promote(dir,reviewFile,{root=ROOT}={}){
   for(const w of writes)if(fs.existsSync(w.target+'.fondal-tmp'))fs.unlinkSync(w.target+'.fondal-tmp');
   fs.rmdirSync(lock);
  }
- const result={...current,status:'INTEGRATED',installed:true,reviewed_by:review.reviewed_by,rollback:backup};
+ const result={...current,status:'INTEGRATED',installed:true,reviewed_by:review.reviewed_by,rollback:path.relative(dir,backup)};
  fs.writeFileSync(path.join(dir,'integration.json'),JSON.stringify(result,null,2)+'\n');return result;
 }
 async function main(args){
