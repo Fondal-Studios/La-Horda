@@ -9,7 +9,8 @@ const ROOT=path.resolve(__dirname,'../..'),OUT=path.join(ROOT,'docs/art-gate/gue
    const c=await browser.newContext({viewport:{width:844,height:390},serviceWorkers:'block'});await c.route('**/*',r=>new URL(r.request().url()).origin===site.url?r.continue():r.abort());
    const p=await c.newPage();p.on('pageerror',e=>report.errors.push(e.message));await p.goto(site.url+'/?lazy=1');await p.waitForFunction(()=>typeof drawFallenHero==='function'&&typeof netDecode==='function');
    await p.evaluate(()=>{loop=function(){};for(const [id,d] of Object.entries({...SET_SKINS,...CROMA_SKINS}))if(d.champ==='guerrero')skinDefOf(id);assetsStartGroup('ch:guerrero');});
-   await p.waitForFunction(()=>GUERRERO_IMG_READY&&CHAMP_PACK.guerrero_death?.ready&&Object.entries({...SET_SKINS,...CROMA_SKINS}).filter(([id,d])=>d.champ==='guerrero').every(([id])=>{const d=skinDefOf(id);return !d.packs||Object.values(d.packs).every(k=>CHAMP_PACK[k]?.ready);}));pages.push(p);
+   await p.waitForFunction(()=>GUERRERO_IMG_READY&&CHAMP_PACK.guerrero_death?.ready&&Object.entries({...SET_SKINS,...CROMA_SKINS}).filter(([id,d])=>d.champ==='guerrero').every(([id])=>{const d=skinDefOf(id);return !d.packs||Object.values(d.packs).every(k=>CHAMP_PACK[k]?.ready);}));/* Exercise retained legacy fallback; Codex upgrade is covered by codex-runtime.js. */
+   await p.evaluate(()=>{delete CHAMP_PACK.codex_tanque;delete CHAMP_PACK.codex_guerrero;});pages.push(p);
   }
   const r=await pages[0].evaluate(()=>{
    selectedClass='guerrero';currentArena='bosque';lobbyAllies=[];netMatch=null;divinaMode=false;startRun(1);state='paused';window.ART_GATE_NO_VFX=true;
