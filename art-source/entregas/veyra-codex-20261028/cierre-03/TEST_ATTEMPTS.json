@@ -1,0 +1,59 @@
+{
+  "new": [
+    {
+      "id": "sequence01-load",
+      "result": "FAIL",
+      "reason": "assetsStartRest absent on fresh main; guarded call in harness only",
+      "evidence": "attempt01/ATTEMPT01.log"
+    },
+    {
+      "id": "sequence01",
+      "cases": 32,
+      "ABA": 32,
+      "errors": 0,
+      "nativeFailedFrames": 11,
+      "result": "TECHNICAL_PASS_ART_FIX",
+      "evidence": "attempt01/SEQUENCE_NATIVE.json"
+    },
+    {
+      "id": "up-source01",
+      "result": "REJECTED",
+      "reason": "Braid direction and bilateral white wraps contradict Codex",
+      "source": "source-up-hit-03.png"
+    },
+    {
+      "id": "source-search",
+      "result": "FAIL_READ",
+      "reason": "rg js/champions/pack* nonexistent glob; resolved to js/rendering/champion-sprites.js",
+      "scope": "read-only; no source mutation"
+    },
+    {
+      "id": "sequence02",
+      "cases": 64,
+      "ABA": 64,
+      "errors": 0,
+      "nativeFailedFrames": 6,
+      "result": "TECHNICAL_PASS_ART_FIX",
+      "evidence": "SEQUENCE_NATIVE.json"
+    },
+    {
+      "id": "reexport02",
+      "result": "PASS",
+      "outputs": 5,
+      "evidence": "REEXPORT.json"
+    }
+  ],
+  "historical": [
+    "Closure02 renderer 448 samples and 12 casts+4 UF not rerun, do not certify current pixels.",
+    "Parent48da18checksSUCCESS, no certification of closure03 head."
+  ],
+  "notRun": [
+    "Full-scene paired arena/looks matrix",
+    "roster gate current candidate",
+    "relay",
+    "global state parity",
+    "performance",
+    "integral ArtGate"
+  ],
+  "thresholdsUnchanged": true
+}

@@ -1,0 +1,2496 @@
+{
+  "main": "df7fe4b891c440a6fd31675a2c65434d77912628",
+  "pr233": "48da55ee8679943718f008c1e1cf332227fe9ff3",
+  "pr232": "e00ba6b0854ae6ca8871da24c84c7206d7c3f23a",
+  "pr232Files": [
+    {
+      "path": ".github/workflows/fondal-art-engine.yml",
+      "sha": "7745e8d5d54f6f0c39e1e5e1201461bd961742e2"
+    },
+    {
+      "path": ".github/workflows/fondal-browser.yml",
+      "sha": "c9e51e65922108a81fb45330641d89287f7c8de7"
+    },
+    {
+      "path": ".github/workflows/tanque-death.yml",
+      "sha": "2888558ca0bb7d5ae449b93b59507de32d6fdd3e"
+    },
+    {
+      "path": "art-source/fondal/aelith-codex/gate.json",
+      "sha": "053b813ca3111c6357b22c29a21ee756474a1a0a"
+    },
+    {
+      "path": "art-source/fondal/aelith-codex/provenance.json",
+      "sha": "9efbdc982766b4893342794c2923cf94d29d8573"
+    },
+    {
+      "path": "art-source/fondal/aelith-codex/source.json",
+      "sha": "ce77307f2c5f69e0e2dc278e7e13fc467b98fc44"
+    },
+    {
+      "path": "art-source/fondal/aelith-codex/source.png",
+      "sha": "1f5e31386645be76c80446f7362b1a11ae5f2b3c"
+    },
+    {
+      "path": "art-source/fondal/brakk-codex/provenance.json",
+      "sha": "777c0753b6a1d0be516c17dd67c9904e14db5663"
+    },
+    {
+      "path": "art-source/fondal/brakk-codex/source.png",
+      "sha": "0e133059b9b3857392ad99c8e6d1f199b0ae9284"
+    },
+    {
+      "path": "art-source/fondal/guerrero-codex/gate.json",
+      "sha": "18fd22b366ca01cd65ef1ad045d51016522b0391"
+    },
+    {
+      "path": "art-source/fondal/guerrero-codex/provenance.json",
+      "sha": "ff9ecc6d794225bc1613612a6473e4a90838a1a3"
+    },
+    {
+      "path": "art-source/fondal/guerrero-codex/source.json",
+      "sha": "eedb65458a69bf3ebb83651e1704452b86aff9e1"
+    },
+    {
+      "path": "art-source/fondal/guerrero-codex/source.png",
+      "sha": "a7d95fc386c2209ce774284f41fef30128aeab04"
+    },
+    {
+      "path": "art-source/fondal/morveth-codex/provenance.json",
+      "sha": "ac805cbeff0baf43de882835475ff40a77429af4"
+    },
+    {
+      "path": "art-source/fondal/morveth-codex/source.json",
+      "sha": "0b2e7f22d2739e2570ea8bf5dbcf2922169590f1"
+    },
+    {
+      "path": "art-source/fondal/morveth-codex/source.png",
+      "sha": "9b7d8a4a2ec62e25894acd0489714148977c77c6"
+    },
+    {
+      "path": "art-source/fondal/tanque-codex/gate.json",
+      "sha": "43de6b02ddd30b056a764f25855d5d9a345e5736"
+    },
+    {
+      "path": "art-source/fondal/tanque-codex/provenance.json",
+      "sha": "6ce637467c46a1c6bd733a4d090c3d6768ec6573"
+    },
+    {
+      "path": "art-source/fondal/tanque-codex/source.json",
+      "sha": "e8088790d8ed982687ef9ec371bc1e0a5990f82e"
+    },
+    {
+      "path": "art-source/fondal/tanque-codex/source.png",
+      "sha": "066ba0e789a4636d71b0b2e00fca626f8bdb5d5e"
+    },
+    {
+      "path": "assets/sprites/bosses/infernal/hechicero/angel/atlas.png",
+      "sha": "c60c6cd1297d8796a4bf4c16cd6f758b73824a95"
+    },
+    {
+      "path": "assets/sprites/bosses/infernal/hechicero/angel/atlas.webp",
+      "sha": "6b8f2540f0d2732f123d4a8c4de572232d83e221"
+    },
+    {
+      "path": "assets/sprites/champions/aelith/codex-v1/atlas.png",
+      "sha": "4bee0dd79de311e3ec2cb2c4f019abcc192459d9"
+    },
+    {
+      "path": "assets/sprites/champions/aelith/codex-v1/preview.png",
+      "sha": "fb0d0e16ad63bf358c8b2d2f7e952dff81f19b41"
+    },
+    {
+      "path": "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+      "sha": "6275bf08f5af94d3ee7d477aee9ba0eb45083e5f"
+    },
+    {
+      "path": "assets/sprites/champions/guerrero/codex-v1/preview.png",
+      "sha": "ca1f4401b317ec9cbc1162d9e82285d904203fef"
+    },
+    {
+      "path": "assets/sprites/champions/tanque/codex-v1/atlas.png",
+      "sha": "a9d945b6fdc4bba58399a8a0abcb03e654888ddd"
+    },
+    {
+      "path": "assets/sprites/champions/tanque/codex-v1/preview.png",
+      "sha": "be7b946ac841aca92687c7c5d5c07827094b769d"
+    },
+    {
+      "path": "deploy/art-factory/bfl-trial.json",
+      "sha": "e36f6cf806164d09687b949b60370784b5d5fa45"
+    },
+    {
+      "path": "deploy/art-factory/fondal-art-worker.service",
+      "sha": "30ba8f098d7ed7b726e4d65e586d7cc40df6d4a5"
+    },
+    {
+      "path": "deploy/art-factory/worker.env.example",
+      "sha": "46c04b0a7dcadf2f0a6af9b287fa78eb89048d1e"
+    },
+    {
+      "path": "docs/art-gate/roster-gate.json",
+      "sha": "eda59a6e1d6c567311a43250f332b190b6756f18"
+    },
+    {
+      "path": "docs/art-gate/roster-sheet.png",
+      "sha": "78fe7cfce4ef196ad788907add72ba231433b6c1"
+    },
+    {
+      "path": "docs/fondal-art-engine/BFL-TRIAL.md",
+      "sha": "c0ed9c34be71aa1cae5f06d9e3791cff496e5e5f"
+    },
+    {
+      "path": "docs/fondal-art-engine/COMMAND-WORKER.md",
+      "sha": "542a01235813334916b8e35c42f60f754c389b30"
+    },
+    {
+      "path": "docs/fondal-art-engine/OPERATIONS.md",
+      "sha": "e2aa3237bfeebe3beb78664ea4b17220d50ebe3f"
+    },
+    {
+      "path": "docs/fondal-art-engine/README.md",
+      "sha": "d81506cba9ca5f30c9cc5ae8625fea1c77323c21"
+    },
+    {
+      "path": "docs/fondal-art-engine/RESULTS.md",
+      "sha": "535b4b7e5129019f250d593f62f10c2a3d713b4d"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/angel-overscan/atlas.png",
+      "sha": "c60c6cd1297d8796a4bf4c16cd6f758b73824a95"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/angel-overscan/atlas.webp",
+      "sha": "6b8f2540f0d2732f123d4a8c4de572232d83e221"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/angel-overscan/contact.png",
+      "sha": "022cfa7f41ee89ca37b89b6b46132383218f1922"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/angel-overscan/delivery.json",
+      "sha": "240afefebd1667bdbcf1a898f58fa45828e9d55d"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/angel-overscan/integration.json",
+      "sha": "d38779c84b40ff8b26e27d6db0ffe8f10ba45a64"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/angel-overscan/provider.json",
+      "sha": "3ef88a6c2193105043bf7527b6802c232493b72a"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/angel-overscan/review.json",
+      "sha": "5420a5bd6382a71c4114a8a8d47a196dbdf7f349"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/angel-overscan/rollback/0",
+      "sha": "ca3044fbd447411f5a49bf37b734b1a42f0214fe"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/angel-overscan/rollback/1",
+      "sha": "48fa83e57e5c740ec3432a3fb4e88fed71d0116d"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/angel-overscan/rollback/2",
+      "sha": "ebc160c79bcc8ba8de1b9b5752500bc5b6430db7"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/angel-overscan/rollback/manifest.json",
+      "sha": "e29098c03681552648aeb0e913bf801fe1cd2fb7"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/audit-summary.json",
+      "sha": "59cf4f21b908a1acf46344d9303e25851eae84bf"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/ci-6daf620/baseline.png",
+      "sha": "3ba3a8c89f6ede4de61e43a9421808464fc89be8"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/ci-6daf620/candidate.png",
+      "sha": "cfe18fb1c35a00d96a8eda742bce6b22cdf621f4"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/ci-6daf620/provenance.json",
+      "sha": "0cdb372d9d15f3c46b1f25b05686ad2a668b12bd"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/ci-6daf620/runtime.json",
+      "sha": "7d834de1807b01228169852d4ad7c49baa958298"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/ci-6daf620/visual-review.json",
+      "sha": "d491134f58a158b39ac5e56fa06acc4d3fa752f7"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/ci-9673b55/game.png",
+      "sha": "4cf3c1db1cec24199e8c487788e3f40ddc29b399"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/ci-9673b55/provenance.json",
+      "sha": "0e0061374ac0ed3c4fb788d25925d70ef86ae87b"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/ci-9673b55/runtime.json",
+      "sha": "382e4e1084ee550b77c335658c5d0761795b5b59"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/codex-block-01/champions.png",
+      "sha": "05af14abde149877e02d245583537b0e0526e052"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/codex-block-01/game.png",
+      "sha": "87fbc5b8c247f33691da096d416eb058f72b5cfe"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/codex-block-01/runtime.json",
+      "sha": "bfc79753eff1062bf5287f5501cb461d49763e7a"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/codex-block-02/calibration.json",
+      "sha": "7ef17156450fac280f5bb4041f83e3649fef836e"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/codex-block-02/champions.png",
+      "sha": "317981678b891d358f41273517f275d40538dc1b"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/codex-block-02/game.png",
+      "sha": "ab6935b7e0e9d4c97d510b40b8dd09a83d3bb4e1"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/codex-block-02/native-density.json",
+      "sha": "d356434b0437d10bf421c4c4d110f261effc48f2"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/codex-block-02/runtime.json",
+      "sha": "2fa8175ef92feb6e06cf31fc158e3a4f0b317a2a"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/command-worker/http-proof.json",
+      "sha": "51c25f5dd91062bf8e7a0cd709847e3aa4e1daa7"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/command-worker/ui-proof.json",
+      "sha": "7b9eedea2c0471a43bb9e42afe9108d849786d60"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/native-batch.json",
+      "sha": "d62eda0dad574690dcc782e3d8652f83c71985bd"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/project-status.json",
+      "sha": "4c088c0577fd1cfe3ba101c7316ac53371ea5377"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/repair-trial/README.md",
+      "sha": "86319b8a824385f21411b9d921d935d9762db131"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/repair-trial/champion-quality.json",
+      "sha": "ca6edb1b26869755b4789e8f4cd06ad999fcc782"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/repair-trial/consumer-audit.json",
+      "sha": "5929947d617097277a82b2284c003d00cd8db049"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/repair-trial/native-production.json",
+      "sha": "8ed167373919c7da990e4ae8815de95cc207bcb7"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/repair-trial/recent-champions.json",
+      "sha": "e02db2a38204c7728086921ca7870d5edf3603ba"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/repair-trial/runtime.json",
+      "sha": "1ef70a6467e0a2566b1357cd82e7eb1a8e4ec3f9"
+    },
+    {
+      "path": "docs/fondal-art-engine/runs/2026-10-28/runtime-local.json",
+      "sha": "8b28689b66e1e09856a19f08b654dbafb5afe773"
+    },
+    {
+      "path": "index.html",
+      "sha": "fb003bec7352fb4c5bf08ab5493539d4917572fa"
+    },
+    {
+      "path": "js/assets/codex-champion-meta.js",
+      "sha": "012f8a28f85eba3f2096f6a2d106fb14e6cfb670"
+    },
+    {
+      "path": "js/assets/pixrig-meta.js",
+      "sha": "a1baa15bfcee3f46d1fe7c9667d7bef91b7bcb85"
+    },
+    {
+      "path": "js/rendering/champion-art-normalize.js",
+      "sha": "9cc2afdebc6cb8e1100a96697eefc9e9c4228347"
+    },
+    {
+      "path": "js/rendering/champion-sprites.js",
+      "sha": "003e5304b90e447a9df233f17cba21902119ca88"
+    },
+    {
+      "path": "js/rendering/codex-champions.js",
+      "sha": "bc4431587e464f1b85444850618338a74eaeffeb"
+    },
+    {
+      "path": "js/rendering/entities.js",
+      "sha": "6bb6225c06f6963edf75597ec70cad4c114d0bd2"
+    },
+    {
+      "path": "js/ui/admin.js",
+      "sha": "5bdcb30ee0ea500dbe9e9a6b4f1d5d950d15491a"
+    },
+    {
+      "path": "js/ui/art-factory.js",
+      "sha": "280d8eaf0ad081a33818f7915c85830fd42f77b5"
+    },
+    {
+      "path": "server/accounts.js",
+      "sha": "cc1c4434e218fa50cc2d0ab89d0c3ab4e90f3ed1"
+    },
+    {
+      "path": "server/art-factory.js",
+      "sha": "d11d7e60115e01089a44eac07e26bab4f1f794ec"
+    },
+    {
+      "path": "server/test-art-factory.js",
+      "sha": "44885ba6d5d03ebf7a5aefaa61ff665bc46d199b"
+    },
+    {
+      "path": "tools/art/check-authored-density.js",
+      "sha": "5f14d7581472dcb2fe6bd95cbf2261454a6425ce"
+    },
+    {
+      "path": "tools/art/check-guerrero-death.js",
+      "sha": "c2633669b79418565e537ac9ccd6f65eb58a9f9a"
+    },
+    {
+      "path": "tools/art/check-tanque-death.js",
+      "sha": "7387d853dc1f508cdf4d9e81b0d799fa0c112e79"
+    },
+    {
+      "path": "tools/art/check-tanque-hurt.js",
+      "sha": "dd5f76aa687d144b23c4b88e4e3cff32462cd54b"
+    },
+    {
+      "path": "tools/art/pixrig/pixrig.py",
+      "sha": "cce806c0452df3d687e955fcbcd0ae003761dce1"
+    },
+    {
+      "path": "tools/art/roster_gate.js",
+      "sha": "ad9266c9318f9b25872151cc6cf13b9a58a53597"
+    },
+    {
+      "path": "tools/factory/import-authored-sheet.py",
+      "sha": "06cc12657a2b1812d601e0558a1ba8f076d6c78c"
+    },
+    {
+      "path": "tools/fondal-art-engine/audit.js",
+      "sha": "1c560159b0b984485faf5100d1cd88acfb08cd69"
+    },
+    {
+      "path": "tools/fondal-art-engine/bfl-provider.js",
+      "sha": "233aee491234725420c5be7f97eb75054a099c7c"
+    },
+    {
+      "path": "tools/fondal-art-engine/bfl-provider.test.js",
+      "sha": "12c644f5ad30966c5f4e08c4d9b1be232b239fd0"
+    },
+    {
+      "path": "tools/fondal-art-engine/bfl-repair.js",
+      "sha": "9ab4508c77c2611fcd1a97da51bdfd7660cdefe3"
+    },
+    {
+      "path": "tools/fondal-art-engine/bfl-trial.js",
+      "sha": "336fe5aedc34c2fc6a9834f5582fa0089237a0cb"
+    },
+    {
+      "path": "tools/fondal-art-engine/candidate-runtime.js",
+      "sha": "672ed509d11323f895f1b72521d1ad4fed2bb70f"
+    },
+    {
+      "path": "tools/fondal-art-engine/ci-pilot.js",
+      "sha": "6fe7b93d517dac0664f4ef440c3a5e739671ada0"
+    },
+    {
+      "path": "tools/fondal-art-engine/codex-calibrate.js",
+      "sha": "fe326d07e155b6eebb08446cf742aa6564044743"
+    },
+    {
+      "path": "tools/fondal-art-engine/codex-runtime.js",
+      "sha": "f29f7476580b3ef1927393cdd01d02bcb49e110e"
+    },
+    {
+      "path": "tools/fondal-art-engine/codex-sheet.js",
+      "sha": "25794faa4acf9a37a43afd0234bd09ebcb9de7e7"
+    },
+    {
+      "path": "tools/fondal-art-engine/command.js",
+      "sha": "4b2b088fa062d8d8e27f90a7a6f1d0828c150bb4"
+    },
+    {
+      "path": "tools/fondal-art-engine/inventory.js",
+      "sha": "3853afee7c4619e10203e66c09b293021f7e826a"
+    },
+    {
+      "path": "tools/fondal-art-engine/inventory.test.js",
+      "sha": "80bfa719d88677e4406445d97c0ae82aae085147"
+    },
+    {
+      "path": "tools/fondal-art-engine/normalize.py",
+      "sha": "fea4df49172d9b9128f08e400447cca5c2b35599"
+    },
+    {
+      "path": "tools/fondal-art-engine/pipeline.js",
+      "sha": "88c077e49e4f79f12144b50aa34d9dbea161b6aa"
+    },
+    {
+      "path": "tools/fondal-art-engine/pipeline.test.js",
+      "sha": "186f82cf2873d84846fd58493fa6aaa3d3dc2efe"
+    },
+    {
+      "path": "tools/fondal-art-engine/pixel-gate.js",
+      "sha": "f8de1cb44f918761f35140c01c99a1c7d9c797f1"
+    },
+    {
+      "path": "tools/fondal-art-engine/pixel-gate.test.js",
+      "sha": "e28bfb993ea9d69796c272698efe7610a18c8c5c"
+    },
+    {
+      "path": "tools/fondal-art-engine/pixrig-stage.py",
+      "sha": "b052311c3dd99c8eaf131f420c6ded4ed0f5c7ec"
+    },
+    {
+      "path": "tools/fondal-art-engine/png-gate.js",
+      "sha": "9ef9a137ea9d8e12528ffc61a3f8ea21ccab3e4e"
+    },
+    {
+      "path": "tools/fondal-art-engine/png-gate.test.js",
+      "sha": "214bd2e6556069d0573ddec33be8776bf6e13f57"
+    },
+    {
+      "path": "tools/fondal-art-engine/production.js",
+      "sha": "d688316207e0858e538230ce18d3054ffdb3a35c"
+    },
+    {
+      "path": "tools/fondal-art-engine/production.test.js",
+      "sha": "e61c763c6b8a68b4e354b0b031125bfa3b05e20e"
+    },
+    {
+      "path": "tools/fondal-art-engine/providers.js",
+      "sha": "b32d9ef0f9cfb3184d6e8d927154f32e79e991d2"
+    },
+    {
+      "path": "tools/fondal-art-engine/quality-audit.js",
+      "sha": "2d8bc09ebc422905aa497eb048bfcfb1ab081785"
+    },
+    {
+      "path": "tools/fondal-art-engine/queue.test.js",
+      "sha": "b2d11d4333b067edd2df8b67d2b31d38a66e7bb4"
+    },
+    {
+      "path": "tools/fondal-art-engine/recipes.json",
+      "sha": "7a4c3f9606cc3f384bd1f09542a25df3ae87e755"
+    },
+    {
+      "path": "tools/fondal-art-engine/requirements.txt",
+      "sha": "969f184a939e047a8e8bce94c85ece8fd1aeee20"
+    },
+    {
+      "path": "tools/fondal-art-engine/runtime-check.js",
+      "sha": "fecc5208778ed6cc26ae1c26559cb827d0e0018b"
+    },
+    {
+      "path": "tools/fondal-art-engine/sheet-gate.js",
+      "sha": "9dc6de03de9418c3f3805c7c2b3409f4f015ee1e"
+    },
+    {
+      "path": "tools/fondal-art-engine/test_overscan.py",
+      "sha": "7ddb23e84db0c32f3e9f95620f4aec945435b6ad"
+    },
+    {
+      "path": "tools/fondal-art-engine/ui-runtime.js",
+      "sha": "59749b889fa49aa30a6e5611fa901e25586ed157"
+    },
+    {
+      "path": "tools/fondal-art-engine/validate-delivery.js",
+      "sha": "e27d0bb35b2e7f25061bd5419d1fdc45799a44c0"
+    },
+    {
+      "path": "tools/fondal-art-engine/validate-delivery.test.js",
+      "sha": "ef48af39bf0c1ad64f791cefad7330bc3f3846a3"
+    },
+    {
+      "path": "tools/fondal-art-engine/worker.js",
+      "sha": "af372e9f418dfbf5db50a32823877f4284787655"
+    }
+  ],
+  "pr232Advance": [
+    "deploy/art-factory/bfl-trial.json",
+    "docs/fondal-art-engine/BFL-TRIAL.md",
+    "tools/fondal-art-engine/bfl-provider.js",
+    "tools/fondal-art-engine/bfl-provider.test.js",
+    "tools/fondal-art-engine/bfl-repair.js",
+    "tools/fondal-art-engine/bfl-trial.js",
+    "tools/fondal-art-engine/providers.js",
+    "tools/fondal-art-engine/worker.js"
+  ],
+  "open": [
+    {
+      "number": 233,
+      "head": "48da55ee8679943718f008c1e1cf332227fe9ff3",
+      "draft": true
+    },
+    {
+      "number": 232,
+      "head": "e00ba6b0854ae6ca8871da24c84c7206d7c3f23a",
+      "draft": true
+    },
+    {
+      "number": 231,
+      "head": "be8a00eef0d3f8f86eb773a86711293037320c1d",
+      "draft": true
+    },
+    {
+      "number": 228,
+      "head": "f1d6c3c1d16d5cf8ce63dc3b2a968558c8f21b17",
+      "draft": false
+    },
+    {
+      "number": 92,
+      "head": "4fadf0656852cbcddb3007c0a2bc675e1c329c50",
+      "draft": false
+    },
+    {
+      "number": 90,
+      "head": "78ef0aee8518423ced97aa9f194894975ed13254",
+      "draft": false
+    }
+  ],
+  "branches": [
+    {
+      "name": "art/aelith-normal-kit-first-pass-20261022",
+      "commit": {
+        "sha": "6c5087d93c7c2d4fe08d57c992cb0cdb260114b6",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/6c5087d93c7c2d4fe08d57c992cb0cdb260114b6"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/aelith-ultimate-b007-20261022",
+      "commit": {
+        "sha": "e87a9b2a5f90a842cb4837070e81af98517131c1",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/e87a9b2a5f90a842cb4837070e81af98517131c1"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/aurelia-kit-first-pass-20261022",
+      "commit": {
+        "sha": "11657b767fdcc33ba9f034119fad32e9a343baf9",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/11657b767fdcc33ba9f034119fad32e9a343baf9"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/axiom-forcequit-first-pass-20261022",
+      "commit": {
+        "sha": "772ec7d8b40dcc5efc57d20b8b14e922f4ba9705",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/772ec7d8b40dcc5efc57d20b8b14e922f4ba9705"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/b000-plan-bloques-20261019",
+      "commit": {
+        "sha": "08fce9f04cef8df8c307818f5c6e33e128fcfb02",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/08fce9f04cef8df8c307818f5c6e33e128fcfb02"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/b001-soporte-verificado-20261019",
+      "commit": {
+        "sha": "4e9121ad63024858054f5ddb99f1be613d6b679f",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/4e9121ad63024858054f5ddb99f1be613d6b679f"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/b002-tanque-checkpoint-20261019",
+      "commit": {
+        "sha": "abb40756f98c32e10f201b71e28056bd271a01af",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/abb40756f98c32e10f201b71e28056bd271a01af"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/b003-guerrero-checkpoint-20261019",
+      "commit": {
+        "sha": "1cd21868bb682cc3d5388a38e7803d80da0c9aa6",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/1cd21868bb682cc3d5388a38e7803d80da0c9aa6"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/baltra-kit-first-pass-20261023",
+      "commit": {
+        "sha": "9da0c29fdfced827601f830102f7d5db0330f4bf",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/9da0c29fdfced827601f830102f7d5db0330f4bf"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/battlefield-complete",
+      "commit": {
+        "sha": "3ed9fe09f837437a9a7a4c93811e461bb86e5dd3",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/3ed9fe09f837437a9a7a4c93811e461bb86e5dd3"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/battlefield-recovery",
+      "commit": {
+        "sha": "a56972a3e83dbb3e2f7b9da7916d97db08da8da4",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/a56972a3e83dbb3e2f7b9da7916d97db08da8da4"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/brakk-kit-first-pass-20261022",
+      "commit": {
+        "sha": "9ca6215bd259a79fd8cef842874feb9c9ccc519c",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/9ca6215bd259a79fd8cef842874feb9c9ccc519c"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/brakk-normal-signatures-close-20261024",
+      "commit": {
+        "sha": "d1b174f005686e6d2303adc2dffe2558ea71533c",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/d1b174f005686e6d2303adc2dffe2558ea71533c"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/brasa-kit-first-pass-20261023",
+      "commit": {
+        "sha": "5f0c1e38453756deb4cd6ca4b17723355f44d3c1",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/5f0c1e38453756deb4cd6ca4b17723355f44d3c1"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/bront-redesign-first-pass-20261023",
+      "commit": {
+        "sha": "828ae0fd1a1ea269d6bef5a1b46e8596a6955191",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/828ae0fd1a1ea269d6bef5a1b46e8596a6955191"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/control-produccion-20261019",
+      "commit": {
+        "sha": "824a74b69c583e3dfaa32e1f94149dd26574aa46",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/824a74b69c583e3dfaa32e1f94149dd26574aa46"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/dariel-kit-first-pass-20261023",
+      "commit": {
+        "sha": "ec4f9fabd683452959a94798584606981ac40f9b",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/ec4f9fabd683452959a94798584606981ac40f9b"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/dariel-luthier-completion-20261020",
+      "commit": {
+        "sha": "751f73a07d3adcd3cacdabc25285f4d36a61bb71",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/751f73a07d3adcd3cacdabc25285f4d36a61bb71"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/eslabon-kit-first-pass-20261023",
+      "commit": {
+        "sha": "a9c2f653d9f4cc608bce8b62bf039683bfa1a477",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/a9c2f653d9f4cc608bce8b62bf039683bfa1a477"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/facu-gm-kit-first-pass-20261023",
+      "commit": {
+        "sha": "7aefceeb522025ba6da9abf390e1c5676ac17041",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/7aefceeb522025ba6da9abf390e1c5676ac17041"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/farolero-completion-20261020",
+      "commit": {
+        "sha": "2d89625c393787522cd78b6371914810dbaef37b",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/2d89625c393787522cd78b6371914810dbaef37b"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/farolero-kit-first-pass-20261023",
+      "commit": {
+        "sha": "0934416983b2ec4bf572a0e6b652498a900c3657",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/0934416983b2ec4bf572a0e6b652498a900c3657"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/farolero-native-v3-20261020",
+      "commit": {
+        "sha": "b76c2a35cbcf1fe0ec172d076cc1dfa4b6d2fc73",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/b76c2a35cbcf1fe0ec172d076cc1dfa4b6d2fc73"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/guerrero-death-20261021",
+      "commit": {
+        "sha": "23bfba7cd0e0aa53ae0e564e29befb3dad15a7f8",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/23bfba7cd0e0aa53ae0e564e29befb3dad15a7f8"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/guerrero-trap-integration-20261023",
+      "commit": {
+        "sha": "72674be6ad19c9792edb0baf7ff9e2e8228225ac",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/72674be6ad19c9792edb0baf7ff9e2e8228225ac"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/ilkan-buffs-first-pass-20261024",
+      "commit": {
+        "sha": "b0e03bd88d3624e3d4f1771737c3804ad2b13b85",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/b0e03bd88d3624e3d4f1771737c3804ad2b13b85"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/iria-kit-first-pass-20261024",
+      "commit": {
+        "sha": "b6e4ed0aecc0cd7ac7d4552549972f0dd78c24d5",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/b6e4ed0aecc0cd7ac7d4552549972f0dd78c24d5"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/khepri-candidates-first-pass-20261024",
+      "commit": {
+        "sha": "50448b61162bc82afaf826925ddc8b8552155696",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/50448b61162bc82afaf826925ddc8b8552155696"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/libertador-24poses-20261019",
+      "commit": {
+        "sha": "23ca20168f824db184121687861498af80f6d09a",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/23ca20168f824db184121687861498af80f6d09a"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/libertador-death-component-20261019",
+      "commit": {
+        "sha": "6f03e5542bb99ab595764231491fc05e32252f3c",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/6f03e5542bb99ab595764231491fc05e32252f3c"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/libertador-kit-first-pass-20261025",
+      "commit": {
+        "sha": "ad239fa32c8b3265de8305c5c7b3b81a8592e99d",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/ad239fa32c8b3265de8305c5c7b3b81a8592e99d"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/libertador-motion-20261020",
+      "commit": {
+        "sha": "70415ec5bd88304554642a93ccde35b726d90620",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/70415ec5bd88304554642a93ccde35b726d90620"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/mago-formation-integration-20261025",
+      "commit": {
+        "sha": "d731b5ee8398e854eb17282d4c2e1ac4986f0667",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/d731b5ee8398e854eb17282d4c2e1ac4986f0667"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/maura-kit-first-pass-20261025",
+      "commit": {
+        "sha": "e2111b1554f24ee55159302fb0472b6fa3f8c35d",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/e2111b1554f24ee55159302fb0472b6fa3f8c35d"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/morveth-kit-first-pass-20261022",
+      "commit": {
+        "sha": "326ab368fbafcb91c6714a5f01f66578b0bf04bc",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/326ab368fbafcb91c6714a5f01f66578b0bf04bc"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/morwen-normal-casts-20261025",
+      "commit": {
+        "sha": "801832cc284ec34b38933f09806f0e9de07061f0",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/801832cc284ec34b38933f09806f0e9de07061f0"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/musashi-thousand-cuts-first-pass-20261026",
+      "commit": {
+        "sha": "ca77716c393fbc7af518789169ab83fa06757256",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/ca77716c393fbc7af518789169ab83fa06757256"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/myla-bubble-state-20261026",
+      "commit": {
+        "sha": "a5607c4fdc12b445edc899d92d3a3c0b9d199759",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/a5607c4fdc12b445edc899d92d3a3c0b9d199759"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/myla-cast-back-20261022",
+      "commit": {
+        "sha": "7391b1c2818e5a6427691401c0acb23381eac8a1",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/7391b1c2818e5a6427691401c0acb23381eac8a1"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/myla-production-20261022",
+      "commit": {
+        "sha": "664a568bad536aafe585c33d6b04fe924d74afc7",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/664a568bad536aafe585c33d6b04fe924d74afc7"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/nahir-long-echo-20261026",
+      "commit": {
+        "sha": "3220882b8182cacc44bd1e15da7d95a296e6f0c1",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/3220882b8182cacc44bd1e15da7d95a296e6f0c1"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/nano-impact-contract-20261026",
+      "commit": {
+        "sha": "be8a00eef0d3f8f86eb773a86711293037320c1d",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/be8a00eef0d3f8f86eb773a86711293037320c1d"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/necro-colossus",
+      "commit": {
+        "sha": "a1b14410f65dbf8625109e342477dd71e6a05f9b",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/a1b14410f65dbf8625109e342477dd71e6a05f9b"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/p0-revisiones-20261019",
+      "commit": {
+        "sha": "36a301caf644545a0ce13c898e09bf254b63509b",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/36a301caf644545a0ce13c898e09bf254b63509b"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/production-blocks-20261021",
+      "commit": {
+        "sha": "6ad86710cee465ec336be7b087d34182bb965fe4",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/6ad86710cee465ec336be7b087d34182bb965fe4"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/quality-five-item-icons-20261020",
+      "commit": {
+        "sha": "23aa479c9420eb641e9eb132d6a79f3a140b72a7",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/23aa479c9420eb641e9eb132d6a79f3a140b72a7"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/recent-abilities-solciju-20261022",
+      "commit": {
+        "sha": "0c51a940ddc726c0d045d72d66d819cc557fab6c",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/0c51a940ddc726c0d045d72d66d819cc557fab6c"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/roster-expansion-candidates",
+      "commit": {
+        "sha": "8349f3a54741d1c8f0856054320b71e6e68e6473",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/8349f3a54741d1c8f0856054320b71e6e68e6473"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/skill-icon-exports-20261020",
+      "commit": {
+        "sha": "52a44a5f495261d00fa10652fc8f6aa8d68dfb55",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/52a44a5f495261d00fa10652fc8f6aa8d68dfb55"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/solciju-toast-close-20261024",
+      "commit": {
+        "sha": "9d98fa602039a9f972f9b167dafaf16165bd46cd",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/9d98fa602039a9f972f9b167dafaf16165bd46cd"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/soporte-12poses-20261019",
+      "commit": {
+        "sha": "bfd0d4769bff503f1f124f7e9feb72f1705d855e",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/bfd0d4769bff503f1f124f7e9feb72f1705d855e"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/tanque-36poses-revision-01",
+      "commit": {
+        "sha": "ae87c1697c7d925e4a1e98b59b836e7ef70ef174",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/ae87c1697c7d925e4a1e98b59b836e7ef70ef174"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/tanque-death-20261020",
+      "commit": {
+        "sha": "4882c863932d7fe7fb7b6632a157cf327f7aecfb",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/4882c863932d7fe7fb7b6632a157cf327f7aecfb"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/veyra-codex-body-20261028",
+      "commit": {
+        "sha": "48da55ee8679943718f008c1e1cf332227fe9ff3",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/48da55ee8679943718f008c1e1cf332227fe9ff3"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/veyra-kit-first-pass-20261022",
+      "commit": {
+        "sha": "2b98dc02a9eb2d0b18c547b37ac0d4dd813c5ccd",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/2b98dc02a9eb2d0b18c547b37ac0d4dd813c5ccd"
+      },
+      "protected": false
+    },
+    {
+      "name": "art/veyra-pact-launch-close-20261025",
+      "commit": {
+        "sha": "70cafb63e11005d5dea1239f591ac24635070732",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/70cafb63e11005d5dea1239f591ac24635070732"
+      },
+      "protected": false
+    },
+    {
+      "name": "art-workshop/account-environment-fixture-20261019",
+      "commit": {
+        "sha": "65fef46538a3b2b7499bcef498fb85f48ad83849",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/65fef46538a3b2b7499bcef498fb85f48ad83849"
+      },
+      "protected": false
+    },
+    {
+      "name": "art-workshop/elyra-shared-atlas-20261019",
+      "commit": {
+        "sha": "c208d5eee02d018c9511f9362ba7052a75b42146",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/c208d5eee02d018c9511f9362ba7052a75b42146"
+      },
+      "protected": false
+    },
+    {
+      "name": "art-workshop/libertador-back-check-20261019",
+      "commit": {
+        "sha": "d75d6a18c9abc861969e3780e182525cd205fafd",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/d75d6a18c9abc861969e3780e182525cd205fafd"
+      },
+      "protected": false
+    },
+    {
+      "name": "art-workshop/libertador-back-v1-20261019",
+      "commit": {
+        "sha": "8fe9338f7b891d252f5cdb447583f562ef27d36e",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/8fe9338f7b891d252f5cdb447583f562ef27d36e"
+      },
+      "protected": false
+    },
+    {
+      "name": "art-workshop/offline-book-regressions-20261019",
+      "commit": {
+        "sha": "263279c8eb6253fd6d74f2f9e3e62ca960a8b896",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/263279c8eb6253fd6d74f2f9e3e62ca960a8b896"
+      },
+      "protected": false
+    },
+    {
+      "name": "art-workshop/soporte-crystal-atlas-20261019",
+      "commit": {
+        "sha": "1cf2a225748bba892317062ad74f9588b955029b",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/1cf2a225748bba892317062ad74f9588b955029b"
+      },
+      "protected": false
+    },
+    {
+      "name": "art-workshop/soporte-frame11-v3-20261019",
+      "commit": {
+        "sha": "5efed3fbc236a625cb2e1bd4da5d02012211a213",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/5efed3fbc236a625cb2e1bd4da5d02012211a213"
+      },
+      "protected": false
+    },
+    {
+      "name": "art-workshop/soporte-master-preview-20261019",
+      "commit": {
+        "sha": "b5925c52b84a9bf88f85090dc4ba222cfcbe03fb",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/b5925c52b84a9bf88f85090dc4ba222cfcbe03fb"
+      },
+      "protected": false
+    },
+    {
+      "name": "art-workshop/soporte-normalize-20261019",
+      "commit": {
+        "sha": "38e70f10646e28b9682fe19cf80f4f53282240e2",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/38e70f10646e28b9682fe19cf80f4f53282240e2"
+      },
+      "protected": false
+    },
+    {
+      "name": "art-workshop/soporte-v3-evidence-20261019",
+      "commit": {
+        "sha": "31d6be2b61db8a6a212c4a954387c101c30c5736",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/31d6be2b61db8a6a212c4a954387c101c30c5736"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/ability-gate-audit-20261009",
+      "commit": {
+        "sha": "16cc6e56e55f8a99867df6892424dfbd57931990",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/16cc6e56e55f8a99867df6892424dfbd57931990"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/alfa-nivel40-todos-mapas",
+      "commit": {
+        "sha": "558e5b0f7de2b232d9a92b75045fe7e259149783",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/558e5b0f7de2b232d9a92b75045fe7e259149783"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/art-candidate-audit-20261019",
+      "commit": {
+        "sha": "5feaf4bfb3e62a318aaf469e8bc12df0e92fe524",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/5feaf4bfb3e62a318aaf469e8bc12df0e92fe524"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/art-icon-integrations-20261019",
+      "commit": {
+        "sha": "7ef0be3f61ba9507a4bfc426d5e2851f0843cda3",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/7ef0be3f61ba9507a4bfc426d5e2851f0843cda3"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/art-manifest-native-fixes-20261019",
+      "commit": {
+        "sha": "aa54f021f539250b4532c4886cacd90aa05c7f80",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/aa54f021f539250b4532c4886cacd90aa05c7f80"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/assets-production-reconcile-20261019",
+      "commit": {
+        "sha": "31c4afb10a3ffb30a7ec72df9090add66bf31678",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/31c4afb10a3ffb30a7ec72df9090add66bf31678"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/atlas-runtime-contract-20261019",
+      "commit": {
+        "sha": "11365bbec7b87c79096b7af844c1623041c2ce45",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/11365bbec7b87c79096b7af844c1623041c2ce45"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/audio-rng-isolation",
+      "commit": {
+        "sha": "be604757e1700e34cb851c938d89a4627a58b7e8",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/be604757e1700e34cb851c938d89a4627a58b7e8"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/authored-sheet-factory-20261012",
+      "commit": {
+        "sha": "0ded4205dad5df397cd1d827a16ac08e58973616",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/0ded4205dad5df397cd1d827a16ac08e58973616"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/brasa-abyssal-skin-20261019",
+      "commit": {
+        "sha": "1f8b3e764ca40744a4f71e5305f31172903aa59b",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/1f8b3e764ca40744a4f71e5305f31172903aa59b"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/cinco-portadores-auditados",
+      "commit": {
+        "sha": "241825cdb5dce59db96d0eb24f41fce33f1f28f5",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/241825cdb5dce59db96d0eb24f41fce33f1f28f5"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/cloud-owner-recovery",
+      "commit": {
+        "sha": "207386077efd1c33c6f4e305c7cea11154dc25f0",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/207386077efd1c33c6f4e305c7cea11154dc25f0"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/crystal-wars-autoaim",
+      "commit": {
+        "sha": "18985e93b36629a2364352e272b6e8df705f42b8",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/18985e93b36629a2364352e272b6e8df705f42b8"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/crystal-wars-pace",
+      "commit": {
+        "sha": "7669d0b6b63f8e48717fa72142cb1ab2d6c1a0fa",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/7669d0b6b63f8e48717fa72142cb1ab2d6c1a0fa"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/elyra-rework-start-screen",
+      "commit": {
+        "sha": "909ebf05919ebe083d32937031e46fa1f6abab49",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/909ebf05919ebe083d32937031e46fa1f6abab49"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/factory-hardening-20261009",
+      "commit": {
+        "sha": "8f038afe0509dc9cd2a6e597e7fa8eadbb131814",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/8f038afe0509dc9cd2a6e597e7fa8eadbb131814"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/factory-pose-heads",
+      "commit": {
+        "sha": "3bccb72d5c9852b5b56949049951b22c9c1df724",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/3bccb72d5c9852b5b56949049951b22c9c1df724"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/five-champion-art-workshop",
+      "commit": {
+        "sha": "dccb23b8a7ce457a7f64a7a267bf9c4f0894ff30",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/dccb23b8a7ce457a7f64a7a267bf9c4f0894ff30"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/four-cosmetics-20261019",
+      "commit": {
+        "sha": "d4c98c99d76400b444e878955513539dd659876a",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/d4c98c99d76400b444e878955513539dd659876a"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/myla-yogur-balance",
+      "commit": {
+        "sha": "3132d84064747b03dd82687258a8e80daaec580f",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/3132d84064747b03dd82687258a8e80daaec580f"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/nano-transformation-render-20261009",
+      "commit": {
+        "sha": "1f9ded80ec6440b6defab8e72ea2b5c4d55a2f38",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/1f9ded80ec6440b6defab8e72ea2b5c4d55a2f38"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/ocho-skins-completas",
+      "commit": {
+        "sha": "dc9a12f3ab84c44140dc426d737e18340e0dcb57",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/dc9a12f3ab84c44140dc426d737e18340e0dcb57"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/quality-five-vfx-validation-20261019",
+      "commit": {
+        "sha": "b86b3370ed2c7ecf24947460c677ffd981c87d2a",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/b86b3370ed2c7ecf24947460c677ffd981c87d2a"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/quality-operation-20261009",
+      "commit": {
+        "sha": "d8e32c6f68c322cd06ba48ef39c26aa5579a328b",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/d8e32c6f68c322cd06ba48ef39c26aa5579a328b"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/quick-play-fixture-20261019",
+      "commit": {
+        "sha": "fc07cb78a85f36c2ffec4a56ac6ab5ae2156901e",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/fc07cb78a85f36c2ffec4a56ac6ab5ae2156901e"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/soporte-atlas-integration-20261019",
+      "commit": {
+        "sha": "31ee3348662a373b9debf8a58e853ddb0a0b806f",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/31ee3348662a373b9debf8a58e853ddb0a0b806f"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/soporte-frame11-v3-20261019",
+      "commit": {
+        "sha": "a0f8fdf8491817ad90c6acf026a09182b978812e",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/a0f8fdf8491817ad90c6acf026a09182b978812e"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/soporte-v3-production-evidence-20261019",
+      "commit": {
+        "sha": "dd4a2486432a186d5109054d9a0c5a87a7057055",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/dd4a2486432a186d5109054d9a0c5a87a7057055"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/talent-gate-level40-20261009",
+      "commit": {
+        "sha": "bf45a3e3e6f2fcff887719c73fdb8350a77a401f",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/bf45a3e3e6f2fcff887719c73fdb8350a77a401f"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/talent-gate-migration-20261009",
+      "commit": {
+        "sha": "94e381c957da32a16df117bf8839100cbdd2e47f",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/94e381c957da32a16df117bf8839100cbdd2e47f"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/verify-art-pr155-20261019",
+      "commit": {
+        "sha": "f062f75d9cd7665811e94e80449198eb3aaaf76b",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/f062f75d9cd7665811e94e80449198eb3aaaf76b"
+      },
+      "protected": false
+    },
+    {
+      "name": "chatgpt/visible-owner-entry",
+      "commit": {
+        "sha": "b749c8f692145f6d2c5eb6121d51da32ca38815c",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/b749c8f692145f6d2c5eb6121d51da32ca38815c"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/accesibilidad-cuentas-tienda",
+      "commit": {
+        "sha": "380e524ea591cb7b5204b448359952b3d61fcbbb",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/380e524ea591cb7b5204b448359952b3d61fcbbb"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/anim-atlas-pilot",
+      "commit": {
+        "sha": "82ecc5d1ad5d7c9d8d0ec5395cf091887b4d5acd",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/82ecc5d1ad5d7c9d8d0ec5395cf091887b4d5acd"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/arreglos-menores",
+      "commit": {
+        "sha": "33abdeaa1ea9500af69e544c3d4a06bc16bca4fa",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/33abdeaa1ea9500af69e544c3d4a06bc16bca4fa"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/assets-faltantes-campeones",
+      "commit": {
+        "sha": "536cf2f2f702ac16ae452eb59ca943f2bdd42a43",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/536cf2f2f702ac16ae452eb59ca943f2bdd42a43"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/assets-faltantes-mundo",
+      "commit": {
+        "sha": "4cfcce003b3761e07298187fe88f659d193c2f82",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/4cfcce003b3761e07298187fe88f659d193c2f82"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/auditoria-adquisicion",
+      "commit": {
+        "sha": "e2f282b3b9247a41e6aa2b24deb459b055f8477b",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/e2f282b3b9247a41e6aa2b24deb459b055f8477b"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/balance-limpieza",
+      "commit": {
+        "sha": "43b57162f47768766e553fd9eadaf62aad954dc6",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/43b57162f47768766e553fd9eadaf62aad954dc6"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/bots-victoria",
+      "commit": {
+        "sha": "f12b0fd528045b745c9f04d003bdcc7dd2363951",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/f12b0fd528045b745c9f04d003bdcc7dd2363951"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/brasas-redefinicion",
+      "commit": {
+        "sha": "a69ac53c975120838c1dd2fb76a0994b0fa8dcc3",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/a69ac53c975120838c1dd2fb76a0994b0fa8dcc3"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/briefs-habilidades-a",
+      "commit": {
+        "sha": "3c3f6f1459a59ba8e6c064106cc9371265f8f7ce",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/3c3f6f1459a59ba8e6c064106cc9371265f8f7ce"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/briefs-habilidades-b",
+      "commit": {
+        "sha": "d4ff1a23ce3c14f4e3b334183bc99689207eaeb0",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/d4ff1a23ce3c14f4e3b334183bc99689207eaeb0"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/campeones-pendientes",
+      "commit": {
+        "sha": "9d496c951843750a375739e7b9178323c83e3d40",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/9d496c951843750a375739e7b9178323c83e3d40"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/champion-painter",
+      "commit": {
+        "sha": "7de3d270bdf4079164c26d8813a5149b550180c6",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/7de3d270bdf4079164c26d8813a5149b550180c6"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/checkpoint-nivel-5",
+      "commit": {
+        "sha": "8477c1c083f8e25759966143dc0e3beba756a724",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/8477c1c083f8e25759966143dc0e3beba756a724"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/ci-pruebas-nuevas",
+      "commit": {
+        "sha": "98bbe8372a2885f8991c8f6232e8c3d780071dfc",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/98bbe8372a2885f8991c8f6232e8c3d780071dfc"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/clanes",
+      "commit": {
+        "sha": "39ee2d8c10911adbec68a1d971e93ef4a0af22e1",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/39ee2d8c10911adbec68a1d971e93ef4a0af22e1"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/codex-unlock-progress",
+      "commit": {
+        "sha": "7394293c116ebecd9987ef339b82a623f42a2309",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/7394293c116ebecd9987ef339b82a623f42a2309"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/codice-narrativo",
+      "commit": {
+        "sha": "f3a00f65b894b625c971917e62990073b5ba4b60",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/f3a00f65b894b625c971917e62990073b5ba4b60"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/coherencia-drops",
+      "commit": {
+        "sha": "75be3f18b23c82bd0022de06577c504e2aba3f8e",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/75be3f18b23c82bd0022de06577c504e2aba3f8e"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/coliseo-identidad",
+      "commit": {
+        "sha": "0bd63a19ce75bbdf1c2ca6ee1bea1be3afc52996",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/0bd63a19ce75bbdf1c2ca6ee1bea1be3afc52996"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/coliseo-sin-revivir",
+      "commit": {
+        "sha": "bf3e01efb19dd0dfdcdddc08d00ca3909353cfcd",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/bf3e01efb19dd0dfdcdddc08d00ca3909353cfcd"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/cristales-mapa-identidad",
+      "commit": {
+        "sha": "320529869313618c5916e85da314ae3733a13f58",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/320529869313618c5916e85da314ae3733a13f58"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/critica-monetizacion",
+      "commit": {
+        "sha": "cba4407e4fb89688b4d251a243cc93c0b3fe4249",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/cba4407e4fb89688b4d251a243cc93c0b3fe4249"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/crystal-wars-404",
+      "commit": {
+        "sha": "119171fb0fd47990bbb247f69c005fe4e583b2f9",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/119171fb0fd47990bbb247f69c005fe4e583b2f9"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/crystal-wars-audit",
+      "commit": {
+        "sha": "9bca62b75fd6ea0c31cd6c71f7189de9f556b6f7",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/9bca62b75fd6ea0c31cd6c71f7189de9f556b6f7"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/crystal-wars-gate",
+      "commit": {
+        "sha": "5887230297771ebd5f9d282c760fe17b07508743",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/5887230297771ebd5f9d282c760fe17b07508743"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/crystal-wars-inside-index",
+      "commit": {
+        "sha": "57be7c2ec32451f376b3929ec2fab4aa407408fb",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/57be7c2ec32451f376b3929ec2fab4aa407408fb"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/crystal-wr2",
+      "commit": {
+        "sha": "cac0b6223d4596d9017e705699ce4730a244b2c6",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/cac0b6223d4596d9017e705699ce4730a244b2c6"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/cw-mapa-arte",
+      "commit": {
+        "sha": "4fadf0656852cbcddb3007c0a2bc675e1c329c50",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/4fadf0656852cbcddb3007c0a2bc675e1c329c50"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/derrota-clara",
+      "commit": {
+        "sha": "e93276938d1374ed2b1feef99057b53a758604c6",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/e93276938d1374ed2b1feef99057b53a758604c6"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/dificultad-grupo1",
+      "commit": {
+        "sha": "7f287a8833e27e0f2052aedffd6c037f9b9b7cbd",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/7f287a8833e27e0f2052aedffd6c037f9b9b7cbd"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/dificultad-grupo2",
+      "commit": {
+        "sha": "d60396ad17bf661caa300fc6abadec21b3895eb8",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/d60396ad17bf661caa300fc6abadec21b3895eb8"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/dificultad-grupo3",
+      "commit": {
+        "sha": "0b18b9e22a7029546f8860ca6ca8c15e6f0c59a8",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/0b18b9e22a7029546f8860ca6ca8c15e6f0c59a8"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/dificultad-honesta",
+      "commit": {
+        "sha": "8f0f8138148dbf761e70a213783eeed19d3b490e",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/8f0f8138148dbf761e70a213783eeed19d3b490e"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/emojis-a-pixel",
+      "commit": {
+        "sha": "9ff110a667bef8a329010a97296bf00017b78c04",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/9ff110a667bef8a329010a97296bf00017b78c04"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/equipos-claros",
+      "commit": {
+        "sha": "4e5f3d3c8c5a9256adc6c5a1be9d4fe4172e9d33",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/4e5f3d3c8c5a9256adc6c5a1be9d4fe4172e9d33"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/eren-original",
+      "commit": {
+        "sha": "ff831845731234ed53947b77025eede617ebaf06",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/ff831845731234ed53947b77025eede617ebaf06"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/fallas-previas",
+      "commit": {
+        "sha": "bdadd847f676e46a943df8c9b3dcbf127f8a8566",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/bdadd847f676e46a943df8c9b3dcbf127f8a8566"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/first-arena-clarity",
+      "commit": {
+        "sha": "badc25ab42dcb0a6ffd1b642428b4c1c6f670078",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/badc25ab42dcb0a6ffd1b642428b4c1c6f670078"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/five-champions",
+      "commit": {
+        "sha": "952b52c39077eeace32e0041dd22d1a308914d08",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/952b52c39077eeace32e0041dd22d1a308914d08"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/fondal-telemetry",
+      "commit": {
+        "sha": "402d01377a3ae8371468cc2f656521467895a5e9",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/402d01377a3ae8371468cc2f656521467895a5e9"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/founders-gm-expansion",
+      "commit": {
+        "sha": "67e458a81091b8e07666f82858ff0fb323d7cc5d",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/67e458a81091b8e07666f82858ff0fb323d7cc5d"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/growth-loading",
+      "commit": {
+        "sha": "d06f120d36fd2916509e3460acdef3baad016b59",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/d06f120d36fd2916509e3460acdef3baad016b59"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/horda-latest-updates-gv4tlf",
+      "commit": {
+        "sha": "405b0b965a74fef0826932983aab23705d9173af",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/405b0b965a74fef0826932983aab23705d9173af"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/hub-primer-minuto",
+      "commit": {
+        "sha": "8415e906b4fef35e42194b6c910912433d631350",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/8415e906b4fef35e42194b6c910912433d631350"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/hud-movil",
+      "commit": {
+        "sha": "6a0e20d328d4b46fbb517a880129d93cbfe8c643",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/6a0e20d328d4b46fbb517a880129d93cbfe8c643"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/iconos-contrato",
+      "commit": {
+        "sha": "928d974d4d770e5e3fd08fa0c03670a2fe9b8a9d",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/928d974d4d770e5e3fd08fa0c03670a2fe9b8a9d"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/iconos-habilidades",
+      "commit": {
+        "sha": "12d0222e1fc99d42dbfe01839facf3ab17d48d77",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/12d0222e1fc99d42dbfe01839facf3ab17d48d77"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/integracion-2",
+      "commit": {
+        "sha": "29c21a0cb3e1633742de3835ee25471f5d1832df",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/29c21a0cb3e1633742de3835ee25471f5d1832df"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/integracion-3",
+      "commit": {
+        "sha": "547153d50650d74e812e67590e82c7ac724fb84a",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/547153d50650d74e812e67590e82c7ac724fb84a"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/integracion-4",
+      "commit": {
+        "sha": "6ccc4e1fbde81baf298716fbf018d62c4cdef994",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/6ccc4e1fbde81baf298716fbf018d62c4cdef994"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/integracion-5",
+      "commit": {
+        "sha": "64b44cd30da8936800ee85a93dba59e1c904ffcc",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/64b44cd30da8936800ee85a93dba59e1c904ffcc"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/integracion-6",
+      "commit": {
+        "sha": "337e340e9473b53951132a9e718ae548037faa6e",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/337e340e9473b53951132a9e718ae548037faa6e"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/integracion-7",
+      "commit": {
+        "sha": "0f2c7970a2076616209efa2c97434c8cf61b7ff3",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/0f2c7970a2076616209efa2c97434c8cf61b7ff3"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/integracion-8",
+      "commit": {
+        "sha": "8c45d82f0998b1b0586f06fedafb252368177aef",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/8c45d82f0998b1b0586f06fedafb252368177aef"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/integracion-9",
+      "commit": {
+        "sha": "58b90271392234aaeca09f2b5fb8531f4ccb703e",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/58b90271392234aaeca09f2b5fb8531f4ccb703e"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/integracion-assets",
+      "commit": {
+        "sha": "fed638eca2c9b7f97f96651a03e75fada7e1fd5e",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/fed638eca2c9b7f97f96651a03e75fada7e1fd5e"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/integracion-final",
+      "commit": {
+        "sha": "fecc25e77958201a48750398af9b9acbe85b538d",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/fecc25e77958201a48750398af9b9acbe85b538d"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/item-economy-integracion",
+      "commit": {
+        "sha": "de782d7fc084d11717850587b62d004486aa290f",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/de782d7fc084d11717850587b62d004486aa290f"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/jefe-nivel-10",
+      "commit": {
+        "sha": "e0e273988a90d6b9b917a521626515f7ebabf120",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/e0e273988a90d6b9b917a521626515f7ebabf120"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/jefes-textos-limpios",
+      "commit": {
+        "sha": "63096a49df673f017fb4cba3bad9a5fa3e1c3ed3",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/63096a49df673f017fb4cba3bad9a5fa3e1c3ed3"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/kit-de-magos",
+      "commit": {
+        "sha": "46084475bfbea7e311a8e3bd1d1c43ca64f8fc9b",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/46084475bfbea7e311a8e3bd1d1c43ca64f8fc9b"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/libro-hechicero",
+      "commit": {
+        "sha": "897445d54e33111cd17672c59b4181720b8e1f42",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/897445d54e33111cd17672c59b4181720b8e1f42"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/libro-unico",
+      "commit": {
+        "sha": "06f3cdf90bc47770536d4de438224443e2943bba",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/06f3cdf90bc47770536d4de438224443e2943bba"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/listo-para-cobrar",
+      "commit": {
+        "sha": "34e89ffce3f1bf7be93dba86f9816e178bf68954",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/34e89ffce3f1bf7be93dba86f9816e178bf68954"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/mapa-inicial-selva",
+      "commit": {
+        "sha": "5858bf46f356a1083deff0bed77fb7c549616595",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/5858bf46f356a1083deff0bed77fb7c549616595"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/mercadopago-listo",
+      "commit": {
+        "sha": "c23abfe44d5221407a7dbc020b723876d3d2af8a",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/c23abfe44d5221407a7dbc020b723876d3d2af8a"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/modes-real-engine",
+      "commit": {
+        "sha": "33a9e4ba4d41ee0acc5c33ccf5d673cae4a49b7f",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/33a9e4ba4d41ee0acc5c33ccf5d673cae4a49b7f"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/modos-competitivos-arte",
+      "commit": {
+        "sha": "2aae91c186de1b7c7bd6b4d89f83803ce9e0fece",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/2aae91c186de1b7c7bd6b4d89f83803ce9e0fece"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/modos-postgame",
+      "commit": {
+        "sha": "4b626bc795536122ded09ffec4f46bff7ca7df2e",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/4b626bc795536122ded09ffec4f46bff7ca7df2e"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/musica-biblioteca",
+      "commit": {
+        "sha": "37a03ce08d62e4ca485cdefe6576c41c1bcbd59c",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/37a03ce08d62e4ca485cdefe6576c41c1bcbd59c"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/natural-companions",
+      "commit": {
+        "sha": "100a251933f7a57b7cfba68264b5eda143104341",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/100a251933f7a57b7cfba68264b5eda143104341"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/objetivo-claro",
+      "commit": {
+        "sha": "0cab425359d7cdac534e69631cf04b493ad36992",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/0cab425359d7cdac534e69631cf04b493ad36992"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/objetivos-variados",
+      "commit": {
+        "sha": "68751025f9bc304acec609c34007fe4f0559288d",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/68751025f9bc304acec609c34007fe4f0559288d"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/optimizacion",
+      "commit": {
+        "sha": "ecfda191f84b68501123a577f9189b61da58db27",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/ecfda191f84b68501123a577f9189b61da58db27"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/pesadilla-pareja",
+      "commit": {
+        "sha": "050a474ecbb0e751e8d21ca296eaf1c57b6df54d",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/050a474ecbb0e751e8d21ca296eaf1c57b6df54d"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/piezas-brasas",
+      "commit": {
+        "sha": "179e7c44ce9c2cbd96314814ddaeca8bc0fa9062",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/179e7c44ce9c2cbd96314814ddaeca8bc0fa9062"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/pixel-unificado",
+      "commit": {
+        "sha": "af52efb7d93d85816a9642a7a094d88b8b1bce00",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/af52efb7d93d85816a9642a7a094d88b8b1bce00"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/premium-currency",
+      "commit": {
+        "sha": "0c06aaca24454195499eebcfdb1b6f1e0da07c04",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/0c06aaca24454195499eebcfdb1b6f1e0da07c04"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/pricing-overhaul",
+      "commit": {
+        "sha": "f67985d60883c65205c4cfe00bb495f7f4a8e04c",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/f67985d60883c65205c4cfe00bb495f7f4a8e04c"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/pricing-overhaul-wip",
+      "commit": {
+        "sha": "efb53ff0eed25317c98606493f6e7a52f51314f8",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/efb53ff0eed25317c98606493f6e7a52f51314f8"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/primer-minuto-limpio",
+      "commit": {
+        "sha": "b25a774d3d5a9664231d725045b2c89409067cc9",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/b25a774d3d5a9664231d725045b2c89409067cc9"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/prompt-juego-shooter",
+      "commit": {
+        "sha": "899ea82313d502b0d7744eced46112ec2ae990f7",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/899ea82313d502b0d7744eced46112ec2ae990f7"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/proyecto-horda-8mqcxn",
+      "commit": {
+        "sha": "90690fb7cc6a24fb797bd06b2d7887a9b21fc686",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/90690fb7cc6a24fb797bd06b2d7887a9b21fc686"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/quickplay-honest-bots",
+      "commit": {
+        "sha": "27d1abf5292a3614e1581a1cc10dc8dde8530e55",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/27d1abf5292a3614e1581a1cc10dc8dde8530e55"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/seguridad-guardado",
+      "commit": {
+        "sha": "c2a93e14727072b039b1cb77cb31261831ce4233",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/c2a93e14727072b039b1cb77cb31261831ce4233"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/siete-campeones",
+      "commit": {
+        "sha": "78ef0aee8518423ced97aa9f194894975ed13254",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/78ef0aee8518423ced97aa9f194894975ed13254"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/siete-campeones-known",
+      "commit": {
+        "sha": "8dd601be47a0e652eb49927303b2d4294113a4c3",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/8dd601be47a0e652eb49927303b2d4294113a4c3"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/siete-pendientes",
+      "commit": {
+        "sha": "14d978326eb49447da11436829ea87aee2512ef2",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/14d978326eb49447da11436829ea87aee2512ef2"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/skins-brasas",
+      "commit": {
+        "sha": "50707ed2bd3e1a96695f3bdcc8f82235aaf25b24",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/50707ed2bd3e1a96695f3bdcc8f82235aaf25b24"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/spec-arte-tecnica",
+      "commit": {
+        "sha": "3a448a3905599f0bad239a7822f41e9aab33361a",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/3a448a3905599f0bad239a7822f41e9aab33361a"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/tiburones",
+      "commit": {
+        "sha": "2ee9e01a1bab11546308d07fde0579521403f973",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/2ee9e01a1bab11546308d07fde0579521403f973"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/tiburones-png",
+      "commit": {
+        "sha": "4a26c5410f5dd950ed3b12d406270395adb113d2",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/4a26c5410f5dd950ed3b12d406270395adb113d2"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/tienda-rotacion",
+      "commit": {
+        "sha": "8df1ca08691f957afd610cff74ac5e2ac3c609fb",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/8df1ca08691f957afd610cff74ac5e2ac3c609fb"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/ultis-distintas",
+      "commit": {
+        "sha": "aa516addd71cdb8e2c69001c03e49a38047b715d",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/aa516addd71cdb8e2c69001c03e49a38047b715d"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/ultis-distintas-2a",
+      "commit": {
+        "sha": "e6ec34bb7ee1663024d29443d172c9e20de779ef",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/e6ec34bb7ee1663024d29443d172c9e20de779ef"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/ultis-distintas-2b",
+      "commit": {
+        "sha": "b5b0580df1d3db2a9e44f63084053dd73b6d3fec",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/b5b0580df1d3db2a9e44f63084053dd73b6d3fec"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/unificar-estetica-modos",
+      "commit": {
+        "sha": "d194fcd5f1deb40893797a5b82db8ee314c0f8c5",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/d194fcd5f1deb40893797a5b82db8ee314c0f8c5"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/update-horda-github-3dt9ih",
+      "commit": {
+        "sha": "3d95bbdcdc3e1c29b6157d9f895a2d0d891b830b",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/3d95bbdcdc3e1c29b6157d9f895a2d0d891b830b"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/ux-ficha-panel",
+      "commit": {
+        "sha": "d192ebf6518bdd6178092b24d19624d3b60f11e0",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/d192ebf6518bdd6178092b24d19624d3b60f11e0"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/vfx-decal-legible",
+      "commit": {
+        "sha": "1c9d11ccbc39aef9eb9ec59389b187d07a24a2d7",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/1c9d11ccbc39aef9eb9ec59389b187d07a24a2d7"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/vfx-habilidades-a",
+      "commit": {
+        "sha": "a5d46d79f06eb90d7af694414d2501126849186e",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/a5d46d79f06eb90d7af694414d2501126849186e"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/vfx-habilidades-b",
+      "commit": {
+        "sha": "35ed7c6b614aed668ea848e11b428d5bc55057d5",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/35ed7c6b614aed668ea848e11b428d5bc55057d5"
+      },
+      "protected": false
+    },
+    {
+      "name": "claude/world-overhaul-v2",
+      "commit": {
+        "sha": "5da4df37fbb6f9046c93c573c8bd7df8543e0347",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/5da4df37fbb6f9046c93c573c8bd7df8543e0347"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/alpha-completion",
+      "commit": {
+        "sha": "4f8953b7f62f92a6b31d2131b4fc3bcd03ab3f33",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/4f8953b7f62f92a6b31d2131b4fc3bcd03ab3f33"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/alpha-improvement-factory",
+      "commit": {
+        "sha": "d3dede364c9ca69b4297547f414eb24df3f4fd9f",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/d3dede364c9ca69b4297547f414eb24df3f4fd9f"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/arena-codex-art",
+      "commit": {
+        "sha": "e669bacec3b1669e70df77169d24cc4188e1cdfb",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/e669bacec3b1669e70df77169d24cc4188e1cdfb"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/art-bases-20261026",
+      "commit": {
+        "sha": "a88d32ae8e686fafd08ce61d47661741dfdece7c",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/a88d32ae8e686fafd08ce61d47661741dfdece7c"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/champion-vfx-readability",
+      "commit": {
+        "sha": "e2722d28fd53a05c583929a12ac96ee26ddf1fef",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/e2722d28fd53a05c583929a12ac96ee26ddf1fef"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/commercial-launch-prep",
+      "commit": {
+        "sha": "7b6386fe5c7592a46fe361e21a512f3176489fca",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/7b6386fe5c7592a46fe361e21a512f3176489fca"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/convergencia-coliseo-competitive",
+      "commit": {
+        "sha": "211b18e61222c2ab2851011472a4e9b5f5759559",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/211b18e61222c2ab2851011472a4e9b5f5759559"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/crystal-wars",
+      "commit": {
+        "sha": "549987b02908ead6786298f1144da316945446cc",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/549987b02908ead6786298f1144da316945446cc"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/duo-roster-ux",
+      "commit": {
+        "sha": "a37a6e9a30af40f0bbb38f19bea42cf245bd6185",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/a37a6e9a30af40f0bbb38f19bea42cf245bd6185"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/illustrated-grimoire-combat",
+      "commit": {
+        "sha": "885f6b7f7cc4b1735ced8de61e0e4672bce1ab25",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/885f6b7f7cc4b1735ced8de61e0e4672bce1ab25"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/public-alpha-audit",
+      "commit": {
+        "sha": "0f25368d17221267be7f9f918e1279070a5116bb",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/0f25368d17221267be7f9f918e1279070a5116bb"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/skins-diseno-propio",
+      "commit": {
+        "sha": "ec901ac5a91164a033151397259c6035e46ffaca",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/ec901ac5a91164a033151397259c6035e46ffaca"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/ten-champion-candidates",
+      "commit": {
+        "sha": "c9a753c66d3f1a3f53b2b6a63c1ee9e11ba36c7e",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/c9a753c66d3f1a3f53b2b6a63c1ee9e11ba36c7e"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/umbral-art",
+      "commit": {
+        "sha": "fd286d468f8bb224d5e0919b91e2be85055bc1ff",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/fd286d468f8bb224d5e0919b91e2be85055bc1ff"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/ynara-angel-silencio",
+      "commit": {
+        "sha": "66a0296498fa11f66510612322da5e5bd2fd7ed4",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/66a0296498fa11f66510612322da5e5bd2fd7ed4"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/ynara-integracion-final",
+      "commit": {
+        "sha": "174b89dc87b6e1c53b4bf20a057e58d3f458a472",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/174b89dc87b6e1c53b4bf20a057e58d3f458a472"
+      },
+      "protected": false
+    },
+    {
+      "name": "deploy/nano-independent",
+      "commit": {
+        "sha": "f49ff8fae8ce4afe8d392389749eb53cdd08a974",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/f49ff8fae8ce4afe8d392389749eb53cdd08a974"
+      },
+      "protected": false
+    },
+    {
+      "name": "docs/canonical-persistence-p0-20261019",
+      "commit": {
+        "sha": "998a63839a224aa3f5221f4ca092194634596294",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/998a63839a224aa3f5221f4ca092194634596294"
+      },
+      "protected": false
+    },
+    {
+      "name": "docs/gameplay-critical-results-20261024",
+      "commit": {
+        "sha": "707c9e025bda35a3ae827071e3a5478c45d73b4e",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/707c9e025bda35a3ae827071e3a5478c45d73b4e"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/battlefield-sprites",
+      "commit": {
+        "sha": "567a32e6c56d18e202e01491f8ba3811d0e7d8a4",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/567a32e6c56d18e202e01491f8ba3811d0e7d8a4"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/curated-music-library",
+      "commit": {
+        "sha": "9709434da727b0c504f021b023de3f0eabe4a93d",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/9709434da727b0c504f021b023de3f0eabe4a93d"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/item-economy-v2",
+      "commit": {
+        "sha": "f2a5056445de1acd2f2a0d9515ade3c5323e7efc",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/f2a5056445de1acd2f2a0d9515ade3c5323e7efc"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature/fondal-art-engine",
+      "commit": {
+        "sha": "e00ba6b0854ae6ca8871da24c84c7206d7c3f23a",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/e00ba6b0854ae6ca8871da24c84c7206d7c3f23a"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/campaign-startup-bounded-20261019",
+      "commit": {
+        "sha": "897726b837b4c88e1a35605788d60e458dc9fff7",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/897726b837b4c88e1a35605788d60e458dc9fff7"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/cazadora-vfx-loading-20261023",
+      "commit": {
+        "sha": "5f51df4999c0c80603faa4113cccdf85c9ab6e84",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/5f51df4999c0c80603faa4113cccdf85c9ab6e84"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/champion-ability-inspector-null-guard",
+      "commit": {
+        "sha": "b26b9e36405f4944380cee52ebab39fde6764da3",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/b26b9e36405f4944380cee52ebab39fde6764da3"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/factory-interrupted-checks-20261026",
+      "commit": {
+        "sha": "f1d6c3c1d16d5cf8ce63dc3b2a968558c8f21b17",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/f1d6c3c1d16d5cf8ce63dc3b2a968558c8f21b17"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/gameplay-critical-20261023",
+      "commit": {
+        "sha": "86982c568d632abe81a77ad0cea97ef374b505f6",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/86982c568d632abe81a77ad0cea97ef374b505f6"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/health-hud-isolated-20261023",
+      "commit": {
+        "sha": "638218ad955a93e4f00a20a692df0e107901a1d3",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/638218ad955a93e4f00a20a692df0e107901a1d3"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/roster-lazy-recovery",
+      "commit": {
+        "sha": "d6c0fd1afe45e9916a2c12cd3858a00e472e1798",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/d6c0fd1afe45e9916a2c12cd3858a00e472e1798"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/single-champion-five-second-revive",
+      "commit": {
+        "sha": "331b02a90bd1b4ff749939637557cfdd6029d781",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/331b02a90bd1b4ff749939637557cfdd6029d781"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/soporte-v3-evidence-and-http-20261019",
+      "commit": {
+        "sha": "cf6e1d9022cda48391e0d2fad5c2839f7e346428",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/cf6e1d9022cda48391e0d2fad5c2839f7e346428"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/story-phase-observation-20261023",
+      "commit": {
+        "sha": "ae3d384a2117323d7154b30760ad621106dec0c6",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/ae3d384a2117323d7154b30760ad621106dec0c6"
+      },
+      "protected": false
+    },
+    {
+      "name": "main",
+      "commit": {
+        "sha": "df7fe4b891c440a6fd31675a2c65434d77912628",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/df7fe4b891c440a6fd31675a2c65434d77912628"
+      },
+      "protected": false
+    },
+    {
+      "name": "qa/canonical-art-continuity-20261019",
+      "commit": {
+        "sha": "97cdac22e4f9e0f30acd38efbf33de96c3f48207",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/97cdac22e4f9e0f30acd38efbf33de96c3f48207"
+      },
+      "protected": false
+    },
+    {
+      "name": "qa/canonical-soporte-publication-20261019",
+      "commit": {
+        "sha": "754805931be47ed303ce05eb0617727e6a6bfddc",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/754805931be47ed303ce05eb0617727e6a6bfddc"
+      },
+      "protected": false
+    },
+    {
+      "name": "qa/competitive-http-drain-20261019",
+      "commit": {
+        "sha": "f052370c30a5a49d5fd359250538125323eca271",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/f052370c30a5a49d5fd359250538125323eca271"
+      },
+      "protected": false
+    },
+    {
+      "name": "qa/libertador-musket-v1-20261019",
+      "commit": {
+        "sha": "bda8d3b117bc32fb0734edfa77fcca91d74099f3",
+        "url": "https://api.github.com/repos/Fondal-Studios/La-Horda/commits/bda8d3b117bc32fb0734edfa77fcca91d74099f3"
+      },
+      "protected": false
+    }
+  ],
+  "note": "No Veyra/Solciju body source/asset change in owner PR232 actual diff. Shared renderer changes belong to owner; not imported. This workshop does not install runtime. No lost remote closure: prior REMOTE_CLOSURE read, manifest 40 entries verified."
+}

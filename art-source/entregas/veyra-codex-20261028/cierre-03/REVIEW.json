@@ -1,0 +1,245 @@
+{
+  "state": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "component": "veyra.cuerpo.codex",
+  "newSources": 4,
+  "newNominalSourcePoses": 32,
+  "changedCandidateFrames": [
+    "veyra.cuerpo.hit.up.0",
+    "veyra.cuerpo.hit.up.1",
+    "veyra.cuerpo.hit.up.2",
+    "veyra.cuerpo.hit.up.3",
+    "veyra.cuerpo.walk.left.0",
+    "veyra.cuerpo.walk.left.1",
+    "veyra.cuerpo.walk.left.2",
+    "veyra.cuerpo.walk.left.3",
+    "veyra.cuerpo.attack.left.0",
+    "veyra.cuerpo.attack.left.1",
+    "veyra.cuerpo.attack.left.2",
+    "veyra.cuerpo.attack.left.3",
+    "veyra.cuerpo.cast.left.0",
+    "veyra.cuerpo.cast.left.1",
+    "veyra.cuerpo.cast.left.2",
+    "veyra.cuerpo.cast.left.3",
+    "veyra.cuerpo.ultimate.left.0",
+    "veyra.cuerpo.ultimate.left.1",
+    "veyra.cuerpo.ultimate.left.2",
+    "veyra.cuerpo.ultimate.left.3",
+    "veyra.cuerpo.hit.left.0",
+    "veyra.cuerpo.hit.left.1",
+    "veyra.cuerpo.hit.left.2",
+    "veyra.cuerpo.hit.left.3",
+    "veyra.cuerpo.death.left.0",
+    "veyra.cuerpo.death.left.1",
+    "veyra.cuerpo.death.left.2",
+    "veyra.cuerpo.death.left.3"
+  ],
+  "unchangedCandidateFrames": 84,
+  "candidateFrames": 112,
+  "approvedFrames": 0,
+  "installedPNG": 0,
+  "runtimeFilesChanged": 0,
+  "nativeScreen": {
+    "passed": 106,
+    "failed": 6,
+    "failedFrames": [
+      {
+        "frame": 91,
+        "direction": "left",
+        "w": 192,
+        "h": 144,
+        "opaque": 4854,
+        "block": 1,
+        "blockScore": 0,
+        "pk": {
+          "2": 1.01,
+          "3": 1.01,
+          "4": 1.02,
+          "5": 1.01,
+          "6": 1.02,
+          "7": 1.02,
+          "8": 1.01
+        },
+        "tonos": 288,
+        "suave": 0.229,
+        "aa": 0,
+        "ruido": 73.5,
+        "eff": 0.73,
+        "issues": [
+          "ILUSTRACION"
+        ],
+        "id": "veyra.cuerpo.walk.left.3",
+        "source": "art-source/entregas/veyra-codex-20261028/cierre-03/source-left-motion-03.png"
+      },
+      {
+        "frame": 93,
+        "direction": "left",
+        "w": 192,
+        "h": 144,
+        "opaque": 5714,
+        "block": 1,
+        "blockScore": 0,
+        "pk": {
+          "2": 1.01,
+          "3": 1.03,
+          "4": 1.01,
+          "5": 1,
+          "6": 1.06,
+          "7": 1,
+          "8": 1
+        },
+        "tonos": 281,
+        "suave": 0.232,
+        "aa": 0,
+        "ruido": 74.7,
+        "eff": 0.73,
+        "issues": [
+          "ILUSTRACION"
+        ],
+        "id": "veyra.cuerpo.attack.left.1",
+        "source": "art-source/entregas/veyra-codex-20261028/cierre-03/source-left-motion-03.png"
+      },
+      {
+        "frame": 105,
+        "direction": "left",
+        "w": 192,
+        "h": 144,
+        "opaque": 5585,
+        "block": 1,
+        "blockScore": 0,
+        "pk": {
+          "2": 1.01,
+          "3": 1.01,
+          "4": 1,
+          "5": 1,
+          "6": 1.03,
+          "7": 1.01,
+          "8": 1.03
+        },
+        "tonos": 289,
+        "suave": 0.222,
+        "aa": 0,
+        "ruido": 79,
+        "eff": 0.73,
+        "issues": [
+          "ILUSTRACION"
+        ],
+        "id": "veyra.cuerpo.hit.left.1",
+        "source": "art-source/entregas/veyra-codex-20261028/cierre-03/source-left-motion-03.png"
+      },
+      {
+        "frame": 106,
+        "direction": "left",
+        "w": 192,
+        "h": 144,
+        "opaque": 5357,
+        "block": 1,
+        "blockScore": 0,
+        "pk": {
+          "2": 1.03,
+          "3": 1.02,
+          "4": 1.04,
+          "5": 1.01,
+          "6": 1,
+          "7": 1.1,
+          "8": 1.03
+        },
+        "tonos": 262,
+        "suave": 0.232,
+        "aa": 0,
+        "ruido": 78,
+        "eff": 0.73,
+        "issues": [
+          "ILUSTRACION"
+        ],
+        "id": "veyra.cuerpo.hit.left.2",
+        "source": "art-source/entregas/veyra-codex-20261028/cierre-03/source-left-motion-03.png"
+      },
+      {
+        "frame": 108,
+        "direction": "left",
+        "w": 192,
+        "h": 144,
+        "opaque": 4839,
+        "block": 1,
+        "blockScore": 0,
+        "pk": {
+          "2": 1,
+          "3": 1.03,
+          "4": 1,
+          "5": 1.02,
+          "6": 1.01,
+          "7": 1.02,
+          "8": 1
+        },
+        "tonos": 266,
+        "suave": 0.226,
+        "aa": 0,
+        "ruido": 76.3,
+        "eff": 0.73,
+        "issues": [
+          "ILUSTRACION"
+        ],
+        "id": "veyra.cuerpo.death.left.0",
+        "source": "art-source/entregas/veyra-codex-20261028/cierre-03/source-left-motion-03.png"
+      },
+      {
+        "frame": 109,
+        "direction": "left",
+        "w": 192,
+        "h": 144,
+        "opaque": 4675,
+        "block": 1,
+        "blockScore": 0,
+        "pk": {
+          "2": 1.01,
+          "3": 1.02,
+          "4": 1,
+          "5": 1.07,
+          "6": 1.02,
+          "7": 1,
+          "8": 1.05
+        },
+        "tonos": 278,
+        "suave": 0.214,
+        "aa": 0,
+        "ruido": 72.9,
+        "eff": 0.73,
+        "issues": [
+          "ILUSTRACION"
+        ],
+        "id": "veyra.cuerpo.death.left.1",
+        "source": "art-source/entregas/veyra-codex-20261028/cierre-03/source-left-motion-03.png"
+      }
+    ],
+    "thresholds": "Unmodified canonical classify/analyzeInPage from fresh main tools/art/pixel-density.js; no filter/quantization/threshold reduction."
+  },
+  "sequence": {
+    "cases": 64,
+    "exactABA": 64,
+    "viewports": [
+      "1280x800",
+      "844x390"
+    ],
+    "bodyCanvas": "180x180; drawHeroBody/drawFallenHero synthetic states, normalized game scale",
+    "allExpectedSelectedFrames": true,
+    "scope": "Not full scene, combat/global-state parity, relay or roster certification."
+  },
+  "visualReview": [
+    "Codex Veyra exact template",
+    "source-left-motion-03.png",
+    "source-up-hit-03.png REJECTED: braid toward left and white wraps on both arms",
+    "source-up-hit-fixed-03.png: braid toward right, left white wraps, right leather",
+    "temporal-mobile.png all 32 before/after cases",
+    "temporal-desktop.png byte-identical to reviewed temporal-mobile.png (5e060821beba949bda615a67a7f340a676da63b6360d2cfd99dc84a41d7bb0ea); common image reviewed"
+  ],
+  "findings": [
+    "Left cast proportions closer to idle; grouped walk/attack/hit/death replace overly slender prior poses. Head mass/style still not uniform across all four directions.",
+    "Rear hurt sequence retains Codex arm asymmetry after grouped correction; rejected source preserved.",
+    "Native detector failures 11 to 6, including newly selected left frames. No numerical-pass substitution for visual approval.",
+    "Left walking stride remains subtle; full continuous animation/contact and transitions still need review.",
+    "Foot lines stable between variants within each state/direction: left live -5, fallen -1, up hurt -3 relative diagnostic anchor. This is not comparison against Caballero."
+  ],
+  "next": "Resolve native shading/material for left walk/attack/hit/death as grouped source cause, without quantization/filter or changing canonical gates; review complete 4-direction transitions and body/head proportions. Then roster, paired real scenes, all looks/equipment/arenas, cold/fallback, relay/performance and exact SHA ArtGate/CI before normal merge."
+}

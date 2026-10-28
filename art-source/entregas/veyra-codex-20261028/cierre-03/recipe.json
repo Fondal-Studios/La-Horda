@@ -1,0 +1,43 @@
+{
+  "generator": "built-in image_gen",
+  "referenceRepoPath": "assets/ui/codex/champions/veyra.png",
+  "referenceGitBlob": "95e8c87e3877e0607dbee3b9dd5a5d5f770f142d",
+  "referenceSHA256": "d89d8328b31d3bfa57b42a7a8a4f3c7c06d9446f122d38f4f7a59c9a7c9b76ed",
+  "prompts": [
+    "PROMPT_ACTIONS.txt",
+    "PROMPT_MOTION.txt",
+    "PROMPT_UP_HIT.txt",
+    "PROMPT_UP_HIT_FIX.txt"
+  ],
+  "sources": [
+    {
+      "path": "art-source/entregas/veyra-codex-20261028/cierre-03/source-left-actions-03.png",
+      "sha256": "6d036aa4a58c8f3dc0c1ddec8717ac44c4461a032dbc58f426a7cf42550e77eb"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261028/cierre-03/source-left-motion-03.png",
+      "sha256": "2f5baad470e5aab34549a77b4cdd12f636d30a3dcefb9cb8f31a511d28ade5eb"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261028/cierre-03/source-up-hit-03.png",
+      "sha256": "8d8ce7ff1dfbd2a2e24a2ee92fe0fb11a46e680ae292c7adb88a3e9028eeff7d"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261028/cierre-03/source-up-hit-fixed-03.png",
+      "sha256": "0b089b51a1ca9a4e7cb34fff4077a5de0a82634058bd3b1bce92330b3de5ce95"
+    }
+  ],
+  "selected": [
+    "source-left-actions-03.png",
+    "source-left-motion-03.png",
+    "source-up-hit-fixed-03.png"
+  ],
+  "rejected": [
+    "source-up-hit-03.png"
+  ],
+  "packingCommand": "python tools/art/pack-veyra-closure03.py",
+  "packing": "Existing four production01 sheets plus closure02 right actions; replace left cast/ultimate, left walk/attack/hit/death and up hit. Connected alpha>127 components, fixed per-source reference heights 310/212/458, nearest packing. No recolor/filter/palette quantization. No runtime installation. Component exclusions recorded.",
+  "reproduction": "Generation stochastic; exact sources and prompts preserved. Five final candidate PNG reexports byte-identical.",
+  "screenCommand": "On exact main df7fe4b worktree with closure02/03 candidates: CHROMIUM_PATH=/tmp/chromium node tools/art/check-veyra-closure03.js",
+  "attempt01": "Eight left cast/ultimate replacements only. Its atlas, frame index, extraction, native screen and temporal previews preserved under attempt01."
+}
