@@ -1,0 +1,41 @@
+[
+  {
+    "attempt": "renderer01",
+    "result": "FAIL_BEFORE_SAVE",
+    "reason": "Copied harness output retained produccion-01 path; ENOENT writing runtime-main-desktop.png. No candidate loaded yet; corrected only output path."
+  },
+  {
+    "attempt": "combat01",
+    "result": "FAIL_HARNESS",
+    "reason": "Isolated baseline had replaced document body, removing game UI. startRun failed classList null before any combat capture. Preserve DOM in harness; no runtime change."
+  },
+  {
+    "attempt": "left-actions01",
+    "result": "PRESERVED",
+    "reason": "8 source poses, diffuse RGB display initially misread as red background; corrected with alpha-aware diagnosis. Replaced by attempt02 in candidate."
+  },
+  {
+    "attempt": "left-alpha-edit02",
+    "result": "SOURCE_NOT_ART_PASS",
+    "reason": "Partial alpha534910 vs503610 does not measure rendered background. Pose margins still require connected extraction."
+  },
+  {
+    "attempt": "renderer02-plus-combat02",
+    "result": "PASS_SCOPED",
+    "samples": 448,
+    "casts": 12,
+    "ultimates": 4,
+    "errors": 0,
+    "limitation": "Independent scenarios; not ABA or visual approval."
+  },
+  {
+    "attempt": "metadata-before-runtime",
+    "result": "CORRECTED_PRETEST",
+    "reason": "Add refH84 and map right direction to actual side registry before renderer candidate loaded."
+  },
+  {
+    "attempt": "read-path-probes",
+    "result": "PRESERVED_FAILURE",
+    "reason": "package.json and guessed quality-five-sprites.js absent; used existing tools/lib/serve and actual source registries. No runtime mutation."
+  }
+]

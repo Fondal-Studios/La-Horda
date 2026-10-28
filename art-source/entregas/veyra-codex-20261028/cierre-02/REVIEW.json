@@ -1,0 +1,34 @@
+{
+  "state": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "component": "veyra.cuerpo.codex",
+  "generatedNewSources": 3,
+  "sourceActionCandidatePhases": 16,
+  "technicalCandidateAtlasFrames": 112,
+  "rgbaUnique": 112,
+  "approvedFrames": 0,
+  "installedPNG": 0,
+  "runtimeFilesChanged": 0,
+  "reviewed": [
+    "candidate-down.png",
+    "candidate-right.png",
+    "candidate-up.png",
+    "candidate-left.png",
+    "runtime-main-mobile.png",
+    "runtime-candidate-mobile.png",
+    "alpha-review-left-original.png",
+    "alpha-review-left-current.png",
+    "combat-main-mobile-h1.png",
+    "combat-candidate-mobile-h1.png",
+    "combat-candidate-desktop-ultimate.png"
+  ],
+  "findings": [
+    "Direction-specific side cast/ultimate replaces frontal reuse in candidate; two curved blades readable in reviewed phases.",
+    "Left new actions are more slender/smaller-headed than left idle/walk; continuity unresolved.",
+    "Four source groups technically separable with components, no need to blindly regenerate original full sheets.",
+    "Alpha source-over corrects earlier red-background diagnosis. Technical binary-alpha extraction is not style approval.",
+    "Real combat frames show body under legacy VFX; same-scenario composition, silhouettes/feet/style gate, all appearances and relay remain pending."
+  ],
+  "next": "Close grouped body/action proportions and temporal foot/head support from existing sources. No new kit, no partial-body installation."
+}

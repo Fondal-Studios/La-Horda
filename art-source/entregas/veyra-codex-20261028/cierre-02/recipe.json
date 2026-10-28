@@ -1,0 +1,29 @@
+{
+  "generator": "built-in image_gen",
+  "referenceRepoPath": "assets/ui/codex/champions/veyra.png",
+  "referenceSHA256": "d89d8328b31d3bfa57b42a7a8a4f3c7c06d9446f122d38f4f7a59c9a7c9b76ed",
+  "prompts": [
+    "left-actions-prompt.txt",
+    "extract-left-actions-prompt.txt",
+    "right-actions-prompt.txt"
+  ],
+  "sources": [
+    {
+      "path": "art-source/entregas/veyra-codex-20261028/cierre-02/source-left-actions-attempt01.png",
+      "sha256": "a18e52a8f4973f0dabbce9fce008a513aca9cfa986e40234c6eaee00eff239ba"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261028/cierre-02/source-left-actions-attempt02.png",
+      "sha256": "c918d3a0876ce4f2a14f500a8af5dbc8c39d27c88758e221d6686d23c9c3ce7f"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261028/cierre-02/source-right-actions-attempt01.png",
+      "sha256": "97aa0f7aebf19e6aadbb278cd29209add6f4c714bb9474970572c332d23d212b"
+    }
+  ],
+  "extractionCommand": "python tools/art/pack-veyra-candidate.py",
+  "extraction": "Original four production01 sources, replace cast/ultimate right and left with new action strips. Connected alpha>127 components, fixed scale per source, foot pivot, nearest-neighbor packing. No hue removal, palette conversion or runtime installation. Source excluded detached pixels recorded in EXTRACTION.json.",
+  "reproduction": "Image generation stochastic; exact originals/prompts kept. Technical outputs reproducible, five PNG reexports byte-identical.",
+  "previewCommand": "CHROMIUM_PATH=/tmp/chromium node tools/art/preview-veyra-actions.js",
+  "runtimeCommand": "On fresh main worktree with cierre-02 candidates copied: CHROMIUM_PATH=/tmp/chromium node tools/art/check-veyra-candidate.js"
+}

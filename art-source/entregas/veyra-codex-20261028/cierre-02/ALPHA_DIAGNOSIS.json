@@ -1,0 +1,180 @@
+{
+  "supersedes": "The previous conclusion that the visible raw red surround is a rendered red background is unsupported. Browser canvas source-over composite of original left and new source shows transparent surrounds. Do not use raw RGB viewer appearance to reject transparency. Partial alpha remains a genuine technical defect, not identical to background residue.",
+  "sourceAnalysis": [
+    {
+      "source": "art-source/entregas/veyra-codex-20261028/produccion-01/source-left.png",
+      "sha256": "77163c7d0e3ab6d36ae077561a6d1c2367c593cfd456432be031c0b4c6278bf3",
+      "zero": 977853,
+      "partial": 595011,
+      "opaque": 0,
+      "dominantAlpha": [
+        {
+          "alpha": 0,
+          "pixels": 977853
+        },
+        {
+          "alpha": 252,
+          "pixels": 121582
+        },
+        {
+          "alpha": 1,
+          "pixels": 72611
+        },
+        {
+          "alpha": 251,
+          "pixels": 52023
+        },
+        {
+          "alpha": 253,
+          "pixels": 39497
+        },
+        {
+          "alpha": 250,
+          "pixels": 31983
+        }
+      ],
+      "nonzeroRGBUnderZeroAlpha": 914706
+    },
+    {
+      "source": "art-source/entregas/veyra-codex-20261028/cierre-01/source-left-attempt02.png",
+      "sha256": "e98ac40dd5a84c3eda8f31381b7627a14d31badf1e07d21b2796c6e1b55a529d",
+      "zero": 914008,
+      "partial": 658856,
+      "opaque": 0,
+      "dominantAlpha": [
+        {
+          "alpha": 0,
+          "pixels": 914008
+        },
+        {
+          "alpha": 253,
+          "pixels": 165872
+        },
+        {
+          "alpha": 252,
+          "pixels": 101478
+        },
+        {
+          "alpha": 1,
+          "pixels": 68314
+        },
+        {
+          "alpha": 251,
+          "pixels": 47336
+        },
+        {
+          "alpha": 250,
+          "pixels": 29205
+        }
+      ],
+      "nonzeroRGBUnderZeroAlpha": 880349
+    },
+    {
+      "source": "art-source/entregas/veyra-codex-20261028/cierre-02/source-left-actions-attempt01.png",
+      "sha256": "a18e52a8f4973f0dabbce9fce008a513aca9cfa986e40234c6eaee00eff239ba",
+      "zero": 1069254,
+      "partial": 503610,
+      "opaque": 0,
+      "dominantAlpha": [
+        {
+          "alpha": 0,
+          "pixels": 1069254
+        },
+        {
+          "alpha": 252,
+          "pixels": 139117
+        },
+        {
+          "alpha": 253,
+          "pixels": 93282
+        },
+        {
+          "alpha": 251,
+          "pixels": 49071
+        },
+        {
+          "alpha": 1,
+          "pixels": 47281
+        },
+        {
+          "alpha": 250,
+          "pixels": 23354
+        }
+      ],
+      "nonzeroRGBUnderZeroAlpha": 1056605
+    },
+    {
+      "source": "art-source/entregas/veyra-codex-20261028/cierre-02/source-left-actions-attempt02.png",
+      "sha256": "c918d3a0876ce4f2a14f500a8af5dbc8c39d27c88758e221d6686d23c9c3ce7f",
+      "zero": 1037954,
+      "partial": 534910,
+      "opaque": 0,
+      "dominantAlpha": [
+        {
+          "alpha": 0,
+          "pixels": 1037954
+        },
+        {
+          "alpha": 253,
+          "pixels": 219525
+        },
+        {
+          "alpha": 252,
+          "pixels": 82331
+        },
+        {
+          "alpha": 1,
+          "pixels": 44653
+        },
+        {
+          "alpha": 251,
+          "pixels": 32544
+        },
+        {
+          "alpha": 250,
+          "pixels": 17037
+        }
+      ],
+      "nonzeroRGBUnderZeroAlpha": 1034373
+    },
+    {
+      "source": "art-source/entregas/veyra-codex-20261028/cierre-02/source-right-actions-attempt01.png",
+      "sha256": "97aa0f7aebf19e6aadbb278cd29209add6f4c714bb9474970572c332d23d212b",
+      "zero": 978893,
+      "partial": 593971,
+      "opaque": 0,
+      "dominantAlpha": [
+        {
+          "alpha": 0,
+          "pixels": 978893
+        },
+        {
+          "alpha": 252,
+          "pixels": 160815
+        },
+        {
+          "alpha": 253,
+          "pixels": 95468
+        },
+        {
+          "alpha": 251,
+          "pixels": 59953
+        },
+        {
+          "alpha": 1,
+          "pixels": 50674
+        },
+        {
+          "alpha": 250,
+          "pixels": 32227
+        }
+      ],
+      "nonzeroRGBUnderZeroAlpha": 974431
+    }
+  ],
+  "technicalExtraction": "Alpha >127 connected components; binary alpha output; no red chroma key or recoloring. Small disconnected threshold pixels excluded and reported; not automatically approved as debris.",
+  "reviewedComposites": [
+    "alpha-review-left-original.png",
+    "alpha-review-left-current.png"
+  ]
+}
