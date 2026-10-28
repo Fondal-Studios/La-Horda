@@ -1,0 +1,916 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "checks": [
+    {
+      "issues": [],
+      "draws": 7758,
+      "p95DrawMs": 0.10000000149011612,
+      "maxDrawMs": 25.199999999254942
+    }
+  ],
+  "platform": "desktop Chromium; not real mobile hardware",
+  "catalog": {
+    "champions": [
+      "tanque",
+      "guerrero",
+      "mago",
+      "soporte",
+      "segador",
+      "axiom",
+      "profeta",
+      "musashi",
+      "cazadora",
+      "nigromante",
+      "libertador",
+      "ilkan",
+      "ynara",
+      "myla",
+      "brasa",
+      "eslabon",
+      "morwen",
+      "farolero",
+      "iria",
+      "vesper",
+      "nahir",
+      "baltra",
+      "maura",
+      "dariel",
+      "orsa",
+      "tibor",
+      "zahra",
+      "renko",
+      "sira",
+      "nano_gm",
+      "facu_gm",
+      "aurelia",
+      "khepri",
+      "velmira",
+      "vhal",
+      "bront",
+      "oriel",
+      "saelis",
+      "solciju",
+      "veyra",
+      "brakk",
+      "morveth",
+      "aelith"
+    ],
+    "packs": [
+      {
+        "id": "segador",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/segador/v2/atlas.webp",
+        "frames": 40
+      },
+      {
+        "id": "musashi",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/musashi/v2/atlas.webp",
+        "frames": 40
+      },
+      {
+        "id": "profeta",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/profeta/v2/atlas.webp",
+        "frames": 40
+      },
+      {
+        "id": "cazadora",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/cazadora/v2/atlas.webp",
+        "frames": 41
+      },
+      {
+        "id": "axiom",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/axiom/v2/atlas.webp",
+        "frames": 40
+      },
+      {
+        "id": "nigromante",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/nigromante/v2/atlas.webp",
+        "frames": 45
+      },
+      {
+        "id": "nigro_skel",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/nigromante/skeleton/v2/atlas.webp",
+        "frames": 8
+      },
+      {
+        "id": "libertador",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/libertador/v2/atlas.webp",
+        "frames": 71
+      },
+      {
+        "id": "tanque_hurt",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/tanque/v3/hurt.png",
+        "frames": 6
+      },
+      {
+        "id": "tanque_death",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/tanque/v3/death.png",
+        "frames": 4
+      },
+      {
+        "id": "guerrero_death",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/guerrero/v3/death.png",
+        "frames": 4
+      },
+      {
+        "id": "libertador_death",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/libertador/v2/death.png",
+        "frames": 4
+      },
+      {
+        "id": "libertador_motion",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/libertador/v3/motion.png",
+        "frames": 18
+      },
+      {
+        "id": "libertador_horse",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/libertador/v2/horse.webp",
+        "frames": 20
+      },
+      {
+        "id": "ilkan",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/ilkan/v2/atlas.webp",
+        "frames": 68
+      },
+      {
+        "id": "ilkan_colossus",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/ilkan/v2/colossus.webp",
+        "frames": 33
+      },
+      {
+        "id": "soporte",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/soporte/v3/atlas.png",
+        "frames": 70
+      },
+      {
+        "id": "codex_tanque",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/tanque/codex-v1/atlas.png",
+        "frames": 39
+      },
+      {
+        "id": "codex_guerrero",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/guerrero/codex-v1/atlas.png",
+        "frames": 39
+      },
+      {
+        "id": "codex_aelith",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/aelith/codex-v1/atlas.png",
+        "frames": 39
+      },
+      {
+        "id": "skin_manada",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/cazadora/skins/manada/atlas.webp",
+        "frames": 49
+      },
+      {
+        "id": "skin_errante",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/musashi/skins/errante/atlas.webp",
+        "frames": 48
+      },
+      {
+        "id": "skin_legion",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/ilkan/skins/legion/atlas.webp",
+        "frames": 68
+      },
+      {
+        "id": "skin_legion_colossus",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/ilkan/skins/legion/colossus.webp",
+        "frames": 33
+      },
+      {
+        "id": "skin_sistema",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/axiom/skins/sistema/atlas.webp",
+        "frames": 34
+      },
+      {
+        "id": "skin_profecia",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/profeta/skins/profecia/atlas.webp",
+        "frames": 48
+      },
+      {
+        "id": "skin_convergencia",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/mago/skins/convergencia/atlas.webp",
+        "frames": 48
+      },
+      {
+        "id": "skin_marea",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/segador/skins/marea/atlas.webp",
+        "frames": 48
+      },
+      {
+        "id": "skin_nocturno",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/guerrero/skins/nocturno/atlas.webp",
+        "frames": 48
+      },
+      {
+        "id": "skin_custodio",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/soporte/skins/custodio/atlas.webp",
+        "frames": 48
+      },
+      {
+        "id": "brasa",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/brasa/atlas.webp",
+        "frames": 54
+      },
+      {
+        "id": "skin_ultimo_turno",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/brasa/skins/ultimo_turno/atlas.webp",
+        "frames": 54
+      },
+      {
+        "id": "eslabon",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/eslabon/atlas.webp",
+        "frames": 54
+      },
+      {
+        "id": "skin_juramento_roto",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/eslabon/skins/juramento_roto/atlas.webp",
+        "frames": 54
+      },
+      {
+        "id": "morwen",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/morwen/atlas.webp",
+        "frames": 54
+      },
+      {
+        "id": "skin_vidrio_negro",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/morwen/skins/vidrio_negro/atlas.webp",
+        "frames": 54
+      },
+      {
+        "id": "farolero",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/farolero/atlas.webp",
+        "frames": 54
+      },
+      {
+        "id": "skin_lumbre_persistente",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/farolero/skins/lumbre_persistente/atlas.webp",
+        "frames": 54
+      },
+      {
+        "id": "iria",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/iria/atlas.webp",
+        "frames": 54
+      },
+      {
+        "id": "skin_hilo_umbral",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/iria/skins/hilo_umbral/atlas.webp",
+        "frames": 54
+      },
+      {
+        "id": "myla",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/myla/atlas.png",
+        "frames": 34
+      },
+      {
+        "id": "skin_merienda_magica",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/myla/skins/merienda_magica/atlas.png",
+        "frames": 48
+      },
+      {
+        "id": "myla_berrinche",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/myla/berrinche.png",
+        "frames": 48
+      },
+      {
+        "id": "skin_merienda_magica_berrinche",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/myla/skins/merienda_magica/atlas.png",
+        "frames": 60
+      },
+      {
+        "id": "myla_death",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/myla/v2/death.png",
+        "frames": 4
+      },
+      {
+        "id": "ynara",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/ynara/atlas.png",
+        "frames": 57
+      },
+      {
+        "id": "skin_santa_paciencia",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/ynara/skins/santa_paciencia/atlas.png",
+        "frames": 57
+      },
+      {
+        "id": "skin_baluarte",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/tanque/skins/baluarte/atlas.webp",
+        "frames": 54
+      },
+      {
+        "id": "skin_requiem",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/nigromante/skins/requiem/atlas.webp",
+        "frames": 59
+      },
+      {
+        "id": "skin_granadero",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/libertador/skins/granadero/atlas.webp",
+        "frames": 79
+      },
+      {
+        "id": "skin_granadero_horse",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/libertador/skins/granadero/horse.webp",
+        "frames": 20
+      },
+      {
+        "id": "skin_quality_solciju",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/solciju/skins/quality_solciju/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "skin_quality_brakk",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/brakk/skins/quality_brakk/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "skin_quality_veyra",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/veyra/skins/quality_veyra/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "skin_quality_morveth",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/morveth/skins/quality_morveth/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "skin_quality_aelith",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/aelith/skins/quality_aelith/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "baltra",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/baltra/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "baltra_set",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/baltra/skins/baltra_set/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "dariel",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/dariel/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "dariel_set",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/dariel/skins/dariel_set/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "maura",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/maura/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "maura_set",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/maura/skins/maura_set/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "nahir",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/nahir/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "nahir_set",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/nahir/skins/nahir_set/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "orsa",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/orsa/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "orsa_set",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/orsa/skins/orsa_set/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "renko",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/renko/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "renko_set",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/renko/skins/renko_set/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "sira",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/sira/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "sira_set",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/sira/skins/sira_set/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "tibor",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/tibor/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "tibor_set",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/tibor/skins/tibor_set/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "vesper",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/vesper/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "vesper_set",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/vesper/skins/vesper_set/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "zahra",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/zahra/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "zahra_set",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/zahra/skins/zahra_set/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "nano_gm",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/nano_gm/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "nano_gm_alt1",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/nano_gm/skins/nano_gm_alt1/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "facu_gm",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/facu_gm/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "facu_gm_alt1",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/facu_gm/skins/facu_gm_alt1/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "aurelia",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/aurelia/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "aurelia_alt1",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/aurelia/skins/aurelia_alt1/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "aurelia_alt2",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/aurelia/skins/aurelia_alt2/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "khepri",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/khepri/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "khepri_alt1",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/khepri/skins/khepri_alt1/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "khepri_alt2",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/khepri/skins/khepri_alt2/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "velmira",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/velmira/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "velmira_alt1",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/velmira/skins/velmira_alt1/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "velmira_alt2",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/velmira/skins/velmira_alt2/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "vhal",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/vhal/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "vhal_alt1",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/vhal/skins/vhal_alt1/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "vhal_alt2",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/vhal/skins/vhal_alt2/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "bront",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/bront/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "bront_alt1",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/bront/skins/bront_alt1/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "bront_alt2",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/bront/skins/bront_alt2/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "oriel",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/oriel/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "oriel_alt1",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/oriel/skins/oriel_alt1/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "oriel_alt2",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/oriel/skins/oriel_alt2/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "saelis",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/saelis/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "saelis_alt1",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/saelis/skins/saelis_alt1/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "saelis_alt2",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/saelis/skins/saelis_alt2/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "solciju",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/solciju/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "brakk",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/brakk/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "veyra",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/veyra/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "morveth",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/morveth/atlas.png",
+        "frames": 66
+      },
+      {
+        "id": "aelith",
+        "ready": true,
+        "failed": false,
+        "src": "http://127.0.0.1:33193/assets/sprites/champions/aelith/atlas.png",
+        "frames": 66
+      }
+    ],
+    "enemies": [
+      "esqueleto",
+      "zombie",
+      "esqueleto_h",
+      "demonio_menor",
+      "golem",
+      "demonio_mago",
+      "demonio_mayor",
+      "lobo_artico",
+      "hada_escarcha",
+      "golem_hielo",
+      "dragoncito_hielo",
+      "angel_hielo",
+      "demonio_hielo_fuego",
+      "dragon_hielo",
+      "mago_hielo_cristal",
+      "golem_cristal",
+      "cristal_servo",
+      "cristal_volador",
+      "angel_caido_hielo",
+      "duende_bosque",
+      "enjambre_hadas",
+      "bestia_bosque",
+      "cu_sith",
+      "ent",
+      "dama_bosque",
+      "doblador_guerrero",
+      "doblador_arquera",
+      "doblador_picaro",
+      "doblador_clerigo",
+      "guardian_ancestral",
+      "jinete_sin_cabeza",
+      "escorpion_gigante",
+      "golem_piedra",
+      "medusa",
+      "druida_arena",
+      "esfinge",
+      "guardian_laberinto",
+      "minotauro",
+      "tiburon_joven",
+      "medusa_electrica",
+      "cangrejo_acorazado",
+      "sirena_abisal",
+      "anguila_electrica",
+      "tiburon_blanco",
+      "kraken_joven",
+      "leviatan",
+      "carcelero",
+      "dragon_bronce",
+      "automata",
+      "prisionero",
+      "engendro",
+      "verdugo",
+      "arana",
+      "dragon_forja",
+      "caballero",
+      "infectado",
+      "acechador",
+      "hinchado",
+      "peregrino",
+      "sabueso",
+      "chaman",
+      "nucleo_micelial",
+      "raiz_absorcion",
+      "micelio",
+      "madre_espora",
+      "ab_errante",
+      "ab_acechador",
+      "ab_heraldo",
+      "ab_devorador",
+      "ab_tejedor",
+      "ab_jinete",
+      "ab_carcelero",
+      "ab_morador",
+      "ab_tentaculo",
+      "cm_saqueador",
+      "cm_perro",
+      "cm_raptor",
+      "cm_verdugo",
+      "cm_planidera",
+      "cm_acechante",
+      "cm_campanero",
+      "cm_sectario",
+      "cm_espectro",
+      "cm_maestro",
+      "cm_tramoyista",
+      "cm_dama",
+      "cm_cometa",
+      "cm_espejismo",
+      "cm_presentador",
+      "mn_esclavo",
+      "mn_insecto",
+      "mn_acechador",
+      "mn_minero",
+      "mn_escupidor",
+      "mn_consumidor",
+      "mn_devoraluz",
+      "mn_titan",
+      "mn_cerbero",
+      "hechicero_supremo",
+      "golem_cuerpos",
+      "angel_corrompido",
+      "foco_convergencia",
+      "foco_hielo",
+      "lev_tentaculo"
+    ]
+  },
+  "render": {
+    "samples": 60,
+    "p95Ms": 1.8999999985098839,
+    "maxMs": 1.9000000022351742,
+    "scope": "paused starting arena, render only"
+  }
+}

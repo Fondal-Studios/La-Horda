@@ -56,6 +56,10 @@ jobs:
         run: node tools/fondal-art-engine/runtime-check.js "$RUNNER_TEMP/fondal-runtime"
         env:
           NODE_PATH: /tmp/fondal-browser/node_modules
+      - name: Audit decoded champion sheets for repair candidates
+        run: node tools/fondal-art-engine/quality-audit.js "$RUNNER_TEMP/fondal-quality/quality.json"
+        env:
+          NODE_PATH: /tmp/fondal-browser/node_modules
       - name: Art command UI and retry safety
         run: node tools/fondal-art-engine/ui-runtime.js
         env:
@@ -76,6 +80,7 @@ jobs:
             ${{ runner.temp }}/fondal-inventory/
             ${{ runner.temp }}/fondal-pilot/
             ${{ runner.temp }}/fondal-runtime/
+            ${{ runner.temp }}/fondal-quality/
             ${{ runner.temp }}/fondal-candidate/
             ${{ runner.temp }}/fondal-codex/
           retention-days: 14

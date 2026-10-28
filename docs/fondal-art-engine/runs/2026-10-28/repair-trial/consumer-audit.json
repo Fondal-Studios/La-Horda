@@ -1,0 +1,133 @@
+{
+  "schema": "fondal-art-engine.audit.v1",
+  "generated_at": "2026-10-28T14:04:44.112Z",
+  "coverage": "all literal asset references in js/css/index; dynamic expressions require runtime audit; not artistic approval",
+  "filesScanned": 11615,
+  "codeFilesScanned": 494,
+  "images": 3258,
+  "literalReferences": 1747,
+  "missingReferences": 0,
+  "dynamicReferences": 30,
+  "dynamic": [
+    {
+      "source": "index.html",
+      "expression": "assets/fonts/vt323-latin.woff2"
+    },
+    {
+      "source": "index.html",
+      "expression": "assets/fonts/press-start-2p-latin.woff2"
+    },
+    {
+      "source": "js/arenas/common/boss-blueprints.js",
+      "expression": "assets/sprites/arenas/ciudad/cm_presentador*/atlas.png"
+    },
+    {
+      "source": "js/arenas/common/boss-blueprints.js",
+      "expression": "assets/sprites/bosses/bosque/doblador_*/v2/atlas.png"
+    },
+    {
+      "source": "js/arenas/common/boss-blueprints.js",
+      "expression": "assets/sprites/bosses/bosque/guardian_ancestral/atlas.png (+ atlas_furia)"
+    },
+    {
+      "source": "js/arenas/common/boss-blueprints.js",
+      "expression": "assets/sprites/arenas/micelial/mother/mp_full.png (+ partes)"
+    },
+    {
+      "source": "js/arenas/common/boss-blueprints.js",
+      "expression": "assets/sprites/bosses/acuatica/kraken_joven/*.png"
+    },
+    {
+      "source": "js/arenas/common/boss-blueprints.js",
+      "expression": "assets/sprites/bosses/acuatica/leviatan/*.png"
+    },
+    {
+      "source": "js/arenas/common/boss-blueprints.js",
+      "expression": "assets/sprites/bosses/laberinto/guardian_laberinto/*.png"
+    },
+    {
+      "source": "js/arenas/common/boss-blueprints.js",
+      "expression": "assets/vfx/abismo/ojo_*.png + tex_carne.png"
+    },
+    {
+      "source": "js/arenas/common/boss-blueprints.js",
+      "expression": "assets/sprites/enemies/infernal/esqueleto_h/walk*.png"
+    },
+    {
+      "source": "js/arenas/fortaleza/fort-arena.js",
+      "expression": "assets/sprites/arenas/fortaleza/"
+    },
+    {
+      "source": "js/arenas/fortaleza/fort-render.js",
+      "expression": "assets/sprites/arenas/fortaleza/fx/"
+    },
+    {
+      "source": "js/arenas/infernal/inf-hechicero.js",
+      "expression": "assets/sprites/bosses/infernal/hechicero/"
+    },
+    {
+      "source": "js/arenas/micelial/mic-arena.js",
+      "expression": "assets/sprites/arenas/micelial/"
+    },
+    {
+      "source": "js/arenas/micelial/mic-render.js",
+      "expression": "assets/sprites/arenas/micelial/fx/"
+    },
+    {
+      "source": "js/arenas/micelial/mic-render.js",
+      "expression": "assets/sprites/arenas/micelial/mother/"
+    },
+    {
+      "source": "js/assets/champion-sprites.js",
+      "expression": "assets/sprites/champions/libertador/v2/fx/"
+    },
+    {
+      "source": "js/assets/champion-sprites.js",
+      "expression": "assets/sprites/champions/ilkan/v2/fx/"
+    },
+    {
+      "source": "js/champions/expedition/cosmetics.js",
+      "expression": "assets/sprites/champions/"
+    },
+    {
+      "source": "js/modes/crystal-wars/client.js",
+      "expression": "assets/sprites/enemies/infernal/esqueleto_h/walk"
+    },
+    {
+      "source": "js/modes/crystal-wars/client.js",
+      "expression": "assets/sprites/champions/"
+    },
+    {
+      "source": "js/rendering/battlefield-art.js",
+      "expression": "assets/sprites/battlefield/"
+    },
+    {
+      "source": "js/systems/camp.js",
+      "expression": "assets/ui/codex/arenas/"
+    },
+    {
+      "source": "js/systems/camp.js",
+      "expression": "assets/ui/codex/arenas/"
+    },
+    {
+      "source": "js/systems/story.js",
+      "expression": "assets/ui/codex/arenas/${S.art}.jpg"
+    },
+    {
+      "source": "js/ui/arena-briefing.js",
+      "expression": "assets/ui/codex/arenas/${arena}.jpg"
+    },
+    {
+      "source": "js/ui/codex/codex-book-art.js",
+      "expression": "assets/ui/codex/arenas/"
+    },
+    {
+      "source": "js/ui/codex/codex.js",
+      "expression": "assets/ui/codex/arenas/${a}.jpg"
+    },
+    {
+      "source": "js/ui/item-icons.js",
+      "expression": "assets/items/<id>.png"
+    }
+  ]
+}

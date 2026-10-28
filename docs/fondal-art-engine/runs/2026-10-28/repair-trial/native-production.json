@@ -1,0 +1,4392 @@
+{
+  "schema": "fondal-art-engine.run.v1",
+  "started_at": "2026-10-28T14:04:43.344Z",
+  "generated": 14,
+  "corrected": 0,
+  "integrated": 0,
+  "reused": 1,
+  "rejected": 13,
+  "failed": 0,
+  "pending": 0,
+  "api_cost_usd": 0,
+  "jobs": [
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "mn_cerbero",
+      "target": {
+        "png": "assets/sprites/arenas/minas/mn_cerbero/atlas.png",
+        "meta_file": "js/assets/minas-meta.js",
+        "const": "MINAS_ATLAS",
+        "key": "mn_cerbero"
+      },
+      "meta": {
+        "w": 192,
+        "h": 192,
+        "cols": 8,
+        "refH": 177,
+        "anchor": 0.9792,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "walk": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "run": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "flame": [
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          "hit": [
+            30,
+            31,
+            32,
+            33
+          ],
+          "death": [
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49
+          ],
+          "stomp": [
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "bite": [
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69
+          ],
+          "summon": [
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81
+          ],
+          "walk_down": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "walk_up": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "atk": [
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69
+          ]
+        }
+      },
+      "baseline_sha256": "6c77065222d15764f79fc70f6e1b525439decad403124ba6f0568c04b45c601f",
+      "registry_sha256": "ee58968971bb970cebc92c16aa46d691f38ec06d495eef200c450ea6da4e5394",
+      "candidate_sha256": "6c77065222d15764f79fc70f6e1b525439decad403124ba6f0568c04b45c601f",
+      "gate": {
+        "ok": false,
+        "status": "FIX",
+        "approvalClaimed": false,
+        "sha256": "6c77065222d15764f79fc70f6e1b525439decad403124ba6f0568c04b45c601f",
+        "rgba_sha256": "f0593537d9b147ac67f24065827e7c9c15599966aaa51bc2be32241984e6f6cc",
+        "width": 1536,
+        "height": 2112,
+        "bytes": 576239,
+        "issues": [
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 0,
+            "pixels": 23
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 1,
+            "pixels": 23
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 2,
+            "pixels": 25
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 3,
+            "pixels": 30
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 4,
+            "pixels": 24
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 5,
+            "pixels": 25
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 6,
+            "pixels": 24
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 7,
+            "pixels": 22
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 8,
+            "pixels": 24
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 9,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 10,
+            "pixels": 31
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 11,
+            "pixels": 30
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 12,
+            "pixels": 42
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 13,
+            "pixels": 24
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 14,
+            "pixels": 22
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 15,
+            "pixels": 31
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 16,
+            "pixels": 47
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 17,
+            "pixels": 32
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 18,
+            "pixels": 35
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 19,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 20,
+            "pixels": 23
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 21,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 22,
+            "pixels": 30
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 23,
+            "pixels": 15
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 24,
+            "pixels": 29
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 25,
+            "pixels": 24
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 26,
+            "pixels": 19
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 27,
+            "pixels": 16
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 28,
+            "pixels": 16
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 29,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 30,
+            "pixels": 43
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 31,
+            "pixels": 30
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 32,
+            "pixels": 52
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 33,
+            "pixels": 30
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 34,
+            "pixels": 23
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 35,
+            "pixels": 24
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 36,
+            "pixels": 24
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 37,
+            "pixels": 40
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 38,
+            "pixels": 37
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 39,
+            "pixels": 43
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 40,
+            "pixels": 75
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 41,
+            "pixels": 96
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 42,
+            "pixels": 93
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 43,
+            "pixels": 98
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 44,
+            "pixels": 95
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 45,
+            "pixels": 94
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 46,
+            "pixels": 94
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 47,
+            "pixels": 94
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 48,
+            "pixels": 94
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 49,
+            "pixels": 94
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 50,
+            "pixels": 25
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 51,
+            "pixels": 25
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 52,
+            "pixels": 20
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 53,
+            "pixels": 30
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 54,
+            "pixels": 41
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 55,
+            "pixels": 38
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 56,
+            "pixels": 61
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 57,
+            "pixels": 49
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 58,
+            "pixels": 42
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 59,
+            "pixels": 36
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 60,
+            "pixels": 23
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 61,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 62,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 63,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 64,
+            "pixels": 31
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 65,
+            "pixels": 33
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 66,
+            "pixels": 47
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 67,
+            "pixels": 36
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 68,
+            "pixels": 33
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 69,
+            "pixels": 31
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 70,
+            "pixels": 23
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 71,
+            "pixels": 24
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 72,
+            "pixels": 31
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 73,
+            "pixels": 10
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 74,
+            "pixels": 2
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 75,
+            "pixels": 13
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 76,
+            "pixels": 11
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 77,
+            "pixels": 19
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 78,
+            "pixels": 23
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 79,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 80,
+            "pixels": 22
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 81,
+            "pixels": 27
+          }
+        ],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 88,
+          "requiredClips": [
+            "atk",
+            "bite",
+            "death",
+            "flame",
+            "hit",
+            "idle",
+            "run",
+            "stomp",
+            "summon",
+            "walk",
+            "walk_down",
+            "walk_up"
+          ],
+          "issues": []
+        },
+        "frameCount": 82
+      },
+      "status": "REJECTED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "mn_cerbero"
+    },
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "mn_titan",
+      "target": {
+        "png": "assets/sprites/arenas/minas/mn_titan/atlas.png",
+        "meta_file": "js/assets/minas-meta.js",
+        "const": "MINAS_ATLAS",
+        "key": "mn_titan"
+      },
+      "meta": {
+        "w": 192,
+        "h": 192,
+        "cols": 8,
+        "refH": 145,
+        "anchor": 0.9792,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2
+          ],
+          "walk": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "run": [
+            11,
+            12,
+            13
+          ],
+          "slam": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ],
+          "throw": [
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          "stomp": [
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37
+          ],
+          "hit": [
+            38,
+            39,
+            40
+          ],
+          "death": [
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52
+          ],
+          "walk_down": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "walk_up": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "atk": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ]
+        }
+      },
+      "baseline_sha256": "a0007494c2a33f7194f2c693a408ed817ff2d4da1d22e64139f2169f8a885f2a",
+      "registry_sha256": "ee58968971bb970cebc92c16aa46d691f38ec06d495eef200c450ea6da4e5394",
+      "candidate_sha256": "a0007494c2a33f7194f2c693a408ed817ff2d4da1d22e64139f2169f8a885f2a",
+      "gate": {
+        "ok": false,
+        "status": "FIX",
+        "approvalClaimed": false,
+        "sha256": "a0007494c2a33f7194f2c693a408ed817ff2d4da1d22e64139f2169f8a885f2a",
+        "rgba_sha256": "919922a58c7f3858b5272819b90bdd7ef7ed91dae119aa5ef7caa879b1982eb6",
+        "width": 1536,
+        "height": 1344,
+        "bytes": 358009,
+        "issues": [
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 0,
+            "pixels": 64
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 1,
+            "pixels": 63
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 2,
+            "pixels": 50
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 3,
+            "pixels": 67
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 4,
+            "pixels": 46
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 5,
+            "pixels": 33
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 6,
+            "pixels": 53
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 7,
+            "pixels": 57
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 8,
+            "pixels": 29
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 9,
+            "pixels": 25
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 10,
+            "pixels": 35
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 11,
+            "pixels": 80
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 12,
+            "pixels": 54
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 13,
+            "pixels": 21
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 14,
+            "pixels": 64
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 15,
+            "pixels": 50
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 16,
+            "pixels": 51
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 17,
+            "pixels": 51
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 18,
+            "pixels": 41
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 19,
+            "pixels": 41
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 20,
+            "pixels": 89
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 21,
+            "pixels": 64
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 22,
+            "pixels": 64
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 23,
+            "pixels": 50
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 24,
+            "pixels": 50
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 25,
+            "pixels": 50
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 26,
+            "pixels": 50
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 27,
+            "pixels": 65
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 28,
+            "pixels": 87
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 29,
+            "pixels": 69
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 30,
+            "pixels": 64
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 31,
+            "pixels": 44
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 32,
+            "pixels": 11
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 34,
+            "pixels": 84
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 35,
+            "pixels": 84
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 36,
+            "pixels": 74
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 37,
+            "pixels": 64
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 38,
+            "pixels": 50
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 39,
+            "pixels": 50
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 40,
+            "pixels": 58
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 41,
+            "pixels": 64
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 42,
+            "pixels": 71
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 43,
+            "pixels": 84
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 44,
+            "pixels": 85
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 45,
+            "pixels": 82
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 46,
+            "pixels": 89
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 47,
+            "pixels": 95
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 48,
+            "pixels": 95
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 49,
+            "pixels": 84
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 50,
+            "pixels": 74
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 51,
+            "pixels": 66
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 52,
+            "pixels": 54
+          }
+        ],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 56,
+          "requiredClips": [
+            "atk",
+            "death",
+            "hit",
+            "idle",
+            "run",
+            "slam",
+            "stomp",
+            "throw",
+            "walk",
+            "walk_down",
+            "walk_up"
+          ],
+          "issues": []
+        },
+        "frameCount": 53
+      },
+      "status": "REJECTED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "mn_titan"
+    },
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "cm_dama",
+      "target": {
+        "png": "assets/sprites/arenas/ciudad/cm_dama/atlas.png",
+        "meta_file": "js/assets/ciudad-meta.js",
+        "const": "CIUDAD_ATLAS",
+        "key": "cm_dama"
+      },
+      "meta": {
+        "w": 96,
+        "h": 128,
+        "cols": 8,
+        "refH": 114,
+        "anchor": 0.9688,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "walk": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "atk": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "cast": [
+            16,
+            17,
+            18,
+            19
+          ],
+          "summon": [
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "mirror": [
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "hit": [
+            33,
+            34
+          ],
+          "death": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "walk_down": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "walk_up": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "hMul": 3.6
+      },
+      "baseline_sha256": "48974a8802b575eec05fc00b09a732be09d41dda8f03bc6c41e4116744b0d880",
+      "registry_sha256": "82e29a9a6c8aca5d8d94a039c397c61d09fcca57cf8a46fb6567fad13b3e5802",
+      "candidate_sha256": "48974a8802b575eec05fc00b09a732be09d41dda8f03bc6c41e4116744b0d880",
+      "gate": {
+        "ok": false,
+        "status": "FIX",
+        "approvalClaimed": false,
+        "sha256": "48974a8802b575eec05fc00b09a732be09d41dda8f03bc6c41e4116744b0d880",
+        "rgba_sha256": "3ae121a131b092f6cb15161181d384ac7733a46d1f515da7a7ef078d3229bbe4",
+        "width": 768,
+        "height": 768,
+        "bytes": 77835,
+        "issues": [
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 4,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 5,
+            "pixels": 5
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 6,
+            "pixels": 5
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 7,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 8,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 9,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 12,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 13,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 14,
+            "pixels": 1
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 16,
+            "pixels": 2
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 17,
+            "pixels": 6
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 18,
+            "pixels": 6
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 19,
+            "pixels": 10
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 20,
+            "pixels": 1
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 21,
+            "pixels": 3
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 22,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 23,
+            "pixels": 5
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 24,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 25,
+            "pixels": 3
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 27,
+            "pixels": 1
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 29,
+            "pixels": 6
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 30,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 31,
+            "pixels": 6
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 40,
+            "pixels": 26
+          }
+        ],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 48,
+          "requiredClips": [
+            "atk",
+            "cast",
+            "death",
+            "hit",
+            "idle",
+            "mirror",
+            "summon",
+            "walk",
+            "walk_down",
+            "walk_up"
+          ],
+          "issues": []
+        },
+        "frameCount": 41
+      },
+      "status": "REJECTED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "cm_dama"
+    },
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "cm_maestro",
+      "target": {
+        "png": "assets/sprites/arenas/ciudad/cm_maestro/atlas.png",
+        "meta_file": "js/assets/ciudad-meta.js",
+        "const": "CIUDAD_ATLAS",
+        "key": "cm_maestro"
+      },
+      "meta": {
+        "w": 96,
+        "h": 128,
+        "cols": 8,
+        "refH": 118,
+        "anchor": 0.9688,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "walk": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "atk": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "cast": [
+            16,
+            17,
+            18,
+            19
+          ],
+          "tp": [
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "hit": [
+            26,
+            27
+          ],
+          "death": [
+            28,
+            29,
+            30,
+            31,
+            32,
+            33
+          ],
+          "walk_down": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "walk_up": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "hMul": 3.3
+      },
+      "baseline_sha256": "fa4d6a592d207e46aa9af62ac207e57499e901f61538815fd6bb5ecba1bd331f",
+      "registry_sha256": "82e29a9a6c8aca5d8d94a039c397c61d09fcca57cf8a46fb6567fad13b3e5802",
+      "candidate_sha256": "fa4d6a592d207e46aa9af62ac207e57499e901f61538815fd6bb5ecba1bd331f",
+      "gate": {
+        "ok": false,
+        "status": "FIX",
+        "approvalClaimed": false,
+        "sha256": "fa4d6a592d207e46aa9af62ac207e57499e901f61538815fd6bb5ecba1bd331f",
+        "rgba_sha256": "033be7d837e7bcdf139cfe2042badc0220f578008507c1c9663c08b68917e5ee",
+        "width": 768,
+        "height": 640,
+        "bytes": 62432,
+        "issues": [
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 0,
+            "pixels": 20
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 1,
+            "pixels": 20
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 2,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 3,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 4,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 6,
+            "pixels": 2
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 7,
+            "pixels": 3
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 9,
+            "pixels": 2
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 10,
+            "pixels": 22
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 11,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 12,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 13,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 14,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 15,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 16,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 17,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 18,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 19,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 20,
+            "pixels": 20
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 21,
+            "pixels": 19
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 24,
+            "pixels": 22
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 25,
+            "pixels": 20
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 26,
+            "pixels": 19
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 27,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 28,
+            "pixels": 24
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 29,
+            "pixels": 19
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 30,
+            "pixels": 31
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 31,
+            "pixels": 32
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 32,
+            "pixels": 31
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 33,
+            "pixels": 23
+          }
+        ],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 40,
+          "requiredClips": [
+            "atk",
+            "cast",
+            "death",
+            "hit",
+            "idle",
+            "tp",
+            "walk",
+            "walk_down",
+            "walk_up"
+          ],
+          "issues": []
+        },
+        "frameCount": 34
+      },
+      "status": "REJECTED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "cm_maestro"
+    },
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "cm_tramoyista",
+      "target": {
+        "png": "assets/sprites/arenas/ciudad/cm_tramoyista/atlas.png",
+        "meta_file": "js/assets/ciudad-meta.js",
+        "const": "CIUDAD_ATLAS",
+        "key": "cm_tramoyista"
+      },
+      "meta": {
+        "w": 128,
+        "h": 128,
+        "cols": 8,
+        "refH": 117,
+        "anchor": 0.9688,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "walk": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "atk": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "heavy": [
+            16,
+            17
+          ],
+          "drag": [
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "wreck": [
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33
+          ],
+          "throw": [
+            34,
+            35,
+            36,
+            37,
+            38,
+            39
+          ],
+          "hit": [
+            40,
+            41,
+            42,
+            43,
+            44,
+            45
+          ],
+          "death": [
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "walk_down": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "walk_up": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "hMul": 2.8
+      },
+      "baseline_sha256": "2a68fef63f1c51dd1a5ed6aa8645de4f648892d1b7b7af354c9d39c6dd6ea8fb",
+      "registry_sha256": "82e29a9a6c8aca5d8d94a039c397c61d09fcca57cf8a46fb6567fad13b3e5802",
+      "candidate_sha256": "2a68fef63f1c51dd1a5ed6aa8645de4f648892d1b7b7af354c9d39c6dd6ea8fb",
+      "gate": {
+        "ok": false,
+        "status": "FIX",
+        "approvalClaimed": false,
+        "sha256": "2a68fef63f1c51dd1a5ed6aa8645de4f648892d1b7b7af354c9d39c6dd6ea8fb",
+        "rgba_sha256": "0ad081b8c3aa698730fbd95acc2bf9bcbfe39d03a2c53f9600e6277cfbe73d1f",
+        "width": 1024,
+        "height": 896,
+        "bytes": 195057,
+        "issues": [
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 0,
+            "pixels": 48
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 1,
+            "pixels": 48
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 2,
+            "pixels": 48
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 3,
+            "pixels": 52
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 4,
+            "pixels": 45
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 5,
+            "pixels": 38
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 6,
+            "pixels": 40
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 7,
+            "pixels": 63
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 8,
+            "pixels": 46
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 9,
+            "pixels": 48
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 10,
+            "pixels": 32
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 11,
+            "pixels": 32
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 12,
+            "pixels": 33
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 13,
+            "pixels": 33
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 14,
+            "pixels": 37
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 15,
+            "pixels": 32
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 16,
+            "pixels": 32
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 17,
+            "pixels": 33
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 18,
+            "pixels": 41
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 19,
+            "pixels": 42
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 20,
+            "pixels": 40
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 21,
+            "pixels": 42
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 22,
+            "pixels": 41
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 23,
+            "pixels": 32
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 24,
+            "pixels": 29
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 25,
+            "pixels": 32
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 26,
+            "pixels": 39
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 27,
+            "pixels": 56
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 28,
+            "pixels": 51
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 29,
+            "pixels": 47
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 30,
+            "pixels": 51
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 31,
+            "pixels": 56
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 32,
+            "pixels": 39
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 33,
+            "pixels": 38
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 34,
+            "pixels": 61
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 35,
+            "pixels": 50
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 36,
+            "pixels": 51
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 37,
+            "pixels": 59
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 38,
+            "pixels": 54
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 39,
+            "pixels": 31
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 40,
+            "pixels": 58
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 41,
+            "pixels": 59
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 42,
+            "pixels": 56
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 43,
+            "pixels": 49
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 44,
+            "pixels": 51
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 45,
+            "pixels": 50
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 46,
+            "pixels": 32
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 47,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 48,
+            "pixels": 31
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 49,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 50,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 51,
+            "pixels": 30
+          }
+        ],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 56,
+          "requiredClips": [
+            "atk",
+            "death",
+            "drag",
+            "heavy",
+            "hit",
+            "idle",
+            "throw",
+            "walk",
+            "walk_down",
+            "walk_up",
+            "wreck"
+          ],
+          "issues": []
+        },
+        "frameCount": 52
+      },
+      "status": "REJECTED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "cm_tramoyista"
+    },
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "cm_verdugo",
+      "target": {
+        "png": "assets/sprites/arenas/ciudad/cm_verdugo/atlas.png",
+        "meta_file": "js/assets/ciudad-meta.js",
+        "const": "CIUDAD_ATLAS",
+        "key": "cm_verdugo"
+      },
+      "meta": {
+        "w": 128,
+        "h": 128,
+        "cols": 8,
+        "refH": 95,
+        "anchor": 0.9688,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "walk": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "chop": [
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "atk": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "atk2": [
+            19,
+            20,
+            21
+          ],
+          "sweep": [
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          "smash": [
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37
+          ],
+          "hit": [
+            38,
+            39
+          ],
+          "hurt": [
+            40,
+            41
+          ],
+          "death": [
+            42,
+            43,
+            44,
+            45,
+            46,
+            47
+          ],
+          "walk_down": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "walk_up": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        }
+      },
+      "baseline_sha256": "301f3d53b85b1c11e89193130af5de6c4939714208e09f71912ca076f0e1658d",
+      "registry_sha256": "82e29a9a6c8aca5d8d94a039c397c61d09fcca57cf8a46fb6567fad13b3e5802",
+      "candidate_sha256": "301f3d53b85b1c11e89193130af5de6c4939714208e09f71912ca076f0e1658d",
+      "gate": {
+        "ok": false,
+        "status": "FIX",
+        "approvalClaimed": false,
+        "sha256": "301f3d53b85b1c11e89193130af5de6c4939714208e09f71912ca076f0e1658d",
+        "rgba_sha256": "b4d69a37120cefaaf788e0b68530570e93e45f2f19f5e16faf56df4e069f94c7",
+        "width": 1024,
+        "height": 768,
+        "bytes": 126915,
+        "issues": [
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 0,
+            "pixels": 44
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 1,
+            "pixels": 43
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 2,
+            "pixels": 48
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 3,
+            "pixels": 50
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 4,
+            "pixels": 35
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 5,
+            "pixels": 36
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 6,
+            "pixels": 36
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 7,
+            "pixels": 35
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 8,
+            "pixels": 35
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 9,
+            "pixels": 35
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 10,
+            "pixels": 26
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 11,
+            "pixels": 24
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 12,
+            "pixels": 45
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 13,
+            "pixels": 62
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 14,
+            "pixels": 59
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 15,
+            "pixels": 24
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 16,
+            "pixels": 45
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 17,
+            "pixels": 62
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 18,
+            "pixels": 59
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 19,
+            "pixels": 62
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 20,
+            "pixels": 59
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 21,
+            "pixels": 45
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 22,
+            "pixels": 27
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 23,
+            "pixels": 26
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 24,
+            "pixels": 27
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 25,
+            "pixels": 27
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 26,
+            "pixels": 26
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 27,
+            "pixels": 26
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 28,
+            "pixels": 28
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 29,
+            "pixels": 23
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 30,
+            "pixels": 26
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 31,
+            "pixels": 25
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 32,
+            "pixels": 9
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 33,
+            "pixels": 26
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 34,
+            "pixels": 72
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 35,
+            "pixels": 72
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 36,
+            "pixels": 69
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 37,
+            "pixels": 68
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 38,
+            "pixels": 28
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 39,
+            "pixels": 41
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 40,
+            "pixels": 28
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 41,
+            "pixels": 41
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 42,
+            "pixels": 44
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 43,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 44,
+            "pixels": 55
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 45,
+            "pixels": 53
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 46,
+            "pixels": 53
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 47,
+            "pixels": 37
+          }
+        ],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 48,
+          "requiredClips": [
+            "atk",
+            "atk2",
+            "chop",
+            "death",
+            "hit",
+            "hurt",
+            "idle",
+            "smash",
+            "sweep",
+            "walk",
+            "walk_down",
+            "walk_up"
+          ],
+          "issues": []
+        },
+        "frameCount": 48
+      },
+      "status": "REJECTED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "cm_verdugo"
+    },
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "ab_carcelero",
+      "target": {
+        "png": "assets/sprites/arenas/abismo/ab_carcelero/atlas.png",
+        "meta_file": "js/assets/abismo-meta.js",
+        "const": "ABISMO_ATLAS",
+        "key": "ab_carcelero"
+      },
+      "meta": {
+        "w": 128,
+        "h": 128,
+        "cols": 8,
+        "refH": 120,
+        "anchor": 0.9766,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "walk": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "chain": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "atk": [
+            18,
+            19,
+            20,
+            21
+          ],
+          "drag": [
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          "slam": [
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "break": [
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43
+          ],
+          "hit": [
+            44,
+            45
+          ],
+          "death": [
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "walk_down": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "walk_up": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "hMul": 3.3
+      },
+      "baseline_sha256": "5de8ca8ab43fd50babc0b88f64d0bfdf146749ae32766a2d7cdf336cfcadc40a",
+      "registry_sha256": "64621d189e13616ebceb3cc37ba9b985c6fdc713a7578d152e208cad62fb7f84",
+      "candidate_sha256": "5de8ca8ab43fd50babc0b88f64d0bfdf146749ae32766a2d7cdf336cfcadc40a",
+      "gate": {
+        "ok": false,
+        "status": "FIX",
+        "approvalClaimed": false,
+        "sha256": "5de8ca8ab43fd50babc0b88f64d0bfdf146749ae32766a2d7cdf336cfcadc40a",
+        "rgba_sha256": "26f8ed74170cd6c0ebd6812615a01a7eb6da97d5f977a93861734fa3dba06a63",
+        "width": 1024,
+        "height": 896,
+        "bytes": 145003,
+        "issues": [
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 0,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 1,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 2,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 3,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 4,
+            "pixels": 30
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 5,
+            "pixels": 20
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 6,
+            "pixels": 22
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 7,
+            "pixels": 39
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 8,
+            "pixels": 22
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 9,
+            "pixels": 29
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 10,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 11,
+            "pixels": 40
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 12,
+            "pixels": 42
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 13,
+            "pixels": 42
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 14,
+            "pixels": 37
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 15,
+            "pixels": 39
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 16,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 17,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 18,
+            "pixels": 40
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 19,
+            "pixels": 42
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 20,
+            "pixels": 42
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 21,
+            "pixels": 39
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 22,
+            "pixels": 42
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 23,
+            "pixels": 42
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 24,
+            "pixels": 42
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 25,
+            "pixels": 46
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 26,
+            "pixels": 47
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 27,
+            "pixels": 41
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 28,
+            "pixels": 42
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 29,
+            "pixels": 41
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 30,
+            "pixels": 20
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 31,
+            "pixels": 15
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 32,
+            "pixels": 29
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 33,
+            "pixels": 29
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 34,
+            "pixels": 31
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 35,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 36,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 37,
+            "pixels": 35
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 38,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 39,
+            "pixels": 35
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 40,
+            "pixels": 41
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 41,
+            "pixels": 41
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 42,
+            "pixels": 41
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 43,
+            "pixels": 41
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 44,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 45,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 46,
+            "pixels": 34
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 47,
+            "pixels": 32
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 48,
+            "pixels": 29
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 49,
+            "pixels": 33
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 50,
+            "pixels": 30
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 51,
+            "pixels": 25
+          }
+        ],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 56,
+          "requiredClips": [
+            "atk",
+            "break",
+            "chain",
+            "death",
+            "drag",
+            "hit",
+            "idle",
+            "slam",
+            "walk",
+            "walk_down",
+            "walk_up"
+          ],
+          "issues": []
+        },
+        "frameCount": 52
+      },
+      "status": "REJECTED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "ab_carcelero"
+    },
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "angel_corrompido",
+      "target": {
+        "png": "assets/sprites/bosses/infernal/hechicero/angel/atlas.png",
+        "meta_file": "js/assets/pixrig-meta.js",
+        "const": "PIXRIG_ATLAS",
+        "key": "angel_corrompido"
+      },
+      "meta": {
+        "w": 192,
+        "h": 192,
+        "cols": 8,
+        "refH": 113,
+        "anchor": 0.8177333333333333,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "walk": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "cast": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "cast0": [
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "atk": [
+            24,
+            25,
+            26,
+            27
+          ],
+          "hit": [
+            28,
+            29
+          ],
+          "death": [
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "walk_down": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "kneel": [
+            33
+          ]
+        },
+        "hMul": 4.4
+      },
+      "baseline_sha256": "6fad6808022a2c6f88052ed15b7f53db1259546f3bd3b650bb9c9d7c79b8ccc0",
+      "registry_sha256": "7366cd5301117abffee92806d899d07b26d3407111b8e678d251f61a5229f8dc",
+      "candidate_sha256": "6fad6808022a2c6f88052ed15b7f53db1259546f3bd3b650bb9c9d7c79b8ccc0",
+      "gate": {
+        "ok": true,
+        "status": "TECHNICAL_PASS",
+        "approvalClaimed": false,
+        "sha256": "6fad6808022a2c6f88052ed15b7f53db1259546f3bd3b650bb9c9d7c79b8ccc0",
+        "rgba_sha256": "82bd905824bd04b9ff9a4af2fae77c3d2535773d3c56a596f5e2c719e42810bf",
+        "width": 1536,
+        "height": 960,
+        "bytes": 108590,
+        "issues": [],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 40,
+          "requiredClips": [
+            "atk",
+            "cast",
+            "cast0",
+            "death",
+            "hit",
+            "idle",
+            "kneel",
+            "walk",
+            "walk_down"
+          ],
+          "issues": []
+        },
+        "frameCount": 36
+      },
+      "status": "REUSED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "angel_corrompido"
+    },
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "golem_cuerpos",
+      "target": {
+        "png": "assets/sprites/bosses/infernal/hechicero/golem/v2/atlas.png",
+        "meta_file": "js/assets/pixrig-meta.js",
+        "const": "PIXRIG_ATLAS",
+        "key": "golem_cuerpos"
+      },
+      "meta": {
+        "w": 320,
+        "h": 272,
+        "cols": 8,
+        "refH": 215,
+        "anchor": 0.9853,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "walk": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "atk": [
+            10,
+            11,
+            12,
+            13
+          ],
+          "slam": [
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "hit": [
+            19,
+            20
+          ],
+          "death": [
+            21,
+            22,
+            23,
+            24,
+            25,
+            26
+          ],
+          "pre": [
+            27
+          ],
+          "tf": [
+            28,
+            29,
+            30,
+            31
+          ],
+          "walk_down": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "walk_up": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "hMul": 3
+      },
+      "baseline_sha256": "4779251b9caa90f2f439dbe2f81350571bafbe8a201a7df9dd77ff1f5bd6c014",
+      "registry_sha256": "7366cd5301117abffee92806d899d07b26d3407111b8e678d251f61a5229f8dc",
+      "candidate_sha256": "4779251b9caa90f2f439dbe2f81350571bafbe8a201a7df9dd77ff1f5bd6c014",
+      "gate": {
+        "ok": false,
+        "status": "FIX",
+        "approvalClaimed": false,
+        "sha256": "4779251b9caa90f2f439dbe2f81350571bafbe8a201a7df9dd77ff1f5bd6c014",
+        "rgba_sha256": "c013d8fca0f33bf039bf1609dd4355fb1147b57c3c3bc6bfc4be24b31e723d8f",
+        "width": 2560,
+        "height": 1088,
+        "bytes": 469994,
+        "issues": [
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 0,
+            "pixels": 87
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 1,
+            "pixels": 86
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 2,
+            "pixels": 87
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 3,
+            "pixels": 90
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 4,
+            "pixels": 82
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 5,
+            "pixels": 51
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 6,
+            "pixels": 51
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 7,
+            "pixels": 90
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 8,
+            "pixels": 85
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 9,
+            "pixels": 90
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 10,
+            "pixels": 86
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 11,
+            "pixels": 114
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 12,
+            "pixels": 93
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 13,
+            "pixels": 93
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 14,
+            "pixels": 86
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 15,
+            "pixels": 114
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 16,
+            "pixels": 114
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 17,
+            "pixels": 93
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 18,
+            "pixels": 93
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 19,
+            "pixels": 86
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 20,
+            "pixels": 86
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 21,
+            "pixels": 124
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 22,
+            "pixels": 109
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 23,
+            "pixels": 94
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 24,
+            "pixels": 110
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 25,
+            "pixels": 81
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 26,
+            "pixels": 29
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 27,
+            "pixels": 47
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 28,
+            "pixels": 72
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 29,
+            "pixels": 76
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 30,
+            "pixels": 97
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 31,
+            "pixels": 97
+          }
+        ],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 32,
+          "requiredClips": [
+            "atk",
+            "death",
+            "hit",
+            "idle",
+            "pre",
+            "slam",
+            "tf",
+            "walk",
+            "walk_down",
+            "walk_up"
+          ],
+          "issues": []
+        },
+        "frameCount": 32
+      },
+      "status": "REJECTED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "golem_cuerpos"
+    },
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "cm_presentador",
+      "target": {
+        "meta_file": "js/assets/ciudad-meta.js",
+        "const": "CIUDAD_ATLAS",
+        "png": "assets/sprites/arenas/ciudad/cm_presentador/atlas.png",
+        "key": "cm_presentador"
+      },
+      "meta": {
+        "w": 96,
+        "h": 128,
+        "cols": 8,
+        "refH": 117,
+        "anchor": 0.9688,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "walk": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "atk": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "cast": [
+            16,
+            17,
+            18,
+            19
+          ],
+          "hit": [
+            20,
+            21
+          ],
+          "death": [
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "transform": [
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39
+          ],
+          "walk_down": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "walk_up": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "hMul": 3.3
+      },
+      "baseline_sha256": "1f22ad5bce9a849a9e567e7eecfa404f1529d417465564e297d0c49816d0a8d6",
+      "registry_sha256": "82e29a9a6c8aca5d8d94a039c397c61d09fcca57cf8a46fb6567fad13b3e5802",
+      "candidate_sha256": "1f22ad5bce9a849a9e567e7eecfa404f1529d417465564e297d0c49816d0a8d6",
+      "gate": {
+        "ok": false,
+        "status": "FIX",
+        "approvalClaimed": false,
+        "sha256": "1f22ad5bce9a849a9e567e7eecfa404f1529d417465564e297d0c49816d0a8d6",
+        "rgba_sha256": "e8cf2da563e6e9aa0fcc4f2264a92aa68d3391434bb9e17c7bf0bc2e5e20192d",
+        "width": 768,
+        "height": 640,
+        "bytes": 72165,
+        "issues": [
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 0,
+            "pixels": 8
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 1,
+            "pixels": 8
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 2,
+            "pixels": 8
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 3,
+            "pixels": 8
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 4,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 6,
+            "pixels": 1
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 7,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 9,
+            "pixels": 1
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 10,
+            "pixels": 13
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 11,
+            "pixels": 13
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 12,
+            "pixels": 13
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 13,
+            "pixels": 13
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 14,
+            "pixels": 13
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 15,
+            "pixels": 8
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 16,
+            "pixels": 13
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 17,
+            "pixels": 13
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 18,
+            "pixels": 13
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 19,
+            "pixels": 13
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 20,
+            "pixels": 8
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 21,
+            "pixels": 8
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 22,
+            "pixels": 8
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 23,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 24,
+            "pixels": 22
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 25,
+            "pixels": 31
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 26,
+            "pixels": 45
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 27,
+            "pixels": 28
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 28,
+            "pixels": 8
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 29,
+            "pixels": 15
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 30,
+            "pixels": 16
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 31,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 32,
+            "pixels": 25
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 33,
+            "pixels": 19
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 34,
+            "pixels": 18
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 35,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 36,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 37,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 38,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 39,
+            "pixels": 17
+          }
+        ],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 40,
+          "requiredClips": [
+            "atk",
+            "cast",
+            "death",
+            "hit",
+            "idle",
+            "transform",
+            "walk",
+            "walk_down",
+            "walk_up"
+          ],
+          "issues": []
+        },
+        "frameCount": 40
+      },
+      "status": "REJECTED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "cm_presentador"
+    },
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "cm_presentador2",
+      "target": {
+        "meta_file": "js/assets/ciudad-meta.js",
+        "const": "CIUDAD_ATLAS",
+        "png": "assets/sprites/arenas/ciudad/cm_presentador2/atlas.png",
+        "key": "cm_presentador2"
+      },
+      "meta": {
+        "w": 96,
+        "h": 128,
+        "cols": 8,
+        "refH": 111,
+        "anchor": 0.9688,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "walk": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "atk": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "cast": [
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ],
+          "hit": [
+            22,
+            23
+          ],
+          "death": [
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          "walk_down": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "walk_up": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "hMul": 3.1
+      },
+      "baseline_sha256": "1ed2df8a8d72d16a61faa99fdf4417acbe8ce5fe19d749e51c90fc5a31298784",
+      "registry_sha256": "82e29a9a6c8aca5d8d94a039c397c61d09fcca57cf8a46fb6567fad13b3e5802",
+      "candidate_sha256": "1ed2df8a8d72d16a61faa99fdf4417acbe8ce5fe19d749e51c90fc5a31298784",
+      "gate": {
+        "ok": false,
+        "status": "FIX",
+        "approvalClaimed": false,
+        "sha256": "1ed2df8a8d72d16a61faa99fdf4417acbe8ce5fe19d749e51c90fc5a31298784",
+        "rgba_sha256": "cc2ecf964797570f5458f7e2c901c2717dbbeffd4af17e9bf76b21ac45292290",
+        "width": 768,
+        "height": 512,
+        "bytes": 50261,
+        "issues": [
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 0,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 1,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 2,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 3,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 10,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 11,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 12,
+            "pixels": 25
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 13,
+            "pixels": 25
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 14,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 15,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 16,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 17,
+            "pixels": 19
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 18,
+            "pixels": 19
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 19,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 20,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 21,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 22,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 23,
+            "pixels": 17
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 24,
+            "pixels": 21
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 25,
+            "pixels": 19
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 26,
+            "pixels": 24
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 27,
+            "pixels": 35
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 28,
+            "pixels": 35
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 29,
+            "pixels": 32
+          }
+        ],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 32,
+          "requiredClips": [
+            "atk",
+            "cast",
+            "death",
+            "hit",
+            "idle",
+            "walk",
+            "walk_down",
+            "walk_up"
+          ],
+          "issues": []
+        },
+        "frameCount": 30
+      },
+      "status": "REJECTED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "cm_presentador2"
+    },
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "cm_presentador3",
+      "target": {
+        "meta_file": "js/assets/ciudad-meta.js",
+        "const": "CIUDAD_ATLAS",
+        "png": "assets/sprites/arenas/ciudad/cm_presentador3/atlas.png",
+        "key": "cm_presentador3"
+      },
+      "meta": {
+        "w": 112,
+        "h": 144,
+        "cols": 8,
+        "refH": 121,
+        "anchor": 0.9722,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "walk": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "atk": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "cast": [
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "hit": [
+            24,
+            25
+          ],
+          "death": [
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "walk_down": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "walk_up": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        "hMul": 3.2
+      },
+      "baseline_sha256": "fae4cba9399bea63f12b7a404bdb4f1ed9d5492b066639f526fde9b53ea70f26",
+      "registry_sha256": "82e29a9a6c8aca5d8d94a039c397c61d09fcca57cf8a46fb6567fad13b3e5802",
+      "candidate_sha256": "fae4cba9399bea63f12b7a404bdb4f1ed9d5492b066639f526fde9b53ea70f26",
+      "gate": {
+        "ok": false,
+        "status": "FIX",
+        "approvalClaimed": false,
+        "sha256": "fae4cba9399bea63f12b7a404bdb4f1ed9d5492b066639f526fde9b53ea70f26",
+        "rgba_sha256": "fd14dab1dd2a43c1441f6066403f8aac3251724223e5061da6fbd36c1736853f",
+        "width": 896,
+        "height": 720,
+        "bytes": 88375,
+        "issues": [
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 13,
+            "pixels": 6
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 14,
+            "pixels": 2
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 15,
+            "pixels": 6
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 19,
+            "pixels": 11
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 20,
+            "pixels": 11
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 21,
+            "pixels": 14
+          }
+        ],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 40,
+          "requiredClips": [
+            "atk",
+            "cast",
+            "death",
+            "hit",
+            "idle",
+            "walk",
+            "walk_down",
+            "walk_up"
+          ],
+          "issues": []
+        },
+        "frameCount": 36
+      },
+      "status": "REJECTED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "cm_presentador3"
+    },
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "tiburon_joven",
+      "target": {
+        "png": "assets/sprites/enemies/acuatica/tiburon_joven/atlas.png",
+        "key": "tiburon_joven",
+        "meta_file": "js/assets/pixrig-meta.js",
+        "const": "PIXRIG_ATLAS"
+      },
+      "meta": {
+        "w": 136,
+        "h": 100,
+        "cols": 8,
+        "refH": 50,
+        "anchor": 0.6837,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "walk": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "atk": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "hit": [
+            20,
+            21
+          ],
+          "death": [
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          "walk_down": [
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37
+          ],
+          "walk_up": [
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45
+          ],
+          "atk_down": [
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "atk_up": [
+            52,
+            53,
+            54,
+            55,
+            56,
+            57
+          ],
+          "hit_down": [
+            58
+          ],
+          "hit_up": [
+            59
+          ]
+        },
+        "hMul": 2.27
+      },
+      "baseline_sha256": "356a8cd77d25367f59ea82448495b9932b9da9c4063bf7137fa52780f83aa14d",
+      "registry_sha256": "7366cd5301117abffee92806d899d07b26d3407111b8e678d251f61a5229f8dc",
+      "candidate_sha256": "356a8cd77d25367f59ea82448495b9932b9da9c4063bf7137fa52780f83aa14d",
+      "gate": {
+        "ok": false,
+        "status": "FIX",
+        "approvalClaimed": false,
+        "sha256": "356a8cd77d25367f59ea82448495b9932b9da9c4063bf7137fa52780f83aa14d",
+        "rgba_sha256": "622c5147ffb6de48b66967b95bc3fe25e5b718d438af052a8fcfd5ab5114de0d",
+        "width": 1088,
+        "height": 800,
+        "bytes": 76881,
+        "issues": [
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 16,
+            "pixels": 2
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 29,
+            "pixels": 1
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 30,
+            "pixels": 7
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 31,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 32,
+            "pixels": 1
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 33,
+            "pixels": 5
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 34,
+            "pixels": 7
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 35,
+            "pixels": 7
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 36,
+            "pixels": 7
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 37,
+            "pixels": 7
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 39,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 40,
+            "pixels": 5
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 46,
+            "pixels": 7
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 47,
+            "pixels": 7
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 48,
+            "pixels": 6
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 49,
+            "pixels": 1
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 50,
+            "pixels": 4
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 51,
+            "pixels": 6
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 59,
+            "pixels": 22
+          }
+        ],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 64,
+          "requiredClips": [
+            "atk",
+            "atk_down",
+            "atk_up",
+            "death",
+            "hit",
+            "hit_down",
+            "hit_up",
+            "idle",
+            "walk",
+            "walk_down",
+            "walk_up"
+          ],
+          "issues": []
+        },
+        "frameCount": 60
+      },
+      "status": "REJECTED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "tiburon_joven"
+    },
+    {
+      "schema": "fondal-art-engine.delivery.v1",
+      "provider": "pixrig",
+      "recipe": "tiburon_blanco",
+      "target": {
+        "png": "assets/sprites/enemies/acuatica/tiburon_blanco/atlas.png",
+        "key": "tiburon_blanco",
+        "meta_file": "js/assets/pixrig-meta.js",
+        "const": "PIXRIG_ATLAS"
+      },
+      "meta": {
+        "w": 216,
+        "h": 156,
+        "cols": 8,
+        "refH": 83,
+        "anchor": 0.6639,
+        "sets": {
+          "idle": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "walk": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "atk": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "hit": [
+            20,
+            21
+          ],
+          "death": [
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          "walk_down": [
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37
+          ],
+          "walk_up": [
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45
+          ],
+          "atk_down": [
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "atk_up": [
+            52,
+            53,
+            54,
+            55,
+            56,
+            57
+          ],
+          "hit_down": [
+            58
+          ],
+          "hit_up": [
+            59
+          ]
+        },
+        "hMul": 2.44
+      },
+      "baseline_sha256": "0e176b2839da172fb67273c847b948196276b851c9ab57ea6acd8c3b85ab9af4",
+      "registry_sha256": "7366cd5301117abffee92806d899d07b26d3407111b8e678d251f61a5229f8dc",
+      "candidate_sha256": "0e176b2839da172fb67273c847b948196276b851c9ab57ea6acd8c3b85ab9af4",
+      "gate": {
+        "ok": false,
+        "status": "FIX",
+        "approvalClaimed": false,
+        "sha256": "0e176b2839da172fb67273c847b948196276b851c9ab57ea6acd8c3b85ab9af4",
+        "rgba_sha256": "e404e80c4523422bd3876482972aae09b574f3c6c3a7d0192e9be9e18600de5b",
+        "width": 1728,
+        "height": 1248,
+        "bytes": 153367,
+        "issues": [
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 29,
+            "pixels": 2
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 30,
+            "pixels": 5
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 34,
+            "pixels": 5
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 35,
+            "pixels": 12
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 36,
+            "pixels": 12
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 37,
+            "pixels": 12
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 39,
+            "pixels": 6
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 40,
+            "pixels": 9
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 41,
+            "pixels": 1
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 46,
+            "pixels": 12
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 47,
+            "pixels": 12
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 48,
+            "pixels": 3
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 51,
+            "pixels": 1
+          },
+          {
+            "code": "CLIPPED_FRAME",
+            "frame": 59,
+            "pixels": 22
+          }
+        ],
+        "contract": {
+          "status": "COMPATIBLE_NOT_ART_APPROVAL",
+          "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+          "approvalClaimed": false,
+          "installed": false,
+          "frames": 64,
+          "requiredClips": [
+            "atk",
+            "atk_down",
+            "atk_up",
+            "death",
+            "hit",
+            "hit_down",
+            "hit_up",
+            "idle",
+            "walk",
+            "walk_down",
+            "walk_up"
+          ],
+          "issues": []
+        },
+        "frameCount": 60
+      },
+      "status": "REJECTED",
+      "identicalPixels": true,
+      "metadataUnchanged": true,
+      "geometryPreservedOverscan": false,
+      "installed": false,
+      "api_cost_usd": 0,
+      "provenance": "repository-authored procedural rig; no external model or API",
+      "id": "tiburon_blanco"
+    }
+  ],
+  "remaining": 13,
+  "finished_at": "2026-10-28T14:07:29.641Z"
+}
