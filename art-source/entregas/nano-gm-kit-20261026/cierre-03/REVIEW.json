@@ -1,0 +1,20 @@
+{
+  "state": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "sourceSha256": "7ad5802bc3ccc3dfba8da0bf81ddb7c59849eed0d066516a2f549ab4e0875506",
+  "components": [
+    "A-FX-nano_gm-h1/impact-contract",
+    "A-FX-nano_gm-h3/impact-contract"
+  ],
+  "newInstalledPNG": 0,
+  "newBodySprites": 0,
+  "reviewed": [
+    "final-h0.webp",
+    "final-h2.webp",
+    "mobile/infernal-base-sparse-h0-256-before.png",
+    "mobile/infernal-base-sparse-h2-256-before.png"
+  ],
+  "finding": "Cable continuo eliminado; ahora trazos separados aún repetitivos/discretos. Impacto H1 mantiene centro abierto. Jerarquía de lanzamiento con estrella y alas legadas no resuelta; no ArtPASS. Dos hojas12vistas +2fullframes revisados; no revisión desktop completa/todaslooks/seisarenas.",
+  "next": "Resolver composición local de firma normal Nano H1/H3 junto trayectoria, preservar H2/UF/alas existentes. No nuevo kit. Gates visuales/bordes y CIexacto antes merge."
+}

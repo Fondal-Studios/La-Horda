@@ -1,0 +1,19 @@
+{
+  "source": "js/champions/vfx-b/nano_gm.js",
+  "sha256": "7ad5802bc3ccc3dfba8da0bf81ddb7c59849eed0d066516a2f549ab4e0875506",
+  "native": {
+    "beam": [
+      20,
+      18,
+      8
+    ],
+    "decalFrames": 10
+  },
+  "commands": [
+    "FREEZE_BOOT=1 PARENT_MATERIAL=1 PARENT_SOURCE=art-source/entregas/nano-gm-kit-20261026/cierre-03/source-before.js ARENAS=bosque,infernal LOOKS=base,monster DENSITIES=sparse,dense SLOTS=0,2 ALL_PHASES=1 MOBILE=1 OUT=art-source/entregas/nano-gm-kit-20261026/cierre-03/mobile node tools/vfx/capture-nano-evolved.js",
+    "Repeat without MOBILE for desktop",
+    "OUT=art-source/entregas/nano-gm-kit-20261026/cierre-03/native-final node tools/vfx/nano-close-native.js"
+  ],
+  "environment": "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/nano-chromium",
+  "preserved": "Hooks, adapter>520, geometry, lifetimes, H2, UF, combat, shared engine unchanged."
+}

@@ -9,17 +9,20 @@
   kvbDefMotif('ng_scroll', 9, 9, kvbBmp(['.eeeeeee.', 'eWWWWWWWe', 'eWkkWkkWe', 'eWWWWWWWe', 'eWkkkWkWe', 'eWWWWWWWe', '.eeeeeee.'], {e: '#e8c56a', W: '#fff4d6', k: '#7a6420'}));
   kvbDefMotif('ng_mote', 3, 3, kvbBmp(['.y.', 'yWy', '.y.'], {y: '#e8c56a', W: '#fff4d6'}));
   kvbDefBeam('ng_decree', 8, 20, 18, (g, q, W, H, f) => {
-    // Flowing paired ink strokes; tile endpoints share the same tangent.
+    // Separated ink slashes with a travelling gold edge: no continuous cable.
     if(q >= 1) return;
-    for(let x = 0; x < W; x++){
-      const wave = Math.round(Math.sin(x / W * Math.PI * 2) * 2);
-      const y = Math.floor(H / 2) + wave;
-      const pulse = (x + f * 3) % W;
-      g.fillStyle = SH[0]; g.fillRect(x, y - 1, 1, 3);
-      if(pulse < W * (1 - q * .65)){
-        g.fillStyle = pulse < 4 ? NG[3] : NG[2]; g.fillRect(x, y, 1, 1);
-      }
+    const head = 4 + (f * 2) % 10;
+    for(let x = 2; x < W - 2; x++){
+      const u = (x - 2) / (W - 4);
+      if(x > head + 4 || x < head - 6) continue;
+      const y = Math.round(H * .65 - u * H * .3);
+      const thick = Math.max(1, Math.round(7 * Math.sin(u * Math.PI) * (1 - q * .5)));
+      g.fillStyle = SH[0]; g.fillRect(x, y - Math.floor(thick / 2), 1, thick);
+      g.fillStyle = SH[2]; g.fillRect(x, y, 1, Math.max(1, Math.floor(thick / 2)));
+      if(x >= head - 2){g.fillStyle = x > head ? NG[3] : NG[2];g.fillRect(x, y, 1, 1);}
     }
+    if(f < 5){g.fillStyle = SH[3];g.fillRect(3 + f, 5, 2, 1);}
+
   });
   const lawDetails = (lg, c, R, rad, pal, q) => { lg.save(); lg.translate(c, c); lg.rotate(q * .9); const s = rad * .45; kvbPoly(lg, [[-s, -s], [s, -s], [s, s], [-s, s]], null, pal[3], 1.6); lg.rotate(.7854); kvbPoly(lg, [[-s * .7, -s * .7], [s * .7, -s * .7], [s * .7, s * .7], [-s * .7, s * .7]], null, pal[4], 1.2); lg.restore();
     for(let i = 0; i < 8; i++){ const a = i * .7854, x = c + Math.cos(a) * rad * .82, y = c + Math.sin(a) * rad * .82; kvbLine(lg, x, y - 3, x, y + 3, pal[3], 1.4); kvbLine(lg, x - 2, y, x + 2, y, pal[3], 1.2); } kvbCircle(lg, c, c, rad * .62, pal[2], 1); };
@@ -38,9 +41,12 @@
   kvbDefDecal('ng_verdict', 10, kvbRingPaint(NG, {fill: 0, details: splitDetails, rimThick: 1}));
   kvbDefDecal('ng_burst_d', 10, kvbRingPaint(SH, {fill: 0, details: (lg, c, R, rad) => {
     for(let i = 0; i < 6; i++){
-      const a = i * Math.PI / 3, inner = rad * .72, outer = rad * .9;
-      kvbLine(lg, c + Math.cos(a) * inner, c + Math.sin(a) * inner,
-        c + Math.cos(a) * outer, c + Math.sin(a) * outer, i & 1 ? '#f4f4f4' : '#5a5a74', 1);
+      const a = i * Math.PI / 3, inner = rad * .68, outer = rad * .88;
+      const x = c + Math.cos(a) * inner, y = c + Math.sin(a) * inner;
+      kvbLine(lg, x, y, c + Math.cos(a + .12) * outer,
+        c + Math.sin(a + .12) * outer, i & 1 ? '#e8c56a' : '#a6a6c0', 1);
+      kvbLine(lg, x, y, x + Math.cos(a + Math.PI / 2) * 2,
+        y + Math.sin(a + Math.PI / 2) * 2, '#05030a', 1);
     }
   }, rimThick: 1}));
 
