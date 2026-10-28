@@ -336,7 +336,10 @@ function drawChampPack(key, h, drawScale, alpha){
 }
 // Muerte con los frames reales (en vez del sprite de pie rotado): queda tendido semitransparente.
 function drawChampPackDeath(h){
-  const key = typeof setSkinPackKey==="function" ? setSkinPackKey(h, h.classKey) : h.classKey;
+  // Nano's authored base and Ascension skin have different grids; retain the selected skin.
+  const body = h.classKey==="nano_gm" && typeof ascBodyTarget==="function" ? ascBodyTarget(h,0) : h;
+  const base = body._codexPack || h.classKey;
+  const key = typeof setSkinPackKey==="function" ? setSkinPackKey(body, base) : base;
   // Supplemental base-only clip: skins/cromas keep their own appearance and fallback.
   const supplement = key === "libertador" ? CHAMP_PACK.libertador_death : key === "tanque" ? CHAMP_PACK.tanque_death : key === "guerrero" ? CHAMP_PACK.guerrero_death : key === "myla" ? CHAMP_PACK.myla_death : null;
   const P = supplement && supplement.ready ? supplement : CHAMP_PACK[key];

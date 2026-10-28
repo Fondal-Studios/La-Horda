@@ -1,0 +1,12 @@
+Use case: stylized-concept. Asset type: production sprite animation sheet for a dark fantasy 2D pixel game, not a poster.
+Reference image 1 is Nano GM's approved codex: copy the SMALL PIXEL CHARACTER on the right, preserving dark curly hair, tattoo-covered bare arms, sleeveless black/gold clothing, boots, right anatomical purple feather wing on VIEWER RIGHT when seen from behind; left anatomical gold wing on VIEWER LEFT. Preserve these sides in every pose. Bare hands, no weapon.
+Reference image 2 is the matching FRONT animation sheet: maintain exact design, pixel density and animation order. Create one clean BACK-FACING sheet of exactly 28 complete character sprites, precisely 4 columns x 7 rows, ALL facing AWAY from viewer, back of head visible in EVERY cell, NEVER a face or eyes, four DIFFERENT animation poses per row in time order:
+row1 idle breathing: relaxed, inhale shoulder rise, exhale shoulder settle, head settles;
+row2 walk: left foot forward, passing, right foot forward, passing opposite;
+row3 unarmed attack: arm windup, punch away from camera with body lean, follow-through, recovery;
+row4 cast: hands gather at waist, raise palms to chest, hands extend away from camera, recover;
+row5 ultimate: crouch charge, stand arms rising, arms spread upward and wings open, recover wings lowering;
+row6 hurt: standing braced, head and chest recoil, crouched recoil, regain balance;
+row7 death: stagger, knees buckle facing away, collapse forward away from viewer with back visible, lie fully face down with back of hair visible.
+Art: deliberate native 16-bit pixel art, each standing body about 64 native pixels tall, a large chibi head 40% of body height, dark 1-pixel outline, 2-3 flat shades per color. Clean designed pixel clusters. Preserve same clothing, head, hair, wing sides and body size across ALL28 sprites. No glow, no particles, no ground, no shadow, no painting, no soft gradients.
+Technical composition: 2048x2048 square transparent canvas, 4x7 equally sized invisible grid. Each character wholly within the middle 50% of its cell, generous TRANSPARENT padding on all four sides, never touching a cell boundary or neighbor, INCLUDING widest wings and lying corpse. Feet at consistent baseline within each row except deliberate death collapse. Constant body scale. No labels, no text, no grid lines, no borders. Genuine transparent background.

@@ -1,0 +1,5 @@
+Use case: precise-object-edit. Input image is edit target: a 4 column by 7 row BACK VIEW sprite sheet of Nano GM. Preserve the transparent background, entire layout, all character clothing, hair, poses, pixel art and every frame. Change ONLY the mistaken WING COLORS in these THREE cells, counting from top left:
+1. Row4 column3: currently both wings are GOLD. Change ONLY the wing on the VIEWER RIGHT to DARK VIOLET feathers. Leave viewer-left gold.
+2. Row5 column3: currently both wings are VIOLET. Change ONLY the wing on VIEWER LEFT to GOLD feathers. Leave viewer-right violet.
+3. Row7 column1: the wings are reversed. Change viewer LEFT wing to GOLD and viewer RIGHT wing to DARK VIOLET.
+Every standing back-view sprite must have GOLD wing viewer LEFT, VIOLET wing viewer RIGHT. No additional wings. Do not change any other cells. Maintain all 28 complete sprites, no cropping, no new backgrounds, no grid, no labels.

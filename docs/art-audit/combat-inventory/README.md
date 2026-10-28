@@ -29,7 +29,7 @@ Visibilidad y ausencia de errores no equivalen a aprobación artística.
 
 ## Alcance pendiente antes de cerrar el inventario
 
-1. Resolver expresiones dinámicas y exhaustividad de ramas por modo, incluida la entrada separada crystal-wars.html.
+1. Resolver expresiones dinámicas y exhaustividad de ramas por modo, incluido el adaptador competitivo (crystal-wars.html es una redirección a index.html).
 2. Las 15 manifestaciones universales combinadas con cada héroe.
 3. Invocaciones, transformaciones, proyectiles, props y UI: hay archivos, registros y 80 superficies de código localizadas en supplemental-surfaces.json; falta cerrar correspondencia entidad/estado/uso y probar sus ramas.
 4. Revisar visualmente cada animación contra su hoja de códice y la gramática del Caballero. Los defectos artísticos no se infieren de nombres, cantidad de PNG o detección de alfa.

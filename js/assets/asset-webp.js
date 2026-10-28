@@ -2,6 +2,7 @@
 /* GENERADO por tools/art/webp_convert.py — no editar a mano.
    PNG del juego que tienen una copia .webp sin pérdida (mismos píxeles) más liviana. */
 const ASSET_WEBP = new Set([
+"assets/sprites/champions/nano_gm/codex-v2/atlas.png",
 "assets/sprites/arenas/abismo/ab_acechador/atlas.png",
 "assets/sprites/arenas/abismo/ab_carcelero/atlas.png",
 "assets/sprites/arenas/abismo/ab_devorador/atlas.png",

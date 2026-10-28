@@ -3,6 +3,7 @@
    La usa js/assets/preload.js para saber cuándo terminó de cargar todo. Si agregás una imagen
    nueva al juego, sumala también acá. */
 const ASSET_MANIFEST = [
+  "assets/sprites/champions/nano_gm/codex-v2/atlas.png",
   // Complete set outfits: eight champions and mounted Granadero.
   "assets/sprites/champions/tanque/skins/baluarte/atlas.png",
   "assets/sprites/champions/tanque/skins/baluarte/preview.png",

@@ -383,7 +383,8 @@ function champPackLoadAtlas(key, src, meta){
   if(typeof assetsRegisterSource === "function") assetsRegisterSource(src);
   const img = new Image(), fix = Object.assign({}, CHAMP_PACK_FIX[key], meta.fix);
   const P = { atlas:img, fw:meta.w, fh:meta.h, cols:meta.cols, refH:meta.refH, anchor:meta.anchor, sets:champPackNormalize(meta.sets, fix),
-              rawSets:meta.sets, upFrom:fix.up || null, fix, ready:false };
+              rawSets:meta.sets, upFrom:fix.up || null, fix, ready:false,
+              footX:meta.footX ? Object.assign({},meta.footX) : null, embeddedWings:!!meta.embeddedWings };
   img.onload = ()=>{ P.ready = true; P.failed = false; };
   img.onerror = ()=>{ if(!img.__pngSrc) P.failed = true; }; // WebP can still retry the PNG
   img.src = src;
