@@ -1,0 +1,35 @@
+name: Fondal Art Engine validation
+on:
+  pull_request:
+    paths:
+      - 'tools/fondal-art-engine/**'
+      - 'docs/fondal-art-engine/**'
+      - 'docs/art-brief/manifiestos/mundo_faltantes.json'
+      - '.github/workflows/fondal-art-engine.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Unit tests
+        run: node --test tools/fondal-art-engine/*.test.js
+      - name: Inventory scan
+        run: node tools/fondal-art-engine/inventory.js --out "$RUNNER_TEMP/fondal-inventory"
+      - name: Production plan (dry run)
+        run: node tools/fondal-art-engine/pipeline.js --out "$RUNNER_TEMP/fondal-jobs"
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fondal-art-engine-reports
+          path: |
+            ${{ runner.temp }}/fondal-inventory/
+            ${{ runner.temp }}/fondal-jobs/
+          if-no-files-found: ignore
