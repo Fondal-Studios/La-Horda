@@ -1,0 +1,592 @@
+{
+  "schema": "fondal-art-engine.delivery.v1",
+  "provider": "pixrig",
+  "recipe": "angel_corrompido",
+  "target": {
+    "png": "assets/sprites/bosses/infernal/hechicero/angel/atlas.png",
+    "meta_file": "js/assets/pixrig-meta.js",
+    "const": "PIXRIG_ATLAS",
+    "key": "angel_corrompido"
+  },
+  "meta": {
+    "w": 192,
+    "h": 192,
+    "cols": 8,
+    "refH": 113,
+    "anchor": 0.8177333333333333,
+    "sets": {
+      "idle": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "walk": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "cast": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "cast0": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "atk": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "hit": [
+        28,
+        29
+      ],
+      "death": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "walk_down": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "kneel": [
+        33
+      ]
+    },
+    "hMul": 4.4
+  },
+  "baseline_sha256": "53eec6180a1faf6da623e9359b96c3b56a58ef856efc5558acff5f8e885c4db2",
+  "registry_sha256": "dcd6434f28649094a403e85a45cbd84d97da7f895130b1c1944fb832d8f16a15",
+  "candidate_sha256": "6fad6808022a2c6f88052ed15b7f53db1259546f3bd3b650bb9c9d7c79b8ccc0",
+  "gate": {
+    "ok": true,
+    "status": "TECHNICAL_PASS",
+    "approvalClaimed": false,
+    "sha256": "6fad6808022a2c6f88052ed15b7f53db1259546f3bd3b650bb9c9d7c79b8ccc0",
+    "rgba_sha256": "82bd905824bd04b9ff9a4af2fae77c3d2535773d3c56a596f5e2c719e42810bf",
+    "width": 1536,
+    "height": 960,
+    "bytes": 108590,
+    "frames": [
+      {
+        "index": 0,
+        "opaque": 4242,
+        "colors": 50,
+        "bounds": [
+          27,
+          38,
+          129,
+          150
+        ],
+        "rgba_sha256": "cc0cc50eb258233349e313f42bbc40f0f8932fcd6dd97fe2f5a57c14570a6d08"
+      },
+      {
+        "index": 1,
+        "opaque": 4235,
+        "colors": 50,
+        "bounds": [
+          25,
+          34,
+          129,
+          147
+        ],
+        "rgba_sha256": "dd272db8b0a462c2e1b2bc8db877e2ced82dcd4350efb6c064d63b516a111515"
+      },
+      {
+        "index": 2,
+        "opaque": 4233,
+        "colors": 50,
+        "bounds": [
+          27,
+          38,
+          129,
+          150
+        ],
+        "rgba_sha256": "6a0a81332e2aaab4db728e0b8fdc30bda7bedc757bde3933ad897c3d983167cd"
+      },
+      {
+        "index": 3,
+        "opaque": 4198,
+        "colors": 50,
+        "bounds": [
+          30,
+          40,
+          129,
+          153
+        ],
+        "rgba_sha256": "e1dd1fa281e36391d57b9317b9218044c1457858acc5726c4e826b6263eeb1e6"
+      },
+      {
+        "index": 4,
+        "opaque": 4271,
+        "colors": 51,
+        "bounds": [
+          38,
+          38,
+          136,
+          151
+        ],
+        "rgba_sha256": "e1616d905b0b78b9438fddea4d14f77c6c5395deed25d30aa3fa46ac6b9ec120"
+      },
+      {
+        "index": 5,
+        "opaque": 4295,
+        "colors": 51,
+        "bounds": [
+          34,
+          34,
+          136,
+          147
+        ],
+        "rgba_sha256": "f032e4c6cc8a94b184916cf550a8b3f0b72639825a36988caddae43778240b77"
+      },
+      {
+        "index": 6,
+        "opaque": 4258,
+        "colors": 51,
+        "bounds": [
+          38,
+          38,
+          135,
+          151
+        ],
+        "rgba_sha256": "1ada622d1b223a1c3c2404b626b997c3f4e7e89f8a1018cb3fe5832295a5fa37"
+      },
+      {
+        "index": 7,
+        "opaque": 4244,
+        "colors": 51,
+        "bounds": [
+          41,
+          42,
+          135,
+          155
+        ],
+        "rgba_sha256": "3fdd8fba06e8d92c6525785fef0cd41ae46d743e7e872d2e56ec60a6bcf66ba0"
+      },
+      {
+        "index": 8,
+        "opaque": 4171,
+        "colors": 51,
+        "bounds": [
+          27,
+          38,
+          129,
+          150
+        ],
+        "rgba_sha256": "c95d96ed28eacb0e6928b5e7b913ab96eb9cd75fc12f8373d4e5e269cce3cb23"
+      },
+      {
+        "index": 9,
+        "opaque": 4604,
+        "colors": 52,
+        "bounds": [
+          24,
+          36,
+          156,
+          148
+        ],
+        "rgba_sha256": "be8672ff5840da97ffefa6d4cbffa754cf20e56f5076e92f6fdc92448011db00"
+      },
+      {
+        "index": 10,
+        "opaque": 4383,
+        "colors": 50,
+        "bounds": [
+          25,
+          25,
+          140,
+          147
+        ],
+        "rgba_sha256": "968189055800c26c5962f80b70450311daef35c57537d4719e51a503906dbbeb"
+      },
+      {
+        "index": 11,
+        "opaque": 4375,
+        "colors": 50,
+        "bounds": [
+          25,
+          26,
+          140,
+          148
+        ],
+        "rgba_sha256": "e40ff0a7557d4e32ab8a665da4ecbbd057ca855f3944d8969320ab6778511b86"
+      },
+      {
+        "index": 12,
+        "opaque": 4589,
+        "colors": 52,
+        "bounds": [
+          24,
+          38,
+          156,
+          150
+        ],
+        "rgba_sha256": "722f037ed25df4899fe8766ae65ce41fd466f595b4c90ecfe8e00d5357102ad3"
+      },
+      {
+        "index": 13,
+        "opaque": 4164,
+        "colors": 51,
+        "bounds": [
+          27,
+          40,
+          128,
+          152
+        ],
+        "rgba_sha256": "ce7f8d98e571e7d42612b5a95c296105b6a759ea03457d714db8162662ab1100"
+      },
+      {
+        "index": 14,
+        "opaque": 4587,
+        "colors": 52,
+        "bounds": [
+          25,
+          41,
+          157,
+          153
+        ],
+        "rgba_sha256": "ee6d7f1ac6994b5ec75bb25e3674522cfc94c0595c9e4d09479b1c610ea1401b"
+      },
+      {
+        "index": 15,
+        "opaque": 4591,
+        "colors": 52,
+        "bounds": [
+          25,
+          40,
+          158,
+          152
+        ],
+        "rgba_sha256": "3d62a987c169f5c2e165059aac3d582d2788890036777132c2b95450f86ce61e"
+      },
+      {
+        "index": 16,
+        "opaque": 2916,
+        "colors": 32,
+        "bounds": [
+          82,
+          38,
+          129,
+          150
+        ],
+        "rgba_sha256": "46a26ce6a21154de5db8a3fc125b38007428237f91e4ade6d96967e4a7ae369e"
+      },
+      {
+        "index": 17,
+        "opaque": 3353,
+        "colors": 33,
+        "bounds": [
+          81,
+          36,
+          156,
+          148
+        ],
+        "rgba_sha256": "29c5b303cad57ca45d5b7ea2eca912e00abbd74fe2fe456d77ea6cfb4eb7733d"
+      },
+      {
+        "index": 18,
+        "opaque": 3147,
+        "colors": 31,
+        "bounds": [
+          81,
+          25,
+          140,
+          147
+        ],
+        "rgba_sha256": "d8e8ddeefd571b434f0f1196db559b0b17b124407cc4a4fe530b90b100fa3cfe"
+      },
+      {
+        "index": 19,
+        "opaque": 3135,
+        "colors": 31,
+        "bounds": [
+          81,
+          26,
+          140,
+          148
+        ],
+        "rgba_sha256": "22528035eedb126d502ce01de712017a8048b18efb57cc24c50f94037e5f9d9a"
+      },
+      {
+        "index": 20,
+        "opaque": 3347,
+        "colors": 33,
+        "bounds": [
+          81,
+          38,
+          156,
+          150
+        ],
+        "rgba_sha256": "3454459098c66a135b8bb766166ddcecad11b4bd8a7a8382382b2022ad7f8a05"
+      },
+      {
+        "index": 21,
+        "opaque": 2917,
+        "colors": 32,
+        "bounds": [
+          81,
+          40,
+          128,
+          152
+        ],
+        "rgba_sha256": "e103b6313ac01663ab1d2400c32af90db761b808d60935ffa2c2abfb70e00050"
+      },
+      {
+        "index": 22,
+        "opaque": 3344,
+        "colors": 33,
+        "bounds": [
+          81,
+          41,
+          157,
+          153
+        ],
+        "rgba_sha256": "17dceec8b285ba71f107f2ef08c93c689e6f30dd1218f3a72c0ca550c048bf5b"
+      },
+      {
+        "index": 23,
+        "opaque": 3345,
+        "colors": 33,
+        "bounds": [
+          81,
+          40,
+          158,
+          152
+        ],
+        "rgba_sha256": "ad20f45c189ae5aadb6a72e48488bb249bbfd057ff05b5d788cc768da23568f9"
+      },
+      {
+        "index": 24,
+        "opaque": 4537,
+        "colors": 51,
+        "bounds": [
+          31,
+          38,
+          142,
+          151
+        ],
+        "rgba_sha256": "dcb8005d6ef09abe7e799619a51b1ffca0f38e752cc0907e089fbb64898867ba"
+      },
+      {
+        "index": 25,
+        "opaque": 4859,
+        "colors": 51,
+        "bounds": [
+          47,
+          14,
+          156,
+          148
+        ],
+        "rgba_sha256": "b76cfedbaa7ed670c5bf05a7beb23a55c88cf8927f878b148dc854574d9092be"
+      },
+      {
+        "index": 26,
+        "opaque": 4767,
+        "colors": 51,
+        "bounds": [
+          38,
+          28,
+          150,
+          151
+        ],
+        "rgba_sha256": "42906fd9b3216a09eae96646d5788fa6a82065cbc5f41b4c83ca9a561b85eec0"
+      },
+      {
+        "index": 27,
+        "opaque": 4456,
+        "colors": 51,
+        "bounds": [
+          25,
+          41,
+          135,
+          153
+        ],
+        "rgba_sha256": "1cd977dd7cfedae0a31d0f6327e619e27e5085b52065f627f1141b6c5d4606f5"
+      },
+      {
+        "index": 28,
+        "opaque": 4198,
+        "colors": 51,
+        "bounds": [
+          13,
+          40,
+          126,
+          148
+        ],
+        "rgba_sha256": "35b6ba65b50157f41c7a764e88b1218abf63acf648da95cd034ee708e2b8ab9a"
+      },
+      {
+        "index": 29,
+        "opaque": 4209,
+        "colors": 50,
+        "bounds": [
+          19,
+          39,
+          128,
+          150
+        ],
+        "rgba_sha256": "94c3d9de9bfdd2fa3cefef8ec575c01d57526d3602aee5f04d149f834b102b6c"
+      },
+      {
+        "index": 30,
+        "opaque": 4322,
+        "colors": 50,
+        "bounds": [
+          30,
+          38,
+          134,
+          150
+        ],
+        "rgba_sha256": "726b64f2ad38af1a0fa99bf1a8eef740b2cb43b13f8db232f4be7e824bf4f622"
+      },
+      {
+        "index": 31,
+        "opaque": 4059,
+        "colors": 51,
+        "bounds": [
+          34,
+          39,
+          131,
+          152
+        ],
+        "rgba_sha256": "9780cbbeb15641ab7aeab4694057987085996812fe8c58ed3436ad2240fc5fd4"
+      },
+      {
+        "index": 32,
+        "opaque": 3885,
+        "colors": 50,
+        "bounds": [
+          44,
+          41,
+          133,
+          154
+        ],
+        "rgba_sha256": "30f56a04484ce844b4169ea43fffd9000a6c8722c56fee38d328d0fc0c673d4c"
+      },
+      {
+        "index": 33,
+        "opaque": 3614,
+        "colors": 51,
+        "bounds": [
+          50,
+          43,
+          135,
+          156
+        ],
+        "rgba_sha256": "ac065b348042daa81057c8798e28f6892884e76fc0888c83d7b3e9a070d8bcc1"
+      },
+      {
+        "index": 34,
+        "opaque": 2921,
+        "colors": 49,
+        "bounds": [
+          49,
+          45,
+          137,
+          157
+        ],
+        "rgba_sha256": "47a8e1d761cbb7d7b1637aacd872dd32fd8aa48dad9da06483db21fe6744dc4c"
+      },
+      {
+        "index": 35,
+        "opaque": 1338,
+        "colors": 43,
+        "bounds": [
+          51,
+          49,
+          133,
+          159
+        ],
+        "rgba_sha256": "635a655818a8e3704dabb2873d13b81a044f081326366a6a00e492ccc366b04c"
+      }
+    ],
+    "clips": {
+      "idle": {
+        "frames": 4,
+        "uniqueFrames": 4
+      },
+      "walk": {
+        "frames": 4,
+        "uniqueFrames": 4
+      },
+      "cast": {
+        "frames": 8,
+        "uniqueFrames": 8
+      },
+      "cast0": {
+        "frames": 8,
+        "uniqueFrames": 8
+      },
+      "atk": {
+        "frames": 4,
+        "uniqueFrames": 4
+      },
+      "hit": {
+        "frames": 2,
+        "uniqueFrames": 2
+      },
+      "death": {
+        "frames": 6,
+        "uniqueFrames": 6
+      },
+      "walk_down": {
+        "frames": 4,
+        "uniqueFrames": 4
+      },
+      "kneel": {
+        "frames": 1,
+        "uniqueFrames": 1
+      }
+    },
+    "issues": [],
+    "contract": {
+      "status": "COMPATIBLE_NOT_ART_APPROVAL",
+      "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+      "approvalClaimed": false,
+      "installed": false,
+      "frames": 40,
+      "requiredClips": [
+        "atk",
+        "cast",
+        "cast0",
+        "death",
+        "hit",
+        "idle",
+        "kneel",
+        "walk",
+        "walk_down"
+      ],
+      "issues": []
+    }
+  },
+  "status": "AWAITING_VISUAL_REVIEW",
+  "identicalPixels": false,
+  "metadataUnchanged": false,
+  "geometryPreservedOverscan": true,
+  "installed": false,
+  "api_cost_usd": 0,
+  "provenance": "repository-authored procedural rig; no external model or API"
+}

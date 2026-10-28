@@ -16,3 +16,8 @@ test('path statuses are not art approvals',()=>{
  assert.deepEqual(r.counts,{PATH_EXISTS:1,PATH_MISSING:1,UNVERIFIED:1});
  assert.deepEqual(pathsFrom(rows[0]),['assets/a.png']);
 });
+test('historical runtime targets are parsed; templates and reference images are not targets',()=>{
+ assert.deepEqual(pathsFrom({ruta_juego:'[REEMPLAZA] assets/sprites/a/atlas.png',referencia:['assets/reference.png']}),['assets/sprites/a/atlas.png']);
+ assert.deepEqual(pathsFrom({ruta_juego:'[PROPUESTA] assets/sprites/<id>/atlas.png'}),[]);
+ assert.deepEqual(pathsFrom({ruta_juego:'assets/a.png + entrada en REGISTRY'}),['assets/a.png']);
+});

@@ -232,7 +232,13 @@ class Rig:
     def render(self, pose, extra=(), hide=(), dissolve=None, tint=None):
         """Rasteriza un cuadro. extra: piezas sueltas del cuadro (partículas, humo). hide: nombres de piezas ocultas.
         dissolve: (umbral 0..1, semilla) borra píxeles por ruido (muertes que se deshacen)."""
-        W, H = self.W, self.H
+        # Optional production overscan re-rasterizes geometry beyond the old cell.
+        # Default zero preserves all existing recipe output byte-for-byte.
+        pad = getattr(self, 'padding', 0)
+        if not isinstance(pad, int) or not 0 <= pad <= 128:
+            raise ValueError('padding must be an integer from 0 to 128')
+        W, H = self.W + 2 * pad, self.H + 2 * pad
+        offset = _affine(pad, pad, 0, 1, 1)
         M = self.world(pose)
         zbuf = np.full((H, W), -1e9); pid = np.full((H, W), -1, int); tone = np.zeros((H, W), int)
         parts = [p for p in self.parts if p.name not in hide and not (callable(getattr(p, 'when', None)) and not p.when(pose))] + list(extra)
@@ -240,7 +246,7 @@ class Rig:
         Ly, Lx = self.light[1], self.light[0]
         masks = {}
         for i, p in enumerate(parts):
-            T = M[p.bone] if isinstance(p.bone, str) else p.bone
+            T = offset @ (M[p.bone] if isinstance(p.bone, str) else p.bone)
             inv = np.linalg.inv(T)
             x0, y0, x1, y1 = p.shape.bbox()
             cs = np.array([[x0, y0, 1], [x1, y0, 1], [x0, y1, 1], [x1, y1, 1]]).T
@@ -292,7 +298,7 @@ class Rig:
         # disolución (muertes): borra píxeles por ruido estable
         if dissolve is not None:
             thr, seed = dissolve
-            nz = _hashgrid(W, H, seed)
+            nz = _hashgrid(W, H, seed, offset=pad)
             inside = inside & (nz >= thr)
         # color
         img = np.zeros((H, W, 4), np.uint8)
@@ -323,10 +329,10 @@ class Rig:
 
 
 _HG = {}
-def _hashgrid(W, H, seed):
-    k = (W, H, seed)
+def _hashgrid(W, H, seed, offset=0):
+    k = (W, H, seed, offset)
     if k not in _HG:
-        y, x = np.mgrid[0:H, 0:W]
+        y, x = np.mgrid[-offset:H-offset, -offset:W-offset]
         v = ((x // 2) * 374761393 + (y // 2) * 668265263 + seed * 2246822519) & 0xffffffff
         v = ((v ^ (v >> 13)) * 1274126177) & 0xffffffff
         _HG[k] = ((v ^ (v >> 16)) & 0xffffffff) / 4294967295.0

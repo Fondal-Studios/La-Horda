@@ -21,13 +21,18 @@ function rowsFrom(doc){
 function safePath(value){
  if(typeof value!=='string')return null;
  const p=value.trim().replace(/\\/g,'/').replace(/^\.\//,'');
- if(!p||p.startsWith('/')||p.includes('://')||p.split('/').includes('..')||/^[a-z]:/i.test(p)||!extensions.test(p))return null;
+ if(!p||p.startsWith('/')||p.includes('://')||/[<>*{}\[\]\x00-\x1f]/.test(p)||p.split('/').includes('..')||/^[a-z]:/i.test(p)||!extensions.test(p))return null;
  return path.posix.normalize(p);
 }
 function pathsFrom(row){
  if(!row||typeof row!=='object')return [];
- const keys=['path','ruta','file','filename','asset_path','output','destino','archivo','asset','png','target','ruta_destino'];
- const values=keys.flatMap(k=>Array.isArray(row[k])?row[k]:[row[k]]);
+ const keys=['ruta_juego','path','ruta','file','filename','asset_path','output','destino','archivo','asset','png','target','ruta_destino'];
+ const values=keys.flatMap(k=>Array.isArray(row[k])?row[k]:[row[k]]).flatMap(v=>{
+  if(typeof v!=='string')return [];
+  if(safePath(v))return [v];
+  // Historical prose can prefix a concrete target; templates are never real paths.
+  return v.match(/(?:assets|art-source)\/[^\s,;()+]+\.(?:png|webp|gif|svg|jpg|jpeg)(?=$|[\s,;()+])/gi)||[];
+ });
  return [...new Set(values.map(safePath).filter(Boolean))];
 }
 function scanFiles(dir,rel='',out=new Set()){
@@ -44,7 +49,7 @@ function reconcile(rows,files){
   const row=raw&&typeof raw==='object'?raw:{value:raw};
   const paths=pathsFrom(row),existing=paths.filter(p=>files.has(p));
   const status=!paths.length?'UNVERIFIED':existing.length===paths.length?'PATH_EXISTS':'PATH_MISSING';
-  return {index,id:row.id??row.ID??null,priority:row.prioridad??row.priority??null,status,paths,existing};
+  return {declared_target:row.ruta_juego??null,delivery:row.ruta_entrega??null,historical_status:row.estado??null,index,id:row.id??row.ID??null,priority:row.prioridad??row.priority??null,status,paths,existing};
  });
  const counts={PATH_EXISTS:0,PATH_MISSING:0,UNVERIFIED:0};
  for(const row of records)counts[row.status]++;
@@ -68,4 +73,4 @@ function main(){
 if(require.main===module){
  try{main()}catch(e){console.error('Art inventory failed:',e.message);process.exitCode=2}
 }
-module.exports={rowsFrom,safePath,pathsFrom,reconcile};
+module.exports={rowsFrom,safePath,pathsFrom,reconcile,scanFiles};

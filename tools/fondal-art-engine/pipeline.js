@@ -8,16 +8,16 @@ const root=path.resolve(__dirname,'../..');
 const manifest=path.join(root,'docs/art-brief/manifiestos/mundo_faltantes.json');
 const allowed=new Set(['champion','skin','enemy','boss','summon','map','prop','vfx','ui','other']);
 function classify(r){
- const s=JSON.stringify(r).toLowerCase();
- if(/campe[oó]n|champion/.test(s))return 'champion';
- if(/skin/.test(s))return 'skin';
+ const s=String(r.subcategoria||r.type||r.description||r.descripcion||r.asset||'').toLowerCase();
+ if(/skin|croma/.test(s))return 'skin';
+ if(/fx|efecto|proyectil|decal|aura/.test(s))return 'vfx';
+ if(/icon|ícono|interfaz|hud|ui|retrato|ilustracion|carta|marco/.test(s))return 'ui';
  if(/jefe|boss/.test(s))return 'boss';
  if(/enemigo|enemy/.test(s))return 'enemy';
  if(/invocaci[oó]n|summon/.test(s))return 'summon';
- if(/mapa|arena|tileset/.test(s))return 'map';
- if(/vfx|efecto|fx/.test(s))return 'vfx';
- if(/icon|ícono|interfaz|hud|ui/.test(s))return 'ui';
- if(/prop|objeto|estructura/.test(s))return 'prop';
+ if(/campe[oó]n|champion/.test(s))return 'champion';
+ if(/mapa|arena|tileset|suelo/.test(s))return 'map';
+ if(/prop|objeto|estructura|item/.test(s))return 'prop';
  return 'other';
 }
 function makeJobs(rows){

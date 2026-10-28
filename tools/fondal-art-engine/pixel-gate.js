@@ -4,6 +4,8 @@ const fs=require('node:fs'),zlib=require('node:zlib');
 const SIGN=Buffer.from([137,80,78,71,13,10,26,10]);
 function decodePNG(buffer){
  if(!Buffer.isBuffer(buffer)||!buffer.subarray(0,8).equals(SIGN))throw Error('NOT_PNG');
+ const structure=require('./png-gate').inspectPNG(buffer,{requireRgba8:true});
+ if(!structure.ok)throw Error(structure.issues.join(','));
  let p=8,w=0,h=0,depth=0,color=0,interlace=0,ended=false;const chunks=[];
  while(p+12<=buffer.length){
   const len=buffer.readUInt32BE(p),type=buffer.toString('ascii',p+4,p+8);

@@ -1,32 +1,24 @@
-# Fondal Art Engine — plan de integración (fase 0)
+# Fondal Art Engine — generación ejecutable, cobertura parcial
 
-Estado: arquitectura inicial; no se generan ni instalan assets automáticamente todavía.
+**Proyecto incompleto. No fusionar como fábrica terminada ni desplegar los candidatos sin gate visual/runtime.**
 
-## Objetivo
-Motor permanente y reutilizable para inventariar, generar, animar, validar e integrar arte de campeones, skins, enemigos, jefes, invocaciones, mapas, props, VFX y UI. Mantener la compatibilidad con las futuras incorporaciones.
+El PR #232 incorpora producción real con el motor nativo `pixrig`, un adaptador HTTP para ComfyUI **local**, validación PNG y por fotograma, conservación de contratos de animación, promoción con recibos ligados a hashes y producción aislada en Actions. El proveedor ComfyUI tiene pruebas de protocolo con un servidor de prueba; **no se ha ejecutado un modelo de IA real**. El generador nativo sí se ejecutó: 14 atlas / 656 cuadros reproducidos, idénticos en píxeles al juego actual. Un candidato adicional del Ángel Corrompido recupera geometría cortada mediante overscan y pasa el gate técnico; todavía no está instalado.
 
-## Fuentes existentes que deben conservarse
-- `docs/ART_BIBLE.md` y `LA_HORDA_SPRITE_CANON.md`: canon visual; no mezclar representaciones de una entidad.
-- `docs/art-brief/00_ESPECIFICACION_TECNICA.md`: contrato de atlas, alfa, escala y animación.
-- `docs/art-brief/manifiestos/mundo_faltantes.json`: inventario histórico de 1061 registros, no equivale a 1061 faltantes actuales.
-- `docs/art-brief/ASSETS_FALTANTES_CAMPEONES.md`, `LA_HORDA_ASSETS_FALTANTES.md`, `LA_HORDA_MISSING_ASSETS.md`.
-- `tools/art/missing_list.py`, `tools/factory/check-animation-contract.js` y validadores art-gate existentes.
+## Uso
 
-## Flujo propuesto
-1. **Descubrimiento:** recorrer registros, cargadores y archivos reales; emitir manifiesto versionado con `id`, tipo, origen, ruta, estado, prioridad, canon, licencia y dependencias.
-2. **Reconciliación:** clasificar `APPROVED`, `PARTIAL`, `MISSING`, `REJECTED`, `UNVERIFIED`; no asumir que los documentos históricos reflejan `main` actual.
-3. **Planificación:** preparar trabajos reproducibles por entidad; reutilizar primero; para personajes generar una hoja completa coherente, nunca mezclar fotogramas.
-4. **Proveedor intercambiable:** interfaz `generate(job, referenceAssets, options)` con adaptadores futuros para PixelLab u otros motores; sin claves en Git.
-5. **Procesamiento:** normalizar transparencia, dimensiones, anclajes, spritesheets, metadatos y referencias sin alterar mecánicas.
-6. **Validación:** contrato de animación, art-gate, consistencia visual, licencias, rutas, pruebas de carga y capturas en varias arenas.
-7. **Entrega:** resultados en rama/PR, informe de costos y evidencias; aprobación humana antes de publicar.
+Node >=22, Python >=3.12; `pip install -r tools/fondal-art-engine/requirements.txt`.
 
-## Primer incremento implementable
-- Crear escáner de solo lectura con salida JSON y reporte Markdown.
-- Comparar manifiestos históricos con assets y consumidores actuales.
-- Añadir pruebas de esquema y detección de rutas ausentes.
-- Incorporar modo `dry-run` por defecto y presupuestos por lote.
-- Probar un campeón, un enemigo y un mapa antes de cualquier generación masiva.
+```sh
+node --test tools/fondal-art-engine/*.test.js
+python -m unittest discover -s tools/fondal-art-engine -p 'test_*.py'
+node tools/fondal-art-engine/inventory.js --out /tmp/fondal-inventory
+node tools/fondal-art-engine/audit.js /tmp/fondal-consumers.json
+node tools/fondal-art-engine/production.js generate tools/fondal-art-engine/recipes.json /tmp/fondal-new-run
+node tools/fondal-art-engine/runtime-check.js /tmp/fondal-runtime
+```
 
-## Restricciones
-No modificar `main` ni desplegar automáticamente. No sobrescribir assets canónicos. No introducir dependencias pagas ni claves sin aprobación. Mantener originalidad comercial de los diseños.
+La carpeta de producción debe ser nueva. Un lote termina todos sus trabajos, conserva errores y devuelve código 1 si hay rechazos o fallos. `summary.json` distingue generado, corregido, integrado, reutilizado, rechazado, fallido y pendiente de revisión. La generación no instala ni aprueba arte. La cuenta `generated` incluye regeneraciones; no mide diseños nuevos.
+
+## Estado verificable
+
+Ver [RESULTS.md](RESULTS.md), [operaciones](OPERATIONS.md) y [recibos del 28 de octubre](runs/2026-10-28/native-batch.json). Las 14 recetas actuales cubren ciertos enemigos/jefes; **no cubren todos los campeones, skins, escenarios, UI ni expansiones**. No se considera una plantilla histórica un trabajo generable, ni un PNG existente un asset aprobado. No hay sustituciones de estadísticas, habilidades o hitboxes.

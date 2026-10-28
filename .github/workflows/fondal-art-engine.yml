@@ -1,35 +1,86 @@
 name: Fondal Art Engine validation
 on:
+  push:
+    branches: [feature/fondal-art-engine]
+    paths: ['tools/fondal-art-engine/**', 'tools/art/pixrig/**', '.github/workflows/fondal-art-engine.yml']
   pull_request:
-    paths:
-      - 'tools/fondal-art-engine/**'
-      - 'docs/fondal-art-engine/**'
-      - 'docs/art-brief/manifiestos/mundo_faltantes.json'
-      - '.github/workflows/fondal-art-engine.yml'
+    paths: ['tools/fondal-art-engine/**', 'tools/art/pixrig/**', 'docs/fondal-art-engine/**', 'docs/art-brief/manifiestos/mundo_faltantes.json', '.github/workflows/fondal-art-engine.yml']
   workflow_dispatch:
+    inputs:
+      production:
+        description: 'Regenerate all 14 native recipes in staging (never publish assets)'
+        type: boolean
+        default: false
+  # GitHub activates schedules only when this workflow reaches the default branch.
+  schedule:
+    - cron: '30 9 * * *'
 permissions:
   contents: read
+concurrency:
+  group: fondal-art-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: false
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Unit tests
-        run: node --test tools/fondal-art-engine/*.test.js
-      - name: Inventory scan
-        run: node tools/fondal-art-engine/inventory.js --out "$RUNNER_TEMP/fondal-inventory"
-      - name: Production plan (dry run)
-        run: node tools/fondal-art-engine/pipeline.js --out "$RUNNER_TEMP/fondal-jobs"
-      - name: Upload reports
+        with: {node-version: '22'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install -r tools/fondal-art-engine/requirements.txt
+      - name: Unit and negative validation tests
+        run: |
+          node --test tools/fondal-art-engine/*.test.js
+          python -m unittest discover -s tools/fondal-art-engine -p "test_*.py"
+      - name: Existing game contracts
+        run: |
+          node tools/balance/check-entry-reference.js
+          node tools/factory/test-animation-contract.js
+          node --test tests/*.test.js
+      - name: Inventory and consumer audit
+        run: |
+          node tools/fondal-art-engine/inventory.js --out "$RUNNER_TEMP/fondal-inventory"
+          node tools/fondal-art-engine/audit.js "$RUNNER_TEMP/fondal-inventory/consumers.json"
+      - name: Real native generator and rejection gate
+        run: |
+          python tools/fondal-art-engine/pixrig-stage.py --recipe angel_corrompido --out "$RUNNER_TEMP/fondal-pilot"
+          node tools/fondal-art-engine/ci-pilot.js "$RUNNER_TEMP/fondal-pilot"
+      - name: Install browser test tools
+        run: |
+          npm install --prefix /tmp/fondal-browser playwright@1.58.2
+          /tmp/fondal-browser/node_modules/.bin/playwright install --with-deps chromium
+      - name: Real game loading, every registered atlas frame and render timing
+        run: node tools/fondal-art-engine/runtime-check.js "$RUNNER_TEMP/fondal-runtime"
+        env:
+          NODE_PATH: /tmp/fondal-browser/node_modules
+      - uses: actions/upload-artifact@v4
         if: always()
-        uses: actions/upload-artifact@v4
         with:
-          name: fondal-art-engine-reports
+          name: fondal-validation-${{ github.run_id }}
           path: |
             ${{ runner.temp }}/fondal-inventory/
-            ${{ runner.temp }}/fondal-jobs/
-          if-no-files-found: ignore
+            ${{ runner.temp }}/fondal-pilot/
+            ${{ runner.temp }}/fondal-runtime/
+          retention-days: 14
+  produce:
+    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.production)
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install -r tools/fondal-art-engine/requirements.txt
+      - name: Produce isolated candidates (any rejected candidate fails the production gate)
+        run: node tools/fondal-art-engine/production.js generate tools/fondal-art-engine/recipes.json "$RUNNER_TEMP/fondal-production"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fondal-production-${{ github.run_id }}
+          path: ${{ runner.temp }}/fondal-production/
+          retention-days: 14

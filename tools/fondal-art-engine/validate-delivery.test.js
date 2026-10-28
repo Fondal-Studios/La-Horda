@@ -15,3 +15,9 @@ test('valid metadata does not imply installed assets',()=>{
   {job_id:'x',files:['a.png'],canon_reference:'canon.png',reviewed_by:'artist',approved:true}
  ]}),[]);
 });
+test('missing and duplicate deliveries cannot pass a complete batch',()=>{
+ assert.ok(validateBundle({jobs:[{id:'x',type:'enemy'}],deliveries:[]}).some(e=>e.issues.includes('MISSING_DELIVERY')));
+ assert.deepEqual(validateBundle({jobs:[],deliveries:[]}),['EMPTY_BUNDLE']);
+ const d={job_id:'x',files:['a.png'],canon_reference:'canon.png'};
+ assert.ok(validateBundle({jobs:[{id:'x',type:'enemy'}],deliveries:[d,d]}).some(e=>e.issues.includes('DUPLICATE_DELIVERY')));
+});

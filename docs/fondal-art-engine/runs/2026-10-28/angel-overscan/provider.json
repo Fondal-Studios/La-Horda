@@ -1,0 +1,100 @@
+{
+  "provider": "pixrig",
+  "recipe": "angel_corrompido",
+  "frame_count": 36,
+  "meta": {
+    "w": 192,
+    "h": 192,
+    "cols": 8,
+    "refH": 113,
+    "anchor": 0.8177333333333333,
+    "sets": {
+      "idle": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "walk": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "cast": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "cast0": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "atk": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "hit": [
+        28,
+        29
+      ],
+      "death": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "walk_down": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "kneel": [
+        33
+      ]
+    },
+    "hMul": 4.4
+  },
+  "target": {
+    "png": "assets/sprites/bosses/infernal/hechicero/angel/atlas.png",
+    "meta_file": "js/assets/pixrig-meta.js",
+    "const": "PIXRIG_ATLAS",
+    "key": "angel_corrompido"
+  },
+  "sources": {
+    "tools/art/pixrig/ab_carcelero.py": "f6925116559b638b741779c13b777668f6d021552d804aae8dec46007b6dd0b3",
+    "tools/art/pixrig/angel_corrompido.py": "70793cf97739e9bb0790fff56f6f30650acdfad69be162e48a3d6fe899afc5f2",
+    "tools/art/pixrig/biped.py": "316682b38c2dfcb1407db2fe3b591414fdd4cf9dfe3a01e3c8092609f95868b2",
+    "tools/art/pixrig/build.py": "925424395db28af16ec1a21648fbf860d2b9d9791073d3de6ee65718c499be19",
+    "tools/art/pixrig/cm_dama.py": "0005935ef39bf01d3523537af686e701cb375162eaf56604e4872ebd122baa34",
+    "tools/art/pixrig/cm_maestro.py": "bc375962d46b766f3c98459fb0cef1026381af8ae015f6e9038bed787a05321f",
+    "tools/art/pixrig/cm_presentador.py": "7b79c4338f6632856017963586b1958fc850adcd31001d1c687836d21ad1c97e",
+    "tools/art/pixrig/cm_tramoyista.py": "5f1cfccfda6d29e73172f76fe3d546074dbd5e40ee5c21a886be2dfd4efdcea4",
+    "tools/art/pixrig/cm_verdugo.py": "a05d19789f50d1f2e25e27db620b14da128c460ef0eb49f4c8a1f1071ec75220",
+    "tools/art/pixrig/golem_cuerpos.py": "76192ac8c5a129f8e484ec42b2bdc17c6c2fc0d6939f7213aecc8eb1b88c8665",
+    "tools/art/pixrig/keep.py": "c9c68b50eda8928666d617a2ec3b397b18adf20b50d7afadeeeb24df3c83922f",
+    "tools/art/pixrig/mn_cerbero.py": "e6cf1322fd68ff4bbc5d1820065d2b688fdd89a1303043ea9eaa3dcc6fcb4379",
+    "tools/art/pixrig/mn_titan.py": "13911c462e79629a002d030c233e5aab3a9403a9c69926fe6cc042f0729f7974",
+    "tools/art/pixrig/pixrig.py": "9d2687725700d4f0acb94c514bde4b4c1067234cccdad360c1eb3b07c96d383a",
+    "tools/art/pixrig/tiburones.py": "64681f37162d0f9bb6a872b6a96572fdba776cedac2f7bdc47a6dda06c21d2b3"
+  },
+  "provenance": "repository-authored procedural rig; no external model or API",
+  "api_cost_usd": 0,
+  "overscan_padding": 32
+}
