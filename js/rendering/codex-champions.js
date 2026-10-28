@@ -2,6 +2,7 @@
 function codexChampionPack(h){
  if(!h || typeof CODEX_GAMEPLAY_ART === 'undefined' || !CODEX_GAMEPLAY_ART[h.classKey]) return null;
  // An equipped skin retains its own authored design, including while loading.
+ if(typeof ascCandidate==='function' && ascCandidate(h) && typeof ascSkinIndex==='function' && ascSkinIndex(h)>0) return null;
  if(typeof activeSetSkin === 'function' && activeSetSkin(h)) return null;
  const P=CHAMP_PACK['codex_'+h.classKey];
  return P && P.ready ? P : null;
