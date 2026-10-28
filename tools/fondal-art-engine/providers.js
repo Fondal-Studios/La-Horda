@@ -75,6 +75,7 @@ class ComfyUIProvider{
  }
 }
 function getProvider(name='dry-run',options={}){
+ if(name==='bfl-klein-trial')return new (require('./bfl-provider').BFLProvider)(options);
  if(name==='dry-run')return new DryRunProvider();
  if(name==='pixrig')return new PixrigProvider();
  if(name==='comfyui-local')return new ComfyUIProvider(options);

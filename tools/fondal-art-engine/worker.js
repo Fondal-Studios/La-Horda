@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-// Standalone, single-job worker. Inference uses local providers, never this chat or an LLM API.
+// Standalone, single-job worker. Uses local providers or an explicitly budgeted image API, never this chat.
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os');
 const {getProvider}=require('./providers'),{validateCandidate}=require('./production'),{inspectSheet,sha}=require('./sheet-gate');
 async function execute(job,{root=process.cwd(),profile=null}={}){
@@ -13,6 +13,7 @@ async function execute(job,{root=process.cwd(),profile=null}={}){
   return {status:result.status,sha256:result.candidate_sha256,technicalPass:result.gate.ok,issues:result.gate.issues.length,artifactDirectory:job.id,provider:'pixrig'};
  }
  if(!profile)return {status:'BLOCKED_MODEL',error:'No local graphic model profile configured. No generation request or paid API call was made.'};
+ if(profile.provider==='bfl-klein-trial')return require('./bfl-repair').repair(job,out,getProvider(profile.provider));
  if(profile.provider!=='comfyui-local')throw Error('Only a locally hosted model is enabled for new art');
  const workflow=JSON.parse(JSON.stringify(profile.workflow));
  // Description is model data only; never shell code or a workflow graph supplied by a player.
