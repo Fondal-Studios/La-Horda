@@ -1,0 +1,19 @@
+{
+  "schema": "fondal-art-engine.audit.v1",
+  "generated_at": "2026-10-28T10:57:59.660Z",
+  "coverage": "all literal asset references in js/css/index; dynamic expressions require runtime audit; not artistic approval",
+  "filesScanned": 11534,
+  "codeFilesScanned": 491,
+  "images": 3252,
+  "literalReferences": 1744,
+  "missingReferences": 0,
+  "dynamicReferences": 30,
+  "historical": {
+    "counts": {
+      "PATH_EXISTS": 141,
+      "PATH_MISSING": 478,
+      "UNVERIFIED": 442
+    },
+    "total": 1061
+  }
+}

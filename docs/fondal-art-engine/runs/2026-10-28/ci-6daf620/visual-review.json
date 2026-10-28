@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "reviewed_by": "Codex",
+  "scope": "Technical border recovery of an existing boss design; not a certification of the entire art catalog",
+  "candidate_render_sha256": "6bfc7875399a2c1efa8849cdd227c302c4a9e6f89d80e106e1727fe582cbd9cf",
+  "baseline_render_sha256": "7c9ebce29be70c02dea1dec6e7dc0851d2585916bb489cb09894fcc2748d1d58",
+  "observations": [
+    "Original face, tunic, palette, wing design and poses preserved",
+    "Recovered wing contours no longer cut off by cell boundary",
+    "Native pixel density, refH and hMul unchanged",
+    "No previously opaque pixels lost; 71 pixels inside old cells change around recovered contour/shading",
+    "All 41 consumed clip frames render in real game; mechanics equal in paired test"
+  ],
+  "limitations": [
+    "Desktop Chromium only",
+    "Reference knight is not used for automated anatomical approval",
+    "Does not certify full boss encounter, multiplayer or physical mobile performance"
+  ]
+}

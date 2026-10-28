@@ -9,8 +9,9 @@
 //             vistas, + auditoría de presentación (nombre, título, largo de textos, duplicados).
 // Escribe docs/art-gate/roster-gate.json y docs/art-gate/roster-sheet.png (hoja de contacto con líneas
 // de referencia de cabeza y pies del Caballero). Uso: ROSTER_BASE_URL=http://127.0.0.1:8750 node tools/art/roster_gate.js [--write]
+const H=require('../lib/serve');
 const {chromium}=require('playwright'),fs=require('node:fs'),path=require('node:path');
-const ROOT=path.resolve(__dirname,'../..'),BASE=process.env.ROSTER_BASE_URL||'http://127.0.0.1:8750',WRITE=process.argv.includes('--write');
+const ROOT=path.resolve(__dirname,'../..'),WRITE=process.argv.includes('--write');
 const TOL={height:.04,foot:2};
 // Presentación: mismos campos y largos acotados para todo el roster.
 // Longitudes de texto: una sola fuente, el CHAMPION_STANDARD de la Biblia (js/data/champion-identity.js).
@@ -18,10 +19,11 @@ const STD=(()=>{const src=require('node:fs').readFileSync(require('node:path').j
  return {taglineMin:n('taglineMin'),taglineMax:n('taglineMax'),loreMin:n('loreMin'),loreMax:n('loreMax')};})();
 const TEXT={cardLore:[STD.taglineMin,STD.taglineMax],history:[STD.loreMin,STD.loreMax],passive:[40,320],skill:[20,240]};
 (async()=>{
+ const site=await H.startSite({envUrl:['ROSTER_BASE_URL']});const BASE=site.url;
  const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});
  try{
   const p=await b.newPage({viewport:{width:1400,height:900}});const errors=[];p.on('pageerror',e=>errors.push(e.message));
-  await p.goto(BASE+'/index.html');await p.waitForFunction(()=>typeof CHAMP_ART_NORMALIZE!=='undefined'&&assetsAllReady());
+  await H.goto(p,BASE+'/index.html');await p.waitForFunction(()=>typeof CHAMP_ART_NORMALIZE!=='undefined'&&assetsAllReady());
   // Precargar todas las apariencias (cromas/skins se cargan bajo demanda).
   await p.evaluate(()=>{if(typeof cromaLoadAll==='function')cromaLoadAll();for(const id in SET_SKINS)if(typeof skinDefOf==='function')skinDefOf(id);});
   await p.waitForFunction(()=>Object.values(CHAMP_PACK).every(P=>P.ready||P.failed),null,{timeout:60000}).catch(()=>{});
@@ -117,5 +119,5 @@ const TEXT={cardLore:[STD.taglineMin,STD.taglineMax],history:[STD.loreMin,STD.lo
   console.log(JSON.stringify({appearances:report.appearances,scaleFailures:fails.length,presentationFailures:tfails.length,errors:errors.length}));
   for(const f of fails.slice(0,40))console.log('SCALE',JSON.stringify(f));for(const f of tfails.slice(0,80))console.log('TEXT',JSON.stringify(f));
   if(fails.length||tfails.length||errors.length)process.exitCode=1;
- }finally{await b.close();}
+ }finally{await b.close();await site.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

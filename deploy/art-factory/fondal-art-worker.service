@@ -1,0 +1,22 @@
+[Unit]
+Description=Fondal independent art production worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=fondal-art
+WorkingDirectory=/opt/La-Horda
+EnvironmentFile=/etc/fondal-art/worker.env
+ExecStart=/usr/bin/node /opt/La-Horda/tools/fondal-art-engine/worker.js
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=960
+KillSignal=SIGTERM
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/fondal-art -/opt/ComfyUI/input -/opt/ComfyUI/output
+
+[Install]
+WantedBy=multi-user.target

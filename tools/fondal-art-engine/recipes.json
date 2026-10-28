@@ -1,0 +1,90 @@
+{
+  "schema": "fondal-art-engine.production-jobs.v1",
+  "jobs": [
+    {
+      "id": "mn_cerbero",
+      "type": "boss",
+      "provider": "pixrig",
+      "recipe": "mn_cerbero"
+    },
+    {
+      "id": "mn_titan",
+      "type": "boss",
+      "provider": "pixrig",
+      "recipe": "mn_titan"
+    },
+    {
+      "id": "cm_dama",
+      "type": "boss",
+      "provider": "pixrig",
+      "recipe": "cm_dama"
+    },
+    {
+      "id": "cm_maestro",
+      "type": "boss",
+      "provider": "pixrig",
+      "recipe": "cm_maestro"
+    },
+    {
+      "id": "cm_tramoyista",
+      "type": "boss",
+      "provider": "pixrig",
+      "recipe": "cm_tramoyista"
+    },
+    {
+      "id": "cm_verdugo",
+      "type": "boss",
+      "provider": "pixrig",
+      "recipe": "cm_verdugo"
+    },
+    {
+      "id": "ab_carcelero",
+      "type": "boss",
+      "provider": "pixrig",
+      "recipe": "ab_carcelero"
+    },
+    {
+      "id": "angel_corrompido",
+      "type": "boss",
+      "provider": "pixrig",
+      "recipe": "angel_corrompido",
+      "padding": 32
+    },
+    {
+      "id": "golem_cuerpos",
+      "type": "boss",
+      "provider": "pixrig",
+      "recipe": "golem_cuerpos"
+    },
+    {
+      "id": "cm_presentador",
+      "type": "boss",
+      "provider": "pixrig",
+      "recipe": "cm_presentador"
+    },
+    {
+      "id": "cm_presentador2",
+      "type": "boss",
+      "provider": "pixrig",
+      "recipe": "cm_presentador2"
+    },
+    {
+      "id": "cm_presentador3",
+      "type": "boss",
+      "provider": "pixrig",
+      "recipe": "cm_presentador3"
+    },
+    {
+      "id": "tiburon_joven",
+      "type": "enemy",
+      "provider": "pixrig",
+      "recipe": "tiburon_joven"
+    },
+    {
+      "id": "tiburon_blanco",
+      "type": "enemy",
+      "provider": "pixrig",
+      "recipe": "tiburon_blanco"
+    }
+  ]
+}

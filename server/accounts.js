@@ -935,6 +935,7 @@ function create(opts){
     }
   };
 
+  Object.assign(routes, require("./art-factory").routes({getStore:()=>store,adminAuth,send,err,readBody}));
   Object.assign(routes, gameMaster.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,ownerAccess,founderOf,founders:()=>founderBindings,seenAt}));
   Object.assign(routes, require("./item-economy").routes({getStore:()=>store,auth,send,err,readBody,now:now0,isOwner,fallback:{"GET /api/leaderboard":routes["GET /api/leaderboard"],"POST /api/leaderboard/submit":routes["POST /api/leaderboard/submit"]}}));
   Object.assign(routes, walletMod.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,log}));
