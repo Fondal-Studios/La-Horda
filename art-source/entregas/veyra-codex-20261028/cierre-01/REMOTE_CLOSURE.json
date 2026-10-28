@@ -1,0 +1,27 @@
+{
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "pr": 233,
+  "production": "c9524aa7c9f484aac2a62f6245c195065c265f6e",
+  "tree": "17f3cd51fc5b881f3ee73eda9867a6469913330e",
+  "filesVerified": 13,
+  "treeNotTruncated": true,
+  "mainObserved": "df7fe4b891c440a6fd31675a2c65434d77912628",
+  "pr232Observed": "f4b7c109b105bfc955f676c53f569f12abfbc783",
+  "originalManifestVerified": 24,
+  "newSourceSheets": 2,
+  "nominalCells": 56,
+  "approvedFrames": 0,
+  "installedPNG": 0,
+  "runtimeChanges": 0,
+  "partialAlpha": {
+    "left": 658856,
+    "up": 516237
+  },
+  "review": "Both edits FIX. Left red surround and frontal turn unresolved; up irregular gutters and partial alpha unresolved. No automatic threshold or extraction approval.",
+  "tests": "New read-only source diagnostics and diff check; renderer224 historical, not rerun. Parent17 checks success is not art approval or current CI approval.",
+  "queue": "67 entries, history appended only to Veyra; previous entries preserved",
+  "merge": false,
+  "publication": "NOT_CHECKED_NO_INSTALLATION",
+  "next": "Read cierre-01/CHECKPOINT,REVIEW,recipe,manifest,TEST_ATTEMPTS,SOURCE_GATE. Correct by action strips using original Codex and preserved source poses, not another identical fullsheet edit. Complete four-view body before runtime replacement; all visual/runtime/CI gates still required. Preserve external NanoGM integration and PR232 work."
+}
