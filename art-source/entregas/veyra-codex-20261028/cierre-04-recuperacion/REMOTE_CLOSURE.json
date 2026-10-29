@@ -1,0 +1,190 @@
+{
+  "state": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "productionCommit": "c04d7441b8c75c318017a87e038bf4da04bbed13",
+  "productionTree": "1a6a14ac80a867359dd900eab14625e4072291d2",
+  "sourceCommits": [
+    "9452a9202132148a19fc81b46457ddebba6f3ed7",
+    "6ae5d1f2639946665c333babd2b5ef7684b0468e"
+  ],
+  "verification": {
+    "files": 63,
+    "matched": 63,
+    "bad": [],
+    "truncated": false,
+    "treeEntries": 13026
+  },
+  "interruption": {
+    "localUnpublishedClosure04Lost": true,
+    "remoteClosure03Preserved": true,
+    "recoveredManifestEntries": 45,
+    "lostLocalTestClaimsAccepted": false
+  },
+  "new": {
+    "sources": 2,
+    "nominalSourcePoses": 28,
+    "changedFrames": 16,
+    "unchangedFrames": 96,
+    "nativeUniqueFramesPassed": 112,
+    "bodyABA": 64,
+    "bodyABAExact": 64,
+    "bodyErrors": 0,
+    "allStateSamples": 112,
+    "actualSelectedUniqueFrames": 112,
+    "calibrationAdditionalSamples": 112,
+    "idleCalibratedPass": 4,
+    "reexportByteIdenticalPNG": 5,
+    "installedPNG": 0,
+    "runtimeFilesChanged": 0,
+    "approvedFrames": 0
+  },
+  "limits": [
+    "Native screen and ABA used existing main normalization; measured correction separately in browser memory, no JS table installed.",
+    "Isolated body canvas, synthetic states; not gameplay/global-state parity.",
+    "Visual FIX cross-state left hair/braid volume and head/body proportions.",
+    "Full gameplay, all looks/equipment/arenas, relay/performance, ArtGate and exact-final-head CI approval remain pending."
+  ],
+  "queue": {
+    "entries": 67,
+    "first66Preserved": true,
+    "historyPreserved": true
+  },
+  "audit": {
+    "main": "df7fe4b891c440a6fd31675a2c65434d77912628",
+    "owner232": "e00ba6b0854ae6ca8871da24c84c7206d7c3f23a",
+    "ownerPaths": 131,
+    "noVeyraOverlap": true,
+    "branchesRead": 241,
+    "nano231": "be8a00eef0d3f8f86eb773a86711293037320c1d",
+    "new234": "documentation and audit only"
+  },
+  "ciObserved": {
+    "sha": "c04d7441b8c75c318017a87e038bf4da04bbed13",
+    "checks": [
+      {
+        "id": 123635308885,
+        "name": "lanes",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 123635308437,
+        "name": "emoji-lint",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 123635308362,
+        "name": "presentation",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 123635308292,
+        "name": "safari-engine",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 123635308238,
+        "name": "entry-reference",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 123635308012,
+        "name": "postgres",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 123635307708,
+        "name": "evidence",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 123635286734,
+        "name": "Analyze (python)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 123635286495,
+        "name": "Analyze (javascript-typescript)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 123635286233,
+        "name": "Analyze (actions)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 123635268645,
+        "name": "emoji-lint",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ],
+    "workflows": [
+      {
+        "id": 40927072464,
+        "name": "Champion entry balance",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 40927072490,
+        "name": "Integracion pruebas",
+        "status": "pending",
+        "conclusion": null
+      },
+      {
+        "id": 40927072472,
+        "name": "Art presentation verification",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 40927072485,
+        "name": "Art production evidence",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 40927072548,
+        "name": "Emoji lint (arte pixel)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 40927063692,
+        "name": "PR #233",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 40927060240,
+        "name": "Emoji lint (arte pixel)",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ],
+    "approval": false,
+    "parentFailure": "b220 Objetos economía parte A / ROLES.aparecen_en_partidas_reales, cause/baseline not demonstrated"
+  },
+  "merged": false,
+  "publication": {
+    "state": "NOT_APPLICABLE_CANDIDATE_NOT_INSTALLED",
+    "queried": false
+  },
+  "next": "Continue Veyra grouped left silhouette continuity from preserved sources, then complete real-scene and appearance gates before any runtime integration. Do not open another kit, repeat lost tests as evidence or lower thresholds.",
+  "commands": [
+    "python tools/art/pack-veyra-closure04r.py",
+    "CHROMIUM_PATH=/tmp/chromium node tools/art/check-veyra-closure04r.js",
+    "CALIBRATE=1 CHROMIUM_PATH=/tmp/chromium node tools/art/review-veyra-closure04r.js"
+  ]
+}
