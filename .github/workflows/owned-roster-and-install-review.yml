@@ -1,0 +1,33 @@
+name: Owned roster and visual installation review
+on:
+  pull_request:
+    paths:
+      - 'js/arenas/lanes/**'
+      - 'js/arenas/coliseum/**'
+      - 'js/modes/crystal-wars/client.js'
+      - 'js/net/net-game.js'
+      - 'tools/lanes/owned-roster-*.js'
+      - 'tools/art/painter/**'
+      - '.github/workflows/owned-roster-and-install-review.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tools/art/painter -p test_install_review.py
+      - run: node tools/lanes/owned-roster-test.js
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - run: |
+          python3 -m http.server 8750 >/tmp/horda-http.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8750/ >/dev/null && break; sleep 1; done
+          node tools/lanes/owned-roster-browser.js

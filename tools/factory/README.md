@@ -89,3 +89,7 @@ Pruebas: `node --test tools/factory/test-animation-contract.js`; el canario de L
 `python3 tools/factory/extract-authored-clip.py MANIFIESTO SALIDA RECIBO` extrae cuadros únicos en orden, con SHA-256 de fuente y RGBA por cuadro. No escala, filtra ni cambia la paleta. Rechaza grillas inválidas, duplicados, cuadros vacíos y alfa parcial. El recibo `EXTRACTED_NOT_APPROVED` no aprueba arte. Para un clip de cuatro cuadros112×112: `node tools/art/check-authored-clip-density.js ATLAS REPORTE` reutiliza el detector canónico sin cambiar umbrales; su alcance son esos cuatro cuadros. El checker de hojas36 conserva sus exigencias. Completar revisión visual, escala, Códice, skins, fallback, renderer y red antes de integrar. Prueba: `python3 -m unittest tools/factory/test_authored_clip.py`.
 
 - `python3 tools/factory/repair-outline-gaps.py MANIFIESTO STAGING`: repara huecos pequeños en un contorno oscuro ya existente tras diagnóstico visual. Conserva todo píxel opaco original, no redimensiona y registra coordenadas/hashes. Rechaza fuentes recortadas, alfa parcial, defectos extensos y escritura en assets. No transforma una ilustración ni aprueba el arte. Pruebas: `python3 -m unittest tools/factory/test_outline_gaps.py`.
+
+## Painter runtime installation
+
+`paint --install` and `tools/art/painter/install.py` require the hash-bound visual receipt documented in `docs/quality/owned-roster-20261029/REVIEW.md`. Numeric style PASS alone cannot authorize installation. Run `python -m unittest discover -s tools/art/painter -p test_install_review.py`.
