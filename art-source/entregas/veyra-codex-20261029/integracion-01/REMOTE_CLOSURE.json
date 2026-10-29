@@ -1,0 +1,18 @@
+{
+  "status": "VALIDADO",
+  "component": "A-BODY-veyra/codex-v1",
+  "integration": "PENDING_CI",
+  "publication": "PENDING",
+  "base": "7010a15271fd4aac7c3130882e39a305c4480916",
+  "workshopPr": 233,
+  "workshopHead": "43bca3a4a19949ff3e498aeb061220b79163a75e",
+  "workshopPreserved": true,
+  "installed": [
+    "assets/sprites/champions/veyra/codex-v1/atlas.png",
+    "js/champions/ascension/art.js",
+    "js/data/champion-art-normalize.js"
+  ],
+  "evidence": "art-source/entregas/veyra-codex-20261029/integracion-01",
+  "atlasSha256": "c2e818a13df8cf27cc8220b24dfa87c998e4a2b1afbe718a85ffd2676043a2da",
+  "next": "Auditar main/PRs frescos, crear PR separado, exigir todos los checks/workflows del SHA exacto, merge normal expected_head_sha y verificar publicación por bytes."
+}

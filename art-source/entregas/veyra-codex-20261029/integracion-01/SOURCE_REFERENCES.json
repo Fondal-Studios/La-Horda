@@ -1,0 +1,63 @@
+{
+  "reference": {
+    "path": "assets/ui/codex/champions/veyra.png",
+    "sha256": "d89d8328b31d3bfa57b42a7a8a4f3c7c06d9446f122d38f4f7a59c9a7c9b76ed",
+    "role": "Plantilla visual obligatoria del Códice"
+  },
+  "installed": {
+    "path": "assets/sprites/champions/veyra/codex-v1/atlas.png",
+    "sha256": "c2e818a13df8cf27cc8220b24dfa87c998e4a2b1afbe718a85ffd2676043a2da",
+    "size": [
+      1536,
+      2016
+    ],
+    "cell": [
+      192,
+      144
+    ],
+    "frames": 112
+  },
+  "sources": [
+    {
+      "path": "art-source/entregas/veyra-codex-20261029/integracion-01/sources/PROMPT_ATTEMPT01.txt",
+      "sha256": "0ae8f327c242a061e285505a1ebb5b74674778e05f78dfc27ddd7d19214b001f"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261029/integracion-01/sources/PROMPT_ATTEMPT02.txt",
+      "sha256": "8a55f0d272bba1fda1e297234b0bf863133c0f4be3835fff469245fc168237bc"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261029/integracion-01/sources/PROMPT_ATTEMPT03.txt",
+      "sha256": "085ba6eb5f48c1cb857ebca7a0dfd488679fd98b8fdee4f93bf90cf51b573e9b"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261029/integracion-01/sources/attempt02-candidate-atlas.png",
+      "sha256": "618ae4a757039cfdcc33e84bd639d843ee101f9c2b959698a9a4001e0fca3a08"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261029/integracion-01/sources/attempt02-sequence-native.json",
+      "sha256": "c010e97e7ded73920645dc3baaf2885bf102c3925811445aa2d30e097c126b0a"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261029/integracion-01/sources/attempt03-sequence-native.json",
+      "sha256": "d1eabf8b82e7c7bfa0087dffb96a030bb504ccc8329aa4de1bdecb73660ae38e"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261029/integracion-01/sources/closure04-attempt01-candidate-atlas.png",
+      "sha256": "eaea08979ef2954e4703b2316bc35145e4afa36fea89b99e5ea7aeb34cd8afff"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261029/integracion-01/sources/closure04-candidate-atlas.png",
+      "sha256": "9078d764fbbc5870198ba794849cca997a371476f6954bc129158af1cc2f395f"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261029/integracion-01/sources/source-left-continuity-05.png",
+      "sha256": "c85305eca211c032e7949bc09bef95c75de157ab742ffca3658618468333eec9"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261029/integracion-01/sources/source-left-native-attempt02.png",
+      "sha256": "ef19375eee56691dec23ae1cf15ef6c83e0f042f1b5df16d2979bfbf10d4b3a8"
+    }
+  ],
+  "workshop": "PR233 preserved as draft/FIX/NO_INTEGRAR; this closure installs only the separately validated body component."
+}

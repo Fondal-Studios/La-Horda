@@ -1,0 +1,59 @@
+{
+  "attempts": [
+    {
+      "id": "source-left-continuity-05",
+      "result": "REJECTED",
+      "detail": "Long braid improved identity; unchanged native detector failed frames 91,106,109,110."
+    },
+    {
+      "id": "source-left-native-attempt02",
+      "result": "PARTIAL_SOURCE",
+      "detail": "Detector failed 89,91,106,109; whole authored frames 104,105,108 accepted into curated atlas."
+    },
+    {
+      "id": "source-left-native-attempt03",
+      "result": "REJECTED",
+      "detail": "At reference height245 failed 88,89,91,93,94,105,106,109,111; initial pack at236 also failed padding."
+    },
+    {
+      "id": "game-matrix-monolithic",
+      "result": "INVALID",
+      "detail": "Browser exhausted memory from large embedded sheets; excluded."
+    },
+    {
+      "id": "game-matrix-data-url",
+      "result": "INVALID",
+      "detail": "Repeated generated croma data URLs inflated JSON and crashed the run; outputs compacted and rerun without URLs."
+    },
+    {
+      "id": "contact-overlap-diagnostic",
+      "result": "REJECTED_FIXTURE",
+      "detail": "Enemies were placed inside hair volume; min0.4966 and old main also failed, so the fixture did not represent adjacent gameplay contact."
+    },
+    {
+      "id": "online-missing-ws",
+      "result": "ENVIRONMENT_FAILURE",
+      "detail": "First relay start lacked server node_modules/ws; reused node_modules from an identical package-lock and reran real relay PASS."
+    },
+    {
+      "id": "online-guest-counter",
+      "result": "HARNESS_CORRECTED",
+      "detail": "Guest local stats are not authoritative; final assertion uses three tactile inputs, host authoritative casts>=3, and body draws on both peers."
+    },
+    {
+      "id": "roster-croma-normalization",
+      "result": "CORRECTED",
+      "detail": "First final roster run found croma front/side foot -5 and up body56; aligned derived croma normalization with base, final 141/141 PASS."
+    },
+    {
+      "id": "painter-style-gate",
+      "result": "NOT_APPLICABLE",
+      "detail": "style_gate.py only supports the legacy fixed 448x1008 atlas format; it rejected the 1536x2016 format before analysis. Native, pixel-density, roster and gameplay gates cover the new pack."
+    },
+    {
+      "id": "final",
+      "result": "PASS",
+      "detail": "All current gates rerun after the croma normalization correction; game matrix retained min contact 0.8710653753026635."
+    }
+  ]
+}

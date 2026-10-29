@@ -1,0 +1,8 @@
+Use case: precise-object-edit
+Asset type: final native pixel-art source sheet for Veyra's game sprites.
+Primary request: Repaint the existing 4x4 left-facing Veyra sheet with the SAME 16 poses, row order, spacing, silhouettes, long braid length, two blades, costume, proportions, and motion. Change only the pixel-art material treatment so every pose reads as deliberately authored low-resolution game pixel art rather than a smooth reduced illustration.
+Input images: Image 1 is the mandatory Champion Codex identity and palette reference. Image 2 is the exact 16-pose sheet to preserve.
+Required treatment: hard opaque pixel clusters, crisp single-pixel dark outline at native scale, 2–3 flat tones per material, shared compact palette across all 16 poses, stepped diagonal edges, no airbrush or continuous shading. Preserve the long heavy braid and large chibi head in every walk, attack, hit, and death frame.
+Composition: exactly four columns and four rows; transparent background; one isolated full pose per cell; no overlap; consistent baselines; no labels, grid, text, or decoration.
+Invariants: do not change any pose, direction, blade count, hair length, armor pieces, facial scar, bandaged arm, frame order, or spacing.
+Avoid: gradients, soft shading, antialiasing, semitransparent edge pixels, red backdrop, glow, shadows on a background, extra weapons, short hair, missing braid, cropped poses, watermarks.

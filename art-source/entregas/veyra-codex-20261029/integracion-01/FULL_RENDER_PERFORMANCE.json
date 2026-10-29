@@ -1,0 +1,53 @@
+{
+  "rows": [
+    {
+      "mobile": false,
+      "enabled": false,
+      "samples": 340,
+      "p50": 2.5,
+      "p95": 4.400000002235174,
+      "max": 18,
+      "drawAttempts": 361,
+      "clears": 361,
+      "heroHP": 9200000,
+      "errors": []
+    },
+    {
+      "mobile": false,
+      "enabled": true,
+      "samples": 340,
+      "p50": 2.399999998509884,
+      "p95": 3.5,
+      "max": 8.699999999254942,
+      "drawAttempts": 361,
+      "clears": 361,
+      "heroHP": 9200000,
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "enabled": false,
+      "samples": 340,
+      "p50": 2.400000002235174,
+      "p95": 3.7000000029802322,
+      "max": 21.800000000745058,
+      "drawAttempts": 361,
+      "clears": 361,
+      "heroHP": 9200000,
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "enabled": true,
+      "samples": 340,
+      "p50": 2.5,
+      "p95": 3.800000000745058,
+      "max": 9,
+      "drawAttempts": 361,
+      "clears": 361,
+      "heroHP": 8464000,
+      "errors": []
+    }
+  ],
+  "scope": "Four independent seeded 360-frame update/render runs; 12 enemies and two allies, real clear cycle, first 20 frames excluded. Disabled mode suppresses only Veyra body submission. Measures local JS submission, not GPU completion, GC isolation or physical mobile performance; no new threshold."
+}
