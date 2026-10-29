@@ -1,0 +1,847 @@
+{
+  "scope": "Same painter measurements/tolerance; explicit native 192x128 cells; median of 12 locomotion slots. Individual action rows diagnostic, not standard 448x1008 gate.",
+  "tolerance": 0.15,
+  "references": {
+    "baltra": {
+      "colores": 1806.5,
+      "contorno": 0.8875850177220039,
+      "sombreado": 11.561045169830322,
+      "detalle": 0.7402893812080331
+    },
+    "baltra_set": {
+      "colores": 2023.5,
+      "contorno": 0.7929600578549176,
+      "sombreado": 15.00158166885376,
+      "detalle": 0.8271539439161513
+    },
+    "baltra_skin": {
+      "colores": 1962.0,
+      "contorno": 0.8583128022629802,
+      "sombreado": 15.436080932617188,
+      "detalle": 0.8462209863836732
+    },
+    "dariel": {
+      "colores": 1484.5,
+      "contorno": 0.9176119028712333,
+      "sombreado": 9.454582214355469,
+      "detalle": 0.46708363571699774
+    },
+    "dariel_set": {
+      "colores": 1919.5,
+      "contorno": 0.8655555246389717,
+      "sombreado": 14.1157865524292,
+      "detalle": 0.6283252140976929
+    },
+    "dariel_skin": {
+      "colores": 1661.0,
+      "contorno": 0.9163328639588774,
+      "sombreado": 10.53469467163086,
+      "detalle": 0.48520432406747444
+    },
+    "maura": {
+      "colores": 2181.0,
+      "contorno": 0.8833644336629969,
+      "sombreado": 7.641646862030029,
+      "detalle": 0.36993699369936994
+    },
+    "maura_set": {
+      "colores": 2156.5,
+      "contorno": 0.7864943286731734,
+      "sombreado": 12.361729145050049,
+      "detalle": 0.5347298777471556
+    },
+    "maura_skin": {
+      "colores": 2243.5,
+      "contorno": 0.8927794338709267,
+      "sombreado": 9.164104461669922,
+      "detalle": 0.504098378690455
+    },
+    "nahir": {
+      "colores": 1811.5,
+      "contorno": 0.8570088897250769,
+      "sombreado": 9.198503494262695,
+      "detalle": 0.4944277988892137
+    },
+    "nahir_set": {
+      "colores": 1918.0,
+      "contorno": 0.8934366025899592,
+      "sombreado": 14.803564071655273,
+      "detalle": 0.6601437345282072
+    },
+    "nahir_skin": {
+      "colores": 1821.5,
+      "contorno": 0.9355275075924863,
+      "sombreado": 11.372718811035156,
+      "detalle": 0.5607661625293198
+    },
+    "orsa": {
+      "colores": 2228.5,
+      "contorno": 0.8545016835334396,
+      "sombreado": 10.43508768081665,
+      "detalle": 0.5801579343690552
+    },
+    "orsa_set": {
+      "colores": 2262.5,
+      "contorno": 0.8022760685599541,
+      "sombreado": 13.005635261535645,
+      "detalle": 0.710809072414475
+    },
+    "orsa_skin": {
+      "colores": 2488.5,
+      "contorno": 0.770245883149109,
+      "sombreado": 11.300792694091797,
+      "detalle": 0.6683121897407611
+    },
+    "renko": {
+      "colores": 1639.0,
+      "contorno": 0.8719981396922036,
+      "sombreado": 7.708817720413208,
+      "detalle": 0.46522340046093064
+    },
+    "renko_skin": {
+      "colores": 1794.0,
+      "contorno": 0.878899491782007,
+      "sombreado": 13.916523933410645,
+      "detalle": 0.6888473791570213
+    },
+    "sira": {
+      "colores": 1975.0,
+      "contorno": 0.6124416537008224,
+      "sombreado": 11.920074462890625,
+      "detalle": 0.6683323814962878
+    },
+    "sira_set": {
+      "colores": 2277.0,
+      "contorno": 0.7372100680471207,
+      "sombreado": 13.310723781585693,
+      "detalle": 0.7209266944904288
+    },
+    "sira_skin": {
+      "colores": 2255.5,
+      "contorno": 0.6504564163700758,
+      "sombreado": 14.442456722259521,
+      "detalle": 0.7319917218070846
+    },
+    "tibor": {
+      "colores": 2535.5,
+      "contorno": 0.7346284342932803,
+      "sombreado": 11.432106971740723,
+      "detalle": 0.6504097884940585
+    },
+    "tibor_set": {
+      "colores": 2022.0,
+      "contorno": 0.7718529445794284,
+      "sombreado": 13.876938343048096,
+      "detalle": 0.7104943301534916
+    },
+    "tibor_skin": {
+      "colores": 1972.0,
+      "contorno": 0.789969108818558,
+      "sombreado": 15.534060001373291,
+      "detalle": 0.7874108315521104
+    },
+    "vesper": {
+      "colores": 1560.5,
+      "contorno": 0.787917737789203,
+      "sombreado": 9.137616157531738,
+      "detalle": 0.4058811558811559
+    },
+    "vesper_set": {
+      "colores": 1905.5,
+      "contorno": 0.6156515620602308,
+      "sombreado": 13.94443130493164,
+      "detalle": 0.6589878855496306
+    },
+    "zahra": {
+      "colores": 1641.5,
+      "contorno": 0.8761967575847835,
+      "sombreado": 9.247375011444092,
+      "detalle": 0.4657909489841288
+    },
+    "zahra_set": {
+      "colores": 1861.5,
+      "contorno": 0.855442863390184,
+      "sombreado": 10.530298233032227,
+      "detalle": 0.5484732531022104
+    },
+    "zahra_skin": {
+      "colores": 1789.5,
+      "contorno": 0.789032144118686,
+      "sombreado": 13.251096725463867,
+      "detalle": 0.5935305600044346
+    }
+  },
+  "ranges": {
+    "colores": [
+      1484.5,
+      2535.5
+    ],
+    "contorno": [
+      0.6124416537008224,
+      0.9355275075924863
+    ],
+    "sombreado": [
+      7.641646862030029,
+      15.534060001373291
+    ],
+    "detalle": [
+      0.36993699369936994,
+      0.8462209863836732
+    ]
+  },
+  "locomotionMedian": {
+    "colores": 2482.0,
+    "contorno": 0.708248718692583,
+    "sombreado": 9.44422721862793,
+    "detalle": 0.5588039867109634
+  },
+  "failures": [],
+  "frames": [
+    {
+      "index": 0,
+      "metrics": {
+        "colores": 2645,
+        "contorno": 0.6795180722891566,
+        "sombreado": 12.073890686035156,
+        "detalle": 0.7086126869520372
+      },
+      "failures": []
+    },
+    {
+      "index": 1,
+      "metrics": {
+        "colores": 2588,
+        "contorno": 0.7128953771289538,
+        "sombreado": 11.990022659301758,
+        "detalle": 0.7133051742344245
+      },
+      "failures": []
+    },
+    {
+      "index": 2,
+      "metrics": {
+        "colores": 2547,
+        "contorno": 0.6692913385826772,
+        "sombreado": 11.80175495147705,
+        "detalle": 0.68713605082054
+      },
+      "failures": []
+    },
+    {
+      "index": 3,
+      "metrics": {
+        "colores": 2647,
+        "contorno": 0.7042606516290727,
+        "sombreado": 11.79531192779541,
+        "detalle": 0.6941598360655737
+      },
+      "failures": []
+    },
+    {
+      "index": 4,
+      "metrics": {
+        "colores": 2665,
+        "contorno": 0.7127937336814621,
+        "sombreado": 11.806352615356445,
+        "detalle": 0.7085828343313373
+      },
+      "failures": []
+    },
+    {
+      "index": 5,
+      "metrics": {
+        "colores": 2603,
+        "contorno": 0.683698296836983,
+        "sombreado": 11.80717945098877,
+        "detalle": 0.6875326030255607
+      },
+      "failures": []
+    },
+    {
+      "index": 6,
+      "metrics": {
+        "colores": 2612,
+        "contorno": 0.7146464646464646,
+        "sombreado": 11.746764183044434,
+        "detalle": 0.6895854398382204
+      },
+      "failures": []
+    },
+    {
+      "index": 7,
+      "metrics": {
+        "colores": 2609,
+        "contorno": 0.7024390243902439,
+        "sombreado": 11.632134437561035,
+        "detalle": 0.6890149561629706
+      },
+      "failures": []
+    },
+    {
+      "index": 8,
+      "metrics": {
+        "colores": 2196,
+        "contorno": 0.6917808219178082,
+        "sombreado": 9.879624366760254,
+        "detalle": 0.5873015873015873
+      },
+      "failures": []
+    },
+    {
+      "index": 9,
+      "metrics": {
+        "colores": 2248,
+        "contorno": 0.6696629213483146,
+        "sombreado": 9.8744535446167,
+        "detalle": 0.5645472061657033
+      },
+      "failures": []
+    },
+    {
+      "index": 10,
+      "metrics": {
+        "colores": 2167,
+        "contorno": 0.7159090909090909,
+        "sombreado": 9.873603820800781,
+        "detalle": 0.5708529214237743
+      },
+      "failures": []
+    },
+    {
+      "index": 11,
+      "metrics": {
+        "colores": 2234,
+        "contorno": 0.6704035874439462,
+        "sombreado": 9.46821403503418,
+        "detalle": 0.5603164139749506
+      },
+      "failures": []
+    },
+    {
+      "index": 12,
+      "metrics": {
+        "colores": 2197,
+        "contorno": 0.7037037037037037,
+        "sombreado": 9.572917938232422,
+        "detalle": 0.5588039867109634
+      },
+      "failures": []
+    },
+    {
+      "index": 13,
+      "metrics": {
+        "colores": 2368,
+        "contorno": 0.6714579055441479,
+        "sombreado": 9.315536499023438,
+        "detalle": 0.5627283800243605
+      },
+      "failures": []
+    },
+    {
+      "index": 14,
+      "metrics": {
+        "colores": 2357,
+        "contorno": 0.7217573221757322,
+        "sombreado": 9.11020278930664,
+        "detalle": 0.5322384428223844
+      },
+      "failures": []
+    },
+    {
+      "index": 15,
+      "metrics": {
+        "colores": 2595,
+        "contorno": 0.6943231441048034,
+        "sombreado": 8.347496032714844,
+        "detalle": 0.4970786516853933
+      },
+      "failures": []
+    },
+    {
+      "index": 16,
+      "metrics": {
+        "colores": 2513,
+        "contorno": 0.7432432432432432,
+        "sombreado": 8.719560623168945,
+        "detalle": 0.5187861271676301
+      },
+      "failures": []
+    },
+    {
+      "index": 17,
+      "metrics": {
+        "colores": 2600,
+        "contorno": 0.7274725274725274,
+        "sombreado": 8.260979652404785,
+        "detalle": 0.5063868613138686
+      },
+      "failures": []
+    },
+    {
+      "index": 18,
+      "metrics": {
+        "colores": 2569,
+        "contorno": 0.7307692307692307,
+        "sombreado": 8.307875633239746,
+        "detalle": 0.5111524163568774
+      },
+      "failures": []
+    },
+    {
+      "index": 19,
+      "metrics": {
+        "colores": 2527,
+        "contorno": 0.7165178571428571,
+        "sombreado": 8.738948822021484,
+        "detalle": 0.49644043663977216
+      },
+      "failures": []
+    },
+    {
+      "index": 20,
+      "metrics": {
+        "colores": 2416,
+        "contorno": 0.7392344497607656,
+        "sombreado": 8.574495315551758,
+        "detalle": 0.5234967155128853
+      },
+      "failures": []
+    },
+    {
+      "index": 21,
+      "metrics": {
+        "colores": 2437,
+        "contorno": 0.6966292134831461,
+        "sombreado": 8.507404327392578,
+        "detalle": 0.48992628992628995
+      },
+      "failures": []
+    },
+    {
+      "index": 22,
+      "metrics": {
+        "colores": 2536,
+        "contorno": 0.7538461538461538,
+        "sombreado": 8.4292631149292,
+        "detalle": 0.5140232108317214
+      },
+      "failures": []
+    },
+    {
+      "index": 23,
+      "metrics": {
+        "colores": 2347,
+        "contorno": 0.6629711751662971,
+        "sombreado": 9.775918006896973,
+        "detalle": 0.5693430656934306
+      },
+      "failures": []
+    },
+    {
+      "index": 24,
+      "metrics": {
+        "colores": 2353,
+        "contorno": 0.6939655172413793,
+        "sombreado": 9.141777038574219,
+        "detalle": 0.5525197328476017
+      },
+      "failures": []
+    },
+    {
+      "index": 25,
+      "metrics": {
+        "colores": 2294,
+        "contorno": 0.7033707865168539,
+        "sombreado": 9.609996795654297,
+        "detalle": 0.5714285714285714
+      },
+      "failures": []
+    },
+    {
+      "index": 26,
+      "metrics": {
+        "colores": 2267,
+        "contorno": 0.7017937219730942,
+        "sombreado": 9.320611953735352,
+        "detalle": 0.5661901802361715
+      },
+      "failures": []
+    },
+    {
+      "index": 27,
+      "metrics": {
+        "colores": 2363,
+        "contorno": 0.691304347826087,
+        "sombreado": 9.795438766479492,
+        "detalle": 0.572289156626506
+      },
+      "failures": []
+    },
+    {
+      "index": 28,
+      "metrics": {
+        "colores": 2394,
+        "contorno": 0.6848739495798319,
+        "sombreado": 8.850802421569824,
+        "detalle": 0.533134328358209
+      },
+      "failures": []
+    },
+    {
+      "index": 29,
+      "metrics": {
+        "colores": 2377,
+        "contorno": 0.6944444444444444,
+        "sombreado": 9.722071647644043,
+        "detalle": 0.5748792270531401
+      },
+      "failures": []
+    },
+    {
+      "index": 30,
+      "metrics": {
+        "colores": 2388,
+        "contorno": 0.7139874739039666,
+        "sombreado": 9.04697036743164,
+        "detalle": 0.5344009489916963
+      },
+      "failures": []
+    },
+    {
+      "index": 31,
+      "metrics": {
+        "colores": 2825,
+        "contorno": 0.6804347826086956,
+        "sombreado": 11.507851600646973,
+        "detalle": 0.6550387596899225
+      },
+      "failures": []
+    },
+    {
+      "index": 32,
+      "metrics": {
+        "colores": 2779,
+        "contorno": 0.7103321033210332,
+        "sombreado": 9.560162544250488,
+        "detalle": 0.5747311827956989
+      },
+      "failures": []
+    },
+    {
+      "index": 33,
+      "metrics": {
+        "colores": 2863,
+        "contorno": 0.6896551724137931,
+        "sombreado": 10.366586685180664,
+        "detalle": 0.5829809725158562
+      },
+      "failures": []
+    },
+    {
+      "index": 34,
+      "metrics": {
+        "colores": 2679,
+        "contorno": 0.7049180327868853,
+        "sombreado": 11.166116714477539,
+        "detalle": 0.631578947368421
+      },
+      "failures": []
+    },
+    {
+      "index": 35,
+      "metrics": {
+        "colores": 2986,
+        "contorno": 0.6731898238747553,
+        "sombreado": 10.231611251831055,
+        "detalle": 0.605410447761194
+      },
+      "failures": [
+        "colores 2.99e+03 fuera de [1.26e+03, 2.92e+03]"
+      ]
+    },
+    {
+      "index": 36,
+      "metrics": {
+        "colores": 2927,
+        "contorno": 0.696652719665272,
+        "sombreado": 10.624628067016602,
+        "detalle": 0.6392344497607656
+      },
+      "failures": [
+        "colores 2.93e+03 fuera de [1.26e+03, 2.92e+03]"
+      ]
+    },
+    {
+      "index": 37,
+      "metrics": {
+        "colores": 2336,
+        "contorno": 0.725,
+        "sombreado": 9.709753036499023,
+        "detalle": 0.5948660714285714
+      },
+      "failures": []
+    },
+    {
+      "index": 38,
+      "metrics": {
+        "colores": 1947,
+        "contorno": 0.7686832740213523,
+        "sombreado": 10.496344566345215,
+        "detalle": 0.6618556701030928
+      },
+      "failures": []
+    },
+    {
+      "index": 39,
+      "metrics": {
+        "colores": 3149,
+        "contorno": 0.6930455635491607,
+        "sombreado": 11.353145599365234,
+        "detalle": 0.6802913800080939
+      },
+      "failures": [
+        "colores 3.15e+03 fuera de [1.26e+03, 2.92e+03]"
+      ]
+    },
+    {
+      "index": 40,
+      "metrics": {
+        "colores": 2658,
+        "contorno": 0.7027027027027027,
+        "sombreado": 10.487730979919434,
+        "detalle": 0.6433502070869765
+      },
+      "failures": []
+    },
+    {
+      "index": 41,
+      "metrics": {
+        "colores": 2357,
+        "contorno": 0.7045454545454546,
+        "sombreado": 9.289374351501465,
+        "detalle": 0.6075533661740559
+      },
+      "failures": []
+    },
+    {
+      "index": 42,
+      "metrics": {
+        "colores": 3025,
+        "contorno": 0.7115384615384616,
+        "sombreado": 10.813990592956543,
+        "detalle": 0.6520994001713796
+      },
+      "failures": [
+        "colores 3.02e+03 fuera de [1.26e+03, 2.92e+03]"
+      ]
+    },
+    {
+      "index": 43,
+      "metrics": {
+        "colores": 3258,
+        "contorno": 0.6917293233082706,
+        "sombreado": 9.319181442260742,
+        "detalle": 0.5637034002458009
+      },
+      "failures": [
+        "colores 3.26e+03 fuera de [1.26e+03, 2.92e+03]"
+      ]
+    },
+    {
+      "index": 44,
+      "metrics": {
+        "colores": 3405,
+        "contorno": 0.6952998379254457,
+        "sombreado": 9.518399238586426,
+        "detalle": 0.5674226804123711
+      },
+      "failures": [
+        "colores 3.4e+03 fuera de [1.26e+03, 2.92e+03]"
+      ]
+    },
+    {
+      "index": 45,
+      "metrics": {
+        "colores": 2965,
+        "contorno": 0.7281368821292775,
+        "sombreado": 9.701156616210938,
+        "detalle": 0.5848527349228612
+      },
+      "failures": [
+        "colores 2.96e+03 fuera de [1.26e+03, 2.92e+03]"
+      ]
+    },
+    {
+      "index": 46,
+      "metrics": {
+        "colores": 2530,
+        "contorno": 0.7253787878787878,
+        "sombreado": 8.68107795715332,
+        "detalle": 0.5376407824540604
+      },
+      "failures": []
+    },
+    {
+      "index": 47,
+      "metrics": {
+        "colores": 2739,
+        "contorno": 0.7192660550458716,
+        "sombreado": 8.925619125366211,
+        "detalle": 0.5249469214437368
+      },
+      "failures": []
+    },
+    {
+      "index": 48,
+      "metrics": {
+        "colores": 2660,
+        "contorno": 0.725925925925926,
+        "sombreado": 7.878002166748047,
+        "detalle": 0.4832325453545904
+      },
+      "failures": []
+    },
+    {
+      "index": 49,
+      "metrics": {
+        "colores": 2573,
+        "contorno": 0.6638655462184874,
+        "sombreado": 9.68646240234375,
+        "detalle": 0.592156862745098
+      },
+      "failures": []
+    },
+    {
+      "index": 50,
+      "metrics": {
+        "colores": 2964,
+        "contorno": 0.7203703703703703,
+        "sombreado": 10.590256690979004,
+        "detalle": 0.5856196783349101
+      },
+      "failures": [
+        "colores 2.96e+03 fuera de [1.26e+03, 2.92e+03]"
+      ]
+    },
+    {
+      "index": 51,
+      "metrics": {
+        "colores": 2844,
+        "contorno": 0.7178423236514523,
+        "sombreado": 10.740690231323242,
+        "detalle": 0.6106280193236715
+      },
+      "failures": []
+    },
+    {
+      "index": 52,
+      "metrics": {
+        "colores": 2649,
+        "contorno": 0.7562642369020501,
+        "sombreado": 10.501822471618652,
+        "detalle": 0.5891590678824722
+      },
+      "failures": []
+    },
+    {
+      "index": 53,
+      "metrics": {
+        "colores": 2882,
+        "contorno": 0.698076923076923,
+        "sombreado": 10.270705223083496,
+        "detalle": 0.5883504650024474
+      },
+      "failures": []
+    },
+    {
+      "index": 54,
+      "metrics": {
+        "colores": 2861,
+        "contorno": 0.7181628392484343,
+        "sombreado": 10.622136116027832,
+        "detalle": 0.5822306238185255
+      },
+      "failures": []
+    },
+    {
+      "index": 55,
+      "metrics": {
+        "colores": 3188,
+        "contorno": 0.6983842010771992,
+        "sombreado": 10.875024795532227,
+        "detalle": 0.6453804347826086
+      },
+      "failures": [
+        "colores 3.19e+03 fuera de [1.26e+03, 2.92e+03]"
+      ]
+    },
+    {
+      "index": 56,
+      "metrics": {
+        "colores": 3345,
+        "contorno": 0.6987179487179487,
+        "sombreado": 10.158056259155273,
+        "detalle": 0.5909090909090909
+      },
+      "failures": [
+        "colores 3.34e+03 fuera de [1.26e+03, 2.92e+03]"
+      ]
+    },
+    {
+      "index": 57,
+      "metrics": {
+        "colores": 2825,
+        "contorno": 0.6932270916334662,
+        "sombreado": 10.483139038085938,
+        "detalle": 0.5886385896180215
+      },
+      "failures": []
+    },
+    {
+      "index": 58,
+      "metrics": {
+        "colores": 2671,
+        "contorno": 0.7182203389830508,
+        "sombreado": 9.691668510437012,
+        "detalle": 0.5700604838709677
+      },
+      "failures": []
+    },
+    {
+      "index": 59,
+      "metrics": {
+        "colores": 3201,
+        "contorno": 0.7064393939393939,
+        "sombreado": 10.17202377319336,
+        "detalle": 0.6150194216659474
+      },
+      "failures": [
+        "colores 3.2e+03 fuera de [1.26e+03, 2.92e+03]"
+      ]
+    },
+    {
+      "index": 60,
+      "metrics": {
+        "colores": 3118,
+        "contorno": 0.6703499079189686,
+        "sombreado": 10.91700553894043,
+        "detalle": 0.6348340154615735
+      },
+      "failures": [
+        "colores 3.12e+03 fuera de [1.26e+03, 2.92e+03]"
+      ]
+    },
+    {
+      "index": 61,
+      "metrics": {
+        "colores": 3064,
+        "contorno": 0.6864244741873805,
+        "sombreado": 11.01661205291748,
+        "detalle": 0.6282698485543827
+      },
+      "failures": [
+        "colores 3.06e+03 fuera de [1.26e+03, 2.92e+03]"
+      ]
+    }
+  ]
+}

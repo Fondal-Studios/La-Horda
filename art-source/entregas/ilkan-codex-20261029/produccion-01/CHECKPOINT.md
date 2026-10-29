@@ -1,5 +1,9 @@
-# Ilkan Códice — fuente en producción
+# Ilkan Códice — cuerpo conectado, cierre en validación
 
-Pedido directo de Nano del29/10: rehacer Ilkan para coincidir con su Códice durante el juego. Este pedido prioriza Ilkan; Veyra PR233 y Nano VFX PR231 se conservan.
+PR235, rama art/ilkan-codex-body-20261029. Base main df7fe4b891c440a6fd31675a2c65434d77912628. Fuentes remotas previas41b3768d4208deada104a2ad418b6b7adfc3258b preservadas.
 
-Main auditado df7fe4b; PR232 e00ba6b,131rutas sin Ilkan. Única rama encontrada por Ilkan: taller histórico de buffs. Referencia assets/ui/codex/champions/ilkan.png leída visualmente. El renderer especializado usa62poses humanas del atlas v2 y31del coloso, además de skin legion. Se conserva el coloso y la skin. Fuente de locomoción32celdas nominales, GENERADO, no aprobada ni instalada. Se está completando el contrato especial antes de cualquier integración. No merge ni publicación.
+62 cuadros seleccionados de64fuentes, atlas codex-v1 conectado al cargador humano real. Una línea runtime, normalización y Coloso/Legión intactos. Receta, originales, fallos y hashes presentes. Roster141PASS, nativo62PASS/viewport, estilo de locomociónPASS,12pares de partida con resumen/RNG iguales,36preservación exacta,relay10PASS. EQUIPMENT contiene prueba de equipo y retorno; revisar alcance y capturas.
+
+VALIDADO_LOCAL_PENDING_CI, NO_INTEGRAR hasta todos checks/workflows del SHAexacto verdes y revisión final diff/main/PR. No publicado. No cerrar B099 entero, kit Ilkan, Veyra ni Nano.
+
+Siguiente: comprobar equipo/retorno final, preparar commit, auditar head/main/PR232 frescos; CIexacto, ready y merge normal expected_head_sha sólo si aprobado. Verificar canónico por bytes y consumidor; escribir cierre posterior remoto.

@@ -1,0 +1,31 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),H=require('../lib/serve');
+const REL='art-source/entregas/ilkan-codex-20261029/produccion-01',OUT=path.join(H.ROOT,REL),meta=JSON.parse(fs.readFileSync(path.join(OUT,'candidate-meta.json')));
+const src=fs.readFileSync(path.join(H.ROOT,'tools/art/pixel-density.js'),'utf8');
+const part=(a,b)=>src.slice(src.indexOf(a),src.indexOf(b));
+const detector=part('const CANON =','const FLOOR_SCALE')+part('function analyzeInPage','function walk')+part('function classify','(async () => {');
+(async()=>{const site=await H.startSite(),browser=await H.launch(),results=[];try{for(const mobile of [false,true]){
+ const p=await browser.newPage({viewport:mobile?{width:844,height:390}:{width:1280,height:800},serviceWorkers:'block'}),errors=[];p.on('pageerror',e=>errors.push(e.message));
+ await p.goto(site.url+'/?lazy=1');await p.waitForFunction(()=>typeof makeHero==='function');await p.evaluate(()=>{loop=function(){};assetsStartGroup('ch:ilkan');assetsStartGroup('ch:tanque');});await p.waitForFunction(()=>CHAMP_PACK.ilkan?.ready&&CHAMP_PACK.ilkan_colossus?.ready&&TANQUE_IMG.naturalWidth>0);
+ await p.evaluate(fs.readFileSync(path.join(OUT,'loader-before.txt'),'utf8').replace('champPackLoadAtlas("ilkan",','champPackLoadAtlas("ilkan_baseline",'));await p.waitForFunction(()=>CHAMP_PACK.ilkan_baseline?.ready);await p.evaluate(()=>window.__oldIlkan=CHAMP_PACK.ilkan_baseline);await p.evaluate(({meta,url})=>champPackLoadAtlas('ilkan',url,meta),{meta,url:REL+'/candidate-atlas.png'});await p.waitForFunction(()=>CHAMP_PACK.ilkan.ready);await p.addScriptTag({content:detector});
+ const r=await p.evaluate(()=>{
+  selectedClass='ilkan';currentArena='bosque';lobbyAllies=[];startRun(1);state='paused';window.ART_GATE_NO_VFX=true;animNow=0;
+  const P=CHAMP_PACK.ilkan,old=window.__oldIlkan,N=180,cv=document.createElement('canvas');cv.width=cv.height=N;const g=cv.getContext('2d',{willReadFrequently:true}),saved=ctx,orig=champPackDrawFrame;let calls=[];
+  champPackDrawFrame=function(pack,i,x,y,s,flip,alpha){const m=ctx.getTransform();calls.push({index:i,url:pack.atlas?.src,scale:s*Math.hypot(m.a,m.b),flip});return orig.apply(this,arguments);};
+  const dirs=[['front',0,1],['side',1,0],['up',0,-1],['left',-1,0]];
+  const states=[['idle',{}],['walk',{moving:true}],['attack',{attackAnim:190,ilkanAtkTotal:200}],['hookPrep',{ilkanPhase:'hookPrep',ilkanPhaseTimer:120,ilkanHookDx:1}],['launch',{ilkanPhase:'hook',ilkanLaunchT:1,ilkanHookDx:1}],['fly',{ilkanPhase:'hook',ilkanHookDx:1}],['slash',{ilkanPhase:'hook',ilkanSlashFxTimer:90,ilkanHookDx:1}],['land',{ilkanPhase:'land'}],['instinct',{ilkanPose:'instinct',ilkanPoseTimer:260}],['advance',{ilkanPose:'advance',ilkanPoseTimer:310}],['invoke',{ilkanPhase:'tf',ilkanPhaseTimer:ILKAN_CFG.colossus.tfMs-ILKAN_CFG.colossus.invokeMs*.5}],['exhausted',{ilkanPhase:'exhaustFall',ilkanPhaseTimer:650}],['hit',{hurtTimer:120}],['death',{alive:false,_deadAt:0}]];
+  function draw(key,dir,extra={},pack=P){CHAMP_PACK.ilkan=pack;const h=makeHero(key,true,0,0);Object.assign(h,{x:0,y:0,fx:dir[1],fy:dir[2],animT:180,moving:false,attackAnim:0,hurtTimer:0},extra);calls=[];g.clearRect(0,0,N,N);g.save();g.translate(90,145);g.imageSmoothingEnabled=false;ctx=g;try{if(h.alive)drawHeroBody(h,h.scale,false,false);else drawFallenHero(h);}finally{ctx=saved;g.restore();}const d=g.getImageData(0,0,N,N).data,rows=Array(N).fill(0);let bottom=-1;for(let y=0;y<N;y++)for(let x=0;x<N;x++)if(d[(y*N+x)*4+3]>40){rows[y]++;bottom=y;}const th=Math.max(...rows)*.22,b=rows.map((v,i)=>v>=th?i:-1).filter(i=>i>=0);return{png:cv.toDataURL(),body:b.at(-1)-b[0]+1,foot:bottom-145,calls:JSON.parse(JSON.stringify(calls))};}
+  try{
+   const reference=draw('tanque',dirs[0]),initial=dirs.map(d=>({view:d[0],...draw('ilkan',d)})),calibration=[];
+   const idle=dirs.map(d=>{const m=draw('ilkan',d);return{view:d[0],...m,pass:Math.abs(m.body/reference.body-1)<=.04&&Math.abs(m.foot-reference.foot)<=2};}),rows=[],sheets={};
+   for(const d of dirs){const sc=document.createElement('canvas');sc.width=N*2;sc.height=N*states.length;const sg=sc.getContext('2d');sg.fillStyle='#26302c';sg.fillRect(0,0,sc.width,sc.height);states.forEach(([st,ex],i)=>{animNow=st==='death'?500:0;const a=draw('ilkan',d,ex,old);sg.drawImage(cv,0,i*N);const b=draw('ilkan',d,ex,P);sg.drawImage(cv,N,i*N);const a2=draw('ilkan',d,ex,old);sg.fillStyle='#fff';sg.font='12px monospace';sg.fillText(d[0]+' '+st+' old/new',4,i*N+170);rows.push({view:d[0],state:st,old:a,new:b,aba:a.png===a2.png});});sheets[d[0]]=sc.toDataURL();}
+   CHAMP_PACK.ilkan=P;const fc=document.createElement('canvas');fc.width=P.fw;fc.height=P.fh;const fg=fc.getContext('2d'),native=[];
+   for(let i=0;i<62;i++){fg.clearRect(0,0,P.fw,P.fh);fg.drawImage(P.atlas,i%P.cols*P.fw,Math.floor(i/P.cols)*P.fh,P.fw,P.fh,0,0,P.fw,P.fh);const m=analyzeInPage(fg.getImageData(0,0,P.fw,P.fh).data,P.fw,P.fh,8);const view=i<8?0:i<16?1:i<24?2:i<32?3:1;native.push({index:i,...m,...classify('campeones',m,idle[view].calls[0].scale,'candidate-atlas.png')});}
+   return{reference,initial,idle,calibration,normalization:CHAMP_ART_NORMALIZE.ilkan,rows,native,sheets};
+  }finally{ctx=saved;champPackDrawFrame=orig;CHAMP_PACK.ilkan=old;}
+ });
+ for(const [k,data]of Object.entries(r.sheets))fs.writeFileSync(path.join(OUT,(mobile?'mobile':'desktop')+'-'+k+'.png'),Buffer.from(data.split(',')[1],'base64'));delete r.sheets;
+ function clean(x){if(x&&typeof x==='object'){if(x.png){x.sha256=crypto.createHash('sha256').update(x.png).digest('hex');delete x.png;}for(const v of Object.values(x))clean(v);}}clean(r);results.push({mobile,errors,...r});await p.close();
+ }
+ fs.writeFileSync(path.join(OUT,'RENDER_NATIVE.json'),JSON.stringify({scope:'Actual drawHeroBody/drawFallenHero, synthetic body-only states. Existing normalization unchanged. No global parity or gameplay approval.',results},null,2)+'\n');console.log(JSON.stringify(results.map(r=>({mobile:r.mobile,errors:r.errors,idle:r.idle.map(x=>({view:x.view,body:x.body,foot:x.foot,pass:x.pass})),normalization:r.normalization,aba:r.rows.filter(x=>x.aba).length,nativeFailures:r.native.filter(x=>x.issues.length).map(x=>({index:x.index,issues:x.issues}))}))));
+ }finally{await browser.close();await site.close();}})().catch(e=>{console.error(e);process.exitCode=1;});
