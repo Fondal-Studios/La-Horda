@@ -1,0 +1,38 @@
+{
+  "generator": "built-in image_gen",
+  "reference": {
+    "path": "assets/ui/codex/champions/veyra.png",
+    "gitBlob": "95e8c87e3877e0607dbee3b9dd5a5d5f770f142d",
+    "sha256": "d89d8328b31d3bfa57b42a7a8a4f3c7c06d9446f122d38f4f7a59c9a7c9b76ed"
+  },
+  "prompts": [
+    "PROMPT_MOTION.txt",
+    "PROMPT_MATERIAL.txt"
+  ],
+  "sources": [
+    {
+      "path": "art-source/entregas/veyra-codex-20261028/cierre-04-recuperacion/source-left-motion-04r.png",
+      "sha256": "4d11df88127eb09c95b53b98e54e8b287e063549c37e3e2db20e2682ce3c547d",
+      "gitBlob": "b1008519e50752a360da1772e3696d10576e978d"
+    },
+    {
+      "path": "art-source/entregas/veyra-codex-20261028/cierre-04-recuperacion/source-left-material-04r.png",
+      "sha256": "0ef261a134c4c8a41e3c9597fbc917709c46153e2f32ffd69548f05326b8ae61",
+      "gitBlob": "e2e4e576a3d51f5f418e63793c088e66bb51876f"
+    }
+  ],
+  "selection": "motion04r attack4; material04r walk4/hit4/death4. Other96 exactly closure03.",
+  "sourceHeights": {
+    "motion04r": 236,
+    "material04r": 322
+  },
+  "extraction": "Connected alpha>127 components >=500 source pixels, existing four-row source collector, nearest resize at84/referenceHeight, binary alpha, fixed foot132 in192x144 cells; no palette quantization/recolor/filter. Source originals unmodified.",
+  "reproducibility": "Generation stochastic; exact source bytes preserved. Deterministic extraction reexported five PNG byte-identical.",
+  "commands": [
+    "python tools/art/pack-veyra-closure04r.py",
+    "On isolated main df7fe4b with workshop artifacts: CHROMIUM_PATH=/tmp/chromium node tools/art/check-veyra-closure04r.js",
+    "CHROMIUM_PATH=/tmp/chromium node tools/art/review-veyra-closure04r.js",
+    "CALIBRATE=1 CHROMIUM_PATH=/tmp/chromium node tools/art/review-veyra-closure04r.js"
+  ],
+  "browserRecovery": "Playwright default browser absent. Standard download returned invalid archive; @sparticuz/chromium138.0.2 installed outside repo. executablePath failed chown EINVAL; unpacked Brotli with node:zlib and tar --no-same-owner. /tmp/chromium used. No repo dependency/lockfile changed."
+}

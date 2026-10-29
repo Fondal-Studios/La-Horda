@@ -1,0 +1,96 @@
+{
+  "new": [
+    {
+      "id": "local04-interruption",
+      "result": "LOST_NOT_USABLE_FOR_APPROVAL",
+      "evidence": "RECOVERY.json"
+    },
+    {
+      "id": "browser01",
+      "result": "FAIL_BEFORE_BROWSER",
+      "evidence": "ATTEMPT01.log"
+    },
+    {
+      "id": "browser-install",
+      "result": "FAIL_INVALID_ARCHIVE",
+      "evidence": "BROWSER_INSTALL_FAILED.log"
+    },
+    {
+      "id": "sparticuz-executablePath",
+      "result": "FAIL",
+      "reason": "chown /tmp/fonts EINVAL; manual unpack preserved bytes without ownership change"
+    },
+    {
+      "id": "python-brotli",
+      "result": "FAIL",
+      "reason": "ModuleNotFoundError; node:zlib used instead"
+    },
+    {
+      "id": "material01",
+      "result": "FIX",
+      "nativeFailures": [
+        91,
+        104,
+        105,
+        108,
+        109
+      ],
+      "evidence": "attempt01/SEQUENCE_NATIVE.json"
+    },
+    {
+      "id": "material02",
+      "result": "NATIVE_PASS_ART_FIX",
+      "nativePassed": 112,
+      "ABA": 64,
+      "evidence": "SEQUENCE_NATIVE.json"
+    },
+    {
+      "id": "all-states01",
+      "result": "FAIL_BEFORE_CAPTURE",
+      "reason": "Waited for nonexistent CHAMP_PACK.tanque; master uses TANQUE_IMG. Corrected harness only. Early copy/view attempted before completion and found no files.",
+      "evidence": "ALL_STATES_ATTEMPT01.log"
+    },
+    {
+      "id": "all-states02",
+      "result": "TECHNICAL_RENDER_PASS_SCALE_FIX",
+      "states": 112,
+      "idleScaleFailures": 4,
+      "evidence": "ALL_STATES_ROSTER.json"
+    },
+    {
+      "id": "measured-normalization",
+      "result": "4_IDLE_PROBES_PASS_ART_FIX",
+      "states": 112,
+      "evidence": "calibrated-ALL_STATES_ROSTER.json",
+      "scope": "in-memory candidate table only; no installed JS"
+    },
+    {
+      "id": "reexport",
+      "result": "PASS",
+      "files": 5,
+      "evidence": "REEXPORT.json"
+    },
+    {
+      "id": "syntax-diff",
+      "result": "PASS",
+      "commands": [
+        "node --check tools/art/check-veyra-closure04r.js",
+        "node --check tools/art/review-veyra-closure04r.js",
+        "git diff --check"
+      ]
+    }
+  ],
+  "historical": [
+    "Closure03 106/112 native; parent CI17success1failure. Not approval of current candidate.",
+    "Lost unpublished closure04 numbers excluded; no reconstructed PASS evidence."
+  ],
+  "notRun": [
+    "full real-scene matrix",
+    "all-look roster gate",
+    "relay",
+    "global-state parity",
+    "performance",
+    "integral ArtGate"
+  ],
+  "thresholdsUnchanged": true
+}

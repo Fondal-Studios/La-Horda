@@ -1,0 +1,119 @@
+{
+  "component": "veyra.cuerpo.codex",
+  "state": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "candidateFrames": 112,
+  "newSources": 2,
+  "nominalSourcePoses": 28,
+  "changedCandidateFrames": [
+    "veyra.cuerpo.walk.left.0",
+    "veyra.cuerpo.walk.left.1",
+    "veyra.cuerpo.walk.left.2",
+    "veyra.cuerpo.walk.left.3",
+    "veyra.cuerpo.attack.left.0",
+    "veyra.cuerpo.attack.left.1",
+    "veyra.cuerpo.attack.left.2",
+    "veyra.cuerpo.attack.left.3",
+    "veyra.cuerpo.hit.left.0",
+    "veyra.cuerpo.hit.left.1",
+    "veyra.cuerpo.hit.left.2",
+    "veyra.cuerpo.hit.left.3",
+    "veyra.cuerpo.death.left.0",
+    "veyra.cuerpo.death.left.1",
+    "veyra.cuerpo.death.left.2",
+    "veyra.cuerpo.death.left.3"
+  ],
+  "unchangedCandidateFrames": 96,
+  "approvedFrames": 0,
+  "installedPNG": 0,
+  "runtimeFilesChanged": 0,
+  "testRuntimeMain": "df7fe4b891c440a6fd31675a2c65434d77912628",
+  "native": {
+    "uniqueFrames": 112,
+    "passed": 112,
+    "failed": 0,
+    "viewports": 2,
+    "thresholdsUnchanged": true,
+    "scope": "Canonical detector at actual renderer scale using existing main normalization. Numeric screen only; not art approval."
+  },
+  "bodyABA": {
+    "cases": 64,
+    "exact": 64,
+    "errors": 0,
+    "scope": "Synthetic hero states, body-only drawHeroBody/drawFallenHero; not gameplay/global-state parity."
+  },
+  "allStates": {
+    "cases": 112,
+    "errors": [],
+    "initialIdleFailures": [
+      "down",
+      "right",
+      "up",
+      "left"
+    ],
+    "calibratedIdlePass": [
+      "down",
+      "right",
+      "up",
+      "left"
+    ],
+    "reference": {
+      "direction": "down",
+      "state": "idle",
+      "phase": 0,
+      "calls": [],
+      "body": 59,
+      "foot": -2,
+      "width": 54
+    },
+    "normalizationCandidate": {
+      "front": [
+        0.9516,
+        -0.9
+      ],
+      "side": [
+        0.9516,
+        -0.9
+      ],
+      "up": [
+        1.0026,
+        -2
+      ]
+    },
+    "scope": "4 directions x7states x4 samples, desktop body canvas. Second 112 samples after in-memory measured normalization. Not a whole-roster/all-looks gate. No JS table installed."
+  },
+  "technical": {
+    "uniqueRGBA": 112,
+    "binaryAlpha": true,
+    "paddingAtLeast4": true,
+    "reexportByteIdenticalPNG": 5
+  },
+  "reviewed": [
+    "Codex reference exact",
+    "both new source sheets",
+    "candidate-left.png",
+    "temporal-mobile.png",
+    "all-states-down.png",
+    "all-states-right.png",
+    "all-states-up.png",
+    "all-states-left.png",
+    "calibrated-all-states-left.png",
+    "calibrated-all-states-up.png"
+  ],
+  "findings": [
+    "Grouped material correction removes six prior native detector failures; no quantization/filter/threshold reduction. First attempt retained five failures and is preserved.",
+    "Left walk/hit/death new source has visibly shorter hair/braid mass and different head-to-body relationship than left idle/attack/cast/ultimate. Numeric native PASS does not resolve visual continuity.",
+    "Idle left width86 vs right58 at actual scale; asymmetry includes source hair/weapon geometry, not a request to mirror asymmetric arms. Review whole left sequence against Codex and adjacent views.",
+    "Initial existing normalization leaves front/right/left feet3px above reference, up body56 vs59 (-5.08%). Measured in-memory normalization resolves four idle probes, but is not runtime integration.",
+    "Pose sheets expose changed silhouette at idle-to-walk and walk-to-attack transitions. Full continuous gameplay and all appearances still pending."
+  ],
+  "pending": [
+    "Grouped cross-state left silhouette/identity continuity using preserved sources; not another isolated tonal or anchor edit",
+    "Continuous four-direction animation and transitions in real scene",
+    "All skins, equipment, arenas, competitive renderers as applicable; preserve existing UF and effects",
+    "Paired real scenes, cold/recovery/fallback, camera and death/UF, relay and full renderer performance",
+    "Reconcile only approved body/normalization paths onto fresh main and exact-SHA ArtGate/CI before merge"
+  ],
+  "publication": "NOT_APPLICABLE_CANDIDATE_NOT_INSTALLED; no public-byte check this closure"
+}

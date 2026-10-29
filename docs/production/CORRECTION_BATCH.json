@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "policy": "Alternate production batches and complete closures; current-main integration is not visual approval.",
   "scope": "Active deliveries reviewed in this session; not a claim to have enumerated every historical failure",
   "pendingVerificationNotFailures": [
@@ -2720,8 +2720,8 @@
         "left": "Left-oriented sheet has visible red soft surround and inconsistent frontal ultimate. Must remove residue with source edit, not threshold blindly.",
         "all": "Partial alpha in all four sources, nonuniform grids/pivots and native density unapproved. No animation, renderer candidate, arena/skins/relay/ArtPASS claim."
       },
-      "action": "Resolve native shading/material for left walk/attack/hit/death as grouped source cause, without quantization/filter or changing canonical gates; review complete 4-direction transitions and body/head proportions. Then roster, paired real scenes, all looks/equipment/arenas, cold/fallback, relay/performance and exact SHA ArtGate/CI before normal merge.",
-      "checkpoint": "art-source/entregas/veyra-codex-20261028/produccion-01/CHECKPOINT.md",
+      "action": "Grouped cross-state left silhouette/identity continuity using preserved sources; not another isolated tonal or anchor edit",
+      "checkpoint": "art-source/entregas/veyra-codex-20261028/cierre-04-recuperacion/CHECKPOINT.md",
       "sources": [
         {
           "path": "art-source/entregas/veyra-codex-20261028/produccion-01/source-down.png",
@@ -2797,25 +2797,35 @@
               "sha256": "0b089b51a1ca9a4e7cb34fff4077a5de0a82634058bd3b1bce92330b3de5ce95"
             }
           ]
+        },
+        {
+          "checkpoint": "art-source/entregas/veyra-codex-20261028/cierre-04-recuperacion/CHECKPOINT.md",
+          "state": "EN_CORRECCION",
+          "diagnosis": "Recovery of remote03 after unpublished local04 loss. New grouped sources16changed/96unchanged,112nativePASS,64ABA; cross-state left hair/head/body continuity remainsFIX. Measured normalization only in harness. No approved/installed frames.",
+          "sources": [
+            {
+              "path": "art-source/entregas/veyra-codex-20261028/cierre-04-recuperacion/source-left-motion-04r.png",
+              "sha256": "4d11df88127eb09c95b53b98e54e8b287e063549c37e3e2db20e2682ce3c547d",
+              "gitBlob": "b1008519e50752a360da1772e3696d10576e978d"
+            },
+            {
+              "path": "art-source/entregas/veyra-codex-20261028/cierre-04-recuperacion/source-left-material-04r.png",
+              "sha256": "0ef261a134c4c8a41e3c9597fbc917709c46153e2f32ffd69548f05326b8ae61",
+              "gitBlob": "e2e4e576a3d51f5f418e63793c088e66bb51876f"
+            }
+          ]
         }
       ],
       "currentDiagnosis": {
-        "nativeFailures": [
-          "veyra.cuerpo.walk.left.3",
-          "veyra.cuerpo.attack.left.1",
-          "veyra.cuerpo.hit.left.1",
-          "veyra.cuerpo.hit.left.2",
-          "veyra.cuerpo.death.left.0",
-          "veyra.cuerpo.death.left.1"
-        ],
+        "nativeFailures": [],
         "art": [
-          "Left cast proportions closer to idle; grouped walk/attack/hit/death replace overly slender prior poses. Head mass/style still not uniform across all four directions.",
-          "Rear hurt sequence retains Codex arm asymmetry after grouped correction; rejected source preserved.",
-          "Native detector failures 11 to 6, including newly selected left frames. No numerical-pass substitution for visual approval.",
-          "Left walking stride remains subtle; full continuous animation/contact and transitions still need review.",
-          "Foot lines stable between variants within each state/direction: left live -5, fallen -1, up hurt -3 relative diagnostic anchor. This is not comparison against Caballero."
+          "Grouped material correction removes six prior native detector failures; no quantization/filter/threshold reduction. First attempt retained five failures and is preserved.",
+          "Left walk/hit/death new source has visibly shorter hair/braid mass and different head-to-body relationship than left idle/attack/cast/ultimate. Numeric native PASS does not resolve visual continuity.",
+          "Idle left width86 vs right58 at actual scale; asymmetry includes source hair/weapon geometry, not a request to mirror asymmetric arms. Review whole left sequence against Codex and adjacent views.",
+          "Initial existing normalization leaves front/right/left feet3px above reference, up body56 vs59 (-5.08%). Measured in-memory normalization resolves four idle probes, but is not runtime integration.",
+          "Pose sheets expose changed silhouette at idle-to-walk and walk-to-attack transitions. Full continuous gameplay and all appearances still pending."
         ],
-        "scope": "112 candidates, 0 approved/installed; no full scene or integral gate"
+        "scope": "112 candidates,0approved/installed; calibration is not full roster or gameplay gate"
       }
     }
   ],
@@ -2824,5 +2834,5 @@
     "checkpoint": "art-source/entregas/veyra-codex-20261028/produccion-01/CHECKPOINT.md",
     "state": "EN_CORRECCION"
   },
-  "latestClosure": "art-source/entregas/veyra-codex-20261028/cierre-03/CHECKPOINT.md"
+  "latestClosure": "art-source/entregas/veyra-codex-20261028/cierre-04-recuperacion/CHECKPOINT.md"
 }

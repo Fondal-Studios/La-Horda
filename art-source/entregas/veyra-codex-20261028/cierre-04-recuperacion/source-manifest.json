@@ -3,7 +3,7 @@
   "approvedFrames": 0,
   "files": [
     {
-      "path": "art-source/entregas/veyra-codex-20261028/cierre-04-recuperacion/CHECKPOINT.md",
+      "path": "art-source/entregas/veyra-codex-20261028/cierre-04-recuperacion/SOURCE_CHECKPOINT.md",
       "size": 760,
       "sha256": "d1b6e3fbf98e495e9d9b4b7e37ddac2a03ad71d70c151939cfa252220fb1306e",
       "gitBlob": "e5cdae4a0d99601496ba47e3e7383a7f20d3929b"
@@ -26,5 +26,7 @@
       "sha256": "4d11df88127eb09c95b53b98e54e8b287e063549c37e3e2db20e2682ce3c547d",
       "gitBlob": "b1008519e50752a360da1772e3696d10576e978d"
     }
-  ]
+  ],
+  "sourceSnapshotCommit": "9452a9202132148a19fc81b46457ddebba6f3ed7",
+  "note": "Early source-only snapshot; checkpoint copied byte-identical as SOURCE_CHECKPOINT.md. Later source and validation in manifest.json."
 }
