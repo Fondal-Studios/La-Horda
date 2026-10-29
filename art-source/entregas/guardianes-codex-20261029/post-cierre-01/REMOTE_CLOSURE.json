@@ -1,0 +1,33 @@
+{
+  "state": "INTEGRADO_MAIN",
+  "components": [
+    "musashi.cuerpo.codex",
+    "cazadora.cuerpo.codex",
+    "nigromante.cuerpo.codex"
+  ],
+  "pr": 238,
+  "production": "14356d5433db00b3485f6c6aeec655ad86150649",
+  "merge": "7010a15271fd4aac7c3130882e39a305c4480916",
+  "tree": "58db25fdf1e41270718e1115a4e579f386a7d7cc",
+  "mergedAt": "2026-10-29T22:19:14Z",
+  "checks": 30,
+  "workflows": 18,
+  "allExactHeadSuccess": true,
+  "productionFilesVerified": 118,
+  "publication": "NOT_CONFIRMED",
+  "publicAtlas404": 3,
+  "publicConsumersDifferent": 2,
+  "next": "Fresh main/PR/branch audit; Veyra PR233 grouped left continuity closure. Preserve owner PR232 and NanoPR231. Do not remerge238.",
+  "globalInventoryComplete": false,
+  "supersedes": "VALIDADO_LOCAL_PENDING_CI only these3base bodies. Historical production manifest remains immutable.",
+  "verificationFiles": [
+    "MAIN_VERIFICATION.json",
+    "PUBLICATION.json",
+    "NEXT_ACTION.json",
+    "CHECKPOINT.md",
+    "CI_OBSERVED.json",
+    "PRODUCTION_VERIFICATION.json",
+    "CI_FINAL.json",
+    "PUBLICATION_PREMERGE.json"
+  ]
+}

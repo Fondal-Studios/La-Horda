@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-29T22:19:42.869237+00:00",
+  "baseUrl": "https://fondalstudios.com/la-horda/jugar/",
+  "scope": "Selected file bytes only; not gameplay, accounts, ownership, live multiplayer or full release certification",
+  "status": "NOT_CONFIRMED",
+  "checks": [
+    {
+      "path": "index.html",
+      "expectedSha256": "bcdd451f46dca6ddcda8cdff20db849197922c6343bc6e62def534df3a687b8a",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/index.html",
+      "bytes": 68250,
+      "publicSha256": "bcdd451f46dca6ddcda8cdff20db849197922c6343bc6e62def534df3a687b8a",
+      "status": "MATCH"
+    },
+    {
+      "path": "js/assets/champion-sprites.js",
+      "expectedSha256": "f3f62dbe7427f4e512b2e78a6ee32eb220bb2fcdc3b354ee6aece1af4a125fab",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/assets/champion-sprites.js",
+      "bytes": 47566,
+      "publicSha256": "ab671f3954d6e284e0d4e71b1961bd0ebd81e6c885ccffd04c2bf3234702a069",
+      "status": "DIFFERENT"
+    },
+    {
+      "path": "js/data/champion-art-normalize.js",
+      "expectedSha256": "83cbb078e522dfc9067fc8a7685fa25a22b6e492bfc9e52509c73f04d6b309bf",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/data/champion-art-normalize.js",
+      "bytes": 11835,
+      "publicSha256": "3db69a19c262c34315a3db68e447ac6c1cef562502a7aa91d89fdbe616d4e194",
+      "status": "DIFFERENT"
+    },
+    {
+      "path": "assets/sprites/champions/musashi/codex-v1/atlas.png",
+      "expectedSha256": "14ffbe96ee8e83eb6eb4381f5dfc318a002998a967bf2382dd5b285560f68993",
+      "httpStatus": 404,
+      "status": "MISSING"
+    },
+    {
+      "path": "assets/sprites/champions/cazadora/codex-v1/atlas.png",
+      "expectedSha256": "66ab0cfef533f169cc7a7e0459fa5e0a4ed52cf3c3336379e6caa0830446f933",
+      "httpStatus": 404,
+      "status": "MISSING"
+    },
+    {
+      "path": "assets/sprites/champions/nigromante/codex-v1/atlas.png",
+      "expectedSha256": "1726ff5252def7c6ab4fbb0e3b58771b1b9f955331a95eeb8d9c72c11c6c8ff3",
+      "httpStatus": 404,
+      "status": "MISSING"
+    }
+  ],
+  "merge": "7010a15271fd4aac7c3130882e39a305c4480916",
+  "indexConsumes": {
+    "js/assets/champion-sprites.js": true,
+    "js/data/champion-art-normalize.js": true
+  }
+}
