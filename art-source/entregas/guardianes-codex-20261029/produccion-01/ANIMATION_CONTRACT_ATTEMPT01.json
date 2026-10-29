@@ -1,0 +1,165 @@
+[
+  {
+    "key": "musashi",
+    "status": "REJECT",
+    "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+    "approvalClaimed": false,
+    "installed": false,
+    "frames": 36,
+    "requiredClips": [
+      "attack_side",
+      "cast_side",
+      "death_down",
+      "hit_down",
+      "idle_down",
+      "idle_left",
+      "idle_side",
+      "idle_up",
+      "walk_down",
+      "walk_left",
+      "walk_side",
+      "walk_up"
+    ],
+    "issues": [
+      {
+        "code": "SHORTENED_RUNTIME_CLIP",
+        "clip": "idle_down",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "idle_left"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "walk_left"
+      },
+      {
+        "code": "SHORTENED_RUNTIME_CLIP",
+        "clip": "hit_down",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "code": "SHORTENED_RUNTIME_CLIP",
+        "clip": "death_down",
+        "before": 6,
+        "after": 3
+      }
+    ]
+  },
+  {
+    "key": "cazadora",
+    "status": "REJECT",
+    "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+    "approvalClaimed": false,
+    "installed": false,
+    "frames": 36,
+    "requiredClips": [
+      "aim",
+      "attack_side",
+      "cast_side",
+      "death_down",
+      "hit_down",
+      "idle_down",
+      "idle_left",
+      "idle_side",
+      "idle_up",
+      "walk_down",
+      "walk_left",
+      "walk_side",
+      "walk_up"
+    ],
+    "issues": [
+      {
+        "code": "SHORTENED_RUNTIME_CLIP",
+        "clip": "idle_down",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "idle_left"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "walk_left"
+      },
+      {
+        "code": "SHORTENED_RUNTIME_CLIP",
+        "clip": "hit_down",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "code": "SHORTENED_RUNTIME_CLIP",
+        "clip": "death_down",
+        "before": 6,
+        "after": 3
+      }
+    ]
+  },
+  {
+    "key": "nigromante",
+    "status": "REJECT",
+    "coverage": "DECLARED_ANIMATION_CONTRACT_ONLY",
+    "approvalClaimed": false,
+    "installed": false,
+    "frames": 36,
+    "requiredClips": [
+      "attack_side",
+      "cast_side",
+      "death_down",
+      "hit_down",
+      "idle_down",
+      "idle_left",
+      "idle_side",
+      "idle_up",
+      "ult",
+      "walk_down",
+      "walk_left",
+      "walk_side",
+      "walk_up",
+      "walk_up_left"
+    ],
+    "issues": [
+      {
+        "code": "SHORTENED_RUNTIME_CLIP",
+        "clip": "idle_down",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "idle_left"
+      },
+      {
+        "code": "SHORTENED_RUNTIME_CLIP",
+        "clip": "walk_down",
+        "before": 5,
+        "after": 4
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "walk_left"
+      },
+      {
+        "code": "MISSING_RUNTIME_CLIP",
+        "clip": "walk_up_left"
+      },
+      {
+        "code": "SHORTENED_RUNTIME_CLIP",
+        "clip": "hit_down",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "code": "SHORTENED_RUNTIME_CLIP",
+        "clip": "death_down",
+        "before": 6,
+        "after": 3
+      }
+    ]
+  }
+]

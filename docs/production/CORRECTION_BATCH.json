@@ -2838,6 +2838,36 @@
       "diagnosis": "62nativePASS,141rosterPASS; exactheadCI and main/publication pending. Full B099 not closed. Source14/50 failures preserved/excluded.",
       "action": "CI exact head, final audit, normal expectedSHA merge and canonical delivery verification.",
       "checkpoint": "art-source/entregas/ilkan-codex-20261029/produccion-01/CHECKPOINT.md"
+    },
+    {
+      "component": "musashi.cuerpo.codex",
+      "frames": "base motion/attack/cast/hurt/death",
+      "source": "art-source/entregas/guardianes-codex-20261029/produccion-01/musashi-source.png",
+      "sourceSha256": "c28a73a3d79238e0d8fd4696f295550ce6c09c99691a6b8c0f2d9415f726e003",
+      "state": "VALIDADO_LOCAL_PENDING_CI",
+      "diagnosis": "Initial body identity differs from Codex. Corrected source and real consumer; old atlas retained.",
+      "action": "Exact-head CI then normal expected-SHA merge and separate canonical publication verification.",
+      "checkpoint": "art-source/entregas/guardianes-codex-20261029/produccion-01/CHECKPOINT.md"
+    },
+    {
+      "component": "cazadora.cuerpo.codex",
+      "frames": "base motion/attack/cast/hurt/death",
+      "source": "art-source/entregas/guardianes-codex-20261029/produccion-01/cazadora-source.png",
+      "sourceSha256": "08f553a9153ba41db962ef79881ad2e67eac30394ebc70572ee515d6d7acfe7a",
+      "state": "VALIDADO_LOCAL_PENDING_CI",
+      "diagnosis": "Initial body identity differs from Codex. Corrected source and real consumer; old atlas retained.",
+      "action": "Exact-head CI then normal expected-SHA merge and separate canonical publication verification.",
+      "checkpoint": "art-source/entregas/guardianes-codex-20261029/produccion-01/CHECKPOINT.md"
+    },
+    {
+      "component": "nigromante.cuerpo.codex",
+      "frames": "base motion/attack/cast/hurt/death",
+      "source": "art-source/entregas/guardianes-codex-20261029/produccion-01/nigromante-source.png",
+      "sourceSha256": "8c648f1153dfec56fbd1e1db8a37308458263a7296736d23ce1f31ba30014056",
+      "state": "VALIDADO_LOCAL_PENDING_CI",
+      "diagnosis": "Initial body identity differs from Codex. Corrected source and real consumer; old atlas retained.",
+      "action": "Exact-head CI then normal expected-SHA merge and separate canonical publication verification.",
+      "checkpoint": "art-source/entregas/guardianes-codex-20261029/produccion-01/CHECKPOINT.md"
     }
   ],
   "latestProduction": {
@@ -2845,5 +2875,5 @@
     "checkpoint": "art-source/entregas/veyra-codex-20261028/produccion-01/CHECKPOINT.md",
     "state": "EN_CORRECCION"
   },
-  "latestClosure": "art-source/entregas/veyra-codex-20261028/cierre-04-recuperacion/CHECKPOINT.md"
+  "latestClosure": "art-source/entregas/guardianes-codex-20261029/produccion-01/CHECKPOINT.md"
 }
