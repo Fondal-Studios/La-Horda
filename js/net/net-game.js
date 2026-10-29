@@ -296,7 +296,7 @@ function netApplyGuestLoadouts(){
     if(s.kind!=="human" || s.slot===0) continue;
     const L = netMatch.loadouts[s.slot];
     netMatch.backups[s.champ] = save.champions[s.champ];
-    const rec = (L && L.champ===s.champ && !(typeof lanesOn==="function" && lanesOn())) ? netLoadoutRecord(L) : netLoadoutRecord({level:(typeof lanesOn==="function" && lanesOn()) ? LANES.LEVEL0 : (s.level||1)}); // Guerra de Cristales: todos al mismo nivel y sin equipo
+    const rec = (L && L.champ===s.champ && !(typeof lanesOn==="function" && lanesOn())) ? netLoadoutRecord(L) : netLoadoutRecord({level:(typeof lanesOn==="function" && lanesOn()) ? LANES.LEVEL0 : (s.level||1), champ:s.champ, croma:L && L.champ===s.champ ? L.croma : null, cosmeticSkin:L && L.champ===s.champ ? L.cosmeticSkin : null}); // Guerra de Cristales: todos al mismo nivel y sin equipo
     save.champions[s.champ] = rec;
     if(L && L.reserve && L.reserve.champ===s.reserve){ netMatch.backups[s.reserve]=save.champions[s.reserve]; save.champions[s.reserve]=netLoadoutRecord(L.reserve); }
   }

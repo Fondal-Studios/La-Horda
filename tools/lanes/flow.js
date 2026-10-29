@@ -18,8 +18,10 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
   const before=await p.evaluate(()=>{const o=JSON.parse(localStorage.getItem('laHordaSave_v1'));delete o.postgame;return JSON.stringify(o);});
   await p.evaluate(()=>document.getElementById('hub-crystal-btn').scrollIntoView({block:'center'}));await p.click('#hub-crystal-btn');
   await p.waitForSelector('#crystalwars-screen:not(.hidden) #practice');
-  assert(await p.locator('#champ option').count()>=30,'roster completo');
-  await p.selectOption('#champ','mago');await p.click('#practice');
+  const owned=await p.evaluate(()=>lanesOwnedRoster());
+  assert.deepEqual(await p.locator('#champ option').evaluateAll(os=>os.map(o=>o.value)),owned,'solo guardianes propios');
+  assert(owned.length>0,'hay un guardián propio');
+  await p.selectOption('#champ',owned.includes('mago')?'mago':owned[0]);await p.click('#practice');
   await p.waitForFunction(()=>state==='playing'&&lanesOn(),null,{timeout:20000});
   // HUD real: los botones de habilidad del motor están y el marcador de la mini-partida también
   const hud=await p.evaluate(()=>({skills:['btn-s1','btn-s2','btn-s3','btn-ult','btn-basic'].map(id=>{const e=document.getElementById(id),r=e&&e.getBoundingClientRect();return !!r&&r.width>0;}),score:!!document.querySelector('.ln-score')&&document.querySelector('.ln-score').getBoundingClientRect().width>0,rival:!!document.querySelector('.ln-rival canvas'),pill:document.getElementById('hud-level').parentElement.textContent}));
