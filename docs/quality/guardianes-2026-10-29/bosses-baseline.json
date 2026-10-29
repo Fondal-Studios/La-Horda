@@ -1,0 +1,812 @@
+{
+ "schemaVersion": 2,
+ "generatedBy": "tools/bible/boss-validator.js",
+ "scope": "Pelea real por jefe/subjefe (~42–45 s, bots invulnerables, azar con semilla). Evidencia automática, no aprobación de diseño.",
+ "bosses": [
+  {
+   "type": "cm_presentador",
+   "arena": "ciudad",
+   "rank": "jefe",
+   "name": "El Presentador",
+   "art": "FIX",
+   "artWhy": "arte propio dibujado con tools/art/pixrig a la densidad del juego, ×1,2–1,7 (3 actos + transformación de 12 cuadros); falta el Visual Gate humano para PASS",
+   "hooks": [
+    {
+     "id": "cm_presentador.estructura",
+     "mode": "auto",
+     "n": 2
+    },
+    {
+     "id": "cm_presentador.publico",
+     "mode": "phase",
+     "n": 0
+    },
+    {
+     "id": "cm_presentador.ovacion",
+     "mode": "phase",
+     "n": 0
+    },
+    {
+     "id": "cm_presentador.corte",
+     "mode": "player",
+     "n": 0
+    },
+    {
+     "id": "cm_presentador.reflejo",
+     "mode": "player",
+     "n": 2
+    }
+   ],
+   "status": "PASS*",
+   "tele": 6,
+   "strikes": 0,
+   "kinds": 2,
+   "nonPassChecks": [
+    {
+     "name": "patrones distintos",
+     "level": "WARNING",
+     "detail": "2 tipos de aviso/golpe"
+    }
+   ]
+  },
+  {
+   "type": "cm_maestro",
+   "arena": "ciudad",
+   "rank": "subjefe",
+   "name": "Maestro de Ceremonias",
+   "art": "FIX",
+   "artWhy": "arte propio dibujado con tools/art/pixrig a la densidad del juego, ×1,1 (incluye teletransporte en humo rojo); falta el Visual Gate humano para PASS",
+   "hooks": [
+    {
+     "id": "cm_maestro.escena",
+     "mode": "auto",
+     "n": 6
+    },
+    {
+     "id": "cm_maestro.refugio",
+     "mode": "player",
+     "n": 1
+    }
+   ],
+   "status": "PASS",
+   "tele": 26,
+   "strikes": 0,
+   "kinds": 5,
+   "nonPassChecks": []
+  },
+  {
+   "type": "cm_tramoyista",
+   "arena": "ciudad",
+   "rank": "subjefe",
+   "name": "El Tramoyista",
+   "art": "FIX",
+   "artWhy": "arte propio dibujado con tools/art/pixrig a la densidad del juego, ×1,2 (tramoya con poleas y sogas, arrastre y derrumbe); falta el Visual Gate humano para PASS",
+   "hooks": [
+    {
+     "id": "cm_tramoyista.estructura",
+     "mode": "auto",
+     "n": 0
+    }
+   ],
+   "status": "FIX",
+   "tele": 26,
+   "strikes": 0,
+   "kinds": 5,
+   "nonPassChecks": [
+    {
+     "name": "gancho de arena: cm_tramoyista.estructura",
+     "level": "FAIL",
+     "detail": "la ficha lo promete y la pelea real no lo hizo"
+    }
+   ]
+  },
+  {
+   "type": "cm_dama",
+   "arena": "ciudad",
+   "rank": "subjefe",
+   "name": "La Dama del Telón",
+   "art": "FIX",
+   "artWhy": "arte propio dibujado con tools/art/pixrig a la densidad del juego, ×1,2 (el telón la envuelve y cae vacío; sus espejismos usan el mismo cuerpo); falta el Visual Gate humano para PASS",
+   "hooks": [
+    {
+     "id": "cm_dama.estructura",
+     "mode": "auto",
+     "n": 0
+    }
+   ],
+   "status": "PASS*",
+   "tele": 26,
+   "strikes": 0,
+   "kinds": 5,
+   "nonPassChecks": [
+    {
+     "name": "aparece en la simulación",
+     "level": "WARNING",
+     "detail": "forma posterior: no se alcanza en la ventana (la cubre t_boss_arena_hooks.js)"
+    }
+   ]
+  },
+  {
+   "type": "dragon_forja",
+   "arena": "fortaleza",
+   "rank": "subjefe",
+   "name": "Dragón de la Forja",
+   "art": "FIX",
+   "artWhy": "arte propio completo; densidad de píxel ×3 la del campeón (límite)",
+   "hooks": [
+    {
+     "id": "dragon_forja.horno",
+     "mode": "auto",
+     "n": 1
+    }
+   ],
+   "status": "PASS",
+   "tele": 48,
+   "strikes": 21,
+   "kinds": 11,
+   "nonPassChecks": []
+  },
+  {
+   "type": "caballero",
+   "arena": "fortaleza",
+   "rank": "jefe",
+   "name": "El Caballero de la Armadura Oxidada",
+   "art": "PASS",
+   "artWhy": "hoja propia con 13 estados; densidad ×2,1",
+   "hooks": [
+    {
+     "id": "caballero.camara",
+     "mode": "auto",
+     "n": 1
+    },
+    {
+     "id": "caballero.valvula",
+     "mode": "player",
+     "n": 0
+    },
+    {
+     "id": "caballero.trampa",
+     "mode": "player",
+     "n": 0
+    }
+   ],
+   "status": "PASS",
+   "tele": 24,
+   "strikes": 6,
+   "kinds": 8,
+   "nonPassChecks": []
+  },
+  {
+   "type": "doblador_guerrero",
+   "arena": "bosque",
+   "rank": "subjefe",
+   "name": "Doppelgängers",
+   "art": "PASS",
+   "artWhy": "hojas propias; sin fila de golpe recibido",
+   "hooks": [
+    {
+     "id": "doblador_guerrero.runas",
+     "mode": "auto",
+     "n": 1
+    },
+    {
+     "id": "doblador_guerrero.contencion",
+     "mode": "player",
+     "n": 4
+    }
+   ],
+   "status": "PASS",
+   "tele": 59,
+   "strikes": 26,
+   "kinds": 9,
+   "nonPassChecks": []
+  },
+  {
+   "type": "guardian_ancestral",
+   "arena": "bosque",
+   "rank": "jefe",
+   "name": "Guardián Ancestral Corrompido",
+   "art": "PASS",
+   "artWhy": "hoja propia con transformación; densidad ×2,4",
+   "hooks": [
+    {
+     "id": "guardian_ancestral.rearma",
+     "mode": "auto",
+     "n": 5
+    },
+    {
+     "id": "guardian_ancestral.runa_rota",
+     "mode": "auto",
+     "n": 2
+    },
+    {
+     "id": "guardian_ancestral.purifica",
+     "mode": "player",
+     "n": 4
+    }
+   ],
+   "status": "PASS",
+   "tele": 216,
+   "strikes": 176,
+   "kinds": 12,
+   "nonPassChecks": []
+  },
+  {
+   "type": "micelio",
+   "arena": "micelial",
+   "rank": "subjefe",
+   "name": "Micelio Primigenio",
+   "art": "FIX",
+   "artWhy": "densidad ×2,6 (límite)",
+   "hooks": [
+    {
+     "id": "micelio.cadaveres",
+     "mode": "auto",
+     "n": 1
+    },
+    {
+     "id": "micelio.germina",
+     "mode": "auto",
+     "n": 2
+    },
+    {
+     "id": "micelio.raices",
+     "mode": "player",
+     "n": 2
+    }
+   ],
+   "status": "PASS",
+   "tele": 37,
+   "strikes": 18,
+   "kinds": 5,
+   "nonPassChecks": []
+  },
+  {
+   "type": "madre_espora",
+   "arena": "micelial",
+   "rank": "jefe",
+   "name": "La Madre Espora",
+   "art": "PASS",
+   "artWhy": "retrato estructural de 440 px por partes; es el escenario, no un sprite de unidad",
+   "hooks": [
+    {
+     "id": "madre_espora.floracion",
+     "mode": "phase",
+     "n": 0
+    },
+    {
+     "id": "madre_espora.infeccion",
+     "mode": "phase",
+     "n": 0
+    },
+    {
+     "id": "madre_espora.nucleos",
+     "mode": "player",
+     "n": 0
+    }
+   ],
+   "status": "PASS*",
+   "tele": 58,
+   "strikes": 25,
+   "kinds": 7,
+   "nonPassChecks": [
+    {
+     "name": "ficha (BOSS_BLUEPRINTS)",
+     "level": "WARNING",
+     "detail": "ningún gancho 'auto': la arena sólo importa si el jugador la busca"
+    }
+   ]
+  },
+  {
+   "type": "mago_hielo_cristal",
+   "arena": "hielo",
+   "rank": "jefe",
+   "name": "Mago de Hielo y Cristal",
+   "art": "PASS",
+   "artWhy": "hoja propia de 10 estados; densidad ×1,3",
+   "hooks": [
+    {
+     "id": "mago_hielo_cristal.brasero",
+     "mode": "auto",
+     "n": 2
+    },
+    {
+     "id": "mago_hielo_cristal.focos",
+     "mode": "player",
+     "n": 0
+    }
+   ],
+   "status": "PASS",
+   "tele": 93,
+   "strikes": 63,
+   "kinds": 6,
+   "nonPassChecks": []
+  },
+  {
+   "type": "angel_caido_hielo",
+   "arena": "hielo",
+   "rank": "jefe",
+   "name": "Demonio Gélido — Ángel Caído",
+   "art": "PASS",
+   "artWhy": "hoja propia; densidad ×1,8",
+   "hooks": [
+    {
+     "id": "angel_caido_hielo.fuego",
+     "mode": "player",
+     "n": 0
+    },
+    {
+     "id": "angel_caido_hielo.apaga",
+     "mode": "player",
+     "n": 0
+    }
+   ],
+   "status": "PASS*",
+   "tele": 93,
+   "strikes": 63,
+   "kinds": 6,
+   "nonPassChecks": [
+    {
+     "name": "ficha (BOSS_BLUEPRINTS)",
+     "level": "WARNING",
+     "detail": "ningún gancho 'auto': la arena sólo importa si el jugador la busca"
+    },
+    {
+     "name": "aparece en la simulación",
+     "level": "WARNING",
+     "detail": "forma posterior: no se alcanza en la ventana (la cubre t_boss_arena_hooks.js)"
+    }
+   ]
+  },
+  {
+   "type": "dragon_hielo",
+   "arena": "hielo",
+   "rank": "subjefe",
+   "name": "Tundraverx, Soberano de Hielo",
+   "art": "PASS",
+   "artWhy": "hoja propia; densidad ×1,5",
+   "hooks": [
+    {
+     "id": "dragon_hielo.frio",
+     "mode": "auto",
+     "n": 14
+    },
+    {
+     "id": "dragon_hielo.brasero",
+     "mode": "player",
+     "n": 2
+    },
+    {
+     "id": "dragon_hielo.fuego",
+     "mode": "player",
+     "n": 2
+    }
+   ],
+   "status": "PASS",
+   "tele": 32,
+   "strikes": 0,
+   "kinds": 3,
+   "nonPassChecks": []
+  },
+  {
+   "type": "kraken_joven",
+   "arena": "acuatica",
+   "rank": "subjefe",
+   "name": "Kraken Joven",
+   "art": "FIX",
+   "artWhy": "densidad ×2,8; sin pose de ataque del cuerpo",
+   "hooks": [
+    {
+     "id": "kraken_joven.corriente",
+     "mode": "auto",
+     "n": 3
+    },
+    {
+     "id": "kraken_joven.charco",
+     "mode": "player",
+     "n": 0
+    }
+   ],
+   "status": "PASS",
+   "tele": 39,
+   "strikes": 0,
+   "kinds": 8,
+   "nonPassChecks": []
+  },
+  {
+   "type": "leviatan",
+   "arena": "acuatica",
+   "rank": "jefe",
+   "name": "Leviatán",
+   "art": "FIX",
+   "artWhy": "densidad ×3,9; tentáculos con la hoja del Kraken",
+   "hooks": [
+    {
+     "id": "leviatan.charco",
+     "mode": "auto",
+     "n": 0
+    },
+    {
+     "id": "leviatan.marea",
+     "mode": "phase",
+     "n": 0
+    },
+    {
+     "id": "leviatan.tentaculos",
+     "mode": "player",
+     "n": 1
+    }
+   ],
+   "status": "FIX",
+   "tele": 69,
+   "strikes": 4,
+   "kinds": 8,
+   "nonPassChecks": [
+    {
+     "name": "gancho de arena: leviatan.charco",
+     "level": "FAIL",
+     "detail": "la ficha lo promete y la pelea real no lo hizo"
+    }
+   ]
+  },
+  {
+   "type": "guardian_laberinto",
+   "arena": "laberinto",
+   "rank": "subjefe",
+   "name": "Guardián del Laberinto",
+   "art": "PASS",
+   "artWhy": "cuadros propios; densidad ×2,3",
+   "hooks": [
+    {
+     "id": "guardian_laberinto.muro",
+     "mode": "auto",
+     "n": 1
+    },
+    {
+     "id": "guardian_laberinto.derrumbe",
+     "mode": "player",
+     "n": 1
+    }
+   ],
+   "status": "PASS",
+   "tele": 106,
+   "strikes": 21,
+   "kinds": 6,
+   "nonPassChecks": []
+  },
+  {
+   "type": "minotauro",
+   "arena": "laberinto",
+   "rank": "jefe",
+   "name": "Minotauro",
+   "art": "FIX",
+   "artWhy": "densidad ×3; el escáner marca halo claro en el atlas v3",
+   "hooks": [
+    {
+     "id": "minotauro.muro",
+     "mode": "player",
+     "n": 0
+    },
+    {
+     "id": "minotauro.colapso",
+     "mode": "phase",
+     "n": 0
+    }
+   ],
+   "status": "PASS*",
+   "tele": 239,
+   "strikes": 211,
+   "kinds": 6,
+   "nonPassChecks": [
+    {
+     "name": "ficha (BOSS_BLUEPRINTS)",
+     "level": "WARNING",
+     "detail": "ningún gancho 'auto': la arena sólo importa si el jugador la busca"
+    }
+   ]
+  },
+  {
+   "type": "ab_carcelero",
+   "arena": "abismo",
+   "rank": "subjefe",
+   "name": "El Carcelero del Vacío",
+   "art": "FIX",
+   "artWhy": "arte propio dibujado con tools/art/pixrig a la densidad del juego, ×1,9 (cadenas como látigo, pisotón que agrieta, se rompen al morir); falta el Visual Gate humano para PASS",
+   "hooks": [
+    {
+     "id": "ab_carcelero.gancho",
+     "mode": "auto",
+     "n": 2
+    },
+    {
+     "id": "ab_carcelero.plataformas",
+     "mode": "auto",
+     "n": 4
+    }
+   ],
+   "status": "PASS",
+   "tele": 24,
+   "strikes": 0,
+   "kinds": 4,
+   "nonPassChecks": []
+  },
+  {
+   "type": "ab_morador",
+   "arena": "abismo",
+   "rank": "jefe",
+   "name": "El Que Mora Debajo",
+   "art": "PASS",
+   "artWhy": "cuerpo propio armado por partes (ojo animado)",
+   "hooks": [
+    {
+     "id": "ab_morador.plataformas",
+     "mode": "auto",
+     "n": 20
+    },
+    {
+     "id": "ab_morador.jinete",
+     "mode": "phase",
+     "n": 1
+    },
+    {
+     "id": "ab_morador.tentaculo",
+     "mode": "player",
+     "n": 5
+    }
+   ],
+   "status": "PASS",
+   "tele": 55,
+   "strikes": 12,
+   "kinds": 9,
+   "nonPassChecks": []
+  },
+  {
+   "type": "mn_titan",
+   "arena": "minas",
+   "rank": "subjefe",
+   "name": "Titán de Piedra",
+   "art": "FIX",
+   "artWhy": "arte propio dibujado con tools/art/pixrig a la densidad del juego, ×1,0 (antes ×5,0); falta el Visual Gate humano para PASS",
+   "hooks": [
+    {
+     "id": "mn_titan.luces",
+     "mode": "auto",
+     "n": 4
+    },
+    {
+     "id": "mn_titan.derrumbe",
+     "mode": "phase",
+     "n": 0
+    }
+   ],
+   "status": "PASS",
+   "tele": 0,
+   "strikes": 130,
+   "kinds": 9,
+   "nonPassChecks": []
+  },
+  {
+   "type": "mn_cerbero",
+   "arena": "minas",
+   "rank": "jefe",
+   "name": "Cerbero, Guardián del Umbral",
+   "art": "FIX",
+   "artWhy": "arte propio dibujado con tools/art/pixrig a la densidad del juego, ×1,1 (antes ×5,4; tres cabezas de bestia, fuego y sombra); falta el Visual Gate humano para PASS",
+   "hooks": [
+    {
+     "id": "mn_cerbero.oscuridad",
+     "mode": "auto",
+     "n": 6
+    },
+    {
+     "id": "mn_cerbero.luz",
+     "mode": "player",
+     "n": 0
+    }
+   ],
+   "status": "PASS",
+   "tele": 0,
+   "strikes": 44,
+   "kinds": 4,
+   "nonPassChecks": []
+  },
+  {
+   "type": "esqueleto_h",
+   "arena": "infernal",
+   "rank": "subjefe",
+   "name": "Esqueleto Cornudo (Guardián de la Horda)",
+   "art": "PASS",
+   "artWhy": "cuadros propios; densidad ×1,7",
+   "hooks": [
+    {
+     "id": "esqueleto_h.fisura",
+     "mode": "auto",
+     "n": 1
+    },
+    {
+     "id": "esqueleto_h.barricada",
+     "mode": "player",
+     "n": 0
+    }
+   ],
+   "status": "PASS",
+   "tele": 12,
+   "strikes": 0,
+   "kinds": 4,
+   "nonPassChecks": []
+  },
+  {
+   "type": "demonio_menor",
+   "arena": "infernal",
+   "rank": "subjefe",
+   "name": "Demonio Menor (Guardián de la Horda)",
+   "art": "PASS",
+   "artWhy": "hoja propia; densidad ×0,8",
+   "hooks": [
+    {
+     "id": "demonio_menor.fisura",
+     "mode": "auto",
+     "n": 3
+    },
+    {
+     "id": "demonio_menor.sello",
+     "mode": "player",
+     "n": 3
+    }
+   ],
+   "status": "PASS",
+   "tele": 38,
+   "strikes": 18,
+   "kinds": 4,
+   "nonPassChecks": []
+  },
+  {
+   "type": "hechicero_supremo",
+   "arena": "infernal",
+   "rank": "subjefe",
+   "name": "El Hechicero Supremo",
+   "art": "PASS",
+   "artWhy": "hoja propia; alfa corregido a 0/255 (tenía 5,7 % de píxeles semitransparentes, ART_BIBLE §6)",
+   "hooks": [
+    {
+     "id": "hechicero_supremo.fisura",
+     "mode": "auto",
+     "n": 4
+    },
+    {
+     "id": "hechicero_supremo.sello",
+     "mode": "player",
+     "n": 4
+    }
+   ],
+   "status": "PASS",
+   "tele": 90,
+   "strikes": 51,
+   "kinds": 6,
+   "nonPassChecks": []
+  },
+  {
+   "type": "angel_corrompido",
+   "arena": "infernal",
+   "rank": "jefe",
+   "name": "El Ángel Corrompido (forma 1)",
+   "art": "FIX",
+   "artWhy": "arte propio dibujado con tools/art/pixrig a la densidad del juego, ×1,9 (alas rotas rojas y negras, halo agrietado; los cristales los dibuja el juego); falta el Visual Gate humano para PASS",
+   "hooks": [
+    {
+     "id": "angel_corrompido.convergencia",
+     "mode": "auto",
+     "n": 2
+    },
+    {
+     "id": "angel_corrompido.focos",
+     "mode": "player",
+     "n": 0
+    }
+   ],
+   "status": "PASS",
+   "tele": 311,
+   "strikes": 152,
+   "kinds": 17,
+   "nonPassChecks": []
+  },
+  {
+   "type": "golem_cuerpos",
+   "arena": "infernal",
+   "rank": "jefe",
+   "name": "Gólem de Cuerpos (forma 2)",
+   "art": "FIX",
+   "artWhy": "arte propio dibujado con tools/art/pixrig a la densidad del juego, ×1,15 (32 cuadros; antes 1 por estado); falta el Visual Gate humano para PASS",
+   "hooks": [
+    {
+     "id": "golem_cuerpos.barricada",
+     "mode": "player",
+     "n": 0
+    },
+    {
+     "id": "golem_cuerpos.numero",
+     "mode": "player",
+     "n": 0
+    },
+    {
+     "id": "golem_cuerpos.red",
+     "mode": "player",
+     "n": 0
+    }
+   ],
+   "status": "PASS*",
+   "tele": 311,
+   "strikes": 152,
+   "kinds": 17,
+   "nonPassChecks": [
+    {
+     "name": "ficha (BOSS_BLUEPRINTS)",
+     "level": "WARNING",
+     "detail": "ningún gancho 'auto': la arena sólo importa si el jugador la busca"
+    },
+    {
+     "name": "aparece en la simulación",
+     "level": "WARNING",
+     "detail": "forma posterior: no se alcanza en la ventana (la cubre t_boss_arena_hooks.js)"
+    }
+   ]
+  },
+  {
+   "type": "demonio_mayor",
+   "arena": "infernal",
+   "rank": "jefe",
+   "name": "Rey de la Horda (forma final)",
+   "art": "FIX",
+   "artWhy": "sin poses de golpe ni de lanzar; densidad ×2,4",
+   "hooks": [
+    {
+     "id": "demonio_mayor.fisuras_poder",
+     "mode": "auto",
+     "n": 0
+    },
+    {
+     "id": "demonio_mayor.fisuras",
+     "mode": "player",
+     "n": 0
+    }
+   ],
+   "status": "PASS*",
+   "tele": 311,
+   "strikes": 152,
+   "kinds": 17,
+   "nonPassChecks": [
+    {
+     "name": "aparece en la simulación",
+     "level": "WARNING",
+     "detail": "forma posterior: no se alcanza en la ventana (la cubre t_boss_arena_hooks.js)"
+    }
+   ]
+  },
+  {
+   "type": "jinete_sin_cabeza",
+   "arena": "divina",
+   "rank": "jefe",
+   "name": "Jinete Sin Cabeza",
+   "art": "PASS",
+   "artWhy": "hoja propia; densidad ×1,9",
+   "hooks": [],
+   "status": "PASS*",
+   "tele": 0,
+   "strikes": 0,
+   "kinds": 0,
+   "nonPassChecks": [
+    {
+     "name": "ficha (BOSS_BLUEPRINTS)",
+     "level": "WARNING",
+     "detail": "ningún gancho con su arena (BOSS + ARENA = ENCUENTRO)"
+    },
+    {
+     "name": "simulación",
+     "level": "WARNING",
+     "detail": "modo propio (divina): sin pelea de campaña que simular"
+    }
+   ]
+  }
+ ],
+ "pageErrors": []
+}
