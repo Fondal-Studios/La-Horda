@@ -1,0 +1,10 @@
+Use case: precise-object-edit
+Asset type: native low-resolution pixel-art sprite source sheet.
+Primary request: Redraw the exact same 4x4 left-facing Veyra action sheet as a 384×256 LOGICAL PIXEL-ART CANVAS enlarged exactly 4× by nearest-neighbor to 1536×1024. Every authored logical pixel must appear as a perfectly hard 4×4 square block in the delivered image. Use a single shared palette of at most 32 opaque colors across all poses.
+Input images: Image 1 is the mandatory Champion Codex identity reference. Image 2 fixes the exact 16 poses, frame order, spacing, silhouette, braid length, costume, and motion.
+Rows: walk 0–3; attack 0–3; hit/recoil 0–3; death/fall 0–3.
+Identity invariants: large chibi head; very long heavy crimson braid and flowing hair mass in every frame; facial scar; dark leather/metal armor; burgundy cloth; white bandaged upper arm; exactly two curved silver blades with restrained red accents. Same head/body ratio and material colors across every frame.
+Pixel constraints: hard 4×4 blocks only, no one-pixel high-resolution detail, no intermediate block sizes, no antialiasing, no gradients, no airbrush, no semitransparent edges. Use 2–3 flat tones per material plus a dark outline. Stepped pixel diagonals and clustered highlights.
+Composition: exactly 4 columns × 4 rows, one isolated full figure per cell, transparent background, generous separation, consistent baselines, no text/grid/labels/shadows/decorations.
+Do not change poses, direction, blade count, frame order, hair length, or spacing.
+Avoid: smooth illustration, tiny high-resolution lines, red backdrop, glow, short ponytail, extra weapons, cropping, overlaps, watermark.
