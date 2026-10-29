@@ -1,0 +1,13 @@
+{
+  "next": "PRODUCCION_CUERPO_SOLCIJU_CODICE",
+  "status": "PENDING_FRESH_AUDIT",
+  "requiredReference": "assets/ui/codex/champions/solciju.png",
+  "instructions": [
+    "fetch main and open PRs",
+    "skip owner overlap or completed component",
+    "audit current body atlases, consumers, renderer and skins",
+    "preserve PR231 and Veyra PR233 workshop",
+    "produce only real missing body assets",
+    "alternate this completed closure with the next production block"
+  ]
+}
