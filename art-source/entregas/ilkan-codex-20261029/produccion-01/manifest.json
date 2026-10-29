@@ -1,0 +1,1012 @@
+{
+  "created": "2026-10-29T19:45:28.820940+00:00",
+  "base": "df7fe4b891c440a6fd31675a2c65434d77912628",
+  "state": "VALIDADO_LOCAL_PENDING_CI",
+  "files": [
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/ATTEMPT01.log",
+      "bytes": 437,
+      "sha256": "7d8984443b4b1e4541e572445c7eec19c52178f747b880409dfa612815109d72"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/ATTEMPT03_PACK_FAILED.log",
+      "bytes": 797,
+      "sha256": "82ef77265f2ade923910141380bce6a6d640e3e0204b209ebab92ae5d4f242a3"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/AUDIT_FRESH.json",
+      "bytes": 489,
+      "sha256": "67a07e8e7299eca9dc5b18d70daa4aeb53ac26107269e484478a99fae602d668"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/CHECKPOINT.md",
+      "bytes": 1074,
+      "sha256": "43fabeeda6b86f7778fe5d935c6dafd3c46250928566f91075dd5afe701bfec4"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/DEPENDENCY.log",
+      "bytes": 852,
+      "sha256": "15c0e6fc788159810cbda77fa60787496dfa08cafc9bdf76b7b2977049b273d5"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/EQUIPMENT.json",
+      "bytes": 17660,
+      "sha256": "8401b0c34a8f378318aa1a2f6a27cfadf9c6b4fd169bb7acf67b66324a9a132e"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/EQUIPMENT.log",
+      "bytes": 1057,
+      "sha256": "803021895298cab3119aa45d1d577ac6f94c64b83d5ced35e480d3934cb76e4a"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/EXTRACTION.json",
+      "bytes": 955,
+      "sha256": "cfdcb5cae4de387a5395e9640db4fdf5f79cbce45ef6cb0543184effe71edf37"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/FRAME_INDEX.json",
+      "bytes": 24597,
+      "sha256": "9a8f1cda9c51f660ac660bb44237c2d438e07775ba02878634f2a700dccf47d8"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/GAME_MATRIX.json",
+      "bytes": 393291,
+      "sha256": "fe035c1d6425ae6ae925ef6d9e295afa40542bc1c1dbdcbb47aaf9b470cdb32f"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/GAME_MATRIX.log",
+      "bytes": 226,
+      "sha256": "2393caf9e6f1d7b4b2f1850d1b1a343c701c41d4a30247b5128e19f7cda0bc04"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/GAME_SUMMARY.json",
+      "bytes": 625,
+      "sha256": "0f6d57a892e0e6d6a8412ba8760556d0cc643b70567c120ba03f267ae601d194"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/ONLINE.log",
+      "bytes": 594,
+      "sha256": "4a8e672b062fd88e0c8dcc7d7001b80ebf45bea8e79394f918edff1607e3bea3"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/ONLINE_ATTEMPT01.log",
+      "bytes": 456,
+      "sha256": "977a53ced502080854ef21d4e011ec7943cc778223036890d2dad570bbe1a84a"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/PRESERVATION.json",
+      "bytes": 10460,
+      "sha256": "bf6540142eafaf05da54a462f921be6bdc191001f8923f24a140e70327e89ce5"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/PRESERVATION.log",
+      "bytes": 145,
+      "sha256": "4426f83c15ade63cb62a6b60d71a25a0706ce6a2c0f07b624e7ed7b37e9b45d3"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/PROMPT_ACTIONS.txt",
+      "bytes": 2054,
+      "sha256": "5e635d2668332b5c3475c61c539004573637d0e6d7f1f48b049b8b5933de933f"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/PROMPT_LOCOMOTION.txt",
+      "bytes": 1792,
+      "sha256": "4824132cc8ab0e758228ed176f1631442b4430534bcb6b79aa63d29ad63ac9c7"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/REEXPORT.json",
+      "bytes": 617,
+      "sha256": "764aa80f1897b66f81046c78ae8704797cb557b47a97169d9bf37bc2c08be746"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/RENDER_NATIVE.json",
+      "bytes": 181323,
+      "sha256": "b3759e6819c8cb233ffd33ff6d17833e4ba5f129414733eb8aa473e0215d290a"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/RENDER_NATIVE.log",
+      "bytes": 789,
+      "sha256": "73e59fb361707bde0b94058259135e1c1c364873497f7d89961e0ff08dbbc3da"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/REVIEW.json",
+      "bytes": 2504,
+      "sha256": "f70e4b1cb92ec017e3304f21facf7400a42ec3ffd9ecf4553ec24003ff8440b6"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/ROSTER.json",
+      "bytes": 92809,
+      "sha256": "14ee3a2a3a37058077e213cba4e277bf6dae0a5e598380cc07d1831f405cc4cf"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/ROSTER.log",
+      "bytes": 180,
+      "sha256": "ee2de54f501153c03f83c59c651e6bc71a116bf2010ce6b6e3efb3db4cb5e6c4"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/SOURCE_CHECKPOINT.md",
+      "bytes": 704,
+      "sha256": "ec1b3ff6ee091f8df4665315d5a8bb33b5b564f82bd442b6f1c573ef0f0d2ade"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/SOURCE_REFERENCES.json",
+      "bytes": 554,
+      "sha256": "e20449145f75e21903e24b129acdd42f4913562e406460055359c59fd398469a"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/STYLE.json",
+      "bytes": 19955,
+      "sha256": "2e51dd6586cdbc7d8051588d60203e0682c76f61b78fbeaaf3f6aed25a6ff005"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/STYLE.log",
+      "bytes": 167,
+      "sha256": "00c5a9bf65ec15decff09a1fdb85f0b393dd11e6eb0b2d1fedc7fdd0e35120e2"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/TEST_ATTEMPTS.json",
+      "bytes": 1932,
+      "sha256": "011512316941b8947b7e8823edda7cc77cc9d04d443373c02e31d9b38c78456d"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt01/EXTRACTION.json",
+      "bytes": 871,
+      "sha256": "b09bd00bb9e8299c6fcd32fd4117baf47576aac456f80532f699bdf5a6aa76ef"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt01/FRAME_INDEX.json",
+      "bytes": 23928,
+      "sha256": "21811afde252e6ff347eee92a7f0d06f8108a1af6ab14fb04d418d597b857ec0"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt01/RENDER_NATIVE.json",
+      "bytes": 185407,
+      "sha256": "6e8a1845ef1eb0fcdd32c1a13f7350e9c7b7d8861d670e4f538a10450b9ac440"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt01/RENDER_NATIVE.log",
+      "bytes": 863,
+      "sha256": "3b76ee3e6015f32544b712d5b21071c070e587545af8f7a4fc1740a5728f7af9"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt01/candidate-atlas.png",
+      "bytes": 578289,
+      "sha256": "4fe0364f829bc0eb2a53c335d228da3514b0c9cec834ad4b2c1ae9e2eaef7072"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt01/candidate-meta.json",
+      "bytes": 1383,
+      "sha256": "2f86ffa9a469eaee1bc238fc480092a2e33bbb1b1c9f8f09a785fa5592cb0402"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt02-normalization/EXTRACTION.json",
+      "bytes": 871,
+      "sha256": "a7c76d8d633b74ff15ee59913021d56eac9d4aff671894c5ca8598dffa167b15"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt02-normalization/FRAME_INDEX.json",
+      "bytes": 24994,
+      "sha256": "0fdecc7d8a04f48b5ceb1141419e2da84bf735556b5175de2cb7b59234302e75"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt02-normalization/RENDER_NATIVE.json",
+      "bytes": 184365,
+      "sha256": "68acb2f3e5a702130fe0d9c1bba395610e221da8fb43e6fffd248c59440e8dc1"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt02-normalization/RENDER_NATIVE.log",
+      "bytes": 789,
+      "sha256": "651fbad2886b718d7475789209de6c922f09c35855244cce88acf49c9609942c"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt02-normalization/candidate-atlas.png",
+      "bytes": 570755,
+      "sha256": "87f7e7a7fdc21627285fdd8ac50459da86b6f09e3536ea93ca04be49ea12bee8"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt02-normalization/candidate-meta.json",
+      "bytes": 1393,
+      "sha256": "fab33def2ff5ead7225386c5ad3842e0ca07f0e53b2897fdb6340cf31f9d7e80"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt03-resize/EXTRACTION.json",
+      "bytes": 871,
+      "sha256": "a7c76d8d633b74ff15ee59913021d56eac9d4aff671894c5ca8598dffa167b15"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt03-resize/FRAME_INDEX.json",
+      "bytes": 25042,
+      "sha256": "8a07e30c3a3f797a070a8568d91d39ef8f663e94623cee3d768f7540ac11bf08"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt03-resize/RENDER_NATIVE.json",
+      "bytes": 182969,
+      "sha256": "96c354f0b0336f703fac26844586d74837c02c9db7d19629f81e8cde9a5c06f0"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt03-resize/RENDER_NATIVE.log",
+      "bytes": 1621,
+      "sha256": "d8ca0c9af936be46a4f81293e8d09827c2f366800dc2416f821f29a823e9d80f"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt03-resize/candidate-atlas.png",
+      "bytes": 781725,
+      "sha256": "938ab838daeb0542096b380f465bfbe484caca47b189d3a12799447c2d85a6b9"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt03-resize/candidate-meta.json",
+      "bytes": 1404,
+      "sha256": "175e9a4b61e3e60b654179f2ab9b45fe0c3e0c650f6013791c3552f9fab14080"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt03-resize/packer.py",
+      "bytes": 4179,
+      "sha256": "a2f4eb8763fd14d69b25876758c3fbd4b209a2ce4dfc6428a9d0aeef37b720b8"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt04-native/EXTRACTION.json",
+      "bytes": 871,
+      "sha256": "a7c76d8d633b74ff15ee59913021d56eac9d4aff671894c5ca8598dffa167b15"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt04-native/FRAME_INDEX.json",
+      "bytes": 24995,
+      "sha256": "9eed45638039b8da74219f6b27858a61bab6f4781428b850e4521baf66eac790"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt04-native/RENDER_NATIVE.json",
+      "bytes": 182365,
+      "sha256": "50598b0a621efe04bf100c53ff6184b248234e3aebcb673e104e9e77d33888e7"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt04-native/RENDER_NATIVE.log",
+      "bytes": 863,
+      "sha256": "3b528f9f1097cf71b80cd7f57ea4b3cfb471b463228a0ac0e9ff2609c0f8f483"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt04-native/candidate-atlas.png",
+      "bytes": 562536,
+      "sha256": "5d4424f112fdac1d7f5bfc1f6bf9aa822aa0fc399e5500f8d21f813052dc0172"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt04-native/candidate-meta.json",
+      "bytes": 1394,
+      "sha256": "46e5351651877398da89421458fc4a65ded2a495a6509ae31a1a447ecd0b49f6"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/GAME_MATRIX.json",
+      "bytes": 392928,
+      "sha256": "63f49f12f57cbbf6dd42416767376a950530159bc931252bbac024021f491105"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/GAME_MATRIX.log",
+      "bytes": 226,
+      "sha256": "c4f189b3e5c6cca309e128efc6af33a8b984f07e2aa515ed034351f2c583c5a4"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/PRESERVATION.json",
+      "bytes": 10472,
+      "sha256": "d81f212152fcaac0cee2492aa08cc7ad1c2e189abd944c01561ffa8cbecbd987"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/PRESERVATION.log",
+      "bytes": 1494,
+      "sha256": "7c686d730a4ee4dc015a3fe282df5d4575110971bf5bdc31398ef75682242f21"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-after-acuatica-sequence.png",
+      "bytes": 1298335,
+      "sha256": "2d9828244b0cf345230b4dd299e8a3d2e72e5370affd57ef2b709ac28d4697fc"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-after-bosque-full.png",
+      "bytes": 821909,
+      "sha256": "0aef4818461781f5700a72bb842077558e84d3beee70bfa8a84ab4ff73f90fd0"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-after-bosque-sequence.png",
+      "bytes": 933996,
+      "sha256": "a9f9a75e952b10657dd421f3cfacb877cdc3abe282cb3cd0f88381245591c9ee"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-after-fortaleza-sequence.png",
+      "bytes": 1424390,
+      "sha256": "ae3ab8bed4b86bfe4e789c27e36448c5afac8aa8db0ba348e2276d9d4b0cb69b"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-after-hielo-sequence.png",
+      "bytes": 2320287,
+      "sha256": "d919834b1ad9974754f191b153fa19b0d819b2a41f41ef396030a2a79d3e0180"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-after-infernal-sequence.png",
+      "bytes": 1671670,
+      "sha256": "16dbd6a14cb55f575856b5e46f8cf2fe288e4b8f2c0e451f7d9cee02ab93d719"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-after-minas-sequence.png",
+      "bytes": 855093,
+      "sha256": "5bb0dec5e5aff1fd50d79d7156dadbaaad13c005c368d3c458584eb73e238f99"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-before-acuatica-sequence.png",
+      "bytes": 1296667,
+      "sha256": "57bee32f5e3fb462e5f90cff340e3818e1c14cd2d06f842110501e802dbbaf0a"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-before-bosque-full.png",
+      "bytes": 817522,
+      "sha256": "68be166740c747646bc6cf604f930300614dfa014aa4f6b37f6b6d791f762abc"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-before-bosque-sequence.png",
+      "bytes": 932415,
+      "sha256": "f134687f4e4e9d7129ee580a761260a23eb9cf608c78d256310a9264003048ed"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-before-fortaleza-sequence.png",
+      "bytes": 1423106,
+      "sha256": "53513a1aa4c0db4e2b44aaa7557214ff88decd6b140687fefd284eea0d99896b"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-before-hielo-sequence.png",
+      "bytes": 2318639,
+      "sha256": "176847f3b51c1c71123cbe7f0d5052ce2d90d2b19d6aa3f4f57fd6b204b4e7ce"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-before-infernal-sequence.png",
+      "bytes": 1670412,
+      "sha256": "534f4c058fd286e04464a9e59693c696a1f7fd636612e412aa5ddac9fbbe8b38"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/desktop-before-minas-sequence.png",
+      "bytes": 853427,
+      "sha256": "70a9937df017134b8ae0f8e31938733f15f740a6bc6ec1198ba30a4e088883ae"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-after-acuatica-sequence.png",
+      "bytes": 1772215,
+      "sha256": "45baf5e8333ec66c10b7d98a4335d9c965cdd8edb5a5f3c2d18869f0b80ba168"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-after-bosque-full.png",
+      "bytes": 407932,
+      "sha256": "bfacfb37958edede6fa8321a2b74e9d36c969fe179324228ad3def207d8bbf33"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-after-bosque-sequence.png",
+      "bytes": 1635779,
+      "sha256": "22be2b5c8cd61262c40029d42a18ad138f2f35d5a0c50a50644e68b5a790a403"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-after-fortaleza-sequence.png",
+      "bytes": 1724475,
+      "sha256": "935a31ac882e766c92536a41687bd27329294576c1a9fadae2d15e844c788ff7"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-after-hielo-sequence.png",
+      "bytes": 2957365,
+      "sha256": "42e34d21492394eab96f50d3fde4b18c5b84d685a698bfff33b44ee9161c746b"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-after-infernal-sequence.png",
+      "bytes": 2205141,
+      "sha256": "5dfd24949ed04fbb812a369e0fe57d35bd1ddb7cb923ba08af27b7f597cee693"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-after-minas-sequence.png",
+      "bytes": 975511,
+      "sha256": "41725639d07c7ed37412e79a673dac119153fab05ae49a1782c0859e45d09cf5"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-before-acuatica-sequence.png",
+      "bytes": 1770162,
+      "sha256": "41e35d3b56d1e4ef9dc1fda2dde37699a712366f8495227d91cff9ef9232449c"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-before-bosque-full.png",
+      "bytes": 407652,
+      "sha256": "357d41c84ef96c2e5c30f0f270ae0c23b794e5fe841476302ba1c07bfd7ef149"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-before-bosque-sequence.png",
+      "bytes": 1633692,
+      "sha256": "79e9c9d652a769e7d02cfdfec009868ee61657c45a8060ccfbcc759a572c5d4a"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-before-fortaleza-sequence.png",
+      "bytes": 1722455,
+      "sha256": "9e65968ddd436aefe9f6ae7c9684546baddc2d77350bcc1d486b24037b7979bb"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-before-hielo-sequence.png",
+      "bytes": 2955941,
+      "sha256": "796bd0c63c4d82adebf072bcec31ab5fb13aff36b049a8841bbe2e3258627eb9"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-before-infernal-sequence.png",
+      "bytes": 2203120,
+      "sha256": "38cb28631dff262ead984ea1d6d59c126e4cfc7c48fd4b30038710c4845001af"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt05-harness/mobile-before-minas-sequence.png",
+      "bytes": 972118,
+      "sha256": "0e028cd7cc1313636069160d4fdfaa9fe98cf4352fbb0db1a63b716f75b462a4"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/EQUIPMENT.json",
+      "bytes": 13466,
+      "sha256": "ab987a2468e92b6bf59db31168b2ff7c60bb7c3afc06237e18433fecb72e4ae4"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/EQUIPMENT.log",
+      "bytes": 1057,
+      "sha256": "a961cd0a3e63d4e3dad7f4165aa9e1a0b007ae1530ebf2a090e18c9a16482aa1"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-0-ultimate150.png",
+      "bytes": 217007,
+      "sha256": "bda44164c2578257fbc69e488e14cf0a6b32f7beca1e049152b42bd50fdabf9c"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-0-ultimate20.png",
+      "bytes": 227132,
+      "sha256": "8d509ceac90e5e9071a4b465fcec96d27fee5d1f46f54f7add37c9ee3ba39c87"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-0-ultimate2900.png",
+      "bytes": 7092,
+      "sha256": "ddc6c0a3391c649c9e5b24540ed3233f645cde045decbf8fd7ff949fde4c003d"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-0-ultimate900.png",
+      "bytes": 255584,
+      "sha256": "d0be8a017bad1cd379174d9b1374b6be4c88eac8b0bb052ced6b82475b8ce4f0"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-0-walk0_1.png",
+      "bytes": 265127,
+      "sha256": "abbb5674561bec90a32c62be3bd63863271f2597ff0caa1b9ba8b4ca2dab605f"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-0-walk0__1.png",
+      "bytes": 230157,
+      "sha256": "16989898fe0ac23cfd3ba0e1661d3eede97b564428aa15cb4fd6edf98698b316"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-0-walk1_0.png",
+      "bytes": 260299,
+      "sha256": "ca9dac13796d608c78d35a456e0382e0415981fd421966e0f689bae2901df7cb"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-0-walk_1_0.png",
+      "bytes": 260923,
+      "sha256": "4d07a7972f4cf1457bb7befa95fb73245ae9e2dc2f76699aa3feea54e8daa805"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-2-ultimate150.png",
+      "bytes": 213523,
+      "sha256": "2e0d1985be55fc43d90c5295fd3f0b54f17204642b469917d87e8fca365a6264"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-2-ultimate20.png",
+      "bytes": 222856,
+      "sha256": "9f9f39851ea650516ce48f6c9de8de9badbb030a2fcf11cfc0790633b2675fed"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-2-ultimate2900.png",
+      "bytes": 7092,
+      "sha256": "ddc6c0a3391c649c9e5b24540ed3233f645cde045decbf8fd7ff949fde4c003d"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-2-ultimate900.png",
+      "bytes": 254759,
+      "sha256": "04e8554627cf408e40949d18148b90bc7a27e30d800a91bf062db183161b5325"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-2-walk0_1.png",
+      "bytes": 276746,
+      "sha256": "2d4842c733de5e6aa4767e638aafd505ed4071c948404643aeb97d977ef40abf"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-2-walk0__1.png",
+      "bytes": 225959,
+      "sha256": "b64585ca3681599d033ccaa5882192cac1511363648226728af424a4c4b583d9"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-2-walk1_0.png",
+      "bytes": 251475,
+      "sha256": "d3f0ea2b02ae3a0fb503cf3567fc887c5adf773f14bf126cf2254b68b7bb6b00"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-2-walk_1_0.png",
+      "bytes": 256484,
+      "sha256": "42c4533ca61c6050ec175100b5c83815736972b0e72465c54c7e86686ef514af"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-4-ultimate150.png",
+      "bytes": 212655,
+      "sha256": "8ce9995659aa9101d8a640a85325ac5cd6bce2e7b1546f362d2b429ae5ff4d7e"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-4-ultimate20.png",
+      "bytes": 219135,
+      "sha256": "5b87b0b72beecb7145f37165e251741e3923cd2bbfee296f35f996097eb20127"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-4-ultimate2900.png",
+      "bytes": 7092,
+      "sha256": "ddc6c0a3391c649c9e5b24540ed3233f645cde045decbf8fd7ff949fde4c003d"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-4-ultimate900.png",
+      "bytes": 262487,
+      "sha256": "710d11f2ec82a29f257fc7a9fff28b1e941bf44bf5fa13fed8aafdb8708c76a4"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-4-walk0_1.png",
+      "bytes": 274787,
+      "sha256": "8fb0f1f34b6fcc15282b515e5fa5158e4c3f89e58d67786a20274b3a0187a2c4"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-4-walk0__1.png",
+      "bytes": 222510,
+      "sha256": "624a310ab65cdfdbc27d418eff7854b8b755111a08d2a589ac4d36d5b120fae6"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-4-walk1_0.png",
+      "bytes": 246424,
+      "sha256": "13b553ce5ff6f3b3b9889211b45135fa843fd703eeb12fc3efb8a9cf852e3d09"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/attempt06-equipment/equipment-4-walk_1_0.png",
+      "bytes": 258401,
+      "sha256": "0045e13856beb3125e6dae17a8b949f0eec0c1111ba9014ecd1f4125d4c010b9"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-actions.png",
+      "bytes": 306669,
+      "sha256": "ae3288cc70944f131970aba9d2125c09c3ab9d05ff5a6a36e64a2ad753258ebb"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+      "bytes": 556034,
+      "sha256": "d36f0b7d040a8c7fd8ee691cbb534559c65afd959de35a8634f6d75f46c41f6d"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-locomotion.png",
+      "bytes": 265076,
+      "sha256": "65533f622e850b75a8d6f726ff7c443f7c75a556ff69ea2d37a460386f9b4154"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-meta.json",
+      "bytes": 1394,
+      "sha256": "562880162c2a1ae513c00a633118f5f2c0bf999ea9691f27c452d1dff753bdf5"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-after-acuatica-sequence.png",
+      "bytes": 1650276,
+      "sha256": "dfae77388d9a85a0e68a588fbde6b49bbfd58d7c47babf6eb44967f2bda2daf5"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-after-bosque-full.png",
+      "bytes": 876381,
+      "sha256": "cb179019d8345f3a5323d255d54e29536b8a3f500d657a10416498a320bba849"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-after-bosque-sequence.png",
+      "bytes": 1515045,
+      "sha256": "22a09d353cd033601fe8dc58cef36ba319f9718b48d2c57eefd00adad9a8b253"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-after-fortaleza-sequence.png",
+      "bytes": 1718443,
+      "sha256": "1e96a44c263949528447b76f680b8596e14315202a8134a52d6da7b19d9aa835"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-after-hielo-sequence.png",
+      "bytes": 2723076,
+      "sha256": "49c1b725bc38a038b7d9c7c26765712ca4c0077be5dcad4532d38e50c21f6493"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-after-infernal-sequence.png",
+      "bytes": 2163856,
+      "sha256": "e11790ba539880d5f912ebabe711c3edbefd3930dc1a9a61f375b902c4eac12a"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-after-minas-sequence.png",
+      "bytes": 774460,
+      "sha256": "adaeccf6813b8bb971f4282b65814093a1b12f41ef067562825b1da24875aa8c"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-before-acuatica-sequence.png",
+      "bytes": 1625845,
+      "sha256": "7aab84dc49e2c3974fbdd8810570bd79fbc86489ccabf0508017aa83248ea1b5"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-before-bosque-full.png",
+      "bytes": 872830,
+      "sha256": "9917474222dfb34e9e25359fafe8f96115acb9e31eedff861d6ff7a6be3d9d30"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-before-bosque-sequence.png",
+      "bytes": 1489150,
+      "sha256": "a93f840da6cd45861df3f0fde6b03f495ba94987eefdeec354016bc68d12c082"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-before-fortaleza-sequence.png",
+      "bytes": 1696655,
+      "sha256": "13724fa0f6cf7658ea6849d9647987e2c42a4f398cd6756dbeef225e846391eb"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-before-hielo-sequence.png",
+      "bytes": 2708094,
+      "sha256": "dbabd70e1c60e135d5721ba060f70580052ca924c4036d07dc6bd70c2778717d"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-before-infernal-sequence.png",
+      "bytes": 2143859,
+      "sha256": "86edc0d2309fb433b01f8e4672238efa1d925528936c9525f5c250efa14887fc"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-before-minas-sequence.png",
+      "bytes": 746073,
+      "sha256": "056fe9ee6727894672b3917e9ca07966ebefe580e9fcde2bed247349baa15597"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-front.png",
+      "bytes": 173771,
+      "sha256": "3434d3f8c4f5c6ce1b7f65f37c0665f0120566c99e8ebb8a78a99993bac2f3c3"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-left.png",
+      "bytes": 169938,
+      "sha256": "1ee5f6652983ddaf9da8ab4b5f8f645ba9ebbe3d9a490f63498fb58969521feb"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-side.png",
+      "bytes": 171810,
+      "sha256": "fef5d7acf205ee1c8ea0036e24a7a73f187f71cf87ed4bc879377ca9615b638e"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/desktop-up.png",
+      "bytes": 170446,
+      "sha256": "478048e59daee2474590784cdff784b9ce1925ff7296911a7c3067ae01bda215"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-0-ultimate150.png",
+      "bytes": 355740,
+      "sha256": "226066811883fa7b7e5d38e9e3e0addf238eb9d78c681b4f1fd4285de84e4449"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-0-ultimate20.png",
+      "bytes": 379080,
+      "sha256": "cd88ad3945a683b2ca7857cee64c3b10e0ea6e4f9c339957ac9b1dacbf1ed4fc"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-0-ultimate4100.png",
+      "bytes": 386209,
+      "sha256": "fabbc79b75497f52a4230ff6df28fece3317e3036df339e59df4a63fbdb2bb51"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-0-ultimate900.png",
+      "bytes": 366954,
+      "sha256": "806667459ec01fbc77b52fa611606402e354912df92bcc3d954c29052a82ba6e"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-0-walk0_1.png",
+      "bytes": 380237,
+      "sha256": "2f9da8e624ba7570011b923b6db15d7bcb7a3094b4c86d0a9e9f6d91c6bcc44d"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-0-walk0__1.png",
+      "bytes": 390305,
+      "sha256": "b1e04bd5882cb4d57b06c2eeda08a71ebd9abce76a7e95ff4ae4d5dc14a71e78"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-0-walk1_0.png",
+      "bytes": 389982,
+      "sha256": "7114243cfe7bb0fb34d89fc44eda0a4b0a221c61df690d7113cb9bbbdd149571"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-0-walk_1_0.png",
+      "bytes": 380073,
+      "sha256": "eabdccd86cf3ec9afca52ff8e3c5a3dd7a491ebb7331e52e23f8373c1c3cfe0e"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-2-ultimate150.png",
+      "bytes": 358554,
+      "sha256": "28ff9f5b9af395bd26764a01089512f29df0d45f6ae20c90aa4df9d44bd91a3e"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-2-ultimate20.png",
+      "bytes": 381111,
+      "sha256": "902eecbce8508e6ad12573d2f5d0e3eb208363b94d8acd19154184b4cc22779c"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-2-ultimate4100.png",
+      "bytes": 381991,
+      "sha256": "b370d5ee83a7b2b3fcdf69da2bb0bf5f3c6efbb952eae746fee0413f73d4f07e"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-2-ultimate900.png",
+      "bytes": 368292,
+      "sha256": "f2c5bdf237620db28d9cb57c73418ba0040152fa28a88361538984fd187dbaf4"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-2-walk0_1.png",
+      "bytes": 381010,
+      "sha256": "99d685e347b2ee8cc984d76cf00d9fae3292e9887a6bee20c6604f98fdb3f479"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-2-walk0__1.png",
+      "bytes": 392938,
+      "sha256": "ec22fd24a8bd1c38583c7edc0331a72f1014b3769049a91bd05948a5d25068ef"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-2-walk1_0.png",
+      "bytes": 392416,
+      "sha256": "628576b67f6563a1832192f161b2d931cd8c7f8c41c8e4e387d985397eb7db8f"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-2-walk_1_0.png",
+      "bytes": 379751,
+      "sha256": "72bb332f86bd81b6ffb695dd7952dfebb4ede624919125e3ea89506ab831f452"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-4-ultimate150.png",
+      "bytes": 351359,
+      "sha256": "611019679b261eaeaa96fc275021cb72b49c4bc8684c08d08cc454bfb5ec7054"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-4-ultimate20.png",
+      "bytes": 371983,
+      "sha256": "9ce4c12ca0dcd24f7e9b712b70325ced531d213ed8033a506f47d66fb80e0345"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-4-ultimate4100.png",
+      "bytes": 386448,
+      "sha256": "89c6d721a2fda3bee9bebff1e1570b7d9fef48f1f731a45c0cadf1c0e16721fc"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-4-ultimate900.png",
+      "bytes": 364447,
+      "sha256": "3c01c9fadaeb35393e224365a554d305e5c8ddd04c050267295b2874b03880de"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-4-walk0_1.png",
+      "bytes": 376280,
+      "sha256": "61997e8c8a56b5268bb2e39b00c5f0ebbe8281fe9d757f80ac2a92597b9d643a"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-4-walk0__1.png",
+      "bytes": 382803,
+      "sha256": "2bd2bddc99bce12d4246c0481feada1ed60e3c9707a89fa98fe57c7a1c35e7d3"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-4-walk1_0.png",
+      "bytes": 382765,
+      "sha256": "4d08898976dccfdf41eccd49a4048034b10c26118c4dd8454966dc609cc7647f"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/equipment-4-walk_1_0.png",
+      "bytes": 376041,
+      "sha256": "199cef279f41058b0af93cf286c363d9b206725137781c7926fce39c4235f924"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/loader-before.txt",
+      "bytes": 639,
+      "sha256": "cd1012f946e83991a29c5d454eff4facf84bd5e08ed168d799a13a987eaca5df"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/loader-candidate.txt",
+      "bytes": 681,
+      "sha256": "8c06ba3c85d941d6dca901de6c76a720fa2646323ec36288ca0d3e01178e3940"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-after-acuatica-sequence.png",
+      "bytes": 2035492,
+      "sha256": "ef42fe821046c35ce12a1cf12fd45282eac43da8bf4361b3a6ced232ab25c321"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-after-bosque-full.png",
+      "bytes": 390047,
+      "sha256": "d9c977962ff9d765c4d44fa57bdff10813a8a9baf75f296e99041cedb1b837b5"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-after-bosque-sequence.png",
+      "bytes": 1766341,
+      "sha256": "412933b70ce26824243a7cfea06470160816cbd2aff057ed2761f2f8d8b66b7e"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-after-fortaleza-sequence.png",
+      "bytes": 1970435,
+      "sha256": "2036ff43f6718bce2173962b459a25cf127a836f5c6af7605d423fc170920516"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-after-hielo-sequence.png",
+      "bytes": 3046580,
+      "sha256": "61b75f13ae8cefb9d22eb9ae0b2aa2dc64df77ca01959810540605d986551cef"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-after-infernal-sequence.png",
+      "bytes": 2448825,
+      "sha256": "9b1c0653e5821cf1c19fc730a671242b3254fff37c84a9a4d5071020898c2f14"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-after-minas-sequence.png",
+      "bytes": 909967,
+      "sha256": "1f9ac603adbffbffd55fce433339e5763d9f5aab0d884ce3dc9394acbd934459"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-before-acuatica-sequence.png",
+      "bytes": 2032969,
+      "sha256": "e88c35b59f10370904ad6feef4af8cc7d733fcc765facad8be3ebc166dfdd495"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-before-bosque-full.png",
+      "bytes": 389755,
+      "sha256": "5bb43de816fe614a4d0f0f64858cd357586a5dc64a79c3c6378e072f42f7edfc"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-before-bosque-sequence.png",
+      "bytes": 1764057,
+      "sha256": "4da21d9aa074791a48df09da39d93c8a7e1f3ed54ea4887f655e67e61822add9"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-before-fortaleza-sequence.png",
+      "bytes": 1968230,
+      "sha256": "d11ccd36fa2563716eb6490142c920aaca1f53ba0f682f0257c6bf641380e7f1"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-before-hielo-sequence.png",
+      "bytes": 3045237,
+      "sha256": "7c86bb04d3cb99911957a8e82a9bbdc08e09f17e2f487bfc03400c9167f142f9"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-before-infernal-sequence.png",
+      "bytes": 2447297,
+      "sha256": "5bf12b376f87ae2ebe10e72c1a762a4cec8553eb3c902900642bf00149ad14ba"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-before-minas-sequence.png",
+      "bytes": 906395,
+      "sha256": "4ed1751f8cf0c90e7964d8f12dd17a696982c4596e2506ce04270ded1c6a77d9"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-front.png",
+      "bytes": 173771,
+      "sha256": "3434d3f8c4f5c6ce1b7f65f37c0665f0120566c99e8ebb8a78a99993bac2f3c3"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-left.png",
+      "bytes": 169938,
+      "sha256": "1ee5f6652983ddaf9da8ab4b5f8f645ba9ebbe3d9a490f63498fb58969521feb"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-side.png",
+      "bytes": 171810,
+      "sha256": "fef5d7acf205ee1c8ea0036e24a7a73f187f71cf87ed4bc879377ca9615b638e"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/mobile-up.png",
+      "bytes": 170446,
+      "sha256": "478048e59daee2474590784cdff784b9ce1925ff7296911a7c3067ae01bda215"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/online-guest.json",
+      "bytes": 384351,
+      "sha256": "92ac3593d0b9baf094ff39b5125c443c967e7e26b12dba6a479e94df40a78027"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/online-guest.png",
+      "bytes": 340570,
+      "sha256": "174d8d2c9eb6623995c9d558210c7bb5c675fd7d670386761597189ae62b50b4"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/online-host.json",
+      "bytes": 180506,
+      "sha256": "b215e30c82be6d2f227dfd6ba16d5c736c5891db6a911ab071ecb9976abbba93"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/online-host.png",
+      "bytes": 647673,
+      "sha256": "67968902a2f981cfc1c0e2127862978b04966eb56eb5d891aa3298bf54c57c26"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/online-results.json",
+      "bytes": 759,
+      "sha256": "ece8c77eedf65824aaf853c9fe917ad272fc59aaa27fc7610e940f5dc8798db5"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/preview.html",
+      "bytes": 778,
+      "sha256": "e25a804d17938afc1291694876457686bd08d6beb80dcd1755c94297dc541017"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/recipe.json",
+      "bytes": 1948,
+      "sha256": "4282c759a0a880ae3446a9f993e0f7d4205e29fb1935b317010ac83f757ddd92"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/roster-sheet.png",
+      "bytes": 283736,
+      "sha256": "bce4d655a8d742c396e0f516d6045163fb2c3896261d4c82a33b1cf536785acd"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/source-actions.png",
+      "bytes": 2003699,
+      "sha256": "63294b7619b786fd063b9d19560383b79e6c55a767575e51e1abc7506914243c"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/source-locomotion.png",
+      "bytes": 1799769,
+      "sha256": "6cc053404b1044fe5556d5cf56fbd7e48496cdb7c547c5daf3092d1b40bdaf92"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/temporal-death.png",
+      "bytes": 102742,
+      "sha256": "22124f7fe6e389a0f8221d92c82f7b03702faa147e6d30a065357566e056941d"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/temporal-fly.png",
+      "bytes": 81712,
+      "sha256": "88af9ddef41715c63929bc8d9dbcd0540dca21e3c38651751c120625cad111ae"
+    },
+    {
+      "path": "art-source/entregas/ilkan-codex-20261029/produccion-01/temporal-walk.png",
+      "bytes": 119245,
+      "sha256": "4fbfa5776d8d1ea668884f1048f94d92d9b33b9b0854ce4eb58b2e6ad96fd968"
+    },
+    {
+      "path": "assets/sprites/champions/ilkan/codex-v1/atlas.png",
+      "bytes": 556034,
+      "sha256": "d36f0b7d040a8c7fd8ee691cbb534559c65afd959de35a8634f6d75f46c41f6d"
+    },
+    {
+      "path": "docs/production/CORRECTION_BATCH.json",
+      "bytes": 145375,
+      "sha256": "88f100a283bfbbf276d7d44e5172ead5b1b5131567c460cd56b2d5a3b88afa0a"
+    },
+    {
+      "path": "js/assets/champion-sprites.js",
+      "bytes": 47608,
+      "sha256": "9a42a4954308d0a6f85eedbd4ff75d7acdecd64706352b4a073005e40edd2bda"
+    },
+    {
+      "path": "tools/art/check-ilkan-codex.js",
+      "bytes": 6344,
+      "sha256": "8153ee70f9598ce04f87e7e7bbd64b95e5e3f482e309dc2cba81c94e32813a19"
+    },
+    {
+      "path": "tools/art/game-ilkan-codex.js",
+      "bytes": 5039,
+      "sha256": "1365c44143ba741a9ba4432fd50fbc743966224fb6ae49632e0f26e8423b9108"
+    },
+    {
+      "path": "tools/art/ilkan-codex-equipment.js",
+      "bytes": 3039,
+      "sha256": "25f4992c979a2819df2bee586831c3a876b5d61a3e5117d3e1d21352212d0344"
+    },
+    {
+      "path": "tools/art/ilkan-codex-preservation.js",
+      "bytes": 3126,
+      "sha256": "7a46b046ed60dbd836b1a406a818cd66ec1be13ed46b333fe1a96519a3caef78"
+    },
+    {
+      "path": "tools/art/ilkan-codex-style.py",
+      "bytes": 1358,
+      "sha256": "32bb545a4fbece9cd4b38c3d6b4d5bd3567d740ee44c8334eb18f3889145f1af"
+    },
+    {
+      "path": "tools/art/pack-ilkan-codex.py",
+      "bytes": 4329,
+      "sha256": "44ae24b6eef06e0abd03cfec666916064adb31bc83bd9ac9bd56ed3e582a5e06"
+    },
+    {
+      "path": "tools/vfx/ilkan-codex-online.js",
+      "bytes": 4517,
+      "sha256": "47741dbcc234eb4ffdc14984c175083035a14f310a9039db482f64c61d9a003a"
+    }
+  ]
+}
