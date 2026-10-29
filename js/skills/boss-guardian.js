@@ -148,6 +148,7 @@ Object.assign(BOSS_ATTACKS, {
     for(const p of plan) bossStrike(p.x, p.y, 30, 950, e.dmg*0.9, "root", {knock:40});
     bossSheetPack(e, "roots", 1000);
     runLater(950, ()=>{
+      if(!e.alive || runEnding || !enemies.includes(e)) return;
       for(const p of plan){
         if(iceWalls.length >= ICE_WALL_MAX) break;
         if(heroes.some(h=>h.alive && Math.hypot(h.x-p.x, h.y-p.y) < 22 + (h.radius||18))) continue;
@@ -161,7 +162,7 @@ Object.assign(BOSS_ATTACKS, {
     bossSheetPack(e, "cast", 900);
     for(const h of tg){ bossStrike(h.x, h.y, GUARD_CFG.zoneR, 900, e.dmg*0.5, "root", null); }
     const pts = tg.map(h=>({x:h.x, y:h.y}));
-    runLater(900, ()=>{ for(const p of pts) _gdZone(p.x, p.y, e.dmg*GUARD_CFG.zoneMult); });
+    runLater(900, ()=>{ if(!e.alive || runEnding || !enemies.includes(e)) return; for(const p of pts) _gdZone(p.x, p.y, e.dmg*GUARD_CFG.zoneMult); });
     bossAnnounce(e, "Zona Corrupta", "salí del charco rojo: queda un rato"); return true; },
   gdSummon(e, t, d){
     const type = Math.random() < 0.5 ? "cu_sith" : "enjambre_hadas";
