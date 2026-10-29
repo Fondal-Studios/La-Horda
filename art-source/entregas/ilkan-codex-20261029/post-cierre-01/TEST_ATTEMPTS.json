@@ -1,0 +1,16 @@
+{
+  "historical": "Production TEST_ATTEMPTS preserved unchanged; no repeated gameplay tests after final production.",
+  "new": [
+    {
+      "action": "git push local candidate",
+      "result": "FAILED_NO_SHELL_CREDENTIALS",
+      "resolution": "GitHub connector blob/tree/commit/ref upload, no credential changes"
+    },
+    {
+      "action": "create_tree 200 entries",
+      "result": "HTTP422 request timed out",
+      "resolution": "8 incremental trees of25 entries; final tree exact local5659d85"
+    }
+  ],
+  "apiArgumentAttempt": "fetch_workflow_job_steps initially rejected repository_full_name; corrected repo_full_name. No runtime effect."
+}

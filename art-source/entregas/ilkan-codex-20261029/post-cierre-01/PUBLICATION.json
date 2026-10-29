@@ -1,0 +1,29 @@
+{
+  "time": "2026-10-29T20:26:55.437469+00:00",
+  "files": [
+    {
+      "path": "index.html",
+      "expected_sha256": "bcdd451f46dca6ddcda8cdff20db849197922c6343bc6e62def534df3a687b8a",
+      "status": 200,
+      "bytes": 68250,
+      "sha256": "bcdd451f46dca6ddcda8cdff20db849197922c6343bc6e62def534df3a687b8a",
+      "exact": true,
+      "consumes_loader": true
+    },
+    {
+      "path": "js/assets/champion-sprites.js",
+      "expected_sha256": "9a42a4954308d0a6f85eedbd4ff75d7acdecd64706352b4a073005e40edd2bda",
+      "status": 200,
+      "bytes": 47566,
+      "sha256": "ab671f3954d6e284e0d4e71b1961bd0ebd81e6c885ccffd04c2bf3234702a069",
+      "exact": false,
+      "consumes_candidate": false
+    },
+    {
+      "path": "assets/sprites/champions/ilkan/codex-v1/atlas.png",
+      "expected_sha256": "d36f0b7d040a8c7fd8ee691cbb534559c65afd959de35a8634f6d75f46c41f6d",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ],
+  "status": "NOT_CONFIRMED"
+}

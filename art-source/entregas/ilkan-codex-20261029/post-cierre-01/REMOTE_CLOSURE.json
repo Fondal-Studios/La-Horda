@@ -1,0 +1,39 @@
+{
+  "component": "ilkan.cuerpo.codex",
+  "state": "INTEGRADO_MAIN",
+  "artGate": "PASS_COMPONENT",
+  "head": "79e05fa8a81b4d0755ac1962b5ae3cbba50240bb",
+  "merge": "c0a025016e0315b93870f2f4c86abb846619d30e",
+  "productionTree": "5659d85f9e50ffc63a45e53a79b7cf2f62a856b6",
+  "scope": "62 selected base human poses and actual loader. Not whole B099, VFX, skins or Colossus redesign.",
+  "supersedes": "VALIDADO_LOCAL_PENDING_CI only for ilkan.cuerpo.codex; production evidence immutable; mechanical FRAME_INDEX approved:false superseded only for selected62.",
+  "ci": {
+    "checks": 29,
+    "workflows": 17,
+    "all": "SUCCESS",
+    "head": "79e05fa8a81b4d0755ac1962b5ae3cbba50240bb"
+  },
+  "verification": {
+    "manifest_files": 201,
+    "local_sha256_mismatches": 0,
+    "remote_changed_entries": 200,
+    "remote_tree_entries": 13076,
+    "remote_tree_truncated": false,
+    "remote_tree_mismatches": 0,
+    "preview_browser_images": 5,
+    "preview_browser_errors": 0
+  },
+  "publication": "NOT_CONFIRMED",
+  "queue": {
+    "entries": 68,
+    "previous67Preserved": true
+  },
+  "newTests": "Preview5images0errors; manifest201SHA256; remote200changed entries; exact-headCI29/17. Gameplay,relay,roster/style evidence in production unchanged.",
+  "limits": [
+    "Legacy H2/H3 VFX can obscure body, not approved here.",
+    "No physical mobile/global snapshot/GPU claim.",
+    "Right walk3 authored poses in4slots; flight2."
+  ],
+  "next": "Fresh main/PR/branches then grouped Veyra PR233 continuity closure; preserve Nano231. Recheck canonical Ilkan bytes separately; no infrastructure changes.",
+  "global_inventory_complete": false
+}
