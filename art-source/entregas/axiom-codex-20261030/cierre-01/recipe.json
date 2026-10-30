@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "reference": {
+    "path": "assets/ui/codex/champions/axiom.png",
+    "sha256": "1e68edc3414be5dcc3be771778aabf737345c0479666d3315e80e74e522f887b"
+  },
+  "inputs": {
+    "baseSource": "../produccion-01/source/axiom-36-source-attempt03.png",
+    "sistemaSource": "../produccion-01/source/axiom-sistema-source-attempt01.png",
+    "ambarSource": "../produccion-01/source/axiom-ambar-source-attempt01.png"
+  },
+  "packer": "../produccion-01/pack_axiom_skins01.py",
+  "output": {
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "columns": 4,
+    "rows": 9,
+    "frames": 36,
+    "alpha": "binary"
+  },
+  "installation": {
+    "base": "assets/sprites/champions/axiom/codex-v1/atlas.png",
+    "sistema": "assets/sprites/champions/axiom/skins/sistema/codex-v1/atlas.png",
+    "ambar": "assets/sprites/champions/axiom/skins/axiom_piedra/codex-v1/atlas.png"
+  },
+  "consumer": "drawAxiomReal -> drawChampPack(\"axiom\")"
+}

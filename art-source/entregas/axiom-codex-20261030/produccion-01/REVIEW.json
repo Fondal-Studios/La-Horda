@@ -1,0 +1,81 @@
+{
+  "schema": 2,
+  "champion": "axiom",
+  "status": "GENERADO_EN_CORRECCION",
+  "integrated": false,
+  "bodyReference": {
+    "path": "assets/ui/codex/champions/axiom.png",
+    "sha256": "1e68edc3414be5dcc3be771778aabf737345c0479666d3315e80e74e522f887b",
+    "use": "small front/side/back sprites"
+  },
+  "skinReferences": {
+    "sistema": {
+      "path": "assets/sprites/champions/axiom/skins/sistema/atlas.png",
+      "sha256": "cf4da5e32d36e1f609c77c2246b7f59ac2d8369d03e34dc2276dfb38eb92fb5e",
+      "use": "material/palette only"
+    },
+    "axiom_piedra": {
+      "path": "assets/sprites/champions/axiom/skins/axiom_piedra/atlas.png",
+      "sha256": "d2a968e78bf0885b9879ad8252fa12813f108cd4b2d3778e3995db5bcdb6350f",
+      "use": "material/palette only"
+    }
+  },
+  "candidate04": {
+    "source": "source/axiom-36-source-attempt03.png",
+    "sourceSha256": "4e6b0655f3e0286dca0f71c70d88c5056f6c8ee781c0a72b785714ad42b66eae",
+    "atlas": "candidate/atlas-candidate04.png",
+    "atlasSha256": "ab5e2d3e1739abfec2a159efa789e51877ad1b666b10aa8b0312f3aa4df77645",
+    "technical": "36/36 nonempty, 36 unique, binary alpha, no edge contact",
+    "visual": "SOURCE_PASS_PENDING_GAMEPLAY"
+  },
+  "skins": {
+    "sistema": {
+      "source": "source/axiom-sistema-source-attempt01.png",
+      "sourceSha256": "a6ddfa958e9a8a433fe37e484b4b3d20b16e4a0f46d91e3a67151751b1d03e22",
+      "atlas": "candidate/sistema/atlas.png",
+      "atlasSha256": "326adacaa620a24aceef4d2972260c04911a2c417dedccdac1b0f5958574da3c",
+      "technical": "36/36 nonempty, 36 unique, binary alpha, no edge contact",
+      "visual": "SOURCE_PASS_PENDING_GAMEPLAY"
+    },
+    "axiom_piedra": {
+      "source": "source/axiom-ambar-source-attempt01.png",
+      "sourceSha256": "78b6696c21ac990c6568e65f9b0b568968c4fe06a4090b270b1a6c11bd8da317",
+      "atlas": "candidate/axiom_piedra/atlas.png",
+      "atlasSha256": "ea75d71095d0874b06b1ff49f4dd1acd41df64a00425b2713a7a979d4d4be1b5",
+      "technical": "36/36 nonempty, 36 unique, binary alpha, no edge contact",
+      "visual": "SOURCE_PASS_PENDING_GAMEPLAY"
+    }
+  },
+  "runtime": {
+    "installed": false,
+    "changed": false,
+    "consumer": "drawAxiomReal -> drawChampPack(\"axiom\")",
+    "requiredMetadata": "112x112 cols4 standard 36-frame mapping"
+  },
+  "preserved": [
+    "PR239 12 FIX_NOT_APPROVED poses",
+    "PR194 ability candidates",
+    "existing base and both skin atlases",
+    "candidate03 and rejected attempts"
+  ],
+  "newValidation": [
+    "candidate04 source visual review",
+    "candidate04 36-frame technical screen",
+    "Sistema 36-frame technical screen",
+    "Codigo Ambar 36-frame technical screen"
+  ],
+  "historical": [
+    "candidate03 canonical density 36/36",
+    "animation contract unit tests 8/8"
+  ],
+  "pending": [
+    "runtime installation",
+    "real gameplay captures",
+    "six arenas and all three appearances",
+    "desktop/mobile",
+    "animation and death lifecycle",
+    "multiplayer relay",
+    "performance",
+    "Art Gate and exact-head CI"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema": 2,
+  "component": "A-BODY-axiom/codex-full-kit-and-skins",
+  "status": "VALIDADO_LOCAL_PENDIENTE_CI",
+  "artGate": "PASS_COMPONENT",
+  "integratedMain": false,
+  "reference": {
+    "path": "assets/ui/codex/champions/axiom.png",
+    "sha256": "1e68edc3414be5dcc3be771778aabf737345c0479666d3315e80e74e522f887b"
+  },
+  "looks": {
+    "base": {
+      "atlas": "assets/sprites/champions/axiom/codex-v1/atlas.png",
+      "sha256": "ab5e2d3e1739abfec2a159efa789e51877ad1b666b10aa8b0312f3aa4df77645"
+    },
+    "sistema": {
+      "atlas": "assets/sprites/champions/axiom/skins/sistema/codex-v1/atlas.png",
+      "sha256": "326adacaa620a24aceef4d2972260c04911a2c417dedccdac1b0f5958574da3c"
+    },
+    "codigo_ambar": {
+      "atlas": "assets/sprites/champions/axiom/skins/axiom_piedra/codex-v1/atlas.png",
+      "sha256": "ea75d71095d0874b06b1ff49f4dd1acd41df64a00425b2713a7a979d4d4be1b5"
+    }
+  },
+  "runtime": {
+    "consumer": "drawAxiomReal -> drawChampPack(\"axiom\")",
+    "metadata": "112x112, cols4, refH76, standard 36-state map",
+    "oldAtlasesPreserved": true,
+    "mechanicsChanged": false
+  },
+  "newValidation": {
+    "gameplayCaptures": 40,
+    "arenas": [
+      "bosque",
+      "hielo",
+      "infernal",
+      "laberinto",
+      "ciudad",
+      "minas"
+    ],
+    "looks": 3,
+    "viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "stateCells": 63,
+    "states": [
+      "idle",
+      "walk",
+      "attack",
+      "cast",
+      "ultimate",
+      "hit",
+      "death"
+    ],
+    "directions": [
+      "down",
+      "side",
+      "up"
+    ],
+    "skinAudit": "3/3 PASS",
+    "networkContract": "PASS",
+    "pageErrors": 0,
+    "nodeCheck": "PASS"
+  },
+  "limitations": [
+    "No two-client relay; network serialization/sanitization passed and network files are unchanged.",
+    "Full reconstructed roster gate had 11 unrelated failures; Axiom had zero.",
+    "Canonical publication pending post-merge byte check."
+  ],
+  "preserved": [
+    "PR239 FIX_NOT_APPROVED source poses",
+    "PR194 ability candidates",
+    "PR231 NanoGM workshop",
+    "all rejected Axiom sources",
+    "legacy runtime atlases"
+  ]
+}
