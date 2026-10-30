@@ -66,6 +66,7 @@ function aidOnRing(rx, ry, a){ return {x:Math.cos(a)*rx*1.18, y:Math.sin(a)*ry*0
 
 // ---------------- Armado por arena ----------------
 function aidBuild(){
+  if(typeof arenaWorldPack==='function') arenaWorldPack(currentArena);
   aidProps = []; aidDecals = []; aidSolids = []; aidLights = []; aidKelp = [];
   const A = currentArena;
   if(A==="infernal") aidBuildInfernal();
@@ -132,7 +133,8 @@ function aidBuildBosque(){
   [0.3, 1.2, 2.1, 3.0, 3.9, 4.8, 5.6].forEach((a,i)=>{ const p = aidOnRing(730+(i%2)*60, 730+(i%2)*60, a); aidProp(aidArtAncientTree(i%3), p.x, p.y, {solid:26, flip:i%2===1, battlefield:i%3===0?"dead-tree":i%2?"pine":"oak"}); });
   // ruinas: arco caído (pilares sólidos) y estatuas celtas
   aidProp(aidArtRuinArch(), -560, 250, {passThrough:true, battlefield:"arch"}); aidSolids.push({x:-560-50, y:252, r:14}, {x:-560+52, y:252, r:14});
-  aidProp(aidArtRuinArch(), 540, -300, {flip:true, passThrough:true, battlefield:"arch"}); // arco: se pasa por la abertura, las patas chocan aidSolids.push({x:540-52, y:-298, r:14}, {x:540+50, y:-298, r:14});
+  aidProp(aidArtRuinArch(), 540, -300, {flip:true, passThrough:true, battlefield:"arch"}); // se pasa por la abertura; las patas chocan
+  aidSolids.push({x:540-52, y:-298, r:14}, {x:540+50, y:-298, r:14});
   [[-300,-420],[330,430],[-760,-60]].forEach(([x,y])=>aidProp(aidArtCelticStatue(), x, y, {solid:14, light:{r:60, rgb:"140,230,110", a:0.28, dy:-38}}));
   // arroyo con puente natural de raíces (decorativo, se cruza caminando)
   // (el arroyo con vado ahora va horneado en el suelo: js/arenas/bosque/bos-selva.js)

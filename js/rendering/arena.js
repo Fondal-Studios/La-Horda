@@ -147,9 +147,9 @@ function aidDrawLights(now){
   if(!aidLights.length) return;
   ctx.save();
   ctx.globalCompositeOperation = "lighter";
-  const rich = vfxLoad > 0.8; // con carga, solo las luces principales (braseros, altar, antorchas)
+  const reduced = vfxLoad > 0.8; // con carga, solo las luces principales (braseros, altar, antorchas)
   for(const L of aidLights){
-    if(!rich && L.a < 0.4) continue;
+    if(reduced && L.a < 0.4) continue;
     if(!inView(L.x, L.y, L.r)) continue;
     const f = 1 - L.flick*0.5 + L.flick*0.5*Math.sin(now*(L.torch?11:3.2)+L.ph)*Math.sin(now*1.7+L.ph*2);
     ctx.globalAlpha = Math.max(0, L.a*f);
@@ -195,6 +195,7 @@ function aidPushTall(){
 }
 function aidDrawTall(it, now){
   if(it.bfStructure){const s=it.bfStructure;if(s.alive){if(s.kind==="tower")lanesDrawTower(s,now/1000);else lanesDrawCrystal(s);}return;}
+  if(typeof arenaWorldDrawProp==='function' && arenaWorldDrawProp(it,now)) return;
   if(it.battlefield&&battlefieldDrawProp(it))return;
   if(it.brk){ drawBreakable(it.brk, now); return; }
   if(it.arena){ arenaHook("drawTall", it, now); return; }
@@ -431,6 +432,7 @@ function octPath(R){
 }
 
 function drawDeadTree(t){
+  if(currentArena==='hielo' && typeof arenaWorldDraw==='function' && arenaWorldDraw('hielo',t.seed%2?'tree':'pine',t.x,t.y,Math.max(100,t.h*1.5),{flip:t.lean<0})) return;
   const now = performance.now()/1000;
   ctx.save();
   ctx.translate(t.x, t.y);

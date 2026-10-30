@@ -1,0 +1,206 @@
+{
+  "checks": [
+    {
+      "name": "no biome atlas downloaded on title",
+      "ok": true,
+      "detail": [
+        "hielo.png",
+        "bosque.png"
+      ]
+    },
+    {
+      "name": "hielo all 16 frames contain visible art",
+      "ok": true,
+      "detail": {
+        "pillar": {
+          "pixels": 38554,
+          "hash": 2968731988
+        },
+        "shards": {
+          "pixels": 37702,
+          "hash": 2978960407
+        },
+        "rock": {
+          "pixels": 71194,
+          "hash": 3442912486
+        },
+        "cluster": {
+          "pixels": 60912,
+          "hash": 2520162083
+        },
+        "tree": {
+          "pixels": 47951,
+          "hash": 479568293
+        },
+        "pine": {
+          "pixels": 39209,
+          "hash": 4077977490
+        },
+        "statue": {
+          "pixels": 37106,
+          "hash": 5858303
+        },
+        "gate": {
+          "pixels": 63612,
+          "hash": 3746292141
+        },
+        "fire0": {
+          "pixels": 36121,
+          "hash": 2101797257
+        },
+        "fire1": {
+          "pixels": 35280,
+          "hash": 1639302928
+        },
+        "fire2": {
+          "pixels": 34822,
+          "hash": 2247223704
+        },
+        "fire3": {
+          "pixels": 35757,
+          "hash": 3520806044
+        },
+        "off": {
+          "pixels": 29098,
+          "hash": 1930341226
+        },
+        "low": {
+          "pixels": 29461,
+          "hash": 1313997838
+        },
+        "ignite0": {
+          "pixels": 30371,
+          "hash": 2749264835
+        },
+        "ignite1": {
+          "pixels": 32385,
+          "hash": 284892869
+        }
+      }
+    },
+    {
+      "name": "hielo render does not change events, geometry, hp or particles",
+      "ok": true
+    },
+    {
+      "name": "hielo host state roundtrip through guest handlers",
+      "ok": true
+    },
+    {
+      "name": "hielo four distinct animation frames",
+      "ok": true
+    },
+    {
+      "name": "bosque all 16 frames contain visible art",
+      "ok": true,
+      "detail": {
+        "oak": {
+          "pixels": 55284,
+          "hash": 2399525106
+        },
+        "magic": {
+          "pixels": 56549,
+          "hash": 4257919253
+        },
+        "ancient": {
+          "pixels": 44816,
+          "hash": 2938235799
+        },
+        "rock": {
+          "pixels": 62482,
+          "hash": 2863964119
+        },
+        "ctrl": {
+          "pixels": 43740,
+          "hash": 99534374
+        },
+        "arming": {
+          "pixels": 45576,
+          "hash": 1786882801
+        },
+        "active": {
+          "pixels": 45720,
+          "hash": 4201339114
+        },
+        "corrupt": {
+          "pixels": 48816,
+          "hash": 628047680
+        },
+        "sealed": {
+          "pixels": 45747,
+          "hash": 4068785847
+        },
+        "pulse0": {
+          "pixels": 45657,
+          "hash": 3042352541
+        },
+        "pulse1": {
+          "pixels": 46404,
+          "hash": 3868395823
+        },
+        "pulse2": {
+          "pixels": 46440,
+          "hash": 1380389335
+        },
+        "bush0": {
+          "pixels": 86580,
+          "hash": 57627540
+        },
+        "bush1": {
+          "pixels": 91477,
+          "hash": 1924393280
+        },
+        "bush2": {
+          "pixels": 86273,
+          "hash": 4226012929
+        },
+        "bush3": {
+          "pixels": 84503,
+          "hash": 3406229330
+        }
+      }
+    },
+    {
+      "name": "bosque render does not change events, geometry, hp or particles",
+      "ok": true
+    },
+    {
+      "name": "bosque host state roundtrip through guest handlers",
+      "ok": true
+    },
+    {
+      "name": "bosque four distinct animation frames",
+      "ok": true
+    },
+    {
+      "name": "east arch has solid feet and an open passage",
+      "ok": true
+    },
+    {
+      "name": "only the two active biome atlases requested",
+      "ok": true,
+      "detail": [
+        "hielo.png",
+        "bosque.png"
+      ]
+    },
+    {
+      "name": "missing atlas falls back to old renderer",
+      "ok": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "requests": [
+    "hielo.png",
+    "bosque.png"
+  ],
+  "renderMs": {
+    "hielo": 8.340000000037254,
+    "bosque": 3.9950000000186265
+  }
+}

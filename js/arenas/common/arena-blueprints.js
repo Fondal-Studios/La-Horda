@@ -70,9 +70,9 @@ const ARENA_BLUEPRINTS = {
   bosque:{
     variants:{layouts:"4 trazados de menhires × espejo por semilla (Pesadilla/Infierno, Horda Infinita)", other:["qué 4 de los 8 menhires llevan runa (2 juegos por semilla)"]},
     fantasy:"Ruinas célticas de un bosque sagrado que ahora caza.",
-    decision:"Usar las runas de los menhires en el momento justo o guardarlas para la emboscada.",
+    decision:"Qué runa contener primero mientras la corrupción crece y la maleza prepara emboscadas.",
     biome:"bosque en ruinas", navigation:"claros entre menhires; maleza que oculta emboscadas",
-    primary:{name:"Runas de los menhires", rule:"Se cargan solas; activadas, las raíces atrapan y lastiman a la horda cercana."},
+    primary:{name:"Corrupción de los menhires", rule:"Las runas despiertan solas, refuerzan a la horda y deben contenerse manteniendo la acción junto a ellas. Al sellarlas, sus raíces castigan a los enemigos cercanos."},
     secondary:[{name:"Emboscadas", rule:"La maleza tiembla y salta una jauría; el fuego la quema antes."},{name:"Regeneración enemiga", rule:"La horda se cura: hay que concentrar el daño."}],
     hazard:{name:"Niebla del Olvido", effect:"Reduce la visión a distancia", telegraph:"niebla visible que se espesa en los bordes"},
     objectives:[{id:"survive", text:"Sobreviví 10 niveles."},{id:"boss", text:"Vencé al Guardián Ancestral y recuperá el PRIMER CRISTAL."}],
@@ -83,7 +83,7 @@ const ARENA_BLUEPRINTS = {
     loot:{focus:"sets de Alba y Cazador"},
     tutorial:{steps:[{id:"rune", say:"Esa runa brilla: mantené ✚ junto a ella.", done:"rune"},{id:"ambush", say:"¡La maleza tiembla! Alejate o quemala.", done:"ambush"}]},
     geometry:{solids:"aidVisualSolids", notes:"menhires, árboles y arcos sólidos (aidResolveCircles)"},
-    multiplayer:"cargas de runas y emboscadas en bosNetState()",
+    multiplayer:"estados, progreso y temporizadores de runas y emboscadas en bosNetState()",
     code:"js/arenas/bosque/bos-ruins.js (ARENA_EXT)", status:{grade:"PASS", why:"identidad jugable propia; jefe usa las runas"}
   },
   micelial:{

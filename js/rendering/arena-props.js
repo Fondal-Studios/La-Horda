@@ -19,6 +19,7 @@ function aidArt(key, w, h, draw){
   const c = document.createElement("canvas"); c.width = w; c.height = h;
   const g = c.getContext("2d"); g.imageSmoothingEnabled = false;
   draw(g, w, h);
+  c._arenaArtKey = key; // stable semantic key for authored arena sprites
   AID_ART[key] = c;
   return c;
 }
