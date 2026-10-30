@@ -1,0 +1,31 @@
+{
+  "base_main": "6edcd9bce3d2d3cc77578e6d13a394d05b9c5eb6",
+  "currentRuntime": {
+    "base": {
+      "path": "assets/sprites/champions/axiom/v2/atlas.png",
+      "sha256": "6ba409c4f32a128c3bf70fdd961eb2df6b71f5cd07a93e4325bcda078f2e67a9",
+      "registration": "champPackLoadAtlas axiom 88x99 cols8"
+    },
+    "sistema": {
+      "path": "assets/sprites/champions/axiom/skins/sistema/atlas.png",
+      "sha256": "cf4da5e32d36e1f609c77c2246b7f59ac2d8369d03e34dc2276dfb38eb92fb5e",
+      "registration": "skin_sistema 69x64 cols8"
+    },
+    "codigo_ambar": {
+      "path": "assets/sprites/champions/axiom/skins/axiom_piedra/atlas.png",
+      "sha256": "d2a968e78bf0885b9879ad8252fa12813f108cd4b2d3778e3995db5bcdb6350f",
+      "registration": "authoredPacks axiom_piedra 112x112 cols8"
+    },
+    "fallback": [
+      "dir-down.png",
+      "dir-right.png",
+      "dir-up.png"
+    ],
+    "consumer": [
+      "js/rendering/champion-sprites.js: drawAxiomReal",
+      "js/rendering/entities.js: axiom branch"
+    ]
+  },
+  "abilitiesCandidate": "PR194/merged historical workshop contains ability candidates only; not a body or complete skin kit",
+  "scope": "Read-only audit; current runtime and mechanics unchanged."
+}
