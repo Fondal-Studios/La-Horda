@@ -79,7 +79,7 @@ def build(manifest, output):
         p[p[:, :, 3] == 0] = 0
         foot = frame.height - 1 if i >= 32 or i in manifest.get('bottomAnchorFrames', []) else redraw.feet_row(p[:, :, 3] > 0)
         x, y = (cell - frame.width) // 2, baseline - foot
-        if x < 1 or y < 1 or x + frame.width >= cell or y + frame.height >= cell:
+        if x < 1 or y < 1 or x + frame.width >= cell or y + frame.height > cell:
             raise ValueError(f'pose {i}: would clip at uniform scale')
         atlas.paste(Image.fromarray(p), ((i % 4) * cell + x, (i // 4) * cell + y))
     output = Path(output)
