@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "checkedAtUtc": "2026-10-30T00:53:00Z",
+  "canonicalBase": "https://fondalstudios.com/la-horda/",
+  "status": "NOT_CONFIRMED",
+  "assets": [
+    {
+      "path": "assets/sprites/arenas/world-v1/bosque.png",
+      "expectedSha256": "6742728465e9d9a668be9883165d6636c3f5289d2ef44ebf707f8c02d53f0386",
+      "canonicalStatus": 404
+    },
+    {
+      "path": "assets/sprites/arenas/world-v1/hielo.png",
+      "expectedSha256": "0c9e25dc2adf6f623b14fda5f70768a30223bee16bb89fda754c3b10fdf7ab99",
+      "canonicalStatus": 404
+    },
+    {
+      "path": "js/rendering/arena-world-art.js",
+      "expectedSha256": "4916d5502a8dd93ff80b95b343bf382e285aff1f8664c7444f340a1e89c76d5a",
+      "canonicalStatus": 404
+    }
+  ],
+  "note": "Repository integration is complete; canonical hosting returned 404 for all three new paths. No infrastructure changed."
+}
