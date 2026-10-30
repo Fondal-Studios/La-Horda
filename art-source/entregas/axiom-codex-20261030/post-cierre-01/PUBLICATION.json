@@ -1,0 +1,48 @@
+{
+  "canonicalBase": "https://fondalstudios.com/la-horda/jugar/",
+  "status": "NOT_CONFIRMED",
+  "assets": [
+    {
+      "path": "assets/sprites/champions/axiom/codex-v1/atlas.png",
+      "http": 404,
+      "expectedSha256": "ab5e2d3e1739abfec2a159efa789e51877ad1b666b10aa8b0312f3aa4df77645"
+    },
+    {
+      "path": "assets/sprites/champions/axiom/skins/sistema/codex-v1/atlas.png",
+      "http": 404,
+      "expectedSha256": "326adacaa620a24aceef4d2972260c04911a2c417dedccdac1b0f5958574da3c"
+    },
+    {
+      "path": "assets/sprites/champions/axiom/skins/axiom_piedra/codex-v1/atlas.png",
+      "http": 404,
+      "expectedSha256": "ea75d71095d0874b06b1ff49f4dd1acd41df64a00425b2713a7a979d4d4be1b5"
+    }
+  ],
+  "javascript": [
+    {
+      "path": "js/assets/champion-sprites.js",
+      "http": 200,
+      "publicSha256": "ab671f3954d6e284e0d4e71b1961bd0ebd81e6c885ccffd04c2bf3234702a069",
+      "expectedSha256": "f54273c8592bea5727dbab33b7c45604ab9f7a705148c1923d8c6a96daa34d76"
+    },
+    {
+      "path": "js/assets/set-skins-meta.js",
+      "http": 200,
+      "publicSha256": "888baf3c5ab909dab1323492b264399e606425d945fce991e71da51d5bae98f4",
+      "expectedSha256": "ef2d0d6f2721a9e5766268efb973867272279a4a468e0a8062d66fee51b7fe7e"
+    },
+    {
+      "path": "js/assets/unique-skins-meta.js",
+      "http": 200,
+      "publicSha256": "995b78da1b17304ed96da27fa043ff8e1bec1808230b79546d90018028b0a7a2",
+      "expectedSha256": "162bbeb9996698506752715fdaf7422f9bc6dc4b7b1e583b7e7fdc6e4f8543b6"
+    },
+    {
+      "path": "js/data/champion-art-normalize.js",
+      "http": 200,
+      "publicSha256": "3db69a19c262c34315a3db68e447ac6c1cef562502a7aa91d89fdbe616d4e194",
+      "expectedSha256": "ba9133fa119de87ff538d7f322ce08075cb3274e0c7aaf870b548080babf4185"
+    }
+  ],
+  "infrastructureChanged": false
+}
