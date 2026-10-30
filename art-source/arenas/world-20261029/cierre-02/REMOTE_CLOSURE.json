@@ -1,11 +1,13 @@
 {
   "schema": 1,
-  "status": "LOCAL_VALIDATED_PENDING_REMOTE",
+  "status": "REMOTE_VALIDATED_CANDIDATE_NOT_INTEGRATED",
   "component": "A-ARENA-ruinas-gelida/world-v1",
   "base_main": "6edcd9bce3d2d3cc77578e6d13a394d05b9c5eb6",
   "workshop_pr": 242,
   "workshop_branch": "art/arena-world-events-20261029",
+  "remote_candidate_commit": "f367a2047a9de56c7238348d62459543dbd44968",
+  "remote_candidate_tree": "40790e92c1f73c1037ed1c833cae7ea5796728a3",
   "integrated_main": false,
   "publication": "NOT_CHECKED_NOT_INTEGRATED",
-  "next": "Upload closure02, then create a clean integration branch from fresh main with Candidate03 only."
+  "next": "Create a clean integration branch from fresh main with Candidate03 only; keep PR 242 draft/FIX as historical workshop."
 }
