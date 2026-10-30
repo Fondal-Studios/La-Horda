@@ -18,7 +18,10 @@ document.addEventListener("click", startMusic, {once:true, capture:true});
 document.getElementById("title-continue-btn").addEventListener("click", ()=>{
   startMusic();
   // CUENTAS: sin sesión recordada aparece la pantalla Entrar / Crear cuenta / Invitado (js/net/account.js)
-  if(typeof accountGate==="function" && accountGate(titleContinue)) return;
+  // Vista previa independiente: entrar sin cuentas ni servidor de relay.
+  // Solo se activa explícitamente con ?preview=1; el juego normal conserva su flujo.
+  const offlinePreview = new URLSearchParams(location.search).get("preview") === "1";
+  if(!offlinePreview && typeof accountGate==="function" && accountGate(titleContinue)) return;
   titleContinue();
 });
 function titleContinue(){
