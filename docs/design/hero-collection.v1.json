@@ -1,0 +1,3445 @@
+{
+  "schemaVersion": 1,
+  "status": "proposal",
+  "runtimeEnabled": false,
+  "sourceCommit": "6edcd9bce3d2d3cc77578e6d13a394d05b9c5eb6",
+  "categories": [
+    {
+      "id": "iniciales",
+      "label": "Iniciales",
+      "description": "Diez opciones de inicio y reclutamiento temprano."
+    },
+    {
+      "id": "caceria",
+      "label": "Cacería",
+      "description": "Bajas y jefes acumulados."
+    },
+    {
+      "id": "arenas",
+      "label": "Conquista de arenas",
+      "description": "Avance y supervivencia en territorios concretos."
+    },
+    {
+      "id": "maestria",
+      "label": "Maestría",
+      "description": "Dominar un héroe abre otro estilo."
+    },
+    {
+      "id": "vinculos",
+      "label": "Vínculos",
+      "description": "Encuentros al completar una arena con un héroe relacionado."
+    },
+    {
+      "id": "legado",
+      "label": "Legado",
+      "description": "Final de campaña y metas largas."
+    },
+    {
+      "id": "hazanas",
+      "label": "Hazañas",
+      "description": "Retos de habilidad, cooperativo y otros modos."
+    },
+    {
+      "id": "fundadores",
+      "label": "Fundadores",
+      "description": "Concesiones especiales fuera de la colección pública."
+    }
+  ],
+  "starter": {
+    "pool": [
+      "tanque",
+      "guerrero",
+      "mago",
+      "soporte",
+      "cazadora",
+      "segador",
+      "nigromante",
+      "brasa",
+      "maura",
+      "dariel"
+    ],
+    "initialChoices": 1,
+    "recruitWinMilestones": [
+      1,
+      2,
+      3,
+      5,
+      7,
+      10,
+      13,
+      16,
+      20
+    ],
+    "choiceRestrictedToUnowned": true,
+    "recruitCurrency": "none"
+  },
+  "publicHeroCount": 41,
+  "founderHeroCount": 2,
+  "arenaNames": {
+    "ciudad": "Ciudad Maldita",
+    "fortaleza": "Fábrica Sin Fin",
+    "bosque": "Ruinas Élficas",
+    "micelial": "Reino Fúngico",
+    "hielo": "Arena Gélida",
+    "acuatica": "Arena Acuática",
+    "laberinto": "Laberinto",
+    "abismo": "Abismo",
+    "minas": "Minas Profundas",
+    "infernal": "Arena Infernal"
+  },
+  "metricContract": {
+    "kills": {
+      "shape": "total",
+      "existingSource": "save.quests.stats.kills",
+      "readiness": "available"
+    },
+    "bosses": {
+      "shape": "total",
+      "existingSource": "save.quests.stats.bosses",
+      "readiness": "needs_mode_filter"
+    },
+    "subbosses": {
+      "shape": "total",
+      "existingSource": "save.quests.stats.subjefes",
+      "readiness": "needs_mode_filter"
+    },
+    "arenaWins": {
+      "shape": "arena",
+      "existingSource": "save.quests.stats.byArena[arena].wins",
+      "readiness": "needs_mode_filter"
+    },
+    "arenaLevelCompleted": {
+      "shape": "arena",
+      "existingSource": "Nuevo evento de nivel completado; bestLevel actual mide nivel alcanzado",
+      "readiness": "new_event"
+    },
+    "heroLevel": {
+      "shape": "hero",
+      "existingSource": "save.champions[hero].level",
+      "readiness": "available"
+    },
+    "heroWins": {
+      "shape": "hero",
+      "existingSource": "save.quests.stats.byChamp[hero].wins",
+      "readiness": "needs_mode_filter"
+    },
+    "heroArenaWins": {
+      "shape": "heroArena",
+      "existingSource": "Nuevo agregado héroe + arena; no inferirlo de dos totales separados",
+      "readiness": "new_event"
+    },
+    "campaignArenas": {
+      "shape": "total",
+      "existingSource": "save.arenasCleared, contrastado con el modo campaña",
+      "readiness": "needs_mode_filter"
+    },
+    "distinctHeroesArena": {
+      "shape": "arena",
+      "existingSource": "Conjunto de héroes con victoria certificada por arena",
+      "readiness": "new_event"
+    },
+    "difficultyArenas": {
+      "shape": "difficulty",
+      "existingSource": "save.diffCleared[difficulty], valores true y arenas distintas",
+      "readiness": "needs_server_difficulty"
+    },
+    "coopWins": {
+      "shape": "total",
+      "existingSource": "save.quests.stats.coopWins",
+      "readiness": "needs_mode_filter"
+    },
+    "soloArenaWins": {
+      "shape": "arena",
+      "existingSource": "Nuevo agregado de victorias de un solo humano por arena",
+      "readiness": "new_event"
+    },
+    "divinaWins": {
+      "shape": "total",
+      "existingSource": "save.quests.stats.divinaWins",
+      "readiness": "available"
+    },
+    "deathlessWins": {
+      "shape": "total",
+      "existingSource": "save.quests.stats.deathless",
+      "readiness": "needs_mode_filter"
+    },
+    "endlessRoundCompleted": {
+      "shape": "total",
+      "existingSource": "Nuevo evento de ronda completada; no usar EN.round como prueba de completitud",
+      "readiness": "new_event"
+    }
+  },
+  "rules": {
+    "heroPurchase": "disabled_when_activated",
+    "heroPower": "category_does_not_change_stats",
+    "permanentUnlocks": true,
+    "lootboxes": false,
+    "challengeExpiry": false,
+    "retroactive": "only_evidence_available",
+    "preserveOwnedHeroes": true,
+    "preserveOwnedSkins": true,
+    "foundersCountTowardCompletion": false
+  },
+  "heroes": [
+    {
+      "id": "tanque",
+      "name": "Aldric",
+      "role": "tanque",
+      "category": "iniciales",
+      "challenge": "Elegí 1 de los 10 al comenzar; los demás con elecciones ganadas por victorias.",
+      "requirement": {
+        "type": "starter_choice"
+      },
+      "designReason": "Tanque frontal para aprender."
+    },
+    {
+      "id": "guerrero",
+      "name": "Kael",
+      "role": "asesino",
+      "category": "iniciales",
+      "challenge": "Elegí 1 de los 10 al comenzar; los demás con elecciones ganadas por victorias.",
+      "requirement": {
+        "type": "starter_choice"
+      },
+      "designReason": "Asesino de daño físico."
+    },
+    {
+      "id": "mago",
+      "name": "Thalen",
+      "role": "mago",
+      "category": "iniciales",
+      "challenge": "Elegí 1 de los 10 al comenzar; los demás con elecciones ganadas por victorias.",
+      "requirement": {
+        "type": "starter_choice"
+      },
+      "designReason": "Mago elemental de distancia."
+    },
+    {
+      "id": "soporte",
+      "name": "Elyra",
+      "role": "soporte",
+      "category": "iniciales",
+      "challenge": "Elegí 1 de los 10 al comenzar; los demás con elecciones ganadas por victorias.",
+      "requirement": {
+        "type": "starter_choice"
+      },
+      "designReason": "Sanadora y apoyo de equipo."
+    },
+    {
+      "id": "cazadora",
+      "name": "Sylva (Cazadora)",
+      "role": "asesino",
+      "category": "iniciales",
+      "challenge": "Elegí 1 de los 10 al comenzar; los demás con elecciones ganadas por victorias.",
+      "requirement": {
+        "type": "starter_choice"
+      },
+      "designReason": "Tiradora móvil."
+    },
+    {
+      "id": "segador",
+      "name": "Segador",
+      "role": "tanque",
+      "category": "iniciales",
+      "challenge": "Elegí 1 de los 10 al comenzar; los demás con elecciones ganadas por victorias.",
+      "requirement": {
+        "type": "starter_choice"
+      },
+      "designReason": "Tanque ofensivo de furia."
+    },
+    {
+      "id": "nigromante",
+      "name": "Nigromante",
+      "role": "mago",
+      "category": "iniciales",
+      "challenge": "Elegí 1 de los 10 al comenzar; los demás con elecciones ganadas por victorias.",
+      "requirement": {
+        "type": "starter_choice"
+      },
+      "designReason": "Invocador para jugar con criaturas."
+    },
+    {
+      "id": "brasa",
+      "name": "Brasa",
+      "role": "mago",
+      "category": "iniciales",
+      "challenge": "Elegí 1 de los 10 al comenzar; los demás con elecciones ganadas por victorias.",
+      "requirement": {
+        "type": "starter_choice"
+      },
+      "designReason": "Ingeniera de torretas."
+    },
+    {
+      "id": "maura",
+      "name": "Maura",
+      "role": "tanque",
+      "category": "iniciales",
+      "challenge": "Elegí 1 de los 10 al comenzar; los demás con elecciones ganadas por victorias.",
+      "requirement": {
+        "type": "starter_choice"
+      },
+      "designReason": "Protectora de zonas y caminos."
+    },
+    {
+      "id": "dariel",
+      "name": "Dáriel",
+      "role": "soporte",
+      "category": "iniciales",
+      "challenge": "Elegí 1 de los 10 al comenzar; los demás con elecciones ganadas por victorias.",
+      "requirement": {
+        "type": "starter_choice"
+      },
+      "designReason": "Apoyo musical con ritmo propio."
+    },
+    {
+      "id": "musashi",
+      "name": "Musashi",
+      "role": "asesino",
+      "category": "caceria",
+      "challenge": "Derrotá 500 monstruos en total.",
+      "requirement": {
+        "type": "metric",
+        "key": "kills",
+        "target": 500
+      },
+      "designReason": "Progreso acumulativo entre partidas; no exige rachas ni un héroe concreto."
+    },
+    {
+      "id": "renko",
+      "name": "Renko",
+      "role": "tanque",
+      "category": "caceria",
+      "challenge": "Derrotá 10 jefes finales de arena.",
+      "requirement": {
+        "type": "metric",
+        "key": "bosses",
+        "target": 10
+      },
+      "designReason": "Progreso acumulativo entre partidas; no exige rachas ni un héroe concreto."
+    },
+    {
+      "id": "orsa",
+      "name": "Orsa",
+      "role": "asesino",
+      "category": "caceria",
+      "challenge": "Derrotá 25 subjefes.",
+      "requirement": {
+        "type": "metric",
+        "key": "subbosses",
+        "target": 25
+      },
+      "designReason": "Progreso acumulativo entre partidas; no exige rachas ni un héroe concreto."
+    },
+    {
+      "id": "morveth",
+      "name": "Morveth",
+      "role": "mago",
+      "category": "caceria",
+      "challenge": "Derrotá 3.000 monstruos en total.",
+      "requirement": {
+        "type": "metric",
+        "key": "kills",
+        "target": 3000
+      },
+      "designReason": "Progreso acumulativo entre partidas; no exige rachas ni un héroe concreto."
+    },
+    {
+      "id": "vesper",
+      "name": "Vesper",
+      "role": "asesino",
+      "category": "arenas",
+      "challenge": "Completá Ciudad Maldita en campaña.",
+      "requirement": {
+        "type": "metric",
+        "key": "arenaWins",
+        "target": 1,
+        "arena": "ciudad"
+      },
+      "designReason": "Un guardián asociado al territorio da una recompensa clara por avanzar."
+    },
+    {
+      "id": "brakk",
+      "name": "Brakk",
+      "role": "tanque",
+      "category": "arenas",
+      "challenge": "Completá Fábrica Sin Fin en campaña.",
+      "requirement": {
+        "type": "metric",
+        "key": "arenaWins",
+        "target": 1,
+        "arena": "fortaleza"
+      },
+      "designReason": "Un guardián asociado al territorio da una recompensa clara por avanzar."
+    },
+    {
+      "id": "aelith",
+      "name": "Aelith",
+      "role": "mago",
+      "category": "arenas",
+      "challenge": "Completá Ruinas Élficas en campaña.",
+      "requirement": {
+        "type": "metric",
+        "key": "arenaWins",
+        "target": 1,
+        "arena": "bosque"
+      },
+      "designReason": "Un guardián asociado al territorio da una recompensa clara por avanzar."
+    },
+    {
+      "id": "morwen",
+      "name": "Morwen",
+      "role": "mago",
+      "category": "arenas",
+      "challenge": "Completá Reino Fúngico en campaña.",
+      "requirement": {
+        "type": "metric",
+        "key": "arenaWins",
+        "target": 1,
+        "arena": "micelial"
+      },
+      "designReason": "Un guardián asociado al territorio da una recompensa clara por avanzar."
+    },
+    {
+      "id": "baltra",
+      "name": "Baltra",
+      "role": "tanque",
+      "category": "arenas",
+      "challenge": "Completá Arena Acuática en campaña.",
+      "requirement": {
+        "type": "metric",
+        "key": "arenaWins",
+        "target": 1,
+        "arena": "acuatica"
+      },
+      "designReason": "Un guardián asociado al territorio da una recompensa clara por avanzar."
+    },
+    {
+      "id": "iria",
+      "name": "Iria",
+      "role": "mago",
+      "category": "arenas",
+      "challenge": "Completá Laberinto en campaña.",
+      "requirement": {
+        "type": "metric",
+        "key": "arenaWins",
+        "target": 1,
+        "arena": "laberinto"
+      },
+      "designReason": "Un guardián asociado al territorio da una recompensa clara por avanzar."
+    },
+    {
+      "id": "khepri",
+      "name": "Khepri",
+      "role": "asesino",
+      "category": "arenas",
+      "challenge": "Completá Abismo en campaña.",
+      "requirement": {
+        "type": "metric",
+        "key": "arenaWins",
+        "target": 1,
+        "arena": "abismo"
+      },
+      "designReason": "Un guardián asociado al territorio da una recompensa clara por avanzar."
+    },
+    {
+      "id": "farolero",
+      "name": "Farolero",
+      "role": "soporte",
+      "category": "arenas",
+      "challenge": "Completá Minas Profundas en campaña.",
+      "requirement": {
+        "type": "metric",
+        "key": "arenaWins",
+        "target": 1,
+        "arena": "minas"
+      },
+      "designReason": "Un guardián asociado al territorio da una recompensa clara por avanzar."
+    },
+    {
+      "id": "vhal",
+      "name": "Vhal",
+      "role": "mago",
+      "category": "arenas",
+      "challenge": "Superá el nivel de arena 8 de la Gélida en campaña.",
+      "requirement": {
+        "type": "metric",
+        "key": "arenaLevelCompleted",
+        "target": 8,
+        "arena": "hielo"
+      },
+      "designReason": "Cuenta el nivel terminado, no el nivel del personaje ni solo entrar a la ronda."
+    },
+    {
+      "id": "zahra",
+      "name": "Zahra",
+      "role": "mago",
+      "category": "arenas",
+      "challenge": "Superá el nivel de arena 7 de la Infernal en campaña.",
+      "requirement": {
+        "type": "metric",
+        "key": "arenaLevelCompleted",
+        "target": 7,
+        "arena": "infernal"
+      },
+      "designReason": "El guante de los hornos se convierte en la recompensa de sobrevivir al fuego infernal."
+    },
+    {
+      "id": "axiom",
+      "name": "Axiom",
+      "role": "mago",
+      "category": "maestria",
+      "challenge": "Llevá a Thalen a nivel 20.",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "mago"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 20,
+            "hero": "mago"
+          }
+        ]
+      },
+      "designReason": "Dominar un estilo permite descubrir otro; no implica parentesco canónico."
+    },
+    {
+      "id": "profeta",
+      "name": "Profeta",
+      "role": "soporte",
+      "category": "maestria",
+      "challenge": "Ganá 5 arenas de campaña con Elyra.",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "soporte"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 5,
+            "hero": "soporte"
+          }
+        ]
+      },
+      "designReason": "Dominar un estilo permite descubrir otro; no implica parentesco canónico."
+    },
+    {
+      "id": "ilkan",
+      "name": "Ilkan",
+      "role": "asesino",
+      "category": "maestria",
+      "challenge": "Llevá al Segador a nivel 25.",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "segador"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 25,
+            "hero": "segador"
+          }
+        ]
+      },
+      "designReason": "Dominar un estilo permite descubrir otro; no implica parentesco canónico."
+    },
+    {
+      "id": "tibor",
+      "name": "Tibor",
+      "role": "mago",
+      "category": "maestria",
+      "challenge": "Ganá 5 arenas de campaña con el Nigromante.",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "nigromante"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 5,
+            "hero": "nigromante"
+          }
+        ]
+      },
+      "designReason": "Dominar un estilo permite descubrir otro; no implica parentesco canónico."
+    },
+    {
+      "id": "eslabon",
+      "name": "Eslabón",
+      "role": "tanque",
+      "category": "vinculos",
+      "challenge": "Completá la Fábrica Sin Fin con Brasa.",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "brasa"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "brasa",
+            "arena": "fortaleza"
+          }
+        ]
+      },
+      "designReason": "Vínculo jugable propuesto; la misión y su escena de encuentro se escribirán al implementarlo."
+    },
+    {
+      "id": "ynara",
+      "name": "Ynara",
+      "role": "soporte",
+      "category": "vinculos",
+      "challenge": "Completá la Ciudad Maldita con Elyra.",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "soporte"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "soporte",
+            "arena": "ciudad"
+          }
+        ]
+      },
+      "designReason": "Vínculo jugable propuesto; la misión y su escena de encuentro se escribirán al implementarlo."
+    },
+    {
+      "id": "myla",
+      "name": "Myla",
+      "role": "mago",
+      "category": "vinculos",
+      "challenge": "Completá las Ruinas Élficas con Ynara.",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "ynara"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "ynara",
+            "arena": "bosque"
+          }
+        ]
+      },
+      "designReason": "Vínculo jugable propuesto; la misión y su escena de encuentro se escribirán al implementarlo."
+    },
+    {
+      "id": "solciju",
+      "name": "Solciju",
+      "role": "mago",
+      "category": "vinculos",
+      "challenge": "Completá el Reino Fúngico con Morwen.",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "morwen"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "morwen",
+            "arena": "micelial"
+          }
+        ]
+      },
+      "designReason": "Vínculo jugable propuesto; la misión y su escena de encuentro se escribirán al implementarlo."
+    },
+    {
+      "id": "nahir",
+      "name": "Nahir",
+      "role": "asesino",
+      "category": "vinculos",
+      "challenge": "Completá el Laberinto con Iria.",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "iria"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "iria",
+            "arena": "laberinto"
+          }
+        ]
+      },
+      "designReason": "Vínculo jugable propuesto; la misión y su escena de encuentro se escribirán al implementarlo."
+    },
+    {
+      "id": "sira",
+      "name": "Sira",
+      "role": "mago",
+      "category": "vinculos",
+      "challenge": "Completá el Laberinto con Nahir.",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "nahir"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "nahir",
+            "arena": "laberinto"
+          }
+        ]
+      },
+      "designReason": "Vínculo jugable propuesto; la misión y su escena de encuentro se escribirán al implementarlo."
+    },
+    {
+      "id": "aurelia",
+      "name": "Aurelia",
+      "role": "mago",
+      "category": "legado",
+      "challenge": "Completá las 10 arenas de la campaña.",
+      "requirement": {
+        "type": "metric",
+        "key": "campaignArenas",
+        "target": 10
+      },
+      "designReason": "Primera recompensa de final de campaña; no basta unirse directamente al jefe final."
+    },
+    {
+      "id": "libertador",
+      "name": "Libertador",
+      "role": "asesino",
+      "category": "legado",
+      "challenge": "Completá la campaña y vencé la Infernal con 3 héroes diferentes.",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "metric",
+            "key": "campaignArenas",
+            "target": 10
+          },
+          {
+            "type": "metric",
+            "key": "distinctHeroesArena",
+            "target": 3,
+            "arena": "infernal"
+          }
+        ]
+      },
+      "designReason": "Meta de colección que invita a usar más de un héroe."
+    },
+    {
+      "id": "oriel",
+      "name": "Oriel",
+      "role": "soporte",
+      "category": "legado",
+      "challenge": "Completá las 10 arenas de campaña en Pesadilla.",
+      "requirement": {
+        "type": "metric",
+        "key": "difficultyArenas",
+        "target": 10,
+        "difficulty": "pesadilla"
+      },
+      "designReason": "Meta larga posterior al primer final."
+    },
+    {
+      "id": "bront",
+      "name": "Bront",
+      "role": "tanque",
+      "category": "hazanas",
+      "challenge": "Ganá 3 arenas en cooperativo O 5 veces la Fábrica Sin Fin en solitario.",
+      "requirement": {
+        "type": "any",
+        "requirements": [
+          {
+            "type": "metric",
+            "key": "coopWins",
+            "target": 3
+          },
+          {
+            "type": "metric",
+            "key": "soloArenaWins",
+            "target": 5,
+            "arena": "fortaleza"
+          }
+        ]
+      },
+      "designReason": "El vínculo con el equipo tiene una alternativa para quien juega solo."
+    },
+    {
+      "id": "velmira",
+      "name": "Velmira",
+      "role": "soporte",
+      "category": "hazanas",
+      "challenge": "Ganá una partida en Arena Divina.",
+      "requirement": {
+        "type": "metric",
+        "key": "divinaWins",
+        "target": 1
+      },
+      "designReason": "Objetivo de postgame del modo existente."
+    },
+    {
+      "id": "saelis",
+      "name": "Saelis",
+      "role": "soporte",
+      "category": "hazanas",
+      "challenge": "Ganá 3 arenas de campaña sin caer durante cada partida.",
+      "requirement": {
+        "type": "metric",
+        "key": "deathlessWins",
+        "target": 3
+      },
+      "designReason": "No exige que sean consecutivas; las derrotas no reinician el contador."
+    },
+    {
+      "id": "veyra",
+      "name": "Veyra",
+      "role": "asesino",
+      "category": "hazanas",
+      "challenge": "Completá la ronda 10 de Horda Infinita.",
+      "requirement": {
+        "type": "metric",
+        "key": "endlessRoundCompleted",
+        "target": 10
+      },
+      "designReason": "Mide rondas completadas y conserva el mejor resultado."
+    },
+    {
+      "id": "nano_gm",
+      "name": "Nano GM",
+      "role": "mago",
+      "category": "fundadores",
+      "challenge": "Concesión de fundador por el servidor.",
+      "requirement": {
+        "type": "entitlement"
+      },
+      "designReason": "Fuera del porcentaje de colección y de cualquier cadena obligatoria."
+    },
+    {
+      "id": "facu_gm",
+      "name": "Facu GM",
+      "role": "asesino",
+      "category": "fundadores",
+      "challenge": "Concesión de fundador por el servidor.",
+      "requirement": {
+        "type": "entitlement"
+      },
+      "designReason": "Fuera del porcentaje de colección y de cualquier cadena obligatoria."
+    }
+  ],
+  "skins": [
+    {
+      "id": "aelith_alt1",
+      "champion": "aelith",
+      "name": "Aelith, Relojera del Vacío",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "aelith"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "aelith"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "aelith",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "aelith_croma",
+      "champion": "aelith",
+      "name": "Segundo Carmesí",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "aelith"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "aelith"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "quality_aelith",
+      "champion": "aelith",
+      "name": "Custodia del Mediodía",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "aelith"
+          },
+          {
+            "type": "set_complete",
+            "setId": "quality_aelith"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "axiom_piedra",
+      "champion": "axiom",
+      "name": "Axiom, Código Ámbar",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "axiom"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "axiom"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "axiom",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "sistema",
+      "champion": "axiom",
+      "name": "Axiom, Realidad Corrupta",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "axiom"
+          },
+          {
+            "type": "set_complete",
+            "setId": "sistema"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "baltra_croma",
+      "champion": "baltra",
+      "name": "Baltra — Ceniza del Alba",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "baltra"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "baltra"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "baltra_skin",
+      "champion": "baltra",
+      "name": "Campanero de la Catedral",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "baltra"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "baltra"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "baltra",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "exp_baltra",
+      "champion": "baltra",
+      "name": "Festival de los Ausentes",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "baltra"
+          },
+          {
+            "type": "set_complete",
+            "setId": "exp_baltra"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "brakk_alt1",
+      "champion": "brakk",
+      "name": "Brakk, Arquitecto Glacial",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "brakk"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "brakk"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "brakk",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "brakk_croma",
+      "champion": "brakk",
+      "name": "Acero de Tormenta",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "brakk"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "brakk"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "quality_brakk",
+      "champion": "brakk",
+      "name": "Ingeniero del Abismo",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "brakk"
+          },
+          {
+            "type": "set_complete",
+            "setId": "quality_brakk"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "brasa_abisal",
+      "champion": "brasa",
+      "name": "Brasa, Calderera de las Profundidades",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "brasa"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "brasa"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "brasa",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "ultimo_turno",
+      "champion": "brasa",
+      "name": "Maquinista de la Caldera",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "brasa"
+          },
+          {
+            "type": "set_complete",
+            "setId": "ultimo_turno"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "cazadora_escarcha",
+      "champion": "cazadora",
+      "name": "Sylva, Manto de Escarcha",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "cazadora"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "cazadora"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "cazadora",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "manada",
+      "champion": "cazadora",
+      "name": "Sylva, Flecha de Fuego",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "cazadora"
+          },
+          {
+            "type": "set_complete",
+            "setId": "manada"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "dariel_croma",
+      "champion": "dariel",
+      "name": "Dáriel — Ceniza del Alba",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "dariel"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "dariel"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "dariel_luthier",
+      "champion": "dariel",
+      "name": "Dáriel, Luthier de los Autómatas",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "dariel"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "dariel"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "dariel",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "dariel_skin",
+      "champion": "dariel",
+      "name": "Director del Réquiem",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "dariel"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "dariel"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "dariel",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "exp_dariel",
+      "champion": "dariel",
+      "name": "Carnaval de Medianoche",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "dariel"
+          },
+          {
+            "type": "set_complete",
+            "setId": "exp_dariel"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "eslabon_porcelana",
+      "champion": "eslabon",
+      "name": "Garren, Campanero de Porcelana",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "eslabon"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "eslabon"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "eslabon",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "juramento_roto",
+      "champion": "eslabon",
+      "name": "Carcelero de Puertas Abiertas",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "eslabon"
+          },
+          {
+            "type": "set_complete",
+            "setId": "juramento_roto"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "farolero_guardavia",
+      "champion": "farolero",
+      "name": "Farolero, Guardavía de Medianoche",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "farolero"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "farolero"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "farolero",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "lumbre_persistente",
+      "champion": "farolero",
+      "name": "Vigía de la Última Expedición",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "farolero"
+          },
+          {
+            "type": "set_complete",
+            "setId": "lumbre_persistente"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "nocturno",
+      "champion": "guerrero",
+      "name": "Asesino, Jack el Destripador (Caballero Carmesí)",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "guerrero"
+          },
+          {
+            "type": "set_complete",
+            "setId": "nocturno"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "legion",
+      "champion": "ilkan",
+      "name": "Ilkan, Caravana de Medianoche",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "ilkan"
+          },
+          {
+            "type": "set_complete",
+            "setId": "legion"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "hilo_umbral",
+      "champion": "iria",
+      "name": "Tejedora de los Tres Caminos",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "iria"
+          },
+          {
+            "type": "set_complete",
+            "setId": "hilo_umbral"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "libertador_ancestral",
+      "champion": "libertador",
+      "name": "El Libertador, Guardia del Monte",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "libertador"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "libertador"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "libertador",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "libertador_escarcha",
+      "champion": "libertador",
+      "name": "El Libertador, Casaca de los Andes",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "libertador"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "libertador"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "libertador",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "granadero",
+      "champion": "libertador",
+      "name": "Granadero del Alba",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "libertador"
+          },
+          {
+            "type": "set_complete",
+            "setId": "granadero"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "convergencia",
+      "champion": "mago",
+      "name": "Mago, Ángel Arcano (Arcángel Luminar)",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "mago"
+          },
+          {
+            "type": "set_complete",
+            "setId": "convergencia"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "maura_croma",
+      "champion": "maura",
+      "name": "Maura — Ceniza del Alba",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "maura"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "maura"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "maura_skin",
+      "champion": "maura",
+      "name": "Rosa del Luto",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "maura"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "maura"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "maura",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "exp_maura",
+      "champion": "maura",
+      "name": "Pastora Invernal",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "maura"
+          },
+          {
+            "type": "set_complete",
+            "setId": "exp_maura"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "morveth_alt1",
+      "champion": "morveth",
+      "name": "Morveth, Micelio Abisal",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "morveth"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "morveth"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "morveth",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "morveth_croma",
+      "champion": "morveth",
+      "name": "Musgo del Retorno",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "morveth"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "morveth"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "quality_morveth",
+      "champion": "morveth",
+      "name": "Huerto de Sal",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "morveth"
+          },
+          {
+            "type": "set_complete",
+            "setId": "quality_morveth"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "morwen_escarcha",
+      "champion": "morwen",
+      "name": "Morwen, Herbolaria de Escarcha",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "morwen"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "morwen"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "morwen",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "vidrio_negro",
+      "champion": "morwen",
+      "name": "Destiladora del Silencio",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "morwen"
+          },
+          {
+            "type": "set_complete",
+            "setId": "vidrio_negro"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "musashi_ancestral",
+      "champion": "musashi",
+      "name": "Musashi, Hoja de Jade",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "musashi"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "musashi"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "musashi",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "errante",
+      "champion": "musashi",
+      "name": "Musashi, Samurái Legendario",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "musashi"
+          },
+          {
+            "type": "set_complete",
+            "setId": "errante"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "myla_arandanos",
+      "champion": "myla",
+      "name": "Myla — Yogur de Arándanos",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "myla"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "myla"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "myla",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "merienda_magica",
+      "champion": "myla",
+      "name": "Myla — Pastelera de Medianoche",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "myla"
+          },
+          {
+            "type": "set_complete",
+            "setId": "merienda_magica"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "nahir_croma",
+      "champion": "nahir",
+      "name": "Nahir — Ceniza del Alba",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "nahir"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "nahir"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "nahir_skin",
+      "champion": "nahir",
+      "name": "Obsidiana Real",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "nahir"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "nahir"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "nahir",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "exp_nahir",
+      "champion": "nahir",
+      "name": "Vitral del Réquiem",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "nahir"
+          },
+          {
+            "type": "set_complete",
+            "setId": "exp_nahir"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "nigromante_escarcha",
+      "champion": "nigromante",
+      "name": "Nigromante, Sudario de Escarcha",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "nigromante"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "nigromante"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "nigromante",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "nigromante_piedra",
+      "champion": "nigromante",
+      "name": "Nigromante, Sepulturero de Ámbar",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "nigromante"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "nigromante"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "nigromante",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "requiem",
+      "champion": "nigromante",
+      "name": "Rey Sin Tumba",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "nigromante"
+          },
+          {
+            "type": "set_complete",
+            "setId": "requiem"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "orsa_croma",
+      "champion": "orsa",
+      "name": "Orsa — Ceniza del Alba",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "orsa"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "orsa"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "orsa_skin",
+      "champion": "orsa",
+      "name": "Cazadora de Leviatanes",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "orsa"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "orsa"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "orsa",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "exp_orsa",
+      "champion": "orsa",
+      "name": "Trueno Carmesí",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "orsa"
+          },
+          {
+            "type": "set_complete",
+            "setId": "exp_orsa"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "profeta_ancestral",
+      "champion": "profeta",
+      "name": "La Profeta, Velo del Bosque",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "profeta"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "profeta"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "profeta",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "profecia",
+      "champion": "profeta",
+      "name": "La Profeta, Ángel Caído (Doncella Oscura)",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "profeta"
+          },
+          {
+            "type": "set_complete",
+            "setId": "profecia"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "renko_croma",
+      "champion": "renko",
+      "name": "Renko — Ceniza del Alba",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "renko"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "renko"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "renko_skin",
+      "champion": "renko",
+      "name": "Marmolista Real",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "renko"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "renko"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "renko",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "exp_renko",
+      "champion": "renko",
+      "name": "Enterrador del Desierto",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "renko"
+          },
+          {
+            "type": "set_complete",
+            "setId": "exp_renko"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "segador_escarcha",
+      "champion": "segador",
+      "name": "Segador, Filo de Escarcha",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "segador"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "segador"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "segador",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "marea",
+      "champion": "segador",
+      "name": "Segador, Leónidas (Rey de Esparta)",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "segador"
+          },
+          {
+            "type": "set_complete",
+            "setId": "marea"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "sira_croma",
+      "champion": "sira",
+      "name": "Sira — Ceniza del Alba",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "sira"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "sira"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "sira_skin",
+      "champion": "sira",
+      "name": "Atlas Astral",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "sira"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "sira"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "sira",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "exp_sira",
+      "champion": "sira",
+      "name": "Cartógrafa Corsaria",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "sira"
+          },
+          {
+            "type": "set_complete",
+            "setId": "exp_sira"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "solciju_alt1",
+      "champion": "solciju",
+      "name": "Solciju, Viuda de Medianoche",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "solciju"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "solciju"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "solciju",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "solciju_croma",
+      "champion": "solciju",
+      "name": "Añada Esmeralda",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "solciju"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "solciju"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "quality_solciju",
+      "champion": "solciju",
+      "name": "Vendimiadora del Asedio",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "solciju"
+          },
+          {
+            "type": "set_complete",
+            "setId": "quality_solciju"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "custodio",
+      "champion": "soporte",
+      "name": "Sanadora, Ángel del Alba (Forma Celestial)",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "soporte"
+          },
+          {
+            "type": "set_complete",
+            "setId": "custodio"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "tanque_ancestral",
+      "champion": "tanque",
+      "name": "Tanque, Bastión Ancestral",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "tanque"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "tanque"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "tanque",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "tanque_juicio",
+      "champion": "tanque",
+      "name": "Tanque, Paladín del Juicio",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "tanque"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "tanque"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "tanque",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "baluarte",
+      "champion": "tanque",
+      "name": "El Último Juramento",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "tanque"
+          },
+          {
+            "type": "set_complete",
+            "setId": "baluarte"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "tibor_croma",
+      "champion": "tibor",
+      "name": "Tibor — Ceniza del Alba",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "tibor"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "tibor"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "tibor_skin",
+      "champion": "tibor",
+      "name": "Señor de las Polillas",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "tibor"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "tibor"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "tibor",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "exp_tibor",
+      "champion": "tibor",
+      "name": "Colmena de Ámbar",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "tibor"
+          },
+          {
+            "type": "set_complete",
+            "setId": "exp_tibor"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "vesper_croma",
+      "champion": "vesper",
+      "name": "Vesper — Ceniza del Alba",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "vesper"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "vesper"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "vesper_skin",
+      "champion": "vesper",
+      "name": "Sastre de la Corte Muerta",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "vesper"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "vesper"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "vesper",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "exp_vesper",
+      "champion": "vesper",
+      "name": "Costurera de Espantapájaros",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "vesper"
+          },
+          {
+            "type": "set_complete",
+            "setId": "exp_vesper"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "veyra_alt1",
+      "champion": "veyra",
+      "name": "Veyra, Verdugo Celestial",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "veyra"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "veyra"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "veyra",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "veyra_croma",
+      "champion": "veyra",
+      "name": "Herida Amatista",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "veyra"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "veyra"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "quality_veyra",
+      "champion": "veyra",
+      "name": "Cicatriz de Obsidiana",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "veyra"
+          },
+          {
+            "type": "set_complete",
+            "setId": "quality_veyra"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "ynara_celeste",
+      "champion": "ynara",
+      "name": "Ynara — Guardia Celeste",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "ynara"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "ynara"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "ynara",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "santa_paciencia",
+      "champion": "ynara",
+      "name": "Ynara — Guardiana del Santuario",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "ynara"
+          },
+          {
+            "type": "set_complete",
+            "setId": "santa_paciencia"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "zahra_croma",
+      "champion": "zahra",
+      "name": "Zahra — Ceniza del Alba",
+      "registry": "CROMA_SKINS",
+      "track": "maestria",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "zahra"
+          },
+          {
+            "type": "metric",
+            "key": "heroWins",
+            "target": 3,
+            "hero": "zahra"
+          }
+        ]
+      },
+      "challenge": "Ganá 3 arenas de campaña con este héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "zahra_skin",
+      "champion": "zahra",
+      "name": "Horno de Porcelana",
+      "registry": "CROMA_SKINS",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "zahra"
+          },
+          {
+            "type": "metric",
+            "key": "heroLevel",
+            "target": 30,
+            "hero": "zahra"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "zahra",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "challenge": "Nivel 30 del héroe y una victoria en la Infernal con ese mismo héroe. Tienda como vía alternativa.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    },
+    {
+      "id": "exp_zahra",
+      "champion": "zahra",
+      "name": "Corazón Volcánico",
+      "registry": "SET_SKINS",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "zahra"
+          },
+          {
+            "type": "set_complete",
+            "setId": "exp_zahra"
+          }
+        ]
+      },
+      "challenge": "Desbloqueá al héroe y reuní las cuatro piezas distintas de su set; la apariencia queda permanente.",
+      "combatBonus": false,
+      "artApproval": "not_reviewed_in_this_branch"
+    }
+  ],
+  "pendingSkinConcepts": [
+    {
+      "id": "nano_gm_alt1",
+      "champion": "nano_gm",
+      "name": "Regente del Eclipse Dorado",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "fundador",
+      "requirement": {
+        "type": "entitlement"
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "facu_gm_alt1",
+      "champion": "facu_gm",
+      "name": "Soberano de la Fosa",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "fundador",
+      "requirement": {
+        "type": "entitlement"
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "aurelia_alt1",
+      "champion": "aurelia",
+      "name": "Vitral del Mediodía",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "aurelia"
+          },
+          {
+            "type": "set_complete",
+            "setId": "asc_aurelia"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "aurelia_alt2",
+      "champion": "aurelia",
+      "name": "Catedral Corrupta",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "aurelia"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "aurelia",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "khepri_alt1",
+      "champion": "khepri",
+      "name": "Escarabajo de Lapislázuli",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "khepri"
+          },
+          {
+            "type": "set_complete",
+            "setId": "asc_khepri"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "khepri_alt2",
+      "champion": "khepri",
+      "name": "Plaga de Ceniza",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "khepri"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "khepri",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "velmira_alt1",
+      "champion": "velmira",
+      "name": "Mascarada Veneciana",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "velmira"
+          },
+          {
+            "type": "set_complete",
+            "setId": "asc_velmira"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "velmira_alt2",
+      "champion": "velmira",
+      "name": "Reina del Réquiem Blanco",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "velmira"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "velmira",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "vhal_alt1",
+      "champion": "vhal",
+      "name": "Eclipse Anular",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "vhal"
+          },
+          {
+            "type": "set_complete",
+            "setId": "asc_vhal"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "vhal_alt2",
+      "champion": "vhal",
+      "name": "Nebulosa Carmesí",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "vhal"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "vhal",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "bront_alt1",
+      "champion": "bront",
+      "name": "Bastión de Bronce Ritual",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "bront"
+          },
+          {
+            "type": "set_complete",
+            "setId": "asc_bront"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "bront_alt2",
+      "champion": "bront",
+      "name": "Coloso de Hielo Negro",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "bront"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "bront",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "oriel_alt1",
+      "champion": "oriel",
+      "name": "Llavera del Alba",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "oriel"
+          },
+          {
+            "type": "set_complete",
+            "setId": "asc_oriel"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "oriel_alt2",
+      "champion": "oriel",
+      "name": "Guardiana del Ojo Rojo",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "oriel"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "oriel",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "saelis_alt1",
+      "champion": "saelis",
+      "name": "Heraldo del Ocaso",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "coleccion",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "saelis"
+          },
+          {
+            "type": "set_complete",
+            "setId": "asc_saelis"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    },
+    {
+      "id": "saelis_alt2",
+      "champion": "saelis",
+      "name": "Heraldo de la Aurora Boreal",
+      "registry": "ASCENSION_SKINS",
+      "status": "GENERATED_PENDING_REVIEW",
+      "track": "hazana",
+      "requirement": {
+        "type": "all",
+        "requirements": [
+          {
+            "type": "owned",
+            "hero": "saelis"
+          },
+          {
+            "type": "metric",
+            "key": "heroArenaWins",
+            "target": 1,
+            "hero": "saelis",
+            "arena": "infernal"
+          }
+        ]
+      },
+      "combatBonus": false,
+      "activation": "blocked_until_art_and_runtime_validation"
+    }
+  ]
+}
