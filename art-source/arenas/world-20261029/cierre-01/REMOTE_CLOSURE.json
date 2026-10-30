@@ -1,11 +1,23 @@
 {
   "schema": 1,
-  "status": "LOCAL_CHECKPOINT_PENDING_REMOTE",
+  "status": "REMOTE_CHECKPOINT_FIX_NO_INTEGRAR",
   "component": "A-ARENA-ruinas-gelida/world-v1",
   "base_main": "6edcd9bce3d2d3cc77578e6d13a394d05b9c5eb6",
-  "recovered_commit": "68f67c786a8ba8b0d1ac976a4c48e5e11389fbd2",
+  "local_recovered_commit": "68f67c786a8ba8b0d1ac976a4c48e5e11389fbd2",
+  "local_closure_commit": "f744c55095a754994d5a9a84fc31bf1bfe787b84",
+  "remote_recovered_commit": "d4abc706e36f2652ac809cef6e290b87aaea62e5",
+  "remote_closure_commit": "1333b58a2d54744b9e3bd61ede14b6a0f87a2dda",
   "branch": "art/arena-world-events-20261029",
+  "pull_request": 242,
+  "pull_request_url": "https://github.com/Fondal-Studios/La-Horda/pull/242",
+  "pull_request_state": "DRAFT_FIX_NO_INTEGRAR",
   "integrated_main": false,
   "publication": "NOT_CHECKED_FIX",
-  "next": "Upload recovered commit and this evidence; keep PR draft/FIX; redraw flagged frames."
+  "new_tests": {
+    "runtime_contract": "13/13 PASS",
+    "non_empty_frames": "32/32 PASS",
+    "style_gate": "26/32 ILUSTRACION — FAIL",
+    "density_gate": "Bosque PASS; Hielo halo 164 px informational"
+  },
+  "next": "Keep PR 242 draft/FIX; redraw the 26 flagged frames natively from the exact Codex reference, then capture fresh Ruinas/Gelida gameplay before integration."
 }
