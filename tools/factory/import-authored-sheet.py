@@ -67,21 +67,34 @@ def build(manifest, output):
             frame[~own] = 0
             frames.append(Image.fromarray(frame))
     scale = manifest.get('targetHeight', 70) / np.median([f.height for f in frames[:12]])
-    atlas = Image.new('RGBA', (448, 1008))
+    cell = manifest.get('cellSize', 112)
+    if not isinstance(cell, int) or not 64 <= cell <= 256:
+        raise ValueError('cellSize must be between 64 and 256')
+    baseline = round(cell * 106 / 112)
+    atlas = Image.new('RGBA', (cell * 4, cell * 9))
     for i, frame in enumerate(frames):
         frame = frame.resize((max(1, round(frame.width * scale)), max(1, round(frame.height * scale))), Image.Resampling.NEAREST)
         p = np.array(frame)
         p[:, :, 3] = np.where(p[:, :, 3] >= 128, 255, 0)
         p[p[:, :, 3] == 0] = 0
         foot = frame.height - 1 if i >= 32 or i in manifest.get('bottomAnchorFrames', []) else redraw.feet_row(p[:, :, 3] > 0)
-        x, y = (112 - frame.width) // 2, 106 - foot
-        if x < 1 or y < 1 or x + frame.width > 111 or y + frame.height > 112:
+        x, y = (cell - frame.width) // 2, baseline - foot
+        if x < 1 or y < 1 or x + frame.width >= cell or y + frame.height > cell:
             raise ValueError(f'pose {i}: would clip at uniform scale')
-        atlas.paste(Image.fromarray(p), ((i % 4) * 112 + x, (i // 4) * 112 + y))
+        atlas.paste(Image.fromarray(p), ((i % 4) * cell + x, (i // 4) * cell + y))
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
+    # One shared palette for the whole animation prevents per-frame colour drift.
+    colors = manifest.get('paletteColors')
+    if colors is not None:
+        if not isinstance(colors, int) or not 16 <= colors <= 256:
+            raise ValueError('paletteColors must be between 16 and 256')
+        alpha = atlas.getchannel('A')
+        atlas = atlas.quantize(colors=colors, method=Image.Quantize.FASTOCTREE,
+                               dither=Image.Dither.NONE).convert('RGBA')
+        atlas.putalpha(alpha)
     atlas.save(output / 'atlas.png')
-    atlas.crop((0, 0, 112, 112)).save(output / 'preview.png')
+    atlas.crop((0, 0, cell, cell)).save(output / 'preview.png')
     report = {'status': 'IMPORTED_NOT_APPROVED', 'poses': 36, 'scale': float(scale),
               'sourceSha256': manifest['sourceSha256'],
               'atlasSha256': hashlib.sha256((output / 'atlas.png').read_bytes()).hexdigest()}

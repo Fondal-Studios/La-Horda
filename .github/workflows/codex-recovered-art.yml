@@ -1,0 +1,28 @@
+name: Recovered Codex gameplay art
+on:
+  pull_request:
+    paths: ['js/assets/codex-champion-meta.js', 'js/rendering/**', 'assets/sprites/champions/**', 'tools/fondal-art-engine/codex-*.js', '.github/workflows/codex-recovered-art.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gameplay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NODE_PATH: /tmp/horda-art/node_modules
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: npm install --prefix /tmp/horda-art --no-audit --no-fund playwright@1.58.2
+      - run: /tmp/horda-art/node_modules/.bin/playwright install --with-deps chromium
+      - run: npm ci --prefix server --no-audit --no-fund
+      - run: node tools/fondal-art-engine/codex-runtime.js /tmp/recovered-art/runtime
+      - run: node tools/fondal-art-engine/codex-native.js /tmp/recovered-art/native.json
+      - run: node tools/fondal-art-engine/codex-online.js /tmp/recovered-art/online
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: recovered-codex-gameplay
+          path: /tmp/recovered-art/
