@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "status": "PASS_VISUAL_CANDIDATE",
+  "integrated": false,
+  "component": "A-ARENA-ruinas-gelida/world-v1",
+  "frames": 32,
+  "codex_reference": "assets/ui/codex/champions/ilkan.png",
+  "decision": "Candidate03 is visually approved for a separate clean integration PR. The FIX workshop remains unmergeable.",
+  "visual_review": {
+    "desktop": [
+      "review/after-bosque.webp",
+      "review/events-bosque.webp",
+      "review/after-hielo.webp",
+      "review/events-hielo.webp"
+    ],
+    "mobile": [
+      "review/mobile-bosque.webp",
+      "review/mobile-hielo.webp"
+    ],
+    "native_scale": [
+      "review/sprites-bosque.webp",
+      "review/sprites-hielo.webp"
+    ],
+    "findings": [
+      "Silhouettes remain readable against both arena palettes and dense combat layers.",
+      "Bosque rune states ctrl/arming/corrupt/sealed remain distinct at gameplay scale.",
+      "Gelida braziers preserve fixed bases and readable off/low/ignite/lit progression.",
+      "Candidate03 removes disconnected row separators without changing colors or smoothing the source.",
+      "Central play space and hero silhouettes remain unobstructed in reviewed desktop/mobile captures."
+    ]
+  },
+  "technical": {
+    "runtime_contract": "workshop 13/13 PASS; includes historical geometry assertion and is not the clean-head claim",
+    "non_empty_frames": "32/32 PASS",
+    "animation": "4/4 distinct per arena",
+    "state_roundtrip": "host state through guest handlers PASS",
+    "exceptions": 0,
+    "heuristic": "27/32 ILUSTRACION informational; visual approval is separate by tool definition"
+  },
+  "limits": [
+    "No physical mobile device or GPU profile.",
+    "No live WebSocket relay rerun; existing event netState/guest handlers are unchanged and direct host/guest roundtrip passes.",
+    "First candidate03 mobile Bosque capture was invalid due an arena fade/state; preserved and superseded by fresh-page attempt02."
+  ],
+  "clean_extraction": {
+    "runtime_contract": "12/12 PASS on extracted runtime; zero exceptions",
+    "geometry_note": "Historical east-arch collision repair excluded; no geometry or collision change in this integration.",
+    "base_equivalence": "Selected runtime files start from main parent 7010a152; PR240 changed none of them."
+  }
+}

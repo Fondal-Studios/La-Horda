@@ -1,0 +1,36 @@
+{
+  "base_main": "6edcd9bce3d2d3cc77578e6d13a394d05b9c5eb6",
+  "runtime_files": [
+    "index.html",
+    "js/arenas/arena-identity.js",
+    "js/arenas/bosque/bos-ruins.js",
+    "js/arenas/hielo/hie-cold.js",
+    "js/assets/arena-world-manifest.js",
+    "js/rendering/arena-props.js",
+    "js/rendering/arena-world-art.js",
+    "js/rendering/arena.js"
+  ],
+  "assets": [
+    "assets/sprites/arenas/world-v1/bosque.png",
+    "assets/sprites/arenas/world-v1/hielo.png",
+    "assets/sprites/arenas/world-v1/manifest.json"
+  ],
+  "excluded": [
+    "js/arenas/common/arena-blueprints.js",
+    "Bosque east-arch collision repair",
+    "arena light-load rich/reduced change",
+    "all candidate01/02 runtime assets",
+    "PR242 workshop history"
+  ],
+  "unchanged": [
+    "balance",
+    "damage",
+    "timers",
+    "geometry",
+    "collision",
+    "network messages",
+    "accounts",
+    "payments",
+    "infrastructure"
+  ]
+}
