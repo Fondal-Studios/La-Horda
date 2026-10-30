@@ -194,6 +194,7 @@ function aidPushTall(){
   if(currentArena==="divina") for(const s of divinaStructures){ if(inView(s.x, s.y, 200)) _entPush(s.y, null, null, null, {divStruct:s}); }
 }
 function aidDrawTall(it, now){
+  if(typeof arenaWorldDrawProp==='function' && arenaWorldDrawProp(it,now)) return;
   if(it.bfStructure){const s=it.bfStructure;if(s.alive){if(s.kind==="tower")lanesDrawTower(s,now/1000);else lanesDrawCrystal(s);}return;}
   if(it.battlefield&&battlefieldDrawProp(it))return;
   if(it.brk){ drawBreakable(it.brk, now); return; }
@@ -431,6 +432,7 @@ function octPath(R){
 }
 
 function drawDeadTree(t){
+  if(currentArena==='hielo' && typeof arenaWorldDraw==='function' && arenaWorldDraw('hielo',t.seed%2?'tree':'pine',t.x,t.y,Math.max(100,t.h*1.5),{flip:t.lean<0})) return;
   const now = performance.now()/1000;
   ctx.save();
   ctx.translate(t.x, t.y);
