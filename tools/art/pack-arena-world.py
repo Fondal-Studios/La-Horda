@@ -38,7 +38,16 @@ def extract(source, rows):
         owners = {int(k):i for i,k in enumerate(biggest)}
         for k in range(1,n+1):
             if k not in owners:
-                owners[k] = int(np.argmin(np.abs(np.array(centers)-np.where(labels==k)[1].mean())))
+                yy, xx = np.where(labels==k)
+                h = int(yy.max()-yy.min()+1); w = int(xx.max()-xx.min()+1)
+                # Image-generation attempts sometimes leave a thin separator on
+                # the first scanlines of the next row. It is disconnected from
+                # every authored object and explicitly forbidden by the prompt.
+                # Remove only that boundary artifact; keep sparks, leaves and
+                # every other detached detail associated with the nearest cell.
+                if int(yy.min()) == 0 and h <= 15 and w / h >= 5:
+                    continue
+                owners[k] = int(np.argmin(np.abs(np.array(centers)-xx.mean())))
         for i in range(4):
             mask = np.isin(labels, [k for k,v in owners.items() if v==i])
             pixels = row.copy(); pixels[:,:,3] = mask.astype('uint8')*255
