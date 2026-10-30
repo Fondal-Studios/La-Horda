@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "source_variant": "codex02",
+  "reference": "assets/ui/codex/champions/ilkan.png",
+  "commands": [
+    "ARENA_WORLD_SOURCE_VARIANT=codex02 ARENA_WORLD_DEST=art-source/arenas/world-20261029/candidate02-atlas ARENA_WORLD_WRITE_RUNTIME=0 python3 tools/art/pack-arena-world.py",
+    "CHROMIUM_PATH=/tmp/chromium node tools/art/test-arena-world.js",
+    "CHROMIUM_PATH=/tmp/chromium node tools/art/check-arena-world-density.js"
+  ],
+  "install": false
+}

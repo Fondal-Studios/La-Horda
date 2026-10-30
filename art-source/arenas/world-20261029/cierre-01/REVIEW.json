@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "date": "2026-10-30",
+  "component": "A-ARENA-ruinas-gelida/world-v1",
+  "status": "EN_CORRECCION",
+  "integrated": false,
+  "codex_reference": "assets/ui/codex/champions/ilkan.png",
+  "reference_role": "small right-side sprites: native pixel construction only",
+  "candidate02": {
+    "generated_with": "built-in image_gen edit",
+    "frames": 32,
+    "runtime_checks": 13,
+    "runtime_pass": 13,
+    "style_flags": 26,
+    "technical_scan": {
+      "bosque": "PASS",
+      "hielo": "FIX halo=164px informational snow-edge scan"
+    },
+    "visual_decision": "REJECTED_NO_INTEGRAR",
+    "reason": "26/32 frames remain classified ILUSTRACION; silhouettes and states are preserved but materials remain too smooth."
+  },
+  "unchanged": [
+    "balance",
+    "damage",
+    "rewards",
+    "timers",
+    "network messages",
+    "accounts",
+    "payments",
+    "infrastructure"
+  ],
+  "next": "Grouped native-pixel redraw of the 26 flagged frames, keeping the 6 passing frames and exact event-state contracts; then repeat gameplay captures and multiplayer state gate."
+}

@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "attempts": [
+    {
+      "id": "candidate02",
+      "result": "REJECTED_NO_INTEGRAR",
+      "new_tests": [
+        "13/13 runtime checks PASS on isolated candidate install",
+        "32/32 frames non-empty",
+        "4 animation states distinct for each biome",
+        "host/guest state roundtrip PASS"
+      ],
+      "historical_tests": [
+        "10-arena audit and original gameplay captures belong to recovered first pass"
+      ],
+      "failures": [
+        "Pixel-density style heuristic: 26/32 ILUSTRACION",
+        "Hielo atlas scanner halo=164px; likely snow-edge false positive but not waived",
+        "Initial browser run failed before load because default Chromium cache path was absent; rerun with CHROMIUM_PATH=/tmp/chromium passed."
+      ]
+    }
+  ]
+}
