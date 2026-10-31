@@ -1,0 +1,50 @@
+{
+  "$id": "fondal/la-horda/PlayerProfile/1.0.0",
+  "title": "PlayerProfile",
+  "description": "Proyección de solo lectura de la cuenta y su guardado. NO reemplaza al guardado: el guardado sigue siendo el formato de persistencia.",
+  "type": "object",
+  "required": ["contract", "version", "accountId", "save", "progress", "champions"],
+  "additionalProperties": false,
+  "properties": {
+    "contract": { "const": "PlayerProfile" },
+    "version": { "type": "string", "pattern": "^1\\.\\d+\\.\\d+$" },
+    "accountId": { "type": "string", "pattern": "^[a-zA-Z0-9_.:-]{1,64}$" },
+    "save": {
+      "type": "object",
+      "required": ["cloudVersion", "itemSchemaV", "bytes", "appliedMigrations"],
+      "additionalProperties": false,
+      "properties": {
+        "cloudVersion": { "type": "integer", "minimum": 0 },
+        "updatedAt": { "type": "integer", "minimum": 0 },
+        "itemSchemaV": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "bytes": { "type": "integer", "minimum": 0, "maximum": 524288 },
+        "appliedMigrations": { "type": "array", "maxItems": 64, "items": { "type": "string", "pattern": "^[A-Za-z0-9_]{1,40}$" } },
+        "economyV2": { "type": "boolean" }
+      }
+    },
+    "progress": {
+      "type": "object",
+      "required": ["gold", "gems"],
+      "additionalProperties": false,
+      "properties": {
+        "gold": { "type": "integer", "minimum": 0, "maximum": 1000000000 },
+        "gems": { "type": "integer", "minimum": 0, "maximum": 1000000000 },
+        "arenasCleared": { "type": "integer", "minimum": 0, "maximum": 200 },
+        "starterChosen": { "type": "boolean" }
+      }
+    },
+    "champions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["level", "unlocked"],
+        "additionalProperties": false,
+        "properties": {
+          "level": { "type": "integer", "minimum": 1, "maximum": 1000 },
+          "xp": { "type": "integer", "minimum": 0 },
+          "unlocked": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}
