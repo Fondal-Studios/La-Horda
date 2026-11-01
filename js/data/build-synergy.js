@@ -63,7 +63,7 @@ const SYN_BRANCHES = [
   {id:"mg_tormenta", champ:"mago", skill:2, arch:"ofensiva", name:"Cadena de Tormenta", look:"#ffe36a",
    fx:{chain:{n:2, pct:0.18, range:130, icd:400}}, cdMult:1.05, set:{id:"convergencia", n:2},
    text:"Cada descarga salta a 2 enemigos cercanos con 18% del golpe."},
-  {id:"mg_tierra", champ:"mago", skill:2, arch:"defensiva", name:"Cadena a Tierra", look:"#8bffb0",
+  {id:"mg_tierra", champ:"mago", skill:2, arch:"defensiva", name:"Cadena Vital", look:"#8bffb0",
    fx:{heal:{pct:0.04, cap:0.16, icd:150}}, cdMult:1.0, set:{id:"convergencia", n:2},
    text:"Cada descarga te cura 4% de tu vida (hasta 16% por lanzamiento)."},
   /* ---------- Sylva (Cazadora) — presa marcada y cobertura ---------- */
