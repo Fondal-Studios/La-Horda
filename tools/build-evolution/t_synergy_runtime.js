@@ -59,7 +59,7 @@ const {openGame}=require('./lib');
    chk(base.dmg>0,id+': la habilidad base golpea a los maniquíes (dmg='+Math.round(base.dmg)+')');
    chk(Math.abs(r.cd-b.cdMult)<0.03,id+': costo de enfriamiento aplicado (x'+r.cd+')');
    const f=b.fx;
-   if(f.vsSlowed||f.vsMarked)chk(br.dmg>base.dmg*1.05,id+': daño condicional supera la base (+'+r.dmgPct+'%)');
+   if(f.vsSlowed||f.vsMarked)chk(br.dmg>base.dmg*((f.vsMarked&&!pre)?1.03:1.05) /* sin marca previa, el 1er golpe de cada enemigo todavía no está marcado */,id+': daño condicional supera la base (+'+r.dmgPct+'%)');
    if(f.extra||f.chain)chk(br.dmg>base.dmg*1.05,id+': daño extra supera la base (+'+r.dmgPct+'%)');
    if(f.shield)chk(br.maxShield>base.maxShield+0.005&&br.maxShield<=f.shield.cap*1.3+0.001,id+': escudo dentro de tope ('+r.shield+')');
    if(f.heal)chk(br.heal>base.heal+0.005&&br.heal<=f.heal.cap*1.3+0.001,id+': cura dentro de tope ('+r.heal+')');

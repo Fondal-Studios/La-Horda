@@ -77,8 +77,8 @@ const SYN_BRANCHES = [
    fx:{shield:{pct:0.04, cap:0.20, icd:200}}, cdMult:1.0, set:{id:"manada", n:2},
    text:"Cada flecha que impacta te da escudo de 4% de tu vida (hasta 20%)."},
   {id:"cz_marca", champ:"cazadora", skill:2, arch:"control", name:"Lluvia Marcadora", look:"#ffb86a",
-   fx:{mark:{ms:3500}, slow:{amt:0.20, ms:1200, icd:600}}, cdMult:1.0, set:{id:"manada", n:2},
-   text:"Marca a todo lo que toca (+10% de daño recibido para el equipo) y lo frena 20%."}
+   fx:{mark:{ms:3500}, slow:{amt:0.20, ms:1200, icd:600}, vsMarked:0.15}, cdMult:1.0, set:{id:"manada", n:2},
+   text:"Marca a lo que toca (+10% de daño recibido), lo frena 20% y pega +15% a lo ya marcado."}
 ];
 const SYN_BY_ID = Object.fromEntries(SYN_BRANCHES.map(b=>[b.id, b]));
 const SYN_CHAMPS = [...new Set(SYN_BRANCHES.map(b=>b.champ))];

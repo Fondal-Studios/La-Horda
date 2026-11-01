@@ -82,3 +82,14 @@ Las tres mejoran la vida efectiva en ambos niveles (la evaluación #1 las halló
 
 ### Criterio estadístico de la banda de balance (corregido tras la evaluación #2)
 La evaluación #2 (82/100) marcó el criterio de "1 error estándar" como falso verde parcial; **se revirtió**. Ahora: techo +15 % sobre el punto estimado; piso −10 % con una **prueba pareada por semilla** (misma partida con y sin rama): la rama falla solo si el IC 95 % de la diferencia pareada queda por debajo de −10 %. `mg_glacial` (punto estimado −10,3 %) pasa con cota superior +0,2 % y la prueba imprime un AVISO. Es decir: no se demuestra que esté bajo el piso, pero tampoco que esté sobre él; el ruido de 8 semillas es ±4 %. Las ramas del mago siguen levemente por debajo de la base en el autopiloto.
+
+### Evaluaciones independientes y estado (S0E)
+| Evaluación | Puntaje | Resultado |
+|---|---|---|
+| #1 (dbd27fdf~) | 66/100 | RECHAZAR → REPARAR (bug de claves por enemigo, doble crítico, etc.) |
+| #2 (dbd27fdf) | 82/100 | Criterio de 1 EE = falso verde parcial → se revirtió |
+| #3 (f7888754) | 85/100 | Sin críticos; pendientes: dos clientes reales (−2), Horda Infinita (−1), dueño de G en ownership (−2) |
+
+Después de la #3: **prueba con dos clientes reales** (`t_synergy_coop.js`, relay local real, 8 comprobaciones), **Horda Infinita completa** (`t_synergy_endless.js`, 3 rondas con piloto automático, 6 comprobaciones), compuerta de balance reforzada (16 semillas, t de Student, cota inferior del IC95 % pareado ≥ −15 %), `cz_marca` con +15 % contra marcados. Con 16 semillas el rango de daño es −7,8 % … +6,4 %.
+Sin valor medible demostrado: **`mg_tierra`** (cura; +3,3 pp de vida efectiva, no reduce muertes en niveles 7-8). `tq_ariete` es la única defensiva consistente, con efecto modesto; `cz_cobertura` no se distingue de las ramas ofensivas.
+Pendiente: dueño de G en `ownership.json` (PR #254, depende de S0C) → los puntos de aislamiento no se recuperan hasta entonces. Líneas de `index.html` por el integrador (`docs/arquitectura-compartida/INDEX_HTML.md` en #254).
