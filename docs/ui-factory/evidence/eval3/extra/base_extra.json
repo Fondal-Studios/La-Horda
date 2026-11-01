@@ -1,0 +1,70 @@
+{
+ "label": "base",
+ "pact": {
+  "visible": true,
+  "souls0": {
+   "during": "ability-btn sec pact",
+   "after": "ability-btn sec pact",
+   "events": [],
+   "pactOn": false,
+   "aria": null
+  },
+  "souls5": {
+   "during": "ability-btn sec pact armed",
+   "after": "ability-btn sec pact armed",
+   "events": [],
+   "pactOn": true,
+   "aria": null
+  }
+ },
+ "revive": {
+  "visible": true,
+  "size": [
+   64,
+   64
+  ],
+  "during": "ability-btn revive",
+  "after": "ability-btn revive",
+  "events": []
+ },
+ "ultCast_mago": {
+  "ultCd": 31216,
+  "expectSec": 32,
+  "shown": null,
+  "active": false,
+  "ultCharge": 0,
+  "cls": "ability-btn ult ready-pop",
+  "tras_fin": {
+   "active": false,
+   "ultCd": 0
+  }
+ },
+ "ultCast_ilkan": {
+  "ultCd": 39235,
+  "expectSec": 40,
+  "shown": null,
+  "active": false,
+  "ultCharge": 0,
+  "cls": "ability-btn ult ready-pop",
+  "tras_fin": {
+   "active": false,
+   "ultCd": 0
+  }
+ },
+ "ultCast_nigromante": {
+  "ultCd": 37416,
+  "expectSec": 38,
+  "shown": null,
+  "active": false,
+  "ultCharge": 0,
+  "cls": "ability-btn ult ready-pop",
+  "tras_fin": {
+   "active": false,
+   "ultCd": 0
+  }
+ },
+ "sprite_btn-s1": null,
+ "sprite_btn-basic": null,
+ "sprite_btn-ult": null,
+ "errors": []
+}
