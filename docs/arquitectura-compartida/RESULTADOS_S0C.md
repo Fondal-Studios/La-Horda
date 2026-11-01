@@ -9,7 +9,7 @@ Base: `main` @ `e194910bddf5d976778e1e8e949e3d440d71fc2d` (no se movió). Fecha:
 | Contenido | 1 commit, 25 archivos nuevos | #247 + 12 commits (ya sin duplicar el de S0A al mezclar) |
 | Conflictos con `main` | ninguno (`mergeable: clean`) | ninguno (lineal sobre #247) |
 | CI de GitHub | 6 checks en verde | ver abajo |
-| Estado | **integrado en `beta/integracion`** (commit `fd967095`, merge commit, no squash) | ver sección 3 |
+| Estado | **integrado en `beta/integracion`** (commit `fd967095`, merge commit, no squash) | **integrado en `beta/integracion`** (commit `012a08fa`, merge commit) tras 23 de 23 checks en verde sobre `eb1ce3e7` |
 
 **CI real de #248 (cabeza `cc55b61a`) — hallazgos:**
 - `Regresion del juego (rapida)` (el check nuevo): **verde** tras corregir `t_save_sanitize`, que moría al lanzar Chromium en el runner (`/opt/pw-browsers/chromium` no existe en GitHub; 83 pruebas escriben esa ruta). Arreglo central en `tools/lib/pw-tune.js`.
@@ -46,4 +46,4 @@ Contratos (9) con dueño, consumidores, esquema, versión, compatibilidad y prue
 4. **Relay real:** no se tocó ni se probó. `LobbyMessage` se validó contra un relay local en proceso, no contra el del socio.
 5. **Economía V2:** sigue apagada; no se activó.
 6. **Causa de `profeta cross:6`, intermitencia de `t_breakables` y `test-sides`, Postgres local, móvil real, cobertura de líneas:** pendientes.
-7. **Integración de #248 y del PR de S0C en `beta/integracion`:** ver el estado final en el informe de entrega.
+7. **Estado de `beta/integracion`:** contiene #247 (`fd967095`) y #248 (`012a08fa`); su árbol es idéntico al de la rama `claude/s0b-estabilizacion` (diff vacío), que pasó 23/23 checks en GitHub y la batería completa local, por lo que la regresión posterior a cada integración se apoya en esa identidad de árbol y no en una corrida nueva sobre la rama Beta. El PR de S0C (#252) queda abierto **sin mezclar**, esperando la revisión independiente. `main` no se tocó.
