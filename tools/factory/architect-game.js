@@ -13,7 +13,7 @@ const RULES = [
   {id: 'knownChampions', level: 'B', test: d => /knownChampions/.test(d.addedText), msg: 'Toca knownChampions: un campeón nuevo no se registra en la misma PR que lo presenta (AGENTS.md §5).'},
   {id: 'reference-sync', level: 'W', test: d => d.files.some(f => f === 'docs/balance/champion-entry-reference.json') !== d.files.some(f => /champion-entry-reference\.js$/.test(f)) && (d.files.some(f => f === 'docs/balance/champion-entry-reference.json') || d.files.some(f => /champion-entry-reference\.js$/.test(f))), msg: 'Referencia de balance JSON y JS fuera de sincronía.'},
   {id: 'cosmetic-stats', level: 'B', test: d => d.isArtOnly && /\b(hp|damage|speed|cooldown)\s*[:=]/.test(d.addedText) && d.files.some(f => /skins?|cosmetic/i.test(f) && f.endsWith('.js')), msg: 'Cambio cosmético que parece alterar estadísticas.'},
-  {id: 'secrets', level: 'B', test: d => d.addedText.split('\n').some(l => /(api[_-]?key|secret|token)\s*[:=]\s*['"][A-Za-z0-9_\-]{20,}/i.test(l) && !/fixture|not-real|example|dummy|placeholder/i.test(l)), msg: 'Posible credencial en el diff.'},
+  {id: 'secrets', level: 'B', test: d => d.addedText.split('\n').some(l => /(api[_-]?key|secret|token)\s*[:=]\s*['"][A-Za-z0-9_\-]{20,}/i.test(l) && !/fixture|not-real|example|dummy|placeholder|['"]test-|process\.env\./i.test(l)), msg: 'Posible credencial en el diff.'},
   {id: 'asset-size', level: 'W', test: d => d.bigAssets.length > 0, msg: d => `Assets >2 MB: ${d.bigAssets.join(', ')}`},
   {id: 'no-tests', level: 'W', test: d => d.touchesGameplay && !d.files.some(f => /(^|\/)(tests?|tools\/.*test)/i.test(f)), msg: 'Cambia gameplay (js/) sin pruebas asociadas.'}
 ];
@@ -30,7 +30,7 @@ function gatesFor(d) {
 
 function analyze(ref, base = 'origin/main') {
   const mb = git('merge-base', base, ref);
-  if (!mb.ok) return {ref, verdict: 'BLOCKED', findings: [{level: 'B', id: 'no-ref', msg: `No se puede resolver ${ref} contra ${base}`}]};
+  if (!mb.ok) return {ref, verdict: 'BLOCKED', findings: [{level: 'B', id: 'no-ref', msg: `No se puede resolver ${ref} o no comparte ancestro con ${base} (historia sin relación: no fusionable tal cual)`}]};
   const files = git('diff', '--name-only', `${mb.out}`, ref).out.split('\n').filter(Boolean);
   const diff = git('diff', '-U0', mb.out, ref, '--', '*.js', '*.json', '*.html', '*.py', '*.yml').out;
   const addedText = diff.split('\n').filter(l => l.startsWith('+') && !l.startsWith('+++')).join('\n');
