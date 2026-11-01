@@ -1,0 +1,200 @@
+{
+ "verdict": "PASS",
+ "sha": "22972dfe83e446d78de91a2698c59a18acc032a5",
+ "generated": "2026-11-01T02:49:34.018Z",
+ "totals": {
+  "tests": 131,
+  "pass": 131,
+  "flaky": 0,
+  "fail": 0,
+  "blockingFail": 0
+ },
+ "suites": [
+  {
+   "id": "server",
+   "status": "PASS"
+  },
+  {
+   "id": "pixel-density",
+   "status": "FAIL"
+  }
+ ],
+ "categories": [
+  {
+   "c": "inicio",
+   "doc": "El juego abre, carga y llega al menú sin errores",
+   "n": 8,
+   "pass": 8,
+   "flaky": 0,
+   "fail": 0
+  },
+  {
+   "c": "navegacion_tutorial",
+   "doc": "Navegación entre pantallas, tutorial y primer minuto",
+   "n": 10,
+   "pass": 10,
+   "flaky": 0,
+   "fail": 0
+  },
+  {
+   "c": "campeones_habilidades",
+   "doc": "Campeones, habilidades, evolución, identidad y balance",
+   "n": 45,
+   "pass": 45,
+   "flaky": 0,
+   "fail": 0
+  },
+  {
+   "c": "campana_progresion",
+   "doc": "Campaña, arenas, jefes, dificultad y progresión",
+   "n": 26,
+   "pass": 26,
+   "flaky": 0,
+   "fail": 0
+  },
+  {
+   "c": "guardados",
+   "doc": "Guardado local y en la nube, sanitización, migraciones y recuperación",
+   "n": 7,
+   "pass": 7,
+   "flaky": 0,
+   "fail": 0
+  },
+  {
+   "c": "economia",
+   "doc": "Objetos, botín, tienda, recompensas y economía",
+   "n": 20,
+   "pass": 20,
+   "flaky": 0,
+   "fail": 0
+  },
+  {
+   "c": "multijugador_simulado",
+   "doc": "Salas, equipos y flujo de partida sin relay real",
+   "n": 5,
+   "pass": 5,
+   "flaky": 0,
+   "fail": 0
+  },
+  {
+   "c": "rendimiento",
+   "doc": "Presupuesto de tiempo por cuadro, límites de efectos y de entidades",
+   "n": 7,
+   "pass": 7,
+   "flaky": 0,
+   "fail": 0
+  },
+  {
+   "c": "sprites_atlas",
+   "doc": "Integridad de sprites, atlas, íconos y densidad de píxel",
+   "n": 9,
+   "pass": 9,
+   "flaky": 0,
+   "fail": 0
+  },
+  {
+   "c": "movil",
+   "doc": "Objetivos táctiles, desborde de texto y paneles en pantalla chica",
+   "n": 7,
+   "pass": 7,
+   "flaky": 0,
+   "fail": 0
+  },
+  {
+   "c": "coordinacion_agentes",
+   "doc": "Propiedad de archivos, contratos compartidos e interfaces congeladas entre los agentes A, B y C",
+   "n": 6,
+   "pass": 6,
+   "flaky": 0,
+   "fail": 0
+  }
+ ],
+ "failing": [],
+ "flaky": [],
+ "silent": [
+  "tools/crystal-wars/required-files.js",
+  "tools/ux/functional.js",
+  "tools/art/check-presentation-browser.js",
+  "tools/collection/shop-pricing-browser.js",
+  "tools/collection/pricing-sync.js",
+  "tools/collection/welcome-picks.js",
+  "tools/quality/test-ability-resources.js",
+  "tools/quality/test-nano-render.js",
+  "tools/art/check-pixel-icons.js",
+  "tools/art/roster-loading-test.js",
+  "tools/vfx/test-decal-legible.js",
+  "tools/balance/entry-gate.js",
+  "tools/vfx/test-ult-forms.js"
+ ],
+ "slowest": [
+  {
+   "f": "tools/vfx/test-ult-forms.js",
+   "secs": 992
+  },
+  {
+   "f": "tools/vfx/test-decal-legible.js",
+   "secs": 735
+  },
+  {
+   "f": "tools/items/t_campaign.js",
+   "secs": 380
+  },
+  {
+   "f": "tools/balance/entry-gate.js",
+   "secs": 325
+  },
+  {
+   "f": "tools/regression/t_drag_aim.js",
+   "secs": 308
+  },
+  {
+   "f": "tools/items/t_difficulty.js",
+   "secs": 187
+  },
+  {
+   "f": "tools/ux/test-libro-unico.js",
+   "secs": 187
+  },
+  {
+   "f": "tools/items/t_codex_book.js",
+   "secs": 185
+  },
+  {
+   "f": "tools/alpha/public-onboarding.js",
+   "secs": 167
+  },
+  {
+   "f": "tools/items/t_starter_gift.js",
+   "secs": 146
+  }
+ ],
+ "perf": [
+  {
+   "test": "tools/quality/test-perf-budget.js",
+   "frames": 240,
+   "foes": 60,
+   "p50": 13.5,
+   "p95": 48.1,
+   "max": 517.6,
+   "mean": 20.51,
+   "state": "playing"
+  }
+ ],
+ "classification": {
+  "classified": 131,
+  "byTier": [
+   {
+    "tier": "required",
+    "tests": 131
+   },
+   {
+    "tier": "informational",
+    "tests": 0
+   },
+   {
+    "tier": "external",
+    "tests": 0
+   }
+  ]
+ }
+}

@@ -37,7 +37,7 @@ L.push('## Cobertura por categoría (pruebas obligatorias)', '', '| Categoría |
 if (failing.length) L.push('## Fallos', '', ...failing.flatMap(r => [`- **${r.f}** (${r.tier}${r.reason ? ': ' + r.reason : ''})`, ...(r.retryFails.length ? r.retryFails : r.fails).slice(0, 5).map(x => '  - ' + x.slice(0, 220))]), '');
 if (flaky.length) L.push('## Intermitentes (fallaron y pasaron al reintentar)', '', ...flaky.map(r => `- ${r.f} (${r.tier}): ${r.fails.slice(0, 2).join(' | ').slice(0, 220) || 'ver log'}`), '');
 if (perf.length) L.push('## Rendimiento', '', '| Prueba | Cuadros | Enemigos | p50 ms | p95 ms | máx ms |', '|---|---|---|---|---|---|', ...perf.map(p => `| ${p.test} | ${p.frames} | ${p.foes} | ${p.p50} | ${p.p95} | ${p.max} |`), '', 'Guarda de regresión en un navegador sin GPU; no es una promesa de FPS en dispositivos reales.', '');
-if (silent.length) L.push('## Posibles falsos verdes (pasaron sin imprimir ninguna aserción PASS)', '', ...silent.map(f => `- ${f}`), '');
+if (silent.length) L.push('## Posibles falsos verdes (pasaron sin imprimir ninguna aserción PASS)', '', ...silent.map(r => `- ${r.f}`), '');
 L.push('## Las 10 pruebas más lentas', '', ...slow.map(r => `- ${r.secs}s ${r.f}`), '');
 L.push('## Clasificación', '', ...J.classification.byTier.map(t => `- ${t.tier}: ${t.tests} pruebas`), '');
 fs.writeFileSync(out + '.md', L.join('\n'));
