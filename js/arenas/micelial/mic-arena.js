@@ -119,6 +119,7 @@ ARENA_DEFS.micelial = {
   drawProjectile:micDrawProjectile,
   drawEnemyBody:micDrawEnemyBody,
   camLift:micCamLift,
+  camZoom:micCamZoom,
   netState:micNetState,
   applyNetState:micApplyNetState
 };

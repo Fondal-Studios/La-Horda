@@ -789,17 +789,26 @@ function micDrawProjectile(p){
 /* ---------------- cámara: que entre la Madre ---------------- */
 // Con la pantalla apaisada (poco alto visible) la cámara se levanta para mostrar a la Madre
 // entera, sin dejar al jugador a menos de 150 u del borde de abajo.
+function micCamZoom(normal){
+  if(!micS || !player || !["reveal","fight","dying"].includes(micS.mo.st) || Math.abs(player.x-MIC_MOTHER_POS.x)>1000 || player.y>900) return normal;
+  // Reserve the boss HUD above and player/controls below. Fixed all-pose bounds
+  // prevent zoom pumping between idle, bloom, heart and attack frames.
+  const top=Math.max(104,VH*0.15), bottom=(VH<=500?CAM_HUD_BOTTOM_LOW:CAM_HUD_BOTTOM_TALL)+44;
+  const span=Math.max(1,player.y-_micMotherRect().y+30);
+  return Math.max(normal*0.35,Math.min(normal,(VH-top-bottom)/span));
+}
 function micCamLift(){
   if(!micS || !player) return 0;
   const st = micS.mo.st;
   if(st!=="reveal" && st!=="fight" && st!=="dying") return 0;
   // (arriba y abajo del jugador no se ve lo mismo: el anclaje de la cámara depende del alto, camFitAnchor)
-  const R = _micMotherRect(), up = (VH/2 - CAM_Y_ANCHOR)/CAM_ZOOM, down = (VH/2 + CAM_Y_ANCHOR)/CAM_ZOOM;
+  const R = _micMotherRect(), up = (VH/2 - CAM_Y_ANCHOR - Math.max(104,VH*0.15))/CAM_ZOOM, down = (VH/2 + CAM_Y_ANCHOR)/CAM_ZOOM;
   if(Math.abs(player.x - MIC_MOTHER_POS.x) > 1000 || player.y > 900) return 0;
   const need = player.y - (R.y - 30) - up;
   // el guardián no baja hasta quedar debajo de la voz del Hechicero (abajo al centro)
   const keep = Math.max(130, ((VH <= 500 ? CAM_HUD_BOTTOM_LOW : CAM_HUD_BOTTOM_TALL) + 44)/CAM_ZOOM);
-  return Math.max(0, Math.min(need, down - keep));
+  const lead=typeof CAM_LEAD_Y==="number" ? CAM_LEAD_Y : 0;
+  return Math.max(0, Math.min(need+lead, down - keep+lead));
 }
 
 /* ---------------- pantalla ---------------- */

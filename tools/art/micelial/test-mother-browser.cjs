@@ -32,7 +32,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));const check=(name,value)=>{asse
     _bossIntroT=0;_bossIntroDelay=0;HUDTXT.q=[];HUDTXT.until=0;
     for(const id of ["boss-intro","center-banner","arena-title-card"]){const el=document.getElementById(id);if(el){el.classList.remove("show");el.classList.add("hidden");}}
     // Hold the same camera for A/B. Normal runtime camera fitting is tested separately.
-    updateCamLift=()=>{};
+    for(let i=0;i<160;i++){updateArenaCameraZoom();updateCamLift();}
     return {ready:_micMotherAtlasReady(),src:MIC_MP.mp_atlas.src,w:MIC_MP.mp_atlas.width,h:MIC_MP.mp_atlas.height};
   });
   check('authored atlas loaded '+viewport.width,setup.ready&&setup.w===1360&&setup.h===417);
@@ -51,7 +51,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));const check=(name,value)=>{asse
   for(const [name,M,E,time]of variants){
    const probe=await page.evaluate(({M,E,time})=>{
      micS.mo={st:'fight',ph:1,t:0,dark:0,bloom:0,heart:0,inf:0,beat:0,...M};
-     const e=window.motherProbe;Object.assign(e,{alive:M.st!=='dying'&&M.st!=='dead',packSet:null,packTimer:0,packDur:0,bossWind:null,hitFlash:0,stunTimer:0},E);runElapsedMs=time;CAM_LIFT=micCamLift();
+     const e=window.motherProbe;Object.assign(e,{alive:M.st!=='dying'&&M.st!=='dead',packSet:null,packTimer:0,packDur:0,bossWind:null,hitFlash:0,stunTimer:0},E);runElapsedMs=time;for(let i=0;i<160;i++){updateArenaCameraZoom();updateCamLift();}
      // Observe the actual draw destination/source. The full renderer must use the sheet,
      // not the old portrait or a test-only preview canvas.
      const calls=[],draw=ctx.drawImage;ctx.drawImage=function(...a){if(a[0]===MIC_MP.mp_atlas)calls.push(a.slice(1));return draw.apply(this,a)};
@@ -61,9 +61,9 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));const check=(name,value)=>{asse
    fs.writeFileSync(path.join(OUT,viewport.width+'-'+name+'-probe.json'),JSON.stringify(probe,null,2));
    check('real renderer uses authored frame '+name+' '+viewport.width,probe.calls.length>0&&probe.calls.every(a=>a.length===8&&a[0]===(probe.frame.frame%8)*170&&a[1]===Math.floor(probe.frame.frame/8)*139));
    await page.screenshot({path:path.join(OUT,viewport.width+'-'+name+'-candidate.png')});
-   await page.evaluate(()=>{MIC_MP_OK.mp_atlas=false;render();});
+   await page.evaluate(()=>{window.motherCameraFns=[updateArenaCameraZoom,updateCamLift];updateArenaCameraZoom=()=>{};updateCamLift=()=>{};MIC_MP_OK.mp_atlas=false;render();});
    await page.screenshot({path:path.join(OUT,viewport.width+'-'+name+'-baseline.png')});
-   await page.evaluate(()=>{MIC_MP_OK.mp_atlas=true;});
+   await page.evaluate(()=>{MIC_MP_OK.mp_atlas=true;[updateArenaCameraZoom,updateCamLift]=window.motherCameraFns;});
   }
   // Exercise actual AI/timers/VFX in the arena, not just hand-authored snapshots.
   // Recorded video includes attacks in all three phases; heroes are invulnerable

@@ -69,4 +69,44 @@ check('phase3 cosmetic heartbeat no longer overwrites action',()=>{
  ctx.micAIMadre(e,16,{},500);assert.equal(e.packSet,'atk');assert.equal(e.packTimer,600);
  e.packTimer=0;ctx.micAIMadre(e,16,{},500);assert.equal(e.packSet,'heart');
 });
+check('Madre camera fits all authored phases and player below HUD at close/mid range',()=>{
+ const cv=fs.readFileSync(path.join(ROOT,'js/core/canvas.js'),'utf8');
+ vm.runInContext(cv.slice(cv.indexOf('function computeCamZoom'),cv.indexOf('function _viewportBox')),sandbox);
+ Object.assign(sandbox,{VIEW_WORLD_SHORT:650,VIEW_WORLD_LONG_MAX:1500,MIC_MOTHER_POS:{x:0,y:0},micS:{mo:{st:'fight'}},player:{x:0,y:260}});
+ for(const [w,h] of [[1280,720],[844,390],[390,844]])for(const y of [260,450]){
+   Object.assign(sandbox,{VW:w,VH:h});sandbox.player.y=y;
+   const normal=sandbox.computeCamZoom(w,h),zoom=sandbox.micCamZoom(normal);
+   sandbox.CAM_ZOOM=zoom;sandbox.CAM_Y_ANCHOR=sandbox.camFitAnchor(w,h,zoom);
+   const lift=sandbox.micCamLift(),R=sandbox._micMotherRect();
+   const top=h/2-sandbox.CAM_Y_ANCHOR+(R.y-y+lift)*zoom;
+   const feet=h/2-sandbox.CAM_Y_ANCHOR+lift*zoom;
+   assert(top>=Math.max(104,h*0.15)-1,JSON.stringify({w,h,y,top}));
+   assert(feet<=h-(h<=500?58:92)-43,JSON.stringify({w,h,y,feet}));
+   assert(zoom<=normal&&zoom>=normal*0.35);
+ }
+ sandbox.micS.mo.st='sleep';assert.equal(sandbox.micCamZoom(0.6),0.6);
+ sandbox.micS.mo.st='fight';sandbox.player.y=901;assert.equal(sandbox.micCamZoom(0.6),0.6);
+});
+check('boss camera restores normal zoom on death, arena exit and spectator; input roundtrip stays exact',()=>{
+ vm.runInContext(fs.readFileSync(path.join(ROOT,'js/rendering/camera.js'),'utf8'),sandbox);
+ let hooked=true;Object.assign(sandbox,{VW:844,VH:390,state:'playing',CAM_LEAD_X:12,CAM_LEAD_Y:17,
+  arenaHas:n=>hooked&&['camZoom','camLift'].includes(n),arenaHook:(n,arg)=>n==='camZoom'?sandbox.micCamZoom(arg):sandbox.micCamLift()});
+ sandbox.player.y=260;sandbox.micS.mo.st='fight';sandbox.CAM_ZOOM=0.6;
+ for(let i=0;i<120;i++){
+   sandbox.updateArenaCameraZoom();sandbox.updateCamLift();
+   const world={x:83,y:42},screen=sandbox.worldToScreen(world.x,world.y),lift=vm.runInContext('CAM_LIFT',sandbox);
+   const back={x:sandbox.player.x+sandbox.CAM_LEAD_X+(screen.x-sandbox.VW/2)/sandbox.CAM_ZOOM,
+    y:sandbox.player.y-lift+sandbox.CAM_LEAD_Y+(screen.y-(sandbox.VH/2-sandbox.CAM_Y_ANCHOR))/sandbox.CAM_ZOOM};
+   assert(Math.abs(back.x-world.x)<1e-8&&Math.abs(back.y-world.y)<1e-8);
+ }
+ assert(sandbox.CAM_ZOOM<0.6);
+ for(const mode of ['dead','arena-exit','spectator']){
+   hooked=true;sandbox.micS.mo.st='fight';vm.runInContext('CAM_SUBJECT=null',sandbox);
+   for(let i=0;i<160;i++)sandbox.updateArenaCameraZoom();
+   sandbox.micS.mo.st=mode==='dead'?'dead':'fight';hooked=mode!=='arena-exit';
+   vm.runInContext('CAM_SUBJECT='+ (mode==='spectator'?'{x:5,y:5}':'null'),sandbox);
+   for(let i=0;i<160;i++)sandbox.updateArenaCameraZoom();
+   assert.equal(sandbox.CAM_ZOOM,0.6,mode);
+ }
+});
 console.log(JSON.stringify({pass,scope:'pose and contract unit tests only; visual/browser checks separate'}));
