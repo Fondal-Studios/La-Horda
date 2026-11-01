@@ -33,6 +33,21 @@ jobs:
           trap "kill $SERVER" EXIT
           sleep 1
           node tools/micelial/t_micelial.js
+      - name: Classify existing fungal regression failures against baseline
+        if: failure()
+        continue-on-error: true
+        run: |
+          cp js/arenas/micelial/mic-render.js /tmp/mother-candidate-render.js
+          cp js/arenas/micelial/mic-mother.js /tmp/mother-candidate-ai.js
+          trap 'cp /tmp/mother-candidate-render.js js/arenas/micelial/mic-render.js; cp /tmp/mother-candidate-ai.js js/arenas/micelial/mic-mother.js; kill $SERVER 2>/dev/null || true' EXIT
+          git fetch --depth=1 origin 34ac2852154035b97e53c4807a0a20ee289a40b2
+          git show 34ac2852154035b97e53c4807a0a20ee289a40b2:js/arenas/micelial/mic-render.js > js/arenas/micelial/mic-render.js
+          git show 34ac2852154035b97e53c4807a0a20ee289a40b2:js/arenas/micelial/mic-mother.js > js/arenas/micelial/mic-mother.js
+          python3 -m http.server 8771 --bind 127.0.0.1 >/tmp/mother-baseline-http.log 2>&1 &
+          SERVER=$!
+          sleep 1
+          set -o pipefail
+          node tools/micelial/t_micelial.js 2>&1 | tee /tmp/mother-browser/baseline-regression.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
