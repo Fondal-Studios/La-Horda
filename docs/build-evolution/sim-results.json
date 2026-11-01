@@ -1,6 +1,6 @@
 {
  "site": "http://127.0.0.1:8771",
- "dataSha256": "0fa0cfdff0a44a5ebf0f481d8c535b79e87e2e2f9239019822ec36cf6286be86",
+ "dataSha256": "6e787970de99de3026f503432f19375356402596cabe4cdba52e380f71300181",
  "seeds": [
   117,
   431,
@@ -18,10 +18,10 @@
  ],
  "verdict": {
   "maxDmgGainPct": 8,
-  "minDmgPct": -11.5,
+  "minDmgPct": -10.3,
   "allUnderCeiling": true,
   "errors": 0,
-  "cpuOverheadPct": -3.5
+  "cpuOverheadPct": -2.1
  },
  "summary": [
   {
@@ -34,7 +34,7 @@
    "takenVsBase": 0,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1263,
+   "cpuMs": 1034,
    "ceiling": 14180,
    "underCeiling": true,
    "errors": 0
@@ -49,7 +49,7 @@
    "takenVsBase": 15.6,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1227,
+   "cpuMs": 1003,
    "ceiling": 14180,
    "underCeiling": true,
    "errors": 0
@@ -64,7 +64,7 @@
    "takenVsBase": 20.8,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1115,
+   "cpuMs": 958,
    "ceiling": 14180,
    "underCeiling": true,
    "errors": 0
@@ -79,7 +79,7 @@
    "takenVsBase": 29.5,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1101,
+   "cpuMs": 989,
    "ceiling": 14180,
    "underCeiling": true,
    "errors": 0
@@ -94,7 +94,7 @@
    "takenVsBase": 24.1,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1113,
+   "cpuMs": 951,
    "ceiling": 14180,
    "underCeiling": true,
    "errors": 0
@@ -109,7 +109,7 @@
    "takenVsBase": 0,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1156,
+   "cpuMs": 972,
    "ceiling": 20250,
    "underCeiling": true,
    "errors": 0
@@ -124,7 +124,7 @@
    "takenVsBase": -6.6,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1120,
+   "cpuMs": 993,
    "ceiling": 20250,
    "underCeiling": true,
    "errors": 0
@@ -132,14 +132,14 @@
   {
    "champ": "mago",
    "branch": "mg_glacial",
-   "dmg": 9918,
-   "dmgVsBase": -11.5,
-   "dmgSEpct": 3.8,
-   "taken": 123,
-   "takenVsBase": 0.8,
+   "dmg": 10054,
+   "dmgVsBase": -10.3,
+   "dmgSEpct": 4.3,
+   "taken": 103,
+   "takenVsBase": -15.6,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1143,
+   "cpuMs": 927,
    "ceiling": 20250,
    "underCeiling": true,
    "errors": 0
@@ -154,7 +154,7 @@
    "takenVsBase": 32.8,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1139,
+   "cpuMs": 946,
    "ceiling": 20250,
    "underCeiling": true,
    "errors": 0
@@ -169,7 +169,7 @@
    "takenVsBase": 45.1,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1159,
+   "cpuMs": 954,
    "ceiling": 20250,
    "underCeiling": true,
    "errors": 0
@@ -184,7 +184,7 @@
    "takenVsBase": 0,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1252,
+   "cpuMs": 1167,
    "ceiling": 17385,
    "underCeiling": true,
    "errors": 0
@@ -199,7 +199,7 @@
    "takenVsBase": -12,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1272,
+   "cpuMs": 1192,
    "ceiling": 17385,
    "underCeiling": true,
    "errors": 0
@@ -214,7 +214,7 @@
    "takenVsBase": -13.5,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1268,
+   "cpuMs": 1161,
    "ceiling": 17385,
    "underCeiling": true,
    "errors": 0
@@ -229,7 +229,7 @@
    "takenVsBase": -6,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1249,
+   "cpuMs": 1167,
    "ceiling": 17385,
    "underCeiling": true,
    "errors": 0
@@ -244,7 +244,7 @@
    "takenVsBase": -23.3,
    "healing": 0,
    "survived": "8/8",
-   "cpuMs": 1259,
+   "cpuMs": 1180,
    "ceiling": 17385,
    "underCeiling": true,
    "errors": 0
@@ -262,7 +262,7 @@
    "teamTaken": 1340,
    "taken": 451,
    "healing": 0,
-   "cpuMs": 2452,
+   "cpuMs": 1764,
    "error": null
   },
   {
@@ -276,7 +276,7 @@
    "teamTaken": 1526,
    "taken": 376,
    "healing": 0,
-   "cpuMs": 1872,
+   "cpuMs": 1413,
    "error": null
   },
   {
@@ -290,7 +290,7 @@
    "teamTaken": 681,
    "taken": 569,
    "healing": 0,
-   "cpuMs": 1291,
+   "cpuMs": 1284,
    "error": null
   },
   {
@@ -304,7 +304,7 @@
    "teamTaken": 1186,
    "taken": 613,
    "healing": 0,
-   "cpuMs": 1254,
+   "cpuMs": 1298,
    "error": null
   },
   {
@@ -318,7 +318,7 @@
    "teamTaken": 1204,
    "taken": 599,
    "healing": 0,
-   "cpuMs": 1213,
+   "cpuMs": 1109,
    "error": null
   },
   {
@@ -332,7 +332,7 @@
    "teamTaken": 744,
    "taken": 431,
    "healing": 0,
-   "cpuMs": 1136,
+   "cpuMs": 950,
    "error": null
   },
   {
@@ -346,7 +346,7 @@
    "teamTaken": 928,
    "taken": 732,
    "healing": 0,
-   "cpuMs": 1190,
+   "cpuMs": 1142,
    "error": null
   },
   {
@@ -360,7 +360,7 @@
    "teamTaken": 815,
    "taken": 453,
    "healing": 0,
-   "cpuMs": 1104,
+   "cpuMs": 928,
    "error": null
   },
   {
@@ -374,7 +374,7 @@
    "teamTaken": 670,
    "taken": 542,
    "healing": 0,
-   "cpuMs": 1083,
+   "cpuMs": 1147,
    "error": null
   },
   {
@@ -388,7 +388,7 @@
    "teamTaken": 1263,
    "taken": 860,
    "healing": 0,
-   "cpuMs": 1143,
+   "cpuMs": 1064,
    "error": null
   },
   {
@@ -402,7 +402,7 @@
    "teamTaken": 752,
    "taken": 426,
    "healing": 0,
-   "cpuMs": 1071,
+   "cpuMs": 946,
    "error": null
   },
   {
@@ -416,7 +416,7 @@
    "teamTaken": 795,
    "taken": 440,
    "healing": 0,
-   "cpuMs": 1142,
+   "cpuMs": 911,
    "error": null
   },
   {
@@ -430,7 +430,7 @@
    "teamTaken": 785,
    "taken": 261,
    "healing": 0,
-   "cpuMs": 1201,
+   "cpuMs": 904,
    "error": null
   },
   {
@@ -444,7 +444,7 @@
    "teamTaken": 1052,
    "taken": 391,
    "healing": 0,
-   "cpuMs": 1165,
+   "cpuMs": 884,
    "error": null
   },
   {
@@ -458,7 +458,7 @@
    "teamTaken": 985,
    "taken": 675,
    "healing": 0,
-   "cpuMs": 1270,
+   "cpuMs": 971,
    "error": null
   },
   {
@@ -472,7 +472,7 @@
    "teamTaken": 578,
    "taken": 379,
    "healing": 0,
-   "cpuMs": 1232,
+   "cpuMs": 858,
    "error": null
   },
   {
@@ -486,7 +486,7 @@
    "teamTaken": 1284,
    "taken": 336,
    "healing": 0,
-   "cpuMs": 1232,
+   "cpuMs": 919,
    "error": null
   },
   {
@@ -500,7 +500,7 @@
    "teamTaken": 641,
    "taken": 437,
    "healing": 0,
-   "cpuMs": 1099,
+   "cpuMs": 871,
    "error": null
   },
   {
@@ -514,7 +514,7 @@
    "teamTaken": 1190,
    "taken": 547,
    "healing": 0,
-   "cpuMs": 1083,
+   "cpuMs": 876,
    "error": null
   },
   {
@@ -528,7 +528,7 @@
    "teamTaken": 735,
    "taken": 392,
    "healing": 0,
-   "cpuMs": 1131,
+   "cpuMs": 881,
    "error": null
   },
   {
@@ -542,7 +542,7 @@
    "teamTaken": 1208,
    "taken": 449,
    "healing": 0,
-   "cpuMs": 1075,
+   "cpuMs": 912,
    "error": null
   },
   {
@@ -556,7 +556,7 @@
    "teamTaken": 719,
    "taken": 356,
    "healing": 0,
-   "cpuMs": 1024,
+   "cpuMs": 882,
    "error": null
   },
   {
@@ -570,7 +570,7 @@
    "teamTaken": 1450,
    "taken": 414,
    "healing": 0,
-   "cpuMs": 1106,
+   "cpuMs": 892,
    "error": null
   },
   {
@@ -584,7 +584,7 @@
    "teamTaken": 922,
    "taken": 627,
    "healing": 0,
-   "cpuMs": 1086,
+   "cpuMs": 897,
    "error": null
   },
   {
@@ -598,7 +598,7 @@
    "teamTaken": 1232,
    "taken": 389,
    "healing": 0,
-   "cpuMs": 1091,
+   "cpuMs": 876,
    "error": null
   },
   {
@@ -612,7 +612,7 @@
    "teamTaken": 948,
    "taken": 461,
    "healing": 0,
-   "cpuMs": 1117,
+   "cpuMs": 994,
    "error": null
   },
   {
@@ -626,7 +626,7 @@
    "teamTaken": 826,
    "taken": 474,
    "healing": 0,
-   "cpuMs": 1177,
+   "cpuMs": 855,
    "error": null
   },
   {
@@ -640,7 +640,7 @@
    "teamTaken": 812,
    "taken": 606,
    "healing": 0,
-   "cpuMs": 999,
+   "cpuMs": 830,
    "error": null
   },
   {
@@ -654,7 +654,7 @@
    "teamTaken": 1322,
    "taken": 788,
    "healing": 0,
-   "cpuMs": 1072,
+   "cpuMs": 873,
    "error": null
   },
   {
@@ -668,7 +668,7 @@
    "teamTaken": 757,
    "taken": 314,
    "healing": 0,
-   "cpuMs": 1013,
+   "cpuMs": 862,
    "error": null
   },
   {
@@ -682,7 +682,7 @@
    "teamTaken": 626,
    "taken": 396,
    "healing": 0,
-   "cpuMs": 1026,
+   "cpuMs": 936,
    "error": null
   },
   {
@@ -696,7 +696,7 @@
    "teamTaken": 1016,
    "taken": 458,
    "healing": 0,
-   "cpuMs": 1016,
+   "cpuMs": 1001,
    "error": null
   },
   {
@@ -710,7 +710,7 @@
    "teamTaken": 1127,
    "taken": 623,
    "healing": 0,
-   "cpuMs": 1058,
+   "cpuMs": 912,
    "error": null
   },
   {
@@ -724,7 +724,7 @@
    "teamTaken": 1158,
    "taken": 484,
    "healing": 0,
-   "cpuMs": 1055,
+   "cpuMs": 966,
    "error": null
   },
   {
@@ -738,7 +738,7 @@
    "teamTaken": 1325,
    "taken": 542,
    "healing": 0,
-   "cpuMs": 975,
+   "cpuMs": 928,
    "error": null
   },
   {
@@ -752,7 +752,7 @@
    "teamTaken": 1069,
    "taken": 396,
    "healing": 0,
-   "cpuMs": 991,
+   "cpuMs": 909,
    "error": null
   },
   {
@@ -766,7 +766,7 @@
    "teamTaken": 731,
    "taken": 750,
    "healing": 0,
-   "cpuMs": 1159,
+   "cpuMs": 899,
    "error": null
   },
   {
@@ -780,7 +780,7 @@
    "teamTaken": 997,
    "taken": 730,
    "healing": 0,
-   "cpuMs": 1063,
+   "cpuMs": 1045,
    "error": null
   },
   {
@@ -794,7 +794,7 @@
    "teamTaken": 1032,
    "taken": 399,
    "healing": 0,
-   "cpuMs": 1009,
+   "cpuMs": 973,
    "error": null
   },
   {
@@ -808,7 +808,7 @@
    "teamTaken": 929,
    "taken": 433,
    "healing": 0,
-   "cpuMs": 1071,
+   "cpuMs": 915,
    "error": null
   },
   {
@@ -822,7 +822,7 @@
    "teamTaken": 1301,
    "taken": 126,
    "healing": 0,
-   "cpuMs": 1112,
+   "cpuMs": 969,
    "error": null
   },
   {
@@ -836,21 +836,21 @@
    "teamTaken": 1107,
    "taken": 116,
    "healing": 0,
-   "cpuMs": 1106,
+   "cpuMs": 924,
    "error": null
   },
   {
    "key": "mago",
    "branch": "mg_glacial",
    "seed": 117,
-   "damage": 12096,
+   "damage": 9518,
    "alive": true,
-   "hp": 166,
-   "casts": 54,
-   "teamTaken": 782,
-   "taken": 230,
+   "hp": 195,
+   "casts": 45,
+   "teamTaken": 808,
+   "taken": 72,
    "healing": 0,
-   "cpuMs": 1186,
+   "cpuMs": 904,
    "error": null
   },
   {
@@ -864,7 +864,7 @@
    "teamTaken": 1116,
    "taken": 88,
    "healing": 0,
-   "cpuMs": 1135,
+   "cpuMs": 1018,
    "error": null
   },
   {
@@ -878,7 +878,7 @@
    "teamTaken": 1234,
    "taken": 91,
    "healing": 0,
-   "cpuMs": 1121,
+   "cpuMs": 962,
    "error": null
   },
   {
@@ -892,7 +892,7 @@
    "teamTaken": 1256,
    "taken": 85,
    "healing": 0,
-   "cpuMs": 1094,
+   "cpuMs": 908,
    "error": null
   },
   {
@@ -906,21 +906,21 @@
    "teamTaken": 1590,
    "taken": 133,
    "healing": 0,
-   "cpuMs": 1063,
+   "cpuMs": 950,
    "error": null
   },
   {
    "key": "mago",
    "branch": "mg_glacial",
    "seed": 431,
-   "damage": 9095,
+   "damage": 11315,
    "alive": true,
    "hp": 195,
-   "casts": 48,
-   "teamTaken": 1580,
-   "taken": 120,
+   "casts": 49,
+   "teamTaken": 1588,
+   "taken": 73,
    "healing": 0,
-   "cpuMs": 1049,
+   "cpuMs": 912,
    "error": null
   },
   {
@@ -934,7 +934,7 @@
    "teamTaken": 953,
    "taken": 192,
    "healing": 0,
-   "cpuMs": 1098,
+   "cpuMs": 986,
    "error": null
   },
   {
@@ -948,7 +948,7 @@
    "teamTaken": 876,
    "taken": 295,
    "healing": 0,
-   "cpuMs": 1047,
+   "cpuMs": 965,
    "error": null
   },
   {
@@ -962,7 +962,7 @@
    "teamTaken": 1170,
    "taken": 189,
    "healing": 0,
-   "cpuMs": 1158,
+   "cpuMs": 999,
    "error": null
   },
   {
@@ -976,21 +976,21 @@
    "teamTaken": 989,
    "taken": 142,
    "healing": 0,
-   "cpuMs": 1090,
+   "cpuMs": 913,
    "error": null
   },
   {
    "key": "mago",
    "branch": "mg_glacial",
    "seed": 991,
-   "damage": 9715,
+   "damage": 9936,
    "alive": true,
    "hp": 246,
-   "casts": 51,
-   "teamTaken": 990,
+   "casts": 52,
+   "teamTaken": 989,
    "taken": 142,
    "healing": 0,
-   "cpuMs": 1107,
+   "cpuMs": 886,
    "error": null
   },
   {
@@ -1004,7 +1004,7 @@
    "teamTaken": 1206,
    "taken": 113,
    "healing": 0,
-   "cpuMs": 1108,
+   "cpuMs": 910,
    "error": null
   },
   {
@@ -1018,7 +1018,7 @@
    "teamTaken": 1319,
    "taken": 221,
    "healing": 0,
-   "cpuMs": 1142,
+   "cpuMs": 945,
    "error": null
   },
   {
@@ -1032,7 +1032,7 @@
    "teamTaken": 875,
    "taken": 126,
    "healing": 0,
-   "cpuMs": 1193,
+   "cpuMs": 1121,
    "error": null
   },
   {
@@ -1046,21 +1046,21 @@
    "teamTaken": 1147,
    "taken": 108,
    "healing": 0,
-   "cpuMs": 1252,
+   "cpuMs": 1120,
    "error": null
   },
   {
    "key": "mago",
    "branch": "mg_glacial",
    "seed": 1303,
-   "damage": 11292,
+   "damage": 12289,
    "alive": true,
    "hp": 195,
    "casts": 68,
-   "teamTaken": 1524,
-   "taken": 66,
+   "teamTaken": 1379,
+   "taken": 115,
    "healing": 0,
-   "cpuMs": 1320,
+   "cpuMs": 930,
    "error": null
   },
   {
@@ -1074,7 +1074,7 @@
    "teamTaken": 891,
    "taken": 111,
    "healing": 0,
-   "cpuMs": 1144,
+   "cpuMs": 876,
    "error": null
   },
   {
@@ -1088,7 +1088,7 @@
    "teamTaken": 1230,
    "taken": 262,
    "healing": 0,
-   "cpuMs": 1176,
+   "cpuMs": 899,
    "error": null
   },
   {
@@ -1102,7 +1102,7 @@
    "teamTaken": 827,
    "taken": 78,
    "healing": 0,
-   "cpuMs": 1185,
+   "cpuMs": 950,
    "error": null
   },
   {
@@ -1116,21 +1116,21 @@
    "teamTaken": 735,
    "taken": 146,
    "healing": 0,
-   "cpuMs": 1135,
+   "cpuMs": 944,
    "error": null
   },
   {
    "key": "mago",
    "branch": "mg_glacial",
    "seed": 2111,
-   "damage": 8572,
+   "damage": 8592,
    "alive": true,
    "hp": 195,
    "casts": 53,
-   "teamTaken": 757,
+   "teamTaken": 735,
    "taken": 146,
    "healing": 0,
-   "cpuMs": 1166,
+   "cpuMs": 894,
    "error": null
   },
   {
@@ -1144,7 +1144,7 @@
    "teamTaken": 1452,
    "taken": 291,
    "healing": 0,
-   "cpuMs": 1187,
+   "cpuMs": 922,
    "error": null
   },
   {
@@ -1158,7 +1158,7 @@
    "teamTaken": 965,
    "taken": 167,
    "healing": 0,
-   "cpuMs": 1156,
+   "cpuMs": 961,
    "error": null
   },
   {
@@ -1172,7 +1172,7 @@
    "teamTaken": 1523,
    "taken": 179,
    "healing": 0,
-   "cpuMs": 1152,
+   "cpuMs": 929,
    "error": null
   },
   {
@@ -1186,21 +1186,21 @@
    "teamTaken": 1257,
    "taken": 47,
    "healing": 0,
-   "cpuMs": 1093,
+   "cpuMs": 979,
    "error": null
   },
   {
    "key": "mago",
    "branch": "mg_glacial",
    "seed": 3571,
-   "damage": 9113,
+   "damage": 8193,
    "alive": true,
    "hp": 195,
    "casts": 52,
-   "teamTaken": 1017,
+   "teamTaken": 1257,
    "taken": 47,
    "healing": 0,
-   "cpuMs": 1073,
+   "cpuMs": 940,
    "error": null
   },
   {
@@ -1214,7 +1214,7 @@
    "teamTaken": 1264,
    "taken": 92,
    "healing": 0,
-   "cpuMs": 1104,
+   "cpuMs": 953,
    "error": null
   },
   {
@@ -1228,7 +1228,7 @@
    "teamTaken": 848,
    "taken": 116,
    "healing": 0,
-   "cpuMs": 1144,
+   "cpuMs": 929,
    "error": null
   },
   {
@@ -1242,7 +1242,7 @@
    "teamTaken": 1096,
    "taken": 99,
    "healing": 0,
-   "cpuMs": 1170,
+   "cpuMs": 946,
    "error": null
   },
   {
@@ -1256,21 +1256,21 @@
    "teamTaken": 1113,
    "taken": 99,
    "healing": 0,
-   "cpuMs": 1080,
+   "cpuMs": 1001,
    "error": null
   },
   {
    "key": "mago",
    "branch": "mg_glacial",
    "seed": 4423,
-   "damage": 10137,
+   "damage": 9726,
    "alive": true,
-   "hp": 189,
-   "casts": 47,
-   "teamTaken": 1021,
-   "taken": 133,
+   "hp": 195,
+   "casts": 46,
+   "teamTaken": 1071,
+   "taken": 99,
    "healing": 0,
-   "cpuMs": 1090,
+   "cpuMs": 927,
    "error": null
   },
   {
@@ -1284,7 +1284,7 @@
    "teamTaken": 1087,
    "taken": 282,
    "healing": 0,
-   "cpuMs": 1186,
+   "cpuMs": 967,
    "error": null
   },
   {
@@ -1298,7 +1298,7 @@
    "teamTaken": 869,
    "taken": 147,
    "healing": 0,
-   "cpuMs": 1203,
+   "cpuMs": 979,
    "error": null
   },
   {
@@ -1312,7 +1312,7 @@
    "teamTaken": 934,
    "taken": 91,
    "healing": 0,
-   "cpuMs": 1184,
+   "cpuMs": 957,
    "error": null
   },
   {
@@ -1326,21 +1326,21 @@
    "teamTaken": 725,
    "taken": 124,
    "healing": 0,
-   "cpuMs": 1143,
+   "cpuMs": 1110,
    "error": null
   },
   {
    "key": "mago",
    "branch": "mg_glacial",
    "seed": 5381,
-   "damage": 9326,
+   "damage": 10865,
    "alive": true,
-   "hp": 246,
-   "casts": 54,
-   "teamTaken": 931,
-   "taken": 96,
+   "hp": 189,
+   "casts": 55,
+   "teamTaken": 736,
+   "taken": 131,
    "healing": 0,
-   "cpuMs": 1150,
+   "cpuMs": 1019,
    "error": null
   },
   {
@@ -1354,7 +1354,7 @@
    "teamTaken": 1027,
    "taken": 128,
    "healing": 0,
-   "cpuMs": 1149,
+   "cpuMs": 936,
    "error": null
   },
   {
@@ -1368,7 +1368,7 @@
    "teamTaken": 865,
    "taken": 119,
    "healing": 0,
-   "cpuMs": 1284,
+   "cpuMs": 991,
    "error": null
   },
   {
@@ -1382,7 +1382,7 @@
    "teamTaken": 687,
    "taken": 121,
    "healing": 0,
-   "cpuMs": 1270,
+   "cpuMs": 1206,
    "error": null
   },
   {
@@ -1396,7 +1396,7 @@
    "teamTaken": 897,
    "taken": 167,
    "healing": 0,
-   "cpuMs": 1216,
+   "cpuMs": 1171,
    "error": null
   },
   {
@@ -1410,7 +1410,7 @@
    "teamTaken": 999,
    "taken": 232,
    "healing": 0,
-   "cpuMs": 1195,
+   "cpuMs": 1221,
    "error": null
   },
   {
@@ -1424,7 +1424,7 @@
    "teamTaken": 1295,
    "taken": 123,
    "healing": 0,
-   "cpuMs": 1180,
+   "cpuMs": 1157,
    "error": null
   },
   {
@@ -1438,7 +1438,7 @@
    "teamTaken": 973,
    "taken": 146,
    "healing": 0,
-   "cpuMs": 1299,
+   "cpuMs": 1190,
    "error": null
   },
   {
@@ -1452,7 +1452,7 @@
    "teamTaken": 893,
    "taken": 138,
    "healing": 0,
-   "cpuMs": 1281,
+   "cpuMs": 1078,
    "error": null
   },
   {
@@ -1466,7 +1466,7 @@
    "teamTaken": 961,
    "taken": 112,
    "healing": 0,
-   "cpuMs": 1209,
+   "cpuMs": 1104,
    "error": null
   },
   {
@@ -1480,7 +1480,7 @@
    "teamTaken": 993,
    "taken": 80,
    "healing": 0,
-   "cpuMs": 1323,
+   "cpuMs": 1114,
    "error": null
   },
   {
@@ -1494,7 +1494,7 @@
    "teamTaken": 864,
    "taken": 296,
    "healing": 0,
-   "cpuMs": 1230,
+   "cpuMs": 1126,
    "error": null
   },
   {
@@ -1508,7 +1508,7 @@
    "teamTaken": 693,
    "taken": 85,
    "healing": 0,
-   "cpuMs": 1217,
+   "cpuMs": 1090,
    "error": null
   },
   {
@@ -1522,7 +1522,7 @@
    "teamTaken": 804,
    "taken": 92,
    "healing": 0,
-   "cpuMs": 1250,
+   "cpuMs": 1127,
    "error": null
   },
   {
@@ -1536,7 +1536,7 @@
    "teamTaken": 819,
    "taken": 68,
    "healing": 0,
-   "cpuMs": 1310,
+   "cpuMs": 1150,
    "error": null
   },
   {
@@ -1550,7 +1550,7 @@
    "teamTaken": 587,
    "taken": 132,
    "healing": 0,
-   "cpuMs": 1197,
+   "cpuMs": 1149,
    "error": null
   },
   {
@@ -1564,7 +1564,7 @@
    "teamTaken": 926,
    "taken": 101,
    "healing": 0,
-   "cpuMs": 1220,
+   "cpuMs": 1134,
    "error": null
   },
   {
@@ -1578,7 +1578,7 @@
    "teamTaken": 522,
    "taken": 192,
    "healing": 0,
-   "cpuMs": 1125,
+   "cpuMs": 1184,
    "error": null
   },
   {
@@ -1592,7 +1592,7 @@
    "teamTaken": 1126,
    "taken": 282,
    "healing": 0,
-   "cpuMs": 1192,
+   "cpuMs": 1189,
    "error": null
   },
   {
@@ -1606,7 +1606,7 @@
    "teamTaken": 1073,
    "taken": 242,
    "healing": 0,
-   "cpuMs": 1198,
+   "cpuMs": 1325,
    "error": null
   },
   {
@@ -1620,7 +1620,7 @@
    "teamTaken": 912,
    "taken": 178,
    "healing": 0,
-   "cpuMs": 1142,
+   "cpuMs": 1088,
    "error": null
   },
   {
@@ -1634,7 +1634,7 @@
    "teamTaken": 846,
    "taken": 102,
    "healing": 0,
-   "cpuMs": 1123,
+   "cpuMs": 1141,
    "error": null
   },
   {
@@ -1648,7 +1648,7 @@
    "teamTaken": 1025,
    "taken": 77,
    "healing": 0,
-   "cpuMs": 1315,
+   "cpuMs": 1153,
    "error": null
   },
   {
@@ -1662,7 +1662,7 @@
    "teamTaken": 615,
    "taken": 114,
    "healing": 0,
-   "cpuMs": 1239,
+   "cpuMs": 1326,
    "error": null
   },
   {
@@ -1676,7 +1676,7 @@
    "teamTaken": 1186,
    "taken": 77,
    "healing": 0,
-   "cpuMs": 1304,
+   "cpuMs": 1175,
    "error": null
   },
   {
@@ -1690,7 +1690,7 @@
    "teamTaken": 928,
    "taken": 58,
    "healing": 0,
-   "cpuMs": 1249,
+   "cpuMs": 1122,
    "error": null
   },
   {
@@ -1704,7 +1704,7 @@
    "teamTaken": 1383,
    "taken": 113,
    "healing": 0,
-   "cpuMs": 1297,
+   "cpuMs": 1185,
    "error": null
   },
   {
@@ -1718,7 +1718,7 @@
    "teamTaken": 838,
    "taken": 44,
    "healing": 0,
-   "cpuMs": 1297,
+   "cpuMs": 1333,
    "error": null
   },
   {
@@ -1732,7 +1732,7 @@
    "teamTaken": 1100,
    "taken": 175,
    "healing": 0,
-   "cpuMs": 1260,
+   "cpuMs": 1129,
    "error": null
   },
   {
@@ -1746,7 +1746,7 @@
    "teamTaken": 828,
    "taken": 112,
    "healing": 0,
-   "cpuMs": 1324,
+   "cpuMs": 1171,
    "error": null
   },
   {
@@ -1760,7 +1760,7 @@
    "teamTaken": 765,
    "taken": 66,
    "healing": 0,
-   "cpuMs": 1342,
+   "cpuMs": 1163,
    "error": null
   },
   {
@@ -1774,7 +1774,7 @@
    "teamTaken": 635,
    "taken": 73,
    "healing": 0,
-   "cpuMs": 1343,
+   "cpuMs": 1247,
    "error": null
   },
   {
@@ -1788,7 +1788,7 @@
    "teamTaken": 1108,
    "taken": 37,
    "healing": 0,
-   "cpuMs": 1272,
+   "cpuMs": 1151,
    "error": null
   },
   {
@@ -1802,7 +1802,7 @@
    "teamTaken": 805,
    "taken": 72,
    "healing": 0,
-   "cpuMs": 1246,
+   "cpuMs": 1113,
    "error": null
   },
   {
@@ -1816,7 +1816,7 @@
    "teamTaken": 911,
    "taken": 17,
    "healing": 0,
-   "cpuMs": 1368,
+   "cpuMs": 1209,
    "error": null
   },
   {
@@ -1830,7 +1830,7 @@
    "teamTaken": 635,
    "taken": 23,
    "healing": 0,
-   "cpuMs": 1387,
+   "cpuMs": 1263,
    "error": null
   },
   {
@@ -1844,7 +1844,7 @@
    "teamTaken": 835,
    "taken": 96,
    "healing": 0,
-   "cpuMs": 1278,
+   "cpuMs": 1156,
    "error": null
   },
   {
@@ -1858,7 +1858,7 @@
    "teamTaken": 871,
    "taken": 67,
    "healing": 0,
-   "cpuMs": 1269,
+   "cpuMs": 1148,
    "error": null
   },
   {
@@ -1872,7 +1872,7 @@
    "teamTaken": 1102,
    "taken": 67,
    "healing": 0,
-   "cpuMs": 1281,
+   "cpuMs": 1167,
    "error": null
   },
   {
@@ -1886,7 +1886,7 @@
    "teamTaken": 686,
    "taken": 140,
    "healing": 0,
-   "cpuMs": 1246,
+   "cpuMs": 1227,
    "error": null
   },
   {
@@ -1900,7 +1900,7 @@
    "teamTaken": 853,
    "taken": 153,
    "healing": 0,
-   "cpuMs": 1307,
+   "cpuMs": 1166,
    "error": null
   },
   {
@@ -1914,7 +1914,7 @@
    "teamTaken": 861,
    "taken": 92,
    "healing": 0,
-   "cpuMs": 1321,
+   "cpuMs": 1186,
    "error": null
   },
   {
@@ -1928,7 +1928,7 @@
    "teamTaken": 915,
    "taken": 167,
    "healing": 0,
-   "cpuMs": 1280,
+   "cpuMs": 1193,
    "error": null
   }
  ],

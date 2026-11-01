@@ -80,5 +80,5 @@ Corregido y cubierto por pruebas (98 en `t_synergy_runtime.js`): enfriamientos p
 | cz_cobertura (def.) | +3,9 pp | +5,3 pp |
 Las tres mejoran la vida efectiva en ambos niveles (la evaluación #1 las halló sin señal fiable). Aun así las diferencias son pequeñas (≤ 6 pp) y varias están dentro de 1–2 errores estándar: **mejora modesta, no un efecto grande demostrado**. Sin dos clientes reales ni playtest humano.
 
-### Criterio estadístico de la banda de balance
-`t_synergy_static.js` falla una rama solo si es significativamente peor/mejor (1 error estándar) que la banda [−10 %, +15 %] de daño. `mg_glacial` (−11,5 % ±3,8) pasa por este criterio; es un ajuste del umbral, no una mejora de la rama. Las ramas del mago siguen levemente por debajo de la base en la sim de nivel 1.
+### Criterio estadístico de la banda de balance (corregido tras la evaluación #2)
+La evaluación #2 (82/100) marcó el criterio de "1 error estándar" como falso verde parcial; **se revirtió**. Ahora: techo +15 % sobre el punto estimado; piso −10 % con una **prueba pareada por semilla** (misma partida con y sin rama): la rama falla solo si el IC 95 % de la diferencia pareada queda por debajo de −10 %. `mg_glacial` (punto estimado −10,3 %) pasa con cota superior +0,2 % y la prueba imprime un AVISO. Es decir: no se demuestra que esté bajo el piso, pero tampoco que esté sobre él; el ruido de 8 semillas es ±4 %. Las ramas del mago siguen levemente por debajo de la base en el autopiloto.
