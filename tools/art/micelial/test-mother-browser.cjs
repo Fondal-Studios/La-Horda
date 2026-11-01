@@ -88,8 +88,10 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));const check=(name,value)=>{asse
     const original={hp:e.hp,dmg:e.dmg,radius:e.radius,x:e.x,y:e.y};
     micAIMadre(e,16,player,500);
     const kept=e.packSet==='atk';
-    const before=JSON.stringify(e);for(let i=0;i<20;i++)_micDrawMother(e,runElapsedMs/1000);
-    const clean=JSON.stringify(e)===before;
+    // Actual combat creates entity↔target cycles. Snapshot every own field
+    // by identity/value instead of JSON-stringifying that object graph.
+    const before=new Map(Object.entries(e));for(let i=0;i<20;i++)_micDrawMother(e,runElapsedMs/1000);
+    const clean=Object.keys(e).length===before.size&&Object.entries(e).every(([k,v])=>Object.is(v,before.get(k)));
     const serial=_netDeltaOf({},e,true),M=netSer(micS.mo,1);
     const host=_micMotherFrame(e,micS.mo,runElapsedMs),guest=_micMotherFrame(serial,M,runElapsedMs);
     micS.mo={st:'dead',t:0};let count=0;const draw=ctx.drawImage;ctx.drawImage=function(...args){if(args[0]===MIC_MP.mp_atlas)count++;return draw.apply(this,args)};
