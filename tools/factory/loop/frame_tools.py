@@ -39,11 +39,13 @@ def post(out,res,rnd):
     key=(a[:,:,1]>150)&(a[:,:,0]<110+40)&(a[:,:,2]<110+40)&(a[:,:,1]-np.maximum(a[:,:,0],a[:,:,2])>60)
     rgba=np.dstack([np.asarray(im),np.where(key,0,255).astype(np.uint8)]);g=Image.fromarray(rgba.astype(np.uint8),'RGBA')
     bb=g.split()[3].point(lambda v:255 if v>128 else 0).getbbox();g=g.crop(bb)
-    tw,th=x1-x0,y1-y0;s=th/g.height;g=g.resize((max(1,round(g.width*s)),th),Image.BOX)       # misma altura que el cuadro actual
+    tw,th=x1-x0,y1-y0;s=th/g.height
+    s=min(s,(fh-6)/g.height,(fw-6)/g.width)                                                   # margen mínimo de 3 px: nada toca el borde de la celda
+    th=max(1,round(g.height*s));g=g.resize((max(1,round(g.width*s)),th),Image.BOX)
     ga=np.asarray(g).copy();ga[:,:,3]=np.where(ga[:,:,3]>110,255,0)                              # alfa duro
     pal=palette_of(meta['champ']);rgb=ga[:,:,:3].astype(int);d=((rgb[:,:,None,:]-pal[None,None])**2).sum(3);ga[:,:,:3]=pal[d.argmin(2)].astype(np.uint8)  # paleta del Códice
     ga=Image.fromarray(ga,'RGBA');cell=Image.new('RGBA',(fw,fh));cx=(x0+x1)//2
-    cell.alpha_composite(ga,(cx-ga.width//2,y1-th));cell.save(f'{out}/candidate_cell_{rnd}.png')
+    cell.alpha_composite(ga,(max(3,min(fw-3-ga.width,cx-ga.width//2)),y1-th));cell.save(f'{out}/candidate_cell_{rnd}.png')
 def critic(out,rnd):
     meta=json.load(open(f'{out}/meta.json'));fw,fh=meta['cell']
     cur=np.asarray(Image.open(f'{out}/cur_cell.png'));cand=np.asarray(Image.open(f'{out}/candidate_cell_{rnd}.png'))
