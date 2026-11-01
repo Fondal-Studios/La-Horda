@@ -1,0 +1,34 @@
+name: Madre Espora authored animation
+on:
+  pull_request:
+    paths:
+      - 'js/arenas/micelial/**'
+      - 'tools/art/micelial/**'
+      - 'assets/sprites/arenas/micelial/**'
+      - '.github/workflows/madre-espora-animation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mother-animation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: node tools/art/micelial/test-mother-animation.cjs
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - run: node tools/art/micelial/test-mother-browser.cjs
+      - run: node tools/bosses/t_boss_arena_hooks.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: madre-espora-runtime-evidence
+          path: /tmp/mother-browser/
+          retention-days: 14

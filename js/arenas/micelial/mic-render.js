@@ -23,6 +23,8 @@ function _micImg(src, key, store, ok){ const im = new Image(); im.onload = ()=>{
 for(const n of MIC_FX_NAMES) _micImg("assets/sprites/arenas/micelial/fx/"+n+".png", n, MIC_FX, MIC_FX_OK);
 const MIC_MP = {}, MIC_MP_OK = {};
 for(const n of ["mp_full","mp_cap","mp_arm_l","mp_arm_r"]) _micImg("assets/sprites/arenas/micelial/mother/"+n+".png", n, MIC_MP, MIC_MP_OK);
+// The authored animation sheet already ships with the original boss art.
+_micImg("assets/sprites/arenas/micelial/madre_espora/atlas.png", "mp_atlas", MIC_MP, MIC_MP_OK);
 const MIC_BG = {}, MIC_BG_OK = {};
 _micImg("assets/sprites/arenas/micelial/map/map_initial.png", "a", MIC_BG, MIC_BG_OK);
 _micImg("assets/sprites/arenas/micelial/map/map_mature.png", "b", MIC_BG, MIC_BG_OK);
@@ -417,8 +419,8 @@ function micDrawEnemyBody(e){
   }
   return false;
 }
-// La Madre: el retrato pintado entero, con partes que se animan encima (sombrero que late,
-// brazos que brillan al atacar, corazón expuesto en la fase 3).
+// La Madre uses the original authored animation sheet. The old portrait implementation
+// below remains an explicit loading/error fallback, not the normal animation path.
 // Legibilidad en partida (reseña #18, captura 13: "mancha de ruido" a 844x390): se dibuja un poco más
 // chica (500 -> 440) y desde una versión "de juego" del mismo retrato (_micMotherLegible).
 const MIC_MOTHER_H = 440, MIC_MOTHER_BASE = 205; // alto dibujado y línea de las raíces (y del mundo)
@@ -489,8 +491,114 @@ function _micMotherLegible(){
   }catch(err){ _micMotherLeg = null; } // (si el navegador no deja leer píxeles, queda el retrato de siempre)
   return _micMotherLeg;
 }
-function _micMotherRect(){ const img = MIC_MP.mp_full, h = MIC_MOTHER_H, w = h*(img && img.width ? img.width/img.height : 395/455); return {w, h, x:MIC_MOTHER_POS.x - w/2, y:MIC_MOTHER_BASE - h}; }
-function _micDrawMother(e, t){
+/* Authored frames, not a moving portrait. Source: art-source/micelial/bosses.png.
+   Keep the atlas in its native grid. The ground line never changes between frames;
+   attack anticipation is held until the actual windup ends. No gameplay writes here. */
+const MIC_MOTHER_ANIM = Object.freeze({
+  w:170, h:139, cols:8, anchor:0.9496, scale:4,
+  idle:[9,10,11,10], atk:[0,1,2], cast:[5,10],
+  trans:[15,16,17], bloom:[17,3,4,3], open:[12,13,14],
+  heart:[13,14,13,12], death:[18,6,7]
+});
+function _micMotherFrame(e, M, timeMs){
+  const A = MIC_MOTHER_ANIM, clamp = q=>Math.max(0, Math.min(0.999999, Number.isFinite(q) ? q : 0));
+  const once = (a,q)=>a[Math.floor(clamp(q)*a.length)];
+  const loop = (a,ms)=>a[Math.floor(Math.max(0, timeMs||0)/ms)%a.length];
+  if(M.st==="dead") return {frame:7, alpha:0, rise:1, state:"dead"};
+  if(M.st==="dying"){
+    const T = Math.max(0,M.t||0);
+    return {frame:T<4700 ? 18 : (T<6600 ? 6 : 7), alpha:1-Math.min(1,Math.max(0,(T-8000)/1000)), rise:1, state:"death"};
+  }
+  if(M.st==="sleep" || M.st==="stir") return {frame:9,alpha:0,rise:0,state:M.st};
+  if(M.st==="reveal") return {frame:once([15,16,17,9], (M.t-1500)/5500),alpha:1,rise:Math.max(0,Math.min(1,(M.t-1500)/5500)),state:"reveal"};
+  if(M.tr){
+    const set=M.tr.to===2 ? "trans" : "open";
+    const duration=M.tr.to===2 ? MIC_CFG.madre.closeMs : 2600;
+    return {frame:once(A[set],M.tr.t/duration),alpha:1,rise:1,state:set};
+  }
+  let frame, state="idle";
+  // Pack timers are replicated by the existing snapshot protocol. The timer, not
+  // wall-clock time, selects one-shot poses: pausing cannot finish an attack.
+  if(e && e.stunTimer>0){ frame=9; state="stunned"; }
+  else if(e && e.packTimer>0 && ["atk","cast","bloom"].includes(e.packSet)){
+    state=e.packSet;
+    const elapsed=Math.max(0,(e.packDur||1)-e.packTimer);
+    if(state==="atk" && e.bossWind){
+      frame=e.bossWind.t < e.bossWind.dur*0.45 ? 0 : 1;
+    }else if(state==="atk" && e.packDur>700){
+      // Claw/whip resolve at duration-500; then recover to idle, never loop a strike.
+      const after=elapsed-Math.max(0,e.packDur-500);
+      frame=after<0 ? 1 : (after<190 ? 2 : (after<350 ? 1 : 9));
+    }else if(state==="atk"){
+      // The spore projectile is fired immediately; use the authored ranged pose,
+      // not the root-whip frame with a baked slash which suggests a different hit.
+      frame=elapsed<260 ? 5 : 10;
+    }else if(state==="cast") frame=elapsed<e.packDur*0.7 ? 5 : 10;
+    else frame=once(A.bloom,elapsed/Math.max(1,e.packDur));
+  }else if(M.heart || (M.net && M.net.st==="open")){frame=loop(A.heart,240);state="heart";}
+  else if(M.bloom){frame=loop([17,3,17,3],380);state="bloom-idle";}
+  else frame=loop(A.idle,300);
+  // Later-phase attacks retain their evolved body rather than snapping back to
+  // the much smaller colony form. Existing attack VFX/telegraphs still own range.
+  const action=state==="atk" || state==="cast" || state==="bloom" || state==="stunned";
+  if(action && (M.heart || (M.net && M.net.st==="open"))){
+    frame=frame===0 || frame===5 ? 12 : (frame===2 || frame===4 ? 14 : 13);
+  }else if(action && M.bloom){
+    // Two authored evolved poses: hold anticipation, release on the resolved
+    // impact, then recover. This is not a newly drawn multi-frame strike.
+    frame=state==="atk" ? (frame===2 || frame===5 ? 3 : 17) : (frame===3 || frame===4 || frame===10 ? 3 : 17);
+  }
+  return {frame,alpha:1,rise:1,state};
+}
+function _micMotherAtlasReady(){
+  const im=MIC_MP.mp_atlas;
+  return !!(MIC_MP_OK.mp_atlas && im && im.width===1360 && im.height===417);
+}
+function _micDrawMotherFrame(e,t){
+  if(!_micMotherAtlasReady()) return false;
+  const M=micS ? micS.mo : {st:"fight",t:0}, A=MIC_MOTHER_ANIM;
+  const pose=_micMotherFrame(e,M,typeof runElapsedMs==="number" ? runElapsedMs : t*1000);
+  if(pose.alpha<=0 || pose.rise<=0) return true;
+  const w=A.w*A.scale, h=A.h*A.scale, x=MIC_MOTHER_POS.x-w/2, y=MIC_MOTHER_BASE-h*A.anchor;
+  ctx.save();
+  ctx.fillStyle="rgba(0,0,0,0.35)"; ctx.beginPath();
+  ctx.ellipse(MIC_MOTHER_POS.x,MIC_MOTHER_POS.y+40,150*pose.rise,40*pose.rise,0,0,Math.PI*2);ctx.fill();
+  if(pose.rise<1){ctx.beginPath();ctx.rect(x-2,MIC_MOTHER_BASE-h*pose.rise,w+4,h*pose.rise+30);ctx.clip();}
+  ctx.globalAlpha*=pose.alpha; ctx.imageSmoothingEnabled=false;
+  const sx=(pose.frame%A.cols)*A.w, sy=Math.floor(pose.frame/A.cols)*A.h;
+  ctx.drawImage(MIC_MP.mp_atlas,sx,sy,A.w,A.h,x,y,w,h);
+  if(e && e.hitFlash>0){
+    ctx.globalCompositeOperation="lighter";ctx.globalAlpha*=Math.min(0.25,e.hitFlash/400);
+    ctx.drawImage(MIC_MP.mp_atlas,sx,sy,A.w,A.h,x,y,w,h);
+  }
+  ctx.restore();
+  // The vulnerability cue is independent of the action pose and cannot vanish
+  // when the boss casts. It is visual only, not a new hitbox or weak-point rule.
+  if(M.st==="fight" && (M.heart || (M.net && M.net.st==="open"))){
+    const beat=Math.exp(-Math.max(0,(runElapsedMs||0)-(M.bt||-9999))/260);
+    ctx.save();ctx.lineWidth=5;ctx.strokeStyle="#200818";ctx.beginPath();
+    ctx.ellipse(MIC_MOTHER_POS.x,MIC_MOTHER_BASE-144,18+beat*3,25+beat*4,0,0,Math.PI*2);ctx.stroke();
+    ctx.lineWidth=2;ctx.strokeStyle="#ffd0e0";ctx.stroke();ctx.restore();
+  }
+  return true;
+}
+function _micDrawMother(e,t){
+  if(!_micDrawMotherFrame(e,t)) _micDrawMotherPortrait(e,t);
+}
+function _micDrawMotherDying(t){
+  if(!_micDrawMotherFrame(null,t)) _micDrawMotherPortraitDying(t);
+}
+function _micMotherRect(){
+  // Conservative envelope of all authored poses, so the camera also fits bloom/heart.
+  // Stable across frames: never normalize each pose separately or pump the camera.
+  if(_micMotherAtlasReady()){
+    const A=MIC_MOTHER_ANIM,w=A.w*A.scale,h=A.h*A.anchor*A.scale;
+    return {w,h,x:MIC_MOTHER_POS.x-w/2,y:MIC_MOTHER_BASE-h};
+  }
+  const img=MIC_MP.mp_full,h=MIC_MOTHER_H,w=h*(img&&img.width ? img.width/img.height : 395/455);
+  return {w,h,x:MIC_MOTHER_POS.x-w/2,y:MIC_MOTHER_BASE-h};
+}
+function _micDrawMotherPortrait(e, t){
   if(!MIC_MP_OK.mp_full) return;
   const M = micS ? micS.mo : {st:"fight", t:0};
   const R = _micMotherRect(), img = MIC_MP.mp_full, k = R.h/img.height;
@@ -556,7 +664,7 @@ function _micMotherDarkCanvas(){
   }catch(err){ _micMotherDark = null; }
   return _micMotherDark;
 }
-function _micDrawMotherDying(now){
+function _micDrawMotherPortraitDying(now){
   const M = micS.mo; if(!MIC_MP_OK.mp_full) return;
   const T = M.st==="dead" ? 99999 : M.t, R = _micMotherRect(), img = MIC_MP.mp_full;
   const collapse = Math.max(0, Math.min(1, (T - 4700)/2400));   // la estructura colapsa

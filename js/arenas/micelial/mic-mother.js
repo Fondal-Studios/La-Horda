@@ -232,7 +232,8 @@ function micAIMadre(e, dt, tgt, dist){
   }
   const P = M.ph - 1;
   e.mcd -= dt; e.rootsCd -= dt; e.sporeCd -= dt; e.whipCd -= dt; e.summonCd -= dt; e.clawCd -= dt; e.cloudCd -= dt; e.halCd -= dt;
-  if(M.ph===3){ M.beat -= dt; if(M.beat <= 0){ M.beat = 900; M.bt = runElapsedMs; playSfx("micHeart"); } _micBossPack(e, "heart", 400); }
+  if(M.ph===3){ M.beat -= dt; if(M.beat <= 0){ M.beat = 900; M.bt = runElapsedMs; playSfx("micHeart"); } // Do not overwrite an active attack/cast with the cosmetic heart idle every tick.
+    if(!(e.packTimer > 0) || e.packSet === "heart") _micBossPack(e, "heart", 400); }
   if(e.bossWind || e.mcd > 0) return true;
   if(e.mcd < -8000) e.mcd = 0;
   // zarpazo: si la encaran de cerca
