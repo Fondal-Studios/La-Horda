@@ -2,7 +2,7 @@ name: Integracion pruebas
 # Pruebas de lo ya integrado que no corrian en ningun workflow. Todas usan tools/lib/serve.js o tools/lib/with-site.js:
 # servidor propio en un puerto libre, sin relay ni dispositivos. Ver docs/quality/ARNES_PRUEBAS.md.
 # Reglas: cada paso es independiente (if: !cancelled()) y los jobs no cancelan a los demas (fail-fast: false).
-# continue-on-error SOLO en pruebas que hoy fallan o son intermitentes, con el motivo al lado; se corren igual y se informan.
+# continue-on-error SOLO en pruebas que hoy fallan o son intermitentes, con el motivo al lado Y declaradas en tools/quality/qa-manifest.json ("tolerated"); qa-manifest-check.js lo verifica en cada PR.
 # Lo nuevo (pasos sin continue-on-error) falla en rojo de verdad.
 on:
   pull_request:
@@ -99,32 +99,22 @@ jobs:
       - name: "Preferencias de accesibilidad (test-accessibility-prefs)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Una corrida local de dos falló con ReferenceError championShortName en shop-ui.js (carga inconsistente de scripts); la otra pasó 32/32. Sin causa raíz: se promueve a bloqueante si CI la pasa de forma estable.
-        continue-on-error: true
         run: node tools/ux/test-accessibility-prefs.js
       - name: "Equipos claros en Cristales y Coliseo (test-sides)"
         if: ${{ !cancelled() }}
         timeout-minutes: 15
-        # Conocida/intermitente: Intermitente local: una corrida falló el muestreo del píxel de la barra aliada (brillo 0.19 en minion, Cristales 667x375) y la siguiente pasó. Se promueve a bloqueante si CI la pasa de forma estable.
-        continue-on-error: true
         run: node tools/lanes/test-sides.js
       - name: "Desborde de texto (test-text-overflow)"
         if: ${{ !cancelled() }}
         timeout-minutes: 15
-        # Conocida/intermitente: Intermitente según el equipo (reporte de auditoría); pasó en la corrida local. Se corre igual y se informa.
-        continue-on-error: true
         run: node tools/ux/test-text-overflow.js
       - name: "Panel táctico (test-tactical-panel)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Falla en la base: page.click(#pause-btn) agota 30 s esperando navegaciones programadas (TimeoutError); el paso del workflow principal fallaría igual. Se corre igual y se informa.
-        continue-on-error: true
         run: node tools/ux/test-tactical-panel.js
       - name: "Reacción al golpe (t_hit_react)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Falla en la base: CAM.*.hechicero_se_agacha_al_recibir_danio_y_vuelve (iphone 844x390 y escritorio 1440x810) fallan (VH 390/810, heroFrac 0.57/0.54).
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/regression/t_hit_react.js
   identidad:
     name: "Identidad de arenas, objetivos y regalo inicial"
@@ -148,8 +138,6 @@ jobs:
       - name: "Identidad de arenas (t_identity)"
         if: ${{ !cancelled() }}
         timeout-minutes: 20
-        # Conocida/intermitente: Falla en la base: TUT.empieza_con_moverse y TUT.moverse_atacar_habilidad_en_orden (la prueba lee el orden de los avisos del tutorial).
-        continue-on-error: true
         run: node tools/identity/t_identity.js
   items-economia-a:
     name: "Objetos, economía y tienda (parte A)"
@@ -229,8 +217,6 @@ jobs:
       - name: "Rompibles (t_breakables)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Intermitente local: una corrida falló BRK.bot_patea_cuando_la_horda_se_amontona {goal:true, armed:false} y la siguiente pasó 100%. Se promueve a bloqueante si CI la pasa de forma estable.
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/items/t_breakables.js
   items-economia-b:
     name: "Objetos, economía y tienda (pruebas que hoy fallan en la base)"
@@ -242,56 +228,38 @@ jobs:
       - name: "Abismo (t_abismo)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Falla en la base: TERRAIN.metadata_por_tipo_de_habilidad (table:14, perKind:false).
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/items/t_abismo.js
       - name: "Campamento (t_camp)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Falla en la base: DATOS.herrero_para_cada_guardian (12 guardianes sin herrero) y excepción "invisible #chron-card .cc-read".
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/items/t_camp.js
       - name: "Códice (t_codex)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Falla en la base: MENU.hub_accesos (lista de accesos del hub).
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/items/t_codex.js
       - name: "Cromas (t_cromas)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Falla en la base: REGISTRO.cada_guardian_sin_skin_tiene_croma y TIENDA.compra/noDosVeces/equipa.
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/items/t_cromas.js
       - name: "Cristales (t_crystals)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Falla en la base: CR.pantalla_previa_muestra_2_de_3.
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/items/t_crystals.js
       - name: "Dificultad (t_difficulty)"
         if: ${{ !cancelled() }}
         timeout-minutes: 15
-        # Conocida/intermitente: Falla en la base (8 FAIL): CALIBRACION.*, SEMILLA.*, TRAZADO.* (reportado por la auditoría; reproducido).
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/items/t_difficulty.js
       - name: "Evolución (t_evolution)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Falla en la base: EVO.todos_los_campeones_dejan_su_firma.
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/items/t_evolution.js
       - name: "Itemización (t_itemization)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Falla en la base (reproducido con servidor python y sin el arnés): ICON.identidad_visual_distinta {n:269, unique:254}.
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/items/t_itemization.js
       - name: "Objetos (t_items)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Falla en la base: TEST.reinicio_unico_de_la_etapa_de_prueba y TEST.respaldo_del_guardado_anterior.
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/items/t_items.js
       - name: "Golems del nigromante (t_nigro_golems)"
         if: ${{ !cancelled() }}
@@ -302,18 +270,12 @@ jobs:
       - name: "Resonancia (t_resonance)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Falla en la base: TypeError "Cannot read properties of null (reading click)" en E() (t_resonance.js:70).
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/items/t_resonance.js
       - name: "Sets (t_sets)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Falla en la base: SKIN.color_en_los_eventos_de_red {shocks:9, shockTinted:false}.
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/items/t_sets.js
       - name: "Sinergias (t_synergies)"
         if: ${{ !cancelled() }}
         timeout-minutes: 10
-        # Conocida/intermitente: Falla en la base: TOOLTIP.nodo_dice_sinergia_con_valor_actual y resumen_de_sinergias_en_el_arbol (ahora +0%).
-        continue-on-error: true
         run: node tools/lib/with-site.js tools/items/t_synergies.js

@@ -35,7 +35,7 @@ for (const c of cats) {
 
 const wdir = path.join(ROOT, '.github/workflows');
 const T = M.tolerated || {};
-const used = [];
+const used = [], deferred = [];
 for (const f of fs.readdirSync(wdir).filter(x => /\.ya?ml$/.test(x))) {
   const lines = fs.readFileSync(path.join(wdir, f), 'utf8').split('\n');
   lines.forEach((l, i) => {
@@ -43,6 +43,9 @@ for (const f of fs.readdirSync(wdir).filter(x => /\.ya?ml$/.test(x))) {
       let j = i; while (j > 0 && !/^\s*-\s+(name|uses|run):/.test(lines[j])) j--;
       const nm = (lines[j].match(/name:\s*["']?(.+?)["']?\s*$/) || [])[1] || lines[j].trim();
       const key = f + '::' + nm;
+      // Patrón legítimo: el paso tiene `id: X` y un paso posterior exige `steps.X.outcome` = success (la falla se aplaza para juntar diagnósticos).
+      const idm = lines.slice(j, j + 6).join('\n').match(/^\s*id:\s*([\w-]+)/m);
+      if (idm && lines.join('\n').includes('steps.' + idm[1] + '.outcome')) { deferred.push(key); return; }
       used.push(key);
       const t = T[key];
       if (!t || !t.reason) fail(`continue-on-error sin declarar en tolerated: ${key}`);
@@ -56,6 +59,7 @@ for (const f of fs.readdirSync(wdir).filter(x => /\.ya?ml$/.test(x))) {
   });
 }
 const unusedT = Object.keys(T).filter(k => !used.includes(k));
+if (deferred.length) ok(`pasos con falla aplazada (se exige su resultado más adelante, no son falsos verdes): ${deferred.length}`);
 unusedT.length ? fail('"tolerated" lista pasos que ya no existen o ya son bloqueantes (borrarlos): ' + unusedT.join(' | ')) : ok(`pasos tolerados declarados: ${used.length}, todos con motivo`);
 console.log(bad ? `\n${bad} problema(s)` : '\nOK: la clasificación coincide con la batería y con los workflows');
 process.exit(bad ? 1 : 0);
