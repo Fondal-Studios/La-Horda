@@ -1,0 +1,14 @@
+{
+  "status": "REJECTED_TECHNICAL_AND_VISUAL",
+  "rawImageMode": "RGB",
+  "alphaPresent": false,
+  "assembly": "Expected4separableposes, found1; baked checkerboard background retained as opaque image.",
+  "visualDefects": [
+    "No convincing alternating leg cycle: frames0/2 wide stance,1/3 near-same crossed pose."
+  ],
+  "approved": false,
+  "integrated": false,
+  "observedCredits": 7,
+  "cumulativePilotNetCredits": 14,
+  "nextRecipeRecommendation": "Mandatory flat #00FF00, explicitly forbid checkerboard/simulated transparency; explicit left/right foot geometry. No automatic retry authorized by this evidence."
+}

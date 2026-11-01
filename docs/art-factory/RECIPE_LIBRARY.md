@@ -2,7 +2,7 @@
 
 La fábrica reutiliza recetas, contratos, referencias, hashes y evaluaciones. Eso evita repetir instrucciones y pagar por regenerar salidas idénticas; **no convierte inferencia externa en gratuita** ni reemplaza revisión artística.
 
-## Receta ejecutable actual
+## Recetas ejecutables versionadas
 
 `tools/factory/s0f/recipes/front-fixed-single-row-v2.json`, cargada por `recipe-library.js`, contiene el texto completo y los parámetros de `walk_down`:
 
@@ -12,7 +12,7 @@ La fábrica reutiliza recetas, contratos, referencias, hashes y evaluaciones. Es
 - geometría y cantidad de cuadros tomadas del atlas registrado, no de una plantilla universal;
 - versión y SHA del archivo para fijar el plan y detectar cambios.
 
-La receta está **experimental**. Su texto de cuatro cuadros conserva exactamente el plan direccional preparado; no se agrega una instrucción oculta después de registrar su hash. Otros clips conservan su flujo explícito existente: la biblioteca no inventa una receta que todavía no fue definida.
+La receta v2 permanece **experimental y falló en el ensayo descrito abajo**. El módulo selecciona explícitamente la versión activa; una versión siguiente no hereda aprobación por reutilizar esta estructura. Su texto de cuatro cuadros conserva exactamente el plan direccional preparado; no se agrega una instrucción oculta después de registrar su hash. Otros clips conservan su flujo explícito existente: la biblioteca no inventa una receta que todavía no fue definida.
 
 ## Aprendizaje conservado: Sylva, intento 3
 
@@ -20,7 +20,19 @@ La receta está **experimental**. Su texto de cuatro cuadros conserva exactament
 
 Resultado: cuatro cuadros / 7,7 % del atlas, puntuación técnica **100**, pero **rechazo visual**: el tercer cuadro gira a perfil y dos cuadros de paso son casi idénticos. No hubo aprobación ni integración. Los JSON de evaluación, revisión y créditos se conservan en `recipe-evidence/` con hashes; el PNG original se identifica por hash y permanece en el archivo local del piloto, no embebido en la biblioteca.
 
-La nueva receta corrige esa ambigüedad de cámara y fases; **el fallo anterior no demuestra que la nueva receta funcione**.
+La receta direccional intentó corregir esa ambigüedad de cámara y fases; **el fallo anterior no demuestra que la nueva receta funcione**.
+
+La versión siguiente, `front-fixed-solid-green-v3.json`, conserva esas lecciones con fondo verde obligatorio. Sigue **experimental**: su existencia no equivale a una generación, validación o aprobación.
+
+## Aprendizaje conservado: receta v2, intento 1
+
+`recipes/sylva-walk-v2-attempt1-v1.json` registra la tarea `3450dd4a-e11e-415f-a0a4-4ca41ae1f187` con `nano-banana-2`: **7 créditos observados** (493 → 486), **14 créditos netos acumulados** en estos dos pilotos con salida.
+
+La imagen es RGB, sin alfa, y trae un damero de transparencia **dibujado dentro de la imagen**. El ensamblador esperaba cuatro poses separables y encontró una. Resultado real: `ASSEMBLY_REJECTED` / `BLOCKED_INCOMPLETE`, **sin atlas, sin evaluación numérica, sin aprobación ni integración**. El estado y la revisión también registran una marcha poco convincente, con poses repetidas.
+
+Aprendizaje reutilizable: exigir fondo plano `#00FF00`, prohibir el damero y la transparencia simulada, y especificar geometría de apoyo/paso distinta para cada pierna. No se relajan los controles para aceptar la salida defectuosa. Esa corrección pertenece a **otra versión experimental**, con nuevo prompt/hash; el registro no autoriza por sí mismo otra llamada paga.
+
+No existe `assembly.json` en esta corrida porque ninguna tira se ensambló: `state.json`, conservado con hash, es la evidencia del fallo. El «0 centavos» del importador significa que importar no hizo una solicitud API; **no significa que la imagen externa haya sido gratuita**.
 
 ## Estados y promoción
 

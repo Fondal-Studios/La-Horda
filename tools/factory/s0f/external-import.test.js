@@ -56,9 +56,9 @@ test('supported external connector models retain exact provenance without implyi
 test('directional v2 external and runtime prepare identical references and never overwrite old preparation',async()=>{
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'directional-v2-')),preparationDir=path.join(dir,'prep-v2');
  const plan=prepareExternalPlan('cazadora',{kind:'animation',action:'walk_down',preparationDir}),job=plan.jobs[0];
- assert.equal(job.referenceRecipe,'front-fixed-single-row-v2');
+ assert.equal(job.referenceRecipe,'front-fixed-solid-green-v3');
  assert.ok(job.submittedPrompt.length<=1000);
- for(const fragment of ['Cámara fija frontal tres cuartos','MISMA orientación frontal','contacto pie izquierdo, paso pie derecho, contacto pie derecho, paso pie izquierdo','perfil, espalda','poses duplicadas'])assert.ok(job.prompt.includes(fragment));
+ for(const fragment of ['Cámara frontal tres cuartos FIJA','misma cabeza y torso','bota izquierda en pantalla abajo/adelante, derecha atrás','perfil, espalda','poses duplicadas'])assert.ok(job.prompt.includes(fragment));
  const before=job.references.map(hash);
  assert.throws(()=>prepareExternalPlan('cazadora',{kind:'animation',action:'walk_down',preparationDir}),/new versioned directory/);
  assert.deepEqual(job.references.map(hash),before);

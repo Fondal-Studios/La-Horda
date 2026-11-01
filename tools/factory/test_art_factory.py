@@ -214,19 +214,39 @@ class DirectionalReferenceV2(unittest.TestCase):
             result = af.prepare_reference(contract, p / 'front.png', 'walk_down')
             front = Image.open(p / 'front.png').convert('RGBA')
             expected = Image.open(af.ROOT / c['codexPage']).convert('RGBA').crop((790, 280, 1080, 620))
-            self.assertEqual(front.tobytes(), expected.tobytes()); self.assertEqual(result['preparation_version'], 'directional-v2')
+            self.assertEqual(front.tobytes(), expected.tobytes()); self.assertEqual(result['preparation_version'], 'directional-v3')
             side = af.prepare_reference(contract, p / 'other.png', 'walk_side')
             self.assertEqual(side['crop'], c['referenceCrop'])
             frames = c['clips']['walk_down']['unique'][:4]
             af.refstrip(contract, json.dumps(frames), p / 'row.png', 'walk_down')
             cells = af.cells_of(af.load(af.ROOT / c['atlas']), c['cell']['w'], c['cell']['h'], c['cols'])
-            cw, ch = c['cell']['w'], c['cell']['h']; width = cw * len(frames); height = max(ch, width // 2)
+            cw, ch = c['cell']['w'], c['cell']['h']
+            union = np.any(np.stack([cells[i][..., 3] > 0 for i in frames]), axis=0); ys, xs = np.where(union)
+            x0, y0, x1, y1 = max(0, int(xs.min())-8), max(0, int(ys.min())-8), min(cw, int(xs.max())+9), min(ch, int(ys.max())+9)
+            cells = [a[y0:y1, x0:x1] for a in cells]; cw, ch = x1-x0, y1-y0
+            width = cw * len(frames); height = max(ch, width // 2)
             canvas = Image.new('RGBA', (width, height))
             for k, fi in enumerate(frames): canvas.paste(Image.fromarray(cells[fi], 'RGBA'), (k*cw, (height-ch)//2))
-            expected_row = canvas.resize((width*3, height*3), Image.Resampling.NEAREST)
+            scale = 3 if min(canvas.size)*3 >= 480 else 4
+            expected_row = canvas.resize((width*scale, height*scale), Image.Resampling.NEAREST)
             actual = Image.open(p / 'row.png').convert('RGBA')
             self.assertEqual(actual.tobytes(), expected_row.tobytes())
             self.assertLessEqual(actual.width / actual.height, 2)
+
+
+class CheckerboardRejection(unittest.TestCase):
+    def test_baked_rgb_checkerboard_is_not_transparency_and_never_creates_parts(self):
+        import subprocess
+        from PIL import ImageDraw
+        c = json.loads(subprocess.check_output(['node', '-e', "console.log(JSON.stringify(require('./tools/factory/s0f/contract').readContract('cazadora')))"], cwd=af.ROOT))
+        with tempfile.TemporaryDirectory() as t:
+            p = Path(t); contract = p / 'contract.json'; contract.write_text(json.dumps(c))
+            yy, xx = np.indices((240, 960)); gray = np.where(((xx//16)+(yy//16))%2, 165, 83).astype(np.uint8)
+            im = Image.fromarray(np.repeat(gray[..., None], 3, axis=2), 'RGB'); draw = ImageDraw.Draw(im)
+            for k in range(4): draw.rectangle((60+k*240,40,160+k*240,200), fill=(20,90,30))
+            im.save(p / 'checker.png'); result = af.assemble(contract, p / 'checker.png', 'walk_down', '[0,1,2,3]', p / 'parts')
+            self.assertFalse(result['ok']); self.assertIn('fondo no es plano', result['reason'])
+            self.assertFalse((p / 'parts').exists())
 
 
 if __name__ == '__main__': unittest.main()

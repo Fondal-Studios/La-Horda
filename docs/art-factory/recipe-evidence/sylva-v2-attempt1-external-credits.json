@@ -1,0 +1,32 @@
+{
+  "schema": "fondal.external-credits.v1",
+  "sourcePoolId": "runway-mcp-mariano-personal",
+  "manifestSha256": "3ae940561113d5b1b577513b02358c6e3a9f4c20b978e7ed4eaa7ad3a9429fac",
+  "provenance": "Supplied external tool evidence, explicitly reviewed for import; not cryptographically authenticated by this module.",
+  "review": {
+    "status": "reviewed-for-import",
+    "reviewer": "parent-agent-tool-evidence-review",
+    "evidence": "Parent verified MCP success task3450dd4a-e11e-415f-a0a4-4ca41ae1f187 exact frozen760prompt/refs;493 to486observedcredits. Import provenance only, NOT visual approval."
+  },
+  "outputs": [
+    {
+      "jobId": "walk_down-0",
+      "provider": "runway",
+      "model": "nano-banana-2",
+      "taskId": "3450dd4a-e11e-415f-a0a4-4ca41ae1f187",
+      "toolEvidence": "Parent MCP returned success and local walk_down-v2-attempt1.json",
+      "observedCredits": 7,
+      "balanceBefore": 493,
+      "balanceAfter": 486,
+      "sha256": "48526ab165592d7801162a61cbd4a077bde016229b8f8196a22ef3bcaa62a509",
+      "promptSha256": "b6cba36283bbe8e4828dc15152b3882e515bd79df8ce3ba9226eab81b90f54cf",
+      "submittedPromptSha256": "a9b517426eb1e55243dfbe8096c5bf3320a1f1b34a3080eb7132a2fec7e2d96b",
+      "referencesSha256": [
+        "d85c45217e2a220f9290c729d318b6ce7380b3aef974fd4190d8f7f20c37569e",
+        "a0bd293274109686ebb08ddd58ffab752a4e823a9d43fbebe82d154e55b9ef96"
+      ]
+    }
+  ],
+  "creditsKnown": true,
+  "observedCreditsTotal": 7
+}

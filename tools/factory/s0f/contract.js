@@ -82,7 +82,7 @@ function readContract(id, {root = ROOT, skin = null} = {}) {
     let skinPreview;
     if (skin) { skinPreview = skinDefinition.preview; confined(root, skinPreview, 'assets/sprites/champions/' + id + '/skins/' + skin); }
     return {id, kind: 'atlas', atlas: src, registeredIn: found.file, cell: {w: m.w, h: m.h}, cols: m.cols, rows, frames, refH: m.refH, anchor: m.anchor, fix: m.fix || null, clips, codexPage, consumer: found.file,
-      ...(!skin && id === 'cazadora' ? {referenceCrop: [780, 280, 1740, 640], referenceCrops: {walk_down: [790, 280, 1080, 620]}, referencePreparationVersion: 'directional-v2'} : {}),
+      ...(!skin && id === 'cazadora' ? {referenceCrop: [780, 280, 1740, 640], referenceCrops: {walk_down: [790, 280, 1080, 620]}, referencePreparationVersion: 'directional-v3'} : {}),
       ...(skin ? {skin, consumerType: 'authored-skin', skinPreview, skinTheme: skinDefinition.visualTheme || null} : {}),
       registration: {kind: skin ? 'authored-skin' : 'base', key: skin || id, baseKey: id, source: found.file, meta: m, sourceSha256: found.sourceSha256}};
   } catch (error) { return unsupported(error.message); }

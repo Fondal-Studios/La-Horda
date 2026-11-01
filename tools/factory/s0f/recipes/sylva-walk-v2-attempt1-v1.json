@@ -1,0 +1,89 @@
+{
+  "schema": "fondal.art-recipe-evidence.v1",
+  "id": "sylva-walk-v2-attempt1-v1",
+  "recipeId": "front-fixed-single-row-v2",
+  "recipeRelationship": "Executed v2 failed; informs a new version without proving its repair. Preserve v2 prompt and references unchanged.",
+  "champion": "cazadora",
+  "skin": null,
+  "clip": "walk_down",
+  "frames": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "status": "technical-and-visual-rejected",
+  "history": [
+    "attempted",
+    "assembly-rejected",
+    "visual-rejected"
+  ],
+  "approved": false,
+  "integrated": false,
+  "proven": false,
+  "provider": "runway-mcp",
+  "model": "nano-banana-2",
+  "taskId": "3450dd4a-e11e-415f-a0a4-4ca41ae1f187",
+  "cost": {
+    "unit": "external-credits",
+    "observed": 7,
+    "balanceBefore": 493,
+    "balanceAfter": 486,
+    "cumulativePilotNetCredits": 14,
+    "apiCents": null
+  },
+  "technical": {
+    "state": "BLOCKED",
+    "code": "BLOCKED_INCOMPLETE",
+    "failure": "ASSEMBLY_REJECTED",
+    "expectedSeparablePoses": 4,
+    "observedSeparablePoses": 1,
+    "coverageGeneratedPct": 0,
+    "atlasProduced": false,
+    "evaluationProduced": false,
+    "score": null
+  },
+  "promptSha256": "b6cba36283bbe8e4828dc15152b3882e515bd79df8ce3ba9226eab81b90f54cf",
+  "submittedPromptSha256": "a9b517426eb1e55243dfbe8096c5bf3320a1f1b34a3080eb7132a2fec7e2d96b",
+  "referencesSha256": [
+    "d85c45217e2a220f9290c729d318b6ce7380b3aef974fd4190d8f7f20c37569e",
+    "a0bd293274109686ebb08ddd58ffab752a4e823a9d43fbebe82d154e55b9ef96"
+  ],
+  "output": {
+    "sha256": "48526ab165592d7801162a61cbd4a077bde016229b8f8196a22ef3bcaa62a509",
+    "mode": "RGB",
+    "alphaPresent": false,
+    "retention": "Original pixels remain in local pilot archive; recipe library stores hash and review evidence only."
+  },
+  "evidence": {
+    "visual-review.json": {
+      "path": "docs/art-factory/recipe-evidence/sylva-v2-attempt1-visual-review.json",
+      "sha256": "74a7794873b7928dadaedbfaf7b3e95aee02fc74cc6e7bd97d5f4fa2f369ec6a"
+    },
+    "external-credits.json": {
+      "path": "docs/art-factory/recipe-evidence/sylva-v2-attempt1-external-credits.json",
+      "sha256": "1fa52e19c866b02bfd40fdeb15c13740767ee18081d9f481d9633cfd552a3bf7"
+    },
+    "state.json": {
+      "path": "docs/art-factory/recipe-evidence/sylva-v2-attempt1-state.json",
+      "sha256": "1786a1c61345a840dc6b3619ee640765c32b9b2ccb8167e050a6c0066b650c5c"
+    }
+  },
+  "missingArtifacts": [
+    "assembly.json (no usable assembly)",
+    "atlas.png",
+    "evaluation.json",
+    "approval.json"
+  ],
+  "antiPatterns": [
+    "A transparency request can produce an opaque checkerboard illustration rather than an alpha channel.",
+    "Do not remove a patterned background by pretending it is a flat chroma key.",
+    "Near-repeated broad/crossed stances are not a convincing alternating-leg walk cycle."
+  ],
+  "requiredRepair": [
+    "Mandatory flat #00FF00 background; forbid checkerboard and simulated transparency.",
+    "Explicit distinct left/right foot geometry per phase.",
+    "Preserve quality gates: no atlas or score invented after failed assembly.",
+    "Prepare a newly versioned prompt and review before another paid request."
+  ]
+}

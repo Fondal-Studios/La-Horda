@@ -1,0 +1,67 @@
+{
+  "schema": "fondal.art-recipe.v1",
+  "id": "front-fixed-solid-green-v3",
+  "version": 3,
+  "status": "experimental",
+  "scope": {
+    "clips": [
+      "walk_down"
+    ],
+    "minFrames": 1,
+    "maxFrames": 4,
+    "requiresExistingAtlasContract": true
+  },
+  "template": "Pixel art chibi La Horda, fantasía oscura; cabeza 40-45%, contorno oscuro 1px, 2-3 tonos/color sin degradé. Fondo verde #00FF00 uniforme OBLIGATORIO; sin transparencia ni damero. Personaje {id}. {identityInstruction} Crear {frameCount} poses DISTINTAS de walk_down en UNA FILA. Cámara frontal tres cuartos FIJA; misma cabeza y torso en todos los cuadros. Izquierda/derecha son lados de la PANTALLA. Orden de izquierda a derecha: {orderedPhases}. Escala constante; pie de apoyo en línea base estable. PROHIBIDO: piernas cruzadas, idle ancho duplicado, perfil, espalda, giros, poses duplicadas, texto, etiquetas, suelo, sombras, marcos.",
+  "identityInstructions": {
+    "base": "Conservar rostro, traje, arma, paleta y proporciones del Códice.",
+    "skin": "Reparar skin EXISTENTE «{skin}»: conservar identidad, diseño, paleta, ropa, arma y silueta; no crear skin ni recolorear base."
+  },
+  "parameters": {
+    "id": "contract.id",
+    "skin": "contract.skin (or null)",
+    "frameCount": "job.frames.length",
+    "identityPaletteWeapon": "prepared contract identity reference; never invented defaults",
+    "geometry": "contract.cell, cols, rows, refH, anchor",
+    "referenceCrop": "contract.referenceCrops.walk_down or existing reference preparation policy",
+    "orderedPhases": "positions of job.frames in contract.clips.walk_down.unique modulo4; exactly one phase per requested frame",
+    "phaseCoordinateSystem": "screen-space left/right, not anatomical"
+  },
+  "camera": {
+    "orientation": "fixed front three-quarter",
+    "invariant": "same head and torso orientation in every frame",
+    "forbidden": [
+      "profile",
+      "back",
+      "turn"
+    ]
+  },
+  "orderedWalkPhases": [
+    "bota izquierda en pantalla abajo/adelante, derecha atrás",
+    "apoyo izquierdo bajo cadera, rodilla derecha levantada",
+    "bota derecha en pantalla abajo/adelante, izquierda atrás",
+    "apoyo derecho bajo cadera, rodilla izquierda levantada"
+  ],
+  "promotionRequirements": [
+    "technical validation",
+    "independent visual approval",
+    "runtime validation",
+    "approved main integration"
+  ],
+  "antiPatternEvidence": "sylva-walk-v2-attempt1-v1.json",
+  "proven": false,
+  "previousRecipe": "front-fixed-single-row-v2",
+  "background": {
+    "required": "#00FF00",
+    "uniform": true,
+    "forbidden": [
+      "transparent alternative",
+      "checkerboard",
+      "grid",
+      "shadow",
+      "ground",
+      "crossed legs or duplicated wide idle"
+    ]
+  },
+  "retryPolicy": "One authorized visual pilot; if gait remains invalid, change generation method instead of repeating prompt-only retries.",
+  "phaseSeparator": "; "
+}

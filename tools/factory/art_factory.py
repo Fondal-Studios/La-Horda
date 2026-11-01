@@ -683,6 +683,17 @@ def refstrip(contract_json, frames_json, out_png, clip=None):
     """Referencia de entrada para el proveedor: las poses ACTUALES de un clip en una tira (fondo transparente)."""
     c = json.loads(Path(contract_json).read_text()); cw, ch, cols = c['cell']['w'], c['cell']['h'], c['cols']; frames = json.loads(frames_json)
     cells = cells_of(load(ROOT / c['atlas']), cw, ch, cols); n = len(frames)
+    if clip == 'walk_down':
+        # One shared alpha-union crop for every pose: remove dead canvas without
+        # independently scaling/recentering feet or inventing any source pixels.
+        selected = [cells[i] for i in frames]
+        union = np.any(np.stack([a[..., 3] > 0 for a in selected]), axis=0)
+        ys, xs = np.where(union)
+        if not len(xs): raise ValueError('empty walk reference')
+        x0, y0 = max(0, int(xs.min())-8), max(0, int(ys.min())-8)
+        x1, y1 = min(cw, int(xs.max())+9), min(ch, int(ys.max())+9)
+        cells = [a[y0:y1, x0:x1] for a in cells]
+        cw, ch = x1-x0, y1-y0
     # Runway exige relación de aspecto ≤ 2,355 y recomienda ≥ 640 px: rejilla de hasta 2 columnas, relleno al aspecto 1:1..2:1 y ampliación x3 por vecino más cercano (pixel art nítido)
     if clip and clip not in c.get('clips', {}): raise ValueError('unknown reference clip')
     # walk_down must show the same left-to-right temporal order requested in output, not a 2x2 contact sheet.
