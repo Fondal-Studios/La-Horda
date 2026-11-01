@@ -27,9 +27,14 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Propiedad de archivos de los agentes A/B/C (solo ramas de agentes)
+        if: ${{ github.event_name == 'pull_request' }}
+        run: node tools/agents/check-diff.js --agent auto --base origin/${{ github.base_ref }} --head HEAD --branch "${{ github.head_ref }}"
       - name: Clasificacion de la bateria y de los workflows (falsos verdes)
         run: node tools/quality/qa-manifest-check.js
       - name: Contratos compartidos y propiedad de archivos

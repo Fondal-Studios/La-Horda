@@ -16,7 +16,8 @@
   "multijugador_simulado": "Salas, equipos y flujo de partida sin relay real",
   "rendimiento": "Presupuesto de tiempo por cuadro, límites de efectos y de entidades",
   "sprites_atlas": "Integridad de sprites, atlas, íconos y densidad de píxel",
-  "movil": "Objetivos táctiles, desborde de texto y paneles en pantalla chica"
+  "movil": "Objetivos táctiles, desborde de texto y paneles en pantalla chica",
+  "coordinacion_agentes": "Propiedad de archivos, contratos compartidos e interfaces congeladas entre los agentes A, B y C"
  },
  "tests": {
   "tools/lib/test-serve.js": {
@@ -777,17 +778,55 @@
    "categories": [
     "rendimiento"
    ]
-  }
- },
- "suites": {
-  "contracts": {
-   "cmd": "for f in schemas independence save_compat economy telemetry; do node tools/contracts/t_contract_$f.js || exit 1; done",
+  },
+  "tools/contracts/t_contract_schemas.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/contracts/t_contract_independence.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/contracts/t_contract_save_compat.js": {
    "tier": "required",
    "categories": [
     "guardados",
-    "economia"
+    "coordinacion_agentes"
    ]
   },
+  "tools/contracts/t_contract_economy.js": {
+   "tier": "required",
+   "categories": [
+    "economia",
+    "guardados",
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/contracts/t_contract_telemetry.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/agents/test-agents.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/release/relay-smoke.js": {
+   "tier": "required",
+   "categories": [
+    "multijugador_simulado",
+    "inicio"
+   ]
+  }
+ },
+ "suites": {
   "server": {
    "cmd": "cd server && npm ci && npm test",
    "tier": "required",

@@ -34,6 +34,13 @@ const TESTS = [
   // ---- lógica pura (sin navegador) ----
   T('tools/lib/test-serve.js', 'node', 180, {q: 1}),
   T('tools/lib/test-http-ready.js', 'node', 120, {q: 1, args: ['--test']}),
+  T('tools/contracts/t_contract_schemas.js', 'node', 120, {q: 1}),
+  T('tools/contracts/t_contract_independence.js', 'node', 120, {q: 1}),
+  T('tools/contracts/t_contract_save_compat.js', 'node', 180, {q: 1}),
+  T('tools/contracts/t_contract_economy.js', 'node', 180, {q: 1}),
+  T('tools/contracts/t_contract_telemetry.js', 'node', 180, {q: 1}),
+  T('tools/agents/test-agents.js', 'node', 180, {q: 1}),
+  T('tools/release/relay-smoke.js', 'node', 120, {q: 1, args: ['--local', '--create-room']}),
   T('tools/items/t_codex_book_logic.js', 'node', 180, {q: 1}),
   T('tools/balance/check-entry-reference.js', 'node', 120, {q: 1}),
   T('tools/regression/test-aim-hostiles.js', 'node', 180, {q: 1, args: ['--test']}),

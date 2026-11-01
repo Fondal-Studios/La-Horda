@@ -5,8 +5,8 @@
  *   node tools/quality/qa.js --fast      todo menos lo más lento (para cada PR)
  *   node tools/quality/qa.js --full       toda la batería (nocturno / antes de una beta)
  * Opciones: --out carpeta (por omisión qa-out/) · --jobs N · --skip-server (no corre la batería de server/) · --skip-install.
- * Orden: 1) clasificación vs batería y workflows (qa-manifest-check) · 2) contratos S0A · 3) batería de server/ (incluye el relay en
- * proceso y la economía) · 4) run-all · 5) densidad de píxel (informativa) · 6) informe (qa-report). Sale 1 si falla algo OBLIGATORIO.
+ * Orden: 1) clasificación vs batería y workflows (qa-manifest-check) · 2) batería de server/ (incluye el relay en proceso y la economía) ·
+ * 3) run-all (incluye contratos, puerta de propiedad y humo del relay local) · 4) densidad de píxel (informativa) · 5) informe (qa-report). Sale 1 si falla algo OBLIGATORIO.
  * No toca producción ni usa red: el relay real y la base real son del nivel "external" y se corren aparte (docs/operacion/).
  * IMPORTANTE: no edites archivos del repositorio mientras corre: run-all restaura/borra al terminar lo que cambió durante su corrida. */
 const cp = require('node:child_process'), fs = require('node:fs'), path = require('node:path');
@@ -26,11 +26,9 @@ function step(id, cmd, args, o = {}) {
   results.push({ id, status: st }); return r.status === 0;
 }
 step('clasificacion', process.execPath, ['tools/quality/qa-manifest-check.js']);
-step('contracts', 'bash', ['-c', M.suites.contracts.cmd]);
-if (!has('--skip-server')) {
-  if (!has('--skip-install')) step('server-install', 'npm', ['ci', '--no-audit', '--no-fund'], { cwd: path.join(ROOT, 'server') });
-  step('server', 'npm', ['test'], { cwd: path.join(ROOT, 'server') });
-}
+// Las dependencias de server/ las necesitan los contratos, el humo del relay y la batería de servidor.
+if (!has('--skip-install')) step('server-install', 'npm', ['ci', '--no-audit', '--no-fund'], { cwd: path.join(ROOT, 'server') });
+if (!has('--skip-server')) step('server', 'npm', ['test'], { cwd: path.join(ROOT, 'server') });
 const runOut = path.join(out, 'run-all');
 const ra = cp.spawnSync(process.execPath, ['tools/quality/run-all.js', ...(mode ? [mode] : []), '--jobs', jobs, '--out', runOut], { cwd: ROOT, stdio: 'inherit' });
 console.log(`run-all: código ${ra.status}`);
@@ -40,7 +38,7 @@ if (!has('--quick')) {
   results.push({ id: 'pixel-density', status: t.status === 0 ? 'PASS' : 'FAIL' });
 }
 if (!fs.existsSync(path.join(runOut, 'resumen.json'))) { console.error('run-all no produjo resumen.json'); process.exit(2); }
-const sa = results.filter(r => ['contracts', 'server', 'pixel-density'].includes(r.id)).flatMap(r => ['--suite', `${r.id}=${r.status}`]);
+const sa = results.filter(r => ['server', 'pixel-density'].includes(r.id)).flatMap(r => ['--suite', `${r.id}=${r.status}`]);
 const rep = cp.spawnSync(process.execPath, ['tools/quality/qa-report.js', runOut, '--out', path.join(out, 'informe'), ...sa], { cwd: ROOT, stdio: 'inherit' });
 const clasif = results.find(r => r.id === 'clasificacion').status === 'FAIL';
 console.log('\n' + results.map(r => `${r.status} ${r.id}`).join('\n'));
