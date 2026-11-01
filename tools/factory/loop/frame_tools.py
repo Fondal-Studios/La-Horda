@@ -20,10 +20,12 @@ def b64(im):
     b=io.BytesIO();im.save(b,'PNG');return 'data:image/png;base64,'+base64.b64encode(b.getvalue()).decode()
 def prep(champ,idx,out):
     os.makedirs(out,exist_ok=True);p=json.load(open(SRC))[champ];cell=cellof(p,int(idx))
-    cur=bbox_crop(cell);ref=bbox_crop(figures(f'assets/ui/codex/champions/{champ}.png')[0])
+    cur=bbox_crop(cell);ref=bbox_crop(figures(f'assets/ui/codex/champions/{champ}.png')[int(os.environ.get('REFVIEW','0'))])
     for n,im in (('cur',cur),('ref',ref)):
         c=canvas(im);c.save(f'{out}/{n}.png');open(f'{out}/{n}.b64','w').write(b64(c))
     cell.save(f'{out}/cur_cell.png')
+    an=os.environ.get('ANCHOR')
+    if an: c=canvas(Image.open(an).convert('RGBA'));open(f'{out}/anchor.b64','w').write(b64(c));c.save(f'{out}/anchor.png')
     a=np.asarray(cell)[:,:,3]>40;ys,xs=np.where(a)
     json.dump({'champ':champ,'frame':int(idx),'cell':[p['fw'],p['fh']],'bbox':[int(xs.min()),int(ys.min()),int(xs.max())+1,int(ys.max())+1]},open(f'{out}/meta.json','w'))
 def palette_of(champ,k=64):
