@@ -1,0 +1,71 @@
+{
+ "source": "assets/sprites/champions/cazadora/skins/cazadora_escarcha/atlas.png",
+ "sourceSha256": "578f9ed06d198079bf21e7c10645e5d5811f13ef0b5f6aaf4ac28655e883af3a",
+ "output": "/tmp/claude-0/-home-user-La-Horda/f6c6882d-6394-5964-97e5-a9e0fe92b2f7/scratchpad/esc_new.png",
+ "outputSha256": "fbda912c551760f76e09e94a6db60f2242147d125c1e30015ca2b0052422d9fb",
+ "method": "layered-feet-v1",
+ "parts": {
+  "down": {
+   "baseCell": 0,
+   "feetTopRow": 96,
+   "splitX": 52,
+   "gapFound": true
+  },
+  "side": {
+   "baseCell": 8,
+   "feetTopRow": 96,
+   "splitX": 39,
+   "gapFound": true
+  },
+  "up": {
+   "baseCell": 16,
+   "feetTopRow": 96,
+   "splitX": 58,
+   "gapFound": true
+  }
+ },
+ "sets": {
+  "walk_down": [
+   24,
+   25,
+   26,
+   27
+  ],
+  "run_down": [
+   24,
+   25,
+   26,
+   27
+  ],
+  "walk_side": [
+   28,
+   29,
+   30,
+   31
+  ],
+  "run_side": [
+   28,
+   29,
+   30,
+   31
+  ],
+  "walk_up": [
+   32,
+   33,
+   34,
+   35
+  ],
+  "run_up": [
+   32,
+   33,
+   34,
+   35
+  ],
+  "run": [
+   28,
+   29,
+   30,
+   31
+  ]
+ }
+}
