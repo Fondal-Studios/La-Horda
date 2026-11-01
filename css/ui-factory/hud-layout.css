@@ -1,0 +1,48 @@
+/* css/ui-factory/hud-layout.css — UI Factory · contrato UF-LAYOUT v1.
+   (1) Botón de Ataque más grande (72 → 92 px) y desplazamiento de los vecinos para no solaparse;
+   (2) pantalla limpia en Guerra de Cristales y Coliseo (body.lanes-on): se oculta lo redundante y se reduce lo secundario.
+   Solo posiciones/tamaños/visibilidad; no toca reglas, ids ni handlers. Especificidad con #controls #skillzone para ganar a hud.css/controls.css. */
+#controls #skillzone .ability-btn.basic{ width:92px; height:92px; right:calc(12px + env(safe-area-inset-right,0px)); bottom:calc(10px + env(safe-area-inset-bottom,0px)); }
+#controls #skillzone .ability-btn.basic .ico .ico-img{ width:2.1em; height:2.1em; }
+#controls #skillzone .ability-btn.s1{ right:calc(116px + env(safe-area-inset-right,0px)); }
+#controls #skillzone .ability-btn.s2{ right:calc(158px + env(safe-area-inset-right,0px)); }
+#controls #skillzone .ability-btn.s3{ right:calc(116px + env(safe-area-inset-right,0px)); }
+#controls #skillzone .ability-btn.emerg, #controls #skillzone .ability-btn.pact{ right:calc(178px + env(safe-area-inset-right,0px)); }
+/* modo zurdo: mismo desplazamiento espejado */
+body.lefty #controls #skillzone .ability-btn.basic{ right:auto; left:calc(12px + env(safe-area-inset-left,0px)); }
+body.lefty #controls #skillzone .ability-btn.s1, body.lefty #controls #skillzone .ability-btn.s3{ right:auto; left:calc(116px + env(safe-area-inset-left,0px)); }
+body.lefty #controls #skillzone .ability-btn.s2{ right:auto; left:calc(158px + env(safe-area-inset-left,0px)); }
+body.lefty #controls #skillzone .ability-btn.emerg, body.lefty #controls #skillzone .ability-btn.pact{ right:auto; left:calc(178px + env(safe-area-inset-left,0px)); }
+
+/* ---- pantalla limpia en modos competitivos ---- */
+body.lanes-on .lanes-hud .ln-feed{ opacity:.8; }
+body.lanes-on .lanes-hud .ln-rival{ left:calc(124px + env(safe-area-inset-left,0px)); padding:2px; opacity:.88; }
+body.lanes-on .lanes-hud .ln-rival canvas{ width:132px; height:99px; }
+body.lanes-on .lanes-hud .ln-horde{ display:none; }
+body.lanes-on .lanes-hud .ln-chip{ min-height:44px; padding:3px 10px; }
+body.lanes-on .lanes-hud .ln-recall{ min-height:44px; left:calc(50% + 70px); }
+body.lanes-on #hud #party .ally-row{ opacity:.9; }
+body.lanes-on .lanes-hud .ln-note{ top:calc(88px + env(safe-area-inset-top,0px)); font-size:14px; }
+
+/* D2: en pantallas angostas el chip VOLVER va apilado sobre el chip de suministros (a su lado tapaba Curación con el Ataque de 92 px) */
+@media (max-width:900px){
+  body.lanes-on .lanes-hud .ln-rival canvas{ width:118px; height:88px; }
+  body.lanes-on .lanes-hud .ln-rival{ left:calc(118px + env(safe-area-inset-left,0px)); }
+  body.lanes-on .lanes-hud .ln-recall{ left:50%; transform:translateX(-50%); bottom:calc(58px + env(safe-area-inset-bottom,0px)); }
+}
+
+/* ============================================================================================
+   UF-SIMPLE v1 — HUD de partida lo más simple posible (pedido del usuario), en TODOS los modos.
+   Siempre visible: vida/energía, aliados, nivel/vencidos, joystick, habilidades, Ataque, Definitiva y Pausa.
+   Lo demás sale como aviso emergente que se cierra solo o vive en la Pausa. Solo CSS; no toca reglas.
+   ============================================================================================ */
+#hud #ult-meter{ display:none; }          /* redundante: el anillo y el cooldown van en el propio botón de Definitiva */
+#mute-btn{ display:none; }                /* el sonido (Música/Efectos) se ajusta desde Pausa */
+#hud #hud-arena-line{ display:none; }     /* nombre de arena: ya lo dijo la ficha de arena y sigue en Pausa */
+body.lefty #pause-btn{ left:calc(10px + env(safe-area-inset-left,0px)); }
+/* el cartel de OBJETIVO es un aviso emergente: aparece cuando el juego lo pide, se queda unos segundos y se va solo */
+#hud #goal-chip{ animation:ufPopup 7s ease-in-out forwards; }
+@keyframes ufPopup{ 0%{ opacity:0; translate:-10px 0; visibility:visible; } 7%{ opacity:1; translate:0 0; } 86%{ opacity:1; visibility:visible; } 100%{ opacity:0; visibility:hidden; } }
+body.reduce-motion #hud #goal-chip{ animation-name:ufPopupStill; }
+@keyframes ufPopupStill{ 0%{ opacity:1; visibility:visible; } 92%{ opacity:1; visibility:visible; } 100%{ opacity:0; visibility:hidden; } }
+@media (prefers-reduced-motion:reduce){ #hud #goal-chip{ animation-name:ufPopupStill; } }
