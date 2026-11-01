@@ -160,14 +160,22 @@
         const introP = B.intro.t > 0 ? 1 - B.intro.t/B.intro.dur : 1;
         ctx.save();
         const lite = typeof vfxLoad==="number" && vfxLoad < 0.55;
-        if(!lite) drawMistAndShade(now, x0, y0, W, H);
-        drawRunes(now, introP);
-        drawPlayerSpot(now);
-        drawHazards(now);
+        const K = B.skip || {}; // (solo para medir: tools/beta/prof.js)
+        if(!lite && !K.mist) drawMistAndShade(now, x0, y0, W, H);
+        if(!K.runes) drawRunes(now, introP);
+        if(!K.spot) drawPlayerSpot(now);
+        if(!K.hazard) drawHazards(now);
         ctx.restore();
         if(dt) spawnAmbient(dt);
       }
-      bfxDraw(now);
+      if(!(B.skip && B.skip.bfx)) bfxDraw(now);
+      // Ronda 3 (claridad): en la definitiva y con la escena cargada el héroe se perdía entre ondas y enemigos.
+      // Un anillo claro y estable bajo sus pies lo ancla: se ve sobre cualquier efecto (solo cosmético).
+      if(player.alive && (B.ult.t > 0 || (typeof enemies!=="undefined" && enemies.length > 14))){
+        const k = B.ult.t > 0 ? 1 : 0.6, pu = 0.8 + 0.2*Math.sin(now*6);
+        ctx.save(); ctx.lineWidth = 3; ctx.strokeStyle = `rgba(0,0,0,${0.55*k})`; ctx.beginPath(); ctx.ellipse(player.x, player.y + 7, 25, 11, 0, 0, 6.2832); ctx.stroke();
+        ctx.lineWidth = 1.6; ctx.strokeStyle = `rgba(255,255,255,${0.9*k*pu})`; ctx.beginPath(); ctx.ellipse(player.x, player.y + 7, 25, 11, 0, 0, 6.2832); ctx.stroke(); ctx.restore();
+      }
     }catch(err){ if(!B._err){ B._err = err; console.error("beta-arena", err); } }
     B.stats.drawMs += performance.now() - t0; B.stats.drawN++;
     return r;
