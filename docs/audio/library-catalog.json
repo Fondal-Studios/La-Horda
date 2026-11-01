@@ -2,9 +2,6 @@
  "contract": "MusicLibraryCatalog",
  "version": 1,
  "queue": [
-  "fields-of-ice",
-  "ice-cream-truck-theme",
-  "snow-theme",
   "abandoned-hopes",
   "the-frigid-seas",
   "beyond-the-frozen-veil",
@@ -3459,6 +3456,42 @@
    "sampleRate": 44100,
    "channels": 2,
    "bitRate": 120619
+  },
+  {
+   "slug": "fields-of-ice",
+   "title": "Fields of Ice",
+   "author": "Jonathan So",
+   "source": "https://opengameart.org/content/fields-of-ice",
+   "downloadUrl": "https://opengameart.org/sites/default/files/Fields%20of%20Ice_0.mp3",
+   "license": "CC0-1.0",
+   "licenseEvidence": {
+    "declared": "CC0",
+    "pageExcerpt": "field-name-field-art-licenses field-type-taxonomy-term-reference field-label-above\"> License(s): CC0 <div class=\"field",
+    "pageSha256": "e83f96a401e1890bd1a9b04902fd7d12829a2889f7d443f0996559b5b990bb1f",
+    "retrievedAt": "2026-11-01T21:34:53.520Z"
+   },
+   "attributionRequired": false,
+   "redistributionInGame": true,
+   "commercialUse": true,
+   "tags": [
+    "action",
+    "nes",
+    "shooter",
+    "chiptune",
+    "vgm",
+    "famitracker"
+   ],
+   "file": "music-work/originals/fields-of-ice.mp3",
+   "bytes": 4872476,
+   "sha256": "c43e068c9c7523eb9cb08b77ff5884f2dc6807b751ddf98dd7ede5afe09f567c",
+   "format": "mp3",
+   "ok": true,
+   "error": null,
+   "durationSec": 121.78,
+   "codec": "mp3",
+   "sampleRate": 44100,
+   "channels": 1,
+   "bitRate": 320076
   }
  ],
  "rejected": [
@@ -3627,6 +3660,18 @@
   {
    "slug": "cave-music",
    "title": "Cave Music",
+   "licenses": "CC0",
+   "reason": "sin archivo de audio descargable"
+  },
+  {
+   "slug": "ice-cream-truck-theme",
+   "title": "Ice Cream Truck Theme",
+   "licenses": "CC0",
+   "reason": "sin archivo de audio descargable"
+  },
+  {
+   "slug": "snow-theme",
+   "title": "Snow Theme",
    "licenses": "CC0",
    "reason": "sin archivo de audio descargable"
   }
