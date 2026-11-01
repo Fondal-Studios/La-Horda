@@ -10,6 +10,8 @@ flowchart LR
   B["Agente B<br/>Persistencia"]
   C["Agente C<br/>Telemetría y QA"]
   D["Agente D<br/>Fábrica de UI y arte"]
+  G["Agente G<br/>Build Evolution (ramas de evolución)"]
+  I["Agente I<br/>Premium Skin Factory (catálogo cosmético)"]
   ARQ["Arquitectura<br/>(solo lectura / relay)"]
   GameResult{{"GameResult v1"}}
   EconomyTransaction{{"EconomyTransaction v1"}}
@@ -94,3 +96,5 @@ flowchart LR
 | B — Persistencia | `claude/s2-persistencia-…` | PlayerProfile | contracts/v1 |
 | C — Telemetría y QA | `claude/s3-telemetria-…` | TelemetryEvent, TelemetryConsent | contracts/v1 |
 | D — Fábrica de UI y arte | `claude/s4-ui-…` | SkillEvent, ChampionSelection, ArtAsset | contracts/v1 |
+| G — Build Evolution (ramas de evolución) | `feature/beta-build-evolution…` | — | contracts/v1 |
+| I — Premium Skin Factory (catálogo cosmético) | `feature/beta-premium-skins…` | — | contracts/v1 |
