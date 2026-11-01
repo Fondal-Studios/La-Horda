@@ -1,6 +1,6 @@
 # Resumen ejecutivo — Beta Visual Impact (Ruinas Élficas · Sylva)
 
-**Estado: NO APROBADO por el umbral del encargo (90/100).** Mejor puntaje independiente hasta ahora: **87/100**, cero
+**Estado: NO APROBADO por el umbral del encargo (90/100).** Mejor puntaje independiente: **87/100** (ronda 3: 86), cero
 regresiones críticas. No se fusionó a `main`. No hay PR abierto (la herramienta de GitHub se desconectó en esta sesión).
 
 ## Qué se entrega
@@ -23,12 +23,12 @@ peligros legibles, botín con presentación propia por rareza. Detalle y límite
 |---|---|---|---|---|
 | 1 | 87 | 80 | 0 | FAIL (<90) |
 | 2 | 87 | 74 | 0 | FAIL (<90) |
-| 3 | sin evaluar: el evaluador se cortó por límite de uso de la API | | | pendiente |
+| 3 | 86 | 81 | 0 | FAIL (<90) |
 
 La rama supera a main por 7–13 puntos, pero no llega a 90. Reparaciones aplicadas tras las rondas: nombres de botín
 acotados a 4 (apilaban), caída del jugador más clara, glow de ulti y chispas reducidos, botón clásico con más contraste,
 fundido de arranque limpio. Pendiente para llegar a 90 según los hallazgos: menor costo de partículas/efectos en escena
-densa (rendimiento 82), jerarquía de la racha vs. contador, y volver a evaluar (ronda 3: paquete listo, hay que relanzar al evaluador).
+densa (rendimiento 82), jerarquía de la racha vs. contador, y volver a evaluar. Ronda 3: el evaluador marcó rendimiento 70 (p95 de cuadros reales 66,7 ms vs 33,3 en la captura con video; medición ruidosa, no es regresión crítica pero es el freno principal).
 
 ## Decisiones que necesitan a S0C / aprobación humana
 No hay rastro de S0C ni de una UI Factory en el repo ni canal en esta sesión: se reutilizó `ui-kit.css`/`prefs.js`. Abiertas:
