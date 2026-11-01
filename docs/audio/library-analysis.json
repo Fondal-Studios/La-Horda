@@ -1,0 +1,273 @@
+{
+ "contract": "MusicLibraryAnalysis",
+ "version": 1,
+ "note": "Medidas automáticas; no sustituyen la escucha.",
+ "tracks": {
+  "6042399782e581d753d616bc703e66483d5eccb5fb687a20c9a552d68c49e620": {
+   "slug": "battle-theme-a",
+   "durationSec": 95.9,
+   "rmsMean": 0.2523,
+   "dynamics": 0.197,
+   "centroidHz": 1860,
+   "onsetsPerSec": 3.47,
+   "tempoBPM": 144,
+   "loop": {
+    "headTailSimilarity": 0.479,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.03,
+    "startRatio": 0.7
+   },
+   "integratedLUFS": -10.3,
+   "loudnessRange": 3.3,
+   "truePeakDBTP": -0.6
+  },
+  "f2f1a7b531e3fea191350684e8ef158e2c8583cde9ce5f31c0caa34bba687a5a": {
+   "slug": "fast-fight-battle-music",
+   "durationSec": 26.6,
+   "rmsMean": 0.464,
+   "dynamics": 0.183,
+   "centroidHz": 2406,
+   "onsetsPerSec": 4.86,
+   "tempoBPM": 103,
+   "loop": {
+    "headTailSimilarity": 0.902,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.97,
+    "startRatio": 0.43
+   },
+   "integratedLUFS": -8.2,
+   "loudnessRange": 0.4,
+   "truePeakDBTP": 0.3
+  },
+  "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1": {
+   "slug": "boss-battle-music",
+   "durationSec": 123.4,
+   "rmsMean": 0.4367,
+   "dynamics": 0.172,
+   "centroidHz": 1941,
+   "onsetsPerSec": 3.03,
+   "tempoBPM": 172,
+   "loop": {
+    "headTailSimilarity": 0.979,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.09,
+    "startRatio": 1.12
+   },
+   "integratedLUFS": -6.8,
+   "loudnessRange": 4.4,
+   "truePeakDBTP": 0.3
+  },
+  "4e9614d4bc07e91e4d279199fbef4ab1b02ec190e4c47f5d1741e44b25e87ba9": {
+   "slug": "fast-fight-battle-music-looped",
+   "durationSec": 24.8,
+   "rmsMean": 0.4841,
+   "dynamics": 0.028,
+   "centroidHz": 2378,
+   "onsetsPerSec": 5.33,
+   "tempoBPM": 103,
+   "loop": {
+    "headTailSimilarity": 0.939,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.01,
+    "startRatio": 0.98
+   },
+   "integratedLUFS": -8.1,
+   "loudnessRange": 0.3,
+   "truePeakDBTP": 0.3
+  },
+  "9a63f74305f5cbce8374a72a027a645c07c97663255aba0b817bc1f70c432ed5": {
+   "slug": "boss-battle-theme",
+   "durationSec": 114.3,
+   "rmsMean": 0.2428,
+   "dynamics": 0.117,
+   "centroidHz": 1920,
+   "onsetsPerSec": 3.47,
+   "tempoBPM": 83,
+   "loop": {
+    "headTailSimilarity": 0.896,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.01,
+    "startRatio": 1.07
+   },
+   "integratedLUFS": -12.7,
+   "loudnessRange": 2.5,
+   "truePeakDBTP": 0
+  },
+  "988b173669e718c7a716a8292c13b607d90a36bfbf02a016d3fe41d10a90a7af": {
+   "slug": "long-away-home-8bit",
+   "durationSec": 121.3,
+   "rmsMean": 0.1593,
+   "dynamics": 0.255,
+   "centroidHz": 1641,
+   "onsetsPerSec": 4.29,
+   "tempoBPM": 152,
+   "loop": {
+    "headTailSimilarity": 0.985,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.27,
+    "startRatio": 0.89
+   },
+   "integratedLUFS": -21.1,
+   "loudnessRange": 3.6,
+   "truePeakDBTP": -3
+  },
+  "7bfe029fcc5cc73688e4b6ca13b8845fe80a4c73d775e5d2c52af30e7a5d75b0": {
+   "slug": "dark-intro",
+   "durationSec": 80.6,
+   "rmsMean": 0.076,
+   "dynamics": 0.377,
+   "centroidHz": 682,
+   "onsetsPerSec": 1.81,
+   "tempoBPM": 136,
+   "loop": {
+    "headTailSimilarity": 0.347,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0.01,
+    "startRatio": 0.22
+   },
+   "integratedLUFS": -20.3,
+   "loudnessRange": 4.5,
+   "truePeakDBTP": -3.7
+  },
+  "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b": {
+   "slug": "determined-pursuit-epic-orchestra-loop",
+   "durationSec": 108,
+   "rmsMean": 0.2058,
+   "dynamics": 0.197,
+   "centroidHz": 2014,
+   "onsetsPerSec": 3.4,
+   "tempoBPM": 161,
+   "loop": {
+    "headTailSimilarity": 0.788,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.08,
+    "startRatio": 0.72
+   },
+   "integratedLUFS": -12.8,
+   "loudnessRange": 4,
+   "truePeakDBTP": -1.1
+  },
+  "8476ce29692d8d317a7d79628af967448ec09d9f66efe692a597336c5cea2629": {
+   "slug": "battle-theme-b-for-rpg",
+   "durationSec": 66,
+   "rmsMean": 0.1795,
+   "dynamics": 0.253,
+   "centroidHz": 1941,
+   "onsetsPerSec": 3.06,
+   "tempoBPM": 144,
+   "loop": {
+    "headTailSimilarity": 0.714,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.03,
+    "startRatio": 1.04
+   },
+   "integratedLUFS": -12.8,
+   "loudnessRange": 2.9,
+   "truePeakDBTP": -0.1
+  },
+  "8e69e5dadba8b472d684bcb936e8e83ef0c715439e6057029099d008a6be4f49": {
+   "slug": "boss-battle-2-8-bit",
+   "durationSec": 59.6,
+   "rmsMean": 0.1497,
+   "dynamics": 0.174,
+   "centroidHz": 1562,
+   "onsetsPerSec": 4.21,
+   "tempoBPM": 144,
+   "loop": {
+    "headTailSimilarity": 0.991,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1,
+    "startRatio": 0.66
+   },
+   "integratedLUFS": -20.3,
+   "loudnessRange": 2.2,
+   "truePeakDBTP": -1.5
+  },
+  "25f3056aa69985f878fd70526b4661d3f0492f1c4adb1174dadea837ac265f5d": {
+   "slug": "the-rush",
+   "durationSec": 139.7,
+   "rmsMean": 0.1914,
+   "dynamics": 0.227,
+   "centroidHz": 1258,
+   "onsetsPerSec": 4.61,
+   "tempoBPM": 63,
+   "loop": {
+    "headTailSimilarity": 0.866,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.01,
+    "startRatio": 0.99
+   },
+   "integratedLUFS": -15.6,
+   "loudnessRange": 7.2,
+   "truePeakDBTP": -0.5
+  },
+  "9580618dc851f70c3a11b5ff87672867de44cd38b35dabf926d6befde20e78d0": {
+   "slug": "dark-shrine-loop",
+   "durationSec": 56.6,
+   "rmsMean": 0.0713,
+   "dynamics": 0.455,
+   "centroidHz": 629,
+   "onsetsPerSec": 2.69,
+   "tempoBPM": 161,
+   "loop": {
+    "headTailSimilarity": 0.284,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.01,
+    "startRatio": 1.39
+   },
+   "integratedLUFS": -21.9,
+   "loudnessRange": 6.8,
+   "truePeakDBTP": -6.9
+  },
+  "0748e585c8f2c56a6bb649ca5d87665ed44a14af0e8fe6a316ab2d1db9bc486d": {
+   "slug": "cc0-remakes",
+   "durationSec": 88.6,
+   "rmsMean": 0.1847,
+   "dynamics": 0.287,
+   "centroidHz": 1737,
+   "onsetsPerSec": 4.46,
+   "tempoBPM": 129,
+   "loop": {
+    "headTailSimilarity": 0.477,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.17,
+    "startRatio": 0.49
+   },
+   "integratedLUFS": -14.5,
+   "loudnessRange": 4.6,
+   "truePeakDBTP": -0.1
+  },
+  "34406888886469e6012330e1c496d4818a2eb9be131cbbd22958ccc85cc8a661": {
+   "slug": "boss-battle-3-8-bit-re-upload",
+   "durationSec": 198.5,
+   "rmsMean": 0.1677,
+   "dynamics": 0.14,
+   "centroidHz": 2108,
+   "onsetsPerSec": 4.18,
+   "tempoBPM": 144,
+   "loop": {
+    "headTailSimilarity": 0.92,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.17,
+    "startRatio": 0.87
+   },
+   "integratedLUFS": -16.3,
+   "loudnessRange": 1.7,
+   "truePeakDBTP": -1.9
+  }
+ }
+}

@@ -225,7 +225,11 @@ function initAudio(){
 // iPhone/Safari: al volver de otra app, de una llamada o con la pantalla bloqueada, el contexto queda
 // "suspended"/"interrupted" y el juego sigue mudo. Se reanuda al volver a la pestaña y en el próximo toque.
 function _audioWake(){ if(audioCtx && audioCtx.state!=="running" && audioCtx.state!=="closed") audioCtx.resume().catch(()=>{}); }
-document.addEventListener("visibilitychange", ()=>{ if(!document.hidden) _audioWake(); });
+document.addEventListener("visibilitychange", ()=>{
+  // En segundo plano el contexto se suspende (no suena ni gasta batería); al volver se reanuda.
+  if(document.hidden){ if(audioCtx && audioCtx.state==="running") audioCtx.suspend().catch(()=>{}); }
+  else _audioWake();
+});
 ["touchend", "pointerup", "keydown"].forEach(ev=>document.addEventListener(ev, _audioWake, {passive:true, capture:true}));
 function setAudioEnabled(on){
   audioEnabled = on;
@@ -918,6 +922,7 @@ function _schedTick(){
   if(M.next < now - 0.3) M.next = now + 0.05; // la pestaña estuvo pausada: retoma sin ráfaga
   while(M.next < now + 0.14){
     if(M.pending && M.pending.at <= M.next + 0.001){ const p = M.pending; M.pending = null; _musicSwitch(p, M.next); }
+    if(M.fileTrack && (M.fileTrack.alive || M.fileTrack.done)){ M.next += 0.1; continue; } // suena una pista de archivo
     const S = M.S;
     if(M.step===0 && S && !M.pending){
       // compás nuevo: foto de la intensidad (las capas entran y salen en la barra) y cambio de fase
@@ -972,6 +977,8 @@ function _musicSwitch(p, t){
   _setSpace(p.arena);
   _pieceInit(_pieceFor(p.mode, p.arena));
   M.lvBar = M.int;
+  // Pista de archivo aprobada para este modo/arena (js/audio/music-tracks.js); null => suena el procedural.
+  M.fileTrack = (typeof MusicTracks!=="undefined") ? MusicTracks.onSwitch(p.mode, p.arena, b.dry, t, p.fi||0.8) : null;
   if(p.sting && audioEnabled) try{ _sting(p.sting, t); }catch(e){}
 }
 // Pedido de modo (del juego o del director). El título sigue hasta cerrar su frase y pasa al menú
