@@ -13,9 +13,17 @@
    - Anti-dominancia: tope de daño extra por segundo (SYN_CFG.budgetPerSec), enfriamientos internos
      por enemigo, tope por lanzamiento de escudo/cura, jefes con control reducido, costo cdMult.
    - Cooperativo: corre en el anfitrión. El invitado puede elegir (la opción "syn:" pasa el filtro de
-     netHostBuffPicked porque boonParseOpt devuelve un objeto sintético). DEPENDENCIA: h.synergy aún
-     no viaja en el snapshot (js/net/** pertenece a otro dueño): el HUD del invitado no ve su rama.
+     netHostBuffPicked porque boonParseOpt devuelve un objeto sintético). h.synergy SÍ viaja en el
+     snapshot (_netDeltaOf copia toda clave enumerable del héroe); el estado interno (enfriamientos,
+     acumuladores) vive en WeakMap y NO se replica. La oferta del invitado depende de la maestría
+     guardada en el anfitrión (limitación conocida).
    ============================================================ */
+/* Estado interno en WeakMap: NO es una propiedad del héroe/enemigo/_evo, así que el snapshot del cooperativo
+   (_netDeltaOf copia toda clave enumerable) no lo replica, y se libera solo con el objeto. */
+const SYN_ST = new WeakMap();
+let _synUidN = 0;
+function synSt(o){ let t = SYN_ST.get(o); if(!t){ t = {at:{}}; SYN_ST.set(o, t); } return t; }
+function synUid(o){ const t = synSt(o); return t.uid || (t.uid = ++_synUidN); }
 function synOf(h){ return (h && h.synergy) || {}; }
 function synBranchFor(h, skillKey){ const id = synOf(h)[skillKey]; return id ? SYN_BY_ID[id] : null; }
 function synSkillOf(b){ const c = CLASSES[b.champ]; return c ? (b.skill==="ult" ? c.ultimate : c.skills[b.skill]) : null; }
@@ -45,6 +53,8 @@ boonBuildOffers = function(h, pool, endless, n){
   const base = _synBoonBuildOffers.call(this, h, pool, endless, n);
   const pend = synPendingSkills(h);
   if(!pend.length) return base;
+  const T = synSt(h); T.offers = (T.offers||0) + 1;
+  if(T.offers % 2 === 0) return base; // se alterna: elegir la carta base pospone la decisión y la siguiente subida vuelve al reparto normal
   const pair = synPickPair(pend[0].opts).map(b=>"syn:"+b.id);
   // conserva como mucho 1 carta de la oferta original (la primera) y pone el par de la decisión
   return [base[0]].concat(pair).filter(Boolean).slice(0, Math.max(3, base.length));
@@ -114,7 +124,7 @@ skillEvoOnCast = function(caster, key, sk, isUlt){
   const out = _synOnCast.apply(this, arguments);
   const b = caster && caster.classKey && !divinaMode ? synBranchFor(caster, key) : null;
   if(b && caster._evo){
-    caster._evo.syn = {b, acc:0, accH:0};           // acumuladores por lanzamiento (escudo/cura)
+    synSt(caster._evo).syn = {b, acc:0, accH:0};           // acumuladores por lanzamiento (escudo/cura)
     if(b.cdMult > 1){                                 // costo de la decisión
       if(key==="ult" && caster.ultCd>0) caster.ultCd *= b.cdMult;
       else if(typeof key==="number" && caster.cds && caster.cds[key]>0){ caster.cds[key] *= b.cdMult; if(caster.cdTotal) caster.cdTotal[key] = caster.cds[key]; }
@@ -124,25 +134,25 @@ skillEvoOnCast = function(caster, key, sk, isUlt){
   return out;
 };
 function synBudgetOk(src, amt){
-  const win = (runElapsedMs/1000)|0;
-  if(src._synWin !== win){ src._synWin = win; src._synSpent = 0; }
+  const win = (runElapsedMs/1000)|0, T = synSt(src);
+  if(T.win !== win){ T.win = win; T.spent = 0; }
   const cap = src.baseDmg * runStats.dmgMult * SYN_CFG.budgetPerSec;
-  const room = Math.max(0, cap - src._synSpent);
-  const a = Math.min(amt, room); src._synSpent += a; return a;
+  const room = Math.max(0, cap - T.spent);
+  const a = Math.min(amt, room); T.spent += a; return a;
 }
 function synReady(e, id, fxName, icd){
-  const m = e._synAt || (e._synAt = {}), k = id + fxName;
+  const m = synSt(e).at, k = id + fxName;
   if(m[k] !== undefined && runElapsedMs - m[k] < icd) return false;
   m[k] = runElapsedMs; return true;
 }
 function synBigFoe(e){ return e.rank==="jefe" || e.rank==="subjefe"; }
 function synBonusHit(src, e, amt, b){
-  const a = synBudgetOk(src, amt); if(a > 0 && e.alive) damageEnemy(e, a, {src, fromProc:true});
+  const a = synBudgetOk(src, amt); if(a > 0 && e.alive) damageEnemy(e, a, {src, fromProc:true, critChanceOverride:0, critMultOverride:1}); // sin segundo crítico: el golpe de origen ya lo incluye
 }
 const _synOnHit = skillEvoOnHit;
 skillEvoOnHit = function(src, e, dmg, opts){
   // estado ANTES de la Firma (la Firma de este mismo golpe no debe contar como "ya estaba marcado")
-  const ev = src && src._evo, syn = ev && ev.syn;
+  const ev = src && src._evo, syn = ev && SYN_ST.has(ev) ? SYN_ST.get(ev).syn : null;
   const wasSlowed = !!(syn && e.slowTimer > 0), wasMarked = !!(syn && (e._evoMarkT||0) > runElapsedMs);
   _synOnHit.apply(this, arguments);
   if(!syn || !e.alive || divinaMode) return;
@@ -151,7 +161,7 @@ skillEvoOnHit = function(src, e, dmg, opts){
   if(fx.vsSlowed && wasSlowed && synReady(e, b.id, "vs", 120)) synBonusHit(src, e, dmg*fx.vsSlowed*P, b);
   if(fx.vsMarked && wasMarked && synReady(e, b.id, "vm", 120)) synBonusHit(src, e, dmg*fx.vsMarked*P, b);
   if(fx.extra && synReady(e, b.id, "ex", fx.extra.icd)) synBonusHit(src, e, dmg*fx.extra.pct*P, b);
-  if(fx.chain && synReady(src, b.id+e.id, "ch", fx.chain.icd)){
+  if(fx.chain && synReady(e, b.id+":"+synUid(src), "ch", fx.chain.icd)){
     let n = 0;
     for(const o of enemies){
       if(n >= fx.chain.n) break;
@@ -175,17 +185,17 @@ skillEvoOnHit = function(src, e, dmg, opts){
   }
   if(fx.mark){ e._evoMarkT = Math.max(e._evoMarkT||0, runElapsedMs + fx.mark.ms); // sin enfriamiento: la Firma renueva la marca en cada golpe y la rama debe prevalecer
     e._evoMarkBy = src; e._evoMarkKind = "mark"; }
-  if(fx.shield && src.alive && synReady(src, b.id+e.id, "sh", fx.shield.icd) && syn.acc < fx.shield.cap){
+  if(fx.shield && src.alive && synReady(e, b.id+":"+synUid(src), "sh", fx.shield.icd) && syn.acc < fx.shield.cap){
     const add = Math.min(fx.shield.pct*P, fx.shield.cap*P - syn.acc); syn.acc += add;
-    src.shield = Math.min(src.maxHp*0.5, (src.shield||0) + src.maxHp*add); src.shieldTimer = Math.max(src.shieldTimer||0, 3000);
+    src.shield = Math.max(src.shield||0, Math.min(src.maxHp*0.5, (src.shield||0) + src.maxHp*add)); src.shieldTimer = Math.max(src.shieldTimer||0, 3000);
   }
-  if(fx.heal && src.alive && synReady(src, b.id+e.id, "hl", fx.heal.icd) && syn.accH < fx.heal.cap){
+  if(fx.heal && src.alive && synReady(e, b.id+":"+synUid(src), "hl", fx.heal.icd) && syn.accH < fx.heal.cap){
     const add = Math.min(fx.heal.pct*P, fx.heal.cap*P - syn.accH); syn.accH += add;
     src.hp = Math.min(src.maxHp, src.hp + src.maxHp*add);
   }
   // identidad visual de la rama: anillo + chispas del color propio (tope por ventana de 100 ms)
-  const w = (runElapsedMs/100)|0; if(src._synFxWin !== w){ src._synFxWin = w; src._synFxN = 0; }
-  if(src._synFxN++ < SYN_CFG.fxPerWindow && inView(e.x, e.y, 40)){
+  const w = (runElapsedMs/100)|0; const FT = synSt(src); if(FT.fxWin !== w){ FT.fxWin = w; FT.fxN = 0; }
+  if(FT.fxN++ < SYN_CFG.fxPerWindow && inView(e.x, e.y, 40)){
     const rgb = hexToRgb(b.look), pr = src===player ? 1 : 0;
     vfxShock(e.x, e.y-8, 5, 30, rgb, 260, pr);
     vfxBurst(e.x, e.y-18, 4, "t_" + b.look, 110, 300, 2.5, pr, -30, 1);

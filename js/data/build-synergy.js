@@ -55,30 +55,30 @@ const SYN_BRANCHES = [
    text:"Cada giro suma un tajo extra de 30% del golpe, una vez cada 0,2 s por enemigo."},
   /* ---------- Thalen (Mago) — distancia: daño condicional y cadenas ---------- */
   {id:"mg_quebradiza", champ:"mago", skill:1, arch:"ofensiva", name:"Nova Quebradiza", look:"#aee6ff",
-   fx:{vsSlowed:0.30}, cdMult:1.10, set:{id:"convergencia", n:2},
+   fx:{vsSlowed:0.30}, cdMult:1.0, set:{id:"convergencia", n:2},
    text:"+30% de daño a enemigos que ya estaban ralentizados al llegarles la nova."},
   {id:"mg_glacial", champ:"mago", skill:1, arch:"control", name:"Nova Glacial", look:"#7fb8ff",
-   fx:{freezeSlowed:{ms:450, icd:5000}}, cdMult:1.10, set:{id:"convergencia", n:2},
+   fx:{freezeSlowed:{ms:450, icd:5000}}, cdMult:1.0, set:{id:"convergencia", n:2},
    text:"Quien ya estaba ralentizado queda congelado 0,45 s (jefes: ralentización fuerte)."},
   {id:"mg_tormenta", champ:"mago", skill:2, arch:"ofensiva", name:"Cadena de Tormenta", look:"#ffe36a",
-   fx:{chain:{n:2, pct:0.45, range:130, icd:400}}, cdMult:1.10, set:{id:"convergencia", n:2},
-   text:"Cada descarga salta a 2 enemigos cercanos con 45% del golpe."},
+   fx:{chain:{n:2, pct:0.18, range:130, icd:400}}, cdMult:1.05, set:{id:"convergencia", n:2},
+   text:"Cada descarga salta a 2 enemigos cercanos con 18% del golpe."},
   {id:"mg_tierra", champ:"mago", skill:2, arch:"defensiva", name:"Cadena a Tierra", look:"#8bffb0",
-   fx:{heal:{pct:0.02, cap:0.08, icd:150}}, cdMult:1.0, set:{id:"convergencia", n:2},
-   text:"Cada descarga te cura 2% de tu vida (hasta 8% por lanzamiento)."},
+   fx:{heal:{pct:0.03, cap:0.12, icd:150}}, cdMult:1.0, set:{id:"convergencia", n:2},
+   text:"Cada descarga te cura 3% de tu vida (hasta 12% por lanzamiento)."},
   /* ---------- Sylva (Cazadora) — presa marcada y cobertura ---------- */
   {id:"cz_caceria", champ:"cazadora", skill:0, arch:"ofensiva", name:"Flecha de Cacería", look:"#9bff8a",
    fx:{vsMarked:0.30}, cdMult:1.0, set:{id:"manada", n:2},
    text:"+30% de daño a presas ya marcadas (la Firma Nv.3 marca)."},
   {id:"cz_rastro", champ:"cazadora", skill:0, arch:"control", name:"Flecha de Rastro", look:"#7ee0c0",
-   fx:{slow:{amt:0.40, ms:1800, icd:1500}}, cdMult:1.0, set:{id:"manada", n:2},
-   text:"La flecha frena 40% durante 1,8 s a todo lo que atraviesa."},
+   fx:{slow:{amt:0.40, ms:1800, icd:1500}, vsSlowed:0.15}, cdMult:1.0, set:{id:"manada", n:2},
+   text:"La flecha frena 40% durante 1,8 s a lo que atraviesa y pega +15% a lo ya frenado."},
   {id:"cz_cobertura", champ:"cazadora", skill:2, arch:"defensiva", name:"Lluvia de Cobertura", look:"#a8e8ff",
-   fx:{shield:{pct:0.03, cap:0.15, icd:200}}, cdMult:1.05, set:{id:"manada", n:2},
-   text:"Cada flecha que impacta te da escudo de 3% de tu vida (hasta 15%)."},
-  {id:"cz_marca", champ:"cazadora", skill:2, arch:"ofensiva", name:"Lluvia Marcadora", look:"#ffb86a",
-   fx:{mark:{ms:3500}}, cdMult:1.0, set:{id:"manada", n:2},
-   text:"Marca a todo lo que toca: +10% de daño recibido para todo tu equipo."}
+   fx:{shield:{pct:0.04, cap:0.20, icd:200}}, cdMult:1.0, set:{id:"manada", n:2},
+   text:"Cada flecha que impacta te da escudo de 4% de tu vida (hasta 20%)."},
+  {id:"cz_marca", champ:"cazadora", skill:2, arch:"control", name:"Lluvia Marcadora", look:"#ffb86a",
+   fx:{mark:{ms:3500}, slow:{amt:0.20, ms:1200, icd:600}}, cdMult:1.0, set:{id:"manada", n:2},
+   text:"Marca a todo lo que toca (+10% de daño recibido para el equipo) y lo frena 20%."}
 ];
 const SYN_BY_ID = Object.fromEntries(SYN_BRANCHES.map(b=>[b.id, b]));
 const SYN_CHAMPS = [...new Set(SYN_BRANCHES.map(b=>b.champ))];
