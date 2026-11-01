@@ -1,0 +1,475 @@
+{
+ "mode": "ab",
+ "chromium": "153.0.8010.12",
+ "date": "2026-11-01T10:02:47.458Z",
+ "runs": [
+  {
+   "rep": 0,
+   "label": "base",
+   "vp": "844x390",
+   "load": {
+    "startRunMs": 1326,
+    "continueMs": 5947,
+    "dcl": 1778,
+    "resources": 250
+   },
+   "fps": {
+    "n": 178,
+    "fpsAvg": 22,
+    "p95ms": 116.7,
+    "maxMs": 183.4,
+    "over33": 79,
+    "over50": 44
+   },
+   "cpu": {
+    "scriptMs": 3819,
+    "taskMs": 8187,
+    "layoutMs": 28,
+    "styleMs": 94
+   },
+   "errors": []
+  },
+  {
+   "rep": 0,
+   "label": "base",
+   "vp": "1280x800",
+   "load": {
+    "startRunMs": 1377,
+    "continueMs": 7110,
+    "dcl": 1804,
+    "resources": 250
+   },
+   "fps": {
+    "n": 208,
+    "fpsAvg": 25.9,
+    "p95ms": 83.4,
+    "maxMs": 183.3,
+    "over33": 66,
+    "over50": 38
+   },
+   "cpu": {
+    "scriptMs": 3918,
+    "taskMs": 8069,
+    "layoutMs": 29,
+    "styleMs": 80
+   },
+   "errors": []
+  },
+  {
+   "rep": 0,
+   "label": "cand",
+   "vp": "844x390",
+   "load": {
+    "startRunMs": 1218,
+    "continueMs": 6219,
+    "dcl": 1608,
+    "resources": 250
+   },
+   "fps": {
+    "n": 171,
+    "fpsAvg": 21.3,
+    "p95ms": 116.7,
+    "maxMs": 199.9,
+    "over33": 78,
+    "over50": 45
+   },
+   "cpu": {
+    "scriptMs": 3624,
+    "taskMs": 8058,
+    "layoutMs": 27,
+    "styleMs": 87
+   },
+   "errors": []
+  },
+  {
+   "rep": 0,
+   "label": "cand",
+   "vp": "1280x800",
+   "load": {
+    "startRunMs": 1306,
+    "continueMs": 6574,
+    "dcl": 1815,
+    "resources": 250
+   },
+   "fps": {
+    "n": 212,
+    "fpsAvg": 26.4,
+    "p95ms": 100,
+    "maxMs": 150,
+    "over33": 60,
+    "over50": 35
+   },
+   "cpu": {
+    "scriptMs": 3937,
+    "taskMs": 8049,
+    "layoutMs": 30,
+    "styleMs": 83
+   },
+   "errors": []
+  },
+  {
+   "rep": 0,
+   "label": "cand-uf0",
+   "vp": "844x390",
+   "load": {
+    "startRunMs": 1581,
+    "continueMs": 7226,
+    "dcl": 2188,
+    "resources": 250
+   },
+   "fps": {
+    "n": 166,
+    "fpsAvg": 20.7,
+    "p95ms": 133.2,
+    "maxMs": 166.8,
+    "over33": 76,
+    "over50": 39
+   },
+   "cpu": {
+    "scriptMs": 3775,
+    "taskMs": 8102,
+    "layoutMs": 27,
+    "styleMs": 94
+   },
+   "errors": []
+  },
+  {
+   "rep": 0,
+   "label": "cand-uf0",
+   "vp": "1280x800",
+   "load": {
+    "startRunMs": 1479,
+    "continueMs": 7411,
+    "dcl": 2073,
+    "resources": 250
+   },
+   "fps": {
+    "n": 190,
+    "fpsAvg": 23.7,
+    "p95ms": 116.6,
+    "maxMs": 150,
+    "over33": 67,
+    "over50": 36
+   },
+   "cpu": {
+    "scriptMs": 4106,
+    "taskMs": 8101,
+    "layoutMs": 30,
+    "styleMs": 76
+   },
+   "errors": []
+  },
+  {
+   "rep": 1,
+   "label": "base",
+   "vp": "844x390",
+   "load": {
+    "startRunMs": 1439,
+    "continueMs": 6809,
+    "dcl": 1892,
+    "resources": 250
+   },
+   "fps": {
+    "n": 171,
+    "fpsAvg": 21.3,
+    "p95ms": 116.6,
+    "maxMs": 166.7,
+    "over33": 78,
+    "over50": 46
+   },
+   "cpu": {
+    "scriptMs": 3634,
+    "taskMs": 8109,
+    "layoutMs": 26,
+    "styleMs": 91
+   },
+   "errors": []
+  },
+  {
+   "rep": 1,
+   "label": "base",
+   "vp": "1280x800",
+   "load": {
+    "startRunMs": 1651,
+    "continueMs": 5779,
+    "dcl": 1984,
+    "resources": 250
+   },
+   "fps": {
+    "n": 191,
+    "fpsAvg": 23.6,
+    "p95ms": 116.7,
+    "maxMs": 200,
+    "over33": 65,
+    "over50": 38
+   },
+   "cpu": {
+    "scriptMs": 4030,
+    "taskMs": 8140,
+    "layoutMs": 29,
+    "styleMs": 74
+   },
+   "errors": []
+  },
+  {
+   "rep": 1,
+   "label": "cand",
+   "vp": "844x390",
+   "load": {
+    "startRunMs": 1555,
+    "continueMs": 6128,
+    "dcl": 2041,
+    "resources": 250
+   },
+   "fps": {
+    "n": 174,
+    "fpsAvg": 21.7,
+    "p95ms": 100,
+    "maxMs": 133.4,
+    "over33": 85,
+    "over50": 47
+   },
+   "cpu": {
+    "scriptMs": 3697,
+    "taskMs": 8067,
+    "layoutMs": 26,
+    "styleMs": 85
+   },
+   "errors": []
+  },
+  {
+   "rep": 1,
+   "label": "cand",
+   "vp": "1280x800",
+   "load": {
+    "startRunMs": 1939,
+    "continueMs": 8034,
+    "dcl": 2373,
+    "resources": 250
+   },
+   "fps": {
+    "n": 218,
+    "fpsAvg": 27.2,
+    "p95ms": 116.6,
+    "maxMs": 166.6,
+    "over33": 63,
+    "over50": 35
+   },
+   "cpu": {
+    "scriptMs": 3903,
+    "taskMs": 8091,
+    "layoutMs": 31,
+    "styleMs": 85
+   },
+   "errors": []
+  },
+  {
+   "rep": 1,
+   "label": "cand-uf0",
+   "vp": "844x390",
+   "load": {
+    "startRunMs": 1349,
+    "continueMs": 6836,
+    "dcl": 1840,
+    "resources": 250
+   },
+   "fps": {
+    "n": 151,
+    "fpsAvg": 18.8,
+    "p95ms": 133.3,
+    "maxMs": 183.4,
+    "over33": 84,
+    "over50": 43
+   },
+   "cpu": {
+    "scriptMs": 3789,
+    "taskMs": 8111,
+    "layoutMs": 24,
+    "styleMs": 78
+   },
+   "errors": []
+  },
+  {
+   "rep": 1,
+   "label": "cand-uf0",
+   "vp": "1280x800",
+   "load": {
+    "startRunMs": 1686,
+    "continueMs": 7587,
+    "dcl": 2356,
+    "resources": 250
+   },
+   "fps": {
+    "n": 189,
+    "fpsAvg": 23.6,
+    "p95ms": 116.7,
+    "maxMs": 150.1,
+    "over33": 69,
+    "over50": 40
+   },
+   "cpu": {
+    "scriptMs": 3941,
+    "taskMs": 8081,
+    "layoutMs": 31,
+    "styleMs": 75
+   },
+   "errors": []
+  },
+  {
+   "rep": 2,
+   "label": "base",
+   "vp": "844x390",
+   "load": {
+    "startRunMs": 1344,
+    "continueMs": 6760,
+    "dcl": 1783,
+    "resources": 250
+   },
+   "fps": {
+    "n": 157,
+    "fpsAvg": 19.5,
+    "p95ms": 133.2,
+    "maxMs": 183.3,
+    "over33": 85,
+    "over50": 42
+   },
+   "cpu": {
+    "scriptMs": 3736,
+    "taskMs": 8099,
+    "layoutMs": 25,
+    "styleMs": 84
+   },
+   "errors": []
+  },
+  {
+   "rep": 2,
+   "label": "base",
+   "vp": "1280x800",
+   "load": {
+    "startRunMs": 1478,
+    "continueMs": 7301,
+    "dcl": 2046,
+    "resources": 250
+   },
+   "fps": {
+    "n": 195,
+    "fpsAvg": 24.1,
+    "p95ms": 116.7,
+    "maxMs": 166.7,
+    "over33": 67,
+    "over50": 39
+   },
+   "cpu": {
+    "scriptMs": 4142,
+    "taskMs": 8157,
+    "layoutMs": 33,
+    "styleMs": 75
+   },
+   "errors": []
+  },
+  {
+   "rep": 2,
+   "label": "cand",
+   "vp": "844x390",
+   "load": {
+    "startRunMs": 1651,
+    "continueMs": 7173,
+    "dcl": 2206,
+    "resources": 250
+   },
+   "fps": {
+    "n": 174,
+    "fpsAvg": 21.4,
+    "p95ms": 133.3,
+    "maxMs": 166.6,
+    "over33": 72,
+    "over50": 47
+   },
+   "cpu": {
+    "scriptMs": 3986,
+    "taskMs": 8211,
+    "layoutMs": 27,
+    "styleMs": 87
+   },
+   "errors": []
+  },
+  {
+   "rep": 2,
+   "label": "cand",
+   "vp": "1280x800",
+   "load": {
+    "startRunMs": 1585,
+    "continueMs": 8531,
+    "dcl": 2056,
+    "resources": 250
+   },
+   "fps": {
+    "n": 206,
+    "fpsAvg": 25.7,
+    "p95ms": 100,
+    "maxMs": 166.7,
+    "over33": 68,
+    "over50": 34
+   },
+   "cpu": {
+    "scriptMs": 4032,
+    "taskMs": 8074,
+    "layoutMs": 33,
+    "styleMs": 82
+   },
+   "errors": []
+  },
+  {
+   "rep": 2,
+   "label": "cand-uf0",
+   "vp": "844x390",
+   "load": {
+    "startRunMs": 1385,
+    "continueMs": 6542,
+    "dcl": 1862,
+    "resources": 250
+   },
+   "fps": {
+    "n": 166,
+    "fpsAvg": 20.7,
+    "p95ms": 116.6,
+    "maxMs": 166.7,
+    "over33": 88,
+    "over50": 37
+   },
+   "cpu": {
+    "scriptMs": 3639,
+    "taskMs": 8114,
+    "layoutMs": 28,
+    "styleMs": 89
+   },
+   "errors": []
+  },
+  {
+   "rep": 2,
+   "label": "cand-uf0",
+   "vp": "1280x800",
+   "load": {
+    "startRunMs": 1385,
+    "continueMs": 7193,
+    "dcl": 1841,
+    "resources": 250
+   },
+   "fps": {
+    "n": 179,
+    "fpsAvg": 22.3,
+    "p95ms": 116.6,
+    "maxMs": 166.6,
+    "over33": 74,
+    "over50": 41
+   },
+   "cpu": {
+    "scriptMs": 4073,
+    "taskMs": 8153,
+    "layoutMs": 29,
+    "styleMs": 73
+   },
+   "errors": []
+  }
+ ]
+}

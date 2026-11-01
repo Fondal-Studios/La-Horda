@@ -1,0 +1,420 @@
+{
+ "label": "base",
+ "vps": {
+  "1280x800": {
+   "title": {
+    "screen": "title-screen",
+    "total": 5,
+    "under44": 4,
+    "small": [
+     "a\"Instalar en mi dispositivo\" 175x16",
+     "a\"Privacidad\" 66x26",
+     "a\"Términos\" 56x26",
+     "a\"Reembolsos\" 66x26"
+    ],
+    "overlaps": [
+     "a\"Instalar en mi dispositivo\" x a\"Reembolsos\" (66x6)"
+    ],
+    "nOverlaps": 1,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "hub": {
+    "screen": "mainmenu-screen",
+    "total": 20,
+    "under44": 1,
+    "small": [
+     "summary\"Guía · Nivel 1: Primeros pas\" 555x32"
+    ],
+    "overlaps": [
+     "button[button]\"Consultar Guía\" x button[submit]\"◆GUERRA DE CRISTALES5 contra\" (120x44)",
+     "button[button]\"Entendido\" x button[submit]\"◆GUERRA DE CRISTALES5 contra\" (86x44)"
+    ],
+    "nOverlaps": 2,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 818,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "starter": {
+    "screen": "starter-screen",
+    "total": 5,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "codex": {
+    "screen": "codex-screen",
+    "total": 9,
+    "under44": 3,
+    "small": [
+     "button[button]\"Reliquias Únicas\" 1088x27",
+     "button[submit]\"‹ Menú\" 92x40",
+     "button[submit]\"GUÍA · aprender a jugar\" 205x42"
+    ],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "guardianes": {
+    "screen": "codex-screen",
+    "total": 18,
+    "under44": 18,
+    "small": [
+     "a\"abrir Mi Inventario\" 90x12",
+     "button[submit]\"Compatibles\" 69x21",
+     "button[submit]\"Recomendados\" 73x21",
+     "button[submit]\"Todos\" 41x21",
+     "button[button]\"Reliquias Únicas\" 854x27",
+     "button[submit]\"GUARDIANES\" 71x28",
+     "button[submit]\"Quieto\" 65x36",
+     "button[submit]\"Caminar\" 72x36"
+    ],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "inventario": {
+    "screen": "inventory-screen",
+    "total": 29,
+    "under44": 27,
+    "small": [
+     "input[checkbox]\"\" 13x13",
+     "input[checkbox]\"\" 13x13",
+     "input[checkbox]\"\" 13x13",
+     "summary\"Gestión automática del botín\" 424x19",
+     "button[submit]\"Todas\" 41x21",
+     "button[submit]\"Común\" 41x21",
+     "button[submit]\"Raro\" 36x21",
+     "button[submit]\"Muy Raro\" 55x21"
+    ],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": [
+     "13x13",
+     "13x13",
+     "13x13"
+    ]
+   },
+   "champdetail": {
+    "screen": "champdetail-screen",
+    "total": 1,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 1248,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "tienda": {
+    "screen": "shop-screen",
+    "total": 134,
+    "under44": 130,
+    "small": [
+     "button[button]\"Ver Básicos\" 113x30",
+     "button[submit]\"🪙 940 1.100\" 203x40",
+     "button[submit]\"🪙 1.260 1.800\" 203x40",
+     "button[submit]\"🪙 3.000 4.000\" 203x40",
+     "button[submit]\"🪙 770 1.100\" 203x40",
+     "button[button]\"✦ 800\" 257x40",
+     "button[button]\"✦ 800\" 252x40",
+     "button[button]\"✦ 800\" 252x40"
+    ],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\""
+    ],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "modos": {
+    "screen": "modeselect-screen",
+    "total": 13,
+    "under44": 7,
+    "small": [
+     "button[submit]\"UNIRSE\" 163x27",
+     "button[submit]\"📋 Pegar\" 163x28",
+     "label\"Tu nombre\" 174x30",
+     "input[text]\"\" 110x30",
+     "button[submit]\"Actualizar la lista\" 359x30",
+     "button[submit]\"🌐 CREAR SALA\" 103x30",
+     "input[text]\"\" 157x39"
+    ],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "cristales": {
+    "screen": "crystalwars-screen",
+    "total": 12,
+    "under44": 1,
+    "small": [
+     "summary\"Ver habilidades, firma y car\" 422x28"
+    ],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 1319,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": [
+     "444x46"
+    ]
+   },
+   "divina": {
+    "screen": "divina-screen",
+    "total": 2,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "arenas": {
+    "screen": "arenaselect-screen",
+    "total": 12,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 1503,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "sala": {
+    "screen": "prep-screen",
+    "total": 19,
+    "under44": 14,
+    "small": [
+     "summary\"Ver habilidades\" 392x13",
+     "a\"abrir Mi Inventario\" 119x16",
+     "button[submit]\"Compatibles\" 87x28",
+     "button[submit]\"Recomendados\" 93x28",
+     "button[submit]\"Todos\" 49x28",
+     "button[submit]\"🛒 Tienda de skins\" 115x28",
+     "button[button]\"✦ 800\" 108x28",
+     "button[submit]\"⇄ Cambiar guardián\" 142x32"
+    ],
+    "overlaps": [
+     "summary\"Ver habilidades\" x summary\"Equipo, talentos y progresió\" (392x9)",
+     "select[select-one]\"Thalen, el Tejedor Elemental\" x summary\"Equipo, talentos y progresió\" (392x7)",
+     "button[submit]\"⇄ Cambiar guardián\" x summary\"Equipo aliado\" (142x24)"
+    ],
+    "nOverlaps": 3,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 1056,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "seleccion": {
+    "screen": "menu-screen",
+    "total": 47,
+    "under44": 45,
+    "small": [
+     "summary\"Habilidades y estilo\" 127x21",
+     "summary\"Habilidades y estilo\" 127x21",
+     "summary\"Habilidades y estilo\" 127x21",
+     "summary\"Habilidades y estilo\" 127x21",
+     "summary\"Habilidades y estilo\" 127x21",
+     "summary\"Habilidades y estilo\" 127x21",
+     "summary\"Habilidades y estilo\" 127x21",
+     "summary\"Habilidades y estilo\" 127x21"
+    ],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 6140,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "mejora": {
+    "screen": "buffscreen",
+    "total": 0,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "pausa": {
+    "screen": "pause-screen",
+    "total": 12,
+    "under44": 9,
+    "small": [
+     "input[checkbox]\"\" 24x24",
+     "input[checkbox]\"\" 24x24",
+     "input[range]\"\" 150x28",
+     "input[range]\"\" 150x28",
+     "label\"🎵 Música\" 216x40",
+     "label\"💥 Efectos\" 221x40",
+     "label\"🌀 Reducir movimiento\" 155x40",
+     "label\"✨ Reducir efectos intensos\" 189x40"
+    ],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": [
+     "24x24",
+     "24x24"
+    ]
+   },
+   "derrota": {
+    "screen": "gameover-screen",
+    "total": 2,
+    "under44": 1,
+    "small": [
+     "button[submit]\"Volver al menú\" 149x40"
+    ],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "victoria": {
+    "screen": "victory-screen",
+    "total": 1,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "_errors": [
+    "console.error: Access to fetch at 'https://fondalstudios.com/la-horda/red/api/rooms?build=B1-7-quality-five-originals' from origin 'http://127.0.0.1:8882' has been blocked by CORS policy: No 'Access-Control-Allow-Or",
+    "console.error: Failed to load resource: net::ERR_FAILED",
+    "console.error: Access to fetch at 'https://fondalstudios.com/la-horda/red/api/rooms?build=B1-7-quality-five-originals' from origin 'http://127.0.0.1:8882' has been blocked by CORS policy: No 'Access-Control-Allow-Or",
+    "console.error: Failed to load resource: net::ERR_FAILED"
+   ]
+  }
+ }
+}

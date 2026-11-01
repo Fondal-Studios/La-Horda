@@ -5,9 +5,9 @@ let chromium; try { ({ chromium } = require('playwright')); } catch (e) { ({ chr
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 function serve(dir, port) { return spawn('python3', ['-m', 'http.server', String(port), '--bind', '127.0.0.1'], { cwd: dir, stdio: 'ignore' }); }
 async function launch() { return chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox'] }); }
-const VPS = { '844x390': { w: 844, h: 390, mobile: true, dpr: 2 }, '667x375': { w: 667, h: 375, mobile: true, dpr: 2 }, '1280x800': { w: 1280, h: 800, mobile: false, dpr: 1 } };
+const VPS = { '844x390': { w: 844, h: 390, mobile: true, dpr: 2 }, '667x375': { w: 667, h: 375, mobile: true, dpr: 2 }, '1280x800': { w: 1280, h: 800, mobile: false, dpr: 1 }, '932x430': { w: 932, h: 430, mobile: true, dpr: 3 } };
 async function newPage(browser, base, vp, opts = {}) {
-  const ctx = await browser.newContext({ viewport: { width: vp.w, height: vp.h }, isMobile: vp.mobile, hasTouch: true, deviceScaleFactor: opts.dpr || vp.dpr, serviceWorkers: 'block' });
+  const ctx = await browser.newContext({ viewport: { width: vp.w, height: vp.h }, isMobile: vp.mobile, hasTouch: process.env.HASTOUCH !== '0', deviceScaleFactor: opts.dpr || vp.dpr, serviceWorkers: 'block' });
   if (opts.init) await ctx.addInitScript(opts.init);
   const page = await ctx.newPage(); const errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));

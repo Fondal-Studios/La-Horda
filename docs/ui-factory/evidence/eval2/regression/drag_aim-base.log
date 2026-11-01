@@ -1,0 +1,146 @@
+PASS AIM.botones_visibles_y_touch_action_none  {"btn-s1":{"vis":true,"ta":"none","r":[694,320,54]},"btn-s2":{"vis":true,"ta":"none","r":[652,266,54]},"btn-s3":{"vis":true,"ta":"none","r":[694,212,54]}}
+PASS AIM.toque_lanza_con_autoapuntado  {"idx":0,"aim":null,"ok":true,"fx":0.9996477701786902,"fy":0.026539321332177616,"px":0,"py":0,"pt":{"x":189.93307633395116,"y":5.042471053113748}}
+PASS AIM.arrastre_muestra_pad_y_estado_manual  {"st":{"manual":true,"idx":0},"pad":true,"cd":0}
+PASS AIM.arrastre_lanza_hacia_donde_se_arrastro  {"idx":0,"aim":{"x":-159.82391032154516,"y":-102.74394234956475,"dx":-0.8411784753765534,"dy":-0.5407575913134987},"ok":true,"fx":-0.8411784753765534,"fy":-0.5407575913134987,"px":0,"py":0,"pt":{"x":-159.82391032154516,"y":-102.74394234956475}}
+PASS AIM.volver_al_centro_cancela  {"n":0,"cd":0,"e":9999,"e0":9999}
+tanque.0 spin_channel [propia] 
+tanque.1 charge_drag [dash] ok dot=1
+tanque.2 war_cry [propia] 
+guerrero.0 bleed_hit [target] ok dot=-0.83 elegido=true señuelo=false
+guerrero.1 triple_hit [target] ok dot=-0.83 elegido=true señuelo=false
+guerrero.2 area_trap [point] ok dot=1
+mago.0 fire_wall [point] ok dot=1
+mago.1 frost_nova [propia] 
+mago.2 chain [target] ok dot=-0.83 elegido=true señuelo=false
+soporte.0 team_heal_aoe [propia] 
+soporte.1 team_atk_buff [propia] 
+soporte.2 team_shield_buff [propia] 
+segador.0 cone_slash [cone] ok dot=1
+segador.1 fury_armor [propia] 
+segador.2 last_stand_burst [propia] 
+axiom.0 glitch_delay_nova [point] ok dot=1
+axiom.1 overwrite_nova [target] ok dot=-0.83 elegido=true señuelo=false
+axiom.2 teleport_blink [dash] ok dot=1
+profeta.0 retro_heal [propia] 
+profeta.1 brief_immunity [propia] 
+profeta.2 self_spin_stun [propia] 
+musashi.0 ronin_slash [target] ok dot=1 elegido=true señuelo=false
+musashi.1 ghost_step [target] ok dot=-0.83 elegido=false señuelo=false
+musashi.2 thousand_cuts [propia] 
+cazadora.0 piercing_shot [line] ok dot=1
+cazadora.1 forest_trap [point] ok dot=1
+cazadora.2 hunter_rain [point] ok dot=1
+nigromante.0 soul_harvest [cone] ok dot=1
+nigromante.1 summon_golem [point] ok dot=1
+nigromante.2 condemned_plague [point] ok dot=1
+libertador.0 sm_bayonet [dash] ok dot=1
+libertador.1 sm_granaderos [propia] 
+libertador.2 sm_san_lorenzo [dash] ok dot=1
+ilkan.0 ilkan_lance [dash] ok dot=1
+ilkan.1 ilkan_temple [propia] 
+ilkan.2 ilkan_caravan [propia] 
+ynara.0 yn_gaze [cone] ok dot=1
+ynara.1 yn_stroganoff [point] ok dot=1
+ynara.2 yn_leave [line] ok dot=1
+myla.0 my_tower [point] ok dot=1
+myla.1 my_splash [point] ok dot=1
+myla.2 my_bubble [propia] 
+brasa.0 br_turret [point] ok dot=1
+brasa.1 br_purge [cone] ok dot=1
+brasa.2 br_dismantle [propia] 
+eslabon.0 es_hook [target] ok dot=1 elegido=true señuelo=false
+eslabon.1 es_line [point] ok dot=1
+eslabon.2 es_guard [aliado] MAL dot=undefined
+morwen.0 mo_resin [point] ok dot=1
+morwen.1 mo_salt [cone] ok dot=1
+morwen.2 mo_distill [propia] 
+farolero.0 fa_lantern [point] ok dot=1
+farolero.1 fa_flash [cone] ok dot=1
+farolero.2 fa_path [line] ok dot=1
+iria.0 ir_anchor [point] ok dot=1
+iria.1 ir_tension [propia] 
+iria.2 ir_cut [point] ok dot=1
+vesper.0 expedition [cone] ok dot=1
+vesper.1 expedition [dash] ok dot=1
+vesper.2 expedition [propia] 
+nahir.0 expedition [cone] ok dot=1
+nahir.1 expedition [dash] ok dot=1
+nahir.2 expedition [line] ok dot=1
+baltra.0 expedition [propia] 
+baltra.1 expedition [cone] ok dot=1
+baltra.2 expedition [cone] ok dot=1
+maura.0 expedition [line] ok dot=1
+maura.1 expedition [propia] 
+maura.2 expedition [propia] 
+dariel.0 expedition [cone] ok dot=1
+dariel.1 expedition [propia] 
+dariel.2 expedition [propia] 
+orsa.0 expedition [line] ok dot=1
+orsa.1 expedition [propia] 
+orsa.2 expedition [propia] 
+tibor.0 expedition [point] ok dot=1
+tibor.1 expedition [propia] 
+tibor.2 expedition [point] ok dot=1
+zahra.0 expedition [cone] ok dot=1
+zahra.1 expedition [propia] 
+zahra.2 expedition [dash] ok dot=1
+renko.0 expedition [line] ok dot=1
+renko.1 expedition [point] ok dot=1
+renko.2 expedition [propia] 
+sira.0 expedition [line] ok dot=1
+sira.1 expedition [propia] 
+sira.2 expedition [propia] 
+nano_gm.0 ascension [line] ok dot=1
+nano_gm.1 ascension [point] ok dot=1
+nano_gm.2 ascension [dash] ok dot=1
+facu_gm.0 ascension [line] ok dot=1
+facu_gm.1 ascension [point] ok dot=1
+facu_gm.2 ascension [dash] ok dot=1
+aurelia.0 ascension [point] ok dot=1
+aurelia.1 ascension [line] ok dot=1
+aurelia.2 ascension [dash] ok dot=1
+khepri.0 ascension [point] ok dot=1
+khepri.1 ascension [propia] 
+khepri.2 ascension [dash] ok dot=1
+velmira.0 ascension [line] ok dot=1
+velmira.1 ascension [propia] 
+velmira.2 ascension [dash] ok dot=1
+vhal.0 ascension [line] ok dot=1
+vhal.1 ascension [point] ok dot=1
+vhal.2 ascension [point] ok dot=1
+bront.0 ascension [line] ok dot=1
+bront.1 ascension [line] ok dot=1
+bront.2 ascension [propia] 
+oriel.0 ascension [point] ok dot=1
+oriel.1 ascension [propia] 
+oriel.2 ascension [dash] ok dot=1
+saelis.0 ascension [cone] ok dot=1
+saelis.1 ascension [propia] 
+saelis.2 ascension [propia] 
+solciju.0 expedition [point] ok dot=1
+solciju.1 expedition [point] ok dot=1
+solciju.2 expedition [propia] 
+veyra.0 expedition [cone] ok dot=1
+veyra.1 expedition [dash] ok dot=1
+veyra.2 expedition [propia] 
+brakk.0 expedition [point] ok dot=1
+brakk.1 expedition [point] ok dot=1
+brakk.2 expedition [propia] 
+morveth.0 expedition [point] ok dot=1
+morveth.1 expedition [cone] ok dot=1
+morveth.2 expedition [propia] 
+aelith.0 expedition [point] ok dot=1
+aelith.1 expedition [line] ok dot=1
+aelith.2 expedition [propia] 
+ilkan.0 colossus_slam [propia] 
+ilkan.1 colossus_sinkhole [propia] 
+ilkan.2 colossus_march [dash] ok dot=1
+PASS AIM.las_12_fichas_respetan_el_arrastre  []
+PASS AIM.invitado_manda_el_apuntado_al_anfitrion  [{"k":"cast","idx":2,"aim":{"x":-262,"y":174,"dx":-0.8320502943378437,"dy":0.5547001962252291}},{"k":"cast","idx":2,"aim":null}]
+PASS AIM.invitado_toque_manda_autoapuntado  [{"k":"cast","idx":2,"aim":{"x":-262,"y":174,"dx":-0.8320502943378437,"dy":0.5547001962252291}},{"k":"cast","idx":2,"aim":null}]
+PASS AIM.anfitrion_usa_el_apuntado_del_invitado  {"pt":{"x":-141,"y":-94},"cd":true,"bad":{"x":170,"y":0},"safe":[null,null,{"x":1,"y":2,"dx":0.6,"dy":0.8}]}
+PASS AIM.anfitrion_descarta_apuntado_roto_y_autoapunta  {"pt":{"x":-141,"y":-94},"cd":true,"bad":{"x":170,"y":0},"safe":[null,null,{"x":1,"y":2,"dx":0.6,"dy":0.8}]}
+PASS AIM.toque_en_dirigida_va_al_mas_cercano  {"near":true,"far":false,"c":{"idx":0,"aim":null,"ok":true,"fx":1,"fy":0,"px":0,"py":0,"pt":null}}
+PASS AIM.sin_errores_de_pagina  []
+
+TODO OK

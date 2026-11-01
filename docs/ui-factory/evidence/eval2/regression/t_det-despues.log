@@ -1,0 +1,33 @@
+combat_tanque_bosque               frames=540 digests=18 ev=[] err=0 50.0s
+combat_guerrero_hielo              frames=540 digests=18 ev=[] err=0 46.7s
+combat_mago_laberinto              frames=540 digests=18 ev=[] err=0 43.7s
+combat_soporte_infernal            frames=540 digests=18 ev=[] err=0 33.2s
+combat_segador_acuatica            frames=540 digests=18 ev=[] err=0 29.3s
+combat_axiom_bosque                frames=540 digests=18 ev=[] err=0 28.8s
+combat_profeta_hielo               frames=540 digests=18 ev=[] err=0 27.8s
+combat_musashi_laberinto           frames=540 digests=18 ev=[] err=0 25.4s
+combat_cazadora_infernal           frames=540 digests=18 ev=[] err=0 30.4s
+combat_nigromante_acuatica         frames=540 digests=18 ev=[] err=0 24.7s
+long_tanque_laberinto              frames=1500 digests=50 ev=[] err=0 35.4s
+long_guerrero_infernal             frames=1500 digests=50 ev=[] err=0 37.4s
+long_mago_acuatica                 frames=1500 digests=50 ev=[] err=0 44.4s
+long_soporte_bosque                frames=1500 digests=50 ev=[] err=0 39.5s
+long_segador_hielo                 frames=1500 digests=50 ev=[] err=0 43.9s
+long_axiom_laberinto               frames=1500 digests=50 ev=[] err=0 41.4s
+long_profeta_infernal              frames=1500 digests=50 ev=[] err=0 33.6s
+long_musashi_acuatica              frames=1500 digests=50 ev=[] err=0 35.2s
+long_cazadora_bosque               frames=1500 digests=50 ev=[] err=0 40.4s
+long_nigromante_hielo              frames=1500 digests=50 ev=[] err=0 35.7s
+boss_bosque_guerrero               frames=1200 digests=40 ev=[[1200,"state","victory","Ruinas Célticas / Élficas — Completada VICTORIA Arena Ruinas Célticas / Élficas Dificultad Intermedia-alta Modo Normal Guardián Kael,  err=0 32.7s
+boss_hielo_mago                    frames=3600 digests=120 ev=[] err=0 49.7s
+boss_laberinto_segador             frames=690 digests=23 ev=[[690,"state","victory","Laberinto — Completada VICTORIA Arena Laberinto Dificultad Avanzada Modo Normal Guardián Segador, el Olvidado · Nv. 22 Enemigos vencido err=0 24.3s
+boss_infernal_musashi              frames=3600 digests=120 ev=[] err=0 42.9s
+boss_acuatica_cazadora             frames=1020 digests=34 ev=[[1020,"state","victory","Arena Acuática — Completada VICTORIA Arena Arena Acuática Dificultad Media-alta Modo Normal Guardián Sylva, la Cazadora del Bosque · N err=0 30.4s
+divina_guerrero                    frames=1500 digests=50 ev=[[1500,"state","gameover","Tu equipo ha caído Reintentar — Nivel 1 Volver al menú Arena Divina · Nivel 1 Tu equipo cayó ante los 4 guardianes divinos. Esto es u err=0 28.4s
+divina_nigromante_natural          frames=1800 digests=60 ev=[] err=0 24.7s
+nigro_summons                      frames=1200 digests=40 ev=[] err=0 29.2s
+death_natural_soporte              frames=1380 digests=46 ev=[[1380,"state","gameover","La Horda te ha consumido Esta vez la Horda te perdona: no perdiste XP ni oro. Te quedan 2 derrotas sin castigo en esta arena; después err=0 30.9s
+levelup_buffs_asesino              frames=4200 digests=140 ev=[[1590,"buff","Colmillo"],[3330,"buff","Cofre de Pociones"]] err=0 52.0s
+revive_flow                        frames=900 digests=30 ev=[] err=0 25.0s
+logic 46 persist false errors 0
+total 1122.3s
