@@ -8,16 +8,17 @@
  *   R1 las etapas van en orden y ninguna sigue a una etapa no aprobada;
  *   R2 NADIE aprueba su propio trabajo: quien revisa no es el autor de la producción ni el autor declarado, y QA y arquitectura son personas/identidades distintas;
  *   R3 cada etapa tiene el rol que le corresponde (qa, arquitecto, qa/integrador, director) y la aprobación final la da una cuenta humana de reviews/DIRECTORES.json;
- *   R4 la evidencia de cada revisión cita el SHA exacto de la cabeza actual (un commit nuevo invalida la revisión);
+ *   R4 la evidencia cita el SHA exacto del contenido revisado; después solo puede cambiar este mismo registro de revisión;
  *   R5 QA y staging aprobados exigen tests > 0 y failed = 0;
  *   R6 arquitectura puede ordenar: aprobado | rechazado | reparacion_parcial (lista repair no vacía) | reconstruccion (con motivo); las dos últimas reinician el ciclo (no puede haber etapas posteriores);
  *   R7 en modo merge las cinco etapas deben estar aprobadas; en modo draft se acepta un registro parcial o ausente.
- * Una rama que no es de un agente (claude/s1..s4-…) no está sujeta a este control. */
-const fs = require('node:fs'), path = require('node:path');
+ * Todas las ramas de PR están sujetas al control; cambiar el nombre no evita la revisión. */
+const fs = require('node:fs'), path = require('node:path'), cp = require('node:child_process');
 const ROOT = path.resolve(__dirname, '../..');
 const ORDER = ['produccion', 'qa', 'arquitectura', 'staging', 'aprobacion'];
 const ROLE = { produccion: ['agent'], qa: ['qa'], arquitectura: ['arquitecto'], staging: ['qa', 'integrador'], aprobacion: ['director'] };
-const AGENT_BRANCH = /^(claude\/|feature\/beta-)/;
+// Compatibilidad de API: toda rama no vacía requiere revisión.
+const AGENT_BRANCH = /^.+$/;
 const isAgentId = id => /^(agente|claude|bot)[-_]/i.test(String(id));
 function validateRecord(rec, ctx = {}){
   const problems = [], mode = ctx.mode || 'merge', directors = ctx.directors || [];
@@ -66,7 +67,29 @@ function validateRecord(rec, ctx = {}){
   const state = !stages.length ? 'sin_registro' : problems.length ? 'invalido' : (last.stage === 'aprobacion' && last.verdict === 'aprobado') ? 'aprobado' : last.verdict === 'reparacion_parcial' ? 'reparacion_parcial' : last.verdict === 'reconstruccion' ? 'reconstruccion' : last.verdict === 'rechazado' ? 'rechazado' : 'en_curso:' + last.stage;
   return { ok: problems.length === 0, problems, state };
 }
-module.exports = { validateRecord, ORDER, AGENT_BRANCH, isAgentId };
+// Resolve the review-record self-reference without exempting code or other reviews.
+// Every intervening commit must touch only this exact record, not merely have an
+// equivalent final tree (a code change followed by its revert is also rejected).
+function validateReviewedHead(root, reviewedHead, currentHead, recordFile) {
+  const fail = reason => ({ok:false, reason, reviewedHead, currentHead});
+  if(!/^[a-f0-9]{40}$/.test(reviewedHead || '') || !/^[a-f0-9]{40}$/.test(currentHead || '')) return fail('SHA completo inválido');
+  const record = path.relative(root, path.resolve(root, recordFile)).split(path.sep).join('/');
+  if(!/^reviews\/[^/]+\.json$/.test(record) || ['reviews/DIRECTORES.json', 'reviews/TEMPLATE.json'].includes(record)) return fail('Registro fuera del área permitida');
+  const git = args => cp.execFileSync('git', args, {cwd:root, encoding:'utf8', stdio:['ignore','pipe','pipe'], maxBuffer:16*1024*1024});
+  try {
+    git(['cat-file', '-e', reviewedHead + '^{commit}']);
+    git(['cat-file', '-e', currentHead + '^{commit}']);
+    if(reviewedHead === currentHead) return {ok:true, reviewedHead, currentHead, recordOnly:false};
+    git(['merge-base', '--is-ancestor', reviewedHead, currentHead]);
+    const commits = git(['rev-list', reviewedHead + '..' + currentHead]).trim().split('\n').filter(Boolean);
+    for(const commit of commits) {
+      const files = git(['diff-tree', '--no-commit-id', '--name-only', '-r', '-z', '-m', '--no-renames', commit]).split('\0').filter(Boolean);
+      if(files.some(f => f !== record)) return fail('Cambió contenido fuera del registro exacto: ' + files.find(f => f !== record));
+    }
+    return {ok:true, reviewedHead, currentHead, recordOnly:true};
+  } catch(_) { return fail('El SHA revisado no es un ancestro verificable de la cabeza actual'); }
+}
+module.exports = { validateRecord, validateReviewedHead, ORDER, AGENT_BRANCH, isAgentId };
 if(require.main === module){
   const a = process.argv.slice(2), val = (k, d) => { const i = a.indexOf(k); return i >= 0 ? a[i + 1] : d; };
   const dirs = JSON.parse(fs.readFileSync(path.join(ROOT, 'reviews/DIRECTORES.json'), 'utf8')).directores;
@@ -80,17 +103,23 @@ if(require.main === module){
     console.log(bad ? `${bad} registro(s) inválido(s)` : 'OK: todos los registros son válidos'); process.exit(bad ? 1 : 0);
   }
   const branch = val('--branch'), head = val('--head');
-  let file = val('--record'); if(!file && branch){ if(!AGENT_BRANCH.test(branch)){ console.log(`La rama "${branch}" no es de un agente: no está sujeta a la revisión independiente.`); process.exit(0); } file = recPath(branch); }
+  let file = val('--record'); if(!file && branch) file = recPath(branch);
   if(!file){ console.error('uso: check.js --record archivo | --branch rama --head SHA | --all'); process.exit(2); }
   const mode = val('--mode', 'merge') === 'auto' ? 'merge' : val('--mode', 'merge');
+  if(!['merge', 'draft'].includes(mode)){ console.error('Modo inválido'); process.exit(2); }
   if(!fs.existsSync(path.resolve(file))){
     if(mode === 'draft'){ console.log(`Sin registro de revisión para "${branch}" todavía (borrador): permitido. Faltan las 4 revisiones antes de mezclar.`); process.exit(0); }
     console.log(`FAIL no existe el registro de revisión ${path.relative(ROOT, path.resolve(file))}: no se puede mezclar sin las 5 etapas.`); process.exit(1);
   }
   const rec = JSON.parse(fs.readFileSync(path.resolve(file), 'utf8'));
-  if(head) rec.subject.head = rec.subject.head; // el SHA del registro se compara con --head más abajo
+  // El SHA y la rama del registro deben identificar exactamente el sujeto revisado.
   const r = validateRecord(rec, { mode, directors: dirs });
-  if(head && rec.subject.head !== head) { r.ok = false; r.problems.push(`R4 el registro es de ${String(rec.subject.head).slice(0, 8)} pero la rama está en ${head.slice(0, 8)}: hay que volver a revisar`); }
+  if(branch && rec.subject.branch !== branch) { r.ok = false; r.problems.push("R4 el registro pertenece a otra rama"); }
+  if(head) {
+    const binding = validateReviewedHead(ROOT, rec.subject.head, head, path.resolve(file));
+    if(!binding.ok) { r.ok = false; r.problems.push('R4 ' + binding.reason + ': hay que volver a revisar'); }
+    console.log(`Contenido revisado: ${rec.subject.head}; cabeza actual: ${head}; ${binding.ok ? (binding.recordOnly ? 'solo cambió este registro' : 'mismo commit') : 'vínculo inválido'}`);
+  }
   console.log(`${r.ok ? 'PASS' : 'FAIL'} ${path.relative(ROOT, path.resolve(file))} · estado: ${r.state} · modo ${mode}${r.problems.map(p => '\n  - ' + p).join('')}`);
   process.exit(r.ok ? 0 : 1);
 }

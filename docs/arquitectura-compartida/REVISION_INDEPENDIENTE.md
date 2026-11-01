@@ -39,3 +39,20 @@ Diagrama completo en [`DEPENDENCIAS.md`](DEPENDENCIAS.md). Verificador ejecutabl
 - Las **identidades** de los revisores son cadenas del registro: el control impide el autoaprobado *declarado* y el cruce de roles, pero **no puede probar quién escribió el registro**. Esa garantía la da la protección de ramas con revisión obligatoria del propietario del código (`docs/operacion/PROTECCION_MAIN.md`), que **no está verificada como activa**.
 - Los roles de QA y arquitectura los cumplen sesiones o personas distintas; que sean realmente independientes (otra sesión, otro modelo o una persona) es una decisión operativa, no algo que el código pueda comprobar.
 - Hoy no hay ningún registro real: los PR #247 y #248 los produjo la misma sesión que diseñó este flujo, por lo que **no pueden aprobarse a sí mismos**; falta una revisión de otra identidad y la aprobación del director.
+
+### Cierre de escapes de ramas y transición de borrador
+
+El gate aplica a **toda rama de PR**, no a un prefijo elegido por su autor. Cambiar a `s0e/`,
+`fix/` o `review/` no elimina las cinco etapas. Un borrador puede reunir evidencia incompleta,
+pero `ready_for_review` dispara de nuevo la CI en modo estricto; no hay filtro de rutas para PR.
+El verificador rechaza modos desconocidos y registros de otra rama/SHA.
+Esto verifica la estructura y coherencia de evidencia, **no autentica identidades declaradas**.
+La revisión humana de CODEOWNERS y el ruleset remoto deben estar activos y verificados por
+quien administre el repositorio. Este cambio no activa protecciones ni firma revisiones.
+
+El SHA revisado identifica el commit de contenido. Para evitar una autorreferencia imposible,
+el HEAD actual puede ser un descendiente de ese commit **solo si el único archivo cambiado
+es el registro concreto que se está validando**. Cualquier cambio de código, directores,
+plantillas u otro registro invalida la evidencia. Se verifica la ascendencia y el diff real
+en Git; no se acepta simplemente una cadena declarada por el autor. Las etapas siguen
+citando el SHA exacto del contenido revisado, y se informa también el HEAD actual.
