@@ -25,6 +25,20 @@ const {create}=require('./accounts');
   await request('POST','/api/gm/art/command',{command:'Crear un campeón nuevo de hielo',requestId:'new-art-001'},owner,202);
   await promisify(execFile)(process.execPath,[path.join(__dirname,'../tools/fondal-art-engine/worker.js'),'--once'],{env:{...process.env,FONDAL_ART_API:base,FONDAL_ART_OUTPUT:path.join(dir,'output')},timeout:60000});
   assert.equal((await request('GET','/api/gm/art',undefined,owner)).jobs[1].status,'BLOCKED_MODEL');
+  // Resume is an admin-only operation and preserves the durable job identity.
+  const pending=await request('POST','/api/gm/art/command',{command:'Reparar cazadora animación walk_down',requestId:'resume-source-001'},owner,202);
+  const claimed=await request('POST','/api/art-worker/claim',{worker:'mock-readiness',capabilities:{provider:'runway-s0f',ready:false,reason:'BLOCKED_CREDENTIAL',supports:['repair','animation']}},token);
+  assert.equal(claimed.job.id,pending.jobs[0].id);assert.equal(claimed.job.action,'walk_down');
+  await request('POST','/api/art-worker/heartbeat',{id:claimed.job.id,lease:claimed.job.lease},token);
+  await request('POST','/api/art-worker/finish',{id:claimed.job.id,lease:claimed.job.lease,result:{status:'PROVIDER_PENDING',resumable:true}},token);
+  const resumeBody={id:claimed.job.id,requestId:'resume-mock-001'};
+  await request('POST','/api/gm/art/resume',resumeBody,player,403);
+  const resumed=await request('POST','/api/gm/art/resume',resumeBody,owner,202);assert.equal(resumed.job.id,claimed.job.id);
+  assert((await request('POST','/api/gm/art/resume',resumeBody,owner,202)).duplicate);
+  const ready=await request('GET','/api/gm/art',undefined,owner);assert(ready.workerOnline);assert.equal(ready.worker.capabilities.ready,false);assert.equal(ready.worker.capabilities.reason,'BLOCKED_CREDENTIAL');
+  const skinJob=await request('POST','/api/gm/art/command',{command:'Reparar cazadora skin cazadora_escarcha animación walk_down',requestId:'skin-source-001'},owner,202);
+  assert.equal(skinJob.jobs[0].skin,'cazadora_escarcha');assert.equal(skinJob.jobs[0].reference,'art-source/unique-skins/cazadora_escarcha.png');assert(/^[a-f0-9]{64}$/.test(skinJob.jobs[0].referenceSha256));
+  await request('POST','/api/gm/art/command',{command:'Reparar cazadora skin desconocida',requestId:'skin-source-bad'},owner,400);
   console.log(JSON.stringify({status:'PASS',realNativeImageBytes:png.length,sha256:q.jobs[0].result.sha256,persistentQueue:true,duplicateSuppressed:true,playerAndWorkerAccessDenied:true,missingModelReported:true,output:dir}));
  }finally{await new Promise(r=>server.close(r));await app.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

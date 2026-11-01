@@ -10,16 +10,46 @@ class SpendGuard {
   constructor({ledgerPath, cacheDir, limits = {}, now = () => new Date()} = {}) {
     if (!ledgerPath || !path.isAbsolute(ledgerPath)) throw Error('SpendGuard: ledgerPath absoluto obligatorio (FONDAL_SPEND_LEDGER)');
     this.ledgerPath = ledgerPath; this.cacheDir = cacheDir || path.join(path.dirname(ledgerPath), 'cache'); this.limits = {...LIMITS_DEFAULT, ...limits}; this.now = now;
+    for (const [name, value] of Object.entries(this.limits)) if (!Number.isSafeInteger(value) || value < 0) throw Error('SpendGuard: límite inválido ' + name);
   }
   _read() { return fs.existsSync(this.ledgerPath) ? JSON.parse(fs.readFileSync(this.ledgerPath, 'utf8')) : {schema: 'fondal.spend.v1', entries: []}; }
-  _write(l) { fs.mkdirSync(path.dirname(this.ledgerPath), {recursive: true}); const t = this.ledgerPath + '.tmp'; fs.writeFileSync(t, JSON.stringify(l, null, 2) + '\n', {mode: 0o600}); fs.renameSync(t, this.ledgerPath); }
+  _write(l) { this._atomic(this.ledgerPath, JSON.stringify(l, null, 2) + '\n'); }
   static cacheKey({provider, model, prompt, refs = [], params = {}}) { return sha(JSON.stringify({provider, model, prompt, refs: refs.map(r => sha(fs.readFileSync(r))), params})); }
-  cached(key) { const f = path.join(this.cacheDir, key + '.png'); return fs.existsSync(f) ? f : null; }
-  store(key, bytes) { fs.mkdirSync(this.cacheDir, {recursive: true}); const f = path.join(this.cacheDir, key + '.png'); fs.writeFileSync(f, bytes); return f; }
+  _lock(fn) {
+    fs.mkdirSync(path.dirname(this.ledgerPath), {recursive: true});
+    const lock = this.ledgerPath + '.lock'; let fd;
+    try { fd = fs.openSync(lock, 'wx', 0o600); } catch (e) { if (e.code === 'EEXIST') throw Error('SpendGuard: ledger locked; inspect owner before retrying (never remove a live lock)'); throw e; }
+    try { return fn(); } finally { fs.closeSync(fd); fs.unlinkSync(lock); }
+  }
+  _atomic(file, bytes) {
+    fs.mkdirSync(path.dirname(file), {recursive: true});
+    const temp = file + '.' + crypto.randomUUID() + '.tmp';
+    const fd = fs.openSync(temp, 'wx', 0o600);
+    try { fs.writeFileSync(fd, bytes); fs.fsyncSync(fd); } finally { fs.closeSync(fd); }
+    fs.renameSync(temp, file);
+    const directory = fs.openSync(path.dirname(file), 'r');
+    try { fs.fsyncSync(directory); } finally { fs.closeSync(directory); }
+  }
+  _key(key) { if (!/^[a-f0-9]{64}$/.test(key)) throw Error('SpendGuard: invalid cache key'); return key; }
+  cached(key) {
+    const f = path.join(this.cacheDir, this._key(key) + '.png'), meta = f + '.sha256';
+    if (!fs.existsSync(f) || !fs.existsSync(meta)) return null; // historical unverified entries are not trusted
+    return sha(fs.readFileSync(f)) === fs.readFileSync(meta, 'utf8') ? f : null;
+  }
+  store(key, bytes) {
+    const f = path.join(this.cacheDir, this._key(key) + '.png'); this._atomic(f, bytes); this._atomic(f + '.sha256', sha(bytes)); return f;
+  }
+  request(key, update) {
+    const file = path.join(this.cacheDir, this._key(key) + '.request.json');
+    const read = () => fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null;
+    if (!update) return read();
+    return this._lock(() => { const next = update(read()); this._atomic(file, JSON.stringify(next, null, 2)); return next; });
+  }
   spentTodayCents() { const d = this.now().toISOString().slice(0, 10); return this._read().entries.filter(e => e.at.startsWith(d)).reduce((s, e) => s + e.cents, 0); }
   // Reserva `cents` para una tarea de un lote. Lanza si supera algún tope.
-  reserve({batch, task, cents, provider, note}) {
-    if (!Number.isFinite(cents) || cents < 0) throw Error('SpendGuard: monto inválido');
+  reserve(args) { return this._lock(() => this._reserve(args)); }
+  _reserve({batch, task, cents, provider, note}) {
+    if (!Number.isSafeInteger(cents) || cents < 0) throw Error('SpendGuard: monto inválido');
     const l = this._read(), d = this.now().toISOString().slice(0, 10);
     if (cents > this.limits.perTaskCents) throw Error(`SpendGuard: ${cents}c supera el tope por tarea (${this.limits.perTaskCents}c)`);
     const batchSum = l.entries.filter(e => e.batch === batch).reduce((s, e) => s + e.cents, 0);

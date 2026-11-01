@@ -554,8 +554,14 @@ def evaluate_candidate(contract_json, cand_png, assembly_json=None):
     inr = lambda k, v: ref[k]['min_ok'] <= v <= ref[k]['max_ok'] if k != 'soft' else v <= ref[k]['max_ok']
     live = [m for m in gm.values() if not m.get('empty')]
     style = {k: float(np.median([m[k] for m in live])) if live else 0 for k in ('outline', 'soft', 'detail', 'shade_sd')}
-    checks['estilo_en_rango_del_roster'] = all(inr(k, v) for k, v in style.items())
-    for k, v in style.items():
+    # shade_sd is GLOBAL opaque luminance contrast, not a local shading/smoothness metric.
+    # A white hood plus dark blue clothing legitimately has a high value. Keep it visible
+    # for review, but gate rendering style with outline and LOCAL soft/detail metrics.
+    # This changes metric semantics, not any calibrated threshold or visual-approval rule.
+    style_gates = ('outline', 'soft', 'detail')
+    checks['estilo_en_rango_del_roster'] = all(inr(k, style[k]) for k in style_gates)
+    for k in style_gates:
+        v = style[k]
         if not inr(k, v): defects.append({'sev': 'major', 'what': f'{k} fuera del rango del roster', 'value': round(v, 3)})
     def pal(a):
         op = a[..., 3] > 0; q = (a[..., :3][op] >> 4).astype(np.int32); h = np.zeros(4096)
@@ -608,13 +614,25 @@ def evaluate_candidate(contract_json, cand_png, assembly_json=None):
     reg = float(np.median(ratios)) if ratios else 1.0; checks['escala_vs_sprite_actual'] = 0.85 <= reg <= 1.15
     if not checks['escala_vs_sprite_actual']: defects.append({'sev': 'major', 'what': f'escala {reg:.2f}x respecto del sprite actual (regresión de proporciones)'})
     # 9 consumidor
-    consumer = (ROOT / c['consumer']).read_text('utf-8', 'ignore'); checks['tiene_consumidor'] = f'champPackLoadAtlas("{c["id"]}"' in consumer
+    consumer = (ROOT / c['consumer']).read_text('utf-8', 'ignore')
+    if c.get('consumerType') == 'authored-skin':
+        # Exact literal authored skin registration; no expression evaluation.
+        matches = re.findall(r'^Object\.assign\(CROMA_SKINS\["' + re.escape(c['skin']) + r'"\],(.*)\);$', consumer, re.M)
+        try:
+            definition = json.loads(matches[0]) if len(matches) == 1 else {}
+            pack = definition.get('authoredPacks', {}).get(c['id'], {})
+            checks['tiene_consumidor'] = pack.get('src') == c['atlas'] and pack.get('meta') == c['registration']['meta']
+        except (ValueError, KeyError): checks['tiene_consumidor'] = False
+    else: checks['tiene_consumidor'] = f'champPackLoadAtlas("{c["id"]}"' in consumer
     if not checks['tiene_consumidor']: defects.append({'sev': 'critical', 'what': 'el asset no tiene consumidor registrado en el motor'})
     # puntaje: proporción de comprobaciones + penalización por defectos
     passed = sum(1 for v in checks.values() if v); base = 100 * passed / len(checks)
     crit = sum(1 for d in defects if d['sev'] == 'critical'); score = max(0, base - 15 * crit)
     cov = 100 * len(gen) / len(cc)
-    return {'score': round(score, 1), 'checks': checks, 'defects': defects, 'critical': crit, 'coverage_generated_pct': round(cov, 1), 'palette_vs_current': round(inter, 3), 'palette_vs_codex_page': None if codex_inter is None else round(codex_inter, 3),
+    return {'score': round(score, 1), 'checks': checks, 'defects': defects, 'critical': crit,
+            'style_metrics': {k: round(v, 3) for k, v in style.items()}, 'style_gating_metrics': list(style_gates),
+            'diagnostics': [{'metric': 'shade_sd', 'value': round(style['shade_sd'], 3), 'gating': False, 'meaning': 'global opaque-pixel luminance contrast; not a measure of smooth shading', 'roster_range': [ref['shade_sd']['min_ok'], ref['shade_sd']['max_ok']]}],
+            'coverage_generated_pct': round(cov, 1), 'palette_vs_current': round(inter, 3), 'palette_vs_codex_page': None if codex_inter is None else round(codex_inter, 3),
             'scale_ratio_vs_current': round(reg, 3),
             'pass_threshold_90': bool(score >= 90 and not crit), 'requires_human_art_review': True,
             'limitations': ['La puntuación automática mide formato, escala, alfa, estabilidad y estilo numérico; NO juzga si el diseño es fiel al Códice ni si la animación se siente bien.',
@@ -638,6 +656,26 @@ def preview_sheet(contract_json, cand_png, out_png):
                 tile = bg.copy().resize((cw * S, ch * S), Image.NEAREST); fr = Image.fromarray(src[fi], 'RGBA').resize((cw * S, ch * S), Image.NEAREST)
                 tile.paste(fr, (0, 0), fr); sheet.paste(tile, (120 + j * cw * S, y))
     Path(out_png).parent.mkdir(parents=True, exist_ok=True); sheet.save(out_png); return {'sheet': str(out_png), 'size': sheet.size}
+
+
+def prepare_reference(contract_json, out_png):
+    """Extract reviewed sprite reference without redrawing; preserve pixels, pad to provider aspect."""
+    c = json.loads(Path(contract_json).read_text())
+    if not c.get('codexPage'): raise ValueError('missing canonical identity reference')
+    im = Image.open(ROOT / c['codexPage']).convert('RGBA')
+    crop = c.get('referenceCrop')
+    if crop is not None:
+        if (not isinstance(crop, list) or len(crop) != 4 or any(type(v) is not int for v in crop)
+                or not (0 <= crop[0] < crop[2] <= im.width and 0 <= crop[1] < crop[3] <= im.height)):
+            raise ValueError('invalid reviewed reference crop')
+        im = im.crop(tuple(crop))
+    w, h = im.size
+    nw, nh = max(w, (h + 1) // 2), max(h, (w + 1) // 2)
+    canvas = Image.new('RGBA', (nw, nh), (0, 0, 0, 0))
+    canvas.paste(im, ((nw-w)//2, (nh-h)//2))
+    Path(out_png).parent.mkdir(parents=True, exist_ok=True)
+    canvas.save(out_png)
+    return {'reference': str(out_png), 'size': list(canvas.size), 'source': c['codexPage'], 'crop': crop, 'pixel_edit': 'crop/padding only, no generated pixels'}
 
 
 def refstrip(contract_json, frames_json, out_png):
@@ -671,6 +709,7 @@ if __name__ == '__main__':
         print(json.dumps(assemble(*sys.argv[2:7]), default=lambda o: o.item() if hasattr(o, 'item') else str(o)))
     elif cmd == 'build-atlas': print(json.dumps(build_atlas(*sys.argv[2:5])))
     elif cmd == 'evaluate-candidate': print(json.dumps(evaluate_candidate(*sys.argv[2:5]), ensure_ascii=False, indent=1, default=lambda o: o.item() if hasattr(o, 'item') else str(o)))
+    elif cmd == 'prepare-reference': print(json.dumps(prepare_reference(*sys.argv[2:4])))
     elif cmd == 'refstrip': print(json.dumps(refstrip(*sys.argv[2:5])))
     elif cmd == 'preview': print(json.dumps(preview_sheet(*sys.argv[2:5])))
     elif cmd == 'integrate': integrate(sys.argv[2])

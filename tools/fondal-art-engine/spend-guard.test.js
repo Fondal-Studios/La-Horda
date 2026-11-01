@@ -23,3 +23,16 @@ test('caché por hash de prompt + referencias', () => {
   fs.writeFileSync(ref, 'y'); assert.notEqual(SpendGuard.cacheKey({provider: 'p', model: 'm', prompt: 'a', refs: [ref]}), k);
 });
 test('el libro no guarda claves', () => { const d = tmp(), g = new SpendGuard({ledgerPath: path.join(d, 'l.json')}); process.env.X_KEY = 'sekret'; g.reserve({batch: 'b', task: 't', cents: 1, provider: 'p'}); assert.ok(!fs.readFileSync(path.join(d, 'l.json'), 'utf8').includes('sekret')); });
+
+test('corrupted and historical cache bytes are not reused', () => {
+  const d = tmp(), g = new SpendGuard({ledgerPath: path.join(d, 'l.json')}), key = 'a'.repeat(64);
+  const file = g.store(key, Buffer.from('original')); fs.writeFileSync(file, 'corrupt'); assert.equal(g.cached(key), null);
+  fs.unlinkSync(file + '.sha256'); assert.equal(g.cached(key), null);
+});
+test('invalid limits and held lock fail closed without losing reservations', () => {
+  const d = tmp(), ledgerPath = path.join(d, 'l.json');
+  for (const n of [NaN, Infinity, -1, 1.5]) assert.throws(() => new SpendGuard({ledgerPath, limits: {perDayCents: n}}));
+  const g = new SpendGuard({ledgerPath}); g.reserve({batch: 'b', task: 'a', cents: 10});
+  fs.writeFileSync(ledgerPath + '.lock', ''); assert.throws(() => g.reserve({batch: 'b', task: 'b', cents: 10}), /locked/);
+  assert.equal(g.spentTodayCents(), 10); fs.unlinkSync(ledgerPath + '.lock'); g.reserve({batch: 'b', task: 'b', cents: 10}); assert.equal(g.spentTodayCents(), 20);
+});

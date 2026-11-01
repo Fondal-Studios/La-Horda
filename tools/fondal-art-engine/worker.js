@@ -2,9 +2,12 @@
 'use strict';
 // Standalone, single-job worker. Uses local providers or an explicitly budgeted image API, never this chat.
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os');
+const {executeS0F,capabilities}=require('./queue-s0f');
 const {getProvider}=require('./providers'),{validateCandidate}=require('./production'),{inspectSheet,sha}=require('./sheet-gate');
-async function execute(job,{root=process.cwd(),profile=null}={}){
+async function execute(job,{root=process.cwd(),profile=null,shouldContinue=()=>true}={}){
+ if(!/^[a-f0-9-]{36}$/.test(job.id||''))return {status:'BLOCKED_CONTRACT',error:'Invalid durable queue job identifier.'};
  const out=path.join(root,job.id);
+ if(profile?.provider==='runway-s0f'&&!job.recipe)return executeS0F(job,{root,profile,shouldContinue});
  if(fs.existsSync(out))return {status:'FAILED',error:'Existing execution journal: inspect before retrying to avoid duplicate generation.'};
  if(job.recipe){
   await getProvider('pixrig').generate(job.recipe,{out});
@@ -12,7 +15,7 @@ async function execute(job,{root=process.cwd(),profile=null}={}){
   fs.writeFileSync(path.join(out,'delivery.json'),JSON.stringify(result,null,2)+'\n');
   return {status:result.status,sha256:result.candidate_sha256,technicalPass:result.gate.ok,issues:result.gate.issues.length,artifactDirectory:job.id,provider:'pixrig'};
  }
- if(!profile)return {status:'BLOCKED_MODEL',error:'No local graphic model profile configured. No generation request or paid API call was made.'};
+ if(!profile)return {status:'BLOCKED_MODEL',error:'No graphic provider profile configured (FONDAL_ART_PROFILE). No generation request or paid API call was made.'};
  if(profile.provider==='bfl-klein-trial')return require('./bfl-repair').repair(job,out,getProvider(profile.provider));
  if(profile.provider!=='comfyui-local')throw Error('Only a locally hosted model is enabled for new art');
  const workflow=JSON.parse(JSON.stringify(profile.workflow));
@@ -35,6 +38,14 @@ async function execute(job,{root=process.cwd(),profile=null}={}){
  fs.writeFileSync(path.join(out,'delivery.json'),JSON.stringify({job,gate,installed:false},null,2)+'\n');
  return {status:gate.ok?'AWAITING_VISUAL_REVIEW':'REJECTED',sha256:gate.sha256,technicalPass:gate.ok,issues:gate.issues,artifactDirectory:job.id,provider:profile.provider};
 }
+async function replayReceipts(root,api){
+ for(const name of fs.readdirSync(root).filter(x=>/^[a-f0-9-]{36}\.receipt\.json$/.test(x))){
+  const file=path.join(root,name),record=JSON.parse(fs.readFileSync(file,'utf8'));
+  // Idempotent finish only: never repeat generation when a response was lost.
+  try{await api('finish',record);fs.renameSync(file,file.replace('.receipt.json','.ack.json'));}
+  catch(e){if(/Queue HTTP 409/.test(e.message)){fs.renameSync(file,file.replace('.receipt.json','.unreconciled.json'));console.error('Receipt needs operator reconciliation: '+name);}else throw e;}
+ }
+}
 async function main(){
  const base=new URL(process.env.FONDAL_ART_API||'http://127.0.0.1:8787');
  if(base.protocol!=='https:'&&!(base.protocol==='http:'&&['localhost','127.0.0.1','[::1]'].includes(base.hostname)))throw Error('Worker credentials require HTTPS or loopback');
@@ -46,18 +57,21 @@ async function main(){
  const once=process.argv.includes('--once');let stopped=false;process.on('SIGTERM',()=>{stopped=true;});process.on('SIGINT',()=>{stopped=true;});
  do{
   try{
-   const {job}=await api('claim',{worker:os.hostname()});
+   await replayReceipts(root,api);
+   const {job}=await api('claim',{worker:os.hostname(),capabilities:capabilities(profile)});
    if(job){
     if(!/^[a-f0-9-]{36}$/.test(job.id))throw Error('Invalid queue job identifier');
-    const heartbeat=setInterval(()=>api('heartbeat',{id:job.id,lease:job.lease}).catch(e=>console.error(e.message)),30000);
-    let result;try{result=await execute(job,{root,profile});}catch(e){result={status:'FAILED',error:e.message};}finally{clearInterval(heartbeat);}
+    let leaseConfirmed=true,lastHeartbeat=Date.now();
+    const shouldContinue=()=>leaseConfirmed && Date.now()-lastHeartbeat<19*60*1000;
+    const heartbeat=setInterval(()=>api('heartbeat',{id:job.id,lease:job.lease}).then(()=>{lastHeartbeat=Date.now();}).catch(e=>{if(/Queue HTTP (403|409)/.test(e.message))leaseConfirmed=false;console.error(e.message);}),30000);
+    let result;try{result=await execute(job,{root,profile,shouldContinue});}catch(e){result={status:'FAILED',error:e.message};}finally{clearInterval(heartbeat);}
     // Persist completion before reporting; a lost response cannot lose generated work.
     fs.writeFileSync(path.join(root,job.id+'.receipt.json'),JSON.stringify({id:job.id,lease:job.lease,result},null,2)+'\n');
-    await api('finish',{id:job.id,lease:job.lease,result});console.log(JSON.stringify({id:job.id,status:result.status}));
+    await api('finish',{id:job.id,lease:job.lease,result});fs.renameSync(path.join(root,job.id+'.receipt.json'),path.join(root,job.id+'.ack.json'));console.log(JSON.stringify({id:job.id,status:result.status}));
    }
   }catch(e){console.error(e.message);if(once)throw e;}
   if(!once&&!stopped)await new Promise(r=>setTimeout(r,5000));
  }while(!once&&!stopped);
 }
 if(require.main===module)main().catch(e=>{console.error(e.message);process.exitCode=1;});
-module.exports={execute};
+module.exports={execute,replayReceipts};

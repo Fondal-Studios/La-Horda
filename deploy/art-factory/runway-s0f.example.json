@@ -1,0 +1,17 @@
+{
+  "provider": "runway-s0f",
+  "enabled": false,
+  "model": "gen4_image",
+  "ratio": "1920:1080",
+  "limits": {
+    "perTaskCents": 10,
+    "perBatchCents": 180,
+    "perDayCents": 500
+  },
+  "allowedTargets": [
+    "cazadora"
+  ],
+  "allowedSkins": [
+    "cazadora_escarcha"
+  ]
+}

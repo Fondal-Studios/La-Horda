@@ -156,4 +156,52 @@ class IntegrationGate(unittest.TestCase):
         self.assertTrue(self.run_gate()['apto_tecnico'])
 
 
+class S0FMetricSemantics(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import subprocess
+        cls.contract = json.loads(subprocess.check_output(['node', '-e', "console.log(JSON.stringify(require('./tools/factory/s0f/contract').readContract('cazadora',{skin:'cazadora_escarcha'})))"], cwd=af.ROOT))
+
+    def evaluate(self, image):
+        with tempfile.TemporaryDirectory() as t:
+            p = Path(t)
+            (p / 'contract.json').write_text(json.dumps(self.contract))
+            image.save(p / 'candidate.png')
+            return af.evaluate_candidate(p / 'contract.json', p / 'candidate.png')
+
+    def source(self):
+        return Image.open(af.ROOT / self.contract['atlas']).convert('RGBA')
+
+    def test_white_blue_contrast_is_reported_not_confused_with_smooth_shading(self):
+        r = self.evaluate(self.source())
+        self.assertTrue(r['checks']['estilo_en_rango_del_roster'])
+        self.assertEqual(r['score'], 100)
+        self.assertGreater(r['style_metrics']['shade_sd'], r['diagnostics'][0]['roster_range'][1])
+        self.assertFalse(r['diagnostics'][0]['gating'])
+        self.assertEqual(r['style_gating_metrics'], ['outline', 'soft', 'detail'])
+        self.assertTrue(r['requires_human_art_review'])
+
+    def test_rgb_blur_with_original_binary_alpha_still_fails_local_style(self):
+        from PIL import ImageFilter
+        original = self.source()
+        blurred = original.filter(ImageFilter.GaussianBlur(2))
+        blurred.putalpha(original.getchannel('A'))
+        r = self.evaluate(blurred)
+        self.assertTrue(r['checks']['alfa_binario'])
+        self.assertFalse(r['checks']['estilo_en_rango_del_roster'])
+        self.assertTrue(any(d['what'].startswith(('soft ', 'detail ')) for d in r['defects']))
+
+    def test_smoothed_alpha_and_empty_frames_remain_rejected(self):
+        from PIL import ImageFilter
+        source = self.source()
+        blurred = self.evaluate(source.filter(ImageFilter.GaussianBlur(2)))
+        self.assertFalse(blurred['checks']['alfa_binario'])
+        self.assertFalse(blurred['checks']['estilo_en_rango_del_roster'])
+        self.assertGreater(blurred['critical'], 0)
+        empty = self.evaluate(Image.new('RGBA', source.size))
+        self.assertFalse(empty['checks']['sin_cuadros_vacios'])
+        self.assertFalse(empty['checks']['estilo_en_rango_del_roster'])
+        self.assertGreater(empty['critical'], 0)
+
+
 if __name__ == '__main__': unittest.main()

@@ -1,7 +1,7 @@
 name: Fondal Art Engine validation
 on:
   pull_request:
-    paths: ['tools/fondal-art-engine/**', 'server/art-factory.js', 'server/test-art-factory.js', 'server/accounts.js', 'js/ui/art-factory.js', 'js/ui/admin.js', 'deploy/art-factory/**', 'tools/art/pixrig/**', 'tools/factory/import-authored-sheet.py', 'art-source/fondal/**', 'assets/sprites/champions/**/codex-v1/**', 'js/assets/codex-champion-meta.js', 'js/rendering/codex-champions.js', 'js/rendering/entities.js', 'js/rendering/champion-sprites.js', 'index.html', 'docs/fondal-art-engine/**', 'docs/art-brief/manifiestos/mundo_faltantes.json', '.github/workflows/fondal-art-engine.yml']
+    paths: ['tools/fondal-art-engine/**', 'tools/factory/s0f/**', 'tools/factory/cli.js', 'tools/factory/art_factory.py', 'server/art-factory.js', 'server/test-art-factory.js', 'server/accounts.js', 'js/ui/art-factory.js', 'js/ui/admin.js', 'deploy/art-factory/**', 'tools/art/pixrig/**', 'tools/factory/import-authored-sheet.py', 'art-source/fondal/**', 'assets/sprites/champions/**/codex-v1/**', 'js/assets/codex-champion-meta.js', 'js/rendering/codex-champions.js', 'js/rendering/entities.js', 'js/rendering/champion-sprites.js', 'index.html', 'docs/fondal-art-engine/**', 'docs/art-brief/manifiestos/mundo_faltantes.json', '.github/workflows/fondal-art-engine.yml']
   workflow_dispatch:
     inputs:
       production:
@@ -29,7 +29,7 @@ jobs:
       - run: python -m pip install -r tools/fondal-art-engine/requirements.txt
       - name: Unit and negative validation tests
         run: |
-          node --test tools/fondal-art-engine/*.test.js
+          node --test tools/fondal-art-engine/*.test.js tools/factory/s0f/*.test.js
           python -m unittest discover -s tools/fondal-art-engine -p "test_*.py"
       - name: Existing game contracts
         run: |
@@ -54,6 +54,10 @@ jobs:
           /tmp/fondal-browser/node_modules/.bin/playwright install --with-deps chromium
       - name: Real game loading, every registered atlas frame and render timing
         run: node tools/fondal-art-engine/runtime-check.js "$RUNNER_TEMP/fondal-runtime"
+        env:
+          NODE_PATH: /tmp/fondal-browser/node_modules
+      - name: Serial pilot real renderer and visual evidence (existing baseline, not new AI art)
+        run: node tools/fondal-art-engine/pilot-runtime.js --out "$RUNNER_TEMP/fondal-serial-pilot"
         env:
           NODE_PATH: /tmp/fondal-browser/node_modules
       - name: Audit decoded champion sheets for repair candidates
@@ -83,6 +87,7 @@ jobs:
             ${{ runner.temp }}/fondal-quality/
             ${{ runner.temp }}/fondal-candidate/
             ${{ runner.temp }}/fondal-codex/
+            ${{ runner.temp }}/fondal-serial-pilot/
           retention-days: 14
   produce:
     if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.production)
