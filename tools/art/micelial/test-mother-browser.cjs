@@ -9,16 +9,23 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));const check=(name,value)=>{asse
  server=spawn('python3',['-m','http.server',String(PORT),'--bind','127.0.0.1'],{cwd:ROOT,stdio:'ignore'});await sleep(500);
  browser=await chromium.launch({...(process.env.CHROMIUM_PATH?{executablePath:process.env.CHROMIUM_PATH}:{}),args:['--no-sandbox']});
  for(const viewport of [{width:1280,height:720},{width:844,height:390},{width:390,height:844}]){
-  const page=await browser.newPage({viewport}),errors=[];
+  const page=await browser.newPage({viewport,recordVideo:{dir:OUT,size:viewport}}),errors=[];
   page.on('pageerror',e=>errors.push(e.message));
   await page.addInitScript(()=>{window.requestAnimationFrame=()=>0;});
   await page.goto(`http://127.0.0.1:${PORT}`,{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>typeof startRun==='function'&&typeof _micMotherFrame==='function'&&_micMotherAtlasReady(),null,{timeout:120000});
+  try{
+    // The render loop is deliberately frozen; Playwright's default RAF poll
+    // cannot run under that harness. Poll the readiness predicate by timer.
+    await page.waitForFunction(()=>typeof startRun==='function'&&typeof _micMotherFrame==='function'&&_micMotherAtlasReady(),null,{timeout:120000,polling:100});
+  }catch(error){
+    const diagnostics=await page.evaluate(()=>({start:typeof startRun,frame:typeof _micMotherFrame,ready:typeof _micMotherAtlasReady==='function'&&_micMotherAtlasReady(),atlas:typeof MIC_MP!=='undefined'&&MIC_MP.mp_atlas?{src:MIC_MP.mp_atlas.src,width:MIC_MP.mp_atlas.width,height:MIC_MP.mp_atlas.height,complete:MIC_MP.mp_atlas.complete}:null}));
+    fs.writeFileSync(path.join(OUT,'readiness-failure.json'),JSON.stringify({diagnostics,errors},null,2));throw error;
+  }
   const setup=await page.evaluate(()=>{
     selectedClass='tanque';currentArena='micelial';lobbyAllies=[];netMatch=null;startRun(10);setState('playing');
     micMotherRevealStart();const e=micMotherEntity();micS.mo.st='fight';micS.mo.ph=1;micS.mo.t=0;e.micDormant=0;e.dmgTakenMult=1;boss=e;bossActive=true;
     player.x=0;player.y=380;player.maxHp=player.hp=1000000;
-    window.motherProbe=e;
+    window.motherProbe=e;_micBlend=1;
     // Hold the same camera for A/B. Normal runtime camera fitting is tested separately.
     updateCamLift=()=>{};
     return {ready:_micMotherAtlasReady(),src:MIC_MP.mp_atlas.src,w:MIC_MP.mp_atlas.width,h:MIC_MP.mp_atlas.height};
@@ -52,6 +59,28 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));const check=(name,value)=>{asse
    await page.screenshot({path:path.join(OUT,viewport.width+'-'+name+'-baseline.png')});
    await page.evaluate(()=>{MIC_MP_OK.mp_atlas=true;});
   }
+  // Exercise actual AI/timers/VFX in the arena, not just hand-authored snapshots.
+  // Recorded video includes attacks in all three phases; heroes are invulnerable
+  // only in this test harness, never in production code.
+  for(const phase of [1,2,3]){
+    await page.evaluate(phase=>{
+      const e=window.motherProbe;e.alive=true;e.hp=e.maxHp*(phase===1?1:phase===2?0.5:0.25);
+      Object.assign(e,{micDormant:0,packSet:null,packTimer:0,bossWind:null,mcd:0,rootsCd:9e8,sporeCd:9e8,whipCd:0,summonCd:9e8,clawCd:9e8,cloudCd:9e8,halCd:9e8});
+      micS.dead=0;micS.mo={st:'fight',ph:phase,t:0,bloom:phase>=2?1:0,heart:phase===3?1:0,beat:900,inf:0};
+      player.x=80;player.y=450;player.hp=player.maxHp;boss=e;bossActive=true;
+      CAM_LIFT=micCamLift();
+    },phase);
+    const observed=[];
+    for(let f=0;f<32;f++){
+      observed.push(await page.evaluate(()=>{
+        for(let j=0;j<6;j++){player.hp=player.maxHp;update(16);}
+        render();return _micMotherFrame(window.motherProbe,micS.mo,runElapsedMs);
+      }));
+      await page.waitForTimeout(80);
+    }
+    check('actual phase '+phase+' animated in arena '+viewport.width,new Set(observed.map(p=>p.frame)).size>=2);
+    fs.writeFileSync(path.join(OUT,viewport.width+'-phase'+phase+'-frames.json'),JSON.stringify(observed,null,2));
+  }
   const tests=await page.evaluate(()=>{
     const e=window.motherProbe;
     micS.mo={st:'fight',ph:3,t:0,heart:1,beat:900,inf:0};
@@ -71,7 +100,8 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));const check=(name,value)=>{asse
   check('death removes sprite '+viewport.width,tests.deadDraws===0);
   check('no page errors '+viewport.width,errors.length===0);
   fs.writeFileSync(path.join(OUT,viewport.width+'-result.json'),JSON.stringify({setup,tests,errors},null,2));
-  await page.close();
+  const video=page.video();await page.close();
+  if(video)fs.renameSync(await video.path(),path.join(OUT,viewport.width+'-gameplay.webm'));
  }
  fs.writeFileSync(path.join(OUT,'result.json'),JSON.stringify({status:'PASS',pass,scope:'full game renderer + state + actual snapshot serialization; no physical mobile or live relay certification'},null,2));
  console.log(JSON.stringify({pass,status:'PASS'}));
