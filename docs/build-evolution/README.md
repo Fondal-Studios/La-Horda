@@ -24,27 +24,27 @@ Hueco que cubre: hasta ahora a Nv.5 **todos** los jugadores del mismo campeón e
 | Medida | Herramienta | Resultado |
 |---|---|---|
 | Integridad de datos, arquetipos, texto, aislamiento | `node tools/build-evolution/t_synergy_static.js` | PASS (12 ramas) |
-| Efecto real de cada rama en el juego real + oferta/exclusividad/jefes/set/cooperativo | `node tools/build-evolution/t_synergy_runtime.js` | PASS (83 comprobaciones) |
-| Balance (piloto automático real, Bosque, nv.20, 8 semillas × 150 s) | `node tools/build-evolution/sim-balance.js docs/build-evolution/sim-results.json` | rango de daño vs base **−5,8 % … +13,2 %**, todas bajo el techo por rol, 0 errores, 8/8 sobreviven |
+| Efecto real de cada rama en el juego real + oferta/exclusividad/jefes/set/cooperativo | `node tools/build-evolution/t_synergy_runtime.js` | PASS (100 comprobaciones) |
+| Balance (piloto automático real, Bosque, nv.20, 16 semillas × 150 s (datos de la tabla)) | `node tools/build-evolution/sim-balance.js docs/build-evolution/sim-results.json` | rango de daño vs base **−5,8 % … +13,2 %**, todas bajo el techo por rol, 0 errores, 8/8 sobreviven |
 | Rendimiento | mismo sim, ms de CPU por partida simulada | sin sobrecosto medible (−4,2 %, ruido) |
 | Tiempo de comprensión | estimación por palabras (3 pal/s) | carta ≤ 10,3 s, media 9,1 s (estimación, no prueba con jugadores) |
 
 El hash de los datos va dentro de `sim-results.json`: si cambiás el balance, `t_synergy_static.js` falla hasta que repitas la simulación.
 
-| Campeón | Rama | Daño vs base (±EE) | Daño recibido vs base |
+| Campeón | Rama | Daño vs base (±EE) | Daño recibido vs base (ruidoso) |
 |---|---|---|---|
-| tanque | tq_ariete (def.) | −4,6 % (±8) | +19,9 % |
-| tanque | tq_quiebre (ctrl) | +12,9 % (±6,3) | +43,6 % |
-| tanque | tq_vortice (ctrl) | +13,2 % (±5,7) | +23,6 % |
-| tanque | tq_filo (ofen.) | +9,6 % (±6,1) | +25,2 % |
-| mago | mg_quebradiza | −2,0 % (±5) | +47,4 % |
-| mago | mg_glacial | −4,4 % (±4,5) | +15,0 % |
-| mago | mg_tormenta | +0,6 % (±4,5) | +10,5 % |
-| mago | mg_tierra (def.) | +3,6 % (±5,2) | +21,1 % |
-| cazadora | cz_caceria | −4,3 % (±2,4) | −30,3 % |
-| cazadora | cz_rastro | +0,1 % (±2,5) | −40,1 % |
-| cazadora | cz_cobertura (def.) | +6,0 % (±1,9) | −20,4 % |
-| cazadora | cz_marca | −5,8 % (±3,5) | −31,0 % |
+| tanque | tq_ariete (def.) | +1,5 % (±3,7) | +16,2 % |
+| tanque | tq_quiebre (ctrl) | +1,8 % (±3,9) | +11,1 % |
+| tanque | tq_vortice (ctrl) | +4,4 % (±3,1) | +20,5 % |
+| tanque | tq_filo (ofen.) | +6,4 % (±4,2) | +16,9 % |
+| mago | mg_quebradiza (ofen.) | -5,6 % (±2,8) | +0,8 % |
+| mago | mg_glacial (ctrl) | -6,6 % (±2,6) | -5 % |
+| mago | mg_tormenta (ofen.) | -0,3 % (±3,1) | +14 % |
+| mago | mg_tierra (def.) | -0,7 % (±2,5) | +38 % |
+| cazadora | cz_caceria (ofen.) | -4,3 % (±2,6) | -9,9 % |
+| cazadora | cz_rastro (ctrl) | -7,8 % (±2,3) | -13,2 % |
+| cazadora | cz_cobertura (def.) | -5,9 % (±2,4) | -11,6 % |
+| cazadora | cz_marca (ctrl) | -3,3 % (±2,5) | -29,8 % |
 
 ### Historial de rechazos propios (comparación con la versión anterior)
 1. Primera versión: `cz_marca` salía −11,8 % y `cz_caceria` −8,7 % (costo de enfriamiento > beneficio) y `tq_quiebre`/`tq_vortice` +25 % (control dominante en el tanque). Se rebalancearon (costos, aturdimiento, arrastre) y se repitió la simulación completa.
@@ -93,3 +93,5 @@ La evaluación #2 (82/100) marcó el criterio de "1 error estándar" como falso 
 Después de la #3: **prueba con dos clientes reales** (`t_synergy_coop.js`, relay local real, 8 comprobaciones), **Horda Infinita completa** (`t_synergy_endless.js`, 3 rondas con piloto automático, 6 comprobaciones), compuerta de balance reforzada (16 semillas, t de Student, cota inferior del IC95 % pareado ≥ −15 %), `cz_marca` con +15 % contra marcados. Con 16 semillas el rango de daño es −7,8 % … +6,4 %.
 Sin valor medible demostrado: **`mg_tierra`** (cura; +3,3 pp de vida efectiva, no reduce muertes en niveles 7-8). `tq_ariete` es la única defensiva consistente, con efecto modesto; `cz_cobertura` no se distingue de las ramas ofensivas.
 Pendiente: dueño de G en `ownership.json` (PR #254, depende de S0C) → los puntos de aislamiento no se recuperan hasta entonces. Líneas de `index.html` por el integrador (`docs/arquitectura-compartida/INDEX_HTML.md` en #254).
+
+**Prueba de mutación (evaluación #4):** con todos los efectos de rama anulados, `t_synergy_coop.js` pasaba (no verificaba que la rama actuara). Corregido: ahora fuerza Nova Glacial y exige que los enemigos ya ralentizados queden aturdidos ≥ 400 ms (la nova base solo aturde ~110 ms); con el mutante la prueba FALLA, sin él PASA.

@@ -57,7 +57,8 @@ async function waitFor(c, fn, a, ms) { for (let k = 0; k < (ms || 20000)/150; k+
   const opts = await ev(A, () => { const o = (netMatch && netMatch.buffOpts1) || []; return o.filter(x => x.startsWith('syn:')).map(x => SYN_BY_ID[x.slice(4)]).map(b => ({ id: b.id, champ: b.champ, skill: b.skill, arch: b.arch })); });
   check('ramas_ofrecidas_son_de_SU_guardian_y_de_la_misma_habilidad', opts.length === 2 && opts.every(o => o.champ === 'mago') && opts[0].skill === opts[1].skill && opts[0].arch !== opts[1].arch, opts);
   await ev(A, () => { const c = [...document.querySelectorAll('#buff-cards .buff-card')].find(c => !c.classList.contains('syn-branch')) || document.querySelector('#buff-cards .buff-card'); c.click(); });
-  await ev(B, () => { document.querySelector('#buff-cards .buff-card.syn-branch').click(); });
+  // se elige SIEMPRE Nova Glacial (efecto propio medible: congela 450 ms a lo ya ralentizado; la nova base solo aturde ~110 ms)
+  await ev(B, () => { const c = [...document.querySelectorAll('#buff-cards .buff-card.syn-branch')].find(c => (c.querySelector('.buff-name') || {}).textContent === 'Nova Glacial'); (c || document.querySelector('#buff-cards .buff-card.syn-branch')).click(); });
   const resumed = await waitFor(A, () => state === 'playing') && await waitFor(B, () => state === 'playing');
   const hostSide = await ev(A, () => ({ guest: heroes[1].synergy || {}, host: player.synergy || {}, champ: heroes[1].classKey }));
   const gk = Object.keys(hostSide.guest);
@@ -70,11 +71,15 @@ async function waitFor(c, fn, a, ms) { for (let k = 0; k < (ms || 20000)/150; k+
   // el invitado lanza la habilidad con rama: el anfitrión (que simula) aplica el efecto a enemigos reales
   const key = +gk[0], id = hostSide.guest[gk[0]];
   await ev(A, () => { const g = heroes[1]; g.energy = g.maxEnergy; g.cds = [0,0,0]; for (let i = 0; i < 6; i++){ const e = spawnEnemy('duende_bosque', false); e.x = g.x + 60 + i*25; e.y = g.y + (i%2?20:-20); e.hp = e.maxHp = 1e6; e.speed = 0; e.atkCd = 1e9; e.dmg = 0; } });
+  // precondición de la rama: los enemigos ya están ralentizados cuando llega la nova
+  await ev(A, () => { for (const e of enemies) if (e.maxHp === 1e6) { e.slowTimer = 6000; e.slowAmt = 0.3; e.stunTimer = 0; } });
   await sleep(400);
   await ev(B, ([k]) => { player.cds = [0,0,0]; player.energy = player.maxEnergy; useSkill(k); }, [key]);
-  await sleep(1500);
-  const fx = await ev(A, ([id]) => { const b = SYN_BY_ID[id], g = heroes[1]; const hit = enemies.filter(e => e.maxHp === 1e6 && e.hp < e.maxHp); return { id, hit: hit.length, slowed: hit.filter(e => e.slowTimer > 0).length, cdMult: b.cdMult, guestCd: g.cds[b.skill], castOk: !!g._evo }; }, [id]);
-  check('invitado_lanza_y_la_rama_actua_en_el_anfitrion', fx.hit > 0 && fx.castOk, fx);
+  let maxStun = 0, stunnedN = 0;
+  for (let i = 0; i < 12; i++) { await sleep(130); const r = await ev(A, () => { const t = enemies.filter(e => e.maxHp === 1e6).map(e => e.stunTimer || 0); return { m: Math.max(0, ...t), n: t.filter(x => x >= 300).length }; }); maxStun = Math.max(maxStun, r.m); stunnedN = Math.max(stunnedN, r.n); }
+  const fx = await ev(A, ([id]) => { const g = heroes[1]; const hit = enemies.filter(e => e.maxHp === 1e6 && e.hp < e.maxHp); return { id, hit: hit.length, castOk: !!g._evo }; }, [id]);
+  check('rama_elegida_es_Nova_Glacial', id === 'mg_glacial', id);
+  check('invitado_lanza_y_la_rama_ACTUA_en_el_anfitrion_congela_a_lo_ralentizado', fx.hit > 0 && fx.castOk && maxStun >= 400 && stunnedN >= 2, { ...fx, maxStun: Math.round(maxStun), stunnedN });
   if (process.env.SHOT) { await B.page.screenshot({ path: process.env.SHOT }); }
   check('sin_errores', A.errors.length === 0 && B.errors.length === 0, { A: A.errors.slice(0, 3), B: B.errors.slice(0, 3) });
   console.log(`SUMMARY ${fails === 0 ? 'OK' : 'FAIL'} fails=${fails}`);
