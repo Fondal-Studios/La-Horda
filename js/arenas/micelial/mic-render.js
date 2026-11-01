@@ -27,7 +27,10 @@ for(const n of ["mp_full","mp_cap","mp_arm_l","mp_arm_r"]) _micImg("assets/sprit
 _micImg("assets/sprites/arenas/micelial/madre_espora/atlas.png", "mp_atlas", MIC_MP, MIC_MP_OK);
 // Explicit review-only query: unapproved high-detail idle pilot is NEVER default.
 const MIC_MOTHER_PILOT_ON=typeof location!=="undefined" && new URLSearchParams(location.search).get("motherArtPilot")==="1";
-if(MIC_MOTHER_PILOT_ON) _micImg("assets/sprites/arenas/micelial/mother/pilot_idle.png","mp_pilot",MIC_MP,MIC_MP_OK);
+if(MIC_MOTHER_PILOT_ON){
+  _micImg("assets/sprites/arenas/micelial/mother/pilot_idle.png","mp_pilot",MIC_MP,MIC_MP_OK);
+  _micImg("assets/sprites/arenas/micelial/mother/pilot_attack.png","mp_pilot_attack",MIC_MP,MIC_MP_OK);
+}
 const MIC_BG = {}, MIC_BG_OK = {};
 _micImg("assets/sprites/arenas/micelial/map/map_initial.png", "a", MIC_BG, MIC_BG_OK);
 _micImg("assets/sprites/arenas/micelial/map/map_mature.png", "b", MIC_BG, MIC_BG_OK);
@@ -557,15 +560,24 @@ function _micMotherAtlasReady(){
   const im=MIC_MP.mp_atlas;
   return !!(MIC_MP_OK.mp_atlas && im && im.width===1360 && im.height===417);
 }
+function _micMotherPilotPose(e,M,timeMs,pose){
+  if(M.ph!==1 || M.bloom || M.heart || (M.net && M.net.st==="open")) return null;
+  if(pose.state==="idle") return {key:"mp_pilot",w:432,frame:[0,1,2,1][Math.floor(Math.max(0,timeMs||0)/360)%4]};
+  if(pose.state!=="atk" || !e || !(e.packDur>700)) return null;
+  // Same actual windup and 500ms recovery window as production damage. Never
+  // use the root/claw action for immediate spore casts or later evolved forms.
+  const after=(e.packDur-e.packTimer)-(e.packDur-500);
+  return {key:"mp_pilot_attack",w:480,frame:e.bossWind || after<0 ? 0 : (after<190 ? 1 : 2)};
+}
 function _micDrawMotherFrame(e,t){
   if(!_micMotherAtlasReady()) return false;
   const M=micS ? micS.mo : {st:"fight",t:0}, A=MIC_MOTHER_ANIM;
   const pose=_micMotherFrame(e,M,typeof runElapsedMs==="number" ? runElapsedMs : t*1000);
   if(pose.alpha<=0 || pose.rise<=0) return true;
-  if(MIC_MOTHER_PILOT_ON && pose.state==="idle" && MIC_MP_OK.mp_pilot && MIC_MP.mp_pilot.width===1296 && MIC_MP.mp_pilot.height===496){
-    const f=[0,1,2,1][Math.floor(Math.max(0,runElapsedMs||0)/360)%4];
+  const pilot=MIC_MOTHER_PILOT_ON ? _micMotherPilotPose(e,M,runElapsedMs,pose) : null;
+  if(pilot && MIC_MP_OK[pilot.key] && MIC_MP[pilot.key].width===pilot.w*3 && MIC_MP[pilot.key].height===496){
     ctx.save();ctx.imageSmoothingEnabled=false;
-    ctx.drawImage(MIC_MP.mp_pilot,f*432,0,432,496,MIC_MOTHER_POS.x-216,MIC_MOTHER_BASE-472,432,496);
+    ctx.drawImage(MIC_MP[pilot.key],pilot.frame*pilot.w,0,pilot.w,496,MIC_MOTHER_POS.x-pilot.w/2,MIC_MOTHER_BASE-472,pilot.w,496);
     ctx.restore();return true;
   }
   const w=A.w*A.scale, h=A.h*A.scale, x=MIC_MOTHER_POS.x-w/2, y=MIC_MOTHER_BASE-h*A.anchor;

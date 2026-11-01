@@ -109,4 +109,13 @@ check('boss camera restores normal zoom on death, arena exit and spectator; inpu
    assert.equal(sandbox.CAM_ZOOM,0.6,mode);
  }
 });
+check('opt-in high-detail phase1 pilot holds windup, impact, recovery and excludes other phases',()=>{
+ const m={st:'fight',ph:1};const p=(e,M=m,t=0)=>sandbox._micMotherPilotPose(e,M,t,frame(e,M,t));
+ assert.equal(p({packSet:'atk',packDur:1500,packTimer:510,bossWind:{t:990,dur:1000}}).frame,0);
+ assert.equal(p({packSet:'atk',packDur:1500,packTimer:490}).frame,1);
+ assert.equal(p({packSet:'atk',packDur:1500,packTimer:100}).frame,2);
+ assert.equal(p({packSet:'atk',packDur:700,packTimer:600}),null);
+ assert.equal(p({packSet:'atk',packDur:1500,packTimer:490},{st:'fight',ph:2,bloom:1}),null);
+ assert.equal(p({packSet:null,packTimer:0},m,360).frame,1);
+});
 console.log(JSON.stringify({pass,scope:'pose and contract unit tests only; visual/browser checks separate'}));
