@@ -24,10 +24,10 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));const check=(name,value)=>{asse
   const setup=await page.evaluate(()=>{
     selectedClass='tanque';currentArena='micelial';lobbyAllies=[];netMatch=null;startRun(10);setState('playing');
     micMotherRevealStart();const e=micMotherEntity();micS.mo.st='fight';micS.mo.ph=1;micS.mo.t=0;e.micDormant=0;e.dmgTakenMult=1;boss=e;bossActive=true;
-    player.x=0;player.y=260;player.maxHp=player.hp=1000000;
+    player.x=0;player.y=260;player.hp=player.maxHp;
     window.motherProbe=e;_micBlend=1;
     // Expire entrance-only overlays; preserve combat telegraphs and actual HUD.
-    for(let i=0;i<800;i++){player.hp=player.maxHp;update(16);}
+    for(let i=0;i<800;i++){for(const h of heroes)h.hp=h.maxHp;update(16);}
     e.hp=e.maxHp;e.alive=true;player.x=0;player.y=260;
     _bossIntroT=0;_bossIntroDelay=0;HUDTXT.q=[];HUDTXT.until=0;
     for(const id of ["boss-intro","center-banner","arena-title-card"]){const el=document.getElementById(id);if(el){el.classList.remove("show");el.classList.add("hidden");}}

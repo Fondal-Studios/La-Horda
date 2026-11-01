@@ -12,8 +12,8 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/high-deta
   await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&MIC_MP_OK.mp_pilot&&MIC_MP_OK.mp_pilot_attack,null,{polling:100,timeout:120000});
   await page.evaluate(()=>{
    selectedClass='tanque';currentArena='micelial';lobbyAllies=[];netMatch=null;startRun(10);setState('playing');micMotherRevealStart();
-   const e=micMotherEntity();window.motherProbe=e;boss=e;bossActive=true;activeChampion=null;micS.mo.st='fight';micS.mo.ph=1;e.micDormant=0;e.dmgTakenMult=1;player.maxHp=player.hp=1e6;
-   for(let i=0;i<800;i++){player.hp=player.maxHp;update(16);}
+   const e=micMotherEntity();window.motherProbe=e;boss=e;bossActive=true;activeChampion=null;micS.mo.st='fight';micS.mo.ph=1;e.micDormant=0;e.dmgTakenMult=1;player.hp=player.maxHp;
+   for(let i=0;i<800;i++){for(const h of heroes)h.hp=h.maxHp;update(16);}
    player.x=0;player.y=260;e.hp=e.maxHp;e.alive=true;Object.assign(e,{packSet:null,packTimer:0,bossWind:null,hitFlash:0,stunTimer:0});
    micS.mo={st:'fight',ph:1,t:0,dark:0,bloom:0,heart:0,inf:0,beat:0};_micBlend=1;
    _bossIntroT=0;_bossIntroDelay=0;HUDTXT.q=[];HUDTXT.until=0;
