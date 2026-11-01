@@ -21,20 +21,20 @@ const SCAN = () => {
 };
 (async () => {
   const browser = await launch(); const out = { label: LABEL, runs: {} };
-  for (const vn of ['844x390', '667x375', '932x430']) for (const mode of ['cristales', 'coliseo']) {
-    const { ctx, page, errors } = await newPage(browser, BASE, VPS[vn]); await page.evaluate(PROFILE); const key = vn + ' ' + mode;
+  for (const vn of (process.env.VPS || '667x375,800x360,844x390,932x430').split(',')) for (const mode of ['cristales', 'coliseo']) {
+    const { ctx, page, errors } = await newPage(browser, BASE, VPS[vn]); await page.evaluate(PROFILE); if (process.env.LEFTY === '1') await page.evaluate(() => { PREFS.lefty = true; prefsApply(); }); const key = vn + ' ' + mode + (process.env.LEFTY === '1' ? ' zurdo' : '');
     try {
       await page.evaluate(m => { for (const ck in save.champions) { const s = save.champions[ck]; s.unlocked = true; s.level = 20; } if (m === 'cristales') lanesStart({ champ: 'mago', size: 5 }); else colStart({ champ: 'mago' }); setState('playing'); }, mode);
       await sleep(3500);
       const r = await page.evaluate(SCAN); out.runs[key] = r;
-      await page.screenshot({ path: path.join(OUTDIR, `${LABEL}_${vn}_${mode}.png`) });
+      await page.screenshot({ path: path.join(OUTDIR, `${LABEL}_${vn}_${mode}${process.env.LEFTY === '1' ? '_zurdo' : ''}.png`) });
       // Definitiva cargada: ¿sigue legible el estado?
       await page.evaluate(() => { player.ultCharge = player.ultMax; player.ultCd = 0; updateHUD(); }); await sleep(600);
       out.runs[key].ultReady = await page.evaluate(() => document.getElementById('btn-ult').className);
-      await page.screenshot({ path: path.join(OUTDIR, `${LABEL}_${vn}_${mode}_ultlista.png`) });
+      await page.screenshot({ path: path.join(OUTDIR, `${LABEL}_${vn}_${mode}${process.env.LEFTY === '1' ? '_zurdo' : ''}_ultlista.png`) });
       out.runs[key].errors = errors.filter(e => !/fondalstudios|CORS|ERR_FAILED/.test(e)).slice(0, 3);
     } catch (e) { out.runs[key] = { error: String(e).slice(0, 250) }; }
     await ctx.close(); process.stdout.write('.');
   }
-  fs.writeFileSync(path.join(OUTDIR, `${LABEL}_lanes.json`), JSON.stringify(out, null, 1)); await browser.close(); console.log('\nlisto');
+  fs.writeFileSync(path.join(OUTDIR, `${LABEL}_lanes${process.env.LEFTY === '1' ? '_zurdo' : ''}.json`), JSON.stringify(out, null, 1)); await browser.close(); console.log('\nlisto');
 })().catch(e => { console.error(e); process.exit(1); });

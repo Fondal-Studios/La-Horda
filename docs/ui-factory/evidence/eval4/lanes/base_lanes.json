@@ -1,0 +1,4462 @@
+{
+ "label": "base",
+ "runs": {
+  "667x375 cristales": {
+   "n": 56,
+   "overlaps": [
+    "plevel\"Thalen · Nv. 3\" x ln-hp\"2600\" 7x11",
+    "goal-chip\"OBJETIVO: derribá torres y cristal rival\" x center-banner\"¡DERRIBÁ LAS TORRES Y EL CRISTAL RIVAL!\" 7x33",
+    "goal-chip\"OBJETIVO: derribá torres y cristal rival\" x ln-note\"Tu horda sale sola por los tres carriles\" 7x23",
+    "ln-chip\"\" x canvas\"\" 86x25",
+    "ln-chip\"\" x i\"sin cartas todavía\" 31x14",
+    "ln-shards\"◆ 500 oro\" x canvas\"\" 35x16",
+    "ln-phase\"Nv 3 · XP 0 % · TIENDA\" x i\"sin cartas todavía\" 15x11",
+    "canvas\"\" x ln-legend-btn\"?\" 41x41"
+   ],
+   "items": [
+    {
+     "id": "",
+     "cls": "bar-label",
+     "tag": "span",
+     "text": "♥",
+     "x": 19,
+     "y": 15,
+     "w": 14,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-brasa",
+     "tag": "i",
+     "text": "✦",
+     "x": 19,
+     "y": 34,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "plevel",
+     "cls": "",
+     "tag": "div",
+     "text": "Thalen · Nv. 3",
+     "x": 19,
+     "y": 53,
+     "w": 146,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-daga",
+     "tag": "i",
+     "text": "🗡",
+     "x": 21,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-brasa",
+     "tag": "i",
+     "text": "✦",
+     "x": 58,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-brasa",
+     "tag": "i",
+     "text": "✦",
+     "x": 95,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-fuego",
+     "tag": "i",
+     "text": "🔥",
+     "x": 132,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "goal-chip",
+     "cls": "peekable",
+     "tag": "div",
+     "text": "OBJETIVO: derribá torres y cristal rival",
+     "x": 10,
+     "y": 77,
+     "w": 164,
+     "h": 53
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-estrella",
+     "tag": "i",
+     "text": "★",
+     "x": 616,
+     "y": 135,
+     "w": 13,
+     "h": 13
+    },
+    {
+     "id": "ult-label",
+     "cls": "",
+     "tag": "div",
+     "text": "Definitiva",
+     "x": 596,
+     "y": 157,
+     "w": 54,
+     "h": 12
+    },
+    {
+     "id": "center-banner",
+     "cls": "show",
+     "tag": "div",
+     "text": "¡DERRIBÁ LAS TORRES Y EL CRISTAL RIVAL!",
+     "x": 167,
+     "y": 97,
+     "w": 334,
+     "h": 50
+    },
+    {
+     "id": "",
+     "cls": "ln-name",
+     "tag": "b",
+     "text": "ZAFIRO",
+     "x": 158,
+     "y": 11,
+     "w": 120,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-pips",
+     "tag": "span",
+     "text": "9/9 torres",
+     "x": 158,
+     "y": 29,
+     "w": 120,
+     "h": 18
+    },
+    {
+     "id": "",
+     "cls": "on",
+     "tag": "em",
+     "text": "▲",
+     "x": 158,
+     "y": 29,
+     "w": 10,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-hp",
+     "tag": "span",
+     "text": "2600",
+     "x": 158,
+     "y": 49,
+     "w": 120,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-time",
+     "tag": "strong",
+     "text": "18:00",
+     "x": 287,
+     "y": 19,
+     "w": 92,
+     "h": 20
+    },
+    {
+     "id": "",
+     "cls": "ln-wave",
+     "tag": "span",
+     "text": "Oleada 0",
+     "x": 287,
+     "y": 39,
+     "w": 92,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-epics",
+     "tag": "span",
+     "text": "4:00 4:00",
+     "x": 287,
+     "y": 53,
+     "w": 92,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-fuego",
+     "tag": "i",
+     "text": "🐉",
+     "x": 288,
+     "y": 53,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-corona",
+     "tag": "i",
+     "text": "👑",
+     "x": 336,
+     "y": 53,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-name",
+     "tag": "b",
+     "text": "ÁMBAR",
+     "x": 418,
+     "y": 11,
+     "w": 91,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-pips",
+     "tag": "span",
+     "text": "9/9 torres",
+     "x": 436,
+     "y": 29,
+     "w": 73,
+     "h": 18
+    },
+    {
+     "id": "",
+     "cls": "on",
+     "tag": "em",
+     "text": "▲",
+     "x": 436,
+     "y": 29,
+     "w": 10,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-hp",
+     "tag": "span",
+     "text": "2600",
+     "x": 487,
+     "y": 49,
+     "w": 22,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-note",
+     "tag": "div",
+     "text": "Tu horda sale sola por los tres carriles",
+     "x": 167,
+     "y": 70,
+     "w": 334,
+     "h": 30
+    },
+    {
+     "id": "",
+     "cls": "ln-chip",
+     "tag": "button",
+     "text": "",
+     "x": 256,
+     "y": 321,
+     "w": 155,
+     "h": 48
+    },
+    {
+     "id": "",
+     "cls": "ln-shards",
+     "tag": "span",
+     "text": "◆ 500 oro",
+     "x": 307,
+     "y": 329,
+     "w": 53,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-phase",
+     "tag": "span",
+     "text": "Nv 3 · XP 0 % · TIENDA",
+     "x": 272,
+     "y": 346,
+     "w": 123,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-recall",
+     "tag": "button",
+     "text": "",
+     "x": 408,
+     "y": 321,
+     "w": 58,
+     "h": 48
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "B",
+     "x": 433,
+     "y": 327,
+     "w": 6,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "span",
+     "text": "VOLVER",
+     "x": 420,
+     "y": 342,
+     "w": 34,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "canvas",
+     "text": "",
+     "x": 132,
+     "y": 285,
+     "w": 210,
+     "h": 61
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "TU HORDA",
+     "x": 136,
+     "y": 349,
+     "w": 45,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "i",
+     "text": "sin cartas todavía",
+     "x": 186,
+     "y": 349,
+     "w": 101,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-legend-btn",
+     "tag": "button",
+     "text": "?",
+     "x": 129,
+     "y": 282,
+     "w": 44,
+     "h": 44
+    },
+    {
+     "id": "joy-base",
+     "cls": "",
+     "tag": "div",
+     "text": "",
+     "x": 24,
+     "y": 273,
+     "w": 92,
+     "h": 92
+    },
+    {
+     "id": "btn-ult",
+     "cls": "ability-btn.ult",
+     "tag": "div",
+     "text": "",
+     "x": 591,
+     "y": 183,
+     "w": 60,
+     "h": 60
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 605,
+     "y": 193,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "ULT",
+     "x": 609,
+     "y": 225,
+     "w": 24,
+     "h": 8
+    },
+    {
+     "id": "btn-s3",
+     "cls": "ability-btn.s3",
+     "tag": "div",
+     "text": "",
+     "x": 517,
+     "y": 197,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 528,
+     "y": 204,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "RAYO",
+     "x": 528,
+     "y": 236,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-s2",
+     "cls": "ability-btn.s2",
+     "tag": "div",
+     "text": "",
+     "x": 475,
+     "y": 251,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 486,
+     "y": 258,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "HIELO",
+     "x": 482,
+     "y": 290,
+     "w": 40,
+     "h": 8
+    },
+    {
+     "id": "btn-s1",
+     "cls": "ability-btn.s1",
+     "tag": "div",
+     "text": "",
+     "x": 517,
+     "y": 305,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 528,
+     "y": 312,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "MURO",
+     "x": 528,
+     "y": 344,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-basic",
+     "cls": "ability-btn.basic",
+     "tag": "div",
+     "text": "",
+     "x": 579,
+     "y": 289,
+     "w": 72,
+     "h": 72
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 599,
+     "y": 305,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "Ataque",
+     "x": 591,
+     "y": 337,
+     "w": 48,
+     "h": 8
+    },
+    {
+     "id": "btn-emerg",
+     "cls": "ability-btn.sec",
+     "tag": "div",
+     "text": "",
+     "x": 463,
+     "y": 317,
+     "w": 46,
+     "h": 46
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 478,
+     "y": 328,
+     "w": 16,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "lbl",
+     "tag": "div",
+     "text": "Cura",
+     "x": 470,
+     "y": 344,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "pause-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "❚❚",
+     "x": 563,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    },
+    {
+     "id": "mute-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "SON",
+     "x": 613,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    }
+   ],
+   "goal": {
+    "visible": true,
+    "text": "OBJETIVO: derribá torres y cristal rival · cuidá el tuyo"
+   },
+   "ultMeter": {
+    "visible": true,
+    "text": "★\n      Definitiva"
+   },
+   "mute": {
+    "visible": true,
+    "text": "SON"
+   },
+   "pause": {
+    "visible": true,
+    "text": "❚❚"
+   },
+   "ultBtn": {
+    "cls": "ability-btn ult",
+    "ring": "conic-gradient(var(--ult) 0deg, #2a1c10 0deg)"
+   },
+   "body": "lanes-on",
+   "mode": "cristales",
+   "ultReady": "ability-btn ult ready-pop ready",
+   "errors": []
+  },
+  "667x375 coliseo": {
+   "n": 49,
+   "overlaps": [],
+   "items": [
+    {
+     "id": "",
+     "cls": "bar-label",
+     "tag": "span",
+     "text": "♥",
+     "x": 19,
+     "y": 15,
+     "w": 14,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-brasa",
+     "tag": "i",
+     "text": "✦",
+     "x": 19,
+     "y": 34,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "plevel",
+     "cls": "",
+     "tag": "div",
+     "text": "Thalen · Nv. 10",
+     "x": 19,
+     "y": 53,
+     "w": 146,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-brasa",
+     "tag": "i",
+     "text": "✦",
+     "x": 21,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "goal-chip",
+     "cls": "peekable",
+     "tag": "div",
+     "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 ",
+     "x": 10,
+     "y": 77,
+     "w": 164,
+     "h": 39
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-estrella",
+     "tag": "i",
+     "text": "★",
+     "x": 616,
+     "y": 135,
+     "w": 13,
+     "h": 13
+    },
+    {
+     "id": "ult-label",
+     "cls": "",
+     "tag": "div",
+     "text": "Definitiva",
+     "x": 596,
+     "y": 157,
+     "w": 54,
+     "h": 12
+    },
+    {
+     "id": "center-banner",
+     "cls": "show",
+     "tag": "div",
+     "text": "RONDA 1 · TU EQUIPO vs ÁMBAR",
+     "x": 177,
+     "y": 110,
+     "w": 312,
+     "h": 25
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "TU EQUIPO",
+     "x": 150,
+     "y": 12,
+     "w": 68,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 150,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 160,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 171,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "ÁMBAR",
+     "x": 236,
+     "y": 12,
+     "w": 52,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 236,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 247,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 257,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "ESMERALDA",
+     "x": 306,
+     "y": 12,
+     "w": 67,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 306,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 317,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 327,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "CARMESÍ",
+     "x": 392,
+     "y": 12,
+     "w": 56,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 392,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 402,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 413,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "col-round",
+     "tag": "strong",
+     "text": "RONDA 1",
+     "x": 469,
+     "y": 14,
+     "w": 56,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "col-clock",
+     "tag": "span",
+     "text": "Preparate…",
+     "x": 469,
+     "y": 29,
+     "w": 56,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-note.col-note",
+     "tag": "div",
+     "text": "Tu duelo: TU EQUIPO vs ÁMBAR",
+     "x": 249,
+     "y": 66,
+     "w": 168,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "canvas",
+     "text": "",
+     "x": 132,
+     "y": 304,
+     "w": 210,
+     "h": 61
+    },
+    {
+     "id": "joy-base",
+     "cls": "",
+     "tag": "div",
+     "text": "",
+     "x": 24,
+     "y": 273,
+     "w": 92,
+     "h": 92
+    },
+    {
+     "id": "btn-ult",
+     "cls": "ability-btn.ult",
+     "tag": "div",
+     "text": "",
+     "x": 591,
+     "y": 183,
+     "w": 60,
+     "h": 60
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 605,
+     "y": 193,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "ULT",
+     "x": 609,
+     "y": 225,
+     "w": 24,
+     "h": 8
+    },
+    {
+     "id": "btn-s3",
+     "cls": "ability-btn.s3",
+     "tag": "div",
+     "text": "",
+     "x": 517,
+     "y": 197,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 528,
+     "y": 204,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "RAYO",
+     "x": 528,
+     "y": 236,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-s2",
+     "cls": "ability-btn.s2",
+     "tag": "div",
+     "text": "",
+     "x": 475,
+     "y": 251,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 486,
+     "y": 258,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "HIELO",
+     "x": 482,
+     "y": 290,
+     "w": 40,
+     "h": 8
+    },
+    {
+     "id": "btn-s1",
+     "cls": "ability-btn.s1",
+     "tag": "div",
+     "text": "",
+     "x": 517,
+     "y": 305,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 528,
+     "y": 312,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "MURO",
+     "x": 528,
+     "y": 344,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-basic",
+     "cls": "ability-btn.basic",
+     "tag": "div",
+     "text": "",
+     "x": 579,
+     "y": 289,
+     "w": 72,
+     "h": 72
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 599,
+     "y": 305,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "Ataque",
+     "x": 591,
+     "y": 337,
+     "w": 48,
+     "h": 8
+    },
+    {
+     "id": "btn-emerg",
+     "cls": "ability-btn.sec",
+     "tag": "div",
+     "text": "",
+     "x": 463,
+     "y": 317,
+     "w": 46,
+     "h": 46
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 478,
+     "y": 328,
+     "w": 16,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "lbl",
+     "tag": "div",
+     "text": "Cura",
+     "x": 470,
+     "y": 344,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "pause-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "❚❚",
+     "x": 563,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    },
+    {
+     "id": "mute-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "SON",
+     "x": 613,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    }
+   ],
+   "goal": {
+    "visible": true,
+    "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+   },
+   "ultMeter": {
+    "visible": true,
+    "text": "★\n      Definitiva"
+   },
+   "mute": {
+    "visible": true,
+    "text": "SON"
+   },
+   "pause": {
+    "visible": true,
+    "text": "❚❚"
+   },
+   "ultBtn": {
+    "cls": "ability-btn ult ready-pop ready",
+    "ring": "conic-gradient(var(--ult) 360deg, #2a1c10 0deg)"
+   },
+   "body": "lanes-on",
+   "mode": "coliseo",
+   "ultReady": "ability-btn ult ready-pop ready",
+   "errors": []
+  },
+  "800x360 cristales": {
+   "n": 56,
+   "overlaps": [
+    "center-banner\"¡DERRIBÁ LAS TORRES Y EL CRISTAL RIVAL!\" x ln-note\"Tu horda sale sola por los tres carriles\" 387x9",
+    "ln-chip\"\" x canvas\"\" 20x25",
+    "canvas\"\" x ln-legend-btn\"?\" 41x41"
+   ],
+   "items": [
+    {
+     "id": "",
+     "cls": "bar-label",
+     "tag": "span",
+     "text": "♥",
+     "x": 19,
+     "y": 15,
+     "w": 14,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-brasa",
+     "tag": "i",
+     "text": "✦",
+     "x": 19,
+     "y": 34,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "plevel",
+     "cls": "",
+     "tag": "div",
+     "text": "Thalen · Nv. 3",
+     "x": 19,
+     "y": 53,
+     "w": 146,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-engranaje",
+     "tag": "i",
+     "text": "⚙",
+     "x": 21,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-arco",
+     "tag": "i",
+     "text": "🏹",
+     "x": 58,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-torbellino",
+     "tag": "i",
+     "text": "🌪",
+     "x": 95,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "ally-badge",
+     "tag": "div",
+     "text": "◇",
+     "x": 129,
+     "y": 131,
+     "w": 18,
+     "h": 18
+    },
+    {
+     "id": "goal-chip",
+     "cls": "peekable",
+     "tag": "div",
+     "text": "OBJETIVO: derribá torres y cristal rival",
+     "x": 10,
+     "y": 77,
+     "w": 164,
+     "h": 53
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-estrella",
+     "tag": "i",
+     "text": "★",
+     "x": 749,
+     "y": 120,
+     "w": 13,
+     "h": 13
+    },
+    {
+     "id": "ult-label",
+     "cls": "",
+     "tag": "div",
+     "text": "Definitiva",
+     "x": 729,
+     "y": 142,
+     "w": 54,
+     "h": 12
+    },
+    {
+     "id": "center-banner",
+     "cls": "show",
+     "tag": "div",
+     "text": "¡DERRIBÁ LAS TORRES Y EL CRISTAL RIVAL!",
+     "x": 207,
+     "y": 91,
+     "w": 387,
+     "h": 48
+    },
+    {
+     "id": "",
+     "cls": "ln-name",
+     "tag": "b",
+     "text": "ZAFIRO",
+     "x": 187,
+     "y": 11,
+     "w": 157,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-pips",
+     "tag": "span",
+     "text": "9/9 torres",
+     "x": 187,
+     "y": 29,
+     "w": 157,
+     "h": 18
+    },
+    {
+     "id": "",
+     "cls": "on",
+     "tag": "em",
+     "text": "▲",
+     "x": 187,
+     "y": 29,
+     "w": 10,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-hp",
+     "tag": "span",
+     "text": "2600",
+     "x": 187,
+     "y": 49,
+     "w": 157,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-time",
+     "tag": "strong",
+     "text": "18:00",
+     "x": 354,
+     "y": 19,
+     "w": 92,
+     "h": 20
+    },
+    {
+     "id": "",
+     "cls": "ln-wave",
+     "tag": "span",
+     "text": "Oleada 0",
+     "x": 354,
+     "y": 39,
+     "w": 92,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-epics",
+     "tag": "span",
+     "text": "4:00 4:00",
+     "x": 354,
+     "y": 53,
+     "w": 92,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-fuego",
+     "tag": "i",
+     "text": "🐉",
+     "x": 355,
+     "y": 53,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-corona",
+     "tag": "i",
+     "text": "👑",
+     "x": 403,
+     "y": 53,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-name",
+     "tag": "b",
+     "text": "ÁMBAR",
+     "x": 522,
+     "y": 11,
+     "w": 91,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-pips",
+     "tag": "span",
+     "text": "9/9 torres",
+     "x": 540,
+     "y": 29,
+     "w": 73,
+     "h": 18
+    },
+    {
+     "id": "",
+     "cls": "on",
+     "tag": "em",
+     "text": "▲",
+     "x": 540,
+     "y": 29,
+     "w": 10,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-hp",
+     "tag": "span",
+     "text": "2600",
+     "x": 591,
+     "y": 49,
+     "w": 22,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-note",
+     "tag": "div",
+     "text": "Tu horda sale sola por los tres carriles",
+     "x": 200,
+     "y": 70,
+     "w": 400,
+     "h": 30
+    },
+    {
+     "id": "",
+     "cls": "ln-chip",
+     "tag": "button",
+     "text": "",
+     "x": 322,
+     "y": 306,
+     "w": 155,
+     "h": 48
+    },
+    {
+     "id": "",
+     "cls": "ln-shards",
+     "tag": "span",
+     "text": "◆ 500 oro",
+     "x": 373,
+     "y": 314,
+     "w": 53,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-phase",
+     "tag": "span",
+     "text": "Nv 3 · XP 0 % · TIENDA",
+     "x": 338,
+     "y": 331,
+     "w": 123,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-recall",
+     "tag": "button",
+     "text": "",
+     "x": 474,
+     "y": 306,
+     "w": 58,
+     "h": 48
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "B",
+     "x": 500,
+     "y": 312,
+     "w": 6,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "span",
+     "text": "VOLVER",
+     "x": 486,
+     "y": 327,
+     "w": 34,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "canvas",
+     "text": "",
+     "x": 132,
+     "y": 270,
+     "w": 210,
+     "h": 61
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "TU HORDA",
+     "x": 136,
+     "y": 334,
+     "w": 45,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "i",
+     "text": "sin cartas todavía",
+     "x": 186,
+     "y": 334,
+     "w": 101,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-legend-btn",
+     "tag": "button",
+     "text": "?",
+     "x": 129,
+     "y": 267,
+     "w": 44,
+     "h": 44
+    },
+    {
+     "id": "joy-base",
+     "cls": "",
+     "tag": "div",
+     "text": "",
+     "x": 24,
+     "y": 258,
+     "w": 92,
+     "h": 92
+    },
+    {
+     "id": "btn-ult",
+     "cls": "ability-btn.ult",
+     "tag": "div",
+     "text": "",
+     "x": 724,
+     "y": 168,
+     "w": 60,
+     "h": 60
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 738,
+     "y": 178,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "ULT",
+     "x": 742,
+     "y": 210,
+     "w": 24,
+     "h": 8
+    },
+    {
+     "id": "btn-s3",
+     "cls": "ability-btn.s3",
+     "tag": "div",
+     "text": "",
+     "x": 650,
+     "y": 182,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 661,
+     "y": 189,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "RAYO",
+     "x": 661,
+     "y": 221,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-s2",
+     "cls": "ability-btn.s2",
+     "tag": "div",
+     "text": "",
+     "x": 608,
+     "y": 236,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 619,
+     "y": 243,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "HIELO",
+     "x": 615,
+     "y": 275,
+     "w": 40,
+     "h": 8
+    },
+    {
+     "id": "btn-s1",
+     "cls": "ability-btn.s1",
+     "tag": "div",
+     "text": "",
+     "x": 650,
+     "y": 290,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 661,
+     "y": 297,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "MURO",
+     "x": 661,
+     "y": 329,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-basic",
+     "cls": "ability-btn.basic",
+     "tag": "div",
+     "text": "",
+     "x": 712,
+     "y": 274,
+     "w": 72,
+     "h": 72
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 732,
+     "y": 290,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "Ataque",
+     "x": 724,
+     "y": 322,
+     "w": 48,
+     "h": 8
+    },
+    {
+     "id": "btn-emerg",
+     "cls": "ability-btn.sec",
+     "tag": "div",
+     "text": "",
+     "x": 596,
+     "y": 302,
+     "w": 46,
+     "h": 46
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 611,
+     "y": 313,
+     "w": 16,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "lbl",
+     "tag": "div",
+     "text": "Cura",
+     "x": 603,
+     "y": 329,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "pause-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "❚❚",
+     "x": 696,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    },
+    {
+     "id": "mute-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "SON",
+     "x": 746,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    }
+   ],
+   "goal": {
+    "visible": true,
+    "text": "OBJETIVO: derribá torres y cristal rival · cuidá el tuyo"
+   },
+   "ultMeter": {
+    "visible": true,
+    "text": "★\n      Definitiva"
+   },
+   "mute": {
+    "visible": true,
+    "text": "SON"
+   },
+   "pause": {
+    "visible": true,
+    "text": "❚❚"
+   },
+   "ultBtn": {
+    "cls": "ability-btn ult",
+    "ring": "conic-gradient(var(--ult) 0deg, #2a1c10 0deg)"
+   },
+   "body": "lanes-on",
+   "mode": "cristales",
+   "ultReady": "ability-btn ult ready-pop ready",
+   "errors": []
+  },
+  "800x360 coliseo": {
+   "n": 48,
+   "overlaps": [],
+   "items": [
+    {
+     "id": "",
+     "cls": "bar-label",
+     "tag": "span",
+     "text": "♥",
+     "x": 19,
+     "y": 15,
+     "w": 14,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-brasa",
+     "tag": "i",
+     "text": "✦",
+     "x": 19,
+     "y": 34,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "plevel",
+     "cls": "",
+     "tag": "div",
+     "text": "Thalen · Nv. 10",
+     "x": 19,
+     "y": 53,
+     "w": 146,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ally-badge",
+     "tag": "div",
+     "text": "●",
+     "x": 18,
+     "y": 131,
+     "w": 18,
+     "h": 18
+    },
+    {
+     "id": "goal-chip",
+     "cls": "peekable",
+     "tag": "div",
+     "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 ",
+     "x": 10,
+     "y": 77,
+     "w": 164,
+     "h": 39
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-estrella",
+     "tag": "i",
+     "text": "★",
+     "x": 749,
+     "y": 120,
+     "w": 13,
+     "h": 13
+    },
+    {
+     "id": "ult-label",
+     "cls": "",
+     "tag": "div",
+     "text": "Definitiva",
+     "x": 729,
+     "y": 142,
+     "w": 54,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "TU EQUIPO",
+     "x": 216,
+     "y": 12,
+     "w": 68,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 216,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 227,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 237,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "ÁMBAR",
+     "x": 303,
+     "y": 12,
+     "w": 52,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 303,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 313,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 324,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "ESMERALDA",
+     "x": 373,
+     "y": 12,
+     "w": 67,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 373,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 383,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 394,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "CARMESÍ",
+     "x": 458,
+     "y": 12,
+     "w": 56,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 458,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 469,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 479,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "col-round",
+     "tag": "strong",
+     "text": "RONDA 1",
+     "x": 536,
+     "y": 14,
+     "w": 56,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "col-clock",
+     "tag": "span",
+     "text": "Preparate…",
+     "x": 536,
+     "y": 29,
+     "w": 56,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-note.col-note",
+     "tag": "div",
+     "text": "Tu duelo: TU EQUIPO vs ÁMBAR",
+     "x": 316,
+     "y": 66,
+     "w": 168,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "canvas",
+     "text": "",
+     "x": 132,
+     "y": 289,
+     "w": 210,
+     "h": 61
+    },
+    {
+     "id": "joy-base",
+     "cls": "",
+     "tag": "div",
+     "text": "",
+     "x": 24,
+     "y": 258,
+     "w": 92,
+     "h": 92
+    },
+    {
+     "id": "btn-ult",
+     "cls": "ability-btn.ult",
+     "tag": "div",
+     "text": "",
+     "x": 724,
+     "y": 168,
+     "w": 60,
+     "h": 60
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 738,
+     "y": 178,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "ULT",
+     "x": 742,
+     "y": 210,
+     "w": 24,
+     "h": 8
+    },
+    {
+     "id": "btn-s3",
+     "cls": "ability-btn.s3",
+     "tag": "div",
+     "text": "",
+     "x": 650,
+     "y": 182,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 661,
+     "y": 189,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "RAYO",
+     "x": 661,
+     "y": 221,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-s2",
+     "cls": "ability-btn.s2",
+     "tag": "div",
+     "text": "",
+     "x": 608,
+     "y": 236,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 619,
+     "y": 243,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "HIELO",
+     "x": 615,
+     "y": 275,
+     "w": 40,
+     "h": 8
+    },
+    {
+     "id": "btn-s1",
+     "cls": "ability-btn.s1",
+     "tag": "div",
+     "text": "",
+     "x": 650,
+     "y": 290,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 661,
+     "y": 297,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "MURO",
+     "x": 661,
+     "y": 329,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-basic",
+     "cls": "ability-btn.basic",
+     "tag": "div",
+     "text": "",
+     "x": 712,
+     "y": 274,
+     "w": 72,
+     "h": 72
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 732,
+     "y": 290,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "Ataque",
+     "x": 724,
+     "y": 322,
+     "w": 48,
+     "h": 8
+    },
+    {
+     "id": "btn-emerg",
+     "cls": "ability-btn.sec",
+     "tag": "div",
+     "text": "",
+     "x": 596,
+     "y": 302,
+     "w": 46,
+     "h": 46
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 611,
+     "y": 313,
+     "w": 16,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "lbl",
+     "tag": "div",
+     "text": "Cura",
+     "x": 603,
+     "y": 329,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "pause-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "❚❚",
+     "x": 696,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    },
+    {
+     "id": "mute-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "SON",
+     "x": 746,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    }
+   ],
+   "goal": {
+    "visible": true,
+    "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+   },
+   "ultMeter": {
+    "visible": true,
+    "text": "★\n      Definitiva"
+   },
+   "mute": {
+    "visible": true,
+    "text": "SON"
+   },
+   "pause": {
+    "visible": true,
+    "text": "❚❚"
+   },
+   "ultBtn": {
+    "cls": "ability-btn ult ready-pop ready",
+    "ring": "conic-gradient(var(--ult) 360deg, #2a1c10 0deg)"
+   },
+   "body": "lanes-on",
+   "mode": "coliseo",
+   "ultReady": "ability-btn ult ready-pop ready",
+   "errors": []
+  },
+  "844x390 cristales": {
+   "n": 56,
+   "overlaps": [
+    "canvas\"\" x ln-legend-btn\"?\" 41x41"
+   ],
+   "items": [
+    {
+     "id": "",
+     "cls": "bar-label",
+     "tag": "span",
+     "text": "♥",
+     "x": 19,
+     "y": 15,
+     "w": 14,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-brasa",
+     "tag": "i",
+     "text": "✦",
+     "x": 19,
+     "y": 34,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "plevel",
+     "cls": "",
+     "tag": "div",
+     "text": "Thalen · Nv. 3",
+     "x": 19,
+     "y": 53,
+     "w": 146,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-engranaje",
+     "tag": "i",
+     "text": "⚙",
+     "x": 21,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-espadas",
+     "tag": "i",
+     "text": "⚔",
+     "x": 58,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-fuego",
+     "tag": "i",
+     "text": "🔥",
+     "x": 95,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "ally-badge",
+     "tag": "div",
+     "text": "☼",
+     "x": 129,
+     "y": 131,
+     "w": 18,
+     "h": 18
+    },
+    {
+     "id": "goal-chip",
+     "cls": "peekable",
+     "tag": "div",
+     "text": "OBJETIVO: derribá torres y cristal rival",
+     "x": 10,
+     "y": 77,
+     "w": 164,
+     "h": 53
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-estrella",
+     "tag": "i",
+     "text": "★",
+     "x": 793,
+     "y": 150,
+     "w": 13,
+     "h": 13
+    },
+    {
+     "id": "ult-label",
+     "cls": "",
+     "tag": "div",
+     "text": "Definitiva",
+     "x": 773,
+     "y": 172,
+     "w": 54,
+     "h": 12
+    },
+    {
+     "id": "center-banner",
+     "cls": "show",
+     "tag": "div",
+     "text": "¡DERRIBÁ LAS TORRES Y EL CRISTAL RIVAL!",
+     "x": 211,
+     "y": 103,
+     "w": 422,
+     "h": 50
+    },
+    {
+     "id": "",
+     "cls": "ln-name",
+     "tag": "b",
+     "text": "ZAFIRO",
+     "x": 197,
+     "y": 11,
+     "w": 169,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-pips",
+     "tag": "span",
+     "text": "9/9 torres",
+     "x": 197,
+     "y": 29,
+     "w": 169,
+     "h": 18
+    },
+    {
+     "id": "",
+     "cls": "on",
+     "tag": "em",
+     "text": "▲",
+     "x": 197,
+     "y": 29,
+     "w": 10,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-hp",
+     "tag": "span",
+     "text": "2600",
+     "x": 197,
+     "y": 49,
+     "w": 169,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-time",
+     "tag": "strong",
+     "text": "18:00",
+     "x": 376,
+     "y": 19,
+     "w": 92,
+     "h": 20
+    },
+    {
+     "id": "",
+     "cls": "ln-wave",
+     "tag": "span",
+     "text": "Oleada 0",
+     "x": 376,
+     "y": 39,
+     "w": 92,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-epics",
+     "tag": "span",
+     "text": "4:00 4:00",
+     "x": 376,
+     "y": 53,
+     "w": 92,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-fuego",
+     "tag": "i",
+     "text": "🐉",
+     "x": 377,
+     "y": 53,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-corona",
+     "tag": "i",
+     "text": "👑",
+     "x": 425,
+     "y": 53,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-name",
+     "tag": "b",
+     "text": "ÁMBAR",
+     "x": 556,
+     "y": 11,
+     "w": 91,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-pips",
+     "tag": "span",
+     "text": "9/9 torres",
+     "x": 574,
+     "y": 29,
+     "w": 73,
+     "h": 18
+    },
+    {
+     "id": "",
+     "cls": "on",
+     "tag": "em",
+     "text": "▲",
+     "x": 574,
+     "y": 29,
+     "w": 10,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-hp",
+     "tag": "span",
+     "text": "2600",
+     "x": 625,
+     "y": 49,
+     "w": 22,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-note",
+     "tag": "div",
+     "text": "Tu horda sale sola por los tres carriles",
+     "x": 212,
+     "y": 70,
+     "w": 420,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-chip",
+     "tag": "button",
+     "text": "",
+     "x": 344,
+     "y": 336,
+     "w": 155,
+     "h": 48
+    },
+    {
+     "id": "",
+     "cls": "ln-shards",
+     "tag": "span",
+     "text": "◆ 500 oro",
+     "x": 395,
+     "y": 344,
+     "w": 53,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-phase",
+     "tag": "span",
+     "text": "Nv 3 · XP 0 % · TIENDA",
+     "x": 360,
+     "y": 361,
+     "w": 123,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-recall",
+     "tag": "button",
+     "text": "",
+     "x": 496,
+     "y": 336,
+     "w": 58,
+     "h": 48
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "B",
+     "x": 522,
+     "y": 342,
+     "w": 6,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "span",
+     "text": "VOLVER",
+     "x": 508,
+     "y": 357,
+     "w": 34,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "canvas",
+     "text": "",
+     "x": 132,
+     "y": 300,
+     "w": 210,
+     "h": 61
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "TU HORDA",
+     "x": 136,
+     "y": 364,
+     "w": 45,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "i",
+     "text": "sin cartas todavía",
+     "x": 186,
+     "y": 364,
+     "w": 101,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-legend-btn",
+     "tag": "button",
+     "text": "?",
+     "x": 129,
+     "y": 297,
+     "w": 44,
+     "h": 44
+    },
+    {
+     "id": "joy-base",
+     "cls": "",
+     "tag": "div",
+     "text": "",
+     "x": 24,
+     "y": 288,
+     "w": 92,
+     "h": 92
+    },
+    {
+     "id": "btn-ult",
+     "cls": "ability-btn.ult",
+     "tag": "div",
+     "text": "",
+     "x": 768,
+     "y": 198,
+     "w": 60,
+     "h": 60
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 782,
+     "y": 208,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "ULT",
+     "x": 786,
+     "y": 240,
+     "w": 24,
+     "h": 8
+    },
+    {
+     "id": "btn-s3",
+     "cls": "ability-btn.s3",
+     "tag": "div",
+     "text": "",
+     "x": 694,
+     "y": 212,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 705,
+     "y": 219,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "RAYO",
+     "x": 705,
+     "y": 251,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-s2",
+     "cls": "ability-btn.s2",
+     "tag": "div",
+     "text": "",
+     "x": 652,
+     "y": 266,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 663,
+     "y": 273,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "HIELO",
+     "x": 659,
+     "y": 305,
+     "w": 40,
+     "h": 8
+    },
+    {
+     "id": "btn-s1",
+     "cls": "ability-btn.s1",
+     "tag": "div",
+     "text": "",
+     "x": 694,
+     "y": 320,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 705,
+     "y": 327,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "MURO",
+     "x": 705,
+     "y": 359,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-basic",
+     "cls": "ability-btn.basic",
+     "tag": "div",
+     "text": "",
+     "x": 756,
+     "y": 304,
+     "w": 72,
+     "h": 72
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 776,
+     "y": 320,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "Ataque",
+     "x": 768,
+     "y": 352,
+     "w": 48,
+     "h": 8
+    },
+    {
+     "id": "btn-emerg",
+     "cls": "ability-btn.sec",
+     "tag": "div",
+     "text": "",
+     "x": 640,
+     "y": 332,
+     "w": 46,
+     "h": 46
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 655,
+     "y": 343,
+     "w": 16,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "lbl",
+     "tag": "div",
+     "text": "Cura",
+     "x": 647,
+     "y": 359,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "pause-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "❚❚",
+     "x": 740,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    },
+    {
+     "id": "mute-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "SON",
+     "x": 790,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    }
+   ],
+   "goal": {
+    "visible": true,
+    "text": "OBJETIVO: derribá torres y cristal rival · cuidá el tuyo"
+   },
+   "ultMeter": {
+    "visible": true,
+    "text": "★\n      Definitiva"
+   },
+   "mute": {
+    "visible": true,
+    "text": "SON"
+   },
+   "pause": {
+    "visible": true,
+    "text": "❚❚"
+   },
+   "ultBtn": {
+    "cls": "ability-btn ult",
+    "ring": "conic-gradient(var(--ult) 0deg, #2a1c10 0deg)"
+   },
+   "body": "lanes-on",
+   "mode": "cristales",
+   "ultReady": "ability-btn ult ready-pop ready",
+   "errors": []
+  },
+  "844x390 coliseo": {
+   "n": 48,
+   "overlaps": [],
+   "items": [
+    {
+     "id": "",
+     "cls": "bar-label",
+     "tag": "span",
+     "text": "♥",
+     "x": 19,
+     "y": 15,
+     "w": 14,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-brasa",
+     "tag": "i",
+     "text": "✦",
+     "x": 19,
+     "y": 34,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "plevel",
+     "cls": "",
+     "tag": "div",
+     "text": "Thalen · Nv. 10",
+     "x": 19,
+     "y": 53,
+     "w": 146,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-brasa",
+     "tag": "i",
+     "text": "✦",
+     "x": 21,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "goal-chip",
+     "cls": "peekable",
+     "tag": "div",
+     "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 ",
+     "x": 10,
+     "y": 77,
+     "w": 164,
+     "h": 39
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-estrella",
+     "tag": "i",
+     "text": "★",
+     "x": 793,
+     "y": 150,
+     "w": 13,
+     "h": 13
+    },
+    {
+     "id": "ult-label",
+     "cls": "",
+     "tag": "div",
+     "text": "Definitiva",
+     "x": 773,
+     "y": 172,
+     "w": 54,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "TU EQUIPO",
+     "x": 238,
+     "y": 12,
+     "w": 68,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 238,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 249,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 259,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "ÁMBAR",
+     "x": 325,
+     "y": 12,
+     "w": 52,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 325,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 335,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 346,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "ESMERALDA",
+     "x": 395,
+     "y": 12,
+     "w": 67,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 395,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 405,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 416,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "CARMESÍ",
+     "x": 480,
+     "y": 12,
+     "w": 56,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 480,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 491,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 501,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "col-round",
+     "tag": "strong",
+     "text": "RONDA 1",
+     "x": 558,
+     "y": 14,
+     "w": 56,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "col-clock",
+     "tag": "span",
+     "text": "Preparate…",
+     "x": 558,
+     "y": 29,
+     "w": 56,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-note.col-note",
+     "tag": "div",
+     "text": "Tu duelo: TU EQUIPO vs ÁMBAR",
+     "x": 338,
+     "y": 66,
+     "w": 168,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "canvas",
+     "text": "",
+     "x": 132,
+     "y": 319,
+     "w": 210,
+     "h": 61
+    },
+    {
+     "id": "joy-base",
+     "cls": "",
+     "tag": "div",
+     "text": "",
+     "x": 24,
+     "y": 288,
+     "w": 92,
+     "h": 92
+    },
+    {
+     "id": "btn-ult",
+     "cls": "ability-btn.ult",
+     "tag": "div",
+     "text": "",
+     "x": 768,
+     "y": 198,
+     "w": 60,
+     "h": 60
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 782,
+     "y": 208,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "ULT",
+     "x": 786,
+     "y": 240,
+     "w": 24,
+     "h": 8
+    },
+    {
+     "id": "btn-s3",
+     "cls": "ability-btn.s3",
+     "tag": "div",
+     "text": "",
+     "x": 694,
+     "y": 212,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 705,
+     "y": 219,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "RAYO",
+     "x": 705,
+     "y": 251,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-s2",
+     "cls": "ability-btn.s2",
+     "tag": "div",
+     "text": "",
+     "x": 652,
+     "y": 266,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 663,
+     "y": 273,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "HIELO",
+     "x": 659,
+     "y": 305,
+     "w": 40,
+     "h": 8
+    },
+    {
+     "id": "btn-s1",
+     "cls": "ability-btn.s1",
+     "tag": "div",
+     "text": "",
+     "x": 694,
+     "y": 320,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 705,
+     "y": 327,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "MURO",
+     "x": 705,
+     "y": 359,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-basic",
+     "cls": "ability-btn.basic",
+     "tag": "div",
+     "text": "",
+     "x": 756,
+     "y": 304,
+     "w": 72,
+     "h": 72
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 776,
+     "y": 320,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "Ataque",
+     "x": 768,
+     "y": 352,
+     "w": 48,
+     "h": 8
+    },
+    {
+     "id": "btn-emerg",
+     "cls": "ability-btn.sec",
+     "tag": "div",
+     "text": "",
+     "x": 640,
+     "y": 332,
+     "w": 46,
+     "h": 46
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 655,
+     "y": 343,
+     "w": 16,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "lbl",
+     "tag": "div",
+     "text": "Cura",
+     "x": 647,
+     "y": 359,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "pause-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "❚❚",
+     "x": 740,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    },
+    {
+     "id": "mute-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "SON",
+     "x": 790,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    }
+   ],
+   "goal": {
+    "visible": true,
+    "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+   },
+   "ultMeter": {
+    "visible": true,
+    "text": "★\n      Definitiva"
+   },
+   "mute": {
+    "visible": true,
+    "text": "SON"
+   },
+   "pause": {
+    "visible": true,
+    "text": "❚❚"
+   },
+   "ultBtn": {
+    "cls": "ability-btn ult ready-pop ready",
+    "ring": "conic-gradient(var(--ult) 360deg, #2a1c10 0deg)"
+   },
+   "body": "lanes-on",
+   "mode": "coliseo",
+   "ultReady": "ability-btn ult ready-pop ready",
+   "errors": []
+  },
+  "932x430 cristales": {
+   "n": 59,
+   "overlaps": [
+    "canvas\"\" x ln-legend-btn\"?\" 41x41"
+   ],
+   "items": [
+    {
+     "id": "",
+     "cls": "bar-label",
+     "tag": "span",
+     "text": "♥",
+     "x": 19,
+     "y": 15,
+     "w": 14,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-brasa",
+     "tag": "i",
+     "text": "✦",
+     "x": 19,
+     "y": 34,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "plevel",
+     "cls": "",
+     "tag": "div",
+     "text": "Thalen · Nv. 3",
+     "x": 19,
+     "y": 53,
+     "w": 146,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-torbellino",
+     "tag": "i",
+     "text": "🌪",
+     "x": 21,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-fuego",
+     "tag": "i",
+     "text": "🔥",
+     "x": 58,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-daga",
+     "tag": "i",
+     "text": "🗡",
+     "x": 95,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-brasa",
+     "tag": "i",
+     "text": "✦",
+     "x": 132,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "hud-arena",
+     "cls": "",
+     "tag": "b",
+     "text": "Guerra de Cristales",
+     "x": 20,
+     "y": 81,
+     "w": 112,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "span",
+     "text": "Oleada · Vencidos",
+     "x": 20,
+     "y": 96,
+     "w": 121,
+     "h": 15
+    },
+    {
+     "id": "hud-level",
+     "cls": "",
+     "tag": "b",
+     "text": "0",
+     "x": 60,
+     "y": 96,
+     "w": 6,
+     "h": 14
+    },
+    {
+     "id": "hud-kills",
+     "cls": "",
+     "tag": "b",
+     "text": "0",
+     "x": 135,
+     "y": 96,
+     "w": 6,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-estrella",
+     "tag": "i",
+     "text": "★",
+     "x": 881,
+     "y": 184,
+     "w": 13,
+     "h": 13
+    },
+    {
+     "id": "ult-label",
+     "cls": "",
+     "tag": "div",
+     "text": "Definitiva",
+     "x": 861,
+     "y": 206,
+     "w": 54,
+     "h": 12
+    },
+    {
+     "id": "center-banner",
+     "cls": "show",
+     "tag": "div",
+     "text": "¡DERRIBÁ LAS TORRES Y EL CRISTAL RIVAL!",
+     "x": 248,
+     "y": 134,
+     "w": 435,
+     "h": 25
+    },
+    {
+     "id": "",
+     "cls": "ln-name",
+     "tag": "b",
+     "text": "ZAFIRO",
+     "x": 227,
+     "y": 11,
+     "w": 183,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-pips",
+     "tag": "span",
+     "text": "9/9 torres",
+     "x": 227,
+     "y": 29,
+     "w": 183,
+     "h": 18
+    },
+    {
+     "id": "",
+     "cls": "on",
+     "tag": "em",
+     "text": "▲",
+     "x": 227,
+     "y": 29,
+     "w": 10,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-hp",
+     "tag": "span",
+     "text": "2600",
+     "x": 227,
+     "y": 49,
+     "w": 183,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-time",
+     "tag": "strong",
+     "text": "18:00",
+     "x": 420,
+     "y": 19,
+     "w": 92,
+     "h": 20
+    },
+    {
+     "id": "",
+     "cls": "ln-wave",
+     "tag": "span",
+     "text": "Oleada 0",
+     "x": 420,
+     "y": 39,
+     "w": 92,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-epics",
+     "tag": "span",
+     "text": "4:00 4:00",
+     "x": 420,
+     "y": 53,
+     "w": 92,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-fuego",
+     "tag": "i",
+     "text": "🐉",
+     "x": 421,
+     "y": 53,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-corona",
+     "tag": "i",
+     "text": "👑",
+     "x": 469,
+     "y": 53,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-name",
+     "tag": "b",
+     "text": "ÁMBAR",
+     "x": 614,
+     "y": 11,
+     "w": 91,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-pips",
+     "tag": "span",
+     "text": "9/9 torres",
+     "x": 632,
+     "y": 29,
+     "w": 73,
+     "h": 18
+    },
+    {
+     "id": "",
+     "cls": "on",
+     "tag": "em",
+     "text": "▲",
+     "x": 632,
+     "y": 29,
+     "w": 10,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-hp",
+     "tag": "span",
+     "text": "2600",
+     "x": 683,
+     "y": 49,
+     "w": 22,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-note",
+     "tag": "div",
+     "text": "Tu horda sale sola por los tres carriles",
+     "x": 256,
+     "y": 70,
+     "w": 420,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "ln-chip",
+     "tag": "button",
+     "text": "",
+     "x": 388,
+     "y": 376,
+     "w": 155,
+     "h": 48
+    },
+    {
+     "id": "",
+     "cls": "ln-shards",
+     "tag": "span",
+     "text": "◆ 500 oro",
+     "x": 439,
+     "y": 384,
+     "w": 53,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "ln-phase",
+     "tag": "span",
+     "text": "Nv 3 · XP 0 % · TIENDA",
+     "x": 404,
+     "y": 401,
+     "w": 123,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-recall",
+     "tag": "button",
+     "text": "",
+     "x": 540,
+     "y": 376,
+     "w": 58,
+     "h": 48
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "B",
+     "x": 566,
+     "y": 382,
+     "w": 6,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "span",
+     "text": "VOLVER",
+     "x": 552,
+     "y": 397,
+     "w": 34,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "canvas",
+     "text": "",
+     "x": 132,
+     "y": 340,
+     "w": 210,
+     "h": 61
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "TU HORDA",
+     "x": 136,
+     "y": 404,
+     "w": 45,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "i",
+     "text": "sin cartas todavía",
+     "x": 186,
+     "y": 404,
+     "w": 101,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-legend-btn",
+     "tag": "button",
+     "text": "?",
+     "x": 129,
+     "y": 337,
+     "w": 44,
+     "h": 44
+    },
+    {
+     "id": "joy-base",
+     "cls": "",
+     "tag": "div",
+     "text": "",
+     "x": 24,
+     "y": 328,
+     "w": 92,
+     "h": 92
+    },
+    {
+     "id": "btn-ult",
+     "cls": "ability-btn.ult",
+     "tag": "div",
+     "text": "",
+     "x": 856,
+     "y": 238,
+     "w": 60,
+     "h": 60
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 870,
+     "y": 248,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "ULT",
+     "x": 874,
+     "y": 280,
+     "w": 24,
+     "h": 8
+    },
+    {
+     "id": "btn-s3",
+     "cls": "ability-btn.s3",
+     "tag": "div",
+     "text": "",
+     "x": 782,
+     "y": 252,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 793,
+     "y": 259,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "RAYO",
+     "x": 793,
+     "y": 291,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-s2",
+     "cls": "ability-btn.s2",
+     "tag": "div",
+     "text": "",
+     "x": 740,
+     "y": 306,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 751,
+     "y": 313,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "HIELO",
+     "x": 747,
+     "y": 345,
+     "w": 40,
+     "h": 8
+    },
+    {
+     "id": "btn-s1",
+     "cls": "ability-btn.s1",
+     "tag": "div",
+     "text": "",
+     "x": 782,
+     "y": 360,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 793,
+     "y": 367,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "MURO",
+     "x": 793,
+     "y": 399,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-basic",
+     "cls": "ability-btn.basic",
+     "tag": "div",
+     "text": "",
+     "x": 844,
+     "y": 344,
+     "w": 72,
+     "h": 72
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 864,
+     "y": 360,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "Ataque",
+     "x": 856,
+     "y": 392,
+     "w": 48,
+     "h": 8
+    },
+    {
+     "id": "btn-emerg",
+     "cls": "ability-btn.sec",
+     "tag": "div",
+     "text": "",
+     "x": 728,
+     "y": 372,
+     "w": 46,
+     "h": 46
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 743,
+     "y": 383,
+     "w": 16,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "lbl",
+     "tag": "div",
+     "text": "Cura",
+     "x": 735,
+     "y": 399,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "pause-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "❚❚",
+     "x": 828,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    },
+    {
+     "id": "mute-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "SON",
+     "x": 878,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    }
+   ],
+   "goal": {
+    "visible": false,
+    "text": "OBJETIVO: derribá torres y cristal rival · cuidá el tuyo"
+   },
+   "ultMeter": {
+    "visible": true,
+    "text": "★\n      Definitiva"
+   },
+   "mute": {
+    "visible": true,
+    "text": "SON"
+   },
+   "pause": {
+    "visible": true,
+    "text": "❚❚"
+   },
+   "ultBtn": {
+    "cls": "ability-btn ult",
+    "ring": "conic-gradient(var(--ult) 0deg, #2a1c10 0deg)"
+   },
+   "body": "lanes-on",
+   "mode": "cristales",
+   "ultReady": "ability-btn ult ready-pop ready",
+   "errors": []
+  },
+  "932x430 coliseo": {
+   "n": 48,
+   "overlaps": [],
+   "items": [
+    {
+     "id": "",
+     "cls": "bar-label",
+     "tag": "span",
+     "text": "♥",
+     "x": 19,
+     "y": 15,
+     "w": 14,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-brasa",
+     "tag": "i",
+     "text": "✦",
+     "x": 19,
+     "y": 34,
+     "w": 15,
+     "h": 15
+    },
+    {
+     "id": "plevel",
+     "cls": "",
+     "tag": "div",
+     "text": "Thalen · Nv. 10",
+     "x": 19,
+     "y": 53,
+     "w": 146,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-engranaje",
+     "tag": "i",
+     "text": "⚙",
+     "x": 21,
+     "y": 134,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "id": "goal-chip",
+     "cls": "peekable",
+     "tag": "div",
+     "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 ",
+     "x": 10,
+     "y": 77,
+     "w": 164,
+     "h": 39
+    },
+    {
+     "id": "",
+     "cls": "pxi.pxi-estrella",
+     "tag": "i",
+     "text": "★",
+     "x": 881,
+     "y": 184,
+     "w": 13,
+     "h": 13
+    },
+    {
+     "id": "ult-label",
+     "cls": "",
+     "tag": "div",
+     "text": "Definitiva",
+     "x": 861,
+     "y": 206,
+     "w": 54,
+     "h": 12
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "TU EQUIPO",
+     "x": 282,
+     "y": 12,
+     "w": 68,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 282,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 293,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 303,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "ÁMBAR",
+     "x": 369,
+     "y": 12,
+     "w": 52,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 369,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 379,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 390,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "ESMERALDA",
+     "x": 439,
+     "y": 12,
+     "w": 67,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 439,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 449,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 460,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "b",
+     "text": "CARMESÍ",
+     "x": 524,
+     "y": 12,
+     "w": 56,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 524,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 535,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "off",
+     "tag": "em",
+     "text": "●",
+     "x": 545,
+     "y": 29,
+     "w": 8,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "col-round",
+     "tag": "strong",
+     "text": "RONDA 1",
+     "x": 602,
+     "y": 14,
+     "w": 56,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "col-clock",
+     "tag": "span",
+     "text": "Preparate…",
+     "x": 602,
+     "y": 29,
+     "w": 56,
+     "h": 14
+    },
+    {
+     "id": "",
+     "cls": "ln-note.col-note",
+     "tag": "div",
+     "text": "Tu duelo: TU EQUIPO vs ÁMBAR",
+     "x": 382,
+     "y": 66,
+     "w": 168,
+     "h": 15
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "canvas",
+     "text": "",
+     "x": 132,
+     "y": 359,
+     "w": 210,
+     "h": 61
+    },
+    {
+     "id": "joy-base",
+     "cls": "",
+     "tag": "div",
+     "text": "",
+     "x": 24,
+     "y": 328,
+     "w": 92,
+     "h": 92
+    },
+    {
+     "id": "btn-ult",
+     "cls": "ability-btn.ult",
+     "tag": "div",
+     "text": "",
+     "x": 856,
+     "y": 238,
+     "w": 60,
+     "h": 60
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 870,
+     "y": 248,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "ULT",
+     "x": 874,
+     "y": 280,
+     "w": 24,
+     "h": 8
+    },
+    {
+     "id": "btn-s3",
+     "cls": "ability-btn.s3",
+     "tag": "div",
+     "text": "",
+     "x": 782,
+     "y": 252,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 793,
+     "y": 259,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "RAYO",
+     "x": 793,
+     "y": 291,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-s2",
+     "cls": "ability-btn.s2",
+     "tag": "div",
+     "text": "",
+     "x": 740,
+     "y": 306,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 751,
+     "y": 313,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "HIELO",
+     "x": 747,
+     "y": 345,
+     "w": 40,
+     "h": 8
+    },
+    {
+     "id": "btn-s1",
+     "cls": "ability-btn.s1",
+     "tag": "div",
+     "text": "",
+     "x": 782,
+     "y": 360,
+     "w": 54,
+     "h": 54
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 793,
+     "y": 367,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "MURO",
+     "x": 793,
+     "y": 399,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "btn-basic",
+     "cls": "ability-btn.basic",
+     "tag": "div",
+     "text": "",
+     "x": 844,
+     "y": 344,
+     "w": 72,
+     "h": 72
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 864,
+     "y": 360,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "id": "",
+     "cls": "",
+     "tag": "div",
+     "text": "Ataque",
+     "x": 856,
+     "y": 392,
+     "w": 48,
+     "h": 8
+    },
+    {
+     "id": "btn-emerg",
+     "cls": "ability-btn.sec",
+     "tag": "div",
+     "text": "",
+     "x": 728,
+     "y": 372,
+     "w": 46,
+     "h": 46
+    },
+    {
+     "id": "",
+     "cls": "ico-img.ico-pix",
+     "tag": "img",
+     "text": "",
+     "x": 743,
+     "y": 383,
+     "w": 16,
+     "h": 16
+    },
+    {
+     "id": "",
+     "cls": "lbl",
+     "tag": "div",
+     "text": "Cura",
+     "x": 735,
+     "y": 399,
+     "w": 32,
+     "h": 8
+    },
+    {
+     "id": "pause-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "❚❚",
+     "x": 828,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    },
+    {
+     "id": "mute-btn",
+     "cls": "",
+     "tag": "button",
+     "text": "SON",
+     "x": 878,
+     "y": 8,
+     "w": 44,
+     "h": 44
+    }
+   ],
+   "goal": {
+    "visible": true,
+    "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+   },
+   "ultMeter": {
+    "visible": true,
+    "text": "★\n      Definitiva"
+   },
+   "mute": {
+    "visible": true,
+    "text": "SON"
+   },
+   "pause": {
+    "visible": true,
+    "text": "❚❚"
+   },
+   "ultBtn": {
+    "cls": "ability-btn ult ready-pop ready",
+    "ring": "conic-gradient(var(--ult) 360deg, #2a1c10 0deg)"
+   },
+   "body": "lanes-on",
+   "mode": "coliseo",
+   "ultReady": "ability-btn ult ready-pop ready",
+   "errors": []
+  }
+ }
+}
