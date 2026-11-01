@@ -1,6 +1,6 @@
 # Resumen ejecutivo — Beta Visual Impact (Ruinas Élficas · Sylva)
 
-**Estado: NO APROBADO por el umbral del encargo (90/100).** Mejor puntaje independiente: **87/100** (ronda 3: 86), cero
+**Estado: NO APROBADO por el umbral del encargo (90/100).** Mejor puntaje independiente: **89,6/100** (ronda 6; main 79), cero
 regresiones críticas. No se fusionó a `main`. No hay PR abierto (la herramienta de GitHub se desconectó en esta sesión).
 
 ## Qué se entrega
@@ -25,6 +25,10 @@ peligros legibles, botín con presentación propia por rareza. Detalle y límite
 | 2 | 87 | 74 | 0 | FAIL (<90) |
 | 3 | 86 | 81 | 0 | FAIL (<90) |
 
+| 4 | 89 | 78 | 0 | FAIL |
+| 5 | 89 | 78 | 0 | FAIL |
+| 6 | 89,6 | 79 | 0 | FAIL (0,4 bajo el umbral) |
+
 La rama supera a main por 7–13 puntos, pero no llega a 90. Reparaciones aplicadas tras las rondas: nombres de botín
 acotados a 4 (apilaban), caída del jugador más clara, glow de ulti y chispas reducidos, botón clásico con más contraste,
 fundido de arranque limpio. Pendiente para llegar a 90 según los hallazgos: menor costo de partículas/efectos en escena
@@ -38,3 +42,9 @@ Sylva+Ruinas para la partida rápida; telón del título hecho con el atlas de a
 ## Limitaciones honestas
 Evidencia en Chromium headless con render por software, no en teléfonos reales; el evaluador es un modelo viendo capturas,
 no jugadores; 1 campeón y 1 arena; multijugador no probado en vivo (la capa es local y no envía nada a la red).
+
+
+## Ronda 6 y cierre
+Tras la autorización para repararla, se aplicaron: anillo ancla del héroe, definitiva menos saturada, nombres de botín ≤3, rayado de peligro liviano, menos chispas/almas. Rendimiento re-medido en 5 corridas A/B: `render()` medio 5,8 ms (rama) vs 6,8 ms (main); sin regresión. Lo que sigue frenando los últimos 0,4: fracción de cuadros lentos en headless (22,7 % vs 20,8 %, ruido de software-render) y amontonamiento en el centro durante la definitiva. No se declara aprobado.
+
+Art Factory 2.0 (S0D): PR independiente #253 (`claude/art-factory-2`).
