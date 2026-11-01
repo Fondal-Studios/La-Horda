@@ -4,6 +4,8 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const {readContract,ROOT}=require('./contract'),s0f=require('./s0f');
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex'),fileHash=f=>hash(fs.readFileSync(f));
 const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+// External connector model IDs only: this does not enable these models in the direct Runway API provider.
+const EXTERNAL_MODELS = ['gen4_image','gen4_image_turbo','gen-4','gen-4-image-turbo','nano-banana-2'];
 // Must match RunwayProvider's submitted text, not merely the internal untagged planning prompt.
 const submittedPrompt=(prompt,count)=>{ const text=prompt+' '+Array.from({length:count},(_,i)=>'@ref'+(i+1)).join(' ')+' (referencias de identidad y de poses).'; if(typeof prompt!=='string'||!prompt.trim()||text.length>1000||count<1||count>3)throw Error('Runway submitted prompt exceeds 1000 UTF-16 units or reference limit; never truncate'); return text; };
 function absolute(p,label){if(typeof p!=='string'||!path.isAbsolute(p))throw Error(label+' must be absolute');return path.resolve(p);}
@@ -42,7 +44,7 @@ async function importExternal(id,{runDir,manifestPath,ledgerPath,provenanceRevie
  for(const entry of manifest.outputs){
   const planned=selected.jobs.find(j=>j.id===entry.jobId);
   if(!planned||outputs.has(entry.jobId)||!same(planned.frames,entry.frames)||entry.promptSha256!==hash(planned.prompt)||entry.submittedPromptSha256!==hash(submittedPrompt(planned.prompt,2))||!Array.isArray(entry.referencesSha256)||entry.referencesSha256.length!==2||entry.referencesSha256.some(h=>! /^[a-f0-9]{64}$/.test(h)))throw Error('Manifest job/frame/prompt mismatch');
-  if(entry.provider!=='runway'||!['gen4_image','gen4_image_turbo','gen-4','gen-4-image-turbo'].includes(entry.model)||typeof entry.taskId!=='string'||!entry.taskId.trim()||taskIds.has(entry.taskId)||typeof entry.toolEvidence!=='string'||!entry.toolEvidence.trim())throw Error('Missing or duplicate provider task evidence');
+  if(entry.provider!=='runway'||!EXTERNAL_MODELS.includes(entry.model)||typeof entry.taskId!=='string'||!entry.taskId.trim()||taskIds.has(entry.taskId)||typeof entry.toolEvidence!=='string'||!entry.toolEvidence.trim())throw Error('Missing or duplicate provider task evidence');
   for(const key of ['observedCredits','balanceBefore','balanceAfter'])if(!observation(entry[key]))throw Error('Credits/balance must be observed nonnegative values or explicit null (unknown)');
   const file=localOutput(base,entry.file);if(fileHash(file)!==entry.sha256)throw Error('External output integrity mismatch');
   outputs.set(entry.jobId,{...entry,file});taskIds.add(entry.taskId);

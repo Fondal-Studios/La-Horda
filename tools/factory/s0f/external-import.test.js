@@ -42,3 +42,14 @@ test('submitted prompt pins actual tagged provider text, mismatched submitted te
  f.manifest.outputs[0].submittedPromptSha256=job.promptSha256;f.write();
  await assert.rejects(importExternal('cazadora',f.opts),/prompt mismatch/);
 });
+
+test('supported external connector models retain exact provenance without implying direct API support',async()=>{
+ for(const model of ['nano-banana-2']) {
+  const f=fixture();f.manifest.outputs[0].model=model;f.write();
+  const result=await importExternal('cazadora',f.opts);
+  assert.equal(result.state,'GENERATED');assert.equal(result.externalCredits.outputs[0].model,model);
+  assert.equal(result.providerRequestsMade,0);assert.equal(result.artApproval,'NOT_GRANTED');
+ }
+ const f=fixture();f.manifest.outputs[0].model='nano-banana-pro';f.write();
+ await assert.rejects(importExternal('cazadora',f.opts),/provider task evidence/);
+});
