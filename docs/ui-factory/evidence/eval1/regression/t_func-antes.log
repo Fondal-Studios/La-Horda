@@ -1,0 +1,44 @@
+PASS boot.load  {"loadMs":21412}
+PASS boot.title_visible
+PASS boot.images_all_loaded  {"total":2899,"done":2899,"broken":[]}
+PASS nav.starter_select
+FAIL nav.mainmenu
+PASS nav.no_multiplayer_tab
+FAIL page.click: Timeout 8000ms exceeded.
+Call log:
+[2m  - waiting for locator('#mainmenu-tienda-btn')[22m
+[2m    - locator resolved to <button class="hub-tile" id="mainmenu-tienda-btn">…</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    11 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not visible[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at /home/user/La-Horda/tools/regression/t_func.js:86:16 {
+  log: [
+    "  - waiting for locator('#mainmenu-tienda-btn')",
+    '    - locator resolved to <button class="hub-tile" id="mainmenu-tienda-btn">…</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not visible',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not visible',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    11 × waiting for element to be visible, enabled and stable',
+    '       - element is not visible',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}

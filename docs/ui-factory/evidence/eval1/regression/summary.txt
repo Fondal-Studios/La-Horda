@@ -1,0 +1,8 @@
+drag_aim base rc=0
+drag_aim cand rc=0
+nav x3 done
+t_func antes rc=1
+t_snapshot antes rc=0
+t_func despues rc=1
+t_snapshot despues rc=0
+compare_snap rc=0

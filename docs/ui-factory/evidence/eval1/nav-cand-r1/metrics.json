@@ -1,0 +1,111 @@
+{
+ "phase": "nav",
+ "baseDir": "/home/user/La-Horda",
+ "date": "2026-11-01T09:13:56.327Z",
+ "env": {
+  "chromium": "153.0.8010.12",
+  "headless": true,
+  "gpu": "none (software)",
+  "cpus": 4,
+  "cpuModel": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+  "memGB": 17,
+  "node": "v22.23.4",
+  "platform": "linux 6.18.44-fc-v185"
+ },
+ "viewports": [
+  "844x390",
+  "667x375",
+  "1280x800"
+ ],
+ "champs": [
+  "mago",
+  "ilkan",
+  "nigromante"
+ ],
+ "trials": 3,
+ "sections": [
+  "nav"
+ ],
+ "gitHead": "027b4569",
+ "nav": {
+  "viewport": "844x390",
+  "flows": [
+   {
+    "name": "hub -> partida (JUGAR)",
+    "reachedPlaying": true,
+    "taps": 3,
+    "buttons": [
+     "#hub-play-btn",
+     "#prep-start-btn",
+     "#run-intro .ri-go"
+    ],
+    "tapTimesMs": [
+     197,
+     870,
+     1619
+    ],
+    "totalMs_firstTap_to_playing": 1917,
+    "finalState": "playing"
+   },
+   {
+    "name": "pantalla de derrota -> partida (Reintentar)",
+    "reachedPlaying": true,
+    "taps": 1,
+    "buttons": [
+     "#retry-btn"
+    ],
+    "tapTimesMs": [
+     294
+    ],
+    "totalMs_firstTap_to_playing": 604,
+    "finalState": "playing"
+   },
+   {
+    "name": "pantalla de victoria SINTÉTICA -> partida (#victory-next-btn)",
+    "reachedPlaying": false,
+    "error": "no llegó a partida (tope de 10 toques / 12000 ms)",
+    "taps": 9,
+    "buttons": [
+     "#victory-next-btn",
+     "#victory-next-btn",
+     "#victory-next-btn",
+     "#victory-next-btn",
+     "#victory-next-btn",
+     "#again-btn",
+     "#again-btn",
+     "#again-btn",
+     "#again-btn"
+    ],
+    "tapTimesMs": [
+     201,
+     1734,
+     2927,
+     4123,
+     5535,
+     6630,
+     7747,
+     9326,
+     11209
+    ],
+    "syntheticWarning": "victoria forzada con showVictoryScreen(): la ceremonia de botín y el guardado real no se reproducen; tómese solo como cota"
+   }
+  ],
+  "note": "Toques reales por CDP (Input.dispatchTouchEvent) sobre el centro del botón, un toque nuevo solo cuando la pantalla cambió y pasaron >=520 ms (la ficha de la arena ignora toques en sus primeros 450 ms: RUN_INTRO.t0 en js/ui/run-intro.js). SIN tiempo de reacción humano: es el piso mecánico impuesto por animaciones/guardas del juego. Excluye carga.",
+  "titleToHub": {
+   "taps": 1,
+   "ms": 318,
+   "buttons": [
+    "#title-continue-btn"
+   ]
+  },
+  "victoryButtonsVisible": [
+   "victory-next-btn"
+  ],
+  "victoryStateAfterShow": "victory",
+  "victorySteps": 5,
+  "errors": [
+   "console.error: Access to fetch at 'https://fondalstudios.com/la-horda/red/api/rooms?build=B1-7-quality-five-originals' from origin 'http://127.0.0.1:46325' has been blocked by CORS policy: No 'Access-Control-Allow-O",
+   "console.error: Failed to load resource: net::ERR_FAILED"
+  ]
+ }
+}
