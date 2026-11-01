@@ -4,3 +4,4 @@ Regla: antes de gastar, anotar saldo observado; después, el gasto real. Solo cr
 |---|---|---|---|---|
 | 2026-11-01 | fábrica de sprites | 976 | 14 | Ynara (3 rondas) + 6 idles de prueba (Myla, Profeta, Aurelia, Saelis, Maura, Renko) |
 | 2026-11-01 | fábrica de sprites | 962 | 10 | Ronda 2 con devolución del arquitecto (5 campeones) |
+| 2026-11-01 | fábrica de sprites | 928 | 52 | Set completo de Myla (12 cuadros, 4 rondas con devolución) — INTEGRADO en rama; saldo tras: 876 |
