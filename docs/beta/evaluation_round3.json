@@ -1,0 +1,26 @@
+{
+ "round": 3,
+ "scores": {
+  "beta": {
+   "coherencia": 90,
+   "animacion": 86,
+   "claridad": 84,
+   "impacto": 86,
+   "rendimiento": 70,
+   "inicio": 94,
+   "global": 86
+  },
+  "main": {
+   "coherencia": 80,
+   "animacion": 80,
+   "claridad": 84,
+   "impacto": 84,
+   "rendimiento": 84,
+   "inicio": 70,
+   "global": 81
+  }
+ },
+ "verdict": "FAIL",
+ "critical": [],
+ "top_finding": "rendimiento de cuadros reales en la rama (p95 66.7 vs 33.3 ms en la captura con video, headless por software, ruidoso); render() +15%"
+}
