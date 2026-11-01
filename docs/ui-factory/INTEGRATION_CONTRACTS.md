@@ -18,7 +18,7 @@ Conclusión: la fábrica es **aditiva**. Es un paquete nuevo («UI») que no exi
 | Área | Dueño |
 |---|---|
 | `js/ui-factory/**`, `css/ui-factory/**`, `tools/ui-factory/**`, `docs/ui-factory/**` | **Paquete UI (esta fábrica)** |
-| `index.html` | Integrador. La fábrica pide **exactamente 2 líneas** (§4). |
+| `index.html` | Integrador. La fábrica pide **exactamente 3 líneas** (§4). |
 | `js/ui/**`, `css/*.css` existentes, `js/core/**`, `js/systems/**`, `js/champions/**`, `js/arenas/**` | Otros (solo lectura para la fábrica) |
 | `contracts/v1/**` (S0A) | Arquitectura; la fábrica no lo toca ni depende de él |
 
@@ -45,9 +45,10 @@ Reglas: sin reglas de juego (daño, cooldown, costos), sin segundo motor de esta
 
 ## 4. Cambios en archivos compartidos (para aprobación)
 
-`index.html` (+2 líneas, sin tocar ninguna existente):
+`index.html` (+3 líneas, sin tocar ninguna existente):
 ```html
 <link rel="stylesheet" href="css/ui-factory/hud-feedback.css">   <!-- tras css/item-economy.css: debe ir después de controls.css -->
+<link rel="stylesheet" href="css/ui-factory/menus-touch.css">    <!-- contrato UF-MENU v1: mínimos de 44 px; usa .screen.screen para ganar a ui-kit/mobile/duo-ux -->
 <script src="js/ui-factory/hud-feedback.js"></script>            <!-- antes de js/main.js -->
 ```
 Riesgo de merge: otras ramas que añaden líneas en el mismo bloque producirán un conflicto trivial de contexto, resoluble conservando ambas.
@@ -59,7 +60,10 @@ Riesgo de merge: otras ramas que añaden líneas en el mismo bloque producirán 
 
 ## 6. Solicitud al arquitecto general
 1. Registrar el paquete **UI** en `docs/arquitectura-compartida/ownership.json` (rutas de §2) — PR de contrato aparte, no editado aquí para no tocar archivos de S0A.
-2. Aprobar las 2 líneas de `index.html`.
+2. Aprobar las 3 líneas de `index.html`.
 3. Decidir si la prueba `tools/ui-factory/test-hud-feedback.js` se registra en `tools/quality/run-all.js` (dueño: paquete C).
 
 Gate 2 (aprobación de arquitectura) **no está concedido**; ver `FINAL_APPROVAL.md`.
+
+## 7. Contrato UF-MENU v1
+Solo CSS (`css/ui-factory/menus-touch.css`): `min-height/min-width: 44px` en `button, select, summary, input de texto, [role=button|tab], a[href]` dentro de `.screen`, casillas de verificación pixel-art de 44 px y `label:has(> checkbox)`. Riesgo conocido: selectores amplios sobre `.screen`; si otra rama añade controles compactos deliberados (p. ej. HUD de Cristales no es `.screen`), pueden verse más altos. Retirar el `<link>` revierte todo.
