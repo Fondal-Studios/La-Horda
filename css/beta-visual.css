@@ -1,0 +1,96 @@
+/* ============================================================
+   css/beta-visual.css — BETA VISUAL IMPACT (rama feature/beta-visual-impact)
+   Todo cuelga de body.beta-visual / #title-screen.bt-title: con ?beta=0 nada de esto se aplica.
+   Usa los tokens del kit (css/ui-kit.css: --ui-*, --ember*) y las clases .ui-tag / .btn existentes.
+   ============================================================ */
+
+/* ---------- 1) Pantalla de entrada ---------- */
+#title-screen.bt-title{ background:#050806; }
+#title-screen > #bt-bg{ position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none; }
+#bt-bg .bt-bg-shade{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(3,8,6,.7) 0%, rgba(3,8,6,0) 28%); z-index:2; }
+.bt-title .title-fire-glow{ opacity:.35; }
+.bt-title #title-canvas{ opacity:.0; } /* el ejército de fondo deja el centro a Sylva (sigue disponible con ?beta=0) */
+#title-screen > #bt-hero-cv{ position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none; }
+.bt-title .title-brand{ text-shadow:3px 3px 0 #000, 0 0 28px rgba(255,200,90,.45); z-index:3; }
+.bt-title .brand-sub{ color:#d8e6cf; z-index:3; }
+
+#title-screen > #bt-cta{
+  position:absolute; z-index:4; right:max(5%, env(safe-area-inset-right)); top:50%; transform:translateY(-38%);
+  width:min(300px, 40vw); display:flex; flex-direction:column; align-items:stretch; gap:8px; text-align:center;
+  animation:btCtaIn .7s var(--ui-ease, ease) .15s both;
+}
+@keyframes btCtaIn{ from{ opacity:0; transform:translate(24px,-38%); } to{ opacity:1; transform:translate(0,-38%); } }
+.bt-cta-kick{ font-family:var(--ui-font, var(--font-retro)); font-size:1.05rem; letter-spacing:.14em; color:#bfe9c8; text-shadow:2px 2px 0 #000; }
+.bt-play{
+  display:flex; flex-direction:column; align-items:center; gap:2px; padding:12px 14px 10px; min-height:64px; width:100%;
+  background:linear-gradient(180deg, #e0a23a, #a85d12 58%, #7c3f0a); color:#2a1204; border:3px solid #000;
+  box-shadow:var(--ui-bevel), 4px 4px 0 #000, 0 0 26px rgba(255,170,60,.55); text-shadow:0 1px 0 rgba(255,235,190,.7);
+  animation:btPulse 1.9s ease-in-out infinite; position:relative; overflow:hidden;
+}
+.bt-play::after{ content:""; position:absolute; top:0; bottom:0; width:40%; left:-60%; transform:skewX(-20deg);
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation:btShine 3.2s ease-in-out infinite; }
+@keyframes btShine{ 0%,55%{ left:-60%; } 85%,100%{ left:130%; } }
+@keyframes btPulse{ 0%,100%{ box-shadow:var(--ui-bevel), 4px 4px 0 #000, 0 0 20px rgba(255,170,60,.45); } 50%{ box-shadow:var(--ui-bevel), 4px 4px 0 #000, 0 0 38px rgba(255,200,90,.85); } }
+.bt-play:disabled{ animation:none; filter:grayscale(.7) brightness(.7); cursor:default; }
+.bt-play:disabled::after{ display:none; }
+.bt-play:not(:disabled):active{ transform:translate(2px,2px); box-shadow:var(--ui-bevel), 2px 2px 0 #000; }
+.bt-play-main{ font-family:var(--font-pixel); font-size:1rem; letter-spacing:.06em; }
+.bt-play-sub{ font-family:var(--ui-font, var(--font-retro)); font-size:1.05rem; color:#4a2406; }
+.bt-cta-meta{ display:flex; gap:6px; justify-content:center; flex-wrap:wrap; }
+/* el botón clásico queda como camino al menú completo, secundario */
+.bt-title #title-continue-btn{
+  position:absolute !important; right:max(5%, env(safe-area-inset-right)); width:min(300px, 40vw); top:calc(50% + 112px); margin:0 !important;
+  font-size:.9rem; min-height:36px; padding:4px 12px; z-index:4;
+  background:var(--ui-btn-sec, #1d1411); border:2px solid var(--ui-line-hi, #6a3e1e); opacity:.92;
+}
+.bt-title #title-continue-btn:disabled{ opacity:.6; }
+.bt-title.bt-launch > *{ transition:opacity .5s, filter .5s; }
+.bt-title.bt-launch #bt-cta, .bt-title.bt-launch #title-continue-btn{ opacity:0; }
+.bt-title.bt-launch #bt-hero-cv{ transform:scale(1.18); transition:transform .55s cubic-bezier(.5,0,.2,1), opacity .5s; opacity:.0; }
+.bt-title.bt-launch #bt-hero-cv{ opacity:0; transition:opacity .4s; }
+@media (max-height:420px){
+  #title-screen > #bt-cta{ width:min(260px, 42vw); gap:5px; }
+  .bt-play{ min-height:54px; padding:8px 10px 6px; } .bt-play-main{ font-size:.85rem; } .bt-cta-kick{ font-size:.9rem; }
+}
+@media (orientation:portrait){ #title-screen > #bt-cta{ right:50%; transform:translate(50%,0); top:auto; bottom:18%; width:min(320px, 80vw); animation:none; } }
+@media (prefers-reduced-motion:reduce){ #bt-bg, .bt-play, .bt-play::after{ animation:none !important; } }
+body.reduce-motion .bt-play, body.reduce-motion .bt-play::after{ animation:none !important; }
+
+/* ---------- 2) Feedback táctil de habilidades ---------- */
+body.beta-visual #controls .ability-btn{ overflow:visible; transition:transform .08s var(--ui-ease, ease), filter .12s; touch-action:none; }
+body.beta-visual #controls .ability-btn.bt-press{ animation:btPress .26s var(--ui-ease, ease); }
+@keyframes btPress{ 0%{ transform:scale(1); filter:brightness(1); } 25%{ transform:scale(.88); filter:brightness(1.6); } 100%{ transform:scale(1); filter:brightness(1); } }
+body.beta-visual #controls .ability-btn.bt-deny{ animation:btDeny .3s linear; }
+@keyframes btDeny{ 0%,100%{ transform:translateX(0); } 20%{ transform:translateX(-4px); } 40%{ transform:translateX(4px); } 60%{ transform:translateX(-3px); } 80%{ transform:translateX(2px); } }
+body.beta-visual #controls .ability-btn.bt-cast::before{
+  content:""; position:absolute; inset:-5px; border-radius:50%; pointer-events:none; border:2px solid rgba(255,235,190,.9);
+  animation:btCastRing .36s ease-out forwards;
+}
+@keyframes btCastRing{ from{ transform:scale(.85); opacity:.95; } to{ transform:scale(1.5); opacity:0; } }
+.bt-ripple{ position:absolute; width:12px; height:12px; margin:-6px 0 0 -6px; border-radius:50%; pointer-events:none;
+  background:radial-gradient(circle, rgba(255,255,255,.9), rgba(255,210,120,.4) 55%, transparent 70%); animation:btRipple .5s ease-out forwards; z-index:3; }
+@keyframes btRipple{ from{ transform:scale(.6); opacity:1; } to{ transform:scale(7); opacity:0; } }
+.bt-readyring{ position:absolute; inset:-4px; border-radius:50%; pointer-events:none; border:3px solid var(--ult, #ffb300); box-shadow:0 0 14px var(--ult, #ffb300); animation:btReady .62s ease-out forwards; z-index:3; }
+@keyframes btReady{ from{ transform:scale(.7); opacity:1; } to{ transform:scale(1.7); opacity:0; } }
+body.reduce-motion .bt-ripple, body.reduce-motion .bt-readyring{ display:none; }
+body.reduce-motion.beta-visual #controls .ability-btn.bt-press, body.reduce-motion.beta-visual #controls .ability-btn.bt-deny{ animation:none; }
+
+/* ---------- 3) Cartel de rareza ---------- */
+#bt-banner{
+  position:fixed; left:50%; top:calc(21% + env(safe-area-inset-top, 0px)); transform:translateX(-50%); z-index:60; pointer-events:none; text-align:center;
+  padding:3px 22px 4px; min-width:200px; max-width:70vw; display:flex; align-items:baseline; justify-content:center; gap:10px;
+  background:linear-gradient(90deg, transparent, rgba(6,8,6,.82) 18%, rgba(6,8,6,.82) 82%, transparent);
+  border-top:2px solid rgba(var(--bt-rgb), .9); border-bottom:2px solid rgba(var(--bt-rgb), .9);
+  animation:btBanner .42s cubic-bezier(.2,.9,.2,1) both; box-shadow:0 0 24px rgba(var(--bt-rgb), .35);
+}
+#bt-banner.out{ animation:btBannerOut .4s ease-in forwards; }
+@keyframes btBanner{ from{ opacity:0; transform:translateX(-50%) scaleX(.4); } to{ opacity:1; transform:translateX(-50%) scaleX(1); } }
+@keyframes btBannerOut{ to{ opacity:0; transform:translateX(-50%) translateY(-10px); } }
+.bt-b-kick{ font-family:var(--font-pixel); font-size:.62rem; letter-spacing:.22em; color:rgb(var(--bt-rgb)); text-shadow:0 0 10px rgba(var(--bt-rgb), .8), 2px 2px 0 #000; }
+.bt-b-text{ font-family:var(--ui-font, var(--font-retro)); font-size:1.15rem; color:#fff; text-shadow:2px 2px 0 #000; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+/* ---------- Título: vínculos de pie de página fuera del camino del héroe ---------- */
+.bt-title #title-continue-btn + a{ position:absolute !important; left:max(10px, env(safe-area-inset-left)); top:max(8px, env(safe-area-inset-top)); margin:0 !important; font-size:12px !important; opacity:.85; z-index:4; }
+.bt-title .build-tag{ z-index:4; }
+#title-screen.bt-title > .legal-title{ position:absolute; left:0; right:0; bottom:calc(8px + env(safe-area-inset-bottom, 0px)); z-index:4; font-size:.75rem; }
+#title-screen.bt-title > .build-tag{ position:absolute; left:0; right:0; bottom:calc(26px + env(safe-area-inset-bottom, 0px)); z-index:3; opacity:.55; text-align:center; }
