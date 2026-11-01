@@ -24,8 +24,13 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));const check=(name,value)=>{asse
   const setup=await page.evaluate(()=>{
     selectedClass='tanque';currentArena='micelial';lobbyAllies=[];netMatch=null;startRun(10);setState('playing');
     micMotherRevealStart();const e=micMotherEntity();micS.mo.st='fight';micS.mo.ph=1;micS.mo.t=0;e.micDormant=0;e.dmgTakenMult=1;boss=e;bossActive=true;
-    player.x=0;player.y=380;player.maxHp=player.hp=1000000;
+    player.x=0;player.y=260;player.maxHp=player.hp=1000000;
     window.motherProbe=e;_micBlend=1;
+    // Expire entrance-only overlays; preserve combat telegraphs and actual HUD.
+    for(let i=0;i<800;i++){player.hp=player.maxHp;update(16);}
+    e.hp=e.maxHp;e.alive=true;player.x=0;player.y=260;
+    _bossIntroT=0;_bossIntroDelay=0;HUDTXT.q=[];HUDTXT.until=0;
+    for(const id of ["boss-intro","center-banner","arena-title-card"]){const el=document.getElementById(id);if(el){el.classList.remove("show");el.classList.add("hidden");}}
     // Hold the same camera for A/B. Normal runtime camera fitting is tested separately.
     updateCamLift=()=>{};
     return {ready:_micMotherAtlasReady(),src:MIC_MP.mp_atlas.src,w:MIC_MP.mp_atlas.width,h:MIC_MP.mp_atlas.height};
@@ -51,8 +56,9 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));const check=(name,value)=>{asse
      // not the old portrait or a test-only preview canvas.
      const calls=[],draw=ctx.drawImage;ctx.drawImage=function(...a){if(a[0]===MIC_MP.mp_atlas)calls.push(a.slice(1));return draw.apply(this,a)};
      try{render();}finally{ctx.drawImage=draw;}
-     return {calls,frame:_micMotherFrame(e,micS.mo,runElapsedMs),radius:e.radius,hp:e.hp,damage:e.dmg};
+     return {calls,frame:_micMotherFrame(e,micS.mo,runElapsedMs),radius:e.radius,hp:e.hp,damage:e.dmg,camera:{zoom:CAM_ZOOM,lift:CAM_LIFT,anchor:CAM_Y_ANCHOR,playerY:player.y,bounds:_micMotherRect(),top:worldToScreen(0,_micMotherRect().y).y}};
    },{M,E,time});
+   fs.writeFileSync(path.join(OUT,viewport.width+'-'+name+'-probe.json'),JSON.stringify(probe,null,2));
    check('real renderer uses authored frame '+name+' '+viewport.width,probe.calls.length>0&&probe.calls.every(a=>a.length===8&&a[0]===(probe.frame.frame%8)*170&&a[1]===Math.floor(probe.frame.frame/8)*139));
    await page.screenshot({path:path.join(OUT,viewport.width+'-'+name+'-candidate.png')});
    await page.evaluate(()=>{MIC_MP_OK.mp_atlas=false;render();});
@@ -67,7 +73,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));const check=(name,value)=>{asse
       const e=window.motherProbe;e.alive=true;e.hp=e.maxHp*(phase===1?1:phase===2?0.5:0.25);
       Object.assign(e,{micDormant:0,packSet:null,packTimer:0,bossWind:null,mcd:0,rootsCd:9e8,sporeCd:9e8,whipCd:0,summonCd:9e8,clawCd:9e8,cloudCd:9e8,halCd:9e8});
       micS.dead=0;micS.mo={st:'fight',ph:phase,t:0,bloom:phase>=2?1:0,heart:phase===3?1:0,beat:900,inf:0};
-      player.x=80;player.y=450;player.hp=player.maxHp;boss=e;bossActive=true;
+      player.x=80;player.y=260;player.hp=player.maxHp;boss=e;bossActive=true;
       CAM_LIFT=micCamLift();
     },phase);
     const observed=[];
