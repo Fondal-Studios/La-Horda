@@ -1,0 +1,6677 @@
+{
+  "scope": "Actual drawHeroBody/drawFallenHero, synthetic body-only states. Measured normalization in browser memory only. No global parity or gameplay approval.",
+  "results": [
+    {
+      "mobile": false,
+      "errors": [],
+      "reference": {
+        "body": 59,
+        "foot": -2,
+        "calls": [],
+        "sha256": "df798384919c8c5bc56a9e2f47a59daa2e724f1e473f7da46de05cbea8b674e9"
+      },
+      "initial": [
+        {
+          "view": "front",
+          "body": 60,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 0,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "sha256": "37610052dd23ba401b497686ac024778a9790703c15a9bddc9bfad90fde3ba39"
+        },
+        {
+          "view": "side",
+          "body": 60,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 8,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "sha256": "64e7553ee380558f8380d7b8c72daea91dd82e6aa41e1b777b4a0f6e4f5b26b8"
+        },
+        {
+          "view": "up",
+          "body": 60,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 16,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "sha256": "434041a2acc9cb543e359fae86299412e68ba286cef275c2209a1f27186386d3"
+        },
+        {
+          "view": "left",
+          "body": 61,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 24,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "sha256": "5dd346efc3ef76a8fd77bbe30397b04192afe1249c9a2cd29c7030610ffb9c82"
+        }
+      ],
+      "idle": [
+        {
+          "view": "front",
+          "body": 60,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 0,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "pass": true,
+          "sha256": "37610052dd23ba401b497686ac024778a9790703c15a9bddc9bfad90fde3ba39"
+        },
+        {
+          "view": "side",
+          "body": 60,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 8,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "pass": true,
+          "sha256": "64e7553ee380558f8380d7b8c72daea91dd82e6aa41e1b777b4a0f6e4f5b26b8"
+        },
+        {
+          "view": "up",
+          "body": 60,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 16,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "pass": true,
+          "sha256": "434041a2acc9cb543e359fae86299412e68ba286cef275c2209a1f27186386d3"
+        },
+        {
+          "view": "left",
+          "body": 61,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 24,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "pass": true,
+          "sha256": "5dd346efc3ef76a8fd77bbe30397b04192afe1249c9a2cd29c7030610ffb9c82"
+        }
+      ],
+      "calibration": [],
+      "normalization": {
+        "front": [
+          0.8429,
+          -2.84
+        ],
+        "side": [
+          0.8429,
+          -2.84
+        ],
+        "up": [
+          0.8429,
+          -2.84
+        ]
+      },
+      "rows": [
+        {
+          "view": "front",
+          "state": "idle",
+          "old": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 31,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "47194b64649132a32742056f185ac73e3d1132e5c2c16b6a6c3b927e84a3a699"
+          },
+          "new": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 0,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "37610052dd23ba401b497686ac024778a9790703c15a9bddc9bfad90fde3ba39"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "walk",
+          "old": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 43,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "bee73275a2fd5d1a1d621c94ef0dac8dd4e47f53f3553a7de5e587c6843f2b11"
+          },
+          "new": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 5,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "46a8247e6a7c39b7c90b0194741f8b3550fea158e6f7d7b12db9015acd046591"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "attack",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 6,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "714f864629e6cb26ce968ce1e976ee857c5c083eb6b3bd9072bbc7e46ce1f496"
+          },
+          "new": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 32,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "d799806b2debb843002ffe3d5942b94771f08f99649208c7093eaaefd20d7086"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "hookPrep",
+          "old": {
+            "body": 54,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 27,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "8bd23f7ce209442085bf895f5f39c3b4b9e007c272f58f3f45f08adfaefbdfc1"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 44,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fac678e0c43f4edae350f1cb940a12a3b1d4d1d5f8432a403229de6513d070a5"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "launch",
+          "old": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 26,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4d48a6c21694402d5657f4dcd56f6287e398edcf011e6a780e24c3fa53d5306e"
+          },
+          "new": {
+            "body": 47,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 47,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4ac401b781bf81ebf58b6389276fff9f2616d12dd58ce934cef7aedc3ad8cb6b"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "fly",
+          "old": {
+            "body": 41,
+            "foot": -9,
+            "calls": [
+              {
+                "index": 23,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "e453fa55be04bf9c94316f3ee7ef5f6ccba7df1a69332d6f084eba7032d3c7a0"
+          },
+          "new": {
+            "body": 40,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 49,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a279857f6d95adf20aeca5e18906e060839825b5bcc8ff1ef547c1b3b32e9a67"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "slash",
+          "old": {
+            "body": 52,
+            "foot": -3,
+            "calls": [
+              {
+                "index": 30,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "3e899040f6cdde7a91df78a6cbb1324437ddaabdbe2ce831421d1ee8974562e5"
+          },
+          "new": {
+            "body": 57,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 34,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "bbae51f856423a4e35fa15571e40ea3def85a326fc37a83fb7672416cf97d8b5"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "land",
+          "old": {
+            "body": 49,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 25,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a8674f5a7c0d44d3a3d7fc0212c10e2203518376f239eb47b9969ad360503e92"
+          },
+          "new": {
+            "body": 48,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 50,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9ada9220ce38e768faac959e9163193c4c385903d62c418b93b6b54ddf271b64"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "instinct",
+          "old": {
+            "body": 55,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "f241a779217875c15f28c347419c529e82442c8e89dd62f3234cec4f4dbe5ab8"
+          },
+          "new": {
+            "body": 51,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 53,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9cb4129238ff0f3a4a04013ece1404fa3193d3772ecbaef50a2c4455d92065a4"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "advance",
+          "old": {
+            "body": 62,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 1,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "133d4bd01257cf234311a28a5fa02b2328c210361d0e3680e1cf81947583e4d9"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 57,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "c1e6f76de230e086891134b377871f674e0c80f19073bf9c52a9c0895d459cfd"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "invoke",
+          "old": {
+            "body": 60,
+            "foot": 6,
+            "calls": [
+              {
+                "index": 12,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "512b2f560f1f664218dc4c0754e3dcf1e89b6e3da89066f9479b31c011699d9e"
+          },
+          "new": {
+            "body": 66,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 61,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fa4f6ef31c0330a64b608b94d950d34880a2884f70fc30df0bd4dab9adc3c48e"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "exhausted",
+          "old": {
+            "body": 53,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 18,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "690fcee6f3b241a86e79c6a3b9fd90f1fbdf3cdb9e1e0db5f54e35420977b2f1"
+          },
+          "new": {
+            "body": 45,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 42,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "11c2bea74c8e9d79ec26922bbe54900a960642b02d12d6f6ba8b9d49d9c25642"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "hit",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 20,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9952027011dbdc438b07950c125e8c8751d20d79842a384afe80001fbe4eef97"
+          },
+          "new": {
+            "body": 56,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "34fd1d3653429c12f8ab6e56c5d5b3eb024183a1b2cbcfdeebab1e70f8f4fb6d"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "death",
+          "old": {
+            "body": 61,
+            "foot": 5,
+            "calls": [
+              {
+                "index": 14,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "40989016da918d2ff762399bcb8de5ac072a11f5fe508997a50fdd33182b2ce5"
+          },
+          "new": {
+            "body": 47,
+            "foot": 1,
+            "calls": [
+              {
+                "index": 38,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "448d3ae91cc2903b79f91abcdf947c130be3b8ddd5159a642eb3ec7ef702ed4b"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "idle",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 52,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "e393f242f5b57c63a145ce01d847568bfc0824e836446dd8430490cdc8d1712b"
+          },
+          "new": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 8,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "64e7553ee380558f8380d7b8c72daea91dd82e6aa41e1b777b4a0f6e4f5b26b8"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "walk",
+          "old": {
+            "body": 61,
+            "foot": -3,
+            "calls": [
+              {
+                "index": 53,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "71884af37e336a2bd7fa7cdffae62ef30e17edbc217b9b93863ff326a5ba37a6"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 13,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "54845cc0e349de92fe3e8e9b97abcd1c117f257505a6cb2fd9eb06d4d2cc31ab"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "attack",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 6,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "714f864629e6cb26ce968ce1e976ee857c5c083eb6b3bd9072bbc7e46ce1f496"
+          },
+          "new": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 32,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "d799806b2debb843002ffe3d5942b94771f08f99649208c7093eaaefd20d7086"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "hookPrep",
+          "old": {
+            "body": 54,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 27,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "8bd23f7ce209442085bf895f5f39c3b4b9e007c272f58f3f45f08adfaefbdfc1"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 44,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fac678e0c43f4edae350f1cb940a12a3b1d4d1d5f8432a403229de6513d070a5"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "launch",
+          "old": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 26,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4d48a6c21694402d5657f4dcd56f6287e398edcf011e6a780e24c3fa53d5306e"
+          },
+          "new": {
+            "body": 47,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 47,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4ac401b781bf81ebf58b6389276fff9f2616d12dd58ce934cef7aedc3ad8cb6b"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "fly",
+          "old": {
+            "body": 41,
+            "foot": -9,
+            "calls": [
+              {
+                "index": 23,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "e453fa55be04bf9c94316f3ee7ef5f6ccba7df1a69332d6f084eba7032d3c7a0"
+          },
+          "new": {
+            "body": 40,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 49,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a279857f6d95adf20aeca5e18906e060839825b5bcc8ff1ef547c1b3b32e9a67"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "slash",
+          "old": {
+            "body": 52,
+            "foot": -3,
+            "calls": [
+              {
+                "index": 30,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "3e899040f6cdde7a91df78a6cbb1324437ddaabdbe2ce831421d1ee8974562e5"
+          },
+          "new": {
+            "body": 57,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 34,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "bbae51f856423a4e35fa15571e40ea3def85a326fc37a83fb7672416cf97d8b5"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "land",
+          "old": {
+            "body": 49,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 25,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a8674f5a7c0d44d3a3d7fc0212c10e2203518376f239eb47b9969ad360503e92"
+          },
+          "new": {
+            "body": 48,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 50,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9ada9220ce38e768faac959e9163193c4c385903d62c418b93b6b54ddf271b64"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "instinct",
+          "old": {
+            "body": 55,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "f241a779217875c15f28c347419c529e82442c8e89dd62f3234cec4f4dbe5ab8"
+          },
+          "new": {
+            "body": 51,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 53,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9cb4129238ff0f3a4a04013ece1404fa3193d3772ecbaef50a2c4455d92065a4"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "advance",
+          "old": {
+            "body": 62,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 1,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "133d4bd01257cf234311a28a5fa02b2328c210361d0e3680e1cf81947583e4d9"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 57,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "c1e6f76de230e086891134b377871f674e0c80f19073bf9c52a9c0895d459cfd"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "invoke",
+          "old": {
+            "body": 60,
+            "foot": 6,
+            "calls": [
+              {
+                "index": 12,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "512b2f560f1f664218dc4c0754e3dcf1e89b6e3da89066f9479b31c011699d9e"
+          },
+          "new": {
+            "body": 66,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 61,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fa4f6ef31c0330a64b608b94d950d34880a2884f70fc30df0bd4dab9adc3c48e"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "exhausted",
+          "old": {
+            "body": 53,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 18,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "690fcee6f3b241a86e79c6a3b9fd90f1fbdf3cdb9e1e0db5f54e35420977b2f1"
+          },
+          "new": {
+            "body": 45,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 42,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "11c2bea74c8e9d79ec26922bbe54900a960642b02d12d6f6ba8b9d49d9c25642"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "hit",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 20,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9952027011dbdc438b07950c125e8c8751d20d79842a384afe80001fbe4eef97"
+          },
+          "new": {
+            "body": 56,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "34fd1d3653429c12f8ab6e56c5d5b3eb024183a1b2cbcfdeebab1e70f8f4fb6d"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "death",
+          "old": {
+            "body": 61,
+            "foot": 5,
+            "calls": [
+              {
+                "index": 14,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "40989016da918d2ff762399bcb8de5ac072a11f5fe508997a50fdd33182b2ce5"
+          },
+          "new": {
+            "body": 47,
+            "foot": 1,
+            "calls": [
+              {
+                "index": 38,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "448d3ae91cc2903b79f91abcdf947c130be3b8ddd5159a642eb3ec7ef702ed4b"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "idle",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 57,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a799749d9b3f45b39d89f31548afcab9cdcd107644574d2b11a2851e89c622bd"
+          },
+          "new": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 16,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "434041a2acc9cb543e359fae86299412e68ba286cef275c2209a1f27186386d3"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "walk",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 58,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4b21e07797f23559ef03a42a305c60a5097d800688ba6ffda4216f9cd569271f"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 21,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9fe313333129af43c348c1db96fce8e8e755d99f2036413db46821274ac9eb45"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "attack",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 6,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "714f864629e6cb26ce968ce1e976ee857c5c083eb6b3bd9072bbc7e46ce1f496"
+          },
+          "new": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 32,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "d799806b2debb843002ffe3d5942b94771f08f99649208c7093eaaefd20d7086"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "hookPrep",
+          "old": {
+            "body": 54,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 27,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "8bd23f7ce209442085bf895f5f39c3b4b9e007c272f58f3f45f08adfaefbdfc1"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 44,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fac678e0c43f4edae350f1cb940a12a3b1d4d1d5f8432a403229de6513d070a5"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "launch",
+          "old": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 26,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4d48a6c21694402d5657f4dcd56f6287e398edcf011e6a780e24c3fa53d5306e"
+          },
+          "new": {
+            "body": 47,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 47,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4ac401b781bf81ebf58b6389276fff9f2616d12dd58ce934cef7aedc3ad8cb6b"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "fly",
+          "old": {
+            "body": 41,
+            "foot": -9,
+            "calls": [
+              {
+                "index": 23,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "e453fa55be04bf9c94316f3ee7ef5f6ccba7df1a69332d6f084eba7032d3c7a0"
+          },
+          "new": {
+            "body": 40,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 49,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a279857f6d95adf20aeca5e18906e060839825b5bcc8ff1ef547c1b3b32e9a67"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "slash",
+          "old": {
+            "body": 52,
+            "foot": -3,
+            "calls": [
+              {
+                "index": 30,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "3e899040f6cdde7a91df78a6cbb1324437ddaabdbe2ce831421d1ee8974562e5"
+          },
+          "new": {
+            "body": 57,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 34,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "bbae51f856423a4e35fa15571e40ea3def85a326fc37a83fb7672416cf97d8b5"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "land",
+          "old": {
+            "body": 49,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 25,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a8674f5a7c0d44d3a3d7fc0212c10e2203518376f239eb47b9969ad360503e92"
+          },
+          "new": {
+            "body": 48,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 50,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9ada9220ce38e768faac959e9163193c4c385903d62c418b93b6b54ddf271b64"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "instinct",
+          "old": {
+            "body": 55,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "f241a779217875c15f28c347419c529e82442c8e89dd62f3234cec4f4dbe5ab8"
+          },
+          "new": {
+            "body": 51,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 53,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9cb4129238ff0f3a4a04013ece1404fa3193d3772ecbaef50a2c4455d92065a4"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "advance",
+          "old": {
+            "body": 62,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 1,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "133d4bd01257cf234311a28a5fa02b2328c210361d0e3680e1cf81947583e4d9"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 57,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "c1e6f76de230e086891134b377871f674e0c80f19073bf9c52a9c0895d459cfd"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "invoke",
+          "old": {
+            "body": 60,
+            "foot": 6,
+            "calls": [
+              {
+                "index": 12,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "512b2f560f1f664218dc4c0754e3dcf1e89b6e3da89066f9479b31c011699d9e"
+          },
+          "new": {
+            "body": 66,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 61,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fa4f6ef31c0330a64b608b94d950d34880a2884f70fc30df0bd4dab9adc3c48e"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "exhausted",
+          "old": {
+            "body": 53,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 18,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "690fcee6f3b241a86e79c6a3b9fd90f1fbdf3cdb9e1e0db5f54e35420977b2f1"
+          },
+          "new": {
+            "body": 45,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 42,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "11c2bea74c8e9d79ec26922bbe54900a960642b02d12d6f6ba8b9d49d9c25642"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "hit",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 20,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9952027011dbdc438b07950c125e8c8751d20d79842a384afe80001fbe4eef97"
+          },
+          "new": {
+            "body": 56,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "34fd1d3653429c12f8ab6e56c5d5b3eb024183a1b2cbcfdeebab1e70f8f4fb6d"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "death",
+          "old": {
+            "body": 61,
+            "foot": 5,
+            "calls": [
+              {
+                "index": 14,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "40989016da918d2ff762399bcb8de5ac072a11f5fe508997a50fdd33182b2ce5"
+          },
+          "new": {
+            "body": 47,
+            "foot": 1,
+            "calls": [
+              {
+                "index": 38,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "448d3ae91cc2903b79f91abcdf947c130be3b8ddd5159a642eb3ec7ef702ed4b"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "idle",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 47,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "c6cedec131b7380ba148d01d9347067a684a11302fe0f2075d6bdb9667cc4fc8"
+          },
+          "new": {
+            "body": 61,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 24,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "5dd346efc3ef76a8fd77bbe30397b04192afe1249c9a2cd29c7030610ffb9c82"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "walk",
+          "old": {
+            "body": 61,
+            "foot": -3,
+            "calls": [
+              {
+                "index": 48,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "434a53012401637e0d577c3101d9687ba82668e953d68a5f79ff7207e1156394"
+          },
+          "new": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 29,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "06179682e71ea8c3c4507c2ec3bc9eb495405e2314ae0dc443b958ec96f00fef"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "attack",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 6,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "e90f313e0de16dbcd17c485c13221bb0a0e426fc95da5fb1233d9356dce94663"
+          },
+          "new": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 32,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "be860ee8a376ed1f21f9769793453ec2e27e1ddc4a02bad989fc93978ef8aa62"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "hookPrep",
+          "old": {
+            "body": 54,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 27,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "8bd23f7ce209442085bf895f5f39c3b4b9e007c272f58f3f45f08adfaefbdfc1"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 44,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fac678e0c43f4edae350f1cb940a12a3b1d4d1d5f8432a403229de6513d070a5"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "launch",
+          "old": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 26,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4d48a6c21694402d5657f4dcd56f6287e398edcf011e6a780e24c3fa53d5306e"
+          },
+          "new": {
+            "body": 47,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 47,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4ac401b781bf81ebf58b6389276fff9f2616d12dd58ce934cef7aedc3ad8cb6b"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "fly",
+          "old": {
+            "body": 41,
+            "foot": -9,
+            "calls": [
+              {
+                "index": 23,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "e453fa55be04bf9c94316f3ee7ef5f6ccba7df1a69332d6f084eba7032d3c7a0"
+          },
+          "new": {
+            "body": 40,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 49,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a279857f6d95adf20aeca5e18906e060839825b5bcc8ff1ef547c1b3b32e9a67"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "slash",
+          "old": {
+            "body": 52,
+            "foot": -3,
+            "calls": [
+              {
+                "index": 30,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "3e899040f6cdde7a91df78a6cbb1324437ddaabdbe2ce831421d1ee8974562e5"
+          },
+          "new": {
+            "body": 57,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 34,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "bbae51f856423a4e35fa15571e40ea3def85a326fc37a83fb7672416cf97d8b5"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "land",
+          "old": {
+            "body": 49,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 25,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "c28b1bf9d335ef1523335373bf7d675dbd9935a63d530d2c60ac8208271d58d0"
+          },
+          "new": {
+            "body": 48,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 50,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "4d84b439d75ff2321e11969ab0333cc02206ab4a6072f8114a3856657a37c89e"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "instinct",
+          "old": {
+            "body": 55,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "6ce11cb19e0b6b456d2266cf1e52f9fb32672e953331f29465955ae4b788ecdb"
+          },
+          "new": {
+            "body": 51,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 53,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "e216623c001848b9cea2cb4f64d339cf6e19d905bdb6a3961d6f323e2efc3df0"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "advance",
+          "old": {
+            "body": 62,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 1,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "e84a13e2e3d889ae66c37891eacee34fb2051895145018911e1f9a840928aa08"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 57,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "b496da59eb6ed524516c9bf96d898ea3c7e83ca75811286d36ee70f7dbacf78b"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "invoke",
+          "old": {
+            "body": 60,
+            "foot": 6,
+            "calls": [
+              {
+                "index": 12,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "93653db91338e5ce1040883aeb430dec4f98fb8fd0d8473d9a8eca2ea060b8c1"
+          },
+          "new": {
+            "body": 66,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 61,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "a21ea974259da645f4e2ff2712efcde644a11f660a77a5ea779d2feec10b71fa"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "exhausted",
+          "old": {
+            "body": 53,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 18,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "19d6f6e41e0e625f9d26d97f7eeca490eeea2b5e7a1c8ad4bec83e0399241ba2"
+          },
+          "new": {
+            "body": 45,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 42,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "732f4e81ce8cb76e2abac94245b04e8364649f0460e63bfa2ddd8acfbc96087a"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "hit",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 20,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9952027011dbdc438b07950c125e8c8751d20d79842a384afe80001fbe4eef97"
+          },
+          "new": {
+            "body": 56,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "34fd1d3653429c12f8ab6e56c5d5b3eb024183a1b2cbcfdeebab1e70f8f4fb6d"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "death",
+          "old": {
+            "body": 61,
+            "foot": 5,
+            "calls": [
+              {
+                "index": 14,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "40989016da918d2ff762399bcb8de5ac072a11f5fe508997a50fdd33182b2ce5"
+          },
+          "new": {
+            "body": 47,
+            "foot": 1,
+            "calls": [
+              {
+                "index": 38,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "448d3ae91cc2903b79f91abcdf947c130be3b8ddd5159a642eb3ec7ef702ed4b"
+          },
+          "aba": true
+        }
+      ],
+      "native": [
+        {
+          "index": 0,
+          "w": 192,
+          "h": 128,
+          "opaque": 2730,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1,
+            "4": 1.01,
+            "5": 1.04,
+            "6": 1.02,
+            "7": 1.02,
+            "8": 1.04
+          },
+          "tonos": 319,
+          "suave": 0.21,
+          "aa": 0,
+          "ruido": 123.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 1,
+          "w": 192,
+          "h": 128,
+          "opaque": 2677,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.01,
+            "4": 1,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.02,
+            "8": 1.01
+          },
+          "tonos": 312,
+          "suave": 0.208,
+          "aa": 0,
+          "ruido": 124,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 2,
+          "w": 192,
+          "h": 128,
+          "opaque": 2621,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1,
+            "4": 1.03,
+            "5": 1.02,
+            "6": 1.03,
+            "7": 1.01,
+            "8": 1.02
+          },
+          "tonos": 318,
+          "suave": 0.197,
+          "aa": 0,
+          "ruido": 111.8,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 3,
+          "w": 192,
+          "h": 128,
+          "opaque": 2715,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.03,
+            "4": 1.02,
+            "5": 1.02,
+            "6": 1.03,
+            "7": 1,
+            "8": 1.01
+          },
+          "tonos": 321,
+          "suave": 0.211,
+          "aa": 0,
+          "ruido": 123,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 4,
+          "w": 192,
+          "h": 128,
+          "opaque": 2740,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.04,
+            "3": 1.01,
+            "4": 1.02,
+            "5": 1.04,
+            "6": 1.01,
+            "7": 1,
+            "8": 1.02
+          },
+          "tonos": 321,
+          "suave": 0.213,
+          "aa": 0,
+          "ruido": 112.8,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 5,
+          "w": 192,
+          "h": 128,
+          "opaque": 2711,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.01,
+            "4": 1,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.01,
+            "8": 1
+          },
+          "tonos": 331,
+          "suave": 0.217,
+          "aa": 0,
+          "ruido": 111,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 6,
+          "w": 192,
+          "h": 128,
+          "opaque": 2734,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.04,
+            "4": 1.02,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.03,
+            "8": 1.01
+          },
+          "tonos": 321,
+          "suave": 0.217,
+          "aa": 0,
+          "ruido": 124,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 7,
+          "w": 192,
+          "h": 128,
+          "opaque": 2725,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.02,
+            "4": 1.04,
+            "5": 1.03,
+            "6": 1.01,
+            "7": 1.04,
+            "8": 1.02
+          },
+          "tonos": 327,
+          "suave": 0.209,
+          "aa": 0,
+          "ruido": 101.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 8,
+          "w": 192,
+          "h": 128,
+          "opaque": 2358,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.03,
+            "4": 1,
+            "5": 1.02,
+            "6": 1.01,
+            "7": 1.01,
+            "8": 1.04
+          },
+          "tonos": 259,
+          "suave": 0.3,
+          "aa": 0,
+          "ruido": 104.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 9,
+          "w": 192,
+          "h": 128,
+          "opaque": 2407,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.06,
+            "3": 1.03,
+            "4": 1.01,
+            "5": 1,
+            "6": 1.08,
+            "7": 1.03,
+            "8": 1.01
+          },
+          "tonos": 283,
+          "suave": 0.28,
+          "aa": 0,
+          "ruido": 101,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 10,
+          "w": 192,
+          "h": 128,
+          "opaque": 2331,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.05,
+            "3": 1.07,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1.06,
+            "7": 1.01,
+            "8": 1.04
+          },
+          "tonos": 267,
+          "suave": 0.3,
+          "aa": 0,
+          "ruido": 109.4,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 11,
+          "w": 192,
+          "h": 128,
+          "opaque": 2370,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.05,
+            "3": 1.01,
+            "4": 1.05,
+            "5": 1.06,
+            "6": 1.06,
+            "7": 1.01,
+            "8": 1.04
+          },
+          "tonos": 262,
+          "suave": 0.309,
+          "aa": 0,
+          "ruido": 90.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 12,
+          "w": 192,
+          "h": 128,
+          "opaque": 2387,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.04,
+            "5": 1.03,
+            "6": 1.04,
+            "7": 1.06,
+            "8": 1.04
+          },
+          "tonos": 260,
+          "suave": 0.303,
+          "aa": 0,
+          "ruido": 109.8,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 13,
+          "w": 192,
+          "h": 128,
+          "opaque": 2573,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.04,
+            "3": 1.01,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1.06,
+            "7": 1.03,
+            "8": 1.03
+          },
+          "tonos": 253,
+          "suave": 0.316,
+          "aa": 0,
+          "ruido": 101,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 14,
+          "w": 192,
+          "h": 128,
+          "opaque": 2362,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.03,
+            "5": 1.02,
+            "6": 1,
+            "7": 1,
+            "8": 1.01
+          },
+          "tonos": 266,
+          "suave": 0.319,
+          "aa": 0,
+          "ruido": 77.9,
+          "eff": 0.78,
+          "issues": [
+            "ILUSTRACION"
+          ]
+        },
+        {
+          "index": 15,
+          "w": 192,
+          "h": 128,
+          "opaque": 2562,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.08,
+            "3": 1.05,
+            "4": 1.05,
+            "5": 1,
+            "6": 1.04,
+            "7": 1.04,
+            "8": 1
+          },
+          "tonos": 267,
+          "suave": 0.31,
+          "aa": 0,
+          "ruido": 107.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 16,
+          "w": 192,
+          "h": 128,
+          "opaque": 3109,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.01,
+            "4": 1.02,
+            "5": 1.01,
+            "6": 1.04,
+            "7": 1,
+            "8": 1.01
+          },
+          "tonos": 251,
+          "suave": 0.358,
+          "aa": 0,
+          "ruido": 90.4,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 17,
+          "w": 192,
+          "h": 128,
+          "opaque": 2924,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.05,
+            "3": 1.01,
+            "4": 1.04,
+            "5": 1.01,
+            "6": 1.05,
+            "7": 1.01,
+            "8": 1.07
+          },
+          "tonos": 229,
+          "suave": 0.361,
+          "aa": 0,
+          "ruido": 102.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 18,
+          "w": 192,
+          "h": 128,
+          "opaque": 3073,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.03,
+            "5": 1.02,
+            "6": 1.01,
+            "7": 1.01,
+            "8": 1
+          },
+          "tonos": 235,
+          "suave": 0.365,
+          "aa": 0,
+          "ruido": 92.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 19,
+          "w": 192,
+          "h": 128,
+          "opaque": 3001,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.01,
+            "5": 1,
+            "6": 1.04,
+            "7": 1.01,
+            "8": 1
+          },
+          "tonos": 245,
+          "suave": 0.357,
+          "aa": 0,
+          "ruido": 95,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 20,
+          "w": 192,
+          "h": 128,
+          "opaque": 2975,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.06,
+            "3": 1.02,
+            "4": 1.07,
+            "5": 1.03,
+            "6": 1.03,
+            "7": 1.05,
+            "8": 1.03
+          },
+          "tonos": 250,
+          "suave": 0.366,
+          "aa": 0,
+          "ruido": 95.5,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 21,
+          "w": 192,
+          "h": 128,
+          "opaque": 2780,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.02,
+            "4": 1.04,
+            "5": 1.01,
+            "6": 1.02,
+            "7": 1.06,
+            "8": 1
+          },
+          "tonos": 239,
+          "suave": 0.337,
+          "aa": 0,
+          "ruido": 95.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 22,
+          "w": 192,
+          "h": 128,
+          "opaque": 2890,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.01,
+            "4": 1.05,
+            "5": 1.01,
+            "6": 1.04,
+            "7": 1.09,
+            "8": 1.01
+          },
+          "tonos": 256,
+          "suave": 0.359,
+          "aa": 0,
+          "ruido": 97.6,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 23,
+          "w": 192,
+          "h": 128,
+          "opaque": 2940,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.12,
+            "3": 1.03,
+            "4": 1.01,
+            "5": 1.02,
+            "6": 1.06,
+            "7": 1.03,
+            "8": 1.01
+          },
+          "tonos": 242,
+          "suave": 0.353,
+          "aa": 0,
+          "ruido": 91.2,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 24,
+          "w": 192,
+          "h": 128,
+          "opaque": 2509,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.04,
+            "4": 1,
+            "5": 1.07,
+            "6": 1.02,
+            "7": 1.03,
+            "8": 1.2
+          },
+          "tonos": 274,
+          "suave": 0.295,
+          "aa": 0,
+          "ruido": 99.2,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 25,
+          "w": 192,
+          "h": 128,
+          "opaque": 2541,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.03,
+            "4": 1.03,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.09,
+            "8": 1.04
+          },
+          "tonos": 276,
+          "suave": 0.276,
+          "aa": 0,
+          "ruido": 92.9,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 26,
+          "w": 192,
+          "h": 128,
+          "opaque": 2498,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.03,
+            "4": 1,
+            "5": 1,
+            "6": 1.07,
+            "7": 1.03,
+            "8": 1.02
+          },
+          "tonos": 265,
+          "suave": 0.303,
+          "aa": 0,
+          "ruido": 106.9,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 27,
+          "w": 192,
+          "h": 128,
+          "opaque": 2463,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.02,
+            "4": 1.01,
+            "5": 1.09,
+            "6": 1.13,
+            "7": 1.03,
+            "8": 1.04
+          },
+          "tonos": 271,
+          "suave": 0.285,
+          "aa": 0,
+          "ruido": 90.9,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 28,
+          "w": 192,
+          "h": 128,
+          "opaque": 2549,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.01,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.03,
+            "8": 1.06
+          },
+          "tonos": 266,
+          "suave": 0.305,
+          "aa": 0,
+          "ruido": 105.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 29,
+          "w": 192,
+          "h": 128,
+          "opaque": 2592,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.04,
+            "3": 1.05,
+            "4": 1,
+            "5": 1.01,
+            "6": 1,
+            "7": 1.04,
+            "8": 1.02
+          },
+          "tonos": 261,
+          "suave": 0.311,
+          "aa": 0,
+          "ruido": 110.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 30,
+          "w": 192,
+          "h": 128,
+          "opaque": 2559,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.05,
+            "4": 1.01,
+            "5": 1,
+            "6": 1.04,
+            "7": 1.12,
+            "8": 1.02
+          },
+          "tonos": 276,
+          "suave": 0.302,
+          "aa": 0,
+          "ruido": 90.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 31,
+          "w": 192,
+          "h": 128,
+          "opaque": 2605,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.06,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1.03,
+            "7": 1.08,
+            "8": 1.04
+          },
+          "tonos": 271,
+          "suave": 0.31,
+          "aa": 0,
+          "ruido": 97.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 32,
+          "w": 192,
+          "h": 128,
+          "opaque": 2951,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.04,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1.06,
+            "7": 1,
+            "8": 1.02
+          },
+          "tonos": 333,
+          "suave": 0.223,
+          "aa": 0,
+          "ruido": 129.8,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 33,
+          "w": 192,
+          "h": 128,
+          "opaque": 2916,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.04,
+            "5": 1.05,
+            "6": 1,
+            "7": 1.01,
+            "8": 1.01
+          },
+          "tonos": 290,
+          "suave": 0.225,
+          "aa": 0,
+          "ruido": 113.9,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 34,
+          "w": 192,
+          "h": 128,
+          "opaque": 3017,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.01,
+            "4": 1,
+            "5": 1,
+            "6": 1,
+            "7": 1.02,
+            "8": 1
+          },
+          "tonos": 308,
+          "suave": 0.223,
+          "aa": 0,
+          "ruido": 125.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 35,
+          "w": 192,
+          "h": 128,
+          "opaque": 2767,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.05,
+            "4": 1,
+            "5": 1.03,
+            "6": 1,
+            "7": 1.06,
+            "8": 1
+          },
+          "tonos": 327,
+          "suave": 0.213,
+          "aa": 0,
+          "ruido": 125,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 36,
+          "w": 192,
+          "h": 128,
+          "opaque": 3132,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1,
+            "4": 1.03,
+            "5": 1.11,
+            "6": 1.01,
+            "7": 1.06,
+            "8": 1.01
+          },
+          "tonos": 302,
+          "suave": 0.209,
+          "aa": 0,
+          "ruido": 120.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 37,
+          "w": 192,
+          "h": 128,
+          "opaque": 3017,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.03,
+            "4": 1.02,
+            "5": 1.01,
+            "6": 1,
+            "7": 1.01,
+            "8": 1
+          },
+          "tonos": 322,
+          "suave": 0.182,
+          "aa": 0,
+          "ruido": 124,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 38,
+          "w": 192,
+          "h": 128,
+          "opaque": 2490,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.05,
+            "4": 1.07,
+            "5": 1.01,
+            "6": 1.14,
+            "7": 1,
+            "8": 1.01
+          },
+          "tonos": 288,
+          "suave": 0.219,
+          "aa": 0,
+          "ruido": 115.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 39,
+          "w": 192,
+          "h": 128,
+          "opaque": 1995,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.02,
+            "4": 1.02,
+            "5": 1.04,
+            "6": 1.03,
+            "7": 1.06,
+            "8": 1.02
+          },
+          "tonos": 295,
+          "suave": 0.177,
+          "aa": 0,
+          "ruido": 103.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 40,
+          "w": 192,
+          "h": 128,
+          "opaque": 3278,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.01,
+            "4": 1.01,
+            "5": 1.07,
+            "6": 1,
+            "7": 1.02,
+            "8": 1.05
+          },
+          "tonos": 365,
+          "suave": 0.207,
+          "aa": 0,
+          "ruido": 105.9,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 41,
+          "w": 192,
+          "h": 128,
+          "opaque": 2819,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.04,
+            "3": 1,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1.08,
+            "7": 1.13,
+            "8": 1.01
+          },
+          "tonos": 315,
+          "suave": 0.235,
+          "aa": 0,
+          "ruido": 97.2,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 42,
+          "w": 192,
+          "h": 128,
+          "opaque": 2510,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.04,
+            "3": 1.1,
+            "4": 1.02,
+            "5": 1,
+            "6": 1.18,
+            "7": 1.04,
+            "8": 1.02
+          },
+          "tonos": 308,
+          "suave": 0.242,
+          "aa": 0,
+          "ruido": 106,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 43,
+          "w": 192,
+          "h": 128,
+          "opaque": 3135,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.06,
+            "4": 1.04,
+            "5": 1.07,
+            "6": 1.02,
+            "7": 1.02,
+            "8": 1.03
+          },
+          "tonos": 370,
+          "suave": 0.201,
+          "aa": 0,
+          "ruido": 104.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 44,
+          "w": 192,
+          "h": 128,
+          "opaque": 3474,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.01,
+            "5": 1.06,
+            "6": 1.02,
+            "7": 1.19,
+            "8": 1.03
+          },
+          "tonos": 314,
+          "suave": 0.25,
+          "aa": 0,
+          "ruido": 107.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 45,
+          "w": 192,
+          "h": 128,
+          "opaque": 3634,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.04,
+            "3": 1.01,
+            "4": 1.02,
+            "5": 1,
+            "6": 1,
+            "7": 1.04,
+            "8": 1.07
+          },
+          "tonos": 325,
+          "suave": 0.252,
+          "aa": 0,
+          "ruido": 109.2,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 46,
+          "w": 192,
+          "h": 128,
+          "opaque": 3153,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.05,
+            "3": 1.01,
+            "4": 1.08,
+            "5": 1.05,
+            "6": 1,
+            "7": 1.06,
+            "8": 1.01
+          },
+          "tonos": 304,
+          "suave": 0.261,
+          "aa": 0,
+          "ruido": 97.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 47,
+          "w": 192,
+          "h": 128,
+          "opaque": 2701,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.02,
+            "4": 1,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.03,
+            "8": 1.02
+          },
+          "tonos": 264,
+          "suave": 0.268,
+          "aa": 0,
+          "ruido": 90.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 48,
+          "w": 192,
+          "h": 128,
+          "opaque": 2935,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.03,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1,
+            "7": 1.01,
+            "8": 1.06
+          },
+          "tonos": 274,
+          "suave": 0.286,
+          "aa": 0,
+          "ruido": 97.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 49,
+          "w": 192,
+          "h": 128,
+          "opaque": 2866,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.05,
+            "4": 1.01,
+            "5": 1.02,
+            "6": 1.01,
+            "7": 1.01,
+            "8": 1.04
+          },
+          "tonos": 250,
+          "suave": 0.289,
+          "aa": 0,
+          "ruido": 90,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 50,
+          "w": 192,
+          "h": 128,
+          "opaque": 2703,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1,
+            "4": 1.01,
+            "5": 1,
+            "6": 1.06,
+            "7": 1.03,
+            "8": 1.02
+          },
+          "tonos": 278,
+          "suave": 0.249,
+          "aa": 0,
+          "ruido": 105.4,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 51,
+          "w": 192,
+          "h": 128,
+          "opaque": 3164,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1,
+            "4": 1.02,
+            "5": 1.06,
+            "6": 1.02,
+            "7": 1.1,
+            "8": 1.01
+          },
+          "tonos": 309,
+          "suave": 0.248,
+          "aa": 0,
+          "ruido": 111.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 52,
+          "w": 192,
+          "h": 128,
+          "opaque": 3010,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1,
+            "4": 1,
+            "5": 1.04,
+            "6": 1.01,
+            "7": 1.07,
+            "8": 1.01
+          },
+          "tonos": 297,
+          "suave": 0.22,
+          "aa": 0,
+          "ruido": 113,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 53,
+          "w": 192,
+          "h": 128,
+          "opaque": 2825,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.02,
+            "4": 1.01,
+            "5": 1.02,
+            "6": 1.05,
+            "7": 1.07,
+            "8": 1.08
+          },
+          "tonos": 290,
+          "suave": 0.25,
+          "aa": 0,
+          "ruido": 110.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 54,
+          "w": 192,
+          "h": 128,
+          "opaque": 3055,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.07,
+            "4": 1.03,
+            "5": 1,
+            "6": 1.03,
+            "7": 1.03,
+            "8": 1.03
+          },
+          "tonos": 322,
+          "suave": 0.251,
+          "aa": 0,
+          "ruido": 99.8,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 55,
+          "w": 192,
+          "h": 128,
+          "opaque": 3043,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.03,
+            "4": 1.01,
+            "5": 1.07,
+            "6": 1.07,
+            "7": 1,
+            "8": 1
+          },
+          "tonos": 311,
+          "suave": 0.25,
+          "aa": 0,
+          "ruido": 104.2,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 56,
+          "w": 192,
+          "h": 128,
+          "opaque": 3304,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.02,
+            "5": 1,
+            "6": 1.06,
+            "7": 1.01,
+            "8": 1.16
+          },
+          "tonos": 322,
+          "suave": 0.193,
+          "aa": 0,
+          "ruido": 120.8,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 57,
+          "w": 192,
+          "h": 128,
+          "opaque": 3500,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.01,
+            "4": 1,
+            "5": 1.02,
+            "6": 1.02,
+            "7": 1.06,
+            "8": 1.06
+          },
+          "tonos": 328,
+          "suave": 0.223,
+          "aa": 0,
+          "ruido": 104.9,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 58,
+          "w": 192,
+          "h": 128,
+          "opaque": 3012,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.05,
+            "3": 1.05,
+            "4": 1.02,
+            "5": 1.05,
+            "6": 1.05,
+            "7": 1.04,
+            "8": 1.02
+          },
+          "tonos": 317,
+          "suave": 0.233,
+          "aa": 0,
+          "ruido": 112.5,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 59,
+          "w": 192,
+          "h": 128,
+          "opaque": 2895,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.05,
+            "3": 1.02,
+            "4": 1.04,
+            "5": 1.02,
+            "6": 1.08,
+            "7": 1.18,
+            "8": 1.03
+          },
+          "tonos": 287,
+          "suave": 0.256,
+          "aa": 0,
+          "ruido": 113.6,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 60,
+          "w": 192,
+          "h": 128,
+          "opaque": 3346,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.04,
+            "4": 1.06,
+            "5": 1.02,
+            "6": 1.01,
+            "7": 1.02,
+            "8": 1.02
+          },
+          "tonos": 339,
+          "suave": 0.229,
+          "aa": 0,
+          "ruido": 106.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 61,
+          "w": 192,
+          "h": 128,
+          "opaque": 3244,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.03,
+            "4": 1.01,
+            "5": 1.02,
+            "6": 1.03,
+            "7": 1.01,
+            "8": 1.01
+          },
+          "tonos": 356,
+          "suave": 0.186,
+          "aa": 0,
+          "ruido": 114.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 62,
+          "w": 192,
+          "h": 128,
+          "opaque": 3186,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.04,
+            "8": 1
+          },
+          "tonos": 319,
+          "suave": 0.216,
+          "aa": 0,
+          "ruido": 115.8,
+          "eff": 0.78,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "mobile": true,
+      "errors": [],
+      "reference": {
+        "body": 59,
+        "foot": -2,
+        "calls": [],
+        "sha256": "df798384919c8c5bc56a9e2f47a59daa2e724f1e473f7da46de05cbea8b674e9"
+      },
+      "initial": [
+        {
+          "view": "front",
+          "body": 60,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 0,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "sha256": "37610052dd23ba401b497686ac024778a9790703c15a9bddc9bfad90fde3ba39"
+        },
+        {
+          "view": "side",
+          "body": 60,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 8,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "sha256": "64e7553ee380558f8380d7b8c72daea91dd82e6aa41e1b777b4a0f6e4f5b26b8"
+        },
+        {
+          "view": "up",
+          "body": 60,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 16,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "sha256": "434041a2acc9cb543e359fae86299412e68ba286cef275c2209a1f27186386d3"
+        },
+        {
+          "view": "left",
+          "body": 61,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 24,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "sha256": "5dd346efc3ef76a8fd77bbe30397b04192afe1249c9a2cd29c7030610ffb9c82"
+        }
+      ],
+      "idle": [
+        {
+          "view": "front",
+          "body": 60,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 0,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "pass": true,
+          "sha256": "37610052dd23ba401b497686ac024778a9790703c15a9bddc9bfad90fde3ba39"
+        },
+        {
+          "view": "side",
+          "body": 60,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 8,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "pass": true,
+          "sha256": "64e7553ee380558f8380d7b8c72daea91dd82e6aa41e1b777b4a0f6e4f5b26b8"
+        },
+        {
+          "view": "up",
+          "body": 60,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 16,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "pass": true,
+          "sha256": "434041a2acc9cb543e359fae86299412e68ba286cef275c2209a1f27186386d3"
+        },
+        {
+          "view": "left",
+          "body": 61,
+          "foot": -2,
+          "calls": [
+            {
+              "index": 24,
+              "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+              "scale": 0.7802845512117659,
+              "flip": false
+            }
+          ],
+          "pass": true,
+          "sha256": "5dd346efc3ef76a8fd77bbe30397b04192afe1249c9a2cd29c7030610ffb9c82"
+        }
+      ],
+      "calibration": [],
+      "normalization": {
+        "front": [
+          0.8429,
+          -2.84
+        ],
+        "side": [
+          0.8429,
+          -2.84
+        ],
+        "up": [
+          0.8429,
+          -2.84
+        ]
+      },
+      "rows": [
+        {
+          "view": "front",
+          "state": "idle",
+          "old": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 31,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "47194b64649132a32742056f185ac73e3d1132e5c2c16b6a6c3b927e84a3a699"
+          },
+          "new": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 0,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "37610052dd23ba401b497686ac024778a9790703c15a9bddc9bfad90fde3ba39"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "walk",
+          "old": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 43,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "bee73275a2fd5d1a1d621c94ef0dac8dd4e47f53f3553a7de5e587c6843f2b11"
+          },
+          "new": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 5,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "46a8247e6a7c39b7c90b0194741f8b3550fea158e6f7d7b12db9015acd046591"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "attack",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 6,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "714f864629e6cb26ce968ce1e976ee857c5c083eb6b3bd9072bbc7e46ce1f496"
+          },
+          "new": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 32,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "d799806b2debb843002ffe3d5942b94771f08f99649208c7093eaaefd20d7086"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "hookPrep",
+          "old": {
+            "body": 54,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 27,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "8bd23f7ce209442085bf895f5f39c3b4b9e007c272f58f3f45f08adfaefbdfc1"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 44,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fac678e0c43f4edae350f1cb940a12a3b1d4d1d5f8432a403229de6513d070a5"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "launch",
+          "old": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 26,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4d48a6c21694402d5657f4dcd56f6287e398edcf011e6a780e24c3fa53d5306e"
+          },
+          "new": {
+            "body": 47,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 47,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4ac401b781bf81ebf58b6389276fff9f2616d12dd58ce934cef7aedc3ad8cb6b"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "fly",
+          "old": {
+            "body": 41,
+            "foot": -9,
+            "calls": [
+              {
+                "index": 23,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "e453fa55be04bf9c94316f3ee7ef5f6ccba7df1a69332d6f084eba7032d3c7a0"
+          },
+          "new": {
+            "body": 40,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 49,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a279857f6d95adf20aeca5e18906e060839825b5bcc8ff1ef547c1b3b32e9a67"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "slash",
+          "old": {
+            "body": 52,
+            "foot": -3,
+            "calls": [
+              {
+                "index": 30,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "3e899040f6cdde7a91df78a6cbb1324437ddaabdbe2ce831421d1ee8974562e5"
+          },
+          "new": {
+            "body": 57,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 34,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "bbae51f856423a4e35fa15571e40ea3def85a326fc37a83fb7672416cf97d8b5"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "land",
+          "old": {
+            "body": 49,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 25,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a8674f5a7c0d44d3a3d7fc0212c10e2203518376f239eb47b9969ad360503e92"
+          },
+          "new": {
+            "body": 48,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 50,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9ada9220ce38e768faac959e9163193c4c385903d62c418b93b6b54ddf271b64"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "instinct",
+          "old": {
+            "body": 55,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "f241a779217875c15f28c347419c529e82442c8e89dd62f3234cec4f4dbe5ab8"
+          },
+          "new": {
+            "body": 51,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 53,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9cb4129238ff0f3a4a04013ece1404fa3193d3772ecbaef50a2c4455d92065a4"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "advance",
+          "old": {
+            "body": 62,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 1,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "133d4bd01257cf234311a28a5fa02b2328c210361d0e3680e1cf81947583e4d9"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 57,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "c1e6f76de230e086891134b377871f674e0c80f19073bf9c52a9c0895d459cfd"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "invoke",
+          "old": {
+            "body": 60,
+            "foot": 6,
+            "calls": [
+              {
+                "index": 12,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "512b2f560f1f664218dc4c0754e3dcf1e89b6e3da89066f9479b31c011699d9e"
+          },
+          "new": {
+            "body": 66,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 61,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fa4f6ef31c0330a64b608b94d950d34880a2884f70fc30df0bd4dab9adc3c48e"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "exhausted",
+          "old": {
+            "body": 53,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 18,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "690fcee6f3b241a86e79c6a3b9fd90f1fbdf3cdb9e1e0db5f54e35420977b2f1"
+          },
+          "new": {
+            "body": 45,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 42,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "11c2bea74c8e9d79ec26922bbe54900a960642b02d12d6f6ba8b9d49d9c25642"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "hit",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 20,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9952027011dbdc438b07950c125e8c8751d20d79842a384afe80001fbe4eef97"
+          },
+          "new": {
+            "body": 56,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "34fd1d3653429c12f8ab6e56c5d5b3eb024183a1b2cbcfdeebab1e70f8f4fb6d"
+          },
+          "aba": true
+        },
+        {
+          "view": "front",
+          "state": "death",
+          "old": {
+            "body": 61,
+            "foot": 5,
+            "calls": [
+              {
+                "index": 14,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "40989016da918d2ff762399bcb8de5ac072a11f5fe508997a50fdd33182b2ce5"
+          },
+          "new": {
+            "body": 47,
+            "foot": 1,
+            "calls": [
+              {
+                "index": 38,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "448d3ae91cc2903b79f91abcdf947c130be3b8ddd5159a642eb3ec7ef702ed4b"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "idle",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 52,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "e393f242f5b57c63a145ce01d847568bfc0824e836446dd8430490cdc8d1712b"
+          },
+          "new": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 8,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "64e7553ee380558f8380d7b8c72daea91dd82e6aa41e1b777b4a0f6e4f5b26b8"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "walk",
+          "old": {
+            "body": 61,
+            "foot": -3,
+            "calls": [
+              {
+                "index": 53,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "71884af37e336a2bd7fa7cdffae62ef30e17edbc217b9b93863ff326a5ba37a6"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 13,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "54845cc0e349de92fe3e8e9b97abcd1c117f257505a6cb2fd9eb06d4d2cc31ab"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "attack",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 6,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "714f864629e6cb26ce968ce1e976ee857c5c083eb6b3bd9072bbc7e46ce1f496"
+          },
+          "new": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 32,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "d799806b2debb843002ffe3d5942b94771f08f99649208c7093eaaefd20d7086"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "hookPrep",
+          "old": {
+            "body": 54,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 27,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "8bd23f7ce209442085bf895f5f39c3b4b9e007c272f58f3f45f08adfaefbdfc1"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 44,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fac678e0c43f4edae350f1cb940a12a3b1d4d1d5f8432a403229de6513d070a5"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "launch",
+          "old": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 26,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4d48a6c21694402d5657f4dcd56f6287e398edcf011e6a780e24c3fa53d5306e"
+          },
+          "new": {
+            "body": 47,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 47,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4ac401b781bf81ebf58b6389276fff9f2616d12dd58ce934cef7aedc3ad8cb6b"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "fly",
+          "old": {
+            "body": 41,
+            "foot": -9,
+            "calls": [
+              {
+                "index": 23,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "e453fa55be04bf9c94316f3ee7ef5f6ccba7df1a69332d6f084eba7032d3c7a0"
+          },
+          "new": {
+            "body": 40,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 49,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a279857f6d95adf20aeca5e18906e060839825b5bcc8ff1ef547c1b3b32e9a67"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "slash",
+          "old": {
+            "body": 52,
+            "foot": -3,
+            "calls": [
+              {
+                "index": 30,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "3e899040f6cdde7a91df78a6cbb1324437ddaabdbe2ce831421d1ee8974562e5"
+          },
+          "new": {
+            "body": 57,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 34,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "bbae51f856423a4e35fa15571e40ea3def85a326fc37a83fb7672416cf97d8b5"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "land",
+          "old": {
+            "body": 49,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 25,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a8674f5a7c0d44d3a3d7fc0212c10e2203518376f239eb47b9969ad360503e92"
+          },
+          "new": {
+            "body": 48,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 50,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9ada9220ce38e768faac959e9163193c4c385903d62c418b93b6b54ddf271b64"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "instinct",
+          "old": {
+            "body": 55,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "f241a779217875c15f28c347419c529e82442c8e89dd62f3234cec4f4dbe5ab8"
+          },
+          "new": {
+            "body": 51,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 53,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9cb4129238ff0f3a4a04013ece1404fa3193d3772ecbaef50a2c4455d92065a4"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "advance",
+          "old": {
+            "body": 62,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 1,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "133d4bd01257cf234311a28a5fa02b2328c210361d0e3680e1cf81947583e4d9"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 57,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "c1e6f76de230e086891134b377871f674e0c80f19073bf9c52a9c0895d459cfd"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "invoke",
+          "old": {
+            "body": 60,
+            "foot": 6,
+            "calls": [
+              {
+                "index": 12,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "512b2f560f1f664218dc4c0754e3dcf1e89b6e3da89066f9479b31c011699d9e"
+          },
+          "new": {
+            "body": 66,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 61,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fa4f6ef31c0330a64b608b94d950d34880a2884f70fc30df0bd4dab9adc3c48e"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "exhausted",
+          "old": {
+            "body": 53,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 18,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "690fcee6f3b241a86e79c6a3b9fd90f1fbdf3cdb9e1e0db5f54e35420977b2f1"
+          },
+          "new": {
+            "body": 45,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 42,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "11c2bea74c8e9d79ec26922bbe54900a960642b02d12d6f6ba8b9d49d9c25642"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "hit",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 20,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9952027011dbdc438b07950c125e8c8751d20d79842a384afe80001fbe4eef97"
+          },
+          "new": {
+            "body": 56,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "34fd1d3653429c12f8ab6e56c5d5b3eb024183a1b2cbcfdeebab1e70f8f4fb6d"
+          },
+          "aba": true
+        },
+        {
+          "view": "side",
+          "state": "death",
+          "old": {
+            "body": 61,
+            "foot": 5,
+            "calls": [
+              {
+                "index": 14,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "40989016da918d2ff762399bcb8de5ac072a11f5fe508997a50fdd33182b2ce5"
+          },
+          "new": {
+            "body": 47,
+            "foot": 1,
+            "calls": [
+              {
+                "index": 38,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "448d3ae91cc2903b79f91abcdf947c130be3b8ddd5159a642eb3ec7ef702ed4b"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "idle",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 57,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a799749d9b3f45b39d89f31548afcab9cdcd107644574d2b11a2851e89c622bd"
+          },
+          "new": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 16,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "434041a2acc9cb543e359fae86299412e68ba286cef275c2209a1f27186386d3"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "walk",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 58,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4b21e07797f23559ef03a42a305c60a5097d800688ba6ffda4216f9cd569271f"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 21,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9fe313333129af43c348c1db96fce8e8e755d99f2036413db46821274ac9eb45"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "attack",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 6,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "714f864629e6cb26ce968ce1e976ee857c5c083eb6b3bd9072bbc7e46ce1f496"
+          },
+          "new": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 32,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "d799806b2debb843002ffe3d5942b94771f08f99649208c7093eaaefd20d7086"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "hookPrep",
+          "old": {
+            "body": 54,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 27,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "8bd23f7ce209442085bf895f5f39c3b4b9e007c272f58f3f45f08adfaefbdfc1"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 44,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fac678e0c43f4edae350f1cb940a12a3b1d4d1d5f8432a403229de6513d070a5"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "launch",
+          "old": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 26,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4d48a6c21694402d5657f4dcd56f6287e398edcf011e6a780e24c3fa53d5306e"
+          },
+          "new": {
+            "body": 47,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 47,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4ac401b781bf81ebf58b6389276fff9f2616d12dd58ce934cef7aedc3ad8cb6b"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "fly",
+          "old": {
+            "body": 41,
+            "foot": -9,
+            "calls": [
+              {
+                "index": 23,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "e453fa55be04bf9c94316f3ee7ef5f6ccba7df1a69332d6f084eba7032d3c7a0"
+          },
+          "new": {
+            "body": 40,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 49,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a279857f6d95adf20aeca5e18906e060839825b5bcc8ff1ef547c1b3b32e9a67"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "slash",
+          "old": {
+            "body": 52,
+            "foot": -3,
+            "calls": [
+              {
+                "index": 30,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "3e899040f6cdde7a91df78a6cbb1324437ddaabdbe2ce831421d1ee8974562e5"
+          },
+          "new": {
+            "body": 57,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 34,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "bbae51f856423a4e35fa15571e40ea3def85a326fc37a83fb7672416cf97d8b5"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "land",
+          "old": {
+            "body": 49,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 25,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a8674f5a7c0d44d3a3d7fc0212c10e2203518376f239eb47b9969ad360503e92"
+          },
+          "new": {
+            "body": 48,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 50,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9ada9220ce38e768faac959e9163193c4c385903d62c418b93b6b54ddf271b64"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "instinct",
+          "old": {
+            "body": 55,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "f241a779217875c15f28c347419c529e82442c8e89dd62f3234cec4f4dbe5ab8"
+          },
+          "new": {
+            "body": 51,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 53,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9cb4129238ff0f3a4a04013ece1404fa3193d3772ecbaef50a2c4455d92065a4"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "advance",
+          "old": {
+            "body": 62,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 1,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "133d4bd01257cf234311a28a5fa02b2328c210361d0e3680e1cf81947583e4d9"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 57,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "c1e6f76de230e086891134b377871f674e0c80f19073bf9c52a9c0895d459cfd"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "invoke",
+          "old": {
+            "body": 60,
+            "foot": 6,
+            "calls": [
+              {
+                "index": 12,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "512b2f560f1f664218dc4c0754e3dcf1e89b6e3da89066f9479b31c011699d9e"
+          },
+          "new": {
+            "body": 66,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 61,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fa4f6ef31c0330a64b608b94d950d34880a2884f70fc30df0bd4dab9adc3c48e"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "exhausted",
+          "old": {
+            "body": 53,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 18,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "690fcee6f3b241a86e79c6a3b9fd90f1fbdf3cdb9e1e0db5f54e35420977b2f1"
+          },
+          "new": {
+            "body": 45,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 42,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "11c2bea74c8e9d79ec26922bbe54900a960642b02d12d6f6ba8b9d49d9c25642"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "hit",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 20,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9952027011dbdc438b07950c125e8c8751d20d79842a384afe80001fbe4eef97"
+          },
+          "new": {
+            "body": 56,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "34fd1d3653429c12f8ab6e56c5d5b3eb024183a1b2cbcfdeebab1e70f8f4fb6d"
+          },
+          "aba": true
+        },
+        {
+          "view": "up",
+          "state": "death",
+          "old": {
+            "body": 61,
+            "foot": 5,
+            "calls": [
+              {
+                "index": 14,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "40989016da918d2ff762399bcb8de5ac072a11f5fe508997a50fdd33182b2ce5"
+          },
+          "new": {
+            "body": 47,
+            "foot": 1,
+            "calls": [
+              {
+                "index": 38,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "448d3ae91cc2903b79f91abcdf947c130be3b8ddd5159a642eb3ec7ef702ed4b"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "idle",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 47,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "c6cedec131b7380ba148d01d9347067a684a11302fe0f2075d6bdb9667cc4fc8"
+          },
+          "new": {
+            "body": 61,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 24,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "5dd346efc3ef76a8fd77bbe30397b04192afe1249c9a2cd29c7030610ffb9c82"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "walk",
+          "old": {
+            "body": 61,
+            "foot": -3,
+            "calls": [
+              {
+                "index": 48,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "434a53012401637e0d577c3101d9687ba82668e953d68a5f79ff7207e1156394"
+          },
+          "new": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 29,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "06179682e71ea8c3c4507c2ec3bc9eb495405e2314ae0dc443b958ec96f00fef"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "attack",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 6,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "e90f313e0de16dbcd17c485c13221bb0a0e426fc95da5fb1233d9356dce94663"
+          },
+          "new": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 32,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "be860ee8a376ed1f21f9769793453ec2e27e1ddc4a02bad989fc93978ef8aa62"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "hookPrep",
+          "old": {
+            "body": 54,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 27,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "8bd23f7ce209442085bf895f5f39c3b4b9e007c272f58f3f45f08adfaefbdfc1"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 44,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "fac678e0c43f4edae350f1cb940a12a3b1d4d1d5f8432a403229de6513d070a5"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "launch",
+          "old": {
+            "body": 55,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 26,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4d48a6c21694402d5657f4dcd56f6287e398edcf011e6a780e24c3fa53d5306e"
+          },
+          "new": {
+            "body": 47,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 47,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "4ac401b781bf81ebf58b6389276fff9f2616d12dd58ce934cef7aedc3ad8cb6b"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "fly",
+          "old": {
+            "body": 41,
+            "foot": -9,
+            "calls": [
+              {
+                "index": 23,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "e453fa55be04bf9c94316f3ee7ef5f6ccba7df1a69332d6f084eba7032d3c7a0"
+          },
+          "new": {
+            "body": 40,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 49,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "a279857f6d95adf20aeca5e18906e060839825b5bcc8ff1ef547c1b3b32e9a67"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "slash",
+          "old": {
+            "body": 52,
+            "foot": -3,
+            "calls": [
+              {
+                "index": 30,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "3e899040f6cdde7a91df78a6cbb1324437ddaabdbe2ce831421d1ee8974562e5"
+          },
+          "new": {
+            "body": 57,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 34,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "bbae51f856423a4e35fa15571e40ea3def85a326fc37a83fb7672416cf97d8b5"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "land",
+          "old": {
+            "body": 49,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 25,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "c28b1bf9d335ef1523335373bf7d675dbd9935a63d530d2c60ac8208271d58d0"
+          },
+          "new": {
+            "body": 48,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 50,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "4d84b439d75ff2321e11969ab0333cc02206ab4a6072f8114a3856657a37c89e"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "instinct",
+          "old": {
+            "body": 55,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "6ce11cb19e0b6b456d2266cf1e52f9fb32672e953331f29465955ae4b788ecdb"
+          },
+          "new": {
+            "body": 51,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 53,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "e216623c001848b9cea2cb4f64d339cf6e19d905bdb6a3961d6f323e2efc3df0"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "advance",
+          "old": {
+            "body": 62,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 1,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "e84a13e2e3d889ae66c37891eacee34fb2051895145018911e1f9a840928aa08"
+          },
+          "new": {
+            "body": 59,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 57,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "b496da59eb6ed524516c9bf96d898ea3c7e83ca75811286d36ee70f7dbacf78b"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "invoke",
+          "old": {
+            "body": 60,
+            "foot": 6,
+            "calls": [
+              {
+                "index": 12,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "93653db91338e5ce1040883aeb430dec4f98fb8fd0d8473d9a8eca2ea060b8c1"
+          },
+          "new": {
+            "body": 66,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 61,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "a21ea974259da645f4e2ff2712efcde644a11f660a77a5ea779d2feec10b71fa"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "exhausted",
+          "old": {
+            "body": 53,
+            "foot": -1,
+            "calls": [
+              {
+                "index": 18,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "19d6f6e41e0e625f9d26d97f7eeca490eeea2b5e7a1c8ad4bec83e0399241ba2"
+          },
+          "new": {
+            "body": 45,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 42,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": true
+              }
+            ],
+            "sha256": "732f4e81ce8cb76e2abac94245b04e8364649f0460e63bfa2ddd8acfbc96087a"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "hit",
+          "old": {
+            "body": 60,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 20,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "9952027011dbdc438b07950c125e8c8751d20d79842a384afe80001fbe4eef97"
+          },
+          "new": {
+            "body": 56,
+            "foot": -2,
+            "calls": [
+              {
+                "index": 36,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.7802845512117659,
+                "flip": false
+              }
+            ],
+            "sha256": "34fd1d3653429c12f8ab6e56c5d5b3eb024183a1b2cbcfdeebab1e70f8f4fb6d"
+          },
+          "aba": true
+        },
+        {
+          "view": "left",
+          "state": "death",
+          "old": {
+            "body": 61,
+            "foot": 5,
+            "calls": [
+              {
+                "index": 14,
+                "url": "http://127.0.0.1:43101/assets/sprites/champions/ilkan/v2/atlas.webp",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "40989016da918d2ff762399bcb8de5ac072a11f5fe508997a50fdd33182b2ce5"
+          },
+          "new": {
+            "body": 47,
+            "foot": 1,
+            "calls": [
+              {
+                "index": 38,
+                "url": "http://127.0.0.1:43101/art-source/entregas/ilkan-codex-20261029/produccion-01/candidate-atlas.png",
+                "scale": 0.9257142857142858,
+                "flip": false
+              }
+            ],
+            "sha256": "448d3ae91cc2903b79f91abcdf947c130be3b8ddd5159a642eb3ec7ef702ed4b"
+          },
+          "aba": true
+        }
+      ],
+      "native": [
+        {
+          "index": 0,
+          "w": 192,
+          "h": 128,
+          "opaque": 2730,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1,
+            "4": 1.01,
+            "5": 1.04,
+            "6": 1.02,
+            "7": 1.02,
+            "8": 1.04
+          },
+          "tonos": 319,
+          "suave": 0.21,
+          "aa": 0,
+          "ruido": 123.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 1,
+          "w": 192,
+          "h": 128,
+          "opaque": 2677,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.01,
+            "4": 1,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.02,
+            "8": 1.01
+          },
+          "tonos": 312,
+          "suave": 0.208,
+          "aa": 0,
+          "ruido": 124,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 2,
+          "w": 192,
+          "h": 128,
+          "opaque": 2621,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1,
+            "4": 1.03,
+            "5": 1.02,
+            "6": 1.03,
+            "7": 1.01,
+            "8": 1.02
+          },
+          "tonos": 318,
+          "suave": 0.197,
+          "aa": 0,
+          "ruido": 111.8,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 3,
+          "w": 192,
+          "h": 128,
+          "opaque": 2715,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.03,
+            "4": 1.02,
+            "5": 1.02,
+            "6": 1.03,
+            "7": 1,
+            "8": 1.01
+          },
+          "tonos": 321,
+          "suave": 0.211,
+          "aa": 0,
+          "ruido": 123,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 4,
+          "w": 192,
+          "h": 128,
+          "opaque": 2740,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.04,
+            "3": 1.01,
+            "4": 1.02,
+            "5": 1.04,
+            "6": 1.01,
+            "7": 1,
+            "8": 1.02
+          },
+          "tonos": 321,
+          "suave": 0.213,
+          "aa": 0,
+          "ruido": 112.8,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 5,
+          "w": 192,
+          "h": 128,
+          "opaque": 2711,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.01,
+            "4": 1,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.01,
+            "8": 1
+          },
+          "tonos": 331,
+          "suave": 0.217,
+          "aa": 0,
+          "ruido": 111,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 6,
+          "w": 192,
+          "h": 128,
+          "opaque": 2734,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.04,
+            "4": 1.02,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.03,
+            "8": 1.01
+          },
+          "tonos": 321,
+          "suave": 0.217,
+          "aa": 0,
+          "ruido": 124,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 7,
+          "w": 192,
+          "h": 128,
+          "opaque": 2725,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.02,
+            "4": 1.04,
+            "5": 1.03,
+            "6": 1.01,
+            "7": 1.04,
+            "8": 1.02
+          },
+          "tonos": 327,
+          "suave": 0.209,
+          "aa": 0,
+          "ruido": 101.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 8,
+          "w": 192,
+          "h": 128,
+          "opaque": 2358,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.03,
+            "4": 1,
+            "5": 1.02,
+            "6": 1.01,
+            "7": 1.01,
+            "8": 1.04
+          },
+          "tonos": 259,
+          "suave": 0.3,
+          "aa": 0,
+          "ruido": 104.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 9,
+          "w": 192,
+          "h": 128,
+          "opaque": 2407,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.06,
+            "3": 1.03,
+            "4": 1.01,
+            "5": 1,
+            "6": 1.08,
+            "7": 1.03,
+            "8": 1.01
+          },
+          "tonos": 283,
+          "suave": 0.28,
+          "aa": 0,
+          "ruido": 101,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 10,
+          "w": 192,
+          "h": 128,
+          "opaque": 2331,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.05,
+            "3": 1.07,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1.06,
+            "7": 1.01,
+            "8": 1.04
+          },
+          "tonos": 267,
+          "suave": 0.3,
+          "aa": 0,
+          "ruido": 109.4,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 11,
+          "w": 192,
+          "h": 128,
+          "opaque": 2370,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.05,
+            "3": 1.01,
+            "4": 1.05,
+            "5": 1.06,
+            "6": 1.06,
+            "7": 1.01,
+            "8": 1.04
+          },
+          "tonos": 262,
+          "suave": 0.309,
+          "aa": 0,
+          "ruido": 90.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 12,
+          "w": 192,
+          "h": 128,
+          "opaque": 2387,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.04,
+            "5": 1.03,
+            "6": 1.04,
+            "7": 1.06,
+            "8": 1.04
+          },
+          "tonos": 260,
+          "suave": 0.303,
+          "aa": 0,
+          "ruido": 109.8,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 13,
+          "w": 192,
+          "h": 128,
+          "opaque": 2573,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.04,
+            "3": 1.01,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1.06,
+            "7": 1.03,
+            "8": 1.03
+          },
+          "tonos": 253,
+          "suave": 0.316,
+          "aa": 0,
+          "ruido": 101,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 14,
+          "w": 192,
+          "h": 128,
+          "opaque": 2362,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.03,
+            "5": 1.02,
+            "6": 1,
+            "7": 1,
+            "8": 1.01
+          },
+          "tonos": 266,
+          "suave": 0.319,
+          "aa": 0,
+          "ruido": 77.9,
+          "eff": 0.78,
+          "issues": [
+            "ILUSTRACION"
+          ]
+        },
+        {
+          "index": 15,
+          "w": 192,
+          "h": 128,
+          "opaque": 2562,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.08,
+            "3": 1.05,
+            "4": 1.05,
+            "5": 1,
+            "6": 1.04,
+            "7": 1.04,
+            "8": 1
+          },
+          "tonos": 267,
+          "suave": 0.31,
+          "aa": 0,
+          "ruido": 107.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 16,
+          "w": 192,
+          "h": 128,
+          "opaque": 3109,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.01,
+            "4": 1.02,
+            "5": 1.01,
+            "6": 1.04,
+            "7": 1,
+            "8": 1.01
+          },
+          "tonos": 251,
+          "suave": 0.358,
+          "aa": 0,
+          "ruido": 90.4,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 17,
+          "w": 192,
+          "h": 128,
+          "opaque": 2924,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.05,
+            "3": 1.01,
+            "4": 1.04,
+            "5": 1.01,
+            "6": 1.05,
+            "7": 1.01,
+            "8": 1.07
+          },
+          "tonos": 229,
+          "suave": 0.361,
+          "aa": 0,
+          "ruido": 102.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 18,
+          "w": 192,
+          "h": 128,
+          "opaque": 3073,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.03,
+            "5": 1.02,
+            "6": 1.01,
+            "7": 1.01,
+            "8": 1
+          },
+          "tonos": 235,
+          "suave": 0.365,
+          "aa": 0,
+          "ruido": 92.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 19,
+          "w": 192,
+          "h": 128,
+          "opaque": 3001,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.01,
+            "5": 1,
+            "6": 1.04,
+            "7": 1.01,
+            "8": 1
+          },
+          "tonos": 245,
+          "suave": 0.357,
+          "aa": 0,
+          "ruido": 95,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 20,
+          "w": 192,
+          "h": 128,
+          "opaque": 2975,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.06,
+            "3": 1.02,
+            "4": 1.07,
+            "5": 1.03,
+            "6": 1.03,
+            "7": 1.05,
+            "8": 1.03
+          },
+          "tonos": 250,
+          "suave": 0.366,
+          "aa": 0,
+          "ruido": 95.5,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 21,
+          "w": 192,
+          "h": 128,
+          "opaque": 2780,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.02,
+            "4": 1.04,
+            "5": 1.01,
+            "6": 1.02,
+            "7": 1.06,
+            "8": 1
+          },
+          "tonos": 239,
+          "suave": 0.337,
+          "aa": 0,
+          "ruido": 95.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 22,
+          "w": 192,
+          "h": 128,
+          "opaque": 2890,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.01,
+            "4": 1.05,
+            "5": 1.01,
+            "6": 1.04,
+            "7": 1.09,
+            "8": 1.01
+          },
+          "tonos": 256,
+          "suave": 0.359,
+          "aa": 0,
+          "ruido": 97.6,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 23,
+          "w": 192,
+          "h": 128,
+          "opaque": 2940,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.12,
+            "3": 1.03,
+            "4": 1.01,
+            "5": 1.02,
+            "6": 1.06,
+            "7": 1.03,
+            "8": 1.01
+          },
+          "tonos": 242,
+          "suave": 0.353,
+          "aa": 0,
+          "ruido": 91.2,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 24,
+          "w": 192,
+          "h": 128,
+          "opaque": 2509,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.04,
+            "4": 1,
+            "5": 1.07,
+            "6": 1.02,
+            "7": 1.03,
+            "8": 1.2
+          },
+          "tonos": 274,
+          "suave": 0.295,
+          "aa": 0,
+          "ruido": 99.2,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 25,
+          "w": 192,
+          "h": 128,
+          "opaque": 2541,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.03,
+            "4": 1.03,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.09,
+            "8": 1.04
+          },
+          "tonos": 276,
+          "suave": 0.276,
+          "aa": 0,
+          "ruido": 92.9,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 26,
+          "w": 192,
+          "h": 128,
+          "opaque": 2498,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.03,
+            "4": 1,
+            "5": 1,
+            "6": 1.07,
+            "7": 1.03,
+            "8": 1.02
+          },
+          "tonos": 265,
+          "suave": 0.303,
+          "aa": 0,
+          "ruido": 106.9,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 27,
+          "w": 192,
+          "h": 128,
+          "opaque": 2463,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.02,
+            "4": 1.01,
+            "5": 1.09,
+            "6": 1.13,
+            "7": 1.03,
+            "8": 1.04
+          },
+          "tonos": 271,
+          "suave": 0.285,
+          "aa": 0,
+          "ruido": 90.9,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 28,
+          "w": 192,
+          "h": 128,
+          "opaque": 2549,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.01,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.03,
+            "8": 1.06
+          },
+          "tonos": 266,
+          "suave": 0.305,
+          "aa": 0,
+          "ruido": 105.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 29,
+          "w": 192,
+          "h": 128,
+          "opaque": 2592,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.04,
+            "3": 1.05,
+            "4": 1,
+            "5": 1.01,
+            "6": 1,
+            "7": 1.04,
+            "8": 1.02
+          },
+          "tonos": 261,
+          "suave": 0.311,
+          "aa": 0,
+          "ruido": 110.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 30,
+          "w": 192,
+          "h": 128,
+          "opaque": 2559,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.05,
+            "4": 1.01,
+            "5": 1,
+            "6": 1.04,
+            "7": 1.12,
+            "8": 1.02
+          },
+          "tonos": 276,
+          "suave": 0.302,
+          "aa": 0,
+          "ruido": 90.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 31,
+          "w": 192,
+          "h": 128,
+          "opaque": 2605,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.06,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1.03,
+            "7": 1.08,
+            "8": 1.04
+          },
+          "tonos": 271,
+          "suave": 0.31,
+          "aa": 0,
+          "ruido": 97.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 32,
+          "w": 192,
+          "h": 128,
+          "opaque": 2951,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.04,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1.06,
+            "7": 1,
+            "8": 1.02
+          },
+          "tonos": 333,
+          "suave": 0.223,
+          "aa": 0,
+          "ruido": 129.8,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 33,
+          "w": 192,
+          "h": 128,
+          "opaque": 2916,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.04,
+            "5": 1.05,
+            "6": 1,
+            "7": 1.01,
+            "8": 1.01
+          },
+          "tonos": 290,
+          "suave": 0.225,
+          "aa": 0,
+          "ruido": 113.9,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 34,
+          "w": 192,
+          "h": 128,
+          "opaque": 3017,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.01,
+            "4": 1,
+            "5": 1,
+            "6": 1,
+            "7": 1.02,
+            "8": 1
+          },
+          "tonos": 308,
+          "suave": 0.223,
+          "aa": 0,
+          "ruido": 125.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 35,
+          "w": 192,
+          "h": 128,
+          "opaque": 2767,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.05,
+            "4": 1,
+            "5": 1.03,
+            "6": 1,
+            "7": 1.06,
+            "8": 1
+          },
+          "tonos": 327,
+          "suave": 0.213,
+          "aa": 0,
+          "ruido": 125,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 36,
+          "w": 192,
+          "h": 128,
+          "opaque": 3132,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1,
+            "4": 1.03,
+            "5": 1.11,
+            "6": 1.01,
+            "7": 1.06,
+            "8": 1.01
+          },
+          "tonos": 302,
+          "suave": 0.209,
+          "aa": 0,
+          "ruido": 120.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 37,
+          "w": 192,
+          "h": 128,
+          "opaque": 3017,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.03,
+            "4": 1.02,
+            "5": 1.01,
+            "6": 1,
+            "7": 1.01,
+            "8": 1
+          },
+          "tonos": 322,
+          "suave": 0.182,
+          "aa": 0,
+          "ruido": 124,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 38,
+          "w": 192,
+          "h": 128,
+          "opaque": 2490,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.03,
+            "3": 1.05,
+            "4": 1.07,
+            "5": 1.01,
+            "6": 1.14,
+            "7": 1,
+            "8": 1.01
+          },
+          "tonos": 288,
+          "suave": 0.219,
+          "aa": 0,
+          "ruido": 115.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 39,
+          "w": 192,
+          "h": 128,
+          "opaque": 1995,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.02,
+            "4": 1.02,
+            "5": 1.04,
+            "6": 1.03,
+            "7": 1.06,
+            "8": 1.02
+          },
+          "tonos": 295,
+          "suave": 0.177,
+          "aa": 0,
+          "ruido": 103.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 40,
+          "w": 192,
+          "h": 128,
+          "opaque": 3278,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.01,
+            "4": 1.01,
+            "5": 1.07,
+            "6": 1,
+            "7": 1.02,
+            "8": 1.05
+          },
+          "tonos": 365,
+          "suave": 0.207,
+          "aa": 0,
+          "ruido": 105.9,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 41,
+          "w": 192,
+          "h": 128,
+          "opaque": 2819,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.04,
+            "3": 1,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1.08,
+            "7": 1.13,
+            "8": 1.01
+          },
+          "tonos": 315,
+          "suave": 0.235,
+          "aa": 0,
+          "ruido": 97.2,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 42,
+          "w": 192,
+          "h": 128,
+          "opaque": 2510,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.04,
+            "3": 1.1,
+            "4": 1.02,
+            "5": 1,
+            "6": 1.18,
+            "7": 1.04,
+            "8": 1.02
+          },
+          "tonos": 308,
+          "suave": 0.242,
+          "aa": 0,
+          "ruido": 106,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 43,
+          "w": 192,
+          "h": 128,
+          "opaque": 3135,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.06,
+            "4": 1.04,
+            "5": 1.07,
+            "6": 1.02,
+            "7": 1.02,
+            "8": 1.03
+          },
+          "tonos": 370,
+          "suave": 0.201,
+          "aa": 0,
+          "ruido": 104.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 44,
+          "w": 192,
+          "h": 128,
+          "opaque": 3474,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.01,
+            "5": 1.06,
+            "6": 1.02,
+            "7": 1.19,
+            "8": 1.03
+          },
+          "tonos": 314,
+          "suave": 0.25,
+          "aa": 0,
+          "ruido": 107.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 45,
+          "w": 192,
+          "h": 128,
+          "opaque": 3634,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.04,
+            "3": 1.01,
+            "4": 1.02,
+            "5": 1,
+            "6": 1,
+            "7": 1.04,
+            "8": 1.07
+          },
+          "tonos": 325,
+          "suave": 0.252,
+          "aa": 0,
+          "ruido": 109.2,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 46,
+          "w": 192,
+          "h": 128,
+          "opaque": 3153,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.05,
+            "3": 1.01,
+            "4": 1.08,
+            "5": 1.05,
+            "6": 1,
+            "7": 1.06,
+            "8": 1.01
+          },
+          "tonos": 304,
+          "suave": 0.261,
+          "aa": 0,
+          "ruido": 97.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 47,
+          "w": 192,
+          "h": 128,
+          "opaque": 2701,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.02,
+            "4": 1,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.03,
+            "8": 1.02
+          },
+          "tonos": 264,
+          "suave": 0.268,
+          "aa": 0,
+          "ruido": 90.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 48,
+          "w": 192,
+          "h": 128,
+          "opaque": 2935,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.03,
+            "4": 1.01,
+            "5": 1.01,
+            "6": 1,
+            "7": 1.01,
+            "8": 1.06
+          },
+          "tonos": 274,
+          "suave": 0.286,
+          "aa": 0,
+          "ruido": 97.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 49,
+          "w": 192,
+          "h": 128,
+          "opaque": 2866,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.05,
+            "4": 1.01,
+            "5": 1.02,
+            "6": 1.01,
+            "7": 1.01,
+            "8": 1.04
+          },
+          "tonos": 250,
+          "suave": 0.289,
+          "aa": 0,
+          "ruido": 90,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 50,
+          "w": 192,
+          "h": 128,
+          "opaque": 2703,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1,
+            "4": 1.01,
+            "5": 1,
+            "6": 1.06,
+            "7": 1.03,
+            "8": 1.02
+          },
+          "tonos": 278,
+          "suave": 0.249,
+          "aa": 0,
+          "ruido": 105.4,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 51,
+          "w": 192,
+          "h": 128,
+          "opaque": 3164,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1,
+            "4": 1.02,
+            "5": 1.06,
+            "6": 1.02,
+            "7": 1.1,
+            "8": 1.01
+          },
+          "tonos": 309,
+          "suave": 0.248,
+          "aa": 0,
+          "ruido": 111.3,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 52,
+          "w": 192,
+          "h": 128,
+          "opaque": 3010,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1,
+            "4": 1,
+            "5": 1.04,
+            "6": 1.01,
+            "7": 1.07,
+            "8": 1.01
+          },
+          "tonos": 297,
+          "suave": 0.22,
+          "aa": 0,
+          "ruido": 113,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 53,
+          "w": 192,
+          "h": 128,
+          "opaque": 2825,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.02,
+            "4": 1.01,
+            "5": 1.02,
+            "6": 1.05,
+            "7": 1.07,
+            "8": 1.08
+          },
+          "tonos": 290,
+          "suave": 0.25,
+          "aa": 0,
+          "ruido": 110.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 54,
+          "w": 192,
+          "h": 128,
+          "opaque": 3055,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.07,
+            "4": 1.03,
+            "5": 1,
+            "6": 1.03,
+            "7": 1.03,
+            "8": 1.03
+          },
+          "tonos": 322,
+          "suave": 0.251,
+          "aa": 0,
+          "ruido": 99.8,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 55,
+          "w": 192,
+          "h": 128,
+          "opaque": 3043,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.03,
+            "4": 1.01,
+            "5": 1.07,
+            "6": 1.07,
+            "7": 1,
+            "8": 1
+          },
+          "tonos": 311,
+          "suave": 0.25,
+          "aa": 0,
+          "ruido": 104.2,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 56,
+          "w": 192,
+          "h": 128,
+          "opaque": 3304,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1.02,
+            "5": 1,
+            "6": 1.06,
+            "7": 1.01,
+            "8": 1.16
+          },
+          "tonos": 322,
+          "suave": 0.193,
+          "aa": 0,
+          "ruido": 120.8,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 57,
+          "w": 192,
+          "h": 128,
+          "opaque": 3500,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.01,
+            "4": 1,
+            "5": 1.02,
+            "6": 1.02,
+            "7": 1.06,
+            "8": 1.06
+          },
+          "tonos": 328,
+          "suave": 0.223,
+          "aa": 0,
+          "ruido": 104.9,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 58,
+          "w": 192,
+          "h": 128,
+          "opaque": 3012,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.05,
+            "3": 1.05,
+            "4": 1.02,
+            "5": 1.05,
+            "6": 1.05,
+            "7": 1.04,
+            "8": 1.02
+          },
+          "tonos": 317,
+          "suave": 0.233,
+          "aa": 0,
+          "ruido": 112.5,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 59,
+          "w": 192,
+          "h": 128,
+          "opaque": 2895,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.05,
+            "3": 1.02,
+            "4": 1.04,
+            "5": 1.02,
+            "6": 1.08,
+            "7": 1.18,
+            "8": 1.03
+          },
+          "tonos": 287,
+          "suave": 0.256,
+          "aa": 0,
+          "ruido": 113.6,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 60,
+          "w": 192,
+          "h": 128,
+          "opaque": 3346,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.02,
+            "3": 1.04,
+            "4": 1.06,
+            "5": 1.02,
+            "6": 1.01,
+            "7": 1.02,
+            "8": 1.02
+          },
+          "tonos": 339,
+          "suave": 0.229,
+          "aa": 0,
+          "ruido": 106.1,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 61,
+          "w": 192,
+          "h": 128,
+          "opaque": 3244,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1,
+            "3": 1.03,
+            "4": 1.01,
+            "5": 1.02,
+            "6": 1.03,
+            "7": 1.01,
+            "8": 1.01
+          },
+          "tonos": 356,
+          "suave": 0.186,
+          "aa": 0,
+          "ruido": 114.7,
+          "eff": 0.78,
+          "issues": []
+        },
+        {
+          "index": 62,
+          "w": 192,
+          "h": 128,
+          "opaque": 3186,
+          "block": 1,
+          "blockScore": 0,
+          "pk": {
+            "2": 1.01,
+            "3": 1.01,
+            "4": 1,
+            "5": 1.01,
+            "6": 1.01,
+            "7": 1.04,
+            "8": 1
+          },
+          "tonos": 319,
+          "suave": 0.216,
+          "aa": 0,
+          "ruido": 115.8,
+          "eff": 0.78,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

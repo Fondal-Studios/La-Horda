@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen, original PNG preserved",
+  "reproduction": "python tools/art/pack-guardian-codex.py",
+  "scope": "Reproduces atlas bytes from saved authored sources, not deterministic AI generation. No palette filter or threshold relaxation.",
+  "frames": "48 authored poses each in atlas, 126 new unique poses actually selected across three packs, plus four old Ilvar transformation poses. Ilvar18 rejected; rear04 replaces8. Extra sources supply4 idle/4 hit/6 death and passing walk poses; explicit mirrored left clips preserve contract.",
+  "packing": "alpha>127 binary extraction, nearest resampling, 192x160 cell, 4cols13rows; source geometry and explicit Sylva feet anchors in script. Detached Ilvar recoil staff retained.",
+  "normalization": "Only base entries musashi/cazadora/nigromante measured against roster. Skins unchanged.",
+  "commands": [
+    "node tools/art/guardian-codex-native.js",
+    "node tools/art/guardian-codex-temporal.js",
+    "node tools/art/game-guardian-codex.js",
+    "node tools/art/guardian-codex-online.js",
+    "ROSTER_BASE_URL=<local server> node tools/art/roster_gate.js"
+  ]
+}

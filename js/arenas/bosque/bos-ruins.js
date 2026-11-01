@@ -369,6 +369,8 @@ function bosDrawGround(now){
     if(a.t <= 0 || !inView(a.x, a.y, 90)) continue;
     const k = 1 - a.t/BOS_CFG.ambushWarn, shake = Math.sin(now*40 + a.seed)*(2 + k*4);
     ctx.save(); ctx.translate(Math.round(a.x + shake), Math.round(a.y));
+    const sprite = typeof arenaWorldDraw==='function' && arenaWorldDraw('bosque','bush'+Math.floor(now*9+a.seed)%4,0,0,48);
+    if(!sprite){
     ctx.fillStyle = "rgba(0,0,0,0.3)"; ctx.beginPath(); ctx.ellipse(0, 4, 34, 11, 0, 0, Math.PI*2); ctx.fill();
     const rnd = _infRng(a.seed);
     for(let i=0;i<9;i++){
@@ -378,6 +380,7 @@ function bosDrawGround(now){
     }
     // ojos en la maleza al final del aviso
     if(k > 0.55){ ctx.fillStyle = "#ffe066"; ctx.fillRect(-9, -14, 3, 2); ctx.fillRect(4, -14, 3, 2); }
+    }
     ctx.restore();
     // "!" encima
     ctx.save(); ctx.fillStyle = k > 0.7 && Math.sin(now*20) > 0 ? "#ff4a3a" : "#ffcf5c"; ctx.font = pxFont(22); ctx.textAlign = "center";
@@ -406,11 +409,13 @@ function bosDrawTall(it, now){
   const x = r.mx, y = r.my - 78, col = BOS_COL[r.st] || BOS_COL.ctrl, lit = bosIsLit(r);
   if(r.dop && typeof bosDoppelDrawTether==="function") bosDoppelDrawTether(r, now);
   ctx.save();
+  if(typeof arenaWorldReady!=='function' || !arenaWorldReady('bosque')){
   ctx.fillStyle = "rgba(10,20,8,0.75)"; ctx.fillRect(x-7, y-12, 14, 24);
   const fill = r.st==="arming" || r.st==="finale" ? Math.round(22*Math.min(1, r.arm||0)) : (r.st==="ctrl" ? 0 : 22);
   ctx.fillStyle = col[0]; ctx.fillRect(x-5, y+10-fill, 10, fill);
   ctx.fillStyle = col[1];
   ctx.fillRect(x-1, y-9, 2, 18); ctx.fillRect(x-5, y-9, 2, 6); ctx.fillRect(x+3, y-9, 2, 6); ctx.fillRect(x-4, y-4, 2, 2); ctx.fillRect(x+2, y-4, 2, 2);
+  }
   if(lit || r.st==="arming" || r.flash > 0 || r.st==="sealed"){
     ctx.globalCompositeOperation = "lighter";
     const a = r.flash > 0 ? r.flash/900 : (lit ? 0.55 + 0.3*Math.sin(now*(r.st==="corrupt" ? 9 : 5) + r.mx) : (r.st==="sealed" ? 0.25 : 0.2 + 0.4*(r.arm||0)));

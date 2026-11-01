@@ -1,0 +1,1333 @@
+{
+  "base": "c0a025016e0315b93870f2f4c86abb846619d30e",
+  "scope": "43 cuerpos base comparados contra Códice en renderer;104 enemigos revisados en contactos previos. No aprobación integral de skins/animaciones por estas muestras. LISTO integral:0 hasta completar gates individuales. Sustituye clasificación técnica como criterio de prioridad artística.",
+  "counts": {
+    "CON_PENDIENTES": 131,
+    "CRITICO_VISUAL": 16
+  },
+  "rows": [
+    {
+      "id": "tanque",
+      "name": "Aldric, el Último Bastión",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral. Trabajo concurrente PR232: no duplicar.",
+      "reference": "assets/ui/codex/champions/tanque.png",
+      "evidence": "heroes-0.png"
+    },
+    {
+      "id": "guerrero",
+      "name": "Kael, la Daga Carmesí",
+      "group": "Campeón",
+      "category": "CRITICO_VISUAL",
+      "detail": "Vestuario oscuro y verde; falta la identidad carmesí del Códice. En PR232 ajena.",
+      "reference": "assets/ui/codex/champions/guerrero.png",
+      "evidence": "heroes-0.png"
+    },
+    {
+      "id": "mago",
+      "name": "Thalen, el Tejedor Elemental",
+      "group": "Campeón",
+      "category": "CRITICO_VISUAL",
+      "detail": "La muestra de espalda dibuja el perfil/frente; revisar selección y poses.",
+      "reference": "assets/ui/codex/champions/mago.png",
+      "evidence": "heroes-0.png"
+    },
+    {
+      "id": "soporte",
+      "name": "Elyra, la Guardiana del Alba",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/soporte.png",
+      "evidence": "heroes-0.png"
+    },
+    {
+      "id": "segador",
+      "name": "Segador, el Olvidado",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/segador.png",
+      "evidence": "heroes-0.png"
+    },
+    {
+      "id": "axiom",
+      "name": "Axiom, el Reescritor",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/axiom.png",
+      "evidence": "heroes-0.png"
+    },
+    {
+      "id": "profeta",
+      "name": "Ismara, la Profeta Ciega",
+      "group": "Campeón",
+      "category": "CRITICO_VISUAL",
+      "detail": "Falta el gran sombrero y la silueta del Códice.",
+      "reference": "assets/ui/codex/champions/profeta.png",
+      "evidence": "heroes-1.png"
+    },
+    {
+      "id": "musashi",
+      "name": "Musashi, el Rōnin del Bokken",
+      "group": "Campeón",
+      "category": "CRITICO_VISUAL",
+      "detail": "Kimono azul, barba y bokken ausentes del cuerpo anterior. Reemplazo actual en validación.",
+      "reference": "assets/ui/codex/champions/musashi.png",
+      "evidence": "heroes-1.png"
+    },
+    {
+      "id": "cazadora",
+      "name": "Sylva, la Cazadora del Bosque",
+      "group": "Campeón",
+      "category": "CRITICO_VISUAL",
+      "detail": "Falta capucha de hojas y silueta de exploradora. Reemplazo actual en validación.",
+      "reference": "assets/ui/codex/champions/cazadora.png",
+      "evidence": "heroes-1.png"
+    },
+    {
+      "id": "nigromante",
+      "name": "Ilvar, el Señor de las Criptas",
+      "group": "Campeón",
+      "category": "CRITICO_VISUAL",
+      "detail": "Faltan máscara, armadura de cráneos y bastón de calavera reconocibles. Reemplazo actual en validación.",
+      "reference": "assets/ui/codex/champions/nigromante.png",
+      "evidence": "heroes-1.png"
+    },
+    {
+      "id": "libertador",
+      "name": "San Martín, el Libertador",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/libertador.png",
+      "evidence": "heroes-1.png"
+    },
+    {
+      "id": "ilkan",
+      "name": "Ilkan, el Caminante de Dunas",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/ilkan.png",
+      "evidence": "heroes-1.png"
+    },
+    {
+      "id": "ynara",
+      "name": "Ynara, la Médica de los Refugios",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/ynara.png",
+      "evidence": "heroes-2.png"
+    },
+    {
+      "id": "myla",
+      "name": "Myla, la Niña de la Cuchara",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/myla.png",
+      "evidence": "heroes-2.png"
+    },
+    {
+      "id": "brasa",
+      "name": "Brasa, la Mecánica Fugitiva",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/brasa.png",
+      "evidence": "heroes-2.png"
+    },
+    {
+      "id": "eslabon",
+      "name": "Garren, el Eslabón",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/eslabon.png",
+      "evidence": "heroes-2.png"
+    },
+    {
+      "id": "morwen",
+      "name": "Morwen, la Destiladora de Ecos",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/morwen.png",
+      "evidence": "heroes-2.png"
+    },
+    {
+      "id": "farolero",
+      "name": "Tobías, el Farolero",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/farolero.png",
+      "evidence": "heroes-2.png"
+    },
+    {
+      "id": "iria",
+      "name": "Iria, la Tejedora de Límites",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/iria.png",
+      "evidence": "heroes-3.png"
+    },
+    {
+      "id": "vesper",
+      "name": "Vesper, la Costurera de Sombras",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/vesper.png",
+      "evidence": "heroes-3.png"
+    },
+    {
+      "id": "nahir",
+      "name": "Nahir, el Restaurador de Espejos",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/nahir.png",
+      "evidence": "heroes-3.png"
+    },
+    {
+      "id": "baltra",
+      "name": "Baltra, la Campana Sumergida",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/baltra.png",
+      "evidence": "heroes-3.png"
+    },
+    {
+      "id": "maura",
+      "name": "Maura, la Pastora de Espinas",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/maura.png",
+      "evidence": "heroes-3.png"
+    },
+    {
+      "id": "dariel",
+      "name": "Dáriel, el Último Compás",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/dariel.png",
+      "evidence": "heroes-3.png"
+    },
+    {
+      "id": "orsa",
+      "name": "Orsa, la Guardacables",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/orsa.png",
+      "evidence": "heroes-4.png"
+    },
+    {
+      "id": "tibor",
+      "name": "Tibor, el Rey sin Corona",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/tibor.png",
+      "evidence": "heroes-4.png"
+    },
+    {
+      "id": "zahra",
+      "name": "Zahra, la Mano de la Válvula",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/zahra.png",
+      "evidence": "heroes-4.png"
+    },
+    {
+      "id": "renko",
+      "name": "Renko, el Jardinero de Nombres",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/renko.png",
+      "evidence": "heroes-4.png"
+    },
+    {
+      "id": "sira",
+      "name": "Sira, la Cartógrafa del Regreso",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/sira.png",
+      "evidence": "heroes-4.png"
+    },
+    {
+      "id": "nano_gm",
+      "name": "Nano GM, el Regente del Umbral",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/nano_gm.png",
+      "evidence": "heroes-4.png"
+    },
+    {
+      "id": "facu_gm",
+      "name": "Facu GM, el Soberano de las Mareas",
+      "group": "Campeón",
+      "category": "CRITICO_VISUAL",
+      "detail": "Capas azules se leen como paneles blancos/alas rígidas; material y silueta por corregir.",
+      "reference": "assets/ui/codex/champions/facu_gm.png",
+      "evidence": "heroes-5.png"
+    },
+    {
+      "id": "aurelia",
+      "name": "Aurelia, la Arquitecta Solar",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/aurelia.png",
+      "evidence": "heroes-5.png"
+    },
+    {
+      "id": "khepri",
+      "name": "Khepri, el Portador del Enjambre",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/khepri.png",
+      "evidence": "heroes-5.png"
+    },
+    {
+      "id": "velmira",
+      "name": "Velmira, la Reina de las Máscaras",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/velmira.png",
+      "evidence": "heroes-5.png"
+    },
+    {
+      "id": "vhal",
+      "name": "Vhal, el Astrónomo Caído",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/vhal.png",
+      "evidence": "heroes-5.png"
+    },
+    {
+      "id": "bront",
+      "name": "Bront, la Fortaleza Viviente",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/bront.png",
+      "evidence": "heroes-5.png"
+    },
+    {
+      "id": "oriel",
+      "name": "Oriel, la Portera de las Cicatrices",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/oriel.png",
+      "evidence": "heroes-6.png"
+    },
+    {
+      "id": "saelis",
+      "name": "Saelis, la Heraldo del Plumaje",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/saelis.png",
+      "evidence": "heroes-6.png"
+    },
+    {
+      "id": "solciju",
+      "name": "Solciju, la Enóloga",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral.",
+      "reference": "assets/ui/codex/champions/solciju.png",
+      "evidence": "heroes-6.png"
+    },
+    {
+      "id": "veyra",
+      "name": "Veyra, la Última Herida",
+      "group": "Campeón",
+      "category": "CRITICO_VISUAL",
+      "detail": "Capa y masa de cabello/armadura insuficientes; PR233 en corrección, no duplicar.",
+      "reference": "assets/ui/codex/champions/veyra.png",
+      "evidence": "heroes-6.png"
+    },
+    {
+      "id": "brakk",
+      "name": "Brakk, el Arquitecto del Fin",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral. Trabajo concurrente PR232: no duplicar.",
+      "reference": "assets/ui/codex/champions/brakk.png",
+      "evidence": "heroes-6.png"
+    },
+    {
+      "id": "morveth",
+      "name": "Morveth, el Jardinero de la Peste",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral. Trabajo concurrente PR232: no duplicar.",
+      "reference": "assets/ui/codex/champions/morveth.png",
+      "evidence": "heroes-6.png"
+    },
+    {
+      "id": "aelith",
+      "name": "Aelith, la Ladrona de Segundos",
+      "group": "Campeón",
+      "category": "CON_PENDIENTES",
+      "detail": "Identidad base reconocible en cuatro vistas. Pendiente revisar secuencias completas, skins y composición para aprobación integral. Trabajo concurrente PR232: no duplicar.",
+      "reference": "assets/ui/codex/champions/aelith.png",
+      "evidence": "heroes-7.png"
+    },
+    {
+      "id": "esqueleto",
+      "name": "Esqueleto",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "infernal"
+    },
+    {
+      "id": "zombie",
+      "name": "Zombi",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "infernal"
+    },
+    {
+      "id": "esqueleto_h",
+      "name": "Esqueleto Cornudo",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "infernal"
+    },
+    {
+      "id": "demonio_menor",
+      "name": "Demonio Menor",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "infernal"
+    },
+    {
+      "id": "golem",
+      "name": "Gólem",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "infernal"
+    },
+    {
+      "id": "demonio_mago",
+      "name": "Demonio Hechicero",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "infernal"
+    },
+    {
+      "id": "demonio_mayor",
+      "name": "Demonio Mayor",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "infernal"
+    },
+    {
+      "id": "hechicero_supremo",
+      "name": "Hechicero Supremo",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "infernal"
+    },
+    {
+      "id": "golem_cuerpos",
+      "name": "Golem de Cuerpos",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "infernal"
+    },
+    {
+      "id": "angel_corrompido",
+      "name": "Ángel Corrompido",
+      "group": "Jefe/guardián",
+      "category": "CRITICO_VISUAL",
+      "detail": "Cuerpo superior recortado en contacto; verificar fuente y renderer antes de reemplazar.",
+      "evidence": "contact_01.png",
+      "arena": "infernal"
+    },
+    {
+      "id": "foco_convergencia",
+      "name": "Foco de Convergencia",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "infernal"
+    },
+    {
+      "id": "lobo_artico",
+      "name": "Lobo Ártico",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "hielo"
+    },
+    {
+      "id": "hada_escarcha",
+      "name": "Hada de Escarcha",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "hielo"
+    },
+    {
+      "id": "golem_hielo",
+      "name": "Gólem de Hielo",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "hielo"
+    },
+    {
+      "id": "dragoncito_hielo",
+      "name": "Dragoncito de Hielo",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "hielo"
+    },
+    {
+      "id": "angel_hielo",
+      "name": "Ángel de Hielo y Cristal",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "hielo"
+    },
+    {
+      "id": "demonio_hielo_fuego",
+      "name": "Demonio de Hielo y Fuego",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "hielo"
+    },
+    {
+      "id": "dragon_hielo",
+      "name": "Tundraverx, Soberano de Hielo",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_01.png",
+      "arena": "hielo"
+    },
+    {
+      "id": "mago_hielo_cristal",
+      "name": "El Mago Gélido",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "hielo"
+    },
+    {
+      "id": "golem_cristal",
+      "name": "Gólem de Cristal",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "hielo"
+    },
+    {
+      "id": "cristal_servo",
+      "name": "Servo de Cristal",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "hielo"
+    },
+    {
+      "id": "cristal_volador",
+      "name": "Cristal Volador",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "hielo"
+    },
+    {
+      "id": "angel_caido_hielo",
+      "name": "Ángel Caído de Hielo",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "hielo"
+    },
+    {
+      "id": "foco_hielo",
+      "name": "Foco de Hielo",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "hielo"
+    },
+    {
+      "id": "duende_bosque",
+      "name": "Duende del Bosque",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "bosque"
+    },
+    {
+      "id": "enjambre_hadas",
+      "name": "Enjambre de Hadas",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "bosque"
+    },
+    {
+      "id": "bestia_bosque",
+      "name": "Bestia del Bosque",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "bosque"
+    },
+    {
+      "id": "cu_sith",
+      "name": "Cù-Sìth",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "bosque"
+    },
+    {
+      "id": "ent",
+      "name": "Ent",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "bosque"
+    },
+    {
+      "id": "dama_bosque",
+      "name": "Dama del Bosque",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "bosque"
+    },
+    {
+      "id": "doblador_guerrero",
+      "name": "Doppelgänger — Guerrero",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "bosque"
+    },
+    {
+      "id": "doblador_arquera",
+      "name": "Doppelgänger — Arquera",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "bosque"
+    },
+    {
+      "id": "doblador_picaro",
+      "name": "Doppelgänger — Pícaro",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "bosque"
+    },
+    {
+      "id": "doblador_clerigo",
+      "name": "Doppelgänger — Clérigo",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "bosque"
+    },
+    {
+      "id": "guardian_ancestral",
+      "name": "Guardián Ancestral Corrompido",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "bosque"
+    },
+    {
+      "id": "jinete_sin_cabeza",
+      "name": "Jinete Sin Cabeza",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_02.png",
+      "arena": "bosque"
+    },
+    {
+      "id": "escorpion_gigante",
+      "name": "Escorpión Gigante",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "laberinto"
+    },
+    {
+      "id": "golem_piedra",
+      "name": "Gólem de Piedra",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "laberinto"
+    },
+    {
+      "id": "medusa",
+      "name": "Medusa",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "laberinto"
+    },
+    {
+      "id": "druida_arena",
+      "name": "Druida de Arena",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "laberinto"
+    },
+    {
+      "id": "esfinge",
+      "name": "Esfinge",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "laberinto"
+    },
+    {
+      "id": "guardian_laberinto",
+      "name": "Guardián del Laberinto",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "laberinto"
+    },
+    {
+      "id": "minotauro",
+      "name": "Minotauro",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "laberinto"
+    },
+    {
+      "id": "tiburon_joven",
+      "name": "Tiburón Joven",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "acuatica"
+    },
+    {
+      "id": "medusa_electrica",
+      "name": "Medusa Eléctrica",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "acuatica"
+    },
+    {
+      "id": "cangrejo_acorazado",
+      "name": "Cangrejo Araña",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "acuatica"
+    },
+    {
+      "id": "sirena_abisal",
+      "name": "Sirena Abisal",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "acuatica"
+    },
+    {
+      "id": "anguila_electrica",
+      "name": "Anguila Eléctrica",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "acuatica"
+    },
+    {
+      "id": "tiburon_blanco",
+      "name": "Tiburón Blanco",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "acuatica"
+    },
+    {
+      "id": "kraken_joven",
+      "name": "Kraken Joven",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "acuatica"
+    },
+    {
+      "id": "leviatan",
+      "name": "Leviatán",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "acuatica"
+    },
+    {
+      "id": "lev_tentaculo",
+      "name": "Tentáculo del Leviatán",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "acuatica"
+    },
+    {
+      "id": "carcelero",
+      "name": "Carcelero Deforme",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "fortaleza"
+    },
+    {
+      "id": "dragon_bronce",
+      "name": "Dragón de Bronce",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_03.png",
+      "arena": "fortaleza"
+    },
+    {
+      "id": "automata",
+      "name": "Autómata de Hierro",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "fortaleza"
+    },
+    {
+      "id": "prisionero",
+      "name": "Prisionero Ensamblado",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "fortaleza"
+    },
+    {
+      "id": "engendro",
+      "name": "Engendro Encadenado",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "fortaleza"
+    },
+    {
+      "id": "verdugo",
+      "name": "Verdugo de Vapor",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "fortaleza"
+    },
+    {
+      "id": "arana",
+      "name": "Araña Mecánica",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "fortaleza"
+    },
+    {
+      "id": "dragon_forja",
+      "name": "Dragón de la Forja",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "fortaleza"
+    },
+    {
+      "id": "caballero",
+      "name": "Caballero de la Armadura Oxidada",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "fortaleza"
+    },
+    {
+      "id": "infectado",
+      "name": "Infectado Micelial",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "micelial"
+    },
+    {
+      "id": "acechador",
+      "name": "Acechador de Esporas",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "micelial"
+    },
+    {
+      "id": "hinchado",
+      "name": "Hinchado",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "micelial"
+    },
+    {
+      "id": "peregrino",
+      "name": "Peregrino Enraizado",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "micelial"
+    },
+    {
+      "id": "sabueso",
+      "name": "Sabueso Cordyceps",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "micelial"
+    },
+    {
+      "id": "chaman",
+      "name": "Chamán de la Colonia",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "micelial"
+    },
+    {
+      "id": "nucleo_micelial",
+      "name": "Núcleo Micelial",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "micelial"
+    },
+    {
+      "id": "raiz_absorcion",
+      "name": "Raíz de Absorción",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "micelial"
+    },
+    {
+      "id": "micelio",
+      "name": "Micelio Primigenio",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "micelial"
+    },
+    {
+      "id": "madre_espora",
+      "name": "La Madre Espora",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "micelial"
+    },
+    {
+      "id": "ab_errante",
+      "name": "Errante del Vacío",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_04.png",
+      "arena": "abismo"
+    },
+    {
+      "id": "ab_acechador",
+      "name": "Acechador del Borde",
+      "group": "Enemigo base/élite",
+      "category": "CRITICO_VISUAL",
+      "detail": "Muerte contiene fragmentos laterales ajenos.",
+      "evidence": "contact_05.png",
+      "arena": "abismo"
+    },
+    {
+      "id": "ab_heraldo",
+      "name": "Heraldo del Ojo",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_05.png",
+      "arena": "abismo"
+    },
+    {
+      "id": "ab_devorador",
+      "name": "Devorador de Piedra",
+      "group": "Enemigo base/élite",
+      "category": "CRITICO_VISUAL",
+      "detail": "Ataque con recorte duro y muerte con arte ajeno/solapado.",
+      "evidence": "contact_05.png",
+      "arena": "abismo"
+    },
+    {
+      "id": "ab_tejedor",
+      "name": "Tejedor del Vacío",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_05.png",
+      "arena": "abismo"
+    },
+    {
+      "id": "ab_jinete",
+      "name": "Jinete Sin Cabeza",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_05.png",
+      "arena": "abismo"
+    },
+    {
+      "id": "ab_carcelero",
+      "name": "El Carcelero del Vacío",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_05.png",
+      "arena": "abismo"
+    },
+    {
+      "id": "ab_morador",
+      "name": "El Que Mora Debajo",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_05.png",
+      "arena": "abismo"
+    },
+    {
+      "id": "ab_tentaculo",
+      "name": "Tentáculo del Abismo",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_05.png",
+      "arena": "abismo"
+    },
+    {
+      "id": "cm_saqueador",
+      "name": "Saqueador Maldito",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_05.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_perro",
+      "name": "Perro del Albañal",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_05.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_raptor",
+      "name": "Raptor",
+      "group": "Enemigo base/élite",
+      "category": "CRITICO_VISUAL",
+      "detail": "Muerte contiene fragmentos que invaden la celda.",
+      "evidence": "contact_05.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_verdugo",
+      "name": "Verdugo",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_05.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_planidera",
+      "name": "Plañidera",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_05.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_acechante",
+      "name": "Acechante de los Tejados",
+      "group": "Enemigo base/élite",
+      "category": "CRITICO_VISUAL",
+      "detail": "Ataque/muerte presentan bloques ajenos al cuerpo.",
+      "evidence": "contact_05.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_campanero",
+      "name": "Campanero",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_05.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_sectario",
+      "name": "Sectario Fanático",
+      "group": "Enemigo base/élite",
+      "category": "CRITICO_VISUAL",
+      "detail": "Ataques con rectángulos de fondo ajenos.",
+      "evidence": "contact_05.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_espectro",
+      "name": "Espectro Ciudadano",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_05.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_maestro",
+      "name": "Maestro de Ceremonias",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_05.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_tramoyista",
+      "name": "El Tramoyista",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_06.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_dama",
+      "name": "La Dama del Telón",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_06.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_cometa",
+      "name": "Gran Número",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_06.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_espejismo",
+      "name": "Espejismo de la Dama",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_06.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "cm_presentador",
+      "name": "El Presentador",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_06.png",
+      "arena": "ciudad"
+    },
+    {
+      "id": "mn_esclavo",
+      "name": "Esclavo Enlazado",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_06.png",
+      "arena": "minas"
+    },
+    {
+      "id": "mn_insecto",
+      "name": "Insecto de Cristal",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_06.png",
+      "arena": "minas"
+    },
+    {
+      "id": "mn_acechador",
+      "name": "Acechador Ciego",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_06.png",
+      "arena": "minas"
+    },
+    {
+      "id": "mn_minero",
+      "name": "Minero Corrompido",
+      "group": "Enemigo base/élite",
+      "category": "CRITICO_VISUAL",
+      "detail": "Ataque recortado: desaparece la mayor parte del cuerpo.",
+      "evidence": "contact_06.png",
+      "arena": "minas"
+    },
+    {
+      "id": "mn_escupidor",
+      "name": "Escupidor de Oscuridad",
+      "group": "Enemigo base/élite",
+      "category": "CRITICO_VISUAL",
+      "detail": "Muerte contiene franja vertical ajena y cuerpo separado.",
+      "evidence": "contact_06.png",
+      "arena": "minas"
+    },
+    {
+      "id": "mn_consumidor",
+      "name": "Consumidor Luminoso",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_06.png",
+      "arena": "minas"
+    },
+    {
+      "id": "mn_devoraluz",
+      "name": "Devoraluz",
+      "group": "Enemigo base/élite",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_06.png",
+      "arena": "minas"
+    },
+    {
+      "id": "mn_titan",
+      "name": "Titán de Piedra",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_06.png",
+      "arena": "minas"
+    },
+    {
+      "id": "mn_cerbero",
+      "name": "Cerbero",
+      "group": "Jefe/guardián",
+      "category": "CON_PENDIENTES",
+      "detail": "Revisión de contacto: sin corrupción grave evidente; faltan comparación con referencia individual y secuencia completa. Clones de perfil/idle no acreditan animaciones propias.",
+      "evidence": "contact_06.png",
+      "arena": "minas"
+    }
+  ]
+}

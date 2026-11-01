@@ -1,0 +1,101 @@
+{
+  "scope": "Full renderer with normal clears. First20 samples excluded per scene; separate seeded runs under shared local load. No physical-phone, GPU, GC or speedup certification.",
+  "rows": [
+    {
+      "champion": "musashi",
+      "mobile": false,
+      "baseline": true,
+      "samples": 2400,
+      "p95": 2.699999999254942,
+      "max": 24.700000001117587
+    },
+    {
+      "champion": "musashi",
+      "mobile": false,
+      "baseline": false,
+      "samples": 2400,
+      "p95": 2.300000000745058,
+      "max": 27.699999999254942
+    },
+    {
+      "champion": "musashi",
+      "mobile": true,
+      "baseline": true,
+      "samples": 2400,
+      "p95": 2.599999999627471,
+      "max": 24.09999999962747
+    },
+    {
+      "champion": "musashi",
+      "mobile": true,
+      "baseline": false,
+      "samples": 2400,
+      "p95": 2,
+      "max": 20.600000001490116
+    },
+    {
+      "champion": "cazadora",
+      "mobile": false,
+      "baseline": true,
+      "samples": 2400,
+      "p95": 2.199999999254942,
+      "max": 145.5
+    },
+    {
+      "champion": "cazadora",
+      "mobile": false,
+      "baseline": false,
+      "samples": 2400,
+      "p95": 2,
+      "max": 121
+    },
+    {
+      "champion": "cazadora",
+      "mobile": true,
+      "baseline": true,
+      "samples": 2400,
+      "p95": 2.199999999254942,
+      "max": 98.90000000037253
+    },
+    {
+      "champion": "cazadora",
+      "mobile": true,
+      "baseline": false,
+      "samples": 2400,
+      "p95": 2.100000001490116,
+      "max": 102.89999999850988
+    },
+    {
+      "champion": "nigromante",
+      "mobile": false,
+      "baseline": true,
+      "samples": 2400,
+      "p95": 2.300000000745058,
+      "max": 44.40000000037253
+    },
+    {
+      "champion": "nigromante",
+      "mobile": false,
+      "baseline": false,
+      "samples": 2400,
+      "p95": 2,
+      "max": 48.40000000037253
+    },
+    {
+      "champion": "nigromante",
+      "mobile": true,
+      "baseline": true,
+      "samples": 2400,
+      "p95": 2.300000000745058,
+      "max": 54
+    },
+    {
+      "champion": "nigromante",
+      "mobile": true,
+      "baseline": false,
+      "samples": 2400,
+      "p95": 2.599999999627471,
+      "max": 50.80000000074506
+    }
+  ]
+}

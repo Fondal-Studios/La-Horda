@@ -1,0 +1,17 @@
+{
+  "result": "PASS_CONTRACT",
+  "sistema": {
+    "serialized": "cosmeticSkin:sistema",
+    "resolved": "skin_sistema"
+  },
+  "codigo_ambar": {
+    "serialized": "croma:axiom_piedra",
+    "resolved": "croma_axiom_piedra"
+  },
+  "negative": [
+    "foreign Myla skin rejected",
+    "foreign Myla croma rejected"
+  ],
+  "relay": "NOT_RUN",
+  "reason": "no network/shared runtime changed; two-client relay not claimed"
+}

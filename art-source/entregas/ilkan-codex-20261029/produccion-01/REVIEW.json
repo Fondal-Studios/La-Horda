@@ -1,0 +1,33 @@
+{
+  "component": "ilkan.cuerpo.codex",
+  "state": "VALIDADO_LOCAL_PENDING_CI",
+  "scope": "Base human body; not whole B099 directional-special-attack backlog, skins redesign, VFX kit or Colossus redesign.",
+  "visual": "Codex hood/face/scarf, wraps, stone shoulders, curved sickles, back spear recognizable. Four views and locomotion/death/flight sequences reviewed. Native 62 selected cells have stable clothing/face identity; 2 rejected poses preserved and excluded.",
+  "reviewed": [
+    "Codex exact source",
+    "both imagegen originals",
+    "mobile four-view fourteen-state old/new sheets",
+    "temporal-walk/fly/death",
+    "six arenas: desktop bosque/acuatica/fortaleza and mobile infernal/hielo/minas sequences",
+    "desktop and mobile bosque full frames",
+    "online guest",
+    "equipment0 movement",
+    "equipment2/4 return4100",
+    "equipment4 transform150"
+  ],
+  "technical": {
+    "native": "62/62 canonical native PASS each viewport; 112 synthetic body ABA exact; existing normalization unchanged. Initial report wording describes abandoned calibration; final harness has no calibration.",
+    "roster": "141 appearances,0scaleFailures,0presentationFailures,0errors; actual roster_gate unchanged",
+    "style": "Painter measurements with same15% tolerance on twelve locomotion slots PASS. Native format adapter, not 448x1008 standalone CLI. 13 individual action diagnostic outliers retained; canonical native detector all selected frames PASS.",
+    "game": "12 before/after pairs six arenas two viewports,420update/render frames per arena; summary state+RNG equal; no global snapshot claim",
+    "preservation": "36 pixel-exact body probes for old Colossus/Legion appearances",
+    "relay": "10 current checks real host Solciju/guest Ilkan touch viewport; candidate PNG drawn both clients; H2/H3 buffs replicated",
+    "equipment": "Three actual runs with0/2/4pieces equipped through makeDesignedItem/equipItem; normalized four-way movement,4200frames after realUF,all enter Colossus and return. Full Legion chooses original human/Colossus textures."
+  },
+  "limitations": [
+    "Legacy H2/H3 VFX still obscure body during buffs; not corrected or approved by this body change.",
+    "Right walk has3distinct authored poses in4timeline slots. Fly2authored poses, no mechanical timing change.",
+    "No physical mobile/GPU/GC certification; game timings include concurrent tests.",
+    "Not merged and not publicly delivered until exact-head CI and publication verification."
+  ]
+}

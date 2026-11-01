@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "new": [
+    {
+      "id": "runtime-matrix",
+      "result": "PASS",
+      "scope": "40 renderer-real captures, six arenas, three looks, two viewports"
+    },
+    {
+      "id": "state-matrix",
+      "result": "PASS",
+      "scope": "63 renderer-real cells, seven states, three directions, three looks"
+    },
+    {
+      "id": "skin-audit-focused",
+      "result": "PASS",
+      "scope": "axiom, skin_sistema, croma_axiom_piedra"
+    },
+    {
+      "id": "network-contract",
+      "result": "PASS",
+      "scope": "loadout serialization and sanitization"
+    },
+    {
+      "id": "node-check",
+      "result": "PASS",
+      "scope": "four modified runtime files and two new tools"
+    }
+  ],
+  "historical": "See ../produccion-01/TEST_ATTEMPTS.json; rejected sources preserved.",
+  "excluded": [
+    {
+      "id": "full-roster-reconstructed",
+      "result": "11 unrelated failures",
+      "axiomFailures": 0,
+      "reason": "stale reconstructed shared assets for Musashi/Cazadora/Nigromante/Veyra; not used as component blocker"
+    }
+  ]
+}

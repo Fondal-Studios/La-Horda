@@ -1,0 +1,2037 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "versioned atlas selected",
+      "ok": true
+    },
+    {
+      "name": "fixed authored pivots",
+      "ok": true
+    },
+    {
+      "name": "idle down four authored cells",
+      "ok": true
+    },
+    {
+      "name": "idle down frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 0,
+            "flip": false
+          }
+        ],
+        "pixels": 2527
+      }
+    },
+    {
+      "name": "idle down frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 1,
+            "flip": false
+          }
+        ],
+        "pixels": 2512
+      }
+    },
+    {
+      "name": "idle down frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 2,
+            "flip": false
+          }
+        ],
+        "pixels": 2517
+      }
+    },
+    {
+      "name": "idle down frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 3,
+            "flip": false
+          }
+        ],
+        "pixels": 2540
+      }
+    },
+    {
+      "name": "walk down four authored cells",
+      "ok": true
+    },
+    {
+      "name": "walk down frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 4,
+            "flip": false
+          }
+        ],
+        "pixels": 2356
+      }
+    },
+    {
+      "name": "walk down frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 5,
+            "flip": false
+          }
+        ],
+        "pixels": 2340
+      }
+    },
+    {
+      "name": "walk down frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 6,
+            "flip": false
+          }
+        ],
+        "pixels": 2438
+      }
+    },
+    {
+      "name": "walk down frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 7,
+            "flip": false
+          }
+        ],
+        "pixels": 2346
+      }
+    },
+    {
+      "name": "attack down four authored cells",
+      "ok": true
+    },
+    {
+      "name": "attack down frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 8,
+            "flip": false
+          }
+        ],
+        "pixels": 2620
+      }
+    },
+    {
+      "name": "attack down frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 9,
+            "flip": false
+          }
+        ],
+        "pixels": 2546
+      }
+    },
+    {
+      "name": "attack down frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 10,
+            "flip": false
+          }
+        ],
+        "pixels": 2487
+      }
+    },
+    {
+      "name": "attack down frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 11,
+            "flip": false
+          }
+        ],
+        "pixels": 2564
+      }
+    },
+    {
+      "name": "cast down four authored cells",
+      "ok": true
+    },
+    {
+      "name": "cast down frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 12,
+            "flip": false
+          }
+        ],
+        "pixels": 2595
+      }
+    },
+    {
+      "name": "cast down frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 13,
+            "flip": false
+          }
+        ],
+        "pixels": 2619
+      }
+    },
+    {
+      "name": "cast down frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 14,
+            "flip": false
+          }
+        ],
+        "pixels": 2844
+      }
+    },
+    {
+      "name": "cast down frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 15,
+            "flip": false
+          }
+        ],
+        "pixels": 2650
+      }
+    },
+    {
+      "name": "ultimate down four authored cells",
+      "ok": true
+    },
+    {
+      "name": "ultimate down frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 16,
+            "flip": false
+          }
+        ],
+        "pixels": 2409
+      }
+    },
+    {
+      "name": "ultimate down frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 17,
+            "flip": false
+          }
+        ],
+        "pixels": 2696
+      }
+    },
+    {
+      "name": "ultimate down frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 18,
+            "flip": false
+          }
+        ],
+        "pixels": 3575
+      }
+    },
+    {
+      "name": "ultimate down frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 19,
+            "flip": false
+          }
+        ],
+        "pixels": 2635
+      }
+    },
+    {
+      "name": "hit down four authored cells",
+      "ok": true
+    },
+    {
+      "name": "hit down frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 20,
+            "flip": false
+          }
+        ],
+        "pixels": 2662
+      }
+    },
+    {
+      "name": "hit down frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 21,
+            "flip": false
+          }
+        ],
+        "pixels": 2590
+      }
+    },
+    {
+      "name": "hit down frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 22,
+            "flip": false
+          }
+        ],
+        "pixels": 2358
+      }
+    },
+    {
+      "name": "hit down frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 23,
+            "flip": false
+          }
+        ],
+        "pixels": 2531
+      }
+    },
+    {
+      "name": "death down four authored cells",
+      "ok": true
+    },
+    {
+      "name": "death down frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 24,
+            "flip": false
+          }
+        ],
+        "pixels": 2841
+      }
+    },
+    {
+      "name": "death down frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 25,
+            "flip": false
+          }
+        ],
+        "pixels": 2406
+      }
+    },
+    {
+      "name": "death down frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 26,
+            "flip": false
+          }
+        ],
+        "pixels": 2124
+      }
+    },
+    {
+      "name": "death down frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 27,
+            "flip": false
+          }
+        ],
+        "pixels": 1907
+      }
+    },
+    {
+      "name": "idle side four authored cells",
+      "ok": true
+    },
+    {
+      "name": "idle side frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 28,
+            "flip": false
+          }
+        ],
+        "pixels": 2166
+      }
+    },
+    {
+      "name": "idle side frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 29,
+            "flip": false
+          }
+        ],
+        "pixels": 2200
+      }
+    },
+    {
+      "name": "idle side frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 30,
+            "flip": false
+          }
+        ],
+        "pixels": 2195
+      }
+    },
+    {
+      "name": "idle side frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 31,
+            "flip": false
+          }
+        ],
+        "pixels": 2219
+      }
+    },
+    {
+      "name": "walk side four authored cells",
+      "ok": true
+    },
+    {
+      "name": "walk side frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 32,
+            "flip": false
+          }
+        ],
+        "pixels": 2105
+      }
+    },
+    {
+      "name": "walk side frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 33,
+            "flip": false
+          }
+        ],
+        "pixels": 2172
+      }
+    },
+    {
+      "name": "walk side frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 34,
+            "flip": false
+          }
+        ],
+        "pixels": 2141
+      }
+    },
+    {
+      "name": "walk side frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 35,
+            "flip": false
+          }
+        ],
+        "pixels": 2103
+      }
+    },
+    {
+      "name": "attack side four authored cells",
+      "ok": true
+    },
+    {
+      "name": "attack side frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 36,
+            "flip": false
+          }
+        ],
+        "pixels": 2181
+      }
+    },
+    {
+      "name": "attack side frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 37,
+            "flip": false
+          }
+        ],
+        "pixels": 2154
+      }
+    },
+    {
+      "name": "attack side frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 38,
+            "flip": false
+          }
+        ],
+        "pixels": 2132
+      }
+    },
+    {
+      "name": "attack side frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 39,
+            "flip": false
+          }
+        ],
+        "pixels": 2142
+      }
+    },
+    {
+      "name": "cast side four authored cells",
+      "ok": true
+    },
+    {
+      "name": "cast side frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 40,
+            "flip": false
+          }
+        ],
+        "pixels": 2162
+      }
+    },
+    {
+      "name": "cast side frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 41,
+            "flip": false
+          }
+        ],
+        "pixels": 2201
+      }
+    },
+    {
+      "name": "cast side frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 42,
+            "flip": false
+          }
+        ],
+        "pixels": 2398
+      }
+    },
+    {
+      "name": "cast side frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 43,
+            "flip": false
+          }
+        ],
+        "pixels": 2092
+      }
+    },
+    {
+      "name": "ultimate side four authored cells",
+      "ok": true
+    },
+    {
+      "name": "ultimate side frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 44,
+            "flip": false
+          }
+        ],
+        "pixels": 1844
+      }
+    },
+    {
+      "name": "ultimate side frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 45,
+            "flip": false
+          }
+        ],
+        "pixels": 2381
+      }
+    },
+    {
+      "name": "ultimate side frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 46,
+            "flip": false
+          }
+        ],
+        "pixels": 3503
+      }
+    },
+    {
+      "name": "ultimate side frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 47,
+            "flip": false
+          }
+        ],
+        "pixels": 2063
+      }
+    },
+    {
+      "name": "hit side four authored cells",
+      "ok": true
+    },
+    {
+      "name": "hit side frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 48,
+            "flip": false
+          }
+        ],
+        "pixels": 2043
+      }
+    },
+    {
+      "name": "hit side frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 49,
+            "flip": false
+          }
+        ],
+        "pixels": 2003
+      }
+    },
+    {
+      "name": "hit side frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 50,
+            "flip": false
+          }
+        ],
+        "pixels": 2130
+      }
+    },
+    {
+      "name": "hit side frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 51,
+            "flip": false
+          }
+        ],
+        "pixels": 2058
+      }
+    },
+    {
+      "name": "death side four authored cells",
+      "ok": true
+    },
+    {
+      "name": "death side frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 52,
+            "flip": false
+          }
+        ],
+        "pixels": 2075
+      }
+    },
+    {
+      "name": "death side frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 53,
+            "flip": false
+          }
+        ],
+        "pixels": 2149
+      }
+    },
+    {
+      "name": "death side frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 54,
+            "flip": false
+          }
+        ],
+        "pixels": 1968
+      }
+    },
+    {
+      "name": "death side frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 55,
+            "flip": false
+          }
+        ],
+        "pixels": 1842
+      }
+    },
+    {
+      "name": "idle up four authored cells",
+      "ok": true
+    },
+    {
+      "name": "idle up frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 56,
+            "flip": false
+          }
+        ],
+        "pixels": 2623
+      }
+    },
+    {
+      "name": "idle up frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 57,
+            "flip": false
+          }
+        ],
+        "pixels": 2543
+      }
+    },
+    {
+      "name": "idle up frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 58,
+            "flip": false
+          }
+        ],
+        "pixels": 2542
+      }
+    },
+    {
+      "name": "idle up frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 59,
+            "flip": false
+          }
+        ],
+        "pixels": 2496
+      }
+    },
+    {
+      "name": "walk up four authored cells",
+      "ok": true
+    },
+    {
+      "name": "walk up frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 60,
+            "flip": false
+          }
+        ],
+        "pixels": 2383
+      }
+    },
+    {
+      "name": "walk up frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 61,
+            "flip": false
+          }
+        ],
+        "pixels": 2357
+      }
+    },
+    {
+      "name": "walk up frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 62,
+            "flip": false
+          }
+        ],
+        "pixels": 2375
+      }
+    },
+    {
+      "name": "walk up frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 63,
+            "flip": false
+          }
+        ],
+        "pixels": 2351
+      }
+    },
+    {
+      "name": "attack up four authored cells",
+      "ok": true
+    },
+    {
+      "name": "attack up frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 64,
+            "flip": false
+          }
+        ],
+        "pixels": 2693
+      }
+    },
+    {
+      "name": "attack up frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 65,
+            "flip": false
+          }
+        ],
+        "pixels": 2608
+      }
+    },
+    {
+      "name": "attack up frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 66,
+            "flip": false
+          }
+        ],
+        "pixels": 2681
+      }
+    },
+    {
+      "name": "attack up frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 67,
+            "flip": false
+          }
+        ],
+        "pixels": 2576
+      }
+    },
+    {
+      "name": "cast up four authored cells",
+      "ok": true
+    },
+    {
+      "name": "cast up frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 68,
+            "flip": false
+          }
+        ],
+        "pixels": 2506
+      }
+    },
+    {
+      "name": "cast up frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 69,
+            "flip": false
+          }
+        ],
+        "pixels": 2529
+      }
+    },
+    {
+      "name": "cast up frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 70,
+            "flip": false
+          }
+        ],
+        "pixels": 2746
+      }
+    },
+    {
+      "name": "cast up frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 71,
+            "flip": false
+          }
+        ],
+        "pixels": 2653
+      }
+    },
+    {
+      "name": "ultimate up four authored cells",
+      "ok": true
+    },
+    {
+      "name": "ultimate up frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 72,
+            "flip": false
+          }
+        ],
+        "pixels": 2369
+      }
+    },
+    {
+      "name": "ultimate up frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 73,
+            "flip": false
+          }
+        ],
+        "pixels": 2330
+      }
+    },
+    {
+      "name": "ultimate up frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 74,
+            "flip": false
+          }
+        ],
+        "pixels": 3004
+      }
+    },
+    {
+      "name": "ultimate up frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 75,
+            "flip": false
+          }
+        ],
+        "pixels": 2414
+      }
+    },
+    {
+      "name": "hit up four authored cells",
+      "ok": true
+    },
+    {
+      "name": "hit up frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 76,
+            "flip": false
+          }
+        ],
+        "pixels": 2497
+      }
+    },
+    {
+      "name": "hit up frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 77,
+            "flip": false
+          }
+        ],
+        "pixels": 2394
+      }
+    },
+    {
+      "name": "hit up frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 78,
+            "flip": false
+          }
+        ],
+        "pixels": 2280
+      }
+    },
+    {
+      "name": "hit up frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 79,
+            "flip": false
+          }
+        ],
+        "pixels": 2538
+      }
+    },
+    {
+      "name": "death up four authored cells",
+      "ok": true
+    },
+    {
+      "name": "death up frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 80,
+            "flip": false
+          }
+        ],
+        "pixels": 2704
+      }
+    },
+    {
+      "name": "death up frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 81,
+            "flip": false
+          }
+        ],
+        "pixels": 2289
+      }
+    },
+    {
+      "name": "death up frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 82,
+            "flip": false
+          }
+        ],
+        "pixels": 1998
+      }
+    },
+    {
+      "name": "death up frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 83,
+            "flip": false
+          }
+        ],
+        "pixels": 1769
+      }
+    },
+    {
+      "name": "idle left four authored cells",
+      "ok": true
+    },
+    {
+      "name": "idle left frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 84,
+            "flip": false
+          }
+        ],
+        "pixels": 2386
+      }
+    },
+    {
+      "name": "idle left frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 85,
+            "flip": false
+          }
+        ],
+        "pixels": 2283
+      }
+    },
+    {
+      "name": "idle left frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 86,
+            "flip": false
+          }
+        ],
+        "pixels": 2266
+      }
+    },
+    {
+      "name": "idle left frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 87,
+            "flip": false
+          }
+        ],
+        "pixels": 2275
+      }
+    },
+    {
+      "name": "walk left four authored cells",
+      "ok": true
+    },
+    {
+      "name": "walk left frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 88,
+            "flip": false
+          }
+        ],
+        "pixels": 2375
+      }
+    },
+    {
+      "name": "walk left frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 89,
+            "flip": false
+          }
+        ],
+        "pixels": 2270
+      }
+    },
+    {
+      "name": "walk left frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 90,
+            "flip": false
+          }
+        ],
+        "pixels": 2302
+      }
+    },
+    {
+      "name": "walk left frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 91,
+            "flip": false
+          }
+        ],
+        "pixels": 2278
+      }
+    },
+    {
+      "name": "attack left four authored cells",
+      "ok": true
+    },
+    {
+      "name": "attack left frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 92,
+            "flip": false
+          }
+        ],
+        "pixels": 2376
+      }
+    },
+    {
+      "name": "attack left frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 93,
+            "flip": false
+          }
+        ],
+        "pixels": 2407
+      }
+    },
+    {
+      "name": "attack left frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 94,
+            "flip": false
+          }
+        ],
+        "pixels": 2390
+      }
+    },
+    {
+      "name": "attack left frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 95,
+            "flip": false
+          }
+        ],
+        "pixels": 2309
+      }
+    },
+    {
+      "name": "cast left four authored cells",
+      "ok": true
+    },
+    {
+      "name": "cast left frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 96,
+            "flip": false
+          }
+        ],
+        "pixels": 2408
+      }
+    },
+    {
+      "name": "cast left frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 97,
+            "flip": false
+          }
+        ],
+        "pixels": 2456
+      }
+    },
+    {
+      "name": "cast left frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 98,
+            "flip": false
+          }
+        ],
+        "pixels": 2629
+      }
+    },
+    {
+      "name": "cast left frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 99,
+            "flip": false
+          }
+        ],
+        "pixels": 2388
+      }
+    },
+    {
+      "name": "ultimate left four authored cells",
+      "ok": true
+    },
+    {
+      "name": "ultimate left frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 100,
+            "flip": false
+          }
+        ],
+        "pixels": 2187
+      }
+    },
+    {
+      "name": "ultimate left frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 101,
+            "flip": false
+          }
+        ],
+        "pixels": 2603
+      }
+    },
+    {
+      "name": "ultimate left frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 102,
+            "flip": false
+          }
+        ],
+        "pixels": 3541
+      }
+    },
+    {
+      "name": "ultimate left frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 103,
+            "flip": false
+          }
+        ],
+        "pixels": 2402
+      }
+    },
+    {
+      "name": "hit left four authored cells",
+      "ok": true
+    },
+    {
+      "name": "hit left frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 104,
+            "flip": false
+          }
+        ],
+        "pixels": 2349
+      }
+    },
+    {
+      "name": "hit left frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 105,
+            "flip": false
+          }
+        ],
+        "pixels": 2620
+      }
+    },
+    {
+      "name": "hit left frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 106,
+            "flip": false
+          }
+        ],
+        "pixels": 2151
+      }
+    },
+    {
+      "name": "hit left frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 107,
+            "flip": false
+          }
+        ],
+        "pixels": 2270
+      }
+    },
+    {
+      "name": "death left four authored cells",
+      "ok": true
+    },
+    {
+      "name": "death left frame 0",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 108,
+            "flip": false
+          }
+        ],
+        "pixels": 2387
+      }
+    },
+    {
+      "name": "death left frame 1",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 109,
+            "flip": false
+          }
+        ],
+        "pixels": 2107
+      }
+    },
+    {
+      "name": "death left frame 2",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 110,
+            "flip": false
+          }
+        ],
+        "pixels": 2057
+      }
+    },
+    {
+      "name": "death left frame 3",
+      "ok": true,
+      "detail": {
+        "calls": [
+          {
+            "base": true,
+            "skin": false,
+            "v": 111,
+            "flip": false
+          }
+        ],
+        "pixels": 2198
+      }
+    },
+    {
+      "name": "alternative skin retained idle down",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained idle side",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained idle up",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained idle left",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained walk down",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained walk side",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained walk up",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained walk left",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained attack down",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained attack side",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained attack up",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained attack left",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained cast down",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained cast side",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained cast up",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained cast left",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained ultimate down",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained ultimate side",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained ultimate up",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained ultimate left",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained hit down",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained hit side",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained hit up",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained hit left",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained death down",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained death side",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained death up",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retained death left",
+      "ok": true
+    },
+    {
+      "name": "Caballero scale and baseline down",
+      "ok": true,
+      "detail": {
+        "dir": "down",
+        "fullHeight": 62,
+        "bodyHeight": 59,
+        "foot": -2
+      }
+    },
+    {
+      "name": "Caballero scale and baseline side",
+      "ok": true,
+      "detail": {
+        "dir": "side",
+        "fullHeight": 62,
+        "bodyHeight": 59,
+        "foot": -2
+      }
+    },
+    {
+      "name": "Caballero scale and baseline up",
+      "ok": true,
+      "detail": {
+        "dir": "up",
+        "fullHeight": 62,
+        "bodyHeight": 59,
+        "foot": -2
+      }
+    },
+    {
+      "name": "Caballero scale and baseline left",
+      "ok": true,
+      "detail": {
+        "dir": "left",
+        "fullHeight": 63,
+        "bodyHeight": 61,
+        "foot": -2
+      }
+    },
+    {
+      "name": "base does not redraw procedural feathers",
+      "ok": true
+    },
+    {
+      "name": "Regent halo preserved",
+      "ok": true
+    },
+    {
+      "name": "alternative skin retains procedural effects",
+      "ok": true
+    },
+    {
+      "name": "judgement transformation condition preserved",
+      "ok": true
+    },
+    {
+      "name": "judgement transformation renders",
+      "ok": true
+    },
+    {
+      "name": "network-decoded left selects authored art",
+      "ok": true
+    },
+    {
+      "name": "atlas below 2048 texture limit",
+      "ok": true
+    },
+    {
+      "name": "real basic draws attack",
+      "ok": true
+    },
+    {
+      "name": "real skill accepted and draws cast",
+      "ok": true
+    },
+    {
+      "name": "real ultimate draws ultimate",
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "measurements": [
+    {
+      "dir": "down",
+      "fullHeight": 62,
+      "bodyHeight": 59,
+      "foot": -2
+    },
+    {
+      "dir": "side",
+      "fullHeight": 62,
+      "bodyHeight": 59,
+      "foot": -2
+    },
+    {
+      "dir": "up",
+      "fullHeight": 62,
+      "bodyHeight": 59,
+      "foot": -2
+    },
+    {
+      "dir": "left",
+      "fullHeight": 63,
+      "bodyHeight": 61,
+      "foot": -2
+    }
+  ],
+  "benchmark": {
+    "drawAndReadback500Ms": 338.69999999925494,
+    "scope": "CPU headless browser; includes readback and PNG encoding, not device FPS"
+  },
+  "combat": {
+    "hero": "nano_gm",
+    "enemies": 7,
+    "canvas": [
+      1280,
+      800
+    ]
+  },
+  "scope": "Original Nano GM 112 frames, real basic/skill/ultimate in combat, skin routing, effects, transformation and decoded guest facing; not full multiplayer/performance certification"
+}

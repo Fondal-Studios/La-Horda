@@ -1,0 +1,32 @@
+{
+  "sources": [
+    {
+      "source": "source-locomotion.png",
+      "sha256": "6cc053404b1044fe5556d5cf56fbd7e48496cdb7c547c5daf3092d1b40bdaf92",
+      "size": [
+        887,
+        1774
+      ],
+      "partialAlpha": 769295,
+      "components": 32,
+      "excludedSmallComponentPixels": 0
+    },
+    {
+      "source": "source-actions.png",
+      "sha256": "63294b7619b786fd063b9d19560383b79e6c55a767575e51e1abc7506914243c",
+      "size": [
+        887,
+        1774
+      ],
+      "partialAlpha": 765915,
+      "components": 32,
+      "excludedSmallComponentPixels": 0
+    }
+  ],
+  "frames": 63,
+  "uniqueRGBA": 63,
+  "binaryAlpha": true,
+  "paddingAtLeast4": true,
+  "approved": false,
+  "note": "32 locomotion +32 actions. Run reuses authored walk cycle with existing runtime cadence; slash reuses attack2/3. No invented source poses. Original images untouched."
+}

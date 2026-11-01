@@ -66,6 +66,7 @@ function aidOnRing(rx, ry, a){ return {x:Math.cos(a)*rx*1.18, y:Math.sin(a)*ry*0
 
 // ---------------- Armado por arena ----------------
 function aidBuild(){
+  if(typeof arenaWorldPack==='function') arenaWorldPack(currentArena);
   aidProps = []; aidDecals = []; aidSolids = []; aidLights = []; aidKelp = [];
   const A = currentArena;
   if(A==="infernal") aidBuildInfernal();

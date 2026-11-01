@@ -29,7 +29,10 @@ const TINTED = { angel_corrompido: 1 };
 const ARENA_FALLBACK = { cm_: 'ciudad', mn_: 'minas', ab_: 'abismo', lev_: 'acuatica', foco_hielo: 'hielo', foco_convergencia: 'infernal' };
 
 (async () => {
-  const browser = await chromium.launch({ args: ['--no-sandbox'] });
+  const harness = require('../lib/serve');
+  const site = await harness.startSite({envUrl:['ENEMY_COV_BASE_URL']});
+  const BASE = site.url;
+  const browser = await harness.launch();
   const page = await (await browser.newContext({ viewport: { width: 1400, height: 900 } })).newPage();
   const errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
@@ -123,6 +126,7 @@ const ARENA_FALLBACK = { cm_: 'ciudad', mn_: 'minas', ab_: 'abismo', lev_: 'acua
   console.log('errores de página:', errors.slice(0, 6));
   console.log('salida:', outdir);
   await browser.close();
+  await site.close();
 })();
 
 // ============ en la página: mide un tipo ============

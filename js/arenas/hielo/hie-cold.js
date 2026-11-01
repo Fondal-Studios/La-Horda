@@ -214,6 +214,15 @@ function hiePushTall(){
 }
 function hieDrawTall(it, now){
   const b = HIE.br[it.hieBr-1]; if(!b) return;
+  if(typeof arenaWorldDraw==='function' && arenaWorldDraw('hielo',arenaWorldBrazierFrame(b,now),b.x,b.y,96)){
+    // Fuel is authoritative game state, also received by guests. The small bar
+    // makes an almost-extinguished brazier readable without relying on color.
+    if(b.lit && b.fuel<8000){
+      ctx.save(); ctx.fillStyle='#172332'; ctx.fillRect(b.x-17,b.y+5,34,5);
+      ctx.fillStyle='#ffc46b'; ctx.fillRect(b.x-16,b.y+6,32*Math.max(0,b.fuel/8000),3); ctx.restore();
+    }
+    return;
+  }
   const img = b.lit ? aidArtInfBrazier() : hieArtBrazierOff();
   aidDrawProp({img, x:b.x, y:b.y, w:img.width*AID_SCALE*1.2, h:img.height*AID_SCALE*1.2, ay:0.94, flip:false, alpha:1});
   if(b.lit){

@@ -17,9 +17,13 @@ function ascLift(h){const until=h._ascLiftUntil||0;if(until<=runElapsedMs)return
 /* ---------------- Nano: alas asimétricas y conductos tatuados ---------------- */
 function ascNanoWings(h,scale,alpha){
  const s=h.asState||{},P=ascSkinOf(h),regent=s.regentUntil>runElapsedMs,ult=h._ascLiftUntil>runElapsedMs,casting=h.portCastUntil>runElapsedMs;
+ const body=ascBodyTarget(h,0),base=body._codexPack||h.classKey;
+ const key=typeof setSkinPackKey==='function'?setSkinPackKey(body,base):base;
+ const pack=CHAMP_PACK[key],authored=!!(pack&&pack.ready&&pack.embeddedWings);
  const open=ult||regent?1:casting?.75:.45,flap=Math.sin(ascT()*(ult?7:2.4))*.08;
  const lightW=open*(s.lastAff==='light'||regent||ult?1:.75),darkW=open*(s.lastAff==='dark'||regent||ult?1:.75);
  ctx.save();ctx.globalAlpha=alpha*(ult||regent?.92:.55);ctx.translate(h.x,h.y-30*scale-ascLift(h));ctx.scale(scale,scale);
+ if(!authored){
  // ala de LUZ (izquierda): plumas ovaladas superpuestas
  ctx.save();ctx.scale(-1,1);ctx.rotate(-flap);
  for(let i=0;i<5;i++){const a=-.25-i*.22,L=(14+i*4)*lightW*1.6;ctx.save();ctx.rotate(a);ctx.beginPath();ctx.ellipse(L*.55,0,L*.6,3.2,0,0,Math.PI*2);ctx.fillStyle=P.light;ctx.fill();ctx.strokeStyle=P.edge;ctx.lineWidth=.8;ctx.stroke();ctx.restore();}
@@ -28,6 +32,7 @@ function ascNanoWings(h,scale,alpha){
  ctx.save();ctx.rotate(flap);
  for(let i=0;i<5;i++){const a=-.25-i*.22,L=(14+i*4)*darkW*1.6;ctx.save();ctx.rotate(a);ctx.beginPath();ctx.moveTo(2,-2.5);ctx.lineTo(L,-1);ctx.lineTo(L*.8,3);ctx.lineTo(3,2.5);ctx.closePath();ctx.fillStyle=P.dark;ctx.fill();ctx.strokeStyle=P.edge;ctx.lineWidth=.8;ctx.stroke();ctx.restore();}
  ctx.restore();
+ }
  if(P.halo||regent){ctx.globalAlpha*=.8;ctx.beginPath();ctx.arc(0,-6,9,0,Math.PI*2);ctx.strokeStyle=P.edge;ctx.lineWidth=1.5;ctx.stroke();if(regent){ctx.beginPath();ctx.arc(0,-6,9,Math.PI*.5,Math.PI*1.5);ctx.fillStyle=P.light;ctx.globalAlpha*=.35;ctx.fill();}}
  ctx.restore();
 }

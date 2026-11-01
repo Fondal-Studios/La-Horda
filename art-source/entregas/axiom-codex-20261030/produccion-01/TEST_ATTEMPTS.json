@@ -1,0 +1,65 @@
+{
+  "schema": 2,
+  "attempts": [
+    {
+      "id": "source01-pack01",
+      "status": "REJECTED",
+      "reason": "equal row partition retained fragments from adjacent rows"
+    },
+    {
+      "id": "source02",
+      "status": "REJECTED",
+      "reason": "generated rows overlap and cannot be cleanly partitioned without losing authored ink"
+    },
+    {
+      "id": "source01-candidate03",
+      "status": "TECHNICAL_SCREEN_PASS_VISUAL_FIX",
+      "reason": "frames 14/18/26 shrink body for detached VFX",
+      "newTests": [
+        "36/36 canonical density screen",
+        "8/8 animation contract unit tests"
+      ]
+    },
+    {
+      "id": "source03-candidate04",
+      "status": "SOURCE_PASS_PENDING_GAMEPLAY",
+      "newTests": [
+        "36/36 nonempty",
+        "36/36 unique RGBA",
+        "binary alpha",
+        "0 edge contacts",
+        "manual contact sheet review"
+      ]
+    },
+    {
+      "id": "skin-sistema-source01",
+      "status": "SOURCE_PASS_PENDING_GAMEPLAY",
+      "references": [
+        "Axiom Codex body",
+        "existing skin_sistema atlas"
+      ],
+      "newTests": [
+        "36/36 nonempty",
+        "36/36 unique RGBA",
+        "binary alpha",
+        "0 edge contacts",
+        "manual contact sheet review"
+      ]
+    },
+    {
+      "id": "skin-ambar-source01",
+      "status": "SOURCE_PASS_PENDING_GAMEPLAY",
+      "references": [
+        "Axiom Codex body",
+        "existing axiom_piedra atlas"
+      ],
+      "newTests": [
+        "36/36 nonempty",
+        "36/36 unique RGBA",
+        "binary alpha",
+        "0 edge contacts",
+        "manual contact sheet review"
+      ]
+    }
+  ]
+}

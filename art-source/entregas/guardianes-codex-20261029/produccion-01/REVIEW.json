@@ -1,0 +1,64 @@
+{
+  "status": "PASS_COMPONENT",
+  "components": [
+    "musashi.cuerpo.codex",
+    "cazadora.cuerpo.codex",
+    "nigromante.cuerpo.codex"
+  ],
+  "scope": "Base bodies only, real loader installed on candidate. No approval of whole champion kit, old FX, all enemies or publication.",
+  "identity": {
+    "musashi": "Blue kimono, tied dark hair/beard and wooden sword; replaces red-black dual-steel appearance.",
+    "cazadora": "Leaf hood/cape, leather bow/quiver silhouette consistent with Sylva Codex.",
+    "nigromante": "Purple stitched hood/mask, skull armor and flame staff; rear asymmetric cloak corrected from exact Codex sprite."
+  },
+  "visualReview": [
+    "18 temporal sheets: idle/walk/attack/cast/hit/death in4 directions, death through1190ms. Left mirrored; shared cast/hit/death orientation follows existing fallback contract.",
+    "Six native-scale before/after sheets across six arenas, desktop/mobile, real H1/H2/H3/UF. Selected fullframes and online host/guest inspected.",
+    "Existing huge Musashi launch star, Sylva green effects and Ilvar demon/VFX remain present in both baselines and candidates; this does not approve their legacy composition."
+  ],
+  "tests": {
+    "native": {
+      "uniqueExamined": 143,
+      "directionScaleSamples": 429,
+      "failures": 0
+    },
+    "roster": {
+      "appearances": 141,
+      "scaleFailures": 0,
+      "presentationFailures": 0,
+      "errors": 0
+    },
+    "authored": {
+      "selectedNewUniquePoses": 126,
+      "extraOldIlvarUFFrames": 4,
+      "binaryAlpha": true,
+      "cellEdges": 0,
+      "reexportPNG": "six byte-identical"
+    },
+    "animationContract": "3 compatible against exact old registration; no shortened or missing clips",
+    "actualGame": {
+      "scenes": 72,
+      "pairedSummarizedStates": 36,
+      "exactPairs": 36,
+      "errors": 0
+    },
+    "skins": {
+      "pixelComparisons": 112,
+      "equal": 112,
+      "scope": "existing skins/cromas in body renderer; does not approve their existing art"
+    },
+    "online": {
+      "champions": 3,
+      "actualGuestCasts": 9,
+      "hostGuestRecords": 6,
+      "allPass": true
+    }
+  },
+  "limits": [
+    "Native143 includes unused authored source cells; only126 new unique cells are actually referenced, not144 installed animation frames.",
+    "Old Ilvar transformation pixels retain their existing partial alpha, four source frames preserved. Demon renderer unchanged.",
+    "Body replacement changes baseline pixels; no VFX 80% occlusion claim or global snapshot parity claim.",
+    "Full game testing uses base appearance. Existing equipped skins tested for pixel preservation, not a new all-build ability approval.",
+    "CI exact production SHA and normal merge still required. Canonical hosting must be checked separately."
+  ]
+}

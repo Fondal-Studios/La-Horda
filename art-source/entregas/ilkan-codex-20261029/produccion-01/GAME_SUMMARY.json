@@ -1,0 +1,23 @@
+{
+  "results": [
+    {
+      "mobileViewport": false,
+      "pairedSummaryEqual": 6,
+      "pairs": 6,
+      "framesPerPage": 2520,
+      "p95": 2.300000000745058,
+      "max": 79.80000000074506,
+      "errors": []
+    },
+    {
+      "mobileViewport": true,
+      "pairedSummaryEqual": 6,
+      "pairs": 6,
+      "framesPerPage": 2520,
+      "p95": 2.5,
+      "max": 79.19999999925494,
+      "errors": []
+    }
+  ],
+  "limitation": "Sequential six-arena pages, seeded before scenes. 420 real update/render frames per arena. Snapshot summarized not global. Timing under concurrent tests, not GPU/physical mobile guarantee."
+}

@@ -1,0 +1,12 @@
+Use case: stylized-concept. Asset type: production sprite animation sheet for a dark fantasy 2D pixel game, not a poster.
+Reference image 1 is Nano GM's approved codex: copy the SMALL PIXEL CHARACTER on the right, preserving dark curly hair, tattoo-covered bare arms, sleeveless black/gold clothing, boots, right anatomical purple feather wing (viewer LEFT in front), left anatomical gold feather wing (viewer RIGHT in front). Bare hands, no weapon.
+Create one clean FRONT-FACING sheet of exactly 28 complete character sprites, precisely 4 columns x 7 rows, all facing viewer, four DIFFERENT animation poses per row in time order:
+row1 idle breathing: relaxed, inhale shoulder rise, exhale shoulder settle, blink;
+row2 walk: left foot forward, passing, right foot forward, passing opposite;
+row3 unarmed attack: arm windup, forward punch with body lean, follow-through, recovery;
+row4 cast: hands gather at waist, raise palms to chest, palms thrust forward, recover;
+row5 ultimate: crouch charge, stand arms rising, arms spread upward and wings open, recover wings lowering;
+row6 hurt: standing braced, head and chest recoil, crouched recoil, regain balance;
+row7 death: stagger, knees buckle, collapse on side, lie fully on ground.
+Art: deliberate native 16-bit pixel art, each standing body about 64 native pixels tall, a large chibi head 40% of body height, dark 1-pixel outline, 2-3 flat shades per color. Clean designed pixel clusters. Preserve same clothing, head, hair, wing sides and body size across ALL28 sprites. No glow, no particles, no ground, no shadow, no painting, no soft gradients.
+Technical composition: 2048x2048 square transparent canvas, 4x7 equally sized invisible grid. Each character wholly within the middle 65% of its cell, generous TRANSPARENT padding on all four sides, never touching a cell boundary or neighbor, INCLUDING widest wings and lying corpse. Feet at consistent baseline within each row except deliberate death collapse. Constant body scale. No labels, no text, no grid lines, no borders. Genuine transparent background.

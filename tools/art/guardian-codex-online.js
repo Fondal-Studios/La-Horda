@@ -1,0 +1,14 @@
+'use strict';
+const {spawn}=require('node:child_process'),fs=require('node:fs'),H=require('../lib/serve');
+const OUT='art-source/entregas/guardianes-codex-20261029/produccion-01';
+(async()=>{const relay=spawn(process.execPath,['server/relay.js'],{env:{...process.env,PORT:'8899',DATA_DIR:'/tmp/guardian-codex-relay',DATABASE_URL:'',ALLOWED_ORIGINS:'*'},stdio:'ignore'}),site=await H.startSite();let b;const results=[];try{b=await H.launch();for(const key of ['musashi','cazadora','nigromante']){
+ const a=await b.newPage(),g=await b.newPage({viewport:{width:844,height:390},isMobile:true,hasTouch:true}),errors=[];
+ for(const [p,k]of[[a,'tanque'],[g,key]]){p.on('pageerror',e=>errors.push(e.message));await H.goto(p,site.url+'/?server=ws%3A%2F%2F127.0.0.1%3A8899');await p.waitForFunction(()=>typeof netCreateRoom==='function');await p.evaluate(k=>{save.starterChosen=true;for(const c in save.champions){save.champions[c].unlocked=true;save.champions[c].level=20;}selectedClass=k;currentArena='bosque';setState('prep');},k);}
+ await a.evaluate(()=>netCreateRoom(currentArena,selectedClass,20));const code=await a.evaluate(()=>net.code);await g.evaluate(code=>netJoinRoom(code,selectedClass,20),code);await a.waitForFunction(()=>netHumanCount()===2);await a.waitForFunction(()=>netDuoLoadoutValid(1));await a.evaluate(()=>netHostStartGame());await g.waitForFunction(()=>netMatch?.role==='guest'&&state==='playing');
+ for(const p of[a,g])await p.evaluate(key=>{window.__body=[];const fn=champPackDrawFrame;champPackDrawFrame=function(P,...args){if(P===CHAMP_PACK[key]&&__body.length<3000)__body.push({url:P.atlas?.src,frame:args[0],width:P.atlas?.naturalWidth});return fn.apply(this,arguments);};},key);
+ await a.evaluate(()=>{enemies=[];heroes[0].x=heroes[1].x-80;heroes[0].y=heroes[1].y;setInterval(()=>{spawnTimer=1e9;arenaHazardTimer=1e9;},50);});
+ for(const slot of [0,1,2]){await g.evaluate(slot=>useSkill(slot),slot);await a.waitForTimeout(300);}
+ for(const [side,p]of[['host',a],['guest',g]]){await p.waitForFunction(()=>__body.length>0);const r=await p.evaluate(()=>({casts:heroes[1].stats.skillCasts,body:__body,role:netMatch.role}));results.push({key,side,errors,...r,pass:r.casts>=3&&r.body.some(d=>d.url.includes('/'+key+'/codex-v1/')&&d.width>0)});await p.screenshot({path:OUT+'/online-'+key+'-'+side+'.png'});}
+ await a.close();await g.close();}
+ fs.writeFileSync(OUT+'/ONLINE.json',JSON.stringify({scope:'Three real guest useSkill calls per champion, host and touch guest actual atlas draws. No changed network protocol.',results},null,2));console.log(results.map(r=>({key:r.key,side:r.side,casts:r.casts,pass:r.pass,errors:r.errors})));if(results.some(r=>!r.pass||r.errors.length))process.exitCode=1;
+}finally{if(b)await b.close();relay.kill();await site.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

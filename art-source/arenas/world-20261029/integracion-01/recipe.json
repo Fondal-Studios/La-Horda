@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "source": [
+    "art-source/arenas/world-20261029/bosque-codex02-source.png",
+    "art-source/arenas/world-20261029/hielo-codex02-source.png"
+  ],
+  "codex_reference": "assets/ui/codex/champions/ilkan.png",
+  "reference_role": "small right-side sprites; pixel-cluster construction and dark outline only",
+  "command": "ARENA_WORLD_SOURCE_VARIANT=codex02 ARENA_WORLD_DEST=art-source/arenas/world-20261029/candidate03-atlas ARENA_WORLD_WRITE_RUNTIME=0 python3 tools/art/pack-arena-world.py",
+  "correction": "Drop only disconnected, top-boundary separator components with height <=15 and aspect ratio >=5; retain all sparks, leaves and detached authored details.",
+  "runtime_test": "CHROMIUM_PATH=/tmp/chromium node tools/art/test-arena-world.js",
+  "style_scan": "CHROMIUM_PATH=/tmp/chromium node tools/art/check-arena-world-density.js",
+  "no_filters": [
+    "no palette quantization",
+    "no smoothing",
+    "no RGB replacement",
+    "nearest-neighbor 1/3 native export",
+    "binary alpha contract only"
+  ]
+}

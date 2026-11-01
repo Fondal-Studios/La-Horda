@@ -1,7 +1,8 @@
 {
   "hero": "nano_gm",
-  "status": "source_generated_requires_cleanup",
-  "sourceSheets": [
+  "status": "base_atlas_integrated_in_containing_commit",
+  "currentProductionManifest": "docs/art-production/manifest.json",
+  "legacySources": [
     {
       "path": "art-source/sprite-rework/nano_gm/cast-directions-source.png",
       "size": 2433314,
@@ -59,22 +60,20 @@
       ]
     }
   ],
-  "generatedSheetsThisDelivery": 6,
-  "totalSourceSheets": 7,
-  "nominalCells": 112,
-  "validatedUniqueFrames": 0,
-  "integratedCombatAssets": 0,
-  "issues": [
-    "Cell overlap especially ultimate; regular grid not validated",
-    "Some poses reach sheet edge",
-    "Direction and wing consistency needs per-frame review",
-    "Existing runtime mirrors left and adds procedural wings"
-  ],
-  "next": [
-    "Correct spacing and margins",
-    "Pack and validate transparent frames and pivots",
-    "Integrate explicit left direction and prevent duplicate wings",
-    "Visual gameplay tests"
+  "legacyStatus": "superseded_not_integrated",
+  "currentSourceDirectory": "art-source/sprite-rework/nano_gm/2026-10-28",
+  "newSourceSheets": 5,
+  "acceptedSourceSheets": 4,
+  "rejectedSupersededSourceSheets": 1,
+  "validatedUniqueFrames": 112,
+  "newRuntimeAssetFiles": 3,
+  "integratedCombatAssets": 3,
+  "integrationNote": "Atlas and consuming loaders are committed atomically with this manifest. Runtime verification in docs/art-gate/nano-gm-codex-v2.",
+  "baseClipsPending": 0,
+  "remainingAudit": [
+    "Alternative skin art audit (routing and unchanged pixels tested; no redraw in this delivery)",
+    "Full visual audit of judgement transformation, VFX and projectiles",
+    "Production-device multiplayer and performance validation"
   ],
   "globalMissingCount": null
 }

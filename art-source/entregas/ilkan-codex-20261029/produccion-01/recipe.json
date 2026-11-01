@@ -1,0 +1,57 @@
+{
+  "component": "ilkan.cuerpo.codex",
+  "block": "B099",
+  "sourceGenerator": "built-in imagegen, reference edit; exact prompts in PROMPT_*; generation not deterministic",
+  "sources": [
+    {
+      "path": "source-locomotion.png",
+      "sha256": "6cc053404b1044fe5556d5cf56fbd7e48496cdb7c547c5daf3092d1b40bdaf92"
+    },
+    {
+      "path": "source-actions.png",
+      "sha256": "63294b7619b786fd063b9d19560383b79e6c55a767575e51e1abc7506914243c"
+    }
+  ],
+  "packingCommand": "python tools/art/pack-ilkan-codex.py",
+  "packing": "Connected alpha>127 components >=500 pixels, ordered rows/columns. Source poses preserved. Nearest sampling to target native scale; binary alpha extraction; no palette quantization or procedural redraw. Metadata and per-frame source rectangles in FRAME_INDEX.",
+  "selectedFrames": 62,
+  "excludedSourceIndices": [
+    14,
+    50
+  ],
+  "explicitReuse": {
+    "walk_side/run": [
+      12,
+      13,
+      12,
+      15
+    ],
+    "fly": [
+      48,
+      49
+    ],
+    "slash": [
+      33,
+      34
+    ]
+  },
+  "runtime": "One champPackLoadAtlas ilkan loader registration replaces human v2 path with codex-v1. Other loaders, normalization, champion mechanics unchanged.",
+  "cell": [
+    192,
+    128
+  ],
+  "cols": 8,
+  "refH": 70,
+  "anchor": 0.890625,
+  "reexport": "REEXPORT.json: atlas/meta/frame index byte identical",
+  "checks": [
+    "node tools/art/check-ilkan-codex.js",
+    "node tools/art/game-ilkan-codex.js",
+    "node tools/art/ilkan-codex-preservation.js",
+    "node tools/art/ilkan-codex-equipment.js",
+    "PYTHONPATH=/tmp/ilkan-art-deps python tools/art/ilkan-codex-style.py",
+    "node tools/vfx/ilkan-codex-online.js",
+    "WITH_SITE_ENV=ROSTER_BASE_URL node tools/lib/with-site.js tools/art/roster_gate.js"
+  ],
+  "environment": "NODE_PATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules CHROMIUM_PATH=/tmp/chromium; local server npm ci --ignore-scripts for relay"
+}

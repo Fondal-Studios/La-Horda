@@ -1,0 +1,40 @@
+{
+  "status": "PASS_COMPONENT",
+  "component": "A-BODY-veyra/codex-v1",
+  "state": "VALIDADO",
+  "integration": "PENDING_CI",
+  "publication": "PENDING",
+  "reference": "assets/ui/codex/champions/veyra.png",
+  "referenceSha256": "d89d8328b31d3bfa57b42a7a8a4f3c7c06d9446f122d38f4f7a59c9a7c9b76ed",
+  "visualIdentity": [
+    "cabello rojo largo con trenza",
+    "armadura verde y dorada",
+    "hojas curvas dobles",
+    "cuatro direcciones reales",
+    "siete estados de cuatro fases"
+  ],
+  "reviewed": [
+    "112 frames nativos y temporales",
+    "12 hojas pareadas antes/después: 6 arenas x móvil/escritorio",
+    "5 apariencias: base, equipo, alt1, croma, set",
+    "H1/H2/H3/UF con objetos adyacentes",
+    "relay real anfitrión/invitada táctil"
+  ],
+  "gates": {
+    "canonicalDetector": "112/112 PASS",
+    "roster": "141 appearances, 0 scale failures, 0 presentation failures, 0 errors",
+    "gameMatrix": "120 pairs; state/RNG exact; min contact 0.8710653753026635",
+    "online": "host and guest installed atlas PASS",
+    "performance": "4x360 frames; 361 clears/run; no errors",
+    "reexport": "byte-identical SHA256 c2e818...",
+    "uniqueSkins": "6471/6471 PASS; authored left direction is asserted when explicit left sets exist",
+    "pixelDensity": "191 entities; 0 unexcepted deviations"
+  },
+  "scope": "Cuerpo base Veyra y croma derivado. Alt1 y set conservan atlas authored. No cambia VFX, balance, red, habilidades ni skins authored.",
+  "notClosed": [
+    "Veyra VFX kit",
+    "PR233 workshop history",
+    "global champion inventory",
+    "canonical hosting publication"
+  ]
+}

@@ -46,7 +46,9 @@ const OUT=process.env.SKIN_AUDIT_OUT || '/tmp/horda-skins/check';
       for(const st of ['idle','walk','attack','cast','hit','death'])for(const [dir,left] of [['down',false],['side',false],['side',true],['up',false]]){
        const pick=champPackSet(P,st,dir,{_pleft:left});check(id+' '+st+' '+dir+' '+left,!!pick&&pick.arr.length>0);
       }
-      const r=champPackSet(P,'walk','side',{_pleft:false}),l=champPackSet(P,'walk','side',{_pleft:true});check(id+' left mirrors right',((r.arr[0]<0)!==r.flip)!==((l.arr[0]<0)!==l.flip));
+      const r=champPackSet(P,'walk','side',{_pleft:false}),l=champPackSet(P,'walk','side',{_pleft:true}),authoredLeft=P.sets.walk_left;
+      if(authoredLeft)check(id+' uses authored left direction',l.arr===authoredLeft&&l.arr!==r.arr);
+      else check(id+' left mirrors right',((r.arr[0]<0)!==r.flip)!==((l.arr[0]<0)!==l.flip));
      }
     }
     g.fillStyle='#fff';g.font='13px monospace';g.fillText(id,8,row*140+17);

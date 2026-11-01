@@ -1,0 +1,1659 @@
+{
+  "scope": "112 body states through actual drawHeroBody/drawFallenHero at game scale; isolated canvas.",
+  "errors": [],
+  "ref": {
+    "direction": "down",
+    "state": "idle",
+    "phase": 0,
+    "calls": [],
+    "body": 59,
+    "foot": -2,
+    "width": 54
+  },
+  "idle": [
+    {
+      "direction": "down",
+      "state": "idle",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 0,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 59,
+      "pass": true
+    },
+    {
+      "direction": "right",
+      "state": "idle",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 28,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 58,
+      "pass": true
+    },
+    {
+      "direction": "up",
+      "state": "idle",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 56,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -3,
+      "width": 73,
+      "pass": true
+    },
+    {
+      "direction": "left",
+      "state": "idle",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 84,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 86,
+      "pass": true
+    }
+  ],
+  "rows": [
+    {
+      "direction": "down",
+      "state": "idle",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 0,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 59
+    },
+    {
+      "direction": "down",
+      "state": "idle",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 1,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 55
+    },
+    {
+      "direction": "down",
+      "state": "idle",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 2,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 56
+    },
+    {
+      "direction": "down",
+      "state": "idle",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 3,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 58
+    },
+    {
+      "direction": "down",
+      "state": "walk",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 4,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 56,
+      "foot": -2,
+      "width": 64
+    },
+    {
+      "direction": "down",
+      "state": "walk",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 5,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 57,
+      "foot": -2,
+      "width": 62
+    },
+    {
+      "direction": "down",
+      "state": "walk",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 6,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 55,
+      "foot": -2,
+      "width": 59
+    },
+    {
+      "direction": "down",
+      "state": "walk",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 7,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 55,
+      "foot": -2,
+      "width": 58
+    },
+    {
+      "direction": "down",
+      "state": "attack",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 8,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 56,
+      "foot": -2,
+      "width": 66
+    },
+    {
+      "direction": "down",
+      "state": "attack",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 9,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 55,
+      "foot": -2,
+      "width": 61
+    },
+    {
+      "direction": "down",
+      "state": "attack",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 10,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 54,
+      "foot": -2,
+      "width": 77
+    },
+    {
+      "direction": "down",
+      "state": "attack",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 11,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 61,
+      "foot": -2,
+      "width": 59
+    },
+    {
+      "direction": "down",
+      "state": "cast",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 12,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 47,
+      "foot": -2,
+      "width": 68
+    },
+    {
+      "direction": "down",
+      "state": "cast",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 13,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 55,
+      "foot": -2,
+      "width": 70
+    },
+    {
+      "direction": "down",
+      "state": "cast",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 14,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 61,
+      "foot": -2,
+      "width": 70
+    },
+    {
+      "direction": "down",
+      "state": "cast",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 15,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 63,
+      "foot": -2,
+      "width": 59
+    },
+    {
+      "direction": "down",
+      "state": "ultimate",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 16,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 61,
+      "foot": -2,
+      "width": 72
+    },
+    {
+      "direction": "down",
+      "state": "ultimate",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 17,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 69,
+      "foot": -2,
+      "width": 53
+    },
+    {
+      "direction": "down",
+      "state": "ultimate",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 18,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 57,
+      "foot": -2,
+      "width": 67
+    },
+    {
+      "direction": "down",
+      "state": "ultimate",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 19,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 63,
+      "foot": -2,
+      "width": 62
+    },
+    {
+      "direction": "down",
+      "state": "hit",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 20,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 59
+    },
+    {
+      "direction": "down",
+      "state": "hit",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 21,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 53,
+      "foot": -2,
+      "width": 58
+    },
+    {
+      "direction": "down",
+      "state": "hit",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 22,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 64,
+      "foot": -2,
+      "width": 61
+    },
+    {
+      "direction": "down",
+      "state": "hit",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 23,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 63,
+      "foot": -2,
+      "width": 61
+    },
+    {
+      "direction": "down",
+      "state": "death",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 24,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 56,
+      "foot": -1,
+      "width": 70
+    },
+    {
+      "direction": "down",
+      "state": "death",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 25,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 51,
+      "foot": -1,
+      "width": 60
+    },
+    {
+      "direction": "down",
+      "state": "death",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 26,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 32,
+      "foot": -1,
+      "width": 80
+    },
+    {
+      "direction": "down",
+      "state": "death",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 27,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 30,
+      "foot": -1,
+      "width": 73
+    },
+    {
+      "direction": "right",
+      "state": "idle",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 28,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 58
+    },
+    {
+      "direction": "right",
+      "state": "idle",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 29,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 58
+    },
+    {
+      "direction": "right",
+      "state": "idle",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 30,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 58
+    },
+    {
+      "direction": "right",
+      "state": "idle",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 31,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 58
+    },
+    {
+      "direction": "right",
+      "state": "walk",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 32,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 62,
+      "foot": -2,
+      "width": 63
+    },
+    {
+      "direction": "right",
+      "state": "walk",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 33,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 61,
+      "foot": -2,
+      "width": 63
+    },
+    {
+      "direction": "right",
+      "state": "walk",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 34,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 65
+    },
+    {
+      "direction": "right",
+      "state": "walk",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 35,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 58
+    },
+    {
+      "direction": "right",
+      "state": "attack",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 36,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 68
+    },
+    {
+      "direction": "right",
+      "state": "attack",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 37,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 56,
+      "foot": -2,
+      "width": 85
+    },
+    {
+      "direction": "right",
+      "state": "attack",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 38,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 58,
+      "foot": -2,
+      "width": 75
+    },
+    {
+      "direction": "right",
+      "state": "attack",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 39,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 58
+    },
+    {
+      "direction": "right",
+      "state": "cast",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 40,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 72
+    },
+    {
+      "direction": "right",
+      "state": "cast",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 41,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 62,
+      "foot": -2,
+      "width": 66
+    },
+    {
+      "direction": "right",
+      "state": "cast",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 42,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 56,
+      "foot": -2,
+      "width": 70
+    },
+    {
+      "direction": "right",
+      "state": "cast",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 43,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 61,
+      "foot": -2,
+      "width": 62
+    },
+    {
+      "direction": "right",
+      "state": "ultimate",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 44,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 51,
+      "foot": -2,
+      "width": 65
+    },
+    {
+      "direction": "right",
+      "state": "ultimate",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 45,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 70
+    },
+    {
+      "direction": "right",
+      "state": "ultimate",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 46,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 51,
+      "foot": -2,
+      "width": 79
+    },
+    {
+      "direction": "right",
+      "state": "ultimate",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 47,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 49,
+      "foot": -2,
+      "width": 60
+    },
+    {
+      "direction": "right",
+      "state": "hit",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 48,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 58,
+      "foot": -2,
+      "width": 67
+    },
+    {
+      "direction": "right",
+      "state": "hit",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 49,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 53,
+      "foot": -2,
+      "width": 60
+    },
+    {
+      "direction": "right",
+      "state": "hit",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 50,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 53,
+      "foot": -2,
+      "width": 58
+    },
+    {
+      "direction": "right",
+      "state": "hit",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 51,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 59
+    },
+    {
+      "direction": "right",
+      "state": "death",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 52,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 62,
+      "foot": -1,
+      "width": 61
+    },
+    {
+      "direction": "right",
+      "state": "death",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 53,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 46,
+      "foot": -1,
+      "width": 62
+    },
+    {
+      "direction": "right",
+      "state": "death",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 54,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 37,
+      "foot": -1,
+      "width": 78
+    },
+    {
+      "direction": "right",
+      "state": "death",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 55,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 27,
+      "foot": -1,
+      "width": 76
+    },
+    {
+      "direction": "up",
+      "state": "idle",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 56,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -3,
+      "width": 73
+    },
+    {
+      "direction": "up",
+      "state": "idle",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 57,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 61,
+      "foot": -3,
+      "width": 71
+    },
+    {
+      "direction": "up",
+      "state": "idle",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 58,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -3,
+      "width": 71
+    },
+    {
+      "direction": "up",
+      "state": "idle",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 59,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -3,
+      "width": 73
+    },
+    {
+      "direction": "up",
+      "state": "walk",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 60,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 57,
+      "foot": -3,
+      "width": 72
+    },
+    {
+      "direction": "up",
+      "state": "walk",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 61,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 57,
+      "foot": -3,
+      "width": 61
+    },
+    {
+      "direction": "up",
+      "state": "walk",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 62,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 57,
+      "foot": -3,
+      "width": 68
+    },
+    {
+      "direction": "up",
+      "state": "walk",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 63,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 57,
+      "foot": -3,
+      "width": 72
+    },
+    {
+      "direction": "up",
+      "state": "attack",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 64,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -3,
+      "width": 98
+    },
+    {
+      "direction": "up",
+      "state": "attack",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 65,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 52,
+      "foot": -3,
+      "width": 98
+    },
+    {
+      "direction": "up",
+      "state": "attack",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 66,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 54,
+      "foot": -3,
+      "width": 100
+    },
+    {
+      "direction": "up",
+      "state": "attack",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 67,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 62,
+      "foot": -3,
+      "width": 80
+    },
+    {
+      "direction": "up",
+      "state": "cast",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 68,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 63,
+      "foot": -3,
+      "width": 82
+    },
+    {
+      "direction": "up",
+      "state": "cast",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 69,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 62,
+      "foot": -3,
+      "width": 60
+    },
+    {
+      "direction": "up",
+      "state": "cast",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 70,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 55,
+      "foot": -3,
+      "width": 104
+    },
+    {
+      "direction": "up",
+      "state": "cast",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 71,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 62,
+      "foot": -3,
+      "width": 82
+    },
+    {
+      "direction": "up",
+      "state": "ultimate",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 72,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 63,
+      "foot": -3,
+      "width": 81
+    },
+    {
+      "direction": "up",
+      "state": "ultimate",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 73,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 69,
+      "foot": -3,
+      "width": 63
+    },
+    {
+      "direction": "up",
+      "state": "ultimate",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 74,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 51,
+      "foot": -3,
+      "width": 115
+    },
+    {
+      "direction": "up",
+      "state": "ultimate",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 75,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 62,
+      "foot": -3,
+      "width": 82
+    },
+    {
+      "direction": "up",
+      "state": "hit",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 76,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 63,
+      "foot": -3,
+      "width": 72
+    },
+    {
+      "direction": "up",
+      "state": "hit",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 77,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 53,
+      "foot": -3,
+      "width": 71
+    },
+    {
+      "direction": "up",
+      "state": "hit",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 78,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 46,
+      "foot": -3,
+      "width": 69
+    },
+    {
+      "direction": "up",
+      "state": "hit",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 79,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 63,
+      "foot": -3,
+      "width": 69
+    },
+    {
+      "direction": "up",
+      "state": "death",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 80,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -1,
+      "width": 73
+    },
+    {
+      "direction": "up",
+      "state": "death",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 81,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 49,
+      "foot": -1,
+      "width": 91
+    },
+    {
+      "direction": "up",
+      "state": "death",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 82,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 42,
+      "foot": -1,
+      "width": 86
+    },
+    {
+      "direction": "up",
+      "state": "death",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 83,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 33,
+      "foot": -1,
+      "width": 105
+    },
+    {
+      "direction": "left",
+      "state": "idle",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 84,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 86
+    },
+    {
+      "direction": "left",
+      "state": "idle",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 85,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 92
+    },
+    {
+      "direction": "left",
+      "state": "idle",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 86,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 88
+    },
+    {
+      "direction": "left",
+      "state": "idle",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 87,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 91
+    },
+    {
+      "direction": "left",
+      "state": "walk",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 88,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 58,
+      "foot": -2,
+      "width": 82
+    },
+    {
+      "direction": "left",
+      "state": "walk",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 89,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 82
+    },
+    {
+      "direction": "left",
+      "state": "walk",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 90,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 60,
+      "foot": -2,
+      "width": 83
+    },
+    {
+      "direction": "left",
+      "state": "walk",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 91,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 64
+    },
+    {
+      "direction": "left",
+      "state": "attack",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 92,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 82
+    },
+    {
+      "direction": "left",
+      "state": "attack",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 93,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 54,
+      "foot": -2,
+      "width": 93
+    },
+    {
+      "direction": "left",
+      "state": "attack",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 94,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 45,
+      "foot": -2,
+      "width": 97
+    },
+    {
+      "direction": "left",
+      "state": "attack",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 95,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 58,
+      "foot": -2,
+      "width": 82
+    },
+    {
+      "direction": "left",
+      "state": "cast",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 96,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 58,
+      "foot": -2,
+      "width": 76
+    },
+    {
+      "direction": "left",
+      "state": "cast",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 97,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 57,
+      "foot": -2,
+      "width": 77
+    },
+    {
+      "direction": "left",
+      "state": "cast",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 98,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 51,
+      "foot": -2,
+      "width": 92
+    },
+    {
+      "direction": "left",
+      "state": "cast",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 99,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 58,
+      "foot": -2,
+      "width": 73
+    },
+    {
+      "direction": "left",
+      "state": "ultimate",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 100,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 48,
+      "foot": -2,
+      "width": 81
+    },
+    {
+      "direction": "left",
+      "state": "ultimate",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 101,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 75
+    },
+    {
+      "direction": "left",
+      "state": "ultimate",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 102,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 53,
+      "foot": -2,
+      "width": 81
+    },
+    {
+      "direction": "left",
+      "state": "ultimate",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 103,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 42,
+      "foot": -2,
+      "width": 71
+    },
+    {
+      "direction": "left",
+      "state": "hit",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 104,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 63,
+      "foot": -2,
+      "width": 91
+    },
+    {
+      "direction": "left",
+      "state": "hit",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 105,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 56,
+      "foot": -2,
+      "width": 85
+    },
+    {
+      "direction": "left",
+      "state": "hit",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 106,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 56,
+      "foot": -2,
+      "width": 80
+    },
+    {
+      "direction": "left",
+      "state": "hit",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 107,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 59,
+      "foot": -2,
+      "width": 77
+    },
+    {
+      "direction": "left",
+      "state": "death",
+      "phase": 0,
+      "calls": [
+        {
+          "frame": 108,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 56,
+      "foot": -1,
+      "width": 85
+    },
+    {
+      "direction": "left",
+      "state": "death",
+      "phase": 1,
+      "calls": [
+        {
+          "frame": 109,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 41,
+      "foot": -1,
+      "width": 59
+    },
+    {
+      "direction": "left",
+      "state": "death",
+      "phase": 2,
+      "calls": [
+        {
+          "frame": 110,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 38,
+      "foot": -1,
+      "width": 99
+    },
+    {
+      "direction": "left",
+      "state": "death",
+      "phase": 3,
+      "calls": [
+        {
+          "frame": 111,
+          "url": "http://127.0.0.1:44815/assets/sprites/champions/veyra/codex-v1/atlas.png"
+        }
+      ],
+      "body": 29,
+      "foot": -1,
+      "width": 111
+    }
+  ],
+  "normalization": {
+    "front": [
+      0.9516,
+      -0.9
+    ],
+    "side": [
+      0.9516,
+      -0.9
+    ],
+    "up": [
+      1.0026,
+      -2
+    ]
+  }
+}
