@@ -1,0 +1,33 @@
+# done: 2 toques desde JUGAR hasta mover el joystick → toque 1: #hub-play-btn | toque 2: #run-intro .ri-go
+PASS TOQUES.done.de_JUGAR_al_primer_movimiento_<=_3  {"taps":2}
+PASS PANTALLAS.done.una_sola_pagina_previa_(la_ficha_de_la_arena)  [{"who":"FICHA DE ARENA","title":"🏚 01 — CIUDAD MALDITA","ficha":true}]
+PASS PANTALLAS.done.sin_la_Sala_con_pestañas
+PASS SALTAR.done.visible_en_la_pagina_desde_el_primer_cuadro  []
+PASS MOVIMIENTO.done.el_joystick_mueve_al_guardian  {"moved":213.13098975259115}
+PASS TUTORIAL.done.sin_segundo_tutorial_de_basicos_en_la_arena  ""
+PASS MISION.done.el_HUD_no_repite_sobrevivir  "NIVEL 1/10 · protegé la ciudad · 0:23"
+PASS GUARDADO.done.marcas_compatibles_(goalMission,_basics,_soloIntro)  {"firstStory":1,"trainingSkipped":0,"training":1,"b_skill":1,"b_attack":1,"b_move":1,"basics":1,"goalMission":1,"soloIntro":1,"prologueDeferred":1,"arena":{}}
+PASS SALA.done.desde_la_segunda_partida_JUGAR_abre_la_Sala_(equipo)
+PASS LIBRO.done.prologo_completo_y_como_se_pierde_siguen_en_Codice_El_Libro  {"pro":true,"lose":true}
+PASS ERRORES.done.sin_errores_de_pagina  []
+# skip: 2 toques desde JUGAR hasta mover el joystick → toque 1: #hub-play-btn | toque 2: #run-intro .ri-go
+PASS TOQUES.skip.de_JUGAR_al_primer_movimiento_<=_3  {"taps":2}
+PASS PANTALLAS.skip.una_sola_pagina_previa_(la_ficha_de_la_arena)  [{"who":"FICHA DE ARENA","title":"🏚 01 — CIUDAD MALDITA","ficha":true}]
+PASS PANTALLAS.skip.sin_la_Sala_con_pestañas
+PASS SALTAR.skip.visible_en_la_pagina_desde_el_primer_cuadro  []
+PASS MOVIMIENTO.skip.el_joystick_mueve_al_guardian  {"moved":213.98498451870734}
+PASS TUTORIAL.skip.sin_segundo_tutorial_de_basicos_en_la_arena  ""
+PASS MISION.skip.el_HUD_no_repite_sobrevivir  "NIVEL 1/10 · protegé la ciudad · 0:23"
+PASS GUARDADO.skip.marcas_compatibles_(goalMission,_basics,_soloIntro)  {"firstStory":1,"trainingSkipped":1,"soloIntro":1,"prologueDeferred":1,"arena":{},"goalMission":1,"b_skill":1,"b_attack":1,"b_move":1,"basics":1}
+PASS SALA.skip.desde_la_segunda_partida_JUGAR_abre_la_Sala_(equipo)
+PASS LIBRO.skip.prologo_completo_y_como_se_pierde_siguen_en_Codice_El_Libro  {"pro":true,"lose":true}
+PASS ERRORES.skip.sin_errores_de_pagina  []
+# sin práctica: 9 toques; páginas: MISIÓN · TU MISIÓN: SOBREVIVIR / MISIÓN · CÓMO SE GANA Y CÓMO SE PIERDE / PRÓLOGO · LA NOCHE EN QUE VOLVIÓ LA HORDA / PRÓLOGO · EL HUMO / PRÓLOGO · LA PRIMERA CICATRIZ / ACTO I · EL GUÍA / FICHA DE ARENA · 🏚 01 — CIUDAD MALDITA
+PASS SIN_PRACTICA.recorrido_largo_intacto_(Sala + misión + prólogo + acto + ficha)  {"taps":9,"pages":7}
+PASS SIN_PRACTICA.el_tutorial_de_la_arena_sigue_enseñando_a_moverse  {"antes":"Primero, movete.","despues":"Primero, movete."}
+PASS SALTAR.visible_en_TODAS_las_paginas_(historia_y_ficha)_desde_el_primer_cuadro  []
+PASS TILDES.carteles_en_mayuscula_con_tilde_(TU MISIÓN, PRÓLOGO, EL GUÍA)  "MISIÓN TU MISIÓN: SOBREVIVIR MISIÓN CÓMO SE GANA Y CÓMO SE PIERDE PRÓLOGO LA NOCHE EN QUE VOLVIÓ LA HORDA PRÓLOGO EL HUMO PRÓLOGO LA PRIMERA CICATRIZ ACTO I EL GUÍA FICHA DE ARENA 🏚 01 — CIUDAD MALDITA"
+PASS DERROTA.sin_montos_no_dice_"perdiste_50 %_(0 de XP y 0 de oro)"  "<b style=\"color:#ff8a6a;\">No terminaste la arena: no perdiste nada de lo ganado en esta partida.</b>"
+PASS DERROTA.solo_XP_nombra_solo_XP  "<b style=\"color:#ff8a6a;\">No terminaste la arena: perdiste el 50% de lo ganado en esta partida (120 de XP).</b>"
+PASS DERROTA.XP_nivel_y_oro_se_listan_completos  "<b style=\"color:#ff8a6a;\">No terminaste la arena: perdiste el 50% de lo ganado desde el punto de control (120 de XP, volviste a Nv. 2 y 40 de oro).</b><span class=\"go-loss-sub\">Lo ganado antes del punto de control quedó a salvo.</span>"
+PASS primer minuto limpio: <= 3 toques de JUGAR al primer movimiento, una sola pagina previa, sin segundo tutorial
