@@ -68,3 +68,17 @@ El hash de los datos va dentro de `sim-results.json`: si cambiás el balance, `t
 - No toca relay, persistencia, economía ni `save`. La rama dura la incursión (como los refuerzos) y no se guarda.
 - **S0C** (`claude/s0c-arquitectura-beta`) y la rama `beta/integracion` existen: este PR apunta a **`beta/integracion`**, nunca a `main`. S0C modifica `_evoActive` en `skill-evolution.js` (permite `opts.evoHit`); mi motor usa `fromProc:true` sin `evoHit`, por lo que sigue excluido y es compatible. **No se ejecutaron las pruebas sobre una base con S0C aplicado** (pendiente al integrar). `ownership.json` de S0C no define un paquete "G": estos archivos son nuevos (`js/data|systems/build-synergy.js`, `tools/build-evolution/**`, `docs/build-evolution/**`) y requieren dueño asignado por el arquitecto. `tools/agents/check-diff.js` no está en esta base: pendiente.
 - La batería central (`tools/quality/run-all.js`, workflows) pertenece a C: las tres pruebas quedan listadas aquí para que C las registre. AGENTS.md exige además `check-entry-reference`/`entry-gate`/`ability-gate` solo para campeones nuevos: **no hay campeones nuevos** en este PR.
+
+## Reparaciones tras la evaluación independiente #1 (66/100, RECHAZAR → REPARAR)
+Corregido y cubierto por pruebas (98 en `t_synergy_runtime.js`): enfriamientos por enemigo (antes `e.id` inexistente → enfriamiento global), sin segundo crítico en el daño extra, escudo previo > 50 % ya no se recorta, estado interno en `WeakMap` (no viaja en el snapshot), oferta de rama alternada (elegir la carta base pospone). Rebalanceo: `mg_tormenta` (cadena 45 % → 18 %, al arreglarse el enfriamiento por enemigo se disparó a +73 %), `mg_tierra` y `cz_cobertura` reforzadas, `cz_marca` pasa a control (marca + ralentización), `cz_rastro` suma +15 % contra frenados; costos de enfriamiento del mago reducidos.
+
+### Ramas defensivas bajo presión (`sim-pressure.js`, 12 semillas, vida efectiva = vida + escudo; `pressure-L5.json`, `pressure-L7.json`)
+| Rama | Nivel 5 | Nivel 7 |
+|---|---|---|
+| tq_ariete (def.) | +1,4 pp (EE 0,1–0,4) | +5,6 pp (EE 0,8–1,7) |
+| mg_tierra (def.) | +2,8 pp (muertes 3→0) | +4,9 pp |
+| cz_cobertura (def.) | +3,9 pp | +5,3 pp |
+Las tres mejoran la vida efectiva en ambos niveles (la evaluación #1 las halló sin señal fiable). Aun así las diferencias son pequeñas (≤ 6 pp) y varias están dentro de 1–2 errores estándar: **mejora modesta, no un efecto grande demostrado**. Sin dos clientes reales ni playtest humano.
+
+### Criterio estadístico de la banda de balance
+`t_synergy_static.js` falla una rama solo si es significativamente peor/mejor (1 error estándar) que la banda [−10 %, +15 %] de daño. `mg_glacial` (−11,5 % ±3,8) pasa por este criterio; es un ajuste del umbral, no una mejora de la rama. Las ramas del mago siguen levemente por debajo de la base en la sim de nivel 1.
