@@ -40,3 +40,12 @@ Contrato que poseés: `TelemetryEvent`.
 4. La batería completa corre sin consultar producción.
 5. `git diff --stat origin/main` solo muestra tus archivos; 0 cambios en economía, persistencia, combate y multijugador.
 6. Informe final con comandos y resultados reales y la lista de lo no probado.
+
+## Herramientas de S0B (obligatorias)
+
+1. **Antes de empezar:** `node tools/agents/accept.js --agent C --entry` debe dar todo PASS (clasificación de la batería, contratos y puerta de propiedad). Si falla, no empieces: informá cuál y por qué.
+2. **Tu lista de aceptación ejecutable:** `docs/arquitectura-compartida/agents/C.spec.json`; `node tools/agents/accept.js --agent C` la corre. Los criterios PENDIENTE son pruebas que **vos** tenés que crear en las rutas indicadas; un PENDIENTE no cuenta como cumplido.
+3. **Ramas:** `claude/s3-telemetria-<tema>`. La puerta `node tools/agents/check-diff.js --agent C` rechaza cualquier archivo fuera de tu propiedad y la desaparición de una interfaz congelada; corre también en cada PR.
+4. **Regresión:** `node tools/quality/qa.js --fast` (local y en CI). Tu cambio no puede dejar la batería peor que `docs/quality/PIPELINE_QA.md` y el último informe de `qa-out/`. No edites archivos mientras corre (run-all restaura/borra lo que cambió durante su corrida).
+5. **Clasificación:** toda prueba nueva se registra en `tools/quality/run-all.js` **y** en `tools/quality/qa-manifest.json` (nivel y categoría); si no, `qa-manifest-check` falla el PR. No agregues `continue-on-error`.
+6. **Relay:** no despliegues ni toques el relay del socio. Para comprobar compatibilidad usá `node tools/release/relay-smoke.js --local` y, contra uno real, solo `--url` (lectura) con autorización del director.

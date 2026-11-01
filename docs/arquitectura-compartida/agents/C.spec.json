@@ -1,0 +1,39 @@
+{
+ "name": "Telemetría, retención y QA",
+ "entryGates": [
+  "node tools/quality/qa-manifest-check.js",
+  "node tools/contracts/t_contract_schemas.js",
+  "node tools/contracts/t_contract_telemetry.js",
+  "node tools/agents/test-agents.js"
+ ],
+ "acceptance": [
+  {
+   "id": "C1",
+   "text": "ACCEPTED_EVENT_NAMES coincide con el servidor",
+   "cmd": "node tools/contracts/t_contract_telemetry.js"
+  },
+  {
+   "id": "C2",
+   "text": "Sin consentimiento no se envía ningún evento",
+   "cmd": "node tools/telemetry/t_consent.js",
+   "pending": "tools/telemetry/t_consent.js"
+  },
+  {
+   "id": "C3",
+   "text": "Retención D1/D7 calculable desde métricas agregadas sin identificadores",
+   "cmd": "node tools/telemetry/t_retention.js",
+   "pending": "tools/telemetry/t_retention.js"
+  },
+  {
+   "id": "C4",
+   "text": "El pipeline completo corre y genera informe",
+   "cmd": "node tools/quality/qa.js --quick --out /tmp/qa-c"
+  },
+  {
+   "id": "C5",
+   "text": "Solo cambian archivos del agente C",
+   "cmd": "node tools/agents/check-diff.js --agent C"
+  }
+ ],
+ "id": "C"
+}

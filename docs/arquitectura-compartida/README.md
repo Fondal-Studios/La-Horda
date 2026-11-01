@@ -55,3 +55,15 @@ Consecuencia: estos paquetes parten de una base con **5 pruebas rojas conocidas*
 ## Protección del trabajo sin commit (`claude/ciudad-mapa`)
 
 Antes de crear la rama se verificó que el árbol de trabajo de `claude/ciudad-mapa` tiene 28 entradas sin commit (4 modificadas, 24 nuevas) y que el respaldo previo coincide byte a byte con el estado actual. Se creó además un commit de respaldo **local** en la referencia `refs/backup/ciudad-mapa-wip-20261031` (28 archivos, 933 inserciones), sin tocar el árbol de trabajo. Ninguna operación de S0A modificó, limpió ni eliminó ramas ni worktrees. Falta subir ese respaldo a un lugar fuera de esta máquina (decisión pendiente, ver `BLOQUEANTES.md`).
+
+## Agregado por S0B (herramientas ejecutables)
+
+| Herramienta | Qué hace |
+|---|---|
+| `tools/agents/check-diff.js` | Puerta de propiedad: rechaza archivos fuera del agente, prohibidos o del contrato, y la pérdida de interfaces congeladas. Corre en cada PR (`qa-regresion.yml`) |
+| `tools/agents/accept.js --agent A\|B\|C` | Corre las puertas de entrada y los criterios de aceptación del agente (`agents/<X>.spec.json`); marca PENDIENTE lo que el agente aún debe crear |
+| `tools/agents/test-agents.js` | Prueba de la puerta con commits sintéticos (15 comprobaciones) |
+| `tools/quality/qa.js` | Pipeline central de regresión (ver `docs/quality/PIPELINE_QA.md`) |
+| `tools/release/relay-smoke.js` | Humo del relay (local o `--url`, solo lectura) para la actualización manual del socio (`docs/operacion/`) |
+
+Los componentes compartidos siguen **congelados**: S0B no inició cambios simultáneos de A, B y C.
