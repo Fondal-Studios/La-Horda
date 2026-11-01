@@ -33,6 +33,27 @@ try {
     // element list | element new <nombre> --kind <plantilla> | element preview <nombre> [--on <donante|ficha>] | element check [nombres]
     const r = spawnSync('python3', ['tools/art/painter/forge.py', ...process.argv.slice(3)], {cwd:ROOT, stdio:'inherit', timeout:600000});
     process.exitCode = r.error ? 1 : (r.status || 0);
+  } else if (['generate', 'validate', 'preview', 'approve', 'integrate', 'status'].includes(command)) {
+    // ART FACTORY 3.0 / S0F (tools/factory/s0f/s0f.js): producción real con proveedor de imágenes. Estados:
+    // PLANNED · GENERATED · VALIDATED · APPROVED · INTEGRATED · BLOCKED. Ver docs/art-factory/REAL_GENERATION_PIPELINE.md.
+    //   generate champion <id> | generate skin <id> <skin> | generate animation <id> <clip>  [--provider bfl|openai|bfl,openai] [--dry-run] [--max-task-cents N --max-batch-cents N --max-day-cents N]
+    //   validate <id> | preview <id> | approve <id> --reviewer <nombre> | integrate <id> | status <id>
+    const s0f = require('./s0f/s0f'), argv = process.argv.slice(3), flag = (k, d) => { const i = argv.indexOf('--' + k); return i < 0 ? d : (argv[i + 1] && !argv[i + 1].startsWith('--') ? argv[i + 1] : true); };
+    const pos = argv.filter((x, i) => !x.startsWith('--') && !(argv[i - 1] || '').startsWith('--') || ['champion', 'skin', 'animation'].includes(x));
+    const limits = {}; for (const [f, k] of [['max-task-cents', 'perTaskCents'], ['max-batch-cents', 'perBatchCents'], ['max-day-cents', 'perDayCents']]) if (flag(f)) limits[k] = +flag(f);
+    (async () => {
+      let out;
+      if (command === 'generate') {
+        const [what, id, extra] = pos; const base = {provider: flag('provider', 'bfl'), dryRun: !!flag('dry-run'), limits, concurrency: +flag('concurrency', 2)};
+        if (what === 'champion') out = await s0f.generate(id, {...base, kind: 'champion'});
+        else if (what === 'skin') out = await s0f.generate(id, {...base, kind: 'skin', skin: extra});
+        else if (what === 'animation') out = await s0f.generate(id, {...base, kind: 'animation', action: extra});
+        else throw Error('generate champion <id> | skin <id> <skin> | animation <id> <clip>');
+      } else if (command === 'approve') out = s0f.approve(pos[0], flag('reviewer'));
+      else out = s0f[command](pos[0]);
+      console.log(JSON.stringify(out, null, 1));
+      if (out && out.state === 'BLOCKED') process.exitCode = 3;
+    })().catch(e => { console.error(e.message); process.exitCode = 1; });
   } else if (command === 'gate') {
     const names = arg === 'all' ? Object.keys(GATES) : [arg];
     if (names.some(n => !GATES[n])) throw Error('Unknown gate. Use: ' + Object.keys(GATES).join(', ') + ', all');

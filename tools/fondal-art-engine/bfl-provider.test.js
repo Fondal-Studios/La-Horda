@@ -11,7 +11,7 @@ test('BFL credentials cannot be sent to arbitrary polling URLs',()=>{
  for(const url of ['http://api.bfl.ai/a','https://api.bfl.ai.evil.com/a','https://user:secret@api.bfl.ai/a','https://127.0.0.1/a'])assert.throws(()=>trustedURL(url,'poll'));
 });
 test('repair keeps existing ultimate/death contract and binds exact Codex reference',()=>{
- for(const job of plan('Reparar los últimos campeones')){const p=prepare(job);assert.deepEqual(p.meta.sets,p.baseline.meta.sets);assert.equal(p.references.length,2);assert.deepEqual(p.meta.sets.ultimate_down,[28,29,30,31]);assert.throws(()=>prepare({...job,referenceSha256:'changed'}),/changed/);}
+ for(const job of plan('Reparar los últimos campeones')){let p;try{p=prepare(job);}catch(e){/* S0F: main reemplazó este atlas 112x112 por un atlas del Códice (#240-#245): el ensayo BFL no puede reparar un contrato que ya no existe. Se exige rechazo explícito, nunca suposición. */assert.match(e.message,/Unsupported existing atlas layout|Existing champion atlas contract not found/);continue;}assert.deepEqual(p.meta.sets,p.baseline.meta.sets);assert.equal(p.references.length,2);assert.deepEqual(p.meta.sets.ultimate_down,[28,29,30,31]);assert.throws(()=>prepare({...job,referenceSha256:'changed'}),/changed/);}
 });
 test('no credentials means no network call or spend',async()=>{
  const old=process.env.BFL_API_KEY;delete process.env.BFL_API_KEY;

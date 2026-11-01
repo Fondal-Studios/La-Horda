@@ -425,6 +425,153 @@ def integrate(key):
     print(json.dumps(e['integracion'], ensure_ascii=False))
 
 
+
+
+# ----------------------------------------------------------------------------- S0F: candidatos de atlas por CONTRATO REAL
+def cells_of(a, cw, ch, cols):
+    rows = a.shape[0] // ch
+    return [a[(i // cols) * ch:(i // cols + 1) * ch, (i % cols) * cw:(i % cols + 1) * cw] for i in range(cols * rows)]
+
+
+def assemble(contract_json, strip_png, clip, frames_json, out_dir):
+    """Convierte una tira generada (N poses en fila, fondo transparente) en celdas del contrato: separa por huecos de alfa,
+    escala UNIFORME a la altura de referencia (refH), ancla los pies al anclaje del contrato y endurece el alfa."""
+    c = json.loads(Path(contract_json).read_text()); frames = json.loads(frames_json)
+    cw, ch, ref_h, anchor = c['cell']['w'], c['cell']['h'], c['refH'], c['anchor']
+    im = Image.open(strip_png).convert('RGBA'); a = np.array(im); op = (a[..., 3] > 20)
+    cols = op.any(axis=0); runs = []; start = None
+    for x, v in enumerate(cols):
+        if v and start is None: start = x
+        if not v and start is not None:
+            if x - start > 4: runs.append((start, x))
+            start = None
+    if start is not None: runs.append((start, len(cols)))
+    # fusiona fragmentos muy cercanos (armas sueltas) hasta quedar con N piezas; si hay menos, falla explícito
+    n = len(frames)
+    while len(runs) > n:
+        gaps = [(runs[i + 1][0] - runs[i][1], i) for i in range(len(runs) - 1)]; g, i = min(gaps); runs[i:i + 2] = [(runs[i][0], runs[i + 1][1])]
+    if len(runs) != n: return {'ok': False, 'reason': f'se esperaban {n} poses separables y se encontraron {len(runs)}'}
+    heights = []
+    pieces = []
+    for (x0, x1) in runs:
+        sub = a[:, x0:x1]; ys = np.where(sub[..., 3] > 20)[0]; piece = sub[ys.min():ys.max() + 1]; pieces.append(piece); heights.append(piece.shape[0])
+    base = float(np.median(heights)); out = {}
+    for fi, piece in zip(frames, pieces):
+        sc = ref_h / base if base else 1.0
+        w2, h2 = max(1, round(piece.shape[1] * sc)), max(1, round(piece.shape[0] * sc))
+        pim = Image.fromarray(piece, 'RGBA').resize((w2, h2), Image.NEAREST)
+        cell = Image.new('RGBA', (cw, ch), (0, 0, 0, 0)); foot = int(round(anchor * ch))
+        cell.alpha_composite(pim, (max(0, (cw - w2) // 2), max(0, foot - h2)))
+        arr = np.array(cell); arr[..., 3] = np.where(arr[..., 3] >= 128, 255, 0).astype(np.uint8); arr[..., :3][arr[..., 3] == 0] = 0
+        out[fi] = arr
+    Path(out_dir).mkdir(parents=True, exist_ok=True)
+    for fi, arr in out.items(): Image.fromarray(arr, 'RGBA').save(Path(out_dir) / f'f{fi:03d}.png')
+    return {'ok': True, 'clip': clip, 'frames': sorted(out), 'heights_px': heights}
+
+
+def build_atlas(contract_json, parts_dir, out_png):
+    """Atlas candidato: celdas generadas (f###.png) en su índice; el resto se HEREDA del atlas actual y se declara como tal."""
+    c = json.loads(Path(contract_json).read_text()); cw, ch, cols, rows = c['cell']['w'], c['cell']['h'], c['cols'], c['rows']
+    cur = np.array(Image.open(ROOT / c['atlas']).convert('RGBA')); atlas = cur.copy(); gen = []
+    for f in sorted(Path(parts_dir).glob('f*.png')):
+        i = int(f.stem[1:]); cell = np.array(Image.open(f).convert('RGBA'))
+        atlas[(i // cols) * ch:(i // cols + 1) * ch, (i % cols) * cw:(i % cols + 1) * cw] = cell; gen.append(i)
+    Image.fromarray(atlas, 'RGBA').save(out_png)
+    return {'generated_frames': gen, 'inherited_frames': [i for i in range(cols * rows) if i not in gen], 'coverage_pct': round(100 * len(gen) / (cols * rows), 1)}
+
+
+def evaluate_candidate(contract_json, cand_png, assembly_json=None):
+    """Evaluador de candidatos (S0F): 10 comprobaciones con evidencia. NO sustituye la revisión artística."""
+    c = json.loads(Path(contract_json).read_text()); cw, ch, cols = c['cell']['w'], c['cell']['h'], c['cols']
+    cand = load(cand_png); cur = load(ROOT / c['atlas']); ref = refs(); defects = []; checks = {}
+    # 3,4 dimensiones y transparencia
+    checks['dimensiones'] = cand.shape == cur.shape
+    if not checks['dimensiones']: defects.append({'sev': 'critical', 'what': f'dimensiones {cand.shape[:2]} != contrato {cur.shape[:2]}'})
+    cc, uc = cells_of(cand, cw, ch, cols), cells_of(cur, cw, ch, cols)
+    gen = set(json.loads(Path(assembly_json).read_text()).get('generated_frames', range(len(cc)))) if assembly_json and Path(assembly_json).exists() else {i for cl in c['clips'].values() for i in cl['unique']}  # sin ensamblado: solo los cuadros que el motor usa
+    gm = {i: metrics(cc[i]) for i in gen if i < len(cc)}
+    semi = max((m['semi_alpha'] for m in gm.values() if not m.get('empty')), default=0)
+    checks['alfa_binario'] = semi <= 0.02
+    if semi > 0.02: defects.append({'sev': 'critical', 'what': f'alfa no binario ({semi:.1%})'})
+    # 2 siluetas cortadas
+    clipped = [i for i in gen if i < len(cc) and not gm[i].get('empty') and (gm[i]['bbox'][0] == 0 or gm[i]['bbox'][1] == 0 or gm[i]['bbox'][2] == cw - 1 or gm[i]['bbox'][3] == ch - 1)]
+    checks['sin_siluetas_cortadas'] = not clipped
+    if clipped: defects.append({'sev': 'critical', 'what': f'{len(clipped)} cuadros tocan el borde', 'frames': clipped[:8]})
+    empty = [i for i in gen if i < len(cc) and gm[i].get('empty')]
+    checks['sin_cuadros_vacios'] = not empty
+    if empty: defects.append({'sev': 'critical', 'what': f'{len(empty)} cuadros vacíos', 'frames': empty[:8]})
+    # 5 coherencia de paleta y densidad vs roster
+    inr = lambda k, v: ref[k]['min_ok'] <= v <= ref[k]['max_ok'] if k != 'soft' else v <= ref[k]['max_ok']
+    live = [m for m in gm.values() if not m.get('empty')]
+    style = {k: float(np.median([m[k] for m in live])) if live else 0 for k in ('outline', 'soft', 'detail', 'shade_sd')}
+    checks['estilo_en_rango_del_roster'] = all(inr(k, v) for k, v in style.items())
+    for k, v in style.items():
+        if not inr(k, v): defects.append({'sev': 'major', 'what': f'{k} fuera del rango del roster', 'value': round(v, 3)})
+    def pal(a):
+        op = a[..., 3] > 0; q = (a[..., :3][op] >> 4).astype(np.int32); h = np.zeros(4096)
+        if len(q): np.add.at(h, (q[:, 0] << 8) | (q[:, 1] << 4) | q[:, 2], 1); h /= h.sum()
+        return h
+    cur_h = pal(cur); cand_h = pal(np.concatenate([cc[i] for i in gen if i < len(cc)], axis=0)) if gen else cur_h
+    inter = float(np.minimum(cur_h, cand_h).sum()); checks['paleta_vs_sprite_actual'] = inter >= 0.45
+    if inter < 0.45: defects.append({'sev': 'major', 'what': f'paleta se aleja del sprite actual (intersección {inter:.2f} < 0.45): ¿se conservó el personaje?'})
+    codex_inter = None
+    if c.get('codexPage') and (ROOT / c['codexPage']).exists():
+        cp = load(ROOT / c['codexPage']); cp[..., 3] = 255; codex_inter = float(np.minimum(pal(cp), cand_h).sum())
+    # 6/8 consistencia entre poses y compatibilidad de animación (alturas y pies dentro de cada clip)
+    jit = 0.0; hj = 0.0
+    for name, clip in c['clips'].items():
+        idx = [i for i in clip['unique'] if i in gen and i < len(cc) and not gm[i].get('empty')]
+        if len(idx) < 2 or not re.search(r'(idle|walk|run|cast|attack|aim)', name): continue
+        feet = [gm[i]['bbox'][3] for i in idx]; hs = [gm[i]['bbox'][3] - gm[i]['bbox'][1] + 1 for i in idx]
+        jit = max(jit, max(feet) - min(feet)) if re.search(r'(idle|walk|run)', name) else jit; hj = max(hj, (max(hs) - min(hs)) / max(1, np.median(hs)))
+    checks['pies_estables'] = jit <= 3; checks['altura_constante_entre_poses'] = hj <= 0.20
+    if jit > 3: defects.append({'sev': 'major', 'what': f'pies inestables (±{jit:.0f}px) en idle/walk'})
+    if hj > 0.20: defects.append({'sev': 'major', 'what': f'altura inconsistente entre poses de un clip ({hj:.0%})'})
+    # 7 conservación de silueta/armas: relación de altura candidato/actual por frame generado
+    ratios = [ (gm[i]['bbox'][3] - gm[i]['bbox'][1] + 1) / max(1, metrics(uc[i])['bbox'][3] - metrics(uc[i])['bbox'][1] + 1) for i in gen if i < len(cc) and not gm[i].get('empty') and not metrics(uc[i]).get('empty')]
+    reg = float(np.median(ratios)) if ratios else 1.0; checks['escala_vs_sprite_actual'] = 0.85 <= reg <= 1.15
+    if not checks['escala_vs_sprite_actual']: defects.append({'sev': 'major', 'what': f'escala {reg:.2f}x respecto del sprite actual (regresión de proporciones)'})
+    # 9 consumidor
+    consumer = (ROOT / c['consumer']).read_text('utf-8', 'ignore'); checks['tiene_consumidor'] = f'champPackLoadAtlas("{c["id"]}"' in consumer
+    if not checks['tiene_consumidor']: defects.append({'sev': 'critical', 'what': 'el asset no tiene consumidor registrado en el motor'})
+    # puntaje: proporción de comprobaciones + penalización por defectos
+    passed = sum(1 for v in checks.values() if v); base = 100 * passed / len(checks)
+    crit = sum(1 for d in defects if d['sev'] == 'critical'); score = max(0, base - 15 * crit)
+    cov = 100 * len(gen) / len(cc)
+    return {'score': round(score, 1), 'checks': checks, 'defects': defects, 'critical': crit, 'coverage_generated_pct': round(cov, 1), 'palette_vs_current': round(inter, 3), 'palette_vs_codex_page': None if codex_inter is None else round(codex_inter, 3),
+            'scale_ratio_vs_current': round(reg, 3),
+            'pass_threshold_90': bool(score >= 90 and not crit), 'requires_human_art_review': True,
+            'limitations': ['La puntuación automática mide formato, escala, alfa, estabilidad y estilo numérico; NO juzga si el diseño es fiel al Códice ni si la animación se siente bien.',
+                            'Los cuadros heredados del atlas actual no se evalúan como arte nuevo.', 'Falta la prueba en el motor real (preview) y la revisión de un artista.']}
+
+
+def preview_sheet(contract_json, cand_png, out_png):
+    """Hoja comparativa a escala real (x2) sobre el suelo de Ruinas: fila superior = actual, inferior = candidato, por clip."""
+    c = json.loads(Path(contract_json).read_text()); cw, ch, cols = c['cell']['w'], c['cell']['h'], c['cols']
+    cur = cells_of(load(ROOT / c['atlas']), cw, ch, cols); cand = cells_of(load(cand_png), cw, ch, cols)
+    bg = Image.fromarray(bg_sample()).resize((cw * 2, ch * 2), Image.NEAREST)
+    names = [n for n in c['clips'] if len(c['clips'][n]['unique'])]; n_cols = max(len(c['clips'][n]['unique']) for n in names)
+    S = 2; W = 120 + n_cols * cw * S; H = len(names) * 2 * ch * S
+    sheet = Image.new('RGB', (W, H), (20, 20, 24))
+    from PIL import ImageDraw
+    d = ImageDraw.Draw(sheet)
+    for r, n in enumerate(names):
+        for k, src in enumerate((cur, cand)):
+            y = (r * 2 + k) * ch * S; d.text((4, y + 4), f'{n}\n{"ACTUAL" if k == 0 else "CANDIDATO"}', fill=(255, 230, 140) if k else (200, 200, 200))
+            for j, fi in enumerate(c['clips'][n]['unique']):
+                tile = bg.copy().resize((cw * S, ch * S), Image.NEAREST); fr = Image.fromarray(src[fi], 'RGBA').resize((cw * S, ch * S), Image.NEAREST)
+                tile.paste(fr, (0, 0), fr); sheet.paste(tile, (120 + j * cw * S, y))
+    Path(out_png).parent.mkdir(parents=True, exist_ok=True); sheet.save(out_png); return {'sheet': str(out_png), 'size': sheet.size}
+
+
+def refstrip(contract_json, frames_json, out_png):
+    """Referencia de entrada para el proveedor: las poses ACTUALES de un clip en una tira (fondo transparente)."""
+    c = json.loads(Path(contract_json).read_text()); cw, ch, cols = c['cell']['w'], c['cell']['h'], c['cols']; frames = json.loads(frames_json)
+    cells = cells_of(load(ROOT / c['atlas']), cw, ch, cols); strip = Image.new('RGBA', (cw * len(frames), ch), (0, 0, 0, 0))
+    for k, fi in enumerate(frames): strip.paste(Image.fromarray(cells[fi], 'RGBA'), (k * cw, 0))
+    Path(out_png).parent.mkdir(parents=True, exist_ok=True); strip.save(out_png); return {'strip': str(out_png)}
+
+
 if __name__ == '__main__':
     cmd = sys.argv[1] if len(sys.argv) > 1 else ''
     if cmd == 'audit': audit()
@@ -436,5 +583,11 @@ if __name__ == '__main__':
         a = [x for x in sys.argv[2:] if not x.startswith('--')]; k = sys.argv[sys.argv.index('--key') + 1] if '--key' in sys.argv else None
         print(json.dumps(reconstruct(ROOT / a[0], k), ensure_ascii=False, indent=1))
     elif cmd == 'batch': batch()
+    elif cmd == 'assemble':   # contract.json strip.png clip '[frames]' out_dir
+        print(json.dumps(assemble(*sys.argv[2:7]), default=lambda o: o.item() if hasattr(o, 'item') else str(o)))
+    elif cmd == 'build-atlas': print(json.dumps(build_atlas(*sys.argv[2:5])))
+    elif cmd == 'evaluate-candidate': print(json.dumps(evaluate_candidate(*sys.argv[2:5]), ensure_ascii=False, indent=1, default=lambda o: o.item() if hasattr(o, 'item') else str(o)))
+    elif cmd == 'refstrip': print(json.dumps(refstrip(*sys.argv[2:5])))
+    elif cmd == 'preview': print(json.dumps(preview_sheet(*sys.argv[2:5])))
     elif cmd == 'integrate': integrate(sys.argv[2])
     else: print(__doc__)
