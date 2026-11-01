@@ -195,5 +195,5 @@ test('complete base and existing skin prompts fit Runway including two reference
 });
 test('whole-plan preflight rejects an oversized contract prompt before any generation', () => {
   const contract = {...readContract('cazadora'), id: 'x'.repeat(1000)};
-  assert.throws(() => s0f.plan(contract), e => e.code === 'BLOCKED_CONTRACT' && /1000 unidades UTF-16/.test(e.message));
+  assert.throws(() => s0f.plan(contract), e => e.code === 'BLOCKED_CONTRACT' && /1000 unidades UTF-16|provider limit/.test(e.message));
 });

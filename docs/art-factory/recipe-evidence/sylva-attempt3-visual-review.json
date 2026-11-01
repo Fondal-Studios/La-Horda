@@ -1,0 +1,14 @@
+{
+  "status": "REJECTED_VISUAL",
+  "scope": "sample walk_down only; not full champion",
+  "reviewer": "connection-agent visual inspection; parent concurs",
+  "technicalScore": 100,
+  "blockingReasons": [
+    "Frame index2 turns to side profile instead of keeping walk_down camera orientation.",
+    "Frames index1 and3 near-identical; no convincing alternating-leg four-phase walk cycle."
+  ],
+  "segmentation": "All4poses extracted without clipping, chroma removed; normalized alpha bounding boxes 64x84 or65x84; green contour residue warrants visual cleanup check, not automatic approval.",
+  "nextAttemptRecommendation": "Keep identity crop/hash only if desired; explicitly state fixed front three-quarter view toward viewer in all4frames, no turns/profile/back; specify left-right alternating support foot, avoid copying three-view identity layout. Prepare and review new exact prompt/hash, no silent change or paid retry here.",
+  "approved": false,
+  "integrated": false
+}

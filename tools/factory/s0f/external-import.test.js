@@ -53,3 +53,17 @@ test('supported external connector models retain exact provenance without implyi
  const f=fixture();f.manifest.outputs[0].model='nano-banana-pro';f.write();
  await assert.rejects(importExternal('cazadora',f.opts),/provider task evidence/);
 });
+test('directional v2 external and runtime prepare identical references and never overwrite old preparation',async()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'directional-v2-')),preparationDir=path.join(dir,'prep-v2');
+ const plan=prepareExternalPlan('cazadora',{kind:'animation',action:'walk_down',preparationDir}),job=plan.jobs[0];
+ assert.equal(job.referenceRecipe,'front-fixed-single-row-v2');
+ assert.ok(job.submittedPrompt.length<=1000);
+ for(const fragment of ['Cámara fija frontal tres cuartos','MISMA orientación frontal','contacto pie izquierdo, paso pie derecho, contacto pie derecho, paso pie izquierdo','perfil, espalda','poses duplicadas'])assert.ok(job.prompt.includes(fragment));
+ const before=job.references.map(hash);
+ assert.throws(()=>prepareExternalPlan('cazadora',{kind:'animation',action:'walk_down',preparationDir}),/new versioned directory/);
+ assert.deepEqual(job.references.map(hash),before);
+ const {Blocked}=require('../../fondal-art-engine/providers-s0f');let calls=0;
+ const fixture={estimate:()=>({estimated_cents_max:0}),generate:async j=>{calls++;assert.deepEqual(j.references.map(hash),job.referencesSha256);throw new Blocked('BLOCKED_FIXTURE','reference-only test');}};
+ const result=await require('./s0f').generate('cazadora',{kind:'animation',action:'walk_down',runDir:path.join(dir,'runtime'),ledgerPath:path.join(dir,'ledger.json'),provider:'fixture',providers:{fixture},concurrency:1});
+ assert.equal(calls,1);assert.equal(result.code,'BLOCKED_FIXTURE');
+});

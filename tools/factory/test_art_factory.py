@@ -204,4 +204,29 @@ class S0FMetricSemantics(unittest.TestCase):
         self.assertGreater(empty['critical'], 0)
 
 
+class DirectionalReferenceV2(unittest.TestCase):
+    def test_walk_down_front_identity_and_ordered_single_row_are_pixel_preserving(self):
+        import subprocess
+        c = json.loads(subprocess.check_output(['node', '-e', "console.log(JSON.stringify(require('./tools/factory/s0f/contract').readContract('cazadora')))"], cwd=af.ROOT))
+        self.assertEqual(c['referenceCrops']['walk_down'], [790, 280, 1080, 620])
+        with tempfile.TemporaryDirectory() as t:
+            p = Path(t); contract = p / 'contract.json'; contract.write_text(json.dumps(c))
+            result = af.prepare_reference(contract, p / 'front.png', 'walk_down')
+            front = Image.open(p / 'front.png').convert('RGBA')
+            expected = Image.open(af.ROOT / c['codexPage']).convert('RGBA').crop((790, 280, 1080, 620))
+            self.assertEqual(front.tobytes(), expected.tobytes()); self.assertEqual(result['preparation_version'], 'directional-v2')
+            side = af.prepare_reference(contract, p / 'other.png', 'walk_side')
+            self.assertEqual(side['crop'], c['referenceCrop'])
+            frames = c['clips']['walk_down']['unique'][:4]
+            af.refstrip(contract, json.dumps(frames), p / 'row.png', 'walk_down')
+            cells = af.cells_of(af.load(af.ROOT / c['atlas']), c['cell']['w'], c['cell']['h'], c['cols'])
+            cw, ch = c['cell']['w'], c['cell']['h']; width = cw * len(frames); height = max(ch, width // 2)
+            canvas = Image.new('RGBA', (width, height))
+            for k, fi in enumerate(frames): canvas.paste(Image.fromarray(cells[fi], 'RGBA'), (k*cw, (height-ch)//2))
+            expected_row = canvas.resize((width*3, height*3), Image.Resampling.NEAREST)
+            actual = Image.open(p / 'row.png').convert('RGBA')
+            self.assertEqual(actual.tobytes(), expected_row.tobytes())
+            self.assertLessEqual(actual.width / actual.height, 2)
+
+
 if __name__ == '__main__': unittest.main()

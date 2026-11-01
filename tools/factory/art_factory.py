@@ -658,12 +658,13 @@ def preview_sheet(contract_json, cand_png, out_png):
     Path(out_png).parent.mkdir(parents=True, exist_ok=True); sheet.save(out_png); return {'sheet': str(out_png), 'size': sheet.size}
 
 
-def prepare_reference(contract_json, out_png):
+def prepare_reference(contract_json, out_png, clip=None):
     """Extract reviewed sprite reference without redrawing; preserve pixels, pad to provider aspect."""
     c = json.loads(Path(contract_json).read_text())
     if not c.get('codexPage'): raise ValueError('missing canonical identity reference')
     im = Image.open(ROOT / c['codexPage']).convert('RGBA')
-    crop = c.get('referenceCrop')
+    if clip and clip not in c.get('clips', {}): raise ValueError('unknown reference clip')
+    crop = c.get('referenceCrops', {}).get(clip, c.get('referenceCrop'))
     if crop is not None:
         if (not isinstance(crop, list) or len(crop) != 4 or any(type(v) is not int for v in crop)
                 or not (0 <= crop[0] < crop[2] <= im.width and 0 <= crop[1] < crop[3] <= im.height)):
@@ -675,15 +676,17 @@ def prepare_reference(contract_json, out_png):
     canvas.paste(im, ((nw-w)//2, (nh-h)//2))
     Path(out_png).parent.mkdir(parents=True, exist_ok=True)
     canvas.save(out_png)
-    return {'reference': str(out_png), 'size': list(canvas.size), 'source': c['codexPage'], 'crop': crop, 'pixel_edit': 'crop/padding only, no generated pixels'}
+    return {'reference': str(out_png), 'size': list(canvas.size), 'source': c['codexPage'], 'crop': crop, 'clip': clip, 'preparation_version': c.get('referencePreparationVersion', 'v1'), 'pixel_edit': 'crop/padding only, no generated pixels'}
 
 
-def refstrip(contract_json, frames_json, out_png):
+def refstrip(contract_json, frames_json, out_png, clip=None):
     """Referencia de entrada para el proveedor: las poses ACTUALES de un clip en una tira (fondo transparente)."""
     c = json.loads(Path(contract_json).read_text()); cw, ch, cols = c['cell']['w'], c['cell']['h'], c['cols']; frames = json.loads(frames_json)
     cells = cells_of(load(ROOT / c['atlas']), cw, ch, cols); n = len(frames)
     # Runway exige relación de aspecto ≤ 2,355 y recomienda ≥ 640 px: rejilla de hasta 2 columnas, relleno al aspecto 1:1..2:1 y ampliación x3 por vecino más cercano (pixel art nítido)
-    gc = 1 if n == 1 else 2; gr = (n + gc - 1) // gc
+    if clip and clip not in c.get('clips', {}): raise ValueError('unknown reference clip')
+    # walk_down must show the same left-to-right temporal order requested in output, not a 2x2 contact sheet.
+    gc = n if clip == 'walk_down' else (1 if n == 1 else 2); gr = (n + gc - 1) // gc
     strip = Image.new('RGBA', (cw * gc, ch * gr), (0, 0, 0, 0))
     for k, fi in enumerate(frames): strip.paste(Image.fromarray(cells[fi], 'RGBA'), ((k % gc) * cw, (k // gc) * ch))
     w, h = strip.size
@@ -709,8 +712,8 @@ if __name__ == '__main__':
         print(json.dumps(assemble(*sys.argv[2:7]), default=lambda o: o.item() if hasattr(o, 'item') else str(o)))
     elif cmd == 'build-atlas': print(json.dumps(build_atlas(*sys.argv[2:5])))
     elif cmd == 'evaluate-candidate': print(json.dumps(evaluate_candidate(*sys.argv[2:5]), ensure_ascii=False, indent=1, default=lambda o: o.item() if hasattr(o, 'item') else str(o)))
-    elif cmd == 'prepare-reference': print(json.dumps(prepare_reference(*sys.argv[2:4])))
-    elif cmd == 'refstrip': print(json.dumps(refstrip(*sys.argv[2:5])))
+    elif cmd == 'prepare-reference': print(json.dumps(prepare_reference(*sys.argv[2:5])))
+    elif cmd == 'refstrip': print(json.dumps(refstrip(*sys.argv[2:6])))
     elif cmd == 'preview': print(json.dumps(preview_sheet(*sys.argv[2:5])))
     elif cmd == 'integrate': integrate(sys.argv[2])
     else: print(__doc__)

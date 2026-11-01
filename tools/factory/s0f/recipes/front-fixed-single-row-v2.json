@@ -1,0 +1,51 @@
+{
+  "schema": "fondal.art-recipe.v1",
+  "id": "front-fixed-single-row-v2",
+  "version": 2,
+  "status": "experimental",
+  "scope": {
+    "clips": [
+      "walk_down"
+    ],
+    "minFrames": 1,
+    "maxFrames": 4,
+    "requiresExistingAtlasContract": true
+  },
+  "template": "Pixel art chibi de fantasía oscura La Horda; cabeza 40-45%, contorno oscuro 1px, 2-3 tonos por color sin degradés. Fondo transparente o verde #00FF00 plano. Personaje {id}. {identityInstruction} Crear {frameCount} poses DISTINTAS de walk_down en UNA FILA horizontal. Cámara fija frontal tres cuartos; cabeza y torso con la MISMA orientación frontal en todos los cuadros. Orden de izquierda a derecha: {orderedPhases}. Alternar piernas y brazos claramente; pies alineados, escala constante. PROHIBIDO: perfil, espalda, giro de cabeza/torso, idle, poses duplicadas, texto, etiquetas, suelo, sombras y marcos.",
+  "identityInstructions": {
+    "base": "Conservar rostro, traje, arma, paleta y proporciones del Códice.",
+    "skin": "Reparar skin EXISTENTE «{skin}»: conservar identidad, diseño, paleta, ropa, arma y silueta; no crear skin ni recolorear base."
+  },
+  "parameters": {
+    "id": "contract.id",
+    "skin": "contract.skin (or null)",
+    "frameCount": "job.frames.length",
+    "identityPaletteWeapon": "prepared contract identity reference; never invented defaults",
+    "geometry": "contract.cell, cols, rows, refH, anchor",
+    "referenceCrop": "contract.referenceCrops.walk_down or existing reference preparation policy",
+    "orderedPhases": "positions of job.frames in contract.clips.walk_down.unique modulo4; exactly one phase per requested frame"
+  },
+  "camera": {
+    "orientation": "fixed front three-quarter",
+    "invariant": "same head and torso orientation in every frame",
+    "forbidden": [
+      "profile",
+      "back",
+      "turn"
+    ]
+  },
+  "orderedWalkPhases": [
+    "contacto pie izquierdo",
+    "paso pie derecho",
+    "contacto pie derecho",
+    "paso pie izquierdo"
+  ],
+  "promotionRequirements": [
+    "technical validation",
+    "independent visual approval",
+    "runtime validation",
+    "approved main integration"
+  ],
+  "antiPatternEvidence": "sylva-walk-attempt3-v1.json",
+  "proven": false
+}

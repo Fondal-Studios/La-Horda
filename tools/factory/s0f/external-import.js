@@ -12,18 +12,18 @@ function absolute(p,label){if(typeof p!=='string'||!path.isAbsolute(p))throw Err
 function write(file,value){fs.mkdirSync(path.dirname(file),{recursive:true});const tmp=file+'.'+crypto.randomUUID()+'.tmp';fs.writeFileSync(tmp,JSON.stringify(value,null,2)+'\n',{mode:0o600});fs.renameSync(tmp,file);}
 function selection(id,opts){const kind=opts.kind||'champion',skin=opts.skin||null,action=opts.action||null;if(!['champion','animation','skin'].includes(kind)||kind==='animation'&&!action||kind==='skin'&&!skin)throw Error('Invalid external import selection');const contract=readContract(id,{skin});if(contract.kind!=='atlas')throw Error(contract.reason);return {kind,skin,action,contract,jobs:s0f.plan(contract,{kind,skin,action})};}
 function prepareExternalPlan(id,{preparationDir,...opts}={}){
- const dir=absolute(preparationDir,'preparationDir'),selected=selection(id,opts);fs.mkdirSync(dir,{recursive:true});
+ const dir=absolute(preparationDir,'preparationDir'),selected=selection(id,opts);if(fs.existsSync(dir)&&fs.readdirSync(dir).length)throw Error('Preparation directory is not empty; preserve previous evidence and use a new versioned directory');fs.mkdirSync(dir,{recursive:true});
  const contractFile=path.join(dir,'contract.json');write(contractFile,selected.contract);
- const identityRef=path.join(dir,'identity.reference.png');
- const prepared=spawnSync(process.env.PYTHON||'python3',[path.join(ROOT,'tools/factory/art_factory.py'),'prepare-reference',contractFile,identityRef],{cwd:ROOT,encoding:'utf8'});
- if(prepared.status!==0)throw Error('Local identity preparation failed: '+String(prepared.stderr).slice(-300));
  const jobs=selected.jobs.map(job=>{
+  const identityRef=path.join(dir,job.id+'.identity.reference.png');
+  const prepared=spawnSync(process.env.PYTHON||'python3',[path.join(ROOT,'tools/factory/art_factory.py'),'prepare-reference',contractFile,identityRef,job.clip],{cwd:ROOT,encoding:'utf8'});
+  if(prepared.status!==0)throw Error('Local identity preparation failed: '+String(prepared.stderr).slice(-300));
   const ref=path.join(dir,job.id+'.reference.png');
-  const p=spawnSync(process.env.PYTHON||'python3',[path.join(ROOT,'tools/factory/art_factory.py'),'refstrip',contractFile,JSON.stringify(job.frames),ref],{cwd:ROOT,encoding:'utf8'});
+  const p=spawnSync(process.env.PYTHON||'python3',[path.join(ROOT,'tools/factory/art_factory.py'),'refstrip',contractFile,JSON.stringify(job.frames),ref,job.clip],{cwd:ROOT,encoding:'utf8'});
   if(p.status!==0)throw Error('Local reference extraction failed: '+String(p.stderr).slice(-300));
   const references=[identityRef,ref];
   const submitted=submittedPrompt(job.prompt,references.length);
-  return {jobId:job.id,frames:job.frames,prompt:job.prompt,promptSha256:hash(job.prompt),submittedPrompt:submitted,submittedPromptSha256:hash(submitted),referenceTags:references.map((_,i)=>'ref'+(i+1)),references,referencesSha256:references.map(fileHash)};
+  return {jobId:job.id,...(job.recipe?{recipe:job.recipe}:{}),referenceRecipe:job.referenceRecipe,frames:job.frames,prompt:job.prompt,promptSha256:hash(job.prompt),submittedPrompt:submitted,submittedPromptSha256:hash(submitted),referenceTags:references.map((_,i)=>'ref'+(i+1)),references,referencesSha256:references.map(fileHash)};
  });
  return {schema:'fondal.external-runway.plan.v1',champion:id,kind:selected.kind,action:selected.action,skin:selected.skin,contractSha256:hash(JSON.stringify(selected.contract)),jobs,note:'Local preparation only. No generation, spend, quality approval or proof of provider provenance.'};
 }

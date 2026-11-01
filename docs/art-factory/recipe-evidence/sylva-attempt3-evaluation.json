@@ -1,0 +1,53 @@
+{
+  "score": 100,
+  "checks": {
+    "dimensiones": true,
+    "alfa_binario": true,
+    "sin_siluetas_cortadas": true,
+    "sin_cuadros_vacios": true,
+    "estilo_en_rango_del_roster": true,
+    "paleta_vs_sprite_actual": true,
+    "pies_estables": true,
+    "altura_constante_entre_poses": true,
+    "animacion_con_movimiento": true,
+    "sin_residuos_sueltos": true,
+    "escala_vs_sprite_actual": true,
+    "tiene_consumidor": true
+  },
+  "defects": [],
+  "critical": 0,
+  "style_metrics": {
+    "outline": 0.764,
+    "soft": 0.078,
+    "detail": 0.767,
+    "shade_sd": 49.6
+  },
+  "style_gating_metrics": [
+    "outline",
+    "soft",
+    "detail"
+  ],
+  "diagnostics": [
+    {
+      "metric": "shade_sd",
+      "value": 49.6,
+      "gating": false,
+      "meaning": "global opaque-pixel luminance contrast; not a measure of smooth shading",
+      "roster_range": [
+        23.239,
+        74.52
+      ]
+    }
+  ],
+  "coverage_generated_pct": 7.7,
+  "palette_vs_current": 0.541,
+  "palette_vs_codex_page": 0.402,
+  "scale_ratio_vs_current": 1.012,
+  "pass_threshold_90": true,
+  "requires_human_art_review": true,
+  "limitations": [
+    "La puntuación automática mide formato, escala, alfa, estabilidad y estilo numérico; NO juzga si el diseño es fiel al Códice ni si la animación se siente bien.",
+    "Los cuadros heredados del atlas actual no se evalúan como arte nuevo.",
+    "Falta la prueba en el motor real (preview) y la revisión de un artista."
+  ]
+}

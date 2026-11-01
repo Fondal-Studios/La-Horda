@@ -4,6 +4,7 @@
 // · APPROVED (aprobación humana registrada) · STAGED_REVIEW_ONLY (arte y parche preparados; el registro en el motor lo hace un PR revisado) · BLOCKED (con motivo).
 const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto'), {spawnSync} = require('node:child_process');
 const {readContract, ROOT} = require('./contract');
+const {recipePrompt} = require('./recipe-library');
 const {SpendGuard} = require('../../fondal-art-engine/spend-guard');
 const {OpenAIImageProvider, BFLFlux2Provider, RunwayProvider, withFallback, Blocked} = require('../../fondal-art-engine/providers-s0f');
 const JOBS = () => process.env.FONDAL_JOBS_ROOT || path.join(ROOT, 'art-source/factory-jobs');
@@ -25,8 +26,11 @@ function plan(contract, {kind = 'champion', action = null, skin = null} = {}) {
     const fr = contract.clips[name].unique.filter(i => !seen.has(i)); fr.forEach(i => seen.add(i)); // un cuadro del atlas se genera una sola vez aunque lo usen varios clips
     for (let k = 0; k < fr.length; k += 4) {
       const chunk = fr.slice(k, k + 4);
-      jobs.push({id: `${name}-${k / 4}`, label: `${contract.id}/${name}`, clip: name, frames: chunk,
-        prompt: `${STYLE} Personaje: ${contract.id} (referencia: sprite de identidad del Códice recortado y tira de poses actuales). ${skin ? `Reparar skin EXISTENTE «${skin}»: conservar identidad, diseño, paleta, ropa, arma y silueta; no crear skin ni recolorear base.` : 'Conservar rostro, vestimenta, arma, paleta y proporciones del Códice.'} Generar ${chunk.length} poses DISTINTAS de «${name}» en una fila horizontal${/walk|run/.test(name) ? ' (ciclo de caminar: contacto, paso, contacto con la otra pierna, paso: las piernas y los brazos cambian de posición en cada pose)' : ''}, mismo tamaño y pies alineados, misma escala. PROHIBIDO: texto, letras, números, rótulos, línea de suelo, sombra, tierra, marcos y cualquier elemento que no sea el personaje.`,
+      let recipe;
+      try { recipe = recipePrompt(contract, {clip: name, frames: chunk}, {skin}); } catch (e) { throw new Blocked('BLOCKED_CONTRACT', e.message); }
+      const directionPrompt = recipe?.prompt;
+      jobs.push({id: `${name}-${k / 4}`, ...(recipe ? {recipe: {id: recipe.recipeId, version: recipe.recipeVersion, sha256: recipe.recipeSha256, source: recipe.recipeSource, status: recipe.status}} : {}), referenceRecipe: name === 'walk_down' ? 'front-fixed-single-row-v2' : 'identity-grid-v1', label: `${contract.id}/${name}`, clip: name, frames: chunk,
+        prompt: directionPrompt || `${STYLE} Personaje: ${contract.id} (referencia: sprite de identidad del Códice recortado y tira de poses actuales). ${skin ? `Reparar skin EXISTENTE «${skin}»: conservar identidad, diseño, paleta, ropa, arma y silueta; no crear skin ni recolorear base.` : 'Conservar rostro, vestimenta, arma, paleta y proporciones del Códice.'} Generar ${chunk.length} poses DISTINTAS de «${name}» en una fila horizontal${/walk|run/.test(name) ? ' (ciclo de caminar: contacto, paso, contacto con la otra pierna, paso: las piernas y los brazos cambian de posición en cada pose)' : ''}, mismo tamaño y pies alineados, misma escala. PROHIBIDO: texto, letras, números, rótulos, línea de suelo, sombra, tierra, marcos y cualquier elemento que no sea el personaje.`,
         needs: ['codexPage', 'currentStrip']});
     }
   }
@@ -118,13 +122,13 @@ async function generate(id, opts = {}) {
     }
     const refDir = path.join(dir, 'refs'), stripDir = path.join(dir, 'strips'), partsDir = path.join(dir, 'parts');
     [refDir, stripDir, partsDir].forEach(d => fs.mkdirSync(d, {recursive: true}));
-    const identityReference = path.join(refDir, 'identity.png');
-    py('prepare-reference', path.join(dir, 'contract.json'), identityReference);
     const assemblies = [], failures = []; let spent = 0, blocked = null;
     const checkLease = async () => { if (opts.shouldContinue && !await opts.shouldContinue()) throw new Blocked('BLOCKED_LEASE_LOST', 'worker lease no longer confirmed; no further billable requests'); };
     const runJob = async plannedJob => {
       const job = {...plannedJob};
-      const strip = path.join(refDir, job.id + '.current.png'); py('refstrip', path.join(dir, 'contract.json'), JSON.stringify(job.frames), strip);
+      const identityReference = path.join(refDir, job.id + '.identity.png');
+      py('prepare-reference', path.join(dir, 'contract.json'), identityReference, job.clip);
+      const strip = path.join(refDir, job.id + '.current.png'); py('refstrip', path.join(dir, 'contract.json'), JSON.stringify(job.frames), strip, job.clip);
       job.references = [identityReference, strip];
       const out = path.join(stripDir, job.id + '.png'), receiptFile = path.join(stripDir, job.id + '.json');
       let receipt;
@@ -177,7 +181,7 @@ function evidence(id, dir) {
   const files = ['plan.json', 'contract.json', 'assembly.json', 'atlas.png', ...parts.map(n => 'parts/' + n)];
   const proof = {files: {}, sources: {}};
   for (const f of files) { const full = path.join(dir, f); if (!fs.lstatSync(full).isFile()) throw Error('BLOCKED_EVIDENCE: archivo irregular ' + f); proof.files[f] = hashFile(full); }
-  for (const f of ['tools/factory/art_factory.py', 'tools/factory/s0f/contract.js', 'tools/factory/s0f/s0f.js', 'tools/factory/s0f/integration.js', 'docs/art-factory/ART_DIRECTION_REFS.json', c.atlas, c.codexPage, c.consumer].filter(Boolean)) proof.sources[f] = hashFile(path.join(ROOT, f));
+  for (const f of ['tools/factory/art_factory.py', 'tools/factory/s0f/contract.js', 'tools/factory/s0f/s0f.js', 'tools/factory/s0f/integration.js', 'tools/factory/s0f/recipe-library.js', ...jobs.map(j => j.recipe?.source).filter(Boolean), 'docs/art-factory/ART_DIRECTION_REFS.json', c.atlas, c.codexPage, c.consumer].filter(Boolean)) proof.sources[f] = hashFile(path.join(ROOT, f));
   return proof;
 }
 function freshEvaluation(id, dir) {
