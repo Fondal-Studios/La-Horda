@@ -60,6 +60,14 @@ jobs:
         run: node tools/fondal-art-engine/pilot-runtime.js --out "$RUNNER_TEMP/fondal-serial-pilot"
         env:
           NODE_PATH: /tmp/fondal-browser/node_modules
+      - name: Serial pilot against pinned actual main (no beta runtime integration)
+        run: |
+          git fetch --no-tags origin main
+          main_sha="$(git rev-parse FETCH_HEAD)"
+          git worktree add --detach "$RUNNER_TEMP/fondal-main" "$main_sha"
+          node tools/fondal-art-engine/pilot-runtime.js --repo-root "$RUNNER_TEMP/fondal-main" --expected-main-sha "$main_sha" --out "$RUNNER_TEMP/fondal-main-pilot"
+        env:
+          NODE_PATH: /tmp/fondal-browser/node_modules
       - name: Audit decoded champion sheets for repair candidates
         run: node tools/fondal-art-engine/quality-audit.js "$RUNNER_TEMP/fondal-quality/quality.json"
         env:
@@ -88,6 +96,7 @@ jobs:
             ${{ runner.temp }}/fondal-candidate/
             ${{ runner.temp }}/fondal-codex/
             ${{ runner.temp }}/fondal-serial-pilot/
+            ${{ runner.temp }}/fondal-main-pilot/
           retention-days: 14
   produce:
     if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.production)

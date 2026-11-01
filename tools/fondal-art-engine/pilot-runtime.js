@@ -2,15 +2,17 @@
 'use strict';
 // Actual renderer evidence for the serial Sylva + Escarcha pilot. Optional staged
 // atlases are served only to this isolated browser; never modify runtime files.
-const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict'),{execFileSync}=require('node:child_process');
 const H=require('../lib/serve'),{readContract,ROOT}=require('../factory/s0f/contract');
 const hash=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
 async function main(){
  const args=process.argv.slice(2),val=(k,d)=>{const i=args.indexOf(k);return i<0?d:args[i+1];},out=path.resolve(val('--out','/tmp/fondal-pilot-runtime'));fs.mkdirSync(out,{recursive:true});
+ const repoRoot=fs.realpathSync(path.resolve(val('--repo-root',ROOT))),repoSHA=execFileSync('git',['rev-parse','HEAD'],{cwd:repoRoot,encoding:'utf8'}).trim();
+ const expectedSHA=val('--expected-main-sha',null);if(expectedSHA)assert.equal(repoSHA,expectedSHA,'Main worktree SHA differs from pinned fetch');
  const specs=[{label:'base',id:'cazadora',skin:null,dir:val('--base-run-dir',null)},{label:'escarcha',id:'cazadora',skin:'cazadora_escarcha',dir:val('--skin-run-dir',null)}];
- for(const spec of specs){spec.contract=readContract(spec.id,{skin:spec.skin});assert.equal(spec.contract.kind,'atlas');spec.file=spec.dir?path.join(path.resolve(spec.dir),'atlas.png'):path.join(ROOT,spec.contract.atlas);spec.sha256=hash(spec.file);if(spec.dir){const pinned=JSON.parse(fs.readFileSync(path.join(spec.dir,'contract.json')));assert.deepEqual(pinned,spec.contract,'Staged contract drift');}}
- const report={status:'FAIL',scope:'Real desktop Chromium game renderer; optional isolated candidate interception, never live installation or physical device certification',variants:specs.map(s=>({label:s.label,sha256:s.sha256,candidate:!!s.dir,atlas:s.contract.atlas,cell:s.contract.cell,cols:s.contract.cols,frames:s.contract.frames})),errors:[]};
- const site=await H.startSite();let browser;
+ for(const spec of specs){spec.contract=readContract(spec.id,{root:repoRoot,skin:spec.skin});assert.equal(spec.contract.kind,'atlas');spec.file=spec.dir?path.join(path.resolve(spec.dir),'atlas.png'):path.join(repoRoot,spec.contract.atlas);spec.sha256=hash(spec.file);if(spec.dir){const pinned=JSON.parse(fs.readFileSync(path.join(spec.dir,'contract.json')));assert.deepEqual(pinned,spec.contract,'Staged contract drift');}}
+ const report={status:'FAIL',repoRoot,repoSHA,mainSHA:expectedSHA,scope:'Real desktop Chromium game renderer; optional isolated candidate interception, never live installation or physical device certification',variants:specs.map(s=>({label:s.label,sha256:s.sha256,candidate:!!s.dir,atlas:s.contract.atlas,cell:s.contract.cell,cols:s.contract.cols,frames:s.contract.frames})),errors:[]};
+ const site=await H.startSite({root:repoRoot,envUrl:[]});let browser;
  try{
   browser=await H.launch();const page=await browser.newPage({viewport:{width:1000,height:700},serviceWorkers:'block'});page.on('pageerror',e=>report.errors.push(e.message));
   await page.route('**/*',route=>{const u=new URL(route.request().url());if(u.origin!==site.url)return route.abort();const replacement=specs.find(s=>s.dir&&u.pathname==='/'+s.contract.atlas);return replacement?route.fulfill({path:replacement.file,contentType:'image/png'}):route.continue();});
