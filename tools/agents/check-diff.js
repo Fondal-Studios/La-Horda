@@ -32,7 +32,7 @@ function run(opts) {
   const allowed = agent ? own.packages[agent].allowed : [], problems = [];
   if(reviewBranch){ for(const f of files) if(!/^reviews\//.test(f)) problems.push(`${f}: una rama review/… solo puede escribir en reviews/ (los revisores no modifican código)`); return { applies: true, agent: null, branch, files, problems }; }
   for (const f of files) {
-    if (match(own.forbiddenForAll, f)) { problems.push(`${f}: prohibido para todos los agentes`); continue; }
+    if (match(own.forbiddenForAll, f) && !(agent && match(own.packages[agent].forbiddenExceptions || [], f))) { problems.push(`${f}: prohibido para todos los agentes`); continue; }
     if (/^contracts\/v1\//.test(f) && !contractBranch && !(agent === 'B' && f === 'contracts/v1/migrations.js')) { problems.push(`${f}: el contrato solo cambia en una rama claude/contrato-… aprobada por A, B y C`); continue; }
     if (/^docs\/arquitectura-compartida\//.test(f) && !contractBranch) { problems.push(`${f}: pertenece a Arquitectura`); continue; }
     if (contractBranch && /^(contracts\/v1\/|docs\/arquitectura-compartida\/|tools\/contracts\/)/.test(f)) continue;

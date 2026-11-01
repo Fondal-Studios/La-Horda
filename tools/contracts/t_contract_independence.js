@@ -7,7 +7,7 @@ const files = cp.execFileSync('git', ['ls-files'], { cwd: ROOT, maxBuffer: 1 << 
 const rx = g => new RegExp('^' + g.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*\*/g, '\u0000').replace(/\*/g, '[^/]*').replace(/\u0000/g, '.*') + '$');
 const match = (g, f) => rx(g).test(f);
 const P = Object.keys(own.packages);
-check('hay exactamente cuatro paquetes A, B, C y D', P.join() === 'A,B,C,D');
+check('están los cuatro paquetes A, B, C y D (y los de fábrica G e I, si existen)', ['A','B','C','D'].every(x => P.includes(x)) && P.every(x => ['A','B','C','D','G','I'].includes(x)));
 
 // 1. Cada archivo (existente) pertenece como mucho a UN paquete.
 const inPkg = (p, f) => own.packages[p].allowed.some(g => match(g, f)) && !(own.packages[p].deny || []).some(g => match(g, f));
@@ -22,7 +22,8 @@ check('los patrones permitidos de paquetes distintos no se solapan', cross.lengt
 // 3. Lo prohibido para todos no está permitido a nadie; los archivos compartidos tampoco.
 const forb = own.forbiddenForAll, sharedGlobs = Object.keys(own.shared);
 const bad = [];
-for(const p of P) for(const g of own.packages[p].allowed){ const lit = literal(g); if(forb.some(h => match(h, lit)) && inPkg(p, lit)) bad.push(p + ':' + g); }
+for(const p of P) for(const g of own.packages[p].allowed){ const lit = literal(g); if((own.packages[p].forbiddenExceptions || []).includes(g)) continue; /* excepción explícita y nominal (nunca un comodín) */ if(forb.some(h => match(h, lit)) && inPkg(p, lit)) bad.push(p + ':' + g); }
+check('las excepciones a lo prohibido son archivos nominales (sin comodín) y están en allowed', P.every(p => (own.packages[p].forbiddenExceptions || []).every(g => !g.includes('*') && own.packages[p].allowed.includes(g))));
 check('ningún paquete tiene permitido un archivo prohibido para todos', bad.length === 0, bad);
 const sharedLeak = [];
 for(const p of P) for(const g of own.packages[p].allowed){ const lit = literal(g); for(const s of sharedGlobs) if(s !== 'contracts/v1/**' && match(s, lit) && inPkg(p, lit)) sharedLeak.push(p + ':' + g + ' en ' + s); }
@@ -30,7 +31,7 @@ check('ningún paquete invade un archivo compartido (salvo la excepción documen
 // 4. Los archivos clave existen y tienen dueño único (los patrones que no son comodín deben existir o estar marcados como nuevos).
 const missing = [];
 for(const p of P) for(const g of own.packages[p].allowed) if(!g.includes('*') && !files.includes(g) && !fs.existsSync(path.join(ROOT, g))) missing.push(p + ':' + g);
-const NEW_OK = new Set(['fly.toml', 'Dockerfile']); // archivos que el Agente B debe CREAR
+const NEW_OK = new Set(['fly.toml', 'Dockerfile', 'js/data/build-synergy.js', 'js/systems/build-synergy.js', 'js/systems/cosmetic-catalog.js']); // archivos que B, G e I crean en sus ramas
 check('todo archivo permitido sin comodín existe (salvo los que el paquete debe crear)', missing.filter(m => !NEW_OK.has(m.split(':')[1])).length === 0, missing);
 for(const f of ['server/accounts.js', 'server/item-economy-live.js', 'server/wallet.js', 'server/game-master.js', 'js/net/alpha-services.js', 'js/storage/save.js', 'tools/quality/run-all.js']){
   check(`${f}: dueño único`, owners(f).length === 1, owners(f));
