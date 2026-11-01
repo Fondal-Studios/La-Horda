@@ -25,6 +25,7 @@ jobs:
       - run: npm install --no-save playwright
       - run: npx playwright install --with-deps chromium
       - run: node tools/art/micelial/test-mother-browser.cjs
+      - run: node tools/art/micelial/test-mother-pilot.cjs
       - run: node tools/bosses/t_boss_arena_hooks.js
       - name: Existing non-boss camera and viewport regressions
         run: |

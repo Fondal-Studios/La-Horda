@@ -25,6 +25,9 @@ const MIC_MP = {}, MIC_MP_OK = {};
 for(const n of ["mp_full","mp_cap","mp_arm_l","mp_arm_r"]) _micImg("assets/sprites/arenas/micelial/mother/"+n+".png", n, MIC_MP, MIC_MP_OK);
 // The authored animation sheet already ships with the original boss art.
 _micImg("assets/sprites/arenas/micelial/madre_espora/atlas.png", "mp_atlas", MIC_MP, MIC_MP_OK);
+// Explicit review-only query: unapproved high-detail idle pilot is NEVER default.
+const MIC_MOTHER_PILOT_ON=typeof location!=="undefined" && new URLSearchParams(location.search).get("motherArtPilot")==="1";
+if(MIC_MOTHER_PILOT_ON) _micImg("assets/sprites/arenas/micelial/mother/pilot_idle.png","mp_pilot",MIC_MP,MIC_MP_OK);
 const MIC_BG = {}, MIC_BG_OK = {};
 _micImg("assets/sprites/arenas/micelial/map/map_initial.png", "a", MIC_BG, MIC_BG_OK);
 _micImg("assets/sprites/arenas/micelial/map/map_mature.png", "b", MIC_BG, MIC_BG_OK);
@@ -559,6 +562,12 @@ function _micDrawMotherFrame(e,t){
   const M=micS ? micS.mo : {st:"fight",t:0}, A=MIC_MOTHER_ANIM;
   const pose=_micMotherFrame(e,M,typeof runElapsedMs==="number" ? runElapsedMs : t*1000);
   if(pose.alpha<=0 || pose.rise<=0) return true;
+  if(MIC_MOTHER_PILOT_ON && pose.state==="idle" && MIC_MP_OK.mp_pilot && MIC_MP.mp_pilot.width===1296 && MIC_MP.mp_pilot.height===496){
+    const f=[0,1,2,1][Math.floor(Math.max(0,runElapsedMs||0)/360)%4];
+    ctx.save();ctx.imageSmoothingEnabled=false;
+    ctx.drawImage(MIC_MP.mp_pilot,f*432,0,432,496,MIC_MOTHER_POS.x-216,MIC_MOTHER_BASE-472,432,496);
+    ctx.restore();return true;
+  }
   const w=A.w*A.scale, h=A.h*A.scale, x=MIC_MOTHER_POS.x-w/2, y=MIC_MOTHER_BASE-h*A.anchor;
   ctx.save();
   ctx.fillStyle="rgba(0,0,0,0.35)"; ctx.beginPath();
