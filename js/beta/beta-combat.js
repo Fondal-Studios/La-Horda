@@ -76,11 +76,10 @@
         B.ult.t = B.ult.dur; B.ult.rgb = rgb;
         betaRing(player.x, player.y + 6, 10, 280, rgb, 700, 4.5, 1);
         betaRing(player.x, player.y + 6, 6, 190, "255,255,255", 520, 3, 0.9);
-        betaRing(player.x, player.y + 6, 4, 120, rgb, 380, 2.5, 0.9);
         bfxSpawn({k:6, x:player.x, y:player.y + 6, r0:18, r1:230, rot:0.2, rgb, life:620});
-        bfxSpawn({k:7, x:player.x, y:player.y + 6, r1:210, w:46, rgb, life:700, a:0.9});
-        betaSparks(player.x, player.y - 14, 26, rgb, 260, 0, 0, 0, 640, 1.8);
-        betaFlash(0.2, rgb);
+        bfxSpawn({k:7, x:player.x, y:player.y + 6, r1:170, w:34, rgb, life:560, a:0.6});
+        betaSparks(player.x, player.y - 14, 12, rgb, 220, 0, 0, 0, 520, 1.6);
+        betaFlash(0.12, rgb);
         if(typeof camPunch==="function") camPunch(0.06, 520);
         betaHaptic([28, 24, 50]);
       }

@@ -89,11 +89,11 @@
   });
 
   // Reparación ronda 1 (evaluador): con muchos objetos en el piso los nombres se apilaban y tapaban el HUD.
-  // Se dibujan como máximo 4 (los más raros primero, luego los más cercanos); el resto sigue en el piso con su sello.
+  // Se dibujan como máximo 3 (los más raros primero, luego los más cercanos); el resto sigue en el piso con su sello.
   betaWrap("groundLootDrawNames", orig => function(){
     const all = groundLoot;
-    if(!all || all.length <= 4 || !player) return orig.apply(this, arguments);
-    const keep = all.slice().sort((a,b)=>(RANK[b.tier]||0)-(RANK[a.tier]||0) || Math.hypot(player.x-a.x, player.y-a.y) - Math.hypot(player.x-b.x, player.y-b.y)).slice(0, 4);
+    if(!all || all.length <= 3 || !player) return orig.apply(this, arguments);
+    const keep = all.slice().sort((a,b)=>(RANK[b.tier]||0)-(RANK[a.tier]||0) || Math.hypot(player.x-a.x, player.y-a.y) - Math.hypot(player.x-b.x, player.y-b.y)).slice(0, 3);
     groundLoot = keep;
     try{ return orig.apply(this, arguments); } finally { groundLoot = all; }
   });

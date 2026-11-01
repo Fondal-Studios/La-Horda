@@ -32,7 +32,7 @@ const BETA = (function(){
     HERO: "cazadora",         // Sylva, la Cazadora del Bosque
     // contadores para las pruebas (tools/beta/*.js)
     stats: {spark:0, ring:0, death:0, ult:0, loot:0, press:0, ready:0, intro:0, hazard:0, playerDeath:0, drawMs:0, drawN:0},
-    ult: {t:0, dur:1100, rgb:"255,220,140"},
+    ult: {t:0, dur:900, rgb:"255,220,140"},
     intro: {t:0, dur:2400},
     dead: {t:0, dur:1700},
     flash: {a:0, rgb:"255,255,255"},

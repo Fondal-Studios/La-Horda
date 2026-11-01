@@ -114,7 +114,7 @@
     ctx.fillStyle = `rgba(255,${lethal ? 60 : 110},40,${0.10 + 0.26*p})`; ctx.fillRect(x - r, cy - r, r*2, r*2);
     // rayado diagonal (no depende del color)
     ctx.strokeStyle = `rgba(30,0,0,${0.25 + 0.2*p})`; ctx.lineWidth = 3; ctx.beginPath();
-    const step = 14, off = (now*14)%step;
+    const step = 20, off = (now*14)%step;
     for(let k=-r*2; k<r*2; k+=step){ ctx.moveTo(x + k + off - r, cy + r); ctx.lineTo(x + k + off + r, cy - r); }
     ctx.stroke();
     ctx.restore();
