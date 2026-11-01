@@ -1,0 +1,248 @@
+{
+ "label": "base",
+ "tests": [
+  {
+   "name": "touchCancel",
+   "durante": "ability-btn s1 ready aiming",
+   "despues": {
+    "btn-basic": "limpio",
+    "btn-s1": "limpio",
+    "btn-s2": "limpio",
+    "btn-s3": "limpio",
+    "btn-ult": "limpio",
+    "btn-emerg": "limpio"
+   }
+  },
+  {
+   "name": "multitoque s1+s2",
+   "mantenidos": {
+    "s1": "ability-btn s1 ready aiming",
+    "s2": "ability-btn s2 ready"
+   },
+   "soltado_s1": {
+    "s1": "ability-btn s1 ready aiming",
+    "s2": "ability-btn s2 ready"
+   },
+   "final": {
+    "btn-basic": "limpio",
+    "btn-s1": "limpio",
+    "btn-s2": "limpio",
+    "btn-s3": "limpio",
+    "btn-ult": "limpio",
+    "btn-emerg": "limpio"
+   },
+   "eventos": []
+  },
+  {
+   "name": "ataque sostenido + s1",
+   "durante": {
+    "basic": "ability-btn basic",
+    "s1": "ability-btn s1 ready aiming"
+   },
+   "final": {
+    "btn-basic": "limpio",
+    "btn-s1": "limpio",
+    "btn-s2": "limpio",
+    "btn-s3": "limpio",
+    "btn-ult": "limpio",
+    "btn-emerg": "limpio"
+   }
+  },
+  {
+   "name": "arrastrar fuera y soltar",
+   "durante": "ability-btn s1 ready aiming",
+   "final": {
+    "btn-basic": "limpio",
+    "btn-s1": "limpio",
+    "btn-s2": "limpio",
+    "btn-s3": "limpio",
+    "btn-ult": "limpio",
+    "btn-emerg": "limpio"
+   }
+  },
+  {
+   "name": "mouse: soltar fuera",
+   "durante": "ability-btn s1 ready aiming",
+   "final": {
+    "btn-basic": "limpio",
+    "btn-s1": "limpio",
+    "btn-s2": "limpio",
+    "btn-s3": "limpio",
+    "btn-ult": "limpio",
+    "btn-emerg": "limpio"
+   }
+  },
+  {
+   "name": "pausa durante presión",
+   "durante_pausa": "ability-btn s1 ready",
+   "tras_soltar": {
+    "btn-basic": "limpio",
+    "btn-s1": "limpio",
+    "btn-s2": "limpio",
+    "btn-s3": "limpio",
+    "btn-ult": "limpio",
+    "btn-emerg": "limpio"
+   }
+  },
+  {
+   "name": "teclado 2 + pausa + keyup",
+   "final": {
+    "btn-basic": "limpio",
+    "btn-s1": "limpio",
+    "btn-s2": "limpio",
+    "btn-s3": "limpio",
+    "btn-ult": "limpio",
+    "btn-emerg": "limpio"
+   }
+  },
+  {
+   "name": "blur ventana con tecla mantenida",
+   "tras_blur": "ability-btn s3 key-press cd",
+   "final": {
+    "btn-basic": "limpio",
+    "btn-s1": "limpio",
+    "btn-s2": "limpio",
+    "btn-s3": "limpio",
+    "btn-ult": "limpio",
+    "btn-emerg": "limpio"
+   }
+  },
+  {
+   "name": "pestaña oculta (visibilitychange sintético) con toque",
+   "tras_ocultar": "ability-btn s1 ready aiming",
+   "final": {
+    "btn-basic": "limpio",
+    "btn-s1": "limpio",
+    "btn-s2": "limpio",
+    "btn-s3": "limpio",
+    "btn-ult": "limpio",
+    "btn-emerg": "limpio"
+   }
+  },
+  {
+   "name": "pestaña oculta real (bringToFront)",
+   "visibilityState": "visible",
+   "tras_ocultar": "ability-btn s1 ready aiming",
+   "final": {
+    "btn-basic": "limpio",
+    "btn-s1": "limpio",
+    "btn-s2": "limpio",
+    "btn-s3": "limpio",
+    "btn-ult": "limpio",
+    "btn-emerg": "limpio"
+   }
+  },
+  {
+   "name": "toque rápido en cooldown (s1,s2)",
+   "eventos": []
+  },
+  {
+   "name": "definitiva sin carga (rechazo?)",
+   "eventos": [],
+   "clases": [],
+   "clsAhora": "ability-btn ult ready-pop"
+  },
+  {
+   "name": "emergencia con vida llena",
+   "eventos": [],
+   "cls": "ability-btn sec emerg"
+  },
+  {
+   "name": "emergencia gastada (0 cargas)",
+   "eventos": [],
+   "cls": "ability-btn sec emerg spent"
+  },
+  {
+   "name": "cast cancelado por arrastre (¿confirm?)",
+   "eventos": [],
+   "cdsAntes": [
+    0,
+    0,
+    0
+   ],
+   "cdsDespues": [
+    8328.599999999999,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "energía se agota mientras se mantiene (¿confirm falso?)",
+   "eventos": [],
+   "cds": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "nodos .uf-fx tras 6 toques",
+   "porBoton": {
+    "btn-ult": 0,
+    "btn-revive": 0,
+    "btn-s3": 0,
+    "btn-s2": 0,
+    "btn-s1": 0,
+    "btn-basic": 0,
+    "btn-emerg": 0,
+    "btn-pact": 0
+   },
+   "hijosS1": 5
+  },
+  {
+   "name": "ult ilkan (toque)",
+   "antes": {
+    "u": 100,
+    "m": 100,
+    "ik": null
+   },
+   "durante": "ability-btn ult ready-pop ready",
+   "despues": {
+    "u": 0,
+    "cd": 39355.499999999985,
+    "demon": false,
+    "st": "playing"
+   },
+   "eventos": [],
+   "cls": "ability-btn ult ready-pop"
+  },
+  {
+   "name": "ult ilkan (tecla R)",
+   "despues": {
+    "u": 0,
+    "cd": 38899.399999999994,
+    "demon": false
+   },
+   "eventos": [],
+   "cls": "ability-btn ult ready-pop key-press"
+  },
+  {
+   "name": "ult nigromante (toque)",
+   "antes": {
+    "u": 100,
+    "m": 100,
+    "ik": null
+   },
+   "durante": "ability-btn ult key-press ready-pop ready",
+   "despues": {
+    "u": 0,
+    "cd": 37372.09999999999,
+    "demon": true,
+    "st": "playing"
+   },
+   "eventos": [],
+   "cls": "ability-btn ult key-press ready-pop"
+  },
+  {
+   "name": "ult nigromante (tecla R)",
+   "despues": {
+    "u": 0,
+    "cd": 37034.7,
+    "demon": true
+   },
+   "eventos": [],
+   "cls": "ability-btn ult ready-pop key-press"
+  }
+ ],
+ "errors": []
+}
