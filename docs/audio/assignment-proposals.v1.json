@@ -3,8 +3,8 @@
  "version": 1,
  "generated": "2026-11-01",
  "note": "Propuesta por medidas y etiquetas. NO escuchada: requiere aprobación humana en docs/audio/assignment-review.v1.json. intro (Hechicero) queda procedural a propósito.",
- "libraryTracks": 14,
- "loopCapable": 6,
+ "libraryTracks": 90,
+ "loopCapable": 36,
  "slots": [
   {
    "slot": "title",
@@ -12,16 +12,16 @@
    "arena": null,
    "candidates": [
     {
-     "trackId": "9a63f74305f5cbce8374a72a027a645c07c97663255aba0b817bc1f70c432ed5",
-     "slug": "boss-battle-theme",
-     "score": -0.207,
-     "rationale": "intensidad p29 (objetivo 35), brillo p57, 83 BPM, 1920 Hz de centroide, bucle limpio (similitud 0.896). obertura, espaciosa."
+     "trackId": "62d699b0ca1810d3c503a7837efd726db052bbeb5de03c54df49dba377e26c1d",
+     "slug": "8-bit-cave-loop",
+     "score": -0.103,
+     "rationale": "intensidad p43 (objetivo 35), brillo p53, 99 BPM, 1609 Hz de centroide, bucle limpio (similitud 0.736). obertura, espaciosa."
     },
     {
-     "trackId": "8e69e5dadba8b472d684bcb936e8e83ef0c715439e6057029099d008a6be4f49",
-     "slug": "boss-battle-2-8-bit",
-     "score": -0.207,
-     "rationale": "intensidad p43 (objetivo 35), brillo p29, 144 BPM, 1562 Hz de centroide, bucle limpio (similitud 0.991). obertura, espaciosa."
+     "trackId": "c2e7cb7a4c9bb350e12054001b78f53eccdee6411d91662a820d96201a0e4e97",
+     "slug": "underwater-theme",
+     "score": -0.192,
+     "rationale": "intensidad p39 (objetivo 35), brillo p24, 74 BPM, 771 Hz de centroide, bucle limpio (similitud 0.871). obertura, espaciosa."
     }
    ],
    "status": "proposed"
@@ -32,16 +32,16 @@
    "arena": null,
    "candidates": [
     {
-     "trackId": "9a63f74305f5cbce8374a72a027a645c07c97663255aba0b817bc1f70c432ed5",
-     "slug": "boss-battle-theme",
-     "score": -0.149,
-     "rationale": "intensidad p29 (objetivo 25), brillo p57, 83 BPM, 1920 Hz de centroide, bucle limpio (similitud 0.896). tranquila, no cansa en pantallas largas."
+     "trackId": "d8f7e9038e595718101a2eb0096d49cc8f4a201aaa82365d1da802b80954ff7e",
+     "slug": "8-bit-cave-loop-0",
+     "score": -0.153,
+     "rationale": "intensidad p17 (objetivo 25), brillo p43, 76 BPM, 1356 Hz de centroide, bucle limpio (similitud 0.999). tranquila, no cansa en pantallas largas."
     },
     {
-     "trackId": "25f3056aa69985f878fd70526b4661d3f0492f1c4adb1174dadea837ac265f5d",
-     "slug": "the-rush",
-     "score": -0.237,
-     "rationale": "intensidad p21 (objetivo 25), brillo p21, 63 BPM, 1258 Hz de centroide, bucle limpio (similitud 0.866). tranquila, no cansa en pantallas largas."
+     "trackId": "62d699b0ca1810d3c503a7837efd726db052bbeb5de03c54df49dba377e26c1d",
+     "slug": "8-bit-cave-loop",
+     "score": -0.193,
+     "rationale": "intensidad p43 (objetivo 25), brillo p53, 99 BPM, 1609 Hz de centroide, bucle limpio (similitud 0.736). tranquila, no cansa en pantallas largas."
     }
    ],
    "status": "proposed"
@@ -52,10 +52,16 @@
    "arena": null,
    "candidates": [
     {
-     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
-     "slug": "determined-pursuit-epic-orchestra-loop",
-     "score": -0.286,
-     "rationale": "intensidad p71 (objetivo 60), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). acción sostenida que no tape las señales."
+     "trackId": "25f3056aa69985f878fd70526b4661d3f0492f1c4adb1174dadea837ac265f5d",
+     "slug": "the-rush",
+     "score": -0.08,
+     "rationale": "intensidad p60 (objetivo 60), brillo p37, 63 BPM, 1258 Hz de centroide, bucle limpio (similitud 0.866). acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "8e69e5dadba8b472d684bcb936e8e83ef0c715439e6057029099d008a6be4f49",
+     "slug": "boss-battle-2-8-bit",
+     "score": -0.178,
+     "rationale": "intensidad p78 (objetivo 60), brillo p50, 144 BPM, 1562 Hz de centroide, bucle limpio (similitud 0.991). acción sostenida que no tape las señales."
     }
    ],
    "status": "proposed"
@@ -66,10 +72,16 @@
    "arena": "ciudad",
    "candidates": [
     {
-     "trackId": "8e69e5dadba8b472d684bcb936e8e83ef0c715439e6057029099d008a6be4f49",
-     "slug": "boss-battle-2-8-bit",
-     "score": -0.27,
-     "rationale": "intensidad p43 (objetivo 60), brillo p29, 144 BPM, 1562 Hz de centroide, bucle limpio (similitud 0.991). acción sostenida que no tape las señales."
+     "trackId": "c2e7cb7a4c9bb350e12054001b78f53eccdee6411d91662a820d96201a0e4e97",
+     "slug": "underwater-theme",
+     "score": 0.016,
+     "rationale": "intensidad p39 (objetivo 60), brillo p24, 74 BPM, 771 Hz de centroide, bucle limpio (similitud 0.871); etiquetas de arena: bell. acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "25f3056aa69985f878fd70526b4661d3f0492f1c4adb1174dadea837ac265f5d",
+     "slug": "the-rush",
+     "score": -0.05,
+     "rationale": "intensidad p60 (objetivo 60), brillo p37, 63 BPM, 1258 Hz de centroide, bucle limpio (similitud 0.866). acción sostenida que no tape las señales."
     }
    ],
    "status": "proposed"
@@ -80,16 +92,16 @@
    "arena": "fortaleza",
    "candidates": [
     {
-     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
-     "slug": "determined-pursuit-epic-orchestra-loop",
-     "score": -0.096,
-     "rationale": "intensidad p71 (objetivo 60), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). acción sostenida que no tape las señales."
+     "trackId": "8e69e5dadba8b472d684bcb936e8e83ef0c715439e6057029099d008a6be4f49",
+     "slug": "boss-battle-2-8-bit",
+     "score": -0.168,
+     "rationale": "intensidad p78 (objetivo 60), brillo p50, 144 BPM, 1562 Hz de centroide, bucle limpio (similitud 0.991). acción sostenida que no tape las señales."
     },
     {
-     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
-     "slug": "boss-battle-music",
-     "score": -0.296,
-     "rationale": "intensidad p86 (objetivo 60), brillo p71, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). acción sostenida que no tape las señales."
+     "trackId": "94c61b37a8beeb8ac53a2e4c928e53c0ef93dc27584c116dd532091864af2ad1",
+     "slug": "osiris-monolith",
+     "score": -0.17,
+     "rationale": "intensidad p63 (objetivo 60), brillo p64, 78 BPM, 1823 Hz de centroide, bucle limpio (similitud 0.815). acción sostenida que no tape las señales."
     }
    ],
    "status": "proposed"
@@ -100,16 +112,16 @@
    "arena": "bosque",
    "candidates": [
     {
-     "trackId": "34406888886469e6012330e1c496d4818a2eb9be131cbbd22958ccc85cc8a661",
-     "slug": "boss-battle-3-8-bit-re-upload",
-     "score": -0.204,
-     "rationale": "intensidad p50 (objetivo 60), brillo p86, 144 BPM, 2108 Hz de centroide, bucle limpio (similitud 0.92). acción sostenida que no tape las señales."
+     "trackId": "acf1576167caffddf87599bec49d1d37f83c4dd0b11c7d744cc12ea30232ebc0",
+     "slug": "peaceful-forest",
+     "score": 0.116,
+     "rationale": "intensidad p42 (objetivo 60), brillo p78, 185 BPM, 2007 Hz de centroide, bucle limpio (similitud 0.731); etiquetas de arena: forest. acción sostenida que no tape las señales."
     },
     {
-     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
-     "slug": "determined-pursuit-epic-orchestra-loop",
-     "score": -0.276,
-     "rationale": "intensidad p71 (objetivo 60), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). acción sostenida que no tape las señales."
+     "trackId": "9850aa1d0d5d66bd9c5daf8bb77c6d852e01f2f4de22f283bd5621e8bed13b75",
+     "slug": "forest-ambience",
+     "score": 0.114,
+     "rationale": "intensidad p18 (objetivo 60), brillo p96, 161 BPM, 2681 Hz de centroide, bucle limpio (similitud 0.935); etiquetas de arena: forest, woods. acción sostenida que no tape las señales."
     }
    ],
    "status": "proposed"
@@ -120,16 +132,16 @@
    "arena": "micelial",
    "candidates": [
     {
-     "trackId": "8e69e5dadba8b472d684bcb936e8e83ef0c715439e6057029099d008a6be4f49",
-     "slug": "boss-battle-2-8-bit",
-     "score": -0.123,
-     "rationale": "intensidad p43 (objetivo 60), brillo p29, 144 BPM, 1562 Hz de centroide, bucle limpio (similitud 0.991). acción sostenida que no tape las señales."
+     "trackId": "50aa6a32625fe8565403a0c8ceb772d7fb500b9267d0019eacfe0fc742b6c73d",
+     "slug": "happy-adventure-loop",
+     "score": -0.087,
+     "rationale": "intensidad p53 (objetivo 60), brillo p29, 62 BPM, 973 Hz de centroide, bucle limpio (similitud 0.978). acción sostenida que no tape las señales."
     },
     {
-     "trackId": "25f3056aa69985f878fd70526b4661d3f0492f1c4adb1174dadea837ac265f5d",
-     "slug": "the-rush",
-     "score": -0.294,
-     "rationale": "intensidad p21 (objetivo 60), brillo p21, 63 BPM, 1258 Hz de centroide, bucle limpio (similitud 0.866). acción sostenida que no tape las señales."
+     "trackId": "2877e423ff90cb99b3082840e66cf79d69a809708466c6f27c750c0e1ce2a912",
+     "slug": "unsolved-investigation",
+     "score": -0.093,
+     "rationale": "intensidad p50 (objetivo 60), brillo p4, 123 BPM, 359 Hz de centroide, bucle limpio (similitud 0.769). acción sostenida que no tape las señales."
     }
    ],
    "status": "proposed"
@@ -140,16 +152,16 @@
    "arena": "hielo",
    "candidates": [
     {
-     "trackId": "34406888886469e6012330e1c496d4818a2eb9be131cbbd22958ccc85cc8a661",
-     "slug": "boss-battle-3-8-bit-re-upload",
-     "score": -0.034,
-     "rationale": "intensidad p50 (objetivo 60), brillo p86, 144 BPM, 2108 Hz de centroide, bucle limpio (similitud 0.92). acción sostenida que no tape las señales."
+     "trackId": "9fd1c9a97740411e7dcaebdc9af17ab017cf070a82089a48503765a24b7bedf4",
+     "slug": "black-diamond",
+     "score": 0.899,
+     "rationale": "intensidad p54 (objetivo 60), brillo p81, 72 BPM, 2092 Hz de centroide, bucle limpio (similitud 0.671); etiquetas de arena: ice, cold, winter. acción sostenida que no tape las señales."
     },
     {
-     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
-     "slug": "determined-pursuit-epic-orchestra-loop",
-     "score": -0.223,
-     "rationale": "intensidad p71 (objetivo 60), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). acción sostenida que no tape las señales."
+     "trackId": "2abe80e3b68c4bd27ce33998ce1daf208564579bf4a1f91435d64d5b4403a670",
+     "slug": "wintery-loop",
+     "score": 0.214,
+     "rationale": "intensidad p56 (objetivo 60), brillo p93, 129 BPM, 2645 Hz de centroide, bucle limpio (similitud 0.72); etiquetas de arena: winter. acción sostenida que no tape las señales."
     }
    ],
    "status": "proposed"
@@ -160,16 +172,16 @@
    "arena": "acuatica",
    "candidates": [
     {
-     "trackId": "34406888886469e6012330e1c496d4818a2eb9be131cbbd22958ccc85cc8a661",
-     "slug": "boss-battle-3-8-bit-re-upload",
-     "score": -0.204,
-     "rationale": "intensidad p50 (objetivo 60), brillo p86, 144 BPM, 2108 Hz de centroide, bucle limpio (similitud 0.92). acción sostenida que no tape las señales."
+     "trackId": "c2e7cb7a4c9bb350e12054001b78f53eccdee6411d91662a820d96201a0e4e97",
+     "slug": "underwater-theme",
+     "score": 0.426,
+     "rationale": "intensidad p39 (objetivo 60), brillo p24, 74 BPM, 771 Hz de centroide, bucle limpio (similitud 0.871); etiquetas de arena: water, underwater. acción sostenida que no tape las señales."
     },
     {
-     "trackId": "8e69e5dadba8b472d684bcb936e8e83ef0c715439e6057029099d008a6be4f49",
-     "slug": "boss-battle-2-8-bit",
-     "score": -0.21,
-     "rationale": "intensidad p43 (objetivo 60), brillo p29, 144 BPM, 1562 Hz de centroide, bucle limpio (similitud 0.991). acción sostenida que no tape las señales."
+     "trackId": "2877e423ff90cb99b3082840e66cf79d69a809708466c6f27c750c0e1ce2a912",
+     "slug": "unsolved-investigation",
+     "score": -0.033,
+     "rationale": "intensidad p50 (objetivo 60), brillo p4, 123 BPM, 359 Hz de centroide, bucle limpio (similitud 0.769); etiquetas de arena: sea. acción sostenida que no tape las señales."
     }
    ],
    "status": "proposed"
@@ -180,16 +192,16 @@
    "arena": "laberinto",
    "candidates": [
     {
-     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
-     "slug": "determined-pursuit-epic-orchestra-loop",
-     "score": -0.256,
-     "rationale": "intensidad p71 (objetivo 60), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). acción sostenida que no tape las señales."
+     "trackId": "c2e7cb7a4c9bb350e12054001b78f53eccdee6411d91662a820d96201a0e4e97",
+     "slug": "underwater-theme",
+     "score": -0.044,
+     "rationale": "intensidad p39 (objetivo 60), brillo p24, 74 BPM, 771 Hz de centroide, bucle limpio (similitud 0.871); etiquetas de arena: puzzle. acción sostenida que no tape las señales."
     },
     {
-     "trackId": "34406888886469e6012330e1c496d4818a2eb9be131cbbd22958ccc85cc8a661",
-     "slug": "boss-battle-3-8-bit-re-upload",
-     "score": -0.284,
-     "rationale": "intensidad p50 (objetivo 60), brillo p86, 144 BPM, 2108 Hz de centroide, bucle limpio (similitud 0.92). acción sostenida que no tape las señales."
+     "trackId": "2877e423ff90cb99b3082840e66cf79d69a809708466c6f27c750c0e1ce2a912",
+     "slug": "unsolved-investigation",
+     "score": -0.053,
+     "rationale": "intensidad p50 (objetivo 60), brillo p4, 123 BPM, 359 Hz de centroide, bucle limpio (similitud 0.769); etiquetas de arena: mystery. acción sostenida que no tape las señales."
     }
    ],
    "status": "proposed"
@@ -200,10 +212,16 @@
    "arena": "abismo",
    "candidates": [
     {
-     "trackId": "8e69e5dadba8b472d684bcb936e8e83ef0c715439e6057029099d008a6be4f49",
-     "slug": "boss-battle-2-8-bit",
-     "score": -0.203,
-     "rationale": "intensidad p43 (objetivo 60), brillo p29, 144 BPM, 1562 Hz de centroide, bucle limpio (similitud 0.991). acción sostenida que no tape las señales."
+     "trackId": "2877e423ff90cb99b3082840e66cf79d69a809708466c6f27c750c0e1ce2a912",
+     "slug": "unsolved-investigation",
+     "score": 0.937,
+     "rationale": "intensidad p50 (objetivo 60), brillo p4, 123 BPM, 359 Hz de centroide, bucle limpio (similitud 0.769); etiquetas de arena: dark, horror, ominous. acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "08852f14e96347c15f16d3e4a3e9bb3142c4b976627e852b8978602f30b98dec",
+     "slug": "deep-humidity",
+     "score": 0.544,
+     "rationale": "intensidad p48 (objetivo 60), brillo p1, 89 BPM, 89 Hz de centroide, bucle limpio (similitud 0.978); etiquetas de arena: dark, horror. acción sostenida que no tape las señales."
     }
    ],
    "status": "proposed"
@@ -214,16 +232,16 @@
    "arena": "minas",
    "candidates": [
     {
-     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
-     "slug": "determined-pursuit-epic-orchestra-loop",
-     "score": -0.036,
-     "rationale": "intensidad p71 (objetivo 60), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788); etiquetas de arena: mine. acción sostenida que no tape las señales."
+     "trackId": "08852f14e96347c15f16d3e4a3e9bb3142c4b976627e852b8978602f30b98dec",
+     "slug": "deep-humidity",
+     "score": 0.384,
+     "rationale": "intensidad p48 (objetivo 60), brillo p1, 89 BPM, 89 Hz de centroide, bucle limpio (similitud 0.978); etiquetas de arena: mine, cave. acción sostenida que no tape las señales."
     },
     {
-     "trackId": "8e69e5dadba8b472d684bcb936e8e83ef0c715439e6057029099d008a6be4f49",
-     "slug": "boss-battle-2-8-bit",
-     "score": -0.243,
-     "rationale": "intensidad p43 (objetivo 60), brillo p29, 144 BPM, 1562 Hz de centroide, bucle limpio (similitud 0.991). acción sostenida que no tape las señales."
+     "trackId": "3557cadad7777c1a101076434665dbeffa185095100645f45c27051da5331c83",
+     "slug": "crystal-cave",
+     "score": 0.137,
+     "rationale": "intensidad p80 (objetivo 60), brillo p14, 60 BPM, 602 Hz de centroide, bucle limpio (similitud 0.625); etiquetas de arena: cave. acción sostenida que no tape las señales."
     }
    ],
    "status": "proposed"
@@ -234,16 +252,16 @@
    "arena": "infernal",
    "candidates": [
     {
-     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
-     "slug": "determined-pursuit-epic-orchestra-loop",
-     "score": -0.137,
-     "rationale": "intensidad p71 (objetivo 60), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). acción sostenida que no tape las señales."
+     "trackId": "34406888886469e6012330e1c496d4818a2eb9be131cbbd22958ccc85cc8a661",
+     "slug": "boss-battle-3-8-bit-re-upload",
+     "score": -0.096,
+     "rationale": "intensidad p82 (objetivo 60), brillo p82, 144 BPM, 2108 Hz de centroide, bucle limpio (similitud 0.92). acción sostenida que no tape las señales."
     },
     {
-     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
-     "slug": "boss-battle-music",
-     "score": -0.166,
-     "rationale": "intensidad p86 (objetivo 60), brillo p71, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). acción sostenida que no tape las señales."
+     "trackId": "462c85304df0ea5369cb98aaae158108c92227fa5f442fb63a2da6febbe82ded",
+     "slug": "awake-megawall-10",
+     "score": -0.124,
+     "rationale": "intensidad p79 (objetivo 60), brillo p68, 89 BPM, 1858 Hz de centroide, bucle limpio (similitud 0.962). acción sostenida que no tape las señales."
     }
    ],
    "status": "proposed"
@@ -254,16 +272,16 @@
    "arena": null,
    "candidates": [
     {
-     "trackId": "8e69e5dadba8b472d684bcb936e8e83ef0c715439e6057029099d008a6be4f49",
-     "slug": "boss-battle-2-8-bit",
-     "score": -0.05,
-     "rationale": "intensidad p43 (objetivo 40), brillo p29, 144 BPM, 1562 Hz de centroide, bucle limpio (similitud 0.991). tensión previa al jefe, oscura."
+     "trackId": "c2e7cb7a4c9bb350e12054001b78f53eccdee6411d91662a820d96201a0e4e97",
+     "slug": "underwater-theme",
+     "score": -0.014,
+     "rationale": "intensidad p39 (objetivo 40), brillo p24, 74 BPM, 771 Hz de centroide, bucle limpio (similitud 0.871). tensión previa al jefe, oscura."
     },
     {
-     "trackId": "25f3056aa69985f878fd70526b4661d3f0492f1c4adb1174dadea837ac265f5d",
-     "slug": "the-rush",
-     "score": -0.207,
-     "rationale": "intensidad p21 (objetivo 40), brillo p21, 63 BPM, 1258 Hz de centroide, bucle limpio (similitud 0.866). tensión previa al jefe, oscura."
+     "trackId": "c9e83d01741e97a462c44963aff81645a9c2aa3a7a33e5849114a1399d1b0914",
+     "slug": "dark-forest-theme",
+     "score": -0.092,
+     "rationale": "intensidad p46 (objetivo 40), brillo p31, 108 BPM, 1008 Hz de centroide, bucle limpio (similitud 0.829). tensión previa al jefe, oscura."
     }
    ],
    "status": "proposed"
@@ -274,10 +292,16 @@
    "arena": null,
    "candidates": [
     {
-     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
-     "slug": "boss-battle-music",
-     "score": -0.231,
-     "rationale": "intensidad p86 (objetivo 92), brillo p71, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). máxima intensidad."
+     "trackId": "3206999e19c83c4dd912d06c1126469c76b2226fc6a8c30cbfaf9f15e0651e47",
+     "slug": "boss-battle-4-8-bit-re-upload",
+     "score": -0.122,
+     "rationale": "intensidad p92 (objetivo 92), brillo p80, 152 BPM, 2029 Hz de centroide, bucle limpio (similitud 0.965). máxima intensidad."
+    },
+    {
+     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
+     "slug": "determined-pursuit-epic-orchestra-loop",
+     "score": -0.144,
+     "rationale": "intensidad p89 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
     }
    ],
    "status": "proposed"
@@ -288,10 +312,16 @@
    "arena": "ciudad",
    "candidates": [
     {
-     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
-     "slug": "boss-battle-music",
-     "score": -0.261,
-     "rationale": "intensidad p86 (objetivo 92), brillo p71, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). máxima intensidad."
+     "trackId": "3206999e19c83c4dd912d06c1126469c76b2226fc6a8c30cbfaf9f15e0651e47",
+     "slug": "boss-battle-4-8-bit-re-upload",
+     "score": -0.152,
+     "rationale": "intensidad p92 (objetivo 92), brillo p80, 152 BPM, 2029 Hz de centroide, bucle limpio (similitud 0.965). máxima intensidad."
+    },
+    {
+     "trackId": "8e69e5dadba8b472d684bcb936e8e83ef0c715439e6057029099d008a6be4f49",
+     "slug": "boss-battle-2-8-bit",
+     "score": -0.172,
+     "rationale": "intensidad p78 (objetivo 92), brillo p50, 144 BPM, 1562 Hz de centroide, bucle limpio (similitud 0.991). máxima intensidad."
     }
    ],
    "status": "proposed"
@@ -302,10 +332,16 @@
    "arena": "fortaleza",
    "candidates": [
     {
-     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
-     "slug": "boss-battle-music",
-     "score": -0.264,
-     "rationale": "intensidad p86 (objetivo 92), brillo p71, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). máxima intensidad."
+     "trackId": "3206999e19c83c4dd912d06c1126469c76b2226fc6a8c30cbfaf9f15e0651e47",
+     "slug": "boss-battle-4-8-bit-re-upload",
+     "score": -0.108,
+     "rationale": "intensidad p92 (objetivo 92), brillo p80, 152 BPM, 2029 Hz de centroide, bucle limpio (similitud 0.965). máxima intensidad."
+    },
+    {
+     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
+     "slug": "determined-pursuit-epic-orchestra-loop",
+     "score": -0.134,
+     "rationale": "intensidad p89 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
     }
    ],
    "status": "proposed"
@@ -316,16 +352,16 @@
    "arena": "bosque",
    "candidates": [
     {
-     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
-     "slug": "boss-battle-music",
-     "score": -0.121,
-     "rationale": "intensidad p86 (objetivo 92), brillo p71, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). máxima intensidad."
-    },
-    {
      "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
      "slug": "determined-pursuit-epic-orchestra-loop",
-     "score": -0.207,
-     "rationale": "intensidad p71 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
+     "score": -0.072,
+     "rationale": "intensidad p89 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
+    },
+    {
+     "trackId": "3206999e19c83c4dd912d06c1126469c76b2226fc6a8c30cbfaf9f15e0651e47",
+     "slug": "boss-battle-4-8-bit-re-upload",
+     "score": -0.112,
+     "rationale": "intensidad p92 (objetivo 92), brillo p80, 152 BPM, 2029 Hz de centroide, bucle limpio (similitud 0.965). máxima intensidad."
     }
    ],
    "status": "proposed"
@@ -334,7 +370,20 @@
    "slot": "boss@micelial",
    "mode": "boss",
    "arena": "micelial",
-   "candidates": [],
+   "candidates": [
+    {
+     "trackId": "3557cadad7777c1a101076434665dbeffa185095100645f45c27051da5331c83",
+     "slug": "crystal-cave",
+     "score": -0.113,
+     "rationale": "intensidad p80 (objetivo 92), brillo p14, 60 BPM, 602 Hz de centroide, bucle limpio (similitud 0.625). máxima intensidad."
+    },
+    {
+     "trackId": "8e69e5dadba8b472d684bcb936e8e83ef0c715439e6057029099d008a6be4f49",
+     "slug": "boss-battle-2-8-bit",
+     "score": -0.162,
+     "rationale": "intensidad p78 (objetivo 92), brillo p50, 144 BPM, 1562 Hz de centroide, bucle limpio (similitud 0.991). máxima intensidad."
+    }
+   ],
    "status": "proposed"
   },
   {
@@ -343,16 +392,16 @@
    "arena": "hielo",
    "candidates": [
     {
-     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
-     "slug": "determined-pursuit-epic-orchestra-loop",
-     "score": -0.174,
-     "rationale": "intensidad p71 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
+     "trackId": "9fd1c9a97740411e7dcaebdc9af17ab017cf070a82089a48503765a24b7bedf4",
+     "slug": "black-diamond",
+     "score": 0.621,
+     "rationale": "intensidad p54 (objetivo 92), brillo p81, 72 BPM, 2092 Hz de centroide, bucle limpio (similitud 0.671); etiquetas de arena: ice, cold, winter. máxima intensidad."
     },
     {
-     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
-     "slug": "boss-battle-music",
-     "score": -0.249,
-     "rationale": "intensidad p86 (objetivo 92), brillo p71, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). máxima intensidad."
+     "trackId": "2abe80e3b68c4bd27ce33998ce1daf208564579bf4a1f91435d64d5b4403a670",
+     "slug": "wintery-loop",
+     "score": 0.066,
+     "rationale": "intensidad p56 (objetivo 92), brillo p93, 129 BPM, 2645 Hz de centroide, bucle limpio (similitud 0.72); etiquetas de arena: winter. máxima intensidad."
     }
    ],
    "status": "proposed"
@@ -363,16 +412,16 @@
    "arena": "acuatica",
    "candidates": [
     {
-     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
-     "slug": "determined-pursuit-epic-orchestra-loop",
-     "score": -0.107,
-     "rationale": "intensidad p71 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
+     "trackId": "c2e7cb7a4c9bb350e12054001b78f53eccdee6411d91662a820d96201a0e4e97",
+     "slug": "underwater-theme",
+     "score": 0.046,
+     "rationale": "intensidad p39 (objetivo 92), brillo p24, 74 BPM, 771 Hz de centroide, bucle limpio (similitud 0.871); etiquetas de arena: water, underwater. máxima intensidad."
     },
     {
-     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
-     "slug": "boss-battle-music",
-     "score": -0.196,
-     "rationale": "intensidad p86 (objetivo 92), brillo p71, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). máxima intensidad."
+     "trackId": "34406888886469e6012330e1c496d4818a2eb9be131cbbd22958ccc85cc8a661",
+     "slug": "boss-battle-3-8-bit-re-upload",
+     "score": -0.126,
+     "rationale": "intensidad p82 (objetivo 92), brillo p82, 144 BPM, 2108 Hz de centroide, bucle limpio (similitud 0.92). máxima intensidad."
     }
    ],
    "status": "proposed"
@@ -383,16 +432,16 @@
    "arena": "laberinto",
    "candidates": [
     {
-     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
-     "slug": "boss-battle-music",
-     "score": -0.201,
-     "rationale": "intensidad p86 (objetivo 92), brillo p71, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). máxima intensidad."
+     "trackId": "3206999e19c83c4dd912d06c1126469c76b2226fc6a8c30cbfaf9f15e0651e47",
+     "slug": "boss-battle-4-8-bit-re-upload",
+     "score": -0.092,
+     "rationale": "intensidad p92 (objetivo 92), brillo p80, 152 BPM, 2029 Hz de centroide, bucle limpio (similitud 0.965). máxima intensidad."
     },
     {
      "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
      "slug": "determined-pursuit-epic-orchestra-loop",
-     "score": -0.287,
-     "rationale": "intensidad p71 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
+     "score": -0.114,
+     "rationale": "intensidad p89 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
     }
    ],
    "status": "proposed"
@@ -401,7 +450,20 @@
    "slot": "boss@abismo",
    "mode": "boss",
    "arena": "abismo",
-   "candidates": [],
+   "candidates": [
+    {
+     "trackId": "2877e423ff90cb99b3082840e66cf79d69a809708466c6f27c750c0e1ce2a912",
+     "slug": "unsolved-investigation",
+     "score": 0.557,
+     "rationale": "intensidad p50 (objetivo 92), brillo p4, 123 BPM, 359 Hz de centroide, bucle limpio (similitud 0.769); etiquetas de arena: dark, horror, ominous. máxima intensidad."
+    },
+    {
+     "trackId": "08852f14e96347c15f16d3e4a3e9bb3142c4b976627e852b8978602f30b98dec",
+     "slug": "deep-humidity",
+     "score": 0.164,
+     "rationale": "intensidad p48 (objetivo 92), brillo p1, 89 BPM, 89 Hz de centroide, bucle limpio (similitud 0.978); etiquetas de arena: dark, horror. máxima intensidad."
+    }
+   ],
    "status": "proposed"
   },
   {
@@ -410,10 +472,16 @@
    "arena": "minas",
    "candidates": [
     {
-     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
-     "slug": "determined-pursuit-epic-orchestra-loop",
-     "score": -0.167,
-     "rationale": "intensidad p71 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788); etiquetas de arena: mine. máxima intensidad."
+     "trackId": "6e7dbc1bf7b1c08e06fd66ad5316bfead89881f6c4dc27b3bc1e4100892cf2de",
+     "slug": "cave-apr-25",
+     "score": 0.146,
+     "rationale": "intensidad p98 (objetivo 92), brillo p2, 60 BPM, 193 Hz de centroide, bucle limpio (similitud 0.995); etiquetas de arena: cave. máxima intensidad."
+    },
+    {
+     "trackId": "3557cadad7777c1a101076434665dbeffa185095100645f45c27051da5331c83",
+     "slug": "crystal-cave",
+     "score": 0.057,
+     "rationale": "intensidad p80 (objetivo 92), brillo p14, 60 BPM, 602 Hz de centroide, bucle limpio (similitud 0.625); etiquetas de arena: cave. máxima intensidad."
     }
    ],
    "status": "proposed"
@@ -424,16 +492,16 @@
    "arena": "infernal",
    "candidates": [
     {
-     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
-     "slug": "determined-pursuit-epic-orchestra-loop",
-     "score": -0.294,
-     "rationale": "intensidad p71 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
+     "trackId": "3206999e19c83c4dd912d06c1126469c76b2226fc6a8c30cbfaf9f15e0651e47",
+     "slug": "boss-battle-4-8-bit-re-upload",
+     "score": -0.078,
+     "rationale": "intensidad p92 (objetivo 92), brillo p80, 152 BPM, 2029 Hz de centroide, bucle limpio (similitud 0.965). máxima intensidad."
     },
     {
-     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
-     "slug": "boss-battle-music",
-     "score": -0.294,
-     "rationale": "intensidad p86 (objetivo 92), brillo p71, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). máxima intensidad."
+     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
+     "slug": "determined-pursuit-epic-orchestra-loop",
+     "score": -0.118,
+     "rationale": "intensidad p89 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
     }
    ],
    "status": "proposed"
@@ -446,14 +514,14 @@
     {
      "trackId": "8476ce29692d8d317a7d79628af967448ec09d9f66efe692a597336c5cea2629",
      "slug": "battle-theme-b-for-rpg",
-     "score": 0.106,
-     "rationale": "intensidad p36 (objetivo 60), brillo p71, 144 BPM, 1941 Hz de centroide, termina en fade-out. cierre triunfal (puede terminar en fade-out)."
+     "score": 0.229,
+     "rationale": "intensidad p74 (objetivo 60), brillo p76, 144 BPM, 1941 Hz de centroide, termina en fade-out. cierre triunfal (puede terminar en fade-out)."
     },
     {
-     "trackId": "988b173669e718c7a716a8292c13b607d90a36bfbf02a016d3fe41d10a90a7af",
-     "slug": "long-away-home-8bit",
-     "score": -0.059,
-     "rationale": "intensidad p64 (objetivo 60), brillo p36, 152 BPM, 1641 Hz de centroide, termina en fade-out. cierre triunfal (puede terminar en fade-out)."
+     "trackId": "283a3f1dae583238b68a0f4a1ea8e8ad9a5fbee166dad228c4256f2bc74e989c",
+     "slug": "ends-of-the-earth",
+     "score": 0.131,
+     "rationale": "intensidad p44 (objetivo 60), brillo p61, 185 BPM, 1766 Hz de centroide, termina en fade-out. cierre triunfal (puede terminar en fade-out)."
     }
    ],
    "status": "proposed"
@@ -464,16 +532,16 @@
    "arena": null,
    "candidates": [
     {
-     "trackId": "9580618dc851f70c3a11b5ff87672867de44cd38b35dabf926d6befde20e78d0",
-     "slug": "dark-shrine-loop",
-     "score": 0.326,
-     "rationale": "intensidad p14 (objetivo 20), brillo p7, 161 BPM, 629 Hz de centroide, termina en fade-out. cierre grave (puede terminar en fade-out)."
-    },
-    {
      "trackId": "7bfe029fcc5cc73688e4b6ca13b8845fe80a4c73d775e5d2c52af30e7a5d75b0",
      "slug": "dark-intro",
-     "score": 0.246,
-     "rationale": "intensidad p7 (objetivo 20), brillo p14, 136 BPM, 682 Hz de centroide, termina en fade-out. cierre grave (puede terminar en fade-out)."
+     "score": 0.347,
+     "rationale": "intensidad p20 (objetivo 20), brillo p19, 136 BPM, 682 Hz de centroide, termina en fade-out. cierre grave (puede terminar en fade-out)."
+    },
+    {
+     "trackId": "c8c1b2b5bad66d2951cc366ad3337a67882a769b1c3057b2791fa2085ae4d09e",
+     "slug": "factory-ambiance",
+     "score": 0.214,
+     "rationale": "intensidad p22 (objetivo 20), brillo p8, 108 BPM, 499 Hz de centroide, termina en fade-out. cierre grave (puede terminar en fade-out)."
     }
    ],
    "status": "proposed"
