@@ -10,11 +10,17 @@ const SCHEMAS = {
   GameResult: require('./game-result.schema.json'),
   PlayerProfile: require('./player-profile.schema.json'),
   EconomyTransaction: require('./economy-transaction.schema.json'),
-  TelemetryEvent: require('./telemetry-event.schema.json')
+  TelemetryEvent: require('./telemetry-event.schema.json'),
+  TelemetryConsent: require('./telemetry-consent.schema.json'),
+  SkillEvent: require('./skill-event.schema.json'),
+  ChampionSelection: require('./champion-selection.schema.json'),
+  ArtAsset: require('./art-asset.schema.json'),
+  LobbyMessage: require('./lobby-message.schema.json')
 };
-const VERSIONS = Object.freeze({ GameResult: '1.0.0', PlayerProfile: '1.0.0', EconomyTransaction: '1.0.0', TelemetryEvent: '1.0.0' });
+const VERSIONS = Object.freeze({ GameResult: '1.0.0', PlayerProfile: '1.0.0', EconomyTransaction: '1.0.0', TelemetryEvent: '1.0.0', TelemetryConsent: '1.0.0', SkillEvent: '1.0.0', ChampionSelection: '1.0.0', ArtAsset: '1.0.0', LobbyMessage: '1.0.0' });
 // Propietario único de cada contrato (quien aprueba cambios). Ver docs/arquitectura-compartida/PROPIEDAD_DE_ARCHIVOS.md.
-const OWNERS = Object.freeze({ GameResult: 'A', EconomyTransaction: 'A', PlayerProfile: 'B', TelemetryEvent: 'C' });
+// 'ARQ' = Arquitectura: contrato de solo lectura sobre algo que ningún agente puede modificar (el relay lo administra su responsable).
+const OWNERS = Object.freeze({ GameResult: 'A', EconomyTransaction: 'A', PlayerProfile: 'B', TelemetryEvent: 'C', TelemetryConsent: 'C', SkillEvent: 'D', ChampionSelection: 'D', ArtAsset: 'D', LobbyMessage: 'ARQ' });
 
 const SEMVER = /^(\d+)\.(\d+)\.(\d+)$/;
 function parseVersion(v){ const m = SEMVER.exec(String(v)); return m ? { major: +m[1], minor: +m[2], patch: +m[3] } : null; }
@@ -35,10 +41,11 @@ function piiScan(value, path = '$', out = []){
   return out;
 }
 
-function validate(name, value){
+function validate(name, value, opts = {}){
   const schema = SCHEMAS[name];
   if(!schema) return { ok: false, errors: [{ path: '$', code: 'UNKNOWN_CONTRACT', detail: name }] };
   if(!value || typeof value !== 'object' || Array.isArray(value)) return { ok: false, errors: [{ path: '$', code: 'BAD_TYPE' }] };
+  if(name === 'LobbyMessage') return validateLobby(value, opts);
   let errors = checkVersion(name, value.version);
   if(name === 'TelemetryEvent') errors = errors.concat(piiScan(value));
   if(errors.some(e => e.code === 'UNSUPPORTED_VERSION' || e.code === 'BAD_VERSION')) return { ok: false, errors };
@@ -48,6 +55,14 @@ function validate(name, value){
   const pii = new Set(errors.filter(e => e.code === 'PII_FIELD').map(e => e.path));
   errors = errors.filter(e => !(e.code === 'UNKNOWN_FIELD' && pii.has(e.path)));
   return { ok: errors.length === 0, errors };
+}
+// LobbyMessage no lleva campo version: el contrato versiona el PROTOCOLO del relay. Se elige la variante por t y, si se indica, por dirección (c2s | s2c).
+function validateLobby(msg, opts){
+  const vs = Object.values(SCHEMAS.LobbyMessage.variants).filter(v => v.properties.t.const === msg.t && (!opts.direction || v.direction === opts.direction));
+  if(!vs.length) return { ok: false, errors: [{ path: '$.t', code: 'UNKNOWN_MESSAGE', detail: String(msg.t).slice(0, 24) }] };
+  let best = null;
+  for(const v of vs){ const r = validateSchema(v, msg); if(r.ok) return { ok: true, errors: [] }; best = best || r; }
+  return { ok: false, errors: best.errors };
 }
 function assertValid(name, value){ const r = validate(name, value); if(!r.ok) throw new ContractError(r.errors); return value; }
 
@@ -76,6 +91,24 @@ function semantic(name, v){
       if(!v.evidenceRef) out.push({ path: '$.evidenceRef', code: 'EVIDENCE_REQUIRED' });
       if(v.actor !== 'server') out.push({ path: '$.actor', code: 'NOT_CREDITABLE', detail: 'solo el servidor acredita recompensas de partida' });
     }
+  }
+  if(name === 'TelemetryConsent'){
+    if(v.state === 'granted' && (v.source !== 'user_choice' || !v.decidedAt)) out.push({ path: '$.state', code: 'NOT_CONSENTED', detail: 'granted exige source=user_choice y decidedAt' });
+    if(v.source === 'automation' && v.state === 'granted') out.push({ path: '$.state', code: 'NOT_CONSENTED', detail: 'un navegador automatizado nunca consiente' });
+  }
+  if(name === 'SkillEvent'){
+    if(v.type === 'blocked' && !v.reason) out.push({ path: '$.reason', code: 'INCOMPLETE_EVENT', detail: 'blocked exige reason' });
+    if(v.type === 'cast' && v.cooldownMaxMs === undefined) out.push({ path: '$.cooldownMaxMs', code: 'INCOMPLETE_EVENT', detail: 'cast exige cooldownMaxMs' });
+    if(v.type === 'ready' && v.cooldownMs) out.push({ path: '$.cooldownMs', code: 'INCOMPLETE_EVENT', detail: 'ready implica cooldownMs 0' });
+    if(v.type === 'ult_ready' && v.slot !== 'ult') out.push({ path: '$.slot', code: 'INCOMPLETE_EVENT', detail: 'ult_ready solo en el slot ult' });
+  }
+  if(name === 'ChampionSelection'){
+    if(v.unlocked && v.selected && v.unlocked.length && !v.unlocked.includes(v.selected)) out.push({ path: '$.selected', code: 'NOT_UNLOCKED' });
+    const all = [v.selected, ...(v.allies || [])];
+    if(new Set(all).size !== all.length) out.push({ path: '$.allies', code: 'DUPLICATE_CHAMPION' });
+  }
+  if(name === 'ArtAsset'){
+    if(v.gates && v.gates.pixelDensity === 'exception' && !v.exception) out.push({ path: '$.exception', code: 'MISSING_FIELD', detail: 'una excepción de densidad exige su motivo' });
   }
   return out;
 }
@@ -142,4 +175,41 @@ function toWire(ev){
   return { wire, dropped };
 }
 
-module.exports = { VERSIONS, OWNERS, SCHEMAS, CODES, ContractError, validate, assertValid, checkVersion, parseVersion, compareReplay, fromServerRun, fromWalletEntry, fromSave, toWire, ACCEPTED_EVENT_NAMES, PROPOSED_EVENT_NAMES, MIGRATIONS, appliedMigrations, ELAPSED_TOLERANCE_MS };
+// Consentimiento: valor de localStorage "horda_telemetry" del cliente. HOY el cliente envía salvo que valga "off" (js/net/alpha-services.js): ese
+// comportamiento heredado se modela como legacy_default y NO es un consentimiento válido para el contrato (state unset).
+function fromConsentStorage(raw, o = {}){
+  const base = { contract: 'TelemetryConsent', version: VERSIONS.TelemetryConsent, policyVersion: o.policyVersion || 'sin-politica' };
+  if(o.automation) return { ...base, state: 'denied', source: 'automation' };
+  if(raw === 'off') return { ...base, state: 'denied', source: 'user_choice', decidedAt: o.decidedAt || 1 };
+  if(raw === 'on') return { ...base, state: 'granted', source: 'user_choice', decidedAt: o.decidedAt || 1 };
+  return { ...base, state: 'unset', source: 'legacy_default' };
+}
+// Estado de un botón de habilidad del HUD: { classKey, slot, cd (ms restantes), cdMax, ready, blocked }.
+function fromHudSlot(h){
+  const t = h.cast ? 'cast' : h.blocked ? 'blocked' : (h.slot === 'ult' && h.ready) ? 'ult_ready' : 'ready';
+  const e = { contract: 'SkillEvent', version: VERSIONS.SkillEvent, type: t, champion: h.classKey, slot: h.slot };
+  if(t === 'ready' || t === 'ult_ready') e.cooldownMs = 0; else if(h.cd !== undefined) e.cooldownMs = Math.max(0, Math.round(h.cd));
+  if(h.cdMax !== undefined) e.cooldownMaxMs = Math.max(0, Math.round(h.cdMax));
+  if(t === 'blocked') e.reason = h.reason || 'cooldown';
+  return e;
+}
+// Selección del cliente: { selectedClass, lobbyAllies, unlocked: [ids] } (save.champions con unlocked:true).
+function fromSelection(c){
+  const r = { contract: 'ChampionSelection', version: VERSIONS.ChampionSelection, selected: c.selectedClass, allies: [...(c.lobbyAllies || [])], unlocked: [...(c.unlocked || [])] };
+  if(c.mode) r.mode = c.mode;
+  return r;
+}
+// Archivo de arte real del repositorio: calcula sha256 y dimensiones (cabecera PNG) sin dependencias.
+function fromAssetFile(root, rel, meta){
+  const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto');
+  const buf = fs.readFileSync(path.join(root, rel));
+  const fmt = rel.split('.').pop().toLowerCase().replace('jpeg', 'jpg');
+  let width = 1, height = 1;
+  if(fmt === 'png' && buf.length > 24){ width = buf.readUInt32BE(16); height = buf.readUInt32BE(20); }
+  else if(fmt === 'webp' && buf.length > 30 && buf.toString('ascii', 8, 12) === 'WEBP'){ const k = buf.toString('ascii', 12, 16); if(k === 'VP8X'){ width = 1 + buf.readUIntLE(24, 3); height = 1 + buf.readUIntLE(27, 3); } else if(k === 'VP8 '){ width = buf.readUInt16LE(26) & 0x3fff; height = buf.readUInt16LE(28) & 0x3fff; } else if(k === 'VP8L'){ const b = buf.readUInt32LE(21); width = (b & 0x3fff) + 1; height = ((b >> 14) & 0x3fff) + 1; } }
+  const a = { contract: 'ArtAsset', version: VERSIONS.ArtAsset, id: meta.id, kind: meta.kind, path: rel, format: fmt, width, height, sha256: crypto.createHash('sha256').update(buf).digest('hex'), source: meta.source || 'authored', gates: meta.gates || { pixelDensity: 'not_applicable' } };
+  if(meta.exception) a.exception = meta.exception;
+  return a;
+}
+
+module.exports = { fromConsentStorage, fromHudSlot, fromSelection, fromAssetFile, VERSIONS, OWNERS, SCHEMAS, CODES, ContractError, validate, assertValid, checkVersion, parseVersion, compareReplay, fromServerRun, fromWalletEntry, fromSave, toWire, ACCEPTED_EVENT_NAMES, PROPOSED_EVENT_NAMES, MIGRATIONS, appliedMigrations, ELAPSED_TOLERANCE_MS };

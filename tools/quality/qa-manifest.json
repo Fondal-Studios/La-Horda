@@ -824,6 +824,39 @@
     "multijugador_simulado",
     "inicio"
    ]
+  },
+  "tools/agents/test-conflicts.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/review/test-review.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/contracts/t_contract_beta.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes",
+    "multijugador_simulado",
+    "navegacion_tutorial",
+    "sprites_atlas"
+   ]
+  },
+  "tools/contracts/t_contract_registry.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/agents/gen-diagram.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
   }
  },
  "suites": {

@@ -64,7 +64,28 @@ Los códigos son estables; cambiar o quitar uno es un cambio `MAJOR`.
 | `EVIDENCE_REQUIRED` | la acreditación exige una referencia de evidencia |
 | `IDEMPOTENCY_MISMATCH` | misma clave de idempotencia con contenido distinto |
 | `SIGN_MISMATCH` | el signo del monto no corresponde al tipo de asiento |
+| `UNKNOWN_MESSAGE` | tipo de mensaje de sala no cubierto por el contrato |
+| `NOT_CONSENTED` | la telemetría exige un consentimiento explícito del usuario |
+| `DUPLICATE_CHAMPION` | campeón repetido en la selección |
+| `NOT_UNLOCKED` | el campeón elegido no está desbloqueado |
+| `INCOMPLETE_EVENT` | al evento le falta un dato que su tipo exige |
 
 ## Cómo se prueba
 
 `node tools/contracts/t_contract_<schemas|independence|save_compat|economy|telemetry>.js` (ver `RESULTADOS_DE_PRUEBAS.md`). Cada documento de este directorio que cita un código o archivo lo verifica una prueba.
+
+## Contratos de la arquitectura Beta (S0C)
+
+Registro completo con dueño, consumidores, esquema, adaptadores, productor y pruebas: [`contracts/registry.json`](../../contracts/registry.json). Diagrama generado: [`DEPENDENCIAS.md`](DEPENDENCIAS.md).
+
+| Contrato | Área | Dueño | Consumidores | Qué es |
+|---|---|---|---|---|
+| `TelemetryConsent` 1.0.0 | Telemetría y consentimiento | C | D, B | Estado de consentimiento de UN navegador (`granted`/`denied`/`unset`). `granted` exige `source=user_choice` y fecha; un navegador automatizado nunca consiente. **El cliente actual todavía envía salvo que valga `off` (opt-out)** y por eso `fromConsentStorage` lo modela como `unset`, no como consentido |
+| `SkillEvent` 1.0.0 | HUD y eventos de habilidades | D | C | Estado de un botón de habilidad (`cast`, `ready`, `blocked`, `ult_ready`) de un campeón; `blocked` exige motivo, `cast` exige `cooldownMaxMs`. Es la única entrada del HUD y de la telemetría de habilidades |
+| `ChampionSelection` 1.0.0 | Selección de campeones | D | A, B, C | Campeón elegido, hasta 3 aliados sin repetir y los desbloqueados; el elegido debe estar desbloqueado. Los derechos reales los decide el servidor |
+| `ArtAsset` 1.0.0 | Fábrica artística y UI | D | C | Un archivo de arte con ruta bajo `assets/`, formato, tamaño, `sha256`, procedencia y resultado de `pixelDensity`/style gate/emoji-lint; una excepción de densidad exige su motivo. Un activo que falla la puerta se **registra como `fail`**, no se maquilla |
+| `LobbyMessage` 1.0.0 | Lobby y multijugador | **ARQ (solo lectura)** | C, D | Mensajes del protocolo de salas del relay (`create`, `join`, `rooms`, `ping`, `leave` y las respuestas `joined`, `rooms`, `pong`, `error`), validados contra un relay real en proceso. Lo administra el responsable del relay: ningún agente lo modifica. No cubre `msg`, chat ni intercambios |
+
+Los contratos de S0A cubren las áreas **Economía y transacciones** (`GameResult`, `EconomyTransaction`), **Persistencia de usuarios** (`PlayerProfile`) y **Telemetría** (`TelemetryEvent`).
+
+`LobbyMessage` no lleva el campo `version`: versiona el **protocolo** del relay (`PROTOCOL = 1`, `NET_PROTOCOL` del cliente). Se valida con `validate('LobbyMessage', mensaje, { direction: 'c2s' | 's2c' })`.

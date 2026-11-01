@@ -4,13 +4,13 @@
  *   node tools/agents/accept.js --agent A [--entry] [--list]
  *   --entry  solo las puertas de entrada (lo que debe estar verde ANTES de empezar a trabajar)
  *   --list   solo muestra el estado de cada criterio sin ejecutar nada
- * Cada criterio de docs/arquitectura-compartida/agents/<A|B|C>.spec.json tiene un comando. Estados: PASS · FAIL ·
+ * Cada criterio de docs/arquitectura-compartida/agents/<A|B|C|D>.spec.json tiene un comando. Estados: PASS · FAIL ·
  * PENDIENTE (la prueba que lo demuestra todavía no existe: la debe crear el agente) · EXTERNO (necesita infraestructura que el repo no controla).
  * "Hecho" = todos PASS. Un criterio PENDIENTE no cuenta como cumplido. */
 const fs = require('node:fs'), path = require('node:path'), cp = require('node:child_process');
 const ROOT = path.resolve(__dirname, '../..');
 const a = process.argv.slice(2), val = (k, d) => { const i = a.indexOf(k); return i >= 0 ? a[i + 1] : d; };
-const id = val('--agent'); if (!['A', 'B', 'C'].includes(id)) { console.error('uso: accept.js --agent A|B|C [--entry] [--list]'); process.exit(2); }
+const id = val('--agent'); if (!['A', 'B', 'C', 'D'].includes(id)) { console.error('uso: accept.js --agent A|B|C|D [--entry] [--list]'); process.exit(2); }
 const spec = JSON.parse(fs.readFileSync(path.join(ROOT, `docs/arquitectura-compartida/agents/${id}.spec.json`), 'utf8'));
 const sh = cmd => cp.spawnSync('bash', ['-c', cmd], { cwd: ROOT, encoding: 'utf8', maxBuffer: 1 << 27 });
 let bad = 0;
