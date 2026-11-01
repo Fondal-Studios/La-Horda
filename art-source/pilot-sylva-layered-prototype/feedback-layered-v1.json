@@ -1,0 +1,158 @@
+{
+ "verdict": "CORREGIR",
+ "failures": [
+  {
+   "check": "duplicate_pose",
+   "clip": "walk_down",
+   "frames": [
+    25,
+    27
+   ],
+   "detail": "dos cuadros distintos del ciclo son idénticos"
+  },
+  {
+   "check": "ground_line",
+   "clip": "walk_side",
+   "frames": [
+    28
+   ],
+   "detail": "borde inferior [103, 105, 105, 105]; variación 2px"
+  },
+  {
+   "check": "duplicate_pose",
+   "clip": "walk_side",
+   "frames": [
+    29,
+    31
+   ],
+   "detail": "dos cuadros distintos del ciclo son idénticos"
+  },
+  {
+   "check": "duplicate_pose",
+   "clip": "walk_up",
+   "frames": [
+    33,
+    35
+   ],
+   "detail": "dos cuadros distintos del ciclo son idénticos"
+  }
+ ],
+ "repaint": [
+  {
+   "frame": 27,
+   "clip": "walk_down",
+   "region": "full",
+   "issue": "duplicate_pose",
+   "instruction": "Dibujar una pose de paso real (cadera/rodilla/pie en transición, vaivén de capa y arco), no un desplazamiento de 1 px.",
+   "keep": [
+    "identidad",
+    "paleta",
+    "arma"
+   ]
+  },
+  {
+   "frame": 28,
+   "clip": "walk_side",
+   "region": "feet",
+   "issue": "ground_line",
+   "instruction": "Rehacer los pies de este cuadro con la misma línea de suelo que el cuadro de reposo; si se levanta un pie, el otro mantiene el apoyo exacto en la línea base. Para dar peso, bajar el cuerpo 1 px, no el pie.",
+   "keep": [
+    "torso",
+    "arma",
+    "capa",
+    "cara"
+   ]
+  },
+  {
+   "frame": 31,
+   "clip": "walk_side",
+   "region": "full",
+   "issue": "duplicate_pose",
+   "instruction": "Dibujar una pose de paso real (cadera/rodilla/pie en transición, vaivén de capa y arco), no un desplazamiento de 1 px.",
+   "keep": [
+    "identidad",
+    "paleta",
+    "arma"
+   ]
+  },
+  {
+   "frame": 35,
+   "clip": "walk_up",
+   "region": "full",
+   "issue": "duplicate_pose",
+   "instruction": "Dibujar una pose de paso real (cadera/rodilla/pie en transición, vaivén de capa y arco), no un desplazamiento de 1 px.",
+   "keep": [
+    "identidad",
+    "paleta",
+    "arma"
+   ]
+  }
+ ],
+ "info": {
+  "walk_down": {
+   "frames": [
+    24,
+    25,
+    26,
+    27
+   ],
+   "ground_y": [
+    106,
+    105,
+    106,
+    105
+   ],
+   "unique_frames": 3,
+   "foot_mass_asym": [
+    76,
+    59,
+    -12,
+    59
+   ]
+  },
+  "walk_side": {
+   "frames": [
+    28,
+    29,
+    30,
+    31
+   ],
+   "ground_y": [
+    103,
+    105,
+    105,
+    105
+   ],
+   "unique_frames": 3,
+   "foot_mass_asym": [
+    120,
+    102,
+    27,
+    102
+   ]
+  },
+  "walk_up": {
+   "frames": [
+    32,
+    33,
+    34,
+    35
+   ],
+   "ground_y": [
+    106,
+    105,
+    106,
+    105
+   ],
+   "unique_frames": 3,
+   "foot_mass_asym": [
+    -58,
+    -42,
+    10,
+    -42
+   ]
+  }
+ },
+ "visual_review_required": true,
+ "note": "Un PASA_AUTOMATICO no es ACEPTAR: falta revisión visual independiente en el renderer real."
+}

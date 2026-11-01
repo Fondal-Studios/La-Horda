@@ -1,0 +1,1954 @@
+{
+ "segador": {
+  "src": "assets/sprites/champions/segador/v2/atlas.webp",
+  "w": 728,
+  "h": 535,
+  "fw": 91,
+  "fh": 107,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   17,
+   18,
+   19,
+   20
+  ],
+  "walk": [
+   21,
+   22,
+   23,
+   24
+  ],
+  "keys": 15
+ },
+ "musashi": {
+  "src": "assets/sprites/champions/musashi/codex-v1/atlas.png",
+  "w": 768,
+  "h": 2080,
+  "fw": 192,
+  "fh": 160,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   36,
+   37,
+   38,
+   39
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 23
+ },
+ "profeta": {
+  "src": "assets/sprites/champions/profeta/v2/atlas.webp",
+  "w": 744,
+  "h": 665,
+  "fw": 93,
+  "fh": 133,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   17,
+   18,
+   19,
+   20
+  ],
+  "walk": [
+   21,
+   22,
+   23,
+   24
+  ],
+  "keys": 15
+ },
+ "cazadora": {
+  "src": "assets/sprites/champions/cazadora/codex-v1/atlas.png",
+  "w": 768,
+  "h": 2080,
+  "fw": 192,
+  "fh": 160,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   36,
+   37,
+   38,
+   39
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 24
+ },
+ "axiom": {
+  "src": "assets/sprites/champions/axiom/codex-v1/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "nigromante": {
+  "src": "assets/sprites/champions/nigromante/codex-v1/atlas.png",
+  "w": 768,
+  "h": 2080,
+  "fw": 192,
+  "fh": 160,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   36,
+   37,
+   38,
+   39
+  ],
+  "walk": [
+   0,
+   50,
+   1,
+   2,
+   3
+  ],
+  "keys": 24
+ },
+ "nigro_skel": {
+  "src": "assets/sprites/champions/nigromante/skeleton/v2/atlas.webp",
+  "w": 378,
+  "h": 95,
+  "fw": 63,
+  "fh": 95,
+  "cols": 6,
+  "ready": true,
+  "idle": [],
+  "walk": [],
+  "keys": 6
+ },
+ "libertador": {
+  "src": "assets/sprites/champions/libertador/v2/atlas.webp",
+  "w": 824,
+  "h": 784,
+  "fw": 103,
+  "fh": 98,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   34,
+   35,
+   36,
+   37
+  ],
+  "walk": [
+   45,
+   46,
+   47,
+   48
+  ],
+  "keys": 27
+ },
+ "tanque_hurt": {
+  "src": "assets/sprites/champions/tanque/v3/hurt.png",
+  "w": 672,
+  "h": 112,
+  "fw": 112,
+  "fh": 112,
+  "cols": 6,
+  "ready": true,
+  "idle": [],
+  "walk": [],
+  "keys": 4
+ },
+ "tanque_death": {
+  "src": "assets/sprites/champions/tanque/v3/death.png",
+  "w": 448,
+  "h": 112,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [],
+  "walk": [],
+  "keys": 1
+ },
+ "guerrero_death": {
+  "src": "assets/sprites/champions/guerrero/v3/death.png",
+  "w": 448,
+  "h": 112,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [],
+  "walk": [],
+  "keys": 1
+ },
+ "libertador_death": {
+  "src": "assets/sprites/champions/libertador/v2/death.png",
+  "w": 448,
+  "h": 112,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [],
+  "walk": [],
+  "keys": 1
+ },
+ "libertador_motion": {
+  "src": "assets/sprites/champions/libertador/v3/motion.png",
+  "w": 1344,
+  "h": 112,
+  "fw": 112,
+  "fh": 112,
+  "cols": 12,
+  "ready": true,
+  "idle": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 13
+ },
+ "libertador_horse": {
+  "src": "assets/sprites/champions/libertador/v2/horse.webp",
+  "w": 1000,
+  "h": 306,
+  "fw": 125,
+  "fh": 102,
+  "cols": 8,
+  "ready": true,
+  "idle": [],
+  "walk": [],
+  "keys": 6
+ },
+ "ilkan": {
+  "src": "assets/sprites/champions/ilkan/codex-v1/atlas.png",
+  "w": 1536,
+  "h": 1024,
+  "fw": 192,
+  "fh": 128,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "walk": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "keys": 25
+ },
+ "ilkan_colossus": {
+  "src": "assets/sprites/champions/ilkan/v2/colossus.webp",
+  "w": 1184,
+  "h": 544,
+  "fw": 148,
+  "fh": 136,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   20,
+   21
+  ],
+  "walk": [
+   20,
+   21
+  ],
+  "keys": 13
+ },
+ "soporte": {
+  "src": "assets/sprites/champions/soporte/v3/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 29
+ },
+ "skin_manada": {
+  "src": "assets/sprites/champions/cazadora/skins/manada/atlas.webp",
+  "w": 608,
+  "h": 366,
+  "fw": 76,
+  "fh": 61,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   6,
+   0,
+   12,
+   0
+  ],
+  "keys": 25
+ },
+ "skin_errante": {
+  "src": "assets/sprites/champions/musashi/skins/errante/atlas.webp",
+  "w": 608,
+  "h": 396,
+  "fw": 76,
+  "fh": 66,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   6,
+   0,
+   12,
+   0
+  ],
+  "keys": 25
+ },
+ "skin_legion": {
+  "src": "assets/sprites/champions/ilkan/skins/legion/atlas.webp",
+  "w": 1024,
+  "h": 888,
+  "fw": 128,
+  "fh": 111,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   31,
+   32,
+   33
+  ],
+  "walk": [
+   42,
+   43,
+   44,
+   45,
+   46
+  ],
+  "keys": 25
+ },
+ "skin_legion_colossus": {
+  "src": "assets/sprites/champions/ilkan/skins/legion/colossus.webp",
+  "w": 1184,
+  "h": 544,
+  "fw": 148,
+  "fh": 136,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   20,
+   21
+  ],
+  "walk": [
+   20,
+   21
+  ],
+  "keys": 13
+ },
+ "skin_sistema": {
+  "src": "assets/sprites/champions/axiom/skins/sistema/codex-v1/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "skin_profecia": {
+  "src": "assets/sprites/champions/profeta/skins/profecia/atlas.webp",
+  "w": 544,
+  "h": 372,
+  "fw": 68,
+  "fh": 62,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   6,
+   0,
+   7,
+   1
+  ],
+  "keys": 22
+ },
+ "skin_convergencia": {
+  "src": "assets/sprites/champions/mago/skins/convergencia/atlas.webp",
+  "w": 736,
+  "h": 375,
+  "fw": 92,
+  "fh": 75,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   6,
+   0,
+   12,
+   0
+  ],
+  "keys": 28
+ },
+ "skin_marea": {
+  "src": "assets/sprites/champions/segador/skins/marea/atlas.webp",
+  "w": 464,
+  "h": 354,
+  "fw": 58,
+  "fh": 59,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   6,
+   0,
+   12,
+   0
+  ],
+  "keys": 28
+ },
+ "skin_nocturno": {
+  "src": "assets/sprites/champions/guerrero/skins/nocturno/atlas.webp",
+  "w": 448,
+  "h": 342,
+  "fw": 56,
+  "fh": 57,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   6,
+   12,
+   10,
+   16
+  ],
+  "keys": 23
+ },
+ "skin_custodio": {
+  "src": "assets/sprites/champions/soporte/skins/custodio/atlas.webp",
+  "w": 712,
+  "h": 370,
+  "fw": 89,
+  "fh": 74,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   6,
+   0,
+   12,
+   0
+  ],
+  "keys": 22
+ },
+ "brasa": {
+  "src": "assets/sprites/champions/brasa/atlas.webp",
+  "w": 576,
+  "h": 864,
+  "fw": 96,
+  "fh": 96,
+  "cols": 6,
+  "ready": true,
+  "idle": [
+   0,
+   1
+  ],
+  "walk": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "keys": 28
+ },
+ "skin_ultimo_turno": {
+  "src": "assets/sprites/champions/brasa/skins/ultimo_turno/atlas.webp",
+  "w": 576,
+  "h": 864,
+  "fw": 96,
+  "fh": 96,
+  "cols": 6,
+  "ready": true,
+  "idle": [
+   0,
+   1
+  ],
+  "walk": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "keys": 28
+ },
+ "eslabon": {
+  "src": "assets/sprites/champions/eslabon/atlas.webp",
+  "w": 576,
+  "h": 864,
+  "fw": 96,
+  "fh": 96,
+  "cols": 6,
+  "ready": true,
+  "idle": [
+   0,
+   1
+  ],
+  "walk": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "keys": 28
+ },
+ "skin_juramento_roto": {
+  "src": "assets/sprites/champions/eslabon/skins/juramento_roto/atlas.webp",
+  "w": 576,
+  "h": 864,
+  "fw": 96,
+  "fh": 96,
+  "cols": 6,
+  "ready": true,
+  "idle": [
+   0,
+   1
+  ],
+  "walk": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "keys": 28
+ },
+ "morwen": {
+  "src": "assets/sprites/champions/morwen/atlas.webp",
+  "w": 576,
+  "h": 864,
+  "fw": 96,
+  "fh": 96,
+  "cols": 6,
+  "ready": true,
+  "idle": [
+   0,
+   1
+  ],
+  "walk": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "keys": 28
+ },
+ "skin_vidrio_negro": {
+  "src": "assets/sprites/champions/morwen/skins/vidrio_negro/atlas.webp",
+  "w": 576,
+  "h": 864,
+  "fw": 96,
+  "fh": 96,
+  "cols": 6,
+  "ready": true,
+  "idle": [
+   0,
+   1
+  ],
+  "walk": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "keys": 28
+ },
+ "farolero": {
+  "src": "assets/sprites/champions/farolero/atlas.webp",
+  "w": 576,
+  "h": 864,
+  "fw": 96,
+  "fh": 96,
+  "cols": 6,
+  "ready": true,
+  "idle": [
+   0,
+   1
+  ],
+  "walk": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "keys": 28
+ },
+ "skin_lumbre_persistente": {
+  "src": "assets/sprites/champions/farolero/skins/lumbre_persistente/atlas.webp",
+  "w": 576,
+  "h": 864,
+  "fw": 96,
+  "fh": 96,
+  "cols": 6,
+  "ready": true,
+  "idle": [
+   0,
+   1
+  ],
+  "walk": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "keys": 28
+ },
+ "iria": {
+  "src": "assets/sprites/champions/iria/atlas.webp",
+  "w": 576,
+  "h": 864,
+  "fw": 96,
+  "fh": 96,
+  "cols": 6,
+  "ready": true,
+  "idle": [
+   0,
+   1
+  ],
+  "walk": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "keys": 28
+ },
+ "skin_hilo_umbral": {
+  "src": "assets/sprites/champions/iria/skins/hilo_umbral/atlas.webp",
+  "w": 576,
+  "h": 864,
+  "fw": 96,
+  "fh": 96,
+  "cols": 6,
+  "ready": true,
+  "idle": [
+   0,
+   1
+  ],
+  "walk": [
+   2,
+   -4,
+   -5,
+   5
+  ],
+  "keys": 28
+ },
+ "myla": {
+  "src": "assets/sprites/champions/myla/atlas.png",
+  "w": 384,
+  "h": 288,
+  "fw": 96,
+  "fh": 96,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   1,
+   0,
+   2,
+   0
+  ],
+  "keys": 22
+ },
+ "skin_merienda_magica": {
+  "src": "assets/sprites/champions/myla/skins/merienda_magica/atlas.png",
+  "w": 384,
+  "h": 576,
+  "fw": 96,
+  "fh": 96,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   1,
+   0,
+   2,
+   0
+  ],
+  "keys": 28
+ },
+ "myla_berrinche": {
+  "src": "assets/sprites/champions/myla/berrinche.png",
+  "w": 384,
+  "h": 288,
+  "fw": 96,
+  "fh": 96,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 21
+ },
+ "skin_merienda_magica_berrinche": {
+  "src": "assets/sprites/champions/myla/skins/merienda_magica/atlas.png",
+  "w": 384,
+  "h": 576,
+  "fw": 96,
+  "fh": 96,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   12,
+   13,
+   14,
+   15
+  ],
+  "walk": [
+   12,
+   13,
+   14,
+   15
+  ],
+  "keys": 24
+ },
+ "myla_death": {
+  "src": "assets/sprites/champions/myla/v2/death.png",
+  "w": 448,
+  "h": 112,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [],
+  "walk": [],
+  "keys": 1
+ },
+ "ynara": {
+  "src": "assets/sprites/champions/ynara/atlas.png",
+  "w": 384,
+  "h": 576,
+  "fw": 96,
+  "fh": 96,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "skin_santa_paciencia": {
+  "src": "assets/sprites/champions/ynara/skins/santa_paciencia/atlas.png",
+  "w": 384,
+  "h": 576,
+  "fw": 96,
+  "fh": 96,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "skin_baluarte": {
+  "src": "assets/sprites/champions/tanque/skins/baluarte/atlas.webp",
+  "w": 576,
+  "h": 864,
+  "fw": 96,
+  "fh": 96,
+  "cols": 6,
+  "ready": true,
+  "idle": [
+   0,
+   1
+  ],
+  "walk": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "keys": 28
+ },
+ "skin_requiem": {
+  "src": "assets/sprites/champions/nigromante/skins/requiem/atlas.webp",
+  "w": 576,
+  "h": 864,
+  "fw": 96,
+  "fh": 96,
+  "cols": 6,
+  "ready": true,
+  "idle": [
+   0,
+   1
+  ],
+  "walk": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "keys": 29
+ },
+ "skin_granadero": {
+  "src": "assets/sprites/champions/libertador/skins/granadero/atlas.webp",
+  "w": 576,
+  "h": 864,
+  "fw": 96,
+  "fh": 96,
+  "cols": 6,
+  "ready": true,
+  "idle": [
+   0,
+   1
+  ],
+  "walk": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "keys": 38
+ },
+ "skin_granadero_horse": {
+  "src": "assets/sprites/champions/libertador/skins/granadero/horse.webp",
+  "w": 1024,
+  "h": 336,
+  "fw": 128,
+  "fh": 112,
+  "cols": 8,
+  "ready": true,
+  "idle": [],
+  "walk": [],
+  "keys": 6
+ },
+ "skin_quality_solciju": {
+  "src": "assets/sprites/champions/solciju/skins/quality_solciju/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "skin_quality_brakk": {
+  "src": "assets/sprites/champions/brakk/skins/quality_brakk/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "skin_quality_veyra": {
+  "src": "assets/sprites/champions/veyra/skins/quality_veyra/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "skin_quality_morveth": {
+  "src": "assets/sprites/champions/morveth/skins/quality_morveth/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "skin_quality_aelith": {
+  "src": "assets/sprites/champions/aelith/skins/quality_aelith/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "baltra": {
+  "src": "assets/sprites/champions/baltra/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "baltra_set": {
+  "src": "assets/sprites/champions/baltra/skins/baltra_set/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "dariel": {
+  "src": "assets/sprites/champions/dariel/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "dariel_set": {
+  "src": "assets/sprites/champions/dariel/skins/dariel_set/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "maura": {
+  "src": "assets/sprites/champions/maura/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "maura_set": {
+  "src": "assets/sprites/champions/maura/skins/maura_set/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "nahir": {
+  "src": "assets/sprites/champions/nahir/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   0,
+   3
+  ],
+  "keys": 28
+ },
+ "nahir_set": {
+  "src": "assets/sprites/champions/nahir/skins/nahir_set/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "orsa": {
+  "src": "assets/sprites/champions/orsa/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "orsa_set": {
+  "src": "assets/sprites/champions/orsa/skins/orsa_set/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "renko": {
+  "src": "assets/sprites/champions/renko/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "renko_set": {
+  "src": "assets/sprites/champions/renko/skins/renko_set/atlas.png",
+  "w": 448,
+  "h": 1120,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "sira": {
+  "src": "assets/sprites/champions/sira/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "sira_set": {
+  "src": "assets/sprites/champions/sira/skins/sira_set/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "tibor": {
+  "src": "assets/sprites/champions/tibor/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "tibor_set": {
+  "src": "assets/sprites/champions/tibor/skins/tibor_set/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "vesper": {
+  "src": "assets/sprites/champions/vesper/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "vesper_set": {
+  "src": "assets/sprites/champions/vesper/skins/vesper_set/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "zahra": {
+  "src": "assets/sprites/champions/zahra/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "zahra_set": {
+  "src": "assets/sprites/champions/zahra/skins/zahra_set/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "nano_gm": {
+  "src": "assets/sprites/champions/nano_gm/codex-v2/atlas.webp",
+  "w": 1536,
+  "h": 1792,
+  "fw": 192,
+  "fh": 128,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "walk": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "keys": 29
+ },
+ "nano_gm_alt1": {
+  "src": "assets/sprites/champions/nano_gm/skins/nano_gm_alt1/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "facu_gm": {
+  "src": "assets/sprites/champions/facu_gm/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   0,
+   3
+  ],
+  "keys": 28
+ },
+ "facu_gm_alt1": {
+  "src": "assets/sprites/champions/facu_gm/skins/facu_gm_alt1/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   0,
+   3
+  ],
+  "keys": 28
+ },
+ "aurelia": {
+  "src": "assets/sprites/champions/aurelia/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "aurelia_alt1": {
+  "src": "assets/sprites/champions/aurelia/skins/aurelia_alt1/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "aurelia_alt2": {
+  "src": "assets/sprites/champions/aurelia/skins/aurelia_alt2/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "khepri": {
+  "src": "assets/sprites/champions/khepri/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   0,
+   3
+  ],
+  "keys": 28
+ },
+ "khepri_alt1": {
+  "src": "assets/sprites/champions/khepri/skins/khepri_alt1/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "khepri_alt2": {
+  "src": "assets/sprites/champions/khepri/skins/khepri_alt2/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   0,
+   3
+  ],
+  "keys": 28
+ },
+ "velmira": {
+  "src": "assets/sprites/champions/velmira/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "velmira_alt1": {
+  "src": "assets/sprites/champions/velmira/skins/velmira_alt1/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "velmira_alt2": {
+  "src": "assets/sprites/champions/velmira/skins/velmira_alt2/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "vhal": {
+  "src": "assets/sprites/champions/vhal/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "vhal_alt1": {
+  "src": "assets/sprites/champions/vhal/skins/vhal_alt1/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "vhal_alt2": {
+  "src": "assets/sprites/champions/vhal/skins/vhal_alt2/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "bront": {
+  "src": "assets/sprites/champions/bront/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "bront_alt1": {
+  "src": "assets/sprites/champions/bront/skins/bront_alt1/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "bront_alt2": {
+  "src": "assets/sprites/champions/bront/skins/bront_alt2/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "oriel": {
+  "src": "assets/sprites/champions/oriel/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "oriel_alt1": {
+  "src": "assets/sprites/champions/oriel/skins/oriel_alt1/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "oriel_alt2": {
+  "src": "assets/sprites/champions/oriel/skins/oriel_alt2/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "saelis": {
+  "src": "assets/sprites/champions/saelis/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "saelis_alt1": {
+  "src": "assets/sprites/champions/saelis/skins/saelis_alt1/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "saelis_alt2": {
+  "src": "assets/sprites/champions/saelis/skins/saelis_alt2/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "solciju": {
+  "src": "assets/sprites/champions/solciju/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "brakk": {
+  "src": "assets/sprites/champions/brakk/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "veyra": {
+  "src": "assets/sprites/champions/veyra/codex-v1/atlas.png",
+  "w": 1536,
+  "h": 2016,
+  "fw": 192,
+  "fh": 144,
+  "cols": 8,
+  "ready": true,
+  "idle": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "walk": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "keys": 29
+ },
+ "morveth": {
+  "src": "assets/sprites/champions/morveth/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ },
+ "aelith": {
+  "src": "assets/sprites/champions/aelith/atlas.png",
+  "w": 448,
+  "h": 1008,
+  "fw": 112,
+  "fh": 112,
+  "cols": 4,
+  "ready": true,
+  "idle": [
+   0
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "keys": 28
+ }
+}
