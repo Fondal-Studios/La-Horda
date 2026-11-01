@@ -36,3 +36,8 @@ Auditoría (inventory.js) → Diseño (dossiers) → Producción (**bloqueada**)
 
 ## Siguiente paso necesario (decisión del dueño)
 Pintar los assets de las 3 skins con el flujo de `docs/production/PAINTER.md` / `tools/factory`, llenar `manifests/*.json` y pasar a `READY_FOR_QA`. Hasta entonces el catálogo no ofrece ninguna Legendaria.
+
+## Coordinación con S0C (verificado al cierre)
+- Existe `claude/s0c-arquitectura-beta` y la rama de integración `beta/integracion` (con S0A ya dentro). Este PR apunta a **`beta/integracion`**, nunca a `main`.
+- `ownership.json` de S0C define agentes A (economía), B (persistencia), C (telemetría/QA) y D (UI/arte); **no existe un paquete "I"**: los archivos de este PR (`js/systems/cosmetic-catalog.js`, `tools/skin-factory/**`, `docs/skin-factory/**`) son nuevos y no pisan a nadie, pero el arquitecto debe asignarles dueño. Afinidad natural: agente D; el contrato `ArtAsset`/`ChampionSelection` de S0C no se usó todavía (el catálogo lee `CROMA_SKINS` directamente) → alinear cuando S0C se integre.
+- No se corrió `tools/agents/check-diff.js` (no está en esta base). Pendiente de correr al integrar.
