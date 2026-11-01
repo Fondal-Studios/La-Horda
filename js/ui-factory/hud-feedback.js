@@ -44,6 +44,8 @@
   function fx(el){
     var f = el.querySelector(":scope > .uf-fx");
     if(!f){ f = document.createElement("i"); f.className = "uf-fx"; f.setAttribute("aria-hidden","true"); el.appendChild(f); }
+    if(!el.querySelector(":scope > .uf-spr")){ var sp = document.createElement("b"); sp.className = "uf-spr"; sp.setAttribute("aria-hidden","true"); el.appendChild(sp); }
+    if(el.id==="btn-ult" && !el.querySelector(":scope > .uf-cd")){ var cd = document.createElement("b"); cd.className = "uf-cd"; cd.setAttribute("aria-hidden","true"); el.appendChild(cd); }
     return f;
   }
   function restart(el, cls, ms){
@@ -100,8 +102,9 @@
   }
   function confirm(id){
     var el = btn(id), L = live[id]; if(!el || !L || !L.pending) return;
-    L.pending = null; L.lastConfirm = now(); metrics.confirms++;
-    restart(el, "uf-confirm", CONFIRM_MS);
+    var tn = now(); L.pending = null; L.lastConfirm = tn; metrics.confirms++;
+    // el Ataque confirma en cada golpe: la animación no se reinicia mientras la anterior sigue corriendo
+    if(!(id==="btn-basic" && L.lastVis && tn - L.lastVis < CONFIRM_MS + 40)){ L.lastVis = tn; restart(el, "uf-confirm", CONFIRM_MS); }
     emit("uf:confirm", {id:id});
   }
   function releaseAll(){ for(var id in live){ live[id].src = {}; clearTimeout(live[id].holdT); var el = btn(id); if(el) el.classList.remove("uf-press","uf-hold"); } }
@@ -130,7 +133,23 @@
   /* ---- confirmación de ejecución: verdad de terreno leída del juego (cooldown iniciado, carga gastada, básico disparado) ----
      La presión pendiente vive mientras el dedo/tecla siguen abajo y hasta CONFIRM_WINDOW_MS después de soltar. */
   function watchBtns(){ IDS.forEach(function(id){ var el = btn(id); if(el && !el.__ufW){ el.__ufW = 1; decorate(el); } }); }
-  var lastBcd = 0;
+  var lastBcd = 0, ultTotal = 1, ultPrev = 0, ultSec = -1, ultQ = "";
+  /* COOLDOWN DE LA DEFINITIVA (solo lectura de player.ultCd): barrido radial + segundos sobre el botón, como las habilidades 1-3 */
+  function ultCooldown(){
+    var el = btn("btn-ult"), p = pl(); if(!el || !p) return;
+    var cd = p.ultCd||0;
+    if(cd > ultPrev + 50) ultTotal = cd;          // empezó un cooldown nuevo: su duración total
+    ultPrev = cd;
+    var on = cd > 0 && playing();
+    if(on !== el.classList.contains("uf-ultcd")) el.classList.toggle("uf-ultcd", on);
+    if(!on){ ultSec = -1; return; }
+    ensureFx(el);
+    var q = Math.max(0, Math.min(1, cd/Math.max(1, ultTotal))).toFixed(2);
+    if(q !== ultQ){ ultQ = q; el.style.setProperty("--ufcd", q); }
+    var sec = Math.ceil(cd/1000);
+    if(sec !== ultSec){ ultSec = sec; var n = el.querySelector(":scope > .uf-cd"); if(n) n.textContent = sec; }
+  }
+  function ensureFx(el){ if(!el.querySelector(":scope > .uf-cd")) fx(el); }
   function frame(){
     var t = now();
     for(var id in live){
@@ -142,6 +161,7 @@
     var B = live["btn-basic"], c = basicCd();
     if(B && Object.keys(B.src).length && c>lastBcd+1 && (!B.lastConfirm || t-B.lastConfirm>120)){ B.pending = B.pending || {t:t}; confirm("btn-basic"); B.pending = {t:t}; }
     lastBcd = c;
+    ultCooldown();
     requestAnimationFrame(frame);
   }
   /* accesibilidad: rol, nombre y aria-disabled (solo atributos, sin tocar el juego) */

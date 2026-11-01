@@ -1,0 +1,28 @@
+/* css/ui-factory/hud-layout.css — UI Factory · contrato UF-LAYOUT v1.
+   (1) Botón de Ataque más grande (72 → 92 px) y desplazamiento de los vecinos para no solaparse;
+   (2) pantalla limpia en Guerra de Cristales y Coliseo (body.lanes-on): se oculta lo redundante y se reduce lo secundario.
+   Solo posiciones/tamaños/visibilidad; no toca reglas, ids ni handlers. Especificidad con #controls #skillzone para ganar a hud.css/controls.css. */
+#controls #skillzone .ability-btn.basic{ width:92px; height:92px; right:calc(12px + env(safe-area-inset-right,0px)); bottom:calc(10px + env(safe-area-inset-bottom,0px)); }
+#controls #skillzone .ability-btn.basic .ico .ico-img{ width:2.1em; height:2.1em; }
+#controls #skillzone .ability-btn.s1{ right:calc(116px + env(safe-area-inset-right,0px)); }
+#controls #skillzone .ability-btn.s2{ right:calc(158px + env(safe-area-inset-right,0px)); }
+#controls #skillzone .ability-btn.s3{ right:calc(116px + env(safe-area-inset-right,0px)); }
+#controls #skillzone .ability-btn.emerg, #controls #skillzone .ability-btn.pact{ right:calc(178px + env(safe-area-inset-right,0px)); }
+/* modo zurdo: mismo desplazamiento espejado */
+body.lefty #controls #skillzone .ability-btn.basic{ right:auto; left:calc(12px + env(safe-area-inset-left,0px)); }
+body.lefty #controls #skillzone .ability-btn.s1, body.lefty #controls #skillzone .ability-btn.s3{ right:auto; left:calc(116px + env(safe-area-inset-left,0px)); }
+body.lefty #controls #skillzone .ability-btn.s2{ right:auto; left:calc(158px + env(safe-area-inset-left,0px)); }
+body.lefty #controls #skillzone .ability-btn.emerg, body.lefty #controls #skillzone .ability-btn.pact{ right:auto; left:calc(178px + env(safe-area-inset-left,0px)); }
+
+/* ---- pantalla limpia en modos competitivos ---- */
+body.lanes-on #hud #goal-chip{ display:none; }                 /* el objetivo ya está en el marcador y en la ficha de arena */
+body.lanes-on #hud #ult-meter{ display:none; }                 /* redundante: el anillo y el cooldown van en el propio botón */
+body.lanes-on #mute-btn{ display:none; }                        /* el sonido se cambia desde Pausa */
+body.lanes-on .lanes-hud .ln-feed{ opacity:.8; }
+body.lanes-on .lanes-hud .ln-rival{ left:calc(124px + env(safe-area-inset-left,0px)); padding:2px; opacity:.88; }
+body.lanes-on .lanes-hud .ln-rival canvas{ width:132px; height:99px; }
+body.lanes-on .lanes-hud .ln-horde{ display:none; }
+body.lanes-on .lanes-hud .ln-chip{ min-height:44px; padding:3px 10px; }
+body.lanes-on .lanes-hud .ln-recall{ min-height:44px; left:calc(50% + 70px); }
+body.lanes-on #hud #party .ally-row{ opacity:.9; }
+body.lanes-on .lanes-hud .ln-note{ top:calc(88px + env(safe-area-inset-top,0px)); font-size:14px; }
