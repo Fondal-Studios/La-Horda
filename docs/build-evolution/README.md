@@ -63,7 +63,7 @@ El hash de los datos va dentro de `sim-results.json`: si cambiás el balance, `t
   <script src="js/systems/build-synergy.js"></script>
   ```
   Las pruebas inyectan esos dos scripts; sin ellos el juego es idéntico al actual.
-- **Cooperativo**: el anfitrión valida y aplica (`syn:` pasa `netHostBuffPicked` vía `boonParseOpt`). **Pendiente (dueño de `js/net/**`)**: replicar `h.synergy` en el snapshot; hoy el invitado no ve el pip/tooltip de su rama. No probado con dispositivos reales.
+- **Cooperativo**: el anfitrión valida y aplica (`syn:` pasa `netHostBuffPicked` vía `boonParseOpt`). **Corregido en S0D:** `h.synergy` YA viaja en el snapshot (`_netDeltaOf` copia toda clave de héroe fuera de `NET_SKIP_KEYS`); la afirmación previa de que no se replicaba era una suposición sin verificar. Ahora hay prueba (`t_synergy_runtime.js`). Sigue sin probarse con dos clientes reales.
 - **Horda Infinita**: usa el mismo `boonBuildOffers`; cubierto por la oferta, no por una corrida de modo completa.
 - No toca relay, persistencia, economía ni `save`. La rama dura la incursión (como los refuerzos) y no se guarda.
 - **S0C** (`claude/s0c-arquitectura-beta`) y la rama `beta/integracion` existen: este PR apunta a **`beta/integracion`**, nunca a `main`. S0C modifica `_evoActive` en `skill-evolution.js` (permite `opts.evoHit`); mi motor usa `fromProc:true` sin `evoHit`, por lo que sigue excluido y es compatible. **No se ejecutaron las pruebas sobre una base con S0C aplicado** (pendiente al integrar). `ownership.json` de S0C no define un paquete "G": estos archivos son nuevos (`js/data|systems/build-synergy.js`, `tools/build-evolution/**`, `docs/build-evolution/**`) y requieren dueño asignado por el arquitecto. `tools/agents/check-diff.js` no está en esta base: pendiente.

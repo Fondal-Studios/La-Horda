@@ -80,6 +80,8 @@ const {openGame}=require('./lib');
   setup('tanque',5);const b0=synPower(player,SYN_BY_ID.tq_ariete);chk(b0===1,'sin set: potencia x1');
   const _sn=setN;setN=(h,id)=>id==='baluarte'?2:_sn(h,id);const b2=synPower(player,SYN_BY_ID.tq_ariete);setN=_sn;chk(Math.abs(b2-1.2)<1e-9,'2 piezas del set: x1.2');
   const _s4=setN;setN=()=>6;chk(synPower(player,SYN_BY_ID.tq_ariete)<=SYN_CFG.setCap,'potencia con tope');setN=_s4;
+  // ---- cooperativo: h.synergy viaja en el snapshot (el delta de héroe copia toda clave que no esté en NET_SKIP_KEYS) ----
+  setup('tanque',5);player.synergy={1:'tq_ariete'};{const d=_netDeltaOf({},player,true);chk(d.synergy&&d.synergy[1]==='tq_ariete','cooperativo: h.synergy se replica en el snapshot del héroe');chk(!NET_SKIP_KEYS.has('synergy'),'synergy no está en NET_SKIP_KEYS');}
   // ---- los hitos existentes de skill-evolution siguen intactos ----
   setup('mago',5);chk(typeof skillEvoLines==='function'&&skillEvoLines('mago',CLASSES.mago.skills[1],1).length===4,'las 4 líneas de evolución originales siguen');
   chk(skillEvoHTML('mago',CLASSES.mago.skills[1],1,5).includes('Rama a elegir'),'panel muestra la rama a elegir');
