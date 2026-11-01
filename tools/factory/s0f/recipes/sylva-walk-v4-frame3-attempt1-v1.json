@@ -1,0 +1,106 @@
+{
+  "schema": "fondal.art-recipe-evidence.v1",
+  "id": "sylva-walk-v4-frame3-attempt1-v1",
+  "recipeId": "controlled-walk-frame-v4",
+  "recipeRelationship": "Executed isolated pose probe failed visual review; no paid retry or new generation method authorized by this evidence.",
+  "champion": "cazadora",
+  "skin": null,
+  "clip": "walk_down",
+  "frames": [
+    3
+  ],
+  "status": "technical-validated-visual-rejected",
+  "history": [
+    "attempted",
+    "technical-validated",
+    "visual-rejected",
+    "paid-generation-stopped"
+  ],
+  "approved": false,
+  "integrated": false,
+  "proven": false,
+  "provider": "runway-mcp",
+  "model": "nano-banana-2",
+  "taskId": "5596d6a0-2019-490a-90ec-fa7f217d36f7",
+  "cost": {
+    "unit": "external-credits",
+    "observed": 7,
+    "balanceBefore": 479,
+    "balanceAfter": 472,
+    "cumulativePilotNetCredits": 28,
+    "apiCents": null
+  },
+  "scope": {
+    "generatedAtlasFrames": 1,
+    "atlasCells": 52,
+    "generatedWalkFrames": 1,
+    "walkFrames": 4,
+    "completeAnimation": false,
+    "completeChampion": false
+  },
+  "technical": {
+    "state": "VALIDATED",
+    "score": 91.7,
+    "coverageGeneratedPct": 1.9,
+    "atlasProduced": true,
+    "evaluationProduced": true,
+    "paletteIntersection": 0.408,
+    "paletteMinimum": 0.45,
+    "paletteWarningSeverity": "major",
+    "motionAssessed": false,
+    "motionCheckLimitation": "Evaluator reports true because fewer than two generated frames skips movement assessment; not animation proof."
+  },
+  "promptSha256": "f6e51aad079fd1791321d44e03cd74c8e9cc173ef2e147851741b3746a87a109",
+  "submittedPromptSha256": "11df31d3a33f95b368c0f7045e6cc84362fa519b6a43914edc85a5c381ea1d5b",
+  "referencesSha256": [
+    "d85c45217e2a220f9290c729d318b6ce7380b3aef974fd4190d8f7f20c37569e",
+    "2faaf5df946ffaf35fcbe5e89461aad8e55c38ea5f6315964ebbcc96c790540f"
+  ],
+  "output": {
+    "sha256": "7124db9934c469b48abaff698ed516ee73f84b82b3344dc05e6b615814515a49",
+    "retention": "Original pixels remain in local pilot archive; library stores hashes and review evidence."
+  },
+  "evidence": {
+    "evaluation.json": {
+      "path": "docs/art-factory/recipe-evidence/sylva-v4-frame3-attempt1-evaluation.json",
+      "sha256": "d283d2094efdd08c89fa097722950f8dfb684944aa137aab2005c1ce67431f5f"
+    },
+    "external-credits.json": {
+      "path": "docs/art-factory/recipe-evidence/sylva-v4-frame3-attempt1-external-credits.json",
+      "sha256": "8c21ea17bc5b41a68dc064a242f37089ff9dad328c567ca2abd06de43be82ccc"
+    },
+    "visual-review.json": {
+      "path": "docs/art-factory/recipe-evidence/sylva-v4-frame3-attempt1-visual-review.json",
+      "sha256": "1b5f916c1a9446dfb91dfd0c3ecd8dcd7dfa2f02f1a0a7903c4b5eb87eee17fd"
+    },
+    "state.json": {
+      "path": "docs/art-factory/recipe-evidence/sylva-v4-frame3-attempt1-state.json",
+      "sha256": "a273140aa6ae2f519d76d431c1cdafce232ae8d9529dba7548565305d9c155e3"
+    }
+  },
+  "visual": {
+    "result": "REJECTED_VISUAL",
+    "requestedPose": "SCREEN-left knee lifted; SCREEN-right support",
+    "observedPose": "SCREEN-right knee lifted; SCREEN-left support",
+    "requestedMinimumMarginPct": 20,
+    "observedMarginsPct": {
+      "left": 13,
+      "right": 3,
+      "top": 12.8,
+      "bottom": 2
+    },
+    "marginMeasurementProvenance": "Parent supplied visual measurement; approximate percentages, not evaluator output."
+  },
+  "lessons": [
+    "Reference conditioning is not a true pose constraint. A deterministic guide did not guarantee the requested leg geometry.",
+    "One technically accepted frame cannot establish gait or animation validity.",
+    "A numeric pass with a major palette warning is not artistic approval.",
+    "Do not mirror the whole character to repair the legs: weapon hand and identity must remain fixed."
+  ],
+  "paidGenerationStatus": "STOPPED_BY_PARENT",
+  "requiredNextMethod": [
+    "Research constrained layered sprite authoring or an actually masked/pose-controlled backend.",
+    "Preserve existing outputs and immutable recipes as failed experimental evidence.",
+    "No further paid generation until parent authorizes a new direction."
+  ]
+}

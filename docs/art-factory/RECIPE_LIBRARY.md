@@ -42,6 +42,16 @@ El fondo verde plano mejoró y es recortable; esta vez **no** falló por damero.
 
 Cambio de método propuesto, todavía no activado ni autorizado por este registro: dejar de retocar solamente el texto de tiras de cuatro cuadros y probar una pose aislada, guiada, con la pierna opuesta y márgenes generosos. Verificar primero que el modelo resuelve esa pose. No espejar todo el personaje ni cortar siluetas superpuestas en silencio. Se preservan los intentos y sus hashes; **no se activa una receta nueva ni se dispara otra llamada paga**.
 
+## Aprendizaje conservado: receta v4, cuadro 3, intento 1
+
+`recipes/sylva-walk-v4-frame3-attempt1-v1.json` registra la tarea `5596d6a0-2019-490a-90ec-fa7f217d36f7`, `nano-banana-2`: **7 créditos observados** (479 → 472), **28 netos acumulados** en los cuatro pilotos con salida. Se conservan copias con hashes de evaluación, créditos, revisión visual y estado; las versiones anteriores no se modifican.
+
+Se generó **un solo cuadro: 1/52 celdas del atlas y 1/4 cuadros de `walk_down`**, no una animación ni un campeón completos. El puntaje técnico fue **91,7**, con advertencia mayor de paleta (intersección 0,408 < 0,45). El control de movimiento figura verdadero porque se omite cuando hay menos de dos cuadros generados: **no es una validación de movimiento**. El estado automático `VALIDATED` se conserva literalmente, junto al **rechazo visual**, sin confundirlos ni alterar la evidencia.
+
+La guía y el texto exigían rodilla izquierda de pantalla levantada y apoyo derecho; la salida hizo lo contrario. Tampoco respetó el margen mínimo del 20 %: la revisión del padre observó aproximadamente 13 % izquierdo, 3 % derecho, 12,8 % superior y 2 % inferior. No hubo aprobación ni integración.
+
+**Lección: condicionar con una referencia no equivale a imponer una restricción real de pose.** Incluso una guía geométrica determinista puede ser ignorada. Se detienen las pruebas pagas basadas en reformular instrucciones. La siguiente investigación es autoría por capas con geometría controlada o un backend con restricciones reales de máscara/pose; no se cambia el método ejecutable en este registro ni se autoriza otro gasto. No espejar el personaje entero para corregir las piernas: alteraría la mano del arma y la identidad.
+
 ## Estados y promoción
 
 Evidencia: `attempted` → `technical-validated` → `visual-rejected` **o** aprobación visual independiente. `approved` requiere además las verificaciones de runtime; `integrated` exige autorización y evidencia del cambio en main. Ningún puntaje técnico, archivo de plantilla o declaración de quien generó la imagen concede esas aprobaciones.

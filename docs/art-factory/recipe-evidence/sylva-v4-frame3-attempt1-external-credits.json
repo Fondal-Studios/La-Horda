@@ -1,0 +1,32 @@
+{
+  "schema": "fondal.external-credits.v1",
+  "sourcePoolId": "runway-mcp-mariano-personal",
+  "manifestSha256": "e9a67040796720023847c350a1d22e68118ceb671fdf6f044996c19f947f8c69",
+  "provenance": "Supplied external tool evidence, explicitly reviewed for import; not cryptographically authenticated by this module.",
+  "review": {
+    "status": "reviewed-for-import",
+    "reviewer": "parent-agent-tool-evidence-review",
+    "evidence": "Parent verified task5596d6a0-2019-490a-90ec-fa7f217d36f7 exact962prompt/refs, nano2 1K1:1,479to472credits. Provenance only NOT visual approval; singleframe is not animation validation."
+  },
+  "outputs": [
+    {
+      "jobId": "walk_down-frame-3",
+      "provider": "runway",
+      "model": "nano-banana-2",
+      "taskId": "5596d6a0-2019-490a-90ec-fa7f217d36f7",
+      "toolEvidence": "Parent MCPsuccess and walk_down-v4-frame3-attempt1.json",
+      "observedCredits": 7,
+      "balanceBefore": 479,
+      "balanceAfter": 472,
+      "sha256": "7124db9934c469b48abaff698ed516ee73f84b82b3344dc05e6b615814515a49",
+      "promptSha256": "f6e51aad079fd1791321d44e03cd74c8e9cc173ef2e147851741b3746a87a109",
+      "submittedPromptSha256": "11df31d3a33f95b368c0f7045e6cc84362fa519b6a43914edc85a5c381ea1d5b",
+      "referencesSha256": [
+        "d85c45217e2a220f9290c729d318b6ce7380b3aef974fd4190d8f7f20c37569e",
+        "2faaf5df946ffaf35fcbe5e89461aad8e55c38ea5f6315964ebbcc96c790540f"
+      ]
+    }
+  ],
+  "creditsKnown": true,
+  "observedCreditsTotal": 7
+}
