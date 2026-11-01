@@ -10,15 +10,16 @@ async function run(base, flag) {
   const ctx = await browser.newContext({ viewport: { width: 844, height: 390 } });
   await ctx.addInitScript((seed) => {
     window.__campaignMode = true;
-    let vt = 1000; performance.now = () => vt; window.__adv = d => { vt += d; };
+    let vt = 1000; performance.now = () => vt; Date.now = () => 1.7e12 + vt; window.__adv = d => { vt += d; };
     let n = seed | 0 || 1; Math.random = () => { n ^= n << 13; n ^= n >>> 17; n ^= n << 5; return (n >>> 0) / 4294967296; };
-    window.__rngState = () => n;
+    window.__rngState = () => n; window.__reseed = v => { n = v | 0 || 1; };
   }, SEED);
   const page = await ctx.newPage(); const errors = []; page.on('pageerror', e => errors.push(e.message));
   await page.goto(base + '/index.html?beta=' + flag, { waitUntil: 'load', timeout: 180000 });
   await ready(page);
   await page.addScriptTag({ path: ROOT + '/tools/playtest/autopilot.js' });
-  const out = await page.evaluate((secs) => {
+  const out = await page.evaluate(([secs, seed]) => {
+    __reseed(seed); // el título consume Math.random con tiempos reales antes de empezar: se re-siembra al arrancar
     for (const c of Object.values(save.champions)) c.unlocked = true;
     selectedClass = 'cazadora'; currentArena = 'bosque'; startRun(1);
     __AP.on = true; __AP.skill = 0.9; __AP.reaction = 250;
@@ -35,7 +36,7 @@ async function run(base, flag) {
     }
     return { state, kills, level: runLevel, hp: Math.round(player.hp * 100) / 100, alive: player.alive, dmg: Math.round((player.stats.dmgDealt || 0) * 100) / 100,
       hits: player.stats.abilityHits, loot: groundLoot.length, rng: __rngState(), drawn, betaStats: typeof BETA !== 'undefined' ? BETA.stats : null, betaOn: typeof BETA !== 'undefined' ? BETA.on : null };
-  }, SECS);
+  }, [SECS, SEED]);
   await browser.close();
   return { ...out, errors };
 }

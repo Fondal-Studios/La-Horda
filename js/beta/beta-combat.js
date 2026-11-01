@@ -167,10 +167,10 @@
       const p = 1 - B.ult.t/B.ult.dur, inn = ease(p/0.14), out = 1 - ease((p-0.55)/0.45), k = Math.min(inn, out);
       const rgb = B.ult.rgb;
       const g = ctx.createRadialGradient(W/2, H/2, H*0.25, W/2, H/2, Math.hypot(W, H)*0.55);
-      g.addColorStop(0, `rgba(${rgb},0)`); g.addColorStop(1, `rgba(${rgb},${0.38*k})`);
+      g.addColorStop(0, `rgba(${rgb},0)`); g.addColorStop(1, `rgba(${rgb},${0.3*k})`);
       ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
       if(!betaReduceMotion()){
-        ctx.strokeStyle = `rgba(255,255,255,${0.2*k})`; ctx.lineWidth = 1.5; ctx.beginPath();
+        ctx.strokeStyle = `rgba(255,255,255,${0.12*k})`; ctx.lineWidth = 1.5; ctx.beginPath();
         const sp = player && typeof worldToScreen==="function" ? worldToScreen(player.x, player.y) : {x:W/2, y:H/2};
         for(let i=0;i<22;i++){
           const a = i*0.2856 + Math.sin(i*12.9898)*0.08, r0 = H*(0.34 + 0.1*((i*37)%7)/7) + p*H*0.25, r1 = r0 + H*(0.12 + 0.08*((i*53)%5)/5);
@@ -194,7 +194,7 @@
     }
     // ---- caída del jugador: se desatura y se oscurece ----
     if(B.dead.t > 0){
-      const p = 1 - B.dead.t/B.dead.dur, k = ease(p/0.25)*(1 - ease((p-0.8)/0.2)*0.4);
+      const p = 1 - B.dead.t/B.dead.dur, k = ease(p/0.2)*(1 - ease((p-0.25)/0.4)*0.6); // se aclara tras el primer golpe: no tapa el cartel «Caíste»
       ctx.globalCompositeOperation = "saturation"; ctx.fillStyle = `rgba(128,128,128,${0.9*k})`; ctx.fillRect(0, 0, W, H);
       ctx.globalCompositeOperation = "source-over";
       const g = ctx.createRadialGradient(W/2, H/2, H*0.2, W/2, H/2, Math.hypot(W, H)*0.55);
