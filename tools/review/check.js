@@ -17,7 +17,7 @@ const fs = require('node:fs'), path = require('node:path');
 const ROOT = path.resolve(__dirname, '../..');
 const ORDER = ['produccion', 'qa', 'arquitectura', 'staging', 'aprobacion'];
 const ROLE = { produccion: ['agent'], qa: ['qa'], arquitectura: ['arquitecto'], staging: ['qa', 'integrador'], aprobacion: ['director'] };
-const AGENT_BRANCH = /^claude\/s[1-4]-/;
+const AGENT_BRANCH = /^(claude\/|feature\/beta-)/;
 const isAgentId = id => /^(agente|claude|bot)[-_]/i.test(String(id));
 function validateRecord(rec, ctx = {}){
   const problems = [], mode = ctx.mode || 'merge', directors = ctx.directors || [];

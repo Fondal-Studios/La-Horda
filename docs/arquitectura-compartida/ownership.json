@@ -179,6 +179,63 @@
         "C": "eventos SkillEvent y ChampionSelection para la telemetría (con consentimiento)",
         "A": "ChampionSelection para validar derechos de campeón en el servidor"
       }
+    },
+    "G": {
+      "name": "Build Evolution (ramas de evolución)",
+      "branchPrefix": "feature/beta-build-evolution",
+      "allowed": [
+        "js/data/build-synergy.js",
+        "js/systems/build-synergy.js",
+        "tools/build-evolution/**",
+        "docs/build-evolution/**"
+      ],
+      "forbiddenExceptions": [
+        "js/data/build-synergy.js",
+        "js/systems/build-synergy.js"
+      ],
+      "deny": [],
+      "readOnly": [
+        "js/systems/skill-evolution.js",
+        "js/systems/boons.js",
+        "js/data/boons.js",
+        "js/net/**",
+        "contracts/v1/**"
+      ],
+      "ownsContracts": [],
+      "dependsOn": [
+        "contracts/v1"
+      ],
+      "providesTo": {
+        "integrador": "2 líneas <script> para index.html, pedidas en docs/arquitectura-compartida/INDEX_HTML.md"
+      }
+    },
+    "I": {
+      "name": "Premium Skin Factory (catálogo cosmético)",
+      "branchPrefix": "feature/beta-premium-skins",
+      "allowed": [
+        "js/systems/cosmetic-catalog.js",
+        "tools/skin-factory/**",
+        "docs/skin-factory/**"
+      ],
+      "forbiddenExceptions": [
+        "js/systems/cosmetic-catalog.js"
+      ],
+      "deny": [],
+      "readOnly": [
+        "js/assets/*-meta.js",
+        "js/data/pricing.js",
+        "server/**",
+        "assets/**",
+        "contracts/v1/**"
+      ],
+      "ownsContracts": [],
+      "dependsOn": [
+        "contracts/v1"
+      ],
+      "providesTo": {
+        "D": "catálogo de lectura de CROMA_SKINS (sin escribir assets)",
+        "integrador": "1 línea <script> para index.html"
+      }
     }
   },
   "shared": {
@@ -191,7 +248,7 @@
     },
     "index.html": {
       "owner": "Integrador",
-      "rule": "Ningún paquete lo toca: los contratos son solo de servidor y no agregan scripts."
+      "rule": "Ningún paquete edita index.html. Cada paquete pide sus líneas <script>/<link> en docs/arquitectura-compartida/INDEX_HTML.md; el integrador las aplica en un PR propio, en el orden de carga indicado, y corre la regresión."
     },
     "reviews/**": {
       "owner": "arquitecto/qa/director",

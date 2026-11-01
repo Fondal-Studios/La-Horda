@@ -8,7 +8,7 @@ name: QA regresion central
 # - Pruebas del nivel "external" (relay real, Postgres) NO corren aca: dependen de infraestructura que el repositorio no controla.
 on:
   pull_request:
-    paths: ['js/**', 'css/**', 'index.html', 'server/**', 'contracts/**', 'tools/**', 'tests/**', '.github/workflows/qa-regresion.yml', 'docs/arquitectura-compartida/ownership.json']
+    paths: ['js/**', 'css/**', 'index.html', 'server/**', 'contracts/**', 'tools/**', 'tests/**', '.github/workflows/qa-regresion.yml', 'docs/**', 'reviews/**']
   push:
     branches: ['beta/**']
     paths: ['js/**', 'css/**', 'index.html', 'server/**', 'contracts/**', 'tools/**', 'tests/**', 'reviews/**', '.github/workflows/qa-regresion.yml']
