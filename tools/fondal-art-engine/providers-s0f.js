@@ -102,6 +102,7 @@ class RunwayProvider {
     const refs = job.references.map((r, i) => { const uri = 'data:image/' + (r.endsWith('.jpg') ? 'jpeg' : 'png') + ';base64,' + fs.readFileSync(r).toString('base64');
       if (uri.length > 5 * 1024 * 1024) throw new Error('referencia > 5 MB como data URI (límite de Runway): reducirla antes de enviar'); return {uri, tag: 'ref' + (i + 1)}; });
     const prompt = job.prompt + ' ' + refs.map(r => '@' + r.tag).join(' ') + ' (referencias de identidad y de poses).';
+    if (typeof job.prompt !== 'string' || !job.prompt.trim() || prompt.length > 1000 || refs.length < 1 || refs.length > 3) throw new Blocked('BLOCKED_CONTRACT', 'Runway requiere promptText 1..1000 unidades UTF-16 y 1..3 referencias; no se truncó ni envió el pedido');
     const signal = AbortSignal.timeout(this.timeoutMs), headers = {'content-type': 'application/json', authorization: 'Bearer ' + key, 'x-runway-version': '2024-11-06'};
     let submittedHere = false;
     let journal = this.guard.request(ck);

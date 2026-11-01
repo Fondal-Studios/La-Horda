@@ -5,7 +5,7 @@ const {readContract,ROOT}=require('./contract'),s0f=require('./s0f');
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex'),fileHash=f=>hash(fs.readFileSync(f));
 const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
 // Must match RunwayProvider's submitted text, not merely the internal untagged planning prompt.
-const submittedPrompt=(prompt,count)=>prompt+' '+Array.from({length:count},(_,i)=>'@ref'+(i+1)).join(' ')+' (referencias de identidad y de poses).';
+const submittedPrompt=(prompt,count)=>{ const text=prompt+' '+Array.from({length:count},(_,i)=>'@ref'+(i+1)).join(' ')+' (referencias de identidad y de poses).'; if(typeof prompt!=='string'||!prompt.trim()||text.length>1000||count<1||count>3)throw Error('Runway submitted prompt exceeds 1000 UTF-16 units or reference limit; never truncate'); return text; };
 function absolute(p,label){if(typeof p!=='string'||!path.isAbsolute(p))throw Error(label+' must be absolute');return path.resolve(p);}
 function write(file,value){fs.mkdirSync(path.dirname(file),{recursive:true});const tmp=file+'.'+crypto.randomUUID()+'.tmp';fs.writeFileSync(tmp,JSON.stringify(value,null,2)+'\n',{mode:0o600});fs.renameSync(tmp,file);}
 function selection(id,opts){const kind=opts.kind||'champion',skin=opts.skin||null,action=opts.action||null;if(!['champion','animation','skin'].includes(kind)||kind==='animation'&&!action||kind==='skin'&&!skin)throw Error('Invalid external import selection');const contract=readContract(id,{skin});if(contract.kind!=='atlas')throw Error(contract.reason);return {kind,skin,action,contract,jobs:s0f.plan(contract,{kind,skin,action})};}

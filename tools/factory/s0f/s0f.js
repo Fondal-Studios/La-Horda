@@ -26,10 +26,14 @@ function plan(contract, {kind = 'champion', action = null, skin = null} = {}) {
     for (let k = 0; k < fr.length; k += 4) {
       const chunk = fr.slice(k, k + 4);
       jobs.push({id: `${name}-${k / 4}`, label: `${contract.id}/${name}`, clip: name, frames: chunk,
-        prompt: `${STYLE} Personaje: ${contract.id} (referencia: sprite de identidad del Códice recortado y tira de poses actuales). ${skin ? `Reparar la skin EXISTENTE «${skin}»: conservar exactamente su identidad, diseño, paleta, vestimenta, arma y silueta en las referencias; no inventar una skin nueva ni recolorear el cuerpo base.` : 'Conservar rostro, vestimenta, arma, paleta y proporciones del Códice.'} Generar ${chunk.length} poses DISTINTAS de «${name}» en una fila horizontal${/walk|run/.test(name) ? ' (ciclo de caminar: contacto, paso, contacto con la otra pierna, paso: las piernas y los brazos cambian de posición en cada pose)' : ''}, mismo tamaño y pies alineados, misma escala. PROHIBIDO: texto, letras, números, rótulos, línea de suelo, sombra, tierra, marcos y cualquier elemento que no sea el personaje.`,
+        prompt: `${STYLE} Personaje: ${contract.id} (referencia: sprite de identidad del Códice recortado y tira de poses actuales). ${skin ? `Reparar skin EXISTENTE «${skin}»: conservar identidad, diseño, paleta, ropa, arma y silueta; no crear skin ni recolorear base.` : 'Conservar rostro, vestimenta, arma, paleta y proporciones del Códice.'} Generar ${chunk.length} poses DISTINTAS de «${name}» en una fila horizontal${/walk|run/.test(name) ? ' (ciclo de caminar: contacto, paso, contacto con la otra pierna, paso: las piernas y los brazos cambian de posición en cada pose)' : ''}, mismo tamaño y pies alineados, misma escala. PROHIBIDO: texto, letras, números, rótulos, línea de suelo, sombra, tierra, marcos y cualquier elemento que no sea el personaje.`,
         needs: ['codexPage', 'currentStrip']});
     }
   }
+  // The runtime always submits two references. Reject the entire order before
+  // any billable request; never silently truncate identity or animation instructions.
+  const referenceSuffix = ' @ref1 @ref2 (referencias de identidad y de poses).';
+  for (const job of jobs) if ((job.prompt + referenceSuffix).length > 1000) throw new Blocked('BLOCKED_CONTRACT', `prompt de ${job.id} supera 1000 unidades UTF-16 con sus referencias; corregir el contrato antes de generar`);
   return jobs;
 }
 

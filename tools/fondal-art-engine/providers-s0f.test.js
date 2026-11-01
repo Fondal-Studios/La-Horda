@@ -160,3 +160,9 @@ test('Runway preserves native JPEG/WebP bytes for deterministic assembler decodi
     }
   } finally { delete process.env.RUNWAYML_API_SECRET; }
 });
+test('Runway rejects oversized UTF-16 prompt before reservation or network instead of truncating',async()=>{
+ process.env.RUNWAYML_API_SECRET='fixture-only';const d=tmp(),g=new SpendGuard({ledgerPath:path.join(d,'l.json')});let calls=0;
+ const provider=new P.RunwayProvider({guard:g,fetchImpl:async()=>{calls++;throw Error('must not call');}});
+ await assert.rejects(provider.generate({...mkJob(d),prompt:'😀'.repeat(500)}),/1000 unidades UTF-16/);
+ assert.equal(calls,0);assert.equal(fs.existsSync(path.join(d,'l.json')),false);
+});

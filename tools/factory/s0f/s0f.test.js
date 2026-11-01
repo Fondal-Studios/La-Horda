@@ -182,3 +182,18 @@ test('whole-order preflight rejects insufficient batch/day budget before any pro
   const day = await s0f.generate('cazadora', {...opts, limits: {perBatchCents: 180, perDayCents: 179}});
   assert.equal(day.code, 'BLOCKED_BUDGET'); assert.equal(calls, 0);
 });
+test('complete base and existing skin prompts fit Runway including two reference tags in UTF-16', () => {
+  for (const skin of [undefined, 'cazadora_escarcha']) {
+    const jobs = s0f.plan(readContract('cazadora', {skin}), {kind: skin ? 'skin' : 'champion', skin});
+    assert.equal(jobs.length, skin ? 18 : 13);
+    for (const job of jobs) {
+      const submitted = job.prompt + ' @ref1 @ref2 (referencias de identidad y de poses).';
+      assert.ok(submitted.length >= 1 && submitted.length <= 1000, `${skin || 'base'}/${job.id}: ${submitted.length} UTF-16 units`);
+      if (skin) for (const text of ['skin EXISTENTE', 'identidad', 'diseño', 'paleta', 'ropa', 'arma', 'silueta', 'no crear skin ni recolorear base']) assert.ok(job.prompt.includes(text));
+    }
+  }
+});
+test('whole-plan preflight rejects an oversized contract prompt before any generation', () => {
+  const contract = {...readContract('cazadora'), id: 'x'.repeat(1000)};
+  assert.throws(() => s0f.plan(contract), e => e.code === 'BLOCKED_CONTRACT' && /1000 unidades UTF-16/.test(e.message));
+});
