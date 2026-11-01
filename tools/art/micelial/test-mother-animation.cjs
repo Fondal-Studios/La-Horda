@@ -100,6 +100,9 @@ check('boss camera restores normal zoom on death, arena exit and spectator; inpu
    assert(Math.abs(back.x-world.x)<1e-8&&Math.abs(back.y-world.y)<1e-8);
  }
  assert(sandbox.CAM_ZOOM<0.6);
+ const frozenZoom=sandbox.CAM_ZOOM,frozenLift=vm.runInContext('CAM_LIFT',sandbox);sandbox.state='paused';
+ for(let i=0;i<20;i++){sandbox.updateArenaCameraZoom();sandbox.updateCamLift();}
+ assert.equal(sandbox.CAM_ZOOM,frozenZoom);assert.equal(vm.runInContext('CAM_LIFT',sandbox),frozenLift);sandbox.state='playing';
  for(const mode of ['dead','arena-exit','spectator']){
    hooked=true;sandbox.micS.mo.st='fight';vm.runInContext('CAM_SUBJECT=null',sandbox);
    for(let i=0;i<160;i++)sandbox.updateArenaCameraZoom();

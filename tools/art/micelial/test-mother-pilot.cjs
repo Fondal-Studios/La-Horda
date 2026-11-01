@@ -36,7 +36,7 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/high-deta
    const e=window.motherProbe;Object.assign(e,{packSet:null,packTimer:0,bossWind:null,mcd:0,whipCd:0,clawCd:9e8,rootsCd:9e8,sporeCd:9e8,summonCd:9e8,cloudCd:9e8,halCd:9e8});
    micS.mo={st:'fight',ph:1,t:0,bloom:0,heart:0,inf:0};spawnTimer=9e8;
    window.pilotHits=[];window.pilotHitOriginal=bossHitHero;
-   bossHitHero=function(...a){window.pilotHits.push(runElapsedMs);return window.pilotHitOriginal.apply(this,a)};
+   bossHitHero=function(...a){if(a[2]&&a[2].from===window.motherProbe)window.pilotHits.push(runElapsedMs);return window.pilotHitOriginal.apply(this,a)};
   });
   const action=[];let impactShot=false;
   for(let i=0;i<64;i++){

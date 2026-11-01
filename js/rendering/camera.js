@@ -14,6 +14,7 @@ let _arenaZoomActive = false;
 // An arena may frame a stationary giant without changing any world-space hitbox.
 // Run BEFORE the canvas transform; input and HUD use this same camera zoom.
 function updateArenaCameraZoom(){
+  if(state==="paused") return;
   const has = state==="playing" && player && camSub()===player && !player.duelActive && arenaHas("camZoom");
   if(!has && !_arenaZoomActive) return;
   const normal = computeCamZoom(VW,VH);
@@ -25,6 +26,7 @@ function updateArenaCameraZoom(){
   _arenaZoomActive = Math.abs(CAM_ZOOM-normal)>0.0005;
 }
 function updateCamLift(){
+  if(state==="paused" && _arenaZoomActive) return;
   const want = (state==="playing" && !player.duelActive && arenaHas("camLift")) ? (arenaHook("camLift")||0) : 0;
   CAM_LIFT += (want - CAM_LIFT)*0.06;
   if(Math.abs(CAM_LIFT) < 0.5 && want===0) CAM_LIFT = 0;
