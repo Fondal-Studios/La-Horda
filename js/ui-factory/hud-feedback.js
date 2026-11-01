@@ -26,10 +26,14 @@
   function btn(id){ return document.getElementById(id); }
   function emit(name, detail){ try{ window.dispatchEvent(new CustomEvent(name, {detail:detail})); }catch(_){} }
   function playing(){ try{ return typeof state==="undefined" || state==="playing"; }catch(_){ return true; } }
+  function pl(){ try{ return (typeof player!=="undefined" && player) ? player : null; }catch(_){ return null; } }
   function blockedKind(el){
     if(el.classList.contains("cd") || el.classList.contains("active")) return "cooldown"; // "active" = efecto en curso con cooldown corriendo
     if(el.classList.contains("noen")) return "resources";
-    if(el.classList.contains("locked") || el.classList.contains("hidden")) return "locked";
+    if(el.classList.contains("locked") || el.classList.contains("hidden") || el.classList.contains("spent")) return "locked";
+    var p = pl(), id = el.id;
+    if(p && id==="btn-ult" && p.classKey!=="ilkan" && p.classKey!=="libertador" && !el.classList.contains("ready") && !el.classList.contains("holding")) return "charging";
+    if(p && id==="btn-emerg" && typeof emergCanUse==="function"){ try{ if(!emergCanUse(p)) return "locked"; }catch(_){} }
     return "";
   }
   function isReady(el, id){
@@ -68,9 +72,23 @@
       emit("uf:reject", {id:id, reason:kind, input:src});
       L.pending = null;
     } else {
-      L.pending = { t:now(), ready:isReady(el,id), bcd:basicCd() };
+      L.pending = snap(id);
     }
     emit("uf:press", {id:id, input:src, latencyMs:lat, queueMs:queue});
+  }
+  /* instantánea de los números del juego que cambian SOLO si la acción se ejecutó (lectura, sin escribir) */
+  function snap(id){
+    var p = pl(), o = { t:now(), id:id, bcd:basicCd(), ready:isReady(btn(id), id) };
+    if(p){ o.cds = (p.cds||[]).slice(); o.ult = p.ultCharge||0; o.ultCd = p.ultCd||0; o.emerg = p.emergCharges; o.demon = !!p.nigroDemonForm; o.fused = !!p.fused; o.golem = !!p.golem; }
+    return o;
+  }
+  function executed(id, o){
+    var p = pl(); if(!p || !o) return false;
+    var i = id==="btn-s1"?0 : id==="btn-s2"?1 : id==="btn-s3"?2 : -1;
+    if(i>=0) return (p.cds&&o.cds) ? (p.cds[i]||0) > (o.cds[i]||0) + 1 : false;
+    if(id==="btn-ult") return (p.ultCharge||0) < o.ult - 1 || (p.ultCd||0) > o.ultCd + 1 || (!!p.nigroDemonForm && !o.demon) || (!!p.fused && !o.fused) || (!!p.golem && !o.golem);
+    if(id==="btn-emerg") return typeof p.emergCharges==="number" && typeof o.emerg==="number" && p.emergCharges < o.emerg;
+    return false;
   }
   function release(id, src){
     var L = live[id], el = btn(id); if(!L || !el) return;
@@ -82,7 +100,7 @@
   }
   function confirm(id){
     var el = btn(id), L = live[id]; if(!el || !L || !L.pending) return;
-    L.pending = null; metrics.confirms++;
+    L.pending = null; L.lastConfirm = now(); metrics.confirms++;
     restart(el, "uf-confirm", CONFIRM_MS);
     emit("uf:confirm", {id:id});
   }
@@ -109,20 +127,20 @@
   }, {capture:true, passive:true});
   window.addEventListener("keyup", function(ev){ var id = KEYS[ev.code]; if(id) release(id, "key:"+ev.code); }, {capture:true, passive:true});
 
-  /* ---- confirmación de ejecución: el juego cambia el estado del botón tras la presión ---- */
-  var mo = new MutationObserver(function(list){
-    for(var i=0;i<list.length;i++){
-      var el = list[i].target, id = el.id, L = live[id];
-      if(!L || !L.pending || now()-L.pending.t>CONFIRM_WINDOW_MS) continue;
-      if(id!=="btn-basic" && L.pending.ready && !isReady(el,id)) confirm(id);
-    }
-  });
-  function watchBtns(){ IDS.forEach(function(id){ var el = btn(id); if(el && !el.__ufW){ el.__ufW = 1; mo.observe(el, {attributes:true, attributeFilter:["class","data-state"]}); decorate(el); } }); }
-  /* Ataque básico: confirmación = sube basicCd (el juego disparó) mientras está presionado */
+  /* ---- confirmación de ejecución: verdad de terreno leída del juego (cooldown iniciado, carga gastada, básico disparado) ----
+     La presión pendiente vive mientras el dedo/tecla siguen abajo y hasta CONFIRM_WINDOW_MS después de soltar. */
+  function watchBtns(){ IDS.forEach(function(id){ var el = btn(id); if(el && !el.__ufW){ el.__ufW = 1; decorate(el); } }); }
   var lastBcd = 0;
   function frame(){
-    var L = live["btn-basic"], c = basicCd();
-    if(L && Object.keys(L.src).length && c>lastBcd + 1) { L.pending = L.pending || {t:now(), ready:true, bcd:lastBcd}; confirm("btn-basic"); L.pending = {t:now(), ready:true, bcd:c}; }
+    var t = now();
+    for(var id in live){
+      var L = live[id], o = L.pending; if(!o) continue;
+      var held = Object.keys(L.src).length>0;
+      if(!held){ if(!L.relT) L.relT = t; if(t - L.relT > CONFIRM_WINDOW_MS){ L.pending = null; L.relT = 0; continue; } } else L.relT = 0;
+      if(id!=="btn-basic" && id!=="btn-pact" && executed(id, o)) confirm(id);
+    }
+    var B = live["btn-basic"], c = basicCd();
+    if(B && Object.keys(B.src).length && c>lastBcd+1 && (!B.lastConfirm || t-B.lastConfirm>120)){ B.pending = B.pending || {t:t}; confirm("btn-basic"); B.pending = {t:t}; }
     lastBcd = c;
     requestAnimationFrame(frame);
   }
@@ -130,6 +148,10 @@
   function decorate(el){
     if(!el.getAttribute("role")) el.setAttribute("role","button");
     if(!el.getAttribute("aria-label")) el.setAttribute("aria-label", NAMES[el.id]||el.id);
+    // Sin tabindex a propósito: Enter/Espacio sobre un div enfocado no ejecutaría nada y Espacio ya es "atacar" en partida.
+    // Los atajos reales se anuncian con aria-keyshortcuts.
+    var ks = { "btn-basic":"Space", "btn-s1":"1", "btn-s2":"2", "btn-s3":"3", "btn-ult":"R", "btn-emerg":"Q", "btn-pact":"F" }[el.id];
+    if(ks && !el.getAttribute("aria-keyshortcuts")) el.setAttribute("aria-keyshortcuts", ks);
   }
   function syncAria(){
     IDS.forEach(function(id){ var el = btn(id); if(!el) return;

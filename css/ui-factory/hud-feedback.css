@@ -9,6 +9,9 @@
 #controls .ability-btn.uf-press .uf-fx, #controls #skillzone .ability-btn.uf-press .uf-fx{ opacity:.95; inset:-5px; }
 #controls .ability-btn.uf-hold .uf-fx, #controls #skillzone .ability-btn.uf-hold .uf-fx{ animation:ufHold .7s ease-in-out infinite alternate; }
 @keyframes ufHold{ from{ opacity:.95; inset:-5px; } to{ opacity:.45; inset:-9px; } }
+/* R5: presionar un botón no disponible NO lo ilumina como uno disponible */
+#controls .ability-btn.cd.uf-press, #controls #skillzone .ability-btn.cd.uf-press, #controls .ability-btn.noen.uf-press, #controls #skillzone .ability-btn.noen.uf-press,
+#controls .ability-btn.uf-reject.uf-press, #controls #skillzone .ability-btn.uf-reject.uf-press{ filter:grayscale(.55) brightness(.95); scale:.95; box-shadow:0 1px 0 #03070e, 0 0 0 2px #03070e; }
 /* 3) activación confirmada: anillo que se expande + destello (distinto de la presión) */
 #controls .ability-btn.uf-confirm, #controls #skillzone .ability-btn.uf-confirm{ animation:ufConfirmBtn .34s ease-out; }
 #controls .ability-btn.uf-confirm .uf-fx, #controls #skillzone .ability-btn.uf-confirm .uf-fx{ border-color:#fff3c4; animation:ufConfirmRing .34s ease-out; }
