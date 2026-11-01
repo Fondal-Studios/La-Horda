@@ -15,9 +15,6 @@ body.lefty #controls #skillzone .ability-btn.s2{ right:auto; left:calc(158px + e
 body.lefty #controls #skillzone .ability-btn.emerg, body.lefty #controls #skillzone .ability-btn.pact{ right:auto; left:calc(178px + env(safe-area-inset-left,0px)); }
 
 /* ---- pantalla limpia en modos competitivos ---- */
-body.lanes-on #hud #goal-chip{ display:none; }                 /* el objetivo ya está en el marcador y en la ficha de arena */
-body.lanes-on #hud #ult-meter{ display:none; }                 /* redundante: el anillo y el cooldown van en el propio botón */
-body.lanes-on #mute-btn{ display:none; }                        /* el sonido se cambia desde Pausa */
 body.lanes-on .lanes-hud .ln-feed{ opacity:.8; }
 body.lanes-on .lanes-hud .ln-rival{ left:calc(124px + env(safe-area-inset-left,0px)); padding:2px; opacity:.88; }
 body.lanes-on .lanes-hud .ln-rival canvas{ width:132px; height:99px; }
@@ -33,3 +30,19 @@ body.lanes-on .lanes-hud .ln-note{ top:calc(88px + env(safe-area-inset-top,0px))
   body.lanes-on .lanes-hud .ln-rival{ left:calc(118px + env(safe-area-inset-left,0px)); }
   body.lanes-on .lanes-hud .ln-recall{ left:50%; transform:translateX(-50%); bottom:calc(58px + env(safe-area-inset-bottom,0px)); }
 }
+
+/* ============================================================================================
+   UF-SIMPLE v1 — HUD de partida lo más simple posible (pedido del usuario), en TODOS los modos.
+   Siempre visible: vida/energía, aliados, nivel/vencidos, joystick, habilidades, Ataque, Definitiva y Pausa.
+   Lo demás sale como aviso emergente que se cierra solo o vive en la Pausa. Solo CSS; no toca reglas.
+   ============================================================================================ */
+#hud #ult-meter{ display:none; }          /* redundante: el anillo y el cooldown van en el propio botón de Definitiva */
+#mute-btn{ display:none; }                /* el sonido (Música/Efectos) se ajusta desde Pausa */
+#hud #hud-arena-line{ display:none; }     /* nombre de arena: ya lo dijo la ficha de arena y sigue en Pausa */
+body.lefty #pause-btn{ left:calc(10px + env(safe-area-inset-left,0px)); }
+/* el cartel de OBJETIVO es un aviso emergente: aparece cuando el juego lo pide, se queda unos segundos y se va solo */
+#hud #goal-chip{ animation:ufPopup 7s ease-in-out forwards; }
+@keyframes ufPopup{ 0%{ opacity:0; translate:-10px 0; visibility:visible; } 7%{ opacity:1; translate:0 0; } 86%{ opacity:1; visibility:visible; } 100%{ opacity:0; visibility:hidden; } }
+body.reduce-motion #hud #goal-chip{ animation-name:ufPopupStill; }
+@keyframes ufPopupStill{ 0%{ opacity:1; visibility:visible; } 92%{ opacity:1; visibility:visible; } 100%{ opacity:0; visibility:hidden; } }
+@media (prefers-reduced-motion:reduce){ #hud #goal-chip{ animation-name:ufPopupStill; } }
