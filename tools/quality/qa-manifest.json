@@ -857,6 +857,13 @@
    "categories": [
     "coordinacion_agentes"
    ]
+  },
+  "tools/factory/test-art-handoff.js": {
+   "tier": "required",
+   "categories": [
+    "sprites_atlas",
+    "coordinacion_agentes"
+   ]
   }
  },
  "suites": {
@@ -894,6 +901,13 @@
     "guardados"
    ],
    "reason": "requiere una base PostgreSQL de prueba"
+  },
+  "art-factory-python": {
+   "tier": "required",
+   "categories": [
+    "sprites_atlas"
+   ],
+   "command": "python3 -m unittest tools/factory/test_art_factory.py"
   }
  },
  "tolerated": {

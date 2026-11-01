@@ -85,7 +85,7 @@ flowchart LR
 | TelemetryConsent | C | D, B | `js/net/alpha-services.js` | `contracts/v1/telemetry-consent.schema.json` |
 | SkillEvent | D | C | `js/ui/hud.js` | `contracts/v1/skill-event.schema.json` |
 | ChampionSelection | D | A, B, C | `js/ui/champion-select.js` | `contracts/v1/champion-selection.schema.json` |
-| ArtAsset | D | C | `tools/factory/cli.js` | `contracts/v1/art-asset.schema.json` |
+| ArtAsset | D | C | `tools/factory/art-handoff.js` | `contracts/v1/art-asset.schema.json` |
 | LobbyMessage | ARQ | C, D | `server/relay.js` | `contracts/v1/lobby-message.schema.json` |
 
 ## Agentes

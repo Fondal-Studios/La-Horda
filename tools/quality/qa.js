@@ -25,6 +25,7 @@ function step(id, cmd, args, o = {}) {
   if (st === 'FAIL') console.log((r.stdout || '').split('\n').filter(l => /FAIL|Error|error/.test(l)).slice(0, 8).join('\n'));
   results.push({ id, status: st }); return r.status === 0;
 }
+step('art-factory-python', 'python3', ['-m', 'unittest', 'tools/factory/test_art_factory.py']);
 step('clasificacion', process.execPath, ['tools/quality/qa-manifest-check.js']);
 // Las dependencias de server/ las necesitan los contratos, el humo del relay y la batería de servidor.
 if (!has('--skip-install')) step('server-install', 'npm', ['ci', '--no-audit', '--no-fund'], { cwd: path.join(ROOT, 'server') });
@@ -38,7 +39,7 @@ if (!has('--quick')) {
   results.push({ id: 'pixel-density', status: t.status === 0 ? 'PASS' : 'FAIL' });
 }
 if (!fs.existsSync(path.join(runOut, 'resumen.json'))) { console.error('run-all no produjo resumen.json'); process.exit(2); }
-const sa = results.filter(r => ['server', 'pixel-density'].includes(r.id)).flatMap(r => ['--suite', `${r.id}=${r.status}`]);
+const sa = results.filter(r => ['server', 'pixel-density', 'art-factory-python'].includes(r.id)).flatMap(r => ['--suite', `${r.id}=${r.status}`]);
 const rep = cp.spawnSync(process.execPath, ['tools/quality/qa-report.js', runOut, '--out', path.join(out, 'informe'), ...sa], { cwd: ROOT, stdio: 'inherit' });
 const clasif = results.find(r => r.id === 'clasificacion').status === 'FAIL';
 console.log('\n' + results.map(r => `${r.status} ${r.id}`).join('\n'));

@@ -2,7 +2,7 @@
 'use strict';
 // Prueba del flujo de revisión independiente con registros sintéticos, más la plantilla y los registros reales (si hay).
 const fs = require('node:fs'), path = require('node:path'), cp = require('node:child_process');
-const { validateRecord } = require('./check');
+const { validateRecord, validateReviewedHead } = require('./check');
 const ROOT = path.resolve(__dirname, '../..');
 const D = JSON.parse(fs.readFileSync(path.join(ROOT, 'reviews/DIRECTORES.json'), 'utf8')).directores;
 let fails = 0, n = 0; const check = (name, ok, x) => { n++; console.log((ok ? 'PASS ' : 'FAIL ') + name + (!ok && x ? '  ' + JSON.stringify(x).slice(0, 400) : '')); if (!ok) fails++; };
@@ -66,9 +66,41 @@ const tpl = JSON.parse(fs.readFileSync(path.join(ROOT, 'reviews/TEMPLATE.json'),
 r = V(tpl, 'merge');
 check('la plantilla del repositorio es un registro válido de la forma esperada', r.ok, r.problems);
 const cli = (args) => cp.spawnSync(process.execPath, [path.join(__dirname, 'check.js'), ...args], { cwd: ROOT, encoding: 'utf8' });
-check('CLI: una rama que no es de un agente no está sujeta al control', cli(['--branch', 'main', '--head', H]).status === 0);
+for(const branch of ['main', 's0e/s0c-conditions', 'fix/art-factory-safe-integration', 'review/example']) {
+  check('CLI: ninguna rama evita revisión: ' + branch, cli(['--branch', branch, '--head', H, '--mode', 'merge']).status === 1);
+}
+check('CLI: modo inventado no evita revisión', cli(['--branch', 'example', '--mode', 'bypass']).status === 2);
 check('CLI: rama de agente sin registro en modo merge => falla', cli(['--branch', 'claude/s1-economia-inexistente', '--head', H, '--mode', 'merge']).status === 1);
 check('CLI: rama de agente sin registro en borrador => pasa', cli(['--branch', 'claude/s1-economia-inexistente', '--head', H, '--mode', 'draft']).status === 0);
 check('CLI: --all valida los registros reales del repositorio', cli(['--all']).status === 0);
+// Real Git history, isolated from the user's checkout and without any fake approvals.
+const temp = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'horda-review-head-'));
+try {
+  const git = (...args) => cp.execFileSync('git', args, {cwd:temp, encoding:'utf8', stdio:['ignore','pipe','pipe']}).trim();
+  git('init'); git('config','user.name','Review Test'); git('config','user.email','review-test@example.invalid');
+  fs.mkdirSync(path.join(temp,'reviews'));
+  fs.writeFileSync(path.join(temp,'code.js'),'original');
+  git('add','.'); git('commit','-m','content'); const content = git('rev-parse','HEAD');
+  const record = 'reviews/fix__test.json';
+  const bind = (old, head) => validateReviewedHead(temp,old,head,record);
+  check('SHA: mismo commit exacto aceptado', bind(content,content).ok);
+  fs.writeFileSync(path.join(temp,record),'{}'); git('add','.'); git('commit','-m','review only');
+  const review = git('rev-parse','HEAD');
+  check('SHA: commit de su propio registro aceptado', bind(content,review).ok && bind(content,review).recordOnly);
+  for(const filename of ['code.js','reviews/other.json','reviews/DIRECTORES.json']) {
+    git('checkout','--detach',review);
+    fs.writeFileSync(path.join(temp,filename),'changed'); git('add','.'); git('commit','-m','not review only');
+    check('SHA: rechaza cambio de ' + filename, !bind(content,git('rev-parse','HEAD')).ok);
+  }
+  const otherHistory = git('rev-parse','HEAD');
+  check('SHA: no ancestro rechazado', !bind(otherHistory,review).ok);
+  git('checkout','--detach',review);
+  fs.writeFileSync(path.join(temp,'code.js'),'temporary'); git('add','.'); git('commit','-m','code change');
+  fs.writeFileSync(path.join(temp,'code.js'),'original'); git('add','.'); git('commit','-m','revert code');
+  check('SHA: cambio de código revertido tampoco evade revisión', !bind(content,git('rev-parse','HEAD')).ok);
+  check('SHA: registro de directores nunca es excepción', !validateReviewedHead(temp,content,review,'reviews/DIRECTORES.json').ok);
+  check('SHA: registro fuera del repo rechazado', !validateReviewedHead(temp,content,review,'../outside.json').ok);
+  check('SHA: identificador inventado rechazado', !bind(H,review).ok);
+} finally {fs.rmSync(temp,{recursive:true,force:true});}
 console.log(`\n${fails ? 'FALLÓ' : 'OK'}: ${n - fails}/${n} comprobaciones`);
 process.exit(fails ? 1 : 0);

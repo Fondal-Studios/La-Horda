@@ -1,0 +1,77 @@
+{
+ "bestia_bosque": {
+  "source": "assets/sprites/enemies/bosque/bestia_bosque",
+  "attempts": [
+   {
+    "n": 1,
+    "strategy": [
+     "harden-alpha"
+    ],
+    "score": 72.5,
+    "critical": 0,
+    "defects": [
+     "contorno fuera del rango del roster",
+     "pies inestables entre cuadros (±16 px)"
+    ],
+    "dir": "docs/art-factory/candidates/bestia_bosque/a1"
+   },
+   {
+    "n": 2,
+    "strategy": [
+     "harden-alpha",
+     "outline-contrast"
+    ],
+    "score": 80.0,
+    "critical": 0,
+    "defects": [
+     "pies inestables entre cuadros (±16 px)"
+    ],
+    "dir": "docs/art-factory/candidates/bestia_bosque/a2"
+   },
+   {
+    "n": 3,
+    "strategy": [
+     "harden-alpha",
+     "outline-contrast",
+     "rim-light"
+    ],
+    "score": 80.0,
+    "critical": 0,
+    "defects": [
+     "pies inestables entre cuadros (±16 px)"
+    ],
+    "dir": "docs/art-factory/candidates/bestia_bosque/a3"
+   }
+  ],
+  "state": "ESCALADO",
+  "baseline": {
+   "score": 72.5,
+   "critical": 0,
+   "defects": [
+    "contorno fuera del rango del roster",
+    "pies inestables entre cuadros (±16 px)"
+   ]
+  },
+  "escalation": "Tres intentos con reparaciones deterministas no alcanzan 90/100 sin defectos críticos. Cambio de estrategia: la reparación por código no basta; hace falta arte nuevo (hoja completa autorizada: ver docs/ART_COMMISSION_BRIEF.md). Se escala al director artístico. No se compra ni se simula generación.",
+  "integracion": {
+   "checks": {
+    "hay_candidato_aprobado": false
+   },
+   "apto_tecnico": false,
+   "aprobacion_arquitecto_general_S0C": "PENDIENTE",
+   "instalado": false
+  }
+ },
+ "duende_bosque": {
+  "source": "assets/sprites/enemies/bosque/duende_bosque",
+  "attempts": [],
+  "state": "sin-cambios-necesarios",
+  "baseline": {
+   "score": 92.5,
+   "critical": 0,
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  }
+ }
+}
