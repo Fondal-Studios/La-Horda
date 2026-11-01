@@ -1,0 +1,19 @@
+{
+  "$id": "fondal/la-horda/SkillEvent/1.0.0",
+  "title": "SkillEvent",
+  "description": "Evento de habilidad que consume el HUD (y, si hay consentimiento, la telemetría). Describe el estado de UN botón de habilidad de UN campeón.",
+  "type": "object",
+  "required": ["contract", "version", "type", "champion", "slot"],
+  "additionalProperties": false,
+  "properties": {
+    "contract": { "const": "SkillEvent" },
+    "version": { "type": "string", "pattern": "^1\\.\\d+\\.\\d+$" },
+    "type": { "enum": ["cast", "ready", "blocked", "ult_ready"] },
+    "champion": { "type": "string", "pattern": "^[a-z0-9_]{1,40}$" },
+    "slot": { "enum": [0, 1, 2, "ult"] },
+    "cooldownMs": { "type": "integer", "minimum": 0, "maximum": 600000 },
+    "cooldownMaxMs": { "type": "integer", "minimum": 0, "maximum": 600000 },
+    "reason": { "enum": ["cooldown", "energy", "silenced", "dead", "state"] },
+    "at": { "type": "integer", "minimum": 0 }
+  }
+}

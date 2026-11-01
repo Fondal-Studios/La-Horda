@@ -18,6 +18,9 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
   const p=await context.newPage({viewport:{width:844,height:390}}),errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push('console:'+m.text().slice(0,160));});
   await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});await p.waitForFunction(()=>typeof lanesStart==='function',null,{timeout:60000});
   const r=await p.evaluate(({champ,secs})=>{
+   // Azar reproducible por campeón (xorshift): antes solo lanesStart recibía semilla y el resto de la partida usaba Math.random, así que la
+   // misma prueba daba resultados distintos en cada corrida (profeta cross:6 apareció en CI y no se reproducía). Ahora una falla se repite igual.
+   let sd=(champ.length*7919+104729)|0||1;Math.random=()=>{sd^=sd<<13;sd^=sd>>>17;sd^=sd<<5;return (sd>>>0)/4294967296;};
    setState('mainmenu');lanesStart({champ,seed:11});
    const rep={champ,actualChampion:player.classKey,frames:0,nan:0,cross:0,dead:0,friendly:0,pvp:0};const dt=1000/60;let ang=0;
    const dh=damageHero;damageHero=function(h,a,src,pt){ const hp0=h&&h.hp,isF=h&&h.team!=null&&src&&!src.isPvp&&src!==h&&!h.isStruct&&lanesTeamOf(src)===h.team; if(src&&src.isPvp&&h&&!h.isStruct)rep.pvp++; const r=dh.call(this,h,a,src,pt); if(isF&&h.hp<hp0-0.01)rep.friendly++; return r; };
@@ -28,15 +31,15 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
     if(f%45===0&&player.alive){player.cds=[0,0,0];player.energy=player.maxEnergy;player.ultCharge=player.ultMax;player.ultCd=0;try{useSkill(0,null);useSkill(1,null);useSkill(2,null);useUltimate();}catch(e){rep.err=String(e&&e.message||e);}}
     update(dt);rep.frames++;
     if(f%30===0){
-     for(const h of heroes){ if(![h.x,h.y,h.hp,h.gold].every(Number.isFinite))rep.nan++; if(!h.duelActive&&!lanesInside(h.x,h.y,-40))rep.cross++; }
-     for(const e of enemies){ if(!e.alive)continue; if(![e.x,e.y,e.hp].every(Number.isFinite))rep.nan++; if(!e.isDuelLocked&&!lanesInside(e.x,e.y,-40))rep.cross++; }
+     for(const h of heroes){ if(![h.x,h.y,h.hp,h.gold].every(Number.isFinite))rep.nan++; if(!h.duelActive&&!lanesInside(h.x,h.y,-40)){rep.cross++;(rep.who=rep.who||[]).push('héroe '+(h.classKey||h.type)+' @'+Math.round(h.x)+','+Math.round(h.y)+' cuadro '+f);} }
+     for(const e of enemies){ if(!e.alive)continue; if(![e.x,e.y,e.hp].every(Number.isFinite))rep.nan++; if(!e.isDuelLocked&&!lanesInside(e.x,e.y,-40)){rep.cross++;(rep.who=rep.who||[]).push('enemigo '+e.type+'/'+e.rank+' @'+Math.round(e.x)+','+Math.round(e.y)+' cuadro '+f+' mapa '+LANES.W+'x'+LANES.H);} }
      for(const T of LN.team){ if(!Number.isFinite(T.S[9].hp))rep.nan++; }
     }
    }
    const s=player.stats||{};rep.dmg=Math.round(s.dmgDealt||s.dmg||0);rep.kills=LN.team[0].kills+LN.team[1].kills;rep.myKills=s.kills||0;rep.hp0=Math.round(LN.team[0].S[9].hp);rep.hp1=Math.round(LN.team[1].S[9].hp);rep.respawns=heroes.filter(h=>h.dead_t).length;
    rep.enemiesLeft=enemies.filter(e=>e.alive).length;damageHero=dh;lanesStop('mainmenu');return rep;},{champ,secs:SECS});
   const ok=r.actualChampion===champ&&!r.err&&r.nan===0&&r.cross===0&&r.friendly===0&&(r.kills>0||r.dmg>0||r.pvp>0)&&errs.length===0;if(!ok)bad++;
-  rows.push(r);console.log((ok?'OK   ':'FAIL ')+champ.padEnd(14)+JSON.stringify({kills:r.kills,dmg:r.dmg,pvp:r.pvp,friendly:r.friendly,cross:r.cross,nan:r.nan,err:r.err,errs:errs.slice(0,2)}));
+  rows.push(r);console.log((ok?'OK   ':'FAIL ')+champ.padEnd(14)+JSON.stringify({kills:r.kills,quien:ok?undefined:(r.who||[]).slice(0,4),dmg:r.dmg,pvp:r.pvp,friendly:r.friendly,cross:r.cross,nan:r.nan,err:r.err,errs:errs.slice(0,2)}));
   await p.close();
  }
  await b.close();srv.kill();

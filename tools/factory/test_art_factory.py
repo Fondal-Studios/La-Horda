@@ -1,6 +1,9 @@
 """Pruebas de la Art Factory 2.0: python3 -m unittest tools/factory/test_art_factory.py"""
 import json, shutil, sys, tempfile, unittest
 from pathlib import Path
+from unittest.mock import patch
+from contextlib import redirect_stdout
+import io
 import numpy as np
 from PIL import Image
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -69,11 +72,88 @@ class T(unittest.TestCase):
                 self.assertEqual(len(e['attempts']), 3); self.assertEqual(e['state'], 'ESCALADO'); self.assertIn('escala', e['escalation'].lower())
             finally: af.OUT, af.ORIG = go, gg
 
-    def test_integration_requires_architect_approval(self):
-        led = af.OUT / 'ledger.json'
-        # nada se instala nunca desde la fábrica: el campo instalado es siempre False y la aprobación del arquitecto parte PENDIENTE
-        src = Path(af.__file__).read_text()
-        self.assertIn("'instalado': False", src); self.assertIn("'PENDIENTE'", src)
+
+class IntegrationGate(unittest.TestCase):
+    """Real filesystem + hash checks; evaluator is controlled to isolate gate policy."""
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(); self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.out = self.root / 'out'; self.out.mkdir()
+        self.src = self.root / 'source'; self.cand = self.root / 'candidate'
+        save_set(self.src, [sprite()]); save_set(self.cand, [sprite()])
+        for name, value in [('ROOT', self.root), ('OUT', self.out)]:
+            p = patch.object(af, name, value); p.start(); self.addCleanup(p.stop)
+        self.entry = {'source': 'source', 'best': 'candidate',
+                      'state': 'candidato-aprobado-por-evaluador-automatico',
+                      'source_hashes': af.png_hashes(self.src), 'candidate_hashes': af.png_hashes(self.cand),
+                      'integracion': {'aprobacion_arquitecto_general_S0C': 'APROBADO'}}
+        self.good = {'pass': True, 'score': 100, 'critical': 0, 'defects': []}
+
+    def run_gate(self, evaluation=None):
+        (self.out / 'ledger.json').write_text(json.dumps({'test': self.entry}))
+        with patch.object(af, 'evaluate_set', return_value=self.good if evaluation is None else evaluation), redirect_stdout(io.StringIO()):
+            result = af.integrate('test')
+        self.assertFalse(result['instalado'])
+        self.assertEqual(result['aprobacion_arquitecto_general_S0C'], 'PENDIENTE')
+        return result
+
+    def test_valid_candidate_is_technical_only(self):
+        self.assertTrue(self.run_gate()['apto_tecnico'])
+
+    def test_wrong_filename_and_dimensions_rejected(self):
+        (self.cand / 'idle1.png').unlink()
+        Image.new('RGBA', (1, 1), (1, 2, 3, 255)).save(self.cand / 'wrong.png')
+        r = self.run_gate()
+        self.assertFalse(r['apto_tecnico']); self.assertFalse(r['checks']['mismo_conjunto_de_archivos'])
+        self.assertFalse(r['checks']['mismas_dimensiones'])
+
+    def test_wrong_dimensions_same_filename_rejected(self):
+        Image.new('RGBA', (1, 1), (1, 2, 3, 255)).save(self.cand / 'idle1.png')
+        self.entry['candidate_hashes'] = af.png_hashes(self.cand)
+        r = self.run_gate(); self.assertFalse(r['checks']['mismas_dimensiones']); self.assertFalse(r['apto_tecnico'])
+
+    def test_candidate_mutation_rejected(self):
+        a = sprite(); a[30, 20, 0] = 0; Image.fromarray(a).save(self.cand / 'idle1.png')
+        r = self.run_gate(); self.assertFalse(r['checks']['hashes_candidato_vigentes']); self.assertFalse(r['apto_tecnico'])
+
+    def test_source_mutation_rejected(self):
+        a = sprite(); a[30, 20, 0] = 0; Image.fromarray(a).save(self.src / 'idle1.png')
+        r = self.run_gate(); self.assertFalse(r['checks']['hashes_origen_vigentes']); self.assertFalse(r['apto_tecnico'])
+
+    def test_missing_fingerprints_rejected(self):
+        self.entry.pop('candidate_hashes'); self.assertFalse(self.run_gate()['apto_tecnico'])
+
+    def test_missing_or_empty_candidate_rejected(self):
+        (self.cand / 'idle1.png').unlink(); self.assertFalse(self.run_gate()['apto_tecnico'])
+        self.cand.rmdir(); self.assertFalse(self.run_gate()['apto_tecnico'])
+
+    def test_unreadable_png_rejected(self):
+        (self.cand / 'idle1.png').write_bytes(b'not a png')
+        self.assertFalse(self.run_gate()['apto_tecnico'])
+
+    def test_missing_source_rejected(self):
+        shutil.rmtree(self.src); self.assertFalse(self.run_gate()['apto_tecnico'])
+
+    def test_current_low_score_critical_or_failed_evaluation_rejected(self):
+        for change in ({'score': 89}, {'critical': 1}, {'pass': False}, {'critical': None}):
+            with self.subTest(change=change):
+                self.assertFalse(self.run_gate({**self.good, **change})['apto_tecnico'])
+
+    def test_unapproved_state_rejected(self):
+        self.entry['state'] = 'ESCALADO'; self.assertFalse(self.run_gate()['apto_tecnico'])
+
+    def test_reconstruction_binds_fingerprints_and_invalidates_old_approval(self):
+        (self.out / 'ledger.json').write_text(json.dumps({'test': self.entry}))
+        bad = {**self.good, 'pass': False, 'score': 20}
+        with patch.object(af, 'ORIG', self.root / 'backups'), patch.object(af, 'evaluate_set', side_effect=[bad, self.good]):
+            self.entry['attempts'] = []
+            (self.out / 'ledger.json').write_text(json.dumps({'test': self.entry}))
+            result = af.reconstruct(self.src, 'test')
+        self.assertEqual(result['source_hashes'], af.png_hashes(self.src))
+        self.assertEqual(result['candidate_hashes'], af.png_hashes(self.root / result['best']))
+        self.assertNotIn('integracion', result)
+        self.entry = result
+        self.assertTrue(self.run_gate()['apto_tecnico'])
 
 
 if __name__ == '__main__': unittest.main()

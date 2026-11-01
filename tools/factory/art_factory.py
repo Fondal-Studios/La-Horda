@@ -288,7 +288,7 @@ def evaluate_set(path, ref=None):
         if m.get('empty'):
             continue
         ms.append((n, a, m))
-    if not ms: return {'score': 0, 'defects': [{'sev': 'critical', 'what': 'set vacío o ilegible'}], 'frames': 0}
+    if not ms: return {'score': 0, 'critical': 1, 'pass': False, 'defects': [{'sev': 'critical', 'what': 'set vacío o ilegible'}], 'frames': 0}
     # alfa
     semi = max(m['semi_alpha'] for _, _, m in ms); lim = max(0.30, SEMI_LIM)
     s_alfa = 100 if semi <= 0.02 else max(0, 100 - max(0, semi - 0.02) * 250)
@@ -372,12 +372,33 @@ def rim_light(a):
 FN = {'harden-alpha': harden_alpha, 'outline-contrast': outline_contrast, 'rim-light': rim_light}
 
 
+def png_files(path):
+    """Exact relative PNG set; missing, empty and symlinked inputs fail closed."""
+    path = Path(path)
+    if path.is_symlink() or not path.exists(): raise ValueError('missing or symlinked input')
+    files = [path] if path.is_file() else sorted(path.rglob('*'))
+    if any(p.is_symlink() for p in files): raise ValueError('symlinked input')
+    result = {p.name if path.is_file() else p.relative_to(path).as_posix(): p
+              for p in files if p.is_file() and p.suffix.lower() == '.png'}
+    if not result: raise ValueError('empty PNG set')
+    return result
+
+
+def png_hashes(path):
+    return {name: sha(p) for name, p in png_files(path).items()}
+
+
 def reconstruct(path, key=None):
     path = Path(path); key = key or path.name.replace('.png', '')
+    if not re.fullmatch(r'[A-Za-z0-9_-]+', key): raise ValueError('invalid candidate key')
+    OUT.mkdir(parents=True, exist_ok=True)
     led_p = OUT / 'ledger.json'; led = json.loads(led_p.read_text()) if led_p.exists() else {}
     ent = led.setdefault(key, {'source': rel(path), 'attempts': [], 'state': 'new'})
+    # Any new reconstruction invalidates previous approval and its candidate binding.
+    ent.update(source=rel(path), source_hashes=png_hashes(path))
+    for field in ('best', 'candidate_hashes', 'integracion'): ent.pop(field, None)
     ORIG.mkdir(parents=True, exist_ok=True)
-    files = [path] if path.is_file() else sorted(f for f in path.rglob('*.png'))
+    files = list(png_files(path).values())
     for f in files:  # originales recuperables
         d = ORIG / (sha(f)[:16] + '_' + f.name)
         if not d.exists(): shutil.copy2(f, d)
@@ -396,7 +417,9 @@ def reconstruct(path, key=None):
             out = cdir / (f.relative_to(path) if path.is_dir() else Path(f.name)); out.parent.mkdir(parents=True, exist_ok=True); Image.fromarray(a, 'RGBA').save(out)
         r = evaluate_set(cdir)
         ent['attempts'].append({'n': i + 1, 'strategy': strat, 'score': r['score'], 'critical': r['critical'], 'defects': [d['what'] for d in r['defects']], 'dir': rel(cdir)})
-        if r['pass']: ent['state'] = 'candidato-aprobado-por-evaluador-automatico'; ent['best'] = rel(cdir); break
+        if r.get('pass') and r.get('score', 0) >= 90 and r.get('critical') == 0:
+            ent.update(state='candidato-aprobado-por-evaluador-automatico', best=rel(cdir), candidate_hashes=png_hashes(cdir))
+            break
     else:
         ent['state'] = 'ESCALADO'
         ent['escalation'] = ('Tres intentos con reparaciones deterministas no alcanzan 90/100 sin defectos críticos. Cambio de estrategia: la reparación por código '
@@ -408,23 +431,39 @@ def reconstruct(path, key=None):
 # ----------------------------------------------------------------------------- ARQUITECTO DE INTEGRACIÓN
 def integrate(key):
     led = json.loads((OUT / 'ledger.json').read_text()); e = led.get(key)
-    if not e: print('desconocido', key); return
-    checks = {}
-    best = ROOT / e['best'] if e.get('best') else None
-    checks['hay_candidato_aprobado'] = bool(best and best.exists())
-    if best and best.exists():
-        fs = list(best.rglob('*.png')); src = ROOT / e['source']
-        sfs = [src] if src.is_file() else sorted(src.rglob('*.png'))
-        checks['mismas_dimensiones'] = all(load(f).shape == load(src if src.is_file() else src / f.relative_to(best)).shape for f in fs if (src.is_file() or (src / f.relative_to(best)).exists()))
-        checks['mismo_conjunto_de_archivos'] = len(fs) == len(sfs)
-        checks['alfa_0_255'] = all(set(np.unique(load(f)[..., 3])).issubset({0, 255}) for f in fs)
-        checks['peso_no_mayor_125pct'] = sum(f.stat().st_size for f in fs) <= 1.25 * sum(f.stat().st_size for f in sfs)
-    e['integracion'] = {'checks': checks, 'apto_tecnico': all(checks.values()), 'aprobacion_arquitecto_general_S0C': e.get('integracion', {}).get('aprobacion_arquitecto_general_S0C', 'PENDIENTE'),
-                        'instalado': False}
+    if not e: raise ValueError('unknown candidate: ' + key)
+    checks = dict.fromkeys(('hay_candidato_aprobado', 'mismo_conjunto_de_archivos',
+                           'mismas_dimensiones', 'alfa_0_255', 'peso_no_mayor_125pct',
+                           'hashes_origen_vigentes', 'hashes_candidato_vigentes',
+                           'evaluacion_actual_aprobada'), False)
+    errors = []; evaluation = None
+    try:
+        best = ROOT / e['best']; src = ROOT / e['source']
+        fs, sfs = png_files(best), png_files(src)
+        checks['hay_candidato_aprobado'] = e.get('state') == 'candidato-aprobado-por-evaluador-automatico'
+        checks['mismo_conjunto_de_archivos'] = fs.keys() == sfs.keys()
+        source_hashes, candidate_hashes = png_hashes(src), png_hashes(best)
+        checks['hashes_origen_vigentes'] = source_hashes == e.get('source_hashes')
+        checks['hashes_candidato_vigentes'] = candidate_hashes == e.get('candidate_hashes')
+        arrays = {n: load(p) for n, p in fs.items()}
+        originals = {n: load(p) for n, p in sfs.items()}
+        checks['mismas_dimensiones'] = checks['mismo_conjunto_de_archivos'] and all(arrays[n].shape == originals[n].shape for n in fs)
+        checks['alfa_0_255'] = all(set(np.unique(a[..., 3])).issubset({0, 255}) for a in arrays.values())
+        checks['peso_no_mayor_125pct'] = sum(p.stat().st_size for p in fs.values()) <= 1.25 * sum(p.stat().st_size for p in sfs.values())
+        evaluation = evaluate_set(best)
+        checks['evaluacion_actual_aprobada'] = bool(evaluation.get('pass') and evaluation.get('score', 0) >= 90 and evaluation.get('critical') == 0)
+        # Detect files changed while being evaluated, not just since reconstruction.
+        checks['hashes_origen_vigentes'] &= source_hashes == png_hashes(src)
+        checks['hashes_candidato_vigentes'] &= candidate_hashes == png_hashes(best)
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        errors.append(str(exc))
+    e['integracion'] = {'checks': checks, 'apto_tecnico': all(checks.values()) and not errors,
+                        'evaluacion_actual': evaluation, 'errors': errors,
+                        # Local ledger strings are not authenticated architecture approvals.
+                        'aprobacion_arquitecto_general_S0C': 'PENDIENTE', 'instalado': False}
     (OUT / 'ledger.json').write_text(json.dumps(led, ensure_ascii=False, indent=1))
     print(json.dumps(e['integracion'], ensure_ascii=False))
-
-
+    return e['integracion']
 
 
 # ----------------------------------------------------------------------------- S0F: candidatos de atlas por CONTRATO REAL

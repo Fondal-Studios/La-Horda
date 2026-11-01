@@ -243,12 +243,18 @@ function saveSanitize(parsed, ctx){
     return out;
   };
   // Preserve valid legacy overflow before the stash safety limit, rather than truncating earned loot.
-  if(!Array.isArray(parsed.rewardOverflow)) parsed.rewardOverflow=[];
+  // Un guardado legítimo sin buzón NO se toca (defaultSave() aporta la lista vacía al mezclar): crear la clave acá era un ajuste
+  // silencioso que contradecía la regla "un guardado legítimo no genera ningún ajuste" (t_save_sanitize).
+  if(_ssHas(parsed, "rewardOverflow") && !Array.isArray(parsed.rewardOverflow)){
+    delete parsed.rewardOverflow; note("save.rewardOverflow", "debía ser una lista -> descartado");
+  }
   if(Array.isArray(parsed.stash) && parsed.stash.length>SAVE_LIMITS.stash){
     const excess=parsed.stash.splice(SAVE_LIMITS.stash);
+    if(!Array.isArray(parsed.rewardOverflow)) parsed.rewardOverflow=[];
     for(let i=0;i<excess.length;i+=100)parsed.rewardOverflow.push(excess.slice(i,i+100));
+    note("save.stash", "superaba " + SAVE_LIMITS.stash + " objetos -> " + excess.length + " pasaron al buzón");
   }
-  parsed.rewardOverflow=parsed.rewardOverflow.filter(Array.isArray).flatMap((chunk)=>{
+  if(Array.isArray(parsed.rewardOverflow)) parsed.rewardOverflow=parsed.rewardOverflow.filter(Array.isArray).flatMap((chunk)=>{
     const out=[];for(let i=0;i<chunk.length;i+=100)out.push(cleanItems(chunk.slice(i,i+100),"save.rewardOverflow"));return out;
   }).filter(c=>c.length);
   if(Array.isArray(parsed.stash)) parsed.stash = cleanItems(parsed.stash, "save.stash");
