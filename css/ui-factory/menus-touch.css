@@ -1,0 +1,64 @@
+/* css/ui-factory/menus-touch.css — UI Factory · blancos de 44×44 px en menús (contrato UF-MENU v1).
+   Solo tamaños mínimos y casillas de verificación táctiles; no cambia colores, textos ni reglas.
+   Línea base (docs/ui-factory/BASELINE.md §3.4): Inventario 26/26, Sala 16/19, Tienda 21/24, Guardianes 18/18, Modos 7/12 por debajo de 44 px.
+   Se carga después de ui-kit.css/mobile.css (ver INTEGRATION_CONTRACTS.md §4). */
+@media (any-pointer:coarse), (max-height:520px){
+.screen.screen button, .screen.screen select, .screen.screen summary, .screen.screen input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]),
+.screen.screen [role="button"], .screen.screen [role="tab"], #pause-screen.screen button, .ui-icon-btn.ui-icon-btn{ min-height:44px; min-width:44px; box-sizing:border-box; }
+.screen.screen summary{ display:flex; align-items:center; cursor:pointer; }
+.screen.screen details > summary::marker{ color:var(--ui-gold, #ffd76a); }
+/* casilla de verificación pixel-art de 44 px (antes 13 px del control nativo) */
+.screen.screen input[type="checkbox"], #pause-screen input[type="checkbox"]{
+  -webkit-appearance:none; appearance:none; flex:none; position:relative; cursor:pointer;
+  width:44px; height:44px; margin:0 8px 0 0; vertical-align:middle; box-sizing:border-box;
+  background:var(--ui-inset, #0c0806); border:3px solid #000; box-shadow:inset 0 0 0 2px var(--ui-line-hi, #6a3e1e), 2px 2px 0 #000; }
+.screen.screen input[type="checkbox"]::after, #pause-screen input[type="checkbox"]::after{ content:""; position:absolute; inset:9px; background:transparent; }
+.screen.screen input[type="checkbox"]:checked::after, #pause-screen input[type="checkbox"]:checked::after{ background:var(--ui-gold, #ffd76a); box-shadow:inset -3px -3px 0 rgba(0,0,0,.35), 2px 2px 0 #000; }
+.screen.screen input[type="checkbox"]:focus-visible, #pause-screen input[type="checkbox"]:focus-visible{ outline:2px solid var(--ui-gold, #ffd76a); outline-offset:2px; }
+.screen.screen .setup input[type="checkbox"], .screen.screen label input[type="checkbox"]{ width:44px; min-width:44px; max-width:44px; height:44px; min-height:44px; padding:0; }
+.screen.screen label:has(> input[type="checkbox"]), #pause-screen label:has(> input[type="checkbox"]){ display:flex; align-items:center; min-height:44px; gap:2px; }
+.pause-motion{ display:flex; align-items:center; justify-content:space-between; }
+/* excepciones con selectores de ID/enlace del juego (css/duo-ux.css fija #prep-start-btn en 42 px en apaisado corto) */
+#prep-screen #prep-start-btn{ min-height:44px; }
+.screen.screen a[href], .screen.screen a[data-open-myinv]{ display:inline-flex; align-items:center; min-height:44px; padding:0 6px; }
+.hub-screen.screen details > summary, .screen.screen details > summary{ min-height:44px; }
+/* R2: con display:flex el navegador oculta el triángulo de <details>; se dibuja uno propio */
+.screen.screen details > summary::-webkit-details-marker{ display:none; }
+.screen.screen details > summary::before{ content:"▸"; display:inline-block; width:1.1em; flex:none; color:var(--ui-gold, #ffd76a); }
+.screen.screen details[open] > summary::before{ content:"▾"; }
+/* R6 */
+.screen.screen input[type="range"]{ min-height:44px; }
+.legal-foot a, #title-screen .legal-title a{ min-height:44px; display:inline-flex; align-items:center; box-sizing:border-box; }
+#title-screen.screen .legal-title{ bottom:calc(8px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* R1 (REWORK de Sala y Pausa en pantallas bajas, 844×390): la acción principal pasa a barra inferior con degradado
+   (el contenido se desvanece bajo ella, no queda "cortado" por un botón flotante) y la Pausa se reorganiza en dos columnas
+   para que Continuar / Abandonar entren sin desplazar. Solo presentación: mismos botones, ids y handlers. */
+@media (max-height:520px){
+  #prep-screen:not(.hidden){ padding-bottom:104px; }
+  #prep-screen:not(.hidden)::after{ content:""; position:fixed; left:0; right:0; bottom:0; height:56px; z-index:39; pointer-events:none;
+    background:linear-gradient(rgba(10,6,4,0), rgba(10,6,4,.96) 55%); }
+  #pause-screen.screen:not(.hidden){ display:grid; grid-template-columns:1fr 1fr; align-content:center; justify-items:stretch; gap:6px 12px; padding:8px 24px; }
+  #pause-screen .arena-title, #pause-screen .pause-audio, #pause-screen #stats-panel{ grid-column:1 / -1; justify-self:center; }
+  #pause-screen .pause-note{ grid-column:1 / -1; justify-self:center; max-width:640px; margin:0; font-size:.62rem; line-height:1.15; text-align:center; }
+  #pause-screen.screen:not(.hidden){ row-gap:4px; }
+  #pause-screen .pause-audio label{ min-height:44px; } /* se conserva: en online avisa que la partida SIGUE */
+  #pause-screen .pause-audio{ margin:0; gap:6px 14px; }
+  #pause-screen .pause-opts-btn, #pause-screen #pause-howto-btn, #pause-screen #resume-btn, #pause-screen #quit-btn{ margin:0; width:100%; }
+  /* con la ficha táctica abierta (#tactical-panel, js/ui/tactical-panel.js): ficha a la izquierda con su propio scroll, controles a la derecha;
+     el resumen de equipo/talentos (#stats-panel) queda debajo de los controles (se llega con scroll, la acción principal no se desplaza) */
+  #pause-screen.screen:not(.hidden):has(#tactical-panel){ grid-template-columns:minmax(0,1.15fr) minmax(0,.9fr) minmax(0,.9fr); grid-auto-rows:min-content; align-content:start; padding:8px 16px; }
+  #pause-screen:has(#tactical-panel) #tactical-panel{ grid-column:1; grid-row:1 / span 6; margin:0; width:auto; height:calc(100vh - 16px); min-height:0; overflow-y:auto; align-self:start; justify-self:stretch; }
+  #pause-screen:has(#tactical-panel) .arena-title{ grid-column:2 / 4; grid-row:1; }
+  #pause-screen:has(#tactical-panel) .pause-note{ grid-column:2 / 4; grid-row:2; }
+  #pause-screen:has(#tactical-panel) .pause-audio{ grid-column:2 / 4; grid-row:3; }
+  #pause-screen:has(#tactical-panel) .pause-opts-btn{ grid-column:2; grid-row:4; }
+  #pause-screen:has(#tactical-panel) #resume-btn{ grid-column:2; grid-row:5; }
+  #pause-screen:has(#tactical-panel) #pause-howto-btn{ grid-column:3; grid-row:4; }
+  #pause-screen:has(#tactical-panel) #quit-btn{ grid-column:3; grid-row:5; }
+  #pause-screen:has(#tactical-panel) #stats-panel{ grid-column:2 / 4; grid-row:6; max-width:none; margin:6px 0 0; }
+}
+
+/* D5: los desplegables miden 44 px también con mouse (hub y Cristales) */
+.screen.screen details > summary{ min-height:44px; display:flex; align-items:center; }
