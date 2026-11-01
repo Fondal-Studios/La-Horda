@@ -88,6 +88,7 @@ const TESTS = [
   T('tools/quality/test-classic-passives.js', 'own', 900),
   T('tools/quality/test-floating-text-rate.js', 'own', 600),
   T('tools/quality/test-nano-render.js', 'own', 600),
+  T('tools/quality/test-perf-budget.js', 'site', 600),
   T('tools/quality/test-projectile-identity.js', 'own', 600),
   T('tools/vfx/test-ult-forms.js', 'site', 2400, {slow: 1}),
   T('tools/vfx/test-decal-legible.js', 'site', 1800, {slow: 1}),
