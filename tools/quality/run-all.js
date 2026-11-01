@@ -42,6 +42,7 @@ const TESTS = [
   T('tools/agents/test-agents.js', 'node', 180, {q: 1}),
   T('tools/agents/test-conflicts.js', 'node', 180, {q: 1}),
   T('tools/factory/test-art-handoff.js', 'node', 120, {q: 1}),
+  T('tools/visual-package/test.js', 'node', 120, {q: 1}),
   T('tools/review/test-review.js', 'node', 180, {q: 1}),
   T('tools/contracts/t_contract_beta.js', 'node', 180, {q: 1}),
   T('tools/contracts/t_contract_registry.js', 'node', 120, {q: 1}),
