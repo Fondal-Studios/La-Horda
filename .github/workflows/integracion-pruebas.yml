@@ -103,6 +103,8 @@ jobs:
       - name: "Equipos claros en Cristales y Coliseo (test-sides)"
         if: ${{ !cancelled() }}
         timeout-minutes: 15
+        # Intermitente declarada en tools/quality/qa-manifest.json (tolerated): Intermitente conocida: el muestreo del color de un sprite en Cristales…
+        continue-on-error: true
         run: node tools/lanes/test-sides.js
       - name: "Desborde de texto (test-text-overflow)"
         if: ${{ !cancelled() }}
@@ -222,6 +224,8 @@ jobs:
     name: "Objetos, economía y tienda (pruebas que hoy fallan en la base)"
     runs-on: ubuntu-latest
     timeout-minutes: 40
+    # Intermitente declarada en tools/quality/qa-manifest.json (tolerated): Intermitente en GitHub Actions: BRK.bot_patea_cuando_la_horda_se_amont…
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-playwright

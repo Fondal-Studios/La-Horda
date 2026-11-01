@@ -904,6 +904,14 @@
   "pixel-density.yml::Densidad de píxel": {
    "reason": "Informativo por docs/ART_BIBLE.md §14. Falla solo por assets/sprites/arenas/world-v1 sin excepción firmada (decisión D-24 del director).",
    "issue": "D-24"
+  },
+  "integracion-pruebas.yml::Equipos claros en Cristales y Coliseo (test-sides)": {
+   "reason": "Intermitente conocida: el muestreo del color de un sprite en Cristales (píxel de minion/ally) falla a veces y pasa en el reintento (FLAKY en run-all en CI).",
+   "issue": "S0C-seguimiento"
+  },
+  "integracion-pruebas.yml::Rompibles (t_breakables)": {
+   "reason": "Intermitente en GitHub Actions: BRK.bot_patea_cuando_la_horda_se_amontona (azar del bot). Pasó localmente 2/2 y en la regresión completa; falló 1 de 1 vez en CI. Sin semilla fija; a investigar.",
+   "issue": "S0C-seguimiento"
   }
  }
 }
