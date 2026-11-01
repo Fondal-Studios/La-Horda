@@ -2334,7 +2334,148 @@
   }
  },
  "guerrero": {
-  "status": "sin_pack_estandar"
+  "status": "ok",
+  "atlas": "assets/sprites/champions/guerrero/std-v1/atlas.png",
+  "issues": {
+   "empty": 0,
+   "static": 0,
+   "ground": 0,
+   "edge": 0,
+   "jitter": 0,
+   "identity": 0
+  },
+  "severity": 0,
+  "clips": 16,
+  "ref_extraction_ok": true,
+  "worst_identity": [],
+  "detail": {
+   "idle_down": {
+    "frames": [
+     0
+    ],
+    "problems": []
+   },
+   "walk_down": {
+    "frames": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "problems": []
+   },
+   "attack_down": {
+    "frames": [
+     12,
+     13,
+     14,
+     15
+    ],
+    "problems": []
+   },
+   "idle_side": {
+    "frames": [
+     4
+    ],
+    "problems": []
+   },
+   "walk_side": {
+    "frames": [
+     4,
+     5,
+     6,
+     7
+    ],
+    "problems": []
+   },
+   "attack_side": {
+    "frames": [
+     16,
+     17,
+     18,
+     19
+    ],
+    "problems": []
+   },
+   "idle_up": {
+    "frames": [
+     8
+    ],
+    "problems": []
+   },
+   "walk_up": {
+    "frames": [
+     8,
+     9,
+     10,
+     11
+    ],
+    "problems": []
+   },
+   "attack_up": {
+    "frames": [
+     20,
+     21,
+     22,
+     23
+    ],
+    "problems": []
+   },
+   "cast_down": {
+    "frames": [
+     12,
+     13,
+     14,
+     15
+    ],
+    "problems": []
+   },
+   "cast_side": {
+    "frames": [
+     16,
+     17,
+     18,
+     19
+    ],
+    "problems": []
+   },
+   "cast_up": {
+    "frames": [
+     20,
+     21,
+     22,
+     23
+    ],
+    "problems": []
+   },
+   "hit_down": {
+    "frames": [
+     0
+    ],
+    "problems": []
+   },
+   "hit_side": {
+    "frames": [
+     4
+    ],
+    "problems": []
+   },
+   "hit_up": {
+    "frames": [
+     8
+    ],
+    "problems": []
+   },
+   "run": {
+    "frames": [
+     4,
+     5,
+     6,
+     7
+    ],
+    "problems": []
+   }
+  }
  },
  "ilkan": {
   "status": "ok",
@@ -3149,7 +3290,184 @@
   }
  },
  "mago": {
-  "status": "sin_pack_estandar"
+  "status": "ok",
+  "atlas": "assets/sprites/champions/mago/std-v1/atlas.png",
+  "issues": {
+   "empty": 0,
+   "static": 0,
+   "ground": 0,
+   "edge": 0,
+   "jitter": 0,
+   "identity": 0
+  },
+  "severity": 0,
+  "clips": 19,
+  "ref_extraction_ok": true,
+  "worst_identity": [],
+  "detail": {
+   "idle_down": {
+    "frames": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "problems": []
+   },
+   "idle_side": {
+    "frames": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "problems": []
+   },
+   "idle_up": {
+    "frames": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "problems": []
+   },
+   "walk_down": {
+    "frames": [
+     4,
+     5,
+     6,
+     7
+    ],
+    "problems": []
+   },
+   "walk_side": {
+    "frames": [
+     4,
+     5,
+     6,
+     7
+    ],
+    "problems": []
+   },
+   "walk_up": {
+    "frames": [
+     4,
+     5,
+     6,
+     7
+    ],
+    "problems": []
+   },
+   "cast_down": {
+    "frames": [
+     8,
+     9,
+     10,
+     11
+    ],
+    "problems": []
+   },
+   "cast_side": {
+    "frames": [
+     8,
+     9,
+     10,
+     11
+    ],
+    "problems": []
+   },
+   "cast_up": {
+    "frames": [
+     8,
+     9,
+     10,
+     11
+    ],
+    "problems": []
+   },
+   "hit_down": {
+    "frames": [
+     12
+    ],
+    "problems": []
+   },
+   "hit_side": {
+    "frames": [
+     12
+    ],
+    "problems": []
+   },
+   "hit_up": {
+    "frames": [
+     12
+    ],
+    "problems": []
+   },
+   "death_down": {
+    "frames": [
+     12,
+     13,
+     14,
+     15
+    ],
+    "problems": []
+   },
+   "death_side": {
+    "frames": [
+     12,
+     13,
+     14,
+     15
+    ],
+    "problems": []
+   },
+   "death_up": {
+    "frames": [
+     12,
+     13,
+     14,
+     15
+    ],
+    "problems": []
+   },
+   "attack_down": {
+    "frames": [
+     8,
+     9,
+     10,
+     11
+    ],
+    "problems": []
+   },
+   "attack_side": {
+    "frames": [
+     8,
+     9,
+     10,
+     11
+    ],
+    "problems": []
+   },
+   "attack_up": {
+    "frames": [
+     8,
+     9,
+     10,
+     11
+    ],
+    "problems": []
+   },
+   "run": {
+    "frames": [
+     4,
+     5,
+     6,
+     7
+    ],
+    "problems": []
+   }
+  }
  },
  "maura": {
   "status": "ok",
@@ -4544,41 +4862,16 @@
    "ground": 0,
    "edge": 0,
    "jitter": 0,
-   "identity": 24
+   "identity": 1
   },
-  "severity": 24,
+  "severity": 1,
   "clips": 18,
   "ref_extraction_ok": true,
   "worst_identity": [
    [
-    0.12,
-    "ult",
-    35
-   ],
-   [
-    0.15,
-    "death_down",
-    47
-   ],
-   [
-    0.15,
-    "death_side",
-    47
-   ],
-   [
-    0.15,
-    "death_up",
-    47
-   ],
-   [
     0.16,
     "ult",
-    34
-   ],
-   [
-    0.17,
-    "death_down",
-    46
+    35
    ]
   ],
   "detail": {
@@ -4616,20 +4909,7 @@
      42,
      43
     ],
-    "problems": [
-     [
-      "identity",
-      41
-     ],
-     [
-      "identity",
-      42
-     ],
-     [
-      "identity",
-      43
-     ]
-    ]
+    "problems": []
    },
    "death_down": {
     "frames": [
@@ -4640,24 +4920,7 @@
      48,
      49
     ],
-    "problems": [
-     [
-      "identity",
-      44
-     ],
-     [
-      "identity",
-      46
-     ],
-     [
-      "identity",
-      47
-     ],
-     [
-      "identity",
-      49
-     ]
-    ]
+    "problems": []
    },
    "idle_side": {
     "frames": [
@@ -4690,20 +4953,7 @@
      42,
      43
     ],
-    "problems": [
-     [
-      "identity",
-      41
-     ],
-     [
-      "identity",
-      42
-     ],
-     [
-      "identity",
-      43
-     ]
-    ]
+    "problems": []
    },
    "death_side": {
     "frames": [
@@ -4714,24 +4964,7 @@
      48,
      49
     ],
-    "problems": [
-     [
-      "identity",
-      44
-     ],
-     [
-      "identity",
-      46
-     ],
-     [
-      "identity",
-      47
-     ],
-     [
-      "identity",
-      49
-     ]
-    ]
+    "problems": []
    },
    "idle_up": {
     "frames": [
@@ -4764,20 +4997,7 @@
      42,
      43
     ],
-    "problems": [
-     [
-      "identity",
-      41
-     ],
-     [
-      "identity",
-      42
-     ],
-     [
-      "identity",
-      43
-     ]
-    ]
+    "problems": []
    },
    "death_up": {
     "frames": [
@@ -4788,24 +5008,7 @@
      48,
      49
     ],
-    "problems": [
-     [
-      "identity",
-      44
-     ],
-     [
-      "identity",
-      46
-     ],
-     [
-      "identity",
-      47
-     ],
-     [
-      "identity",
-      49
-     ]
-    ]
+    "problems": []
    },
    "cast_side": {
     "frames": [
@@ -4833,14 +5036,6 @@
      35
     ],
     "problems": [
-     [
-      "identity",
-      33
-     ],
-     [
-      "identity",
-      34
-     ],
      [
       "identity",
       35
@@ -6307,7 +6502,7 @@
   "ref_extraction_ok": true,
   "worst_identity": [
    [
-    0.12,
+    0.17,
     "walk_up",
     11
    ]
@@ -6501,7 +6696,148 @@
   }
  },
  "tanque": {
-  "status": "sin_pack_estandar"
+  "status": "ok",
+  "atlas": "assets/sprites/champions/tanque/std-v1/atlas.png",
+  "issues": {
+   "empty": 0,
+   "static": 0,
+   "ground": 0,
+   "edge": 0,
+   "jitter": 0,
+   "identity": 0
+  },
+  "severity": 0,
+  "clips": 16,
+  "ref_extraction_ok": true,
+  "worst_identity": [],
+  "detail": {
+   "idle_down": {
+    "frames": [
+     0
+    ],
+    "problems": []
+   },
+   "walk_down": {
+    "frames": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "problems": []
+   },
+   "attack_down": {
+    "frames": [
+     12,
+     13,
+     14,
+     15
+    ],
+    "problems": []
+   },
+   "idle_side": {
+    "frames": [
+     4
+    ],
+    "problems": []
+   },
+   "walk_side": {
+    "frames": [
+     4,
+     5,
+     6,
+     7
+    ],
+    "problems": []
+   },
+   "attack_side": {
+    "frames": [
+     16,
+     17,
+     18,
+     19
+    ],
+    "problems": []
+   },
+   "idle_up": {
+    "frames": [
+     8
+    ],
+    "problems": []
+   },
+   "walk_up": {
+    "frames": [
+     8,
+     9,
+     10,
+     11
+    ],
+    "problems": []
+   },
+   "attack_up": {
+    "frames": [
+     20,
+     21,
+     22,
+     23
+    ],
+    "problems": []
+   },
+   "cast_down": {
+    "frames": [
+     12,
+     13,
+     14,
+     15
+    ],
+    "problems": []
+   },
+   "cast_side": {
+    "frames": [
+     16,
+     17,
+     18,
+     19
+    ],
+    "problems": []
+   },
+   "cast_up": {
+    "frames": [
+     20,
+     21,
+     22,
+     23
+    ],
+    "problems": []
+   },
+   "hit_down": {
+    "frames": [
+     0
+    ],
+    "problems": []
+   },
+   "hit_side": {
+    "frames": [
+     4
+    ],
+    "problems": []
+   },
+   "hit_up": {
+    "frames": [
+     8
+    ],
+    "problems": []
+   },
+   "run": {
+    "frames": [
+     4,
+     5,
+     6,
+     7
+    ],
+    "problems": []
+   }
+  }
  },
  "tibor": {
   "status": "ok",
@@ -7106,33 +7442,12 @@
    "ground": 0,
    "edge": 0,
    "jitter": 0,
-   "identity": 4
+   "identity": 0
   },
-  "severity": 4,
+  "severity": 0,
   "clips": 29,
   "ref_extraction_ok": true,
-  "worst_identity": [
-   [
-    0.19,
-    "death_left",
-    109
-   ],
-   [
-    0.2,
-    "walk_left",
-    88
-   ],
-   [
-    0.2,
-    "walk_left",
-    89
-   ],
-   [
-    0.2,
-    "walk_left",
-    91
-   ]
-  ],
+  "worst_identity": [],
   "detail": {
    "idle_down": {
     "frames": [
@@ -7339,20 +7654,7 @@
      90,
      91
     ],
-    "problems": [
-     [
-      "identity",
-      88
-     ],
-     [
-      "identity",
-      89
-     ],
-     [
-      "identity",
-      91
-     ]
-    ]
+    "problems": []
    },
    "attack_left": {
     "frames": [
@@ -7397,12 +7699,7 @@
      110,
      111
     ],
-    "problems": [
-     [
-      "identity",
-      109
-     ]
-    ]
+    "problems": []
    },
    "run": {
     "frames": [
@@ -7622,43 +7919,12 @@
    "ground": 0,
    "edge": 0,
    "jitter": 0,
-   "identity": 15
+   "identity": 0
   },
-  "severity": 15,
+  "severity": 0,
   "clips": 22,
   "ref_extraction_ok": true,
-  "worst_identity": [
-   [
-    0.18,
-    "attack_up",
-    20
-   ],
-   [
-    0.18,
-    "attack_up",
-    21
-   ],
-   [
-    0.18,
-    "cast_up",
-    20
-   ],
-   [
-    0.18,
-    "cast_up",
-    21
-   ],
-   [
-    0.18,
-    "death_up",
-    20
-   ],
-   [
-    0.18,
-    "hit_up",
-    20
-   ]
-  ],
+  "worst_identity": [],
   "detail": {
    "idle_down": {
     "frames": [
@@ -7772,12 +8038,7 @@
     "frames": [
      8
     ],
-    "problems": [
-     [
-      "identity",
-      8
-     ]
-    ]
+    "problems": []
    },
    "walk_up": {
     "frames": [
@@ -7786,20 +8047,7 @@
      10,
      11
     ],
-    "problems": [
-     [
-      "identity",
-      8
-     ],
-     [
-      "identity",
-      9
-     ],
-     [
-      "identity",
-      11
-     ]
-    ]
+    "problems": []
    },
    "attack_up": {
     "frames": [
@@ -7808,20 +8056,7 @@
      22,
      23
     ],
-    "problems": [
-     [
-      "identity",
-      20
-     ],
-     [
-      "identity",
-      21
-     ],
-     [
-      "identity",
-      23
-     ]
-    ]
+    "problems": []
    },
    "cast_up": {
     "frames": [
@@ -7830,20 +8065,7 @@
      22,
      23
     ],
-    "problems": [
-     [
-      "identity",
-      20
-     ],
-     [
-      "identity",
-      21
-     ],
-     [
-      "identity",
-      23
-     ]
-    ]
+    "problems": []
    },
    "ultimate_up": {
     "frames": [
@@ -7852,42 +8074,19 @@
      22,
      23
     ],
-    "problems": [
-     [
-      "identity",
-      20
-     ],
-     [
-      "identity",
-      21
-     ],
-     [
-      "identity",
-      23
-     ]
-    ]
+    "problems": []
    },
    "hit_up": {
     "frames": [
      20
     ],
-    "problems": [
-     [
-      "identity",
-      20
-     ]
-    ]
+    "problems": []
    },
    "death_up": {
     "frames": [
      20
     ],
-    "problems": [
-     [
-      "identity",
-      20
-     ]
-    ]
+    "problems": []
    },
    "run": {
     "frames": [

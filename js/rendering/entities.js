@@ -53,7 +53,9 @@ function drawHeroBody(h, drawScale, spinning, stealthed){
   if(PORTADORES[h.classKey] && drawPortador(h, drawScale, stealthed?0.32:1)) return;
   // El Mago usa su propio atlas de sprites (arte provisto por el usuario) en vez del sprite
   // procedural; el resto de las clases sigue exactamente igual que antes.
-  if(h.classKey==="mago" && drawMagoAtlas(h, drawScale, stealthed?0.32:1)){
+  if(h.classKey==="mago" && !(h.hurtTimer>0) && !window.LEGACY_CHAMP_LOADER && drawChampPack("mago", h, drawScale, stealthed?0.32:1)){
+    // Cargador estándar (CHAMP_PACK); LEGACY_CHAMP_LOADER=true fuerza el cargador antiguo para comparar o revertir.
+  } else if(h.classKey==="mago" && drawMagoAtlas(h, drawScale, stealthed?0.32:1)){
     // dibujado con éxito desde el atlas; nada más que hacer en este bloque
   } else if(h.classKey==="soporte" && drawSoporteAtlas(h, drawScale, stealthed?0.32:1)){
     // dibujado con éxito desde el atlas; nada más que hacer en este bloque
@@ -78,6 +80,8 @@ function drawHeroBody(h, drawScale, spinning, stealthed){
     // Nigromante: dibujado con éxito desde sus sprites reales recortados.
   } else if(drawKnightAbilityFx(h, drawScale, stealthed?0.32:1)){
     // Caballero con Torbellino/Estampida/Grito activo: dibujado desde el paquete de habilidades
+  } else if((h.classKey==="tanque"||h.classKey==="guerrero") && !(h.hurtTimer>0) && !window.LEGACY_CHAMP_LOADER && drawChampPack(h.classKey, h, drawScale, stealthed?0.32:1)){
+    // Tanque/Guerrero por el cargador estándar (después de sus efectos de habilidad, igual que antes)
   } else if(DIR_ATLASES[h.classKey] && drawDirAtlasHero(DIR_ATLASES[h.classKey], h, drawScale, stealthed?0.32:1)){
     // Caballero (tanque) o Asesino (guerrero): dibujado con éxito desde su atlas de 4 direcciones
   } else {

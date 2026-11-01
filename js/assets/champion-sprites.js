@@ -623,6 +623,11 @@ AXIOM_REAL_IMG["up"].src = "assets/sprites/champions/axiom/dir-up.png";
 // Elyra: redraw autorizado, 24 cuadros; izquierda espejada y espalda real.
 champPackLoadAtlas("soporte", "assets/sprites/champions/soporte/v3/atlas.png", {"w":112,"h":112,"cols":4,"refH":71,"anchor":0.9464285714285714,"sets":{"idle_down":[0],"walk_down":[0,1,2,3],"attack_down":[12,13,14,15],"cast_down":[24,25,26,27],"hit_down":[12],"ultimate_down":[28,29,30,31],"death_down":[32,33,34,35],"idle_side":[4],"walk_side":[4,5,6,7],"attack_side":[16,17,18,19],"cast_side":[24,25,26,27],"hit_side":[16],"ultimate_side":[28,29,30,31],"death_side":[32,33,34,35],"idle_up":[8],"walk_up":[8,9,10,11],"attack_up":[20,21,22,23],"cast_up":[24,25,26,27],"hit_up":[20],"ultimate_up":[28,29,30,31],"death_up":[32,33,34,35],"ultimate_left":[-29,-30,-31,-32]}});
 
+// Tanque, Guerrero y Mago migrados al cargador estándar (tools/factory/migrate/legacy-to-pack.js; mismo arte, celdas uniformes).
+champPackLoadAtlas("tanque", "assets/sprites/champions/tanque/std-v1/atlas.png", {"w":176,"h":139,"cols":8,"refH":110,"anchor":0.9712,"fix":{"left":"mirror"},"sets":{"idle_down":[0],"walk_down":[0,1,2,3],"attack_down":[12,13,14,15],"idle_side":[4],"walk_side":[4,5,6,7],"attack_side":[16,17,18,19],"idle_up":[8],"walk_up":[8,9,10,11],"attack_up":[20,21,22,23]}});
+champPackLoadAtlas("guerrero", "assets/sprites/champions/guerrero/std-v1/atlas.png", {"w":136,"h":123,"cols":8,"refH":110,"anchor":0.9675,"fix":{"left":"mirror"},"sets":{"idle_down":[0],"walk_down":[0,1,2,3],"attack_down":[12,13,14,15],"idle_side":[4],"walk_side":[4,5,6,7],"attack_side":[16,17,18,19],"idle_up":[8],"walk_up":[8,9,10,11],"attack_up":[20,21,22,23]}});
+champPackLoadAtlas("mago", "assets/sprites/champions/mago/std-v1/atlas.png", {"w":184,"h":130,"cols":8,"refH":110,"anchor":0.9692,"fix":{"left":"mirror"},"sets":{"idle_down":[0,1,2,3],"idle_side":[0,1,2,3],"idle_up":[0,1,2,3],"walk_down":[4,5,6,7],"walk_side":[4,5,6,7],"walk_up":[4,5,6,7],"cast_down":[8,9,10,11],"cast_side":[8,9,10,11],"cast_up":[8,9,10,11],"hit_down":[12],"hit_side":[12],"hit_up":[12],"death_down":[12,13,14,15],"death_side":[12,13,14,15],"death_up":[12,13,14,15]}});
+
 // Encarnación del Abismo: coloso de carne cosida, 12 poses direccionales.
 const NIGRO_COLOSSUS = new Image();
 let NIGRO_COLOSSUS_READY = false;
