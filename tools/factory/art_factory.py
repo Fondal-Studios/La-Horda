@@ -486,7 +486,8 @@ def assemble(contract_json, strip_png, clip, frames_json, out_dir):
         if spread > 30: return {'ok': False, 'reason': f'sin alfa y el fondo no es plano (dispersión de borde {spread:.0f}): no se puede recortar de forma fiable'}
         near = np.sqrt(((a[..., :3].astype(int) - bg) ** 2).sum(axis=2)) <= 60
         lab, n_lab = ndimage.label(near); edge_labels = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))) - {0}
-        bgmask = np.isin(lab, list(edge_labels)); a[..., 3] = np.where(bgmask, 0, 255).astype(np.uint8); a[..., :3][bgmask] = 0; keyed = True
+        near_tight = np.sqrt(((a[..., :3].astype(int) - bg) ** 2).sum(axis=2)) <= 28   # islas del verde de fondo encerradas por el personaje
+        bgmask = np.isin(lab, list(edge_labels)) | near_tight; a[..., 3] = np.where(bgmask, 0, 255).astype(np.uint8); a[..., :3][bgmask] = 0; keyed = True
     op = (a[..., 3] > 20)
     cols = op.any(axis=0); runs = []; start = None
     for x, v in enumerate(cols):
@@ -576,6 +577,32 @@ def evaluate_candidate(contract_json, cand_png, assembly_json=None):
     checks['pies_estables'] = jit <= 3; checks['altura_constante_entre_poses'] = hj <= 0.20
     if jit > 3: defects.append({'sev': 'major', 'what': f'pies inestables (±{jit:.0f}px) en idle/walk'})
     if hj > 0.20: defects.append({'sev': 'major', 'what': f'altura inconsistente entre poses de un clip ({hj:.0%})'})
+    # 6b movimiento real: un ciclo de caminar/correr debe cambiar de pose (fracción de píxeles que cambian entre cuadros consecutivos vs el sprite actual)
+    def motion(cells, idx):
+        d = []
+        for x, y in zip(idx, idx[1:]):
+            ax, ay = cells[x], cells[y]; d.append(float(((np.abs(ax.astype(int) - ay.astype(int)).sum(axis=2) > 60) | ((ax[..., 3] > 0) != (ay[..., 3] > 0))).mean()))
+        return float(np.mean(d)) if d else 0.0
+    mot_fail = []
+    for name, clip in c['clips'].items():
+        if not re.search(r'(walk|run)', name): continue
+        idx = [i for i in clip['unique'] if i in gen and i < len(cc)]
+        if len(idx) < 2: continue
+        base_m, cand_m = motion(uc, idx), motion(cc, idx)
+        if cand_m < 0.5 * base_m: mot_fail.append((name, round(cand_m, 4), round(base_m, 4)))
+    checks['animacion_con_movimiento'] = not mot_fail
+    for name, cm, bm in mot_fail: defects.append({'sev': 'major', 'what': f'«{name}» casi no cambia de pose entre cuadros ({cm} vs {bm} del sprite actual): no es un ciclo de animación'})
+    # 6c residuos: texto, líneas de suelo o manchas sueltas (componentes aparte de la figura principal)
+    from scipy import ndimage
+    junk = []
+    for i in gen:
+        if i >= len(cc) or gm[i].get('empty'): continue
+        lab, nl = ndimage.label(cc[i][..., 3] > 0, structure=np.ones((3, 3)))
+        if nl > 1:
+            sizes = ndimage.sum(np.ones_like(lab), lab, range(1, nl + 1)); big = max(sizes)
+            if sum(1 for z in sizes if 6 <= z < 0.2 * big) >= 2: junk.append(i)
+    checks['sin_residuos_sueltos'] = not junk
+    if junk: defects.append({'sev': 'major', 'what': f'{len(junk)} cuadros con residuos sueltos (¿texto, suelo o manchas?)', 'frames': junk[:8]})
     # 7 conservación de silueta/armas: relación de altura candidato/actual por frame generado
     ratios = [ (gm[i]['bbox'][3] - gm[i]['bbox'][1] + 1) / max(1, metrics(uc[i])['bbox'][3] - metrics(uc[i])['bbox'][1] + 1) for i in gen if i < len(cc) and not gm[i].get('empty') and not metrics(uc[i]).get('empty')]
     reg = float(np.median(ratios)) if ratios else 1.0; checks['escala_vs_sprite_actual'] = 0.85 <= reg <= 1.15
@@ -616,8 +643,16 @@ def preview_sheet(contract_json, cand_png, out_png):
 def refstrip(contract_json, frames_json, out_png):
     """Referencia de entrada para el proveedor: las poses ACTUALES de un clip en una tira (fondo transparente)."""
     c = json.loads(Path(contract_json).read_text()); cw, ch, cols = c['cell']['w'], c['cell']['h'], c['cols']; frames = json.loads(frames_json)
-    cells = cells_of(load(ROOT / c['atlas']), cw, ch, cols); strip = Image.new('RGBA', (cw * len(frames), ch), (0, 0, 0, 0))
-    for k, fi in enumerate(frames): strip.paste(Image.fromarray(cells[fi], 'RGBA'), (k * cw, 0))
+    cells = cells_of(load(ROOT / c['atlas']), cw, ch, cols); n = len(frames)
+    # Runway exige relación de aspecto ≤ 2,355 y recomienda ≥ 640 px: rejilla de hasta 2 columnas, relleno al aspecto 1:1..2:1 y ampliación x3 por vecino más cercano (pixel art nítido)
+    gc = 1 if n == 1 else 2; gr = (n + gc - 1) // gc
+    strip = Image.new('RGBA', (cw * gc, ch * gr), (0, 0, 0, 0))
+    for k, fi in enumerate(frames): strip.paste(Image.fromarray(cells[fi], 'RGBA'), ((k % gc) * cw, (k // gc) * ch))
+    w, h = strip.size
+    if w / h > 2.0: nh = int(w / 2.0); canvas = Image.new('RGBA', (w, nh), (0, 0, 0, 0)); canvas.paste(strip, (0, (nh - h) // 2)); strip = canvas
+    elif h / w > 2.0: nw = int(h / 2.0); canvas = Image.new('RGBA', (nw, h), (0, 0, 0, 0)); canvas.paste(strip, ((nw - w) // 2, 0)); strip = canvas
+    k3 = 3 if min(strip.size) * 3 >= 480 else 4
+    strip = strip.resize((strip.size[0] * k3, strip.size[1] * k3), Image.NEAREST)
     Path(out_png).parent.mkdir(parents=True, exist_ok=True); strip.save(out_png); return {'strip': str(out_png)}
 
 

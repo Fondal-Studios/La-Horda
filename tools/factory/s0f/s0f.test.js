@@ -5,7 +5,18 @@ const test = require('node:test'), assert = require('node:assert/strict'), fs = 
 process.env.FONDAL_JOBS_ROOT = fs.mkdtempSync(path.join(os.tmpdir(), 's0f-jobs-')); process.env.FONDAL_SPEND_LEDGER = path.join(process.env.FONDAL_JOBS_ROOT, 'spend.json');
 ['BFL_API_KEY', 'ART_GEN_API_KEY', 'OPENAI_API_KEY'].forEach(k => delete process.env[k]);
 const s0f = require('./s0f'), {readContract} = require('./contract');
-const fixture = {name: 'fixture-test-only', estimate: j => ({estimated_cents_max: 0}), generate: async j => ({status: 'GENERATED', cached: false, file: j.references.at(-1), cost_cents: 0})};
+// Proveedor FIXTURE (solo pruebas): compone una tira horizontal con las poses ACTUALES, como lo haría un proveedor que devuelve tiras. No es IA.
+const fixture = {name: 'fixture-test-only', estimate: j => ({estimated_cents_max: 0}), generate: async j => {
+  const out = path.join(os.tmpdir(), 'fixture-' + j.id + '.png'), cj = path.join(process.env.FONDAL_JOBS_ROOT, 'fixture-contract.json'); fs.writeFileSync(cj, JSON.stringify(readContract('cazadora')));
+  const r = require('node:child_process').spawnSync('python3', ['-c', `
+import sys, json; sys.path.insert(0, '${path.resolve(__dirname, '..').replace(/\\/g, '/')}')
+import art_factory as af
+from PIL import Image
+c = json.load(open('${cj}')); cells = af.cells_of(af.load(af.ROOT / c['atlas']), c['cell']['w'], c['cell']['h'], c['cols']); fr = json.loads('${JSON.stringify(j.frames)}')
+cw, ch = c['cell']['w'], c['cell']['h']; strip = Image.new('RGBA', ((cw + 40) * len(fr), ch), (0, 0, 0, 0))
+for k, i in enumerate(fr): strip.paste(Image.fromarray(cells[i], 'RGBA'), (k * (cw + 40) + 20, 0))
+strip.save('${out}')`], {encoding: 'utf8'}); if (r.status !== 0) throw Error(r.stderr);
+  return {status: 'GENERATED', cached: false, file: out, cost_cents: 0}; }};
 test('contrato real de Sylva (no 36 poses) y de Libertador distinto; Tanque sin contrato literal => BLOCKED_CONTRACT', () => {
   const c = readContract('cazadora'); assert.equal(c.cell.w, 192); assert.equal(c.frames, 52); assert.notEqual(c.frames, 36);
   assert.notDeepEqual(readContract('libertador').cell, c.cell); assert.equal(readContract('tanque').kind, 'unsupported');

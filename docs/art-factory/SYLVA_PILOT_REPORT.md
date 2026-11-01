@@ -1,6 +1,22 @@
 # Piloto Sylva — informe
 
-**Estado de la generación real: BLOQUEADA (`BLOCKED_CREDENTIAL`).** No hay clave de proveedor en el entorno y no hay autorización de gasto nueva. **No se generó ninguna imagen con IA, no se gastó nada (US$ 0) y no se afirma ningún resultado de calidad.**
+**ACTUALIZACIÓN (2026-11-01, tarde): la generación real SE EJECUTÓ con Runway `gen4_image`.** El dueño entregó una clave y se hizo UN clip (`walk_down`, 4 poses) en 4 intentos. Resultado: **GENERATED → VALIDATED (automático 91,7) → NO APROBADO ni integrado**; falta revisión artística humana.
+
+| Intento | Resultado | Aprendizaje |
+|---|---|---|
+| 1 | HTTP 400: la referencia tenía relación 4,8:1 (Runway exige ≤ 2,355) | Las referencias ahora van en rejilla ≤ 2 columnas, aspecto ≤ 2:1 y ampliadas ×3 (nearest) |
+| 2 | Imagen devuelta pero **rechazada**: texto basura bajo los pies, línea de suelo, mancha verde entre las piernas, 4 poses casi iguales; el evaluador automático igual la puso en 90 (**falso positivo**) | Prompt con PROHIBIDO texto/suelo/sombra y ciclo de caminar explícito; el recorte de fondo elimina islas del color de fondo; el evaluador suma `animacion_con_movimiento` y `sin_residuos_sueltos` |
+| 3 | Runway: `FAILED - An unexpected error occurred` (sin entrega) | Reintento seguro: no se reserva dos veces dentro de un mismo lote nuevo |
+| 4 | **Tira limpia**: 4 poses distintas de ciclo de caminar, identidad coherente con el Códice (capucha con hojas, aljaba, arco, capa de hojas) y fondo plano recortable | Ver `real-run/intento2_*.png` |
+
+**Veredicto técnico/artístico preliminar (sin sustituir al artista):** identidad y animación prometedoras; el trazo es más fino que el del sprite actual (mayor detalle por píxel que el resto del roster) y la paleta se aleja un poco (intersección 0,43 < 0,45). Cobertura: 4 de 52 cuadros (7,7 %); el resto se hereda. **No reemplaza el sprite actual.**
+
+**Costo:** 2 imágenes devueltas × 8 créditos (1080p) ≈ **US$ 0,16** estimado; el libro reservó 10 ¢ por pedido (tope). El costo real se confirma en el panel de Runway. **Tiempo:** ~1 min por pedido.
+
+---
+(Lo que sigue es el estado ANTERIOR a la clave, conservado como historia.)
+
+**Estado de la generación real (antes): BLOQUEADA (`BLOCKED_CREDENTIAL`).**
 
 ## Qué sí se ejecutó (evidencia en `docs/art-factory/pilot-sylva/`)
 | Paso | Resultado |

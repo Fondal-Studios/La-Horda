@@ -103,7 +103,7 @@ class RunwayProvider {
     const post = await postWith429(this.fetch, 'https://api.dev.runwayml.com/v1/text_to_image', {method: 'POST', headers, body: JSON.stringify({model: this.model, promptText: prompt, ratio: this.ratio, referenceImages: refs}), signal, redirect: 'error'});
     if (post.status === 401 || post.status === 403) throw new Blocked('BLOCKED_CREDENTIAL', 'clave rechazada (HTTP ' + post.status + ')');
     if (post.status === 402) throw new Blocked('BLOCKED_CREDIT', 'sin créditos en Runway: cargar saldo en https://dev.runway.com');
-    if (!post.ok) throw new Error('Runway HTTP ' + post.status);
+    if (!post.ok) { let t = ''; try { t = (await post.text()).slice(0, 400); } catch (e) {} throw new Error('Runway HTTP ' + post.status + (t ? ': ' + t : '')); }
     const task = await post.json(); if (!task.id) throw new Error('Runway sin id de tarea');
     let out;
     while (!out) {

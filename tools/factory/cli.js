@@ -13,7 +13,7 @@ try {
   } else if (command === 'duplicity') {
     const r = spawnSync('node', ['tools/factory/duplicity.js', ...(arg ? [arg] : [])], {cwd:ROOT, stdio:'inherit', timeout:600000});
     process.exitCode = r.status || 0;
-  } else if (command === 'validate') {
+  } else if (command === 'validate' && /\.json$/.test(arg || '')) {  // manifiesto de campeón nuevo (comando anterior, sin cambios); sin .json => validate <id> de S0F
     const errors = validate(JSON.parse(fs.readFileSync(arg, 'utf8')));
     console.log(JSON.stringify({status:errors.length ? 'INCOMPLETE' : 'STRUCTURAL_PASS', errors, note:'STRUCTURAL_PASS is not visual, gameplay or release approval.'}, null, 2));
     if (errors.length) process.exitCode = 1;

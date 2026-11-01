@@ -25,7 +25,7 @@ function plan(contract, {kind = 'champion', action = null, skin = null} = {}) {
     for (let k = 0; k < fr.length; k += 4) {
       const chunk = fr.slice(k, k + 4);
       jobs.push({id: `${name}-${k / 4}`, label: `${contract.id}/${name}`, clip: name, frames: chunk,
-        prompt: `${STYLE} Personaje: ${contract.id} (referencia: página del Códice y tira de poses actuales). ${kind === 'skin' ? `Skin premium «${skin}»: diseño propio nuevo, silueta y arma reconocibles, NO un recoloreo.` : 'Conservar rostro, vestimenta, arma, paleta y proporciones del Códice.'} Generar ${chunk.length} poses de «${name}» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.`,
+        prompt: `${STYLE} Personaje: ${contract.id} (referencia: página del Códice y tira de poses actuales). ${kind === 'skin' ? `Skin premium «${skin}»: diseño propio nuevo, silueta y arma reconocibles, NO un recoloreo.` : 'Conservar rostro, vestimenta, arma, paleta y proporciones del Códice.'} Generar ${chunk.length} poses DISTINTAS de «${name}» en una fila horizontal${/walk|run/.test(name) ? ' (ciclo de caminar: contacto, paso, contacto con la otra pierna, paso: las piernas y los brazos cambian de posición en cada pose)' : ''}, mismo tamaño y pies alineados, misma escala. PROHIBIDO: texto, letras, números, rótulos, línea de suelo, sombra, tierra, marcos y cualquier elemento que no sea el personaje.`,
         needs: ['codexPage', 'currentStrip']});
     }
   }
