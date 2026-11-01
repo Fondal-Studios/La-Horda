@@ -477,7 +477,17 @@ def assemble(contract_json, strip_png, clip, frames_json, out_dir):
     escala UNIFORME a la altura de referencia (refH), ancla los pies al anclaje del contrato y endurece el alfa."""
     c = json.loads(Path(contract_json).read_text()); frames = json.loads(frames_json)
     cw, ch, ref_h, anchor = c['cell']['w'], c['cell']['h'], c['refH'], c['anchor']
-    im = Image.open(strip_png).convert('RGBA'); a = np.array(im); op = (a[..., 3] > 20)
+    im = Image.open(strip_png).convert('RGBA'); a = np.array(im)
+    keyed = False
+    if a[..., 3].min() >= 250:   # salida SIN alfa (p. ej. Runway): se recorta el fondo plano conectado a los bordes; si no es plano, se rechaza
+        from scipy import ndimage
+        border = np.concatenate([a[0, :, :3], a[-1, :, :3], a[:, 0, :3], a[:, -1, :3]]).astype(int)
+        bg = np.median(border, axis=0); spread = float(np.abs(border - bg).max(axis=1).mean())
+        if spread > 30: return {'ok': False, 'reason': f'sin alfa y el fondo no es plano (dispersión de borde {spread:.0f}): no se puede recortar de forma fiable'}
+        near = np.sqrt(((a[..., :3].astype(int) - bg) ** 2).sum(axis=2)) <= 60
+        lab, n_lab = ndimage.label(near); edge_labels = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))) - {0}
+        bgmask = np.isin(lab, list(edge_labels)); a[..., 3] = np.where(bgmask, 0, 255).astype(np.uint8); a[..., :3][bgmask] = 0; keyed = True
+    op = (a[..., 3] > 20)
     cols = op.any(axis=0); runs = []; start = None
     for x, v in enumerate(cols):
         if v and start is None: start = x
@@ -505,7 +515,7 @@ def assemble(contract_json, strip_png, clip, frames_json, out_dir):
         out[fi] = arr
     Path(out_dir).mkdir(parents=True, exist_ok=True)
     for fi, arr in out.items(): Image.fromarray(arr, 'RGBA').save(Path(out_dir) / f'f{fi:03d}.png')
-    return {'ok': True, 'clip': clip, 'frames': sorted(out), 'heights_px': heights}
+    return {'ok': True, 'clip': clip, 'frames': sorted(out), 'heights_px': heights, 'background_keyed': keyed}
 
 
 def build_atlas(contract_json, parts_dir, out_png):

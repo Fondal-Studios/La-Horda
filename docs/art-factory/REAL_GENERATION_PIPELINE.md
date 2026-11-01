@@ -10,8 +10,8 @@ Códice (página + tira de poses actuales) → contrato real del motor → plan 
 
 ## Comandos (CLI existente `tools/factory/cli.js`; los anteriores no cambian)
 ```bash
-node tools/factory/cli.js generate champion cazadora --provider bfl,openai --dry-run   # plan y costo máximo, sin red ni gasto
-node tools/factory/cli.js generate champion cazadora --provider bfl,openai --max-task-cents 25 --max-batch-cents 325 --max-day-cents 500
+node tools/factory/cli.js generate champion cazadora --provider runway,openai --dry-run   # plan y costo máximo, sin red ni gasto
+node tools/factory/cli.js generate champion cazadora --provider runway,openai --max-task-cents 10 --max-batch-cents 130 --max-day-cents 500
 node tools/factory/cli.js generate skin cazadora <nombre_de_skin>
 node tools/factory/cli.js generate animation cazadora walk_down
 node tools/factory/cli.js validate cazadora      # GENERATED → VALIDATED solo si ≥ 90 y 0 críticos
@@ -20,7 +20,7 @@ node tools/factory/cli.js approve cazadora --reviewer <nombre>   # aprobación h
 node tools/factory/cli.js integrate cazadora     # exige APPROVED; copia a assets/.../codex-v2/ (nunca sobrescribe)
 node tools/factory/cli.js status cazadora
 ```
-Variables: `BFL_API_KEY` y/o `ART_GEN_API_KEY`/`OPENAI_API_KEY` (secretos del entorno, nunca en el repo), `FONDAL_SPEND_LEDGER` (ruta absoluta del libro de gasto), `FONDAL_JOBS_ROOT` (por defecto `art-source/factory-jobs`), `FONDAL_OPENAI_IMAGE_MODEL`.
+Variables: `RUNWAYML_API_SECRET` (por defecto), `BFL_API_KEY` y/o `ART_GEN_API_KEY`/`OPENAI_API_KEY` (secretos del entorno, nunca en el repo), `FONDAL_SPEND_LEDGER` (ruta absoluta del libro de gasto), `FONDAL_JOBS_ROOT` (por defecto `art-source/factory-jobs`), `FONDAL_OPENAI_IMAGE_MODEL`.
 
 ## Estados (no se confunden)
 `PLANNED` (solo plan) · `GENERATED` (hay píxeles del proveedor; **no** implica calidad) · `VALIDATED` (evaluador automático ≥ 90, sin críticos) · `APPROVED` (humano, con hash del atlas) · `INTEGRATED` (copiado a ruta nueva; el registro lo hace el PR) · `BLOCKED` (con motivo: `BLOCKED_CREDENTIAL`, `BLOCKED_CREDIT`, `BLOCKED_CONTRACT`…). Código de salida 3 si queda BLOCKED.

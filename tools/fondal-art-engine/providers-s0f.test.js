@@ -46,3 +46,18 @@ test('BFL: HTTP 402 => BLOCKED_CREDIT; fallback pasa al siguiente proveedor', as
   await assert.rejects(P.withFallback([bfl, oa], mkJob(d)), /BLOCKED_CREDENTIAL/); // BFL bloquea por crédito, OpenAI por falta de clave: queda BLOCKED, no éxito simulado
   delete process.env.BFL_API_KEY;
 });
+
+test('Runway: sin clave BLOCKED; flujo POST→sondeo→descarga sin clave; 402 => BLOCKED_CREDIT', async () => {
+  delete process.env.RUNWAYML_API_SECRET; delete process.env.RUNWAY_API_KEY; const d = tmp(), g = new SpendGuard({ledgerPath: path.join(d, 'l.json')});
+  await assert.rejects(new P.RunwayProvider({fetchImpl: async () => { throw Error('no debe llamarse'); }, guard: g}).generate(mkJob(d)), /BLOCKED_CREDENTIAL/);
+  process.env.RUNWAYML_API_SECRET = 'rk'; const seen = []; let n = 0;
+  const f = async (u, o = {}) => { seen.push([u, o.headers && o.headers.authorization, o.headers && o.headers['x-runway-version'], o.body]);
+    if (u.endsWith('/v1/text_to_image')) return resp(200, {id: 'tk'});
+    if (u.includes('/v1/tasks/')) return resp(200, ++n < 2 ? {status: 'RUNNING'} : {status: 'SUCCEEDED', output: ['https://dnznrvs05pmza.cloudfront.net/o.png']});
+    return resp(200, {}, png); };
+  const r = await new P.RunwayProvider({fetchImpl: f, guard: g, pollMs: 1}).generate(mkJob(d), {batch: 'b'});
+  assert.equal(r.status, 'GENERATED'); assert.equal(seen[0][2], '2024-11-06'); const body = JSON.parse(seen[0][3]); assert.equal(body.model, 'gen4_image'); assert.match(body.referenceImages[0].uri, /^data:image\/png;base64,/); assert.match(body.promptText, /@ref1/);
+  assert.equal(seen.at(-1)[1], undefined); // la descarga NO lleva la clave
+  const d2 = tmp(); await assert.rejects(new P.RunwayProvider({fetchImpl: async () => resp(402, {}), guard: new SpendGuard({ledgerPath: path.join(d2, 'l.json')})}).generate({...mkJob(d2), id: 'j9'}), /BLOCKED_CREDIT/);
+  delete process.env.RUNWAYML_API_SECRET;
+});

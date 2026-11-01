@@ -5,7 +5,7 @@
 const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto'), {spawnSync} = require('node:child_process');
 const {readContract, ROOT} = require('./contract');
 const {SpendGuard} = require('../../fondal-art-engine/spend-guard');
-const {OpenAIImageProvider, BFLFlux2Provider, withFallback, Blocked} = require('../../fondal-art-engine/providers-s0f');
+const {OpenAIImageProvider, BFLFlux2Provider, RunwayProvider, withFallback, Blocked} = require('../../fondal-art-engine/providers-s0f');
 const JOBS = () => process.env.FONDAL_JOBS_ROOT || path.join(ROOT, 'art-source/factory-jobs');
 const PY = process.env.PYTHON || 'python3';
 const py = (...a) => { const r = spawnSync(PY, [path.join(ROOT, 'tools/factory/art_factory.py'), ...a], {cwd: ROOT, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024}); if (r.status !== 0) throw Error('art_factory.py ' + a[0] + ' falló: ' + (r.stderr || r.stdout).slice(-400)); return JSON.parse(r.stdout); };
@@ -14,7 +14,7 @@ const readJSON = f => JSON.parse(fs.readFileSync(f, 'utf8'));
 const latestRun = id => { const d = path.join(JOBS(), id); if (!fs.existsSync(d)) return null; const r = fs.readdirSync(d).filter(x => fs.statSync(path.join(d, x)).isDirectory()).sort(); return r.length ? path.join(d, r.at(-1)) : null; };
 function setState(dir, state, note, extra = {}) { const f = path.join(dir, 'state.json'), s = fs.existsSync(f) ? readJSON(f) : {history: []}; s.state = state; s.note = note || ''; s.history.push({state, at: new Date().toISOString(), note: note || ''}); Object.assign(s, extra); writeJSON(f, s); return s; }
 
-const STYLE = 'Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos.';
+const STYLE = 'Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos.';
 function plan(contract, {kind = 'champion', action = null, skin = null} = {}) {
   if (contract.kind !== 'atlas') throw new Blocked('BLOCKED_CONTRACT', contract.reason);
   const jobs = []; const names = action ? [action] : Object.keys(contract.clips);
@@ -39,8 +39,8 @@ async function generate(id, opts = {}) {
   try { jobs = plan(contract, opts); } catch (e) { if (e instanceof Blocked) { setState(dir, 'BLOCKED', e.message); return {state: 'BLOCKED', reason: e.message, dir}; } throw e; }
   writeJSON(path.join(dir, 'contract.json'), contract); writeJSON(path.join(dir, 'plan.json'), {id, kind, opts, jobs});
   const ledger = process.env.FONDAL_SPEND_LEDGER || path.join(dir, '..', 'spend-ledger.json'), guard = new SpendGuard({ledgerPath: path.resolve(ledger), limits: opts.limits || {}});
-  const dry = !!opts.dryRun, names = (opts.provider || 'bfl').split(',');
-  const mk = n => n === 'openai' ? new OpenAIImageProvider({guard, dryRun: dry}) : n === 'bfl' ? new BFLFlux2Provider({guard, dryRun: dry}) : (opts.providers && opts.providers[n]) || (() => { throw Error('proveedor desconocido: ' + n); })();
+  const dry = !!opts.dryRun, names = (opts.provider || process.env.FONDAL_PROVIDER || 'runway,openai,bfl').split(',');
+  const mk = n => n === 'runway' ? new RunwayProvider({guard, dryRun: dry}) : n === 'openai' ? new OpenAIImageProvider({guard, dryRun: dry}) : n === 'bfl' ? new BFLFlux2Provider({guard, dryRun: dry}) : (opts.providers && opts.providers[n]) || (() => { throw Error('proveedor desconocido: ' + n); })();
   const providers = names.map(mk), batch = runId;
   const est = jobs.map(j => providers[0].estimate(j)); const maxCents = est.reduce((s, e) => s + (e.estimated_cents_max || 0), 0);
   writeJSON(path.join(dir, 'estimate.json'), {provider: names, jobs: jobs.length, max_cents: maxCents, note: 'tope conservador; el costo real lo informa el proveedor y queda en el libro de gasto'});

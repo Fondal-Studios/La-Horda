@@ -2,7 +2,6 @@
   "id": "cazadora",
   "kind": "champion",
   "opts": {
-    "provider": "bfl,openai",
     "dryRun": true,
     "limits": {},
     "concurrency": 2,
@@ -19,7 +18,7 @@
         38,
         39
       ],
-      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «idle_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «idle_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
       "needs": [
         "codexPage",
         "currentStrip"
@@ -35,7 +34,7 @@
         2,
         3
       ],
-      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «walk_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «walk_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
       "needs": [
         "codexPage",
         "currentStrip"
@@ -51,7 +50,7 @@
         18,
         19
       ],
-      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «attack_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «attack_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
       "needs": [
         "codexPage",
         "currentStrip"
@@ -67,7 +66,7 @@
         42,
         43
       ],
-      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «hit_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «hit_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
       "needs": [
         "codexPage",
         "currentStrip"
@@ -83,7 +82,7 @@
         46,
         47
       ],
-      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «death_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «death_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
       "needs": [
         "codexPage",
         "currentStrip"
@@ -97,7 +96,7 @@
         48,
         49
       ],
-      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 2 poses de «death_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 2 poses de «death_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
       "needs": [
         "codexPage",
         "currentStrip"
@@ -110,7 +109,7 @@
       "frames": [
         4
       ],
-      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 1 poses de «idle_side» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 1 poses de «idle_side» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
       "needs": [
         "codexPage",
         "currentStrip"
@@ -125,7 +124,7 @@
         6,
         7
       ],
-      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 3 poses de «walk_side» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 3 poses de «walk_side» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
       "needs": [
         "codexPage",
         "currentStrip"
@@ -141,7 +140,7 @@
         14,
         15
       ],
-      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «attack_side» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «attack_side» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
       "needs": [
         "codexPage",
         "currentStrip"
@@ -154,7 +153,7 @@
       "frames": [
         8
       ],
-      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 1 poses de «idle_up» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 1 poses de «idle_up» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
       "needs": [
         "codexPage",
         "currentStrip"
@@ -169,7 +168,7 @@
         10,
         11
       ],
-      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 3 poses de «walk_up» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 3 poses de «walk_up» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
       "needs": [
         "codexPage",
         "currentStrip"
@@ -185,7 +184,7 @@
         22,
         23
       ],
-      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «attack_up» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «attack_up» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
       "needs": [
         "codexPage",
         "currentStrip"
@@ -201,7 +200,7 @@
         26,
         27
       ],
-      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «cast_side» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «cast_side» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
       "needs": [
         "codexPage",
         "currentStrip"

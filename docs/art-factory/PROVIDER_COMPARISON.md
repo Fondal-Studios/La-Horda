@@ -18,3 +18,18 @@ Regla: solo figuran datos leídos en la documentación oficial (con su URL). Lo 
 * **Alternativo: OpenAI gpt-image.** Mejor encaje si hace falta alfa nativo y edición guiada; cuesta más por imagen y puede pedir verificación de organización. Está implementado como respaldo (`openai,bfl` en `--provider`).
 * Stability sirve como **herramienta auxiliar** (quitar fondo, 5 créditos = US$ 0,05) y Runway como opción de referencias etiquetadas; **no** se implementaron: sin datos de alfa/licencia verificados, no se justifica.
 * **Ninguna calidad se afirma sin el piloto.** Un modelo de ilustración no garantiza hojas consistentes: por eso el pipeline pide tiras de ≤ 4 poses, ensambla por contrato, endurece alfa, valida y exige revisión humana.
+
+
+## Actualización 2026-11-01 — Runway como proveedor principal alternativo (el dueño no puede pagar en BFL)
+Adaptador implementado y probado con API simulada: `RunwayProvider` (`--provider runway`, ahora **primero** en el orden por defecto `runway,openai,bfl`).
+
+**Verificado** (https://docs.dev.runwayml.com: `guides/using-the-api`, `assets/inputs`, `assets/outputs`, `usage/tiers`, `guides/pricing`, `usage/autobilling`):
+* Endpoint `POST https://api.dev.runwayml.com/v1/text_to_image`, `Authorization: Bearer <secreto>`, `X-Runway-Version: 2024-11-06`; body `{model, promptText, ratio, referenceImages:[{uri, tag}]}`; las referencias se citan en el prompt con `@tag`; `uri` puede ser URL https o **data URI (≤ 5 MB)**; PNG/JPEG/WebP; no se recomiendan referencias < 640×640.
+* Precio: **1 crédito = US$ 0,01**; `gen4_image` 5 créditos (720p) u 8 (1080p) = **US$ 0,05–0,08 por imagen**; `gen4_image_turbo` 2 créditos = US$ 0,02. El plan de Sylva (13 pedidos) cuesta ≈ **US$ 0,65–1,04** con gen4_image.
+* Las URLs de salida **expiran en 24–48 h**: el adaptador las descarga de inmediato. Sin límite de pedidos por minuto; sí tope diario y concurrencia por nivel (nivel 1: 1–2 simultáneos, 50–200 generaciones/día, US$ 100/mes; sube a nivel 2 tras comprar US$ 50).
+* Créditos prepagos por el portal https://dev.runway.com (por proyecto; puede sumar impuestos). La auto-recarga usa Stripe y exige un mínimo de US$ 10; el mínimo de compra manual **no figura**.
+* Clave: portal de desarrolladores https://dev.runway.com (variable que usa su documentación: `RUNWAYML_API_SECRET`; el adaptador también acepta `RUNWAY_API_KEY`).
+
+**NO verificado:** valores válidos de `ratio` (solo se vio `1920:1080`), máximo de imágenes de referencia, **transparencia** (no hay página que diga que una imagen salga con alfa), estados de tarea distintos de SUCCEEDED/THROTTLED, si `gen4_image_turbo` admite las mismas referencias, **qué medios de pago acepta** (la documentación solo nombra Stripe). **Comprobá en https://dev.runway.com que te deje cargar crédito antes de contar con él.**
+
+**Consecuencia técnica:** como no hay alfa garantizado, el prompt pide fondo verde plano y el ensamblador lo **recorta solo si el fondo es plano** (conectado a los bordes); si no lo es, rechaza esa tira (`el fondo no es plano…`) y solo se reintenta esa tira. Probado con imágenes sintéticas.

@@ -31,3 +31,22 @@ test('una tira inutilizable no rompe el atlas: queda en failures y el estado no 
   const r = await s0f.generate('cazadora', {provider: 'bad', providers: {bad}, kind: 'animation', action: 'idle_down'});
   assert.equal(r.state, 'BLOCKED'); assert.ok(r.failures.length >= 1);
 });
+
+test('salida SIN alfa con fondo plano: el ensamblador lo recorta y separa las poses; fondo no plano => se rechaza', () => {
+  const {spawnSync} = require('node:child_process'), c = path.join(process.env.FONDAL_JOBS_ROOT, 'c.json'); fs.writeFileSync(c, JSON.stringify(readContract('cazadora')));
+  const mk = (name, flat) => { const f = path.join(process.env.FONDAL_JOBS_ROOT, name); spawnSync('python3', ['-c', `
+from PIL import Image, ImageDraw
+import random
+random.seed(1)
+im = Image.new('RGB', (800, 200), (0,255,0))
+if not ${flat ? 'True' : 'False'}:
+    px = im.load()
+    for x in range(800):
+        for y in range(200): px[x, y] = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
+d = ImageDraw.Draw(im)
+for k in range(4): d.rectangle([40 + k*200, 30, 120 + k*200, 170], fill=(120, 60 + k*20, 30), outline=(10,10,10))
+im.save('${f}')`]); return f; };
+  const run = f => JSON.parse(spawnSync('python3', [path.resolve(__dirname, '../art_factory.py'), 'assemble', c, f, 'walk_down', '[0,1,2,3]', path.join(process.env.FONDAL_JOBS_ROOT, 'parts-' + path.basename(f))], {encoding: 'utf8'}).stdout);
+  const ok = run(mk('flat.png', true)); assert.equal(ok.ok, true, JSON.stringify(ok)); assert.equal(ok.background_keyed, true); assert.deepEqual(ok.frames, [0, 1, 2, 3]);
+  const bad = run(mk('noisy.png', false)); assert.equal(bad.ok, false); assert.match(bad.reason, /no es plano/);
+});
