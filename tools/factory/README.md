@@ -89,3 +89,18 @@ Pruebas: `node --test tools/factory/test-animation-contract.js`; el canario de L
 `python3 tools/factory/extract-authored-clip.py MANIFIESTO SALIDA RECIBO` extrae cuadros únicos en orden, con SHA-256 de fuente y RGBA por cuadro. No escala, filtra ni cambia la paleta. Rechaza grillas inválidas, duplicados, cuadros vacíos y alfa parcial. El recibo `EXTRACTED_NOT_APPROVED` no aprueba arte. Para un clip de cuatro cuadros112×112: `node tools/art/check-authored-clip-density.js ATLAS REPORTE` reutiliza el detector canónico sin cambiar umbrales; su alcance son esos cuatro cuadros. El checker de hojas36 conserva sus exigencias. Completar revisión visual, escala, Códice, skins, fallback, renderer y red antes de integrar. Prueba: `python3 -m unittest tools/factory/test_authored_clip.py`.
 
 - `python3 tools/factory/repair-outline-gaps.py MANIFIESTO STAGING`: repara huecos pequeños en un contorno oscuro ya existente tras diagnóstico visual. Conserva todo píxel opaco original, no redimensiona y registra coordenadas/hashes. Rechaza fuentes recortadas, alfa parcial, defectos extensos y escritura en assets. No transforma una ilustración ni aprueba el arte. Pruebas: `python3 -m unittest tools/factory/test_outline_gaps.py`.
+
+## Runway y los dos arquitectos
+
+```sh
+node tools/factory/cli.js runway status                          # saldo de créditos (la clave la inyecta el proxy; no hay claves en el repo)
+node tools/factory/cli.js runway image <id> "<prompt>"           # concepto en art-source/runway/<id>/ + receipt.json (GENERATED_NOT_APPROVED); tope RUNWAY_MAX_CREDITS (40)
+node tools/factory/cli.js architect-art plan <staging>           # clasifica concepto/atlas, valida recibo y hashes, lista los pasos y la rama art/<id>-<fecha>
+node tools/factory/cli.js architect-game assess <rama|commit>    # valora la rama contra origin/main: reglas del repo + simulación de fusión (merge-tree)
+node tools/factory/cli.js architect-game queue --limit=N --out=docs/production/architect-queue-<fecha>.json
+node --test tools/factory/test-architects.js
+```
+
+- **Runway produce conceptos**, no atlas 4×9. Un concepto entra al juego solo a través del Pintor/importador, Style Gate y revisión visual humana.
+- **Arquitecto de arte**: define dónde y en qué rama entra cada arte; `commit()` crea rama local + commit con las rutas del plan. No empuja, no abre PR, no marca aprobado.
+- **Arquitecto del juego**: veredictos `READY_FOR_MERGE_REVIEW` / `NEEDS_WORK` / `BLOCKED` (knownChampions tocado, credenciales, referencia de balance desincronizada, assets >2 MB, gameplay sin pruebas, conflictos). Es estático: los gates sugeridos deben ejecutarse sobre el commit exacto y la fusión la decide una persona.
