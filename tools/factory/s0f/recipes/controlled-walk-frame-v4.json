@@ -1,0 +1,69 @@
+{
+  "schema": "fondal.art-recipe.v1",
+  "id": "controlled-walk-frame-v4",
+  "version": 4,
+  "status": "experimental",
+  "scope": {
+    "clips": [
+      "walk_down"
+    ],
+    "minFrames": 1,
+    "maxFrames": 1,
+    "requiresExistingAtlasContract": true
+  },
+  "template": "Un SOLO sprite pixel art chibi (cabeza40-45%) La Horda de {id}; contorno oscuro 1px, 2-3 tonos/color, sin degradé. {identityInstruction} Ref1 define identidad; ref2 es SOLO guía geométrica de piernas, NO copiar colores, estilo ni proporciones adultas del maniquí. Pose obligatoria: {orderedPhases}. Cámara frontal tres cuartos FIJA. Congelar cabeza, torso, brazos y mano del {weaponLabel} de ref1; cambiar solo piernas y pliegues necesarios. NO voltear el personaje, cambiar mano del {weaponLabel}, cruzar piernas ni usar idle. Cuerpo ENTERO, {weaponLabel} y pies completos; margen vacío mínimo20% en los CUATRO lados. Fondo uniforme verde #00FF00 obligatorio, sin transparencia, damero, suelo ni sombras. Sin texto, etiquetas, marcas o elementos ajenos. Una imagen=un cuadro; no tira ni varias poses.",
+  "identityInstructions": {
+    "base": "Conservar rostro, traje, arma, paleta y proporciones del Códice.",
+    "skin": "Reparar skin EXISTENTE «{skin}»: conservar identidad, diseño, paleta, ropa, arma y silueta; no crear skin ni recolorear base."
+  },
+  "parameters": {
+    "id": "contract.id",
+    "skin": "contract.skin (or null)",
+    "frameCount": "job.frames.length",
+    "identityPaletteWeapon": "prepared contract identity reference; never invented defaults",
+    "geometry": "contract.cell, cols, rows, refH, anchor",
+    "referenceCrop": "contract.referenceCrops.walk_down or existing reference preparation policy",
+    "orderedPhases": "positions of job.frames in contract.clips.walk_down.unique modulo4; exactly one phase per requested frame",
+    "phaseCoordinateSystem": "screen-space left/right, not anatomical",
+    "weaponLabel": "arco only for known cazadora contract; otherwise arma (identity reference supplies actual weapon)"
+  },
+  "camera": {
+    "orientation": "fixed front three-quarter",
+    "invariant": "same head and torso orientation in every frame",
+    "forbidden": [
+      "profile",
+      "back",
+      "turn"
+    ]
+  },
+  "orderedWalkPhases": [
+    "bota izquierda de PANTALLA adelante/abajo y derecha atrás",
+    "apoyo izquierdo de PANTALLA bajo cadera con rodilla derecha levantada",
+    "bota derecha de PANTALLA adelante/abajo e izquierda atrás",
+    "apoyo DERECHO de PANTALLA bajo cadera; rodilla IZQUIERDA de PANTALLA levantada y pie izquierdo suspendido"
+  ],
+  "promotionRequirements": [
+    "technical validation",
+    "independent visual approval",
+    "runtime validation",
+    "approved main integration"
+  ],
+  "antiPatternEvidence": "sylva-walk-v2-attempt1-v1.json",
+  "proven": false,
+  "previousRecipe": "front-fixed-solid-green-v3",
+  "background": {
+    "required": "#00FF00",
+    "uniform": true,
+    "forbidden": [
+      "transparent alternative",
+      "checkerboard",
+      "grid",
+      "shadow",
+      "ground",
+      "crossed legs or duplicated wide idle"
+    ]
+  },
+  "retryPolicy": "Only one explicitly authorized frame probe before any expansion. If pose fails, stop and reconsider method; not repeated broad generation.",
+  "phaseSeparator": "; ",
+  "referenceMethod": "canonical identity crop + deterministic phase-specific joint/silhouette guide (not the ambiguous runtime walk strip)"
+}

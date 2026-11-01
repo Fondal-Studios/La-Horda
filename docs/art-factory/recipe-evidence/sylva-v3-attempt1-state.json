@@ -1,0 +1,23 @@
+{
+  "history": [
+    {
+      "state": "BLOCKED",
+      "at": "2026-11-01T17:53:32.584Z",
+      "note": "no se completaron todos los pedidos solicitados"
+    }
+  ],
+  "state": "BLOCKED",
+  "note": "no se completaron todos los pedidos solicitados",
+  "code": "BLOCKED_INCOMPLETE",
+  "failures": [
+    {
+      "job": "walk_down-0",
+      "code": "ASSEMBLY_REJECTED",
+      "reason": "se esperaban 4 poses separables y se encontraron 1"
+    }
+  ],
+  "complete_requested": false,
+  "coverage_pct": 0,
+  "spent_cents": 0,
+  "atlas_sha256": null
+}

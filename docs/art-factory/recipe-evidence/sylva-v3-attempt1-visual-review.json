@@ -1,0 +1,16 @@
+{
+  "status": "REJECTED_TECHNICAL_AND_VISUAL",
+  "rawImageMode": "RGB",
+  "assembly": "Expected4separableposes, found1; horizontal projection overlaps adjacent bow/arrow/cape silhouettes.",
+  "visualDefects": [
+    "Frames0/2 near-identical wide idle stance.",
+    "Frames1/3 raise the same screen-right leg; missing opposite-leg phase.",
+    "Rightmost bow reaches/clips image boundary."
+  ],
+  "background": "Solid green improved and keyable; failure not checkerboard this time.",
+  "approved": false,
+  "integrated": false,
+  "observedCredits": 7,
+  "cumulativePilotNetCredits": 21,
+  "nextMethod": "Stop wording-only four-frame strips. Validate one isolated guided opposite-leg pose with generous margins before authorizing a four-pose sequence; do not mirror whole character or silently split overlapping silhouettes."
+}

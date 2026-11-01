@@ -197,3 +197,22 @@ test('whole-plan preflight rejects an oversized contract prompt before any gener
   const contract = {...readContract('cazadora'), id: 'x'.repeat(1000)};
   assert.throws(() => s0f.plan(contract), e => e.code === 'BLOCKED_CONTRACT' && /1000 unidades UTF-16|provider limit/.test(e.message));
 });
+test('controlled frame probe reuses exact full mixed-plan job and splits only difficult walking clips', () => {
+  const c = readContract('cazadora'), opts = {generationMode:'single-frame',frameClips:['walk_down']};
+  const full = s0f.plan(c, opts), probe = s0f.plan(c, {...opts, kind:'animation', action:'walk_down', frameIndices:[3]});
+  assert.equal(full.length,16); assert.equal(probe.length,1); assert.equal(probe[0].id,'walk_down-frame-3');
+  assert.deepEqual(probe[0],full.find(j=>j.id==='walk_down-frame-3'));
+  assert.equal(probe[0].guidePhase,3); assert.equal(probe[0].recipe.id,'controlled-walk-frame-v4');
+  assert.match(probe[0].prompt,/rodilla IZQUIERDA de PANTALLA levantada/); assert.match(probe[0].prompt,/margen vacío mínimo20%/);
+  assert.ok(full.filter(j=>j.clip!=='walk_down').every(j=>j.generationMethod===undefined));
+  assert.equal(s0f.plan(readContract('cazadora',{skin:'cazadora_escarcha'}),{...opts,skin:'cazadora_escarcha'}).length,19);
+  for(const bad of [{frameIndices:[3]}, {...opts,action:'walk_down',frameIndices:[3,3]}, {...opts,action:'walk_down',frameIndices:[99]}, {...opts,action:'idle_down',frameIndices:[3]}, {...opts,frameClips:['attack_down']}, {generationMode:'invented'}]) assert.throws(()=>s0f.plan(c,bad),e=>e.code==='BLOCKED_CONTRACT');
+});
+test('controlled dry-run estimates one probe and full mixed order without any provider call', async()=>{
+  const root=fs.mkdtempSync(path.join(os.tmpdir(),'v4-cost-'));
+  const probe=await s0f.generate('cazadora',{provider:'runway',dryRun:true,generationMode:'single-frame',kind:'animation',action:'walk_down',frameIndices:[3],runDir:path.join(root,'probe')});
+  const full=await s0f.generate('cazadora',{provider:'runway',dryRun:true,generationMode:'single-frame',runDir:path.join(root,'full')});
+  assert.equal(probe.jobs,1);assert.equal(probe.max_cents,10);assert.equal(full.jobs,16);assert.equal(full.max_cents,160);
+  const skin=await s0f.generate('cazadora',{provider:'runway',dryRun:true,generationMode:'single-frame',kind:'skin',skin:'cazadora_escarcha',runDir:path.join(root,'skin')});
+  assert.equal(skin.jobs,19);assert.equal(skin.max_cents,190);
+});

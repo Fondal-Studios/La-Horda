@@ -2,8 +2,8 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),os=require('node:os'),crypto=require('node:crypto');
 const {prepareExternalPlan,importExternal}=require('./external-import');
 const hash=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
-function fixture(){
- const dir=fs.mkdtempSync(path.join(os.tmpdir(),'external-import-')),selection={kind:'animation',action:'idle_side',skin:null};
+function fixture(selection={kind:'animation',action:'idle_side',skin:null}){
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'external-import-'));
  const plan=prepareExternalPlan('cazadora',{...selection,preparationDir:path.join(dir,'refs')});
  // Fixture uses existing authored pixels only. It is NOT evidence of an actual external generation.
  const job=plan.jobs[0],file=path.join(dir,'fixture.png');fs.copyFileSync(job.references[1],file);
@@ -66,4 +66,12 @@ test('directional v2 external and runtime prepare identical references and never
  const fixture={estimate:()=>({estimated_cents_max:0}),generate:async j=>{calls++;assert.deepEqual(j.references.map(hash),job.referencesSha256);throw new Blocked('BLOCKED_FIXTURE','reference-only test');}};
  const result=await require('./s0f').generate('cazadora',{kind:'animation',action:'walk_down',runDir:path.join(dir,'runtime'),ledgerPath:path.join(dir,'ledger.json'),provider:'fixture',providers:{fixture},concurrency:1});
  assert.equal(calls,1);assert.equal(result.code,'BLOCKED_FIXTURE');
+});
+test('controlled probe pins mode, clip filter and exact target frame; full mixed plan uses same guide',async()=>{
+ const selected={kind:'animation',action:'walk_down',skin:null,generationMode:'single-frame',frameClips:['walk_down'],frameIndices:[3]},f=fixture(selected);
+ const p=f.plan.jobs[0];assert.equal(p.jobId,'walk_down-frame-3');assert.equal(p.guidePhase,3);assert.equal(p.generationMethod,'controlled-single-frame');
+ const full=prepareExternalPlan('cazadora',{generationMode:'single-frame',frameClips:['walk_down'],preparationDir:path.join(f.dir,'full')});
+ assert.equal(full.jobs.length,16);const job=full.jobs.find(j=>j.jobId===p.jobId);
+ assert.equal(job.submittedPromptSha256,p.submittedPromptSha256);assert.deepEqual(job.referencesSha256,p.referencesSha256);
+ for(const change of [{generationMode:'strip'},{frameClips:null},{frameIndices:[2]},{frameIndices:null}]){const old={...f.manifest};Object.assign(f.manifest,change);f.write();await assert.rejects(importExternal('cazadora',f.opts),/selection\/contract mismatch/);Object.keys(f.manifest).forEach(k=>delete f.manifest[k]);Object.assign(f.manifest,old);}
 });

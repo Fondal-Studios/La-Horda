@@ -22,7 +22,7 @@ Resultado: cuatro cuadros / 7,7 % del atlas, puntuación técnica **100**, pero 
 
 La receta direccional intentó corregir esa ambigüedad de cámara y fases; **el fallo anterior no demuestra que la nueva receta funcione**.
 
-La versión siguiente, `front-fixed-solid-green-v3.json`, conserva esas lecciones con fondo verde obligatorio. Sigue **experimental**: su existencia no equivale a una generación, validación o aprobación.
+La versión `front-fixed-solid-green-v3.json` conserva esas lecciones con fondo verde obligatorio. Su ensayo también fue rechazado, como se registra abajo; sigue **experimental, no aprobada**.
 
 ## Aprendizaje conservado: receta v2, intento 1
 
@@ -33,6 +33,14 @@ La imagen es RGB, sin alfa, y trae un damero de transparencia **dibujado dentro 
 Aprendizaje reutilizable: exigir fondo plano `#00FF00`, prohibir el damero y la transparencia simulada, y especificar geometría de apoyo/paso distinta para cada pierna. No se relajan los controles para aceptar la salida defectuosa. Esa corrección pertenece a **otra versión experimental**, con nuevo prompt/hash; el registro no autoriza por sí mismo otra llamada paga.
 
 No existe `assembly.json` en esta corrida porque ninguna tira se ensambló: `state.json`, conservado con hash, es la evidencia del fallo. El «0 centavos» del importador significa que importar no hizo una solicitud API; **no significa que la imagen externa haya sido gratuita**.
+
+## Aprendizaje conservado: receta v3, intento 1
+
+`recipes/sylva-walk-v3-attempt1-v1.json` registra la tarea `c47ddc56-c6d8-44f7-a795-4fda925038b7`, `nano-banana-2`: **7 créditos observados** (486 → 479), **21 netos acumulados** en los tres pilotos con salida.
+
+El fondo verde plano mejoró y es recortable; esta vez **no** falló por damero. Pero las siluetas de arco/flecha/capa se solapan en la proyección horizontal: cuatro poses esperadas, una separable detectada. Se repiten posturas y la misma pierna levantada, y el arco del extremo derecho alcanza o recorta el borde. Resultado: **rechazo técnico y visual, sin atlas, sin evaluación numérica, sin aprobación ni integración**.
+
+Cambio de método propuesto, todavía no activado ni autorizado por este registro: dejar de retocar solamente el texto de tiras de cuatro cuadros y probar una pose aislada, guiada, con la pierna opuesta y márgenes generosos. Verificar primero que el modelo resuelve esa pose. No espejar todo el personaje ni cortar siluetas superpuestas en silencio. Se preservan los intentos y sus hashes; **no se activa una receta nueva ni se dispara otra llamada paga**.
 
 ## Estados y promoción
 

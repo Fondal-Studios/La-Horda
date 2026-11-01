@@ -44,7 +44,7 @@ try {
     (async () => {
       let out;
       if (command === 'generate') {
-        const [what, id, extra] = pos; const base = {provider: flag('provider', undefined), dryRun: !!flag('dry-run'), limits, concurrency: +flag('concurrency', 2), runDir: flag('run-dir', undefined), ledgerPath: flag('ledger', undefined), skin: flag('skin', undefined)};
+        const [what, id, extra] = pos; const base = {provider: flag('provider', undefined), dryRun: !!flag('dry-run'), limits, concurrency: +flag('concurrency', 2), runDir: flag('run-dir', undefined), ledgerPath: flag('ledger', undefined), skin: flag('skin', undefined), generationMode: flag('generation-mode', 'strip'), frameIndices: flag('frames', null) === null ? null : String(flag('frames')).split(',').map(Number)};
         if (what === 'champion') out = await s0f.generate(id, {...base, kind: 'champion'});
         else if (what === 'skin') out = await s0f.generate(id, {...base, kind: 'skin', skin: extra});
         else if (what === 'animation') out = await s0f.generate(id, {...base, kind: 'animation', action: extra});

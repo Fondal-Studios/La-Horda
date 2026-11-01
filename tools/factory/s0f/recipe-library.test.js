@@ -35,3 +35,17 @@ test('active v3 mandates flat green and screen-space ordered legs without mutati
  assert.ok((r.prompt+' @ref1 @ref2 (referencias de identidad y de poses).').length<=1000);
  assert.equal(loadRecipe('front-fixed-single-row-v2').recipe.version,2);
 });
+test('controlled V4 is explicit single-frame only; camera and upper body cannot flip',()=>{
+ const c=readContract('cazadora'),r=recipePrompt(c,{clip:'walk_down',frames:[3]},{recipeId:'controlled-walk-frame-v4'});
+ assert.equal(r.recipeVersion,4);assert.match(r.prompt,/Un SOLO sprite/);assert.match(r.prompt,/Congelar cabeza, torso, brazos y mano del arco/);assert.match(r.prompt,/NO voltear el personaje/);assert.match(r.prompt,/margen vacío mínimo20% en los CUATRO lados/);
+ assert.match(r.prompt,/apoyo DERECHO de PANTALLA.*rodilla IZQUIERDA de PANTALLA levantada/);
+ assert.ok((r.prompt+' @ref1 @ref2 (referencias de identidad y de poses).').length<=1000);
+ assert.throws(()=>recipePrompt(c,{clip:'walk_down',frames:[0,1]},{recipeId:'controlled-walk-frame-v4'}),/exactly one/);
+ assert.equal(loadRecipe().recipe.version,3); // no silent broad switch of existing strip pipeline
+});
+test('V4 weapon wording is bow-specific only for Sylva and generic for other contracts',()=>{
+ const c=readContract('cazadora'),j={clip:'walk_down',frames:[3]},opts={recipeId:'controlled-walk-frame-v4'};
+ assert.match(recipePrompt(c,j,opts).prompt,/mano del arco/);
+ const generic=recipePrompt({...c,id:'other_existing'},j,opts).prompt;
+ assert.match(generic,/mano del arma/);assert.equal(generic.includes('arco'),false);
+});

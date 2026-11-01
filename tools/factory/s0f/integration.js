@@ -50,7 +50,9 @@ function prepareIntegration({root,runDir}){
  const p=json(safe(runDir,'plan.json')),a=json(safe(runDir,'assembly.json'));
  const action=p.identity?.action||p.opts?.action;
  const names=action?[action]:Object.keys(c.clips);if(names.some(n=>!c.clips[n]))throw Error('clip planificado ajeno al contrato');
- const contractFrames=[...new Set(names.flatMap(n=>c.clips[n].frames.map(i=>i<0?-i-1:i)))].sort((x,y)=>x-y);
+ const filter=p.identity?.frameIndices;
+ if(filter!==null&&filter!==undefined&&(p.identity.generationMode!=='single-frame'||!action||!Array.isArray(filter)||!filter.length||new Set(filter).size!==filter.length||filter.some(i=>!Number.isInteger(i)||!c.clips[action].unique.includes(i))))throw Error('filtro de cuadros inválido');
+ const contractFrames=[...new Set(names.flatMap(n=>c.clips[n].frames.map(i=>i<0?-i-1:i).filter(i=>!filter||filter.includes(i))))].sort((x,y)=>x-y);
  const expected=[...new Set(p.jobs.flatMap(j=>j.frames))].sort((x,y)=>x-y),actual=a.generated_frames;
  if(JSON.stringify(expected)!==JSON.stringify(contractFrames))throw Error('plan no corresponde al contrato');
  if(!expected.length||!Array.isArray(actual)||new Set(actual).size!==actual.length||JSON.stringify([...actual].sort((x,y)=>x-y))!==JSON.stringify(expected)||a.failures?.length)throw Error('atlas parcial: cuadros distintos del plan');

@@ -16,22 +16,27 @@ const latestRun = id => { const d = path.join(JOBS(), id); if (!fs.existsSync(d)
 function setState(dir, state, note, extra = {}) { const f = path.join(dir, 'state.json'), s = fs.existsSync(f) ? readJSON(f) : {history: []}; s.state = state; s.note = note || ''; s.history.push({state, at: new Date().toISOString(), note: note || ''}); Object.assign(s, extra); writeJSON(f, s); return s; }
 
 const STYLE = 'Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE si el modelo lo admite; si no, un ÚNICO color plano verde #00FF00 sin sombras, degradados ni suelo, sin texto ni marcos.';
-function plan(contract, {kind = 'champion', action = null, skin = null} = {}) {
+function plan(contract, {kind = 'champion', action = null, skin = null, generationMode = 'strip', frameClips = null, frameIndices = null} = {}) {
   if (contract.kind !== 'atlas') throw new Blocked('BLOCKED_CONTRACT', contract.reason);
   if ((skin || null) !== (contract.skin || null)) throw new Blocked('BLOCKED_CONTRACT', 'la skin solicitada no corresponde al contrato de arte existente');
+  if (!['strip', 'single-frame'].includes(generationMode)) throw new Blocked('BLOCKED_CONTRACT', 'modo de generación no soportado');
+  const splitClips = generationMode === 'single-frame' ? (frameClips || ['walk_down']) : [];
+  if (!Array.isArray(splitClips) || (generationMode === 'strip' && frameClips) || (generationMode === 'single-frame' && (splitClips.length !== 1 || splitClips[0] !== 'walk_down'))) throw new Blocked('BLOCKED_CONTRACT', 'solo walk_down admite el método experimental por cuadro');
+  if (frameIndices !== null && (generationMode !== 'single-frame' || !action || !splitClips.includes(action) || !Array.isArray(frameIndices) || !frameIndices.length || new Set(frameIndices).size !== frameIndices.length || frameIndices.some(i => !Number.isInteger(i) || !contract.clips[action]?.unique.includes(i)))) throw new Blocked('BLOCKED_CONTRACT', 'filtro de cuadros ajeno al clip, duplicado o sin modo explícito');
   const jobs = []; const names = action ? [action] : Object.keys(contract.clips);
   if (action && !contract.clips[action]) throw new Blocked('BLOCKED_CONTRACT', `el campeón no tiene el clip «${action}». Clips: ${Object.keys(contract.clips).join(', ')}`);
   const seen = new Set();
   for (const name of names) {
-    const fr = contract.clips[name].unique.filter(i => !seen.has(i)); fr.forEach(i => seen.add(i)); // un cuadro del atlas se genera una sola vez aunque lo usen varios clips
-    for (let k = 0; k < fr.length; k += 4) {
-      const chunk = fr.slice(k, k + 4);
+    const fr = contract.clips[name].unique.filter(i => !seen.has(i) && (frameIndices === null || frameIndices.includes(i))); fr.forEach(i => seen.add(i)); // un cuadro del atlas se genera una sola vez aunque lo usen varios clips
+    const single = splitClips.includes(name), chunkSize = single ? 1 : 4;
+    for (let k = 0; k < fr.length; k += chunkSize) {
+      const chunk = fr.slice(k, k + chunkSize);
       let recipe;
-      try { recipe = recipePrompt(contract, {clip: name, frames: chunk}, {skin}); } catch (e) { throw new Blocked('BLOCKED_CONTRACT', e.message); }
+      try { recipe = recipePrompt(contract, {clip: name, frames: chunk}, {skin, recipeId: single ? 'controlled-walk-frame-v4' : undefined}); } catch (e) { throw new Blocked('BLOCKED_CONTRACT', e.message); }
       const directionPrompt = recipe?.prompt;
-      jobs.push({id: `${name}-${k / 4}`, ...(recipe ? {recipe: {id: recipe.recipeId, version: recipe.recipeVersion, sha256: recipe.recipeSha256, source: recipe.recipeSource, status: recipe.status}} : {}), referenceRecipe: recipe ? recipe.recipeId : 'identity-grid-v1', label: `${contract.id}/${name}`, clip: name, frames: chunk,
+      jobs.push({id: single ? `${name}-frame-${chunk[0]}` : `${name}-${k / 4}`, ...(single ? {generationMethod: 'controlled-single-frame', guidePhase: contract.clips[name].unique.indexOf(chunk[0]) % 4} : {}), ...(recipe ? {recipe: {id: recipe.recipeId, version: recipe.recipeVersion, sha256: recipe.recipeSha256, source: recipe.recipeSource, status: recipe.status}} : {}), referenceRecipe: recipe ? recipe.recipeId : 'identity-grid-v1', label: `${contract.id}/${name}`, clip: name, frames: chunk,
         prompt: directionPrompt || `${STYLE} Personaje: ${contract.id} (referencia: sprite de identidad del Códice recortado y tira de poses actuales). ${skin ? `Reparar skin EXISTENTE «${skin}»: conservar identidad, diseño, paleta, ropa, arma y silueta; no crear skin ni recolorear base.` : 'Conservar rostro, vestimenta, arma, paleta y proporciones del Códice.'} Generar ${chunk.length} poses DISTINTAS de «${name}» en una fila horizontal${/walk|run/.test(name) ? ' (ciclo de caminar: contacto, paso, contacto con la otra pierna, paso: las piernas y los brazos cambian de posición en cada pose)' : ''}, mismo tamaño y pies alineados, misma escala. PROHIBIDO: texto, letras, números, rótulos, línea de suelo, sombra, tierra, marcos y cualquier elemento que no sea el personaje.`,
-        needs: ['codexPage', 'currentStrip']});
+        needs: ['codexPage', single ? 'poseGuide' : 'currentStrip']});
     }
   }
   // The runtime always submits two references. Reject the entire order before
@@ -39,6 +44,18 @@ function plan(contract, {kind = 'champion', action = null, skin = null} = {}) {
   const referenceSuffix = ' @ref1 @ref2 (referencias de identidad y de poses).';
   for (const job of jobs) if ((job.prompt + referenceSuffix).length > 1000) throw new Blocked('BLOCKED_CONTRACT', `prompt de ${job.id} supera 1000 unidades UTF-16 con sus referencias; corregir el contrato antes de generar`);
   return jobs;
+}
+
+function prepareReferences(contractFile, job, refDir) {
+  fs.mkdirSync(refDir, {recursive: true});
+  const identity = path.join(refDir, job.id + '.identity.png'), pose = path.join(refDir, job.id + '.pose.png');
+  py('prepare-reference', contractFile, identity, job.clip);
+  if (job.generationMethod === 'controlled-single-frame') {
+    const r = spawnSync(PY, [path.join(ROOT, 'tools/factory/s0f/pose-guide.py'), String(job.guidePhase), pose], {cwd: ROOT, encoding: 'utf8'});
+    if (r.status !== 0) throw Error('pose-guide falló: ' + String(r.stderr).slice(-400));
+    JSON.parse(r.stdout); // require an explicit successful structured guide result
+  } else py('refstrip', contractFile, JSON.stringify(job.frames), pose, job.clip);
+  return [identity, pose];
 }
 
 const hashFile = f => crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
@@ -82,7 +99,7 @@ async function generate(id, opts = {}) {
     if (names.length !== 1 || !names[0]) throw Error('Elegir un único proveedor explícito; no hay fallback automático');
     const providerOptions = {...(names[0] === 'runway' ? {model: process.env.FONDAL_RUNWAY_MODEL || 'gen4_image', ratio: process.env.FONDAL_RUNWAY_RATIO || '1920:1080'} : names[0] === 'openai' ? {model: process.env.FONDAL_OPENAI_IMAGE_MODEL || 'gpt-image-1.5'} : {}), ...(opts.providerOptions || {})};
     const ledger = path.resolve(opts.ledgerPath || process.env.FONDAL_SPEND_LEDGER || path.resolve(JOBS(), 'spend-ledger.json'));
-    const identity = {id, kind, ledgerPath: ledger, action: opts.action || null, skin: opts.skin || null, providers: names,
+    const identity = {id, kind, generationMode: opts.generationMode || 'strip', frameClips: opts.generationMode === 'single-frame' ? (opts.frameClips || ['walk_down']) : null, frameIndices: opts.frameIndices || null, ledgerPath: ledger, action: opts.action || null, skin: opts.skin || null, providers: names,
       providerOptions: Object.fromEntries(Object.entries(providerOptions).filter(([k]) => ['model', 'ratio', 'reserveCents', 'size', 'width', 'height'].includes(k))),
       sources: Object.fromEntries([contract.atlas, contract.codexPage].filter(Boolean).map(f => [f, hashFile(path.join(ROOT, f))]))};
     const planFile = path.join(dir, 'plan.json');
@@ -126,10 +143,7 @@ async function generate(id, opts = {}) {
     const checkLease = async () => { if (opts.shouldContinue && !await opts.shouldContinue()) throw new Blocked('BLOCKED_LEASE_LOST', 'worker lease no longer confirmed; no further billable requests'); };
     const runJob = async plannedJob => {
       const job = {...plannedJob};
-      const identityReference = path.join(refDir, job.id + '.identity.png');
-      py('prepare-reference', path.join(dir, 'contract.json'), identityReference, job.clip);
-      const strip = path.join(refDir, job.id + '.current.png'); py('refstrip', path.join(dir, 'contract.json'), JSON.stringify(job.frames), strip, job.clip);
-      job.references = [identityReference, strip];
+      job.references = prepareReferences(path.join(dir, 'contract.json'), job, refDir);
       const out = path.join(stripDir, job.id + '.png'), receiptFile = path.join(stripDir, job.id + '.json');
       let receipt;
       if (fs.existsSync(receiptFile)) {
@@ -181,7 +195,7 @@ function evidence(id, dir) {
   const files = ['plan.json', 'contract.json', 'assembly.json', 'atlas.png', ...parts.map(n => 'parts/' + n)];
   const proof = {files: {}, sources: {}};
   for (const f of files) { const full = path.join(dir, f); if (!fs.lstatSync(full).isFile()) throw Error('BLOCKED_EVIDENCE: archivo irregular ' + f); proof.files[f] = hashFile(full); }
-  for (const f of ['tools/factory/art_factory.py', 'tools/factory/s0f/contract.js', 'tools/factory/s0f/s0f.js', 'tools/factory/s0f/integration.js', 'tools/factory/s0f/recipe-library.js', ...jobs.map(j => j.recipe?.source).filter(Boolean), 'docs/art-factory/ART_DIRECTION_REFS.json', c.atlas, c.codexPage, c.consumer].filter(Boolean)) proof.sources[f] = hashFile(path.join(ROOT, f));
+  for (const f of ['tools/factory/art_factory.py', 'tools/factory/s0f/contract.js', 'tools/factory/s0f/s0f.js', 'tools/factory/s0f/integration.js', 'tools/factory/s0f/recipe-library.js', ...(jobs.some(j => j.generationMethod === 'controlled-single-frame') ? ['tools/factory/s0f/pose-guide.py'] : []), ...jobs.map(j => j.recipe?.source).filter(Boolean), 'docs/art-factory/ART_DIRECTION_REFS.json', c.atlas, c.codexPage, c.consumer].filter(Boolean)) proof.sources[f] = hashFile(path.join(ROOT, f));
   return proof;
 }
 function freshEvaluation(id, dir) {
@@ -239,4 +253,4 @@ function integrate(id, dir = latestRun(id)) {
   return setState(dir, 'STAGED_REVIEW_ONLY', 'arte preparado en ruta inmutable y parche exacto; NO instalado ni publicado', {runtimeActive: false, destination: delivery.dest, registration_patch: path.join(dir, 'registration.patch')});
 }
 function status(id, d = latestRun(id)) { if (d) checkedRun(id, d); return d ? {dir: path.relative(ROOT, d), ...readJSON(path.join(d, 'state.json'))} : {state: 'NONE'}; }
-module.exports = {generate, validate, preview, approve, integrate, status, plan, latestRun, evaluationPass};
+module.exports = {generate, validate, preview, approve, integrate, status, plan, latestRun, evaluationPass, prepareReferences};

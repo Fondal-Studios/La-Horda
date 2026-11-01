@@ -1,0 +1,89 @@
+{
+  "schema": "fondal.art-recipe-evidence.v1",
+  "id": "sylva-walk-v3-attempt1-v1",
+  "recipeId": "front-fixed-solid-green-v3",
+  "recipeRelationship": "Executed v3 failed; no next recipe or paid retry is activated by this evidence.",
+  "champion": "cazadora",
+  "skin": null,
+  "clip": "walk_down",
+  "frames": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "status": "technical-and-visual-rejected",
+  "history": [
+    "attempted",
+    "assembly-rejected",
+    "visual-rejected"
+  ],
+  "approved": false,
+  "integrated": false,
+  "proven": false,
+  "provider": "runway-mcp",
+  "model": "nano-banana-2",
+  "taskId": "c47ddc56-c6d8-44f7-a795-4fda925038b7",
+  "cost": {
+    "unit": "external-credits",
+    "observed": 7,
+    "balanceBefore": 486,
+    "balanceAfter": 479,
+    "cumulativePilotNetCredits": 21,
+    "apiCents": null
+  },
+  "technical": {
+    "state": "BLOCKED",
+    "code": "BLOCKED_INCOMPLETE",
+    "failure": "ASSEMBLY_REJECTED",
+    "expectedSeparablePoses": 4,
+    "observedSeparablePoses": 1,
+    "coverageGeneratedPct": 0,
+    "atlasProduced": false,
+    "evaluationProduced": false,
+    "score": null
+  },
+  "promptSha256": "b6861e20b79e3250e691be549e1836015e99267949ec9265d810b5268978ed15",
+  "submittedPromptSha256": "6ad5fe7dafccbc70fd018f61508e1e97795553722435dfe3b09008d3b9ece12a",
+  "referencesSha256": [
+    "d85c45217e2a220f9290c729d318b6ce7380b3aef974fd4190d8f7f20c37569e",
+    "c72c67cc9b58fdf2fe6360d66c8276cc8ee0503133b0b1ef49d871e4ced931fe"
+  ],
+  "output": {
+    "sha256": "fc83e26eb502c45f6043ca135e6ff67073e0c312f925e189f8ac7badfbf5d9cd",
+    "mode": "RGB",
+    "background": "Solid green and keyable; no checkerboard this time.",
+    "retention": "Original pixels remain in local pilot archive; recipe library stores hash and review evidence only."
+  },
+  "evidence": {
+    "visual-review.json": {
+      "path": "docs/art-factory/recipe-evidence/sylva-v3-attempt1-visual-review.json",
+      "sha256": "2692d5616711030f04e48ab638b184f035b9bf58e7ec26043070c8e4262214f9"
+    },
+    "external-credits.json": {
+      "path": "docs/art-factory/recipe-evidence/sylva-v3-attempt1-external-credits.json",
+      "sha256": "e9eb3eeb257e92ebd406787a1af48472cd7fe1ad9fb5f0862e5e855011811010"
+    },
+    "state.json": {
+      "path": "docs/art-factory/recipe-evidence/sylva-v3-attempt1-state.json",
+      "sha256": "a2892dd726c7caa1718825370beca1e62a6f757dcc91bc14917ae9a1233c7a26"
+    }
+  },
+  "missingArtifacts": [
+    "atlas.png",
+    "evaluation.json",
+    "approval.json"
+  ],
+  "antiPatterns": [
+    "Repeated wording changes did not establish reliable four-phase animation.",
+    "Adjacent bow, arrow and cape silhouettes overlap horizontal projection, preventing safe automatic segmentation.",
+    "Duplicated wide stances and repeated same-leg lift omit the opposite-leg phase.",
+    "Rightmost bow reaches or clips the image boundary."
+  ],
+  "requiredNextMethod": [
+    "Stop wording-only retries of the four-frame strip.",
+    "Propose a controlled isolated opposite-leg pose with generous margins and explicit guidance; verify that pose before requesting a sequence.",
+    "Do not mirror the whole character or silently cut overlapping silhouettes.",
+    "A method proposal is not authorization for a paid request or activation of a new recipe."
+  ]
+}
