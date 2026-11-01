@@ -1,6 +1,6 @@
 # FINAL_APPROVAL — UI Factory (La Horda Beta)
 
-Fecha: 2026-11-01 · Rama de trabajo: `feature/beta-ui-ux-factory` (commit `bad23a9c`, **evidencia cruda completa** de las 5 evaluaciones: ~540 MB, solo en esa rama) · Rama de integración: `integration/ui-ux-factory` (código + documentos + capturas curadas, sobre `main` en `fe8a1511`).
+Fecha: 2026-11-01 · Rama de trabajo: `feature/beta-ui-ux-factory` (commit `bad23a9c`, **evidencia cruda completa** de las 5 evaluaciones (~540 MB, incluida `evidence/eval1..eval5`), solo en esa rama; en `main` se conservan las capturas de línea base y de cada iteración) · Rama de integración: `integration/ui-ux-factory` (código + documentos + capturas curadas, sobre `main` en `fe8a1511`).
 
 ## Gate 1 — calidad (evaluador independiente)
 | Iteración | Puntaje | Decisión |
