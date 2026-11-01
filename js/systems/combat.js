@@ -97,6 +97,7 @@ function damageEnemy(e, amount, opts){
   vfxHit(e, src, opts, crit);
   if(!opts.fromProc || pow>=3) impactFeedback(e, dmg, crit, opts, pow, src);
   if(src && src.classKey && !opts.fromProc){ itemProcsOnHit(src, e, dmg, crit, opts); setsOnHit(src, e, dmg, crit, opts); skillEvoOnHit(src, e, dmg, opts); }
+  else if(src && src.classKey && opts.evoHit) skillEvoOnHit(src, e, dmg, opts); // golpe de habilidad de un portador (fromProc para no encadenar objetos): sí deja la firma de evolución
   if(breakables.length && src && src.classKey) breakablesOnHit(e, src); // golpe pegado a una urna/barril la arma (encadena)
   if(src && src.stats){
     if(e.rank!=="normal") src.stats.dmgToPriority = (src.stats.dmgToPriority||0) + usefulDmg;

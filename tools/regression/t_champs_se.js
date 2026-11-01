@@ -85,6 +85,14 @@ const PAGE_HELPERS = () => {
   for (let k = 0; k < 300; k++) { if (await page.evaluate(() => !document.getElementById('title-continue-btn').disabled)) break; await sleep(100); }
   await page.evaluate(PAGE_HELPERS);
   const E = (fn, arg) => page.evaluate(fn, arg);
+  // TIEMPO DE JUEGO DETERMINISTA. Antes cada espera era un sleep de reloj real contra el loop de requestAnimationFrame: bajo carga (otras
+  // pruebas en paralelo, CI lento) el juego avanzaba menos cuadros que los esperados y fallaban checks distintos en cada corrida
+  // (E12.terremoto, E14.regeneracion, SM6.cabral, E17.tres_pisadas). Ahora el loop se detiene y cada espera simula esos milisegundos
+  // con update(16): mismas aserciones y mismos umbrales, sin depender de la velocidad de la máquina.
+  await E(() => { loop = function () {}; });
+  const simSleep = ms => E(n => { for (let t = 0; t < n; t += 16) { if (state !== 'playing') break; update(16);
+    // mismo muestreo por cuadro que logLoop (que depende de requestAnimationFrame y aquí el tiempo avanza simulado)
+    try { if (typeof player !== 'undefined' && player) { const ph = (player.smPhase || '') + '|' + (player.ilkanPhase || '') + '|' + (player.smMounted ? 'M' : '') + (player.ilkanColossus ? 'T' : ''); const L = window.__phaseLog; if (L[L.length - 1] !== ph) L.push(ph); if (L.length > 400) L.shift(); } } catch (e) {} } }, ms);
   const P = () => E(() => __se.p());
   const shot = async name => page.screenshot({ path: path.join(outdir, name + '.png') });
   const phaseLog = async () => E(() => { const l = window.__phaseLog.slice(); window.__phaseLog.length = 0; return l; });
@@ -97,11 +105,11 @@ const PAGE_HELPERS = () => {
     const e0 = errCount();
     // SM1: humano (seleccionable, se mueve, HUD propio)
     const k = await E(() => __se.start('libertador', ['tanque', 'soporte', 'mago']));
-    await sleep(700);
+    await simSleep(700);
     await E(() => __se.clear());
     const a = await P();
     await E(() => { joyVec = { x: 1, y: 0 }; });
-    await sleep(600);
+    await simSleep(600);
     await E(() => { joyVec = { x: 0, y: 0 }; });
     const b = await P();
     const hud = await E(() => document.getElementById('se-hud').innerText.includes('Oficial'));
@@ -112,9 +120,9 @@ const PAGE_HELPERS = () => {
     // SM2: disparo normal (lento, pesado, sin cancelar recarga)
     const i1 = await E(() => __se.spawn('duende_bosque', 220, 0, { hp: 5000 }));
     await E(() => { basicHeld = true; });
-    await sleep(350);
+    await simSleep(350);
     const r1 = await E(() => ({ cd: Math.round(player.basicCd), proj: projectiles.filter(p => p.smShot).length }));
-    await sleep(1600);
+    await simSleep(1600);
     const hit1 = await E(i => __se.en(i), i1);
     await E(() => { basicHeld = false; });
     check('SM2.disparo_normal', r1.cd > 800 && hit1.hp < 5000 && (await P()).shots >= 1, { reloadMs: r1.cd, enemyHp: hit1.hp, proj: r1.proj });
@@ -126,14 +134,14 @@ const PAGE_HELPERS = () => {
 
     // SM3: Disparo de Oficial (atraviesa, crítico, se consume)
     await E(() => __se.clear());
-    await sleep(900);
+    await simSleep(900);
     const ids = [];
     for (const dx of [160, 200, 240]) ids.push(await E(dx => __se.spawn('duende_bosque', dx, 0, { hp: 99999 }), dx));
     await E(() => { player.smOfficerReady = false; player.smShots = 3; player.basicCd = 0; player.fx = 1; player.fy = 0; basicHeld = true; });
-    await sleep(900); // 4to impacto -> Oficial listo
+    await simSleep(900); // 4to impacto -> Oficial listo
     const ready = (await P()).officer;
     await E(() => { player.basicCd = 0; });
-    await sleep(900);
+    await simSleep(900);
     await E(() => { basicHeld = false; });
     const hp3 = [];
     for (const i of ids) hp3.push((await E(i => __se.en(i), i)).dmg);
@@ -147,7 +155,7 @@ const PAGE_HELPERS = () => {
     const pb0 = await P();
     await phaseLog(); // limpia el registro de fases por cuadro
     await E(() => useSkill(0, { x: player.x + 150, y: player.y, dx: 1, dy: 0 }));
-    await sleep(680);
+    await simSleep(680);
     // la embestida dura ~100-200 ms (190 u a 950 u/s, y se corta al conectar): se mira el REGISTRO de fases por cuadro en vez de una foto a los 80 ms
     const phB = (await phaseLog()).some(x => x.startsWith('bayo')) ? 'bayo' : null;
     const pb1 = await P(), eb = await E(i => __se.en(i), ib);
@@ -159,7 +167,7 @@ const PAGE_HELPERS = () => {
     await E(() => { __se.clear(); allies.forEach((h, i) => { h.x = player.x + 60 + i * 20; h.y = player.y + 30; }); player.cds = [0, 0, 0]; player.energy = 999; });
     const ie5 = await E(() => __se.spawn('duende_bosque', 120, 0, { hp: 99999 }));
     await E(() => useSkill(1, null));
-    await sleep(100);
+    await simSleep(100);
     const b5 = await E(i => ({ me: Math.round(player.granTimer || 0), allies: allies.map(h => Math.round(h.granTimer || 0)), enemyBuffed: !!enemies[i].granTimer, spd: +heroSpeedMult(player).toFixed(2), atk: +heroAtkSpeedMult(player).toFixed(2), dmg: +heroDmgOutMult(player).toFixed(2), cc: heroCcResist(player) }), ie5);
     check('SM5.granaderos_buff', b5.me > 7000 && b5.allies.every(t => t > 7000) && !b5.enemyBuffed && Math.abs(b5.spd - 1.2) < 0.02 && Math.abs(b5.atk - 1.15) < 0.02 && b5.cc > 0, b5);
     await shot('sm5_granaderos');
@@ -167,7 +175,7 @@ const PAGE_HELPERS = () => {
     // SM6: Soldado Cabral (una vez por partida)
     await E(() => { __se.clear(); player.hp = 10; player.invulnTimer = 0; damageHero(player, 99999, null); });
     const c6 = await P();
-    await sleep(200);
+    await simSleep(200);
     await shot('sm6_cabral');
     const hudC = await E(() => document.getElementById('se-hud').innerText);
     check('SM6.cabral', c6.alive && c6.hp === 1 && c6.cabral && c6.invuln > 1500 && c6.speed > 1.25, { ...c6, hudC });
@@ -182,9 +190,9 @@ const PAGE_HELPERS = () => {
     const before7 = { c1: await E(i => __se.en(i), c1), bo: await E(i => __se.en(i), bo) };
     await phaseLog();
     await E(() => { player.cds = [0, 0, 0]; player.energy = 999; useSkill(2, { x: player.x + 400, y: player.y, dx: 1, dy: 0 }); });
-    await sleep(250);
+    await simSleep(250);
     await shot('sm7_san_lorenzo');
-    await sleep(1200);
+    await simSleep(1200);
     const log7 = await phaseLog();
     const a7 = { c1: await E(i => __se.en(i), c1), c2: await E(i => __se.en(i), c2), el: await E(i => __se.en(i), el), bo: await E(i => __se.en(i), bo), p: await P() };
     const seq = log7.map(s => s.split('|')[0]).filter((v, i, a) => v && v !== a[i - 1]);
@@ -199,12 +207,12 @@ const PAGE_HELPERS = () => {
     for (let j = 0; j < 8; j++) ia.push(await E(j => __se.spawn('duende_bosque', 150 + j * 40, (j % 3 - 1) * 70, { hp: 99999 }), j));
     await phaseLog();
     await E(() => { player.fx = 1; player.fy = 0; player.ultCharge = player.ultMax; player.ultCd = 0; runLevel = Math.max(runLevel, ULT_MIN_ARENA_LEVEL); useUltimate(); });
-    await sleep(500);
+    await simSleep(500);
     const fx8 = await E(() => champFx.map(f => f.type));
     await shot('sm8_andes_cast');
-    await sleep(900);
+    await simSleep(900);
     await shot('sm8_andes_riders');
-    await sleep(900);
+    await simSleep(900);
     const log8 = await phaseLog();
     let hit8 = 0; for (const i of ia) if ((await E(i => __se.en(i), i)).dmg > 0) hit8++;
     const p9 = await P();
@@ -213,7 +221,7 @@ const PAGE_HELPERS = () => {
     // forma montada: sable en movimiento, +40% vel, +25% daño, -20% daño recibido
     const im = await E(() => __se.spawn('duende_bosque', 60, 0, { hp: 99999 }));
     await E(() => { player.basicCd = 0; basicHeld = true; });
-    await sleep(700);
+    await simSleep(700);
     await E(() => { basicHeld = false; });
     const em = await E(i => __se.en(i), im);
     const shotsMounted = await E(() => projectiles.filter(p => p.smShot).length);
@@ -223,30 +231,30 @@ const PAGE_HELPERS = () => {
 
     // SM10: desmontaje al terminar el tiempo
     await E(() => { player.smMountedTimer = 100; });
-    await sleep(900);
+    await simSleep(900);
     const p10 = await P();
     check('SM10.desmontaje', !p10.mounted && p10.sm === null, p10);
 
     // SM11: muerte montado (Cabral ya usado)
     await E(() => { player.smMounted = true; player.smMountedTimer = 5000; player.invulnTimer = 0; player.hp = 5; damageHero(player, 99999, null); });
-    await sleep(200);
+    await simSleep(200);
     const p11 = await P();
     check('SM11.muerte_montado', (!p11.alive || p11.downed) && !p11.mounted && p11.sm === null, p11);
 
     // SM12: jefe (nunca desplazado; defensa rota; pelea completa sin errores)
     await E(() => __se.start('libertador', ['tanque', 'soporte', 'mago']));
-    await sleep(500);
+    await simSleep(500);
     await E(() => __se.clear());
     const ib12 = await E(() => __se.spawn('demonio_mayor', 200, 0, { boss: true, hp: 60000, harmless: true }));
     const bossPos0 = await E(i => ({ x: enemies[i].x, y: enemies[i].y }), ib12);
     for (let r = 0; r < 3; r++) {
       await E(() => { player.cds = [0, 0, 0]; player.energy = 999; useSkill(2, null); });
-      await sleep(1500);
+      await simSleep(1500);
       await E(() => { player.cds = [0, 0, 0]; player.energy = 999; useSkill(0, null); });
-      await sleep(700);
+      await simSleep(700);
     }
     await E(() => { player.ultCharge = player.ultMax; player.ultCd = 0; useUltimate(); });
-    await sleep(2800);
+    await simSleep(2800);
     const bossPos1 = await E(i => ({ dmg: Math.round(enemies[i].__dmg || 0), knocks: enemies[i].__knocked || 0, vulnSeen: !!enemies[i]._seVulnUntil }), ib12);
     const unitKnock = await E(i => seKnock(enemies[i], 1, 0, 200, 500), ib12);
     check('SM12.jefe', bossPos1.knocks === 0 && unitKnock === 'none' && bossPos1.dmg > 0 && bossPos1.vulnSeen, { ...bossPos1, seKnockOnBoss: unitKnock });
@@ -256,7 +264,7 @@ const PAGE_HELPERS = () => {
     await fpsReset();
     for (let r = 0; r < 4; r++) {
       await E(r => { player.cds = [0, 0, 0]; player.energy = 999; basicHeld = true; useSkill(r % 3, null); if (r === 2) { player.ultCharge = player.ultMax; player.ultCd = 0; useUltimate(); } }, r);
-      await sleep(1500);
+      await simSleep(1500);
     }
     await E(() => { basicHeld = false; });
     const f13 = await fpsRead();
@@ -270,11 +278,11 @@ const PAGE_HELPERS = () => {
     const e0 = errCount();
     // E1: movimiento humano
     const k = await E(() => __se.start('ilkan', ['tanque', 'soporte', 'mago']));
-    await sleep(600);
+    await simSleep(600);
     await E(() => __se.clear());
     const a = await P();
     await E(() => { joyVec = { x: 0, y: 1 }; });
-    await sleep(600);
+    await simSleep(600);
     await E(() => { joyVec = { x: 0, y: 0 }; });
     const b = await P();
     check('E1.movimiento_humano', k === 'ilkan' && b.y - a.y > 60 && !b.titan, { moved: b.y - a.y, cls: b.cls });
@@ -286,7 +294,7 @@ const PAGE_HELPERS = () => {
     for (let j = 0; j < 3; j++) {
       await E(() => { player.basicCd = 0; triggerBasic(player); });
       const s = await P(); furyLog.push(s.fury); comboLog.push(s.combo);
-      await sleep(120);
+      await simSleep(120);
     }
     const jump12 = furyLog[1] - furyLog[0], jump23 = furyLog[2] - furyLog[1];
     check('E2.combo', comboLog.join(',') === '1,2,3' && jump23 > jump12, { comboLog, furyLog });
@@ -296,13 +304,13 @@ const PAGE_HELPERS = () => {
     await phaseLog();
     const h0 = await P();
     await E(() => useSkill(0, { x: player.x + 300, y: player.y, dx: 1, dy: 0 }));
-    await sleep(200);
+    await simSleep(200);
     const h1 = await P();
     const redirOk = await E(() => ilkanHookCanRedirect(player));
     await E(() => useSkill(0, { x: player.x, y: player.y + 300, dx: 0, dy: 1 }));
-    await sleep(60);
+    await simSleep(60);
     const h2 = await P();
-    await sleep(500);
+    await simSleep(500);
     const h3 = await P();
     const log3 = await phaseLog();
     check('E3.primer_gancho', h1.er === 'hook' || h1.er === 'hookPrep' || h1.er === 'land', { phase: h1.er, dx: h1.x - h0.x });
@@ -317,7 +325,7 @@ const PAGE_HELPERS = () => {
     for (const d of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
       for (let j = 0; j < 6; j++) {
         await E(d => { player.cds = [0, 0, 0]; player.energy = 999; player.ilkanPhase = null; useSkill(0, { x: player.x + d[0] * 300, y: player.y + d[1] * 300, dx: d[0], dy: d[1] }); }, d);
-        await sleep(450);
+        await simSleep(450);
       }
       bounds.push(await E(() => { const o = { x: player.x, y: player.y, radius: player.radius }; const x0 = o.x, y0 = o.y; clampToArena(o); return { x: Math.round(player.x), y: Math.round(player.y), inside: Math.abs(o.x - x0) < 1 && Math.abs(o.y - y0) < 1, finite: isFinite(player.x) && isFinite(player.y) }; }));
     }
@@ -350,11 +358,11 @@ const PAGE_HELPERS = () => {
     const r0 = (await P()).radius;
     await phaseLog();
     await E(() => { player.ultCharge = player.ultMax; player.ultCd = 0; runLevel = Math.max(runLevel, ULT_MIN_ARENA_LEVEL); useUltimate(); });
-    await sleep(200);
+    await simSleep(200);
     await shot('e9_bite');
-    await sleep(500);
+    await simSleep(500);
     await shot('e9_bolt');
-    await sleep(1200);
+    await simSleep(1200);
     const t9 = await P();
     await shot('e9_titan');
     const log9 = await phaseLog();
@@ -367,7 +375,7 @@ const PAGE_HELPERS = () => {
     const cP0 = await E(i => __se.en(i), ic10), bP0 = await E(i => ({ x: enemies[i].x, y: enemies[i].y }), ib10);
     await E(() => { player.ilkanCombo = 0; player.ilkanComboTimer = 0; player.fx = 1; player.fy = 0; });
     const steps10 = [];
-    for (let j = 0; j < 3; j++) { await E(() => { player.basicCd = 0; triggerBasic(player); }); steps10.push(await E(() => player.ilkanAtkStep)); await sleep(200); }
+    for (let j = 0; j < 3; j++) { await E(() => { player.basicCd = 0; triggerBasic(player); }); steps10.push(await E(() => player.ilkanAtkStep)); await simSleep(200); }
     const bK = await E(i => __se.en(i), ib10);
     const cP1 = await E(i => __se.en(i), ic10), bP1 = await E(i => ({ x: enemies[i].x, y: enemies[i].y, hp: enemies[i].hp }), ib10);
     check('E10.ataque_monstruoso', steps10.join(',') === '0,1,2' && cP1.dmg > 0 && Math.hypot(cP1.x - cP0.x, cP1.y - cP0.y) > 20 && bK.dmg > 0 && bK.bossKnocks === 0,
@@ -379,7 +387,7 @@ const PAGE_HELPERS = () => {
     const far = await E(() => __se.spawn('duende_bosque', -200, 0, { hp: 99999 }));
     const out = await E(() => __se.spawn('duende_bosque', 0, 420, { hp: 99999 }));
     await E(() => { player.cds = [0, 0, 0]; player.energy = 999; useSkill(0, null); });
-    await sleep(150);
+    await simSleep(150);
     await shot('e11_sismo');
     const s11 = [await E(i => __se.en(i), near), await E(i => __se.en(i), far), await E(i => __se.en(i), out)];
     check('E11.sismo', s11[0].dmg > s11[1].dmg && s11[1].dmg > 0 && s11[2].dmg === 0, { dmgNear: s11[0].dmg, dmgFar: s11[1].dmg, dmgOut: s11[2].dmg });
@@ -388,10 +396,10 @@ const PAGE_HELPERS = () => {
     await E(() => __se.clear());
     const q = await E(() => __se.spawn('duende_bosque', 80, 0, { hp: 99999 }));
     await E(() => { player.cds = [0, 0, 0]; player.energy = 999; useSkill(1, null); });
-    await sleep(100);
+    await simSleep(100);
     const q1 = await P();
     const hpQ = [];
-    for (let j = 0; j < 5; j++) { await sleep(500); hpQ.push((await E(i => __se.en(i), q)).dmg); }
+    for (let j = 0; j < 5; j++) { await simSleep(500); hpQ.push((await E(i => __se.en(i), q)).dmg); }
     const pulses = hpQ.filter((d, j) => d > (j ? hpQ[j - 1] : 0)).length;
     check('E12.terremoto', q1.er === 'quake' && q1.taken > 1 && pulses >= 3 && (await P()).er === null, { phase: q1.er, takenMult: q1.taken, hpSeries: hpQ, pulsesSeen: pulses, dmgSeries: hpQ });
 
@@ -400,27 +408,27 @@ const PAGE_HELPERS = () => {
     const rr = await E(() => __se.spawn('duende_bosque', 160, 0, { hp: 99999 }));
     const r13a = await P();
     await E(() => { player.cds = [0, 0, 0]; player.energy = 999; useSkill(2, { x: player.x + 300, y: player.y, dx: 1, dy: 0 }); });
-    await sleep(1400);
+    await simSleep(1400);
     const r13b = await P();
     await shot('e13_retumbar');
-    await sleep(2400);
+    await simSleep(2400);
     const r13c = await P(), er13 = await E(i => __se.en(i), rr);
     check('E13.retumbar', r13b.er === 'stomp' && r13c.x - r13a.x > 150 && er13.dmg > 0 && r13c.er === null, { advancedPx: r13c.x - r13a.x, enemyDmg: er13.dmg, phaseMid: r13b.er, phaseEnd: r13c.er });
 
     // E14: regeneración (parte del daño vuelve con vapor; no inmortal)
     await E(() => { __se.clear(); player.hp = player.maxHp * 0.9; player.ilkanRegenPool = 0; player.invulnTimer = 0; damageHero(player, player.maxHp * 0.3, null); });
     const r14a = await P();
-    await sleep(2000);
+    await simSleep(2000);
     const r14b = await P();
     check('E14.regeneracion', r14b.hp > r14a.hp && r14b.hp < r14a.maxHp * 0.9, { hpAfterHit: r14a.hp, hpAfter2s: r14b.hp, max: r14a.maxHp });
 
     // E15: llenar Furia transformado -> indicador especial
     await E(() => { player.ultCharge = 0; player.ilkanFinaleReady = false; });
-    await sleep(300);
+    await simSleep(300);
     const hidden = await E(() => document.getElementById('se-hud').innerText.includes('TRES PASOS'));
     // Los Tres Pasos solo se habilitan en peligro (vida < 35 % o un aliado caído) o contra un jefe (ilkanFinaleCondition; ILKAN_CFG.finale): se pone al héroe en peligro
     await E(() => { player.hp = Math.max(1, player.maxHp * 0.2); player.ultCharge = player.ultMax - 1; ilkanAddFury(player, 5); });
-    await sleep(150);
+    await simSleep(150);
     const p15 = await P();
     const shown = await E(() => document.getElementById('se-hud').innerText.includes('TRES PASOS LISTOS'));
     check('E15.furia_llena_transformado', p15.ready && shown && !hidden, { ready: p15.ready, bannerOrHud: shown, notShownBefore: !hidden });
@@ -433,23 +441,23 @@ const PAGE_HELPERS = () => {
     await E(() => { window.__steps = []; const orig = ilkanUpdateFinaleStep; window.__origStep = orig; });
     // en peligro justo al lanzar (la regeneración de Ilkan y la curación del Soporte lo subían de 35 % entre E15 y acá y la condición se caía)
     await E(() => { player.hp = Math.max(1, player.maxHp * 0.2); useUltimate(); });
-    await sleep(150);
+    await simSleep(150);
     const p16 = await P();
     const fx16 = await E(() => champFx.filter(f => f.type === 'finaleStep').map(f => ({ idx: f.idx, dx: Math.round(f.x - player.x), dy: Math.round(f.y - player.y), r: f.r, delay: f.delay })));
     await E(() => { joyVec = { x: 1, y: 0 }; });
-    await sleep(900);
+    await simSleep(900);
     const ctl = await P();
     await E(() => { joyVec = { x: 0, y: 0 }; });
     await shot('e16_roar');
-    await sleep(1400);
+    await simSleep(1400);
     await shot('e17_step1');
-    await sleep(2000);
+    await simSleep(2000);
     await shot('e17_step2');
-    await sleep(2000);
+    await simSleep(2000);
     await shot('e17_step3');
     const hpSteps = [];
     for (const i of rs) hpSteps.push((await E(i => __se.en(i), i)).dmg);
-    await sleep(2000);
+    await simSleep(2000);
     const p18 = await P();
     const allyHp1 = await E(() => allies.map(h => Math.round(h.hp)));
     check('E16.ultimate_II', p16.er === 'finale' && !p16.ready && Math.abs(ctl.x - p16.x) < 2, { phase: p16.er, playerMovedWhileRumble: ctl.x - p16.x });
@@ -464,22 +472,22 @@ const PAGE_HELPERS = () => {
     const deaths = {};
     for (const st of ['hook', 'tf', 'titan', 'quake']) {
       await E(() => __se.start('ilkan', ['tanque', 'soporte', 'mago']));
-      await sleep(300);
+      await simSleep(300);
       await E(() => { __se.clear(); runLevel = Math.max(runLevel, ULT_MIN_ARENA_LEVEL); });
       if (st === 'hook') await E(() => { player.cds = [0, 0, 0]; player.energy = 999; useSkill(0, { x: player.x + 300, y: player.y, dx: 1, dy: 0 }); });
       if (st === 'tf') await E(() => { player.ultCharge = player.ultMax; player.ultCd = 0; useUltimate(); });
-      if (st === 'titan' || st === 'quake') { await E(() => { player.ultCharge = player.ultMax; player.ultCd = 0; useUltimate(); }); await sleep(1900); }
+      if (st === 'titan' || st === 'quake') { await E(() => { player.ultCharge = player.ultMax; player.ultCd = 0; useUltimate(); }); await simSleep(1900); }
       if (st === 'quake') await E(() => { player.cds = [0, 0, 0]; player.energy = 999; useSkill(1, null); });
-      await sleep(120);
+      await simSleep(120);
       await E(() => { player.invulnTimer = 0; if (player.ilkanPhase === 'tf') { player.ilkanPhase = null; } player.hp = 1; damageHero(player, 1e7, null); });
-      await sleep(300);
+      await simSleep(300);
       deaths[st] = await P();
     }
     const deathOk = Object.values(deaths).every(d => (!d.alive || d.downed) && !d.titan && d.er === null && d.radius < 40);
     check('E20.muerte_estados', deathOk && errCount() === e0, Object.fromEntries(Object.entries(deaths).map(([k, d]) => [k, { alive: d.alive, titan: d.titan, er: d.er, r: d.radius, cls: d.cls }])));
     // cinemáticas (tf/retumbar) sin daño recibido
     await E(() => __se.start('ilkan', ['tanque', 'soporte', 'mago']));
-    await sleep(300);
+    await simSleep(300);
     const cinem = await E(() => { __se.clear(); runLevel = Math.max(runLevel, ULT_MIN_ARENA_LEVEL); player.ultCharge = player.ultMax; player.ultCd = 0; useUltimate(); const hp = player.hp; damageHero(player, 50, null); return { phase: player.ilkanPhase, noDamage: player.hp === hp }; });
     check('E20b.cinematica_protegida', cinem.phase === 'tf' && cinem.noDamage, cinem);
     check('ILKAN.sin_errores', errCount() === e0, errors.slice(e0));
@@ -490,7 +498,7 @@ const PAGE_HELPERS = () => {
     const e0 = errCount();
     await E(() => __se.start('libertador', ['ilkan', 'soporte', 'mago'], ULT_MIN_ARENA_LEVEL));
     await E(() => { __se.freeze(false); });
-    await sleep(400);
+    await simSleep(400);
     const team = await E(() => heroes.map(h => h.classKey));
     // el Ilkan BOT también tiene que funcionar; se le llena la Furia para ver su IA de titán
     await fpsReset();
@@ -511,14 +519,14 @@ const PAGE_HELPERS = () => {
       stats.maxFx = Math.max(stats.maxFx, s.fx); stats.maxParts = Math.max(stats.maxParts, s.parts);
       if (t === 20) await shot('team_mid');
       if (s.rumble && !stats.shotR) { stats.shotR = true; await shot('team_rumble_bot'); }
-      await sleep(500);
+      await simSleep(500);
     }
     await E(() => { basicHeld = false; });
     const f = await fpsRead();
     // pasar a jefe
     await E(() => { __se.freeze(true); __se.clear(); startBossFight(); });
     // los bots tardan en llegar al jefe (intro + camino): se espera la condición (el jefe recibió daño), hasta 30 s, en vez de 6 s fijos
-    for (let k = 0; k < 60; k++) { await sleep(500); if (await E(() => !!boss && boss.hp < boss.maxHp)) break; }
+    for (let k = 0; k < 60; k++) { await simSleep(500); if (await E(() => !!boss && boss.hp < boss.maxHp)) break; }
     const bossSt = await E(() => ({ boss: !!boss, bossHp: boss ? Math.round(boss.hp) : null, bossMax: boss ? boss.maxHp : null, state }));
     await shot('team_boss');
     check('TEAM.sm_ilkan_2bots', team.join(',') === 'libertador,ilkan,soporte,mago' && stats.granAllies >= 1 && stats.ilkanColossus && stats.smMounted && errCount() === e0,
@@ -544,7 +552,7 @@ const PAGE_HELPERS = () => {
       if (s.sm) { seen.smShots += s.sm.shots; s.sm.cds.forEach((c, i) => c && seen.smSkills.add(i)); if (s.sm.m) seen.smUlt = true; }
       if (s.er) { s.er.cds.forEach((c, i) => c && seen.erSkills.add(i)); if (s.er.t) seen.erTitan = true; if (s.er.ph === 'hook' || s.er.ph === 'hookPrep') seen.erHook = true; }
       if (t === 30) await shot('bots_both');
-      await sleep(500);
+      await simSleep(500);
     }
     const r = { smShots: seen.smShots, smSkills: [...seen.smSkills], smUlt: seen.smUlt, erSkills: [...seen.erSkills], erTitan: seen.erTitan, erHook: seen.erHook };
     check('BOTS.libertador', r.smShots > 0 && r.smSkills.length >= 2 && r.smUlt, r);

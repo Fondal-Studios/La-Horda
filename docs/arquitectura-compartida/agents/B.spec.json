@@ -1,0 +1,39 @@
+{
+ "name": "Persistencia y cuentas",
+ "entryGates": [
+  "node tools/quality/qa-manifest-check.js",
+  "node tools/contracts/t_contract_schemas.js",
+  "node tools/contracts/t_contract_save_compat.js",
+  "node tools/agents/test-agents.js"
+ ],
+ "acceptance": [
+  {
+   "id": "B1",
+   "text": "Los 3 guardados reales se cargan sin ajustes",
+   "cmd": "node tools/lib/with-site.js tools/regression/t_save_sanitize.js"
+  },
+  {
+   "id": "B2",
+   "text": "Tras reiniciar, cuentas, guardados, billetera y economía son idénticos",
+   "cmd": "node tools/contracts/t_contract_save_compat.js && node tools/contracts/t_contract_economy.js"
+  },
+  {
+   "id": "B3",
+   "text": "GET /api/health informa persistent:true en el entorno de prueba con base",
+   "cmd": "cd server && HORDA_TEST_PG_URL=$HORDA_TEST_PG_URL node test-postgres.js",
+   "external": true
+  },
+  {
+   "id": "B4",
+   "text": "Restauración desde copia ensayada deja el mismo estado",
+   "cmd": "node tools/persistence/t_restore_roundtrip.js",
+   "pending": "tools/persistence/t_restore_roundtrip.js"
+  },
+  {
+   "id": "B5",
+   "text": "Solo cambian archivos del agente B",
+   "cmd": "node tools/agents/check-diff.js --agent B"
+  }
+ ],
+ "id": "B"
+}
