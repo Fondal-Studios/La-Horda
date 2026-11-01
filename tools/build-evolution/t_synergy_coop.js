@@ -73,13 +73,16 @@ async function waitFor(c, fn, a, ms) { for (let k = 0; k < (ms || 20000)/150; k+
   await ev(A, () => { const g = heroes[1]; g.energy = g.maxEnergy; g.cds = [0,0,0]; for (let i = 0; i < 6; i++){ const e = spawnEnemy('duende_bosque', false); e.x = g.x + 60 + i*25; e.y = g.y + (i%2?20:-20); e.hp = e.maxHp = 1e6; e.speed = 0; e.atkCd = 1e9; e.dmg = 0; } });
   // precondición de la rama: los enemigos ya están ralentizados cuando llega la nova
   await ev(A, () => { for (const e of enemies) if (e.maxHp === 1e6) { e.slowTimer = 6000; e.slowAmt = 0.3; e.stunTimer = 0; } });
+  // sonda en el MISMO tick del impacto (sin depender de la velocidad de la máquina ni del sondeo): stun tras cada golpe del invitado
+  await ev(A, () => { window.__synProbe = { max: 0, n: new Set() }; const o = skillEvoOnHit; skillEvoOnHit = function (src, e) { const r = o.apply(this, arguments); if (src === heroes[1]) { const st = e.stunTimer || 0; window.__synProbe.max = Math.max(window.__synProbe.max, st); if (st >= 445) window.__synProbe.n.add(enemies.indexOf(e)); } return r; }; });
   await sleep(400);
   await ev(B, ([k]) => { player.cds = [0,0,0]; player.energy = player.maxEnergy; useSkill(k); }, [key]);
-  let maxStun = 0, stunnedN = 0;
-  for (let i = 0; i < 12; i++) { await sleep(130); const r = await ev(A, () => { const t = enemies.filter(e => e.maxHp === 1e6).map(e => e.stunTimer || 0); return { m: Math.max(0, ...t), n: t.filter(x => x >= 300).length }; }); maxStun = Math.max(maxStun, r.m); stunnedN = Math.max(stunnedN, r.n); }
+  await sleep(1500);
+  const probe = await ev(A, () => ({ max: window.__synProbe.max, n: window.__synProbe.n.size }));
+  const maxStun = probe.max, stunnedN = probe.n;
   const fx = await ev(A, ([id]) => { const g = heroes[1]; const hit = enemies.filter(e => e.maxHp === 1e6 && e.hp < e.maxHp); return { id, hit: hit.length, castOk: !!g._evo }; }, [id]);
   check('rama_elegida_es_Nova_Glacial', id === 'mg_glacial', id);
-  check('invitado_lanza_y_la_rama_ACTUA_en_el_anfitrion_congela_a_lo_ralentizado', fx.hit > 0 && fx.castOk && maxStun >= 400 && stunnedN >= 2, { ...fx, maxStun: Math.round(maxStun), stunnedN });
+  check('invitado_lanza_y_la_rama_ACTUA_en_el_anfitrion_congela_a_lo_ralentizado', fx.hit > 0 && fx.castOk && maxStun >= 445 && stunnedN >= 2, { ...fx, maxStun: Math.round(maxStun), stunnedN });
   if (process.env.SHOT) { await B.page.screenshot({ path: process.env.SHOT }); }
   check('sin_errores', A.errors.length === 0 && B.errors.length === 0, { A: A.errors.slice(0, 3), B: B.errors.slice(0, 3) });
   console.log(`SUMMARY ${fails === 0 ? 'OK' : 'FAIL'} fails=${fails}`);
