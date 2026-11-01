@@ -41,7 +41,7 @@
 .bt-title #title-continue-btn{
   position:absolute !important; right:max(5%, env(safe-area-inset-right)); width:min(300px, 40vw); top:calc(50% + 112px); margin:0 !important;
   font-size:.9rem; min-height:36px; padding:4px 12px; z-index:4;
-  background:var(--ui-btn-sec, #1d1411); border:2px solid var(--ui-line-hi, #6a3e1e); opacity:.92;
+  background:linear-gradient(180deg,#3a2415,#1d1009); color:#ffe9c4; border:2px solid #c9843a; opacity:1; box-shadow:var(--ui-shadow-sm, 2px 2px 0 #000);
 }
 .bt-title #title-continue-btn:disabled{ opacity:.6; }
 .bt-title.bt-launch > *{ transition:opacity .5s, filter .5s; }
@@ -94,3 +94,7 @@ body.reduce-motion.beta-visual #controls .ability-btn.bt-press, body.reduce-moti
 .bt-title .build-tag{ z-index:4; }
 #title-screen.bt-title > .legal-title{ position:absolute; left:0; right:0; bottom:calc(8px + env(safe-area-inset-bottom, 0px)); z-index:4; font-size:.75rem; }
 #title-screen.bt-title > .build-tag{ position:absolute; left:0; right:0; bottom:calc(26px + env(safe-area-inset-bottom, 0px)); z-index:3; opacity:.55; text-align:center; }
+
+/* transición de arranque: fundido limpio a negro (ronda 2: el fundido anterior quedaba a medio hacer) */
+#title-screen.bt-title::after{ content:""; position:absolute; inset:0; background:#020503; opacity:0; pointer-events:none; z-index:9; transition:opacity .5s ease-in; }
+#title-screen.bt-title.bt-launch::after{ opacity:1; }

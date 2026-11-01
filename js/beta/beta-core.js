@@ -126,7 +126,7 @@ function bfxDraw(now){
 function betaHeroRgb(h){ return (typeof fxHeroRgb==="function" && h) ? fxHeroRgb(h) : "255,230,160"; }
 function betaRing(x, y, r0, r1, rgb, life, w, a){ BETA.stats.ring++; return bfxSpawn({k:2, x, y, r0, r1, rgb, life, w:w||3, a:a===undefined?1:a}); }
 function betaSparks(x, y, n, rgb, speed, dirX, dirY, spread, life, size){
-  n = bfxBudget(n);
+  n = bfxBudget(Math.max(1, Math.round(n*0.75))); // ronda 2: menos chispas en escenas densas
   const base = (dirX||dirY) ? Math.atan2(dirY, dirX) : 0, full = !(dirX||dirY);
   for(let i=0;i<n;i++){
     const a = full ? brand()*6.2832 : base + (brand()-0.5)*spread;
