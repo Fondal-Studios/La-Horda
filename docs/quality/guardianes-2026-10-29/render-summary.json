@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "c0a025016e0315b93870f2f4c86abb846619d30e",
+  "scopeComplete": false,
+  "counts": {
+    "trackedMediaFiles": 3257,
+    "heroes": 43,
+    "skins": 113,
+    "enemyTypes": 104,
+    "enemyRanks": {
+      "normal": 32,
+      "subelite": 21,
+      "elite": 23,
+      "jefe": 14,
+      "subjefe": 14
+    },
+    "heroAppearancesProbed": 141
+  },
+  "categories": [
+    "heroes",
+    "skins",
+    "summons",
+    "transformations",
+    "vfx",
+    "projectiles",
+    "props",
+    "ui",
+    "enemies",
+    "minibosses",
+    "bosses"
+  ],
+  "globalMissingAssets": null,
+  "globalMissingFrames": null,
+  "completed": [
+    "all tracked media files hashed",
+    "all literal asset references in runtime JS/CSS/entry HTML indexed",
+    "live hero, skin and enemy registries captured",
+    "hero and skin actual renderer sampled in seven states and four directions"
+  ],
+  "pending": [
+    "review dynamic expressions and generated paths",
+    "classify summons, transformations, props and projectiles by actual use (registry/code evidence available)",
+    "full enemy renderer coverage",
+    "per-frame artistic review against codex and master; sampled visibility is not PASS",
+    "reachable branches outside sampled states, multiplayer and arena-specific variants"
+  ],
+  "dynamicExpressions": [
+    {
+      "file": "js/arenas/fortaleza/fort-arena.js",
+      "line": 26,
+      "expression": "assets/sprites/arenas/fortaleza/"
+    },
+    {
+      "file": "js/arenas/fortaleza/fort-render.js",
+      "line": 13,
+      "expression": "assets/sprites/arenas/fortaleza/fx/"
+    },
+    {
+      "file": "js/arenas/infernal/inf-hechicero.js",
+      "line": 20,
+      "expression": "assets/sprites/bosses/infernal/hechicero/"
+    },
+    {
+      "file": "js/arenas/micelial/mic-arena.js",
+      "line": 44,
+      "expression": "assets/sprites/arenas/micelial/"
+    },
+    {
+      "file": "js/arenas/micelial/mic-render.js",
+      "line": 23,
+      "expression": "assets/sprites/arenas/micelial/fx/"
+    },
+    {
+      "file": "js/arenas/micelial/mic-render.js",
+      "line": 25,
+      "expression": "assets/sprites/arenas/micelial/mother/"
+    },
+    {
+      "file": "js/assets/champion-sprites.js",
+      "line": 436,
+      "expression": "assets/sprites/champions/libertador/v2/fx/"
+    },
+    {
+      "file": "js/assets/champion-sprites.js",
+      "line": 437,
+      "expression": "assets/sprites/champions/ilkan/v2/fx/"
+    },
+    {
+      "file": "js/champions/expedition/cosmetics.js",
+      "line": 4,
+      "expression": "assets/sprites/champions/"
+    },
+    {
+      "file": "js/modes/crystal-wars/client.js",
+      "line": 19,
+      "expression": "assets/sprites/enemies/infernal/esqueleto_h/walk"
+    },
+    {
+      "file": "js/modes/crystal-wars/client.js",
+      "line": 166,
+      "expression": "assets/sprites/champions/"
+    },
+    {
+      "file": "js/rendering/battlefield-art.js",
+      "line": 4,
+      "expression": "assets/sprites/battlefield/"
+    },
+    {
+      "file": "js/systems/camp.js",
+      "line": 204,
+      "expression": "assets/ui/codex/arenas/"
+    },
+    {
+      "file": "js/systems/camp.js",
+      "line": 298,
+      "expression": "assets/ui/codex/arenas/"
+    },
+    {
+      "file": "js/systems/story.js",
+      "line": 349,
+      "expression": "assets/ui/codex/arenas/${S.art}.jpg"
+    },
+    {
+      "file": "js/ui/arena-briefing.js",
+      "line": 58,
+      "expression": "assets/ui/codex/arenas/${arena}.jpg"
+    },
+    {
+      "file": "js/ui/codex/codex-book-art.js",
+      "line": 20,
+      "expression": "assets/ui/codex/arenas/"
+    },
+    {
+      "file": "js/ui/codex/codex.js",
+      "line": 269,
+      "expression": "assets/ui/codex/arenas/${a}.jpg"
+    }
+  ],
+  "unavailableRegistries": [],
+  "httpFailures": [],
+  "errors": [],
+  "classificationRules": {
+    "missing": "required resource absent, after resolving path and intended fallback",
+    "technical": "load, crop, alpha, pivot or runtime failure",
+    "artistic": "visual comparison, never inferred from filename or alpha alone",
+    "proceduralIntentional": "explicit design/code evidence; absence of PNG is not a missing asset",
+    "unknown": "unreviewed or insufficient evidence"
+  },
+  "integratedThisRun": {
+    "newAssetFiles": 0,
+    "replacedAssetFiles": 0,
+    "uniqueFrames": 0
+  }
+}
