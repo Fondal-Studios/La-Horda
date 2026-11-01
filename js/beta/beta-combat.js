@@ -27,7 +27,7 @@
       const big = e.rank==="jefe" || e.rank==="subjefe" || e.rank==="elite";
       betaSparks(e.x, cy, n + (crit ? 4 : 0), rgb, 120 + pow*38 + (crit ? 40 : 0), ux, uy, 1.5 - pow*0.12, 340 + pow*70, pow >= 3 ? 1.6 : 1);
       if(pow >= 2) bfxSpawn({k:5, x:e.x - ux*4, y:cy, r0:6, r1:(big ? 34 : 26) + pow*3, rot:Math.atan2(uy, ux) + Math.PI, rgb:"255,255,255", life:190, w:2.4 + pow*0.5, a:0.9});
-      if(pow >= 3 || crit) bfxSpawn({k:4, x:e.x, y:cy, s:5 + pow*2, rgb:crit ? "255,235,150" : rgb, life:230, a:1});
+      if((pow >= 3 || crit) && (B.stats.spark & 1)) bfxSpawn({k:4, x:e.x, y:cy, s:5 + pow*2, rgb:crit ? "255,235,150" : rgb, life:230, a:1});
       if(pow >= 3 && mine) betaRing(e.x, e.y + 4, 8, 34 + pow*8, rgb, 320, 2.5, 0.85);
     }catch(err){}
     return r;
@@ -54,7 +54,7 @@
       const big = e.rank==="jefe" || e.rank==="subjefe" || e.rank==="elite";
       const rad = e.radius || 20, cy = e.y - rad*0.5;
       // almas que se desprenden: motas verde-agua que suben (se leen en la oscuridad del bosque)
-      betaMotes(e.x, cy, big ? 14 : 5, big ? "255,215,120" : "190,255,225", rad*1.4, 46, 900);
+      betaMotes(e.x, cy, big ? 10 : 3, big ? "255,215,120" : "190,255,225", rad*1.4, 46, 900);
       if(typeof bfxSpawn==="function") bfxSpawn({k:4, x:e.x, y:cy, s:big ? 9 : 5, rgb:"255,255,255", life:260});
       betaRing(e.x, e.y + 4, rad*0.4, rad*(big ? 3.4 : 1.9), big ? "255,200,90" : "170,255,215", big ? 520 : 340, big ? 3.2 : 2, big ? 0.95 : 0.7);
       if(big){
