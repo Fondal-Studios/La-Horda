@@ -1,0 +1,211 @@
+{
+  "id": "cazadora",
+  "kind": "champion",
+  "opts": {
+    "provider": "bfl,openai",
+    "dryRun": true,
+    "limits": {},
+    "concurrency": 2,
+    "kind": "champion"
+  },
+  "jobs": [
+    {
+      "id": "idle_down-0",
+      "label": "cazadora/idle_down",
+      "clip": "idle_down",
+      "frames": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «idle_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "needs": [
+        "codexPage",
+        "currentStrip"
+      ]
+    },
+    {
+      "id": "walk_down-0",
+      "label": "cazadora/walk_down",
+      "clip": "walk_down",
+      "frames": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «walk_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "needs": [
+        "codexPage",
+        "currentStrip"
+      ]
+    },
+    {
+      "id": "attack_down-0",
+      "label": "cazadora/attack_down",
+      "clip": "attack_down",
+      "frames": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «attack_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "needs": [
+        "codexPage",
+        "currentStrip"
+      ]
+    },
+    {
+      "id": "hit_down-0",
+      "label": "cazadora/hit_down",
+      "clip": "hit_down",
+      "frames": [
+        40,
+        41,
+        42,
+        43
+      ],
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «hit_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "needs": [
+        "codexPage",
+        "currentStrip"
+      ]
+    },
+    {
+      "id": "death_down-0",
+      "label": "cazadora/death_down",
+      "clip": "death_down",
+      "frames": [
+        44,
+        45,
+        46,
+        47
+      ],
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «death_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "needs": [
+        "codexPage",
+        "currentStrip"
+      ]
+    },
+    {
+      "id": "death_down-1",
+      "label": "cazadora/death_down",
+      "clip": "death_down",
+      "frames": [
+        48,
+        49
+      ],
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 2 poses de «death_down» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "needs": [
+        "codexPage",
+        "currentStrip"
+      ]
+    },
+    {
+      "id": "idle_side-0",
+      "label": "cazadora/idle_side",
+      "clip": "idle_side",
+      "frames": [
+        4
+      ],
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 1 poses de «idle_side» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "needs": [
+        "codexPage",
+        "currentStrip"
+      ]
+    },
+    {
+      "id": "walk_side-0",
+      "label": "cazadora/walk_side",
+      "clip": "walk_side",
+      "frames": [
+        5,
+        6,
+        7
+      ],
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 3 poses de «walk_side» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "needs": [
+        "codexPage",
+        "currentStrip"
+      ]
+    },
+    {
+      "id": "attack_side-0",
+      "label": "cazadora/attack_side",
+      "clip": "attack_side",
+      "frames": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «attack_side» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "needs": [
+        "codexPage",
+        "currentStrip"
+      ]
+    },
+    {
+      "id": "idle_up-0",
+      "label": "cazadora/idle_up",
+      "clip": "idle_up",
+      "frames": [
+        8
+      ],
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 1 poses de «idle_up» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "needs": [
+        "codexPage",
+        "currentStrip"
+      ]
+    },
+    {
+      "id": "walk_up-0",
+      "label": "cazadora/walk_up",
+      "clip": "walk_up",
+      "frames": [
+        9,
+        10,
+        11
+      ],
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 3 poses de «walk_up» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "needs": [
+        "codexPage",
+        "currentStrip"
+      ]
+    },
+    {
+      "id": "attack_up-0",
+      "label": "cazadora/attack_up",
+      "clip": "attack_up",
+      "frames": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «attack_up» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "needs": [
+        "codexPage",
+        "currentStrip"
+      ]
+    },
+    {
+      "id": "cast_side-0",
+      "label": "cazadora/cast_side",
+      "clip": "cast_side",
+      "frames": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "prompt": "Pixel art de fantasía oscura moderna del juego La Horda: chibi (cabeza ~40-45 % de la altura), contorno oscuro de 1 px, sombreado de 2-3 tonos por color sin degradados, paleta acotada, fondo TRANSPARENTE, sin texto ni marcos. Personaje: cazadora (referencia: página del Códice y tira de poses actuales). Conservar rostro, vestimenta, arma, paleta y proporciones del Códice. Generar 4 poses de «cast_side» en una fila horizontal, mismo tamaño y pies alineados, misma escala entre poses, sin tocar los bordes.",
+      "needs": [
+        "codexPage",
+        "currentStrip"
+      ]
+    }
+  ]
+}

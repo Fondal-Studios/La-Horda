@@ -1,0 +1,28 @@
+{
+ "score": 100.0,
+ "checks": {
+  "dimensiones": true,
+  "alfa_binario": true,
+  "sin_siluetas_cortadas": true,
+  "sin_cuadros_vacios": true,
+  "estilo_en_rango_del_roster": true,
+  "paleta_vs_sprite_actual": true,
+  "pies_estables": true,
+  "altura_constante_entre_poses": true,
+  "escala_vs_sprite_actual": true,
+  "tiene_consumidor": true
+ },
+ "defects": [],
+ "critical": 0,
+ "coverage_generated_pct": 80.8,
+ "palette_vs_current": 0.992,
+ "palette_vs_codex_page": 0.253,
+ "scale_ratio_vs_current": 1.0,
+ "pass_threshold_90": true,
+ "requires_human_art_review": true,
+ "limitations": [
+  "La puntuación automática mide formato, escala, alfa, estabilidad y estilo numérico; NO juzga si el diseño es fiel al Códice ni si la animación se siente bien.",
+  "Los cuadros heredados del atlas actual no se evalúan como arte nuevo.",
+  "Falta la prueba en el motor real (preview) y la revisión de un artista."
+ ]
+}
