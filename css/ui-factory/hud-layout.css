@@ -26,3 +26,10 @@ body.lanes-on .lanes-hud .ln-chip{ min-height:44px; padding:3px 10px; }
 body.lanes-on .lanes-hud .ln-recall{ min-height:44px; left:calc(50% + 70px); }
 body.lanes-on #hud #party .ally-row{ opacity:.9; }
 body.lanes-on .lanes-hud .ln-note{ top:calc(88px + env(safe-area-inset-top,0px)); font-size:14px; }
+
+/* D2: en pantallas angostas el chip VOLVER va apilado sobre el chip de suministros (a su lado tapaba Curación con el Ataque de 92 px) */
+@media (max-width:900px){
+  body.lanes-on .lanes-hud .ln-rival canvas{ width:118px; height:88px; }
+  body.lanes-on .lanes-hud .ln-rival{ left:calc(118px + env(safe-area-inset-left,0px)); }
+  body.lanes-on .lanes-hud .ln-recall{ left:50%; transform:translateX(-50%); bottom:calc(58px + env(safe-area-inset-bottom,0px)); }
+}

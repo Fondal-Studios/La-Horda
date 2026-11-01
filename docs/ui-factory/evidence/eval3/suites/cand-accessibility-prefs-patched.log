@@ -1,0 +1,35 @@
+[arnés] servidor propio: http://127.0.0.1:40797 (raíz /home/user/La-Horda)
+PASS valores de fábrica: sin paleta, ataque mantener, 100% y 100%
+PASS valores de fábrica: <body> sin clases nuevas ()
+PASS valores de fábrica: controles sin transform ni opacidad (experiencia de siempre)
+PASS valores de fábrica: botón Ataque 92 px
+PASS ataque Mantener: apretar = atacando, soltar = deja de atacar
+PASS las 4 opciones nuevas se guardan en horda_prefs
+PASS tamaño y opacidad se limitan a 90-150 y 40-100
+PASS al recargar se conservan y se aplican (clases del <body>)
+PASS un horda_prefs viejo (sin las claves nuevas) conserva lo suyo y completa con valores de fábrica
+PASS valores inválidos guardados vuelven a los de fábrica
+PASS opacidad 60% aplicada a los botones
+PASS tamaño 150%: botón Ataque 72 -> 108 px (vale 138)
+PASS tamaño 150%: botones y joystick dentro de la pantalla 
+PASS tamaño 150%: botones sin superponerse 
+PASS joystick escalado: velocidad máxima a JOY_MAX x escala px (vale 1.00 / 0.50)
+PASS ataque Alternar: un toque prende (queda prendido al soltar), otro apaga, y soltar el control lo apaga: [true,true,false,false,false,true,false]
+PASS ataque Automático: ataca solo con un enemigo a alcance, no con ninguno ni lejos: [false,true,false]
+PASS rojo-verde: peligro y zona segura toman la paleta (no el color del jefe) y son distintos
+PASS rojo-verde: telegrafías siempre con rayado y borde (forma, no solo color)
+PASS rojo-verde: la barra de vida lleva muescas
+PASS azul-amarillo: paleta propia, distinta a la de rojo-verde
+PASS sin paleta: el aviso conserva su color y no fuerza el rayado
+PASS cuenta: la URL cruda no se ve en pantalla
+PASS cuenta: la dirección queda en "Detalle técnico", colapsado
+PASS cuenta: 3 beneficios (respaldo, Brasas, ranking)
+PASS Tienda con 0 de oro: aparece "Tu próxima meta" con lo que falta
+PASS Tienda con 0 de oro: la meta es el equipo más barato (150)
+PASS Tienda: los precios de las ofertas del día no cambian
+PASS Tienda con 3.000: "Lo que podés comprar ya" con 4 opciones
+PASS Tienda con 3.000: todo lo de la fila alcanza (3000, 1260, 940, 770)
+PASS comprar desde la fila cobra exactamente el precio de la oferta (3000)
+PASS sin errores de página en el último contexto 
+
+32 comprobaciones OK

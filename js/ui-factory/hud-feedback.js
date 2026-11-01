@@ -33,6 +33,10 @@
     if(el.classList.contains("locked") || el.classList.contains("hidden") || el.classList.contains("spent")) return "locked";
     var p = pl(), id = el.id;
     if(p && id==="btn-ult" && p.classKey!=="ilkan" && p.classKey!=="libertador" && !el.classList.contains("ready") && !el.classList.contains("holding")) return "charging";
+    if(p && id==="btn-pact" && p.classKey==="nigromante" && !p.nigroPact){
+      var cost = (typeof NIGRO_PACT_COST!=="undefined") ? NIGRO_PACT_COST : 5;
+      if((p.nigroSouls||0) < cost) return "resources"; // faltan almas
+    }
     if(p && id==="btn-emerg" && typeof emergCanUse==="function"){ try{ if(!emergCanUse(p)) return "locked"; }catch(_){} }
     return "";
   }

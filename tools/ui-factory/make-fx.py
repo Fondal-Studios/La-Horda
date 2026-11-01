@@ -11,7 +11,7 @@ def px(img, x, y, c):
         for dy in (0, 1):
             if 0 <= x + dx < S and 0 <= y + dy < S: img.putpixel((x + dx, y + dy), c)
 def frame_spark(i, n):
-    im = Image.new('RGBA', (S, S), (0, 0, 0, 0)); t = i / (n - 1); r = 5 + t * 10
+    im = Image.new('RGBA', (S, S), (0, 0, 0, 0)); t = i / (n - 1); r = 9 + t * 6
     a = int(255 * (1 - t) ** 0.8)
     for k in range(8):                       # 8 chispas que se alejan
         ang = k * math.pi / 4 + 0.2
@@ -21,7 +21,7 @@ def frame_spark(i, n):
             px(im, x, y, c); px(im, x + 1, y, c); px(im, x, y + 1, c)
     return im
 def frame_burst(i, n):
-    im = Image.new('RGBA', (S, S), (0, 0, 0, 0)); t = i / (n - 1); r = 6 + t * 10
+    im = Image.new('RGBA', (S, S), (0, 0, 0, 0)); t = i / (n - 1); r = 8 + t * 8
     a = int(255 * (1 - t ** 3))
     for k in range(48):                      # anillo pixelado que se expande
         ang = k * math.pi * 2 / 48

@@ -36,11 +36,14 @@
    (el contenido se desvanece bajo ella, no queda "cortado" por un botón flotante) y la Pausa se reorganiza en dos columnas
    para que Continuar / Abandonar entren sin desplazar. Solo presentación: mismos botones, ids y handlers. */
 @media (max-height:520px){
+  #prep-screen:not(.hidden){ padding-bottom:104px; }
   #prep-screen:not(.hidden)::after{ content:""; position:fixed; left:0; right:0; bottom:0; height:56px; z-index:39; pointer-events:none;
     background:linear-gradient(rgba(10,6,4,0), rgba(10,6,4,.96) 55%); }
   #pause-screen.screen:not(.hidden){ display:grid; grid-template-columns:1fr 1fr; align-content:center; justify-items:stretch; gap:6px 12px; padding:8px 24px; }
   #pause-screen .arena-title, #pause-screen .pause-audio, #pause-screen #stats-panel{ grid-column:1 / -1; justify-self:center; }
-  #pause-screen .pause-note{ grid-column:1 / -1; justify-self:center; max-width:640px; margin:0; font-size:.68rem; line-height:1.25; text-align:center; } /* se conserva: en online avisa que la partida SIGUE */
+  #pause-screen .pause-note{ grid-column:1 / -1; justify-self:center; max-width:640px; margin:0; font-size:.62rem; line-height:1.15; text-align:center; }
+  #pause-screen.screen:not(.hidden){ row-gap:4px; }
+  #pause-screen .pause-audio label{ min-height:44px; } /* se conserva: en online avisa que la partida SIGUE */
   #pause-screen .pause-audio{ margin:0; gap:6px 14px; }
   #pause-screen .pause-opts-btn, #pause-screen #pause-howto-btn, #pause-screen #resume-btn, #pause-screen #quit-btn{ margin:0; width:100%; }
   /* con la ficha táctica abierta (#tactical-panel, js/ui/tactical-panel.js): ficha a la izquierda con su propio scroll, controles a la derecha;
@@ -56,3 +59,6 @@
   #pause-screen:has(#tactical-panel) #quit-btn{ grid-column:3; grid-row:5; }
   #pause-screen:has(#tactical-panel) #stats-panel{ grid-column:2 / 4; grid-row:6; max-width:none; margin:6px 0 0; }
 }
+
+/* D5: los desplegables miden 44 px también con mouse (hub y Cristales) */
+.screen.screen details > summary{ min-height:44px; display:flex; align-items:center; }

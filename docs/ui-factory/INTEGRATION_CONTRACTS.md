@@ -18,7 +18,7 @@ Conclusión: la fábrica es **aditiva**. Es un paquete nuevo («UI») que no exi
 | Área | Dueño |
 |---|---|
 | `js/ui-factory/**`, `css/ui-factory/**`, `tools/ui-factory/**`, `docs/ui-factory/**` | **Paquete UI (esta fábrica)** |
-| `index.html` | Integrador. La fábrica pide **exactamente 3 líneas** (§4). |
+| `index.html` | Integrador. La fábrica pide **exactamente 4 líneas** (§4). |
 | `js/ui/**`, `css/*.css` existentes, `js/core/**`, `js/systems/**`, `js/champions/**`, `js/arenas/**` | Otros (solo lectura para la fábrica) |
 | `contracts/v1/**` (S0A) | Arquitectura; la fábrica no lo toca ni depende de él |
 
@@ -45,9 +45,10 @@ Reglas: sin reglas de juego (daño, cooldown, costos), sin segundo motor de esta
 
 ## 4. Cambios en archivos compartidos (para aprobación)
 
-`index.html` (+3 líneas, sin tocar ninguna existente):
+`index.html` (+4 líneas, sin tocar ninguna existente):
 ```html
 <link rel="stylesheet" href="css/ui-factory/hud-feedback.css">   <!-- tras css/item-economy.css: debe ir después de controls.css -->
+<link rel="stylesheet" href="css/ui-factory/hud-layout.css">    <!-- contrato UF-LAYOUT v1 (§8) -->
 <link rel="stylesheet" href="css/ui-factory/menus-touch.css">    <!-- contrato UF-MENU v1: mínimos de 44 px; usa .screen.screen para ganar a ui-kit/mobile/duo-ux -->
 <script src="js/ui-factory/hud-feedback.js"></script>            <!-- antes de js/main.js -->
 ```
@@ -60,10 +61,17 @@ Riesgo de merge: otras ramas que añaden líneas en el mismo bloque producirán 
 
 ## 6. Solicitud al arquitecto general
 1. Registrar el paquete **UI** en `docs/arquitectura-compartida/ownership.json` (rutas de §2) — PR de contrato aparte, no editado aquí para no tocar archivos de S0A.
-2. Aprobar las 3 líneas de `index.html`.
+2. Aprobar las 4 líneas de `index.html`.
 3. Decidir si la prueba `tools/ui-factory/test-hud-feedback.js` se registra en `tools/quality/run-all.js` (dueño: paquete C).
 
 Gate 2 (aprobación de arquitectura) **no está concedido**; ver `FINAL_APPROVAL.md`.
 
 ## 7. Contrato UF-MENU v1
 Solo CSS (`css/ui-factory/menus-touch.css`): `min-height/min-width: 44px` en `button, select, summary, input de texto, [role=button|tab], a[href]` dentro de `.screen`, casillas de verificación pixel-art de 44 px y `label:has(> checkbox)`. Riesgo conocido: selectores amplios sobre `.screen`; si otra rama añade controles compactos deliberados (p. ej. HUD de Cristales no es `.screen`), pueden verse más altos. Retirar el `<link>` revierte todo.
+
+## 8. Contrato UF-LAYOUT v1 (iteración 3–5)
+Solo CSS + hojas de sprites propias (`css/ui-factory/fx/*.png`, generadas por `tools/ui-factory/make-fx.py`; no se usa `assets/**`).
+- **Ataque 92 px** (antes 72) y vecinos desplazados 20–40 px; también modo zurdo. Consecuencia sobre pruebas ajenas: `tools/ux/test-accessibility-prefs.js` esperaba 72/108 px y se actualizó a 92/138 (único archivo existente fuera del paquete UI que se modifica, además de `index.html`).
+- **Cooldown de la Definitiva** (`.uf-cd`): lectura de `player.ultCd`; sin escritura.
+- **Pantalla limpia en `body.lanes-on`** (Guerra de Cristales y Coliseo): se ocultan `#goal-chip`, `#ult-meter`, `#mute-btn` y `.ln-horde`; minimapa rival reducido; en ≤ 900 px el chip VOLVER se apila sobre el de suministros. Decisión de diseño a confirmar por el arquitecto/GM: se pierde el cartel OBJETIVO en esos modos (el marcador y la ficha de arena lo siguen comunicando). Revertir = quitar el `<link>` de `hud-layout.css`.
+- Si `css/lanes.css` o `js/arenas/lanes/lanes-hud.js` cambian clases (`ln-recall`, `ln-chip`, `ln-rival`), actualizar §8 de `hud-layout.css`.

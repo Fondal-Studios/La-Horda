@@ -1,13 +1,79 @@
-# QUALITY_SCORECARD — Gate 1 (Módulo D, evaluador independiente) · Iteración 2
+# QUALITY_SCORECARD — Gate 1 (Módulo D, evaluador independiente) · Iteración 4
+
+Candidato: HEAD de `feature/beta-ui-ux-factory` (`31028132`, «UI Factory iter 4») contra línea base `e194910b`. Re-ejecuté mis scripts contra candidato y base; evidencia en `docs/ui-factory/evidence/eval3/`. Las declaraciones del productor no cuentan: solo lo medido aquí. Umbral fijado por el usuario: **85**. Las iteraciones 1 y 2 siguen más abajo.
+
+## 1. Decisión
+
+**Gate 1: NO APROBADO · CORRECCIONES OBLIGATORIAS (84 / 100 < 85).** Además fallan 2 de las 6 condiciones obligatorias (superposiciones y pruebas automatizadas). Ambos fallos son reparaciones pequeñas: con ellas el puntaje estimado es 86–88 (≥ 85). **No llega a 90**: quedan la barra de Sala sobre contenido, `summary` < 44 px, Pacto sin rechazo y los efectos que tapan la etiqueta del Ataque unos 60–100 ms.
+
+## 2. Puntaje
+
+| Criterio | Máx. | It.2 | It.4 | Justificación (cifras mías) |
+|---|---|---|---|---|
+| Coherencia artística | 20 | 16 | 16 | Efectos por fotogramas pixel-art coherentes con el estilo; la Definitiva en cooldown se apaga con barrido y segundos. Descuentos: la chispa de presión del Ataque (176 px sobre un botón de 92) **tapa la etiqueta «ATAQUE» y roza «MURO» ~60–100 ms** (`montage_fx_btn-basic.png`, 2.º cuadro); Sala sigue con barra sobre contenido. |
+| Usabilidad y navegación | 20 | 17 | 16 | Blancos < 44 px: **276 → 0** (844x390), 275 → 0 (667x375), 260 → 2 (1280x800, táctil); legales del título ya en 44 px; casilla del lobby de Cristales vuelve a ser cuadrada (`menus/cand_844x390_cristales.png`); nota de pausa visible (online: «La partida sigue»). Hub→partida igual (3 toques; 3 corridas: base 2132/2051/2174 ms, cand 2208/2117/1983). Descuentos: dos solapes **nuevos** (§3). |
+| Ergonomía del HUD | 20 | 18 | 19 | Ataque 92 px sin solapar vecinos en **5 viewports × mago/nigromante × diestro/zurdo (20 combinaciones, 0 solapes entre controles, separación 12 px con Habilidad 1, todos ≥ 44 px, ninguno fuera de pantalla)**. Presión síncrona 240/240 (base 43/240); código→cuadro visible mediana 6–8 ms (máx. 28); rechazo en cd/sin energía/sin carga/curación inválida 2–3/3; confirmación solo con ejecución real (6/6, 0 falsos). Cooldown de la Definitiva = `ceil(player.ultCd/1000)` en 8/8 muestras (25→22 s), barrido 0,98→0,86, aparece tras lanzar (mago 32 s, ilkan 40 s, nigromante 38 s) y se retira al llegar a 0 (3/3). Descuento: Pacto sin rechazo cuando faltan almas. |
+| Claridad y accesibilidad | 15 | 13 | 14 | `aria-keyshortcuts` y `aria-disabled` correctos; segundos visibles de la Definitiva; legales 44 px. Descuento: en Cristales/Coliseo desaparecen el rótulo OBJETIVO y el medidor «Definitiva» (ver §4: la información equivalente sigue en pantalla, pero se pierde el objetivo explícito). |
+| Rendimiento y estabilidad | 10 | 9 | 9 | FPS con toques repetidos (8 s, 3 reps): base 16,6 / cand 19,1 / `?uf=0` 17,6; en reposo 18,9 / 16,1 / 16,0: dispersión ±3 fps, sin degradación atribuible a los efectos. |
+| Onboarding y retención potencial | 15 | 10 | 10 | Sin cambios medibles; no se mide retención. |
+| **Total** | 100 | 83 | **84** | 16+16+19+14+9+10 |
+
+## 3. Condiciones obligatorias
+
+| Condición | It.2 | It.4 | Evidencia |
+|---|---|---|---|
+| Cero superposiciones críticas | PASS (reserva) | **FAIL** | **(a)** Guerra de Cristales en partida, 667x375: el chip «B VOLVER» (`.ln-recall`) cubre 19x38 px de **Curación** (`btn-emerg`, 46 px) y recorta su etiqueta («URA»): solape nuevo causado por el Ataque a 92 px + `left:calc(50% + 70px)` (`lanes/cand_667x375_cristales.png`; en la base el solape era minimapa × barra de oro). 844x390 y 932x430: sin solapes nuevos. **(b)** Pausa 667x375, 5 escenarios: «Opciones» × «Continuar» 6 px (`pause/cand_pause.json`); nuevo por la nota compacta. **(c)** Sala sin cambio: la barra cubre 16–29 px del panel/selector a scroll 0 (`sala-scroll0.json`, igual que en It.2: solo bajó la altura del degradado a 56 px). Sin solapes en Pausa 844x390 y 932x430. |
+| Cero botones principales inoperantes | PASS | PASS | Combate 6/6 + Pacto (con 5 almas: `nigroPact=true`, armado) + Revivir (presión visible `uf-press uf-hold`, tras forzar su estado contextual). Continuar/Abandonar con hit-test OK en 3 viewports móviles (también sin panel táctico, emulado ocultando `#tactical-panel`). |
+| Cero regresiones críticas de gameplay | PASS | PASS | `t_snapshot`: 887 bindings iguales, solo hash del DOM; `t_drag_aim` 12/12; `t_det` 31 partidas, **3 diferencias, solo digest `save`** (subconjunto de las 5 que ya aparecen base-contra-base: ruido). Cristales y Coliseo arrancan y juegan (3,5 s, 0 errores de página). |
+| Feedback visual en todos los botones de combate | PASS | PASS | `hud-cand.json`: 6 botones × 3 campeones; Pacto y Revivir también; 0 estados pegados; edge-cases (touchCancel, multitoque, arrastre, pausa, blur) limpios. |
+| No empeorar navegación hub→partida | PASS | PASS | 3 toques y mismos botones; mediana 2117 vs 2132 ms. |
+| Pruebas automatizadas obligatorias aprobadas | PASS | **FAIL** | `tools/ux/test-accessibility-prefs.js` **falla en el candidato**: «valores de fábrica: botón Ataque 72 px» (ahora 92); la suite se detiene en esa afirmación. Con la expectativa corregida a 92 px (y 108→138 en el caso 150 %) en una copia mía (`tools/ui-factory/eval/test-accessibility-prefs.patched.js`) pasan las 32 comprobaciones (`suites/cand-accessibility-prefs-patched.log`), por lo que es una prueba desactualizada, no un defecto de comportamiento, pero **el productor no la actualizó**. Las otras 7 suites: rc=0. |
+
+## 4. Cristales y Coliseo en partida (base vs candidato; `lanes/*.json`, capturas `lanes/*.png`)
+
+- Elementos visibles: Cristales 55 → 49 (844x390), 55 → 49 (667x375), 55 → 50 (932x430); Coliseo 49 → 45 en los tres. Solapes entre bloques: 844x390 1 → 1 (minimapa × botón «?», ya existía), 667x375 7 → 6 (cambia el conjunto: sale minimapa × barra de oro, entra Volver × Cura), 932x430 1 → 1; Coliseo 0 → 0.
+- Desaparecen por diseño: rótulo OBJETIVO (`#goal-chip`), medidor «Definitiva» (`#ult-meter`), «SON», «TU HORDA / sin cartas todavía» (Cristales).
+- ¿Sigue sabiendo el jugador su objetivo? Sí, de forma indirecta: el marcador (torres, cristal, reloj), el aviso «Tu horda sale sola… derribá torres» (Cristales) y «Tu duelo: TU EQUIPO vs ÁMBAR» (Coliseo) siguen visibles, pero se pierde la frase explícita de objetivo y, en Cristales, el estado de las cartas de la horda: **pérdida de información (media-baja)**.
+- ¿Estado de la Definitiva? Sí: el botón conserva su aro/«ULT» listo (`lanes/cand_844x390_cristales_ultlista.png`) y ahora muestra segundos al estar en cooldown; el medidor textual era redundante.
+- Legibilidad: 844x390 limpia (`cand_844x390_cristales.png`, `coliseo.png`); mejor que la base, que apila OBJETIVO + Definitiva + SON sobre el campo.
+
+## 5. Rechazos restantes
+
+| # | Hallazgo (reproducible) | Sev. | Clase | Archivo / selector |
+|---|---|---|---|---|
+| D1 | `test-accessibility-prefs.js` falla: espera Ataque 72 px (ahora 92) y 150 % = 108 px. Reproducir: `node tools/ux/test-accessibility-prefs.js`. | Alta (condición obligatoria) | REPAIR | `tools/ux/test-accessibility-prefs.js` líneas 41 y 74 (92 y 138) |
+| D2 | Cristales 667x375: «VOLVER» tapa 19x38 px de Curación. | Alta (solape de control de combate) | REPAIR | `css/ui-factory/hud-layout.css` `body.lanes-on .lanes-hud .ln-recall{left:calc(50% + 70px)}` (desplazar hacia la izquierda o subir Curación) |
+| D3 | Pausa 667x375: «Opciones» × «Continuar» 6 px por la nota de dos líneas. | Media-baja | REPAIR | `css/ui-factory/menus-touch.css` `#pause-screen .pause-note` / `.pause-opts-btn` (reducir `gap` o altura de la nota) |
+| D4 | Sala: barra de «Comenzar» cubre 16–29 px del panel siguiente a scroll 0 (no corregido; 932x430 bloquea el centro del resumen). | Baja | REPAIR | `#prep-screen` `padding-bottom` ≥ alto de la barra |
+| D5 | `summary` del hub (555x32) y de Cristales (422x28) siguen < 44 px en 1280x800 táctil (C5 no tocado). | Baja | REPAIR | reglas `details>summary` del hub |
+| D6 | Pacto sin almas no da rechazo visual ni `aria-disabled=true` (solo el texto flotante del juego). | Baja | REPAIR | `hud-feedback.js` `blockedKind()` (`player.nigroSouls < NIGRO_PACT_COST`) |
+| D7 | La chispa de presión del Ataque (`.uf-spr`, `inset:-55%`, `z-index:4`) tapa «ATAQUE» y el borde de «MURO» durante ~60–100 ms en cada pulsación; al mantener repetidamente parpadea. Solicitado por el usuario; aceptable, mejorable reduciendo el sprite al 120 % o bajando su opacidad sobre el texto. | Baja | REPAIR opcional | `css/ui-factory/hud-feedback.css` `.uf-spr` |
+| D8 | Pausa en escritorio 1280x800 con mouse: Continuar/Abandonar bajo el borde (heredado, C7). | Info | REWORK opcional | `#pause-screen` |
+| D9 | Cristales: se pierde el rótulo OBJETIVO y «TU HORDA»; revisar con diseño si es intencional. | Info/media-baja | decisión de diseño | `body.lanes-on #goal-chip`, `.ln-horde` |
+
+Ninguno exige REBUILD.
+
+## 6. Verificación de las declaraciones del productor (iteración 4)
+
+C1 nota visible: **confirmado** (online: «La partida sigue» visible). C3 legales 44 px: **confirmado** (0 `<44` en el título). C4 casilla: **confirmado**. C6 `any-pointer:coarse`: **leído en CSS; no re-medido con un portátil táctil real**. C2 barra de Sala 56 px: **solo cosmético, solape geométrico sin cambio** (D4). C5/C7: sin tocar, confirmado. Efectos por fotogramas, Ataque 92 px, cooldown de Definitiva y pantalla limpia: **confirmados con las salvedades D1, D2, D7, D9**.
+
+## 7. Limitaciones
+
+Mismas de iteraciones previas (mismo modelo con contexto separado; sin hardware táctil real; Chromium headless sin GPU; online simulado). Esta iteración además: las medidas de latencia se tomaron con otras pruebas en paralelo (cola del navegador 70–86 ms en base y candidato por igual); FPS con ±3 fps de dispersión; Revivir solo con su estado contextual forzado por clase (no con un aliado caído real); «sin panel táctico» emulado por CSS; Coliseo/Cristales solo 3,5 s de juego con bots (no una partida completa); mis capturas incluyen un toast de logro por mi perfil de prueba; `t_func` no repetido.
+
+---
+
+# Historial
+## Iteración 2 (conservada; rama en 758ce1ec): CORRECCIONES, 83/100
 
 Candidato: HEAD de `feature/beta-ui-ux-factory` (`758ce1ec`, «UI Factory iter 2») contra línea base `e194910b`. Re-ejecuté todos mis scripts (`tools/ui-factory/eval/`) contra candidato y base; evidencia en `docs/ui-factory/evidence/eval2/`. Lo que declara el productor no cuenta como evidencia: solo lo medido aquí. La iteración 1 queda al final (sección «Historial»).
 
-## 1. Decisión
+### 1. Decisión
 
 **Gate 1: CORRECCIONES OBLIGATORIAS (83 / 100; rango 80–89). No es candidato a aprobación (≥ 90).**
 Las 6 condiciones obligatorias pasan (la de superposiciones con reserva). Los defectos de iteración 1 R2–R5, R7, R10 quedan resueltos y R1 mejora mucho; quedan 6 rechazos menores, uno de ellos medio (nota online oculta).
 
-## 2. Puntaje
+### 2. Puntaje
 
 | Criterio | Máx. | It.1 | It.2 | Justificación (cifras mías) |
 |---|---|---|---|---|
@@ -19,7 +85,7 @@ Las 6 condiciones obligatorias pasan (la de superposiciones con reserva). Los de
 | Onboarding y retención potencial | 15 | 9 | 10 | No mido retención. Mejora acotada: con la pausa reorganizada los 4 controles entran sin desplazar; flujo y primer minuto sin regresión (suites OK). |
 | **Total** | 100 | 73 | **83** | 16+17+18+13+9+10 |
 
-## 3. Condiciones obligatorias
+### 3. Condiciones obligatorias
 
 | Condición | It.1 | It.2 | Evidencia |
 |---|---|---|---|
@@ -30,7 +96,7 @@ Las 6 condiciones obligatorias pasan (la de superposiciones con reserva). Los de
 | No empeorar navegación hub→partida | PASS | PASS | 3 toques idénticos (`#hub-play-btn`, `#prep-start-btn`, `#run-intro .ri-go`); ms 3 corridas: base 2119 / 2135 / 2077, cand 2464 / 2075 / 1922 (la 1.ª, primera tras arrancar, es atípica; mediana 2075 vs 2119). |
 | Pruebas automatizadas obligatorias | PASS | PASS | 8 suites `tools/ux` rc=0 (`eval2/suites/cand-summary.txt`). |
 
-## 4. Antes / después (mis cifras; headless sin GPU)
+### 4. Antes / después (mis cifras; headless sin GPU)
 
 | Métrica | Base | Cand. It.1 | Cand. It.2 |
 |---|---|---|---|
@@ -51,7 +117,7 @@ Las 6 condiciones obligatorias pasan (la de superposiciones con reserva). Los de
 
 Las dos tandas de rendimiento tienen ±20–40 % de dispersión (CPU saturada, la 2.ª con valores atípicos de 12–28 s en la primera repetición): **no distingo mejor ni peor**; concluyo «no peor medible».
 
-## 5. Veredicto sobre las declaraciones del productor
+### 5. Veredicto sobre las declaraciones del productor
 
 - R1 Sala/Pausa: **Pausa resuelta** (ver §3). **Sala resuelta a medias** (barra con degradado; a scroll 0 aún tapa 16–29 px).
 - R2 marcador propio: **confirmado** (▸ cerrado, ▾ abierto en Sala/Inventario).
@@ -63,7 +129,7 @@ Las dos tandas de rendimiento tienen ±20–40 % de dispersión (CPU saturada, l
 - R8 mínimos solo con `pointer:coarse` o `max-height:520px`: **aceptable para la meta táctil con una salvedad**. Medido con un contexto sin táctil (`menus-mouse/`): en 1280x800 con mouse el candidato es **idéntico a la base** (260 → 260 blancos, mismas casillas 13/24 px, sin regresión). Con táctil habilitado (tablet/híbrido con puntero primario táctil) sí se aplican (260 → 5). Quedan fuera los portátiles con pantalla táctil cuyo puntero primario es el mouse: conviene `any-pointer:coarse` (R-C6).
 - R10: **resuelto** (ruido de la prueba, ver §3).
 
-## 6. Rechazos restantes
+### 6. Rechazos restantes
 
 | # | Hallazgo (reproducible) | Sev. | Clase | Archivo / selector |
 |---|---|---|---|---|
@@ -78,18 +144,18 @@ Las dos tandas de rendimiento tienen ±20–40 % de dispersión (CPU saturada, l
 
 Ninguno exige REBUILD. Con C1 y C2 resueltos y C3–C6 al menos revisados, el puntaje sube a ≥ 90 con las mismas pruebas.
 
-## 7. Pruebas nuevas en esta iteración
+### 7. Pruebas nuevas en esta iteración
 
 `eval-pause.js` (pausa solo / sin panel (CSS) / online (netMatch simulado) / zurdo / texto grande; Sala plegada y desplegada) en 844x390, 667x375, 932x430, 1280x800; `eval-sala0.js` (hit-test a scroll 0); `eval-menus.js` con `HASTOUCH=0` (mouse real); `run-iter2.sh` (rendimiento, suites, regresión, det antes×2 y después).
 
-## 8. Limitaciones
+### 8. Limitaciones
 
 Mismas que en iteración 1 (mismo modelo con contexto separado; sin hardware táctil real; Chromium headless sin GPU; online solo simulado con `netMatch` falso, sin servidor; sin mando; sin lector de pantalla). Además: **«sin panel táctico» NO quedó cubierto**: la corrida usó `remove()` y el juego volvió a crear el panel (el escenario `solo-sin-panel` es idéntico a `solo`); corregí el script a ocultar con CSS pero no lo repetí; Cristales/Coliseo se evaluaron solo en su pantalla de lobby (no su HUD en partida); `btn-pact`/`btn-revive` no ejercitados; las capturas de pausa incluyen un toast de logro causado por mi perfil de prueba (desbloquea todos los campeones), no por el candidato; `t_func` no se repitió. La medición de latencia corrió en paralelo con otras pruebas en algunas tandas: la cola del navegador sube igual en base y candidato.
 
 ---
 
-# Historial
-## Iteración 1 (conservada tal cual; rama en 257fba37): RECHAZADO 73/100
+## Historial (iteración 1 incluida)
+### Iteración 1 (conservada tal cual; rama en 257fba37): RECHAZADO 73/100
 
 Candidato: rama `feature/beta-ui-ux-factory` (HEAD `257fba37`) contra línea base `e194910b` (main pristino, `/tmp/uf-baseline`).
 Todo lo medido aquí lo medí con scripts propios en `tools/ui-factory/eval/` (no usé `test-hud-feedback.js` ni acepté declaraciones del productor). Evidencia en `docs/ui-factory/evidence/eval1/`.
