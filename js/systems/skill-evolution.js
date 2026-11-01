@@ -71,7 +71,7 @@ function skillEvoOnCast(caster, key, sk, isUlt){
   return out;
 }
 function _evoActive(src, opts){
-  if(!src || !src.classKey || !src._evo || opts.fromBasic || opts.fromProc || opts.fromReaction) return null;
+  if(!src || !src.classKey || !src._evo || opts.fromBasic || (opts.fromProc && !opts.evoHit) || opts.fromReaction) return null;
   const ev = src._evo;
   return runElapsedMs - ev.at <= EVO_CFG.castWindow ? ev : null;
 }

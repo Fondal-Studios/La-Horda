@@ -1,0 +1,75 @@
+name: QA regresion central
+# UNICO pipeline de regresion pensado para ser el check requerido de cada PR. Corre el mismo comando que en local:
+#   node tools/quality/qa.js --quick | --fast | --full      (ver tools/quality/qa.js y docs/quality/PIPELINE_QA.md)
+# - Cada PR que toca codigo: clasificacion + contratos + servidor + regresion rapida (qa.js --fast). Sin servicios pagos: solo runners de GitHub.
+# - Todas las noches y a pedido: bateria completa (qa.js --full) con el informe adjunto.
+# - Nada se enmascara: no hay continue-on-error; la clasificacion (qa-manifest-check) hace fallar el PR si alguien agrega uno sin declararlo.
+# - Pruebas del nivel "external" (relay real, Postgres) NO corren aca: dependen de infraestructura que el repositorio no controla.
+on:
+  pull_request:
+    paths: ['js/**', 'css/**', 'index.html', 'server/**', 'contracts/**', 'tools/**', 'tests/**', '.github/workflows/qa-regresion.yml', 'docs/arquitectura-compartida/ownership.json']
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: 'quick | fast | full'
+        default: 'full'
+permissions:
+  contents: read
+concurrency:
+  group: qa-regresion-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  rapido:
+    name: "Clasificacion, contratos y servidor"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Propiedad de archivos de los agentes A/B/C (solo ramas de agentes)
+        if: ${{ github.event_name == 'pull_request' }}
+        run: node tools/agents/check-diff.js --agent auto --base origin/${{ github.base_ref }} --head HEAD --branch "${{ github.head_ref }}"
+      - name: Clasificacion de la bateria y de los workflows (falsos verdes)
+        run: node tools/quality/qa-manifest-check.js
+      - name: Contratos compartidos y propiedad de archivos
+        run: |
+          for f in schemas independence save_compat economy telemetry; do node tools/contracts/t_contract_$f.js || exit 1; done
+      - name: Servidor (cuentas, billetera, economia, relay en proceso)
+        working-directory: server
+        run: |
+          npm ci --no-audit --no-fund
+          npm test
+      - name: Humo del relay local
+        working-directory: server
+        run: node ../tools/release/relay-smoke.js --local --create-room
+  regresion:
+    name: "Regresion del juego (${{ github.event_name == 'pull_request' && 'rapida' || 'completa' }})"
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - name: Bateria
+        run: |
+          MODO="${{ github.event_name == 'workflow_dispatch' && inputs.modo || (github.event_name == 'pull_request' && 'fast' || 'full') }}"
+          node tools/quality/qa.js --$MODO --skip-server --jobs 2 --out qa-out
+      - name: Resumen en la pagina del job
+        if: always()
+        run: |
+          if [ -f qa-out/informe.md ]; then cat qa-out/informe.md >> "$GITHUB_STEP_SUMMARY"; else echo "No se genero informe" >> "$GITHUB_STEP_SUMMARY"; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: informe-qa
+          path: |
+            qa-out/informe.md
+            qa-out/informe.json
+            qa-out/run-all/resumen.json
+            qa-out/*.log
+          retention-days: 14

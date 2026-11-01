@@ -1,0 +1,186 @@
+{
+  "contractVersion": 1,
+  "baseSha": "e194910bddf5d976778e1e8e949e3d440d71fc2d",
+  "note": "Fuente de verdad de la propiedad de archivos. tools/contracts/t_contract_independence.js la verifica. Un patrón con '*' no cruza '/'; '**' sí.",
+  "packages": {
+    "A": {
+      "name": "Economía y seguridad",
+      "branchPrefix": "claude/s1-economia-",
+      "allowed": [
+        "server/item-economy.js",
+        "server/item-economy-live.js",
+        "server/item-economy-loot.js",
+        "server/item-economy-compat.js",
+        "server/wallet.js",
+        "server/payments.js",
+        "server/entitlements.js",
+        "server/trades.js",
+        "server/shop-pieces.json",
+        "server/premium-packs.json",
+        "server/test-item-economy.js",
+        "server/test-item-economy-live.js",
+        "server/test-item-economy-compat.js",
+        "server/test-wallet.js",
+        "server/test-wallet-pieces.js",
+        "server/test-trades.js",
+        "server/test-payments-mp.js",
+        "server/test-competitive-entitlements.js",
+        "js/net/item-economy.js",
+        "js/data/pricing.js",
+        "tools/economy/**",
+        "docs/economia-seguridad/**"
+      ],
+      "readOnly": [
+        "contracts/v1/**",
+        "server/accounts.js",
+        "server/game-master.js"
+      ],
+      "ownsContracts": [
+        "GameResult",
+        "EconomyTransaction"
+      ],
+      "dependsOn": [
+        "contracts/v1"
+      ],
+      "providesTo": {
+        "B": "project(state, accountId, data) y recordLogin(store, user, now): firmas congeladas por PlayerProfile v1",
+        "C": "registros de partida legibles con fromServerRun (GameResult v1)"
+      }
+    },
+    "B": {
+      "name": "Persistencia",
+      "branchPrefix": "claude/s2-persistencia-",
+      "allowed": [
+        "server/accounts.js",
+        "server/presence.js",
+        "server/recover-owner.js",
+        "server/admin-users.js",
+        "server/admin-levels.js",
+        "server/rbac.js",
+        "server/campaign-inbox.js",
+        "server/package.json",
+        "server/package-lock.json",
+        "server/operator-config.json",
+        "server/launch.env.example",
+        "server/test-accounts.js",
+        "server/test-postgres.js",
+        "server/test-admin.js",
+        "server/test-founders.js",
+        "server/test-presence.js",
+        "server/test-campaign-inbox.js",
+        "server/test-owner-policy.js",
+        "server/test-owner-recovery.js",
+        "server/test-legacy-champion-ids.js",
+        "server/test-origins-strict.js",
+        "js/storage/**",
+        "js/net/account.js",
+        "tools/regression/t_save_sanitize.js",
+        "tools/regression/fixtures/**",
+        "deploy/**",
+        "fly.toml",
+        "Dockerfile",
+        "contracts/v1/migrations.js",
+        "tools/persistence/**",
+        "docs/persistencia/**"
+      ],
+      "readOnly": [
+        "contracts/v1/**",
+        "server/item-economy-live.js",
+        "server/item-economy.js",
+        "server/wallet.js"
+      ],
+      "ownsContracts": [
+        "PlayerProfile"
+      ],
+      "dependsOn": [
+        "contracts/v1"
+      ],
+      "providesTo": {
+        "A": "store.gmUpdate(fn), store.walletApply(e), store.getSave/putSave: semántica atómica y CAS congelada",
+        "C": "GET /api/health (store, persistent) y registro de migraciones"
+      }
+    },
+    "C": {
+      "name": "Telemetría y QA",
+      "branchPrefix": "claude/s3-telemetria-",
+      "allowed": [
+        "server/game-master.js",
+        "server/test-game-master.js",
+        "js/net/alpha-services.js",
+        "js/net/fondal-telemetry.js",
+        "js/ui/legal.js",
+        "js/data/legal-config.js",
+        "legal/**",
+        "docs/legal/**",
+        "tools/quality/run-all.js",
+        ".github/workflows/**",
+        "docs/quality/**",
+        "tools/alpha/**",
+        "tools/contracts/**",
+        "tools/telemetry/**",
+        "docs/telemetria-qa/**",
+        "tools/lib/**"
+      ],
+      "constraints": {
+        "server/game-master.js": "solo el bloque de la ruta POST /api/telemetry y sus constantes (EVENTS); el resto del archivo lo comparten otras funciones y no se toca",
+        "tools/lib/**": "infraestructura de pruebas (servidor estático, hermeticidad); no contiene lógica de juego"
+      },
+      "readOnly": [
+        "contracts/v1/**",
+        "js/data/pricing.js",
+        "server/accounts.js",
+        "server/item-economy-live.js"
+      ],
+      "ownsContracts": [
+        "TelemetryEvent"
+      ],
+      "dependsOn": [
+        "contracts/v1"
+      ],
+      "providesTo": {
+        "A": "registro de pruebas en run-all y en CI para sus manifiestos",
+        "B": "registro de pruebas en run-all y en CI para sus manifiestos"
+      }
+    }
+  },
+  "shared": {
+    "contracts/v1/**": {
+      "owner": "Arquitectura",
+      "rule": "Solo cambia con un PR de contrato que aprueban los tres propietarios (A, B y C). MINOR agrega; MAJOR rompe y exige migración. Excepción: contracts/v1/migrations.js es del paquete B."
+    },
+    "docs/arquitectura-compartida/**": {
+      "owner": "Arquitectura"
+    },
+    "index.html": {
+      "owner": "Integrador",
+      "rule": "Ningún paquete lo toca: los contratos son solo de servidor y no agregan scripts."
+    }
+  },
+  "forbiddenForAll": [
+    "server/relay.js",
+    "js/net/net-*.js",
+    "js/net/quick-play.js",
+    "js/systems/**",
+    "js/champions/**",
+    "js/arenas/**",
+    "js/combat/**",
+    "js/entities/**",
+    "assets/**",
+    "index.html"
+  ],
+  "frozenInterfaces": [
+    "item-economy-live.project(state, accountId, data)",
+    "item-economy.recordLogin(store, user, now)",
+    "store.walletApply({userId, delta, reason, ref, actor, at}) -> {ok|duplicate|insufficient}",
+    "store.putSave(userId, dataStr, summary, baseVersion, force) -> {ok|conflict}",
+    "POST /api/economy/action {op, args, requestId}",
+    "POST /api/telemetry {session, build, version, alpha, events[]}",
+    "game-master.stateOf(raw) y game-master.audit(state, actor, type, data, now): la economía (A) guarda su estado en la raíz que posee game-master.js (C acotado a telemetría)",
+    "store.gmUpdate(fn) / store.gmRead(): escritura atómica del estado raíz horda_operations (propiedad de B)"
+  ],
+  "knownCoupling": [
+    "server/game-master.js <-> server/item-economy*.js y wallet.js: ciclo de lectura de estado raíz; se mantiene como interfaz congelada, no se rompe en S0A.",
+    "server/accounts.js -> item-economy-live.project / item-economy.recordLogin / wallet: B llama a A solo por las firmas congeladas.",
+    "Texto del aviso de compra: lo emiten js/ui/legal.js (C) y js/net/account.js (B); A publica una única función en js/data/pricing.js y los otros dos la consumen."
+  ]
+}
