@@ -1,0 +1,16 @@
+{
+  "$id": "fondal/la-horda/TelemetryConsent/1.0.0",
+  "title": "TelemetryConsent",
+  "description": "Estado de consentimiento de telemetría de UN navegador. Sin cuenta ni identificadores: la telemetría solo se envía con state=granted.",
+  "type": "object",
+  "required": ["contract", "version", "state", "policyVersion", "source"],
+  "additionalProperties": false,
+  "properties": {
+    "contract": { "const": "TelemetryConsent" },
+    "version": { "type": "string", "pattern": "^1\\.\\d+\\.\\d+$" },
+    "state": { "enum": ["granted", "denied", "unset"] },
+    "policyVersion": { "type": "string", "pattern": "^[a-zA-Z0-9_.-]{1,32}$" },
+    "source": { "enum": ["user_choice", "legacy_default", "automation"] },
+    "decidedAt": { "type": "integer", "minimum": 0 }
+  }
+}

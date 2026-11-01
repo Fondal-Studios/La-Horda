@@ -14,6 +14,7 @@ const a = process.argv.slice(2), val = (k, d) => { const i = a.indexOf(k); retur
 const own = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/arquitectura-compartida/ownership.json'), 'utf8'));
 const rx = g => new RegExp('^' + g.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*\*/g, '\u0000').replace(/\*/g, '[^/]*').replace(/\u0000/g, '.*') + '$');
 const match = (gs, f) => gs.some(g => rx(g).test(f));
+const allowedFor = (pkg, f) => match(pkg.allowed, f) && !match(pkg.deny || [], f);
 const FROZEN = [ // nombre exportado/definido que otro paquete usa -> archivo donde debe seguir estando
   ['project', 'server/item-economy-live.js'], ['command', 'server/item-economy-live.js'], ['recordLogin', 'server/item-economy.js'],
   ['walletApply', 'server/accounts.js'], ['putSave', 'server/accounts.js'], ['gmUpdate', 'server/accounts.js'], ['gmRead', 'server/accounts.js'],
@@ -25,18 +26,19 @@ function run(opts) {
   let agent = opts.agent || 'auto';
   const branch = opts.branch || (() => { try { return git(['rev-parse', '--abbrev-ref', head]); } catch (e) { return ''; } })();
   if (agent === 'auto') agent = Object.keys(own.packages).find(p => branch.startsWith(own.packages[p].branchPrefix)) || null;
-  const contractBranch = /^claude\/contrato-/.test(branch);
-  if (!agent && !contractBranch) return { applies: false, branch, problems: [], files: [] };
+  const contractBranch = /^claude\/contrato-/.test(branch), reviewBranch = /^review\//.test(branch);
+  if (!agent && !contractBranch && !reviewBranch) return { applies: false, branch, problems: [], files: [] };
   const files = git(['diff', '--name-only', `${base}...${head}`]).split('\n').filter(Boolean);
   const allowed = agent ? own.packages[agent].allowed : [], problems = [];
+  if(reviewBranch){ for(const f of files) if(!/^reviews\//.test(f)) problems.push(`${f}: una rama review/… solo puede escribir en reviews/ (los revisores no modifican código)`); return { applies: true, agent: null, branch, files, problems }; }
   for (const f of files) {
     if (match(own.forbiddenForAll, f)) { problems.push(`${f}: prohibido para todos los agentes`); continue; }
     if (/^contracts\/v1\//.test(f) && !contractBranch && !(agent === 'B' && f === 'contracts/v1/migrations.js')) { problems.push(`${f}: el contrato solo cambia en una rama claude/contrato-… aprobada por A, B y C`); continue; }
     if (/^docs\/arquitectura-compartida\//.test(f) && !contractBranch) { problems.push(`${f}: pertenece a Arquitectura`); continue; }
     if (contractBranch && /^(contracts\/v1\/|docs\/arquitectura-compartida\/|tools\/contracts\/)/.test(f)) continue;
     if (!agent) { problems.push(`${f}: una rama de contrato solo puede tocar contracts/, tools/contracts/ y docs/arquitectura-compartida/`); continue; }
-    if (!match(allowed, f)) {
-      const owners = Object.keys(own.packages).filter(p => match(own.packages[p].allowed, f));
+    if (!allowedFor(own.packages[agent], f)) {
+      const owners = Object.keys(own.packages).filter(p => allowedFor(own.packages[p], f));
       problems.push(`${f}: no es del agente ${agent}${owners.length ? ' (es del agente ' + owners.join('/') + ')' : ' (no pertenece a ningún paquete)'}`);
     }
   }

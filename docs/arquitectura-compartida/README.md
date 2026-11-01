@@ -10,7 +10,13 @@ Estado: **preparación** (documentación, contratos de solo lectura y pruebas). 
 | [`prompts/`](prompts) | Un prompt de implementación independiente por agente |
 | [`ORDEN_DE_INTEGRACION.md`](ORDEN_DE_INTEGRACION.md) | Orden recomendado y puntos de control |
 | [`RESULTADOS_DE_PRUEBAS.md`](RESULTADOS_DE_PRUEBAS.md) | Resultados reales y limitaciones |
-| [`BLOQUEANTES.md`](BLOQUEANTES.md) | Lo que sigue pendiente |
+| [`BLOQUEANTES.md`](BLOQUEANTES.md) | Lo que sigue pendiente (S0A) |
+| [`ARQUITECTURA_BETA.md`](ARQUITECTURA_BETA.md) | **S0C** Arquitectura Beta: piezas, flujo y lo que no cambia |
+| [`DEPENDENCIAS.md`](DEPENDENCIAS.md) | Diagrama de dependencias generado desde el registro de contratos |
+| [`REVISION_INDEPENDIENTE.md`](REVISION_INDEPENDIENTE.md) | PRODUCCIÓN → QA → ARQUITECTURA → STAGING → APROBACIÓN |
+| [`ORDEN_INTEGRACION_BETA.md`](ORDEN_INTEGRACION_BETA.md) | Orden de integración en `beta/integracion` |
+| [`BLOQUEANTES_S0C.md`](BLOQUEANTES_S0C.md) | Bloqueantes reales tras S0C |
+| [`../operacion/PROTECCION_MAIN.md`](../operacion/PROTECCION_MAIN.md) | Pasos exactos para proteger `main` (no verificada como activa) |
 
 ## Mapa de la arquitectura
 

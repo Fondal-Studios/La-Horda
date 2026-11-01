@@ -4,10 +4,14 @@ name: QA regresion central
 # - Cada PR que toca codigo: clasificacion + contratos + servidor + regresion rapida (qa.js --fast). Sin servicios pagos: solo runners de GitHub.
 # - Todas las noches y a pedido: bateria completa (qa.js --full) con el informe adjunto.
 # - Nada se enmascara: no hay continue-on-error; la clasificacion (qa-manifest-check) hace fallar el PR si alguien agrega uno sin declararlo.
+# - Revision independiente: una rama de agente (claude/s1..s4-…) no se puede mezclar sin su registro de reviews/ con las 5 etapas aprobadas.
 # - Pruebas del nivel "external" (relay real, Postgres) NO corren aca: dependen de infraestructura que el repositorio no controla.
 on:
   pull_request:
     paths: ['js/**', 'css/**', 'index.html', 'server/**', 'contracts/**', 'tools/**', 'tests/**', '.github/workflows/qa-regresion.yml', 'docs/arquitectura-compartida/ownership.json']
+  push:
+    branches: ['beta/**']
+    paths: ['js/**', 'css/**', 'index.html', 'server/**', 'contracts/**', 'tools/**', 'tests/**', 'reviews/**', '.github/workflows/qa-regresion.yml']
   schedule:
     - cron: '17 6 * * *'
   workflow_dispatch:
@@ -35,6 +39,9 @@ jobs:
       - name: Propiedad de archivos de los agentes A/B/C (solo ramas de agentes)
         if: ${{ github.event_name == 'pull_request' }}
         run: node tools/agents/check-diff.js --agent auto --base origin/${{ github.base_ref }} --head HEAD --branch "${{ github.head_ref }}"
+      - name: Revision independiente (solo ramas de agentes; borrador = permitido, listo = exige las 5 etapas)
+        if: ${{ github.event_name == 'pull_request' }}
+        run: node tools/review/check.js --branch "${{ github.head_ref }}" --head "${{ github.event.pull_request.head.sha }}" --mode ${{ github.event.pull_request.draft && 'draft' || 'merge' }}
       - name: Clasificacion de la bateria y de los workflows (falsos verdes)
         run: node tools/quality/qa-manifest-check.js
       - name: Contratos compartidos y propiedad de archivos

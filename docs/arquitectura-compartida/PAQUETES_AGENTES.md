@@ -56,3 +56,19 @@ Tres paquetes independientes. Cada uno nace de `main` en su propia rama (`branch
 | Pruebas | `server/test-game-master.js`, `tools/alpha/services-browser.js`, `tools/contracts/t_contract_telemetry.js`, `run-all` completo |
 | Aceptación | 1) sin consentimiento no se envía nada; 2) un evento con dato personal se rechaza en el contrato y en el servidor; 3) `ACCEPTED_EVENT_NAMES` coincide con el servidor (la prueba de deriva lo comprueba); 4) la batería corre con la red bloqueada; 5) un cambio que rompe una prueba hoy tolerada pone el CI en rojo |
 | No hacer | enviar identificadores de cuenta, texto de chat o URLs; tocar el multijugador (el arreglo de hermeticidad va en `tools/lib/**`, no en `js/net/**`) |
+
+---
+
+## Agente D — Fábrica de UI y arte (S0C)
+
+**Misión.** Que toda pantalla, HUD y entrega de arte cumpla el estilo, las puertas de calidad y los contratos, sin tocar combate, economía ni persistencia.
+
+| | |
+|---|---|
+| Archivos permitidos | `js/ui/**` (menos `js/ui/legal.js`, que es de C), `css/**`, `assets/**`, `js/assets/**`, `tools/art/**`, `tools/ux/**`, `tools/factory/**`, `tools/vfx/**`, `docs/ART_BIBLE.md`, `docs/art-gate/**`, `docs/ui-factory/**` |
+| Prohibidos | servidor, economía, persistencia, telemetría, `reviews/**`, multijugador, combate y progresión |
+| Contratos que posee | `SkillEvent`, `ChampionSelection`, `ArtAsset` |
+| Contratos que consume | `PlayerProfile` (B), `TelemetryConsent` (C), `LobbyMessage` (solo lectura) |
+| Rama | `claude/s4-ui-…` |
+| Prompt y especificación | `prompts/AGENTE_D_UI_FACTORY.md`, `agents/D.spec.json` (`node tools/agents/accept.js --agent D`) |
+| Aceptación | HUD y selección expresados como contratos válidos; toda entrega de arte como `ArtAsset` con sus puertas; móvil sin desborde; `pixel-density` sin desvíos nuevos (las excepciones las firma el director); solo cambian archivos de D |

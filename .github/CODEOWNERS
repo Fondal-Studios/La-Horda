@@ -1,0 +1,10 @@
+# Propietarios obligatorios de lo que no puede cambiar sin una persona. Solo bloquean un merge si la protección de la rama
+# exige "Require review from Code Owners" (ver docs/operacion/PROTECCION_MAIN.md). Cuenta humana del director del proyecto.
+/contracts/                                  @drmarianojimenez94-sudo
+/docs/arquitectura-compartida/ownership.json @drmarianojimenez94-sudo
+/reviews/                                    @drmarianojimenez94-sudo
+/.github/workflows/                          @drmarianojimenez94-sudo
+/.github/CODEOWNERS                          @drmarianojimenez94-sudo
+/server/relay.js                             @drmarianojimenez94-sudo
+/js/net/                                     @drmarianojimenez94-sudo
+/deploy/                                     @drmarianojimenez94-sudo

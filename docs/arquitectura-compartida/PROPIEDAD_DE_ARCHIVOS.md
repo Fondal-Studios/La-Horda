@@ -11,12 +11,16 @@ Fuente de verdad: [`ownership.json`](ownership.json). La prueba `tools/contracts
 | `server/item-economy*.js`, `server/wallet.js`, `server/payments.js`, `server/entitlements.js`, `server/trades.js`, `server/shop-pieces.json`, `server/premium-packs.json`, sus `test-*`, `js/net/item-economy.js`, `js/data/pricing.js` | **A** Economía | solo leen |
 | `server/accounts.js`, `server/presence.js`, `server/admin-*.js`, `server/rbac.js`, `server/campaign-inbox.js`, `server/package*.json`, `js/storage/**`, `js/net/account.js`, `tools/regression/t_save_sanitize.js` y `fixtures/**`, `deploy/**`, `fly.toml`/`Dockerfile` (nuevos), `contracts/v1/migrations.js` | **B** Persistencia | solo leen |
 | `server/game-master.js` (**solo** la ruta `POST /api/telemetry` y `EVENTS`), `js/net/alpha-services.js`, `js/net/fondal-telemetry.js`, `js/ui/legal.js`, `js/data/legal-config.js`, `legal/**`, `tools/quality/run-all.js`, `.github/workflows/**`, `tools/lib/**`, `tools/alpha/**`, `tools/contracts/**` | **C** Telemetría y QA | solo leen |
-| `contracts/v1/**` (salvo `migrations.js`), `docs/arquitectura-compartida/**` | **Arquitectura** | PR de contrato con aprobación de A, B y C |
+| `js/ui/**` (**menos** `js/ui/legal.js`), `css/**`, `assets/**`, `js/assets/**`, `tools/art/**`, `tools/ux/**`, `tools/factory/**`, `tools/vfx/**`, `docs/ART_BIBLE.md`, `docs/art-gate/**` | **D** Fábrica de UI y arte | solo leen |
+| `contracts/v1/**` (salvo `migrations.js`), `contracts/registry.json`, `docs/arquitectura-compartida/**` | **Arquitectura** | PR de contrato con aprobación del dueño y de todos los consumidores |
+| `reviews/**` | **Revisores** (QA, arquitecto, integrador, director) | **ningún agente A/B/C/D**: no puede escribir su propia aprobación |
 | `index.html` | **Integrador** | ningún paquete (los contratos son solo de servidor) |
 
 ## Prohibido para los tres paquetes
 
-Multijugador y red en vivo (`server/relay.js`, `js/net/net-*.js`, `js/net/quick-play.js`; requieren la decisión D-29), combate, progresión y contenido (`js/systems/**`, `js/champions/**`, `js/arenas/**`, `js/combat/**`, `js/entities/**`) y `assets/**`.
+`reviews/**` (solo revisores) y multijugador y red en vivo (`server/relay.js`, `js/net/net-*.js`, `js/net/quick-play.js`; requieren la decisión D-29), combate, progresión y contenido (`js/systems/**`, `js/champions/**`, `js/arenas/**`, `js/combat/**`, `js/entities/**`). `assets/**` pertenece solo a D.
+
+`ownership.json` admite `deny` por agente (p. ej. D tiene `js/ui/**` pero no `js/ui/legal.js`, que es de C). Los choques entre ramas se detectan con `tools/agents/contract-conflicts.js`.
 
 ## Dónde dos agentes necesitan lo mismo (resolución)
 
