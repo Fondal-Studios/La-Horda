@@ -40,6 +40,19 @@ const ARENA_FEEL = { // sesgo de carácter por arena (de los comentarios de MUSI
   minas: {int: 0.05, bright: -0.25}, infernal: {int: 0.2, bright: 0.2}
 };
 const MIN_SCORE = -0.3;
+// Léxico de intención e instrumentación (de etiquetas y título). Las medidas no distinguen un tema de combate de uno
+// apacible con la misma energía, ni un chiptune de una orquesta: el motor es orquestal/sintético-acústico (flauta, metales, coro).
+const BATTLE = /\b(boss|battle|fight|combat|war|attack|action|pursuit|rush|epic|chase|duel)\b/, CALM = /\b(peaceful|ambience|ambient|calm|relax|lullab|sleep|meditat|serene|gentle)\b/;
+const CHIP = /\b(8-?bit|chiptune|chip|retro|nes|gameboy|arcade|bleep)\b/, WIN = /\b(victory|win|triumph|fanfare|success|complete|fin|end)\b/;
+function intent(x, mode, arena) {
+  let adj = 0;
+  const calmSlot = /^(title|menu|prelude|defeat)$/.test(mode), hotSlot = /^(boss)$/.test(mode) || (mode === 'wave' && !/^(hielo|acuatica|micelial|abismo)$/.test(arena || ''));
+  if (calmSlot && BATTLE.test(x.words)) adj -= 0.5;
+  if (hotSlot && CALM.test(x.words)) adj -= 0.5;
+  if (mode === 'victory' && WIN.test(x.words)) adj += 0.2;
+  if (CHIP.test(x.words)) adj -= 0.25; // identidad orquestal del motor
+  return adj;
+}
 const rankOf = (vals, v) => vals.filter(x => x <= v).length / vals.length;
 function build() {
   const ids = cat.tracks.filter(t => ana[t.sha256] && !ana[t.sha256].error);
@@ -52,6 +65,7 @@ function build() {
   const {modes, arenas} = engineSlots();
   const slots = [];
   const pick = (key, prof, arena, n) => {
+    prof = Object.assign({}, prof, {mode: key.split('@')[0]});
     const words = (ARENA_WORDS[arena] || []);
     const scored = all.filter(x => prof.loop ? x.loopOK : true).map(x => {
       const ti = Math.min(1, Math.max(0, prof.int + (ARENA_FEEL[arena] ? ARENA_FEEL[arena].int : 0))), tb = Math.min(1, Math.max(0, prof.bright + (ARENA_FEEL[arena] ? ARENA_FEEL[arena].bright : 0)));
@@ -59,7 +73,7 @@ function build() {
       const hit = words.filter(w => x.words.includes(w));
       const fadeBonus = !prof.loop && x.a.loop.fadesOut ? 0.25 : 0; // cierres: el fade-out es una virtud
       const shortBonus = !prof.loop && x.a.durationSec <= 90 ? 0.15 : 0;
-      return {x, score: -dist + hit.length * 0.35 + fadeBonus + shortBonus - (x.clipping ? 0.1 : 0), hit};
+      return {x, score: -dist + hit.length * 0.35 + fadeBonus + shortBonus + intent(x, prof.mode, arena) - (x.clipping ? 0.1 : 0), hit};
     }).filter(s => s.score >= MIN_SCORE).sort((p, q) => q.score - p.score).slice(0, n); // sin pista adecuada: se queda la música procedural
     return scored.map(s => ({trackId: s.x.t.sha256, slug: s.x.t.slug, score: +s.score.toFixed(3),
       rationale: `intensidad p${Math.round(s.x.int * 100)} (objetivo ${Math.round(prof.int * 100)}), brillo p${Math.round(s.x.bright * 100)}, ${s.x.a.tempoBPM} BPM, ${s.x.a.centroidHz} Hz de centroide, ` +
