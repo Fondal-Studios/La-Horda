@@ -38,3 +38,29 @@ body.reduce-motion #controls .ability-btn.uf-confirm .uf-fx, body.reduce-motion 
   #controls .ability-btn.uf-confirm, #controls .ability-btn.uf-reject, #controls .ability-btn.uf-confirm .uf-fx, #controls .ability-btn.uf-hold .uf-fx{ animation:none; }
 }
 html.uf-off #controls .uf-fx{ display:none; }
+
+/* ---- animación por fotogramas (estilo GIF pixel-art; hojas generadas por tools/ui-factory/make-fx.py) ---- */
+#controls .ability-btn .uf-spr, #controls #skillzone .ability-btn .uf-spr{ position:absolute; inset:-55%; pointer-events:none; z-index:4; opacity:0;
+  background-repeat:no-repeat; background-size:100% 100%; image-rendering:pixelated; image-rendering:crisp-edges; }
+#controls .ability-btn.uf-press .uf-spr, #controls #skillzone .ability-btn.uf-press .uf-spr{
+  background-image:url("fx/press-spark.png"); background-size:600% 100%; animation:ufSprPress .24s steps(5) forwards, ufSprFade .24s linear forwards; }
+#controls .ability-btn.uf-confirm .uf-spr, #controls #skillzone .ability-btn.uf-confirm .uf-spr{
+  background-image:url("fx/confirm-burst.png"); background-size:800% 100%; animation:ufSprConfirm .34s steps(7) forwards, ufSprFade .34s linear forwards; }
+@keyframes ufSprPress{ from{ background-position:0 0; } to{ background-position:100% 0; } }
+@keyframes ufSprConfirm{ from{ background-position:0 0; } to{ background-position:100% 0; } }
+@keyframes ufSprFade{ 0%{ opacity:1; } 70%{ opacity:1; } 100%{ opacity:0; } }
+/* color por botón: la hoja es dorada; se desplaza el tono (no hay un archivo por color) */
+#btn-s1 .uf-spr{ filter:hue-rotate(150deg) saturate(1.4); } #btn-s2 .uf-spr{ filter:hue-rotate(215deg) saturate(1.3); }
+#btn-s3 .uf-spr{ filter:hue-rotate(95deg) saturate(1.3); } #btn-emerg .uf-spr, #btn-pact .uf-spr, #btn-revive .uf-spr{ filter:hue-rotate(75deg) saturate(1.3); }
+#controls .ability-btn.uf-reject .uf-spr{ animation:none; background-image:none; opacity:0; }
+/* ---- cooldown de la Definitiva: barrido radial + segundos ---- */
+#controls .ability-btn .uf-cd{ display:none; position:absolute; inset:0; border-radius:inherit; z-index:2; align-items:center; justify-content:center; pointer-events:none;
+  font-family:var(--font-retro, monospace); font-size:1.25rem; font-weight:700; color:#fff; text-shadow:2px 2px 0 #000, -1px -1px 0 #000;
+  background:conic-gradient(rgba(8,6,4,.72) calc(var(--ufcd,0) * 360deg), rgba(8,6,4,.18) 0); }
+#controls .ability-btn.uf-ultcd .uf-cd{ display:flex; }
+#controls .ability-btn.uf-ultcd .ico{ opacity:.5; filter:grayscale(.6); }
+#controls .ability-btn.uf-ultcd{ animation:none; box-shadow:0 3px 0 #03070e, 0 0 0 2px #03070e; }
+/* movimiento reducido: sin hojas animadas */
+body.reduce-motion #controls .ability-btn .uf-spr, body.reduce-motion #controls #skillzone .ability-btn .uf-spr{ display:none; }
+@media (prefers-reduced-motion:reduce){ #controls .ability-btn .uf-spr, #controls #skillzone .ability-btn .uf-spr{ display:none; } }
+html.uf-off #controls .uf-spr, html.uf-off #controls .uf-cd{ display:none; }
