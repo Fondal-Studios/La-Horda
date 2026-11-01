@@ -74,19 +74,19 @@
     // niebla baja (aditiva, muy suave) — tres capas con velocidades distintas
     ctx.globalCompositeOperation = "lighter";
     const sp = blobSprite();
-    for(let i=0;i<5;i++){
-      const sz = 380 + i*70, fx = x0 + (((now*(9 + i*4) + i*531) % (W + sz*2)) - sz), fy = y0 + H*(0.18 + i*0.19) + Math.sin(now*0.17 + i*2)*26;
-      ctx.globalAlpha = 0.085;
+    for(let i=0;i<3;i++){
+      const sz = 420 + i*90, fx = x0 + (((now*(9 + i*4) + i*531) % (W + sz*2)) - sz), fy = y0 + H*(0.22 + i*0.28) + Math.sin(now*0.17 + i*2)*26;
+      ctx.globalAlpha = 0.11;
       ctx.drawImage(sp, fx - sz, fy - sz*0.34, sz*2, sz*0.68);
     }
     ctx.globalAlpha = 1; ctx.globalCompositeOperation = "source-over";
     // sombras de copas: manchas oscuras ancladas al mundo que cruzan despacio (rejilla por hash)
-    const cell = 300, ds = darkSprite();
+    const cell = 400, ds = darkSprite();
     const gx0 = Math.floor((x0 - 200)/cell), gx1 = Math.floor((x0 + W + 200)/cell), gy0 = Math.floor((y0 - 200)/cell), gy1 = Math.floor((y0 + H + 200)/cell);
     for(let gx=gx0; gx<=gx1; gx++) for(let gy=gy0; gy<=gy1; gy++){
       const h1 = hash(gx*7.13 + gy*3.77), h2 = hash(gx*1.31 + gy*9.17);
-      if(h1 < 0.45) continue;
-      const bx = gx*cell + h1*cell + Math.sin(now*0.09 + h2*6)*70, by = gy*cell + h2*cell + Math.cos(now*0.07 + h1*6)*40, sz = 170 + h1*160;
+      if(h1 < 0.5) continue;
+      const bx = gx*cell + h1*cell + Math.sin(now*0.09 + h2*6)*70, by = gy*cell + h2*cell + Math.cos(now*0.07 + h1*6)*40, sz = 200 + h1*180;
       ctx.globalAlpha = 0.5*(0.55 + 0.45*Math.sin(now*0.12 + h1*9));
       ctx.drawImage(ds, bx - sz, by - sz*0.6, sz*2, sz*1.2);
     }
