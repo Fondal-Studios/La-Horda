@@ -16,7 +16,7 @@
  "economy_note": "Decisión de diseño pendiente (dueño, 2026-11-02): las skins de set deberían pasar a ser skins comunes y los sets, ítems con mejoras no cosméticas. Hoy se venden por separado pero completar el set las regala; ver items[type=set].economy.",
  "summary": {
   "P1": {
-   "set": 21,
+   "set": 6,
    "base": 4,
    "croma": 1
   },
@@ -26,9 +26,9 @@
    "set": 2
   },
   "P3": {
+   "set": 19,
    "croma": 15,
-   "base": 19,
-   "set": 4
+   "base": 19
   },
   "P4": {
    "set": 2,
@@ -184,7 +184,7 @@
    "type": "set",
    "champ": null,
    "name": "Lucifer · Manifestación",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -221,9 +221,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Preview idéntico píxel a píxel al de la skin de set manada (cazadora 'Flecha de Fuego'): la tienda vende la misma imagen para dos productos"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -242,7 +247,7 @@
    "type": "set",
    "champ": null,
    "name": "Lucifer · Astral",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -284,9 +289,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Además reutiliza la imagen de manada (cazadora 'Flecha de Fuego')"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -305,7 +315,7 @@
    "type": "set",
    "champ": null,
    "name": "Lucifer · Consagrada",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -347,9 +357,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Además reutiliza la imagen de manada (cazadora 'Flecha de Fuego')"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -368,7 +383,7 @@
    "type": "set",
    "champ": null,
    "name": "Glaciar Eterno · Manifestación",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -405,9 +420,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Preview idéntico píxel a píxel al de la skin de set convergencia (mago 'Arcángel Luminar'): la tienda vende la misma imagen para dos productos"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -426,7 +446,7 @@
    "type": "set",
    "champ": null,
    "name": "Glaciar Eterno · Astral",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -468,9 +488,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Además reutiliza la imagen de convergencia (mago 'Arcángel Luminar')"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -489,7 +514,7 @@
    "type": "set",
    "champ": null,
    "name": "Glaciar Eterno · Consagrada",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -531,9 +556,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Además reutiliza la imagen de convergencia (mago 'Arcángel Luminar')"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -552,7 +582,7 @@
    "type": "set",
    "champ": null,
    "name": "Coloso · Manifestación",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -589,9 +619,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Preview idéntico píxel a píxel al de la skin de set marea (segador 'Leónidas'): la tienda vende la misma imagen para dos productos"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -610,7 +645,7 @@
    "type": "set",
    "champ": null,
    "name": "Coloso · Astral",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -652,9 +687,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Además reutiliza la imagen de marea (segador 'Leónidas')"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -673,7 +713,7 @@
    "type": "set",
    "champ": null,
    "name": "Coloso · Consagrada",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -715,9 +755,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Además reutiliza la imagen de marea (segador 'Leónidas')"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -736,7 +781,7 @@
    "type": "set",
    "champ": null,
    "name": "Tempestad · Manifestación",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -773,9 +818,14 @@
       "code": "otro",
       "where": "preview",
       "note": "Preview propio, nítido y coherente (morado/eldritch); sin recortes"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "ninguno",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "bajo",
     "fidelity_0_100": null
    },
@@ -794,7 +844,7 @@
    "type": "set",
    "champ": null,
    "name": "Tempestad · Astral",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -831,9 +881,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Preview idéntico al de 'tempestad' base: el tier astral no se distingue en la tienda"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -852,7 +907,7 @@
    "type": "set",
    "champ": null,
    "name": "Tempestad · Consagrada",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -889,9 +944,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Preview idéntico al de 'tempestad' base: el tier consagrada no se distingue en la tienda"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -910,7 +970,7 @@
    "type": "set",
    "champ": null,
    "name": "Alba · Manifestación",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -947,9 +1007,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Preview idéntico píxel a píxel al de la skin de set custodio (soporte 'Ángel del Alba'): la tienda vende la misma imagen para dos productos"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -968,7 +1033,7 @@
    "type": "set",
    "champ": null,
    "name": "Alba · Astral",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -1010,9 +1075,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Además reutiliza la imagen de custodio (soporte 'Ángel del Alba')"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -1031,7 +1101,7 @@
    "type": "set",
    "champ": null,
    "name": "Alba · Consagrada",
-   "priority": "P1",
+   "priority": "P3",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -1073,9 +1143,14 @@
       "code": "identidad",
       "where": "preview",
       "note": "Además reutiliza la imagen de custodio (soporte 'Ángel del Alba')"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "preview de tienda",
+      "note": "CORRECCIÓN 2026-11-02 tras revisar el código: son skins de portador `earnedOnly` (premiumPrice=0: no se venden por Brasas; js/systems/premium.js) cuyo preview se toma prestado de su `fxSource` (manada/convergencia/marea/sistema/custodio). El duplicado de preview es un marcador de posición, no un producto vendido con otra imagen. Verificar si la tienda de sets los lista; si lo hace, darles preview propio."
      }
     ],
-    "recommended_fix": "regenerar preview",
+    "recommended_fix": "preview propio si la tienda los lista (verificar); si no, ninguno",
     "effort": "medio",
     "fidelity_0_100": null
    },
@@ -8031,6 +8106,12 @@
    "date": "2026-11-02",
    "changes": [
     "cromas Ceniza del Alba (maura, orsa, dariel, zahra, tibor, baltra): corte de tinte resuelto en código; previews regenerados; pendientes de re-revisión"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "changes": [
+    "skins de portador earnedOnly (lucifer, glaciar, coloso, tempestad, alba y sus astral/consagrada): P1→P3; el preview prestado es un marcador de posición y no se venden por Brasas"
    ]
   }
  ]
