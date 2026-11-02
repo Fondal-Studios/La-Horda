@@ -1,0 +1,5887 @@
+{
+ "label": "main",
+ "runs": {
+  "844x390 campana": {
+   "t1": {
+    "n": 27,
+    "overlaps": [],
+    "items": [
+     {
+      "id": "",
+      "cls": "bar-label",
+      "tag": "span",
+      "text": "♥",
+      "x": 19,
+      "y": 15,
+      "w": 14,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 19,
+      "y": 34,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "plevel",
+      "cls": "",
+      "tag": "div",
+      "text": "Thalen · Nv. 20",
+      "x": 19,
+      "y": 53,
+      "w": 146,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-escudo",
+      "tag": "i",
+      "text": "🛡",
+      "x": 21,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 58,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "goal-chip",
+      "cls": "peekable",
+      "tag": "div",
+      "text": "OBJETIVO: recogé semillas de luz 0/3 · 1",
+      "x": 10,
+      "y": 77,
+      "w": 164,
+      "h": 39
+     },
+     {
+      "id": "center-banner",
+      "cls": "show",
+      "tag": "div",
+      "text": "¡Recogé 3 semillas de luz!",
+      "x": 277,
+      "y": 115,
+      "w": 290,
+      "h": 25
+     },
+     {
+      "id": "joy-base",
+      "cls": "",
+      "tag": "div",
+      "text": "",
+      "x": 24,
+      "y": 288,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "btn-ult",
+      "cls": "ability-btn.ult",
+      "tag": "div",
+      "text": "",
+      "x": 768,
+      "y": 198,
+      "w": 60,
+      "h": 60
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 782,
+      "y": 208,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "ULT",
+      "x": 786,
+      "y": 240,
+      "w": 24,
+      "h": 8
+     },
+     {
+      "id": "btn-s3",
+      "cls": "ability-btn.s3",
+      "tag": "div",
+      "text": "",
+      "x": 674,
+      "y": 212,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 685,
+      "y": 219,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "RAYO",
+      "x": 685,
+      "y": 251,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-s2",
+      "cls": "ability-btn.s2",
+      "tag": "div",
+      "text": "",
+      "x": 632,
+      "y": 266,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 643,
+      "y": 273,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "HIELO",
+      "x": 639,
+      "y": 305,
+      "w": 40,
+      "h": 8
+     },
+     {
+      "id": "btn-s1",
+      "cls": "ability-btn.s1",
+      "tag": "div",
+      "text": "",
+      "x": 674,
+      "y": 320,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 685,
+      "y": 327,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "MURO",
+      "x": 685,
+      "y": 359,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-basic",
+      "cls": "ability-btn.basic",
+      "tag": "div",
+      "text": "",
+      "x": 740,
+      "y": 288,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 765,
+      "y": 309,
+      "w": 42,
+      "h": 42
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "Ataque",
+      "x": 762,
+      "y": 351,
+      "w": 48,
+      "h": 8
+     },
+     {
+      "id": "btn-emerg",
+      "cls": "ability-btn.sec",
+      "tag": "div",
+      "text": "",
+      "x": 620,
+      "y": 332,
+      "w": 46,
+      "h": 46
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 635,
+      "y": 343,
+      "w": 16,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "lbl",
+      "tag": "div",
+      "text": "Cura",
+      "x": 627,
+      "y": 359,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "pause-btn",
+      "cls": "",
+      "tag": "button",
+      "text": "❚❚",
+      "x": 740,
+      "y": 8,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "goal": {
+     "visible": true,
+     "text": "OBJETIVO: recogé semillas de luz 0/3 · 16666:40"
+    },
+    "ultMeter": {
+     "visible": false,
+     "text": "★\n      Definitiva"
+    },
+    "mute": {
+     "visible": false,
+     "text": "SON"
+    },
+    "pause": {
+     "visible": true,
+     "text": "❚❚"
+    },
+    "ultBtn": {
+     "cls": "ability-btn ult locked",
+     "ring": "conic-gradient(var(--ult) 0deg, #2a1c10 0deg)"
+    },
+    "body": "beta-visual",
+    "mode": ""
+   },
+   "goal1": {
+    "hiddenClass": false,
+    "vis": "visible",
+    "op": 1,
+    "disp": "flex",
+    "text": "OBJETIVO: recogé semillas de luz 0/3 · 16666:40"
+   },
+   "goal6": {
+    "hiddenClass": true,
+    "vis": "visible",
+    "op": 1,
+    "disp": "none",
+    "text": "OBJETIVO: recogé semillas de luz 0/3 · 16666:37"
+   },
+   "t10": {
+    "n": 28,
+    "overlaps": [],
+    "items": [
+     {
+      "id": "",
+      "cls": "bar-label",
+      "tag": "span",
+      "text": "♥",
+      "x": 19,
+      "y": 15,
+      "w": 14,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 19,
+      "y": 34,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "plevel",
+      "cls": "",
+      "tag": "div",
+      "text": "Thalen · Nv. 20",
+      "x": 19,
+      "y": 53,
+      "w": 146,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-escudo",
+      "tag": "i",
+      "text": "🛡",
+      "x": 21,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 58,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Nivel /10 · Vencidos",
+      "x": 18,
+      "y": 81,
+      "w": 133,
+      "h": 15
+     },
+     {
+      "id": "hud-level",
+      "cls": "",
+      "tag": "b",
+      "text": "3",
+      "x": 53,
+      "y": 81,
+      "w": 6,
+      "h": 14
+     },
+     {
+      "id": "hud-kills",
+      "cls": "",
+      "tag": "b",
+      "text": "0",
+      "x": 145,
+      "y": 81,
+      "w": 6,
+      "h": 14
+     },
+     {
+      "id": "joy-base",
+      "cls": "",
+      "tag": "div",
+      "text": "",
+      "x": 24,
+      "y": 288,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "btn-ult",
+      "cls": "ability-btn.ult",
+      "tag": "div",
+      "text": "",
+      "x": 768,
+      "y": 198,
+      "w": 60,
+      "h": 60
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 782,
+      "y": 208,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "ULT",
+      "x": 786,
+      "y": 240,
+      "w": 24,
+      "h": 8
+     },
+     {
+      "id": "btn-s3",
+      "cls": "ability-btn.s3",
+      "tag": "div",
+      "text": "",
+      "x": 674,
+      "y": 212,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 685,
+      "y": 219,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "RAYO",
+      "x": 685,
+      "y": 251,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-s2",
+      "cls": "ability-btn.s2",
+      "tag": "div",
+      "text": "",
+      "x": 632,
+      "y": 266,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 643,
+      "y": 273,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "HIELO",
+      "x": 639,
+      "y": 305,
+      "w": 40,
+      "h": 8
+     },
+     {
+      "id": "btn-s1",
+      "cls": "ability-btn.s1",
+      "tag": "div",
+      "text": "",
+      "x": 674,
+      "y": 320,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 685,
+      "y": 327,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "MURO",
+      "x": 685,
+      "y": 359,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-basic",
+      "cls": "ability-btn.basic",
+      "tag": "div",
+      "text": "",
+      "x": 740,
+      "y": 288,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 765,
+      "y": 309,
+      "w": 42,
+      "h": 42
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "Ataque",
+      "x": 762,
+      "y": 351,
+      "w": 48,
+      "h": 8
+     },
+     {
+      "id": "btn-emerg",
+      "cls": "ability-btn.sec",
+      "tag": "div",
+      "text": "",
+      "x": 620,
+      "y": 332,
+      "w": 46,
+      "h": 46
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 635,
+      "y": 343,
+      "w": 16,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "lbl",
+      "tag": "div",
+      "text": "Cura",
+      "x": 627,
+      "y": 359,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "pause-btn",
+      "cls": "",
+      "tag": "button",
+      "text": "❚❚",
+      "x": 740,
+      "y": 8,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "goal": {
+     "visible": false,
+     "text": "OBJETIVO: recogé semillas de luz 0/3 · 16666:34"
+    },
+    "ultMeter": {
+     "visible": false,
+     "text": "★\n      Definitiva"
+    },
+    "mute": {
+     "visible": false,
+     "text": "SON"
+    },
+    "pause": {
+     "visible": true,
+     "text": "❚❚"
+    },
+    "ultBtn": {
+     "cls": "ability-btn ult locked",
+     "ring": "conic-gradient(var(--ult) 0deg, #2a1c10 0deg)"
+    },
+    "body": "beta-visual",
+    "mode": ""
+   },
+   "goal10": {
+    "hiddenClass": true,
+    "vis": "visible",
+    "op": 1,
+    "disp": "none",
+    "text": "OBJETIVO: recogé semillas de luz 0/3 · 16666:34"
+   },
+   "goalBoss": {
+    "hiddenClass": false,
+    "vis": "visible",
+    "op": 1,
+    "disp": "flex",
+    "text": "OBJETIVO: ¡derrotá al jefe!"
+   },
+   "goalBossLater": {
+    "hiddenClass": true,
+    "vis": "visible",
+    "op": 1,
+    "disp": "none",
+    "text": "OBJETIVO: ¡derrotá al jefe!"
+   },
+   "mute": "none",
+   "errors": []
+  },
+  "844x390 cristales": {
+   "t1": {
+    "n": 49,
+    "overlaps": [
+     "canvas\"\" x ln-legend-btn\"?\" 42x42"
+    ],
+    "items": [
+     {
+      "id": "",
+      "cls": "bar-label",
+      "tag": "span",
+      "text": "♥",
+      "x": 19,
+      "y": 15,
+      "w": 14,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 19,
+      "y": 34,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "plevel",
+      "cls": "",
+      "tag": "div",
+      "text": "Thalen · Nv. 3",
+      "x": 19,
+      "y": 53,
+      "w": 146,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 21,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 58,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-espadas",
+      "tag": "i",
+      "text": "⚔",
+      "x": 95,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-fuego",
+      "tag": "i",
+      "text": "🔥",
+      "x": 132,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "",
+      "cls": "ln-name",
+      "tag": "b",
+      "text": "ZAFIRO",
+      "x": 197,
+      "y": 11,
+      "w": 169,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-pips",
+      "tag": "span",
+      "text": "9/9 torres",
+      "x": 197,
+      "y": 29,
+      "w": 169,
+      "h": 18
+     },
+     {
+      "id": "",
+      "cls": "on",
+      "tag": "em",
+      "text": "▲",
+      "x": 197,
+      "y": 29,
+      "w": 10,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-hp",
+      "tag": "span",
+      "text": "2600",
+      "x": 197,
+      "y": 49,
+      "w": 169,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-time",
+      "tag": "strong",
+      "text": "18:00",
+      "x": 376,
+      "y": 19,
+      "w": 92,
+      "h": 20
+     },
+     {
+      "id": "",
+      "cls": "ln-wave",
+      "tag": "span",
+      "text": "Oleada 0",
+      "x": 376,
+      "y": 39,
+      "w": 92,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-epics",
+      "tag": "span",
+      "text": "4:00 4:00",
+      "x": 376,
+      "y": 53,
+      "w": 92,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-fuego",
+      "tag": "i",
+      "text": "🐉",
+      "x": 377,
+      "y": 53,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-corona",
+      "tag": "i",
+      "text": "👑",
+      "x": 425,
+      "y": 53,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-name",
+      "tag": "b",
+      "text": "ÁMBAR",
+      "x": 556,
+      "y": 11,
+      "w": 91,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-pips",
+      "tag": "span",
+      "text": "9/9 torres",
+      "x": 574,
+      "y": 29,
+      "w": 73,
+      "h": 18
+     },
+     {
+      "id": "",
+      "cls": "on",
+      "tag": "em",
+      "text": "▲",
+      "x": 574,
+      "y": 29,
+      "w": 10,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-hp",
+      "tag": "span",
+      "text": "2600",
+      "x": 625,
+      "y": 49,
+      "w": 22,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-note",
+      "tag": "div",
+      "text": "Tu horda sale sola por los tres carriles",
+      "x": 226,
+      "y": 88,
+      "w": 392,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-chip",
+      "tag": "button",
+      "text": "",
+      "x": 348,
+      "y": 340,
+      "w": 147,
+      "h": 44
+     },
+     {
+      "id": "",
+      "cls": "ln-shards",
+      "tag": "span",
+      "text": "◆ 500 oro",
+      "x": 395,
+      "y": 345,
+      "w": 53,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-phase",
+      "tag": "span",
+      "text": "Nv 3 · XP 0 % · TIENDA",
+      "x": 360,
+      "y": 362,
+      "w": 123,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-recall",
+      "tag": "button",
+      "text": "",
+      "x": 393,
+      "y": 288,
+      "w": 58,
+      "h": 44
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "B",
+      "x": 419,
+      "y": 294,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "VOLVER",
+      "x": 405,
+      "y": 309,
+      "w": 34,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "canvas",
+      "text": "",
+      "x": 121,
+      "y": 293,
+      "w": 118,
+      "h": 88
+     },
+     {
+      "id": "",
+      "cls": "ln-legend-btn",
+      "tag": "button",
+      "text": "?",
+      "x": 119,
+      "y": 291,
+      "w": 44,
+      "h": 44
+     },
+     {
+      "id": "joy-base",
+      "cls": "",
+      "tag": "div",
+      "text": "",
+      "x": 24,
+      "y": 288,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "btn-ult",
+      "cls": "ability-btn.ult",
+      "tag": "div",
+      "text": "",
+      "x": 768,
+      "y": 198,
+      "w": 60,
+      "h": 60
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 782,
+      "y": 208,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "ULT",
+      "x": 786,
+      "y": 240,
+      "w": 24,
+      "h": 8
+     },
+     {
+      "id": "btn-s3",
+      "cls": "ability-btn.s3",
+      "tag": "div",
+      "text": "",
+      "x": 674,
+      "y": 212,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 685,
+      "y": 219,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "RAYO",
+      "x": 685,
+      "y": 251,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-s2",
+      "cls": "ability-btn.s2",
+      "tag": "div",
+      "text": "",
+      "x": 632,
+      "y": 266,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 643,
+      "y": 273,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "HIELO",
+      "x": 639,
+      "y": 305,
+      "w": 40,
+      "h": 8
+     },
+     {
+      "id": "btn-s1",
+      "cls": "ability-btn.s1",
+      "tag": "div",
+      "text": "",
+      "x": 674,
+      "y": 320,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 685,
+      "y": 327,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "MURO",
+      "x": 685,
+      "y": 359,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-basic",
+      "cls": "ability-btn.basic",
+      "tag": "div",
+      "text": "",
+      "x": 740,
+      "y": 288,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 765,
+      "y": 309,
+      "w": 42,
+      "h": 42
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "Ataque",
+      "x": 762,
+      "y": 351,
+      "w": 48,
+      "h": 8
+     },
+     {
+      "id": "btn-emerg",
+      "cls": "ability-btn.sec",
+      "tag": "div",
+      "text": "",
+      "x": 620,
+      "y": 332,
+      "w": 46,
+      "h": 46
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 635,
+      "y": 343,
+      "w": 16,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "lbl",
+      "tag": "div",
+      "text": "Cura",
+      "x": 627,
+      "y": 359,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "pause-btn",
+      "cls": "",
+      "tag": "button",
+      "text": "❚❚",
+      "x": 740,
+      "y": 8,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "goal": {
+     "visible": false,
+     "text": "OBJETIVO: derribá torres y cristal rival · cuidá el tuyo"
+    },
+    "ultMeter": {
+     "visible": false,
+     "text": "★\n      Definitiva"
+    },
+    "mute": {
+     "visible": false,
+     "text": "SON"
+    },
+    "pause": {
+     "visible": true,
+     "text": "❚❚"
+    },
+    "ultBtn": {
+     "cls": "ability-btn ult",
+     "ring": "conic-gradient(var(--ult) 0deg, #2a1c10 0deg)"
+    },
+    "body": "beta-visual lanes-on",
+    "mode": "cristales"
+   },
+   "goal1": {
+    "hiddenClass": false,
+    "vis": "visible",
+    "op": 0.79,
+    "disp": "flex",
+    "text": "OBJETIVO: derribá torres y cristal rival · cuidá e"
+   },
+   "goal6": {
+    "hiddenClass": true,
+    "vis": "visible",
+    "op": 1,
+    "disp": "none",
+    "text": "OBJETIVO: derribá torres y cristal rival · cuidá e"
+   },
+   "t10": {
+    "n": 52,
+    "overlaps": [
+     "canvas\"\" x ln-legend-btn\"?\" 42x42"
+    ],
+    "items": [
+     {
+      "id": "",
+      "cls": "bar-label",
+      "tag": "span",
+      "text": "♥",
+      "x": 19,
+      "y": 15,
+      "w": 14,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 19,
+      "y": 34,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "plevel",
+      "cls": "",
+      "tag": "div",
+      "text": "Thalen · Nv. 3",
+      "x": 19,
+      "y": 53,
+      "w": 146,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 21,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 58,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-espadas",
+      "tag": "i",
+      "text": "⚔",
+      "x": 95,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-fuego",
+      "tag": "i",
+      "text": "🔥",
+      "x": 132,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Oleada · Vencidos",
+      "x": 20,
+      "y": 81,
+      "w": 121,
+      "h": 15
+     },
+     {
+      "id": "hud-level",
+      "cls": "",
+      "tag": "b",
+      "text": "0",
+      "x": 60,
+      "y": 81,
+      "w": 6,
+      "h": 14
+     },
+     {
+      "id": "hud-kills",
+      "cls": "",
+      "tag": "b",
+      "text": "0",
+      "x": 135,
+      "y": 81,
+      "w": 6,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-name",
+      "tag": "b",
+      "text": "ZAFIRO",
+      "x": 197,
+      "y": 11,
+      "w": 169,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-pips",
+      "tag": "span",
+      "text": "9/9 torres",
+      "x": 197,
+      "y": 29,
+      "w": 169,
+      "h": 18
+     },
+     {
+      "id": "",
+      "cls": "on",
+      "tag": "em",
+      "text": "▲",
+      "x": 197,
+      "y": 29,
+      "w": 10,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-hp",
+      "tag": "span",
+      "text": "2600",
+      "x": 197,
+      "y": 49,
+      "w": 169,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-time",
+      "tag": "strong",
+      "text": "17:56",
+      "x": 376,
+      "y": 19,
+      "w": 92,
+      "h": 20
+     },
+     {
+      "id": "",
+      "cls": "ln-wave",
+      "tag": "span",
+      "text": "Oleada 0",
+      "x": 376,
+      "y": 39,
+      "w": 92,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-epics",
+      "tag": "span",
+      "text": "3:56 3:56",
+      "x": 376,
+      "y": 53,
+      "w": 92,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-fuego",
+      "tag": "i",
+      "text": "🐉",
+      "x": 377,
+      "y": 53,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-corona",
+      "tag": "i",
+      "text": "👑",
+      "x": 425,
+      "y": 53,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-name",
+      "tag": "b",
+      "text": "ÁMBAR",
+      "x": 556,
+      "y": 11,
+      "w": 91,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-pips",
+      "tag": "span",
+      "text": "9/9 torres",
+      "x": 574,
+      "y": 29,
+      "w": 73,
+      "h": 18
+     },
+     {
+      "id": "",
+      "cls": "on",
+      "tag": "em",
+      "text": "▲",
+      "x": 574,
+      "y": 29,
+      "w": 10,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-hp",
+      "tag": "span",
+      "text": "2600",
+      "x": 625,
+      "y": 49,
+      "w": 22,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-note",
+      "tag": "div",
+      "text": "Tu horda sale sola por los tres carriles",
+      "x": 226,
+      "y": 88,
+      "w": 392,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-chip",
+      "tag": "button",
+      "text": "",
+      "x": 348,
+      "y": 340,
+      "w": 147,
+      "h": 44
+     },
+     {
+      "id": "",
+      "cls": "ln-shards",
+      "tag": "span",
+      "text": "◆ 507 oro",
+      "x": 395,
+      "y": 345,
+      "w": 53,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-phase",
+      "tag": "span",
+      "text": "Nv 3 · XP 0 % · TIENDA",
+      "x": 360,
+      "y": 362,
+      "w": 123,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-recall",
+      "tag": "button",
+      "text": "",
+      "x": 393,
+      "y": 288,
+      "w": 58,
+      "h": 44
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "B",
+      "x": 419,
+      "y": 294,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "VOLVER",
+      "x": 405,
+      "y": 309,
+      "w": 34,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "canvas",
+      "text": "",
+      "x": 121,
+      "y": 293,
+      "w": 118,
+      "h": 88
+     },
+     {
+      "id": "",
+      "cls": "ln-legend-btn",
+      "tag": "button",
+      "text": "?",
+      "x": 119,
+      "y": 291,
+      "w": 44,
+      "h": 44
+     },
+     {
+      "id": "joy-base",
+      "cls": "",
+      "tag": "div",
+      "text": "",
+      "x": 24,
+      "y": 288,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "btn-ult",
+      "cls": "ability-btn.ult",
+      "tag": "div",
+      "text": "",
+      "x": 768,
+      "y": 198,
+      "w": 60,
+      "h": 60
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 782,
+      "y": 208,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "ULT",
+      "x": 786,
+      "y": 240,
+      "w": 24,
+      "h": 8
+     },
+     {
+      "id": "btn-s3",
+      "cls": "ability-btn.s3",
+      "tag": "div",
+      "text": "",
+      "x": 674,
+      "y": 212,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 685,
+      "y": 219,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "RAYO",
+      "x": 685,
+      "y": 251,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-s2",
+      "cls": "ability-btn.s2",
+      "tag": "div",
+      "text": "",
+      "x": 632,
+      "y": 266,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 643,
+      "y": 273,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "HIELO",
+      "x": 639,
+      "y": 305,
+      "w": 40,
+      "h": 8
+     },
+     {
+      "id": "btn-s1",
+      "cls": "ability-btn.s1",
+      "tag": "div",
+      "text": "",
+      "x": 674,
+      "y": 320,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 685,
+      "y": 327,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "MURO",
+      "x": 685,
+      "y": 359,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-basic",
+      "cls": "ability-btn.basic",
+      "tag": "div",
+      "text": "",
+      "x": 740,
+      "y": 288,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 765,
+      "y": 309,
+      "w": 42,
+      "h": 42
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "Ataque",
+      "x": 762,
+      "y": 351,
+      "w": 48,
+      "h": 8
+     },
+     {
+      "id": "btn-emerg",
+      "cls": "ability-btn.sec",
+      "tag": "div",
+      "text": "",
+      "x": 620,
+      "y": 332,
+      "w": 46,
+      "h": 46
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 635,
+      "y": 343,
+      "w": 16,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "lbl",
+      "tag": "div",
+      "text": "Cura",
+      "x": 627,
+      "y": 359,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "pause-btn",
+      "cls": "",
+      "tag": "button",
+      "text": "❚❚",
+      "x": 740,
+      "y": 8,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "goal": {
+     "visible": false,
+     "text": "OBJETIVO: derribá torres y cristal rival · cuidá el tuyo"
+    },
+    "ultMeter": {
+     "visible": false,
+     "text": "★\n      Definitiva"
+    },
+    "mute": {
+     "visible": false,
+     "text": "SON"
+    },
+    "pause": {
+     "visible": true,
+     "text": "❚❚"
+    },
+    "ultBtn": {
+     "cls": "ability-btn ult",
+     "ring": "conic-gradient(var(--ult) 0deg, #2a1c10 0deg)"
+    },
+    "body": "beta-visual lanes-on",
+    "mode": "cristales"
+   },
+   "goal10": {
+    "hiddenClass": true,
+    "vis": "visible",
+    "op": 1,
+    "disp": "none",
+    "text": "OBJETIVO: derribá torres y cristal rival · cuidá e"
+   },
+   "mute": "none",
+   "errors": []
+  },
+  "844x390 coliseo": {
+   "t1": {
+    "n": 46,
+    "overlaps": [],
+    "items": [
+     {
+      "id": "",
+      "cls": "bar-label",
+      "tag": "span",
+      "text": "♥",
+      "x": 19,
+      "y": 15,
+      "w": 14,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 19,
+      "y": 34,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "plevel",
+      "cls": "",
+      "tag": "div",
+      "text": "Thalen · Nv. 10",
+      "x": 19,
+      "y": 53,
+      "w": 146,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-arco",
+      "tag": "i",
+      "text": "🏹",
+      "x": 21,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "goal-chip",
+      "cls": "peekable",
+      "tag": "div",
+      "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 ",
+      "x": 10,
+      "y": 77,
+      "w": 164,
+      "h": 39
+     },
+     {
+      "id": "center-banner",
+      "cls": "show",
+      "tag": "div",
+      "text": "RONDA 1 · TU EQUIPO vs ÁMBAR",
+      "x": 266,
+      "y": 115,
+      "w": 312,
+      "h": 25
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "TU EQUIPO",
+      "x": 238,
+      "y": 12,
+      "w": 68,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 238,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 249,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 259,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "ÁMBAR",
+      "x": 325,
+      "y": 12,
+      "w": 52,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 325,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 335,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 346,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "ESMERALDA",
+      "x": 395,
+      "y": 12,
+      "w": 67,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 395,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 405,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 416,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "CARMESÍ",
+      "x": 480,
+      "y": 12,
+      "w": 56,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 480,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 491,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 501,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "col-round",
+      "tag": "strong",
+      "text": "RONDA 1",
+      "x": 558,
+      "y": 14,
+      "w": 56,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "col-clock",
+      "tag": "span",
+      "text": "Preparate…",
+      "x": 558,
+      "y": 29,
+      "w": 56,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-note.col-note",
+      "tag": "div",
+      "text": "Tu duelo: TU EQUIPO vs ÁMBAR",
+      "x": 344,
+      "y": 88,
+      "w": 157,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "canvas",
+      "text": "",
+      "x": 121,
+      "y": 293,
+      "w": 118,
+      "h": 88
+     },
+     {
+      "id": "joy-base",
+      "cls": "",
+      "tag": "div",
+      "text": "",
+      "x": 24,
+      "y": 288,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "btn-ult",
+      "cls": "ability-btn.ult",
+      "tag": "div",
+      "text": "",
+      "x": 768,
+      "y": 198,
+      "w": 60,
+      "h": 60
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 782,
+      "y": 208,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "ULT",
+      "x": 786,
+      "y": 240,
+      "w": 24,
+      "h": 8
+     },
+     {
+      "id": "btn-s3",
+      "cls": "ability-btn.s3",
+      "tag": "div",
+      "text": "",
+      "x": 674,
+      "y": 212,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 685,
+      "y": 219,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "RAYO",
+      "x": 685,
+      "y": 251,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-s2",
+      "cls": "ability-btn.s2",
+      "tag": "div",
+      "text": "",
+      "x": 632,
+      "y": 266,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 643,
+      "y": 273,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "HIELO",
+      "x": 639,
+      "y": 305,
+      "w": 40,
+      "h": 8
+     },
+     {
+      "id": "btn-s1",
+      "cls": "ability-btn.s1",
+      "tag": "div",
+      "text": "",
+      "x": 674,
+      "y": 320,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 685,
+      "y": 327,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "MURO",
+      "x": 685,
+      "y": 359,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-basic",
+      "cls": "ability-btn.basic",
+      "tag": "div",
+      "text": "",
+      "x": 740,
+      "y": 288,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 765,
+      "y": 309,
+      "w": 42,
+      "h": 42
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "Ataque",
+      "x": 762,
+      "y": 351,
+      "w": 48,
+      "h": 8
+     },
+     {
+      "id": "btn-emerg",
+      "cls": "ability-btn.sec",
+      "tag": "div",
+      "text": "",
+      "x": 620,
+      "y": 332,
+      "w": 46,
+      "h": 46
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 635,
+      "y": 343,
+      "w": 16,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "lbl",
+      "tag": "div",
+      "text": "Cura",
+      "x": 627,
+      "y": 359,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "pause-btn",
+      "cls": "",
+      "tag": "button",
+      "text": "❚❚",
+      "x": 740,
+      "y": 8,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "goal": {
+     "visible": true,
+     "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+    },
+    "ultMeter": {
+     "visible": false,
+     "text": "★\n      Definitiva"
+    },
+    "mute": {
+     "visible": false,
+     "text": "SON"
+    },
+    "pause": {
+     "visible": true,
+     "text": "❚❚"
+    },
+    "ultBtn": {
+     "cls": "ability-btn ult ready-pop ready",
+     "ring": "conic-gradient(var(--ult) 360deg, #2a1c10 0deg)"
+    },
+    "body": "beta-visual lanes-on",
+    "mode": "coliseo"
+   },
+   "goal1": {
+    "hiddenClass": false,
+    "vis": "visible",
+    "op": 1,
+    "disp": "flex",
+    "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+   },
+   "goal6": {
+    "hiddenClass": true,
+    "vis": "visible",
+    "op": 1,
+    "disp": "none",
+    "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+   },
+   "t10": {
+    "n": 46,
+    "overlaps": [],
+    "items": [
+     {
+      "id": "",
+      "cls": "bar-label",
+      "tag": "span",
+      "text": "♥",
+      "x": 19,
+      "y": 15,
+      "w": 14,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 19,
+      "y": 34,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "plevel",
+      "cls": "",
+      "tag": "div",
+      "text": "Thalen · Nv. 10",
+      "x": 19,
+      "y": 53,
+      "w": 146,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-arco",
+      "tag": "i",
+      "text": "🏹",
+      "x": 21,
+      "y": 119,
+      "w": 12,
+      "h": 12
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Ronda · Vencidos",
+      "x": 20,
+      "y": 81,
+      "w": 115,
+      "h": 15
+     },
+     {
+      "id": "hud-level",
+      "cls": "",
+      "tag": "b",
+      "text": "1",
+      "x": 55,
+      "y": 81,
+      "w": 6,
+      "h": 14
+     },
+     {
+      "id": "hud-kills",
+      "cls": "",
+      "tag": "b",
+      "text": "0",
+      "x": 130,
+      "y": 81,
+      "w": 6,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "TU EQUIPO",
+      "x": 245,
+      "y": 12,
+      "w": 68,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 245,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 256,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 266,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "ÁMBAR",
+      "x": 332,
+      "y": 12,
+      "w": 52,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 332,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 342,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 353,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "ESMERALDA",
+      "x": 402,
+      "y": 12,
+      "w": 67,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 402,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 412,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 423,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "CARMESÍ",
+      "x": 487,
+      "y": 12,
+      "w": 56,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 487,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 498,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 508,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "col-round",
+      "tag": "strong",
+      "text": "RONDA 1",
+      "x": 565,
+      "y": 14,
+      "w": 42,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "col-clock",
+      "tag": "span",
+      "text": "1:19",
+      "x": 565,
+      "y": 29,
+      "w": 42,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "canvas",
+      "text": "",
+      "x": 121,
+      "y": 293,
+      "w": 118,
+      "h": 88
+     },
+     {
+      "id": "joy-base",
+      "cls": "",
+      "tag": "div",
+      "text": "",
+      "x": 24,
+      "y": 288,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "btn-ult",
+      "cls": "ability-btn.ult",
+      "tag": "div",
+      "text": "",
+      "x": 768,
+      "y": 198,
+      "w": 60,
+      "h": 60
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 782,
+      "y": 208,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "ULT",
+      "x": 786,
+      "y": 240,
+      "w": 24,
+      "h": 8
+     },
+     {
+      "id": "btn-s3",
+      "cls": "ability-btn.s3",
+      "tag": "div",
+      "text": "",
+      "x": 674,
+      "y": 212,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 685,
+      "y": 219,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "RAYO",
+      "x": 685,
+      "y": 251,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-s2",
+      "cls": "ability-btn.s2",
+      "tag": "div",
+      "text": "",
+      "x": 632,
+      "y": 266,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 643,
+      "y": 273,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "HIELO",
+      "x": 639,
+      "y": 305,
+      "w": 40,
+      "h": 8
+     },
+     {
+      "id": "btn-s1",
+      "cls": "ability-btn.s1",
+      "tag": "div",
+      "text": "",
+      "x": 674,
+      "y": 320,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 685,
+      "y": 327,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "MURO",
+      "x": 685,
+      "y": 359,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-basic",
+      "cls": "ability-btn.basic",
+      "tag": "div",
+      "text": "",
+      "x": 740,
+      "y": 288,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 765,
+      "y": 309,
+      "w": 42,
+      "h": 42
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "Ataque",
+      "x": 762,
+      "y": 351,
+      "w": 48,
+      "h": 8
+     },
+     {
+      "id": "btn-emerg",
+      "cls": "ability-btn.sec",
+      "tag": "div",
+      "text": "",
+      "x": 620,
+      "y": 332,
+      "w": 46,
+      "h": 46
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 635,
+      "y": 343,
+      "w": 16,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "lbl",
+      "tag": "div",
+      "text": "Cura",
+      "x": 627,
+      "y": 359,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "pause-btn",
+      "cls": "",
+      "tag": "button",
+      "text": "❚❚",
+      "x": 740,
+      "y": 8,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "goal": {
+     "visible": false,
+     "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+    },
+    "ultMeter": {
+     "visible": false,
+     "text": "★\n      Definitiva"
+    },
+    "mute": {
+     "visible": false,
+     "text": "SON"
+    },
+    "pause": {
+     "visible": true,
+     "text": "❚❚"
+    },
+    "ultBtn": {
+     "cls": "ability-btn ult ready-pop ready",
+     "ring": "conic-gradient(var(--ult) 360deg, #2a1c10 0deg)"
+    },
+    "body": "beta-visual lanes-on",
+    "mode": "coliseo"
+   },
+   "goal10": {
+    "hiddenClass": true,
+    "vis": "visible",
+    "op": 1,
+    "disp": "none",
+    "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+   },
+   "mute": "none",
+   "errors": []
+  },
+  "1280x800 campana": {
+   "t1": {
+    "n": 36,
+    "overlaps": [],
+    "items": [
+     {
+      "id": "",
+      "cls": "bar-label",
+      "tag": "span",
+      "text": "♥",
+      "x": 20,
+      "y": 18,
+      "w": 14,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 20,
+      "y": 38,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "plevel",
+      "cls": "",
+      "tag": "div",
+      "text": "Thalen · Nv. 20",
+      "x": 20,
+      "y": 58,
+      "w": 144,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-escudo",
+      "tag": "i",
+      "text": "🛡",
+      "x": 20,
+      "y": 217,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Ro · Aldric",
+      "x": 38,
+      "y": 212,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 20,
+      "y": 249,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Zack · Elyra",
+      "x": 38,
+      "y": 244,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Nivel /10 · Vencidos",
+      "x": 18,
+      "y": 110,
+      "w": 148,
+      "h": 14
+     },
+     {
+      "id": "hud-level",
+      "cls": "",
+      "tag": "b",
+      "text": "3",
+      "x": 53,
+      "y": 109,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "hud-kills",
+      "cls": "",
+      "tag": "b",
+      "text": "0",
+      "x": 148,
+      "y": 109,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Total",
+      "x": 18,
+      "y": 93,
+      "w": 142,
+      "h": 14
+     },
+     {
+      "id": "hud-timer",
+      "cls": "",
+      "tag": "b",
+      "text": "0:00",
+      "x": 53,
+      "y": 92,
+      "w": 24,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "Raíces Voraces ×2",
+      "x": 18,
+      "y": 129,
+      "w": 115,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-arbol",
+      "tag": "i",
+      "text": "🌿",
+      "x": 18,
+      "y": 128,
+      "w": 14,
+      "h": 14
+     },
+     {
+      "id": "goal-chip",
+      "cls": "",
+      "tag": "div",
+      "text": "OBJETIVO: recogé semillas de luz 0/3 · 1",
+      "x": 10,
+      "y": 160,
+      "w": 164,
+      "h": 42
+     },
+     {
+      "id": "center-banner",
+      "cls": "show",
+      "tag": "div",
+      "text": "¡Recogé 3 semillas de luz!",
+      "x": 453,
+      "y": 285,
+      "w": 374,
+      "h": 32
+     },
+     {
+      "id": "joy-base",
+      "cls": "",
+      "tag": "div",
+      "text": "",
+      "x": 24,
+      "y": 698,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "btn-ult",
+      "cls": "ability-btn.ult",
+      "tag": "div",
+      "text": "",
+      "x": 1204,
+      "y": 608,
+      "w": 60,
+      "h": 60
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1218,
+      "y": 618,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "ULT",
+      "x": 1222,
+      "y": 650,
+      "w": 24,
+      "h": 8
+     },
+     {
+      "id": "btn-s3",
+      "cls": "ability-btn.s3",
+      "tag": "div",
+      "text": "",
+      "x": 1110,
+      "y": 622,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1121,
+      "y": 629,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "RAYO",
+      "x": 1121,
+      "y": 661,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-s2",
+      "cls": "ability-btn.s2",
+      "tag": "div",
+      "text": "",
+      "x": 1068,
+      "y": 676,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1079,
+      "y": 683,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "HIELO",
+      "x": 1075,
+      "y": 715,
+      "w": 40,
+      "h": 8
+     },
+     {
+      "id": "btn-s1",
+      "cls": "ability-btn.s1",
+      "tag": "div",
+      "text": "",
+      "x": 1110,
+      "y": 730,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1121,
+      "y": 737,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "MURO",
+      "x": 1121,
+      "y": 769,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-basic",
+      "cls": "ability-btn.basic",
+      "tag": "div",
+      "text": "",
+      "x": 1176,
+      "y": 698,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1201,
+      "y": 719,
+      "w": 42,
+      "h": 42
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "Ataque",
+      "x": 1198,
+      "y": 761,
+      "w": 48,
+      "h": 8
+     },
+     {
+      "id": "btn-emerg",
+      "cls": "ability-btn.sec",
+      "tag": "div",
+      "text": "",
+      "x": 1056,
+      "y": 742,
+      "w": 46,
+      "h": 46
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1071,
+      "y": 753,
+      "w": 16,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "lbl",
+      "tag": "div",
+      "text": "Cura",
+      "x": 1063,
+      "y": 769,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "pause-btn",
+      "cls": "",
+      "tag": "button",
+      "text": "❚❚",
+      "x": 1176,
+      "y": 8,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "goal": {
+     "visible": true,
+     "text": "OBJETIVO: recogé semillas de luz 0/3 · 16666:40"
+    },
+    "ultMeter": {
+     "visible": false,
+     "text": "★\n      Definitiva"
+    },
+    "mute": {
+     "visible": false,
+     "text": "SON"
+    },
+    "pause": {
+     "visible": true,
+     "text": "❚❚"
+    },
+    "ultBtn": {
+     "cls": "ability-btn ult locked",
+     "ring": "conic-gradient(var(--ult) 0deg, #2a1c10 0deg)"
+    },
+    "body": "beta-visual",
+    "mode": ""
+   },
+   "goal1": {
+    "hiddenClass": false,
+    "vis": "visible",
+    "op": 1,
+    "disp": "block",
+    "text": "OBJETIVO: recogé semillas de luz 0/3 · 16666:40"
+   },
+   "goal6": {
+    "hiddenClass": false,
+    "vis": "visible",
+    "op": 0.29,
+    "disp": "block",
+    "text": "OBJETIVO: recogé semillas de luz 0/3 · 16666:36"
+   },
+   "t10": {
+    "n": 34,
+    "overlaps": [],
+    "items": [
+     {
+      "id": "",
+      "cls": "bar-label",
+      "tag": "span",
+      "text": "♥",
+      "x": 20,
+      "y": 18,
+      "w": 14,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 20,
+      "y": 38,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "plevel",
+      "cls": "",
+      "tag": "div",
+      "text": "Thalen · Nv. 20",
+      "x": 20,
+      "y": 58,
+      "w": 144,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-escudo",
+      "tag": "i",
+      "text": "🛡",
+      "x": 20,
+      "y": 217,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Ro · Aldric",
+      "x": 38,
+      "y": 212,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 20,
+      "y": 249,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Zack · Elyra",
+      "x": 38,
+      "y": 244,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Nivel /10 · Vencidos",
+      "x": 18,
+      "y": 110,
+      "w": 148,
+      "h": 14
+     },
+     {
+      "id": "hud-level",
+      "cls": "",
+      "tag": "b",
+      "text": "3",
+      "x": 53,
+      "y": 109,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "hud-kills",
+      "cls": "",
+      "tag": "b",
+      "text": "0",
+      "x": 148,
+      "y": 109,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Total",
+      "x": 18,
+      "y": 93,
+      "w": 142,
+      "h": 14
+     },
+     {
+      "id": "hud-timer",
+      "cls": "",
+      "tag": "b",
+      "text": "0:08",
+      "x": 53,
+      "y": 92,
+      "w": 24,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "Raíces Voraces ×2",
+      "x": 18,
+      "y": 129,
+      "w": 115,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-arbol",
+      "tag": "i",
+      "text": "🌿",
+      "x": 18,
+      "y": 128,
+      "w": 14,
+      "h": 14
+     },
+     {
+      "id": "joy-base",
+      "cls": "",
+      "tag": "div",
+      "text": "",
+      "x": 24,
+      "y": 698,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "btn-ult",
+      "cls": "ability-btn.ult",
+      "tag": "div",
+      "text": "",
+      "x": 1204,
+      "y": 608,
+      "w": 60,
+      "h": 60
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1218,
+      "y": 618,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "ULT",
+      "x": 1222,
+      "y": 650,
+      "w": 24,
+      "h": 8
+     },
+     {
+      "id": "btn-s3",
+      "cls": "ability-btn.s3",
+      "tag": "div",
+      "text": "",
+      "x": 1110,
+      "y": 622,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1121,
+      "y": 629,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "RAYO",
+      "x": 1121,
+      "y": 661,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-s2",
+      "cls": "ability-btn.s2",
+      "tag": "div",
+      "text": "",
+      "x": 1068,
+      "y": 676,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1079,
+      "y": 683,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "HIELO",
+      "x": 1075,
+      "y": 715,
+      "w": 40,
+      "h": 8
+     },
+     {
+      "id": "btn-s1",
+      "cls": "ability-btn.s1",
+      "tag": "div",
+      "text": "",
+      "x": 1110,
+      "y": 730,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1121,
+      "y": 737,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "MURO",
+      "x": 1121,
+      "y": 769,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-basic",
+      "cls": "ability-btn.basic",
+      "tag": "div",
+      "text": "",
+      "x": 1176,
+      "y": 698,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1201,
+      "y": 719,
+      "w": 42,
+      "h": 42
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "Ataque",
+      "x": 1198,
+      "y": 761,
+      "w": 48,
+      "h": 8
+     },
+     {
+      "id": "btn-emerg",
+      "cls": "ability-btn.sec",
+      "tag": "div",
+      "text": "",
+      "x": 1056,
+      "y": 742,
+      "w": 46,
+      "h": 46
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1071,
+      "y": 753,
+      "w": 16,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "lbl",
+      "tag": "div",
+      "text": "Cura",
+      "x": 1063,
+      "y": 769,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "pause-btn",
+      "cls": "",
+      "tag": "button",
+      "text": "❚❚",
+      "x": 1176,
+      "y": 8,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "goal": {
+     "visible": false,
+     "text": "OBJETIVO: recogé semillas de luz 0/3 · 16666:32"
+    },
+    "ultMeter": {
+     "visible": false,
+     "text": "★\n      Definitiva"
+    },
+    "mute": {
+     "visible": false,
+     "text": "SON"
+    },
+    "pause": {
+     "visible": true,
+     "text": "❚❚"
+    },
+    "ultBtn": {
+     "cls": "ability-btn ult locked",
+     "ring": "conic-gradient(var(--ult) 0deg, #2a1c10 0deg)"
+    },
+    "body": "beta-visual",
+    "mode": ""
+   },
+   "goal10": {
+    "hiddenClass": false,
+    "vis": "hidden",
+    "op": 0,
+    "disp": "block",
+    "text": "OBJETIVO: recogé semillas de luz 0/3 · 16666:32"
+   },
+   "goalBoss": {
+    "hiddenClass": false,
+    "vis": "hidden",
+    "op": 0,
+    "disp": "block",
+    "text": "OBJETIVO: ¡derrotá al jefe!"
+   },
+   "goalBossLater": {
+    "hiddenClass": false,
+    "vis": "hidden",
+    "op": 0,
+    "disp": "block",
+    "text": "OBJETIVO: ¡derrotá al jefe!"
+   },
+   "mute": "none",
+   "errors": []
+  },
+  "1280x800 cristales": {
+   "t1": {
+    "n": 58,
+    "overlaps": [
+     "canvas\"\" x ln-legend-btn\"?\" 42x42"
+    ],
+    "items": [
+     {
+      "id": "",
+      "cls": "bar-label",
+      "tag": "span",
+      "text": "♥",
+      "x": 20,
+      "y": 18,
+      "w": 14,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 20,
+      "y": 38,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "plevel",
+      "cls": "",
+      "tag": "div",
+      "text": "Thalen · Nv. 3",
+      "x": 20,
+      "y": 58,
+      "w": 144,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 20,
+      "y": 154,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Mía · Renko",
+      "x": 38,
+      "y": 149,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 20,
+      "y": 186,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Pablo · Sira",
+      "x": 38,
+      "y": 181,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-daga",
+      "tag": "i",
+      "text": "🗡",
+      "x": 20,
+      "y": 218,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Wanda · Segador",
+      "x": 38,
+      "y": 214,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-fuego",
+      "tag": "i",
+      "text": "🔥",
+      "x": 20,
+      "y": 250,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Rayo · Morveth",
+      "x": 38,
+      "y": 246,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Oleada · Vencidos",
+      "x": 20,
+      "y": 110,
+      "w": 146,
+      "h": 14
+     },
+     {
+      "id": "hud-level",
+      "cls": "",
+      "tag": "b",
+      "text": "0",
+      "x": 61,
+      "y": 109,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "hud-kills",
+      "cls": "",
+      "tag": "b",
+      "text": "0",
+      "x": 138,
+      "y": 109,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Total",
+      "x": 20,
+      "y": 93,
+      "w": 140,
+      "h": 14
+     },
+     {
+      "id": "hud-timer",
+      "cls": "",
+      "tag": "b",
+      "text": "0:00",
+      "x": 55,
+      "y": 92,
+      "w": 24,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-name",
+      "tag": "b",
+      "text": "ZAFIRO",
+      "x": 401,
+      "y": 11,
+      "w": 183,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-pips",
+      "tag": "span",
+      "text": "9/9 torres",
+      "x": 401,
+      "y": 29,
+      "w": 183,
+      "h": 18
+     },
+     {
+      "id": "",
+      "cls": "on",
+      "tag": "em",
+      "text": "▲",
+      "x": 401,
+      "y": 29,
+      "w": 10,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-hp",
+      "tag": "span",
+      "text": "2600",
+      "x": 401,
+      "y": 49,
+      "w": 183,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-time",
+      "tag": "strong",
+      "text": "18:00",
+      "x": 594,
+      "y": 19,
+      "w": 92,
+      "h": 20
+     },
+     {
+      "id": "",
+      "cls": "ln-wave",
+      "tag": "span",
+      "text": "Oleada 0",
+      "x": 594,
+      "y": 39,
+      "w": 92,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-epics",
+      "tag": "span",
+      "text": "4:00 4:00",
+      "x": 594,
+      "y": 53,
+      "w": 92,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-fuego",
+      "tag": "i",
+      "text": "🐉",
+      "x": 595,
+      "y": 53,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-corona",
+      "tag": "i",
+      "text": "👑",
+      "x": 643,
+      "y": 53,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-name",
+      "tag": "b",
+      "text": "ÁMBAR",
+      "x": 788,
+      "y": 11,
+      "w": 91,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-pips",
+      "tag": "span",
+      "text": "9/9 torres",
+      "x": 806,
+      "y": 29,
+      "w": 73,
+      "h": 18
+     },
+     {
+      "id": "",
+      "cls": "on",
+      "tag": "em",
+      "text": "▲",
+      "x": 806,
+      "y": 29,
+      "w": 10,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-hp",
+      "tag": "span",
+      "text": "2600",
+      "x": 857,
+      "y": 49,
+      "w": 22,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-note",
+      "tag": "div",
+      "text": "Tu horda sale sola por los tres carriles",
+      "x": 444,
+      "y": 88,
+      "w": 392,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-chip",
+      "tag": "button",
+      "text": "",
+      "x": 566,
+      "y": 750,
+      "w": 147,
+      "h": 44
+     },
+     {
+      "id": "",
+      "cls": "ln-shards",
+      "tag": "span",
+      "text": "◆ 500 oro",
+      "x": 613,
+      "y": 755,
+      "w": 53,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-phase",
+      "tag": "span",
+      "text": "Nv 3 · XP 0 % · TIENDA",
+      "x": 578,
+      "y": 772,
+      "w": 123,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-recall",
+      "tag": "button",
+      "text": "",
+      "x": 710,
+      "y": 750,
+      "w": 58,
+      "h": 44
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "B",
+      "x": 736,
+      "y": 756,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "VOLVER",
+      "x": 722,
+      "y": 771,
+      "w": 34,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "canvas",
+      "text": "",
+      "x": 127,
+      "y": 692,
+      "w": 132,
+      "h": 99
+     },
+     {
+      "id": "",
+      "cls": "ln-legend-btn",
+      "tag": "button",
+      "text": "?",
+      "x": 125,
+      "y": 690,
+      "w": 44,
+      "h": 44
+     },
+     {
+      "id": "joy-base",
+      "cls": "",
+      "tag": "div",
+      "text": "",
+      "x": 24,
+      "y": 698,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "btn-ult",
+      "cls": "ability-btn.ult",
+      "tag": "div",
+      "text": "",
+      "x": 1204,
+      "y": 608,
+      "w": 60,
+      "h": 60
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1218,
+      "y": 618,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "ULT",
+      "x": 1222,
+      "y": 650,
+      "w": 24,
+      "h": 8
+     },
+     {
+      "id": "btn-s3",
+      "cls": "ability-btn.s3",
+      "tag": "div",
+      "text": "",
+      "x": 1110,
+      "y": 622,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1121,
+      "y": 629,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "RAYO",
+      "x": 1121,
+      "y": 661,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-s2",
+      "cls": "ability-btn.s2",
+      "tag": "div",
+      "text": "",
+      "x": 1068,
+      "y": 676,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1079,
+      "y": 683,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "HIELO",
+      "x": 1075,
+      "y": 715,
+      "w": 40,
+      "h": 8
+     },
+     {
+      "id": "btn-s1",
+      "cls": "ability-btn.s1",
+      "tag": "div",
+      "text": "",
+      "x": 1110,
+      "y": 730,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1121,
+      "y": 737,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "MURO",
+      "x": 1121,
+      "y": 769,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-basic",
+      "cls": "ability-btn.basic",
+      "tag": "div",
+      "text": "",
+      "x": 1176,
+      "y": 698,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1201,
+      "y": 719,
+      "w": 42,
+      "h": 42
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "Ataque",
+      "x": 1198,
+      "y": 761,
+      "w": 48,
+      "h": 8
+     },
+     {
+      "id": "btn-emerg",
+      "cls": "ability-btn.sec",
+      "tag": "div",
+      "text": "",
+      "x": 1056,
+      "y": 742,
+      "w": 46,
+      "h": 46
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1071,
+      "y": 753,
+      "w": 16,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "lbl",
+      "tag": "div",
+      "text": "Cura",
+      "x": 1063,
+      "y": 769,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "pause-btn",
+      "cls": "",
+      "tag": "button",
+      "text": "❚❚",
+      "x": 1176,
+      "y": 8,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "goal": {
+     "visible": false,
+     "text": "OBJETIVO: derribá torres y cristal rival · cuidá el tuyo"
+    },
+    "ultMeter": {
+     "visible": false,
+     "text": "★\n      Definitiva"
+    },
+    "mute": {
+     "visible": false,
+     "text": "SON"
+    },
+    "pause": {
+     "visible": true,
+     "text": "❚❚"
+    },
+    "ultBtn": {
+     "cls": "ability-btn ult",
+     "ring": "conic-gradient(var(--ult) 0deg, #2a1c10 0deg)"
+    },
+    "body": "beta-visual lanes-on",
+    "mode": "cristales"
+   },
+   "goal1": {
+    "hiddenClass": false,
+    "vis": "visible",
+    "op": 0.24,
+    "disp": "block",
+    "text": "OBJETIVO: derribá torres y cristal rival · cuidá e"
+   },
+   "goal6": {
+    "hiddenClass": false,
+    "vis": "visible",
+    "op": 1,
+    "disp": "block",
+    "text": "OBJETIVO: derribá torres y cristal rival · cuidá e"
+   },
+   "t10": {
+    "n": 58,
+    "overlaps": [
+     "canvas\"\" x ln-legend-btn\"?\" 42x42"
+    ],
+    "items": [
+     {
+      "id": "",
+      "cls": "bar-label",
+      "tag": "span",
+      "text": "♥",
+      "x": 20,
+      "y": 18,
+      "w": 14,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 20,
+      "y": 38,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "plevel",
+      "cls": "",
+      "tag": "div",
+      "text": "Thalen · Nv. 3",
+      "x": 20,
+      "y": 58,
+      "w": 144,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 20,
+      "y": 214,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Mía · Renko",
+      "x": 38,
+      "y": 209,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 20,
+      "y": 246,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Pablo · Sira",
+      "x": 38,
+      "y": 241,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-daga",
+      "tag": "i",
+      "text": "🗡",
+      "x": 20,
+      "y": 278,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Wanda · Segador",
+      "x": 38,
+      "y": 274,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-fuego",
+      "tag": "i",
+      "text": "🔥",
+      "x": 20,
+      "y": 310,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Rayo · Morveth",
+      "x": 38,
+      "y": 306,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Oleada · Vencidos",
+      "x": 20,
+      "y": 110,
+      "w": 146,
+      "h": 14
+     },
+     {
+      "id": "hud-level",
+      "cls": "",
+      "tag": "b",
+      "text": "0",
+      "x": 61,
+      "y": 109,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "hud-kills",
+      "cls": "",
+      "tag": "b",
+      "text": "0",
+      "x": 138,
+      "y": 109,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Total",
+      "x": 20,
+      "y": 93,
+      "w": 140,
+      "h": 14
+     },
+     {
+      "id": "hud-timer",
+      "cls": "",
+      "tag": "b",
+      "text": "0:05",
+      "x": 55,
+      "y": 92,
+      "w": 24,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-name",
+      "tag": "b",
+      "text": "ZAFIRO",
+      "x": 401,
+      "y": 11,
+      "w": 183,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-pips",
+      "tag": "span",
+      "text": "9/9 torres",
+      "x": 401,
+      "y": 29,
+      "w": 183,
+      "h": 18
+     },
+     {
+      "id": "",
+      "cls": "on",
+      "tag": "em",
+      "text": "▲",
+      "x": 401,
+      "y": 29,
+      "w": 10,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-hp",
+      "tag": "span",
+      "text": "2600",
+      "x": 401,
+      "y": 49,
+      "w": 183,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-time",
+      "tag": "strong",
+      "text": "17:55",
+      "x": 594,
+      "y": 19,
+      "w": 92,
+      "h": 20
+     },
+     {
+      "id": "",
+      "cls": "ln-wave",
+      "tag": "span",
+      "text": "Oleada 0",
+      "x": 594,
+      "y": 39,
+      "w": 92,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-epics",
+      "tag": "span",
+      "text": "3:55 3:55",
+      "x": 594,
+      "y": 53,
+      "w": 92,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-fuego",
+      "tag": "i",
+      "text": "🐉",
+      "x": 595,
+      "y": 53,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-corona",
+      "tag": "i",
+      "text": "👑",
+      "x": 643,
+      "y": 53,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-name",
+      "tag": "b",
+      "text": "ÁMBAR",
+      "x": 788,
+      "y": 11,
+      "w": 91,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-pips",
+      "tag": "span",
+      "text": "9/9 torres",
+      "x": 806,
+      "y": 29,
+      "w": 73,
+      "h": 18
+     },
+     {
+      "id": "",
+      "cls": "on",
+      "tag": "em",
+      "text": "▲",
+      "x": 806,
+      "y": 29,
+      "w": 10,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-hp",
+      "tag": "span",
+      "text": "2600",
+      "x": 857,
+      "y": 49,
+      "w": 22,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "ln-note",
+      "tag": "div",
+      "text": "Tu horda sale sola por los tres carriles",
+      "x": 444,
+      "y": 88,
+      "w": 392,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-chip",
+      "tag": "button",
+      "text": "",
+      "x": 566,
+      "y": 750,
+      "w": 147,
+      "h": 44
+     },
+     {
+      "id": "",
+      "cls": "ln-shards",
+      "tag": "span",
+      "text": "◆ 508 oro",
+      "x": 613,
+      "y": 755,
+      "w": 53,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "ln-phase",
+      "tag": "span",
+      "text": "Nv 3 · XP 0 % · TIENDA",
+      "x": 578,
+      "y": 772,
+      "w": 123,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-recall",
+      "tag": "button",
+      "text": "",
+      "x": 710,
+      "y": 750,
+      "w": 58,
+      "h": 44
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "B",
+      "x": 736,
+      "y": 756,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "VOLVER",
+      "x": 722,
+      "y": 771,
+      "w": 34,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "canvas",
+      "text": "",
+      "x": 127,
+      "y": 692,
+      "w": 132,
+      "h": 99
+     },
+     {
+      "id": "",
+      "cls": "ln-legend-btn",
+      "tag": "button",
+      "text": "?",
+      "x": 125,
+      "y": 690,
+      "w": 44,
+      "h": 44
+     },
+     {
+      "id": "joy-base",
+      "cls": "",
+      "tag": "div",
+      "text": "",
+      "x": 24,
+      "y": 698,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "btn-ult",
+      "cls": "ability-btn.ult",
+      "tag": "div",
+      "text": "",
+      "x": 1204,
+      "y": 608,
+      "w": 60,
+      "h": 60
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1218,
+      "y": 618,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "ULT",
+      "x": 1222,
+      "y": 650,
+      "w": 24,
+      "h": 8
+     },
+     {
+      "id": "btn-s3",
+      "cls": "ability-btn.s3",
+      "tag": "div",
+      "text": "",
+      "x": 1110,
+      "y": 622,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1121,
+      "y": 629,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "RAYO",
+      "x": 1121,
+      "y": 661,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-s2",
+      "cls": "ability-btn.s2",
+      "tag": "div",
+      "text": "",
+      "x": 1068,
+      "y": 676,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1079,
+      "y": 683,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "HIELO",
+      "x": 1075,
+      "y": 715,
+      "w": 40,
+      "h": 8
+     },
+     {
+      "id": "btn-s1",
+      "cls": "ability-btn.s1",
+      "tag": "div",
+      "text": "",
+      "x": 1110,
+      "y": 730,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1121,
+      "y": 737,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "MURO",
+      "x": 1121,
+      "y": 769,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-basic",
+      "cls": "ability-btn.basic",
+      "tag": "div",
+      "text": "",
+      "x": 1176,
+      "y": 698,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1201,
+      "y": 719,
+      "w": 42,
+      "h": 42
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "Ataque",
+      "x": 1198,
+      "y": 761,
+      "w": 48,
+      "h": 8
+     },
+     {
+      "id": "btn-emerg",
+      "cls": "ability-btn.sec",
+      "tag": "div",
+      "text": "",
+      "x": 1056,
+      "y": 742,
+      "w": 46,
+      "h": 46
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1071,
+      "y": 753,
+      "w": 16,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "lbl",
+      "tag": "div",
+      "text": "Cura",
+      "x": 1063,
+      "y": 769,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "pause-btn",
+      "cls": "",
+      "tag": "button",
+      "text": "❚❚",
+      "x": 1176,
+      "y": 8,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "goal": {
+     "visible": false,
+     "text": "OBJETIVO: derribá torres y cristal rival · cuidá el tuyo"
+    },
+    "ultMeter": {
+     "visible": false,
+     "text": "★\n      Definitiva"
+    },
+    "mute": {
+     "visible": false,
+     "text": "SON"
+    },
+    "pause": {
+     "visible": true,
+     "text": "❚❚"
+    },
+    "ultBtn": {
+     "cls": "ability-btn ult",
+     "ring": "conic-gradient(var(--ult) 0deg, #2a1c10 0deg)"
+    },
+    "body": "beta-visual lanes-on",
+    "mode": "cristales"
+   },
+   "goal10": {
+    "hiddenClass": false,
+    "vis": "hidden",
+    "op": 0,
+    "disp": "block",
+    "text": "OBJETIVO: derribá torres y cristal rival · cuidá e"
+   },
+   "mute": "none",
+   "errors": []
+  },
+  "1280x800 coliseo": {
+   "t1": {
+    "n": 52,
+    "overlaps": [],
+    "items": [
+     {
+      "id": "",
+      "cls": "bar-label",
+      "tag": "span",
+      "text": "♥",
+      "x": 20,
+      "y": 18,
+      "w": 14,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 20,
+      "y": 38,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "plevel",
+      "cls": "",
+      "tag": "div",
+      "text": "Thalen · Nv. 10",
+      "x": 20,
+      "y": 58,
+      "w": 144,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-escudo",
+      "tag": "i",
+      "text": "🛡",
+      "x": 20,
+      "y": 198,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Renzo · Brakk",
+      "x": 38,
+      "y": 193,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Ronda · Vencidos",
+      "x": 20,
+      "y": 110,
+      "w": 146,
+      "h": 14
+     },
+     {
+      "id": "hud-level",
+      "cls": "",
+      "tag": "b",
+      "text": "1",
+      "x": 55,
+      "y": 109,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "hud-kills",
+      "cls": "",
+      "tag": "b",
+      "text": "0",
+      "x": 132,
+      "y": 109,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Total",
+      "x": 20,
+      "y": 93,
+      "w": 140,
+      "h": 14
+     },
+     {
+      "id": "hud-timer",
+      "cls": "",
+      "tag": "b",
+      "text": "0:00",
+      "x": 55,
+      "y": 92,
+      "w": 24,
+      "h": 15
+     },
+     {
+      "id": "goal-chip",
+      "cls": "",
+      "tag": "div",
+      "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 ",
+      "x": 10,
+      "y": 141,
+      "w": 164,
+      "h": 42
+     },
+     {
+      "id": "center-banner",
+      "cls": "show",
+      "tag": "div",
+      "text": "RONDA 1 · TU EQUIPO vs ÁMBAR",
+      "x": 438,
+      "y": 285,
+      "w": 403,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "TU EQUIPO",
+      "x": 447,
+      "y": 12,
+      "w": 68,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 447,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 457,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 467,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "ÁMBAR",
+      "x": 537,
+      "y": 12,
+      "w": 58,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 537,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 547,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 558,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "ESMERALDA",
+      "x": 617,
+      "y": 12,
+      "w": 67,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 617,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 627,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 638,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "CARMESÍ",
+      "x": 706,
+      "y": 12,
+      "w": 58,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 706,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 717,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 727,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "col-round",
+      "tag": "strong",
+      "text": "RONDA 1",
+      "x": 787,
+      "y": 14,
+      "w": 56,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "col-clock",
+      "tag": "span",
+      "text": "Preparate…",
+      "x": 787,
+      "y": 29,
+      "w": 56,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "ln-note.col-note",
+      "tag": "div",
+      "text": "Tu duelo: TU EQUIPO vs ÁMBAR",
+      "x": 562,
+      "y": 88,
+      "w": 157,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "canvas",
+      "text": "",
+      "x": 127,
+      "y": 692,
+      "w": 132,
+      "h": 99
+     },
+     {
+      "id": "joy-base",
+      "cls": "",
+      "tag": "div",
+      "text": "",
+      "x": 24,
+      "y": 698,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "btn-ult",
+      "cls": "ability-btn.ult",
+      "tag": "div",
+      "text": "",
+      "x": 1204,
+      "y": 608,
+      "w": 60,
+      "h": 60
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1218,
+      "y": 618,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "ULT",
+      "x": 1222,
+      "y": 650,
+      "w": 24,
+      "h": 8
+     },
+     {
+      "id": "btn-s3",
+      "cls": "ability-btn.s3",
+      "tag": "div",
+      "text": "",
+      "x": 1110,
+      "y": 622,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1121,
+      "y": 629,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "RAYO",
+      "x": 1121,
+      "y": 661,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-s2",
+      "cls": "ability-btn.s2",
+      "tag": "div",
+      "text": "",
+      "x": 1068,
+      "y": 676,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1079,
+      "y": 683,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "HIELO",
+      "x": 1075,
+      "y": 715,
+      "w": 40,
+      "h": 8
+     },
+     {
+      "id": "btn-s1",
+      "cls": "ability-btn.s1",
+      "tag": "div",
+      "text": "",
+      "x": 1110,
+      "y": 730,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1121,
+      "y": 737,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "MURO",
+      "x": 1121,
+      "y": 769,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-basic",
+      "cls": "ability-btn.basic",
+      "tag": "div",
+      "text": "",
+      "x": 1176,
+      "y": 698,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1201,
+      "y": 719,
+      "w": 42,
+      "h": 42
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "Ataque",
+      "x": 1198,
+      "y": 761,
+      "w": 48,
+      "h": 8
+     },
+     {
+      "id": "btn-emerg",
+      "cls": "ability-btn.sec",
+      "tag": "div",
+      "text": "",
+      "x": 1056,
+      "y": 742,
+      "w": 46,
+      "h": 46
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1071,
+      "y": 753,
+      "w": 16,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "lbl",
+      "tag": "div",
+      "text": "Cura",
+      "x": 1063,
+      "y": 769,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "pause-btn",
+      "cls": "",
+      "tag": "button",
+      "text": "❚❚",
+      "x": 1176,
+      "y": 8,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "goal": {
+     "visible": true,
+     "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+    },
+    "ultMeter": {
+     "visible": false,
+     "text": "★\n      Definitiva"
+    },
+    "mute": {
+     "visible": false,
+     "text": "SON"
+    },
+    "pause": {
+     "visible": true,
+     "text": "❚❚"
+    },
+    "ultBtn": {
+     "cls": "ability-btn ult ready-pop ready",
+     "ring": "conic-gradient(var(--ult) 360deg, #2a1c10 0deg)"
+    },
+    "body": "beta-visual lanes-on",
+    "mode": "coliseo"
+   },
+   "goal1": {
+    "hiddenClass": false,
+    "vis": "visible",
+    "op": 1,
+    "disp": "block",
+    "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+   },
+   "goal6": {
+    "hiddenClass": false,
+    "vis": "hidden",
+    "op": 0,
+    "disp": "block",
+    "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+   },
+   "t10": {
+    "n": 50,
+    "overlaps": [],
+    "items": [
+     {
+      "id": "",
+      "cls": "bar-label",
+      "tag": "span",
+      "text": "♥",
+      "x": 20,
+      "y": 18,
+      "w": 14,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-brasa",
+      "tag": "i",
+      "text": "✦",
+      "x": 20,
+      "y": 38,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "plevel",
+      "cls": "",
+      "tag": "div",
+      "text": "Thalen · Nv. 10",
+      "x": 20,
+      "y": 58,
+      "w": 144,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "pxi.pxi-escudo",
+      "tag": "i",
+      "text": "🛡",
+      "x": 20,
+      "y": 198,
+      "w": 10,
+      "h": 10
+     },
+     {
+      "id": "",
+      "cls": "ally-name",
+      "tag": "div",
+      "text": "Renzo · Brakk",
+      "x": 38,
+      "y": 193,
+      "w": 129,
+      "h": 13
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Ronda · Vencidos",
+      "x": 20,
+      "y": 110,
+      "w": 146,
+      "h": 14
+     },
+     {
+      "id": "hud-level",
+      "cls": "",
+      "tag": "b",
+      "text": "1",
+      "x": 55,
+      "y": 109,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "hud-kills",
+      "cls": "",
+      "tag": "b",
+      "text": "0",
+      "x": 132,
+      "y": 109,
+      "w": 6,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "span",
+      "text": "Total",
+      "x": 20,
+      "y": 93,
+      "w": 140,
+      "h": 14
+     },
+     {
+      "id": "hud-timer",
+      "cls": "",
+      "tag": "b",
+      "text": "0:04",
+      "x": 55,
+      "y": 92,
+      "w": 24,
+      "h": 15
+     },
+     {
+      "id": "center-banner",
+      "cls": "show",
+      "tag": "div",
+      "text": "¡A PELEAR!",
+      "x": 568,
+      "y": 285,
+      "w": 144,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "TU EQUIPO",
+      "x": 454,
+      "y": 12,
+      "w": 68,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 454,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 464,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 474,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "ÁMBAR",
+      "x": 544,
+      "y": 12,
+      "w": 58,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 544,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 554,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 565,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "ESMERALDA",
+      "x": 624,
+      "y": 12,
+      "w": 67,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 624,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 634,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 645,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "b",
+      "text": "CARMESÍ",
+      "x": 713,
+      "y": 12,
+      "w": 58,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 713,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 724,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "off",
+      "tag": "em",
+      "text": "●",
+      "x": 734,
+      "y": 29,
+      "w": 8,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "col-round",
+      "tag": "strong",
+      "text": "RONDA 1",
+      "x": 794,
+      "y": 14,
+      "w": 42,
+      "h": 15
+     },
+     {
+      "id": "",
+      "cls": "col-clock",
+      "tag": "span",
+      "text": "1:20",
+      "x": 794,
+      "y": 29,
+      "w": 42,
+      "h": 14
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "canvas",
+      "text": "",
+      "x": 127,
+      "y": 692,
+      "w": 132,
+      "h": 99
+     },
+     {
+      "id": "joy-base",
+      "cls": "",
+      "tag": "div",
+      "text": "",
+      "x": 24,
+      "y": 698,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "btn-ult",
+      "cls": "ability-btn.ult",
+      "tag": "div",
+      "text": "",
+      "x": 1204,
+      "y": 608,
+      "w": 60,
+      "h": 60
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1218,
+      "y": 618,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "ULT",
+      "x": 1222,
+      "y": 650,
+      "w": 24,
+      "h": 8
+     },
+     {
+      "id": "btn-s3",
+      "cls": "ability-btn.s3",
+      "tag": "div",
+      "text": "",
+      "x": 1110,
+      "y": 622,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1121,
+      "y": 629,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "RAYO",
+      "x": 1121,
+      "y": 661,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-s2",
+      "cls": "ability-btn.s2",
+      "tag": "div",
+      "text": "",
+      "x": 1068,
+      "y": 676,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1079,
+      "y": 683,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "HIELO",
+      "x": 1075,
+      "y": 715,
+      "w": 40,
+      "h": 8
+     },
+     {
+      "id": "btn-s1",
+      "cls": "ability-btn.s1",
+      "tag": "div",
+      "text": "",
+      "x": 1110,
+      "y": 730,
+      "w": 54,
+      "h": 54
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1121,
+      "y": 737,
+      "w": 32,
+      "h": 32
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "MURO",
+      "x": 1121,
+      "y": 769,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "btn-basic",
+      "cls": "ability-btn.basic",
+      "tag": "div",
+      "text": "",
+      "x": 1176,
+      "y": 698,
+      "w": 92,
+      "h": 92
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1201,
+      "y": 719,
+      "w": 42,
+      "h": 42
+     },
+     {
+      "id": "",
+      "cls": "",
+      "tag": "div",
+      "text": "Ataque",
+      "x": 1198,
+      "y": 761,
+      "w": 48,
+      "h": 8
+     },
+     {
+      "id": "btn-emerg",
+      "cls": "ability-btn.sec",
+      "tag": "div",
+      "text": "",
+      "x": 1056,
+      "y": 742,
+      "w": 46,
+      "h": 46
+     },
+     {
+      "id": "",
+      "cls": "ico-img.ico-pix",
+      "tag": "img",
+      "text": "",
+      "x": 1071,
+      "y": 753,
+      "w": 16,
+      "h": 16
+     },
+     {
+      "id": "",
+      "cls": "lbl",
+      "tag": "div",
+      "text": "Cura",
+      "x": 1063,
+      "y": 769,
+      "w": 32,
+      "h": 8
+     },
+     {
+      "id": "pause-btn",
+      "cls": "",
+      "tag": "button",
+      "text": "❚❚",
+      "x": 1176,
+      "y": 8,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "goal": {
+     "visible": false,
+     "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+    },
+    "ultMeter": {
+     "visible": false,
+     "text": "★\n      Definitiva"
+    },
+    "mute": {
+     "visible": false,
+     "text": "SON"
+    },
+    "pause": {
+     "visible": true,
+     "text": "❚❚"
+    },
+    "ultBtn": {
+     "cls": "ability-btn ult ready-pop ready",
+     "ring": "conic-gradient(var(--ult) 360deg, #2a1c10 0deg)"
+    },
+    "body": "beta-visual lanes-on",
+    "mode": "coliseo"
+   },
+   "goal10": {
+    "hiddenClass": false,
+    "vis": "hidden",
+    "op": 0,
+    "disp": "block",
+    "text": "OBJETIVO: ganá duelos 2v2 · primero a 3 puntos"
+   },
+   "mute": "none",
+   "errors": []
+  }
+ }
+}

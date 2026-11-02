@@ -1,0 +1,1055 @@
+{
+ "label": "cand",
+ "vps": {
+  "844x390": {
+   "title": {
+    "screen": "title-screen",
+    "total": 6,
+    "under44": 1,
+    "small": [
+     "button[submit]\"Tocá para continuar\" 300x36"
+    ],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 390,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "hub": {
+    "screen": "mainmenu-screen",
+    "total": 17,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 390,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "starter": {
+    "screen": "starter-screen",
+    "total": 5,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 390,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "codex": {
+    "screen": "codex-screen",
+    "total": 9,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 390,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "guardianes": {
+    "screen": "codex-screen",
+    "total": 18,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 390,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "inventario": {
+    "screen": "inventory-screen",
+    "total": 29,
+    "under44": 0,
+    "small": [],
+    "overlaps": [
+     "label\"Gestión automática y reserva\" x button[submit]\"Todos\" (54x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"⚔ Arma\" (66x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"🛡 Escudo\" (77x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"⛑ Casco\" (71x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"🎽 Pechera\" (82x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"🧤 Guantes\" (82x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"👢 Botas\" (71x9)",
+     "label\"Gestión automática y reserva\" x select[select-one]\"Todos los guardianesSirve a \" (256x44)"
+    ],
+    "nOverlaps": 9,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 399,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": [
+     "44x44",
+     "44x44",
+     "44x44"
+    ]
+   },
+   "champdetail": {
+    "screen": "champdetail-screen",
+    "total": 1,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 1238,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "tienda": {
+    "screen": "shop-screen",
+    "total": 134,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\""
+    ],
+    "scrollExtra": {
+     "sh": 1525,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "modos": {
+    "screen": "modeselect-screen",
+    "total": 13,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 826,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "cristales": {
+    "screen": "crystalwars-screen",
+    "total": 11,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 390,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": [
+     "44x46"
+    ]
+   },
+   "divina": {
+    "screen": "divina-screen",
+    "total": 2,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 390,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "arenas": {
+    "screen": "arenaselect-screen",
+    "total": 12,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 702,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "sala": {
+    "screen": "prep-screen",
+    "total": 19,
+    "under44": 0,
+    "small": [],
+    "overlaps": [
+     "summary\"Equipo, talentos y progresió\" x button[submit]\"Comenzar\" (340x19)",
+     "button[submit]\"⇄ Cambiar guardián\" x summary\"Equipo aliado\" (142x36)"
+    ],
+    "nOverlaps": 2,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 520,
+     "ch": 334
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "seleccion": {
+    "screen": "menu-screen",
+    "total": 47,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [
+     "summary\"Habilidades y estilo\"",
+     "summary\"Habilidades y estilo\"",
+     "summary\"Habilidades y estilo\"",
+     "summary\"Habilidades y estilo\"",
+     "summary\"Habilidades y estilo\""
+    ],
+    "scrollExtra": {
+     "sh": 1888,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "mejora": {
+    "screen": "buffscreen",
+    "total": 0,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 390,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "pausa": {
+    "screen": "pause-screen",
+    "total": 12,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 390,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": [
+     "44x44",
+     "44x44"
+    ]
+   },
+   "derrota": {
+    "screen": "gameover-screen",
+    "total": 2,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 517,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "victoria": {
+    "screen": "victory-screen",
+    "total": 1,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 390,
+     "ch": 390
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "_errors": [
+    "console.error: Access to fetch at 'https://fondalstudios.com/la-horda/red/api/rooms?build=B1-7-quality-five-originals' from origin 'http://127.0.0.1:8881' has been blocked by CORS policy: No 'Access-Control-Allow-Or",
+    "console.error: Failed to load resource: net::ERR_FAILED",
+    "console.error: Access to fetch at 'https://fondalstudios.com/la-horda/red/api/rooms?build=B1-7-quality-five-originals' from origin 'http://127.0.0.1:8881' has been blocked by CORS policy: No 'Access-Control-Allow-Or",
+    "console.error: Failed to load resource: net::ERR_FAILED",
+    "console.error: Access to fetch at 'https://fondalstudios.com/la-horda/red/api/rooms?build=B1-7-quality-five-originals' from origin 'http://127.0.0.1:8881' has been blocked by CORS policy: No 'Access-Control-Allow-Or"
+   ]
+  },
+  "667x375": {
+   "title": {
+    "screen": "title-screen",
+    "total": 6,
+    "under44": 1,
+    "small": [
+     "button[submit]\"Tocá para continuar\" 267x36"
+    ],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 375,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "hub": {
+    "screen": "mainmenu-screen",
+    "total": 17,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 375,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "starter": {
+    "screen": "starter-screen",
+    "total": 5,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 375,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "codex": {
+    "screen": "codex-screen",
+    "total": 9,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 375,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "guardianes": {
+    "screen": "codex-screen",
+    "total": 18,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 375,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "inventario": {
+    "screen": "inventory-screen",
+    "total": 29,
+    "under44": 0,
+    "small": [],
+    "overlaps": [
+     "label\"Gestión automática y reserva\" x button[submit]\"Todos\" (54x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"⚔ Arma\" (66x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"🛡 Escudo\" (77x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"⛑ Casco\" (71x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"🎽 Pechera\" (82x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"🧤 Guantes\" (82x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"👢 Botas\" (71x9)",
+     "label\"Gestión automática y reserva\" x select[select-one]\"Todos los guardianesSirve a \" (256x44)"
+    ],
+    "nOverlaps": 9,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 399,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": [
+     "44x44",
+     "44x44",
+     "44x44"
+    ]
+   },
+   "champdetail": {
+    "screen": "champdetail-screen",
+    "total": 1,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 1238,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "tienda": {
+    "screen": "shop-screen",
+    "total": 134,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\""
+    ],
+    "scrollExtra": {
+     "sh": 1547,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "modos": {
+    "screen": "modeselect-screen",
+    "total": 13,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 885,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "cristales": {
+    "screen": "crystalwars-screen",
+    "total": 11,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 375,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": [
+     "44x46"
+    ]
+   },
+   "divina": {
+    "screen": "divina-screen",
+    "total": 2,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 377,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "arenas": {
+    "screen": "arenaselect-screen",
+    "total": 12,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 718,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "sala": {
+    "screen": "prep-screen",
+    "total": 19,
+    "under44": 0,
+    "small": [],
+    "overlaps": [
+     "select[select-one]\"Thalen, el Tejedor Elemental\" x button[submit]\"Comenzar\" (304x16)",
+     "button[submit]\"⇄ Cambiar guardián\" x summary\"Equipo aliado\" (142x36)"
+    ],
+    "nOverlaps": 2,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 538,
+     "ch": 319
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "seleccion": {
+    "screen": "menu-screen",
+    "total": 47,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [
+     "summary\"Habilidades y estilo\"",
+     "summary\"Habilidades y estilo\"",
+     "summary\"Habilidades y estilo\"",
+     "summary\"Habilidades y estilo\"",
+     "summary\"Habilidades y estilo\""
+    ],
+    "scrollExtra": {
+     "sh": 1905,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "mejora": {
+    "screen": "buffscreen",
+    "total": 0,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 375,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "pausa": {
+    "screen": "pause-screen",
+    "total": 12,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 375,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": [
+     "44x44",
+     "44x44"
+    ]
+   },
+   "derrota": {
+    "screen": "gameover-screen",
+    "total": 2,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 531,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "victoria": {
+    "screen": "victory-screen",
+    "total": 1,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 375,
+     "ch": 375
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "_errors": [
+    "console.error: Access to fetch at 'https://fondalstudios.com/la-horda/red/api/rooms?build=B1-7-quality-five-originals' from origin 'http://127.0.0.1:8881' has been blocked by CORS policy: No 'Access-Control-Allow-Or",
+    "console.error: Failed to load resource: net::ERR_FAILED",
+    "console.error: Access to fetch at 'https://fondalstudios.com/la-horda/red/api/rooms?build=B1-7-quality-five-originals' from origin 'http://127.0.0.1:8881' has been blocked by CORS policy: No 'Access-Control-Allow-Or",
+    "console.error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "1280x800": {
+   "title": {
+    "screen": "title-screen",
+    "total": 6,
+    "under44": 1,
+    "small": [
+     "button[submit]\"Tocá para continuar\" 300x36"
+    ],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "hub": {
+    "screen": "mainmenu-screen",
+    "total": 20,
+    "under44": 1,
+    "small": [
+     "summary\"Guía · Nivel 1: Primeros pas\" 555x32"
+    ],
+    "overlaps": [
+     "button[button]\"Consultar Guía\" x button[submit]\"◆GUERRA DE CRISTALES5 contra\" (120x44)",
+     "button[button]\"Entendido\" x button[submit]\"◆GUERRA DE CRISTALES5 contra\" (86x44)"
+    ],
+    "nOverlaps": 2,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 818,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "starter": {
+    "screen": "starter-screen",
+    "total": 5,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "codex": {
+    "screen": "codex-screen",
+    "total": 9,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "guardianes": {
+    "screen": "codex-screen",
+    "total": 18,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "inventario": {
+    "screen": "inventory-screen",
+    "total": 29,
+    "under44": 0,
+    "small": [],
+    "overlaps": [
+     "label\"Gestión automática y reserva\" x button[submit]\"Todos\" (44x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"⚔ Arma\" (51x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"🛡 Escudo\" (60x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"⛑ Casco\" (56x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"🎽 Pechera\" (65x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"🧤 Guantes\" (65x9)",
+     "label\"Gestión automática y reserva\" x button[submit]\"👢 Botas\" (56x9)",
+     "label\"Gestión automática y reserva\" x select[select-one]\"Todos los guardianesSirve a \" (225x44)"
+    ],
+    "nOverlaps": 9,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": [
+     "44x44",
+     "44x44",
+     "44x44"
+    ]
+   },
+   "champdetail": {
+    "screen": "champdetail-screen",
+    "total": 1,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 1248,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "tienda": {
+    "screen": "shop-screen",
+    "total": 134,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\"",
+     "button[button]\"✦ 800\""
+    ],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "modos": {
+    "screen": "modeselect-screen",
+    "total": 13,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "cristales": {
+    "screen": "crystalwars-screen",
+    "total": 12,
+    "under44": 1,
+    "small": [
+     "summary\"Ver habilidades, firma y car\" 422x28"
+    ],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 1292,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": [
+     "44x46"
+    ]
+   },
+   "divina": {
+    "screen": "divina-screen",
+    "total": 2,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "arenas": {
+    "screen": "arenaselect-screen",
+    "total": 12,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 1503,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "sala": {
+    "screen": "prep-screen",
+    "total": 19,
+    "under44": 0,
+    "small": [],
+    "overlaps": [
+     "summary\"Ver habilidades\" x summary\"Equipo, talentos y progresió\" (392x40)",
+     "select[select-one]\"Thalen, el Tejedor Elemental\" x summary\"Equipo aliado\" (392x30)",
+     "button[submit]\"⇄ Cambiar guardián\" x summary\"Equipo aliado\" (142x36)"
+    ],
+    "nOverlaps": 3,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 1089,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "seleccion": {
+    "screen": "menu-screen",
+    "total": 47,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 6658,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "mejora": {
+    "screen": "buffscreen",
+    "total": 0,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "pausa": {
+    "screen": "pause-screen",
+    "total": 12,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": [
+     "44x44",
+     "44x44"
+    ]
+   },
+   "derrota": {
+    "screen": "gameover-screen",
+    "total": 2,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "victoria": {
+    "screen": "victory-screen",
+    "total": 1,
+    "under44": 0,
+    "small": [],
+    "overlaps": [],
+    "nOverlaps": 0,
+    "clipped": [],
+    "nClipped": 0,
+    "offscreenX": [],
+    "scrollExtra": {
+     "sh": 800,
+     "ch": 800
+    },
+    "docScrollX": 0,
+    "checkboxes": []
+   },
+   "_errors": [
+    "console.error: Access to fetch at 'https://fondalstudios.com/la-horda/red/api/rooms?build=B1-7-quality-five-originals' from origin 'http://127.0.0.1:8881' has been blocked by CORS policy: No 'Access-Control-Allow-Or",
+    "console.error: Failed to load resource: net::ERR_FAILED",
+    "console.error: Access to fetch at 'https://fondalstudios.com/la-horda/red/api/rooms?build=B1-7-quality-five-originals' from origin 'http://127.0.0.1:8881' has been blocked by CORS policy: No 'Access-Control-Allow-Or",
+    "console.error: Failed to load resource: net::ERR_FAILED"
+   ]
+  }
+ }
+}
