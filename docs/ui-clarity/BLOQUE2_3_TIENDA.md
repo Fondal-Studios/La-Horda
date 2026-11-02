@@ -50,3 +50,9 @@ Ya existía: confirmación, candado `PREMIUM.busy`, `ref` idempotente con reinte
 * Sin probar: pagos reales/sandbox, conexión lenta en dispositivo real, teclado/lector de pantalla, rendimiento y memoria de la tienda (no medidos), jugadores reales.
 * Revisión independiente: **pendiente** (la debe hacer una persona/sesión distinta del implementador con las mismas escenas; capturas en `evidence/b2_*`).
 * Tareas breves con jugadores: (1) «¿Cuánto cuesta y cuánto te falta?» (2) «Comprá y equipá» (3) «Se cortó la conexión: ¿qué hacés?». Sin resultados.
+
+## Notas de coordinación (sesión de fábrica de sprites, PR #259; economía a cargo de otra sesión)
+* La economía de Brasas (incluido `PIECES_FOR_BRASAS`, `js/data/pricing.js:46`) la define la sesión de economía; este PR no cambia precios, interruptores ni qué se vende. Si se apaga la compra de piezas con Brasas, cambiará el texto/botón de piezas de la tienda existente, no el código de este PR.
+* Las skins `earnedOnly` (Lucifer, Glaciar, Coloso, Tempestad, Alba) sí aparecen en la tienda de skins; ahora dicen «BLOQUEADA · se gana completando el set». No se verificó si sus previews son placeholders prestados (pendiente del equipo de arte).
+* `veyra_croma` / `maura_croma` (preview ≠ sprite) y las cromas sueltas (`shop-cromas.js`) no se revisaron.
+* `qa.js --fast` no se corrió antes de fusionar.
