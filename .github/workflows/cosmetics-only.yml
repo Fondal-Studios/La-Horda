@@ -27,3 +27,13 @@ jobs:
       - name: Cosmetic preview and purchase interaction (simulated API)
         if: ${{ !cancelled() }}
         run: node tools/ui-clarity/test-shop-clarity.js
+      - name: Retain actual browser evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosmetics-only-browser-${{ github.sha }}
+          path: |
+            docs/ui-clarity/cosmetics-ci/*.png
+            docs/production/brasas-store-844x390.png
+            docs/production/hub-brasas-chip.png
+          if-no-files-found: error

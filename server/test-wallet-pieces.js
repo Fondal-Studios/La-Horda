@@ -36,13 +36,17 @@ const ref = () => crypto.randomUUID();
   const buy = (id, token, over) => api('POST', '/api/wallet/buy-piece', { ...expected(id), ...(over || {}) }, token || UT);
 
   // Verificar el contrato REAL antes de activar el modo legado de prueba.
-  await credit('Jugador', 5000);
+  const defaultCredit = await credit('Jugador', 5000);
   const beforeWallet = (await api('GET', '/api/wallet', undefined, UT)).j;
   const beforeSave = (await api('GET', '/api/save', undefined, UT)).j;
+  const beforeLedger = (await api('GET', '/api/gm/user?id=' + idOf('Jugador'), undefined, AT)).j.premiumLedger;
+  check('prueba de contrato tiene saldo real suficiente', defaultCredit.status === 200 && beforeWallet.premium === 5000 && beforeWallet.premium >= PRICE);
   const denied = await buy(ids[0]);
   const afterWallet = (await api('GET', '/api/wallet', undefined, UT)).j;
   const afterSave = (await api('GET', '/api/save', undefined, UT)).j;
   check('por defecto: incluso con saldo suficiente, 403 PIECES_OFF y catálogo deshabilitado', denied.status === 403 && denied.j.error === 'PIECES_OFF' && beforeWallet.pieces.enabled === false && afterWallet.pieces.enabled === false, denied);
+  const afterLedger = (await api('GET', '/api/gm/user?id=' + idOf('Jugador'), undefined, AT)).j.premiumLedger;
+  check('rechazo por defecto no escribe en el ledger', Array.isArray(beforeLedger) && JSON.stringify(beforeLedger) === JSON.stringify(afterLedger));
   check('rechazo por defecto no cobra ni entrega objetos ni cambia el guardado', beforeWallet.premium === afterWallet.premium && JSON.stringify(beforeSave) === JSON.stringify(afterSave));
   await api('POST', '/api/gm/user/premium', { id: idOf('Jugador'), amount: -5000, reason: 'limpiar saldo de prueba', ref: ref(), confirm: true }, AT);
   // Modo legado explícito: no se activa en producción ni altera el valor por defecto.

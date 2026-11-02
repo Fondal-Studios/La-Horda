@@ -354,10 +354,10 @@ function renderShopChampions(panel){
 }
 
 /* ---------------- Objetos y sets ---------------- */
-// Piezas de set: se compran SOLO con Brasas ✦ (js/systems/premium.js, validado por el servidor). Sin cuenta, el botón da el aviso de siempre.
+// Piezas de set: por defecto solo jugando. El modo legado PIECES_FOR_BRASAS=true ofrece Brasas, siempre validado por el servidor.
 function _shopPieceBuyHTML(entry, n, rotLine){
   const btn = typeof premiumPieceButton==="function" ? premiumPieceButton(entry.id) : "";
-  const st = n ? `<div class="shop-st own">Tenés ${n}</div>` : '<div class="shop-st">No comprado</div>';
+  const st = n ? `<div class="shop-st own">Tenés ${n}</div>` : '<div class="shop-st">No obtenido</div>';
   const how = btn ? "" : (typeof premiumPiecePrice==="function" && premiumPiecePrice(entry.id) > 0 ? "" : '<div class="shop-item-sub">Se consigue jugando</div>');
   return `${st}${rotLine || ""}${btn}${how}`;
 }

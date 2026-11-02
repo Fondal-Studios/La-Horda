@@ -190,6 +190,8 @@ const T18_48 = Date.UTC(2026, 9, 19, 18, 48, 0); // 5 h 12 min antes de la media
     });
     check('UI live: 6 fichas de catálogo, piezas solo jugando, temporizador "Se renueva en 5 h 12 min" y fila "Tu próxima meta"', ui.cards === N && /Se renueva en 5 h 12 min/.test(ui.renew) && ui.goal === 1 && ui.piecesEnabled === false && ui.setCards === 0 && ui.earnedCards + ui.goldCards === N && ui.disabled === ui.goldCards && ui.miss === (ui.goldCards > 0), ui);
     check('UI live: texto honesto (sin urgencia): dice que el precio no cambia y no hay cantidad limitada', /no cambia/.test(ui.note) && /cantidad limitada/.test(ui.note) && !/última|ya!|solo hoy|apurate/i.test(ui.note), ui.note);
+    const shots = path.join(ROOT, 'docs/ui-clarity/cosmetics-ci'); fs.mkdirSync(shots, {recursive: true});
+    await page.screenshot({path: path.join(shots, 'rotation-earned-only.png')});
     // con oro: se compra desde la vitrina tocando
     await E(() => { save.gold = 1e6; renderShop(); });
     const k0 = await E(() => { const b = document.querySelector('.shop-rot-card [data-rot-buy]'); return b ? b.getAttribute('data-rot-buy') : null; });
@@ -202,6 +204,7 @@ const T18_48 = Date.UTC(2026, 9, 19, 18, 48, 0); // 5 h 12 min antes de la media
     check('UI live: todas las piezas de set indican que se consiguen jugando, sin botón premium', ui.setCards === 0 && ui.earnedCards === N - ui.goldCards, ui);
     const objs = await E(() => { shopTab = 'objetos'; shopCat = 'set'; renderShop(); const q = s => document.querySelectorAll(s).length; return {buyAll: q('.shop-set-buyall'), live: q('[data-set-live]'), sets: q('.shop-set'), earned: q('[data-set-earned]'), rot: q('.shop-set .shop-rot-state'), premium: q('.shop-set [data-piece-premium]'), enabled: q('.shop-set [data-buy-item]:not(:disabled)')}; });
     check('UI live: Sets solo jugando, sin paquetes, compras de poder ni promesas de venta por rotación', objs.sets > 0 && objs.earned === objs.sets && objs.buyAll === 0 && objs.live === 0 && objs.rot === 0 && objs.premium === 0 && objs.enabled === 0, objs);
+    await page.screenshot({path: path.join(shots, 'sets-earned-only.png')});
     const leg = await E(() => { shopCat = 'legendario'; renderShop(); return {total: document.querySelectorAll('.shop-item').length, off: document.querySelectorAll('.shop-rot-state:not(.on)').length}; });
     check('UI live: Legendarios también muestran su estado', leg.total === 24 && leg.off >= 23, leg);
     await E(() => { shopCat = 'base'; renderShop(); });
