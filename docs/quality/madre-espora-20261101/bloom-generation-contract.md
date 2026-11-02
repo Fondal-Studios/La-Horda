@@ -33,3 +33,9 @@ Extraction: two distinct alpha components; common scale329/465. Idleframe0 is ex
 4. Judge root perimeter crawling, front-loaded expansion and canopy wobble at native game size. Add only a targeted earlypose if observed pop warrants it; never blindly regenerate batches.
 5. Baseline regression comparison is separate. Red tests must remain red until diagnosed/fixed; visual approval does not waive them.
 6. No bloom attack/heart/death batch until this bounded slice receives independent runtime verdict.
+
+## Phase2 physical attack bounded follow-on
+
+Source: `exec-5937dab6-4dd6-4bf3-9768-0f2541c75218.png`. Built-in imagegen with accepted bloom keypose as exact identity reference and accepted phase1 attack as ACTION ONLY, never its cyan canopy.
+Prompt: Three transparent isolated complete poses: anticipation elbows/claws lift inward; impact bilateral claws extend forward/downward; recovery hands retract toward neutral. Genuine joint articulation, no whole-body transformation. Preserve exact warm evolved crown, face, opaque bark armor, root fan center, torso scale. Root contact and eyes fixed. No baked slash/projectile/trail/range indicator; those belong to gameplay. Same camera/scale in spacious equal cells with transparent margins, no clipping/contact/text/background.
+Extraction uses a shared329/439 scale,656×560 cells and root528. Root fan~6% narrower than neutral; independent source gate permits native seam evaluation, not automatic release. Long physical attack holds anticipation while bossWind exists, impact at actual windup completion, recovery after190ms; existing500ms recovery is unchanged. Immediate sporecast and phase3 are excluded.

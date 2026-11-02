@@ -9,7 +9,7 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/high-deta
   const page=await browser.newPage({viewport,recordVideo:{dir:OUT,size:viewport}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.addInitScript(()=>{window.requestAnimationFrame=()=>0;});
   await page.goto('http://127.0.0.1:8849/?motherArtPilot=1&motherBloomKey=1',{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&MIC_MP_OK.mp_pilot&&MIC_MP_OK.mp_pilot_attack&&MIC_MP_OK.mp_bloom_key&&MIC_MP_OK.mp_bloom_trans&&MIC_MP_OK.mp_bloom_idle,null,{polling:100,timeout:120000});
+  await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&MIC_MP_OK.mp_pilot&&MIC_MP_OK.mp_pilot_attack&&MIC_MP_OK.mp_bloom_key&&MIC_MP_OK.mp_bloom_trans&&MIC_MP_OK.mp_bloom_idle&&MIC_MP_OK.mp_bloom_attack,null,{polling:100,timeout:120000});
   await page.evaluate(()=>{
    selectedClass='tanque';currentArena='micelial';lobbyAllies=[];netMatch=null;startRun(10);setState('playing');micMotherRevealStart();
    const e=micMotherEntity();window.motherProbe=e;boss=e;bossActive=true;activeChampion=null;micS.mo.st='fight';micS.mo.ph=1;e.micDormant=0;e.dmgTakenMult=1;player.hp=player.maxHp;
@@ -102,6 +102,32 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/high-deta
   });assert(Number.isFinite(netProof.epoch));assert.equal(netProof.epoch,netProof.serializedEpoch);assert.deepEqual(netProof.host,netProof.lateJoin);
   const epochs=evolution.filter(r=>r.bloom).map(r=>r.bloomAt);assert.equal(new Set(epochs).size,1,'epoch set once, not refreshed');
   fs.writeFileSync(path.join(OUT,viewport.width+'-evolution-timing.json'),JSON.stringify({evolution,netProof,status:'ACTUAL_PHASE_CONTROLLER_PILOT_NOT_RELEASE'},null,2));
+  for(const actionName of ['whip','claw']){
+   await page.evaluate(actionName=>{
+    const e=window.motherProbe;Object.assign(micS.mo,{st:'fight',ph:2,tr:null,bloom:1,heart:0});
+    Object.assign(e,{hp:e.maxHp*0.55,packSet:null,packTimer:0,bossWind:null,stunTimer:0,mcd:0,whipCd:actionName==='whip'?0:1e9,clawCd:actionName==='claw'?0:1e9,rootsCd:1e9,sporeCd:1e9,summonCd:1e9,cloudCd:1e9,halCd:1e9});
+    window.bloomHits=[];window.bloomHitOriginal=bossHitHero;bossHitHero=function(...a){if(a[2]&&a[2].from===window.motherProbe)window.bloomHits.push(runElapsedMs);return window.bloomHitOriginal.apply(this,a)};
+   },actionName);
+   const rows=[];let captured=false;
+   for(let i=0;i<52;i++){
+    const row=await page.evaluate(()=>{
+     for(let j=0;j<3;j++){for(const h of heroes){h.hp=h.maxHp;h.x=80;h.y=260;}update(16);}
+     const calls=[],draw=ctx.drawImage;ctx.drawImage=function(...a){for(const key of ['mp_bloom_attack','mp_bloom_idle'])if(a[0]===MIC_MP[key])calls.push({key,sx:a[1]});return draw.apply(this,a)};
+     try{render()}finally{ctx.drawImage=draw}
+     return {time:runElapsedMs,wind:!!window.motherProbe.bossWind,calls,hits:window.bloomHits.slice(),phase:micS.mo.ph};
+    });rows.push(row);
+    if(!captured&&row.calls.some(c=>c.key==='mp_bloom_attack'&&c.sx===656)){await page.screenshot({path:path.join(OUT,viewport.width+'-bloom-'+actionName+'-impact.png')});captured=true;}
+    await page.waitForTimeout(48);
+   }
+   await page.evaluate(()=>{bossHitHero=window.bloomHitOriginal;});
+   assert(rows.every(r=>r.phase===2));
+   assert.deepEqual([...new Set(rows.flatMap(r=>r.calls.filter(c=>c.key==='mp_bloom_attack').map(c=>c.sx)))].sort((a,b)=>a-b),[0,656,1312]);
+   const impact=rows.find(r=>r.calls.some(c=>c.key==='mp_bloom_attack'&&c.sx===656)),hits=rows.at(-1).hits;
+   assert(hits.length>0,actionName+' actual damage callback');assert(hits.some(t=>Math.abs(t-impact.time)<=96),actionName+' impact synchronized');
+   assert(rows.filter(r=>r.wind).every(r=>r.calls.every(c=>c.key!=='mp_bloom_attack'||c.sx===0)),'no impact during warning');
+   assert(rows.at(-1).calls.some(c=>c.key==='mp_bloom_idle'),'returns to evolved idle');
+   fs.writeFileSync(path.join(OUT,viewport.width+'-bloom-'+actionName+'-timing.json'),JSON.stringify({rows,hits,status:'PHASE2_PHYSICAL_ATTACK_PILOT_NOT_RELEASE'},null,2));
+  }
   const video=page.video();await page.close();fs.renameSync(await video.path(),path.join(OUT,viewport.width+'-phase1-pilot.webm'));
   fs.writeFileSync(path.join(OUT,viewport.width+'-result.json'),JSON.stringify({seen,errors,status:'PILOT_RENDER_PASS_NOT_VISUAL_APPROVAL'},null,2));
  }

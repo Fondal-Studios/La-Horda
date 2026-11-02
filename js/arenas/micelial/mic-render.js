@@ -32,6 +32,7 @@ if(MIC_MOTHER_BLOOM_KEY_ON){
   _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_key.png","mp_bloom_key",MIC_MP,MIC_MP_OK);
   _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_transition.png","mp_bloom_trans",MIC_MP,MIC_MP_OK);
   _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_idle.png","mp_bloom_idle",MIC_MP,MIC_MP_OK);
+  _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_attack.png","mp_bloom_attack",MIC_MP,MIC_MP_OK);
 }
 if(MIC_MOTHER_PILOT_ON){
   _micImg("assets/sprites/arenas/micelial/mother/pilot_idle.png","mp_pilot",MIC_MP,MIC_MP_OK);
@@ -579,6 +580,10 @@ function _micMotherPilotPose(e,M,timeMs,pose){
   if(MIC_MOTHER_BLOOM_KEY_ON && M.st==="fight" && M.ph===2 && !M.heart && pose.state==="bloom-idle"){
     const elapsed=Number.isFinite(M.bloomAt)?Math.max(0,(timeMs||0)-M.bloomAt):0;
     return {key:"mp_bloom_idle",w:656,h:560,cols:3,anchor:528,frame:[0,1,2,1][Math.floor(elapsed/420)%4]};
+  }
+  if(MIC_MOTHER_BLOOM_KEY_ON && M.st==="fight" && M.ph===2 && M.bloom && !M.heart && !(M.net && M.net.st==="open") && pose.state==="atk" && e && e.packDur>700){
+    const after=(e.packDur-e.packTimer)-(e.packDur-500);
+    return {key:"mp_bloom_attack",w:656,h:560,cols:3,anchor:528,frame:e.bossWind || after<0?0:after<190?1:2};
   }
   if(M.ph!==1 || M.bloom || M.heart || (M.net && M.net.st==="open")) return null;
   if(pose.state==="idle") return {key:"mp_pilot",w:432,frame:[0,1,2,1][Math.floor(Math.max(0,timeMs||0)/360)%4]};

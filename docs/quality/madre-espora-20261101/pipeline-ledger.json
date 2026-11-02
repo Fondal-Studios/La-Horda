@@ -5,11 +5,12 @@
   "branch": "fix/madre-espora-animation-20261101",
   "pr": 260,
   "code_head_sha": "fc2e99b6a701214ab2a29264b62a7f0071865c85",
-  "updated_utc": "2026-11-02T00:37:00Z",
+  "updated_utc": "2026-11-02T00:41:00Z",
   "execution_policy": "Continue existing owner/slice; automation must not launch duplicate generations. No formal PR approval or unvalidated main merge.",
   "accepted_scopes": [
     "opt-in high-detail idle pilot",
-    "opt-in high-detail phase1 anticipation/impact/recovery pilot"
+    "opt-in high-detail phase1 anticipation/impact/recovery pilot",
+    "opt-in bloom transformation and matching idle pilot (architect fc2e99b6 runtime GO)"
   ],
   "not_accepted": [
     "full boss release",
@@ -43,26 +44,16 @@
     "last_generation": {
       "provider": "OpenAI built-in imagegen",
       "request_id": null,
-      "request_id_note": "Not exposed by tool",
-      "output_file": "generated_images/exec-6aff8d76-c49f-463f-bfa8-91c08e4fd4bc.png",
-      "sha256": "34e8f35809d5ae255e3ba6fb82af384c63925ba6cd554574b24f5751ee22c56f",
+      "output_file": "/workspace/scratch/4ef56534d38c/generated_images/exec-5937dab6-4dd6-4bf3-9768-0f2541c75218.png",
+      "sha256": "0cd13cafe317005664156db2a8891391c46118f1cc71102b58b2fb4bab9e635e",
       "refs": [
-        {
-          "path": "/workspace/scratch/4ef56534d38c/generated_images/exec-37ea7b5a-35a4-4bb3-9fdd-e34962f34dce.png",
-          "sha256": "1b5822783d5ec11b2cfff20ba0c811c4dc68e3ec5c8a4d091f2dc9b1c378528b"
-        },
-        {
-          "path": "/tmp/madre-bloom-canonical-reference.png",
-          "sha256": "ccd194e580f5b0fb602fa75258422a0a49744dbfd4e892be9ed4f3879cb50c57"
-        }
+        "pilot_bloom_key.png",
+        "exec-4a59a1d1-ffd3-4315-980a-b47675fdf5b2.png (ACTION ONLY)"
       ],
-      "verdict": "SOURCE_GEOMETRY_AND_RUNTIME_KEYPOSE_GO_NOT_SEQUENCE",
-      "root_width_ratio": 1.3932291666666667,
-      "face_to_root_ratio": 1,
-      "reviewer": "/root/review_art_pilot_architecture"
+      "verdict": "SOURCE_GEOMETRY_GO_RUNTIME_PENDING"
     },
-    "next_gate": "Independent actual transition+idle runtime review pending; repeatCI with Madre phaseHUD zero-based correction and genuine legacy fixture/bounded phase3 readiness. No next batch before review.",
-    "next_job_key": "madre-bloom-transition-idle-runtime-v3",
+    "next_gate": "Actual phase2 claw and whip windup/damage callback synchronization, return to evolved idle, native mobile/desktop seam review. Spore cast, heart and death not included.",
+    "next_job_key": "madre-bloom-physical-attack-runtime-v1",
     "provider_task_id": null,
     "previous_rejected_generation": {
       "provider": "OpenAI built-in imagegen",
@@ -104,7 +95,8 @@
         "verdict": "SOURCE_GO_RUNTIME_PENDING",
         "provider": "OpenAI built-in imagegen"
       }
-    ]
+    ],
+    "name": "phase2 physical claw/whip attack pilot"
   },
   "user_deliverable": {
     "file_id": "file_0000000073e48230a5e2238281bc725b",
@@ -113,5 +105,5 @@
     "scope": "idle prototype only, not main"
   },
   "spend": "No Runway credits or purchases; built-in imagegen unit cost not exposed.",
-  "previous_remote_head": "fc2e99b6a701214ab2a29264b62a7f0071865c85"
+  "previous_remote_head": "34ba9c8e618ebdacaf86fe282c0011460274cadd"
 }

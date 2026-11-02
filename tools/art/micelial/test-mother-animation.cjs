@@ -133,7 +133,11 @@ check('bloom keypose requires both explicit flags and only evolved idle',()=>{
  for(const [t,key,frame] of [[500,'mp_bloom_trans',0],[1100,'mp_bloom_trans',1],[1800,'mp_bloom_trans',2],[2500,'mp_bloom_key',0],[3100,'mp_bloom_key',0]]){
   const m={...M,tr:{to:2,t}},r=q._micMotherPilotPose(e,m,999999,q._micMotherFrame(e,m,0));assert.equal(r.key,key);assert.equal(r.frame,frame);
  }
- assert.equal(q._micMotherPilotPose({packSet:'atk',packTimer:490,packDur:1500},M,0,{state:'atk'}),null);
+ for(const [timer,wind,index] of [[510,{t:990,dur:1000},0],[490,null,1],[100,null,2]]){
+  const r=q._micMotherPilotPose({packSet:'atk',packTimer:timer,packDur:1500,bossWind:wind},M,0,{state:'atk'});assert.equal(r.key,'mp_bloom_attack');assert.equal(r.frame,index);
+ }
+ assert.equal(q._micMotherPilotPose({packSet:'atk',packTimer:690,packDur:700},M,0,{state:'atk'}),null,'spore action excluded');
+ assert.equal(q._micMotherPilotPose({packSet:'atk',packTimer:490,packDur:1500},{...M,heart:1},0,{state:'atk'}),null,'heart excluded');
 });
 check('Mother1-based phases map to zero-based HUD without changing combatphase',()=>{
  const source=fs.readFileSync(path.join(ROOT,'js/arenas/micelial/mic-mother.js'),'utf8');
