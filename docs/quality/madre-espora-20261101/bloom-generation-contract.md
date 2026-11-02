@@ -83,3 +83,9 @@ Explicit `motherDeathPilot=1` additionally required. Three honest authored poses
 Death3a1b2c0c scoped runtimeGO; fullCI/BOTH_PASS run41377608170 artifact13112092920. Actual3heldposes, not continuous smoothcollapse; nativecamera/edges clean. Lootlabels/darkness partly obscuremobile remains, retained as actualproductioneffects. Startup stale banners corrected in nextfixture, not suppresseddeathtext.
 
 Next no-generation route reuses accepted cyan idle0/1/2 during authoritative ground emergence1500–7000ms. Fixedworldbody/root, clipping fromground; actual armarticulation not wholeportraitbounce or scaling. From7000 normalidleclock ensures seamless9000fight entry. Existing sleep/stir hidden, invulnerability and allcontroller events unchanged. Explicit `motherRevealPilot=1` in addition to corepilot flags; default/missingasset fallback intact.38unitPASS; actualreveal runtime/architect gate pending.
+
+## Core cold-path optimization candidate (2026-11-02 02:46 UTC)
+
+No art/timer change. Readbacks and exact-byte restoration now use the clamped reviewed cavity+foreground polygon union padded3px, rather than wholebody656×560. Plates remain cavity-clipped. Frozen full-scan reference retained as test-only oracle; all144 pose/stage wholeRGBA outputs locally match byte-for-byte (changed0/maxdelta0), in addition to existing alpha/protectedpixel invariants.
+
+A single synchronous native-Canvas old+new144case local run terminated137 from test transient lifetime; it was NOT treated as a pass. Isolated16groups×9cases completed exact comparison. Browser oracle similarly isolates pages perframe to bound native allocations; no oracle is loaded in production. Existing32MiB LRU retained. Actual CI cold-path benchmark and browser equality still pending; no inferred phone60fps claim.

@@ -660,7 +660,13 @@ function _micMotherCoreComposite(pilot){
   const g=canvas.getContext("2d"),l=layer.getContext("2d");g.imageSmoothingEnabled=false;l.imageSmoothingEnabled=false;
   const sourceDraw=c=>c.drawImage(source,pilot.frame*w,0,w,h,0,0,w,h);
   const path=(c,poly)=>{c.beginPath();poly.forEach((p,i)=>c[i?"lineTo":"moveTo"](w/2+p[0]-328,anchor+p[1]-528));c.closePath();};
-  sourceDraw(g);const basePixels=g.getImageData(0,0,w,h);l.save();path(l,MIC_MOTHER_CORE_POLY);l.clip();l.drawImage(MIC_MP.mp_heart_key,w/2-328,anchor-528);l.restore();
+  // Only this reviewed union can change. Read back its padded rectangle rather
+  // than scanning the entire high-resolution body on a cold stage.
+  const points=MIC_MOTHER_CORE_POLY.concat(...binding.frames[pilot.frame].foreground);
+  const xs=points.map(p=>w/2+p[0]-328),ys=points.map(p=>anchor+p[1]-528);
+  const rx=Math.max(0,Math.floor(Math.min(...xs))-3),ry=Math.max(0,Math.floor(Math.min(...ys))-3);
+  const rw=Math.min(w,Math.ceil(Math.max(...xs))+3)-rx,rh=Math.min(h,Math.ceil(Math.max(...ys))+3)-ry;
+  sourceDraw(g);const basePixels=g.getImageData(rx,ry,rw,rh);l.save();path(l,MIC_MOTHER_CORE_POLY);l.clip();l.drawImage(MIC_MP.mp_heart_key,w/2-328,anchor-528);l.restore();
   // The patch cannot invent silhouette outside the existing body alpha.
   l.globalCompositeOperation="destination-in";sourceDraw(l);l.globalCompositeOperation="source-over";g.drawImage(layer,0,0);
   if(stage<8){
@@ -679,13 +685,13 @@ function _micMotherCoreComposite(pilot){
   // Copy protected source bytes rather than source-over: translucent claw edges
   // must not retain cavity RGB underneath an otherwise restored foreground.
   const mask=document.createElement("canvas");mask.width=w;mask.height=h;const mg=mask.getContext("2d");
-  path(mg,MIC_MOTHER_CORE_POLY);mg.fill();const patchAlpha=mg.getImageData(0,0,w,h).data;
+  path(mg,MIC_MOTHER_CORE_POLY);mg.fill();const patchAlpha=mg.getImageData(rx,ry,rw,rh).data;
   mg.clearRect(0,0,w,h);for(const poly of binding.frames[pilot.frame].foreground){path(mg,poly);mg.fill();}
-  const frontAlpha=mg.getImageData(0,0,w,h).data,result=g.getImageData(0,0,w,h);
+  const frontAlpha=mg.getImageData(rx,ry,rw,rh).data,result=g.getImageData(rx,ry,rw,rh);
   for(let i=0;i<result.data.length;i+=4){
     if(stage===0 || patchAlpha[i+3]===0 || frontAlpha[i+3]===255)for(let k=0;k<3;k++)result.data[i+k]=basePixels.data[i+k];
     result.data[i+3]=basePixels.data[i+3];
-  }g.putImageData(result,0,0);
+  }g.putImageData(result,rx,ry);
   if(cached){_micMotherCoreCacheBytes-=cached.bytes;_micMotherCoreCache.delete(key);}
   const bytes=w*h*4;
   while(_micMotherCoreCacheBytes+bytes>MIC_MOTHER_CORE_CACHE_LIMIT && _micMotherCoreCache.size){
