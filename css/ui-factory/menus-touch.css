@@ -36,9 +36,8 @@
    (el contenido se desvanece bajo ella, no queda "cortado" por un botón flotante) y la Pausa se reorganiza en dos columnas
    para que Continuar / Abandonar entren sin desplazar. Solo presentación: mismos botones, ids y handlers. */
 @media (max-height:520px){
-  #prep-screen:not(.hidden){ padding-bottom:104px; }
-  #prep-screen:not(.hidden)::after{ content:""; position:fixed; left:0; right:0; bottom:0; height:56px; z-index:39; pointer-events:none;
-    background:linear-gradient(rgba(10,6,4,0), rgba(10,6,4,.96) 55%); }
+  #prep-screen:not(.hidden){ padding-bottom:12px; bottom:56px; height:auto; }   /* el área con scroll termina SOBRE la barra de Comenzar: nada queda debajo de ella */
+  #prep-screen:not(.hidden)::after{ content:""; position:fixed; left:0; right:0; bottom:0; height:56px; z-index:39; pointer-events:none; background:rgba(10,6,4,.96); border-top:1px solid #3a2415; }
   #pause-screen.screen:not(.hidden){ display:grid; grid-template-columns:1fr 1fr; align-content:center; justify-items:stretch; gap:6px 12px; padding:8px 24px; }
   #pause-screen .arena-title, #pause-screen .pause-audio, #pause-screen #stats-panel{ grid-column:1 / -1; justify-self:center; }
   #pause-screen .pause-note{ grid-column:1 / -1; justify-self:center; max-width:640px; margin:0; font-size:.62rem; line-height:1.15; text-align:center; }
@@ -59,6 +58,3 @@
   #pause-screen:has(#tactical-panel) #quit-btn{ grid-column:3; grid-row:5; }
   #pause-screen:has(#tactical-panel) #stats-panel{ grid-column:2 / 4; grid-row:6; max-width:none; margin:6px 0 0; }
 }
-
-/* D5: los desplegables miden 44 px también con mouse (hub y Cristales) */
-.screen.screen details > summary{ min-height:44px; display:flex; align-items:center; }

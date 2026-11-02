@@ -46,3 +46,6 @@ body.lefty #pause-btn{ left:calc(10px + env(safe-area-inset-left,0px)); }
 body.reduce-motion #hud #goal-chip{ animation-name:ufPopupStill; }
 @keyframes ufPopupStill{ 0%{ opacity:1; visibility:visible; } 92%{ opacity:1; visibility:visible; } 100%{ opacity:0; visibility:hidden; } }
 @media (prefers-reduced-motion:reduce){ #hud #goal-chip{ animation-name:ufPopupStill; } }
+
+/* D4: en modo zurdo el minimapa rival pasa al lado del joystick (derecha) y deja libres las habilidades de la izquierda */
+body.lefty.lanes-on .lanes-hud .ln-rival{ left:auto; right:calc(124px + env(safe-area-inset-right,0px)); }

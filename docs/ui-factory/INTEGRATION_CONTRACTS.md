@@ -75,3 +75,8 @@ Solo CSS + hojas de sprites propias (`css/ui-factory/fx/*.png`, generadas por `t
 - **Cooldown de la Definitiva** (`.uf-cd`): lectura de `player.ultCd`; sin escritura.
 - **Pantalla limpia en `body.lanes-on`** (Guerra de Cristales y Coliseo): se ocultan `#goal-chip`, `#ult-meter`, `#mute-btn` y `.ln-horde`; minimapa rival reducido; en ≤ 900 px el chip VOLVER se apila sobre el de suministros. Decisión de diseño a confirmar por el arquitecto/GM: se pierde el cartel OBJETIVO en esos modos (el marcador y la ficha de arena lo siguen comunicando). Revertir = quitar el `<link>` de `hud-layout.css`.
 - Si `css/lanes.css` o `js/arenas/lanes/lanes-hud.js` cambian clases (`ln-recall`, `ln-chip`, `ln-rival`), actualizar §8 de `hud-layout.css`.
+
+## 9. Contrato UF-ART v1 (marcos de botones, iteración 7)
+- Hojas `css/ui-factory/fx/frame-{basic,s1,s2,s3,ult,sec}.png`, generadas por `tools/ui-factory/make-hud-frames.py` (grilla de píxel única de 2 px CSS, 5 tonos + contorno de 1 px, luz arriba-izquierda, tramado ordenado). Están **fuera de `assets/**`** y de los gates de densidad por entidad.
+- Elemento decorativo `<i class="uf-frame" aria-hidden>` creado por `hud-feedback.js` (primer hijo del botón); el marco queda FUERA del botón y no tapa los colores de estado de `css/hud.css`. Estados: apagado en cooldown/bloqueado, desaturado sin energía, brillante al presionar, halo cuando está listo.
+- **Estado de revisión: IMPORTED_NOT_APPROVED.** Es un primer pase generado por código con las reglas de la fábrica de arte (esta no genera imágenes: `tools/factory/README.md`); no iguala la calidad ilustrada del Códice y requiere revisión de arte humana. Retirar los `.uf-frame` (o `?uf=0`) lo revierte sin tocar nada más.
