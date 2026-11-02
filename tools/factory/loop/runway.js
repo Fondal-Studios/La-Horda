@@ -14,8 +14,9 @@ function journalAppend(file,obj){fs.mkdirSync(path.dirname(file),{recursive:true
 async function generate({model,prompt,ratio,refs,journal,key}){
   const prior=fs.existsSync(journal)?fs.readFileSync(journal,'utf8').split('\n').filter(Boolean).map(JSON.parse).filter(e=>e.key===key):[];
   const done=prior.find(e=>e.ev==='done'); if(done) return {cached:true,...done};
-  const open=prior.find(e=>e.ev==='task'||e.ev==='posting'); let taskId=open&&open.taskId;
-  if(open&&!taskId) throw new Error('resultado incierto para '+key+': no se reenvía (revisar el diario)');
+  const last=prior[prior.length-1];                                         // el ÚLTIMO evento manda: 'rejected'/'failed' cierran el intento (rechazo explícito = sin cobro); 'posting'/'uncertain' sin tarea = incierto
+  let taskId=last&&last.ev==='task'?last.taskId:null;
+  if(last&&(last.ev==='posting'||last.ev==='uncertain')) throw new Error('resultado incierto para '+key+': no se reenvía (revisar el diario)');
   if(!taskId){
     journalAppend(journal,{ev:'posting',key,model});
     let r;try{r=await req('POST',BASE+'/text_to_image',{model,promptText:prompt,ratio,referenceImages:refs});}catch(e){journalAppend(journal,{ev:'uncertain',key,err:String(e)});throw e;}

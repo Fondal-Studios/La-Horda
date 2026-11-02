@@ -22,10 +22,20 @@ def flood_alpha(rgb,bg):
 def figures(path):
     im=Image.open(path).convert('RGB'); w,h=im.size
     x0,y0=int(w*.44),int(h*.30); panel=im.crop((x0,y0,w,int(h*.74))); a=np.asarray(panel).astype(int)
-    bg=np.median(a.reshape(-1,3),axis=0); fg=np.abs(a-bg).sum(2)>70
-    rows=fg.mean(1); fg[rows>0.55]=False                 # línea de suelo / separadores
+    bg=np.median(a.reshape(-1,3),axis=0); fg=np.abs(a-bg).sum(2)>(45 if "facu" in path else 70)
+    rows=fg.mean(1); fg[rows>0.78]=False                 # línea de suelo / separadores
     cols=fg.sum(0)>2; out=[]
+    spans=[]
     for xa,xb in runs(cols,14):
+        # Maquetaciones donde las capas de las tres vistas se tocan: una sola masa muy ancha se parte en 3 por los valles de la proyección vertical
+        hh=np.where(fg[:,xa:xb].any(1))[0]
+        if xb-xa>1.9*(hh.max()-hh.min()+1):
+            prof=fg[:,xa:xb].sum(0).astype(float);w=xb-xa;cuts=[xa]
+            for f in (1/3,2/3):
+                c=int(w*f);lo,hi=max(1,c-int(w*.08)),min(w-1,c+int(w*.08));cuts.append(xa+lo+int(np.argmin(prof[lo:hi])))
+            cuts.append(xb);spans+= [(cuts[i],cuts[i+1]) for i in range(3)]
+        else: spans.append((xa,xb))
+    for xa,xb in spans:
         if xb-xa<40: continue
         sub=fg[:,xa:xb]
         rr=runs(sub.sum(1)>0,8); rr=max(rr,key=lambda r:(sub[r[0]:r[1]].sum()))

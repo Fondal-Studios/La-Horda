@@ -15,7 +15,7 @@ const dl=url=>cp.execFileSync('curl',['-s','-m','90',url],{maxBuffer:1<<26});
  for(let r=1;r<=MAX;r++){
   const spent=start-await R.balance();if(spent+(R.COST[MODEL]||5)>BUDGET){console.log('BUDGET agotado',spent);break;}
   const refs=['cur','ref'].concat(fs.existsSync(`${out}/anchor.b64`)?['anchor']:[]).map(t=>({uri:fs.readFileSync(`${out}/${t}.b64`,'utf8'),tag:t}));
-  const g=await R.generate({model:MODEL,prompt:base+' '+extra,ratio:'1024:1024',refs,journal:`${out}/journal.jsonl`,key:`${champ}-${frame}-g${GEN}r${r}`});
+  const g=await R.generate({model:MODEL,prompt:base+' '+extra,ratio:process.env.RATIO||'1024:1024',refs,journal:`${out}/journal.jsonl`,key:`${champ}-${frame}-g${GEN}r${r}`});
   fs.writeFileSync(`${out}/result_g${GEN}r${r}.png`,dl(g.output[0]));py('post',out,`${out}/result_g${GEN}r${r}.png`,`g${GEN}r${r}`);
   const fb=JSON.parse(py('critic',out,`g${GEN}r${r}`));best=fb;
   if(fb.verdict==='PASA_AUTOMATICO'){console.log('ronda',r,'pasa el control automático; falta revisión visual');break;}
