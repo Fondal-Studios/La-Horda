@@ -4,8 +4,8 @@
   "owner": "/root/animate_madre_espora",
   "branch": "fix/madre-espora-animation-20261101",
   "pr": 260,
-  "code_head_sha": "c7ba1360a5ce284203a37c0c38b4c8755379d4cd",
-  "updated_utc": "2026-11-02T02:17:00Z",
+  "code_head_sha": "3a1b2c0c48b1f4c40557c1be01d0f225e856a71b",
+  "updated_utc": "2026-11-02T02:36:00Z",
   "execution_policy": "Continue existing owner/slice; automation must not launch duplicate generations. No formal PR approval or unvalidated main merge.",
   "accepted_scopes": [
     "opt-in high-detail idle pilot",
@@ -14,7 +14,8 @@
     "opt-in phase2 physical claw and whip attack pilot (architect796483a6 runtime GO)",
     "opt-in immediate spore cast phase1/2 (architect7a9f1d80 runtime GO; warning packs routing-only)",
     "opt-in core replacement during all-phase exposed idle/actions; architect e3c2e88b scoped GO, mobile final readability/open-close still pending",
-    "opt-in articulated bark opening/closing and aligned seed cue; architect c7ba1360 scoped GO"
+    "opt-in articulated bark opening/closing and aligned seed cue; architect c7ba1360 scoped GO",
+    "opt-in authored three-pose death collapse; architect3a1b2c0c runtime GO, not smooth continuous collapse"
   ],
   "not_accepted": [
     "full boss release",
@@ -23,17 +24,17 @@
     "remaining high-detail phases"
   ],
   "validation": {
-    "unit_pass": 36,
+    "unit_pass": 37,
     "browser_pass": 60,
     "phase1_timing": "Mother damage5350ms; first impact render5382ms (+32ms)",
     "actual_evidence_dir": "/tmp/mother-ci-232b2b20/high-detail-pilot",
-    "github_run_id": 41376131103,
-    "github_artifact_id": 13111620981,
+    "github_run_id": 41377608170,
+    "github_artifact_id": 13112092920,
     "independent_reviewer": "/root/review_art_pilot_architecture",
     "camera_and_boss_hooks": "PASS",
     "geometry_run_id": 41366010676,
     "geometry_artifact_id": 13107069326,
-    "latest_fungal_status": "BOTH_PASS c7ba1360 full baseline same harness",
+    "latest_fungal_status": "BOTH_PASS3a1b2c0c",
     "bloom_sequence_run_id": 41367462917,
     "bloom_sequence_artifact_id": 13107414710,
     "historical_fixture_failures": [
@@ -41,13 +42,14 @@
       "SAVE.guardado_viejo_conserva_el_hielo_y_abre_el_reino"
     ],
     "baseline_failures": [],
-    "local_pending_unit_pass": 37,
+    "local_pending_unit_pass": 38,
     "core_layer": "144 pose/stage pixel cases per viewport + lifecycle + actual AI/openclose PASS",
-    "performance": "Retained cache<=32MiB; CI cold median9.4\u201310ms max16.3ms, warm<=.1ms; not device certification"
+    "performance": "Retained cache<=32MiB; CI cold median9.4\u201310ms max16.3ms, warm<=.1ms; not device certification",
+    "death": "Actual killEnemy cleanup +4700/6600/8000/9000 +10500 victoryonce/rewardidempotence PASS"
   },
   "current_slice": {
-    "id": "canonical-death-collapse",
-    "status": "SOURCE_GEOMETRY_GO_RUNTIME_PENDING",
+    "id": "articulated-ground-reveal",
+    "status": "CODE_SOURCE_REVIEW_PENDING",
     "active_generation": null,
     "last_generation": {
       "provider": "OpenAI built-in imagegen",
@@ -55,7 +57,7 @@
       "sha256": "3f61581c856d4d2b40c18a30be0d97817c7cbc98cc615ae55b2af53b7c99175c",
       "verdict": "Source and normalizedgeometry independent GO; no reroll requested"
     },
-    "next_gate": "One3-pose high-detail death strip source/geometry review then actual4700/6600/9000ms timeline; no rewards/gameplay changes",
+    "next_gate": "Actual1500 emergence/7000full/9000fight, body/idle seam, pause/latejoin/defaultfallback desktopmobile runtime; no newgeneration",
     "next_job_key": "madre-core-opening-runtime-v1",
     "provider_task_id": null,
     "previous_rejected_generation": {
@@ -99,7 +101,7 @@
         "provider": "OpenAI built-in imagegen"
       }
     ],
-    "name": "Articulated bark plates and aligned seed glow",
+    "name": "Reuse accepted cyan poses during existing anchored emergence",
     "cast_sources": [
       {
         "phase": 1,
@@ -138,13 +140,13 @@
   },
   "inflight": {
     "owner": "/root/animate_madre_espora",
-    "scope": "One3-pose high-detail death strip source/geometry review then actual4700/6600/9000ms timeline; no rewards/gameplay changes",
-    "head": "c7ba1360a5ce284203a37c0c38b4c8755379d4cd",
-    "job_key": "madre-death-collapse-v1",
+    "scope": "Actual1500 emergence/7000full/9000fight, body/idle seam, pause/latejoin/defaultfallback desktopmobile runtime; no newgeneration",
+    "head": "3a1b2c0c48b1f4c40557c1be01d0f225e856a71b",
+    "job_key": "madre-ground-reveal-v1",
     "provider_request_id": null,
     "output_file": "generated_images/exec-c8ed1d0a-43a8-446a-b610-f73f53c6d661.png",
     "source_sha256": "3f61581c856d4d2b40c18a30be0d97817c7cbc98cc615ae55b2af53b7c99175c",
     "duplicate_jobs_forbidden": true,
-    "source_gate": "Death3pose source+normalizedgeometryGO, actualdeathcontroller runtimepending"
+    "source_gate": "Acceptedphase1idle source reused, no newrasterrequest"
   }
 }

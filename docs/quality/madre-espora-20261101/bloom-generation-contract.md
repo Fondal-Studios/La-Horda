@@ -77,3 +77,9 @@ Prompt: identity-preserve game animation asset, one horizontal3equal-cell transp
 Source independently GO; actual components separated at gutters708–717/1439–1448, not naïve724px cells. Extraction isolates connected source silhouette with2px alphaedge support (no globalopaque recolor); sharedscale329/430, rootcenter360/1078/1803 andbaseline702/701/700 → fixed656×560 cells,anchor528. Source/normalizedAB saved `/tmp/mother-death-prepared`. Red/magenta edge speckles require native arena review.
 
 Explicit `motherDeathPilot=1` additionally required. Three honest authored poses0–4700,4700–6600,6600+; existingfade8000–9000 only after real structuralcollapse. Deadstate drawsnone. No gameplay/reward/collision/controller edits.37localunit tests; actualkill→cleanup→milestones→victoryonce browser evidence pending.
+
+## Ground reveal route (2026-11-02 02:36 UTC)
+
+Death3a1b2c0c scoped runtimeGO; fullCI/BOTH_PASS run41377608170 artifact13112092920. Actual3heldposes, not continuous smoothcollapse; nativecamera/edges clean. Lootlabels/darkness partly obscuremobile remains, retained as actualproductioneffects. Startup stale banners corrected in nextfixture, not suppresseddeathtext.
+
+Next no-generation route reuses accepted cyan idle0/1/2 during authoritative ground emergence1500–7000ms. Fixedworldbody/root, clipping fromground; actual armarticulation not wholeportraitbounce or scaling. From7000 normalidleclock ensures seamless9000fight entry. Existing sleep/stir hidden, invulnerability and allcontroller events unchanged. Explicit `motherRevealPilot=1` in addition to corepilot flags; default/missingasset fallback intact.38unitPASS; actualreveal runtime/architect gate pending.

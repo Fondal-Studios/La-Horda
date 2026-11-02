@@ -201,4 +201,10 @@ check('high-detail death holds three real poses at unchanged controller mileston
  }
  assert.equal(q._micMotherFrame(null,{st:'dead',t:0},0).alpha,0);
 });
+check('high-detail reveal keeps existing emergence and seamless articulated idle clock',()=>{
+ const q={Image:class{},VFX_SPR_EXTRA:{},MIC_CFG:{madre:{closeMs:2600}},console,location:{search:'?motherArtPilot=1&motherBloomKey=1&motherHeartKey=1&motherCoreLayer=1&motherRevealPilot=1'},URLSearchParams};vm.createContext(q);vm.runInContext(code,q);
+ for(const st of ['sleep','stir'])assert.equal(q._micMotherFrame(null,{st,t:9000},0).alpha,0);
+ for(const [t,frame]of [[1500,0],[3400,1],[5300,2]]){const M={st:'reveal',t},pose=q._micMotherFrame(null,M,t);assert.equal(q._micMotherPilotPose(null,M,t,pose).frame,frame);assert.equal(pose.rise,Math.max(0,(t-1500)/5500));}
+ const t=9000,reveal=q._micMotherPilotPose(null,{st:'reveal',t},t,{state:'reveal'}),idle=q._micMotherPilotPose(null,{st:'fight',ph:1,t:0},t,{state:'idle'});assert.deepEqual(reveal,idle);
+});
 console.log(JSON.stringify({pass,scope:'pose and contract unit tests only; visual/browser checks separate'}));

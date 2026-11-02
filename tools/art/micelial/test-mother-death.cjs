@@ -7,13 +7,27 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/death';fs
  for(const viewport of [{width:1280,height:720},{width:844,height:390}]){
   const page=await browser.newPage({viewport,recordVideo:{dir:OUT,size:viewport}}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.addInitScript(()=>{window.requestAnimationFrame=()=>0;});
   await page.goto('http://127.0.0.1:8851/?motherArtPilot=1&motherBloomKey=1&motherHeartKey=1&motherCoreLayer=1&motherDeathPilot=1',{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&MIC_MP_OK.mp_death,null,{polling:100,timeout:120000});
-  const setup=await page.evaluate(()=>{
+  await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&MIC_MP_OK.mp_death&&MIC_MP_OK.mp_bloom_idle&&MIC_MP_OK.mp_heart_key,null,{polling:100,timeout:120000});
+  await page.evaluate(()=>{
    selectedClass='tanque';currentArena='micelial';lobbyAllies=[];netMatch=null;startRun(10);setState('playing');micMotherRevealStart();for(const h of allies)h.isRemote=true;
+   // Let the real reveal/controller finish before staging the phase3 death.
+   // Startup is a separate fixture epoch: discard only its pending timers/UI
+   // BEFORE new attack hazards and killEnemy. No effect is hidden after death.
+   for(let i=0;i<1000;i++){for(const h of heroes){h.hp=h.maxHp;h.x=80;h.y=260;}update(16);}
+   if(micS.mo.st!=='fight')throw Error('real startup did not reach fight');
+   clearRunTimers();arenaTitleCardHide();vfxResetRun();resetFeedback();bossHudHint(null);
+   HUDTXT.q=[];HUDTXT.cur=null;HUDTXT.until=0;
+   const banner=document.getElementById('center-banner');if(banner)banner.classList.remove('show');
+   const intro=document.getElementById('boss-intro');if(intro)intro.classList.add('hidden');
    const e=micMotherEntity();window.deathBoss=e;boss=e;bossActive=true;activeChampion=null;e.micDormant=0;e.hp=e.maxHp*.2;micS.mo={st:'fight',ph:3,t:0,dark:0,bloom:1,heart:1,inf:0,beat:900};bossHudPhase(2,3);
    Object.assign(e,{packTimer:0,packSet:null,stunTimer:0,bossWind:null,mcd:1e9,whipCd:1e9,clawCd:1e9,rootsCd:1e9,sporeCd:1e9,summonCd:1e9,cloudCd:1e9,halCd:1e9});
    for(const h of heroes){h.hp=h.maxHp;h.x=80;h.y=260;}_micBlend=1;spawnTimer=1e9;
    _bossIntroT=0;_bossIntroDelay=0;for(let i=0;i<160;i++){updateArenaCameraZoom();updateCamLift();}
+   render();
+  });
+  await page.screenshot({path:path.join(OUT,viewport.width+'-before-kill-phase3.png')});
+  const setup=await page.evaluate(()=>{
+   const e=deathBoss;
    // Establish real pending attacks/projectiles/clouds before the real death hook.
    micMotherSpores(e,player,6);micMotherWhip(e,player);micAddCloud(0,150,'big');
    window.deathPendingHits=0;const pending=e.bossWind.fn;e.bossWind.fn=function(...a){deathPendingHits++;return pending.apply(this,a)};
