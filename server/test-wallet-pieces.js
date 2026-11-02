@@ -28,6 +28,10 @@ const ref = () => crypto.randomUUID();
   const users = (await api('GET', '/api/gm/users', undefined, AT)).j.users, idOf = (n) => users.find(u => u.user === n).id;
   const credit = (n, amount) => api('POST', '/api/gm/user/premium', { id: idOf(n), amount, reason: 'prueba piezas', ref: ref() }, AT);
   const P = wallet.pricing(), db = wallet.pieceDb(), cat = wallet.skinCatalog();
+  // MODELO DEL DUEÑO (2026-11-02): por defecto las Brasas NO compran piezas de set (solo apariencia).
+  const woffDefault = (await api('GET', '/api/wallet', undefined, UT)).j;
+  check('POR DEFECTO: las Brasas no venden piezas de set (el GET informa pieces.enabled=false)', woffDefault.pieces && woffDefault.pieces.enabled === false, woffDefault.pieces);
+  wallet.setTestFlags({ PIECES_FOR_BRASAS: true });   // el resto de la prueba ejercita el camino heredado, encendido explícitamente
   const PRICE = P.pricingBrasas('pieza');
   const setId = Object.keys(db.sets).find(s => cat[s] && cat[s].kind === 'set' && db.sets[s].length >= 4 && db.sets[s].every(id => db.pieces[id]));
   const ids = db.sets[setId], expected = (id) => ({ piece: id, ref: ref(), expectedPrice: PRICE });
@@ -95,7 +99,7 @@ const ref = () => crypto.randomUUID();
 
   // modo live: solo lo que sale hoy
   const today = Math.floor(Date.now() / 86400000), onSale = wallet.rotationKeys(today).filter(k => db.pieces[k.slice(2)]).map(k => k.slice(2));
-  wallet.setTestFlags({ SHOP_MODE: 'live' });
+  wallet.setTestFlags({ PIECES_FOR_BRASAS: true, SHOP_MODE: 'live' });
   const notToday = Object.keys(db.pieces).find(id => !wallet.rotationKeys(today).includes('d:' + id) );
   await api('PUT', '/api/save', { data: baseSave(), baseVersion: (await api('GET', '/api/save', undefined, NT)).j.version || 0 }, NT);
   const wlive = (await api('GET', '/api/wallet', undefined, UT)).j;
@@ -107,14 +111,14 @@ const ref = () => crypto.randomUUID();
   const okLive = await buy(onSale[0], NT);
   check('live: una pieza que sale hoy se vende al mismo precio (✦200, sin recargo de oro)', okLive.status === 200 && okLive.j.price === 200, okLive);
   check('la rotación del servidor repite 6 por día y cada pieza sale más de una vez por ciclo', wallet.rotationKeys(today).length === P.pricingRotationConfig().n && wallet.rotationKeys(today).join() === wallet.rotationKeys(today).join());
-  wallet.setTestFlags(null);
+  wallet.setTestFlags({ PIECES_FOR_BRASAS: true });
 
   // interruptor apagado
   wallet.setTestFlags({ PIECES_FOR_BRASAS: false });
   const off = await buy(ids[0], FT), woff = (await api('GET', '/api/wallet', undefined, UT)).j;
   check('PIECES_FOR_BRASAS=false: 403 PIECES_OFF y el GET lo informa', off.status === 403 && off.j.error === 'PIECES_OFF' && woff.pieces.enabled === false, { off: off.j, p: woff.pieces });
   check('apagado: las skins y cromas se siguen vendiendo', (await api('POST', '/api/wallet/buy', { sku: Object.values(cat).find(s => s.kind === 'set' && s.id !== setId).id, ref: ref(), expectedPrice: 800 }, UT)).status === 200);
-  wallet.setTestFlags(null);
+  wallet.setTestFlags({ PIECES_FOR_BRASAS: true });
   check('encendido de nuevo: vuelve a vender', (await buy(ids[0], FT)).status !== 403);
 
   fs.mkdirSync(path.join(__dirname, '../docs/ux'), { recursive: true });

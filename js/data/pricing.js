@@ -37,13 +37,15 @@ var PRICING = {
 };
 
 /* ============================================================
-   INTERRUPTOR DE LAS PIEZAS DE SET POR BRASAS ✦ — un único lugar (docs/economy/PRECIOS.md, "Riesgo: poder por dinero")
-     true  (POR DEFECTO, decisión del dueño): las piezas de set se compran con Brasas, validado por el servidor.
-     false : no se venden piezas de set por ningún medio (el cliente no muestra el botón y el servidor rechaza /api/wallet/buy-piece).
-   Las piezas NUNCA se compran con oro (el oro es del cliente y editable: regalaría la skin que da el set completo). Las piezas que
-   se ganan jugando (drops) no dependen de esto.
+   INTERRUPTOR DE LAS PIEZAS DE SET POR BRASAS ✦ — un único lugar (docs/economy/PRECIOS.md, "Modelo de economía del dueño")
+     false (POR DEFECTO, decisión del dueño 2026-11-02): las Brasas SOLO compran cosméticos. Las piezas de set (equipo con estadísticas)
+           no se venden por Brasas: se consiguen jugando, en eventos del pase de batalla y, cuando la tienda de objetos está en modo "live",
+           por la rotación diaria en oro. El cliente no muestra el botón y el servidor rechaza /api/wallet/buy-piece (PIECES_OFF).
+     true  : (heredado, NO usar en producción) las piezas de set se compran con Brasas, validado por el servidor.
+   La skin del set se compra aparte con Brasas (brasas.set) y además se desbloquea al completar el set (es uno de los bonus del set).
+   Las piezas NUNCA se compran con oro desde el cliente de forma que regale la skin: el oro del cliente es editable.
    ============================================================ */
-var PIECES_FOR_BRASAS = true;
+var PIECES_FOR_BRASAS = false;
 
 /* ============================================================
    INTERRUPTOR DE LA TIENDA DE OBJETOS — un único lugar (docs/economy/TIENDA_ROTACION.md)

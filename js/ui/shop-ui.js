@@ -9,7 +9,7 @@
    - Skins: las skins de set que existen (SET_SKINS). Cada apariencia cuesta Brasas ✦ o su precio en oro (escalones en js/data/pricing.js) y da SOLO la
      apariencia (js/systems/premium.js); completar el set la sigue regalando. Las piezas se compran aparte.
    - ✦ Brasas: saldo, paquetes con precio en moneda real (los manda el servidor), Pack de bienvenida mientras no
-     se haya comprado y tres skins de tus guardianes como ejemplo. Las Brasas compran apariencia y, con el interruptor PIECES_FOR_BRASAS, piezas de set;
+     se haya comprado y tres skins de tus guardianes como ejemplo. Las Brasas compran SOLO apariencia (PIECES_FOR_BRASAS = false: las piezas de set se ganan jugando, en el pase de batalla o en la rotación en oro);
      sin pasarela conectada el botón dice "Muy pronto" (no hay compras de mentira).
    Tocar un objeto abre su ficha completa (itemDetailHTML en modo tienda).
    shopOpen(tab, {champ}) abre la tienda en una pestaña (el hub abre ✦ Brasas; el final de partida, las skins de un guardián).
