@@ -4,6 +4,7 @@ on:
     paths:
       - 'js/arenas/micelial/**'
       - 'tools/art/micelial/**'
+      - 'tools/micelial/**'
       - 'assets/sprites/arenas/micelial/**'
       - '.github/workflows/madre-espora-animation.yml'
   workflow_dispatch:
@@ -40,22 +41,55 @@ jobs:
           SERVER=$!
           trap "kill $SERVER" EXIT
           sleep 1
-          node tools/micelial/t_micelial.js
+          mkdir -p /tmp/mother-browser
+          git rev-parse HEAD | tee /tmp/mother-browser/candidate-revision.txt
+          sha256sum tools/micelial/{t_micelial,sim-helpers}.js | tee /tmp/mother-browser/candidate-harness.sha256
+          set -o pipefail
+          MIC_TEST_SEED=137260 node tools/micelial/t_micelial.js 2>&1 | tee /tmp/mother-browser/candidate-regression.log
       - name: Classify existing fungal regression failures against baseline
         if: failure()
         continue-on-error: true
         run: |
-          cp js/arenas/micelial/mic-render.js /tmp/mother-candidate-render.js
-          cp js/arenas/micelial/mic-mother.js /tmp/mother-candidate-ai.js
-          trap 'cp /tmp/mother-candidate-render.js js/arenas/micelial/mic-render.js; cp /tmp/mother-candidate-ai.js js/arenas/micelial/mic-mother.js; kill $SERVER 2>/dev/null || true' EXIT
-          git fetch --depth=1 origin 34ac2852154035b97e53c4807a0a20ee289a40b2
-          git show 34ac2852154035b97e53c4807a0a20ee289a40b2:js/arenas/micelial/mic-render.js > js/arenas/micelial/mic-render.js
-          git show 34ac2852154035b97e53c4807a0a20ee289a40b2:js/arenas/micelial/mic-mother.js > js/arenas/micelial/mic-mother.js
-          python3 -m http.server 8771 --bind 127.0.0.1 >/tmp/mother-baseline-http.log 2>&1 &
+          # Compare the COMPLETE pinned baseline, not a hybrid with two old files.
+          BASELINE=34ac2852154035b97e53c4807a0a20ee289a40b2
+          ROOT="$PWD"
+          mkdir -p /tmp/mother-browser
+          git fetch --depth=1 origin "$BASELINE"
+          git worktree add --detach /tmp/mother-baseline "$BASELINE"
+          cp tools/micelial/{t_micelial,sim-helpers}.js /tmp/mother-baseline/tools/micelial/
+          cd /tmp/mother-baseline
+          git rev-parse HEAD | tee /tmp/mother-browser/baseline-revision.txt
+          sha256sum tools/micelial/{t_micelial,sim-helpers}.js | tee /tmp/mother-browser/baseline-harness.sha256
+          cmp /tmp/mother-browser/{candidate,baseline}-harness.sha256
+          python3 -m http.server 8773 --bind 127.0.0.1 >/tmp/mother-baseline-http.log 2>&1 &
           SERVER=$!
+          trap 'kill $SERVER 2>/dev/null || true' EXIT
           sleep 1
           set -o pipefail
-          node tools/micelial/t_micelial.js 2>&1 | tee /tmp/mother-browser/baseline-regression.log
+          set +e
+          NODE_PATH="$ROOT/node_modules" SE_BASE_URL=http://127.0.0.1:8773 MIC_TEST_SEED=137260 node tools/micelial/t_micelial.js 2>&1 | tee /tmp/mother-browser/baseline-regression.log
+          BASELINE_STATUS=${PIPESTATUS[0]}
+          set -e
+          # Crashes / fixture errors are INCONCLUSIVE, never known-baseline passes.
+          python3 - <<'PYCOMPARE'
+          import json, pathlib, re
+          root = pathlib.Path('/tmp/mother-browser')
+          results = {}
+          for label in ('candidate', 'baseline'):
+              log = (root / (label + '-regression.log')).read_text()
+              results[label] = {
+                  'complete': bool(re.search(r'^(OK|[0-9]+ FALLAS)$', log, re.M)),
+                  'failures': re.findall(r'^FAIL (\S+)', log, re.M),
+              }
+          results['classification'] = 'INCONCLUSIVE'
+          if all(r['complete'] for r in results.values() if isinstance(r, dict)):
+              results['candidate_only'] = sorted(set(results['candidate']['failures']) - set(results['baseline']['failures']))
+              results['classification'] = 'CANDIDATE_REGRESSIONS' if results['candidate_only'] else 'SAME_OR_FEWER_FAILURES_NOT_A_PASS'
+          text = json.dumps(results, indent=2)
+          (root / 'fungal-comparison.json').write_text(text)
+          print(text)
+          PYCOMPARE
+          exit "$BASELINE_STATUS"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

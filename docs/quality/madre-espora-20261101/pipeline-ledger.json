@@ -5,7 +5,7 @@
   "branch": "fix/madre-espora-animation-20261101",
   "pr": 260,
   "code_head_sha": "232b2b200c0f374ae0466c65a1e46a8e39ce8885",
-  "updated_utc": "2026-11-02T00:10:00Z",
+  "updated_utc": "2026-11-02T00:29:00Z",
   "execution_policy": "Continue existing owner/slice; automation must not launch duplicate generations. No formal PR approval or unvalidated main merge.",
   "accepted_scopes": [
     "opt-in high-detail idle pilot",
@@ -18,7 +18,7 @@
     "remaining high-detail phases"
   ],
   "validation": {
-    "unit_pass": 29,
+    "unit_pass": 30,
     "browser_pass": 60,
     "phase1_timing": "Mother damage5350ms; first impact render5382ms (+32ms)",
     "actual_evidence_dir": "/tmp/mother-ci-232b2b20/high-detail-pilot",
@@ -29,7 +29,10 @@
     "baseline_failures": [
       "MADRE.fase3_corazon_expuesto_y_vulnerable",
       "SAVE.guardado_viejo_conserva_el_hielo_y_abre_el_reino"
-    ]
+    ],
+    "geometry_run_id": 41366010676,
+    "geometry_artifact_id": 13107069326,
+    "latest_fungal_status": "FAIL phase3/save plus unclassified SABUESO; baseline crashed (not PASS). Deterministic full-baseline harness correction065cbeb1 pending CI."
   },
   "current_slice": {
     "id": "phase1-to-bloom-transition-and-idle",
@@ -51,13 +54,13 @@
           "sha256": "ccd194e580f5b0fb602fa75258422a0a49744dbfd4e892be9ed4f3879cb50c57"
         }
       ],
-      "verdict": "SOURCE_AND_GEOMETRY_DIRECTION_GO_RUNTIME_PENDING",
+      "verdict": "SOURCE_GEOMETRY_AND_RUNTIME_KEYPOSE_GO_NOT_SEQUENCE",
       "root_width_ratio": 1.3932291666666667,
       "face_to_root_ratio": 1,
       "reviewer": "/root/review_art_pilot_architecture"
     },
-    "next_gate": "Review-only actual desktop/mobile idle vs evolved static keypose; same production camera and root baseline. No sequence approval. If passes build deliberate root/crown unfurl transition and matching idle before combat.",
-    "next_job_key": "madre-bloom-keypose-runtime-v2",
+    "next_gate": "Actual controller3100ms transition with darkness/fullHUD then bloom idle; independent desktop/mobile loop and seam review. No bloom attacks/heart/death batch.",
+    "next_job_key": "madre-bloom-transition-idle-runtime-v3",
     "provider_task_id": null,
     "previous_rejected_generation": {
       "provider": "OpenAI built-in imagegen",
@@ -81,7 +84,25 @@
         "Adjacent root/glow silhouettes contact; bottom-left fingers hit outer edge",
         "Do not crop overlap or normalize each frame independently to fake invariant scale"
       ]
-    }
+    },
+    "sequence_sources": [
+      {
+        "kind": "transition",
+        "file": "/workspace/scratch/4ef56534d38c/generated_images/exec-7e3d43dd-2f21-4826-bcff-fc5d92c93519.png",
+        "sha256": "fe96f2d97fea467257a9a1db45c83b1541b8e6dd06714e10e4fa2387b95f37d7",
+        "request_id": null,
+        "verdict": "SOURCE_GO_RUNTIME_PENDING",
+        "provider": "OpenAI built-in imagegen"
+      },
+      {
+        "kind": "idle",
+        "file": "/workspace/scratch/4ef56534d38c/generated_images/exec-ab353cc7-336f-411e-84e9-4e25517d164f.png",
+        "sha256": "db2c41b50d8bc69dd5d7bf072b07ccf02eb7c27f7aa15c1a19b6bcceca085909",
+        "request_id": null,
+        "verdict": "SOURCE_GO_RUNTIME_PENDING",
+        "provider": "OpenAI built-in imagegen"
+      }
+    ]
   },
   "user_deliverable": {
     "file_id": "file_0000000073e48230a5e2238281bc725b",
@@ -90,5 +111,5 @@
     "scope": "idle prototype only, not main"
   },
   "spend": "No Runway credits or purchases; built-in imagegen unit cost not exposed.",
-  "previous_remote_head": "85efaf67a544f36b1b6cd7495fad36e39dc27504"
+  "previous_remote_head": "00ac162638dd7b1489f69230db29bdb3f5b07af0"
 }

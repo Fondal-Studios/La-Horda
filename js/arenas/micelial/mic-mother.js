@@ -223,7 +223,7 @@ function micAIMadre(e, dt, tgt, dist){
     if(T.to===2){
       _micBossPack(e, "trans", 400);
       if(!T.dk && T.t > C.closeMs*0.45){ T.dk = 1; M.dark = runElapsedMs; playSfx("micDark"); }
-      if(T.t >= C.closeMs + 500){ M.tr = null; M.bloom = 1; e.dmgTakenMult = 1; e.mcd = 900; bossPhaseFeedback(); playSfx("micBloom"); showBanner("🌸 FLORACIÓN — todo el Reino se enciende"); }
+      if(T.t >= C.closeMs + 500){ M.tr = null; M.bloom = 1; M.bloomAt = runElapsedMs; e.dmgTakenMult = 1; e.mcd = 900; bossPhaseFeedback(); playSfx("micBloom"); showBanner("🌸 FLORACIÓN — todo el Reino se enciende"); }
     } else {
       _micBossPack(e, "open", 400);
       if(T.t >= 2600){ M.tr = null; M.heart = 1; e.dmgTakenMult = C.heartVuln; e.mcd = 800; bossPhaseFeedback(); showBanner("💗 ¡EL CORAZÓN ESTÁ EXPUESTO! Quedate cerca: la infección avanza"); }

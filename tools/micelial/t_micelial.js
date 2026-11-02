@@ -4,23 +4,48 @@ let chromium;
 try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
 const BASE = process.env.SE_BASE_URL || 'http://127.0.0.1:8771';
 const HELP = require('./sim-helpers.js');
-const sleep = ms => new Promise(r => setTimeout(r, ms));
+const SEED = Number(process.env.MIC_TEST_SEED || 137260) >>> 0;
 let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL ') + n + (x !== undefined ? '  ' + JSON.stringify(x).slice(0, 360) : '')); if (!ok) fails++; };
 (async () => {
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
   const page = await (await browser.newContext({ viewport: { width: 800, height: 450 } })).newPage();
-  await page.addInitScript(() => { window.__campaignMode = true; }); // desbloqueos reales de campaña (sin el modo prueba)
+  await page.addInitScript(seed => {
+    window.__campaignMode = true;
+    // No queued real frame may race the manual update() fixture.
+    window.requestAnimationFrame = () => 0;
+    window.__micSeed = value => { let n = value >>> 0; Math.random = () => { n = (Math.imul(n, 1664525) + 1013904223) >>> 0; return n / 4294967296; }; };
+    window.__micSeed(seed);
+  }, SEED); // desbloqueos reales de campaña (sin el modo prueba)
   const errors = [];
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
   page.on('console', m => { if (m.type() === 'error' && !/ERR_CERT|fonts\.g|net::/.test(m.text())) errors.push('console: ' + m.text().slice(0, 300)); });
   await page.goto(`${BASE}/index.html`, { waitUntil: 'load' });
-  for (let k = 0; k < 300; k++) { if (await page.evaluate(() => !document.getElementById('title-continue-btn').disabled)) break; await sleep(100); }
+  await page.waitForFunction(() => {
+    const btn = document.getElementById('title-continue-btn');
+    return btn && !btn.disabled && typeof startRun === 'function' &&
+      typeof ARENA_DEFS !== 'undefined' && typeof ARENA_DEFS.micelial?.runStart === 'function';
+  }, null, { timeout: 120000, polling: 100 });
+  console.log('FIXTURE seed=' + SEED + ' manualRAF=true');
   await page.evaluate(HELP);
   await page.evaluate(() => { loop = function(){}; });
   const E = (fn, a) => page.evaluate(fn, a);
   // paso manual del juego (con el equipo invulnerable salvo que se pida)
   await E(() => { window.__step = (ms, god) => { let t = 0; while (t < ms) { if (state === 'buff') { const c = document.querySelector('#buff-cards > *'); if (c) c.click(); continue; } if (state !== 'playing') break; if (god !== false) for (const h of heroes) h.hp = Math.max(h.hp, h.maxHp*0.8); update(16); t += 16; } }; });
-  const fresh = (lv) => E((lv) => { __ms.start('guerrero', ['tanque','mago','soporte'], lv || 1, {}); spawnTimer = 1e12; enemies.length = 0; for (const h of heroes) { h.x = (Math.random()-0.5)*100; h.y = 420; } update(16); enemies.length = 0; }, lv);
+  const fresh = (lv) => E(({lv, seed}) => {
+    window.__micSeed(seed + lv);
+    __ms.start('guerrero', ['tanque','mago','soporte'], lv || 1, {campaignFixture:true});
+    spawnTimer = 1e12; enemies.length = 0;
+    basicHeld = false; joyVec = {x:0, y:0};
+    heroes.forEach((h, i) => { h.x = (i - 1.5)*24; h.y = 420; });
+    update(16); enemies.length = 0;
+    // Navigation is built by the FIRST manual arena tick, not a wall-clock delay.
+    const ready = {arena:currentArena, state, nodes:MIC_NODES.length, nav:AID_NAV.on,
+      blocked:!!AID_NAV.blocked, width:AID_NAV.W, height:AID_NAV.H};
+    if (currentArena !== 'micelial' || state !== 'playing' || !micS ||
+        !MIC_NODES.length || !AID_NAV.on || !AID_NAV.blocked) {
+      throw new Error('FIXTURE micelial start not ready: ' + JSON.stringify(ready));
+    }
+  }, {lv:lv || 1, seed:SEED});
 
   // ---------------- geometría ----------------
   await fresh(1);
@@ -84,8 +109,25 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('HINCHADO.explosion_preparada_con_aviso_y_muerte_telegrafiada', hin.prep && hin.telR >= 150 && hin.deathStrike >= 1, hin);
   const per = await E(() => { enemies.length = 0; const h = heroes[0]; const e = micSpawnAt('peregrino', h.x + 400, h.y); const sts = []; let shots = 0; const seen = new Set(); for (let i = 0; i < 500; i++) { update(16); for (const x of heroes) { x.hp = x.maxHp; } h.x = e.x - 400; if (e.pg && sts[sts.length-1] !== e.pg.st) sts.push(e.pg.st); for (const p of projectiles) if (p.src === e && !seen.has(p)) { seen.add(p); shots++; } } return { sts, shots }; });
   check('PEREGRINO.camina_se_planta_y_dispara', per.sts.includes('plant') && per.sts.includes('planted') && per.shots >= 1, per);
-  const sab = await E(() => { enemies.length = 0; for (const x of heroes) { x.x = (Math.random()-0.5)*80; x.y = 420; } const h = heroes[0]; const e = micSpawnAt('sabueso', h.x + 220, h.y); e.leapCd = 0; const sts = []; for (let i = 0; i < 200; i++) { update(16); for (const x of heroes) x.hp = x.maxHp; if (e.sb && sts[sts.length-1] !== e.sb.st) sts.push(e.sb.st); } return sts; });
-  check('SABUESO.salto_con_aviso', sab.includes('warn') && sab.includes('leap'), sab);
+  // A fresh encounter discards the previous Peregrino projectiles / Hinchado blast.
+  // Allies remain disabled above; do not give the subject immunity or change its AI.
+  await fresh(4);
+  const sab = await E(() => {
+    heroes.forEach((h, i) => { h.x = i ? -300-i*40 : 0; h.y = i ? 600 : 420; });
+    const h = heroes[0], e = micSpawnAt('sabueso', h.x + 220, h.y);
+    e.leapCd = 0;
+    const startDistance = Math.min(...heroes.filter(h=>h.alive).map(h=>Math.hypot(h.x-e.x,h.y-e.y)));
+    const sts = []; let warnVisible = false;
+    for (let i = 0; i < 200; i++) {
+      update(16);
+      for (const x of heroes) x.hp = x.maxHp;
+      if (e.sb && sts[sts.length-1] !== e.sb.st) sts.push(e.sb.st);
+      if (e.sb?.st === 'warn' && vfxTeles.some(t=>t.on && t.rgb === '255,70,90')) warnVisible = true;
+    }
+    return {sts, startDistance, warnVisible, alive:e.alive, hp:e.hp, state};
+  });
+  check('SABUESO.fixture_en_rango', sab.startDistance >= 130 && sab.startDistance <= 270, sab);
+  check('SABUESO.salto_con_aviso', sab.sts.includes('warn') && sab.sts.includes('leap') && sab.warnVisible, sab);
   const cha = await E(() => { enemies.length = 0; const h = heroes[0]; const c = micSpawnAt('chaman', h.x + 280, h.y); const f = micSpawnAt('infectado', h.x + 330, h.y + 40); f.hp = f.maxHp*0.3; f.stunTimer = 1e9; c.regenCd = 0; const hp0 = f.hp; let aura = false, regen = false; for (let i = 0; i < 250; i++) { update(16); for (const x of heroes) x.hp = x.maxHp; if (f._micAura > runElapsedMs) aura = true; if (c.micChan && c.micChan.k === 'regen') regen = true; } return { aura, regen, healed: f.hp > hp0 }; });
   check('CHAMAN.regenera_visible_y_aura', cha.aura && cha.regen && cha.healed, cha);
   const chg = await E(() => { enemies.length = 0; const h = heroes[0]; const c = micSpawnAt('chaman', h.x + 280, h.y); const n = micSpawnNucleo(h.x + 500, h.y, 1); c.regenCd = 1e9; c.germCd = 0; for (let i = 0; i < 150; i++) { update(16); for (const x of heroes) x.hp = x.maxHp; } return { st: n.nuc.st, t: Math.round(n.nuc.t), boost: n._micBoost > 0 }; });

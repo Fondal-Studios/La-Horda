@@ -28,7 +28,11 @@ _micImg("assets/sprites/arenas/micelial/madre_espora/atlas.png", "mp_atlas", MIC
 // Explicit review-only query: unapproved high-detail idle pilot is NEVER default.
 const MIC_MOTHER_PILOT_ON=typeof location!=="undefined" && new URLSearchParams(location.search).get("motherArtPilot")==="1";
 const MIC_MOTHER_BLOOM_KEY_ON=MIC_MOTHER_PILOT_ON && new URLSearchParams(location.search).get("motherBloomKey")==="1";
-if(MIC_MOTHER_BLOOM_KEY_ON) _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_key.png","mp_bloom_key",MIC_MP,MIC_MP_OK);
+if(MIC_MOTHER_BLOOM_KEY_ON){
+  _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_key.png","mp_bloom_key",MIC_MP,MIC_MP_OK);
+  _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_transition.png","mp_bloom_trans",MIC_MP,MIC_MP_OK);
+  _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_idle.png","mp_bloom_idle",MIC_MP,MIC_MP_OK);
+}
 if(MIC_MOTHER_PILOT_ON){
   _micImg("assets/sprites/arenas/micelial/mother/pilot_idle.png","mp_pilot",MIC_MP,MIC_MP_OK);
   _micImg("assets/sprites/arenas/micelial/mother/pilot_attack.png","mp_pilot_attack",MIC_MP,MIC_MP_OK);
@@ -563,9 +567,19 @@ function _micMotherAtlasReady(){
   return !!(MIC_MP_OK.mp_atlas && im && im.width===1360 && im.height===417);
 }
 function _micMotherPilotPose(e,M,timeMs,pose){
-  // Single static evolved keypose ONLY for geometry review, not a finished clip.
-  if(MIC_MOTHER_BLOOM_KEY_ON && M.st==="fight" && M.ph===2 && !M.heart && pose.state==="bloom-idle")
+  // Opt-in one-way phase evolution. Source poses unfold; no whole-body scaling.
+  // Use the authoritative phase timer (including pause/late join), not wall time.
+  if(MIC_MOTHER_BLOOM_KEY_ON && M.st==="fight" && M.tr && M.tr.to===2){
+    const q=Math.max(0,M.tr.t||0)/MIC_CFG.madre.closeMs;
+    if(q<0.16) return {key:"mp_pilot",w:432,frame:0};
+    if(q<0.85) return {key:"mp_bloom_trans",w:656,h:560,cols:3,anchor:528,frame:q<0.38?0:q<0.64?1:2};
     return {key:"mp_bloom_key",w:656,h:560,cols:1,anchor:528,frame:0};
+  }
+  // Final evolved keypose holds through the controller's extra500ms settling.
+  if(MIC_MOTHER_BLOOM_KEY_ON && M.st==="fight" && M.ph===2 && !M.heart && pose.state==="bloom-idle"){
+    const elapsed=Number.isFinite(M.bloomAt)?Math.max(0,(timeMs||0)-M.bloomAt):0;
+    return {key:"mp_bloom_idle",w:656,h:560,cols:3,anchor:528,frame:[0,1,2,1][Math.floor(elapsed/420)%4]};
+  }
   if(M.ph!==1 || M.bloom || M.heart || (M.net && M.net.st==="open")) return null;
   if(pose.state==="idle") return {key:"mp_pilot",w:432,frame:[0,1,2,1][Math.floor(Math.max(0,timeMs||0)/360)%4]};
   if(pose.state!=="atk" || !e || !(e.packDur>700)) return null;

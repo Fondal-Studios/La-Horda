@@ -126,8 +126,13 @@ check('bloom keypose requires both explicit flags and only evolved idle',()=>{
  vm.createContext(q);vm.runInContext(code,q);
  const M={st:'fight',ph:2,bloom:1},e={};
  const p=q._micMotherPilotPose(e,M,0,q._micMotherFrame(e,M,0));
- assert.equal(p.key,'mp_bloom_key');assert.equal(p.anchor,528);assert.equal(p.cols,1);
- assert.equal(q._micMotherPilotPose(e,{...M,tr:{to:2,t:100}},0,q._micMotherFrame(e,{...M,tr:{to:2,t:100}},0)),null);
+ assert.equal(p.key,'mp_bloom_idle');assert.equal(p.anchor,528);assert.equal(p.cols,3);
+ assert.equal(q._micMotherPilotPose(e,M,999999,{state:'bloom-idle'}).frame,0,'legacy missing epoch holds deterministic endpoint');
+ assert.deepEqual([0,420,840,1260,1680].map(t=>q._micMotherPilotPose(e,{...M,bloomAt:1000},1000+t,{state:'bloom-idle'}).frame),[0,1,2,1,0]);
+ assert.equal(q._micMotherPilotPose(e,{...M,tr:{to:2,t:100}},0,q._micMotherFrame(e,{...M,tr:{to:2,t:100}},0)).key,'mp_pilot');
+ for(const [t,key,frame] of [[500,'mp_bloom_trans',0],[1100,'mp_bloom_trans',1],[1800,'mp_bloom_trans',2],[2500,'mp_bloom_key',0],[3100,'mp_bloom_key',0]]){
+  const m={...M,tr:{to:2,t}},r=q._micMotherPilotPose(e,m,999999,q._micMotherFrame(e,m,0));assert.equal(r.key,key);assert.equal(r.frame,frame);
+ }
  assert.equal(q._micMotherPilotPose({packSet:'atk',packTimer:490,packDur:1500},M,0,{state:'atk'}),null);
 });
 console.log(JSON.stringify({pass,scope:'pose and contract unit tests only; visual/browser checks separate'}));
