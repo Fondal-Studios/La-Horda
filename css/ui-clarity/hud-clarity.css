@@ -1,0 +1,31 @@
+/* css/ui-clarity/hud-clarity.css — UC-HUD v1 / UC-LAYOUT v1. Solo presentación; nada de reglas de juego. Se apaga con html.uc-off. */
+
+/* Burbuja del motivo: esquina superior derecha, bajo Pausa (fuera del centro del combate). Texto + borde + marca: no depende del color. */
+html:not(.uc-off) .uc-reason{ position:fixed; right:calc(8px + env(safe-area-inset-right,0px)); top:58px; z-index:40; max-width:min(260px, 48vw); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; pointer-events:none;
+  padding:4px 9px 5px; font-family:var(--ui-font, 'VT323', monospace); font-size:1rem; line-height:1.1; color:#fff; background:rgba(10,8,14,.94);
+  border:2px solid #ffcf5c; box-shadow:2px 2px 0 #000; opacity:0; transform:translateY(-4px); transition:opacity .12s, transform .12s; }
+html:not(.uc-off) .uc-reason.uc-on{ opacity:1; transform:none; }
+html:not(.uc-off) .uc-reason::before{ content:"!"; display:inline-block; width:1.1em; margin-right:6px; text-align:center; font-weight:700; color:#10080a; background:#ffcf5c; }
+/* el tipo se distingue por contorno (discontinuo / doble / liso) además del color */
+html:not(.uc-off) .uc-reason[data-kind="cooldown"]{ border:2px dashed #ff8a6a; } html:not(.uc-off) .uc-reason[data-kind="cooldown"]::before{ background:#ff8a6a; }
+html:not(.uc-off) .uc-reason[data-kind="resources"]{ border:4px double #7fc4ff; } html:not(.uc-off) .uc-reason[data-kind="resources"]::before{ background:#7fc4ff; }
+html:not(.uc-off) .uc-reason[data-kind="locked"], html:not(.uc-off) .uc-reason[data-kind="charge"]{ border:2px solid #c9b6ff; } html:not(.uc-off) .uc-reason[data-kind="locked"]::before, html:not(.uc-off) .uc-reason[data-kind="charge"]::before{ background:#c9b6ff; }
+@media (max-height:360px){ html:not(.uc-off) .uc-reason{ font-size:.88rem; max-width:min(210px, 44vw); padding:2px 7px 3px; } }
+body.reduce-motion .uc-reason{ transition:none; transform:none; }
+
+/* Etiqueta persistente «FALTA n» DENTRO del botón sin energía (sustituye al rótulo mientras dura: el ícono y la burbuja identifican la habilidad) */
+html:not(.uc-off) .ability-btn .uc-badge{ position:absolute; left:3px; right:3px; bottom:3px; z-index:5; padding:1px 0; text-align:center; font-style:normal; font-family:var(--ui-font, 'VT323', monospace);
+  font-size:.82rem; line-height:1.1; white-space:nowrap; color:#fff; background:#14324d; border:1px solid #7fc4ff; pointer-events:none; }
+html:not(.uc-off) .ability-btn.uc-noen > div:not(.ico):not(.cd-overlay):not(.kh):not(.uc-badge){ visibility:hidden; }
+
+/* UC-LAYOUT: el chip de objetivo («peekable») tapaba 4 px de la fila de aliados en todos los móviles medidos (docs/ui-clarity/audit) */
+@media (max-width:1000px){
+  html:not(.uc-off) body:has(#goal-chip.peekable:not(.hidden)) #hud #party{ margin-top:8px; }
+}
+
+/* Banner de rareza de la capa Beta: en pantallas chicas se acota al hueco entre el panel de vida y la pila de avisos */
+@media (max-width:700px){
+  html:not(.uc-off) #bt-banner{ left:184px; right:204px; top:calc(21% + env(safe-area-inset-top,0px)); transform:none; min-width:0; max-width:none; display:block; text-align:center; animation:none; }
+  html:not(.uc-off) #bt-banner .bt-b-text{ font-size:.95rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  html:not(.uc-off) #bt-banner .bt-b-kick{ font-size:.5rem; }
+}
