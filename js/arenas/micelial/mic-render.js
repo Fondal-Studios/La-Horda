@@ -564,7 +564,7 @@ function _micMotherAtlasReady(){
 }
 function _micMotherPilotPose(e,M,timeMs,pose){
   // Single static evolved keypose ONLY for geometry review, not a finished clip.
-  if(MIC_MOTHER_BLOOM_KEY_ON && M.st==="fight" && M.ph===2 && !M.heart && pose.state==="bloom")
+  if(MIC_MOTHER_BLOOM_KEY_ON && M.st==="fight" && M.ph===2 && !M.heart && pose.state==="bloom-idle")
     return {key:"mp_bloom_key",w:656,h:560,cols:1,anchor:528,frame:0};
   if(M.ph!==1 || M.bloom || M.heart || (M.net && M.net.st==="open")) return null;
   if(pose.state==="idle") return {key:"mp_pilot",w:432,frame:[0,1,2,1][Math.floor(Math.max(0,timeMs||0)/360)%4]};

@@ -121,4 +121,13 @@ check('opt-in high-detail phase1 pilot holds windup, impact, recovery and exclud
  assert.equal(p({packSet:'atk',packDur:1500,packTimer:490},{st:'fight',ph:2,bloom:1}),null);
  assert.equal(p({packSet:null,packTimer:0},m,360).frame,1);
 });
+check('bloom keypose requires both explicit flags and only evolved idle',()=>{
+ const q={Image:class{},VFX_SPR_EXTRA:{},MIC_CFG:{madre:{closeMs:2600}},console,location:{search:'?motherArtPilot=1&motherBloomKey=1'},URLSearchParams};
+ vm.createContext(q);vm.runInContext(code,q);
+ const M={st:'fight',ph:2,bloom:1},e={};
+ const p=q._micMotherPilotPose(e,M,0,q._micMotherFrame(e,M,0));
+ assert.equal(p.key,'mp_bloom_key');assert.equal(p.anchor,528);assert.equal(p.cols,1);
+ assert.equal(q._micMotherPilotPose(e,{...M,tr:{to:2,t:100}},0,q._micMotherFrame(e,{...M,tr:{to:2,t:100}},0)),null);
+ assert.equal(q._micMotherPilotPose({packSet:'atk',packTimer:490,packDur:1500},M,0,{state:'atk'}),null);
+});
 console.log(JSON.stringify({pass,scope:'pose and contract unit tests only; visual/browser checks separate'}));
