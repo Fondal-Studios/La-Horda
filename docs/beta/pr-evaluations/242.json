@@ -1,0 +1,38 @@
+{
+ "id": "242",
+ "branch": "art/arena-world-events-20261029",
+ "base": "4286dc4ad7a501c0508f5209f47ab2f01b0a83c2",
+ "evaluatedAt": "2026-11-02T10:05:39.860Z",
+ "steps": {
+  "architect": {
+   "verdict": "NEEDS_WORK",
+   "findings": [
+    {
+     "level": "W",
+     "id": "conflict",
+     "msg": "Conflictos de fusión con 4286dc4ad7a501c0508f5209f47ab2f01b0a83c2: assets/sprites/arenas/world-v1/bosque.png, assets/sprites/arenas/world-v1/hielo.png, assets/sprites/arenas/world-v1/manifest.json, js/assets/arena-world-manifest.js, tools/art/test-arena-world.js, warning: Cannot merge binary files: assets/sprites/arenas/world-v1/bosque.png (4286dc4ad7a501c0508f5209f47ab2f01b0a83c2 vs. origin/art/arena-world-events-20261029), warning: Cannot merge binary files: assets/sprites/arenas/world-v1/hielo.png (4286dc4ad7a501c0508f5209f47ab2f01b0a83c2 vs. origin/art/arena-world-events-20261029)"
+    }
+   ],
+   "files": 79,
+   "categories": {
+    "touchesArt": true,
+    "touchesChampions": false,
+    "touchesNet": false,
+    "touchesGameplay": false,
+    "isArtOnly": true
+   }
+  },
+  "merge": {
+   "clean": false,
+   "conflicts": [
+    "assets/sprites/arenas/world-v1/bosque.png",
+    "assets/sprites/arenas/world-v1/hielo.png",
+    "assets/sprites/arenas/world-v1/manifest.json",
+    "js/assets/arena-world-manifest.js",
+    "tools/art/test-arena-world.js"
+   ],
+   "worktree": "/tmp/eval-wt-242"
+  }
+ },
+ "verdict": "CONFLICTO"
+}

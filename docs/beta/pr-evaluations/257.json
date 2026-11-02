@@ -42,5 +42,16 @@
    "worktree": "/tmp/eval-wt-257"
   }
  },
- "verdict": "CONFLICTO"
+ "verdict": "DIFERIR",
+ "verdictInitial": "CONFLICTO",
+ "reason": [
+  "Cadena #256+#257: 62 commits propios, 379 archivos, ~50 000 líneas; núcleo es producción de arte (motor de arte, recetas S0F, proveedores).",
+  "Incluye adaptadores que gastan dinero (SpendGuard, BFL FLUX.2, OpenAI, Runway gen4_image) y \"primera generación real con Runway (Sylva walk_down)\"; #256 se declara \"generación real BLOQUEADA\". Integrarlo en la rama funcional importaría esa capacidad de gasto sin autorización.",
+  "8 conflictos con lo ya integrado (art_factory.py, cli.js, run-all.js, qa-manifest.json, READMEs): resolverlos exige decidir entre dos versiones del núcleo de la fábrica, que pertenece a la rama de arte.",
+  "La instrucción del dueño es que la producción de arte siga en otra rama."
+ ],
+ "improvement": {
+  "status": "not_for_beta_functional_integration"
+ },
+ "nextAction": "Reevaluar cuando la rama de arte rebase sobre esta integración y el dueño autorice explícitamente el gasto con proveedor. Nota: la generación real de #257 es la causa probable de la caída del saldo de Runway (984 → 15 créditos)."
 }
