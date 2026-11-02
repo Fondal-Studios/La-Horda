@@ -646,7 +646,16 @@ function _micMotherCoreComposite(pilot){
   for(const poly of binding.frames[pilot.frame].foreground){g.save();path(g,poly);g.clip();sourceDraw(g);g.restore();}
   // One cached preparation scan, never a per-frame scan. Source alpha is exact,
   // including antialiased edges: opening the trunk must not enlarge silhouette.
-  const result=g.getImageData(0,0,w,h);for(let i=3;i<result.data.length;i+=4)result.data[i]=basePixels.data[i];g.putImageData(result,0,0);
+  // Copy protected source bytes rather than source-over: translucent claw edges
+  // must not retain cavity RGB underneath an otherwise restored foreground.
+  const mask=document.createElement("canvas");mask.width=w;mask.height=h;const mg=mask.getContext("2d");
+  path(mg,MIC_MOTHER_CORE_POLY);mg.fill();const patchAlpha=mg.getImageData(0,0,w,h).data;
+  mg.clearRect(0,0,w,h);for(const poly of binding.frames[pilot.frame].foreground){path(mg,poly);mg.fill();}
+  const frontAlpha=mg.getImageData(0,0,w,h).data,result=g.getImageData(0,0,w,h);
+  for(let i=0;i<result.data.length;i+=4){
+    if(patchAlpha[i+3]===0 || frontAlpha[i+3]===255)for(let k=0;k<3;k++)result.data[i+k]=basePixels.data[i+k];
+    result.data[i+3]=basePixels.data[i+3];
+  }g.putImageData(result,0,0);
   _micMotherCoreCache.set(key,{source,heartSource,binding,canvas});return canvas;
 }
 function _micDrawMotherFrame(e,t){
