@@ -1,0 +1,29 @@
+name: Cosmetics-only store contract
+on:
+  pull_request:
+    paths: ['js/ui/shop-ui.js', 'js/data/pricing.js', 'server/**', 'tools/collection/**', 'tools/ui-clarity/**', '.github/workflows/cosmetics-only.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - run: npm ci --prefix server
+      - name: Default pieces blocked and legacy compatibility (isolated API)
+        run: node server/test-wallet-pieces.js
+      - name: Cosmetic prices, ownership and idempotency (isolated API)
+        if: ${{ !cancelled() }}
+        run: node server/test-wallet.js
+      - name: Rotation retains catalog, no power purchase buttons
+        if: ${{ !cancelled() }}
+        run: node tools/collection/t_shop_rotation.js
+      - name: Brasas store with isolated real API
+        if: ${{ !cancelled() }}
+        run: node tools/collection/brasas-store.js
+      - name: Cosmetic preview and purchase interaction (simulated API)
+        if: ${{ !cancelled() }}
+        run: node tools/ui-clarity/test-shop-clarity.js

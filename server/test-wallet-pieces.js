@@ -18,7 +18,6 @@ async function api(method, p, body, token){
 const ref = () => crypto.randomUUID();
 (async () => {
   check('por defecto las Brasas ya no compran piezas de set (decisión del dueño, 2026-11-02)', wallet.pricing().__flags().PIECES_FOR_BRASAS === false);
-  wallet.setTestFlags({ PIECES_FOR_BRASAS: true }); // estas pruebas ejercitan el modo con piezas (interruptor)
 
   await accounts.ready;
   const AT = (await api('POST', '/api/register', { user: 'Director', pass: 'espada123' })).j.token;
@@ -35,6 +34,19 @@ const ref = () => crypto.randomUUID();
   const setId = Object.keys(db.sets).find(s => cat[s] && cat[s].kind === 'set' && db.sets[s].length >= 4 && db.sets[s].every(id => db.pieces[id]));
   const ids = db.sets[setId], expected = (id) => ({ piece: id, ref: ref(), expectedPrice: PRICE });
   const buy = (id, token, over) => api('POST', '/api/wallet/buy-piece', { ...expected(id), ...(over || {}) }, token || UT);
+
+  // Verificar el contrato REAL antes de activar el modo legado de prueba.
+  await credit('Jugador', 5000);
+  const beforeWallet = (await api('GET', '/api/wallet', undefined, UT)).j;
+  const beforeSave = (await api('GET', '/api/save', undefined, UT)).j;
+  const denied = await buy(ids[0]);
+  const afterWallet = (await api('GET', '/api/wallet', undefined, UT)).j;
+  const afterSave = (await api('GET', '/api/save', undefined, UT)).j;
+  check('por defecto: incluso con saldo suficiente, 403 PIECES_OFF y catálogo deshabilitado', denied.status === 403 && denied.j.error === 'PIECES_OFF' && beforeWallet.pieces.enabled === false && afterWallet.pieces.enabled === false, denied);
+  check('rechazo por defecto no cobra ni entrega objetos ni cambia el guardado', beforeWallet.premium === afterWallet.premium && JSON.stringify(beforeSave) === JSON.stringify(afterSave));
+  await api('POST', '/api/gm/user/premium', { id: idOf('Jugador'), amount: -5000, reason: 'limpiar saldo de prueba', ref: ref(), confirm: true }, AT);
+  // Modo legado explícito: no se activa en producción ni altera el valor por defecto.
+  wallet.setTestFlags({ PIECES_FOR_BRASAS: true });
 
   check('precio de pieza en pricing.js: ✦200; 4 piezas = skin de set (ningún camino abarata la skin)', PRICE === 200 && P.pricingBrasas('set') <= PRICE * 4, { PRICE });
   check('manifiesto: 4+ piezas por set con skin y la rotación cubre las piezas de set', !!setId && ids.every(id => db.pool.some(e => e.key === 'd:' + id && e.cat === 'set')), setId);
