@@ -28,6 +28,7 @@ jobs:
       - run: node tools/art/micelial/test-mother-browser.cjs
       - run: node tools/art/micelial/test-mother-pilot.cjs
       - run: node tools/art/micelial/test-mother-core-layer.cjs
+      - run: node tools/art/micelial/test-mother-death.cjs
       - run: node tools/bosses/t_boss_arena_hooks.js
       - name: Existing non-boss camera and viewport regressions
         run: |

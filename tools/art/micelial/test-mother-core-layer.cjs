@@ -60,7 +60,7 @@ fs.mkdirSync(OUT,{recursive:true});let browser,server;
     for(const n of micNetLinks())n.alive=false; // Fixture reset only; exposure below always kills real nodes.
     Object.assign(e,{alive:true,hp:e.maxHp*(phase===1?1:phase===2?.55:.2),micDormant:0,packSet:null,packTimer:0,bossWind:null,stunTimer:0,hitFlash:0,_expT:0,crashVuln:false,dmgTakenMult:phase===3?1.35:1,mcd:0,whipCd:1e9,clawCd:1e9,rootsCd:1e9,sporeCd:1e9,summonCd:1e9,cloudCd:1e9,halCd:1e9});
     micS.mo={st:'fight',ph:phase,t:0,dark:0,bloom:phase>=2?1:0,heart:phase===3?1:0,inf:0,beat:900,bloomAt:runElapsedMs};
-    for(const h of heroes){h.hp=h.maxHp;h.x=80;h.y=260;}spawnTimer=1e9;_micBlend=1;micNetRule(0);
+    for(const h of heroes){h.hp=h.maxHp;h.x=80;h.y=260;}spawnTimer=1e9;_micBlend=1;bossHudPhase(phase-1,3);micNetRule(0);
    };
    window.coreCut=()=>{const nodes=micNetLinks().slice();if(!nodes.length)throw Error('missing actual linked nodes');for(const n of nodes)killEnemy(n);micNetRule(0);return nodes.length;};
   });

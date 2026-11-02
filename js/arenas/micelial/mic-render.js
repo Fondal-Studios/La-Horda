@@ -30,6 +30,8 @@ const MIC_MOTHER_PILOT_ON=typeof location!=="undefined" && new URLSearchParams(l
 const MIC_MOTHER_BLOOM_KEY_ON=MIC_MOTHER_PILOT_ON && new URLSearchParams(location.search).get("motherBloomKey")==="1";
 const MIC_MOTHER_HEART_KEY_ON=MIC_MOTHER_BLOOM_KEY_ON && new URLSearchParams(location.search).get("motherHeartKey")==="1";
 const MIC_MOTHER_CORE_LAYER_ON=MIC_MOTHER_HEART_KEY_ON && new URLSearchParams(location.search).get("motherCoreLayer")==="1";
+const MIC_MOTHER_DEATH_PILOT_ON=MIC_MOTHER_CORE_LAYER_ON && new URLSearchParams(location.search).get("motherDeathPilot")==="1";
+if(MIC_MOTHER_DEATH_PILOT_ON) _micImg("assets/sprites/arenas/micelial/mother/pilot_death.png","mp_death",MIC_MP,MIC_MP_OK);
 if(MIC_MOTHER_HEART_KEY_ON) _micImg("assets/sprites/arenas/micelial/mother/pilot_heart_key.png","mp_heart_key",MIC_MP,MIC_MP_OK);
 if(MIC_MOTHER_BLOOM_KEY_ON){
   _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_key.png","mp_bloom_key",MIC_MP,MIC_MP_OK);
@@ -573,6 +575,10 @@ function _micMotherAtlasReady(){
   return !!(MIC_MP_OK.mp_atlas && im && im.width===1360 && im.height===417);
 }
 function _micMotherPilotPose(e,M,timeMs,pose){
+  // Three authored structural-collapse poses; existing controller milestones and
+  // final8000–9000ms fade remain authoritative, no reward/death timing changes.
+  if(MIC_MOTHER_DEATH_PILOT_ON && M.st==="dying")return {key:"mp_death",w:656,h:560,cols:3,anchor:528,frame:M.t<4700?0:M.t<6600?1:2};
+
   const opening=M.tr && M.tr.to===3;
   const closing=!M.heart && M.net && M.net.st==="rebuild" && M.net.t<320;
   if(MIC_MOTHER_CORE_LAYER_ON && M.st==="fight" && (opening || (!M.tr && (closing || M.heart || (M.net && M.net.st==="open"))))){
@@ -689,7 +695,7 @@ function _micDrawMotherFrame(e,t){
   if(pilot && MIC_MP_OK[pilot.key] && MIC_MP[pilot.key].width===pilot.w*pc && MIC_MP[pilot.key].height===ph){
     const composite=pilot.coreLayer?_micMotherCoreComposite(pilot):null;
     if(!pilot.coreLayer || composite){
-      ctx.save();ctx.imageSmoothingEnabled=false;
+      ctx.save();ctx.globalAlpha*=pose.alpha;ctx.imageSmoothingEnabled=false;
       ctx.drawImage(composite||MIC_MP[pilot.key],composite?0:pilot.frame*pilot.w,0,pilot.w,ph,MIC_MOTHER_POS.x-pilot.w/2,MIC_MOTHER_BASE-pa,pilot.w,ph);
       ctx.restore();_micDrawMotherHeartCue(M,pilot.core||144,pilot.coreX||0,!!pilot.coreLayer);return true;
     }

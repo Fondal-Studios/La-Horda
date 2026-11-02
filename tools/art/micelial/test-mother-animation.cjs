@@ -194,4 +194,11 @@ check('network glow shares successful core anchor, falls back intact and freezes
  q.micDrawNetHeart(2);assert.equal(calls[0][0],12);assert.equal(calls[0][1],27);assert(calls[0][2]<=36&&calls[0][4]<=.2);
  q.micDrawNetHeart(99);assert.deepEqual(calls[0],calls[1]);q._micMotherRenderedCoreAnchor=()=>null;q.micDrawNetHeart(99);assert.equal(calls[2][1],-65);assert(calls[2][2]>=120);
 });
+check('high-detail death holds three real poses at unchanged controller milestones',()=>{
+ const q={Image:class{},VFX_SPR_EXTRA:{},MIC_CFG:{madre:{closeMs:2600}},console,location:{search:'?motherArtPilot=1&motherBloomKey=1&motherHeartKey=1&motherCoreLayer=1&motherDeathPilot=1'},URLSearchParams};vm.createContext(q);vm.runInContext(code,q);
+ for(const [t,frame,alpha]of [[0,0,1],[4699,0,1],[4700,1,1],[6599,1,1],[6600,2,1],[8000,2,1],[8500,2,.5],[9000,2,0]]){
+  const m={st:'dying',t},before=JSON.stringify(m),pose=q._micMotherFrame(null,m,0),p=q._micMotherPilotPose(null,m,0,pose);assert.equal(p.key,'mp_death');assert.equal(p.frame,frame);assert.equal(p.anchor,528);assert.equal(pose.alpha,alpha);assert.equal(JSON.stringify(m),before);
+ }
+ assert.equal(q._micMotherFrame(null,{st:'dead',t:0},0).alpha,0);
+});
 console.log(JSON.stringify({pass,scope:'pose and contract unit tests only; visual/browser checks separate'}));
