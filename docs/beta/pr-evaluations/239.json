@@ -28,7 +28,27 @@
     "tools/factory/README.md"
    ],
    "worktree": "/tmp/eval-wt-239"
+  },
+  "qaFastAfterIntegration": {
+   "introducedByThisPR": [
+    "tools/coliseum/flow.js",
+    "tools/collection/browser-collection.js",
+    "tools/lanes/test-sides.js"
+   ],
+   "method": "los 3 tests pasan en worktree tras #261 y fallan ya en el primer punto con #239 (69f047af); #249/#250 solo heredan",
+   "cause": "#239 restringe Cristales y Coliseo a guardianes propios (coliseum-core, lanes-core, crystal-wars/client, net-lobby). coliseum/flow exige #champ option >= 30 (\"roster completo\"); con cuenta nueva hay menos. El PR actualizó lanes/flow y postgame-test pero no coliseum/flow, browser-collection ni test-sides."
   }
  },
- "verdict": "CONFLICTO"
+ "verdict": "RECHAZAR",
+ "verdictInitial": "CONFLICTO",
+ "reason": [
+  "Cambia una regla de juego (roster propio en modos postgame) y deja 3 tests de la batería --fast en rojo sin actualizar sus expectativas.",
+  "La evaluación inicial quedó en CONFLICTO (solo README) y nunca ejecutó la QA --fast; la regresión apareció al integrar.",
+  "Si la regla es deseada (coherente con la colección de #243), el PR debe actualizar esas pruebas con aprobación explícita del dueño, no relajarlas aquí."
+ ],
+ "improvement": {
+  "status": "not_established",
+  "note": "Decisión de diseño pendiente del dueño: ¿Cristales/Coliseo solo con guardianes propios?"
+ },
+ "nextAction": "Devolver a su autor: actualizar coliseum/flow, browser-collection y test-sides a la nueva regla y volver a presentar con --fast en verde."
 }
