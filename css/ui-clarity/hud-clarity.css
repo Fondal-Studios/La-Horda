@@ -39,3 +39,16 @@ html:not(.uc-off) .ability-btn.uc-noen > div:not(.ico):not(.cd-overlay):not(.kh)
 /* UC-LAYOUT B2 (Guerra de Cristales): el panel de suministros (bottom:66 px) cubría el botón VOLVER apilado sobre el chip (48 px de alto desde 58 px) y le robaba los toques,
    aunque el propio panel dice «B vuelve». Con el panel abierto el minimapa ya está oculto: VOLVER baja a la franja inferior, a la izquierda del chip de suministros. */
 html:not(.uc-off) body.lanes-on .lanes-hud.ln-shop-open .ln-recall{ left:auto; right:calc(50% + 80px); transform:none; bottom:calc(6px + env(safe-area-inset-bottom,0px)); }
+
+/* UC-SHOP v1: estado de la apariencia en TEXTO + forma de marca (no solo color), saldo/faltante y comparación base/variante */
+html:not(.uc-off) .uc-shop-state{ font-size:.82rem; line-height:1.25; padding:3px 6px; border-left:4px solid #8a8a98; background:rgba(255,255,255,.05); color:#e8e0d0; }
+html:not(.uc-off) .uc-shop-state.uc-st-available{ border-left:4px double #7fc4ff; }
+html:not(.uc-off) .uc-shop-state.uc-st-owned{ border-left:4px solid #8fdc8f; }
+html:not(.uc-off) .uc-shop-state.uc-st-equipped{ border-left:4px solid #ffd76a; background:rgba(255,215,106,.1); }
+html:not(.uc-off) .uc-shop-state.uc-st-locked{ border-left:4px dashed #c9b6ff; }
+html:not(.uc-off) .uc-shop-bal{ font-size:.8rem; line-height:1.2; color:#cfe6ff; }
+html:not(.uc-off) .uc-shop-bal.uc-short{ color:#ffd0a0; }
+html:not(.uc-off) .uc-compare{ align-self:flex-start; min-height:44px; padding:4px 12px; }
+html:not(.uc-off) .uc-compare[aria-pressed="true"]{ outline:2px solid #ffd76a; }
+html:not(.uc-off) .uc-shop-state.uc-st-pending{ border-left:4px dotted #ffb347; background:rgba(255,179,71,.12); }
+html:not(.uc-off) .shop-skin .shop-btn, html:not(.uc-off) .shop-col .shop-btn{ min-height:44px; }
