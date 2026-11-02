@@ -62,3 +62,9 @@
 
 /* D5: los desplegables miden 44 px también con mouse (hub y Cristales) */
 .screen.screen details > summary{ min-height:44px; display:flex; align-items:center; }
+
+/* El pie legal conserva sus enlaces táctiles de 44 px. En apaisado bajo, reservar
+   una fila separada para Continuar: no superponer controles ni eludir el consentimiento. */
+@media (max-height:520px) and (orientation:landscape){
+  #title-screen.bt-title #title-continue-btn{ top:auto; bottom:calc(60px + env(safe-area-inset-bottom,0px)); min-height:44px; }
+}
