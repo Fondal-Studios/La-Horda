@@ -5,7 +5,7 @@
   "branch": "fix/madre-espora-animation-20261101",
   "pr": 260,
   "code_head_sha": "fc2e99b6a701214ab2a29264b62a7f0071865c85",
-  "updated_utc": "2026-11-02T00:41:00Z",
+  "updated_utc": "2026-11-02T00:45:00Z",
   "execution_policy": "Continue existing owner/slice; automation must not launch duplicate generations. No formal PR approval or unvalidated main merge.",
   "accepted_scopes": [
     "opt-in high-detail idle pilot",
@@ -33,7 +33,7 @@
     ],
     "geometry_run_id": 41366010676,
     "geometry_artifact_id": 13107069326,
-    "latest_fungal_status": "Complete candidate/fullbaseline same harness+seed: SAME_OR_FEWER_FAILURES_NOT_A_PASS, candidate_only[], same phase3/save failures, SABUESO passes. Genuine legacy-save fixture and bounded phase3 readiness correction57e912f3 pending repeatCI.",
+    "latest_fungal_status": "34ba9c8e fullcandidate+baseline phase3 vulnerability1.35 PASS at5472ms, genuine legacy unlock PASS; added exact gold assertion fails both due legitimate retroactivequest rewards. Observer correction92f78e85 pending repeatCI; no production change.",
     "bloom_sequence_run_id": 41367462917,
     "bloom_sequence_artifact_id": 13107414710
   },
@@ -105,5 +105,12 @@
     "scope": "idle prototype only, not main"
   },
   "spend": "No Runway credits or purchases; built-in imagegen unit cost not exposed.",
-  "previous_remote_head": "34ba9c8e618ebdacaf86fe282c0011460274cadd"
+  "previous_remote_head": "796483a691047185c6dfc6cf937ef445d5034ff0",
+  "user_deliverable_bloom": {
+    "file_id": "file_0000000056e081fd83d80fd0da44dac6",
+    "library_file_id": "libfile_0f0e771b7fb88191b085629005a9bfd6",
+    "name": "madre-bloom-PROTOTYPE-not-main.mp4",
+    "scope": "actual phase2 transition and idle, scoped visual GO, not main or complete boss",
+    "evidence_head": "34ba9c8e618ebdacaf86fe282c0011460274cadd"
+  }
 }

@@ -195,12 +195,27 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
       starterChosen:true,playtestV1Bonus:true,relics:{hp:0,dmg:0,def:0,vel:0},
       lootPity:{legendario:0,set:0,mitico:0}
     };
-    localStorage.setItem(SAVE_KEY, JSON.stringify(raw)); loadSave();
-    const a = {hielo:isArenaUnlocked('hielo'), mic:isArenaUnlocked('micelial'), flag:save.micelialMigrated,
-      preserved:save.gold === 4321 && save.champions.guerrero.level === 4 && save.champions.guerrero.xp === 17,
-      loadFailed:saveLoadFailed};
-    persistNow(); loadSave();
-    a.idempotent = isArenaUnlocked('hielo') && isArenaUnlocked('micelial') && save.gold === 4321;
+    // questsOnLoad legitimately grants retrospective achievements for old wins.
+    // Observe (do not suppress) those rewards, so exact balance checks detect
+    // lost gold as well as unaccounted additions; reload must not award twice.
+    const originalGrant = questsGrant;
+    let grantedGold = 0;
+    questsGrant = function(reward, ...args) {
+      if (reward?.gold) grantedGold += reward.gold;
+      return originalGrant.call(this, reward, ...args);
+    };
+    let a;
+    try {
+      localStorage.setItem(SAVE_KEY, JSON.stringify(raw)); loadSave();
+      a = {hielo:isArenaUnlocked('hielo'), mic:isArenaUnlocked('micelial'), flag:save.micelialMigrated,
+        gold:save.gold, awardedGold:grantedGold, level:save.champions.guerrero.level, xp:save.champions.guerrero.xp,
+        preserved:save.gold === 4321 + grantedGold && save.champions.guerrero.level === 4 && save.champions.guerrero.xp === 17,
+        loadFailed:saveLoadFailed};
+      const firstGold = save.gold;
+      persistNow(); grantedGold = 0; loadSave();
+      a.idempotent = isArenaUnlocked('hielo') && isArenaUnlocked('micelial') && save.gold === firstGold && grantedGold === 0;
+      a.reloadGold = save.gold; a.reloadAwards = grantedGold;
+    } finally { questsGrant = originalGrant; }
     // Control: schema immediately AFTER Micelial landed, new campaign without
     // inherited ice access. Clearing Fortaleza opens Micelial, not Hielo.
     raw.micelialMigrated = true; raw.arenasCleared.micelial = false;
