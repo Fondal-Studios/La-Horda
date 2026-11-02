@@ -1,0 +1,95 @@
+name: UI baseline classification (read-only)
+'on':
+  push:
+    branches:
+    - diagnostic/ui-baseline-20261102
+    paths:
+    - .github/workflows/ui-baseline-classification.yml
+  workflow_dispatch: null
+permissions:
+  contents: read
+jobs:
+  compare-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+    - uses: actions/checkout@v4
+    - uses: ./.github/actions/setup-playwright
+    - name: Unmodified full-tree comparison plus observational geometry
+      run: |
+        set -euo pipefail
+        BASELINE=34ac2852154035b97e53c4807a0a20ee289a40b2
+        CANDIDATE=d6befdbd9dbfcdd824fed42f52878fb8974ed801
+        OUT=/tmp/ui-baseline-evidence
+        mkdir -p "$OUT"
+        for entry in "candidate:$CANDIDATE" "baseline:$BASELINE"; do
+          label=${entry%%:*}; sha=${entry#*:}
+          git fetch --depth=1 origin "$sha"
+          git worktree add --detach "/tmp/ui-$label" "$sha"
+          (cd "/tmp/ui-$label"; git rev-parse HEAD; sha256sum tools/lanes/flow.js tools/alpha/public-onboarding.js tools/lib/http-ready.js) > "$OUT/$label-source.txt"
+        done
+        diff <(tail -n +2 "$OUT/candidate-source.txt") <(tail -n +2 "$OUT/baseline-source.txt")
+        cat > /tmp/ui-observe.cjs <<'JS'
+        const {chromium}=require('playwright');
+        (async()=>{
+        const b=await chromium.launch({args:['--no-sandbox']});
+        try {
+        const c=await b.newContext({viewport:{width:740,height:360},hasTouch:true,isMobile:true});
+        const p=await c.newPage();
+        await p.goto('http://127.0.0.1:8813/crystal-wars.html?room=ABC123&server=ws://127.0.0.1:1');
+        await p.waitForURL('**/index.html?**');
+        await p.locator('#title-continue-btn').waitFor({state:'visible'});
+        await p.waitForTimeout(1500);
+        console.log('TITLE_GEOMETRY',JSON.stringify(await p.evaluate(()=>{
+         const read=s=>{const e=document.querySelector(s),r=e.getBoundingClientRect(),c=getComputedStyle(e);return {selector:s,x:r.x,y:r.y,w:r.width,h:r.height,z:c.zIndex,minHeight:c.minHeight};};
+         const r=document.querySelector('#title-continue-btn').getBoundingClientRect();
+         return {elements:['#title-continue-btn','#legal-title','#legal-title .legal-links'].map(read),hit:document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.outerHTML};
+        })));
+        await p.screenshot({path:process.env.EVIDENCE+'/title.png'});await c.close();
+        const l=await b.newContext({viewport:{width:844,height:390},hasTouch:true});
+        await l.addInitScript(()=>localStorage.setItem('laHordaSave_v1',JSON.stringify({tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'vale',playtestV1Bonus:true,campaignResetV1:true,campaignResetV2:true,arenasCleared:{infernal:true}})));
+        const q=await l.newPage();await q.goto('http://127.0.0.1:8813/index.html?lazy=0',{timeout:120000});
+        await q.waitForFunction(()=>typeof setState==='function'&&typeof renderMainMenu==='function'&&typeof lanesStart==='function',null,{timeout:60000});
+        await q.evaluate(()=>{save.tut=save.tut||{};save.tut.training=1;persistNow();setState('mainmenu');renderMainMenu();});
+        await q.evaluate(()=>document.getElementById('hub-crystal-btn').scrollIntoView({block:'center'}));await q.click('#hub-crystal-btn');
+        await q.waitForSelector('#crystalwars-screen:not(.hidden) #practice');await q.selectOption('#champ','mago');await q.click('#practice');
+        await q.waitForFunction(()=>state==='playing'&&lanesOn(),null,{timeout:20000});await q.evaluate(()=>{player.gold=900;});await q.click('.ln-chip');
+        console.log('RECALL_GEOMETRY',JSON.stringify(await q.evaluate(()=>{const e=document.querySelector('.ln-recall'),r=e.getBoundingClientRect(),c=getComputedStyle(e);return {x:r.x,y:r.y,w:r.width,h:r.height,minHeight:c.minHeight,fontSize:c.fontSize,boxSizing:c.boxSizing};})));
+        await q.screenshot({path:process.env.EVIDENCE+'/lanes.png'});await l.close();
+        } finally {await b.close();}
+        })().catch(e=>{console.error(e);process.exitCode=1;});
+        JS
+        for label in candidate baseline; do
+          cd "/tmp/ui-$label"
+          mkdir -p "$OUT/$label"
+          set +e
+          timeout 180 node tools/lanes/flow.js > "$OUT/$label/lanes.log" 2>&1
+          echo $? > "$OUT/$label/lanes.exit"
+          python3 -m http.server 8813 > "$OUT/$label/http.log" 2>&1 &
+          SERVER=$!
+          curl --retry 10 --retry-connrefused --retry-delay 1 --silent --fail http://127.0.0.1:8813/ > /dev/null
+          SITE=http://127.0.0.1:8813 timeout 180 node tools/alpha/public-onboarding.js > "$OUT/$label/onboarding.log" 2>&1
+          echo $? > "$OUT/$label/onboarding.exit"
+          EVIDENCE="$OUT/$label" timeout 180 node /tmp/ui-observe.cjs > "$OUT/$label/geometry.log" 2>&1
+          echo $? > "$OUT/$label/geometry.exit"
+          kill "$SERVER"; wait "$SERVER" 2>/dev/null
+          set -e
+          cat "$OUT/$label/lanes.log" "$OUT/$label/onboarding.log" "$OUT/$label/geometry.log"
+        done
+        python3 - <<'PYCODE'
+        import pathlib,json
+        root=pathlib.Path('/tmp/ui-baseline-evidence')
+        r={label:{test:{'exit':int((root/label/(test+'.exit')).read_text()),'log':(root/label/(test+'.log')).read_text()} for test in ('lanes','onboarding','geometry')} for label in ('candidate','baseline')}
+        for label in r:
+         r[label]['sha']=(root/(label+'-source.txt')).read_text().splitlines()[0]
+        (root/'comparison.json').write_text(json.dumps(r,indent=2,ensure_ascii=False))
+        print(json.dumps(r,indent=2,ensure_ascii=False))
+        # Preserve failures; these are observations, not permission to bless regressions.
+        raise SystemExit(0 if all(r[l][t]['exit']==0 for l in r for t in ('lanes','onboarding','geometry')) else 1)
+        PYCODE
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: ui-baseline-evidence
+        path: /tmp/ui-baseline-evidence/
+        retention-days: 14
