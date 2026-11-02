@@ -8,8 +8,8 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/high-deta
  for(const viewport of [{width:1280,height:720},{width:844,height:390}]){
   const page=await browser.newPage({viewport,recordVideo:{dir:OUT,size:viewport}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.addInitScript(()=>{window.requestAnimationFrame=()=>0;});
-  await page.goto('http://127.0.0.1:8849/?motherArtPilot=1',{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&MIC_MP_OK.mp_pilot&&MIC_MP_OK.mp_pilot_attack,null,{polling:100,timeout:120000});
+  await page.goto('http://127.0.0.1:8849/?motherArtPilot=1&motherBloomKey=1',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&MIC_MP_OK.mp_pilot&&MIC_MP_OK.mp_pilot_attack&&MIC_MP_OK.mp_bloom_key,null,{polling:100,timeout:120000});
   await page.evaluate(()=>{
    selectedClass='tanque';currentArena='micelial';lobbyAllies=[];netMatch=null;startRun(10);setState('playing');micMotherRevealStart();
    const e=micMotherEntity();window.motherProbe=e;boss=e;bossActive=true;activeChampion=null;micS.mo.st='fight';micS.mo.ph=1;e.micDormant=0;e.dmgTakenMult=1;player.hp=player.maxHp;
@@ -57,6 +57,24 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/high-deta
   assert(action.at(-1).calls.some(c=>c.key==='idle'),'action returns to high-detail idle');
   await page.evaluate(()=>{bossHitHero=window.pilotHitOriginal;});
   fs.writeFileSync(path.join(OUT,viewport.width+'-attack-timing.json'),JSON.stringify({action,hits,status:'DAMAGE_TIMED_PHASE1_PILOT_PASS_NOT_RELEASE'},null,2));
+  // Static keypose geometry gate, intentionally NOT a transformation animation.
+  const geometry=[];
+  for(const phase of [1,2]){
+   geometry.push(await page.evaluate(phase=>{
+    const e=window.motherProbe;Object.assign(e,{packSet:null,packTimer:0,bossWind:null,hitFlash:0});
+    Object.assign(micS.mo,{st:'fight',ph:phase,t:0,bloom:phase===2?1:0,heart:0,net:null});
+    player.x=80;player.y=260;runElapsedMs=0;
+    for(let i=0;i<160;i++){updateArenaCameraZoom();updateCamLift();}
+    let call=null;const draw=ctx.drawImage;ctx.drawImage=function(...a){if(a[0]===MIC_MP.mp_bloom_key||a[0]===MIC_MP.mp_pilot)call={key:a[0]===MIC_MP.mp_bloom_key?'bloom':'idle',rect:a.slice(5)};return draw.apply(this,a)};
+    try{render()}finally{ctx.drawImage=draw}return {phase,call,zoom:CAM_ZOOM};
+   },phase));
+   await page.screenshot({path:path.join(OUT,viewport.width+'-geometry-phase'+phase+'.png')});
+   await page.waitForTimeout(1200);
+  }
+  assert.equal(geometry[0].call.key,'idle');assert.equal(geometry[1].call.key,'bloom');
+  assert.equal(geometry[0].zoom,geometry[1].zoom,'same production camera geometry');
+  assert.equal(geometry[0].call.rect[1]+472,geometry[1].call.rect[1]+528,'same root baseline');
+  fs.writeFileSync(path.join(OUT,viewport.width+'-bloom-geometry.json'),JSON.stringify({geometry,status:'STATIC_KEYPOSE_ONLY_NOT_SEQUENCE_APPROVAL'},null,2));
   const video=page.video();await page.close();fs.renameSync(await video.path(),path.join(OUT,viewport.width+'-phase1-pilot.webm'));
   fs.writeFileSync(path.join(OUT,viewport.width+'-result.json'),JSON.stringify({seen,errors,status:'PILOT_RENDER_PASS_NOT_VISUAL_APPROVAL'},null,2));
  }

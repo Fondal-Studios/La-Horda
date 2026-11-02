@@ -27,6 +27,8 @@ for(const n of ["mp_full","mp_cap","mp_arm_l","mp_arm_r"]) _micImg("assets/sprit
 _micImg("assets/sprites/arenas/micelial/madre_espora/atlas.png", "mp_atlas", MIC_MP, MIC_MP_OK);
 // Explicit review-only query: unapproved high-detail idle pilot is NEVER default.
 const MIC_MOTHER_PILOT_ON=typeof location!=="undefined" && new URLSearchParams(location.search).get("motherArtPilot")==="1";
+const MIC_MOTHER_BLOOM_KEY_ON=MIC_MOTHER_PILOT_ON && new URLSearchParams(location.search).get("motherBloomKey")==="1";
+if(MIC_MOTHER_BLOOM_KEY_ON) _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_key.png","mp_bloom_key",MIC_MP,MIC_MP_OK);
 if(MIC_MOTHER_PILOT_ON){
   _micImg("assets/sprites/arenas/micelial/mother/pilot_idle.png","mp_pilot",MIC_MP,MIC_MP_OK);
   _micImg("assets/sprites/arenas/micelial/mother/pilot_attack.png","mp_pilot_attack",MIC_MP,MIC_MP_OK);
@@ -561,6 +563,9 @@ function _micMotherAtlasReady(){
   return !!(MIC_MP_OK.mp_atlas && im && im.width===1360 && im.height===417);
 }
 function _micMotherPilotPose(e,M,timeMs,pose){
+  // Single static evolved keypose ONLY for geometry review, not a finished clip.
+  if(MIC_MOTHER_BLOOM_KEY_ON && M.st==="fight" && M.ph===2 && !M.heart && pose.state==="bloom")
+    return {key:"mp_bloom_key",w:656,h:560,cols:1,anchor:528,frame:0};
   if(M.ph!==1 || M.bloom || M.heart || (M.net && M.net.st==="open")) return null;
   if(pose.state==="idle") return {key:"mp_pilot",w:432,frame:[0,1,2,1][Math.floor(Math.max(0,timeMs||0)/360)%4]};
   if(pose.state!=="atk" || !e || !(e.packDur>700)) return null;
@@ -575,9 +580,10 @@ function _micDrawMotherFrame(e,t){
   const pose=_micMotherFrame(e,M,typeof runElapsedMs==="number" ? runElapsedMs : t*1000);
   if(pose.alpha<=0 || pose.rise<=0) return true;
   const pilot=MIC_MOTHER_PILOT_ON ? _micMotherPilotPose(e,M,runElapsedMs,pose) : null;
-  if(pilot && MIC_MP_OK[pilot.key] && MIC_MP[pilot.key].width===pilot.w*3 && MIC_MP[pilot.key].height===496){
+  const ph=pilot && (pilot.h||496), pc=pilot && (pilot.cols||3), pa=pilot && (pilot.anchor||472);
+  if(pilot && MIC_MP_OK[pilot.key] && MIC_MP[pilot.key].width===pilot.w*pc && MIC_MP[pilot.key].height===ph){
     ctx.save();ctx.imageSmoothingEnabled=false;
-    ctx.drawImage(MIC_MP[pilot.key],pilot.frame*pilot.w,0,pilot.w,496,MIC_MOTHER_POS.x-pilot.w/2,MIC_MOTHER_BASE-472,pilot.w,496);
+    ctx.drawImage(MIC_MP[pilot.key],pilot.frame*pilot.w,0,pilot.w,ph,MIC_MOTHER_POS.x-pilot.w/2,MIC_MOTHER_BASE-pa,pilot.w,ph);
     ctx.restore();return true;
   }
   const w=A.w*A.scale, h=A.h*A.scale, x=MIC_MOTHER_POS.x-w/2, y=MIC_MOTHER_BASE-h*A.anchor;

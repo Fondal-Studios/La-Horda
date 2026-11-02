@@ -5,7 +5,7 @@
   "branch": "fix/madre-espora-animation-20261101",
   "pr": 260,
   "code_head_sha": "232b2b200c0f374ae0466c65a1e46a8e39ce8885",
-  "updated_utc": "2026-11-02T00:00:23Z",
+  "updated_utc": "2026-11-02T00:10:00Z",
   "execution_policy": "Continue existing owner/slice; automation must not launch duplicate generations. No formal PR approval or unvalidated main merge.",
   "accepted_scopes": [
     "opt-in high-detail idle pilot",
@@ -38,6 +38,30 @@
     "last_generation": {
       "provider": "OpenAI built-in imagegen",
       "request_id": null,
+      "request_id_note": "Not exposed by tool",
+      "output_file": "generated_images/exec-6aff8d76-c49f-463f-bfa8-91c08e4fd4bc.png",
+      "sha256": "34e8f35809d5ae255e3ba6fb82af384c63925ba6cd554574b24f5751ee22c56f",
+      "refs": [
+        {
+          "path": "/workspace/scratch/4ef56534d38c/generated_images/exec-37ea7b5a-35a4-4bb3-9fdd-e34962f34dce.png",
+          "sha256": "1b5822783d5ec11b2cfff20ba0c811c4dc68e3ec5c8a4d091f2dc9b1c378528b"
+        },
+        {
+          "path": "/tmp/madre-bloom-canonical-reference.png",
+          "sha256": "ccd194e580f5b0fb602fa75258422a0a49744dbfd4e892be9ed4f3879cb50c57"
+        }
+      ],
+      "verdict": "SOURCE_AND_GEOMETRY_DIRECTION_GO_RUNTIME_PENDING",
+      "root_width_ratio": 1.3932291666666667,
+      "face_to_root_ratio": 1,
+      "reviewer": "/root/review_art_pilot_architecture"
+    },
+    "next_gate": "Review-only actual desktop/mobile idle vs evolved static keypose; same production camera and root baseline. No sequence approval. If passes build deliberate root/crown unfurl transition and matching idle before combat.",
+    "next_job_key": "madre-bloom-keypose-runtime-v2",
+    "provider_task_id": null,
+    "previous_rejected_generation": {
+      "provider": "OpenAI built-in imagegen",
+      "request_id": null,
       "request_id_note": "Tool does not expose successful request IDs; output file ID below is artifact identifier, not request ID.",
       "output_file": "/workspace/scratch/4ef56534d38c/generated_images/exec-25365843-420d-4073-a174-5154e910b8c5.png",
       "sha256": "29867a649bc805132f3aab413855241bd9a7ba3ee47af6c996a3c38dc5ad92d4",
@@ -57,10 +81,7 @@
         "Adjacent root/glow silhouettes contact; bottom-left fingers hit outer edge",
         "Do not crop overlap or normalize each frame independently to fake invariant scale"
       ]
-    },
-    "next_gate": "Generate ONE isolated evolved-bloom keypose with warm broad gills, fixed root/identity; independent source review before rebuilding transition+idle. No bloom attacks/death batch yet.",
-    "next_job_key": "madre-espora-bloom-keypose-v2",
-    "provider_task_id": null
+    }
   },
   "user_deliverable": {
     "file_id": "file_0000000073e48230a5e2238281bc725b",
@@ -68,5 +89,6 @@
     "name": "madre-idle-mobile-PROTOTYPE.mp4",
     "scope": "idle prototype only, not main"
   },
-  "spend": "No Runway credits or purchases; built-in imagegen unit cost not exposed."
+  "spend": "No Runway credits or purchases; built-in imagegen unit cost not exposed.",
+  "previous_remote_head": "85efaf67a544f36b1b6cd7495fad36e39dc27504"
 }
