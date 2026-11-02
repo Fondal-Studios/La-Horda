@@ -184,13 +184,24 @@
     IDS.forEach(function(id){ var el = btn(id); if(!el) return;
       var b = !!blockedKind(el); if(el.getAttribute("aria-disabled")!==(b?"true":"false")) el.setAttribute("aria-disabled", b?"true":"false"); });
   }
+  /* UF-ART v2: marcos propios de cada héroe (atlas css/ui-factory/fx/hero/<héroe>.png). Si el atlas no existe se mantienen los marcos genéricos */
+  var heroKey = "", heroTok = 0;
+  function syncHeroArt(){
+    var p = pl(), key = p && p.classKey ? String(p.classKey) : ""; if(key===heroKey) return; heroKey = key;
+    var c = document.getElementById("controls"); if(!c) return; var tok = ++heroTok;
+    if(!key || !/^[a-z0-9_]+$/.test(key)){ c.removeAttribute("data-uf-art"); return; }
+    var url = "css/ui-factory/fx/hero/" + key + ".png", im = new Image();
+    im.onload = function(){ if(tok!==heroTok) return; c.style.setProperty("--uf-atlas", 'url("' + new URL(url, document.baseURI).href + '")'); /* absoluta: una URL en una variable CSS se resuelve contra la hoja, no el documento */ c.setAttribute("data-uf-art","hero"); c.setAttribute("data-uf-hero", key); };
+    im.onerror = function(){ if(tok!==heroTok) return; c.removeAttribute("data-uf-art"); c.removeAttribute("data-uf-hero"); };
+    im.src = url;
+  }
   /* D2: el aviso OBJETIVO (animación de 7 s) se re-arma cada vez que el juego cambia su texto o lo vuelve a mostrar */
   function watchGoal(){
     var g = document.getElementById("goal-chip"); if(!g || g.__ufG) return; g.__ufG = 1; var last = g.textContent;
     new MutationObserver(function(){ if(g.textContent===last) return; last = g.textContent; g.style.animation = "none"; void g.offsetWidth; g.style.animation = ""; })
       .observe(g, {childList:true, characterData:true, subtree:true});
   }
-  function boot(){ watchGoal(); watchBtns(); syncAria(); setInterval(function(){ watchBtns(); syncAria(); }, 500); requestAnimationFrame(frame); }
+  function boot(){ watchGoal(); watchBtns(); syncAria(); setInterval(function(){ watchBtns(); syncAria(); syncHeroArt(); }, 500); requestAnimationFrame(frame); }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", boot); else boot();
 
   window.UIFactory = { version:1, contract:"UF-HUD-1", metrics:metrics, ids:IDS.slice(), keys:Object.assign({}, KEYS) };
