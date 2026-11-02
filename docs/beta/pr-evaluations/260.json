@@ -41,8 +41,23 @@
     "file": "tools/micelial/t_micelial.js",
     "exit": 1
    }
-  ]
+  ],
+  "ownTestsRerun": {
+   "tools/micelial/t_micelial.js": "PASS con servidor propio (with-site); el fallo inicial era del evaluador, que no levantaba servidor"
+  }
  },
- "verdict": "RECHAZAR",
- "improvement": null
+ "verdict": "DIFERIR",
+ "improvement": {
+  "status": "not_established",
+  "note": "No se puede certificar mejora de un jefe completo cuyo propio informe lista gates de lectura móvil, muerte/revelación y regresión final pendientes."
+ },
+ "verdictInitial": "RECHAZAR",
+ "reason": [
+  "QA rápida 38/38 y t_micelial pasan: técnicamente fusiona sin regresión.",
+  "Pero el propio PR declara estado borrador sin aprobación: \"No formal PR approval or complete-boss visual approval\" y \"Still pending: exact default/lazy candidate CI and final completeness review. No full-boss/main GO yet\" (docs/quality/madre-espora-20261101/COMPLETENESS.md, REVIEW.md).",
+  "Documentos internos contradictorios: COMPLETENESS dice que el borrador \"now enables the complete rework on ordinary URLs\"; REVIEW dice \"The default remains unapproved and off\".",
+  "Toca renderer.js y camera.js (compartidos por todo el juego) y añade ~30 MiB RGBA decodificados de arte nuevo (caché LRU 32 MiB) sin certificación de 60 fps en teléfono físico.",
+  "Es producción de arte en curso; la instrucción del dueño es que la producción visual siga en su propia rama hasta cerrar sus gates."
+ ],
+ "nextAction": "Reevaluar cuando #260 cierre sus gates (CI de ruta por defecto, revisión de completitud, legibilidad móvil). Nueva integración, no reemplazo de imagen."
 }

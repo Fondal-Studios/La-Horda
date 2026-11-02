@@ -29,7 +29,7 @@ function evaluate(branch, id, baseRef) {
   let info = null; try { info = JSON.parse(fs.readFileSync(path.join(wt, 'qa-out/informe.json'), 'utf8')); } catch (e) {}
   res.steps.qaQuick = {exit: qa.status, summary: (qa.stdout.match(/PASS \d+ +FLAKY \d+ +FAIL \d+ +\(de \d+\)/) || [null])[0], failed: (qa.stdout.match(/^FAIL .*$/gm) || []).slice(0, 10)};
   const own = changed.filter(f => /(^|\/)(t_[^/]+|test[^/]*|[^/]*\.test)\.js$/.test(f) && fs.existsSync(path.join(wt, f)));
-  res.steps.ownTests = own.slice(0, 8).map(f => { const r = run(wt, 'node', [f], {timeout: 420000}); return {file: f, exit: r.status}; });
+  res.steps.ownTests = own.slice(0, 8).map(f => { const r = run(wt, 'node', ['tools/lib/with-site.js', f], {timeout: 420000}); return {file: f, exit: r.status}; });
   const bad = res.steps.ownTests.filter(t => t.exit !== 0);
   res.verdict = arch.verdict === 'BLOCKED' ? 'RECHAZAR' : (qa.status !== 0 || bad.length) ? 'RECHAZAR' : 'ACEPTAR_TECNICO';
   res.improvement = null; // a completar con evidencia manual (capturas, métricas) antes de integrar
