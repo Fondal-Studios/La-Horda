@@ -1,0 +1,64 @@
+{
+ "skin": "segador_cosecha_hueca",
+ "champion": "segador",
+ "tier": "legendaria",
+ "name": "Segador, Cosecha Hueca",
+ "selectionReason": "Una sola apariencia; guadaña con silueta icónica ideal para trazo de luz.",
+ "identity": "Segador con túnica de espigas secas y guadaña de hueso pálido. Paleta: trigo #d9b44a, hueso #e8e0c8, vacío #14101c. La hoja mantiene arco y largo exactos del cuerpo base.",
+ "story": "Segó un campo que no existía y se llevó la cosecha de todos los que dudaron. Ahora cada tajo deja espigas que se deshacen en polvo dorado.",
+ "abilityFx": "Tajo: arco dorado con espigas que caen; ulti: campo de trigo fantasma que se disuelve en 600 ms (visual, sin hitbox).",
+ "constraints": {
+  "stats": false,
+  "damage": false,
+  "range": false,
+  "hitbox": false,
+  "cooldown": false,
+  "silhouette": "idéntica al cuerpo base"
+ },
+ "assets": {
+  "concept_art": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "identity_sheet": {
+   "path": "docs/skin-factory/dossiers.md",
+   "status": "WRITTEN"
+  },
+  "sprite_atlas": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "animations_move_combat": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "skill_fx": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "ultimate_fx": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "select_preview": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "story": {
+   "path": "docs/skin-factory/dossiers.md",
+   "status": "WRITTEN"
+  },
+  "icon": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "commercial_card": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  }
+ },
+ "status": "DESIGN_ONLY",
+ "blockers": [
+  "Sin capacidad de generación/pintura de imágenes en la sesión autónoma: concept art, atlas 8 columnas y paneles de FX deben ser pintados (flujo tools/factory + Painter) y revisados por un evaluador independiente."
+ ]
+}
