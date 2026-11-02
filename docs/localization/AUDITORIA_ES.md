@@ -1,4 +1,6 @@
-# Auditoría del español actual — PROPUESTA (nada de esto está aplicado)
+# Auditoría del español actual
+
+**Estado:** §2 (fichas de arena) APLICADO con etiquetas "Peligros / Ayudas" (aprobado por el dueño). §1 (tuteo) pendiente de confirmar. Códice (`codex.js`) sigue leyendo `kill`/`help` como texto; pasa a listas al final de la oleada, cuando se libere ese archivo.
 
 Estado: **pendiente de aprobación del dueño**. Regla del proyecto: el español de hoy no se cambia sin preguntar.
 Decisión del dueño: el juego usa **voseo** también para el Hechicero (no se pasa a "usted" en esta primera versión).
@@ -11,7 +13,7 @@ Hoy (`js/data/arena-brief.js`, `index.html` líneas 581-583): tres frases largas
 "Objetivo", "Lo que te mata", "Lo que te ayuda". Se propone resumir en **Objetivo / Contras / Pros**:
 objetivo en una línea y 2-3 ítems cortos por lista. Solo se reordena y acorta lo que ya dicen; no se agrega ninguna mecánica nueva.
 
-Etiquetas propuestas: `🎯 Objetivo` · `☠ Contras` · `✚ Pros` (alternativa: Peligros / Ayudas).
+Etiquetas elegidas por el dueño: `🎯 Objetivo` · `☠ Peligros` · `✚ Ayudas`. Excepción a la tabla: en Minas el objetivo conserva "Recién ahí termina la arena" (dato de juego).
 
 | Arena | Objetivo | Contras | Pros |
 |---|---|---|---|
@@ -30,5 +32,6 @@ Lugares que cambian: `js/data/arena-brief.js` (datos: pasan de texto largo a lis
 `js/ui/tactical-panel.js`, `js/ui/codex/codex.js` (**en conflicto con otro trabajo: va al final**) y `index.html` (**tres etiquetas**; un único cambio mínimo).
 
 ## 3. Pendiente del dueño
-- ¿Etiquetas "Contras / Pros" o "Peligros / Ayudas"?
+- (resuelto) Etiquetas: Peligros / Ayudas.
+- Otros ejemplos de texto poco natural: el dueño los irá indicando mientras juega.
 - ¿Otros lugares con el mismo problema (textos de ítems, sets, bendiciones, tutorial)? Indicarlos o pedir que se auditen.
