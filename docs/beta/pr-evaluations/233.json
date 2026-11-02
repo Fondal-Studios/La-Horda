@@ -1,0 +1,34 @@
+{
+ "id": "233",
+ "branch": "art/veyra-codex-body-20261028",
+ "verdict": "RECHAZAR_OBSOLETO",
+ "evaluatedAt": "2026-11-02",
+ "steps": {
+  "architect": {
+   "verdict": "NEEDS_WORK",
+   "findings": [
+    {
+     "level": "W",
+     "id": "asset-size",
+     "msg": "Assets >2 MB: art-source/entregas/veyra-codex-20261028/cierre-01/source-left-attempt02.png, art-source/entregas/veyra-codex-20261028/cierre-02/source-left-actions-attempt02.png, art-source/entregas/veyra-codex-20261028/cierre-02/source-right-actions-attempt01.png, art-source/entregas/veyra-codex-20261028/cierre-03/source-left-motion-03.png, art-source/entregas/veyra-codex-20261028/cierre-04-recuperacion/source-left-motion-04r.png, art-source/entregas/veyra-codex-20261028/produccion-01/attempt-right-rejected-front.png, art-source/entregas/veyra-codex-20261028/produccion-01/source-down.png, art-source/entregas/veyra-codex-20261028/produccion-01/source-left.png, art-source/entregas/veyra-codex-20261028/produccion-01/source-right.png"
+    },
+    {
+     "level": "W",
+     "id": "conflict",
+     "msg": "Conflictos de fusión con origin/main: docs/production/CORRECTION_BATCH.json"
+    }
+   ],
+   "files": 189
+  },
+  "merge": {
+   "note": "el evaluador automático falló en este PR (salida vacía en el paso de worktree); valoración manual/estática"
+  }
+ },
+ "reason": [
+  "PR cerrado por su autor: \"[FIX / NO_INTEGRAR] Veyra Códice: 112 cuadros nativos, continuidad pendiente\".",
+  "El cuerpo de Veyra del Códice fue integrado por #240 (ya en main); este PR es una versión anterior con continuidad pendiente."
+ ],
+ "improvement": {
+  "status": "none"
+ }
+}

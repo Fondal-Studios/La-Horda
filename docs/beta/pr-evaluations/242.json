@@ -34,5 +34,14 @@
    "worktree": "/tmp/eval-wt-242"
   }
  },
- "verdict": "CONFLICTO"
+ "verdict": "RECHAZAR_OBSOLETO",
+ "verdictInitial": "CONFLICTO",
+ "reason": [
+  "PR cerrado por su autor con \"[FIX / NO_INTEGRAR]\".",
+  "Su objetivo (Ruinas y Gélida con el arte del Códice) fue integrado por #244, ya en main, y la porción jugable de Ruinas Élficas por #251.",
+  "5 conflictos con lo ya integrado; reaplicarlo restauraría una versión previa de las arenas."
+ ],
+ "improvement": {
+  "status": "none"
+ }
 }
