@@ -57,6 +57,9 @@ const SECRET='secreto-de-prueba-brasas-0123';
   // ---- con sesión ----
   const {page,ctx,errors}=await open(true);
   await page.waitForFunction(()=>PREMIUM.at>0,null,{timeout:15000});
+  // La billetera puede responder antes de terminar la transición visual del hub.
+  // Esperar visibilidad real (igual que sin sesión), sin force-click ni ocultar overlays.
+  await page.locator('#hub-premium-btn').waitFor({state:'visible',timeout:15000});
   ok(await page.locator('#hub-premium-btn').isVisible(),'chip visible con sesión');
   ok(/✦\s*0/.test(await page.locator('#hub-premium-btn').innerText()),'saldo 0 en el chip');
   ok(await page.locator('#hub-badge-offer').isVisible(),'OFERTA en la ficha Tienda');

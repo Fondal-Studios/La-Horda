@@ -13,6 +13,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-playwright
       - run: npm ci --prefix server
+      - name: Remove tracked screenshots before collecting fresh evidence
+        run: rm -f docs/production/brasas-store-844x390.png docs/production/hub-brasas-chip.png
       - name: Default pieces blocked and legacy compatibility (isolated API)
         run: node server/test-wallet-pieces.js
       - name: Cosmetic prices, ownership and idempotency (isolated API)
