@@ -8,8 +8,8 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/high-deta
  for(const viewport of [{width:1280,height:720},{width:844,height:390}]){
   const page=await browser.newPage({viewport,recordVideo:{dir:OUT,size:viewport}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.addInitScript(()=>{window.requestAnimationFrame=()=>0;});
-  await page.goto('http://127.0.0.1:8849/?motherArtPilot=1&motherBloomKey=1',{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&MIC_MP_OK.mp_pilot&&MIC_MP_OK.mp_pilot_attack&&MIC_MP_OK.mp_bloom_key&&MIC_MP_OK.mp_bloom_trans&&MIC_MP_OK.mp_bloom_idle&&MIC_MP_OK.mp_bloom_attack&&MIC_MP_OK.mp_pilot_cast&&MIC_MP_OK.mp_bloom_cast,null,{polling:100,timeout:120000});
+  await page.goto('http://127.0.0.1:8849/?motherArtPilot=1&motherBloomKey=1&motherHeartKey=1',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&MIC_MP_OK.mp_pilot&&MIC_MP_OK.mp_pilot_attack&&MIC_MP_OK.mp_bloom_key&&MIC_MP_OK.mp_bloom_trans&&MIC_MP_OK.mp_bloom_idle&&MIC_MP_OK.mp_bloom_attack&&MIC_MP_OK.mp_pilot_cast&&MIC_MP_OK.mp_bloom_cast&&MIC_MP_OK.mp_heart_key,null,{polling:100,timeout:120000});
   await page.evaluate(()=>{
    selectedClass='tanque';currentArena='micelial';lobbyAllies=[];netMatch=null;startRun(10);setState('playing');micMotherRevealStart();
    const e=micMotherEntity();window.motherProbe=e;boss=e;bossActive=true;activeChampion=null;micS.mo.st='fight';micS.mo.ph=1;e.micDormant=0;e.dmgTakenMult=1;player.hp=player.maxHp;
@@ -168,6 +168,21 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/high-deta
   });
   for(const r of warningRouting){assert.equal(r.key,r.ph===1?'mp_pilot_cast':'mp_bloom_cast');assert.equal(r.frame,0);assert.equal(r.projectileDelta,0);if(r.kind==='summon')assert.deepEqual(r.delays,[700,700]);if(r.kind==='clouds')assert(r.delays.every(t=>t===900));if(r.kind==='roots')assert.deepEqual(r.delays,[1150,1220]);}
   fs.writeFileSync(path.join(OUT,viewport.width+'-warning-pack-routing.json'),JSON.stringify({warningRouting,status:'ROUTING_AND_ORIGINAL_DELAY_CHECK_NOT_FULL_SPELL_VISUAL_APPROVAL'},null,2));
+  const heartGeometry=await page.evaluate(()=>{
+   const e=window.motherProbe;Object.assign(micS.mo,{st:'fight',ph:2,tr:null,bloom:1,heart:0,net:null});
+   Object.assign(e,{hp:e.maxHp*0.29,packSet:null,packTimer:0,bossWind:null,stunTimer:0,mcd:1e9});
+   let waited=0;while(!micS.mo.heart&&waited<12000){for(const h of heroes){h.hp=h.maxHp;h.x=80;h.y=260;}e.mcd=1e9;update(16);waited+=16;}
+   if(!micS.mo.heart)throw Error('actual phase3 opening did not complete');
+   Object.assign(e,{packSet:null,packTimer:0,bossWind:null,hitFlash:0});
+   for(let i=0;i<160;i++){updateArenaCameraZoom();updateCamLift();}
+   const before=JSON.stringify({x:e.x,y:e.y,radius:e.radius,hp:e.hp,vuln:e.dmgTakenMult}),calls=[],draw=ctx.drawImage;
+   ctx.drawImage=function(...a){if(a[0]===MIC_MP.mp_heart_key)calls.push({sx:a[1],rect:a.slice(5)});return draw.apply(this,a)};
+   try{render()}finally{ctx.drawImage=draw}
+   return {waited,phase:micS.mo.ph,heart:micS.mo.heart,vulnerability:e.dmgTakenMult,calls,before,after:JSON.stringify({x:e.x,y:e.y,radius:e.radius,hp:e.hp,vuln:e.dmgTakenMult})};
+  });
+  assert.equal(heartGeometry.phase,3);assert(heartGeometry.heart);assert.equal(heartGeometry.vulnerability,1.35);assert.equal(heartGeometry.calls.length,1);assert.equal(heartGeometry.before,heartGeometry.after);
+  await page.screenshot({path:path.join(OUT,viewport.width+'-heart-open-keypose.png')});await page.waitForTimeout(1200);
+  fs.writeFileSync(path.join(OUT,viewport.width+'-heart-keypose-geometry.json'),JSON.stringify({heartGeometry,status:'ACTUAL_PHASE3_STATIC_KEYPOSE_GATE_NOT_ANIMATION_APPROVAL'},null,2));
   const video=page.video();await page.close();fs.renameSync(await video.path(),path.join(OUT,viewport.width+'-phase1-pilot.webm'));
   fs.writeFileSync(path.join(OUT,viewport.width+'-result.json'),JSON.stringify({seen,errors,status:'PILOT_RENDER_PASS_NOT_VISUAL_APPROVAL'},null,2));
  }

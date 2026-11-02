@@ -153,4 +153,11 @@ check('Mother1-based phases map to zero-based HUD without changing combatphase',
  vm.createContext(q);vm.runInContext(source,q);
  for(const ph of [2,3]){const e={};q.micMotherToPhase(e,ph);assert.equal(e.bossPhase,ph);assert.equal(q.micS.mo.ph,ph);assert.equal(calls.at(-1)[0],ph-1);}
 });
+check('open-core keypose is explicit and cosmetic vulnerability cue tracks visible seed',()=>{
+ const ellipses=[],q={Image:class{},VFX_SPR_EXTRA:{},MIC_CFG:{madre:{closeMs:2600}},console,location:{search:'?motherArtPilot=1&motherBloomKey=1&motherHeartKey=1'},URLSearchParams,runElapsedMs:1000,MIC_MOTHER_POS:{x:0,y:125},ctx:{save(){},restore(){},beginPath(){},stroke(){},ellipse(...a){ellipses.push(a)}}};
+ vm.createContext(q);vm.runInContext(code,q);const m={st:'fight',ph:3,heart:1,bt:900},r=q._micMotherPilotPose({},m,1000,{state:'heart'});
+ assert.equal(r.key,'mp_heart_key');q._micDrawMotherHeartCue(m,r.core);assert(Math.abs(ellipses[0][1]-35.6)<1e-6);
+ assert.equal(q._micMotherPilotPose({},m,1000,{state:'atk'}),null,'static geometry pilot does not claim heart attacks');
+ assert.equal(q._micMotherPilotPose({},{...m,ph:2,heart:0},1000,{state:'heart'}),null);
+});
 console.log(JSON.stringify({pass,scope:'pose and contract unit tests only; visual/browser checks separate'}));

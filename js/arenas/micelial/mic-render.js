@@ -28,6 +28,8 @@ _micImg("assets/sprites/arenas/micelial/madre_espora/atlas.png", "mp_atlas", MIC
 // Explicit review-only query: unapproved high-detail idle pilot is NEVER default.
 const MIC_MOTHER_PILOT_ON=typeof location!=="undefined" && new URLSearchParams(location.search).get("motherArtPilot")==="1";
 const MIC_MOTHER_BLOOM_KEY_ON=MIC_MOTHER_PILOT_ON && new URLSearchParams(location.search).get("motherBloomKey")==="1";
+const MIC_MOTHER_HEART_KEY_ON=MIC_MOTHER_BLOOM_KEY_ON && new URLSearchParams(location.search).get("motherHeartKey")==="1";
+if(MIC_MOTHER_HEART_KEY_ON) _micImg("assets/sprites/arenas/micelial/mother/pilot_heart_key.png","mp_heart_key",MIC_MP,MIC_MP_OK);
 if(MIC_MOTHER_BLOOM_KEY_ON){
   _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_key.png","mp_bloom_key",MIC_MP,MIC_MP_OK);
   _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_transition.png","mp_bloom_trans",MIC_MP,MIC_MP_OK);
@@ -570,6 +572,9 @@ function _micMotherAtlasReady(){
   return !!(MIC_MP_OK.mp_atlas && im && im.width===1360 && im.height===417);
 }
 function _micMotherPilotPose(e,M,timeMs,pose){
+  // Static open-core geometry gate only; not a complete phase3 animation.
+  if(MIC_MOTHER_HEART_KEY_ON && M.st==="fight" && M.ph===3 && M.heart && !M.tr && pose.state==="heart")
+    return {key:"mp_heart_key",w:656,h:560,cols:1,anchor:528,core:169.4,frame:0};
   // Opt-in one-way phase evolution. Source poses unfold; no whole-body scaling.
   // Use the authoritative phase timer (including pause/late join), not wall time.
   if(MIC_MOTHER_BLOOM_KEY_ON && M.st==="fight" && M.tr && M.tr.to===2){
@@ -613,7 +618,7 @@ function _micDrawMotherFrame(e,t){
   if(pilot && MIC_MP_OK[pilot.key] && MIC_MP[pilot.key].width===pilot.w*pc && MIC_MP[pilot.key].height===ph){
     ctx.save();ctx.imageSmoothingEnabled=false;
     ctx.drawImage(MIC_MP[pilot.key],pilot.frame*pilot.w,0,pilot.w,ph,MIC_MOTHER_POS.x-pilot.w/2,MIC_MOTHER_BASE-pa,pilot.w,ph);
-    ctx.restore();return true;
+    ctx.restore();_micDrawMotherHeartCue(M,pilot.core||144);return true;
   }
   const w=A.w*A.scale, h=A.h*A.scale, x=MIC_MOTHER_POS.x-w/2, y=MIC_MOTHER_BASE-h*A.anchor;
   ctx.save();
@@ -628,15 +633,18 @@ function _micDrawMotherFrame(e,t){
     ctx.drawImage(MIC_MP.mp_atlas,sx,sy,A.w,A.h,x,y,w,h);
   }
   ctx.restore();
+  _micDrawMotherHeartCue(M);
+  return true;
+}
+function _micDrawMotherHeartCue(M,offset=144){
   // The vulnerability cue is independent of the action pose and cannot vanish
   // when the boss casts. It is visual only, not a new hitbox or weak-point rule.
   if(M.st==="fight" && (M.heart || (M.net && M.net.st==="open"))){
     const beat=Math.exp(-Math.max(0,(runElapsedMs||0)-(M.bt||-9999))/260);
     ctx.save();ctx.lineWidth=5;ctx.strokeStyle="#200818";ctx.beginPath();
-    ctx.ellipse(MIC_MOTHER_POS.x,MIC_MOTHER_BASE-144,18+beat*3,25+beat*4,0,0,Math.PI*2);ctx.stroke();
+    ctx.ellipse(MIC_MOTHER_POS.x,MIC_MOTHER_BASE-offset,18+beat*3,25+beat*4,0,0,Math.PI*2);ctx.stroke();
     ctx.lineWidth=2;ctx.strokeStyle="#ffd0e0";ctx.stroke();ctx.restore();
   }
-  return true;
 }
 function _micDrawMother(e,t){
   if(!_micDrawMotherFrame(e,t)) _micDrawMotherPortrait(e,t);

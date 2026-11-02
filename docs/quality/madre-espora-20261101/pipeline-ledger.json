@@ -4,14 +4,15 @@
   "owner": "/root/animate_madre_espora",
   "branch": "fix/madre-espora-animation-20261101",
   "pr": 260,
-  "code_head_sha": "b1af351eeafda9a75e7ce0135cc2c706b5ad3076",
-  "updated_utc": "2026-11-02T01:00:00Z",
+  "code_head_sha": "7a9f1d80d83da5f1122d789c30518a2746944b47",
+  "updated_utc": "2026-11-02T01:14:00Z",
   "execution_policy": "Continue existing owner/slice; automation must not launch duplicate generations. No formal PR approval or unvalidated main merge.",
   "accepted_scopes": [
     "opt-in high-detail idle pilot",
     "opt-in high-detail phase1 anticipation/impact/recovery pilot",
     "opt-in bloom transformation and matching idle pilot (architect fc2e99b6 runtime GO)",
-    "opt-in phase2 physical claw and whip attack pilot (architect796483a6 runtime GO)"
+    "opt-in phase2 physical claw and whip attack pilot (architect796483a6 runtime GO)",
+    "opt-in immediate spore cast phase1/2 (architect7a9f1d80 runtime GO; warning packs routing-only)"
   ],
   "not_accepted": [
     "full boss release",
@@ -20,17 +21,17 @@
     "remaining high-detail phases"
   ],
   "validation": {
-    "unit_pass": 31,
+    "unit_pass": 32,
     "browser_pass": 60,
     "phase1_timing": "Mother damage5350ms; first impact render5382ms (+32ms)",
     "actual_evidence_dir": "/tmp/mother-ci-232b2b20/high-detail-pilot",
-    "github_run_id": 41369048341,
-    "github_artifact_id": 13108119116,
+    "github_run_id": 41370256558,
+    "github_artifact_id": 13109201346,
     "independent_reviewer": "/root/review_art_pilot_architecture",
     "camera_and_boss_hooks": "PASS",
     "geometry_run_id": 41366010676,
     "geometry_artifact_id": 13107069326,
-    "latest_fungal_status": "BOTH_PASS: full candidate and main34ac2852, identical harness/seed. No skipped assertions. Phase3 heart1/vuln1.35 at5472ms; legacy gold4321+640, reload no extra awards, level/XP/unlocks preserved.",
+    "latest_fungal_status": "BOTH_PASS again on7a9f1d80 with same fullbaseline harness/seed",
     "bloom_sequence_run_id": 41367462917,
     "bloom_sequence_artifact_id": 13107414710,
     "historical_fixture_failures": [
@@ -54,8 +55,8 @@
       ],
       "verdict": "SOURCE_GEOMETRY_GO_RUNTIME_PENDING"
     },
-    "next_gate": "Actual5/6 spore projectile release on first AI step, \u226432ms visual alignment, no windup, native idle/cast seam review. Additional warning packs receive routing/delay tests only, not blanket spell visual approval.",
-    "next_job_key": "madre-phase1-phase2-cast-runtime-v2",
+    "next_gate": "Actual phase3 static keypose legibility/geometry against bloom, preserving vulnerability1.35 and root/collision. Independent runtime gate before transition generation, no death batch.",
+    "next_job_key": "madre-heart-open-keypose-runtime-v1",
     "provider_task_id": null,
     "previous_rejected_generation": {
       "provider": "OpenAI built-in imagegen",
@@ -98,7 +99,7 @@
         "provider": "OpenAI built-in imagegen"
       }
     ],
-    "name": "phase1 and phase2 immediate ranged/spore cast pilot",
+    "name": "heart OPEN keypose and transition",
     "cast_sources": [
       {
         "phase": 1,
@@ -127,12 +128,23 @@
     "scope": "idle prototype only, not main"
   },
   "spend": "No Runway credits or purchases; built-in imagegen unit cost not exposed.",
-  "previous_remote_head": "b1af351eeafda9a75e7ce0135cc2c706b5ad3076",
+  "previous_remote_head": "7a9f1d80d83da5f1122d789c30518a2746944b47",
   "user_deliverable_bloom": {
     "file_id": "file_0000000056e081fd83d80fd0da44dac6",
     "library_file_id": "libfile_0f0e771b7fb88191b085629005a9bfd6",
     "name": "madre-bloom-PROTOTYPE-not-main.mp4",
     "scope": "actual phase2 transition and idle, scoped visual GO, not main or complete boss",
     "evidence_head": "34ba9c8e618ebdacaf86fe282c0011460274cadd"
+  },
+  "inflight": {
+    "owner": "/root/animate_madre_espora",
+    "scope": "Actual phase3 static keypose legibility/geometry against bloom, preserving vulnerability1.35 and root/collision. Independent runtime gate before transition generation, no death batch.",
+    "head": "7a9f1d80d83da5f1122d789c30518a2746944b47",
+    "job_key": "madre-heart-open-keypose-v1",
+    "provider_request_id": null,
+    "output_file": "generated_images/exec-f099ebc7-0609-4ad9-b402-4b332ff21c97.png",
+    "source_sha256": "a1cef5fdd0112222d19255527ece42c5dfbaa7278f6216c983b3cabdbfbf2160",
+    "duplicate_jobs_forbidden": true,
+    "source_gate": "GO; alpha>32 startsy8, no opaque top clipping; no regeneration necessary"
   }
 }
