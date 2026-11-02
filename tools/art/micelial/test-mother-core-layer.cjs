@@ -107,15 +107,27 @@ fs.mkdirSync(OUT,{recursive:true});let browser,server;
    const rows=[];const captures=new Set();
    for(let i=0;i<240;i++){
     const row=await page.evaluate(()=>{
-     for(let j=0;j<2;j++){for(const h of heroes){h.hp=h.maxHp;h.x=80;h.y=260;}update(16);}
-     const p=corePose();render();return {time:runElapsedMs,phase:micS.mo.ph,network:micS.mo.net.st,netTime:micS.mo.net.t,exposure:motherProbe._expT,mult:bossEncounterDmgMult(motherProbe),amount:p&&p.coreAmount,core:!!(p&&p.coreLayer)};
+     const substeps=[];
+     for(let j=0;j<2;j++){for(const h of heroes){h.hp=h.maxHp;h.x=80;h.y=260;}update(16);substeps.push({time:runElapsedMs,network:micS.mo.net.st,exposure:motherProbe._expT,mult:bossEncounterDmgMult(motherProbe),crashVuln:!!motherProbe.crashVuln});}
+     const p=corePose();render();return {time:runElapsedMs,phase:micS.mo.ph,network:micS.mo.net.st,netTime:micS.mo.net.t,exposure:motherProbe._expT,mult:bossEncounterDmgMult(motherProbe),amount:p&&p.coreAmount,core:!!(p&&p.coreLayer),substeps};
     });rows.push(row);
     const label=row.network==='open'&&row.amount>0&&row.amount<1?'opening':row.network==='rebuild'&&row.amount>0&&row.amount<1?'closing':row.network==='rebuild'&&!row.core?'closed':null;
     if(label&&!captures.has(label)){await page.screenshot({path:path.join(OUT,`${viewport.width}-phase${phase}-${label}.png`)});captures.add(label);}
     if(i<14||row.network==='rebuild')await page.waitForTimeout(32);
    }
+   const diagnosticPerf=await page.evaluate(()=>corePerformance);
+   fs.writeFileSync(path.join(OUT,`${viewport.width}-phase${phase}-articulation-diagnostic.json`),JSON.stringify({rows,performance:diagnosticPerf,captures:[...captures],status:'PRE_ASSERT_DIAGNOSTIC_NOT_PASS'},null,2));
    assert.deepEqual([...captures].sort(),['closed','closing','opening']);
-   assert(rows.filter(r=>r.network==='open').every(r=>r.exposure>0&&Math.abs(r.mult-1.125)<1e-9),'opening never delays vulnerability');
+   assert(rows.filter(r=>r.network==='open'&&r.amount<1).every(r=>r.exposure>0&&Math.abs(r.mult-1.125)<1e-9),'opening never delays vulnerability');
+   const steps=rows.flatMap(r=>r.substeps),boundary=steps.filter(r=>r.network==='open'&&r.exposure===0);
+   assert(steps.filter(r=>r.exposure>0).every(r=>r.network==='open'&&r.crashVuln&&Math.abs(r.mult-1.125)<1e-9),'positive exposure always authoritative damage multiplier');
+   // update.js: arenaHook(update)/micNetRule precedes bossEncounterTick. The
+   // expiry tick clears damage vulnerability immediately; the network observes
+   // that zero on the NEXT16ms update. This is not delayed opening/exposure.
+   assert.equal(boundary.length,1,'exactly one expiry-ordering boundary tick');
+   const boundaryIndex=steps.indexOf(boundary[0]),next=steps[boundaryIndex+1];
+   assert(!boundary[0].crashVuln&&boundary[0].mult===1,'expiry tick already removes damage vulnerability');
+   assert(next&&next.time-boundary[0].time===16&&next.network==='rebuild'&&next.exposure===0,'network observes expiry on immediately following tick');
    assert(rows.filter(r=>r.network==='rebuild').every(r=>r.exposure===0),'closing never extends exposure');
    articulation.push({phase,rows});
   }
@@ -125,6 +137,7 @@ fs.mkdirSync(OUT,{recursive:true});let browser,server;
    const row=await page.evaluate(()=>{for(let j=0;j<2;j++){for(const h of heroes){h.hp=h.maxHp;h.x=80;h.y=260;}update(16);}const p=corePose();render();return {phase:micS.mo.ph,tr:micS.mo.tr?{...micS.mo.tr}:null,heart:micS.mo.heart,amount:p&&p.coreAmount,mult:motherProbe.dmgTakenMult};});permanent.push(row);
    if(i===35)await page.screenshot({path:path.join(OUT,viewport.width+'-permanent-heart-opening.png')});await page.waitForTimeout(32);
   }
+  fs.writeFileSync(path.join(OUT,viewport.width+'-permanent-articulation-diagnostic.json'),JSON.stringify({rows:permanent,performance:await page.evaluate(()=>corePerformance),status:'PRE_ASSERT_DIAGNOSTIC_NOT_PASS'},null,2));
   assert(permanent.some(r=>r.tr&&r.tr.to===3&&r.amount>0&&r.amount<1),'actual phase3 controller articulates opening');
   assert(permanent.at(-1).heart&&!permanent.at(-1).tr&&permanent.at(-1).amount===1,'actual permanent heart completes');
   assert.equal(permanent.at(-1).mult,await page.evaluate(()=>MIC_CFG.madre.heartVuln));
