@@ -29,3 +29,13 @@ html:not(.uc-off) .ability-btn.uc-noen > div:not(.ico):not(.cd-overlay):not(.kh)
   html:not(.uc-off) #bt-banner .bt-b-text{ font-size:.95rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   html:not(.uc-off) #bt-banner .bt-b-kick{ font-size:.5rem; }
 }
+
+/* UC-LAYOUT B2: en móvil apaisado bajo (<= 420 px de alto) el pie legal (enlaces de 44 px, UI Factory) tapaba 20 px del botón «Tocá para continuar»
+   y le robaba los toques (tools/alpha/public-onboarding.js). El botón sube hasta quedar por encima del pie; no cambia tamaños táctiles. */
+@media (max-height:420px) and (orientation:landscape){
+  html:not(.uc-off) #title-screen.bt-title #title-continue-btn{ top:calc(50% + 86px); }
+}
+
+/* UC-LAYOUT B2 (Guerra de Cristales): el panel de suministros (bottom:66 px) cubría el botón VOLVER apilado sobre el chip (48 px de alto desde 58 px) y le robaba los toques,
+   aunque el propio panel dice «B vuelve». Con el panel abierto el minimapa ya está oculto: VOLVER baja a la franja inferior, a la izquierda del chip de suministros. */
+html:not(.uc-off) body.lanes-on .lanes-hud.ln-shop-open .ln-recall{ left:auto; right:calc(50% + 80px); transform:none; bottom:calc(6px + env(safe-area-inset-bottom,0px)); }
