@@ -93,3 +93,12 @@ html.uf-off #controls .uf-frame{ display:none; }
 #controls[data-uf-art="hero"] #skillzone .ability-btn.locked .uf-frame{ filter:grayscale(1) brightness(.6); }
 #controls[data-uf-art="hero"] #skillzone .ability-btn.uf-press .uf-frame{ filter:brightness(1.3) saturate(1.15); }
 #controls[data-uf-art="hero"] #skillzone .ability-btn.ready .uf-frame, #controls[data-uf-art="hero"] #skillzone .ability-btn.active .uf-frame{ filter:drop-shadow(0 0 3px rgba(255,255,255,.4)); }
+
+/* ---- UF-HERO v1: cara y borde de los botones con el color del héroe (variables que fija js/ui-factory/hero-buttons.js) ---- */
+#controls[data-uf-face="hero"] #skillzone .ability-btn.basic{ --plate1:var(--uf-b-p1); --plate2:var(--uf-b-p2); --rim2:var(--uf-b-rim); --action:var(--uf-b-act); }
+#controls[data-uf-face="hero"] #skillzone .ability-btn.s1{ --plate1:var(--uf-s1-p1); --plate2:var(--uf-s1-p2); --rim2:var(--uf-s1-rim); --action:var(--uf-s1-act); }
+#controls[data-uf-face="hero"] #skillzone .ability-btn.s2{ --plate1:var(--uf-s2-p1); --plate2:var(--uf-s2-p2); --rim2:var(--uf-s2-rim); --action:var(--uf-s2-act); }
+#controls[data-uf-face="hero"] #skillzone .ability-btn.s3{ --plate1:var(--uf-s3-p1); --plate2:var(--uf-s3-p2); --rim2:var(--uf-s3-rim); --action:var(--uf-s3-act); }
+#controls[data-uf-face="hero"] #skillzone .ability-btn.s1 .ico-img{ filter:hue-rotate(var(--uf-ico-1)); }
+#controls[data-uf-face="hero"] #skillzone .ability-btn.s2 .ico-img{ filter:hue-rotate(var(--uf-ico-2)); }
+#controls[data-uf-face="hero"] #skillzone .ability-btn.s3 .ico-img{ filter:hue-rotate(var(--uf-ico-3)); }

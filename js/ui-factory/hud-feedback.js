@@ -188,6 +188,7 @@
   var heroKey = "", heroTok = 0;
   function syncHeroArt(){
     var p = pl(), key = p && p.classKey ? String(p.classKey) : ""; if(key===heroKey) return; heroKey = key;
+    try{ if(window.UIFactory && UIFactory.hero) UIFactory.hero.apply(key); }catch(_){}   // UF-HERO v1: cara, borde e ícono de Ataque del héroe
     var c = document.getElementById("controls"); if(!c) return; var tok = ++heroTok;
     if(!key || !/^[a-z0-9_]+$/.test(key)){ c.removeAttribute("data-uf-art"); return; }
     var url = "css/ui-factory/fx/hero/" + key + ".png", im = new Image();
