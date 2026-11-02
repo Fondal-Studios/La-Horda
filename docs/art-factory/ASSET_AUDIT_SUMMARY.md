@@ -8,9 +8,9 @@ Archivo máquina-legible: `ASSET_PRIORITY_QUEUE.json` (esquema `asset-priority-q
 
 | Prioridad | Significado | Base | Cromas/skins | Skins de set |
 |---|---|---|---|---|
-| P0 | CRÍTICO: roto/ausente/ilegible; bloquea o confunde al jugar | 1 | 0 | 1 |
-| P1 | ALTO: identidad muy distinta del Códice o preview≠sprite | 4 | 3 | 20 |
-| P2 | MEDIO: jugable con diferencias notables | 6 | 5 | 2 |
+| P0 | CRÍTICO: roto/ausente/ilegible; bloquea o confunde al jugar | 0 | 0 | 0 |
+| P1 | ALTO: identidad muy distinta del Códice o preview≠sprite | 4 | 3 | 21 |
+| P2 | MEDIO: jugable con diferencias notables | 7 | 5 | 2 |
 | P3 | BAJO: pulido | 19 | 11 | 4 |
 | P4 | MEJORA opcional | 0 | 1 | 2 |
 | OK | sin acción | 13 | 28 | 20 |
@@ -83,3 +83,7 @@ Myla, Ynara, Saelis, Aurelia (sets completos) y Maura (integración mixta) está
 2. Un ítem `cambiado` NO se da por resuelto: hay que re-revisarlo con arquitecto independiente.
 3. Orden de trabajo sugerido: P0 → P1 (previews duplicados y tinte de cromas son baratos y sin créditos de generación) → P1 de arte (Tanque, Guerrero, Libertador: identidad distinta del Códice) → P2 → P3/P4.
 4. Créditos: ver `estimated_credits_note` en el JSON; la API de Runway terminó la sesión con ~15 créditos.
+
+## Actualización 2026-11-02: puntos críticos
+- **P0 resueltos o reclasificados:** la muerte de Ynara (P2: añadidos 3 cuadros de caída generados sin créditos, pendientes de re-revisión) y `nocturno` (P1: el supuesto «desaparece al caminar hacia arriba» era un falso positivo de la tira de auditoría, verificado en el renderer real; sigue siendo un sprite ruidoso que pide repintar el set completo).
+- **Quedan 0 P0.** Los créditos de la API (15) no alcanzan para repintar sets completos.

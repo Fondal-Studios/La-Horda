@@ -15,19 +15,15 @@
  "method_note": "Las prioridades P* salen de reseñas visuales de agentes revisores independientes de esta sesión + métricas automáticas ruidosas; no sustituyen la revisión humana ni el visual gate de docs/ART_BIBLE.md.",
  "economy_note": "Decisión de diseño pendiente (dueño, 2026-11-02): las skins de set deberían pasar a ser skins comunes y los sets, ítems con mejoras no cosméticas. Hoy se venden por separado pero completar el set las regala; ver items[type=set].economy.",
  "summary": {
-  "P0": {
-   "set": 1,
-   "base": 1
-  },
   "P1": {
-   "set": 20,
+   "set": 21,
    "base": 4,
    "croma": 3
   },
   "P2": {
+   "base": 7,
    "croma": 5,
-   "set": 2,
-   "base": 6
+   "set": 2
   },
   "P3": {
    "base": 19,
@@ -51,7 +47,7 @@
    "type": "set",
    "champ": "guerrero",
    "name": "Jack el Destripador (Caballero Carmesí)",
-   "priority": "P0",
+   "priority": "P1",
    "status": "pendiente",
    "surfaces": {
     "in_game": {
@@ -70,9 +66,7 @@
      "preview_sha256": "562cf3192597a2baac3e8b9440f70260fd50292a7c409c94e3c952485a5a1de8"
     }
    },
-   "auto_flags": [
-    "estado_sin_cuadro:walk_up"
-   ],
+   "auto_flags": [],
    "auto_metrics": {
     "preview_exists": true,
     "hs": {
@@ -91,11 +85,6 @@
    "review": {
     "defects": [
      {
-      "code": "caminata",
-      "where": "paso espalda",
-      "note": "Cuadro de paso de espalda vacío (flag estado_sin_cuadro:walk_up): el personaje desaparece al caminar hacia arriba"
-     },
-     {
       "code": "nitidez",
       "where": "todas",
       "note": "Sprite muy ruidoso y borroso, píxeles grises sueltos, silueta ilegible frente al preview"
@@ -104,9 +93,14 @@
       "code": "muerte",
       "where": "muerte",
       "note": "Muerte es un bulto ruidoso apenas legible"
+     },
+     {
+      "code": "correccion_auditoria",
+      "where": "paso espalda",
+      "note": "FALSO POSITIVO verificado en el renderer real (2026-11-02): el personaje NO desaparece al caminar hacia arriba; el motor usa los cuadros de frente (fix up:\"down\" en CHAMP_PACK_FIX). Sigue siendo una limitación de arte (no hay vista de espalda)."
      }
     ],
-    "recommended_fix": "repintar set completo",
+    "recommended_fix": "repintar set completo (~140 créditos gen4_image 720p)",
     "effort": "alto",
     "fidelity_0_100": null
    },
@@ -125,8 +119,8 @@
    "type": "base",
    "champ": "ynara",
    "name": "Ynara, la Médica de los Refugios",
-   "priority": "P0",
-   "status": "integrado_en_rama_pr259",
+   "priority": "P2",
+   "status": "integrado_en_rama_pr259 (muerte corregida, requiere re-revision)",
    "surfaces": {
     "in_game": {
      "atlas": "assets/sprites/champions/ynara/atlas.png",
@@ -134,9 +128,9 @@
       96,
       96
      ],
-     "unique_cells": 24,
+     "unique_cells": 27,
      "atlas_kind": "archivo",
-     "atlas_sha256": "4587ce1747b52c15f67f2564c66910788fac9164ad1dcdb5c4e2afeba03378bd",
+     "atlas_sha256": "d0ab54b1361bd23d693518bbf4e141197cb03bddbb045a913a05e89967467565",
      "strip_evidence": "docs/art-factory/audit-20261101/assets/strips/base_ynara.png"
     },
     "store": {
@@ -165,9 +159,14 @@
       "code": "accion",
       "where": "acción",
       "note": "Acción es solo un saludo con la mano; sin lanzamiento de cura legible."
+     },
+     {
+      "code": "muerte",
+      "where": "muerte",
+      "note": "RESUELTO 2026-11-02: se añadieron 3 cuadros de caída (24-26) generados de forma determinista desde el reposo repintado (tools/factory/loop/fall.py, sin créditos). Es un recurso: un revisor independiente debe confirmarlo y, con créditos, conviene pintar una muerte real."
      }
     ],
-    "recommended_fix": "repintar celdas muerte y acción",
+    "recommended_fix": "re-revisar caída; opcional pintar muerte real",
     "effort": "medio",
     "fidelity_0_100": 85
    },
@@ -7989,5 +7988,14 @@
    }
   }
  ],
- "estimated_credits_note": "Estimación gruesa: celdas únicas × 5 créditos (gen4_image 720p) × 1,5 de margen para correcciones, solo para ítems cuyo arreglo recomendado es repintar. Con gen4_image_turbo (2 créditos, tope 200 imágenes/día) cuesta ~40 %. Es orientativa, no un presupuesto."
+ "estimated_credits_note": "Estimación gruesa: celdas únicas × 5 créditos (gen4_image 720p) × 1,5 de margen para correcciones, solo para ítems cuyo arreglo recomendado es repintar. Con gen4_image_turbo (2 créditos, tope 200 imágenes/día) cuesta ~40 %. Es orientativa, no un presupuesto.",
+ "changelog": [
+  {
+   "date": "2026-11-02",
+   "changes": [
+    "ynara: P0→P2 (3 cuadros de caída deterministas)",
+    "nocturno: P0→P1 (falso positivo de paso de espalda verificado en el juego)"
+   ]
+  }
+ ]
 }

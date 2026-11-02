@@ -11,10 +11,10 @@ await H.goto(p,site.url+'/');await p.waitForFunction(()=>typeof startRun==='func
 await p.waitForTimeout(1500);
 await p.evaluate(c=>{if(c)cromaEnsureLoaded(c);},CR);
 await p.waitForFunction(c=>!c||CHAMP_PACK['croma_'+c]?.ready,CR,{timeout:60000});
-const res=await p.evaluate(([k,cr])=>{let vt=1000;performance.now=()=>vt;netMatch=null;
+const res=await p.evaluate(([k,cr,sk])=>{let vt=1000;performance.now=()=>vt;netMatch=null;
  for(const ck in save.champions){const s=save.champions[ck];s.unlocked=true;s.level=20;s.equipment={};s.inventory=[];}
  save.champions[k].croma=cr||null;selectedClass=k;currentArena='bosque';startRun(3);
- document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));enemies=[];spawnTimer=1e9;arenaHazardTimer=1e9;state='playing';
+ document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));enemies=[];spawnTimer=1e9;arenaHazardTimer=1e9;state='playing';if(sk)player._codexSkin=sk;
  const cv=document.getElementById('game'),out={};
  for(const [name,v] of [['down',[0,1]],['side',[1,0]],['up',[0,-1]]]){
   player.x=1200;player.y=1200;player.animT=0;
@@ -26,7 +26,7 @@ const res=await p.evaluate(([k,cr])=>{let vt=1000;performance.now=()=>vt;netMatc
   const sheet=document.createElement('canvas');sheet.width=cw*8;sheet.height=ch*2;const sg=sheet.getContext('2d');sg.fillStyle='#2a2a2a';sg.fillRect(0,0,sheet.width,sheet.height);
   frames.forEach((c,i)=>sg.drawImage(c,(i%8)*cw,Math.floor(i/8)*ch));
   out[name]={png:sheet.toDataURL(),uniquePoses:new Set(hashes).size,frames:frames.length,moved:Math.hypot(player.x-1200,player.y-1200)};}
- joyVec={x:0,y:0};return out;},[CH,CR]);
+ joyVec={x:0,y:0};return out;},[CH,CR,process.env.SETSKIN||'']);
 for(const [n,r] of Object.entries(res)){fs.writeFileSync(path.join(OUT,`walk_${n}.png`),Buffer.from(r.png.split(',')[1],'base64'));delete r.png;}
 fs.writeFileSync(path.join(OUT,'result.json'),JSON.stringify({champ:CH,croma:CR,res,errs},null,1));console.log(JSON.stringify({res,errs}));
 }finally{await b.close();await site.close();}})().catch(e=>{console.error(e);process.exitCode=1;});
