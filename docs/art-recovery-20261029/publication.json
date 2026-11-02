@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-30T00:01:32.641241+00:00",
+  "baseUrl": "https://fondalstudios.com/la-horda/jugar/",
+  "scope": "Selected file bytes only; not gameplay, accounts, ownership, live multiplayer or full release certification",
+  "status": "NOT_CONFIRMED",
+  "checks": [
+    {
+      "path": "index.html",
+      "expectedSha256": "bf365fb5382220b93931ef88b288efe05b7064167ea5c3ed2464b67f99890f24",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/index.html",
+      "bytes": 68250,
+      "publicSha256": "bcdd451f46dca6ddcda8cdff20db849197922c6343bc6e62def534df3a687b8a",
+      "status": "DIFFERENT"
+    },
+    {
+      "path": "js/assets/codex-champion-meta.js",
+      "expectedSha256": "8dacab417d8794d98969126908f61ade0ad4b6c2d521dc736b0dc355e963e5ca",
+      "httpStatus": 404,
+      "status": "MISSING"
+    },
+    {
+      "path": "js/rendering/codex-champions.js",
+      "expectedSha256": "88c04452d29cda77d7cd0e03e5cfbc6080d0b06fcd0d1ba9bbd634c8e85f38d4",
+      "httpStatus": 404,
+      "status": "MISSING"
+    },
+    {
+      "path": "js/assets/champion-sprites.js",
+      "expectedSha256": "f3f62dbe7427f4e512b2e78a6ee32eb220bb2fcdc3b354ee6aece1af4a125fab",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/assets/champion-sprites.js",
+      "bytes": 47566,
+      "publicSha256": "ab671f3954d6e284e0d4e71b1961bd0ebd81e6c885ccffd04c2bf3234702a069",
+      "status": "DIFFERENT"
+    },
+    {
+      "path": "js/champions/ascension/art.js",
+      "expectedSha256": "ca1674f8e85a9488c930265b24d2aed952cbec7d96af2c49e5c9d012a0447f36",
+      "httpStatus": 200,
+      "finalUrl": "https://fondalstudios.com/la-horda/jugar/js/champions/ascension/art.js",
+      "bytes": 21678,
+      "publicSha256": "6da426eb56626ac1720b0e6da5bfef0eeac1211f61a0292441e0f4fc5ac9d7c2",
+      "status": "DIFFERENT"
+    },
+    {
+      "path": "assets/sprites/champions/tanque/codex-v1/atlas.png",
+      "expectedSha256": "4f5bcbb398380916ace4fbb8150ab41760cb84a0cb05796bbbcf19fb37c20274",
+      "httpStatus": 404,
+      "status": "MISSING"
+    },
+    {
+      "path": "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+      "expectedSha256": "03b1f0c853f2ef49cc42654b05c4eac6c2e5f8ed66678a113230bc9860a8d77d",
+      "httpStatus": 404,
+      "status": "MISSING"
+    },
+    {
+      "path": "assets/sprites/champions/aelith/codex-v1/atlas.png",
+      "expectedSha256": "bb45bc4a947441960b0d3406c0c5156df613cc3bbd049b7a4d985d8134bcb2f9",
+      "httpStatus": 404,
+      "status": "MISSING"
+    },
+    {
+      "path": "assets/sprites/champions/morveth/codex-v1/atlas.png",
+      "expectedSha256": "c5371a0976c768de7836f8b1dc305cad2dbe3457f57b25b41d06fc28c9c0ce52",
+      "httpStatus": 404,
+      "status": "MISSING"
+    },
+    {
+      "path": "assets/sprites/champions/veyra/codex-v1/atlas.png",
+      "expectedSha256": "c2e818a13df8cf27cc8220b24dfa87c998e4a2b1afbe718a85ffd2676043a2da",
+      "httpStatus": 404,
+      "status": "MISSING"
+    },
+    {
+      "path": "assets/sprites/champions/ilkan/codex-v1/atlas.png",
+      "expectedSha256": "d36f0b7d040a8c7fd8ee691cbb534559c65afd959de35a8634f6d75f46c41f6d",
+      "httpStatus": 404,
+      "status": "MISSING"
+    },
+    {
+      "path": "assets/sprites/champions/musashi/codex-v1/atlas.png",
+      "expectedSha256": "14ffbe96ee8e83eb6eb4381f5dfc318a002998a967bf2382dd5b285560f68993",
+      "httpStatus": 404,
+      "status": "MISSING"
+    },
+    {
+      "path": "assets/sprites/champions/cazadora/codex-v1/atlas.png",
+      "expectedSha256": "66ab0cfef533f169cc7a7e0459fa5e0a4ed52cf3c3336379e6caa0830446f933",
+      "httpStatus": 404,
+      "status": "MISSING"
+    },
+    {
+      "path": "assets/sprites/champions/nigromante/codex-v1/atlas.png",
+      "expectedSha256": "1726ff5252def7c6ab4fbb0e3b58771b1b9f955331a95eeb8d9c72c11c6c8ff3",
+      "httpStatus": 404,
+      "status": "MISSING"
+    }
+  ]
+}
