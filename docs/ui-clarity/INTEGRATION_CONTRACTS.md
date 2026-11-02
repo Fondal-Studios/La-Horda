@@ -16,3 +16,7 @@
 `css/ui-clarity/hud-clarity.css` contiene además dos correcciones de **layout** que sobreescriben (por especificidad) a archivos ajenos: objetivo×aliados (`css/hud-mobile.css`) y el banner de rareza de `css/beta-visual.css` en pantallas ≤ 700 px. Si esos archivos cambian de clases, actualizar §UC-LAYOUT de `hud-clarity.css`.
 
 **Madre Espora y otras ramas:** sin solapamiento de archivos con S0C/S0E, Build Evolution, Premium Skin Factory ni Art Factory (verificable con `git merge-tree`).
+
+## Bloque 2 — UC-SHOP v1 (tienda)
+**Consume:** `premiumPrice`, `premiumSkinOwned`, `premiumSkinName`, `premiumTier`, `PREMIUM_TIER_LABEL`, `premiumCollection`, `premiumChampSkinIds`, `premiumAvailable`, `PREMIUM.premium` (solo lectura); el DOM de `#shop-panel` (`[data-skin-premium]`, `[data-col-premium]`, `.shop-skin`, `canvas.shop-skin-anim`). **Envuelve** `gameConfirm` y `premiumBuySkin` (función global) para enriquecer el texto y observar el resultado: el flujo, el cobro y la autoridad del servidor no cambian. **Provee:** `window.UIClarityShop {version:1, contract:"UC-SHOP-1", stats}`, evento `uc:shop`.
+**index.html:** +2 líneas más (`css/ui-clarity/shop-clarity.css`, `js/ui-clarity/shop-clarity.js`, este último DESPUÉS de `js/ui/game-dialog.js` y `js/systems/premium.js`). **Archivo ajeno tocado:** `js/ui/shop-ui.js`, 1 línea de texto (T1). No se tocó `js/systems/premium.js`, `server/**` ni precios.
