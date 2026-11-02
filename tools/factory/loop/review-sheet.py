@@ -8,7 +8,10 @@ fw,fh,cols=P['fw'],P['fh'],P['cols'];cells=json.load(open(f'{root}/{champ}/run.j
 for i in cells:
     d=f'{root}/{champ}/f{i}'
     cs=[f for f in (os.listdir(d) if os.path.isdir(d) else []) if re.match(r'candidate_cell_g\dr\d\.png',f)]
-    if cs: pick[i]=max(cs,key=lambda f:(int(f[16]),int(f[18])))[len('candidate_cell_'):-4]
+    if cs:
+        pick[i]=max(cs,key=lambda f:(int(f[16]),int(f[18])))[len('candidate_cell_'):-4]
+        pf=f'{d}/candidate_cell_pf.png'                         # retoque determinista (máscara/halo): vale solo si es más nuevo que la última generación
+        if os.path.exists(pf) and os.path.getmtime(pf)>os.path.getmtime(f'{d}/candidate_cell_{pick[i]}.png'): pick[i]='pf'
     else: miss.append(i)
 json.dump({'pick':pick,'missing':miss},open(out+'_pick.json','w'))
 ok=sorted(pick);per=12;T=104
