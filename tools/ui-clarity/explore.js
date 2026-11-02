@@ -1,0 +1,11 @@
+const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch({args:['--no-sandbox']});
+const ctx=await b.newContext({viewport:{width:844,height:390},deviceScaleFactor:2,hasTouch:true,isMobile:true});
+await ctx.addInitScript(()=>{window.__campaignMode=true});
+const p=await ctx.newPage();await p.goto('http://127.0.0.1:8821/index.html?x='+Date.now());
+await p.waitForFunction(()=>typeof assetsAllReady==='function'&&assetsAllReady(),null,{timeout:120000});await p.waitForTimeout(1500);
+await p.addScriptTag({path:'/home/user/La-Horda-ui/tools/playtest/autopilot.js'});
+await p.evaluate(()=>{for(const c of Object.values(save.champions))c.unlocked=true;selectedClass='mago';currentArena='bosque';startRun(3);});
+await p.waitForTimeout(3500);
+const r=await p.evaluate(()=>{const out=[];for(const e of document.querySelectorAll('body *')){const cs=getComputedStyle(e);if(!['fixed','absolute'].includes(cs.position))continue;if(cs.display==='none'||cs.visibility==='hidden'||+cs.opacity===0)continue;const r=e.getBoundingClientRect();if(r.width<14||r.height<14)continue;if(r.right<0||r.bottom<0||r.left>innerWidth||r.top>innerHeight)continue;if(e.closest('.hidden'))continue;out.push((e.id?'#'+e.id:'')+(e.className&&typeof e.className==='string'?'.'+e.className.trim().split(/\s+/).join('.'):'')+' '+[r.left,r.top,r.width,r.height].map(Math.round).join(','));}return out});
+console.log(r.join('\n'));await p.screenshot({path:'/tmp/explore_844.png'});await b.close()})();
