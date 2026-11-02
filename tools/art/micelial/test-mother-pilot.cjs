@@ -12,6 +12,13 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/high-deta
   await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&MIC_MP_OK.mp_pilot&&MIC_MP_OK.mp_pilot_attack&&MIC_MP_OK.mp_bloom_key&&MIC_MP_OK.mp_bloom_trans&&MIC_MP_OK.mp_bloom_idle&&MIC_MP_OK.mp_bloom_attack&&MIC_MP_OK.mp_pilot_cast&&MIC_MP_OK.mp_bloom_cast&&MIC_MP_OK.mp_heart_key,null,{polling:100,timeout:120000});
   await page.evaluate(()=>{
    selectedClass='tanque';currentArena='micelial';lobbyAllies=[];netMatch=null;startRun(10);setState('playing');micMotherRevealStart();
+   // Isolated boss-animation gate: targets remain alive/in range and receive real
+   // damage, but random ally ultimates must not freeze/interrupt the tested AI.
+   // startRun -> resetRunTransients clears prior Axiom state; updateAllies skips
+   // isRemote targets (js/ai/allies.js), without changing host enemy simulation.
+   if(axiomFreezeTimer!==0||axiomForceQuitFlash!==0)throw Error('startRun failed to reset Axiom transient state');
+   for(const h of allies)h.isRemote=true;
+
    const e=micMotherEntity();window.motherProbe=e;boss=e;bossActive=true;activeChampion=null;micS.mo.st='fight';micS.mo.ph=1;e.micDormant=0;e.dmgTakenMult=1;player.hp=player.maxHp;
    for(let i=0;i<800;i++){for(const h of heroes)h.hp=h.maxHp;update(16);}
    player.x=0;player.y=260;e.hp=e.maxHp;e.alive=true;Object.assign(e,{packSet:null,packTimer:0,bossWind:null,hitFlash:0,stunTimer:0});
@@ -114,19 +121,21 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/high-deta
      for(let j=0;j<3;j++){for(const h of heroes){h.hp=h.maxHp;h.x=80;h.y=260;}update(16);}
      const calls=[],draw=ctx.drawImage;ctx.drawImage=function(...a){for(const key of ['mp_bloom_attack','mp_bloom_idle'])if(a[0]===MIC_MP[key])calls.push({key,sx:a[1]});return draw.apply(this,a)};
      try{render()}finally{ctx.drawImage=draw}
-     return {time:runElapsedMs,wind:!!window.motherProbe.bossWind,calls,hits:window.bloomHits.slice(),phase:micS.mo.ph};
+     return {time:runElapsedMs,wind:!!window.motherProbe.bossWind,calls,hits:window.bloomHits.slice(),phase:micS.mo.ph,network:micS.mo.net?{...micS.mo.net}:null,links:micNetLinks().map(n=>({hp:n.hp,alive:n.alive})),freeze:{timer:axiomFreezeTimer,caster:axiomFreezeCaster&&axiomFreezeCaster.classKey,flash:axiomForceQuitFlash},heroes:heroes.map(h=>({classKey:h.classKey,isRemote:!!h.isRemote,alive:h.alive})),entity:{hp:motherProbe.hp,alive:motherProbe.alive,stun:motherProbe.stunTimer,pack:motherProbe.packSet,timer:motherProbe.packTimer,exposure:motherProbe._expT,mcd:motherProbe.mcd},pose:_micMotherFrame(motherProbe,micS.mo,runElapsedMs),pilot:_micMotherPilotPose(motherProbe,micS.mo,runElapsedMs,_micMotherFrame(motherProbe,micS.mo,runElapsedMs))};
     });rows.push(row);
     if(!captured&&row.calls.some(c=>c.key==='mp_bloom_attack'&&c.sx===656)){await page.screenshot({path:path.join(OUT,viewport.width+'-bloom-'+actionName+'-impact.png')});captured=true;}
     await page.waitForTimeout(48);
    }
    await page.evaluate(()=>{bossHitHero=window.bloomHitOriginal;});
+   fs.writeFileSync(path.join(OUT,viewport.width+'-bloom-'+actionName+'-diagnostic.json'),JSON.stringify({rows,status:'PRE_ASSERT_DIAGNOSTIC_NOT_PASS'},null,2));
+   await page.screenshot({path:path.join(OUT,viewport.width+'-bloom-'+actionName+'-end-diagnostic.png')});
    assert(rows.every(r=>r.phase===2));
    assert.deepEqual([...new Set(rows.flatMap(r=>r.calls.filter(c=>c.key==='mp_bloom_attack').map(c=>c.sx)))].sort((a,b)=>a-b),[0,656,1312]);
    const impact=rows.find(r=>r.calls.some(c=>c.key==='mp_bloom_attack'&&c.sx===656)),hits=rows.at(-1).hits;
    assert(hits.length>0,actionName+' actual damage callback');assert(hits.some(t=>Math.abs(t-impact.time)<=96),actionName+' impact synchronized');
    assert(rows.filter(r=>r.wind).every(r=>r.calls.every(c=>c.key!=='mp_bloom_attack'||c.sx===0)),'no impact during warning');
    assert(rows.at(-1).calls.some(c=>c.key==='mp_bloom_idle'),'returns to evolved idle');
-   fs.writeFileSync(path.join(OUT,viewport.width+'-bloom-'+actionName+'-timing.json'),JSON.stringify({rows,hits,status:'PHASE2_PHYSICAL_ATTACK_PILOT_NOT_RELEASE'},null,2));
+   fs.writeFileSync(path.join(OUT,viewport.width+'-bloom-'+actionName+'-timing.json'),JSON.stringify({rows,hits,status:'PHASE2_PHYSICAL_ATTACK_PILOT_NOT_RELEASE',fixture:'Passive remote ally targets; actual host enemy AI/damage. Random allied crowd-control coverage is a separate encounter gate.'},null,2));
   }
   for(const phase of [1,2]){
    await page.evaluate(phase=>{

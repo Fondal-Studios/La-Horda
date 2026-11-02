@@ -40,6 +40,11 @@ fs.mkdirSync(OUT,{recursive:true});let browser,server;
   });
   await page.evaluate(()=>{
    selectedClass='tanque';currentArena='micelial';lobbyAllies=[];netMatch=null;startRun(10);setState('playing');micMotherRevealStart();
+   // Passive damageable targets isolate boss animation from random ally CC.
+   // startRun/resetRunTransients clears previous Axiom state; updateAllies has
+   // the established isRemote guard. Enemy AI and all boss VFX remain enabled.
+   if(axiomFreezeTimer!==0||axiomForceQuitFlash!==0)throw Error('startRun failed to reset Axiom transient state');
+   for(const h of allies)h.isRemote=true;
    const e=micMotherEntity();window.motherProbe=e;boss=e;bossActive=true;activeChampion=null;micS.mo.st='fight';micS.mo.ph=1;e.micDormant=0;e.dmgTakenMult=1;
    for(let i=0;i<800;i++){for(const h of heroes)h.hp=h.maxHp;update(16);}
    window.corePose=()=>_micMotherPilotPose(e,micS.mo,runElapsedMs,_micMotherFrame(e,micS.mo,runElapsedMs));
@@ -173,7 +178,7 @@ fs.mkdirSync(OUT,{recursive:true});let browser,server;
   await defaultPage.waitForFunction(()=>typeof _micMotherRenderedCoreAnchor==='function');
   assert(await defaultPage.evaluate(()=>!MIC_MOTHER_CORE_LAYER_ON&&_micMotherRenderedCoreAnchor({})===null),'default URL retains legacy glow');
   await defaultPage.close();
-  fs.writeFileSync(path.join(OUT,viewport.width+'-evidence.json'),JSON.stringify({pixels,domain,runtime,articulation,permanent,performanceEvidence,fallback,actions,scope:'Pixel invariants; actual node-cut domain lifecycle; real update/render exposed idle with production VFX. Actual AI whip and spore while exposed; other warning spells are routing-only, not full-AI proof. Phase3 closed-network still has permanent open heart. Visual review required.'},null,2));
+  fs.writeFileSync(path.join(OUT,viewport.width+'-evidence.json'),JSON.stringify({pixels,domain,runtime,articulation,permanent,performanceEvidence,fallback,actions,scope:'Passive damageable remote ally targets, not randomized-party gameplay coverage. Pixel invariants; actual node-cut domain lifecycle; real update/render exposed idle with production VFX. Actual AI whip and spore while exposed; other warning spells are routing-only, not full-AI proof. Phase3 closed-network still has permanent open heart. Visual review required.'},null,2));
   assert.deepEqual(errors,[]);await page.close();
  }
  console.log('CORE_LAYER_PIXEL_DOMAIN_RUNTIME_PASS_NOT_VISUAL_RELEASE');
