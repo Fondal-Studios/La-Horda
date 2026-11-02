@@ -1,0 +1,13 @@
+{
+ "round": "g1r1",
+ "palette_new": 0.498,
+ "palette_old": 0.512,
+ "silhouette_iou": 0.534,
+ "failures": [
+  "pose/silueta distinta del cuadro actual (IoU 0.53<0.55)"
+ ],
+ "warnings": [],
+ "prompt_fix": "Mantén exactamente la pose, proporciones y posición del cuadro @cur; solo cambia el diseño.",
+ "verdict": "CORREGIR",
+ "visual_review_required": true
+}
