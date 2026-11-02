@@ -1,0 +1,79 @@
+{
+ "id": "249",
+ "branch": "feature/beta-build-evolution",
+ "base": "6bedb01462943f4c7fcc69a2055b2dd2b158a4ee",
+ "evaluatedAt": "2026-11-02T10:00:52.311Z",
+ "steps": {
+  "architect": {
+   "verdict": "NEEDS_WORK",
+   "findings": [
+    {
+     "level": "W",
+     "id": "no-tests",
+     "msg": "Cambia gameplay (js/) sin pruebas asociadas."
+    }
+   ],
+   "files": 13,
+   "categories": {
+    "touchesArt": false,
+    "touchesChampions": false,
+    "touchesNet": false,
+    "touchesGameplay": true,
+    "isArtOnly": false
+   }
+  },
+  "merge": {
+   "clean": true,
+   "conflicts": [],
+   "worktree": "/tmp/eval-wt-249"
+  },
+  "diff": {
+   "files": 13,
+   "art": 0,
+   "shortstat": "13 files changed, 4788 insertions(+)"
+  },
+  "qaQuick": {
+   "exit": 0,
+   "summary": "PASS 38   FLAKY 0   FAIL 0   (de 38)",
+   "failed": []
+  },
+  "ownTests": [
+   {
+    "file": "tools/build-evolution/t_synergy_coop.js",
+    "exit": 1
+   },
+   {
+    "file": "tools/build-evolution/t_synergy_endless.js",
+    "exit": 2
+   },
+   {
+    "file": "tools/build-evolution/t_synergy_runtime.js",
+    "exit": 2
+   },
+   {
+    "file": "tools/build-evolution/t_synergy_static.js",
+    "exit": 0
+   }
+  ],
+  "ownTestsRerun": {
+   "t_synergy_static.js": "PASS 12 ramas; daño vs base -7.8%..+6.4% (16 semillas x 150 s); CPU -3.6%",
+   "t_synergy_endless.js": "PASS (con sitio en 8771)",
+   "t_synergy_runtime.js": "PASS 100 comprobaciones",
+   "t_synergy_coop.js": "PASS host+invitado con relay local real; la rama actúa en el anfitrión; sin errores"
+  }
+ },
+ "verdict": "ACEPTAR_TECNICO",
+ "improvement": {
+  "status": "accepted_with_caveats",
+  "evidence": "Añade ramas de evolución para 3 campeones ya existentes (no es un campeón nuevo: no aplica el gate de entrada). Variación de daño acotada a ±8 % frente a la base y coste de CPU menor; la rama elegida se aplica solo al héroe del invitado en cooperativo y no viaja estado interno por red. Ya está registrada como agente G en el plan S0.",
+  "caveats": [
+   "Cambio de jugabilidad: requiere playtest humano antes de jugadores",
+   "No sustituye una revisión de balance por rol (BALANCE_CAMPEONES.md)"
+  ]
+ },
+ "verdictInitial": "RECHAZAR",
+ "reason": [
+  "Los fallos iniciales eran del arnés: las pruebas navegan a puertos fijos (8771; 8822+relay 8832) que el evaluador no levantaba.",
+  "Con el servidor correcto pasan las 4; la QA rápida da 38/38; fusión limpia; sin hallazgos del arquitecto."
+ ]
+}
