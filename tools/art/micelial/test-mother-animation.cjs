@@ -177,4 +177,21 @@ check('network exposure preserves body and action while permanent heart survives
   const frozen=q._micMotherPilotPose(e,m,1000,q._micMotherFrame(e,m,1000));assert.deepEqual(JSON.parse(JSON.stringify(frozen)),JSON.parse(JSON.stringify(closed)));
  }
 });
+check('bark opening and closing follow authoritative timers without delaying vulnerability',()=>{
+ const q={Image:class{},VFX_SPR_EXTRA:{},MIC_CFG:{madre:{closeMs:2600,net:{openMs:7000}}},console,location:{search:'?motherArtPilot=1&motherBloomKey=1&motherHeartKey=1&motherCoreLayer=1'},URLSearchParams};vm.createContext(q);vm.runInContext(code,q);
+ const m={st:'fight',ph:1,net:{st:'open',t:0}},e={_expT:7000,crashVuln:true};
+ const pose=()=>q._micMotherPilotPose(e,m,123,q._micMotherFrame(e,m,123));
+ assert.equal(pose().coreAmount,0);assert.equal(e.crashVuln,true);
+ e._expT=6820;assert.equal(pose().coreAmount,.5);e._expT=6640;assert.equal(pose().coreAmount,1);
+ e._expT=0;e.crashVuln=false;m.net={st:'rebuild',t:0};assert.equal(pose().coreAmount,1);assert.equal(e.crashVuln,false);
+ m.net.t=160;assert.equal(pose().coreAmount,.5);m.net.t=320;assert(!pose().coreLayer);
+ m.ph=3;m.bloom=1;m.tr={to:3,t:1300};assert.equal(pose().coreAmount,.5);assert.equal(pose().key,'mp_bloom_idle');
+ m.tr.t=2600;assert.equal(pose().coreAmount,1);delete m.tr;m.heart=1;assert.equal(pose().coreAmount,1);
+});
+check('network glow shares successful core anchor, falls back intact and freezes with game time',()=>{
+ const calls=[],m={alive:true,type:'madre_espora',x:0,y:125,_expT:7000},q={MIC_CFG:{madre:{}},enemies:[m],runElapsedMs:1000,inView:()=>true,_micGlow:(...a)=>calls.push(a),_micMotherRenderedCoreAnchor:()=>({x:12,y:27}),ctx:{save(){},restore(){},beginPath(){},ellipse(){},stroke(){}}};
+ vm.createContext(q);vm.runInContext(fs.readFileSync(path.join(ROOT,'js/arenas/micelial/mic-network.js'),'utf8'),q);
+ q.micDrawNetHeart(2);assert.equal(calls[0][0],12);assert.equal(calls[0][1],27);assert(calls[0][2]<=36&&calls[0][4]<=.2);
+ q.micDrawNetHeart(99);assert.deepEqual(calls[0],calls[1]);q._micMotherRenderedCoreAnchor=()=>null;q.micDrawNetHeart(99);assert.equal(calls[2][1],-65);assert(calls[2][2]>=120);
+});
 console.log(JSON.stringify({pass,scope:'pose and contract unit tests only; visual/browser checks separate'}));

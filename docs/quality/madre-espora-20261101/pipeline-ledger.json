@@ -4,15 +4,16 @@
   "owner": "/root/animate_madre_espora",
   "branch": "fix/madre-espora-animation-20261101",
   "pr": 260,
-  "code_head_sha": "011b08b33d7ffa719d441682736cb9e150df44c8",
-  "updated_utc": "2026-11-02T01:35:00Z",
+  "code_head_sha": "e3c2e88b574b5815df964563f89b4d8ba644c972",
+  "updated_utc": "2026-11-02T01:50:00Z",
   "execution_policy": "Continue existing owner/slice; automation must not launch duplicate generations. No formal PR approval or unvalidated main merge.",
   "accepted_scopes": [
     "opt-in high-detail idle pilot",
     "opt-in high-detail phase1 anticipation/impact/recovery pilot",
     "opt-in bloom transformation and matching idle pilot (architect fc2e99b6 runtime GO)",
     "opt-in phase2 physical claw and whip attack pilot (architect796483a6 runtime GO)",
-    "opt-in immediate spore cast phase1/2 (architect7a9f1d80 runtime GO; warning packs routing-only)"
+    "opt-in immediate spore cast phase1/2 (architect7a9f1d80 runtime GO; warning packs routing-only)",
+    "opt-in core replacement during all-phase exposed idle/actions; architect e3c2e88b scoped GO, mobile final readability/open-close still pending"
   ],
   "not_accepted": [
     "full boss release",
@@ -21,17 +22,17 @@
     "remaining high-detail phases"
   ],
   "validation": {
-    "unit_pass": 32,
+    "unit_pass": 34,
     "browser_pass": 60,
     "phase1_timing": "Mother damage5350ms; first impact render5382ms (+32ms)",
     "actual_evidence_dir": "/tmp/mother-ci-232b2b20/high-detail-pilot",
-    "github_run_id": 41371494011,
-    "github_artifact_id": 13109945350,
+    "github_run_id": 41373558503,
+    "github_artifact_id": 13110398279,
     "independent_reviewer": "/root/review_art_pilot_architecture",
     "camera_and_boss_hooks": "PASS",
     "geometry_run_id": 41366010676,
     "geometry_artifact_id": 13107069326,
-    "latest_fungal_status": "BOTH_PASS on011b08b3, full baseline identical harness/seed",
+    "latest_fungal_status": "BOTH_PASS on e3c2e88b, full baseline identical harness/seed",
     "bloom_sequence_run_id": 41367462917,
     "bloom_sequence_artifact_id": 13107414710,
     "historical_fixture_failures": [
@@ -39,11 +40,12 @@
       "SAVE.guardado_viejo_conserva_el_hielo_y_abre_el_reino"
     ],
     "baseline_failures": [],
-    "local_pending_unit_pass": 34
+    "local_pending_unit_pass": 36,
+    "core_layer": "All16frame pixel invariants,6 domain lifecycle cases,4 actual exposed AI cases per viewport PASS"
   },
   "current_slice": {
-    "id": "all-phase-exposed-core-layer",
-    "status": "SOURCE_COMPOSITE_GO_RUNTIME_PENDING",
+    "id": "core-bark-opening-closing",
+    "status": "SOURCE_STAGES_GO_RUNTIME_PENDING",
     "active_generation": null,
     "last_generation": {
       "provider": "OpenAI built-in imagegen",
@@ -56,8 +58,8 @@
       ],
       "verdict": "SOURCE_GEOMETRY_GO_RUNTIME_PENDING"
     },
-    "next_gate": "Actual desktop/mobile VFX-on exposure/action/expiry/rebuild, strict pixel invariants and independent visual review; opening transition still pending",
-    "next_job_key": "madre-core-layer-runtime-v1",
+    "next_gate": "Source stage review then actual phase3/temporary opening and closing; mobile VFX-on readability, fallback, immediate vulnerability unchanged",
+    "next_job_key": "madre-core-opening-runtime-v1",
     "provider_task_id": null,
     "previous_rejected_generation": {
       "provider": "OpenAI built-in imagegen",
@@ -100,7 +102,7 @@
         "provider": "OpenAI built-in imagegen"
       }
     ],
-    "name": "Cached source-bound core replacement across body/action poses",
+    "name": "Articulated bark plates and aligned seed glow",
     "cast_sources": [
       {
         "phase": 1,
@@ -139,13 +141,13 @@
   },
   "inflight": {
     "owner": "/root/animate_madre_espora",
-    "scope": "Actual desktop/mobile VFX-on exposure/action/expiry/rebuild, strict pixel invariants and independent visual review; opening transition still pending",
-    "head": "011b08b33d7ffa719d441682736cb9e150df44c8",
-    "job_key": "madre-core-layer-runtime-v1",
+    "scope": "Source stage review then actual phase3/temporary opening and closing; mobile VFX-on readability, fallback, immediate vulnerability unchanged",
+    "head": "e3c2e88b574b5815df964563f89b4d8ba644c972",
+    "job_key": "madre-core-opening-runtime-v1",
     "provider_request_id": null,
     "output_file": "generated_images/exec-f099ebc7-0609-4ad9-b402-4b332ff21c97.png",
     "source_sha256": "a1cef5fdd0112222d19255527ece42c5dfbaa7278f6216c983b3cabdbfbf2160",
     "duplicate_jobs_forbidden": true,
-    "source_gate": "Six composite sheets GO for bounded runtime test; no new generation"
+    "source_gate": "Independent9-stage sourceGO;32MiB LRU added per review; actual motion/mobile/performance pending"
   }
 }
