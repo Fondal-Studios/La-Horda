@@ -1,0 +1,46 @@
+{
+ "id": "257",
+ "branch": "fix/runway-queue-connection",
+ "base": "a5fd03440e28acb7effc4a2a6aa6ab4458c1b7dd",
+ "evaluatedAt": "2026-11-02T10:05:08.583Z",
+ "steps": {
+  "architect": {
+   "verdict": "NEEDS_WORK",
+   "findings": [
+    {
+     "level": "W",
+     "id": "asset-size",
+     "msg": "Assets >2 MB: art-source/fondal/aelith-codex/source.png, art-source/fondal/brakk-codex/source.png, art-source/fondal/guerrero-codex/source.png, art-source/fondal/morveth-codex/source.png"
+    },
+    {
+     "level": "W",
+     "id": "conflict",
+     "msg": "Conflictos de fusión con a5fd03440e28acb7effc4a2a6aa6ab4458c1b7dd: docs/art-factory/README.md, tools/factory/README.md, tools/factory/art_factory.py, tools/factory/cli.js, tools/factory/requirements-test.txt, tools/factory/test_art_factory.py, tools/quality/qa-manifest.json, tools/quality/run-all.js"
+    }
+   ],
+   "files": 379,
+   "categories": {
+    "touchesArt": true,
+    "touchesChampions": true,
+    "touchesNet": true,
+    "touchesGameplay": true,
+    "isArtOnly": false
+   }
+  },
+  "merge": {
+   "clean": false,
+   "conflicts": [
+    "docs/art-factory/README.md",
+    "tools/factory/README.md",
+    "tools/factory/art_factory.py",
+    "tools/factory/cli.js",
+    "tools/factory/requirements-test.txt",
+    "tools/factory/test_art_factory.py",
+    "tools/quality/qa-manifest.json",
+    "tools/quality/run-all.js"
+   ],
+   "worktree": "/tmp/eval-wt-257"
+  }
+ },
+ "verdict": "CONFLICTO"
+}
