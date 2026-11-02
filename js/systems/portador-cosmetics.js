@@ -25,6 +25,17 @@ function portadorRecolorAtlas(P,C){
  const im=P.atlas,c=document.createElement("canvas");c.width=im.naturalWidth;c.height=im.naturalHeight;
  const g=c.getContext("2d",{willReadFrequently:true});g.drawImage(im,0,0);const I=g.getImageData(0,0,c.width,c.height),D=I.data;
  const colors=C.colors.map(x=>_hexRgb(x));let changed=0;
+ // headProtect:"bbox" — la protección de cara/pelo se mide sobre la silueta de CADA cuadro (no sobre fracciones fijas de la celda): evita el corte recto
+ // a media cara cuando la cabeza no ocupa justo el 48 % superior de la celda (cromas «Ceniza del Alba»). Sin esa opción, comportamiento anterior.
+ let HB=null;
+ if(C.headProtect==="bbox"){
+  HB={};const W=c.width;
+  for(let cy=0;cy<Math.floor(c.height/P.fh);cy++)for(let cx=0;cx<Math.floor(W/P.fw);cx++){
+   let y0=1e9,y1=-1,x0=1e9,x1=-1;
+   for(let yy=0;yy<P.fh;yy++)for(let xx=0;xx<P.fw;xx++)if(D[((cy*P.fh+yy)*W+cx*P.fw+xx)*4+3]>40){if(yy<y0)y0=yy;if(yy>y1)y1=yy;if(xx<x0)x0=xx;if(xx>x1)x1=xx;}
+   if(y1>=0)HB[cy*1e4+cx]={y0,y1,x0,x1};
+  }
+ }
  for(let y=0;y<c.height;y++)for(let x=0;x<c.width;x++){
   const i=(y*c.width+x)*4;if(!D[i+3])continue;
   const R=D[i],G=D[i+1],B=D[i+2],lum=.2126*R+.7152*G+.0722*B;
@@ -37,7 +48,9 @@ function portadorRecolorAtlas(P,C){
    if(a<=b?!(hue>=a&&hue<=b):!(hue>=a||hue<=b))continue;
   }
   const fx=(x%P.fw)/P.fw,fy=(y%P.fh)/P.fh;
-  if(fx>.27&&fx<.73&&fy<.48&&R>G*1.12&&G>B*1.12)continue; // face / brown hair
+  if(HB){const bb=HB[Math.floor(y/P.fh)*1e4+Math.floor(x/P.fw)];if(bb){const ly=y%P.fh,lx=x%P.fw,cxm=(bb.x0+bb.x1)/2,hw=(bb.x1-bb.x0)*.42;
+    if(ly<bb.y0+(bb.y1-bb.y0)*.42&&Math.abs(lx-cxm)<hw&&R>G*1.08&&G>B*1.08)continue;}} // cara y pelo marrón: cabeza = 42 % superior de la silueta
+  else if(fx>.27&&fx<.73&&fy<.48&&R>G*1.12&&G>B*1.12)continue; // face / brown hair
   const rgb=colors[lum<90?0:lum<150?1:lum<208?2:3];
   for(let j=0;j<3;j++)D[i+j]=rgb[j];changed++;
  }

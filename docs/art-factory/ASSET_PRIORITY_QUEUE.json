@@ -18,16 +18,16 @@
   "P1": {
    "set": 21,
    "base": 4,
-   "croma": 3
+   "croma": 1
   },
   "P2": {
    "base": 7,
-   "croma": 5,
+   "croma": 3,
    "set": 2
   },
   "P3": {
+   "croma": 15,
    "base": 19,
-   "croma": 11,
    "set": 4
   },
   "P4": {
@@ -1354,8 +1354,8 @@
    "type": "croma",
    "champ": "maura",
    "name": "Ceniza del Alba",
-   "priority": "P1",
-   "status": "pendiente",
+   "priority": "P2",
+   "status": "corregido_pendiente_revision",
    "surfaces": {
     "in_game": {
      "atlas": null,
@@ -1370,7 +1370,7 @@
     },
     "store": {
      "preview": "assets/sprites/champions/maura/croma-preview.png",
-     "preview_sha256": "b87e11608372893b4b7322702ac9f6f137e3b0a3a9ee67d97d239c3b00c9791b"
+     "preview_sha256": "376d1f5a7b18b70e147811a7fc68c7e1a567ea37477546656d490eb741a646f0"
     }
    },
    "auto_flags": [],
@@ -1400,12 +1400,17 @@
      {
       "code": "tinte",
       "where": "todas",
-      "note": "Hay un corte horizontal recto a la altura de los ojos: el pelo de arriba sigue castaño y la cara de abajo queda gris. El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
+      "note": "[RESUELTO 2026-11-02 en código: headProtect:\"bbox\" en js/systems/portador-cosmetics.js] Hay un corte horizontal recto a la altura de los ojos: el pelo de arriba sigue castaño y la cara de abajo queda gris. El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
      },
      {
       "code": "suelo_dibujado",
       "where": "paso frente/perfil/espalda",
       "note": "Debajo de los pies hay una base o sombra gris pintada dentro del sprite"
+     },
+     {
+      "code": "correccion",
+      "where": "tinte",
+      "note": "Corte recto de tinte corregido: la protección de cara/pelo se mide sobre la silueta de cada cuadro. Previews de tienda regenerados. Requiere re-revisión independiente."
      }
     ],
     "recommended_fix": "máscara",
@@ -1422,8 +1427,8 @@
    "type": "croma",
    "champ": "orsa",
    "name": "Ceniza del Alba",
-   "priority": "P1",
-   "status": "pendiente",
+   "priority": "P3",
+   "status": "corregido_pendiente_revision",
    "surfaces": {
     "in_game": {
      "atlas": null,
@@ -1438,7 +1443,7 @@
     },
     "store": {
      "preview": "assets/sprites/champions/orsa/croma-preview.png",
-     "preview_sha256": "071676cdcc84cf61d960a52ace3526e421eb90d2a1ea34cc2460cad56cc0719c"
+     "preview_sha256": "2201dc86383dfeb13576bf05106ccce5a51937233ec8445b8b7d997e35214687"
     }
    },
    "auto_flags": [],
@@ -1463,7 +1468,12 @@
      {
       "code": "tinte",
       "where": "todas",
-      "note": "El pelo queda partido por una línea recta: la mitad de arriba naranja y la de abajo gris (trenza gris). El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
+      "note": "[RESUELTO 2026-11-02 en código: headProtect:\"bbox\" en js/systems/portador-cosmetics.js] El pelo queda partido por una línea recta: la mitad de arriba naranja y la de abajo gris (trenza gris). El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
+     },
+     {
+      "code": "correccion",
+      "where": "tinte",
+      "note": "Corte recto de tinte corregido: la protección de cara/pelo se mide sobre la silueta de cada cuadro. Previews de tienda regenerados. Requiere re-revisión independiente."
      }
     ],
     "recommended_fix": "máscara",
@@ -1864,8 +1874,8 @@
    "type": "croma",
    "champ": "dariel",
    "name": "Ceniza del Alba",
-   "priority": "P2",
-   "status": "pendiente",
+   "priority": "P3",
+   "status": "corregido_pendiente_revision",
    "surfaces": {
     "in_game": {
      "atlas": null,
@@ -1880,7 +1890,7 @@
     },
     "store": {
      "preview": "assets/sprites/champions/dariel/croma-preview.png",
-     "preview_sha256": "389379642bb1d100a470ebb2d8413d94dabf98cc0889d0e6e777e86dd419ee2c"
+     "preview_sha256": "7359934bdabed1a880aabda1e4013dabc2e75e3032229641198cf6458713f823"
     }
    },
    "auto_flags": [],
@@ -1905,12 +1915,17 @@
      {
       "code": "tinte",
       "where": "todas",
-      "note": "Las puntas del pelo conservan el castaño y debajo hay un corte recto a gris. El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
+      "note": "[RESUELTO 2026-11-02 en código: headProtect:\"bbox\" en js/systems/portador-cosmetics.js] Las puntas del pelo conservan el castaño y debajo hay un corte recto a gris. El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
      },
      {
       "code": "nitidez",
       "where": "todas",
       "note": "Muy oscuro, con poco contraste sobre el fondo"
+     },
+     {
+      "code": "correccion",
+      "where": "tinte",
+      "note": "Corte recto de tinte corregido: la protección de cara/pelo se mide sobre la silueta de cada cuadro. Previews de tienda regenerados. Requiere re-revisión independiente."
      }
     ],
     "recommended_fix": "máscara",
@@ -2200,7 +2215,7 @@
     },
     "store": {
      "preview": "assets/sprites/champions/renko/croma-preview.png",
-     "preview_sha256": "3e57bb3253e9589852cab193e9c74012742e8de11c8d167de9f614d4ed8067c0"
+     "preview_sha256": "8cd478003a5d6e9fa284eca670581bb9be0f04eaeaf56a19515dd770f27c0b0d"
     }
    },
    "auto_flags": [],
@@ -2303,8 +2318,8 @@
    "type": "croma",
    "champ": "tibor",
    "name": "Ceniza del Alba",
-   "priority": "P2",
-   "status": "pendiente",
+   "priority": "P3",
+   "status": "corregido_pendiente_revision",
    "surfaces": {
     "in_game": {
      "atlas": null,
@@ -2319,7 +2334,7 @@
     },
     "store": {
      "preview": "assets/sprites/champions/tibor/croma-preview.png",
-     "preview_sha256": "ac0f81904a307991fa078f5051179fba761a96542677e1db0dcaf33ee608df55"
+     "preview_sha256": "39d0441ebc86350162d94a1dce897d832797bef9778e618b0c59ffbd451d5425"
     }
    },
    "auto_flags": [],
@@ -2344,12 +2359,17 @@
      {
       "code": "tinte",
       "where": "capucha",
-      "note": "La parte de arriba de la capucha queda beige y la de abajo gris, con transición por banda. El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
+      "note": "[RESUELTO 2026-11-02 en código: headProtect:\"bbox\" en js/systems/portador-cosmetics.js] La parte de arriba de la capucha queda beige y la de abajo gris, con transición por banda. El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
      },
      {
       "code": "nitidez",
       "where": "cara",
       "note": "La cara queda gris oscura, casi sin rasgos"
+     },
+     {
+      "code": "correccion",
+      "where": "tinte",
+      "note": "Corte recto de tinte corregido: la protección de cara/pelo se mide sobre la silueta de cada cuadro. Previews de tienda regenerados. Requiere re-revisión independiente."
      }
     ],
     "recommended_fix": "máscara",
@@ -2366,8 +2386,8 @@
    "type": "croma",
    "champ": "zahra",
    "name": "Ceniza del Alba",
-   "priority": "P2",
-   "status": "pendiente",
+   "priority": "P3",
+   "status": "corregido_pendiente_revision",
    "surfaces": {
     "in_game": {
      "atlas": null,
@@ -2382,7 +2402,7 @@
     },
     "store": {
      "preview": "assets/sprites/champions/zahra/croma-preview.png",
-     "preview_sha256": "d524d2c74258603bda9d653c24c3fe7112893c494edb3921ec088f6bdf65b264"
+     "preview_sha256": "302b07be357773e011aa9f5ce4fb67488c757dd53875cd44eb436b9ee21f1d0c"
     }
    },
    "auto_flags": [],
@@ -2407,7 +2427,12 @@
      {
       "code": "tinte",
       "where": "cabeza",
-      "note": "Las gafas naranjas se conservan y se cortan en línea recta contra el pelo gris. El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
+      "note": "[RESUELTO 2026-11-02 en código: headProtect:\"bbox\" en js/systems/portador-cosmetics.js] Las gafas naranjas se conservan y se cortan en línea recta contra el pelo gris. El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
+     },
+     {
+      "code": "correccion",
+      "where": "tinte",
+      "note": "Corte recto de tinte corregido: la protección de cara/pelo se mide sobre la silueta de cada cuadro. Previews de tienda regenerados. Requiere re-revisión independiente."
      }
     ],
     "recommended_fix": "máscara",
@@ -2799,7 +2824,7 @@
    "champ": "baltra",
    "name": "Ceniza del Alba",
    "priority": "P3",
-   "status": "pendiente",
+   "status": "corregido_pendiente_revision",
    "surfaces": {
     "in_game": {
      "atlas": null,
@@ -2814,7 +2839,7 @@
     },
     "store": {
      "preview": "assets/sprites/champions/baltra/croma-preview.png",
-     "preview_sha256": "206f8a0c82796ccb8a94648f9d18e1187fa27593ebc518c5bf234053dff987a1"
+     "preview_sha256": "01b6694aaed279d392c8f12bf033b4cb2d529d014b7e2322a8378697e4d44f57"
     }
    },
    "auto_flags": [],
@@ -2839,7 +2864,12 @@
      {
       "code": "tinte",
       "where": "casco",
-      "note": "La argolla superior conserva el cobre por la máscara de banda; el efecto es menor, pero viene del mismo bug"
+      "note": "[RESUELTO 2026-11-02 en código: headProtect:\"bbox\" en js/systems/portador-cosmetics.js] La argolla superior conserva el cobre por la máscara de banda; el efecto es menor, pero viene del mismo bug"
+     },
+     {
+      "code": "correccion",
+      "where": "tinte",
+      "note": "Corte recto de tinte corregido: la protección de cara/pelo se mide sobre la silueta de cada cuadro. Previews de tienda regenerados. Requiere re-revisión independiente."
      }
     ],
     "recommended_fix": "máscara",
@@ -3564,7 +3594,7 @@
     },
     "store": {
      "preview": "assets/sprites/champions/nahir/croma-preview.png",
-     "preview_sha256": "bf375175e4fd5aab6194ae8e0ec2dae34460d69b096941f3cd96c29f1a086d90"
+     "preview_sha256": "8167cc26d17047902abe149bb8ca0309cac53d120434a80da41a1d773e55df0a"
     }
    },
    "auto_flags": [],
@@ -4415,7 +4445,7 @@
     },
     "store": {
      "preview": "assets/sprites/champions/vesper/croma-preview.png",
-     "preview_sha256": "153ec3c78e8111872de9df4ada8a8de4334bb6e18dc79f96fc909dc4ae77e3dc"
+     "preview_sha256": "56f6474388ba16e372cddc19f1485fbc5d8ead8d0b00671bf14c4cbc25248ff9"
     }
    },
    "auto_flags": [],
@@ -4698,7 +4728,7 @@
     },
     "store": {
      "preview": "assets/sprites/champions/sira/croma-preview.png",
-     "preview_sha256": "155117dbd985942c769e6a3597e20bead4643084967ae125b1f35270dd6d73c4"
+     "preview_sha256": "b5a3b3860c946611913f169105797240a58c9cb608bcaef92127e4fed1f76747"
     }
    },
    "auto_flags": [],
@@ -7995,6 +8025,12 @@
    "changes": [
     "ynara: P0→P2 (3 cuadros de caída deterministas)",
     "nocturno: P0→P1 (falso positivo de paso de espalda verificado en el juego)"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "changes": [
+    "cromas Ceniza del Alba (maura, orsa, dariel, zahra, tibor, baltra): corte de tinte resuelto en código; previews regenerados; pendientes de re-revisión"
    ]
   }
  ]

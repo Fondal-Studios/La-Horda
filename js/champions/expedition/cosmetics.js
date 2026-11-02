@@ -1,7 +1,7 @@
 'use strict';
 CROMA_CRYSTALS.expedition={label:'Expedición de los Diez',short:'Expedición',color:'#e6dcc8'};
 for(const [k,p] of Object.entries(EXPEDITION)){
- CROMA_SKINS[k+'_croma']={champ:k,name:p.name+' — Ceniza del Alba',price:1000,crystal:'expedition',appearanceType:'croma',rarity:'Rara',tagline:'Marfil y ceniza al final del viaje.',lore:'El polvo del viaje cubre la ropa antes de que llegue la primera luz. '+p.name+' conserva sus herramientas: cambian los colores, no las promesas.',visualTheme:'Paleta ceniza y marfil; mismo vestuario y silueta.',collection:'Expedición de los Diez',preserveAuthoredArt:true,preview:'assets/sprites/champions/'+k+'/croma-preview.png',files:{},exPalette:{colors:['#45424b','#85808c','#bdb5b0','#eee6d5'],tint:'#eee6d5'}};
+ CROMA_SKINS[k+'_croma']={champ:k,name:p.name+' — Ceniza del Alba',price:1000,crystal:'expedition',appearanceType:'croma',rarity:'Rara',tagline:'Marfil y ceniza al final del viaje.',lore:'El polvo del viaje cubre la ropa antes de que llegue la primera luz. '+p.name+' conserva sus herramientas: cambian los colores, no las promesas.',visualTheme:'Paleta ceniza y marfil; mismo vestuario y silueta.',collection:'Expedición de los Diez',preserveAuthoredArt:true,preview:'assets/sprites/champions/'+k+'/croma-preview.png',files:{},exPalette:{colors:['#45424b','#85808c','#bdb5b0','#eee6d5'],tint:'#eee6d5',headProtect:'bbox'}};
 }
 const exCromaLoad=cromaEnsureLoaded;cromaEnsureLoaded=function(id){
  const d=exCromaLoad(id);if(!d?.exPalette||d._exBuilt)return d;d._exBuilt=true;
