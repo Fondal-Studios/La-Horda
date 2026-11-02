@@ -12,7 +12,8 @@ const overlaps=(a,b)=>Math.min(a.x+a.width,b.x+b.width)>Math.max(a.x,b.x)+.5&&Ma
   for(const [width,height] of [[568,320],[667,375],[740,360],[844,390],[1366,768]]){
    const ctx=await browser.newContext({viewport:{width,height},hasTouch:true,isMobile:width<1000});
    const p=await ctx.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
-   await p.goto(site.url+'/index.html');
+   // Exercise the real account gate even under WebDriver (production-supported URL).
+   await p.goto(site.url+'/index.html?account=1');
    const button=p.locator('#title-continue-btn'),footer=p.locator('#legal-title');
    await button.waitFor({state:'visible'});await p.waitForFunction(()=>!document.getElementById('title-continue-btn').disabled);
    const geometry=await p.evaluate(()=>{
