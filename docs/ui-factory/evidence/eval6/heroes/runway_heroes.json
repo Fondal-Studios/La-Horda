@@ -1,0 +1,1644 @@
+{
+ "label": "runway",
+ "n": 43,
+ "heroes": {
+  "tanque": {
+   "key": "tanque",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "8874/css/ui-factory/fx/hero/tanque.png\")",
+   "css": {
+    "--uf-b-act": "#97b6d9",
+    "--uf-s1-act": "#97d3d9",
+    "--uf-s2-act": "#97b6d9",
+    "--uf-s3-act": "#979ad9",
+    "--uf-b-p1": "#2c425a",
+    "--uf-s1-p1": "#2c565a",
+    "--uf-s2-p1": "#2c425a",
+    "--uf-s3-p1": "#2c2e5a"
+   },
+   "color": "#5f8fc4",
+   "motif": "smash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "i-factory/fx/hero/tanque.png\")",
+   "seq": [
+    [
+     1085,
+     "",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     1343,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "guerrero": {
+   "key": "guerrero",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "74/css/ui-factory/fx/hero/guerrero.png\")",
+   "css": {
+    "--uf-b-act": "#d99089",
+    "--uf-s1-act": "#d989a5",
+    "--uf-s2-act": "#d99089",
+    "--uf-s3-act": "#d9b289",
+    "--uf-b-p1": "#5a2722",
+    "--uf-s1-p1": "#5a2236",
+    "--uf-s2-p1": "#5a2722",
+    "--uf-s3-p1": "#5a3f22"
+   },
+   "color": "#c4544a",
+   "motif": "slash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "factory/fx/hero/guerrero.png\")",
+   "seq": [
+    [
+     475,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     686,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "mago": {
+   "key": "mago",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "1:8874/css/ui-factory/fx/hero/mago.png\")",
+   "css": {
+    "--uf-b-act": "#c297db",
+    "--uf-s1-act": "#a597db",
+    "--uf-s2-act": "#c297db",
+    "--uf-s3-act": "#db97d6",
+    "--uf-b-p1": "#4a2c5c",
+    "--uf-s1-p1": "#352c5c",
+    "--uf-s2-p1": "#4a2c5c",
+    "--uf-s3-p1": "#5c2c58"
+   },
+   "color": "#a15fc7",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "/ui-factory/fx/hero/mago.png\")",
+   "seq": [
+    [
+     129,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     391,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     691,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "soporte": {
+   "key": "soporte",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "1:8874/css/ui-factory/fx/hero/mago.png\")",
+   "css": {
+    "--uf-b-act": "#97d9b4",
+    "--uf-s1-act": "#97d998",
+    "--uf-s2-act": "#97d9b4",
+    "--uf-s3-act": "#97d9d1",
+    "--uf-b-p1": "#2c5a40",
+    "--uf-s1-p1": "#2c5a2c",
+    "--uf-s2-p1": "#2c5a40",
+    "--uf-s3-p1": "#2c5a55"
+   },
+   "color": "#5fc48c",
+   "motif": "beam",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "/ui-factory/fx/hero/mago.png\")",
+   "seq": [
+    [
+     173,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "segador": {
+   "key": "segador",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "874/css/ui-factory/fx/hero/segador.png\")",
+   "css": {
+    "--uf-b-act": "#da7373",
+    "--uf-s1-act": "#da73a0",
+    "--uf-s2-act": "#da7373",
+    "--uf-s3-act": "#daa073",
+    "--uf-b-p1": "#5b1212",
+    "--uf-s1-p1": "#5b1232",
+    "--uf-s2-p1": "#5b1212",
+    "--uf-s3-p1": "#5b3212"
+   },
+   "color": "#c62828",
+   "motif": "slash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "-factory/fx/hero/segador.png\")",
+   "seq": [
+    [
+     62,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     447,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     1057,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "axiom": {
+   "key": "axiom",
+   "art": "hero",
+   "face": "hero",
+   "atlas": ":8874/css/ui-factory/fx/hero/axiom.png\")",
+   "css": {
+    "--uf-b-act": "#7fe4d9",
+    "--uf-s1-act": "#7fe4ad",
+    "--uf-s2-act": "#7fe4d9",
+    "--uf-s3-act": "#7fc4e4",
+    "--uf-b-p1": "#1b625a",
+    "--uf-s1-p1": "#1b623b",
+    "--uf-s2-p1": "#1b625a",
+    "--uf-s3-p1": "#1b4c62"
+   },
+   "color": "#3ad6c4",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ui-factory/fx/hero/axiom.png\")",
+   "seq": [
+    [
+     78,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     166,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     231,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "profeta": {
+   "key": "profeta",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "874/css/ui-factory/fx/hero/profeta.png\")",
+   "css": {
+    "--uf-b-act": "#8de6d9",
+    "--uf-s1-act": "#8de6b2",
+    "--uf-s2-act": "#8de6d9",
+    "--uf-s3-act": "#8dcce6",
+    "--uf-b-p1": "#24635a",
+    "--uf-s1-p1": "#24633f",
+    "--uf-s2-p1": "#24635a",
+    "--uf-s3-p1": "#245163"
+   },
+   "color": "#4fd8c4",
+   "motif": "slash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "-factory/fx/hero/profeta.png\")",
+   "seq": [
+    [
+     55,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     477,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     588,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "musashi": {
+   "key": "musashi",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "874/css/ui-factory/fx/hero/musashi.png\")",
+   "css": {
+    "--uf-b-act": "#94c6e6",
+    "--uf-s1-act": "#94e6e1",
+    "--uf-s2-act": "#94c6e6",
+    "--uf-s3-act": "#94a3e6",
+    "--uf-b-p1": "#294d63",
+    "--uf-s1-p1": "#296360",
+    "--uf-s2-p1": "#294d63",
+    "--uf-s3-p1": "#293463"
+   },
+   "color": "#5aa8d8",
+   "motif": "slash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "-factory/fx/hero/musashi.png\")",
+   "seq": [
+    [
+     333,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     459,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "cazadora": {
+   "key": "cazadora",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "74/css/ui-factory/fx/hero/cazadora.png\")",
+   "css": {
+    "--uf-b-act": "#95bd89",
+    "--uf-s1-act": "#acbd89",
+    "--uf-s2-act": "#95bd89",
+    "--uf-s3-act": "#89bd94",
+    "--uf-b-p1": "#2a4722",
+    "--uf-s1-p1": "#3a4722",
+    "--uf-s2-p1": "#2a4722",
+    "--uf-s3-p1": "#22472a"
+   },
+   "color": "#5c9a4a",
+   "motif": "arrow",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "factory/fx/hero/cazadora.png\")",
+   "seq": [
+    [
+     55,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     520,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     702,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "nigromante": {
+   "key": "nigromante",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "/css/ui-factory/fx/hero/nigromante.png\")",
+   "css": {
+    "--uf-b-act": "#89d1b3",
+    "--uf-s1-act": "#89d194",
+    "--uf-s2-act": "#89d1b3",
+    "--uf-s3-act": "#89d0d1",
+    "--uf-b-p1": "#22553f",
+    "--uf-s1-p1": "#22552a",
+    "--uf-s2-p1": "#22553f",
+    "--uf-s3-p1": "#225455"
+   },
+   "color": "#4ab88a",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ctory/fx/hero/nigromante.png\")",
+   "seq": [
+    [
+     325,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     378,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "libertador": {
+   "key": "libertador",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "/css/ui-factory/fx/hero/libertador.png\")",
+   "css": {
+    "--uf-b-act": "#7a90c4",
+    "--uf-s1-act": "#7ab0c4",
+    "--uf-s2-act": "#7a90c4",
+    "--uf-s3-act": "#847ac4",
+    "--uf-b-p1": "#17274b",
+    "--uf-s1-p1": "#173d4b",
+    "--uf-s2-p1": "#17274b",
+    "--uf-s3-p1": "#1e174b"
+   },
+   "color": "#2f4f9a",
+   "motif": "bullet",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ctory/fx/hero/libertador.png\")",
+   "seq": [
+    [
+     606,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     819,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "ilkan": {
+   "key": "ilkan",
+   "art": "hero",
+   "face": "hero",
+   "atlas": ":8874/css/ui-factory/fx/hero/ilkan.png\")",
+   "css": {
+    "--uf-b-act": "#d1a87f",
+    "--uf-s1-act": "#d1847f",
+    "--uf-s2-act": "#d1a87f",
+    "--uf-s3-act": "#d1cb7f",
+    "--uf-b-p1": "#55381b",
+    "--uf-s1-p1": "#551f1b",
+    "--uf-s2-p1": "#55381b",
+    "--uf-s3-p1": "#55511b"
+   },
+   "color": "#b8793a",
+   "motif": "slash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ui-factory/fx/hero/ilkan.png\")",
+   "seq": [
+    [
+     40,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     451,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     509,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "ynara": {
+   "key": "ynara",
+   "art": "hero",
+   "face": "hero",
+   "atlas": ":8874/css/ui-factory/fx/hero/ynara.png\")",
+   "css": {
+    "--uf-b-act": "#ee92b8",
+    "--uf-s1-act": "#ee92e0",
+    "--uf-s2-act": "#ee92b8",
+    "--uf-s3-act": "#ee9492",
+    "--uf-b-p1": "#692843",
+    "--uf-s1-p1": "#69285f",
+    "--uf-s2-p1": "#692843",
+    "--uf-s3-p1": "#692928"
+   },
+   "color": "#ed8db5",
+   "motif": "beam",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ui-factory/fx/hero/ynara.png\")",
+   "seq": [
+    [
+     34,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     396,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     472,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "myla": {
+   "key": "myla",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "1:8874/css/ui-factory/fx/hero/myla.png\")",
+   "css": {
+    "--uf-b-act": "#e898b9",
+    "--uf-s1-act": "#e898dc",
+    "--uf-s2-act": "#e898b9",
+    "--uf-s3-act": "#e89998",
+    "--uf-b-p1": "#652c44",
+    "--uf-s1-p1": "#652c5d",
+    "--uf-s2-p1": "#652c44",
+    "--uf-s3-p1": "#652d2c"
+   },
+   "color": "#e99abb",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "/ui-factory/fx/hero/myla.png\")",
+   "seq": [
+    [
+     175,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     217,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "brasa": {
+   "key": "brasa",
+   "art": "hero",
+   "face": "hero",
+   "atlas": ":8874/css/ui-factory/fx/hero/brasa.png\")",
+   "css": {
+    "--uf-b-act": "#d9b085",
+    "--uf-s1-act": "#d98b85",
+    "--uf-s2-act": "#d9b085",
+    "--uf-s3-act": "#d9d485",
+    "--uf-b-p1": "#5b3d1f",
+    "--uf-s1-p1": "#5b231f",
+    "--uf-s2-p1": "#5b3d1f",
+    "--uf-s3-p1": "#5b571f"
+   },
+   "color": "#c58543",
+   "motif": "bullet",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ui-factory/fx/hero/brasa.png\")",
+   "seq": [
+    [
+     334,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     409,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "eslabon": {
+   "key": "eslabon",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "874/css/ui-factory/fx/hero/eslabon.png\")",
+   "css": {
+    "--uf-b-act": "#a5b1d4",
+    "--uf-s1-act": "#a5c5d4",
+    "--uf-s2-act": "#a5b1d4",
+    "--uf-s3-act": "#aea5d4",
+    "--uf-b-p1": "#363e57",
+    "--uf-s1-p1": "#364c57",
+    "--uf-s2-p1": "#363e57",
+    "--uf-s3-p1": "#3c3657"
+   },
+   "color": "#9195a1",
+   "motif": "smash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "-factory/fx/hero/eslabon.png\")",
+   "seq": [
+    [
+     50,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     363,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     416,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "morwen": {
+   "key": "morwen",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "8874/css/ui-factory/fx/hero/morwen.png\")",
+   "css": {
+    "--uf-b-act": "#ca92ba",
+    "--uf-s1-act": "#c292ca",
+    "--uf-s2-act": "#ca92ba",
+    "--uf-s3-act": "#ca92a2",
+    "--uf-b-p1": "#502845",
+    "--uf-s1-p1": "#4a2850",
+    "--uf-s2-p1": "#502845",
+    "--uf-s3-p1": "#502833"
+   },
+   "color": "#a46191",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "i-factory/fx/hero/morwen.png\")",
+   "seq": [
+    [
+     40,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     194,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     245,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "farolero": {
+   "key": "farolero",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "74/css/ui-factory/fx/hero/farolero.png\")",
+   "css": {
+    "--uf-b-act": "#d3c5a1",
+    "--uf-s1-act": "#d3afa1",
+    "--uf-s2-act": "#d3c5a1",
+    "--uf-s3-act": "#cbd3a1",
+    "--uf-b-p1": "#564c33",
+    "--uf-s1-p1": "#563d33",
+    "--uf-s2-p1": "#564c33",
+    "--uf-s3-p1": "#515633"
+   },
+   "color": "#bba56e",
+   "motif": "smash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "factory/fx/hero/farolero.png\")",
+   "seq": [
+    [
+     39,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     139,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     222,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "iria": {
+   "key": "iria",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "1:8874/css/ui-factory/fx/hero/iria.png\")",
+   "css": {
+    "--uf-b-act": "#aaabd6",
+    "--uf-s1-act": "#aabed6",
+    "--uf-s2-act": "#aaabd6",
+    "--uf-s3-act": "#bcaad6",
+    "--uf-b-p1": "#393a58",
+    "--uf-s1-p1": "#394758",
+    "--uf-s2-p1": "#393a58",
+    "--uf-s3-p1": "#463958"
+   },
+   "color": "#8889c1",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "/ui-factory/fx/hero/iria.png\")",
+   "seq": [
+    [
+     34,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     177,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     251,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "vesper": {
+   "key": "vesper",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "8874/css/ui-factory/fx/hero/vesper.png\")",
+   "css": {
+    "--uf-b-act": "#c8a5d4",
+    "--uf-s1-act": "#b3a5d4",
+    "--uf-s2-act": "#c8a5d4",
+    "--uf-s3-act": "#d4a5cc",
+    "--uf-b-p1": "#4e3657",
+    "--uf-s1-p1": "#403657",
+    "--uf-s2-p1": "#4e3657",
+    "--uf-s3-p1": "#573651"
+   },
+   "color": "#aa75bd",
+   "motif": "slash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "i-factory/fx/hero/vesper.png\")",
+   "seq": [
+    [
+     34,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     432,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     509,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "nahir": {
+   "key": "nahir",
+   "art": "hero",
+   "face": "hero",
+   "atlas": ":8874/css/ui-factory/fx/hero/nahir.png\")",
+   "css": {
+    "--uf-b-act": "#9ddad7",
+    "--uf-s1-act": "#9ddabd",
+    "--uf-s2-act": "#9ddad7",
+    "--uf-s3-act": "#9dc2da",
+    "--uf-b-p1": "#305b59",
+    "--uf-s1-p1": "#305b47",
+    "--uf-s2-p1": "#305b59",
+    "--uf-s3-p1": "#304a5b"
+   },
+   "color": "#68c6c2",
+   "motif": "slash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ui-factory/fx/hero/nahir.png\")",
+   "seq": [
+    [
+     136,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     347,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "baltra": {
+   "key": "baltra",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "8874/css/ui-factory/fx/hero/baltra.png\")",
+   "css": {
+    "--uf-b-act": "#aaced6",
+    "--uf-s1-act": "#aad6cb",
+    "--uf-s2-act": "#aaced6",
+    "--uf-s3-act": "#aabbd6",
+    "--uf-b-p1": "#395358",
+    "--uf-s1-p1": "#395850",
+    "--uf-s2-p1": "#395358",
+    "--uf-s3-p1": "#394558"
+   },
+   "color": "#8bb4bd",
+   "motif": "smash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "i-factory/fx/hero/baltra.png\")",
+   "seq": [
+    [
+     461,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     672,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "maura": {
+   "key": "maura",
+   "art": "hero",
+   "face": "hero",
+   "atlas": ":8874/css/ui-factory/fx/hero/maura.png\")",
+   "css": {
+    "--uf-b-act": "#b4c88e",
+    "--uf-s1-act": "#c8c38e",
+    "--uf-s2-act": "#b4c88e",
+    "--uf-s3-act": "#9bc88e",
+    "--uf-b-p1": "#404e26",
+    "--uf-s1-p1": "#4e4b26",
+    "--uf-s2-p1": "#404e26",
+    "--uf-s3-p1": "#2e4e26"
+   },
+   "color": "#879c60",
+   "motif": "smash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ui-factory/fx/hero/maura.png\")",
+   "seq": [
+    [
+     385,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     481,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "dariel": {
+   "key": "dariel",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "8874/css/ui-factory/fx/hero/dariel.png\")",
+   "css": {
+    "--uf-b-act": "#e2c69e",
+    "--uf-s1-act": "#e2a99e",
+    "--uf-s2-act": "#e2c69e",
+    "--uf-s3-act": "#e0e29e",
+    "--uf-b-p1": "#614d31",
+    "--uf-s1-p1": "#613831",
+    "--uf-s2-p1": "#614d31",
+    "--uf-s3-p1": "#606131"
+   },
+   "color": "#d6af77",
+   "motif": "beam",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "i-factory/fx/hero/dariel.png\")",
+   "seq": [
+    [
+     43,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     367,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     449,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "orsa": {
+   "key": "orsa",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "1:8874/css/ui-factory/fx/hero/orsa.png\")",
+   "css": {
+    "--uf-b-act": "#eac38f",
+    "--uf-s1-act": "#ea9b8f",
+    "--uf-s2-act": "#eac38f",
+    "--uf-s3-act": "#e9ea8f",
+    "--uf-b-p1": "#674b26",
+    "--uf-s1-p1": "#672f26",
+    "--uf-s2-p1": "#674b26",
+    "--uf-s3-p1": "#666726"
+   },
+   "color": "#dfa352",
+   "motif": "arrow",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "/ui-factory/fx/hero/orsa.png\")",
+   "seq": [
+    [
+     355,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     575,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "tibor": {
+   "key": "tibor",
+   "art": "hero",
+   "face": "hero",
+   "atlas": ":8874/css/ui-factory/fx/hero/tibor.png\")",
+   "css": {
+    "--uf-b-act": "#dcce9b",
+    "--uf-s1-act": "#dcb19b",
+    "--uf-s2-act": "#dcce9b",
+    "--uf-s3-act": "#cedc9b",
+    "--uf-b-p1": "#5c522e",
+    "--uf-s1-p1": "#5c3e2e",
+    "--uf-s2-p1": "#5c522e",
+    "--uf-s3-p1": "#535c2e"
+   },
+   "color": "#c9b365",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ui-factory/fx/hero/tibor.png\")",
+   "seq": [
+    [
+     272,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     399,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "zahra": {
+   "key": "zahra",
+   "art": "hero",
+   "face": "hero",
+   "atlas": ":8874/css/ui-factory/fx/hero/zahra.png\")",
+   "css": {
+    "--uf-b-act": "#f3ae8d",
+    "--uf-s1-act": "#f38d99",
+    "--uf-s2-act": "#f3ae8d",
+    "--uf-s3-act": "#f3da8d",
+    "--uf-b-p1": "#6d3c25",
+    "--uf-s1-p1": "#6d252d",
+    "--uf-s2-p1": "#6d3c25",
+    "--uf-s3-p1": "#6d5b25"
+   },
+   "color": "#ed8858",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ui-factory/fx/hero/zahra.png\")",
+   "seq": [
+    [
+     474,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     541,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "renko": {
+   "key": "renko",
+   "art": "hero",
+   "face": "hero",
+   "atlas": ":8874/css/ui-factory/fx/hero/renko.png\")",
+   "css": {
+    "--uf-b-act": "#d3c0a3",
+    "--uf-s1-act": "#d3aba3",
+    "--uf-s2-act": "#d3c0a3",
+    "--uf-s3-act": "#d1d3a3",
+    "--uf-b-p1": "#564934",
+    "--uf-s1-p1": "#563a34",
+    "--uf-s2-p1": "#564934",
+    "--uf-s3-p1": "#555634"
+   },
+   "color": "#a99a83",
+   "motif": "smash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ui-factory/fx/hero/renko.png\")",
+   "seq": [
+    [
+     42,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     216,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     274,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "sira": {
+   "key": "sira",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "1:8874/css/ui-factory/fx/hero/sira.png\")",
+   "css": {
+    "--uf-b-act": "#9fb7e1",
+    "--uf-s1-act": "#9fd3e1",
+    "--uf-s2-act": "#9fb7e1",
+    "--uf-s3-act": "#a49fe1",
+    "--uf-b-p1": "#324260",
+    "--uf-s1-p1": "#325660",
+    "--uf-s2-p1": "#324260",
+    "--uf-s3-p1": "#353260"
+   },
+   "color": "#8aa7da",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "/ui-factory/fx/hero/sira.png\")",
+   "seq": [
+    [
+     41,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     162,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     394,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "nano_gm": {
+   "key": "nano_gm",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "874/css/ui-factory/fx/hero/nano_gm.png\")",
+   "css": {
+    "--uf-b-act": "#eed592",
+    "--uf-s1-act": "#eead92",
+    "--uf-s2-act": "#eed592",
+    "--uf-s3-act": "#e0ee92",
+    "--uf-b-p1": "#695728",
+    "--uf-s1-p1": "#693b28",
+    "--uf-s2-p1": "#695728",
+    "--uf-s3-p1": "#5f6928"
+   },
+   "color": "#e8c56a",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "-factory/fx/hero/nano_gm.png\")",
+   "seq": [
+    [
+     283,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     349,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "facu_gm": {
+   "key": "facu_gm",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "874/css/ui-factory/fx/hero/facu_gm.png\")",
+   "css": {
+    "--uf-b-act": "#93c6ed",
+    "--uf-s1-act": "#93eded",
+    "--uf-s2-act": "#93c6ed",
+    "--uf-s3-act": "#939fed",
+    "--uf-b-p1": "#294d69",
+    "--uf-s1-p1": "#296969",
+    "--uf-s2-p1": "#294d69",
+    "--uf-s3-p1": "#293169"
+   },
+   "color": "#5aa8e4",
+   "motif": "smash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "-factory/fx/hero/facu_gm.png\")",
+   "seq": [
+    [
+     48,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     536,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     614,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "aurelia": {
+   "key": "aurelia",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "874/css/ui-factory/fx/hero/aurelia.png\")",
+   "css": {
+    "--uf-b-act": "#f6d68a",
+    "--uf-s1-act": "#f6a78a",
+    "--uf-s2-act": "#f6d68a",
+    "--uf-s3-act": "#e7f68a",
+    "--uf-b-p1": "#6f5823",
+    "--uf-s1-p1": "#6f3723",
+    "--uf-s2-p1": "#6f5823",
+    "--uf-s3-p1": "#646f23"
+   },
+   "color": "#f2c14e",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "-factory/fx/hero/aurelia.png\")",
+   "seq": [
+    [
+     58,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     405,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     541,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "khepri": {
+   "key": "khepri",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "8874/css/ui-factory/fx/hero/khepri.png\")",
+   "css": {
+    "--uf-b-act": "#82cab3",
+    "--uf-s1-act": "#82ca94",
+    "--uf-s2-act": "#82cab3",
+    "--uf-s3-act": "#82c2ca",
+    "--uf-b-p1": "#1d503f",
+    "--uf-s1-p1": "#1d5029",
+    "--uf-s2-p1": "#1d503f",
+    "--uf-s3-p1": "#1d4a50"
+   },
+   "color": "#3fae8a",
+   "motif": "slash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "i-factory/fx/hero/khepri.png\")",
+   "seq": [
+    [
+     51,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     290,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     373,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "velmira": {
+   "key": "velmira",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "874/css/ui-factory/fx/hero/velmira.png\")",
+   "css": {
+    "--uf-b-act": "#d59be5",
+    "--uf-s1-act": "#b59be5",
+    "--uf-s2-act": "#d59be5",
+    "--uf-s3-act": "#e59bd5",
+    "--uf-b-p1": "#572f63",
+    "--uf-s1-p1": "#412f63",
+    "--uf-s2-p1": "#572f63",
+    "--uf-s3-p1": "#632f58"
+   },
+   "color": "#c06bd8",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "-factory/fx/hero/velmira.png\")",
+   "seq": [
+    [
+     44,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     286,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     353,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "vhal": {
+   "key": "vhal",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "1:8874/css/ui-factory/fx/hero/vhal.png\")",
+   "css": {
+    "--uf-b-act": "#8b96f5",
+    "--uf-s1-act": "#8bc3f5",
+    "--uf-s2-act": "#8b96f5",
+    "--uf-s3-act": "#af8bf5",
+    "--uf-b-p1": "#242b6e",
+    "--uf-s1-p1": "#244b6e",
+    "--uf-s2-p1": "#242b6e",
+    "--uf-s3-p1": "#3c246e"
+   },
+   "color": "#6f7cf2",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "/ui-factory/fx/hero/vhal.png\")",
+   "seq": [
+    [
+     364,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     524,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "bront": {
+   "key": "bront",
+   "art": "hero",
+   "face": "hero",
+   "atlas": ":8874/css/ui-factory/fx/hero/bront.png\")",
+   "css": {
+    "--uf-b-act": "#aac3d6",
+    "--uf-s1-act": "#aad6d6",
+    "--uf-s2-act": "#aac3d6",
+    "--uf-s3-act": "#aab0d6",
+    "--uf-b-p1": "#394b58",
+    "--uf-s1-p1": "#395858",
+    "--uf-s2-p1": "#394b58",
+    "--uf-s3-p1": "#393d58"
+   },
+   "color": "#8aa4b8",
+   "motif": "smash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ui-factory/fx/hero/bront.png\")",
+   "seq": [
+    [
+     83,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     287,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     382,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "oriel": {
+   "key": "oriel",
+   "art": "hero",
+   "face": "hero",
+   "atlas": ":8874/css/ui-factory/fx/hero/oriel.png\")",
+   "css": {
+    "--uf-b-act": "#eb94a9",
+    "--uf-s1-act": "#eb94ce",
+    "--uf-s2-act": "#eb94a9",
+    "--uf-s3-act": "#eba594",
+    "--uf-b-p1": "#672938",
+    "--uf-s1-p1": "#672953",
+    "--uf-s2-p1": "#672938",
+    "--uf-s3-p1": "#673529"
+   },
+   "color": "#e05a7a",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ui-factory/fx/hero/oriel.png\")",
+   "seq": [
+    [
+     31,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     246,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     453,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "saelis": {
+   "key": "saelis",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "8874/css/ui-factory/fx/hero/saelis.png\")",
+   "css": {
+    "--uf-b-act": "#92cbee",
+    "--uf-s1-act": "#92eeea",
+    "--uf-s2-act": "#92cbee",
+    "--uf-s3-act": "#92a3ee",
+    "--uf-b-p1": "#28516a",
+    "--uf-s1-p1": "#286a66",
+    "--uf-s2-p1": "#28516a",
+    "--uf-s3-p1": "#28346a"
+   },
+   "color": "#9cd0f0",
+   "motif": "beam",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "i-factory/fx/hero/saelis.png\")",
+   "seq": [
+    [
+     410,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     466,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "solciju": {
+   "key": "solciju",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "874/css/ui-factory/fx/hero/solciju.png\")",
+   "css": {
+    "--uf-b-act": "#bd8091",
+    "--uf-s1-act": "#bd80ab",
+    "--uf-s2-act": "#bd8091",
+    "--uf-s3-act": "#bd8a80",
+    "--uf-b-p1": "#471c27",
+    "--uf-s1-p1": "#471c3a",
+    "--uf-s2-p1": "#471c27",
+    "--uf-s3-p1": "#47231c"
+   },
+   "color": "#923951",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "-factory/fx/hero/solciju.png\")",
+   "seq": [
+    [
+     422,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     487,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "veyra": {
+   "key": "veyra",
+   "art": "hero",
+   "face": "hero",
+   "atlas": ":8874/css/ui-factory/fx/hero/veyra.png\")",
+   "css": {
+    "--uf-b-act": "#c87b93",
+    "--uf-s1-act": "#c87bb5",
+    "--uf-s2-act": "#c87b93",
+    "--uf-s3-act": "#c8857b",
+    "--uf-b-p1": "#4f1829",
+    "--uf-s1-p1": "#4f1841",
+    "--uf-s2-p1": "#4f1829",
+    "--uf-s3-p1": "#4f1f18"
+   },
+   "color": "#ab3459",
+   "motif": "slash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ui-factory/fx/hero/veyra.png\")",
+   "seq": [
+    [
+     116,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     467,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     648,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "brakk": {
+   "key": "brakk",
+   "art": "hero",
+   "face": "hero",
+   "atlas": ":8874/css/ui-factory/fx/hero/brakk.png\")",
+   "css": {
+    "--uf-b-act": "#ddc6a3",
+    "--uf-s1-act": "#ddada3",
+    "--uf-s2-act": "#ddc6a3",
+    "--uf-s3-act": "#dbdda3",
+    "--uf-b-p1": "#5d4d34",
+    "--uf-s1-p1": "#5d3b34",
+    "--uf-s2-p1": "#5d4d34",
+    "--uf-s3-p1": "#5c5d34"
+   },
+   "color": "#cead7a",
+   "motif": "smash",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "ui-factory/fx/hero/brakk.png\")",
+   "seq": [
+    [
+     244,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     315,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "morveth": {
+   "key": "morveth",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "874/css/ui-factory/fx/hero/morveth.png\")",
+   "css": {
+    "--uf-b-act": "#c4d99e",
+    "--uf-s1-act": "#d9d59e",
+    "--uf-s2-act": "#c4d99e",
+    "--uf-s3-act": "#aad99e",
+    "--uf-b-p1": "#4b5b31",
+    "--uf-s1-p1": "#5b5831",
+    "--uf-s2-p1": "#4b5b31",
+    "--uf-s3-p1": "#395b31"
+   },
+   "color": "#a4c56a",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "-factory/fx/hero/morveth.png\")",
+   "seq": [
+    [
+     54,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     327,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     387,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  },
+  "aelith": {
+   "key": "aelith",
+   "art": "hero",
+   "face": "hero",
+   "atlas": "8874/css/ui-factory/fx/hero/aelith.png\")",
+   "css": {
+    "--uf-b-act": "#bda5db",
+    "--uf-s1-act": "#a6a5db",
+    "--uf-s2-act": "#bda5db",
+    "--uf-s3-act": "#d5a5db",
+    "--uf-b-p1": "#47365c",
+    "--uf-s1-p1": "#36365c",
+    "--uf-s2-p1": "#47365c",
+    "--uf-s3-p1": "#58365c"
+   },
+   "color": "#bfa7dc",
+   "motif": "orb",
+   "heroIcon": true,
+   "frameW": "132px",
+   "frameBg": "i-factory/fx/hero/aelith.png\")",
+   "seq": [
+    [
+     280,
+     "hero",
+     "hero",
+     "ico-hero"
+    ],
+    [
+     363,
+     "hero",
+     "hero",
+     "ico-hero"
+    ]
+   ]
+  }
+ },
+ "errors": []
+}
