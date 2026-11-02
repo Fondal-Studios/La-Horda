@@ -176,7 +176,7 @@ function netChampStripHTML(){
   return `<div class="net-hint">Tu guardián:</div><div class="net-champs">${btns}</div>`;
 }
 function netPickChamp(k){
-  if(!CLASSES[k] || !save.champions[k] || k===selectedClass) return;
+  if(!CLASSES[k] || !save.champions[k] || save.champions[k].unlocked!==true || !championPlayable(k) || k===selectedClass) return;
   if(netTakenChamps().has(k)){ showNetToast("Ese guardián ya lo usa otro jugador."); return; }
   selectedClass = k; netRememberChamp(k);
   if(net.role==="guest"){ netSend({t:"update", ready:false}); netSendLoadout(true); }

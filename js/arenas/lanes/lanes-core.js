@@ -19,6 +19,17 @@ function lanesOn(){ return !!LN; }
 function lanesRand(){ const s = LN.rng = (Math.imul(LN.rng, 1664525) + 1013904223) >>> 0; return s / 4294967296; }
 function lanesIsHuman(h){ return !!h && !(h.isBot || h.netName === "BOT"); }
 
+// Read ownership from the persistent profile, including while a temporary match is active.
+function lanesOwnedRoster(){
+  const real = LN && LN.snap ? LN.snap.save : save;
+  return Object.keys(CLASSES).filter(k=>real.champions && real.champions[k] && real.champions[k].unlocked === true && championPlayable(k));
+}
+function lanesOwnedSelection(requested){
+  const owned = lanesOwnedRoster();
+  if(requested) return owned.includes(requested) ? requested : null;
+  return owned.includes(selectedClass) ? selectedClass : (owned[0] || null);
+}
+
 /* ---------------- entrada y salida ---------------- */
 // Cambia al guardado TEMPORAL normalizado y crea el estado de la partida. `role`: "solo" | "host" | "guest" | "lobby".
 function lanesBegin(role, seed, mode){
@@ -27,7 +38,10 @@ function lanesBegin(role, seed, mode){
   const snap = {save, selectedClass, currentArena, lobbyAllies, endlessActive, endlessPending, divinaMode};
   LN = {snap, mode:mode || "cw", role:role||"solo", lobby:role === "lobby", rng:((seed||((Math.random()*4294967295)>>>0))>>>0)||7, t:0, ended:true, winner:-1, team:[], shots:[], feed:[], wave:0, size:5};
   save = defaultSave();
-  for(const id in save.champions){ const c = save.champions[id]; c.level = LN.mode === "coliseo" ? 10 : LANES.LEVEL0; c.xp = 0; c.unlocked = true; }   // (el Coliseo: todos al nivel 10; Guerra de Cristales: nivel 3 y suben en la partida)
+  for(const id in save.champions){ const c = save.champions[id]; c.level = LN.mode === "coliseo" ? 10 : LANES.LEVEL0; c.xp = 0; c.unlocked = !!(snap.save.champions[id] && snap.save.champions[id].unlocked);
+    const own = snap.save.champions[id];
+    if(own && own.unlocked) for(const key of ["croma", "cosmeticSkin", "ascSkin"]) if(Object.prototype.hasOwnProperty.call(own, key)) c[key] = own[key]; }   // (el Coliseo: todos al nivel 10; Guerra de Cristales: nivel 3 y suben en la partida)
+  for(const key of ["cromas", "cosmeticUnlocks"]) save[key] = JSON.parse(JSON.stringify(snap.save[key] || {}));
   save.tut = {training:1, basics:1, b_move:1, b_attack:1, b_skill:1, goalMission:1}; // sin tutoriales dentro de la partida
   divinaMode = false; endlessActive = false; endlessPending = false;
   LN.team = LN.mode === "coliseo" ? colNewTeams() : [lanesNewTeam(0), lanesNewTeam(1)];
@@ -53,7 +67,8 @@ function lanesStart(opts){
   opts = opts || {};
   const size = Math.max(2, Math.min(5, opts.size || 5));
   const roster = Object.keys(CLASSES).filter(k=>championBotEligible(k));
-  const mine = opts.champ && CLASSES[opts.champ] ? opts.champ : (CLASSES[selectedClass] ? selectedClass : roster[0]);
+  const mine = lanesOwnedSelection(opts.champ);
+  if(!mine) return false;
   const taken = [mine];
   const pick = (want)=>{ if(want && CLASSES[want] && !taken.includes(want)){ taken.push(want); return want; }
     const pool = roster.filter(k=>!taken.includes(k)); const k = pool[(Math.random()*pool.length)|0]; taken.push(k); return k; };

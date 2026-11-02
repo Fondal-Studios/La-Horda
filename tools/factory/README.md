@@ -107,3 +107,7 @@ node --test tools/factory/test-architects.js
 - **Runway produce conceptos**, no atlas 4×9. Un concepto entra al juego solo a través del Pintor/importador, Style Gate y revisión visual humana.
 - **Arquitecto de arte**: define dónde y en qué rama entra cada arte; `commit()` crea rama local + commit con las rutas del plan. No empuja, no abre PR, no marca aprobado.
 - **Arquitecto del juego**: veredictos `READY_FOR_MERGE_REVIEW` / `NEEDS_WORK` / `BLOCKED` (knownChampions tocado, credenciales, referencia de balance desincronizada, assets >2 MB, gameplay sin pruebas, conflictos). Es estático: los gates sugeridos deben ejecutarse sobre el commit exacto y la fusión la decide una persona.
+
+## Painter runtime installation
+
+`paint --install` and `tools/art/painter/install.py` require the hash-bound visual receipt documented in `docs/quality/owned-roster-20261029/REVIEW.md`. Numeric style PASS alone cannot authorize installation. Run `python -m unittest discover -s tools/art/painter -p test_install_review.py`.
