@@ -38,7 +38,7 @@ const startPlay=page=>page.evaluate(()=>{for(const ck in save.champions){const s
   await startPlay(page);
   const d0=await page.evaluate(()=>{const g=id=>getComputedStyle(document.getElementById(id));return{sk:g('skillzone').transform,jz:g('joyzone').transform,op:g('skillzone').opacity,b:document.getElementById('btn-basic').getBoundingClientRect().width};});
   ok(d0.sk==='none'&&d0.jz==='none'&&d0.op==='1','valores de fábrica: controles sin transform ni opacidad (experiencia de siempre)');
-  ok(Math.round(d0.b)===72,'valores de fábrica: botón Ataque 72 px');
+  ok(Math.round(d0.b)===92,'valores de fábrica: botón Ataque 92 px (UF-LAYOUT v1; antes 72)');
   // ataque "hold" como siempre
   const hold=await page.evaluate(async()=>{const b=document.getElementById('btn-basic'),r=b.getBoundingClientRect();
    const ev=t=>new PointerEvent(t,{pointerId:7,bubbles:true,clientX:r.left+10,clientY:r.top+10,pointerType:'touch'});
@@ -71,7 +71,7 @@ const startPlay=page=>page.evaluate(()=>{for(const ck in save.champions){const s
   const sc=await page.evaluate(()=>{const g=id=>document.getElementById(id).getBoundingClientRect(),op=getComputedStyle(document.getElementById('skillzone')).opacity;
    const out={op,vw:innerWidth,vh:innerHeight};for(const id of ['btn-basic','btn-s1','btn-s2','btn-s3','btn-ult','joy-base']){const r=g(id);out[id]={x:r.left,y:r.top,w:r.width,h:r.height};}return out;});
   ok(sc.op==='0.6','opacidad 60% aplicada a los botones');
-  ok(Math.round(sc['btn-basic'].w)===108,'tamaño 150%: botón Ataque 72 -> 108 px (vale '+Math.round(sc['btn-basic'].w)+')');
+  ok(Math.round(sc['btn-basic'].w)===138,'tamaño 150%: botón Ataque 92 -> 138 px (vale '+Math.round(sc['btn-basic'].w)+')');
   const bad2=['btn-basic','btn-s1','btn-s2','btn-s3','btn-ult','joy-base'].filter(id=>{const r=sc[id];return r.x<0||r.y<0||r.x+r.w>sc.vw+0.5||r.y+r.h>sc.vh+0.5;});
   ok(!bad2.length,'tamaño 150%: botones y joystick dentro de la pantalla '+(bad2.join(',')||''));
   const ids=['btn-basic','btn-s1','btn-s2','btn-s3','btn-ult'];let overlaps=[];

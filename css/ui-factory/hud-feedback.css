@@ -1,0 +1,104 @@
+/* css/ui-factory/hud-feedback.css — UI Factory · feedback de botones de combate (contrato UF-HUD v1).
+   Se carga DESPUÉS de controls.css. Usa las propiedades `scale` y `translate` (no `transform`) para no pisar
+   .aiming / animaciones del juego. No cambia tamaños ni posiciones: solo presentación de estado. */
+#controls .ability-btn, #controls #skillzone .ability-btn{ --uf-ring:255,207,92; }
+#controls .ability-btn .uf-fx, #controls #skillzone .ability-btn .uf-fx{ position:absolute; inset:-3px; border-radius:50%; pointer-events:none; z-index:3; opacity:0; border:3px solid rgb(var(--uf-ring)); }
+/* 1+2) presión inmediata y mantenida */
+#controls .ability-btn.uf-press, #controls #skillzone .ability-btn.uf-press{ scale:.9; filter:brightness(1.35) saturate(1.2); translate:0 2px;
+  box-shadow:0 1px 0 #03070e, 0 0 0 2px #03070e, inset 0 4px 8px #000b, 0 0 14px rgba(var(--uf-ring),.7); transition:none; }
+#controls .ability-btn.uf-press .uf-fx, #controls #skillzone .ability-btn.uf-press .uf-fx{ opacity:.95; inset:-5px; }
+#controls .ability-btn.uf-hold .uf-fx, #controls #skillzone .ability-btn.uf-hold .uf-fx{ animation:ufHold .7s ease-in-out infinite alternate; }
+@keyframes ufHold{ from{ opacity:.95; inset:-5px; } to{ opacity:.45; inset:-9px; } }
+/* R5: presionar un botón no disponible NO lo ilumina como uno disponible */
+#controls .ability-btn.cd.uf-press, #controls #skillzone .ability-btn.cd.uf-press, #controls .ability-btn.noen.uf-press, #controls #skillzone .ability-btn.noen.uf-press,
+#controls .ability-btn.uf-reject.uf-press, #controls #skillzone .ability-btn.uf-reject.uf-press{ filter:grayscale(.55) brightness(.95); scale:.95; box-shadow:0 1px 0 #03070e, 0 0 0 2px #03070e; }
+/* 3) activación confirmada: anillo que se expande + destello (distinto de la presión) */
+#controls .ability-btn.uf-confirm, #controls #skillzone .ability-btn.uf-confirm{ animation:ufConfirmBtn .34s ease-out; }
+#controls .ability-btn.uf-confirm .uf-fx, #controls #skillzone .ability-btn.uf-confirm .uf-fx{ border-color:#fff3c4; animation:ufConfirmRing .34s ease-out; }
+@keyframes ufConfirmBtn{ 0%{ scale:.9; filter:brightness(1.8); } 45%{ scale:1.12; filter:brightness(1.5); } 100%{ scale:1; filter:none; } }
+@keyframes ufConfirmRing{ 0%{ opacity:1; inset:-3px; border-width:4px; } 100%{ opacity:0; inset:-20px; border-width:1px; } }
+/* 5) bloqueado / sin recursos: sacudida corta + marca roja, sin ejecutar nada */
+#controls .ability-btn.uf-reject, #controls #skillzone .ability-btn.uf-reject{ animation:ufReject .26s linear; }
+#controls .ability-btn.uf-reject .uf-fx, #controls #skillzone .ability-btn.uf-reject .uf-fx{ opacity:1; border-color:#ff5a4a; border-style:dashed; }
+#controls .ability-btn.uf-reject[data-uf-reject="resources"] .uf-fx, #controls #skillzone .ability-btn.uf-reject[data-uf-reject="resources"] .uf-fx{ border-color:#6fb8ff; }
+@keyframes ufReject{ 0%,100%{ translate:0 0; } 25%{ translate:-4px 0; } 75%{ translate:4px 0; } }
+/* 4) cooldown visible aun con el dedo encima: el número no queda tapado por el escalado de presión */
+#controls .ability-btn.cd.uf-press .cd-overlay, #controls #skillzone .ability-btn.cd.uf-press .cd-overlay{ background:rgba(0,0,0,.72); }
+/* foco de teclado/mando consistente en todos los botones de combate */
+#controls .ability-btn:focus-visible, #controls #skillzone .ability-btn:focus-visible{ outline:3px solid #fff; outline-offset:3px; }
+/* movimiento reducido: sin escalado ni sacudidas, solo cambio de color/brillo */
+body.reduce-motion #controls .ability-btn.uf-press, body.reduce-motion #controls #skillzone .ability-btn.uf-press{ scale:1; translate:none; }
+body.reduce-motion #controls .ability-btn.uf-confirm, body.reduce-motion #controls .ability-btn.uf-reject,
+body.reduce-motion #controls .ability-btn.uf-confirm .uf-fx, body.reduce-motion #controls .ability-btn.uf-hold .uf-fx, body.reduce-motion #controls #skillzone .ability-btn.uf-confirm .uf-fx, body.reduce-motion #controls #skillzone .ability-btn.uf-hold .uf-fx{ animation:none; }
+body.reduce-motion #controls .ability-btn.uf-confirm .uf-fx, body.reduce-motion #controls #skillzone .ability-btn.uf-confirm .uf-fx{ opacity:1; }
+@media (prefers-reduced-motion:reduce){
+  #controls #skillzone .ability-btn.uf-press{ scale:1; translate:none; }
+  #controls #skillzone .ability-btn.uf-confirm, #controls #skillzone .ability-btn.uf-reject, #controls #skillzone .ability-btn.uf-confirm .uf-fx, #controls #skillzone .ability-btn.uf-hold .uf-fx{ animation:none; }
+  #controls .ability-btn.uf-press{ scale:1; translate:none; }
+  #controls .ability-btn.uf-confirm, #controls .ability-btn.uf-reject, #controls .ability-btn.uf-confirm .uf-fx, #controls .ability-btn.uf-hold .uf-fx{ animation:none; }
+}
+html.uf-off #controls .uf-fx{ display:none; }
+
+/* ---- animación por fotogramas (estilo GIF pixel-art; hojas generadas por tools/ui-factory/make-fx.py) ---- */
+#controls .ability-btn .uf-spr, #controls #skillzone .ability-btn .uf-spr{ position:absolute; inset:-55%; pointer-events:none; z-index:4; opacity:0;
+  background-repeat:no-repeat; background-size:100% 100%; image-rendering:pixelated; image-rendering:crisp-edges; }
+#controls .ability-btn.uf-press .uf-spr, #controls #skillzone .ability-btn.uf-press .uf-spr{
+  background-image:url("fx/press-spark.png"); background-size:600% 100%; animation:ufSprPress .24s steps(5) forwards, ufSprFade .24s linear forwards; }
+#controls .ability-btn.uf-confirm .uf-spr, #controls #skillzone .ability-btn.uf-confirm .uf-spr{
+  background-image:url("fx/confirm-burst.png"); background-size:800% 100%; animation:ufSprConfirm .34s steps(7) forwards, ufSprFade .34s linear forwards; }
+@keyframes ufSprPress{ from{ background-position:0 0; } to{ background-position:100% 0; } }
+@keyframes ufSprConfirm{ from{ background-position:0 0; } to{ background-position:100% 0; } }
+@keyframes ufSprFade{ 0%{ opacity:1; } 70%{ opacity:1; } 100%{ opacity:0; } }
+/* color por botón: la hoja es dorada; se desplaza el tono (no hay un archivo por color) */
+#btn-s1 .uf-spr{ filter:hue-rotate(150deg) saturate(1.4); } #btn-s2 .uf-spr{ filter:hue-rotate(215deg) saturate(1.3); }
+#btn-s3 .uf-spr{ filter:hue-rotate(95deg) saturate(1.3); } #btn-emerg .uf-spr, #btn-pact .uf-spr, #btn-revive .uf-spr{ filter:hue-rotate(75deg) saturate(1.3); }
+#controls .ability-btn.uf-reject .uf-spr{ animation:none; background-image:none; opacity:0; }
+/* ---- cooldown de la Definitiva: barrido radial + segundos ---- */
+#controls .ability-btn .uf-cd{ display:none; position:absolute; inset:0; border-radius:inherit; z-index:2; align-items:center; justify-content:center; pointer-events:none;
+  font-family:var(--font-retro, monospace); font-size:1.25rem; font-weight:700; color:#fff; text-shadow:2px 2px 0 #000, -1px -1px 0 #000;
+  background:conic-gradient(rgba(8,6,4,.72) calc(var(--ufcd,0) * 360deg), rgba(8,6,4,.18) 0); }
+#controls .ability-btn.uf-ultcd .uf-cd{ display:flex; }
+#controls .ability-btn.uf-ultcd .ico{ opacity:.5; filter:grayscale(.6); }
+#controls .ability-btn.uf-ultcd{ animation:none; box-shadow:0 3px 0 #03070e, 0 0 0 2px #03070e; }
+/* movimiento reducido: sin hojas animadas */
+body.reduce-motion #controls .ability-btn .uf-spr, body.reduce-motion #controls #skillzone .ability-btn .uf-spr{ display:none; }
+@media (prefers-reduced-motion:reduce){ #controls .ability-btn .uf-spr, #controls #skillzone .ability-btn .uf-spr{ display:none; } }
+html.uf-off #controls .uf-spr, html.uf-off #controls .uf-cd{ display:none; }
+
+/* ---- marcos pixel-art (UF-ART v1; hojas de tools/ui-factory/make-hud-frames.py). Van FUERA del botón: no tapan los colores de estado ---- */
+#controls .ability-btn .uf-frame, #controls #skillzone .ability-btn .uf-frame{ position:absolute; pointer-events:none; z-index:1; background-repeat:no-repeat; background-size:100% 100%;
+  image-rendering:pixelated; image-rendering:crisp-edges; transition:filter .12s; }
+#btn-basic .uf-frame{ background-image:url("fx/frame-basic.png"); width:108px; height:108px; left:-12px; top:-12px; }
+#btn-s1 .uf-frame{ background-image:url("fx/frame-s1.png"); width:66px; height:66px; left:-10px; top:-10px; }
+#btn-s2 .uf-frame{ background-image:url("fx/frame-s2.png"); width:66px; height:66px; left:-10px; top:-10px; }
+#btn-s3 .uf-frame{ background-image:url("fx/frame-s3.png"); width:66px; height:66px; left:-10px; top:-10px; }
+#btn-ult .uf-frame{ background-image:url("fx/frame-ult.png"); width:76px; height:76px; left:-12px; top:-12px; }
+#btn-emerg .uf-frame, #btn-pact .uf-frame{ background-image:url("fx/frame-sec.png"); width:58px; height:58px; left:-9px; top:-9px; }
+/* el marco cuenta el estado: apagado en cooldown / sin energía / bloqueado, brillante al presionar */
+#controls .ability-btn.cd .uf-frame, #controls .ability-btn.uf-ultcd .uf-frame{ filter:grayscale(.75) brightness(.75); }
+#controls .ability-btn.noen .uf-frame{ filter:saturate(.45) brightness(.85); }
+#controls .ability-btn.locked .uf-frame{ filter:grayscale(1) brightness(.6); }
+#controls .ability-btn.uf-press .uf-frame{ filter:brightness(1.3) saturate(1.2); }
+#controls .ability-btn.ready .uf-frame, #controls .ability-btn.active .uf-frame{ filter:drop-shadow(0 0 3px rgba(255,214,120,.55)); }
+html.uf-off #controls .uf-frame{ display:none; }
+
+/* ---- UF-ART v2: atlas por héroe (392×132: basic 132 · skill 80 · ult 112 · sec 68; ver css/ui-factory/fx/hero/atlas.json) ---- */
+#controls[data-uf-art="hero"] #skillzone .ability-btn .uf-frame{ background-image:var(--uf-atlas); background-size:392px 132px; filter:none; }
+#controls[data-uf-art="hero"] #skillzone #btn-basic .uf-frame{ background-position:0 0; width:132px; height:132px; left:-24px; top:-24px; }
+#controls[data-uf-art="hero"] #skillzone #btn-s1 .uf-frame, #controls[data-uf-art="hero"] #skillzone #btn-s2 .uf-frame, #controls[data-uf-art="hero"] #skillzone #btn-s3 .uf-frame{ background-position:-132px 0; width:80px; height:80px; left:-17px; top:-17px; }
+#controls[data-uf-art="hero"] #skillzone #btn-ult .uf-frame{ background-position:-212px 0; width:112px; height:112px; left:-30px; top:-30px; }
+#controls[data-uf-art="hero"] #skillzone #btn-emerg .uf-frame, #controls[data-uf-art="hero"] #skillzone #btn-pact .uf-frame{ background-position:-324px 0; width:68px; height:68px; left:-14px; top:-14px; }
+#controls[data-uf-art="hero"] #skillzone .ability-btn.cd .uf-frame, #controls[data-uf-art="hero"] #skillzone .ability-btn.uf-ultcd .uf-frame{ filter:grayscale(.8) brightness(.7); }
+#controls[data-uf-art="hero"] #skillzone .ability-btn.noen .uf-frame{ filter:saturate(.5) brightness(.85); }
+#controls[data-uf-art="hero"] #skillzone .ability-btn.locked .uf-frame{ filter:grayscale(1) brightness(.6); }
+#controls[data-uf-art="hero"] #skillzone .ability-btn.uf-press .uf-frame{ filter:brightness(1.3) saturate(1.15); }
+#controls[data-uf-art="hero"] #skillzone .ability-btn.ready .uf-frame, #controls[data-uf-art="hero"] #skillzone .ability-btn.active .uf-frame{ filter:drop-shadow(0 0 3px rgba(255,255,255,.4)); }
+
+/* ---- UF-HERO v1: cara y borde de los botones con el color del héroe (variables que fija js/ui-factory/hero-buttons.js) ---- */
+#controls[data-uf-face="hero"] #skillzone .ability-btn.basic{ --plate1:var(--uf-b-p1); --plate2:var(--uf-b-p2); --rim2:var(--uf-b-rim); --action:var(--uf-b-act); }
+#controls[data-uf-face="hero"] #skillzone .ability-btn.s1{ --plate1:var(--uf-s1-p1); --plate2:var(--uf-s1-p2); --rim2:var(--uf-s1-rim); --action:var(--uf-s1-act); }
+#controls[data-uf-face="hero"] #skillzone .ability-btn.s2{ --plate1:var(--uf-s2-p1); --plate2:var(--uf-s2-p2); --rim2:var(--uf-s2-rim); --action:var(--uf-s2-act); }
+#controls[data-uf-face="hero"] #skillzone .ability-btn.s3{ --plate1:var(--uf-s3-p1); --plate2:var(--uf-s3-p2); --rim2:var(--uf-s3-rim); --action:var(--uf-s3-act); }
+#controls[data-uf-face="hero"] #skillzone .ability-btn.s1 .ico-img{ filter:hue-rotate(var(--uf-ico-1)); }
+#controls[data-uf-face="hero"] #skillzone .ability-btn.s2 .ico-img{ filter:hue-rotate(var(--uf-ico-2)); }
+#controls[data-uf-face="hero"] #skillzone .ability-btn.s3 .ico-img{ filter:hue-rotate(var(--uf-ico-3)); }
