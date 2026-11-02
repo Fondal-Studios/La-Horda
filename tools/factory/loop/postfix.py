@@ -34,3 +34,9 @@ elif cmd=='halo':
             Y,X=yy+dy,xx+dx
             if 0<=Y<t.shape[0] and 0<=X<t.shape[1] and t[Y,X,3]<=40: t[Y,X]=halo[yy,xx]
         Image.fromarray(t).save(path(d,'pf'));print('halo',d,'dy',dy,'dx',dx)
+if cmd=='ground':
+    # Borra suelo/polvo dibujado: en las últimas filas se conserva solo lo que está dentro del ancho de los pies medido unas filas más arriba (±3 px).
+    for d in sys.argv[4:]:
+        d=int(d);t=load(d);ys=np.where((t[:,:,3]>40).any(1))[0];b=int(ys.max())
+        ref=np.where((t[b-9:b-6,:,3]>40).any(0))[0];lo,hi=int(ref.min())-3,int(ref.max())+3
+        t[b-5:b+1,:lo]=0;t[b-5:b+1,hi+1:]=0;Image.fromarray(t).save(path(d,'pf'));print('ground',d,lo,hi)
