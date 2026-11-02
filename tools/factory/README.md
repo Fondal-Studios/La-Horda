@@ -92,3 +92,18 @@ Pruebas: `node --test tools/factory/test-animation-contract.js`; el canario de L
 
 ## Art Factory 2.0 (S0D)
 `python3 tools/factory/art_factory.py audit|director|evaluate|batch|reconstruct|integrate` — inventario, referencias del director, evaluador calibrado, motor de reconstrucción con libro de intentos y comprobación de integración. Ver `docs/art-factory/README.md` y `BLOQUEOS.md`.
+
+## Runway y los dos arquitectos
+
+```sh
+node tools/factory/cli.js runway status                          # saldo de créditos (la clave la inyecta el proxy; no hay claves en el repo)
+node tools/factory/cli.js runway image <id> "<prompt>"           # concepto en art-source/runway/<id>/ + receipt.json (GENERATED_NOT_APPROVED); tope RUNWAY_MAX_CREDITS (40)
+node tools/factory/cli.js architect-art plan <staging>           # clasifica concepto/atlas, valida recibo y hashes, lista los pasos y la rama art/<id>-<fecha>
+node tools/factory/cli.js architect-game assess <rama|commit>    # valora la rama contra origin/main: reglas del repo + simulación de fusión (merge-tree)
+node tools/factory/cli.js architect-game queue --limit=N --out=docs/production/architect-queue-<fecha>.json
+node --test tools/factory/test-architects.js
+```
+
+- **Runway produce conceptos**, no atlas 4×9. Un concepto entra al juego solo a través del Pintor/importador, Style Gate y revisión visual humana.
+- **Arquitecto de arte**: define dónde y en qué rama entra cada arte; `commit()` crea rama local + commit con las rutas del plan. No empuja, no abre PR, no marca aprobado.
+- **Arquitecto del juego**: veredictos `READY_FOR_MERGE_REVIEW` / `NEEDS_WORK` / `BLOCKED` (knownChampions tocado, credenciales, referencia de balance desincronizada, assets >2 MB, gameplay sin pruebas, conflictos). Es estático: los gates sugeridos deben ejecutarse sobre el commit exacto y la fusión la decide una persona.
