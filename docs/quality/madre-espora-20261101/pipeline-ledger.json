@@ -4,8 +4,8 @@
   "owner": "/root/animate_madre_espora",
   "branch": "fix/madre-espora-animation-20261101",
   "pr": 260,
-  "code_head_sha": "3a1b2c0c48b1f4c40557c1be01d0f225e856a71b",
-  "updated_utc": "2026-11-02T02:36:00Z",
+  "code_head_sha": "23d9ed907028067084d4095610517650f5932b32",
+  "updated_utc": "2026-11-02T03:03:00Z",
   "execution_policy": "Continue existing owner/slice; automation must not launch duplicate generations. No formal PR approval or unvalidated main merge.",
   "accepted_scopes": [
     "opt-in high-detail idle pilot",
@@ -15,7 +15,9 @@
     "opt-in immediate spore cast phase1/2 (architect7a9f1d80 runtime GO; warning packs routing-only)",
     "opt-in core replacement during all-phase exposed idle/actions; architect e3c2e88b scoped GO, mobile final readability/open-close still pending",
     "opt-in articulated bark opening/closing and aligned seed cue; architect c7ba1360 scoped GO",
-    "opt-in authored three-pose death collapse; architect3a1b2c0c runtime GO, not smooth continuous collapse"
+    "opt-in authored three-pose death collapse; architect3a1b2c0c runtime GO, not smooth continuous collapse",
+    "opt-in grounded reveal reusing articulated cyan poses; architect a479b67b scoped GO",
+    "warning spell routes + ROI byte-equivalence; architect23d9ed90 scoped GO"
   ],
   "not_accepted": [
     "full boss release",
@@ -24,17 +26,17 @@
     "remaining high-detail phases"
   ],
   "validation": {
-    "unit_pass": 37,
+    "unit_pass": 38,
     "browser_pass": 60,
     "phase1_timing": "Mother damage5350ms; first impact render5382ms (+32ms)",
     "actual_evidence_dir": "/tmp/mother-ci-232b2b20/high-detail-pilot",
-    "github_run_id": 41377608170,
-    "github_artifact_id": 13112092920,
+    "github_run_id": 41379860173,
+    "github_artifact_id": 13113381946,
     "independent_reviewer": "/root/review_art_pilot_architecture",
     "camera_and_boss_hooks": "PASS",
     "geometry_run_id": 41366010676,
     "geometry_artifact_id": 13107069326,
-    "latest_fungal_status": "BOTH_PASS3a1b2c0c",
+    "latest_fungal_status": "BOTH_PASS23d9ed90",
     "bloom_sequence_run_id": 41367462917,
     "bloom_sequence_artifact_id": 13107414710,
     "historical_fixture_failures": [
@@ -44,12 +46,14 @@
     "baseline_failures": [],
     "local_pending_unit_pass": 38,
     "core_layer": "144 pose/stage pixel cases per viewport + lifecycle + actual AI/openclose PASS",
-    "performance": "Retained cache<=32MiB; CI cold median9.4\u201310ms max16.3ms, warm<=.1ms; not device certification",
-    "death": "Actual killEnemy cleanup +4700/6600/8000/9000 +10500 victoryonce/rewardidempotence PASS"
+    "performance": "ROI CI cold median6.3\u20136.4ms max18.4ms; warm max2.2ms oneoutlier;32MiBretainedcache. Not physicaldevice60fps certification",
+    "death": "Actual killEnemy cleanup +4700/6600/8000/9000 +10500 victoryonce/rewardidempotence PASS",
+    "roi_equivalence": "144 wholeRGBA old/new cases byte-exact in CI",
+    "warning_routes": "32 actualAI desktop/mobile cases PASS and independent scoped visual GO"
   },
   "current_slice": {
-    "id": "articulated-ground-reveal",
-    "status": "CODE_SOURCE_REVIEW_PENDING",
+    "id": "full-encounter-smoke",
+    "status": "RUNTIME_PENDING",
     "active_generation": null,
     "last_generation": {
       "provider": "OpenAI built-in imagegen",
@@ -57,7 +61,7 @@
       "sha256": "3f61581c856d4d2b40c18a30be0d97817c7cbc98cc615ae55b2af53b7c99175c",
       "verdict": "Source and normalizedgeometry independent GO; no reroll requested"
     },
-    "next_gate": "Actual1500 emergence/7000full/9000fight, body/idle seam, pause/latejoin/defaultfallback desktopmobile runtime; no newgeneration",
+    "next_gate": "Continuous full lifecycle/phase body coverage and independent native review; exactdefault-on not yetapplied",
     "next_job_key": "madre-core-opening-runtime-v1",
     "provider_task_id": null,
     "previous_rejected_generation": {
@@ -101,7 +105,7 @@
         "provider": "OpenAI built-in imagegen"
       }
     ],
-    "name": "Reuse accepted cyan poses during existing anchored emergence",
+    "name": "Continuous scripted HP-assisted encounter with real allied/enemy AI",
     "cast_sources": [
       {
         "phase": 1,
@@ -140,13 +144,13 @@
   },
   "inflight": {
     "owner": "/root/animate_madre_espora",
-    "scope": "Actual1500 emergence/7000full/9000fight, body/idle seam, pause/latejoin/defaultfallback desktopmobile runtime; no newgeneration",
-    "head": "3a1b2c0c48b1f4c40557c1be01d0f225e856a71b",
-    "job_key": "madre-ground-reveal-v1",
+    "scope": "Continuous full lifecycle/phase body coverage and independent native review; exactdefault-on not yetapplied",
+    "head": "23d9ed907028067084d4095610517650f5932b32",
+    "job_key": "madre-full-encounter-v1",
     "provider_request_id": null,
     "output_file": "generated_images/exec-c8ed1d0a-43a8-446a-b610-f73f53c6d661.png",
     "source_sha256": "3f61581c856d4d2b40c18a30be0d97817c7cbc98cc615ae55b2af53b7c99175c",
     "duplicate_jobs_forbidden": true,
-    "source_gate": "Acceptedphase1idle source reused, no newrasterrequest"
+    "source_gate": "No newart or gameplayproductionchange"
   }
 }
