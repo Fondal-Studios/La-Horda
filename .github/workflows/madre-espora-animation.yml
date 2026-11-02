@@ -13,7 +13,7 @@ permissions:
 jobs:
   mother-animation:
     runs-on: ubuntu-latest
-    timeout-minutes: 20 # Expanded ROI oracle, spell matrix and continuous encounter evidence.
+    timeout-minutes: 25 # Expanded ROI oracle, spell matrix and continuous encounter evidence.
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -32,6 +32,7 @@ jobs:
       - run: node tools/art/micelial/test-mother-death.cjs
       - run: node tools/art/micelial/test-mother-reveal.cjs
       - run: node tools/art/micelial/test-mother-warning-routes.cjs
+      - run: node tools/art/micelial/test-mother-default-loading.cjs
       - run: node tools/art/micelial/test-mother-full-encounter.cjs
       - run: node tools/bosses/t_boss_arena_hooks.js
       - name: Existing non-boss camera and viewport regressions

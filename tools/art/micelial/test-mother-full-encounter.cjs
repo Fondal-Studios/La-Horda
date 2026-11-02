@@ -8,8 +8,9 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/full-enco
  for(const viewport of [{width:1280,height:720},{width:844,height:390}]){
   const page=await browser.newPage({viewport,recordVideo:{dir:OUT,size:viewport}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.addInitScript(()=>{window.requestAnimationFrame=()=>0;let seed=0x4d414452;Math.random=()=>{seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;return(seed>>>0)/4294967296;};});
-  await page.goto('http://127.0.0.1:8855/?motherArtPilot=1&motherBloomKey=1&motherHeartKey=1&motherCoreLayer=1&motherDeathPilot=1&motherRevealPilot=1',{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&['mp_pilot','mp_pilot_attack','mp_pilot_cast','mp_bloom_trans','mp_bloom_key','mp_bloom_idle','mp_bloom_attack','mp_bloom_cast','mp_heart_key','mp_death'].every(k=>MIC_MP_OK[k]),null,{polling:100,timeout:120000});
+  await page.goto('http://127.0.0.1:8855/',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady(),null,{polling:100,timeout:120000});
+  assert(await page.evaluate(()=>MIC_MOTHER_REWORK_DEFAULT&&MIC_MOTHER_PILOT_ON&&MIC_MOTHER_BLOOM_KEY_ON&&MIC_MOTHER_CORE_LAYER_ON&&MIC_MOTHER_REVEAL_PILOT_ON&&MIC_MOTHER_DEATH_PILOT_ON),'ordinary URL enables complete rework');
   const fixture=await page.evaluate(()=>{
    selectedClass='tanque';lobbyAllies=['guerrero','mago','soporte'];currentArena='micelial';netMatch=null;
    if(!lobbyAlliesValid(selectedClass))throw Error('canonical party invalid');startRun(10);setState('playing');
@@ -33,6 +34,7 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/full-enco
    };
    return {seed:'0x4d414452',party:heroes.map(h=>h.classKey),allyRemote:allies.map(h=>!!h.isRemote),scope:'Scripted HP-assisted visual encounter; real allied/enemy AI, camera, crowd-control and VFX. Not natural victory, multiplayer or balance proof.'};
   });
+  await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&['mp_pilot','mp_pilot_attack','mp_pilot_cast','mp_bloom_trans','mp_bloom_key','mp_bloom_idle','mp_bloom_attack','mp_bloom_cast','mp_heart_key','mp_death'].every(k=>MIC_MP_OK[k]),null,{polling:100,timeout:120000});
   const rows=[],stages=[];
   const advance=async(label,{until,duration,max=20000,steps=4})=>{
    const started=rows.length?rows.at(-1).time:0;let done=false;

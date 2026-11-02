@@ -1,6 +1,6 @@
 # Madre Espora — route completeness and rollout gate
 
-Current publication remains draft PR260, not merged/deployed. Ordinary URLs still use the legacy/recovered presentation. Latest fully passing slice revision:23d9ed90 (run41379860173, artifact13113381946, full candidate/full baseline BOTH_PASS). Independent warning-route/ROI scoped GO recorded; continuous encounter and default-on remain pending.
+Current publication remains draft PR260, not merged or deployed. This draft candidate now enables the complete rework on ordinary URLs, with lazy Micelial entry loading; its fresh rollout CI is pending. Latest fully passing revision: **5f77cb01** (run 41381017915, artifact 13113509568); full candidate and full baseline both pass. The continuous, HP-assisted encounter passes at desktop and mobile viewport sizes with actual allied/enemy AI, all body/action routes observed, no legacy body fallback, and exactly one victory/reward. Independent continuous visual review has scoped GO. Exact default/lazy rollout validation remains pending.
 
 | Authoritative route | High-detail selection | Evidence / remaining gate |
 |---|---|---|
@@ -33,10 +33,15 @@ Current publication remains draft PR260, not merged/deployed. Ordinary URLs stil
 - Cold pre-ROI CI compositing median9.4–10ms, max16.3ms; warm<=.1ms. CI viewport dimensions do NOT certify physical-phone60fps. ROI144wholeRGBA byte equality passes; fresh median6.3–6.4ms, maximum18.4ms. No physical-phone frame-rate certification.
 - Isolated motion tests use passive targets to prevent random ally Axiom time-stop from invalidating a prescribed attack window. A separate full-encounter smoke retains actual allied/enemyAI and legitimate CC; its HP assistance is explicitly logged, not a natural victory or balance certification.
 - Production VFX, darkness, HUD and loot labels remain visible. Mobile art is small/texture-dense; loot can obscure fallen body. These limitations are not erased for favorable captures.
-- Still pending: continuous full encounter review and exact default-on candidate review. No full-boss/main GO yet.
+- Still pending: exact default/lazy candidate CI and final completeness review. No full-boss/main GO yet.
 
-## Proposed default-on draft change — NOT APPLIED
+## Default-on draft candidate — fresh CI pending
 
-After above gates, ordinary URLs would load all accepted body routes. `motherArtLegacy=1` explicitly restores legacy presentation for rollback. Existing per-slice query flags retain their explicit diagnostic semantics so isolated tests can still exercise missing/disabled routes. Missing image/readiness/geometry retains intact fallback; no partial unreviewed composite.
+After the continuous encounter gate, this draft enables all accepted body routes, but defer the ten new atlas requests until Micelial host or guest entry. Menu and non-Micelial startup must request none. `motherArtLegacy=1` explicitly restores legacy presentation for rollback. Existing per-slice query flags retain their explicit diagnostic semantics so isolated tests can still exercise missing/disabled routes. Missing image/readiness/geometry retains intact fallback; no partial unreviewed composite.
 
-Proposed selector logic: one query object; `defaultRework = !legacy && !anyExplicitSliceFlag`; each existing feature is enabled by `defaultRework` OR its existing explicit query flag, preserving prerequisite dependencies. Update current no-flag legacy assertions to use explicit rollback URLs; add ordinary-URL full encounter/fallback coverage. No controller/network protocol changes, no deployment or merge from this proposal. Architect reviews exact source diff and fresh CI before any release decision.
+Selector logic: one query object; `defaultRework = !legacy && !anyExplicitSliceFlag`; each existing feature is enabled by `defaultRework` OR its existing explicit query flag, preserving prerequisite dependencies. Updated previous no-flag legacy assertions to use explicit rollback URLs; added ordinary-URL full encounter/fallback coverage. No controller/network protocol changes, no deployment or merge from this proposal. Architect reviews exact source diff and fresh CI before any release decision.
+
+
+### Lazy loading and retained memory
+
+The isolated candidate invokes an idempotent loader from the existing `micRenderReset` host/guest entry hook. Explicit diagnostic slice URLs retain eager loading. Failed requests retry only on a later entry, never per rendered frame. Pending or malformed assets retain the intact legacy fallback. Loaded atlases and the bounded compositor cache remain retained after leaving the arena; the approximately 30.08 MiB decoded atlas cost plus up to 32 MiB cache and browser/GPU overhead applies after visiting Micelial, not to every initial menu load. This is not a physical-device memory or frame-rate certification.

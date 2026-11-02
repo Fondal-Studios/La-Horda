@@ -187,7 +187,7 @@ fs.mkdirSync(OUT,{recursive:true});let browser,server;
   }
   const defaultPage=await browser.newPage({viewport});
   await defaultPage.addInitScript(()=>{window.requestAnimationFrame=()=>0;});
-  await defaultPage.goto('http://127.0.0.1:8850/',{waitUntil:'domcontentloaded'});
+  await defaultPage.goto('http://127.0.0.1:8850/?motherArtLegacy=1',{waitUntil:'domcontentloaded'});
   await defaultPage.waitForFunction(()=>typeof _micMotherRenderedCoreAnchor==='function');
   assert(await defaultPage.evaluate(()=>!MIC_MOTHER_CORE_LAYER_ON&&_micMotherRenderedCoreAnchor({})===null),'default URL retains legacy glow');
   await defaultPage.close();

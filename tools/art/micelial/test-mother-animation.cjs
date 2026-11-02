@@ -207,4 +207,29 @@ check('high-detail reveal keeps existing emergence and seamless articulated idle
  for(const [t,frame]of [[1500,0],[3400,1],[5300,2]]){const M={st:'reveal',t},pose=q._micMotherFrame(null,M,t);assert.equal(q._micMotherPilotPose(null,M,t,pose).frame,frame);assert.equal(pose.rise,Math.max(0,(t-1500)/5500));}
  const t=9000,reveal=q._micMotherPilotPose(null,{st:'reveal',t},t,{state:'reveal'}),idle=q._micMotherPilotPose(null,{st:'fight',ph:1,t:0},t,{state:'idle'});assert.deepEqual(reveal,idle);
 });
+check('default flags, explicit slices and legacy override preserve intent without menu downloads',()=>{
+ const cases=[
+  [null,[0,0,0,0,0,0],0],['',[1,1,1,1,1,1],0],['?other=1',[1,1,1,1,1,1],0],
+  ['?motherArtPilot=1',[1,0,0,0,0,0],3],['?motherArtPilot=0',[0,0,0,0,0,0],0],
+  ['?motherArtPilot=',[0,0,0,0,0,0],0],['?motherBloomKey=1',[0,0,0,0,0,0],0],
+  ['?motherArtLegacy=1',[0,0,0,0,0,0],0],
+  ['?motherArtLegacy=1&motherArtPilot=1&motherBloomKey=1&motherHeartKey=1&motherCoreLayer=1&motherDeathPilot=1&motherRevealPilot=1',[0,0,0,0,0,0],0]
+ ];
+ for(const [query,flags,eager] of cases){
+  const attempts=[],q={Image:class{set src(v){attempts.push(v)}},VFX_SPR_EXTRA:{},MIC_CFG:{madre:{closeMs:2600}},URLSearchParams};
+  if(query!==null)q.location={search:query};vm.createContext(q);vm.runInContext(code,q);
+  const actual=vm.runInContext('[MIC_MOTHER_PILOT_ON,MIC_MOTHER_BLOOM_KEY_ON,MIC_MOTHER_HEART_KEY_ON,MIC_MOTHER_CORE_LAYER_ON,MIC_MOTHER_REVEAL_PILOT_ON,MIC_MOTHER_DEATH_PILOT_ON]',q);
+  assert.deepEqual(Array.from(actual,Number),flags);const count=()=>attempts.filter(x=>x.includes('/mother/pilot_')).length;
+  assert.equal(count(),eager);q.micRenderReset();const loaded=count();assert.equal(loaded,flags[5]?10:eager);
+  q.micRenderReset();assert.equal(count(),loaded,'pending requests not duplicated');
+  if(query===''){
+   vm.runInContext('globalThis.oldIdle=MIC_MP.mp_pilot;oldIdle.onerror()',q);assert.equal(count(),10);
+   q.micRenderReset();assert.equal(count(),11);vm.runInContext('oldIdle.onload()',q);
+   assert.equal(vm.runInContext('MIC_MP_OK.mp_pilot',q),false,'superseded request cannot mark new image ready');
+   vm.runInContext('MIC_MP.mp_pilot.onload()',q);assert.equal(vm.runInContext('MIC_MP_OK.mp_pilot',q),true);
+   q.micRenderReset();assert.equal(count(),11,'ready requests not duplicated');
+  }
+ }
+});
+
 console.log(JSON.stringify({pass,scope:'pose and contract unit tests only; visual/browser checks separate'}));

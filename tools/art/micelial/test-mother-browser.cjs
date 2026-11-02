@@ -12,7 +12,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));const check=(name,value)=>{asse
   const page=await browser.newPage({viewport,recordVideo:{dir:OUT,size:viewport}}),errors=[];
   page.on('pageerror',e=>errors.push(e.message));
   await page.addInitScript(()=>{window.requestAnimationFrame=()=>0;});
-  await page.goto(`http://127.0.0.1:${PORT}`,{waitUntil:'domcontentloaded'});
+  await page.goto(`http://127.0.0.1:${PORT}/?motherArtLegacy=1`,{waitUntil:'domcontentloaded'});
   try{
     // The render loop is deliberately frozen; Playwright's default RAF poll
     // cannot run under that harness. Poll the readiness predicate by timer.

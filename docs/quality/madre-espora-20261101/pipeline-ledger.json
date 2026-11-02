@@ -4,8 +4,8 @@
   "owner": "/root/animate_madre_espora",
   "branch": "fix/madre-espora-animation-20261101",
   "pr": 260,
-  "code_head_sha": "23d9ed907028067084d4095610517650f5932b32",
-  "updated_utc": "2026-11-02T03:03:00Z",
+  "code_head_sha": "5f77cb01dfdb2308009e0eeaacec08df22528eba",
+  "updated_utc": "2026-11-02T03:22:00Z",
   "execution_policy": "Continue existing owner/slice; automation must not launch duplicate generations. No formal PR approval or unvalidated main merge.",
   "accepted_scopes": [
     "opt-in high-detail idle pilot",
@@ -17,26 +17,26 @@
     "opt-in articulated bark opening/closing and aligned seed cue; architect c7ba1360 scoped GO",
     "opt-in authored three-pose death collapse; architect3a1b2c0c runtime GO, not smooth continuous collapse",
     "opt-in grounded reveal reusing articulated cyan poses; architect a479b67b scoped GO",
-    "warning spell routes + ROI byte-equivalence; architect23d9ed90 scoped GO"
+    "warning spell routes + ROI byte-equivalence; architect23d9ed90 scoped GO",
+    "continuous HP-assisted full encounter with real allied/enemy AI; architect 5f77cb01 scoped GO"
   ],
   "not_accepted": [
     "full boss release",
     "default/main integration",
-    "mobile final polish",
-    "remaining high-detail phases"
+    "physical-phone performance certification"
   ],
   "validation": {
     "unit_pass": 38,
     "browser_pass": 60,
     "phase1_timing": "Mother damage5350ms; first impact render5382ms (+32ms)",
     "actual_evidence_dir": "/tmp/mother-ci-232b2b20/high-detail-pilot",
-    "github_run_id": 41379860173,
-    "github_artifact_id": 13113381946,
+    "github_run_id": 41381017915,
+    "github_artifact_id": 13113509568,
     "independent_reviewer": "/root/review_art_pilot_architecture",
     "camera_and_boss_hooks": "PASS",
     "geometry_run_id": 41366010676,
     "geometry_artifact_id": 13107069326,
-    "latest_fungal_status": "BOTH_PASS23d9ed90",
+    "latest_fungal_status": "BOTH_PASS at 5f77cb01",
     "bloom_sequence_run_id": 41367462917,
     "bloom_sequence_artifact_id": 13107414710,
     "historical_fixture_failures": [
@@ -44,16 +44,17 @@
       "SAVE.guardado_viejo_conserva_el_hielo_y_abre_el_reino"
     ],
     "baseline_failures": [],
-    "local_pending_unit_pass": 38,
+    "local_pending_unit_pass": 39,
     "core_layer": "144 pose/stage pixel cases per viewport + lifecycle + actual AI/openclose PASS",
     "performance": "ROI CI cold median6.3\u20136.4ms max18.4ms; warm max2.2ms oneoutlier;32MiBretainedcache. Not physicaldevice60fps certification",
     "death": "Actual killEnemy cleanup +4700/6600/8000/9000 +10500 victoryonce/rewardidempotence PASS",
     "roi_equivalence": "144 wholeRGBA old/new cases byte-exact in CI",
-    "warning_routes": "32 actualAI desktop/mobile cases PASS and independent scoped visual GO"
+    "warning_routes": "32 actualAI desktop/mobile cases PASS and independent scoped visual GO",
+    "full_encounter": "PASS at 1280x720 and 844x390; actual allied/enemy AI, all body/action routes observed, no legacy body fallback, reward once. Explicit HP assistance logged; not natural victory or balance proof."
   },
   "current_slice": {
-    "id": "full-encounter-smoke",
-    "status": "RUNTIME_PENDING",
+    "id": "default-lazy-rollout",
+    "status": "DEFAULT_LAZY_CANDIDATE_CI_PENDING",
     "active_generation": null,
     "last_generation": {
       "provider": "OpenAI built-in imagegen",
@@ -61,8 +62,8 @@
       "sha256": "3f61581c856d4d2b40c18a30be0d97817c7cbc98cc615ae55b2af53b7c99175c",
       "verdict": "Source and normalizedgeometry independent GO; no reroll requested"
     },
-    "next_gate": "Continuous full lifecycle/phase body coverage and independent native review; exactdefault-on not yetapplied",
-    "next_job_key": "madre-core-opening-runtime-v1",
+    "next_gate": "Exact default/lazy ordinary-URL CI, missing/pending/malformed assets and request counts, then final independent completeness review",
+    "next_job_key": "madre-default-lazy-rollout-v1",
     "provider_task_id": null,
     "previous_rejected_generation": {
       "provider": "OpenAI built-in imagegen",

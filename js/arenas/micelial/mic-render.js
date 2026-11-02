@@ -25,27 +25,45 @@ const MIC_MP = {}, MIC_MP_OK = {};
 for(const n of ["mp_full","mp_cap","mp_arm_l","mp_arm_r"]) _micImg("assets/sprites/arenas/micelial/mother/"+n+".png", n, MIC_MP, MIC_MP_OK);
 // The authored animation sheet already ships with the original boss art.
 _micImg("assets/sprites/arenas/micelial/madre_espora/atlas.png", "mp_atlas", MIC_MP, MIC_MP_OK);
-// Explicit review-only query: unapproved high-detail idle pilot is NEVER default.
-const MIC_MOTHER_PILOT_ON=typeof location!=="undefined" && new URLSearchParams(location.search).get("motherArtPilot")==="1";
-const MIC_MOTHER_BLOOM_KEY_ON=MIC_MOTHER_PILOT_ON && new URLSearchParams(location.search).get("motherBloomKey")==="1";
-const MIC_MOTHER_HEART_KEY_ON=MIC_MOTHER_BLOOM_KEY_ON && new URLSearchParams(location.search).get("motherHeartKey")==="1";
-const MIC_MOTHER_CORE_LAYER_ON=MIC_MOTHER_HEART_KEY_ON && new URLSearchParams(location.search).get("motherCoreLayer")==="1";
-const MIC_MOTHER_REVEAL_PILOT_ON=MIC_MOTHER_CORE_LAYER_ON && new URLSearchParams(location.search).get("motherRevealPilot")==="1";
-const MIC_MOTHER_DEATH_PILOT_ON=MIC_MOTHER_CORE_LAYER_ON && new URLSearchParams(location.search).get("motherDeathPilot")==="1";
-if(MIC_MOTHER_DEATH_PILOT_ON) _micImg("assets/sprites/arenas/micelial/mother/pilot_death.png","mp_death",MIC_MP,MIC_MP_OK);
-if(MIC_MOTHER_HEART_KEY_ON) _micImg("assets/sprites/arenas/micelial/mother/pilot_heart_key.png","mp_heart_key",MIC_MP,MIC_MP_OK);
-if(MIC_MOTHER_BLOOM_KEY_ON){
-  _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_key.png","mp_bloom_key",MIC_MP,MIC_MP_OK);
-  _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_transition.png","mp_bloom_trans",MIC_MP,MIC_MP_OK);
-  _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_idle.png","mp_bloom_idle",MIC_MP,MIC_MP_OK);
-  _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_attack.png","mp_bloom_attack",MIC_MP,MIC_MP_OK);
-  _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_cast.png","mp_bloom_cast",MIC_MP,MIC_MP_OK);
+// The complete rework candidate is the ordinary-URL path. Explicit slice flags retain their
+// diagnostic semantics; a single legacy override always wins for rollback.
+const MIC_MOTHER_QUERY=typeof location!=="undefined" ? new URLSearchParams(location.search) : null;
+const MIC_MOTHER_SLICE_KEYS=["motherArtPilot","motherBloomKey","motherHeartKey","motherCoreLayer","motherDeathPilot","motherRevealPilot"];
+const MIC_MOTHER_REWORK_DEFAULT=!!MIC_MOTHER_QUERY && MIC_MOTHER_QUERY.get("motherArtLegacy")!=="1" && !MIC_MOTHER_SLICE_KEYS.some(k=>MIC_MOTHER_QUERY.has(k));
+const MIC_MOTHER_PILOT_ON=!!MIC_MOTHER_QUERY && MIC_MOTHER_QUERY.get("motherArtLegacy")!=="1" && (MIC_MOTHER_REWORK_DEFAULT || MIC_MOTHER_QUERY.get("motherArtPilot")==="1");
+const MIC_MOTHER_BLOOM_KEY_ON=MIC_MOTHER_PILOT_ON && (MIC_MOTHER_REWORK_DEFAULT || MIC_MOTHER_QUERY.get("motherBloomKey")==="1");
+const MIC_MOTHER_HEART_KEY_ON=MIC_MOTHER_BLOOM_KEY_ON && (MIC_MOTHER_REWORK_DEFAULT || MIC_MOTHER_QUERY.get("motherHeartKey")==="1");
+const MIC_MOTHER_CORE_LAYER_ON=MIC_MOTHER_HEART_KEY_ON && (MIC_MOTHER_REWORK_DEFAULT || MIC_MOTHER_QUERY.get("motherCoreLayer")==="1");
+const MIC_MOTHER_REVEAL_PILOT_ON=MIC_MOTHER_CORE_LAYER_ON && (MIC_MOTHER_REWORK_DEFAULT || MIC_MOTHER_QUERY.get("motherRevealPilot")==="1");
+const MIC_MOTHER_DEATH_PILOT_ON=MIC_MOTHER_CORE_LAYER_ON && (MIC_MOTHER_REWORK_DEFAULT || MIC_MOTHER_QUERY.get("motherDeathPilot")==="1");
+// Normal startup/menu pays no new atlas cost. Host micRunStart and guestStart
+// both call micRenderReset before the encounter; failed files retry on re-entry
+// only, never in the draw loop. Explicit slice URLs remain eager diagnostics.
+const MIC_MOTHER_ART_FAILED=new Set();
+function _micEnsureMotherArt(){
+  function load(file,key){
+    if(MIC_MP[key] && !MIC_MOTHER_ART_FAILED.has(key)) return;
+    MIC_MOTHER_ART_FAILED.delete(key); MIC_MP_OK[key]=false;
+    const im=_micImg("assets/sprites/arenas/micelial/mother/"+file,key,MIC_MP,MIC_MP_OK);
+    im.onload=()=>{if(MIC_MP[key]===im){MIC_MP_OK[key]=true;MIC_MOTHER_ART_FAILED.delete(key);}};
+    im.onerror=()=>{if(MIC_MP[key]===im){MIC_MP_OK[key]=false;MIC_MOTHER_ART_FAILED.add(key);}};
+  }
+  if(MIC_MOTHER_DEATH_PILOT_ON) load("pilot_death.png","mp_death");
+  if(MIC_MOTHER_HEART_KEY_ON) load("pilot_heart_key.png","mp_heart_key");
+  if(MIC_MOTHER_BLOOM_KEY_ON){
+    load("pilot_bloom_key.png","mp_bloom_key");
+    load("pilot_bloom_transition.png","mp_bloom_trans");
+    load("pilot_bloom_idle.png","mp_bloom_idle");
+    load("pilot_bloom_attack.png","mp_bloom_attack");
+    load("pilot_bloom_cast.png","mp_bloom_cast");
+  }
+  if(MIC_MOTHER_PILOT_ON){
+    load("pilot_idle.png","mp_pilot");
+    load("pilot_attack.png","mp_pilot_attack");
+    load("pilot_cast.png","mp_pilot_cast");
+  }
 }
-if(MIC_MOTHER_PILOT_ON){
-  _micImg("assets/sprites/arenas/micelial/mother/pilot_idle.png","mp_pilot",MIC_MP,MIC_MP_OK);
-  _micImg("assets/sprites/arenas/micelial/mother/pilot_attack.png","mp_pilot_attack",MIC_MP,MIC_MP_OK);
-  _micImg("assets/sprites/arenas/micelial/mother/pilot_cast.png","mp_pilot_cast",MIC_MP,MIC_MP_OK);
-}
+if(!MIC_MOTHER_REWORK_DEFAULT) _micEnsureMotherArt();
 const MIC_BG = {}, MIC_BG_OK = {};
 _micImg("assets/sprites/arenas/micelial/map/map_initial.png", "a", MIC_BG, MIC_BG_OK);
 _micImg("assets/sprites/arenas/micelial/map/map_mature.png", "b", MIC_BG, MIC_BG_OK);
@@ -58,6 +76,7 @@ let _micBlend = 0, _micDeadQ = 0, _micDesat = null, _micPrevNodes = "", _micNode
 const MIC_MOTES = [], MIC_TRAIL = [];
 let _micTrailI = 0, _micTrailT = 0, _micDeadAt = 0;
 function micRenderReset(){
+  _micEnsureMotherArt();
   _micBlend = 0; _micDeadQ = 0; _micPrevNodes = ""; _micNodeAt = []; _micNodeFrom = []; _micDeadAt = 0;
   MIC_MOTES.length = 0; for(const t of MIC_TRAIL) t.t = 0;
 }
