@@ -1,0 +1,2631 @@
+{
+ "tanque": {
+  "type": "base",
+  "champ": "tanque",
+  "name": "Aldric, el Último Bastión",
+  "flags": [
+   "estado_sin_cuadro:muerte"
+  ],
+  "metrics": {
+   "hs": {
+    "idle": 217,
+    "walk_down": 219,
+    "walk_side": 233,
+    "walk_up": 227,
+    "accion": 219
+   }
+  }
+ },
+ "guerrero": {
+  "type": "base",
+  "champ": "guerrero",
+  "name": "Kael, la Daga Carmesí",
+  "flags": [
+   "estado_sin_cuadro:muerte"
+  ],
+  "metrics": {
+   "hs": {
+    "idle": 223,
+    "walk_down": 221,
+    "walk_side": 211,
+    "walk_up": 223,
+    "accion": 217
+   }
+  }
+ },
+ "mago": {
+  "type": "base",
+  "champ": "mago",
+  "name": "Thalen, el Tejedor Elemental",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 215,
+    "walk_down": 215,
+    "walk_side": 215,
+    "walk_up": 215,
+    "accion": 207
+   }
+  }
+ },
+ "soporte": {
+  "type": "base",
+  "champ": "soporte",
+  "name": "Elyra, la Guardiana del Alba",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 141,
+    "walk_down": 145,
+    "walk_side": 137,
+    "walk_up": 149,
+    "accion": 137
+   }
+  }
+ },
+ "segador": {
+  "type": "base",
+  "champ": "segador",
+  "name": "Segador, el Olvidado",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 163,
+    "walk_down": 151,
+    "walk_side": 149,
+    "walk_up": 151,
+    "accion": 171
+   }
+  }
+ },
+ "axiom": {
+  "type": "base",
+  "champ": "axiom",
+  "name": "Axiom, el Reescritor",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 163,
+    "walk_down": 163,
+    "walk_side": 169,
+    "walk_up": 173,
+    "accion": 165
+   }
+  }
+ },
+ "profeta": {
+  "type": "base",
+  "champ": "profeta",
+  "name": "Ismara, la Profeta Ciega",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 181,
+    "walk_down": 151,
+    "walk_side": 151,
+    "walk_up": 157,
+    "accion": 175
+   }
+  }
+ },
+ "musashi": {
+  "type": "base",
+  "champ": "musashi",
+  "name": "Musashi, el Rōnin del Bokken",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 167,
+    "walk_down": 163,
+    "walk_side": 169,
+    "walk_up": 169,
+    "accion": 169
+   }
+  }
+ },
+ "cazadora": {
+  "type": "base",
+  "champ": "cazadora",
+  "name": "Sylva, la Cazadora del Bosque",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 165,
+    "walk_down": 165,
+    "walk_side": 165,
+    "walk_up": 173,
+    "accion": 189
+   }
+  }
+ },
+ "nigromante": {
+  "type": "base",
+  "champ": "nigromante",
+  "name": "Ilvar, el Señor de las Criptas",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 167,
+    "walk_down": 159,
+    "walk_side": 165,
+    "walk_up": 163,
+    "accion": 157
+   }
+  }
+ },
+ "libertador": {
+  "type": "base",
+  "champ": "libertador",
+  "name": "San Martín, el Libertador",
+  "flags": [
+   "estado_sin_cuadro:muerte"
+  ],
+  "metrics": {
+   "hs": {
+    "idle": 143,
+    "walk_down": 157,
+    "walk_side": 159,
+    "walk_up": 159,
+    "accion": 143
+   }
+  }
+ },
+ "ilkan": {
+  "type": "base",
+  "champ": "ilkan",
+  "name": "Ilkan, el Caminante de Dunas",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 163,
+    "walk_down": 171,
+    "walk_side": 161,
+    "walk_up": 165,
+    "accion": 157
+   }
+  }
+ },
+ "ynara": {
+  "type": "base",
+  "champ": "ynara",
+  "name": "Ynara, la Médica de los Refugios",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 153,
+    "walk_up": 163,
+    "accion": 151
+   }
+  }
+ },
+ "myla": {
+  "type": "base",
+  "champ": "myla",
+  "name": "Myla, la Niña de la Cuchara",
+  "flags": [
+   "estado_sin_cuadro:muerte"
+  ],
+  "metrics": {
+   "hs": {
+    "idle": 163,
+    "walk_down": 163,
+    "walk_side": 163,
+    "walk_up": 163,
+    "accion": 163
+   }
+  }
+ },
+ "brasa": {
+  "type": "base",
+  "champ": "brasa",
+  "name": "Brasa, la Mecánica Fugitiva",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 143,
+    "walk_down": 145,
+    "walk_side": 139,
+    "walk_up": 123,
+    "accion": 135
+   }
+  }
+ },
+ "eslabon": {
+  "type": "base",
+  "champ": "eslabon",
+  "name": "Garren, el Eslabón",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 143,
+    "walk_down": 145,
+    "walk_side": 145,
+    "walk_up": 139,
+    "accion": 137
+   }
+  }
+ },
+ "morwen": {
+  "type": "base",
+  "champ": "morwen",
+  "name": "Morwen, la Destiladora de Ecos",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 143,
+    "walk_down": 147,
+    "walk_side": 155,
+    "walk_up": 149,
+    "accion": 151
+   }
+  }
+ },
+ "farolero": {
+  "type": "base",
+  "champ": "farolero",
+  "name": "Tobías, el Farolero",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 143,
+    "walk_down": 143,
+    "walk_side": 137,
+    "walk_up": 127,
+    "accion": 133
+   }
+  }
+ },
+ "iria": {
+  "type": "base",
+  "champ": "iria",
+  "name": "Iria, la Tejedora de Límites",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 143,
+    "walk_down": 143,
+    "walk_side": 145,
+    "walk_up": 129,
+    "accion": 139
+   }
+  }
+ },
+ "vesper": {
+  "type": "base",
+  "champ": "vesper",
+  "name": "Vesper, la Costurera de Sombras",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 123,
+    "walk_down": 123,
+    "walk_side": 123,
+    "walk_up": 127,
+    "accion": 117
+   }
+  }
+ },
+ "nahir": {
+  "type": "base",
+  "champ": "nahir",
+  "name": "Nahir, el Restaurador de Espejos",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 139,
+    "walk_down": 139,
+    "walk_side": 143,
+    "walk_up": 143,
+    "accion": 129
+   }
+  }
+ },
+ "baltra": {
+  "type": "base",
+  "champ": "baltra",
+  "name": "Baltra, la Campana Sumergida",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 127,
+    "walk_down": 127,
+    "walk_side": 127,
+    "walk_up": 129,
+    "accion": 127
+   }
+  }
+ },
+ "maura": {
+  "type": "base",
+  "champ": "maura",
+  "name": "Maura, la Pastora de Espinas",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 143,
+    "walk_down": 143,
+    "walk_side": 139,
+    "walk_up": 141,
+    "accion": 135
+   }
+  }
+ },
+ "dariel": {
+  "type": "base",
+  "champ": "dariel",
+  "name": "Dáriel, el Último Compás",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 125,
+    "walk_down": 127,
+    "walk_side": 125,
+    "walk_up": 123,
+    "accion": 135
+   }
+  }
+ },
+ "orsa": {
+  "type": "base",
+  "champ": "orsa",
+  "name": "Orsa, la Guardacables",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 139,
+    "walk_down": 139,
+    "walk_side": 135,
+    "walk_up": 139,
+    "accion": 125
+   }
+  }
+ },
+ "tibor": {
+  "type": "base",
+  "champ": "tibor",
+  "name": "Tibor, el Rey sin Corona",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 141,
+    "walk_down": 141,
+    "walk_side": 139,
+    "walk_up": 145,
+    "accion": 141
+   }
+  }
+ },
+ "zahra": {
+  "type": "base",
+  "champ": "zahra",
+  "name": "Zahra, la Mano de la Válvula",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 131,
+    "walk_down": 131,
+    "walk_side": 127,
+    "walk_up": 131,
+    "accion": 125
+   }
+  }
+ },
+ "renko": {
+  "type": "base",
+  "champ": "renko",
+  "name": "Renko, el Jardinero de Nombres",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 105,
+    "walk_down": 109,
+    "walk_side": 111,
+    "walk_up": 115,
+    "accion": 103
+   }
+  }
+ },
+ "sira": {
+  "type": "base",
+  "champ": "sira",
+  "name": "Sira, la Cartógrafa del Regreso",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 131,
+    "walk_down": 135,
+    "walk_side": 133,
+    "walk_up": 133,
+    "accion": 123
+   }
+  }
+ },
+ "nano_gm": {
+  "type": "base",
+  "champ": "nano_gm",
+  "name": "Nano GM, el Regente del Umbral",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 167,
+    "walk_down": 167,
+    "walk_side": 157,
+    "walk_up": 165,
+    "accion": 161
+   }
+  }
+ },
+ "facu_gm": {
+  "type": "base",
+  "champ": "facu_gm",
+  "name": "Facu GM, el Soberano de las Mareas",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 139,
+    "walk_down": 139,
+    "walk_side": 143,
+    "walk_up": 143,
+    "accion": 129
+   }
+  }
+ },
+ "aurelia": {
+  "type": "base",
+  "champ": "aurelia",
+  "name": "Aurelia, la Arquitecta Solar",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 129,
+    "walk_down": 129,
+    "walk_side": 123,
+    "walk_up": 127,
+    "accion": 125
+   }
+  }
+ },
+ "khepri": {
+  "type": "base",
+  "champ": "khepri",
+  "name": "Khepri, el Portador del Enjambre",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 157,
+    "walk_up": 155,
+    "accion": 147
+   }
+  }
+ },
+ "velmira": {
+  "type": "base",
+  "champ": "velmira",
+  "name": "Velmira, la Reina de las Máscaras",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 143,
+    "walk_down": 141,
+    "walk_side": 151,
+    "walk_up": 141,
+    "accion": 135
+   }
+  }
+ },
+ "vhal": {
+  "type": "base",
+  "champ": "vhal",
+  "name": "Vhal, el Astrónomo Caído",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 129,
+    "walk_down": 131,
+    "walk_side": 135,
+    "walk_up": 129,
+    "accion": 125
+   }
+  }
+ },
+ "bront": {
+  "type": "base",
+  "champ": "bront",
+  "name": "Bront, la Fortaleza Viviente",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 127,
+    "walk_down": 127,
+    "walk_side": 127,
+    "walk_up": 129,
+    "accion": 127
+   }
+  }
+ },
+ "oriel": {
+  "type": "base",
+  "champ": "oriel",
+  "name": "Oriel, la Portera de las Cicatrices",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 131,
+    "walk_down": 135,
+    "walk_side": 127,
+    "walk_up": 133,
+    "accion": 129
+   }
+  }
+ },
+ "saelis": {
+  "type": "base",
+  "champ": "saelis",
+  "name": "Saelis, la Heraldo del Plumaje",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 163,
+    "walk_down": 163,
+    "walk_side": 161,
+    "walk_up": 161,
+    "accion": 155
+   }
+  }
+ },
+ "solciju": {
+  "type": "base",
+  "champ": "solciju",
+  "name": "Solciju, la Enóloga",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 143,
+    "walk_down": 143,
+    "walk_side": 139,
+    "walk_up": 137,
+    "accion": 123
+   }
+  }
+ },
+ "veyra": {
+  "type": "base",
+  "champ": "veyra",
+  "name": "Veyra, la Última Herida",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 167,
+    "walk_down": 171,
+    "walk_side": 169,
+    "walk_up": 171,
+    "accion": 167
+   }
+  }
+ },
+ "brakk": {
+  "type": "base",
+  "champ": "brakk",
+  "name": "Brakk, el Arquitecto del Fin",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 141,
+    "walk_down": 139,
+    "walk_side": 143,
+    "walk_up": 139,
+    "accion": 139
+   }
+  }
+ },
+ "morveth": {
+  "type": "base",
+  "champ": "morveth",
+  "name": "Morveth, el Jardinero de la Peste",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 133,
+    "walk_down": 133,
+    "walk_side": 139,
+    "walk_up": 143,
+    "accion": 133
+   }
+  }
+ },
+ "aelith": {
+  "type": "base",
+  "champ": "aelith",
+  "name": "Aelith, la Ladrona de Segundos",
+  "flags": [],
+  "metrics": {
+   "hs": {
+    "idle": 139,
+    "walk_down": 141,
+    "walk_side": 139,
+    "walk_up": 141,
+    "accion": 127
+   }
+  }
+ },
+ "tanque_ancestral": {
+  "type": "croma",
+  "champ": "tanque",
+  "name": "Bastión Ancestral",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 149,
+    "walk_up": 147,
+    "accion": 147
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "tanque_juicio": {
+  "type": "croma",
+  "champ": "tanque",
+  "name": "Paladín del Juicio",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 149,
+    "walk_up": 147,
+    "accion": 137
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "nigromante_escarcha": {
+  "type": "croma",
+  "champ": "nigromante",
+  "name": "Sudario de Escarcha",
+  "flags": [
+   "escala_inconsistente:{'idle': 151, 'walk_down': 151, 'walk_side': 123, 'walk_up': 137, 'accion': 107}"
+  ],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 123,
+    "walk_up": 137,
+    "accion": 107
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "nigromante_piedra": {
+  "type": "croma",
+  "champ": "nigromante",
+  "name": "Sepulturero de Ámbar",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 143,
+    "walk_up": 133,
+    "accion": 133
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "libertador_escarcha": {
+  "type": "croma",
+  "champ": "libertador",
+  "name": "Casaca de los Andes",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 149,
+    "walk_up": 147,
+    "accion": 145
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "libertador_ancestral": {
+  "type": "croma",
+  "champ": "libertador",
+  "name": "Guardia del Monte",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 151,
+    "walk_up": 143,
+    "accion": 143
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "segador_escarcha": {
+  "type": "croma",
+  "champ": "segador",
+  "name": "Filo de Escarcha",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 145,
+    "walk_down": 145,
+    "walk_side": 143,
+    "walk_up": 143,
+    "accion": 143
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "musashi_ancestral": {
+  "type": "croma",
+  "champ": "musashi",
+  "name": "Hoja de Jade",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 155,
+    "walk_up": 151,
+    "accion": 139
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "profeta_ancestral": {
+  "type": "croma",
+  "champ": "profeta",
+  "name": "Velo del Bosque",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 153,
+    "walk_up": 155,
+    "accion": 143
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "cazadora_escarcha": {
+  "type": "croma",
+  "champ": "cazadora",
+  "name": "Manto de Escarcha",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 145,
+    "walk_up": 145,
+    "accion": 159
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "axiom_piedra": {
+  "type": "croma",
+  "champ": "axiom",
+  "name": "Código Ámbar",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 165,
+    "walk_down": 163,
+    "walk_side": 171,
+    "walk_up": 173,
+    "accion": 167
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "myla_arandanos": {
+  "type": "croma",
+  "champ": "myla",
+  "name": "Yogur de Arándanos",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 155,
+    "walk_up": 149,
+    "accion": 149
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "ynara_celeste": {
+  "type": "croma",
+  "champ": "ynara",
+  "name": "Guardia Celeste",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 149,
+    "walk_up": 153,
+    "accion": 139
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "solciju_alt1": {
+  "type": "croma",
+  "champ": "solciju",
+  "name": "Viuda de Medianoche",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 137,
+    "walk_down": 139,
+    "walk_side": 139,
+    "walk_up": 141,
+    "accion": 127
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "brakk_alt1": {
+  "type": "croma",
+  "champ": "brakk",
+  "name": "Arquitecto Glacial",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 139,
+    "walk_down": 141,
+    "walk_side": 135,
+    "walk_up": 139,
+    "accion": 137
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "veyra_alt1": {
+  "type": "croma",
+  "champ": "veyra",
+  "name": "Verdugo Celestial",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 137,
+    "walk_down": 139,
+    "walk_side": 137,
+    "walk_up": 147,
+    "accion": 139
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "morveth_alt1": {
+  "type": "croma",
+  "champ": "morveth",
+  "name": "Micelio Abisal",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 139,
+    "walk_down": 139,
+    "walk_side": 137,
+    "walk_up": 145,
+    "accion": 137
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "aelith_alt1": {
+  "type": "croma",
+  "champ": "aelith",
+  "name": "Relojera del Vacío",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 141,
+    "walk_down": 141,
+    "walk_side": 137,
+    "walk_up": 139,
+    "accion": 129
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "brasa_abisal": {
+  "type": "croma",
+  "champ": "brasa",
+  "name": "Calderera de las Profundidades",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 145,
+    "walk_down": 143,
+    "walk_side": 139,
+    "walk_up": 139,
+    "accion": 135
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "eslabon_porcelana": {
+  "type": "croma",
+  "champ": "eslabon",
+  "name": "Campanero de Porcelana",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 135,
+    "walk_down": 137,
+    "walk_side": 139,
+    "walk_up": 145,
+    "accion": 133
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "morwen_escarcha": {
+  "type": "croma",
+  "champ": "morwen",
+  "name": "Herbolaria de Escarcha",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 139,
+    "walk_down": 137,
+    "walk_side": 139,
+    "walk_up": 143,
+    "accion": 135
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "dariel_luthier": {
+  "type": "croma",
+  "champ": "dariel",
+  "name": "Luthier de los Autómatas",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 137,
+    "walk_down": 139,
+    "walk_side": 139,
+    "walk_up": 147,
+    "accion": 135
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "farolero_guardavia": {
+  "type": "croma",
+  "champ": "farolero",
+  "name": "Farolero, Guardavía de Medianoche",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 127,
+    "walk_down": 127,
+    "walk_side": 127,
+    "walk_up": 129,
+    "accion": 123
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "solciju_croma": {
+  "type": "croma",
+  "champ": "solciju",
+  "name": "Añada Esmeralda",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 143,
+    "walk_down": 143,
+    "walk_side": 139,
+    "walk_up": 137,
+    "accion": 123
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "brakk_croma": {
+  "type": "croma",
+  "champ": "brakk",
+  "name": "Acero de Tormenta",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 141,
+    "walk_down": 139,
+    "walk_side": 143,
+    "walk_up": 139,
+    "accion": 139
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "veyra_croma": {
+  "type": "croma",
+  "champ": "veyra",
+  "name": "Herida Amatista",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 167,
+    "walk_down": 171,
+    "walk_side": 169,
+    "walk_up": 171,
+    "accion": 167
+   },
+   "preview_vs_sprite_palette": 0.641,
+   "preview_vs_sprite_iou": 0.586,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "morveth_croma": {
+  "type": "croma",
+  "champ": "morveth",
+  "name": "Musgo del Retorno",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 133,
+    "walk_down": 133,
+    "walk_side": 139,
+    "walk_up": 143,
+    "accion": 133
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "aelith_croma": {
+  "type": "croma",
+  "champ": "aelith",
+  "name": "Segundo Carmesí",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 139,
+    "walk_down": 141,
+    "walk_side": 139,
+    "walk_up": 141,
+    "accion": 127
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "baltra_skin": {
+  "type": "croma",
+  "champ": "baltra",
+  "name": "Campanero de la Catedral",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 133,
+    "walk_down": 133,
+    "walk_side": 133,
+    "walk_up": 133,
+    "accion": 131
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "dariel_skin": {
+  "type": "croma",
+  "champ": "dariel",
+  "name": "Director del Réquiem",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 135,
+    "walk_down": 135,
+    "walk_side": 129,
+    "walk_up": 129,
+    "accion": 133
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "maura_skin": {
+  "type": "croma",
+  "champ": "maura",
+  "name": "Rosa del Luto",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 131,
+    "walk_down": 129,
+    "walk_side": 129,
+    "walk_up": 127,
+    "accion": 125
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "nahir_skin": {
+  "type": "croma",
+  "champ": "nahir",
+  "name": "Obsidiana Real",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 135,
+    "walk_down": 135,
+    "walk_side": 137,
+    "walk_up": 141,
+    "accion": 125
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "orsa_skin": {
+  "type": "croma",
+  "champ": "orsa",
+  "name": "Cazadora de Leviatanes",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 139,
+    "walk_down": 139,
+    "walk_side": 137,
+    "walk_up": 141,
+    "accion": 129
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "renko_skin": {
+  "type": "croma",
+  "champ": "renko",
+  "name": "Marmolista Real",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 111,
+    "walk_down": 113,
+    "walk_side": 115,
+    "walk_up": 121,
+    "accion": 105
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "sira_skin": {
+  "type": "croma",
+  "champ": "sira",
+  "name": "Atlas Astral",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 123,
+    "walk_down": 127,
+    "walk_side": 135,
+    "walk_up": 133,
+    "accion": 125
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "tibor_skin": {
+  "type": "croma",
+  "champ": "tibor",
+  "name": "Señor de las Polillas",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 119,
+    "walk_down": 121,
+    "walk_side": 117,
+    "walk_up": 121,
+    "accion": 117
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "vesper_skin": {
+  "type": "croma",
+  "champ": "vesper",
+  "name": "Sastre de la Corte Muerta",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 127,
+    "walk_down": 127,
+    "walk_side": 129,
+    "walk_up": 133,
+    "accion": 123
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "zahra_skin": {
+  "type": "croma",
+  "champ": "zahra",
+  "name": "Horno de Porcelana",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 137,
+    "walk_down": 135,
+    "walk_side": 131,
+    "walk_up": 135,
+    "accion": 129
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "vesper_croma": {
+  "type": "croma",
+  "champ": "vesper",
+  "name": "Ceniza del Alba",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 123,
+    "walk_down": 123,
+    "walk_side": 123,
+    "walk_up": 127,
+    "accion": 117
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "nahir_croma": {
+  "type": "croma",
+  "champ": "nahir",
+  "name": "Ceniza del Alba",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 139,
+    "walk_down": 139,
+    "walk_side": 143,
+    "walk_up": 143,
+    "accion": 129
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "baltra_croma": {
+  "type": "croma",
+  "champ": "baltra",
+  "name": "Ceniza del Alba",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 127,
+    "walk_down": 127,
+    "walk_side": 127,
+    "walk_up": 129,
+    "accion": 127
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "maura_croma": {
+  "type": "croma",
+  "champ": "maura",
+  "name": "Ceniza del Alba",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 143,
+    "walk_down": 143,
+    "walk_side": 139,
+    "walk_up": 141,
+    "accion": 135
+   },
+   "preview_vs_sprite_palette": 0.756,
+   "preview_vs_sprite_iou": 0.775,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "dariel_croma": {
+  "type": "croma",
+  "champ": "dariel",
+  "name": "Ceniza del Alba",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 125,
+    "walk_down": 127,
+    "walk_side": 125,
+    "walk_up": 123,
+    "accion": 135
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "orsa_croma": {
+  "type": "croma",
+  "champ": "orsa",
+  "name": "Ceniza del Alba",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 139,
+    "walk_down": 139,
+    "walk_side": 135,
+    "walk_up": 139,
+    "accion": 125
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "tibor_croma": {
+  "type": "croma",
+  "champ": "tibor",
+  "name": "Ceniza del Alba",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 141,
+    "walk_down": 141,
+    "walk_side": 139,
+    "walk_up": 145,
+    "accion": 141
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "zahra_croma": {
+  "type": "croma",
+  "champ": "zahra",
+  "name": "Ceniza del Alba",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 131,
+    "walk_down": 131,
+    "walk_side": 127,
+    "walk_up": 131,
+    "accion": 125
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "renko_croma": {
+  "type": "croma",
+  "champ": "renko",
+  "name": "Ceniza del Alba",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 105,
+    "walk_down": 109,
+    "walk_side": 111,
+    "walk_up": 115,
+    "accion": 103
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "sira_croma": {
+  "type": "croma",
+  "champ": "sira",
+  "name": "Ceniza del Alba",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 131,
+    "walk_down": 135,
+    "walk_side": 133,
+    "walk_up": 133,
+    "accion": 123
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "manada": {
+  "type": "set",
+  "champ": "cazadora",
+  "name": "Flecha de Fuego",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 113,
+    "walk_down": 113,
+    "walk_side": 103,
+    "walk_up": 113,
+    "accion": 109
+   },
+   "preview_vs_sprite_palette": 0.623,
+   "preview_vs_sprite_iou": 0.791,
+   "preview_size": [
+    206,
+    320
+   ]
+  }
+ },
+ "errante": {
+  "type": "set",
+  "champ": "musashi",
+  "name": "Samurái Legendario",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 119,
+    "walk_down": 119,
+    "walk_side": 103,
+    "walk_up": 117,
+    "accion": 105
+   },
+   "preview_vs_sprite_palette": 0.753,
+   "preview_vs_sprite_iou": 0.768,
+   "preview_size": [
+    217,
+    320
+   ]
+  }
+ },
+ "legion": {
+  "type": "set",
+  "champ": "ilkan",
+  "name": "Caravana de Medianoche",
+  "flags": [
+   "recorte_borde:muerte"
+  ],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 165,
+    "walk_down": 169,
+    "walk_side": 167,
+    "walk_up": 169,
+    "accion": 167
+   },
+   "preview_vs_sprite_palette": 0.368,
+   "preview_vs_sprite_iou": 0.508,
+   "preview_size": [
+    220,
+    316
+   ]
+  }
+ },
+ "sistema": {
+  "type": "set",
+  "champ": "axiom",
+  "name": "Realidad Corrupta",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 163,
+    "walk_down": 165,
+    "walk_side": 171,
+    "walk_up": 171,
+    "accion": 167
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "profecia": {
+  "type": "set",
+  "champ": "profeta",
+  "name": "Ángel Caído (Doncella Oscura)",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 115,
+    "walk_down": 115,
+    "walk_side": 113,
+    "walk_up": 111,
+    "accion": 113
+   },
+   "preview_vs_sprite_palette": 0.661,
+   "preview_vs_sprite_iou": 0.863,
+   "preview_size": [
+    220,
+    317
+   ]
+  }
+ },
+ "convergencia": {
+  "type": "set",
+  "champ": "mago",
+  "name": "Ángel Arcano (Arcángel Luminar)",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 139,
+    "walk_down": 139,
+    "walk_side": 135,
+    "walk_up": 139,
+    "accion": 119
+   },
+   "preview_vs_sprite_palette": 0.585,
+   "preview_vs_sprite_iou": 0.663,
+   "preview_size": [
+    125,
+    173
+   ]
+  }
+ },
+ "marea": {
+  "type": "set",
+  "champ": "segador",
+  "name": "Leónidas (Rey de Esparta)",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 109,
+    "walk_down": 109,
+    "walk_side": 103,
+    "walk_up": 109,
+    "accion": 103
+   },
+   "preview_vs_sprite_palette": 0.613,
+   "preview_vs_sprite_iou": 0.688,
+   "preview_size": [
+    220,
+    308
+   ]
+  }
+ },
+ "nocturno": {
+  "type": "set",
+  "champ": "guerrero",
+  "name": "Jack el Destripador (Caballero Carmesí)",
+  "flags": [
+   "estado_sin_cuadro:walk_up"
+  ],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 103,
+    "walk_down": 101,
+    "walk_side": 101,
+    "accion": 97
+   },
+   "preview_vs_sprite_palette": 0.621,
+   "preview_vs_sprite_iou": 0.786,
+   "preview_size": [
+    220,
+    309
+   ]
+  }
+ },
+ "custodio": {
+  "type": "set",
+  "champ": "soporte",
+  "name": "Ángel del Alba (Forma Celestial)",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 131,
+    "walk_down": 131,
+    "walk_side": 131,
+    "walk_up": 131,
+    "accion": 127
+   },
+   "preview_vs_sprite_palette": 0.659,
+   "preview_vs_sprite_iou": 0.818,
+   "preview_size": [
+    130,
+    175
+   ]
+  }
+ },
+ "ultimo_turno": {
+  "type": "set",
+  "champ": "brasa",
+  "name": "Maquinista de la Caldera",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 143,
+    "walk_down": 145,
+    "walk_side": 147,
+    "walk_up": 137,
+    "accion": 141
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    96,
+    96
+   ]
+  }
+ },
+ "juramento_roto": {
+  "type": "set",
+  "champ": "eslabon",
+  "name": "Carcelero de Puertas Abiertas",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 143,
+    "walk_down": 143,
+    "walk_side": 139,
+    "walk_up": 145,
+    "accion": 133
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    96,
+    96
+   ]
+  }
+ },
+ "vidrio_negro": {
+  "type": "set",
+  "champ": "morwen",
+  "name": "Destiladora del Silencio",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 143,
+    "walk_down": 145,
+    "walk_side": 155,
+    "walk_up": 145,
+    "accion": 151
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    96,
+    96
+   ]
+  }
+ },
+ "lumbre_persistente": {
+  "type": "set",
+  "champ": "farolero",
+  "name": "Vigía de la Última Expedición",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 143,
+    "walk_down": 143,
+    "walk_side": 141,
+    "walk_up": 137,
+    "accion": 139
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    96,
+    96
+   ]
+  }
+ },
+ "hilo_umbral": {
+  "type": "set",
+  "champ": "iria",
+  "name": "Tejedora de los Tres Caminos",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 143,
+    "walk_down": 143,
+    "walk_side": 147,
+    "walk_up": 133,
+    "accion": 147
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    96,
+    96
+   ]
+  }
+ },
+ "merienda_magica": {
+  "type": "set",
+  "champ": "myla",
+  "name": "Pastelera de Medianoche",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 151,
+    "walk_up": 149,
+    "accion": 151
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    96,
+    96
+   ]
+  }
+ },
+ "santa_paciencia": {
+  "type": "set",
+  "champ": "ynara",
+  "name": "Guardiana del Santuario",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 151,
+    "walk_down": 151,
+    "walk_side": 151,
+    "walk_up": 157,
+    "accion": 141
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    96,
+    96
+   ]
+  }
+ },
+ "baluarte": {
+  "type": "set",
+  "champ": "tanque",
+  "name": "El Último Juramento",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 143,
+    "walk_down": 147,
+    "walk_side": 137,
+    "walk_up": 145,
+    "accion": 143
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    96,
+    96
+   ]
+  }
+ },
+ "requiem": {
+  "type": "set",
+  "champ": "nigromante",
+  "name": "Rey Sin Tumba",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 143,
+    "walk_down": 141,
+    "walk_side": 147,
+    "walk_up": 149,
+    "accion": 143
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    96,
+    96
+   ]
+  }
+ },
+ "granadero": {
+  "type": "set",
+  "champ": "libertador",
+  "name": "Granadero del Alba",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 143,
+    "walk_down": 143,
+    "walk_side": 145,
+    "walk_up": 141,
+    "accion": 139
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    96,
+    96
+   ]
+  }
+ },
+ "quality_solciju": {
+  "type": "set",
+  "champ": "solciju",
+  "name": "Vendimiadora del Asedio",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 139,
+    "walk_down": 139,
+    "walk_side": 139,
+    "walk_up": 141,
+    "accion": 129
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "quality_brakk": {
+  "type": "set",
+  "champ": "brakk",
+  "name": "Ingeniero del Abismo",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 139,
+    "walk_down": 141,
+    "walk_side": 135,
+    "walk_up": 139,
+    "accion": 131
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "quality_veyra": {
+  "type": "set",
+  "champ": "veyra",
+  "name": "Cicatriz de Obsidiana",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 137,
+    "walk_down": 139,
+    "walk_side": 135,
+    "walk_up": 143,
+    "accion": 129
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "quality_morveth": {
+  "type": "set",
+  "champ": "morveth",
+  "name": "Huerto de Sal",
+  "flags": [
+   "linea_de_suelo_variable:{'idle': 213, 'walk_down': 213, 'walk_side': 219, 'walk_up': 213}"
+  ],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 139,
+    "walk_down": 139,
+    "walk_side": 131,
+    "walk_up": 139,
+    "accion": 123
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "quality_aelith": {
+  "type": "set",
+  "champ": "aelith",
+  "name": "Custodia del Mediodía",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 131,
+    "walk_down": 131,
+    "walk_side": 141,
+    "walk_up": 139,
+    "accion": 135
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "exp_baltra": {
+  "type": "set",
+  "champ": "baltra",
+  "name": "Festival de los Ausentes",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 127,
+    "walk_down": 127,
+    "walk_side": 133,
+    "walk_up": 131,
+    "accion": 129
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "exp_dariel": {
+  "type": "set",
+  "champ": "dariel",
+  "name": "Carnaval de Medianoche",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 135,
+    "walk_down": 133,
+    "walk_side": 127,
+    "walk_up": 133,
+    "accion": 137
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "exp_maura": {
+  "type": "set",
+  "champ": "maura",
+  "name": "Pastora Invernal",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 135,
+    "walk_down": 135,
+    "walk_side": 133,
+    "walk_up": 133,
+    "accion": 129
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "exp_nahir": {
+  "type": "set",
+  "champ": "nahir",
+  "name": "Vitral del Réquiem",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 131,
+    "walk_down": 133,
+    "walk_side": 137,
+    "walk_up": 139,
+    "accion": 125
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "exp_orsa": {
+  "type": "set",
+  "champ": "orsa",
+  "name": "Trueno Carmesí",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 139,
+    "walk_down": 139,
+    "walk_side": 135,
+    "walk_up": 143,
+    "accion": 127
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "exp_renko": {
+  "type": "set",
+  "champ": "renko",
+  "name": "Enterrador del Desierto",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 115,
+    "walk_down": 121,
+    "walk_side": 117,
+    "walk_up": 119,
+    "accion": 113
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "exp_sira": {
+  "type": "set",
+  "champ": "sira",
+  "name": "Cartógrafa Corsaria",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 133,
+    "walk_down": 133,
+    "walk_side": 125,
+    "walk_up": 131,
+    "accion": 127
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "exp_tibor": {
+  "type": "set",
+  "champ": "tibor",
+  "name": "Colmena de Ámbar",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 125,
+    "walk_down": 127,
+    "walk_side": 123,
+    "walk_up": 131,
+    "accion": 125
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "exp_vesper": {
+  "type": "set",
+  "champ": "vesper",
+  "name": "Costurera de Espantapájaros",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 127,
+    "walk_down": 125,
+    "walk_side": 125,
+    "walk_up": 131,
+    "accion": 119
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "exp_zahra": {
+  "type": "set",
+  "champ": "zahra",
+  "name": "Corazón Volcánico",
+  "flags": [],
+  "metrics": {
+   "preview_exists": true,
+   "hs": {
+    "idle": 133,
+    "walk_down": 133,
+    "walk_side": 129,
+    "walk_up": 133,
+    "accion": 129
+   },
+   "preview_vs_sprite_palette": 1.0,
+   "preview_vs_sprite_iou": 1.0,
+   "preview_size": [
+    112,
+    112
+   ]
+  }
+ },
+ "lucifer": {
+  "type": "set",
+  "champ": null,
+  "name": "Lucifer · Manifestación",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "lucifer_astral": {
+  "type": "set",
+  "champ": null,
+  "name": "Lucifer · Astral",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "lucifer_consagrada": {
+  "type": "set",
+  "champ": null,
+  "name": "Lucifer · Consagrada",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "glaciar": {
+  "type": "set",
+  "champ": null,
+  "name": "Glaciar Eterno · Manifestación",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "glaciar_astral": {
+  "type": "set",
+  "champ": null,
+  "name": "Glaciar Eterno · Astral",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "glaciar_consagrada": {
+  "type": "set",
+  "champ": null,
+  "name": "Glaciar Eterno · Consagrada",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "coloso": {
+  "type": "set",
+  "champ": null,
+  "name": "Coloso · Manifestación",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "coloso_astral": {
+  "type": "set",
+  "champ": null,
+  "name": "Coloso · Astral",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "coloso_consagrada": {
+  "type": "set",
+  "champ": null,
+  "name": "Coloso · Consagrada",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "tempestad": {
+  "type": "set",
+  "champ": null,
+  "name": "Tempestad · Manifestación",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "tempestad_astral": {
+  "type": "set",
+  "champ": null,
+  "name": "Tempestad · Astral",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "tempestad_consagrada": {
+  "type": "set",
+  "champ": null,
+  "name": "Tempestad · Consagrada",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "alba": {
+  "type": "set",
+  "champ": null,
+  "name": "Alba · Manifestación",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "alba_astral": {
+  "type": "set",
+  "champ": null,
+  "name": "Alba · Astral",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ },
+ "alba_consagrada": {
+  "type": "set",
+  "champ": null,
+  "name": "Alba · Consagrada",
+  "flags": [
+   "sin_atlas_de_heroe"
+  ],
+  "metrics": {
+   "preview_exists": true
+  }
+ }
+}

@@ -1,0 +1,639 @@
+{
+ "tanque": {
+  "priority": "P0",
+  "fidelity_0_100": 60,
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "No existe cuadro de muerte: la tira termina en la acción."
+   },
+   {
+    "code": "identidad",
+    "where": "todas las vistas",
+    "note": "Códice: armadura oscura/dorada, escudo con sol dorado y espada larga; motor: tabardo azul con cruz amarilla y escudo redondo de madera."
+   },
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción casi idéntica al reposo; no se lee el golpe/bloqueo."
+   }
+  ],
+  "recommended_fix": "repintar set completo",
+  "effort": "alto"
+ },
+ "guerrero": {
+  "priority": "P0",
+  "fidelity_0_100": 55,
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "No existe cuadro de muerte."
+   },
+   {
+    "code": "identidad",
+    "where": "todas las vistas",
+    "note": "Códice: pañuelo/bufanda roja y telas carmesí, dagas curvas rojizas; motor: capucha y ropa verde oscuro sin rojo, dagas plateadas rectas. Pierde el 'Carmesí'."
+   },
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción solo abre los brazos; sin estocada legible."
+   }
+  ],
+  "recommended_fix": "repintar set completo",
+  "effort": "alto"
+ },
+ "mago": {
+  "priority": "P2",
+  "fidelity_0_100": 60,
+  "defects": [
+   {
+    "code": "identidad",
+    "where": "todas las vistas",
+    "note": "Rostro tapado por el sombrero en todas las vistas (Códice muestra cara y orbe azul brillante); túnica azul marino en lugar de púrpura con detalles dorados; báculo sin orbe."
+   },
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Pose de acción casi igual al reposo, sin destello de lanzamiento."
+   },
+   {
+    "code": "caminata",
+    "where": "paso frente/perfil",
+    "note": "Túnica cubre piernas; apoyos de paso poco visibles."
+   }
+  ],
+  "recommended_fix": "repintar set completo",
+  "effort": "medio"
+ },
+ "soporte": {
+  "priority": "P3",
+  "fidelity_0_100": 80,
+  "defects": [
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción idéntica al reposo; falta gesto de lanzamiento/cura."
+   },
+   {
+    "code": "otro",
+    "where": "vestuario",
+    "note": "Capucha verde/blanca en motor vs. crema/dorada con halo en Códice; falta halo."
+   }
+  ],
+  "recommended_fix": "repintar celdas acción",
+  "effort": "bajo"
+ },
+ "segador": {
+  "priority": "P2",
+  "fidelity_0_100": 65,
+  "defects": [
+   {
+    "code": "identidad",
+    "where": "todas las vistas",
+    "note": "Códice: guadaña grande única; motor: dos hoces/cadenas, silueta distinta."
+   },
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Muerte es salpicadura de sangre abstracta sin cuerpo; legible pero rompe coherencia con el resto del roster."
+   }
+  ],
+  "recommended_fix": "repintar set completo",
+  "effort": "medio"
+ },
+ "axiom": {
+  "priority": "P3",
+  "fidelity_0_100": 85,
+  "defects": [
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción poco diferenciada del reposo (solo orbe)."
+   },
+   {
+    "code": "otro",
+    "where": "muerte",
+    "note": "Muerte muy plana/alargada; poco reconocible a escala de juego."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "profeta": {
+  "priority": "P2",
+  "fidelity_0_100": 65,
+  "defects": [
+   {
+    "code": "identidad",
+    "where": "todas las vistas",
+    "note": "Paleta azul marino/blanco frente a crema/dorado del Códice; capucha oscura; báculo lunar reducido."
+   },
+   {
+    "code": "escala",
+    "where": "reposo vs caminata",
+    "note": "Reposo más alto que caminatas (hs 181 vs 151): salto de escala entre estados."
+   },
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Muerte es nube de partículas doradas; cuerpo casi no se lee."
+   }
+  ],
+  "recommended_fix": "repintar set completo",
+  "effort": "medio"
+ },
+ "musashi": {
+  "priority": "P3",
+  "fidelity_0_100": 85,
+  "defects": [
+   {
+    "code": "escala",
+    "where": "todas",
+    "note": "Figura pequeña dentro de la celda respecto al Códice; detalle de rostro se pierde a escala de juego."
+   },
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Golpe de bokken poco marcado."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "cazadora": {
+  "priority": "P3",
+  "fidelity_0_100": 80,
+  "defects": [
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Aparece un trazo/flecha vertical debajo del cuerpo en el cuadro de acción (artefacto de proyectil mal anclado)."
+   },
+   {
+    "code": "escala",
+    "where": "todas",
+    "note": "Figura pequeña y cargada de hojas; rostro poco legible."
+   }
+  ],
+  "recommended_fix": "repintar celdas acción",
+  "effort": "bajo"
+ },
+ "nigromante": {
+  "priority": "P3",
+  "fidelity_0_100": 85,
+  "defects": [
+   {
+    "code": "escala",
+    "where": "todas",
+    "note": "Figura pequeña; calaveras del manto se empastan a escala de juego."
+   },
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción similar al reposo."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "libertador": {
+  "priority": "P0",
+  "fidelity_0_100": 45,
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "No existe cuadro de muerte."
+   },
+   {
+    "code": "identidad",
+    "where": "todas las vistas",
+    "note": "Códice: pelo castaño, lanza/pica y pantalón crema; motor: pelo negro, sables cruzados, uniforme azul marino distinto."
+   },
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción dispara con humo y arma distinta a la del Códice."
+   }
+  ],
+  "recommended_fix": "repintar set completo",
+  "effort": "alto"
+ },
+ "ilkan": {
+  "priority": "P3",
+  "fidelity_0_100": 85,
+  "defects": [
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción con leve inclinación; poco legible."
+   },
+   {
+    "code": "otro",
+    "where": "perfil",
+    "note": "Bufanda flotante muy dominante en perfil."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "ynara": {
+  "priority": "P0",
+  "fidelity_0_100": 85,
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "El cuadro de muerte es una figura de pie idéntica al reposo: la muerte no existe visualmente."
+   },
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción es solo un saludo con la mano; sin lanzamiento de cura legible."
+   }
+  ],
+  "recommended_fix": "repintar celdas muerte y acción",
+  "effort": "medio"
+ },
+ "myla": {
+  "priority": "P0",
+  "fidelity_0_100": 88,
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "No existe cuadro de muerte (repintado nuevo sin estado de muerte)."
+   },
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción con la cuchara levantada, correcta pero sutil."
+   }
+  ],
+  "recommended_fix": "repintar celdas muerte",
+  "effort": "bajo"
+ },
+ "brasa": {
+  "priority": "OK",
+  "fidelity_0_100": 90,
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "eslabon": {
+  "priority": "OK",
+  "fidelity_0_100": 90,
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "morwen": {
+  "priority": "OK",
+  "fidelity_0_100": 88,
+  "defects": [
+   {
+    "code": "otro",
+    "where": "acción",
+    "note": "Acción algo sutil."
+   }
+  ],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "farolero": {
+  "priority": "OK",
+  "fidelity_0_100": 90,
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "iria": {
+  "priority": "OK",
+  "fidelity_0_100": 88,
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "vesper": {
+  "priority": "P3",
+  "fidelity_0_100": 82,
+  "defects": [
+   {
+    "code": "escala",
+    "where": "todas",
+    "note": "Figura más pequeña que el Códice (hs 123); tijeras/agujas finas se pierden a escala de juego."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "nahir": {
+  "priority": "P3",
+  "fidelity_0_100": 85,
+  "defects": [
+   {
+    "code": "otro",
+    "where": "paso espalda",
+    "note": "Vista espalda algo confusa con capa turquesa."
+   },
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción legible pero poco distinta del reposo."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "baltra": {
+  "priority": "OK",
+  "fidelity_0_100": 90,
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "maura": {
+  "priority": "P3",
+  "fidelity_0_100": 85,
+  "defects": [
+   {
+    "code": "otro",
+    "where": "paso espalda",
+    "note": "Espalda muy cargada de cabello/espinas, silueta ruidosa."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "dariel": {
+  "priority": "P3",
+  "fidelity_0_100": 82,
+  "defects": [
+   {
+    "code": "escala",
+    "where": "todas",
+    "note": "Figura pequeña respecto al Códice; compás dorado poco legible."
+   },
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción con poca diferencia frente al reposo."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "orsa": {
+  "priority": "P3",
+  "fidelity_0_100": 88,
+  "defects": [
+   {
+    "code": "otro",
+    "where": "todas",
+    "note": "Ballesta reducida; leve pérdida de detalle."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "tibor": {
+  "priority": "OK",
+  "fidelity_0_100": 90,
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "zahra": {
+  "priority": "P3",
+  "fidelity_0_100": 85,
+  "defects": [
+   {
+    "code": "otro",
+    "where": "todas",
+    "note": "Guantelete mecánico menos voluminoso que en el Códice."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "renko": {
+  "priority": "P2",
+  "fidelity_0_100": 65,
+  "defects": [
+   {
+    "code": "identidad",
+    "where": "todas las vistas",
+    "note": "Códice: pelo negro revuelto y barba oscura; motor: gorro/casco negro y barba blanca."
+   },
+   {
+    "code": "escala",
+    "where": "todas",
+    "note": "Figura la más chica del roster (hs ~105)."
+   },
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Fragmento suelto (trozo de pala) separado a la izquierda del cuerpo: artefacto de recorte."
+   }
+  ],
+  "recommended_fix": "repintar set completo",
+  "effort": "medio"
+ },
+ "sira": {
+  "priority": "P3",
+  "fidelity_0_100": 85,
+  "defects": [
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Pluma/arma de acción poco legible."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "nano_gm": {
+  "priority": "P3",
+  "fidelity_0_100": 88,
+  "defects": [
+   {
+    "code": "otro",
+    "where": "acción",
+    "note": "Acción casi igual al reposo."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "facu_gm": {
+  "priority": "P3",
+  "fidelity_0_100": 82,
+  "defects": [
+   {
+    "code": "otro",
+    "where": "todas",
+    "note": "Alas translúcidas dominan la silueta y ocultan el cuerpo; colores algo lavados frente al Códice."
+   },
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción poco diferenciada."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "aurelia": {
+  "priority": "P2",
+  "fidelity_0_100": 75,
+  "defects": [
+   {
+    "code": "orientacion",
+    "where": "todas las vistas",
+    "note": "El arma cambia entre vistas: sin báculo en frente/reposo, lanza en perfil y acción, tridente con halo en espalda."
+   },
+   {
+    "code": "nitidez",
+    "where": "todas",
+    "note": "Paleta monocroma dorada con poco contraste; rostro y manos se empastan a escala de juego."
+   },
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Muerte pequeña y difusa."
+   }
+  ],
+  "recommended_fix": "repintar celdas reposo/paso frente/espalda para unificar arma",
+  "effort": "medio"
+ },
+ "khepri": {
+  "priority": "P3",
+  "fidelity_0_100": 85,
+  "defects": [
+   {
+    "code": "otro",
+    "where": "perfil",
+    "note": "Perfil pierde la luna dorada del tocado; escarabajo/alas recortados."
+   },
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Muerte verde poco definida."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "velmira": {
+  "priority": "P3",
+  "fidelity_0_100": 88,
+  "defects": [
+   {
+    "code": "otro",
+    "where": "todas",
+    "note": "Máscaras flotantes muy pequeñas."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "vhal": {
+  "priority": "P3",
+  "fidelity_0_100": 85,
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Muerte poco legible (mancha azul)."
+   },
+   {
+    "code": "otro",
+    "where": "todas",
+    "note": "Astrolabio reducido."
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "bront": {
+  "priority": "OK",
+  "fidelity_0_100": 90,
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "oriel": {
+  "priority": "OK",
+  "fidelity_0_100": 88,
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "saelis": {
+  "priority": "P1",
+  "fidelity_0_100": 80,
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Cuadro de muerte diminuto (~1/3 de escala) y fragmentado; no se lee a tamaño de juego."
+   },
+   {
+    "code": "suelo_dibujado",
+    "where": "reposo/caminatas/acción",
+    "note": "Franja de tierra marrón pintada bajo los pies en todos los cuadros vivos."
+   }
+  ],
+  "recommended_fix": "repintar celdas muerte y máscara de suelo",
+  "effort": "medio"
+ },
+ "solciju": {
+  "priority": "P3",
+  "fidelity_0_100": 80,
+  "defects": [
+   {
+    "code": "escala",
+    "where": "acción",
+    "note": "En acción la figura se agacha y encoge notoriamente respecto al reposo (hs 123 vs 143)."
+   },
+   {
+    "code": "otro",
+    "where": "todas",
+    "note": "Copa/báculo reducidos."
+   }
+  ],
+  "recommended_fix": "repintar celdas acción",
+  "effort": "bajo"
+ },
+ "veyra": {
+  "priority": "OK",
+  "fidelity_0_100": 90,
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "brakk": {
+  "priority": "OK",
+  "fidelity_0_100": 92,
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "morveth": {
+  "priority": "OK",
+  "fidelity_0_100": 90,
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "aelith": {
+  "priority": "OK",
+  "fidelity_0_100": 90,
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ }
+}

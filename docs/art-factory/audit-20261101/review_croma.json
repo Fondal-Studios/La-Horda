@@ -1,0 +1,450 @@
+{
+ "tanque_ancestral": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "tanque_juicio": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "nigromante_piedra": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "libertador_escarcha": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "segador_escarcha": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "musashi_ancestral": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "profeta_ancestral": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "cazadora_escarcha": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "myla_arandanos": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "ynara_celeste": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "brakk_alt1": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "veyra_alt1": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "morveth_alt1": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "aelith_alt1": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "eslabon_porcelana": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "farolero_guardavia": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "brakk_croma": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "morveth_croma": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "aelith_croma": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "baltra_skin": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "dariel_skin": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "maura_skin": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "nahir_skin": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "orsa_skin": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "sira_skin": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "tibor_skin": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "vesper_skin": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "zahra_skin": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "nigromante_escarcha": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "escala",
+    "where": "acción/perfil",
+    "note": "El chequeo automático marca altura inconsistente (151 en reposo, 123 de perfil, 107 en acción). A la vista se nota poco, pero conviene normalizar el ancla y la altura de la figura"
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "libertador_ancestral": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "La muerte se lee como un bulto con sombrero; la silueta queda poco clara a escala de juego"
+   }
+  ],
+  "recommended_fix": "repintar celdas muerte",
+  "effort": "bajo"
+ },
+ "axiom_piedra": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "La acción es casi igual al reposo (solo cambia el orbe); se lee poco"
+   }
+  ],
+  "recommended_fix": "repintar celdas acción",
+  "effort": "bajo"
+ },
+ "solciju_alt1": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "nitidez",
+    "where": "todas",
+    "note": "Paleta muy oscura y con ruido; la silueta se pierde sobre el fondo oscuro"
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "solciju_croma": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción poco distinta del reposo"
+   },
+   {
+    "code": "nitidez",
+    "where": "todas",
+    "note": "Tonos apagados; poco contraste sobre el suelo oscuro"
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "brasa_abisal": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Acción con poca extensión; se lee como pose de reposo agachada"
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "morwen_escarcha": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "La acción es casi igual al reposo"
+   }
+  ],
+  "recommended_fix": "repintar celdas acción",
+  "effort": "bajo"
+ },
+ "dariel_luthier": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "La acción es casi igual al reposo; el diapasón no se mueve"
+   }
+  ],
+  "recommended_fix": "repintar celdas acción",
+  "effort": "bajo"
+ },
+ "renko_skin": {
+  "priority": "P2",
+  "defects": [
+   {
+    "code": "otro",
+    "where": "muerte",
+    "note": "En el cuadro de muerte aparece un fragmento blanco suelto (trozo de pala o lápida) a la izquierda, separado del cuerpo; parece un recorte o un artefacto de la máscara"
+   }
+  ],
+  "recommended_fix": "repintar celdas muerte",
+  "effort": "bajo"
+ },
+ "veyra_croma": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "preview_vs_sprite",
+    "where": "tienda vs reposo",
+    "note": "La tienda muestra otro diseño: pelo rapado de un lado, hoja corta y pose de tres cuartos. El sprite real tiene melena larga roja y oscura y dos hojas. Similitud automática: paleta 0.64, IoU 0.59"
+   },
+   {
+    "code": "tinte",
+    "where": "todas",
+    "note": "Se llama 'Amatista', pero el sprite real se ve rojo vino/negro, sin violeta claro"
+   },
+   {
+    "code": "escala",
+    "where": "todas",
+    "note": "El lienzo y la altura (unos 170 px) son mayores que en veyra_alt1 (unos 138 px); el cuadro se sale de la grilla"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "maura_croma": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "preview_vs_sprite",
+    "where": "tienda vs caminata",
+    "note": "La tienda muestra un vestido oscuro liso. En partida el sprite tiene falda en púas gris claro y otra silueta. Similitud automática: paleta 0.76, IoU 0.78"
+   },
+   {
+    "code": "tinte",
+    "where": "todas",
+    "note": "Hay un corte horizontal recto a la altura de los ojos: el pelo de arriba sigue castaño y la cara de abajo queda gris. El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
+   },
+   {
+    "code": "suelo_dibujado",
+    "where": "paso frente/perfil/espalda",
+    "note": "Debajo de los pies hay una base o sombra gris pintada dentro del sprite"
+   }
+  ],
+  "recommended_fix": "máscara",
+  "effort": "medio"
+ },
+ "orsa_croma": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "tinte",
+    "where": "todas",
+    "note": "El pelo queda partido por una línea recta: la mitad de arriba naranja y la de abajo gris (trenza gris). El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
+   }
+  ],
+  "recommended_fix": "máscara",
+  "effort": "bajo"
+ },
+ "dariel_croma": {
+  "priority": "P2",
+  "defects": [
+   {
+    "code": "tinte",
+    "where": "todas",
+    "note": "Las puntas del pelo conservan el castaño y debajo hay un corte recto a gris. El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
+   },
+   {
+    "code": "nitidez",
+    "where": "todas",
+    "note": "Muy oscuro, con poco contraste sobre el fondo"
+   }
+  ],
+  "recommended_fix": "máscara",
+  "effort": "bajo"
+ },
+ "zahra_croma": {
+  "priority": "P2",
+  "defects": [
+   {
+    "code": "tinte",
+    "where": "cabeza",
+    "note": "Las gafas naranjas se conservan y se cortan en línea recta contra el pelo gris. El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
+   }
+  ],
+  "recommended_fix": "máscara",
+  "effort": "bajo"
+ },
+ "tibor_croma": {
+  "priority": "P2",
+  "defects": [
+   {
+    "code": "tinte",
+    "where": "capucha",
+    "note": "La parte de arriba de la capucha queda beige y la de abajo gris, con transición por banda. El tinte 'Ceniza del Alba' se aplica con una máscara de banda horizontal: la franja superior conserva el color original y el resto queda gris, con un corte recto visible"
+   },
+   {
+    "code": "nitidez",
+    "where": "cara",
+    "note": "La cara queda gris oscura, casi sin rasgos"
+   }
+  ],
+  "recommended_fix": "máscara",
+  "effort": "bajo"
+ },
+ "baltra_croma": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "tinte",
+    "where": "casco",
+    "note": "La argolla superior conserva el cobre por la máscara de banda; el efecto es menor, pero viene del mismo bug"
+   }
+  ],
+  "recommended_fix": "máscara",
+  "effort": "bajo"
+ },
+ "renko_croma": {
+  "priority": "P2",
+  "defects": [
+   {
+    "code": "nitidez",
+    "where": "todas",
+    "note": "El gris es muy oscuro sobre el fondo oscuro; la silueta casi no se lee"
+   },
+   {
+    "code": "otro",
+    "where": "muerte",
+    "note": "El mismo fragmento blanco suelto a la izquierda que en renko_skin"
+   }
+  ],
+  "recommended_fix": "corregir tinte",
+  "effort": "bajo"
+ },
+ "vesper_croma": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "tinte",
+    "where": "todas",
+    "note": "Gris limpio pero de bajo contraste; los detalles internos se pierden"
+   }
+  ],
+  "recommended_fix": "corregir tinte",
+  "effort": "bajo"
+ },
+ "nahir_croma": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "tinte",
+    "where": "todas",
+    "note": "Gris limpio pero de bajo contraste; la capa se confunde con el fondo"
+   }
+  ],
+  "recommended_fix": "corregir tinte",
+  "effort": "bajo"
+ },
+ "sira_croma": {
+  "priority": "P4",
+  "defects": [
+   {
+    "code": "tinte",
+    "where": "todas",
+    "note": "Gris claro limpio y legible. Sugerencia: el nombre 'Ceniza del Alba' se repite en 10 cromas; conviene diferenciar nombre y acento de color"
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ }
+}

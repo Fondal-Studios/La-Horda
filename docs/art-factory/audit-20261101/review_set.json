@@ -1,0 +1,614 @@
+{
+ "manada": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "caminata",
+    "where": "paso perfil",
+    "note": "El cuadro de perfil es una masa horizontal de llamas: la silueta parece volando/tendida, sin piernas ni apoyos legibles"
+   },
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "La muerte es solo una explosión de fuego sin cuerpo; no se lee el campeón caído"
+   },
+   {
+    "code": "nitidez",
+    "where": "todas",
+    "note": "Mucho ruido de llamas sobre la figura, silueta poco legible a escala de juego"
+   }
+  ],
+  "recommended_fix": "repintar celdas paso perfil y muerte",
+  "effort": "medio"
+ },
+ "errante": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Muerte = salpicadura roja sin cuerpo; píxeles sueltos flotantes a la derecha"
+   },
+   {
+    "code": "accion",
+    "where": "acción",
+    "note": "Ícono/pixel flotante sobre la figura en el cuadro de acción"
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "legion": {
+  "priority": "P2",
+  "defects": [
+   {
+    "code": "preview_vs_sprite",
+    "where": "preview",
+    "note": "Preview es ilustración detallada (palette 0.37, IoU 0.51); el sprite es plano y de menor detalle aunque mismo diseño"
+   },
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Cuerpo tendido muy pequeño y recortado en el borde (flag recorte_borde:muerte)"
+   },
+   {
+    "code": "identidad",
+    "where": "todas",
+    "note": "Estilo chibi plano distinto al resto de skins de set"
+   }
+  ],
+  "recommended_fix": "repintar celdas muerte",
+  "effort": "medio"
+ },
+ "sistema": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "profecia": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "nitidez",
+    "where": "paso espalda",
+    "note": "Vista de espalda es una mancha morada de capa sin detalle; muerte solo FX"
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "convergencia": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "marea": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Muerte reemplazada por estallido rojo sin cuerpo"
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "nocturno": {
+  "priority": "P0",
+  "defects": [
+   {
+    "code": "caminata",
+    "where": "paso espalda",
+    "note": "Cuadro de paso de espalda vacío (flag estado_sin_cuadro:walk_up): el personaje desaparece al caminar hacia arriba"
+   },
+   {
+    "code": "nitidez",
+    "where": "todas",
+    "note": "Sprite muy ruidoso y borroso, píxeles grises sueltos, silueta ilegible frente al preview"
+   },
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Muerte es un bulto ruidoso apenas legible"
+   }
+  ],
+  "recommended_fix": "repintar set completo",
+  "effort": "alto"
+ },
+ "custodio": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "orientacion",
+    "where": "paso espalda",
+    "note": "Vista de espalda pierde alas/halo dominantes; muerte con brillos poco claros"
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "ultimo_turno": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "juramento_roto": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "vidrio_negro": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "lumbre_persistente": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "hilo_umbral": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "requiem": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "quality_solciju": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "quality_brakk": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "quality_morveth": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "quality_aelith": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "exp_baltra": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "exp_dariel": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "exp_maura": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "exp_nahir": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "exp_orsa": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "exp_sira": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "exp_tibor": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "exp_vesper": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "exp_zahra": {
+  "priority": "OK",
+  "defects": [],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "merienda_magica": {
+  "priority": "P2",
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "El cuadro de muerte muestra a la personaje sentada/agachada con ojos cerrados, no tendida: se confunde con un estado de golpe"
+   }
+  ],
+  "recommended_fix": "repintar celdas muerte",
+  "effort": "bajo"
+ },
+ "santa_paciencia": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "El cuadro de muerte es la figura de pie rezando: el estado de muerte es ilegible"
+   }
+  ],
+  "recommended_fix": "repintar celdas muerte",
+  "effort": "bajo"
+ },
+ "baluarte": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Muerte muestra escudo y espada en el suelo con la capa; el cuerpo queda casi oculto"
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "granadero": {
+  "priority": "P4",
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Cuerpo tendido muy fino y oscuro, poco contraste"
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "quality_veyra": {
+  "priority": "P4",
+  "defects": [
+   {
+    "code": "nitidez",
+    "where": "todas",
+    "note": "Figura oscura sobre fondo oscuro; capa negra se funde, legibilidad baja"
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "exp_renko": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "muerte",
+    "where": "muerte",
+    "note": "Fragmento recortado en el borde izquierdo del cuadro de muerte"
+   }
+  ],
+  "recommended_fix": "pulido",
+  "effort": "bajo"
+ },
+ "lucifer": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe; solo se audita el preview"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico píxel a píxel al de la skin de set manada (cazadora 'Flecha de Fuego'): la tienda vende la misma imagen para dos productos"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "lucifer_astral": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico al de 'lucifer' base: el tier astral no se distingue en la tienda"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Además reutiliza la imagen de manada (cazadora 'Flecha de Fuego')"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "lucifer_consagrada": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico al de 'lucifer' base: el tier consagrada no se distingue en la tienda"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Además reutiliza la imagen de manada (cazadora 'Flecha de Fuego')"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "glaciar": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe; solo se audita el preview"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico píxel a píxel al de la skin de set convergencia (mago 'Arcángel Luminar'): la tienda vende la misma imagen para dos productos"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "glaciar_astral": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico al de 'glaciar' base: el tier astral no se distingue en la tienda"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Además reutiliza la imagen de convergencia (mago 'Arcángel Luminar')"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "glaciar_consagrada": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico al de 'glaciar' base: el tier consagrada no se distingue en la tienda"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Además reutiliza la imagen de convergencia (mago 'Arcángel Luminar')"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "coloso": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe; solo se audita el preview"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico píxel a píxel al de la skin de set marea (segador 'Leónidas'): la tienda vende la misma imagen para dos productos"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "coloso_astral": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico al de 'coloso' base: el tier astral no se distingue en la tienda"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Además reutiliza la imagen de marea (segador 'Leónidas')"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "coloso_consagrada": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico al de 'coloso' base: el tier consagrada no se distingue en la tienda"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Además reutiliza la imagen de marea (segador 'Leónidas')"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "tempestad": {
+  "priority": "P3",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe; solo se audita el preview"
+   },
+   {
+    "code": "otro",
+    "where": "preview",
+    "note": "Preview propio, nítido y coherente (morado/eldritch); sin recortes"
+   }
+  ],
+  "recommended_fix": "ninguno",
+  "effort": "bajo"
+ },
+ "tempestad_astral": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico al de 'tempestad' base: el tier astral no se distingue en la tienda"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "tempestad_consagrada": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico al de 'tempestad' base: el tier consagrada no se distingue en la tienda"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "alba": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe; solo se audita el preview"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico píxel a píxel al de la skin de set custodio (soporte 'Ángel del Alba'): la tienda vende la misma imagen para dos productos"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "alba_astral": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico al de 'alba' base: el tier astral no se distingue en la tienda"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Además reutiliza la imagen de custodio (soporte 'Ángel del Alba')"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ },
+ "alba_consagrada": {
+  "priority": "P1",
+  "defects": [
+   {
+    "code": "sin_atlas_de_heroe",
+    "where": "preview",
+    "note": "Skin de portador sin atlas de héroe"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Preview idéntico al de 'alba' base: el tier consagrada no se distingue en la tienda"
+   },
+   {
+    "code": "identidad",
+    "where": "preview",
+    "note": "Además reutiliza la imagen de custodio (soporte 'Ángel del Alba')"
+   }
+  ],
+  "recommended_fix": "regenerar preview",
+  "effort": "medio"
+ }
+}
