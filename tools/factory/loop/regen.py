@@ -12,6 +12,7 @@ idle=P['sets']['idle_down'][0];tool=os.path.join(os.path.dirname(__file__),'repa
 GEN_RULE=' Keep the halo/signature items of the design visible in every view. Transparent flat green background only: NO ground, NO dirt, NO shadow, nothing drawn under the feet. Same proportions and the same boots as the idle frame.'
 for c,t in fixes.items():
     i=int(c.lstrip('c'));d=f'{root}/{champ}/f{i}'
+    os.makedirs(d,exist_ok=True)
     json.dump({'verdict':'CORREGIR','negative_feedback':t+GEN_RULE,'source':'arquitecto independiente'},open(d+'/architect_feedback.json','w'))
     env=dict(os.environ,REFVIEW=str(view.get(i,0)),GEN=gen,BUDGET=os.environ.get('BUDGET','12'),MAXROUNDS=os.environ.get('MAXROUNDS','2'))
     if view.get(i,0)==0:
