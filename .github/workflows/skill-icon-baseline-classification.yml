@@ -1,7 +1,7 @@
 name: Skill icon baseline classification
 on:
   pull_request:
-    paths: ['.github/workflows/skill-icon-baseline-classification.yml']
+    paths: ['.github/workflows/skill-icon-baseline-classification.yml', 'tools/quality/classify-skill-icon-baseline.py', 'tools/quality/test-skill-icon-baseline-classifier.py']
   workflow_dispatch:
 permissions:
   contents: read
@@ -14,7 +14,11 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: ./.github/actions/setup-playwright
+      - name: Fail-closed classifier negative controls
+        run: python3 tools/quality/test-skill-icon-baseline-classifier.py -v
       - name: Run unmodified icon contract on candidate and full pinned main
+        env:
+          EXPECTED_CANDIDATE: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           BASELINE=34ac2852154035b97e53c4807a0a20ee289a40b2
           CANDIDATE="$PWD"
@@ -32,40 +36,19 @@ jobs:
           set -o pipefail
           set +e
           node tools/art/check-skill-icons.js --self-test 2>&1 | tee "$OUT/candidate.log"
-          CANDIDATE_STATUS=${PIPESTATUS[0]}
-          cd /tmp/skill-icon-main
+          CANDIDATE_PIPE=("${PIPESTATUS[@]}")
+          cd /tmp/skill-icon-main || exit 1
           node tools/art/check-skill-icons.js --self-test 2>&1 | tee "$OUT/baseline.log"
-          BASELINE_STATUS=${PIPESTATUS[0]}
+          BASELINE_PIPE=("${PIPESTATUS[@]}")
           set -e
-          printf '%s\n' "$CANDIDATE_STATUS" > "$OUT/candidate-exit.txt"
-          printf '%s\n' "$BASELINE_STATUS" > "$OUT/baseline-exit.txt"
-          python3 - <<'PY'
-          import json, pathlib, re
-          root = pathlib.Path('/tmp/skill-icon-comparison')
-          result = {}
-          for label in ('candidate', 'baseline'):
-              log = (root / (label + '.log')).read_text()
-              result[label] = {
-                  'sha': (root / (label + '-revision.txt')).read_text().strip(),
-                  'exit': int((root / (label + '-exit.txt')).read_text()),
-                  'hud_summary': re.findall(r'^HUD 844x390:.*$', log, re.M),
-                  'failures': re.findall(r'^ - (.*)$', log, re.M),
-              }
-          c, b = result['candidate'], result['baseline']
-          result['classification'] = 'INCONCLUSIVE'
-          if c['hud_summary'] and b['hud_summary']:
-              if c['exit'] == b['exit'] == 0:
-                  result['classification'] = 'BOTH_PASS'
-              elif c['exit'] == b['exit'] == 1 and c['failures'] and c['failures'] == b['failures']:
-                  result['classification'] = 'SAME_BASELINE_FAILURES_NOT_A_PASS'
-              else:
-                  result['classification'] = 'DIFFERENT_RESULTS_REVIEW_REQUIRED'
-          text = json.dumps(result, indent=2, ensure_ascii=False)
-          (root / 'comparison.json').write_text(text)
-          print(text)
-          PY
-          # Diagnostic classification does not turn a real contract violation green.
-          test "$CANDIDATE_STATUS" -eq 0 && test "$BASELINE_STATUS" -eq 0
+          printf '%s\n' "${CANDIDATE_PIPE[0]}" > "$OUT/candidate-exit.txt"
+          printf '%s\n' "${CANDIDATE_PIPE[1]}" > "$OUT/candidate-tee-exit.txt"
+          printf '%s\n' "${BASELINE_PIPE[0]}" > "$OUT/baseline-exit.txt"
+          printf '%s\n' "${BASELINE_PIPE[1]}" > "$OUT/baseline-tee-exit.txt"
+          # Candidate original gate MUST pass. The pinned historical defect is
+          # retained as CONTRACT_FAIL, never renamed PASS. Crashes, truncation,
+          # changed harness/refs and evidence writer errors remain blocking.
+          python3 "$CANDIDATE/tools/quality/classify-skill-icon-baseline.py" "$OUT" --candidate-sha "$EXPECTED_CANDIDATE"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
