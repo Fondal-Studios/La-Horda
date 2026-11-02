@@ -46,8 +46,8 @@ jobs:
           sha256sum tools/micelial/{t_micelial,sim-helpers}.js | tee /tmp/mother-browser/candidate-harness.sha256
           set -o pipefail
           MIC_TEST_SEED=137260 node tools/micelial/t_micelial.js 2>&1 | tee /tmp/mother-browser/candidate-regression.log
-      - name: Classify existing fungal regression failures against baseline
-        if: failure()
+      - name: Compare fungal regressions against full baseline
+        if: ${{ !cancelled() }}
         continue-on-error: true
         run: |
           # Compare the COMPLETE pinned baseline, not a hybrid with two old files.
@@ -76,7 +76,8 @@ jobs:
           root = pathlib.Path('/tmp/mother-browser')
           results = {}
           for label in ('candidate', 'baseline'):
-              log = (root / (label + '-regression.log')).read_text()
+              path = root / (label + '-regression.log')
+              log = path.read_text() if path.exists() else ''
               results[label] = {
                   'complete': bool(re.search(r'^(OK|[0-9]+ FALLAS)$', log, re.M)),
                   'failures': re.findall(r'^FAIL (\S+)', log, re.M),
@@ -84,7 +85,8 @@ jobs:
           results['classification'] = 'INCONCLUSIVE'
           if all(r['complete'] for r in results.values() if isinstance(r, dict)):
               results['candidate_only'] = sorted(set(results['candidate']['failures']) - set(results['baseline']['failures']))
-              results['classification'] = 'CANDIDATE_REGRESSIONS' if results['candidate_only'] else 'SAME_OR_FEWER_FAILURES_NOT_A_PASS'
+              results['classification'] = ('BOTH_PASS' if not results['candidate']['failures'] and not results['baseline']['failures']
+                  else 'CANDIDATE_REGRESSIONS' if results['candidate_only'] else 'SAME_OR_FEWER_FAILURES_NOT_A_PASS')
           text = json.dumps(results, indent=2)
           (root / 'fungal-comparison.json').write_text(text)
           print(text)

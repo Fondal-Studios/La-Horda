@@ -4,8 +4,8 @@
   "owner": "/root/animate_madre_espora",
   "branch": "fix/madre-espora-animation-20261101",
   "pr": 260,
-  "code_head_sha": "232b2b200c0f374ae0466c65a1e46a8e39ce8885",
-  "updated_utc": "2026-11-02T00:29:00Z",
+  "code_head_sha": "fc2e99b6a701214ab2a29264b62a7f0071865c85",
+  "updated_utc": "2026-11-02T00:37:00Z",
   "execution_policy": "Continue existing owner/slice; automation must not launch duplicate generations. No formal PR approval or unvalidated main merge.",
   "accepted_scopes": [
     "opt-in high-detail idle pilot",
@@ -18,7 +18,7 @@
     "remaining high-detail phases"
   ],
   "validation": {
-    "unit_pass": 30,
+    "unit_pass": 31,
     "browser_pass": 60,
     "phase1_timing": "Mother damage5350ms; first impact render5382ms (+32ms)",
     "actual_evidence_dir": "/tmp/mother-ci-232b2b20/high-detail-pilot",
@@ -32,7 +32,9 @@
     ],
     "geometry_run_id": 41366010676,
     "geometry_artifact_id": 13107069326,
-    "latest_fungal_status": "FAIL phase3/save plus unclassified SABUESO; baseline crashed (not PASS). Deterministic full-baseline harness correction065cbeb1 pending CI."
+    "latest_fungal_status": "Complete candidate/fullbaseline same harness+seed: SAME_OR_FEWER_FAILURES_NOT_A_PASS, candidate_only[], same phase3/save failures, SABUESO passes. Genuine legacy-save fixture and bounded phase3 readiness correction57e912f3 pending repeatCI.",
+    "bloom_sequence_run_id": 41367462917,
+    "bloom_sequence_artifact_id": 13107414710
   },
   "current_slice": {
     "id": "phase1-to-bloom-transition-and-idle",
@@ -59,7 +61,7 @@
       "face_to_root_ratio": 1,
       "reviewer": "/root/review_art_pilot_architecture"
     },
-    "next_gate": "Actual controller3100ms transition with darkness/fullHUD then bloom idle; independent desktop/mobile loop and seam review. No bloom attacks/heart/death batch.",
+    "next_gate": "Independent actual transition+idle runtime review pending; repeatCI with Madre phaseHUD zero-based correction and genuine legacy fixture/bounded phase3 readiness. No next batch before review.",
     "next_job_key": "madre-bloom-transition-idle-runtime-v3",
     "provider_task_id": null,
     "previous_rejected_generation": {
@@ -111,5 +113,5 @@
     "scope": "idle prototype only, not main"
   },
   "spend": "No Runway credits or purchases; built-in imagegen unit cost not exposed.",
-  "previous_remote_head": "00ac162638dd7b1489f69230db29bdb3f5b07af0"
+  "previous_remote_head": "fc2e99b6a701214ab2a29264b62a7f0071865c85"
 }

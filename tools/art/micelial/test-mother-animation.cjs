@@ -135,4 +135,10 @@ check('bloom keypose requires both explicit flags and only evolved idle',()=>{
  }
  assert.equal(q._micMotherPilotPose({packSet:'atk',packTimer:490,packDur:1500},M,0,{state:'atk'}),null);
 });
+check('Mother1-based phases map to zero-based HUD without changing combatphase',()=>{
+ const source=fs.readFileSync(path.join(ROOT,'js/arenas/micelial/mic-mother.js'),'utf8');
+ const calls=[],q={micS:{mo:{}},runElapsedMs:123,bossHudPhase:(...a)=>calls.push(a),showBanner:()=>{},playSfx:()=>{},vfxShake:()=>{},flashScreen:()=>{}};
+ vm.createContext(q);vm.runInContext(source,q);
+ for(const ph of [2,3]){const e={};q.micMotherToPhase(e,ph);assert.equal(e.bossPhase,ph);assert.equal(q.micS.mo.ph,ph);assert.equal(calls.at(-1)[0],ph-1);}
+});
 console.log(JSON.stringify({pass,scope:'pose and contract unit tests only; visual/browser checks separate'}));

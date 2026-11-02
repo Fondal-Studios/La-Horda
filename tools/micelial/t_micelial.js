@@ -160,8 +160,18 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('MADRE.fase2_oscuridad_floracion_alucinaciones', ph.dark && ph.bloom && ph.ph === 2 && ph.hal >= 3, ph);
   const halNoDmg = await E(() => { enemies.filter(e => e !== micMotherEntity()).forEach(e => e.alive = false); bossStrikes.length = 0; projectiles.length = 0; micS.clouds.length = 0; const b = micMotherEntity(); b.mcd = 1e9; b.bossWind = null; const h = heroes[0]; h.hp = h.maxHp; h.x = 700; h.y = 500; micS.hal.push({x:h.x + 20, y:h.y, k:'sabueso', t:0, d:9000, vx:0, vy:0, h:0}); const hp0 = h.hp; for (let i = 0; i < 30; i++) update(16); return { hp0: Math.round(hp0), hp: Math.round(h.hp) }; });
   check('MADRE.alucinaciones_no_hacen_danio', halNoDmg.hp >= halNoDmg.hp0 - 1, halNoDmg);
-  const p3 = await E(() => { const b = micMotherEntity(); b.mcd = 0; b.hp = b.maxHp*0.29; __step(3500); const heart = micS.mo.heart, vuln = b.dmgTakenMult; __step(30000); const K = micSafeK(); const h = heroes[0]; h.x = 900; h.y = -200; h.hp = h.maxHp; const hp0 = h.hp; for (let i = 0; i < 120; i++) { update(16); h.x = 900; h.y = -200; } const outside = h.hp < hp0; const safeIn = micSafeNorm(0, 170) < K; return { heart, vuln, inf: +micS.mo.inf.toFixed(2), K: +K.toFixed(2), outside, safeIn }; });
-  check('MADRE.fase3_corazon_expuesto_y_vulnerable', p3.heart && p3.vuln > 1, p3);
+  const p3 = await E(() => { const b = micMotherEntity(); b.mcd = 0; b.hp = b.maxHp*0.29;
+    // 2600 ms is AI transition time, not elapsed world time: stuns pause the AI.
+    // Observe the real completion event, bounded to 12 s; never set heart/vulnerability.
+    let waited = 0;
+    while (waited < 12000 && b.alive && state === 'playing' &&
+           !(micS.mo.ph === 3 && !micS.mo.tr && micS.mo.heart)) {
+      __step(16); waited += 16;
+    }
+    const ready = micS.mo.ph === 3 && !micS.mo.tr && !!micS.mo.heart;
+    const transition = micS.mo.tr ? {to:micS.mo.tr.to, t:micS.mo.tr.t} : null;
+    const stun = b.stunTimer, heart = micS.mo.heart, vuln = b.dmgTakenMult; __step(30000); const K = micSafeK(); const h = heroes[0]; h.x = 900; h.y = -200; h.hp = h.maxHp; const hp0 = h.hp; for (let i = 0; i < 120; i++) { update(16); h.x = 900; h.y = -200; } const outside = h.hp < hp0; const safeIn = micSafeNorm(0, 170) < K; return { ready, waited, transition, stun, heart, vuln, inf: +micS.mo.inf.toFixed(2), K: +K.toFixed(2), outside, safeIn }; });
+  check('MADRE.fase3_corazon_expuesto_y_vulnerable', p3.ready && p3.heart && p3.vuln > 1, p3);
   check('MADRE.infeccion_achica_la_zona_segura_enrage_suave', p3.inf > 0.3 && p3.K < 2 && p3.outside && p3.safeIn, p3);
   const botSafe = await E(() => { const b = allies[0]; b.x = 900; b.y = -200; const v = botDangerVec(b.x, b.y, 30); return v && v.x < 0; });
   check('BOTS.vuelven_a_la_zona_segura', botSafe);
@@ -169,9 +179,37 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('MADRE.secuencia_de_muerte_y_victoria', death.s0 === 'dying' && death.re && death.state === 'victory' && death.dead && death.cleared, death);
 
   // ---------------- guardado ----------------
-  const sv = await E(() => { const raw = JSON.parse(localStorage.getItem(SAVE_KEY) || '{}'); raw.arenasCleared = {bosque:true, acuatica:true, fortaleza:true}; delete raw.micelialMigrated; raw.campaignResetV3 = true; raw.legacyHieloOpen = false; localStorage.setItem(SAVE_KEY, JSON.stringify(raw)); loadSave(); const a = { hielo: isArenaUnlocked('hielo'), mic: isArenaUnlocked('micelial'), flag: save.micelialMigrated };
-    raw.micelialMigrated = true; raw.legacyHieloOpen = false; localStorage.setItem(SAVE_KEY, JSON.stringify(raw)); loadSave(); a.hielo2 = isArenaUnlocked('hielo'); return a; });
+  const sv = await E(() => {
+    // Genuine pre-Micelial schema: defaultSave at 9a6aee72^ (item schema 2,
+    // Fortaleza introduced, before campaignV2 / Ciudad / Minas). Do NOT clone
+    // today's save with future migration flags or victory unlocks still present.
+    const mastery = () => ({useXp:0, useLvl:1, alloc:0});
+    const raw = {
+      itemSchemaV:2, gold:4321, gems:0, divineArenaUnlocked:false,
+      champions:{guerrero:{level:4, xp:17, talentPoints:0, unlocked:true,
+        skillMastery:[mastery(),mastery(),mastery()], ultMastery:mastery(),
+        inventory:[], equipment:{arma:null,escudo:null,casco:null,pechera:null,guantes:null,botas:null},
+        talents:{nodes:{},picks:{},mastery:null,masteryNodes:{}}}},
+      arenasCleared:{bosque:true,acuatica:true,fortaleza:true,hielo:false,laberinto:false,infernal:false},
+      fortalezaMigrated:true, campaignResetV1:true,campaignResetV2:true,campaignResetV3:true,
+      starterChosen:true,playtestV1Bonus:true,relics:{hp:0,dmg:0,def:0,vel:0},
+      lootPity:{legendario:0,set:0,mitico:0}
+    };
+    localStorage.setItem(SAVE_KEY, JSON.stringify(raw)); loadSave();
+    const a = {hielo:isArenaUnlocked('hielo'), mic:isArenaUnlocked('micelial'), flag:save.micelialMigrated,
+      preserved:save.gold === 4321 && save.champions.guerrero.level === 4 && save.champions.guerrero.xp === 17,
+      loadFailed:saveLoadFailed};
+    persistNow(); loadSave();
+    a.idempotent = isArenaUnlocked('hielo') && isArenaUnlocked('micelial') && save.gold === 4321;
+    // Control: schema immediately AFTER Micelial landed, new campaign without
+    // inherited ice access. Clearing Fortaleza opens Micelial, not Hielo.
+    raw.micelialMigrated = true; raw.arenasCleared.micelial = false;
+    localStorage.setItem(SAVE_KEY, JSON.stringify(raw)); loadSave();
+    a.hielo2 = isArenaUnlocked('hielo'); a.mic2 = isArenaUnlocked('micelial');
+    return a;
+  });
   check('SAVE.guardado_viejo_conserva_el_hielo_y_abre_el_reino', sv.hielo && sv.mic && sv.flag && !sv.hielo2, sv);
+  check('SAVE.migracion_preserva_progreso_es_idempotente_y_control_abre_micelial', sv.preserved && sv.idempotent && sv.mic2 && !sv.loadFailed, sv);
 
   // ---------------- rendimiento ----------------
   await fresh(9);

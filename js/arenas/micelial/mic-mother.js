@@ -263,7 +263,7 @@ function micMotherToPhase(e, ph){
   const M = micS.mo;
   M.ph = ph; M.tr = {t:0, to:ph};
   e.bossWind = null; e.bossPhase = ph;
-  bossHudPhase(ph, 3);
+  bossHudPhase(ph-1, 3); // HUD/story API is zero-based; encounter phases remain1..3.
   if(ph===2){
     e.dmgTakenMult = 0;
     showBanner("La Madre se cierra sobre sí misma…");
