@@ -11,6 +11,7 @@ function render(){
   animNow = performance.now();
   ANIM_ALPHA_MUL = 1; // resguardo: si un frame anterior se cortó a mitad de un fade, no arrastra el alpha
 
+  updateArenaCameraZoom();
   ctx.save();
   ctx.imageSmoothingEnabled = false; // pixel art: siempre vecino más cercano
   // golpe de zoom (juice.js): escala corta alrededor del centro de la cámara, solo visual

@@ -223,7 +223,7 @@ function micAIMadre(e, dt, tgt, dist){
     if(T.to===2){
       _micBossPack(e, "trans", 400);
       if(!T.dk && T.t > C.closeMs*0.45){ T.dk = 1; M.dark = runElapsedMs; playSfx("micDark"); }
-      if(T.t >= C.closeMs + 500){ M.tr = null; M.bloom = 1; e.dmgTakenMult = 1; e.mcd = 900; bossPhaseFeedback(); playSfx("micBloom"); showBanner("🌸 FLORACIÓN — todo el Reino se enciende"); }
+      if(T.t >= C.closeMs + 500){ M.tr = null; M.bloom = 1; M.bloomAt = runElapsedMs; e.dmgTakenMult = 1; e.mcd = 900; bossPhaseFeedback(); playSfx("micBloom"); showBanner("🌸 FLORACIÓN — todo el Reino se enciende"); }
     } else {
       _micBossPack(e, "open", 400);
       if(T.t >= 2600){ M.tr = null; M.heart = 1; e.dmgTakenMult = C.heartVuln; e.mcd = 800; bossPhaseFeedback(); showBanner("💗 ¡EL CORAZÓN ESTÁ EXPUESTO! Quedate cerca: la infección avanza"); }
@@ -232,7 +232,8 @@ function micAIMadre(e, dt, tgt, dist){
   }
   const P = M.ph - 1;
   e.mcd -= dt; e.rootsCd -= dt; e.sporeCd -= dt; e.whipCd -= dt; e.summonCd -= dt; e.clawCd -= dt; e.cloudCd -= dt; e.halCd -= dt;
-  if(M.ph===3){ M.beat -= dt; if(M.beat <= 0){ M.beat = 900; M.bt = runElapsedMs; playSfx("micHeart"); } _micBossPack(e, "heart", 400); }
+  if(M.ph===3){ M.beat -= dt; if(M.beat <= 0){ M.beat = 900; M.bt = runElapsedMs; playSfx("micHeart"); } // Do not overwrite an active attack/cast with the cosmetic heart idle every tick.
+    if(!(e.packTimer > 0) || e.packSet === "heart") _micBossPack(e, "heart", 400); }
   if(e.bossWind || e.mcd > 0) return true;
   if(e.mcd < -8000) e.mcd = 0;
   // zarpazo: si la encaran de cerca
@@ -262,7 +263,7 @@ function micMotherToPhase(e, ph){
   const M = micS.mo;
   M.ph = ph; M.tr = {t:0, to:ph};
   e.bossWind = null; e.bossPhase = ph;
-  bossHudPhase(ph, 3);
+  bossHudPhase(ph-1, 3); // HUD/story API is zero-based; encounter phases remain1..3.
   if(ph===2){
     e.dmgTakenMult = 0;
     showBanner("La Madre se cierra sobre sí misma…");
