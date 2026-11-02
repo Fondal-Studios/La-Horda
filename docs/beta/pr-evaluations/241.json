@@ -1,0 +1,63 @@
+{
+ "id": "241",
+ "branch": "fix/recover-generated-art-20261029",
+ "base": "350a229f435405c85619f8fcf3c0886045ae921f",
+ "evaluatedAt": "2026-11-02T09:56:11.532Z",
+ "steps": {
+  "architect": {
+   "verdict": "NEEDS_WORK",
+   "findings": [
+    {
+     "level": "W",
+     "id": "asset-size",
+     "msg": "Assets >2 MB: art-source/fondal/aelith-codex/source.png, art-source/fondal/guerrero-codex/source.png, art-source/fondal/morveth-codex/source.png"
+    }
+   ],
+   "files": 60,
+   "categories": {
+    "touchesArt": true,
+    "touchesChampions": false,
+    "touchesNet": false,
+    "touchesGameplay": false,
+    "isArtOnly": true
+   }
+  },
+  "merge": {
+   "clean": true,
+   "conflicts": [],
+   "worktree": "/tmp/eval-wt-241"
+  },
+  "diff": {
+   "files": 60,
+   "art": 24,
+   "shortstat": "60 files changed, 31957 insertions(+), 10 deletions(-)"
+  },
+  "qaQuick": {
+   "exit": 1,
+   "summary": "PASS 37   FLAKY 0   FAIL 1   (de 38)",
+   "failed": [
+    "FAIL     0s  tools/visual-package/test.js  (código 1)",
+    "FAIL  tools/visual-package/test.js  (código 1)"
+   ]
+  },
+  "ownTests": [],
+  "extraChecks": {
+   "tools/art/check-tanque-death.js": "PASS 135",
+   "tools/art/check-tanque-hurt.js": "PASS 234",
+   "tools/art/check-guerrero-death.js": "PASS 133",
+   "tools/art/roster-loading-test.js": "PASS 43 campeones/158 packs/3384 renders"
+  }
+ },
+ "verdict": "ACEPTAR_CON_CORRECCION",
+ "improvement": {
+  "status": "accepted",
+  "evidence": "docs/art-recovery-20261029/roster.png: los 4 cuerpos del Códice (Aldric, Kael, Aelith, Morveth) en estilo y escala coherentes con el roster; el PR conserva el arte previo como respaldo y trae revisión de componente, 4 partidas host/invitado y calibración de pies/masa. Sin cambios de estadísticas, colisiones o habilidades.",
+  "reviewer": "evaluador de integración (revisión visual de la hoja de roster; no sustituye aprobación del dueño)",
+  "caveats": [
+   "arrastra >2 MB de fuentes en art-source/ (no se distribuyen)",
+   "publicación en fondalstudios.com no verificada (404 según su propio informe)"
+  ]
+ },
+ "verdictInitial": "RECHAZAR",
+ "correction": "Regenerar assets/visual-packages/manifest.v1.json (+4 paquetes: codex_aelith, codex_guerrero, codex_morveth, codex_tanque; 107 válidos, 0 errores). El fallo inicial era mi prueba de contrato detectando registros nuevos, no una regresión del PR."
+}
