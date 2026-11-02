@@ -29,6 +29,7 @@ _micImg("assets/sprites/arenas/micelial/madre_espora/atlas.png", "mp_atlas", MIC
 const MIC_MOTHER_PILOT_ON=typeof location!=="undefined" && new URLSearchParams(location.search).get("motherArtPilot")==="1";
 const MIC_MOTHER_BLOOM_KEY_ON=MIC_MOTHER_PILOT_ON && new URLSearchParams(location.search).get("motherBloomKey")==="1";
 const MIC_MOTHER_HEART_KEY_ON=MIC_MOTHER_BLOOM_KEY_ON && new URLSearchParams(location.search).get("motherHeartKey")==="1";
+const MIC_MOTHER_CORE_LAYER_ON=MIC_MOTHER_HEART_KEY_ON && new URLSearchParams(location.search).get("motherCoreLayer")==="1";
 if(MIC_MOTHER_HEART_KEY_ON) _micImg("assets/sprites/arenas/micelial/mother/pilot_heart_key.png","mp_heart_key",MIC_MP,MIC_MP_OK);
 if(MIC_MOTHER_BLOOM_KEY_ON){
   _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_key.png","mp_bloom_key",MIC_MP,MIC_MP_OK);
@@ -572,6 +573,13 @@ function _micMotherAtlasReady(){
   return !!(MIC_MP_OK.mp_atlas && im && im.width===1360 && im.height===417);
 }
 function _micMotherPilotPose(e,M,timeMs,pose){
+  if(MIC_MOTHER_CORE_LAYER_ON && M.st==="fight" && !M.tr && (M.heart || (M.net && M.net.st==="open"))){
+    // Body phase/action and exposure are independent. Never replace cyan phase1
+    // with the bloom body merely because its temporary network window opens.
+    const body={...M,ph:M.ph===3?2:M.ph,heart:0,net:null,bloom:M.ph>=2?1:0};
+    const base=_micMotherPilotPose(e,body,timeMs,_micMotherFrame(e,body,timeMs));
+    return base?{...base,coreLayer:true,core:178,coreX:12}:null;
+  }
   // Static open-core geometry gate only; not a complete phase3 animation.
   if(MIC_MOTHER_HEART_KEY_ON && M.st==="fight" && M.ph===3 && M.heart && !M.tr && pose.state==="heart")
     return {key:"mp_heart_key",w:656,h:560,cols:1,anchor:528,core:169.4,frame:0};
@@ -584,7 +592,7 @@ function _micMotherPilotPose(e,M,timeMs,pose){
     return {key:"mp_bloom_key",w:656,h:560,cols:1,anchor:528,frame:0};
   }
   // Final evolved keypose holds through the controller's extra500ms settling.
-  if(MIC_MOTHER_BLOOM_KEY_ON && M.st==="fight" && M.ph===2 && !M.heart && pose.state==="bloom-idle"){
+  if(MIC_MOTHER_BLOOM_KEY_ON && M.st==="fight" && M.ph===2 && !M.heart && (pose.state==="bloom-idle" || pose.state==="stunned")){
     const elapsed=Number.isFinite(M.bloomAt)?Math.max(0,(timeMs||0)-M.bloomAt):0;
     return {key:"mp_bloom_idle",w:656,h:560,cols:3,anchor:528,frame:[0,1,2,1][Math.floor(elapsed/420)%4]};
   }
@@ -601,12 +609,45 @@ function _micMotherPilotPose(e,M,timeMs,pose){
     return {key:form,w:656,h:M.ph===1?496:560,cols:2,anchor:M.ph===1?472:528,frame:elapsed<release?0:1};
   }
   if(M.ph!==1 || M.bloom || M.heart || (M.net && M.net.st==="open")) return null;
-  if(pose.state==="idle") return {key:"mp_pilot",w:432,frame:[0,1,2,1][Math.floor(Math.max(0,timeMs||0)/360)%4]};
+  if(pose.state==="idle" || pose.state==="stunned") return {key:"mp_pilot",w:432,frame:[0,1,2,1][Math.floor(Math.max(0,timeMs||0)/360)%4]};
   if(pose.state!=="atk" || !e || !(e.packDur>700)) return null;
   // Same actual windup and 500ms recovery window as production damage. Never
   // use the root/claw action for immediate spore casts or later evolved forms.
   const after=(e.packDur-e.packTimer)-(e.packDur-500);
   return {key:"mp_pilot_attack",w:480,frame:e.bossWind || after<0 ? 0 : (after<190 ? 1 : 2)};
+}
+// Cached native canvas compositing: unmodified source pixels, a traced cavity
+// replacement, then explicit foreground claw pixels. No per-frame pixel scans.
+const MIC_MOTHER_CORE_POLY=[[320,245],[345,245],[365,285],[378,305],[394,342],[394,380],[375,406],[357,430],[339,450],[313,438],[294,411],[277,380],[267,348],[280,315],[300,290]];
+const MIC_MOTHER_CORE_REVISION="traced-cavity-v1";
+const MIC_MOTHER_CORE_HEART_SHA256="28384311f7a9ef36f70587baa09776d18c205e4e5a8a2e9e0c99ec254f9da2c3";
+const MIC_MOTHER_CORE_BINDINGS={"mp_pilot":{"path":"assets/sprites/arenas/micelial/mother/pilot_idle.png","sha256":"2b9a4809e82cabba52a71fdc94c7c37d2d91375795607d324a3b9dc406e24861","w":432,"h":496,"anchor":472,"frames":[{"foreground":[]},{"foreground":[]},{"foreground":[]}]},"mp_pilot_attack":{"path":"assets/sprites/arenas/micelial/mother/pilot_attack.png","sha256":"a8b645619ecf723ab3cd9921072015421f2e9408a44ef6b783d0a006436009b3","w":480,"h":496,"anchor":472,"frames":[{"foreground":[]},{"foreground":[]},{"foreground":[]}]},"mp_pilot_cast":{"path":"assets/sprites/arenas/micelial/mother/pilot_cast.png","sha256":"991e1b6092f15fee15a059fd832b83f723ed2297c9e9391e6b3fcd7a35d8929a","w":656,"h":496,"anchor":472,"frames":[{"foreground":[]},{"foreground":[]}]},"mp_bloom_idle":{"path":"assets/sprites/arenas/micelial/mother/pilot_bloom_idle.png","sha256":"85590064432f3b798fc185bd4bd68bfba3a12c37613e32cb1b9b87847020b4f4","w":656,"h":560,"anchor":528,"frames":[{"foreground":[]},{"foreground":[]},{"foreground":[]}]},"mp_bloom_attack":{"path":"assets/sprites/arenas/micelial/mother/pilot_bloom_attack.png","sha256":"414c4e8bd2d427ea2c544f83b4904d3a42d898c6da2e2ce352def71971ac5f2d","w":656,"h":560,"anchor":528,"frames":[{"foreground":[[[243,238],[277,237],[300,253],[313,282],[316,309],[302,325],[279,330],[254,316],[252,282],[241,260]],[[364,236],[399,235],[410,253],[395,282],[389,320],[373,336],[355,323],[355,293],[362,266]]]},{"foreground":[]},{"foreground":[]}]},"mp_bloom_cast":{"path":"assets/sprites/arenas/micelial/mother/pilot_bloom_cast.png","sha256":"f6d5d645ebb89d043ce674c8fd9cc21ac53fb532d34a413fbd4337fcdcca8e51","w":656,"h":560,"anchor":528,"frames":[{"foreground":[]},{"foreground":[]}]}};
+const _micMotherCoreCache=new Map();
+// Reviewed geometry is immutable; changing it requires a revision/hash review.
+(function freezeCoreGeometry(){
+  const freeze=o=>{if(o && typeof o==="object" && !Object.isFrozen(o)){Object.values(o).forEach(freeze);Object.freeze(o);}};
+  freeze(MIC_MOTHER_CORE_BINDINGS);freeze(MIC_MOTHER_CORE_POLY);
+})();
+function _micMotherCoreComposite(pilot){
+  if(!MIC_MP_OK.mp_heart_key || !MIC_MP.mp_heart_key || MIC_MP.mp_heart_key.width!==656 || MIC_MP.mp_heart_key.height!==560) return null;
+  const binding=MIC_MOTHER_CORE_BINDINGS[pilot.key],source=MIC_MP[pilot.key],heartSource=MIC_MP.mp_heart_key;
+  if(!binding || !Number.isInteger(pilot.frame) || pilot.frame<0 || pilot.frame>=binding.frames.length || !source || source.width!==binding.w*binding.frames.length || source.height!==binding.h || pilot.w!==binding.w || (pilot.h||496)!==binding.h || (pilot.anchor||472)!==binding.anchor) return null;
+  const key=pilot.key+":"+pilot.frame+":"+MIC_MOTHER_CORE_REVISION;
+  const cached=_micMotherCoreCache.get(key);if(cached && cached.source===source && cached.heartSource===heartSource && cached.binding===binding)return cached.canvas;
+  const w=binding.w,h=binding.h,anchor=binding.anchor;
+  const canvas=document.createElement("canvas");canvas.width=w;canvas.height=h;
+  const layer=document.createElement("canvas");layer.width=w;layer.height=h;
+  const g=canvas.getContext("2d"),l=layer.getContext("2d");g.imageSmoothingEnabled=false;l.imageSmoothingEnabled=false;
+  const sourceDraw=c=>c.drawImage(source,pilot.frame*w,0,w,h,0,0,w,h);
+  const path=(c,poly)=>{c.beginPath();poly.forEach((p,i)=>c[i?"lineTo":"moveTo"](w/2+p[0]-328,anchor+p[1]-528));c.closePath();};
+  sourceDraw(g);const basePixels=g.getImageData(0,0,w,h);l.save();path(l,MIC_MOTHER_CORE_POLY);l.clip();l.drawImage(MIC_MP.mp_heart_key,w/2-328,anchor-528);l.restore();
+  // The patch cannot invent silhouette outside the existing body alpha.
+  l.globalCompositeOperation="destination-in";sourceDraw(l);l.globalCompositeOperation="source-over";g.drawImage(layer,0,0);
+  for(const poly of binding.frames[pilot.frame].foreground){g.save();path(g,poly);g.clip();sourceDraw(g);g.restore();}
+  // One cached preparation scan, never a per-frame scan. Source alpha is exact,
+  // including antialiased edges: opening the trunk must not enlarge silhouette.
+  const result=g.getImageData(0,0,w,h);for(let i=3;i<result.data.length;i+=4)result.data[i]=basePixels.data[i];g.putImageData(result,0,0);
+  _micMotherCoreCache.set(key,{source,heartSource,binding,canvas});return canvas;
 }
 function _micDrawMotherFrame(e,t){
   if(!_micMotherAtlasReady()) return false;
@@ -616,9 +657,12 @@ function _micDrawMotherFrame(e,t){
   const pilot=MIC_MOTHER_PILOT_ON ? _micMotherPilotPose(e,M,runElapsedMs,pose) : null;
   const ph=pilot && (pilot.h||496), pc=pilot && (pilot.cols||3), pa=pilot && (pilot.anchor||472);
   if(pilot && MIC_MP_OK[pilot.key] && MIC_MP[pilot.key].width===pilot.w*pc && MIC_MP[pilot.key].height===ph){
-    ctx.save();ctx.imageSmoothingEnabled=false;
-    ctx.drawImage(MIC_MP[pilot.key],pilot.frame*pilot.w,0,pilot.w,ph,MIC_MOTHER_POS.x-pilot.w/2,MIC_MOTHER_BASE-pa,pilot.w,ph);
-    ctx.restore();_micDrawMotherHeartCue(M,pilot.core||144);return true;
+    const composite=pilot.coreLayer?_micMotherCoreComposite(pilot):null;
+    if(!pilot.coreLayer || composite){
+      ctx.save();ctx.imageSmoothingEnabled=false;
+      ctx.drawImage(composite||MIC_MP[pilot.key],composite?0:pilot.frame*pilot.w,0,pilot.w,ph,MIC_MOTHER_POS.x-pilot.w/2,MIC_MOTHER_BASE-pa,pilot.w,ph);
+      ctx.restore();_micDrawMotherHeartCue(M,pilot.core||144,pilot.coreX||0,!!pilot.coreLayer);return true;
+    }
   }
   const w=A.w*A.scale, h=A.h*A.scale, x=MIC_MOTHER_POS.x-w/2, y=MIC_MOTHER_BASE-h*A.anchor;
   ctx.save();
@@ -636,14 +680,14 @@ function _micDrawMotherFrame(e,t){
   _micDrawMotherHeartCue(M);
   return true;
 }
-function _micDrawMotherHeartCue(M,offset=144){
+function _micDrawMotherHeartCue(M,offset=144,xOffset=0,screenStable=false){
   // The vulnerability cue is independent of the action pose and cannot vanish
   // when the boss casts. It is visual only, not a new hitbox or weak-point rule.
   if(M.st==="fight" && (M.heart || (M.net && M.net.st==="open"))){
     const beat=Math.exp(-Math.max(0,(runElapsedMs||0)-(M.bt||-9999))/260);
-    ctx.save();ctx.lineWidth=5;ctx.strokeStyle="#200818";ctx.beginPath();
-    ctx.ellipse(MIC_MOTHER_POS.x,MIC_MOTHER_BASE-offset,18+beat*3,25+beat*4,0,0,Math.PI*2);ctx.stroke();
-    ctx.lineWidth=2;ctx.strokeStyle="#ffd0e0";ctx.stroke();ctx.restore();
+    ctx.save();if(screenStable)ctx.globalAlpha=1;const px=screenStable && typeof CAM_ZOOM==="number"?1/Math.max(0.2,CAM_ZOOM):1;ctx.lineWidth=screenStable?3*px:5;ctx.strokeStyle="#200818";ctx.beginPath();
+    ctx.ellipse(MIC_MOTHER_POS.x+xOffset,MIC_MOTHER_BASE-offset,18+beat*3,25+beat*4,0,0,Math.PI*2);ctx.stroke();
+    ctx.lineWidth=screenStable?1.5*px:2;ctx.strokeStyle="#ffd0e0";ctx.stroke();ctx.restore();
   }
 }
 function _micDrawMother(e,t){

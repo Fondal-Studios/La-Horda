@@ -160,4 +160,21 @@ check('open-core keypose is explicit and cosmetic vulnerability cue tracks visib
  assert.equal(q._micMotherPilotPose({},m,1000,{state:'atk'}),null,'static geometry pilot does not claim heart attacks');
  assert.equal(q._micMotherPilotPose({},{...m,ph:2,heart:0},1000,{state:'heart'}),null);
 });
+check('core replacement bindings pin reviewed source bytes and every supported frame',()=>{
+ const bindings=vm.runInContext('MIC_MOTHER_CORE_BINDINGS',sandbox),crypto=require('node:crypto');
+ for(const [key,b]of Object.entries(bindings)){
+  assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT,b.path))).digest('hex'),b.sha256,key+' requires visual re-review after source change');
+  assert(b.frames.length>=2);for(const f of b.frames)assert(Array.isArray(f.foreground));
+ }
+ assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT,'assets/sprites/arenas/micelial/mother/pilot_heart_key.png'))).digest('hex'),vm.runInContext('MIC_MOTHER_CORE_HEART_SHA256',sandbox));
+});
+check('network exposure preserves body and action while permanent heart survives rebuild',()=>{
+ const q={Image:class{},VFX_SPR_EXTRA:{},MIC_CFG:{madre:{closeMs:2600}},console,location:{search:'?motherArtPilot=1&motherBloomKey=1&motherHeartKey=1&motherCoreLayer=1'},URLSearchParams};vm.createContext(q);vm.runInContext(code,q);
+ for(const ph of [1,2,3])for(const e of [{},{stunTimer:500},{packSet:'atk',packTimer:1000,packDur:1600,bossWind:{t:600,dur:1100}},{packSet:'atk',packTimer:490,packDur:1600},{packSet:'atk',packTimer:680,packDur:700}]){
+  const m={st:'fight',ph,bloom:ph>=2?1:0,heart:ph===3?1:0,net:{st:'open',t:6999}},before=JSON.stringify([e,m]);
+  const open=q._micMotherPilotPose(e,m,1000,q._micMotherFrame(e,m,1000));assert(open.coreLayer);assert.equal(open.key.startsWith('mp_bloom'),ph>=2);assert.equal(JSON.stringify([e,m]),before);
+  m.net.st='rebuild';const closed=q._micMotherPilotPose(e,m,1000,q._micMotherFrame(e,m,1000));assert.equal(!!closed.coreLayer,ph===3);
+  const frozen=q._micMotherPilotPose(e,m,1000,q._micMotherFrame(e,m,1000));assert.deepEqual(JSON.parse(JSON.stringify(frozen)),JSON.parse(JSON.stringify(closed)));
+ }
+});
 console.log(JSON.stringify({pass,scope:'pose and contract unit tests only; visual/browser checks separate'}));

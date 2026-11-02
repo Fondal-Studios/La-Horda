@@ -1,3 +1,29 @@
+# Madre Espora — current integration gates
+
+## Current status (2026-11-02, 01:32 UTC)
+
+Draft PR260, not merged/deployed. Main baseline remains `34ac2852154035b97e53c4807a0a20ee289a40b2`. No formal PR approval or complete-boss visual approval.
+
+New high-detail artwork **has been generated**, with user authorization through the built-in OpenAI image generator. No Runway credits or purchases; tool unit cost is not exposed. Provenance and prompts: `bloom-generation-contract.md`; durable ownership and evidence: `pipeline-ledger.json`.
+
+Independent runtime GO is scoped to opt-in phase1 idle/physical/spore casts, phase2 bloom transformation/idle/physical/spore casts. These are real changing source poses, synchronized to existing controller/damage/projectile timing. Warning spells have routing/delay checks, not blanket visual approval.
+
+Latest verified remote head `011b08b33d7ffa719d441682736cb9e150df44c8`: Madre workflow SUCCESS, full candidate and full main baseline BOTH_PASS using identical test harness and seed (run41371494011, artifact13109945350). Earlier fungal failures were diagnosed as fixture/start/readiness/schema/reward-accounting errors; assertions were preserved or strengthened, not waived. Actual vulnerability1.35 and legacy save preservation/idempotence now pass. New heads require fresh CI.
+
+Heart OPEN keypose has source/geometry GO only. Desktop dark cavity/pink seed is distinct; mobile vulnerability readability remains unapproved. Actual phase3 controller reaches heart after2624ms in this fixture; renderer preserves position/radius140/HP/vulnerability. A no-spend cached core replacement layer is being tested to preserve cyan phase1 and warm phase2/3 during temporary network exposure and attacks. This is not yet a reviewed runtime layer or opening animation.
+
+### Remaining release gates
+
+- All-phase temporary network exposure,7s expiry, rebuild and permanent heart during every action; exact foreground-arm occlusion and source-hash bindings.
+- Actual opening transition, then coherent reveal/death art; no low-resolution normal-state fallbacks disguised as a complete boss.
+- Native mobile cue/player readability with production effects enabled. Existing shield/fog/VFX washout is documented, not removed only for screenshots.
+- Representative warning-spell visual coverage and final full-encounter regression/architect review.
+- Only then consider enabling by default or main integration; no auto-merge authorized here.
+
+## Historical initial recovery notes (superseded status, retained provenance)
+
+The following section describes the **initial no-generation recovery**, before the authorized high-detail pilots above. Its old counts and interim verdicts are historical, not current claims.
+
 # Madre Espora: recover authored animation, not a moving portrait
 
 ## Scope and evidence
